@@ -1,0 +1,1019 @@
+%% FILE dict_e.pl
+%% SYSTEM TUC
+%% CREATED TA-930601
+%% REVISED TA-001130
+%% TUC Dictionary for the language E
+
+
+
+:-module(dict_e,[]).
+
+
+%% NEW PREDICATE %% TA-001108
+
+%% Class independent composite words
+
+compword(don,[t],dont).                  %% TA-001130
+%% compword(in,[deed],indeed).         %% TA-001130  noisew doesn't work
+compword(in,[deed],[]).
+compword(in,[particular],[]).       %% TA-001121
+compword(in,[general],[]).          %% TA-001121
+compword(on,[the,other,hand],[]).   %% TA-00111
+compword(not,[bright],stupid).      %% Example  
+compword(bus,[stop],station).       %% but not buses stop !!! %% TA-001115
+
+
+unwanted_verb(meaning). %% noun, destroys error mess: complete sentence
+
+unwanted_noun(supercalifragilisticespicalidocious). %% Dummy  %% New predicate %% TA-000107
+
+%% Modification of individual words in this file 
+%% is not commented in the text. 
+
+%% Synonyms must be listed in all forms,
+%%  no analysis prior to translation
+
+%% Additional known (internal/ key) words 
+%% to avoid spurious error messages
+%% due to the keywords in the grammar
+
+
+
+% be   = be0  ( be sick )  
+% be   = be1  ( be in england  )     
+% be   = be2  ( be a man  = be equal to a man)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% kw(X):-ow(X). % Open Word Class     => specific %% TA-000529
+% kw(X):-cw(X). % Closed Word Class   => misc     %% TA-000529
+
+
+%%%%%%%%%%%% 
+
+ow(nb(_)).
+ow(quote(_)).
+
+ow(X) :- user:instant(X,word),!.
+
+ow(X) :- numerid(X,_,_).
+ow(X) :- adjective2(X,_).
+ow(X) :- user:adv_templ(X,_).  % also cw ? 
+
+
+
+%%%%%%%%%  All the words appearing as [ ] constants in diagram  
+
+cw('-').
+cw('.'). 
+cw('?').
+cw('!').
+cw(':'). 
+
+cw(X) :- user:particle(X,_,_).
+cw(X) :- user:adv_templ(X,_). 
+cw(X) :- pronoun(X,_). 
+
+cw(a). % as in a.m.
+    cw(able).
+    cw(according). cw(all). cw(also). cw(always). 
+    cw(afternoon). 
+    cw(am). % < 12 
+    cw(an). cw(and). cw(another). cw(any). cw(anybody). 
+   cw(anything). cw(anyone). cw(anywhere) .
+   cw(as). cw(average). cw(away). 
+
+cw(be). cw(because). cw(been). cw(bigger). cw(biggest). 
+   cw(both). cw(bound). cw(bravo).  cw(but). cw(by). cw(bye). 
+
+cw(can). cw(cannot). cw(clock).  % cw('can''t'). 
+
+cw(day).
+
+cw(different). cw(do). cw(dont). cw(does).
+
+cw(each). cw(east). cw(equal). cw(every). cw(everybody). cw(everyone).
+    cw(evening).
+    cw(everything). cw(everywhere). cw(exit).
+
+cw(false). 
+    cw(far). 
+    cw(farewell). cw(for).
+
+cw(good). 
+    cw(goodbye). cw(greater). cw(greatest).
+
+cw(h). cw(hello). cw(herself). cw(here). 
+    cw(him). cw(himself). cw(his). cw(hour). cw(hours).
+    cw(how).
+
+cw(i). cw(ideally). cw(if).  cw(in). %%
+   cw(it). cw(its). cw(itself). 
+
+cw(just).
+
+%% cw(kl).  %%   Norwagism
+
+% cw(kind). %% (noun, but only used in phrases)
+
+cw(last).
+    cw(least). cw(less). 
+
+cw(m). cw(may). %% cw(medium). ==> pro forma adjective  %% TA-000228
+   cw(morning). 
+
+cw(never). cw(next). cw(newyear).  cw(no). %% as in no.
+
+cw(o). cw(oclock). cw(often). cw(older). cw(one).
+
+cw(many). cw(more). cw(most). cw(much). 
+    cw(must). cw(my). cw(next).
+
+cw(night).
+cw(no). cw(nobody). cw(noone). cw(north). cw(not). cw(nothing). cw(nowhere).
+
+cw(older). cw(only). cw(or). cw(order). cw(other).  cw(others). 
+    cw(own).
+
+cw(p). cw(ping). cw(pong).  cw(pm). %% > 12 
+
+cw(recently). cw(right). 
+
+cw(s). %% 's  genitive 
+cw(set). 
+   cw(several).   cw(shall). 
+   cw(simpler).   cw(smaller).  cw(smallest). cw(so). 
+   cw(some).      cw(somebody). cw(someone).  cw(something). 
+   cw(somewhere). cw(south).
+
+cw(than). cw(thank). cw(thanks). cw(thankyou). cw(that). cw(the).  
+    cw(their). cw(then). cw(there).  cw(these) .
+    cw(this).  cw(to). cw(total). cw(true).
+
+cw(unequal). cw(until). cw(using). cw(usually).
+
+
+cw(whats). 
+cw(well). cw(west). cw(will). cw(without).  
+    cw(what). cw(when). 
+    cw(where). cw(wherefrom).  cw(whether). cw(which). cw(while).
+    cw(who). cw(whose). cw(why).
+
+
+cw(yes). cw(you). cw(younger). cw(your). cw(yours).
+
+
+%% Auxillary words (synonyms)
+
+%% No morphological analysis is done on the synonyms,
+%  which means that all forms must be listed explicitly.
+%  The substitute word is analysed however.
+%  No looping in synword, the transitive closure must be done by hand
+
+
+% synword names -> synplace  (busdat) 
+
+
+synword(Four,_4):-numerid(Four,_4).
+
+synword('1pm',1300).
+synword('2pm',1400).
+synword('3pm',1500).
+synword('4pm',1600).
+synword('5pm',1700).
+synword('6pm',1800).
+synword('7pm',1900).
+synword('8pm',2000).
+synword('9pm',2100).
+synword('10pm',2200).
+synword('11pm',2300).
+synword('12pm',2400).
+
+synword(all,whole). 
+% synword(ain,are). %% ain't 
+synword(aint,are). %%  Rough Query Logic 
+synword(appear,be). 
+synword(approximately,around). 
+synword(approx,around). 
+synword(asap,soon).   %% i.e.. as soon as possible 
+
+synword(besides,       and).
+synword(big,           great).
+synword(bigger,        greater).
+synword(biggest,       greatest).
+% synword(bring,         fetch).     %%  (Norwagism, not correct)
+
+/* ==> noun2  %% TA-000107
+
+
+synword(busconnection, bus).      
+synword(busconnections,buses).    
+synword(busdeparture,  bus).
+synword(busdepartures, buses). 
+
+*/
+
+synword(bues,          bus). %% spell buses
+synword(busfare,       price).   %% TA-991111
+synword(busline,       route).   %% TA-991214      
+synword(buslines,      routes).  %% TA-991214      
+synword(busroute,      route). 
+synword(busroutes,     routes).
+synword(buss,           bus).     %% Norwenglish
+synword(busses,         buses). 
+synword(bussconnection, bus). 
+synword(bussconnections,buses).  
+synword(bussdeparture,  bus). 
+synword(bussdepartures, buses). 
+synword(bussline,       route).   %% TA-991214 
+synword(busslines,      routes).  %% TA-991214 
+synword(bussroute,      route).   %% TA-991214   
+synword(bussroutes,     routes).  %% TA-991214    
+synword(busstation,     station). 
+synword(busstations,    stations).
+
+
+synword(busstop,       station). 
+synword(busstops,      stations).
+
+% synword(but,           and). %% Needed for a slight difference %% TA-991112   
+
+synword(by,            past). 
+
+synword(ca,            around). 
+synword(cant,          cannot). 
+synword('can''t',      cannot). 
+synword(catch,         take).   
+synword(center,        centre).     %%   English spelling
+synword(choose,        take).       %%  (rough)
+synword(circa,         around). 
+synword(citty,         city).       %% TA-991207
+synword(close,         near). 
+synword(color,         colour). 
+synword(colors,        colours). 
+synword(complete,      whole). 
+synword(connection,    bus).      
+synword(connections,   buses).    
+synword(could,         can).    
+synword(crazy,         wrong). %% TA-000828 (rough)
+synword(currently,     now). 
+
+synword(declare,       define).
+synword(declared,      defined).
+synword(delete,        remove).
+synword(deleted,       removed).
+synword(deletes,       removes).
+
+% synword(departure,     depart).   %% incorrect and confusing 
+% synword(departures,    departs).  %%
+% synword(departured,    departed). %%
+
+synword(did,           do).       
+synword(documentation, document).
+%% synword(does,          do). %% NOT do1 inf !  %% TA-001025
+synword(earliest,      first). 
+synword(easiest,       best). 
+synword(elderly,       old).  
+synword(enjoy,         like). 
+synword(enjoyed,       liked). 
+synword(enjoys,        likes).   
+synword(eve,           evening).  %% (Christmas Eve)
+synword(fare,          price).    %% 
+synword(fares,         prices). 
+synword(fellow,        man).    
+synword(ferry,         boat).    %% ( rather ako boat)
+synword(ferries,       boats). 
+synword(fine,          good).    %% TA-001130
+synword(firsth,        first). 
+synword(fix,           repair).
+synword(fixed,         repaired).
+synword(fixes,         repairs).
+synword(flybuss,       airbus). 
+synword(frequent,      often). 
+synword(frequently,    often). 
+
+synword(goto,          pass).  
+synword(grumpy,        sour).    %% TA-000716
+synword(guy,           man).    
+synword(halt,          stop).
+synword(happy,         good). 
+synword(heading,       going). 
+synword(helpful,       clever).  %% TA-991101
+synword(hey,           hello). 
+synword(hi,            hello). 
+synword(high,          great).
+synword(higher,        greater).
+synword(highest,       greatest).
+
+synword(holiday,       sunday). %%  for all p p
+synword(holidays,      sundays). 
+synword(hound,         dog).          %% TA-991102 (Norwagism)
+
+synword(hurtigrute,    hurtigruta). %% ( also def as a place)
+synword(id,            i). %%  Web:  (I'd ==> id)  like to go to By'n 
+synword('i''d',        i). %%  Unix  (I'd ==> 'i'd') 
+
+synword(identical,     equal).
+%% synword(information,   list). %% NOT the VERB !!! 
+
+synword(immediately,   now).          %% TA-991102
+synword(impressive,    good). 
+synword(info,          information). 
+synword(j,             i).      %% ( J  == I ) Norwagism
+synword(job,           task). 
+
+synword(kid,           child).  
+synword(kids,          children). 
+synword(kystexpressen, hurtigruta).
+synword(large,         great).
+synword(larger,        greater).
+synword(largest,       greatest).
+synword(late,          last).    %% Ambiguous %% TA-001017
+synword(latest,        last). 
+synword(leader,        boss).   %%   ( or v.v. ?)
+synword(liff,          life).   %% :-)
+synword(line,          route).  %% TA-991214   
+synword(lines,         routes). %% TA-991214   
+synword(listing,       list). 
+synword(little,        small).
+synword(location,      place). 
+synword(logout,        goodbye).  %% TA-001010
+
+synword(mad,           wrong). 
+synword(me,            i).   
+synword(merry,         good). 
+synword(might,         may).    
+synword(mission,       task). 
+synword(nation,        country).
+synword(nations,       countries).
+
+synword(near,          around).      %% time %% TA-991211 (Expperiment)
+synword(nearest,       near).        %% TA-000524  (Rough)
+
+% synword(need,          have).      %% need/have to  % Hazardous
+synword(need,          want). 
+synword(nest,          next).        %%  Norwagism
+synword(notice,        see). 
+synword(notices,       sees).
+synword(noticed,       saw).
+
+
+% synword(no,            number). %% bus number . ==> (bus) . , not bus (no.)
+% synword(nr,              no).  %% ==> NJET 
+ 
+synword(nr,            number).  %% TA-001203
+
+synword(observe,       see).  
+synword(observes,      sees).
+synword(observed,      saw).
+%% synword(oclock,        clock).  %% only as phrase
+%% synword('o''clock',    clock).  %% only as phrase 
+synword(okey,          ok). 
+synword(our,           my).       %% TA-000830
+synword(overhear,      hear). 
+synword(overhears,     hears).    %%
+synword(overheard,     heard).    %%
+
+synword(pas,           pass).     %% spc 
+synword(path,          bus).      %%
+synword(peer,          look).     %%
+synword(peered,        looked).   %%
+synword(peers,         looks).    %%
+synword(per,           by).
+synword(per,           each). 
+synword(phonenumber,   telephone). 
+synword(pile,          heap).
+synword(port,          harbour).
+synword(purpose,       task).    %% ( doubtful )
+
+synword(quick,         fast). 
+synword(quickest,      fastest).  
+synword(quest,         task). 
+
+synword(railwaystation, railway).  %% TA-000225
+synword(raining,       rain).      %%  (roughly)
+synword(regular,       common). 
+synword(request,       ask).   
+synword(requested,     asked).     %%
+synword(requests,      asks).      %%
+
+synword(request,       question). 
+synword(requests,      questions).
+
+synword(revise,        modify).
+synword(revision,      version).
+synword(revisions,     versions).
+
+synword(ridden,        taken). 
+synword(ride,          take). 
+synword(riding,        taking). 
+
+% synword(right,         just).  %%   right after 1616
+
+synword(rode,          took).  
+
+synword(s,             is). %%   what 's
+
+synword(schedule,      departure). 
+synword(schedules,     departures). 
+synword(scedule,       departure). 
+synword(scedules,      departures). 
+
+synword(schedule,      route_plan).    %%   (schedule of departure)
+
+synword(seem,          are).  %% TA-000410
+synword(seems,         is).   %% TA-000410
+synword(seemed,        were). %% was
+
+synword(shall,         will).   
+synword(shortest,      fastest).
+synword(should,        will).
+synword(shutdown,      stop).  %% V or N %% TA-000901
+synword(shuttle,       bus). 
+synword(since,         after).
+synword(smart,         clever). 
+synword(soonest,       soon). 
+synword(spirit,        mood). 
+
+% synword(spot,          see).
+% synword(spots,         sees).  %% 
+% synword(spotted,       saw).   %%
+
+% synword(stasion,       station).      %% TA-000417 (spell Nw) Doesn't work for name
+synword(state,         country). % USA ???
+synword(states,        countries).
+
+synword(station,       railway).  %% TA-000225  Hazardous, station in E is bigger
+
+%%%%  synword(stop,          station).  %% which buses stop = which buses' station
+                                        %% syndrome %% TA-001115
+%%%%% synword(stops,         stations). 
+
+synword(suppose,       think).  
+% synword(t,             not).    %% TA-991102 (hazardous ?)  %% ain't
+synword(table,         route_plan). 
+
+synword(talk,          speak). 
+synword(talked,        spoke).      %% TA-001203  LACK verb root synonym 
+
+synword(tall,          great).   
+synword(taller,        greater).
+synword(tallest,       greatest).
+synword(thank,         thanks).  %% TA-000531
+synword(those,         these).   %% TA-000830
+synword(til,           to).      %% (Norwagism)
+synword(till,          to).      %% (Swedicism)
+synword(timetable,     departure). %% NOT route_plan because time 
+synword(timetables,    departures). 
+synword(transport,     route). 
+synword(transportation, route).
+synword(travel,        go).
+synword(travels,       goes).    %%
+synword(travelled,     went). 
+synword(tvelve,        twelve).  %% (Norwagism)
+synword(tvelwe,        twelve).  %% (Norwagism)
+synword(twelveth,      thelwth). 
+synword(update,        version). 
+synword(us,            i).       %%  (Trans Closure)
+synword(uses,          use).
+synword(used,          use).
+synword(vei,           veg).      %% Odd but necessary 
+synword(via,           past).
+synword(wanna,         will).
+synword(watch,         see).
+synword(watched,       saw).
+synword(watches,       sees).
+synword(way,           route). %% TA-001027 --> route --> bus 
+synword(we,            i). 
+synword(whant,         want). 
+synword(whom,          who).
+synword(wich,          which). 
+synword(would,         will).   
+
+synword(you,           tuc).
+synword(your,          tucs).
+synword(yourself,      tuc). 
+
+
+noisew(''''). 
+noisew('-'). 
+noisew('+'). 
+noisew('*'). 
+noisew('¨').
+noisew('#'). 
+noisew('('). %%  :- \+ user:value(noparentflag,true). %% TA-001026 Not nec
+noisew(')'). %%  :- \+ user:value(noparentflag,true). %% TA-001026
+
+noisew('¡'). %% TA-000531
+noisew('¯'). %% TA-000531
+
+
+noisew(actually     ).
+noisew(again).           %% TA-001112
+noisew(also         ). 
+noisew(anyway).          %% TA-000515
+noisew(briefly).         %% TA-001010
+noisew(eh).              %% TA-000903
+noisew(either).          %% TA-001117
+noisew(ideally      ).
+noisew(indeed).           %% TA-001130
+noisew(just).            %% TA-991215
+%% noisew(kl          ). %%  Norwagism  (destroyed language selection)
+noisew(most). 
+noisew(oh).            %% TA-000315
+noisew(ok). 
+noisew(okey         ). %% no syn on noise 
+noisew(once).          %% TA-000223
+noisew(please       ).
+noisew(really       ). 
+noisew(similarily   ). 
+noisew(specifically).     %% TA-000509
+%% noisew(so           ). %% john dies so that .. %% TA-991105
+noisew(thus         ).
+noisew(too).          %% TA-000309
+noisew(usually      ).
+noisew(very         ). %%  !
+noisew(wassa        ). %% English translation of dialect ("What's the ")
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Noun Section
+
+noun2(M,N):-noun3(M,N). %% ,!. %% ?? time = time & time_count %% TA-000616
+noun2(N,N):-noun(N).
+
+noun(thing).
+noun(X) :- user:(X ako _ ).
+
+%% Replaces synonyms with flexing (Root synonyms)
+
+noun3(aeroplane,     plane).        %% TA-000528
+noun3(airplane,      plane).        %% TA-000528
+noun3(boyfriend,     friend).       %% TA-000829
+noun3(bug,           error).        %% TA-001139
+noun3(busconnection, bus).     
+noun3(busdeparture,  bus).
+noun3(busnumber,     number).       %% TA-000531 (bus ?) busnumber of a bus
+noun3(change,        transfer).     %% TA-000528  or V.V ?
+noun3(daugther,      daughter).     %% TA-000323 (sp)
+noun3(departuretime, departure).    %% TA-000531
+noun3(detail,        information).  %% TA-000302
+noun3(flight,        plane).        %% TA-000424
+noun3(girlfriend,    friend).       %% TA-000829
+noun3(journey,       trip).         %% TA-000201
+noun3(machine,       computer).     %% TA-001010
+noun3(plan,          route_plan).   %% TA-000529 ( too BUSy ?)
+noun3(query,         question).     %% TA-000324
+noun3(request,       question).     %% TA-000324
+noun3(teleporter,    plane).        %% TA-000529
+noun3(time,          time).         %% TA-000616  NB  noun3 gives an only solution
+noun3(time,          time_count).   %% TA-000615  ( how many times ) 
+noun3(tramway,       tram).         %% TA-000509
+noun3(trouble,       problem).      %% TA-000410
+noun3(weekday,       monday).       %%  for all p p
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% VERB SECTION
+
+verbroot2(V,V):-morph_e:verbroot(V).  %%
+
+
+% these are verb root synonyms, flexing is included
+
+verbroot2(follow,take).  %% Must be at least one here
+verbroot2(return,go).    %% Roughly %% TA-000117
+verbroot2(recognize,recognise). %% TA-000804
+
+
+% verb_form(recognize,recognise,pres,fin).   
+% verb_form(recognizes,recognise,pres,fin).  % no pre analysis of synonyms
+% verb_form(recognized,recognise,past,fin).
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+
+%     Irregular Verbs
+
+
+verb_form(admitted, admit,past,fin).  %% morph_e rule ?
+verb_form(admitted, admit,past,part). %% TA-001123
+
+verb_form(am,       be,pres,fin).       
+verb_form(are,      be,pres,fin).      
+
+verb_form(ate,      eat,past,fin). 
+verb_form(bear,     bear1,pres,fin).
+verb_form(bear,     bear2,pres,fin).
+verb_form(beaten,   beat,past,part).     
+verb_form(been,     be,past,part).    
+verb_form(bit,      bite,past,fin).     
+verb_form(bore,     bear1,past,fin).    %% carried 
+verb_form(bore,     bear2,past,fin).    %% gave birth 
+verb_form(born,     bear2,past,part).    
+verb_form(broke,    break,past,fin).
+verb_form(broken,   break,past,part).
+verb_form(bought,   buy,past,fin).      
+verb_form(came,     come,past,fin).     
+verb_form(caught,   catch,past,fin).
+verb_form(chosen,   chose,past,part).
+
+verb_form(do,       do1,pres,fin). %% TA-001013
+verb_form(do,       do1,inf,fin).  %% what do you do1 %% odd, but does a bus \== do1 %% TA-99110
+                                   %% what can you do ?
+verb_form(does,     do1,pres,fin). %% TA-001025  NOT inf !
+verb_form(doing,    do1,pres,part).    %%  What are you doing
+verb_form(done,     do1,past,part).    %%  What have you done
+
+verb_form(drove,    drive,past,fin).
+verb_form(dying,    die,pres,part).  
+
+% verb_form(flies,    fly,pres,fin).    %%
+
+verb_form(forgot,   forget,past,fin).   %% TA-001130
+verb_form(forgotten,forget,past,part).   %% TA-001130
+
+verb_form(found,    find,past,fin).     
+verb_form(found,    find,past,part).    %% TA-000620
+
+verb_form(gave,     give,past,fin).
+verb_form(get,      receive,pres,fin). 
+verb_form(getting,  go,pres,part).  
+verb_form(given,    give,past,part). 
+verb_form(gone,     go,past,fin).
+verb_form(got,      get,past,fin).
+verb_form(got,      receive,past,fin). 
+
+verb_form(had,      have,pres,fin).
+verb_form(has,      have,pres,fin).
+verb_form(having,   have,pres,part).
+
+verb_form(is,       be,pres,fin). 
+
+verb_form(knew,     knowthing,past,fin). 
+verb_form(knew,     know,past,fin). 
+verb_form(know,     knowthing,pres,fin). % know thing
+verb_form(know,     know,pres,fin).      % know that
+verb_form(known,    know,past,part). 
+verb_form(knows,    knowthing,pres,fin).
+verb_form(knows,    know,pres,fin).
+
+verb_form(lay,      lie1,past,fin).
+verb_form(laid,     lay,past,_).
+verb_form(lain,     lie1,past,part).
+verb_form(left,     leave,past,_). 
+verb_form(lie,      lie1,pres,fin).
+verb_form(lie,      lie2,pres,fin). % speak untruth 
+verb_form(lies,     lie1,pres,fin). %% lie2 ..%% TA-000229
+verb_form(lied,     lie2,past,_).
+verb_form(lost,     lose,past,fin).
+verb_form(lost,     lose,past,part).
+
+verb_form(made,     make,past,fin). 
+verb_form(made,     make,past,part).  %% TA-001013
+verb_form(meant,    mean,past,_).
+verb_form(met,      meet,past,fin). 
+verb_form(modified,modify,past,part).
+% verb_form(modifies, modify,pres,fin). %%
+
+verb_form(ran,      run,past,fin).
+verb_form(reach,    pass,pres,fin).  
+
+verb_form(said,     say,past,fin).
+verb_form(sang,     sing,past,fin). 
+verb_form(sat,      sit,past,fin).      
+verb_form(sang,     sing,past,fin).     
+verb_form(saw,      see,past,fin).
+verb_form(seen,     see,past,part).     
+verb_form(sent,     send,past,_). 
+verb_form(shot,     shoot,past,_). 
+verb_form(sitting,  sit,pres,part). 
+verb_form(spoke,    speak,past,fin). 
+verb_form(spoken,   speak,past,part).
+verb_form(shot,     shoot,past,fin). 
+verb_form(shopped,  shop,past,fin).
+verb_form(slept,    sleep,past,fin).
+verb_form(sold,     sell,past,fin).
+verb_form(sold,     sell,past,part). %% TA-000929
+verb_form(stood,    stand,past,_).
+verb_form(stopped,  stop,past,_). 
+verb_form(stopping, stop,pres,part). 
+verb_form(sung,     sing,past,part).     
+
+verb_form(taken,take,past,part).  
+verb_form(took,take,past,fin).       %%
+verb_form(travelled,travel,past,_).   
+verb_form(tried,try,past,_). 
+%% verb_form(think,    believe,pres,fin). % think possible  
+%% verb_form(thinks,   believe,pres,fin). % 
+verb_form(thought,  think,past,_). 
+verb_form(threw,    throw,past,fin). 
+verb_form(throwing, throw,pres,part).     %%
+verb_form(thrown,   throw,past,part).     %%
+verb_form(told,     tell,past,fin).     
+
+verb_form(understood,understand,past,fin).
+
+verb_form(was,be,past,fin).  
+verb_form(went,go,past,fin).
+verb_form(were,be,past,fin).          %%
+verb_form(written,write,past,part).
+verb_form(wrote,write,past,fin).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+rep_verb(Tell):- 
+    user:rv_templ(Tell,_). %% Semantic 
+
+preposition(by).
+
+%% preposition(intime).  % generic for when
+%% preposition(inplace). % generic for where
+
+preposition(about).   
+preposition(above).   
+preposition(according_to).
+preposition(across).  
+preposition(after).
+preposition(against).
+preposition(along). 
+preposition(among).   
+preposition(around). 
+preposition(as).  %% A is known as B  Hazardous ??? %% TA-000716 
+preposition(at).
+preposition(because_of). %% Internal 
+preposition(being_the).  %%  contrived
+preposition(before).
+preposition(behind).
+preposition(below).
+preposition(beside). 
+preposition(between).
+preposition(beyond).
+preposition(by).
+preposition(down). 
+preposition(during).
+preposition(except).
+preposition(for).     
+preposition(from).
+preposition(in). 
+preposition(inside).  
+preposition(into).    
+preposition(like).  %% You look like an angel 
+% preposition(minus).
+preposition(near).  
+preposition(nearer). 
+preposition(nearest). 
+preposition(of).
+preposition(off).  
+preposition(on).
+preposition(onto). 
+preposition(opposite). 
+preposition(out_of).       %% Internal 
+preposition(over). 
+preposition(past).
+% preposition(plus).   
+preposition(since). 
+preposition(through). 
+% preposition(times).        %% :-) %% TA-000615
+preposition(to).
+preposition(towards). 
+preposition(under).   
+% preposition(until).      %% subord
+% preposition(up).         %% particle 
+preposition(upon).
+% preposition(via).        %% synonym with past 
+preposition(with).
+preposition(within). 
+preposition(without). 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+lexnsingirr(dialog,dialogue). 
+lexnsingirr(catalog,directory).   
+lexnsingirr(catalogue,directory). 
+lexnsingirr(people,person).
+lexnsingirr(phone,telephone).
+%  lexnsingirr(town,city).  % prefer town = Sentrum %% TA-000718           
+
+lexnpluirr(children,child).    
+lexnpluirr(men,man).         
+lexnpluirr(mice,mouse).
+lexnpluirr(knives,knife).
+lexnpluirr(people,person). 
+lexnpluirr(thieves,thief).
+lexnpluirr(wives,wife). 
+lexnpluirr(women,woman).    
+
+
+% Mass nouns (used without article).
+
+% massnoun(charge).   
+% massnoun(consent).  
+% massnoun(contact).  
+% massnoun(fish).
+% massnoun(logic). 
+% massnoun(milk). 
+% massnoun(money).
+% massnoun(oil).   
+% massnoun(sale).  
+% massnoun(spring).
+% massnoun(time).
+
+
+
+adjective2(X,X):- 
+    user:adj_templ(X,_),
+    !. %% >1 
+
+adjective2(X,Y):- 
+    ordinal2(X,Y,_). 
+
+adjective2(fun,good). %% Not synword
+
+
+
+% Numerids
+
+
+numerid(M,N,num):-
+    numerid(M,N).
+
+numerid(M,N,ord):-
+    user:ordinal(M,N).
+
+
+ordinal2(O,O,N) :- user:ordinal(O,N).
+
+
+ordinal2('1st',first,1).
+ordinal2('2nd',second,2).
+ordinal2('3rd',third,3).
+ordinal2('4th',fourth,4).
+ordinal2('5th',fifth,5).   
+ordinal2('6th',sixth,6).    
+ordinal2('7th',seventh,7).
+ordinal2('8th',eight,8).
+ordinal2('9th',ninth,9).
+ordinal2('10th',tenth,10).
+ordinal2('11th',eleventh,11).
+ordinal2('12th',twelvth,12).
+ordinal2('13th',thirteenth,13).
+ordinal2('14th',fourteenth,14).
+ordinal2('15th',fifteenth,15).
+ordinal2('16th',sixteenth,16).
+ordinal2('17th',seventeenth,17).
+ordinal2('18th',eighteenth,18).
+ordinal2('19th',nineteenth,19).
+ordinal2('20th',twentieth,20).  
+
+ordinal2('21th',twentyfirst,21). 
+ordinal2('22th',twentysecond,22). 
+ordinal2('23rd',twentythird,23). %% TA-000412
+ordinal2('24th',twentyfourth,24). 
+ordinal2('25th',twentyfifth,25). 
+ordinal2('26th',twentysixth,26). 
+ordinal2('27th',twentyseventh,27).
+ordinal2('28th',twentyeighth,28). 
+ordinal2('29th',twentyninth,29).  
+ordinal2('30th',thirtieth,30).  
+ordinal2('31th',thirtyfirst,31).  
+
+
+numerid(none,0).
+numerid(zero,0).
+numerid(one,1).
+numerid(two,2).
+numerid(three,3).
+numerid(four,4).
+numerid(five,5).
+numerid(six,6).
+numerid(seven,7).
+numerid(eight,8).
+numerid(nine,9).
+numerid(ten,10).
+numerid(eleven,11).
+numerid(twelve,12).
+numerid(thirteen,13).
+numerid(fourteen,14).
+numerid(fifteen,15).
+numerid(sixteen,16).
+numerid(seventeen,17).
+numerid(eighteen,18).
+numerid(nineteen,19).
+numerid(twenty,20).
+                            %% covered by tallmorph ?
+numerid(twentyone,21).
+numerid(twentytwo,22).
+numerid(twentythree,23).
+numerid(twentyfour,24).
+numerid(twentyfive,25).
+numerid(twentysix,26). 
+numerid(twentyseven,27).
+numerid(twentyeight,28).
+numerid(twentynine,29).
+numerid(thirty,30).
+numerid(thirtyone,31).
+numerid(thirtytwo,32).
+numerid(thirtythree,33).
+numerid(thirtyfour,34).
+numerid(thirtyfive,35).
+numerid(thirtysix,36).
+numerid(thirtyseven,37).
+numerid(thirtyeight,38).
+numerid(thirtynine,39).
+numerid(forty,40).
+numerid(fortyone,41).
+numerid(fortytwo,42).
+numerid(fortythree,43).
+numerid(fortyfour,44).
+numerid(fortyfive,45).
+numerid(fortysix,46).
+numerid(fortyseven,47).
+numerid(fortyeight,48).
+numerid(fortynine,49).
+numerid(fifty,50).
+numerid(fiftyone,51).
+numerid(fiftytwo,52).
+numerid(fiftythree,53).
+numerid(fiftyfour,54).
+numerid(fiftyfive,55).
+numerid(fiftysix,56).
+numerid(fiftyseven,57).
+numerid(fiftyeight,58).
+numerid(fiftynine,59).
+numerid(sixty,60).
+numerid(sixtyone,61).
+numerid(sixtytwo,62).
+numerid(sixtythree,63).
+numerid(sixtyfour,64).
+numerid(sixtyfive,65).
+numerid(sixtysix,66).
+numerid(sixtyseven,67).
+numerid(sixtyeight,68).
+numerid(sixtynine,69).
+numerid(seventy,70).
+numerid(seventyone,71).
+numerid(seventytwo,72).
+numerid(seventythree,73).
+numerid(seventyfour,74).
+numerid(seventyfive,75).
+numerid(seventysix,76).
+numerid(seventyseven,77).
+numerid(seventyeight,78).
+numerid(seventynine,79).
+numerid(eighty,80).
+numerid(eightyone,81).
+numerid(eightytwo,82).
+numerid(eightythree,83).
+numerid(eightyfour,84).
+numerid(eightyfive,85).
+numerid(eightysix,86).
+numerid(eightyseven,87).
+numerid(eightyeight,88).
+numerid(eightynine,89).
+numerid(ninety,90).
+numerid(ninetyone,91).
+numerid(ninetytwo,92).
+numerid(ninetythree,93).
+numerid(ninetyfour,94).
+numerid(ninetyfive,95).
+numerid(ninetysix,96).
+numerid(ninetyseven,97).
+numerid(ninetyeight,98).
+numerid(ninetynine,99).
+numerid(hundred,100).
+numerid(thousand,1000).
+numerid(million,1000000). %% TA-001101
+
+numerid(noon,1200).     % Sort of...
+numerid(midnight,2400).
+
+%% the patient died when she lived
+
+pronoun(X):-pronoun(X,_).  
+
+pronoun(he,man).  
+pronoun(her,woman). 
+pronoun(herself,woman).
+pronoun(him,man).
+pronoun(himself,man).
+
+pronoun(itself,thing). 
+pronoun(she,woman).  
+
+pronoun(them,thing).     
+pronoun(they,thing).      
+pronoun(themselves,thing). 
+
+
+pronoun(i,self).  
+
+
+
+
+%%%%% THE END %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

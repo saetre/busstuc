@@ -1,0 +1,15 @@
+\begin
+
+
+\set trytransbuslist false
+
+\starttimebatch
+
+fra risvollan til lade .
+
+\stoptimebatch
+
+\set trytransbuslist false
+
+\end
+

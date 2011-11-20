@@ -1,0 +1,486 @@
+<Oppdatert: 2005-11-11, EH>
+
+Utdrag av dialoger fra telebuster.
+Basert på siste versjon av telebuster mottatt 2005-11-11.
+Dobbel *-rekke signaliserer at dialogen er resatt og at et nytt
+eksempel starter.
+Forøvrig benyttes "adjø." for å resette dialoghistorien.
+Kommentar-linjer starter med:
+---> <EH: bla bla bla....>
+--------------------------------------------------------------------------
+
+IKKE DIALOGRELATERTE EKSEMPLER
+===============================
+===============================
+
+
+************************************************************************
+************************************************************************
+
+N: Øyvind Krøvel-Velle Standal.
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+N: øyvind standal.
+
+
+
+Søker etter post  hvor  fornavnet er  øyvind  og  etternavnet er  standal 
+
+Navn: Øyvind Krøvel-Velle Standal
+Tittel: Stipendiat
+Telefonnummer: 96556
+E-post: Oyvind.standal@ntnu.no
+Avdeling: Biomedisinsk teknikk, Det medisinske fakultet, Institutt for
+sirkulasjon og bildediagnostikk, NTNU
+Romnummer: MTFS: 4.etg. Nord
+Gateadresse: Olav Kyrres gt 3
+
+----------------------------------
+
+---> <EH: Krøll med mellomnavn ovenfor>
+
+************************************************************************
+************************************************************************
+
+---> <EH: Mellomnavn ser ut til å være et problem. Det går bra for noen
+          men ikke for andre, jfr. nedenfor:
+
+
+N: hvem er Åse Lekang Sørensen.
+
+
+
+Søker etter post  hvor  fornavnet er  åse lekang  og  etternavnet er  sørensen 
+
+Navn: Åse Lekang Sørensen
+Tittel: Vit.ass.
+Telefonnummer: 50376
+E-post: Ase.lekang.sorensen@ntnu.no
+Avdeling: Fakultet for ingeniørvitenskap og teknologi, Institutt for energi-
+og prosessteknikk, NTNU
+Romnummer: VTL: 483
+Gateadresse: []
+
+----------------------------------
+
+N: \quit
+
+----------------------------------
+
+N: N: hvem er åse lill salomonsen.
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+
+---> <EH: I forrige versjon var det motsatt....>
+
+************************************************************************
+************************************************************************
+
+N: hvem er Murat Öztürk.
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+N: adjø.
+
+
+
+
+Ha det bra
+----------------------------------
+
+---> <EH: Prøver med små bokstaver:>
+
+N: hvem er murat öztürk.
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+N: \quit
+
+----------------------------------
+
+---> <EH: Prøver med bare fornavn:>
+
+N: murat.
+
+
+
+Søker etter post  hvor  fornavnet er  murat 
+
+Navn: Murat Öztürk
+Tittel: Forsker
+Telefonnummer: 91595
+E-post: Murat.ozturk@vm.ntnu.no
+Avdeling: Fakultet for naturvitenskap og teknologi, Institutt for biologi,
+NTNU
+Romnummer: Hovedbygg: 209
+Gateadresse: Bynesveien 46
+
+----------------------------------
+
+---> <EH: Bare etternavn virker ikke.
+          For også feil med f.eks. "Özlem Denli Harvey" eller bare
+          "Özlem harvey", mens bare "harvey" går bra.> 
+
+*********************************************************************** 
+************************************************************************
+
+N: hvem er Helle Lábeé-Lund.
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+N: \quit
+
+----------------------------------
+
+N: hvem er Lábeé-Lund.
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+N: \quit.
+
+----------------------------------
+
+N: hvem er lund.
+
+
+
+Vet du fornavnet?
+----------------------------------
+
+N: helle.
+
+
+
+Finner ingen med etternavn lund.
+
+Men det er 8 poster som svarer til fornavn helle.
+
+Søker etter post  hvor  fornavnet er  helle  og  etternavnet er  lund 
+
+Kan ikke finne noen som svarer til søket.
+Fornavn: helle
+Etternavn: lund
+----------------------------------
+
+---> <EH: Ser ut til å være et generelt problem for navn med bindstrek.
+          F.eks. "Sturla Eik-Nes" gir skjæring:>
+
+N: hvem er sturla eik-nes.
+
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+N: \quit
+
+----------------------------------
+
+N: hvem er eik-nes.
+
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+N: \quit
+
+----------------------------------
+
+N: hvem er sturla eik.
+
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+N: \quit
+
+----------------------------------
+
+N: hvem er sturla nes.
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+---> <EH: Samme problem ved bindestrek i fornavn, f.eks. for
+          "May-Britt Aronsen" og "Svein-Eirik Paulsen">
+
+************************************************************************
+************************************************************************
+
+---> <EH: navn med andre spesielle tegn gir også problemer, jfr. nedenfor:>
+
+N: hvem er Sholeh Ma'mun.
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+************************************************************************
+************************************************************************
+
+N: adresse og tlfnr til tore amble.
+
+
+
+Søker etter  gateadresse  og   telefonnummer  hvor  fornavnet er  tore  og
+etternavnet er  amble 
+
+Tore Amble har gateadresse  og   telefonnummer : S. Sælands v 9, 94451
+----------------------------------
+
+---> <EH: Som du spurte i en email: Jeg synes det er mye bedre og svare:
+          "Tore Amble har gateadresse S. Sælands v 9 og
+           telefonnummer 94451">
+
+---> <EH: Antar at forkortelsene i adresser og avdelingsnavn etterhvert
+          vil forsvinne?>
+
+************************************************************************
+************************************************************************
+
+N: tittel, adresse og tlfnr til erik harborg.
+
+
+
+Søker etter  gateadresse  og   telefonnummer  hvor  fornavnet er  erik  og
+etternavnet er  harborg 
+
+Erik Harborg har gateadresse  og   telefonnummer : Bragstads Pl 6, 93139
+----------------------------------
+
+---> <EH: Takler ikke liste med fler poster adskilt med komma>
+
+N: \quit
+
+----------------------------------
+
+N: tittel og adresse og telefonnummer til erik harborg.
+
+
+
+Søker etter  gateadresse ,  telefonnummer  og   tittel  hvor  fornavnet er
+erik  og  etternavnet er  harborg 
+
+Erik Harborg har gateadresse ,  telefonnummer  og   tittel : Bragstads Pl 6,
+93139, Forsker
+----------------------------------
+
+---> <EH: OK hvis vi setter "og" mellom hver post.>
+
+N: \quit
+
+----------------------------------
+
+N: tittel epost romnummer til trym holter.
+
+
+
+----------------------------------
+
+N:
+
+---> <EH: Likte ikke dette...>
+
+N: \quit
+
+----------------------------------
+
+N: tittel epost og romnummer til trym holter.
+
+
+
+Søker etter  ???  og   e-post  hvor  fornavnet er  trym  og  etternavnet er
+holter 
+
+Trym Holter har ???  og   e-post : Søker etter  ???  og   e-post  hvor
+fornavnet er  trym  og  etternavnet er  holter 
+
+Jeg vet ikke.
+----------------------------------
+
+---> <EH: Likte ikke dette heller...>
+
+************************************************************************
+************************************************************************
+
+
+************************************************************************
+************************************************************************
+
+
+************************************************************************
+************************************************************************
+
+
+DIALOGRELATERTE EKSEMPLER
+============================
+============================
+
+
+************************************************************************
+************************************************************************
+
+N: tlfnr til erik harborg.
+
+
+
+Søker etter  telefonnummer  hvor  fornavnet er  erik  og  etternavnet er
+harborg 
+
+Erik Harborg har telefonnummer : 93139
+----------------------------------
+
+N: avdeling.
+
+
+
+Søker etter  avdeling  hvor  fornavnet er  erik  og  etternavnet er  harborg 
+
+Erik Harborg er på avdeling : 
+SINTEF IKT
+-SINTEF
+--Akustikk
+----------------------------------
+
+---> <EH: Hvorfor blir ikke nivåene stokket i hierarkisk rekkefølge?>
+
+N: epost.
+
+
+
+Søker etter  e-post  hvor  fornavnet er  erik  og  etternavnet er  harborg 
+
+Erik Harborg har e-post : erik.harborg@sintef.no
+----------------------------------
+
+N: trym holter.
+
+
+
+Søker etter  hvor  fornavnet er  trym  og  etternavnet er  holter 
+
+Fant ingen felt å finne verdien til.
+
+----------------------------------
+
+---> <EH: Hvorfor finner den ikke noe her, uten å resette dialoghistorien?
+          Burde svart med epost-adressen her (eller full info?) >
+
+
+************************************************************************
+************************************************************************
+
+N: avdeling og tlfnr til trym holter.
+
+
+
+Søker etter  telefonnummer  og   avdeling  hvor  fornavnet er  trym  og
+etternavnet er  holter 
+
+Trym Holter har telefonnummer  og   avdeling : 93144, SINTEF
+----------------------------------
+
+N: tittel og adresse.
+
+
+
+Søker etter  avdeling  hvor  fornavnet er  trym  og  etternavnet er  holter 
+
+Trym Holter har avdeling : SINTEF
+----------------------------------
+
+---> <EH: Ikke helt hva jeg tenkte...>
+
+************************************************************************
+************************************************************************
+
+N: nils holte.
+
+
+
+Vet du etternavnet?
+----------------------------------
+
+N: holte.
+
+
+
+Søker etter post  hvor  fornavnet er  nils  og  etternavnet er  holte 
+
+Navn: Nils Holte
+Tittel: Professor
+Telefonnummer: 94319
+E-post: Nils.holte@iet.ntnu.no
+Avdeling: Fakultet for informasjonsteknologi, matem. og elektroteknikk, Gruppe
+for Signalbehandling, Institutt for elektronikk og telekommunikasjon, NTNU
+Romnummer: Elektro B: b329
+Gateadresse: O.S. Bragstads pl 2b
+
+----------------------------------
+
+---> <EH: Hvorfor spørres om etternavn her?>
+
+************************************************************************
+************************************************************************
+
+N: avdeling til tore amble.
+
+
+
+Søker etter  avdeling  hvor  fornavnet er  tore  og  etternavnet er  amble 
+
+Tore Amble er på avdeling : 
+NTNU
+-Institutt for datateknikk og informasjonsvitenskap
+--Fakultet for informasjonsteknologi, matem. og elektroteknikk
+----------------------------------
+
+N: avdeling til nils holte.
+
+
+
+Finner ingen med etternavn amble.
+
+Men det er 40 poster som svarer til fornavn nils.
+
+Søker etter  avdeling  hvor  fornavnet er  nils  og  etternavnet er  amble 
+
+Kan ikke finne noen som svarer til søket.
+Fornavn: nils
+Etternavn: amble
+----------------------------------
+
+---> <EH: Unødvendig mye tekst ved feil. Burde være nok med de to første
+          setningene.>
+
+************************************************************************
+************************************************************************
+

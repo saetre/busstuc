@@ -1,0 +1,394 @@
+%% FILE anaphors.pl
+%% SYSTEM TUC
+%% CREATED TA-930805
+%% REVISED TA-010421
+
+
+%% Anaphoric resolution
+
+
+resolve([P1|P2],[Q1|Q2]):- 
+    !,
+    resolve1(P1,Q1),
+    resolve(P2,Q2).
+resolve([],[]):-!.
+
+
+resolve(P,Q):- 
+    resolve1(P,Q).
+
+resolve1(P,Q):-
+    resolist(P,DL,_UL),
+    !,
+    resolv(P,Q,DL),
+    !. 
+
+
+
+%% findalt
+
+resolv(findalt(diff,X:_,Y:_)::P,exists(Y)::Q,DL):- 
+    !,
+    rasool(Y,_,DL),
+    \+(X==Y),
+    resolv(P,Q,DL).
+
+resolv(findalt(_,_,X:T)::P,exists(X)::Q,DL):-
+    \+ rasool(X,_,DL),  
+    !,
+    inventresolve(X:T,P,Q,DL).  
+
+resolv(findalt(_,_,_)::P,Q,L):-
+    !,                          % already done
+    resolv(P,Q,L).
+
+%% findpron
+
+/*  Pronoun only internal for himself/etc. %% TA-010319
+
+
+resolv(findpron(X)::P,Q,L):-     % Internal resolution
+    internalresolve(X,L),  
+    !,
+    resolv(P,Q,L).    
+
+*/
+
+
+resolv(findpron(X)::E::P, E::Q, L):-  % AD HAC
+    resolv(findpron(X)::P,Q,L).      
+
+
+resolv(findpron(X:T)::P,Q,L):- % External resolution of pronoun
+    bottom(T,C),
+    externalresolve(X,X isa C),      
+    !,
+    resolv(P,Q,L).       
+
+resolv(findpron(X:T)::P,         Q,L):- % External resolution of pronoun
+                    % exists(X)::Q,L)   %% TA-010327 (?)
+
+    inventresolve(X:T,P,Q,L).
+
+%% find
+
+
+resolv(find(X)::P,Q,L):-     % 1.  Internal resolution  first
+    internalresolve(X,L),  
+    !,
+    resolv(P,Q,L).    
+
+resolv(find(X:_)::(W_and_P),Q,L):- % 2.  External resolution
+    W_and_P = (W and _P),
+    externalresolve(X,W),      
+    !,
+    resolv(W_and_P,Q,L).
+
+resolv(find(X:Y)::P, exists(X)::Q,L):-  % 3. Invention resolution
+    !,
+    inventresolve(X:Y,P,Q,L).
+
+%% findit 
+
+resolv(findit(X)::P,Q,L):- % Internal resolution
+    internalresolveit(X,L),      
+    !,
+    resolv(P,Q,L).    
+
+resolv(findit(X)::P,Q,L):- % External resolution
+    externalresolveit(X),      
+    !,
+    resolv(P,Q,L).        
+
+resolv(findit(X:T)::P,exists(X)::Q,L):- % Invent
+    inventresolveit(X:T,P,Q,L).
+
+
+resolv(aggregate(A,X,Y,P,R),    
+        aggregate(A,X,Y,Q,R),L):-
+    resolv(P,Q,L).
+
+resolv(Z::X,Z::Y,L):-
+    !,
+    \+ (Z=findit(_)),
+    \+ (Z=findpron(_)), 
+    resolv(X,Y,L).
+
+
+resolv(X isa Y,X isa Y,_):-
+    !.
+
+
+resolv(A and B,A1 and B1,L):-
+    !,
+    resolv(A,A1,L),
+    resolv(B,B1,L).
+
+resolv(A => B,A1 => B1,L):- 
+    !,
+    resolv(A,A1,L),
+    resolv(B,B1,L).
+
+resolv(not A,not A1,L):-
+    !,
+    resolv(A,A1,L).
+
+resolv(X,X,_):-
+    \+ X = (findit(_)::_),  % catch all rest
+    \+ X = (findpron(_)::_). 
+
+inventresolveit(X:_T,_):- nonvar(X),X=(_,_),!,fail. %% PANIC TA-010303
+
+inventresolveit(X:Y,P,X isa YB and Q,L):- 
+    bottom(Y,YB),
+    !,
+    track(1,(write('Unresolved reference:  '),
+             write(YB),nl,nl)),        
+    resolv(P,Q,L).
+
+
+inventresolve(I:Y,P,Q,L) :-  
+    I isa self,  %% Code for myself ==> facts.pl 
+    bottom(Y,self),
+    !,
+    resolv(P,Q,L).
+
+inventresolve(_:Y,P,Q,L):-
+    bottom(Y,YB),
+    !,
+%    nl,            % pops up with trace=0  
+    track(2,        %% TA-010223
+       (nl,write('Unresolved reference:  '), write(YB),nl,nl)),      
+    resolv(P,Q,L).
+
+
+%% Should try exact match first 
+
+internalresolve(X:_T,_):- nonvar(X),X=(_,_),!,fail. %% PANIC TA-010303
+
+internalresolve(X1:T,L):- % Try idents first 
+    member(X2/0 isa Y,L),
+    nonvar(X2),
+    bottom(T,Y),
+    X1=X2,                % and exact type match
+    !.
+
+internalresolve(X1:T,L):- 
+    member(X2/0 isa Y,L),
+    nonvar(X2),
+    type(Y,U),      % reference must not be
+    subsumes(T,U),  % more specific than referent  
+    X1=X2,
+    !.
+
+internalresolve(X1:T,L):- 
+    member(X2/0 isa Y,L),
+    \+ (X1 == X2),
+    bottom(T,Y),
+    X1 = X2,
+    !.
+
+internalresolve(X1:T,L):-
+    member(X2/0 isa Y,L),
+    matchresol1(X1,X2),
+    type(Y,U),      % reference must not be
+    subsumes(T,U).  % more specific than referent  
+
+
+%% internalresolveit
+
+internalresolveit(X:_T,_):- nonvar(X),X=(_,_),!,fail. %% PANIC TA-010303
+
+internalresolveit(X1:T,L):-
+    member(X2/0 isa Y,L),
+    matchresol1(X1,X2), 
+    type(Y,U),      % reference must not be
+    nogender(U),
+    subsumes(T,U).  % more specific than referent  
+
+
+matchresol1(X1,X2):- % dont match identical variables
+    var(X1),
+    var(X2),
+    !,              % how can I explain this
+    \+ (X1 == X2),
+    X1=X2.
+
+matchresol0(X1,X1). %% matches identical variables
+
+%% Specific for  ...  this statement ...
+
+
+externalresolve(tuc,tuc isa program):- %% this system = TUC 
+    !.
+
+externalresolve(tuc,tuc isa system):-  %% this system = TUC 
+    !.
+
+externalresolve(X,P):-   %   Resolve references using the dialog manager
+     user:value(dialog,1), 
+     !, 
+     condq(P,Q),
+     dialog_resolve(X,Q),  % 
+     !.
+
+externalresolve(X,P):-   % Dynamically query the qualia  X:_
+     \+ user:value(busflag,true), %% Not allowed for several users !!! 
+     condq(P,Q),
+     disqev(Q),          % query the DB using only discourse elements
+     nonvar(X),          % testclass returns variables
+     !.
+
+
+%% externalresolveit % % % 
+
+externalresolveit(X:_T,_):- nonvar(X),X=(_,_),!,fail. %% PANIC TA-010303
+
+externalresolveit(X:MT):-   % reference must not be
+    value(textflag,true),  %% NB TA-010319  Unnecess , see above
+    is_the(X,K),            % more specific than referent
+    type(K,KT),
+    nogender(KT),
+    subsumes(MT,KT).
+
+
+externalresolveit(tuc:T):- %% this thing ==> tuc " it is good"
+    bottom(T,thing). %% fernando.pl
+
+externalresolveit(it:T):- %% Var = this thing ==> tuc " it is good" 
+    var(T),
+    !.
+
+externalresolveit(it:T):- %% Var = this thing ==> tuc " it is good" 
+    bottom(T,thing),
+    !.
+
+is_the(X,K):-
+    fakt(X is_the K).
+
+
+
+% nogender tells which classes
+% can be referenced by "it"
+
+
+nogender(T):-  
+   type(child,C),
+   subtype0(T,C), %% TA-010730
+   !.
+
+nogender(T):-
+   type(person,P),
+   \+ subtype0(T,P). %% TA-010730
+
+
+%% Method  
+
+% make a chronological list of all nouns.
+% Match a find(X)::P with the nouns preceding X 
+% in the list.
+
+resolist(P,DL,UL):-       %% Finds list of referents
+    res2(P,[],DL,[],UL).  %% L defined referents, 
+                          %% Z undefined referators
+
+%--------------------------------------
+
+
+res2(V,    _,_,_,_):-var(V),!,error_in_anaphors. %% TA-980226
+
+res2((_X,_Y),_,_,_,_):-!,error_in_anaphors.  %% TA-010302
+
+res2(findpron(X:T)::P,L1,L,Z1,Z):- 
+    !,
+    bottom(T,C),
+    mege(_,X/0 isa C,Z1,Z2),  %% mege(0,  %% TA-981007
+    res2(P,L1,L,Z2,Z).
+
+res2(findalt(a,N,X:T)::P,L1,L,Z1,Z):- 
+    !,                                
+    bottom(T,C),
+    mege(_,X/N isa C,L1,L2),
+    res2(P,L2,L,Z1,Z).
+
+res2(findalt(the,N,X:T)::P,L1,L,Z1,Z):- %% if the dont find match,
+    bottom(T,C),
+    mege(1,X/N isa C,L1,L2),
+    !,
+    res2(P,L2,L,Z1,Z).
+
+
+res2(findalt(the,N,X:T)::P,L1,L2,Z1,Z):- %% if the dont find match,
+    bottom(T,C),
+    externalres2(N,X,C,L1,L),  %% EXTERNAL 
+    !,                    
+    res2(P,L,L2,Z1,Z).
+
+
+res2(findalt(the,N,X:T)::_,L1,L1,Z1,Z):- %% if the dont find match,
+    !,                
+    bottom(T,C),    
+    mege(0,X/N isa C,Z1,Z).
+
+
+res2(_::P,L,M,Z1,Z):-
+    !,
+    res2(P,L,M,Z1,Z).
+
+res2(P and Q, L,M,Z1,Z):-
+    !,              
+    res2(P,L,L1,Z1,Z2),
+    res2(Q,L1,M,Z2,Z).
+
+res2(P => Q, L,M,Z1,Z):- 
+    !,
+    res2(P,L,L1,Z1,Z2),
+    res2(Q,L1,M,Z2,Z).
+
+res2(X1 isa C,L,L,Z,Z):-
+    rasool(X1,C,L),
+    !.
+
+res2(X isa Y,L,[X/0 isa Y|L],Z,Z):-
+    \+ rasool(X,Y,Z),
+    !.
+
+res2(_,L,L,Z,Z).
+        
+rasool(X1,C,DL):-         %%   X1/N isa Y exists on L
+    member(T2 isa C,DL),
+    match(T2,X2/_),
+    X1==X2,
+    !.
+
+        
+nabi(X1,C,DL):-         %%   X1/N isa Y exists on L
+    member(T2 isa C,DL),
+    match(T2,X2/_),
+    X1=X2,
+    !.
+
+externalres2(N,X,C,L1,L):-      % Dynamically query the qualia  X:_
+     bagof(Y,fakt(Y isa C),Z),  % Z > []
+     discnth(N,Z,X),
+     mege(_,X/N isa C,L1,L).    %    [X/N isa C|L1]).
+
+
+discnth(N,Z,X):-
+    reverse(Z,Z1),  %% discourse elements are stored in 
+    nth(N,Z1,X).    %% reverse order.
+
+mege(1,X/N isa C,L,M):- 
+    member(Y isa C,L),
+    match(Y,X/N),
+    !,
+    L=M.
+
+mege(0,P,L,M):- 
+    mege0(P,L,M).
+
+mege0(X/N isa C,L,[X/N isa C|L]).
+
+
+
+%%%%%%%%%%%%%%%%%%%%%THE END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,5121 @@
+%% FILE semantic.pl
+%% SYSTEM TUC
+%% CREATED TA-921129
+%% REVISED TA-001023
+
+
+%  TUCs  Semantic Knowledge Base
+
+
+
+%%%%%%%%%%% Bloody Test 
+
+/*
+
+(((high density) lipoprotein) metabolism)
+
+*/
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+/* Both tv and iv   They should be lumped together
+
+[add,answer,ask,call,change,drink,drive,get,greet,help,
+ knowthing,leave,lose,marry,park,pass,pay,play,reach,read,
+ repeat,run,see,serve,sing,speak,
+ start,stop,tell,turn]
+
+*/
+
+
+
+%% TA-000113  Verbs are normal unless they are abnormal
+
+normalverb(V,_T):- \+ abnormalverb(V,_T2). 
+
+%% abnormalverb(die,god). %% just to have 1 %% TA-000406
+
+%% normalverb  removed 
+
+ 
+%% Internal words are kept in British English spelling.
+
+
+%%%% Classes that shall not generate instances
+
+%%   Only exact match, no inheritance
+
+
+unkn            ako    thing.   %% TA-000929 %% agent ? place ?
+
+testclass(person).  %% <=== NB
+
+testclass(age).         
+testclass(area).        
+%  testclass(departure).
+testclass(frequency). 
+testclass(identity).    
+testclass(latitude).    
+testclass(longitude).   
+testclass(measure). 
+testclass(number).       
+testclass(place). 
+testclass(population).  
+testclass(situation).   
+testclass(size).
+testclass(speed). 
+testclass(statement). %% ??
+testclass(string).    
+testclass(thing).
+%  testclass(time).  %%   <- - KEINE EXPERIMENTE
+testclass(weight). 
+
+
+
+% measureclass(X)  %% NB NEW PREDICATE
+
+       measureclass(minute).
+       measureclass(quarter).
+       measureclass(halfhour).
+       measureclass(hour).
+       measureclass(day).
+       measureclass(week).
+       measureclass(month).
+       measureclass(year).
+       measureclass(meter).
+       measureclass(crown).
+
+
+
+% Noun Compatibility Section
+% Which objects of incompatible classes can be matched
+% This is in a replacement of a multiple inheritance system
+
+
+% Measures  classes (M) are implicitly defined by align(M,number). %% TA-000218
+
+% NO DEFAULT INHERITANCE HERE
+
+alignable(X,Y):- 
+    align1(X,Y);
+    align1(Y,X).
+
+
+%% Should be sorted alphabetically, 
+%%  first alphabetically first
+%% There are no inheritance
+
+align1(adult,self). %% TA-000828 (not in linear order)
+
+align1(age,number). %% TA-000223
+
+align1(airbus,neighbourhood). %% Flybussen værnes (AD HOC)
+
+align1(amount,money).   %% TA-000906
+align1(amount,number).  %% TA
+
+align1(arrival,clock). 
+%   align1(arrival,station). %% first arrival sentrum gets wrong %% TA-000615 (EXPERIMENT)
+%   align1(arrival,tramstation).    %% no inheritance ...
+%   align1(arrival,neighbourhood).  %% 
+
+align1(author,adult).     
+align1(author,student).     %%  :-)
+
+align1(boy,program).        %% just to allow the question 
+align1(boy,self).           %% TA-000209
+                            %% route has to be route proper                    
+
+
+align1(bus,colour).         %% what colour IS a bus 
+align1(bus,departure).      %% which bus is the last (possiblity) %% TA-000304
+align1(bus,number).         
+align1(bus,route).          %% subtle  (stations in route 9)  %%
+                            %% obsolete if route ako bus
+
+align1(christmas_day,number). %% TA-000524
+
+align1(clock,departure).  %% avgang fra NTH  kl 1300 %% Destroys and no help
+                          %% departure clock syndrome  ==> nil_compl %% EXPERIMENT
+
+align1(clock,start).        %% with start 1000
+align1(company,agent).      %% TT TA-000907
+align1(computer,program).
+align1(computer,person). 
+% align1(computer,type).      %% TA-000908
+align1(crown,number).       %% No Inheritance
+
+%% align1(day,number).  %%   Om 3 dager *
+
+align1(destination,neighbourhood). %% TA-000828
+align1(destination,station).       %% TA-000828
+
+align1(direction,neighbourhood). 
+align1(direction,station).  
+
+align1(endstation,station).
+
+align1(friend,program).     %%  :-) % technically (unix)
+align1(friend,self).
+
+align1(genious,program).    %% TA-000131 :-)
+align1(genious,programmer).  %% TA-000830  
+align1(girl,program).       %%  :-)
+align1(girl,self).          %% TA-000209
+align1(god,agent).          %%  :-)
+
+align1(hour,number).
+align1(halfhour,number).    %%
+
+align1(mail,sentence).      %% TA-001016 (Ad hoc) My email is 'amble@idi.ntnu,no'
+align1(man,program).
+align1(man,self).
+align1(mayor,program).      %% subclass, NB no inheritance  :-)
+align1(meaning,number).     %%  :-)
+align1(member,thing).
+align1(minute,number).      %% TA-991105
+align1(money,number).       %% TA-000218  (10 crowns \= 1 coins)
+
+align1(neighbourhood,station).
+align1(neighbourhood,university). %% TA-000614 (?)
+align1(nightbus,number).  
+align1(nightbus,number). 
+align1(nightbus,route). 
+align1(number,quarter).  
+align1(number,route). 
+align1(number,time).        %% time 1300 
+align1(number,time_count).  %% NOF times
+align1(number,tram). 
+align1(number,vehicle).
+align1(number,weight).      %% TA-000223     
+align1(number,zone).           %% TA-000803  
+
+align1(oracle,program).
+align1(oracle,person). 
+align1(owner,person).
+
+align1(person,program).     %% just to allow the question
+align1(person,programmer).  %% TA-991206
+align1(program,project).
+align1(program,version).    %% TA-991108 Hvilken versjon er du ?
+align1(program,woman). 
+
+align1(self,student).       %% TA-000903
+align1(self,woman).         %% TA-000209
+align1(route,tram). 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% CLASS HIERARCHY
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%   stratified, alphabetic 
+
+% ako      subclass
+% has_a    has attribute
+
+
+
+%-LEVEL 0 ----------------------------------
+
+% thing is the top
+
+    thing          has_a  beginning.  
+    thing          has_a  class.
+    thing          has_a  description.
+    thing          has_a  end.        
+    thing          has_a  existence.
+    thing          has_a  example.
+    thing          has_a  identity.   
+    thing          has_a  property.
+    thing          has_a  subset.
+
+%-LEVEL 1 ----------------------------------
+
+
+set ako thing. 
+    set            has_a  cardinality. 
+    set            has_a  qualification.
+    set            has_a  member.
+
+
+cardinality   ako  number.
+qualification ako  abstract.
+member        ako  thing.
+
+amount        ako  thing.  %% TA-000906
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+abstract        ako    thing.
+activity        ako    thing.   % to make/do an activity 
+    activity        has_a  date.
+    activity        has_a  time.  
+    activity        has_a  possibility. 
+
+agent           ako    thing. 
+    agent           has_a  accident.       %% TA-991111 (qua company)
+    agent           has_a  activity.       %% Mye aa gjøre %% TA-000225
+    agent           has_a  address.        %% TA-000201
+    agent           has_a  age. 
+    agent           has_a  airbus. 
+    agent           has_a  answer.         %% TA-000215
+    agent           has_a  mobile. %% no.  %% TA-001021
+    agent           has_a  beer.           %% TA-000128
+    agent           has_a  boss. 
+    agent           has_a  boat_route_plan.  %% TA-000614
+
+    agent           has_a  bus.  %%   bussen til Buckingham Palace
+                                 %% TA-000905   %% Actual with unknown_flag
+                                           
+
+    agent           has_a  brain.          %% TA-000524 ( = memory)
+    agent           has_a  brother.
+    agent           has_a  card.           %% qua TT company
+    agent           has_a  computer. 
+    agent           has_a  consciousness. 
+    agent           has_a  creator. 
+    agent           has_a  departure. 
+    agent           has_a  domain.         %% eg bus departures %% TA-000903
+    agent           has_a  driver.         %% (qua TT representative)
+    agent           has_a  error.          %% TA-000124
+    agent           has_a  father.         %%  :-) 
+    agent           has_a  feeling.        %%  ( eg person :-)
+    agent           has_a  genious.        %% Deep:  din luring :-)))
+    agent           has_a  lunch.          
+    agent           has_a  family.         %%   ( eg person :-)
+    agent           has_a  friend. 
+    agent           has_a  gasbus.         %% TA-991111 (qua company)
+    agent           has_a  homepage.       %% TA-000315
+    agent           has_a  indulgence. 
+    agent           has_a  information. 
+    agent           has_a  intelligence.   %% TA-000128
+    agent           has_a  job. 
+    agent           has_a  knowledge.      %% TA-991211
+    agent           has_a  life.           %% ( :-)
+    agent           has_a  lust.           %% ha lyst på (Norwagism)
+    agent           has_a  mail.           %% TA-001016 ( mail address)
+    agent           has_a  mailaddress.    %% email
+    agent           has_a  map. 
+    agent           has_a  meaning.        %% /opinion %% TA-000419
+    agent           has_a  memory.         %% TA-000830 
+    agent           has_a  mood.           %%  (spirit ?)
+    agent           has_a  mother.         %% TA-000208 :-)
+    agent           has_a  name. 
+    agent           has_a  opinion.
+    agent           has_a  passenger.      %% qua company %% TA-991111
+    agent           has_a  parent.         %% TA-000202 (no inheritance).
+    agent           has_a  permission.     %% TA-000125
+    agent           has_a  picture.        %% TA-000223
+%     agent           has_a  plan.         %% collides with route_plan  
+    agent           has_a  price.          %%  (qua bus company representative)
+    agent           has_a  problem.        %% TA-991211
+    agent           has_a  relative.       %% TA-000126
+    agent           has_a  route.
+    
+    agent           has_a  service.        %% TA-000928
+    agent           has_a  sister.         %% TA-000905
+    agent           has_a  summer_route. 
+    agent           has_a  route_plan.
+    agent           has_a  station.        %% qua TT
+    agent           has_a  task.           %% TA-000130
+    agent           has_a  telephone. 
+    agent           has_a  time.           %% har du tiden på bussen ?
+    agent           has_a  train_route_plan. 
+    agent           has_a  tram_route_plan.
+    agent           has_a  transfer.       %% TA-000920
+    agent           has_a  universe.       %% :-)  %% TA-001023
+    agent           has_a  vacation. 
+    agent           has_a  webaddress.     %% web page
+
+company         ako    thing.         %%   e.g. TT
+    company         has_a  address. 
+    company         has_a  age.       %%  :-)
+    company         has_a  articulated_bus. %%  (leddbuss) 
+    company         has_a  boss. 
+    company         has_a  bus.   %% TA-000516 NO inheritance 
+    company         has_a  departure. %% TA-000215
+    company         has_a  discount.  %% TA-000207
+    company         has_a  gasbus.    %%  awkard, here inheritance is OK 
+    company         has_a  homepage. 
+    company         has_a  mailaddress. %% TA-000128
+    company         has_a  number.      %% TA-000529
+    company         has_a  office.
+    company         has_a  route.
+    company         has_a  route_plan. 
+    company         has_a  sale.
+    company         has_a  driver.    
+    company         has_a  price. % on ... 
+    company         has_a  service. 
+    company         has_a  telephone. 
+    company         has_a  webaddress. 
+
+contact         ako    thing.  %% person/appliance/abstract/... ?
+content         ako    thing.
+copy            ako    thing.
+course          ako    thing. 
+    course          has_a     department.
+    course          has_a     year.
+    course          has_a     size.
+
+group           ako    thing.
+identity        ako    thing.  
+information     ako    thing.   
+    information     has_a  source.
+    information     has_a  version.
+
+
+list            ako    thing.     
+mass            ako    thing.     %% => stuff
+
+measure         ako    thing.
+    measure         has_a  decrease. 
+    
+meta            ako    thing.   % lexical object     
+
+
+object          ako    thing.   %% class.  
+       object       has_a  age. 
+       object       has_a  colour. 
+       object       has_a  weight.
+       object       has_a  length.
+       object       has_a  height.
+       object       has_a  size.    %% TA-000223
+
+part            ako    thing.    
+
+place           ako    thing.
+       place        has_a   name. 
+       place        has_a   webaddress.     
+       place        has_a   address.   %% TA-000314
+       place        has_a   telephone. %% TA-000314
+       
+      
+river           ako    thing.    %% (water but no area) 
+
+situation       ako    thing.    
+story           ako    thing.
+%% stuff           ako    thing.
+subset          ako    thing.
+
+version         ako    thing. % generic 
+    version         has_a   management.
+    version         has_a   number.    %% ????????
+    version         has_a   distribution.
+
+
+%-LEVEL 2----------------------------------
+
+accident        ako    activity. %% ? %% TA-991111
+addition        ako    abstract.
+address         ako    meta. 
+advice          ako    abstract. 
+    
+age             ako    year.  %% (measure)  
+air             ako    place. %% TA-991221
+analysis        ako    abstract.
+
+animate         ako    agent.  
+    animate         has_a  head. 
+argument        ako    abstract.
+
+arrival         ako    activity. 
+application     ako    activity. 
+% appointment     ako    activity. %% TA-000511
+
+area            ako    measure.       
+
+arrow           ako    object.
+attention       ako    abstract.
+
+bar             ako    place.
+bed             ako    place. %% placoid
+beginning       ako    part.
+bicycle         ako    vehicle. %% EXPERIMENT object. / using bicycle
+                                %% take on the bus / take to NTH
+block           ako    object.
+bookcase        ako    object.
+border          ako    place.  %% TA-000807
+bottom          ako    place.  %% part ??
+box             ako    object. 
+brain           ako    object.  %% TA-000524
+brake           ako    object.  %% TA-000901
+
+case            ako    abstract.
+ceiling         ako    place.
+centre          ako    place.
+class           ako    set.   %% TA-000613
+
+chair           ako    object. 
+change          ako    activity.
+cinema          ako    place.    %% TA-000324
+circuit         ako    abstract.
+cleaning        ako    activity. 
+cloth           ako    object.
+colour          ako    abstract.  %% attribute.  %% NO WORD !!! TA-000222
+comparison      ako    abstract.  %% TA-000519
+complexity      ako    measure.
+connection      ako    abstract. 
+corner          ako    place.
+connector       ako    circuit.
+consciousness   ako    abstract.
+correction      ako    activity.
+
+currency        ako    meta.          
+
+decrease        ako    measure.      
+definition      ako    abstract.
+delay           ako    abstract. 
+demonstration   ako    activity.
+departure       ako    activity. 
+    departure       has_a  frequency. 
+destination     ako    place.
+dialogue        ako    activity.
+difference      ako    measure.  %% abstract ????
+direction       ako    abstract. 
+directory       ako    place.     
+     directory      has_a  name. 
+% diskspace       ako    number.
+distance        ako    measure.       
+distribution    ako    abstract.
+
+document        ako    information.            
+    document        has_a  date.
+    document        has_a  version. 
+  
+domain          ako    abstract.  %% TA-000905
+
+efficiency      ako    abstract.
+end             ako    part.          
+error           ako    activity.
+equipment       ako    object. 
+example         ako    abstract. %%  (difficult ?)
+existence       ako    abstract.  %% TA-000907
+extension       ako    name.    
+
+fault           ako    abstract.
+feature         ako    abstract.
+feeling         ako    abstract.      
+field           ako    information.
+file            ako    object.
+    file            has_a  name.        
+    file            has_a  extension.   
+    file            has_a  accessright. 
+%    file            has_a  line.       
+    file            has_a  content.
+    file            has_a  date.
+    file            has_a  field.
+    file            has_a  heading.
+    file            has_a  type.
+    file            has_a  version.
+
+floor           ako    place.  %% TA-000907
+food            ako    object. 
+
+forehead        ako    object.
+% form            ako    abstract.  %% often misspelled for from  
+formalism       ako    abstract.
+
+frequency       ako    measure. 
+
+friend          ako    person. %% agent. %% :-) 
+% Syndrome  A friend is on a bus ==> person is on bus ==> coercing!
+
+game            ako    activity. %% TA-000716
+gas             ako    fuel. 
+generalisation  ako    abstract. % version ?
+
+geo_metric      ako    place. %% common   name for equator, poles       
+    geo_metric      has_a  latitude.    % 
+    geo_metric      has_a  longitude.   % 
+
+goal            ako    activity.      
+god             ako    agent. %% :-) abstract. % a god
+% gun             ako    object. % weapon %% TA-001030
+
+hand            ako    object.
+head            ako    object.
+header          ako    object.        
+
+heap            ako    place.     
+    heap            has_a   cloth.  %% ( object and subclasses )
+
+heart           ako    object.       
+    heart           has_a valve.
+
+height          ako    measure. 
+
+help            ako    activity. 
+hold            ako    abstract. 
+home            ako    place.        
+    home            has_a    address.  
+    home            has_a    telephone. 
+    
+
+homepage        ako    information.
+
+horsepower      ako    measure. 
+hotel           ako    house.
+
+ignorance       ako    abstract.
+interview       ako    activity.
+idea            ako    abstract. 
+intelligence    ako    abstract.  %% :-)
+
+job             ako    activity.
+journey         ako    activity.  %% TA-000201 --> trip
+
+kilometer       ako    measure.  
+kind            ako    abstract. 
+kiss            ako    activity. 
+%%klæburuta  ako vehicle.  %%  (?)
+
+weapon          ako    object.
+knob            ako    object.
+knowledge       ako    information.
+
+language        ako    abstract.     
+    language        has_a  grammar.
+latitude        ako    measure.      
+length          ako    measure. 
+lesson          ako    information.
+letter          ako    information. % ambiguous 
+life            ako    abstract.
+	 life            has_a  meaning. % :-)
+light           ako    abstract. % physical weightless
+liquid          ako    mass.  %% TA-000107 (stuff)
+longitude       ako    measure.      
+love            ako    activity.
+luggage         ako    object.   %% TA-000902
+
+% machine         ako    place. %% syn computer %% TA-001010 
+mail            ako    information.   %% TA-000221
+map             ako    picture. 
+match           ako    activity.
+meaning         ako    abstract. %% number. % :-) %% TA-000315 
+    meaning         has_a  question.   % :-)
+meeting         ako    activity.
+memory          ako    abstract. %% TA-000830 ???
+meter           ako    measure. 
+method          ako    abstract.  %% TA-001017  ( = way ???)
+mile            ako    measure.  
+mobile          ako    number.   %% TA-001021
+mode            ako    abstract.
+motor           ako    object. %% engine ???
+movement        ako    activity.
+movie           ako    information. %% place. % cinema hall       %% TA-000324 
+concert         ako    place.
+
+name            ako    meta.     
+negation        ako    abstract.  %% meta ? %% TA-000210 :-)
+neighbourhood   ako    place. 
+    neighbourhood   has_a  centre. 
+    neighbourhood   has_a  place.  %% location ?
+
+network         ako    thing. %% I find a picture on the internet
+
+news            ako    information.
+
+nonsense        ako    abstract.
+
+number          ako    measure.
+    number          has_a  endstation.  %% TA-001025 %% EXPERIMENT
+office          ako    place.      
+    office          has_a  manager.
+    office          has_a  telephone.
+
+oil             ako    fuel. %% TA-000109
+
+operator        ako    abstract.
+opinion         ako    abstract.  
+oracle          ako    program.   %% agent. 
+    oracle          has_a     bus.       %% qua TT %% TA-000412
+    oracle          has_a     otherbus.  %% qua TT %% TA-000412
+
+order           ako    abstract.
+oversight       ako    abstract.
+
+
+page            ako    information. %% e.g. home page
+payment         ako    activity.    %% TA-000927
+permission      ako    abstract.    %% TA-000125
+petrol          ako    fuel. %% UK 
+picture         ako    information. 
+
+% plan            ako    abstract. %% collides with route_plan %% TA-000529 
+plant           ako    object.
+planet          ako    place.
+
+position        ako    place.
+possibility     ako    abstract.
+
+power           ako    abstract.
+
+pram            ako    object.  
+printer         ako    object.      
+   printer          has_a  printqueue.        
+   printer          has_a  name.              
+
+problem         ako    abstract.
+    problem         has_a  source.
+
+property        ako    abstract.
+
+protection      ako    meta.
+
+purpose         ako    abstract.
+
+queue           ako    place.
+
+repair          ako    activity.
+rank            ako    meta. 
+reason          ako    abstract.
+restaurant      ako    place. 
+road            ako    place. 
+roof            ako    place.   %% TA-000907
+room            ako    place.  
+    room            has_a  number.
+root            ako    abstract.
+
+route           ako    vehicle. %% Technical solution %%% <- - NB NB Tram etc
+    route           has_a      frequency. %% TA-991201
+    route           has_a      map. 
+    route           has_a      number.  %% TA-000922
+    route           has_a      station.
+    route           has_a      time. 
+    route           has_a      route_plan.
+
+%    route           has_a      route. %% qua route_plan  %% TA-000530  (Hazard ???)
+
+%    route           has_a      summer_route. % no inherit 
+
+route_plan      ako    information. %% summer routes/winterroutes
+
+school          ako    place.   %% TA-000510
+
+seat            ako    object. %% placoid
+service         ako    activity. 
+strike          ako    activity.  
+     
+superagent      ako    agent.  %% Technical term %% TA-991220
+swimmingpool   ako    place.  %% TA-000217
+service         ako    activity. 
+%  sex             ako    meta.    %% dirty :-)
+side            ako    place. 
+size            ako    measure.
+skeleton        ako    abstract.     
+ski             ako    object.
+sky             ako    place.     %%  :-)
+smoke           ako    activity.  %% (?)
+solution        ako    abstract.
+song            ako    activity.
+
+space           ako    place. %%
+speed           ako    measure.
+spot            ako    object.
+    spot            has_a  colour.
+
+start           ako    departure.  %% ( too bus specific ?)   
+statue          ako    object.
+stone           ako    object.
+
+stop            ako    activity.
+
+structure       ako    abstract. 
+summary         ako    meta.     
+surface         ako    place.  
+
+switch          ako    circuit.
+
+system          ako    agent.
+    system          has_a  clock. %% also captures   har du klokke 
+    system          has_a  date.
+    system          has_a  feature.
+    system          has_a  file.
+    system          has_a  information.
+    system          has_a  interface.
+    system          has_a  module.
+    system          has_a  release.
+    system          has_a  version.
+
+tail            ako    object. 
+taxi            ako    vehicle. 
+talk            ako    activity. 
+task            ako    activity. 
+trip            ako    activity.  
+%    trip            has_a   cost. 
+    trip            has_a   price.
+    trip            has_a   destination.
+    trip            has_a   direction.
+    trip            has_a   length.
+
+team            ako    group.     
+    team            has_a  country. 
+
+terminal        ako    machine.     
+test            ako    activity.
+
+
+telephone       ako    number. %% object.  % what is a phonenumber %% TA-000303
+    telephone       has_a    number. 
+
+telescope       ako    object.
+temperature     ako    measure.   %% TA-001001
+text            ako    information.
+theory          ako    abstract.
+ticket          ako    object.
+    ticket          has_a  price.
+tissue          ako    object.   
+top             ako    place.
+toy             ako    object.
+
+traffic         ako    activity. %% TA-000605
+transfer        ako    activity. 
+truth           ako    abstract. 
+type            ako    meta.         
+
+universe        ako    place. % Or object? or abstract?
+	 universe        has_a  age.  %% :-)  %% TA-001023
+    universe        has_a  meaning.  
+
+university      ako    place. 
+
+
+use             ako    activity. 
+
+vehicle         ako    object.  
+    vehicle         has_a  arrival.     %% TA-000716
+    vehicle         has_a  brake.       %% TA-000901
+    vehicle         has_a  delay.       %% TA-000716
+    vehicle         has_a  departure.   %% TA-000303
+    vehicle         has_a  endstation.  %% TA-000613
+    vehicle         has_a  driver. 
+    vehicle         has_a  frequency. 
+ %    vehicle         has_a  label.       %% TA-000908 number
+    vehicle         has_a  motor.       %% TA-000901
+    vehicle         has_a  passenger.   %% TA-000613
+    vehicle         has_a  price. %% i.e. fare
+    vehicle         has_a  route_plan. %% TA-000530  (not route)
+    vehicle         has_a  seat.  %% TA-991111
+    vehicle         has_a  size.   
+    vehicle         has_a  speed. 
+    vehicle         has_a  station. %% TRICKY  route has_a station  sounds better ,
+                                    %    but route ako vehicle ! %% TA-000808
+    vehicle         has_a  weight. 
+
+way             ako    abstract. %%  "the best way to.."
+weather         ako    abstract. 
+weight          ako    measure.
+wheel           ako    object.
+window          ako    object.   %% DOUBLE       
+window          ako    place.    %% in the window
+wire            ako    object.          %% circuit ??
+workstation     ako    machine.      
+
+zone            ako    place.    %% (NOT abstract), border for zone ...
+
+%-LEVEL 3-------------
+
+
+lust            ako    feeling. %% Techn. Ha lyst på 
+
+manual          ako    document.
+mood            ako    feeling. %% spirit
+
+pair            ako  number.  %% NOT thing.  et par ting = par har ting
+
+
+report          ako    document. 
+
+summer_route  ako route_plan. 
+winter_route  ako route_plan.
+
+sundayroute ako route_plan.    %% TA-000217
+saturdayroute ako route_plan.  %% TA-000217
+workdayroute ako route_plan.   %% TA-000217
+easterroute ako route_plan.    %% TA-000217
+christmasroute ako route_plan. 
+
+train           ako    vehicle. 
+
+tram            ako    vehicle. 
+    tram             has_a telephone. %% qua company
+
+boat_route_plan  ako     route_plan.  %% TA-000614
+train_route_plan ako     route_plan. 
+tram_route_plan  ako     route_plan. 
+
+adult           ako     person.
+    adult           has_a   baby. 
+    adult           has_a   child.   
+    adult           has_a   daughter. 
+    adult           has_a   son.      
+
+age_limit       ako    age.  
+appointment     ako    meeting. %% TA-000511
+
+airport         ako    neighbourhood.
+
+animal          ako    animate. %% and object  ( For Goldilock) %% TA-000228
+    animal          has_a  tail.
+
+answer          ako    statement.
+
+author          ako    person.     
+
+ball            ako    toy. 
+
+base            ako    software. %% (technical)
+%    base            has_a    content.
+
+bear            ako    animal.
+
+beer            ako    liquid.
+book            ako    document.
+bridge          ako    road.     %% TA-00210 ( roughly)
+
+bird            ako    animate. %% animal ?
+
+boat            ako    vehicle. %% a kind of :-) 
+
+bus             ako    vehicle. 
+%     bus             has_a  arrival. %% vehicle
+%     bus             has_a  delay.   %%  vehicle
+%     bus             has_a  endstation.     %%  (no inheritance) -> veh
+
+    bus             has_a  horsepower.
+    bus             has_a  number.  
+    bus             has_a  route_plan.  
+    bus             has_a  wheel.   %%    
+  
+cannibal        ako    person. 
+
+car             ako    vehicle.  
+    car             has_a  owner.
+
+cat             ako    animal.
+child           ako    person.
+christmas_route  ako route. 
+card            ako    ticket.
+coat            ako    cloth. 
+code            ako    text. %% TA-000901
+cube            ako    box. 
+coffee          ako    drink.  %% TA-000903
+competitor      ako    person.     
+computer        ako    system.
+constant        ako    argument.
+
+cow             ako    animal.     
+    cow             has_a  milk.
+
+data            ako    information. 
+
+database        ako    software. 
+department      ako    office.
+
+description     ako    information.
+dictionary      ako    file.
+directroute     ako    route. 
+display         ako    equipment.
+
+dog             ako    animal.
+    dog             has_a  name.
+    dog             has_a  owner.
+
+doll            ako    toy.
+
+donkey          ako    animal.
+dress           ako    cloth.   
+
+egg             ako    food. 
+
+elephant        ako    animal.
+
+employee        ako    person.  
+    employee        has_a rank.
+    employee        has_a salary.
+
+example         ako    text.
+
+exchange        ako    equipment. 
+
+
+fact            ako    statement.
+farmer          ako    person. 
+    farmer          has_a  donkey.
+
+final           ako    match.
+fish            ako    animal.
+flower          ako    plant. 
+fuel            ako    liquid. 
+
+% fly             ako    animal. %% confuse when bilingual
+
+fruit           ako    food. 
+
+glue            ako    liquid. 
+hat             ako    cloth.
+heading         ako    text.
+horse           ako    animal.
+house           ako    place. 
+hydrogen        ako    gas.     %% TA-000209
+
+implementation  ako    program.
+increase        ako    measure. 
+indulgence      ako    feeling. %% (leniency ?)
+interface       ako    program.
+internet        ako    network.  %% changed from fact due to internet syndrome 
+lamb            ako    animal.
+land_surface    ako    surface.
+    land_surface       has_a  area.  
+logic           ako    language.
+line            ako    text.
+lion            ako    animal.
+lunch           ako    food.  %% meal ?
+
+mailaddress     ako    address. %% TA-000127
+mark            ako    text.
+meat            ako    food.
+message         ako    statement.
+milk            ako    liquid.  
+module          ako    system.
+money           ako    measure. %%  number.   * money on the bus
+mood            ako    mode.
+mouse           ako    animal.
+
+notice          ako    information.
+
+%% oil             ako    liquid. %% TA-000109 (fuel)     
+owner           ako    person.
+
+person          ako    animate. 
+    person          has_a  address. 
+%    person          has_a  age.     %%  / agent        
+    person          has_a  animal. 
+    person          has_a  aunt. %% TA-000901
+    person          has_a  bicycle. %% TA-000901
+    person          has_a  bus. %% my bus, his bus %% TA-000516 (no inheritance)
+        person          has_a  dog. 
+    person          has_a  bed.
+    person          has_a  car.    
+    person          has_a  chair.   %% TA-000228
+
+    person          has_a  cloth.
+        person          has_a  coat.   %      
+        person          has_a  dress.  % 
+        person          has_a  hat.    % 
+    person          has_a  destination.  %% TA-000828
+    person          has_a  doll.
+%     person          has_a  father. % agent :-)  
+    person          has_a  feeling.     
+    person          has_a  forehead.
+    person          has_a  frequency. 
+    person          has_a  hand.
+    person          has_a  home.
+    person          has_a  house.
+    person          has_a  husband. %% to allow question
+    person          has_a  job.
+    person          has_a  king. 
+    person          has_a  luggage. %% TA-000902
+    person          has_a  mother.
+    person          has_a  money. 
+    person          has_a  name.        
+    person          has_a  office.      
+    person          has_a  plane.
+    person          has_a  pram.  %% TA-000902
+    person          has_a  question. 
+    person          has_a  room.         
+    person          has_a  sex.
+    person          has_a  shirt.     
+    person          has_a  size.
+    person          has_a  school. %% TA-000521
+    person          has_a  spot. %% animate
+    person          has_a  telephone.
+    person          has_a  telescope.
+    person          has_a  ticket.  %% TA-000928
+    person          has_a  toy.
+    person          has_a  uncle. %% TA-000901
+    person          has_a  wife.   % to allow question 
+
+passenger       ako    person . 
+
+phrase          ako    text.
+    phrase          has_a  complexity.
+    phrase          has_a  definition.
+    phrase          has_a  structure.
+    phrase          has_a  version.
+
+pity            ako    feeling.
+pizza           ako    food.
+
+plane           ako    vehicle. 
+
+player          ako    person.     
+point           ako    geo_metric. 
+population      ako    number.
+post_office     ako    office.
+price           ako    measure. 
+    price           has_a  price. %% TA-000522  price of a (fare=price)
+printqueue      ako    queue.
+    printqueue      has_a job. 
+printquota      ako    number. 
+production      ako    text.
+program         ako    software. 
+    program         has_a  address. %% i.e.  internet address 
+    program         has_a  programmer. %% TA-991206  ( author )
+    program         has_a  size.  %% TA-000922
+    program         has_a  code.  %% TA-000901 ( as such)
+%    program         has_a  task. %% Agent
+
+programmer      ako    person. %% TA-991206 (not agent as such) %% Experiment
+
+project         ako    system.   %%  ?
+release         ako    system.
+
+rain            ako    weather.  
+
+reservation     ako    ticket.  %% TA-001012
+
+ringroute       ako    route.  %% TA-000907
+
+rule            ako    statement.   %% Reserved in SWI 
+
+screen          ako    information. %% ?
+
+season_ticket   ako    ticket. 
+special_ticket  ako    ticket. %% TA-991214
+
+shirt           ako    cloth. 
+ 
+ %% shop            ako    house.
+ %% collides with verb  % I have time to shop
+
+string          ako    text. 
+
+software        ako    system. 
+
+source          ako    information.
+
+sun             ako    weather. %% in this domain %% TA-000613
+
+street          ako     neighbourhood.
+
+table           ako    file.
+thief           ako    person.
+time            ako    measure. 
+    time            has_a   length. 
+
+time_count      ako    measure.       %% N.of. times 
+
+television      ako    window.        %% very special
+
+user            ako    person.
+    user            has_a   printquota.  
+    user            has_a   diskspace.   
+variable        ako    argument.
+
+
+walking_distance ako distance.  %% TA-000807
+ward            ako    office. %% ???
+water_surface   ako    surface.
+    water_surface   has_a area.
+
+knife           ako    weapon. 
+gun             ako    weapon.
+webaddress      ako address. 
+
+word            ako    meta. %% word. 
+    word            has_a semantics.
+    word            has_a form.
+
+wumpus          ako    animal. % :-)  R&N AIMA
+
+%-LEVEL 4----------------
+
+afternoon       ako    daypart. 
+
+% adjective       ako    word.     
+% agent           ako    processor. %% NEW STRUCTURE
+%% afternoon       ako    time.     %% TA-991105
+apple           ako    fruit.
+author          ako    person. 
+autumn          ako    time.  
+
+baby            ako    child.
+banana          ako    fruit.
+boss            ako    person. 
+boy             ako    man.  %% child.  nec. because of HE  %% TA-000229
+building        ako    house.  
+capital         ako    city.
+carrier         ako    employee. 
+charge          ako    money.
+city            ako    land_surface.
+    city            has_a  age. 
+    city            has_a  population. %% land_surface
+    city            has_a  size.       %% s.a. population
+    city            has_a  centre. 
+    city            has_a  cinema.       %% hall  %% TA-000324
+    city            has_a  harbour. 
+    city            has_a  person.  %% how many ... %% TA-000906
+    city            has_a  route.  
+    city            has_a  route_plan.   %% TA-000605
+% clause          ako    phrase.
+
+clock           ako    time. 
+
+compiler        ako    processor.
+complaint       ako    message.  %% TA-000412 :-)
+% conjunction     ako    word.
+continent       ako    land_surface.
+    continent      has_a  country. %% many
+
+community       ako    land_surface.   % kommune
+county          ako    land_surface.   % fylke
+
+country         ako    land_surface.
+    country         has_a  capital.
+    country         has_a  city.    %% many
+    country         has_a  currency.    
+    country         has_a  king.       
+    country         has_a  latitude.   
+    country         has_a  longitude.  
+    country         has_a  mountain. %% TA-000920
+    country         has_a  population. 
+    country         has_a  queen.
+    country         has_a  river.
+    country         has_a  size.      %% s.a. population
+    country         has_a  team.       
+
+creator         ako    person.  
+crown           ako    money. 
+
+council         ako    land_surface.   % kommune
+
+date            ako    time.
+    date            has_a  evening.    %% Christmas Eve 
+
+daytime         ako    time.
+day             ako    time.        
+    day             has_a  afternoon.
+    day             has_a  date.      %% TA-000922
+    day             has_a  departure. 
+    day             has_a  evening.  
+    day             has_a  morning.  
+%     day             has_a  midnight.  %% natt (Norwagism) natt til fredag = fredag "morgen"
+    day             has_a  night.    
+
+    day             has_a  bus.     %% søndagens rute 
+    day             has_a  tram.    %% TA-000607
+    day             has_a  route.   % no inheritance 
+
+%                                      % hvilke tider har rute 5 ? ==> day has route
+
+discount        ako    money.  %% TA-991103
+district        ako    land_surface.
+doctor          ako    person.
+dollar          ako    money. 
+driver          ako    person. 
+
+daypart         ako    time. 
+     daypart         has_a  bus.   %% Fig of sp.
+
+duration        ako    time.
+
+easter          ako    time. 
+evening         ako    daypart. 
+expression      ako    phrase. 
+
+family          ako    person. %% (i.e. set of persons !)
+    family   has_a member.  %% TA-000411
+
+fare            ako    price.
+    fare             has_a price. % fare of a price
+
+future          ako    time. %% TA-000424
+past            ako    time.  %% TA-000424
+
+garden          ako    place.
+genious         ako    person.  %% TA-000131 :-)
+girl            ako    woman. %%  child.          %% nec because SHE
+%% TA-000229
+
+% grammar         ako    description.
+%     grammar         has_a  constraint.
+
+halfyear        ako    time.   %% TA-000313
+holiday         ako    date. %% christmas/easter etc.  %% TA-991221
+
+helicopter      ako    plane.  
+hospital        ako    house.
+hotel           ako    house.
+
+instructor      ako    employee.
+
+intrans_verb    ako    verb.
+
+king            ako    person.  %% man 
+    king            has_a advisor.
+
+man             ako    adult.
+%    man             has_a  wife. %% => person to allow question
+%    man             has_a  love. %% ? which person loves ==> which (person love)
+     man             has_a  test. %% Turings test :-)
+
+manager         ako    employee.
+management      ako    employee.   
+    management       has_a  policy.
+
+mayor           ako    person.
+
+midnight        ako    daypart.  %% (natt til søndag) 
+
+
+month           ako    time.
+morning         ako    daypart.  
+
+morrow          ako    day.      %% NB  Technical  %% TA-000902
+
+night           ako    daypart.  
+
+noon            ako    daypart. 
+
+% noun            ako    word. % class   ako    noun. 
+%    noun             has_a  attribute.  
+%    noun             has_a  subclass.  
+%    noun             has_a  superclass.
+ 
+ocean           ako    water_surface.
+
+opening_hours   ako    time. %% TA-000418
+
+otherbus        ako    vehicle. 
+    otherbus has_a  telephone.  %% qua company
+
+patient         ako    person.
+parent          ako    adult.
+park            ako    land_surface.
+    park            has_a lion.
+    park            has_a statue.
+
+% particle        ako    word. %%
+penguin         ako    bird.
+period          ako    time.
+pound           ako    money.    
+
+% preposition     ako    word.        
+preprocessor    ako    processor.
+president       ako    person.
+processor       ako    program.
+professor       ako    person.
+%% programmer      ako    person.  %%  agent 
+
+% pronoun         ako    word.
+   
+quote           ako    mark.
+
+region          ako    land_surface.      
+rose            ako    flower.  
+
+rush_hour       ako    time.  
+
+salary          ako    money.
+sale            ako    money.      
+sea             ako    water_surface.
+self            ako    user. 
+     self   has_a bus.  %% bussen min / not bussen til Buckingham %% TA-000411
+
+semantics       ako    description.
+sentence        ako    phrase.    
+shuttleroute    ako    bus. 
+spring          ako    time.
+station         ako    place.    
+    station          has_a  address.
+    station          has_a  place. % ( location ?), i.e. neighbourhood 
+%    station         has_a  name.  
+
+student         ako    adult. 
+
+summer          ako    time. %%  (re summer routes)
+
+
+% teleporter      ako    plane. %% synonym
+
+trans_verb      ako    verb. 
+    trans_verb       has_a  object.
+
+underground     ako    vehicle. %% subway is American 
+
+vacation        ako    time. %% not holiday (holy)
+
+
+% verb            ako    word.
+%    verb            has_a  subject.
+
+visitor         ako    person.
+
+week            ako    time.
+weekend         ako    day.  %% e.g. sunday  (time). %% TA-000908
+weekday         ako    day.  
+
+whitsun         ako    time.
+winter          ako    time.
+
+woman           ako    adult.
+%    woman           has_a  husband. %% Moved to person to allow question
+    woman           has_a  lamb. % :-)   Mary
+
+world           ako    surface.
+year            ako    time. 
+        year         has_a  route_plan.   %% TA-000926
+
+yester          ako    day. %% Norwagism  (i) gaar 
+
+%-LEVEL 5-------------------
+
+monday    ako  day .   
+tuesday   ako  day .
+wednesday ako  day .
+thursday  ako  day .
+friday    ako  day .
+saturday  ako  day .
+sunday    ako  day .
+
+% workday   ako  day.  %% TA-000607 (weekday)
+
+/*   Meta 
+
+attribute       ako    noun. 
+subclass        ako    noun.    
+subject         ako    noun. 
+superclass      ako    noun. 
+
+*/
+
+
+advisor         ako    man.  
+
+bachelor        ako    man. 
+brother         ako    man.
+
+busstation      ako    station.  
+tramstation     ako    station.
+
+class           ako    group. %%  NB !! Double
+
+
+airbus          ako    bus.
+articulated_bus ako    bus. 
+aunt            ako    woman.
+command         ako    sentence.
+daughter        ako    girl.
+day             ako    duration.  %%   om 3 dager 
+endstation      ako    station.
+eveningbus      ako    bus. 
+explanation     ako    sentence.   %% TA-000908
+father          ako    man.        % father    ako parent. 
+fjord           ako    sea. 
+formula         ako    expression.
+gasbus          ako    bus. 
+grandfather     ako    man.     %% father, but that is too deep
+grandmother     ako    woman.   %% mother, but too deep
+
+halfhour        ako    duration. %% TA-991105
+hour            ako    duration. %% time
+    hour   has_a  time.     %%        En times tid
+    hour   has_a  duration. %%        En times varighet
+husband         ako    man. 
+
+joke            ako    sentence.  %% Ta-000310 :-)
+
+minute          ako    duration. %% time
+moment          ako    duration.  %% TA-000223
+morningbus      ako    bus.
+
+mother          ako    woman.    %  mother     ako parent.
+mountain        ako    place.
+
+nightbus        ako    bus. 
+relative        ako    person.  %% TA-000126
+
+planet          ako    world.  %% TA-000301 :-)
+
+quarter         ako    duration. 
+queen           ako    woman. 
+
+question        ako    sentence.
+    question        has_a  answer. 
+schoolbus       ako    bus.
+second          ako    duration. 
+
+sister          ako    woman.
+son             ako    boy.
+statement       ako    sentence. 
+strike    ako period.
+
+
+traveltime      ako    duration.  %% technical %% TA-000930
+uncle           ako    man. %% TA-000901
+
+webmaster       ako    boss.  %% TA-000324
+wife            ako    woman.
+
+% =========NO MORE LEVELS! =========================================================
+
+%    query           ako    question. %% Level 6
+%    request         ako    question. %% Level 6
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%% A-Part-Of Section %%%%%%%%%%%%%%%%%%
+%
+% EXPERIMENTAL
+% Defines transitive closure of the in relation
+% Transitive closure in the apo definition is unnecessary
+
+apos(C,E):-   
+    C apo D,
+    apos0(D,E).
+
+apos0(E,E). 
+
+apos0(C,E):-      
+     apos(C,E).
+
+
+% Space
+
+continent apo   world.
+sea       apo   world.
+ocean     apo   world.
+
+region    apo   continent.
+
+country   apo   region.
+
+city      apo   country.
+county    apo   country.
+river     apo   country.
+
+district  apo   city.
+neighbourhood apo city. 
+park      apo   city. 
+
+% Time
+
+month     apo   year.
+week      apo   month. % or year ?
+day       apo   week.
+
+
+% Diverse
+
+ward      apo   hospital.
+
+line      apo   file. 
+
+%%%%%%%%% Attribute Section %%%%%%%%%%%%%%%%%
+%% Reorganised as local to the subject
+
+
+%  Inheritance only on subject names.
+%  No inheritance  on attribute names.
+
+
+
+%%%%%%%%% VERB  TEMPLATES %%%%%%%%%%%%%%%%%%%%%
+
+% verb templates and compliances COULD have been organised under subject class,
+% but then the inheritage would make it difficult to look up
+
+
+%%%%%%%%% Intransitive verb templates %%%%%%%%
+
+iv_templ(be1,thing).  
+  %    normalverb(be1,thing).   %% TOO GENERAL
+  %  bus goes to A which is on B at T
+
+%% normalverb(be1,person). %%  NB not thing, nor agent 
+
+   
+   v_compl(be1,person,nil,place). %% Norwag  Jeg er et sted %%   TA-000926 (HAZ?)
+   v_compl(be1,activity,in,time). 
+   v_compl(be1,address,in,place). 
+   v_compl(be1,agent,during,time).  %% I am at NTH during time %% TA-000307
+   v_compl(be1,agent,during2,time). %% OM 20 minutter
+   v_compl(be1,agent,from,place).        %% TA-000128
+   v_compl(be1,agent,in,job).            %% TA-990906
+   v_compl(be1,agent,in,life).           %% TA-000222 ( i live) Norwagism
+   v_compl(be1,agent,in,meeting).        %% TA-000920
+   v_compl(be1,agent,in,vehicle).        %% har du vært i en buss %% TA-001106 
+   v_compl(be1,agent,on,meeting).        %% Norwag
+   v_compl(be1,agent,on,network).   
+   v_compl(be1,agent,on,job).  
+   v_compl(be1,agent,in,place).          %%   (Q: where are you)
+   v_compl(be1,agent,in,network).   
+   v_compl(be1,agent,in,mood).           %%  :-)
+   v_compl(be1,agent,in,time).           %%   (Q: where are you now)
+
+   v_compl(be1,bus,in,strike).  
+   v_compl(be1,bus,between,place). 
+   v_compl(be1,bus,in,direction). 
+
+   v_compl(be1,company,in,place). 
+   v_compl(be1,date,in,time).            %% TA-990917
+   v_compl(be1,object,in,place).         %% TA-990923
+   v_compl(be1,permission,on,vehicle).   %% TA-000919 (Norwag)
+   v_compl(be1,person,nil,daypart).      %% I am  on NTH monday morning
+   v_compl(be1,person,between,time).     %% not clock / confusing   %% TA-000717
+%   v_compl(be1,person,in,vehicle).      %% agent :-)
+   v_compl(be1,person,to,clock).         %%   Norwagism  = before
+   v_compl(be1,revision,in,time).        %% TA-000907
+   v_compl(be1,vehicle,nil,daypart).     %% Bus is on NTH monday morning
+   v_compl(be1,vehicle,in,place).  
+   v_compl(be1,vehicle,in,system).       %%  in bus system / in database  %% ambiguous
+   v_compl(be1,vehicle,near,place).  
+   v_compl(be1,vehicle,to,repair).       %% TA-000908
+   v_compl(be1,vehicle,within,clock).
+   v_compl(be1,vehicle,within,hour). 
+   v_compl(be1,vehicle,within,minute). 
+
+   v_compl(be1,weather,nil,time).  %% Time Adverbials %% TA-000808
+   v_compl(be1,weather,in,place). %% standard %% TA-000511 
+   v_compl(be1,weather,at,agent).  %% TA-000511
+
+   v_compl(be1,bus,on,place).  
+
+   v_compl(be1,clock,in,time).           %% klokka nå 
+   v_compl(be1,day,in,day).              %% what day is it today 
+   v_compl(be1,date,in,day).             %% what date is it today
+   v_compl(be1,departure,during,time).   %% TA-000218 
+   v_compl(be1,departure,from,place). 
+   v_compl(be1,departure,on,day). 
+   v_compl(be1,departure,in,day).        %%  Daily
+   v_compl(be1,direction,in,place).      %%  WHERE is the way to NTH 
+
+   v_compl(be1,hour,in,day).  
+   v_compl(be1,meaning,in,time).          %%  :-) %% TA-990917
+   v_compl(be1,person,nil,clock). %% time).         %% I am here kl 1200 (Norw) 
+   v_compl(be1,person,nil,day).          %%  I am on NTH monday
+   v_compl(be1,person,nil,date).         %%  I am on NTH 21.4.45  ??? 
+   v_compl(be1,person,from,place). 
+   v_compl(be1,person,to,place).         %% (i.e. skal være )
+   v_compl(be1,person,within,clock). 
+   v_compl(be1,person,within,hour). 
+   v_compl(be1,person,within,minute). 
+
+   v_compl(be1,place,between,place).    %% TA-000926
+   v_compl(be1,place,in,distance).      %% TA-000807 ....from X
+   v_compl(be1,place,near,place).   
+   v_compl(be1,place,at,place). 
+
+%  v_compl(be1,place,in,place).          %%  (Where is NTH )
+%% PROBLEM   bus to nth that is in gløshaugen (at 1200)
+
+   v_compl(be1,place,in,city). 
+   v_compl(be1,price,in,city).           %%  Generalize ?
+   v_compl(be1,station,for,place).  
+   v_compl(be1,station,on,place). 
+   v_compl(be1,station,before,place). 
+
+   v_compl(be1,thing,in,comparison).     %% TA-000519
+   v_compl(be1,thing,in_order_to,thing).
+   v_compl(be1,thing,outside,place).     %% TA-000922
+   v_compl(be1,thing,with,duration).     %% TA-000929 ( techn )
+   v_compl(be1,thing,with,temperature).  %% TA-001001 (techn) 
+
+   v_compl(be1,time,in,place).      %% TA-990926 (Hazardous ?) what is the time in NY
+   v_compl(be1,vehicle, nil,clock). %% time). 
+   v_compl(be1,vehicle, nil,date).
+   v_compl(be1,vehicle, nil,day). 
+   v_compl(be1,vehicle,between,place). %% ruter er det mellom nth og nardo 
+   v_compl(be1,vehicle,in,time). 
+   v_compl(be1,vehicle,on,place).        %%   bus is on station 1500
+   v_compl(be1,vehicle,past,place).      %%  ( er innom ..)
+   v_compl(be1,weather,nil,time). 
+   v_compl(be1,year,in,year).  
+
+   v_compl(be1,C,Prep,D):- 
+        n_compl(Prep,C,D).               %% bus on station removed 
+
+   
+
+% v_compl(be1,station,on,neighbourhood).
+%%  (bus from A which is on B before T)
+%%  (hvilke busser er på lade)
+
+
+
+%%%%%%%%%%% INFINITIVAL COMPLEMENTS %%%%%%%%%%%%%%
+
+iv_templ(start,agent). %% TA-000915
+iv_templ(start,meeting).  %% TA-000906
+iv_templ(start,vehicle).  %% når starter NTH %% TA-000827
+iv_templ(start,route_plan). %% TA-000827
+    v_compl(start,thing,nil,clock).                %%  (vehicle/person)
+    v_compl(start,thing,in_order_to,thing).
+    v_compl(start,person,from,place).              %%  (nonstandard (?))  
+    v_compl(start,vehicle,from,place).             %%  (nonstandard (?))
+
+iv_templ(stop,vehicle).   %% ( not thing !!) 
+    v_compl(stop,thing,in_order_to,thing). 
+    v_compl(stop,thing,between,time). 
+    v_compl(stop,thing,nil,clock). 
+    v_compl(stop,vehicle,nil,date). %% TA-001006   
+    v_compl(stop,vehicle,nil,day).  %% TA-001006    
+    v_compl(stop,vehicle,because_of,strike).    %%  (Just a protype test) 
+    v_compl(stop,vehicle,before,place). 
+    v_compl(stop,vehicle,for,person).  %% TA-000906
+    v_compl(stop,vehicle,from,place).  %% abnormal  stop at A from B
+                                       %% TA-000530
+
+iv_templ(stop,agent). 
+    v_compl(stop,agent,on,activity).            %% (Norw)
+
+
+%% iv_templ(use,vehicle). %  bussen bruker tid    %% EXPERIMENT
+
+
+iv_templ(use2,vehicle).     %%   (Pleie  Norwagism)
+
+    abnormalverb(use2,_).     %% TA-000116  NB No inheritance   (abnormalverb(use2,bus) tc.
+
+%    normalverb(use2,vehicle).   
+%    v_compl(use2,vehicle,I,time):-             %% NB hvor lang tid bruker X  
+%         prep(I,time). % Standard W.R.T. time  %% \= hvor lenge bruker X ( Y )
+
+    v_compl(use2,thing,with,duration).          %% hvor lenge pleier ...
+    v_compl(use2,thing,in_order_to,thing). 
+    v_compl(use2,thing,between,time). 
+    v_compl(use2,thing,nil,clock). 
+
+iv_templ(use2,agent).                           %% pleie å gå = pleier for å gå.
+
+     abnormalverb(use2,_).                  %% TA-000116  and all subclasses !!!
+
+%    normalverb(use2,agent).   
+    v_compl(use2,agent,in_order_to,thing).      %% TA-90409
+    v_compl(use2,agent,in,time).  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Epistemic Verbs 
+
+iv_templ(believe,agent). 
+    v_compl(believe,agent,in,agent).  %% cause trouble ?
+    v_compl(believe,agent,on,agent).  %% Norwagism %% TA-001015
+
+% Passive verbs  
+
+tv_templ(bear2,agent,agent).  %% tv   Give birth to %% TA-000216
+    v_compl(bear2,agent,by,woman).
+
+%----------------------------------------------------------
+% Active verbs
+
+iv_templ(abstain,person). 
+
+iv_templ(account,person).
+   v_compl(account,person,for,person). 
+
+iv_templ(add,person).  
+
+iv_templ(agree,thing). %%  ( stemme, Norwagism)
+
+iv_templ(aim,person).  
+    v_compl(aim,person,at,thing).
+
+iv_templ(answer,system). %% synonym with tell
+    v_compl(answer,system,in,mode). %% e.g. wrongly,correctly 
+    v_compl(answer,system,in,language). %% TA-000125     
+
+iv_templ(appeal,person). 
+    v_compl(appeal,person,to,person).
+
+iv_templ(apply,person). 
+    v_compl(apply,person,to,person).
+    v_compl(apply,person,for,thing).
+
+iv_templ(approve,person). 
+    v_compl(approve,person,of,thing). 
+
+iv_templ(argue,person). 
+    v_compl(argue,person,about,thing).
+
+iv_templ(arrive,version).  %% TA-000219
+
+
+iv_templ(arrive,person).
+   v_compl(arrive,person,between,time).
+   v_compl(arrive,person,during,time).
+   v_compl(arrive,person,to,place). %%  (Norwagism) 
+   v_compl(arrive,person,by,vehicle).
+   v_compl(arrive,person,with,vehicle). 
+
+%  ankomme = arrive Norwagism transitively  changed to pass
+%  necessary in English 
+
+iv_templ(arrive,vehicle). 
+    v_compl(arrive,vehicle,nil,clock).  %% (never nil,time)
+    v_compl(arrive,vehicle,nil,day).    %%  (never nil,time)
+    v_compl(arrive,vehicle,about,time). 
+    v_compl(arrive,vehicle,between,time).  
+    v_compl(arrive,vehicle,during,time). 
+    v_compl(arrive,vehicle,from,place).   %% ( arrive at X FROM Y)
+    v_compl(arrive,vehicle,on,time).      %% TA-000301
+    v_compl(arrive,vehicle,to,place).
+
+iv_templ(ask,agent). 
+    v_compl(ask,agent,about,thing).      %% about is for times and places
+    v_compl(ask,agent,regarding,thing).  %% regarding is for topics 
+    v_compl(ask,agent,nil,time_count).   %% ask many times  (standard ?)
+    v_compl(ask,agent,on,language).       %% TA-000418 (Norw)
+    v_compl(ask,agent,in,language).       %% TA-000418 (Eng)
+
+iv_templ(bark,dog). 
+
+iv_templ(border,surface).       %%  (Norw)
+    v_compl(border,surface,to,surface). %%  (Norw)
+
+iv_templ(bicycle,agent). %% TA-000121 ( :-))
+
+iv_templ(burn,house). 
+
+iv_templ(call,agent). 
+
+iv_templ(check,system).     
+
+iv_templ(close,office). 
+iv_templ(close,company).
+
+
+iv_templ(come,person).
+   v_compl(come,person,from,place). 
+   v_compl(come,person,to,place).
+   v_compl(come,person,from,place). 
+   v_compl(come,person,across,thing). 
+   v_compl(come,person,by,vehicle).
+   v_compl(come,person,by,place).     
+   v_compl(come,person,past,place). 
+   v_compl(come,person,with,vehicle). 
+   v_compl(come,person,between,time). 
+   v_compl(come,person,during,time).    
+   v_compl(come,person,in,mode).            %% e.g. fast 
+
+iv_templ(come,vehicle).
+   v_compl(come,vehicle,from,place). 
+   v_compl(come,vehicle,to,place).
+   v_compl(come,vehicle,from,place). 
+   v_compl(come,vehicle,between,time).  
+   v_compl(come,vehicle,during,time).  
+   v_compl(come,vehicle,by,place).      
+   v_compl(come,vehicle,past,place).  
+
+iv_templ(consist,thing).    
+    v_compl(consist,thing,of,thing). %% TA-991214
+    v_compl(consist,thing,off,thing). %% Norwagism ( Nec??)    
+
+iv_templ(correspond,vehicle). 
+    v_compl(correspond,vehicle,bil,clock). %% TA-001005
+    v_compl(correspond,vehicle,with,vehicle).
+    
+
+%     v_compl(correspond,vehicle,between,place). %% NO, as such === go
+%   Problem: correspond is selected before go because of alphabet
+%   intransitive correspond is selected
+%   then commit error
+
+iv_templ(correspond,person). 
+
+    v_compl(correspond,person,with,vehicle).
+
+%  iv_templ(cost,thing). %%   EXPERIMENT failed
+
+iv_templ(count,agent). 
+    v_compl(count,agent,to,number). %% TA-000919
+iv_templ(dance,person).     
+
+iv_templ(deal,person). 
+    v_compl(deal,person,with,thing).
+
+iv_templ(depart,person).  
+   v_compl(depart,person,between,time).     
+   v_compl(depart,person,during,time).
+   v_compl(depart,person,from,place).
+   v_compl(depart,person,to,place).
+   v_compl(depart,person,by,vehicle).  
+   v_compl(depart,person,in,direction).
+   v_compl(depart,person,with,vehicle). 
+
+iv_templ(depart,vehicle). 
+   v_compl(depart,vehicle,between,time).
+   v_compl(depart,vehicle,during,time).
+   v_compl(depart,vehicle,for,place).
+   v_compl(depart,vehicle,from,place).
+   v_compl(depart,vehicle,in,direction).
+   v_compl(depart,vehicle,on,direction). %% (norwagism)
+   v_compl(depart,vehicle,to,place).
+   v_compl(depart,vehicle,towards,place).
+   v_compl(depart,vehicle,nil,place). 
+   v_compl(depart,vehicle,with,frequency).  %% TA-000210
+
+iv_templ(depend,thing). 
+    v_compl(depend,thing,on,thing).
+
+iv_templ(die,agent). 
+%    v_compl(die,animate,nil,daypart).  %% TA-000229 (Standard ?)
+    v_compl(die,person,in,car).
+    v_compl(die,person,being_the,activity). %% TA-000224
+
+
+iv_templ(end,text).
+iv_templ(end,vehicle).               %% TA-000515
+iv_templ(end,summer_route).          %% in time %% TA-000817
+iv_templ(end,winter_route).          %% in time %% TA-000817
+
+% iv_templ(end,route).               %% at place
+
+iv_templ(exist,thing). 
+
+    v_compl(exist,Thing,Prep,Obj):- v_compl(be1,Thing,Prep,Obj). %% TA-000605
+    v_compl(exist,thing,nil,time). %% hvilket nummer er neste buss heretter
+    v_compl(exist,thing,nil,time).  %% qua vehicle %% TA-000929
+    v_compl(exist,thing,with,duration).  %% TA-000929
+
+    v_compl(exist,horsepower,in,vehicle).  
+%    v_compl(exist,thing,for,thing).           %% makes code unspecific
+    v_compl(exist,thing,for,place). 
+    v_compl(exist,thing,for,object).
+
+    v_compl(exist,thing,in,fact).
+    v_compl(exist,thing,in_order_to,thing).  
+    v_compl(exist,thing,on,day). 
+    v_compl(exist,thing,on,network).  
+%     v_compl(exist,thing,to,place).  %%  ==> n_compl ? %% TA-000406
+    v_compl(exist,thing,with,duration).       %%  ( hvor lenge)
+    v_compl(exist,thing,in,company).          %% TA-990915  (ako place ?)
+
+
+iv_templ(experiment,person).
+
+
+iv_templ(fail,agent). %% TA-000530 
+
+iv_templ(feel,agent).    %% TA-000412
+iv_templ(flash,object).  %% ?
+
+
+iv_templ(flow,river).
+    v_compl(flow,river,from,surface). 
+    v_compl(flow,river,into,surface).   
+    v_compl(flow,river,out_of,surface). 
+    v_compl(flow,river,through,land_surface).
+
+% iv_templ(fly,airbus).           %%  :-)  Just for the question
+iv_templ(fly,bird). 
+iv_templ(fly,person).      
+iv_templ(fly,time).         
+iv_templ(fly,plane).
+
+
+iv_templ(get,agent). %%   = go, semantically and factual       
+    v_compl(get,agent,nil,day). 
+    v_compl(get,agent,about,time). %% (almost synonym)
+    v_compl(get,agent,between,time). 
+    v_compl(get,agent,by,place). 
+    v_compl(get,agent,by,vehicle).   
+    v_compl(get,agent,during,time).
+    v_compl(get,agent,from,place).
+    v_compl(get,agent,in,way). 
+	 v_compl(get,agent,off,vehicle). 
+	 v_compl(get,agent,on,vehicle). 
+    v_compl(get,agent,past,place). 
+    v_compl(get,agent,to,place).
+    v_compl(get,agent,with,vehicle). 
+    v_compl(get,agent,without,transfer). %% TA-000528 
+
+
+iv_templ(get,vehicle). %%   = go, semantically and factual       
+    v_compl(get,vehicle,between,time). 
+    v_compl(get,vehicle,by,place). 
+    v_compl(get,vehicle,during,time). 
+    v_compl(get,vehicle,from,place).
+    v_compl(get,vehicle,past,place).  
+    v_compl(get,vehicle,to,place).
+
+
+iv_templ(go,agent).       %% include command:  go to hell!  
+    v_compl(go,agent,nil,clock).            %% TA-991220  (standard ?)
+    v_compl(go,agent,nil,time_count). 
+    v_compl(go,agent,nil,daypart).          %% TA-000229
+    v_compl(go,agent,during2,time).         %% TA-991220
+    v_compl(go,agent,for,money).            %% TA-000218
+    v_compl(go,agent,for,price).  
+    v_compl(go,agent,from,place).           %% ( can you go  ) 
+    v_compl(go,agent,in,direction).         %% TA-000112  go home ! :-)
+    v_compl(go,agent,to,summer_route).         %% TA-000926
+    v_compl(go,agent,to,winter_route).        %% gå over til  FOS
+    v_compl(go,agent,to,agent).             %%  :-)
+    v_compl(go,agent,to,clock).             %% Norwagism = before 
+    v_compl(go,agent,to,company). 
+    v_compl(go,agent,to,place).             %% (figuratively )
+    v_compl(go,agent,with,person).          %% ( go with me)
+    v_compl(go,agent,with,vehicle).         %% reise fra A med buss
+    v_compl(go,agent,in,vehicle).           %% TA-990908
+
+%    v_compl(go,agent,nil,place).  %% hvilket sted kan jeg ta bussen ( fra/til )
+                                   %% jeg går oslo veien  ( road ako place)                        
+                                   % hvordan kommer jeg meg fra OBS Lade >OBS< på heimdal
+
+    v_compl(go,company,from,place). %% bus -c %% TA-000807
+    v_compl(go,company,to,place). 
+
+    v_compl(go,agent,nil,direction). %% go home %% TA-000112
+    v_compl(go,agent,on,vehicle).               %% man kan gå %% TA-000906
+    v_compl(go,agent,on,way).    %% Norwagism  på en måte
+
+    v_compl(go,person,nil,day).  
+    v_compl(go,person,nil,date). 
+    v_compl(go,person,nil,clock). %% time ???
+    v_compl(go,person,nil,daypart). 
+    v_compl(go,person,after,meeting).  %% TA-000908
+    v_compl(go,person,in_order_to,thing). 
+%    v_compl(go,person,being_the,reason).    %%  ( formal trick:  bus goes if I go )
+    v_compl(go,person,being_the,activity).  %% TA-000224 
+    v_compl(go,person,between,time).  
+    v_compl(go,person,between,place). 
+    v_compl(go,person,by,vehicle).  
+    v_compl(go,person,by,place).  
+    v_compl(go,person,during,time). 
+    v_compl(go,person,for,place). 
+    v_compl(go,person,in,direction).
+    v_compl(go,person,in,way).
+    v_compl(go,person,near,place). 
+    v_compl(go,person,off,bus). 
+    v_compl(go,person,on,ski).              %% TA-000303
+    v_compl(go,person,to,vehicle).          %% TA-000920
+    v_compl(go,person,with,agent).          %% i.e. go with you %% TA-000524
+    v_compl(go,person,with,departure). 
+    v_compl(go,person,with,distance).       %% TA-000218
+    v_compl(go,agent,with,duration).       %% TA-000920
+    v_compl(go,person,with,ticket).         %% TA-990924
+    v_compl(go,person,without,ticket).      %% TA-990924
+    v_compl(go,person,withafter,duration).
+
+%    v_compl(go,person,on,clock).   %% Norwagism  to ... on 1 hour
+    v_compl(go,person,on,duration).     %% Jeg går på en time
+    v_compl(go,person,on,activity).   %% TA-000511 (Norwagism)
+    v_compl(go,person,on,ticket).    %% TA-000901 Norw
+    v_compl(go,person,outside,place). %%  (e.g. utenom)
+    v_compl(go,agent,past,place). 
+    v_compl(go,person,to,activity).
+% v_compl(go,person,to,object).    %% TA-000731 %% Not Tram (NONMONOTONIC)
+    v_compl(go,person,towards,object).            
+    v_compl(go,person,towards,place). 
+    v_compl(go,person,with,arrival). %% etc.
+    v_compl(go,person,with,company). %% TT 
+    v_compl(go,person,with,frequency). 
+    v_compl(go,person,with,person).
+    v_compl(go,person,with,transfer).  
+    v_compl(go,person,within,clock). 
+    v_compl(go,person,within,hour). 
+    v_compl(go,person,within,minute). 
+
+%% iv_templ(go,clock).   %% TA-991105 does a bus that arrives before 9:30 go ...
+
+iv_templ(go,duration). %% between ... %% NOT time: %% TA-001025
+                       %%   will a bus that goes before 930 go (to...
+    v_compl(go,duration,between,departure).  %% TA-000926
+    v_compl(go,duration,between,vehicle).  %% TA-000926
+
+iv_templ(go,border). %% TA-000807
+iv_templ(go,company).
+
+iv_templ(go,movie).
+
+% iv_templ(go,number).  %% TA-000515  (qua route)     %% TA-001025
+%    v_compl(go,number,X,Y):-v_compl(go,vehicle,X,Y). %% 
+% Problem   will a bus that goes before (930 go)
+% OK, someone can say   number 52 goes ==> number
+
+iv_templ(go,route_plan). %% Winter routes/ summer routes 
+
+iv_templ(go,departure). %% == go,bus
+    v_compl(go,departure,X,Y):-
+        v_compl(go,vehicle,X,Y). %% hazardous ?? 
+
+iv_templ(go,direction). %% Norwagism  hvilken veg går %% TA-000523
+    v_compl(go,direction,to,place). %% TA-000523
+
+iv_templ(go,price).   %% TA-000906 up :-)
+    v_compl(go,price,nil,time_count).        %% Nc? TA-000906
+iv_templ(go,program).  
+    v_compl(go,program,on,place).            %%  (Norwagism) ( also TV :-)
+    v_compl(go,program,on,computer).         %% TA-991111
+
+iv_templ(go,plane). 
+    v_compl(go,plane,from,airport). 
+    v_compl(go,plane,from,city).    
+    v_compl(go,plane,from,country). 
+
+    v_compl(go,plane,to,airport). 
+    v_compl(go,plane,to,city).    
+    v_compl(go,plane,to,country). 
+    v_compl(go,plane,nil,time).
+
+iv_templ(go,road). %% TA-000922
+    v_compl(go,road,past,route).  %% Special %% TA-000922g    
+
+iv_templ(go,vehicle).                    
+    v_compl(go,vehicle,to,date). %% from date is coverd by standard 
+	 v_compl(go,vehicle,nil,clock). %%  Important  go 1200, not go 5 minutes
+    v_compl(go,vehicle,nil,day).              
+    v_compl(go,vehicle,nil,date). 
+    v_compl(go,vehicle,nil,duration).            %%  hour,minute %% TA-000728
+
+    v_compl(go,vehicle,nil,daypart).         %%   go sunday evening
+    v_compl(go,vehicle,nil,direction).       %% hvilken vei går bussen
+    v_compl(go,vehicle,nil,distance).        %% TA-990924
+    v_compl(go,vehicle,nil,midnight).        %% TA-000120  gå natt til lørdag (Norwagism)
+%%     v_compl(go,vehicle,nil,time).    IS TOO GENERAL 
+
+    v_compl(go,vehicle,nil,time_count). 
+
+%    v_compl(go,vehicle,about,time).         %% om    10 minutter => during2
+
+    v_compl(go,vehicle,according_to,route_plan).   %% TA-000217
+    v_compl(go,vehicle,around,place). 
+    v_compl(go,vehicle,as,rule).  
+
+%   v_compl(go,vehicle,before,vehicle).  %% cant handle it though %% TA-000807
+%                                        %% bus goes before 5 *** %% HAZARD
+    v_compl(go,vehicle,being_the,activity).
+    v_compl(go,vehicle,between,place). 
+    v_compl(go,vehicle,between,time). 
+
+
+% during = i løpet av
+% during2 = om
+
+
+    v_compl(go,vehicle,during,time).      %% om sommeren  HACK  i løpet av 
+      v_compl(go,vehicle,during,summer).  %% not time   om 5 min. = withafter %% TA-991129
+      v_compl(go,vehicle,during,winter).  %%            om vintern = during   %% TA-991129
+      v_compl(go,vehicle,during,daypart). %%   
+
+    v_compl(go,vehicle,during2,time).   %% TA-991129  NB NB NB Ambiguous OM
+    v_compl(go,vehicle,for,place).
+
+    v_compl(go,vehicle,for,route).           %%  (  derived:  buss for rute 66)
+                                             %% avgang for rute 66
+                                             %% = avgang går for rute 66
+                                             %% = vehicle går for tute 66
+
+%%             ***   %% buss går for 10 minutter siden %% TA-000820
+    v_compl(go,vehicle,for,time_count). 
+    v_compl(go,vehicle,from,place).      
+
+    v_compl(go,vehicle,from,person). %% TA-000716 :-) buss fra meg til nth
+                                    %% buss fra orakel til NTH *
+    v_compl(go,vehicle,from,route).  
+    v_compl(go,vehicle,in,direction).  
+    v_compl(go,vehicle,in,mode).             %% go directly
+    v_compl(go,vehicle,in,way).              %% TA-991111 ( \= direction) 
+    v_compl(go,vehicle,in_order_to,thing). 
+    v_compl(go,vehicle,into,place). 
+    v_compl(go,vehicle,near,place).  
+    v_compl(go,vehicle,on,gas).              %% (not all of course)
+%     v_compl(go,vehicle,on,place).          %%  (hazardous) bus pass NTH on Gløshaugen
+    v_compl(go,vehicle,on,route).            %%  (on bus)
+    v_compl(go,vehicle,on,time).             %% på tidspunkt/ på 3 minutter  %% Problem
+    v_compl(go,vehicle,on,way).              %% TA-991111 ( Norwagism  på en måte) 
+    v_compl(go,vehicle,out_of,place). 
+    v_compl(go,vehicle,outside,place).       %% (e.g. utenom) 
+    v_compl(go,vehicle,past,place). 
+    v_compl(go,vehicle,through,place). 
+    v_compl(go,vehicle,to,clock).
+    v_compl(go,vehicle,to,place).         %% fra 16:00 til 17:00 %% TA-990929        
+    v_compl(go,vehicle,to,person).           %% bus comes to me
+    v_compl(go,vehicle,to,time).    %% bussen går til.. tider % EXPERIMENT  %% TA-000302
+
+%     v_compl(go,vehicle,to,train).          %%  EXPERIMENT (unnecessary)
+    v_compl(go,vehicle,towards,place).  
+    v_compl(go,vehicle,with,arrival).        %%   Norwagism ( arriving )
+    v_compl(go,vehicle,with,bus).            %%  no narrowing
+    v_compl(go,vehicle,with,connection).     %%  ( with connection) TO place
+    v_compl(go,vehicle,with,departure). 
+    v_compl(go,vehicle,with,direction).      %% TA-990924
+    v_compl(go,vehicle,with,person).         %% TA-000216  driver :-)/passenger
+    v_compl(go,vehicle,with,frequency).
+    v_compl(go,vehicle,with,distance).          %% TA-991214 how far
+    v_compl(go,vehicle,with,speed).  
+         v_compl(go,person,with,speed).  %% TA-000907
+    v_compl(go,vehicle,with,transfer). 
+
+    v_compl(go,vehicle,with,duration).       %%  (duration?) NOT time ??
+
+    v_compl(go,vehicle,withafter,duration). %% (OM   1 time )
+    v_compl(go,vehicle,within,clock) .  
+
+    v_compl(go,vehicle,within,duration).  % quarter, halfhour etc
+
+%    v_compl(go,vehicle,within,hour) .   
+%    v_compl(go,vehicle,within,minute).
+
+    v_compl(go,vehicle,without,transfer). 
+    v_compl(go,vehicle,without,person).  %% driver :-)/ passenger %% TA-000216 
+
+iv_templ(go,version). %% TA-000515
+    
+iv_templ(go,world). 
+    v_compl(go,world,in,place).   %% :-) 
+    v_compl(go,world,in,time).    %% :-) 
+    v_compl(go,world,from,place). %% :-)  Sophies world
+
+iv_templ(go,zone). %% Fig of sp.  %% TA-000807
+
+iv_templ(greet,agent). %%  ( more )
+
+iv_templ(happen,thing). 
+    v_compl(happen,thing,with,thing).  %% TA-000803
+    v_compl(happen,thing,to,time).     %% TA-000803 til høsten ???
+    v_compl(happen,thing,during2,time). %% TA-000803 (std?)  
+    v_compl(happen,thing,in,vehicle). %% TA-000927
+    v_compl(happen,thing,on,vehicle). %% 
+
+iv_templ(hitchhike,agent).  %% TA-000125 :-)
+
+iv_templ(hope,person). 
+   v_compl(hope,person,for,thing).
+
+iv_templ(help,agent).
+
+iv_templ(hurry,agent). %% seg = reciprov %% TA-000907
+ 
+
+iv_templ(knowthing,agent). %% do you know about route 4
+    v_compl(knowthing,agent,regarding,thing).  %% about %% TA-991208 
+
+
+iv_templ(laugh,person). 
+
+iv_templ(learn,agent).  %% TA-00210  + + + +
+
+iv_templ(leave,person). %% also transitive    %% iv leave person makes leave intransitive
+                                              %% even if leave is ised with vehicle
+    v_compl(leave,person,between,time).     
+    v_compl(leave,person,during,time).  
+    v_compl(leave,person,from,place).
+    v_compl(leave,person,for,place). 
+    v_compl(leave,person,to,place).
+    v_compl(leave,person,by,vehicle).  
+    v_compl(leave,person,in,direction). 
+    v_compl(leave,person,nil,direction). 
+    v_compl(leave,person,with,vehicle). 
+    v_compl(leave,person,in_order_to,thing).
+
+iv_templ(leave,vehicle).  %% når forlater 60 sentrum 
+    v_compl(leave,vehicle,nil,direction). 
+    v_compl(leave,vehicle,between,time). 
+    v_compl(leave,vehicle,during,time). 
+    v_compl(leave,vehicle,for,place). 
+    v_compl(leave,vehicle,from,place).
+    v_compl(leave,vehicle,in,direction). 
+    v_compl(leave,vehicle,in_order_to,thing). 
+    v_compl(leave,vehicle,on,time).
+    v_compl(leave,vehicle,to,place). 
+    v_compl(leave,vehicle,towards,place).  
+    v_compl(leave,vehicle,with,frequency). 
+
+
+
+% iv_templ(lie1,object). %% NOT bus !
+    %% normalverb(lie1,thing). % ligge  
+
+iv_templ(lie1,person). 
+iv_templ(lie1,place).
+iv_templ(lie1,company).  %% TA-991203
+iv_templ(lie1,route_plan).  %% TA-000217
+iv_templ(lie1,block).  %% object).  %% Not bus ! shrdlu block
+    v_compl(lie1,object,below,object). %% TA-000229
+    v_compl(lie1,place,inside,route_plan).  %% rutenettet 
+    v_compl(lie1,place,near,place). 
+    v_compl(lie1,place,around,place).  
+    v_compl(lie1,place,between,place). 
+    v_compl(lie1,thing,on,network). 
+
+iv_templ(lie2,agent).    % lyve
+
+% iv_templ(light,object).     %% normalverb(light,object). % to light ??? TA-991108
+
+iv_templ(listen,agent). 
+    v_compl(listen,agent,to,agent).
+    v_compl(listen,agent,on,agent).  %% Norwagism 
+
+iv_templ(live,agent).   % I live in lade (and) tonight I..%% TA-991105
+
+% EXPERIMENT
+    v_compl(live,agent,in,computer). %% TA-000125 :-)
+    v_compl(live,agent,as,agent).
+    v_compl(live,agent,during,time).  
+                    %% during not standard (for some reason) %% TA-000309
+
+%    v_compl(live,agent,in,year).  %% NOT tonight %% TA-981202 jeg bor på lade (og) i kveld ...
+
+iv_templ(long,person).
+    v_compl(long,person,for,place). 
+    v_compl(long,person,in,place).   %% ( e.g. home Necessary IF Adverbial )
+                                                 %(  nil ??? )
+iv_templ(look,thing). %% appear
+    v_compl(look,thing,like,thing). %% appear
+    v_compl(look,person,at,thing).
+    v_compl(look,person,for,thing). 
+    v_compl(look,person,to,thing).
+    v_compl(look,person,into,thing).
+    v_compl(look,person,after,thing).
+
+iv_templ(lose,person). 
+
+iv_templ(meet2,vehicle).
+
+iv_templ(meet2,agent). 
+
+iv_templ(operate,company).
+iv_templ(operate,system).
+
+iv_templ(park,person). 
+
+% ankomme = reach = pass
+
+
+
+iv_templ(pay,agent). %% without paying
+
+iv_templ(play,person). 
+tv_templ(play,person,game).  %% TA-000616
+    
+    v_compl(play,person,for,country). 
+    v_compl(play,person,on,team).     
+
+iv_templ(point,person).
+    v_compl(point,person,to,place). 
+
+iv_templ(practise,person). 
+    v_compl(practise,person,upon,thing).
+
+iv_templ(proceed,person).  
+
+iv_templ(quit,agent).
+
+iv_templ(rain,weather). 
+iv_templ(snow,weather).  %% TA-000211
+
+iv_templ(read,agent). 
+    v_compl(read,agent,in,document). 
+
+iv_templ(repeat,agent). %% TA-000531 (also trans)
+
+iv_templ(remain,thing).
+
+iv_templ(revolve,thing). 
+    v_compl(revolve,thing,around,thing).
+
+iv_templ(run,bus). % = go  
+    v_compl(run,bus,by,place).
+    v_compl(run,bus,past,place).  
+    v_compl(run,bus,from,place).
+    v_compl(run,bus,on,time). 
+    v_compl(run,bus,between,time).
+    v_compl(run,bus,during,time).  
+    v_compl(run,bus,between,place).   
+    v_compl(run,bus,to,place).
+    v_compl(run,bus,through,place).
+    v_compl(run,bus,in,direction).
+    v_compl(run,bus,nil,direction). 
+    v_compl(run,bus,towards,place).
+
+iv_templ(run,river). % synonym with flow, but only for rivers
+    v_compl(run,river,X,Y):-v_compl(flow,river,X,Y).
+
+tv_templ(run,agent,vehicle). %% Damned hack,  kjøre buss/ , no alt. take/bus %% TA-000808
+tv_templ(run,person,program).
+tv_templ(run,program,version). %% TA-000801
+
+iv_templ(see,agent). %% TA-000128 (i.e. look) Norwagism
+    v_compl(see,agent,on,thing).  %% TA-000128
+
+iv_templ(search,agent). %% TA-990909
+    v_compl(search,agent,after,thing).  %% TA-990909  (Norwagism)
+    v_compl(search,agent,for,thing).    %% TA-990909
+
+iv_templ(serve,person).
+    v_compl(serve,person,under,person).    
+
+iv_templ(shop,person).
+
+% iv_templ(show,vehicle). %% shows up 
+                          %% show usually (bi) transitive
+
+iv_templ(sing,agent).   %% humour
+
+iv_templ(sit,agent). 
+    v_compl(sit,person,beside,person).
+    v_compl(sit,agent,on,company).       %% TA-000903 Norw
+%    v_compl(sit,agent,in,computer).     %%  :-))))
+
+iv_templ(sleep,agent).
+    v_compl(sleep,person,with,person).       %% :-)
+    v_compl(sleep,agent,in,mode).        %% har du sovet godt ?
+
+iv_templ(smile,agent).                       %% :-)
+
+iv_templ(smoke,agent).
+    v_compl(smoke,agent,in,vehicle).
+    v_compl(smoke,agent,on,vehicle). %%  (Norw)
+
+iv_templ(sneak,agent).               %% TA-000907
+    v_compl(sneak,agent,on,vehicle). %% :-( %% TA-000907 (man)
+    v_compl(sneak,agent,to,place).
+    v_compl(sneak,agent,in,vehicle).
+    v_compl(sneak,agent,into,vehicle).
+
+iv_templ(speak,agent). 
+    v_compl(speak,agent,to,agent).
+    v_compl(speak,agent,about,thing). 
+    v_compl(speak,agent,with,agent). 
+    v_compl(speak,agent,regarding,thing). %% TA-000816
+
+iv_templ(stand,thing).
+   v_compl(stand,thing,on,object). %% paper, roof, %% TA-991111
+   v_compl(stand,thing,outside,place). %% object ?
+   v_compl(stand,thing,for,thing). %% abstract %% TA-000831
+
+iv_templ(stay,thing).
+
+iv_templ(study,agent).  tv_templ(study,agent,thing).  %% TA-000807
+
+iv_templ(squeak,animal).
+
+iv_templ(start,file).               
+    v_compl(start,file,with,string).
+iv_templ(start,name).               
+    v_compl(start,name,with,string). 
+iv_templ(start,person). 
+
+iv_templ(start,vehicle).                      
+	 v_compl(start,vehicle,nil,clock). 
+    v_compl(start,vehicle,from,place). 
+
+iv_templ(stop,vehicle).    %  from place is not standard !!!
+    v_compl(stop,vehicle,nil,time_count). 
+	 v_compl(stop,vehicle,nil,clock).           %%  (nil,time not standard anymore)
+    v_compl(stop,vehicle,nil,day).  
+%     v_compl(stop,vehicle,before,place).      %%   CANT TAKE IT ANYWAY
+    v_compl(stop,vehicle,on,day).
+    v_compl(stop,vehicle,between,place). 
+    v_compl(stop,vehicle,near,place). 
+    v_compl(stop,vehicle,on,place). 
+    v_compl(stop,vehicle,with,frequency). 
+
+iv_templ(stop,strike). 
+
+
+iv_templ(strike,agent). 
+iv_templ(strike,bus).  
+iv_templ(strike,company). %% TA-00526
+
+iv_templ(swim,agent). %% not agent %% TA-000121 to allow question :-)
+
+
+iv_templ(think,agent).  
+    v_compl(think,agent,on,thing). 
+
+iv_templ(travel,vehicle). %% TA-991215 travel vehicle = go vehicle 
+    v_compl(travel,vehicle,X,Y):-
+        v_compl(go,vehicle,X,Y).    %% NB NB NB 
+    v_compl(travel,vehicle,in,direction).  
+    v_compl(travel,vehicle,nil,direction).   
+
+iv_templ(travel,person).
+    v_compl(travel,person,X,Y):-   v_compl(go,person,X,Y).    %% NB NB NB 
+    v_compl(travel,person,by,vehicle).
+    v_compl(travel,person,with,vehicle).
+    v_compl(travel,person,on,vehicle).
+    v_compl(travel,person,in,direction).  
+    v_compl(travel,person,nil,direction).   
+
+
+iv_templ(trust,agent). %% Norwagism
+    v_compl(trust,agent,on,thing). 
+
+iv_templ(turn,agent).             %%  ( " henvende (seg) ")
+    v_compl(turn,agent,to,thing). 
+    
+
+iv_templ(wait,person).  
+    v_compl(wait,person,nil,duration).    % wait an hour %% TA-000519
+    v_compl(wait,person,for,vehicle).
+    v_compl(wait,person,in,vehicle). 
+    v_compl(wait,person,on,vehicle).    %%  (Norwagism)
+    v_compl(wait,person,with,duration). %%  (techn:  how long)
+
+iv_templ(walk,person).
+    v_compl(walk,person,during,time). %% TA-000307
+
+iv_templ(win,person).
+
+iv_templ(wonder,agent).  %%   (also rep verb  wonder if )
+
+%% tv_templ(wonder,agent,thing).    %% lure på (hvilke) busser som går
+
+    v_compl(wonder,agent,on,thing).  %% Norwagism  lure på %% TA-000411
+    v_compl(wonder,agent,regarding,thing).   %% TA-990909 ( not about)
+
+%    v_compl(wonder,agent,about,thing).       %% outdated ?
+
+
+iv_templ(work,agent). 
+    v_compl(work,agent,as,agent).      %% TA-000524
+    v_compl(work,agent,at,company).    %% TA-991111
+    v_compl(work,agent,for,company).   %% TA-000126
+    v_compl(work,agent,in,company).    %% TA-000126
+    v_compl(work,agent,for,office).    %% TA-000126
+    v_compl(work,agent,for,agent).  
+    v_compl(work,employee,in,office).
+    v_compl(work,agent,with,thing).   %%  (  company,etc..)
+    v_compl(work,agent,on,place).     %% TA-991115 (Norwagism)
+
+%%%%%%%%% BiModal (SIC) %%%%%%%%%%%%%%%%%%%%%%%%% 
+
+bm_templ(be,cheap). 
+bm_templ(be,dangerous).   %% TA-000908
+bm_templ(be,difficult).   %% TA-000217
+bm_templ(be,easy).        %% TA-000217
+bm_templ(be,expensive).
+bm_templ(be,free). 
+bm_templ(be,funny). 
+
+% bm_templ(be,nice).  %% Facetious   er det hyggelig å ...
+
+bm_templ(be,clever).   %% Too far   er det lurt å ...
+bm_templ(be,safe).     %% TA-000125
+
+bm_templ(cost,money). % it costs money to ...
+bm_templ(take,time).
+bm_templ(last,time).
+bm_templ(pay,person).
+
+%%%%%%%%% BiTransitive Verb templates    %%%%%%%%
+    
+% REMEMBER, NEED TO DEFINE THE TRANSITIVE VERSION WITH PREPOSTIONS  
+
+%% give person thing ==> give thing to person
+
+
+btv_templ(bring,to,agent,thing).    %% agent qua tt agent
+btv_templ(call,pro,agent,thing).    %% TA-990901
+btv_templ(give,to,agent,thing).
+btv_templ(name,pro,animate,name).   %%     (artificial)
+btv_templ(sell,to,person,thing).
+btv_templ(send,to,agent,thing). 
+btv_templ(show,to,agent,thing). 
+% btv_templ(tell,to,agent,thing).   %% tell me a story  , not so relevant as
+                                    %% tell me about 
+
+btv_templ(wish,to,person,thing).    %% I wish you a merry christmas
+
+
+
+%%%%%%%%% Transitive Verb templates    %%%%%%%%
+
+tv_templ(add,person,number).
+    v_compl(add,person,to,number).
+    v_compl(add,person,in,mode).   %% together
+
+tv_templ(admit,hospital,patient).
+     v_compl(admit,hospital,to,ward).
+
+
+tv_templ(answer,agent,question). %%  besvare  %% TA-000109  EXPERIMENT  (answer2?)
+tv_templ(answer,system,question). 
+   
+%% tv_templ(arrive,vehicle,place).   %%  Also transitive ==> reach %% TA-990918
+
+tv_templ(ask,agent,question). %%  Hazard ??? %% Skjønner du hva jeg spør om
+tv_templ(ask,agent,agent).    %% I beg you to go  
+
+tv_templ(avoid,agent,thing).   %% TA-000604
+
+%% be2   Transitive  be
+
+tv_templ(be2,departure,departure). %% a departure is st when i go  (ODD!)
+%    v_compl(be2,departure,in,time). 
+
+tv_templ(be2,vehicle,departure). %% which buses are last departure (SIC) 
+
+tv_templ(be2,time,time).
+%    v_compl(be2,time,in,time). % the time is 1500 now     
+%    v_compl(be2,clock,in,time). 
+%    v_compl(be2,clock,in,place). 
+
+
+tv_templ(be2,vehicle,vehicle). %% the first bus is bus 5 now
+%    v_compl(be2,vehicle,in,time).  
+
+
+tv_templ(befind,thing,thing). %%  I befind myself ... (Norwagism)  
+
+iv_templ(beworry,agent).                %% TA-991108
+    v_compl(beworry,agent,over,thing).  %% TA-991108
+
+tv_templ(belong_to,station,route). %%  (very specific for a start)
+ 
+
+tv_templ(boil,person,liquid).
+tv_templ(boil,person,food).  
+% tv_templ(border,surface,surface).     
+tv_templ(borrow,person,object).
+    v_compl(borrow,person,from,person). 
+
+tv_templ(be_named,thing,thing). %% meta).  No Coercion Syndrome 
+    v_compl(be_named,thing,from,thing).  %% kalles ut ifra Turings test
+    v_compl(be_named,thing,according_to,thing). %% TA-000907
+
+tv_templ(bear1,animate,object).   
+
+
+/*  NEW Structure  fødes = iv
+tv_templ(bear2,woman,agent). %% Just to allow the question when are you born ?? :-)     
+*/
+
+
+tv_templ(beat,person,animate).
+tv_templ(bite,animate,animate).
+tv_templ(break,animate,object).
+
+tv_templ(bring,person,object). %% ta med på bussen
+tv_templ(bring,person,animate). %% ..hund/barn   %% TA-000303 
+tv_templ(bring,person,money). %% thing is too general (COMIX) 
+
+    v_compl(bring,person,on,vehicle). %% take with me on the bus
+
+tv_templ(buy,person,object). 
+    v_compl(buy,person,on,vehicle).
+
+tv_templ(cancel,person,thing). %% (abstract) 
+
+tv_templ(call,agent,thing).  %% call is ambiguous
+% tv_templ(call,person,name).
+    v_compl(call,agent,pro,agent).           %% (artificial)
+    v_compl(call,agent,from,place).
+    v_compl(call,agent,from,vehicle).          %% semi place
+    v_compl(call,agent,for,vehicle).  
+    v_compl(call,agent,after,vehicle).
+    v_compl(call,agent,in_order_to,thing).    
+
+tv_templ(carry,person,thing). 
+
+tv_templ(catch,animate,animate).
+
+tv_templ(cause,person,person). 
+    v_compl(cause,person,nil,person).
+    v_compl(cause,person,about,thing). % ?
+
+iv_templ(change,route_plan). %% TA-000907 
+    v_compl(change,route_plan,to,time).  %% winter/summer  Norw
+
+iv_templ(change,agent).    %% veksle (Norw) %% TA-000901
+tv_templ(change,person,vehicle).  %% TA-000530
+
+    v_compl(change,person,on,vehicle). %%  (Norw)
+
+tv_templ(change,system,thing).     
+    v_compl(change,system,to,thing).
+    v_compl(change,system,for,time). %% change routeplan for summer %% TA-000716
+
+tv_templ(change,agent,thing). 
+    v_compl(change,agent,with,change).
+    v_compl(change,agent,from,bus).           
+    v_compl(change,agent,to,bus).             
+    v_compl(change,agent,between,place). 
+    v_compl(change,agent,nil,time_count).   %% TA-990917 (neste gang)
+    v_compl(change,agent,at,person).  %% veksle hos  (Norw)
+
+% tv_templ(change,departure,departure).  %% endre seg  Norwagism %% TA-000907
+
+tv_templ(change,vehicle,vehicle). %% bus goes without changing bus (SIC) %% TA-000304
+
+   
+
+%%  end change
+
+tv_templ(chase,animate,animate).
+tv_templ(chose,system,analysis).
+
+tv_templ(clean,agent,thing). %% :-) 
+
+    v_compl(clean,agent,with,frequency). 
+
+tv_templ(compare,person,thing).
+    v_compl(compare,person,with,thing).
+
+tv_templ(connect,bus,place).  
+    v_compl(connect,bus,with,place).
+    v_compl(connect,bus,between,time). 
+
+tv_templ(contain,thing,thing).   
+    v_compl(contain,thing,for,information).
+    v_compl(contain,thing,in,abstract).
+
+tv_templ(control,person,thing). 
+
+
+tv_templ(convince,person,person). 
+    v_compl(convince,person,nil,person). 
+
+tv_templ(copy,system,file).            
+    v_compl(copy,system,to,thing).     
+    v_compl(copy,system,into,thing).   
+    v_compl(copy,system,from,directory).
+
+    v_compl(copy,system,to,file).     
+    v_compl(copy,system,into,file).
+    v_compl(copy,system,to,directory). 
+    v_compl(copy,system,into,directory).
+
+tv_templ(correct,agent,error). %% TA-991123
+
+tv_templ(cost,liquid,money). 
+tv_templ(cost,animal,money). %% dog on veh %% TA-000828
+tv_templ(cost,person,money). %% qua passenger %% TA-000818 
+tv_templ(cost,vehicle,money).          %% (also boat,etc)
+    v_compl(cost,thing,for,person).    %%  vehicle/ticket
+    v_compl(cost,thing,for,object). 
+    v_compl(cost,thing,for,animal). 
+    v_compl(cost,thing,in,time).       %% TA-000928
+%    v_compl(cost,thing,in,mode).      %% cost much
+
+tv_templ(cost,trip,money). 
+tv_templ(cost,ticket,money).  
+    v_compl(cost,ticket,for,person). 
+    v_compl(cost,ticket,in,vehicle).    %% TA-000905
+    v_compl(cost,ticket,on,vehicle).    %% (Norwagism)     
+    v_compl(cost,ticket,with,vehicle).  %% (Norwagism) %% TA-000829
+    v_compl(cost,ticket,from,place).    %% TA-000829 (Tech)
+    v_compl(cost,ticket,to,place).      %% TA-000829 (Tech)
+
+tv_templ(cover,system,place). 
+
+tv_templ(create,agent,thing). 
+
+tv_templ(define,agent,thing).         %% TA-000830
+    v_compl(define,agent,with,meta).  %% TA-000830
+
+
+tv_templ(delete,system,thing).   
+
+tv_templ(describe,agent,thing).  abnormalverb(describe,agent). %% TA-000317 
+                                 %%  describe bus 5 at NTH 
+tv_templ(design,person,thing).   
+
+tv_templ(determine,thing,thing).
+tv_templ(dial,agent,number).
+tv_templ(direct,person,question). 
+
+tv_templ(display,system,thing).  
+    v_compl(display,system,in,file). 
+
+tv_templ(do1,vehicle,stop).  %% TA-000926 (activity?)
+tv_templ(do1,agent,activity). 
+    v_compl(do1,agent,for,agent). %% TA-000128
+
+
+tv_templ(draw,person,thing). 
+
+iv_templ(drink,agent).  %% TA-000215 :-)
+tv_templ(drink,agent,liquid).      %% :-) %% TA-000127
+    v_compl(drink,person,in,vehicle). %% TA-000902 ???
+    v_compl(drink,person,on,vehicle). %% TA-000902 ???
+
+iv_templ(drive,vehicle). %% i.e. kjøre/go
+%    v_compl(drive,vehicle,P,Q):- %% TA-000929
+%        v_compl(go,vehicle,P,Q).  
+
+tv_templ(drive,agent,company). %% N: drive %% TA-000929
+
+tv_templ(drive,agent,vehicle). %% driver
+
+tv_templ(drive,vehicle,person). 
+    v_compl(drive,vehicle,from,place).      
+    v_compl(drive,vehicle,between,time). 
+    v_compl(drive,vehicle,during,time).  
+    v_compl(drive,vehicle,between,place).  
+    v_compl(drive,vehicle,to,place).        
+    v_compl(drive,vehicle,by,place).  
+    v_compl(drive,vehicle,through,place). 
+    v_compl(drive,vehicle,in,direction). 
+    v_compl(drive,vehicle,nil,direction). 
+    v_compl(drive,vehicle,towards,place). 
+    v_compl(drive,vehicle,for,place). 
+    v_compl(drive,vehicle,past,place). 
+    v_compl(drive,vehicle,into,place). 
+    v_compl(drive,vehicle,out_of,place).
+    v_compl(drive,vehicle,with,frequency).
+    v_compl(drive,vehicle,with,speed). 
+
+tv_templ(drive,bus,route).  
+
+tv_templ(drive,company,route).  %% figure of speech 
+
+
+tv_templ(earn,agent,money).      %%  :-)     
+
+iv_templ(eat,agent).             %% TA-000901
+tv_templ(eat,agent,food).        %% :-) %% TA-000716
+   v_compl(eat,agent,in,vehicle).  %% TA-000828 Facetious
+   v_compl(eat,agent,on,vehicle).  %% TA-000828
+   v_compl(eat,person,to,noon).    %% TA-000901 Norw til middag (dinner)
+
+tv_templ(ensure,person,abstract).
+tv_templ(exceed,measure,measure).    
+tv_templ(expect,agent,thing). %% ?? 
+
+tv_templ(explain,agent,thing).  %% TA-001010
+    v_compl(explain,agent,to,agent).  %% TA-001010
+
+tv_templ(fetch,agent,thing). 
+    v_compl(fetch,agent,from,place). 
+    v_compl(fetch,agent,on,place). 
+    v_compl(fetch,agent,from,agent). 
+    v_compl(fetch,agent,nil,time).
+
+
+tv_templ(find,agent,thing).    
+    v_compl(find,agent,nil,clock).     %% TA-000928
+    v_compl(find,agent,between,thing). %% TA-000621
+    v_compl(find,agent,in,thing).
+    v_compl(find,agent,on,thing). %%  (e.g. Internet)
+%    v_compl(find,agent,in,place). %% find out
+    v_compl(find,agent,regarding,thing). 
+    v_compl(find,agent,past,place). %% 
+    v_compl(find,agent,past,route). %% etc
+    v_compl(find,agent,for,agent). %% TA-000903
+    v_compl(find,agent,to,agent). %% TA-000903  Norw  
+
+tv_templ(fool,agent,agent). %% TA-000120
+
+tv_templ(forget,agent,thing). 
+
+tv_templ(get,agent,activity).
+% tv_templ(get,agent,information).  % = receive
+
+tv_templ(get,agent,object).     %%  TA-990923 (  get,animate,thing is too general)  
+
+tv_templ(get,person,transfer). 
+    v_compl(get,person,on,place).
+
+tv_templ(give,agent,thing).
+tv_templ(give,company,thing). %% TA-001001
+
+    v_compl(give,agent,to,agent). %%  (ref show)
+%     v_compl(give,agent,for,thing). %% Most probably, for thing is a noun complement
+
+tv_templ(go1,person,person). %% Norwagism ( komme seg ) 
+    %% normalverb(go1,person).  
+    v_compl(go1,X,Y,Z) :-
+        v_compl(go,X,Y,Z).  
+
+
+tv_templ(go2,bus,route).      %%  bus 5 goes bus 6 *
+     v_compl(go2,bus,nil,direction).  %% buss følger rute  %% TA-000218
+                                      %% motsatt retning  
+     v_compl(go2,bus,in,time). 
+                              %% This is WRONG , but the alternative
+                              %% is worse (a minute's silence)
+                              % når går neste buss fra mellomvn. 5 mot byen.
+tv_templ(go2,bus,route_plan).  %% trase 
+
+tv_templ(greet,agent,agent).   %% TA-000130
+
+tv_templ(hate,agent,thing). %% allow question %% TA-991111    
+
+tv_templ(hear,person,thing). 
+
+tv_templ(help,agent,agent). 
+    v_compl(help,agent,with,thing).
+
+tv_templ(hire,person,person). 
+tv_templ(hire,agent,vehicle).  %% TA-000619
+
+tv_templ(hurt,person,animate).    
+tv_templ(hurt,person,feeling).    
+tv_templ(improve,person,thing).
+    v_compl(improve,person,with,thing).
+
+tv_templ(include,person,thing).
+
+iv_templ(increase,price).          %% TA-000907
+tv_templ(increase,agent,price).  %% TA-000906
+tv_templ(increase,company,price).
+
+tv_templ(interview,person,person). 
+
+tv_templ(kill,agent,animate).       %%  whoq demands agent 
+    v_compl(kill,agent,with,weapon).   %% not person. type chex forbids %% TA-000407
+                                    %% type specialization as a side
+                                    %% effect  (Gun syndrome)
+
+tv_templ(kiss,agent,animate).       %% agent ==> who q
+
+
+tv_templ(knowthing,agent,thing).                %% (kjenne)
+    v_compl(knowthing,agent,about,thing).       %% outdated ?
+    v_compl(knowthing,agent,regarding,thing).   %% TA-990909 ( not about)
+
+tv_templ(label,company,vehicle).  %% TA-000512
+    v_compl(label,company,with,number). %% TA-000512
+tv_templ(last,activity,time). 
+tv_templ(last,vehicle,time). %% e.g. bus tour %% TA-000929 
+tv_templ(last,ticket,time).    %% TA-000215
+tv_templ(last,transfer,time).  %% TA-000215
+
+tv_templ(lay,agent,agent). 
+
+tv_templ(lead,person,animate). 
+
+%% LEAVE 
+
+%% NB leave2 is Norwagism (forlate) and is strictly transitive 
+
+tv_templ(leave2,person,thing).   %% Norwagism (forlate)
+tv_templ(leave2,vehicle,place).  %% Norwagism (forlate)
+    v_compl(leave2,A,B,C):-
+        v_compl(leave,A,B,C).
+
+tv_templ(leave,person,thing).  
+tv_templ(leave,vehicle,place). 
+
+
+
+iv_templ(let,agent,thing).      %% TA-991102 %% NB intransitive
+    v_compl(let,agent,in_order_to,thing). 
+
+% tv_templ(let,vehicle,place).    %% normalverb(let,vehicle). %% TA-991102 ??? 
+
+
+
+tv_templ(like,agent,thing). 
+
+tv_templ(list,agent,thing). 
+    v_compl(list,agent,after,place).
+    v_compl(list,agent,before,place).
+    v_compl(list,agent,for,information).
+    v_compl(list,agent,for,demonstration).
+    v_compl(list,agent,in,order).
+    v_compl(list,agent,with,header).
+    v_compl(list,agent,with,summary).  
+                                       % find synonym with list ( wise ???)
+tv_templ(locate,system,object).   
+tv_templ(log,agent,information). 
+tv_templ(lose,person,thing). 
+tv_templ(lose,company,money). 
+tv_templ(love,agent,person).  %% TA-000201 :-) %% subject must be agent : who
+
+tv_templ(make,agent,thing). 
+    v_compl(make,agent,nil,place). %% make up %% TA-001005
+    v_compl(make,agent,on,place).  %% Norwagism %% TA-000109
+    v_compl(make,agent,with,agent). %% e.g. jokes
+    v_compl(make,agent,in,language). %% (passive  sensitive to exact class)
+    v_compl(make,agent,with,language). %% TA-000905
+    v_compl(make,agent,for,thing). %% TA-000902  agent sup company
+    v_compl(make,agent,of,thing). %% TA-001013  Steel is made of iron
+
+tv_templ(make,system,thing). 
+tv_templ(make,person,love).
+    v_compl(make,person,to,person).   %-)
+    v_compl(make,person,with,person). % (?)
+
+tv_templ(manage,agent,test). %% TA-000903   
+    tv_templ(consist,agent,test). %% TA-000903 %% Ambiguous bestå (HACK :-)
+              
+tv_templ(manage,person,department).
+    v_compl(manage,employee,in,office).
+
+iv_templ(marry,person).
+tv_templ(marry,person,person).     %% what a priest does
+tv_templ(match,set,set).     
+
+
+tv_templ(mean,thing,meta). 
+    v_compl(mean,agent,by,thing).        %% TA-000716 
+    v_compl(mean,agent,with,thing).      %% TA-000716  Norwagism 
+    v_compl(mean,agent,regarding,thing). %% TA-000802
+
+tv_templ(meet,agent,agent). %% TA-000929
+% tv_templ(meet,person,person).
+
+tv_templ(meet,vehicle,vehicle). 
+
+tv_templ(miss,person,person). 
+tv_templ(modify,person,thing).    
+tv_templ(move,system,file).      
+    v_compl(move,system,to,file). 
+    v_compl(move,system,to,directory).
+tv_templ(name,person,name).
+    v_compl(name,person,pro,animate). 
+
+
+
+%%%% tv_templ(overlook,person,thing).
+
+tv_templ(own,agent,object).  %% TA-991220       
+tv_templ(own,agent,program). %% TA-991220
+tv_templ(own,agent,room).    %% TA-991220   
+tv_templ(own,agent,company). %%  :-) 
+tv_templ(own,company,vehicle). %% TA-000301
+tv_templ(own,agent,vehicle). %% qua company  %% TA-000901
+
+tv_templ(park,driver,vehicle).
+
+tv_templ(pay,person,money). 
+    v_compl(pay,person,with,card). %% TA-990924
+    v_compl(pay,person,with,money). %% TA-990924
+
+%% PASS section
+
+
+tv_templ(pass,departure,place). %% TA-991130  (slightly incorrect) Norwagism
+tv_templ(pass,number,place).    %% TA-001017  ( does 60 (#) pass Lerkendal ?)
+tv_templ(pass,person,place). %%   Also intransitive
+tv_templ(pass,vehicle,place). %%   Also intransitive
+tv_templ(pass,person,person). %% E.G visit , but pass/visit syndrome
+                              %% ambiguity of besøke, pass is accepted
+										%% because also transitive
+
+%% tv_templ(pass,company,place).  %% buscompany qua bus %% TA-000615 Miss point
+
+iv_templ(pass,person). %% Also transitive          
+     v_compl(pass,person,at,departure).  %% pass NTH ved avreise  (Norwagism ???) 
+     v_compl(pass,person,by,place).                
+     v_compl(pass,person,past,place). 
+     v_compl(pass,person,between,time).            
+     v_compl(pass,person,during,time).  
+     v_compl(pass,person,in,direction).            
+     v_compl(pass,person,nil,direction). 
+     v_compl(pass,person,towards,place).  
+     v_compl(pass,person,by,vehicle). 
+     v_compl(pass,person,from,place).
+     v_compl(pass,person,to,place).
+     v_compl(pass,person,with,vehicle). 
+     v_compl(pass,person,with,departure).  %% from somewhere else
+     v_compl(pass,person,withafter,time). 
+	  v_compl(pass,person,for,place). 
+     v_compl(pass,person,being_the,activity). %% TA-000224 
+
+iv_templ(pass,vehicle). %% Also transitive 
+
+     v_compl(pass,vehicle,nil,date). 
+     v_compl(pass,vehicle,nil,hour). 
+     v_compl(pass,vehicle,nil,daypart). 
+
+     v_compl(pass,vehicle,nil,time_count). 
+     v_compl(pass,vehicle,nil,direction). 
+     v_compl(pass,vehicle,nil,clock). 
+     v_compl(pass,vehicle,nil,day).                %% passes each day ?
+     v_compl(pass,vehicle,before,place). 
+     v_compl(pass,vehicle,between,place). 
+     v_compl(pass,vehicle,between,time).  
+     v_compl(pass,vehicle,during,time). 
+     v_compl(pass,vehicle,for,time_count).          %% (Norwagism  for siste gang)
+	  v_compl(pass,vehicle,for,place). 
+%      v_compl(pass,vehicle,for,time).                %% gang !!! timecount ?
+     v_compl(pass,vehicle,from,place). 
+     v_compl(pass,vehicle,in,direction).  
+     v_compl(pass,vehicle,near,place). 
+     v_compl(pass,vehicle,on,date).  
+     v_compl(pass,vehicle,on,day).  
+     v_compl(pass,vehicle,on,direction). 
+     v_compl(pass,vehicle,on,time). 
+     v_compl(pass,vehicle,past,place).  
+     v_compl(pass,vehicle,through,place). 
+     v_compl(pass,vehicle,to,place).      
+     v_compl(pass,vehicle,to,clock). %% from 16:00 to 17:00      
+     v_compl(pass,vehicle,towards,place). 
+     v_compl(pass,vehicle,with,arrival).  
+     v_compl(pass,vehicle,within,clock). 
+     v_compl(pass,vehicle,with,departure).  
+     v_compl(pass,vehicle,with,direction). 
+     v_compl(pass,vehicle,with,frequency).  
+ 
+     v_compl(pass,vehicle,within,hour).  
+     v_compl(pass,vehicle,within,quarter).  
+
+     v_compl(pass,vehicle,withafter,duration).  
+
+%     v_compl(pass,vehicle,by,place).    %% --> past
+
+%%% End pass
+
+tv_templ(pay,person,money).    
+tv_templ(pay,person,ticket). 
+    v_compl(pay,person,between,place).
+    v_compl(pay,person,for,person). 
+    v_compl(pay,person,from,place). 
+    v_compl(pay,person,in_order_to,thing). 
+    v_compl(pay,person,on,vehicle).   
+    v_compl(pay,person,to,place). 
+
+tv_templ(pay,person,attention).
+    v_compl(pay,person,to,thing).
+
+tv_templ(perform,system,command).
+
+tv_templ(pick,agent,object).
+tv_templ(position,person,object).
+   v_compl(position,person,to,place).
+
+tv_templ(press,person,thing). 
+
+tv_templ(print,system,thing).
+     v_compl(print,system,on,printer). 
+
+tv_templ(process,system,question). 
+tv_templ(provide,person,thing).
+tv_templ(pull,person,thing).
+tv_templ(push,person,thing). 
+tv_templ(put,agent,thing).
+    v_compl(put,agent,upon,thing). 
+
+% NB reach  ( ankomme ) %% Norwagism        %% TA-990916
+
+
+% +++ The following is possibly duplicate
+
+tv_templ(reach,X,Y):-tv_templ(pass,X,Y).         %% TA-990917
+    v_compl(reach,X,Y,Z):-  v_compl(pass,X,Y,Z). %% TA-990917
+
+tv_templ(reach,bus,place).         %% vehicle ?
+    v_compl(reach,bus,nil,clock). 
+	 v_compl(reach,bus,between,time).
+
+iv_templ(reach,person). %% Norwagism  rekke ned til stasjonen %% TA-000522
+% jeg rekker en avtale ved nth = jeg rekker ved nth (en avtale)
+% Alternativ  % rekke ned/opp/bort til = go
+
+
+tv_templ(reach,person,thing).
+    v_compl(reach,person,nil,clock). 
+	 v_compl(reach,person,between,time).
+    v_compl(reach,person,by,vehicle).
+    v_compl(reach,person,with,vehicle).
+    v_compl(reach,person,being_the,activity).  %% TA-000224
+
+% +++
+
+tv_templ(read,agent,document). % also intransitive 
+tv_templ(read,agent,route).      %% e.g. route_plan
+tv_templ(read,agent,route_plan). %% TA-991228
+
+tv_templ(receive,agent,thing).      %%  ( Norw. 'få' )
+    v_compl(receive,agent,on,vehicle). %% placoide %% TA-000807    
+
+tv_templ(recognise,processor,word).
+tv_templ(recommend,agent,thing).  
+
+tv_templ(remove,system,thing).     %% remove is reserved in sicstus, gives funny print
+    v_compl(remove,system,from,printqueue).
+    v_compl(remove,system,nil,time).  
+
+tv_templ(rename,system,file).  
+    v_compl(rename,system,to,file).
+
+tv_templ(repair,person,circuit).
+tv_templ(repair,person,object).  % rather fix, really
+    v_compl(repair,person,with,glue). 
+
+tv_templ(repair,person,equipment).
+tv_templ(repair,person,fault).
+
+tv_templ(repeat,agent,activity). 
+tv_templ(repeat,agent,sentence). 
+tv_templ(repeat,agent,agent).  %%   repeat oneself
+
+tv_templ(return,system,solution).
+
+
+tv_templ(say,agent,thing). %% TA-000309 tell?
+
+tv_templ(score,person,goal).       
+    v_compl(score,player,against,team).   
+    v_compl(score,player,in,match).   
+
+
+tv_templ(see,agent,thing).
+    v_compl(see,person,with,telescope).
+
+tv_templ(sell,agent,thing). %%  ( no instantiation person -> agent )
+    v_compl(sell,agent,to,agent).
+    v_compl(sell,agent,on,vehicle).  %% TA-000903
+
+tv_templ(send,agent,thing). 
+    v_compl(send,agent,to,place). 
+    v_compl(send,agent,to,person). 
+
+tv_templ(send,system,file).          
+    v_compl(send,system,to,printer). 
+
+tv_templ(serve,bus,place).
+       
+tv_templ(set,person,person). 
+    v_compl(set,person,in,mode).
+
+tv_templ(set,agent,protection).
+    v_compl(set,agent,on,thing). % set protection
+    v_compl(set,agent,for,thing).
+    v_compl(set,agent,to,meta).
+
+tv_templ(shoot,person,animate).  
+    v_compl(shoot,person,with,gun).
+
+tv_templ(show,agent,thing). 
+    v_compl(show,agent,to,agent).
+
+tv_templ(sing,person,song). 
+
+iv_templ(sit,person). 
+
+tv_templ(slip ,agent,thing). %% Norwagism  slippe %% TA-991104  don't have (to)
+
+tv_templ(smell,agent,thing). 
+
+tv_templ(solve,person,problem). 
+
+tv_templ(speak,agent,language). 
+
+tv_templ(split,person,text).
+
+tv_templ(start,company,route_plan).  %% TA-000926
+tv_templ(start,person,activity). %% thing overgeneralised 
+                                 % I start to go 1730 ==> 
+                                 % I start to go and start 1730
+tv_templ(start,agent,company).   %% TA-000216
+    v_compl(start,agent,with,thing). %% sommertid  %% TA-000614
+tv_templ(stop,agent,vehicle). %% TA-000515 ( by signal ?) 
+
+
+tv_templ(store,system,statement).
+
+tv_templ(support,object,object).  %% TA-000229
+
+
+% TAKE  begin
+
+tv_templ(take,agent,activity). %%  (not thing)
+
+tv_templ(take,agent,self).      %%  :-) take me to your leader
+%                               %% not jeg vil kjøre en bussjåfør.
+
+tv_templ(take,agent,error).  %% Du tar feil  :-)
+
+tv_templ(take,agent,animal).   % ta hunden på bussen %% TA-000928 
+tv_templ(take,agent,number).   % qua vehicle         %% TA-001019
+tv_templ(take,agent,object).   % not thing, (=> person) %% e.g. cat takes bus
+tv_templ(take,agent,vacation). %% TA-000528
+
+    v_compl(take,agent,nil,clock). 
+    v_compl(take,agent,nil,daypart).       %%  take bus sunday evening
+    v_compl(take,agent,nil,date). 
+    v_compl(take,agent,nil,day).
+    v_compl(take,agent,nil,place).         %% TA-990923  (hvor kan jeg ta bussen) 
+    v_compl(take,agent,nil,time_count).    %% TA-000131
+
+% hvilken rute skal jeg ta fra S1 S2  
+
+    v_compl(take,agent,being_the,activity). %% TA-000224
+    v_compl(take,agent,between,place).     %% TA-991201  ta seg fram mellom 
+    v_compl(take,agent,between,time). 
+    v_compl(take,agent,during2,time).      %% TA-001016
+    v_compl(take,agent,from,person).       %%  (take bus from )
+    v_compl(take,agent,from,place). 
+	 v_compl(take,agent,in,direction). 
+    v_compl(take,agent,in,way).  
+    v_compl(take,agent,in_order_to,thing). %% ??????
+    v_compl(take,agent,near,place). 
+    v_compl(take,agent,on,date).           %%  take bus
+    v_compl(take,agent,on,day). 
+    v_compl(take,agent,on,place).          %%  (Norwagism)
+    v_compl(take,agent,on,vehicle).          %% TA-00928
+    v_compl(take,agent,to,person).         %%  (take bus to )
+	 v_compl(take,agent,to,place).
+    v_compl(take,agent,to,clock).           %% TA-991216 ( i.e. before )
+    v_compl(take,agent,with,company). %% e.g. TT    
+    v_compl(take,agent,with,duration).     %% TA-000314
+    v_compl(take,agent,with,vehicle).      %% take time with bus %% TA-000830
+    v_compl(take,agent,withafter,time). 
+    v_compl(take,agent,without,ticket).   %% TA-000831
+
+tv_templ(take,vehicle,agent).  %% take me to NTH  %% TA-000613 bus -> vehicle
+
+tv_templ(take,vehicle,duration).   %% -thing  vehicle takes sunday *
+                               %% -time , passenger bussen tar kl 1500 *
+
+    v_compl(take,vehicle,between,time). %% standard ?? %% TA-991208 
+    v_compl(take,vehicle,from,place).  
+	 v_compl(take,vehicle,to,place).  
+    v_compl(take,vehicle,in_order_to,thing). 
+
+tv_templ(take,vehicle,class). %% TA-000613
+
+tv_templ(take,vehicle,route).  %% bussen tar veien %% TA-990909 (Norwagism)
+    v_compl(take,vehicle,past,place). %% TA-990909
+
+
+tv_templ(take,driver,person).  %% variant
+
+% TAKE  end
+
+
+iv_templ(teach,person).                 %% TA-000815
+tv_templ(teach,person,subject).         %% professor
+    v_compl(teach,person,to,student).
+    v_compl(teach,person,nil,clock).    %% TA-000815
+
+
+iv_templ(tell,agent).  %% also answer
+    v_compl(tell,agent,to,agent).  %% tell to mary 
+    v_compl(tell,agent,nil,agent). %% tell mary
+    v_compl(tell,agent,about,thing).  %% DANGEROUS   tell that 
+    v_compl(tell,agent,in,mode).      %%  e.g. wrongly
+    v_compl(tell,agent,on,thing).  %% (Norwagism) svare på
+    v_compl(tell,agent,regarding,thing). 
+    v_compl(tell,agent,being_the,reason). 
+    v_compl(tell,agent,because_of,reason). 
+
+tv_templ(tell,agent,departure). 
+tv_templ(tell,agent,place). %%  tuc sier hvor bussen går = tell a place 
+tv_templ(tell,agent,sentence). %% TA-000310
+tv_templ(tell,agent,time).  %%  tuc sier når bussen går = tell a place 
+tv_templ(tell,agent,vehicle). %% si bussene ???
+tv_templ(tell,agent,meta).    %% name? %% TA-000716
+tv_templ(tell,agent,route_plan). %% TA-000808 (?)
+
+tv_templ(test,agent,thing). %% TA-990929
+
+tv_templ(throw,person,thing).
+
+tv_templ(translate,system,statement). 
+tv_templ(translate,system,text). 
+tv_templ(translate,system,language).
+
+tv_templ(treat,company,agent). %% TA-000804
+tv_templ(treat,doctor,patient).
+tv_templ(treat,system,text).
+    v_compl(treat,system,in,thing).
+
+tv_templ(turn,agent,object). 
+
+tv_templ(type,person,text).
+
+tv_templ(understand,agent,thing). 
+    v_compl(understand,agent,in,case). 
+    v_compl(understand,agent,as,thing).
+
+
+tv_templ(update,agent,information). 
+tv_templ(update,agent,price).   
+tv_templ(update,agent,route).
+tv_templ(update,agent,route_plan).
+tv_templ(update,person,program).  %% agent agent ?
+
+tv_templ(use,vehicle,station). %% i.e. pass 
+
+tv_templ(use,vehicle,time). 
+    v_compl(use,vehicle,between,place).  
+    v_compl(use,vehicle,from,place).
+    v_compl(use,vehicle,to,place).
+	 v_compl(use,vehicle,in_order_to,thing). 
+
+
+tv_templ(use,agent,thing). 
+	 v_compl(use,agent,between,place).  
+	 v_compl(use,agent,from,place).   
+    v_compl(use,agent,in,activity).
+    v_compl(use,agent,in,company).   %% TA-000922
+    v_compl(use,agent,on,vehicle).   %% TA-000130
+	 v_compl(use,agent,to,place).   
+    v_compl(use,agent,with,thing).
+    v_compl(use,agent,without,thing).
+
+% v_compl(use,system,as,thing).
+
+
+tv_templ(use,vehicle,fuel).
+
+tv_templ(visit,person,person).
+tv_templ(visit,person,place).
+
+tv_templ(wake,agent,agent).    %%   :-)  
+
+tv_templ(want,company,thing). 
+tv_templ(want,agent,thing). 
+    v_compl(want,agent,nil,clock).  %% need a bus 0815 
+
+tv_templ(wash,person,route). %% :-)
+tv_templ(watch,person,thing).
+
+tv_templ(weigh,vehicle,weight). 
+
+tv_templ(wish,person,thing).
+    v_compl(wish,thing,to,agent).   
+
+iv_templ(write,agent).       %% TA-000830
+tv_templ(write,agent,thing). % well,   software, file, letter, etc.
+    v_compl(write,agent,in,language).
+    v_compl(write,agent,in,file).
+    v_compl(write,agent,from,place).
+%     v_compl(write,agent,in,heading). % nec?
+
+%%%%%%%% Embedding verb Template %%%%%%%%%%%%%
+
+% Reporting Verbs that take statements as complements
+
+% ordinary
+
+that_templ(V,P) :- rv_templ(V,P).  %% For Compatibility
+
+%% Reporting Verbs (rv)
+
+
+rv_templ(ask,agent). %% TA-991103   
+    v_compl(ask,agent,nil,agent). %% allows  john asked to mary  TA-991103  
+
+rv_templ(arrange,person). 
+    v_compl(arrange,person,with,person).
+
+rv_templ(be_free,agent). %% ( NEW "verb" ( lar  være gratis))
+
+rv_templ(believe,agent).
+
+rv_templ(bet,person).
+     v_compl(bet,person,nil,person).
+     v_compl(bet,person,nil,money). %% bet one pound that
+
+rv_templ(cause,person).
+
+rv_templ(consider,person). 
+    v_compl(consider,person,nil,person).
+    v_compl(consider,person,as,thing). 
+
+rv_templ(convince,person).
+    v_compl(convince,person,nil,person).
+
+rv_templ(deny,person).
+rv_templ(discover,person).  
+rv_templ(doubt,person).
+
+
+rv_templ(explain,person).
+    v_compl(explain,person,to,person). 
+
+rv_templ(fail,person). 
+rv_templ(feel,person). 
+rv_templ(find,person). 
+
+rv_templ(test,agent).  %% TA-990929  test if ...
+
+% have complements should have the first complement as parameter
+%  bus have (departure) from station, but
+%  sometimes, this cannot be solved by noun complements  (departure from station)
+%  as in  what is the departures that the bus have from the station 
+
+v_compl(have,thing,in,time).  
+v_compl(have,agent,on,ticket).    %% agent has price on ticket (++)
+v_compl(have,person,on,self).     %% penger på seg %% TA-000908
+v_compl(have,vehicle,from,place). 
+v_compl(have,vehicle,at,place).    %% Hvilke passeringer har buss nr. 44 ved prof. Brochs gate 
+
+v_compl(have,company,with,place).   %% tt har bussforbindelse med utlandet %% TA-990915
+v_compl(have,company,outside,place). %% TA-990915
+
+
+rv_templ(hear,agent).   %%  he heard  her leave 
+rv_templ(help,agent).  
+
+
+rv_templ(hope,person).
+rv_templ(know,agent).   
+
+v_compl(know,agent,nil,day). 
+v_compl(know,agent,nil,date).
+
+rv_templ(let,agent). 
+
+rv_templ(lie2,agent). 
+    v_compl(lie2,agent,to,agent).
+
+rv_templ(like,agent). 
+
+rv_templ(make,agent).    %% Made to be %% -> agent .... %% TA-000903
+rv_templ(manage,agent).   %% TA-000903 
+rv_templ(mean,agent).
+
+rv_templ(promise,agent).
+    v_compl(promise,agent,nil,agent).
+
+
+rv_templ(prove,agent).      
+rv_templ(regard,person).
+    v_compl(regard,person,nil,person). 
+
+rv_templ(remember,person).
+rv_templ(say,agent).
+    v_compl(say,person,to,person).
+rv_templ(see,person).       
+rv_templ(seem,person).
+rv_templ(slip,agent). %% Norwagism = Don' have (to)
+rv_templ(start,person).
+rv_templ(tell,agent). 
+
+rv_templ(think,agent).  %% think possible
+
+rv_templ(try,agent). 
+
+rv_templ(understand,agent).
+
+rv_templ(urge,person).
+    v_compl(urge,person,nil,person). 
+
+rv_templ(want,person). %% need is reserved for plain tranitive verb      
+rv_templ(wish,person).      
+rv_templ(wonder,person).
+
+%%%%%%% Regular adjectives %%%%%%%%%%%%%%%%
+
+
+%% a_compl    semantic.pl
+%% adj_compl  fernando.pl
+
+adj_templ(Ordinal,thing) :- %% object ?  hvem var de første menneskene ? (trytofool)
+    ordinal(Ordinal,_).  
+
+adj_templ(accepted,language).
+adj_templ(acceptable,sentence).
+adj_templ(adult,agent).         %% TA-000828  NB Also noun  
+                                %% Når er man voksen
+
+adj_templ(affected,thing). %% maybe tv ?
+adj_templ(afraid,agent).         %% TA-000615
+    a_compl(afraid,agent,for,thing). %% Norw
+    a_compl(afraid,agent,of,thing).  %% Eng
+adj_templ(african,thing).
+adj_templ(alive,thing).  
+adj_templ(alone,thing).   %% TA-000214
+adj_templ(ambiguous,sentence).
+adj_templ(american,thing). 
+adj_templ(angry,person). 
+adj_templ(artificial,thing).  %% TA-000903
+adj_templ(asian,thing).
+adj_templ(at_home,agent).        %%  ,person   (Norwagism) %% TA-000410 
+adj_templ(australian,thing).  
+adj_templ(automatic,activity).
+adj_templ(available,thing).  
+    a_compl(available,thing,from,place). %% NOT STANDARD
+    a_compl(available,thing,to,place).   %% NOT STANDARD
+    a_compl(available,thing,on,day).
+adj_templ(awake,thing).   %% TA-000221
+
+adj_templ(bad,thing). 
+    a_compl(bad,thing,for,agent). %% dårlig til å være 
+adj_templ(beautiful,agent). %% TA-991211 :-) 
+adj_templ(beautiful,weather). %% thing ?  TA-000125
+
+adj_templ(best,thing).
+   a_compl(best,agent,in,place). %% you are best in the world 
+   a_compl(best,vehicle,from,place). %% standard ???? %% TA-000929
+   a_compl(best,vehicle,to,place).   %% standard ???? %% TA-000929
+
+adj_templ(better,thing).
+adj_templ(black,thing). %% object , but who cares
+
+adj_templ(blue,object). %% TA-000121 (and the other colours)  not thing
+adj_templ(bright,object). 
+adj_templ(brown,thing). 
+adj_templ(central,place). 
+adj_templ(certain,thing). 
+    a_compl(certain,thing,on,thing). 
+adj_templ(change,thing).
+    a_compl(change,thing,nil,time_count). %% TA-990918 (?)
+adj_templ(cheap,thing). 
+    a_compl(cheap,thing,for,agent). %% TA-000906
+adj_templ(clever,agent). 
+adj_templ(closed,thing). 
+adj_templ(coloured,thing).
+adj_templ(cool,thing). 
+adj_templ(cold,weather).
+    a_compl(cold,weather,in,place). 
+adj_templ(common,thing).
+adj_templ(correct,information). 
+adj_templ(corresponding,vehicle). 
+adj_templ(crude,oil).         
+adj_templ(current,abstract).
+adj_templ(current,place).       
+adj_templ(current,time).        
+
+adj_templ(daily,boss). %% day_to_day, but daily is more general
+adj_templ(daily,vehicle). 
+adj_templ(daily,departure).  %% TA-000303
+adj_templ(dangerous,activity).  %% TA-000908
+adj_templ(danish,thing).     %% TA-000323
+adj_templ(dark,thing).
+adj_templ(depressed,agent).   %% TA-991114
+adj_templ(dead,agent). 
+adj_templ(delayed,vehicle). 
+    a_compl(delayed,vehicle,from,place). %% nonstandard for some reason %% TA-990915
+    a_compl(delayed,vehicle,with,frequency).                   %% TA-990915
+    a_compl(delayed,vehicle,to,place).  %%     (not standard ?)    %% TA-000303
+
+adj_templ(direct,bus).  
+adj_templ(different,thing).
+adj_templ(difficult,thing). 
+    a_compl(difficult,thing,on,place). %% :-) %% TA-000605
+adj_templ(digital,equipment).
+adj_templ(divorced,person).
+adj_templ(down,program).      %% DOWN 
+adj_templ(drunk,agent).
+
+adj_templ(early,part).    %% TA-000925
+adj_templ(early,vehicle). %% NOT place %% TA-991216
+adj_templ(early,time).    %% etc
+adj_templ(easy,thing). 
+adj_templ(eastern,area).
+adj_templ(electronic,information). %% TA-000807 (e.g. map)
+adj_templ(electric,vehicle).       %% TA-000905
+adj_templ(empty,vehicle).          %% TA-000903
+    a_compl(empty,vehicle,for,fuel).  %% TA-000921
+adj_templ(english,thing). 
+adj_templ(equal,thing). %% set), % buses go at the same time %% TA-000302
+adj_templ(european,thing).
+adj_templ(expensive,thing).  
+    a_compl(expensive,thing,with,thing). %% TA-000614
+    a_compl(expensive,thing,for,agent).  %% TA-000905
+
+adj_templ(experienced,agent). 
+
+adj_templ(fast,thing). 
+adj_templ(faster,thing).
+adj_templ(fastest,thing). 
+adj_templ(favourite, thing). 
+adj_templ(female,person).    
+%% adj_templ(fine,weather). %% = good ?
+adj_templ(finished,thing).  
+    a_compl(finished,thing,on,thing).  %% Norwagism  slutt på sommeren %% TA-000817
+adj_templ(first,time_count). %%  (necessary ?)
+adj_templ(fixed,time).       %% TA-000302
+adj_templ(free,thing). %%   e.g. free_of_charge
+adj_templ(french,thing).   
+adj_templ(full,vehicle). 
+adj_templ(full,place).   %% TA-000310
+    a_compl(full,place,with,thing). %% TA-000310
+    a_compl(full,place,off,thing).  %% TA-000310 (av)
+adj_templ(funny,thing).  %%   :-)
+
+adj_templ(general,abstract).
+adj_templ(general,program).
+adj_templ(general,information).
+
+adj_templ(good,thing).  % Experiment     %% TA-990921
+    a_compl(good,weather,in,time). 
+    a_compl(good,agent,in,place).
+    a_compl(good,thing,for,thing).       %% TA-000925
+
+
+adj_templ(grateful,person).  %% TA-001016
+    a_compl(grateful,person,for,thing). %% TA-001016
+
+
+%% adj_templ(great,thing). %% -> stor rosten
+
+adj_templ(great,thing).  %% TA-000907
+
+/*
+adj_templ(great,agent).    %%  :-)
+adj_templ(great,object).  
+adj_templ(great,number). 
+adj_templ(great,city). 
+*/
+
+
+adj_templ(green,thing).
+adj_templ(grey,thing).
+
+% adj_templ(half,thing).       %% TA-000419  Confuses  halv tre
+adj_templ(half,hour).          %% bus goes a half hour %% TA-000524
+
+adj_templ(happy,agent). 
+    a_compl(happy,agent,in,agent). %% i.e. glad i ( Norwagism)
+ 
+adj_templ(heavy,thing).   %% object/person  etc
+    a_compl(heavy,thing,for,thing). %% too heavy %% TA-000309
+
+adj_templ(high,number).   
+adj_templ(hungry,agent). %% :-) animate). %% TA-990924 
+adj_templ(hot,weather). 
+    a_compl(hot,weather,in,place). 
+
+adj_templ(icy,weather). %% icy road
+    a_compl(icy,weather,in,place). 
+
+adj_templ(ill,agent). 
+adj_templ(implied,thing).
+adj_templ(important,thing).
+adj_templ(impossible,thing).  %% TA-000222
+adj_templ(impressed,person).
+    a_compl(impressed,person,over,thing).
+    a_compl(impressed,person,by,thing).
+
+
+adj_templ(incomprehensible,thing). %% TA-990929
+% adj_templ(incomprehensible,agent).   
+% adj_templ(incomprehensible,sentence).  %% ( question/ answer  :-)
+
+adj_templ(intelligent,agent).
+adj_templ(intelligent,homepage). %% :-) %% TA-000315
+
+adj_templ(intensive,ward).
+adj_templ(intransitive,verb).
+adj_templ(irrelevant,thing).  %%  (answer closure)
+
+% adj_templ(killed,animate).           %% TA-001025   EXPERIMENT !!!!
+                                       %% try without TA-001101
+adj_templ(known,thing).
+    a_compl(known,thing,as,thing).   %% TA-000716
+adj_templ(last,thing). 
+adj_templ(late,vehicle).  %% not thing %% TA-0130
+    a_compl(late,thing,at,place). %% TA-991207
+adj_templ(left,object).
+adj_templ(local,bus). 
+adj_templ(low,thing).
+adj_templ(loyal,person).     
+    a_compl(loyal,person,to,manager).
+adj_templ(logical,formula).
+
+adj_templ(long,thing).         %% TA-000804 %% er det langt fra A til B
+    a_compl(long,place,between,place).
+    a_compl(long,place,from,place).
+    a_compl(long,place,to,place).   
+
+adj_templ(longer,thing).  
+adj_templ(longest,thing). 
+
+adj_templ(mail,carrier).     
+adj_templ(main,thing).
+adj_templ(male,person).      
+
+adj_templ(manual,activity). 
+adj_templ(married,person).   
+    a_compl(married,person,to,agent).    %% TA-000716
+    a_compl(married,person,with,agent).  %% Norwagism
+
+adj_templ(massive,object).
+adj_templ(medium,thing).         %%%  NB Ad hoc medium is adjective
+adj_templ(missing,thing).
+adj_templ(monthly,price). %% fare %% TA-000523
+adj_templ(monthly,ticket).         %% TA-000302
+
+
+adj_templ(nasty,weather). 
+
+/** causes havoc   station that is nearest ... Kolstad %% TA-000524
+                       adj/nearest/Kolstad
+
+adj_templ(nearest,place). 
+    a_compl(nearest,city,to,city). %% spcial ?
+    a_compl(nearest,place,to,place).
+    a_compl(nearest,place,off,place). %% i nærheten AV 
+
+*/
+
+adj_templ(nearest,hour). %% = next   cautious definition %% TA-000717
+
+adj_templ(new,thing). %% ny bussrute OK qua route_plan/ not ok qua bus
+
+adj_templ(next,thing). %% not next (2'o) clock 
+adj_templ(nice,agent). 
+    a_compl(nice,agent,in,place). %%  :-)
+    a_compl(nice,agent,in_order_to,thing). %% TA-991109 ( miracle ?)
+adj_templ(nice,weather).
+adj_templ(northern,area).
+adj_templ(norwegian,thing).  
+adj_templ(old,file). 
+adj_templ(old,object).       
+adj_templ(old,agent).  %%  :-) 
+
+adj_templ(open,office). 
+adj_templ(open,information).   %% TA-000901
+adj_templ(opposite,direction). 
+adj_templ(ordinary,thing). 
+adj_templ(orange,thing).
+adj_templ(perfect,thing). %% TA-000207   Feilfri
+adj_templ(personal,problem). %% :-)
+adj_templ(percent,measure).  
+
+adj_templ(pink,thing). %% TA-000222 
+
+adj_templ(poor,agent).                %% TA-000828
+adj_templ(possible,thing).
+    a_compl(possible,thing,in,time).
+    a_compl(possible,thing,before,time).
+    a_compl(possible,thing,after,time).
+    a_compl(possible,thing,with,transfer). %% Norw
+    a_compl(possible,thing,with,animal). %% Norw (er det lov med dyr
+    a_compl(possible,bus,from,place).
+    a_compl(possible,bus,to,place).
+    a_compl(possible,pram,on,vehicle). %%   ( lov med barnevogn på bussen ?)
+
+%% adj_templ(present,thing).  %%   NOT place ! 
+
+adj_templ(present,person). %%  Norwagism
+    a_compl(present,person,nil,clock). 
+    a_compl(present,person,at,place).    %% TA-000927
+    a_compl(present,person,between,time).
+    a_compl(present,person,within,clock).
+    a_compl(present,person,within,hour). 
+    a_compl(present,person,within,minute). 
+
+
+adj_templ(present,vehicle). %%   Norwagism
+    a_compl(present,vehicle,Prep,X):-
+        v_compl(pass,vehicle,Prep,X).  %%  CRUDE
+
+
+
+adj_templ(previous,thing).     
+adj_templ(public,vehicle). 
+adj_templ(punctual,vehicle). 
+adj_templ(punctual,company). %% TT
+
+adj_templ(real,thing).     %% TA-000424
+adj_templ(red,thing).
+adj_templ(relative,thing).
+adj_templ(relevant,thing). %% Answer closure 
+adj_templ(responsible,agent). 
+    a_compl(responsible,agent,for,thing). 
+adj_templ(revised,file).
+adj_templ(right,object).
+
+adj_templ(safe,vehicle).  %% TA-990915 .-)
+adj_templ(same,thing).  %%  bus/time/    VERY AD HOC %% TA-000302 
+adj_templ(second_last,thing). 
+adj_templ(secret,thing). 
+adj_templ(semantic,base).
+adj_templ(short,thing). %% time,object,... %% TA-000907
+adj_templ(sick,person).
+adj_templ(similar,thing).
+adj_templ(simple,information).
+adj_templ(single,thing). 
+adj_templ(sized,thing).  %% TA-000228 ( medium sized :-)  ad hoc
+adj_templ(slow,thing).
+adj_templ(small,thing).
+adj_templ(sophisticated,thing).
+adj_templ(sorted,list).   
+adj_templ(sorry,agent).  
+adj_templ(sour,agent).    %%  :-(
+    a_compl(sour,agent,by,thing). %% TA-000523
+    a_compl(sour,agent,towards,agent). %% TA-000906
+adj_templ(southern,area).
+adj_templ(special,thing). %% TA-991221
+adj_templ(specified,thing). %% ?
+adj_templ(stupid,agent).  
+adj_templ(stupid,sentence).  %%  ( question/ answer  :-)
+adj_templ(sufficient,thing).
+    a_compl(sufficient,thing,for,thing). %% TA-000926
+    a_compl(sufficient,thing,to,thing).  %% TA-000926
+adj_templ(swedish,thing).
+adj_templ(sweet,thing).
+adj_templ(system,command).
+
+adj_templ(terrible,weather).  
+adj_templ(textual,information).
+adj_templ(tired,agent).            %% TA-991121
+adj_templ(transitive,verb).  
+adj_templ(true,thing).             %%   (i.e. dummy)
+
+adj_templ(ugly,thing).  
+adj_templ(unchanged,thing).
+adj_templ(understanding,agent). 
+adj_templ(unhappy,agent).      %% 
+    a_compl(unhappy,agent,off,thing).  %% TA-000928 Norwag lei av å
+adj_templ(unknown,thing).      %% TA-000903 
+adj_templ(up,program).         %% Pragmatic (adverb)
+
+adj_templ(use,bus).            %% i.e. used  %% TA-000117
+    a_compl(use,bus,in,place). %% TA-000117
+adj_templ(user,manual).      
+
+adj_templ(valid,thing).    %% TA-000907
+adj_templ(violet,thing).
+
+
+adj_templ(western,area).
+
+adj_templ(wet,weather).          %%  (rainy)
+    a_compl(wet,weather,in,place).
+
+adj_templ(white,thing).
+adj_templ(whole,thing). 
+adj_templ(wise,person). 
+adj_templ(worn,cloth).  
+adj_templ(worse,thing). 
+adj_templ(worst,thing).
+adj_templ(wrong,thing).          %% TA-990930 %% information).
+% adj_templ(wrong,agent).        %% TA-990930  (misiformed or mad :-)
+adj_templ(yellow,thing).
+adj_templ(young,person). 
+
+
+a_compl(_W,_P,In,time):-
+    prep(In,time). %% All adjectives are temporal
+
+a_compl(_W,_P,with,duration). %% how long
+a_compl(_W,_P,because_of,reason). 
+a_compl(_W,_P,being_the,reason). 
+a_compl(_W,_P,being_the,activity). %% TA-000224 
+a_compl(_W,_P,in_order_to,thing).  %% TA-000221 ????? EXPERIMENT
+
+% Adjectival Noun Prefices 
+ %% NEW PREDICATE  adjnoun_templ/3 
+
+%% TRIPLETS  air bus => T isa airbus
+
+adjnoun_templ(air,bus,airbus).      %% TA-991221
+adjnoun_templ(airport,bus,airbus).  %% TA-991221
+adjnoun_templ(bus,company,company). %%  (?)
+adjnoun_templ(bus,departure,departure).   
+adjnoun_templ(bus,information,information). 
+adjnoun_templ(bus,number,bus).       %% ( bus no. 4) buss nr 12345 
+adjnoun_templ(bus,service,route). 
+adjnoun_templ(bus,time,departure). 
+% adjnoun_templ(bus,stop,station).   %% Only for E, destroys which bus stop at nth
+adjnoun_templ(data,base,database). 
+adjnoun_templ(departure,time,departure).   %% TA-000313
+adjnoun_templ(departure,departure,departure).   %% TA-000313 (sic) departure schedule
+adjnoun_templ(end,station,endstation). 
+adjnoun_templ(evening,bus,eveningbus).
+% adjnoun_templ(half,hour,halfhour).         %% TA-000128 NO, half is not noun
+adjnoun_templ(home,page,homepage). 
+adjnoun_templ(internet,address,webaddress). %% in case internet is a noun
+adjnoun_templ(month,card,card).             %% TA-000302
+adjnoun_templ(morning,bus,morningbus). 
+adjnoun_templ(midnight,bus,nightbus). 
+adjnoun_templ(midnight,price,special_ticket). %% TA-000920
+adjnoun_templ(night,bus,nightbus).            %% TA-001030    
+adjnoun_templ(plane,bus,airbus).          
+adjnoun_templ(start,station,endstation). %% SIC %% TA-001030
+adjnoun_templ(station,station,station).    %% e.g. stopp holdeplass %% TA-000525
+adjnoun_templ(summer,halfyear,summer).  %% TA-000313
+adjnoun_templ(telephone,number,telephone).
+adjnoun_templ(ticket,price,price). 
+adjnoun_templ(time,departure,departure). 
+adjnoun_templ(time,route_plan,departure).  %% get time plan
+adjnoun_templ(time,list,departure).        %% TA-000417
+adjnoun_templ(traffic,route,route_plan).    %% TA-000605 OK Experiment %% TA-001030
+adjnoun_templ(train,station,station).      %% = bus station from the point our p.o.v.
+adjnoun_templ(tram,time,tram_route_plan).  %% TA-000103
+
+/* NB NB NB TA-001020
+
+adjnoun_templ/3  Beregnet på    air bus ==> X isa airbus
+adjnoun_templ/2  Beregnet på    information system ==> X isa system, adj/information/X/S
+
+The default will destroy (shadow) the second possibility
+
+% default
+adjnoun_templ(X,Y,Y):-
+    adjnoun_templ(X,Y).
+
+% adjnoun_templ(bus,time). %% bus wednesday  ->
+
+*/
+
+
+%% Doublets   arrival time = T isa time and adj/arrival/T/E 
+
+adjnoun_templ(arrival,time).  
+adjnoun_templ(bus,station).  
+adjnoun_templ(bus,route).        
+adjnoun_templ(train,route).         %% TA-001026 (no inheritance (vehicle))
+adjnoun_templ(bus,ticket). 
+adjnoun_templ(bus,trip).  
+adjnoun_templ(departure,time). 
+adjnoun_templ(dialogue,content).
+adjnoun_templ(error,message).
+adjnoun_templ(information,system).
+adjnoun_templ(knowledge,base).       
+adjnoun_templ(language,processor).
+adjnoun_templ(noun,phrase).
+adjnoun_templ(route,information).  
+adjnoun_templ(syntax,error).
+adjnoun_templ(time,bus).               %%  "a 1610 bus" (prev adj_templ)
+adjnoun_templ(time,period).  
+
+%% adjnoun_templ(traffic,route).  %% EXPERIMENT <->  adjnoun_templ(traffic,route,route_plan)
+
+% misunderstandings
+% adjnoun_templ(start,endstation).        %% (SIC)
+% adjnoun_templ(toy,department).  
+% adjnoun_templ(data,base).
+% adjnoun_templ(morning,morningbus).      %% NB morningbus
+% adjnoun_templ(night,nightbus).          %% NB nightbus 
+
+
+
+
+% Adjectival Name Prefices  
+
+
+% adjname_templ(dcg,preprocessor). 
+
+% adjname_templ(bustuc,page).  %% TA-000315 (meta)  ???
+
+adjname_templ(dvi,file). 
+adjname_templ(e,mail).          %% TA-000324
+adjname_templ(e,mailaddress).   %% TA-000324
+adjname_templ(gauldal_billag,bus).
+adjname_templ(internet,address). %%  ( webadress !! )
+adjname_templ(prolog,system).
+adjname_templ(sql,base). % database ?
+adjname_templ(t,tram).   %% TA-000808
+adjname_templ(tt,driver).
+adjname_templ(tt,bus). 
+adjname_templ(klæbu,route).        %% TA-000410
+adjname_templ(web,address).      %% TA-000725
+
+
+adjname_templ(Day,morning) :-   user:(Day isa day).
+adjname_templ(Day,afternoon) :- user:(Day isa day). 
+adjname_templ(Day,evening) :-   user:(Day isa day). 
+adjname_templ(Day,night) :-     user:(Day isa day). 
+
+adjname_templ(tomorrow,morning).   
+adjname_templ(tomorrow,afternoon). 
+adjname_templ(tomorrow,evening).   
+adjname_templ(tomorrow,night).     
+adjname_templ(yesterday,morning).  
+adjname_templ(yesterday,afternoon).
+adjname_templ(yesterday,evening).  
+adjname_templ(yesterday,night).    
+
+adjname_templ(tt,bus). 
+
+
+%% Adjectives that are define by attribute values
+
+attributable(pink,pink,colour,object).  %% TA-000223  NB
+
+% a thing is pink if it has colour = pink
+
+% a country is african if it has continent = africa 
+
+attributable(african,africa,continent,country). 
+
+attributable(african,africa,continent,city).
+
+attributable(american,america,continent,country).
+attributable(american,america,continent,city).
+
+attributable(asian,asia,continent,country).
+attributable(asian,asia,continent,city).
+
+attributable(australian,australia,country,city).
+
+attributable(european,europe,continent,country).
+attributable(european,europe,continent,city).
+
+
+% ...
+
+%% Adjective Complements
+
+%  Integrated with adj_templ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% ### Predicate  comp_templ/4 is outdated %% TA-001013
+
+
+
+comp_templ(clever,agent,agent,more/clever).
+comp_templ(clever,person,person,more/clever).
+
+comp_templ(EQ,time,time,time/EQ).
+comp_templ(EQ,measure,measure,number/EQ).     
+
+comp_templ(eq,system,system,similar).
+comp_templ(EQ,spot,spot,identity/EQ).
+comp_templ(LT,object,object,size/LT).
+comp_templ(LT,adult,adult,size/LT). %% John is greater than Mary
+comp_templ(eq,animate,object,similar).
+
+comp_templ(eq,_,_,equal).   
+comp_templ(ne,_,_,unequal). %% Everything can be compared
+
+
+
+
+%%%%%%%%% Complement tables %%%%%%%%%%%%%%%%
+
+% SHOULD BE INTEGRATED WITH VERBS
+
+
+
+v_compl(break,person,with,object).
+v_compl(call,person,as,thing).    
+
+v_compl(consist,thing,of,thing).  
+v_compl(cut,system,from,place).
+
+v_compl(direct,person,to,person).
+
+v_compl(end,text,with,text).     
+
+
+v_compl(fly,thing,like,thing).         % like = prep
+
+v_compl(include,person,in,system).
+
+
+
+% v_compl(lose,company,on,company).
+v_compl(marry,person,to,person). 
+v_compl(operate,system,in,mode).
+v_compl(shop,person,for,object).   
+v_compl(split,person,into,text).
+v_compl(split,person,until,time).
+v_compl(store,system,as,statement).
+v_compl(time,thing,like,thing).  
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is only necessary for incomplete sentences
+% N: buss fra gløshaugen 2000 til moholt. 
+% Also Time consuming
+
+% n_compl COULD have been organised under subject class,
+% but then the inheritage would make it difficult to look up
+
+
+%%   NBNBNB  New use of n_compl
+
+n_compl(today,vehicle,nil).    %% TA-000225
+n_compl(tonight,vehicle,nil).  %% TA-001017
+n_compl(now,vehicle,nil).      %% TA-000225   will bus now go
+n_compl(tomorrow,vehicle,nil). %% TA-001012
+
+
+n_compl(southward,vehicle,nil). %% TA-000718
+n_compl(northward,vehicle,nil).
+n_compl(westward,vehicle,nil).
+n_compl(eastward,vehicle,nil).
+
+% % % 
+
+
+%% NO INHERITANCE TO SAVE TIME
+
+% n_compl(nil,arrival,neighbourhood). %% inheritance ???
+n_compl(nil,arrival,place).     %% TA-000615
+
+n_compl(nil,bus,day).             %% E: buses saturday ? 
+n_compl(nil,bus,clock).           %% E: buses 1940 ? 
+n_compl(nil,bus,date).            %% bus june 24 TA-000531 (route)
+
+n_compl(nil,bus,monday).   %% TA-000718 
+n_compl(nil,bus,tuesday).    
+n_compl(nil,bus,wednesday).    
+n_compl(nil,bus,thursday).    
+n_compl(nil,bus,friday).    
+n_compl(nil,bus,saturday).    
+n_compl(nil,bus,sunday).    
+
+n_compl(nil,departure,afternoon).
+n_compl(nil,departure,clock). 
+n_compl(nil,departure,date).  
+n_compl(nil,departure,day).  
+n_compl(nil,departure,evening). 
+n_compl(nil,departure,midnight).
+n_compl(nil,departure,morning). 
+n_compl(nil,departure,night). 
+
+n_compl(nil,length,clock).        %% TA-000528  Experiment
+
+n_compl(nil,price,day).           %% price monday ? 
+% n_compl(nil,price,year).       %% TA-000524 Experiment
+n_compl(nil,route,date). 
+n_compl(nil,route,daypart).       %% e.g. monday morning %% TA-991215
+                                  %% etc etc
+n_compl(nil,vehicle,daypart).  %% TA-000224 (? dangerous)
+n_compl(nil,vehicle,clock).    %% TA-001015 (no inheritance ???)
+n_compl(nil,weather,time).     %% været i morgen %% TA-000808
+
+
+% Why was this removed 
+% I need a bus 0815 => need ... 0815 ??
+/*
+
+% Why was it dangerous ???
+% Når går buss fra dragvoll til lade mandag morgen.
+% Buss fra samfundet fredag kveld
+
+n_compl(nil,bus,night).       %% bus saturday night ,  morning, etc  
+n_compl(nil,bus,morning). 
+n_compl(nil,bus,afternoon).
+n_compl(nil,bus,evening).  
+
+*/
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+n_compl(about,departure,daypart).           %% busstider  om kvelden  (sloppy)
+n_compl(about,departure,day).           %%  (om lørdagen)  Norwagism
+n_compl(about,route,day). 
+
+% n_compl(about,route,time).  
+
+n_compl(about,information,thing). %% regarding is precise %% Need it in English
+n_compl(about,vehicle,daypart).   %% om kvelden  (sloppy)
+
+% n_compl(about,truth,thing).  
+% n_compl(after,vehicle,vehicle).       %%  NO " bus after 20" => 2000
+
+
+n_compl(after,duration,clock).    %% TA-000725  An hour after 1200
+n_compl(after,bus,time).       %%   (not clock)  buss etter fredag kl 1400
+n_compl(after,departure,time). 
+n_compl(after,arrival,time).   
+n_compl(after,tram,time).  
+
+
+% n_compl(after,route_plan, time).  %%   rutetider     tabell over 17
+%                                                   => tabell etter kl 17
+
+n_compl(from,route_plan,place).  %%   rutetider 
+
+% n_compl(after,station,place).     %%  (can't answer it though)
+%                       bus to Blakli from  NTH .
+%                                     from ==> after (SIC)
+
+n_compl(below,station,place).   %%  ( place, ?)
+n_compl(beyond,station,place).  %% after  w.r.t. place
+
+n_compl(against,match,country).      % 's team    '
+n_compl(against,match,team).
+
+n_compl(around,neighbourhood,station). 
+n_compl(around,bus,time).
+n_compl(around,departure,time).  
+n_compl(around,arrival,time). 
+
+n_compl(at,arrival,place).
+n_compl(at,arrival,time). 
+n_compl(at,bus,place).           %%  ( vehicle confuses bustrans)
+n_compl(at,bus,time). 
+n_compl(at,departure,place). 
+n_compl(at,departure,time). 
+n_compl(at,meaning,thing).  %% == with  
+n_compl(at,meeting,place).           %% TA-000522
+n_compl(at,person,place). 
+n_compl(at,property,thing). 
+
+n_compl(at,route_plan,place).    %% = for  %% TA-000317   
+n_compl(at,route_plan,time). 
+n_compl(at,station,place).       %%  (e.g. near) 
+                                 %% What was the problem sentence ? EXPERIMENT
+
+% n_compl(at,station,route).   % vis stasjoner på rute  5  %% TA-991130
+%% EXPERIMENT FAILED 
+% bus 5  pass Prinsen Kino at 20 ==> station at route ***
+
+
+% Buss fra Vestlia som er ved Leangen Ishall klokken 1830
+
+
+n_compl(at,ticket,company). 
+
+n_compl(before,arrival,time). 
+n_compl(before,bus,time).            %% (before =\ within)
+n_compl(before,departure,time). 
+
+n_compl(before,hour,time).          %% TA-000727 1 hour before midnight
+n_compl(before,minute,time).        %% TA-000727
+n_compl(before,station,place).  
+
+n_compl(beside,person,person). 
+
+n_compl(between,arrival,time). 
+n_compl(between,bus,place).    %% Time Between Sentrum ???  %%  buss mellom A og B
+n_compl(between,bus,time). 
+n_compl(between,departure,place). 
+n_compl(between,departure,time). 
+n_compl(between,difference,thing). %% TA-000902 %% Norwagism
+n_compl(between,distance,place).  %% TA-000411
+n_compl(between,duration,place).
+n_compl(between,ticket,place).  %% TA-000901
+
+%   n_compl(between,time,place). %% Time Between Sentrum ???  ( mellom a og b)
+n_compl(between,length,place). 
+  n_compl(between,time,departure).%% TA-000926 (duration?)
+
+n_compl(between,route,place).  %% route between stavset and strindheim 
+n_compl(between,route_plan,place). 
+n_compl(between,station,place). %  route between stavset not rejected 
+n_compl(between,transfer,vehicle).                              
+n_compl(between,transfer,place).
+
+n_compl(by,arrival,place).
+n_compl(by,bus,place).  
+n_compl(by,departure,place).
+
+% n_compl(during,bus,time). %% om ==> withafter, NOT during %% TA-991129
+
+n_compl(during,departure,time).  %% TA-000218
+n_compl(during2,clock,time).     %% TA-000921 :-)
+n_compl(during2,vehicle,time). %% TA-000113
+
+n_compl(for,age_limit,person). %% child,... %% TA-000807 
+n_compl(for,age_limit,ticket). 
+
+n_compl(for,airport,city). 
+n_compl(for,arrival,bus). 
+n_compl(for,arrival,place). 
+n_compl(for,border,place).  %% TA-000807
+n_compl(for,boss,company). 
+
+% n_compl(for,clock,vehicle). 
+% buss til buenget  etter (klokken 17 for rute 66) .
+n_compl(for,bus,place).  
+
+n_compl(for,bus,route).   %%  bus for route 5
+
+n_compl(for,card,person).  
+n_compl(for,card,place). 
+n_compl(for,clock,departure).        %%  (tidspunkt for avgang)
+n_compl(for,contact_man,system).    %% TA-000529
+
+n_compl(for,departure,vehicle).     %% TA-000614 <- -
+n_compl(for,discount,person).       %% TA-000903
+
+/* TA-000915
+n_compl(for,departure,boat). 
+n_compl(for,departure,bus).          % vehicle would cause shrieks
+n_compl(for,departure,tram). 
+*/
+
+n_compl(for,departure,place).
+n_compl(for,departure,route_plan).  
+
+n_compl(for,endstation,vehicle). %% TA-000905
+n_compl(for,field,thing).            %  "ref thing"
+n_compl(for,frequency,thing).        %% TA-991201
+
+n_compl(for,information,place).
+n_compl(for,information,vehicle).
+n_compl(for,manual,system).     
+n_compl(for,module,interface).
+n_compl(for,map,thing).   %% vehicle etc
+
+n_compl(for,opening_hours,company). %% TA-000418
+n_compl(for,opening_hours,office).  %% TA-000418
+n_compl(for,pity,agent).  
+n_compl(for,plan,time). 
+
+
+n_compl(for,price,thing).     %% TA-000917
+n_compl(for,price,activity).  %% for å reise %% TA-000917
+n_compl(for,price,animal).    %%  ( ako object)
+n_compl(for,price,bus).  
+n_compl(for,price,person). 
+% n_compl(for,price,adult).  %% TA-00210
+% n_compl(for,price,child).  %% TA-00210
+% n_compl(for,price,family). %% TA-00210
+
+n_compl(for,price,liquid).  %% TA-000210
+n_compl(for,price,object). 
+n_compl(for,price,ticket).  % ako object ???
+n_compl(for,price,fare).    %% TA-000525
+
+% n_compl(for,time,bus).  %%   buss til buenget  etter klokken 17 for rute 66 .
+                        %% EXPERIMENT when noun_complements disallowed for names
+
+% n_compl(for,printqueue,printer).
+% n_compl(for,processor,language).
+
+n_compl(for,route,date).       %% TA-991221
+n_compl(for,route,day). 
+n_compl(for,route,departure). 
+n_compl(for,route,vehicle). 
+
+n_compl(for,route_plan,bus).
+n_compl(for,route_plan,departure). 
+n_compl(for,route_plan,time).        %% TA-000529
+n_compl(for,route,city).  
+n_compl(for,route,daypart).   %% TA-000221
+n_compl(for,route_plan,date). %% TA-991221
+n_compl(for,route_plan,city). 
+n_compl(for,route_plan,summer_route). 
+
+n_compl(for,station,bus).  %% hva er stoppested for buss 9 %% route???
+
+%%  buss til buenget for rute 66 etter klokken 17 * 
+%% NO longer a problem                           
+
+n_compl(for,stop,bus).
+n_compl(for,thank,help).  
+
+n_compl(for,ticket,animal). 
+n_compl(for,ticket,object).
+n_compl(for,ticket,person). 
+n_compl(for,ticket,time).    %% TA-000302
+
+n_compl(for,time,arrival).
+n_compl(for,time,departure).
+n_compl(for,time,meeting).   %% TA-000906 (activity?)
+n_compl(for,time,route).     %% TA-991214
+n_compl(for,time,vehicle).   %% i.e. departure 
+
+
+% n_compl(for,station,place).          %%   MIX leave S for T
+
+n_compl(from,arrival,place).  
+n_compl(from,arrival,bus).           %% EXPERIMENTAL  (e.g.  arrival by )
+n_compl(from,boat,place).            %% merge vehicle ?
+n_compl(from,vehicle,place).             %%  Maybe some screaming %% TA-000620
+
+% n_compl(from,bus,route).      %%  ~ on bus route
+% n_compl(from,clock,place).    %%  NOT TIME ( daypart  :  evening from nth)
+% n_compl(from,bus,time).       %% (  clock   touchy ) 
+
+n_compl(from,person,place).   %% The man from Trondheim %% TA-000831
+n_compl(from,plane,airport). %% place).           
+
+n_compl(from,departure,place). 
+n_compl(from,departure,time). 
+
+%% n_compl(from,duration,place).    %% TA-000725  om en time fra nth
+
+n_compl(between,traveltime,place). %% Technical %% TA-000930
+n_compl(from,traveltime,place).
+n_compl(to,traveltime,place).
+
+n_compl(from,length,place).          %%  length from A to B
+n_compl(from,price,place). 
+n_compl(from,route_plan,place). 
+n_compl(from,direction,place).
+n_compl(from,distance,place).        %% TA-000805
+
+%   n_compl(from,station,place). 
+%   n_compl(to,station,place). 
+%   NO                is there a bus from (pirterminalen to torvet).  
+                                
+
+n_compl(from,thing,set).          
+n_compl(from,ticket,place). 
+% n_compl(from,time,place).         %% TA-990902 bussen går i morgen formiddag fra byen
+n_compl(from,train,place).  
+n_compl(from,tram,place).  
+n_compl(from,transfer,bus).         %% cannot take it 
+n_compl(from,trip,place).  
+
+n_compl(from,vehicle,company).      %%   Always as general as possible
+
+n_compl(in,C,E):-                    %  Made recursive  
+     apos(C,E).
+
+n_compl(in,activity,place).   
+n_compl(in,arrival,direction).
+n_compl(in,vehicle,route).      %% TA-000901         %% (Norwagism, On Schedule)
+n_compl(in,vehicle,time).       %% TA-000901 
+n_compl(in,bus,company).  
+n_compl(in,bus,day).                 %%  Emergency
+n_compl(in,bus,city).             %% route   Subtle   bussavganger i trondheim
+n_compl(in,change,route). % qua plan (Nec)
+n_compl(in,change,route_plan). 
+% n_compl(in,clock,place).   %% klokka i Mongolia/ 14:00 in Nardo %% TA-991207
+n_compl(in,departure,direction).
+n_compl(in,departure,time).          %% ( i tidsrom ... )
+n_compl(in,driver,vehicle). 
+
+n_compl(in,employee,office).    
+n_compl(in,error,thing).    %% program ? 
+
+n_compl(in,file,directory).
+n_compl(in,file,printqueue).
+n_compl(in,file,system).
+
+% n_compl(in,hold,thing). % ?
+
+n_compl(in,horsepower,vehicle). 
+
+n_compl(in,king,country). %% TA-990915 :-)
+n_compl(in,life,agent). 
+n_compl(in,money,use).  
+
+
+% n_compl(in,object,place). 
+%% ambiguity prone in Norwegian:  stopper bussen i sentrum.
+
+n_compl(in,office,place). 
+
+n_compl(in,oracle,place).            %% TA-000128 :-)
+n_compl(in,person,company).
+n_compl(in,person,city). 
+n_compl(in,person,class).            %% TA-001012 
+n_compl(in,person,department).       %  employee
+n_compl(in,person,life).             %%  :-)
+n_compl(in,person,machine).
+n_compl(in,person,mood).
+
+%% n_compl(in,phrase,description). 
+%% n_compl(in,place,place).        %%  EXPERIMENT   which places in town ... ?
+
+n_compl(in,place,vehicle). %% seat   Hazard ?
+n_compl(in,price,city).
+n_compl(in,price,time). %% TA-000524
+n_compl(in,thing,road).  %% TA-000529  % Norwagism  noe i veien.
+n_compl(in,thing,city). %% place ???? TA-000927
+n_compl(in,ticket,city). 
+n_compl(in,ticket,class).  %% TA-001012 ( 1. class) 
+n_compl(in,route,neighbourhood). %% NOT station 
+n_compl(in,route_plan,city).     %% TA-000605
+n_compl(in,salary,month).       
+n_compl(in,sale,month).         
+n_compl(in,seat,vehicle). 
+n_compl(in,sentence,language).   %% TA-000410
+n_compl(in,spot,object).
+
+% n_compl(in,station,place).    %%   (Hazardous ?) 
+% NOT in station station
+n_compl(in,station,neighbourhood). %% TA-991111 (+ city ?)
+
+
+n_compl(in,station,route).
+n_compl(in,student,class).   
+n_compl(in,tram_route_plan,place).       %% TA-000221
+n_compl(in,vehicle,direction). 
+n_compl(in,weather,place).               %% TA-000411
+n_compl(in,weather,time). 
+n_compl(in,weather,time).            %% TA-000808
+n_compl(in,zone,place).              %% TA-000906
+
+n_compl(minus,thing,thing).
+
+n_compl(near,   place,place).   
+n_compl(nearer, place,place).  
+%  n_compl(nearest,place,place).  % EXPERIMENT  bussen går til nth nærneste time  %% TA-000125 
+
+% n_compl(of,centre,neighbourhood).   %% nardo til trondheim *
+
+%  off:  best av ting  (Norwagism)
+
+% n_compl(of,address,company). %% adressE til TT  %% TA-000412 (does not parse)
+
+n_compl(of,amount,money).  %% TA-000906
+n_compl(of,author,system).  %% TA-000907
+n_compl(off,author,system). 
+n_compl(to,author,system). 
+
+n_compl(of,centre,city).  
+n_compl(of,departure,vehicle).        %% TA-000518
+n_compl(of,departure,station).        %%  (doesn' work)
+n_compl(of,heap,object). 
+n_compl(of,information,thing). 
+n_compl(of,list,thing). 
+n_compl(of,part,thing).               %% TA-000925 ???
+n_compl(of,picture,thing). 
+n_compl(of,set,thing).
+n_compl(of,thing,set).  
+n_compl(of,time,day). %% TA-000412  (Smalltalk)
+
+% off:  ubest av ting  (Norwagism)
+
+n_compl(off,departure,station). 
+n_compl(off,list,thing).               %%  (lista av...)(norwagism)
+n_compl(off,part,thing).               %% TA-000925
+n_compl(off,picture,thing).            %% bilde av noe
+n_compl(off,side,thing). 
+n_compl(off,test,thing).               %% TA-990929  (test av ...) (norwagism)
+n_compl(off,transfer,vehicle).         %%  av (norwagism) better as off
+n_compl(off,version,route_plan).        %% TA-001001
+
+n_compl(on,animal,vehicle).          %% TA-000920
+n_compl(on,answer,question).         %% TA-000215
+n_compl(on,meeting,place).           %% TA-000511
+n_compl(on,arrival,place).           %% ( Norwagism ???)
+
+n_compl(on,vehicle,day).                %%   (vehicle ?) %% TA-000806
+n_compl(on,vehicle,date).  
+
+% n_compl(on,bus,date).  %% TA-000806
+% n_compl(on,bus,day).  
+
+%% n_compl(on,bus,morning).     %%  shadows når går buss på morgenen
+
+n_compl(on,bus,afternoon). 
+n_compl(on,bus,evening).  
+n_compl(on,bus,night). 
+n_compl(on,bus,route).
+n_compl(on,card,place).  
+n_compl(on,class,person).        %% TA-000613
+n_compl(on,clock,place).         %% i see (departure) times on nardo 
+n_compl(on,colour,object). 
+
+n_compl(on,departure,vehicle). %% TA-000926           %%   Dubious (= for)
+n_compl(on,departure,day). 
+n_compl(on,departure,daypart). 
+n_compl(on,departure,date).
+n_compl(on,departure,daytime). 
+n_compl(on,departure,place).         %% i see departures on nardo 
+n_compl(on,departure,screen). 
+
+n_compl(on,difference,thing). %% TA-000902 %% Norwagism
+n_compl(on,discount,vehicle). %% TA-000905 %% Norw
+n_compl(on,driver,bus).              %%
+
+n_compl(on,endstation,route). 
+n_compl(on,end,route_plan).    %% stop ???
+
+n_compl(on,frequency,departure).
+
+n_compl(on,length,day).          %% hvor langte er det ... på mandag
+n_compl(on,luggage,vehicle).     %% TA-000903
+n_compl(on,lust,thing).          %% TA-000211 %% Norwagism Facetious
+n_compl(on,map,webaddress).      %% nettsiden %% TA-000803
+n_compl(on,movie,place).         %% TA-991104  
+n_compl(on,opinion,thing). 
+n_compl(on,number,object). 
+
+n_compl(on,house,place).         %% TA-000410 (Norwagism)
+
+
+n_compl(on,picture,card).        %% TA-000223
+n_compl(on,program,homepage).    %% TA-000508
+
+n_compl(on,roof,place).        %% station/house %% TA-000907
+
+n_compl(on,route,daypart).       %% TA-991215 
+n_compl(on,route_plan,date).          %% TA-991221  ( ruter på julaften)
+n_compl(on,route_plan,bus).      %%   (Norwagism)
+n_compl(on,route_plan,day).      %% (etc) 
+n_compl(on,thing,picture).       %% TA-000209
+n_compl(on,ticket,vehicle).      %% TA-001012
+n_compl(on,time,bus).
+
+n_compl(on,vehicle,direction).    %%  (Norwagism  på veg = on direction)  
+% n_compl(on,vehicle,place).   % route 66 on moholt +   buss forbi nth på gløshaugen * 
+n_compl(on,vehicle,service).  
+
+    % Buss fra Vestlia som er på Leangen klokken 1830   SYNDROME
+
+n_compl(on,special_ticket,vehicle). %% TA-000920
+
+% n_compl(on,station,neighbourhood). %% stations on Nardo
+% n_compl(on,station,station).       %%   a station on Torvet (=station)
+% n_compl(on,station,place).   % ( neighbourhood) compatibility
+%                              % bus from A which is on B at C
+
+
+n_compl(on,person,vehicle).      %% passasjer på rute 
+n_compl(on,pram,vehicle). 
+
+% n_compl(on,price,object).      %%  on price number qua bus :-(
+
+n_compl(on,price,bus).  
+n_compl(on,price,ticket). 
+n_compl(on,price,trip).
+n_compl(on,price,liquid).        %% TA-00210
+
+% n_compl(on,thing,thing).           %  TOO GENERAL ti på fire ?
+% n_compl(on,object,place).          %  Too general 
+% n_compl(on,object,time).         
+
+n_compl(on,seat,vehicle). 
+n_compl(on,sentence,language).       %% TA-000410 (Norwagism)
+
+n_compl(on,station,route).           % vis stasjoner på buss 5 %% EXPERIMENT
+n_compl(on,tramstation,tram).
+n_compl(on,time,vehicle).            %%  tiden på bussene
+n_compl(on,time,daytime). 
+
+n_compl(on,weather,place).           %% TA-000411
+n_compl(on,weather,time).            %% TA-000808
+
+n_compl(on,wheel,vehicle).
+
+n_compl(outside,place,place).        %% TA-000210
+n_compl(outside,thing,city). %% place ???? TA-000927
+
+n_compl(over,information,thing).
+n_compl(over,list,thing). 
+n_compl(over,route_plan,bus). %% information,thing   too general
+n_compl(over,route,route). 
+n_compl(over,map,thing). 
+
+n_compl(over,person,age).           %%  person over 18 years
+n_compl(over,route_plan,departure). 
+
+n_compl(past,road,place).        %% TA-000926
+n_compl(past,route_plan,place).  %% TA-000830
+n_compl(past,bus,place). 
+
+%% n_compl(past,clock,place).       %% (passerings)tidspunkt forbi nth
+                                    %% når går buss etter (1830 forbi nardo)
+
+n_compl(past,departure,place). 
+
+n_compl(plus,number,number).   
+        
+%% n_compl(regarding,thing,vehicle). %% ??? I know something about
+%%% når går bussen om 10 minutter 
+
+n_compl(regarding,information,thing). %% regarding is more unambiguous than about
+n_compl(regarding,meaning,thing).     %% TA-000411
+n_compl(regarding,truth,thing).
+
+n_compl(through,bus,place).      %%  NB bus
+n_compl(times,number,number). 
+
+n_compl(to,address,company). %% adressE til TT  %% TA-000412
+n_compl(to,answer,question).
+n_compl(to,arrival,place). 
+
+n_compl(to,vehicle,place).    %% Maybe some screaming %% TA-000620
+
+% n_compl(to,boat,place).         %%  merge vehicle
+% n_compl(to,bus,place). 
+
+n_compl(to,bus,time). %% clock).               %%( touchy)
+
+% n_compl(to,clock,place).  %%  clock = departuretime
+
+n_compl(to,clock,route).    %%   Experiment
+
+n_compl(to,departure,place).  
+n_compl(to,departure,time). 
+n_compl(to,departure,bus).           %%  EXPERIMENTAL  = of ?? 
+
+n_compl(to,direction,place). 
+%  n_compl(to,duration,place).    %% TA-000725 (reisetid) * om en time til nardo
+n_compl(to,distance,place).       %% TA-000805
+
+n_compl(to,frequency,thing).      %% TA-991201
+n_compl(to,interface,system).     %% not to TUC (?) 
+
+n_compl(to,length,place).  
+
+%% n_compl(to,midnight,day).   %% night to sunday (Norwagism) %% TA-000120
+%% Syndrome:   natt til søndag = søndag morgen ( 0000 - ),
+%% men rutetidene om kvelden oppgis som 0000, selv om det er over midnatt
+%% og det formelt er neste dag.
+%% Kan løses ved å gjeninnføre   2415 + forandre datoen
+
+
+% n_compl(to,night,day).      % ?  TA-000120 (Not English)  Night to saturday 
+
+n_compl(to,passenger,place).   %% TA-000922
+n_compl(to,place,person).   
+n_compl(to,plane,airport).     %% place
+n_compl(to,plane,city).        %% TA-000206
+n_compl(to,plane,country).     %% TA-000206
+
+n_compl(to,price,place).    
+
+%%  n_compl(to,time,place).        % bussen går om (5 minutter til nth) *
+
+n_compl(to,time,meeting).        %% TA-000906 Norw ( for)
+n_compl(to,time,vehicle).        %% Norwagism  (passerings)tid til buss
+n_compl(to,time,time).           %% tid (fram) til midnatt ???? EXPERIMENT
+
+n_compl(to,route_plan,place).    %%   rutetider 
+
+n_compl(to,route,vehicle). % allow bussrutE til buss 9 (Hazardous ?)%% TA-000615
+                             
+n_compl(to,route_plan,vehicle).   % allow bussrutE til buss 9
+
+
+n_compl(to,tram,place). 
+n_compl(to,station,vehicle).          %% TA-000926
+n_compl(to,system,purpose). 
+% n_compl(to,route,place).            %% way = route = bus  ? 
+n_compl(to,route_plan,place). 
+n_compl(to,route_plan,vehicle). %% TA-000530 (bus)  
+
+% n_compl(to,route,vehicle).      %%  ruta til buss 5
+%                                 % collides with  ( transfer from) route 8 to route 66
+n_compl(to,seat,person).       %% (Norwagism) plass til 
+n_compl(to,seat,pram).       %% not elephant :)))) %% TA-000902
+
+n_compl(to,ticket,place). 
+n_compl(to,transfer,bus).     %% cannot take it  
+n_compl(to,train,place). 
+n_compl(to,trip,place).    
+
+% n_compl(to,duration,place). %% Bussen kommer om (en time til nth)*
+
+
+n_compl(towards,bus,place).       %%  both?
+n_compl(towards,departure,place). %% both?
+ 
+n_compl(towards,direction,place). 
+n_compl(towards,route_plan,place). %% TA-000209 (?)
+
+n_compl(to,vehicle,self).    %% TA-000928
+
+n_compl(with,bus,route). 
+n_compl(with,card,bus). 
+n_compl(with,comparison,thing).     %% TA-000519
+n_compl(with,contact,company).      %% TA-000530
+n_compl(with,departure,bus). 
+n_compl(with,duration,vehicle).     %% TA-990916
+n_compl(with,indulgence,agent).  
+n_compl(with,list,departure).         %%  (etc.)
+n_compl(with,meaning,thing).  
+n_compl(with,permission,thing).     %% TA-000930
+n_compl(with,thing,agent).          %% EXPERIMENT  noe i veien med deg 
+n_compl(with,ticket,discount).      %% TA-000830
+n_compl(with,trip,vehicle).         %% TA-000201
+
+
+% n_compl(with,meaning,life).         %% :-)
+% n_compl(with,meaning,universe).     %% :-)
+
+n_compl(with,permission,thing).     %% TA-000919
+n_compl(with,person,money).         %%  thing =>  (?) en person med jernbanen*
+
+n_compl(with,price,bus). 
+n_compl(with,problem,thing).        %%  TA-000210
+n_compl(with,route,bus).
+n_compl(with,route,clock).          %%  (Bussrute med klokkeslett)
+n_compl(with,route_plan,departure).      %%  TA-000410      
+n_compl(with,route_plan,map). 
+n_compl(with,route_plan,time).  
+n_compl(with,vehicle,vehicle).      %% TA-000529  ( syn. best way with bus)
+n_compl(with,vehicle,transfer).     %% TA-000615
+n_compl(with,departure,arrival).    %% TA-000615  (???) departure
+n_compl(with,departure,transfer).   %% TA-000615  (???)
+
+
+n_compl(with,X,Y):-              %% (size of a bus)
+    (nonvar(X);nonvar(Y)),       %% called from noun_compl with completely 
+    X has_a Y.                   %% free variables  
+
+
+n_compl(withafter,clock,hour).        %%  (about)  (Hva er klokka om en time :-)
+
+n_compl(within,vehicle,clock).        %% Different relations!
+n_compl(within,vehicle,hour).         %% Different relations!
+n_compl(within,vehicle,minute).       %% Different relations!
+% n_compl(within,vehicle,time).       %% same as before
+
+n_compl(without,bus,transfer). 
+n_compl(without,way,vehicle). 
+    n_compl(without,vehicle,vehicle).  %% by synonym
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% ADVERB SECTION %%%%%%%%%%%%%%%%%%%%%%
+
+
+% Adjectival Adverbs  
+
+% adv_templ(closely,related).
+
+adv_templ(easily,adaptable).
+adv_templ(first,order).
+% adv_templ(grammatically,acceptable).
+adv_templ(just,after).  
+adv_templ(more,great).
+adv_templ(natural,language).
+   adv_templ(often,_). 
+adv_templ(Ordinal,next) :- ordinal(Ordinal,_). 
+adv_templ(Ordinal,last) :- ordinal(Ordinal,_).
+adv_templ(quasi,english).
+% adv_templ(semantically,correct).
+% adv_templ(semantically,plausible).
+% adv_templ(syntactically,correct).
+adv_templ(too,early).
+adv_templ(too,late). 
+adv_templ(very,_).
+
+% Adverbial Particles   
+
+particle(reductant,thing,_).  %%  Dummy Adverb
+
+%% can be prefix
+
+/*   %% These are nil-complements  (cfr go a sunday) %% TA-000613
+
+particle(monday,day,pre).  
+particle(tuesday,day,pre). 
+particle(wednesday,day,pre).
+particle(thursday,day,pre). 
+particle(friday,day,pre).   
+particle(saturday,day,pre). 
+particle(sunday,day,pre).   
+
+*/
+
+
+particle(above,place,pre).    % in a text
+particle(afternoon,day,pre).
+particle(afterwards,time,pre).
+particle(below,place,pre).
+particle(currently,time,pre).
+particle(daily,day,pre). 
+particle(earlier,time,pre). 
+particle(evening,day,pre). 
+particle(everywhere,place,pre). %% TA-000922 
+particle(here,place,pre).    
+particle(hereafter,time,pre). 
+particle(immediately,time,pre). 
+particle(indirectly,mode,pre).   %% TA-001013
+particle(later,time,pre). 
+%% particle(normally,mode,pre).   %% TA-000818 I walk normally
+particle(normally,time,pre). %% TA-000818 I walk, normally Preferred in BusTUC
+particle(now,time,pre).   
+particle(once,time,pre).
+particle(often,time,pre). 
+particle(recently,time,pre).  
+particle(somewhere,place,pre). 
+particle(still,time,pre).
+particle(thereafter,time,pre).
+particle(there,place,pre). 
+particle(thereafter,time,pre). 
+particle(this_afternoon,time,pre).
+particle(this_evening,time,pre). 
+particle(today,day,pre).
+particle(together,mode,pre).
+particle(tomorrow,day,pre).    %% after,today 
+particle(yesterday,day,pre).   %% before,today 
+particle(day_after_tomorrow,day,pre). 
+particle(day_before_yesterday,day,pre).
+
+%% time of day
+
+% day determinate
+
+particle(this_morning,time,pre). 
+% this daytime missing ?
+particle(tonight,time,pre). 
+particle(this_midnight,time,pre).   %%   (mid_night = > 2400)
+
+% day indeterminate
+
+particle(in_day,time,pre). 
+particle(in_afternoon,time,pre).
+particle(in_evening,time,pre). 
+particle(in_morning,time,pre). 
+particle(in_night,time,pre).
+particle(in_midnight,time,pre).
+
+particle(Day,day,pre) :- user:(Day isa day).  
+
+%% can not be prefix
+
+particle(after,time,post).
+%  particle(about,place,post). %% bus goes  about 1700 Prepositional
+particle(abroad,place,post).
+particle(across,place,post). 
+particle(ahead,place,post).  
+particle(along,place,post). 
+particle(aloud,mode,post). 
+particle(always,time,post). 
+particle(anymore,time,post).  
+particle(apart,mode,post).  
+particle(around,place,post).
+particle(aside,place,post).  
+particle(astray,place,post). 
+%% particle(at,time,post).  ??? 
+particle(away,place,post).  
+
+particle(back,place,post).
+particle(badly,mode,post).  %% TA-000718
+%% particle(before,time,post). % does a bus that arrives before 900 go ? %% EXPERIMENT
+particle(behind,time,post).
+% particle(best,mode,post).  %% == well 
+% particle(by,place,post). %%  preposition is preferred
+particle(directly,mode,post).   
+particle(down,place,post).
+particle(downtown,mode,post).   %%   go downtown \= go in place
+particle(early,time,post).
+particle(ever,time,post). 
+particle(fast,time,post).       %% Experiment %% TA-000902
+particle(fast,mode,post).       %% !
+particle(faster,mode,post). 
+particle(fastest,mode,post). 
+particle(forth,place,post).
+particle(forward,place,post).
+particle(freely,mode,post).  %% TA-000926
+particle(from,mode,post).  %%  Si ifra   %% Norwagism
+
+particle(home,direction,post).  
+particle(in,place,post).   %% Hazardous ?? %% TA-000309
+particle(eastward,direction,post).  
+particle(northward,direction,post). 
+particle(southward,direction,post). 
+particle(westward,direction,post).  
+
+particle(late,time,post).
+particle(much,mode,post).       %%  cost much 
+particle(off,vehicle,post).     %%  NOT place 
+
+particle(on,vehicle,post).      %%  NOT place 
+
+% particle(open,mode,post).     %% adjective 
+particle(out,place,post). 
+% particle(past,place,post).        %%   gå forbi.  (reductant)  
+particle(punctually,time,post). 
+particle(round,place,post).
+particle(soon,mode,post). %% ??? not pre ???
+particle(through,place,post).
+particle(together,mode,post).
+particle(under,place,post).
+particle(up,place,post).
+particle(up,mode,post).        %% show up 
+particle(well,mode,post).      %% TA-000303  sleep well
+particle(wrongly,mode,post).
+
+% particle(with1,mode,post).   %% Norwagism,EXPERIMENT (hva kan jeg ta med)
+                               %% Failed,  jeg går med bussen
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+v_compl(V,thing,nil,daypart) :- normalverb(V,_).  %% TA-000317
+v_compl(V,thing,nil,day):-      normalverb(V,_).  %% TA-000317
+v_compl(V,thing,nil,week):-     normalverb(V,_).  %% TA-000317
+
+
+v_compl(A,B,X,Y):-   %% general complements allowed for 
+    \+ X=nil,        %%  X = variable ???  ( Rat! ) %% TOO General ???
+    normalverb(A,B), %% this class of verbs
+    stanprep(X,Y).
+
+%%%%% Standard Prepositions
+
+stanprep(I,time):-
+    prep(I,time).
+
+stanprep(on,day). 
+stanprep(on,date). 
+
+stanprep(over,thing).  %% TA-001006
+
+stanprep(I,place):-
+    prep(I,place).
+
+stanprep(in,mode). 
+
+stanprep(in_order_to,thing). %% TA-991104 
+stanprep(because_of,reason). 
+stanprep(being_the,reason).  
+stanprep(being_the,activity). %% TA-000224  
+
+stanprep(with,method). %% TA-001027
+
+%%%%%%%%%  Preposition templates common to all normal verbs %%%%%%%%%%%%%%%%%
+
+
+
+%% prep(nil,time).  %% FAILED SUBTLY ??? %% Necessary for time adverbs 
+                 %% bus goes quarter
+
+% bus goes march
+
+prep(nil,duration).
+prep(nil,clock).
+
+%% etc 
+
+% prep(nil,place). %%  Used for space adverbs but  * jeg ser bussen buenget
+
+prep(after,time).
+prep(about,time). %% English 
+prep(ago,time).   %% Technical   10 minutes ago %% TA-000927
+prep(around,time). 
+prep(at,place). 
+prep(at,time).
+prep(before,time).
+prep(behind,place). 
+prep(beyond,place). 
+prep(by,time). 
+
+
+prep(during,time). %%  bussen går om 50 min. // Error fixed ?? TA-000530 
+% prep(from,place). %% This has been deemed nonstandard ( stop from place)
+
+prep(from,time).
+prep(in,place).
+prep(in,time).
+prep(in,time_count).  %% Norwagism
+prep(inside,place).   %% TA-000615  (== within?)
+prep(into,place). 
+
+% prep(of,place).      %%   place subsumed by thing
+% prep(of,thing).      %  should not be stanprep
+
+prep(like,thing).      %% ???    
+prep(on,date). 
+prep(on,day).  
+prep(on,place).      
+% prep(on,time).       %% NOT STANDARD   ( ti på fire )
+
+prep(over,place). 
+
+% prep(to,time). %% NOT standard   go to time 
+
+prep(towards,place). 
+prep(until,time).
+prep(upon,time).   %% TA-000223  :-)
+prep(within,time).
+
+prep(withafter,duration). %% * time 
+
+%%%%%%%%%%%% Numbers 
+
+ordinal(first,1).
+ordinal(second,2). 
+ordinal(third,3).  
+ordinal(fourth,4). 
+ordinal(fifth,5).  
+ordinal(sixth,6).  
+ordinal(seventh,7). 
+ordinal(eighth,8). 
+ordinal(ninth,9).   
+ordinal(tenth,10).  
+ordinal(eleventh,11).
+ordinal(twelvth,12).  % twelveth synword 
+ordinal(thirteenth,13). 
+ordinal(fourteenth,14). 
+ordinal(fifteenth,15).  
+ordinal(sixteenth,16).  
+ordinal(seventeenth,17). 
+ordinal(eighteenth,18).  
+ordinal(nineteenth,19).  
+ordinal(twentieth,20). 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+:- user:createtypes. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

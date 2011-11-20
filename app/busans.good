@@ -1,0 +1,826 @@
+%% FILE busans.pl
+%% SYSTEM BUSTUC
+%% CREATED JB-970220
+%% REVISED TA-001005
+
+
+:- module(ans,[]).
+
+
+% Lager svarene til BussTUC - 
+% Produksjonesregler, predikater som lager fraser og 
+% relasjoner mellom konsepter og ord på hvert språk
+%
+
+
+%% A rule is subsumed by a binary rule operator:
+
+%   RuleID rule
+%   is IS
+%   id ID
+%   ip IP
+
+
+
+tracevalue(L) :- user:value(traceans,L).  % Trace level 1-4
+
+
+coupled_connections rule %% Ad HOC   %% TA-990506
+is  replace connections(A1,A2,A3,_From,A5,A6,A7,A8,A9)
+    with        coupled(A1,A2,A3,      A5,A6,A7,A8,A9)
+id  []
+ip  [].
+
+
+truerule rule  %% Program succeded
+is  true % ,clear
+id       % clear,
+    addfront (bcpbc(yes),nl)
+ip  [].
+
+
+
+%% Notify about relaxations in the query ØF-991005
+relaxroute rule
+is relax(selectroute)
+id addfront (bcpbc(not), bcp(that), bcp(departure), nl)
+ip [].	     
+
+relaxtime rule
+is relax(time(X, Y, Time))
+id addfront (bcpbc(not), bcp(with), bcp(X), bcp(Y), bwt(Time), nl)
+ip [].
+
+
+testanswer  rule   %% Program succeded
+is  testanswer(_,YN) 
+id  addfront (bcpbc(YN),nl)
+ip  [].
+
+messy rule       %% Messages are independent of the susscess of Bus programs !
+is message(X)    %% This rule obsoletes the other message rules
+id	 add (printmessage(X),endline) %% 
+ip	 [].
+
+
+2001 rule 
+is message(start)
+id	 add (bcp(hello),period) %% question,nl
+ip	 [].
+
+2002 rule 
+is  message(quit(Message)) 
+id	 add (bcp(Message),period)
+ip	 [].
+
+2003 rule 
+is  message(quit)
+id	 add (bcp(bye),period)
+ip	 [].
+
+% General message
+
+52 rule
+is message(answer(P))
+id add (P,nl) 
+ip [].
+
+% Irrelevant stuff
+
+noinfodelay rule  
+is message(noinfoabout(Delays))
+id no  bcp(yesmark),
+   add (bcpbc(noinformation),bcp(Delays),period)
+ip [].
+
+% Irrelevant stuff
+
+67 rule
+is message(nodates) 
+id no  bcp(yesmark),
+   add (bcpbc(noinformation),bcp(specificdays),period)
+ip [].
+
+2004 rule is  message(sorryno(map))
+id	 no bcp(yesmark),
+	 add (bcpbc(sorryno),bcp(map),period)
+ip	 [].
+
+
+% Irrelevant stuff
+2005 rule is  message(irrelevant(colour(bus)))
+id	 no bcp(yesmark),
+	 add (bcp(thecolour),bcp(ofabus),bcp(is),bcp(irrelevant),period)
+ip	 [].
+
+2006 rule is  message(irrelevant(weather))
+id	 no bcp(yesmark),
+	 add (bcp(theweather),bcp(is),bcp(irrelevant),period)
+ip	 [].
+
+notram rule 
+is  message(noroutesfor(Tram)) %% ( noun in general)
+id  no bcp(yesmark),
+	 add (bcp(i),bcp(have),bcp(notany),bcp(routes),bcp(for),
+			bcp(Tram),bcp(in),bwr(trondheim),period)
+ip  dmeq(notbus,Tram). 
+
+
+2007 rule is  message(noroutesto(Place)) %% noroutesfor
+id  no bcp(yesmark),
+    add (bcpbc(i),bcp(have),bcp(notany),bcp(routes),bcp(for),
+			bcp(buses),bcp(to),bwr(Place),period)
+ip  [].
+
+
+2008 rule is  message(foreign(_))
+id  no bcp(yesmark),
+    add (bcpbc(i),bcp(have),bcp(only),bcp(routes),bcp(for),
+			bcp(buses),bcp(in),bwr(trondheim),period)
+ip  [].
+
+
+
+
+2009 rule is   message(irrelevant(speed(bus))) 
+id	 no bcp(yesmark),
+	 add (bcp(thespeed),bcp(ofabus),bcp(is),bcp(irrelevant),period)
+ip	 [].
+
+2010 rule is  message(donotknow)  % moved to front
+id	  no bcp(yesmark),
+        add (bcp(i),bcp(donotknow),period)
+ip	 [].
+
+
+2011 rule is  message(can(submarines,swim)) % moved to front 
+id	 no bcp(yesmark),
+     	 add (bcp(can),bcp(submarines),bcp(swim),question)
+ip	 [].
+
+
+
+%% Day after/before tomorrow or yesterday 
+
+2012 rule 
+is  exactly (today(_),daysucc(_,_),daysucc(_,_),atday(B))
+id	 add (bcp(B),period) 
+ip	 [].
+
+
+%% Day tomorrow or yesterday 
+
+2013 rule 
+is  exactly (today(_),daysucc(_,_),atday(B))
+id	 add (bcp(B),period) 
+ip	 [].
+
+
+%% We are talking about some other day than today
+someotherday1 rule 
+is  atday(Day),
+    not present today(_), %% Default today  not mentioned %% TA-000529
+    present departure(_,_,_,_) %% \==> empty answer
+id	 add (bcp(on),outdays(Day),comma)
+ip	 [].
+
+
+%% We are talking about some other day than today
+someotherday2 rule 
+is  atday(Day),
+    present departure(_,_,_,_) %% \==> empty answer
+id	 add (bcp(on),outdays(Day),comma) %% bcp(at)
+ip	 today(ThisDay),  \+ (Day = ThisDay).  %% dont match if not instantiated
+
+
+
+
+%%% Number of Object
+
+timeout rule 
+is  coupled(_,_,_,_,_,_,_,[timeout]),clear
+id	 clear,addfront printmessage(timeout)
+ip	 [].
+
+
+2014 rule is  coupled(_,_,_,_,_,_,Deps,_),
+    departure(_,Place1,_,_),
+    departure(_,Place2,_,_),
+    numberof(departures,Deps,Number)
+id	 add (bcp(there),bcp(are),bwr(Number),bcp(departures),
+			bcp(from),space,bwr(Place1),bcp(to),space,bwr(Place2), period) %% TA-000604
+ip	 [].
+
+2015 rule is  passevent(Deps,_Bus,Place,_,_,_),numberof(departures,Deps,Number)
+id	 add (bcp(there),bcp(are),bwr(Number),bcp(departures),
+			bcp(from),bwr(Place), period) 
+ip	 [].
+
+2016 rule is  numberof(Object,_,Number)
+id	 add (bcp(there),bcp(are),bwr(Number),bcp(Object),period)
+ip	 [].
+
+
+% Frequency (one place), ONLY ONE DEPARTURE. 
+2018 rule is  passevent(Deps,Bus,Place,_,_,_), 
+    frequency(Deps,0,1,_)
+id  add (bcp(bus_det),bwr(Bus),bcp(passes),bwr(Place),
+         bcp(only),bcp(once),period)
+ip  [].
+
+% Frequency (two places) ONLY ONE DEPARTURE.
+2019 rule is  departure(_,FromPlace,_,_),
+    departure(Bus,ToPlace,_,_),
+    coupled(_,_,_,_ToPlace,_,_,Deps,_), % ToPlace (sometimes they differ)
+    frequency(Deps,0,1,_)
+id  add (bcp(bus_det),bwr(Bus),bcp(goes),
+			bcp(from),bwr(FromPlace),bcp(to),bwr(ToPlace),
+          bcp(only),bcp(once),period)
+ip  [].
+
+% Frequency (one place)
+2020 rule is  present passevent(_Deps1,Bus,Place,_,_,_),
+    frequency(_Deps2,MinF,MaxF,_)
+id  add (bcp(bus),bwr(Bus),bcp(normally),bcp(passes),bwr(Place),
+			bcp(every),bwr(MinF),bcp(minutes),bcp(or),
+			bcp(every),bwr(MaxF),bcp(minutes),period) 
+ip  [].
+
+% Frequency (two places)
+2021 rule is  departure(_,FromPlace,_,_),
+    departure(Bus,ToPlace,_,_),
+    coupled(_,_,_,_ToPlace,_,_,Deps,_), 
+    frequency(Deps,MinF,MaxF,_)
+id  add (bcp(bus),bwr(Bus),bcp(normally),bcp(goes),
+			bcp(from),bwr(FromPlace),bcp(to),bwr(ToPlace),
+			bcp(every),bwr(MinF),bcp(minutes),bcp(or),
+			bcp(every),bwr(MaxF),bcp(minutes),period) 
+ip  [].
+
+% Two stations, no transfer (one bus)
+twonotrans  rule 
+is  coupled(_,_,_Bus,ToPlace,Day,FLN,Deps,[])
+id	 add Out
+ip	 outdeplist(Deps,Day,FLN,ToPlace,Out).
+
+% Two stations with transfer (two buses)
+2022 rule is  coupled(_,_,_,_,_,_,Dep,MidList)
+id	 add (OutDep,OutCorr)
+ip	 outfromtocorr(Dep,OutDep,MidList,OutCorr). %% TA-991015
+
+                  % outfromto(Dep,OutDep),outcorr(MidList,OutCorr).
+
+2023 rule 
+is  takestime(Diff,Station1,Station2)
+id	 add (bcpbc(thatmeans),bcp(going),bcp(from),bwr(Station1),bcp(to),
+			bwr(Station2),bcp(takes),bwr(Diff),
+			bcp(minutes),period)
+ip	 [].
+
+2024 rule 
+is  keepfrom(Place,_,_),passevent(Deps,_,_,Opts,Day,_)
+id	 add Out
+ip	 Place == hovedterminalen, %% TA-000930
+    outdeplist(Deps,Day,Opts,from(Place),Out).
+
+2025 rule 
+is  keepto(Place,_,_),passevent(Deps,_,_,Opts,Day,_)
+id	 add Out
+ip	 %% Place == hovedterminalen, %% TA-000930 TA-001005  skriv ut retning
+    outdeplist(Deps,Day,Opts,to(Place),Out).
+
+% Denne matcher bare en gang, av en eller annen merkelig grunn
+2026 rule 
+is  present keepto(Place,_,_),seen passevent(_,_,_,_,_,_) % både from og to
+id	 replace (bcp(coming),bcp(from),bwr(FP),period)
+	 with    (bcp(coming),bcp(from),bwr(FP),bcp(to),bwr(Place),period)
+ip	 [].
+
+%%%% Passevent 
+
+2027 rule 
+is  passevent(Deps,_,_,Opts,Day,_)
+%%    ,not present numberof(_,_,_) 
+id	 add Out
+ip	 outdeplist(Deps,Day,Opts,nil_,Out).
+
+2028 rule 
+is  findprice(FromPlace,ToPlace,_,Price)
+id	 add (bcp(theprice),bcp(ofatrip),bcp(from),bwr(FromPlace),
+			bcp(to),bwr(ToPlace),
+			bcp(is),bwr(or(Price)),bcp(kroner),period)
+ip	 statorplace(FromPlace),statorplace(ToPlace).
+
+2029 rule 
+is  ticketprice(Price)
+id	 add (bcp(theprice),bcp(ofatrip),
+			bcp(is),bwr(or(Price)),bcp(kroner),period)
+ip	 [].
+
+2030 rule is  passesstations(Buses,_,Stations,_)
+id	 add (bcp(both),bwr(Buses),bcp(passes),
+			bcp(thestations),bwr(Stations),period)
+ip	 islist(Buses).
+
+2031 rule is  passesstations(Bus,_,Stations,_)
+id	 add (bwr(Bus),
+			bcp(passes),bcp(thestations),bwr(Stations),period)
+ip	 [].
+
+2032 rule is  keepbetweenstat(_,FromStation,ToStation,_,_)
+id	 to     (bcp(thestations),bwr(_))
+	 append (bcp(between),bwr(FromStation),bcp(and),bwr(ToStation))
+ip	 [].
+
+2033 rule is  timeis(A)
+id	 add (bcp(thetime),bcp(is),bwt(A),period) %% bwt
+ip	 [].
+
+2034 rule 
+is  dateis(Year,Month,DayNr,Day)
+id	 add (bcp(it),bcp(is),outday(Day),bwr(DayNr), %%  (not days)
+			dot, %% bcp(dateof),                    %% TA-000614  Too many spaces
+         bwr(Month),dot,bwr(Year),period) %% TA-000526
+ip	 [].
+
+2035 rule 
+is  allstations(Stations)
+id	 add (bcp(thestations),bcp(are),bwr(Stations),period)
+ip	 [].
+
+2036 rule 
+is  allbuses(Buses), not present numberof(busroutes,_,_) 
+id	 add (bcp(thebuses),bcp(are),bwr(Buses),period)
+ip	 [].
+
+
+2037 rule 
+is  properstation(Station)
+id	 add (bwr(Station),bcp(is),bcp(a),bcp(station),period)
+ip	 [].
+
+
+2038 rule 
+is  tramstations(Stations) %% TA-000414
+id	 add (bcp(thestations),bcp(are),bwr(Stations),period)
+ip	 [].
+
+
+319 rule 
+is  stationsat(Place,_,Stations) %% in Trondheim 
+id	 add (bcpbc(thestations),bwr(Stations),bcp(is),bcp(at),bwr(Place),period) 
+ip  Place==trondheim. %% etc.
+
+320 rule 
+is  stationsat(_,Station,Places)  
+id	 add (bcp(i),bcp(donotknow),period)
+ip  bound(Station), Places == [].
+
+321 rule %% TA-000219
+is  stationsat(Place,Station,Places)  
+id	 add (bcp(i),bcp(donotknow),period)
+ip  bound(Place), unbound(Station),Places == [].
+
+324 rule
+is  stationsat(_,Station,Places)
+id	 add (bcpbc(station),bwr(Station),bcp(is),bcp(at),bwr(Places),period) %% TA-000126
+ip  bound(Station).
+
+328 rule 
+is  stationsat(Place,_,Stations) 
+id	 add (bcpbc(thestations),bwr(Stations),bcp(is),bcp(atstation),bwr(Place),period)
+ip  [].
+
+
+332 rule  
+is  stationsnear(Place,_,Stations)
+id	 add (bcpbc(thestations), 
+         bwr(Stations),bcp(is),bcp(near),bwr(Place),period)
+ip	 Stations \== [].
+
+
+3371 rule
+is  stationsnear(A,B,[])
+id	 add (bcpbc(idkwhether),bwr(A),bcp(is),bcp(near),bwr(B),period)
+ip	 bound(A),bound(B).
+
+
+
+3372 rule
+is  stationsnear(_,_,Stations)
+id	 add (bcp(knownostations),period)
+ip	 Stations == [].
+
+
+
+
+2038  rule 
+is  endstation(Bus,Stations,_)
+id  add (bcp(end_stations),bcp(for),bwr(Bus),bcp(is),bwr(Stations),period)
+ip  [].
+
+%%%% Tidsfiltrering sammen med frekvenser
+
+2039 rule is  keepbefore(Time,_,_) % Moved in front for cosmetics
+id	 to     (bcp(or),bcp(every),bwr(_),bcp(minutes))
+	 append (bcp(before),bwt(Time))
+ip	 [].
+
+2040 rule is  keepafter(Time,_,_)
+id	 to     (bcp(or),bcp(every),bwr(_),bcp(minutes))
+	 append (bcp(after),bwt(Time))
+ip	 [].
+
+
+2041 rule is  keepbetween(FromTime,ToTime,_,_)
+id	 to     (bcp(or),bcp(every),bwr(_),bcp(minutes))
+	 append (bcp(between),bwt(FromTime),bcp(and),bwt(ToTime)) %% TA-990926 bwt
+ip	 [].
+
+%%%% Tidsfiltrering sammen med passeringtider
+
+2042 rule is  keepafter(Time1,A,B), % special case,  double constraint %% TA-991216
+    keepafter(Time2,C,D)
+
+id	  to     (bcp(thefirst),bcp(bus))
+	 append (bcp(after),bwt(Time))
+
+ip	 \+ ((A,B) == (C,D)),      % very dirty
+    maxval(Time1,Time2,Time). % utility
+
+
+2043 rule is  keepafter(Time,_,_)
+id	 to     (bcp(thefirst),bcp(bus))
+	 append (bcp(after),bwt(Time))
+ip	 [].
+
+2044 rule is  keepbefore(Time,_,_)
+id	 to     (bcp(thelast),bcp(bus))
+	 append (bcp(before),bwt(Time))
+ip	 [].
+
+2045 rule is  keepbetween(FromTime,ToTime,_,_)
+id	 to     (bcp(thefirst),bcp(bus))
+	 append (bcp(after),bwt(FromTime)), %% bwt TA-990926
+	 to     (bcp(thelast),bcp(bus))
+	 append (bcp(before),bwt(ToTime)) %% bwt TA-990926
+ip	 [].
+
+%%%% Retningsfiltrering med frekvenser
+2046 rule is  keepto(Place,_,_),present passevent(_,Bus,_,_,_,_)
+id  to     (bcp(bus),bwr(Bus),bcp(normally),bcp(passes),bwr(_))
+    append (bcp(direction),bwr(Place))
+ip  [].
+
+2047 rule is  keepfrom(Place,_,_),present passevent(_,Bus,_,_,_,_)
+id  to     (bcp(bus),bwr(Bus),bcp(normally),bcp(passes),bwr(_))
+    append (bcp(coming),bcp(from),bwr(Place))
+ip  [].
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Nth/N next/N first/N last etc.
+
+
+
+% One place...
+
+2048 rule is  present passevent(_,_,_,Ord,_,_)
+id	 replace (bcp(bus),bwr(Bus))
+	 with		(bcp(the),bcp(nth(N)),bcp(bus_det),comma,bwr(Bus))
+ip	 member(nth(N),Ord).
+
+2049 rule is  present passevent(_,_,_,Ord,_,_)
+id	 replace (bcp(nth(N)),bcp(bus))
+	 with		(bcp(nth(N)),bcp(first),bcp(bus_det))
+ip	 member(first(1),Ord).
+
+2050 rule is  present passevent(_,_,_,Ord,_,_)
+id	 replace (bcp(nth(N)),bcp(bus))
+	 with		(bcp(nth(N)),bcp(next),bcp(bus_det))
+ip	 member(next(1),Ord).
+
+2051 rule is  present passevent(_,_,_,Ord,_,_)
+id	 replace (bcp(nth(N)),bcp(bus))
+	 with 	(bcp(nth(N)),bcp(last),bcp(bus_det))
+ip  member(last(1),Ord).
+
+2052 rule is  present passevent(_,_,_,Ord,_,_)
+id	 replace (bcp(bus),bwr(Bus),bcp(passes))
+	 with 	(bcp(thenext),bcp(bus),comma,bwr(Bus),bcp(passes))
+ip	 member(next(1),Ord).
+
+2053 rule is  present passevent(_,_,_,Ord,_,_)
+id	 replace (bcp(bus),bwr(Bus),bcp(passes))
+	 with 	(bcp(thefirst),bcp(bus),comma,bwr(Bus),bcp(passes))
+ip  member(first(1),Ord).
+
+2054 rule is  present passevent(_,_,_,Ord,_,_) %.
+id	 replace (bcp(bus),bwr(Bus),bcp(passes))
+	 with 	(bcp(thelast),bcp(bus),comma,bwr(Bus),bcp(passes))
+ip  member(last(1),Ord).
+
+
+%%  TA-000417   nth / next   is duplicated too much
+
+%% remove present/ hope only the first occurrence
+
+% Two places....
+
+2055 rule 
+is   present coupled(_,_,_,_,_,Ord,_,_) %
+id	  not bcp(nth(N)),  not bcpbc(nth(N)), 
+    replace (bcp(bus),bwr(Bus))
+	 with		(bcp(the),bcp(nth(N)),bcp(bus_det),comma,bwr(Bus))
+ip  member(nth(N),Ord).
+
+2056 rule 
+is  present coupled(_,_,_,_,_,Ord,_,_) %
+id	  not bcp(first),  not bcpbc(first), 
+    replace (bcp(nth(N)),bcp(bus))
+	 with    (bcp(nth(N)),bcp(first),bcp(bus_det))
+ip	 member(first(1),Ord).
+
+2057 rule 
+is   present coupled(_,_,_,_,_,Ord,_,_) %
+id	  not bcp(next),  not bcpbc(next), 
+    replace (bcp(nth(N)),bcp(bus))
+	 with    (bcp(nth(N)),bcp(next),bcp(bus_det))
+ip  member(next(1),Ord).
+
+2058 rule 
+is   present coupled(_,_,_,_,_,Ord,_,_) %
+id	  not bcp(last),  not bcpbc(last), 
+    replace (bcp(nth(N)),bcp(bus))
+	 with 	(bcp(nth(N)),bcp(last),bcp(bus_det))
+ip	 member(last(1),Ord).
+
+2059 rule 
+is   present coupled(_,_,_,_,_,Ord,_,_) %
+id	  not bcp(thenext),  not bcpbc(thenext), 
+    not bcp(thenext),  not bcpbc(thenext),       % mentioned already %% TA-000417
+    replace (bcp(bus),bwr(Bus),bcp(passes))
+	 with    (bcp(thenext),bcp(bus),comma,bwr(Bus),bcp(passes))
+ip	 member(next(1),Ord).
+
+2060 rule 
+is   present coupled(_,_,_,_,_,Ord,_,_) %
+id	  not bcp(thefirst),  not bcpbc(thefirst), 
+    replace (bcp(bus),bwr(Bus),bcp(passes))
+	 with    (bcp(thefirst),bcp(bus),comma,bwr(Bus),bcp(passes))
+ip	 member(first(1),Ord).
+
+2061 rule 
+is  present coupled(_,_,_,_,_,Ord,_,_) %.
+id	  not bcp(thelast),  not bcpbc(thelast), 
+    replace (bcp(bus),bwr(Bus),bcp(passes))
+	 with 	(bcp(thelast),bcp(bus),comma,bwr(Bus),bcp(passes))
+ip	 member(last(1),Ord).
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Messages
+
+2062 rule 
+is  message(maychange),present coupled(_,_,_,_,_,_,_,[])
+id	 replace (startmark,bcp(yesmark)) with (startmark,bcp(no))
+ip	 [].
+
+2063 rule 
+is  message(sameplace(Place1,Place2))
+id	 add (bwrbc(Place1),bcp(and),bwr(Place2),bcp(is),bcp(thesame),bcp(place),period)
+         % byen 
+ip	 [].
+
+2064 rule 
+is  message(mustknow(place))
+id	 no bcp(yesmark),
+    add (bcp(you),bcp(must),bcp(specify),bcp(aplace),bcp(in),bcp(such),
+			bcp(questions),period)
+ip	 [].
+
+2065 rule 
+is  message(mustknow(bus))
+id	 no bcp(yesmark),
+    add (bcp(you),bcp(must),bcp(specify),bcp(abus),bcp(in),bcp(such),
+			bcp(questions),period)
+ip	 [].
+
+2066 rule 
+is  message(not(Class,Object))
+id	 no bcp(yesmark),
+    add (bcp(there),bcp(is),bcp(notany),bcp(Class), %% bcp(none)
+			bcp(called),bwr(Object),period)
+ip	 [].
+
+2066 rule 
+is  message(is(Class,Object))
+id	 add (bcp(it),bcp(is),bcp(Class),bwr(Object),period)
+ip	 [].
+
+2067 rule 
+is  message(howtuchelp)
+id	 add (bcp(i),bcp(can),bcp(tell),bcp(you_acc),
+			bcp(about),bcp(busdepartures),bcp(in),bwr(trondheim),period)
+ip	 [].
+
+2068 rule 
+is  message(none)
+id	 add nl
+ip	 [].
+
+%%%% Filtrering sammen med fra-retning
+
+
+
+
+%%%% Filtrering sammen med antall avganger fra ett sted
+
+2073 rule is  keepat(Time,_,_),present passevent(_,_,Place,_,_,_)
+id	 to     (bwr(_),bcp(departures),bcp(from),bwr(Place))
+	 append (bcp(at),bwt(Time))
+ip	 [].
+
+2074 rule is  keepafter(Time,_,_),present passevent(_,_,Place,_,_,_)
+id	 to     (bwr(_),bcp(departures),bcp(from),bwr(Place))
+	 append (bcp(after),bwt(Time))
+ip	 [].
+
+2075 rule is  keepbefore(Time,_,_),present passevent(_,_,Place,_,_,_)
+id	 to     (bwr(_),bcp(departures),bcp(from),bwr(Place))
+	 append (bcp(before),bwt(Time))
+ip	 [].
+
+2076 rule is  keepbetween(FromTime,ToTime,_,_),present passevent(_,_,Place,_,_,_)
+id	 to     (bwr(_),bcp(departures),bcp(from),bwr(Place))
+    append (bcp(between),bwt(FromTime),bcp(and),bwt(ToTime))
+ip	 [].
+
+2077 rule is  keepto(Direction,_,_),present passevent(_,_,Place,_,_,_)
+id	 to     (bwr(_),bcp(departures),bcp(from),bwr(Place))
+    append (bcp(direction),bwr(Direction))
+ip  [].
+
+2078 rule is  keepfrom(Direction,_,_),present passevent(_,_,Place,_,_,_)
+id	 to     (bwr(_),bcp(departures),bcp(from),bwr(Place))
+    append (bcp(coming),bcp(from),bwr(Direction))
+ip  [].
+
+%%%% Filtrering sammen med antall avganger fra to steder
+
+2079 rule is  keepat(Time,_,_),present coupled(_,_,_,Place,_,_,_,_)
+id	 to     (bwr(_),bcp(departures),bcp(from),bwr(_),bcp(to),bwr(Place))
+	 append (bcp(at),bwt(Time))
+ip	 [].
+
+580 rule % cosmetic
+is  present coupled(_,_,_,Place,_,_,_,_),
+    keepafter(Time1,_,_),keepbefore(Time2,_,_)
+id	 to     (bwr(_),bcp(departures),bcp(from),bwr(_),bcp(to),bwr(Place))
+	 append (bcp(between),bwt(Time1),bcp(and),bwt(Time2))
+ip	 [].
+
+
+585 rule % swapped before after
+is  keepbefore(Time,_,_),present coupled(_,_,_,Place,_,_,_,_)
+id	 to     (bwr(_),bcp(departures),bcp(from),bwr(_),bcp(to),bwr(Place))
+	 append (bcp(before),bwt(Time))
+ip	 [].
+
+590 rule  % swapped after before
+is  keepafter(Time,_,_),present coupled(_,_,_,Place,_,_,_,_)
+id	 to     (bwr(_),bcp(departures),bcp(from),bwr(_),bcp(to),bwr(Place))
+	 append (bcp(after),bwt(Time))
+ip	 [].
+
+
+2080 rule is  keepbetween(FromTime,ToTime,_,_),present coupled(_,_,_,Place,_,_,_,_)
+id	 to     (bwr(_),bcp(departures),bcp(from),bwr(_),bcp(to),bwr(Place))
+    append (bcp(between),bwt(FromTime),bcp(and),bwt(ToTime))
+ip	 [].
+
+2081 rule is  keepto(Direction,_,_),present coupled(_,_,_,Place,_,_,_,_)
+id	 to     (bwr(_),bcp(departures),bcp(from),bwr(_),bcp(to),bwr(Place))
+    append (bcp(direction),bwr(Direction))
+ip  [].
+
+2082 rule is  keepfrom(Direction,_,_),present coupled(_,_,_,Place,_,_,_,_)
+id	 to     (bwr(_),bcp(departures),bcp(from),bwr(_),bcp(to),bwr(Place))
+    append (bcp(coming),bcp(from),bwr(Direction))
+ip  [].
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Generelle rettelser
+
+% Buss (Var) --> the bus 
+2083 rule is  []
+id  replace (bcp(bus_det),bwr(Bus))
+    with    (bcp(thebus))
+ip  unbound(Bus).
+
+
+% Buss (Var) --> the bus 
+2084 rule is  []
+id  replace (bcp(bus_det),bwr(Bus))
+    with    (bcp(bus),bwr(Bus)) 
+ip  bound(Bus).
+
+
+
+% Buss (Var) --> a bus
+2085 rule is  []
+id  replace (bcp(bus),bwr(Bus))
+    with    (bcp(abus))
+ip  unbound(Bus).
+
+% Buss (Var) --> a bus
+2086 rule is  []
+id  replace (bcp(bus_det),comma,bwr(Bus))
+    with    bcp(bus_det)
+ip  unbound(Bus).
+
+% Buss (Var) --> a bus
+2087 rule is  []
+id  replace (bcp(bus),comma,bwr(Bus))
+    with    bcp(bus_det)
+ip  unbound(Bus).
+
+% stations Nardo --> station Nardo
+2088 rule is  []
+id  replace (bcp(thestations),bwr(Station))
+    with    (bcp(thestation),bwr(Station))
+ip  atomic(Station).
+
+% every N munutes or every N minutes --> every N minutes
+2089 rule is  []
+id  replace (bcp(every),bwr(N),bcp(minutes),bcp(or),
+             bcp(every),bwr(N),bcp(minutes))
+    with    (bcp(every),bwr(N),bcp(minutes))
+ip  bound(N).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Språkavhengige regler. Skal være nest sist
+
+% Dag buss passerer --> Dag passerer buss
+2090 rule 
+is  []
+id  % remove bcp(passes),  % remove passes wherever it is	
+
+      replace bcp(passes) with space,   %% swap problems in N/E %% TA-000604
+
+      replace (bcp(on),outdays(Day),comma)            %% at -> on
+	      with    (bcp(on),outdays(Day),bcp(passes))   %%
+
+ip  isday(Day),language(norsk).
+
+
+
+% Dag det er --> Dag er det
+2091 rule is  []
+id	 replace (bcp(on),outdays(Day),comma,bcp(there),bcp(are))  %% at -> on
+	 with    (bcp(on),outdays(Day),bcp(are),bcp(there))        %%
+ip  isday(Day),language(norsk).
+
+% Dag abus goes --> Dag goes abus
+2092 rule is  []
+id	 replace (bcp(on),outdays(Day),comma,bcp(abus),bcp(goes)) %% at -> on
+	 with    (bcp(on),outdays(Day),bcp(goes),bcp(abus))       %%
+ip  isday(Day),language(norsk).
+
+% Hver 15 minutter --> hvert 15. minutt
+2093 rule is  []
+id  replace (bcp(every),bwr(N),bcp(minutes))
+    with    (bcp(each),bwr(N),dot,bcp(minute))
+ip  language(norsk).
+
+% normalt (Verb) --> (Verb) normalt
+2094 rule is  []
+id  replace (bcp(normally),bcp(Verb))
+    with    (bcp(Verb),bcp(normally))
+ip  language(norsk),(Verb==passes;Verb==goes). % Should go for every verb
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Formatering. Skal være sist  
+
+% Lager stor bokstav etter punktum etc.
+periodB rule is  [] 
+id	 replace (Sentenceend,bcp(A)) with (Sentenceend,bcpbc(A))
+ip	 sentenceend(Sentenceend).
+
+% Tar bort evt. punktum etc. i starten av en setning
+2095 rule is  []
+id	 replace (startmark,Sentenceend) with startmark
+ip	 sentenceend(Sentenceend).
+
+% Lager stor bokstav først i svaret
+bigstart rule 
+is  []
+id  replace (startmark,bcp(A)) with (startmark,bcpbc(A))
+ip	 [].
+
+nobusmystery rule 
+is  coupled(_,_,_,_,_,_,[],_),clear
+id	 clear,addfront printmessage(nobuses)
+ip	 [].
+
+

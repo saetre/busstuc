@@ -1,0 +1,229 @@
+%% FILE extracut.pl
+%% SYSTEM BussTUC
+%% CREATED TA-981221
+%% REVISED TA-090807
+
+%% Create regcut files for modules
+
+/*
+
+cutloop_trace(Station,Trace1,Trace2)),
+
+cutloop_rid(Station,Rid1,Trace1,Rid2,Trace2,Delta,W)).
+
+
+
+Assumes module is generated already, and all files are compiled.
+
+Module name is a parameter.
+
+
+Program is run in same directory as busestuc.
+
+% busestuc.sav
+?-create_regcut(<Module>).
+
+
+
+*/
+
+
+:-dynamic ex_cutloop_rid/7,
+          ex_cutloop_trace/3,
+
+          ex_departureday/4,
+          ex_ntourstops/2,
+          ex_passes3/5,
+
+          pax/5.
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+
+
+crecut:-  
+     modulename(TTP), %% if it can be found
+     crecut1(TTP).
+
+
+create_regcut(Module):- %% TA-080428
+   tellmodule(Module,'regcut.pl'),
+   crecut2(Module) ,
+
+   recreate_deppas(Module), %% TA-090807
+
+   told.
+
+
+tellmodule(Module,File):-
+    append_atomlist(['database/',Module,'/',File],ModuleFile),
+    tell(ModuleFile).
+
+
+
+%% NB W is difference between arrival time for Trace1 and departure time for Trace2
+
+crecut2(Module) :-
+
+    for(mod_cut_rid(Module,Station,Rid1,Trace1,Rid2,Trace2,Delta,W),
+        remember(ex_cutloop_rid(Station,Rid1,Trace1,Rid2,Trace2,Delta,W))),
+
+    for(ex_cutloop_rid(Station,_Rid1,Trace1,_Rid2,Trace2,_Delta,_W),
+        remember(ex_cutloop_trace(Station,Trace1,Trace2))),
+
+    dumppredas(ex_cutloop_trace(Station,Trace1,Trace2),
+                  cutloop_trace(Station,Trace1,Trace2)),
+    nl,
+    dumppredas(ex_cutloop_rid(Station,Rid1,Trace1,Rid2,Trace2,Delta,W),
+                  cutloop_rid(Station,Rid1,Trace1,Rid2,Trace2,Delta,W)).
+
+    
+
+
+mod_cut_rid(Module,Station,Rid1,Trace1,Rid2,Trace2,Delta,W):-
+    cutloop_station(Bus,Station),  %% global
+        mod_passes3(Module,Trace1,Station,Seq,Arr1,_Dep1),
+    Seq > 1, % at least not the first
+       mod_departureday(Module,Rid1,Trace1,Time1,Day),
+       mod_route(Module,Rid1,Bus,_),
+    addtotime(Time1,Arr1,TimeX), %% arr time 
+       mod_passes3(Module,Trace2,Station,1,_Arr2,0), %  _Dep2=0
+       mod_departureday(Module,Rid2,Trace2,Time2,Day), %% dep time 
+       mod_route(Module,Rid2,Bus,_), %% same bus
+    TimeX =< Time2,  %% maybe the same 
+    addtotime(TimeX,9,TimeY), % =< 9  minutes waiting time 
+                              % // bus 36 1455
+    Time2 =< TimeY,
+       mod_ntourstops(Module,Trace1,Delta),
+    difftime(Time2,Time1, W).     %% add 
+
+mod_passes3(Module,Trace1,Station,Seq,Arr1,Dep1):-
+     Module:passes3(Trace1,Station,Seq,Arr1,Dep1).
+
+mod_departureday(Module,Rid1,Trace1,Time1,Day):-
+     Module:departureday(Rid1,Trace1,Time1,Day).
+
+mod_route(Module,Rid1,Bus,Xbus):-
+     Module:route(Rid1,Bus,Xbus).
+     
+mod_ntourstops(Module,Trace1,Delta):-
+     Module:ntourstops(Trace1,Delta).
+
+
+%% create a new set of regdep and regpas predications
+
+recreate_deppas(Module) :-   %% TA-090807
+
+     create_paxlist(Module),           %%  pax(XStat,1436,12031,18,23)
+                                       %%  pax(XStat,1436,12031,18,20)
+                             
+   
+    recreate_regpas(Module),
+
+    recreate_ntourstops(Module),
+
+    recreate_regdep(Module).
+ 
+
+
+
+recreate_regpas(Module):-   %% make combined passes
+
+
+     for( (pax(XStat,Trace1,Trace2,M,Del) ),
+
+         for( (T=Trace1;T=Trace2), 
+
+               (whattoget(Module,T,Trace1,Trace2,XStat,M,Del,Ex_passes3),
+                remember(Ex_passes3) ) ) ),
+
+      dumppredas(ex_passes3(path(Trace1,Trace2,M,Del),Station,Seq,DelArr,DelDep),
+                 ex_passes3(path(Trace1,Trace2,M,Del),Station,Seq,DelArr,DelDep)).    
+
+
+
+
+recreate_ntourstops(Module):-   %% make combined passes
+
+     for( (pax(_XStat,Trace1,Trace2,M,Del)),
+            
+     (Trace2= 0 
+          -> 
+            ( Module:ntourstops(Trace1,M0),
+             remember(ex_ntourstops(path(Trace1,0,0,0),M0)))
+          ;
+       ( Module:ntourstops(Trace1,M1), 
+         Module:ntourstops(Trace2,M2),
+         MN is M1+M2-1,
+         remember(ex_ntourstops(path(Trace1,Trace2,M,Del),MN)) ) ) ),
+       
+     dumppredas(ex_ntourstops(Trace,MN),ex_ntourstops(Trace,MN)).
+        
+
+ 
+recreate_regdep(Module) :-  %% keep only initial regcut regdep
+    for( (Module:departureday(RID,Trace1,DepTime,DayCode),
+          \+ ex_cutloop_rid(_,   _,_    , _, Trace1,_,_)),
+
+    ( ex_cutloop_rid(_,RID,Trace1, _ ,Trace2,M,Del)
+      ->  remember(ex_departureday(RID, path(Trace1,Trace2,M,Del) ,DepTime,DayCode))
+      ;   remember(ex_departureday(RID, path(Trace1,0,0,0),DepTime,DayCode)) ) ),
+
+      dumppredas(ex_departureday(RID,Trace,DepTime,DayCode),
+                 ex_departureday(RID,Trace,DepTime,DayCode)).
+
+
+
+/*  Xstat = m2, M = 18, W = 20
+
+ex_passes3(path(11436,12031,18,20),bakke_gt,16,14,14).
+ex_passes3(path(11436,12031,18,20),nova_kinosenter,17,16,16).
+
+ex_passes3(path(11436,12031,18,20),m2,18,18,18). -> ex_passes3(path(11436,12031,18,20),m2,18,18,20).
+                                            **                                                  **
+ex_passes3(path(11436,12031,18,20),m2,19,20,20). -> Drop
+
+ex_passes3(path(11436,12031,18,20),torget,20,21,21). -> ex_passes3(path(11436,12031,18,20),torget,19,21,21)
+                                          **                                                      **
+*/
+
+
+
+whattoget(Module,T,Trace1,Trace2,XStat,M,W,ex_passes3(path(Trace1,Trace2,M,W),Station,Seq,DelArr,DelDepX)):-
+    T==Trace1,
+    Module:passes3(Trace1,Station,Seq,DelArr,DelDep),
+    
+    ((Seq = M, Station=XStat) 
+               -> DelDepX is W
+               ;  DelDepX is DelDep).
+
+    
+
+whattoget(Module,T,Trace1,Trace2,XStat,M,W,ex_passes3(path(Trace1,Trace2,M,W),Station,SeqM,DelArrW,DelDepW)):-
+    T==Trace2,
+    Module:passes3(Trace2,Station,Seq,DelArr,DelDep),
+
+  (  (Seq = 1, Station=XStat) 
+          -> fail % drop
+          ; ( SeqM is Seq+M-1,
+              DelArrW is DelArr + W,
+              DelDepW is DelDep + W) ).
+
+
+
+create_paxlist(Module) :-
+    for(  (Module:ntourstops(Trace1,_), \+ ex_cutloop_rid(_,_,_,_, Trace1,_,_)),
+    (
+    ( \+    ex_cutloop_trace(XStat,Trace1,_Trace2) ->  
+                     remember(pax(XStat,Trace1,0,0,0))) ;
+
+     for(  (ex_cutloop_trace(XStat,Trace1,Trace2),
+            ex_cutloop_rid(XStat,_,Trace1,_,Trace2,M,W) ),
+         
+            remember(pax(XStat,Trace1,Trace2,M,W)) ) ) ).
+
+
+
+
+
+
