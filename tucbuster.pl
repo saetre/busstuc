@@ -25,8 +25,9 @@
 
 ?-compile('tele2.pl'). %% specific tele programs %% TA-051116
 
-:-compile('dialog/d_call.pl').
 
+%%%%   :-compile('dialog/d_call.pl').
+%%%%
 
 
 ?- ( smspermanentflag := true), 

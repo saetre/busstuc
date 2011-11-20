@@ -7,13 +7,86 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %:- use_module(library(system), [environ/2, datime/1]).
-:- use_module(library(system), [datime/1]).
+:- use_module( library(system), [datime/1]).
+:- use_module( 'utility', [myflags/2]).
+:- use_module( '../db/busdat', []).
 
 :- module(user, [
     datetime/6
    ]).
-%% Rule:  A week must have at least has  4 days to count as a week
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+% Prolog is really awkard here
+convert_zone(YYY, M, D, H,Min,Sec,   YYY,M,D,H,Min,Sec):- %% TA-080407
+    \+ myflags(busflag,true),
+    !.
+
+convert_zone(YYY, M, D, H,Min,Sec,
+             YYYY,MM,DD,HH,Min,Sec):-
+    clock_delay(0,0,0), %% <--- %% New %% TA-080407
+    !,
+    YYY=YYYY, %% classic trap ! %% TA-060101
+    M=MM,
+    D=DD,
+    H=HH.
+
+convert_zone(YYY, M, D, H,Min,Sec, 
+             YYYY,MM,DD,HH,Min,Sec):-
+
+    clock_delay(SBtime,_,_),     %% busdat.pl  %% TA-080407
+
+%%%     SBtime = -9,             %% test
+
+    H1 is H+SBtime,          %% e.g -9 since SB time is 9 h less.
+    conzoneH(YYY, M, D, H1,YYYY,MM,DD,HH).
+
+
  
+conzoneH(YYYY, MM, DD, HH, YYYY,MM,DD,HH):-  
+    ( HH >= 0, HH =< 24 ),
+    !.
+conzoneH(YYY, M, D, H, YYYY,MM,DD,HH):-  
+    (H < 0  -> (D1 is D-1,HH is H+24);
+     H > 24 -> (D1 is D+1,HH is H-24);
+     D1 = D,HH=H),
+    conzoneD(YYY, M, D1, YYYY,MM,DD). %% HH is finished
+
+conzoneD(YYY, M, D, YYYY,MM,DD):- 
+     D = 0,
+     !,
+     M1 is M -1,
+     monthdays(YYY,M1,D1),
+     conzoneM(YYY,M1,D1, YYYY,MM,DD).
+conzoneD(YYY, M, D, YYYY,MM,DD):- 
+     monthdays(YYY,M,Max),
+     D > Max,
+     !,
+     D1 = 1,
+     M1 is M+1,
+     conzoneM(YYY, M1,D1, YYYY,MM,DD).
+conzoneD(YYY, M, D, YYY,M,D).
+
+conzoneM(YYYY, M,D, YYYY,MM,DD):-
+    D=0,
+    M >=2, %% not 1. january
+    !,
+    previousmonth(M,MM),
+    monthdays(YYYY,MM,DD).
+conzoneM(YYY, M,_, YYYY,MM,DD):-
+    M =1, %%  1. january
+    !,
+    YYYY is YYY-1,MM=12,DD=31.
+conzoneM(YYYY, MM,DD, YYYY,MM,DD):-
+    MM >=1,MM =< 12,
+    !.
+conzoneM(YYY,M,_, YYYY,MM,DD):-
+    M > 12,
+    !,
+    YYYY is YYY+1, MM is 1, DD=1.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+%% Rule:  A week must have at least  4  days to count as a week
 %% Special rule (e.g. 2010), january  1,2,3 = Week 53 (SIC)
 
 %% 4.1.2009   = week 1
@@ -303,74 +376,22 @@ this_year(YYYY):-
     datetime(YYYY,_B,_C,_D,_E,_F).
 
 
-% Prolog is really awkard here
-
-convert_zone(YYY, M, D, H,Min,Sec,   YYY,M,D,H,Min,Sec):- %% TA-080407
-    \+ myflags(busflag,true),
+timestring(Z):- %% creates a string of time-point YYYYMMDDHHMMSS
+    datetime(X1,X2,X3,X4,X5,X6),
+    coerce2d([X1,X2,X3,X4,X5,X6],[D1,D2,D3,D4,D5,D6]),
+    concat_atomlist([D1,D2,D3,D4,D5,D6],Z),
     !.
-
-convert_zone(YYY, M, D, H,Min,Sec,
-             YYYY,MM,DD,HH,Min,Sec):-
-    clock_delay(0,0,0), %% <--- %% New %% TA-080407
-    !,
-    YYY=YYYY, %% classic trap ! %% TA-060101
-    M=MM,
-    D=DD,
-    H=HH.
-
-convert_zone(YYY, M, D, H,Min,Sec, 
-             YYYY,MM,DD,HH,Min,Sec):-
-
-    clock_delay(SBtime,_,_),     %% busdat.pl  %% TA-080407
-
-%%%     SBtime = -9,             %% test
-
-    H1 is H+SBtime,          %% e.g -9 since SB time is 9 h less.
-    conzoneH(YYY, M, D, H1,YYYY,MM,DD,HH).
+timestring('00000000000000').
+%           YYYYMMDDHHMMSS
 
 
- 
-conzoneH(YYYY, MM, DD, HH, YYYY,MM,DD,HH):-  
-    ( HH >= 0, HH =< 24 ),
+datestring(Z):- %% creates a string of date  YYYYMMDD
+    datetime(X1,X2,X3,_X4,_X5,_X6),
+    coerce2d([X1,X2,X3],[D1,D2,D3]),
+    concat_atomlist([D1,D2,D3],Z),
     !.
-conzoneH(YYY, M, D, H, YYYY,MM,DD,HH):-  
-    (H < 0  -> (D1 is D-1,HH is H+24);
-     H > 24 -> (D1 is D+1,HH is H-24);
-     D1 = D,HH=H),
-    conzoneD(YYY, M, D1, YYYY,MM,DD). %% HH is finished
-
-conzoneD(YYY, M, D, YYYY,MM,DD):- 
-     D = 0,
-     !,
-     M1 is M -1,
-     monthdays(YYY,M1,D1),
-     conzoneM(YYY,M1,D1, YYYY,MM,DD).
-conzoneD(YYY, M, D, YYYY,MM,DD):- 
-     monthdays(YYY,M,Max),
-     D > Max,
-     !,
-     D1 = 1,
-     M1 is M+1,
-     conzoneM(YYY, M1,D1, YYYY,MM,DD).
-conzoneD(YYY, M, D, YYY,M,D).
-
-conzoneM(YYYY, M,D, YYYY,MM,DD):-
-    D=0,
-    M >=2, %% not 1. january
-    !,
-    previousmonth(M,MM),
-    monthdays(YYYY,MM,DD).
-conzoneM(YYY, M,_, YYYY,MM,DD):-
-    M =1, %%  1. january
-    !,
-    YYYY is YYY-1,MM=12,DD=31.
-conzoneM(YYYY, MM,DD, YYYY,MM,DD):-
-    MM >=1,MM =< 12,
-    !.
-conzoneM(YYY,M,_, YYYY,MM,DD):-
-    M > 12,
-    !,
-    YYYY is YYY+1, MM is 1, DD=1.
+datestring('00000000').
+%           YYYYMMDD
 
 
 

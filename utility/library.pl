@@ -8,7 +8,7 @@
 
 :- ['../declare'].
 
-:- module(user,
+:- module( utility,
    [nth/3
    ]).
 

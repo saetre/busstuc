@@ -293,15 +293,13 @@ norsource_postfix :- %% TA-110207
     myflags(norsource,true) ->
     (output('</bustuc>'),nl);true.
 
-:- ['extra/diarun.pl'].
 dialog :-  
     nl,
     seen,
     permanence := 0, 
     dialog := 1,   
 %    queryflag := true,       %% (Statements are implicit queries)
-    closereadfile,   
-    dialogrun0.   
+    closereadfile. %, dialogrun0.   
 
 
 
