@@ -8,14 +8,19 @@
 
 %:- use_module(library(system), [environ/2, datime/1]).
 :- use_module( library(system), [datime/1]).
-:- use_module( 'utility', [myflags/2]).
+
 :- use_module( '../db/busdat', []).
+:- use_module( '../db/timedat', [clock_delay/3]).
 
-:- module(user, [
-    datetime/6
-   ]).
-
+%:- use_module( 'utility', []).
+%:- module(     'utility', [
+%    datetime/6,
+%    days_between/3,
+%    todaysdate/1
+%   ]).
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+
 % Prolog is really awkard here
 convert_zone(YYY, M, D, H,Min,Sec,   YYY,M,D,H,Min,Sec):- %% TA-080407
     \+ myflags(busflag,true),

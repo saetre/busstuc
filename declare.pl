@@ -3,6 +3,25 @@
 %% CREATED TA-940118
 %% REVISED TA-090514 %% RS-111118
 
+%% Declarations of operators and hashmap for flags, used by TUC
+
+%    :=/2
+%    =:/2
+:- volatile myflags/2.
+:- dynamic myflags/2.
+
+X := Y :- 
+    set(X,Y).
+
+X =: Y :-  
+    myflags(X,Y).
+
+%% remove_duplicates  Standard  -> library
+set(Key,Value):- 
+    retractall( myflags(Key,_) ),
+    assert( myflags(Key, Value) ).
+
+
 %% Declarations of operators used by TUC
 
 %% Some Prologs don't like lists of operators

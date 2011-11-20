@@ -17,6 +17,7 @@
 :- module(timedat, [
 aroundmargin/1,            % (MINUTES)
 buslogtimeout/1,           % (MILLISEC)
+clock_delay/3,
 create_named_dates/0,
 date_day_map/2,            % (DATE,DAY)
 dedicated_date/1,          % (DATE)
@@ -26,7 +27,7 @@ maxtraveltime/1,           % (MINUTES)
 maxarrivalslack/1,         % (MINUTES)
 morning_break/1,           % (CLOCK) 
 named_date/2,              % (NAME)
-
+orig_named_date/2,
 
 delay_margin/1,             % (MINUTES)
 %corrx/2,                   % (DOMAIN,PLACE,PLACE)

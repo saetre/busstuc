@@ -698,6 +698,7 @@ item(P) ---> %% only simple one
 
 %%%% COMMAND (Code)
 
+command(doit:::replyq('?')) ---> end_of_line.
 
 command(_) ---> [vil],!,reject.  
 command(_) ---> [skal],!,reject.  
@@ -807,17 +808,7 @@ command(doit:::P) ---> %% ikke gj?r en ting.
     statreal(P)\ ([du],w(verb(W,pres,fin)),negation(N)).
  
 
-
-
-
-ctrailer0. %% please0.   %% er du snill 
-
-
-command(doit:::replyq('?')) ---> end_of_line.
-
-
 %% Swapped parameters/modes
-
 imp_phrase(Run) ---> %% La oss K = K!
     lexv(_,let,imp,fin), %% Norwagism 
     [oss],
@@ -6591,7 +6582,7 @@ do_phrase(V,X,id,S,SC::(EXS and KA)) --->          % (jeg ber) deg om å ta busse
 
 
 %% omaa0  
-omaa0 --> omaa,!.
+omaa0 ---> omaa,!.
 omaa0 ---> [].
 
 omaa ---> [om],[å].
@@ -7142,7 +7133,7 @@ rvpk(V,X,N, S,Com1::( P3  and  P1)) ---> %% TA-
 %% SLIPPE (å) vente
 
 
-rvpk(V,X,id, S,Com1::( P3  and  P1)) -->
+rvpk(V,X,id, S,Com1::( P3  and  P1)) --->
         {testmember(V,
            [avoid,manage,promise,recommend,remember,seem,
             slip,start,try,use2,want])},  %%   dont take at
@@ -15481,7 +15472,7 @@ hlexv(Type,Bring,past,fin,Neg) ---> %%  Norwagism har brakt
 
 hlexv(tv,bring,P,Q,id) ---> %%  Norwagism  Ha med seg
     w(verb(have,P,Q)),
-    prep1(with).  
+    prep1(with),
     reflexiv0(have).     %% .. meg
 
 
@@ -18188,7 +18179,6 @@ qtrailer ---> [uansett].
 
 
 %% trailer after command
-
 ctrailer0 ---> ctrailer,!.
 ctrailer0 ---> [].
 
@@ -19699,7 +19689,6 @@ good ---> w(adj2(honest,nil)).
 good ---> w(adj2(nice,nil)). 
 good ---> okeys. %% [ok]. %% may be noise
 
-
 %% END PERSONAL SECTION
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -19716,6 +19705,9 @@ traceprint(N,P) ---> {traceprint(N,P)}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%% END OF GRAMMAR %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% trailer after command
+ctrailer0. %% please0.   %% er du snill 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                                 %

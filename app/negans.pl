@@ -412,8 +412,8 @@ makenegative(_,_,true) :- %% no extra nl
 
  %% not standard nightbus message if following weekend is abnormal
 notthenanswer(Date,_Wed,_,_Q,
-           (bcpbc(generalnightbuseaster),period)) 
-    :-myflags(nightbusflag,true), 
+           (bcpbc(generalnightbuseaster),period))     :-
+    myflags(nightbusflag,true), 
     following_weekend_abnormal(Date),
     !,                         %%
     progtrace(4,nt0). 
@@ -824,7 +824,7 @@ trytofool(adj/_/depressed/_/_,   thatisimpossible).
 %% trytofool(adj/_/drunk/tuc/_,     thatisimpossible).  %% :-)  
 %% trytofool(adj/_/drunk/'I'/_,     thatisnotgood). 
 trytofool(adj/_/drunk/_/_,       nodrinkonbus). 
-trytoffol(adj/_/embarrassed/tuc/_,   thatisimpossible). 
+trytofool(adj/_/embarrassed/tuc/_,   thatisimpossible). 
 trytofool(adj/_/false/_/_,       thatisimpossible). %% rough ?
 trytofool(adj/_/female/tuc/_,    thatisimpossible). 
 trytofool(adj/_/free/tuc/_,      thatisimpossible). %%  :-) 
@@ -846,8 +846,9 @@ trytofool(adj/_/lucky/tuc/_,      thatisimpossible).
 trytofool(adj/_/male/tuc/_,       thatisimpossible). 
 trytofool(adj/_/married/tuc/_,    thatisimpossible). 
 trytofool(adj/_/married/'I'/_,    cannotanswer).  
-trytofool(adj/_/stupid/_tuc/_,    thatisimpossible). 
-trytofool(adj/_/tedious/_tuc/_,   thatisimpossible).  
+%trytofool(adj/_/stupid/_tuc/_,    thatisimpossible).
+trytofool(adj/_/stupid/ _ /_,    thatisimpossible).
+trytofool(adj/_/tedious/ _ /_,   thatisimpossible).
 
 trytofool(adj/_/wrong/tuc/_,     thatisimpossible).   %% ( er du/jeg gal)
 trytofool(adj/_/wrong/'I'/_,     thatisimpossible). 

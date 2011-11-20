@@ -19,7 +19,7 @@ style_check(_).
 
 ?- compile('declare.pl').
 %?-compile('utility/drucke_baum.pl'). %% TA-061030
-%?- compile('utility/datecalc.pl').  Kalles fra utility.pl
+?- compile('utility/datecalc.pl').  %% Kalles fra utility.pl
 ?- compile('utility/makeauxtables.pl'). 
 ?- compile('utility/extracut.pl').  %% TA-080201
 

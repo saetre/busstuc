@@ -163,7 +163,6 @@ rewordrepl1([X|XL],[X|YL],Suc):- %
 
 repl1([],[],_).
 
-
 rewordmatches([],X,X).
 rewordmatches([X|Y],[X|Z],U):-
     rewordmatches(Y,Z,U).
@@ -1514,12 +1513,21 @@ removeunconnected1 :-
 
 
 
+removeblanks :- %% txt(0, w(noe,[]), 1). %% NB Destructive
+   for(   (  (txt(M1, w(_W,Emp), N1),(Emp==[];Emp==['-']; Emp=n_w)),  
+              txt(M0, Whatever, M1) )
+         ,
+           
+          (  retract( txt(M0,Whatever,M1)),
+             asserta( txt(M0,Whatever,N1))  %% assertz 
+          )
+        ).
+
 %% strandv. 30 --->  strandveien   < strandveien 30 
 
 removedots :- \+ myflags(nodotflag,true),!. %% Multiple sentences , keep dot
 
 %% Jeg skal til S. Sælands vei      
-
 /*
 %%  prolong forwards  
 removeblanks :- %% txt(0, w(noe,[]), 1). %% NB Destructive
@@ -1536,17 +1544,6 @@ removeblanks :- %% txt(0, w(noe,[]), 1). %% NB Destructive
 */
 
 %%  prolong backwards 
-
-removeblanks :- %% txt(0, w(noe,[]), 1). %% NB Destructive
-   for(   (  (txt(M1, w(_W,Emp), N1),(Emp==[];Emp==['-']; Emp=n_w)),  
-              txt(M0, Whatever, M1) )
-         ,
-           
-          (  retract( txt(M0,Whatever,M1)),
-             asserta( txt(M0,Whatever,N1))  %% assertz 
-          )
-        ).
-
 
 removedots :- %% gløs. mot  dravoll %% NB swaps streets and neighbourhood
    for(   (  txt(M1,w(W,name(Gløs,GN,Stat)),N1),
@@ -2127,12 +2124,6 @@ lexcandsearch(X,Y,Street):-   %% amblesgate
     lexsplitroad(X,U,Street), %% _ ambles street 
     teststr(U,Y). 
 
-teststr(U,Y) :- 
-    (synname(U,Y);synplace(U,Y)), 
-    \+ xforeign(Y), %% strans -> strand (even if komm) | avoid gøran -> gran 
-    \+ streetsyn(Y).  %% avoid wigens -> vegen 
-
-
 lexcandsearch(X,Y,Street):-
     lexsplitroad(X,U,Street1), %% dalgård vegen |  stransvegen
     lexhash(U,Y,Street),       %%  strans -> sætran ..    
@@ -2145,9 +2136,13 @@ lexcandsearch(X,Y,Street):-
 %%  brannåsen -> buran      NO
 %%  skovgården -> skovgård  YES
 %%  dragviold -> dragvoll   YES (no loop)
+teststr(U,Y) :- 
+    (synname(U,Y);synplace(U,Y)), 
+    \+ xforeign(Y), %% strans -> strand (even if komm) | avoid gøran -> gran 
+    \+ streetsyn(Y).  %% avoid wigens -> vegen 
+
 
 %%   subordstreet(street,nil) //NO strans_street \+  -> sætran
-
 subordstreet(street,streetstat). %% no cut
 subordstreet(X,X).
 %%
@@ -2386,8 +2381,6 @@ tsxrepl1([A|XL],ÅR,1):- % only 1 replacement
 tsxrepl1([X|XL],[X|YL],Suc):- % 
    !,
    tsxrepl1(XL,YL,Suc).
-
-repl1([],[],_).
 
 
 tsxmatches([],X,X).
