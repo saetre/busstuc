@@ -17,25 +17,25 @@
 % See also names.pl for general synonyms
 
 
-/*
+:- module( places, [
 
   alias_name/2,            % (NAME,NAME)
   alias_station/2,         % (STATION,STATION)
   cmpl/3,                  % (NAME,NAME*,LIST)
   corr/2,                  % (PLACE,PLACE)
+  foreign/1,
   isat/2,                  % (STATION,PLACE)
   place_resolve/2,         % (PLACE,STATION).
   placestat/2,             % (PLACE,STATION)
   sameplace/2,             % (PLACE,PLACE)
-  short_specname/1,        % (NAME,STRING)
+%  short_specname/1,        % (NAME,STRING)
   specname/2,              % (NAME,STRING)
   synplace/2,              % (NAME,PLACE)
   underspecified_place/1,  % (PLACE)
   unwanted_place/1,        % (PLACE)
-  unwanted_station/1,      % (PLACE)
+  unwanted_station/1      % (PLACE)
 
-*/
-
+]).
 
 
 %% hovedterminalen is technically a station as required in some

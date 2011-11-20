@@ -12,6 +12,11 @@
 %% The dynamic predicates (xxx0) corresponds to (some of) the filed predicates xxx
 
 :-dynamic  
+
+      
+unproperstation/1,         % (PLACE)
+
+
 %  toredef0/3,  
 %  torehash0/2,  
 %
