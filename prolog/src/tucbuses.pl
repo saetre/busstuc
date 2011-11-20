@@ -3,22 +3,21 @@
 %% CREATED TA-970726
 %% REVISED TA-110303
 
-:-use_module(library(system)). 
-
-
 % Common File for tucbus  (english) and
 %                 tucbuss (norwegian)
+
+:-use_module(library(system)). 
+
+?- use_module('ptbwrite.pl').%% TA-061030
+?- use_module('utility/utility.pl').
 
 :-prolog_flag(discontiguous_warnings,_,off). 
 
 backslash('\\'). 
 style_check(_).
 
-?- use_module('ptbwrite.pl').%% TA-061030
-
 ?- compile('declare.pl').
 ?- compile('utility/library.pl').
-?- compile('utility/utility.pl'). 
 %?-compile('utility/drucke_baum.pl'). %% TA-061030
 ?- compile('utility/datecalc.pl').  
 ?- compile('utility/makeauxtables.pl'). 

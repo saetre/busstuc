@@ -10,7 +10,87 @@
 :- ['../declare.pl'].
 :-op( 710,xfx, ako ).
 
-   %% cr isa character. %% TA-110303 ako
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 
+%%   H A V E   Predicate (Meta predicates)
+
+have(thing,class,X,Y):-
+    fact(X isa Y).
+
+have(_,description,X,Y):-
+    description(X,Y). 
+
+have(_,area,X,Y):-
+    area(X,Y).
+
+have(_,attribute,X,Y):-  X has_a Y .
+
+have(_,identity,X,X).
+
+have(_,subclass,X,Y):- Y ako X.
+
+have(_,superclass,X,Y):- X ako Y.
+
+have(_,subject,X,Y):-
+    iv_templ(X,Y);
+    tv_templ(X,Y,_);
+    adj_templ(X,Y).
+
+have(_,object,X,Y):- 
+   tv_templ(X,_,Y).
+
+%% have(team,stadium,brann,brann_stadion). %% Eksempel //deflag := true.
+
+/* SUSPENDED %% TA-100335
+
+% Geography
+
+have(country,capital,X,Y):- 
+    country_capital(X,Y).
+
+have(country,currency,X,Y):- 
+    country_currency(X,Y).
+
+have(country,latitude,X,Y):-
+    country_latitude(X,Y).
+
+have(geo_metric,latitude,X,Y):-
+    geometric_latitude(X,Y).
+
+have(country,city,X,Y):-
+    city_country(Y,X).
+
+have(country,longitude,X,Y):-
+    country_longitude(X,Y).
+
+have(geo_metric,longitude,X,Y):-
+    geometric_longitude(X,Y).
+
+have(country,population,X,Y):-
+    country_population(X,Y).
+
+have(country,river,X,Y):-  
+    country_river(X,Y).
+
+have(country,size,X,Y):- 
+    country_area(X,Y).
+
+have(city,population,X,Y):-
+    city_population(X,Y).
+
+have(city,size,X,Y):- 
+    city_population(X,Y).
+
+have(continent,country,X,Y):- 
+    contains4(continent,country,X,Y).
+
+*/
+
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% cr isa character. %% TA-110303 ako
 
 jonas isa firstname.
 follesoe isa lastname. %% http://jonas.follesoe.no
@@ -500,84 +580,6 @@ X-Num isa street:-
     number(Num),
     streetstat(X,_,_,_,_). 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% 
-%%   H A V E   Predicate (Meta predicates)
-
-have(thing,class,X,Y):-
-    fact(X isa Y).
-
-have(_,description,X,Y):-
-    description(X,Y). 
-
-have(_,area,X,Y):-
-    area(X,Y).
-
-have(_,attribute,X,Y):-  X has_a Y .
-
-have(_,identity,X,X).
-
-have(_,subclass,X,Y):- Y ako X.
-
-have(_,superclass,X,Y):- X ako Y.
-
-have(_,subject,X,Y):-
-    iv_templ(X,Y);
-    tv_templ(X,Y,_);
-    adj_templ(X,Y).
-
-have(_,object,X,Y):- 
-   tv_templ(X,_,Y).
-
-%% have(team,stadium,brann,brann_stadion). %% Eksempel //deflag := true.
-
-/* SUSPENDED %% TA-100335
-
-% Geography
-
-have(country,capital,X,Y):- 
-    country_capital(X,Y).
-
-have(country,currency,X,Y):- 
-    country_currency(X,Y).
-
-have(country,latitude,X,Y):-
-    country_latitude(X,Y).
-
-have(geo_metric,latitude,X,Y):-
-    geometric_latitude(X,Y).
-
-have(country,city,X,Y):-
-    city_country(Y,X).
-
-have(country,longitude,X,Y):-
-    country_longitude(X,Y).
-
-have(geo_metric,longitude,X,Y):-
-    geometric_longitude(X,Y).
-
-have(country,population,X,Y):-
-    country_population(X,Y).
-
-have(country,river,X,Y):-  
-    country_river(X,Y).
-
-have(country,size,X,Y):- 
-    country_area(X,Y).
-
-have(city,population,X,Y):-
-    city_population(X,Y).
-
-have(city,size,X,Y):- 
-    city_population(X,Y).
-
-have(continent,country,X,Y):- 
-    contains4(continent,country,X,Y).
-
-*/
-
-    
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Testclass moved as a last option 
 
@@ -613,14 +615,6 @@ aamodt isa lastname.
 
 jon       isa firstname.
 bratseth  isa lastname. %% jon 
-
-
-teleoption :- 
-   myflags(telebusterflag,true)
-   ;    
-   myflags(teleflag,true).  
-
-%% see teledat2.pl %% 
 
 
 Tor isa firstname :- %% jarle hermansen  // jarle both firstname and lastname
@@ -690,4 +684,13 @@ precedent_firstname([First|Rest],Tor) :-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+teleoption :- 
+   myflags(telebusterflag,true)
+   ;    
+   myflags(teleflag,true).  
+
+%% see teledat2.pl %% 
+
+
 

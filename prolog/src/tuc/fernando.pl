@@ -6,7 +6,7 @@
 %% Grammar Utility File  GRUF
 
 %%% %%%%%%%% RS-111118
-:- ['../declare.pl'].
+:- use_module('../utility/utility').
 :-op( 710,xfx, ako ).
 
 %% Named after the great Computational Linguist  Fernando Pereira
@@ -929,15 +929,6 @@ adjname_template(Nil/TT,X:Bustype,_S,adj/Nil/TT/X/real):- %% TA-110103
      !.
 
 
-adjnamecomp_template(T, X:Lymphocyte, X isa T_lymphocyte):-   
-     adjnamecomp_templ(T,Lymphocyte,T_lymphocyte),     
-     !.
-
-adjname_template2(Icer, X:Isoform, X isa Isoform and adj/nil/Icer/X/real):- 
-     adjname_templ(Icer,Iso),    % /2   
-     subclass0(Isoform,Iso), %% ?      
-     !.
-
 %% TT bus
 adjname_template(TT,X:VehType,_S,adj/nil/TT/X/real):- 
     \+ number(TT), %%  2 ruter  \== 2-ruter
@@ -945,6 +936,10 @@ adjname_template(TT,X:VehType,_S,adj/nil/TT/X/real):-
     adjnoun_templ(Company,Veh), %% adjnoun/2  semantic
     subtype0(VehType,Veh), %% tt vehicle, tt route but not tt object
     !.
+
+adjnamecomp_template(T, X:Lymphocyte, X isa T_lymphocyte):-   
+     adjnamecomp_templ(T,Lymphocyte,T_lymphocyte),     
+     !.
 
 
 
@@ -971,6 +966,11 @@ adjnoun_template(Dog,Embryo,X:Embryo,X isa Embryo and adj/nil/Dog/X/real):-
     subclass0(Dog,Animal),
     !.
 
+
+adjname_template2(Icer, X:Isoform, X isa Isoform and adj/nil/Icer/X/real):- 
+     adjname_templ(Icer,Iso),    % /2   
+     subclass0(Isoform,Iso), %% ?      
+     !.
 
 
 
