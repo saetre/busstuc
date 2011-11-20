@@ -22,72 +22,61 @@
 %         remember(named_date(A,B))). %% To be     refined
 %
 %
-/*
 
-:-module(busdat,[
+:- module(busdat,[
 
-maxnumberofindividualdepartures/1,    % (NUMBER)
-dedicated_date/1,          % (DATE)
-extraallowed_night/2,      % (DATE, KINDOFDAY)
+airbus/1,                  % (BUS?)
+airbusstation/1,           % (STATION)
+bus_depend_station/3,      % (ROUTE,PLACE,STATION)
+central_fromstation/1,     % (STATION) avoid default to ST
+corresp0/2,                % (PLACE,PLACE)
+corresponds/2,             % (STATION,STATION)
+corresp/2,                 % (PLACE,PLACE)
+cutloop_station/2,
+
 disallowed_night/1,        % (DATE)
-named_date/2,              % (NAME)
-date_day_map/2,            % (DATE,DAY)
-softime/3,                 % (NAME,CLOCK,CLOCK)
-maxtraveltime/1,           % (MINUTES)
-buslogtimeout/1,           % (MILLISEC)
-aroundmargin/1,            % (MINUTES)
-maxarrivalslack/1,         % (MINUTES)
-kindofday/2,               % (DAY,DAY)
-preferred_transfer/4,      % (ROUTE,ROUTE,STATION,STATION)
 default_destination/2,     % (ROUTE,STATION)
-morning_break/1,           % (CLOCK) 
 
 nightbusdestination/1,     % (STATION)
-central_airbus_station/1   % (STATION) 
+central_airbus_station/1,   % (STATION) 
 
 nostationfor/1,            % (PLACE)
 nostationfor1/1,           % (PLACE)
-    // nostation/1,               % (PLACE) -> places.pl
-unproperstation/1,         % (PLACE)
+%%    // nostation/1,               % (PLACE) -> places.pl
 xforeign/1,                % (PLACE)
 %% foreign/2,                 % (DOMAIN,PLACE) -> places.pl
 %% foreign/1,                 % (PLACE) -> places.pl
 %% abroad/1,                  % (PLACE) -> names.pl
 %% city/1,                    % (PLACE) -> names.pl
 
-corrx/2,                   % (DOMAIN,PLACE,PLACE)
-corresp0/2,                % (PLACE,PLACE)
-corresponds/2,             % (STATION,STATION)
-corresp/2,                 % (PLACE,PLACE)
-nightbus/1,                % (ROUTE)
+exbusname/2,               % (ROUTE,ROUTE)
+fromstationonly/1,         % (STATION)
 intbusname/2,              % (ROUTE,ROUTE)
 intbusnr/2,                % (ROUTE,ROUTE)
-exbusname/2,               % (ROUTE,ROUTE)
-airbusstation/1,           % (STATION)
-tramstation/1,             % (STATION)
 nightbusstation/1,         % (STATION) 
-bus_depend_station/3,      % (ROUTE,PLACE,STATION)
 internal_airbus/1,         % (BOOLEAN)
-hours_delay/2,             % (NUMBER)
-delay_margin/1,            % (MINUTES)
 home_town/1,               % (PLACE)
 moneyunit/1,               % (NAME)
 %% busfare/2,                 % (NUMBER,NUMBER) 
 busfare2/2,                % (ROUTETYPE,NUMBER*)
 synbus/2,                  % (NAME,ROUTE)
-cmbus/2,                   % (NAME,NAMES,ROUTE)
+tramstation/1,             % (STATION)
 
 explicit_part_name/1,      % (NAME)
 endneighbourhood/2,        % (ROUTE,PLACE)
-spurious_return/1,         % (ROUTE,PLACE)
-fromstationonly/1,         % (STATION)
 tostationonly/1,           % (STATION) %% TA-110228
-central_fromstation/1      % (STATION) avoid default to ST
 
-
+railway_station/1
 ]). 
 
-*/
+%unproperstation/1,         % (PLACE)
+%corrx/2,                   % (DOMAIN,PLACE,PLACE)
+%nightbus/1,                % (ROUTE)
+%
+%hours_delay/2,             % (NUMBER)
+%delay_margin/1,            % (MINUTES)
+%cmbus/2,                   % (NAME,NAMES,ROUTE)
+%spurious_return/1,         % (ROUTE,PLACE)
 
 railway_station(ts). %% NB not STATION ! %% TA-110724
 
@@ -163,191 +152,6 @@ cutloop_station(66,stokkhaugen). %% TA-110824 charlottenlund_krk).
 % DATES THAT MUST BE CHECKED ON EACH NEW ROUTE PLAN
 
 
-% orig_named_date is defined here, and later recreated as named_date
-%
-%list_of_named_dates([
-%    new_years_eve,
-%    new_years_day,
-%    palm_sunday,
-%    palm_monday,
-%    palm_tuesday,
-%    palm_wednesday,
-%    maundy_thursday,
-%    good_friday,
-%    eastereve,
-%    easterday,
-%    easterday2,
-%    ascension_day,
-%    whitsun_eve,
-%    whitsun_day, 
-%    whitsun_day2, 
-%
-%    may1,    
-%    may17,      
-%
-%%   vernal_equinox, 
-%%   autumnal_equinox, 
-%%   summer_solstice,
-%%   winter_solstice,
-%
-%    midsummer_eve, 
-%    midsummer_day, 
-%
-%    little_christmas_eve,
-%    christmas_eve,           
-%
-%    christmas_day, 
-%
-%    john_f_kennedy_day, 
-%    oddvar_brå_day, 
-%    arvid_holme_day, 
-%    dooms_day]).
-%
-%
-%
-%%%% DATES NAMED BY EVENTS  :-)
-%
-%
-%orig_named_date(john_f_kennedy_day,   date(1963,11,22)).  
-%orig_named_date(oddvar_brå_day,       date(1982,02,25)).  
-%orig_named_date(arvid_holme_day,      date(2011,01,17)).  
-%orig_named_date(dooms_day,            date(2012,12,21)). %% :-) %% TA-100323|      date(10000,01,01)). 
-%
-%%% Named dates
-%
-%orig_named_date(new_years_eve,date(YYYY,12,31)) :- %% Nyttårsaften& januar  -> i fjor
-%     todaysdate(date(YYY1,01,_)),
-%     YYYY is YYY1 -1,
-%     !.
-%orig_named_date(new_years_eve,date(YYYY,12,31)) :- %% Nyttårsaften i år
-%     this_year(YYYY),
-%     !.
-%
-%orig_named_date(new_years_day,date(YYYY,01,01)):- %% january -> this year
-%    todaysdate(date(YYYY,01,_)),
-%    !.
-%orig_named_date(new_years_day,date(YYY1,01,01)):- %% all other todays date 
-%     this_year(YYYY),
-%     YYY1 is YYYY+1,
-%     !.
-%
-%orig_named_date(easterday,         ED):- %% datecalc
-%    this_year(YYYY),
-%    easterdate(YYYY,ED).
-%
-%orig_named_date(palm_sunday, ND ) :- 
-%    this_year(YYYY),
-%    easterdate(YYYY,ED),
-%    sub_days(ED,7, ND).
-%
-%orig_named_date(palm_monday,   ND) :- %% Pro forma
-%    this_year(YYYY),
-%    easterdate(YYYY,ED),
-%    sub_days(ED,6, ND).
-%
-%orig_named_date(palm_tuesday,  ND) :- %% Pro forma
-%    this_year(YYYY),
-%    easterdate(YYYY,ED),
-%    sub_days(ED,5, ND).
-%
-%orig_named_date(palm_wednesday,   ND) :- 
-%    this_year(YYYY),
-%    easterdate(YYYY,ED),
-%    sub_days(ED,4, ND).
-%
-%orig_named_date(maundy_thursday,   ND) :- %% skjærT NOT monday  
-%    this_year(YYYY),
-%    easterdate(YYYY,ED),
-%    sub_days(ED,3, ND).
-%
-%orig_named_date(good_friday,    ND) :-
-%    this_year(YYYY),
-%    easterdate(YYYY,ED),
-%    sub_days(ED,2, ND).
-%
-%orig_named_date(eastereve,    ND) :-    
-%    this_year(YYYY),
-%    easterdate(YYYY,ED),
-%    sub_days(ED,1, ND).
-%
-%orig_named_date(easterday2,     ND) :- %% 2. påskedag 
-%    this_year(YYYY),
-%    easterdate(YYYY,ED),
-%    add_days(ED,1, ND).
-%
-%orig_named_date(ascension_day,   ND) :- %% Krhf 
-%    this_year(YYYY),
-%    easterdate(YYYY,ED),
-%    add_days(ED,39,ND).
-%
-%
-%orig_named_date(whitsun_eve, ND):-    %% pinseaften
-%    this_year(YYYY),
-%    easterdate(YYYY,ED),
-%    add_days(ED,48,ND).
-%
-%orig_named_date(whitsun_day,   ND):-   %% pinsedag
-%    this_year(YYYY),
-%    easterdate(YYYY,ED),
-%    add_days(ED,49,ND).
-%
-%
-%orig_named_date(whitsun_day2,  ND):-       %% 2. pinsedag
-%    this_year(YYYY),
-%    easterdate(YYYY,ED),
-%    add_days(ED,50,ND).
-%
-%
-%orig_named_date(little_christmas_eve,date(YYYY,12,23)):- 
-%      this_year(YYYY).
-%
-%orig_named_date(christmas_eve,     date(YYYY,12,24)):- this_year(YYYY).
-%orig_named_date(christmas_day,     date(YYYY,12,25)):- this_year(YYYY).
-%
-%%% orig_named_date(vernal_equinox,    date(YYYY,03,21)):- this_year(YYYY). 
-%%% orig_named_date(autumnal_equinox,  date(YYYY,09,21)):- this_year(YYYY).
-%
-%orig_named_date(midsummer_eve,     date(YYYY,06,23)):- this_year(YYYY). 
-%orig_named_date(midsummer_day,     date(YYYY,06,24)):- this_year(YYYY). 
-%
-%orig_named_date(may1,              date(YYYY,05,01)):- this_year(YYYY). 
-%
-%orig_named_date(may17,             date(YYYY,05,17)):- this_year(YYYY). 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% END OF CRITICAL SECTION 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-%% SPECIAL DATES FOR NIGHTBUS
-%% SEE busanshp.pl for correct default messages !!!
-
-
-%% extraallowed_night(DATE,DAY). 
-%% NIGHTBUS GOES extra, even if not sat-sun, following routes of DAY (pro forma)
-%% if DAY=nil, it means NO nightbus routes at all in module,
-
-%% ADJUSTMENT NIGHTBUS Holidays
-extraallowed_night(date(9999,12,31),saturday). %% Just at least1
-%% EASTER 
-extraallowed_night(date(2009,04,12),saturday).  %%  Påskedag om morgenen 
-
-% disallowed_night(DATE)  
-%% NIGHTBUS does not go even if sat-sun
-
-%  JUST standard answer (misfjord rule: NB May vary)
-
-%% disallowed_night(date(9999,12,31)).    %% Just at least 1
-disallowed_night(date(2011,04,23)).  %% natt til påskeaften %% TA-110426
-
-%% CHRISTMAS
-%% Extrallowed
-%% none in 2008 ( "extra night to 3. X day is actually Saturday)
-%% Disallowed    Days  sat-sun  without nightbus
-%% none 
 %% EASTER 
 disallowed_night(date(2009,04,13)).  %%  Påskeaften om morgenen 
 
@@ -355,91 +159,6 @@ disallowed_night(date(2009,04,13)).  %%  Påskeaften om morgenen
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-%% Dedicated Date
-%% Example   22.10 not clock if 22.10 is date of new route tables
-
-
-%% dedicated_date(date(YYYY,05,17)):- this_year(YYYY). %% Suspended ved gløshaugen før 17.05 
-%dedicated_date(date(YYYY,12,24)):- this_year(YYYY).
-
-%% dedicated_date(date(2006,06,19)). %% Check %% summer route
-
-
-
-%% Special dates that run a specific day route
-%% holiday means special route
-
-
-%% VARIABLE DATES
-
-
-%% DATE_DAY_MAP    
-
-%% Maps dates to day, when this is different from the actual day
-%% and not covered by route module (as. f.ex.  christmas  2010)
-%% 
-%% e.g sunday route, BUT only sunday route OF the same route module
-%% e.g. 2. juledag 2010 was coverd by a separate datamodule but also declared sunday route,
-%% However, there was no sunday day code in THAT module.
-
-
-%% Easter week may have a separate module, NOT 2011!
-%% Mon-Wed in easter are saturday routes (+ extra departures?)
-%% These are ad hoc definitions 
-
-
-%%%  Easter (2011), no own schedule
-
-%date_day_map(Date,   saturday):-       %% stille uke
-%     named_date(palm_monday,Date).     %% palmemandag
-%
-%date_day_map(Date,   saturday):-       %% stille uke
-%     named_date(palm_tuesday,Date).    %% palmetirsdag
-%
-%date_day_map(Date,   saturday):-       %% stille uke
-%     named_date(palm_wednesday,Date).  %% palmeonsdag
-%
-%date_day_map(Date,   sunday):-        
-%     named_date(maundy_thursday,Date). %% skjærtorsdag
-%
-%date_day_map(Date,   sunday):-  
-%     named_date(good_friday,Date).     %% langfredag
-%
-%date_day_map(Date,  sunday):-         
-%     named_date(eastereve,Date).       %% påskeaften
-%
-%date_day_map(Date,  sunday):-          
-%     named_date(easterday,Date).       %% 1. påskedag
-%
-%date_day_map(Date,  sunday):-  
-%     named_date(easterday2,Date).      %% 2 Påskedag 
-%
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%
-%date_day_map(date(_20XX,05,01), sunday).   % 1.mai Fix, NOT separate route module
-%
-%date_day_map(date(_20XX,05,17),   may17).  %% OWN route module %% TA-110518
-%
-%date_day_map(Date,  sunday):-     %  KrHf- %% NOT OWN route module
-%     named_date(ascension_day,Date),
-%     \+ named_date(may17,Date).   
-%
-%date_day_map(Date,  sunday):-  named_date(whitsun_day,Date).    %  1. pinsedag 
-%  
-%date_day_map(Date,  sunday):-  named_date(whitsun_day2,Date).   %  2. pinsedag
-%
-%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
 
 %% RESPONSE PARAMETERS
 

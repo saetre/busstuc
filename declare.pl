@@ -1,14 +1,12 @@
 %% FILE declare.pl                   
 %% SYSTEM TUC
 %% CREATED TA-940118
-%% REVISED TA-090514
+%% REVISED TA-090514 %% RS-111118
 
 %% Declarations of operators used by TUC
 
 %% Some Prologs don't like lists of operators
-%%% %%%%%%%% RS-111118
 % :- ['../declare.pl'].   %% For importing into other .pl files
-
 :-op(1150,xfx, ---> ). 
 
 :-op( 999,fx,listall). %% TA-030504
@@ -32,10 +30,7 @@
 :-op( 710,xfx, has_a ).
 :-op( 710,xfx, is_the ).
 
-
 :-op( 500,xfy, \  ).
 
 :-op( 500,xfy,-...). %% same as \
 :-op( 500,xfy,-.).   %% same as -
-
-

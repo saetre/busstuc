@@ -9,11 +9,33 @@
 % Domains:   BOOLEAN ROUTETYPE STATION PLACE MINUTES
 %            DATE DAY DOMAIN CLOCK
 
-%* Import predicates
-:- ['../utility/makeauxtables.pl'].
+:- use_module('../utility/utility', [for/2]).
 
-%:- volatile named_date/2, value/2. %% Created Initially 
-%:- dynamic named_date/2, value/2. %% Created Initially 
+%* Import predicates
+:- ['../utility/makeauxtables'].
+
+:- module(timedat, [
+aroundmargin/1,            % (MINUTES)
+buslogtimeout/1,           % (MILLISEC)
+create_named_dates/0,
+date_day_map/2,            % (DATE,DAY)
+dedicated_date/1,          % (DATE)
+kindofday/2,               % (DAY,DAY)
+maxnumberofindividualdepartures/1,    % (NUMBER)
+maxtraveltime/1,           % (MINUTES)
+maxarrivalslack/1,         % (MINUTES)
+morning_break/1,           % (CLOCK) 
+named_date/2,              % (NAME)
+softime/3                 % (NAME,CLOCK,CLOCK)
+]).
+
+%extraallowed_night/2,      % (DATE, KINDOFDAY)
+%preferred_transfer/4,      % (ROUTE,ROUTE,STATION,STATION)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:- volatile named_date/2.  %% Created Blank Initially, "remember"-ed later 
+:- dynamic named_date/2.   %% Created Blank Initially, "remember"-ed later
 
 create_named_dates :-
     list_of_named_dates(L), 

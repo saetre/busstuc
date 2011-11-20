@@ -12,14 +12,12 @@
 %% USES
 :- use_module( library(process) ).
 :- use_module( 'library' ).
-:- ['datecalc'].
 :- ['../declare'].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- module(user,[
-%    :=/2,
-%    =:/2,
+:- module(user,[ %    :=/2,  %    =:/2,
+    for/2,
     myflags/2,
     test/1
 ]).
@@ -28,6 +26,12 @@
 :- dynamic myflags/2.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+X := Y :- 
+    set(X,Y).
+
+X =: Y :-  
+    myflags(X,Y).
 
 
 %% panic(_H). %% just for comment-predication
@@ -131,25 +135,6 @@ starttime :-
 taketime :- 
    statistics(runtime,[_,T]), 
    out(T),output(ms).
-
-
-
-timestring(Z):- %% creates a string of time-point YYYYMMDDHHMMSS
-    datetime(X1,X2,X3,X4,X5,X6),
-    coerce2d([X1,X2,X3,X4,X5,X6],[D1,D2,D3,D4,D5,D6]),
-    concat_atomlist([D1,D2,D3,D4,D5,D6],Z),
-    !.
-timestring('00000000000000').
-%           YYYYMMDDHHMMSS
-
-
-datestring(Z):- %% creates a string of date  YYYYMMDD
-    datetime(X1,X2,X3,_X4,_X5,_X6),
-    coerce2d([X1,X2,X3],[D1,D2,D3]),
-    concat_atomlist([D1,D2,D3],Z),
-    !.
-datestring('00000000').
-%           YYYYMMDD
 
 
 
@@ -384,13 +369,6 @@ set_union(List1,List2,List3) :-
 myflags(X) :-             %% RS-111119 Where is value/2 defined?
     myflags(X,Y),
     out(X),out('='),output(Y),nl.
-
-X := Y :- 
-    set(X,Y).
-
-X =: Y :-  
-    myflags(X,Y).
-
 
 all(X):- 
     output(X),

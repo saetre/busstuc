@@ -16,12 +16,10 @@
 :- ['tuc/readin.pl'].       % reads text to a list
 
 
-
 doshell :- write('$SHELL'),
 %    absolute_file_name('$SHELL', Shell),
     absolute_file_name('~/', Dir), write('dir: '),write(Dir),nl.
 %    process_create(Shell, ['-c', [ ls, ' ', file(Dir) ]]).
-
 
 %% Operators used by TUC
 % :- ['declare.pl']. %% Import several common operators

@@ -3,11 +3,11 @@
 %% CREATED  TA-940128
 %% REVISED  TA-090521
 
+%% USE %%% RS-111118
 %http://www.sics.se/sicstus/docs/4.1.3/html/sicstus/PlUnit-Tests-and-Production-Systems.html
-:- use_module(library(system), [environ/2,datime/1]).
+:- use_module( library(system), [environ/2, datime/1]).
 
-%%% USE %%%%%%%% RS-111118
-:- ['../declare.pl'].
+:- use_module( '../utility/utility').
 
 :- dynamic plink/0, plonk/0.  %% Defined in utility/utility.pl
 
