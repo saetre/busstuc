@@ -52,50 +52,6 @@ compword(':',[')'],[]). %% Smileys
 
 
 compword(all,[the],the). 
-   xcompword(am,[going,to],will). 
-   xcompword(are,[going,to],will). %% 
-
-   xcompword(is,[going,to],will).      %% bus is going to 
-   xcompword(nr,['.'],number).  
-
-xcompword(can,[t],cannot).
-
-xcompword(1,[st],first).
-xcompword(2,[nd],second).
-xcompword(3,[rd],third).
-
-xcompword(4,[th],fourth).
-xcompword(5,[th],fifth).   
-xcompword(6,[th],sixth).    
-xcompword(7,[th],seventh).
-xcompword(8,[th],eight).
-xcompword(9,[th],ninth).
-xcompword(10,[th],tenth).
-xcompword(11,[th],eleventh).
-xcompword(12,[th],twelvth).
-xcompword(13,[th],thirteenth).
-xcompword(14,[th],fourteenth).
-xcompword(15,[th],fifteenth).
-xcompword(16,[th],sixteenth).
-xcompword(17,[th],seventeenth).
-xcompword(18,[th],eighteenth).
-xcompword(19,[th],nineteenth).
-xcompword(20,[th],twentieth).  
-
-xcompword(21,[st],twentyfirst).   xcompword(21,[th],twentyfirst).
-xcompword(22,[nd],twentysecond).  xcompword(22,[th],twentysecond).
-xcompword(23,[rd],twentythird).   xcompword(23,[th],twentythird). 
-
-xcompword(24,[th],twentyfourth). 
-xcompword(25,[th],twentyfifth). 
-xcompword(26,[th],twentysixth). 
-xcompword(27,[th],twentyseventh).
-xcompword(28,[th],twentyeighth). 
-xcompword(29,[th],twentyninth9).  
-xcompword(30,[th],thirtieth).  
-xcompword(31,[st],thirtyfirst).  xcompword(31,[th],thirtyfirst).
-
-
 
 %% Composite words
 
@@ -108,9 +64,6 @@ compword(after,[now],hereafter).
 compword(ain,[t],is). %% Rough query logic 
 compword(air,[bus],airbus).  
 compword(air,[port],airport). 
-    xcompword(airport,[express],airbus). 
-
-    xcompword(any,[other],any). %% TA-100907 Rondane
 
 compword(are,[planned],exist).  %% Which routes are planned for Christmas?
 
@@ -123,15 +76,11 @@ compword(ascension,[day],ascension_day).
 compword(bath,[room],toilet). %% Telebuster
 
 compword(bus,[connection],bus). %% i.e. connection --> bus 
-    xcompword(bus,[number],bus). 
-    xcompword(bus,[ride],trip). %% TA-100902
 compword(bus,[stop],station).        %% but not buses stop !!!
 compword(bus,[stops],stations). 
 
 compword(d,[like],want).             %% I'd like
  
-    xcompword(departure,[time],departure). 
-    xcompword(departure,[times],departures). %% saves problems
 
 compword(didn,[t],does).    %% Rhetoric Query logic 
 compword(don,[t],does).     %%
@@ -161,7 +110,6 @@ compword(going,[on],happening).
 compword(good,[friday],good_friday).
 
 compword(holy,[night],christmas_eve). 
-    xcompword(human,[being],human). %% TA-110825
 
 compword(natural,[language],nl). 
 
@@ -223,7 +171,6 @@ compword(means,[of,transportation],vehicle).    %% Rondane
 compword(nice,[to,meet,you],hello). 
 
 
-    xcompword(pass,[by],pass). 
 compword(passing,[time],departure).  
 compword(passing,[times],departures). % The hours indicate ..
 
@@ -243,13 +190,9 @@ compword(klæbu,[coaches],klæburuta).
 compword(on,[the,other,hand],[]).
 compword(pod,[bay],[]).              %%  :-) Hal
 compword(same,[as],equal).           %%
-    xcompword(season,[ticket],special_ticket). 
 compword(show,[up],arrive).  
 compword(shut,[up],stop). 
 compword(the,[same,as],equal).  
-    xcompword(the,[turing],turings). %% .. test Ad Hoc 
-
-    xcompword(to,[morrow],tomorrow). 
 compword(to,[night],tonight).  
 compword(to,[to],to).                 %% Repair 
 compword(tram,[station],tramstation).
@@ -1699,4 +1642,67 @@ pronoun(i,self).
 pronoun(you,program). %% (trans dependent on tuc isa program)
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+xcompword(can,[t],cannot).
+
+xcompword(1,[st],first).
+xcompword(2,[nd],second).
+xcompword(3,[rd],third).
+
+xcompword(4,[th],fourth).
+xcompword(5,[th],fifth).   
+xcompword(6,[th],sixth).    
+xcompword(7,[th],seventh).
+xcompword(8,[th],eight).
+xcompword(9,[th],ninth).
+xcompword(10,[th],tenth).
+xcompword(11,[th],eleventh).
+xcompword(12,[th],twelvth).
+xcompword(13,[th],thirteenth).
+xcompword(14,[th],fourteenth).
+xcompword(15,[th],fifteenth).
+xcompword(16,[th],sixteenth).
+xcompword(17,[th],seventeenth).
+xcompword(18,[th],eighteenth).
+xcompword(19,[th],nineteenth).
+xcompword(20,[th],twentieth).  
+
+xcompword(21,[st],twentyfirst).   xcompword(21,[th],twentyfirst).
+xcompword(22,[nd],twentysecond).  xcompword(22,[th],twentysecond).
+xcompword(23,[rd],twentythird).   xcompword(23,[th],twentythird). 
+
+xcompword(24,[th],twentyfourth). 
+xcompword(25,[th],twentyfifth). 
+xcompword(26,[th],twentysixth). 
+xcompword(27,[th],twentyseventh).
+xcompword(28,[th],twentyeighth). 
+xcompword(29,[th],twentyninth9).  
+xcompword(30,[th],thirtieth).  
+xcompword(31,[st],thirtyfirst).  xcompword(31,[th],thirtyfirst).
+
+   xcompword(am,[going,to],will). 
+   xcompword(are,[going,to],will). %% 
+
+   xcompword(is,[going,to],will).      %% bus is going to 
+   xcompword(nr,['.'],number).  
+
+    xcompword(airport,[express],airbus). 
+
+    xcompword(any,[other],any). %% TA-100907 Rondane
+    xcompword(bus,[number],bus). 
+    xcompword(bus,[ride],trip). %% TA-100902
+    xcompword(departure,[time],departure). 
+    xcompword(departure,[times],departures). %% saves problems
+    xcompword(human,[being],human). %% TA-110825
+    xcompword(pass,[by],pass). 
+    xcompword(season,[ticket],special_ticket). 
+    xcompword(the,[turing],turings). %% .. test Ad Hoc 
+
+    xcompword(to,[morrow],tomorrow). 
+
+
+
+
 %%%%% THE END %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

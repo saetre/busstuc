@@ -129,11 +129,11 @@ dayxnumber(EMITDAY,Monday,XN) :-
 %% Period Module section
 
 
-veh_mod(TTP):-
-     myflags(airbusflag,true),
-     !,
-     airbus_module(TTP).
-
+%veh_mod(TTP):-
+%     myflags(airbusflag,true),
+%     !,
+%     airbus_module(TTP).
+%
 veh_mod(TTP):-
      bus_mod(TTP).
 
@@ -163,12 +163,12 @@ bus(X):-
     veh_mod(TTP),TTP:regbus(X), number(X),   
     X  < 10000. %%   e.g. buss 777
 
-xroute(X,Y,Z):-            %% TA-090331
-    myflags(airbusflag,true),
-    !,
-    airbus_module(TTP), %% ad hoc if several airbus modules (change)
-    TTP:route(X,Y,Z).  
-
+%xroute(X,Y,Z):-            %% TA-090331
+%    myflags(airbusflag,true),
+%    !,
+%    airbus_module(TTP), %% ad hoc if several airbus modules (change)
+%    TTP:route(X,Y,Z).  
+%
 
 xroute(X,Y,Z):-
     veh_mod(TTP), TTP:route(X,Y,Z).  
@@ -1072,21 +1072,21 @@ departure(Bus,Place,Day,DepSet) :- % Alle natt bussavganger ved en stasjon
    set_filter(Y, approvenightbustoplace(Place,Y)  ,DepSet3,DepSet).
      
 
-departure(Bus,Place,Day,DepSet) :- % Alle flybussavganger ved en stasjon
-	unbound(Bus),
-
-   myflags(airbusflag,true),     %% TA-090331
-   \+ myflags(nightbusflag,true),      % Nightbus query 
-
-   !, 
-
-   airbus_module(TTP), %% ad hoc
-
-   setdepMOD(TTP,Place,Day,DepSet1),
-
-   set_filter(X,airbus_route(X),DepSet1,DepSet). %% TA-090331
-
-
+%departure(Bus,Place,Day,DepSet) :- % Alle flybussavganger ved en stasjon
+%	unbound(Bus),
+%
+%   myflags(airbusflag,true),     %% TA-090331
+%   \+ myflags(nightbusflag,true),      % Nightbus query 
+%
+%   !, 
+%
+%   airbus_module(TTP), %% ad hoc
+%
+%   setdepMOD(TTP,Place,Day,DepSet1),
+%
+%   set_filter(X,airbus_route(X),DepSet1,DepSet). %% TA-090331
+%
+%
 
 
 
@@ -1100,7 +1100,7 @@ departure(Bus,Place,Day,DepSet) :- % Bussavgangene for en buss ved en stasjon
 
 %% Double departures Hastus   Friday 2800 + Staurday 0400
 not_extreme_hastus_time(X):- 
-    X=depnode(_2820,_,_20,_,T2800,_bus_108_3049,_,_,_),
+    X=depnode(_,_,_,_,T2800,_,_,_,_),
     T2800 < 1200.
 
 approvenightbustoplace(Place,Y) :-
@@ -1418,19 +1418,6 @@ place_station(Place,Station) :- %%  (If Place is free, get all)
      isat(Station,Place)).
 
 
-% New predicate
-% Place is instantiated, Station must be a station
-
-place_station1(Place,Station) :- 
-     nonvar(Place),
-	  placestat(Place,Station),
-     station(Station),
-     !.
-place_station1(Place,Place) :-
-     nonvar(Place),
-     station(Place).
-
-
 place_station(Station,Station2):- %% in case of period renaming %% TA-110804
 	 bound(Station),
     optional_alias2(Station,Station2), %% TA-110803
@@ -1473,6 +1460,19 @@ place_station0(Place,Place) :-
      nonvar(Place),
      (station(Place),!;
       neighbourhood(Place)).
+
+
+% New predicate
+% Place is instantiated, Station must be a station
+
+place_station1(Place,Station) :- 
+     nonvar(Place),
+          placestat(Place,Station),
+     station(Station),
+     !.
+place_station1(Place,Place) :-
+     nonvar(Place),
+     station(Place).
 
 
 % By coincidence a neighbourhood  can be aligned as a street name: utleira gate.
@@ -2285,42 +2285,17 @@ isfirstcorr( EndDep,Orig,Dest,Day,DaySeqNo,StartDepsRev,StartDep,Mid) :-
 
 %%%%% EXPERIMENTAL  %% TA-100901
 
-isfirstcorr2(Time0,EndDep,Orig,Dest,Day,DaySeqNo,DepList,StartDep,Mid) :- 
-    
-%% check if mandatory connection is decided
-  
-    ridof(EndDep, ENDRID),
-    startstation(ENDRID,Orig2),
-    ridtobusnr(ENDRID,Bus2),  %% ENRID will arrive at Rostengrenda
-
-    preferred_transfer(Bus1,Bus2,Orig1,Orig2,   _OffStation), 
-%%                     47   46   Klæbu Sandmoen CitySyd
-    member(StartDep,DepList), %% last first
-
-    ridof(StartDep, STARID), 
-    startstation(ENDRID,Orig1),
-    ridtobus( STARID,Bus1), %% Find Rid that starts at KlæbuS
- 
-    arrtimeof(StartDep,S0),  %%  <---- ARR
-    S0 =<  Time0,  % skip thru starts until  =< 
-    iscorr3(Orig,Dest,Day,DaySeqNo,StartDep,EndDep,Mid),
-    %% right StartDep is found, iscorr3 will find transfer station (CS)
-    !. % 
-
-
-
 bugdep1(depnode(TimeArr,TimeDep,DelayArr,DelayDep,BegTime,Rid,Bus,SeqNo,Station),Rid):-
     output(depnode(TimeArr,TimeDep,DelayArr,DelayDep,BegTime,Rid,Bus,SeqNo,Station))
     ;true.
 
-bugdep2(depnode(TimeArr1,TimeDep1,DelayArr1,DelayDep1,BegTime1,Rid1,Bus1,SeqNo1,Station1),
-        depnode(TimeArr2,TimeDep2,DelayArr2,DelayDep2,BegTime2,Rid2,Bus2,SeqNo2,Station2),
-        Rid1,Rid2):- bongo,
-    output([depnode(TimeArr1,TimeDep1,DelayArr1,DelayDep1,BegTime1,Rid1,Bus1,SeqNo1,Station1),
-           depnode(TimeArr2,TimeDep2,DelayArr2,DelayDep2,BegTime2,Rid2,Bus2,SeqNo2,Station2)])
-    ;true.
-
-bongo.
+%bugdep2(depnode(TimeArr1,TimeDep1,DelayArr1,DelayDep1,BegTime1,Rid1,Bus1,SeqNo1,Station1),
+%        depnode(TimeArr2,TimeDep2,DelayArr2,DelayDep2,BegTime2,Rid2,Bus2,SeqNo2,Station2),
+%        Rid1,Rid2):- bongo,
+%    output([depnode(TimeArr1,TimeDep1,DelayArr1,DelayDep1,BegTime1,Rid1,Bus1,SeqNo1,Station1),
+%           depnode(TimeArr2,TimeDep2,DelayArr2,DelayDep2,BegTime2,Rid2,Bus2,SeqNo2,Station2)])
+%    ;true.
+%bongo.
 
 isfirstcorr2(Time0,EndDep,Orig,Dest,Day,DaySeqNo,DepList,StartDep,Mid) :- 
 

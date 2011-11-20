@@ -269,6 +269,11 @@ winstant(_,X,T):-
      testclass(T),
      !.  %% X= ' not listable '. 
 
+winstant(W,X,Z) :- 
+     nonvar(Z),     %% TA-040309
+    (ako/Y/Z),    %% Class Hierarchy is world independent 
+    winstant(W,X,Y).
+ 
 instant(X,T):-     
      var(X), 
      testclass(T),
@@ -287,11 +292,6 @@ instant(X,Z) :- % bottom up
     instant(X,Y).
  
 
-winstant(W,X,Z) :- 
-     nonvar(Z),     %% TA-040309
-    (ako/Y/Z),    %% Class Hierarchy is world independent 
-    winstant(W,X,Y).
- 
 %%
    
 

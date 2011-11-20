@@ -489,22 +489,6 @@ X isa neighbourhood :-
     neighbourhood(X). 
 
 
-neighbourhood(X):- 
-    neibor(X);
-    abroad(X); 
-    xforeign(X). 
-
-neibor(X):-   
-     (isat(_,X);                     
-      nostation(X) ;  
-      unproperstation1(X) ; %% recognised as neighbourhood (feature)  
-      %% maybe empty
-
-      placestat(X,_) ;
-      underspecified_place(X)). 
-      %% \+ unwanted_place(X).  %% unwanted_place means unwanted target
-
-
 X isa street:-
 %%%%     composite_road(_,_,X), %%  Beddingen
     streetstat(X,_,_,_,_). %% Extra check (Mauritz Hansens gt)
@@ -671,6 +655,27 @@ Hist isa department :-
 
    
 % % % % % % % % % % % % % % % % % % % %
+
+   
+neighbourhood(X):- 
+    neibor(X);
+    abroad(X); 
+    xforeign(X). 
+
+neibor(X):-   
+     (isat(_,X);                     
+      nostation(X) ;  
+      unproperstation1(X) ; %% recognised as neighbourhood (feature)  
+      %% maybe empty
+
+      placestat(X,_) ;
+      underspecified_place(X)). 
+      %% \+ unwanted_place(X).  %% unwanted_place means unwanted target
+
+
+   
+% % % % % % % % % % % % % % % % % % % %
+
 
 
 precedent_firstname(Tor) :-
