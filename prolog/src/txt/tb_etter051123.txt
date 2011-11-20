@@ -1,0 +1,993 @@
+<Oppdatert: 2005-12-15, EH>
+
+Utdrag av dialoger fra telebuster.
+Basert på siste versjon av telebuster mottatt 2005-11-23.
+Dobbel *-rekke signaliserer at dialogen er resatt og at et nytt
+eksempel starter.
+Forøvrig benyttes "adjø." for å resette dialoghistorien.
+Kommentar-linjer starter med:
+---> <EH: bla bla bla....>
+--------------------------------------------------------------------------
+
+IKKE DIALOGRELATERTE EKSEMPLER
+===============================
+===============================
+
+
+************************************************************************
+************************************************************************
+
+N: Øyvind Krøvel-Velle Standal.
+
+
+
+Jeg forstår ikke.
+----------------------------------
+¤¤¤¤ TA:   IKKE FIKSET, problem identifiert
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+N: øyvind standal.
+
+
+
+Søker etter post  hvor  fornavnet er  øyvind  og  etternavnet er  standal
+
+Navn: Øyvind Krøvel-Velle Standal
+Tittel: Stipendiat
+Telefonnummer: 96556
+E-post: Oyvind.standal@ntnu.no
+Avdeling: Biomedisinsk teknikk, Det medisinske fakultet, Institutt for
+sirkulasjon og bildediagnostikk, NTNU
+Romnummer: MTFS: 4.etg. Nord
+Gateadresse: Olav Kyrres gt 3
+
+----------------------------------
+
+---> <EH: Krøll med mellomnavn ovenfor>
+
+************************************************************************
+************************************************************************
+
+N: hvem er Helle Lábeé-Lund.
+
+¤¤¤¤ TA:   Ikke fikset
+
+
+Jeg forstår ikke.
+----------------------------------
+
+N: \quit
+
+----------------------------------
+
+N: hvem er Lábeé-Lund.
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+
+---> <EH: Ser ut til å være et generelt problem for navn med bindstrek.
+          F.eks. "Sturla Eik-Nes" gir skjæring:>
+
+
+¤¤¤¤¤ TA: Riktig observasjon, ikke fikset ¤¤¤¤¤¤¤
+ 
+N: hvem er sturla eik-nes.
+
+
+Jeg forstår ikke.
+----------------------------------
+
+---> <EH: Samme problem ved bindestrek i fornavn, f.eks. for
+          "May-Britt Aronsen" og "Svein-Eirik Paulsen">
+¤¤¤¤¤ TA:  Riktig observasjon, ikke fikset ¤¤¤¤¤¤¤
+
+************************************************************************
+************************************************************************
+
+---> <EH: navn med andre spesielle tegn gir også problemer, jfr. nedenfor:>
+
+N: hvem er Sholeh Ma'mun.
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+
+¤¤¤¤¤ TA:  IKKE FIXET ¤¤¤¤¤¤¤
+
+
+************************************************************************
+************************************************************************
+
+---> <EH: Antar at forkortelsene i adresser og avdelingsnavn etterhvert
+          vil forsvinne? Dette gir problemer for syntesen.>
+
+¤¤¤¤¤¤ TA: Ikke fikset ¤¤¤¤¤
+
+Kan du gi eksempler, så blir det fikset
+
+Kan legge inn spec-name i busdat
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+************************************************************************
+************************************************************************
+
+---> <EH: Takler ikke liste med fler poster adskilt med komma>
+
+¤¤¤¤ TA: Fikset ¤¤¤¤¤¤¤¤¤
+
+ Rekkefølgen av felt blir nå beholdt.
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+N: tittel, adresse og tlfnr til erik harborg.
+
+
+
+Søker etter  tittel ,  gateadresse  og   telefonnummer  hvor  fornavnet er  erik  og  etternavnet er  harborg 
+
+Erik Harborg har tittel : Forsker,  gateadresse : Bragstads Pl 6 og  telefonnummer : 93139
+----------------------------------
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+************************************************************************
+************************************************************************
+
+N: tlfnr til magne hallstein johnsen.
+
+
+
+Søker etter  telefonnummer  hvor  fornavnet er  magne hallstein  og  etternavnet er  johnsen 
+
+Magne Hallstein Johnsen har telefonnummer : 92678
+----------------------------------
+
+---> <EH: Etter at en opplysning er gitt, legg inn setningen:
+          "Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen."
+          (Nå virker dette kun etter kommandoen "gjenta")>
+
+¤¤¤¤¤ TA: Fikset ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+N: tlfnr til magne hallstein johnsen.
+
+
+Søker etter  telefonnummer  hvor  fornavnet er  magne hallstein  og  etternavnet er  johnsen 
+
+Magne Hallstein Johnsen har telefonnummer : 92678
+
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+N: \quit
+
+----------------------------------
+
+N: tlfnr til hallstein johnsen.
+
+
+
+----------------------------------
+
+N:
+
+---> <EH: Burde vel få ut en eller annen respons her også.....
+          Søk direkte i LDAP med fornavn 'hallstein' og etternavn 'johnsen'
+          gir riktig svar>
+
+¤¤¤¤¤¤¤  TA: Ikke fikset, Tagger problem ¤¤¤¤¤¤¤¤¤¤
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+************************************************************************
+************************************************************************
+
+N: tlfnummer til erik harborg.
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+---> <EH: 'tlfnummer' bør forstås>
+
+¤¤¤¤ TA: Fikset ¤¤
+
+
+************************************************************************
+************************************************************************
+
+N: magne johnsen.
+
+
+
+Søker etter post  hvor  fornavnet er  magne  og  etternavnet er  johnsen 
+
+Navn: Magne Hallstein Johnsen
+Tittel: Førsteamanuensis
+Telefonnummer: 92678
+E-post: Mhj@iet.ntnu.no
+Avdeling: NTNU, Fakultet for informasjonsteknologi, matem. og
+elektroteknikkFakultet for informasjonsteknologi\, matem. og elektroteknikk,
+Institutt for elektronikk og telekommunikasjon, Gruppe for Signalbehandling
+Romnummer: Elektro C: c331
+Gateadresse: Bragstads pl 2b
+
+----------------------------------
+
+---> <EH: Krøll i angivelse av avdeling over. Fakultet oppgis 2 ganger.>
+
+
+¤¤¤ TA: Fikset ¤¤¤
+N: magne johnsen.
+
+
+
+Søker etter post  hvor  fornavnet er  magne  og  etternavnet er  johnsen 
+
+Navn: Magne Hallstein Johnsen
+Tittel: Førsteamanuensis
+Telefonnummer: 92678
+E-post: Mhj@iet.ntnu.no
+Avdeling: NTNU, Fakultet for informasjonsteknologi, matem. og elektroteknikk, Institutt for elektronikk og telekommunikasjon, Gruppe for Signalbehandling
+Romnummer: Elektro C: c331
+Gateadresse: Bragstads pl 2b
+
+
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+*********************************************************************** 
+************************************************************************
+
+N: hva er telefonnummeret til trym holter.
+ 
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+Søker etter  telefonnummer  hvor  fornavnet er  trym  og  etternavnet er  holter 
+
+---> <EH: For bedre syntese, legg inn punktum på slutten av setningen over>
+
+Trym Holter har telefonnummer : 93144
+----------------------------------
+
+---> <EH: For bedre syntese, fjern ':' i setningen over.>
+
+¤¤¤ TA:   Fikset
+
+
+Søker etter  telefonnummer  hvor  fornavnet er  trym  og  etternavnet er  holter 
+
+Trym Holter har telefonnummer  93144
+
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+N: hva er adressen.    
+
+
+
+Søker etter  gate  hvor  fornavnet er  trym  og  etternavnet er  holter 
+
+Trym Holter har gate : O S Bragstads plass
+----------------------------------
+
+---> <EH: Bytt ut 'gate' med 'adresse' over?>
+
+¤¤¤¤ TA:  Fikset   (+ lagt på et par '.' for "bedre syntese" (?))
+
+
+
+
+Søker etter  adresse  hvor  fornavnet er  trym  og  etternavnet er  holter .
+
+Trym Holter har adresse  O S Bragstads plass.
+
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+************************************************************************
+************************************************************************
+
+N: avdeling til erik harborg.
+
+
+
+Søker etter  avdeling  hvor  fornavnet er  erik  og  etternavnet er  harborg 
+
+Erik Harborg er på avdeling : SINTEF
+----------------------------------
+
+N: \quit
+
+----------------------------------
+
+N: erik harborg.
+
+
+
+Søker etter post  hvor  fornavnet er  erik  og  etternavnet er  harborg 
+
+Navn: Erik Harborg
+Tittel: Forsker
+Telefonnummer: 93139
+E-post: Erik.harborg@sintef.no
+Avdeling: SINTEF, SINTEF IKT, Akustikk
+Romnummer: Sætra: 13
+Gateadresse: Bragstads Pl 6
+
+----------------------------------
+
+---> <EH: Bør ikke "avdeling" være det samme i de to tilfellene ovenfor,
+          dvs. full opplisting ned til gruppenivå?> 
+
+¤¤¤ TA:  jeg er vel enig, men  jeg tenker  at full opplisting som over ikke er
+ment for syntese. F.eks. beholdes ':' her også.
+
+(rent teknisk er det flere felt med avdeling, som blir listet etter
+hverandre her).
+
+
+Jeg tenker på å bare gi ut telefon og gateadresse dersom man ikke
+spesifiserer noen felt. ( Må diskuteres, ikke implementert )
+
+altså
+
+
+N: erik harborg.
+
+Søker etter  telefonnummer  og   adresse  hvor  fornavnet er  erik  og  etternavnet er  harborg .
+
+Erik Harborg har telefonnummer  93139 og  adresse  Bragstads Pl 6.
+
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+N: 
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+  
+
+
+************************************************************************
+************************************************************************
+
+N: avdeling for erik harborg.
+
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+---> <EH: Bør ikke dette forstås?>
+
+N: \quit
+
+¤¤¤ TA: Fikset  
+
+N: avdeling for erik harborg.
+
+Søker etter  avdeling  hvor  fornavnet er  erik  og  etternavnet er  harborg .
+
+Erik Harborg er på avdeling  SINTEF.
+
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+----------------------------------
+
+N: avdeling erik harborg. 
+
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+---> <EH: Dette hadde vært fordelaktig om et mer kommadolignende språk
+          som ovenfor også kunne forstås. Dette fordi korte fyllord som
+          "for"/"til" ikke bør være avgjørende for om setningen tolkes
+          eller ikke. Dette er ord som også gjenkjenneren lett kan gjøre
+          feil på. Det samme burde da også gjelde for de andre postene
+          "tittel", "telefonnummer", e-post", "romnummer" og "gateadresse">
+
+
+¤¤¤¤ TA:  Fikset
+N:  avdeling erik harborg.
+
+
+
+Søker etter  avdeling  hvor  fornavnet er  erik  og  etternavnet er  harborg .
+
+Erik Harborg er på avdeling  SINTEF.
+
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+...
+
+N: tittel  erik harborg.
+
+Søker etter  tittel  hvor  fornavnet er  erik  og  etternavnet er  harborg .
+
+Erik Harborg har tittel  Forsker.
+
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+-
+
+.....
+
+N: telefonnummer erik harborg
+N: romnummer erik harborg.
+N: e-post erik harborg.
+N: gateadresse  erik harborg.
+
+
+ok
+
+....
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+************************************************************************
+************************************************************************
+
+N: finn bakke olsen.
+
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+---> <EH: Forveksles verbet "finn" med navnet "finn" her?.
+          OK hvis vi legger på "hvem er" foran.>
+
+N: \quit
+
+
+¤¤¤ TA: Ikke fikset, skal se på det ¤¤¤
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+----------------------------------
+
+N: hvem er finn bakke olsen.
+
+
+
+Søker etter post  hvor  fornavnet er  finn bakke  og  etternavnet er  olsen 
+
+Navn: Finn Bakke Olsen
+Tittel: Avdelingsingeniør
+Telefonnummer: 98869
+E-post: Finn.olsen@ntnu.no
+Avdeling: NTNU, Det medisinske fakultet", Fakultetsadministrasjonen, AV/IT-seksjonen
+Romnummer: MTFS: 1237
+Gateadresse: Olav Kyrresgt. 3
+
+----------------------------------
+
+---> <EH: Fjern gåseøyet etter "fakultet" ovenfor>
+
+¤¤¤ TA: Fikset ¤¤¤¤¤¤¤¤¤¤ <--------------------- TA-051223
+
+N:  hvem er finn bakke olsen.
+
+
+
+Søker etter post  hvor  fornavnet er  finn bakke  og  etternavnet er  olsen .
+
+
+Navn : Finn Bakke Olsen
+Tittel : Avdelingsingeniør
+Telefonnummer : 98869
+E-post : Finn.olsen@ntnu.no
+Avdeling : NTNU, Det medisinske fakultet, Fakultetsadministrasjonen, AV/IT-seksjonen
+Romnummer : MTFS: 1237
+Gateadresse : Olav Kyrresgt. 3
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+************************************************************************
+************************************************************************
+
+N: finn finn bostad.
+
+
+
+Søker etter post  hvor  fornavnet er  finn  og  etternavnet er  bostad 
+
+Navn: Finn Bostad
+Tittel: Førsteamanuensis
+Telefonnummer: 91541
+E-post: Finn.bostad@hf.ntnu.no
+Avdeling: NTNU, Det historisk-filosofiske fakultet, Institutt for språk- og kommunikasjonsstudier, Anvendt språkvitenskap
+Romnummer: Pav B: 163
+Gateadresse: Dragvoll
+
+----------------------------------
+
+---> <EH: OK over, skiller mellom verb og navn.
+          Hvis vi prøver dette på et annet navn, går det galt, jfr. nedenfor:>
+
+N: \quit
+
+----------------------------------
+
+N: finn finn bakke olsen.
+
+
+
+Segmentation fault
+[erik@harborg telebuster]$
+
+---> <EH: Systemkræsj>
+
+
+¤¤¤ TA: Ikke gjenskapt , men ikke ukjent problem (Tagger-problem)
+
+N: finn finn bakke olsen.
+
+
+
+Søker etter post  hvor  fornavnet er  finn bakke  og  etternavnet er  olsen .
+
+Navn : Finn Bakke Olsen
+Tittel : Avdelingsingeniør
+Telefonnummer : 98869
+E-post : Finn.olsen@ntnu.no
+Avdeling : NTNU, Det medisinske fakultet, Fakultetsadministrasjonen, AV/IT-seksjonen
+Romnummer : MTFS: 1237
+Gateadresse : Olav Kyrresgt. 3
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+************************************************************************
+************************************************************************
+
+N: erik garborg.
+
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+---> <EH: Her ville vel en mer fornuftig respons vært:
+          "Jeg finner ingen poster med fornavn Erik og etternavn Garborg">
+
+************************************************************************
+************************************************************************
+
+¤¤¤¤¤¤ TA: Ikke Fikset
+
+Skjønner ikke at Garborg er et etternavn i det hele tatt.
+Mangler stavefeilskoreksjon sånn som i buster, men 
+
+  dette burde ikke være et problem for "tale"-buster 
+        
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+DIALOGRELATERTE EKSEMPLER
+============================
+============================
+
+
+************************************************************************
+************************************************************************
+
+N: hvem er erik.
+
+
+
+Vet du etternavnet?
+----------------------------------
+
+N: nei.
+
+
+
+Vet du avdelingen?
+----------------------------------
+
+N: sintef.
+
+
+
+Vet du avdelingen?
+----------------------------------
+
+N: sintef ikt.
+
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+N:
+
+---> <EH: Hva forventes det at jeg skal svare her? Går ikke med 'sintef'
+          heller. Annen variant nedenfor:>
+
+N: \quit
+
+¤¤¤ TA:  Delvis fikset Det er for mange som heter Erik på sintef
+
+N: hvem er erik.
+
+
+
+Vet du  etternavnet?
+----------------------------------
+
+N: nei.
+
+
+
+Vet du  avdelingen?
+----------------------------------
+
+N: sintef.
+
+
+
+Vet du  etternavnet?
+----------------------------------
+
+N: nei.
+
+
+
+Søker etter post  hvor  fornavnet er  erik  og  avdelingen er  sintef .
+
+
+Jeg finner 11 poster som svarer til søket : 
+
+Kan ikke liste så mange poster .
+----------------------------------
+.....
+
+
+Vet du  avdelingen?
+----------------------------------
+
+N: sintef ikt.
+
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+// Sammensatte avdelingsnavn forstås ikke nei.
+
+Gjenstand for forbedring.
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+
+----------------------------------
+
+N: hvem er erik.
+
+
+
+Vet du etternavnet?
+----------------------------------
+
+N: nei.
+
+
+
+Vet du avdelingen?
+----------------------------------
+
+N: akustikk.
+
+
+
+Vet du etternavnet?
+----------------------------------
+
+N: nei.
+
+---> <EH: Dette er det allerede spurt om>
+
+Søker etter post  hvor  fornavnet er  erik  og  avdelingen er  akustikk 
+
+
+Jeg finner 149 poster som svarer til søket: 
+
+Kan ikke liste så mange poster.
+----------------------------------
+
+---> <EH: Så mange Erik'er kan det da umulig være på akustikk!>
+
+¤¤¤ TA: Delvis fikset
+
+Akustikk på sintef ble ikke gjenkjent, derimot akustikk på NTNU 
+
+N: hvem er erik.
+
+
+
+Vet du  etternavnet?
+----------------------------------
+
+N: nei.
+
+
+
+Vet du  avdelingen?
+----------------------------------
+
+N: akustikk.
+
+
+
+Søker etter post  hvor  fornavnet er  erik  og  avdelingen er  akustikk .
+
+Navn : Tor Erik Vigran
+Tittel : Professor Emeritus
+Telefonnummer : 94338
+E-post : Tor.e.vigran@iet.ntnu.no
+Avdeling : NTNU, Fakultet for informasjonsteknologi, matem. og elektroteknikk, Institutt for elektronikk og telekommunikasjon, Akustikk
+Romnummer : Elektro B: b141
+Gateadresse : O. S. Bragstads pl 2b
+----------------------------------
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+
+
+
+************************************************************************
+************************************************************************
+
+N: harborg.
+
+
+
+Søker etter post  hvor  etternavnet er  harborg 
+
+Navn: Erik Harborg
+Tittel: Forsker
+Telefonnummer: 93139
+E-post: Erik.harborg@sintef.no
+Avdeling: SINTEF, SINTEF IKT, Akustikk
+Romnummer: Sætra: 13
+Gateadresse: Bragstads Pl 6
+
+----------------------------------
+
+---> <EH: OK over, men ikke nedenfor:>
+
+N: \quit
+
+----------------------------------
+
+N: holter.
+
+
+
+Vet du etternavnet?
+----------------------------------
+
+N: holter.
+
+
+
+Vet du etternavnet?
+----------------------------------
+
+¤¤¤¤ TA: Fikset
+
+I Telebuster er det av og til sammenblanding av stedsnavn og etternavn.
+
+Fikset ad hoc ved å fjerne slike etterbanv fra stedslisten.
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+************************************************************************
+************************************************************************
+
+N: avdeling og tlfnr til trym holter.
+
+
+
+Søker etter  telefonnummer  og   avdeling  hvor  fornavnet er  trym  og  etternavnet er  holter 
+
+Trym Holter har telefonnummer : 93144 og  avdeling : SINTEF
+----------------------------------
+
+N: tittel og adresse.
+
+
+
+Søker etter  telefonnummer  og   avdeling  hvor  fornavnet er  trym  og  etternavnet er  holter 
+
+Trym Holter har telefonnummer : 93144 og  avdeling : SINTEF
+----------------------------------
+
+---> <EH: Forveksler "adresse" med "avdeling" ovenfor.>
+
+
+¤¤¤ TA: Fikset ( i det minste for to tilleggsfelt)
+
+N: avdeling og tlfnr til trym holter.
+
+
+
+Søker etter  telefonnummer  og   avdeling  hvor  fornavnet er  trym  og  etternavnet er  holter .
+
+Trym Holter har telefonnummer  93144 og  avdeling  SINTEF.
+
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+N:  tittel og adresse.
+
+
+
+Søker etter  tittel  og   adresse  hvor  fornavnet er  trym  og  etternavnet er  holter .
+
+Trym Holter har tittel  Forsker og  adresse  O S Bragstads plass.
+
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+N: 
+************************************************************************
+************************************************************************
+
+N: nils holte.
+
+
+
+Vet du etternavnet?
+----------------------------------
+
+¤¤¤¤¤ TA: Ikke fikset ¤¤¤¤¤¤¤¤¤¤
+
+Dett er et Tagger-problem.
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+N: holte.
+
+
+
+Søker etter post  hvor  fornavnet er  nils  og  etternavnet er  holte
+
+Navn: Nils Holte
+Tittel: Professor
+Telefonnummer: 94319
+E-post: Nils.holte@iet.ntnu.no
+Avdeling: Fakultet for informasjonsteknologi, matem. og elektroteknikk, Gruppe
+for Signalbehandling, Institutt for elektronikk og telekommunikasjon, NTNU
+Romnummer: Elektro B: b329
+Gateadresse: O.S. Bragstads pl 2b
+
+----------------------------------
+
+---> <EH: Hvorfor spørres om etternavn her?>
+
+************************************************************************
+************************************************************************
+
+N: avdeling til tore amble.
+
+
+
+Søker etter  avdeling  hvor  fornavnet er  tore  og  etternavnet er  amble 
+
+Tore Amble er på avdeling : NTNU
+----------------------------------
+
+N: avdeling til nils holte.
+
+¤¤¤¤ TA: Ikke fikset
+
+Tagger-problem
+
+Skyldes at holte ikke blir gjenkjent som etternavn
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+Finner ingen med etternavn amble.
+
+¤¤¤¤¤¤¤¤¤  Beholder tidligere gitte felt (modus operandi)
+
+Men det er 41 poster som svarer til fornavn nils.
+
+Søker etter  avdeling  hvor  fornavnet er  nils  og  etternavnet er  amble 
+
+Kan ikke finne noen som svarer til søket.
+Fornavn: nils
+Etternavn: amble
+----------------------------------
+
+---> <EH: Unødvendig mye tekst ved feil. Burde være nok med de to første
+          setningene.>
+
+¤¤¤¤ TA:   Skal se på det¤¤¤¤
+
+************************************************************************
+************************************************************************
+
+N: emailadresse til erik harborg.
+
+
+
+Søker etter  mail  hvor  fornavnet er  erik  og  etternavnet er  harborg 
+
+Erik Harborg har mail : erik.harborg@sintef.no
+----------------------------------
+
+N: romnummer.
+
+
+
+Søker etter  romnummer  hvor  fornavnet er  erik  og  etternavnet er  harborg 
+
+Erik Harborg har romnummer : Sætra: 13, Bragstads Pl 6
+----------------------------------
+
+N: kontro.     
+
+
+
+Segmentation fault
+erik@brage3:~/brage/telebuster/telebuster$ 
+
+---> <EH: Systemet bør ikke kræsje pga en skrivefeil.>
+
+¤¤¤ TA: Ikke gjenskapt, feilen antageleig rettet,
+
+¤¤ kontro er ved en inkurie oppfattet (tagget)  som et -mulig- etternavn, som
+imidlertid ikke finnes som sådan ik databasen
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+************************************************************************
+************************************************************************
+

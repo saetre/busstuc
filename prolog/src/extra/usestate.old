@@ -1,0 +1,69 @@
+%% FILE usestate.pl
+%% SYSTEM BUSSTUC
+%% CREATED TO-970319
+%% REVISED TO-970421 TA-980122
+
+
+
+% Due to collision with pragma operator definitions,
+% the term to/1 is replaced by toplace/1
+% and from/1 to fromplace/1  (for symmetri's sake)
+%% TA-970523
+
+
+% New rule format  RuleId rule (is ... ) %% TA-980122
+% Provisional name   400
+
+
+% Pragma rule for using the state information in the dialogue system
+% Source: State (round list)
+% Destination: the modified (flatted etc) TQL representation of an input
+% statetment.
+% Information from the state is added to the TQL statement.
+%
+
+:- module(usestate,[]).
+
+tracevalue(L) :- user:value(traceprog,L).  % Trace level 1-4
+
+% use to-place
+400  rule  is toplace(Place) % to(
+id  event/real/S,
+	 add nrel/to/bus/place/S/Place
+ip  [].
+
+
+% use from-place
+400  rule  is fromplace(Place) % from(
+id  event/real/S,
+	 add nrel/from/bus/place/S/Place
+ip  [].
+
+
+% use nowat-place as from-place if we don't have from-place
+400  rule  is nowat(Place), not present fromplace(_) % from(
+id  event/real/S,
+    add nrel/from/bus/place/S/Place
+ip  [].
+
+
+% use nowat-place as to-place if we have a from-place but not a to-place
+400  rule  is nowat(Place), present fromplace(_), not present toplace(_) %%  % from( to(
+id  event/real/S,
+	 add nrel/to/bus/place/S/Place
+ip  [].
+
+
+% use before-time
+400  rule  is before(Time)
+id  event/real/S,
+    add srel/before/time/Time/S
+ip  [].
+
+
+% use after-time
+400  rule  is after(Time)
+id  event/real/S,
+    add srel/after/time/Time/S
+ip  [].
+

@@ -1,0 +1,13 @@
+\begin
+
+\startbatch
+
+ Kan jeg få passeringstidene for buss nr 66 på moholt?
+
+ Kan jeg få overgang fra rute 8 til rute 66 på moholt?
+
+ Kan jeg få oppgitt de 5 neste bussene fra Gløshaugen?
+
+\takebatch
+
+\end

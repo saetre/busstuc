@@ -1,0 +1,31 @@
+
+\begin
+
+\set queryflag true
+
+\startbatch
+
+Når går bussen fra johan bojers vei 18 til lian ?
+
+Hei, jeg bor på Nidarvoll og i kveld må jeg nå  et tog til oslo klokka
+seks. 
+
+Når går bussen fra NTNU på LAde til byen mellom klokken 10 og 11 i dag? 
+
+hvilken buss må jeg ta fra vestlia for å rekke en avtale på moholt klokken 1230? 
+
+hvilken bussavgang skal jeg velge når jeg skal reise fra lade og være
+på munkvold innen klokka atten ?
+
+Hvordan kommer jeg meg fra Singsaker til Moholt så fort som mulig
+etter 16.50 den 16. mai ?
+
+buss 5 fra nardokrysset til tors veg.
+
+buss 5 fra tors veg til nardokrysset.
+
+buss 63 fra vollabakken til rosenborg.
+
+\takebatch
+
+\end

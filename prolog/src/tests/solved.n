@@ -1,0 +1,211 @@
+
+\begin
+
+\set trace 0
+\set queryflag true
+
+
+passerer bussen fra nth nardo ? 
+
+jeg skal til Strindheim Hageby ?
+
+Hvor går rute 52? %  ( kl 2400, sunday)
+busstid fra moholt til midtbyen innen 2000 .
+
+gi meg busstid fra moholt til midtbyen innen 2000.
+
+jeg skal reise til nth.
+
+buss til nardovegen 1.
+
+is there a bus  going downtown ?
+
+bussen kjører forbi dragvoll.
+
+bussen går forbi dragvoll.
+
+bussavganger fra komunehuset til maskinagentur .
+
+bus from kongens to dragvoll after 0920.
+
+what is the best path from Moholt to Royal Garden? 
+
+Morning bus to Klæbu.
+
+Jeg skal på kino innen kl 2000 og reiser fra Moholt.
+
+Jeg vil til Reppe 0757 fra Lian.
+
+hvordan kommer jeg  til Reppe 0757 fra Lian.
+
+buss til stjørdal .
+
+Hvor mange busser går det  ?
+
+Hvordan kommer jeg fra stokkanhaugen til nyborg skole på tirsdag etter klokken 1800.
+
+takk!
+
+
+
+Are there any buses running after midnight? 
+
+Are there any buses after midnight?
+
+What colour is the last bus?
+
+What colour are the local buses?
+
+Are there any buses on holidays?
+
+
+Hvordan kommer jeg snarest fra stokkanhaugen til nyborg skole på 
+  tirsdag etter klokken 1800.
+
+hvor mange avganger er det fra kvamshaugen.
+
+hvor mange avganger er det fra kvamshaugen i dag.
+
+bus departures from Chr.Eggens vei to NTNU Gløshaugen. %   (no unknown)
+
+Hvilke bussholdeplasser ligger i nærheten av nardo ?
+
+Hvilken bussholdeplass ligger nærmest  Chr. Eggens vei ?
+
+bus departures from Blakli to NTNU Gløshaugen .
+
+bus departures from Nardosentret to NTH.
+
+Når går buss fra Sentrum til Skistua på helligdager.
+
+How often does the bus stop near by Moholt.
+
+How often does the buss stop near at Moholt.
+
+Hvor lang tid tar linje 52 fra Moholt til Dronningens gate? % (aldri)
+
+Hvor er bussholdeplass for Lade?
+ 
+Hvor ligger Chr. Eggens vei ?
+
+hvilke busser er det ?
+
+How do I get from Glöshaugen to Nardo.
+
+where is bjarne ness veg ??
+
+How do I get from Erling Skjalgsonsgate to Nardo.
+
+How do I get from Glöshaugen to Balders veg.
+
+Are there any buses after midnight?
+
+Are there any buses on Christmas Eve? 
+
+Hvordan kommer jeg meg fra Lohove til Breidablikk tirsdag kveld?
+
+Hvordan kommer jeg meg fra Lohove til Breidablikk tirsdag kl. 1900?
+
+Jeg vil gjerne ta buss fra Trondheim til Kristiansund.
+
+Jeg vil gjerne ta buss fra Trondheim til Kristiansand.
+
+Jeg vil gjerne ta buss fra Oslo til Kristiansand.
+
+Hvor mange busser kjører forbi Studentersamfunnet i løpet av en dag.
+
+hvor mange avganger er det fra kvamshaugen på torsdag ?
+
+Hvor er bussholdeplass for nardosenteret?
+
+Hvor mange avganger er det fra Samfundet daglig?
+
+sende sender sendte sendt sen sent sein seint.
+
+i want to go from moholt to downtown at 1400 ? %  TIME
+
+When does the boat from Trondheim to Vannvikan leave on fridays, after 2030?
+
+how many buses are there ? % =\ 
+
+hvor mange busser er det ? %
+
+hvilke busser gaar til tonstadkrysset den neste timen.
+
+which bus runs between the station and the harbour ? 
+
+1200 am now.
+
+111111 am now.
+
+what bus do i have to take if i want to be at nth before 1200 am ?
+
+Hvor må man skifte buss for å reise fra Nardo til Heimdal? 
+
+Åssen ska æ komm mæ fra Tiller te Valentinlyst, før klokka bli 0750 ?
+
+ja. %
+
+når går nattbuss til fiolsvingen natt til søndag? 
+
+1900 og 2000 . % 3800000
+
+tiden 2000. % nummer
+
+tiden 1900 - 2000.
+
+Når går buss nr. 4 i tidsrommet 19.00-20.00 .
+
+I'd like to go to by'n.
+
+når går neste buss fra elgesæther til bjørndalsbrua.
+
+bussavgang ved krokstien.
+
+bussavgang ved kroksti.
+
+jeg er på gløshaugen og skal til e.b. schieldropsvei .
+
+Hva er busstuc .
+
+buss.
+
+hvilke busser fra nardo  passerer sentrum kl 2015 ?
+
+buss 5 fra   nardo som er fremme i sentrum   etter 2000.
+
+hvilke busser fra nardo  passerer sentrum etter 2000.
+
+hvilke busser fra nardo  passerer sentrum mellom 2000 og 2030 .
+
+buss 5 fra nardo som er fremme i sentrum mellom 2000 og 2030 .
+
+Bus from Tyholt to Vestlia at 1745?
+
+Når går de neste femti bussene fra gløshaugen til vestlia? 
+
+Hvor ofte passerer en buss Steinan om kvelden?
+
+Hvor ofte passerer en buss Steinan etter klokka 19 ?
+
+Hvor ofte passerer en buss Steinan etter klokka 1900? 
+
+korleis kjem og til City Syd ?
+
+Jeg lurer på når bussen går .
+
+Jeg lurer på når bussen går fra Sentrum til Byåsen Butikk senter
+ på lørdag etter kl 1300.
+
+Jeg lurer på når bussen går fra Sentrum til Skistua på lørdag etter kl 1300.
+
+Jeg lurer på når buss nummer 52 går fra Gløshaugen til Vestlia i dag.
+
+Jon er dum.
+
+kan jeg få hele rutetabellen for risvollan i dag? 
+
+Where is Vestre Rosten 81 .
+
+\end
+

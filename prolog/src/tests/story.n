@@ -1,0 +1,14 @@
+
+\begin
+
+\set world paradise
+
+\set textflag true
+
+Hei, jeg bor på Nidarvoll. 
+
+Jeg skal til NTH. Når går bussen ?
+
+\set textflag false
+
+\end

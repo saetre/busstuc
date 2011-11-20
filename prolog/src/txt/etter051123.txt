@@ -1,0 +1,1107 @@
+s<Oppdatert: 2005-12-08, EH>
+
+Utdrag av dialoger fra BUSTER.
+Basert på siste versjon av BUSTER/TELEBUSTER mottatt 2005-11-23.
+Dobbel *-rekke signaliserer at dialogen er resatt og at et nytt
+eksempel starter.
+Forøvrig benyttes "adjø." eller "\quit" for å resette dialoghistorien.
+Kommentar-linjer starter med:
+---> <EH: bla bla bla....>
+--------------------------------------------------------------------------
+
+DIALOGRELATERTE EKSEMPLER
+==============================
+==============================
+
+************************************************************************
+************************************************************************
+
+N: med neste buss til sentrum.
+
+
+Du vil dra  til  sentrum, .
+
+
+Hvor vil du reise fra ?
+----------------------------------
+
+N: lerkendal.
+
+
+Du vil dra  fra  Lerkendal stadion, .
+
+
+Når vil du dra?
+----------------------------------
+
+---> <EH: Har glemt tidsangivelsen i første turn. Det går bra hvis vi
+          bytter ut "med neste buss" med f.eks. "etter klokka 17">
+
+
+¤¤¤¤ TA: Bra du minner meg på denne, men den er litt kompleks ¤¤¤¤¤¤¤¤
+¤¤¤¤ TA: Ikke fikset (ennå) ¤¤¤¤¤¤¤¤¤¤
+
+ (men det er ikke så unaturlig å spørre om igjen i dette tilfelle)
+
+************************************************************************
+************************************************************************
+
+N: fra sentrum til nardo.
+
+Holdeplassen nærmest  Nardo,  er  Nardosenteret, .
+
+Du vil dra  til  Nardosenteret,  fra  sentrum, .
+
+
+Når vil du dra?
+----------------------------------
+
+N: ni.
+
+Når vil du dra?
+----------------------------------
+
+N: ni tretti.
+
+
+Du vil dra  fra  sentrum,  etter klokken    09:30, .
+
+
+
+Buss 8,  passerer  Dronningensgate, holdeplass D3,  klokken 09:35, 
+ og   Nardosenteret,  klokken 09:45, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+---> <EH: Skjønner ikke "ni", men "ni tretti" er OK.>
+
+¤¤¤ TA: Fikset ¤¤¤¤¤¤¤¤
+
+
+N: fra sentrum til nardo.
+
+Holdeplassen nærmest  Nardo,  er  Nardosenteret, .
+
+Du vil dra  til  Nardosenteret,  fra  sentrum, .
+
+
+Når vil du dra?
+----------------------------------
+
+N: ni.
+
+
+Du vil dra  fra  sentrum,  etter klokken    09:00,  på   onsdag.
+
+
+
+Jeg antar du mener ruter for i morgen.
+
+Buss 8,  passerer  Dronningensgate, holdeplass D3,  klokken 09:05, 
+ og   Nardosenteret,  klokken 09:15, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+************************************************************************
+************************************************************************
+
+N: avgang nardo.
+
+Holdeplassen nærmest  Nardo,  er  Nardosenteret, .
+
+Du vil dra  til  Nardosenteret, .
+
+
+Hvor vil du reise fra ?
+----------------------------------
+
+N:
+
+---> <EH: "avgang" bør oppfattes som et fra_sted.
+          Samme feil gjøres for "avreise">
+
+¤¤¤¤¤ TA: Fikset ¤¤¤¤¤¤¤¤¤¤¤¤¤
+| ?- 
+N: avgang nardo.
+
+Holdeplassen nærmest  Nardo,  er  Nardosenteret, .
+
+Du vil dra  fra  Nardosenteret, .
+
+
+Hvor vil du reise til ?
+----------------------------------
+
+N: adjø.
+
+
+Ha det bra
+----------------------------------
+
+N: avreise nardo.
+
+Holdeplassen nærmest  Nardo,  er  Nardosenteret, .
+
+Du vil dra  fra  Nardosenteret, .
+
+
+Hvor vil du reise til ?
+----------------------------------
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+************************************************************************
+************************************************************************
+
+N: fra dragvoll til sentrum.
+
+
+Du vil dra  til  sentrum,  fra  DRAGVOLL, .
+
+
+Når vil du dra?
+----------------------------------
+
+N: før klokka åtte i kveld.
+
+
+Du vil dra  til  sentrum,  før klokken   20:00,  etter klokken    18:00, .
+
+
+
+Buss 9,  passerer  DRAGVOLL,  klokken 19:20, 
+ og   Munkegata, holdeplass M1,  klokken 19:45, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+N: hjelp.
+
+
+Jeg kan fortelle deg om bussavganger i Trondheim, 
+Buss 9,  passerer  DRAGVOLL,  klokken 19:20, 
+ og   Munkegata, holdeplass M1,  klokken 19:45, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+N: fra valøyveien til kattem i morgen tidlig.
+
+
+Du vil dra  til  Kattem,  fra  Valøyvegen,  med første buss  på   tirsdag.
+
+
+
+Jeg kan fortelle deg om bussavganger i Trondheim, 
+Buss 48,  passerer  Valøyvegen,  klokken 19:16, 
+ og   Kattem,  klokken 19:32, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+---> <EH: Her er det noe krøll. Tar med seg 'hjelp'-responsen i neste
+          spørsmål. Oppfatter heller ikke "i morgen tidlig" som
+          første buss om morgenen. Hvis vi resetter dialoghistorien før
+          siste turn, får vi korrekt svar.>
+
+¤¤¤¤¤ TA: Fikset ¤¤¤¤¤¤¤¤¤¤¤
+
+Du vil dra  til  Kattem,  fra  Valøyvegen,  med første buss  på   torsdag.
+
+
+
+Buss 48,  passerer  Valøyvegen,  klokken 19:16, 
+ og   Kattem,  klokken 19:32, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+************************************************************************
+************************************************************************
+
+N: fra dragvoll til sentrum før klokka åtte i kveld.
+
+
+Du vil dra  til  sentrum,  fra  DRAGVOLL,  før klokken   20:00, .
+
+
+
+Buss 9,  passerer  DRAGVOLL,  klokken 19:20, 
+ og   Munkegata, holdeplass M1,  klokken 19:45, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+N: fra valøyveien til kattem i morgen tidlig.
+
+
+Du vil dra  til  Kattem,  fra  Valøyvegen,  med første buss  på   tirsdag.
+
+
+
+Buss 48,  passerer  Valøyvegen,  klokken 18:46, 
+ og   Kattem,  klokken 19:02, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+---> <EH: Gir feil rute ovenfor. Hvis vi legger på "jeg vil reise" foran
+          siste forespøsel, får vi riktig svar jfr. nedenfor:>
+
+¤¤¤¤ TA: Fikset ¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+----
+
+N: fra valøyveien til kattem i morgen tidlig.
+
+
+Du vil dra  til  Kattem,  fra  Valøyvegen,  med første buss  på   torsdag.
+
+
+
+Buss 48,  passerer  Valøyvegen,  klokken 06:31, 
+ og   Kattem,  klokken 06:47, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+N: \quit
+
+----------------------------------
+
+N: fra dragvoll til sentrum før klokka åtte i kveld.
+
+
+Du vil dra  til  sentrum,  fra  DRAGVOLL,  før klokken   20:00, .
+
+
+
+Buss 9,  passerer  DRAGVOLL,  klokken 19:20, 
+ og   Munkegata, holdeplass M1,  klokken 19:45, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+N: jeg vil reise fra valøyveien til kattem i morgen tidlig.
+
+
+Du vil dra  til  Kattem,  fra  Valøyvegen,  med første buss  på   tirsdag.
+
+
+
+Buss 48,  passerer  Valøyvegen,  klokken 06:31, 
+ og   Kattem,  klokken 06:47, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+¤¤¤ TA:  OK (fortsatt) ¤¤
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+************************************************************************
+************************************************************************
+
+N: fra dragvoll til sentrum.
+
+
+Du vil dra  til  sentrum,  fra  DRAGVOLL, .
+
+
+Når vil du dra?
+----------------------------------
+
+N: før klokka åtte i kveld.
+
+
+Du vil dra  til  sentrum,  før klokken   20:00,  etter klokken    18:00, .
+
+
+
+Buss 9,  passerer  DRAGVOLL,  klokken 19:20, 
+ og   Munkegata, holdeplass M1,  klokken 19:45, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+---> <EH: Unødvendig å ha med "etter klokka 18:00" her. Hvis vi spør
+          nøyaktig likt med alt i en turn, får vi det ikke med,
+          jfr. nedenfor:
+
+¤¤¤¤ TA: Fikset ¤¤¤¤¤¤¤
+
+N: før klokka åtte i kveld.
+
+
+Du vil dra  til  sentrum,  før klokken   20:00, .
+
+
+
+Buss 9,  passerer  DRAGVOLL,  klokken 19:20, 
+ og   Munkegata, holdeplass M1,  klokken 19:45, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+N: \quit
+
+----------------------------------
+
+N: fra dragvoll til sentrum før klokka åtte i kveld.
+
+
+Du vil dra  til  sentrum,  fra  DRAGVOLL,  før klokken   20:00, .
+
+
+
+Buss 9,  passerer  DRAGVOLL,  klokken 19:20, 
+ og   Munkegata, holdeplass M1,  klokken 19:45, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+
+---> <EH: Hvis vi derimot kun spesifiserer tidspunkt med "i kveld" er
+          det OK å ha med dette, jfr. nedenfor:>
+
+¤¤¤¤¤¤¤ TA: OK (fortsatt) ¤¤¤¤¤
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+N: \quit
+
+----------------------------------
+
+N: fra dragvoll til sentrum i kveld.
+
+
+Du vil dra  til  sentrum,  fra  DRAGVOLL,  etter klokken    18:00, .
+
+
+
+Buss 5,  passerer  DRAGVOLL,  klokken 18:00, 
+ og   Dronningensgate, holdeplass D2,  klokken 18:18, .
+...
+Buss 9,  passerer  DRAGVOLL,  klokken 23:50, 
+ og   Munkegata, holdeplass M1,  klokken 00:15, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+¤¤¤¤¤¤ TA:   Denne var vel OK ? ¤¤
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+************************************************************************
+************************************************************************
+
+N: fra sentrum til lerkendal.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum, .
+
+
+Når vil du dra?
+----------------------------------
+
+N: ankomst klokka 13.
+
+Når vil du dra?
+----------------------------------
+
+---> <EH: Dette bør forstås. Hvis vi sier "med ankomst klokka 13"
+          går det bra. Med alt i én setning; "fra sentrum til lerkendal
+          ankomst klokka 13." går det også bra.>
+
+************************************************************************
+************************************************************************
+
+N: fra sentrum til lerkendal.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum, .
+
+
+Når vil du dra?
+----------------------------------
+
+N: avreise klokka 13.
+
+
+Du vil dra  til  Lerkendal stadion,  før klokken   13:00, .
+
+
+
+Buss 60,  passerer  Munkegata, holdeplass M3,  klokken 12:40, 
+ og   Lerkendal stadion,  klokken 12:46, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+---> <EH: Her bør det velges første avgang etter klokka 13. Det blir
+          riktig hvis vi bytter ut "avreise" med "avgang" jfr.
+          nedenfor:>
+
+¤¤¤¤¤¤¤¤ TA:  Fikset ¤¤¤¤¤¤¤¤¤¤¤
+
+N:  fra sentrum til lerkendal.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum, .
+
+
+Når vil du dra?
+----------------------------------
+
+N: avreise klokka 13.
+
+
+Du vil dra  fra  sentrum,  etter klokken    13:00, .
+
+
+
+Buss 3,  passerer  Munkegata, holdeplass M1,  klokken 13:00, 
+ og   Lerkendal stadion,  klokken 13:06, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte
+ samtalen.
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+N: \quit
+
+----------------------------------
+
+N: fra sentrum til lerkendal.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum, .
+
+
+Når vil du dra?
+----------------------------------
+
+N: avgang klokka 13.
+
+
+Du vil dra  fra  sentrum,  etter klokken    13:00, .
+
+
+
+Buss 3,  passerer  Munkegata, holdeplass M1,  klokken 13:00, 
+ og   Lerkendal stadion,  klokken 13:06, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+************************************************************************
+************************************************************************
+
+N: ankomme lerkendal fra nardo.
+
+Holdeplassen nærmest  Nardo,  er  Nardosenteret, .
+
+Du vil dra  til  Lerkendal stadion, .
+
+
+Hvor vil du reise fra ?
+----------------------------------
+
+---> <EH: Oppfattet ikke fra_sted ovenfor. Tilsvarende respons også for
+          "ankommer". Hjelper heller ikke med den mer naturlige
+          setningen: "jeg vil ankomme lerkendal fra nardo."
+
+
+¤¤¤¤¤¤  TA: Fikset ¤¤¤¤¤¤¤¤¤
+
+N:  ankomme  lerkendal fra nardo.
+
+Holdeplassen nærmest  Nardo,  er  Nardosenteret, .
+
+Du vil dra  til  Lerkendal stadion,  fra  Nardosenteret, .
+
+
+Når vil du dra?
+----------------------------------
+
+N:  ankommer  lerkendal fra nardo.
+
+Holdeplassen nærmest  Nardo,  er  Nardosenteret, .
+
+Du vil dra  til  Lerkendal stadion,  fra  Nardosenteret, .
+
+
+Når vil du dra?
+----------------------------------
+
+N: jeg vil ankomme  lerkendal fra nardo.
+
+Holdeplassen nærmest  Nardo,  er  Nardosenteret, .
+
+Du vil dra  til  Lerkendal stadion,  fra  Nardosenteret, .
+
+
+Når vil du dra?
+----------------------------------
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+  
+
+
+
+
+
+************************************************************************
+************************************************************************
+
+N: fra lerkendal til sentrum klokka 16.
+
+
+Du vil dra  til  sentrum,  fra  Lerkendal stadion,  før klokken   16:00, .
+
+
+
+Buss 20,  passerer  Lerkendal stadion,  klokken 15:51, 
+ og   Dronningensgate, holdeplass D4,  klokken 16:00, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+N: jeg vil reise tidligere.
+
+
+Buss 20,  passerer  Lerkendal stadion,  klokken 15:51, 
+ og   Dronningensgate, holdeplass D4,  klokken 16:00, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+---> <EH: nå_tid=1330. Oppfatter ikke dette som en tidligere buss.
+          Burde være nok å si "tidligere" for å få en tidligere buss.
+          Samme problem også for "senere" jfr. nedenfor:>
+
+¤¤¤¤ TA:   Fikset ¤¤¤¤¤¤¤¤¤
+
+
+N: jeg vil reise tidligere.
+
+
+Du vil dra  til  sentrum,  før klokken   15:59, .
+
+
+
+Buss 36,  passerer  Lerkendal stadion,  klokken 15:47, 
+ og   Dronningensgate, holdeplass D4,  klokken 15:58, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+N: fra lerkendal til sentrum klokka 16.
+
+
+Du vil dra  til  sentrum,  fra  Lerkendal stadion,  før klokken   16:00, .
+
+
+
+Buss 20,  passerer  Lerkendal stadion,  klokken 15:51, 
+ og   Dronningensgate, holdeplass D4,  klokken 16:00, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+N: jeg vil reise senere.
+
+
+Du vil dra  fra  Lerkendal stadion,  etter klokken    15:52, .
+
+
+
+Buss 8,  passerer  Lerkendal stadion,  klokken 15:55, 
+ og   sentrum,  klokken 16:04, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+N: jeg vil reise senere.
+
+
+Buss 20,  passerer  Lerkendal stadion,  klokken 15:51, 
+ og   Dronningensgate, holdeplass D4,  klokken 16:00, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+************************************************************************
+************************************************************************
+
+N: fra sentrum til lerkendal.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum, .
+
+
+Når vil du dra?
+----------------------------------
+
+N: på torsdag om morgenen.
+
+
+Du vil dra  på   torsdag.
+
+
+Når vil du dra?
+----------------------------------
+
+---> <EH: Bør svare ved å velge første buss på torsdag morgen her.
+          Samme spørsmål i én setning gir greit svar, jfr. nedenfor:>
+
+
+¤¤¤ TA:  Fikset ¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+N:  på torsdag om morgenen.
+
+
+Du vil dra  fra  sentrum,  med første buss .
+
+
+
+Buss 36,  passerer  Dronningensgate, holdeplass D4,  klokken 06:00, 
+ og   Lerkendal stadion,  klokken 06:37, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+
+
+N: \quit
+
+----------------------------------
+
+N: fra sentrum til lerkendal på torsdag om morgenen.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum,  før klokken   12:00,  på   torsdag.
+
+
+
+Buss 36,  passerer  Dronningensgate, holdeplass D4,  klokken 06:00, 
+ og   Lerkendal stadion,  klokken 06:37, .
+...
+Buss 60,  passerer  Munkegata, holdeplass M3,  klokken 11:35, 
+ og   Lerkendal stadion,  klokken 11:41, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+¤¤¤¤¤¤  TA: Nå blir dette også første buss. ¤¤¤¤¤¤¤¤
+
+N:  fra sentrum til lerkendal på torsdag om morgenen.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum,  med første buss .
+
+
+
+Buss 36,  passerer  Dronningensgate, holdeplass D4,  klokken 06:00, 
+ og   Lerkendal stadion,  klokken 06:37, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+************************************************************************
+************************************************************************
+
+N: fra sentrum til lerkendal.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum, .
+
+
+Når vil du dra?
+----------------------------------
+
+N: på torsdag formiddag.
+
+
+Du vil dra  til  Lerkendal stadion,  før klokken   12:00,  på   torsdag.
+
+
+
+Buss 60,  passerer  Munkegata, holdeplass M3,  klokken 11:35, 
+ og   Lerkendal stadion,  klokken 11:41, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+---> <EH: OK over. Tolker formiddag som siste buss før klokka 12. Men
+          oppfatter ikke endring til ettermiddag, jfr. nedenfor:
+          MERK: dialoghistorien er ikke resatt.>
+
+¤¤¤ TA: "Delvis" fikset
+
+¤¤¤ Problemet er når dialoghistorien skal resettes.
+¤¤¤ Her burde den vært det, men det er ikke trivielt å avgjøre
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+N: på torsdag ettermiddag.
+
+
+Du vil dra  fra  sentrum,  etter klokken    12:00, .
+
+
+
+Det er ikke mulig med avgang etter klokken 12:00, .
+Buss 52,  går fra Munkegata, holdeplass M2,  klokken 11:36,  til Dybdals veg,  klokken 11:43, 
+ og  buss 8,  går fra Dybdals veg,  klokken 11:59,  til Lerkendal stadion,  klokken 12:00, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+N: på torsdag ettermiddag.
+
+
+Du vil dra  på   torsdag.
+
+
+
+Buss 60,  passerer  Munkegata, holdeplass M3,  klokken 11:35, 
+ og   Lerkendal stadion,  klokken 11:41, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+---> <EH: Uten resetting av dialoghistorien gjentas bare forrige
+          opplysning. Med resatt dialoghistorie får vi følgende:>
+
+¤¤¤¤¤¤¤¤¤ TA: Se over ¤¤¤¤¤¤¤¤¤
+
+N: \quit
+
+----------------------------------
+
+N: fra sentrum til lerkendal.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum, .
+
+
+Når vil du dra?
+----------------------------------
+
+N: på torsdag ettermiddag.
+
+
+Du vil dra  på   torsdag.
+
+
+Når vil du dra?
+----------------------------------
+
+---> <EH: Oppfatter ikke "ettermiddag". Stilles samme spørsmål i én
+          setning går det greit (første buss etter 12 og siste før 18)
+
+¤¤¤¤¤ TA: Fikset 
+
+N: på torsdag  ettermiddag.
+
+
+Du vil dra  fra  sentrum,  etter klokken    12:00,  på  torsdag.
+
+
+
+Buss 3,  passerer  Munkegata, holdeplass M1,  klokken 12:00, 
+ og   Lerkendal stadion,  klokken 12:06, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+
+************************************************************************
+************************************************************************
+
+N: etter klokka sju om kvelden.
+
+
+Du vil dra  etter klokken    18:00, .
+
+
+Hvor vil du reise ?
+----------------------------------
+
+N: fra sentrum til lerkendal.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum, .
+
+
+
+Buss 3,  passerer  Munkegata, holdeplass M1,  klokken 18:10, 
+ og   Lerkendal stadion,  klokken 18:16, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+---> <EH: Feil tidspunkt. "sju om kvelden" må tolkes som 19.
+          Hvis vi snur om på rekkefølgen av de to 'turns' blir det riktig.>
+
+¤¤¤¤¤¤ TA:  Fikset ¤¤¤¤¤¤¤¤
+
+N:  etter klokka sju om kvelden.
+
+
+Du vil dra  etter klokken    19:00, .
+
+
+Hvor vil du reise ?
+----------------------------------
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+************************************************************************
+************************************************************************
+
+
+************************************************************************
+************************************************************************
+
+
+
+
+
+IKKE DIALOG-SPESIFIKKE PROBLEMER NEDENFOR:
+===========================================
+===========================================
+
+************************************************************************
+************************************************************************
+
+N: fra nardo til lade etter klokka åtte.
+
+Holdeplassen nærmest  Nardo,  er  Nardosenteret, .
+Holdeplassen nærmest  Lade,  er  Lade allé 80, .
+
+Du vil dra  til  Lade allé 80,  fra  Nardosenteret,  etter klokken    08:00, .
+
+
+
+Buss 8,  går fra Nardosenteret,  klokken 08:00,  til Dronningensgate, holdeplass D1,  klokken 08:14, 
+ og  buss 4,  går fra Munkegata, holdeplass M5,  klokken 08:25,  til Lade allé 80,  klokken 08:40, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+N:
+
+---> <EH: nå_tid=1530. Når nå_tid > 08:00, burde 20:00 blitt valgt her så lenge
+      vi snakker om dagen i dag. Dette mener jeg fungerte i en tidligere
+      versjon.>
+
+¤¤¤ TA: Fikset ( det fungerte før ja) ¤¤¤¤
+
+N: fra nardo til lade etter klokka åtte.
+
+Holdeplassen nærmest  Nardo,  er  Nardosenteret, .
+Holdeplassen nærmest  Lade,  er  Lade allé 80, .
+
+Du vil dra  til  Lade allé 80,  fra  Nardosenteret,  etter klokken    20:00, .
+
+
+
+Buss 8,  går fra Nardosenteret,  klokken 20:10,  til Lerkendal stadion,  klokken 20:15, 
+ og  buss 3,  går fra Lerkendal stadion,  klokken 20:21,  til Lade allé 80,  klokken 20:48, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+************************************************************************
+************************************************************************
+
+N: fra sentrum til lerkendal før klokka 12.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum,  før klokken   12:00, .
+
+
+
+Buss 60,  passerer  Munkegata, holdeplass M3,  klokken 11:35, 
+ og   Lerkendal stadion,  klokken 11:41, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+---> <EH: Bør velge siste buss med ankomst før klokka 12 ovenfor.
+          Det skjer ikke, jfr. nedenfor.>
+
+N: senere buss.             
+
+
+Du vil dra  fra  sentrum,  etter klokken    11:36, .
+
+
+
+Buss 3,  passerer  Munkegata, holdeplass M1,  klokken 11:40, 
+ og   Lerkendal stadion,  klokken 11:46, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+¤¤¤¤ TA: Fixet  (Finurlig feil i BussTUC) ¤¤¤¤¤¤¤¤¤¤
+
+Feilen skyldtes at buss 3 egentlig kommer fra Lade alle, og har 6
+minutter opphold på M1, og dermed ble den sortert feil.
+
+
+N: fra sentrum til lerkendal før klokka 12.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum,  før klokken   12:00, .
+
+
+
+Buss 8,  passerer  Dronningensgate, holdeplass D3,  klokken 11:40, 
+ og   Lerkendal stadion,  klokken 11:46, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+N: senere buss.
+
+
+Du vil dra  fra  sentrum,  etter klokken    11:41, .
+
+
+
+Buss 20,  passerer  Dronningensgate, holdeplass D4,  klokken 11:45, 
+ og   Lerkendal stadion,  klokken 12:11, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+************************************************************************
+************************************************************************
+
+---> <EH: Inkonsistens i responsen på "kveld" avhengig av dag:>
+
+N: fra sentrum til lerkendal i kveld.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum,  etter klokken    18:00, .
+
+
+
+Buss 3,  passerer  Munkegata, holdeplass M1,  klokken 18:10, 
+ og   Lerkendal stadion,  klokken 18:16, .
+...
+Buss 36,  passerer  Dronningensgate, holdeplass D4,  klokken 00:10, 
+ og   Lerkendal stadion,  klokken 00:47, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+---> <EH: Oppgir første og siste buss innenfor "kveldspennet" fra 18 til
+          siste buss. Hvis vi derimot angir en ukedag, får vi kun
+          første buss etter 18, jfr nedenfor:
+
+N: \quit
+
+----------------------------------
+
+N: fra sentrum til lerkendal på onsdag kveld.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum,  etter klokken    18:00,  på   onsdag.
+
+
+
+Buss 3,  passerer  Munkegata, holdeplass M1,  klokken 18:10, 
+ og   Lerkendal stadion,  klokken 18:16, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+---> <EH: nå_dag=tirsdag. Hvis vi sier "i morgen kveld" eller "på onsdag
+          om kvelden" får vi første buss etter 18 og siste buss på kvelden.>
+
+¤¤¤ TA: Ikke fikset;   Jeg er enig at det bør være likt: ¤¤¤¤¤¤¤
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+---> <EH: Forslag til definisjon når" morgen(en)"/"formiddag(en)"/
+          "ettermiddag(en)" eller "kveld(en)" er eneste tidsangivelse:
+          morgen     : første buss om morgenen og siste før klokka 10.
+          formiddag  : første buss etter 10 og siste før 14.
+          ettermiddag: første buss etter 14 og siste før 18.
+          kveld      : første buss etter 18 og siste buss om kvelden.
+          Det som kan være diskutabelt her er når morgenen slutter og blir
+          til formiddag, og når formiddagen slutter og blir til ettermiddag.
+          Hovedpoenget er at oppførselen bør være konsistent uavhengig av 
+          om forespørselen er oppdelt i flere turns eller spørremåte så lenge
+          denne er entydig ("fredag kveld"/"fredag om kvelden"/"fredag på
+          kvelden"/"i kveld"/"i morgen kveld")>
+          
+
+¤¤ TA: Ikke fikset ( Enig at det bør være likt) ¤¤¤¤¤¤¤
+¤¤ Dette er forsåvidt BussOrakel - tema, og blir behandlet i den sammenhengen
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+************************************************************************
+************************************************************************
+
+---> <EH: Inkonsistent oppførsel nedenfor:>
+
+N: fra sentrum til lerkendal på fredag formiddag.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum,  før klokken   12:00,  på   fredag.
+
+
+
+Buss 60,  passerer  Munkegata, holdeplass M3,  klokken 11:35, 
+ og   Lerkendal stadion,  klokken 11:41, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+N: \quit
+
+----------------------------------
+
+---> <EH: Oppgir buss med ankomst før 12 ovenfor. Bytter vi ut "formiddag" med
+          "om formiddagen" oppgis buss med avreise etter 12, jfr. nedenfor:>
+
+¤¤ TA: 
+parafraseringen før kl 12:00 henspeiler på avgang, men det blir forvirrende.
+
+----------------------------------
+
+Nå blir det slik, fordi formiddagen er definert som ankomst < 1200
+
+N:  fra sentrum til lerkendal på fredag om formiddagen.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum,  før klokken   12:00,  på   fredag.
+
+
+
+Buss 36,  passerer  Dronningensgate, holdeplass D4,  klokken 06:00, 
+ og   Lerkendal stadion,  klokken 06:37, .
+...
+Buss 60,  passerer  Munkegata, holdeplass M3,  klokken 11:35, 
+ og   Lerkendal stadion,  klokken 11:41, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+N: fra sentrum til lerkendal på fredag om formiddagen.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum,  før klokken   12:00,  på   fredag.
+
+
+
+Buss 48,  går fra Munkegata, holdeplass M4,  klokken 12:00,  til Trondheim Sentralstasjon holdeplass 10,  klokken 12:02, 
+ og  buss 3,  går fra Trondheim Sentralstasjon holdeplass 10,  klokken 12:09,  til Lerkendal stadion,  klokken 12:26, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+************************************************************************
+************************************************************************
+

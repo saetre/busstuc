@@ -1,0 +1,272 @@
+\begin
+
+\set queryflag true
+
+\set trace 0
+
+\startbatch
+
+kommer jeg til sentrum for kl 1800 ? 
+
+Når går første buss fra NTH til nardo ?
+
+
+Første buss fra Lade til Lundamo? 
+
+hvorfor går ikke buss 18 forbi Berg? 
+
+buss fra malvik til dragvoll kl.0700. 
+
+buss fra vikhamar til dragvoll kl.0700 .
+
+Hvordan kommer jeg fra Lian til Lade .
+
+hvor er Lillegårdsbakken.
+
+Når går det buss til Sunnland.
+
+når går en 5 buss   ?
+
+neste buss fra sentrum til trondheim.
+
+jeg går og går.
+
+går buss 5 forbi nth og nardo ?
+
+når går bussen i kveld ?
+
+hvor mange busser går forbi nth hver time ?
+
+hvor ofte kan jeg dra fra nardo til byen?
+
+når går bussen fra holdeplassen biologen?
+
+hvor mange busser passerer samfundet hver dag?
+
+skriv avgangene til buss 5 fra nardo.
+
+Hvor lang tid tar bussen fra NTH til Dragvoll?
+
+Hvilken buss skal jeg ta  når jeg skal til klæbu?
+
+hvordan kommer jeg fra nth mellom 13 og 15?
+
+når går andre neste buss?  
+
+når  passerer 5 bussen fra nth nardo ? 
+
+hvor kan jeg  ta 5 bussen ? 
+
+hva er siste bussen som går fra peder kroghs vei til sentrum før 2110?
+
+Når går første buss fra Tempe mot sentrum etter 1700 lørdag ?
+
+hvilken buss må jeg ta fra NTH for å være på vestlia før kl. 1720? 
+
+hvor mange busser er det fra lade i retning byen mellom 16 og 19?
+
+Når går det buss fra tempe kirke til ntnu gløshaugen mellom klokka
+1700 og 1800 ?
+
+hvilke busser går fra utleirveien   til sentrum ?
+
+du kan fortelle om bussavganger i trondheim.
+
+eksisterer samfundet stasjon ?
+
+eksisterer studentersamfundet stasjon ?
+
+hvordan kommer jeg fra valentinlyst til valentinlystvegen ?
+
+hvordan kommer jeg fra samfundet til studentersamfundet ?
+
+neste buss nr 5 fra nth.
+
+når må jeg dra fra nth for å være på dragvoll kl 1300 ?
+
+busser fra gloeshaugen til perleporten.
+
+busser fra perleporten til gloeshaugen .
+
+buss fra gløshaugen til perleporten.
+
+stopper 52 i dybdahls veg før 700 ?
+
+jeg skal reise fra nth til Nardo og Være framme foer 1200.
+
+hvor lang tid tar det å kjøre buss fra nordre til hallset?
+
+Jeg kommer til nardo etter 1600 når jeg reiser fra nth.
+
+Hvordan kommer jeg til Møller Bil etter 1600 når jeg reiser fra NTH ?
+
+hvorfor går buss 5 forbi NTH.
+
+Hvordan kommer jeg fra rotvoll til Hallset til 14.00 ?
+
+er det en buss som jeg kan ta før 1300 ?
+
+går buss 7 fra samfundet til travbanen ?
+
+hvor kan jeg få på buss 5 ?
+
+Bussen passerer før en klokke. 
+
+når går siste buss forbi dragvoll og når er den ved rosendal etter det?
+
+hvilken buss må jeg ta fra Lade for å kunne være på Vestlia innen 23:00? 
+
+Har du et kart over trondheim ?
+
+Hvor mange busser går fra Gløshaugen til Dragvoll?
+
+Hvor mange busser går fra Gløshaugen til Dragvoll innen en time?
+
+Hvilke busser går fra Gløshaugen senere i dag og ankommer Dragvoll før
+klokka 1700?
+
+Hvilke busser går fra Gløshaugen fra nå av og ankommer Dragvoll før klokka 1700?
+
+Hvilke busser går fra Gløshaugen fra nå og ankommer Dragvoll før klokka 1700? 
+
+Hvilke busser går fra Gløshaugen etter nå og ankommer Dragvoll før klokka 1700?
+
+Hvordan kan jeg komme fra NTH til Lade neste lørdag?
+
+Hvordan kan jeg komme fra NTH til Lade neste lørdag før klokka 1200?
+
+Hvordan kan jeg komme fra NTH til Lade fredag?
+
+Hvilke ruter passerer Einar Tambarskjelves gate?
+
+Hvor ender neste buss fra NTH til Dragvoll?
+
+Når går Flybussen?
+
+Hvilke holdeplasser stopper buss nr9 ved i Trondheim sentrum ?
+
+hvilke busser passerer framveien  ? % idag
+
+hvor kan jeg gå på buss 5 ?
+
+hvilke dager går det busser fra jerbanestasjonen til rishaughallen ?
+
+når går bussen fra hovedterminalen til rishaughallen.
+
+hvor mye tid bruker rute 8 mellom nth og sentrum ?
+
+hvor lang tid bruker buss 43 fra rønningsbakken til samfunnet ?
+
+snakker du engelsk ?
+
+kan du tenke ?
+
+hva kan du gjøre ?
+
+kan jeg få passeringstidene for buss nr 66 på moholt?
+
+kan jeg få overgang fra rute 8 til rute 66 på moholt?
+
+kan jeg få oppgitt de 5 neste bussene fra Gløshaugen?
+
+neste buss til sentrum over nth.
+
+neste buss fra sentrum fra trondheim.
+
+neste buss fra sentrum av trondheim.
+
+neste buss fra sentrum til trondheim.
+
+neste buss fra nth til nth ?
+
+trikker fra lade til nth etter kl 2400 ?
+
+buss fra nth i morgen.
+
+stopper 52 i Dybdahls veg ?
+
+stopper 52 i Dybdahls veg mandag ?
+
+Jeg trenger en bussforbindelse som går fra NTH og er på Torget mellom 1800 og 1830.
+
+Når går neste 2 busser fra NTH til sentrum ?
+
+hva er livets mening ?
+
+når går bussen fra nth til nardo i morgen ?
+
+når går busser fra nth til perleporten på mandag ?
+
+hva er siste buss gjennom en by ?
+
+hvor mange stasjoner passerer buss 5 ?
+
+hvor går bussen ?
+
+når går bussen ?
+
+gaar det buss fra nth til nardo kl 1205 ?
+
+Jeg skal reise fra Moholt til Risvollan Senter og være framme ikke senere enn kl 0915.
+
+Gaar det buss fra nth til jakobsli foer 0900 ?
+
+hvor mange busser går fra nth til nardo hver time ?
+
+gar det buss fra byen om nth om kvelden sondag ?
+
+hvor mange busser går fra nth til lade hver time ?
+
+hvordan kommer jeg til Sundlandsskrenten 1?
+
+hvordan kommer vi fra Singsaker til Frakken?  
+
+Hvilken buss må jeg ta for å komme til sentrum før kl. 23 på onsdag fra Singsaker? 
+
+hvordan kommer vi fra sentrum til Singsaker kl. 04.00?
+
+hvordan kommer vi fra sentrum til Singsaker ca kl. 04.00? 
+
+når går siste buss fra Sentrum til Singsaker i dag?
+
+Jeg står på Trondheim torg og skal til Risvollan.
+
+Hvilken buss må jeg ta for å komme til Risvollan? 
+
+Når går siste buss fra sentrum til Flatåsen i dag? 
+
+Når går flybussen fra Royal Garden på torsdager? 
+
+Når er det første bus fra Moholt til Sentrum? 
+
+Når er det første bus fra Moholt til Lade via Sentrum? 
+
+Når er det første bus fra Moholt til Lade? 
+
+Hva er nærmeste bussholdeplass til Singsaker Studenthjem? 
+
+Hva er nærmeste bussholdeplass til Singsaker Sommerhotell? 
+
+Hva er nærmeste bussholdeplass til Singsaker?
+
+Hvor ofte går det buss fra sentrum til Moholt? 
+
+Hvor mange busser kan jeg ta til KBS? 
+
+Hvor mye koster et kvantumsklippekort for voksen? 
+
+hvilken buss går til Harstad?
+
+Hva koster en bussbillett? 
+
+Hvor mange busser går til Klæbu hver dag? 
+
+Hei, jeg bor på Nidarvoll og i kveld må jeg nå et tog til oslo klokka seks. 
+
+Når går bussen fra NTNU på LAde til byen mellom klokken 10 og 11 i dag? 
+
+\takebatch
+
+\set queryflag true
+
+\end

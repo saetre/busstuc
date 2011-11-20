@@ -1,0 +1,19 @@
+\begin
+
+Takk for feilmeldingen.
+
+Feilen skyldes at Buss 7 har en skjult overgang i sentrum.
+
+    Vikåsen -M2-Flatåsen.
+    Flatåsen-M2-Vikåsen.
+
+Denne var ikke registert i Bussoraklet, dvs at bussoraklet til nå
+opererte med direkte overganger mellom Vikåsen og Flatåsen.
+
+Siden Bussoraklet  i alminnelighet foreslår  direkte ruter fremfor
+ruter med overgang ble det  derfor foreslått noen tidkrevende (men
+direkte) ringruter.
+
+Feilen er rettet, og vil bli lagt inn i bussoraklet om kort tid.
+
+\end

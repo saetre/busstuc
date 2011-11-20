@@ -1,0 +1,82 @@
+
+N: \ begin 
+
+
+
+N: \ startbatch 
+
+
+N: hei . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Hei
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: jeg lurer på en ting angående bussorakelet . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+OK .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: før var det slik at man kunne be om å få vite hvilken buss man kan ta for
+å komme f . eks . fra buran til samfundet innen et visst klokkeslett , og
+bussorakelet ville vise ruter som går igjennom sentrum . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Jeg kan ikke svare for så mange steder av gangen !
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: nå kan man ikke lenger det , for hvis man prøver , får man bare oversikt over
+ringruter som går en omvei om f . eks . jakobsli eller valentinlyst , men
+ingen ruter gjennom sentrum . 
+
+- - - Setningen er for vanskelig - - - 
+
+N: går det an å gjøre noe med dette ? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Jeg kan ikke svare på det. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: det er et problem for meg som bor på den andre siden av sentrum , hvis jeg
+vil ha ruter til samfundet eller andre stoppesteder som tilhører en ringrute
+, for i så fall får jeg bare opp ringrutene som svar , og disse alternativene
+er ofte lengre og mer tidkrevende , og de går ikke like mange ganger i timen
+som de rutene som går gjennom sentrum . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Jeg har ingen informasjon om ringrute .
+Jeg kan bare svare for ett sted av gangen.
+Team Trafikk har webadresse    Http://www.team-trafikk.no 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: f . eks . vet jeg at jeg kan ta buss nummer 7 fra min nærmeste holdeplass
+, gjennom sentrum , og til prof . brochs gate , men bussorakelet foreslår
+bare buss 20 eller buss 36 , som går en voldsom omvei . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Jeg kan ikke svare for så mange steder av gangen !
+Neste buss , nummer 7 passerer  Munkegata, holdeplass M2 kl.  1632 
+og  kommer til  Professor Brochs gate kl.  1645 .
+Siste buss , nummer 7 passerer  Munkegata, holdeplass M2 kl.  2348 
+og  kommer til  Professor Brochs gate kl.  2353 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: hvis det hadde vært mulig å løse dette , hadde det sikkert vært til stor glede
+for mange ! 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+OK .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: \ takebatch 
+
+Total:  33440 ms
+
+N: \ end 

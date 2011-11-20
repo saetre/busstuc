@@ -1,0 +1,206 @@
+
+\set queryflag true
+
+\set smsflag false
+
+\starttimebatch
+
+Hva er din versjon ?
+
+ (Gløshaugen nord+2,Gløshaugen syd+3,Høgskoleringen+4,E. Tambarskjelves gt.+4,Prof. Brochsgt.+4,Gudes gt.+5) til nardo.
+
+(Gløshaugen syd+3,Gløshaugen nord+4,Dybendals gate +20) til nardo før 1730.
+
+(Dybendals gate +10,Gløshaugen syd+3,Gløshaugen nord+4) til nardo  etter  1700.
+
+(Gløshaugen syd+3) Solsiden.
+
+første buss fra blakli til ringve skole etter kl 730.
+
+fra Olav Nygårds veg til Prinsen Kinosenter .
+
+til alf godagers vei 3.
+
+buss fra ila til vikåsen  på lørdag.
+
+fra berg studentby til lerkendal.
+
+buss 36 fra lerkendal til berg studentby.
+
+Jeg ser frem til videre samarbeide i 2009 og jeg
+   må si jeg er stolt av å få være til hjelp med å drifte  bussorakelet, 
+   som jeg personlig anser for å være Norges beste system innen
+   publikumsopplysning for  kollektivtransport.
+
+rute 36 fra være østre til sentrum. 
+
+ nattbuss til nardo etter kvart på ett.
+
+ neste rute 36 fra dagvoll?
+
+fra Klæbu til Munkegata etter kl. 21.40 .
+
+neste sentrum nardo.
+
+buss fra sentrum til klæbu på søndag etter 1610.
+
+buss 5 til dragvoll.
+
+Når går buss 3 til ts på lørdag ?
+
+Når går neste 2 busser til dragvoll ?
+Når går neste buss 5 til sentrum fra dragvoll ?
+Når går neste buss til dragvoll fra sentrum ?
+Rute 9 fra lundåsen kl 645 på hverdager . 
+
+Buss 5 fra buenget til sentrum.
+
+neste 3 busser  fra glos til sentrum etter 2004.
+
+hvor stopper flybussen.
+
+jernbanetorget til værnes.
+
+når må jeg ta bussen fra torget for å være på gammel-lina 1245?
+
+Stadsing. Dahlsgt. 5. til Jonsvannsveien.
+ 
+går det en nr.  36 i halv åtte  tiden ? 
+
+buss  fra dragvoll til  jakobsli .
+
+Når går de neste bussene fra høgskoleringen til sentrum?
+
+buss fra gløshaugen til rosenborg.
+
+buss 10 fra sentrum  kl 0950 til skistua på lørdag.
+
+når går buss nr 60 fra sentrum forbi berg.
+
+buss 66  fra strindheim til saupstadsenteret etter 1646.
+
+fra KBS til saupstadsenteret før kl 1708.
+fra KBS til saupstadsenteret etter kl 1646.
+ 
+buss 9 fra sentrum til cecilienborg.
+
+osloveien.
+
+buss fra tonstadkrysset til klæbu.
+
+fra klæbu til sentrum  etter kl 1100  på mandag.
+ 
+buss 46 fra sentrum til klæbu.
+
+\set smsflag true
+
+varsle meg når klokken er 2215.
+ 
+fra sentrum til klæbu etter kl 1100 på mandag.
+ 
+buss 47 fra klæbu til sentrum  etter kl 1100  på mandag.
+
+neste buss fra sentrum til klæbu.
+
+buss fra elgesetergate for å være på dragvoll senest 10.23  på søndag.
+
+når går buss 36 forbi samfunnet og til byen etter kl 1522.
+
+når går buss 36 forbi samfunnet og til byen etter kl 1523.
+
+Når går neste buss fra P.A Munch gate til Dragvoll? 
+
+buss  fra torvmyra til okstad ø .
+
+varsle 15 min før jeg må ta b f moholt studentby for å være på samfundet kl 19.
+
+Kan du varsle meg 15 minutter før siste nattbuss går til stavset ?
+
+kan jeg bli varslet 10 minutter før siste buss fra nth til nardo før 1730.
+
+når går neste buss fra ntnu dragvoll til jakobsli .
+
+Til NOVA før 21.
+
+buss 36 fra brundalen skole til charlottenlund før 0830 i morgen.
+
+Når går bussen fra chl kirke til studsamf etter kl 0820 i morgen.
+
+Når går det busser fra bugges  veg til gryta etter 1730? 
+
+Fra lade alle 20 til lade alle 80 .
+
+buss 7 fra sentrum til vikåsen etter 2340.
+
+når går første buss fra ila til sentrum 1. påskedag .
+
+\set smsflag false
+
+når går  buss 36 fra rosendal til jakobsli på skjærtorsdag ?
+
+buss fra tonstadkrysset til klæbu.
+
+buss 6 fra romolslia til jarleveien i morgen.
+
+buss  43 fra romolslia til jarleveien i morgen.
+
+fra Dragvoll til Jakobsli.
+
+Når må jeg reise fra Munkvoll gård for å være på tempe senest kl 0638 på mandag.
+
+Når går bussen fra johan bojers vei 18 til hareveien.
+
+Hei, jeg bor på Nidarvoll og i kveld må jeg nå  et tog til oslo klokka seks. 
+
+Når går bussen fra NTNU på LAde til byen mellom klokken 10 og 11 i morgen? 
+
+hvilken buss må jeg ta fra vestlia for å rekke en avtale på moholt klokken 1230? 
+
+hvilken bussavgang skal jeg velge når jeg skal reise fra lade og være
+på munkvold innen klokka atten ?
+
+Hvordan kommer jeg meg fra Singsaker til Moholt så fort som mulig etter 16.50 den 16. sept ?
+
+buss 8 fra nardokrysset til tors veg.
+
+buss 8 fra tors veg til nardokrysset.
+
+buss 63 fra vollabakken til rosenborg.
+
+jeg vil hjem fra NTH til ygdrasilvn 9 så fort som mulig.
+
+\english
+
+when do i have to travel from Reppe arriving Lade by 6 pm.
+
+When does the bus go from Johan Bojers vei 18 to Hareveien.
+
+Hi, I live in Nidarvoll and tonight I must reach a train to Oslo at 6
+o clock.
+
+When does the bus go from NTNU at Lade to the city between 10 and 11 tomorrow ?
+
+Which bus must I take from vestlia to reach an appointment on Moholt at 1230 ?
+
+Which bus departure shall I choose when I shall go from Lade and be on
+Munkvold before 6 pm.
+
+How do I get from Singsaker to Moholt as fast as possible after 16:50 on sept 16. 
+
+bus 8 from nardokrysset to tors veg.
+
+bus 8 from tors veg to nardokrysset.
+
+bus 63 from vollabakken to rosenborg.
+
+I want to go home from NTH to ygdrasilvn 9 as soon as possible .
+
+\norsk
+
+\stoptimebatch
+
+\set smsflag false
+
+hvor mange spørsmål har du besvart ?
+
+\end

@@ -1,0 +1,649 @@
+NTNU
+	Bibsys ****  BIBSYS **** 0
+		BIBSYS ****  BIBSYS **** 0
+	Centre for Ships and Ocean Structures ****  MARIN **** 0
+		Centre for Ships and Ocean Structures ****  MARIN **** 0
+	Det historisk-filosofiske fakultet ****  VM **** 0
+		Det historisk-filosofiske fakultet ****  HF **** 0
+			EDB- og elektronikktjenesten ved HF ****  HF **** 0
+		Filosofisk institutt ****  HF **** 0
+			Ex.phil.-senteret ****  HF **** 0
+		Institutt for arkeologi og religionsvitenskap ****  VM **** 0
+		Institutt for historie og klassiske fag ****  SFM **** 0
+			Kunnskapsparken Faros ****  HF **** 0
+			Senter for middelalderstudier ****  SFM **** 0
+		Institutt for kunst- og medievitenskap ****  TELE **** 0
+		Institutt for moderne fremmedspråk ****  HF **** 0
+			Seksjon for engelsk ****  HF **** 0
+			Seksjon for romanske språk ****  HF **** 0
+			Seksjon for tysk ****  HF **** 0
+		Institutt for musikk ****  HF **** 0
+			Musikkonservatoriet i Trondheim ****  HF **** 0
+			Musikkvitenskap ****  HF **** 0
+			Rådet for folkemusikk og folkedans ****  HF **** 0
+		Institutt for nordistikk og litteraturvitenskap ****  HF **** 0
+		Institutt for språk- og kommunikasjonsstudier ****  HIVE **** 0
+			Anvendt språkvitenskap ****  HIVE **** 0
+			LIKT ****  HF **** 0
+			Lingvistikk ****  HF **** 0
+		Institutt for tverrfaglige kulturstudier ****  HF **** 0
+			Næringslivets Idéfond for NTNU ****  **** 0
+	Det medisinske fakultet ****  UNN **** 0
+		Fakultetsadministrasjonen ****  LEGEFORENINGEN **** 0
+			AV/IT-seksjonen ****  **** 0
+			Administrasjonen ****  NT **** 0
+			Dyreavdelingen ****  **** 0
+			Fondet til fremme for allmennmedisin i Sør-Trøndelag ****  NIDAROSFONDET **** 0
+			Forsknings- og formidlingsseksjonen ****  **** 0
+			Legers etter- og videreutdanning ****  LEGEFORENINGEN **** 0
+			Medisinsk teknisk forskningssenter ****  **** 0
+			Personal- og økonomiseksjonen ****  **** 0
+			Regional komite for medisinsk forskningsetikk ****  **** 0
+			Studenttelefoner ****  **** 0
+			Studieseksjonen ****  **** 0
+		Institutt for kreftforskning og molekylær medisin ****  MEDISIN **** 0
+			Administrasjon kreftforskning og molekylær medisin ****  **** 0
+			Arbeidsmedisin, miljømedisin og toksikologi ****  **** 0
+			Enhet for medisinsk etikk ****  **** 0
+			Gastroenterologisk fysiologi og onkologi ****  MEDISIN **** 0
+			Gastrointestial kirurgi ****  **** 0
+			Hematologi ****  **** 0
+			Kreftforskning og molekylærbiologi ****  MEDISIN **** 0
+			Nefrologi ****  **** 0
+			Onkologi ****  STOLAV **** 0
+			Palliasjon, etikk og anvendt klinisk forskning ****  ABDN AC **** 0
+		Institutt for laboratoriemedisin, barne- og kvinnesykdommer ****  HELSE-MIDT-NO **** 0
+			Gynekologi/obstetrikk ****  **** 0
+			Laboratoriemedisin ****  HELSE-MIDT-NO **** 0
+			Morfologi ****  **** 0
+			Pediatri ****  **** 0
+		Institutt for nevromedisin ****  UNN **** 0
+			Bein og ledd ****  SVT **** 0
+			Nevrofag ****  STOLAV **** 0
+			Psykiatri og medisinske adferdsfag ****  PST-STFK **** 0
+			Regionsenter for barne- og ungdomspsykiatri ****  PST-STFK **** 0
+			ØNH-Øye ****  STOLAV **** 0
+		Institutt for samfunnsmedisin ****  STATSBYGG **** 0
+			HUNT forskningssenter ****  **** 0
+		Institutt for sirkulasjon og bildediagnostikk ****  STOLAV **** 0
+			Administrasjon ****  **** 0
+			Anestesiologi ****  **** 0
+			Biomedisinsk teknikk ****  **** 0
+			Fysiologi ****  MEDISIN **** 0
+			Hjertesykdommer ****  RIT **** 0
+			Karkirurgi ****  RIT **** 0
+			Lungesykdommer ****  **** 0
+			MR-senteret/Radiologi ****  MEDISIN **** 0
+			Radiologi ****  STOLAV **** 0
+			Thoraxkirurgi ****  **** 0
+			Ultralyd og MR ****  **** 0
+		Nytt universitetssykehus i Trh, Prosjektsekretariatet NTNU ****  **** 0
+		Senter for hukommelsesbiologi ****  CBM **** 0
+	Fakultet for arkitektur og billedkunst ****  ONLINE **** 0
+		Fakultet for arkitektur og billedkunst ****  AB **** 0
+			Studieavdelingen ****  AB **** 0
+		Institutt for billedkunst - Kunstakademiet i Trondheim ****  ONLINE **** 0
+		Institutt for byforming og planlegging ****  YAHOO **** 0
+		Institutt for byggekunst, form og farge ****  ARK **** 0
+		Institutt for byggekunst, historie og teknologi ****  ARK **** 0
+			Arkitekturhistorie ****  **** 0
+			Bygningsteknologi ****  ARK **** 0
+		Institutt for byggekunst, prosjektering og forvaltning ****  ARK **** 0
+			3. etasje ****  ARK **** 0
+			4. etasje ****  ARK **** 0
+	Fakultet for informasjonsteknologi, matem. og elektroteknikk ****  ELKRAFT **** 0
+		Centre for quantifible quality of service in Communications ****  Q2S **** 0
+		Fakultet for informasjonsteknologi, matem. og elektroteknikk ****  MATH **** 0
+		Institutt for datateknikk og informasjonsvitenskap ****  IDI **** 0
+		Institutt for elektronikk og telekommunikasjon ****  STUD **** 0
+			Akustikk ****  IET **** 0
+			Gruppe for Signalbehandling ****  IET **** 0
+			Gruppe for radioteknikk ****  IET **** 0
+		Institutt for elkraftteknikk ****  ELKRAFT **** 0
+			Elektriske anlegg ****  ELKRAFT **** 0
+			Energiomforming ****  ELKRAFT **** 0
+			Kraftsystemer ****  ELKRAFT **** 0
+		Institutt for matematiske fag ****  MATH **** 0
+			Algebra ****  MATH **** 0
+			Analyse ****  MATH **** 0
+			Numerikk ****  MATH **** 0
+			Statistikk ****  MATH **** 0
+			Teknisk adm. ****  MATH **** 0
+			Topologi ****  MATH **** 0
+		Institutt for teknisk kybernetikk ****  ITK **** 0
+		Institutt for telematikk ****  ITEM **** 0
+	Fakultet for ingeniørvitenskap og teknologi ****  STUD **** 0
+		Fakultet for ingeniørvitenskap og teknologi ****  IVT **** 0
+		Institutt for bygg, anlegg og transport ****  BYGGFORSK **** 0
+			Bygnings- og materialteknikk ****  BYGGFORSK **** 0
+			Geomatikk ****  **** 0
+			Geoteknikk ****  MULTICONSULT **** 0
+			Marin byggteknikk ****  STATIOL **** 0
+			Prosjektledelse og anleggsteknikk ****  MULTICONSULT **** 0
+			Veg og samferdsel ****  STUD **** 0
+		Institutt for energi- og prosessteknikk ****  STUD **** 0
+			Computit ****  **** 0
+		Institutt for geologi og bergteknikk ****  GEO **** 0
+		Institutt for konstruksjonsteknikk ****  BYGG **** 0
+		Institutt for marin teknikk ****  MARIN **** 0
+			Faggruppe marine konstruksjoner ****  MARIN **** 0
+			Faggrupppe marine systemer ****  PRONAVIS **** 0
+		Institutt for petroleumsteknologi og anvendt geofysikk ****  IPT **** 0
+		Institutt for produksjons- og kvalitetsteknikk ****  IPK **** 0
+		Institutt for produktdesign ****  DESIGN **** 0
+		Institutt for produktutvikling og materialer ****  INDECOL **** 0
+		Institutt for vann- og miljøteknikk ****  BYGG **** 0
+		Program for industriell økologi ****  ONLINE **** 0
+	Fakultet for naturvitenskap og teknologi ****  BIO **** 0
+		Fakultet for naturvitenskap og teknologi ****  NT **** 0
+			Elektronikk- og datatjenesten ****  NT **** 0
+			Fakultetstill.repr.(ftr) ****  NT **** 0
+			Finmekanikkverksted ****  NT **** 0
+			Glassblåserverkstedet ****  NT **** 0
+			Høiskolens Chemikerforening ****  HC **** 0
+			Instrumentmakerverkstedet ****  PHYS **** 0
+			Linjeforeningen Volvox ****  **** 0
+			Orakeltjenesten ****  **** 0
+			Verksted i Bergbygget ****  MATERIAL **** 0
+		Institutt for biologi ****  BIO **** 0
+			Brattøra Forskningssenter ****  BIO **** 0
+			Feltstasjoner ****  **** 0
+			Medisinsk teknisk senter ****  BIO **** 0
+			Plantebiosenteret ****  BIO **** 0
+		Institutt for bioteknologi ****  BIOTECH **** 0
+		Institutt for fysikk ****  PHYS **** 0
+		Institutt for kjemi ****  CHEM **** 0
+		Institutt for kjemisk prosessteknologi ****  CHEMENG **** 0
+		Institutt for materialteknologi ****  NT **** 0
+	Fakultet for samfunnsvitenskap og teknologiledelse ****  IOT **** 0
+		Fakultet for samfunnsvitenskap og teknologiledelse ****  SVT **** 0
+		Geografisk institutt ****  SVT **** 0
+			Program for utviklingssamarbeid ****  SVT **** 0
+		Institutt for industriell økonomi og teknologiledelse ****  IOT **** 0
+			Administrasjon ****  IOT **** 0
+			Anvendt økonomi og optimering ****  IOT **** 0
+			Arbeidspsykologi og jura ****  IOT **** 0
+			Bedriftsadministrasjon ****  IOT **** 0
+			Gruppe for entreprenørskap og innovasjon ****  IOT **** 0
+			Helse, miljø og sikkerhet ****  IOT **** 0
+			Investering, finansiering og økonomistyring ****  IOT **** 0
+			Organisasjon/IKT ****  IOT **** 0
+			Utdanningssenter i ledelse og administasjon ****  IOT **** 0
+		Institutt for samfunnsøkonomi ****  SVT **** 0
+		Institutt for sosialt arbeid og helsevitenskap ****  SVT **** 0
+		Institutt for sosiologi og statsvitenskap ****  SVT **** 0
+		Norsk senter for barneforskning ****  SAMFUNN **** 0
+		Pedagogisk institutt ****  SVT **** 0
+		Program for bevegelsesvitenskap ****  SVT **** 0
+		Program for lærerutdanning ****  PLU **** 0
+			Skolelaboratoriet NTNU ****  PLU **** 0
+			Timelærere PLU ****  HOTMAIL **** 0
+		Program for læring med IKT ****  SVT **** 0
+		Psykologisk institutt ****  SVT **** 0
+		Sosialantropologisk instiutt ****  SVT **** 0
+	Foreninger ****  MTF **** 0
+		Forskerforbundet ved NTNU ****  PHYS **** 0
+			Styret ****  PHYS **** 0
+			Varamedlemmer forskerforeningen ved NTNU ****  UB **** 0
+		NITO - Norsk ingeniørorganisasjon ****  ITK **** 0
+			NITO Bedriftsgruppe NTNU ****  ITK **** 0
+		NTL/Forening 92 ****  NT **** 0
+			Styret ****  SVT **** 0
+			Tillitsvalgte ****  NT **** 0
+		Parat ****  PHYS **** 0
+		Tekna - Teknisk-naturvitenskapelig forening ****  MTF **** 0
+			Tekna etatgruppe ved NTNU ****  MTF **** 0
+	Hovedvernombud NTNU ****  **** 0
+		Hovedvernombud NTNU ****  **** 0
+	NTNU Technology Transfer ****  TTO **** 0
+		NTNU Technology Transfer ****  TTO **** 0
+	Rektor /styret ****  STUD **** 0
+		Rektor ****  **** 0
+		Styret NTNU ****  STUD **** 0
+			Representanter ****  STUD **** 0
+			Vararepresentanter ****  STUD **** 0
+	Sentraladministrasjonen ****  ADM **** 0
+		Ideportalen ****  **** 0
+		Informasjonsavdelingen ****  ADM **** 0
+			Medieseksjonen ****  ADM **** 0
+			Seksjon for samfunnskontakt ****  **** 0
+			Stab ****  **** 0
+		Innovasjon Midt-Norge ****  **** 0
+		Nasjonalt senter for matematikk i opplæringen ****  MATEMATIKKSENTERET **** 0
+		Organisasjonsavdelingen ****  STUD **** 0
+			IT-seksjonen stab ****  **** 0
+			IT-seksjonen, Integrasjon ****  **** 0
+			IT-seksjonen, Nett ****  STUDBY **** 0
+			IT-seksjonen, Orakel ****  STUD **** 0
+			IT-seksjonen, Systemdrift ****  SGI **** 0
+			Organisasjondirektørens kontor ****  **** 0
+		RENATE-senteret ****  RENATESENTERET **** 0
+		Studieavdelingen ****  ADM **** 0
+			Internasjonal seksjon ****  ADM **** 0
+			Ledelse og stab ****  **** 0
+			NTNUs Multimediesenter ****  STUD **** 0
+			Seksjon for fakultetsservice ****  ADM **** 0
+			Seksjon for fjernundervisning, etter- og videreutdanning ****  ADM **** 0
+			Seksjon for rekruttering og studier ****  **** 0
+			Seksjon for studentservice Dragvoll ****  STUD **** 0
+			Seksjon for studentservice Gløshaugen ****  ADM **** 0
+			Seksjon for studieadministrative støttesystemer ****  **** 0
+		Universitetsdirektøren ****  **** 0
+			HMS ****  **** 0
+			Hovedarkivet ****  **** 0
+			NTNU Voksne i læring ****  **** 0
+		Økonomiavdelingen ****  **** 0
+			Ledelse og stab ****  **** 0
+			Lønnsseksjonen ****  **** 0
+			MA-seksjonen ****  **** 0
+			Regnskapsseksjonen ****  **** 0
+			Økonomiseksjonen ****  **** 0
+	Teknisk avdeling ****  ADM **** 0
+		Seksjon for bygningstjenester ****  ADM **** 0
+			Driftsområde Dragvoll ****  **** 0
+			Driftsområde Fellestjenester ****  ADM **** 0
+			Driftsområde Gløs-Midtre ****  **** 0
+			Driftsområde Gløs-Nord ****  **** 0
+			Driftsområde Gløs-Syd ****  **** 0
+			Driftsområde PTP ****  **** 0
+			Driftsområde PTP - Park Dragvoll ****  **** 0
+			Driftsområde PTP - Post ****  **** 0
+			Driftsområde Ytre områder ****  **** 0
+			Driftsområdet PTP - Transport ****  **** 0
+			Låsgruppe ****  **** 0
+		Seksjon for personal og økonomi ****  **** 0
+			Fagområdet NTNU-trykk ****  **** 0
+		Seksjon for teknisk tjenester ****  **** 0
+			Fagområde  VVS - Rørleggere ****  **** 0
+			Fagområde Bygg ****  **** 0
+			Fagområde Bygg - Malere ****  **** 0
+			Fagområde Bygg - Snekkere ****  **** 0
+			Fagområde Bygg - Tømrere ****  **** 0
+			Fagområde Elektro ****  **** 0
+			Fagområde VVS ****  **** 0
+			Fagområde VVS - Heisgruppe ****  **** 0
+			Fagområde VVS - Varme/ventilasjon/mek. ****  **** 0
+		Teknisk direktør ****  **** 0
+	Universitetsbiblioteket i Trondheim ****  UB **** 0
+		Bibliotekdirektøren ****  UB **** 0
+		Gunnerusbiblioteket ****  UB **** 0
+			DORA ****  UB **** 0
+		Medisinsk bibliotek ****  UB **** 0
+		Personal- og økonomiseksjonen ****  UB **** 0
+		Realfagbiblioteket ****  UB **** 0
+		Seksjon for humaniora og samfunnsvitenskap ****  HF **** 0
+			Biblioteket Dragvoll ****  UB **** 0
+			Biblioteket ved Musikkonservatoriet i Tr.heim ****  HF **** 0
+		Seksjon for teknikk og arkitektur ****  UB **** 0
+			Biblioteket  Valgrinda ****  UB **** 0
+			Biblioteket for Marin teknikk ****  UB **** 0
+			Biblioteket for arkitektur/bygg/design ****  UB **** 0
+			Biblioteket ved Kunstakademiet i Trondheim ****  UB **** 0
+			Teknisk hovedbibliotek ****  UB **** 0
+		Seksjon for utvikling og samordning ****  UB **** 0
+			EDB-drift ****  UB **** 0
+			INFOSØK ****  UB **** 0
+	Vitenskapsmuseet ****  VM **** 0
+		Administrativ seksjon ****  VM **** 0
+		Artsdatabanken ****  ARTSDATABANKEN **** 0
+		Seksjon for arkeologi og kulturhistorie ****  VM **** 0
+		Seksjon for arkeometri ****  VM **** 0
+		Seksjon for formidling ****  VM **** 0
+		Seksjon for naturhistorie ****  VM **** 0
+			Botanikk ****  VM **** 0
+			Ringve botaniske hage, Lade allé 58 ****  VM **** 0
+			Trondhjem biologiske stasjon, Bynesv. 46 ****  **** 0
+			Zoologi, Erling Skakkes gt. 47A ****  VM **** 0
+HiST
+	Avdeling Trondheim Økonomiske Høgskole (TØH) ****  TOH **** 1
+		TØH, dekanens stab ****  TOH **** 1
+			Bibliotek ****  **** 1
+		TØH, faglig personale ****  **** 1
+	Avdeling for helse- og sosialfag (AHS) ****  AHS **** 1
+		AHS, Audiografutdanning ****  **** 1
+		AHS, Barnevernspedagogutdanning ****  **** 1
+		AHS, Ergoterapeututdanning ****  **** 1
+		AHS, Fysioterapeututdanning ****  **** 1
+		AHS, Sosionomutdanning ****  **** 1
+		AHS, Vernepleierutdanning ****  **** 1
+		AHS, Videre-, etterutdanning og oppdragsvirksomhet ****  **** 1
+		AHS, dekanens stab ****  AHS **** 1
+		AHS, studenter ****  STUD AHS **** 1
+		Avdeling for helse og sosialfag (AHS) ****  **** 1
+	Avdeling for informatikk og e-læring (AITeL) ****  AITEL **** 1
+		AITeL, faglig personell ****  AITEL **** 1
+		AITeL, lab.personell ****  **** 1
+		Avdeling for informatikk og e-læring ****  AITEL **** 1
+	Avdeling for lærer- og tolkeutdanning (ALT) ****  ALT **** 1
+		ALT, dekanens stab ****  ALT **** 1
+		ALT, lærerutdanning ****  **** 1
+		ALT, tegnspråk og tolkning ****  **** 1
+		Avdeling for lærerutdanning (ALU) ****  **** 1
+	Avdeling for mat- og medisinsk teknologi (AMMT) ****  AMMT **** 1
+		AMMT, bioingeniørutdanning ****  **** 1
+		AMMT, dekanens stab ****  AMMT **** 1
+		AMMT, næringsmiddelteknologisk utdanning ****  AMMT **** 1
+		AMMT, radiografutdanning ****  **** 1
+	Avdeling for sykepleie (ASP) ****  **** 1
+		ASP, Sykepleierutdanning ****  **** 1
+		ASP, Videreutdanning i sykepleie ****  **** 1
+		ASP, dekanens stab ****  **** 1
+	Avdeling for teknologi (AFT) ****  ARK **** 1
+		AFT, Program for allmennfag ****  ALM **** 1
+		AFT, Program for bygg og miljø ****  ARK **** 1
+		AFT, Program for elektro- og datateknikk ****  EDT **** 1
+		AFT, Program for kjemi og materialteknikk ****  IKJ **** 1
+		AFT, Program for maskin og logistikk ****  **** 1
+		AFT, dekanens stab ****  AIN **** 1
+			AFT Bibliotek ****  **** 1
+			AFT Drift ****  **** 1
+			AFT Renhold ****  **** 1
+			AFT Studentorgan ****  **** 1
+	Høgskoleadministrasjonen (HA) ****  AHS **** 1
+		Høgskoleadministrasjonen ****  **** 1
+		Seksjon Drift og infrastruktur (SDI) ****  AHS **** 1
+			SDI, Administrasjon ****  **** 1
+			SDI, Kalvskinnet ****  **** 1
+			SDI, Moholt ****  **** 1
+			SDI, Ranheimsveien ****  AHS **** 1
+			SDI, Rotvoll ****  **** 1
+		Seksjon Personaladm. og org.utvikl. (SPO) ****  **** 1
+			SPO, Fellestjenester/Kalvskinnet ****  **** 1
+		Seksjon Studier, FoU og samfunnskontakt (SFS) ****  ALT **** 1
+			SFS, Fellestjenester/Kalvskinnet ****  **** 1
+			SFS, Kalvskinnet ****  **** 1
+			SFS, Moholt ****  **** 1
+			SFS, Ranheimsveien ****  **** 1
+			SFS, Rotvoll ****  ALT **** 1
+			SFS, Tunga ****  **** 1
+			SFS, Øya ****  **** 1
+		Seksjon Økonomi og regnskap (SØR) ****  **** 1
+			SØR, Fellestjenester/Kalvskinnet ****  **** 1
+			SØR, Kalvskinnet ****  **** 1
+			SØR, Ranheimsveiem ****  **** 1
+			SØR, Rotvoll ****  **** 1
+	Høgskoleavisa i Trøndelag ****  HIT **** 1
+		Høgskoleavisa i Trøndelag ****  HIT **** 1
+	Høgskoleledelsen (HL) ****  **** 1
+		Høgskoleledelsen (HL) ****  **** 1
+	Studentparlamentet ****  STUDPARL **** 1
+		Studentparlamentet ****  STUDPARL **** 1
+SINTEF
+	MARINTEK ****  MARINTEK **** 2
+		Administrasjon ****  MARINTEK **** 2
+		Konstruksjonsteknikk ****  MARINTEK **** 2
+		Logistikk og driftsteknikk ****  MARINTEK **** 2
+		Skip og Havlaboratoriet ****  MARINTEK **** 2
+			Bassenget ****  **** 2
+			Tanken ****  **** 2
+	Molab AS ****  MOLAB **** 2
+		Molab AS ****  MOLAB **** 2
+	SINTEF Energiforskning AS ****  ELKRAFT **** 2
+		Elkraftteknikk ****  **** 2
+		Energiprosesser ****  **** 2
+		Energisystemer ****  ELKRAFT **** 2
+		Gassteknisk senter NTNU-SINTEF ****  **** 2
+		Stab ****  **** 2
+	SINTEF Fiskeri og havbruk AS ****  POST3 TELE **** 2
+		Fiskeriteknologi ****  **** 2
+		Foredlingsteknologi ****  **** 2
+		Havbruksteknologi ****  **** 2
+		Internasjonale prosjekter og rådgiving ****  POST3 TELE **** 2
+		Marin ressursteknologi ****  **** 2
+		Stab ****  **** 2
+	SINTEF Helse ****  STUD **** 2
+		Forebyggende helsearbeid ****  STUD **** 2
+		Helse, stab ****  **** 2
+		Helsetjenesteforskning ****  **** 2
+		Medisinsk teknologi ****  **** 2
+		Register og klassifisering ****  **** 2
+		Registerdrift ****  **** 2
+		Sykehusplanlegging ****  **** 2
+	SINTEF IKT ****  MATH **** 2
+		Akustikk ****  **** 2
+		Anvendt kybernetikk ****  **** 2
+		Anvendt matematikk ****  MATH **** 2
+			Geografisk informasjonsteknologi ****  **** 2
+			Geometri ****  **** 2
+			Numerisk simulering ****  **** 2
+			Optimering ****  **** 2
+			Simuleringsteknologi ****  MATH **** 2
+		Fotonikk ****  **** 2
+		IKT ledelse ****  **** 2
+		IKT stabs- og støttefunksjoner ****  **** 2
+			Administrasjon ****  **** 2
+			IT/Teknisk støtte ****  **** 2
+			Personal ****  **** 2
+			Spesielle prosjekter ****  **** 2
+			Økonomi ****  **** 2
+		Instrumentering og mikroelektronikk ****  **** 2
+		Kommunikasjonssystemer ****  **** 2
+		Mikrosystemer og nanoteknologi ****  **** 2
+		Optiske målesystemer og data-analyse ****  **** 2
+		Samvirkende og tiltrodde systemer ****  IDI **** 2
+		Systemutvikling og sikkerhet ****  **** 2
+	SINTEF Konsernadministrasjon ****  MARINTEK **** 2
+		Human Resources ****  **** 2
+			Administrasjon Human Resources ****  **** 2
+			HMS ****  **** 2
+			Kvalitetssikring ****  **** 2
+			Opplæring ****  **** 2
+			Personal ****  **** 2
+		Konsernledelse SINTEF ****  MARINTEK **** 2
+		Samfunnskontakt og strategi ****  **** 2
+			Media ****  **** 2
+			Samfunnskontakt/strategi ****  **** 2
+		Verksted og lager ****  **** 2
+			Lager ****  **** 2
+			Verksted ****  **** 2
+		Økonomi og styringssystemer ****  **** 2
+			Adgangskontroll ****  **** 2
+			EU-rådgiving ****  **** 2
+			Eiendom ****  **** 2
+			IT ****  **** 2
+			Innkjøp ****  **** 2
+			Juridisk avdeling ****  **** 2
+			Kontorteknisk avdeling Oslo ****  **** 2
+			Post/bud ****  **** 2
+			Sentralbord/resepsjon ****  **** 2
+			Økonomi ****  **** 2
+	SINTEF MRB AS ****  SINTEFMRB **** 2
+		SINTEF MRB AS ****  SINTEFMRB **** 2
+	SINTEF Materialer og kjemi ****  PHYS **** 2
+		Anvendt mekanikk og korrosjon ****  BYGG **** 2
+		Bioteknologi ****  **** 2
+		Energikonvertering og materialer ****  BIO **** 2
+		Marin Miljøteknologi ****  **** 2
+		Materialer og kjemi, stab ****  **** 2
+		Metallurgi ****  ERAMET-MN-NO **** 2
+		Prosesskjemi ****  **** 2
+		Prosessteknologi ****  BIO **** 2
+		Syntese og egenskaper ****  PHYS **** 2
+	SINTEF NBL as ****  NBL **** 2
+		NBL-Norges branntekniske lab ****  NBL **** 2
+	SINTEF Petroleumsforskning AS ****  IKU **** 2
+		Bassengmodellering ****  IKU **** 2
+		Boring og brønnkonstruksjon ****  IKU **** 2
+		Brønnstrømsteknologi ****  IKU **** 2
+		EDB-Drift ****  IKU **** 2
+		Formasjonsfysikk ****  IKU **** 2
+		Petroleumsforskning, stab ****  IKU **** 2
+		Reservoarteknologi ****  IKU **** 2
+		Seismikk ****  IKU **** 2
+		Solutions olje og gass ****  IKU **** 2
+	SINTEF Teknologi og samfunn ****  IOT **** 2
+		Arkitektur og byggteknikk ****  **** 2
+		Berg og geoteknikk ****  BYGG **** 2
+		Betong ****  JJJCON **** 2
+		IFIM-Inst.for industriell miljøforskning ****  **** 2
+		Industriell økonomi ****  IOT **** 2
+		International Operations ****  **** 2
+		Kunnskap og strategi ****  **** 2
+		Kunnskapsarbeid ****  HF **** 2
+		Kyst- og havnelaboratoriet ****  **** 2
+		Logistikk ****  SVT **** 2
+		Ny praksis ****  IOT **** 2
+		Produkt og produksjon ****  IPK **** 2
+		Produktivitet og prosjektledelse ****  IPK **** 2
+		Sikkerhet og pålitelighet ****  IOT **** 2
+		Smartere sammen ****  **** 2
+		Teknologi og samfunn, stab ****  **** 2
+		Transportsikkerhet og -informatikk ****  **** 2
+		Vann og miljø ****  **** 2
+		Veg- og jernbaneteknikk ****  **** 2
+		Veg- og transportplanlegging ****  **** 2
+	Sinvent AS ****  **** 2
+		Sinvent AS. ****  **** 2
+Andre
+	Ergo Group ****  ERGORUNIT **** 3
+		Administrative tjenester ****  ERGO **** 3
+		Driftstjenester Oslo ****  RUNIT **** 3
+		Driftstjenester Trondheim ****  ERGORUNIT **** 3
+			Marked og utvikling IT ****  ERGORUNIT **** 3
+		ErgoRunit Fellesledelse ****  ERGORUNIT **** 3
+		IKT ****  ERGO **** 3
+		Markedsrelasjoner ****  ERGORUNIT **** 3
+		Ressurstjenester ****  ERGORUNIT **** 3
+		Rådgivingstjenester ****  ERGORUNIT **** 3
+	Fagforeninger SINTEF ****  MARINTEK **** 3
+		Flerfagelig fellesorganisasjon SINTEF ****  **** 3
+		NITO Bedriftsgruppe SINTEF ****  **** 3
+		NTL avd. 117-1 SINTEF-gruppen ****  MARINTEK **** 3
+		Tekna-P gruppe ved SINTEF ****  **** 3
+	Foreninger og lag ****  VM **** 3
+		Det Kongelige Norske Videnskabers Selskab, ****  VM **** 3
+		Gløshaugen Akademiske klubb ****  **** 3
+		Hybelhus ****  **** 3
+		IAESTE ****  **** 3
+		ISFIT ****  ISFIT **** 3
+		International buisness ****  STUD **** 3
+		NTH Flyklubb ****  **** 3
+		NTNUs Fallskjermklubb ****  STUD **** 3
+		NTNUs idrettsforening ****  **** 3
+		Norges tekniske vitenskapsakademi NTVA ****  IPK **** 3
+		Start NTNU ****  START **** 3
+		Studentersamfundet ****  SAMFUNDET **** 3
+			Administrasjon ****  **** 3
+			Gjenger ****  **** 3
+			Mat og Moro ****  **** 3
+			Styrekontor ****  **** 3
+		Studenttinget NTNU ****  STUD **** 3
+		Studentutvalg ****  STUD **** 3
+			Studentutvalget for humaniora og samfunnsvitenskap ****  ADM **** 3
+			Studentutvalget for realfagutdanningen ****  STUD **** 3
+			Studentutvalget for sivilingeniørutdanningen ****  STUD **** 3
+		Velferdstinget ****  STUD **** 3
+	Forskningsinstitusjoner ****  EXPROSOFT **** 3
+		5x Verkstedkompetanse AS ****  5X **** 3
+		Advokat Kristin Jørstad MNA ****  TTO **** 3
+		Advokat Sverre E. Løvaas MNA ****  TEKNOBYEN **** 3
+		BD Norge AS ****  EUROPE BD **** 3
+		Bergforskningen ****  **** 3
+		Bioteam as ****  EVNET **** 3
+		Cyberlab. Org. ****  CYBERLAB **** 3
+		ExproSoft AS ****  EXPROSOFT **** 3
+		GE Hydro ****  PS GE **** 3
+		GE Vingmed Ultrasound AS ****  MED GE **** 3
+		Greentrip AS ****  **** 3
+		Innovasjonssenteret Gløshaugen ****  NEWINDEX **** 3
+			Administrasjon ****  IG **** 3
+			Agentus AS ****  AGENTUS **** 3
+			BOOST Communications AS ****  BOOSTCOM **** 3
+			CruSiN AS ****  IG **** 3
+			Eagle Ultrasound AS ****  EAGLUS **** 3
+			Embedded Cybernetics ****  EMBEDDEDCYBERNETCS **** 3
+			IWMAC AS ****  IWMAC **** 3
+			LINK ftr AS ****  **** 3
+			Marine Cybernetics AS ****  **** 3
+			New Index AS ****  NEWINDEX **** 3
+			Simplicatus AS ****  SIMPLICATUS **** 3
+		Inova Management AS ****  **** 3
+		International Centre for Hydropower-ICH ****  **** 3
+		KITH ****  KITH **** 3
+		Kompetansesenter for ortopediske implantater ****  MTF **** 3
+		Leiv Eiriksson Nyskaping AS ****  LEN **** 3
+		LingIT AS ****  LINGIT **** 3
+		MISON AS ****  MISON **** 3
+		MedTech Trondheim AS ****  **** 3
+		Morten Hjelm AS ****  **** 3
+		NEMKO Trondheim ****  NEMKO **** 3
+		NIKU - Norsk institutt for kulturminneforskning ****  NIKU **** 3
+		Norges byggforskningsinstitutt  - NBI ****  BYGGFORSK **** 3
+		Papir- og fiberinstiuttet AS (PFI) ****  PFI **** 3
+			Administrasjon ****  PFI **** 3
+			IT ****  PFI **** 3
+		Riksantikvaren, Distriktskontor nord ****  **** 3
+		Rikshospitalet ****  RIKSHOSPITALET **** 3
+		Scandinavian cust. prosthesis asa (SCP) ****  SCP **** 3
+		Stiftelsen papirindustriens forskningsinstitutt ****  **** 3
+		TreSenteret i Trondheim ****  TRESENTER **** 3
+		UNINETT AS ****  UNINETT **** 3
+		VerkstedPartner AS ****  **** 3
+		Vitensenteret ****  VITEN **** 3
+	NTNU Samfunnsforskning AS ****  APERTURA **** 3
+		Administrasjonen ****  BIO **** 3
+			Prosjektansatte ****  BIO **** 3
+		Barnevernets utviklingssenter ****  SAMFUNN **** 3
+		Biologi ****  BIO **** 3
+		Norsk senter for bygdeforskning ****  BYGDEFORSKNING **** 3
+		Studio apertura ****  APERTURA **** 3
+	Service ****  LEGEMIDLER **** 3
+		Aurora ****  AURORA **** 3
+		Avdeling for legemidler, RiT ****  LEGEMIDLER **** 3
+			Apoteket ****  LEGEMIDLER **** 3
+			Klin. Farm. ****  LEGEMIDLER **** 3
+			RELIS ****  RELIS RIT **** 3
+		Fokus Bank ASA ****  **** 3
+		ISS Catering AS ****  **** 3
+			Kantine Bygg og miljø ****  **** 3
+			Kantine Energiforskning ****  **** 3
+			Kantine HLA/Runit ****  **** 3
+			Kantine Kjemi ****  **** 3
+			Kantine Materialtekn, 1 ****  **** 3
+			Kantine Materialtekn. 2 ****  **** 3
+			Kantine PTS ****  **** 3
+			Kantine Teknologiledelse ****  **** 3
+		Kilroy travels Trondheim ****  **** 3
+		Posten ****  **** 3
+		Riksrevisjonen ****  RIKSREVISJONEN **** 3
+		Studentprestene i Trondheim ****  **** 3
+	Studentsamskipnaden i Trondheim SiT ****  SIT **** 3
+		Konsernstab ****  SIT **** 3
+		SiT Administrasjon ****  SIT **** 3
+		SiT Bolig AS ****  SIT **** 3
+		SiT Bygg ****  SIT **** 3
+		SiT Eiendom ****  SIT **** 3
+		SiT Kafe AS ****  SIT **** 3
+		SiT Velferd ****  SIT **** 3
+			Barnehagene ****  SIT **** 3
+			Gløshaugen legesenter ****  SIT **** 3
+			Psykososial helsetjeneste/sosionomtjenesten ****  SIT **** 3
+			SiT ID-Kort ****  SIT **** 3
+			SiT Idrett ****  SIT **** 3
+		VIA Travel ****  VIA **** 3
+			Administrasjon ****  VIATRAVEL **** 3
+			Billettkontor ****  VIATRAVEL **** 3
+			Gruppe 2 ****  VIATRAVEL **** 3
+			Gruppe 3 ****  VIATRAVEL **** 3
+			NTNU Servicesenter ****  VIATRAVEL **** 3
+			VIA Arrangement ****  VIATRAVEL **** 3
+			Økonomi ****  VIATRAVEL **** 3
+	Tapir ****  TAPIR **** 3
+		Administrasjon/ekspedisjon ****  TAPIR **** 3
+			Bokimport engsossalg ****  TAPIR **** 3
+			Lagerekspedisjon bøker ****  TAPIR **** 3
+			Lagerekspedisjon papir ****  TAPIR **** 3
+			Regnskapsavdelingen ****  TAPIR **** 3
+			Stab bokhandlervirksomhet ****  TAPIR **** 3
+		Akademisk Forlag ****  TAPIR **** 3
+		Gnist AS ****  **** 3
+		Gnist Tapir Fagbokhandel HiST Kalvskinnet ****  TAPIR **** 3
+		Gnist Tapir Fagbokhandel HiST Leangen ****  TAPIR **** 3
+		Gnist Tapir Fagbokhandel HiST avd. Rotvoll ****  TAPIR **** 3
+		Gnist Tapir Fagbokhandel NTNU Dragvoll ****  TAPIR **** 3
+		Gnist Tapir Fagbokhandel NTNU Gløshaugen ****  TAPIR **** 3
+		Gnist Tapir Fagbokhandel NTNU Moholt ****  TAPIR **** 3
+		Gnist Tapir Multimedia ****  **** 3
+		Tapir Uttrykk ****  TAPIR **** 3
+		Tapir mat avd. Dragvoll ****  **** 3
+		Tapir mat avd. Gløshaugen ****  ONLINE **** 3

@@ -1,0 +1,301 @@
+\begin % 289  relevante spørsmål
+
+\set queryflag true
+
+\set trace 0
+
+\startbatch
+
+
+Når går bussen fra NTNU på LAde til byen mellom klokken 10 og 11 i
+dag?  
+nåre går neste buss fra dragvoll til sentrum.
+o store bussruteorakel, regner det i trondheim i dag?
+Hva er essensen av T. W. Adornos hovedverk "Estetisk teori"?
+er du der fortsatt.
+i wanna go home.
+titei.
+mornm.
+står til .
+Hva koster en ståplass?
+Når går bussen fra Valøyveien til Tvetestien i sjutiden .
+når passerer neste 9 kbs senteret.
+hvem har laget de fine nettsidene til tt?
+hei tt!
+bussjåføren er en kuk.
+når går bussen buenget til sorgenfri .
+når går bussen fra valøyveien til sentrum etter kl 1200. 
+Si meg en ting hvilke busser går til Munkvoll.
+hvor mye koster det å kjøpe ett klippekort.
+når går første buss til brundalen fra sorgenfriveien etter klokken 1100.
+når går første buss til brundalen fra tempeveien etter klokken 1100.
+Jada.
+Når går neste buss til Sudan, fra Canada? 
+hva er nermeste holdeplass til Rydningen? 
+er sjåføren på linje 5 grinete i dag .
+er buss-sjåføren på rute 66 sur i dag .
+buss til ullinsveg.
+buss til prinsengt.
+Hva er telefonnummeret til Trafikanten?
+buss fra reppe til tryvann.
+fra reppe til lade med ankomst før kl 0800. 
+hva er telefonnummeret til tt.
+er buss sjåføren på rute 36 syk i dag.
+vil du ha sex med meg på bøttekottet?
+verksted .
+når neste buss går fra brundalen til Stokkanhaugen.
+har du det morsomt.
+forstår du lange setninger.
+forstår du lange setninger som er gale.
+forstår du lange setninger som er gale og merkelige. 
+skal fra stavsetsvingen til ringve skole.
+Reise fra vikåsen til city syd etter nå .
+Buss fra vikåsen til city syd etter nå.
+bjarne er teit .
+når går de jævla seksogtrettibussen forbi satans voll studentby. 
+går det framover.
+Når går bussen fra Presthusjordet til Idrettsplassen på fredag og skal
+være framme før kl 19.00?
+Når går bussen fra Olderdalen til Idrettsplassen fredag kveld og som
+skal være framme senest kl.19.00 .
+hvordan kommer en seg fra moholt til lilleby.
+hva er den siste versjonen av busstuc?
+når er første buss fremme på Prinsen kinosenter fra Strandveien? 
+hvordan komme fra trondheim til flakk?
+hvilke busser går sørover? 
+hvilken farge er det på bussene? 
+Når passerer linje 8 Gløshaugen med retning sentrum 
+til buran fra universitetet på lade ?
+buss fra tempe til dragvoll lørdag kveld ?
+jeg vil drepe en bussjåfør.
+jeg vil kjøre en bussjåfør.
+kan man røyke på bussen?
+jeg vil ta bussen fra mamma til pappa.
+jeg vil kjøre bussjåføren i rumpa. 
+jeg vil ha gratis månedskort. 
+jeg vil ha  månedskort.
+jeg vil ta bussen til horestrøket
+Når går linje 1 til bygrensa? 
+Når går første buss til gamle åsvei? 
+hvordan komme til østmarka til kl. 15.00 fra gløshaugen ?
+hvordan komme til ringve skole kl. 15.00 fra gløshaugen ?
+hvordan komme til ringve fra gløshaugen ?
+hvordan komme til østmarka  ?
+hvordan komme til ostmarka  ?
+skal vi ta bussen sammen?
+når går neste 4 fra universitetet lade ?
+når går neste buss fra universitetet lade til byen ?
+buss fra buran til ranheim? øh?
+går det buss fra buran snart, men ikke til sentrum? 
+skal lars ta buss fra buran eller fra rønningsbakken.
+er bussjåføren på linje 24 homofil? 
+jeg skal fra andebu til tønsberg på fredag  ?
+jeg vil vite hvor mange avganger det er i døgnet fra heimdal til
+sorgenfri ? 
+Når passerer nordgående buss til pirterminalen Samfundet skjærtorsdag sånn at man er på piren til 10.00? 
+finnes julenissen? 
+hvordan lager man barn? 
+hva er din versjon  ?
+nåt går første 36 fra sentrum etter 919 på mandager ?
+FRA TRONHEIM S TIL STRINDHEIM ?
+Reise fra Romulslia til Værnes flystasjon kl 09.00 ?
+reise fra Romulslia til Skjetlien skole ?
+når går bussen fra holtermanns gate til sentrum?
+Hvorfor svarer du ikke på spørsmålene mine? 
+hva er tucs  versjon ?
+Når går neste buss fra universitetet lade til sentrum ?
+når går bussen hjemmefra ?
+når går buss fra Ugla til Flatåsen tirsdager etter kl 19.30 +   .
+når går det en buss fra Holtermannsv. til Husebytunet?
+Ønsker å reise fra Fossegrenda til Torvet i Trondheim før 15.30 ?
+hvilken buss skal jeg ta for å nå kveldstoget til oslo  ?
+
+vet du noe om bussene i dag fra nth til strandveien?
+hva kan du svare på?
+hva kan du svare?
+er det noen som leser dette?
+Når går bussen fra Lohove/Dragvoll til sentrum ?
+Hvor er Grensen og idrettsbygget?
+Fra Fiolsvingen til Nidar senest kl 0600.
+Når går siste buss fra Byen til Halset?
+Søker etter buss fra skavlansvei 13A til gløshaugen. 
+Ønsker buss fra Skavlansvei til ntnu gløshaugen.
+Ønsker buss fra Skavlansvei til gløshaugen.
+har toralv maurstad talent?
+Hvor er det gode vafler?
+Er det gode vafler på rutebilstasjonen?
+Hvilken linje går forbi John. P. Kroglunds veg?
+Hvilken linje går forbi J. P. Kroglundsv? 
+kva er meiniga med livet .
+When is there the nearest bus to Ilen Kirke from Gløshaugen.
+Når går ettermiddagsbussen fra Eberg til Jakobsli  ?
+Når passerer buss 66 Kong Øysteins vei ?
+
+Ikke virke de. Ikke e de mulig å si fra når nåkka ikke virke. Ikke har
+æ bruk for å vætta at næste buss går om 10 minutt. De tar 20 min å GÅ
+te bussn! Ikke e de ei einaste gammeldags bussrute (å ikke muli å få
+orakele te å forstå at æ vill ha nettopp det). Forbainna
+neandertalimplementasjon av riktig løsning på feil problem! (huff).
+Hvem får honnørbillett ?
+Hvem får honnør  ?
+fra teglverkstunet til munkegata ?
+Når kommer bussen fra Kosovo?
+kan jeg spørre hva jeg vil ?
+første mulige avgang fra lade i morgen tidlig ?
+første buss fra lade i morgen ?
+fra kong øysteins vei til sluppen ?
+Rute 4 avganger fra Heimdal i løpet av én dag  ?
+Gi meg opplysninger om rute 4's avganger fra Heimdal i morgen ?
+Kan du skrive ut avgangene for Heimdal st.
+Kan du skrive ut   ?
+Buss fra Sivert Thonstads til byen etter kl. 18.00 ?
+hvorfor virker ikke ruter og linjekart?
+priser ?
+priser på nattbussen ?
+hva er prisene på nattbussen  ?
+hva er prisen for å ta nattbussen til Klæbu?
+Vis tidtabell for Nardokrysset hverdager ?
+Vis tabell for alle avgangstider fra Nardokrysset ?
+Tidspunkt for reise fra Brundalen ?
+når går den ?
+sammfunnet til ranheim ?
+Er det mange busser som går til Trondheim og ikke Oslo ?
+Hvilken buss slutter å gå klokka fire på natten?
+Hvilken buss slutter å kjøre klokka fire på natten?
+Hvilken buss slutter å kjøre klokken fire på natten? 
+Hvem er spice girls?
+Det är rart att man går ut till publikum med en hjemmeside som är felaktig och eller ofullständig. I stort har Ni skrivit av ett rutehefte som redan när det kom 1996 var fel eller ofullständigt. Dessutom vet den som har sammanställt sidorna slett lite om TT-busstrafik. Jag tänker inte rätta hjemmesidan det finns det kanske andra som har betalt till. 
+Hils!
+Hvordan ser bussene ut!
+Hvordan kommer jeg fra Sjetemarka til Lade fortest mulig når barnehagen åpner 7.30 og stenger 16.30 og min arb.tid er 8.-16.00? 
+Hva er raskeste vei fra Sjetnemarka til Lade?
+Hva er raskeste vei fra Sjetnemarka til Lade med buss?
+Buss fra Tyholtveien til Jernbanen ?
+jeg skal fra stubban etter kl 13:00 for å møte lars i byen % ikke mars
+Når går første buss fra sentrum til NRK Tyholt ?
+koss ska æ komm mæ te nardo fra lade?
+timeplan bus 8 ?
+Hva skjer? 
+NERD.
+er det en flybuss på kl. 16 ?
+hva heter kommunene som grenser til trondheim ?
+fra samfundet til lilleby slik at jeg ankommer kl 1415 ?
+avganger fra munvoll til valøvvegen ?
+hvordan skal jeg komme meg på jobb til klokken 0515 i morgen med bussen ?
+hvordan kommer jeg fra neptunveien til statoil pr buss? 
+Hvor mye koster en liter melk ? 
+fra Nardovn 4B til City Syd  ?
+hva er tts webadresse ?
+Når passerer Buss 4 Max  ?
+Andre buss etter dette fra Sentrum til Heimdal ?
+Når blir ruter og linjekart ferdig  ?
+Når kan vi se rutetider på skjermen ?
+Når kan vi lese av rutetider ?
+Når mellom 7 og 8 lørdag går det buss fra sentrum til dragvoll 
+når går bussen fra ko thornesv til byen.
+Rødde ?
+hvilken rute må jeg ta fra hank sport til lade ?
+når går neste nummer 46 sørover  ?
+Hvordan kommer jeg meg til Notodden ?
+jeg vil fra nova til nordre hallset med overgang 10 minutter senere ?
+til valentinlyst ?
+når passeres holdeplassene i munkegata  ?
+Når passerer neste buss fra Romolslia tempe ?
+buenget til prinsensgt ?
+Når passerer neste 6 Buran fra sentrum til jakobsli?
+Når passerer neste 6 fra sentrum Buran Postkontor? 
+Når går neste 6 østgående fra sentrum?
+hmm.. Når går buss nummer 60?
+når passerer buss nr 60 bergsbakken?
+Jeg lurer på om det er lurt å kjøpe en buss i stedet for en MC ?
+hvorfor er det ikke gratis å ta buss?
+kan jeg veksle på bussen ?
+hvor tung er en buss? 
+hvor mange hestekrefter er det i en buss? 
+hjelp.
+hvem er gud ?
+pinserute ?
+når passerer 60 bergsbakken  ?
+wie heisst du?
+Fra Vaeretroa til Midtby  ?
+Siste buss fra Vaeretroea ?
+ønsker buss fra skavlansvei til bygrensen 
+ønsker trikk fra skavlansvei til bygrensen  ?
+jævla idiot. LEGG INN BUSSRUTENE istedet !
+alle busser fra vestlia til sentum søndag ?
+Fra Sentrum til Regionsykehuset 10:00 ?
+Når må jeg ta bussen fra rognbudalen for å være på studentersamfunnet 14.45?
+Går 66 forbi høgskolen?
+kan jeg få busstiden til 66 som går i 8 tiden imorgen tidlig. 
+går det buss til ferjeleiet på flakk eter kl. 20.00?
+er sjåføren full?
+hvem har laget deg? 
+hvem er din skaper?
+hvem er din herre?
+hvem er vakrest i landet her?
+tore er væretrøa ?
+jeg må tisse ?
+tore styrer idi ?
+tore er idi  ?
+tore er gal  ?
+når går neste buss fra casper lunes v. vei til sverresborg?
+hvilke avgangstider finnes for okstadøy ?
+hvilke avgangstider finnes for okstadøy holdeplass ?
+når passerer bussen Okstadøy holdeplass ?
+når passerer bussen holdeplass Okstadøy?
+går buss 20 og 60 motsatt vei?
+Til hvilken tid går den seneste bussen fra sentrunm som passerer ?
+Trolla i på Lørdag?
+Kan jeg få en oversikt der jeg kan lese av når busser  som passerer Trolla går fra byen?
+Når går busser fra byen som passerer Trolla+  .
+Når går første buss til Romslia ?
+Når går neste buss til Rommeslia ?
+hvilket bussnummer går rundt livet? 
+når går første buss til livet?
+Hvor kan jeg finne ut noe om trikken?
+trondheim til hemnekjølen ?
+når går første buss fra rosenborggata til dragvoll+   .
+Hvilken linje går til Sørem  ?
+Hvilken buss går til Sørum ?
+Hvilken buss går forbi e_b_schieldrops_veg ?
+når passerer buss 8 gløshaugen?
+Buss fra Møllenberg til Leistad? 
+hvor mye koster en barnebilett?
+hvilken farge er det på uniformen?
+hvilken farge er det på sola.
+er du gift? 
+er det gøy å være orakel?
+hvilken farge har du på håret?
+Hva heter du da?
+vil du hete noe da?
+Je t'aime .
+I love you.
+hva er telefonnummeret ditt? 
+hva kom først? høna eller egget? 
+hva kom først av høna og egget? 
+Hva er det første ordet i bibelen?
+eksisterer jeg?
+hvordan vet du at du eksisterer?
+godt svart.
+bra svart.
+hvor lenge har du eksistert?
+hva er telefonnummeret til brannvesenet?
+hva er telefonnummeret til politi.
+hva er telefonnummeret til politiet?
+hvem har laget deg?
+hvem skapte deg? 
+hvem er Jon S Bratseth.
+hvordan kom du hit da? 
+nei vel.
+æ bor i Tronjæm.
+æ bor i Trondhjæm .
+Har du lyst på is?
+Når slutter du på jobb? 
+når passerer neste 36 moholtsenteret?
+når passerer neste 36 voll?
+når går nattbuss nummer 67.
+Når går første buss til Nardoskrenten fra Sentrum?
+
+\takebatch
+
+\end

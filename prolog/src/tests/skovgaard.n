@@ -1,0 +1,10 @@
+
+\begin
+
+\set queryflag true
+
+når går bussen fra jakobsli ved holdeplass skovgård til fossegrenda på
+hverdager ?
+
+\end
+

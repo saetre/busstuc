@@ -1,0 +1,17 @@
+\begin
+
+\set queryflag true
+
+jeg skal reise fra dragvoll 1230 og ønsker å være fremme på lade kl 2015.
+jeg skal reise fra dragvoll 1230 og skal være fremme på lade kl 2015.
+jeg skal reise fra dragvoll 1230 til lade og skal være fremme på lade kl 2015 .
+jeg skal reise fra dragvoll 1230 til lade og vil være fremme på lade kl 2015.
+jeg skal reise fra dragvoll 1230 til lade og være fremme på lade kl 2015.
+jeg skal reise fra dragvoll 1230 til lade og være på lade kl 2015.
+jeg skal reise fra dragvoll til lade 1230 med ankomst senest 1600.
+jeg skal reise fra dragvoll til lade 1230 med ankomst senest 1600 på lade.
+
+
+\end
+
+

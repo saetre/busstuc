@@ -1,0 +1,1421 @@
+%% FILE busanshp.pl
+%% SYSTEM BUSTUC
+%% CREATED  JB-970220 
+%% REVISED  TA-010912
+
+% Hjelpepredikat for ans-pragmaregler
+
+
+maxnumberofindividualdepartures(5).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Predikater som returnerer fraser.
+
+
+outdeplist(Deps,Day,Opts,ToPlace,Out) :-  
+    member(direct,Opts),
+    !,
+    outdeplisttime(Deps,Day,ToPlace,Out).     % direct is no longer relevant
+
+
+outdeplist(Deps,Day,Opts,ToPlace,              % Liste over bussene
+			  (bwc(Buses,buses),                  % evt. no buses 
+           % nl,    % dont break short line    % break long line %% TA-010305
+           bcp(passes),
+           BWRSTATIONS, %%% bwr(Stations)
+           ToOut,period)) :- 
+
+    member(buses,Opts),
+
+    \+ time_options(Opts),     % AWKARD TEST , no TIME OPTION
+	 
+
+%   NB if Station = m0,...,m6, d1...,d4 etc, (original station = hovedterminalen)
+%   only Sentrumsterminalen will be mentioned
+
+    set_of(Stat2,(member([_,_,_,_,Stat1],Deps),
+                  convifpossible(Stat1,Stat2))
+                 ,Stations),
+
+	 set_of(Rid,member([_,_,_,Rid,_],Deps),Rids),
+
+	 ridstobuses(Day,Rids,RawBuses),       %% buslog.pl 
+
+    bus_equivalents(RawBuses,Buses),       %% Convert to external names
+
+    stationlistorand(Buses,Stations, BWRSTATIONS),
+	                                     
+    outandarrives2(ToPlace,ToOut). 
+
+outdeplist(Deps,Day,Opts,ToPlace,Out) :-   % Nte siste avgang
+	 member(nth(N),Opts),
+	 member(last(1),Opts),
+	 reverse(Deps,RevDeps),
+	 nth(N,RevDeps,Dep),
+	 outdeplisttime([Dep],Day,ToPlace,Out).
+
+outdeplist(Deps,Day,Opts,ToPlace,Out) :-   % Nte første avgang
+	 member(nth(N),Opts),
+	 member(first(1),Opts),
+	 nth(N,Deps,Dep),
+	 outdeplisttime([Dep],Day,ToPlace,Out).
+
+outdeplist(Deps,Day,Opts,ToPlace,Out) :-   % Nte neste avgang
+	 member(nth(N),Opts),
+	 member(next(1),Opts),
+	 timenow(Tid),                                 
+	 keepafter(Tid,Deps,AfterDeps),  %% SHOULD BE PART OF BUSLOG ???
+	 nth(N,AfterDeps,Dep),
+	 outdeplisttime([Dep],Day,ToPlace,Out).
+
+% Filter Subset 
+
+outdeplist(Deps,Day,Opts,ToPlace,Out) :-   % neste =< N avganger etter tidspunkt
+	 delete1(nextaftertime(N),Opts,Opts1), 
+	 !,
+	 members(N,Deps,NextDeps),             %% AfterDeps
+    outdeplist(NextDeps,Day,[time|Opts1],ToPlace,Out).
+
+
+
+outdeplist(Deps,Day,Opts,ToPlace,Out) :-   % neste =< N avganger
+	 delete1(next(N),Opts,Opts1), 
+	 !,
+%    timenow(Tid),                        %% THIS IS PART OF BUSLOG 
+%	  keepafter(Tid,Deps,AfterDeps), 
+	 members(N,Deps,NextDeps),             %% AfterDeps
+    outdeplist(NextDeps,Day,[time|Opts1],ToPlace,Out).
+
+outdeplist(Deps,Day,Opts,ToPlace,Out) :-   % siste N avganger
+	 delete1(last(N),Opts,Opts1),  
+    !,
+	 reverse(Deps,RevDeps),
+	 members(N,RevDeps,LastRev),
+	 reverse(LastRev,LastDeps),
+    deleteall(lastcorr,Opts1,Opts2), %% TA-010326
+    outdeplist(LastDeps,Day,[time|Opts2],ToPlace,Out).
+
+outdeplist(Deps0,Day,Opts,ToPlace,(OutFirst,OutNext)) :- % første/neste avgang 
+	 (member(first,Opts);       % unspecified first
+     member(first(1),Opts);    % ambiguous, get both ! 
+     member(next(1),Opts)),
+    !,    
+	 timenow(Tid),
+    keepafter(0500,Deps0,Deps), %% Night routes are excluded !!! 
+	 members(1,Deps,FirstDeps1),
+
+    keepafter(Tid,Deps,AfterDeps),
+	 members(1,AfterDeps,NextDeps),
+
+	 outdepfirst(FirstDeps1,ToPlace,TimeF,OutFirst),
+	 outdepnext(NextDeps,TimeF,_TimeL,Day,ToPlace,OutNext). % TimeL ?
+
+outdeplist(Deps,Day,Opts,ToPlace,Out) :-   % første N avganger 
+	 delete1(first(N),Opts,Opts1), 
+    !, 
+    deleteall(first,Opts1,Opts2),           % just a flag 
+	 members(N,Deps,FirstDeps),
+    outdeplist(FirstDeps,Day,[time|Opts2],ToPlace,Out).
+
+outdeplist(Deps,Day,Opts,ToPlace,Out) :-   % Nte avgang
+	 member(nth(N),Opts),
+	 nth(N,Deps,Dep),
+	 outdeplisttime([Dep],Day,ToPlace,Out).
+
+outdeplist(Deps,Day,Opts,ToPlace,Out) :-   % neste avgang
+	 member(next(1),Opts),
+	 timenow(Tid),                          
+	 nextdep(Tid,Dep,Deps),
+	 outdeplisttime([Dep],Day,ToPlace,Out).
+
+outdeplist(Deps,Day,Opts,ToPlace,Out) :-   % siste avgang
+	 member(last(1),Opts),
+	 lastmem(Deps,Dep),
+	 outdeplisttime([Dep],Day,ToPlace,Out).
+
+outdeplist(Deps,Day,Opts,ToPlace,Out) :-   % ankomst FØR == siste avgang
+	 member(lastcorr,Opts), 
+	 lastmem(Deps,Dep),
+	 outdeplisttime([Dep],Day,ToPlace,Out).
+
+outdeplist(Deps,Day,Opts,ToPlace,Out) :-   % første avgang
+	 member(first(1),Opts),
+	 member(Dep,Deps),
+	 outdeplisttime([Dep],Day,ToPlace,Out).
+
+% få eller alle avganger %% merge  ==> option all
+outdeplist(Deps,_,Opts,ToPlace,Out) :- 
+	 member(time,Opts),
+
+    length(Deps,DepsLengde), 
+    maxnumberofindividualdepartures(MaxInd),   
+    DepsLengde=< MaxInd,    
+
+	 !, 
+    set_of([TimeDurations,BusN1,Station1], %% TimeDurations first=>sorted on time!
+           busleave1(BusN1,Station1,TimeDurations,Deps,ToPlace),
+           BusDeps),
+
+ 
+    outsmalldeps(BusDeps,ToPlace,Out). %% NB change!
+
+% Number of departures 
+
+outdeplist(Deps,_,Opts,_ToPlace,(bcpbc(there),bcp(are),bwr(N),bcp(Departure_s),nl)) :-
+	 member(number,Opts),
+    !,
+    length(Deps,N),
+    (N = 1 -> Departure_s = departure;
+              Departure_s = departures).
+
+
+% mange avganger
+
+outdeplist(Deps,Day,_,ToPlace,Out) :-
+    !,
+    outdeplisttime(Deps,Day,ToPlace,Out).
+
+%%%%%%
+  
+stationlistorand(Buses,Stations, BWRSTATIONS):- %% For et slit %% TA-010205
+    length(Buses,NB),
+    length(Stations,NS),
+    NB > 1,
+    NS > 1,
+    !,
+    BWRSTATIONS =bwrsingleorlist(Stations). %% many buses, not all stations
+  
+stationlistorand(_Buses,Stations, BWRSTATIONS):-
+    BWRSTATIONS =bwrsinglelist(Stations).
+
+
+
+
+
+
+
+convifpossible(X,hovedterminalen):- 
+    corr(X,hovedterminalen),!.
+convifpossible(X,X).
+
+
+
+
+outdeplisttime([Dep],_Day,ToPlace,OutDep):- 
+	 !,
+    nonvar(Dep), %% Security Check, serious error %% TA-001211
+	 outdeponly(Dep,ToPlace,OutDep).
+
+
+outdeplisttime(Deps,Day,ToPlace,(OutFirst,OutNext,OutLast)) :-
+	 outdepfirst(Deps,ToPlace,TimeF,OutFirst), 
+	 outdeplast(Deps,ToPlace,TimeL,OutLast),
+
+	 (today(Day) -> %% Next departure is irrelevant if not today !!! 
+          outdepnext(Deps,TimeF,TimeL,Day,ToPlace,OutNext);
+     true).
+
+
+outdeponly(Dep,ToPlace,
+				(bcp(Bus), %% bcp(number),
+             bwr(BusN), bcp(passes),
+
+				 bwr(Station),bcp(attime),bwt(Time),OutArr,period)) :-
+
+
+	 member([Time,Delay,BegTime,Rid,Station],[Dep]),
+	 ridtobusname(Rid,BusN),
+    vehicletype(BusN,Bus),
+	 (user:value(dialog, 0) ; getcurrent(Cid), addref(Cid, Rid, lastroute(BusN))),
+	 outandarrives5(ToPlace,Rid,Delay,BegTime,OutArr).
+%%% USE  -> ! 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+busleave1(BusN1,Station1,TimeDurations,Deps,ToPlace) :-
+    setof(td(Time1,Duration,ToStation), % one set for each BusN1,
+          busleave(Time1,BusN1,Station1,Duration,Deps,ToPlace,ToStation),
+          TimeDurations).
+
+
+busleave(Time1,BusN1,Station1,0,Deps,ToPlace,_ToStation) :-
+	(ToPlace==nil_;ToPlace=from(_);ToPlace=to(_)),
+   !,   
+	member([Time1,_,_,Rid1,Station1],Deps),
+	ridtobusname(Rid1,BusN1).
+
+busleave(Time1,BusN1,Station1,Duration,Deps,ToPlace,ToStation) :-
+	member([Time1,Delay1,_,Rid1,Station1],Deps),
+	ridtobusname(Rid1,BusN1),
+	firstpass(Rid1,ToPlace,ToStation,Delay1,Delay2),  %% NB possible duplicate ! 
+%	Delay2>Delay1, 
+	Duration is Delay2-Delay1.
+
+
+firstpass(Rid,Place,Station,Delay1,Delay2):- %% Avoid problems with 
+    pass(Rid,Place,Station,Delay2),          %%  duplicate routes
+    Delay2 >= Delay1,                        %% Problems at Hovedterminalen 
+    !.                                       %% same minute problem
+
+
+
+
+% Just 1 departure, always arrival time
+
+outsmalldeps([ [[TimesDuration],BusN,Station] ],ToPlace,
+				 (bcp(Bus),bwr(BusN),bcp(passes),
+                                   bwr(Station),bcp(attime),
+				  OutDeps2,period)) :-
+	      !,
+         vehicletype(BusN,Bus),
+         outsmalldeps2(arrivaltime,[TimesDuration],ToPlace,OutDeps2).
+
+
+outsmalldeps(A,B,C):-
+    outsmalldeps0(A,B,C).
+
+
+outsmalldeps0([],_,[]).
+
+outsmalldeps0([[TimesDuration,BusN,Station]|BusDeps],ToPlace, %% TimesDuration FIRST!!!!
+				 (bcp(Bus),bwr(BusN),bcp(passes), %% space,
+                                  bwr(Station),bcp(attime),
+				  OutDeps2,period,OutDeps)) :-
+
+    vehicletype(BusN,Bus),
+
+	 outsmalldeps2(duration,TimesDuration,ToPlace,OutDeps2),
+	 ensure_removed([BusN,Station,TimesDuration],BusDeps,BusDeps2),
+	 outsmalldeps0(BusDeps2,ToPlace,OutDeps).
+
+
+
+outsmalldeps2(_,TimesDuration,ToPlace,(bwtimes(Times),OutArr)) :-
+	 (ToPlace=from(_);ToPlace=to(_)),
+     faenta(TimesDuration,Times,_,_),
+     outandarrives5(ToPlace,_,_,_,OutArr).
+
+outsmalldeps2(arrivaltime,[TimesDuration],ToPlace, (bwt(Time),OutArr) ) :- 
+	 faenta([TimesDuration],Times,Duration,_), % Duration =  Short - Long
+    Times = [Time],  %% assumption: only one time 
+    addtotime(Time,Duration,Arrival),
+	 outandarrives3(ToPlace,arrival(Arrival),OutArr).
+
+outsmalldeps2(duration,TimesDurations,ToPlace,(bwtimes(Times),OutArr) ) :- 
+	 faenta(TimesDurations,Times,Duration,SetofStations),
+    outandarrivesset(ToPlace,SetofStations,duration(Duration),OutArr). 
+
+
+faenta(TDlist,Times,Durations,SetofStations):-  
+    set_of(Time, member(td(Time,_,_),TDlist),Times), 
+    set_of(Dur,  member(td(_,Dur,_), TDlist),TD), 
+    set_of(Station,member(td(_,_,Station),TDlist), SetofStations),
+
+    minimum(TD,M1),    %% utility.pl
+    maximum(TD,M2),    %% utility.pl
+(                             
+    M1 = M2 -> Durations = M1 ;
+               Durations = M1 - M2 %% NB =, not is
+) .
+
+
+outdepfirst(Deps,ToPlace,Time,
+				(bcp(thefirst),bcp(Bus),comma,bcp(number), bwr(BusN),
+				 bcp(Verb), % passes/arrives/departs
+				 bwr(Station),bcp(attime),bwt(Time),OutArr,period)) :-
+
+    
+	 member([Time,Delay,BegTime,Rid,Station],Deps),
+	 ridtobusname(Rid,BusN), 
+    vehicletype(BusN,Bus),
+	 outandarrives6(Station,ToPlace,Rid,Delay,BegTime,OutArr,Verb).
+
+outdeplast(Deps,ToPlace,Time,
+			  (bcp(thelast),bcp(Bus),comma,bcp(number),bwr(BusN),
+				bcp(Verb), % passes/arrives/departs
+				bwr(Station),bcp(attime),bwt(Time),OutArr,period)) :-
+
+
+	 lastmem(Deps,[Time,Delay,BegTime,Rid,Station]),
+	 ridtobusname(Rid,BusN), 
+    vehicletype(BusN,Bus),
+	 outandarrives6(Station,ToPlace,Rid,Delay,BegTime,OutArr,Verb).
+
+outdepnext(_,_,_,Day,_,[]) :- 
+	 today(ThisDay),
+	 ThisDay \== Day,
+         !.   
+
+outdepnext(Deps,TimeF,TimeL,_,ToPlace,Out) :-
+	 timenow(Tid),
+	 nextdep(Tid,[Time,Delay,BegTime,Rid,Station],Deps),
+	 ridtobusname(Rid,BusN),
+	 (user:value(dialog, 0) ; getcurrent(Cid), addref(Cid, Rid, lastroute(BusN))),
+	 outdepnext2(TimeF,TimeL,Time,Delay,BegTime,Rid,BusN,
+					 Station,ToPlace,Out).
+
+outdepnext(_,_,_,_,_,[]).
+
+
+outdepnext2(TimeSame1,_,TimeSame2,_,_,_,_,_,_,[]):- 
+    TimeSame1==TimeSame2. 
+
+outdepnext2(_,TimeSame1,TimeSame2,_,_,_,_,_,_,[]):- 
+    TimeSame1==TimeSame2. 
+
+outdepnext2(_,_,Time,Delay,BegTime,Rid,BusN,Station,ToPlace,
+				(bcp(thenext),bcp(Bus), 
+             bcp(hereafter), %%  bcp(after),bcp(now), %% TA-001130
+				 comma,bcp(number),bwr(BusN),
+             bcp(Verb), % passes/arrives/departs
+				 bwr(Station),bcp(attime),bwt(Time),OutArr,period)) :-
+
+    vehicletype(BusN,Bus),
+	 outandarrives6(Station,ToPlace,Rid,Delay,BegTime,OutArr,Verb).
+
+
+outandarrives2(nil_,[]):-!.
+outandarrives2(from(Place),(bcp(coming),bcp(from),bwr(Place))).
+outandarrives2(to(Place),  (bcp(indirection),bwr(Place))).
+outandarrives2(ToPlace,    (bcp(and),space,bwr(ToPlace))). 
+
+
+outandarrivesset(_Toplace,[Station],A,B):-  % Single station
+    !,
+    outandarrives3(Station,A,B).   
+
+outandarrivesset(Toplace,_,A,B):- %%  NB Cheat, only neighbourhood
+    !,
+    outandarrives3(Toplace,A,B).   
+
+
+
+outandarrives3(nil_,_,[]).
+outandarrives3(from(Place),_,(bcp(coming),bcp(from),bwr(Place))).
+outandarrives3(to(Place),_,  (bcp(indirection),bwr(Place))).
+
+outandarrives3(ToPlace,duration(Durations),
+    (nl,bcp(and),bcp(arrivesat),bwr(ToPlace), %% space0, 
+    bwr(Durations),bcp(minutes),bcp(later))).
+
+outandarrives3(ToPlace,arrival(Arrival),
+    (nl,bcp(and),bcp(arrivesat), 
+	  bwr(ToPlace),bcp(attime),
+	  bwt(Arrival))). 
+
+outandarrives5(nil_,_,_,_,[]):-!.
+
+outandarrives5(from(Place),_,_,_,(bcp(coming),bcp(from),bwr(Place))):-!.
+
+outandarrives5(to(Place),_,_,_,(bcp(indirection),bwr(Place))):-!.
+
+% NOW, certain places are spread ( have stations with different routes)
+
+outandarrives5(ToPlace,Rid,Delay1,BegTime, 
+    (nl,bcp(and),bcp(arrivesat), bwr(ToStation),bcp(attime), bwt(Arrival))) :-  
+	 pass(Rid,ToPlace,ToStation,Delay2),
+	 Delay2 >= Delay1, 
+	 addtotime(BegTime,Delay2,Arrival).
+
+
+
+%% hovedterminalen   esp.
+
+%% Problem: When destination = Direction,
+%  we dont't really know if it starts or stops at the station,
+%  this is a "feature" of the keepto/keepfrom predicate.
+
+
+outandarrives6(Station,from(Place),_,_,_,[],passes):- %% arrivesat) :-
+    Station == Place,
+    !.
+
+outandarrives6(Station,to(Place),_,_,_,[],passes):- %% leaves) :- 
+    Station == Place,
+    !.
+    
+outandarrives6(Station,ToPlace,Rid,Delay1,BegTime,Ans,passes) :- 
+    Station \== ToPlace,
+    !,
+    outandarrives5(ToPlace,Rid,Delay1,BegTime,Ans).
+
+    
+outandarrives6(_Station,ToPlace,Rid,Delay1,BegTime,Ans,passes) :- 
+    outandarrives5(ToPlace,Rid,Delay1,BegTime,Ans).
+
+
+
+outfromtocorr(Dep,OutDep,MidList,OutCorr):- 
+
+    cutloop(MidList,TF), %% check if cut loop station
+    outfromto(TF,Dep,OutDep),
+    outcorr(TF,MidList,OutCorr).
+
+
+cutloop([StrBusN,OffTime,OffStation,EndBusN,OnTime,OnStation],true):-
+       OffStation = OnStation,
+       StrBusN=EndBusN,       
+       cutloop_station(StrBusN,OffStation),     
+       OffTime =< OnTime,       
+       %  addtotime(OffTime,10,Tired), Tired > Ontime, 
+       !.
+
+cutloop(_,false).
+
+
+% Same Bus No, Identical bus
+
+outfromto(true,[StartBusN,StartTime,StartStation,EndBusN,EndTime,EndStation],
+			 (bcp(Bust1),bwr(StartBusN),bcp(passes), %% TA-001220
+			  bwr(StartStation),bcp(attime),bwt(StartTime),
+			  nl,bcp(and), %% TA-010105
+			  bwr(EndStation),bcp(attime),bwt(EndTime),period)):- %% TA-001220
+           
+           StartBusN=EndBusN,
+           !,
+           vehicletype(StartBusN,Bust1). %% TA-001220
+
+
+% Same Bus No, Different Bus
+
+outfromto(false,[StartBusN,StartTime,StartStation,EndBusN,EndTime,EndStation],
+			 (bcp(Bust1),bwr(StartBusN),bcp(passes),
+			  bwr(StartStation),bcp(attime),bwt(StartTime),
+			  nl,bcp(and), %% TA-010105
+           bcp(Bust2),bwr(EndBusN),  %% subtle, repeat bus no, because not identical bus
+           bcp(passes),
+			  bwr(EndStation),bcp(attime),bwt(EndTime),period)):-
+           
+    StartBusN=EndBusN,
+           !,
+           vehicletype(StartBusN,Bust1), %% TA-001215
+           vehicletype(EndBusN,Bust2).
+
+
+% Change bus
+
+outfromto(_,[StartBusN,StartTime,StartStation,EndBusN,EndTime,EndStation],
+			 (bcp(Bust1),bwr(StartBusN),bcp(passes),
+			  bwr(StartStation),bcp(attime),bwt(StartTime),
+			  nl,bcp(and),
+			  bcp(Bust2),bwr(EndBusN),bcp(passes),
+			  bwr(EndStation),bcp(attime),bwt(EndTime),period)):-
+
+           vehicletype(StartBusN,Bust1), 
+           vehicletype(EndBusN,Bust2).
+ 
+%% Same bus, STAY ON !
+
+outcorr(true,_,true):-!. % Stay on
+
+%% Same bus, STAY ON ? (dont know, vague on purpose)
+
+outcorr(false,[StrBusN,OffTime,OffStation,EndBusN,OnTime,OnStation],
+		  (bcp(thebus),bcp(goes),bcp(via),bwr(OffStation),nl)):- 
+        OffStation = OnStation,
+        StrBusN=EndBusN,
+        OnTime = OffTime,
+        !.
+
+%% Different bus, change?
+
+%% Shorter text
+
+outcorr(false,[StrBusN,OffTime,OffStation,EndBusN,OnTime,OnStation],
+
+	  (bcp(you),bcp(can),bcp(change),
+        bcp(from),  bcp(_Bust1),
+        bwr(StrBusN),bcp(atstation),bwr(OffStation),bcp(attime),bwt(OffTime),
+        nl,
+       bcp(to), bcp(_Bust2),
+       bwr(EndBusN),bcp(atstation),bwr(OnStation),bcp(attime),bwt(OnTime),
+       period)):-!,
+
+    vehicletype(StrBusN,_Bust1),
+    vehicletype(EndBusN,_Bust2). 
+
+
+%%%
+
+time_options(List):-
+    member(X,List),
+    time_option(X),
+    !.
+
+time_option(last(_)).
+time_option(first(_)).
+time_option(next(_)).
+time_option(prev(_)).
+time_option(nth(_)).
+time_option(first). 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Predikat som skriver ut navn og tall etc.  bwr*
+
+
+
+%% New predicate %% TA-001212
+
+bwrprices([Ad,Ch]):-
+    moneyunit(nok), % both languages
+    !,
+    bwr(Ad),bcp(or),bwr(Ch),bcp(kroner).
+
+bwrprices([Ad,Ch]):-
+    moneyunit(usd), % both languages
+    !,
+    bwr(Ad),write('$'),bcp(or),bwr(Ch),write('$').
+
+bwrprices(Price):-  bwr(or(Price)). %% TA-001212 Default
+
+
+
+% Square lists  % a,  b, c and d
+
+bwrsinglelist([Elem]) :-
+        bwr(Elem).
+bwrsinglelist([Elem1,Elem2]) :-
+        bwr(Elem1),bcp(and),bwr(Elem2).
+
+bwrsinglelist([Elem1,Elem2|List]) :- %% TA-010720
+        value(smsflag,true),
+        length(List,Leng),Leng > 10,!,
+        bwr(Elem1),comma,
+        bwr(Elem2), write(' ,...,'),
+        lastmem(List,LX),
+        bwr(LX).
+
+bwrsinglelist([Elem|List]) :-
+        bwr(Elem),comma,bwrsinglelist(List).
+
+% Round lists
+bwrsinglelist(Elem) :-
+        atomic(Elem),bwr(Elem).
+bwrsinglelist((Elem1,Elem2)) :- % Round lists...
+        atomic(Elem2),bwr(Elem1),bcp(and),bwr(Elem2).
+bwrsinglelist((Elem,List)) :-
+        bwr(Elem),comma,bwrsinglelist(List).
+
+% Square or lists
+
+bwrsingleorlist([Elem]) :-
+        bwr(Elem).
+bwrsingleorlist([Elem1,Elem2]) :-
+        bwr(Elem1), bcp(or), %% bcp(and), ØF-990908
+        bwr(Elem2).
+bwrsingleorlist([Elem|List]) :-
+        bwr(Elem),comma,bwrsingleorlist(List).
+
+% Round or lists
+
+bwrsingleorlist(Elem) :-
+        atomic(Elem),
+        !,
+        bwr(Elem).
+bwrsingleorlist((Elem1,Elem2)) :- % Round lists...
+        atomic(Elem2),bwr(Elem1),  bcp(or), %% bcp(and), ØF-990908
+        bwr(Elem2).
+bwrsingleorlist((Elem,List)) :-
+        bwr(Elem),comma,bwrsingleorlist(List).
+
+
+
+bwr2bc(One):-vehicletype(One,Bus), !,bcpbc(Bus),bcp(One),!.
+bwr2bc(One):-bcpbc(One).
+
+bwr(unknown) :-!,bcp(unknown). 
+
+bwr(X) :- user:value(dialog, 1), X isa Type, getcurrent(Cid), addref(Cid, X, Type), false.
+
+bwr(V):-var(V),!,write('X?'). %% capture loop  error
+
+bwr(X-Y)   :- !,  bwr(X),bwr(-),bwr(Y).
+
+bwr([nostation]):-!, bcp(nostation).    
+
+bwr(X)     :- internalkonst(X),bcp(that),space.  
+bwr(or(X)) :- !,bwrsingleorlist(X),space.
+bwr(X)     :- compound(X),!, %% built-in
+               bwrsinglelist(X). 
+
+bwr(X)     :- specname(X,N),!,      space,write(N).
+bwr(X)     :- cname(X,N),!,         space,write(N).
+bwr(X)     :- streetspecname(X,N),!,space,write(N). 
+bwr(X)     :- bigcap(X,N),          space,write(N). 
+bwr(X)     :- space,write(X).  %% DEAFAULT %% TA-010403
+
+% No leading blank 
+
+bwrbc(X)     :- specname(X,N),!, bigcap(N,NN),      write(NN). 
+bwrbc(X)     :- cname(X,N),!,         write(N).
+bwrbc(X)     :- streetspecname(X,N),!,write(N).
+bwrbc(X)     :- bigcap(X,N),!,        write(N). 
+
+bwrbc(X):-bwr(X). %% Default  
+
+
+bwrstreet(X-N) :- bwr(X),space,write(N),!. 
+bwrstreet(X)   :- bwr(X). 
+
+% New  List with Class
+
+bwc([],Class):- !,bcpbc(notany),bcp(Class).
+bwc([X],buses) :- !, %% Trikk 1 / Buss 2
+    busortram(X,BT),bcpbc(BT),bwr(X).
+    
+bwc(List,_):- bwrsinglelist(List),space. %% bwrsingleorlist(List)
+
+
+busortram(1,tram):-!. %% This is generalized somewhere
+busortram(_,bus).
+
+%% Print out Time HHMM
+
+
+bwtimes([Elem]) :-
+        bwt(Elem).
+bwtimes([Elem1,Elem2]) :-
+        bwt(Elem1),bcp(and),bwt(Elem2).
+bwtimes([Elem|List]) :-
+        bwt(Elem),comma,bwtimes(List).
+
+bwt(nil):-write('***'),!. %% Error %% TA-010824
+
+bwt(T) :- 
+     T > 2400, !, %% changed from 2359 
+     NewT is T - 2400,
+     bwt(NewT).
+
+bwt(T0)     :-  
+    language(norsk),          %% TA-001213
+    space, 
+
+   ( T0 > 2400 ->  T is T0 - 2400; T is T0), %% TA-001215
+ 
+   ( T <   10 -> write('000'),write(T);
+     T <  100 -> write('00'), write(T);
+     T < 1000 -> write('0'),  write(T);
+                              write(T)
+    ).
+
+
+
+/*
+
+ English:       0000 -> 00:00 am
+                1159 -> 11:59 am
+                1200 -> 12:00 pm
+                1201 -> 12:01 pm
+                1259 -> 12:59 pm
+                1300 ->  1:00 pm
+                2359 -> 11:59 pm
+                2400 ->  0:00 am
+
+*/
+
+
+
+
+
+bwt(T0)     :-  
+    language(english),         %% TA-001213
+    space, 
+
+  ( T0 >= 2400 ->  T is T0 - 2400; T is T0), %% TA-001215
+
+    H is T//100,
+    M is mod(T,100),
+
+    Aft is H//12,
+    L is mod(H,12),
+    (L==0,Aft>0 -> L12=12;L12=L), 
+ 
+    write(L12),
+    write(':'),
+
+    (M < 10 ->  write('0');true),
+    write(M),
+    (Aft >0 -> write(' pm');write(' am')).
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Predikat som skriver ut ord    bcp*
+
+bigcap(In,Out) :-
+	 atomic(In),            %% SAFEGUARD %% TA-010403
+    name(In,[SC|R]),
+	 SC>96,SC<123,     % a-z
+	 !,
+	 BC is SC-32,
+	 name(Out,[BC|R]).
+
+bigcap(In,Out) :-
+	 atomic(In),            %% SAFEGUARD %% TA-010403
+	 name(In,[SC|R]),
+	 SC>223,SC<256,    % à-ÿ, some exceptions not covered, i guess
+	 !,
+	 BC is SC-32,
+	 name(Out,[BC|R]).
+
+bigcap(P,P).          % Else, already big or bigcapping do not apply
+
+period0  :- write('.'). 
+period   :- write('.'),nl.
+comma    :- write(','). 
+space    :- write(' ').
+space0.                          %% was space /redundant
+dot      :- write('.'). %% No Space 
+punkt    :- write('. ').
+question :- write('?'),nl.
+colon    :- write(': ').
+endline.                       %% marker, nl
+
+startmark.
+
+
+sentenceend(period).
+sentenceend(question).
+sentenceend(endline). %% no written '.'
+
+languagenr(1) :- language(english).
+languagenr(2) :- language(norsk).
+
+
+reply(X) :- write(X),nl.
+
+db_reply(Subject,Attribute,Value):- 
+    bcpbc(Subject),bcp(has),bcp(Attribute),write('   '),write(Value).  %% TA-010124
+ 
+
+% This is special because no nl if empty message. 
+
+% Print message
+
+
+% Only "vital"  messages if SMS
+
+% NB It is important that something is printed
+% 
+ 
+printmessage(nearest_station(_,_)):- %% Only vital messages
+    value(smsflag,true),
+    !,
+    emptymessage.  %% TA-010909
+
+printmessage(date_isa_day(_,_)):- %% Only vital messages
+    value(smsflag,true),
+    !,
+    emptymessage.  %% TA-010909
+
+printmessage(nearest_station(sentrum,_)):-
+    !, % Sentrumsterminalen
+    emptymessage.  %% TA-010909
+
+printmessage(nearest_station(X,_)):- 
+    obvious_station(X),
+    !,
+    emptymessage.  %% TA-010909 
+
+printmessage(nearest_station(Street,Station)):-
+    Street==Station,
+    !, % No message if equal
+    emptymessage.  %% TA-010909 
+
+printmessage(nearest_station(Street,Station)):-
+     bcpbc(theneareststationto),bwrstreet(Street),
+     bcp(is),space,bwr(Station),period,
+     !. 
+
+emptymessage:- write(' '),nl.  %% EXPERIMENT  %% TA-010910
+
+printmessage(M):- 
+    pmess(M),
+    nl, %% period,   %% Moved from ans   %% period optional ? %% EXPERIMENT
+    !.
+
+printmessage(X):- 
+    bcpbc(X),  %% Catchall in case of forgetfulness
+    nl.  
+
+%-
+
+obvious_station(munkegata).           %% AD Hoc
+obvious_station(dronningens_gate).    %%
+
+
+% Det tryggeste er faktisk a skrive Nov. 12, 2000 pa begge sprak!
+%                               (   12. Nov. 2000 )
+
+writedate(date(Y2000,M11,D12)) :- 
+    language(norsk),
+    !,
+    monthshort(M11,_,Nov),
+    write(D12),write('. '),write(Nov),write(' '),write(Y2000).
+
+
+writedate(date(Y2000,M11,D12)) :- 
+    language(english),
+    !,
+    monthshort(M11,Nov,_),
+    write(Nov),write(' '),write(D12),write(', '),write(Y2000).
+
+
+pmess(answer(P)):- P.
+
+pmess(can(submarines,swim)) :-(bcpbc(can),bcp(submarines),bcp(swim),question).
+
+pmess(donotknow):- (bcpbc(i),bcp(donotknow)).
+
+pmess(foreign(_)):- home_town(Trondheim), %% TA-001231
+        (bcpbc(i),bcp(have),bcp(only),bcp(routes),bcp(for),
+			bcp(buses),bcp(in),bwr(Trondheim)).
+
+
+pmess(start):-(bcpbc(hello)).
+
+pmess(quit(Message)):- (bcpbc(Message)).
+
+pmess(quit):-(bcpbc(bye)).
+
+pmess(howtuchelp):- home_town(Trondheim), %% TA-001231
+        (bcpbc(i),bcp(can),bcp(tell),bcp(you_acc),
+			bcp(about),bcp(busdepartures),bcp(in),bwr(Trondheim)).
+
+pmess(irrelevant(colour(_bus))) :- 
+    (bcpbc(thecolour),bcp(ofabus),bcp(is),bcp(irrelevant)).
+
+pmess(irrelevant(speed(bus))) :- 
+    (bcpbc(thespeed),bcp(ofabus),bcp(is),bcp(irrelevant)).
+
+pmess(irrelevant(weather)):-(bcpbc(theweather),bcp(is),bcp(irrelevant)).
+
+pmess(is(Class,Object)):- (bcpbc(it),bcp(is),bcp(Class),bwr(Object)).
+
+% pmess(maychange):-(startmark,bcp(yesmark)) with (startmark,bcp(no)).
+%  What the H %% TA-010912
+
+
+pmess(mustknow(place)):-(bcpbc(you),bcp(must),bcp(specify),bcp(aplace),
+         bcp(in),bcp(such),bcp(questions)).
+
+pmess(mustknow(tram)):- (bcpbc(you),bcp(must),bcp(specify),bcp(atram),bcp(in),bcp(such),
+			bcp(questions)). %% TA-001120
+
+pmess(mustknow(bus)):- (bcpbc(you),bcp(must),bcp(specify),bcp(abus),bcp(in),bcp(such),
+			bcp(questions)).
+
+pmess(mustknow(station)):- (bcpbc(you),bcp(must),bcp(specify),
+                            bcp(astation),bcp(in),bcp(such),
+			                   bcp(questions)).
+
+
+pmess(mustknow(date)):- (bcpbc(you),bcp(must),bcp(specify), %% TA-010606
+                            bcp(adate),bcp(in),bcp(such),
+			                   bcp(questions)).
+
+
+pmess(date_day_route(date(_,_,_),holiday)):- 
+    !,
+    bcpbc(i),bcp(have),bcp(notany),bcp(routes),bcp(for),
+    bcp(thisdate).
+
+pmess(date_day_route(date(Y2000,Y5,Y29),Monday)):- %% TA-001218
+    %% dayplural(Monday,Mondays), %% TA-010811
+    bcpbc(the_routes_on),writedate(date(Y2000,Y5,Y29)), 
+    bcp(are_the_same_as),outdays(Monday),write('.'). %% TA-010811
+
+pmess(date_isa_day(date(Y2000,Y5,Y29),Monday)):-
+    writedate(date(Y2000,Y5,Y29)),    %%  write(Y29),write('.'),write(Y5),write('.'),out(Y2000), 
+    bcp(isa),bcp(Monday),write('.'). %% TA-001213
+
+
+
+pmess(nodates):- (bcpbc(noinformation),bcp(specificdays)).
+
+pmess(noinfoabout(Delays)):-(bcpbc(noinformation),bcp(Delays)).
+
+pmess(noroutesfor(Tram)):- (bcpbc(i),bcp(have),bcp(notany),bcp(routes),bcp(for),
+	  	bcp(Tram)). 
+
+pmess(noroutesto(Place)):-  (bcpbc(i),bcp(have),bcp(notany),bcp(routes),bcp(for),
+			bcp(buses),bcp(to),bwr(Place)).
+
+pmess(not(Class,Object)):-(bcpbc(there),bcp(is),bcp(notany),bcp(Class),
+			bcp(called),bwr(Object)).
+
+
+pmess(sameplace(Place,Place)):-!. %% TA-010608
+
+pmess(sameplace(Place1,Place2)):- (bwrbc(Place1),bcp(and),
+                                   bwr(Place2),bcp(is),
+                                   bcp(thesame),bcp(place)).
+
+pmess(sorryno(map)) :- (bcpbc(sorryno),bcp(map)).
+
+pmess(strikeison):- bcpbc(strikeison),nl. 
+
+pmess(timeout):-  bcpbc(timeout),nl.
+
+
+pmess(underspecified_place(P)):- 
+    bcpbc(theplace), bwr(P), bcp(ismanyvalued),
+    dot,nl,bcpbc(precize).
+
+
+
+pmess(nobuses):- bcpbc(none),nl. 
+
+
+pmess(none):- nl.
+
+%.......................................
+
+bcpbc(Con) :- 
+	 (cwc(Con,Phrases);cwcerror(Con,Phrases)),
+	 languagenr(LN), 
+	 nth(LN,Phrases,Phrase),
+	 bigcap(Phrase,BCPhrase),
+	 write(BCPhrase),
+
+    !.   % Write once
+
+bcpbc(_) :-  write(' *** '). 
+
+
+bcp(Con) :-
+	 (cwc(Con,Phrases);cwcerror(Con,Phrases)),
+	 languagenr(LN),
+	 nth(LN,Phrases,Phrase),
+    space,                   %% Space first  Experiment 
+	 write(Phrase),
+	 !.   % Write once
+
+bcp(_):- write(' ** '). 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Mapping fra konsept til ord på hvert språk
+
+
+cwc(quote(S),[S,S]).
+
+cwc(a,['a','en']).
+cwc(about,['about','om']).
+cwc(abus,['a bus','en buss']).
+cwc(acomputer,['a computer','en datamaskin']).
+cwc(after,['after','etter']).
+cwc(airbuses,[airbuses,flybusser]). 
+cwc(and,['and ','og ']).
+cwc(adate,['a date','en dato']).
+cwc(aplace,['a place','et sted']).
+cwc(are,['are','er']).
+cwc(are_the_same_as,['are the same as on','er de samme som på']).
+cwc(arrivesat,['arrives at ','kommer til ']).
+cwc(arrival,['arrival', 'ankomst']).
+cwc(as,['as','som']).
+cwc(astation,['a station','en stasjon']).
+cwc(atram,['a tram','en trikk']).  %% TA-001120
+cwc(at,['at','ved']).
+cwc(atday,['at','på']).
+cwc(atstation,['at ','ved ']). %% 'på'  ved mer nøytralt  ( "Hovedterminalen er på Trondheim")
+cwc(attime,['at','klokken']).
+cwc(before,['before','før']).
+cwc(between,['between','mellom']).
+cwc(both,['both','både']).
+cwc(bus,['bus','buss']).
+cwc(buses,['buses','busser']).
+cwc(bus_det,['bus','bussen']).                % Bestemt form
+cwc(bus_ana_comes,['it comes','kommer den']). % Buss anaforisert kommer
+cwc(busdepartures,['bus departures','bussavganger']).
+cwc(busroutes,['bus routes','bussruter']).
+cwc(bustuc,['BusTUC','BussTUC']). 
+cwc(by,['by','ved']).
+cwc(bye,['good bye','ha det bra']). 
+cwc(called,['called','som kalles']).
+cwc(can,['can','kan']).
+
+cwc(cannot,['can not','kan ikke']).
+
+cwc(sorrycannot,['I''m afraid I can''t do that',
+                 'Jeg kan desverre ikke gjøre det']). %% TA-010129
+
+cwc(cannotanswer,['I can not answer that','Jeg kan ikke svare på det']). 
+cwc(cantake,['may take','kan ta']). %% TA-001215 (Not unique)
+
+cwc(change,['change','bytte']).
+cwc(comes,['comes','kommer']).
+cwc(coming,['coming','på vei']).
+cwc(company,[company,selskap]). 
+cwc(completesentence,['Please use a complete sentence',
+                       'Vennligst bruk en fullstendig setning']).
+cwc(direction,['direction','retning']).        %% TA-001111
+cwc(indirection,['in direction','i retning']). %% TA-001111
+cwc(delays,[delays,forsinkelser]).
+cwc(departure,['departure','avgang']).
+cwc(departures,['departures','avganger']).
+cwc(donotknow,['don''t know','vet ikke']).
+
+cwc(icannot,['I am sorry I cannot do that','Det kan jeg desverre ikke']). 
+%% (but you  can)
+
+cwc(nopassages,['There are none passing then','Det er ingen som passererer da']).
+cwc(notthestation, ['This route does not pass the station', 
+                    'Denne ruten passerer ikke stasjonen']).
+
+
+cwc(each,['each','hvert']).
+cwc(end_stations,['the end stations','endestasjonene']).
+cwc(entering,['entering','å gå på']).
+cwc(every,['every','hver']).
+cwc(flybussen,['The Aiport bus','Flybussen']). %% TA-010124
+cwc(for,['for','for']).
+cwc(friday,['Friday','fredag']).
+cwc(fridays,['Fridays','fredager']). 
+cwc(from,['from','fra']).
+cwc(first,['first','første']).
+cwc(goes,['goes','går']).
+cwc(going,['going','å dra']).
+cwc(happy_new_year,['Happy New Year','Godt Nyttår']).
+cwc(have,['have','har']).
+cwc(has,['has','har']). 
+cwc(hello,['hello','hallo']).
+cwc(hereafter,['after now','heretter']). %% TA-001130
+
+cwc(i,['I','jeg']).
+
+cwc(iamhere,['I am here','Jeg er her']). %% obnoxious ?
+
+cwc(idonotknow,['I am not able to answer that',
+                'Jeg kan ikke svare på det']).
+
+cwc(idonotunderstand,['I don''t understand that', %%  (  Avoid I want to die ==> OK)
+                      'Jeg forstår ikke det']).
+
+cwc(idkwhether,['I don''t know whether', 
+                'Jeg vet ikke om']).
+
+cwc(noroutesforthisdate,['I have no routes for this date',  %% TA-010722
+                         'Jeg har ingen ruter for denne datoen']).
+cwc(in,['in','i']).
+
+cwc(indirectiontowards,['in direction towards', 
+                         'i retning mot']).
+
+cwc(indirectionfrom,['in direction from', 
+                        ' i retning fra']).
+
+cwc(irregularity,['changes in schedules',       %% TA-010117
+                  'ruteendringer']). 
+cwc(irrelevant,['irrelevant','irrelevant']).
+cwc(is,['is','er']).
+cwc(isa,['is a ','er en ']). 
+
+cwc(ismanyvalued,['is not unique','er flertydig']). 
+cwc(it,['it','det']).
+cwc(kroner,['NOK','kr']).
+cwc(last,['last','siste']).
+cwc(later,['later','senere']).
+cwc(leaves,['leaves',forlater]).
+cwc(leaving,['leaving','å gå av']).
+cwc(length,[lengths,lengder]). 
+cwc(luggage,['luggage or lost property', %% TA-010921
+             'bagasje eller hittegods']). 
+
+cwc(mayor,[mayor,burgermester]). %% :-)
+cwc(map,[map,kart]). 
+cwc(merry_christmas,['Merry Christmas','God Jul']). 
+cwc(minute,['minute','minutt']).
+cwc(minutes,['minutes','minutter']).
+cwc(monday,['Monday','mandag']).
+cwc(mondays,['Mondays','mandager']).
+
+cwc(must,['must','må']).
+cwc(near,['near','nær']).
+
+cwc(never,['never','aldri']).
+cwc(neverpasses,['never passes ','passerer aldri ']). 
+cwc(next,['next','neste']).
+
+cwc(nocorresponse,['I cannot answer the request for correspondance',
+                   'Jeg kan ikke besvare forespørsel om korrespondering']). 
+
+cwc(nodirectroutes,['There are no direct routes ', 'Det er ingen direkteruter']).
+cwc(nightbus,[' the Night bus', 'Nattbussen']).
+cwc(no,['no','nei']).
+
+cwc(knownostations, 
+     ['I have no information about its neighbour stations',
+     'Jeg vet ikke om noen stasjoner i nærheten']). 
+
+cwc(nobodyisperfect,['Nobody is perfect','Ingen er feilfri']).
+cwc(noinformation,
+     ['I have no information about',
+      'Jeg har ingen informasjon om']).
+cwc(nomark,['No,','Nei,']).
+cwc(none,['none','ingen']).
+cwc(noplaces,['No known stations','Ingen kjente stasjoner']).  
+cwc(nostation,['No bus stations','Ingen busstasjoner']). 
+cwc(normally,['normally','vanligvis']).
+cwc(not,[not,ikke]).  
+cwc(notpossible,['not possible','umulig']).
+cwc(notany,['no','ingen']). 
+cwc(now,['now','nå']).
+cwc(nowhere,['nowhere','ingen steder']).
+cwc(nth(N),[Ord,Ord]) :- ordinal2(Ord,_,N).
+cwc(number,['number','nummer']).
+
+cwc(todayis,['Today: ','I dag: ']). %% TA-010717
+cwc(dateof,['of','']). 
+cwc(of,['of','i']).
+cwc(ofa,['of a','til en']). 
+cwc(ofabus,['of a vehicle','til et kjøretøy']). %%  (tram ?)
+cwc(ofmonth,['a month','i måneden']). 
+cwc(ofatrip,['of a trip','på en tur']).
+cwc(ok,['OK','OK']).  
+cwc(on,['on','på']).  
+cwc(once,[once,'en gang']).
+cwc(only,['only','bare']).
+
+cwc(onlyonebus,['I can only answer for one  bus at a time', 
+                'Jeg kan bare svare for en buss ad gangen']). 
+
+cwc(onlyoneday,['I can only answer for one day at a time', %% TA-010510 
+                'Jeg kan bare ta en dag ad gangen ']). 
+
+cwc(onlyoneplace,['I can only answer for one place at a time', 
+                'Jeg kan bare svare for et sted ad gangen']). 
+
+
+cwc(onlyonething,['I can only answer one thing at a time', %% TA-010124
+                     'Jeg kan bare svare på en ting ad gangen']).
+
+cwc(onlyonesentence,['I can only answer one thing at a time',
+                     'Jeg kan bare svare på en ting ad gangen']).
+
+cwc(notpossibleon,['That is not possible on', 
+                          'Det er ikke mulig på']).
+
+cwc(the_routes_on,['The routes on ','Rutene ']).  %% TA-001218
+
+cwc(theneareststationto,['The station nearest to ', 
+                         'Holdeplassen nærmest ']).
+
+cwc(toomanyplaces,['I can not handle so many places at a time !', 
+                   'Jeg kan ikke svare for så mange steder ad gangen !']). 
+
+cwc(or,['or','eller']).
+
+cwc(otherbus, ['other bus company ',    %% TA-010901
+               'annet busselskap ']).   %%
+cwc(passes,['passes by ','passerer ']). 
+cwc(passing,['passing','passerer']).
+cwc(past,[past,forbi]).           %% not past time %% TA-010907
+cwc(ping,[ping,ping]).            %%  :-)
+cwc(pong,[pong,pong]).            %%  :-)
+cwc(place,['place','sted']).
+cwc(precize,['Please use a more specific name',  
+             'Vennligst bruk er mer presist navn']).
+
+cwc(probably,['probably','sannsynligvis']).
+cwc(questions,['questions','spørsmål']).
+cwc(routes,['routes','ruter']).
+
+cwc(ruteopplysningen,['Route Information','Ruteopplysningen']). %% TA-010511
+cwc(saturday,['Saturday','lørdag']).
+cwc(saturdays,['Saturdays','lørdager']).
+
+cwc(say,['say','si']).
+cwc(size,[size,størrelse]).
+cwc(sorryno, ['Unfortunately, I can not show you any',
+              'Jeg kan desverre ikke vise noe']).
+
+cwc(special_ticket,['special tickets','spesielle billetter']).
+
+cwc(specificdays,['routes on this date', %% specific dates',        %% TA-001218
+                  'ruter på denne datoen']). %% 'spesielle datoer' %% TA-001218
+cwc(specify,['specify','oppgi']).
+
+
+% Experiment (more correct)
+
+ 
+cwc(station,['station','holdeplass']). 
+cwc(stations,['stations','holdeplasser']).
+
+% cwc(station,['station','stasjon']).
+% cwc(stations,['stations','stasjoner']).
+
+cwc(strikeison,['The bus drivers  are now on strike',    %% TA-001213 
+                'Bussjåførene  er for tiden i streik']). %%
+
+cwc(submarines,['submarines','ubåter']).
+cwc(such,['such','slike']).
+
+cwc(summerishere,['Summer routes are June 25. - August 19.',
+                  'Sommerruter gjelder 25. juni - 19. august.']). %% TA-010619 
+
+cwc(sunday,['Sunday','søndag']).
+cwc(sundays,['Sundays','søndager']). 
+cwc(swim,['swim','svømme']).
+
+cwc(takes,['takes','tar']).
+cwc(tell,['tell','fortelle']).
+cwc(thanks,['Thanks','Takk']). 
+cwc(that,['that','det']).
+cwc(thatisimpossible,['That is not possible','Det er ikke mulig']).  
+cwc(thatisunclear,['That is unclear','Det er uklart']). 
+cwc(thatmeans,['that means','det betyr at']).
+cwc(the,['the','den']).
+cwc(thebus,['the bus','bussen']). 
+cwc(thebuses,['the buses','bussene']).
+cwc(thecolour,['the colour','fargen']).
+cwc(thedate,['the date','datoen']).
+cwc(thefirst,['the first','første']).
+cwc(thelast,['the last','siste']).
+cwc(thenext,['the next','neste']).
+cwc(theprice,['the price','prisen']).
+cwc(thesame,['the same','samme']).
+cwc(thespeed,['the speed','hastigheten']).
+cwc(there,['there','det']).
+cwc(thestation,['the station','holdeplassen']).  
+cwc(thestations,['the stations ','holdeplassene ']). 
+cwc(theweather,['the weather','været']).
+cwc(theplace,['The place','Stedet']). 
+cwc(thetime,['the time','klokka']).
+cwc(this,['this','dette']).
+cwc(thisdate,['this date','denne dato']).
+cwc(thursday,['Thursday','torsdag']).
+cwc(thursdays,['Thursdays','torsdager']).
+cwc(timeout,['I could not find any connections in time',
+             'Jeg klarte ikke å finne noen forbindelser i tide']).
+             
+cwc(to,['to','til']).
+cwc(tram,['tram','trikk']). 
+cwc(trams,['trams','trikker']).
+cwc(tramstation,['tramstation',trikkestasjon]).
+cwc(tuesday,['Tuesday','tirsdag']).
+cwc(tuesdays,['Tuesdays','tirsdager']).
+cwc(unknown,['unknown','ukjent']).
+cwc(via,[via,via]).
+cwc(yes,['yes','ja']).
+cwc(yesmark,['Yes,','Ja,']).
+cwc(you,['you','du']).
+cwc(you_acc,['you','deg']).
+cwc(you_are_welcome,['You are welcome','Vær så god']). 
+cwc(youknow,['you know','vet du']).
+cwc(waddyathink,['I suppose so','Jeg antar det']).
+cwc(walking_distance,['walking distance','gangavstand']). %% TA-001129
+cwc(wednesday,['Wednesday','onsdag']).
+cwc(wednesdays,['Wednesdays','onsdager']).
+cwc(when,['when','når']).
+cwc(with,['with','med']). 
+cwc(would,['would','ville']).
+
+cwc(G,[G,N]):- 
+    dict_n:noun2(N,G).
+cwc(N,[N,N]):-number(N). 
+cwc(M,[N,N]):-known_name(M),specname(M,N). 
+
+
+cwc(askfor(when),['When do you wish to travel', 'Når ønsker du å dra']).
+cwc(askfor(when::departure),['What time of departure do you wish', 'Når ønsker du avgangstid']).
+cwc(askfor(when::arrival),['When do you wish to arrive', 'Når ønsker du å ankomme']).
+cwc(askfor(when::day),['Which day do you want to travel', 'Hvilken dag ønsker du å dra']).
+cwc(askfor(where::direction), ['In what direction do you wish to travel', 
+                               'I hvilken retning ønsker du å dra']).
+
+cwc(askfor(bus),['What bus do you want to take',
+             'Hvilken buss ønsker du å bruke']).
+
+
+cwc(askfor(where),['Where do you want to travel',
+             'Hvor ønsker du å reise']).
+cwc(askfor(where::arrival),['Where do you want to go to',
+             'Hvor ønsker du å reise til']).
+cwc(askfor(where::departure),['Where do you want to travel from',
+             'Hvor ønsker du å reise fra']).
+
+cwc(dialogerror,['I don\'t understand',
+             'Jeg skjønner ikke']).
+
+cwc(which,['Which', 'Hvilken']).
+
+cwc(tbs_welcomegreeting, ['Welcome to the Tabor-project bus route information.',
+                          'Velkommen til Tabor-prosjektets ruteopplysning.']).
+cwc(tbs_welcomequestion,['Do you know how the system works?','Vet du hvordan systemet virker?']).
+cwc(tbs_userhelp, ['Please try to express yourself in simple sentences',
+                   'Forsøk å uttrykk deg så enkelt som mulig']).
+cwc(tbs_whentotravel, ['Please state a time.', 'Vennligst angi tidspunkt.']).
+cwc(tbs_deporarr, ['do you wish depature or arrival at', 'ønsker du avgang eller ankomst kl']).
+       	
+cwc(tbs_askref_from, ['do you wish to travel from', 'ønsker du å dra fra']).
+cwc(tbs_askref_to, ['do you wish to arrive at', 'ønsker du å ankomme']).
+cwc(tbs_askref_day, ['do you wish to travel on', 'ønsker du å dra på']).
+cwc(tbs_asknewtime, ['do you wish to state a new time', 'ønsker du å oppgi et nytt tidspunkt?']).
+cwc(tbs_asknewbusconnection, ['Do you wish more information about a new bus connections?', 
+                               'ønsker du opplysninger om en ny bussforbindelse?']).
+cwc(tbs_endmsg, ['can I help you with something else?', 'kan jeg hjelpe deg med noe annet?']).
+cwc(tbs_whichday, ['Which day do you wish to travel?', 'Hvilken dag ønsker du å reise?']).
+cwc(tbs_wishtime, ['Do you want timeinformation?', 'Ønsker du opplysninger om tiden?']).
+cwc(tbs_askref_day, ['Do you wish to travel on', 'Ønsker du å dra på']).
+cwc(tbs_fromwhere, ['where do you wish to travel from?', 'hvor ønsker du å dra fra?']).
+cwc(tbs_towhere, ['where do you wish to travel to?', 'hvor ønsker du å dra til?']).
+
+
+% Skriver feilmelding dersom mapping mangler
+cwcerror(Con,[Con,'???']) :-
+    !.
+
+% % % % % % % % % % % % 
+
+outday(X):- bcp(X). 
+outdays(X):- dayplural(X,Y),bcp(Y). 
+
+
+dayplural(monday,mondays). 
+dayplural(tuesday,tuesdays).  
+dayplural(wednesday,wednesdays).
+dayplural(thursday,thursdays).
+dayplural(friday,fridays).
+dayplural(saturday,saturdays).
+dayplural(sunday,sundays).
+
+%% New Predicate  %% TA-001213
+
+monthshort(1, 'Jan.', 'Jan.').
+monthshort(2, 'Feb.', 'Feb.').
+monthshort(3, 'Mar.', 'Mar.').
+monthshort(4, 'Apr.', 'Apr.').
+monthshort(5, 'May.', 'Mai.').
+monthshort(6, 'Jun.', 'Jun.').
+monthshort(7, 'Jul.', 'Jul.').
+monthshort(8, 'Aug.', 'Aug.').
+monthshort(9, 'Sep.', 'Sep.').
+monthshort(10,'Oct.', 'Okt.').
+monthshort(11,'Nov.', 'Nov.').
+monthshort(12,'Dec.', 'Des.').
+
+
+streetspecname(X,N):-streetstat(X,N,_,_,_),!.  %% NB NOT FIRST ORDER NORMAL FORM 
+
+ordinal2(X,Y,Z):-dict_module(D),D:ordinal2(X,Y,Z).
+
+
+description(thing,thing):-!.
+
+description(date(_,_,_),date):-!.
+
+description(X,Z):-
+    X ako Z,
+    !.
+
+description(X,Z):-
+    fact(X isa Z),
+    !.
+
+description(_,unknown). 
+
+

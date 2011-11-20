@@ -1,0 +1,497 @@
+<Oppdatert: 2005-11-10, EH>
+
+Utdrag av dialoger fra BUSTER.
+Basert på siste versjon av BUSTER mottatt 2005-09-12.
+Dobbel *-rekke signaliserer at dialogen er resatt og at et nytt
+eksempel starter.
+Forøvrig benyttes "adjø." eller "\quit" for å resette dialoghistorien.
+Kommentar-linjer starter med:
+---> <EH: bla bla bla....>
+--------------------------------------------------------------------------
+
+DIALOGRELATERTE EKSEMPLER
+==============================
+==============================
+
+************************************************************************
+************************************************************************
+
+N: fra lerkendal til sentrum.
+
+
+Du vil dra  til  sentrum,  fra  Lerkendal stadion, .
+
+
+Når vil du dra?
+----------------------------------
+
+N: ankomst før klokka 17.
+
+- - - Vennligst bruk en fullstendig setning - - - 
+
+Jeg forstår ikke.
+----------------------------------
+
+---> <EH: Bør ikke dette forstås?
+          Skjønner heller ikke "avgang/avreise etter klokka 17".
+          Hvis vi legger på "jeg vil ha" foran går det bra,
+          men det bør være unødvendig.
+
+¤¤¤¤¤¤¤ TA  Fixet ¤¤¤¤¤¤¤¤¤4
+
+N:  ankomst før klokka 17.
+
+
+Du vil dra  til  sentrum,  før klokken   17:00, .
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+
+************************************************************************
+************************************************************************
+
+N: fra lerkendal til sentrum.
+
+
+Du vil dra  til  sentrum,  fra  Lerkendal stadion, .
+
+
+Når vil du dra?
+----------------------------------
+
+N: ankomst før klokka 17.
+
+- - - Vennligst bruk en fullstendig setning - - - 
+
+Jeg forstår ikke.
+----------------------------------
+
+N: avreise etter klokka 17.
+
+- - - Vennligst bruk en fullstendig setning - - - 
+
+Jeg forstår fortsatt ikke, og må desverre avslutte samtalen.
+
+Ha det bra
+----------------------------------
+
+---> <EH: For bruk i demonstratoren bør dette avbruddet fra Buster fjernes,
+          dvs. setningen "Jeg forstår fortsatt ikke, og må desverre avslutte
+          samtalen" bør erstattes med "Jeg forstår ikke." Nedkobling av
+          samtalen må uansett skje fra selve demo-programmet som styrer
+          telefonigrensesnittet. Slik det fungerer i dag, kommer denne
+          meldingen, mens Buster og demonstratoren fortsetter videre...>
+
+
+
+¤¤¤¤¤¤¤¤  TA  Fikset
+
+
+N: bla bla bla.
+
+
+Jeg skjønner ikke.
+----------------------------------
+
+N: bla bla bla.
+
+
+Jeg skjønner ikke.
+----------------------------------
+
+N: bla bla bla.
+
+
+Jeg skjønner ikke.
+----------------------------------
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+
+************************************************************************
+************************************************************************
+
+N: lerkendal retning sentrum.
+
+
+Du vil dra  til  sentrum,  fra  Lerkendal stadion, .
+
+
+Når vil du dra?
+----------------------------------
+
+N: retning sentrum fra lerkendal.
+
+- - - Vennligst bruk en fullstendig setning - - - 
+
+Jeg forstår ikke.
+----------------------------------
+
+---> <EH: Bør forstås. Har kun byttet rekkefølge på fra- og til-sted>
+
+
+¤¤¤¤¤¤ TA Fikset
+
+
+N: retning sentrum fra lerkendal.
+
+
+Du vil dra  til  sentrum,  fra  Lerkendal stadion, .
+
+Når vil du dra?
+----------------------------------
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+************************************************************************
+************************************************************************
+
+N: vært på kattem.
+
+
+Du vil dra  fra  Kattem, .
+
+
+Hvor vil du reise til ?
+----------------------------------
+
+N: \quit   
+
+----------------------------------
+
+N: vært ved kattem.
+
+- - - Uforståelig ved * - - - 
+
+vært ved kattem . * 
+
+
+Jeg forstår ikke.
+----------------------------------
+
+---> <EH: Bør også forstås om vi bytter ut 'på' med 'ved'.>
+
+---> <EH: Tilsvarende også for "skulle vært på/ved kattem">
+
+¤¤¤¤ TA  FIKSET 
+
+N: vært ved kattem.
+
+
+Du vil dra  fra  Kattem, .
+
+
+Hvor vil du reise til ?
+----------------------------------
+
+N: skulle vært  ved kattem.
+
+
+Du vil dra  til  Kattem, .
+
+
+Når vil du dra?
+----------------------------------
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+
+************************************************************************
+************************************************************************
+
+N: avgang sentrum til lerkendal.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum, .
+
+
+Når vil du dra?
+----------------------------------
+
+N: \quit
+
+----------------------------------
+
+N: avreise sentrum til lerkendal.
+
+- - - Vennligst bruk en fullstendig setning - - - 
+
+Jeg forstår ikke.
+----------------------------------
+
+---> <EH: Bør også forstå "avreise">
+
+¤¤¤¤¤¤¤ TA  Fikset ¤¤¤¤¤¤¤¤¤¤
+
+N: avreise sentrum til lerkendal.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum, .
+
+
+Når vil du dra?
+----------------------------------
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+
+
+
+************************************************************************
+************************************************************************
+
+N: er på kattem.
+
+
+Du vil dra  fra  Kattem, .
+
+
+Hvor vil du reise til ?
+----------------------------------
+
+N: \quit
+
+----------------------------------
+
+N: er nå på kattem.
+
+- - - Uforståelig ved * - - - 
+
+er nå på * kattem . 
+
+
+Jeg forstår ikke.
+----------------------------------
+
+---> <EH: Bør også fostå om vi legge inn ordet 'på'>
+
+
+¤¤¤¤¤¤¤ TA  Fikset ¤¤¤¤¤¤¤¤¤¤¤¤
+
+N:  er nå på kattem.
+
+
+Du vil dra  fra  Kattem, .
+
+
+Hvor vil du reise til ?
+----------------------------------
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+************************************************************************
+************************************************************************
+
+
+
+
+IKKE DIALOG-SPESIFIKKE PROBLEMER NEDENFOR:
+===========================================
+===========================================
+
+************************************************************************
+************************************************************************
+
+N: fra lerkendal til rosenborg skole nå.
+
+
+Du vil dra  til  Rosenborg skole,  fra  Lerkendal stadion,  etter klokken
+11:22, .
+
+
+
+Det er ikke mulig med avgang etter klokken 11:22, .
+Buss 63,  passerer  Rosenborg skole,  klokken 23:54, .
+Ønsker du flere opplysninger kan du spørre nå, eller legge på røret.
+----------------------------------
+
+N: \quit
+
+----------------------------------
+
+---> <EH: I de tilfeller hvor Buster ikke finner noen forbindelse,
+          kan man kanskje endre tilbakemeldingen til bruker. F.eks. i
+          tilfellet ovenfor er det lite nytte for brukeren med
+          tilbakemeldingen "Buss 63 passerer Rosenborg skole klokken 23:54"
+          Denne kan kanskje søyfes helt? Det bastante utsagnet "Det er
+          ikke mulig..." kan f.eks. byttes ut med det litt mer ydmyke
+          "Jeg finner ingen passende forbindelse...">
+
+---> <EH: Hvorfor finner den ikke noen rute her? Hvis vi deler opp i
+          2 forespørsler jfr. nedenfor går det greit:>
+
+¤¤¤¤¤¤   TA   Er blitt ordnet, klarte ikke å gjenslkape feilen ¤¤¤¤
+
+
+N: fra lerkendal til rosenborg skole etter kl 1122 i morgen.
+
+
+Du vil dra  til  Rosenborg skole,  fra  Lerkendal stadion,  etter klokken    11:22,  på   fredag.
+
+Buss 36,  går fra Lerkendal stadion,  klokken 11:42,  til Studentersamfundet 1,  klokken 11:45, 
+ og  buss 63,  går fra Studentersamfundet 2,  klokken 11:52,  til Rosenborg skole,  klokken 12:03, .
+Ønsker du flere opplysninger kan du spørre nå, eller legge på røret.
+----------------------------------
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+
+N: fra lerkendal til studentesamfundet nå.
+
+
+Du vil dra  til  Studentersamfundet,  fra  Lerkendal stadion,  etter klokken
+11:23, .
+
+
+
+Buss 8,  passerer  Lerkendal stadion,  klokken 11:30,
+ og   Studentersamfundet, holdeplass 1,  klokken 11:33, .
+Ønsker du flere opplysninger kan du spørre nå, eller legge på røret.
+----------------------------------
+
+N: etter klokka 1134 fra studentersamfundet til rosenborg skole.
+
+
+Du vil dra  til  Rosenborg skole,  fra  Studentersamfundet,  etter klokken
+11:34, .
+
+
+
+Buss 63,  passerer  Studentersamfundet, holdeplass 2,  klokken 11:52,
+ og  Rosenborg skole,  klokken 12:33, .
+Ønsker du flere opplysninger kan du spørre nå, eller legge på røret.
+----------------------------------
+
+---> <EH: Er ventetiden på 19 minutter for lang til at Buster godtar
+          det som en overgang? Hva er i så fall maks. ventetid for
+          at Buster skal akseptere en overgang?>
+
+¤¤¤¤ TA ¤¤¤
+
+  Tidsbegrensningen er ca 1 time 
+  Jeg håper problemt er uaktuelt
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+
+
+************************************************************************
+************************************************************************
+
+N: fra sentrum til lerkendal på mandag formiddag.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum,  før klokken   12:00,  på
+mandag.
+
+
+
+Buss 60,  passerer  Munkegata, holdeplass M3,  klokken 11:35, 
+ og   Lerkendal stadion,  klokken 11:41, .
+Ønsker du flere opplysninger kan du spørre nå, eller legge på røret.
+----------------------------------
+
+N: \quit
+
+----------------------------------
+
+N: fra sentrum til lerkendal på mandag morgen.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum,  med første buss.  før
+klokken   12:00,  på   mandag.
+
+
+
+Buss 66,  passerer  Munkegata, holdeplass M3,  klokken 06:15, 
+ og   Lerkendal stadion,  klokken 06:21, .
+Ønsker du flere opplysninger kan du spørre nå, eller legge på røret.
+----------------------------------
+
+---> <EH: Krøll i verifikasjonen i siste eksempel. Fjern punktum i setningen
+          og "før klokken 12:00">
+
+¤¤¤¤¤ TA  ¤¤¤¤¤¤¤¤
+
+Fjernet '.' . Forøvrig synes jeg ikke der er krøll
+
+¤
+
+N:  fra sentrum til lerkendal på mandag morgen.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum,  med første buss  på   mandag.
+
+
+
+Buss 36,  passerer  Dronningensgate, holdeplass D4,  klokken 06:00, 
+ og   Lerkendal stadion,  klokken 06:37, .
+Ønsker du flere opplysninger kan du spørre nå, eller legge på røret.
+----------------------------------
+
+N:  fra sentrum til lerkendal på mandag formiddag.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum,  før klokken   12:00,  på   mandag.
+
+
+
+Buss 60,  passerer  Munkegata, holdeplass M3,  klokken 11:35, 
+ og   Lerkendal stadion,  klokken 11:41, .
+Ønsker du flere opplysninger kan du spørre nå, eller legge på røret.
+----------------------------------
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+************************************************************************
+************************************************************************
+
+N: fra sentrum til lerkendal i morgen tidlig.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum,  med første buss.  på
+fredag.
+
+
+
+Buss 66,  passerer  Munkegata, holdeplass M3,  klokken 06:15, 
+ og   Lerkendal stadion,  klokken 06:21, .
+Ønsker du flere opplysninger kan du spørre nå, eller legge på røret.
+----------------------------------
+
+---> <EH: Fjern punktum inne i verifikasjonssetningen.>
+
+¤¤¤ TA  Fikset ¤¤¤¤¤¤¤
+
+N: : fra sentrum til lerkendal i morgen tidlig.
+
+
+Du vil dra  til  Lerkendal stadion,  fra  sentrum,  med første buss  på   fredag.
+
+
+
+Buss 36,  passerer  Dronningensgate, holdeplass D4,  klokken 06:00, 
+ og   Lerkendal stadion,  klokken 06:37, .
+Ønsker du flere opplysninger kan du spørre nå, eller legge på røret.
+----------------------------------
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+N: 
+************************************************************************
+************************************************************************
+

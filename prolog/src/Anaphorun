@@ -1,0 +1,33 @@
+\begin
+
+\english
+
+\set busflag false
+
+\set queryflag false
+
+\set textflag false
+
+\set spellcheck 0
+
+\erase
+
+john loves mary.
+
+
+tore  has a car.
+
+\status
+
+mary likes this car.
+
+john loves her.
+
+mary loves him.
+
+who loves mary ?
+
+who does mary love ?
+
+
+\end

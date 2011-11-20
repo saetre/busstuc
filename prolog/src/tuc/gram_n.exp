@@ -1,0 +1,6723 @@
+%% FILE gram_n.pl   NORSK GRAMMATIKK
+%% SYSTEM TUC
+%% CREATED TA-961017
+%% REVISED TA-011005
+
+:-module(gram_n,[]).
+
+%           T H E     J U L E K A L E N D E R
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Consensical Grammar  (Context Sensitive Categorial Attribute Logic Grammar)
+
+
+%%   P \ Q   Phrase P starting with Q
+%%
+%%   P - Q   Assume Q, try P with or without Q
+%%
+%%   P / Q   P missing Q within 
+%%
+%%   P = Q   Phrase P as defined exactly by Q (NB needs begin/end enclosures)
+%%
+%%
+%%   begin  
+%%     ...    Prevents movement from store to text exactly
+%%   end
+%%
+%%   lock  
+%%     ...    Prevents movement from store to text temporarily
+%%   unlock 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                       %
+% Predicates are ordered by a top down calling order    %
+%                                                       %
+% Grammar Rules are generally arranged by a greedy      %
+% heuristics, trying the longest possible phrases       %
+% in decreasing order of probability.                   %
+% This is so because longer phrases means more context  %
+% If a phrase is analysed as a category,  then          %
+%      no longer phrase for that category is possible.  %
+% This makes ! in the grammar safer                     %
+% The first syntactically and semantically satisfying   %
+%   analysis is adopted.                                %
+%                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Suffix Conventions 
+%
+%     Dummy          00
+%     Optional       0        ?
+%     One (complex)
+%     One simple     1
+%     One or more    s        +
+%     Zero or more   s0       *
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Main layout 
+
+% syntax_class(syntax_parameter* , code_parameter*, FOREC).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+sentence([new::P]) ---> 
+    {user:value(queryflag,false)}, %%  Only in multi dialog system 
+    declaration(P),
+    terminatore,  
+    !.
+
+sentence(ListOfS)  ---> 
+    onesentence(S1),
+    { S1 \== error},   
+    check_stop,               %% RUNTIME PREDICATE, CHECK IF nothing left on stack
+    moresentences(S1,ListOfS).
+
+
+
+moresentences(S1,Square) --->
+    onesentence(S2),
+    check_stop,  %% CHECK IF nothing left on stack %% TA-001016
+    evenmore(S1,S2,Square).
+
+
+evenmore(S1,[],[S1]) ---> []. %% Normal end of list
+
+
+evenmore(S1,error,[S1,error]) ---> %% Erroneous end of list
+    !,
+    skip_rest.
+
+
+evenmore(S1,S2,[S1|Square]) --->     
+    moresentences(S2,Square).
+
+onesentence([])    --->  endofline,!.
+onesentence(P)     --->  conf_statement(P),terminatore0,!.
+onesentence(S)     --->  sentence1(S),terminatore,!. %% e.g. 'og' 
+onesentence(error) --->  skip_rest. %% New Runtime predicate
+
+conf_statement(confirm::TF)   ---> confirm(TF).
+
+confirm(true) ---> [ja], of_course0.
+confirm(false) ---> [nei],of_coursenot0.
+
+confirm(true) --->  of_course.
+confirm(false) ---> of_course,[ikke].
+
+
+terminatore0 ---> terminatore,!.
+terminatore0 ---> []. %% comma
+
+
+
+terminatore ---> [og],!. 
+terminatore ---> [eller],!.      %% TA-001030
+terminatore ---> terminator1.    %% TA-001204
+
+terminator1 ---> terminator,!.   %% TA-001204
+terminator1 ---> check_stop,endofline,!. %% Really end
+
+%%% terminator1 ---> endofline. %%% Possibly something on stack
+    %% hvilken rute kjører buss 8                        %% TA-010326
+ 
+
+endofline ---> terminator,endofline,!. 
+endofline ---> [+],endofline,!.        %% '+' = lower case '?' 
+endofline ---> end_of_line.  
+
+
+%% NB New runtime routine end_of_line (dagrun.pl)
+
+
+sentence1(P) ---> %% Moved before question 
+    command(P).   %% gi meg bussene fra nth
+
+sentence1(P) --->
+    greetings0, 
+    question(P).
+
+ 
+sentence1(item::P)  --->   %% nr . ( 52 går)
+    noun(_Man,_,_u,n,it:_,P),   %%  menn 
+   {user:value(dialog,1)},
+    endofline, %% terminator1, %% ikke og/eller her %% TA-001204
+    !.
+
+sentence1(item::P) ---> 
+    item(P),
+    terminator1,  %% ikke og/eller her %% TA-001204
+    !.
+
+sentence1(P)  ---> %% last in Contiguous regime
+    {value(queryflag,true)}, 
+    implicitq(P).
+    
+%%     !. 
+
+sentence1(new::P) --->
+    greetings0,
+    statement(P).
+
+%%% ITEM SECTION
+
+item(P) ---> 
+     name_phrase(_IND,_,true,P).
+
+
+%%%% COMMAND SECTION
+
+command(_) ---> [vil],!,fail.  
+command(_) ---> [skal],!,fail.  
+
+command(do::quit(Message)) ---> 
+    quit(Message),
+    skip_rest.                      %% TA-010929  
+
+command(do::reply(Ans)) ---> personal(Ans).
+
+command(do::P) ---> 
+    please0,         %% vær så snill å 
+    imp_phrase(V,_Vtype), %% NB  Vtype is the type that the VP is called with
+%     {\+ testmember(V,[go,run])}, %% not meant as a command %% TA-010206
+    begin, %% NB new           %% but will not be taken literally
+        name_phrase(_IND,X,P1,P)=w(name(tuc,n,program)), %% NB = (just cosmetics)
+    end, 
+    !,  
+
+    worldcom(S,P1,ERS),           %% TA-011005
+
+    verb_phrase1(X,S,id,ERS)  \   %% TA-011005
+                                            % capture clausal_phrase 
+       w(verb(V,pres,fin)). 
+
+command(do::replyq(Hei)) --->  %%  Literal answer
+    greetings(Hei).
+
+command(do::replyq('?')) ---> end_of_line.
+
+%% Swapped parameters/modes
+
+imp_phrase(let,rv) ---> %% Let 
+    lexv(let,rv,imp,fin),!. %% Norwagism 
+
+
+imp_phrase(list,Vt) --->
+    faa,
+    lexv(Vt,see,_,fin),!. %% Norwagism , not pres
+
+
+imp_phrase(V,Vt) ---> 
+     lexv(Vt,V,imp,fin), %% EXPERIMENT  reis til  
+     {\+ V=be},
+     {\+ Vt=rv}.         %% show means transitive show 
+        
+
+imp_phrase(V,rv) ---> %% TA-010404 
+     lexv(rv,V,imp,fin), %% Fortell meg 
+     reciprov0(V),
+    {\+ V=be}.
+
+imp_phrase(V,Vt) ---> 
+     lexv(Vt,V,inf,fin), %% EXPERIMENT  reise til 
+     {\+ V=be}.   
+
+%%%%% DECLARATION SECTION
+
+declaration(Tore isa self) ---> 
+    i,   
+    be,
+    !,
+    newatomid(Tore). 
+
+declaration(P) ---> 
+    newatom(X),  
+    be,
+    a,
+    !,
+    noun(_,sin,u,n, X, P). 
+
+
+%%% STATEMENT SECTION    
+
+% The set of predicates determine statement by gradual specificity
+% 
+
+% statement, statemen, statemen1, statemes, statems, statems0,
+% statem, state, st, stn0, st0, st1
+
+statement(P) --->  
+    statemen(real,P).
+
+%
+
+/*  Not relevant  (Rule definition)
+
+statemen(NewHere,P) ---> 
+    ifstatement(NewHere,P).
+
+substatement(P) ---> %% TA-010612  (when) ...
+     statem(S,event/real/S,P).
+
+*/
+
+statemen(R,P) --->
+    statemes(S,event/R/S,P). 
+
+%
+
+statemen1(R,P) ---> % simple version, with world
+    statem(S,event/R/S,P).
+
+%
+
+/*  Not relevant  (Rule definition)
+
+statemes(S,Com,KA) --->
+    ifstatement(S,Q),
+    event00(S,Com,Q,KA).
+
+
+ifstatement(R,forall(S)::(event/R/S and P => Q)) ---> 
+    if1,       
+    statems(S, true,P),  % ands, no if
+    then1, 
+    statemes(S, true,Q). % ands, if
+
+*/
+
+
+
+statemes(S,Com,P) --->
+    statems(S,Com,P).
+
+statems(S,Com,Q) --->          
+    statem(S,Com,P),         
+    statems0(S,Com,P,Q).
+
+
+statems0(S,Com,P,P and R) --->  
+    and1, %% and/2 is an operator (dcg_e)
+    statem(S,Com,Q),
+    statems0(S,Com,Q,R).
+
+statems0(_,_,P,P) ---> [].   
+
+%
+
+statem(_,_,_) ---> %% TA-010621
+    [hva],
+    !,
+    fail. %% hvor mange turer går bussen hver dag
+
+statem(_,_,_) ---> %% TA-010621
+    [hvor],
+    !,
+    fail. %% hvor mange turer går bussen hver dag
+
+
+statem(S,Com,Q) ---> 
+    state(S,Com,Q). 
+
+statem(S,Com,Q) --->  %% skal til  byen  %% Norwagism
+    skalvil,
+    prepnof(Prep),
+%    !,       fra = after/from   COMMIT error
+    state(S,Com,Q) \  ([jeg],w(verb(go,pres,fin)),prep(Prep)).
+
+
+statem(S,Com,Q) --->  %% skal ta buss til  byen  %% Norwagism
+    skalvil,
+    state(S,Com,Q) \  ([jeg]).
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% THEREIT 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Antecipatory Infinitivals
+
+statem(S,Com,P) ---> %% Experiment
+    thereit,        
+    bimodal(Cost,Money),    %% costs , takes, lasts
+    {constrainit(IT,Money)},
+    verb_phrase1(IT,S,id,Com:P) \ 
+        w(verb(Cost,pres,fin)).  %   koster penger aa ta buss
+                                 % = koster penger for å ta buss
+
+
+statem(S,Com,P1) ---> %% ExperimentDet går an å ta buss
+    thereit,         %% TA-001117
+    w(verb(go,pres,fin)),
+    negation(N),    
+    ann0,  %% [an],  hazard?
+    infinitive,
+    st(S,id,Com,P) \ someone,
+    {negate(N,P,P1)}.
+                               
+
+statem(S,Com,P) --->  
+    thereit, 
+    be,
+    adverbial(Prep,Y,SC,P3), %% v0_complement..  ==> adverbial..
+    that,
+    state(S,Com,P)  -  adverbial(Prep,Y,SC,P3).
+
+ 
+
+statem(S,Com,P) ---> %% Det er godt at jeg lever
+    thereit,        
+    be,
+    negation(_N),
+    saa0,
+    w(adj(_Good)),
+    that, 
+    !,              %% <--- !!! Important
+    state(S,Com,P). %% i.e. IGNORE the adjective
+
+statem(S,Com,P) ---> %% Det er godt jeg lever
+    thereit,        
+    be,
+    negation(_N),
+    saa0,
+    w(adj(Good)),
+   {testmember(Good,[good])},  %% TA-010522 Er det edru sjåfører
+    state(S,Com,P).
+
+statem(S,Com,Q) --->   %% Last of there is
+    thereit,        
+    be(N),
+    {negate(N,P,Q)}, %% TA-010211
+    {it_template(IT)},
+    so0,
+    w(adj(Good)),  %% late is also adverb
+    be_complements(IT,S,Com:P) \ w(adj(Good)). % Det er mørkt i kveld. 
+
+statem(S,Com,P) ---> 
+    thereit,
+    be,        
+    reductant0,         %% det er vel ingen ...
+    negation(N),    
+    % !,  
+    state(S,Com,P) -  
+        (lexv(iv,exist,pres,fin),negation(N)), %% AD HOC,
+    !. %% <--- !!!                       % exist does not need a complement
+
+statem(S,Com,P) --->
+    thereit,        
+    lexv(_,V,T,fin),
+    negation(N),
+    adverb(X,Y,Z),   %%  (snart)  late is both adjective and adverb
+    !,
+    state(S,Com,P) -  
+        (lexv(_,V,T,fin),negation(N),adverb(X,Y,Z)).
+
+statem(S,Com,P) --->
+    thereitN,             %% det ikke  %% TA-010612        
+    lexv(_,V,T,fin),
+    negation(N),
+    !,                     %% Drastic
+    state(S,Com,P) -  
+        (lexv(_,V,T,fin),negation(N)). 
+
+statem(_,_,ok) ---> %%  Moved back  Det er bra 
+    thereit,        
+    be,
+    negation(_N),
+    so0,
+    w(adj(_Good)). 
+
+statem(_,_,ok) ---> %%  det regner/snør
+    thereit,        
+    w(verb(B,_,_)),
+    { B \== be },  
+    negation(_N).
+
+%
+%  End THEREIT
+
+%% er der = er det      %% Moved after thereit 
+
+statem(S,Com,Q) ---> %%   Da er du ikke et orakel
+    adverbx(Day,DayClass,pre), 
+    be,
+    specific_phrase(A,B,C),
+    negation(N),
+    !,
+    state(S,Com,Q)  -                    
+        (  noun_phrase(A,B,C), be(N) , %% TA-001214
+           adverbx(Day,DayClass,_)).   %% adverbx, not noun_compl  
+                                       %% nå må jeg kjøpe en bil
+                                       %% -> jeg må kjøpe en (bil nå)                                       
+
+statem(S,Com,Q) ---> %%  Da er ikke du  et orakel
+    adverbx(Day,DayClass,pre), 
+    be(N),
+    !,
+    state(S,Com,Q)  -                    
+        (  be(N) ,adverbx(Day,DayClass,_)).
+
+
+statem(S,Com,Q) ---> %% Nå skal vi gå
+    adverbx(Day,DayClass,pre), 
+    saa0, 
+    do,
+    state(S,Com,Q)  -                    
+        (adverbx(Day,DayClass,_)). %% TA-001214
+
+
+statem(S,Com,Q) --->
+    adverbx(Day,DayClass,pre), 
+    saa0, 
+    lexv(Vcat,V,T,fin), 
+    state(S,Com,Q)  -                    
+        ( lexv(Vcat,V,T,fin),adverbx(Day,DayClass,_)). %% TA-001214
+
+
+
+%% adverb prefixes moved after thereit prefixes of very subtle reasons
+%% ///  jeg vet når det går buss
+
+statem(S,Com,Q) ---> %% I Trondheim er det en buss %% TA-010213
+    adverbial1(Prep,Y,SC,P3), 
+    be,
+    thereit,
+    !,
+    statem(S,Com,Q)  -                    
+        ( thereit, be,adverbial1(Prep,Y,SC,P3)).
+
+statem(S,Com,Q) ---> %% fronted %% I Trondheim vil/(ambig) vi ta buss
+    adverbial0(Prep,Y,SC,P3), 
+    do,
+    !,
+    state(S,Com,Q)  -                    
+        ( adverbial1(Prep,Y,SC,P3)).
+
+statem(S,Com,Q) --->
+    adverbial0(Prep,Y,SC,P3), 
+    lexv(Vcat,V,T,fin), 
+    state(S,Com,Q)  -                    
+        ( lexv(Vcat,V,T,fin),    
+          adverbial1(Prep,Y,SC,P3)).
+
+
+%%%%%%% End Statem
+
+
+
+state(S,Com,Q) --->  
+    st(S,N,Com,P),
+    {negate(N,P,Q)}. 
+
+state(S,Com,Q) ---> 
+    thereit,  
+    be_truefalse(N),
+    that,
+    state(S,Com,P),
+    {negate(N,P,Q)}.
+
+state(S,Com,Q) --->   
+    that,
+    state(S,Com,P),
+    be_truefalse(N),
+    {negate(N,P,Q)}.
+
+%%
+
+st0(P) ---> %%  without cut
+    stn0(real,P).
+
+st1(P) ---> %%  with cut
+    stn1(real,P).
+
+%%
+
+stn0(Real,Q) ---> 
+    stnc(S,N,  Com,P),    %%  Simple NP, NO CUT
+    descend00(Real,  S,Com:P,Q1),
+    {negate(N,Q1,Q)}.                 %% 
+
+stn1(Real,Q) ---> 
+    stc(S,N, Com,P), 
+    descend00(Real,  S,Com:P,Q1),
+    {negate(N,Q1,Q)}.
+
+descend00(Real,  S,event/Real/S:P,P) ---> []. 
+
+worldcom(S,P1,event/real/S:P1) ---> []. %% TA-011005
+
+
+            
+%%
+
+st(_,_,_,_) --->
+    [hva],!,fail. %% relwhat is not allowed first
+
+st(_,_,_,_) --->
+    [hvor],!,fail. %% relhow is not allowed first %% TA-010511
+
+st(S,N,Com,P) --->
+    noun_phrase(X,P1,P),
+    verb_phrase(X,S,N,Com:P1).
+
+
+stnc(S,N,Com,P) ---> 
+    noun_phrase01(X,P1,P),       %% np0  no modifiers.    Too restrictive/eff
+    verb_phrase(X,S,N,Com:P1).   %% np1 does not take gap Kjører 5 og 8
+
+
+stc(S,N,Com,P) --->
+    noun_phrase1(X,P1,P),
+    !,
+    verb_phrase(X,S,N,Com:P1).
+
+noun_phrase01(X,P,Q) ---> 
+    noun_phrase1(X,P,Q).
+
+
+%%%%%%% END OF STATEMENT SECTION %%%%%%%%%%
+
+
+
+
+%%%%%%%%%%% QUESTION SECTION %%%%%%%%%%%%%%%%
+
+question(P) ---> whichq(P).
+question(P) ---> whoq(P).
+question(P) ---> whenq(P).
+
+question(P) ---> howadjq(P).    % hvor mange busser stopper
+question(P) ---> whereq(P).     % hvor stopper mange busser
+question(P) ---> wherefromq(P). %% (before ppq  (fra hvor))
+
+question(P) ---> whatq(P). 
+question(P) ---> howmuchq(P).  
+question(P) ---> howq(P).
+question(P) ---> ppq(P).
+question(P) ---> whoseq(P).
+
+
+question(P) --->   %% Avoid ( Er klokka 23 === Ja)
+    be,                
+    w(noun(clock,_,_,_)),
+    !,
+    np1(_,_,_), %% 23 (ignore)
+    now0,
+    !,
+    whatq(P)  \  ([hva],be,the,w(noun(clock,_,_,n))).
+
+question(P) ---> question1(P). 
+
+
+question1(test::P) ---> question0(P).
+
+ 
+question1(new::P) ---> % YES NO Questions 
+    w(verb(want,pres,fin)),
+    !,
+    statement(P) \  ([jeg], w(verb(want,pres,fin))).
+
+question1(test::P) ---> % YES NO Questions 
+    [får],iman, 
+    !,
+    statement(P) \ ([jeg],[får]).      
+
+
+np_question(which(XT)::Z) ---> np1(XT,true,Z). %% TA-010421
+
+
+% question with no quantifier
+
+question0(P) ---> isq(P).   % Moved before  ynq 
+question0(P) ---> hasq(P).  % Before ynq (verb(have %% TA-001117
+question0(P) ---> ynq(P).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Implicit What IS
+
+implicitq(_) --->   %% AD HOC %% TA-010923
+    w(noun(H,_,_,_)),
+    {testmember(H,[possibility,necessity,information])}, %% etc
+    !,
+    fail. 
+    
+
+implicitq(_) --->  
+    what,!,    %% (explicit what question is covered)
+    fail.      %% det som  initiates noun_phrase
+
+implicitq(_) ---> 
+    [hvor],!,  %% (explicit hvor question is covered)
+    fail.      %% hvor initierer verb_komplement
+
+implicitq(_) ---> 
+    [hvem],!,  %% (explicit hvem question is covered)
+    fail.      %% hvem initierer verb_komplement
+
+implicitq(_) ---> 
+    naar,!,    %% (explicit når question is covered)
+    fail.      %% når initierer verb_komplement
+ 
+
+implicitq(_) --->  %% TA-00216
+    so,!,          %% så flink du er 
+    fail.  
+
+implicitq(_) --->  %% TA-00308
+    number(_),     %% Ad HOC
+    !,fail.  
+ 
+
+implicitq(_) --->  %%  Huff da *
+    [da],
+    !,fail.  
+
+implicitq(_) --->  %% TA-010401 og takk for det
+    [og],
+    !,fail.  
+  
+
+implicitq(_) --->   %% TA-010401 men  takk allikevel
+    [men],
+    !,fail.  
+
+implicitq(_) --->    %% TA-010727  Hvis bussen starter kl 1234, når er ..   
+    [hvis], 
+    !,fail.  
+
+%% Implicit Bus from  to
+
+implicitq(modifier(S):: Com12 and P3) ---> %%   buss i morgen
+    namep(_,X,P),
+    {constrain(X,vehicle)},
+    worldcom(S,P3,ERS),   %% TA-011005
+    verb_complements(go,X,S, Com12  :P, ERS),
+    !. 
+
+
+implicitq(modifier(S):: Com12 and P3) ---> %%   første buss i morgen
+    np_kernel(0,X,W1,W1,true ,P),
+    constrainvehdep(X),               %% avoid nil complements to nouns in general
+    worldcom(S,P3,ERS),   %% TA-011005
+    verb_complements(go,X,S, Com12  :P, ERS), 
+    !. %%   ( dont waste time )
+
+
+implicitq(modifier(S):: Com12 and P3) ---> 
+    {constrain(XB,bus)}, 
+    optional(next), 
+    worldcom(S,P3,ERS),   %% TA-011005
+    verb_complements(go,XB,S, Com12 :true, ERS), 
+    !. %%   ( don t waste time )
+
+
+constrainvehdep(X) ---> {xbottom(X,thing)},!,fail. %% TA-010421 %% Don't instantiate
+
+constrainvehdep(X) ---> {constrain(X,vehicle)},!. 
+constrainvehdep(X) ---> {constrain(X,departure)},!. 
+%% constrainvehdep(X) ---> {constrain(X,time)},!.      %% TA-010622
+
+
+
+hasq(P) --->  %% har dere ikke (Rhet) ??? %% TA-010605
+    w(verb(have,_,fin)), 
+    specific_phrase(A,B,C),
+    negatino,  %% rhetoric  ikke/ingen
+    !,
+    statement(P)  \ (noun_phrase(A,B,C), w(verb(have,_,fin))).
+
+hasq(P) --->  %% har dere ikke = har dere  Rhet ???
+    w(verb(have,_,fin)), 
+    statement(P)  -  w(verb(have,_,fin)).
+
+
+%% OOPS    er det første buss til nth
+%%     ==> (det er første) buss til nth
+%%     ==> buss til nth  (er første)
+
+ 
+
+
+
+isq(P) --->   %% Er det kaldt i Trondheim
+    be,                
+    thereit(_), % ignore neg 
+    so0, 
+    w(adj(Cold)),
+    prepnog(Cold,In),  %% er det langt fra=after*/ til = of*
+     !, %% er det lov med hund på bussen %% Hazardous
+    statemen1(real,P) \  (thereit, be,w(adj(Cold)),prep1(In)).
+
+
+isq(P) --->   
+    be,                
+    thereit,
+    negation(_), % ignore neg (rhetorical)
+    !,
+    statemen1(real,P)  -  (thereit,w(verb(be,pres,fin))). %% TA-001111 
+
+isq(P) --->   %%  Når er det første buss %% TA-010521
+    be,
+    det0, %% TA-010514                
+    negation(_), % ignore neg (rhetorical) 
+    !,
+    statemen1(real,P)  -  w(verb(be,pres,fin)). 
+
+
+isq(P) --->   %%  (Generalize)
+    erru,     %% TA-011005
+    !,
+    statemen1(real,P)  -   ([du],w(verb(be,pres,fin))). 
+
+
+erru ---> [erru].  %% TA-011005
+erru ---> w(verb(be,_,fin)),[du].
+erru ---> [vil],
+    [du],
+    w(verb(be,_,fin)). % vær(e)
+
+
+% % % % % % % % % % % % % %
+
+ynq(_) ---> be,!,fail. 
+
+ynq(P) ---> 
+    w(verb(V,pres,pass)), % vaskes  ( Passive (Norwagism))
+    !,
+    thereit0,
+    isq(P)  -   (w(verb(be,pres,fin)),
+               % bussene
+               w(verb(V,past,part))).
+
+ynq(_) ---> 
+    w(verb(want,pres,fin)),
+    infinitive,
+    !,fail.  
+%  ønsker ... IS a command 
+
+ynq(P) ---> % YES NO Questions  %% Kan du kjøre buss = go bus *
+    do,
+    you,
+    w(verb(V,pres,fin)),
+    {testmember(V,[list,show])}, %% etc. 
+    !,  %% <--- !!!   
+    command(do::P) \ (w(verb(V,imp,fin))).     %% dirt
+
+ynq(P) ---> % YES NO Questions
+    hox,     % har det seg at  etc   
+    !,
+    statement(P).      
+
+ynq(P) --->    %% Rhetorical negation (incomplete) 
+    do,        % skal bussen ikke gå
+    specific_phrase(A,B,C),
+    adverbx0,                    %% Experiment %% TA-010529
+    negation(_), %% Rhetorical 
+    st1(P) \  noun_phrase1(A,B,C),
+    !.
+
+/*  TA-010805
+
+ynq(P) --->    %% Rhetorical negation (incomplete) 
+    do,        % skal bussen ikke gå
+    specific_phrase(A,B,C),
+    negation(_), %% Rhetorical 
+    st1(P) \  noun_phrase1(A,B,C),
+    !.
+
+*/
+
+
+ynq(P) ---> % YES NO Questions
+    do, 
+    negation(_), %% ignore negation
+    statement(P).      
+
+ 
+ynq(P) --->  
+    w(verb(go,_,fin)),  %% Norwagism  Går det an å 
+    thereit,
+    negation(_), %% Rhetoric
+    ann0, %% [an],  hazard?
+    infinitive,
+    !,
+    statement(P) \ someone.
+
+     
+
+
+ynq(P) --->        %% Because of ambiguity
+    w(verb(know,_,fin)),
+    you,
+    st1(P) \  (you, w(verb(know,_,fin))).
+
+ynq(P) ---> %% regner det ???
+    lexv(iv,Rain,_,fin),
+    [det],
+    {testmember(Rain,[rain,snow])}, 
+    !,
+    st0(P) \ (w(noun(weather,sin,def,n)),lexv(iv,Rain,pres,fin)).
+
+
+ynq(P) --->  %% går det en buss
+    w(verb(Go,Pres,fin)),
+    thereit(_ikke), % Rhetorical
+%     adverbx0,  much -> substantiv, ikke adverb %% TA-001118
+    !,
+    statement(P) -  ([det], w(verb(Go,Pres,fin))). %% TA-001013
+    % det koster
+
+
+ynq(P) --->  %% snakker du engelsk
+    w(verb(Speak,Pres,fin)), %% TA-001015
+    saa0,         %% TA-010825
+    {Speak \== have}, %% -> hasq
+    negation(_N),
+    !,
+    st0(P) - w(verb(Speak,Pres,fin)). %% svarer du ikke ... 
+
+% Redundant ?
+ynq(P) --->  %% passerer det nå en buss fiolsvingen ? 
+    lexv(iv,Stop,Tense,fin), %%  iv for efficiency 
+    saa0,         %% TA-010825
+    { Tense \== imp},                         %% not command here !
+    anyadverb,
+    !,
+    st1(P)- (lexv(iv,Stop,Tense,fin)).  %%  st0/st1 ? 
+
+
+ynq(P) --->  %% passerer det nå en buss fiolsvingen ? 
+    lexv(tv,Stop,Tense,fin), 
+    {Tense \== imp},                         %% not command here !
+    {Stop \== have}, %% hasq %% TA-001117
+    anyadverb,
+    !,
+    st1(P)- (lexv(tv,Stop,Tense,fin)).  
+
+%
+
+
+ppq(WhichX::P) --->     %% Fra hvilket sted  selges månedskort  %% TA-001111
+    prep(Prep),
+    whx_phrase(X,WhichX,Q1,Q), 
+    w(verb(Sell,pres,pass)),
+    !,
+    noun_phrase1(N1,N2,N3),
+    !,                                    %% !!!  
+    begin,
+        adverbial1(AA,BB,CC,DD)=
+             (prep(Prep),noun_phrase1(X,Q1,Q)),
+    end,
+    st0(P) 
+        - ( someone, 
+            w(verb(Sell,pres,fin)),
+            noun_phrase1(N1,N2,N3),
+            adverbial1(AA,BB,CC,DD)).
+
+ppq(WhichX::P) ---> %% fra hvilket sted  fra = after/from ??? 
+    prepnof(After),    % 'til' = to , (not 'of') 
+    whx_phrase(X,WhichX,Q1,Q), 
+    {adjustprep(X,After,From)}, %%% Bloody hack %% TA-001118
+    !,  % <--- !!!  
+    forwq(P,From,X,Q1,Q), % not kan !!! 
+    optionalprep(From),  %% hvor går bussen fra %% Hack
+    !.  % <--- !!! %% Wrong, but Necessary (TIME)
+
+optionalprep(in) ---> prep1(_),!. %% in stems from whereq
+optionalprep(_)  ---> [].         %% 
+
+
+% går 3 neste busser *         ( 3 = bus 3) 
+% til hvilken stasjon går 5 *  ( til = of)  
+
+
+forwq(P,Prep,X,Q1,Q) --->
+    lexv(_,be1,_,fin),    %% Special case 
+    !,
+    thereit0, 
+    st0(P)                %% (hvor er) hovedterminalen
+        - ( be(id),       %%  Awkard
+            adverbial1(Prep,X,Q1,Q)).
+
+forwq(P,Prep,X,Q1,Q) ---> %% before verb: kan,skal,vil er also "verbs"
+    do,                   %% TA-010117 %%  not []
+    !,    %% Hazardous ??? TA-010117
+    st0(P)
+        -  adverbial1(Prep,X,Q1,Q).
+
+
+forwq(P,Prep,X,Q1,Q) --->
+    lexv(_,Go,A,B),
+    {Go \== understand},  %% kan   (= understand ) Norwagism 
+    thereit0,   
+    st0(P)                %% .. goes a bus from X which ...
+        - ( w(verb(Go,A,B)),  %% Rats and Mice
+            adverbial1(Prep,X,Q1,Q)).
+
+
+whichq(WhichX::P) ---> 
+    whx_phrase(X,WhichX,Q2,P), 
+
+    !, %% <--- !!! Reintroduced BUT  hvilke plasser ( seter/steder ???) *
+    worldcom(S,Q1,ER:Q),   %% TA-011005    
+    qverb_phrase(X,S,N,ER,Q), 
+    {negate(N,Q,Q2)}.
+
+% 
+
+whx_phrase(X,WhichX,VP,P) ---> %% hvilke andre busser enn buss 5 ...
+    whichf(X,WhichX), 
+    oter,
+    w(noun(Bus,PL,u,n)),
+    [enn],
+    !,
+    noun_phrase1(X,VP,P)  \  (the(X),  w(noun(Bus,PL,u,n)),[ulik]).
+
+
+
+whx_phrase(X,WhichX,VP,P) ---> 
+    whichf(X,WhichX),
+    of,
+    npa(X,VP,P).  % of his daughters
+
+
+whx_phrase(X,which(X),VP,P) ---> %% TA-010421
+    hvordan,
+    w(noun(Colour,_,_,_)), % "går" is no longer noun 
+    !,
+    noun_phrase1(X,VP,P)  \  (the(X),w(noun(Colour,_,u,n))).
+
+whx_phrase(X,WhichX,VP,P) ---> 
+    whichf(X,WhichX), 
+    type0,                       %% typer 
+    noun_phrase1(X,VP,P)  \  the(X),
+    !.  %% <--- !!! TA-001118  HAZARD ???
+
+
+
+
+
+hvordan ---> [hvordan],!.
+hvordan ---> [hva],[slags],type0,!.
+hvordan ---> [hva],!.         %%  (Only in this context, hazardous)
+hvordan ---> [hvor],w(adj(great)),!. 
+%% hvordan ---> [hvor],w(adj(long)),!.  %% TA-010208 Hvor lang tid ***
+
+type0 ---> type,!.
+type0 ---> []. 
+
+type ---> w(noun(type,_,u,n)),!. %% TA-010114 sin*
+
+
+whichf(XT,which(XT)) ---> which2. %% TA-010421 
+
+
+
+%% What has question  %% Difficult and ugly %%
+
+
+whatq(WhichX::P) ---> 
+    {which_thing(X,WhichX)},      
+    [hva],                           % hva
+    has,                             % har
+    specific_phrase(A,B,C),          % du
+    noun(Num,U,Gen,Z,Infop),         % informasjon
+    prep1(Om),                       % om
+    !,
+    noun_complements(0,Z,Qlux,Qlan)  \   % get rid of blocking
+       ( prep1(Om),gap(X)),
+
+    st0(P)  \  
+        ( noun_phrase1(A,B,C),
+          w(verb(have,_,fin)),
+          noun(Num,U,Gen,Z,Infop),          
+          noun_modifiers(0,Z,Qlux,Qlan)). 
+
+
+%% What is questions %%%%%%%%%%%% 
+
+
+whatq(which(X)::P) --->          %% EXPLICIT  WHAT IS  %% DOUBLE QUANTIFIER !!!
+     whatbe,                     %%  dragvoll sentrum ==> I dont know *
+                                 %% direction is important
+     noun_phrase1(X,true,P),     %%   (unrestrictive)   - the 
+     now0.
+
+% not greed compliant
+
+whatq(which(X)::P) ---> 
+     [hva],be,thereit,prep1(for), %% Norwagism
+     !,
+     noun_phrase1(X,true,P),  
+     now0.
+
+
+
+%%  Maybe expensive
+
+% Hva er Busstuc skrevet i
+% Hva er siste   stoppet til ***
+
+whatq(which(X)::D) --->   
+     whatbe,            
+     noun_phrase1(A,B,P), 
+     w(verb(Write,past,part)), 
+     prep(In),
+     !,
+     statement(D)  \  ( noun_phrase1(A,B,P), be,    
+              w(verb(Write,past,part)), w(prep(In)),gap(X)).
+
+
+
+
+
+whatq(D) ---> 
+     whatbe,  %% (N) 
+     specific_phrase(Y,P,Q),     % hva er du/ hva er tuc ? 
+     !, %%% <--- !!!!!
+     command(D) \  (  lexv(tv,describe,imp,fin),
+                    noun_phrase1(Y,P,Q)).
+
+whatq(P) ---> 
+     whatbe, 
+     so0,           %%  <===  (Hvorfor er det så dyrt  å ta bussen)
+     w(adj(Poss)),
+     !,
+     whichq(P)  \  (which,w(noun(thing,_,u,n)),be, w(adj(Poss))). 
+     
+
+%%%%%%% End What Is %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% hva kan du gjøre () for meg    ( Object gap)
+
+whatq(WhichX::P) --->  
+    [hva],
+    [kan],
+    specific_phrase(A,B,C), 
+    w(verb(V,Y,Z)),   
+    noun_phrase1(D,E,F), %% deg 
+    prepnom(U),          %% om
+    !,
+    {which_thing(X,WhichX)}, 
+    st0(P)  \   
+        ( noun_phrase1(A,B,C), 
+          w(verb(V,Y,Z)),
+          gap(X),
+          prep1(U),
+          noun_phrase(D,E,F)).  
+
+% hva kan du  hjelpe  med () ( Prepositional Gap)
+
+whatq(WhichX::P) --->  
+    [hva],
+    [kan],
+    {which_thing(X,WhichX)}, 
+    specific_phrase(A,B,C), 
+    negation(_), %% Ignore negation
+    w(verb(V,Y,Z)),
+    reciprov0(V),              %% (hjelpe) meg    ad hoc 
+    prepnom(U), %% om ==> regarding
+    !,
+    st0(P)  \   %%      hva kan du svare på 
+        ( noun_phrase1(A,B,C), 
+          w(verb(V,Y,Z)),
+          prep1(U),gap(X)).    
+
+% hva kan du gjøre
+
+whatq(WhichX::P) --->  
+    [hva],
+    [kan],
+    {which_thing(X,WhichX)}, 
+    specific_phrase(A,B,C), 
+    w(verb(V,Y,Z)),   
+    !,
+    st0(P)  \   %%     hva kan du svare på 
+        ( noun_phrase1(A,B,C), 
+          w(verb(V,Y,Z)),
+          gap(X)).  
+
+%%%%
+
+
+whatq(WhichX::P) ---> 
+    [hva],
+    {which_thing(X,WhichX)},
+    w(verb(know,Tense,fin)), 
+    specific_phrase(A,B,C), 
+    !,
+    st0(P)  \  
+        ( noun_phrase1(A,B,C), 
+          lexv(tv,knowthing,Tense,fin),
+          gap(X)).                            % X is a free variable ! EXPERIMENT
+
+
+whatq(P) --->
+    [hva], 
+    do, 
+    whichq(P)  \  (which,w(noun(thing,_,u,n)),do). 
+
+
+%% Hva koster Subject -> Which Thing, Subject Verb Thing
+
+whatq(WhichX::P) ---> 
+    [hva],
+    w(verb(Say,Tense,fin)), 
+    {testmember(Say,[cost])},   %% Ad hoc ( hva spør jeg om ?)
+    specific_phrase(A,B,C), 
+    !,
+    {which_thing(X,WhichX)},
+
+    st0(P)  \  
+        ( noun_phrase1(A,B,C), 
+          lexv(tv,Say,Tense,fin),
+          gap(X)).                            % X is a free variable ! EXPERIMENT
+
+
+
+%%  Hva koster Object  -> Which Thing, Thing cost Object
+
+
+whatq(P) --->
+    [hva],
+    w(verb(Cost,_,fin)), 
+    { Cost \== be},
+    whichq(P)  \  
+            (which,w(noun(thing,_,u,n)),w(verb(Cost,_,fin))).
+
+
+whatq(P) ---> 
+    [hva],
+    w(verb(be,_,fin)), 
+    whichq(P)  \  
+            (which,w(noun(thing,_,u,n)),w(verb(be,_,fin))).
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%% 
+
+
+whenq(which(Y)::P) ---> % er det lenge til ( ... det går buss )
+    isitlongto(In,Y,Subj,P3), %% TA-010612
+    !, 
+    statement(P)  /  adverbial1(In,Y,Subj,P3).
+ 
+
+whenq(which(Y)::P) ---> %% Når i dag går bussen ??? 
+    when, %% [når],  hvor tidlig 
+    adverbial1(AA,BB,CC,DD), % i dag
+    !,
+    adverbial1(_,Y,Subj,P3)  \                       %% =
+            (prep(in),the(Y),w(noun(time,_,_,n))), 
+    !,   
+    question0(P) - 
+            (adverbial1(in,Y,Subj,P3), adverbial1(AA,BB,CC,DD)).
+
+
+whenq(which(Y)::P) ---> % når er det mulig å 
+    howlongto(In,Y,Subj,P3),
+    w(adj(possible)),
+    infinitive,
+    w(verb(V,inf,fin)), %% TA-010612
+    !,                %% Don't waste time %% TA-001215
+    statement(P)  / (someone,
+                    w(verb(V,pres,fin)),
+                     adverbial1(In,Y,Subj,P3)).
+
+
+
+whenq(which(Y)::P) ---> % når er det AT  ( ... det går buss )
+    howlongto(In,Y,Subj,P3),
+%    [det], howlongto eats it %% TA-010530
+    w(verb(V,_,fin)),
+    !,                %% Don't waste time %% TA-001215
+    statement(P)  / (w(verb(V,pres,fin)),
+                     adverbial1(In,Y,Subj,P3)).
+
+
+% når er (det) neste buss til nth ? 
+
+whenq(which(Y)::P) ---> %% TA-010530
+    when_adverbial(In,Y,Subj,P3),
+    be,
+    thereit0,
+    !,
+    statement(P) - 
+        (w(verb(be,pres,fin)),  adverbial1(In,Y,Subj,P3)).
+
+
+
+whenq(which(Y)::P) ---> %% TA-010421
+    when_adverbial(In,Y,Subj,P3),
+    !,   %%  når går  
+    question0(P) - 
+            adverbial1(In,Y,Subj,P3),
+    prep0(_HOC).  %% ad hoc,   % Når gjelder bussrutene fra 
+
+
+
+
+% når er det .............. går   // Garden path
+ 
+verb0(V)  ---> w(verb(V,_,_)),!.
+verb0(be1) ---> [].
+
+
+when_adverbial(in,T,P,Q) ---> %%   Hvilket år ble du født
+    which,
+    np1(T,P,Q),
+    !,
+    {testconstraint(T,time)}. %% not which thing !! %% TA-010202
+
+
+when_adverbial(in,T:time,P,T isa time and P) ---> 
+    whenx. %%  når  jeg ==> når verb!!
+
+
+whereq(WP) ---> %% hvor går bussen // fra 
+    where,
+    gogo, %% w(verb(go,_,fin)), %% TA-010509
+    !,
+    whichq(WP) \ (which,w(noun(place,sin,u,n)),w(verb(go,pres,fin))).
+
+
+whereq(P) --->   %% hvor får jeg ta buss
+    where,
+    may,         %% NB ikke får %% hvor får jeg buss
+%   !,           %% TA-001109
+    ppq(P) \ (prep(in),which,w(noun(place,sin,u,n)),do). %% TA-001130
+
+whereq(P) --->  %%  where is nth  
+    where,
+    be,
+    endofline,  %% TA-010107 
+    !,          %%
+    ppq(P) \ (prep(in),which,w(noun(place,sin,u,n)),w(verb(lie1,pres,fin))). %% TA-001130
+        
+
+whereq(P) --->  %%  hvor er du fra
+    where,
+    be,
+    ppq(P) \ (prep(in),which,w(noun(place,sin,u,n)),w(verb(lie1,pres,fin))). %% TA-001130
+ 
+
+whereq(which(Y)::P) ---> % prepositional complement %% TA-010421
+    where,
+    adverbial1(_,Y,Subj,P3)  \                       %% =
+            (prep(in),the(Y),w(noun(place,sin,u,n))), %% TA-001130
+    !,   
+    question0(P) - 
+            adverbial1(in,Y,Subj,P3). 
+
+whereq(WP) ---> % object %% moved after pp %% TA-001111
+    where,
+    whichq(WP) \ (which,w(noun(place,sin,u,n))).  %% TA-001130
+
+
+gogo ---> [skal],!,fail. %% TA-010509
+gogo ---> [vil],!,fail.  %% TA-010511
+gogo ---> [må],!,fail.   %% TA-010511
+gogo ---> w(verb(go,pres,fin)).
+
+wherefromq(P) ---> 
+    wherefrom,  
+    !,
+    ppq(P)  \  
+            (prep(from),which,w(noun(place,sin,u,n))). %% TA-001118
+
+
+
+
+whoq(P) --->   
+     who, 
+     whichq(P) \ 
+            (which,w(noun(agent,_,u,n))). 
+ 
+whoseq(P) --->   % whose dog barked ?    
+    whose,
+    noun(Num,u,n, Y, R),
+    whoq(P) \ 
+            (who,w(verb(have,_,fin)),a,noun(Num,u,n, Y, R),that). 
+
+
+%% HOWQ 
+
+howq(explain::P) ---> %% hvorfor er det ikke mulig at
+    how,              %% hvordan   %% TA-010125
+    be,
+    [det],
+    negation(_), %% ignore /rhetoric %% TA-001111
+    !,
+    statemen1(real,P)  \ (thereit,be).
+
+howq(explain::P) --->
+    lexv(iv,tell,imp,fin),      
+    me0,
+    how,
+    !,
+    st1(P).
+
+
+howq(explain::P) --->  % special:  "du er" demands complement
+    [hvorfor],         %% Fronted 
+    be,
+    specific_phrase(A,B,C), %%% [du],
+    statemen1(real,P) \ 
+         (np1(A,B,C),w(verb(be,pres,fin))). %% exists %% TA-010219
+                    %% be more general  ??  %% TA-010926
+
+howq(explain::P) --->  % Hvorfor er en buss rød ?
+    [hvorfor],
+    be,
+    noun_phrase1(A,B,C), %% not np1 because of quant_pron etc.
+    statemen1(real,P) \ (noun_phrase(A,B,C),be).
+
+
+howq(P) ---> %% hvorfor er det så få avganger
+    [hvorfor],
+    be,
+    thereit,   %% TA-010922   %% hvorfor er du *
+    !,
+    whatq(P) \ whatbe.
+
+
+howq(P) ---> %% TA-010116 Hvordan er det med deg ? ( OK?)
+    how,
+    be,
+    [det],prep1(with), %% TA-010116
+    !,
+    whatq(P) \ whatbe.
+
+
+howq(P) --->   %% hvordan er du laget / hvordan er du ?
+    [hvordan], %% TA-010922
+    be,
+    !,
+    whatq(P) \ whatbe.
+
+
+howq(explain::P) ---> 
+    how,
+    isq(P).
+
+howq(explain::P) ---> 
+    how,
+    ynq(P).
+
+howq(explain::P) ---> 
+    how,
+    hasq(P).    %% TA-010105
+
+howq(explain::P) --->   %% NB skal = go %% After ynq
+    how,
+    lexv(iv,go,inf,fin),                  %% komme 
+    me0,                                  %%(seg/meg)
+    !,                                    %% Norwagism, incomplete, ! hazardous
+    st1(P) \  ([jeg],lexv(iv,go,pres,fin)). %%  prepnof(P1) gir  fra ==>after
+
+
+% % % % % % % % % % % % % % % % % % % % % %
+
+isitlongto(In,Y,Subj,P3) --->
+     w(verb(be,_,fin)),[det],[lenge],tilsiden,
+     begin,
+        when_adverbial(In,Y,Subj,P3) = [når],
+     end.      
+
+isitlongto(In,Y,Subj,P3) --->
+     [hvor],[lenge],w(verb(be,_,fin)),[det],tilsiden,
+     begin,
+        when_adverbial(In,Y,Subj,P3) = [når],
+     end.      
+
+tilsiden ---> prep1(to).
+tilsiden ---> prep1(before).
+tilsiden ---> [siden].
+
+% hvor lenge er det til bussen går.%% NB NOT hvor lenge er det til jul
+
+howlongto(In,Y,Subj,P3) --->
+     be,[det],[lenge],prep1(to),
+     begin,
+        when_adverbial(In,Y,Subj,P3) = [når],
+     end.       
+
+howlongto(In,Y,Subj,P3) --->
+     [hvor],[lenge],be,[det],prep1(to),
+     begin,
+        when_adverbial(In,Y,Subj,P3) = [når],
+     end.       
+
+howlongto(In,Y,Subj,P3) --->
+    when_adverbial(In,Y,Subj,P3),
+    be,
+    thereit,
+    that0.
+
+                                                          
+howadjq(which(Y)::P) ---> % hvor fort går bussen %% TA-010421
+    hvor, 
+    howadj(Noun),         % hvor fort/langt
+    {testmember(Noun,[speed,distance])},%% etc  TA-010313
+    w(verb(Go,pres,fin)), % går
+    {Go \== know}, %% Hack   know = kan (gå) %% TA-010723
+
+    np1(X,B,C),           % bussen
+    !,
+
+    st0(P) \
+        (np1(X,B,C),
+         w(verb(Go,pres,fin)),
+         w(prep(with)),
+         the(Y),
+         w(noun(Noun,sin,u,n))),
+    !.
+
+ 
+howadjq(P) ---> %% TA-001002
+    hvor,  
+    howadj(FREQ), % often -> frequency
+    docan,    %% e.g. kan (= know) NOT få !!! %% TA-010511
+    {testmember(FREQ,[frequency,speed])}, %% PP gap %% TA-010731 // moved after
+    !,     %%  <----    !!!!!
+    ppq(P)  \  (prep(with),which,w(noun(FREQ,_,_,n)),do). %% iv
+
+
+howadjq(P) ---> %% TA-001002
+    hvor, 
+    howadj(FREQ), % often -> frequency
+    {testmember(FREQ,[frequency])}, %% PP gap
+    w(verb(V,pres,Pas)),        % passes // not kan = know
+    !,     %%  <----    !!!!!
+    ppq(P)  \  (prep(with),which,w(noun(FREQ,sin,u,n)), %% TA-001023
+              w(verb(V,pres,Pas))).
+
+howadjq(P) ---> % hvor gammel er  %% TA-001023
+    hvor, 
+    howadj(Noun),
+    {\+ testmember(Noun,[duration])}, %% hvor lenge er det fra nth til lade
+    be,                             %% TA-010930
+    whichq(P)  \  (which,w(noun(Noun,sin,u,n)),has). % => hvilken alder har
+
+
+howadjq(P) ---> % hvor mye tid/lang tid/  tar det å %% TA-010208
+    hvor,                                           %% Before 
+    howadj(Noun), % hvor lang tid
+    w(verb(Take,pres,fin)), 
+    thereit,    
+    {testmember(Take,[take,be])},  %% TA-010930
+    !,
+    whichq(P)  \  (which,w(noun(Noun,_,u,n)),w(verb(take,pres,fin)), thereit ),
+    !. %% <-- !!!
+
+
+% after   hvor lang tid %% TA-010930
+howadjq(P) ---> % hvor lenge er kontoret åpent 
+                  %% hvor lenge er det fra nth til lade 
+    hvor,           %% moved back  %% TA-010930
+    [lenge],
+    be,    
+    !,
+    ppq(P) \ (w(prep(with)),which,w(noun(duration,sin,u,n)),be).
+
+howadjq(P) ---> % hvor mye tid/lang tid/ bruker 
+    hvor, 
+    howadj(Noun), % hvor lang tid
+    whichq(P)  \  (which,w(noun(Noun,sin,u,n))). %% TA-001023
+
+
+howadjq(P) ---> 
+    hvor,  
+    w(adj(Early)),
+    {testmember(Early,[early,late])} ,  %% approximation
+    !,
+    whenq(P) \ when.
+
+howadjq(P) ---> 
+    hvor,
+    meny, %%  (sic)
+    be,
+    w(noun(clock,_,_,_)),
+    %    !, %% <--- !!!  % hvor mange er klokka i Mongolia ?
+    whatq(P)  \  ([hva],be,the,w(noun(clock,_,_,n))). %% time too general (technical)
+
+howadjq(P) ---> 
+    hvor,  
+    howadj(FREQ), % often -> frequency
+    [blir],       % passive
+    !,     %%  <----    !!!!!
+    st1(P) -(w(verb(be,_,_)),prep(with),w(noun(FREQ,_,_,n))). %% iv
+
+howadjq(P) ---> % hvor lenge er NP åpen ?
+    hvor,
+    howadj(duration),
+    be,
+    !,
+    ppq(P)  \  (prep(with),which,w(noun(duration,_,_,n)),w(verb(be1,pres,fin))).
+
+howadjq(P) ---> % hvor lang tid bruker ==> go with duration 
+    hvor, 
+    howadj(duration),
+    w(verb(use,pres,fin)),        % bruker / TAKE ???
+    !,     %%  <----    !!!!!
+    ppq(P)  \  (prep(with),which,w(noun(duration,_,_,n)),w(verb(go,pres,fin))).
+
+howadjq(P) ---> % hvor lenge må jeg
+    hvor, 
+    howadj(Noun), % hvor lang tid
+    do,
+    ppq(P)  \  (prep(with),which,w(noun(Noun,_,_,n)),do),
+    !. %% <-- !!!
+
+howadjq(P) --->  
+    hvor,
+    howadj(length), %% Only length, not frequency %% hvor ofte er det bus *
+    betake,                %% be/take
+    thereit,
+%     !,     %%  <----    !!!!!
+    whatq(P)  \  ([hva],w(verb(be,_,_)),w(noun(length,sin,def,n))). %% lengden , not en lengde
+
+
+howadjq(P) ---> % hvor lang tid tar bussen fra nth /// hvor lang tid tar det å
+    hvor, 
+    howadj(duration),
+    w(verb(take,pres,fin)), 
+    !,     %%  <----    !!!!!
+    ppq(P)  \  (prep(with),which,w(noun(duration,_,_,n)),w(verb(go,pres,fin))).
+
+
+
+howadjq(P) ---> % hvor lang tid eksisterer/har   %% adverbialt
+    hvor,  
+    howadj(duration),
+    w(verb(Exist,pres,fin)),
+    !,     %%  <----    !!!!!
+    ppq(P)  \  (prep(with),which,w(noun(duration,_,_,n)), w(verb(Exist,pres,fin))).
+
+
+docan ---> w(verb(receive,_,fin)),!,fail. %% Ikke får
+docan ---> do.                            %% TA-010511
+
+%% How much questions
+
+howmuchq(howmany(X)::P) --->
+    hvor, 
+    many1, %% Strict Many, not mye  ==> Hvor mye tid \== Hvor mange ganger
+    whichq(which(X)::P)  \  which .
+
+% hvor mange jobber er slitsomme
+% hvor mange jobber på tt
+
+howmuchq(howmany(X)::P) --->  %% NB last
+    hvor, 
+    manypersons, % mange () 
+    whichq(which(X)::P)  \  (which,w(noun(person,plu,u,n))).
+
+
+howmuchq(which(Y)::P) --->
+    hvor,much,
+    w(verb(Earn,_,fin)),
+    {testmember(Earn,[earn,cost])},
+    whattrans(Earn,Y,P).
+
+
+howmuchq(P) ---> 
+    hvor, 
+    much,of,
+    !,            %% !!! <---
+    whichq(P) \ (which,of).  
+
+
+howmuchq(P) ---> % hvor mye tid/lang tid/ bruker 
+    hvor, 
+    much,
+    w(noun(Noun,_,u,n)),     
+    whichq(P)  \  (which,w(noun(Noun,_,u,n))), 
+    !. %% <-- !!!
+
+
+howmuchq(P) ---> %  hvor mye koster
+    hvor,  
+    much,
+    question(P) \ [hva]. %% not hvilken
+
+% % % % % % % % % % % % 
+
+whattrans(Earn,Y,P) --->
+    noun_phrase1(X,Q,Q1),          
+    !,
+    st1(P)  \ 
+        (noun_phrase1(X,Q,Q1),        
+         w(verb(Earn,_,fin)),
+         gap(Y)).
+
+
+howadj(age)        ---> w(adj(old)). 
+howadj(age)        ---> [mange],w(noun(year,plu,u,n)). 
+howadj(delay)      ---> optional(much),w(adj(delayed)).
+howadj(distance)   ---> [langt].
+
+howadj(duration)   ---> [mange],w(noun(minute,plu,_,n)).
+howadj(duration)   ---> [lenge].
+howadj(duration)   ---> long,w(noun(time,_,u,n)),!. 
+howadj(duration)   ---> much,w(noun(time,_,u,n)),!. 
+
+howadj(frequency)  ---> often.
+howadj(frequency)  ---> [mange], w(noun(time_count,_,_,n)),inperiod0,!.  
+
+howadj(intelligence) ---> w(adj(intelligent)). 
+howadj(intelligence) ---> w(adj(stupid)).  %% Rhetorical
+howadj(intelligence) ---> great,w(noun(intelligence,sin,_,n)).
+
+howadj(length)     ---> w(adj(long)). 
+howadj(length)    ---> many,w(noun(Mile,_,u,n)), %%   meter sin/plu
+   {testmember(Mile,[mil,kilometer,meter])}.
+
+howadj(price)     ---> w(adj(expensive)).
+howadj(size)      ---> great.             %% big 
+
+howadj(speed)     ---> [fort].         %%           ??? adverb
+howadj(speed)     --->  w(adj(fast)).  %%  ??? adjective
+
+howadj(weather) ---> w(adj(hot)).  %% TA-001001 // temperature?
+howadj(weather) ---> w(adj(cold)). %% TA-001001
+
+howadj(weight)     ---> w(adj(heavy)). 
+
+% howmuch(thing)      ---> much. %%
+
+%
+
+
+/*
+   hvor lenge har postkontoret åpent ?
+   hvor lenge er  postkontoret åpent ?
+*/
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  V E R B  - P H R A S E    S E C T I O N
+%
+  
+
+% COM is an inherited attribute that shall be under 
+% the scope of exists(S)::
+
+% Make identical event variable 
+
+% I depart  and do not arrive  *
+
+verb_phrase(X,S,N,Com:P12) --->  
+    verb_phrase1(X,S,N,Com:P1),
+    verb_phrases0(X,S,P1,Com,P12).     %% Local negation
+
+verb_phrases0(X,S,P1,Com,P1 and P) ---> 
+    vp_conjunction, %% andor(and), 
+    verb_phrase1(X,S,N,Com:P2),
+    {negate(N,P2,Q2)},            %% Local negation
+    verb_phrases0(X,S,Q2,Com,P).
+
+verb_phrases0(_,_,P1,_,P1) ---> [].
+
+vp_conjunction ---> and1.  
+%% vp_conjunction ---> or1.  %% TA-001030  EXPERIMENT or = and
+
+verb_phrase1(Y,S,id,Com:Pli) --->
+    paux0,         %% kan,må?     %%
+    w(verb(Sell,pres,pass)),
+    !,
+    passive(Y,S,Com, Pli)  \ 
+         w(verb(Sell,past,part)).
+
+
+verb_phrase1(X,S,id,ComP2) ---> 
+    be,
+    number(N),
+    w(noun(year,_,u,n)), 
+    !,
+    do_phrase(X,S,id,ComP2)  \  %% or has age ???
+        (w(verb(live,pres,fin)),prep1(in), 
+         number(N),w(noun(year,plu,u,n))).
+
+verb_phrase1(X,S,N,ComP2) ---> 
+    be(N),  
+    dudet,[som], %% Norwagism %% TA-010110
+    !,    
+    do_phrase(X,S,N,ComP2).
+
+
+verb_phrase1(X,S,N,ComP2) ---> 
+    be(N),                          % be_complement before do_phrase
+    reductant0,                     %% bussene er alltid forsinket
+%   !,    
+    be_complements(X,S,ComP2).     % Non-Empty complements to BE 
+
+                            
+verb_phrase1(X,S,N,ComP2) --->        
+    be(N),                          % be_complement before do_phrase
+    it0, %% thereit0 
+    reductant0,                     %% bussene er alltid på veien
+    !,                              %% last chance for DO BE 
+    do_phrase(X,S,id,ComP2)  \       %% be as intransitive verb
+        be.  
+
+
+
+verb_phrase1(X,S,id,Com:P2) --->    % local negation of rep_verb
+    clausal_phrase(X,S,Com,P2). % makes it different from do_phrase
+                                    % MOVED in front again 
+                                    % jeg vil vite når bussen går
+
+verb_phrase1(X,S,M,ComP2) --->     
+    do0(M,N),
+    reductant0, %% da (jeg kom...) OOPS  %% jeg vil helst til nth
+    do_phrase(X,S,N,ComP2), 
+    !.  %%% <---  !!!               %% HAZARDOUS BUT ESSENTIAL 
+
+
+verb_phrase1(X,S,id,ComP2) --->   % fronted  Jeg  plages  av en kvinne
+    paux0,            % kan,må,
+    w(verb(Plage,pres,pass)), 
+    thereit0,  
+    be_complements(X,S,ComP2) \   
+         w(adj(Plage)). %% be/Place %% passive verbs are adjectives
+
+
+
+%% du svarer når jeg spør
+do_phrase(X,S,id,Com1:(Com1 and P and Q)) ---> %% KNOW WHEN/WHERE/WHY   # swap?
+    hlexv(rv,K,_,_,_N),              %%  har ikke lurt på 
+    when_adverbial(In,Y,Subj,P3),    %% når
+    !,
+    statement(P) -  adverbial1(In,Y,Subj,P3), %% det kommer nye bussruter
+    !,
+    {query_template(K,X,Y,S,Q)}.
+
+do_phrase(X,S,N,Com3P3) ---> 
+%    adverbx0,  %% bus hereafter = np %% TA-010115 NB  if unstacked ( => restacked)
+                                      %% kommer jeg heretter --> jeg heretter kommer
+                                       
+    vp_head(V,X,S,N,  ComP1 ), 
+    it0,  %%  destroys %  bussene  kjører det vil si 17. mai? 
+    verb_complements0(V,X,S,ComP1, Com3P3 ). 
+
+
+
+vp_head(Give,X,S,id,  Com3:(P1 and Q1)) ---> %% TA-001025
+    {value(textflag,true)},                  %% not nec for buses
+    lexv(dtv,Give,_tense,fin), %% TA-010727   btv -> dtv
+    noun_phrase1(Y, E1,P1),     
+    noun_phrase1(Z,E1,Q1),     
+    {dtv_template(Give,X, Y, Z, S,Code)},
+    event00(S,Code,Com3,E1).         
+
+
+
+
+
+vp_head(evah,X,S,N,  Com3:P1 ) ---> 
+    lexv(tv,evah,_,fin),   %% resiproc have (artificial)
+    negation(N), 
+    subject2(X,Y,P2,P), %%  noun_phrase2(X,Y,P2,P),  %% TA-010314
+    {has_template(Y,X,P2)},         % swap
+    event00(S,P,Com3,P1).
+
+vp_head(V,X,S,N,  Com3:P1 )  ---> 
+    hlexv(tv,V,_Tense,_Part,N1),    %% ville tatt OK
+    reciprov0(V),  %% Hazard  give me route plan %% TA-010212      
+    {compliancetest(V,X)}, %% TA-001006 // Garden Path Pruning !!! TA-001006
+
+    reductant0, 
+    object2(X,Y1,E1,P1), %% noun_phrase2(X,Y1,E1,P1),  %% TA-010314
+    {tv_template(V,X,Y1,S,P)},
+    event00(S,P,Com3,E1), 
+    negation2(N1,N). 
+
+
+vp_head(have,X,S,N,  Com3:P1 )  ---> 
+    lexv(tv,have,_,fin),  
+    negation(N), 
+    object2(X,Y,P2,P),%%  noun_phrase2(X,Y,P2,P), %% TA-010314
+    {has_template(X,Y,P2)},
+    event00(S,P,Com3,P1). 
+
+vp_head(V,X,S,N,  Com3:P1 )  ---> 
+    % verb_complements0
+    intrans_verb(V,X,S,N1,P,_tense,_fin),   %% ( allow  kjøres)
+    reciprov0(V),  
+    negation2(N1,N),
+    event00(S,P,Com3,P1). 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+event00(S,P,Q,exists(S:Event)::P and Q) --->  %% TA-010421
+    {type(event,Event)}.
+
+%% Sentential (Clausal) Complements %%%%%%%  
+
+
+clausal_phrase(X,S,Com1, KA) --->
+    rep_vp(W,TW,X,S,Com2,P2,NewS),   %% vet
+    rep_complements0(W,X,S,Com2:P2, Com1:P4),     %% swapped
+    thatto0(W,TW,X),                              % to ===> gap(X) 
+    event00(NewS,P4,P3,KA), 
+    statemen1(NewS,P3). 
+
+
+thatto0(_W,that,X) ---> infinitive,[]-gap(X). %%   infinitive first
+thatto0(_W,TW,_)   ---> that(TW).
+
+thatto0(ask,that,_) ---> [om],infinitive,!.  %%  (ber deg om å gå)
+thatto0(ask,that,_) ---> infinitive,!. 
+thatto0(ask,that,_) ---> []. 
+
+thatto0(believe,that,_) ---> []. 
+thatto0(let,that,_) ---> []. 
+
+thatto0(answer,whether,_) ---> on0,[om]. %% TA-010312
+thatto0(tell,whether,_) ---> [om].   %% TA-010312
+
+rep_vp(Let,TW,X,S,Com,KA,NewS) ---> %% I let you go ===> I "let" that you go
+     w(verb(Let,_,fin)),
+    {testmember(Let,[ask,let])},
+     noun_phrase1(Alfa,Beta,Gamma), %% Object modifier
+     !,
+     {rv_template(id,Let,TW,X,S,P,NewS)}, 
+     event00(S,P,Com,KA),
+     []-noun_phrase(Alfa,Beta,Gamma).
+  
+
+rep_vp(Know,TW,X,S,Com,KA,NewS) ---> %% har lurt på
+     hlexv(rv,Know,_,_,Neg),
+%      rep_particle0(Know),  %% lure på  Norwagism
+     {rv_template(Neg,Know,TW,X,S,P,NewS)}, 
+     event00(S,P,Com,KA). 
+
+
+rep_vp(Know,TW,X,S,Com,KA,NewS) --->
+     do(N1),
+     rep_v(Know,_,_),       
+     negation2(N1,N), 
+%     rep_particle0(Know),  %% lure på  Norwagism
+     {rv_template(N,Know,TW,X,S,P,NewS)}, 
+     event00(S,P,Com,KA). 
+
+rep_complements0(_Say,_X,_S,_Com1Subj,_Com2P2) ---> 
+    [hvor],
+    !,
+    fail.
+
+rep_complements0(_Say,_X,_S,_Com1Subj,_Com2P2) --->
+    naar,
+    !,
+    fail.
+
+
+
+rep_complements0(Say,X,S,Com1Subj,Com2P2) ---> %% say to mary that john died
+    prep1(to),                                 %% TA-010119
+    verb_complements(Say,X,S,Com1Subj,Com2P2) \ prep(to).
+
+
+
+rep_complements0(_Say,_X,_S,ComPis,ComPis) ---> [].
+
+
+/*  TOO EXPENSIVE 
+rep_complements0(Say,X,S,Com1Subj,Com2P2) ---> 
+    verb_complements0(Say,X,S,Com1Subj,Com2P2).
+*/
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+be_complements(X,S,Com:P3) ---> 
+    be_complement(X,S,Com:P1),          % er solgt
+    be_complements2(X,S,Com,P1,P3).     % i oslo ?????
+  
+
+be_complements2(X,S,Com,P1,P1 and P3) ---> 
+   and0,                           %% 
+   be_compl(X,S,Com,P2),           %%  (not noun)
+   be_complements2(X,S,Com,P2,P3).
+
+be_complements2(_,_,_,P,P) ---> reductant0. 
+
+be_compl(Y,S,Com,P) ---> 
+    passive(Y,S,Com,P).
+
+be_compl(X,S,Com,P2) ---> 
+    ap(A,X,S,Com2,P1),
+    verb_complements0(adj/A,X,S,Com2:P1,Com:P2).   %% identical to Adj Compls NEW
+                                                  
+be_complement(X,B,C:D) ---> 
+    be_compl(X,B,C,D).      %% in reduced_rel
+
+be_complement(A,B,C:D) ---> %% 
+    be_noun(A,B,C,D).       %% not in reduced_rel (lived a miner fortyniner *)
+
+be_compl(X,S,Com,KA) ---> 
+    comparisons(X,S,P2),
+    event00(S,P2,Com,KA).
+
+be_compl(X,S,Com,P2) ---> %%  (moved up)
+    sure,
+    do_phrase(X,S,id,Com:P2) \  w(verb(know,_,fin)). 
+
+
+be_noun(X,S,Com,exists(S:Event)::P2) ---> 
+    {type(event,Event)},              %% TA-010421
+    noun_phrase(Y,Com2,P1),           % Experiment  I am a man now
+    {align(X,Y,S,P1,P11)},            %% TA-010403 !!!
+    !,
+    verb_complements0(exist ,X,S,Com2:P11,Com:P2).
+
+
+
+ap(A,X,S,Com,KA) ---> 
+%     so0,           %% så sure  %%   for buss == too bus- 
+    the10,            %% den raskeste
+    adj1(A,X,S,P), %% BARE ren adjektiv, ikke noun/name !!! 
+    event00(S,P,Com,KA).
+
+ap(Borne,X,S,Com,KA) ---> %% Pass
+    w(verb(Borne,past,part)),
+    {adj_template(be/Borne,X,S,P)},
+    event00(S,P,Com,KA).
+
+
+
+% PASSIVE 
+
+% er solgt av tt i trondheim  YES
+% er solgt i trondheim av tt  NO (yet)
+
+passive(Y,S,Com, Pli) ---> 
+    lexv(tv,V,past,part),
+    by_agent2(V,X,Y,S,Com1,Pli1),
+    verb_complements0(V,X,S,Com1:Pli1,Com:Pli). %% TA-001111
+
+
+by_agent2(V,X,Y,S,Com,P1 and P2) ---> % by mary
+    by,
+    !,
+    event00(S,true,Com,KA),
+    noun_phrase1(X,KA,P1),
+    {tv_template(V,X,Y,S,P2)}.    
+
+
+by_agent2(V,X,Y,S,Com,exists(X):: (XisaPerson and P2 and P1)) --->  
+    {whodunnit(V,Person)},
+
+    {tidvarp(X,Person,XisaPerson)}, %% TA-010421
+ 
+    {tv_template(V,X,Y,S,P2)},
+     event00(S,true,Com,P1).
+
+
+
+%% END PASSIVE
+
+
+
+
+
+% clause after " noun that ... "
+
+xverb_phrase(X,S,N,Com,P2) --->        
+    verb_phrase(X,S,N,Com:P2).         
+
+xverb_phrase(Y,S,N,Com,P2) --->
+    noun_phrase(X,P,P1), 
+    verb_phrase(X,S,N,Com:P2)
+        - noun_phrase(Y,P,P1).  
+
+xverb_phrase(Y,S,N,Com,P2) --->        
+    noun_phrase(X,P,P1),               
+    be,                                 
+    verb_phrase(X,S,N,Com:P2)
+        - (be , noun_phrase(Y,P,P1)).  
+
+
+% clause after " which noun ... "
+
+% Hvilke busser kjører tore med ? ? %% TA-010314
+
+
+%% Prepositional NP Front %% TA-010609
+%% NB  pass is both tv and iv, sneaks in
+
+qverb_phrase(Y,S,N,Com,P2) ---> 
+    lexv(IV,Go,Tense,fin),       % kjører
+    {Go \== pass},  %% NOT allowed as IV HERE  %% Prag
+    {IV==iv;IV==rv},
+    noun_phrase1(X,P,P1),       % tore
+    prep1(With),
+
+% Check    X Go With Y
+
+   { \+ (With == on,testmember(Go,[go]))}, %% Prag/ på vei til %% TA-010814 
+                                            %%  on X is standard
+
+   {test(verb_compl(Go,With,X,Y,_,_))},
+
+   !,
+
+    st(S,N,Com,P2) \         
+       ( noun_phrase1(X,P,P1),    
+         lexv(IV,Go,Tense,fin),    %% TA-010314 
+         prep1(With),  
+         gap(Y)).
+
+%% TA-010612 %% Hvor går bussen#til
+
+
+% %% Default go nil  %% TA-010926
+qverb_phrase(Y,S,N,Com,P2) ---> 
+    w(verb(go,_,fin)),             %% TA-010926
+    {goconstraint(Y,To)},  %% place -> to / way -> in
+    noun_phrase1(X,P,P1),       % buss 5
+    st(S,N,Com,P2) \         
+       ( noun_phrase1(X,P,P1),    
+         w(verb(go,pres,fin)),
+         prep1(To),  
+        gap(Y)).
+
+
+qverb_phrase(Y,S,N,Com,P2) ---> % hvem er du glad i
+    be,
+    noun_phrase1(X,P,P1),
+    negation(N),
+    w(adj(Glad)),
+    prep(Prep),   
+    !,
+    verb_phrase(X,S,N,Com:P2)
+      \  ( be(N), w(adj(Glad)),prep(Prep),noun_phrase(Y,P,P1)).  
+
+
+qverb_phrase(Y,S,N,Com,P2) ---> 
+    do,
+    noun_phrase1(X,P,P1),
+    lexv(Vcat,knowthing,Tense,fin),
+    !,   %%% Speedup ??? %% TA-001113
+    verb_phrase(X,S,N,Com:P2)
+         \  ( lexv(Vcat,knowthing,Tense,fin), noun_phrase(Y,P,P1)). 
+
+
+qverb_phrase(Y,S,N,Com,P2) --->  %%   bruker subjekt X (på Y)
+    use,
+    noun_phrase1(X,P3,P2),
+    in_order_to,
+    verb_phrase(X,S,N,Com:P3)- (prep(with),gap(Y)).
+
+  
+qverb_phrase(X,S,id,Com,P) --->  % koster det å ...
+    xbimodal(Cost,Money), % koster det / vil det koste 
+    {constrain(X,Money)},
+%    thereit,  
+    infinitive,
+    !,   
+    {constrainit(IT,agent)}, %% SHORTCUT
+    verb_phrase1(IT,S,id,Com:P) \ 
+        (w(verb(Cost,pres,fin)),gap(X),infinitive).  %% as verb-complement
+
+
+qverb_phrase(X,S,N,Com,P2) --->  %% er det ?  
+    be,
+    thereit, 
+    verb_phrase1(X,S,N,Com:P2)  \  
+        w(verb(exist,pres,fin)).  %% exist does not need a complement
+
+qverb_phrase(X,S,N,Com,P2) --->  % hvilket subjekt verb objekt
+    verb_phrase(X,S,N,Com:P2).   % including be1  
+
+
+qverb_phrase(Y,S,N,Com,P2) ---> 
+    do,                         % kan       
+    noun_phrase1(X,P,P1),       % du
+    negation2(id,N),            % ikke %% TA-001106
+    do_phrase(X,S,id,Com:P2) -  % svare på
+        noun_phrase1(Y,P,P1). 
+
+
+qverb_phrase(Y,S,N,Com,P2) ---> 
+    lexv(iv,V,Tense,fin),       
+{ \+ testmember(V,[know,knowthing,be1])},     %% hvilken versjon er du *** 
+    thereit, %% TA-001006 ( not hvilke stasjoner passerer bussen) 
+    noun_phrase1(X,P,P1),
+    adverbx0,                     %% spurte jeg nettopp om %% TA-001002
+    prep0(Prep),                  %% Hvilke dager går det busser (på) ??? prep0
+    verb_phrase(X,S,N,Com:P2)
+         \  ( lexv(iv,V,Tense,fin),prep(Prep),noun_phrase(Y,P,P1)).  
+
+
+
+qverb_phrase(Y,S,N,Com,P2) ---> %% Hvilken alder TA-001023 
+    has,                        %% har
+    noun_phrase1(X,P,P1),       %% jeg     
+    {has_template(X,Y,_)},    
+    !,
+    do_phrase(X,S,N,Com:P2) - 
+        (w(verb(have,pres,fin)),noun_phrase1(Y,P,P1)). 
+
+qverb_phrase(X,S,N,Com,P2) ---> %% Hvilken person TA-001023
+    has,                        %% har
+    noun_phrase1(Y,P,P1),       %% alder   
+    {has_template(X,Y,_)},    
+    !,
+    do_phrase(X,S,N,Com:P2) - 
+        (w(verb(have,pres,fin)),noun_phrase1(Y,P,P1)). 
+
+
+% Hvilke spørsmål har du mottatt %% EXPENSIVE %% TA-010511
+qverb_phrase(Y,S,N,Com,P2) --->
+    has,
+    noun_phrase1(X,P,P1),       % du
+    lexv(tv,V,past,part),       % mottatt
+    !,
+    verb_phrase(X,S,N,Com:P2)
+         \  ( lexv(tv,V,past,fin),noun_phrase(Y,P,P1)). 
+
+
+
+% Prepositional % hvilket språk %% VERY EXPENSIVE %% TA-010511
+qverb_phrase(Y,S,N,Com,P2) --->
+    has,
+    noun_phrase1(X,P,P1),       % jeg
+    lexv(tv,V,past,part),       % skrevet
+    noun_phrase1(Z,Q,Q1),       % deg   
+    prep(In), 
+    !,
+    verb_phrase(X,S,N,Com:P2)
+         \  ( lexv(tv,V,past,fin), noun_phrase(Z,Q,Q1),prep(In),noun_phrase(Y,P,P1)). 
+
+
+
+qverb_phrase(Y,S,N,Com,P2) ---> % (hvilken tid) %
+    lexv(Vcat,V,Tense,fin),     % tar
+    thereit,
+    npa(X,P,P1)=this,
+    !,
+    verb_phrase(X,S,N,Com:P2)
+         \  ( lexv(Vcat,V,Tense,fin), np1(Y,P,P1)). 
+
+
+
+
+qverb_phrase(Y,S,N,Com,P2) ---> % hvilket objekt verb subjekt
+    lexv(Vcat,V,Tense,fin),
+    {Vcat \== iv},  %% either tv or worse %% TA-1006
+    noun_phrase1(X,P,P1),
+
+    verb_phrase(X,S,N,Com:P2)
+         \  ( lexv(Vcat,V,Tense,fin), noun_phrase(Y,P,P1)). 
+
+
+%% Hvor går jeg på bussen  %% Repair rule
+%% Hvilke steder  går jeg på bussen ved
+% hvilket objekt verb subjekt PP (ved) ()
+
+qverb_phrase(Y,S,N,Com,P2) ---> % (hvilket sted)
+    lexv(iv,V,Tense,fin),       % går
+    noun_phrase1(X,P,P1),       % jeg
+
+    adverbial1(On,Z,SC,P3),       % på bussen
+       !,                 
+    {vartypeid(Y,ObjTID)},
+    missingprep(V,ObjTID,At),               % ved (default)
+
+    st(S,N,Com,P2) \              
+       ( noun_phrase1(X,P,P1),   % jeg 
+         lexv(iv,V,Tense,fin),   % går
+         adverbial1(On,Z,SC,P3), % på bussen  
+         prep1(At),              % ved
+         gap(Y)).                % Y
+
+
+%% Prepositional Complement
+%% Hvilke stasjoner stopper buss 5 ved i sentrum.
+
+
+
+%% If several verb_complements, they are nested first innermost,
+%%   and the state is existantiated innermost
+
+verb_complements0(V,X,S,Com1P1,Com12P3) ---> % 1-n for be1, otherwise 0-n 
+    verb_complements(V,X,S,Com1P1,Com12P3).
+
+verb_complements0(V,_,_,CP,CP) ---> 
+    {\+ V=be1}. %% ( why was this hazardous?) 
+
+verb_complements(V,X,S,Com1P1,Com12P3) --->
+    verb_complement(V,X,S,Com1P1,Com12P2),
+    verb_complements10(V,X,S,Com12P2,Com12P3).  % last dominates first 
+
+
+
+
+verb_complements10(V,X,S,Com1P1,Com12P3) ---> %% 0-n 
+    and2, %% HAZARD     Jeg bor på Nidarvoll og i ettermiddag ...
+          %%            bussen går før 1300 men etter 0900
+    verb_complements(V,X,S,Com1P1,Com12P3). %% 1-n 
+
+
+
+verb_complements10(V,X,S,Com1P1,Com12P3) ---> %% 0-n 
+    verb_complements0(V,X,S,Com1P1,Com12P3). 
+
+verb_complements10(_,_,_,CP,CP) ---> [].      %% (also be)
+
+                                         
+verb_complement(V,X,S, (Com1 and Compl):Subj,Com1:P3    ) --->    %% die
+   lexv(iv,Sing,pres,part),                    %% singing
+   verb_complement3(Sing,X,Y,Subj,P3),
+   {verb_compl(V,during,X,Y,S,Compl)}.
+
+verb_complement(V,X,S, (Com1 and Compl):Subj,Com1:P3    ) --->    % this afternoon
+   this,
+   adverbial(Prep,Y,Subj,P3) \ (prep(in),this), 
+   {verb_compl(V,Prep,X,Y,S,Compl)}.
+
+verb_complement(V,X,S,  (Compl and Com1):Subj,Com1:P3   ) --->    % preserve sequence
+   {\+ testmember(V,[tell,know,knowthing])},     %% ,ask  %% TA-010327 Ad Hoc 
+   adverbial2(Prep,Y,Subj,P3),               %% subordinate clauses
+   {verb_compl(V,Prep,X,Y,S,Compl)}.
+
+% Tricky Sequence
+
+% 1. på kvelden
+verb_complement(V,X,S, (Com1 and Compl):Subj,Com1:Subj    ) ---> 
+    partday(Today,DayClass,_),                %% på kvelden etc
+    {adv_compl(V,Today,X,DayClass,S,Compl)}.  %% not compl to adverb :-!
+
+
+% 2. på en kveld
+verb_complement(V,X,S,  (Compl and Com1):Subj,Com1:P3   ) ---> 
+   adverbial1(Prep,Y,Subj,P3),                                 % (go) on the bus. %% lexical order
+   {verb_compl(V,Prep,X,Y,S,Compl)}.
+
+% 3. på
+verb_complement(V,X,S, (Com1 and Compl):Subj,Com1:Subj    ) --->  %%  Moved 
+    adverbx(Today,DayClass,_),              % (go) on
+    {adv_compl(V,Today,X,DayClass,S,Compl)}.
+
+verb_complement(V,X,S,(Com1 and find(Y:PT)::(Y isa place and Compl)):Subj,  Com1:Subj ) ---> % swap
+    thisplace(Here),     
+    {type(place,PT)},
+    {adv_compl(V,Here,X,Y:PT,S,Compl)}.
+
+verb_complement(Tell,X,S, ( Compl and Com1):Subj,Com1:P3    ) --->   %% Moved Last
+   nil_compl(Tell),   %% Keep sequence, e.g.  gløshaugen sentrum %% TA-010123
+   complement1(nil,Y,Subj,P3), 
+   !,  %%% <---!!!  Hazardous, but essential  % bus goes 1  OK/ bus goes 2 NO
+   {verb_compl(Tell,nil,X,Y,S,Compl)}.
+
+
+%% dyrt å  komme til Risvoillan
+verb_complement(adj/Expensive,X,S,(Com1 and Compl):Subj,Com1 :KA) ---> 
+    infinitive,
+    subordinatey(being_the,activity,X,T1,Subord), 
+    determiner00(T1,Subj,Subord,KA), 
+    {verb_compl(adj/Expensive,in_order_to,X,T1,S,Compl)}. 
+
+
+%% for å komme til Risvoillan
+verb_complement(V,X,S,(Com1 and Compl):Subj,Com1 :KA) ---> % # swap
+    in_order_to(V,N,Reason), %%    N=not ==> uten å  (Norwagism)
+    subordinatex(being_the,Reason,X,T1,Subord), % Subject modifier
+    {negate(N,Subord,Subord1)}, 
+    determiner00(T1,Subj,Subord1,KA), 
+    {verb_compl(V,in_order_to,X,T1,S,Compl)}. 
+
+%% test if empty (no preposition) complement
+
+nil_compl(_) ---> 
+    prep1(_),
+    !,
+    fail.
+
+nil_compl(be/Present) --->
+    {a_compl(Present,_,nil,_)},  %% filter
+    !. 
+
+nil_compl(Tell) --->
+    {v_compl(Tell,_,nil,_)}, % almost every verb
+    !. 
+
+
+verb_complement3(Sing,X,Y,SC, KA)  ---> 
+        st0(P) 
+        - (gap(X),
+           lexv(iv,Sing,pres,fin),
+           prep(in) , the(Y) , w(noun(time,_,_,n))),
+        determiner00(Y,SC,P,KA). 
+
+
+adverbial(Prep,TX,SC,FI) ---> 
+    adverbial2(Prep,TX,SC,FI).
+
+adverbial(Prep,Y,SC,P3) --->
+    adverbial1(Prep,Y,SC,P3).
+
+adverbial0(Prep,Y,SC,P3) ---> 
+    adverbial1(Prep,Y,SC,P3).
+
+adverbial0(nil,Y,SC,P3) ---> 
+    complement1(nil,Y,SC,P3).  %% En gang gikk bussen
+
+adverbial1(ago,X,SC,P3) ---> %%  ago
+     prep1(for),
+     anumber(N), % 1 / en / et
+     w(noun(Minute,_,u,n)), %% hours/ 
+     [siden],
+     !,
+     begin,
+        np1(X,SC,P3) =  (number(N),w(noun(Minute,_,u,n))),
+     end.
+
+%% AD HOC %% TA-010612
+adverbial1(in,D:day,_4145,exists(D:morrow)::D isa morrow and _4145) --->
+    prep1(in),
+    [morgen],
+    !.
+
+
+
+
+adverbial1(Prep,Y,SC,P3) --->    % JUST TO ASSURE complement1 is
+    complement1(Prep,Y,SC,P3).   % not used as a NOUN_complement
+    
+
+adverbial2(Prep,T1,SC,KA) ---> 
+     subordinate(Prep,T1,Subord),
+     determiner00(T1,SC,Subord,KA).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+subordinate(Prep,T,P) --->  
+    subord_conj(Prep,Category,In), 
+    subord_clause(In,Category,T,P). 
+
+
+
+subordinatex(Prep,Reason,X,T,P) ---> 
+    begin, 
+        adverbial1(Prep,Y,SC,P3)=
+            (w(prep(Prep)),the(T),w(noun(Reason,_,_,n))), 
+             %% necessary for prep1 ?
+    end,
+    !,
+    st0(P) 
+        - (gap(X),adverbial1(Prep,Y,SC,P3)).
+
+
+subordinatey(Prep,Reason,X,T,P) ---> 
+    {it_template(X)}, % Det er dyrt å ta buss
+    begin, 
+        adverbial1(Prep,Y,SC,P3)=
+            (w(prep(Prep)),the(T),w(noun(Reason,_,_,n))), 
+             %% necessary for prep1 ?
+    end,
+    !,
+    st0(P) 
+        - (gap(X),adverbial1(Prep,Y,SC,P3)).
+
+
+subordinatey(Prep,Reason,X,T,P) --->  %% TA-010515
+    {\+ it_template(X)}, %% Bussen er dyr å ta
+    lexv(tv,Take,_inf,fin), 
+    !, 
+    begin, 
+        adverbial1(Prep,Y,SC,P3)=
+            (w(prep(Prep)),the(T),w(noun(Reason,_,_,n))), 
+             %% necessary for prep1 ? 
+    end,
+    !,
+    st0(P) 
+        - (someone,w(verb(Take,pres,fin)),gap(X),
+           adverbial1(Prep,Y,SC,P3)).
+
+
+
+
+
+subord_clause(In,Category,T,P ) --->
+    begin,
+       adverbial1(Prep,Y,SC,P3) = (w(prep(In)), the(T), w(noun(Category,_,_,n))),
+    end,                           %% necessary for prep1 ? 
+    !,  
+                         % trikken går når DET går busser 
+    statemen1(real,P) %% st0(P)  %%  Simple NP, NO CUT %% TA-010612
+        - adverbial1(Prep,Y,SC,P3). 
+
+%% THIS OUGHT TO BE USED UP LOCALLY !!!
+%% IF NOT, IT MAY MATCH THE MAIN VERB
+
+%
+
+partday(tomorrow,Day,P) ---> %%  I morgen = tomorrow
+    to0,                     %% til %% TA-010605
+    prep1(in),
+    w(noun(morrow,_,_,n)), %% I MORGEN
+    !,
+    {particle(tomorrow,Day,P)}.
+
+partday(Yesterday,Day,P) ---> %% Special Part day adverbial expressions
+    inom(InOm),
+    w(noun(Yester,_,_,n)), %% om ettermiddagene 
+    !,
+    {norpart(InOm,Yester,Yesterday)}, 
+    {particle(Yesterday,Day,P)}.
+
+
+
+adverbx(X,Y,Z) ---> 
+    adverb(X,Y,Z).
+
+adverbx(X,Y,Z) ---> 
+    partday(X,Y,Z).
+
+adverbx(yesterday,Y,Z) ---> 
+    prep1(in),
+    [går],
+    !,
+    {particle(yesterday,Y,Z)}.
+
+
+anyadverb ---> 
+    therenot0,
+    adverb(X,Y,Z),
+    !,
+    []- adverb(X,Y,Z).
+anyadverb ---> 
+    therenot0.
+
+
+adverbx0 ---> 
+    adverb(X,Y,Z),
+    {\+ isaprep(X)}, %% Jeg >tror< på Gud %% TA-010107 %% NEW Predicate fernando.
+    {\+ testmember(X,[home])}, %% går bussen hjem => hox bussen hjem går 
+   !,
+    []-adverb(X,Y,Z).
+
+adverbx0 ---> [].
+
+
+adverb(Fast,Mode,P) ---> 
+    very,                     %% dummy   "so",  
+    w(adj(Fast)),
+    {particle(Fast,Mode,P)}.
+
+adverb(now,Mode,P) ---> 
+    prep1(with), 
+    detsamme,  
+    {particle(now,Mode,P)}.
+
+adverb(first,time,_P) ---> [først]. 
+
+
+adverb(today,day,pre) ---> % (i dag) %% TA-010320
+    prep1(in),
+    w(noun(day,sin,u,n)).
+
+adverb(tomorrow,day,pre) ---> % (i morgen) %% TA-010320
+    prep1(in),
+    [morgen].
+
+
+adverb(Today,Day,P) ---> %% (moved back) 
+    and0, %% and directly 
+    particle(Today),        
+    {particle(Today,Day,P)},
+    da0.                     %%   Norwagism (nå da')
+
+complement1(_,_,_,_) ---> [hva],!,fail. %% TA-010606
+
+complement1(Nil,Y,SC,P3) ---> %% ( Buss går     09.12 => Clock ) at -> nil
+    {Nil == nil},
+    obviousdate(Y,SC,P3). 
+%% Moved before clock   buss lørdag 11.11 går %% EXPERIMENT
+%                       buss går lørdag 11.11
+
+complement1(Nil,Y,SC,SC and P3) ---> %%  (not at)
+    {Nil == nil},
+    clock,  
+    !,  
+    clock_sequel(Y,P3). %% timeq1(Y,P3). %%    %% TA-011001  EXPERIMENT
+
+complement1(Nil,Y,SC,SC and P3) ---> 
+    {Nil == nil},
+    colock(Y,P3),                    %% explicit  hh:mm
+    !.
+
+
+complement1(_,_,_,_) --->     %% i morgen \= in (a) morning !
+     prep1(in),               %% Pragmatix  
+	  w(noun(morning,_,_,_)),
+     !,
+     fail.
+
+complement1(Nil,Y,SC,P3) ---> %%  ( Buss går  30 minutter over 1400)
+    {Nil == nil},
+    obviousclock(Y,SC,P3).    %%  Minutes Over Syndrome
+
+
+complement1(Nil,Y,SC,P3) ---> 
+    {Nil == nil},
+    noun_phrase1(Y,SC,P3).   %% bussen passerer nardovegen * -2-
+
+complement1(withafter,Y,SC,P3) --->  %% om en times tid
+     prep1(withafter),           %% om
+     anumber(N),                 %% en (1)
+     w(noun(Hour,_,u,gen)),      %% time(r)s (minutts/etc.)
+     w(noun(time,sin,u,n)),      %% tid
+     !,
+     np1(Y,SC,P3) \  (number(N),w(noun(Hour,sin,u,n))).
+
+
+complement1(around,X,SC,P3) --->
+    prep1(in),
+    timeq1(X,Ten),           % 5-
+    w(noun(time,sin,def,n)), % tida
+    !,
+    np1(X,SC,P3)= timeq1(X,Ten).
+
+complement1(_,_,_,_) ---> 
+     [med],[en],[gang],   %% Adverbial
+     !,
+     fail.
+
+
+complement1(Prep,Y,SC,SC and P3) ---> %% etter 17.10 ==> most probably clock
+    prep1(Prep),                      %% TA-011005
+   {Prep == before;Prep==after},  
+    clock_sequel(Y,P3),
+    !.
+                                                        
+
+
+complement1(Prep,Y,SC,P3) --->
+    prep(Prep),   %% DONT  split !!!
+{\+ Prep = of},   %% Pragmatix  
+    noun_phrase(Y,SC,P3). % not noun_phrase1 (   Prep A og B )
+                                                        
+
+obviousdate(YDate:date,SC, YDate isa date and SC) ---> %% den  280801  etc
+    dendagen(_),                                       %% den 2808
+    num_na(DD),                                        %% not 28
+    {numberdate(DD,YDate)},
+    !.
+
+
+obviousdate(Y,SC,P3) --->
+    dendagen(_),      %% date more probable than clock
+    date(X,P),        %% Buss går lørdag den 09.12 => Date 
+    !,                %%  (don' try other nil complements)
+    np1(Y,SC,P3)  \  date(X,P).     
+
+
+obviousdate(Y,SC,P3) --->
+    num_na(DD), %% not article here %% TA-001018
+    point0,     %% 
+    monthname(MM),
+    point0,    %% optional .
+    year0(YY),
+    !,
+   {Date= date(YY,MM,DD)},     
+    np1(Y,SC,P3)  \   date(Date:date,Date isa date),
+    !.
+
+
+obviousdate(Y,SC,P3) ---> %% TA-010723
+    num_na(DD), 
+    pointNO,       %% mandatory if dot
+    month(MM),
+    point0,      %% optional .
+    year(YY),
+    !,
+   {Date= date(YY,MM,DD)},     
+    np1(Y,SC,P3)  \   date(Date:date,Date isa date),
+    !.
+
+
+obviousdate(Y,SC,P3) ---> %% 2. pinsedag etc
+    num_na(DD), 
+    pointNO, 
+    w(name(WD,_,_)),
+    {testmember(WD,[whitsun_day])}, %% TA-010621 etc
+    begin, 
+        date(XX,PP) =   
+             (num_na(DD),  %% TA-010618 
+              w(name(WD,_,_))),
+    end,
+    np1(Y,SC,P3)  \   date(XX,PP),
+    !.
+
+
+%% NOT   den første (bussen) !!! 
+obviousdate(_,_,_) --->  %% expensive   %% TA-010904
+    dendagen(_),  
+    num_na(_),
+    w(noun(_,_,_,_)),
+    !,
+    fail.
+
+obviousdate(YDate:date,SC, YDate isa date and SC) ---> %% den 28  LAST %% TA-010902
+    dendagen(_),  
+    num_na(DD),
+    {DD >= 1, DD =< 31},  
+    !,
+    {daysdate(date(YYYY,MM,_))},
+    {YDate = date(YYYY,MM,DD)}.
+
+
+
+
+obviousclock(X,VP,VP and Colock) ---> % HH:MM 
+    colock(X,Colock),
+    !. 
+
+obviousclock(X,VP,VP and P3) ---> % capture  30 minutter over 1400
+    timenexp(N),    % Time not expected  %% bussen går 1 time etter lunsj 
+    !,                %%  (don' try other nil complements)
+    timeq1(X,P3) \ time1(N).
+
+
+                            
+streetno ---> a,!,fail. %% pure number, not article, not first etc.
+streetno ---> [veg].    %% most probable road, not direction (vei syn veg)
+streetno ---> w(nb(N,num)), {N < 500}.
+
+%%%%%%%% i fra syndrom
+
+% du sier når bussen går fra nth
+% =
+% du sier en tid; bussen går i (denne tiden) fra nth
+% =
+%                 bussen går i fra (denne tiden) nth *
+%
+%%%%%%%%
+
+% begin end   :   block Input and Stack
+% lock unlock :   block Stack BUT don't unblock INPUT !!!
+
+
+
+rel_clauses(X,Com,Com and  P) ---> %% Special treatment %% TA-010223
+    pronoun(I),     
+    !,
+    st0(P) - (pronoun(I),gap(X)).  %% not \   I (know) X (exists) 
+
+
+rel_clauses(X,P,Q) ---> %% that sings and that dances 
+    lock,              %% fins*  bussen som skal * til DV %%  NOT begin
+    and0,                  %% bussen går før jeg tar bussen
+       rel_clause(X,P,P1), %% lock opphever tidligere nogap 
+       rel_clauses0(X,P1,Q),
+    unlock.
+
+rel_clauses0(X,P,Q) --->
+    and1, 
+    rel_clauses(X,P,Q).
+
+rel_clauses0(_,P,P) ---> [].
+
+
+rel_clause(Y,P1,P1 and P2) ---> 
+    where1,                     %%   venter et sted  der/hvor bussen er
+        statement(P2)
+        - (prep(in) , the(Y) , w(noun(place,_,_,n))). 
+
+rel_clause(X,Com,Com and  P) ---> % mannen som ikke så meg
+    rel(X),                     
+    negation(not), 
+    !,
+    st1(P)-(gap(X),negation(not)).    
+
+rel_clause(X,Com,Com and  P) ---> % mannen som jeg ikke så *
+    rel(X),                 
+         st0(P)-gap(X).
+
+
+rel_clause(Y,P1,P) --->   %% Internal OF without movement blocking
+    ofx,
+        noun_phrase(X,P1 and P2,P),     
+        {has_template(X,Y,P2)}. 
+
+% en måte å passere oslo fins
+rel_clause(X,P1,P1 and P2) ---> 
+    in_order_to, %% infinitive %% TA-010917
+    w(verb(Die,inf,fin)), %% pres
+    {constrain(X,way)}, % a bit hazardous ?
+    reciprov0(Die),     %% seg
+    adverbial1(Prep,Y,SC,P3) \ (prep(in),gap(X)),
+    begin,
+        noun_phrase1(XX,YY,ZZ) = someone,
+    end, % formal trick to let the subjct be tried first
+    stn1(real,P2) - 
+           ( noun_phrase1(XX,YY,ZZ), %% Seems that text np preferred %% TA-001110
+                                    %% if name  is tried first  SICK
+            w(verb(Die,pres,fin)),adverbial1(Prep,Y,SC,P3)),
+    on0. %% Norwagism
+
+
+
+
+rel_clause(X,P1, P1 and P2) ---> 
+    whose_noun(Z,R),              
+    worldcom(S,P2,ER:P),   %% TA-011005       
+    xverb_phrase(X,S,id,ER,P) \   
+        (w(verb(have,_,fin)),art,noun(_,_,_,n,Z,R),that).  
+
+rel_clause(X,P1,P2) ---> 
+    lexv(Vcat,Sing,pres,part),  
+
+    worldcom(S,P2,ER:P2), 
+
+    verb_phrase(X,S,id,(event/real/S and P1):P2)
+        \  lexv(Vcat,Sing,pres,fin). 
+
+
+%%  BLOODY EXPENSIVE EXPERIMENT
+%%  En kvinne (som) jeg kjenner %% RESTRICT TO PRONOUNS
+
+%% hvor kan jeg ta bussen =
+%  i hvilket sted kan jeg ta bussen
+%  i hvilket sted som jeg tar bussen ***
+
+% % % %
+
+
+/* Not used  %% TA-011003
+reduced_rel(X,P1,P1 and P2) --->
+        be_compl(X,S,event/real/S,P2).
+*/
+
+
+
+whose_noun(Z,R) --->
+    whose,
+    noun(_,_,u,n,Z,R).
+
+
+relwhat(X) ---> 
+    hva, 
+    som0,   %% bussen går til hva er klokken *
+     {constrain(X,thing)}.
+
+
+relwhat(X) --->
+    [hvem],
+    som0, 
+    {constrain(X,agent)}. %% TA-001011
+
+
+hva ---> [hva],!. 
+hva ---> [hvor],meny,!. 
+
+
+rel(X) ---> 
+    relpron(P),
+    {constrain(X,P)},
+    !.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+comparisons(X,S,P) ---> 
+    comparison(X,S,P1),
+    comparisons0(X,S,P1,P).
+
+comparisons0(X,S,P1,P1 and P3) --->
+    and1,
+    comparison(X,S,P2),
+    comparisons0(X,S,P2,P3).
+
+comparisons0(_,_,P,P) ---> [].
+
+
+
+comparison(X,_,P2) --->  %%  Direct comparison ( 23 > 20 )
+    comparator1(REL),    
+
+    { (user:testmember(REL,[gt]),  %% ad hoc filter  information over ...
+       user: vartype(X,_,I)) -> 
+             \+ user:testmember(I,[information]);true},
+
+    noun_phrase1(Y,P1,P2),
+    {compare(REL,number,X,Y,P1)}.  %% Changed Format %% TA-001013
+
+
+comparison(X,_,P2) --->  %%  Indirect comparison ( John is older than Mary) 
+    comparator2(REL,Age),    
+    noun_phrase1(Y,P1,P2),
+    {compare(REL,Age,X,Y,P1)}. %% %% Changed Format %% TA-001013
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  N O U N  - P H R A S E    S E C T I O N
+%
+
+subject2(X,Y,VP,P) --->      %% not  meg,ham,henne,oss,dem
+    noun_phrase2(X,Y,VP,P).
+
+object2(_X,_Y,_VP,_P) ---> [jeg],!,fail. %% TA-010314 Experiment
+% hvilken buss kjører meg \= hvilken buss kjører jeg
+
+
+object2(X,Y,VP,P) --->       %% not jeg,du,han,hun,vi,de
+    noun_phrase2(X,Y,VP,P). 
+
+
+% noun_phrase2(X,Y,VP,P)   % object Y compared with the subject X 
+
+% The object Y is or is not identical to the subject X
+
+
+% hvilken buss bør jeg ta når   jeg skal til dragvoll
+
+noun_phrase2(_,_,_,_) --->
+    w(verb(_Elsket,past,part)),
+    !,
+    fail. %% AD HAC  Elsket not adjectival partisipp
+
+noun_phrase2(X,X,VP,P) --->
+    recipron(Him),                        % Himself
+    noun_phrase1(X,VP,P)  \  pronoun(Him).
+
+
+noun_phrase2(X,Y,P,findalt(diff,X,Y)::(Q and P)) --->
+    another,
+    noun(_,sin,u,n, Y, Q). 
+
+noun_phrase2(_,Y,P1,P2) --->    %% Y may or may not 
+    which0, %%   jeg vet hvilke busser jeg skal ta 
+    noun_phrase(Y,P1,P2).       %% be qual to X     
+
+
+                              
+noun_phrase(X,P1,P) --->        
+    noun_phrases(X,P1,P).
+
+
+noun_phrases(Z,VP,P2) --->       % 1...more
+    noun_phrase1(X,VP,P1),       % 1
+    noun_phrases0(X,Z,VP,P1,P2).    % 0...more
+
+                            %%% NB  and here, not or
+noun_phrases0(X,XZ,VP,P1,P1 and P3) ---> %% A, B and C  is not allowed ( restriction)
+    andor(And),     %% TA-001203
+    noun_phrase1(Y,VP,P2),  %% are you man or machine
+    noun_phrases0(Y,Z,VP,P2,P3),
+    {latin(And,X,Z,XZ)}.         %% check compatibility 
+
+noun_phrases0(X,X,_,P,P) ---> []. 
+
+
+
+no_phrase(X,P) ---> %% Pure Noun_phrase 
+    noun_phrase1(_,true,P) \ the(X). 
+
+noun_phrase1(X,P,P and Q)---> 
+    relwhat(X),            % hvem som
+    st0(Q)-  
+        gap(X).
+
+noun_phrase1(_,_,_) ---> [og],!,fail. %% går buss 3 OG 5 
+
+noun_phrase1(X,P,P) ---> gap(X). 
+
+noun_phrase1(X,VP,P) --->  
+    np2(X,VP,P).           % some specialties   MOVED UP
+
+noun_phrase1(X,VP,P) --->  % (de 2 neste bussene)
+    np1(X,VP,P).           % calls name_phrase
+
+noun_phrase1(X,VP,P)--->    %% Must come last, because of greed  
+    quant_pron(some,Person), 
+    np1(X,VP,P)
+         \  ( some,w(noun(Person,_,u,n))). %%
+
+noun_phrase1(X,VP,P) --->  %%   bussen ( anaphoric)
+    npa(X,VP,P).           %%  han   AFTER quant_pron(some,person)
+                           %%  mary liker han som lever
+
+noun_phrase1(X,VP,P)--->  
+    quant_pron(much,Time), 
+    np1(X,VP,P)
+         \  (much,w(noun(Time,_,u,n))). %%
+
+noun_phrase1(X,VP,P)--->  
+    quant_pron(little,Time),  %% TA-001112
+    np1(X,VP,P)
+         \  (little,w(noun(Time,_,u,n))). %%
+
+
+noun_phrase1(X,VP,NP)--->  %% Ad hoc  no person die --- every person does not die
+    quant_pron(no,Person),
+    np1(X,VP,P)
+         \  (every ,w(noun(Person,_,u,n))),
+    {negate(not,P,NP)}.
+
+specific_phrase(_X,_VP,_P) ---> 
+   w(name(_,gen,_)),         %% avoid your (=tuc's) version
+   !,
+   fail.  
+
+specific_phrase(_X,_VP,_P) ---> 
+   w(name(_,_,_)),         %% avoid your (=tuc's) version
+   sin,
+   !,
+   fail.  
+
+specific_phrase(X,VP,P) ---> 
+    name_phrase(_IND,X,VP,P).
+
+specific_phrase(X,VP,P) ---> 
+    sp1(X,VP,P). %  npa(X,VP,P) too general
+
+sp1(X:T,VP,findpron(X:T):: (X isa Man) and VP) ---> 
+    pronoun(Man),
+    {type(Man,T)}.                
+
+%% np0    np without modifiers
+
+np0(X,VP,P) --->       %% np without modifiers
+    the10,             % den/det (not de) 
+    aname_phrase(_IND,X,VP,P).
+
+np0(X,VP,P) --->
+    np_head(_, X,P1,P1,VP, P). 
+
+np0(X,VP,P) --->
+    npa(X,VP,P).
+
+np0(X,P,P) --->
+    gap(X).
+
+
+
+
+%
+
+% NB np1 breaks the greedy heuristics rule, and
+% may return shorter phrases before longer
+
+% Bussen går til 2 steder     np_head først !!!
+% Bussen går før klokken 10   aname_phrase først !!!
+
+
+%-------------------------------------------------------------
+  
+% buss 5 går til 2 stasjoner før klokken 10 
+
+%% Due to cut regime, both must be right at first try
+
+
+np1000(X,VP,P) --->  %% np1 without blocking  // Despair
+    np_kernel(Ind, X,P0,P1,VP, P), 
+    noun_complements(Ind,X,P0,P1).
+
+np1(X,VP,VP and P) --->  % TA-010821 %% EXPENSIVE ?
+    clock,               % TA-011001
+    clock_sequel(X,P),   %  obviousclock(X,VP,P), %% not clock as noun
+    !.
+
+np1(X,VP,P) ---> %   rutetide gjelder for 2 mai. %% EXPENSIVE ?
+    obviousdate(X,VP,P),
+    !.
+
+np1(X,VP,P) ---> %   Bussen passerer Buenget stasjon
+    np_kernel(Ind, X,P0,P1,VP, P), 
+    noun_modifiers(Ind,X,P0,P1).
+
+np_kernel(Ind,X,true,P1,VP ,P1 and Q) --->%  #1
+    the0, %% den første 5 bussen 
+    aname_phrase(Ind,X,VP,Q).
+
+%   Called before np_head for some reason but must take article as numbers
+
+
+np_kernel(Ind, X,P0,P1,VP ,P) ---> % #2
+    np_head(Ind, X,P0,P1,VP, P).
+   
+
+np_kernel(Ind, X,P0,P1,VP ,P) ---> % #3  %% Experiment:  Det som jeg tror er
+   [det],
+   [som],
+   !,
+   begin,
+       np_head(Ind, X,P0,P1,VP, P)= (art,w(noun(thing,sin,u,n))),
+   end,
+   !.
+
+np_kernel(Ind, X,P0,P1,VP ,P) ---> % #4  %% Experiment: Det jeg tror er
+   [det],
+   pronoun(I), 
+   !,
+   begin,
+       np_head(Ind, X,P0,P1,VP, P)= (art,w(noun(thing,sin,u,n))),
+   end,
+   []- pronoun(I).
+
+
+
+
+
+%% 8 neste busser  \= buss 8  
+
+
+%% Check that a number is not a name
+
+
+% dont return (bus) 3 when " 3 neste " 
+
+%% OOPS   30 minutter over/på/før 1400 
+
+
+% dont return (bus) 3 when " 3 noun_plural" 
+% unless  time measure
+
+
+aname_phrase(_IND,_,_,_) ---> %% er sjåføren på  blid
+    number(_),                %% 36
+%%    w(adj(_)),                %% blid %% TA-010605
+    filanepr,  %% NB over = finished = adjective !!! (SIC)
+    !,
+    fail.
+
+/*  TA-010927   ********  EXPERIMENT
+
+aname_phrase(_IND,_,_,_) ---> 
+    number(_), 
+    w(noun(Minutes,plu,_,_)), 
+{ \+  measureclass(Minutes)},  % testmember(Minutes,[minute,hour,day,month,year]) },  
+    !,
+    fail.
+
+*/
+
+
+
+% don't return  typed name unless vehicle
+
+
+
+%% neste 8 busser  \= buss 8   /// neste 8 minutter OK
+
+aname_phrase(_IND,_,_,_) ---> 
+    filanepr,  
+    bus_number(_),    
+    w(noun(Noun,plu,_,_)),   % certain, the number was a count
+    {testmember(Noun,[bus])},         % TA-010927  neste 3 timer 
+    !,
+    fail. 
+
+%% OOPS halv åtte = "liten" buss 8
+aname_phrase(_,_,_,_) ---> %% Hvilken holdeplass er nærmest Kolstad
+    w(adj(Nearest)),      %% AD HOC  %% TA-010302
+    {testmember(Nearest,[nearest])},     %% TA-010327
+    %       etc
+    w(name(Kolstad,_,_)),
+    {\+ number(Kolstad)},  %% TA-010327
+    !,
+    fail.
+
+aname_phrase(Ind,XT,VP,P1) ---> %% TA-010530
+    preadjs0(Alist),
+    name_phrase(Ind,XT,VP,P0), 
+    {preadjs_template(Alist,XT,P0,P1)}.
+
+
+% % % % % 
+
+name_phrase(_IND,_,_,_) --->            %%  Pragmatix 
+    a0,
+    w(noun(bus,sin,u,n)),  %% dont assume the clock is a bus number
+    clock_number(_),
+    !,
+    fail.
+
+
+name_phrase(0,NT2,P,Q) ---> % i tidsrommet  1300 (til) 1400
+    w(noun(time,sin,def,n)), % tidsrommet
+    timexp(A), % expected clock
+    to0,
+    timexp(B),
+    !,
+    noun_phrases(NT2,P,Q)  \  (time1(A),and1,time1(B)). 
+
+
+name_phrase(Ind,X,P,Q and P) ---> %% buenget stasjon  %% Moved forward 
+    namep(Ind,X,Q).               %% Preserve order of isa 
+
+name_phrase(name,X,P,P and Q) ---> %% TA-010126
+    name_complex(X,Q).             %  incl genitive
+
+
+%----
+
+% his father   %% TA-010922
+
+np_head(0, XT,P0,P1,VP, 
+ findpron(Y)::( exists(XT) :: P0 and YisaP and P1 and HasYX and VP)) --->
+    thispron, %% TA-010922
+    noun(_,_Num,_,gen,  Y, YisaP),     % program's 
+    !,
+    preadjs0(Alist),         %% my last question %% TA-001002
+    noun_compound(XT,Q0,sin), 
+ 
+    {preadjs_template(Alist,XT,Q0,P0)},
+                                        % this mans daughter Mary
+    {has_template(Y,XT,HasYX)}.
+
+
+% this programs version   (=\=    this program version )
+%  *     *            
+
+np_head(0, XT,P0,P1,VP, 
+ find(Y)::( exists(XT) :: P0 and YisaP and P1 and HasYX and VP)) --->
+    this, 
+    noun(_,_Num,_,gen,  Y, YisaP),     % program's 
+    !,
+    preadjs0(Alist),         %% my last question %% TA-001002
+    noun_compound(XT,Q0,sin), 
+ 
+    {preadjs_template(Alist,XT,Q0,P0)},
+                                        % this mans daughter Mary
+    {has_template(Y,XT,HasYX)}.
+
+
+% * Experiment  %%   Time consuming ? :  
+%               %% bussen går slik at jeg er på NTH før 1215 fra Dragvoll?
+
+np_head(of,XT,P0,P1,VP, P) ---> 
+    determiner00(XT,P1,VP, P), 
+    preadjs0(Alist),           %% "hele"
+    noun2(_,def,n,XT, Q0),       %% Norwegian: internett adressen til TT 
+    {preadjs_template(Alist,XT,Q0,P0)}.
+
+np_head(Cind, XT,P0,P1,VP, P) --->  % Cind = of ,of- complement required 
+    determiner0(Num,Cind, XT,P1,VP, P),  %% to første buss *
+    preadjs0(Alist), 
+                                      %% TA-010530
+    {Alist=true -> Num1=Num;Num1= _}, % hack  allow tre neste buss
+    noun_complex(XT,Q0,Num1),         % but not 3 buss ( as 3 busser)
+    {screenmeasure(Num,XT)},          %% TA-010927  %% avoid 3 min as count
+    {preadjs_template(Alist,XT,Q0,P0)}. 
+
+
+                  % to faste tidspunkt  (=pl neutr, but not coded)
+                  % to busser og trikker \== to (busser og trikker)
+
+
+
+noun_complex(N:Bus,N isa Bus,plu) --->  %% buss no 5  \  AD HOC Når går de to neste buss no. 5
+    w(noun(Bus,_,SINTEF,n)),
+    {SINTEF \== def},   %% not bussen 23  %% TA-010812
+    {subtype0(Bus,vehicle)},  %% Not wednesday !!! %% TA-0010421
+    plausibleno(Bus,N).
+
+
+noun_complex(X,P,Num) --->  
+    noun_compound(X,P,Num). %  mans daughter (Mary)
+
+noun_complex(X,P,Num) --->  % bus and tram 
+    noun_list(X,P,Num). 
+
+
+plausibleno(_,_)---> %% TA-010611
+   num(_),
+   monthname(_),
+   !,
+   fail.
+
+plausibleno(_Bus,N) ---> %% TA-010611
+    nr0,  %% nr is dummy
+    num(N),
+    {N < 1000}.  %% Plausible Bus no %% TA-001113  %% Parametrize! 
+
+name_complex(X,P) --->      % 5 and 6
+    name_compound(X,P).
+
+
+%---------------------------------------------------------------
+
+
+npa(Y,VP,findit(X)::P)---> 
+    its,
+    determiner00(Y,A and H,VP,P), 
+    noun_compound(Y,A,_),
+    {has_template(X,Y,H)}.
+
+
+npa(X,P,findit(X)::P) --->    %% 'it' Works only under greedy order    
+     this,              %% it
+    {it_template(X)}.
+
+npa(X,P,find(X)::(Q and P)) --->  
+    noun(_,_,def,n,X,Q).                %% bussen  (Only singular)
+
+npa(X:T,VP,findpron(X:T):: (X isa Man) and VP) ---> 
+    pronoun(Man),
+    {type(Man,T)}.                
+
+
+
+npa(X,VP,P) --->  
+    posspron(Man),
+    kleenex,               %% Disgusting
+    np1(X,VP,P)  
+         \  ( thispron , w(noun(Man,_,_,gen))). 
+
+
+
+% OOPS   verb may be fronted når   går neste 
+npa(_X,_VP,_P) ---> %% når går neste til NTH
+    dent0, %% TA-001214
+    flnp(_),
+    w(verb(be,_,_)),   %% Freak:  neste E-buss = neste er buss
+    !,
+    fail.
+
+npa(X,VP,P) ---> %%  når går (den/det) neste til TS
+    dent0, %% TA-001214
+    flnp(Adj),
+    !,
+    np1(X,VP,P)  \  (a,w(adj(Adj)),
+                     w(noun(vehicle,sin,u,n))). %% TA-010402 (bus)
+
+
+filanepr --->  w(adj(first)),!.    %% TA-010530
+filanepr --->  w(adj(last)),!.     %% 
+filanepr --->  w(adj(next)),!.     %% 
+filanepr --->  w(adj(previous)),!. %% 
+
+adjnoun ---> w(adj(_)).
+adjnoun ---> w(noun(_,plu,u,_)). % 3 buses
+
+% Must be qualified " !!! %% not  1700 lørdag 
+
+
+%% np2   some special constructions
+
+np2(X,VP,P) --->
+    oter,
+    w(noun(Bus,_,u,n)),
+    [enn],
+    !,
+    np1(X,VP,P)\ (a,  w(noun(Bus,sin,u,n)),[ulik]).
+
+
+% Meant to cover  Hva er den nærmeste stasjonen til
+% Must be refined : går bussen til munkegate nærmeste time
+
+
+np2(X,VP,P) ---> 
+    the0,
+    nearest, %%    prep1(nearest), %%  Problematic 
+    np_head(0, X2,P02,P12,VP2, P2),
+    prep1(_), %% to/for/... who cares
+    np1(AA,BB,CC),
+    !,
+    np1000(X,VP,P)  \  (np_head(0, X2,P02,P12,VP2, P2),prep1(near), np1(AA,BB,CC)).
+
+
+
+%  np1 calls noun_modifiers which locks
+
+np2(X,VP,P) ---> 
+    number(1:_),
+    ofthe,
+    np_head(Ind, X,P0,P1,VP, P) \ a,  
+    noun_complements(Ind,X,P0,P1) \   %% NB not modifiers
+         (prep(from),this,w(noun(set,_,_,n))). 
+
+np2(X,VP,P) --->
+    the,
+    same,
+    noun(Noun,Num,_,n, Z, K),
+    as,
+    np1(X,VP,P)-
+        (the,noun(Noun,Num,_,n, Z, K),ofx). 
+
+np2(X,VP,P)--->                  %% lacks complements !!!!
+    quant_pron(every,Person), 
+    np1(X,VP,P)
+         \  ( every,w(noun(Person,_,u,n))). %%
+
+np2(X:T,VP,VP and X isa place and P) ---> 
+    where1,                               %%  bussen stopper der/hvor bussen er
+     {constrain(X:T,place)},
+     st0(P)- (prep1(in),gap(X:T)).
+
+
+/*  Culprit
+
+Hvilken buss bør jeg ta   når jeg skal være på Dragvoll senest klokken 08.30.
+=
+Hvilken buss bør jeg ta   kl 1200
+
+*/
+
+
+
+rel_clause(X,Com,Com and  P) ---> % mannen som jeg ikke så *
+    rel(X),                 
+          %% NOT movement !   Lifted up 
+         st0(P)-gap(X).   
+
+ 
+
+thex(X) ---> the(X), %% from what is question
+             the0.   %% from text
+
+kleenex ---> the(_),!.  %% the(X) from what is question 
+kleenex ---> [].        %% Awful and horrendous hack
+
+
+
+
+%% Pragmatix, possible classes
+
+clock_number(N:T) ---> 
+    number(N:T),
+
+    {clock_test(N)}. 
+
+ %   { N >= 100}.
+
+
+bus_number(N:T) --->
+    number(N:T),
+
+    {plausible_busno(N)}.
+
+%    { N =< 100 }.
+
+road_number(N:T) ---> 
+    number(N:T),
+    { N =< 200 }.     %% Brøsetvegen 168 
+
+%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%  NOUN LIST:  separate single nouns
+
+noun_list(X,Q,Num) --->
+    noun(_,Num,_,n, Y, P),   %%   Den neste timen
+    nlists0(Y,P,X,Q).
+ 
+ 
+nlists0(X:TX,P, (X,Z):(TX,TZ),P and R) ---> 
+     andor, %% andor(and),   %% TA-001030veld NOT noun list
+     noun(_,_,_,n, Y, Q),             %% otherwise noun_phrase             
+     nlists0(Y,Q,Z:TZ,R).
+
+nlists0(X,P,X,P) ---> [].
+
+
+
+
+%% Section for Unknown Compound names
+
+
+%----------------------------- 
+
+name_compound(Y:thing&_,Y isa unkn) ---> %% compund name list
+    {value(unknownflag,true)},
+     !,
+     unplausible_name(X),
+     morenames(X,Y).
+
+morenames(X,(X,Z)) ---> 
+    unplausible_name(Y), 
+    morenames(Y,Z).
+
+morenames(X,X)---> [].
+
+unplausible_name(X) ---> w(name(X,unknown,_0)),!.
+
+
+%-----------------------------
+
+%%%%%%%%%%%% COMPOUND    left associative with genitive
+
+name_compound(X,QP) ---> % Must begin with a name
+    plausible_name(Y,P,GN1),
+    sine(sin,u,GN1,GN2),            %% singularis 
+    ncomps0(GN2,X,Y,P,QP).   % At least 1 more if genitive
+
+%% This mans wifes house =  man has wife and wife has house
+%% Find man
+%                               % er 42 meningen =\= 42 meninger
+%                               % 5 de to første buss *
+
+
+
+% rute opplysninger tidspunkt NO
+% rute opplysninger           OK
+
+noun_compound(X,XisaBus and QP,Num1) ---> % ... TT bus %% TA-010612
+    w(name(TT,_n,_)),                     % May be unknown to DICT %% TA-010627
+    noun(_Bus,Num1,u,n,  X, XisaBus),
+    {adjname_template(TT,X,_,QP)}.    
+
+noun_compound(X,QP,Num1) --->  % X is the innermost
+    noun2(Num2,U,GN1, Y, P),
+     {Num1=Num2},             %% Number agreement  RELAX ??? 
+    sine(Num2,U,GN1,GN2),           %% bussen sine stasjoner 
+    ncomps0(GN2,X,Y,P,QP).  
+
+ncomps0(_,X,YT,P,Q) ---> %% dagens første avgang || NOT buss 8A
+    preadjs0(Alist),      %% TA-010530
+    ncomps(X,YT,P1,Q),
+    {preadjs_template(Alist,X,P,P1)}.  
+
+
+ncomps0(n,X,X,P,P and Q) --->   % his (daughter Mary)
+    nameq1(X,Q).
+
+ncomps0(n,X1,X2,P,P) ---> % if previous was n, then optionally no more.
+    {compatvar(X1,X2)}.
+
+ncomps(X,Y,P,QP) --->
+    noun2(_,_,GN, Z, Q), %% tts billett priser
+    {has_template(Y,Z,H )}, 
+    determiner00(Y,P,Q and H,PQH),
+    ncomps0(GN,X,Z,PQH,QP).
+
+% hvilke agent(er)(en)(s) = (sine) = agent(s)%%
+% sine(          X   Y   Z )          =  U
+
+sine(_,_,n,gen) ---> sin.    %% NB NEW argument num
+sine(_,_,n,gen) ---> [s]. 
+
+sine(sin,u,n,n) --->   [].     %% bussen stopper \= bussens stopper
+%% sine(sin,def,n,n) ---> [].  %% jeg skylder mannen penger %% TA-010730
+                               %% \=          mannens penger
+ 
+sine(plu,u,n,n) --->   [].  %% agenter jobber \= agentenes jobber
+%  Problem    rute opplysninger tidspunkt   :NO
+%             rute opplysning tidspunkt     :OK
+
+sine(plu,def,n,n) ---> [].     %%  bussene nummer \= bussene sine nummer
+                               %% buss rutene
+
+sine(_,_,gen,gen) ---> [].
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+%% Infinitival noun modifiers
+
+% det koster penger aa kjøre buss \= det koster penger aa kjøre buss for
+
+fictitiousprep(way,in) ---> [].
+fictitiousprep(abstract,with) ---> []. %% TA-010917 with possibility
+
+% moved before iv 
+
+%%   Collides with rel_clause ??
+
+noun_modifiers(0,X,P1,P1  and P2) ---> %% en måte til/for/med/av/ å
+    in_order_to, %% infinitive %% TA-010917
+    lexv(tv,Take,inf,fin),         %%     w(verb(Take,inf,fin)),
+    np1(A,B,C),
+    fictitiousprep(Take,In),
+    !,
+    st0(P2)- (someone, w(verb(Take,pres,fin)),np1(A,B,C),prep(In),gap(X)).
+
+
+noun_modifiers(0,X,P1,P1  and P2) ---> %% 15 minutes to go to town
+    in_order_to, %% infinitive %% TA-010917
+    {constrain(X,time)},
+    lexv(iv,Go,inf,fin),  
+    st0(P2)- (someone, w(verb(Go,pres,fin)), % to town
+              prep(in),gap(X)).              % in 15 minutes
+
+
+
+%% NOBLOCKING  EXPERIMENT 
+noun_modifiers(OP,X,P,Q) ---> 
+%%    lock,                    %% Blocking is general ( RULE )
+        noun_complements(OP,X,P,Q).
+%%    unlock.
+
+%% METAGRAMMAR SECTION
+
+lock ---> 
+    end, %% Don't unblock stack !!!!!!!!!!
+    !,
+    fail.
+
+lock ---> 
+    pushstack(+,unlock).   %% This prevents any movement from stack
+                           %% until phrase is used
+unlock ---> virtual(unlock).  %% will match end on stack
+                   
+
+begin --->  
+    pushstack(-,end). %%  This prevents any movement from stack
+                            %%  until phrase is used exactly
+end ---> virtual(end). %%  will match end on stack
+
+
+fail  --->  {fail}. %%  METAPROGRAMMING 
+
+
+%% hvilket land er oslo hovedstaden til ? ? ?
+
+%% noun_complements(Ind, X,P, Q) 
+
+%  Ind = Indicator of type of expected noun_complement
+
+%    of     of expected
+%    name   complements to a name
+%    0      ordinary (noun)
+%    1      at least one more
+
+%  some restructuring of  noun_complements 
+
+
+%% TRICKY
+
+%    lengden til meg * ikke qua possessive
+%    lengden til man *
+%    lengden til en *
+%    lengden til en buss   OK
+
+
+noun_complements(Of,_,_,_) ---> % qua possessive
+     {Of == of},     %% ugly
+     prep1(to),  % til
+     pronoun1(_), % meg  NOT POSSESSIVE %%  en is not a pronoun here
+     !,
+     fail.
+
+
+noun_complements(0, X, P, Q) --->  % not serial nonnested rel_clauses  % not name
+    rel_clauses(X,P,Q).            % avgang til 5 som går til nth  *   % RESTRICTION
+
+
+noun_complements(_Ind,X,P,R) --->     %% last dominates first
+    {_Ind = 0}, 
+ %%; _Ind = of},       %%   REDUCES TIME BY A HALF
+                                          %% bussen torsdag 
+   noun_complement(X,P,Q),                %% not _ind = name  !!!!!
+%    and0, 
+    noun_complements(0,X,Q,R). 
+
+% noun_complements(_Ind,X,P,R) --->     %% OOPS Jeg bor på N og i kveld
+%    and1,                             %% and requires
+%    !,
+%    noun_complements(1,X,P,R).        %% 1 more
+
+noun_complements(0, _,P, P) ---> [] .
+
+noun_complements(name, _,P, P) ---> []. %% /buss/ 5 til nth fins *** 
+
+noun_complements(of,Y,P1,P1 and P2) ---> 
+    of,   
+    st0(P2)  \   
+        (gap(Y),w(verb(evah,_,fin))).
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+noun_complement(Y,P,Q) ---> 
+     posspron(Self),  %% Norwagism min/din  
+     !,
+     noun_complements(of,Y,P,Q)  \  (of,pronoun(Self)). 
+
+
+noun_complement(X,P,P and Q) ---> 
+    comparison(X,_,Q).  
+
+
+noun_complement(X,P1,P1 and P3) --->
+    negation(N),        
+    complement1(Prep,Y,NP2,P3),
+    {noun_compl(Prep,X,Y,P2)},
+    {negate(N,P2,NP2)}.
+
+
+
+%%  complement without preposition is hazardous
+
+%% These are special cases, only name complements
+
+
+noun_complement(B,P,P and DateX) ---> 
+     nameq1(Xmas,Q), 
+     nilconstrain(Xmas),
+     !,
+     begin,   
+         np1(D,Date,DateX)= nameq1(Xmas,Q),
+     end,
+     {noun_compl(nil,B,D,Date)},
+     !.
+
+nilconstrain(Xmas) ---> {constrain(Xmas,date)}.
+nilconstrain(Xmas) ---> {constrain(Xmas,day)}.
+nilconstrain(Xmas) ---> {constrain(Xmas,clock)}.
+nilconstrain(Xmas) ---> {constrain(Xmas,place)}.
+
+
+noun_complement(B,P,P and DayX) ---> % bus  friday 
+     day(Saturday),
+     begin,                %% not bus 24.08.2000 = bus 24...
+        np1(D,Day,DayX) = w(noun(Saturday,sin,u,n)),
+     end, 
+    {noun_compl(nil,B,D,Day)},
+     !.
+
+noun_complement(B,P,P and DateX) ---> % buss julaften %% TA-010529
+     obviousdate(D,Da,DateX),
+    {noun_compl(nil,B,D,Da)},
+     !.
+
+noun_complement(B,P,PDIR) --->   % buss retning sentrum
+     w(noun(direction,_,_,_)),   % Hazard ? %% TA-010404
+     nameq1(Dest,Q),
+     !,
+     noun_complement(B,P,PDIR) \
+       (  w(prep(towards)),
+          nameq1(Dest,Q)
+       ),
+     !.
+
+noun_complement(X,P1,P1 and P3) ---> 
+    negation(N),        
+    complement1(Prep,Y,NP2,P3),
+    {noun_compl(Prep,X,Y,P2)},
+    {negate(N,P2,NP2)}.
+
+
+
+
+% hva er avgangstid nå
+
+noun_complement(B,P,P and R) ---> % bus now
+     adverb(Fast,Q,_),
+     !,
+     {noun_adverb(B,Fast,Q,R)}. %% whatever that may be
+
+
+ 
+% E N D  NOUN PHRASE SECTION
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 5 bussen ==> bus 5
+
+determiner0(plu,0, X,P1,P2,  quant(eq/N,X)::(P1 and P2)) ---> 
+    theplu0,
+    w(adj(FILANEPR)),
+    {testmember(FILANEPR,[first,last,next,previous])},
+    number(N:_),
+    !,                 %% <--  !
+    []-  w(adj(FILANEPR)). %% free order
+
+
+determiner0(plu,0, X,P1,P2, quant(eq/N,X)::(P1 and P2)) ---> 
+    theplu0,       
+    number(N:_).
+                                    
+
+determiner0(_,of, X,P1,P2, P) --->     % try the file of = a file of 
+    the,                               % provided 1 of- complements 
+    determiner00(X,P1,P2,P).  
+
+determiner0(sin,0, X,P1,P2, P) --->    % try the file = this  file 
+    {value(dialog,1)},       %% creates problems if not in dialog mode 
+    the,                               % provided 0 of- complements 
+    determiner(X,P1,P2,P) \  this.
+
+determiner0(plu,0,  X,P1,P2, P) --->    % try the file = this  file
+    the,                                % provided 0 of- complements 
+    determiner00(X,P1,P2,P). 
+
+determiner0(_,0, X,P1,P2, P) --->  %% _ ==> 0 %% EXPERIMENT %% TA-001101
+     determiner(X,P1,P2,P).
+
+determiner0(_,0, X,P1,P2, P) --->   %%  _ ==> 0 (  sentrum til buvika)
+    determiner00(X,P1,P2, P).     
+
+
+determiner00(X:T,P1,P2,P1 and P2) ---> 
+    the(X:T), %% swallow the().
+    !.
+
+determiner00(X,P1,P2, exists(X):: P1 and P2 ) ---> the0. %% den bussen %% TA-010421
+
+% % % % % % % % % % % % % % % % % % % % % % % 
+
+
+determiner(X,P,Q,find(X)::( P and Q )) ---> 
+     this,
+     kleenex. %% Obnoxious
+
+determiner(X,P1,P2, P1 and P2) --->   
+    the(X).
+
+determiner(X,P1,P2, exists(X):: P1 and P2 ) --->  %% TA-010421
+     only0, 
+     art.
+
+determiner(X,P1,P2, forall(X):: P1 => P2 ) ---> %% TA-010421
+    every .
+
+determiner(X,P1,P2, not (exists(X)::( P1 and P2 ))) --->  %% TA-010421
+    no .
+
+determiner(X,P1,P2, quant(much,X):: ( P1 and P2 )) ---> %% TA-010421
+    much.
+
+determiner(X,P1,P2, quant(little,X):: ( P1 and P2 )) --->  %% TA-010421
+    little.
+
+determiner(_,_,_,_) --->  %% Ad HOC   lik en kvinne * %% TA-010612
+    [lik],!,
+    fail.
+
+determiner(_,_,_,_) --->  %% Ad HOC   ulik en kvinne *  %% TA-010612
+    [ulik],!,
+    fail.
+
+
+determiner(X,P1,P2, quant(CR/N,X)::(P1 and P2)) ---> %% TA-010421
+    comparator1(CR),
+    anumber(N:_), %% en/et allowed
+    ofthe0.    
+
+determiner(X,P1,P2, quant(gt/2,X)::(P1 and P2)) ---> %% TA-010421
+    aso0,
+    many.                                             
+
+determiner(X,P1,P2, quant(ge/2,X)::(P1 and P2)) ---> %% TA-010421 
+    several.                                             
+
+determiner(X,P1,P2, quant(le/3,X)::(P1 and P2) ) ---> %% TA-010421
+    aso0,
+    few. 
+
+
+%-------------------------------------------------------------------
+
+%% Noun expressions
+
+plausible_name(N:Type,N isa Class,GN) --->
+    w(name(N,GN,Class)),
+    {atom(N)},
+    {type(Class,Type)}.
+
+
+
+% Name Noun Phrase  
+
+% namep(Ind,NT,XP)  new indicator    Ind=name  Pure name
+%                                    Ind=0     Contains a noun
+
+namep(_,_,_) ---> [ett],!,fail. %%  Too Much Trouble 
+
+%% namep(_,_,_) ---> clock,!,fail.  %% not as such %% TA-010821 
+%% etter klokka 22.10 ->  etter klokka and 22                                
+
+namep(0,NT,XP) ---> 
+    measure(NT,XP).  %% e.g. 5 minutes
+
+
+namep(name,NT,XP) --->  
+    you,
+    nameq(NT,XP)  \  w(name(tuc,n,program)). 
+
+
+namep(0,NT2,YP) ---> %% TA-010530
+    athe0,
+    nr0, %% [nr],                       %% nr 8 buss %% TA-010731
+    nameq1(N1T1,_),                     %      vestlia
+    noun(Veh,sin,_,n, NT, XP),            %      endstation
+    {testmember(Veh,[bus,tram])},           %% 1700 saturday ### %% TA-010822
+    !, %% en nr 8 buss                  %% TA-010221
+    {align_noun_name(NT,N1T1,XP,NT2,YP)}.  %% TA-010530
+
+
+namep(0,NT2,YP) ---> 
+    athe0,                                 %
+    noun2(SINPLU,BU,n, NT, XP),            %   retning *(en)*    buss  % ta bussen 30/4 
+    nameq(N1T1,_),                         %     nth          5        % holdeplassen nth
+    {compoundtest(SINPLU,BU,NT,N1T1)},     %   feasability  test
+    {align_noun_name(NT,N1T1,XP,NT2,YP)},  % TA-010308
+    !.                                     %  Avoid multiple returns (e.g. 3)
+
+namep(0,NT2,YP) --->  %% TA-010530
+    athe0,
+    nameq1(N1T1,_),                     %      vestlia
+    noun(_,sin,_,n, NT, XP),            %      endstation
+    {align_noun_name(NT,N1T1,XP,NT2,YP)}. %% TA-010530
+
+namep(name,X,Y) --->    
+    nameq(X,Y). 
+
+    
+ 
+
+% compoundtest(SINPLU,BU,NOUNT,NAMET) ---> %%  Check whether noun and name belong together
+%    {compoundtest(SINPLU,BU,NOUNT,NAMET)}.   %%  ( pragmatic feasability test)
+
+noun2(Num,U2,Gen,  X:Stationtype, XStation2) ---> %% buss rute/ buss stasjon etc
+    w(noun(Bus,_Sin,U1,n)), %% bussene nummer 3 ???
+    w(noun(Station,Num,U2,Gen)), 
+
+    { %% _Sin=sin,  ??? hvilke typer spørsmål ??? %% TA-001203
+     U1=u; Station=number}, %% B.F.Prag // 
+
+    {adjnoun_template(Bus,Station,X:Stationtype,XStation2)}, %% TA-001204 // var feil
+    %% NB New structure %%  Changed name TA-001031
+    !.
+
+
+noun2(Num,U,Gen, A,B) --->
+    noun(_NN,Num,U,Gen, A,B).
+
+%    ,numberdot0(_NN). %% Ad Hoc
+%
+% numberdot0(number) ---> ['.'],!. %% AD Hoc %% TA-010731  nr. 
+% numberdot0(_) ---> [].
+%
+
+noun(Country,Num,U,Gen,  X:Country, X isa Country) --->
+    w(noun(Country,Num,U,Gen)).
+
+
+%% Measures
+
+measure(NT1,YP) ---> %%    NOT    two buses !!!!!
+    number(NU),                       %  5
+    noun(M,_,_,n, NT, XP),              %  minutes, hours, days
+    {measureclass(M)}, 
+    {align_measure(NT,NU,XP,NT1,YP)}. %% 5 isa number and X isa minute => 5 isa minute
+
+
+%%  Name Expressions
+
+nameq(C,Q) ---> nameq1(C,Q).
+
+nameq(C,Q) ---> nameq2(C,Q). 
+
+
+% Definitely a time (clock)
+
+
+nameq1(N:T,N isa clock) --->  
+    clock, 
+    clock_time(N),
+    !,
+    {type(clock,T)}.         %% NB
+
+
+nameq1(N:T,N isa clock) --->  %% Know it has to be a clock,
+    clock,                    %% Don't backtrack ( HANGS ) 
+    !,                        %% <---   !
+    number(N:_),              %% Depend on semantic check !!!
+    {type(clock,T)}. 
+
+
+
+nameq1(N:T,N isa clock) ---> 
+    clock0,     %% TA-010929
+    time2(N),   %% obviously clock by its syntax %% TA-010929
+    !,                        %% <---   !
+    {type(clock,T)}.         %% NB
+
+
+nameq1(N:T,N isa clock) --->   %%     Try time again 
+    {value(busflag,true)},     %% TA-010920
+    time3(N),
+    !,                         %% <---   !
+    {type(clock,T)}. %% NB
+
+
+
+nameq1(N:Type,N isa Class) ---> 
+    w(name(N,_n,Class)), %% non numeric names
+    { Class == unkn -> value(unknownflag,true);true}, %% TA-001013 Syndrome  
+                                                 %% done = Dons,0 | Done unkn
+                                                 %% passes trough without unk Word message
+    {_n \== gen},        %%  something with uknk
+
+    {type(Class,Type)}. %%% /// 
+
+
+nameq1(quote(N):T,quote(N) isa thing) --->  %% avoid quote(X) isa sentence. ???
+    w(quote(N)), 
+    !,
+    {type(sentence,T)}.
+
+
+% Only full dates allowed, try last 
+
+nameq1(X,P) ---> %%  ( Buss går 09.12 => Clock)
+   date(X,P).    %%    20 august should be tried before (bus) 20
+
+
+
+nameq1(N:Type,N isa Class) --->  %% Try number as name as  Last Resort
+    nr0,                         %% TA-010212   Hazard ???
+    w(name(N,n,Class)),
+    {  Class == unkn -> value(unknownflag,true)}, %% TA-001018  
+    {number(N)},                 %% Number as name Last
+    {type(Class,Type)}. 
+
+nameq1(X,P) --->   %%   Try number as clock as Next Last Resort
+    timeq1(X,P).   %% 5 bussen går  After clock %% TA-001018
+
+
+%% A Date 
+
+%% Special dates
+
+
+date(Date:date,Date isa date) ---> %% TA-010621  n'te pinsedag etc. some may change month
+     num_na(N), {N >=1,N =<7},     %% TA-010621  may change month
+     pointNO,    
+     w(name(Whitsun_day,n,date)),
+     {testmember(Whitsun_day,[whitsun_day,easter_day,christmas_day])}, 
+     !,
+     {named_date(Whitsun_day,date(X,Y,Z)),
+     N1 is N-1,
+     add_days(date(X,Y,Z),N1,Date)}.
+
+
+date(Date:date,Date isa date) ---> %% TA-010124 n'te nyttårsdag
+     num_na(N), {N >=1,N =<7},     %% TA-010621
+     pointNO,    
+     w(name(new_years_day,n,date)),
+     !,
+     {datetime(YYYY,MM,_,_,_,_)}, % if month > 1, next year
+     {MM > 1 -> YYY1 is YYYY+1;YYY1 is YYYY},
+     {DD is N},
+     {Date= date(YYY1,01,DD)}. 
+
+
+date(Date:date,Date isa date) ---> %% TA-010725   with YYYY
+     dayno(DD), 
+     pointNO,      %% '.' is /is not removed, required for date
+     month(MM),
+     point0,     %% den 20.9 2000
+     year(YYYY),  
+     !,
+     {Date= date(YYYY,MM,DD)}. 
+
+
+date(Date:date,Date isa date) ---> %% TA-010725 IS NOT A CLOCK
+     dayno(DD),                    %% Last ditch test
+     pointNO, 
+     month(MM),
+     {DD > 24; MM > 0},
+     !,
+     {this_year(YYYY)}, % actually know this year
+     {Date= date(YYYY,MM,DD)}. 
+
+
+date(Date:date,Date isa date) --->   %% Try Date last
+     dayno(DD), 
+     point0,        %% TA-010811
+     monthname(MM), %% Aug -> 08
+     year0(YYYY),
+     !,
+     {Date=date(YYYY,MM,DD)}.  %% this year
+
+date(Date:date,Date isa date) ---> %% TA 2000-09-28 (:-)
+     year(YYYY),  
+     month(MM),
+     dayno(DD), 
+     !,
+     {Date= date(YYYY,MM,DD)}, 
+     !.                            %% 1997 is not a time
+
+
+timeq1(N:T,N isa clock) --->    %%  Clock Time Constant, known to be a time
+    time12(N), 
+    !,         
+    {type(clock,T)}.    %%  NB
+
+
+colock(N:clock,N isa clock) --->    %%   ( clock by explicit syntax)
+    hours(N1),
+    colemin(N2),  %% allow 21: %% TA-010928   1 time \== klokka 1300
+    !,         
+    {N is N1*100 + N2}. 
+ 
+
+%% Follows klokka, must be clocktime 
+
+clock_sequel(N:clock,N isa clock) --->   
+    hours(N1),
+    colemin0(N2),  %% 17.10 0 => 17:10
+    !,         
+    {N is N1*100 + N2}. 
+ 
+clock_sequel(N,P) --->  timeq1(N,P). %% TA-011001
+ 
+
+
+namenb(1) ---> [ett],w(noun(_,_,_,_)),!,fail.
+namenb(1) ---> [ett],!.  
+namenb(_) ---> a,!,fail. 
+namenb(N) ---> w(name(N,n,_)). 
+namenb(N) ---> w(nb(N,num)).    %% nummer "femtito" 
+
+
+dayno(N) ---> 
+    num_na(N), %%%%%%  w(nb(N,_Num_Ord)), %% TA-001018niende
+    { N > 0, N =< 31}.
+    
+month(N) ---> 
+    monthname(N), 
+    !.
+
+month(N) ---> number(N:_), 
+    { N > 0, N =< 12}.
+
+monthname(N) --->
+    w(name(Jan,n,_)),
+    {monthnumber(Jan,N)}. %% fernando.pl
+
+
+day(D) --->  
+    w(noun(D,_,_,_)),
+    {dayname(D)}.       %% fernando.pl
+
+
+%% Lookahead problem
+
+/*  Obsolete if '.' required %% TA-010718
+
+year0(YYYY) ---> %% TA-010124
+    w(nb(N,num)),
+    colon,
+    !, %% probably HH:MM
+    {this_year(YYYY)},
+    []- ( w(nb(N,num)),colon).  %% Put back word
+
+*/
+
+
+year0(N) ---> year(N),!.
+year0(YYYY) ---> {this_year(YYYY)}. %% utility.pl
+
+
+
+year(Y2K) ---> %% 0-89 = 2000 - 2089 / 90-99 = 1990 
+    number(N:_), 
+    {N >= 0,   N < 90 , %% pragmatic 
+    Y2K is 2000+N},
+    !.
+
+year(NN) ---> % Pragmatic  
+   number(N:_),
+  { N >= 90, N =< 99},
+  { NN is 1900 + N}.
+
+
+year(N) --->  
+    number(N:_),
+  { N >= 1900, N =< 9999},
+    !.
+
+%%%%%%
+
+timexp(T) --->  %% Time is expected, fail if not
+    clock0,
+    time2(T).
+
+timexp(T) --->
+    clock0,
+    time1(T).
+
+
+timenexp(T) --->  %% Time is not expected 
+    clock,
+    time2(T).
+
+timenexp(T) --->
+    clock,
+    time1(T).
+
+
+
+clock_time(1300) ---> %% We know it is after clock, allow en/et/ei
+    a, 
+    !.
+
+clock_time(N3) --->  %% kl  13.10  OK  %% TA-010812
+     hours(N1),  
+     colemin0(N2),  
+     {N is N1*100 + N2},  
+     ampm0(N,N3).  
+
+clock_time(N) ---> time12(N). 
+
+time12(N) ---> time2(N).
+time12(N) ---> time1(N).
+
+
+% time1   Know beforehand it is a clock
+
+
+clock_number(N:T) ---> 
+    number(N:T),
+    {clock_test(N)}. 
+
+time1(1300) --->    %% or 100 ???  %% "ett"  qua time ( Pragmatix)
+     [ett], 
+     w(noun(_,_,_,_)), %% nasty lookahead
+     !,
+     fail.
+
+time1(1300) --->    %% or 100 ???  %% "ett"  qua time ( Pragmatix)
+     [ett], 
+     !.
+
+time1(_) ---> 
+    a, 
+    !,
+    fail. %% en klokke \= klokken en 
+
+time1(N2) --->
+    time3(N1), 
+    ampm0(N1,N2),    %% TA-001215
+    !.
+
+time1(N2) --->
+    w(nb(N,num)),
+    { N < 25},        %%   (heuristic) 
+    !,
+    {N1 is N*100},
+    ampm0(N1,N2).    %% TA-001215
+
+time1(now) ---> [nå],[av],!,fail.  %% TA-010718 (Ad Hoc)
+time1(now) ---> [nå]. %% TA-010718 (Ad Hoc)
+
+
+
+% time2 is a clock by its syntax
+
+time2(N) ---> 
+    num(Min), { Min < 60}, %%
+    minutes, % not minutes0  %% TA-010730
+    prep1(before), % Norwagism  fem minutter før
+    !,             % etter 16 før 18 \= 16 på 18
+    hours100(N100),
+    {N is ((N100 -100) + (60-Min))}.
+ 
+time2(N) ---> 
+    num(Min), { Min < 60}, %%   Norwagism  fem over
+    minutes0, 
+    prep1(over),%% TA-010730     %% not after
+    !,                             %% TA-010122
+    hours100(N100),
+    {N is N100 + Min}. 
+
+
+time2(N) ---> 
+    num(Min), { Min < 60}, %%
+    minutes0, 
+    prep1(on), % Norwagism  fem på
+    !,
+    hours100(N100),
+    {N is ((N100 -100) + (60-Min))}.
+
+
+
+time2(N) --->
+    [halv], %%    kvart på, kvart over, N på  N over  etc.
+    hours100(N1), %% allow halv åttetiden = halv 800 %% TA-010205
+    {N is N1 -100 +30}. %% 800-700+30 = 730
+
+time2(N) --->
+    [kvart], %%    kvart på, kvart over, N på  N over  etc.
+    prep1(on),
+    hours100(N1), %% kvart på ett %% TA-010914
+     {N is N1-100 + 45}. %% TA-010914
+
+time2(N) --->
+    [kvart], %%    kvart på, kvart over, N på  N over  etc.
+    prep1(over),
+    hours(N1),
+     {N is N1*100 + 15}. 
+
+
+time2(_) ---> %% 23.11.1999 fails as clock (date) 
+     hours(_),
+     minutes(_),
+     number(M:_), {M > 24}, % tidsrommet  15 10 (-) 24 13 \= 15.10.2024 
+     !,
+     fail.
+
+time2(N3) --->     %% bussen går 3 9 ==> 3:09  NO
+     hours(N1),    %% bussen går 3.9 ==> 3:09  NO , date
+     colemin(N2),  %% TA-010505
+     {N is N1*100 + N2},  
+     ampm0(N,N3).  %% TA-001215  
+
+%%  bussen går 16 10 
+
+time2(N3) --->     %% Pragmatic Test:  16.50 OK 
+     hours(N1),   %% bussen går 3.13        Clock
+     minutes(N2),
+     {N2 > 12},   %% bussen går 3.12        Not Clock (Date)
+     {N is N1*100 + N2},
+     ampm0(N,N3).  %% TA-001215  
+ 
+
+hours100(N100) ---> 
+    num(N100), 
+    {N100 is N100//100*100, %% divisible by 100 * når går buss lørdag  46 etter 1130? 
+     N100 > 100, N100 < 2500},
+    !.
+
+hours100(N100) ---> 
+    hours(N),
+    {N100 is N*100}.
+
+
+hours100(1300) --->  %% TA-010327 %% Rough 
+    [ett],
+    !.
+
+
+
+% time3  is maybe a number, but  probably a clock
+
+time3(N1) --->  
+    w(nb(N1,num)),
+    {clock_test(N1)}. 
+
+
+%% TA-001215  % % % % % % % % %
+
+ampm0(N,N) --->  amtime,!. %% 1700 am (SIC) = 1700 ! <- overrule
+
+ampm0(N,N1) ---> pmtime,!,  %% 1700  pm  = 1700 ! 
+    { N > 1200 -> N1 is N;
+                  N1 is N+1200 }.
+ampm0(N,N) --->  [].
+
+amtime ---> [am].  
+amtime ---> [a],[m].
+
+pmtime ---> [pm].  
+pmtime ---> [p],[m].
+
+% % % % % % % % % % % % % % % %
+
+
+
+
+hours(_) --->   
+    a,
+    !,           %% DONT take an article as hours  (en 5 buss)
+    fail.
+
+hours(N1) --->  
+    w(nb(N1,num)),
+    {N1 < 25}.    
+
+
+minutes0 ---> minutes,!. 
+minutes0 ---> [].                      %%
+
+minutes --->w(noun(minute,_,_,_)),!.
+
+
+colemin0(N) ---> colemin(N),!. 
+colemin0(N) ---> point0,minutes0(N),!. %% TA-010812
+
+
+colemin(N) ---> colon,minutes0(N),!.
+colemin(N) ---> pointNO,minutes(N),{N <1 ; N > 12},!. %% NOT DATE !!!! %% TA-010821
+colemin(N) ---> minutes(N),!. 
+
+%%%    colemin(N) ---> point,minutes(N).   %% TA-010812  23.10 is a date !
+
+
+minutes0(N) ---> minutes(N),!. %% TA-010505 
+minutes0(0) ---> [].           %% Allow 21:
+
+
+minutes(_) ---> % ER 5 EN BUSS 
+    a,
+    !,
+    {fail}.
+
+minutes(N1) ---> 
+    w(nb(N1,num)),
+    {N1 < 60}.    
+
+              
+nameq2(N:T,N isa number) ---> %% 17 mai  
+    number(N:T),              %% TA-010611
+    monthname(_),
+    !,
+    fail.
+              
+nameq2(N:T,N isa number) ---> 
+    number(N:T).
+
+nameq2(N:TT,N isa clock) ---> %% time -> clock 
+    {type(clock,TT)},        %% NB
+    number(N:_),
+    {clock_test(N)}. 
+
+number(2:Type) ---> 
+    a,
+    w(noun(pair,_,_,_)),
+    {type(number,Type)}. 
+
+
+number(_) ---> 
+    a, %  en,et,ei   %% Somwhat crude
+    !, %% <- !!!
+    fail.
+
+number(N:Type) ---> 
+    only0, 
+    num(N),  
+    {type(number,Type)}. %%  NB
+
+anumber(X)---> 
+    a0,               %% colloquial 
+    number(X),
+    !.
+anumber(1:Type)---> 
+    a,!, {type(number,Type)}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+intrans_verb(be1,X,S,N,BXS,pres,fin) --->
+     be1(N),  
+     {iv_template(be1,X,S,BXS)}.
+
+
+intrans_verb(Live,X,S,N,EXS,past,fin) ---> %% levet ikke =
+     has(N),                                 %% har  (ikke)
+     lexv(iv,Live,past,part),                  %% levet
+     {iv_template(Live,X,S,EXS)}.
+     
+
+intrans_verb(Live,X,S,id,EXS,P,Q) ---> 
+    lexv(iv,Live,P,Q),
+    {iv_template(Live,X,S,EXS)}.
+
+
+trans_verbs(LM,X,Y,S,Love_and_Marry) --->
+     trans_verb(Love,X,Y,S,id,_,_,_), 
+     trans_verbs0(Love,LM,X,Y,S,Love_and_Marry).
+
+
+trans_verbs0(Love,LM,X,Y,S,Love_and_Marry) --->
+     andor, %%  andor(and), %% TA-001030 
+     trans_verb(Marry,X,Y,S,id,_,_,_), 
+     trans_verbs0((Love,Marry),LM,X,Y,S,Love_and_Marry).
+
+
+trans_verbs0(Love,Love,X:_,Y:_,S,Love/X/Y/S) ---> [].
+
+
+
+%%% TRANS-VERB
+
+
+%%  This rule must be refined, due to ambiguity in transitivity
+
+% å komme  seg til NTH:   transitive
+% å komme  til NTH:       intransitive
+% å kjøre  til            intransitive
+% å kjøre  buss til       transitive
+
+% go1      komme seg 
+% go2      kjøre rute     
+
+
+trans_verb(Love,X,Y,S,N,EXS,past,fin) ---> %% elsket ikke =
+     has(N),                                 %% har  (ikke)
+     lexv(tv,Love,past,part),                  %% elsket
+     {tv_template(Love,X,Y,S,EXS)}.
+ 
+
+trans_verb(Border,X,Y,S,id,BXYS,P,Q) --->  
+     lexv(tv,Border,P,Q), 
+     {tv_template(Border,X,Y,S,BXYS)}.
+
+
+hlexv(Type,Verb,past,fin,Neg) ---> 
+    has,
+    negation(Neg),
+    lexv(Type,Verb,past,part),
+    !.
+
+hlexv(Type,Verb,Time,Mode,Neg) --->
+    lexv(Type,Verb,Time,Mode),
+    negation(Neg),                   
+    rep_particle0(Verb), 
+    !.
+
+
+
+rep_particle0(wonder) ---> [på],which0,!.  %% Norwagism
+rep_particle0(knowthing) ---> prep1(to),!. %% e.g. adv
+rep_particle0(_)      ---> which0,!.
+
+
+
+rep_v(be_free,pres,fin) --->   %% VERY HAIRY   BE FREE OF CHARGE 
+    w(adj(free)).
+      
+rep_v(Say,P,Q) --->  
+    aux0,    
+    lexv(rv,Say,P,Q). 
+
+rep_v(want,pres,fin) ---> 
+    [vil].
+
+repk(K) ---> lexv(rv,K,_,fin). 
+
+%% LEXV
+
+lexv(_,_,_,_)---> % få svar %% TA-010923
+    faa,          %  presently, svar is unwanted verb but...
+    w(verb(answer1,imp,fin)), %% få se er OK
+    !,
+    fail.
+
+lexv(tv,KNOW,pres,fin)--->
+    faa,
+    lexv(tv,SHOW,past,part), %% få oppgitt = vite
+    {mapverb(SHOW,KNOW)},    %% compword ?
+    !.
+
+
+
+lexv(rv,list,P,Q) ---> 
+    w(verb(list,P,Q)),
+    out0.                 %% ut? 
+
+lexv(rv,know,P,Q) ---> 
+     w(verb(know,P,Q)),
+     to0.                %% TA-010511
+
+lexv(rv,tell,P,Q) ---> 
+     w(verb(tell,P,Q)),
+     reciprov0(tell),
+%%      om0,              %% fortelle om bussen ... går %% TA-010312
+     !.    %% <---  !!!    %% Hazardous but time saving
+
+lexv(rv,wonder,P,Q) ---> 
+     w(verb(wonder,P,Q)),
+     on0.   
+
+lexv(rv,show,P,Q) ---> 
+     w(verb(show,P,Q)),
+     reciprov0(show).    
+
+lexv(rv,show,P,Q) ---> 
+     w(verb(show,P,Q)),
+     reciprov0(show).    
+
+lexv(rv,discover,P,Q) --->  %% TA-010522 
+     w(verb(find,P,Q)),
+     [ut].
+
+
+
+%  skal få gå  
+
+%  skal få gå ==> gå
+%  skal få    ==> få
+%  skal    gå ==> gå
+%       få gå ==> gå
+%       få    ==> få
+%  skal       ==> gå 
+%          gå ==> gå
+
+lexv(T,Live,P,Q)--->
+    do, faa,
+    w(verb(Live,P,Q)),
+    {verbtype(Live,T)},    
+    !.
+
+lexv(T,Live,P,Q)--->
+    do,
+    w(verb(Live,P,Q)),
+    {verbtype(Live,T)},    
+    !.
+
+
+lexv(T,KNOW,P,Q)--->
+    faa,
+    lexv(T,KNOW,P,Q), 
+    {verbtype(KNOW,T)},  
+    {\+  KNOW = manage}. %% få greie på  %% TA-01729
+    %% !. Not "!" here
+
+lexv(tv,_,_,_) ---> %% hazard ? do we reject lexv at all %% TA-001016
+    w(verb(fool,_,_)), %% lure på
+    prep1(on),
+    !,
+    fail.
+
+lexv(iv,arrive,P,Q) ---> %% TA-010124 IV before TV reach
+    w(verb(reach,P,Q)),
+    [fram].
+
+/* TA-010723
+lexv(tv,bring,P,Q) ---> %% Norwagism  Ta med
+    w(verb(take,P,Q)),  %% kjøre = take  OOPS
+    prep1(with),        %% jeg kjører med buss
+    !.         
+*/
+
+
+lexv(tv,bring,P,Q) ---> %%  Norwagism  Ha med 
+    w(verb(have,P,Q)),
+    prep1(with),  
+    !.  
+
+lexv(T,Live,P,Q)--->
+    aux0,  
+    w(verb(Live,P,Q)),
+    {verbtype(Live,T)}.
+
+lexv(iv,be1,pres,fin) ---> 
+    aux0,    
+    be.
+
+lexv(tv,evah,pres,fin) --->  % resiproc of have (artificial)
+    w(verb(evah,pres,fin)),
+    !.
+
+lexv(tv,be2,pres,fin) ---> 
+    aux0, 
+    be.
+
+lexv(tv,knowthing,P,Q) ---> %% kjenne  
+     w(verb(know,P,Q)).    
+
+lexv(tv,wonder,P,Q) ---> %% lure (på)
+     w(verb(wonder,P,Q)).    
+
+lexv(iv,knowthing,P,Q) ---> %% vite om (Norwagism) 
+     w(verb(know,P,Q)).    
+
+lexv(tv,want,P,Q) ---> %% tenke meg = ønske %% TA-010725 ???  
+     w(verb(think,P,Q)),
+     egegeg.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Infinitive Complement Section
+
+there_be_modal(think) ---> 
+    thereit,
+    w(verb(go,_,_)),           %%  Norwagism
+    [an].           
+
+there_be_modal(Thought) --->
+    thereit,
+    be_modal(Thought).
+
+be_there_modal(Thought) ---> 
+    be,
+    thereit,
+    be_modal(Thought).   
+
+be_modal(Seems) ---> be,modal(Seems).
+be_modal(seem)  ---> w(verb(seem,_,fin)).
+
+modal(Thought) ---> 
+    rep_v(Thought,past,part), % passive
+    tobetrue(_N).    %% negation ?   
+
+modal(Thought) ---> rep_v(Thought,_,fin).     % active
+modal(think)   ---> w(adj(possible)).  
+modal(think)   ---> w(adj(best)).              %% (far fetched)
+modal(free)    ---> w(adj(free)). %% gratis 
+
+tobetrue(N)  ---> infinitive,be_truefalse(N).  
+tobetrue(id) ---> [].
+
+
+xbimodal(Cost,Money) --->   %% koster det
+    w(verb(Cost,_,fin)),    %% IKKE BE !!! 
+    { Cost \== be},  
+    thereit,
+    {bm_templ(Cost,Money)}. 
+
+xbimodal(Cost,Money) --->   %% vil det koste
+    do,
+    thereit,
+    w(verb(Cost,_,fin)),    %% IKKE BE !!! 
+    { Cost \== be}, 
+    {bm_templ(Cost,Money)}. 
+
+
+bimodal(Cost,Money) --->   %% Søkt
+    w(verb(Cost,_,fin)),    %% IKKE BE !!! 
+    { Cost \== be}, 
+    {bm_templ(Cost,Money)}. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%    A D J E C T I V E   S E C T I O N
+% 
+%
+
+preadjs0((A,Blist)) ---> 
+   w(adj(A)),
+%    !,          %%%% Allow backtracking   An adult.
+   preadjs0(Blist).
+
+preadjs0(true)---> [].
+ 
+
+adj1(Big,X,S,BIGX) --->   
+    saa0, 
+    w(adj(Big)),  
+    {adj_template(Big,X,S,BIGX)}. 
+
+
+adj2(Buick,X,S,CarX) ---> 
+    nr0, %% dummy                           %  en nr. 5 buss
+    w(name(Buick,n,_)),                % 1610 bussen  
+    {adjname_template(Buick,X,S,CarX)}.
+
+
+adj3(Big,X,S,BIGX) --->  
+    adverb1(_Very),
+    w(adj(Big)),
+    {adj_template(Big,X,S,BIGX)}.  %% Very/Big   Drop distinction 
+
+
+%% Adjective A treated like an intransitive verb be/A
+                                           
+
+adverb1(very) ---> very.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% liste  ut/opp/ / 
+
+out0 ---> [ut],!.
+out0 ---> [opp],!.
+out0 ---> [].
+
+prepnom(P) ---> prep(P),{P==regarding},!. %% hva kan jeg spørre om
+prepnom(P) ---> prepnof(P). 
+
+prepnog(long,from) ---> prep1(from),!. %% Ugly  but fra = after/from ?*?*
+prepnog(_,In)      ---> prepnof(In),!.         %% til = of/to
+
+prepnof(P) ---> prep(P),     %%  Fix ( til => to) 
+    {\+ ( P = of)}. 
+
+
+% Hvor går bussen <> %% TA-001122
+% Missing Preposition Repair
+
+
+missingprep(know,_,regarding) ---> [om],!. %% not during2 %% TA-010314
+missingprep(knowthing,_,regarding) ---> [om],!. %% not during2 %% TA-010314
+
+missingprep(_, _,from)       ---> prep1(after),!. %% Dirty hack
+missingprep(_, _,to)         ---> prep1(of),!. %% Dirty hack
+missingprep(_, _,From)       ---> prep1(From),!.
+
+missingprep(_,thing,_)       ---> !,fail. %% TA-010201 N/A
+missingprep(stop, _, at)     ---> [].
+missingprep(arrive,_,at)     ---> [].
+missingprep(depart,_,from)   ---> [].
+
+missingprep(go,direction,in) ---> []. %% TA-010119 / go direction = go in direction
+missingprep(Go,_,at)         ---> [], %% use default %% TA-010119
+    {Go \== be1}.                     %% TA-010430
+
+
+prep0(from) ---> [fra],!.      %% AD HAC   Hvor går bussen fra
+prep0(P) ---> prep(P), %% ,!.  %%   hvor går buss 6 from (fra/etter)
+    {P\==of}.                  %% hvor lang tid bruker bussen *på* 
+
+prep0(in) ---> [].              %% hvor kommer bussen 
+
+
+prep(P) ---> % and0,  Bussen går (og i dag) skal jeg ...
+   lock,    % DONT split prep. expressions between text and stack 
+             %  (i fra syndrom)
+      prep2(P),      % Prepositional Expressions (moved (greed))
+
+   unlock.
+
+
+prep(P) ---> % and0,
+             prep1(P).  
+
+
+prep1(P)---> w(prep(P)).
+
+%%%%%%%%%%%%%%%%%%%%%% ATOMIC SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+atom(XT) ---> 
+    w(name(X,_NG,_)), 
+    {atom_templ(X,XT)}.
+
+atomlist(L) ---> 
+    begin, 
+      atom1(N1),
+      atom1(N2),    
+      atoms0(N1-N2,L),
+    end.
+
+    
+    
+atom1(N) ---> 
+    w(name(N,n,Class)),  
+    {Class \== unkn}.
+
+
+atoms0(N1,L) ---> 
+    atom1(N2),
+    atoms0(N1-N2,L).
+
+atoms0(N,N) ---> [].
+
+
+newatom(XT) --->
+    w(name(NN,_,_0)), 
+    {atom_templ(NN,XT)}.
+
+
+newatomid(NN) --->  
+    w(name(NN,_,_0)). 
+
+
+
+%%%% Subordinate elliptic clauses
+%
+% John died after Mary died
+% 
+% John died after the time that Mary died in
+%           *****     ****                **
+
+subord_conj(after,  time,  in)  --->  prep1(after),that.
+subord_conj(before, time,  in)  --->  prep1(before). 
+
+% subord_conj(before, time,  in)  --->  prep1(to).  %% Norwagism %% TA-010118
+% buss som går idag til munkegata fins = før munkegata fins %% TA-010510
+
+subord_conj(during, time,  in)  --->  while. 
+subord_conj(in,     time,  in)  --->  when.  
+subord_conj(in,     time,  in)  --->  [da].  %% TA-001112 ???  
+subord_conj(in,     place ,in)  --->  where1.  %% hvor/der
+subord_conj(until,  time,  in)  --->  until.
+
+subord_conj(because_of,    reason, being_the) --->  because.
+subord_conj(because_of,    reason, being_the) --->  if1. 
+
+subord_conj(being_the,     reason, because_of) ---> so_that. 
+subord_conj(being_the,     reason, because_of) ---> [på],that. 
+
+
+
+
+%%%%%%%% END OF GRAMMAR %%%%%%%%%%%%%%%%%%%%%%%% 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%% LEXICAL INTERFACE TO NORWEGIAN LEXICON %%%%%%%%%%%%%%%%%%%%%%%
+                                   
+%%%%           T H E    J U L E K A L E N D E R     %%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+a0  ---> a.
+a0  ---> [].
+
+a ---> [ett].  %% ambiguous 
+a ---> [noen]. %%   Går det noen buss(er)
+a ---> a1.
+ 
+a1 ---> [en].
+a1 ---> [et].
+a1 ---> [ei]. 
+
+
+all0 ---> all,!. 
+all0 ---> [].    
+
+all ---> every. 
+
+always ---> [alltid]. 
+always ---> w(adj(whole)),w(noun(time,sin,def,n)). %% hele tiden 
+
+and0 ---> and1,!. 
+and0 ---> [].
+
+andor0 ---> andor,!. %% TA-001030
+andor0 ---> [].
+
+andor ---> [og],!. 
+andor ---> [eller],!. %% TA-001030
+
+
+and1 ---> [og].
+and1 ---> [men].
+
+and2 ---> [men]. %% Technicality 
+                 %% Jeg kjører etter kl 13 og før kl 16.
+                 %% Jeg kjører etter kl 13  og  før kl 16  skal jeg ...
+                 %% Jeg kjører etter kl 13 men før kl 16
+
+andwhen0 ---> and1,when,!. %% when is ignored (?)
+andwhen0 ---> prep1(in),np1(_,_,_),!. %% hvor i Bergen  is
+andwhen0 ---> [].                     %% Ignore presumption
+
+
+andwhere0 ---> and1,where,!. 
+andwhere0 ---> [].  
+
+andor(butnot) ---> 
+    [men], not,
+    !.
+
+andor(and) ---> and1.
+andor(or)---> [eller].
+
+% andor(nil) ---> [].   %%  EXPENSIVE ???
+
+also0 ---> [også],[samtidig],!. %% smalltalk 
+also0 ---> [samtidig],[også],!.
+also0 ---> [også],!.
+also0 ---> [samtidig],!.
+also0 ---> [].
+
+
+ann0 ---> [an],!. %% Norwagism
+ann0 ---> [].     %% TA-010124
+
+anorder(a,N)   ---> a,  w(nb(N,ord)). 
+anorder(the,N) ---> the,w(nb(N,ord)). 
+
+another ---> a,other.
+
+around0  --->     around1. 
+around0  --->     [].
+
+around1  --->     [ca],point0.    
+around1  --->     [om],[lag]. 
+around1  --->     prep1(around).
+
+art ---> a.
+art ---> a,[eller],more.
+art ---> some.
+
+
+art ---> [all].   %%  Roughly
+art ---> [alt].   %%  Roughly
+
+art ---> every,
+         {\+ value(textflag,true)}. %% TA-010913
+
+
+as ---> [som]. %% some (SIC)
+
+as0 ---> as.
+as0 ---> [].
+
+andsoon ---> [og], sovidere0. 
+
+  sovidere0 ---> sov0,videre0.
+  sov0      ---> [så].
+  sov0      ---> [].
+  videre0   ---> [videre].
+  videre0   ---> [].
+
+
+
+aspossible0 --->  aspossible,!.
+aspossible0 --->  possible0.
+
+aspossible --->
+    as,
+    w(adj(possible)).
+
+
+
+aso0 ---> [så],!. 
+aso0 ---> too,!.
+aso0 ---> as.
+aso0 ---> [].  
+
+at ---> prep(at). 
+
+athe ---> the.  
+athe ---> a.
+athe ---> all. %% (Rough)  EXPERIMENT
+
+athe0 ---> athe.    % The book 'ABC'
+athe0 ---> [].
+
+aux0 ---> be,[så], w(adj(good)),[å],!. %% ( fronted)
+
+% aux0 ---> do0,faa. %% jeg vil til NTH , don't eat!. 
+%                    %% jeg får greie på
+
+aux0 ---> do0.                         %% TA-010729
+
+
+ %% used with pres passive 
+paux0 ---> may,!.
+paux0 ---> must,!.
+paux0 ---> [skal],!. %% ??? 
+paux0 ---> [vil],!. %% ??? 
+paux0 ---> [].
+
+
+%%% BE DO BE DO BE DO
+
+be ---> w(verb(have,_,fin)),
+        w(verb(be,past,part)),!. 
+
+be ---> w(verb(be,_,fin)), %% be is basic uninterpreted be
+        been0,!.
+
+be ---> w(verb(be,_,part)). %% skulle vært
+
+
+
+be(K) ---> be1(K),!.  % If expect be and get be, accept be 
+
+be(not) ---> not,be. %% Stack
+be(id)  ---> be.  %% Stack  %% TA-010508
+
+%% John er ikk død
+
+
+be1(N) --->      
+   modal,
+   negation(N),
+   be.
+
+
+be1(N) --->      
+   be,
+   negation(N). 
+   
+be1(N) --->
+   w(verb(have,_,fin)),
+   negation(N),
+   [blitt].
+
+be1(id) --->
+    [blitt].   
+                  %% OOPS   John is not in England
+
+be1(not) --->  
+    w(verb(fail,_,fin)),
+    prep(to),
+    be.
+
+be1(not) --->  %% TA-010828     
+    [ække],    %% Dialect
+    !.
+
+
+
+be_truefalse(N) --->
+    be,
+    truefalse(N). 
+
+be_truefalse(not) ---> 
+    w(verb(fail,_,fin)),
+    infinitive,
+    be,
+    true.
+
+
+been0 ---> been,!.
+been0 ---> [].
+
+
+been ---> w(verb(be,past,part)). 
+
+because ---> [fordi].
+
+betake ---> be.
+betake ---> w(verb(take,_,fin)).
+
+both0 ---> [både].
+both0 ---> [].
+
+by ---> [av].
+
+
+ca0 ---> prep1(around),!. 
+ca0 ---> [].
+
+clock0 ---> clock. 
+clock0 ---> [].
+
+clock ---> [klokka].
+clock ---> [klokken],ca0. %% TA-010124 (actual)
+clock ---> [kl],colon,!.  %% TA-001112
+clock ---> [kl],point0,!. %% TA-001112
+
+
+colon0 ---> colon,!.
+colon0 ---> []. 
+
+colon ---> [':']. 
+%% colon ---> ['.']. % if visible  %% bussen går 20. august
+                                   %% TA-010723
+%% Simple Comparators 
+
+comparator1(eq) ---> equal. 
+comparator1(eq) ---> equal,to0.
+comparator1(ge) ---> greater,than0,or1,equal,to0. 
+comparator1(ge) ---> not,less,than.
+comparator1(ge) ---> [minst].
+comparator1(gt) ---> prep1(over). %% over 2 timer %% TA-001204
+comparator1(gt) ---> greater,than.
+comparator1(gt) ---> prep1(over). %% TA-001115
+comparator1(le) ---> less,than0,or1,equal,to0. 
+comparator1(le) ---> not,more,than. 
+comparator1(le) ---> not,greater,than.
+comparator1(le) ---> at,most.
+comparator1(lt) ---> less,than.
+comparator1(ne) ---> [forskjellig],prep1(from). %% TA-010612
+comparator1(ne) ---> [annet],[enn]. %% TA-010612
+comparator1(ne) ---> [ulik]. %% TA-010612 
+comparator1(ne) ---> [unntatt]. %% prep1(except). %% TA-010221
+comparator1(ne) ---> unequal,to0.
+           
+comparator1(Adj) ---> [mer],w(adj(Adj)),[enn].
+comparator1(ne) ---> [men],[ikke].  
+           
+     
+
+%% Derived Comparators 
+
+
+comparator2(gt,age) ---> older,than. 
+comparator2(lt,age) ---> younger,than.
+
+comparator2(gt,latitude) ---> [nord],[for].
+comparator2(lt,latitude) ---> [sør],[for].
+
+comparator2(gt,longitude) ---> [vest],[for].
+comparator2(lt,longitude) ---> [øst],[for]. 
+
+comparator2(gt,size) ---> greater,than.
+comparator2(lt,size) ---> [mindre],than.
+
+comparator2(gt,intelligence) ---> w(adj(intelligent)),than. %% smartere %% TA-010107
+comparator2(lt,intelligence) ---> w(adj(stupid)),than.      %% dummere 
+
+comparator2(gt,quality) ---> [bedre],than.  %% TA-010607
+
+superlative(M,Q) ---> filanepr(M,N,Q),quant1(N),!.
+superlative(M,Q) ---> quant0(N),filanepr(M,N,Q).
+
+
+
+
+filanepr(min(N),N,time)     ---> first. 
+filanepr(max(N),N,time)     ---> latest.
+filanepr(min(N),N,next)     ---> next.  
+filanepr(max(N),N,previous) ---> previous.
+
+filanepr(max(N),N,size) ---> greatest.
+filanepr(min(N),N,size) ---> [minste].
+
+flnp(A) ---> w(adj(A)),{testmember(A,[first,last,next,previous])}.
+
+da0 ---> [da],!.
+da0 ---> []. 
+
+de0 ---> [de],!. %% alle (de) 
+de0 ---> [].
+
+dendagen(nil)   --->  today,den0,!.     %% TA-010327 idag den 25.10 (feil) ===> 25.10
+dendagen(nil)   --->  yesterday,den0,!. %% TA-010327 
+dendagen(nil)   --->  tomorrow,den0,!.  %% TA-010327 
+%% dendagen(nil)   --->  prep1(on),!.      %% TA-010723 wrong
+
+dendagen(D)   --->  on0,day(D),den0,!. %% TA-001026
+dendagen(nil) --->  on0,[den],!.       %% TA-010811
+
+detsamme ---> [en],[gang].
+detsamme ---> prep1(with),[det],[samme].
+
+den0 ---> [den],!.
+den0 ---> [].
+
+
+dent0 ---> [den],!.  %% TA-001214  den neste (bussen) / det neste(toget)
+dent0 ---> [det],!.
+dent0 ---> [de],!.
+dent0 ---> [].
+
+det0 ---> [det],!. %% TA-010509
+det0 ---> [].
+
+
+
+%% Genuine Lookahead Problem:  
+
+
+do0 ---> do.
+    %        da0.  %% Norwagism
+    %        !     %% NO, vil = do | go, NO cut !         
+do0 ---> []. 
+
+
+%% do0(N1,N2)  N1 result negation,  N2 syntactical expectation
+
+do0(not,id) --->
+     negation(not), %% (når bussen) ikke (vil) ... gå 
+     do0.
+
+do0(not,id) --->
+     do,
+     negation(not). %% bussen vil ikke ...  gå 
+
+do0(N,N) ---> do0. %%  last (negation comes eventually)
+
+
+do(N) --->  use,negation(N),infinitive.
+
+do(N) ---> 
+    do,
+    negation(N),hasto0.
+
+do(id )---> [] .  
+
+do ---> faa, 
+    w(noun(information,_,_,_)), %% få greie på     %% TA-010729
+    !,
+    fail.                          
+
+do ---> skalvil,prep1(_),!,fail. %% --> go
+
+do ---> [vil],[vil],!. %% e.g.  skulle ville %% TA-001017
+
+do ---> [vil].
+do ---> [skal].
+
+do ---> be,[det],[som],!.
+do ---> may.
+do ---> must.
+do ---> [blir]. 
+
+do ---> [får].  %% jeg får kjøpe/kjøpt billetter 
+                %% hvor ofte får du motta spørsmål  %% NB Ambiguous
+
+
+dudet ---> [du].
+dudet ---> [det].
+dudet ---> pronoun(_). %% TA-010111
+
+each ---> [hver].
+each ---> [alle],the.
+
+earlier ---> [tidligere].
+earlier ---> prep1(in),sta.
+earlier ---> prep1(on),[forhånd]. %% TA-011002
+
+either0 ---> [enten],!.
+either0 ---> [].
+ 
+equal ---> [lik]. 
+
+every ---> [alle],de0. 
+every ---> [hver].
+every ---> [en],[hver]. 
+
+false ---> [galt]. 
+false ---> [usant].
+false ---> [feil].
+false ---> [uriktig].
+
+
+few ---> [få].
+
+first ---> w(adj(first)). 
+first ---> [tidligste].
+
+
+faa  ---> [få]. 
+faa  ---> [får]. 
+
+faa0 ---> faa,!.  %% [få]. %% TA-010729 
+faa0 ---> []. 
+
+fast ---> [fort]. 
+fast ---> w(adj(fast)). 
+fast ---> w(adj(fast)),[mulig]. %% snarest mulig
+fast ---> hereafter. %%  (e.g.  snart) 
+
+from ---> prep(from).
+
+great ---> w(adj(great)). 
+great ---> [høy].
+
+greater ---> prep(after).
+greater ---> [større]. 
+greater ---> [høyere].
+greater ---> [senere].
+greater ---> [mer]. 
+
+greater ---> great. %% Ad Hoc %% TA-001013
+
+greatest ---> [størst].
+greatest ---> [største].  % biggest
+% greatest ---> [largest].
+
+halfhour ---> [halv],
+    w(noun(hour,_,_,n)).
+
+halfhour ---> [halvtime]. 
+
+has(N) ---> w(verb(have,_,fin)),negation(N). 
+has ---> w(verb(have,_,fin)). 
+
+hasto0 ---> w(verb(have,_,fin)),infinitive.
+hasto0 ---> [].
+
+% having ---> w(verb(have,pres,part)). " havende "
+% having ---> w(prep(with)).           
+
+hereafter  ---> [om],[ikke],[så],[lenge]. 
+
+hereafter ---> soonar,aspossible0. %% w(adj(possible)),!.  %% e.g. snarest mulig  
+                                                           %% Bare fort = fast
+hereafter ---> [så],soon,[som],w(adj(possible)),!. 
+hereafter ---> prep1(in),near,w(noun(future,_,_,_)),!.
+hereafter ---> [med],[en],[gang].  
+hereafter ---> [heretter]. % snart
+hereafter ---> prep1(from),  nowon.  %% fra = after => nowon must first
+hereafter ---> prep1(in),w(adj(nearest)),w(noun(future,_,_,n)). %% TA-010926
+hereafter ---> prep1(on),w(adj(_)),w(noun(way,_,u,n)). %% TA-001131
+hereafter ---> prep1(after), now1. 
+
+% hereafter ---> prep1(after),the10,w(adj(next)). %% TA-001112 Rough, but can't take it
+%                                                 %% neste buss etter den neste
+hereafter ---> prep1(after),[dette]. %% TA-001113
+% hereafter ---> prep1(after),[denne]. %% Hazard %% TA-010522 Too Fuzzy 
+hereafter ---> [raskest],[mulig].
+hereafter ---> w(adj(next)),[gang]. %% TA-010219
+hereafter ---> [raskest]. %%  hvilken buss er raskest til
+                          %% TA-010116 hvordan kommer jeg meg raskest til ???
+
+herefrom ---> prep1(from),[her],!. 
+herefrom ---> [herfra].  
+herefrom ---> [derfra].  %% derifra 
+
+
+how ---> [hvordan],ialle0.
+how ---> [hvorfor],ialle0. 
+
+hox ---> has,[det],[seg],reductant0,[at]. 
+hox ---> be,[det],reductant0,[at].
+hox ---> be,[det],reductant0.
+hox ---> w(verb(go,_,fin)),[det],[an],[at]. %% TA-001116
+
+
+hvor ---> [hvor]. %% Norwegian, <> how
+
+i  ---> [jeg].
+i  ---> [meg]. %% TA-010314 
+% i --->  [en].   %% (Hazardous) Hvordan kommer en seg ...
+% jeg tar en buss = jeg tar meg buss
+
+            %% i all verden/ alle dager / i h... 
+ialle0 ---> prep1(in),[alle],w(noun(day,plu,u,_)),!. 
+ialle0 ---> prep1(in),[all],w(noun(world,sin,u,_)),!. 
+ialle0 ---> [og],[når],!. %% TA-010116  
+
+ialle0 ---> [].
+
+if1 ---> [hvis]. %% if/2 is an operator (dag) 
+
+ifra ---> [fra].   %% TA-010119
+ifra ---> [ifra].  %% TA-010119
+
+iman ---> [jeg].
+iman ---> [man].
+
+inperiod0 ---> prep1(in),w(noun(hour,_,def,n)),!. 
+inperiod0 ---> [om],  w(noun(day,_,  def,n)),!. 
+inperiod0 ---> [hver],w(noun(day,sin,u,  n)),!. 
+
+inperiod0 ---> []. % not second, minute , week, month, year etc.
+
+
+
+%%%%%%  in_order_to/3
+
+in_order_to(adj/_Expensive,id,activity) ---> 
+    prep1(to),
+    infinitive,
+    !. %%  flink til å sykle
+
+in_order_to(adj/_Expensive,id,activity) ---> 
+    prep1(off),
+    infinitive,
+    !. %%  lei av å vente
+
+in_order_to(cost,id,activity) ---> prep0(_),infinitive, !. 
+in_order_to(take,id,activity) ---> infinitive, !.
+
+in_order_to(_Go,id,activity)  ---> prep1(at),infinitive,!. %% ved å (Norwagism)
+in_order_to(_Go,not,activity) ---> prep1(without),infinitive,!. %% uten å
+
+in_order_to(V,Id,reason) ---> 
+    in_order_to(V,Id).
+
+%%%% in_order_to/2
+
+in_order_to(adj/_Expensive,id) ---> infinitive. 
+
+in_order_to(begin,id) ---> infinitive,!. 
+
+% in_order_to(let,id) ---> [],!. %% Jeg lar deg gå %%  object mod
+
+in_order_to(start,id) ---> infinitive,!. 
+in_order_to(stop,id)  ---> infinitive,!.
+in_order_to(use,id)   ---> prepnof(TO),
+     {testmember(TO,[on,to,for,with])},infinitive,!. 
+in_order_to(use2,id)  ---> infinitive,!. 
+in_order_to(have,id)  ---> infinitive.   %% no cut
+
+in_order_to(think,id) ---> []. %% TA-001017 % jeg tenkte dra til Stryn ???
+
+in_order_to(_,not)    ---> prep1(without),infinitive.
+in_order_to(_,id)     ---> in_order_to.
+
+%%%%% in_order_to/0
+
+in_order_to ---> prep1(for),infinitive,!.
+in_order_to ---> prep1(on),infinitive,!. 
+in_order_to ---> prep1(with),infinitive,!.
+in_order_to ---> prep1(to),infinitive,!.
+in_order_to ---> [av],infinitive,!. %% TA-010917
+in_order_to ---> prep1(for),[og],!. %% common misspell
+
+in_order_to ---> infinitive,!. %%  (What was hazardious about this ?)
+
+infinitive ---> [å]. 
+
+inom(in) ---> prep1(in). %% i morgen \= om morgenen
+inom(om) ---> [om].      %%  om kvelden / i kveld  Norwagism
+inom(om) ---> prep1(on). %% på kvelden/kveldstid
+
+% it ---> [det].  %% Hazardious  = there 
+
+it0 ---> [det],!.
+it0 ---> [].
+
+it ---> [den].
+
+its ---> [dens],own0.
+its ---> [dets],own0.
+
+
+later ---> [senere].
+later ---> [siden]. 
+later ---> [deretter]. 
+
+
+latest ---> w(adj(last)).
+
+less ---> [før].
+less ---> [tidligere].
+less ---> [mindre].
+less ---> [lavere].
+
+let --->  w(verb(let,pres,fin)). 
+
+little ---> [lite]. %% TA-001112
+
+long ---> w(adj(long)).
+%% long ---> much.  
+
+longadj ---> w(adj(long)).
+
+manypersons ---> [mange], adjnoun,!,fail. % mange () er 
+manypersons ---> [mange].
+
+many1 ---> [mange].  
+many ---> so0, [mange]. 
+%  many ---> so0, [mye]. %% bussen bruker mye tid \= mange tider
+
+may ---> [kan].
+may ---> [får]. 
+may ---> [bør].   %%  ??? 
+
+meny ---> [mange]. %% klokka
+meny ---> [meget].
+meny ---> [mye].
+
+
+
+me0 ---> [jeg],!.
+me0 ---> [meg],!. 
+me0 ---> [seg],!. %% hvordan komme seg ... 
+me0 ---> [].
+
+mineyour0 ---> posspron(_),!. 
+mineyour0 ---> []. 
+
+modal --->  may.
+modal --->  must.
+modal ---> [vil].
+
+more ---> [mer].
+more ---> [fler].
+more ---> [flere].
+
+most ---> [de],[fleste].
+
+much ---> [mye].   
+much ---> [meget].
+
+must ---> [må].
+must ---> [skal]. 
+
+my ---> [min].
+my ---> [mitt].
+my ---> [mine].
+
+naar ---> [når].
+naar ---> [nær]. %% Swedish  synword(nær,når) gives nær = reach 
+
+
+% negation( initial  final ).
+
+% negation may fetch from stack
+
+negatino ---> [ikke],!.
+negatino ---> [ingen],!.
+negatino ---> [].
+
+negation2(not,id) ---> negation(not),!,fail. %% is illegal syntax
+negation2(not,not) ---> negation(id). 
+
+negation2(id,not) ---> negation(not),!. 
+negation2(id,id) --->  negation(id). 
+
+negation(not) ---> not. %% ,!. NOT CUT  
+negation(id) --->  [].
+
+near --->  w(adj(near)). 
+near --->  the0,w(adj(nearest)).
+
+nearest ---> w(adj(nearest)). % Norwagism   Nærmeste stasjon til NTH
+% nearest ---> w(adj(next)).    %  bussen går neste time til rognheim
+nearest ---> prep1(nearest) . % 
+
+next0 ---> next,!.
+next0 ---> [].
+
+next ---> w(adj(next)). 
+
+no ---> [ingen].
+
+not0 ---> not,!. 
+not0 ---> [].
+
+not ---> [ikke].
+
+now0 ---> now1,!. 
+now0 ---> today. 
+% now0 ---> yesterday. %% TA-010320 hva er beste rute i morgen
+% now0 ---> tomorrow.  %% TA-010320
+now0 ---> [].
+
+now1 ---> [nå].
+
+nowon ---> now1,[av],!. 
+nowon ---> now1.
+
+nr0 ---> [nr],point0,!.  %% nr. ==> number .
+nr0 ---> number,!.
+nr0 ---> []. 
+
+number0 ---> num(_),!. %% DUMMY number !!! which 4 buses go
+number0 ---> [].       %% OOPS not dummy num!
+
+number ---> w(noun(number,sin,u,n)).   %% number 5 = 5  %% 
+
+
+of_course0 ---> of_course.
+of_course0 ---> [].
+
+of_coursenot0 ---> of_course,[ikke].
+of_coursenot0 ---> [].
+
+of_course ---> [naturligvis]. 
+of_course ---> [selvfølgelig].
+
+of ---> prep(of).
+
+of0 ---> of. 
+of0 ---> []. 
+
+offrom ---> [av]. 
+offrom ---> prep1(from).
+offrom ---> [ifra].   %% ?
+
+often ---> [ofte]. 
+often ---> [sjelden]. %%  (SIC) how seldom
+
+ofthe ---> of,the.
+
+ofthe0 ---> ofthe.
+ofthe0 ---> [].
+
+older ---> [eldre].
+
+on0 ---> prep1(on),!. 
+on0 ---> []. 
+
+newyear ---> w(adj(new)),w(noun(year,_,_,_)).
+newyear ---> [nyttår]. 
+
+om0 ---> [om],!. %% fortelle om bussen ... går
+om0 ---> [].     %% TA-010124
+
+on0   ---> [på],!. %% En måte å reise (på)   Norwagism
+on0   ---> []. 
+
+one   ---> w(nb(1,num)). 
+one   ---> a.  
+
+only0 ---> [bare],!.
+only0 ---> [].
+
+or1 ---> [eller]. 
+
+ordinal(N) ---> 
+    w(nb(N,ord)).
+
+
+oter ---> other.
+oter ---> others.
+
+other ---> [annen]. 
+other ---> [annet].
+
+others ---> [andre].
+
+own0 ---> [egen].
+own0 ---> [egne].
+own0 ---> [].
+
+particle0(Q) ---> particle(Q).
+particle0([]) ---> [].
+
+possible0 ---> w(adj(possible)),!. %% (snarest) mulig %% TA-010507
+possible0 ---> [].
+
+reciprov0(F) ---> reciprov(F),!. 
+reciprov0(_) ---> [].                      
+
+reciprov(beworry) ---> [meg]. %% bekymre
+reciprov(beworry) ---> [seg].
+reciprov(beworry) ---> [oss].
+
+reciprov(change) ---> [seg]. 
+
+reciprov(come) ---> egegeg.  %% TA-010205
+
+reciprov(feel)   ---> [deg]. 
+reciprov(feel)   ---> [meg].   %% føle meg
+reciprov(feel)   ---> [seg].   %% føle seg
+
+reciprov(give)  ---> egegeg.   %% TA-010212
+reciprov(go)   ---> egegeg.  
+
+%  reciprov(go)   ---> [med].  %%  ( rough ) hvordan kommer jeg med (bussen) til
+
+reciprov(help) ---> [meg]. 
+reciprov(help) ---> [meg]. 
+reciprov(hurry) ---> egegeg. 
+
+reciprov(learn) ---> egegeg.  %% lære seg %% TA-010606
+
+reciprov(show) ---> [meg]. 
+
+reciprov(sneak) ---> [meg]. %%  :-(
+reciprov(sneak) ---> [seg]. %%
+
+reciprov(take) ---> [meg].  %% Ta seg fram
+reciprov(take) ---> [seg]. 
+
+reciprov(tell) ---> [meg].  %% tell me   etc....
+
+%% reciprov(tell) --->  from.  %% si fra/ifra  ( Hack, Not NP) %% TA-010119
+%% kommer jeg fra mellomveien OOPS
+
+reciprov(think) ---> egegeg.  %% TA-010725 ?
+
+reciprov(turn) ---> [meg].  %% henvende 
+reciprov(turn) ---> [seg].
+reciprov(turn) ---> [oss].
+
+egegeg ---> [meg]. 
+egegeg ---> [deg].
+egegeg ---> [seg].
+egegeg ---> [oss].
+egegeg ---> [dere]. %% Haz
+egegeg ---> [dem].
+
+reductant0 ---> reductant,!. 
+reductant0 ---> [].
+
+
+%% ADVERBIAL EXPRESSIONS    ( Part of Dictionary)
+
+%% Redundant adverbs
+
+particle(reductant) ---> reductant. 
+
+
+particle(at_home) --->   [hjemme]. %% TA-010612
+particle(back) --->      [tilbake]. 
+
+particle(badly) --->     [dårlig]. 
+particle(daily) --->     [daglig].  
+particle(day_after_tomorrow) ---> [overimorgen]. 
+particle(directly) --->  [direkte].  
+particle(down) --->      [under].  
+
+particle(earlier) ---> earlier. 
+
+particle(early) --->    
+   [så],[tidlig],[som],w(adj(possible)),!. 
+particle(early) --->    
+   [tidligst],w(adj(possible)),!. 
+particle(early) --->     [tidlig].  %% last  %% TA-010201
+
+particle(eastward) --->  [østover]. 
+particle(everywhere) ---> [overalt].
+particle(fast) --->      [fort].  %% w(adj(fast)).
+particle(fast) --->      w(adj(faster)). 
+
+% particle(fast) --->      w(adj(fastest)). %% ==> particle(hereafter) collision 
+
+particle(freely) ---> [gratis].  
+
+% particle(from) --->      [fra].   %% hvor går bussen fra i sentrum %% (Hazard)
+
+particle(from) --->      [ifra].   %% NB Subtle  Jeg sier ifra 
+
+particle(home) --->     [hjem],prep1(to),!,fail.     %% Ad hoc
+particle(home) --->      to0,[hjem].                 %% TA-011005
+particle(here) --->      to0,[hit].                  %%
+particle(here) --->      to0,[her].                  %%
+
+particle(hereafter) ---> hereafter.  %% before fast (fastest possible)
+
+particle(in)  --->       [inn]. 
+particle(late) --->    so0,   [sent]. 
+particle(late) --->      too,[sent].
+particle(logically) ---> [logisk].  %% TA-001114 
+
+particle(much) ---> so0,[mye]. 
+particle(normally) ---> [normalt]. 
+particle(northward) ---> [nordover].  
+particle(now) --->       now1.
+particle(now) --->       [da]. %% TA-001214 ( not now1) EXPERIMENT
+particle(now) --->       prep1(for),[øyeblikket]. %% TA-010522
+
+particle(on) --->        prep1(on).  %% hazard ?
+particle(off) --->       [av].       %% hazard ?
+particle(offside) --->   compassly. 
+particle(often) --->     so0,  [ofte]. 
+particle(recently)        ---> recently. 
+particle(out) --->       [ut]. 
+particle(past) --->      [forbi].          %% bussen går forbi på rosten
+particle(present) --->   [framme].
+particle(punctually) ---> [presis]. 
+particle(punctually) ---> w(adj(punctual)). 
+particle(punctually) ---> %% TA-010904  i tide 
+    prep1(in),
+    [tide].
+
+particle(regularly) ---> [som],[normalt]. %% NB not delay %% TA-010117
+particle(regularly) ---> [som],w(adj(ordinary)).          %% TA-010117
+
+particle(slowly)    ---> [langsomt]. %% TA-001129
+particle(somewhere) ---> [noensted].  
+particle(southward) ---> [sørover].
+particle(there) --->     [dit]. 
+particle(there) --->     [der]. 
+particle(thereafter) ---> thereafter. %% usually anaphoric
+particle(this_midnight) ---> [inatt].
+particle(today) --->     [idag]. 
+particle(tomorrow) --->  [imorgen]. 
+particle(tonight) --->   [ikveld].
+particle(yesterday) ---> [igår].
+particle(well)      ---> [bra]. 
+particle(well)      ---> [best]. %%   (Roughly)
+particle(westward) --->   [vestover]. 
+particle(with1)    --->  [med].            %% Norwagism 
+particle(wrongly) --->  saa0,  [feil]. 
+
+
+compassly ---> [nordfra].
+compassly ---> [nordover].
+
+compassly ---> [sydfra].
+compassly ---> [sydover].
+compassly ---> [sørfra].
+compassly ---> [sørover].
+
+compassly ---> [vestfra].
+compassly ---> [vestover].
+
+compassly ---> [østfra].
+compassly ---> [østover].
+
+
+% reductant ---> w(adj(late)).  %%   Sent en kveld bussen er sen
+% reductant ---> w(adj(best)).    %% Hvem er best 
+
+reductant ---> [altså].     %% TA-010221
+reductant ---> w(adj(fast)),aspossible0. %% TA-010212 
+reductant ---> w(adj(safe)).    %% trygt
+reductant ---> [alene]. 
+reductant ---> [alt],prep1(in),[alt].
+reductant ---> always.  
+reductant ---> aspossible.  
+reductant ---> prep1(for),w(noun(time,sin,def,n)). 
+% reductant ---> [bra]. %% Busstuc er bra ! 
+
+reductant ---> [langt],[bort]. %% TA-011005   
+reductant ---> [bort].      %% (= vekk)
+
+%% reductant ---> [da].  %% TA-001130  jeg syklet da bussen kom 
+%%%% reductant ---> [der].       %%   NB    Also particle 
+reductant ---> [dessverre]. 
+reductant ---> [egentlig].
+reductant ---> [ellers].  %% TA-010509
+reductant ---> [engang].  
+reductant ---> [enklest],[mulig]. 
+reductant ---> [enklest]. %% TA-010115
+reductant ---> [ergo].              %%  (altså  noisew)
+% reductant ---> [raskest],[mulig]. %%  = heretter
+reductant ---> [farefritt]. %%  :-)
+reductant ---> [faktisk]. 
+reductant ---> [fram].    %% TA-010124
+reductant ---> [gjerne]. 
+reductant ---> [heller]. 
+reductant ---> [helst]. 
+%%% reductant ---> [her].       %%   Also (particle)
+reductant ---> [heldigvis].
+reductant ---> herefrom,a,w(noun(place,sin,u,n)),!.
+reductant ---> herefrom.  
+reductant ---> prep1(in),[gjen]. 
+%% reductant ---> [ifra].       %% shadows prep
+reductant ---> prep1(on),w(adj(new)).
+reductant ---> [ikke],[sant].
+reductant ---> prep1(in),w(noun(average,_,_,_)).
+reductant ---> prep1(in),[allverden]. 
+reductant ---> prep1(in),[det],w(adj(whole)),w(verb(take,past,part)). %% at all
+reductant ---> prep1(in),[hvertfall].
+reductant ---> [ihvertfall].
+
+reductant ---> [igjen].  
+reductant ---> [kanskje]. 
+reductant ---> [lenge].  %% Jeg venter lenge 
+reductant ---> [likevel].   %% ( syn  allikevel)
+reductant ---> [mer].  
+reductant ---> [minst].     %% TA-010607
+reductant ---> [mon],w(verb(believe,imp,fin)). 
+reductant ---> [ned]. 
+reductant ---> [når],[som],[helst]. 
+reductant ---> [også].
+reductant ---> often. 
+reductant ---> [om],w(noun(time_count,sin,def,n)).  %% TA-010116 om gangen
+reductant ---> [opp].
+reductant ---> [sikkert]. %% TA-010830
+reductant ---> [sist].  
+reductant ---> prep1(to),slutt.
+reductant ---> prep1(to),[sammen].
+
+% reductant ---> [snart].     %%  (???)
+reductant ---> [takk]. %% TA-001017 ( gi med bussruten takk)
+reductant ---> [totalt]. 
+reductant ---> saa0,very.
+%% reductant ---> [så].          %% TA-010825  Also VERB !! %% TA-010919
+reductant ---> [ut].
+reductant ---> [ute].         %% været er fint ute
+reductant ---> [vanligvis]. 
+reductant ---> [vel].  
+reductant ---> prep1(to),w(adj(ordinary)). %% til vanlig ( Norwagism)
+reductant ---> [videre].      %% (vidre?)
+
+% reductant ---> [tidligst].    %%   ??? hazard
+% reductant ---> [senest].      %%   ??? hazard
+
+% reductant ---> w(verb(know,_,fin)),[du]. %%  hazard
+%   makes havoc in implicitq  vet du hvor bussen går  :-)
+% reductant ---> w(adj(present)).  %%  ...til nth som er fremme ved ...
+% reductant ---> [forbi].          %% most likely prep
+
+
+%%%%%%%%%% 
+
+slutt ---> [sist].
+slutt ---> [slutt]. 
+
+please0 ---> please,!. 
+please0 ---> []. 
+
+please ---> be,so,good,infinitive. %%  snill,good 
+
+point0 ---> point,!. %% TA-010718  Always Optional
+point0 ---> [].
+
+pointNO ---> point,!. 
+pointNO ---> ['/'],!. %% TA-010812
+pointNO ---> %% Optional in case point is  removed 
+    {value(nodotflag,true)}. %% []. %% TA-010719
+
+point ---> ['.'].
+
+
+posspron(self)     --->  my,own0.  
+posspron(man)      --->  [hans],own0.
+posspron(woman)    --->  [hennes],own0.
+posspron(program)  --->  your.   %% tuc is a program
+posspron(person)   --->  their,own0.  %% thing
+
+previous ---> w(adj(previous)). 
+
+
+thereafter  ---> andor0,later.       %% ( kl 13 eller senere )
+thereafter  ---> prep1(after),[det].
+thereafter  ---> prep1(after),[der].        %%  (igjen)
+thereafter  ---> [nest],prep1(after),[der]. %%  (igjen)
+thereafter  ---> prep1(after),[hvert].      %% TA-010331
+
+
+prep2(according_to) ---> [i],[følge].
+
+prep2(after)        ---> prep1(after),around1. %%  (roughly)
+prep2(after)        ---> prep1(from),prep1(after). %% TA-010606
+prep2(after)         ---> prep1(from),[og],prep1(with). %% TA-010627
+prep2(after)        ---> [like],prep1(after). 
+prep2(after)        ---> not, prep(before). 
+prep2(after)        ---> [senere],[enn]. 
+prep2(after)        ---> [senest],prep1(after). %% TA-010117 (SIC)  
+prep2(after)        ---> [resten],prep1(off). %% resten av
+% prep2(after)        ---> [tidligst].  %% dict synonym
+
+prep2(around)       ---> around1,around0.          %% smalltalk
+
+prep2(at)        ---> prep1(at),w(noun(side,_,_,_)),[av]. %% TA-010920
+% prep2(at)     ---> w(adj(present)),prep1(at).    %%  ... til nth som er fremme ved.
+% prep2(before)       ---> prep1(between),[nå],[og]. 
+                            % after now and ... %% TA-010718
+
+prep2(before)       ---> [like],prep1(before). 
+prep2(before)       ---> not,prep(after). 
+prep2(before)       ---> [senest],prep1(before). %% TA-010308
+prep2(before)       ---> [senest].  
+prep2(beside)       ---> [ved],[siden],[av].
+
+prep2(between) ---> prep1(in),prep1(between). 
+prep2(between) ---> a0,w(noun(place,_,_,n)),prep1(between). %% TA-010508
+
+prep2(during)       ---> prep1(in),[løpet],[av]. 
+
+prep2(from)         ---> [med],prep1(from). %% TA-010114
+%% prep2(from)         ---> prep1(from),[og],prep1(with). %% after ?
+prep2(from)         ---> prep1(in),prep1(from).    % i fra 
+prep2(from)         ---> prep1(over),prep1(from).  %% TA-010508
+prep2(from)         ---> [ifra]. %% rather adverb  %% Norwag
+prep2(from)         ---> [inn],prep1(from).        % inn fra
+prep2(from)         ---> [ut],offrom.  
+%  prep2(from)         ---> offrom.  % ut may be adv  
+prep2(from)         --->
+     prep1(with),w(noun(start,sin,_,_)),prep1(in). 
+prep2(from)         ---> umpover,prep1(from). 
+prep2(from)         ---> prep1(from),prep1(in),[nærheten],[av]. %% TA-010509
+
+%% prep2(in)   ---> [fra],prep1(in). % hvor går bussen fra i (Roughly) ??? TA-010309
+prep2(in)           ---> prep1(around),prep1(in). 
+
+prep2(near)         ---> so0,prep1(near),to0. 
+prep2(near)         ---> prep1(in),[nærheten],[av].
+prep2(near)         ---> [langt],prep1(from). %% Rough Nonlogic Query
+prep2(near)         ---> [like],prep1(at).
+prep2(near)         ---> w(adj(nearest)),possible0,to0. %% TA-010507
+
+prep2(on)           ---> prep1(with),prep1(on).     %% NB on / med / med på
+prep2(on)           ---> ca0,[midt],prep1(on),!.  
+prep2(on)           ---> [nede],prep1(on). 
+
+prep2(out_of)       ---> prep1(to),prep1(outside).  %% TA-010917
+
+prep2(outside)      ---> [ikke],prep1(past). 
+prep2(outside)      ---> [ikke],prep1(to).
+
+prep2(over)         ---> [litt],prep1(over). 
+prep2(over)         ---> prep1(over),[hvilke].       %%   oversikt over hvilke
+
+prep2(past)         ---> [og],[ned].  %% TA-010116
+prep2(past)         ---> [ned].       %%
+prep2(past)         ---> [og],[opp].  %% TA-010116
+prep2(past)         ---> prep1(to),and1,prep1(from). %% and0
+prep2(past)         ---> prep1(from),and1,prep1(to). %%   and0
+prep2(past)         ---> prep1(with),w(noun(departure,_,_,_)).
+
+% prep2(past)         ---> prep1(at),w(noun(departure,_,_,_)).
+%                           ved passering ???                   
+
+prep2(to)           ---> prep1(in),w(noun(connection,_,u,n)),prep1(with). %% TA-010124
+prep2(to)           ---> prep1(over),prep1(to). %% TA-010508
+prep2(to)           ---> prep1(with),w(noun(arrival,_,_,_)).  
+prep2(to)           ---> prep1(with),prep1(to).
+prep2(to)           ---> andsoon,prep1(to). 
+prep2(to)           ---> [hjem],prep1(to).           %% Here, home is dummy
+prep2(to)           ---> [inn],prep1(to). %% into  
+prep2(to)           ---> [ned],prep1(to). 
+prep2(to)           ---> [opp],prep1(to). %% TA-010729
+prep2(to)           ---> [tur],[retur]. 
+prep2(to)           ---> umpover,prep1(to). 
+
+prep2(towards)      ---> [inn],prep1(towards). 
+prep2(towards)      ---> [ut],prep1(towards). 
+prep2(towards)       ---> [ned],prep1(towards). 
+
+prep2(until)        ---> until. %% TA-010627
+
+prep2(with)         ---> prep1(with),prep1(on). 
+prep2(with)         ---> prep1(with),prep1(in). %%  (first)
+prep2(with)         ---> by,[bruk],of.       
+
+prep2(withafter)    ---> prep1(withafter),around1. %% Norwagism,   om ca 1 time
+prep2(within)       ---> the,next.
+prep2(within)       ---> prep1(on),prep1(under).   %%  ROUGH/INEXACT
+                                                   %% NO, means duration < 10 min
+prep2(without)      ---> [fri],[for].            
+
+% % % % % % % % % % % %
+
+ umpover ---> prep1(over). 
+ umpover ---> [bortover].
+ umpover ---> [utover].
+ umpover ---> [innover].
+ umpover ---> [oppover].
+ umpover ---> [nedover].
+ umpover ---> [hitover].
+ umpover ---> prep1(on),w(noun(route,sin,_,n)).     %% TA-010309 Norw på vei
+ umpover ---> prep1(on),w(noun(direction,sin,_,n)). %% TA-010309 Norw
+
+%   umpover ---> [nordover]. %% -> warning direction
+%   umpover ---> [sørover].
+%   umpover ---> [vestover].
+%   umpover ---> [østover].
+
+pronoun1(_) ---> [en],!,fail.  
+pronoun1(X) --->  
+    pronoun(X).
+
+
+% pronoun(person) ---> [en]. %%  EXPERIMENT
+% pronoun(self) ---> [en].    % Hazardous jeg tar en buss = jeg tar meg buss 
+% pronoun(person) ---> [man]. %      ==> jeg for all pp             
+% pronoun(self) ---> [man].
+
+
+% pronoun(person) ---> [man].  % man skaffer en dame
+
+
+pronoun(Man) ---> [He], 
+    {dict_n:pronoun(He,Man)}. 
+
+%% pronoun(self) ---> [i]. %% (Dialect for 'jeg', NOT SYNONYM !)
+%% NO   jeg reiser for å være i Th. 
+
+%% quant_pron(every,person) ---> [hver]. %% hver dag  TO COMPLICATED 
+
+quant_pron(every,thing)  ---> [alt],sammen0.  %% TA-010212
+
+quant_pron(some,agent)  ---> someone. %% WAS person %% TA-010221
+
+quant_pron(some,vehicle) ---> [den],  %% EXPERIMENT 
+    {value(busflag,true)}.            %% (Bus SPECIFIC) TA-010221
+
+% quant_pron(some,place)   ---> [noensted]. 
+
+quant_pron(some,thing)   ---> something.
+
+quant_pron(no,person)    ---> [ingen].  % none ?
+quant_pron(no,person)    ---> [intet].
+quant_pron(no,thing)     ---> [ingen],[ting].
+quant_pron(no,thing)     ---> [ingenting]. 
+
+quant_pron(much,thing)   --->somuch.  %%  jeg vet mye %% TA-001112
+quant_pron(little,thing)   --->solittle.   %%  lite        %% TA-001112
+
+sammen0 ---> [sammen],!. %% TA-010212
+sammen0 ---> [].
+
+somuch ---> so0,much.
+solittle ---> so0,little. %% TA-001112
+
+quant0(M)   ---> quant1(M),!.
+quant0(+ 1) ---> [].
+
+quant1(+ N) ---> w(nb(N,num)). 
+quant1(- N) ---> ordinal(N).
+
+recently ---> [nylig].
+recently ---> prep1(in),[det],latest. 
+
+
+something   ---> [noe],[mer],!. 
+something   ---> [noe],[som],[helst],!.
+something   ---> [noe].
+% something   ---> [mer].  %% du  er mer lang enn meg 
+% something   ---> [mye]. 
+
+sta ---> [sta]. %% i sta  Norwagism (earlier)
+sta ---> [stad]. %% i sta  Norwagism (earlier)
+sta ---> w(noun(place,sin,u,n)). %% i sted 
+sta ---> [det],w(adj(last)). 
+
+relpron(thing) ---> [som],also0. 
+relpron(thing) ---> so_that,it.
+
+
+%% relpron(thing) ---> [].     %%   (Too Expensive)
+
+recipron(man)    ---> [han],self. 
+recipron(person) ---> [seg],self. 
+recipron(woman)  ---> [henne],self.
+recipron(thing)  ---> [seg],self0.
+
+same ---> [samme].
+
+self0 ---> self.
+self0 ---> [].
+
+self ---> [selv].
+
+set ---> w(noun(set,_,_,n)). 
+
+setlist ---> set.  
+setlist ---> w(noun(liste,_,_,n)). 
+
+several ---> more. %% [flere]. 
+several ---> [mer],[enn],one. 
+
+sin ---> [sin].  %% genitive  
+sin ---> [sine].
+sin ---> [sitt].
+
+skalvil ---> [skal]. 
+skalvil ---> [vil].
+skalvil ---> [må].
+
+
+saa0 ---> [så],!. %% TA-010830
+saa0 ---> [].
+
+so0 ---> [så],!. 
+so0 ---> too,!.
+so0 ---> [].   %%
+
+so ---> [så].
+
+so_that ---> prep1(for),[at].
+so_that ---> [forat]. 
+so_that ---> [slik],that.
+so_that ---> [som],w(verb(do1,_,fin)),that.
+so_that ---> [så].
+so_that ---> [at].  %%  redd at
+
+som0 ---> w(verb(_,_,_)),!,fail. %% bussen går til hva er klokken *
+som0 ---> som. 
+som0 ---> [].   
+
+som ---> [som].
+
+some ---> [noen],of0.
+some ---> [noe]. %% ,of0. ???
+
+
+% someone --->  [noen].  %% Makes Trouble 
+%                          % Går det noen buss ?  grabs the first np  !                      
+                           % noen = np2 before  
+                           % noen buss = np1
+% someone ---> [en].     %% destroys   en sjåfør
+
+someone ---> [man].   %% man buss går // man skaffer en dame 
+someone ---> [noen].  
+
+someone ---> [de].    %% // si til de som sover at bussen går
+%% someone ---> [den].   %% TA-010221 More likely a vehicle %% EXPERIMENT 
+someone ---> [han].   %% TA-010124
+someone ---> [hun].   %% TA-010124
+
+soonar --->   [snart].      %% bare fort == hurtig
+soonar --->   [snarest].  
+
+
+soon ---> [fort].       %% w(adj(fast)).
+soon ---> w(adj(fast)). %% also snarest 
+soon ---> [snart]. 
+soon ---> [snarest].  
+
+statics(avg)     ---> [gjennomsnittet],ofthe0.
+statics(max(+1)) ---> [maksimum],ofthe0. 
+statics(min(+1)) ---> [minimum],ofthe0. 
+statics(sum)     ---> total,ofthe0.
+statics(number)  ---> [antall],ofthe0.
+
+
+sure ---> [sikker].
+sure ---> [sikkert].
+sure ---> [sikre].
+
+terminator ---> termchar,!. %% , skiprest. 
+
+
+termchar ---> ['.']. 
+termchar ---> ['?'].
+termchar ---> ['!'].
+% termchar ---> ['+']. %% lowercase ?
+
+
+
+than ---> [enn].
+
+than0 ---> than.
+than0 ---> [].    
+
+that ---> [om],[at],!. %% TA-010119 si fra (om) at
+that ---> [at].
+
+that(that)    ---> that.     %% (last) First, capture om at %% TA-010119
+that(how)     ---> how.
+that(when)    ---> when.  
+that(where)   ---> where. 
+that(whether) ---> paa0,[hvorvidt]. %% undrer på
+that(whether) ---> paa0,[om].
+%% that(whether) ---> [hvis]. %% du svarer hvis jeg spør 
+that(why)     ---> [hvorfor].
+
+                             %% THAT0  jeg vil vite avgangen (= objekt!)
+paa0 ---> [på],!.
+paa0 ---> [].
+
+
+% that(what)    ---> [hva]. ==>  relhwat   (du vet hva klokka er)
+
+that0 ---> that.
+that0 ---> [].
+
+the ---> [den].
+% the ---> [denne]. %% EXPERIMENT   hva er denne program versjonen
+the ---> [det].
+the ---> [de]. 
+% the ---> [dette]. %% EXPERIMENT   hva er dette programmets versjon 
+
+themost ---> the, [mest].
+
+the0 --->  the,!. 
+% the0 --->  which,!. %% jeg vet hvilken buss som går. %% Infernal Bloody Mess
+%%% hvilke ruter dekker tyholt *********** %% TA-001112
+
+the0 --->  [].
+
+the10 ---> [det].
+the10 ---> [den].
+the10 ---> [].
+
+theplu0 ---> all0,theplu,!.
+theplu0 ---> all0.
+
+theplu ---> [de]. 
+
+their ---> [deres].
+their ---> [de],[andres].
+their ---> [sine].
+their ---> [sin]. 
+
+then0 ---> then1,!.
+then0 ---> [].
+
+then1 ---> [da].   %% then/2 is an operator ( dcg_n.pl)
+then1 ---> [så].  
+
+theonly0 ---> the0,only0. 
+
+thereit0 ---> thereit,!. 
+thereit0 ---> [].
+
+therenot0 ---> thereit,not0,!.  %% Ignore negation
+therenot0 ---> not,thereit0,!.  %% Ignore negation
+therenot0 ---> []. 
+
+thereit(N) ---> thereit,negation(N),reductant0,been0,
+                !. 
+
+% in subordinate sentences  % Hvis det ikke går
+
+thereitN ---> thereit,[ikke],!,[]-[ikke].
+thereitN ---> thereit.
+
+thereit ---> [det]. % preliminary subject 
+thereit ---> [der]. % old fashioned ?  bussen stopper der 
+                    % finnes der en buss fra kinsarvik til geilo . (DK) 
+
+this(X) ---> this,{it_template(X)}. 
+this(X) ---> thereit,{it_template(X)}.
+
+
+this ---> [denne].
+this ---> [dette].
+this ---> [disse].  
+
+
+thisplace(in) ---> [her]. 
+thisplace(to) ---> [hit]. 
+thisplace(in) ---> [der]. 
+thisplace(to) ---> [dit]. 
+
+
+timepoint ---> w(noun(time,_,u,n)). 
+timepoint ---> w(noun(clock,_,u,n)). 
+
+
+to ---> prep(to).
+
+to0 ---> to,!.
+to0 ---> [].  
+
+too ---> [for].  
+
+today0 ---> today. 
+today0 ---> [].  
+
+today ---> [idag]. 
+today ---> prep(in),w(noun(day,sin,u,n)).
+
+tommorrow ---> [imorgen].  
+tomorrow  ---> prep1(in),w(noun(morning,sin,u,n)).
+
+total ---> [total].
+total ---> [totalt].
+total ---> [totale].
+total ---> [sum],of.
+
+true ---> [sann].
+true ---> [sant].
+true ---> [sanne].
+
+truefalse(id)  --->  true.
+truefalse(id)  --->  not,false.
+truefalse(not) --->  false.
+truefalse(not) --->  not,true.
+
+unequal ---> [ulik].
+unequal ---> [ulikt].
+unequal ---> [ulike].
+
+unequal ---> not,equal.
+
+until ---> [inntil].
+until ---> [fram],prep1(to). %% TA-010627
+
+use ---> w(verb(use,_,fin)).
+use ---> w(verb(want,_,fin)).  %% Norw.   trenge %% TA-010507
+
+very0 ---> very,!. 
+very0 ---> [].
+
+very ---> [for],!. %% FOR TIDLIG %% TA-010207
+very ---> [meget]. % ...
+very ---> [veldig].
+very ---> [ofte].      %%  Is  " very delayed" similar to "often delayed" ?
+
+%  very ---> [så].     %%   collides with so fast as possible
+
+what --->  [hva]. 
+%% what --->  which. % which is %% Not Norw.  %% Experiment 
+
+whatbe ---> what,be,!. 
+whatbe ---> [hvilke],be,!.  %% TA-010130
+% whatbe ---> [hvem],be.    %% TA-010430 EXPERIMENT  hvem er bussene til nth
+%                           %%                       hvem er USA ? *
+
+% whatbe ---> [hvordan],be,!.  %% To rough 
+
+when0 ---> when,!. 
+when0 ---> [].
+
+whenx ---> naar,[jeg],!,fail. %% AD HOC. når is verb reach 
+                 % etc.
+whenx ---> when.
+
+when ---> [hvor],timepoint,!.  %% Dialect 
+when ---> [hvor],[sent],!.     %% Rough  om kvelden   %% TA-001219
+when ---> [hvor],[tidlig],!.   %% Rough  om morgenen  %% TA-001219
+when ---> [når],timepoint,!.   %% Dialect 
+when ---> [hva],timepoint,!.   %% Dialect (kva tid)
+when ---> which,timepoint,!. 
+when ---> prep1(to),which,w(noun(time,_,u,n)),!.  %% ppq is tricked by tid=departure
+when ---> [så],[snart],!.    %% TA-010626
+when ---> naar,andwhere0,!.  %% TA-010205
+when ---> naar. 
+when ---> [hva],[ti].  %% Dialect %% TA-010905
+
+
+erdetdet ---> be,[det],that0,det0. %% TA-010509
+
+where ---> [hvor],andwhen0,!. 
+where ---> which,w(noun(place,_,_,_)),!. 
+
+where1 ---> [hvor],meny,!,fail. 
+where1 ---> [hvor]. 
+where1 ---> [der]. 
+
+wherefrom ---> prep1(from),which,w(noun(place,_,_,_)),!. %%  stations....
+wherefrom ---> prep1(from),[hvor],!.
+wherefrom ---> [hvorfra].
+wherefrom ---> [hvor],[fra].  %% TA-010110
+wherefrom ---> [hvor],[ifra]. %% TA-010110
+
+while ---> [mens].
+
+which0 ---> which,!.
+which0 ---> [].
+
+
+which ---> [hva],prep1(for),a0,!. 
+which ---> [hva],[slags],!.          %%   not noisew
+which ---> [hvilken],[slags],!.      %%   not noisew
+which ---> [hvilken].
+which ---> [hvilket].
+which ---> [hvilke].
+
+which2 ---> which,
+            numbertype0, %%  Dummy  which 3 buses ignored assumption
+            ofthe0.
+
+
+numbertype0 ---> num(_),!.
+numbertype0 ---> type,!.
+numbertype0 ---> [].
+
+who ---> [hvem].
+
+whose ---> [hvis].      
+
+you ---> [du].
+you ---> [dere].
+
+yesterday ---> prep1(in),[går]. 
+younger ---> [yngre].
+
+your ---> [din]. %% yours ==> your 
+your ---> [ditt].
+your ---> [dine].
+your ---> [di]. 
+
+with0 ---> prep(with),!.
+with0 ---> [].
+
+
+num_na(_) ---> art,!,fail. %% en 5 ===> 1.5.2000 * %% TA-001018
+num_na(N) --->  w(nb(N,_num_ord)). %% første
+
+
+num(N) ---> w(nb(N,num)),! .
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% PERSONAL SECTION 
+
+
+%% Sentences  presuming BussTUC is human.
+
+
+%% Family session :-)
+
+greetings('Hei på deg') ---> hello,daddy. %% :-) 
+greetings('Hei') ---> greetings.
+
+
+daddy ---> w(noun(father,sin,u,n)),!.
+daddy ---> w(noun(mother,sin,u,n)),!. 
+daddy ---> w(name(tore,n,man)),!.     %% TA-010110
+% etc
+
+%%%%%%%%%%%%%%%%%%%%
+
+
+greetings0 ---> greetings,!.
+greetings0 ---> [].
+
+greetings ---> [og]. %% ?
+greetings ---> [men].
+greetings ---> [nei]. 
+% greetings ---> w(noun(nonsense,sin,u,n)). %% TA-010603
+greetings ---> [o], adj0,np0(_,_,_).   %%  :-)
+greetings ---> [velkommen].
+greetings ---> [ok],da0.
+greetings  ---> saa0,[bra].  %% TA-010927
+    %% Ikke  Fine biler = Filt, biler w(adj(good)). %% Fint, når ...
+
+greetings  ---> hellos.
+
+hellos ---> hello,sludder,hellos0.
+
+hellos0 ---> hellos.
+hellos0 ---> [].
+
+
+adj0 ---> w(adj(_)),!.
+adj0 ---> [].
+
+hei ---> [hei]. 
+hei ---> [hallo].
+
+sludder   ---> [der],!. 
+sludder   ---> [du],!. 
+sludder   ---> w(name(bustuc,n,_0)),!. 
+sludder   ---> w(name(tt,n,_0)),!. 
+sludder   ---> [].
+
+hello ---> hei,optional(paadeg). 
+
+hello ---> [goddag]. 
+hello ---> w(adj(good)),w(noun(Day,_,_,_)), 
+    {testmember(Day,[day,morning,evening,night,afternoon])}. %% NB Norwegian conventions !
+
+paadeg   ---> prep1(on),[deg],!.
+paadeg   ---> [og],[hå],!. 
+
+forhjelpen0 ---> prep1(for), 
+     adverb(_,_,_),
+     !.
+
+forhjelpen0 ---> prep1(for), 
+     [alt],
+     !.
+
+forhjelpen0 ---> prep1(for),  
+     w(noun(_,sin,def,n)),   %% standard phrase ?  hjelpen/hjelpa/samtalen
+%     !,           %% <--
+     np1(_,_,_),             %% busstuc
+     !.
+
+forhjelpen0 ---> prep1(for), 
+     w(noun(_,sin,def,n)),   %% standard phrase ?  hjelpen/hjelpa/samtalen
+     !.
+
+forhjelpen0 ---> prep1(for), 
+     np1(_,_,_),
+     !.
+forhjelpen0 ---> [skal],[du],w(verb(have,imp,fin)). %% TA-010401 
+
+forhjelpen0 ---> [].
+
+
+hadet ---> [ha],[det],paabadet0. 
+hadet ---> [hadet],paabadet0. 
+hadet ---> [hade],paabadet0.      %% also adjø %% TA-010417
+
+paabadet0 ---> prep1(on), [badet],!. 
+paabadet0 ---> []. 
+
+quit(bye) --->  [adjø].
+quit(bye) --->  [på],[gjensyn]. 
+quit(bye) --->  [ha],[en],w(adj(good)),w(noun(day,_,_,_)). 
+quit(bye) --->  [ha],[en],w(adj(good)),w(noun(night,_,_,_)). %% TA-010227
+quit(bye) --->  hadet.  
+quit(bye) --->  hadet,w(adj(good)).
+quit(bye) --->  [godnatt]. 
+quit(bye) --->  w(adj(good)),
+       w(noun(M,_,_,_)),
+       {testmember(M,[midnight,weekend,easter])}. 
+quit(bye) ---> [takk],prep1(for),prep1(in),
+               w(noun(day,sin,u,n)). %% TA-010104
+
+quit(bye) --->  %% vennlig hilsen NN %% TA-010727 
+    good0, w(noun(greeting,_,_,_)),w(name(_,_,_)).
+
+quit(bye) ---> [far],[vel].
+
+quit(you_are_welcome) ---> thanks,alot. %% TA-010103
+quit(you_are_welcome) ---> w(adj(nice)),[å],w(verb(speak,_,_)),prep1(with),[deg].
+
+quit(merry_christmas) ---> w(adj(good)),[jul]. %% :-)
+
+quit(happy_new_year) --->  w(adj(good)),newyear.
+
+% Discourage insults and foul words by boring error mesages
+% Do not invite to smalltalk unless you can respond adequately 
+
+% quit(insult) ---> [din],[tosk]...
+
+
+alot ---> [].     %% TA-010103
+alot ---> [så],[mye].
+alot ---> [så],[meget].
+alot ---> [skal],[du],w(verb(have,inf,fin)).
+
+personal(thanks) ---> deter,very0,[bra]. %%  Covered by negans
+personal(thanks) ---> you,be,good. 
+personal(thanks) ---> so,good,you,be. 
+
+
+personal(thanks) ---> [bravo].
+personal(pong)   ---> [ping]. %% Just kidding
+
+deter ---> [det],be,!. %% det er bra
+deter ---> [dette],be,!.
+
+
+%% The answer is OK whenever adequate
+
+personal(ok) ---> [bra]. 
+
+personal(ok) ---> [sorry]. %% TA-010505
+
+personal(ok) --->
+    w(verb(be,imp,fin)),
+    [så],
+    w(adj(good)).
+
+personal(ok) ---> 
+    w(verb(forget,imp,fin)),[det].
+
+personal(ok) ---> 
+    w(verb(forget,imp,fin)), noun_phrase(_,_,_). 
+
+personal(ok) ---> 
+    w(verb(be,_,fin)),[du],good,dadanow0. %%  Er du et orakel
+
+personal(ok) ---> optional(hello),persok.
+
+
+persok ---> 
+    [hvordan],w(verb(have,_,fin)),[du],[det],dadanow0.
+persok --->
+    [hvordan],w(verb(stand,pres,fin)),[det],prep1(to),withyou0,dadanow0.
+persok --->
+    w(verb(stand,pres,fin)),[det],w(adj(good)),prep1(to),withyou0,dadanow0. 
+persok --->
+    w(verb(stand,pres,fin)),prep1(to). %% :-)
+
+persok ---> 
+    w(verb(have,_,fin)),[du],[det],good0,dadanow0.
+
+persok ---> 
+    [jeg],w(verb(have,_,fin)),[det],good0,dadanow0. 
+
+persok --->  [hvordan],w(verb(go,pres,fin)),[det],withyou0,dadanow0. 
+
+persok --->  w(verb(go,pres,fin)),[det],w(adj(good)),withyou0,dadanow0. 
+
+persok ---> [greitt]. %%   etc. etc.
+
+
+
+thanks ---> ogmen0,thousands0,[takk],forhjelpen0.
+
+ogmen0 ---> [og],!.
+ogmen0 ---> [men],!.
+ogmen0 ---> [].
+
+thousands0 ---> thousand,!,thousands0. %% TA-010417
+thousands0 --->  [].
+
+thousand0 ---> thousand,!.
+thousand0 ---> [].
+
+thousand ---> number(1000:_),!.
+thousand ---> many1.
+
+
+withyou0 ---> prep1(with),[deg],!.
+withyou0 ---> [].
+
+
+dadanow0 ---> [nå],dadanow0,!. 
+dadanow0 ---> todax,dadanow0,!. 
+dadanow0 ---> prep1(_),noun_phrase1(_,_,_),dadanow0,!.
+dadanow0 ---> dada0,!. 
+
+todax ---> today,!.
+todax ---> prep1(in),[går],!. %% :-)
+
+dada0 ---> da0. 
+
+good0 ---> good,!.
+good0 ---> [].
+
+good ---> w(adj(good)).
+good ---> w(adj(clever)).
+good ---> w(adj(fast)).
+good ---> w(adj(funny)). 
+good ---> w(adj(nice)). 
+good ---> [ok]. %% may be noise
+
+
+%% END PERSONAL SECTION
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%% END OF LEXICAL INTERFACE %%%%%%%%%%%
+
+panic(H) ---> {write(H)}.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END OF GRAMMAR %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+

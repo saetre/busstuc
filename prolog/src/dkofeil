@@ -1,0 +1,57 @@
+%% FILE feil
+%% SYSTEM BUSSTUC 
+%% CREATED TA-970101 
+%% REVISED TA-090617
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
++ ERIK HARBORG
+
+
+Sjekk buss 9
+ekstra avganger i uke 33. // regdko???
+
+Legg inn Tore Amble standard
+Remove arvid_holme
+
+Når går neste busser -> alltid flere
+
+N: neste fra nth til nardo .   Buss 52 passerer  Gløshaugen Syd kl.  1406 , kl.  1436 , kl.  1506 og  kl.  1536 
+N: fra nth til nardo . Neste buss // Siste buss , 
+
+2009-06-17 08:52:45 ttpd INFO [7d75] billing=0 WEB (127.0.0.1, WEB) FREE
+WEB FREE 
+"Når går bussen fra einar tambar skjelvesgate til sentrum."
+"- - - Uforståelige ord:  skjelvesgate"
+
+2009-06-17 08:53:10 ttpd INFO [7d7a] billing=0 WEB (127.0.0.1, WEB) FREE
+WEB FREE 
+"Når går neste buss fra einar tambar skjelve gate til sentrum."
+"- - - Uforståelige ord:  skjelve"
+
+Tue Jun 16 17:31:31 MEST 2009
+: nor
+Når går 131 fra Lysaker til eiksmarka -->
+- - - Uforståelig ved * - - - 
+når går 131 fra lysaker til * eiksmarka . 
+
+N: Når går 131 .
+[which(A):::(131 isa clock,A isa time,do/go/131/B,srel/in/time/A/B,event/real/B)]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Du må oppgi et sted i slike spørsmål .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%% 39 %%
+dkodate(090615, 1).
+
+               25       26     27      28      29      30      31       32     33
+
+dko( 1,161,1,1111100,1111100,1111100,1111100,1111100 1111100 1111100 1111100 00000000
+dko( 2,161,1,0000100,0000100,0000100,0000100,0000100 0000100 0000100 0000100 00000000
+dko( 3,161,1,0111000,0111000,0111000,0111000,0111000 0111000 0111000 0111000 00000000
+dko( 4,161,1,1000100,1000100,1000100,1000100,1000100 1000100 1000100 1000100 00000000
+dko( 5,161,1,0000010,0000010,0000010,0000010,0000010 0000010 0000010 0000010 00000010
+dko( 6,161,1,0000001,0000001,0000001,0000001,0000001 0000001 0000001 0000001 00000010
+
+dko( 7,161,1,0000000,0000000,0000000,0000000,0000000 0000000 0000000 0000000 11111000
+dko( 8,161,1,0000000,0000000,0000000,0000000,0000000 0000000 0000000 0000000 00001000
+dko( 9,161,1,0000000,0000000,0000000,0000000,0000000 0000000 0000000 0000000 01110000
+dko(10,161,1,0000000,0000000,0000000,0000000,0000000 0000000 0000000 0000000 10001000

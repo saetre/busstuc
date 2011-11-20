@@ -1,0 +1,13 @@
+\begin
+
+Hei
+
+Jeg skal sørge for at kun den ene avgangstypen ligger inne ved neste regtop-eksport.
+
+Årsaken til at det ligger i to typer i Hastus er at nattbuss i daglig
+disponering i dagplanene ligger på fredagsplanen kl 2500 for sjåførene, mens
+for billettsystemet ligger turen etter midnat og da altså kl 0100.
+
+For Bussoraklelets del er det sikkert riktig at den følger vanlig klokke og ligger 0100 på lørdag?
+
+\end

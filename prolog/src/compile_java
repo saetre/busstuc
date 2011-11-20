@@ -1,0 +1,8 @@
+javac ldapconnection/XMLTagger.java
+javac ldapconnection/Tagging.java
+javac ldapconnection/Divider.java
+javac ldapconnection/Permutater.java
+javac ldapconnection/TaggerLDAP.java
+javac ldapconnection/TaggerSQL.java
+javac ldapconnection/LDAPSearcher.java
+javac ldapconnection/Tagger.java

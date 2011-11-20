@@ -1,0 +1,81 @@
+\begin
+
+\set queryflag true
+
+
+%-------- does not work properly
+
+
+Når går neste buss unntatt nr 8 forbi nth ?
+
+Hvilken rute kjører buss 8a til Dragvoll? 
+
+når går bussen til holdeplassen som er nærmest til nth ?
+
+Når er de i midtbyen ?
+
+hvordan kommer jeg fra biltilsynet til lohove ?
+
+hvor ender buss 5 fra nth til dragvoll ?
+
+er det en buss  jeg kan ta før 1300 ?
+
+there is a bus i take  before 1300 after 900?
+
+stasjoner mellom nth og sentrum .
+
+hvilket busselskap kjører ruta mellom Heimdal og Trondhjem sentrum? 
+
+Hvilke holdeplasser stopper buss nr9 ved i Trondheim sentrum ?
+
+Når passerer siste buss Gløshaugen som er i midtbyen før 1700 ?
+
+Når går neste buss 9 eller 8 til byåsen?
+
+Hvor mye koster det for en voksen på bussen?
+
+hvor fort kan en buss kjøre?
+
+Hvilken buss er den neste til å passere Saupstadsenteret ?
+
+hvor lenge er det til neste nr 9 fra dragvoll mot rosendal går?
+
+når må jeg  dra fra nth for å være fremme kl 17 ?
+
+Når går neste nr.5 buss etter klokka 15.30? % TIME
+
+Rute tabell .
+
+tidene for nr.5 busser  som går forbi Nth?
+
+Kan du vise meg alle tidene 5a bussen går forbi NTNU? 
+
+buss kl 1700 .
+
+hva er klokka nå ?
+
+1500 klokke .
+
+does samfundet station exists ?
+
+hvilke strøk er stasjoner ?
+
+til hvilket sted kan jeg gå på buss 5 ?
+
+hvor lang tid bruker buss 8 på å kjøre fra nth til sentrum ? 
+
+hvordan komme seg fra risvollan til brøsetveien med overgang på dragvoll ?
+
+hvordan kommer jeg fra risvollan til brøsetveien med overgang på dragvoll ?
+
+Hvor mye koster det på buss nummer 36 fra brundalen til lerkendal ? 
+
+hvilke dager går det busser fra sentrum til rishaughallen ?
+
+Jeg skal reise fra Moholt til Risvollan Senter og være framme ikke senere enn kl 0915
+
+jeg skal vaere framme ved nth senere enn 1200.
+
+
+\end
+

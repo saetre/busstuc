@@ -1,0 +1,77 @@
+%% Busterfeilmeldinger
+%% SYSTEM TELEBUSTER
+%% CREATED TA-061009
+%% REVUSED TA-061009
+
+
+
+%% Errors not mended and not easily mendable or luxury problems
+
+
+¤¤¤
+
+når går bussen fra øvre kristianstens gate til nedre kristianstens gate.
+
+gir:
+Holdeplassen nærmest  Øvre Kristianstens gate,  er
+Bakke gate, .
+Holdeplassen nærmest  Nedre Kristianstens gate,  er
+Bakke gate, .
+
+Hvor vil du reise ?
+
+Jeg hadde forventet et svar at det ikke fantes en
+bussrute mellom disse.
+
+¤¤¤
+
+N: jeg skal til nth .
+
+Holdeplassen nærmest  NTH,  er  Gløshaugen Syd, .
+
+Du vil dra  til  Gløshaugen Syd, .
+
+Hvor vil du reise fra ?
+----------------------------------
+
+N: sem selands vei 7.
+
+Holdeplassen nærmest  Sem Sælands vei,  7 er  Gløshaugen Syd, .
+
+Du vil dra  fra  Gløshaugen Syd, .
+
+Hvor vil du reise til ?
+----------------------------------
+/// samme sted
+
+¤¤¤
+
+N: når går bussen fra charlottenlund   kl 0757  til berg studentby? 
+
+Hvor vil du reise ? 
+----------------------------------
+#=>
+Stedet  Charlottenlund er flertydig.
+Vennligst bruk et mer presist navn. 
+Mulige alternativer er:  Charlottenlund  krk,  Charlottenlund Nedre og  Charlottenlund skole 
+// in Dialog: accept as resolve
+
+¤¤¤
+
+N: til nardosenteret.
+
+Du vil dra  til  Nardosenteret, . Hvor vil du reise fra ? 
+----------------------------------
+N: med første buss.
+
+Hvor vil du reise fra ? 
+----------------------------------
+N: nth.
+
+Holdeplassen nærmest  NTH,  er  Gløshaugen Syd, .
+
+Du vil dra  fra  Gløshaugen Syd, . 
+
+Når vil du dra?  // Egentlig unødvendig
+----------------------------------
+

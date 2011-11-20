@@ -1,0 +1,273 @@
+<Oppdatert: 2005-11-21, EH>
+
+Utdrag av dialoger fra BUSTER.
+Basert på siste versjon av BUSTER/TELEBUSTER mottatt 2005-11-17.
+Dobbel *-rekke signaliserer at dialogen er resatt og at et nytt
+eksempel starter.
+Forøvrig benyttes "adjø." eller "\quit" for å resette dialoghistorien.
+Kommentar-linjer starter med:
+---> <EH: bla bla bla....>
+--------------------------------------------------------------------------
+
+DIALOGRELATERTE EKSEMPLER
+==============================
+==============================
+
+************************************************************************
+************************************************************************
+
+N: fra valøyveien til kattem i morgen tidlig.
+
+
+Du vil dra  til  Kattem,  fra  Valøyvegen,  med første buss  på   tirsdag.
+
+
+
+Buss 48,  passerer  Valøyvegen,  klokken 06:31, 
+ og   Kattem,  klokken 06:47, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+N: kan jeg få en senere buss.
+
+
+Du vil dra  fra  Valøyvegen, .
+
+
+
+Buss 48,  passerer  Valøyvegen,  klokken 06:31, 
+ og   Kattem,  klokken 06:47, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+---> <EH: Oppgir samme buss. Burde i verifikasjonen svare: "Du vil dra 
+          fra Valøyvegen med første buss etter 06:32 på tirsdag".>
+
+---> <EH: Nullstiller og prøver på nytt med samme dag>
+
+¤¤¤¤¤¤¤ TA: Fikset ¤¤¤¤¤¤¤¤¤¤¤¤
+...
+
+N: kan jeg få en senere buss.
+
+
+
+Du vil dra  fra  Valøyvegen,  etter klokken    06:32,  på   onsdag.
+
+
+
+Buss 48,  passerer  Valøyvegen,  klokken 07:16, 
+ og   Kattem,  klokken 07:32, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+N: \quit
+
+----------------------------------
+
+N: fra valøyveien til kattem nå.
+
+
+Du vil dra  til  Kattem,  fra  Valøyvegen,  etter klokken    14:33, .
+
+
+
+Buss 48,  passerer  Valøyvegen,  klokken 14:46, 
+ og   Kattem,  klokken 15:02, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+N: kan jeg få en senere buss.
+
+
+Du vil dra  fra  Valøyvegen,  etter klokken    06:32, .
+
+
+
+Buss 48,  passerer  Valøyvegen,  klokken 07:16, 
+ og   Kattem,  klokken 07:32, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+---> <EH: Tydeligvis noe krøll i historikken, som ikke var der i en
+          tidligere versjon.>
+
+¤¤¤¤¤¤ TA: Fikset ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+N: fra valøyveien til kattem nå.
+
+
+Du vil dra  til  Kattem,  fra  Valøyvegen,  etter klokken    21:13, .
+
+
+
+Buss 4,  passerer  Valøyvegen,  klokken 21:16, 
+ og   Kattem,  klokken 21:37, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+
+N: kan jeg få en senere buss.
+
+
+Du vil dra  fra  Valøyvegen,  etter klokken    21:17, .
+
+
+
+Buss 4,  passerer  Valøyvegen,  klokken 21:46, 
+ og   Kattem,  klokken 22:07, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+
+************************************************************************
+************************************************************************
+
+N: til lerkendal før klokka 17.
+
+
+Du vil dra  til  Lerkendal stadion,  før klokken   17:00, .
+
+
+Hvor vil du reise fra ?
+----------------------------------
+
+N: sentrum.
+
+
+Du vil dra  fra  sentrum, .
+
+
+
+Buss 36,  passerer  Dronningensgate, holdeplass D4,  klokken 06:00, 
+ og   Lerkendal stadion,  klokken 06:37, .
+...
+Buss 66,  passerer  Munkegata, holdeplass M3,  klokken 16:40, 
+ og   Lerkendal stadion,  klokken 16:46, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+---> <EH: Også en gammel feil som har kommet tilbake. Buss om morgenen
+          bør ikke oppgis her.>
+
+
+¤¤¤¤¤¤¤ TA:  Fikset ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+N: til lerkendal før klokka 17.
+
+
+Du vil dra  til  Lerkendal stadion,  før klokken   17:00, .
+
+
+Hvor vil du reise fra ?
+----------------------------------
+
+N: sentrum.
+
+
+Du vil dra  fra  sentrum, .
+
+
+
+Buss 66,  passerer  Munkegata, holdeplass M3,  klokken 16:40, 
+ og   Lerkendal stadion,  klokken 16:46, .
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+************************************************************************
+************************************************************************
+
+N: med neste buss til sentrum.
+
+
+Du vil dra  til  sentrum, .
+
+
+Hvor vil du reise fra ?
+----------------------------------
+
+N: lerkendal.
+
+
+Du vil dra  fra  Lerkendal stadion, .
+
+
+Når vil du dra?
+----------------------------------
+
+---> <EH: Har glemt tidsangivelsen i første turn. Det går bra hvis vi
+          bytter ut "med neste buss" med f.eks. "etter klokka 17">
+
+¤¤¤¤ TA: Ikke fikset (ennå) ¤¤¤¤¤¤¤¤¤¤
+
+ (men det er ikke så unaturlig å spørre om igjen i dette tilfelle)
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+************************************************************************
+************************************************************************
+
+
+
+************************************************************************
+************************************************************************
+
+
+
+
+
+IKKE DIALOG-SPESIFIKKE PROBLEMER NEDENFOR:
+===========================================
+===========================================
+
+************************************************************************
+************************************************************************
+
+N: med neste buss fra lerkendal til sentrum.
+
+
+Du vil dra  til  sentrum,  fra  Lerkendal stadion,  etter klokken    15:07, .
+
+
+
+Buss 8,  passerer  Lerkendal stadion,  klokken 15:15, 
+ og   Dronningensgate, holdeplass D1, , 9 minutter senere.
+Buss 60,  passerer  Lerkendal stadion,  klokken 15:16, 
+ og   Munkegata, holdeplass M3, , 31 minutter senere.
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+---> <EH: Hvorfor oppgis 2 ruter her? Hva er regelen for når to ruter
+          skal oppgis?>
+
+¤¤¤¤¤¤ TA:  Fikset ¤¤¤¤¤¤¤¤¤
+
+(det er stort sett samme program som for busstuc, og her glemte den seg)
+
+N: med neste buss fra lerkendal til sentrum.
+
+
+Du vil dra  til  sentrum,  fra  Lerkendal stadion,  etter klokken    21:21, .
+
+
+
+Buss 3,  passerer  Lerkendal stadion,  klokken 21:21, 
+ og   sentrum,  klokken 21:30, .
+Ønsker du....
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+************************************************************************
+************************************************************************
+

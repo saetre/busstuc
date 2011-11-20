@@ -1,0 +1,853 @@
+%% FILE makeauxtables.pl
+%% SYSTEM BUSSTUC
+%% CREATED TA-971121
+%% REVISED TA-060216
+
+
+%%%%%%%% Section to create Auxillary Bus Tables          %%%%%%%
+%   Also predicates for analysis and verification of routes   %%
+
+% Create a file of auxillary bustables (auxtables.pl)
+ 
+
+%% NB they are compiled again as a separate file
+%% The dynamic predicates (xxx0) corresponds to (some of) the filed predicates xxx
+
+:-dynamic  
+
+  toredef0/3,  
+
+  torehash0/2,  
+
+  nextstat0/2,  
+
+  interior0/1,  
+
+  transbuslist0/3, 
+
+  statbus0/2,  
+    
+  busstat0/2,    
+
+  unproperstation0/1,  
+
+  fromstationonly0/1,
+ 
+  tostationonly0/1,
+
+  cutloopextension/6,  %% TA-031123
+
+  cutloop_extend/6, %% TA-040311
+  
+  cutloop_extend8/8, %
+  
+  qz/5.               %% TA-040311
+
+
+/*
+
+Run in Main directory
+
+
+%% 0.  Take backup
+
+% cp database/auxtables.pl  database/backup.auxtables.pl
+% cp database/namehashtable.pl  database/backup.namehashtable.pl
+
+%%  1. Create Tables 
+
+% busestuc.sav
+
+?- makeauxtables.
+
+  
+%% 2. Create namehashtable
+
+?- createhash.
+
+%% 3. Finish
+
+?-halt.
+
+%%  4.  Recompile BusstUC
+
+% busbase.sav
+?-[busstuc]. %% or other
+?-save_program(busestuc).
+?-halt.
+
+*/
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+makeauxtables:-
+ 
+    reset_period,  %% get the right period 
+
+    write('%  Please wait 10 minutes ...'),nl, %%%%%% IMPROVE!!!!
+
+    tell('database/auxtables.pl'),
+
+    writeheading,
+
+
+    createcutribs,  % 2 min
+
+
+    createstatbus,  % 3 min
+
+
+    createbusstat,  % 1 min
+ 
+
+    createunproperstations, % 1 min
+
+
+    createtransbuslist, % 2 min
+
+/**** %% AD HOC  OMITTED %% TA-040620
+
+    createonlyfromstations, % 2 min
+
+
+    createonlytostations, % 2 min
+*/
+
+
+    told,
+
+    write(' Finish'),nl,nl,
+
+    crerr.  %% List  undefined station references
+
+writeheading:-
+    datetime(A,B,C,D,E,F),
+    write('% Auxillary tables created '), 
+    write(datetime(A,B,C,D,E,F)),nl,nl.
+
+
+createstatbus:-
+
+    set_of(K,station(K),SLIST),  %% NB occurs twice %% TA-050304
+
+    for(member(S,SLIST),stallbuss(S)),
+
+    createhovedt,
+
+    dumppredas(statbus0(X,Y),statbus(X,Y)).
+
+stallbuss(Station):-  %% NB use actual buses names 
+    set_of(BusName,(passeq(Rid,Station,_,_,_),
+           route(Rid,_Bus,BusName)) 
+          ,Z), 
+    \+ (Z=[]),
+   assert(statbus0(Station,Z)).
+
+
+createhovedt:-  % mainly for tabuss
+    set_of(BusName,(
+
+       statbus0(X,List),
+       corr(X,hovedterminalen),
+       member(BusName,List)),
+
+    Z),
+    assert(statbus0(hovedterminalen,Z)).
+%---
+
+createbusstat:-
+   for(bus(S),busstall(S)),
+   dumppredas(busstat0(X,Y),busstat(X,Y)).
+
+
+busstall(Bus):- 
+    set_of(Station,
+
+   (route(Rid,Bus,_),passeq(Rid,Station,_,_,_)) 
+
+          ,Z), 
+    \+ (Z=[]),
+   assert(busstat0(Bus,Z)).
+
+
+createunproperstations:-    %% TA-040622
+        
+    assert(unproperstation0(heaven)), %% dummy (needs 1)
+
+    set_of(stationD(S,D),stationD(S,D),Z), %% make it unique
+
+
+    for((member(stationD(S,D),Z),nopassanyway(D,S)),
+
+       assert(unproperstation0(S))),
+
+
+    dumppredas(unproperstation0(X),unproperstation(X)).
+
+
+%% NB  The following actually pressuposes that the old version of
+%% unproperstation/1  is loaded.
+
+%% It will always be correct after two "passes"
+
+createonlyfromstations:-   
+     for(fromstation1(A),assert(fromstationonly0(A))),
+
+     dumppredas(fromstationonly0(X),fromstationonly(X)).
+
+
+createonlytostations:- 
+      for(tostation1(A),assert(tostationonly0(A))),
+
+      dumppredas(tostationonly0(X),tostationonly(X)).
+
+createtransbuslist:-
+    
+    makenext,
+
+    makeinteriors,
+
+    for(transbuslist1(X,Y,Z),assert(transbuslist0(X,Y,Z))),
+
+    dumppredas(transbuslist0(X,Y,Z),transbuslist(X,Y,Z)).
+
+
+nopassanyway(D,S):-
+    \+ corr(S,_),
+    \+ corr(_,S),
+    \+ passanyway(D,S).
+
+
+passanyway(D,S):-
+     domain_module(D,TTP),
+     TTP \== nil, %% TA-060216
+     TTP:passes3(_Tour,S,_Seq,_DelArr,_DelDep),
+     !. 
+
+
+/*
+nopassanyway(D,S):-
+
+    domain_module(D,TTP),
+    TTP \== nil, %% TA-060216
+    \+ TTP:passes3(_Tour,S,_Seq,_DelArr,_DelDep),
+
+    \+ corr(S,_),
+    \+ corr(_,S).
+*/
+
+
+
+
+% It is impossible to go FROM  hovedterminalen to A  (in this order)
+
+fromstation1(A):-
+  
+    tafind(A,(xproperstation(A), \+ corr_ht(A)),  %% TA-040604
+
+               taforall(Rid,passeq(Rid,A,_,_,D1), 
+    
+                            taforall(D2,passes_ht(Rid,D2), 
+
+                                       D2 > D1))).
+
+
+% It is impossible to go from A to hovedterminalen (in this order)
+
+tostation1(A):-
+  
+    tafind(A,(xproperstation(A), \+ corr_ht(A)),  %% TA-040604
+
+               taforall(Rid,passeq(Rid,A,_,_,D1), 
+    
+                            taforall(D2,passes_ht(Rid,D2), 
+
+                                        D1 > D2))).
+
+
+xproperstation(A):-
+    properstation(A),
+    test(stationD(A,tt)).   %%% Vey Ad HOc, only TT   %%%% TA-040620     
+  
+
+corr_ht(A):- corr(A,hovedterminalen).  %% TA-040616
+%%              corrx(A,hovedterminalen). %% Tram
+
+passes_ht(Rid,Delay):-
+    passeq(Rid,MD,_,_,Delay), 
+    corr_ht(MD). 
+
+
+tafind(_X,Y,Z):- Y,Z.
+taexists(_X,Y,Z):-Y,Z,!.
+taforall(_X,Y,Z):- \+ (Y, \+ Z),!.
+
+
+%-------------------------------------------------------------
+
+%% FILE debugroute.pl
+
+
+debugroute:-
+
+% Example contraints
+ 
+   Station=dragvoll,
+   Delay=0,
+   Day = saturday,
+   Bus=9,
+
+passes2(Route,Station,_Seq,Delay),
+departureday(X,Route,Time,Day),
+route(X,Bus,_),
+
+write((Route,X,Station,Delay,Time,Day)),nl,
+fail.
+
+
+
+%  ----------------------------------------------
+
+
+%% FILE inconstations.pl
+
+%% Detect inconsistencies in station identifiers
+
+crerr:-
+  nl,
+  write('Undefined station identifiers '),nl,nl,
+
+  set_of(X, (reference(X), \+ hpl(_,X,_Off)),
+
+      Z),
+
+  for(member(Y,Z),(write(Y),nl)),
+
+  write('-------------'),nl.  
+
+reference(X):- 
+    placestat(_,X)
+           ;
+%    cmpl(_,_,X)  
+%      ;
+    isat(X,_).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% FILE maketransbuslist.pl
+%% CREATED TA-020403
+%% REVISED TA-020802
+
+%% Make transbuslist 
+
+
+makenext :-
+  set_of(next(X,Y),
+        (station(X),passes3(Tour,X,S1,_,_),S2 is S1+1,passes3(Tour,Y,S2,_,_)),
+         Z),
+  for(member(next(A,B),Z),assert(nextstat0(A,B))).
+
+
+makeinteriors :-
+    interiors(Z),
+    for(member(I,Z),assert(interior0(I))).
+
+
+interiors(Z):- set_of(X,interior(X),Z).
+
+
+interior(Y):-  %% all neigbours have the same buslist
+    statbus0(Y,H),
+
+    complies( 
+
+    (   nextstat0(X,Y),
+        nextstat0(Y,Z)
+    ),
+ 
+   (   statbus0(X,H),
+       statbus0(Z,H)
+   )).
+
+
+transbuslist1(B1,B2,Z):-
+    busstat0(B1,Z1),
+    
+    busstat0(B2,Z2), 
+
+    B1 @< B2,  %% term comparison
+
+    set_of(X, connive(X,Z1,Z2), Z),  
+              
+    Z \== [].
+
+connive(X,Z1,Z2):- 
+   member(X,Z1),propertransfer(X), member(X,Z2)
+; 
+   member(U,Z1),corr_ht(U),member(V,Z2),corr_ht(V), 
+   X=hovedterminalen.
+
+
+
+complies(P,Q) :- \+ (P, \+ Q).
+
+propertransfer(P):-
+    station(P), 
+    \+ interior0(P). %% Pre Stored
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+    
+%% FILE amblehash.pl
+%% SYSTEM  BUSSTUC
+%% CREATED TA-010430
+%% REVISED TA-010502
+
+
+%% Method  
+
+%% Strip off street suffix
+%% First letter must be right
+
+%% Store all versions with one letter missing
+
+%% Search with all combinations with one character missing
+
+
+/* 
+
+toredef(buenget,nil,buenget).
+
+toredef(sluppen,streetstat,sluppenvegen). %% off name
+
+toredef(yggdrasil,street,yggdrasil_street).
+
+*/
+
+
+/*
+
+
+torehash(ygdrasil,yggdrasil).
+torehash(yggrasil,yggdrasil).
+torehash(yggdasil,yggdrasil).
+torehash(yggdrsil,yggdrasil).
+torehash(yggdrail,yggdrasil).
+torehash(yggdrasl,yggdrasil).
+torehash(yggdrasi,yggdrasil).
+*/
+
+
+
+createhash :-
+    write(' Wait a minute '),nl,
+
+
+    reset_period,  %% Use the current names (just for hashing)
+                   %% TA-011205
+
+    retractall(toredef0(_,_,_)),   %% NOT abolish
+    retractall(torehash0(_,_)),  
+
+    for(toretarget(X),
+        generatehash(X)),
+   !,
+   tell('database/namehashtable.pl'), 
+
+   dumppredas(toredef0(X,Y,Z),toredef(X,Y,Z)),
+   dumppredas(torehash0(X,Y),torehash(X,Y)),
+   told,
+
+   consult('database/namehashtable.pl'), 
+
+   nl,write(' Finished '),nl.
+
+
+
+%%%%%%%%
+
+% Create file namehash.pl with hashed predicate
+
+
+toretarget(X):-
+    ambletarget(X),
+    \+ ends_with(X,_,street). %% already streeted
+
+ambletarget(X):- sameplace(X,_);
+   %%        foreign(X);     %% No spellch on foreigns (fori->Frei #)
+   %%        abroad(X);      %% No spellch on abroad names // 27777 -> ?
+                 placestat(X,_);   %%%% \+ cmpl(_,_,X) ; % avoid X_Y ## husebyhallen %% TA-040121
+
+                 cmpl(X,_,_);
+                 cmpl(_,X,_), atom(X), X \== []; 
+                 cmpl(_,Y,_),member(X,Y);
+
+                 composite_stat(X,_,_); %% includes X,[],X
+                 composite_stat(_,Y,_),member(X,Y);
+
+                 composite_road(X,_,_);
+                 composite_road(_,Y,_),member(X,Y).
+
+/*   TA-040616
+                 tram_mod(T),T:composite_stat(X,_,_);
+                 tram_mod(T),T:composite_stat(_,Y,_),member(X,Y).
+*/
+
+
+
+generatehash(X):-
+    filterhash(X),
+
+    splitgenroads(X,ZS),
+
+    for(member((Y,Tag,Off),ZS),
+
+      (remember(toredef0(Y,Tag,Off)),  
+
+       set_of(YMiss,devcand(Y,YMiss),D1), 
+  
+       for(member((U,_Miss),D1),remembertorehash(U,Y)))).
+
+
+filterhash(X):-
+    \+ number(X),
+    \+ (textlength(X,N), N=< 2).
+
+
+devcand(U,(Y,Miss)):- 
+	 name(U,[F|V]),
+    delete1(M,V,W),
+    name(Miss,[M]), %% uff
+    name(Y,[F|W]).
+
+devcand(U,(Y,nil)):- %% TA-041023
+    tucsoundex(U,Y).
+
+remembertorehash(U,_):-  
+    textlength(U,N),N =<2,!. % gl * (gol,gls,...)
+
+remembertorehash(U,Y):- 
+    remember(torehash0(U,Y)). 
+
+
+dumppred(T):-nl,listing(T),nl.
+
+
+%% splitgenroad is called by failure loop
+
+
+splitgenroads(X,Z):-
+    set_of((Y,U,Off),splitgenroad(X,Y,U,Off),Z).
+
+
+splitgenroad(Abel,Abel,street,Abel):-  % ?
+    composite_road(Abel,[street],_). 
+
+
+splitgenroad(Wisting,Wisting,street,Off):-  
+    composite_road(_Oscar,[Wisting,street],Off).
+
+
+splitgenroad(Churchills,Churchills,streetstat,Churchills_v):-  
+    composite_stat(Churchills,[V],Churchills_v),
+    streetsyn(V),
+    station(Churchills_v).
+
+
+splitgenroad(X,Y,streetstat,X):- 
+    station(X),
+    streetsyn(V),            %% lex.pl
+    ends_with(X,Y,V), 
+
+    Y \== ''.        
+
+splitgenroad(X,X,nil,X).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Create Cutloop Extended Tours
+
+
+
+
+createcutribs:-
+    create_cutloop_extend,
+    create_cutloop8,
+    create_qz.
+
+%    dumppredas(cutloopextension(TTP,Station,Tour1,Tour2,Delta,W),
+%                cutloop_extend(TTP,Station,Tour1,Tour2,Delta,W)),
+
+create_cutloop_extend:-
+
+    for( (route_period(tt,TTP,_,_), TTP \== nil),  %% <---- %% TA-060216
+(
+    for(cutloop_connected_rib(TTP,Station,_Rid1,Tour1,_Rid2,Tour2,Delta,W),
+(
+
+   ( (cutloopextension(TTP,Station,Tour1,Tour2,Delta,W1),W1 > W) -> %% keep earliest
+      (retract(cutloopextension(TTP,Station,Tour1,Tour2,Delta,W1)),
+      assert(cutloopextension(TTP,Station,Tour1,Tour2,Delta,W)))
+     ;
+
+      \+ cutloopextension(TTP,Station,Tour1,Tour2,Delta,_) -> 
+         assert(cutloopextension(TTP,Station,Tour1,Tour2,Delta,W))
+     ;
+         true)    
+
+)))),
+
+   dumppredas(cutloopextension(TTP,Station,Tour1,Tour2,Delta,W),
+                cutloop_extend(TTP,Station,Tour1,Tour2,Delta,W)).
+
+
+
+
+
+create_cutloop8:-
+    for(  (route_period(tt,TTP,_,_), TTP \== nil), %% TA-060216
+
+     ( set_of(cutloop_extend8(TTP,Station,Rid1,Tour1,Rid2,Tour2,Delta,W), 
+       cutloop_connected_rib(TTP,Station,Rid1,Tour1,Rid2,Tour2,Delta,W),
+          Z),
+    assertpredlist(Z))
+    ).
+
+create_qz:-
+    settkand(Z),
+    settcuts(Z,Z2),
+    assertpredlist(Z2), 
+    dumppredas(qz(A,B,C,D,E),
+               cutset(A,B,C,D,E)).
+
+
+settkand(Z):-
+    set_of(q(TTP,Asbjørnsensgt,Tour1,Tour2),     
+       cutloop_extend8(TTP,Asbjørnsensgt,_Rid1,Tour1,_Rid2,Tour2,_Delta,_W),Z).
+
+settcuts(Z,Z2):-
+  set_of(qz(TTP,Asbjørnsensgt,Tour1,Tour2,QQQ),
+       ( member(q(TTP,Asbjørnsensgt,Tour1,Tour2),Z),
+            set_of(toupes(Rid1,Rid2,Delta,W),
+                  cutloop_extend8(TTP,Asbjørnsensgt,Rid1,Tour1,Rid2,Tour2,Delta,W), 
+                  QQQ)),
+        Z2).
+
+
+
+assertpredlist(Z):-for(member(X,Z),assert(X)).
+
+
+
+
+
+cutloop_connected_rib(TTP,Station,Rid1,Tour1,Rid2,Tour2,Delta,W):-
+    cutloop_station(Bus,Station),  
+
+    TTP: passes3(Tour1,Station,Seq,Arr1,_Dep1),
+    Seq > 1, % at least not the first
+
+    TTP: departureday(Rid1,Tour1,Time1,Day),
+
+    TTP: route(Rid1,Bus,_),
+
+    addtotime(Time1,Arr1,TimeX), %% arr time 
+ 
+    TTP: passes3(Tour2,Station,1,_Arr2,0), %  _Dep2=0
+
+    TTP: departureday(Rid2,Tour2,Time2,Day), %% dep time 
+
+    TTP: route(Rid2,Bus,_), %% same bus
+    TimeX =< Time2,  %% maybe the same 
+    addtotime(TimeX,7,TimeY), % =< 7  minutes waiting time %% TA-031210
+                              %        // Can only have one 6709 -> 6786
+                              %        // Nova anomaly: Til nova før 21 
+
+    Time2 =< TimeY,
+
+    TTP: ntourstops(Tour1,Delta),
+
+    difftime(Time2,Time1, W).     %% add 
+
+
+purgeduplicatedisplacements(Z,Z1) :- Z1=Z.
+
+%%%%%%%%%%%%%%
+
+
+dumppredas(T0,T):-
+    nl,
+    write('%%%' ), write(dumppredas(T0,T)), write(' %%%'),nl,nl,
+    for(T0,writepred(T)),
+    nl.
+
+
+writepredicates2(P,Q):-  %% TA-011117
+    for(P, writepred(Q)).
+
+
+
+writepredicates(P):-  %% TA-011027
+    for(P, writepred(P)).
+
+
+writepred3(P,Q):-
+    set_of(P,Q,Ps),
+    writepredlist(Ps).
+
+writepredlist(Z):- for(member(X,Z),writepred(X)).
+
+%% writepred(P):- write(P),write('.'),nl. // utility
+
+
+
+%% FILE consistent_dates.pl
+%% SYSTEM BUSSTUC
+%% CREATED TA-050504
+%% REVISED TA-050504
+
+%% Verify that all movable holidays are included, and internally consistent
+
+
+verify_movedates :-
+   ver_movedate,
+   !;
+   (nl,output('***** The moving holidays are inconsistent *****'),nl).
+
+
+ 
+ver_movedate :-
+   this_year(YYYY),
+
+   easterdate(YYYY, Easterday ),
+   named_date(easterday, Easterday ),
+   date_day_map(Easterday,easterhol),
+
+
+   sub_days( Easterday,1,Eastereve),
+   named_date(eastereve,Eastereve),
+   date_day_map(Eastereve,eastereve),
+
+   sub_days( Easterday,2,Good_friday),
+   named_date(good_friday,Good_friday),
+   date_day_map(Good_friday,easterhol),
+
+   sub_days( Easterday,3,Maundy_thursday),
+   named_date(maundy_thursday,Maundy_thursday),
+   date_day_map(Maundy_thursday,easterhol),
+
+   sub_days( Easterday,7,Palm_sunday),  
+   named_date(palm_sunday,  Palm_sunday),
+%%   date_day_map( Palm_sunday,sunday), %% not nec
+
+   add_days( Easterday,1,Easterday2),  % not named_date
+   date_day_map(Easterday2,sunday),
+
+   add_days( Easterday,20,Mid20), %% add_days: < 28
+       add_days( Mid20,19,Ascension_day), %% +39
+   named_date(ascension_day,Ascension_day),
+   date_day_map(Ascension_day,sunday),
+
+   add_days(Ascension_day,9,Whitsun_eve),
+   named_date(whitsun_eve,Whitsun_eve),
+%%    date_day_map(whitsun_eve,saturday), %% not nec
+
+   add_days(Whitsun_eve,1,Whitsun_day), % Bibl. 40th
+   named_date(whitsun_day,Whitsun_day),
+   date_day_map(Whitsun_day,sunday),
+
+   add_days(Whitsun_day,1,Whitsun_day2),  % not named_date
+   date_day_map(Whitsun_day2,sunday). 
+
+
+  
+
+
+/* Sample database 2005
+
+
+%% NB Repair because of wrong data
+
+date_day_map(date(2005,03,21),  saturday).   % ma  Palme-
+date_day_map(date(2005,03,22),  saturday).   % ti
+date_day_map(date(2005,03,23),  saturday).   % on <----- %% TA-050322!!!
+
+
+
+
+named_date(palm_sunday,       date(2005,03,20)).
+named_date(maundy_thursday,   date(2005,03,24)). %% skjærT NOT monday  
+named_date(good_friday,       date(2005,03,25)).  
+named_date(eastereve,         date(2005,03,26)). 
+named_date(easterday,         date(2005,03,27)). 
+
+named_date(midsummer_eve,     date(2005,06,23)). 
+named_date(midsummer_day,     date(2005,06,24)). 
+
+named_date(may17,             date(2005,05,17)). 
+
+named_date(ascension_day,     date(2005,05,05)). %% <---- 
+
+named_date(whitsun_eve,       date(2005,05,14)).  
+named_date(whitsun_day,       date(2005,05,15)).  
+
+
+% Easter 2005
+
+%% Easter got is own module 
+%% Separate routes, holiday is proforma
+
+%% NB Repair because of wrong data
+
+date_day_map(date(2005,03,21),  saturday).   % ma  Palme-
+date_day_map(date(2005,03,22),  saturday).   % ti
+date_day_map(date(2005,03,23),  saturday).   % on <----- %% TA-050322!!!
+
+
+
+date_day_map(date(2005,03,24),  easterhol).    % Sto
+date_day_map(date(2005,03,25),  easterhol).    % Lfre
+date_day_map(date(2005,03,26),  eastereve).    % = sunday but before 1615
+date_day_map(date(2005,03,27),  easterhol).    % 1P  
+
+date_day_map(date(2005,03,28),   sunday).      % 2P = sunday
+
+% Spring 2004
+
+date_day_map(date(2005,05,01),    sunday).   % 1.mai Fix
+
+date_day_map(date(2005,05,17),   holiday).   % 17.mai Fix %% Got its own module
+
+date_day_map(date(2005,05,05),  sunday).     %  KrHf <--- %% TA-050503
+
+%%% date_day_map(date(2005,03,14),  saturday). %  Pi-aft %% Never any special
+date_day_map(date(2005,05,15),  sunday).   %  1. pinse 
+date_day_map(date(2005,05,16),  sunday).   %  2. pinse 
+
+
+% Christmas 2004
+
+date_day_map(date(2004,12,24),holiday). 
+date_day_map(date(2004,12,25),holiday).
+date_day_map(date(2004,12,26),sunday). 
+date_day_map(date(2004,12,27),saturday). 
+date_day_map(date(2004,12,28),saturday).  
+date_day_map(date(2004,12,29),saturday).  
+date_day_map(date(2004,12,30),saturday).  
+date_day_map(date(2004,12,31),holiday).   % Nyttårsaften
+
+date_day_map(date(2005,1,1),holiday).   % 1. Nyttårsdag 
+
+
+*/
+
+
+

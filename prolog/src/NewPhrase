@@ -1,0 +1,59 @@
+
+
+np1(X, VP:P) --->
+    np_kernel(X, P0,P1, VP:P), 
+    noun_mod(X,P0,P1).
+
+
+np_kernel(XT, P0,P1, VP:P) ---> 
+    determiner(XT,P1,VP, P), 
+    noun_complex(XT,P0).    
+
+
+noun_mod(X,P1,P1 and P3) ---> 
+    adjunct1(Prep,Y, P2:P3), 
+    {noun_compl(Prep,X,Y,P2)}.
+
+
+determiner(X,P1,P2, forall(X):: P1 => P2 ) --->
+    [hver]. 
+
+----
+
+np1(X, VP:P) --->
+    np_kernel(X,  P0,P0 and P3 , VP:P), 
+  
+
+    np_kernel(XT,  P0,P0 and P3  ,  VP:forall(X):: (P0 and P3) => VP   ) ---> 
+ 
+   
+
+
+determiner(X,P1,P2, forall(X):: P1 => P2 ) --->
+    [hver]. 
+
+
+
+
+
+
+
+
+Golden Formula
+----------------------------------------------
+
+np1(X, VP:P) --->
+     np_kernel(X, VP0:P0),
+     noun_mod(X, VP0:P0,VP:P).
+
+
+np_kernel(XT VPA:PA) --->
+     determiner(XT,P0 and VPA,PA)
+     noun_complex(XT,P0).
+
+
+noun_mod(X,P1:NP,(P1 and P3):NP) ---> 
+    adjunct1(Prep,Y, P2:P3), 
+    {noun_compl(Prep,X,Y,P2)}.
+
+----------------------------------------------

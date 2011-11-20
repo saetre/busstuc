@@ -1,0 +1,10 @@
+
+
+
+which(free(27)),tuc isa savant,free(27)isa thing,free(28)isa man,dob/be_named/free(28)/free(27)/free(29),event/real/free(29),dob/make/free(28)/tuc/free(29)
+
+
+replaceall 
+(which(free(27)),dob/be_named/free(28)/free(27)/free(21),free(27) isa thing,free(28) isa man)
+with
+(which(free(28)),free(28) isa man),(which(free(27)),tuc isa savant,free(27)isa thing,free(28)isa man,dob/be_named/free(28)/free(27)/free(29),event/real/free(29),dob/make/free(28)/tuc/free(29)),_17513) ?

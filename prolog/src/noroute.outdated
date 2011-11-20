@@ -1,0 +1,53 @@
+%% FILE noroute.pl 
+%% SYSTEM TUC
+%% CREATED TA-000307
+%% REVISED TA-010920
+
+% Compiles an Empty Busroute table for Text analysis
+
+%% to be used insted of busroute to have a non bus route application.
+
+
+
+:-dynamic  hpl/3,
+           regbus/1,
+           station/1,
+           composite_stat/3,
+           composite_road/3,
+           departureday/4,
+           streetstat/5,
+           cname/2,
+           unwanted_place/1,
+           synplace/2,
+           synbus/2,
+           alias_name/2,
+           vehicletype/2,
+           country/1,  %% TA-011101 needed
+           exbus/1,
+           tramstation/1,
+           isat/2,
+           nostation/1,
+           unproperstation/1,
+           placestat/2,
+	        foreign/1,
+           placestat/2,
+           underspecified_place/1,
+           tram_mod/1,
+%             cmpl/3, %% TA-010920
+           sameplace/2,
+%             composite/3,
+           toredef/2,      
+           torehash/2,
+
+           tram:regbus/1,
+           tram:route/3,         
+           tram:passes2/4,
+           tram:departureday/4,
+           tram:hpl/3,
+           tram:composite_stat/3.
+            
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

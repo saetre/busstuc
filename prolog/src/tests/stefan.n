@@ -1,0 +1,20 @@
+
+\begin
+
+\set textflag true
+
+Hej, jeg manger element=E6re oplysninger om selskabets adresse og 
+telefon på hjemmesiden. Det kunde jo tækes at jeg ønsker sende et 
+brev.
+
+Desværre indeholder hjemmesiden ikke nogen adresse og bussoraklet forstår
+ikke dansk. Der er ikke nogen webmaster på den oficielle hjemmeside, du er
+den eneste levende person med en e-mailadresse på den oficielle hjemmeside.
+Kan du sende denne besked videre til nogen som er ansvarlig?
+
+\set textflag false
+
+
+\end
+
+

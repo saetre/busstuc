@@ -1,0 +1,143 @@
+\begin
+\set queryflag true
+
+good morning.
+
+When did the last bus arrive from Lade?
+
+what is your name?
+
+what is bustuc ?
+
+what is the meaning of life?
+
+what is the meaning of life today?
+
+When does the bus from Nardo leave for the city center ?
+
+what bus do I have to take if I want to be at The Max-bygget at 1200
+am ? 
+
+I want to be at Sluppen before 1200 am.
+
+what bus should I take from hotel royal garden to NTNU 25th of june
+0700. 
+
+Show me the bus stop nearest to Kolstad.
+
+Show me the bus stop nearest Kolstad.
+
+When does the next bus leave from Vestlia Endeholdeplass 5E?
+
+What is the fastest way to Moholt Studentby from Vestlia ?
+
+When does the bus leave for Vaernes Airport? 
+
+how do I get to the airport from the city center .
+
+When is next departure from Nidarø .
+
+which buses goes from the train station to festningen?
+
+
+What is the fastest way to get from Vestlia to Moholt Studentby?
+
+from Blaklia to nardo at 1800 hours today .
+
+buses to the train station .
+
+When does the bus to Steinan appear at NTNU? 
+
+When does the bus to Steinan show up at NTNU? 
+
+why are we here?
+
+what bus is the best?
+
+Which bus runs between the station and the port? 
+
+Which bus runs between the station and the city hall?
+
+
+Which bus runs between the station and the harbour?
+
+
+rute 5.
+
+how much does a single trip cost?
+
+how expensive is a single trip ?
+
+how long does the longest trip last? 
+
+how far does the bus travel?
+
+how many buses travel per day? 
+
+How big is a bus?
+
+tell me the way to the church .
+
+when is next bus for * munkholm ?
+
+when is next bus from Mediahuset to Vestlia .
+
+where do I catch a bus to Trondheim?
+
+if I want to go to Nardo, is there a bus? 
+
+If I take the bus to Nardo, can I leave before 600?
+
+When I take the bus to Nardo, can I leave before 600? 
+
+When I take the bus to Nardo, what time should I leave?
+
+Can I get to Tors and Nardo on the same bus ? 
+
+when can I go by Vestlia riding bus 5c?
+
+when can I go by Vestlia and Nardo by bus 5c? 
+when can I go by Vestlia and Nardo by bus? 
+
+can I go by Vestlia and Nardo by bus? 
+
+how I go by Vestlia and Nardo by bus?
+
+does Bus 5e go by Nardo?
+
+Can you not lie when you say I can't get to Vestlia and Nardo?
+
+how can you * say i cant get to vestlia and nardo ? 
+
+When is the earliest bus from Nardo to Vestlia?
+
+Where can I catch a bus from Nardo to Vestlia before 1300 but after
+900?
+
+When am I able to catch a bus from Nardo to Vestlia before 1300 but
+after 900?
+
+am i able to catch a bus from nardo to vestlia before 1300 but after
+900 ? 
+
+Is there a bus I can ride from Nardo to Vestlia before 1300 but after
+900? 
+
+Is there a bus I can catch from Nardo to Vestlia before 1300 but after
+900?
+
+Is there a bus currently from Nardo to Vestlia before 1300 but after
+900?
+
+what bus am I able to take from Nardo to Vestlia before 1300 but after
+900?
+
+what bus is possible from Nardo to Vestlia before 1300 but after 900?
+
+Is there a Bus with handicap seating from Nardo to Vestlia before 1300
+but after 900?
+
+Is there a quick Bus from Nardo to Vestlia before 1300 but after 900?
+
+
+\end

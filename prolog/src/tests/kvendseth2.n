@@ -1,0 +1,35 @@
+\begin
+
+
+\startbatch
+
+
+Hei.
+
+Jeg lurer på en ting angående bussorakelet.
+
+Før var det slik at man kunne be om å få vite hvilken buss man kan ta
+for å komme f.eks. fra Buran til Samfundet innen et visst klokkeslett,
+og bussorakelet ville vise ruter som går igjennom sentrum. 
+
+Nå kan man ikke lenger gjøre det.  Hvis man prøver, får man bare oversikt
+over ringruter som går en omvei om f.eks. Jakobsli eller Valentinlyst, men ingen ruter gjennom sentrum. 
+
+Går det an å gjøre noe med dette? 
+
+Det er et problem for meg som bor på den andre siden av sentrum, hvis jeg vil ha
+ruter til Samfundet eller andre stoppesteder som (også) tilhører en
+ringrute, for i så fall får jeg bare opp ringrutene som svar, og disse
+alternativene er ofte lengre og mer tidkrevende, og de går ikke like mange ganger i timen
+som de rutene som går gjennom sentrum.
+
+For eksempel vet jeg at jeg kan ta buss nummer 7 fra min nærmeste
+holdeplass, gjennom sentrum, og til Prof. Brochs Gate, men
+bussorakelet foreslår bare buss 20 eller buss 36, som går en voldsom omvei.
+
+Hvis det hadde vært mulig å løse dette, hadde det sikkert vært til stor glede for mange!
+
+\takebatch
+
+
+\end
