@@ -12,21 +12,21 @@
 %% The dynamic predicates (xxx0) corresponds to (some of) the filed predicates xxx
 
 :-dynamic  
-  toredef0/3,  
-  torehash0/2,  
-
-  nextstat0/2,  
-
-  interior0/1,  
-  transbuslist0/3, 
-
-  statbus0/2,
-  busstat0/2,    
-
-  unproperstation0/1,  
-  fromstationonly0/1,
-  tostationonly0/1.
-
+%  toredef0/3,  
+%  torehash0/2,  
+%
+%  nextstat0/2,  
+%
+%  interior0/1,  
+%  transbuslist0/3, 
+%
+%  statbus0/2,
+%  busstat0/2,    
+%
+  unproperstation0/1.
+%  fromstationonly0/1,
+%  tostationonly0/1.
+%
 
 /*
 Run in Main directory

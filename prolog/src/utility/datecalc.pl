@@ -6,7 +6,12 @@
 % Contains the utility predicates that has to do with dates
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%:- use_module(library(system), [environ/2, datime/1]).
+:- use_module(library(system), [datime/1]).
 
+:- module(user, [
+    datetime/6
+   ]).
 %% Rule:  A week must have at least has  4 days to count as a week
  
 %% Special rule (e.g. 2010), january  1,2,3 = Week 53 (SIC)
@@ -284,12 +289,12 @@ dayno(sunday,7).
 
 
 getdaynew(DayOfWeek):- %%   // Get rid of exec call
-     datime(datime(Year,Month,Day,_,_,_)), %% SICSTUS VERSION, NOT REDEFINABLE
+     datime( (Year,Month,Day,_,_,_) ), %% SICSTUS VERSION, NOT REDEFINABLE
      weekday(date(Year,Month,Day), DayOfWeek). %% weekday.pl
 
 
 datetime(YYYY,MM,DD,HH,MIN,SEC):- 
-    datime(datime(YYY,M,D,H,Min,Sec)), %% built_in %% Min Sec  stay the same
+    datime( (YYY,M,D,H,Min,Sec) ), %% built_in %% Min Sec  stay the same
 
     convert_zone(YYY, M, D, H, Min,Sec, %% TA-080407
                  YYYY,MM,DD,HH, MIN,SEC).
@@ -435,18 +440,18 @@ findfirstcomingdate(Day,Date):-
     finddate(N,Date).
 
 
-finddate(Displacement,Date):- 
+finddate(Displacement,Date) :- 
     Displacement >= 0,
     !,
     datetime(Y,M,D,_,_,_),
     add_days(date(Y,M,D),Displacement,Date).
 
-finddate(Displacement,Date):- 
+finddate(Displacement,Date) :- 
     Displacement < 0, 
     !,
     NegDisp is  - Displacement,
-    user:datetime(Y,M,D,_,_,_),
-    user:sub_days(date(Y,M,D),NegDisp,Date). 
+    datetime(Y,M,D,_,_,_),
+    sub_days(date(Y,M,D),NegDisp,Date). 
 
 
 

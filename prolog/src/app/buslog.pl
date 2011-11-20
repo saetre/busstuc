@@ -5,7 +5,7 @@
 %% REVISED TA-110824
 %% REVISED RS-111120
 
-%%% USE %%% %% RS-111118
+%% USE %% RS-111118
 :- ['../declare'].
 :- ['../interfaceroute'].
 :- ['../db/topreg'].
@@ -253,14 +253,10 @@ modstat(TTP,X):-  %% 2  X var
     TTP: hpl(_,_,X,_). %% X appears 2 // what is nadsosenteret
 
 
-
-
 cname(X,Y):-
     veh_mod(TTP),
    (TTP:hpl(_,X,_,Y);
     TTP:hpl(_,_,X,Y)).
-
-
 
 
 %% Needed for makeauxtables , inconsistent
@@ -278,7 +274,6 @@ passes44(A,STATNO,B,C,D,E):-   bus_mod(TTP),TTP:ex_passes4(A,STATNO,B,C,D,E).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 
 

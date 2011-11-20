@@ -7,6 +7,9 @@
 
 :- use_module('../utility/utility.pl').
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %% RULE  FORMAT
 %   RuleID rule %% <evoking question>
 %   is IS
@@ -2465,7 +2468,8 @@ ip  named_date(dooms_day,Date),xweekday(Date,Day). %% TA-110609
 
 goffwithpension  rule 
 is  replaceall
-         (doit/go/Tagore/C,srel/off/_veh_sic_/nil/C,srel/pwith/pension/B/C,B isa pension) 
+%         (doit/go/Tagore/C,srel/off/_veh_sic_/nil/C,srel/pwith/pension/B/C,B isa pension) 
+         (doit/go/Tagore/C,srel/off/ _ /nil/C,srel/pwith/pension/B/C,B isa pension) 
     with (doit/retire/Tagore/C)
 id  []
 ip  [].
@@ -2485,7 +2489,7 @@ ip  has_att_val(person,retirement,Tagore,DATE),
 daysuntilretireah rule 
 is  %%%% howmany(A), | which(A)
     doit/Retire/Arvid_holme/C, {dmeq([retire,end],Retire)},
-    Arvid_holme isa _man,A isa day,B isa coevent,event/B/C,doit/exist/A/D,srel/Until/coevent/B/D,event/real/D,
+    Arvid_holme isa _ ,A isa day,B isa coevent,event/B/C,doit/exist/A/D,srel/Until/coevent/B/D,event/real/D,
     {dmeq([until,to,before],Until)} 
 id  add message(numberof(N,day)) 
 ip  has_att_val(person,retirement,Arvid_holme,DATE),
@@ -2494,7 +2498,7 @@ ip  has_att_val(person,retirement,Arvid_holme,DATE),
 
 dayssinceretireah rule %% TA-110215
 is  doit/Retire/Arvid_holme/C, {dmeq([retire,end],Retire)},
-    Arvid_holme isa _man,A isa day,B isa coevent,event/B/C,doit/exist/A/D,srel/Since/__coevent/B/D,event/real/D,
+    Arvid_holme isa _ ,A isa day,B isa coevent,event/B/C,doit/exist/A/D,srel/Since/__coevent/B/D,event/real/D,
     {dmeq([since],Since)} 
 id  add message(numberof(N,day)) 
 ip  has_att_val(person,retirement,Arvid_holme,DATE),
@@ -2621,9 +2625,11 @@ is  update/_B/X/_,
     clear
 id  atdate2(DaySeqNo,Date),
     clear,
-    add  message(route_period( tt, RP,Date1,_Date2))
+%    add  message(route_period( tt, RP,Date1, _Date2))
+    add  message(route_period( tt, RP,Date1, _ ))
 ip  decide_period(Date,RP),
-    route_period( tt, RP,Date1,_Date2),
+%    route_period( tt, RP,Date1,_Date2),
+    route_period( tt, RP,Date1, _ ),
     dayModSeqNo(Date,DaySeqNo).
 
 tucisupdated1 rule  %% when were you updated
@@ -2726,8 +2732,10 @@ ip [].
 comefromhell rule %% er på holdeplassen på gløs -> fra gløs
 is   free(X20) isa station,
      replaceall (doit/be1/free(X20)/free(X21),
-                 srel/on/_neighbourhood/Gløs/free(X21),
-                 doit/_bego/'I'/free(X22),
+%                srel/on/_neighbourhood/Gløs/free(X21),
+                 srel/on/ _ /Gløs/free(X21),
+%                doit/_bego/'I'/free(X22),
+                 doit/ _ /'I'/free(X22),
                  srel/on/place/free(X20)/free(X22))
      with      
                 (doit/go/'I'/free(X22),srel/from/place/Gløs/free(X22))
@@ -2812,7 +2820,8 @@ ip  [].
 %%  Sentrum  til Coop mega . // Mega comes first
 
 nilnilsequence  rule % go A B
-is  not srel/to/place/_dalen/_, %% bakkegata til Dalen hagene  %% TA-110322
+%is  not srel/to/place/_dalen/_, %% bakkegata til Dalen hagene  %% TA-110322
+is  not srel/to/place/ _ / _ , %% bakkegata til Dalen hagene  %% TA-110322
     replaceall (srel/nil/PlaceT1/Place1/E,  srel/nil/PlaceT2/Place2/E)
     with       (srel/from/place/Place1/E, srel/to/place/Place2/E),
     {bound(Place1),bound(Place2), Place1 \== Place2} 
@@ -2962,7 +2971,8 @@ is ispresent K isa clock,
 %     not ispresent adj/nil/present/_/_, %% fremme kl %% TA-110531
      not ispresent srel/so_that/_/_/_, 
      not ispresent doit/arrive/_/E, %% <---  
-     not ispresent srel/before/_activity/_/_, %%  before meeting
+%     not ispresent srel/before/_activity/_/_, %%  before meeting
+     not ispresent srel/before/ _ / _ / _ , %%  before meeting
      not ispresent dob/reach/_/_/_, 
      not srel/in_order_to/thing/_/_, 
      not srel/because_of/thing/_/_,   %% error in gramn

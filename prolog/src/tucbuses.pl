@@ -10,6 +10,7 @@
 
 ?- use_module('ptbwrite.pl').%% TA-061030
 ?- use_module('utility/utility.pl').
+?- use_module('utility/library').
 
 :-prolog_flag(discontiguous_warnings,_,off). 
 
@@ -17,26 +18,24 @@ backslash('\\').
 style_check(_).
 
 ?- compile('declare.pl').
-?- compile('utility/library.pl').
 %?-compile('utility/drucke_baum.pl'). %% TA-061030
-?- compile('utility/datecalc.pl').  
+%?- compile('utility/datecalc.pl').  Kalles fra utility.pl
 ?- compile('utility/makeauxtables.pl'). 
-%?-compile('utility/extractreg.pl'). %% SUSPENDED
 ?- compile('utility/extracut.pl').  %% TA-080201
 
 :- (airbusflag := false). %% NEW FLAG %% TA-090331
-%:-(tramflag := true).   %% Trams are included ( Route 1 )
 
 :- (busflag := true).     %% Full Bus Application 
 :- (queryflag := true).   %% Statements are implicit queries 
 :- (semantest := false).  %% No distinction between syntactic/semantic error
 :- (spellcheck := 1).
 
+  %?-compile('utility/extractreg.pl'). %% SUSPENDED
+  %:-(tramflag := true).   %% Trams are included ( Route 1 )
+
   %%  :- (single_sentence := true). 
   %% DIS-Allow several sentences on a line
 
-
-%%%  ?-compile('sicstuc.pl'). 
 legal_language(english).
 legal_language(norsk). %% NB not 'norwegian'
 
