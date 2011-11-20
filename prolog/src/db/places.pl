@@ -239,6 +239,21 @@ isat(østre_berg,berg_østre). %% AtB  tricky
 isat(østre_rosten,city_syd).    %% Ø R must be station
 isat(øvre_flatåsveg,flatåsen). % 9,17 
 
+isat(moholt,lingit). %% Ad HOC, best conn from NTH
+isat(moholt_storsenter,lingit).
+%%¤¤¤ %% ulykke AtB %% TA-100715
+isat(lade_alle_80,lade).
+%%%%%%placestat(lade,lade_alle_80).  %% ( lade-alle_80 more passages)
+%%¤¤¤
+
+isat(fagerliveien,fagerliv). %% Panic %% AtB
+
+
+isat(trondheim_s_10,ts). %% SUMMER %% TA-110627
+isat(trondheim_s_11,ts). %%
+isat(trondheim_s_13,ts). %%
+
+
 
 %%% PLACESTAT  neighbourhood station
 
@@ -289,8 +304,6 @@ placestat(multiconsult,postterminalen). %% sluppenvegen 23 %% TA-110415
 %% placestat(lingit,moholt_storsenter). %% //confuse Lingit company
 
 placestat(lingit,moholt). %% TA-110401
-isat(moholt,lingit). %% Ad HOC, best conn from NTH
-isat(moholt_storsenter,lingit).
 
 placestat(idi,gløshaugen_syd). %% TA-110401
 
@@ -532,11 +545,6 @@ placestat(kyvatnet,skavlans_veg).
 %% placestat(køff,leangenveien). %% TA-110822
 
 placestat(lade_alle,lade_alle_80).  %%
-
-%%¤¤¤ %% ulykke AtB %% TA-100715
-isat(lade_alle_80,lade).
-%%%%%%placestat(lade,lade_alle_80).  %% ( lade-alle_80 more passages)
-%%¤¤¤
 
 placestat(ladehammerveien,ladehammeren).  %%(manystations,
 placestat(lademoen,rønningsbakken). 
@@ -855,13 +863,6 @@ placestat(wollumsgarden,byåsen_butikksenter).  %% TA-110114 wollumsgarden
 placestat(østmarka,østmarkveien). %% TA-110623
 
 
-isat(fagerliveien,fagerliv). %% Panic %% AtB
-
-
-isat(trondheim_s_10,ts). %% SUMMER %% TA-110627
-isat(trondheim_s_11,ts). %%
-isat(trondheim_s_13,ts). %%
-
 
 %%% END REFERENCE TO STATION SECTION
 
@@ -1147,6 +1148,10 @@ sameplace(høgseth,høiset).
 %% sameplace(høgskoleringen,høgskoleringen). 
 sameplace(høiseth,høiset). %% < høisteh 
 sameplace(høyset,høiset). 
+
+sameplace(høyskole,høgskole).   %% TA-110221
+sameplace(høyskolen,høgskolen). %%
+
 sameplace(idrettshuset,idrettsbygget). 
 sameplace(ilakrysset,ila).  
 sameplace(inheradsveien,innherredsveien). 
@@ -1341,9 +1346,9 @@ sameplace(pirtersenteret,pirbadet).   %%
 %% sameplace(politi,ts).      %% AtB. 
 %% sameplace(politihuset,ts). %% AtB.                 %% 
 
-
-
 sameplace(postsentralen,postterminalen). 
+sameplace(postterminal,postterminalen). %% posttermunal %% TA-110221
+
 sameplace(presteaunet,persaunet). 
 sameplace(prestegayrdjordet,prestegårdsjordet).   %% TA-101123
 sameplace(prestgayrdsjordet,prestegårdsjordet).   %% 
@@ -1376,6 +1381,7 @@ sameplace(ragnhildsgt,ragnhlds_gate).
 sameplace(rambech,f_rambech).  %% F Rambech 
 sameplace(regionsykehus,regionsykehuset). 
 
+sameplace(ringvemuseum,ringve_museum).  
 sameplace(risvollansenter,risvollan_senter). 
 sameplace(risvollansenteret,risvollan_senter). 
 
@@ -1839,8 +1845,8 @@ specname(d2,'Dronningens gate D2').  %%
 specname(d3,'Dronningens gate D3').  %%
 specname(d4,'Dronningens gate D4').  %%
 
+specname(den,'den'). %% M .. den godes gate ... 
 
-specmame(den,'den'). %% M .. den godes gate ... 
 specname(devle_gård,'Devlegård'). 
 specname(dist_lege_øvrelids_v,'Distriktslege Øvrelid svei').    %% EH-030616
 specname(distriktslege_øverlidsv,'Distriktlege Øvrelids vei').  %% EH-030616
@@ -2947,9 +2953,6 @@ synplace(hølock,hørløcks).
 synplace(hørlocs,hørløcks). 
 synplace(hørløc,hørløcks). 
 
-sameplace(høyskole,høgskole).   %% TA-110221
-sameplace(høyskolen,høgskolen). %%
-
 synplace(høyskolring,høyskoleringen). 
 synplace(høysteh,høiset). 
 synplace(ia,ila). 
@@ -3083,7 +3086,7 @@ synplace(jonsvansveikrysset,jonsvannsveikrysset).   %% unnec
 synplace(jonsvatnveien,jonsvannsveien).  %% (etc)
 
 synplace(jskobli,jakobsli). 
-synplace(k,johnssonsveg,karl_jonssons_veg). 
+synplace(k_johnssonsveg,karl_jonssons_veg). 
 synplace(kade,lade). 
 synplace(kadehammeren,ladehammeren).  %%?
 synplace(kaien,pirbadet).
@@ -3603,8 +3606,6 @@ synplace(postenterminalen,postterminalen).
 synplace(postterimalen,postterminalen). 
 synplace(postterm,postterminalen). 
 
-sameplace(postterminal,postterminalen). %% posttermunal %% TA-110221
-
 synplace(prbade,pirbadet). 
 synplace(prbadet,pirbadet). 
 synplace(prestegårdsbakken,prestegårdsjordet).  %%  ?
@@ -3664,8 +3665,6 @@ synplace(ringv,ringve).  %%?
 synplace(ringvaal,ringvål). 
 synplace(ringvedskole,ringved_skole). 
 synplace(ringvemuseet,ringve_museum). 
-
-sameplace(ringvemuseum,ringve_museum).  
 
 synplace(ringveskole,ringve_skole). 
 synplace(ringveskolen,ringve_skole). 
@@ -4475,7 +4474,10 @@ synplace(åsveiskolen,åsveien_skole).
 synplace(åveienskole,åsveien_skole). 
 synplace(åøstmarka,østmarka). 
 
-
+%%% synplace(atb,kongens_street-34). %%  %% <----- AtB Funk // hva er atb
+synplace(ts,ts).   %% <----- AtB
+synplace(ts10,ts). %% 
+synplace(ts11,ts). %%
 
 underspecified_place(adolf_øien).  %%
 underspecified_place(alpinanlegget). 
@@ -7636,14 +7638,6 @@ cmpl(saøndregt,[],søndregate).  %% nec?? sÃ¸ndregt %% TA-110419
 cmpl(sør,trøndelag,sørtrøndelag). 
 cmpl(t,bane,tbanen). 
 cmpl(t,banen,tbanen).  %%tbanenname,tbanenoun
-
-
-%%% synplace(atb,kongens_street-34). %%  %% <----- AtB Funk // hva er atb
-
-synplace(ts,ts).   %% <----- AtB
-synplace(ts10,ts). %% 
-synplace(ts11,ts). %%
-
 
 cmpl(ts,10,trondheim_s_10). %% AtB
 cmpl(ts,11,trondheim_s_11). %% TA-110627

@@ -16,23 +16,14 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- module(user,[ %    :=/2,  %    =:/2,
+:- module(utility, [
     for/2,
-    myflags/2,
-    test/1
-]).
-
-:- volatile myflags/2.
-:- dynamic myflags/2.
+    sequence_member/2,
+    test/1,
+    testmember/2
+  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-X := Y :- 
-    set(X,Y).
-
-X =: Y :-  
-    myflags(X,Y).
-
 
 %% panic(_H). %% just for comment-predication
 
@@ -833,15 +824,8 @@ psl(S,L):-
 
 remember(F):-F,!;assert(F).
 
-%% remove_duplicates  Standard  -> library
-
-
-set(Key,Value):- 
-    retractall( myflags(Key,_) ),
-    assert( myflags(Key, Value) ).
 
 % Prologs setof is baroque %% 
-
 set_of(X,Y,Z):-           %% 
     setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
     Z=[].                 %% What is wrong with empty sets ?

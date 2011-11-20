@@ -234,6 +234,40 @@ compname(trøndelag,[kollektivtrafikk],tkt).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+%% SAMENAME  %% (partname) with spell
+
+
+samename(barfaøtts,berrføtts). %% TA-110317 
+samename(gledish,gleditsch). 
+%    synname(gledish,gleditsch). 
+%    synname(gletish,gleditsch).
+
+samename(halfred,hallfred). %% TA-101018
+
+samename(sandfundet,samfundet). %% TA-110314
+
+samename(svinestien,vollabakken). %% Experiment 
+
+samename(tambardkjelvsgate,tambarskjelvesgate). %% NEC %% TA-101004
+
+samename(tambaskjelvs,tambarskjelves). 
+
+samename(tambarselve,tambarskjelves).   
+
+%    synname(tambarselve,tambarskjelves).  
+%    synname(tambasjelvs,tambarskjelves). 
+%    synname(tamberbergsjelves,tambarskjelves).
+%    synname(tamberbergskjelves,tambarskjelves).
+
+samename(tambarskjelve,tambarskjelves).  
+%    synname(tambarkjeves,tambarskjelves).  
+
+samename(tiedemanns,tiedemands). 
+
+samename(øftis,øfstis). %%  Ã¸ftis = aøftis  %% TA-110324
+
+%%%%%%%%%%%%%%%%%%%%
+
 %%%%¤¤  SYNNAME 
 
 synname(regtopp,regtop). 
@@ -330,26 +364,18 @@ synname(g,gate).  %% Experiment g streetsyn, but vollg hazard
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+%% synname   synomym names without spellcheck
+%% samename  like sameplace, with spelling
 
 % Section klæburuten
-
 synname(kleburuten,klaburuten). 
 synname(klaeburuten,klaburuten). 
-
-
 synname(klaburuten,klæburuten).  
 synname(klæburata,klæburuten). 
    synname(vassfjellbussen,klæburuten).
                                              %% klæbu_sentrum in DB
-
 %% Section Th
-
-
 synname(kjaøpesenter,kjøpesenter). %% TA-110325 %% kjÃ¸pesenter 
-
-%% synname   synomym names without spellcheck
-%% samename  like sameplace, with spelling
 
 synname(tambskjelve,tambarskjelves).     %% TA-101018
 synname(tambskjelves,tambarskjelves).    %% 
@@ -358,46 +384,12 @@ synname(tamberskjels,tambarskjelves).
 synname(tamberskjelves,tambarskjelves). 
 
 
-%% SAMENAME  %% (partname) with spell
-
-
-samename(barfaøtts,berrføtts). %% TA-110317 
-samename(gledish,gleditsch). 
-%    synname(gledish,gleditsch). 
-%    synname(gletish,gleditsch).
-
-samename(halfred,hallfred). %% TA-101018
-
-samename(sandfundet,samfundet). %% TA-110314
-
-samename(svinestien,vollabakken). %% Experiment 
-
-samename(tambardkjelvsgate,tambarskjelvesgate). %% NEC %% TA-101004
-
-samename(tambaskjelvs,tambarskjelves). 
-
-samename(tambarselve,tambarskjelves).   
-
-%    synname(tambarselve,tambarskjelves).  
-%    synname(tambasjelvs,tambarskjelves). 
-%    synname(tamberbergsjelves,tambarskjelves).
-%    synname(tamberbergskjelves,tambarskjelves).
-
-samename(tambarskjelve,tambarskjelves).  
-%    synname(tambarkjeves,tambarskjelves).  
+%%%%¤¤  SYNNAME
 
     synname(tambarkjelves,tambarskjelves).
     synname(tambarsjelvas,tambarskjelves). 
 %    synname(tambarskjelve,tambarskjelves).  
 %    synname(tambarsjkelvs,tambarskjelves).
-
-samename(tiedemanns,tiedemands). 
-
-samename(øftis,øfstis). %%  Ã¸ftis = aøftis  %% TA-110324
-
-%%%%%%%%%%%%%%%%%%%%
-
-%%%%¤¤  SYNNAME
 
 synname(gode,godes). %% Magnus d g
 

@@ -935,20 +935,6 @@ parse_sentence(P,N,Success):-  %% Parse With TimeLimit
 
     print_parse_tree(Parse1). %% TA-110207
 
-print_parse_tree(Parse1):- %% TA-110207
-   myflags(norsource,true),
-   !,
-   ptbwrite:shrink_tree(Parse1,Pa1),
-
-   output('<tree> '),   prettyprint(Pa1),  output('</tree>'),nl.
-
-   
-print_parse_tree(Parse1):- %% TA-110207
-   track(3,printparse(Parse1)), %%  print proper parsetree
-   track(2, output('*** Simplified parse tree ***')),
-   track(1, ptbwrite(Parse1)), %% -> ptbwrite.pl
-   track(2, (output('*****************************'),nl)).
-
 no_verb(_L) :-!, no_unprotected_verb. %% TA-090529
 
 
@@ -995,13 +981,6 @@ traceprog(N,P):-
 ;
     true.
 
-
-track(N,P):- 
-    myflags(trace,M),  number(M), M >= N, 
-    !,
-    call(P)   %% TA-110130
-;
-    true.
 
 trackprog(N,P):- 
     myflags(traceprog,M), number(M), M >= N, 

@@ -6,14 +6,14 @@
 
 % Make a slender syntax tree comparable to Penn Tree Bank tagging
 
-:-module(ptbwrite,[
+:- module(ptbwrite,[
+    print_parse_tree/1,
     ptbwrite/1,
-    drucke_baum_list/1]). %% 
-
+    drucke_baum_list/1
+  ]). %% 
 
 /*
 En tom produksjon er rekursivt
-
    []
    {}
    !
@@ -22,19 +22,16 @@ En tom produksjon er rekursivt
 
    [<token>,  <empty production>]
 
-
 En videreføring er å eliminere topp-noden i alle
 subtrær som bare har en produksjon (unnatt POS).
-
 */
-
-
-ptbwrite(time_out):- 
-   !.
 
 shrink_tree(K,M):- %% TA-110207
     rewfat(K,L),
     rewprune(L,M).  
+
+ptbwrite(time_out):- 
+   !.
 
 ptbwrite(K):- %% TA-110207
   shrink_tree(K,M),
@@ -42,12 +39,10 @@ ptbwrite(K):- %% TA-110207
 %%  rewfat(K,L),
 %%  rewprune(L,M),
 
-  user:track(2,( nl,write(M),nl,nl)),     %% TA-061027
+  track(2,( nl,write(M),nl,nl)),     %% TA-061027
 
-  user:track(1,( nl,nl,drucke_baum_list(M), output('    '),nl)). %% TA-061027 
- 
+  track(1,( nl,nl,drucke_baum_list(M), output('    '),nl)). %% TA-061027 
   
-
 rewfat([Token|Rest],L):-
     rewrats(Rest,K),
     rewfat0([Token|K],L),
@@ -115,19 +110,17 @@ rewprunerest([X|Y],[XX|YY]):-
     rewprune(X,XX),   
     rewprunerest(Y,YY).
 
+
 %%%%%%%%%%%%%%%%
 %% FILE drucke_baum_list
 %% SYSTEM TUC
 %% CREATED Christoph Lehner 1992
 %% REVISED TA-100922
 
-
 tabx(X) :- %% Sictus Doesn take tab(-1) 
-    ( X <0 -> true;user:tab(X)). %% Sicstus 4
-
+    ( X < 0   ->   true ; tab(X) ). %% Sicstus 4
 
 %% Convert lists to terms 
-
 
 drucke_baum_list(F):-
    F=G, %%%%   atomize(F,G), %% TA
@@ -494,10 +487,30 @@ alle_args([K|R],N):-
               alle_args(R,Y),
               N is X + Y.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% From main... %% RS-111120
+
+print_parse_tree(Parse1) :- %% TA-110207
+   myflags(norsource,true),
+   !,
+   ptbwrite:shrink_tree(Parse1,Pa1),
+
+   output('<tree> '),   prettyprint(Pa1),  output('</tree>'),nl.
+
+print_parse_tree(Parse1):- %% TA-110207
+   track(3,printparse(Parse1)), %%  print proper parsetree
+   track(2, output('*** Simplified parse tree ***')),
+   track(1, ptbwrite(Parse1)), %% -> ptbwrite.pl
+   track(2, (output('*****************************'),nl)).
+
+
+track(N,P):- 
+    myflags(trace,M),  number(M), M >= N, 
+    !,
+    call(P)   %% TA-110130
+;
+    true.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-
 
