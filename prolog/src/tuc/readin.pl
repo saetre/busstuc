@@ -53,14 +53,14 @@ write_prompt(E):-
 
 %%% Miscellaneous for File Reading
 
-write_from_user(P):-
-    myflags(talk,1), 
-    !,
-    opentalk(question),
-        doing(P,0), %% out to \nat\scratch
-    closetalk(question).
-
-write_from_user(_):-!.
+%write_from_user(P):-
+%    myflags(talk,1), 
+%    !,
+%    opentalk(question),
+%        doing(P,0), %% out to \nat\scratch
+%    closetalk(question).
+%
+%write_from_user(_):-!.
 
 
 write_from_file(P):- %% TA-110207
@@ -198,7 +198,7 @@ readrest(K,[K|U]):- % A Proper Character
 
 skipuntil(CH):- 
     repeat,
-    get0(C),
+    get_code(C),
     (C=CH;C=10), %% stop at CR %% TA-101115
     !.
 
@@ -307,7 +307,7 @@ getnext_bl(X):-  % _bl
 
 % get0   Built-in
 
-get0129(C):-get0(K),       %% Avoid a  \201 ahead of every norwegian character
+get0129(C):-get_code(K),       %% Avoid a  \201 ahead of every norwegian character
     (K=129 -> get0129(C);  %% Problem in emacs on linux for european display
     K=C).                  %% when running through shell
                            %% Probably remedied by (standard-display-european 1)
@@ -525,6 +525,40 @@ blank(95):-
 %                          in addition, some ad hoc normalisations
 
 
+lc1(194,226).  % ÂÄÀÁ -> âäàá
+lc1(196,230).  % Ä -> æ
+lc1(192,224).
+lc1(193,225). 
+
+lc1(202,234).  % ÊËÈÉ -> êëèé
+lc1(203,235).
+lc1(200,232).
+lc1(201,233). 
+
+lc1(206,238). % ÎÏÌÍ -> îïìí
+lc1(207,239).
+lc1(204,236).
+lc1(205,237).
+
+lc1(212,244). % ÔÖÒÓ -> ôöòóÔ
+lc1(214,246).
+lc1(210,242).
+lc1(211,243).
+
+lc1(219,251). % ÛÜÙÚ -> ûüùú
+lc1(220,252).
+lc1(217,249).
+lc1(218,250).
+
+lc1(241,209). % Ñ -> ñ
+
+/*
+
+          'æ   ø   å   Æ   Ø   Å   [  \  ]   {   |   ¦   }
+          [230,248,229,198,216,197,91,92 93, 123,124,166,125]
+ 
+*/
+
 
 lc(X,Y):-  
    lc1(X,Y),
@@ -559,40 +593,6 @@ lc(X,Y):-
 lc(152,248). %% ø Ã˜stre %% TA-101124 ???
 
 lc(133,121). %% Ã…sheim  %% TA-101129 ???
-
-lc1(194,226).  % ÂÄÀÁ -> âäàá
-lc1(196,230).  % Ä -> æ
-lc1(192,224).
-lc1(193,225). 
-
-lc1(202,234).  % ÊËÈÉ -> êëèé
-lc1(203,235).
-lc1(200,232).
-lc1(201,233). 
-
-lc1(206,238). % ÎÏÌÍ -> îïìí
-lc1(207,239).
-lc1(204,236).
-lc1(205,237).
-
-lc1(212,244). % ÔÖÒÓ -> ôöòóÔ
-lc1(214,246).
-lc1(210,242).
-lc1(211,243).
-
-lc1(219,251). % ÛÜÙÚ -> ûüùú
-lc1(220,252).
-lc1(217,249).
-lc1(218,250).
-
-lc1(241,209). % Ñ -> ñ
-
-/*
-
-          'æ   ø   å   Æ   Ø   Å   [  \  ]   {   |   ¦   }
-          [230,248,229,198,216,197,91,92 93, 123,124,166,125]
- 
-*/
 
 %% The use of [ | ] for ÆØÅ is now outdated
 

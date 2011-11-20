@@ -20,44 +20,19 @@ doshell :- write('$SHELL'),
 %    process_create(Shell, ['-c', [ ls, ' ', file(Dir) ]]).
 
 
-
 %% Operators used by TUC
 % :- ['declare.pl']. %% Import several common operators
 :-op( 727,xfy, => ).
 
 :-volatile
-%    clausifyq/2,
-%    clausifystm/1,
-%    decide_domain/0,
-%    dialogrun0/0,
     difact/2,   %% Dynamic,  context dependent  %% TA-980301
-%    dynoatt/2,  dynotype/2,
-%    evaluateq/1, evaluateq2/1,
     fact0/1,
-%    gps_origin/2,
-%    nofileerrors/0,
-    reset_period/0.
-%    spread/1,
-%    tab/1,
-%    value/2.
-%    words/3.
-%
+    gps_origin/2. %% TA-110127
 :-dynamic %=>/2,
-%    clausifyq/2,
-%    clausifystm/1,
-%    decide_domain/0,
-%    dialogrun0/0,
     difact/2,     %% Dynamic,  context dependent  %% TA-980301
-%    dynoatt/2,  dynotype/2,
-%    evaluateq/1, evaluateq2/1,
     fact0/1,     %% Semi permanent 
-%    gps_origin/2,
-%    nofileerrors/0,
-    reset_period/0.
-%    spread/1,
-%    tab/1,
-%    value/2,
-%    words/3.
+    gps_origin/2. %% TA-110127
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -72,8 +47,6 @@ doshell :- write('$SHELL'),
 %          ctxt/3,     % composite words 
 %          maxl/1.     % number  of words
 %
-:-dynamic gps_origin/2 . %% TA-110127
-
 
 
 ?-op(1150,fx,spyg). %% spy grammar rule
@@ -229,9 +202,6 @@ run :-
     nl,
     seen,              %% evt. read-files
     dialog:=0, 
-    rune := 35,
-    rune =: Verdi,
-    write(['Rune is ',Verdi]),
 
     reset_period,       %%Which period the current routes are available for
 

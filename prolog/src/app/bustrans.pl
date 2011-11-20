@@ -1040,7 +1040,7 @@ is  which(A),B isa thing,event/real/C,dob/be/B/A/C
 id  add message(howtuchelp)
 ip  [].
 
-whatisitrule %% hva er det
+whatisit     rule %% hva er det
 is  which(it),it isa thing
 id  add  message(howtuchelp)
 ip  [].
@@ -6468,7 +6468,7 @@ id	 add listofall(BR,_)
 ip  dmeq([bus,nightbus,tram,route],BR),
     unbound(Bus). 
 
-allofakindknow  
+allofakindknow  rule
 is  dob/KNOW1/tuc/Bus/_,Bus isa BR,
     not _ isa station,  
     not _ isa neighbourhood 
@@ -15725,7 +15725,8 @@ ip  [].
  
 mustknowbusnewgen rule %  the buses go  
 is  new, B isa Veh, {unbound(B)},  {dmeq([vehicle,bus,tram,program,route],Veh)}, 
-    event/_real/C,  doit/GO/B/C, %% jeg tror at bussen går
+%    event/_real/C,  doit/GO/B/C, %% jeg tror at bussen går
+    event/ _ /C,  doit/GO/B/C, %% jeg tror at bussen går
          {dmeq([go,leave,stop,be1],GO)},
 %%%%     not  ispresent X isa clock when { bound(X) },
     not  ispresent T isa route when { bound(T) },   
@@ -15741,7 +15742,8 @@ ip  [].
 
 
 mustknowbus1 rule % Where does the bus go
-is  exactly (which(A),A isa place,srel/_inat/place/A/C,B isa Veh,doit/GO/B/C,event/real/C)
+%is  exactly (which(A),A isa place,srel/_inat/place/A/C,B isa Veh,doit/GO/B/C,event/real/C)
+is  exactly (which(A),A isa place,srel/ _ /place/A/C,B isa Veh,doit/GO/B/C,event/real/C)
 id	 add	message(mustknow(Veh)) 
 ip  dmeq([go,leave,stop,be1],GO), 
     unbound(B),
@@ -15774,8 +15776,8 @@ ip  [].
 gowhere rule  %% 
 is  not ispresent srel/to/place/_/_,    %% (street)
     not srel/from/place/_/_,  %% passerer maskinagentur på vei fra torget.
-    not ispresent  doit/arrive/_/_. %% <--- derived skal være i
-%%%%    not ispresent srel/on/place/_/_     %% assume direction is handled
+    not ispresent  doit/arrive/_/_,  %% <--- derived skal være i
+%%%%    not ispresent srel/on/place/_/_,     %% assume direction is handled
     not has/vehicle/station/_/_, 
     not srel/beyond/place/_/_   %% ad hoc
 %%     not ispresent _ isa person %% svensker på risvollan :-) %% ???

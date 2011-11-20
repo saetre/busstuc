@@ -2232,12 +2232,12 @@ printmess1(dateis(Year,Month,DayNr,Day)):-
          period.
 
 
-printmess1(otherperiod(_date)):- 
-    myflags(airbusflag,true),
-    !,
-    airbus_module(FB),
-    write_mess_off(FB).
-
+%printmess1(otherperiod(_date)):- 
+%    myflags(airbusflag,true),
+%    !,
+%    airbus_module(FB),
+%    write_mess_off(FB).
+%
 
 printmess1(otherperiod(Date)):-
     decide_period(Date,Period),
