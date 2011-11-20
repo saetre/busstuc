@@ -5,15 +5,12 @@
 
 %% Makefile for BussTUC  server NTNU , Norwegian
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                     %
 % TUC - The Understanding Computer                    %
 %                                                     %
-%                                                     %
 % A General Natural Language                          %
 %     Understanding System                            %
-%                                                     %
 %                                                     %
 % COPYRIGHT  (C) 2001 -                               %
 %                                                     %
@@ -22,8 +19,7 @@
 %  Department of Computer and Information Science     %
 %  The Norwegian University of Science and Technology %
 %                                                     %
-%  toreamb@idi.ntnu.no 
-                               %
+%  toreamb@idi.ntnu.no                                %
 %                                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -44,12 +40,4 @@
    ['busroute.pl'],             %% Compiles database/
    ['db/discrepancies.pl'].     %% Must be updated before winter
 
-
-
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-

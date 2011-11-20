@@ -4,13 +4,16 @@
 %% REVISED TA-110207
 
 %% Main program for BussTUC
-%:-use_module( library(system) ).
-:-use_module( library(process) ).
 
 %% Imports
+
+%:-use_module( library(system) ).
+
+:- use_module( library(process) ).
+:- use_module( 'utility/utility.pl' ).  % utility functions like myflags/2
+
 :- compile('monobus.pl'). %% // after main.pl  Unknown error 
 :- ['tuc/readin.pl'].       % reads text to a list
-:- ['utility/utility.pl'].  % utility functions like 
 
 
 

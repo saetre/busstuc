@@ -6,24 +6,13 @@
 % Contains some utility predicates
 % that may not be redefined in some Prologs (e.g. SWI-Prolog)
 
-/* -> sicstus4compatibility.pl %% TA-071026  %% RS-111119 Moved to utility/utility.pl
-%% Sicstus 4 compatibility
-%% append/3  %% built in Sicstus 4 (library.pl)
-%% member/2  %% built in Sicstus 4 (library.pl)   
+:- ['../declare'].
 
-get0(G) :-get_code(G). %% TA-070809
-put(G) :- put_code(G). %%
-ttyflush :- flush_output(user).
-tab(N):- write_blanks(N). %% ad hoc
-*/
-
-%delete(X,[X|Y],Y). 
-%delete(X,[U|V],[U|W]):-
-%    delete(X,V,W).
-
+:- module(user,
+   [nth/3
+   ]).
 
 %% Find nth element                           %% TA-030922
-
 nth(N,Set,Nth) :- 
 	 nth_aux(N,Set,Nth,1).
 
@@ -59,7 +48,7 @@ intersection([X|Y],Set,Z):-
 intersection([X|Y],Set,[X|Z]):-
     intersection(Y,Set,Z).
 
-not X :- \+ X. 
+not X :- \+ X.
 
 %% once(P):- P,!. %% THIS IS BUILT-IN   Sicstus 3.8  %% TA-000414  
 %% Gives warning message  in 3.8 ++ 

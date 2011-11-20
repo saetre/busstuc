@@ -10,13 +10,19 @@
 %    process_create(Shell, ['-c', [ ls, ' ', file(Dir) ]]).
 
 %% USES
-:-use_module( library(process) ).
-
+:- use_module( library(process) ).
+:- use_module( 'library' ).
+:- ['datecalc'].
 :- ['../declare'].
 
-%:-module(user,[
-%    myflags/2
-%]).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:- module(user,[
+%    :=/2,
+%    =:/2,
+    myflags/2,
+    test/1
+]).
 
 :- volatile myflags/2.
 :- dynamic myflags/2.
@@ -906,7 +912,7 @@ subcase(Y,X):-
     subsumes(X,Y),  %% no variable is instantiated
     X=Y.            %% to a structure
 
-test(X):- \+ ( \+ ( X)).
+test(X) :- \+ ( \+ ( X)).
 
 
 once1(P):-P,!. %% same as once, but version independent

@@ -3,18 +3,11 @@
 %% AUTHOR   T.Amble
 %% CREATED  TA-041006
 %% REVISED  TA-110825
+%% REVISED  RS-111118
 
-%%% %%%%%%%% RS-111118
-% :- ['../declare.pl'].
- :- ['../utility/utility.pl'].
-
-% Transformation rules for the bus domain
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-:- module(trans,[]) . 
+:- use_module('../utility/utility.pl').
 
 %% RULE  FORMAT
-
 %   RuleID rule %% <evoking question>
 %   is IS
 %   id ID
