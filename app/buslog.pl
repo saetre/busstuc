@@ -3,9 +3,13 @@
 %% AUTHOR  Jon S Bratseth
 %% CREATED JB-970312
 %% REVISED TA-110824
+%% REVISED RS-111120
 
-%%%%%%%% RS-111118
-:- ['../declare.pl'].
+%%% USE %%% %% RS-111118
+:- ['../declare'].
+:- ['../interfaceroute'].
+:- ['../db/topreg'].
+:- ['busanshp'].
 
 %%%%%%%%%%%%%%%% ALL ROUTE INTERFACE PREDICATES %%%%%%%%%%%%%%%%%%
 
@@ -503,18 +507,18 @@ stationsat(_Place,Neigh,Stations) :- % Special case, Neigh is also a neighbourho
            IsatStations),
     Stations=IsatStations. 
 
-%% something wrotten
-
-bingbong(Neigh,Station) :- (place_station(Neigh,Station); isat(Station,Neigh)).
-
-
 stationsat(_,Station,Places1) :- %% Nardosenteret
-	 bound(Station),
+         bound(Station),
     !,
     set_of(Place,(place_station(Place,Station) ,Place \==Station),Places),
     (    (Places == [], station(Station))  -> 
              Places1=[] %%%  [Station] % GDMØ dont know 
            ; Places1=Places). %% 
+
+
+%% something wrotten
+
+bingbong(Neigh,Station) :- (place_station(Neigh,Station); isat(Station,Neigh)).
 
 
 stathelp(Ident,Instation,Station):-	
