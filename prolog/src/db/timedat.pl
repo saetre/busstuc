@@ -26,8 +26,29 @@ maxtraveltime/1,           % (MINUTES)
 maxarrivalslack/1,         % (MINUTES)
 morning_break/1,           % (CLOCK) 
 named_date/2,              % (NAME)
+
+
+delay_margin/1,             % (MINUTES)
+%corrx/2,                   % (DOMAIN,PLACE,PLACE)
+%nightbus/1,                % (ROUTE)
+%hours_delay/2,             % (NUMBER)
+%cmbus/2,                   % (NAME,NAMES,ROUTE)
+%spurious_return/1,         % (ROUTE,PLACE)
+
+
 softime/3                 % (NAME,CLOCK,CLOCK)
 ]).
+
+
+% Santa Barbara
+%clock_delay(00,00,00). %%  FOR CLOCK ADJUSTMENT
+%
+%
+%hours_delay(0).    %% Time in Trondheim is 0 hours more than server clock
+
+% hours_delay(-9). %% Time in Santa Barbara  is 9 hours EARLIER than server clock
+% hours_delay(10). %% Time in  Tokyo (?)
+
 
 %extraallowed_night/2,      % (DATE, KINDOFDAY)
 %preferred_transfer/4,      % (ROUTE,ROUTE,STATION,STATION)

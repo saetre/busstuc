@@ -23,6 +23,8 @@
 %
 %
 
+:- use_module( 'places', [isat/2] ).
+
 :- module(busdat,[
 
 airbus/1,                  % (BUS?)
@@ -68,15 +70,6 @@ tostationonly/1,           % (STATION) %% TA-110228
 
 railway_station/1
 ]). 
-
-%unproperstation/1,         % (PLACE)
-%corrx/2,                   % (DOMAIN,PLACE,PLACE)
-%nightbus/1,                % (ROUTE)
-%
-%hours_delay/2,             % (NUMBER)
-%delay_margin/1,            % (MINUTES)
-%cmbus/2,                   % (NAME,NAMES,ROUTE)
-%spurious_return/1,         % (ROUTE,PLACE)
 
 railway_station(ts). %% NB not STATION ! %% TA-110724
 
@@ -652,23 +645,10 @@ internal_airbus(IAB):-
         IAB=true
       ; 
         IAB=false.
-     
-                            
-                      
+
+
 % Santa Barbara
 % internal_airbus(true). %% The airport is covered
-
-
-
-%clock_delay(00,00,00). %%  FOR CLOCK ADJUSTMENT
-%
-%
-%hours_delay(0).    %% Time in Trondheim is 0 hours more than server clock
-
-% hours_delay(-9). %% Time in Santa Barbara  is 9 hours EARLIER than server clock
-% hours_delay(10). %% Time in  Tokyo (?)
-
-
 
 
 home_town(trondheim).
@@ -1130,10 +1110,9 @@ synbus('9e', 9).
 
 %いいいいいいいいいいいいいいいいいいいいいいいいいいいいいいい
 
-
 xisat(X,Y) :-  %% Last isat Predicate
     corr(X,hovedterminalen),
-    isat(hovedterminalen,Y).
+    places:isat(hovedterminalen,Y).
 
 
 %% Special predicates for nightbuses 
