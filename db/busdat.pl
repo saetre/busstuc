@@ -14,15 +14,6 @@
 
 %* List of predicates
 
-%:-dynamic named_date/2. %% Created Initially 
-%
-%create_named_dates :-
-%    list_of_named_dates(L), 
-%    for((member(A,L),orig_named_date(A,B)),
-%         remember(named_date(A,B))). %% To be     refined
-%
-%
-
 :- use_module( 'places', [isat/2] ).
 
 :- module(busdat,[

@@ -7,24 +7,32 @@
 
 %% Imports
 
+:- use_module( library(process) ).
+:- use_module( library(timeout) ). 
 %:-use_module( library(system) ).
 
-:- use_module( library(process) ).
-:- use_module( 'utility/utility.pl' ).  % utility functions like myflags/2
+:- use_module( 'utility/utility', [] ).
+:- use_module( 'db/timedat' ).  % 
 
 :- compile('monobus.pl'). %% // after main.pl  Unknown error 
+
 :- ['tuc/readin.pl'].       % reads text to a list
-
-
-doshell :- write('$SHELL'),
-%    absolute_file_name('$SHELL', Shell),
-    absolute_file_name('~/', Dir), write('dir: '),write(Dir),nl.
-%    process_create(Shell, ['-c', [ ls, ' ', file(Dir) ]]).
+:- ['utility/datecalc'].
 
 %% Operators used by TUC
-% :- ['declare.pl']. %% Import several common operators
+:- ['declare.pl']. %% Import several common operators, and  myflags value-map
+
+?-op(1150,fx,spyg). %% spy grammar rule
+?-op(1150,fx,spyr). %% spy pragma rule
+?-op(1150,fx,sp).   %% spy X,X
+?-op(1150,fx,c).    %% consult file  %% TA-110106 
+
 :-op( 727,xfy, => ).
 
+%:-dynamic webstat/3.  % webstat(date(2009,04,21),#sms,#tot).
+%:-dynamic txt/3,      % elementary words
+%          ctxt/3,     % composite words 
+%          maxl/1.     % number  of words
 :-volatile
     difact/2,   %% Dynamic,  context dependent  %% TA-980301
     fact0/1,
@@ -35,25 +43,19 @@ doshell :- write('$SHELL'),
     gps_origin/2. %% TA-110127
 
 
+?-prolog_flag(gc_trace,_,verbose).
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:-use_module(library(timeout)). 
-% ?-prolog_flag(gc_trace,_,verbose).
+doshell :- write('$SHELL'),
+%    absolute_file_name('$SHELL', Shell),
+    absolute_file_name('~/', Dir), write('dir: '),write(Dir),nl.
+%    process_create(Shell, ['-c', [ ls, ' ', file(Dir) ]]).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Main program
-
-%:-dynamic webstat/3.  % webstat(date(2009,04,21),#sms,#tot).
-%
-%:-dynamic txt/3,      % elementary words
-%          ctxt/3,     % composite words 
-%          maxl/1.     % number  of words
-%
-
-
-?-op(1150,fx,spyg). %% spy grammar rule
-?-op(1150,fx,spyr). %% spy pragma rule
-?-op(1150,fx,sp).   %% spy X,X
-?-op(1150,fx,c).    %% consult file  %% TA-110106 
 
 gorg :-listing(gps_origin). %% debug %% TA-110128
 
@@ -303,14 +305,16 @@ dialog :-
 
 
 
-hi :-% language := english, 
-    create_named_dates, 
+hi :- 
+    origlanguage := english, 
     debug,
+    create_named_dates, 
     go.
 
 
-hei:-% language:= norsk, 
-     create_named_dates, 
+hei:- 
+    origlanguage:= norsk, 
+    create_named_dates, 
     debug,
     go.
 

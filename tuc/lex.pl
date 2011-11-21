@@ -6,17 +6,15 @@
 
 %%% %%%%%%%% RS-111118
  :- ['../declare.pl'].
-    
 
 
 %% Transforms each word into a list of alternatives.
-
 %% Semi-tagger (quasi multitagger)
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % 
 
 %%%%%% The coding conventions %%%%%%%%%%%%%%%%%%%%%
-
+%
 %  w(<word>,List of Interpretations)
 %
 %       Interpretation
@@ -29,7 +27,6 @@
 %       nb(numeral,{ind,ord,alf}) %%  9a -> 9,alf
 %       quote(text) -> 'text'
 %       [word]                                  all others words 
-%
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

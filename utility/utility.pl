@@ -12,17 +12,27 @@
 %% USES
 :- use_module( library(process) ).
 :- use_module( 'library' ).
-:- ['../declare'].
+%:- ['../declare'].   %% Already called from main
+:-op( 714,xfx, := ).
+:-op( 713,xfx, =: ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- module(utility, [
-    for/2,
+:- module(utility, [ % (:=/2), (=:/2),
+%    for/2, %% Moved to declare
+    output/1,
+    remember/1,
     sequence_member/2,
     test/1,
     testmember/2
   ] ).
 
+%X := Y :-       %% Set value X to Y
+%    user:set(X,Y).
+%
+%X =: Y :-       %% Set value Y from X
+%    user:myflags(X,Y).
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% panic(_H). %% just for comment-predication
@@ -581,12 +591,6 @@ flatround((X,Y),(X,Z)):-
 
 flatround(X,X).
 
-
-
-for(P,Q):-
-  P,Q,
-  false;true.
-
 foralltest(P,Q):- \+ ( P, \+ Q). 
 
 forget(X):- 
@@ -822,7 +826,7 @@ psl(S,L):-
     seen.
 
 
-remember(F):-F,!;assert(F).
+remember(F) :- F, ! ; assert(F).
 
 
 % Prologs setof is baroque %% 

@@ -6,11 +6,16 @@
 % Contains some utility predicates
 % that may not be redefined in some Prologs (e.g. SWI-Prolog)
 
-:- ['../declare'].
-
-:- module( utility,
-   [nth/3
+:- module( library, [
+    intersection/3,
+    not/1,
+    nth/3,
+    remove_duplicates/2,
+    reverse/2
    ]).
+
+%:- ['../declare'].
+:-op( 715, fy, not ).
 
 %% Find nth element                           %% TA-030922
 nth(N,Set,Nth) :- 

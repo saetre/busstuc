@@ -5,7 +5,7 @@
 
 % Interface procedures for handling interface to route modules
 
-
+:- use_module( 'utility/utility', [output/1] ).  % utility functions like output/1
 
 %% NB  decide_period is called before each question
 
@@ -81,7 +81,7 @@ search_period_module(TT,_Date,DO):-  %% BUSTER assumes default winter route
     !,
     default_period(TT,winter,DO).   %% AD HOC   TT WINTER ROUTE
 
-search_period_module(_TT,_Date,_noperiod):- 
+search_period_module(_TT,_Date,_Noperiod):- 
     !,
     fail.
 
