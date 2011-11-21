@@ -9,8 +9,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- ensure_loaded('../declare').
- :-op( 0, xfx, ako ).    %% "Disable" 'ako' as an operator for this file, e.g. "tightest binding"
+:- use_module( '../declare', [myflags/2] ).
+% :-op( 0, xfx, ako ).    %% "Disable" 'ako' as an operator for this file, e.g. "tightest binding"
 
 :- use_module( '../utility/utility', [] ).
 
@@ -3850,7 +3850,8 @@ id  clear, add message(answer(bcpbc(System))),
 ip  user:description(Savant,System).
 
 describe0 rule %% describe X  MEANS what is the class/superclass 
-is which(A), (ako/Man/A), 
+%is which(A), (ako/Man/A),
+is which(A), (Man ako A),
    clear     
 id clear, add message(answer((bcpbc(Adult)))),
    add flag(exit)
@@ -3885,7 +3886,7 @@ is (tuc isa savant, dob/describe/tuc/quote(Meaning)/E,event/real/E), %RS-111118 
    clear
 id clear, add message(answer(bcpbc(Abstract))),
    add flag(exit) 
-ip user:(ako/Meaning/Abstract),
+ip user:(Meaning ako Abstract),  %% (ako/Meaning/Abstract)  %% RS-111121
    \+ member(Meaning,[god,price]). %% etc. 
 
 
@@ -14486,7 +14487,8 @@ is  exactly (which(A),A isa Man),
 id  clear, 
     add message(answer(bcpbc(Abstract)))
 ip  \+ myflags(teleflag,true), 
-    user:(ako/Man/Abstract),
+%   user:(ako/Man/Abstract),
+    user:(Man ako Abstract),
     \+ member(Man,[airport,god,price,bus,tram, 
           route,vehicle,driver,destination, 
           clock,telephone,departure,information,route_plan,

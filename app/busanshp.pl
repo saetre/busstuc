@@ -8,9 +8,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %:- use_module( main:'../declare.pl', [ myflags/2, set/2, ':='/2 ] ).
-:- use_module( main:'../declare.pl', [ myflags/2 ] ).
-:- use_module( tuc:'../tuc/evaluate', [ fact/1 ] ).
-:- use_module( tuc:'../tuc/semantic', [ ako/2 ] ).
+:- use_module( main:'../declare.pl' ).
+%:- use_module( tuc:'../tuc/evaluate', [ ako/2, fact/1 ] ).
+:- use_module( tuc:'../tuc/semantic' ).
+:- use_module( tuc:'../tuc/semantic', [] ).
 
 %%%%%%%%% COMMON VERSION BUSTER/BUSTUC  %%%%%%%%%%%%%%%
 

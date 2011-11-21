@@ -49,7 +49,7 @@
 :- op( 712, fy,seen). % Lower than "not", higher than "isa"
 
 %%% %%%%%%%% RS-111118
- :- ['../declare.pl'].
+:- use_module( '../declare.pl' ).
 
 tracevalue(X):- user:myflags(traceprog,X),!; X=1.
 
@@ -322,8 +322,8 @@ ip     bound(Time), varmember(Dep, DepList).
 
 
 toalett rule                       %% TA-030913
-is     replace   depset(unknown, _DepList_)  with %% TA-050411
-                 depset(arrival, _DepList_) 
+is     replace   depset(unknown, _depList_)  with %% TA-050411
+                 depset(arrival, _depList_) 
 
 
 

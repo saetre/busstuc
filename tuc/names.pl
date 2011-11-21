@@ -4,7 +4,8 @@
 %% REVISED TA-110825
 %% REVISED RS-111121
 
-:- module( tuc, [ country/1 ] ). %% Or define this as the main file in the tuc module??
+%% Define this as the main file in the tuc module?!?
+:- module( tuc, [ abroad/1, city/1, compname/3, country/1, generic_place/1 ] ).
 
 %% MODULE: tuc
 %  TUCs  Lexical Semantic Knowledge Base        %% semantic.pl

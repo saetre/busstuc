@@ -1,8 +1,9 @@
 lche :- load_files('dialog/checkitem.pl').
 
 %%% %%%%%%%% RS-111118
- :- ['../declare.pl'].
+:- use_module( '../declare.pl' ).
    
+:- dynamic current_frame/1.
 
 %% User input terminals
 

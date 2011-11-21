@@ -11,7 +11,7 @@
 
 :- use_module( '../ptbwrite', [ track/2 ]).
 
-:- ensure_loaded( user:'../declare.pl').
+:- use_module( user:'../declare.pl').
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

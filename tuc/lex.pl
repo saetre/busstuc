@@ -2,21 +2,21 @@
 %% SYSTEM TUC
 %% AUTHOR T.Amble
 %% CREATED TA-931217
-%% REVISED TA-110803
-%% REVISED RS-111121
+%% REVISED TA-110803 RS-111121
 
-%% MODULE: tuc
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-:- ensure_loaded( user:'../declare.pl').
-    
+%% MODULE: tuc / lex
 
 %% Transforms each word into a list of alternatives.
 %% Semi-tagger (quasi multitagger)
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % 
 
+:- module( tuc, [ unproperstation1/1 ] ).  %% RS-111121 Module TUC / lex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:- use_module( user:'../declare.pl').
+    
 %%%%%% The coding conventions %%%%%%%%%%%%%%%%%%%%%
 %
 %  w(<word>,List of Interpretations)
@@ -34,7 +34,8 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:-dynamic blockmark/1. %% used for bookkeeping of xcompword matching
+:- volatile ctxt/3, blockmark/1. %% used for bookkeeping of xcompword matching
+:- dynamic ctxt/3, blockmark/1. %% used for bookkeeping of xcompword matching
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -211,8 +212,8 @@ lcodes(N,w(N,S2)):-
 
 
 squirtsurplus(_,[name(Hare_street,n,street)|R],[name(Hare_street,n,street)]):- %% TA-100311
-     \+ member(name(_Tempev,n,station),R),
-     \+ member(name(_Tempev,n,0),R). %% Tempevegen 11 station/Tempeveien 11 street %% TA-101124
+     \+ member(name(_tempev,n,station),R),
+     \+ member(name(_tempev,n,0),R). %% Tempevegen 11 station/Tempeveien 11 street %% TA-101124
 
 %%  squirtsurplus(brosetveien,
 %%    [name(brøset_street,n,street),name(brøsetv,n,station),name(brøsetveien,n,0)],[name(brøset_street,n,street)]) ?
@@ -1490,8 +1491,8 @@ remove_partnames :- %% remove now redundant  part names
 
 
 remove_streetsurp:- % Remove streetname (single) if also station/neighbourhood etc.
-     for( (txt(M,w(A,name(_A1,_,street)),N),txt(M,w(A,name(A2,_,K)),N), K \== street, \+unproperstation1(A2)),
-           retract(txt(M,w(A,name(_A1,_,street)),N))).
+     for( (txt(M,w(A,name(_a1,_,street)),N),txt(M,w(A,name(A2,_,K)),N), K \== street, \+unproperstation1(A2)),
+           retract(txt(M,w(A,name(_a1,_,street)),N))).
 
 %% suspended  :   error marking comes meaningless (too early) 
 % når må jeg ta bussen * til heimdal sentral banestarsjon før kl 13 . 10 fra kystad ? 
@@ -1510,8 +1511,6 @@ removeunconnected1 :-
 
     for(   (txt(M1,w(W,NAMEABC),N1), unconnectedtxt(M1,N1)),
            retractall(txt(M1,w(W,NAMEABC),N1))). %% may be more !
-
-
 
 
 removeblanks :- %% txt(0, w(noe,[]), 1). %% NB Destructive
@@ -1702,12 +1701,12 @@ matchcomp2(N0):-  %% Tore Ambles -> ToreAmbles
     N1 is N0+1,
     N2 is N1+1,
     txt(N0,w(_Tor,    name(Tor,n,firstname)),N1),
-    txt(N1,w(_Ambles,name(Ambl,gen,lastname)),N2),
+    txt(N1,w(_ambles,name(Ambl,gen,lastname)),N2),
     lookupdb2(Tor,Ambl,ToreAmble),
     moshe_class(ToreAmble,_,Class),
     assert( ctxt(N0, w(ToreAmble,name(ToreAmble,gen,Class)), N2)),
     retract( txt(N0,w(Tor,_),N1)), 
-    retract( txt(N1,w(_Ambles,name(Ambl,gen,lastname)),N2)).    %%
+    retract( txt(N1,w(_ambles,name(Ambl,gen,lastname)),N2)).    %%
 
  
 matchcomp2(N0):- %% Tore Amble
@@ -1782,7 +1781,7 @@ matchreststreet5(_,N2,[Street],_,_):- %% skip vei allowed if not "vei" follows
 (    
      VVV=w(V,_),streetsyn(V)  ;
  
-     V=[alle]),       %% olav engelbrektssons alle 5
+     _V=[alle]),       %% olav engelbrektssons alle 5
 
     !,fail.            %% no skip
 
@@ -1792,11 +1791,11 @@ matchreststreet5(N0,N2,[Street],N2,true):- %% skip vei allowed if not "vei" foll
     (Street==street;streetsyn(Street);Street=alle), 
   
  \+ txt(N2, w(_,[plass]),_),    %% Aleksander Kiellands plass 
- \+ (txt(N0,w(O,_),_N2), unwanted_place(O)), %% o -> osveien 
+ \+ (txt(N0,w(O,_),_n2), unwanted_place(O)), %% o -> osveien 
  \+ txt(N0,w(Vold,name(Voll,n,station)),N2), %%  vold -> voll, NOT vollgt
  \+ txt(N0,w(Vold,name(Voll,n,neighbourhood)),N2),
- \+ txt(N0,w(Reppe,name(Reppe,n,station)),_N2), %% not Reppevegen if Reppe is station
- \+ txt(N0,w(Reppe,name(Reppe,n,neighbourhood)),_N2).
+ \+ txt(N0,w(Reppe,name(Reppe,n,station)),_n2), %% not Reppevegen if Reppe is station
+ \+ txt(N0,w(Reppe,name(Reppe,n,neighbourhood)),_n2).
 
 
 

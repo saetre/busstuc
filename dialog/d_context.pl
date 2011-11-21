@@ -2,8 +2,10 @@
 %% Created AM-980303 
 
 %%% %%%%%%%% RS-111118
- :- ['../declare.pl'].
-    
+ :- use_module( '../declare.pl' ).
+
+:- dynamic dbContent/2, dbId/1. 
+
 %%
 %% This file contains implementation of the dialogue context database.
 %% List implementation of database. 

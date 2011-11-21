@@ -9,7 +9,7 @@
 % 
 
 %%% %%%%%%%% RS-111118
- :- ['../declare.pl'].
+:- use_module( '../declare.pl' ).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -84,8 +84,7 @@ determine_query_period :-
 determine_application_period([_:::TQL]):-
     veh_mod(H),
     (sequence_member(date(A,B,C) isa date,TQL) -> %% date occurs
-        search_period_module(tt,date(A,B,C),J);
-        J=H),
+        search_period_module(tt,date(A,B,C),_J) ; _J=H),
      !,
     (H=r1617_100621 -> application_period :=team;
      H=r1611_100823 -> application_period :=atb;

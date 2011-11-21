@@ -2,24 +2,23 @@
 %% SYSTEM BUSSTUC
 %% AUTHOR J.Bratseth
 %% CREATED JB-970312
-%% REVISED EH-031121 TA-110824
+%% REVISED EH-031121 TA-110824 RS-111121
 
 %% Bussrute database tilpasning PLACES in TRONDHEIM
-
 %     This is adapted to reghpl.pl created from REGTOP format by
 %     the program extractreg.pl.
-
 % Domains:   BOOLEAN ROUTETYPE STATION PLACE MINUTES
 %            DATE DAY DOMAIN CLOCK
-
 %* List of predicates
 
 :- module( busdat, [
 
         airbus/1,                  % (BUS?)
         airbusstation/1,           % (STATION)
+        building/1,
         bus_depend_station/3,      % (ROUTE,PLACE,STATION)
         central_fromstation/1,     % (STATION) avoid default to ST
+        composite_road/3,          % from regcompstr.pl
         corresp0/2,                % (PLACE,PLACE)
         corresponds/2,             % (STATION,STATION)
         corresp/2,                 % (PLACE,PLACE)
@@ -28,17 +27,19 @@
         disallowed_night/1,        % (DATE)
         default_destination/2,     % (ROUTE,STATION)
         
+        is_dom_val/5,               % fra teledat2.pl
+        
+        nightbus/1,                % (STATION)
         nightbusdestination/1,     % (STATION)
-        central_airbus_station/1,   % (STATION) 
+        central_airbus_station/1,  % (STATION) 
         
         nostationfor/1,            % (PLACE)
         nostationfor1/1,           % (PLACE)
-        %%    // nostation/1,               % (PLACE) -> places.pl
-        xforeign/1,                % (PLACE)
-        %% foreign/2,                 % (DOMAIN,PLACE) -> places.pl
-        %% foreign/1,                 % (PLACE) -> places.pl
-        %% abroad/1,                  % (PLACE) -> names.pl
-        %% city/1,                    % (PLACE) -> names.pl
+        %% nostation/1,              % (PLACE) -> places.pl
+        %% foreign/2,                % (DOMAIN,PLACE) -> places.pl
+        %% foreign/1,                % (PLACE) -> places.pl
+        %% abroad/1,                 % (PLACE) -> names.pl
+        %% city/1,                   % (PLACE) -> names.pl
         
         exbusname/2,               % (ROUTE,ROUTE)
         fromstationonly/1,         % (STATION)
@@ -56,13 +57,21 @@
         explicit_part_name/1,      % (NAME)
         endneighbourhood/2,        % (ROUTE,PLACE)
         railway_station/1,
+        streetstat/5,              % fra regstr.pl
         tostationonly/1,           % (STATION) %% TA-110228
-        vehicletype/2
+        vehicletype/2,
+        xforeign/1                % (PLACE)
     ]).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- use_module( 'places', [isat/2] ).
+:- use_module( '../declare', [ myflags/2 ] ).
+:- use_module( 'places', [ corr/2, foreign/1, isat/2, placestat/2 ] ).
+:- use_module( '../tuc/names', [ abroad/1, country/1 ] ).
+
+:- ensure_loaded( [ regbusall, regcompstr, regstr, teledat2 ] ). %% HEAVY DB!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 railway_station(ts). %% NB not STATION ! %% TA-110724
 

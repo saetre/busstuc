@@ -7,6 +7,8 @@
 
 %% Imports
 
+:- dynamic difact/2.
+
 :- use_module( library(process) ).
 :- use_module( library(timeout) ). 
 %:-use_module( library(system) ).
@@ -19,10 +21,10 @@
 :- compile('monobus.pl'). %% // after main.pl  Unknown error 
 
 :- ['tuc/readin.pl'].       % reads text to a list
-:- ['tuc/evaluate'].
+:- use_module( 'tuc/evaluate' ).
 
 %% Operators used by TUC
-:- ['declare.pl']. %% Import several common operators, and  myflags value-map
+:- use_module( 'declare.pl' ).
 
 ?-op(1150,fx,spyg). %% spy grammar rule
 ?-op(1150,fx,spyr). %% spy pragma rule

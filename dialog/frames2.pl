@@ -13,6 +13,8 @@
 
 :- use_module(library(system)).
 
+:-dynamic framecounter/1.
+
 :- assert(framecounter(1)).
 
 

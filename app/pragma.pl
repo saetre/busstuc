@@ -6,7 +6,7 @@
 
 % Tolker for Pragma-regler
 
-:- ['../utility/utility.pl'].       % utility functions like 
+:- use_module( '../utility/utility.pl' ).       % utility functions like 
 
 %% Removed / to .. append ../   TA-080612
 %
@@ -49,7 +49,7 @@
 :- op( 712, fy, saw). % Lower than "not", higher than "isa"
 
 %%% %%%%%%%% RS-111118
- :- ['../declare.pl'].
+:- use_module( '../declare.pl' ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

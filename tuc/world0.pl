@@ -19,6 +19,24 @@
 
 %% For the CHAT-80 application
 
+:- volatile
+          border/2,
+          city/3,
+          contain/2,
+          containsX/4,
+          contains4/4,
+          country/8,
+          continent_region/2, 
+          region_country/2,
+          country_city/2,
+          country_river/2,
+          river/2,
+          continent/1,
+          in_continent/2,
+          ocean/1,
+          sea/1,
+          circle_of_latitude/1,
+          latitude0/2.
 :- dynamic        
           border/2,
           city/3,

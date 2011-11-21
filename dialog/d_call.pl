@@ -6,8 +6,8 @@
 %% Compiles all of the necessary files.
 %% Same function as the file tucbuses.
 
-:-compile(d_main).
-:-compile(d_dialogue).
+:-use_module(d_main).
+:-use_module(d_dialogue).
 
  :-compile(frames2). %% Common version %% TA-051017
 
@@ -25,17 +25,17 @@
 :-compile(checkitem2).  %% TA-051010
 
 
-:-compile(relax).
+:-use_module(relax).
 
 
 % new files in tele-domain %% CO-VERSION
 :-compile(parseres).
 
 :-compile(update2).    %% COMMON VERSION
-:-compile(makeframe2). %% COMMON VERSION
+:-use_module(makeframe2). %% COMMON VERSION
 
 
-:-compile(usestate2).
+:-use_module(usestate2).
 
 
 %%%%%%%% =

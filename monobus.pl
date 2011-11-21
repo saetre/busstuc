@@ -13,11 +13,11 @@
 
 :- compile('app/pragma.pl').
 :- compile('app/interapp.pl').
-:- compile('app/bustrans.pl').    %% 
+:- use_module('app/bustrans.pl').    %% 
 :- compile('app/dmeq.pl').        %% 
 :- use_module('app/busans').      %% Module ans:
 :- compile('app/negans.pl').      %%
-:- compile('app/busanshp.pl').    %%
+:- use_module('app/busanshp.pl').    %%
 
 :- use_module('db/timedat.pl'). %% TA-110407, Module timedat
 :- compile('db/teledat2.pl').   %% Mandatory
@@ -31,7 +31,7 @@
 :- consult('db/statcoord2.pl').
 
 :- ['interfaceroute']. %%Buslog conflict?
-:- compile('app/buslog.pl').  %% Compile LAST, undetected ERROR(?)
+:- use_module('app/buslog.pl').  %% Compile LAST, undetected ERROR(?)
 
 
 

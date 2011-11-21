@@ -5,11 +5,16 @@
 %% REVISED TA-110824
 %% REVISED RS-111120
 
+:- module( app, [ regbus/1, station/1 ]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %% USE %% RS-111118
-:- ['../declare'].
+:- use_module( 'busanshp', [] ).
+:- use_module( '../declare' ).
+%:- use_module( '../declare', [ myflags/2 ] ).
 %:-['../interfaceroute'].       %% Moved "up" to monobus -> 
 :- ['../db/topreg'].
-:- ['busanshp'].
 
 %%%%%%%%%%%%%%%% ALL ROUTE INTERFACE PREDICATES %%%%%%%%%%%%%%%%%%
 

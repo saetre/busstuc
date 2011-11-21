@@ -6,8 +6,9 @@
 
 %% COMMON CO-VERSION BUSS TELE
 
-:-use_module(library(timeout)). 
+:- dynamic difact/2, fact0/1.
 
+:-use_module( library(timeout) ). 
 %% timeout WITHOUT _
 
 progtrace(N,P):-
