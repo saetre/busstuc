@@ -189,7 +189,7 @@ recreate_regdep(Module) :-  %% keep only initial regcut regdep
 
       ;  ( xi(pax(Trace1,0,0,0),Mindex3),         
 
-            \+ ex_cutloop_rid(_,_bus_5_282,_32188, RID,Trace1,_22,_25),
+            \+ ex_cutloop_rid(_,_Bus_5_282,_32188, RID,Trace1,_22,_25),
 
              remember(ex_departureday(RID, Mindex3,DepTime,DayCode)) ) ) ),
 

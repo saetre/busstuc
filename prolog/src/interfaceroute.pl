@@ -5,7 +5,8 @@
 
 % Interface procedures for handling interface to route modules
 
-:- use_module( 'utility/utility', [output/1] ).  % utility functions like output/1
+%:- use_module( 'db/timedat', [todaysdate/1] ).  % database functions, for time and days
+:- use_module( 'utility/utility', [output/1] ).  % utility functions
 
 %% NB  decide_period is called before each question
 

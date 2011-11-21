@@ -2,8 +2,18 @@
 %% SYSTEM BUSSTUC
 %% CREATED TA-071026
 %% REVISED TA-110825
+%% REVISED RS-111121
 
+:- module( tuc, [ country/1 ] ). %% Or define this as the main file in the tuc module??
+
+%% MODULE: tuc
+%  TUCs  Lexical Semantic Knowledge Base        %% semantic.pl
 %% Contains Domain independent names and synonyms
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:- use_module( user:'../declare.pl').
+
 
 %myflags(rune,35).
 
@@ -224,7 +234,7 @@ compname(st,[hans,aften], midsummer_eve).     %%
 compname(the,[understanding,computer],tuc). 
 
 compname(tore,[amble],tagore) :- 
-         \+myflags(teleflag,true).   
+         \+main:myflags(teleflag,true).   
 
 
 compname(trafikanten,[midt,norge],tmn). 

@@ -231,18 +231,18 @@ have_att_val(_SubjectClass,Attribute,SubjectId,Values) :-
 
 %% has_att_val(SubjectClass,Attribute,SubjectId,Value).
 
-has_att_val(_agent,email,tuc,'toreamb@idi.ntnu.no').          %% TA-110622
-has_att_val(_agent,email,tagore,'toreamb@idi.ntnu.no').       %% i.e. tagore.idi.ntnu.no
-has_att_val(_agent,email,(tore,amble),'toreamb@idi.ntnu.no'). %%
+has_att_val(_Agent,email,tuc,'toreamb@idi.ntnu.no').          %% TA-110622
+has_att_val(_Agent,email,tagore,'toreamb@idi.ntnu.no').       %% i.e. tagore.idi.ntnu.no
+has_att_val(_Agent,email,(tore,amble),'toreamb@idi.ntnu.no'). %%
 
-has_att_val(_person,retirement,(tore,amble),date(2012,04,21)). 
-has_att_val(_person,birthday,(tore,amble),date(1945,04,21)).   %% TA-110519
+has_att_val(_Person,retirement,(tore,amble),date(2012,04,21)). 
+has_att_val(_Person,birthday,(tore,amble),date(1945,04,21)).   %% TA-110519
 
-has_att_val(_person,retirement,(arvid,holme),date(2011,1,17)). %% TA-101006
-has_att_val(_person,birthday,(arvid,holme),date(1941,1,17)).   %% TA-110519
+has_att_val(_Person,retirement,(arvid,holme),date(2011,1,17)). %% TA-101006
+has_att_val(_Person,birthday,(arvid,holme),date(1941,1,17)).   %% TA-110519
 
-has_att_val(_agent,language,tuc,norsk).   %% TA-110825
-has_att_val(_agent,language,tuc,english). %% 
+has_att_val(_Agent,language,tuc,norsk).   %% TA-110825
+has_att_val(_Agent,language,tuc,english). %% 
 
 has_att_val(person,retirement,tagore,date(2012,04,21)).   
 
@@ -250,7 +250,7 @@ has_att_val(agent,administrator,tuc,tagore).
 has_att_val(agent,creator,tuc,tagore).       %% NB agent 
 has_att_val(agent,leader,tuc,tagore).        %% TA-110606
 
-has_att_val(_agent,address,atb,'Kongens gate 34b'). %% TA-110622
+has_att_val(_Agent,address,atb,'Kongens gate 34b'). %% TA-110622
 has_att_val(person,address,(tore,amble),'Øya Helsehus 5etg'). %% RS-110926
 has_att_val(person,address,tore,'Øya Helsehus 5etg'). %% RS-110926
 has_att_val(person,address,amble,'Øya Helsehus 5etg'). %% RS-110926
@@ -261,8 +261,8 @@ has_att_val(agent,number,tt,177).    %% anomaly
 has_att_val(agent,number,tmn,177).    %% anomaly 
 has_att_val(agent,telephone,tt,177). %% i.e. ruteopplysningen
 
-has_att_val(_agent,telephone,tuc,73521290).   %% Brage-telefonen
-has_att_val(_agent,telephone,bustuc,73521290). 
+has_att_val(_Agent,telephone,tuc,73521290).   %% Brage-telefonen
+has_att_val(_Agent,telephone,bustuc,73521290). 
 
 has_att_val(company,telephone,brann,110).
 has_att_val(company,telephone,politiet,112).
@@ -280,22 +280,22 @@ has_att_val(company,telephone,politiet,112).
 has_att_val(company,telephone,politistasjonen,112). 
 has_att_val(company,telephone,ambulanse,113). 
 
-has_att_val(_company,webaddress,tt,'http://www.atb.no'). %% agent? %% TA-101006
+has_att_val(_Company,webaddress,tt,'http://www.atb.no'). %% agent? %% TA-101006
 
 %% TA-101109
-has_att_val(_company,webaddress,flybussen,'http://www.flybussen.no/trondheim/').
+has_att_val(_Company,webaddress,flybussen,'http://www.flybussen.no/trondheim/').
 
-%%%% has_att_val(_company,webaddress,flybussen,'http://www.trondheimflybuss.no/').
+%%%% has_att_val(_Company,webaddress,flybussen,'http://www.trondheimflybuss.no/').
 %%%% Innstilt %% TA-110308
 
-has_att_val(_company,webaddress,flybussen,'http://www.vaernesekspressen.no/').
+has_att_val(_Company,webaddress,flybussen,'http://www.vaernesekspressen.no/').
 
 
-has_att_val(_company,webaddress,tram,'http://www.graakallbanen.no').
+has_att_val(_Company,webaddress,tram,'http://www.graakallbanen.no').
 
-has_att_val(_agent,streetaddress,atb,'Kongens gate 34'). %% TA-101112
+has_att_val(_Agent,streetaddress,atb,'Kongens gate 34'). %% TA-101112
 
-has_att_val(_agent,webaddress,atb,'http://www.atb.no'). %% %% agent? %% TA-101006
+has_att_val(_Agent,webaddress,atb,'http://www.atb.no'). %% %% agent? %% TA-101006
 
 %%% has_att_val( place,webaddress,tt,'http://www.atb.no'). 
 

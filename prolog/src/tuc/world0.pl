@@ -4,7 +4,9 @@
 %% CREATED 861231
 %% REVISED TA-990115
 
+:- module( tuc, [ area/2 ] ).           %% Module TUC  %% RS-111121
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Contains dummy (dynamic- or toy-) predicates for optional applications
 % to avoid missing  predicates error messages.

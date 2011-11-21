@@ -1194,7 +1194,7 @@ adjustdep999(_,DelDep,DelDep).
 %-
 
 passeqMOD0(TTP,Rid,user_location,STATNO,Station,Seq,DelArr,DelDep):- %% TA-110418
-    gps_origin(Station,_walk),
+    gps_origin(Station,_Walk),
     passeqMOD(TTP,Rid,STATNO,Station,Seq,DelArr,DelDep). 
 
 
@@ -1212,7 +1212,7 @@ passeqMOD0(TTP,Rid,Place,STATNO,Station,Seq,DelArr,DelDep) :-  %% TA-110318
 %-
 
 passMOD(TTP,Rid,user_location,STATNO,Station,DelArr,DelDep) :- %% TA-110418
-    gps_origin(Station,_walk),
+    gps_origin(Station,_Walk),
 	 passeqMOD(TTP,Rid,STATNO,Station,_Seq,DelArr,DelDep).
 
 

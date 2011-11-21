@@ -5,6 +5,20 @@
 
 %% Utility Routines that are not built in 
 
+:- module(utility, [ % (:=/2), (=:/2),
+%    for/2, %% Moved to declare
+    out/1,
+    output/1,
+    remember/1,
+    sequence_member/2,
+    splitlast/3,
+    test/1,
+    testmember/2,
+    todaysdate/1       %% Lifted up to main -> usually compiled in tucbuses.pl ?  %%-RS 111121
+  ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
 %:- absolute_file_name('$SHELL', Shell),
 %    absolute_file_name('~/', Dir),
 %    process_create(Shell, ['-c', [ ls, ' ', file(Dir) ]]).
@@ -12,20 +26,15 @@
 %% USES
 :- use_module( library(process) ).
 :- use_module( 'library' ).
+
 %:- ['../declare'].   %% Already called from main
-:-op( 714,xfx, := ).
+:-op( 714,xfx, := ).  %% Re-stating it here
 :-op( 713,xfx, =: ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- module(utility, [ % (:=/2), (=:/2),
-%    for/2, %% Moved to declare
-    output/1,
-    remember/1,
-    sequence_member/2,
-    test/1,
-    testmember/2
-  ] ).
+:- ['datecalc'].   %% Already called from main
+
 
 %X := Y :-       %% Set value X to Y
 %    user:set(X,Y).

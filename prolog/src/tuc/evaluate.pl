@@ -3,19 +3,22 @@
 %% CREATED TA-930528
 %% REVISED TA-090925
 
-:- ['../declare.pl'].
+:- module(tuc, [ fact/1 ] ).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:- ensure_loaded( user:'../declare.pl' ).
+:-op( 0, xfx, ako ).    %% "Disable" 'ako' as an operator for this file, "tightest binding"
 
 evaluateq2(nil):-!. 
 
-
 evaluateq2(R):- 
-    myflags(busflag,true), %% Set by Bustuc Application Program
+    user:myflags(busflag,true), %% Set by Bustuc Application Program
 	 !,
     ieval(R).            %%  interapp.pl 
 
 evaluateq2(R):- 
-    myflags(teleflag,true), %% TA-020605
+    user:myflags(teleflag,true), %% TA-020605
 	 !,
     ieval(R).            %%  interapp.pl 
 
@@ -84,11 +87,11 @@ evaluateq(nil).  %% In case queryflag =: true, only nil is produced as TQL.
 
 
 difact(F):-  
-    myflags(context_id,UID),
+    user:myflags(context_id,UID),
     difact(UID,F).
 
 update_focus(_):- %% TA-020228
-    myflags(queryflag,true),
+    user:myflags(queryflag,true),
     !.
 
 
@@ -107,7 +110,7 @@ update_focus(_).
 
 new_focus(X,M):-      %  Focus is allowed in permament store
 
-    myflags(context_id,UID),  
+    user:myflags(context_id,UID),  
     retractall(difact(UID,_ is_the M)),
     retractall(fact0(_ is_the M)),
     (permanence =: 1 -> 
@@ -235,7 +238,7 @@ rule(N,Y):-
 %% Hierarchy of facts 
  
 fact(X):-               %  Predefined interpretations 
-    myflags(deflag,true), % AD HOC FLAG  %% DEF IS  FOR COMMANDS
+    user:myflags(deflag,true), % AD HOC FLAG  %% DEF IS  FOR COMMANDS
     nonvar(X),                         %% John shows a car \= command
     X=Y/_,
     nonvar(Y),
@@ -256,14 +259,28 @@ fact(event/real/now):-              %% TA-010913
                                     %% before any event has taken place
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 included(X,Z):-
     fact(nrel/in/_/_/X/Y), 
     included(Y,Z).
 included(X,X). % Outside in
 
+instant(X,T):-     
+     var(X), 
+     testclass(T),
+     !.  %% X= ' not listable '. 
+
+instant(X,C):-  
+    fact(X isa C).
+
+
+instant(X,Z) :- % bottom up
+    (ako/Y/Z), 
+    instant(X,Y).
+ 
 %%
+
 winstant(_,X,T):-     
      var(X), 
      testclass(T),
@@ -274,23 +291,10 @@ winstant(W,X,Z) :-
     (ako/Y/Z),    %% Class Hierarchy is world independent 
     winstant(W,X,Y).
  
-instant(X,T):-     
-     var(X), 
-     testclass(T),
-     !.  %% X= ' not listable '. 
+:- op( 0, xfx, isa ).                   %% "Temporarily disable" 'isa' as an operator for this file, "tightest binding"
+winstant(W,X,C) :- fact(isa/W/C/X).     %% RS-111118 'isa' operator problems, from declare.
+:- op( 710, xfx, isa ).                 %% "Restore" 'isa' as an operator for this file, "tightest binding"
 
-%% RS-111118
-%winstant(W,X,C):-  
-%    fact(isa/W/C/X).
-
-instant(X,C):-  
-    fact(X isa C).
-
-
-instant(X,Z) :- % bottom up
-    (ako/Y/Z), 
-    instant(X,Y).
- 
 
 %%
    
@@ -302,7 +306,7 @@ valof(X,Y):-
 
 
 leveltest(M,N):-
-    myflags(maxdepth,K), %% maxlevel(K),
+    user:myflags(maxdepth,K), %% maxlevel(K),
     M < K,
     N is M + 1.
 

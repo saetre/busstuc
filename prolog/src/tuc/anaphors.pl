@@ -2,10 +2,18 @@
 %% SYSTEM TUC
 %% CREATED TA-930805
 %% REVISED TA-100201
+%% REVISED RS-111121
 
-:- ['../declare.pl'].
-
+%% MODULE: tuc
 %% Anaphoric resolution
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:- use_module( '../ptbwrite', [ track/2 ]).
+
+:- ensure_loaded( user:'../declare.pl').
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 resolve(P,Q):- % Only 1 external
     resolves(P,Q).

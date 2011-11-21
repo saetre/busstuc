@@ -9,7 +9,7 @@
 % Domains:   BOOLEAN ROUTETYPE STATION PLACE MINUTES
 %            DATE DAY DOMAIN CLOCK
 
-:- use_module('../utility/utility', [remember/1]).
+:- use_module('../utility/utility', [remember/1]).  %% Module util
 
 %* Import predicates
 
@@ -20,25 +20,24 @@ aroundmargin/1,            % (MINUTES)
 buslogtimeout/1,           % (MILLISEC)
 clock_delay/3,
 create_named_dates/0,
+%cmbus/2,                   % (NAME,NAMES,ROUTE)
 date_day_map/2,            % (DATE,DAY)
 dedicated_date/1,          % (DATE)
+delay_margin/1,             % (MINUTES)
+%corrx/2,                   % (DOMAIN,PLACE,PLACE)
+%hours_delay/2,             % (NUMBER)
 kindofday/2,               % (DAY,DAY)
 maxnumberofindividualdepartures/1,    % (NUMBER)
 maxtraveltime/1,           % (MINUTES)
 maxarrivalslack/1,         % (MINUTES)
 morning_break/1,           % (CLOCK) 
 named_date/2,              % (NAME)
+%nightbus/1,                % (ROUTE)
 orig_named_date/2,
 
-delay_margin/1,             % (MINUTES)
-%corrx/2,                   % (DOMAIN,PLACE,PLACE)
-%nightbus/1,                % (ROUTE)
-%hours_delay/2,             % (NUMBER)
-%cmbus/2,                   % (NAME,NAMES,ROUTE)
-%spurious_return/1,         % (ROUTE,PLACE)
-
-
 softime/3                 % (NAME,CLOCK,CLOCK)
+%spurious_return/1         % (ROUTE,PLACE)
+%todaysdate/1           %% Exported as timedat:pred from datecalc.pl
 ]).
 
 
@@ -65,7 +64,8 @@ create_named_dates :-
     list_of_named_dates(L), 
     for(
          ( member(A,L), orig_named_date(A,B) ),
-         util:remember(named_date(A,B))). %% To be     refined
+          %% From util:
+         remember(named_date(A,B))). %% To be     refined  
 
 for(P,Q) :-
   P,Q ,

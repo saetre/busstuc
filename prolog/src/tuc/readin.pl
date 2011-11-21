@@ -3,8 +3,12 @@
 %% CREATED  TA-910531
 %% REVISED  TA-110725
 
+%% MODULE: tuc
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%% %%%%%%%% RS-111118
- :- ['../declare.pl'].
+%:- ensure_loaded( user:'../declare.pl').
     
 %% NB 0015 \-> 2415
 
@@ -53,14 +57,14 @@ write_prompt(E):-
 
 %%% Miscellaneous for File Reading
 
-%write_from_user(P):-
-%    myflags(talk,1), 
-%    !,
+write_from_user(P):-
+    myflags(talk,1), 
+    !,
 %    opentalk(question),
-%        doing(P,0), %% out to \nat\scratch
+        doing(P,0). %% out to \nat\scratch
 %    closetalk(question).
-%
-%write_from_user(_):-!.
+
+write_from_user(_) :- !.
 
 
 write_from_file(P):- %% TA-110207
