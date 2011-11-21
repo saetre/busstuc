@@ -11,13 +11,15 @@
 :- use_module( library(timeout) ). 
 %:-use_module( library(system) ).
 
-:- use_module( 'utility/utility', [] ).
-:- use_module( 'db/timedat' ).  % 
+:- use_module( 'db/timedat' ).           %% Module db
+
+:- use_module( 'utility/utility', [] ).  %% Module util
+        % :- ['utility/datecalc.pl'].
 
 :- compile('monobus.pl'). %% // after main.pl  Unknown error 
 
 :- ['tuc/readin.pl'].       % reads text to a list
-:- ['utility/datecalc'].
+:- ['tuc/evaluate'].
 
 %% Operators used by TUC
 :- ['declare.pl']. %% Import several common operators, and  myflags value-map
@@ -199,9 +201,10 @@ english :-
 run(L):- 
    language := L,
    run.
-    
+
 
 run :- 
+%  (origlanguage := norsk),     %% 
     nl,
     seen,              %% evt. read-files
     dialog:=0, 

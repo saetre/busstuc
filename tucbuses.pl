@@ -17,10 +17,10 @@
 backslash('\\'). 
 style_check(_).
 
-?- compile('declare.pl').
+%?- compile('declare.pl').  %% Loaded in respective modules: app, db, dialog, tagger, tuc, utility, etc.?
 %?-compile('utility/drucke_baum.pl'). %% TA-061030
-?- compile('utility/datecalc.pl').  %% Kalles fra utility.pl
-?- compile('utility/makeauxtables.pl'). 
+%?- compile('utility/datecalc.pl').  %% Kalles fra utility module
+%?- compile('utility/makeauxtables.pl'). %% From utility
 ?- compile('utility/extracut.pl').  %% TA-080201
 
 :- (airbusflag := false). %% NEW FLAG %% TA-090331
@@ -56,9 +56,9 @@ dcg_file(U) :-language(L),dcg_file(L,U).
 script_file(S):-
     language(L),script_file(L,S).
 
-prompt(' ') :-
-   norsource := true. %% TA-110207
-
+%prompt(' ') :-
+%   norsource := true. %% TA-110207
+%
 prompt(P) :-
     language(L),
     prompt2(L,P),

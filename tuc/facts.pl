@@ -3,12 +3,25 @@
 %% CREATED  TA-921129
 %% REVISED  TA-110707
 
+:- module( tuc, [ isa/2, have/4 ]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Static Facts for common sense .
 %  Common to all applications
 %  Facts are deliberately kept separate from semantics
 
-:- ['../declare.pl'].
-:-op( 710,xfx, ako ).
+%:- use_module( main:'../declare.pl', [ myflags/2, set/2, ':='/2 ] ).
+:- use_module( main:'../declare.pl', [ myflags/2 ] ).
+:- use_module( app:'../app/busanshp', [ description/2 ] ).
+
+:- use_module( db:'../db/busdat', [ vehicletype/2 ] ).
+
+:- use_module( tuc:evaluate, [ fact/1 ] ).
+:- use_module( tuc:names, [ country/1 ] ).
+:- op( 0, xfx, ako).
+:- use_module( tuc:semantic, [ ako/2 ] ).
+:- op( 710, xfx, ako).
+:- use_module( tuc:world0, [ area/2 ] ).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -28,9 +41,9 @@ have(_,attribute,X,Y):-  X has_a Y .
 
 have(_,identity,X,X).
 
-have(_,subclass,X,Y):- Y ako X.
+have(_,subclass,X,Y) :- Y ako X.
 
-have(_,superclass,X,Y):- X ako Y.
+have(_,superclass,X,Y) :- X ako Y.
 
 have(_,subject,X,Y):-
     iv_templ(X,Y);
@@ -459,7 +472,7 @@ december  isa  month .
 %         Capital,
 %         Currency)
 
-X isa country:-
+X isa country :-
     country(X).
 
 %% google   isa  god. %% :-) %%% 

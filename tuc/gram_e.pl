@@ -2,18 +2,26 @@
 %% SYSTEM TUC
 %% CREATED TA-930310
 %% REVISED TA-110823
+%% REVISED RS-111121
 
-%%% %%%%%%%% RS-111118
- :- ['../declare.pl'].
-
-:-module(gram_e,[]).
-
+%% MODULE: gram_e (in tuc?)
 %  Consensical Grammar for English
+%:- op( 1150, xfx, --->).
+:- module( gram_e, [ '--->'/2 ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:- use_module( main:'../declare.pl', [] ).
+%:- use_module( main:'../declare.pl', [ myflags/2, set/2, ':='/2 ] ).
+
+%% RS-111118 "Disable" 'ako' as an operator for this file, "tightest binding"
+:- op( 0, xfx, ako ).           %% A very bad hack to remove syntax error, TODO: Fix properly
+%% Legal rewrite? See lines ~700:
+%    whatq(which(X):::X ako Man) --->   %% What is a man
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%wx(adj2(NIL,GOOD)) ---> w(adj2(GOOD,NIL)). %% Ad Hoc
-
+wx(adj2(NIL,GOOD)) ---> w(adj2(GOOD,NIL)). %% Ad Hoc
 
 
 %% Consensical Grammar   (Context Sensitive Categorial Attribute Logic Grammar)
@@ -189,7 +197,7 @@ command(doit:::exists(S:Event)::Q) ---> %
 
     not_look_ahead(w(verb(be,_,_))), %% are you 
 
-    lexv(_vt1,V,pres,fin), 
+    lexv(_Vt1,V,pres,fin), 
     {\+ testmember(V,[be,be1,thank,do1,cost])}, %%  do[es] the bus stop.
     name_phrase(_IND,X,P1,P)
        \ w(name(tuc,n,savant)), 
@@ -198,7 +206,7 @@ command(doit:::exists(S:Event)::Q) ---> %
     verb_phrase1(X,S,id,ERS) 
              \
                                             % capture clausal_complement
-    lexv(_vt2,V,pres,fin),
+    lexv(_Vt2,V,pres,fin),
     {negate(N,P,Q)},
 
     addressat0. 
@@ -712,9 +720,7 @@ whatq(WhichX:::P) --->
     qverb_phrase(X,S,N, ERS), 
     {negate(N,Q1,Q2)}.
 
-
-
-whatq(which(X)::: ako/Man/X) --->   %% What is a man
+whatq(which(X):::ako/Man/X) --->   %% What is a man
      {\+ myflags(dialog,1)},  
      whatbe(1),
      a0,
@@ -1108,7 +1114,7 @@ do_phrase(X,S,N, Com3P3 ) --->    % Complement Combination % swapped Com3/Com1
 
 vp_kernel(Give,X,S,id,  Com3:(P1 and Q1)) --->
 %%     {myflags(textflag,true)},    %% not nec for buses ?
-    lexv(dtv,Give,_tense,fin), 
+    lexv(dtv,Give,_Tense,fin), 
     noun_phrase1(Y, E1,P1),     
     noun_phrase1(Z,E1,Q1),     
     {dtv_template(Give,X, Y, Z, S,Code)},
@@ -1126,7 +1132,7 @@ vp_kernel(have,X,_S,N,  _:P )  ---> %% NB
 
 
 vp_kernel(V,X,S,N,  Com3:P1 ) --->
-    lexv(tv,V,_tense,fin), 
+    lexv(tv,V,_Tense,fin), 
     reflexiv0(V), 
     negation0(N), 
     event00(S,P,Com3,E1),         
@@ -1134,7 +1140,7 @@ vp_kernel(V,X,S,N,  Com3:P1 ) --->
     {tv_template(V,X,Y1,S,P)}.
 
 vp_kernel(V,X,S,N,  Com3:E1) --->
-    intrans_verb(V,X,S,P,_tense,fin), 
+    intrans_verb(V,X,S,P,_Tense,fin), 
     reflexiv0(V),  %% + there/it  what time is it 
     negation0(N),
     event00(S,P,Com3,E1). 
@@ -1936,7 +1942,7 @@ rel_clause(Y:T,P1,P1 and P2) ---> %% a method for killing john exists
 rel_clause(Y:T,P1,P1 and P2) ---> %% (there is a) way to kiss mary
     {myflags(textflag,true)},
     infinitive, 
-    w(verb(Kiss,_inf,fin)),     %% 
+    w(verb(Kiss,_Inf,fin)),     %% 
     { tv_templ(Kiss,_,_)},
 
     % Rough test  Y can be a complement object of kiss
@@ -1953,7 +1959,7 @@ rel_clause(Y:T,P1,P1 and P2) ---> %% (there is a) way to kiss mary
 rel_clause(Y,P1,P1 and P2) ---> %% (mary is a) woman to kiss
     {myflags(textflag,true)},
     infinitive, 
-    w(verb(Kiss,_inf,fin)),
+    w(verb(Kiss,_Inf,fin)),
     % Rough test  Y can be object of kiss
     { tv_templ(kiss,_,Woman)},
     {constrain(Y,Woman)},
@@ -2213,7 +2219,7 @@ np_kernel(Ind, X,P0,P1,VP ,P) ---> % #2
  
 np_head1(Cind, XT,Q0 and P0,P1,VP, P) ---> 
     determiner0(Num,Cind,XT,P1,VP,P),   
-    w(name(TT,_n,_)),  
+    w(name(TT,_N,_)),  
     noun(_Bus,Num,u,n,  XT, Q0),
     {adjname_template(TT,XT,_,P0)},
     !,accept.
@@ -2418,7 +2424,7 @@ np_head(0, XT,P0,P1,VP,
     noun(_,_Num,_,gen,  Y, YisaP),     % program's 
     !,
     preadjs0(Alist),         %% my last question 
-    noun_compound(XT,Q0,_sin), 
+    noun_compound(XT,Q0,_Sin), 
  
     {preadjs_template(Alist,XT,Q0,P0)},
                                         % this mans daughter Mary
@@ -2496,7 +2502,7 @@ name_compound(X,QP) ---> % Must begin with a name
 %-----------
 
 noun_compound(X,XisaBus and QP,Num1) ---> % ... TT bus
-    w(name(TT,_n,_)),  
+    w(name(TT,_N,_)),  
     noun(_Bus,Num1,u,n,  X, XisaBus),
     {adjname_template(TT,X,_,QP)}.    
 

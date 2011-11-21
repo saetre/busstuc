@@ -3,8 +3,14 @@
 %% CREATED  JB-970220 
 %% REVISED  EH-031120 TA-110503 RS-111025
 
-:- ['../declare.pl'].
-:-op( 710,xfx, ako ).
+:- module( app, [ description/2 ] ).  %% RS-111121 Module App
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%:- use_module( main:'../declare.pl', [ myflags/2, set/2, ':='/2 ] ).
+:- use_module( main:'../declare.pl', [ myflags/2 ] ).
+:- use_module( tuc:'../tuc/evaluate', [ fact/1 ] ).
+:- use_module( tuc:'../tuc/semantic', [ ako/2 ] ).
 
 %%%%%%%%% COMMON VERSION BUSTER/BUSTUC  %%%%%%%%%%%%%%%
 
@@ -874,7 +880,7 @@ justoutputthelist0(Deps,DirPlace,Out,Opts, dir(Dep1,Bingo)):-  %% no warning
 
  dest_station( X3LIST, RID,   DEST):-
      member(X3,X3LIST),
-     X3 = x3(TDLIST,_busno,_orig),
+     X3 = x3(TDLIST,_Busno,_Orig),
      member( td(_, RID , _,DEST),TDLIST),
      !.
 
@@ -1285,13 +1291,13 @@ firstarrive(Rid,Place,Station,   DelArr2,DelDep):-
 %%%%%%%%    !.  %% NB  Gløs -> D2 CUT D2 -> Buenget 
                               %%
  
-outsmalldeps( [],_sentrum,_,_opts):- %% Empty ( <= error ?) 
+outsmalldeps( [],_Sentrum,_,_Opts):- %% Empty ( <= error ?) 
     !,
     nl,
     output('*** Jeg finner ingen forbindelser ***'). %% error alarm
 
  
-outsmalldeps( [   x3([],_,_)    ],_sentrum,_,_opts):- %% Empty ( <= error ?)%%
+outsmalldeps( [   x3([],_,_)    ],_Sentrum,_,_Opts):- %% Empty ( <= error ?)%%
     !,
     nl,
     output('***  Jeg finner ingen forbindelse ***'). %% error alarm
@@ -1959,10 +1965,10 @@ outcorr(false,midans(_StrBusN,OffTime,OffStation,_EndBusN,OnTime,OnStation),
 outcorr(false,midans(StrBusN,OffTime,OffStation,EndBusN,OnTime,OnStation),
 
 	  (bcp(you),bcp(can),bcp(change),
-       bcp(from),  bcp(_Bust1),
+       bcp(from),  bcp(_bust1),
        bwr(StrBusN),bcp(atstation),bwr(OffStation),bcp(attime),bwt(OffTime),
        nl,
-       bcp(to), bcp(_Bust2),
+       bcp(to), bcp(_bust2),
        bwr(EndBusN),bcp(atstation),bwr(OnStation),bcp(attime),bwt(OnTime),
        period)
           
@@ -1972,8 +1978,8 @@ outcorr(false,midans(StrBusN,OffTime,OffStation,EndBusN,OnTime,OnStation),
     \+ myflags(smsflag,true),
     !,
 
-    vehicletype(StrBusN,_Bust1),
-    vehicletype(EndBusN,_Bust2). 
+    vehicletype(StrBusN,_bust1),
+    vehicletype(EndBusN,_bust2). 
 
 
 
@@ -2043,14 +2049,14 @@ writename(TA):-bwrbc(TA).
 % 
 
 
-print_paraphrase_message(nearest_station(_STARTSTOP,A,B)):- % e.g. Holdeplassen nærmest A er B
+print_paraphrase_message(nearest_station(_sTARTSTOP,A,B)):- % e.g. Holdeplassen nærmest A er B
     !,
-    printmessageunconditionally(nearest_station(_STARTSTOP,A,B)). 
+    printmessageunconditionally(nearest_station(_sTARTSTOP,A,B)). 
 
 
-print_paraphrase_message(nearest_station(_STARTSTOP,A,B)):- % e.g. Holdeplassen nærmest A er B
+print_paraphrase_message(nearest_station(_sTARTSTOP,A,B)):- % e.g. Holdeplassen nærmest A er B
     !,
-    printmessageunconditionally(nearest_station(_STARTSTOP,A,B)). 
+    printmessageunconditionally(nearest_station(_sTARTSTOP,A,B)). 
 
 print_paraphrase_message(X):- % e.g. NOT 27. Aug. 2005 er en  lørdag.
    printmessage(X).
@@ -2156,7 +2162,7 @@ printmess1(numberof(N,day)) :-
      out(N), doubt(days,dager),period.
 
 
-printmess1(route_period(_tt,_tt07,Date1,_Date2)):-
+printmess1(route_period(_Tt,_Tt07,Date1,_Date2)):-
      writedate(Date1),nl.
 
 
@@ -2232,7 +2238,7 @@ printmess1(dateis(Year,Month,DayNr,Day)):-
          period.
 
 
-%printmess1(otherperiod(_date)):- 
+%printmess1(otherperiod(_Date)):- 
 %    myflags(airbusflag,true),
 %    !,
 %    airbus_module(FB),
@@ -2244,7 +2250,7 @@ printmess1(otherperiod(Date)):-
     TT=tt,                          %% Default  Ad Hoc 
     current_period(TT,CP,_,_),     
     Period == CP,             %% Same period as today
-    default_period(TT,_s_w,CP),  %% and it is standard 
+    default_period(TT,_S_w,CP),  %% and it is standard 
     !.
 
 printmess1(otherperiod(Date)):- %% If not, print message
@@ -2390,7 +2396,7 @@ pmess(howtuchelp):- home_town(Trondheim),
 		    bwr(Trondheim),period0. 
 
 
-pmess(irrelevant(colour(_bus))) :- 
+pmess(irrelevant(colour(_Bus))) :- 
     (bcpbc(thecolour),bcp(ofabus),bcp(is),bcp(irrelevant)).
 
 pmess(irrelevant(speed(bus))) :- 
@@ -3812,7 +3818,7 @@ i_or_a_bus(B52,Bus,B52):-
     !.
 
 i_or_a_bus(Bus,_bus,Bus):- 
-    dmeq(vehicle,_bus),   %%  _bus ikke station  hpl på huseby 
+    dmeq(vehicle,_bus),   %%  _Bus ikke station  hpl på huseby 
     user:unbound(Bus),
     !.
 
@@ -4325,7 +4331,7 @@ bwrsingleorlist((Elem,List)) :-
 
 
 
-bwrbus(_bus_,One):-  
+bwrbus(_Bus_,One):-  
      exbusname(One,Klaburuta),
      !,
      bwr(Klaburuta).   
@@ -4340,7 +4346,7 @@ bwrbus(Bus,One):-
     bwrbusno(One).
 
 
-bwrbusbc(_bus_,One):- 
+bwrbusbc(_Bus_,One):- 
      exbusname(One,Klaburuta),
      !,
      bwr(Klaburuta).   

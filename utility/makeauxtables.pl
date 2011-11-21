@@ -115,7 +115,7 @@ createstatbus:-
     dumppredas(statbus0(X,Y),statbus(X,Y)).
 
 stallbuss(Station):-  %% NB use actual buses names 
-    set_of(BusName,(passeq(Rid,_statno,Station,_,_,_), %% TA-100311
+    set_of(BusName,(passeq(Rid,_Statno,Station,_,_,_), %% TA-100311
                     route(Rid,_Bus,BusName)) 
           ,Z), 
     \+ (Z=[]),
@@ -141,7 +141,7 @@ createbusstat:-
 busstall(Bus):- 
     set_of(Station,
 
-   (route(Rid,Bus,_),passeq(Rid,_statno,Station,_,_,_)) 
+   (route(Rid,Bus,_),passeq(Rid,_Statno,Station,_,_,_)) 
 
           ,Z), 
     \+ (Z=[]),
@@ -200,7 +200,7 @@ nopassanyway(D,S):-
 passanyway(D,S):-
      domain_module(D,TTP),
      TTP \== nil, 
-     TTP:ex_passes4(_Trace,_statno,S,_Seq,_DelArr,_DelDep),
+     TTP:ex_passes4(_Trace,_Statno,S,_Seq,_DelArr,_DelDep),
 %%     TTP:passes3(_Trace,S,_Seq,_DelArr,_DelDep),
      !. 
 
@@ -213,7 +213,7 @@ fromstation1(A):-
   
     tafind(A,(xproperstation(A), \+ corr_ht(A)), 
 
-               taforall(Rid,passeq(Rid,_statno,A,_,_,D1), 
+               taforall(Rid,passeq(Rid,_Statno,A,_,_,D1), 
     
                             taforall(D2,passes_ht(Rid,D2), 
 
@@ -226,7 +226,7 @@ tostation1(A):-
   
     tafind(A,(xproperstation(A), \+ corr_ht(A)), 
 
-               taforall(Rid,passeq(Rid,_statno,A,_,_,D1), 
+               taforall(Rid,passeq(Rid,_Statno,A,_,_,D1), 
     
                             taforall(D2,passes_ht(Rid,D2), 
 
@@ -242,7 +242,7 @@ corr_ht(A):- corr(A,hovedterminalen).
 %%              corrx(A,hovedterminalen). %% Tram
 
 passes_ht(Rid,Delay):-
-    passeq(Rid,_statno,MD,_,_,Delay), 
+    passeq(Rid,_Statno,MD,_,_,Delay), 
     corr_ht(MD). 
 
 
@@ -330,7 +330,7 @@ station_reference(X):-
 %% REVISED TA-020802
 
 %% Make transbuslist 
-%%% TTP:ex_passes4(_Trace,_statno,S,_Seq,_DelArr,_DelDep)
+%%% TTP:ex_passes4(_Trace,_Statno,S,_Seq,_DelArr,_DelDep)
 
 makenext(TTP) :-
   set_of(next(X,Y),

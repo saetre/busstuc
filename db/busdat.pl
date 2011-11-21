@@ -14,53 +14,55 @@
 
 %* List of predicates
 
+:- module( busdat, [
+
+        airbus/1,                  % (BUS?)
+        airbusstation/1,           % (STATION)
+        bus_depend_station/3,      % (ROUTE,PLACE,STATION)
+        central_fromstation/1,     % (STATION) avoid default to ST
+        corresp0/2,                % (PLACE,PLACE)
+        corresponds/2,             % (STATION,STATION)
+        corresp/2,                 % (PLACE,PLACE)
+        cutloop_station/2,
+        
+        disallowed_night/1,        % (DATE)
+        default_destination/2,     % (ROUTE,STATION)
+        
+        nightbusdestination/1,     % (STATION)
+        central_airbus_station/1,   % (STATION) 
+        
+        nostationfor/1,            % (PLACE)
+        nostationfor1/1,           % (PLACE)
+        %%    // nostation/1,               % (PLACE) -> places.pl
+        xforeign/1,                % (PLACE)
+        %% foreign/2,                 % (DOMAIN,PLACE) -> places.pl
+        %% foreign/1,                 % (PLACE) -> places.pl
+        %% abroad/1,                  % (PLACE) -> names.pl
+        %% city/1,                    % (PLACE) -> names.pl
+        
+        exbusname/2,               % (ROUTE,ROUTE)
+        fromstationonly/1,         % (STATION)
+        intbusname/2,              % (ROUTE,ROUTE)
+        intbusnr/2,                % (ROUTE,ROUTE)
+        nightbusstation/1,         % (STATION) 
+        internal_airbus/1,         % (BOOLEAN)
+        home_town/1,               % (PLACE)
+        moneyunit/1,               % (NAME)
+        %% busfare/2,                 % (NUMBER,NUMBER) 
+        busfare2/2,                % (ROUTETYPE,NUMBER*)
+        synbus/2,                  % (NAME,ROUTE)
+        tramstation/1,             % (STATION)
+        
+        explicit_part_name/1,      % (NAME)
+        endneighbourhood/2,        % (ROUTE,PLACE)
+        railway_station/1,
+        tostationonly/1,           % (STATION) %% TA-110228
+        vehicletype/2
+    ]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 :- use_module( 'places', [isat/2] ).
-
-:- module(busdat,[
-
-airbus/1,                  % (BUS?)
-airbusstation/1,           % (STATION)
-bus_depend_station/3,      % (ROUTE,PLACE,STATION)
-central_fromstation/1,     % (STATION) avoid default to ST
-corresp0/2,                % (PLACE,PLACE)
-corresponds/2,             % (STATION,STATION)
-corresp/2,                 % (PLACE,PLACE)
-cutloop_station/2,
-
-disallowed_night/1,        % (DATE)
-default_destination/2,     % (ROUTE,STATION)
-
-nightbusdestination/1,     % (STATION)
-central_airbus_station/1,   % (STATION) 
-
-nostationfor/1,            % (PLACE)
-nostationfor1/1,           % (PLACE)
-%%    // nostation/1,               % (PLACE) -> places.pl
-xforeign/1,                % (PLACE)
-%% foreign/2,                 % (DOMAIN,PLACE) -> places.pl
-%% foreign/1,                 % (PLACE) -> places.pl
-%% abroad/1,                  % (PLACE) -> names.pl
-%% city/1,                    % (PLACE) -> names.pl
-
-exbusname/2,               % (ROUTE,ROUTE)
-fromstationonly/1,         % (STATION)
-intbusname/2,              % (ROUTE,ROUTE)
-intbusnr/2,                % (ROUTE,ROUTE)
-nightbusstation/1,         % (STATION) 
-internal_airbus/1,         % (BOOLEAN)
-home_town/1,               % (PLACE)
-moneyunit/1,               % (NAME)
-%% busfare/2,                 % (NUMBER,NUMBER) 
-busfare2/2,                % (ROUTETYPE,NUMBER*)
-synbus/2,                  % (NAME,ROUTE)
-tramstation/1,             % (STATION)
-
-explicit_part_name/1,      % (NAME)
-endneighbourhood/2,        % (ROUTE,PLACE)
-tostationonly/1,           % (STATION) %% TA-110228
-
-railway_station/1
-]). 
 
 railway_station(ts). %% NB not STATION ! %% TA-110724
 

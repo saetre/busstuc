@@ -5,8 +5,14 @@
 %% REVISED  TA-110825
 %% REVISED  RS-111118
 
-:- use_module('../utility/utility.pl').
+:- module(app, [ double/0, rule/2, tracevalue/1 ] ).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:- ensure_loaded('../declare').
+ :-op( 0, xfx, ako ).    %% "Disable" 'ako' as an operator for this file, e.g. "tightest binding"
+
+:- use_module( '../utility/utility', [] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -20,36 +26,37 @@
 
 % is operator prefixed with rule RuleID
 
-:- op(1150,xfy,rule).  
+:- op(1150,xfy,rule).
 
 :- op(1120, fy,is).
 :- op(1110,xfy,id).
 :- op(1110,xfy,ip).
 
+:- op( 715, fy,add).
+:- op( 715, fy,assume). 
 :- op( 715, fy,context).    %% similar to ispresent, but doesnt mark as saw
 :- op( 715, fy,addfront).   %% (for messages etc) 
 :- op( 725, fy,addcon).     %% add if not already ispresent 
+:- op( 715, fy,exactly). 
+:- op( 715, fy,ispresent).
+:- op( 715, fy,no).
+%:-op( 715, fy,not).  % Already defined in TUC: declare.pl
+:- op( 715, fy,remove).
 :- op( 715, fy,removeall).  %% remove all of a list
 :- op( 715, fy,removeif).   %% remove all if any , always succeed 
 :- op( 715, fy,replaceall). %% replace iteratively all elements 
 :- op( 715, fy,replaceif).  %% replace if occuring. 
 :- op( 715, fy,replace).
 :- op( 715, fy,replacelast).
+%:-op( 715, fy,to).     %% not used, interferes with SWI-Prolog /srel/to/--
 :- op( 715,xfy,with).
-%%  :- op( 715, fy,to). %% not used, interferes with SWI-Prolog /srel/to/--
-%%  :- op( 715,xfy,append).
-:- op( 715, fy,no).
-:- op( 715, fy,exactly). 
-:- op( 715, fy,add).
-:- op( 715, fy,remove).
-:- op( 715, fy,ispresent).
-:- op( 715, fy,assume). 
-%% :- op( 715, fy,not).  % Already defined in TUC
+
 :- op( 714,xfy,seq).     %% directly sequence 
 :- op( 714,xfy,cond).    %% new   not X isa place cond bound(X)
 :- op( 714,xfy,when).    %% same as cond %% TA-081106
 
-:- op( 712, fy,saw). % Lower than "not", higher than "isa"
+%% seen was reserved in sicstus4
+:- op( 712, fy,saw). % Lower than "not", higher than "isa".
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -126,14 +133,14 @@ nightbus
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                                    % single-question application
-single :- user:myflags(dialog,0) ;   % if dialog is 0   or
-	       \+ user:myflags(dialog,_). % if dialog is undefined .
+single :- myflags(dialog,0) ;   % if dialog is 0   or
+	       \+ myflags(dialog,_). % if dialog is undefined .
 
                                    % dialog-question application
-double :- user:myflags(dialog,1).    % if dialog is 1
+double :- myflags(dialog,1).    % if dialog is 1
 
 
-tracevalue(L) :- user:myflags(traceprog,L).  % Trace level 1-7
+tracevalue(L) :- myflags(traceprog,L).  % Trace level 1-7
 
 
 %%%%%%%%    -> dmeq.pl %%%%%%%%
@@ -252,7 +259,7 @@ id  flag(nightbusflag),
     clear,
     add message(noinfoabout(nightbus)), 
     add flag(exit)
-ip  user:myflags(disablenightbus,true).
+ip  myflags(disablenightbus,true).
 
 
 nonightbusatall2 rule %% nattbuss til risvollansenteret (but no nightbusatall)
@@ -260,7 +267,7 @@ is  _ isa midnight,clear
 id  clear,
     add message(noinfoabout(nightbus)), 
     add flag(exit)
-ip  user:myflags(disablenightbus,true).
+ip  myflags(disablenightbus,true).
 
 
 %%% USE CONTEXT  (Dialog)
@@ -369,7 +376,7 @@ ip  internal_airbus(true),
 
 
 airbusquery4 rule   
-is  context _værnes isa airport
+is  context _Værnes isa airport
 id  not flag(airbus),
     add flag(airbus)        
 ip  internal_airbus(true),
@@ -417,8 +424,8 @@ id  not flag(nightbusflag),
 ip  user: set(nightbusflag,true).  %% must be reset initially
 
 nightbusquery4 rule   %% move this after shunt ?
-is  context _X isa midnight,       
-    not doit/exist/_X/_  ,
+is  context _x isa midnight,       
+    not doit/exist/_x/_  ,
     not srel/before/time/_/_ ,   %% before midnight is NOT nightbus
     not nrel/before/_/time/_/_, %%
     not srel/around/time/_/_ ,   %% around  midnight is not? nightbus
@@ -1051,14 +1058,14 @@ ip  dmeq(tuc,Bustuc),
 
 
 seesomething rule 
-is  replaceall (Nova isa _place, A isa _movie, nrel/on/_/place/A/Nova, dob/see/I/A/B)
+is  replaceall (Nova isa _place, A isa _Movie, nrel/on/_/place/A/Nova, dob/see/I/A/B)
     with       (Nova isa _place, doit/go/I/B, srel/to/place/Nova/B)
 id  []
 ip  [].
 
 
 wonderquery rule 
-is  replaceall (new,query/I/B/_,I isa _whatever)
+is  replaceall (new,query/I/B/_,I isa _Whatever)
     with       (which(B))
 id  []
 ip  [].
@@ -1101,7 +1108,7 @@ id  []
 ip  [].
 
 answerin rule 
-is  replaceall (Norwegian isa language,Answer/tuc/A,srel/ION/_language/Norwegian/A)
+is  replaceall (Norwegian isa language,Answer/tuc/A,srel/ION/_Language/Norwegian/A)
     with       (Norwegian isa language,speak/tuc/Norwegian/A)
 id  []
 ip  dmeq([tell,answer],Answer),dmeq([in,on],ION), 
@@ -1465,13 +1472,13 @@ id  []
 ip  [].
 
 nameon rule %% Name on a thing X = the thing X 
-is  replaceall (dob/list/tuc/A/E,nrel/On/name/_thing/A/B,A isa name,B isa Bus)
+is  replaceall (dob/list/tuc/A/E,nrel/On/name/_Thing/A/B,A isa name,B isa Bus)
     with       (dob/list/tuc/B/E,B isa Bus) 
 id  []
 ip  dmeq([on,to,of],On).  
 
 nameof rule % subsumed ???
-is  replaceall (which(A), nrel/On/name/_thing/A/T,A isa name)
+is  replaceall (which(A), nrel/On/name/_Thing/A/T,A isa name)
     with       (which(T)) 
 id  []
 ip  dmeq([on,to,of],On).  
@@ -1554,7 +1561,7 @@ ip  dmeq([give,receive,show,make],Give),
 
 
 depofbus rule %%   before shunt
-is  replaceall (which(A),B52 isa bus,A isa departure,nrel/_to/departure/_bus/A/B52)
+is  replaceall (which(A),B52 isa bus,A isa departure,nrel/_To/departure/_Bus/A/B52)
     with       (which(A),B52 isa bus,A isa time,doit/go/B52/B,srel/in/time/A/B,event/real/B)
 id  []
 ip  [].
@@ -1581,14 +1588,14 @@ ip  [].
 
 
 havemeetingaftertime rule  %% meeting after time means arrival before time
-is  replaceall  (has/agent/meeting/I/A, nrel/_on/meeting/place/A/Nth ,srel/_after/time/T/B,event/W/E) 
+is  replaceall  (has/agent/meeting/I/A, nrel/_On/meeting/place/A/Nth ,srel/_After/time/T/B,event/W/E) 
     with        (doit/arrive/I/E,srel/at/place/Nth/E,srel/before/time/T/B,event/W/E) 
 id  []
 ip  [].
 
 
 meetingaftertime rule  %% meeting after time means arrival before time 
-is  replaceall  (nrel/on/meeting/place/A/Nth,event/W/E,srel/_after/time/T/B) 
+is  replaceall  (nrel/on/meeting/place/A/Nth,event/W/E,srel/_After/time/T/B) 
     with        (doit/be1/A/E,srel/to/place/Nth/E,event/W/E,srel/before/time/T/B) 
 id  []
 ip  [].
@@ -1640,13 +1647,13 @@ ip  [].
 
 
 laststop1 rule % What is the last station for Bus 
-is  adj/_/last/A/_,A isa station, has/_vehicle/station/B/A,B isa Bus 
+is  adj/_/last/A/_,A isa station, has/_Vehicle/station/B/A,B isa Bus 
 id  add endstations(B,_)
 ip  bound(B), dmeq(vehicle,Bus).
 
 
 laststopfor rule % What is the last station for Bus 
-is  A isa endstation, doit/be1/A/E,srel/For/_vehicle/B/E, {dmeq([for,of],For)},
+is  A isa endstation, doit/be1/A/E,srel/For/_Vehicle/B/E, {dmeq([for,of],For)},
     B isa Bus,
     clear
 id  clear,
@@ -2194,8 +2201,8 @@ ip	 [].
 warning_sentence  rule %% warning + sentence 
 is  []
 id  addcon flag(warningflag) 
-ip  user:myflags(warning_sentence,true), %%  reset by process
- \+ user:myflags(warningflag,true),
+ip  myflags(warning_sentence,true), %%  reset by process
+ \+ myflags(warningflag,true),
     user:set(warningflag,true).
 
 warning_sentence_nosms  rule %% warning + sentence,nosms -> cannot
@@ -2209,28 +2216,28 @@ ip  \+ myflags(smsflag,true).
 warningflag1 rule %%  a warning => set warningflag
 is   _ isa notification
 id  addcon flag(warningflag) 
-ip  \+ user:myflags(warningflag,true),
+ip  \+ myflags(warningflag,true),
        user:set(warningflag,true).
 
 
 warningflag2 rule %% varsler meg at /om/når 
 is  dob/notify/_/A/_, A isa coevent       %% do notify coevent <--
 id  addcon flag(warningflag) 
-ip  \+ user:myflags(warningflag,true),
+ip  \+ myflags(warningflag,true),
        user:set(warningflag,true).
 
 
 warningflag3 rule %% notify   du varsler []
 is  context doit/notify/_/_     %% do notify duration 
 id  addcon flag(warningflag) 
-ip  \+ user:myflags(warningflag,true),
+ip  \+ myflags(warningflag,true),
        user:set(warningflag,true).
 
 
 warningflag4 rule %% set warningflag 
 is  context dob/notify/_/_/_
 id  addcon flag(warningflag) 
-ip  \+ user:myflags(warningflag,true),
+ip  \+ myflags(warningflag,true),
        user:set(warningflag,true).
 
 
@@ -2239,7 +2246,7 @@ hourswarningadhoc rule %% trans %% Horrendous Hack
 is  replaceall ( N isa hour,      dob/notify/T/N/E)
     with       ( N60 isa minute,  dob/notify/T/N60/E)
 id  []
-ip  user:myflags(warningflag,true),
+ip  myflags(warningflag,true),
     number(N), N =< 24,  %%  ass. no change of date
     N60 is N*60 .
 
@@ -2250,7 +2257,7 @@ is  send/tuc/N/E, ispresent N isa notification,
     srel/nil/duration/Ten/E,
     srel/before/vehicle/_/E
 id  []
-ip  user:myflags(warningflag,true),
+ip  myflags(warningflag,true),
     user:set(prewarningtime,Ten).
 
 
@@ -2263,7 +2270,7 @@ is  doit/notify/tuc/E, srel/nil/duration/Ten/E,
     srel/before/coevent/CE/E,
     event/real/E
 id  []
-ip  user:myflags(warningflag,true),
+ip  myflags(warningflag,true),
     user:set(prewarningtime,Ten).
 
 
@@ -2271,39 +2278,39 @@ ip  user:myflags(warningflag,true),
 %%%%%% NN  prewarning rules  all with transitive notify !!!!!
 
 prewarning1before  rule %% warning time before first departure 
-is  ispresent dob/notify/_tuc/_/E, 
+is  ispresent dob/notify/_Tuc/_/E, 
     Ten isa minute,
     srel/nil/duration/Ten/E,
-    srel/before/_coveh/_/E %% vehicle/coevent %% TA-110201
+    srel/before/_Coveh/_/E %% vehicle/coevent %% TA-110201
 id  []
-ip  user:myflags(warningflag,true),
+ip  myflags(warningflag,true),
     user:set(prewarningtime,Ten).
 
 
 prewarning1after  rule %% warning time after first departure 
-is  ispresent dob/notify/_tuc/_/E, 
+is  ispresent dob/notify/_Tuc/_/E, 
     Ten isa minute,
     srel/nil/duration/Ten/E,
     srel/after/vehicle/_/E
 id  []
 ip  Tenafter is - Ten,   
-    user:myflags(warningflag,true),
+    myflags(warningflag,true),
     user:set(prewarningtime,Tenafter).
 
 
 prewarning2before  rule %% warning time before first departure 
-is  ispresent dob/notify/_tuc/Ten/_, %% TUC or agent(passive) 
+is  ispresent dob/notify/_Tuc/Ten/_, %% TUC or agent(passive) 
     Ten isa minute
 id  []
-ip  user:myflags(warningflag,true),
+ip  myflags(warningflag,true),
     user:set(prewarningtime,Ten).
 
 prewarning2after  rule %% warning time after first departure 
-is  ispresent dob/notify/_tuc/Ten/_, %% TUC or agenet(passive) 
+is  ispresent dob/notify/_Tuc/Ten/_, %% TUC or agenet(passive) 
     Ten isa minute
 id  []
 ip  Tenafter is - Ten,
-    user:myflags(warningflag,true),
+    myflags(warningflag,true),
     user:set(prewarningtime,Tenafter).
 
 
@@ -2311,7 +2318,7 @@ prewarning3before  rule %% warning time before first departure
 is  replaceall (Ten isa minute, B isa time,srel/nil/duration/Ten/C, srel/before/time/B/C)
     with       (B isa time)
 id  []
-ip  user:myflags(warningflag,true),
+ip  myflags(warningflag,true),
     user:set(prewarningtime,Ten).
 
 prewarning3after  rule %% warning time after first departure 
@@ -2319,7 +2326,7 @@ is  replaceall (Ten isa minute, B isa time,srel/nil/duration/Ten/C, srel/after/t
     with       (B isa time)
 id  []
 ip  Tenafter is - Ten,
-    user:myflags(warningflag,true),
+    myflags(warningflag,true),
     user:set(prewarningtime,Tenafter).
 
 
@@ -2327,7 +2334,7 @@ prewarning4before  rule %% warning time before first departure
 is  replaceall (F66 isa departure, Ten isa minute, doit/be1/Ten/F69,srel/before/departure/F66/F69)
     with       (F66 isa departure)
 id  []
-ip  user:myflags(warningflag,true),
+ip  myflags(warningflag,true),
     user:set(prewarningtime,Ten).
 
 
@@ -2336,7 +2343,7 @@ is  replaceall (F66 isa departure, Ten isa minute, doit/be1/Ten/F69,srel/after/d
     with       (F66 isa departure)
 id  []
 ip  Tenafter is - Ten,
-    user:myflags(warningflag,true),
+    myflags(warningflag,true),
     user:set(prewarningtime,Tenafter).
 
 
@@ -2386,7 +2393,7 @@ ip  [].
 
 startmeeting  rule %% otherwise  start = go 
 is   X isa meeting, %% Ad Hoc 
-    replaceall (doit/start/X/E,srel/nil/_time/KL/E,doit/go/I/F)
+    replaceall (doit/start/X/E,srel/nil/_Time/KL/E,doit/go/I/F)
     with       (doit/go/I/F,srel/before/time/KL/E)
 id  []
 ip  [].
@@ -2468,7 +2475,7 @@ ip  named_date(dooms_day,Date),xweekday(Date,Day). %% TA-110609
 
 goffwithpension  rule 
 is  replaceall
-%         (doit/go/Tagore/C,srel/off/_veh_sic_/nil/C,srel/pwith/pension/B/C,B isa pension) 
+%         (doit/go/Tagore/C,srel/off/_Veh_sic_/nil/C,srel/pwith/pension/B/C,B isa pension) 
          (doit/go/Tagore/C,srel/off/ _ /nil/C,srel/pwith/pension/B/C,B isa pension) 
     with (doit/retire/Tagore/C)
 id  []
@@ -2498,7 +2505,7 @@ ip  has_att_val(person,retirement,Arvid_holme,DATE),
 
 dayssinceretireah rule %% TA-110215
 is  doit/Retire/Arvid_holme/C, {dmeq([retire,end],Retire)},
-    Arvid_holme isa _ ,A isa day,B isa coevent,event/B/C,doit/exist/A/D,srel/Since/__coevent/B/D,event/real/D,
+    Arvid_holme isa _ ,A isa day,B isa coevent,event/B/C,doit/exist/A/D,srel/Since/__Coevent/B/D,event/real/D,
     {dmeq([since],Since)} 
 id  add message(numberof(N,day)) 
 ip  has_att_val(person,retirement,Arvid_holme,DATE),
@@ -2732,9 +2739,9 @@ ip [].
 comefromhell rule %% er på holdeplassen på gløs -> fra gløs
 is   free(X20) isa station,
      replaceall (doit/be1/free(X20)/free(X21),
-%                srel/on/_neighbourhood/Gløs/free(X21),
+%                srel/on/_Neighbourhood/Gløs/free(X21),
                  srel/on/ _ /Gløs/free(X21),
-%                doit/_bego/'I'/free(X22),
+%                doit/_Bego/'I'/free(X22),
                  doit/ _ /'I'/free(X22),
                  srel/on/place/free(X20)/free(X22))
      with      
@@ -2820,7 +2827,7 @@ ip  [].
 %%  Sentrum  til Coop mega . // Mega comes first
 
 nilnilsequence  rule % go A B
-%is  not srel/to/place/_dalen/_, %% bakkegata til Dalen hagene  %% TA-110322
+%is  not srel/to/place/_Dalen/_, %% bakkegata til Dalen hagene  %% TA-110322
 is  not srel/to/place/ _ / _ , %% bakkegata til Dalen hagene  %% TA-110322
     replaceall (srel/nil/PlaceT1/Place1/E,  srel/nil/PlaceT2/Place2/E)
     with       (srel/from/place/Place1/E, srel/to/place/Place2/E),
@@ -2971,7 +2978,7 @@ is ispresent K isa clock,
 %     not ispresent adj/nil/present/_/_, %% fremme kl %% TA-110531
      not ispresent srel/so_that/_/_/_, 
      not ispresent doit/arrive/_/E, %% <---  
-%     not ispresent srel/before/_activity/_/_, %%  before meeting
+%     not ispresent srel/before/_Activity/_/_, %%  before meeting
      not ispresent srel/before/ _ / _ / _ , %%  before meeting
      not ispresent dob/reach/_/_/_, 
      not srel/in_order_to/thing/_/_, 
@@ -3282,7 +3289,7 @@ ip  myflags(actual_domain,TT),
     has_att_val(company,webaddress,TT,K).
 
 whereaboutastt rule % user knows you don't know, astt has answer
-is (which(A),B isa self,A isa place,srel/FA/_thing/C/F,C isa Topic,
+is (which(A),B isa self,A isa place,srel/FA/_Thing/C/F,C isa Topic,
     doit/be1/D/F,event/real/F,
     D isa information,dob/FG/B/D/E,event/real/E,srel/in/place/A/E)
 id add ( message(answer(db_reply(TT,webaddress,K))))
@@ -3405,7 +3412,7 @@ is  _ isa Place, { dmeq([country,community,county],Place)},
     clear  
 id  not flag(exit), 
     not message(foreign(_)),    
-    not message(noinfoabout(_weather)), 
+    not message(noinfoabout(_Weather)), 
     clear, 
     addfront message(onlybusesforhometown), 
     add flag(exit)
@@ -3432,7 +3439,7 @@ is  X isa Place, {bound(X),dmeq(place,Place)},
     clear  %% trikk til bekkestua
 id  not flag(exit), 
     not message(foreign(_)),      %% addcon doesnt work, different X
-    %% not message(noinfoabout(_weather)), %% weather in oslo  Nar gar bussen fra vestsiden porsgrunn . 
+    %% not message(noinfoabout(_Weather)), %% weather in oslo  Nar gar bussen fra vestsiden porsgrunn . 
     clear,                                 %% direction OK 
     addfront message(foreign(X)), 
     add flag(exit)
@@ -3471,7 +3478,7 @@ is  X isa route,      %% bane fra nationalteateret AFTER nostation
     clear
 id  addcon  message(noroutesfor(tram))
 ip  user:vehicletype(X,tram),
-    \+ user:myflags(tmnflag,true). 
+    \+ myflags(tmnflag,true). 
 
 noroutesforbus1 rule %%  Buss 1
 is  X isa bus ,      %% bane fra nationalteateret AFTER nostation
@@ -3480,7 +3487,7 @@ is  X isa bus ,      %% bane fra nationalteateret AFTER nostation
     clear
 id  addcon  message(noroutesfor(tram))
 ip  user:vehicletype(X,tram),
-    \+ user:myflags(tmnflag,true). 
+    \+ myflags(tmnflag,true). 
 
 
 noroutesfortram1 rule %%  trikk til nth 
@@ -3490,7 +3497,7 @@ is  _ isa tram,
     clear
 id  addcon  message(noroutesfor(tram)),
     addcon  message(answer(db_reply('Gråkallbanen',webaddress,K)))
-ip  \+ user:myflags(tmnflag,true), 
+ip  \+ myflags(tmnflag,true), 
     has_att_val(company,webaddress,tram,K).
 
 
@@ -3842,9 +3849,8 @@ id  clear, add message(answer(bcpbc(System))),
     add flag(exit)  
 ip  user:description(Savant,System).
 
-
 describe0 rule %% describe X  MEANS what is the class/superclass 
-is which(A),ako/Man/A, 
+is which(A), (ako/Man/A), 
    clear     
 id clear, add message(answer((bcpbc(Adult)))),
    add flag(exit)
@@ -3874,9 +3880,8 @@ id clear, add message(answer(bcpbc(busstuc))), %% TA-101015
 ip [].
 
 
-%RS-111118
 describeq rule
-is (tuc isa savant, dob/describe/tuc/quote(Meaning)/E,event/real/E),
+is (tuc isa savant, dob/describe/tuc/quote(Meaning)/E,event/real/E), %RS-111118 ako operator problem
    clear
 id clear, add message(answer(bcpbc(Abstract))),
    add flag(exit) 
@@ -3936,7 +3941,7 @@ ip  [].
 
 
 tomorrowat6ugly  rule % Klokken 22:  reise kl 6, om morgenen => next morning with message
-is  context srel/_prep_/time/Six/_, { number(Six)},
+is  context srel/_Prep_/time/Six/_, { number(Six)},
     _ isa morning or  srel/in_morning/time/nil/_,  %% not present
     not ispresent srel/_/time/Seven/_ when { (number(Seven), Six \== Seven)}, %% avoid intervals Ad Hoc
     not ispresent srel/early/time/nil/_,  
@@ -3944,7 +3949,7 @@ is  context srel/_prep_/time/Six/_, { number(Six)},
     not ispresent srel/tomorrow/_/_/_,      %% then explicit
     not ispresent srel/day_after_tomorrow/_/_/_, %% TA-110215
     not ispresent srel/today/_/_/_,   
-    not ispresent srel/tonight/_daypart/nil/_,  
+    not ispresent srel/tonight/_Daypart/nil/_,  
     not ispresent srel/this_midnight/time/nil/_, 
     not ispresent _ isa date,
     not ispresent _ isa weekday,  %% hverdager means general (other) day 
@@ -3975,7 +3980,7 @@ is  _ isa morning or  srel/in_morning/time/nil/_ or adj/_/early/_/real
     not ispresent srel/_/time/Seven/_  when { number(Seven)}, 
     not ispresent srel/in_day/time/nil/_, 
     not ispresent srel/today/_/_/_,   
-    not ispresent srel/tonight/_daypart/nil/_, 
+    not ispresent srel/tonight/_Daypart/nil/_, 
     not ispresent srel/this_midnight/time/nil/_, 
     not ispresent _ isa date,
     not ispresent _ isa weekday,  %% hverdager means general (other) day 
@@ -4161,7 +4166,7 @@ is  MMMM isa clock, {bound(MMMM)},
     {\+ myflags(airbusflag,true)}, %% airbus starts at 400 (!)  
                                          % 430 set as early time
     not srel/early/time/nil/_,  %% then NOT midnight   
-    not srel/today/_day/nil/_   %% means coming morning 
+    not srel/today/_Day/nil/_   %% means coming morning 
 
 id  not flag(airbus),
     not flag(nightbusflag),
@@ -4173,7 +4178,7 @@ ip  set(nightbusflag,true). %%  // necessary
 
 ateveningexplicit  rule %% 1230:   jeg skal til byen før 6 -> 1800
 is  ispresent  _ isa afternoon,
-    not ispresent srel/_prep2_/time/Fourteen/_ 
+    not ispresent srel/_Prep2_/time/Fourteen/_ 
                  when { (number(Fourteen),Fourteen >=1200)},
                               %% Time: 1500,  1200 - 1400 \==> 2400 - 1400  
     context srel/Prep/time/Six/D,
@@ -4224,7 +4229,7 @@ is  not ispresent _ isa day, %% om tre dager
     not ispresent srel/tomorrow/_/_/_,      %% then explicit
     not ispresent srel/day_after_tomorrow/_/_/_,  %% TA-110215
     not ispresent srel/today/_/_/_,         %% then past deps are OK
-    not ispresent srel/tonight/_daypart/nil/_, 
+    not ispresent srel/tonight/_Daypart/nil/_, 
     not ispresent srel/this_midnight/time/nil/_ 
 id  not flag(exit), 
     not flag(nightbusflag),
@@ -4248,7 +4253,7 @@ ip  today(TODAY),
 
 
 tomorrowat6early  rule % Klokken 22:  reise kl 6,  next morning with message
-is  context srel/_prep_/time/Six/_, { number(Six)},
+is  context srel/_Prep_/time/Six/_, { number(Six)},
  %% If not another day, then these means Today
     not ispresent _ isa midnight,
     not ispresent _ isa morning,
@@ -4270,7 +4275,7 @@ is  context srel/_prep_/time/Six/_, { number(Six)},
     not ispresent srel/tomorrow/_/_/_,           %% then explicit
     not ispresent srel/day_after_tomorrow/_/_/_, %% TA-110215
     not ispresent srel/today/_/_/_,   
-    not ispresent srel/tonight/_daypart/nil/_, 
+    not ispresent srel/tonight/_Daypart/nil/_, 
     not ispresent srel/this_midnight/time/nil/_, 
 
     replaceall ( Six isa clock, srel/Prep/time/Six/D) 
@@ -4310,7 +4315,7 @@ ip  today(TODAY),
 
 
 tomorrowat6late  rule % Klokken 22:  reise kl 0230 -> 1430 TOMORROW
-is  context srel/_prep_/time/Four/_, { number(Four)},
+is  context srel/_Prep_/time/Four/_, { number(Four)},
     not ispresent _ isa midnight,
     not ispresent _ isa morning,
     not ispresent _ isa prenoon,
@@ -4330,7 +4335,7 @@ is  context srel/_prep_/time/Four/_, { number(Four)},
     not ispresent srel/in_day/time/nil/_,  
     not ispresent srel/tomorrow/_/_/_,   %% then explicit
     not ispresent srel/today/_/_/_,   
-    not ispresent srel/tonight/_daypart/nil/_, 
+    not ispresent srel/tonight/_Daypart/nil/_, 
     not ispresent srel/this_midnight/time/nil/_, 
 
     replaceall ( Four isa clock, srel/Prep/time/Four/D) 
@@ -4492,7 +4497,7 @@ is  (_NotBus isa BR),
     clear
 id  clear,
     add message(noinfoabout(BR))
-ip  \+ user:myflags(tmnflag,true).
+ip  \+ myflags(tmnflag,true).
 
 
 ankomme rule  %% NB after reachtrain  %% Norwagism %% ankomme (reach) = gå til 
@@ -4575,7 +4580,7 @@ ip  dmeq(onoff,ONOFF),dmeq([bus,nightbus,route],BUS1),dmeq([bus,nightbus,route],
     dmeq([go,think,wonder],Go).  %% Facetious ???
 
 ident1  rule 
-is  ispresent test,comp/_clock/eq/X/X 
+is  ispresent test,comp/_Clock/eq/X/X 
 id  not message(onlyonesentence), 
     add true %% Yes is added 
 ip  [].
@@ -5002,7 +5007,7 @@ ip  [].
 
 life421 rule 
 is  not explain, 
-    srel/_/_thing/L/_E, _M isa meaning, L isa life, %% TA-101013
+    srel/_/_Thing/L/_E, _M isa meaning, L isa life, %% TA-101013
     clear  
 id  clear, 
     add flag(exit),
@@ -5025,7 +5030,7 @@ ip  [].
 whatis1 rule  %%  what is D means describe D 
 is  exactly (which(X),X isa Y, event/real/_) 
 id  add message(answer((bcpbc(D))))
-ip  \+ user:myflags(teleflag,true),  
+ip  \+ myflags(teleflag,true),  
     bound(X), X \== it,
     \+ dmeq([answer,clock, departure, self, time],Y),  
     description(X,D). %% NB X (?)
@@ -5035,7 +5040,7 @@ whatis2 rule  %% hvem er (det som er) tagore:... X er tagore
 is  which(A),A isa agent,dob/be/A/X/B,X isa D,event/real/B
 id  add message(answer(bcpbc(D))),
     add flag(exit)  
-ip  \+ user:myflags(teleflag,true),  
+ip  \+ myflags(teleflag,true),  
     bound(X),
     X \== it, X \== tuc,
     \+ dmeq([answer,clock,departure,self,time],D).
@@ -5044,7 +5049,7 @@ whatis2b rule  %% hvem er tagore:.. tagore er X %% TA-101230
 is  which(A),A isa agent,dob/be/X/A/B,X isa D,event/real/B
 id  add message(answer(bcpbc(D))),
     add flag(exit)  
-ip  \+ user:myflags(teleflag,true),  
+ip  \+ myflags(teleflag,true),  
     bound(X),
     X \== it, X \== tuc,
     \+ dmeq([answer,clock,departure,self,time],D).
@@ -5148,18 +5153,18 @@ is  which(A),
     Marvin isa Robot, {dmeq([tuc,bustuc],Marvin)},
     A isa agent,
     event/real/B,dob/be/A/Marvin/B,
-    not ispresent has/_agent/_leader/_tuc/_ %% hvem er din sjef  *-> leder
+    not ispresent has/_Agent/_Leader/_Tuc/_ %% hvem er din sjef  *-> leder
 id  add message(answer(bcpbc(bustuc)))
 ip  bound(Marvin), %% hvem er konge -> Konge ***
-    \+ user:myflags(teleflag,true),
+    \+ myflags(teleflag,true),
     \+ dmeq([self,creator,programmer,person],Robot). %% "selv" 
 
 whois1 rule  %%  who  is D (which agent is such that A is D)
 is  which(A),Marvin isa Robot,A isa agent,event/real/B,dob/be/A/Marvin/B,
-    not ispresent has/_agent/_leader/_tuc/_ %% hvem er din sjef  *-> leder
+    not ispresent has/_Agent/_Leader/_Tuc/_ %% hvem er din sjef  *-> leder
 id  add message(answer((bcpbc(Robot))))
 ip  bound(Marvin), %% hvem er konge -> Konge ***
-    \+ user:myflags(teleflag,true),
+    \+ myflags(teleflag,true),
     \+ dmeq([self,creator,programmer,person],Robot). %% "selv" 
  
 
@@ -5306,7 +5311,7 @@ ip  dmeq([program,oracle,service],Oracle).
 
 
 purp rule %% meningen med deg %% TA-110607
-is  _ isa purpose,srel/of/thing/_tuc/_
+is  _ isa purpose,srel/of/thing/_Tuc/_
 id  addfront message(howtuchelp)
 ip  [].
 
@@ -5452,7 +5457,7 @@ ip  [].
 
 aftermorning rule %% bus goes om morgen -> after morning
 is  not ispresent _ isa nightbus,
-    not ispresent  srel/early/_time/nil/_, %%  then explicit //time/daypart
+    not ispresent  srel/early/_Time/nil/_, %%  then explicit //time/daypart
     not ispresent  adj/_/early/_/_,        
     replaceall (B isa morning ,srel/after/time/B/E)
     with       (srel/after/time/0430/E), 
@@ -5530,7 +5535,7 @@ ip  [].
 
 
 paanatt rule
-is  replaceall (X isa midnight,srel/on/_time/X/E)
+is  replaceall (X isa midnight,srel/on/_Time/X/E)
     with       (2400 isa clock,srel/after/time/2400/E)
 id  not flag(nightbusflag) 
 ip  [].
@@ -5704,7 +5709,7 @@ ip  dmeq(vehicle,BR). %% not meeting  reach meeting \= reach train
 
 
 atbhave1 rule %% which X does TT have  MEANS  which X  %% tt-> atb %% TA-110121
-is replaceall (atb isa company,has/_company/Bus/atb/A,event/real/E)
+is replaceall (atb isa company,has/_Company/Bus/atb/A,event/real/E)
    with       (doit/be1/A/E,event/real/E)
 id []
 ip dmeq(vehicle,Bus).
@@ -5749,7 +5754,7 @@ ip  [].
 listinformation2 rule 
 is  replaceall ( F53 isa Information, doit/be1/F53/E, 
                  srel/OVER/thing/F52/E,event/real/E,
-                 dob/LIST/_tuc/F53/F54)
+                 dob/LIST/_Tuc/F53/F54)
     with       ( dob/list/tuc/F52/F54)
 id  []
 ip  dmeq(list,LIST),dmeq(information,Information),dmeq(about,OVER).
@@ -5858,7 +5863,7 @@ ip  dmeq(attime,AT).
 %% give me that MEANS give
 
 gimmethat rule %% sjow me the buses
-is replaceall (I isa self,srel/to/agent/I/E, dob/SHOW/_tuc/X/E) %% Give/tuc De = de = du = tuc
+is replaceall (I isa self,srel/to/agent/I/E, dob/SHOW/_Tuc/X/E) %% Give/tuc De = de = du = tuc
    with       (dob/show/tuc/X/E)                             %% 
 id []
 ip dmeq(show,SHOW).
@@ -5961,7 +5966,7 @@ ip dmeq(list,LIST),
 %% Trondheim rules 
 
 trondheim1 rule
-is  removeall   (Trondheim isa city,nrel/_/_bus/CP/_/Trondheim)
+is  removeall   (Trondheim isa city,nrel/_/_Bus/CP/_/Trondheim)
 id  []   
 ip  dmeq([city,place],CP),
     home_town(Trondheim). 
@@ -5970,13 +5975,13 @@ ip  dmeq([city,place],CP),
 trondheim3 rule 
 is removeall (Trondheim isa city, srel/in/_/Trondheim/_ ) %% in/for
 id []
-ip \+ user:myflags(teleflag,true), 
+ip \+ myflags(teleflag,true), 
    home_town(Trondheim). 
 
 trondheim3n rule 
 is removeall (Trondheim isa neighbourhood, srel/in/_/Trondheim/_ ) %% in/for
 id []
-ip \+ user:myflags(teleflag,true), 
+ip \+ myflags(teleflag,true), 
    home_town(Trondheim). 
 
 
@@ -6525,7 +6530,7 @@ ip  [].
 allbuses0 rule 
 is  which(A),     A isa bus,
     tuc isa savant,
-    dob/KNOW1/tuc/E, srel/_regarding_/thing/A/E %% know about/
+    dob/KNOW1/tuc/E, srel/_Regarding_/thing/A/E %% know about/
   ,{dmeq([know,know1],KNOW1)}
 id  add listofall(bus,_) %% generalized allbuses
 ip  [].
@@ -6577,7 +6582,7 @@ howmanybuses1  rule % How many buses are there  ?
 is  howmany(Bus),Bus isa bus,
     doit/BE/Bus/A,event/real/A,
     not srel/in/day/_/_,  %% frequency ?  % before next:
-    not srel/in/_place/_/A, %% in system etc 
+    not srel/in/_Place/_/A, %% in system etc 
     not X isa route when { bound(X)}
 id	 add (listofall(bus,M),numberof(busroutes,M,_))
 ip  dmeq(exist,BE).
@@ -6633,7 +6638,7 @@ ip  unbound(B).
 
 
 whbusesin rule % Which buses are in  Team/Oracle/etc 
-is  A isa route,doit/be1/A/B,srel/in/_place/_/B,
+is  A isa route,doit/be1/A/B,srel/in/_Place/_/B,
     not ispresent _ isa neighbourhood, %% e.g. Klæbu
     not ispresent _ isa station
 id	 add listofall(route,_)
@@ -6789,9 +6794,9 @@ is  Bus isa airbus,
     not ispresent srel/between/place/_/_, 
     not ispresent adj/_/next/_/_, 
     not srel/off/place/_/_,  %% side av veien
-    not srel/_now/time/_/_ ,                    %% NOW
+    not srel/_Now/time/_/_ ,                    %% NOW
     not srel/nil/time/_/_ ,  
-    not has/_vehicle/departure/Bus/_, 
+    not has/_Vehicle/departure/Bus/_, 
 
     clear  
 id	 atday(Day),
@@ -6889,7 +6894,7 @@ ip  dmeq([telephone,webaddress],Telephone),
 
 
 telephonefor rule %% for politiet (unresolved  possessive  has/) 
-is  which(A),A isa telephone,TT isa Agent,doit/be1/A/E,srel/for/_thing/TT/E,event/real/E,
+is  which(A),A isa telephone,TT isa Agent,doit/be1/A/E,srel/for/_Thing/TT/E,event/real/E,
       { dmeq([place,agent,company,savant],Agent)}
 id  add  message(answer(db_reply(TT,telephone,K)))
 ip  has_att_val(agent,telephone,TT,K). 
@@ -6975,7 +6980,7 @@ ip  [].     % message necessary also for  empty answer
 
 wherefinddn rule % user knows you don't know,  I dont know 
 is (which(A),B isa self,A isa place,
-    doit/find/B/C/E,event/real/E,srel/in/place/A/E,C isa _topic)
+    doit/find/B/C/E,event/real/E,srel/in/place/A/E,C isa _Topic)
 id add  message(answer(db_reply(tt,webaddress,K))) 
 ip has_att_val(company,webaddress,tt,K). 
 
@@ -7275,7 +7280,7 @@ ip  dmeq([to,before],To),
 nodatecalc  rule  %%  N dager  før dato % NIX
 is  _ isa day, not _ isa date,
     DATE isa date,
-    srel/To/_date/DATE/_, { dmeq([to,before,after],To)},
+    srel/To/_Date/DATE/_, { dmeq([to,before,after],To)},
     clear
 id  not flag(nightbusflag),  
     not atdate2(_,_), 
@@ -7288,7 +7293,7 @@ ip  [].
 
    
 setexdateomndays1 rule %% om tre dager 
-is   srel/during2/_duration/N/_,{bound(N)},
+is   srel/during2/_Duration/N/_,{bound(N)},
      context(N isa day)                     %% nof days
 id   not atdate2(_,_),
      add atdate2(DaySeqNo,DATE),
@@ -7348,7 +7353,7 @@ setexdate1 rule   %% Set date if another day //  på mandag
 is  not (YMD isa date) when { bound(YMD)},  %% another date overrules  
     context(U isa Monday),  {dmeq(mtwtfss, Monday)},
     not  comp/day/ne/_/U,            %% not excluded ! 
-    not ispresent srel/today/_day/nil/_ %% søndagsrute idag ...
+    not ispresent srel/today/_Day/nil/_ %% søndagsrute idag ...
 id  not flag(exit), 
     not atdate2(_,_), 
     add atdate2(DaySeqNo,DATE),
@@ -7559,12 +7564,12 @@ is   []
 id   not flag(fail),
      not flag(exit), 
      not flag(nightbusflag), 
-     atday(_Day),
+     atday(_day),
      atdate2(_DaySeqNo,DATE),
      not message(nodates), 
      not message(mustknow(place)),   
      not message(mustknowanother(place)), 
-     not message(date_day_route(date(_YYYY,_MM,_DD),_Day)),
+     not message(date_day_route(date(_YYYY,_MM,_DD),_day)),
 %%      not  timeis(_),                 %% spurte om klokka <--
      add message(date_day_route(DATE,MapDay)),
      remove atday(_),
@@ -7787,7 +7792,7 @@ id  not flag(exit),
     not passevent(_,_,_,_,_,_),
     not connections(_,_,_,_,_,_,_,_,_,_),
     add flag(keepfrombay),
-    atday(Day), atdate2(DaySeqNo,_date),
+    atday(Day), atdate2(DaySeqNo,_Date),
     add ( departure(NB,OT,DaySeqNo,NewDepset), 
 		  	 passevent(NewDepset,NB,OT,[from,time,nightbus],Day,E))
 ip  nightbusstation(OT),
@@ -7808,7 +7813,7 @@ id  flag(nightbusflag),       %% maybe all ?
     not passevent(_,_,_,_,_,_),
     not connections(_,_,_,_,_,_,_,_,_,_),
     add flag(keepfrombay),
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
     add ( departure(Bus,hovedterminalen,DaySeqNo,NewDepset), 
 		  	 passevent(NewDepset,Bus,hovedterminalen,[from,time,nightbus],Day,E))
 ip   newfree(Bus), 
@@ -7846,7 +7851,7 @@ wheniseaster rule   %% ask for period, specify DAY(eastereve?)
 is   which(A),srel/in/time/A/C,A isa time,doit/exist/B/C,
      not _ isa date, 
      not _ isa holiday, 
-     not srel/today/_day/nil/_,  
+     not srel/today/_Day/nil/_,  
      not _ isa morrow,
      B isa Easter,  
        { dmeq([easter,whitsun,christmas],Easter)}, 
@@ -7940,7 +7945,7 @@ ip  timenow(G), G < 60, %% < 01:00 at night
 
 
 dianotoday rule % check in frames:  if not explicit today, keep old date
-is  not srel/today/_day/nil/_ ,
+is  not srel/today/_Day/nil/_ ,
     not srel/now/time/nil/_   
 id  not flag(exit),
     not atday(_),
@@ -8077,7 +8082,7 @@ nodates07 rule   %% except for the day today
 is   %% not _ isa time, %% når er påsken %% TA-101124
      not _ isa date, 
      not _ isa holiday, 
-     not srel/today/_day/nil/_,  
+     not srel/today/_Day/nil/_,  
      not _ isa morrow,
      _ isa Easter,  
        { dmeq([advent,autumn,easter,easter_eve,eastereve,fall,spring,
@@ -8090,7 +8095,7 @@ ip   [].
 
 nodates007 rule   %% week %% TA-100914
 is    _ isa week, not _ isa date,   
-     not srel/today/_day/nil/_, 
+     not srel/today/_Day/nil/_, 
      clear
 id   not atday(_),
      clear, 
@@ -8100,7 +8105,7 @@ ip   [].
 
 nodates08 rule   %% weekend
 is    _ isa weekend, not _ isa date,   
-     not srel/today/_day/nil/_, 
+     not srel/today/_Day/nil/_, 
      clear
 id   not atday(_),
      clear, 
@@ -8148,7 +8153,7 @@ unksetexweekday rule   %% after weeknumber# %% TA-110203
 is  _ isa Weekday, {dmeq([week,weekday,weekend],Weekday)}, 
     not (YMD isa date) when { bound(YMD)},  %% another date overrules  
     not  comp/day/ne/_/_,            %% not excluded ! 
-    not ispresent srel/today/_day/nil/_ %% søndagsrute idag ...
+    not ispresent srel/today/_Day/nil/_ %% søndagsrute idag ...
 id  not atdate2(_,_), 
     not message(noroutesforthisdate), 
     add message(mustknow(day)),
@@ -8214,7 +8219,7 @@ ip	[].
 date56 rule % hva er datoen %% OUTDATED ???
 is  which(A),(A isa date,event/real/_),
     not ispresent srel/tomorrow/day/nil/_  % ad hoc
-id	 not atday(_new_years_day), 
+id	 not atday(_New_years_day), 
     not message(otherperiod(_)),
     add (atday(Day),
          message(date_isa_day(date(Year,Month,DayNr),Day)))
@@ -8289,7 +8294,7 @@ ip	 dmeq([be1,exist],Be1),
 
 date12 rule %% Hva er (lik) datoen i morgen 
 is  which(X), dob/be/X/A/B, A isa DayDate, event/real/B,
-    ispresent srel/_tomorrow_/_day/nil/B
+    ispresent srel/_Tomorrow_/_Day/nil/B
 id	 not atday(_),
     addfront message(todayis),  
     add (atday(Day),
@@ -8544,8 +8549,8 @@ ip  bound(X),
 havestation1  rule 
 is  F isa station,X isa neighbourhood, dob/Have/X/F/_ 
 id  not message(foreign(_)), 
-    not message(nearest_station(_ST,X,_)),
-    add message(nearest_station(_ST,X,Y))
+    not message(nearest_station(_sT,X,_)),
+    add message(nearest_station(_sT,X,Y))
 ip  bound(X),X \== it,
     dmeq([have,belong_to],Have), 
     placestat(X,Y),  %% busdat 
@@ -8555,8 +8560,8 @@ ip  bound(X),X \== it,
 havestation2  rule 
 is  X isa station,F isa station, dob/Have/F/X/_ 
 id  not message(foreign(_)), 
-    not message(nearest_station(_ST,X,_)),
-    add message(nearest_station(_ST,' ',X)) %% ad hoc holdeplassen nærmest er
+    not message(nearest_station(_sT,X,_)),
+    add message(nearest_station(_sT,' ',X)) %% ad hoc holdeplassen nærmest er
 ip  bound(X),X \== it,
     dmeq([have,belong_to],Have), 
     station(X). 
@@ -8568,8 +8573,8 @@ is  context (X isa neighbourhood),     %% trondheim is a city
     not ispresent srel/after/place/_/_, 
     ispresent B isa bus , { bound(B)}             %% etc
 id  not message(foreign(_)), 
-    not message(nearest_station(_ST,X,_)),
-    add message(nearest_station(_ST,X,Y))
+    not message(nearest_station(_sT,X,_)),
+    add message(nearest_station(_sT,X,Y))
 ip  bound(X),
     X \== it,
     bus_place_station(B,X,Y),
@@ -8580,8 +8585,8 @@ whichstationisnear rule %% Hvilken holdeplass ligger nær nardosenteret
                         %% ignorer station, give places  %% TA-110504
 is  which(X), X isa station, NS isa station, {bound(NS)},
        srel/Near/place/NS/_, {dmeq([near,around,at,besides],Near)}
-id  not message(nearest_station(_ST,X,_)),
-    not message(nearest_station(_ST,_,X)),
+id  not message(nearest_station(_sT,X,_)),
+    not message(nearest_station(_sT,_,X)),
     not message(stationsat(A,NS,B)),
     add message(stationsat(A,NS,B))
 ip  X \== it,
@@ -8620,8 +8625,8 @@ is  context (X isa station) ,
     not doit/be1/_/E %% Ad Hoc   holdeplassen (som er) til travbanevegen %% TA-110503
 
 id  not message(foreign(_)),        %% skulle av ved ...
-    not message(nearest_station(_ST,_,_)), %% no doubles
-    add message(nearest_station(_ST,X,X)) %% NB to itself
+    not message(nearest_station(_sT,_,_)), %% no doubles
+    add message(nearest_station(_sT,X,X)) %% NB to itself
 ip  bound(X),
     X \== it. % ?
 
@@ -8630,8 +8635,8 @@ is  which(_),
     context (X isa station) , 
     ispresent srel/at/place/X/_
 id  not message(foreign(_)),        %% skulle av ved ...
-    not message(nearest_station(_ST,_,_)), %% no doubles
-    add message(nearest_station(_ST,X,X)) %% NB to itself
+    not message(nearest_station(_sT,_,_)), %% no doubles
+    add message(nearest_station(_sT,X,X)) %% NB to itself
 ip  bound(X),
     X \== it. % ?
 
@@ -8639,15 +8644,15 @@ placestat3 rule %% nærmeste holdeplass [til] risvollansenteret
 is  context (X isa station) , dob/be/_/X/_,
           adj/_/nearest/X/real,{bound(X)}
 id  not message(foreign(_)), 
-    not message(nearest_station(_ST,X,_)),
-    add message(nearest_station(_ST,X,X)) %% NB to itself
+    not message(nearest_station(_sT,X,_)),
+    add message(nearest_station(_sT,X,X)) %% NB to itself
 ip  [].
 
 
 isatnth rule % NTH. isat(Y,NTH)  Select one, avoid Donotknow message
 is  not ispresent srel/_/time/_/_ , 
     context (NTH isa neighbourhood),
-    replace (srel/nil/_neighbourhood/NTH/E)
+    replace (srel/nil/_Neighbourhood/NTH/E)
     with    (srel/past/place/NTH/E)  
 id  not message(foreign(_)),
     not message(nearest_station(_ST,_,_)),
@@ -8661,7 +8666,7 @@ ip  bound(NTH),
 isatnth rule % NTH. isat(Y,NTH)  Select one, avoid Donotknow message
 is  not ispresent srel/_/time/_/_ , 
     context (NTH isa neighbourhood),
-    replace (srel/nil/_neighbourhood/NTH/E) 
+    replace (srel/nil/_Neighbourhood/NTH/E) 
     with    (srel/past/place/NTH/E)  
 id  not message(foreign(_)),
     not message(nearest_station(_ST,_,_)),
@@ -8675,8 +8680,8 @@ ip  bound(NTH),
 
 stationstation rule %% The name IS a station 
 is  context (Y isa station)  
-id  not message(nearest_station(_ST,_,_)),
-    add message(nearest_station(_ST,X,Y))
+id  not message(nearest_station(_sT,_,_)),
+    add message(nearest_station(_sT,X,Y))
 ip  bound(X),
     X \== it,
     placestat(X,Y).  %% NB in busdat (Real definition)
@@ -8714,7 +8719,7 @@ is   srel/on/place/Place/C,
      not ispresent srel/to/place/_/_, %% already
      ispresent doit/be1/Agent/C,
      Agent isa Whatever, {i_or_a_bus(Agent,Whatever,Bus)}
-id   atday(Day),atdate2(DaySeqNo,_date),
+id   atday(Day),atdate2(DaySeqNo,_Date),
      not passevent(_,_,Place,_,_,_),
      not passevent(_,_,_Anyplace_,[from],_,_), %% Opts . cond 
      add (departure(Bus,Stat,DaySeqNo,Depset),
@@ -8748,13 +8753,12 @@ ip  has_att_val(company,webaddress,tt,K).
 whatisclass2 rule  %%  what is D means describe D 
 is  exactly (which(X),Tagore isa Programmer,dob/be/Tagore/X/B,event/real/B) 
 id  add message(answer((bcpbc(Person))))
-ip  \+ user:myflags(teleflag,true), 
+ip  \+ myflags(teleflag,true), 
     \+ testmember(Programmer,[answer,bus,  vehicle,route,tram,train,airplane,
              easter,christmas,whitsun,information,
              moment,clock,hour,date,midnight,month,week,weather,year,arrival,departure]), 
     unbound(Tagore),
-    description(Programmer,Person):-
-single.
+    description(Programmer,Person) :- single.
 
 team_topic_web_routes  rule %% link til rutene
 is  B isa webaddress, has/_agent/webaddress/Tuc/B,   {unbound(Tuc)},
@@ -8766,7 +8770,7 @@ ip  myflags(actual_domain,TT),
 
 
 team_topic_web rule %% nettsider for buss? //cant say no info about
-is  B isa webaddress, has/_agent/webaddress/Tuc/B, 
+is  B isa webaddress, has/_Agent/webaddress/Tuc/B, 
       {dmeq([tuc,bustuc],Tuc)}, 
     clear 
 id  add ( message(answer(db_reply(TT,webaddress,K)))) 
@@ -8861,7 +8865,7 @@ ip  [].
 
 
 busncost0 rule % buss om natta
-is  which(A),dob/cost/_it/A/_ ,
+is  which(A),dob/cost/_It/A/_ ,
     ispresent _ isa midnight,
     not ispresent Stink isa neighbourhood when { foreign(Stink)}, 
     not ispresent _ isa airport, 
@@ -9137,7 +9141,7 @@ ip  [].
 warnattime rule %% varsle kl 1015  %% TA-110201
 is  {myflags(smsflag,true)}, %% TA-110202
     tuc isa savant,CLOCK isa clock,
-        dob/notify/tuc/_/A,srel/_after/time/CLOCK/A
+        dob/notify/tuc/_/A,srel/_After/time/CLOCK/A
 id  atdate2(_DaySeqNo,Date),
     flag(warningflag),
     add timeis(CLOCK),
@@ -9237,7 +9241,7 @@ whatistimeafter1 rule % Hva er klokka om en time
 is  which(Time),Time isa Timeq,  {dmeq([time,clock],Timeq)}, %% not frequency
     doit/be1/Time/E,
     F isa minute,
-    srel/after/_timemin/F/E, 
+    srel/after/_Timemin/F/E, 
     not ispresent doit/go/_/_ % etc
 id	 add message(time(then,T))
 ip  unbound(Time),
@@ -9278,7 +9282,7 @@ is  X isa tramstation,
     clear
 id  addcon message(noroutesto(X))
 ip  bound(X),
-    \+ user:myflags(tmnflag,true),
+    \+ myflags(tmnflag,true),
     \+ X isa station.                %% Ugla
 
 
@@ -9288,7 +9292,7 @@ is  _X isa tramstation,
     clear   
 id	 clear, 
     addcon message(noroutesfor(tram)) 
-ip   \+ user:myflags(tmnflag,true).
+ip   \+ myflags(tmnflag,true).
 
 % Sørger for riktig retning i "buss fra/til sted passerer TOFROMBY" etc.
 
@@ -9303,7 +9307,7 @@ ip   \+ user:myflags(tmnflag,true).
 wherebus11 rule % Hvor går buss Bus fra/til? 
 is  exactly 
    (which(A),A isa place,Bus isa Route,    {dmeq(vehicle,Route)},
-    doit/go/Bus/B,event/real/B,srel/_from/place/A/B)
+    doit/go/Bus/B,event/real/B,srel/_From/place/A/B)
 id	 atday(Day),
     not passevent(_,_,_,_,_,_), %% avoid test departure(_,_,_,_), 
 	 add (findstations(Bus,Day,Stl),passesstations(Bus,Day,Stl,_))
@@ -9319,9 +9323,9 @@ is  which(Station),doit/PASS/Bus/B, {dmeq(pass,PASS)},
     not ispresent srel/between/place/_/_, 
     not ispresent adj/_/next/_/_, 
     not srel/off/place/_/_,  %% side av veien
-    not srel/_now/time/_/_ ,                    %% NOW
+    not srel/_Now/time/_/_ ,                    %% NOW
     not srel/nil/time/_/_ ,  
-    not has/_vehicle/departure/Bus/_, 
+    not has/_Vehicle/departure/Bus/_, 
     clear  
 id	 not flag(exit),
     atday(Day),
@@ -9335,13 +9339,13 @@ is  which(P),P isa Place,
     doit/PASS/Bus/B, {dmeq(pass,PASS)},  
     srel/_In/place/P/B,
     Neib1 isa neighbourhood,
-    srel/In/_neighbourhood/Neib1/_, {dmeq([in,near],In)},
+    srel/In/_Neighbourhood/Neib1/_, {dmeq([in,near],In)},
     not ispresent srel/between/place/_/_, 
     not ispresent adj/_/next/_/_, 
     not srel/off/place/_/_,  %% side av veien
-    not srel/_now/time/_/_ ,                    %% NOW
+    not srel/_Now/time/_/_ ,                    %% NOW
     not srel/nil/time/_/_ ,  
-    not has/_vehicle/departure/Bus/_
+    not has/_Vehicle/departure/Bus/_
 id  not message(nearest_station(_ST,Neib1,_)),
     add stationsat(Neib1,_Stations,_SSS) 
 ip	 exbus(Bus). 
@@ -9350,7 +9354,7 @@ ip	 exbus(Bus).
 
 wherebus14 rule % Hvor går trikk 1 ? 
 is  which(Station),doit/PASS/Tramno/B,srel/_In/place/Station/B, 
-    not srel/_now/time/_/_ ,   
+    not srel/_Now/time/_/_ ,   
     not srel/nil/time/_/_ , 
     clear   
 id	 atday(Day),
@@ -9631,7 +9635,7 @@ stationsarebetweenst rule % hvilke hpl er fra A til B
 is  which(F3), F3 isa Station, {dmeq([station,place],Station)}, %% TA-110510
     not X isa bus when{bound(X)}, 
     not X isa route when{bound(X)},   %% TA-110510
-    srel/from/place/_nardosenteret/F4,srel/to/place/_torget/F4
+    srel/from/place/_Nardosenteret/F4,srel/to/place/_Torget/F4
 id	 not message(foreign(_)), 
     add message(mustknow(bus))
 ip	 [].
@@ -9679,8 +9683,8 @@ is  not ispresent  _ isa date,
     srel/FOR/BUSV/Bus/E,
     event/real/_E, 
     not _ isa day ,  %% etc   NO TIME indication
-    not srel/_pwith/time/_/_,   %%  (detail)
-    not ispresent srel/_to/place/_/_  
+    not srel/_Pwith/time/_/_,   %%  (detail)
+    not ispresent srel/_To/place/_/_  
 id	 not flag(exit), 
     not passevent(_,_,_,_,_,_), %% doesnt help 
     not departure(_,_,_,_),   
@@ -9701,8 +9705,8 @@ is  not ispresent _ isa date,
     {dmeq([route,route_plan,information,thing,bus],ROUTE)},
     event/real/E, 
     not _ isa day ,  %% etc   NO TIME indication
-    not srel/_pwith/time/_/_,   %%  (detail)
-    not ispresent srel/_to/place/_/_  
+    not srel/_Pwith/time/_/_,   %%  (detail)
+    not ispresent srel/_To/place/_/_  
 id	 not flag(exit), 
     not passevent(_,_,_,_,_,_), %% doesnt help 
     not departure(_,_,_,_),   
@@ -9796,7 +9800,7 @@ ip  atomic(StartPlace), atomic(EndPlace),
 
 leavename rule %% Does a bus LEAVE a place? 
 is  dob/LEAVE/Bus/Place/A, ispresent Bus isa Veh 
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[],Day,A)) %%   leave is neutral wrp direction 
 ip	 bound(Place),dmeq(vehicle,Veh), 
@@ -9810,7 +9814,7 @@ sometakebusfrom rule % someone take the bus FROM a place
 is  ispresent dob/USE/X/Bus/A, {X \== it}, %% .. tid tar det 
     srel/FROM/place/Place/A 
 id	 not flag(exit),
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[from],Day,A)) 
 ip  dmeq(from,FROM),dmeq(use,USE),busorfree(Bus),
@@ -9819,7 +9823,7 @@ ip  dmeq(from,FROM),dmeq(use,USE),busorfree(Bus),
 
 bustakemefrom rule % Bus take me
 is  ispresent dob/take/Bus/_/C,ispresent Bus isa bus,srel/FROM/place/Place/C
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[from],Day,C))
 ip  dmeq(from,FROM),place_station(Place,Stat),
@@ -9829,7 +9833,7 @@ ip  dmeq(from,FROM),place_station(Place,Stat),
 bustakemebyto rule % Bus take me by = to
 is  ispresent dob/take/Bus/_/C,ispresent Bus isa bus,srel/BY/place/Place/C,
     ispresent srel/from/place/_/_  %% to antother place
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[to],Day,C))
 ip  dmeq(by,BY),place_station(Place,Stat),busorfree(Bus). 
@@ -9837,7 +9841,7 @@ ip  dmeq(by,BY),place_station(Place,Stat),busorfree(Bus).
 
 bustakemebyfrom rule % Bus take me by = from (Deafult)
 is  ispresent dob/take/Bus/_/C,ispresent Bus isa bus,srel/BY/place/Place/C
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[from],Day,C))
 ip  dmeq(by,BY),place_station(Place,Stat),busorfree(Bus). 
@@ -9847,14 +9851,14 @@ takefrom rule % take FROM
 is  ispresent dob/take/X/_/C, {X \== it},
     srel/FROM/place/Place/C
 id	 not flag(exit), 
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
     add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[from],Day,C))   %% same event C ! 
 ip  dmeq(from,FROM),newfree(Bus),place_station(Place,Stat).  
 
 sometake1 rule % someone take the bus BY a place
 is  ispresent dob/take/_/Bus/A,srel/BY/place/Place/A
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[],Day,A))
 ip  dmeq(by,BY),busorfree(Bus),
@@ -9863,7 +9867,7 @@ ip  dmeq(by,BY),busorfree(Bus),
 
 takeby rule % take BY
 is  ispresent dob/take/_/_/C,srel/BY/place/Place/C
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
     add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[],Day,C)) %% same event C !
 ip  dmeq(by,BY),place_station(Place,Stat),newfree(Bus). 
@@ -9881,7 +9885,7 @@ ip  [].
 sometake2take rule % someone take the bus TO a place
 is  ispresent dob/USE/X/Bus/A, {X \== it}, 
     srel/TO/place/Place/A
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[to],Day,A)) 
 ip  dmeq(to,TO),dmeq(use,USE),place_station(Place,Stat),busorfree(Bus). 
@@ -9889,7 +9893,7 @@ ip  dmeq(to,TO),dmeq(use,USE),place_station(Place,Stat),busorfree(Bus).
 
 takeme rule % Bus take me to
 is  ispresent dob/take/Bus/_/C,ispresent Bus isa bus,srel/TO/place/Place/C
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[to],Day,C)) 
 ip  dmeq(to,TO),place_station(Place,Stat),busorfree(Bus). 
@@ -9898,7 +9902,7 @@ ip  dmeq(to,TO),place_station(Place,Stat),busorfree(Bus).
 taketo rule % take TO
 is  ispresent dob/take/X/_/C, {X \== it}, %%  ..  tid tar det
     srel/TO/place/Place/C
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
     add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[to],Day,C))
 ip  dmeq(to,TO),place_station(Place,Stat),newfree(Bus). 
@@ -9909,7 +9913,7 @@ ip  dmeq(to,TO),place_station(Place,Stat),newfree(Bus).
 leavaplace rule % when Does a bus LEAVE a place? (Place is unbound)
 is  exactly (which(Time),Bus isa bus, Time isa Timeq,
         dob/LEAVE/Bus/Place/C,event/real/C,srel/in/time/Time/C)
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Place,DaySeqNo,Depset),
 			passevent(Depset,Bus,Place,[from],Day,C))
 ip	 unbound(Place),dmeq(leave,LEAVE),dmeq(time,Timeq).
@@ -9920,7 +9924,7 @@ is  Bus isa bus,I isa self,
     doit/Go/I/A,{dmeq([go,come,travel],Go)}, %% TA-100831
     srel/Prep/place/Place/A, 
     srel/pwith/vehicle/Bus/A
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[Prep],Day,A))
 ip  dmeq([from],Prep), 
@@ -9933,7 +9937,7 @@ is  context (Pass/Cat/B),
     ispresent Cat isa BVP,
 %%     not ispresent  srel/to/place/_/_ 
     not ispresent  srel/from/place/_/_ 
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Cat,Stat,DaySeqNo,Depset),
          passevent(Depset,Cat,Stat,[from],Day,B)) %% Default
 ip  dmeq([pass,reach],Pass),
@@ -9945,7 +9949,7 @@ passtofrom rule % I pass Place to/from Another place
 is  context (Pass/Cat/B), %% only 1 
     srel/FROMTO/place/Place/B, 
     ispresent Cat isa BVP
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[FROMTO],Day,B))
 ip  dmeq([from,to],FROMTO), 
@@ -9957,7 +9961,7 @@ ip  dmeq([from,to],FROMTO),
 
 passfrom5 rule % Can someone TRAVEL FROM a place a time?
 is  ispresent doit/TRAVEL/_/Time/B,srel/FROM/place/Place/B
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          keepafter(Time,Depset,NewDepset), %% keepat
 			passevent(NewDepset,Bus,Stat,[from],Day,B))
@@ -9968,7 +9972,7 @@ ip  dmeq(travel,TRAVEL),dmeq(from,FROM),
 leave1 rule % is a Place  bus LEAVEing a place? 
 is  ispresent Bus isa bus,ispresent dob/LEAVE/Bus/_,
     adj/_/Place/Bus/A %% NB, Place is a PLACE
-id	 atday(Day), atdate2(DaySeqNo,_date),                                            %% NOT next, etc.
+id	 atday(Day), atdate2(DaySeqNo,_Date),                                            %% NOT next, etc.
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[from],Day,A))
 ip	 dmeq(leave,LEAVE), busorfree(Bus),
@@ -9977,7 +9981,7 @@ ip	 dmeq(leave,LEAVE), busorfree(Bus),
 
 leave2 rule % Does a bus LEAVE a place? %%  leave is noe neutral wrp direction
 is  dob/LEAVE/Bus/Place/A, ispresent Bus isa Veh
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[],Day,A)) 
 ip  dmeq(leave,LEAVE), 
@@ -9991,7 +9995,7 @@ is  Way isa street,
     ispresent doit/be1/Way/C,srel/FROM/Xplace/Place/C, % place/city
                       { dmeq([place,city,street,station],Xplace)}
 id	 not findstations(_,_,_), 
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
          not   passevent(_,_,_,[from],_,_),    %%  NOT 2 FROMS
          not   connections(_,_,_,_,_,_,_,_,_,_), %% finished 
 	 add (departure(Bus,Station,DaySeqNo,Depset),
@@ -10009,7 +10013,7 @@ is  ispresent _F1 isa duration,
     not ispresent _ isa information %% Ad Hoc 
 id	 not flag(exit), 
     not findstations(_,_,_),
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
          not   passevent(_,_,_,[from],_,_),    %%  NOT 2 FROMS
          not   connections(_,_,_,_,_,_,_,_,_,_), %% finished 
 	 add (departure(Bus,Station,DaySeqNo,Depset),
@@ -10028,7 +10032,7 @@ is  ispresent Bus isa BR,
     not ispresent _ isa information %% Ad Hoc 
 id	 not flag(exit), 
     not findstations(_,_,_),
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
          not   passevent(_,_,_,[from],_,_),    %%  NOT 2 FROMS
          not   connections(_,_,_,_,_,_,_,_,_,_), %% finished 
 	 add (departure(Bus,Station,DaySeqNo,Depset),
@@ -10050,14 +10054,14 @@ is  ispresent srel/pwith/vehicle/Bus36/B,
     not ispresent doit/start/_/X,  %% start to go special
         { bus_place_station(Bus36,Dragvoll1,NTNU_Dragvoll) }
 id  not  message(neverpasses(Bus36,Dragvoll)), %% retention 
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
     not connections(_,_,_,_,_,_,_,_,_,_), 
 
     not departure(_,Dragvoll,_,_),     % not already allocated Risvollan
     not departure(_,NTNU_Dragvoll,_,_),% nor to                Risvollansenteret
 
-    not passevent(_Depset,_Bus,_Station,Opts,_Day,_B) when {  testmember(to,Opts)},
-    not passevent(_Depset,_Bus,Dragvoll,Opts,_Day,_B) when { testmember(to,Opts)}, 
+    not passevent(_depset,_bus,_Station,Opts,_day,_b) when {  testmember(to,Opts)},
+    not passevent(_depset,_bus,Dragvoll,Opts,_day,_b) when { testmember(to,Opts)}, 
 
     add (departure(Bus,Dragvoll,DaySeqNo,Depset),  
          passevent(Depset,Bus,Dragvoll,[to],Day,B)), 
@@ -10088,14 +10092,14 @@ is  ispresent _F1 isa duration,
     ispresent doit/Be1/Bus/_C,  {dmeq([be1,exist],Be1)},           %% raskeste vei = street 
     srel/to/Xplace/Place/C, {dmeq([place,city,station,neighbourhood],Xplace)},
 
-    not comp/_number/ne/_/Bus, 
+    not comp/_Number/ne/_/Bus, 
     not ispresent srel/except/_/Bus/_ 
 
 id  not flag(exit), 
     not findstations(_,_,_),  
-    atday(Day),atdate2(DaySeqNo,_date),      
-    not passevent(_,_Bus,Place,_,_,_),    %% at least not Place 
-    not passevent(_,_Bus,_AnyPlace,[to],_,_),
+    atday(Day),atdate2(DaySeqNo,_Date),      
+    not passevent(_,_bus,Place,_,_,_),    %% at least not Place 
+    not passevent(_,_bus,_AnyPlace,[to],_,_),
     not connections(_,_,_,_,_,_,_,_,_,_),  %%  already identical name
     add (departure(Bus,Station,DaySeqNo,Depset), 
          passevent(Depset,Bus,Station,[to],Day,C)) 
@@ -10108,8 +10112,8 @@ is  srel/Past/Xplace/Place/C, { dmeq([past,at,by,dir],Past),
                                 dmeq([place,city],Xplace)},
     ispresent Bus isa BR, { dmeq(bus,BR)},  %% disprefer departure  
     ispresent doit/Be1/Bus/_C,
-    not comp/_number/ne/_/Bus 
-id  atday(Day), atdate2(DaySeqNo,_date), 
+    not comp/_Number/ne/_/Bus 
+id  atday(Day), atdate2(DaySeqNo,_Date), 
     not passevent(_,Bus,Place,_,_,_),     %% same place 
     passevent(_,Bus,_Place,[to],_,_), %% if already to, past	 means FROM
     not connections(_,_,_,_,_,_,_,_,_,_), 
@@ -10122,7 +10126,7 @@ ip  dmeq([be1,exist],Be1),
 
 arrdep0 rule  % arr dep
 is  has/bus/ARRDEP/Bus/_,adj/_/Place/Bus/E %% same event E
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
         passevent(Depset,Bus,Stat,[],Day,E))
 ip	 dmeq(arrdep,ARRDEP),busorfree(Bus),
@@ -10158,7 +10162,7 @@ is  context Bus isa BVP,    %% don't hide the very bus number ispresent ???
     context  doit/TRAVEL/Bus/B, 
     srel/to/_/Place/X, 
     not ispresent doit/start/_/X
-id  atday(Day),atdate2(DaySeqNo,_date),
+id  atday(Day),atdate2(DaySeqNo,_Date),
     not  passevent(_,_,_,_,_,_), %% departure(_,Place,_,_),   % not already allocated
     add (departure(Bus,Station,DaySeqNo,Depset), 
          passevent(Depset,Bus,Station,[to],Day,B)) 
@@ -10187,7 +10191,7 @@ is  srel/nil/_/Place/_, ispresent doit/TRAVELBE/Cat/B,
     not ispresent srel/to/place/_/_,  %% \+ "to time" Norw
     not ispresent srel/towards/place/_/_, 
     ispresent Cat isa BVP
-id  atday(Day),atdate2(DaySeqNo,_date),
+id  atday(Day),atdate2(DaySeqNo,_Date),
     not   passevent(_,_,_,[to],_,_), 
     not   connections(_,_,_,_,_,_,_,_,_,_), %% finished 
     not  departure(Bus,Place,DaySeqNo,Depset),
@@ -10207,7 +10211,7 @@ is  srel/nil/_/Place/_,
     ispresent doit/TRAVELBE/Cat/B,
     not ispresent srel/from/place/_/_ , 
     ispresent Cat isa BVP
-id  atday(Day),atdate2(DaySeqNo,_date),
+id  atday(Day),atdate2(DaySeqNo,_Date),
     not   passevent(_,_,_,[from],_,_), 
     not   connections(_,_,_,_,_,_,_,_,_,_), %% finished 
     not  departure(Bus,Place,DaySeqNo,Depset),
@@ -10227,7 +10231,7 @@ is  srel/nil/_/Place/_,
     not ispresent srel/from/place/_/_ , 
     not ispresent srel/to/place/_/_ , 
     ispresent Cat isa BVP
-id  atday(Day),atdate2(DaySeqNo,_date),
+id  atday(Day),atdate2(DaySeqNo,_Date),
     not   passevent(_,_,_,[from],_,_), 
     not   connections(_,_,_,_,_,_,_,_,_,_), %% finished 
     not  departure(Bus,Place,DaySeqNo,Depset),
@@ -10336,7 +10340,7 @@ is  srel/nil/Plass/Place/_,  %% NOT coevent
     not ispresent srel/in/place/_/_,       %%  bussen nth for å være i nardo.
 
     ispresent Cat isa BVP,{dmeq(trafficant,BVP)}  
-id  atday(Day),atdate2(DaySeqNo,_date),
+id  atday(Day),atdate2(DaySeqNo,_Date),
     not   passevent(_,_,_,[to],_,_), 
     not   connections(_,_,_,_,_,_,_,_,_,_), %% finished 
     not  departure(Bus,Place,_,_),
@@ -10360,7 +10364,7 @@ hasarrivaltoplace rule %%  Baroque
 is  srel/TO/place/Place/_ ,      %%  Too Restricted ?  
     {    dmeq([to],TO)},    %% 
     ispresent  has/agent/BusArr/_I/_, {dmeq([bus,arrival],BusArr)}
-id  atday(Day),atdate2(DaySeqNo,_date),
+id  atday(Day),atdate2(DaySeqNo,_Date),
     not   passevent(_,_,_,[to],_,_), 
     not   connections(_,_,_,_,_,_,_,_,_,_), %% finished 
     not  departure(Bus,Place,DaySeqNo,Depset),
@@ -10372,7 +10376,7 @@ ip  place_station(Place,Station),   Station \== unknown.
 hasdeparturefromplace rule %%  Baroque 
 is  srel/FROM/place/Place/_ ,  {dmeq([from,after,around],FROM)},  
     has/agent/BusDep/_I/_,     {dmeq([bus,departure],BusDep)} 
-id  atday(Day),atdate2(DaySeqNo,_date),
+id  atday(Day),atdate2(DaySeqNo,_Date),
     not   passevent(_,_,_,[from],_,_), 
     not   connections(_,_,_,_,_,_,_,_,_,_), %% finished 
     not  departure(Bus,Place,DaySeqNo,Depset),
@@ -10395,7 +10399,7 @@ id  not flag(exit),
     not passevent(_,_,_,[from],_,_), 
     not connections(_,_,_,_,_,_,_,_,_,_),  %% finished 
     not departure(Bus,Place,DaySeqNo,_Depset),
-    atday(Day), atdate2(DaySeqNo,_date),
+    atday(Day), atdate2(DaySeqNo,_Date),
     add (departure(Bus,Station,    DaySeqNo   ,Depset),  %% DaySeqNo = Day
          passevent(Depset,Bus,Station,[from],Day,B)) 
 ip  bus_place_station(Cat,Place,Station), %% OK if not bus
@@ -10411,11 +10415,11 @@ is  srel/FROM/place/Place/X,  { dmeq([from],FROM)},
     ispresent doit/TRAVELBE/Cat/B, { dmeq(travelbe,TRAVELBE)}, 
     ispresent Cat isa BVP,    { bound(Cat), dmeq(vehicle,BVP)},
     not ispresent doit/start/_/X   %% start to go special
-id  atday(Day),atdate2(DaySeqNo,_date),
+id  atday(Day),atdate2(DaySeqNo,_Date),
     not connections(_,_,_,_,_,_,_,_,_,_), 
     not departure(_,Place,_,_),   % not already allocated// OBS to Risvollan//Risvollansenteret
-    not passevent(_Depset,_Bus,Station,Opts,_Day,_B) when  {  testmember(from,Opts)},
-    not passevent(_Depset,_Bus,Place,Opts,_Day,_B) when { testmember(from,Opts)}, 
+    not passevent(_depset,_bus,Station,Opts,_day,_b) when  {  testmember(from,Opts)},
+    not passevent(_depset,_bus,Place,Opts,_day,_b) when { testmember(from,Opts)}, 
     add (departure(Bus,Station,DaySeqNo,Depset), 
          passevent(Depset,Bus,Station,[from],Day,B)), 
     add message(neverpasses(Cat,Place))
@@ -10429,7 +10433,7 @@ is  doit/be1/Agent/_,
     Agent isa Whatever, %% bussholdeplassen på risvollansenteret
     srel/on/place/Place/C,
     ispresent doit/go/Agent/C
-id  atday(Day),atdate2(DaySeqNo,_date),
+id  atday(Day),atdate2(DaySeqNo,_Date),
     not passevent(_,_,Place,_,_,_),
     add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[from],Day,C))
@@ -10443,7 +10447,7 @@ is   context srel/towards/place/_/_,
      srel/to/place/Place/C, %% actually from
      ispresent doit/TRAVEL/Bus/C,
      ispresent Bus isa BUS 
-id   atday(Day),atdate2(DaySeqNo,_date),
+id   atday(Day),atdate2(DaySeqNo,_Date),
      not passevent(_,_,_,[from],_,_), %% already (Panic)
      add (departure(Bus,Stat,DaySeqNo,Depset),
           passevent(Depset,Bus,Stat,[from],Day,C))
@@ -10458,7 +10462,7 @@ is   context srel/to/place/_/_,
      srel/for/place/Place/C, %% actually from
      ispresent doit/TRAVEL/Bus/C,
      ispresent Bus isa BUS 
-id   atday(Day),atdate2(DaySeqNo,_date),
+id   atday(Day),atdate2(DaySeqNo,_Date),
      not passevent(_,_,_,[from],_,_), %% already (Panic)
      add (departure(Bus,Stat,DaySeqNo,Depset),
           passevent(Depset,Bus,Stat,[from],Day,C))
@@ -10483,7 +10487,7 @@ ip  [].
 
 frem1 rule %% fram i edgar b sjeldropsvei kl 19.
 is  
-    replaceall (srel/in/time/_time/E,srel/On/place/D/E)
+    replaceall (srel/in/time/_Time/E,srel/On/place/D/E)
     with       (doit/go/'I'/E,srel/to/place/D/E),
     {dmeq([on,at,in],On)},
     not ispresent srel/to/place/D/E %% TA-110825
@@ -10521,7 +10525,7 @@ is  srel/TO/PC/Place/X,
 
      {dmeq([place,company,agent,station],PC)}, %% TA-110401 %% expensive
 
-    not has/agent/_departure/_tuc/_/_,  
+    not has/agent/_Departure/_Tuc/_/_,  
     ispresent Cat isa BVP,   {dmeq(trafficant,BVP)}, 
     ispresent doit/TRAVELTO/Cat/B,  {dmeq(travelto,TRAVELTO)}, 
     not ispresent doit/start/_/X   %% start to go special
@@ -10529,9 +10533,9 @@ id  not flag(exit),
     not findstations(_,_,_),  
     not  connections(_,_,_,_,_,_,_,_,_,_), 
     not  departure(_,Place,_,_),   % not already allocated// OBS to Risvollan//Risvollansenteret
-    not passevent(_Depset,_Bus,Station,Opts,_Day,_B) when {  testmember(to,Opts)},
-    not passevent(_Depset,_Bus,Place,Opts,_Day,_B) when { testmember(to,Opts)}, 
-    atday(Day),atdate2(DaySeqNo,_date), 
+    not passevent(_depset,_bus,Station,Opts,_day,_b) when {  testmember(to,Opts)},
+    not passevent(_depset,_bus,Place,Opts,_day,_b) when { testmember(to,Opts)}, 
+    atday(Day),atdate2(DaySeqNo,_Date), 
     add (departure(AnyBus,Station,    DaySeqNo   ,Depset),  %% DaySeqNo Day  
          passevent(Depset,AnyBus,Station,[to],Day,B)) 
 ip  i_or_a_bus(Cat,BVP,Bus), 
@@ -10554,7 +10558,7 @@ is  ispresent srel/TO/Plass/Jarlestreet/X,
 id  not message(neverpasses(Bus43,Jarlestreet)), %% retention 
     not connections(_,_,_,_,_,_,_,_,_,_), 
     not passevent(_Depset,_Bus,_Jarle_street,Opts,_Day,_B) when {testmember(to,Opts)}, 
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
     add (departure(Bus,Ladekirke,DaySeqNo,Depset),   
          passevent(Depset,Bus,Ladekirke,[to],Day,B)), 
     add message(neverpasses(Bus43,Ladekirke))
@@ -10581,7 +10585,7 @@ id  not message(neverpasses(Bus36,Dragvoll)), %% retention
     not passevent(_Depset,_Bus,_Dragvoll,Opts,_Day,_B) when {testmember(to,Opts)}, 
     %% toplace already fixed
 
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
     add (departure(Bus,Dragvoll,DaySeqNo,Depset),   
          passevent(Depset,Bus,Dragvoll,[to],Day,B)), 
     add message(neverpasses(Bus36,Dragvoll))
@@ -10604,13 +10608,13 @@ is  ispresent srel/TO/SN/Risvollan/X,  %% (see retention)
       { bus_place_station(Bus36,Risvollan,Risvollansenteret)} 
 id  not  message(neverpasses(Bus36,Risvollan)),
     not  message(neverpasses(Bus36,Risvollansenteret)), %% retention 
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
     not connections(_,_,_,_,_,_,_,_,_,_), 
 
     not departure(_,Risvollan,_,_),     % not already allocated Risvollan
     not departure(_,Risvollansenteret,_,_),% nor to   Risvollansenteret
-    not passevent(_Depset,_Bus,_Station,Opts,_Day,_B) when { testmember(to,Opts)},
-    not passevent(_Depset,_Bus,Risvollansenteret,Opts,_Day,_B) when { testmember(to,Opts)}, 
+    not passevent(_depset,_bus,_Station,Opts,_day,_b) when { testmember(to,Opts)},
+    not passevent(_depset,_bus,Risvollansenteret,Opts,_day,_b) when { testmember(to,Opts)}, 
 
     add (departure(Bus,Risvollansenteret,DaySeqNo,Depset),   
          passevent(Depset,Bus,Risvollansenteret,[to],Day,B)), 
@@ -10626,7 +10630,7 @@ nilp rule % Does a bus TRAVEL () a place?   //
 is  ispresent Bus isa BDA,
     ispresent doit/TRAVEL/Bus/C,
     srel/nil/Placoid/Place/C
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Station,DaySeqNo,Depset),
          passevent(Depset,Bus,Station,[],Day,C)) %% dont guess dir
 ip	dmeq(travel,TRAVEL),
@@ -10805,7 +10809,7 @@ ip	 unbound(Station),exbus(Bus).
 
 
 findstationwhere rule % Hvor  er stasjonene til en buss
-is  which(A),A isa place,Bus isa Veh,S isa station,has/_vehicle/station/Bus/S,
+is  which(A),A isa place,Bus isa Veh,S isa station,has/_Vehicle/station/Bus/S,
     doit/be1/S/D, srel/in/place/A/D ,                     %% route/vehicle
       {dmeq(vehicle,Veh)} 
 id	 not departure(_,_,_,_), 
@@ -10844,7 +10848,7 @@ ip       dmeq([bus,nightbus,route,vehicle],BR),
 findstation30 rule % Hva er trasee for en rute 
 is  which(Route),B52 isa bus,
     Route isa route_plan,srel/FOR/BR/B52/_E, 
-    not srel/_pwith/time/_/_ , %%   (Detail)
+    not srel/_Pwith/time/_/_ , %%   (Detail)
     not srel/_/place/_/_   
 id	 atday(Day),
 	 add (findstations(B52,Day,Stl),passesstations(B52,Day,Stl,_))
@@ -10899,7 +10903,7 @@ ip	 bound(Bus),dmeq([take,follow,pass],Take),
 
 passby2 rule %  Does a bus PASS BY two places? % OR A PERSON 
 is  Bus isa Busman,ispresent doit/PASS/Bus/A,srel/TOFROMBY/place/(StartPlace,EndPlace)/A
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,StartStat,DaySeqNo,StartDepset),
 			passevent(StartDepset,Bus,StartStat,[],Day,A),
 			departure(Bus,EndStat,Day,EndDepset),
@@ -10912,7 +10916,7 @@ ip	 dmeq(tofromby,TOFROMBY),
 passbyname rule % Does a bus PASSBY a place? (Place is unbound) ??? <----------
 is  exactly (which(Time),Bus isa bus, Time isa Timeq,
 				 PASSBY/Bus/Place/C,event/real/C,srel/in/time/Time/C)
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Place,DaySeqNo,Depset),
 			passevent(Depset,Bus,Place,[],Day,C))
 ip	 unbound(Place),dmeq(passby,PASSBY),dmeq(time,Timeq).
@@ -10922,7 +10926,7 @@ travelbyplace rule % Do I  TRAVEL BY a place?
 is  ispresent I isa SELF, ispresent doit/TRAVEL/I/C, srel/BY/Placoid/Place/C,
     not ispresent srel/to/place/_/_ %% then [] is not an option 
 id	 not flag(exit), 
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[],Day,C))
 ip	 dmeq(travel,TRAVEL), 
@@ -10960,7 +10964,7 @@ is  srel/BY/place/Place/C,   {dmeq(by,BY)},
    
 id	 not flag(exit),
     not message(neverpasses(_,_Place)),  %% %% når går buss nr 60 fra sentrum forbi berg 
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
 %%%	 passevent(_,_,_,Opts0,_,_),     %% TA-110119
     add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[to],Day,C))
@@ -10979,7 +10983,7 @@ is  srel/BY/Placoid/Place/C, {dmeq(by,BY)},
     not ispresent srel/from/_/_/_, 
     not ispresent srel/nil/place/Place/_ %%% when { (Place1 \== Place)} NEVER FROM=TO
 id	  not flag(exit), 
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
     add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[from],Day,C)) 
 ip  dmeq([place,neighbourhood,station,city],Placoid), 
@@ -10991,7 +10995,7 @@ travelbybusbyp rule % someone TRAVEL BY bus by a place?
 is  ispresent Bus isa bus,ispresent doit/TRAVEL/_/A,
     ispresent srel/by/vehicle/Bus/A,srel/BY/place/Place/A
 id	 not flag(exit), 
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),passevent(Depset,Bus,Stat,[],Day,A))
 ip  dmeq(travel,TRAVEL),dmeq(by,BY),place_station(Place,Stat),
     busorfree(Bus). 
@@ -11000,7 +11004,7 @@ ip  dmeq(travel,TRAVEL),dmeq(by,BY),place_station(Place,Stat),
 sometravelby rule % Can someone TRAVEL BY a place a time?
 is  ispresent doit/TRAVEL/_/Time/B,srel/BY/place/Place/B
 id	 not flag(exit), 
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          keeparound(Time,Depset,NewDepset), %% keepat
 			passevent(NewDepset,Bus,Stat,[],Day,B))
@@ -11011,7 +11015,7 @@ ip  dmeq(by,BY),place_station(Place,Stat),number(Time),
 nnpassing rule % is a NN bus PASSing a place?
 is  ispresent Bus isa bus,ispresent PASSBY/Bus/_,adj/_/Place/Bus/A
 id	  not flag(exit), 
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[],Day,A))
 ip	 dmeq(passby,PASSBY),place_station(Place,Stat),
@@ -11021,7 +11025,7 @@ ip	 dmeq(passby,PASSBY),place_station(Place,Stat),
 somepassbybus0 rule % Does a place belong to a route? 
 is  belong_to/Place/Bus/A
 id	  not flag(exit),
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[buses],Day,A)) 
 ip  busorfree(Bus),
@@ -11032,7 +11036,7 @@ somepassbybus1 rule % Does a bus PASS a place?  Dragvoll misere
 is  PASSBY/Bus/Place/A,
     not srel/from/place/_/_ 
 id	 not flag(exit), 
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[],Day,A)) 
 ip  dmeq(passby,PASSBY),busorfree(Bus),
@@ -11042,7 +11046,7 @@ ip  dmeq(passby,PASSBY),busorfree(Bus),
 somepassbybus2 rule % which routes station does route have 
 is  has/route/station/Bus/Place
 id	 not flag(exit),
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[],Day,F))
 ip  busorfree(Bus),newfree(F),
@@ -11053,7 +11057,7 @@ somepassbybus3 rule % På hvilke ruter fins moholt
 is  which(A),A isa route,
     doit/be1/Place/B,srel/on/route/A/B,event/real/B
 id	 not flag(exit), 
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[],Day,F)) 
 ip  busorfree(Bus),newfree(F),
@@ -11082,7 +11086,7 @@ ip  dmeq(list,LIST),dmeq(bus,BR),unbound(B52).
 doescome rule %%  Does a bus COME a place? (Place is unbound)
 is  exactly (which(Time),Bus isa bus, Time isa Timeq,
 				 COME/Bus/Place/C,event/real/C,srel/in/time/Time/C)
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Place,DaySeqNo,Depset),
 			passevent(Depset,Bus,Place,[],Day,C))
 ip	 unbound(Place),dmeq(come,COME),dmeq(time,Timeq).
@@ -11090,7 +11094,7 @@ ip	 unbound(Place),dmeq(come,COME),dmeq(time,Timeq).
 
 passto1 rule % Does a bus PASS TO a place? (Place is unbound)
 is  doit/PASS/_/A,srel/TO/place/nil/A
-id  atday(Day),atdate2(DaySeqNo,_date),
+id  atday(Day),atdate2(DaySeqNo,_Date),
     add (departure(Bus,PlaceVar,DaySeqNo,Depset),
 			passevent(Depset,Bus,PlaceVar,[],Day,A))
 ip	 dmeq(pass,PASS),dmeq(to,TO),newfree(PlaceVar).
@@ -11103,7 +11107,7 @@ id	 not flag(exit),
     not findstations(_,_,_),
     not departure(_Bus,_Stat,_Day,_Depset), %% only for beginners 
     not message(mustknowanother(place)),
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[],Day,A))
 ip  dmeq(pass,PASS),dmeq(to,TO),
@@ -11116,7 +11120,7 @@ ip  dmeq(pass,PASS),dmeq(to,TO),
 travelby1 rule % someone TRAVEL by bus a place? 
 is  ispresent Bus isa bus,ispresent doit/TRAVEL/_/A,
     ispresent srel/by/vehicle/Bus/A,srel/TO/place/Place/A
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[],Day,A))
 ip  dmeq(travel,TRAVEL),dmeq(to,TO),
@@ -11128,7 +11132,7 @@ travelby2 rule % someone TRAVEL TO a place when I start at ...
 is  ispresent doit/TRAVEL/Cat/B, doit/start/_/X ,  %% when I start at
     srel/AT/_/Place/X,
     ispresent Cat isa BVP
-id  atday(Day),atdate2(DaySeqNo,_date),
+id  atday(Day),atdate2(DaySeqNo,_Date),
     not  departure(Bus,Place,DaySeqNo,Depset),
     add (departure(Bus,Station,DaySeqNo,Depset), 
          passevent(Depset,Bus,Station,[from],Day,B)) %% NB from
@@ -11147,7 +11151,7 @@ ip  dmeq(notbus,NOTBUS).
 
 passplace1 rule % someone pass a place? 
 is  ispresent I isa self, P isa Place,ispresent dob/PASS/I/P/B 
-id       atday(Day),atdate2(DaySeqNo,_date),
+id       atday(Day),atdate2(DaySeqNo,_Date),
     not  departure(Bus,P,DaySeqNo,Depset), 
          add (departure(Bus,P,DaySeqNo,Depset),
          passevent(Depset,Bus,P,[],Day,B))
@@ -11160,7 +11164,7 @@ ip  dmeq(pass,PASS),
 travelto  rule
 is  srel/to/_/place/_X, ispresent doit/TRAVEL/Cat/B,
     ispresent Cat isa BVP
-id  atday(Day),atdate2(DaySeqNo,_date),
+id  atday(Day),atdate2(DaySeqNo,_Date),
     not  departure(Bus,Place,DaySeqNo,Depset),
     add (departure(Bus,Station,DaySeqNo,Depset), 
          passevent(Depset,Bus,Station,[to],Day,B)) 
@@ -11171,7 +11175,7 @@ ip  dmeq(travel,TRAVEL),
 
 travelto2 rule % Can someone TRAVEL TO a place a time?
 is  ispresent doit/TRAVEL/_/Time/B,srel/TO/place/Place/B
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
           keepbefore1(Time,Depset,NewDepset), %% keepat %% < 1 hour before
 			passevent(NewDepset,Bus,Stat,[],Day,B))
@@ -11182,7 +11186,7 @@ ip  dmeq(travel,TRAVEL),number(Time),
 
 comebus1 rule % is a Place bus  COMEing?
 is  ispresent Bus isa bus,ispresent COME/Bus/_,adj/_/Place/Bus/A
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[],Day,A))
 ip	 dmeq(come,COME),
@@ -11193,7 +11197,7 @@ ip	 dmeq(come,COME),
 passplaceto rule % pass place TO Place
 is  ispresent dob/PASS/Bus/_/A, 
     srel/TO/place/Place/A
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[to],Day,A))
 ip  dmeq(to,TO), dmeq(pass,PASS),
@@ -11202,7 +11206,7 @@ ip  dmeq(to,TO), dmeq(pass,PASS),
 passplacefrom rule % pass place FROM Place
 is  ispresent dob/pass/Bus/_/A, 
     srel/from/place/Place/A
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[from],Day,A))
 ip  busorfree(Bus),
@@ -11224,7 +11228,7 @@ befed rule  %%  Dirty
 is    R isa route,  Bus isa bus,  
       doit/be1/R/X, event/real/X, srel/for/bus/Bus/X, % route for Bus 
       doit/be1/R/C, event/real/C, srel/TO/place/Place/C
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
     add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[to],Day,C)) %% same event C 
 ip	 dmeq(to,TO),bus_place_station(Bus,Place,Stat).
@@ -11239,7 +11243,7 @@ is  ispresent  Arrdep isa ARRDEP, %% which(Arrdep), %% also test
     not ispresent srel/_/place/_/_  
 id  not passevent(_,Bus,_,_,_,_),
     not connections(_,_,Bus,_,_,_,_,_,_,_),
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
     add (departure(Bus,hovedterminalen,DaySeqNo,Depset),
 			passevent(Depset,Bus,hovedterminalen,[],Day,_))
 ip  dmeq(arrdep,ARRDEP), busorfree(Bus),
@@ -11253,7 +11257,7 @@ is  ispresent  Arrdep isa TAR, %% which(Arrdep), %% also test
     not ispresent srel/_/place/_/_             %%  etc. etc. etc.
 id  not passevent(_,Bus,_,_,_,_),
     not connections(_,_,Bus,_,_,_,_,_,_,_),
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
     add (departure(Bus,hovedterminalen,DaySeqNo,Depset),
 			passevent(Depset,Bus,hovedterminalen,[],Day,_))
 ip  dmeq(arrdep,ARRDEP),dmeq(arrdep,TAR), 
@@ -11276,7 +11280,7 @@ ip  dmeq(arrdep,ARRDEP),
 
 istoplace rule % is ARRDEP TO Place
 is  ispresent B isa ARRDEP, ispresent doit/be1/B/A, srel/TO/place/Place/A
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 not  departure(_,  Stat,_,  _), %% in case neverpasses 
     add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[TO],Day,A)) 
@@ -11286,7 +11290,7 @@ ip  dmeq(to,TO),place_station(Place,Stat),dmeq(arrdep,ARRDEP),
 
 isfromplace rule % is ARRDEP FROM Place, Bus is UNKNOWN !!!
 is  ispresent B isa ARRDEP,ispresent doit/be1/B/A, srel/FROM/place/Place/A 
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[FROM],Day,A)) 
 ip  dmeq(arrdep,ARRDEP),dmeq(from,FROM),place_station(Place,Stat), 
@@ -11295,7 +11299,7 @@ ip  dmeq(arrdep,ARRDEP),dmeq(from,FROM),place_station(Place,Stat),
 
 hasvehdep rule
 is  has/vehicle/departure/Bus/_,adj/_/Place/Bus/A
-id	 atday(Day),atdate2(DaySeqNo,_date),
+id	 atday(Day),atdate2(DaySeqNo,_Date),
 	 add (departure(Bus,Stat,DaySeqNo,Depset),
          passevent(Depset,Bus,Stat,[from],Day,A)) 
 ip	 place_station(Place,Stat),busorfree(Bus). 
@@ -11327,7 +11331,7 @@ firstnext rule % Panic   first,next 4,  no departure yet
 is  quant(eq/N,Bus),Bus isa BR,adj/_/POSITION/Bus/E 
 id	 not message(not(route,_)), 
     not departure(_,_,_,_),
-	 atday(Day), atdate2(DaySeqNo,_date),
+	 atday(Day), atdate2(DaySeqNo,_Date),
     add (timenow2(0,Time),
          departure(Bus,PlaceVar,DaySeqNo,Depset),
          keepafter(Time,Depset,Depset1),
@@ -11342,7 +11346,7 @@ prevlast rule % Panic   previous,last 4,  no departure yet
 is  quant(eq/N,Bus),Bus isa BR,adj/_/POSITION/Bus/E 
 id	 not message(not(route,_)), 
     not departure(_,_,_,_),
-	 atday(Day), atdate2(DaySeqNo,_date),
+	 atday(Day), atdate2(DaySeqNo,_Date),
     add (timenow2(0,Time),
          departure(Bus,PlaceVar,DaySeqNo,Depset),
          keepbefore(Time,Depset,Depset1),
@@ -11396,7 +11400,7 @@ ip  bound(Bus),
 
 defaultfromcenter rule %% default from hovedterminalen
 is  []
-id  atday(Day), atdate2(DaySeqNo,_date),
+id  atday(Day), atdate2(DaySeqNo,_Date),
     not numberof(stations,_,_),
     not message(mustknow(place)), 
     replace departure(Bus,PlaceVar,DaySeqNo,Depset1)
@@ -11413,7 +11417,7 @@ ip  bound(Bus),
 
 default_ht_tram rule
 is  []
-id  atday(Day), atdate2(DaySeqNo,_date),
+id  atday(Day), atdate2(DaySeqNo,_Date),
     not numberof(stations,_,_),
     not message(mustknow(place)), 
     replace departure(Bus,PlaceVar,DaySeqNo,Depset1)
@@ -11456,7 +11460,7 @@ ip  number(Time1),number(Time2),
     setopt(time,Opts,Opts1).
 
 minago rule %  for   30 minutter siden
-is  Minutes  isa minute,srel/ago/_time/Minutes/_C  %% _time = minute sometimes
+is  Minutes  isa minute,srel/ago/_Time/Minutes/_C  %% _Time = minute sometimes
 id	 replace passevent(Deps,Bus,Place,Opts,Day,C) 
 	 with    (timenow2(0,Time),
              subfromtime(Time,Minutes,TM),
@@ -11829,7 +11833,7 @@ id	 not flag(earlierbus),  %% Retention
 	 with (    keepbefore(FDT1,Deps,NewDeps),
 			     passevent(NewDeps,Bus,Place,Opts1,Day,A))
 ip	 member(from,Opts), %% in case two passevents, select the right 
-    user:myflags(firstdeparturetime,FDT), %% first 
+    myflags(firstdeparturetime,FDT), %% first 
     user:subfromtime(FDT,1,FDT1), 
     setopt(time,Opts,Opts0),
     setopt(lastcorr,Opts0,Opts1)
@@ -11848,7 +11852,7 @@ id	 not flag(earlierbus),  %% Retention
 	 with (    keepbefore(FDT1,Deps,NewDeps),
 			     passevent(NewDeps,Bus,Place,Opts1,Day,A))
 ip	 member(to,Opts), %% in case two passevents, select the right 
-    user:myflags(lastarrivaltime,FDT), 
+    myflags(lastarrivaltime,FDT), 
     user:subfromtime(FDT,1,FDT1), 
     setopt(time,Opts,Opts0),
     setopt(lastcorr,Opts0,Opts1)
@@ -11866,7 +11870,7 @@ id	 not flag(earlierbus),  %% Retention
 	 with (    keepbefore(FDT1,Deps,NewDeps),
 			     passevent(NewDeps,Bus,Place,Opts1,Day,A))
 ip	 member(to,Opts), %% in case two passevents, select the right 
-    user:myflags(lastarrivaltime,FDT), 
+    myflags(lastarrivaltime,FDT), 
     user:subfromtime(FDT,1,FDT1), 
     setopt(time,Opts,Opts0),
     setopt(lastcorr,Opts0,Opts1)
@@ -11885,7 +11889,7 @@ id	 not flag(laterbus),  %% Retention
 	 with (    keepafter(FDT1,Deps,NewDeps),
 			     passevent(NewDeps,Bus,Place,Opts1,Day,A))
 ip	 \+ member(from,Opts), %% in case two passevents, select the right 
-    user:myflags(lastarrivaltime,FDT), 
+    myflags(lastarrivaltime,FDT), 
     user:addtotime(FDT,1,FDT1), 
     setopt(time,Opts,Opts0),
     setopt(nextaftertime(1),Opts0,Opts1)
@@ -11904,7 +11908,7 @@ id	 not flag(laterbus),  %% Retention
 	 with (    keepafter(FDT1,Deps,NewDeps),
 			     passevent(NewDeps,Bus,Place,Opts1,Day,A))
 ip	 \+ member(to,Opts), %% in case two passevents, select the right 
-    user:myflags(firstdeparturetime,FDT), 
+    myflags(firstdeparturetime,FDT), 
     user:addtotime(FDT,1,FDT1), 
     setopt(time,Opts,Opts0),
     setopt(nextaftertime(1),Opts0,Opts1)
@@ -11925,7 +11929,7 @@ id	 not flag(earlierbus),  %% Retention
 	 with (    keepbefore(FDT1,Deps,NewDeps),
 			     passevent(NewDeps,Bus,Place,Opts1,Day,A))
 ip	 \+ member(from,Opts), %% in case two passevents, select the right 
-    user:myflags(lastarrivaltime,FDT), 
+    myflags(lastarrivaltime,FDT), 
     user:subfromtime(FDT,1,FDT1), 
     setopts([time,lastcorr],Opts,Opts1)
 :-double. 
@@ -11945,7 +11949,7 @@ id	 not flag(laterbus),  %% Retention
 	 with (    keepafter(FDT1,Deps,NewDeps),
 			     passevent(NewDeps,Bus,Place,Opts1,Day,A))
 ip	 \+ member(to,Opts), %% in case two passevents, select the right 
-    user:myflags(firstdeparturetime,FDT), 
+    myflags(firstdeparturetime,FDT), 
     user:addtotime(FDT,1,FDT1), 
     setopt(time,Opts,Opts0),
     setopt(nextaftertime(1),Opts0,Opts1)
@@ -11995,7 +11999,7 @@ id  not flag(exit),
     not passevent(_,_,_,[from|_],_,_), 
     not connections(_,_,_,_,_,_,_,_,_,_),
     passevent(_Depset,_,OnPlace,Opts,Day,_E),
-    atdate2(DaySeqNo,_date),
+    atdate2(DaySeqNo,_Date),
     add flag(keepfrombay),
     add (departure(BB,Hovedterminalen,DaySeqNo,NewDepset), %% is the to-station
 			passevent(NewDepset,Bus,Hovedterminalen,[from],Day,E))  %% not time opt 
@@ -12013,7 +12017,7 @@ keepfrombay rule %% go from center
 is   {\+ myflags(new_origin,true)}, %% NO GPS %% TA-110218
     not ispresent srel/here/place/nil/_, %% fra her .. ??? 
     not ispresent srel/inwards/place/nil/_, 
-    not ispresent srel/from/___place/X/_  %% in case of error srel/from/text/c/free(32)
+    not ispresent srel/from/___Place/X/_  %% in case of error srel/from/text/c/free(32)
            when { (bound(X), \+ home_town(X))}, %% TA-101111
     not ispresent srel/on/place/_/_ ,      %%  hvis jeg er på Samfundet
     not _IDI isa Dep when {dmeq([department],Dep)} %% ad hoc might be placoid
@@ -12027,7 +12031,7 @@ id  not flag(exit),              %% prefer (spurious) warning
     not connections(_,_,_,_,_,_,_,_,_,_),
     not departure(_,hovedterminalen,_,_), 
     passevent(_Depset,Bus,OnPlace,Opts,Day,_E),
-    atdate2(DaySeqNo,_date),
+    atdate2(DaySeqNo,_Date),
     add flag(keepfrombay),
     add (departure(Bus,Hovedterminalen,DaySeqNo, All),
 			passevent(All,Bus,Hovedterminalen,[from],Day,E))  %% not time opt 
@@ -12048,7 +12052,7 @@ is  not ispresent srel/outwards/place/nil/_,
     not ispresent srel/near/place/NTH/_ when { bound(NTH)}, %% n(ærm)este buss ******
     not ispresent srel/in/place/NTH/_ when { bound(NTH)},
     not ispresent srel/at/place/NTH/_ when { bound(NTH)}, 
-    not ispresent srel/to/_place/NTH/_ when { bound(NTH)}, %% Lingit: agent %% TA-110401
+    not ispresent srel/to/_Place/NTH/_ when { bound(NTH)}, %% Lingit: agent %% TA-110401
     not ispresent srel/towards/place/NTH/_ when { bound(NTH)}, %%  shakey
     not ispresent srel/to/meeting/_/_ ,
     not ispresent srel/on/place/_/_ ,  
@@ -12063,10 +12067,10 @@ id  not flag(exit),
     not connections(_,_,_,_,_,_,_,_,_,_),
     not message(nocorresponse),
     add flag(keeptobay),
-    passevent(_Depset,Bus,OnPlace,Opts,Day,_E),
-    not  passevent(_Depset,_,_,[to],_Day,_E), 
+    passevent(_depset,Bus,OnPlace,Opts,Day,_e),
+    not  passevent(_depset,_,_,[to],_Day,_e), 
     not departure(_,hovedterminalen,_,_), 
-    atdate2(DaySeqNo,_date),
+    atdate2(DaySeqNo,_Date),
     add (departure(FreeBus,Hovedterminalen,DaySeqNo,NewDepset), %% may switch
 			passevent(NewDepset,Bus,Hovedterminalen,[to],Day,E))  %% not time opt 
 ip  member(from,Opts),
@@ -12089,7 +12093,7 @@ busaroundtimearrdep rule  % fra A ca kl T til D -> Avgang (?)
 is  srel/around/CLO/Time/_ , {   number(Time)}, 
     not Time isa minute,
     not srel/in_order_to/thing/_/_,
-    not srel/because_of/_thing/_/_,  
+    not srel/because_of/_Thing/_/_,  
     ispresent srel/from/place/_/_  %% ispresent form thn around = around DEP
 id	 replace    passevent(Deps,Bus,Place,Opts,Day,A)
     with     ( keeparound(Time,Deps,NewDeps), 
@@ -12388,7 +12392,7 @@ ip	 dmeq(at,AT),
 
 morning2from rule % This morning  (=<1200) , BEFORE = arrival
 is  A isa morning,
-    srel/AT/_time_/A/_ , {dmeq([at,before,in,nil,on,during],AT)}, 
+    srel/AT/_Time_/A/_ , {dmeq([at,before,in,nil,on,during],AT)}, 
     not ispresent _ isa clock  %% then morning is dummy 
 id	 not  ispresent keepbefore1(_,_,_),  
 	 not  ispresent keepbefore(_,_,_), 
@@ -12856,7 +12860,7 @@ id	 atday(Wed),
     not message(date_day_route(_,Wed)), %%  not only different routeplan
     replace passevent(Deps,Bus,Place,Opts,Day,A)
 	 with    passevent(Deps,Bus,Place,Opts1,Day,A)
-ip	 \+ user:myflags(samedayflag,true), %% Ad Hoc: Global flag 
+ip	 \+ myflags(samedayflag,true), %% Ad Hoc: Global flag 
     dmeq(vehicle,VEH), 
     busorfree(BusF),
     setopt(first(N),Opts,Opts1).
@@ -13067,7 +13071,7 @@ ip	 dmeq([time,thing],Thing),   %% catch   bus after time to...
     setopts([time,firstcorr],Opts,Opts1). 
 
 buswitharraftertime rule %% buss med ankomst etter KL
-is  _B isa arrival,      %% srel/_nilwith_/arrival/B/_,
+is  _B isa arrival,      %% srel/_Nilwith_/arrival/B/_,
     srel/after/time/Time/_, {number(Time)}, %% not duration
     not ispresent srel/around/time/_/_, 
     ispresent srel/To/place/_Place/_, { dmeq([to,nil],To)},    
@@ -13121,7 +13125,7 @@ is  srel/After/TiCo/Time/_A,  {dmeq(after,After),dmeq(timeclock,TiCo)},
 
     ispresent Time isa clock, %% in afternoon ?
     not ispresent srel/earlier/time/_/_, %% ad hoc 
-    not ispresent srel/before/_activity/_/_, %% confuse
+    not ispresent srel/before/_Activity/_/_, %% confuse
     not ispresent srel/around/time/_/_, %% confuse 
     not srel/in_order_to/_/_/_,
  %%%%   not srel/so_that/_/_/_,   
@@ -13212,7 +13216,7 @@ is  {myflags(gpsflag,true)},
 
     {myflags(new_origin,true)},  %% NB TA-110206
   
-    not ispresent srel/from/___place/X/_  
+    not ispresent srel/from/___Place/X/_  
            when { (bound(X), \+ home_town(X))}, 
 
     not ispresent srel/on/place/_/_       %%  hvis jeg er på Samfundet
@@ -13226,7 +13230,7 @@ id  not flag(exit),
 %%%%%    not departure(_,hovedterminalen,_,_), %% TA-110506
 
     passevent(_Depset,Bus,ToPlace,Opts,Day,_E), %% ToPlace !
-    atdate2(DaySeqNo,_date),
+    atdate2(DaySeqNo,_Date),
     add flag(keepfrombay),
     add (departure(Bus,user_location ,DaySeqNo, All), %% TA-110410
          keepafterwalking(All,Wall),                  %% 
@@ -13244,7 +13248,7 @@ is  {myflags(gpsflag,true)},
 
     {myflags(new_origin,true)},  %% NB TA-110206
   
-    not ispresent srel/from/___place/X/_  
+    not ispresent srel/from/___Place/X/_  
            when { (bound(X), \+ home_town(X))}, 
 
     not ispresent srel/on/place/_/_       %%  hvis jeg er på Samfundet
@@ -13258,7 +13262,7 @@ id  not flag(exit),
     not departure(_,hovedterminalen,_,_), 
 
     passevent(_Depset,Bus,ToPlace,Opts,Day,_E), %% ToPlace !
-    atdate2(DaySeqNo,_date),
+    atdate2(DaySeqNo,_Date),
     add flag(keepfrombay),
     add (departure(Bus,Strandveien ,DaySeqNo, All),
          keepafter(NOW2,All,All2),
@@ -13292,7 +13296,7 @@ ip	 dmeq(busdeparrN,BDA),  %% first also for Nightbus
 justnthbusearly  rule
 is  adj/_/ORD/BD/_, { ordinal(ORD,N)}, 
     ispresent (BD isa BDA),
-    srel/today/_day/nil/_, 
+    srel/today/_Day/nil/_, 
     not ispresent adj/_/last/_/_, 
     not ispresent srel/before/time/_1700/_ 
 id  replace passevent(Deps,Bus,Place,Opts,Day,A)
@@ -13745,7 +13749,7 @@ id  not flag(exit),
     remove passevent(Depset1,Bus1,Place1,Opts1,Day,_),
     remove passevent(Depset2,Bus2,Place2,Opts2,Day,_),
 
-    atdate2(SeqNo,_date_),
+    atdate2(SeqNo,_Date_),
 
     add (connections(Depset1,Depset2,Bus1,Station1,Station2,Day,SeqNo,OptsUnite,_,_)), 
                                      %??% Bus2 ??? 
@@ -13760,16 +13764,16 @@ is  []
 id  not flag(exit), 
     not connections(_,_,_,_,_,_,_,_,_,_),
 
-    passevent(Depset1,_Bus1,Place1,Opts1,Day,_),
+    passevent(Depset1,_bus1,Place1,Opts1,Day,_),
           {   testmember(to,Opts1) } , 
 
     passevent(Depset2,Bus2,Place2,Opts2,Day,_),
           {\+ testmember(to,Opts2) } ,
 
-    remove passevent(Depset1,_Bus1,Place1,Opts1,Day,_),
+    remove passevent(Depset1,_bus1,Place1,Opts1,Day,_),
     remove  passevent(Depset2,Bus2,Place2,Opts2,Day,_),
 
-    atdate2(SeqNo,_date_),
+    atdate2(SeqNo,_Date_),
 
     add (connections(Depset2,Depset1,Bus2,Station2,Station1,Day,SeqNo,OptsUnite,_,_)), 
     add flag(exit)
@@ -13785,7 +13789,7 @@ id  not flag(exit),
     not connections(_,_,_,_,_,_,_,_,_,_), 
     remove passevent(Depset1,Bus1,Place1,Opts1,Day,_),
     remove passevent(Depset2,_Bus2,Place2,Opts2,Day,_),
-    atdate2(SeqNo,_date_),
+    atdate2(SeqNo,_Date_),
     add (connections(Depset1,Depset2,Bus1,Station1,Station2,Day,SeqNo,OptsUnite,_,_)), 
     add flag(exit)
 ip	 setopt(from,Opts1,Opts11), setopt(to,Opts2,Opts22), 
@@ -13835,7 +13839,7 @@ connection3 rule % Kobler sammen to busspasseringer
 is  []
 id	 remove passevent(Depset1,_,Place1,Opts1,Day,_),
     remove passevent(Depset2,Bus2,Place2,Opts2,Day,_),
-    atday2(SeqNo,_date),   
+    atday2(SeqNo,_Date),   
     add (connections(Depset1,Depset2,Bus2,Station1,Station2,Day,SeqNo,OptsUnite,_,_)) 
 ip	 mixopt(Opts1,Opts2,OptsUnite),                          %% NB Added Arg %%
     place_station(Place1,Station1), 
@@ -13878,7 +13882,7 @@ id	 add listofall(station,_) %% only 5  first if SMS
 ip  [].
 
 whichstationexist rule % Which stations have you 
-is  which(A),A isa station,doit/exist/A/_,  not srel/_near/place/_/_, %% TA-100825
+is  which(A),A isa station,doit/exist/A/_,  not srel/_Near/place/_/_, %% TA-100825
     not ispresent X isa Bus when {bound(X),dmeq(vehicle,Bus)} %% TA-110510
 id	 add listofall(station,_) %% only 5  first if SMS
 ip  [].
@@ -14088,12 +14092,12 @@ ip  [].
 %[which(A):::(tore isa firstname,A isa place,doit/be1/tore/B,srel/nil/place/A/B,event/real/B)]
 
 whereistoreamble rule % hvor er tore %% RS-110929
-is  Tore_amble isa _Person,_Place isa place,doit/be1/Tore_amble/_Time
+is  Tore_amble isa _person,_Place isa place,doit/be1/Tore_amble/_Time
 id   add  message(answer(db_reply(Tore_amble,address,Adr))) 
-ip  has_att_val(_Person,address,Tore_amble,Adr). 
+ip  has_att_val(_person,address,Tore_amble,Adr). 
 
 whereisentity rule % hvor er tore
-is  Tore isa _firstname,_Place isa place,doit/be1/Tore/_Event
+is  Tore isa _Firstname,_Place isa place,doit/be1/Tore/_Event
 id   add  message(answer(db_reply(Tore,address,Adr))) 
 ip  has_att_val(_Person,address,Tore,Adr). 
 
@@ -14259,7 +14263,7 @@ is  tuc isa savant, dob/Tell/tuc/A/B,
     not _ isa question  %% ad hoc  Du må oppgi
 id	 not departure(_,_,_,_),  
      
-    not message(_howtuchelp), %% TA-110215 not any message
+    not message(_Howtuchelp), %% TA-110215 not any message
     add message(howtuchelp)
 ip	 [].
 
@@ -14354,7 +14358,7 @@ id	 not departure(_,_,_,_),
 ip	 [].
 
 tuchelp14 rule % Jeg trenger hjelp 
-is  new, I isa self,A isa help,dob/_need/I/A/_
+is  new, I isa self,A isa help,dob/_Need/I/A/_
 id	 not departure(_,_,_,_), 
     add message(howtuchelp)
 ip	 [].
@@ -14468,7 +14472,7 @@ ip  [].
 
 
 equal rule 
-is  which(T),equal/T/TT,TT isa _company
+is  which(T),equal/T/TT,TT isa _Company
 id  add message(answer(bcpbc(TT))) %% ugly ?  print specname if any
 ip  bound(TT).
 
@@ -14481,7 +14485,7 @@ is  exactly (which(A),A isa Man),
     clear
 id  clear, 
     add message(answer(bcpbc(Abstract)))
-ip  \+ user:myflags(teleflag,true), 
+ip  \+ myflags(teleflag,true), 
     user:(ako/Man/Abstract),
     \+ member(Man,[airport,god,price,bus,tram, 
           route,vehicle,driver,destination, 
@@ -14510,7 +14514,7 @@ is  FB isa Airbus, {dmeq(vehicle,Airbus)},
 
     not ispresent srel/from/place/Scandic/_  when { bound(Scandic)}, 
     ispresent event/real/E,  
-    not ispresent dob/pass/FB/_steinan/E  %% direction ? 
+    not ispresent dob/pass/FB/_Steinan/E  %% direction ? 
 
 id  not flag(exit),
     not flag(todefaultorig),
@@ -14527,7 +14531,7 @@ id  not flag(exit),
  
     not findstations(_,_,_), 
 
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
 
     add (departure(flybussen,CHLK,DaySeqNo,Depset), 
 			passevent(Depset,flybussen,CHLK,[from],Day,E))
@@ -14548,7 +14552,7 @@ is  FB isa Airbus, {dmeq(vehicle,Airbus)},
     not ispresent srel/to/place/Scandic/_  when {bound(Scandic)},
 
     ispresent event/real/E,  
-    not ispresent dob/pass/FB/_steinan/E  %% direction ? 
+    not ispresent dob/pass/FB/_Steinan/E  %% direction ? 
 
 id  not flag(exit),
     not flag(fromdefaultorig), 
@@ -14565,7 +14569,7 @@ id  not flag(exit),
 
     not findstations(_,_,_), 
 
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
 
     add (departure(flybussen,CHLK,DaySeqNo,Depset), 
 			passevent(Depset,flybussen,CHLK,[to],Day,E))
@@ -14585,7 +14589,7 @@ is  {myflags(airbusflag,true)},
     not ispresent srel/from/place/Scandic/_  when { bound(Scandic)}, 
     ispresent event/real/E,                  
 
-    not ispresent dob/pass/FB/_steinan/E  %% direction ? 
+    not ispresent dob/pass/FB/_Steinan/E  %% direction ? 
 id  not flag(exit),
     not flag(fromdefaultorig),
     not flag(fromdefaultdest),
@@ -14599,7 +14603,7 @@ id  not flag(exit),
     not departure(_,st_olavs_gt,_,_),  %% Dirty 
     not findstations(_,_,_), 
 
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
 
     add (departure(flybussen,CHLK,DaySeqNo,Depset), 
 			passevent(Depset,flybussen,CHLK,[from],Day,E))
@@ -14618,7 +14622,7 @@ is  {myflags(airbusflag,true)},
     not ispresent srel/to/place/Scandic/_  when { bound(Scandic)}, 
     ispresent event/real/E,  
 
-    not ispresent dob/pass/FB/_steinan/E  %% direction ? 
+    not ispresent dob/pass/FB/_Steinan/E  %% direction ? 
 id  not flag(exit),
     not flag(todefaultorig),
     not flag(todefaultdest), 
@@ -14632,7 +14636,7 @@ id  not flag(exit),
     not departure(_,st_olavs_gt,_,_),  %% Dirty 
     not findstations(_,_,_), 
 
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
 
     add (departure(flybussen,CHLK,DaySeqNo,Depset), 
 			passevent(Depset,flybussen,CHLK,[to],Day,E))
@@ -14650,12 +14654,12 @@ is  not ispresent srel/To/place/Scandic/_  when
                                      %%%% TA-110630
     ispresent event/real/E,  
     ispresent  Bus36 isa Veh , { bound(Bus36),dmeq(vehicle,Veh)},
-    not ispresent dob/pass/Bus36/_steinan/E  %% direction ? 
+    not ispresent dob/pass/Bus36/_Steinan/E  %% direction ? 
 id  not flag(defaultdest), 
     not flag(exit),  
     not endstations(_,_),
     atday(Day),
-    atdate2(DaySeqNo,_date),
+    atdate2(DaySeqNo,_Date),
     not message(sameplace(_,_)), 
     not message(neverpasses(_,_)), %% makes it complicated %% TA-110530
     not keepto(_,_,_),
@@ -14677,11 +14681,11 @@ is  not ispresent srel/to/place/_/_,
     { samefplace(Sentrum,hovedterminalen)},
     ispresent event/real/E,  
     ispresent  Bus36 isa Veh ,{ bound(Bus36),dmeq(vehicle,Veh)}, 
-    not ispresent dob/pass/Bus36/_steinan/E  %% direction ? 
+    not ispresent dob/pass/Bus36/_Steinan/E  %% direction ? 
 id  not flag(defaultdest), 
     not flag(exit),  
     not endstations(_,_),
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
     not message(sameplace(_,_)), 
     not keepto(_,_,_),
     not connections(_,_,_,_,_,_,_,_,_,_),
@@ -14698,16 +14702,16 @@ ip  default_destination(Bus36,CHLK) %% NEW busdat
 
 
 gofromdefaultplace rule %% go to S  from default  place
-is  not ispresent srel/_from/place/Scandic/_  
+is  not ispresent srel/_From/place/Scandic/_  
            when { bound(Scandic) }, 
     ispresent event/real/E, 
     ispresent  Bus36 isa Veh , { bound(Bus36),dmeq(vehicle,Veh)},
     not _ isa clock, %% klokka er 10
-    not ispresent dob/pass/Bus36/_steinan/E  %% direction ? 
+    not ispresent dob/pass/Bus36/_Steinan/E  %% direction ? 
 id  not flag(defaultdest),  %%  Retention
     not flag(exit),      
     not endstations(_,_),
-    atday(Day),atdate2(DaySeqNo,_date),
+    atday(Day),atdate2(DaySeqNo,_Date),
     not message(sameplace(_,_)), 
     not keepto(_,_,_),
     not connections(_,_,_,_,_,_,_,_,_,_),
@@ -15271,7 +15275,7 @@ ip  current_frame_getvalue(where::departure, NewPlace)
 
 
 ourtonight rule 
-is  srel/tonight/_time/nil/E,
+is  srel/tonight/_Time/nil/E,
     ispresent event/real/E,
     not srel/_/place/_/E,
     not srel/_/neighbourhood/_/E,
@@ -15529,7 +15533,7 @@ is  not explain,
     not ispresent _ isa neighbourhood  %% 
 
 id  not departure(_,_,_,_),        %% gives an extra go
-    not message(nearest_station(_ST,_,_unknown)),
+    not message(nearest_station(_ST,_,_Unknown)),
     not message(stationsat(_,_,_)), %% TA-110504
     not message(mustknow(_)),  
     not message(mustknowanother(_)), 
@@ -15640,7 +15644,7 @@ is     _Y isa Z, {dmeq(busdeparr,Z)}, %% NOT 'I'
     not (X isa place ) when  {unbound(X)} %%%% HVOR 
 
 id  not flag(exit),  
-    not message(noinfoabout(_cleaning)), 
+    not message(noinfoabout(_Cleaning)), 
     not message(mustknow(place)),  
     not endstations(_,_),  %%  Not message 
     not message(mustknow(bus)), 
@@ -15706,7 +15710,7 @@ ip  [].
 
 
 mustknowbusyou rule % Where do you (qua bus)   go 
-is  which(A),A isa place,srel/_inat/place/A/C,T  isa program, doit/GO/T/C,event/real/C, 
+is  which(A),A isa place,srel/_Inat/place/A/C,T  isa program, doit/GO/T/C,event/real/C, 
         {dmeq([go,leave,stop,run],GO)}
 id	 add	message(mustknow(bus)) 
 ip  [].
@@ -15728,7 +15732,7 @@ ip  [].
  
 mustknowbusnewgen rule %  the buses go  
 is  new, B isa Veh, {unbound(B)},  {dmeq([vehicle,bus,tram,program,route],Veh)}, 
-%    event/_real/C,  doit/GO/B/C, %% jeg tror at bussen går
+%    event/_Real/C,  doit/GO/B/C, %% jeg tror at bussen går
     event/ _ /C,  doit/GO/B/C, %% jeg tror at bussen går
          {dmeq([go,leave,stop,be1],GO)},
 %%%%     not  ispresent X isa clock when { bound(X) },
@@ -15927,7 +15931,7 @@ id      not depset(to, _),
         ispresent keepafter(_, X, _),
         replace depset(unknown, List)
         with depset(to, List)
-ip   %%    user:myflags(dialog,1), 
+ip   %%    myflags(dialog,1), 
         user:frame_getvalue(where::departure,_,place),
     \+  user:frame_getvalue(where::arrival,_,place),
         varmember(X, List)

@@ -846,7 +846,7 @@ trytofool(adj/_/lucky/tuc/_,      thatisimpossible).
 trytofool(adj/_/male/tuc/_,       thatisimpossible). 
 trytofool(adj/_/married/tuc/_,    thatisimpossible). 
 trytofool(adj/_/married/'I'/_,    cannotanswer).  
-%trytofool(adj/_/stupid/_tuc/_,    thatisimpossible).
+%trytofool(adj/_/stupid/_Tuc/_,    thatisimpossible).
 trytofool(adj/_/stupid/ _ /_,    thatisimpossible).
 trytofool(adj/_/tedious/ _ /_,   thatisimpossible).
 
@@ -1041,10 +1041,10 @@ trytofool(dob/hate/_/_/_,        thatisimpossible).
 trytofool(dob/hear/tuc/_/_,        thatisimpossible). %% strictly 
 
 trytofool(dob/know1/tuc/tagore/_,     thatisimpossible). %%  :-) %% Ad Hoc
-trytofool(dob/know1/tuc/(_tore,_amble)/_, thatisimpossible). 
+trytofool(dob/know1/tuc/(_Tore,_Amble)/_, thatisimpossible). 
 
 trytofool(dob/know/tuc/tagore/_,     thatisimpossible). %%  :-)
-trytofool(dob/know/tuc/(_tore,_amble)/_, thatisimpossible). 
+trytofool(dob/know/tuc/(_Tore,_Amble)/_, thatisimpossible). 
 
 
 trytofool(dob/lay/tuc/tuc/_,     thatisimpossible). 

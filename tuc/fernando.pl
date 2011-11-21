@@ -2,15 +2,19 @@
 %% SYSTEM TUC
 %% CREATED TA-920323
 %% REVISED TA-110629
+%% REVISED RS-111121
 
 %% Grammar Utility File  GRUF
-
-%%% %%%%%%%% RS-111118
-%:-use_module('../utility/utility').
-:- [('../declare')].
-:-op( 710,xfx, ako ).
-
 %% Named after the great Computational Linguist  Fernando Pereira
+
+:- module( tuc, [ subclass0/2 ] ).  %% RS-111121 Module TUC
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%:-use_module('../utility/utility').
+
+:- ensure_loaded( user:'../declare.pl').
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -1025,13 +1029,13 @@ adv_compl(Go,Today,_:BT, _Daypart_ ,S,srel/Today/Day/nil/S):-
 %---------------------------------------------------------------------
 
 
-adj_compl( (Relevant,Comprehensible),For,_X:PT,Y:RT,S,srel/For/Ruler/Y/S):- 
+adj_compl( (Relevant,Comprehensible),For,_x:PT,Y:RT,S,srel/For/Ruler/Y/S):- 
     !,
     a_compl(Relevant,Person,For,Ruler), 
     subtype0(PT,Person),
     subtype0(RT,Ruler),
 
-    adj_compl(Comprehensible,For,_X:PT,Y:RT,S,_), %% NB recursive blue,read and yellow
+    adj_compl(Comprehensible,For,_x:PT,Y:RT,S,_), %% NB recursive blue,read and yellow
 
     !.
 
@@ -1061,7 +1065,7 @@ adj_compl(Loyal,To,_X:PT,Y:RT,S,srel/To/Ruler/Y/S):-
 
 %% jeg er syk desverre
 
-adj_compl(_nice,redundantly,_,Y:_,S,srel/redundantly/thing/Y/S):-!. %% TA-100424 nec?
+adj_compl(_Nice,redundantly,_,Y:_,S,srel/redundantly/thing/Y/S):-!. %% TA-100424 nec?
 
 adj_compl(Up,Now,_X:Bus,Y:Hour,S, srel/Now/Time/Y/S):- 
     particle(Now,Time,_),
@@ -1079,7 +1083,7 @@ adj_compl(Up,Now,_X:Bus,Y:Hour,S, srel/Now/Time/Y/S):-
     subclass0(Hour,Time).
 
 
-adj_compl(_loyal,To,_X:_PT,Y:RT,S,srel/To/Ruler/Y/S):- %%  Haz?
+adj_compl(_Loyal,To,_X:_PT,Y:RT,S,srel/To/Ruler/Y/S):- %%  Haz?
     stanprep(To,Ruler),
     subclass0(RT,Ruler), %% jeg er nysgjerrig på en ting\=date
     !.   
@@ -1101,10 +1105,10 @@ adj_compl(_loyal,To,_X:_PT,Y:RT,S,srel/To/Ruler/Y/S):- %%  Haz?
 verb_compl(look,A,_,nil:pmode,S,srel/A/pmode/nil/S):- %% look old = be old
      !.
 
-verb_compl(_be1,how, W:Weather,nil,S,srel/how/Weather/W/S):-  %% Hack %% Hvordan er været ?
+verb_compl(_Be1,how, W:Weather,nil,S,srel/how/Weather/W/S):-  %% Hack %% Hvordan er været ?
    !.                                                         % Hvordan går bussen
 
-verb_compl(_go,than,_:_Tram,Y:Bus,S,srel/than/Bus/Y/S):- %% Hack 
+verb_compl(_Go,than,_:_Tram,Y:Bus,S,srel/than/Bus/Y/S):- %% Hack 
     !.
 
 

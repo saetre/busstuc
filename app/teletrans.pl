@@ -2,11 +2,14 @@
 %% SYSTEM NOTUC
 %% CREATED TA-011101
 %% REVISED TA-090502
+%% REVISED RS-111121
 
 % Transregler for teledomenet
+:- module( tele, [ rule/2 ] ).  
 
-:- module(tele,[]).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
+:- ensure_loaded( '../declare.pl' ).
 
 %% Rule format
 
@@ -56,9 +59,9 @@
 
 :- op( 712, fy,seen). % Lower than "not", higher than "isa"
 
-%%% %%%%%%%% RS-111118
- :- ['../declare.pl'].
 
+
+tracevalue(L) :- myflags( traceprog, L ).  % Trace level 1-6
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Oversettingsregler
@@ -495,10 +498,6 @@ ip  has_att_val(person,telephone,Tore_amble,_N),
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-tracevalue(L) :- user:myflags(traceprog,L).  % Trace level 1-6
-
-
-
 %%% Other rules (makes a buslog equivalent program, without bus handeling)
 
 
@@ -776,7 +775,7 @@ ip [].
 
 %  Internet
 internet rule %% TA-990428
-is  _internet isa network ,
+is  _Internet isa network ,
     clear     %% no use in ask for specifications when that is the problem
 id	 add message(noinfoabout(network))
 ip	 [].

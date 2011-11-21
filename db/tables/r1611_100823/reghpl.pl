@@ -1081,7 +1081,7 @@ hpl(16011995,rønningen_aldersbolig,rønningen_aldersbolig,'Rønningen aldersbolig'
 hpl(16011996,skjetlein,skjetlein,'Skjetlein').
 hpl(16011997,hasselbakken,hasselbakken,'Hasselbakken').
 hpl(16533030,ler,ler,'Ler').
-hpl(16533169,flå_skole,flå_skole,'Flå skole').
+hpl(16533169,flå_Skole,flå_Skole,'Flå skole').
 hpl(16533170,simensbakken,simensbakken,'Simensbakken').
 hpl(16533171,bollan,bollan,'Bollan').
 hpl(16533172,frødalen,frødalen,'Frødalen').

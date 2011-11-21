@@ -3,10 +3,14 @@
 %% AUTHOR T.Amble
 %% CREATED TA-931217
 %% REVISED TA-110803
+%% REVISED RS-111121
 
-%%% %%%%%%%% RS-111118
- :- ['../declare.pl'].
+%% MODULE: tuc
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:- ensure_loaded( user:'../declare.pl').
+    
 
 %% Transforms each word into a list of alternatives.
 %% Semi-tagger (quasi multitagger)
@@ -207,8 +211,8 @@ lcodes(N,w(N,S2)):-
 
 
 squirtsurplus(_,[name(Hare_street,n,street)|R],[name(Hare_street,n,street)]):- %% TA-100311
-     \+ member(name(_tempev,n,station),R),
-     \+ member(name(_tempev,n,0),R). %% Tempevegen 11 station/Tempeveien 11 street %% TA-101124
+     \+ member(name(_Tempev,n,station),R),
+     \+ member(name(_Tempev,n,0),R). %% Tempevegen 11 station/Tempeveien 11 street %% TA-101124
 
 %%  squirtsurplus(brosetveien,
 %%    [name(brøset_street,n,street),name(brøsetv,n,station),name(brøsetveien,n,0)],[name(brøset_street,n,street)]) ?
@@ -224,7 +228,7 @@ squirtsurplus(Twang,[],[name(Twang,unknown,unk)]):-!.
 squirtsurplus(_,S,S). % No unknowns
 
 
-handle_unknown(_forresten,[n_w],[n_w]):-!. %% \+ Forset
+handle_unknown(_Gorresten,[n_w],[n_w]):-!. %% \+ Forset
 
 handle_unknown(_Name,List,List):- 
     \+ myflags(spellcheck,1),
@@ -259,7 +263,7 @@ dont_spell_check_test(Strandveien,L):-
      ;
 %%%%     test(synname(Strandveien,_))    %% already a synname   **solem veien -> skole veien**
 %%%%     ;                               %% bishops -> biskops %% TA-110411
-     test(member(noun(_weather,_,_,_),L)) %% Ad Hoc været \-> Være  
+     test(member(noun(_Weather,_,_,_),L)) %% Ad Hoc været \-> Være  
      ;
      test(nostation(Strandveien))   
      ;
@@ -419,7 +423,7 @@ remove_noise([   w('(',_)   |Y],V):-
    extract_origins(U). %% neib stations
 
  extract_origins(U):- %% Not implemented
-    ¤¤¤ for(member(quote(O),_pluss,T),remember(gps_origin(O,T))).
+    ¤¤¤ for(member(quote(O),_Pluss,T),remember(gps_origin(O,T))).
 ***/
 
 
@@ -893,7 +897,7 @@ unknown_words(Strict,L,Z):-
 % Write an unknown word warning unless the name is a misspelled fullname. 
 
 
-completely_unknown(_strict,Nuss,L):- 
+completely_unknown(_Strict,Nuss,L):- 
      member(w(Nuss,NameSet),L), 
      member(name(Nuss,unknown,_),NameSet). 
 
@@ -1357,7 +1361,7 @@ clean1 :- %% Odd husbys veg \+ wrong husbys veg %% TA-110105
 
 clean1 :- %% sig (dk) = seg | Sig berg alle %% TA-101215
     txt(N0,w(sig,_),N1),
-    txt(N0, w(_,name(_sig_berg_alle,_,_)),_N2),
+    txt(N0, w(_,name(_Sig_berg_alle,_,_)),_N2),
     txtretract(txt(N0,w(_,[seg]),N1)).
 
 
@@ -1373,7 +1377,7 @@ clean1 :-  %% j aaes veg \= jeg ...  p morsets veg \+ på
 
 clean1 :-  %% feil retning = wrong retning %% TA-101115
     txt(N0,  w(feil,adj2(wrong,nil)), N1),
-    txt(N1,  w(_,noun(_retning,_,_,_)), _N2),
+    txt(N1,  w(_,noun(_Retning,_,_,_)), _N2),
         txtretract( txt(N0, w(feil,noun(error,sin,u,n)), N1)). 
 
 
@@ -1384,7 +1388,7 @@ clean1 :-  %% k.o. thornæs \= kl 0 thornæs
         txtretract(txt(N2,  w(o,nb(0,num)), _N3)).
 
 clean1 :- %% fra vÃ¦re til sorgenfri 
-    txt(_1, w(_fra,prep(_from)), N2),
+    txt(_1, w(_Gra,prep(_Grom)), N2),
     txt(N2, w(være,name(være,n,station)), N3),
     txt(N2, w(være,verb(be,inf,fin)),N3), 
         txtretract( txt(N2, w(_,verb(be,inf,fin)),N3)).
@@ -1400,7 +1404,7 @@ clean1  :- %% si det nå
         txtretract( txt(N3, w(nå,verb(reach,inf,fin)),_)). 
 
 clean1  :- %% er nå fin=now %% TA-101117
-     txt(_,w(_er,verb(_,pres,fin)), N3),
+     txt(_,w(_Er,verb(_,pres,fin)), N3),
         txtretract( txt(N3, w(nå,verb(reach,inf,fin)),_)). 
 
 clean1 :- %% bu = buss, \= bo! 
@@ -1868,7 +1872,7 @@ assertstreetxt(N,Ident,N2):-  %% priority Station before STREET
 
 monthnamenext(N):-      %%  Vikåsen 17 mai
     skip_dot(N,N1), 
-    txt(N1,w(_mai,name(_may,n,month)),_),
+    txt(N1,w(_Mai,name(_May,n,month)),_),
     !.
 
 monthnumbernext(N):-   %%  Vikåsen 17.5 
@@ -1901,7 +1905,7 @@ numbernext(N):-  %% tonstadgrenda 8 13
 parsestreetnumber(N1,Num,N4) :-  %%  yggdrasilvn .  nr. 9
     skip_superf_street(N1,N11), %% TA-100114  garmannsvei vei 3 .
     skip_nr(N11,N2),
-    txt(N2,w(_N,nb(Num,_num)),N3), %% 9a -> nb(9,alf) 
+    txt(N2,w(_N,nb(Num,_Num)),N3), %% 9a -> nb(9,alf) 
     Num < 500,  %%  Pragmatic test for street numbers/ not clock 
     skip_letter(N3,N4).
 
@@ -2018,7 +2022,7 @@ cmplacebus(X,Y,Z) :-
 
 syntxt1(N,Vei,Veg,N1):- % strict
     txt(N,Word,N1),     
-    (Word = w(Vei,name(Veg,_n_,_));  %% havstads gen ok
+    (Word = w(Vei,name(Veg,_N_,_));  %% havstads gen ok
      Word = w(Vei,[Veg])).
 
 
@@ -2414,7 +2418,7 @@ unprotected_verb :-
  \+ txt(X,w(_,[e]),          Y), % e = er %% du e dum  
                                  % til e verket*                   
    (  
-    (VVV=verb(_F,_Pastpres,_fin)) %% bildet finnes verb(show,pres,pass)
+    (VVV=verb(_F,_Pastpres,_Gin)) %% bildet finnes verb(show,pres,pass)
    ;
    (VVV=[Vil], %% hjelpeverb
         testmember(Vil,[kan,vil,må,bør,skal, %% kan også verb! 

@@ -3,15 +3,20 @@
 %% CREATED TA-940118
 %% REVISED TA-090514 %% RS-111118
 
+:- module( user, [ myflags/2, set/2, ':='/2 ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %% Declarations of operators and hashmap for flags, used by TUC
 %% Don't make this a module, user:space is easier ;-)
 %% %% That's why the for loop is here %% RS-111120
 
-%    :=/2
-%    =:/2
-:- volatile myflags/2.
-:- dynamic myflags/2.
+%% Hash-table for all sorts of values (in main user: module)
 
+:- dynamic myflags/2.
+myflags(origlanguage, norsk).
+
+%    :=/2      %    =:/2
 
 %% Declarations of operators used by TUC
 
@@ -34,7 +39,7 @@
 :-op( 715, fy, not ).
 :-op( 714,xfx, := ).
 :-op( 713,xfx, =: ).
-%:-op( 710,xfx, ako ).
+:-op( 710,xfx, ako ).  %% Can interfere with ako/Man/Me etc. in bustrans! RS-111121
 :-op( 710,xfx, apo ).  
 :-op( 710,xfx, isa ).
 :-op( 710,xfx, has_a ).
@@ -57,6 +62,7 @@ set(Key,Value) :-
 X := Y :-       %% Set value X to Y
     set(X,Y).
 
-X =: Y :-       %% Set value Y from X
-    myflags(X,Y).
+%X =: Y :-       %% Set value Y from X          %% Difficult to make, difficult to understand :-/
+%    myflags(X,Y).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

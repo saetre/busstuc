@@ -7,9 +7,10 @@
 % Make a slender syntax tree comparable to Penn Tree Bank tagging
 
 :- module(ptbwrite,[
+    drucke_baum_list/1,
     print_parse_tree/1,
     ptbwrite/1,
-    drucke_baum_list/1
+    track/2
   ]). %% 
 
 /*

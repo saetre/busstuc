@@ -12,11 +12,11 @@
 :- use_module( '../db/busdat', []).
 :- use_module( '../db/timedat', [clock_delay/3]).
 
-%% exporting also
+%% should also export : 
 % timedat:todaysdate(date(Y,M,D))       %% RS-111120
 % timedat:this_year(YYYY) :-
 
-%:- module(     'utility', [
+%:- module( utility, [
 %    datetime/6,
 %    days_between/3,
 %    todaysdate/1       %% Lifted up to main -> usually compiled in tucbuses.pl
@@ -293,7 +293,7 @@ xweekday(Date,HDay):-
 xweekday(Date,HDay):-
     weekday(Date,HDay).
 
-timedat:todaysdate(date(Y,M,D)):- 
+todaysdate(date(Y,M,D)):- 
      datetime(Y,M,D,_,_,_).       
 
 %% daysdate(date(Y,M,D)):-   %% Obsolete, kept for security
