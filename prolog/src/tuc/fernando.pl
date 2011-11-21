@@ -6,7 +6,8 @@
 %% Grammar Utility File  GRUF
 
 %%% %%%%%%%% RS-111118
-:- use_module('../utility/utility').
+%:-use_module('../utility/utility').
+:- [('../declare')].
 :-op( 710,xfx, ako ).
 
 %% Named after the great Computational Linguist  Fernando Pereira

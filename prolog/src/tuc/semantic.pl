@@ -76,10 +76,6 @@ vako(propose,tell).
 
 %% aso   a set of  (not implemented) ("bunch of") 
 
-unkn            ako    thing. %% agent ? place ?
-
-event           ako    thing. %% generic for event/ 
-
 testclass(person).  %% <=== NB
 
 testclass(age).         
@@ -584,35 +580,13 @@ align1(station,street).  %% holdeplass fykenvegen (street -> fykenborg)
 
 %-LEVEL 1 ----------------------------------
 
-coevent  ako thing. %% event ?
-
-set ako thing. 
     set            has_a  cardinality. 
     set            has_a  qualification.
     set            has_a  member.
 
-item          ako     thing.
-
-member        ako     thing.
-
-amount        ako     thing. %% amount of work = work
-
-
-    
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-
-abstract        ako    thing.
-
-account         ako    thing. 
-
-activity        ako    thing.   % to make/do an activity 
     activity        has_a  date.
     activity        has_a  time.  
     activity        has_a  possibility. 
-
-addition        ako    thing. %% generic
-
-agent           ako    thing. 
 
     agent           has_a   firstname. 
     agent           has_a   middlename.
@@ -786,52 +760,19 @@ agent           ako    thing.
     agent           has_a  wife.           %% ?
     agent           has_a  word.           %% i.e. vocabulary
 
-alternative     ako    thing. %% TA-110228 confuse way (måte)
-
-base            ako    thing.
-
-care            ako    abstract. %% ta vare på %% TA-110815
-
-chance          ako    abstract. %% sjanse
-
-contact         ako    thing.  %% person/appliance/abstract/... ?
-content         ako    thing.
-copy            ako    thing.
-course          ako    thing. 
     course          has_a     department.
     course          has_a     year.
 %     course          has_a     size.
 
-creation        ako    activity. 
-
-definition      ako    abstract. 
-
-effect          ako    abstract. 
-
-wish            ako    abstract. %% a wish %% TA-101124
-
-group           ako    thing.
-identity        ako    thing.  
-information     ako    thing.   
     information     has_a format. 
     information     has_a  source.
     information     has_a  version.
 %%     information     has_a  footnote. %% -> have 
 
-interest        ako    abstract. 
-
-list            ako    thing.     
-mass            ako    thing.     %% => stuff
-
-measure         ako    thing.
     measure         has_a  decrease. 
     measure         has_a  size.
     measure         has_a  length. 
 
-meta            ako    thing.   % lexical object 
-
-
-object          ako    thing.   %% class.  
        object       has_a  age. 
        object       has_a  colour. 
        object       has_a  weight.
@@ -840,11 +781,6 @@ object          ako    thing.   %% class.
        object       has_a  safety.
        object       has_a  size. 
 
-%% part            ako    place.  %% syndrome part is generic 
-                                  %% du må være en av delen
-part            ako    thing.    
-
-place           ako    thing.
        place        has_a   address. 
        place        has_a   name. 
        place        has_a   opening_hours. 
@@ -856,39 +792,10 @@ place           ako    thing.
        place        has_a   latitude. %%  ?
        place        has_a   longitude.%%
       
-%% river           ako    thing.    %% (water but no area) %% -> place
-
-rest            ako thing. %% actually generic rest of X=X
-
-%% step            ako    abstract. 
-
-story           ako    thing.
-
-study           ako    activity. 
-
-subset          ako    thing.
-
-suspicion       ako    abstract. 
-
-%% version         ako   abstract. 
-version            ako   system.  
     version         has_a   management.
     version         has_a   number.    %% ????????
     version         has_a   distribution.
 
-cardinality   ako  number.
-qualification ako  abstract.
-reference     ako  abstract.
-
-
-%-LEVEL 2 ----------------------------------
-
-
-access          ako    abstract. %% TA-110429 tilgang
-
-area            ako    place. %% not measure %% TA-100908
-
-company         ako    agent.       %%   e.g. TT 
     company         has_a  address. 
     company         has_a  age.       %%  :-)
     company         has_a  articulated_bus. %%  (leddbuss) 
@@ -930,151 +837,23 @@ company         ako    agent.       %%   e.g. TT
     company         has_a  whitsunroute. %% etc, chrM/easter 
     company         has_a  winterroute. 
 
-%% company         ako    place. %% NB also agent |Deliberately
-%% take 47 klæburuten -> \+ take (route) 47 (to) klæburuten (qua place)
-
     company         has_a   luggage. %% hittegods-kontor 
 
-ability         ako    abstract. 
-accident        ako    activity. 
-acquisition     ako    activity. 
-activation      ako    activity.  %% start of it
-%% addition        ako    abstract. %% thing
-address         ako    place.  
-advice          ako    abstract. 
-    
-age             ako    year.  %% (measure)  
-agreement       ako    abstract. 
-
-
-ambiguity       ako    abstract.
-
-%% air             ako    place. %% kan bussen gå i lufta ? 
-analysis        ako    abstract.
-
-animate         ako    agent.  
     animate         has_a  head.
     animate         has_a  ear. 
-application     ako    activity. 
-
-approval        ako    activity.  
-
-%% area            ako    measure.      %% geography 
-argument        ako    abstract.
-arrival         ako    activity. 
-arrow           ako    object.
-attempt         ako    activity. 
-attention       ako    abstract.
-
-bank            ako    company. %%  & place ?
-bar             ako    place.
-beard           ako    object.  %%  :-#)
-bed             ako    place.   %% placoid
-beginning       ako    part.
-bicycle         ako    vehicle. %% EXPERIMENT object. / using bicycle
-                                %% take on the bus / take to NTH
-[block]         ako    object.
-bodypart        ako    object.
-
-foot            ako    bodypart. %% ?? //by foot
-bookcase        ako    object.
-border          ako    place. 
-bottom          ako    place.  %% part ??
-box             ako    object. 
-brain           ako    object.
-brake           ako    object.  
-
-case            ako    abstract.
-cause           ako    abstract. 
-ceiling         ako    place.
-centre          ako    place.
-chair           ako    object. 
-change          ako    activity. %%  = transfer
-choice          ako    abstract. 
-claim           ako    abstract.
-
-cinema          ako    place. 
-circuit         ako    abstract.
-class           ako    set. 
-cleaning        ako    activity. 
-clothing        ako    object.  
-colour          ako    abstract.  %% attribute.  %% NO WORD !
-communication   ako    abstract. 
-comparison      ako    abstract. 
-competition     ako    activity. 
-complexity      ako    measure.
-
-condition       ako    abstract.
-consideration   ako    abstract. 
-consistency     ako    abstract. %% riktighet %% TA-110707
-connection      ako    abstract. 
-connector       ako    circuit.
-consciousness   ako    abstract.
-control         ako    activity.  %% abstract ?
-corner          ako    place.
-correction      ako    activity.
-   curiosity       ako    feeling. 
-currency        ako    meta.          
-
-decrease        ako    measure.      
-definition      ako    abstract.
-delay           ako    abstract. 
     delay           has_a  size. 
-demonstration   ako    activity.
-departure       ako    activity. 
     departure          has_a  departure. %% sic 
 %%     departure       has_a  footnote. %% rough %% -> have
     departure       has_a  frequency. 
 
-decision        ako    activity.
-
-destination     ako    place.
-detail          ako    part. %% rough
-development     ako    activity. 
-dialogue        ako    activity.
-difference      ako    measure.  %% abstract ????
-direction       ako    place. %% abstract. 
-directory       ako    place.     
      directory      has_a  name. 
-distance        ako    measure.       
-distribution    ako    abstract.
-
-document        ako    information.            
     document        has_a  date.
     document        has_a  version. 
   
-domain          ako    abstract. 
-door            ako    object.
-
-
-education       ako    activity. 
-efficiency      ako    abstract.
-end             ako    part.          
-entertainment   ako    activity.
-environment     ako    abstract. 
-
-equipment       ako    system. %% e.g. camera %% object. 
-error           ako    activity.
-    error          has_a  connection. 
+    error          has_a  connection.
 %%     problem        has_a  connection. %% ako error
     error          has_a  source. 
 
-estimate        ako    measure.
-
-
-example         ako    abstract. %%  (difficult ?)
-exhaust         ako    gas. %% but not "fuel" ad hoc 
-existence       ako    abstract.  
-expectation     ako    abstract. 
-expert          ako    agent.
-extension       ako    name.    
-
-family          ako    agent.  %% aso  a set of, rough 
-fault           ako    abstract.
-feature         ako    abstract.
-feeling         ako    abstract.      
-field           ako    information.
-file            ako    object.
     file            has_a  name.        
     file            has_a  extension.   
     file            has_a  accessright. 
@@ -1086,185 +865,22 @@ file            ako    object.
     file            has_a  type.
     file            has_a  version.
 
-floor           ako    place. 
-food            ako    object. 
-
-footnote        ako    information.
-
-forehead        ako    object.
- 
-forgery         ako    activity. 
-
-form            ako    information. %% abstract. %% skjema  %% often misspelled for from  
-
-format          ako    information. %% regtop-
-formalism       ako    abstract.
-
-frequency       ako    measure. 
-
-enemy          ako    person. %% TA-91102
-
-friend          ako    person. %% agent. %% :-) 
-% Syndrome  A friend is on a bus ==> person is on bus ==> coercing!
-
-game            ako    activity.
-gas             ako    fuel. 
-generalisation  ako    abstract. % version ?
-
-geo_metric      ako    place. %% common   name for equator, poles       
     geo_metric      has_a  latitude.    % 
     geo_metric      has_a  longitude.   % 
 
-goal            ako    activity.      
-god             ako    agent. %% :-) abstract. % a god
-
-group           ako    set.
-
-% gun             ako    object. % weapon
-
-habit           ako    abstract.
-
-hand            ako    object.
-
-harbour         ako    place. 
-
-head            ako    object.
-header          ako    object.        
-
-health          ako    abstract.
-
-heap            ako    place.     
     heap            has_a   cloth.  %% ( object and subclasses )
 
-heart           ako    object.       
     heart           has_a valve.
 
-height          ako    measure. 
-
-help            ako    activity. 
-hold            ako    abstract. 
-home            ako    place.        
     home            has_a    address.  
     home            has_a    telephone. 
     
-hope            ako    abstract.
-
-homepage        ako    information.
-honour          ako    abstract. 
-
-horsepower      ako    measure. 
-host            ako    agent.
-
-identification  ako    information. 
-
-ignorance       ako    abstract.
-
-import          ako    activity. %% innleggelse 
-
-indication      ako    abstract. %% information ? 
-
-introduction    ako    activity.
-
-idea            ako    abstract. 
-implementation  ako    activity. 
-
-inspiration     ako    abstract. 
-
-installation    ako    object. %% building? %% TA-100908
-
-intelligence    ako    abstract.  %% :-)
-integration     ako    activity.  %% ?
-interview       ako    activity.
-
-
-iphone          ako  smartphone.     %%
-    smartphone      ako    telephone. %% TA-110725
-
-informationcentre  ako agent. 
-irony              ako abtract. 
-
-
-job             ako    activity. %% place. %% activity. %% jeg går jobb *
-
-%% journey         ako    activity.  %%  --> trip
-
-kilometer       ako    distance. %% measure.  %% TA-110427
-meter           ako    distance.
-mile            ako    distance.
-         
- 
-kind            ako    abstract. 
-%% kiss            ako    activity. %% TA-110520 :-(
-kmh             ako    speed. 
-
-
-knob            ako    object.
-knowledge       ako    information.
-
-
-label           ako    mark. %% information. 
-
-lack            ako    abstract. 
-landmark        ako    neighbourhood. %% SIC bus world
-language        ako    abstract.     
     language        has_a  grammar.
-latitude        ako    measure.      
-
-location        ako    place. %% TA-101230
-
-mind            ako    abstract. 
-motorcycle      ako    vehicle.
-
-
-
-lack_of_space   ako    space. %% sic
-
-lap             ako    bodypart. %% på fanget
-leg             ako    bodypart. %% /on leg  
-
-length          ako    measure. 
-lesson          ako    information.
-letter          ako    information. % ambiguous 
-life            ako    time.  %% abstract
-	 life            has_a  meaning. % :-)
-light           ako    abstract. % physical weightless
-limit           ako    measure.
-liquid          ako    mass. 
-load            ako    measure. %% overbelastning ?
-location        ako    place. %% smaller 
-log             ako    data. 
-longitude       ako    measure.      
-%% love            ako    activity. %% :-)))
-luggage         ako    object.  
-
-% machine         ako    place. %% syn computer
-mail            ako    information. 
+         life            has_a  meaning. % :-)
     mail            has_a  identification. %% rough postvesenet
-map             ako    picture. 
-match           ako    activity.
-meaning         ako    abstract. %% number. % :-)
     meaning         has_a  question.   % :-)
-meeting         ako    activity.
     meeting         has_a host. 
     meeting         has_a place. 
-memory          ako    abstract. 
-meter           ako    measure. 
-method          ako    abstract.  %%  ( = way ???)
-mile            ako    measure.  
-mobile          ako    telephone. %% number. 
-[mode]          ako    abstract.
-modification    ako    activity. %%  = av ruteplaner etc.
-monster         ako    agent. 
-motor           ako    object.   %% engine ???
-movement        ako    activity.
-movie           ako    information. %% place. % cinema hall 
-
-name            ako    word. %% meta.  Navnet Danmark
-
-necessity       ako    abstract. 
-need            ako    abstract. 
-negation        ako    abstract.  %% meta ?  :-)
-neighbourhood   ako    place. 
 
 %%  neighbourhood   has_a  bus. %% Fredrikstads busser %%
 %%  // når går bussen til fredrikstad
@@ -1277,109 +893,20 @@ neighbourhood   ako    place.
 
     neighbourhood   has_a  station. %% holdeplassen til Nardo ? %%  HAZ? 
                                      
-network         ako    system. %%  thing. %% I find a picture on the internet// system?
-
-news            ako    information.
-
-nonsense        ako    sentence. %% abstract. 
-
-number          ako    measure.
     number          has_a  endstation. 
 
-office          ako    place.      
     office          has_a  manager.
     office          has_a  meeting. %% julebord 
     office          has_a  opening_hours. 
     office          has_a  telephone.
 
-oil             ako    fuel.
-
-operation       ako    activity. 
-
-operator        ako    agent. 
-opinion         ako    abstract.  
-
-optimalization  ako    activity. 
-
-oracle          ako    program.   %% agent. 
     oracle          has_a     bus.       %% qua TT 
     oracle          has_a     otherbus.  %% qua TT 
 
-order           ako    abstract. %% //NB, rekkefølge bestilling %% rough
-
-organisation    ako    company. %% or vv ??
-origin          ako    place. 
-oversight       ako    abstract.
-overview        ako    information. 
-
-page            ako    information. %% e.g. home page
-payment         ako    activity.  
-percent         ako    measure. 
-permission      ako    abstract. 
-petrol          ako    fuel. %% UK 
-picture         ako    information. 
     picture               has_a  colour. %% TA-101210
-plan            ako    information. %% abstract. %% collides with route_plan 
-
-plant           ako    object.
-planet          ako    place.
-
-pocket          ako    place. 
-policy          ako    abstract. 
-position        ako    place.
-possibility     ako    abstract.
-power           ako    abstract.
-pram            ako    wheelchair. %% object. 
-
-presentation    ako    activity.
-  
-printout        ako    information. %% (?) 
-
-problem         ako    error. %% abstract %% feil og problemer (vv?)  
     problem         has_a  source.
 
-procedure       ako    activity. 
-
-producer        ako    company. %% leverandør 
-
-property        ako    abstract.
-
-praise          ako    phrase.    
-   criticism          ako    phrase. %%
-
-promise         ako    phrase. 
-
-proposal        ako    phrase. %% abstract. 
-
-protection      ako    meta.
-
-purpose         ako    abstract.
-
-quality         ako    measure.  %%  ( Technical )
-
-queue           ako    place.
-
-rank            ako    meta. 
-reason          ako    coevent. %%%% abstract
-reference       ako    abstract.  
-relation        ako    abstract. 
-repair          ako    activity.
-responsibility  ako    abstract.
-
-restaurant      ako    place. 
-%% road            ako    place. %%  Street 
-restriction     ako    abstract. %% TA-110419
-
-right           ako    abstract.    %% rett til skyss 
-river           ako    place.
-robot           ako    agent.  
-roof            ako    place. 
-room            ako    place.  
     room            has_a  number.
-root            ako    abstract.
-
-%% ! in som sense, a route is a set of vehicles
-route           ako    vehicle. %% Technical solution %%% <- - NB NB Tram etc
 %%     route           has_a      bus. %% hvilken rute har buss 5 
     route           has_a      distance. %% TA-100908
     route           has_a      frequency.
@@ -1392,59 +919,13 @@ route           ako    vehicle. %% Technical solution %%% <- - NB NB Tram etc
     route           has_a      time. 
     route           has_a      webaddress. 
 
-route_plan      ako    information. %% summer routes/winterroutes
     route_plan      has_a  webaddress. 
 
-school          ako    place.  
-search          ako    activity. 
-seat            ako    object. %% placoid
-sequence        ako    set. 
-service         ako    activity. 
     service         has_a number.  
     service         has_a telephone. 
-sound           ako    abstract.
-standard        ako    abstract. 
-start           ako    activity. 
-startingpoint   ako    place.
-storage         ako    place. 
-strategy        ako    abstract. 
-strike          ako    activity.  
-success         ako    abstract. 
-superagent      ako    agent.  %% Technical term
-%% swimmingpool   ako    place. %% Should be name 
-service         ako    activity. 
-%  sex             ako    meta.    %% dirty :-)
-side            ako    place. 
-situation       ako    abstract. 
-size            ako    measure.
-skeleton        ako    abstract.     
-ski             ako    object.
-sky             ako    place.     %%  :-)
-smoke           ako    activity.  %% (?)
-smoking         ako    activity.  
-solution        ako    abstract.
-song            ako    activity.
-snowploughing   ako    activity. %% GBR 
-space           ako    place.
     space          has_a  room.    %% Telebuster 
     space          has_a  office.  %% hvor (hva) er (romnummer til) utgangen
-specification   ako    information. %% rough   
-speed           ako    measure.
-spot            ako    object.
     spot            has_a  colour.
-%% start           ako    departure.  %% ( too bus specific ?)   
-
-stability       ako    abstract.
-%% statue          ako    object. %% landmark 
-stone           ako    object.
-stop            ako    activity.
-structure       ako    abstract. 
-summary         ako    meta.     
-surface         ako    place.  
-
-%% switch          ako    circuit.
-
-system          ako    agent.
     system          has_a  administrator. %% Tagore 
     system          has_a  clock. %% also captures   har du klokke 
     system          has_a  date.
@@ -1458,17 +939,6 @@ system          ako    agent.
     system          has_a  release.
     system          has_a  version.
 
-tail            ako    object. 
-talk            ako    activity. 
-task            ako    activity. 
-travelinsurance ako    abstract.  
-taxi            ako    vehicle. 
-
-timetable      ako    information. %% rutehefte 
-
-transfer        ako    activity. 
-
-trip            ako    activity.  
 %    trip            has_a   cost. 
     trip            has_a   price.
     trip            has_a   destination.
@@ -1480,70 +950,15 @@ trip            ako    activity.
     trip            has_a   departure.%% -time    
     trip            has_a   tourtype.
 
-teacher         ako   person. %%  tele
-
-team            ako    group.     
     team            has_a  country. 
 
-terminal        ako    machine.     %% also  bus-
-test            ako    activity.
-
-tour           ako    activity. 
     tour            has_a   tourtype. %% TA-101008
 
-tourtype       ako    information. %% TA-101008
-
-phonenumber ako telephone.   
-
-%%%%  ¤ telephone   ako phonenumber.  %%    SMOKETEST 
-
-
-
-sense           ako    feeling. %% TA-110114
-
-shape           ako    abstract. %% how is your day = shape of day
-
-strap           ako    object. 
-
-telephone       ako system. %% TA-110527
-
-telephone       ako    number. %% object.  % what is a phonenumber
     telephone       has_a    number. 
 
-% telephone    ako system. %% NB ambiguous
-
-telescope       ako    object.
-temperature     ako    measure. 
-text            ako    information.
-theory          ako    abstract.
-ticket          ako    object.
     ticket          has_a  price.
-tissue          ako    object.   %% ?
-top             ako    place.
-toy             ako    object.
-tunnel          ako    street. %% TA-110114 (place)
-
-traffic         ako    activity.
-transfer        ako    activity. 
-transformation  ako    abstract.    %%  TA-110503 ?
-truth           ako    abstract. 
-turtype         ako    information. %% TA-101008 ?
-type            ako    meta.         
-
-
-underground         ako    vehicle. %% TA-101115
-universe        ako    place. % Or object? or abstract?
-	 universe        has_a  age.  %% :-) 
+         universe        has_a  age.  %% :-) 
     universe        has_a  meaning.  
-
-university      ako    place. 
-
-update          ako    activity. %% \+ version ? 
-
-use             ako    activity. 
-
-vehicle         ako    thing. %% EXPERIMENT %% TA-110309
-                              %%  object. %% i.e. traffic line 
 
     vehicle         has_a  arrival. 
     vehicle         has_a  brake.  
@@ -1585,329 +1000,45 @@ vehicle         ako    thing. %% EXPERIMENT %% TA-110309
     vehicle         has_a  departure. %% når har siste 9 ...
     vehicle         has_a  weight. 
 
-way             ako    direction. %% abstract. %%  "the best way to.."// direction?
-
-weapon          ako    object.
-
-detour          ako    way.  
-
-weather         ako    abstract. 
-weight          ako    measure.
-wheel           ako    object.
-wheelchair      ako    object. 
-%% window          ako    object.   %%  i bussen?       
-window          ako    place.    %% in the window
-wire            ako    object.          %% circuit ??
-workstation     ako    machine.      
-
-zone            ako    place.    %% (NOT abstract), border for zone ...
     zone    has_a   size. 
 
 %-LEVEL 3 -------------
 
-
-airplane_arrival ako arrival.   
-airplane_departure ako departure.  
-
-animation       ako     system. %% face animation 
-application     ako     system.
-
-auditory        ako     room. 
-
-bar             ako      room.  
-
-broadband       ako     system.  
-
-browser         ako     system.  
-
-
-camera          ako     equipment.  %% TA-110121
-chaos           ako     situation.  %% :-)
-
-chip            ako     food. %% pl chips
-
-concert         ako     meeting.  
-confusion       ako     error.
-corridor        ako     space. 
-
-pizza           ako     food. 
-sausage         ako     food. 
-
-behaviour       ako     [mode]. 
-
-font            ako     format. 
-
-front           ako     side. 
-back            ako     side.
-
-happiness       ako     feeling. 
-
-headache        ako     feeling. %% illness?
-
-ice             ako     weather. %% iset
-icecream        ako     food. 
-
-interest        ako     feeling. 
-
-eastside        ako    side.
-northside       ako    side.
-southside       ako    side.
-westside        ako    side.
-
-key             ako    text. %% e.g. 'A'
-
-left            ako    direction. 
-right           ako    direction. 
-
-
-zip             ako     number.
-title           ako     text. % ?
-phonetype       ako     abstract.
-extrainfo       ako     text.
-%% hiddenflag      ako     text.
-
-
-adult           ako     person.
     adult           has_a   baby. 
     adult           has_a   child.   
     adult           has_a   daughter. 
     adult           has_a   son.      
 
-agelimit        ako    age. 
-
-alternative     ako    route.  %% VERY SPECIAL
-
-appointment     ako    meeting. 
-
-airport         ako    neighbourhood.
-
-alcohol         ako    drink. 
-
-animal          ako    animate. %% and object 
     animal          has_a  tail.
 
-answer          ako    statement.
-
-attachment      ako    mail. 
-
-author          ako    person.     
-
-bag             ako    luggage. 
-
-%% ball            ako    toy. 
-
-base            ako    software. %% (technical)
 %    base            has_a    content.
 
-bear            ako    animal.
-
-beer            ako    drink. %% liquid. 
-
-book            ako    document.
-bridge          ako    street. %%  roughly
-
-bird            ako    animate. %% animal ?
-
-boat            ako    vehicle. %% a kind of :-) 
-
-bus             ako    vehicle. 
     bus             has_a  card. %% kortterminal?
     bus             has_a  horsepower.
     bus             has_a  route.  %% hva er ruten til
     bus             has_a  route_plan.  
     bus             has_a  wheel.   %%    
 
-cannibal        ako    person. %%  :-)
-
-car             ako    vehicle.  
     car             has_a  owner.
 
-card            ako    ticket.
-cat             ako    animal.
-character       ako    text.
-child           ako    person.
-christmasroute  ako    route_plan. 
-coat            ako    cloth. 
-code            ako    text. 
-coffee          ako    drink. 
-competitor      ako    person.     
-computer        ako    system.
     computer        has_a   operatingsystem.  
 
-constant        ako    argument.
-count           ako    number. 
 
-cow             ako    animal.     
     cow             has_a  milk.
-cube            ako    box. 
-
-easterroute ako route_plan. 
-
-
-front           ako   side. 
-backside        ako   side. 
-
-variant         ako   vehicle. %% (route)  %% thing.
-
-boat_route_plan  ako     route_plan. 
-train_route_plan ako     route_plan. 
-tram_route_plan  ako     route_plan. 
-
-
-data            ako    information. 
-
-%% database        ako    place. %% ligge i databasen %% metagoric 
-
-database        ako    information.
-database        ako    software. 
     database        has_a   size. 
-department      ako    office.
     department      has_a  department. 
 
 
-description     ako    information.
-dictionary      ako    file.
-dinner          ako    food. 
-directroute     ako    route. 
-display         ako    equipment.
-
-dog             ako    animal.
     dog             has_a  name.
     dog             has_a  owner.
 
-doll            ako    toy.
-
-donkey          ako    animal.
-dress           ako    cloth.   
-drink           ako    liquid.  
-
-egg             ako    food. 
-
-elephant        ako    animal.
-
-email           ako    mail. %%  (or the same?)
-
-employee        ako    person.  
     employee        has_a rank.
 %    employee        has_a salary. // person
 
-eveningroute   ako    route_plan.  
-
-exam           ako    test. 
-
-example         ako    text.
-
-exchange        ako    activity.  %% ? 
-exchange        ako    equipment. %% ? 
-
-experience      ako    knowledge. %% ? 
-    instruction      ako    knowledge. %% ?
-
-expert          ako    agent. 
-
-expertsystem    ako    system.  
-
-entry           ako    space. %% inngang
-exit            ako    space. %% utgang %% Telebuster
-fact            ako    statement.
-
-factor          ako    abstract. %% Experiment
-
-farmer          ako    person. 
     farmer          has_a  donkey.
 
-final           ako    match.
-firstname       ako    person. %% Tores telefon name. %% Technical 
-fish            ako    animal.
-fizzydrink      ako    drink. 
-
-flow            ako    traffic. %% fremkommelighet
-
-flower          ako    plant. 
-fuel            ako    liquid. 
-
-% fly             ako    animal. %% confuse when bilingual
-
-fruit           ako    food. 
-
-glue            ako    liquid. 
-gun             ako    weapon.
-
-hardware        ako    system. 
-
-hat             ako    cloth.
-heading         ako    text.
-
-horse           ako    animal.
-horse           ako    vehicle.  %% :-)
-
-house           ako    place. 
-hydrogen        ako    gas. 
-
-icecream        ako    food.  
-implementation  ako    program. %% also activity
-increase        ako    measure. 
-indulgence      ako    feeling. %% (leniency ?)
-interface       ako    program.
-internet        ako    network.  %% changed from fact due to internet syndrome 
-
-ipaddress       ako    address.
-
-jog             ako    trip. %% i.e spasertur/løpetur
-
-journal         ako    document.
-
-keyboard        ako    system. 
-
-knife           ako    weapon. 
-
-lamb            ako    animal.
-%% landsurface     ako    surface. 
-territory     ako    surface. 
     territory       has_a  area.
 
-lastname        ako    person. %%  ambles telefon name. 
-liff            ako    life.  %%  :-)
-line            ako    text.
-lift            ako    vehicle. %% !! 
-lion            ako    animal.
-logic           ako    language.
-logo            ako    identification. %% TA-110707
-lunch           ako    food.  %% meal ?
-lust            ako    feeling. %% Techn. Ha lyst på 
-
-manual          ako    document.
-mood            ako    feeling. %% spirit
-mailaddress     ako    address.
-mark            ako    text.
-meat            ako    food.
-medicine        ako    food.  %% Roughly
-meetingroom     ako    room.
-message         ako    statement.
-middlename      ako    person. 
-milk            ako    liquid.  
-module          ako    system.
-money           ako    measure. %%  number.   * money on the bus
-morningroute    ako    route_plan. 
-mood            ako    [mode].
-mouse           ako    animal.
-music           ako    sound. 
-
-nl              ako    language.
-
-notification          ako    information.
-
-operatingsystem ako    system. 
-     
-owner           ako    person.
-
-pair            ako  number.  %% NOT thing.  et par ting = par har ting
-
-
-person          ako    animate. 
-
-%%     person         has_a   hiddenflag.  
-%%     person         has_a   street. %% teletuc veien til Arvid Holme
     person         has_a   city.
     person         has_a   streetnumber.
     person         has_a   streetcharacter. %% teletuc
@@ -1975,15 +1106,1043 @@ person          ako    animate.
     person          has_a  wife.  
     person          has_a  woman. %% :-) 
 
-passenger       ako    person . 
-escort          ako    person. %% passenger? 
+%%     person         has_a   hiddenflag.  
+%%     person         has_a   street. %% teletuc veien til Arvid Holme
 
-phrase          ako    text. %% nl text
     phrase          has_a  complexity.
     phrase          has_a  definition.
     phrase          has_a  structure.
     phrase          has_a  version.
 
+    price           has_a  price. %%   price of a (fare=price)
+
+   printer          has_a  printqueue.        
+   printer          has_a  name.              
+
+    printqueue      has_a job. 
+    program         has_a  address. %% i.e.  internet address 
+    program         has_a  code.  %%  ( as such)
+    program         has_a  computer. %% your server 
+    program         has_a  internet. %% ?
+    program         has_a  program. %% ditt program 
+    program         has_a  programmer. %%  ( author )
+    program         has_a  size. 
+    program         has_a  operatingsystem. 
+    program         has_a  oracle. %% dere har et../ du er et. 
+    program         has_a  owner. 
+    program         has_a  user.
+
+    project    has_a   boss.   %% unoff.
+    project    has_a   leader. 
+
+    software       has_a    database. 
+    time            has_a   length. 
+
+    tram             has_a telephone. %% qua company
+
+
+    user            has_a   printquota.  
+    user            has_a   diskspace.   
+    water_surface   has_a area.
+
+    word            has_a semantics.
+    word            has_a form.
+
+%-LEVEL 4 ----------------------------------
+
+    autumn has_a winterroute.
+    autumn has_a route_plan. 
+
+    city            has_a  age.
+    city            has_a  bus. 
+    city            has_a  population. %% territory
+    city            has_a  size.       %% s.a. population
+    city            has_a  centre. 
+    city            has_a  cinema.       %% hall
+    city            has_a  driver. 
+    city            has_a  harbour. 
+    city            has_a  mayor.  
+    city            has_a  person.  %% how many ... 
+    city            has_a  street. %% road.
+    city            has_a  route.  
+    city            has_a  route_plan. 
+    continent      has_a  country. %% many
+
+    country         has_a  capital.
+    country         has_a  city.    %% many
+    country         has_a  currency.    
+    country         has_a  king.       
+    country         has_a  latitude.   
+    country         has_a  longitude.  
+    country         has_a  mountain. 
+    country         has_a  population. 
+    country         has_a  president.  
+    country         has_a  primeminister. 
+    country         has_a  queen.
+    country         has_a  river.
+    country         has_a  size.      %% s.a. population
+    country         has_a  system.  
+    country         has_a  team.       
+
+    date            has_a  evening.    %% Christmas Eve 
+
+    daycode         has_a   day. %%
+    daycode         has_a   departure. 
+
+    day             has_a  afternoon.
+    day             has_a  date.
+    day             has_a  departure. 
+    day             has_a  evening.  
+    day             has_a  morning.  
+    day             has_a  midnight.  %% natt (Norwagism) natt til fredag = fredag "morgen"
+                                      %% torsdag natt // tvetydig       
+    day             has_a  night.    
+    day             has_a  bus.      %% søndagens rute // når går i dag %%
+                                     %% dagens første buss bussen  
+    day             has_a  route.    %% hvilke tider har rute 5 ? 
+    day             has_a  time.      %% dagens tider 
+    day             has_a  weather.
+
+    driver           has_a beard. %%   :-#) person
+     daypart         has_a  bus.   %% Fig of sp.
+
+    family   has_a member. 
+
+    fare             has_a price. % price of a fare
+
+    king            has_a advisor.
+%    man             has_a  wife. %% => person to allow question
+%    man             has_a  love. %% ? which person loves ==> which (person love)
+     man             has_a  test. %% Turings test :-)
+
+otherbus has_a  telephone.  %% qua company
+otherbus has_a  summerroute. %% etc. xome confusion 
+
+management       has_a  policy.
+
+    park            has_a lion.
+    park            has_a statue.
+
+    station          has_a  address.
+    station          has_a  place. % ( location ?), i.e. neighbourhood 
+
+%    station          has_a  saturdayroute. %% søndagsrute 5 til dragvoll
+%    station          has_a  sundayroute.  
+
+    station          has_a  seat. 
+    station          has_a  shed.  
+    station          has_a  streetnumber. 
+    station          has_a  zone.
+%     station          has_a  departure.  %% til nth avreise kl. 18=nths avreise 
+
+    summer           has_a     duration.  %% Generalize?
+
+    trans_verb       has_a  object.
+
+%%      self   has_a bus.  %% unnec 
+
+     verb            has_a  subject.
+
+%    woman           has_a  husband. %% Moved to person to allow question
+    woman           has_a  lamb. % :-)   Mary
+
+        year         has_a  route_plan. 
+        year         has_a  bus. %% årets siste 
+%-LEVEL 5 -------------------
+
+    airbus           has_a webaddress.  %% qua company
+
+    hour   has_a  time.     %%        En times tid
+    hour   has_a  duration. %%        En times varighet
+    hour   has_a  pause.    %% no inherit 
+
+    question        has_a  answer. 
+
+    traveltime     has_a  duration. 
+
+
+% =========NO MORE LEVELS! =========================================================
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+
+unkn            ako    thing. %% agent ? place ?
+
+event           ako    thing. %% generic for event/ 
+
+%% company         ako    place. %% NB also agent |Deliberately
+%% take 47 klæburuten -> \+ take (route) 47 (to) klæburuten (qua place)
+
+
+%-LEVEL 1 ----------------------------------
+
+coevent  ako thing. %% event ?
+
+set ako thing. 
+
+item          ako     thing.
+
+member        ako     thing.
+
+amount        ako     thing. %% amount of work = work
+
+
+abstract        ako    thing.
+
+account         ako    thing. 
+
+activity        ako    thing.   % to make/do an activity 
+addition        ako    thing. %% generic
+
+agent           ako    thing. 
+
+alternative     ako    thing. %% TA-110228 confuse way (måte)
+
+base            ako    thing.
+
+care            ako    abstract. %% ta vare på %% TA-110815
+
+chance          ako    abstract. %% sjanse
+
+contact         ako    thing.  %% person/appliance/abstract/... ?
+content         ako    thing.
+copy            ako    thing.
+course          ako    thing. 
+creation        ako    activity. 
+
+definition      ako    abstract. 
+
+effect          ako    abstract. 
+
+wish            ako    abstract. %% a wish %% TA-101124
+
+group           ako    thing.
+identity        ako    thing.  
+information     ako    thing.   
+interest        ako    abstract. 
+
+list            ako    thing.     
+mass            ako    thing.     %% => stuff
+
+measure         ako    thing.
+meta            ako    thing.   % lexical object 
+
+
+object          ako    thing.   %% class.  
+%% part            ako    place.  %% syndrome part is generic 
+                                  %% du må være en av delen
+part            ako    thing.    
+
+place           ako    thing.
+%% river           ako    thing.    %% (water but no area) %% -> place
+
+rest            ako thing. %% actually generic rest of X=X
+
+%% step            ako    abstract. 
+
+story           ako    thing.
+
+study           ako    activity. 
+
+subset          ako    thing.
+
+suspicion       ako    abstract. 
+
+%% version         ako   abstract. 
+version            ako   system.  
+cardinality   ako  number.
+qualification ako  abstract.
+reference     ako  abstract.
+
+
+%-LEVEL 2 ----------------------------------
+
+
+access          ako    abstract. %% TA-110429 tilgang
+
+area            ako    place. %% not measure %% TA-100908
+
+company         ako    agent.       %%   e.g. TT 
+ability         ako    abstract. 
+accident        ako    activity. 
+acquisition     ako    activity. 
+activation      ako    activity.  %% start of it
+%% addition        ako    abstract. %% thing
+address         ako    place.  
+advice          ako    abstract. 
+    
+age             ako    year.  %% (measure)  
+agreement       ako    abstract. 
+
+
+ambiguity       ako    abstract.
+
+%% air             ako    place. %% kan bussen gå i lufta ? 
+analysis        ako    abstract.
+
+animate         ako    agent.  
+application     ako    activity. 
+
+approval        ako    activity.  
+
+%% area            ako    measure.      %% geography 
+argument        ako    abstract.
+arrival         ako    activity. 
+arrow           ako    object.
+attempt         ako    activity. 
+attention       ako    abstract.
+
+bank            ako    company. %%  & place ?
+bar             ako    place.
+beard           ako    object.  %%  :-#)
+bed             ako    place.   %% placoid
+beginning       ako    part.
+bicycle         ako    vehicle. %% EXPERIMENT object. / using bicycle
+                                %% take on the bus / take to NTH
+[block]         ako    object.
+bodypart        ako    object.
+
+foot            ako    bodypart. %% ?? //by foot
+bookcase        ako    object.
+border          ako    place. 
+bottom          ako    place.  %% part ??
+box             ako    object. 
+brain           ako    object.
+brake           ako    object.  
+
+case            ako    abstract.
+cause           ako    abstract. 
+ceiling         ako    place.
+centre          ako    place.
+chair           ako    object. 
+change          ako    activity. %%  = transfer
+choice          ako    abstract. 
+claim           ako    abstract.
+
+cinema          ako    place. 
+circuit         ako    abstract.
+class           ako    set. 
+cleaning        ako    activity. 
+clothing        ako    object.  
+colour          ako    abstract.  %% attribute.  %% NO WORD !
+communication   ako    abstract. 
+comparison      ako    abstract. 
+competition     ako    activity. 
+complexity      ako    measure.
+
+condition       ako    abstract.
+consideration   ako    abstract. 
+consistency     ako    abstract. %% riktighet %% TA-110707
+connection      ako    abstract. 
+connector       ako    circuit.
+consciousness   ako    abstract.
+control         ako    activity.  %% abstract ?
+corner          ako    place.
+correction      ako    activity.
+   curiosity       ako    feeling. 
+currency        ako    meta.          
+
+decrease        ako    measure.      
+definition      ako    abstract.
+delay           ako    abstract. 
+demonstration   ako    activity.
+departure       ako    activity. 
+decision        ako    activity.
+
+destination     ako    place.
+detail          ako    part. %% rough
+development     ako    activity. 
+dialogue        ako    activity.
+difference      ako    measure.  %% abstract ????
+direction       ako    place. %% abstract. 
+directory       ako    place.     
+distance        ako    measure.       
+distribution    ako    abstract.
+
+document        ako    information.            
+domain          ako    abstract. 
+door            ako    object.
+
+
+education       ako    activity. 
+efficiency      ako    abstract.
+end             ako    part.          
+entertainment   ako    activity.
+environment     ako    abstract. 
+
+equipment       ako    system. %% e.g. camera %% object. 
+error           ako    activity.
+estimate        ako    measure.
+
+
+example         ako    abstract. %%  (difficult ?)
+exhaust         ako    gas. %% but not "fuel" ad hoc 
+existence       ako    abstract.  
+expectation     ako    abstract. 
+expert          ako    agent.
+extension       ako    name.    
+
+family          ako    agent.  %% aso  a set of, rough 
+fault           ako    abstract.
+feature         ako    abstract.
+feeling         ako    abstract.      
+field           ako    information.
+file            ako    object.
+floor           ako    place. 
+food            ako    object. 
+
+footnote        ako    information.
+
+forehead        ako    object.
+ 
+forgery         ako    activity. 
+
+form            ako    information. %% abstract. %% skjema  %% often misspelled for from  
+
+format          ako    information. %% regtop-
+formalism       ako    abstract.
+
+frequency       ako    measure. 
+
+enemy          ako    person. %% TA-91102
+
+friend          ako    person. %% agent. %% :-) 
+% Syndrome  A friend is on a bus ==> person is on bus ==> coercing!
+
+game            ako    activity.
+gas             ako    fuel. 
+generalisation  ako    abstract. % version ?
+
+geo_metric      ako    place. %% common   name for equator, poles       
+goal            ako    activity.      
+god             ako    agent. %% :-) abstract. % a god
+
+group           ako    set.
+
+% gun             ako    object. % weapon
+
+habit           ako    abstract.
+
+hand            ako    object.
+
+harbour         ako    place. 
+
+head            ako    object.
+header          ako    object.        
+
+health          ako    abstract.
+
+heap            ako    place.     
+heart           ako    object.       
+height          ako    measure. 
+
+help            ako    activity. 
+hold            ako    abstract. 
+home            ako    place.        
+hope            ako    abstract.
+
+homepage        ako    information.
+honour          ako    abstract. 
+
+horsepower      ako    measure. 
+host            ako    agent.
+
+identification  ako    information. 
+
+ignorance       ako    abstract.
+
+import          ako    activity. %% innleggelse 
+
+indication      ako    abstract. %% information ? 
+
+introduction    ako    activity.
+
+idea            ako    abstract. 
+implementation  ako    activity. 
+
+inspiration     ako    abstract. 
+
+installation    ako    object. %% building? %% TA-100908
+
+intelligence    ako    abstract.  %% :-)
+integration     ako    activity.  %% ?
+interview       ako    activity.
+
+
+iphone          ako  smartphone.     %%
+    smartphone      ako    telephone. %% TA-110725
+
+informationcentre  ako agent. 
+irony              ako abtract. 
+
+
+job             ako    activity. %% place. %% activity. %% jeg går jobb *
+
+%% journey         ako    activity.  %%  --> trip
+
+kilometer       ako    distance. %% measure.  %% TA-110427
+meter           ako    distance.
+mile            ako    distance.
+         
+ 
+kind            ako    abstract. 
+%% kiss            ako    activity. %% TA-110520 :-(
+kmh             ako    speed. 
+
+
+knob            ako    object.
+knowledge       ako    information.
+
+
+label           ako    mark. %% information. 
+
+lack            ako    abstract. 
+landmark        ako    neighbourhood. %% SIC bus world
+language        ako    abstract.     
+latitude        ako    measure.      
+
+location        ako    place. %% TA-101230
+
+mind            ako    abstract. 
+motorcycle      ako    vehicle.
+
+
+
+lack_of_space   ako    space. %% sic
+
+lap             ako    bodypart. %% på fanget
+leg             ako    bodypart. %% /on leg  
+
+length          ako    measure. 
+lesson          ako    information.
+letter          ako    information. % ambiguous 
+life            ako    time.  %% abstract
+light           ako    abstract. % physical weightless
+limit           ako    measure.
+liquid          ako    mass. 
+load            ako    measure. %% overbelastning ?
+location        ako    place. %% smaller 
+log             ako    data. 
+longitude       ako    measure.      
+%% love            ako    activity. %% :-)))
+luggage         ako    object.  
+
+% machine         ako    place. %% syn computer
+mail            ako    information. 
+map             ako    picture. 
+match           ako    activity.
+meaning         ako    abstract. %% number. % :-)
+meeting         ako    activity.
+memory          ako    abstract. 
+meter           ako    measure. 
+method          ako    abstract.  %%  ( = way ???)
+mile            ako    measure.  
+mobile          ako    telephone. %% number. 
+[mode]          ako    abstract.
+modification    ako    activity. %%  = av ruteplaner etc.
+monster         ako    agent. 
+motor           ako    object.   %% engine ???
+movement        ako    activity.
+movie           ako    information. %% place. % cinema hall 
+
+name            ako    word. %% meta.  Navnet Danmark
+
+necessity       ako    abstract. 
+need            ako    abstract. 
+negation        ako    abstract.  %% meta ?  :-)
+neighbourhood   ako    place. 
+
+network         ako    system. %%  thing. %% I find a picture on the internet// system?
+
+news            ako    information.
+
+nonsense        ako    sentence. %% abstract. 
+
+number          ako    measure.
+office          ako    place.      
+oil             ako    fuel.
+
+operation       ako    activity. 
+
+operator        ako    agent. 
+opinion         ako    abstract.  
+
+optimalization  ako    activity. 
+
+oracle          ako    program.   %% agent. 
+order           ako    abstract. %% //NB, rekkefølge bestilling %% rough
+
+organisation    ako    company. %% or vv ??
+origin          ako    place. 
+oversight       ako    abstract.
+overview        ako    information. 
+
+page            ako    information. %% e.g. home page
+payment         ako    activity.  
+percent         ako    measure. 
+permission      ako    abstract. 
+petrol          ako    fuel. %% UK 
+picture         ako    information. 
+plan            ako    information. %% abstract. %% collides with route_plan 
+
+plant           ako    object.
+planet          ako    place.
+
+pocket          ako    place. 
+policy          ako    abstract. 
+position        ako    place.
+possibility     ako    abstract.
+power           ako    abstract.
+pram            ako    wheelchair. %% object. 
+
+presentation    ako    activity.
+  
+printout        ako    information. %% (?) 
+
+problem         ako    error. %% abstract %% feil og problemer (vv?)  
+procedure       ako    activity. 
+
+producer        ako    company. %% leverandør 
+
+property        ako    abstract.
+
+praise          ako    phrase.    
+   criticism          ako    phrase. %%
+
+promise         ako    phrase. 
+
+proposal        ako    phrase. %% abstract. 
+
+protection      ako    meta.
+
+purpose         ako    abstract.
+
+quality         ako    measure.  %%  ( Technical )
+
+queue           ako    place.
+
+rank            ako    meta. 
+reason          ako    coevent. %%%% abstract
+reference       ako    abstract.  
+relation        ako    abstract. 
+repair          ako    activity.
+responsibility  ako    abstract.
+
+restaurant      ako    place. 
+%% road            ako    place. %%  Street 
+restriction     ako    abstract. %% TA-110419
+
+right           ako    abstract.    %% rett til skyss 
+river           ako    place.
+robot           ako    agent.  
+roof            ako    place. 
+room            ako    place.  
+root            ako    abstract.
+
+%% ! in som sense, a route is a set of vehicles
+route           ako    vehicle. %% Technical solution %%% <- - NB NB Tram etc
+route_plan      ako    information. %% summer routes/winterroutes
+school          ako    place.  
+search          ako    activity. 
+seat            ako    object. %% placoid
+sequence        ako    set. 
+service         ako    activity. 
+sound           ako    abstract.
+standard        ako    abstract. 
+start           ako    activity. 
+startingpoint   ako    place.
+storage         ako    place. 
+strategy        ako    abstract. 
+strike          ako    activity.  
+success         ako    abstract. 
+superagent      ako    agent.  %% Technical term
+%% swimmingpool   ako    place. %% Should be name 
+service         ako    activity. 
+%  sex             ako    meta.    %% dirty :-)
+side            ako    place. 
+situation       ako    abstract. 
+size            ako    measure.
+skeleton        ako    abstract.     
+ski             ako    object.
+sky             ako    place.     %%  :-)
+smoke           ako    activity.  %% (?)
+smoking         ako    activity.  
+solution        ako    abstract.
+song            ako    activity.
+snowploughing   ako    activity. %% GBR 
+space           ako    place.
+%% start           ako    departure.  %% ( too bus specific ?)   
+
+specification   ako    information. %% rough   
+speed           ako    measure.
+spot            ako    object.
+stability       ako    abstract.
+%% statue          ako    object. %% landmark 
+stone           ako    object.
+stop            ako    activity.
+structure       ako    abstract. 
+summary         ako    meta.     
+surface         ako    place.  
+
+%% switch          ako    circuit.
+
+system          ako    agent.
+tail            ako    object. 
+talk            ako    activity. 
+task            ako    activity. 
+travelinsurance ako    abstract.  
+taxi            ako    vehicle. 
+
+timetable      ako    information. %% rutehefte 
+
+transfer        ako    activity. 
+
+trip            ako    activity.  
+teacher         ako   person. %%  tele
+
+team            ako    group.     
+terminal        ako    machine.     %% also  bus-
+test            ako    activity.
+
+tour           ako    activity. 
+tourtype       ako    information. %% TA-101008
+
+phonenumber ako telephone.   
+
+%%%%  ¤ telephone   ako phonenumber.  %%    SMOKETEST 
+
+
+
+sense           ako    feeling. %% TA-110114
+
+shape           ako    abstract. %% how is your day = shape of day
+
+strap           ako    object. 
+
+telephone       ako system. %% TA-110527
+
+telephone       ako    number. %% object.  % what is a phonenumber
+% telephone    ako system. %% NB ambiguous
+
+telescope       ako    object.
+temperature     ako    measure. 
+text            ako    information.
+theory          ako    abstract.
+ticket          ako    object.
+tissue          ako    object.   %% ?
+top             ako    place.
+toy             ako    object.
+tunnel          ako    street. %% TA-110114 (place)
+
+traffic         ako    activity.
+transfer        ako    activity. 
+transformation  ako    abstract.    %%  TA-110503 ?
+truth           ako    abstract. 
+turtype         ako    information. %% TA-101008 ?
+type            ako    meta.         
+
+
+underground         ako    vehicle. %% TA-101115
+universe        ako    place. % Or object? or abstract?
+university      ako    place. 
+
+update          ako    activity. %% \+ version ? 
+
+use             ako    activity. 
+
+vehicle         ako    thing. %% EXPERIMENT %% TA-110309
+                              %%  object. %% i.e. traffic line 
+
+way             ako    direction. %% abstract. %%  "the best way to.."// direction?
+
+weapon          ako    object.
+
+detour          ako    way.  
+
+weather         ako    abstract. 
+weight          ako    measure.
+wheel           ako    object.
+wheelchair      ako    object. 
+%% window          ako    object.   %%  i bussen?       
+window          ako    place.    %% in the window
+wire            ako    object.          %% circuit ??
+workstation     ako    machine.      
+
+zone            ako    place.    %% (NOT abstract), border for zone ...
+
+%-LEVEL 3 -------------
+
+
+airplane_arrival ako arrival.   
+airplane_departure ako departure.  
+
+animation       ako     system. %% face animation 
+application     ako     system.
+
+auditory        ako     room. 
+
+bar             ako      room.  
+
+broadband       ako     system.  
+
+browser         ako     system.  
+
+
+camera          ako     equipment.  %% TA-110121
+chaos           ako     situation.  %% :-)
+
+chip            ako     food. %% pl chips
+
+concert         ako     meeting.  
+confusion       ako     error.
+corridor        ako     space. 
+
+pizza           ako     food. 
+sausage         ako     food. 
+
+behaviour       ako     [mode]. 
+
+font            ako     format. 
+
+front           ako     side. 
+back            ako     side.
+
+happiness       ako     feeling. 
+
+headache        ako     feeling. %% illness?
+
+ice             ako     weather. %% iset
+icecream        ako     food. 
+
+interest        ako     feeling. 
+
+eastside        ako    side.
+northside       ako    side.
+southside       ako    side.
+westside        ako    side.
+
+key             ako    text. %% e.g. 'A'
+
+left            ako    direction. 
+right           ako    direction. 
+
+
+zip             ako     number.
+title           ako     text. % ?
+phonetype       ako     abstract.
+extrainfo       ako     text.
+%% hiddenflag      ako     text.
+
+
+adult           ako     person.
+agelimit        ako    age. 
+
+alternative     ako    route.  %% VERY SPECIAL
+
+appointment     ako    meeting. 
+
+airport         ako    neighbourhood.
+
+alcohol         ako    drink. 
+
+animal          ako    animate. %% and object 
+answer          ako    statement.
+
+attachment      ako    mail. 
+
+author          ako    person.     
+
+bag             ako    luggage. 
+
+%% ball            ako    toy. 
+
+base            ako    software. %% (technical)
+bear            ako    animal.
+
+beer            ako    drink. %% liquid. 
+
+book            ako    document.
+bridge          ako    street. %%  roughly
+
+bird            ako    animate. %% animal ?
+
+boat            ako    vehicle. %% a kind of :-) 
+
+bus             ako    vehicle. 
+cannibal        ako    person. %%  :-)
+
+car             ako    vehicle.  
+card            ako    ticket.
+cat             ako    animal.
+character       ako    text.
+child           ako    person.
+christmasroute  ako    route_plan. 
+coat            ako    cloth. 
+code            ako    text. 
+coffee          ako    drink. 
+competitor      ako    person.     
+computer        ako    system.
+constant        ako    argument.
+count           ako    number. 
+
+cow             ako    animal.     
+cube            ako    box. 
+
+easterroute ako route_plan. 
+
+
+front           ako   side. 
+backside        ako   side. 
+
+variant         ako   vehicle. %% (route)  %% thing.
+
+boat_route_plan  ako     route_plan. 
+train_route_plan ako     route_plan. 
+tram_route_plan  ako     route_plan. 
+
+
+data            ako    information. 
+
+%% database        ako    place. %% ligge i databasen %% metagoric 
+
+database        ako    information.
+database        ako    software. 
+department      ako    office.
+description     ako    information.
+dictionary      ako    file.
+dinner          ako    food. 
+directroute     ako    route. 
+display         ako    equipment.
+
+dog             ako    animal.
+doll            ako    toy.
+
+donkey          ako    animal.
+dress           ako    cloth.   
+drink           ako    liquid.  
+
+egg             ako    food. 
+
+elephant        ako    animal.
+
+email           ako    mail. %%  (or the same?)
+
+employee        ako    person.  
+eveningroute   ako    route_plan.  
+
+exam           ako    test. 
+
+example         ako    text.
+
+exchange        ako    activity.  %% ? 
+exchange        ako    equipment. %% ? 
+
+experience      ako    knowledge. %% ? 
+    instruction      ako    knowledge. %% ?
+
+expert          ako    agent. 
+
+expertsystem    ako    system.  
+
+entry           ako    space. %% inngang
+exit            ako    space. %% utgang %% Telebuster
+fact            ako    statement.
+
+factor          ako    abstract. %% Experiment
+
+farmer          ako    person. 
+final           ako    match.
+firstname       ako    person. %% Tores telefon name. %% Technical 
+fish            ako    animal.
+fizzydrink      ako    drink. 
+
+flow            ako    traffic. %% fremkommelighet
+
+flower          ako    plant. 
+fuel            ako    liquid. 
+
+% fly             ako    animal. %% confuse when bilingual
+
+fruit           ako    food. 
+
+glue            ako    liquid. 
+gun             ako    weapon.
+
+hardware        ako    system. 
+
+hat             ako    cloth.
+heading         ako    text.
+
+horse           ako    animal.
+horse           ako    vehicle.  %% :-)
+
+house           ako    place. 
+hydrogen        ako    gas. 
+
+icecream        ako    food.  
+implementation  ako    program. %% also activity
+increase        ako    measure. 
+indulgence      ako    feeling. %% (leniency ?)
+interface       ako    program.
+internet        ako    network.  %% changed from fact due to internet syndrome 
+
+ipaddress       ako    address.
+
+jog             ako    trip. %% i.e spasertur/løpetur
+
+journal         ako    document.
+
+keyboard        ako    system. 
+
+knife           ako    weapon. 
+
+lamb            ako    animal.
+%% landsurface     ako    surface. 
+territory     ako    surface. 
+lastname        ako    person. %%  ambles telefon name. 
+liff            ako    life.  %%  :-)
+line            ako    text.
+lift            ako    vehicle. %% !! 
+lion            ako    animal.
+logic           ako    language.
+logo            ako    identification. %% TA-110707
+lunch           ako    food.  %% meal ?
+lust            ako    feeling. %% Techn. Ha lyst på 
+
+manual          ako    document.
+mood            ako    feeling. %% spirit
+mailaddress     ako    address.
+mark            ako    text.
+meat            ako    food.
+medicine        ako    food.  %% Roughly
+meetingroom     ako    room.
+message         ako    statement.
+middlename      ako    person. 
+milk            ako    liquid.  
+module          ako    system.
+money           ako    measure. %%  number.   * money on the bus
+morningroute    ako    route_plan. 
+mood            ako    [mode].
+mouse           ako    animal.
+music           ako    sound. 
+
+nl              ako    language.
+
+notification          ako    information.
+
+operatingsystem ako    system. 
+     
+owner           ako    person.
+
+pair            ako  number.  %% NOT thing.  et par ting = par har ting
+
+
+person          ako    animate. 
+passenger       ako    person . 
+escort          ako    person. %% passenger? 
+
+phrase          ako    text. %% nl text
 pity            ako    feeling.
 pizza           ako    food.
 
@@ -1997,41 +2156,20 @@ postcode        ako    number.  %% in Norway
 postbox         ako    address.
 post_office     ako    office.
 price           ako    money.  
-    price           has_a  price. %%   price of a (fare=price)
-
 printer         ako    system. 
 % printer         ako    object.      
-   printer          has_a  printqueue.        
-   printer          has_a  name.              
-
 card_reader            ako    system.  %% t-kort
 
 printqueue      ako    queue.
-    printqueue      has_a job. 
 printquota      ako    number. 
 
 
 program         ako    software. 
-    program         has_a  address. %% i.e.  internet address 
-    program         has_a  code.  %%  ( as such)
-    program         has_a  computer. %% your server 
-    program         has_a  internet. %% ?
-    program         has_a  program. %% ditt program 
-    program         has_a  programmer. %%  ( author )
-    program         has_a  size. 
-    program         has_a  operatingsystem. 
-    program         has_a  oracle. %% dere har et../ du er et. 
-    program         has_a  owner. 
-    program         has_a  user.
-
 programmer      ako    person. %%  (not agent as such) 
 
 programminglanguage ako language. %%  (prefer non _ version
 
 project         ako    activity. 
-    project    has_a   boss.   %% unoff.
-    project    has_a   leader. 
-
 prototype       ako    system.
 
 radio           ako    object.
@@ -2067,7 +2205,6 @@ name_recognition  ako system. %% rough %% TA-110706
 speech_recognition  ako system. 
 
 software        ako    system. 
-    software       has_a    database. 
 source          ako    information.
 
 speech          ako    text. %% NB
@@ -2099,8 +2236,6 @@ subscription    ako    telephone. %% my subscription 123435
 table           ako    file.
 thief           ako    person.
 time            ako    measure. 
-    time            has_a   length. 
-
 time_count      ako    measure.       %% N.of. times 
 
 technology      ako    system. %% rough
@@ -2116,9 +2251,6 @@ train           ako    vehicle.
 translation     ako    text. %% TA-110503
 
 tram            ako    vehicle. 
-    tram             has_a telephone. %% qua company
-
-
 turing_test     ako    test. 
 
 understanding   ako    knowledge. 
@@ -2126,8 +2258,6 @@ understanding   ako    knowledge.
 uniform         ako    clothing. 
 
 user            ako    person.
-    user            has_a   printquota.  
-    user            has_a   diskspace.   
 variable        ako    argument.
 
 virus          ako    error. 
@@ -2145,8 +2275,6 @@ ward            ako    office. %% ???
 water           ako    liquid. 
 
 water_surface   ako    surface.
-    water_surface   has_a area.
-
 web             ako    network.  
 
 
@@ -2174,9 +2302,6 @@ window          ako    system. %% data-  ad hoc
 wine            ako    drink. 
 
 word            ako    text.
-    word            has_a semantics.
-    word            has_a form.
-
 wumpus          ako    monster. % :-)  R&N AIMA 
 
 youth           ako     person. 
@@ -2213,9 +2338,6 @@ apple           ako    fruit.
 author          ako    person. 
 
 autumn          ako    time.  
-    autumn has_a winterroute.
-    autumn has_a route_plan. 
-
 baby            ako    child.
 banana          ako    fruit.
 bill            ako    money. 
@@ -2231,19 +2353,6 @@ charge          ako    money.
 christmas       ako    time. %% not date
 church          ako    building. %% (house)
 city            ako    territory.
-    city            has_a  age. 
-    city            has_a  bus. 
-    city            has_a  population. %% territory
-    city            has_a  size.       %% s.a. population
-    city            has_a  centre. 
-    city            has_a  cinema.       %% hall
-    city            has_a  driver. 
-    city            has_a  harbour. 
-    city            has_a  mayor.  
-    city            has_a  person.  %% how many ... 
-    city            has_a  street. %% road.
-    city            has_a  route.  
-    city            has_a  route_plan. 
 % clause          ako    phrase.
 
 clock           ako    time. 
@@ -2254,28 +2363,10 @@ compiler        ako    processor.
 complaint       ako    message.  %%  :-(
 % conjunction     ako    word.
 continent       ako    territory.
-    continent      has_a  country. %% many
-
 community       ako    territory.   % kommune
 county          ako    territory.   % fylke
 
 country         ako    territory.
-    country         has_a  capital.
-    country         has_a  city.    %% many
-    country         has_a  currency.    
-    country         has_a  king.       
-    country         has_a  latitude.   
-    country         has_a  longitude.  
-    country         has_a  mountain. 
-    country         has_a  population. 
-    country         has_a  president.  
-    country         has_a  primeminister. 
-    country         has_a  queen.
-    country         has_a  river.
-    country         has_a  size.      %% s.a. population
-    country         has_a  system.  
-    country         has_a  team.       
-
 compliment      ako    phrase.
 
 conductor       ako    person. 
@@ -2286,38 +2377,16 @@ crown           ako    money.
 council         ako    territory.   % kommune
 
 date            ako    time.
-    date            has_a  evening.    %% Christmas Eve 
-
 daycode         ako    code.  
-    daycode         has_a   day. %%
-    daycode         has_a   departure. 
-
 daytime         ako    time.
 day             ako    time.        
-    day             has_a  afternoon.
-    day             has_a  date.
-    day             has_a  departure. 
-    day             has_a  evening.  
-    day             has_a  morning.  
-    day             has_a  midnight.  %% natt (Norwagism) natt til fredag = fredag "morgen"
-                                      %% torsdag natt // tvetydig	
-    day             has_a  night.    
-    day             has_a  bus.      %% søndagens rute // når går i dag %%
-                                     %% dagens første buss bussen  
-    day             has_a  route.    %% hvilke tider har rute 5 ? 
-    day             has_a  time.      %% dagens tider 
-    day             has_a  weather.
-
 
 discount        ako    money. 
 district        ako    territory.
 doctor          ako    person.
 dollar          ako    money. 
 driver          ako    person. 
-    driver           has_a beard. %%   :-#) person
 daypart         ako    time. 
-     daypart         has_a  bus.   %% Fig of sp.
-
 doctor          ako    person. 
 
 duration        ako    time.
@@ -2334,11 +2403,7 @@ expression      ako    phrase.
 extrabus        ako    bus. 
 
 family          ako    person. %% (i.e. set of persons !)
-    family   has_a member. 
-
 fare            ako    price.
-    fare             has_a price. % price of a fare
-
 fine            ako    price. %% (straffe-)gebyr
 
 fool            ako    person.  
@@ -2385,7 +2450,6 @@ museum          ako    house.
 sportscentre    ako    house.  %% rough
 
 king            ako    person.  %% man 
-    king            has_a advisor.
 
 leader          ako    person. 
 
@@ -2394,16 +2458,10 @@ linguist        ako    person. %%  :-)
 lunchtime       ako    daypart. 
 
 man             ako    adult.
-%    man             has_a  wife. %% => person to allow question
-%    man             has_a  love. %% ? which person loves ==> which (person love)
-     man             has_a  test. %% Turings test :-)
-
 manager         ako    employee.
 
 management      ako   activity. 
 %% management      ako    employee.   %% suspended ad hoc 
-    management       has_a  policy.
-
 mayor           ako    person.
 
 midnight        ako    daypart.  %% (natt til søndag) 
@@ -2429,9 +2487,6 @@ operator        ako    person.
 
 otherbus        ako company . %% EXPERIMENT
 otherbus        ako route. %%  bus. %% TA-110411  vehicle. %% // bus/company
-    otherbus has_a  telephone.  %% qua company
-    otherbus has_a  summerroute. %% etc. xome confusion 
-
 overtime        ako    time. 
 
 package         ako    data. %% Metagoric 
@@ -2441,9 +2496,6 @@ past            ako    time.  %%% <-- ???
 patient         ako    person.
 parent          ako    adult.
 park            ako    territory.
-    park            has_a lion.
-    park            has_a statue.
-
 % particle        ako    word. %%
 penguin         ako    bird.
 pensioner       ako    person. 
@@ -2487,8 +2539,6 @@ sale            ako    money.
 sea             ako    water_surface.
 season          ako    time. % årstid
 self            ako    user. 
-%%      self   has_a bus.  %% unnec 
-
 semantics       ako    description.
 semester        ako    time.  
 sentence        ako    phrase.    
@@ -2506,33 +2556,17 @@ startdate       ako    date.
 stopdate        ako    date. 
 
 station         ako    place.    %% GENERIC BUS STOP etc
-    station          has_a  address.
-    station          has_a  place. % ( location ?), i.e. neighbourhood 
-
-%    station          has_a  saturdayroute. %% søndagsrute 5 til dragvoll
-%    station          has_a  sundayroute.  
-
-    station          has_a  seat. 
-    station          has_a  shed.  
-    station          has_a  streetnumber. 
-    station          has_a  zone.
-%     station          has_a  departure.  %% til nth avreise kl. 18=nths avreise 
-
 statistics      ako    data. 
 
 student         ako    adult. 
 
 summer          ako    time. %%  (re summer routes)
-    summer           has_a     duration.  %% Generalize?
-
 % teleporter      ako    airplane. %% synonym
 thanks          ako answer. %% TA-101228
 
 trafficplanner ako person.
 
 trans_verb      ako    verb. 
-    trans_verb       has_a  object.
-
 underground     ako    vehicle. %% subway is American 
 
 vacation        ako    time. %% not holiday (holy)
@@ -2541,8 +2575,6 @@ vacation        ako    time. %% not holiday (holy)
 validity        ako time. %% of ticket/route 
 
 verb            ako    word.
-     verb            has_a  subject.
-
 visitor         ako    person.
 
 week            ako    time.
@@ -2553,16 +2585,12 @@ whitsun         ako    time.
 winter          ako    time.
 
 woman           ako    adult.
-%    woman           has_a  husband. %% Moved to person to allow question
-    woman           has_a  lamb. % :-)   Mary
-
 workshop        ako    place. %% garage ? 
 
 world           ako    territory. 
 year            ako    time. 
-        year         has_a  route_plan. 
-        year         has_a  bus. %% årets siste 
 yester          ako    day. %% Norwagism  (i) gaar 
+
 
 %-LEVEL 5 -------------------
 
@@ -2605,8 +2633,6 @@ class           ako    group. %%  NB !! Double
 comment         ako    sentence. 
 
 airbus          ako    bus.
-    airbus           has_a webaddress.  %% qua company
-
 articulated_bus ako    bus.      %% leddbuss
 lowentry    ako    bus.          %% laventre buss // has lowentry
 lowentry_bus    ako    bus.      %% laventre buss 
@@ -2636,10 +2662,6 @@ grandmother     ako    woman.   %% mother, but too deep
 halfhour        ako    duration.
 hill            ako    place. %% mountain/ steep road
 hour            ako    duration. %% time
-    hour   has_a  time.     %%        En times tid
-    hour   has_a  duration. %%        En times varighet
-    hour   has_a  pause.    %% no inherit 
-
 husband         ako    man. 
 
 joke            ako    sentence.  %% :-)
@@ -2673,8 +2695,6 @@ researcher       ako    person.
 quarter         ako    duration. 
 queen           ako    woman. 
 question        ako    sentence.
-    question        has_a  answer. 
-
 
 regtop          ako    export. %% used as such
 regtop_export   ako    export. 
@@ -2690,7 +2710,6 @@ statement       ako    sentence.
 strike          ako    period.
 
 traveltime      ako    duration.  %% technical
-    traveltime     has_a  duration. 
 uncle           ako    man. 
 
 webmaster       ako    leader. %% boss. 

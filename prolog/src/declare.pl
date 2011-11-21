@@ -4,22 +4,13 @@
 %% REVISED TA-090514 %% RS-111118
 
 %% Declarations of operators and hashmap for flags, used by TUC
+%% Don't make this a module, user:space is easier ;-)
+%% %% That's why the for loop is here %% RS-111120
 
 %    :=/2
 %    =:/2
 :- volatile myflags/2.
 :- dynamic myflags/2.
-
-X := Y :- 
-    set(X,Y).
-
-X =: Y :-  
-    myflags(X,Y).
-
-%% remove_duplicates  Standard  -> library
-set(Key,Value):- 
-    retractall( myflags(Key,_) ),
-    assert( myflags(Key, Value) ).
 
 
 %% Declarations of operators used by TUC
@@ -53,3 +44,19 @@ set(Key,Value):-
 
 :-op( 500,xfy,-...). %% same as \
 :-op( 500,xfy,-.).   %% same as -
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Declarations of operators and hashmap for flags, used by TUC
+%% remove_duplicates  Standard  -> library
+set(Key,Value) :-
+    retractall( myflags(Key,_) ),
+    assert( myflags(Key, Value) ).
+
+X := Y :-       %% Set value X to Y
+    set(X,Y).
+
+X =: Y :-       %% Set value Y from X
+    myflags(X,Y).
+

@@ -12,22 +12,25 @@
 :- use_module( '../db/busdat', []).
 :- use_module( '../db/timedat', [clock_delay/3]).
 
-%:- use_module( 'utility', []).
+%% exporting also
+% timedat:todaysdate(date(Y,M,D))       %% RS-111120
+% timedat:this_year(YYYY) :-
+
 %:- module(     'utility', [
 %    datetime/6,
 %    days_between/3,
-%    todaysdate/1
+%    todaysdate/1       %% Lifted up to main -> usually compiled in tucbuses.pl
 %   ]).
-%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
 
 % Prolog is really awkard here
-convert_zone(YYY, M, D, H,Min,Sec,   YYY,M,D,H,Min,Sec):- %% TA-080407
+convert_zone(YYY, M, D, H,Min,Sec,   YYY,M,D,H,Min,Sec) :- %% TA-080407
     \+ myflags(busflag,true),
     !.
 
 convert_zone(YYY, M, D, H,Min,Sec,
-             YYYY,MM,DD,HH,Min,Sec):-
+             YYYY,MM,DD,HH,Min,Sec) :-
     clock_delay(0,0,0), %% <--- %% New %% TA-080407
     !,
     YYY=YYYY, %% classic trap ! %% TA-060101
@@ -290,12 +293,7 @@ xweekday(Date,HDay):-
 xweekday(Date,HDay):-
     weekday(Date,HDay).
 
-
-
-
-
-
-todaysdate(date(Y,M,D)):- 
+timedat:todaysdate(date(Y,M,D)):- 
      datetime(Y,M,D,_,_,_).       
 
 %% daysdate(date(Y,M,D)):-   %% Obsolete, kept for security
@@ -367,17 +365,17 @@ dayno(sunday,7).
 
 
 getdaynew(DayOfWeek):- %%   // Get rid of exec call
-     datime( (Year,Month,Day,_,_,_) ), %% SICSTUS VERSION, NOT REDEFINABLE
+     datime( datime(Year,Month,Day,_,_,_) ), %% SICSTUS VERSION, NOT REDEFINABLE
      weekday(date(Year,Month,Day), DayOfWeek). %% weekday.pl
 
 
 datetime(YYYY,MM,DD,HH,MIN,SEC):- 
-    datime( (YYY,M,D,H,Min,Sec) ), %% built_in %% Min Sec  stay the same
+    datime( datime(YYY,M,D,H,Min,Sec) ), %% built_in %% Min Sec  stay the same
 
     convert_zone(YYY, M, D, H, Min,Sec, %% TA-080407
                  YYYY,MM,DD,HH, MIN,SEC).
 
-this_year(YYYY):-
+timedat:this_year(YYYY):-
     datetime(YYYY,_B,_C,_D,_E,_F).
 
 

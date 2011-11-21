@@ -5,7 +5,7 @@
 
 %% Contains Domain independent names and synonyms
 
-
+%myflags(rune,35).
 
 %% Names that occur several places as general appendages
 %% It is not a rule that the generic lies at the named place

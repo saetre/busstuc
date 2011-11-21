@@ -9,10 +9,11 @@
 % Domains:   BOOLEAN ROUTETYPE STATION PLACE MINUTES
 %            DATE DAY DOMAIN CLOCK
 
-:- use_module('../utility/utility', [for/2]).
+:- use_module('../utility/utility', [remember/1]).
 
 %* Import predicates
-:- ['../utility/makeauxtables'].
+
+:- ['../utility/makeauxtables']. %% From Utils?
 
 :- module(timedat, [
 aroundmargin/1,            % (MINUTES)
@@ -59,10 +60,16 @@ softime/3                 % (NAME,CLOCK,CLOCK)
 :- volatile named_date/2.  %% Created Blank Initially, "remember"-ed later 
 :- dynamic named_date/2.   %% Created Blank Initially, "remember"-ed later
 
+
 create_named_dates :-
     list_of_named_dates(L), 
-    for((member(A,L),orig_named_date(A,B)),
-         remember(named_date(A,B))). %% To be     refined
+    for(
+         ( member(A,L), orig_named_date(A,B) ),
+         util:remember(named_date(A,B))). %% To be     refined
+
+for(P,Q) :-
+  P,Q ,
+  false ; true.
 
 
 %%%%%%%  TIME  SECTION %%%%%%%%%%%%%%%%%
@@ -73,9 +80,7 @@ create_named_dates :-
 
 % DATES THAT MUST BE CHECKED ON EACH NEW ROUTE PLAN
 
-
 % orig_named_date is defined here, and later recreated as named_date
-
 list_of_named_dates([
     new_years_eve,
     new_years_day,
@@ -117,7 +122,6 @@ list_of_named_dates([
 
 
 %%% DATES NAMED BY EVENTS  :-)
-
 
 orig_named_date(john_f_kennedy_day,   date(1963,11,22)).  
 orig_named_date(oddvar_brå_day,       date(1982,02,25)).  

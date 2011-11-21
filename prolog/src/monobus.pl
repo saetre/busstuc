@@ -5,32 +5,32 @@
 
 % Compiles the bus files
 
- :-prolog_flag(redefine_warnings,_,off). 
+ :-prolog_flag(redefine_warnings,_,off). %% Avoiding conflicts (buslog/monobus etc.)
 
 %% annoying when recompiling files by soft links 
 
-
-
 %% :- compile('db/discrepancies.pl').  %% NB Ad Hoc Swap routeplan data
-
 
 :- compile('app/pragma.pl').
 :- compile('app/interapp.pl').
 :- compile('app/bustrans.pl').    %% 
 :- compile('app/dmeq.pl').        %% 
-:- compile('app/busans.pl').      %%
+:- use_module('app/busans').      %% Module ans:
 :- compile('app/negans.pl').      %%
 :- compile('app/busanshp.pl').    %%
 
-:- compile('db/timedat.pl').  %% TA-110407
-:- compile('db/teledat2.pl'). %% Mandatory
-:- compile('db/busdat.pl').   %% split, Trondheim
+:- use_module('db/timedat.pl'). %% TA-110407, Module timedat
+:- compile('db/teledat2.pl').   %% Mandatory
+%:- compile('db/busdat.pl').    %% split, Trondheim
+:- use_module('db/busdat.pl').  %% RS-111120, Module busdat
 
-:- compile('db/places.pl').  
-:- compile('db/auxtables.pl').  
+%:- compile('db/places.pl').
+:- use_module('db/places.pl').
+:- compile('db/auxtables.pl').
 :- consult('db/namehashtable.pl'). %% compile is too expensive  
 :- consult('db/statcoord2.pl').
 
+:- ['interfaceroute']. %%Buslog conflict?
 :- compile('app/buslog.pl').  %% Compile LAST, undetected ERROR(?)
 
 

@@ -76,41 +76,32 @@ default_message(tt,summer,['AtB summer routes are from Jun. 27 to  Aug. 21. 2011
 
 
 route_period( tt, r1618_110517, date(2011,05,17),    date(2011,05,17)). 
-period_message(r1618_110517,                        
+route_period( tt, r1611_100823,  date(2010,08,23),    date(2011,06,26)).  
+route_period( tt, r1611_110627, date(2011,06,27),    date(2011,08,14)). 
+route_period( tt, r1612_110815, date(2011,08,15),    date(2011,08,21)). 
+route_period( tt, r1601_110822, date(2011,08,22),    date(2012,12,23)). 
+
+period_message(r1618_110517,
 ['AtB Routes for Constitution Day',             
  'AtB Ruter for 17. mai ']). 
 
-
-route_period( tt, r1611_100823,  date(2010,08,23),    date(2011,06,26)).  
 period_message(   r1611_100823,                       
 ['AtB winter routes ',             
  'AtB vinterruter ']). 
 
-route_period( tt, r1611_110627, date(2011,06,27),    date(2011,08,14)). 
 period_message(r1611_110627,                     
 ['AtB Routes for summer 2011',            
  'AtB Ruter sommeren 2011']).
 
-
-route_period( tt, r1612_110815, date(2011,08,15),    date(2011,08,21)). 
 period_message(r1612_110815,                      
 ['AtB Routes for week 33 (2011)',           
  'AtB Ruter uke 33 (2011)']).
 
-
-route_period( tt, r1601_110822, date(2011,08,22),    date(2012,12,23)). 
 period_message(r1601_110822,                      
 ['AtB Winter routes',           
  'AtB Vinterruter']). %% \+ . %% TA-110822
 
 
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
 %%%%%% END OF ACTUAL ROUTE PERIODS %%%%%%%%%
-
