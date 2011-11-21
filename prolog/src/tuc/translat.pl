@@ -8,10 +8,14 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- ensure_loaded( user:'../declare.pl').
+:- use_module( main:'../declare.pl').
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+%:- volatile =>/2.
+%:- dynamic =>/2.
+:- dynamic difact/2, fact0/1.
 
 %%  Skolemization of FOL expressions
 

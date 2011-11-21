@@ -5,7 +5,7 @@ add_days(date(YYYY,MM,DD),N,date(YYY2,M2,D2)):- %% < 28 days after
     D0 is DD+N,
     !,
     monthdays(YYYY,MM,L), 
-    (D0 =< L ->  (M1 = MM, D2=D0 );
+    (D0 =< L ->  (_M1 = MM, D2=D0 );
 
     RESTDAYS is L-DD, N1 is N-RESTDAYS,
     MM1 is MM+1,

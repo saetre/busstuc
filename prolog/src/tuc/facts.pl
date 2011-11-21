@@ -1,7 +1,7 @@
 %% FILE facts.pl
 %% SYSTEM tuc
 %% CREATED  TA-921129
-%% REVISED  TA-110707
+%% REVISED  TA-110707  RS-111121
 
 :- module( tuc, [ isa/2, have/4 ]).
 
@@ -11,16 +11,21 @@
 %  Facts are deliberately kept separate from semantics
 
 %:- use_module( main:'../declare.pl', [ myflags/2, set/2, ':='/2 ] ).
+
 :- use_module( main:'../declare.pl', [ myflags/2 ] ).
 :- use_module( app:'../app/busanshp', [ description/2 ] ).
+:- use_module( app:'../app/buslog', [ regbus/1, station/1 ] ).
 
-:- use_module( db:'../db/busdat', [ vehicletype/2 ] ).
+:- use_module( db:'../db/busdat', [
+        building/1, composite_road/3, 
+        is_dom_val/5, nightbus/1, streetstat/5, vehicletype/2, xforeign/1 ]).
+:- use_module( places:'../db/places', [
+        isat/2, placestat/2, underspecified_place/1, unwanted_place/1 ]).
 
 :- use_module( tuc:evaluate, [ fact/1 ] ).
+:- use_module( tuc:lex, [ unproperstation1/1 ] ).
 :- use_module( tuc:names, [ country/1 ] ).
-:- op( 0, xfx, ako).
-:- use_module( tuc:semantic, [ ako/2 ] ).
-:- op( 710, xfx, ako).
+:- use_module( tuc:semantic ).
 :- use_module( tuc:world0, [ area/2 ] ).
 
 
@@ -539,7 +544,7 @@ ip        isa  network.   %% NO, but must have sth
 %%  www       isa  network. 
 
 X isa nightbus :-
-    nightbus(X).   %% busdat 
+    nightbus(X).   %% busdat --> Moved to regbusall.pl
 
 X isa route :- 
     regbus(X). %% tt/regbusall (bus thoug maybe no deparures now) 
@@ -670,8 +675,8 @@ neighbourhood(X):-
     xforeign(X). 
 
 neibor(X):-   
-     (isat(_,X);                     
-      nostation(X) ;  
+    ( isat(_,X) ;
+%      nostation(X) ;  %% Old Team stations? %% RS-111121
       unproperstation1(X) ; %% recognised as neighbourhood (feature)  
       %% maybe empty
 

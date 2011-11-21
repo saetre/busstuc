@@ -11,7 +11,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- ensure_loaded( user:'../declare.pl').
+:- use_module( main:'../declare.pl' ).
 
 %:- ['fernando'].
 

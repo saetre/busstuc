@@ -701,7 +701,7 @@ ver_movedate :-    %% Added check for May17 %% TA-100106
 
     named_date(may17,May17),   
 
-(  Ascension_day = May17 -> Sunday=holiday;Sunday=sunday),
+(  Ascension_day = May17  ->  _Sunday=holiday ; _Sunday=sunday),
 
 
    add_days(Easterday,48,      Whitsun_eve), %% TA-080108

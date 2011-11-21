@@ -7,8 +7,12 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- ensure_loaded( user:'../declare.pl' ).
-:-op( 0, xfx, ako ).    %% "Disable" 'ako' as an operator for this file, "tightest binding"
+:- use_module( '../declare.pl' ).
+
+:-volatile difact/2.
+:-dynamic difact/2.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 evaluateq2(nil):-!. 
 
@@ -276,7 +280,8 @@ instant(X,C):-
 
 
 instant(X,Z) :- % bottom up
-    (ako/Y/Z), 
+%    (ako/Y/Z), 
+    (Y ako Z), 
     instant(X,Y).
  
 %%
@@ -288,7 +293,8 @@ winstant(_,X,T):-
 
 winstant(W,X,Z) :- 
      nonvar(Z),     %% TA-040309
-    (ako/Y/Z),    %% Class Hierarchy is world independent 
+%    (ako/Y/Z), 
+    (Y ako Z),    %% Class Hierarchy is world independent 
     winstant(W,X,Y).
  
 :- op( 0, xfx, isa ).                   %% "Temporarily disable" 'isa' as an operator for this file, "tightest binding"

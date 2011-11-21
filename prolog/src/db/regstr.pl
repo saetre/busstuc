@@ -1591,7 +1591,7 @@ streetstat(tessems_street,'Tessems veg',10,21,strindheim).
 streetstat(thaulowbakken,'Thaulowbakken',1,15,thaulowbakken).
 streetstat(theodor_petersens_street,'Theodor Petersens veg',1,26,lohove).
 streetstat(thomas_angells_street,'Thomas Angells gate',1,26,hovedterminalen).
-streetstat(thomas_hirschs<_street,'Thomas Hirschs gate',1,23,rønningsbakken).
+streetstat(thomas_hirschs_street,'Thomas Hirschs gate',1,23,rønningsbakken).
 streetstat(thomas_von_westens_street,'Thomas Von Westens gate',2,28,rønningsbakken).
 streetstat(thonning_owesens_street,'Thonning Owesens gate',36,39,gildheim).
 streetstat(thonning_owesens_street,'Thonning Owesens gate',20,35,strindheim).

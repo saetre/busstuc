@@ -9,7 +9,7 @@
 %% Same function as the file tucbus.
 
 %%% %%%%%%%% RS-111118
- :- ['declare.pl'].
+:- use_module( 'declare.pl' ).
 
 
 

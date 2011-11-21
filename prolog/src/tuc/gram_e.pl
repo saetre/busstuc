@@ -15,7 +15,7 @@
 %:- use_module( main:'../declare.pl', [ myflags/2, set/2, ':='/2 ] ).
 
 %% RS-111118 "Disable" 'ako' as an operator for this file, "tightest binding"
-:- op( 0, xfx, ako ).           %% A very bad hack to remove syntax error, TODO: Fix properly
+%:- op( 0, xfx, ako ).           %% A very bad hack to remove syntax error %% RS-111121
 %% Legal rewrite? See lines ~700:
 %    whatq(which(X):::X ako Man) --->   %% What is a man
 
@@ -720,7 +720,7 @@ whatq(WhichX:::P) --->
     qverb_phrase(X,S,N, ERS), 
     {negate(N,Q1,Q2)}.
 
-whatq(which(X):::ako/Man/X) --->   %% What is a man
+whatq(which(X):::Man ako X) --->   %% What is a man
      {\+ myflags(dialog,1)},  
      whatbe(1),
      a0,

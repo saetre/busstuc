@@ -3,10 +3,8 @@
 %% CREATED TA-020605
 %% REVISED TA-110825
 
-
 %% File containing TELEDAT 
 %% co-existing with BUSDAT
-
 
 
 %% General predicate to expand (or not) a key

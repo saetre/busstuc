@@ -89,7 +89,7 @@ layouts( [], Context, _Plus, _Minus, Terms, [], WF ) :-
 	close_context( Context, Terms, WF ).
 layouts( [Char|Chars], Context, Plus, Minus, Terms, Residue, WF ) :-
 	( Char =:= "<" ->
-		Chars1 = [],
+		_Chars1 = [],         %RS-111121 Why Singleton?
 		xml_markup_structure( Chars, Context, Terms, Residue, WF )
 	; Char =:= "&" ->
 		entity_reference( Chars, Context, Terms, Residue, WF )

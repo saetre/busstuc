@@ -3,9 +3,11 @@
 %% CREATED ØF-000101
 %% REVISED TA-080110
 
-:- use_module(library(system)).
-:- use_module(library(lists)).
+:- use_module( library(system) ).
+:- use_module( library(lists) ).
 
+
+:- dynamic current_context/1, saved_context/3.
 
 %% current is the id of the current context
 

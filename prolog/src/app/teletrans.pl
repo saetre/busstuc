@@ -9,7 +9,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
-:- ensure_loaded( '../declare.pl' ).
+:- use_module( '../declare.pl' ).
 
 %% Rule format
 

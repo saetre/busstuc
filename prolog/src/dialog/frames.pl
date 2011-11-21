@@ -1,10 +1,12 @@
 %%% %%%%%%%% RS-111118
- :- ['../declare.pl'].
+:- use_module( '../declare.pl' ).
 
 %frameval(Type, Value, Filled, Confirmed, Experience)
 %subframe(Template, Id,)
 
-:- use_module(library(system)).
+:- use_module( library(system) ).
+
+:-dynamic framecounter/1.
 
 :- assert(framecounter(1)).
 

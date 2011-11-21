@@ -3,17 +3,17 @@
 %% CREATED AM-980218
 %% REVISED TA-060706
 
-:- module( dialog, [] ).
+:- module( dialog, [confused/1, last_answer/2, linecounter/1] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- volatile linecounter/1.
-:- dynamic linecounter/1.
+:- volatile confused/1, last_answer/2, linecounter/1.
+:- dynamic confused/1, last_answer/2, linecounter/1.
 
 :- assert( linecounter(1) ).
 :- assert( confused(noone) ). %-)
 
-:- ['../declare'].
+:- use_module( '../declare' ).
 
 %% Dialogue manager.
 

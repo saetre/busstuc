@@ -4,7 +4,7 @@
 %% REVISED  TA-020624
 
 %%% %%%%%%%% RS-111118
- :- ['declare.pl'].
+:- use_module( 'declare.pl' ).
 
 xmltaggerparse(F,Struct):-
 

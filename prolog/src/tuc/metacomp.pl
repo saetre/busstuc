@@ -13,7 +13,7 @@
 
 :- use_module( '../utility/utility').
 
-:- ensure_loaded( user:'../declare' ).
+:- use_module( '../declare.pl' ).
 
 :- volatile plink/0, plonk/0.
 :- volatile virtf/1, virtf/2, virtx/1, optiprod/1.

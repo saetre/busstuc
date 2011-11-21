@@ -13,7 +13,7 @@
 
 %:-use_module('../utility/utility').
 
-:- ensure_loaded( user:'../declare.pl').
+:- use_module( user:'../declare.pl').
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
