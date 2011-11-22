@@ -13,6 +13,7 @@
 % :-op( 0, xfx, ako ).    %% "Disable" 'ako' as an operator for this file, e.g. "tightest binding"
 
 :- use_module( '../utility/utility', [] ).
+%:- ensure_loaded( '../utility/utility' ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

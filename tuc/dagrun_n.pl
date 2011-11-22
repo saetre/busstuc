@@ -10,7 +10,19 @@
 
 % Norwegian  clone of runtime routines 
 
- :-module(dcg_n,[]).
+ :-module(dcg_n, [ cc/5,
+        pushstack/7,
+        pushstack1/4,
+        lock/5,
+        not_look_ahead/6,
+        unlock/4,end_of_line/5,
+        end_of_line0/5,
+        skip_rest/5,
+        check_stop/5,
+        look_ahead/6,
+        w/6,
+        word/5
+ ]).
 
  
 

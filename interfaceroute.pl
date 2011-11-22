@@ -15,7 +15,9 @@
 
 
 % thisdate_period_module(TT,_,Period) contains the actual period Dynamic
+:- dynamic thisdate_period_module/3.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 domain_module(D,M):- 
     routedomain(D), % unique solutions

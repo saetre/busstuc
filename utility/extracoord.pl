@@ -8,9 +8,10 @@
 
 % assume all files are separated correctly with a Tab (ASCII 9)
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
+:-volatile val/1, val2/1, val3/1. 
+:-dynamic val/1, val2/1, val3/1. 
 
 extracoord :- 
 

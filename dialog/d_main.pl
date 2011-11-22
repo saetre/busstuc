@@ -5,13 +5,14 @@
 
 %% REMOVED DEPENDENCIES ON JAVA INTERFACE
 
-:- module( dialog, [
-        dialog2/0
+:-module( dialog, [
+        dialog2/0,      direct_run/2,
+        webrun_dialog/0
    ]).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- ['../declare'].
+:- use_module( '../declare' ).
 %:- op( 712, fy,seen). % Lower than "not", higher than "isa"
 
 %% This file is extras needed to run the dialogue system. 

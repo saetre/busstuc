@@ -3,7 +3,62 @@
 %% CREATED  JB-970220 
 %% REVISED  EH-031120 TA-110503 RS-111025
 
-:- module( app, [ description/2 ] ).  %% RS-111121 Module App
+%% RS-111121 Module App
+%:- module( app, [
+%        description/2,
+%        gootrace/1,
+%        google/1,         %% Just executable mark in busans    
+%        outstreetconn/3, %(_STARTSTOP,_INTSTREET,_INTSTAT).
+%        make_total_google/2 
+%
+%    ]).
+
+:- module( app, [
+    bcw/2, busleave/9, busleaveset/6,  busman/2, bwr2bc/1, bwc/2, bwq/1, bw1/1, 
+    bwrbus/2, bwrbusbc/2, bwrprices/1, bwstat2/2, bwtimes2/1, bwt2/1, 
+    comma/0,    convifpossible/2,           corresporder/3,
+    colon/0, comptimeflag/2,
+    db_reply/3, description/2, dot/0, doublyprinted/1,
+    earliesttimes/0, endline/0, evening_time0/2,        evening_time/2, evening_time24/3,
+    find_last_departure/2,      findsetoftimes/2,       firstarrive/5,  firstRID/2,
+    genplural/2,    getlastarrival/3,   gootrace/1,     google/1, %% Just executable mark in busans    
+    i_or_a_bus/3,
+    languagenr/1,
+    make_total_google/2,
+mixopt/3, notatnight/2,
+    nibcp/1,     nopay1/0,      numberofnextbuses2/2,   numberofnextbuses/1,
+ondate/1, ondays/1,
+outandarrives2/2,       %(_STARTSTOP,_INTSTREET,_INTSTAT)
+outdeplist/6,   outdeplist00/6, outdummy/2,     outfromtocorr/6,
+outstreetconn/3, 
+
+paraphrase_changes1/1, paraphs/1, paraph2/1,
+
+paraphrase_tele/2, paraphrase/1, paraphrase2/2, paraphrase3/3, period0/0, period/0,    plural/3,
+relevant_message/1,
+setopts/3,
+sorttimes/4,    space/0,        space0/0,       punkt/0,        question/0,
+special_day/1,  specname0/2,    startmark/0,    nopay/0,        pay/0,
+pay1/0, pen0/1,
+primeout/1,
+primeoutput/1,
+print_paraphrase_message/1,
+selectmap/2,      %% was var (not assigned)
+select/2,
+setoffirst/3,
+stationlistorand/3,
+
+theplural/2,
+warningtime/2, %% super Ad Hoc %% TA-110202
+writetimes/2,
+sentenceend/1,
+standnight/1,
+reply/1,         %% Just marker 
+writename/1,
+smart_time_options/1,
+smart_time_option/1
+
+   ]).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -721,7 +776,7 @@ find_last_arrival(Deps,DepL1):-
         Z), 
     lastmem(Z,argh(_,DepL1)).
 
-                                
+
 find_last_departure(Deps,DepL1):- 
     set_of(
         argh(Dep,     depnode(Arr,Dep,DelArr,DelDep,BegTime,Rid,Bus,SeqNo,Station)),

@@ -11,27 +11,19 @@
 %% NB they are compiled again as a separate file
 %% The dynamic predicates (xxx0) corresponds to (some of) the filed predicates xxx
 
-:-dynamic  
-
-      
-unproperstation/1,         % (PLACE)
-
-
-%  toredef0/3,  
-%  torehash0/2,  
-%
-%  nextstat0/2,  
-%
-%  interior0/1,  
-%  transbuslist0/3, 
-%
-%  statbus0/2,
-%  busstat0/2,    
-%
+:- volatile  busstat0/2,  
+%  fromstationonly0/1,  %  nextstat0/2,    %  interior0/1,  
+  statbus0/2,  %  tostationonly0/1,
+  toredef0/3,  torehash0/2, %  transbuslist0/3, 
+  unproperstation/1,         % (PLACE)
   unproperstation0/1.
-%  fromstationonly0/1,
-%  tostationonly0/1.
-%
+
+:-dynamic  busstat0/2,  
+%  fromstationonly0/1,  %  nextstat0/2,    %  interior0/1,  
+  statbus0/2,  %  tostationonly0/1,
+  toredef0/3,  torehash0/2, %  transbuslist0/3, 
+  unproperstation/1,         % (PLACE)
+  unproperstation0/1.
 
 /*
 Run in Main directory

@@ -5,7 +5,7 @@
 
 %% Utility Routines that are not built in 
 
-:- module(utility, [ % (:=/2), (=:/2),
+:- module( utility, [ % (:=/2), (=:/2),
 %    for/2, %% Moved to declare
     out/1,
     output/1,
@@ -13,8 +13,7 @@
     sequence_member/2,
     splitlast/3,
     test/1,
-    testmember/2,
-    todaysdate/1       %% Lifted up to main -> usually compiled in tucbuses.pl ?  %%-RS 111121
+    testmember/2
   ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
@@ -33,7 +32,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- ['datecalc'].   %% Already called from main
+%:- ['datecalc'].   %% Already called from main
 
 
 %X := Y :-       %% Set value X to Y
