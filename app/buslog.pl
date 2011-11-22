@@ -5,10 +5,12 @@
 %% REVISED TA-110824
 %% REVISED RS-111120
 
-:- module( app, [ before/2,     bus/1,
+:- module( buslog, [ before/2,     bus/1,
     cname/2,    composite_stat/3,       compute_delay_margin/5,     dayModSeqNo/2,
     departureday/4,     departuredayMOD/5,
     hpl/3,
+    keepbetweenstat/5,
+    
     maxseqtour/2,       mod_day_in_set/3,
     new_cutloop_extend/4,           new_cutset_test/8,
 notaclock/1,
