@@ -3,7 +3,11 @@
 %% CREATED AM-980218
 %% REVISED TA-060706
 
-:- module( dialog, [confused/1, last_answer/2, linecounter/1] ).
+:- module( dialog, [confused/1, evalline_multi/2,
+    last_answer/2, linecounter/1, processinput/1, quit_dialog/0, reset_conns/0,
+    subst_tql/4,
+    varmember/2
+   ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -11,6 +11,8 @@
 %%% %%%%%%%% RS-111118
 :- use_module( '../declare.pl' ).
 
+:-volatile webstat/3.
+:-dynamic webstat/3.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -4,6 +4,13 @@
 %% REVISED TA-110408
 
 % Contains the utility predicates that has to do with dates
+
+:- module( utility, [
+    datetime/6,
+    days_between/3,
+    todaysdate/1       %% Lifted up to main -> usually compiled in tucbuses.pl ?  %%-RS 111121
+   ]).
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %:- use_module(library(system), [environ/2, datime/1]).
@@ -16,11 +23,6 @@
 % timedat:todaysdate(date(Y,M,D))       %% RS-111120
 % timedat:this_year(YYYY) :-
 
-%:- module( utility, [
-%    datetime/6,
-%    days_between/3,
-%    todaysdate/1       %% Lifted up to main -> usually compiled in tucbuses.pl
-%   ]).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
 

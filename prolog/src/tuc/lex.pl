@@ -34,8 +34,9 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- volatile ctxt/3, blockmark/1. %% used for bookkeeping of xcompword matching
-:- dynamic ctxt/3, blockmark/1. %% used for bookkeeping of xcompword matching
+%% used for bookkeeping of xcompword matching
+:- volatile ctxt/3, blockmark/1, maxl/1, txt/3.
+:- dynamic ctxt/3, blockmark/1, maxl/1, txt/3. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

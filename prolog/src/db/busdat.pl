@@ -17,11 +17,14 @@
         airbusstation/1,           % (STATION)
         building/1,
         bus_depend_station/3,      % (ROUTE,PLACE,STATION)
+                bus_dependent_station/3,
         central_fromstation/1,     % (STATION) avoid default to ST
+                cmbus/3,
         composite_road/3,          % from regcompstr.pl
         corresp0/2,                % (PLACE,PLACE)
         corresponds/2,             % (STATION,STATION)
         corresp/2,                 % (PLACE,PLACE)
+                corr0/2,
         cutloop_station/2,
         
         disallowed_night/1,        % (DATE)
@@ -52,15 +55,23 @@
         %% busfare/2,                 % (NUMBER,NUMBER) 
         busfare2/2,                % (ROUTETYPE,NUMBER*)
         synbus/2,                  % (NAME,ROUTE)
+        thetramno/1,
         tramstation/1,             % (STATION)
+        thetramstation/1,             % (STATION)
         
         explicit_part_name/1,      % (NAME)
         endneighbourhood/2,        % (ROUTE,PLACE)
         railway_station/1,
+        preferred_transfer/5,
+                spurious_return/2,
         streetstat/5,              % fra regstr.pl
         tostationonly/1,           % (STATION) %% TA-110228
+        unique_vehicle/2,
+        thetram/1, thetramstreetstation/2,
         vehicletype/2,
-        xforeign/1                % (PLACE)
+                xisat/2,
+        xforeign/1,                % (PLACE)
+        xplacestat/2,   xsynplace/2
     ]).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

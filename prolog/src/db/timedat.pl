@@ -9,11 +9,12 @@
 % Domains:   BOOLEAN ROUTETYPE STATION PLACE MINUTES
 %            DATE DAY DOMAIN CLOCK
 
-:- use_module('../utility/utility', [remember/1]).  %% Module util
+:- use_module('../utility/utility', [ remember/1, todaysdate/1 ]).  %% Module util
+%:- ensure_loaded( '../utility/utility' )
 
 %* Import predicates
 
-:- ['../utility/makeauxtables']. %% From Utils?
+:- ensure_loaded ( '../utility/makeauxtables' ). %% From Utils?
 
 :- module(timedat, [
 aroundmargin/1,            % (MINUTES)

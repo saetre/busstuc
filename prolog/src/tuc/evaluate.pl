@@ -9,8 +9,8 @@
 
 :- use_module( '../declare.pl' ).
 
-:-volatile difact/2.
-:-dynamic difact/2.
+:-volatile difact/2, fact0/1.
+:-dynamic difact/2, fact0/1.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

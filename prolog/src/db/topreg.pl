@@ -6,7 +6,7 @@
 
 %% Contains the important information about route modules
 
-:-dynamic   thisdate_period_module/3 .
+%:-dynamic   thisdate_period_module/3 .
 
 % See compileroute.pl for compilation
 
