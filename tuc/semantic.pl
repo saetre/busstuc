@@ -4,7 +4,7 @@
 %% REVISED TA-110825
 %% REVISED RS-111121
 
-:- module( tuc, [ ako/2 ] ). %% Or define fernando as the main file in the tuc module??
+%:- module( tuc, [ ako/2 ] ). %% Or define fernando as the main file in the tuc module??
 
 %% MODULE: tuc
 %  TUCs  Lexical Semantic Knowledge Base
