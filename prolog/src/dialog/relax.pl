@@ -36,17 +36,13 @@
 :- op( 715, fy,assume). 
 
 %% :- op( 715, fy,not).  % Already defined in TUC
-
 :- op( 714,xfy,seq).     %% directly sequence 
-
 :- op( 714,xfy,cond).    %% new   not X isa place cond bound(X)
-
 :- op( 714,xfy,when).    %% same as cond %% TA-081106
-
 :- op( 712, fy,seen). % Lower than "not", higher than "isa"
 
 %%% %%%%%%%% RS-111118
- :- ['../declare.pl'].
+:- use_module( '../declare.pl' ).
 
 :- module(relax,[]).
 

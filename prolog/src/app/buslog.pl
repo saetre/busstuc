@@ -13,17 +13,16 @@
     
     maxseqtour/2,       mod_day_in_set/3,
     new_cutloop_extend/4,           new_cutset_test/8,
-notaclock/1,
+    notaclock/1,
 
-proper_end_station/2,   
-properstation/1,
+    proper_end_station/2,   properstation/1,
 
-station_trace/4,
     passes44/6,
     regbus/1,
 rid_to_direction/3,
 
     seqno_day/4,        standardizeemit/2,      station/1,
+    station_trace/4,
     xdepartureday/4,    xpasses4/6,             xpasses5/8,
     xroute/3
   ]).

@@ -25,7 +25,8 @@
 :- use_module( tuc:evaluate, [ fact/1 ] ).
 :- use_module( tuc:lex, [ unproperstation1/1 ] ).
 :- use_module( tuc:names, [ country/1 ] ).
-:- use_module( tuc:semantic ).
+%:- use_module( tuc:semantic ).
+:- ensure_loaded( tuc:semantic ).
 :- use_module( tuc:world0, [ area/2 ] ).
 
 
