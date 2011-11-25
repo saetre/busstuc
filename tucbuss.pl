@@ -1,28 +1,28 @@
-%% FILE tucbuss.pl 
+%% FILE tucbuss.pl
 %% SYSTEM BussTUC  DOMAIN TT
 %% CREATED  TA-020125
-%% REVISED  TA-110301 
+%% REVISED  TA-110301
 
 %% Makefile for BussTUC  server NTNU, Norwegian version
 
 
 %% ?-prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates// Testing
 
-
+?-use_module('declare.pl').
 
 ?-compile('tucbuses.pl'). %% Sicstus 4 requires extension
 
 ?-compile('version.pl').
 
-?-compile('main.pl').  
+?-compile('main.pl').
 
-?-compile('monobus.pl'). %% // after main.pl  Unknown error 
+?-compile('monobus.pl'). %% // after main.pl  Unknown error
 
 ?-((gpsflag := true),          %% NB TEST VERSION, NTNU Server
   (smsflag := false),          %%  NB NTNU server
 %%(internal_airbusflag := true), %% TA-101101 // No. Included pro forma
-  (origlanguage := norsk),     %% 
-  (language := norsk),         %% Initial default user language  
+  (origlanguage := norsk),     %%
+  (language := norsk),         %% Initial default user language
   (actual_domain := tt),       %% TA-110301
   (smspermanentflag := false), %% only web
   (unix_language := eng),      %% Standard for IDI/NTNU UNIX Solaris )
