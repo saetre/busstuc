@@ -20,7 +20,7 @@
 :- use_module('app/busanshp.pl').    %%
 
 :- use_module('db/timedat.pl'). %% TA-110407, Module timedat
-:- compile('db/teledat2.pl').   %% Mandatory
+:- ensure_loaded('db/teledat2.pl').   %% Mandatory
 %:- compile('db/busdat.pl').    %% split, Trondheim
 :- use_module('db/busdat.pl').  %% RS-111120, Module busdat
 

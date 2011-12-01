@@ -5,8 +5,11 @@
 
 % Interface procedures for handling interface to route modules
 
-%:- use_module( 'db/timedat', [todaysdate/1] ).  % database functions, for time and days
+%:- use_module( 'db/timedat', [todaysdate/1] ).  
+:- use_module( 'utility/datecalc', [ on_valid_period/3, todaysdate/1 ]). % database functions, for time and days %% Module util
 :- use_module( 'utility/utility', [output/1] ).  % utility functions
+
+:- ensure_loaded( 'db/topreg.pl' ).
 
 %% NB  decide_period is called before each question
 
@@ -15,6 +18,7 @@
 
 
 % thisdate_period_module(TT,_,Period) contains the actual period Dynamic
+:- volatile thisdate_period_module/3.
 :- dynamic thisdate_period_module/3.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

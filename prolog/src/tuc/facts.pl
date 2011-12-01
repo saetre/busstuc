@@ -17,18 +17,23 @@
 :- use_module( app:'../app/buslog', [ regbus/1, station/1 ] ).
 
 :- use_module( db:'../db/busdat', [
-        building/1, composite_road/3,
-        is_dom_val/5, nightbus/1, streetstat/5, vehicletype/2, xforeign/1 ]).
+%        building/1,
+%        composite_road/3,
+        %is_dom_val/5,
+        %nightbus/1,
+        %streetstat/5,
+        vehicletype/2, xforeign/1 ]).
 :- use_module( places:'../db/places', [
         isat/2, placestat/2, underspecified_place/1, unwanted_place/1 ]).
 
 :- use_module( tuc:evaluate, [ fact/1 ] ).
-:- use_module( tuc:lex, [ unproperstation1/1 ] ).
-:- use_module( tuc:names, [ country/1 ] ).
+%:- use_module( tuc:lex, [ unproperstation1/1 ] ).
+:- ensure_loaded( tuc:lex ).
+:- use_module( tuc:names, [ abroad/1, city/1, country/1 ] ).
 %:- use_module( tuc:semantic ).
 :- ensure_loaded( tuc:semantic ).
-:- use_module( tuc:world0, [ area/2 ] ).
-
+%:- use_module( tuc:world0, [ area/2 ] ).
+:- ensure_loaded( tuc:world0 ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%

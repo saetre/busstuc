@@ -23,6 +23,7 @@ rid_to_direction/3,
 
     seqno_day/4,        standardizeemit/2,      station/1,
     station_trace/4,
+    streetstation2/3,
     xdepartureday/4,    xpasses4/6,             xpasses5/8,
     xroute/3
   ]).

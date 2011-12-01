@@ -8,6 +8,7 @@
 :- module( datecalc, [
     datetime/6,
     days_between/3,
+    on_valid_period/3,
     todaysdate/1       %% Lifted up to main -> usually compiled in tucbuses.pl ?  %%-RS 111121
    ]).
 

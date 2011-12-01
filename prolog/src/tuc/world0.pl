@@ -4,7 +4,7 @@
 %% CREATED 861231
 %% REVISED TA-990115
 
-:- module( tuc, [ area/2 ] ).           %% Module TUC  %% RS-111121
+%:- module( tuc, [ area/2 ] ).           %% Module TUC  %% RS-111121
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -92,7 +92,7 @@ borders(X,C) :-
 
 
 capital(C) :- capital(_,C).
-city(C) :- city(C,_,_).
+%city(C) :- city(C,_,_).
 % country(C) :- country(C,_,_,_,_,_,_,_). 
 currency(C,D):- country(C,_,_,_,_,_,_,D).
 
