@@ -18,8 +18,8 @@
 :- use_module( library(system), [datime/1]).
 
 :- use_module( '../db/busdat', []).
-%:- use_module( '../db/timedat', [ clock_delay/3, named_date/2 ]).
-:- ensure_loaded( '../db/timedat').
+:- use_module( '../db/timedat', [ clock_delay/3, named_date/2 ]).
+%:- ensure_loaded( '../db/timedat'). %% RS-111201
 
 %% should also export :
 % timedat:todaysdate(date(Y,M,D))       %% RS-111120

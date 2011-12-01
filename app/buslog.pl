@@ -19,9 +19,10 @@
 
     passes44/6,
     regbus/1,
-rid_to_direction/3,
+    rid_to_direction/3,
 
     seqno_day/4,        standardizeemit/2,      station/1,
+    stationsat/3,
     station_trace/4,
     streetstation2/3,
     xdepartureday/4,    xpasses4/6,             xpasses5/8,
