@@ -16,7 +16,7 @@
     
 ?-compile('db/statcoord.pl').   %% 
 
-?-compile('db/topreg.pl').      %% Main Table for Route Modules
+?-ensure_loaded('db/topreg.pl').      %% Main Table for Route Modules
     
     :- consultbase(tt). %% <-------------- %% TA-110302
 

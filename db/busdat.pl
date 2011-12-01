@@ -15,12 +15,12 @@
 
         airbus/1,                  % (BUS?)
         airbusstation/1,           % (STATION)
-        building/1,
+%        building/1,
         bus_depend_station/3,      % (ROUTE,PLACE,STATION)
                 bus_dependent_station/3,
         central_fromstation/1,     % (STATION) avoid default to ST
                 cmbus/3,
-        composite_road/3,          % from regcompstr.pl
+%        composite_road/3,          % from regcompstr.pl
         corresp0/2,                % (PLACE,PLACE)
         corresponds/2,             % (STATION,STATION)
         corresp/2,                 % (PLACE,PLACE)
@@ -30,9 +30,9 @@
         disallowed_night/1,        % (DATE)
         default_destination/2,     % (ROUTE,STATION)
         
-        is_dom_val/5,               % fra teledat2.pl
+%        is_dom_val/5,               % fra teledat2.pl
         
-        nightbus/1,                % (STATION)
+%        nightbus/1,                % (STATION) % fra regbus.pl
         nightbusdestination/1,     % (STATION)
         central_airbus_station/1,  % (STATION) 
         
@@ -64,7 +64,7 @@
         railway_station/1,
         preferred_transfer/5,
                 spurious_return/2,
-        streetstat/5,              % fra regstr.pl
+%        streetstat/5,              % fra regstr.pl
         tostationonly/1,           % (STATION) %% TA-110228
         unique_vehicle/2,
         thetram/1, thetramstreetstation/2,
@@ -80,7 +80,11 @@
 :- use_module( 'places', [ corr/2, foreign/1, isat/2, placestat/2 ] ).
 :- use_module( '../tuc/names', [ abroad/1, country/1 ] ).
 
-:- ensure_loaded( [ regbusall, regcompstr, regstr, teledat2 ] ). %% HEAVY DB!
+%:- ensure_loaded( [ regbusall, regcompstr, regstr, teledat2 ] ). %% HEAVY DB!
+:- use_module( regbusall, [ nightbus/1 ] ). %% HEAVY DB!
+:- use_module( regcompstr, [] ). %% HEAVY DB!
+:- use_module( regstr, [] ). %% HEAVY DB!
+:- ensure_loaded( teledat2 ). %% HEAVY DB!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -3,6 +3,9 @@
 %% CREATED TA-050102 Automatic
 %% REVISED TA-110825 Manually
 
+:- module( regstr, [ streetstat/5
+       ] ).     %% RS-111201 %% Remember to update source program, which is...?
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% isat(kongens_street-34,atb). %%  funk ??? %% TA-101116

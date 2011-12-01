@@ -13,7 +13,7 @@
 %
 %    ]).
 
-:- module( app, [
+:- module( busanshp, [
     bcw/2, busleave/9, busleaveset/6,  busman/2, bwr2bc/1, bwc/2, bwq/1, bw1/1, 
     bwrbus/2, bwrbusbc/2, bwrprices/1, bwstat2/2, bwtimes2/1, bwt2/1, 
     comma/0,    convifpossible/2,           corresporder/3,
@@ -22,41 +22,64 @@
     earliesttimes/0, endline/0, evening_time0/2,        evening_time/2, evening_time24/3,
     find_last_departure/2,      findsetoftimes/2,       firstarrive/5,  firstRID/2,
     genplural/2,    getlastarrival/3,   gootrace/1,     google/1, %% Just executable mark in busans    
-    i_or_a_bus/3,
-    languagenr/1,
-    make_total_google/2,
-mixopt/3, notatnight/2,
-    nibcp/1,     nopay1/0,      numberofnextbuses2/2,   numberofnextbuses/1,
-ondate/1, ondays/1,
+
+i_or_a_bus/3,
+languagenr/1,
+make_total_google/2,
+mixopt/3,
+nibcp/1,
+nopay/0,
+nopay1/0,
+notatnight/2,
+numberofnextbuses/1,
+numberofnextbuses2/2,
+ondate/1,
+ondays/1,
 outandarrives2/2,       %(_STARTSTOP,_INTSTREET,_INTSTAT)
-outdeplist/6,   outdeplist00/6, outdummy/2,     outfromtocorr/6,
-outstreetconn/3, 
-
-paraphrase_changes1/1, paraphs/1, paraph2/1,
-
-paraphrase_tele/2, paraphrase/1, paraphrase2/2, paraphrase3/3, period0/0, period/0,    plural/3,
-relevant_message/1,
-setopts/3,
-sorttimes/4,    space/0,        space0/0,       punkt/0,        question/0,
-special_day/1,  specname0/2,    startmark/0,    nopay/0,        pay/0,
-pay1/0, pen0/1,
+outdeplist/6,
+outdeplist00/6,
+outdummy/2,
+outfromtocorr/6,
+outstreetconn/3,
+paraph2/1,
+paraphrase/1,
+paraphrase_changes1/1,
+paraphrase_tele/2,
+paraphrase2/2,
+paraphrase3/3,
+paraphs/1,
+pay/0,
+pay1/0,
+pen0/1,
+period/0,
+period0/0,
+plural/3,
 primeout/1,
 primeoutput/1,
 print_paraphrase_message/1,
-selectmap/2,      %% was var (not assigned)
+punkt/0,
+question/0,
+relevant_message/1,
+reply/1,         %% Just marker 
 select/2,
+selectmap/2,      %% was var (not assigned)
+sentenceend/1,
 setoffirst/3,
+setopts/3,
+smart_time_option/1,
+smart_time_options/1,
+sorttimes/4,
+space/0,
+space0/0,
+special_day/1,
+specname0/2,
+standnight/1,
+startmark/0,
 stationlistorand/3,
-
 theplural/2,
 warningtime/2, %% super Ad Hoc %% TA-110202
-writetimes/2,
-sentenceend/1,
-standnight/1,
-reply/1,         %% Just marker 
 writename/1,
-smart_time_options/1,
-smart_time_option/1
+writetimes/2
 
    ]).
 

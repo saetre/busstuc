@@ -184,7 +184,7 @@ reset:-
     dialog := 0, % moved up
 %    textflag := false,
     retractall(difact(_,_)),   %% Only Dynamic Facts
-    retractall((_ => _)),
+%    retractall((_ => _)),
     lemmas_proved := 0,  %%
     interp := 0,         %%
     (skolemax =: SZ -> skolocon := SZ; skolocon := 0),
