@@ -12,7 +12,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- use_module( '../declare' ).
+:- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
 %:- op( 712, fy,seen). % Lower than "not", higher than "isa"
 
 %% This file is extras needed to run the dialogue system. 

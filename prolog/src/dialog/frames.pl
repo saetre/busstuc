@@ -1,5 +1,5 @@
 %%% %%%%%%%% RS-111118
-:- use_module( '../declare.pl' ).
+:- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
 
 %frameval(Type, Value, Filled, Confirmed, Experience)
 %subframe(Template, Id,)

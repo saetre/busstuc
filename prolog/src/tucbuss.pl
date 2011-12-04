@@ -8,13 +8,15 @@
 
 %% ?-prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates// Testing
 
-?-use_module('declare.pl').
+:- ensure_loaded( 'declare' ).
+%?-use_module('declare.pl').
 
-?-compile('tucbuses.pl'). %% Sicstus 4 requires extension
+?-use_module( tucbuses, [] ).   % Common File for tucbus  (english) and    tucbuss (norwegian)
 
 ?-compile('version.pl').
 
-?-compile('main.pl').
+?-use_module( 'main.pl', [] ).
+%?-ensure_loaded( 'main.pl' ).
 
 ?-compile('monobus.pl'). %% // after main.pl  Unknown error
 

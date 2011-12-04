@@ -5,38 +5,107 @@
 %% REVISED TA-110824
 %% REVISED RS-111120
 
-:- module( buslog, [ before/2,     bus/1,
-    cname/2,    composite_stat/3,       compute_delay_margin/5,     dayModSeqNo/2,
-    departureday/4,     departuredayMOD/5,
-    hpl/3,
-    keepbetweenstat/5,
-    
-    maxseqtour/2,       mod_day_in_set/3,
-    new_cutloop_extend/4,           new_cutset_test/8,
-    notaclock/1,
-
-    proper_end_station/2,   properstation/1,
-
-    passes44/6,
-    regbus/1,
-    rid_to_direction/3,
-
-    seqno_day/4,        standardizeemit/2,      station/1,
-    stationsat/3,
-    station_trace/4,
-    streetstation2/3,
-    xdepartureday/4,    xpasses4/6,             xpasses5/8,
-    xroute/3
-  ]).
+:- module( buslog, [
+        addcontext/0,     addtotime/3,       adjustarr999/3,    adjustdep999/3,
+        airbus_route/1,   allstations/1,     approvenightbustoplace/2,
+        arr_after/2,      arr_between/3,     arrdep_after/2,    arrdep_before/2, %% TA-110308  
+        askfor/3,         askref/2,          atdate2/2,         atdate/1,       atday/1,        % avoidarrbetween/4,
+        avoidbus/3,       avoiddepbetween/4, avoidnightbustoplace/2,
+        before/2,         bestcorr/8,        bingbong/2,        boundstreet/1,          bound/1,        bugdep1/2,
+        bus/1,            bus_place_station/3,                  busorfree/1,            bustorid/3,
+        cname/2,          composite_stat/3,  compute_delay_margin/5,         connections/10,         converttostandard/2, %% TA-09819 
+        corrstats/3,      correspx0/2,       coupled1/8,        coupled2/8,     coupled3/7,       coupledtry/7,
+        dateis/4,         day_route/1,       dayModSeqNo/2,     dayxnumber/3,   debug_prune/2,
+        dep_after/2,      dep_between/3,     depbusMOD/12,      depMOD/12,
+        departure/4,      departureday/4,    departuredayMOD/5, depbeforestationwalk/1,         depset/2,
+        diffdep4/4,       difftime/3,        direct_connection/3,
+        endstation/2,     endstations/2,     endstations1/1,    ensure_removed/3,
+        findstations/3,   firstactualdeparturetime/4,           firstdeparture/2,       flag/1,
+        frame_remember/2, htrans/2,          hpl/3,             neverpasses/2,    neverarrives/2,
+        internalkonst/1,  inttime/2,         irrelevantdirect/4,islist/1,       isnear/2,
+        keepafter/3,      keepafterstrict/3, keepafterwalking/2,keeparound/3, 
+        keepat/3,         keepbefore1/3,     keepbeforerev/3,   keepbetweenstat/5,
+        keepbus/3,        keepdepafter/3,    keepuntil/4,       keepwithin/4,   
+        listofall/2,      listofbuses/1,     looping/3,
+        maybestation/3,   members/3,         message/1,         memrest/3,
+        neverdeparts/2,   new_cutloop_extend/4,                 new_cutset_test/8,      nextdep/3,      night_route/1,
+        nocontext/0,      not_arr_between/3, not_dep_between/3, not_extreme_hastus_time/1,      notaclock/1,
+        notification/2,   numberof/3,
+        occurs_before/3,  occurs_afterwards/2, optional_alias2/2,     %% in case of period renameing
+        pass_after/2,     pass_after_strict/2, pass_at/2,       pass_before/2,      pass_between/3,         pass_bus/2,
+        passMOD/7,        passeq/6,          passes44/6,        passrids/2,             passtimeMOD/8,
+        passevent/6,      passesstations/4,  pass_rid/2,
+        place_station/2,  place_station1/2,  properstation/1,   proper_end_station/2,           purge_deps/5,
+        pushframe/0,      popframe/0,
+        relax/1,          remove_roundtrip_deps/4,              replyq/1, 
+        rid_to_direction/3,     ridstobuses/2,                  ridstobuses2/2,         ridstotours/2,
+        ridtobusname/2,   ridtobusnr/2,      ridtoendhpl/2,     ridtotour/2,        route/3,
+        samefplace/2,     setdepMOD/4,       standardizeemit/2, %% example, May 1=sunday route       
+        selectroute/3,    set_actualdate/1,  sometimearrives/2,        sometimedeparts/2,
+        statorplace/1,    startstation/2,    stathelp/3,        station/1,        station_trace/4, %% TA-100214   
+        stationsat/3,     street/1,          street_station/2,  subfromtime/3,
+        takestime/3,      timeis/1,          ticketprice2/2,    timenow/1,        timenow2/2,        today/1,        tofindlastcorr/1,
+        tourstoends/2,    tourtoend/2,       tramstations/1,    try_preferred_transfer/4,
+        transbuslist3/3,  trytransbuslist/4, transferXYZ/3,     unbound/1,        veh_mod/1,         withinslack/2
+  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% IMPORTS %% RS-111118
+:- ensure_loaded( '../declare' ).
 
-%% USE %% RS-111118
-:- use_module( 'busanshp', [] ).
-:- use_module( '../declare' ).
-%:- use_module( '../declare', [ myflags/2 ] ).
-%:-['../interfaceroute'].       %% Moved "up" to monobus -> 
-:- ['../db/topreg'].
+:- use_module( library(lists), [ delete/3 ] ).
+
+:- use_module( 'busanshp', [ time_options/1 ] ).        %% In app
+
+:- use_module( '../interfaceroute', [  decide_period/2  ] ).
+:- use_module( '../main', [ user:(:=)/2, gps_origin/2, progtrace/2,
+                            timeout/3, traceprog/2, trackprog/2  ] ).
+
+:- use_module( '../db/auxtables', [  busstat/2,  transbuslist/3  ] ).
+
+:- use_module( '../db/busdat', [
+        airbus/1,                  % (BUS?)
+        airbusstation/1,           % (STATION)
+        bus_depend_station/3,      % (ROUTE,PLACE,STATION)
+        busfare2/2,                % (ROUTETYPE,NUMBER*)
+        central_airbus_station/1,  % (STATION) 
+        corresp0/2,
+        corr0/2,
+        corresp/2,                 % (PLACE,PLACE)
+        corresp0/2,                % (PLACE,PLACE)
+        corresponds/2,             % (STATION,STATION)
+        exbusname/2,               % (ROUTE,ROUTE)
+        nightbusstation/1,         % (STATION)
+        nostation/1,
+        preferred_transfer/5,
+        spurious_return/2,
+        thetramstreetstation/2
+   ] ).  
+:- use_module( '../dialog/frames2', [  frame_getvalue_rec/4 ] ).
+:- use_module( '../db/places',  [ alias_station/2, corr/2, foreign/1, isat/2,
+        placestat/2, underspecified_place/1 ] ).
+%% db/regstr: Remember to update source program, which is...?
+:- use_module( '../db/regbusall', [ nightbus/1 ] ). %% HEAVY DB!
+:- use_module( '../db/regstr', [ streetstat/5 ] ). %% RS-111201
+:- use_module( '../db/timedat', [ aroundmargin/1, buslogtimeout/1, date_day_map/2,
+        delay_margin/1, maxarrivalslack/1, maxtraveltime/1, softime/3  ] ).
+:- use_module( '../db/topreg', [ route_period/4 ] ).
+
+:- use_module( '../tuc/facts', [ (isa)/2, neighbourhood/1 ] ).
+
+:- use_module( '../utility/datecalc', [
+    add_days/3,    datetime/6,    dayno/2,    days_between/3,    getdaynew/1 %%   // Get rid of exec call
+  ] ).
+:- use_module( '../utility/library', [ (not)/1, remove_duplicates/2, reverse/2 ] ).
+:- use_module( '../utility/utility', [
+        charno/3, firstmem/2, lastmem/2, maximum/2, maxval/3, minimum/2, minval/3, 
+        once1/1, output/1, set_difference/3, set_eliminate/4, set_filter/4, set_of/3, starttime/0,
+        test/1,  testmember/2
+  ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%% DEBUG %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- volatile wrotten/0.
+:- dynamic wrotten/0.
 
 %%%%%%%%%%%%%%%% ALL ROUTE INTERFACE PREDICATES %%%%%%%%%%%%%%%%%%
 
@@ -95,7 +164,7 @@ standardizeemit(D90615,date(Y2009,M06,D15)):-
 %% NEVER APPLIES TO nightbus
 
 seqno_day(TTP,K160,May1,XN) :- %% XN relative nr of FIRST Sday in Route Module %% TA-100108
-    \+ myflags(nightbusflag,true), %% TA-100412
+    \+ user:myflags(nightbusflag,true), %% TA-100412
     route_period(_, TTP,  Date1,_),   %% topreg.pl
 
 %%  1. day of route_period 
@@ -139,7 +208,7 @@ mod_day_in_set(TTP,DayX,DayCode) :- % NEW regime
 
 
 dayxnumber(EMITDAY,Monday,XN) :-
-    dayno(Monday,DN), %% datecalc.pl %% 
+    dayno(Monday,DN), %% utility/datecalc.pl %% 
     !,
     S is DN-EMITDAY+1,
 
@@ -157,7 +226,7 @@ dayxnumber(EMITDAY,Monday,XN) :-
 
 
 %veh_mod(TTP):-
-%     myflags(airbusflag,true),
+%     user:myflags(airbusflag,true),
 %     !,
 %     airbus_module(TTP).
 %
@@ -166,7 +235,7 @@ veh_mod(TTP):-
 
 
 bus_mod(TTP):-
-    myflags(actual_period,TTP),
+    user:myflags(actual_period,TTP),
     !, TTP \== nil.  %% Dynamic ! 
 
 
@@ -191,7 +260,7 @@ bus(X):-
     X  < 10000. %%   e.g. buss 777
 
 %xroute(X,Y,Z):-            %% TA-090331
-%    myflags(airbusflag,true),
+%    user:myflags(airbusflag,true),
 %    !,
 %    airbus_module(TTP), %% ad hoc if several airbus modules (change)
 %    TTP:route(X,Y,Z).  
@@ -473,7 +542,7 @@ keepbetweenstat2(Rid,FromSeq,ToSeq,_InnStats,UtStats) :-
 %% but it is also M0 (accidentally), but that is ignored.
 %%
 streetstation2(St_olavs_street,_,St_olavs_gt):- 
-    myflags(tramflag,true), %% TA-100120
+    user:myflags(tramflag,true), %% TA-100120
     thetramstreetstation(St_olavs_street,St_olavs_gt), %% SPEXIAL  busdat.pl
     !.
 
@@ -496,6 +565,7 @@ streetstation2(Ident,_,unknown):-
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+:- ['../db/discrepancies.pl'].     %% Must be updated before winter
 optional_alias2(Station,Station2):-     %% in case of period renameing
     alias_station2(_,Station,Station2), %% TA-110803
     !; Station=Station2.
@@ -878,14 +948,14 @@ keepuntil(Time,Mins,R,Rny):-
 % Enkel resonnering over data i bussdatabasen
 
 listofall(route,[]):- %% TA-090210
-    myflags(smsflag,true),
+    user:myflags(smsflag,true),
     !.    
 listofall(route,Buses):- %% ad hoc 
     allbuses(Buses).     %% trams/ferrys etc 
 
 
 listofall(bus,[]):- %% TA-090210
-    myflags(smsflag,true),
+    user:myflags(smsflag,true),
     !.
 listofall(bus,Buses):- %% 
     allbuses(Buses).
@@ -895,11 +965,11 @@ listofall(nightbus,Buses):-
     allnightbuses(Buses).
 
 listofall(station,S):-
-    \+ myflags(smsflag,true),
+    \+ user:myflags(smsflag,true),
     allstations(S).
 
 listofall(station,S2):- 
-    myflags(smsflag,true),
+    user:myflags(smsflag,true),
     allstations(S),
     members(5,S,S1),
 
@@ -1004,8 +1074,8 @@ tourtoend(Trace,EndStat):-
 % findstations(+,+,-)
 
 findstations(Bus,_Day,Stationslist) :- %% Only endstations if smsflag
-	myflags(smsflag,true),  
-   \+ myflags(airbusflag,true), %% short list anyway %% TA-090401
+	user:myflags(smsflag,true),  
+   \+ user:myflags(airbusflag,true), %% short list anyway %% TA-090401
    !,
    endstations(Bus,Stationslist), 
    Stationslist \== []. %% Better with an error message
@@ -1073,8 +1143,8 @@ numberof(_,Set,Length) :-
 
 departure(Bus,Place,Day,DepSet) :- % Alle dag bussavganger ved en stasjon
 	unbound(Bus),          
-   \+   myflags(nightbusflag,true),  % NOT Nightbus query 
-   \+   myflags(airbusflag,true),    %% TA-090331
+   \+   user:myflags(nightbusflag,true),  % NOT Nightbus query 
+   \+   user:myflags(airbusflag,true),    %% TA-090331
    !, 
 	veh_mod(TTP), 
    setdepMOD(TTP,Place,Day,DepSet1),      %%
@@ -1082,8 +1152,8 @@ departure(Bus,Place,Day,DepSet) :- % Alle dag bussavganger ved en stasjon
 
 departure(Bus,Place,Day,DepSet) :- % Alle natt bussavganger ved en stasjon
 	unbound(Bus),
-   myflags(nightbusflag,true),      % Nightbus query 
-  \+   myflags(airbusflag,true),     %% TA-090331
+   user:myflags(nightbusflag,true),      % Nightbus query 
+  \+   user:myflags(airbusflag,true),     %% TA-090331
    !, 
 	veh_mod(TTP),
 
@@ -1097,8 +1167,8 @@ departure(Bus,Place,Day,DepSet) :- % Alle natt bussavganger ved en stasjon
 %departure(Bus,Place,Day,DepSet) :- % Alle flybussavganger ved en stasjon
 %	unbound(Bus),
 %
-%   myflags(airbusflag,true),     %% TA-090331
-%   \+ myflags(nightbusflag,true),      % Nightbus query 
+%   user:myflags(airbusflag,true),     %% TA-090331
+%   \+ user:myflags(nightbusflag,true),      % Nightbus query 
 %
 %   !, 
 %
@@ -1258,7 +1328,7 @@ passMOD(TTP,Rid,Place,STATNO,Station,DelArr,DelDep) :-
 
 
 isat2(Station,sentrum):- %% TA-090915
-    myflags(airbusflag,true),
+    user:myflags(airbusflag,true),
     central_airbus_station(Station).
 
 
@@ -1326,7 +1396,7 @@ correspx0(Place,HT):-
 
 
 bus_place_station(_Bus,X,Y):-  %% TA-090915
-    myflags(airbusflag,true),
+    user:myflags(airbusflag,true),
     corr0(X,hovedterminalen), 
     !,
     central_airbus_station(Y). %%  =torget.
@@ -1334,7 +1404,7 @@ bus_place_station(_Bus,X,Y):-  %% TA-090915
 
 
 bus_place_station(_Bus,X,Y):-  %% TA-100115
-    myflags(nightbusflag,true),
+    user:myflags(nightbusflag,true),
     X= hovedterminalen, %% corr0(X,hovedterminalen), \+ munke_street
     !,
     nightbusstation(Y). %% olav_tryggvasons_gate.
@@ -1381,7 +1451,7 @@ place_station(user_location,user_location). %% TA-11048
 
 place_station(Place,Place) :-  %% TA-090401
      nonvar(Place),
-     myflags(airbusflag,true), %% ad hoc
+     user:myflags(airbusflag,true), %% ad hoc
      airbusstation(Place), %% Værnes
      !.
 
@@ -1452,7 +1522,7 @@ place_station(Station,Station2):- %% in case of period renaming %% TA-110804
 
 place_station0(Place,Place) :-  %% TA-090401
      nonvar(Place),
-     myflags(airbusflag,true), %% ad hoc
+     user:myflags(airbusflag,true), %% ad hoc
      airbusstation(Place), %% Værnes
      !.
 
@@ -1502,7 +1572,7 @@ place_station1(Place,Place) :-
 % Not   The nearest station to Utleira is Utleira
 
 street_station(STOGSTREET- _N_,STOGST):- %% St. Olavs gt 1 \= HT 
-    myflags(tramflag,true), %% TA-100120
+    user:myflags(tramflag,true), %% TA-100120
     thetramstreetstation(STOGSTREET,STOGST), 
     !.
 
@@ -1594,7 +1664,7 @@ remove_spurious_arrs(Deps,Deps1):-
 /*   SUSPENDED
 
 coupled(StartDeps,EndDeps,_Bus,FromStat,ToStat,Day,DaySeqNo,Opts,Dep01,Mid01) :- 
-    myflags(quicktransfer,true),
+    user:myflags(quicktransfer,true),
 %%%%%%%%    kindofday(Day,Kay), 
     station(FromStat),
     station(ToStat),
@@ -1740,7 +1810,7 @@ lastquicktransfer(FromStat,ToStat,X,FT1,LT2,DaySeqNo,Dep01,Mid01):-
 
 coupled(StartDeps,EndDeps,_,_,_,Day,DaySeqNo,Opts,Deps,Mid01) :- 
 
-%%%%%%%%%%%%%%	myflags(smsflag,true), %% NB no bygone departs
+%%%%%%%%%%%%%%	user:myflags(smsflag,true), %% NB no bygone departs
 
    \+ member(nextaftertime(_),Opts),
 
@@ -1884,10 +1954,10 @@ purge_deps(_Opts,StartDeps,EndDeps,LeanStartDeps,LeanEndDeps):-
 
 
 sameday(_Day) :-     %% TA-091229  Dont backtrack
-     myflags(samedayflag,true),!.
+     user:myflags(samedayflag,true),!.
 sameday(Day) :-
      (today(Day), 
-     \+ myflags(samedayflag,false)),
+     \+ user:myflags(samedayflag,false)),
      !.
    
      
@@ -1920,7 +1990,7 @@ coupled2(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
 
      BothStartDeps \== [], %% There is a direct connection
 
-%%%%      myflags(smsflag,true), %% Når går bussen fra Fagerheim alle til iskremfabrikken? 
+%%%%      user:myflags(smsflag,true), %% Når går bussen fra Fagerheim alle til iskremfabrikken? 
      \+ member(nextaftertime(_),Opts), %%  testmember disallows var
      \+ testmember(direct,Opts), 
      \+ testmember(lastcorr,Opts), %% buss fra tonstadkrysset til klæbu.
@@ -2015,7 +2085,7 @@ coupled2(BothStartDeps,_,_,Day,_DaySeqNo,_Opts,BothStartDeps,MidDeps) :-
 %%%   , otherwise FAIL (Dont announce bygone departures)
 
 coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
-%%     myflags(smsflag,true), %%  Neste buss fra P.A. Munchs gt til Dragvoll
+%%     user:myflags(smsflag,true), %%  Neste buss fra P.A. Munchs gt til Dragvoll
     \+ member(direct,Opts),  
 
 %% if no other time options than ...,  try next 
@@ -2082,7 +2152,7 @@ coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
 
 
 irrelevantdirect(_Opts,_FirstDirectTime,LastDirectTime,_FirstStartTime) :- %% in the past
-     myflags(smsflag,true),
+     user:myflags(smsflag,true),
      !,
      timenow2(0,NOW),
      LastDirectTime < NOW,
@@ -2090,7 +2160,7 @@ irrelevantdirect(_Opts,_FirstDirectTime,LastDirectTime,_FirstStartTime) :- %% in
 
 
 irrelevantdirect(_Opts,FirstDirectTime,LastDirectTime,FirstStartTime) :- %% too long after
-     \+ myflags(smsflag,true), 
+     \+ user:myflags(smsflag,true), 
      !,
      maxtraveltime(MaxT), 
      addtotime(FirstStartTime,MaxT,F60),
@@ -2103,7 +2173,7 @@ irrelevantdirect(_Opts,FirstDirectTime,LastDirectTime,FirstStartTime) :- %% too 
 
 
 firstactualdeparturetime(Day,_DaySeqNo,S,FAT) :-
-     myflags(smsflag,true),
+     user:myflags(smsflag,true),
      sameday(Day),
      !,
      timenow2(0,NOW),
@@ -2381,7 +2451,7 @@ startstation(Rid,Orig) :-
 
 %% TA-110318
 trytransbuslist(_Bus1,_Bus2,_OffStation,_OnStation):-
-    \+ myflags(trytransbuslist,true),
+    \+ user:myflags(trytransbuslist,true),
     !.    
  
 trytransbuslist(Bus1,Bus2,OffStation,OnStation):- %% TA-110322
@@ -2559,8 +2629,8 @@ findday(Daynr,Dag) :-
  
 
 xlastday(Lastdaynr,Lastday):-
-    myflags(lastdaynr,Lastdaynr),
-    myflags(lastday,Lastday),
+    user:myflags(lastdaynr,Lastdaynr),
+    user:myflags(lastday,Lastday),
     !.
 
 xlastday(Lastdaynr,Lastday):- %% if missing

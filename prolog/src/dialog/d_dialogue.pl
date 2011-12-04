@@ -17,7 +17,8 @@
 :- assert( linecounter(1) ).
 :- assert( confused(noone) ). %-)
 
-:- use_module( '../declare' ).
+:- ensure_loaded( '../declare' ).
+%:-use_module( '../declare' ).
 
 %% Dialogue manager.
 
@@ -40,14 +41,14 @@ processinput(Q) :-                     %%AM-980301
 	translate2(Q,TQL),
 	nl,
 
-   myflags(contextid,Cid),
+   user:myflags(contextid,Cid),
    setcurrent(Cid),
 
-  (myflags(topic,BT) -> 
+  (user:myflags(topic,BT) -> 
       xframe_setvalue(topic,BT) % put topic into the context frame  %% TA-060426
       ;true),
 
-  (myflags(language,Lan) -> 
+  (user:myflags(language,Lan) -> 
       xframe_setvalue(language,Lan) % put language into the context frame  %% TA-060426
       ;true),
 
@@ -154,7 +155,7 @@ quit_dialog:- %% TA-030630
 
 
 reset_conns :-				%% TLF-030523
-	myflags(teleflag,true),
+	user:myflags(teleflag,true),
 	reset_ldapcon.
 
 reset_conns.		%% TLF-030523 Should never fail!!
@@ -213,7 +214,7 @@ evalline(error, _) :- %% TA-070201
 
 
 evalline(error, _) :-
-	\+ myflags(teleflag,true),
+	\+ user:myflags(teleflag,true),
         getcontext(Cid, context(Tql, Prog, TempRefer, [node(TopName,_, TopFocus, TopRem) | NodeStack])),
 
 	ExtraStack = [node(tb_start2,_, TopFocus, 
@@ -245,9 +246,9 @@ evalline(_, Tql) :-
 	setcontext(Cid, context(NewTql, NewProg, NewTempRefer, NewNodeStack)).
 
 evalline(_, Tql) :- 
-	\+ myflags(teleflag,true),
+	\+ user:myflags(teleflag,true),
    trackprog(3, output(' *evalline 2*  ')), %% TA-030108
-   \+ myflags(wozflag,true),                     %% TA-031017
+   \+ user:myflags(wozflag,true),                     %% TA-031017
 	getcurrent(Cid),
 	getcontext(Cid, context(_Tql, _Prog, TempRefer, [node(TopName,  _  , TopFocus, TopRem) | NodeStack])),
 	ExtraStack = [node(tb_start2,  _  , TopFocus, [item(say(tbs_userhelp)), sub(tb_from)]) | [node(TopName,  _  , TopFocus, TopRem) | NodeStack]],

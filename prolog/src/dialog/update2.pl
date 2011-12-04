@@ -96,7 +96,7 @@ updateframe(Program, OldFrame, NewFrame) :-
 
    !, %% TA-030110
 
-   (myflags(directflag,true) ->
+   (user:myflags(directflag,true) ->
         trackprog(2,output('*** ANSWER ***')); true),  %% TA-060825
 
    paraphrase2(Program,Changes), %% TA-051109 (Both Important messages and Para)
@@ -117,7 +117,7 @@ updateframe_checkanswer(Program, Slot, OldFrame, NewFrame) :- %% moved up %% TA-
 
     is_subframe(SubSlot, Slot),
 
-   (myflags(directflag,true) -> %% TA-060607
+   (user:myflags(directflag,true) -> %% TA-060607
         output('*** ANSWER ***'); true),
 
 

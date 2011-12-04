@@ -5,11 +5,14 @@
 %% REVISED RS-111121
 
 % Transregler for teledomenet
-:- module( tele, [ rule/2 ] ).  
+:- module( tele, [ 
+        rule/2,
+        tracevalue/1
+    ] ).  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
-:- use_module( '../declare.pl' ).
+:- ensure_loaded( '../declare' ).
 
 %% Rule format
 
@@ -61,7 +64,7 @@
 
 
 
-tracevalue(L) :- myflags( traceprog, L ).  % Trace level 1-6
+tracevalue(L) :- user:myflags( traceprog, L ).  % Trace level 1-6
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Oversettingsregler
@@ -72,33 +75,33 @@ tracevalue(L) :- myflags( traceprog, L ).  % Trace level 1-6
 listoftql0 rule
 is  [(confirm,_)]
 id  add message(answer(bcpbc(ok)))
-ip  \+ user: myflags(dialog,1). 
+ip  \+ user:myflags(dialog,1). 
 
 listoftql1 rule
 is  replaceall [(confirm,_)|Y]
     with Y
 id  []
-ip  \+ user: myflags(dialog,1).
+ip  \+ user:myflags(dialog,1).
 
 
 listoftql2 rule
 is  replaceall [X]
     with X
 id  []
-ip  \+ user: myflags(dialog,1).
+ip  \+ user:myflags(dialog,1).
 
 listoftql3 rule
 is  replaceall [(doit,replyq(X))|Rest]
     with Rest
 id  addfront reply(X)          %% syndrome  Hei ! Jeg heter Tore
                       %% Jeg heter tore -> OK and failure -> negans on do
-ip  \+ user: myflags(dialog,1).
+ip  \+ user:myflags(dialog,1).
 
 listoftql4 rule
 is  replaceall [X|_]
     with X
 id  addfront message(onlyonesentence)
-ip  \+ user: myflags(dialog,1).
+ip  \+ user:myflags(dialog,1).
 
 error rule
 is  error

@@ -14,8 +14,13 @@
     reverse/2
    ]).
 
-%:- ['../declare'].
-:-op( 715, fy, not ).
+:- ['../declare'].
+not X :- \+ X.
+
+%% once(P):- P,!. %% THIS IS BUILT-IN   Sicstus 3.8  %% TA-000414  
+%% Gives warning message  in 3.8 ++ 
+%% Will be removed
+
 
 %% Find nth element                           %% TA-030922
 nth(N,Set,Nth) :- 
@@ -52,12 +57,6 @@ intersection([X|Y],Set,Z):-
    intersection(Y,Set,Z).
 intersection([X|Y],Set,[X|Z]):-
     intersection(Y,Set,Z).
-
-not X :- \+ X.
-
-%% once(P):- P,!. %% THIS IS BUILT-IN   Sicstus 3.8  %% TA-000414  
-%% Gives warning message  in 3.8 ++ 
-%% Will be removed
 
 reverse(L1,[]):-var(L1),!. %% Keine Experimente TA-970516
 reverse(L1,L2):- 

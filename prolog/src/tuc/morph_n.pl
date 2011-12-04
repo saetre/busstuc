@@ -8,9 +8,28 @@
 
 %% Morphological Analyser for the language N.
 
-:-module(morph_n,[]).
+:-module(morph_n,[
+        adjective/1,
+        be_verb/1,
+        ditrans_verb/1,
+        ends_with/3,
+        intrans_verb/1,
+        lexb/2,
+        lexv/4,
+        lcode2/2,
+        noun/1,
+        pvimodal_verb/1,
+        trans_verb/1,   %% have
+        verbroot/1,
+        verb_form/4
+    ]).
 
-:-op( 710,xfx, ako ).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+:-use_module( dict_n, [] ).
+
+:- ensure_loaded( '../declare' ).
+%:-op( 710,xfx, ako ).
 
 ends_with(X,Y,Z):-user:ends_with(X,Y,Z).
 

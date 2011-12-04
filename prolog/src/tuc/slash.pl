@@ -4,7 +4,7 @@
 %% REVISED TA-081110
 
 %%% %%%%%%%% RS-111118
-:- use_module( '../declare.pl' ).
+:- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
 
 %% Definition of facts / 
 %% Not removed by reset

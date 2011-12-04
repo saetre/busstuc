@@ -9,7 +9,8 @@
 %% Same function as the file tucbus.
 
 %%% %%%%%%%% RS-111118
-:- use_module( 'declare.pl' ).
+:- ensure_loaded( 'declare' ).
+%:- use_module( 'declare.pl' ).
 
 
 

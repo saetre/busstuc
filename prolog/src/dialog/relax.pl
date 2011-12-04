@@ -4,6 +4,9 @@
 %% REVISED TO-970421 TA-041217
 
 
+%:- module(relax,[]).
+
+
 % pragma(RuleModule,Source,Dest) bygger Dest fra Source vha reglene i RuleModule
 
 % Operatorer for Pragma-regler
@@ -42,9 +45,7 @@
 :- op( 712, fy,seen). % Lower than "not", higher than "isa"
 
 %%% %%%%%%%% RS-111118
-:- use_module( '../declare.pl' ).
-
-:- module(relax,[]).
+:- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
 
 tracevalue(L) :- user:myflags(traceprog,L).  % Trace level 1-4
 

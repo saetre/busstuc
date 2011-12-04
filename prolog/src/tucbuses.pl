@@ -3,25 +3,39 @@
 %% CREATED TA-970726
 %% REVISED TA-110303
 
-% Common File for tucbus  (english) and
-%                 tucbuss (norwegian)
+% Common File for tucbus  (english) and    tucbuss (norwegian)
+:- module( tucbuses, [
+        backslash/1,    compile_english/0,      compile_norsk/0,
+        %%% THESE ARE NOW CALLED FROM MAIN DIRECTORY
+        dcg_file/2,     dcg_module/2,           dcg_module/1,        dcg_file/1,
+        dict_file/2,    user:dict_module/1,     dict_module/2,
+        gram_file/2,    gram_module/1,          gram_module/2,
+        morph_file/2,   morph_module/2,
+        %%%
+        language/1,     legal_language/1,       morph_module/1,
+        prompt/1,       prompt2/2,
+        readfile_extension/2,                   readfile_extension/1,
+        script_file/1,  script_file/2,          style_check/1
+  ] ).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:-prolog_flag(discontiguous_warnings,_,off). 
 :-use_module(library(system)). 
 
+?- compile('declare.pl').  %% Loaded in respective modules: app, db, dialog, tagger, tuc, utility, etc.?
+
 ?- use_module('ptbwrite.pl').%% TA-061030
+
 ?- use_module('utility/utility.pl').
 ?- use_module('utility/library').
-
-:-prolog_flag(discontiguous_warnings,_,off). 
 
 backslash('\\'). 
 style_check(_).
 
-%?- compile('declare.pl').  %% Loaded in respective modules: app, db, dialog, tagger, tuc, utility, etc.?
 %?-compile('utility/drucke_baum.pl'). %% TA-061030
 %?- compile('utility/datecalc.pl').  %% Kalles fra utility module
 %?- compile('utility/makeauxtables.pl'). %% From utility
-?- compile('utility/extracut.pl').  %% TA-080201
+?- use_module( 'utility/extracut', [] ).  %% TA-080201 %% RS-111204
 
 :- (airbusflag := false). %% NEW FLAG %% TA-090331
 
@@ -39,10 +53,9 @@ style_check(_).
 legal_language(english).
 legal_language(norsk). %% NB not 'norwegian'
 
-:- dynamic language/1.
 language(L) :- language := L. %% Set dynamically
 
-dict_module(D):-language(L),dict_module(L,D).
+user:dict_module(D):-language(L),dict_module(L,D).
 
 morph_module(D):-language(L),morph_module(L,D).
 
@@ -151,7 +164,7 @@ prompt2(norsk,'N: ').
 
 %% Compile both languages  %% TA-000529
 
-:- ['tuc/metacomp.pl'].     % RS-1111119 compiles the grammar (with makegram predicate)
+:- use_module( 'tuc/metacomp.pl', [] ).     % RS-1111119 compiles the grammar (with makegram predicate)
 
 compile_english :-
     dict_file(english,L),compile(L),       % dictionary for E 

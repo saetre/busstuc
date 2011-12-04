@@ -5,6 +5,5 @@
 
 % consult into right module 
 
-%?- [dict_n:'tuc/dict_n.pl']. %% Sictus 3
-
-:- use_module(dict_n:'tuc/dict_n.pl').   %% Sictus 4
+%?- ['tuc/dict_n.pl']. %% Sictus 3
+:- use_module( dict_n:'tuc/dict_n.pl' ).   %% Sictus 4

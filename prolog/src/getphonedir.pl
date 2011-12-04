@@ -22,7 +22,7 @@ getdbtagsdirect(TagSum, Result) :-
    %append_atomlist(['javaw ldapconnection.LDAPSearcher tag ', TagSum], Expression),
 
 
-  (myflags(windowsflag,true) ->  
+  (user:myflags(windowsflag,true) ->  
         Expression = 'javaw ldapconnection.LDAPSearcher'
         ; 
         Expression = 'java ldapconnection.LDAPSearcher'
@@ -60,7 +60,7 @@ track(1, (write('*** Tag: '),out(Expression), write('tag '), write(TagSum), nl))
 %   %append_atomlist(['javaw ldapconnection.LDAPSearcher srch "', Query, '"'], Expression),
 %
 %
-%  (myflags(windowsflag,true) ->  
+%  (user:myflags(windowsflag,true) ->  
 %        Expression = 'javaw ldapconnection.LDAPSearcher'
 %        ; 
 %        Expression = 'java ldapconnection.LDAPSearcher'
@@ -107,7 +107,7 @@ streamnoisopen(StreamNo) :-
 
 reset_ldapcon :-
 	%% Find and close old stream
-	myflags(outstream, OutstreamNo),
+	user:myflags(outstream, OutstreamNo),
 	streamnoisopen(OutstreamNo),
 	current_output(OldOutput),
 	set_output('$stream'(OutstreamNo)),
@@ -197,7 +197,7 @@ remove_hitmarks(L2,L3):-
 
 
 x_getdbtags(PAT,Tags,Compnames) :- %% TLF-030408
-    myflags(useexternal,true),
+    user:myflags(useexternal,true),
     !,
     getdbtagsdirect(PAT,Input),
     xml_parse(Input,XML),
@@ -214,18 +214,18 @@ x_getdbtags(PAT,Tags,Compnames) :- %% TLF-030408
 
 
 x_getdbtags(_,_) :- 
-    \+ myflags(useexternal,true),
+    \+ user:myflags(useexternal,true),
     !,
     output('useexternal flag is false -> no tagging performed').
 
 
 x_receive_tags(Tags,Compnames,File) :-           %%
-    myflags(useexternal,true),
+    user:myflags(useexternal,true),
     !,
     y_receive_tags(Tags,Compnames,File).            %% MTK 021018/TLF
 
 x_receive_tags(_,_,_):-  %%
-    \+myflags(useexternal,true).
+    \+user:myflags(useexternal,true).
 
 
 
@@ -287,8 +287,8 @@ remove_dummycomps(Compnames,Compnames2):-
 %    plustoatom1(P2,PAT).
 %
 %append_synnames(L2,L3):- 
-%    myflags(busflag,true), %% TA-060613
-%    \+ myflags(teleflag,true), %% TA-080407 (not bor -> bro(
+%    user:myflags(busflag,true), %% TA-060613
+%    \+ user:myflags(teleflag,true), %% TA-080407 (not bor -> bro(
 %    !,
 %    set_ops(Y,(member(X,L2),synname(X,Y)),Z), %% seq. pres 
 %    append(L2,Z,L3).
@@ -306,7 +306,7 @@ hazardous_tagname(X):- %% TA-060213
  (   
     number(X);         %% TA-060214
 
-    myflags(language,N),dict_module(N,L),L:cw(X);             %% tuc/dict_ %% TA-070612
+    user:myflags(language,N),dict_module(N,L),L:cw(X);             %% tuc/dict_ %% TA-070612
 
     hazard_tagname(X) %%  db/teledat2
  ).

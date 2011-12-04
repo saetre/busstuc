@@ -1,25 +1,68 @@
-%% FILE translat.pl.
+%% FILE translat.pl
 %% SYSTEM TUC
 %% CREATED TA-940218
 %% REVISED TA-110624
 %% REVISED RS-111121
 
-%% MODULE: tuc
+%% UNIT: tuc
+:- module( translat, [
+        (=>)/2,
+        clausifyq/2,
+        clausifystm/1,
+        condq/2,
+        difact/2,
+        fact0/1,
+        hazardrule/1,
+        makedisjunct/2,
+%        user:myflags/2,
+        optand/3,
+        optor/3,
+        plunder/3,
+        protectrule/2, %% Ad Hoc
+        redundant/1,
+%        set/2,
+        testimpossible/1,
+        testquant/3,
+        unforgettable/2,
+        writeconjunct/2
+   ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- use_module( main:'../declare.pl').
+:- ensure_loaded( '../declare' ).
+
+:- use_module( '../utility/utility', [
+        do_count/1,
+        error/2,
+        flatlist/2,
+        for/2,
+        freshcopy/2,
+        ident_member/2,
+        match/2,
+        numbervars/1,
+        occ/2,
+        reverse/2,
+        subcase/2,
+        subsumes/2,   % X at least as general
+        test/1,
+        unsquare/2
+     ] ).   %% RS-111202    %% error/2, subcase/2
+
+:- use_module( '../app/interapp', [] ).  %% RS-111202    %% ieval
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%% Hash-table for all sorts of values (in main user: module)
+%:- volatile user:myflags/2.   %% RS-111202 to translate.pl?
+%:- dynamic user:myflags/2.
+%    :=/2      %    =:/2
 
-%:- volatile =>/2.
-%:- dynamic =>/2.
-:- dynamic difact/2, fact0/1.
+:- volatile difact/2, fact0/1, (=>)/2.
+:- dynamic difact/2, fact0/1, (=>)/2.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%  Skolemization of FOL expressions
-
-
 clausifystm( JLM ):- 
     newskolem(X),
     clausify(X,Y,[],JLM,CLAUSELIST),
@@ -150,8 +193,8 @@ skolem(X,Z,CH,(P => Q) ,N1 or Q1):-!,
     skolem(Y,Z,CH,Q,Q1).
 
 %skolem(X,X,_,Y isa C, isa/World/C/Y):- %% Brave New World
-%    myflags(textflag,true),
-%    myflags(world,World),
+%    user:myflags(textflag,true),
+%    user:myflags(world,World),
 %    World \== real,
 %    !.
 skolem(X,X,_,P,P).
@@ -381,11 +424,11 @@ writeconjunct(P,TF):-!,
 
 
 wrclause(_,_):-
-    myflags(queryflag,true), 
+    user:myflags(queryflag,true), 
     !.
 
 wrclause(P,TF):-
- \+ myflags(queryflag,true), 
+ \+ user:myflags(queryflag,true), 
     skupdate(P,TF).
 
 
@@ -441,7 +484,7 @@ premfakt(_).
  
 assertfact(P):-
     permanence =: 0,
-    myflags(context_id,UID),  
+    user:myflags(context_id,UID),  
     !, 
     retractall(difact(UID,P)), 
     asserta(difact(UID,P)).       %% reverse order
@@ -449,7 +492,7 @@ assertfact(P):-
 assertfact(P):-
     permanence =:1,
     !,
-    myflags(context_id,UID), 
+    user:myflags(context_id,UID), 
     retractall(fact0(P)),
     retractall(difact(UID,P)), 
     assert(fact0(P)).            % straight order
@@ -458,7 +501,7 @@ assertfact(P):-
 testimpossible(P):-
     explain(false),
     !, 
-    myflags(context_id,UID),     
+    user:myflags(context_id,UID),     
     retract(difact(UID,P)). 
 
 testimpossible(_).
@@ -633,14 +676,14 @@ condq1(not PQ, (not PQ1)):-
 % Update focus also in questions 
 
 %condq1(X isa C,isa/World/C/X):- 
-%    myflags(textflag,true),
-%    myflags(world,World),
+%    user:myflags(textflag,true),
+%    user:myflags(world,World),
 %    World \== real,
 %    !.
 
 condq1(X isa C,X isa C):- 
     nonvar(X),
- \+ myflags(queryflag,true), 
+ \+ user:myflags(queryflag,true), 
     !,
     new_focus(X,C).
 

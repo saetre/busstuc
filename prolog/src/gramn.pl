@@ -1,4 +1,4 @@
 %% FILE gramn
 
-:- use_module(gram_n:'tuc/gram_n.pl').
+:- use_module( gram_n:'tuc/gram_n.pl' ).
 

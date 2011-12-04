@@ -7,7 +7,7 @@
 
 %% User input terminals
 
-:- use_module( '../declare.pl' ).
+:- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
 
 %% NB  checkteleitem   and checkitem  are mingled %% TA-051106%%%%%%%%%%%%%
 %%     checkitem(tele,     checkitem(trans,
@@ -16,12 +16,12 @@
 :- dynamic current_frame/1, last_answer/2.
 
 checkitem(Type, OldFocus, NewFocus) :-
-	myflags(teleflag,true),
+	user:myflags(teleflag,true),
 	!,	
 	checkitem(tele,Type,OldFocus,NewFocus). %% name of module
 
 checkitem(Type, OldFocus, NewFocus) :-
-  \+ 	myflags(teleflag,true),
+  \+ 	user:myflags(teleflag,true),
   checkitem(trans, Type,OldFocus, NewFocus).   %% name of module
 
 
@@ -612,8 +612,8 @@ writeconstlist([_=Val|Rest]) :-
 %%
 
 invitemore :- 
-    \+ myflags(directflag,true),      %% TA-060127
-    \+ myflags(telebusterflag,true),  %% TA-060216
+    \+ user:myflags(directflag,true),      %% TA-060127
+    \+ user:myflags(telebusterflag,true),  %% TA-060216
     nl,                             %% TA-051221
     prent0(invitemore),nl. 
 invitemore.

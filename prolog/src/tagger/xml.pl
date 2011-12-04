@@ -36,9 +36,10 @@
  *
  *
  */
-:- module( xml,
+:- module(xml,
 	[
-	xml_parse/2,
+%        nmtokens/1,     %%from xml_acquisition
+        xml_parse/2,
 	xml_parse/3,
 	xml_subterm/2,
 	xml_pp/1

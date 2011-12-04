@@ -1,3 +1,9 @@
+%% FILE namehashtable.pl
+
+:- module( namehashtable, [
+        toredef/3,      %% from namehashtable
+        torehash/2     %% from namehashtable
+  ] ).
 
 %%% 
 

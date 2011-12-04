@@ -4,16 +4,36 @@
 %% REVISED TA-100201
 %% REVISED RS-111121
 
-%% MODULE: tuc
+%% UNIT: tuc
 %% Anaphoric resolution
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- use_module( '../ptbwrite', [ track/2 ]).
+:- ensure_loaded( '../declare' ).
+:- use_module( '../main', [ track/2 ]).
 
-:- use_module( user:'../declare.pl').
+
+:- use_module( evaluate, [ disqev/1, fakt/1 ]).         %% tuc/
+:- use_module( facts, [ (isa)/2 ]).
+:- use_module( tuc:fernando, [ subclass0/2, subtype0/2, type/2 ]).
+:- use_module( translat, [ condq/2 ]).
+
+:- use_module( '../dialog/newcontext2', [
+        dialog_resolve/2
+    ] ).
+
+:- use_module( '../utility/utility', [
+        match/2,
+        reverse/2,
+        test/1
+  ] ).
+
+:- use_module( '../utility/library', [  nth/3  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%:-volatile user:myflags/2.
+%:-dynamic  user:myflags/2.
 
 resolve(P,Q):- % Only 1 external
     resolves(P,Q).
@@ -93,7 +113,7 @@ resolv(findalt(_,_,_)::P,Q,L):-
 
 
 resolv(findpron(X)::P,Q,L):-     % Internal resolution
-    %% myflags(textflag,true),  
+    %% user:myflags(textflag,true),  
     %% \+ user:myflags(busflag,true), %% <-- Hazard ? 
     internalresolve(X,L),  
     !,
@@ -123,9 +143,9 @@ resolv(findpron(X:T)::P, exists(X:T)::  Q,L):- % External resolution of pronoun
 
 
 resolv(find(X)::P,Q,L):-     % 1.  Internal resolution  first
-%%%     myflags(textflag,true),    %% only for texts  
+%%%     user:myflags(textflag,true),    %% only for texts  
                              %% from nth to this palce \= nth
-    \+ myflags(dialog,1), 
+    \+ user:myflags(dialog,1), 
     internalresolve(X,L),  
     !,
     resolv(P,Q,L).    
@@ -326,7 +346,7 @@ externalresolve(X,P):-   % Dynamically query the qualia  X:_
 externalresolveit(X:_T,_):- nonvar(X),X=(_,_),!,fail. 
 
 externalresolveit(X:MT):-   % reference must not be
-    myflags(textflag,true),  
+    user:myflags(textflag,true),  
     is_the(X,K),            % more specific than referent
     type(K,KT),
     nogender(KT),
@@ -372,7 +392,8 @@ resolist(P,DL,UL):-       %% Finds list of referents
                           %% DZ undefined references
 
 %--------------------------------------
-
+:- volatile error_in_anaphors/0.
+:- dynamic error_in_anaphors/0.
 
 res2(V,    _,_,_,_):-var(V),!,error_in_anaphors. 
 

@@ -6,10 +6,22 @@
 
 
 % Bruker pragma til å bygge buslog-program fra TQL og svar fra buslog-program
-% 
+
+:- module( interapp, [
+        avoidfool/1,
+        decidewday/2,
+        determine_application_period/1,
+        determine_query_period/0,
+        execute_program2/2,
+        ieval/1,
+        invisible_mess/1,
+        newfree/1,
+        notbothfree/2,
+        webstat/3
+   ] ).
 
 %%% %%%%%%%% RS-111118
-:- use_module( '../declare.pl' ).
+:- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
 
 :-volatile webstat/3.
 :-dynamic webstat/3.
@@ -18,7 +30,7 @@
 
 
 
-ieval(TQL0) :- myflags(teleflag,true), 
+ieval(TQL0) :- user:myflags(teleflag,true), 
     !,
 	 copy_term(TQL0,TQL),
     be_prepared(TQL,FQL), 
@@ -45,9 +57,9 @@ ieval(TQL0) :-
     set(warningflag,false),
 %%    determine_query_period, %% OUTDATED %% TA-110302
 %%    determine_application_period(TQL), %% OUTDATED %% TA-110302
-    forget(myflags(warningtime,_)), 
-    forget(myflags(prewarningtime,_)), %% (all values are relevant)
-    forget(myflags(samedayflag,_)), %% i.e. unknown 
+    forget(user:myflags(warningtime,_)), 
+    forget(user:myflags(prewarningtime,_)), %% (all values are relevant)
+    forget(user:myflags(samedayflag,_)), %% i.e. unknown 
 %................
          pragma(trans,FQL,P),      % Builds program // may set samedayflag
          !,                        % Looks only at first try
@@ -62,13 +74,13 @@ ieval(TQL0) :-
     update_webstat, %% --- 
     waves. 
 
-waves :-  myflags(norsource,true), %% TA-110207
+waves :-  user:myflags(norsource,true), %% TA-110207
     !.
 
-waves :-  myflags(traceprog,0), %% TA-110207
+waves :-  user:myflags(traceprog,0), %% TA-110207
           !.
 
-waves :-  myflags(dialog,1),
+waves :-  user:myflags(dialog,1),
           !.
 
 waves :-	
@@ -105,7 +117,7 @@ update_webstat :-  %% TA-090430
     retract(webstat(TODAY,SMS,TOT)), %% dynamic/ declare
     !,
 
-   (myflags(smsflag,true)
+   (user:myflags(smsflag,true)
            -> (SMS1 is SMS+1,TOT1 is TOT + 1)%% 
             ; (SMS1 is SMS,  TOT1 is TOT+1)),
     assert(webstat(TODAY,SMS1,TOT1)),
@@ -116,7 +128,7 @@ update_webstat :-  %% TA-090430
   
     SMS=0, TOT=0,
 
-   (myflags(smsflag,true)
+   (user:myflags(smsflag,true)
            -> (SMS1 is SMS+1,TOT1 is TOT + 1)%% 
             ; (SMS1 is SMS,  TOT1 is TOT+1)),
     assert(webstat(TODAY,SMS1,TOT1)),
@@ -152,7 +164,7 @@ be_prep1(TQL,FQL):-
 	 konstantify(FQL).         % Flat TQL
 
 writeprog(P) :-
-	 myflags(traceprog,L),
+	 user:myflags(traceprog,L),
 	 L>1,
 	 !,
     copy_term(P,Pwr),
@@ -166,7 +178,7 @@ writeprog(_). % Otherwise
 
 
 traceanswer(Panswer) :- 
-	 myflags(traceans,L),
+	 user:myflags(traceans,L),
 	 L>1,
     !,
 	 copy_term(Panswer,Pwr),
@@ -183,16 +195,16 @@ traceanswer(_). %% Otherwise
 
 
 irun(_A,_B,_C,_D):-    %% not interested in answer
-    myflags(norsource,true),%% TA-110207
+    user:myflags(norsource,true),%% TA-110207
     !.
 
 irun(_A,_B,_C,_D):-    %% not interested in answer
-    myflags(traceprog,0),%% TA-110207
+    user:myflags(traceprog,0),%% TA-110207
     !.
 
 
 irun(A,B,C,D):- 
-    \+ myflags(busflag,true), %% TA-110502 \+  !!!
+    \+ user:myflags(busflag,true), %% TA-110502 \+  !!!
     irun0(A,B,C,D),      %% Test for dumy answers
     !.
 irun(A,B,C,D):-
@@ -205,7 +217,7 @@ irun(A,B,C,D):-
 % Not proper program.   May be something for standard tuc instead 
 
 irun0(TQL,_FQL,_,PROG):- 
-    \+ myflags(busflag,true),  %%  Drop TRY TUC  if busflag 
+    \+ user:myflags(busflag,true),  %%  Drop TRY TUC  if busflag 
     \+ isuccess(PROG),
     \+ explain_query(TQL),
     !,    
@@ -235,7 +247,7 @@ find_tag(_,nil).
 
 
 irun1(_,_FlatCode,_FC1,Program) :-
-    myflags(teleflag,true),
+    user:myflags(teleflag,true),
     !,
     isuccess(Program),
     execute_program(Program),
@@ -250,7 +262,7 @@ irun1(_,FlatCode,_FC1,Program) :-
     !, 
     makeanswer(true,FlatCode,Program,Panswer),
 	 !, 
-    (myflags(mapflag,true) -> true;
+    (user:myflags(mapflag,true) -> true;
        (printpaytag(Program), 
         writeanswer2(FlatCode,Program,Panswer))). 
 
@@ -369,7 +381,7 @@ writeanswer(Panswer) :-
 
 
 blankanswer(Panswer):- 
-%%    myflags(smsflag,true),  %% <--- Hva skjer = [ ] (smsflag=false)
+%%    user:myflags(smsflag,true),  %% <--- Hva skjer = [ ] (smsflag=false)
    foralltest(sequence_member(X,Panswer), % utility
                   invisible_mess(X)).
 
@@ -567,7 +579,7 @@ isc(timeis(_)).                       % klokka
 isc(tramstations(_)).                 % navnet på trikkestasjonene
 isc(true).                            % Answer Yes
 
-isc(teleprocess(_,_,_,_)) :- myflags(teleflag,true). 
+isc(teleprocess(_,_,_,_)) :- user:myflags(teleflag,true). 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

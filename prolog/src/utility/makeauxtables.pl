@@ -3,26 +3,87 @@
 %% CREATED TA-971121
 %% REVISED TA-100315
 
+:- module( makeauxtables, [
+        ambletarget/1,
+        assertpredlist/1,
+        busstall/1, 
+        busstat0/2,
+        complies/2,
+        connive/3, 
+        corr_ht/1,
+        createbusstat/0,
+        createhash/0,
+        createhovedt/0,  % mainly for tabuss
+        createonlyfromstations/0,  
+        createonlytostations/0,
+        createstatbus/0,
+        createtransbuslist/0,
+        createunproperstations/0,
+        crerr/0,
+        crerr1/0,
+        crerr2/0,
+        devcand/2, 
+        dumppred/1,
+        dumppredas/2,
+        ends_with_vg/1, 
+        filterhash/1,
+        fromstation1/1,
+        generatehash/1,
+        interior/1,  %% all neigbours have the same buslist
+        interiors/1,
+        makeauxtables/0,
+        makeinteriors/0,
+        makenext/1,
+        nopassanyway/2,
+        passanyway/2,
+        passes_ht/2,
+        propertransfer/1,
+        remembertorehash/2,      %% dalne -> daln /+/ e
+        splitgenroads/2,
+        splitgenroad/4,
+        spurious_street_hash/2,
+        stallbuss/1,  %% NB use actual buses names 
+        station_reference/1, 
+        statbus0/2,  %  tostationonly0/1,
+        toredef0/3,  torehash0/2, %  transbuslist0/3, 
+        taexists/3,
+        tafind/3,
+        taforall/3,
+        toretarget/1,
+        tostation1/1,
+        transbuslist1/3,
+        unproperstation0/1,
+        ver_movedate/0,    %% Added check for May17 %% TA-100106
+        verify_consistency/2,
+        verify_movedates/0,
+        writeheading/0,
+        writepred3/2,
+        writepredicates/1,  
+        writepredicates2/2,  
+        writepredlist/1,
+        xproperstation/1
+  ] ).
+
 %%%%%%%% Section to create Auxillary Bus Tables          %%%%%%%
 %   Also predicates for analysis and verification of routes   %%
 
 % Create a file of auxillary bustables (auxtables.pl)
 
 %% NB they are compiled again as a separate file
-%% The dynamic predicates (xxx0) corresponds to (some of) the filed predicates xxx
+%% The dynamic (volatile) predicates (xxx0) corresponds to (some of) the filed predicates xxx
 
 :- volatile  busstat0/2,  
-%  fromstationonly0/1,  %  nextstat0/2,    %  interior0/1,  
+%%  fromstationonly0/1,  %  nextstat0/2,    %  interior0/1,  
   statbus0/2,  %  tostationonly0/1,
   toredef0/3,  torehash0/2, %  transbuslist0/3, 
-  unproperstation/1,         % (PLACE)
+%  unproperstation/1,         % (PLACE)
   unproperstation0/1.
-
+%
 :-dynamic  busstat0/2,  
-%  fromstationonly0/1,  %  nextstat0/2,    %  interior0/1,  
+%%  fromstationonly0/1,  %  nextstat0/2,    %  interior0/1,  
   statbus0/2,  %  tostationonly0/1,
   toredef0/3,  torehash0/2, %  transbuslist0/3, 
-  unproperstation/1,         % (PLACE)
+%  unproperstation/1,         % (PLACE)
   unproperstation0/1.
 
 /*
@@ -92,9 +153,9 @@ makeauxtables:-
 
 writeheading:-
     datetime(A,B,C,D,E,F),
-    write('% Auxillary tables created '), 
-    write(datetime(A,B,C,D,E,F)),nl,nl.
-
+    write('% Auxillary tables created by utility/makeauxtables.pl '), 
+    write(datetime(A,B,C,D,E,F)),nl,nl,
+    write(':- module( auxtables, [  busstat/2,  statbus/2,  transbuslist/3  ] ).'),nl,nl.
 
 createstatbus:-
 
@@ -459,6 +520,7 @@ createhash :-
         generatehash(X)),
    !,
    tell('db/namehashtable.pl'), 
+   write( 'Created automatically by makeauxtables.pl ' ),nl,
 
    dumppredas(toredef0(X,Y,Z),toredef(X,Y,Z)),
    dumppredas(torehash0(X,Y),torehash(X,Y)),

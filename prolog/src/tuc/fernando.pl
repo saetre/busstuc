@@ -7,13 +7,91 @@
 %% Grammar Utility File  GRUF
 %% Named after the great Computational Linguist  Fernando Pereira
 
-%:- module( tuc, [ subclass0/2 ] ).  %% RS-111121 Module TUC
+:- module( tuc, [
+        adj_compl/6,
+        adjnamecomp_template/3,
+        adjname_template2/3,
+        adjnoun_template/4,
+        adjust_year/3,%% Special hack,  neste 3 minutter ?????
+        adjustprep/3,
+        adjustprepv/3, %% TA-110629
+        adv_compl/6,
+        align_measure/5,
+        atom_templ/2,
+        atv_template/6,
+        bealign/5,
+        bigno/3,        %% Already decided Horrendous
+%        bottom/2, %% Reminescent // Internal
+        cat_templ/5,
+        co_template/6,
+        comparad/5,
+        compare/5,      %% John is equal/unequal
+        compliancetest/2,
+        compliancetest2/3,
+        compoundtest/4,
+        compatvar/2,
+        constrain0/2,
+        constrain2/3,
+        constrainit/2,
+        ctype/2,         %% NEW REGIME    %% just for safety
+        dayname/1,
+        decide_adjective/3,
+        decide_quantifier/4,
+        defact/3,
+        dtv_template/6,
+        event/4,
+        hour_test/1,
+        idvarx/3,
+        isaprep/1,
+        issiffer/1,
+        issifre/1,
+        isfaktor/1,
+        it_template/1,
+        iv_template/4,
+        joinclass/3,
+        joinclasses/2,
+        %% latin combines names into a compound identifier
+        latin/4,        %% Nardovegen 1     %% Drop road number
+        meetclass/3,
+        nil_noun_compl/1,  %%  Just test IF there is a nil noun complement
+        noun_compl/4, %% TA-110119
+        norpart/3,      %% Adverbial expression for part of day %% Day is determined
+        monthnumber/2,
+        negate/3,
+        noun_adverb/4,
+        numberdate/2,
+        plausibleclocktest/3,
+        pluralis/2,
+        plausible_busno/1,
+        preadjs_template/4,
+        rep_verb/1,
+        rv_template/7,
+        setvartype/2,
+        screenmeasure/2,
+        subclass0/2,
+        subtype0/2,
+        subject_object_test/3,
+        teen/1,
+        testconstraint/2, %% test T <= ID
+        thenwhat/3,
+        tidvarp/3,
+        tv_template/5,
+        type/2,
+        value_world/1,
+        vartype/3,
+        vartypeid/2,
+        verb_compl/6,
+        verbtype/2,
+        which_thing/2,
+        whodunnit/2
+    ] ).  %% RS-111121 Module TUC
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %:-use_module('../utility/utility').
+:-use_module( dict_e, [ preposition/1 ] ).
 
-:- use_module( user:'../declare.pl').
+:- ensure_loaded( '../declare' ).  % :- use_module( user:'../declare.pl').
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -36,7 +114,7 @@ plausibleclocktest(H,M,HM) :- %%   10.10 -> clock / 10.11 -> date,
       HM is 100*H+M.
 
 
-value_world(W):- myflags(world,W),!;W=real.
+value_world(W):- user:myflags(world,W),!;W=real.
 
 
 decide_adjective(nil,_BusNo,true):-!.
@@ -486,7 +564,7 @@ bealign(X:Savant,Y:Year,S,P,P and dob/be/X/Y/S):-
 
 
 bealign(X,Y,S, P, Q):- %% Explicitly  X is Noun // not Noun X
-    \+ myflags(textflag,true),
+    \+ user:myflags(textflag,true),
     !,
     align(X,Y,S, P, Q).
 
@@ -800,7 +878,7 @@ dtv_template(Give,X:MT, Y:WT,  Z:ZT, S, dob/Give/X/Z/S and srel/ind/Woman/Y/S) :
 % Attribute classes are always bottom %
 
 has_template(_,_,_):-
-    myflags(error_phase,1),
+    user:myflags(error_phase,1),
     !.
 
 
@@ -881,7 +959,7 @@ preadj_template(NIL/A1,XT,W,P1):- %% TA-100326 NB
    adj_template(NIL,A1,XT,W,P1).
 
 worldvalue(W):-
-    myflags(world,W),!;W=real.
+    user:myflags(world,W),!;W=real.
 
 %% Pre Adjectives are situation invariant (no situation variable)
 %% Post Adjectives are situation dependent (situation parameters)
@@ -1152,7 +1230,7 @@ verb_compl(Sing,Prep,XY:T,U,S,Singing):-
 
 
 verb_compl(_,_,_,_,_,srel/nil/thing/nil/nil):-
-    myflags(error_phase,1),
+    user:myflags(error_phase,1),
     !.
 
 
@@ -1163,7 +1241,7 @@ verb_compl(_,_,_,_,_,srel/nil/thing/nil/nil):-
 
 
 verb_compl(See,With,_X:PT,Y:TST,S,srel/pwith/thing/Y/S):-
-    myflags(unknownflag,true),
+    user:myflags(unknownflag,true),
     bottom(TST,thing),
     subclass0(PT,Person), %% NB Person superclass
     v_compl(See,Person,With,_Telescope), % takes whatever
@@ -1371,11 +1449,11 @@ negate(often,X, X).
 
 
 type(ID,ID):-
-    myflags(error_phase,0),      % initilly, full typecheck
+    user:myflags(error_phase,0),      % initilly, full typecheck
     !.
 
 type(_ID_,thing):-
-    myflags(error_phase,1),      % if no meaning,
+    user:myflags(error_phase,1),      % if no meaning,
     !.                           % has a type
                              % try without typecheck
 ctype(X,X). %% NEW REGIME    %% just for safety
@@ -1541,10 +1619,8 @@ testconstraint(_X:T,ID):- %% test T <= ID
      !.
 
 %% latin combines names into a compound identifier
+latin(nil,X:T1,_:T2,X:T1):- %% Nardovegen 1     %% Drop road number
 
-%% Drop road number
-
-latin(nil,X:T1,_:T2,X:T1):- %% Nardovegen 1
     subclass0(T1,place),
     subclass0(T2,number),
     !.
@@ -1563,7 +1639,7 @@ latin(and,_:_,VARE:_,_):-    %% og være   %% EXTREMELY AD HOC (NORWAGISM)
 
 
 latin(and,_X:T1,_Y:T2,_):-  %% special for ambiguous names !!!
-    myflags(teleflag,true),
+    user:myflags(teleflag,true),
     T1==lastname,
     T2==lastname,
     !,

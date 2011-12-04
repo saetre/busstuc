@@ -3,11 +3,23 @@
 %% CREATED TA-930528
 %% REVISED TA-090925
 
-:- module(tuc, [ fact/1 ] ).
+:- module( evaluate, [
+    disqev/1,
+    evaluateq2/1,
+    fact/1,
+    fakt/1,
+    included/2,
+
+    qdev/2,
+    unskolemize/2,
+    valof/2,
+    winstant/3
+
+  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- use_module( '../declare.pl' ).
+:- ensure_loaded( '../declare' ).       %% Operators for TUC
 
 :-volatile difact/2, fact0/1.
 :-dynamic difact/2, fact0/1.
@@ -17,7 +29,7 @@
 evaluateq2(nil):-!.
 
 evaluateq2(R):-
-    myflags(busflag,true), %% Set by Bustuc Application Program
+    user:myflags(busflag,true), %% Set by Bustuc Application Program
 	 !,
     ieval(R).            %%  interapp.pl
 

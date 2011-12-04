@@ -5,11 +5,23 @@
 
 % Interface procedures for handling interface to route modules
 
-%:- use_module( 'db/timedat', [todaysdate/1] ).  
-:- use_module( 'utility/datecalc', [ on_valid_period/3, todaysdate/1 ]). % database functions, for time and days %% Module util
+:- module( interfaceroute, [
+        current_period/4,
+        default_period/3,
+        decide_period/2,
+        domain_module/2,
+        reset_period/0,
+        thisdate_period_module/3,       %% RS-111202
+        valid_period/2
+  ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% database functions, for time and days %% UNIT util
+:- use_module( 'utility/datecalc', [  off_valid_period/3,  on_valid_period/3,   todaysdate/1  ]).
 :- use_module( 'utility/utility', [output/1] ).  % utility functions
 
-:- ensure_loaded( 'db/topreg.pl' ).
+:- use_module( 'db/topreg.pl' ).
 
 %% NB  decide_period is called before each question
 
@@ -17,18 +29,18 @@
 %% Question Date is the date occurring in the question
 
 
-% thisdate_period_module(TT,_,Period) contains the actual period Dynamic
+% thisdate_period_module(TT,_,Period) contains the actual period, Dynamic
 :- volatile thisdate_period_module/3.
 :- dynamic thisdate_period_module/3.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 domain_module(D,M):- 
     routedomain(D), % unique solutions
     route_period(D,M,_,_).
 
 reset_period :- %% called from main.pl
-    myflags(gbflag,true),  
+    user:myflags(gbflag,true),  
     set(actual_domain,gb), 
     set_period_module(gb),  
     current_period(gb,CP,_,_),
@@ -36,7 +48,7 @@ reset_period :- %% called from main.pl
     !. %% /////////
 
 reset_period :- %% main.pl
-    myflags(tmnflag,true),
+    user:myflags(tmnflag,true),
     set(actual_domain,tmn),
     set_period_module(tmn),  
     current_period(tmn,CP,_,_),
@@ -84,7 +96,7 @@ search_period_module(TT,Date,Period):-
     !.
      
 search_period_module(TT,_Date,DO):-  %% BUSTER assumes default winter route
-    myflags(dialog,1),  
+    user:myflags(dialog,1),  
     !,
     default_period(TT,winter,DO).   %% AD HOC   TT WINTER ROUTE
 
@@ -105,27 +117,27 @@ valid_period(X,Y):-current_period(_,_,X,Y).
 
 
 decide_period(DateInQuestion,ThePeriod):- 
-    myflags(actual_domain,TT), 
+    user:myflags(actual_domain,TT), 
     search_period_module(TT,DateInQuestion,ThePeriod),
     !,
     set(actual_period, ThePeriod). % actual_period := ThePeriod
 
 decide_period(DateInQuestion,CurrentPeriod):- %% Same date => Period = current period
-    myflags(actual_domain,TT), 
+    user:myflags(actual_domain,TT), 
     todaysdate(DateInQuestion), 
     !,
     thisdate_period_module(TT,_,CurrentPeriod),         
     set(actual_period, CurrentPeriod). % actual_period := CurrentPeriod. 
 
 decide_period(DateInQuestion,ActualPeriod):- 
-    myflags(actual_domain,TT),
+    user:myflags(actual_domain,TT),
     current_period(TT,ActualPeriod,Date1,Date2),            %% Extra Check
     on_valid_period(DateInQuestion,Date1,Date2),    %% utility/datecalc
     !,
     set(actual_period, ActualPeriod). %   actual_period := ActualPeriod.    %% This is the Period in the Question
 
 decide_period(DateInQuestion,NextPeriod):- 
-    myflags(actual_domain,TT),  
+    user:myflags(actual_domain,TT),  
     current_period(TT,_NOW,Date1,Date2),             %% Extra Check
     off_valid_period(DateInQuestion,Date1,Date2),    %% utility/datecalc
     search_period_module(TT,DateInQuestion,NextPeriod),

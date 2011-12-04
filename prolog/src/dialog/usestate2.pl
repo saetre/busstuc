@@ -11,9 +11,12 @@
 % statetment.
 % Information from the state is added to the BUSLOG  statement.
 
-:- module(usestate,[]).
+:- module(usestate2, [
+        (rule)/2
+    ]).
 
-tracevalue(L) :- user:myflags(traceprog,L).  % Trace level 1-4
+%tracevalue(L) :- user:myflags(traceprog,L).  % Trace level 1-4 %% Where is this defined?? RS-111202
+
 % pragma(RuleModule,Source,Dest) bygger Dest fra Source vha reglene i RuleModule
 
 % Operatorer for Pragma-regler
@@ -50,7 +53,7 @@ tracevalue(L) :- user:myflags(traceprog,L).  % Trace level 1-4
 :- op( 712, fy,seen). % Lower than "not", higher than "isa"
 
 %%% %%%%%%%% RS-111118
-:- use_module( '../declare.pl' ).
+:- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
 
 askfor rule
 is	ispresent frame(Frame)

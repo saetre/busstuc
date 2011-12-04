@@ -3,9 +3,11 @@
 %% CREATED TLF-030409 TA-081107
 
 %% REVISED                  COMMON VERSION
+:- module( makeframe2, [
+        (rule)/2,
+        tracevalue/1
+    ] ).
 
-
-:- module(makeframe,[]). %% - maketeleframe
 
 % pragma(RuleModule,Source,Dest) bygger Dest fra Source vha reglene i RuleModule
 
@@ -49,7 +51,7 @@
 :- op( 712, fy,seen). % Lower than "not", higher than "isa"
 
 %%% %%%%%%%% RS-111118
-:- use_module( '../declare.pl' ).
+:- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
 
 tracevalue(X):- user:myflags(traceprog,X),!; X=1.
 

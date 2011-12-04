@@ -4,9 +4,34 @@
 %% REVISED TA-060419
 
 
-
-
 %% Common version for frames and teleframes 
+:-module( frames, [
+        completeframe/1,
+        completeteleframe/1,
+        find_askfor/3,
+        find_parentslot/3,
+        framecounter/1,
+        frame_getcount/2,
+        frame_getexperience/4,
+        frame_getsubslots/2,
+        frame_gettype/2,
+        frame_getvalue_rec/4,
+        frame_iscomplete/1,
+        frame_isempty/1,
+        frame_isfull/1,
+        frame_setexperience/4,
+        frametemplate/2,
+        is_subframe/2,
+        
+        resetframe/0,
+        xframe_getvalue/2,
+        xframe_setvalue/2
+  ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:- ensure_loaded( '../declare' ).       %% Operators for TUC
+
 
 %frameval(Type, Value, Filled, Confirmed, Experience)
 %subframe(Template, Id,)
@@ -134,7 +159,7 @@ completeteleframe( %%  hva er adressen til AITEL ?
 
 
 resetframe :-    % unnec                           %% TLF-030402
-    myflags(teleflag, true),!,
+    user:myflags(teleflag, true),!,
     getcurrent(Cid),
     frametemplate(telebuster, NewFrame),    %% TA-051018
     setframe(Cid, NewFrame).
@@ -180,13 +205,13 @@ frame_getexperience_rec(Frame, Slot, Value, Type) :-
 %%%%%%%%%%%
 
 xframe_setvalue(Slot, Value) :-  %% TA-060328
-    myflags(dialog,1),
+    user:myflags(dialog,1),
     !,
     frame_setvalue(Slot, Value).
 xframe_setvalue(_Slot, _Value).
 
 xframe_getvalue(Slot, Value) :-  %% TA-060328
-     myflags(dialog,1),
+     user:myflags(dialog,1),
      frame_getvalue(Slot, Value,_Type).
 xframe_getvalue(_Slot, nil). %% NB nil not []
 
@@ -217,7 +242,7 @@ frame_setvalue_rec(Frame, Slot, Value, NewFrame) :-
     substitute([Slot, OldVal, class(Type), XCount], Frame, [Slot, Value, class(Type), Count], NewFrame).
 
 frame_getsubslots(StartSlot, Slot) :-           %% TLF 030402
-    myflags(teleflag, true),!,
+    user:myflags(teleflag, true),!,
     frametemplate(telebuster, Frame),           %% TA-051018
     frame_getsubslots(Frame, StartSlot, Slot).
 
@@ -397,7 +422,7 @@ frame_iscomplete(Miss) :-
     frame_iscomplete(Frame, Miss).
 
 frame_iscomplete(Frame, Miss) :-    %% TLF 030403
-    myflags(teleflag, true),
+    user:myflags(teleflag, true),
     !,
     (
         frame_isconsistent_tele(Frame),!,
