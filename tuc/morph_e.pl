@@ -5,10 +5,25 @@
 %% REVISED TA-100325
 
 
-%% Morphological Analyser for the language E.
+%% Morphological Analyser for the language E (english).
+:-module( morph_e, [
+        be_verb/1,
+        ditrans_verb/1,
+        ends_with/3,
+        intrans_verb/1,
+        lexb/2,
+%        lexv/2,
+        lexv/4,
+        lcode2/2,
+        pvimodal_verb/1,
+        trans_verb/1,   %% have
+        verbroot/1,
+        verb_form/4
+    ] ).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
-:-module(morph_e,[]).
+:-use_module( dict_e, [] ).
 
 ends_with(X,Y,Z):-user:ends_with(X,Y,Z).
 

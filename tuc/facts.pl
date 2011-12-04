@@ -3,18 +3,40 @@
 %% CREATED  TA-921129
 %% REVISED  TA-110707  RS-111121
 
-:- module( facts, [ isa/2, have/4 ]).
+%:-op( 710,xfx, isa ).
+:- module( facts, [ (isa)/2, have/4,    %% RS-111204    isa/2
+        neighbourhood/1, precedent_firstname/1
+   ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  Static Facts for common sense .
 %  Common to all applications
 %  Facts are deliberately kept separate from semantics
 
-%:- use_module( main:'../declare.pl', [ myflags/2, set/2, ':='/2 ] ).
+:- ensure_loaded( '../declare' ).
+%:- use_module( '../main', [] ).
 
-:- use_module( main:'../declare.pl', [ myflags/2 ] ).
-:- use_module( app:'../app/busanshp', [ description/2 ] ).
-:- use_module( app:'../app/buslog', [ regbus/1, station/1 ] ).
+:- use_module( evaluate, [ fact/1 ] ).
+
+%:- use_module( tuc:lex, [ unproperstation1/1 ] ).
+:- use_module( lex, [  ] ).
+
+:- use_module( names, [ abroad/1, city/1, country/1 ] ).
+
+:- use_module( semantic, [
+        adj_templ/2, %% object ?  hvem var de første menneskene ? (trytofool)
+        (ako)/2,
+        (has_a)/2,
+        iv_templ/2, %% Tulle 
+        tv_templ/3
+  ] ).
+%:- ensure_loaded( semantic ).
+
+:- use_module( tuc:world0, [ area/2 ] ).
+%:- ensure_loaded( tuc:world0 ).
+
+:- use_module( '../app/busanshp', [ description/2 ] ).
+:- use_module( '../app/buslog', [ station/1 ] ).
 
 :- use_module( db:'../db/busdat', [
 %        building/1,
@@ -25,15 +47,6 @@
         vehicletype/2, xforeign/1 ]).
 :- use_module( places:'../db/places', [
         isat/2, placestat/2, underspecified_place/1, unwanted_place/1 ]).
-
-:- use_module( tuc:evaluate, [ fact/1 ] ).
-%:- use_module( tuc:lex, [ unproperstation1/1 ] ).
-:- ensure_loaded( tuc:lex ).
-:- use_module( tuc:names, [ abroad/1, city/1, country/1 ] ).
-%:- use_module( tuc:semantic ).
-:- ensure_loaded( tuc:semantic ).
-%:- use_module( tuc:world0, [ area/2 ] ).
-:- ensure_loaded( tuc:world0 ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
@@ -123,7 +136,7 @@ follesø isa lastname.  %% experiment / spammer
 
 appstore isa system. %% TA-110707
 api   isa system. %% ? %% TA-110120
-c isa mark. %% special dep in bus leaflet
+(c) isa mark. %% special dep in bus leaflet
 
 1939 isa telephone.
 %% 1939 isa phonenumber.
@@ -421,24 +434,24 @@ sone3 isa zone.
 %% web   isa network. %% Technical:  web address
 
 
-tore_amble isa man :- \+ myflags(teleflag,true).
+tore_amble isa man :- \+ user:myflags(teleflag,true).
 
-arvid_holme isa man :- \+ myflags(teleflag,true).
+arvid_holme isa man :- \+ user:myflags(teleflag,true).
 
-john    isa man :- \+ myflags(teleflag,true).    % belongs to every world :-)   -> Johan etc
+john    isa man :- \+ user:myflags(teleflag,true).    % belongs to every world :-)   -> Johan etc
 
-mary    isa woman :- \+ myflags(teleflag,true).  % needs some persons for testing
+mary    isa woman :- \+ user:myflags(teleflag,true).  % needs some persons for testing
 
-dave    isa man :-  \+  myflags(teleflag,true).  % 2001  :-)
+dave    isa man :-  \+  user:myflags(teleflag,true).  % 2001  :-)
 
 
 %% bob     isa man.     % (Jurafsky)
 
 
 (tore,amble) isa programmer :- %% Experiment
-    \+  myflags(teleflag,true).
+    \+  user:myflags(teleflag,true).
 
-(douglas,adams) isa author :-  \+  myflags(teleflag,true).
+(douglas,adams) isa author :-  \+  user:myflags(teleflag,true).
 
 
 bill_gates isa programmer.  %% (  :-)
@@ -453,7 +466,7 @@ tagore isa programmer.
 
 Y isa year :-
     number(Y),
-    \+ myflags(busflag,true),
+    \+ user:myflags(busflag,true),
     Y >0, Y =< 9999.
 
 
@@ -546,8 +559,8 @@ prolog    isa  programminglanguage.
 python    isa  programminglanguage.
 smalltalk isa  programminglanguage.
 
-ip        isa  network.   %% NO, but must have sth
-%%  www       isa  network.
+%%ip        isa  network.       %% NO, but must have sth
+  www       isa  network.       %% NO, but must have sth
 
 X isa nightbus :-
     nightbus(X).   %% busdat --> Moved to regbusall.pl
@@ -558,12 +571,12 @@ X isa route :-
 
 
 X isa route :-
-    myflags(tmnflag,true),
+    user:myflags(tmnflag,true),
     X isa tram.
 
 
 X isa station :-
-	 myflags(busflag,true), %% \+ dater
+	 user:myflags(busflag,true), %% \+ dater
     station(X),                %%  Semantically, not actual
     \+ xforeign(X),             %%   ( adjust database error)
     \+ unwanted_place(X),       %%   ( adjust database error)
@@ -580,7 +593,7 @@ X isa house :-
 /**********
 
 X isa tramstation :-
-% 	 myflags(tramflag,true),
+% 	 user:myflags(tramflag,true),
     tramstation(X).           %% E.G LIAN  know about it to give errm
 
 */
@@ -589,7 +602,7 @@ X isa tramstation :-
 
 
 X isa neighbourhood :-
-    myflags(busflag,true), %% \+ dater
+    user:myflags(busflag,true), %% \+ dater
     neighbourhood(X).
 
 
@@ -642,7 +655,7 @@ bratseth  isa lastname. %% jon
 
 
 Tor isa firstname :- %% jarle hermansen  // jarle both firstname and lastname
-    teleoption, %% myflags(teleflag,true),                %% prefer jarle as firstname first
+    teleoption, %% user:myflags(teleflag,true),                %% prefer jarle as firstname first
     is_dom_val(person,firstname,Tor,_,_).
 
 
@@ -697,7 +710,7 @@ neibor(X):-
 
 
 precedent_firstname(Tor) :-
-	myflags(tags,Tags),
+	user:myflags(tags,Tags),
 	precedent_firstname(Tags,Tor).
 
 precedent_firstname([[Tor,firstname]|_],Tor).
@@ -710,9 +723,9 @@ precedent_firstname([First|Rest],Tor) :-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 teleoption :-
-   myflags(telebusterflag,true)
+   user:myflags(telebusterflag,true)
    ;
-   myflags(teleflag,true).
+   user:myflags(teleflag,true).
 
 %% see teledat2.pl %%
 

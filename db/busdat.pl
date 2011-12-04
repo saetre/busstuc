@@ -12,79 +12,83 @@
 %* List of predicates
 
 :- module( busdat, [
-
+        %% abroad/1,                 % (PLACE) -> names.pl
+        %% city/1,                   % (PLACE) -> names.pl
+        %% foreign/2,                % (DOMAIN,PLACE) -> places.pl
+        %% foreign/1,                % (PLACE) -> places.pl
+        nostation/1,              % (PLACE) -> places.pl
         airbus/1,                  % (BUS?)
         airbusstation/1,           % (STATION)
-%        building/1,
         bus_depend_station/3,      % (ROUTE,PLACE,STATION)
-                bus_dependent_station/3,
+        bus_dependent_station/3,
+        busfare2/2,                % (ROUTETYPE,NUMBER*)
+
+        central_airbus_station/1,  % (STATION) 
         central_fromstation/1,     % (STATION) avoid default to ST
-                cmbus/3,
-%        composite_road/3,          % from regcompstr.pl
+        cmbus/3,
+        corr0/2,
+        corresp/2,                 % (PLACE,PLACE)
         corresp0/2,                % (PLACE,PLACE)
         corresponds/2,             % (STATION,STATION)
-        corresp/2,                 % (PLACE,PLACE)
-                corr0/2,
         cutloop_station/2,
-        
+
         disallowed_night/1,        % (DATE)
         default_destination/2,     % (ROUTE,STATION)
-        
-%        is_dom_val/5,               % fra teledat2.pl
-        
-%        nightbus/1,                % (STATION) % fra regbus.pl
+
+        endneighbourhood/2,        % (ROUTE,PLACE)
+        exbusname/2,               % (ROUTE,ROUTE)
+        explicit_part_name/1,      % (NAME)
+
+        fromstationonly/1,         % (STATION)
+        home_town/1,               % (PLACE)
+
+        intbusname/2,              % (ROUTE,ROUTE)
+        intbusnr/2,                % (ROUTE,ROUTE)
+        internal_airbus/1,         % (BOOLEAN)
+
+        moneyunit/1,               % (NAME)
+        nightbusstation/1,         % (STATION) 
         nightbusdestination/1,     % (STATION)
-        central_airbus_station/1,  % (STATION) 
         
         nostationfor/1,            % (PLACE)
         nostationfor1/1,           % (PLACE)
-        %% nostation/1,              % (PLACE) -> places.pl
-        %% foreign/2,                % (DOMAIN,PLACE) -> places.pl
-        %% foreign/1,                % (PLACE) -> places.pl
-        %% abroad/1,                 % (PLACE) -> names.pl
-        %% city/1,                   % (PLACE) -> names.pl
-        
-        exbusname/2,               % (ROUTE,ROUTE)
-        fromstationonly/1,         % (STATION)
-        intbusname/2,              % (ROUTE,ROUTE)
-        intbusnr/2,                % (ROUTE,ROUTE)
-        nightbusstation/1,         % (STATION) 
-        internal_airbus/1,         % (BOOLEAN)
-        home_town/1,               % (PLACE)
-        moneyunit/1,               % (NAME)
-        %% busfare/2,                 % (NUMBER,NUMBER) 
-        busfare2/2,                % (ROUTETYPE,NUMBER*)
+
+        preferred_transfer/5,
+        railway_station/1,
+        spurious_return/2,
         synbus/2,                  % (NAME,ROUTE)
+        thetram/1,
         thetramno/1,
         tramstation/1,             % (STATION)
-        thetramstation/1,             % (STATION)
-        
-        explicit_part_name/1,      % (NAME)
-        endneighbourhood/2,        % (ROUTE,PLACE)
-        railway_station/1,
-        preferred_transfer/5,
-                spurious_return/2,
-%        streetstat/5,              % fra regstr.pl
+        thetramstation/1,          % (STATION)
+        thetramstreetstation/2,
         tostationonly/1,           % (STATION) %% TA-110228
         unique_vehicle/2,
-        thetram/1, thetramstreetstation/2,
         vehicletype/2,
-                xisat/2,
+        xisat/2,
         xforeign/1,                % (PLACE)
-        xplacestat/2,   xsynplace/2
+        xplacestat/2,
+        xsynplace/2
     ]).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- use_module( '../declare', [ myflags/2 ] ).
-:- use_module( 'places', [ corr/2, foreign/1, isat/2, placestat/2 ] ).
-:- use_module( '../tuc/names', [ abroad/1, country/1 ] ).
+:- ensure_loaded( '../declare' ).
+:- use_module( '../interfaceroute', [ domain_module/2 ] ). %% HEAVY DB!
 
+:- use_module( 'places', [ corr/2, foreign/1, isat/2, placestat/2 ] ).
 %:- ensure_loaded( [ regbusall, regcompstr, regstr, teledat2 ] ). %% HEAVY DB!
 :- use_module( regbusall, [ nightbus/1 ] ). %% HEAVY DB!
 :- use_module( regcompstr, [] ). %% HEAVY DB!
 :- use_module( regstr, [] ). %% HEAVY DB!
-:- ensure_loaded( teledat2 ). %% HEAVY DB!
+:- use_module( teledat2, [] ). %% HEAVY DB!
+
+:- use_module( '../app/buslog', [ bound/1, bus/1, station/1 ] ).
+
+:- use_module( '../tuc/names', [ abroad/1, community/2, country/1 ] ).
+
+:- use_module( '../utility/utility', [ testmember/2 ] ).
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -105,8 +109,8 @@ cutloop_station(pling,plong). %%
 
 %%%  cutloop_station(3,carl_schjetnans_vei). %% TA-110331 NB creates double loop
 
-%%% fra lade gÃ¥rd  anders buens gt carl_schjetnans_vei -> hagen anders_buens_gate
-                                       
+%%% fra lade gård  anders buens gt carl_schjetnans_vei -> hagen anders_buens_gate
+
 
 %% cutloop_station(3,munkegata_m2). %% Lade - M2 - (Sjetnmarka)
 %% cutloop_station(3,munkegata_m5). %% Sjetnmarka - M5 - (Lade) 
@@ -174,13 +178,13 @@ disallowed_night(date(2009,04,13)).  %%  Påskeaften om morgenen
 
 
 %maxnumberofindividualdepartures(2):-
-%    myflags(smsflag,true),
-%    \+ myflags(nightbusflag,true),
+%    user:myflags(smsflag,true),
+%    \+ user:myflags(nightbusflag,true),
 %    !. 
 %
 %maxnumberofindividualdepartures(3):- %% not ridiculously many sequence
-%    myflags(smsflag,true),
-%    myflags(nightbusflag,true),
+%    user:myflags(smsflag,true),
+%    user:myflags(nightbusflag,true),
 %    !. 
 %
 %maxnumberofindividualdepartures(3). 
@@ -234,16 +238,16 @@ exbusname(9924,skolebuss).
 
 
 xplacestat(trondheim,tmn_trondheim):- 
-    myflags(tmnflag,true).  
+    user:myflags(tmnflag,true).  
 
 
 xplacestat(town,hovedterminalen). 
 xplacestat(trondheim,hovedterminalen) :- 
-    \+myflags(dialog,1).
+    \+user:myflags(dialog,1).
 
 
 xplacestat(klæbu,klæbu_sentrum):- %% Not possible mess in daytime
-    myflags(nightbusflag,true). %%   NATTBUSSEN
+    user:myflags(nightbusflag,true). %%   NATTBUSSEN
 
 
 
@@ -253,7 +257,7 @@ xplacestat(klæbu,klæbu_sentrum):- %% Not possible mess in daytime
 
 
 xsynplace(X,Y):-
-    myflags(tmnflag,true),
+    user:myflags(tmnflag,true),
     !,
     domain_module(_,TMN),
     TMN \== nil, 
@@ -261,7 +265,7 @@ xsynplace(X,Y):-
 
 
 xsynplace(X,Y):-
-    \+ myflags(tmnflag,true),
+    \+ user:myflags(tmnflag,true),
     !,
     domain_module(tt,TMN),
     TMN \== nil, 
@@ -272,11 +276,11 @@ xsynplace(X,Y):-
 %% PLACE INTERFACE SECTION
 
 xsynplace(sentrum,gb_st_olavs_gt):- %% Generalize
-    myflags(tmnflag,true). 
+    user:myflags(tmnflag,true). 
 
                        
 xsynplace(toget,ts) :-  %% presumes stasjonen is not noun def
-   \+ myflags(tmnflag,true).
+   \+ user:myflags(tmnflag,true).
 
                         %%  jeg når toget til oslo
                         %%  jeg bor på (lade og toget) går
@@ -324,7 +328,7 @@ streetstat(A,B,C,D,E):-
 
 
 thetramno(One):-
-    myflags(tmnflag,true),  
+    user:myflags(tmnflag,true),  
     unique_vehicle(tram,true),
     thetram(One).
 
@@ -332,8 +336,8 @@ tramstation(st_olavs_gt).
 tramstation(st_olavs_street). %% for street reference 
 %% tram_station(st_olavs_gt). %% Wrong, kep for security %% TA-100317
 tramstation(X):-
-    myflags(tramflag,true),  
-    tram_module(Tram),   %%  tram_mod(Tram), %% succeeds also if tramflag=false
+    user:myflags(tramflag,true),  
+    %tram_module(Tram),   %%  tram_mod(Tram), %% succeeds also if tramflag=false
     Tram \== nil, %% precaution 
     Tram:hpl(_,_,X,_).   %%
 
@@ -341,7 +345,7 @@ tramstation(X):-
 
 
 thetramstation(STOGT):-
-    myflags(tmnflag,true), 
+    user:myflags(tmnflag,true), 
     tramstation(STOGT).
  
 
@@ -359,7 +363,7 @@ nostationfor1(X):-nostation(X).     %%  Places with no close bus station
 
 
 nostationfor1(X):-
-    \+ myflags(tmnflag,true), 
+    \+ user:myflags(tmnflag,true), 
     tramstation(X),
     \+ station(X).
 
@@ -373,7 +377,7 @@ nostationfor1(X):-
 
 
 xforeign(X):-
-    myflags(actual_domain,TT),
+    user:myflags(actual_domain,TT),
     xforeign(TT,X), %% NB relative to Team !
     \+ nightbusdestination(X).
 
@@ -393,11 +397,11 @@ xforeign(tt,C):- community(C,County), %% tt malvik foreign to fb
                 \+ station(C). %% e.g. berg
 
 nightbusdestination(X):-
-    myflags(nightbusflag,true), 
+    user:myflags(nightbusflag,true), 
     member(X,[klæbu]). %% Ad Hoc
 
 
-nostation(st_olavs_gt):- \+ myflags(tmnflag,true). 
+nostation(st_olavs_gt):- \+ user:myflags(tmnflag,true). 
 
 
 
@@ -413,11 +417,11 @@ bus_dependent_station(Bus,Said,Meant):-
     bus_depend_station(Bus,Said,Meant),
     !.
 bus_dependent_station(_Bus,Said,Meant):- 
-    \+ myflags(airbusflag,true),  
+    \+ user:myflags(airbusflag,true),  
     Meant=Said.
 
 bus_dependent_station(_Bus,_Said,Meant):- 
-    myflags(airbusflag,true),       
+    user:myflags(airbusflag,true),       
     default_origin(_,Lerkendal),
     !,
     Meant=Lerkendal. %% Default (but not central!) 
@@ -431,7 +435,7 @@ bus_dependent_station(_Bus,_Said,Meant):-
 % bus_depend_station(<bus no>,<place said>,<station "meant">).
 
 bus_depend_station(_Bus,RGH,RGH) :- %% // busdependent ??????
-    myflags(airbusflag,true),  
+    user:myflags(airbusflag,true),  
     testmember(RGH,[royal_garden_hotell,britannia_hotell]),
     !. %%% AD HOC 
 
@@ -576,13 +580,13 @@ corresp0(X,Y):-
 
 corresp(X,Y):-
 
-   myflags(actual_domain,T),
+   user:myflags(actual_domain,T),
   (corrx(T,X,Y)
    ;
    corrx(T,Y,X)).
 
 corresp(X,Y):-                    %% 
-   myflags(actual_domain,T),
+   user:myflags(actual_domain,T),
    (corrx(T,X,hovedterminalen)
    , %%%%%%% <----------- ; sic
    corrx(T,Y,hovedterminalen)).
@@ -658,7 +662,7 @@ airbusstation(royal_garden).
                                  
 
 internal_airbus(IAB):-  
-    myflags(internal_airbusflag,true) -> 
+    user:myflags(internal_airbusflag,true) -> 
         IAB=true
       ; 
         IAB=false.
@@ -737,12 +741,12 @@ preferred_transfer(46,47,pirbadet,munkegate_m4,city_syd).
 %% Airbus Section
 
 default_origin(_,sorgenfriveien) :- %% AD HOC 
-    myflags(airbusflag,true),
+    user:myflags(airbusflag,true),
     !.
 
 
 default_destination(_,værnes) :- %% AD HOC 
-    myflags(airbusflag,true),
+    user:myflags(airbusflag,true),
     !.
 
 

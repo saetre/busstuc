@@ -8,6 +8,8 @@
 
 % assume all files are separated correctly with a Tab (ASCII 9)
 
+:- ensure_loaded( '../declare' ).
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :-volatile val/1, val2/1, val3/1. 
@@ -17,8 +19,6 @@ extracoord :-
 
    output('Please wait a minute'),
    extract(statcoord).
-
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -319,12 +319,6 @@ mini(999,X,X):-!.
 mini(X,_,X).
 
 
-
-for(P,Q):-
-  P,Q,
-  false;true.
-
-
 % Prologs setof is baroque %% 
 
 set_of(X,Y,Z):-           %% 
@@ -381,7 +375,7 @@ rev1([X|Y],L,Z):-
     rev1(Y,[X|L],Z).
 
 
-listall(P):-P,write(P),nl,fail:true.
+listall(P) :- P, write(P), nl, fail ; true.
 
 output(X):-write(X),nl.
 

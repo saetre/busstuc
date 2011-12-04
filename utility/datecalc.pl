@@ -6,10 +6,17 @@
 % Contains the utility predicates that has to do with dates
 
 :- module( datecalc, [
-    datetime/6,
-    days_between/3,
-    on_valid_period/3,
-    todaysdate/1       %% Lifted up to main -> usually compiled in tucbuses.pl ?  %%-RS 111121
+    add_days/3,
+    before_date1/2,
+    %% creates a string of date  YYYYMMDD
+    datestring/1,       datetime/6,     dayno/2,        days_between/3,
+    dayname/2,          dayprefix/2,    daysucc/2,      easterdate/2,
+    findfirstcomingdate/2,
+    getdaynew/1,        isofloor/2,     isday/1,        month_name/2,
+    number_of_days_between/3,           
+    off_valid_period/3, on_valid_period/3,      % X is not in [Y -- Z]
+    sub_days/3,         timestring/1,   todaysdate/1,  %% Lifted up to main -> usually compiled in tucbuses.pl ?  %%-RS 111121
+    valid_date/1,       weeknumber/2,   xweekday/2
    ]).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -30,7 +37,7 @@
 
 % Prolog is really awkard here
 convert_zone(YYY, M, D, H,Min,Sec,   YYY,M,D,H,Min,Sec) :- %% TA-080407
-    \+ myflags(busflag,true),
+    \+ user:myflags(busflag,true),
     !.
 
 convert_zone(YYY, M, D, H,Min,Sec,
@@ -288,8 +295,8 @@ valid_date(date(YYYY,MM,DD)):-
 
 /**
 xweekday(Date,HDay):-
-   \+ myflags(nightbusflag,true), %% FICTITIOUS DAYS IRRELEVANT
-   \+ myflags(airbusflag,true),   %% TA-090506
+   \+ user:myflags(nightbusflag,true), %% FICTITIOUS DAYS IRRELEVANT
+   \+ user:myflags(airbusflag,true),   %% TA-090506
    date_day_map(Date,HDay),  %% creates message: 1. Mai. 2010 er en  søndag .WRONG
    !.
 **/
@@ -378,10 +385,6 @@ datetime(YYYY,MM,DD,HH,MIN,SEC):-
 
     convert_zone(YYY, M, D, H, Min,Sec, %% TA-080407
                  YYYY,MM,DD,HH, MIN,SEC).
-
-timedat:this_year(YYYY):-
-    datetime(YYYY,_B,_C,_D,_E,_F).
-
 
 timestring(Z):- %% creates a string of time-point YYYYMMDDHHMMSS
     datetime(X1,X2,X3,X4,X5,X6),

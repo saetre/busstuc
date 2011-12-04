@@ -10,13 +10,13 @@
 :-prolog_flag(discontiguous_warnings,_,off). 
 
 
-?-compile('interfaceroute.pl'). %% Interface modules
+?- use_module( interfaceroute, [] ). %% Interface modules
 
 ?-compile('compileroute.pl').   %% Bootstrapping for compilation
     
 ?-compile('db/statcoord.pl').   %% 
 
-?-ensure_loaded('db/topreg.pl').      %% Main Table for Route Modules
+?-use_module( 'db/topreg.pl', [] ).      %% Main Table for Route Modules
     
     :- consultbase(tt). %% <-------------- %% TA-110302
 

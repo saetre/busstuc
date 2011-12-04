@@ -9,56 +9,70 @@
 % Domains:   BOOLEAN ROUTETYPE STATION PLACE MINUTES
 %            DATE DAY DOMAIN CLOCK
 
-:- use_module( '../utility/utility', [ remember/1 ]).  %% Module util
-:- use_module( '../utility/datecalc', [ todaysdate/1 ]).  %% Module util
+:- module( timedat, [
+        after_morning/1,        aroundmargin/1,            % (MINUTES)
+        before_morning/1,       buslogtimeout/1,           % (MILLISEC)
+        clock_delay/3,          create_named_dates/0,
+        date_day_map/2,         % (DATE,DAY)
+        dedicated_date/1,       % (DATE)
+        defaultprewarningtime/1,        delay_margin/1,    % (MINUTES)
+        hours_delay/1,
+        kindofday/2,            % (DAY,DAY)
+        maxnumberofindividualdepartures/1,    % (NUMBER)
+        maxtraveltime/1,        % (MINUTES)
+        maxarrivalslack/1,      % (MINUTES)
+        morning_break/1,        % (CLOCK) 
+        named_date/2,           % (NAME)
+        orig_named_date/2,
+        softime/3,                 % (NAME,CLOCK,CLOCK)
+        this_year/1,
+        todaysdate/1,           %% Exported as timedat:pred from datecalc.pl
+
+        %% FROM makeauxtables %%
+        busstat0/2,             
+        statbus0/2,  %  tostationonly0/1,
+        toredef0/3,  torehash0/2, %  transbuslist0/3, 
+        %  unproperstation/1,         % (PLACE)
+        unproperstation0/1
+                   %% FROM makeauxtables %%
+]).
+%% RS-111204    Surplus
+        %cmbus/2,               % (NAME,NAMES,ROUTE)
+        %corrx/2,               % (DOMAIN,PLACE,PLACE)
+        %hours_delay/2,         % (NUMBER)
+        %nightbus/1,            % (ROUTE)
+        %spurious_return/1         % (ROUTE,PLACE)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:- use_module( '../utility/utility', [ for/2 ]).  %% Module util
+:- use_module( '../utility/datecalc', [ 
+    add_days/3,
+    datetime/6,
+    easterdate/2,
+    sub_days/3,
+    todaysdate/1 ]).  %% Module util
 %:- ensure_loaded( '../utility/utility' )
 
 %* Import predicates
-:- ensure_loaded( '../utility/makeauxtables' ). %% From Utils?
+:- use_module( '../utility/makeauxtables' ). %% From Utils?
 
-:- module(timedat, [
-aroundmargin/1,            % (MINUTES)
-buslogtimeout/1,           % (MILLISEC)
-clock_delay/3,
-create_named_dates/0,
-%cmbus/2,                   % (NAME,NAMES,ROUTE)
-date_day_map/2,            % (DATE,DAY)
-dedicated_date/1,          % (DATE)
-delay_margin/1,             % (MINUTES)
-%corrx/2,                   % (DOMAIN,PLACE,PLACE)
-%hours_delay/2,             % (NUMBER)
-kindofday/2,               % (DAY,DAY)
-maxnumberofindividualdepartures/1,    % (NUMBER)
-maxtraveltime/1,           % (MINUTES)
-maxarrivalslack/1,         % (MINUTES)
-morning_break/1,           % (CLOCK) 
-named_date/2,              % (NAME)
-%nightbus/1,                % (ROUTE)
-orig_named_date/2,
-
-softime/3                 % (NAME,CLOCK,CLOCK)
-%spurious_return/1         % (ROUTE,PLACE)
-%todaysdate/1           %% Exported as timedat:pred from datecalc.pl
-]).
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Santa Barbara
 %clock_delay(00,00,00). %%  FOR CLOCK ADJUSTMENT
-%
-%
 %hours_delay(0).    %% Time in Trondheim is 0 hours more than server clock
-
 % hours_delay(-9). %% Time in Santa Barbara  is 9 hours EARLIER than server clock
 % hours_delay(10). %% Time in  Tokyo (?)
-
-
 %extraallowed_night/2,      % (DATE, KINDOFDAY)
 %preferred_transfer/4,      % (ROUTE,ROUTE,STATION,STATION)
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :- volatile named_date/2.  %% Created Blank Initially, "remember"-ed later 
 :- dynamic named_date/2.   %% Created Blank Initially, "remember"-ed later
+
+
+this_year(YYYY):-
+    datetime(YYYY,_B,_C,_D,_E,_F).
 
 
 create_named_dates :-
@@ -68,9 +82,9 @@ create_named_dates :-
           %% From util:
          remember(named_date(A,B))). %% To be     refined  
 
-for(P,Q) :-
-  P,Q ,
-  false ; true.
+%for(P,Q) :-                    %% From utility.pl
+%  P,Q ,
+%  false ; true.
 
 
 %%%%%%%  TIME  SECTION %%%%%%%%%%%%%%%%%
@@ -329,13 +343,13 @@ softime(midnight,2400,2500).
 
 
 maxnumberofindividualdepartures(2):-
-    myflags(smsflag,true),
-    \+ myflags(nightbusflag,true),
+    user:myflags(smsflag,true),
+    \+ user:myflags(nightbusflag,true),
     !. 
 
 maxnumberofindividualdepartures(3):- %% not ridiculously many sequence
-    myflags(smsflag,true),
-    myflags(nightbusflag,true),
+    user:myflags(smsflag,true),
+    user:myflags(nightbusflag,true),
     !. 
 
 maxnumberofindividualdepartures(3). 

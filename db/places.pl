@@ -18,23 +18,24 @@
 
 
 :- module( places, [
-
   alias_name/2,            % (NAME,NAME)
   alias_station/2,         % (STATION,STATION)
+  aliasteamatb/3,
   cmpl/3,                  % (NAME,NAME*,LIST)
   corr/2,                  % (PLACE,PLACE)
   foreign/1,
   isat/2,                  % (STATION,PLACE)
+  nostation/1,
   place_resolve/2,         % (PLACE,STATION).
   placestat/2,             % (PLACE,STATION)
   sameplace/2,             % (PLACE,PLACE)
 %  short_specname/1,        % (NAME,STRING)
+  short_specname/2,
   specname/2,              % (NAME,STRING)
   synplace/2,              % (NAME,PLACE)
   underspecified_place/1,  % (PLACE)
   unwanted_place/1,        % (PLACE)
   unwanted_station/1      % (PLACE)
-
 ]).
 
 
@@ -747,7 +748,7 @@ placestat(smistadkrysset,arnt_smistads_veg).
 %% placestat(solbakkenbrua,osbrua). 
 %% placestat(solsiden,solsiden). %% station %% TA-101130
 
-%% placestat(sorgenfriveien,sorgenfri) :- \+ myflags(airbusflag,true).  %% (on the map)
+%% placestat(sorgenfriveien,sorgenfri) :- \+ user:myflags(airbusflag,true).  %% (on the map)
 %% krøll med airbus 
 
 placestat(sosialhøgskolen,gildheim).  %% ???
@@ -1666,7 +1667,7 @@ sameplace(østmarkneset,østmarkveien).  %%nesset
 sameplace(øvreromolslia,romolslia_øvre). 
 sameplace(kattemsentret,kattemsenteret). 
 
-short_specame(ranheim_stasjon,'Ranheim st. '). 
+short_specname(ranheim_stasjon,'Ranheim st. '). 
 short_specname(d1,'Dronn. gt D1'). 
 short_specname(d2,'Dronn. gt D2'). 
 short_specname(d3,'Dronn. gt D3'). 
@@ -2114,9 +2115,9 @@ specname(trondheim_torg,'Trondheim Torg').
 specname(trondheim_sentralstasjon,'Trondheim Sentralstasjon'). %% TA-110628
 specname(ts,'Trondheim Sentralstasjon'). 
 
-specname(ts10,'Trondheim Sentralstasjon ') :-myflags(airbusflag,true),!. 
-specname(ts11,'Trondheim Sentralstasjon ' ):-myflags(airbusflag,true),!.  
-specname(ts13,'Trondheim Sentralstasjon')  :-myflags(airbusflag,true),!. 
+specname(ts10,'Trondheim Sentralstasjon ') :-user:myflags(airbusflag,true),!. 
+specname(ts11,'Trondheim Sentralstasjon ' ):-user:myflags(airbusflag,true),!.  
+specname(ts13,'Trondheim Sentralstasjon')  :-user:myflags(airbusflag,true),!. 
 
 specname(ts10,'Trondheim Sentralstasjon holdeplass 10'). 
 specname(ts11,'Trondheim Sentralstasjon holdeplass 11').  %% EH-031017
@@ -5043,141 +5044,140 @@ unwanted_place(øre).    %%  \+ øvre
 
 
 %% NOSTATION 
-
 %% places in Trondheim without station (not foreign)
 
 %% TRAM  stations
 %%  Experiment Only if not properstation
 
-%nostation(arbeidsbuss). %% SIC  endstation bus 100 
-%
-%nostation(bygrensen):- \+myflags(tmnflag,true).    
-%
-%nostation(ferstad):-   \+myflags(tmnflag,true). %% Ferstads vei
-%
-%nostation(frøset). 
-%
-%
-%
-%nostation(herlofsonsløypa) :- \+myflags(tmnflag,true). 
-%%% nostation(heggsnipen). %% fins ikke i rdata(barei hefte). %%fikset 5.307
-%nostation(lian):-      \+myflags(tmnflag,true).  
-%nostation(nordre_hoem) :- \+myflags(tmnflag,true). 
-%nostation(rognheim) :- \+myflags(tmnflag,true). 
-%nostation(søndre_hoem):- \+myflags(tmnflag,true). 
-%
-%
-%%%%%%% Nostation  no bus to place ever
-%
-%nostation(lian). 
-%
-%nostation(baklidammen). 
-%nostation(bjørnebyen).    %% (langs trikkelinjen mot Lian)
-%nostation(benjaminbyen).  %%
-%nostation(benjaminsbyen). 
-%
-%nostation(bybrua).
-%nostation(bybruen). 
-%nostation(bybroen). %%  (gamle bybro)
-%nostation(bybro).  
-%
-%nostation(byneset_kirke).  
-%
-%% nostation(byåsveien).              %%   On Map, not on Route 
-%nostation(devlebukta). 
-%nostation(devlebukten). 
-%
-%nostation(elgsethytta). 
-%nostation(elgsethytten).  
-%nostation(elgsetshytta).  
-%
-%nostation(estenestaddammen). 
-%nostation(estenstadhytta). 
-%%%  nostation(fjellseter).  
-%nostation(fjordgata). %% as street, OK , but underspecified
-%nostation(flaktveit). %% i Th??? Foreign
-%
-%nostation(graaemølna). nostation(graaemølna). %% nedlagt f.o.m. høst 2008
-%
-%nostation(grankollen). 
-%nostation(gråkallen). 
-%
-%
-%
-%% nostation(kjøpmannsgata).          %%  (m. var.)  STREET  
-%% nostation(leuthenhaven).           %% NOT as such
-%
-%
-%% % % %
-%
-%%% nostation(arbeidsbuss). %% spurious Reg stations %% fikset 5.3.07
-%nostation(g).  
-%
-%nostation(grønningen). 
-%
-%% nostation(heggstadmyra).  -> heggstadmoen
-%% nostation(hornebergveien).         %%  OK (ONLY in WINTER)
-%% nostation(haakon_vii_gate). %% Not in summer 
-%
-%%% nostation(hårstad).        %% hpl 503 Non Existent -> Krgeness
-%nostation(hårstadstien). %% 
-%
-%nostation(lavoll). 
-%nostation(lavollen). 
-%nostation(geitfjellet). 
-%
-%nostation(grønnlia). 
-%nostation(lillegårdsbakken).    
-%nostation(munkholm).  
-%nostation(munkholmen).  
-%%  nostation(møller_bil).        %% not in summer 
-%nostation(nardoskrenten). 
-%
-%%%%  nostation(nidelv_bru). %% nedlagt 22. mars %% TA-110822
-%
-%%%% nostation(nidarø).    %% Trondheim spektrum 
-%% nostation(nordre_ilevollen).  
-%% nostation(omkjøringsveien_nardo). %% Not in summer 
-%nostation(olsborg).   %%  Trlag ???
-%%% nostation(royal_garden).   
-%%%  nostation(skistua). 
-%
-%%% nostation(roial_garden). %% only 1 departure with nightbus 
-%                            %% However, hotell royal garden neighbourhood                     
-%nostation(sommerseter). 
-%nostation(sommersæter). 
-%nostation(sommersætra).  
-%nostation(sommersetra).
-%
-%
-%nostation(stokkmarka).
-%%% nostation(storgata).    %%  foreign 
-%
-%%% nostation(steinaunet).
-%
-%%% nostation(studenterhytta). 
-%nostation(sundalsveien). 
-%nostation(sundlandsskrenten). 
-%nostation(sunnlandsskrenten).      %%  (no spellc)
-%nostation(sundlandsveien). 
-%    nostation(sundlandsvn). %% NO SPELLCORR to NOSTATION 
-% nostation(sundlandsskrenten). 
-%%  nostation(st_olavs_gate). 
-%
-%nostation(teisendammen).  
-%nostation(theisendammen). 
-%
-%%nostation(teisendamen).   %% X
-%%nostation(theisendamen).  %% X
-%
-%nostation(ullins_vei). %% abandoned 2006 
-%                       %% street remains
-%
-%nostation(varden). %% i TH?  
-%nostation(vollmarka). 
-%nostation(våddan).        %%
-%
-%nostation('Øvre Alle'). 
+nostation(arbeidsbuss). %% SIC  endstation bus 100 
+
+nostation(bygrensen):- \+user:myflags(tmnflag,true).    
+
+nostation(ferstad):-   \+user:myflags(tmnflag,true). %% Ferstads vei
+
+nostation(frøset). 
+
+
+
+nostation(herlofsonsløypa) :- \+user:myflags(tmnflag,true). 
+ nostation(heggsnipen). %% fins ikke i rdata(barei hefte). %%fikset 5.307
+nostation(lian):-      \+user:myflags(tmnflag,true).  
+nostation(nordre_hoem) :- \+user:myflags(tmnflag,true). 
+nostation(rognheim) :- \+user:myflags(tmnflag,true). 
+nostation(søndre_hoem):- \+user:myflags(tmnflag,true). 
+
+
+%%%% Nostation  no bus to place ever
+
+nostation(lian). 
+
+nostation(baklidammen). 
+nostation(bjørnebyen).    %% (langs trikkelinjen mot Lian)
+nostation(benjaminbyen).  %%
+nostation(benjaminsbyen). 
+
+nostation(bybrua).
+nostation(bybruen). 
+nostation(bybroen). %%  (gamle bybro)
+nostation(bybro).  
+
+nostation(byneset_kirke).  
+
+ nostation(byåsveien).              %%   On Map, not on Route 
+nostation(devlebukta). 
+nostation(devlebukten). 
+
+nostation(elgsethytta). 
+nostation(elgsethytten).  
+nostation(elgsetshytta).  
+
+nostation(estenestaddammen). 
+nostation(estenstadhytta). 
+  nostation(fjellseter).  
+nostation(fjordgata). %% as street, OK , but underspecified
+nostation(flaktveit). %% i Th??? Foreign
+
+nostation(graaemølna). nostation(graaemølna). %% nedlagt f.o.m. høst 2008
+
+nostation(grankollen). 
+nostation(gråkallen). 
+
+
+
+ nostation(kjøpmannsgata).          %%  (m. var.)  STREET  
+ nostation(leuthenhaven).           %% NOT as such
+
+
+ % % %
+
+ nostation(arbeidsbuss). %% spurious Reg stations %% fikset 5.3.07
+nostation(g).  
+
+nostation(grønningen). 
+
+ nostation(heggstadmyra).  %% -> heggstadmoen
+ nostation(hornebergveien).         %%  OK (ONLY in WINTER)
+ nostation(haakon_vii_gate). %% Not in summer 
+
+ nostation(hårstad).        %% hpl 503 Non Existent -> Krgeness
+nostation(hårstadstien). %% 
+
+nostation(lavoll). 
+nostation(lavollen). 
+nostation(geitfjellet). 
+
+nostation(grønnlia). 
+nostation(lillegårdsbakken).    
+nostation(munkholm).  
+nostation(munkholmen).  
+  nostation(møller_bil).        %% not in summer 
+nostation(nardoskrenten). 
+
+%  nostation(nidelv_bru). %% nedlagt 22. mars %% TA-110822
+
+% nostation(nidarø).    %% Trondheim spektrum 
+ nostation(nordre_ilevollen).  
+ nostation(omkjøringsveien_nardo). %% Not in summer 
+nostation(olsborg).   %%  Trlag ???
+ nostation(royal_garden).   
+  nostation(skistua). 
+
+ nostation(roial_garden). %% only 1 departure with nightbus 
+                            %% However, hotell royal garden neighbourhood                     
+nostation(sommerseter). 
+nostation(sommersæter). 
+nostation(sommersætra).  
+nostation(sommersetra).
+
+
+nostation(stokkmarka).
+ nostation(storgata).    %%  foreign 
+
+ nostation(steinaunet).
+
+ nostation(studenterhytta). 
+nostation(sundalsveien). 
+nostation(sundlandsskrenten). 
+nostation(sunnlandsskrenten).      %%  (no spellc)
+nostation(sundlandsveien). 
+    nostation(sundlandsvn). %% NO SPELLCORR to NOSTATION 
+ nostation(sundlandsskrenten). 
+  nostation(st_olavs_gate). 
+
+nostation(teisendammen).  
+nostation(theisendammen). 
+
+nostation(teisendamen).   %% X
+nostation(theisendamen).  %% X
+
+nostation(ullins_vei). %% abandoned 2006 
+                       %% street remains
+
+nostation(varden). %% i TH?  
+nostation(vollmarka). 
+nostation(våddan).        %%
+
+nostation('Øvre Alle'). 
 
 %%%%%% Conversion  Team Station names > 100822
     %%             AtB Station names  < 100823

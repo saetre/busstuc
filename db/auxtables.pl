@@ -1,5 +1,6 @@
 % Auxillary tables created datetime(2011,8,25,13,5,26)
 
+:- module( auxtables, [  busstat/2,  statbus/2,  transbuslist/3  ] ).
 
 %%% 
 

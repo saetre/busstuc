@@ -4,18 +4,70 @@
 %% CREATED TA-931217
 %% REVISED TA-110803 RS-111121
 
-%% MODULE: tuc / lex
-
+%% UNIT: tuc
+%% MODULE: lex
 %% Transforms each word into a list of alternatives.
 %% Semi-tagger (quasi multitagger)
 
 % % % % % % % % % % % % % % % % % % % % % % % % % %
 
-%:- module( tuc, [ unproperstation1/1 ] ).  %% RS-111121 Module TUC / lex
+:- module( lex, [
+        assertnewtxt/3,
+        avoid_spurious_street/1,
+        believed_name/5,
+        blockmark/1,
+        clean1/0,
+        completely_unknown/3,
+        ctxt/3,
+        decide_domain/0,
+        decide_topic/0,
+        exmatchcompword/2,
+        extract_inter_pares/3,
+        full_name/1,
+        known_name/1,
+        lcode1/2,
+        lcompword/3,
+        lexcandsearch/3,
+        lexproc3/3,
+        matchcomp3/3,
+        matchcompword/2,
+        maxl/1,
+        mix/2,
+        no_unprotected_verb/0,
+        numberalfa/2,
+        numbernext/1,
+        occurs_in_txt/1,
+        part_word/1,
+        removeunconnected/0,
+        repl1/3,
+        spread/1,
+        substreet0/2,
+        substreet/2,
+        synname0/2,
+        syntxt1/4,
+        synw0/2,
+        synword/2,
+        target_name/1,
+        test_known_name/2,
+        termchar/1,
+%        toredef/3,      %% from namehashtable
+%        torehash/2,     %% from namehashtable
+        tsx/0,
+        txt/3,
+        unconnectedtxt/2,
+        unknown/1,
+        unknown_words/2,
+        xlcompword/3
+  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- use_module( user:'../declare.pl').
+:- ensure_loaded( '../declare' ).  % :- use_module( user:'../declare.pl').
+
+%:-use_module( '../tucbuses', [] ).   % Common File for tucbus  (english) and    tucbuss (norwegian)
+
+%:- ensure_loaded( '../db/namehashtable' ).
+:- use_module(     '../db/namehashtable' ).
 
 %%%%%% The coding conventions %%%%%%%%%%%%%%%%%%%%%
 %
@@ -50,7 +102,7 @@ lexproc3(L1,AssumedLanguage,L3):-
 
     language  =: AssumedLanguage, %% AssumedLanguage := value$(language)
 
-    \+ myflags(duallangflag,true),  %% without duallangflag, only 1 language
+    \+ user:myflags(duallangflag,true),  %% without duallangflag, only 1 language
     !,
     lexproc2(L1,L3,_Nunks).
 
@@ -135,7 +187,7 @@ splitwordx(X, YZ):-
 
 
 splitword(X,KL):-
-    myflags(language,N),
+    user:myflags(language,N),
     dict_module(N, Dict),
     Dict:splitword(X,KL).
 
@@ -184,7 +236,7 @@ mdlistrest(X,[A|B],[A|BX]):-
 
 
 reword1(X,KL):-
-    myflags(language,N),
+    user:myflags(language,N),
     dict_module(N, Dict),
     Dict:rewording(X,KL).
 
@@ -233,11 +285,11 @@ squirtsurplus(_,S,S). % No unknowns
 handle_unknown(_Gorresten,[n_w],[n_w]):-!. %% \+ Forset
 
 handle_unknown(_Name,List,List):-
-    \+ myflags(spellcheck,1),
+    \+ user:myflags(spellcheck,1),
     !.
 
 handle_unknown(_Name,List,List):- %% Hazard ???
-    myflags(teleflag,true),
+    user:myflags(teleflag,true),
     !. %% dynamic, spell only for places anyway
 
 handle_unknown(Strandveien,L,L1):-
@@ -278,8 +330,8 @@ dont_spell_check_test(Strandveien,L):-
 
 
 believed_name(Brosetveien,Brøsetv,n,Class,1):-    %% Brosetveien %% Special
-    myflags(spellcheck,1),
-    \+ myflags(textflag,true),
+    user:myflags(spellcheck,1),
+    \+ user:myflags(textflag,true),
     \+ unwanted_name(Brosetveien),
     \+ unwanted_place(Brosetveien),
 
@@ -298,7 +350,7 @@ believed_name(Brosetveien,Brøsetv,n,Class,1):-    %% Brosetveien %% Special
 
 
 believed_name(N,X,n,Class,1):-    %% 1 = spellcheck
-    \+ myflags(textflag,true),
+    \+ user:myflags(textflag,true),
     \+ unwanted_name(N),
 
     \+ unwanted_place(N),  %% ONLY post check ???  Martin -> Marinen %% TA-100104
@@ -308,7 +360,7 @@ believed_name(N,X,n,Class,1):-    %% 1 = spellcheck
 %% Oasen ->  osen %%  /No
 %% Charolttenlund -> Charlottenlund / Yes
 
-    myflags(spellcheck,1),
+    user:myflags(spellcheck,1),
     lextoresearch(N,Z),  %% [haldens-street,hallen-nil]) \+-> haldens=Haldens gate
 
 %%     avoid_spurious_street(Z), %% // issamveien -> isdamveien
@@ -418,7 +470,7 @@ lextermchar('!').
 
 /***
 remove_noise([   w('(',_)   |Y],V):-
-   myflags(gpsflag,true),
+   user:myflags(gpsflag,true),
    extract_inter_pares(Y,U,  W), %% TA-10114 (U parenthesis content list)
    remove_noise(W,V),
 
@@ -460,14 +512,14 @@ remove_noise([w(PP1,_),w(PP2,K)|R],R1):-   %% Always remove duplicate term chars
 
 remove_noise([WN,w(PP,L)|R],[WN,w('.',L)|R1]):- %% KEEP 3. juledag
     lextermchar(PP),
-    \+ myflags(nodotflag,true),
+    \+ user:myflags(nodotflag,true),
     WN=w(N,_), number(N),                        %% KEEP 10.12
     !,
     remove_noise(R,R1).
 
 remove_noise([w(PP,_),L|R],R1):-   %% DONT KEEP apr. 2001
     lextermchar(PP),               %% DONT REMOVE LAST !!!
-    myflags(nodotflag,true),
+    user:myflags(nodotflag,true),
     !,
     remove_noise([L|R],R1).
 
@@ -499,8 +551,8 @@ noisy(w(_,[n_w])).
 
 noisy(w(LTC,_)):-
     lextermchar(LTC),
-    (\+ myflags(textflag,true),
-        myflags(nodotflag,true)),!.
+    (\+ user:myflags(textflag,true),
+        user:myflags(nodotflag,true)),!.
 
 
 
@@ -531,8 +583,8 @@ synword(X,Y):-dict_module(L),L:synwordx(X,Y).
 
 
 %% NB   lcode is done before removenoise
-lcode1('(',['(']):-myflags(noparentflag,true),!.
-lcode1(')',[')']):-myflags(noparentflag,true),!.
+lcode1('(',['(']):-user:myflags(noparentflag,true),!.
+lcode1(')',[')']):-user:myflags(noparentflag,true),!.
 
 
 %% lcode1(quote(X),   Y  ):-  %% Du sier 'ok'.
@@ -551,7 +603,7 @@ lcode1(quote(X),   quote(X)):-!. %% TA-100209   by\'n . -> quote('n .')
 
 
 lcode1(TenA,nb(Ten,Num)):-   %% T   9a -> 9,alf (not clock)
-    myflags(spellcheck,1),
+    user:myflags(spellcheck,1),
     \+ unwanted_name(TenA),  %% e.g. osv
     \+ xunwanted_place(TenA), %% e.g. 3T
     numberalfa(TenA,Ten),  %% Only 1 letter is allowed ("5bussen")
@@ -632,7 +684,7 @@ lcode2(X,[]):- %% e.g. noe
 
 
 xunwanted_place(X):- %% "Roger (Midtstraum) "
-   \+ myflags(teleflag,true),
+   \+ user:myflags(teleflag,true),
     unwanted_place(X).
 
 
@@ -644,7 +696,7 @@ test_known_name(X,X):- %% munkegata -> neighbourhood
 
 
 try_alias_name(X,X):-
-    myflags(textflag,true),!.
+    user:myflags(textflag,true),!.
 
 try_alias_name(X,Official):-
     try_alias_station(X,Official). %% bekasinvegen -> station! bekkasinv
@@ -750,7 +802,7 @@ known_name(X):-
      cmpl(X,[],_). % Only if not spelled
 
 known_name(X):-        %% low priority
-    myflags(tramflag,true),
+    user:myflags(tramflag,true),
     tramstation(X).   %% Ad Hoc, tramstation is not a class !!!
 
 known_name(X) :-
@@ -767,7 +819,7 @@ part_name(X):-
 
 part_name(X):-
     nonvar(X),
-    \+ myflags(tmnflag,true),
+    \+ user:myflags(tmnflag,true),
     composite_stat(_First,Rest,_),
     member(X,Rest).
 
@@ -867,13 +919,13 @@ plausible_name(X,C):-
     plausible_name(Y,C).
 
 plausible_name(N,Class):-
-    myflags(error_phase,0),
+    user:myflags(error_phase,0),
     fact(N isa Class),
     atomic(N),
      \+ member(Class,[word,number,time]).
 
 plausible_name(N,Class):-
-    myflags(error_phase,1),   %% first line
+    user:myflags(error_phase,1),   %% first line
     plausible_atom(N),
     \+ instant(N,word),
     fact(N isa Class).
@@ -1002,8 +1054,8 @@ composal :-
 
 
 decide_topic:-
-    myflags(busflag,true),
-%%%%%    myflags(teleflag,true), %% dynamic
+    user:myflags(busflag,true),
+%%%%%    user:myflags(teleflag,true), %% dynamic
     !,
     teletopics(T),
     bustopics(B),
@@ -1098,7 +1150,7 @@ decide_domain :- true. %% no change
 
 /* %% TA-110208 FARA
 decide_domain :-
-    \+ myflags(tmnflag,true),
+    \+ user:myflags(tmnflag,true),
     G = tt, % Ad hoc
 
     actual_domain := G.
@@ -1108,7 +1160,7 @@ decide_domain :-
 
 decide_domain :-
 
-    myflags(tmnflag,true),
+    user:myflags(tmnflag,true),
     !,
 
     set_of_stations_advanced(ZD),
@@ -1166,12 +1218,12 @@ set_of_names_with_alts(ZZ):-
 
 
 make_an_intelligent_decision(_ZZ,[tt]):-
-    \+ myflags(tmnflag,true),
+    \+ user:myflags(tmnflag,true),
     !.
 
 
 make_an_intelligent_decision(ZZ,TT):- % Probably subsumed by next rule
-    myflags(tmnflag,true),
+    user:myflags(tmnflag,true),
     routedomain(G), %% tt first
     uniqueinset(G,ZZ),
     memberinall(G,ZZ),
@@ -1179,7 +1231,7 @@ make_an_intelligent_decision(ZZ,TT):- % Probably subsumed by next rule
     TT=[G].
 
 make_an_intelligent_decision(ZZ,TT):-
-    myflags(tmnflag,true),
+    user:myflags(tmnflag,true),
     routedomain(G), %% tt first
     memberinall(G,ZZ),
     !,
@@ -1187,18 +1239,18 @@ make_an_intelligent_decision(ZZ,TT):-
 
 
 make_an_intelligent_decision(_,gb):-
-    myflags(tmnflag,true),
-    myflags(tramflag,true),  %% TRAM is mentioned
+    user:myflags(tmnflag,true),
+    user:myflags(tramflag,true),  %% TRAM is mentioned
     !.
 
 
 make_an_intelligent_decision(_,[]):-
-    myflags(tmnflag,true).
+    user:myflags(tmnflag,true).
 
 
 
 make_an_intelligent_decision(_,tt):-
-    \+ myflags(tmnflag,true).
+    \+ user:myflags(tmnflag,true).
 
 
 
@@ -1526,7 +1578,7 @@ removeblanks :- %% txt(0, w(noe,[]), 1). %% NB Destructive
 
 %% strandv. 30 --->  strandveien   < strandveien 30
 
-removedots :- \+ myflags(nodotflag,true),!. %% Multiple sentences , keep dot
+removedots :- \+ user:myflags(nodotflag,true),!. %% Multiple sentences , keep dot
 
 %% Jeg skal til S. Sælands vei
 /*
@@ -1630,7 +1682,7 @@ matchcomp3(N0,Prof,N1):-
     %% ! %% < multiple solutions > St Olavs gt
 
 matchcomp3(N0,_,_):-
-    myflags(teleflag,true),
+    user:myflags(teleflag,true),
     matchcomp2(N0).
 
 
@@ -1721,7 +1773,7 @@ matchcomp2(N0):- %% Tore Amble
 %%%¤¤  MATCHRESTASSERT
 
 matchrestassert(N0,N1,[],Ident):-
-    myflags(tmnflag,true),          %% No streets as such
+    user:myflags(tmnflag,true),          %% No streets as such
     !,
     moshe_class(Ident,_,Class),
     assertnewa(ctxt(N0,w(Ident,name(Ident,n,Class)),N1)).  %%  suspect
@@ -1955,7 +2007,7 @@ skip_dotx(L,N1,N2):-  %% dont skip if '.' in matchlist
 skip_dotx(_,N1,N2):-
    skip_dot(N1,N2).
 
-skip_dot(N2,N2):- myflags(textflag,true),!.    %% !!!
+skip_dot(N2,N2):- user:myflags(textflag,true),!.    %% !!!
 
 skip_dot(N2,N3):-txt(N2, w('!',['!']), N3), \+ maxl(N3),!.  %% TA-110116 dora ! kl. 18:15
 skip_dot(N2,N3):-txt(N2, w(':',[':']), N3), \+ maxl(N3),!.  %% St:Olav:  %% TA-100208
@@ -1969,7 +2021,7 @@ skip_dot(N2,N2).
 
 xcomposite(First,_Restlist,_Key) :-
     var(First),
-%%     myflags(teleflag,true), %% ???
+%%     user:myflags(teleflag,true), %% ???
     !,
     fail.
 
@@ -1986,7 +2038,7 @@ xcomposite(First,Rest,Key) :-
 
 
 xcomposite(A,B,D):-
-    myflags(tmnflag,true),
+    user:myflags(tmnflag,true),
     domain_module(_,Tram),
     Tram \== nil,
     Tram:composite_stat(A,B,C),

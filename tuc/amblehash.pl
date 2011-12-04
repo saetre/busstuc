@@ -3,6 +3,24 @@
 %% CREATED TA-010430
 %% REVISED TA-010720
 
+%% RS-111203    Moved to makeauxtables?
+
+
+%% IMPORTS
+:- use_module( '../utility/utility', [
+        delete1/3, ends_with/3,  for/2,   remember/1,   roundmember/2,   set_of/3   ] ).
+
+%module( 'lex', [ ] ). %% ??
+:- use_module( names, [ streetsyn/1 ]).
+
+:- use_module( '../db/places', [  cmpl/3, % (NAME,NAME*,LIST)
+  sameplace/2 ] ).
+
+:- use_module( '../db/regcompstr', [ composite_road/3 ] ).
+
+:- use_module( '../app/buslog', [  composite_stat/3,  place_station/2 ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Method  
 
@@ -92,7 +110,7 @@ textlength(C,N):-name(C,A),length(A,N).
 
 
 toretarget(X):- sameplace(X,_);
-                place_stat(X,_);
+%                place_stat(X,_);       %% RS-111203    OLD
 
                 cmpl(X,_,_);
                 cmpl(_,X,_),atom(X);
@@ -103,10 +121,11 @@ toretarget(X):- sameplace(X,_);
                 composite_stat(_,Y,_),member(X,Y);
 
                 composite_road(X,_,_);
-                composite_road(_,Y,_),member(X,Y);
-
-                tram_mod(Tram),Tram:composite_stat(X,_,_);
-                tram_mod(Tram),Tram:composite_stat(_,Y,_),member(X,Y).
+                composite_road(_,Y,_),member(X,Y)
+%                                     ;
+%                tram_mod(Tram),Tram:composite_stat(X,_,_);
+%                tram_mod(Tram),Tram:composite_stat(_,Y,_),member(X,Y)
+                                                         .
 
 
 createhash :-

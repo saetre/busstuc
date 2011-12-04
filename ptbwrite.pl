@@ -6,12 +6,11 @@
 
 % Make a slender syntax tree comparable to Penn Tree Bank tagging
 
-:- module(ptbwrite,[
-    drucke_baum_list/1,
-    print_parse_tree/1,
-    ptbwrite/1,
-    track/2
-  ]). %% 
+:- module( ptbwrite,[
+    alle_args/2,        atomic_length/2,        drucke_baum_list/1,     list_length/2,
+    print_parse_tree/1, ptbwrite/1,             term_laenge/2  ] ). %% RS-111204
+
+:- use_module( main, [  track/2  ] ). %% RS-111204
 
 /*
 En tom produksjon er rekursivt
@@ -493,7 +492,7 @@ alle_args([K|R],N):-
 %% From main... %% RS-111120
 
 print_parse_tree(Parse1) :- %% TA-110207
-   myflags(norsource,true),
+   user:myflags(norsource,true),
    !,
    ptbwrite:shrink_tree(Parse1,Pa1),
 
@@ -504,14 +503,6 @@ print_parse_tree(Parse1):- %% TA-110207
    track(2, output('*** Simplified parse tree ***')),
    track(1, ptbwrite(Parse1)), %% -> ptbwrite.pl
    track(2, (output('*****************************'),nl)).
-
-
-track(N,P):- 
-    myflags(trace,M),  number(M), M >= N, 
-    !,
-    call(P)   %% TA-110130
-;
-    true.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

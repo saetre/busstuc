@@ -17,7 +17,6 @@ dmeq(List,U):-   %% traps var
     user:testmember(U,List).
 
 
-
 dmeq(about,about).
 dmeq(about,of).  
 dmeq(about,over).  
@@ -245,7 +244,7 @@ dmeq(notbus,airbus).
 dmeq(notbus,boat). 
 dmeq(notbus,boat_route_plan).
 dmeq(notbus,helicopter).
-dmeq(notbus,nightbus) :- \+ user: myflags(nightbusflag,true). 
+dmeq(notbus,nightbus) :- \+ user:myflags(nightbusflag,true). 
 dmeq(notbus,airplane). 
 dmeq(notbus,plane).     %% 
 dmeq(notbus,schoolbus). 

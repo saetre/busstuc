@@ -1,4 +1,4 @@
-:- module(makeframe,[]).
+%:- module(makeframe,[]).
 
 :- op(1150,xfy,rule).  
 
@@ -33,7 +33,8 @@
 :- op( 712, fy,seen). % Lower than "not", higher than "isa"
 
 %%% %%%%%%%% RS-111118
- :- use_module('../declare.pl').
+:- ensure_loaded( '../declare' ).
+%:- use_module('../declare.pl').
 
 tracevalue(3).
 

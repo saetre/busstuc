@@ -5,7 +5,35 @@
 %%
 %% TUC Dictionary for the language N
 
-:-module(dict_n,[]). 
+:-module( dict_n, [
+        adjective3/3,
+        adv2/2,  %% Techn., redundant adverb expression
+        compword/3,
+        kw/1, %% TA-100902 %%%%%%%%%  All the words appearing as [ ] constants in grammar
+        noisew/1,
+        noun2/2,
+        noun3/3,
+        noun_form/5,
+        rep_verb/1,
+        preposition/1,
+        pronoun/1,
+        pronoun/2,
+        rewording/2,
+        %% split word ahead of analysis. Not implemented ! %%
+        split/2,
+        splitword/2,
+        synwordx/2,
+        synsms/2,
+        synword/2,
+        unwanted_adjective/1,
+        unwanted_interpretation/2,
+        unwanted_verb/1,
+        unwanted_noun/1,
+        unwanted_number/1,
+        verbroot2/2,
+        verb_form/4,
+        xcompword/3
+    ] ).
 
 %¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
 % sp     spell error (unintended) ,not inflectable
@@ -14208,13 +14236,13 @@ noun2(professor,professor):-  %%  tele ...
 noun2(førsteamanuensis,associate_professor):-
     user:myflags(teleflag,true).
 noun2(amanuensis,assistant_professor):-
-    user: myflags(teleflag,true).
+    user: user:myflags(teleflag,true).
 noun2(universitetslektor,lecturer):-
-    user: myflags(teleflag,true).
+    user: user:myflags(teleflag,true).
 noun2(sekretær,secretary):-    
-    user: myflags(teleflag,true).
+    user: user:myflags(teleflag,true).
 noun2(forsker,researcher):-   
-     user: myflags(teleflag,true). 
+     user: user:myflags(teleflag,true). 
 
 noun2(semantikk,semantics). 
 noun2(semester,semester). 

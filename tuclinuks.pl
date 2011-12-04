@@ -5,11 +5,13 @@
 
 % Initiation file for BusstUC on Linux 
 
-?-compile(tucbuses). % Both languages are compiled
+%% Operators used by TUC
+:- ensure_loaded( 'declare' ).
+?-use_module( tucbuses, [] ).   % Common File for tucbus  (english) and    tucbuss (norwegian)
 
+%?-compile(tucbuses). % Both languages are compiled
 
     :-  (unix_language := nor).    %% Installation language for  unix
-
     :-  (language := norsk).       %% Initial default user language  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

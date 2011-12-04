@@ -11,7 +11,8 @@
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-?-use_module('../declare.pl').
+:- ensure_loaded( '../declare' ).
+:- use_module( '../main' ).     %% RS-111204    Includes user:myflags/2
 
 
 %% Rule format from pragma
@@ -36,7 +37,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-tracevalue(L) :- myflags(traceans,L).  % Trace level 1-4    %%%%% RS-111119 :- dynamic tracevalue/1.
+tracevalue(L) :- user:myflags(traceans,L).  % Trace level 1-4    %%%%% RS-111119 :- dynamic tracevalue/1.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

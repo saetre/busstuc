@@ -4,7 +4,62 @@
 %% CREATED 861231
 %% REVISED TA-990115
 
-%:- module( tuc, [ area/2 ] ).           %% Module TUC  %% RS-111121
+%% For the BUS application
+%% For the CHAT-80 application
+
+:- module( world, [
+        area/2,
+        african/1,
+        american/1,
+        asian/1,
+        australian/1,
+        border/2,
+        borders/2,
+        capital/1,
+        circle_of_latitude/1,
+        city/3,
+        city_country/2,
+        city_population/2,
+        contain/2,
+        containsX/4,
+        contains4/4,
+        continent/1,
+        continent_region/2, 
+        country/8,
+        country_region/2,
+        country_latitude/2,
+        country_longitude/2,
+        country_area/2,
+        country_population/2,
+        country_capital/2,
+        country_city/2,
+        country_currency/2,
+        country_river/2,
+        currency/2,
+        european/1,
+        capital/2,
+        drains/2,
+        flows/3,
+        flows_into/2,
+        flows_outfrom/2,
+        first/2,
+        geometric_latitude/2,
+        geometric_longitude/2,
+        in/2,
+        in_continent/2,
+        latitude/2,
+        latitude0/2,
+        longitude/2,
+        ocean/1,
+        population/2,
+        river/1,
+        rises/2,
+        region/1,
+        region_country/2,
+        river/2,
+        sea/1,
+        seamass/1
+    ] ).           %% Module TUC  %% RS-111121
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -13,11 +68,6 @@
 
 %% May be redefined by compiling application files (eg chatw1.pl/ bus.pl etc)
 
-
-%% For the BUS application
-
-
-%% For the CHAT-80 application
 
 :- volatile
           border/2,

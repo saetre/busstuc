@@ -4,14 +4,43 @@
 %% REVISED TA-110825
 %% REVISED RS-111121
 
-%:- module( tuc, [ ako/2 ] ). %% Or define fernando as the main file in the tuc module??
+:- module( semantic, [ 
+%        abnormalverb/2, %% EventLess (Static) verbs etc
+        a_compl/4,      %%  bussen er forsinket slik at jeg går
+        adj_templ/2, %% object ?  hvem var de første menneskene ? (trytofool)
+        adjnamecomp_templ/3,
+        adjname_templ/2,        %% TA-110701
+        adjnoun_templ/2,
+        adjnouncomp_templ/3,
+        (ako)/2,
+        aligen2/2,
+        align1/2,
+        apos/2,
+        coher_class/3,
+        gradv_templ/2,
+        particle/3,
+        (has_a)/2,
+        iv_templ/2, %% Tulle 
+        jako/2, %% hyponym of adjectives
+        normalverb/2,   %% normal if not abnormal at all
+        measureclass/1,
+        pai_templ/2,    %% it is  Adj to VP
+        post_adjective/1,
+        pvi_templ/2,    %it costs money to ...
+        rv_templ/2,
+        tv_templ/3,
+        testclass/1,  %% <=== NB
+        v_compl/4,
+        vako/2  %% hyponym of verbs
+    ] ). %% Or define fernando as the main file in the tuc module??
 
 %% MODULE: tuc
 %  TUCs  Lexical Semantic Knowledge Base
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- use_module( main:'../declare.pl' ).
+:- ensure_loaded( '../declare' ).
+%:- use_module( main:'../declare.pl' ).
 
 %:- ['fernando'].
 

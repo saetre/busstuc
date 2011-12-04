@@ -5,24 +5,61 @@
 
 %% Main program for BussTUC
 
+:- module( main, [
+        user:(:=)/2,    user:(=:)/2,    %% RS-111204 moved to module user: declared infix in declare.pl
+        abortword/1,    begin/0,        break/1,    %% dummy for breakpoints
+        c/1,            closereadfile/0,        %% consult(File). %% TA-110106
+        check/0,        create_taggercall/2,            difact/2,   %% Dynamic,  context dependent  %% TA-980301
+        dmeq/2,         %% From dmeq.pl
+        dialog/0,       doshell/0,      english/0,      fact0/1,        
+        go/0,           gorg/0, %% listing(gps_origin). %% debug %% TA-110128
+        gps_origin/2,   %% TA-110127
+        haltword/1,     %% (johnforbeskerry).   %% <- Top Secret
+        hei/0,          hi/0,           ho/0,           idiotpoint/0,
+        jettyrun/1,     layout2/2,      listxt/0,       logrun/0,
+        mtrprocess/1,   mtrprocessweb/1,user:myflags/2, %% RS-111204 from declare.pl
+        norsk/0,        norsource_prefix/0,             ns/1,
+        othercommand/2, print_tql/1,    printparse/1,   process_forel/1,
+        progtrace/2,    r/1,            readfrom/1,
+        readday/0,      readscript/0,   receive_tags/1, reset_origins/0,
+        restart/0,      run/0,          run/1,          scanfile/2,     %%  DESTROYS  web writing
+        send_taggercall/1,         user:set/2,          %% RS-111204 moved to user: in declare.pl
+        splitfile/2,    spyg/1,         %% dcg_module(L), ...X
+        spyr/1,         statistics/1,   status/0,       stopcommand/2,
+        timeout/3,      %% If timeout doesn't work
+        testgram/0,     trace/2,        traceprog/2,    track/2,        trackprog/2,
+        tuc/0,          update_tags/1,  verify_empty_origins/0,
+        webrun/0,       webrun_english/0,               webrun_norsk/0,
+        webrun_tele/0,  write_taggercall/1  ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %% Imports
-
-%% Operators used by TUC
-:- use_module( 'declare.pl' ).
-
 :- use_module( library(process) ).
 :- use_module( library(timeout) ).
 %:-use_module( library(system) ).
 
+%% Operators used by TUC
+:- ensure_loaded( 'declare' ).
+
+:- compile( monobus ). %% // after main.pl  Unknown error
+
+:- use_module( ptbwrite ).           %% Module PennTreeBank
+
 :- use_module( 'db/timedat' ).           %% Module db
 
-:- use_module( 'utility/utility', [] ).  %% Module util
-        % :- ['utility/datecalc.pl'].
+:- use_module( 'utility/utility', [
+        append_atomlist/2,      append_atoms/3, doubt/2,        for/2,
+        makestring/2,           out/1,          output/1,       prettyprint/1,
+        psl/2,                  purge/3,        reverse/2,      shell_copyfile/2,
+%        splitlast/3,
+        starttime/0,            tab/1,          writelist/1
+   ] ).  %% Module util
 
-:- compile('monobus.pl'). %% // after main.pl  Unknown error
-
-:- ['tuc/readin.pl'].       % reads text to a list
-:- use_module( 'tuc/evaluate' ).
+:- use_module( 'tuc/evaluate', [ evaluateq2/1 ] ).
+:- use_module( 'tuc/readin', [
+        ask_user/1, ask_file/1   %%reads text to a list
+    ] ).
 
 ?-op(1150,fx,spyg). %% spy grammar rule
 ?-op(1150,fx,spyr). %% spy pragma rule
@@ -38,16 +75,37 @@
 :-volatile
     difact/2,   %% Dynamic,  context dependent  %% TA-980301
     fact0/1,
-    gps_origin/2. %% TA-110127
+    gps_origin/2       %% TA-110127
+    %,user:myflags/2
+  .
 :-dynamic %=>/2,
-    difact/2,     %% Dynamic,  context dependent  %% TA-980301
-    fact0/1,     %% Semi permanent
-    gps_origin/2. %% TA-110127
-
+    difact/2,           %% Dynamic,  context dependent  %% TA-980301
+    fact0/1,            %% Semi permanent
+    gps_origin/2       %% TA-110127
+    %,user:myflags/2
+  .
 
 ?-prolog_flag(gc_trace,_,verbose).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%% COMMON VERSION BUSTER/BUSTUC ?? %%%%%%%%%%%%%%%
+% Hjelpepredikat for ans-pragmaregler
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% To translate.pl? declare.pl?
+%% Declarations of operators and hashmap for flags, used by TUC
+%% remove_duplicates  Standard  -> library
+%set(Key,Value) :-
+%    retractall( user:myflags(Key,_) ),
+%    assert( user:myflags(Key, Value) ).
+%
+%X := Y :-       %% Set value X to Y
+%    set(X,Y).
+%
+%X =: Y :-       %% Set value Y from X          %% Difficult to make, difficult to understand :-/
+%    user:myflags(X,Y).
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 doshell :- write('$SHELL'),
 %    absolute_file_name('$SHELL', Shell),
@@ -291,11 +349,11 @@ jettyrun(S) :-
 %
 
 norsource_prefix :- %% TA-110207
-    myflags(norsource,true) ->
+    user:myflags(norsource,true) ->
     output('<bustuc>');true.
 
 norsource_postfix :- %% TA-110207
-    myflags(norsource,true) ->
+    user:myflags(norsource,true) ->
     (output('</bustuc>'),nl);true.
 
 dialog :-
@@ -526,7 +584,7 @@ processorwait(S) :-
 
 
 redirecttoans :-
-    myflags(teleflag,true), \+myflags(busflag,true),
+    user:myflags(teleflag,true), \+user:myflags(busflag,true),
     !. %% Not Yet
 
 redirecttoans :-
@@ -537,7 +595,7 @@ redirecttoans(File):-
 
 
 redirectfromans:-
-   myflags(teleflag,true), \+myflags(busflag,true),
+   user:myflags(teleflag,true), \+user:myflags(busflag,true),
    !,
 
    teledbrowfile(Rowsample0),
@@ -624,32 +682,25 @@ readfrom(F):-
 
     trace =: OldTrace, %% NB =:
     trace := 0,
-
-
-%     textflag := true,        %  Read from text, don't skip to new Line
-%                              %  destroys  kl. 1720 in batch queries
-%    queryflag =: Oldqueryflag,%  destroys setting in startupfile
-%    queryflag := false,       %  Statements are not implicit queries
+     textflag := true,        %  Read from text, don't skip to new Line
+                              %  destroys  kl. 1720 in batch queries
+    queryflag =: Oldqueryflag,%  destroys setting in startupfile
+    queryflag := false,       %  Statements are not implicit queries
 
     readfile := FE,
     see(FE),
         repeat,
             reset_period,
-
-
-       ask_file(L),    % readin.pl
+            ask_file(L),    % readin.pl
             process(L),
-
-
-    !,
+            !,
     seen,
-
     trace := OldTrace, %% TA-090203
 
-    permanence := 0.
+    permanence := 0,
 
-%%    textflag := false,       %  Read from text, don't skip to new Line
-%%    queryflag :=   Oldqueryflag. % destroys setting in startupfile
+    textflag := false,       %  Read from text, don't skip to new Line
+    queryflag :=   Oldqueryflag. % destroys setting in startupfile
 
 
 
@@ -708,7 +759,7 @@ process(L):-           %% Process is under a repeat loop
     translate2(L,TQL),
     nl,
 
-    (myflags(textflag,true) ->
+    (user:myflags(textflag,true) ->
 
         copy_term(TQL,TQLNV), %% dont bind variables
         ptbwrite:drucke_baum(TQLNV)
@@ -756,13 +807,13 @@ printdots:-  %% TA-110204
     dotline(DOTS),
     traceprint(1,DOTS).
 
-dotline(''):-myflags(smsflag,true),!.
+dotline(''):-user:myflags(smsflag,true),!.
 dotline('........................................................................').
 
 
 
 print_tql(TQL):- %% TA-110207
-   myflags(norsource,true),
+   user:myflags(norsource,true),
    output('<tql> '),
    !,
    prettyprint(TQL),
@@ -802,7 +853,7 @@ layout2(L,TQL):-
 listxt :- listing(txt).
 
 startteleerror :-
-    myflags(teleflag,true), \+ myflags(busflag,true),
+    user:myflags(teleflag,true), \+ user:myflags(busflag,true),
     !,
     teledbrowfile(TDBR),
     tell(TDBR).
@@ -811,14 +862,14 @@ startteleerror :-!.
 
 
 stopteleerror :-
-     myflags(teleflag,true),\+ myflags(busflag,true),
+     user:myflags(teleflag,true),\+ user:myflags(busflag,true),
      !,
      told.
 
 stopteleerror :-!.
 
 grammar2(L,error):-
-    myflags(notimeoutflag,true),
+    user:myflags(notimeoutflag,true),
     length(L,M),M > 21, %% Temporary Emergency
     !,
     startteleerror,
@@ -880,9 +931,9 @@ grammar2(_,FOL):-
 
 
 grammar2(L,error):-
-    myflags(semantest,true),
+    user:myflags(semantest,true),
     error_phase := 1,                % Reset Type check
-    myflags(cursor,Attempt1),
+    user:myflags(cursor,Attempt1),
     maxl(N),
     cursor := 0,                     % Failed with type check, but
     parse_sentence(_,N,success),
@@ -899,7 +950,7 @@ grammar2(L,error):-
 
 
 grammar2(L,error):-                  % Incomplete sentence
-    \+ myflags(teleflag,true),            % not actual for tele
+    \+ user:myflags(teleflag,true),            % not actual for tele
     no_verb(L),                      % no verbs
     !,
 
@@ -913,7 +964,7 @@ grammar2(L,error):-                  % Incomplete sentence
     stopteleerror.
 
 grammar2(L,error):-                  % Failed also with type check
-    myflags(cursor,Attempt2),          % =>  Ungrammatical (according to gram),
+    user:myflags(cursor,Attempt2),          % =>  Ungrammatical (according to gram),
     nl,
 
     startteleerror,
@@ -930,7 +981,7 @@ grammar2(L,error):-                  % Failed also with type check
 
 parse_sentence(P,N,Success):-  %% Parse With TimeLimit
     dcg_module(G),
-    myflags(parsetime_limit,Limit),
+    user:myflags(parsetime_limit,Limit),
 
     timeout(
 
@@ -975,14 +1026,14 @@ present(N,P):-
 
 
 trace(N,P):-
-    myflags(trace,M), number(M), M >= N,
+    user:myflags(trace,M), number(M), M >= N,
     !,
     write(P),nl
 ;
     true.
 
 traceprog(N,P):-
-    myflags(traceprog,M), number(M), M >= N,
+    user:myflags(traceprog,M), number(M), M >= N,
     !,
     write(P),nl
 ;
@@ -990,7 +1041,7 @@ traceprog(N,P):-
 
 
 trackprog(N,P):-
-    myflags(traceprog,M), number(M), M >= N,
+    user:myflags(traceprog,M), number(M), M >= N,
     !,
     (nl,call(P))    %% TA-110130
 ;
@@ -1000,7 +1051,7 @@ trackprog(N,P):-
 
 %///
 traceprint(N,P):- %% same as trace
-    myflags(trace,M), number(M), M >= N,
+    user:myflags(trace,M), number(M), M >= N,
     !,
     write(P),nl
 ;
@@ -1008,9 +1059,17 @@ traceprint(N,P):- %% same as trace
 
 %///
 progtrace(N,P):- %% same as traceprog
-    myflags(traceprog,M), number(M), M >= N,
+    user:myflags(traceprog,M), number(M), M >= N,
     !,
     write(P),nl
+;
+    true.
+
+
+track(N,P):- 
+    user:myflags(trace,M),  number(M), M >= N, 
+    !,
+    call(P)   %% TA-110130
 ;
     true.
 
@@ -1075,13 +1134,13 @@ transfix(P,Q):-transfix1(P,Q). %% PANIC
 transfix1(error,error):-!.
 
 transfix1(new:::P,nil):-   %%  ==> causes an extra [nil]
-    \+ myflags(busflag,true), %% Set by Bustuc Application Program
+    \+ user:myflags(busflag,true), %% Set by Bustuc Application Program
     !,
     clausifystm(P),   %% translat.pl
     !.
 
 transfix1(new:::P,nil):-
-	 myflags(queryflag,false),
+	 user:myflags(queryflag,false),
 	 !,
     clausifystm(P).   %% translat.pl
 
@@ -1106,7 +1165,7 @@ exetuc1(command(P)):-
     anash(P).
 
 exetuc1(_TQL):-
-    myflags(noevalflag,true),!. %% New Flag  : No TUC-evaluation
+    user:myflags(noevalflag,true),!. %% New Flag  : No TUC-evaluation
 
 exetuc1(TQL):-
     trackprog(2,gorg), %% gps_origin %% TA-110130

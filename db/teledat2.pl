@@ -6,6 +6,47 @@
 %% File containing TELEDAT 
 %% co-existing with BUSDAT
 
+:- module( teledat2, [
+        expandkey/2,
+        %% DATA BASE INTERFACE SECTION
+        bustopic1/1,
+        building/1,
+
+        has_att_valx/6,
+        have_att_val/4,         %% TA-101110
+        has_att_val/4,          %% TA-110622
+        hazard_tagname/1,       %% goodbye: actually unnecessary
+        is_tagged/2,
+
+        is_dom_val/5,
+        ldaptotucplace/2, %  Tabularized Ad Hoc
+        legal_tagname/1,        %% Exception to hazard_tagname('
+        lookupdb2/3,
+        make_querycall/4,
+        %%%%%%%%%%   DSES  Important Files
+        teledbrowfile/1,
+        standardselect/1,
+        teleprocessdirect/4,
+        perform_querycall/2,
+        perform_querycall2/2,
+        create_dbquery/2,
+        possible_dom/2,
+        plinglist1/2,
+        plingelement/2,
+        unwanted_dbname/1,       %% <--- Ad Hoc
+        printdbresult/1,
+        setoftags/2,
+        tablename/1,      %% TLF-021114     %% Sets the name of the table in the database
+        teletopic1/1,
+        teledbtagfile/1,
+        write_querycall/1
+    ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+:- ensure_loaded( '../declare' ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 %% General predicate to expand (or not) a key
 %% fetched from database/telekeys.pl
@@ -325,7 +366,7 @@ has_att_val(sms,price,tt,1).
 % Address
 
 has_att_val(person,address,X,(Street,Num,Char)):-
-   myflags(teleflag,true), 
+   user:myflags(teleflag,true), 
    has_att_val(person,street,X,Street),
    has_att_val(person,streetnumber,X,Num),
    has_att_val(person,streetcharacter,X,Char).
@@ -335,7 +376,7 @@ has_att_val(person,address,X,(Street,Num,Char)):-
 % has_att_valx(person,lastname,telephone,amble,tore_amble,999)
 
 has_att_valx(Person,Lastname,Telephone,Amb,ToreAmble,N):-
-    myflags(teleflag,true),
+    user:myflags(teleflag,true),
     is_dom_val(Person,Lastname,Amb,_Amble,ToreAmble),
     has_att_val(Person,Telephone,ToreAmble,N).
 
@@ -343,14 +384,14 @@ has_att_valx(Person,Lastname,Telephone,Amb,ToreAmble,N):-
 
 
 is_tagged(Word,Concept):-
-    myflags(tags,Tags),
+    user:myflags(tags,Tags),
     member([Word,Concept],Tags),
 
     \+ unwanted_name(Word). %% hans \= Hans  (ad hoc) 
 
 
 setoftags(Tore,Taglist):-
-    myflags(tags,Tags),
+    user:myflags(tags,Tags),
 
     set_of(Tag,
          (member([result=WT],Tags),
@@ -448,14 +489,14 @@ teleprocessdirect(AddSelect,Table,Wherelist,Results):-
 
 
 perform_querycall2(InternalQuery,Result):-
-    myflags(useexternal,true),                          %% TLF 030408
+    user:myflags(useexternal,true),                          %% TLF 030408
     !,
     create_dbquery(InternalQuery,Query),
 
     getdbrowsdirect(Query,Result). %% Result is now in TQA (rowsample0)
 
 perform_querycall2(_InternalQuery,_Result):-               %% TLF 030408
-    \+ myflags(useexternal,true),
+    \+ user:myflags(useexternal,true),
     !,
     output('flag useexternal false ---> no db lookup').
 
@@ -490,7 +531,7 @@ perform_querycall(select(Select1,Person,Wherelist,Z),Z):-
 
 
 write_querycall(ExternalQuery):-
-     myflags(traceprog,M), number(M), M >= 3,
+     user:myflags(traceprog,M), number(M), M >= 3,
      nl,
      write('QUERY:  '),
      output(ExternalQuery),nl. 

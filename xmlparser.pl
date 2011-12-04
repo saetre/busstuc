@@ -4,7 +4,8 @@
 %% REVISED  TA-020624
 
 %%% %%%%%%%% RS-111118
-:- use_module( 'declare.pl' ).
+:- ensure_loaded( 'declare' ).
+%:- use_module( 'declare.pl' ).
 
 xmltaggerparse(F,Struct):-
 

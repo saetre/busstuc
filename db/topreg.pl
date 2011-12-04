@@ -3,8 +3,16 @@
 %% CREATED TA-981231
 %% REVISED TA-110622
 
-
 %% Contains the important information about route modules
+
+:- module( topreg, [
+        compilerouteaux/2,
+        default_period/3,
+        default_message/3,
+        routedomain/1,
+        route_period/4,
+        period_message/2
+    ] ).
 
 %:-dynamic   thisdate_period_module/3 .
 

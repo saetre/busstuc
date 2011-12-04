@@ -4,8 +4,19 @@
 %% REVISED TA-110825
 %% REVISED RS-111121
 
-%% Define this as the main file in the tuc module?!?
-:- module( names, [ abroad/1, city/1, compname/3, country/1, generic_place/1 ] ).
+%% Define this as the main file in the tuc module? No...
+:- module( names, [
+        abroad/1,
+        city/1,
+        community/2,
+        compname/3,
+        country/1,
+        generic_place/1,
+        samename/2,
+        streetsyn/1,
+        synname/2,
+        unwanted_name/1
+  ] ).
 
 %% MODULE: tuc
 %  TUCs  Lexical Semantic Knowledge Base        %% semantic.pl
@@ -13,10 +24,10 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- use_module( user:'../declare.pl').
+:- ensure_loaded( '../declare' ).  % :- use_module( user:'../declare.pl').
 
 
-%myflags(rune,35).
+%user:myflags(rune,35).
 
 %% Names that occur several places as general appendages
 %% It is not a rule that the generic lies at the named place
@@ -235,7 +246,7 @@ compname(st,[hans,aften], midsummer_eve).     %%
 compname(the,[understanding,computer],tuc).
 
 compname(tore,[amble],tagore) :-
-         \+main:myflags(teleflag,true).
+         \+user:myflags(teleflag,true).
 
 
 compname(trafikanten,[midt,norge],tmn).

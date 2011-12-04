@@ -5,4 +5,5 @@
 
 % Consult into right morph module 
 
-:- use_module(morph_n:'tuc/morph_n.pl'). 
+%:- ensure_loaded(morph_n:'tuc/morph_n.pl'). 
+:- use_module( morph_n:'tuc/morph_n.pl', [] ). 

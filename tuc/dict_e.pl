@@ -2,11 +2,42 @@
 %% SYSTEM TUC
 %% CREATED TA-930601
 %% REVISED TA-110825
+
 %% TUC Dictionary for the language E
+:-module( dict_e, [
+        compword/3,
+        ow/1,
+        cw/1, %% TA-100902 %%%%%%%%%  All the words appearing as [ ] constants in grammar
+        noisew/1,
+        noun2/2,
+        noun/1,
+        %% Replaces synonyms with inflections (Root synonyms)
+        nounsyn/2,
+        lexnsingirr/2, 
+        lexnpluirr/2,
+        noun_form/5,
+        rep_verb/1,
+        preposition/1,
+        pronoun/1,
+        pronoun/2,
+        rewording/2,
+        %% split word ahead of analysis. Not implemented ! %%
+        splitword/2,
+        synwordx/2,
+        synsms/2,
+        synword/2,
+        unwanted_interpretation/2,
+        unwanted_adjective/1,
+        unwanted_verb/1,
+        unwanted_noun/1,
+        verbroot2/2,
+        verb_form/4,
+        xcompword/3
+    ] ).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-:-module(dict_e,[]).
+:- use_module( morph_e, [] ).
 
 rewording([can,t],[can,not]).      %% TA-110316
 rewording([cant],[can,not]).       %%
@@ -210,7 +241,7 @@ compword(when,[bus],bus).
 
 %% UNWANTED INTERPRETAION %% TA-101124
 
-unwanted_unterpretation(bruker,use). %% >1 dummy
+unwanted_interpretation(bruker,use). %% >1 dummy
 
 
 unwanted_adjective(supercalif). %% Needs 1 

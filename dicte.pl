@@ -5,4 +5,4 @@
 
 % consult into right module 
 
-%?- [dict_e:'tuc/dict_e.pl']. 
+?- use_module( dict_e:'tuc/dict_e.pl' ). 

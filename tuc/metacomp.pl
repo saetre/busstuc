@@ -3,20 +3,34 @@
 %% CREATED  TA-940128
 %% REVISED  TA-090521
 
-%% MODULE: tuc
+%% UNIT: tuc
+%% MODULE: metacomp
+
+:- module( metacomp, [
+        genprod/2,
+        genvirt/1,
+        language/1,
+        plink/0, plonk/0,
+        optiprod/1,
+        regram/0,
+        segram/0,
+        virtf/1, virtf/2, virtx/1
+  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% USE %%% RS-111118
+:- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
+
 %http://www.sics.se/sicstus/docs/4.1.3/html/sicstus/PlUnit-Tests-and-Production-Systems.html
-:- use_module( library(system), [environ/2, datime/1]).
+%:- use_module( library(system), [environ/2, datime/1]).
+:- use_module( library(system), [ datime/1 ]).
 
 :- use_module( '../utility/utility').
 
-:- use_module( '../declare.pl' ).
+:- volatile language/1, virtf/1, virtf/2, virtx/1, optiprod/1.
 
 :- volatile plink/0, plonk/0.
-:- volatile virtf/1, virtf/2, virtx/1, optiprod/1.
 :- dynamic plink/0, plonk/0.  %% Defined in utility/utility.pl
 
 %%% SMOKETEST    virtuals are added last
@@ -26,7 +40,7 @@
 %%  dcg_x.pl = virtuals.pl + dcg.pl
 
 :- dynamic %gram_module/2,
-           %language/1,
+           language/1,
            virtf/1, %% the virtual functor
            virtf/2, %% the virtual functor
            virtx/1, %% the virtual expression
@@ -177,7 +191,7 @@ em1(A = B,P,X,Y,(
 %% em1( Symbol, Appearence, StackIn, StackOut, Code)
 
 em1(Symbol, Appearence, StackIn, StackOut, Code) :-
-    myflags(norsource,true),
+    user:myflags(norsource,true),
     !,
     em2(Symbol, Appearence, StackIn, StackOut, Code).
 

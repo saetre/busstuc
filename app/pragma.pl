@@ -5,6 +5,12 @@
 %% REVISED TA-080612
 
 % Tolker for Pragma-regler
+:- module( pragma, [
+        ipragmaor0/2,
+        ip2addto/4,
+        pragma/3,
+        pragma_complete/5
+   ] ).
 
 :- use_module( '../utility/utility.pl' ).       % utility functions like 
 
@@ -49,10 +55,12 @@
 :- op( 712, fy, saw). % Lower than "not", higher than "isa"
 
 %%% %%%%%%%% RS-111118
-:- use_module( '../declare.pl' ).
+:- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
+
+:- use_module(trans:'bustrans.pl').
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 
 pragma(RuleModule,Source,DestOut) :-
@@ -96,7 +104,7 @@ wait_to_trace(RuleID):-
     out(RuleID). %% panic
 
 wait_to_trace(RuleID):- 
-    myflags(debugrule,RuleID),
+    user:myflags(debugrule,RuleID),
     !,
     spy_me(RuleID).
 wait_to_trace(_).
