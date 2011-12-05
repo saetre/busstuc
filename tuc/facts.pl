@@ -3,8 +3,7 @@
 %% CREATED  TA-921129
 %% REVISED  TA-110707  RS-111121
 
-%:-op( 710,xfx, isa ).
-:- module( facts, [ (isa)/2, have/4,    %% RS-111204    isa/2
+:- module( facts, [ (isa)/2, have/4,    %% RS-111204    isa/2, from declare/main
         neighbourhood/1, precedent_firstname/1
    ] ).
 
@@ -16,13 +15,10 @@
 :- ensure_loaded( '../declare' ).
 %:- use_module( '../main', [] ).
 
+%% RS-111205, UNIT: tuc/
 :- use_module( evaluate, [ fact/1 ] ).
-
-%:- use_module( tuc:lex, [ unproperstation1/1 ] ).
-:- use_module( lex, [  ] ).
-
+:- use_module( lex, [ unproperstation1/1  ] ).
 :- use_module( names, [ abroad/1, city/1, country/1 ] ).
-
 :- use_module( semantic, [
         adj_templ/2, %% object ?  hvem var de første menneskene ? (trytofool)
         (ako)/2,
@@ -30,23 +26,20 @@
         iv_templ/2, %% Tulle 
         tv_templ/3
   ] ).
-%:- ensure_loaded( semantic ).
-
 :- use_module( tuc:world0, [ area/2 ] ).
 %:- ensure_loaded( tuc:world0 ).
 
 :- use_module( '../app/busanshp', [ description/2 ] ).
 :- use_module( '../app/buslog', [ station/1 ] ).
 
-:- use_module( db:'../db/busdat', [
-%        building/1,
-%        composite_road/3,
-        %is_dom_val/5,
-        %nightbus/1,
-        %streetstat/5,
-        vehicletype/2, xforeign/1 ]).
-:- use_module( places:'../db/places', [
+%% RS-111205, UNIT: db/
+:- use_module( '../db/busdat', [ vehicletype/2, xforeign/1 ]).
+:- use_module( '../db/places', [
         isat/2, placestat/2, underspecified_place/1, unwanted_place/1 ]).
+:- use_module( '../db/regbusall', [ nightbus/1, regbus/1 ] ). %% HEAVY DB!
+:- use_module( '../db/teledat2', [ building/1, is_dom_val/5 ] ).
+:- use_module( '../db/regcompstr', [ composite_road/3 ] ).
+:- use_module( '../db/regstr', [   streetstat/5 ] ). %% RS-111201 Remember to update source program, which is makeaux?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%

@@ -5,12 +5,7 @@
 %% REVISED TA-080612
 
 % Tolker for Pragma-regler
-:- module( pragma, [
-        ipragmaor0/2,
-        ip2addto/4,
-        pragma/3,
-        pragma_complete/5
-   ] ).
+:- module( pragma, [ flatroundre/2, ipragmaor0/2, ip2addto/4, pragma/3, pragma_complete/5  ] ).
 
 :- use_module( '../utility/utility.pl' ).       % utility functions like 
 
@@ -57,7 +52,8 @@
 %%% %%%%%%%% RS-111118
 :- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
 
-:- use_module(trans:'bustrans.pl').
+%% RS-111205, UNIT: app
+:- use_module( bustrans, [] ).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

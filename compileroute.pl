@@ -9,8 +9,9 @@
 
 %% Data taken from topreg.pl
 
-:-prolog_flag(discontiguous_warnings,_,off). 
+%:-prolog_flag(discontiguous_warnings,_,off). 
 
+:- use_module( 'db/topreg', [ route_period/4 ] ).
 
 %%% Local Bootstrap predicates %%%
 %%% Must come first            %%%

@@ -6,8 +6,10 @@
 %% Compiles all of the necessary files.
 %% Same function as the file tucbuses.
 
-:-use_module( d_main ).
+%:-use_module( d_main ).
 :-use_module( d_dialogue ).
+:-ensure_loaded( d_main ).
+%:-ensure_loaded( d_dialogue ).
 
 %% :-compile(frames).
 :-use_module( frames2 ). %% Common version %% TA-051017 %% RS-111204

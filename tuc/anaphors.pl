@@ -6,6 +6,10 @@
 
 %% UNIT: tuc
 %% Anaphoric resolution
+:- module( anaphors, [
+        error_in_anaphors/0,    externalresolveit/2,    inventresolveit/2,
+        matchresol0/2,          nabi/3,                 resolve/2
+  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -31,9 +35,6 @@
 :- use_module( '../utility/library', [  nth/3  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%:-volatile user:myflags/2.
-%:-dynamic  user:myflags/2.
 
 resolve(P,Q):- % Only 1 external
     resolves(P,Q).

@@ -3,8 +3,7 @@
 %% CREATED  Automatically initially
 %% REVISED TA-091125
 
-:- module( regcompstr, [ composite_road/3 
-       ] ).
+:- module( regcompstr, [ composite_road/3 ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

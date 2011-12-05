@@ -8,16 +8,12 @@
 % Bruker pragma til å bygge buslog-program fra TQL og svar fra buslog-program
 
 :- module( interapp, [
-        avoidfool/1,
-        decidewday/2,
-        determine_application_period/1,
-        determine_query_period/0,
-        execute_program2/2,
-        ieval/1,
-        invisible_mess/1,
-        newfree/1,
-        notbothfree/2,
-        webstat/3
+        avoidfool/1,    decidewday/2,
+        determine_application_period/1, determine_query_period/0,
+        execute_program/1,             execute_program2/2,             
+        ieval/1,        invisible_mess/1,       isuccess/1,
+        makeanswer/4,   newfree/1,      notbothfree/2,  waves/0,
+        webstat/3,      writeanswer/1,  writeprog/1
    ] ).
 
 %%% %%%%%%%% RS-111118

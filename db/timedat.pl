@@ -47,11 +47,7 @@
 
 :- use_module( '../utility/utility', [ for/2 ]).  %% Module util
 :- use_module( '../utility/datecalc', [ 
-    add_days/3,
-    datetime/6,
-    easterdate/2,
-    sub_days/3,
-    todaysdate/1 ]).  %% Module util
+    add_days/3,    datetime/6,    easterdate/2,    sub_days/3,    todaysdate/1 ]).  %% Module util
 %:- ensure_loaded( '../utility/utility' )
 
 %* Import predicates

@@ -3,6 +3,8 @@
 %% CREATED TA-921106
 %% REVISED TA-081110
 
+:- module( slash, [ def/1 ] ).
+
 %%% %%%%%%%% RS-111118
 :- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
 

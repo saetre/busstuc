@@ -12,7 +12,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :- ensure_loaded( '../declare' ).
-:- use_module( '../main' ).     %% RS-111204    Includes user:myflags/2
+%:- use_module( '../main', [] ).     %% RS-111204    Includes user:myflags/2
 
 
 %% Rule format from pragma

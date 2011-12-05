@@ -6,14 +6,8 @@
 
 %% UNIT: tuc
 :- module( readin, [
-        alpha/3,
-        alphanums/3,
-        ask_file/1,
-        ask_user/1,
-        digits/3,
-        readoneline/1,
-        readrestquote/3
-    ] ).
+        alpha/3,        alphanums/3,    ask_file/1,     ask_user/1,
+        digits/3,       read_in/1,      readoneline/1,  readrestquote/3  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

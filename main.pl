@@ -2,24 +2,28 @@
 %% SYSTEM TUC
 %% CREATED TA-930531
 %% REVISED TA-110207
+%% REVISED RS-111118
 
 %% Main program for BussTUC
 
+%% RS-111204 moved to module user: declared infix in declare.pl
 :- module( main, [
-        user:(:=)/2,    user:(=:)/2,    %% RS-111204 moved to module user: declared infix in declare.pl
+        user:(:=)/2,    user:(=:)/2,    %% :=/2 and =:/2 exported from declare, through main, to "user:"
         abortword/1,    begin/0,        break/1,    %% dummy for breakpoints
         c/1,            closereadfile/0,        %% consult(File). %% TA-110106
         check/0,        create_taggercall/2,            difact/2,   %% Dynamic,  context dependent  %% TA-980301
         dmeq/2,         %% From dmeq.pl
-        dialog/0,       doshell/0,      english/0,      fact0/1,        
+        dialog/0,       doshell/0,      end/0,          english/0,
+        fact0/1,        getfromport/1,
         go/0,           gorg/0, %% listing(gps_origin). %% debug %% TA-110128
         gps_origin/2,   %% TA-110127
         haltword/1,     %% (johnforbeskerry).   %% <- Top Secret
         hei/0,          hi/0,           ho/0,           idiotpoint/0,
         jettyrun/1,     layout2/2,      listxt/0,       logrun/0,
-        mtrprocess/1,   mtrprocessweb/1,user:myflags/2, %% RS-111204 from declare.pl
+        mtrprocess/1,   mtrprocessweb/1,           user:myflags/2, %% RS-111204 from declare.pl
         norsk/0,        norsource_prefix/0,             ns/1,
         othercommand/2, print_tql/1,    printparse/1,   process_forel/1,
+        processorwait/1,
         progtrace/2,    r/1,            readfrom/1,
         readday/0,      readscript/0,   receive_tags/1, reset_origins/0,
         restart/0,      run/0,          run/1,          scanfile/2,     %%  DESTROYS  web writing
@@ -27,10 +31,11 @@
         splitfile/2,    spyg/1,         %% dcg_module(L), ...X
         spyr/1,         statistics/1,   status/0,       stopcommand/2,
         timeout/3,      %% If timeout doesn't work
-        testgram/0,     trace/2,        traceprog/2,    track/2,        trackprog/2,
+        testgram/0,     trace/2,        traceprint/2,   traceprog/2,    track/2,     trackprog/2,
         tuc/0,          update_tags/1,  verify_empty_origins/0,
         webrun/0,       webrun_english/0,               webrun_norsk/0,
-        webrun_tele/0,  write_taggercall/1  ] ).
+        webrun_tele/0,  write_taggercall/1,             writelog/1,
+        writepid/0  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -40,9 +45,9 @@
 %:-use_module( library(system) ).
 
 %% Operators used by TUC
-:- ensure_loaded( 'declare' ).
-
-:- compile( monobus ). %% // after main.pl  Unknown error
+:- ensure_loaded( declare ).
+:- use_module( interfaceroute, [  reset_period/0  ] ).
+:- compile(       monobus ). %% // after main.pl  Unknown error
 
 :- use_module( ptbwrite ).           %% Module PennTreeBank
 
@@ -52,13 +57,12 @@
         append_atomlist/2,      append_atoms/3, doubt/2,        for/2,
         makestring/2,           out/1,          output/1,       prettyprint/1,
         psl/2,                  purge/3,        reverse/2,      shell_copyfile/2,
-%        splitlast/3,
         starttime/0,            tab/1,          writelist/1
    ] ).  %% Module util
 
-:- use_module( 'tuc/evaluate', [ evaluateq2/1 ] ).
-:- use_module( 'tuc/readin', [
-        ask_user/1, ask_file/1   %%reads text to a list
+:- use_module( 'tuc/evaluate', [ evaluateq/1, evaluateq2/1 ] ).
+:- use_module( 'tuc/readin', [   ask_user/1, ask_file/1,   %%reads text to a list
+        read_in/1
     ] ).
 
 ?-op(1150,fx,spyg). %% spy grammar rule
@@ -68,22 +72,16 @@
 
 :-op( 727,xfy, => ).
 
-%:-dynamic webstat/3.  % webstat(date(2009,04,21),#sms,#tot).
-%:-dynamic txt/3,      % elementary words
-%          ctxt/3,     % composite words
-%          maxl/1.     % number  of words
 :-volatile
     difact/2,   %% Dynamic,  context dependent  %% TA-980301
     fact0/1,
-    gps_origin/2       %% TA-110127
-    %,user:myflags/2
-  .
+    gps_origin/2.       %% TA-110127
 :-dynamic %=>/2,
     difact/2,           %% Dynamic,  context dependent  %% TA-980301
     fact0/1,            %% Semi permanent
-    gps_origin/2       %% TA-110127
-    %,user:myflags/2
-  .
+    gps_origin/2.       %% TA-110127
+
+%:-dynamic webstat/3.  % webstat(date(2009,04,21),#sms,#tot).
 
 ?-prolog_flag(gc_trace,_,verbose).
 

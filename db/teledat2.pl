@@ -6,7 +6,7 @@
 %% File containing TELEDAT 
 %% co-existing with BUSDAT
 
-:- module( teledat2, [
+:- module( teledat, [
         expandkey/2,
         %% DATA BASE INTERFACE SECTION
         bustopic1/1,

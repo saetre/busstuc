@@ -2,38 +2,34 @@
 %% SYSTEM BUSSTUC/BUSTER
 %% CREATED TA-930601
 %% REVISED JB-970312  TA-110824
+%% REVISED RS-111118
 %%
 %% TUC Dictionary for the language N
 
 :-module( dict_n, [
-        adjective3/3,
-        adv2/2,  %% Techn., redundant adverb expression
-        compword/3,
-        kw/1, %% TA-100902 %%%%%%%%%  All the words appearing as [ ] constants in grammar
-        noisew/1,
-        noun2/2,
-        noun3/3,
-        noun_form/5,
-        rep_verb/1,
-        preposition/1,
-        pronoun/1,
-        pronoun/2,
-        rewording/2,
-        %% split word ahead of analysis. Not implemented ! %%
-        split/2,
-        splitword/2,
-        synwordx/2,
-        synsms/2,
-        synword/2,
-        unwanted_adjective/1,
-        unwanted_interpretation/2,
-        unwanted_verb/1,
-        unwanted_noun/1,
-        unwanted_number/1,
-        verbroot2/2,
-        verb_form/4,
-        xcompword/3
+        adjective3/3,    adv2/2,  %% Techn., redundant adverb expression
+        compword/3,      kw/1, %% TA-100902 %%%%%%%%%  All the words appearing as [ ] constants in grammar
+        noisew/1,        noun2/2,         noun3/3,           noun_form/5,      
+        preposition/1,   pronoun/1,       pronoun/2,         rep_verb/1,
+        rewording/2,     split/2,         %% split word ahead of analysis. Not implemented ! %%
+        splitword/2,     synwordx/2,      synsms/2,          synword/2, 
+        unwanted_adjective/1,             unwanted_interpretation/2,
+        unwanted_verb/1, unwanted_noun/1, unwanted_number/1, verbroot2/2,
+        verb_form/4,     xcompword/3
     ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:- use_module( '../main', [ user:myflags/2 ] ).
+:- use_module( '../tucbuses', [ backslash/1 ] ).
+
+%% RS-111205, UNIT: tuc
+:- use_module( semantic, [ gradv_templ/2, rv_templ/2 ] ).
+
+:- use_module( '../utility/utility', [ testmember/2 ] ).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
 % sp     spell error (unintended) ,not inflectable
@@ -49,8 +45,6 @@
 % nec    necessary (surprisingly)
 % ?      dubious (facetious)
 %¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
-
-
 
 % Prelexical translations
 
@@ -3237,7 +3231,7 @@ ow(X) :- user:instant(X,word),!.
 
 ow(X) :- numerid(X,_,_).
 ow(X) :- adjective2(X,_). 
-ow(X) :- user:gradv_templ(X,_). 
+ow(X) :- gradv_templ(X,_). 
 
 
 %%%%%%%%%  All the words that may appear as literal constants in grammar.
@@ -10132,7 +10126,7 @@ synword(TLF, telefonnummer):-   %% nr 6 -> telefonnummeret 6 // Bare tele
 
 synword(TLF, telefonnummer):-      %% nr 6 -> telefonnummeret 6 // Bare tele
     \+ user:myflags(teleflag,true),  %% ret -> r
-    \+ user:testmember(TLF,[nr,nummer,nummeret]), %% ad hoc (BUS no) 
+    \+ testmember(TLF,[nr,nummer,nummeret]), %% ad hoc (BUS no) 
     tlf(TLF).  
 
 
@@ -14236,13 +14230,13 @@ noun2(professor,professor):-  %%  tele ...
 noun2(førsteamanuensis,associate_professor):-
     user:myflags(teleflag,true).
 noun2(amanuensis,assistant_professor):-
-    user: user:myflags(teleflag,true).
+    user:myflags(teleflag,true).
 noun2(universitetslektor,lecturer):-
-    user: user:myflags(teleflag,true).
+    user:myflags(teleflag,true).
 noun2(sekretær,secretary):-    
-    user: user:myflags(teleflag,true).
+    user:myflags(teleflag,true).
 noun2(forsker,researcher):-   
-     user: user:myflags(teleflag,true). 
+     user:myflags(teleflag,true). 
 
 noun2(semantikk,semantics). 
 noun2(semester,semester). 
@@ -17192,7 +17186,7 @@ verb_form(åpne,  åpne,imp,fin).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 rep_verb(Tell):-  
-    user:rv_templ(Tell,_). %% Semantic  
+    rv_templ(Tell,_). %% Semantic  
 
 
 preposition(X):-preposition2(X,_).  
@@ -17615,7 +17609,7 @@ pronoun(deg,savant).  %%
 % compword []. Example  compword(vel,[],[]).
 
 
-noisew(BS):-user:backslash(BS).   
+noisew(BS):-backslash(BS).   
 
 noisew('&'). %% TA-110225
 

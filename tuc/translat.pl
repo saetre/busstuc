@@ -6,24 +6,10 @@
 
 %% UNIT: tuc
 :- module( translat, [
-        (=>)/2,
-        clausifyq/2,
-        clausifystm/1,
-        condq/2,
-        difact/2,
-        fact0/1,
-        hazardrule/1,
-        makedisjunct/2,
-%        user:myflags/2,
-        optand/3,
-        optor/3,
-        plunder/3,
-        protectrule/2, %% Ad Hoc
-        redundant/1,
-%        set/2,
-        testimpossible/1,
-        testquant/3,
-        unforgettable/2,
+        (=>)/2,           clausifyq/2,       clausifystm/1,     condq/2,
+        difact/2,         fact0/1,           hazardrule/1,      makedisjunct/2,
+        optand/3,         optor/3,           plunder/3,         protectrule/2, %% Ad Hoc
+        redundant/1,      testimpossible/1,  testquant/3,       unforgettable/2,
         writeconjunct/2
    ] ).
 
@@ -51,11 +37,6 @@
 :- use_module( '../app/interapp', [] ).  %% RS-111202    %% ieval
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% Hash-table for all sorts of values (in main user: module)
-%:- volatile user:myflags/2.   %% RS-111202 to translate.pl?
-%:- dynamic user:myflags/2.
-%    :=/2      %    =:/2
 
 :- volatile difact/2, fact0/1, (=>)/2.
 :- dynamic difact/2, fact0/1, (=>)/2.

@@ -5,15 +5,71 @@
 
 %% Synthesis of old checkitem.pl and checkitemtele.pl
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %% User input terminals
 
+%% IMPORTS
 :- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
+:- use_module( '../main', [   user:(:=)/2, dmeq/2,  user:myflags/2,  progtrace/2,  user:set/2, trackprog/2  ] ).
 
 %% NB  checkteleitem   and checkitem  are mingled %% TA-051106%%%%%%%%%%%%%
 %%     checkitem(tele,     checkitem(trans,
 
-
 :- dynamic current_frame/1, last_answer/2.
+
+%% UNIT: dialog
+:- use_module( frames2, [
+        frame_gettype_rec/3,  frame_setvalue_rec/4 
+    ] ).
+:- use_module( newcontext2, [
+        addref/3, commitref/3, getcontext/2, getcurrent/1,
+        setcontext/2, reset_context/0
+    ] ).
+:- use_module( parseres, [
+        busanswer_sat/3,        listrequirements/1,     teleanswer_sat/2,
+        writetelebusteranswer_rep/1,    writetelebusteranswer_saf/2,
+        writetelebusteranswer_sqt/3,    writetelebusteranswer4/4
+    ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% UNIT: app
+:- use_module( '../app/busanshp', [
+        bcp/1,  bcpbc/1, bwrbc/1,       paraphrase/1,   paraphrase2/2,
+        paraphrase3/3,   period/0,      prent0/1,
+        printmessage/1,  space/0
+    ] ).
+:- use_module( '../app/buslog', [ 
+        today/1
+    ] ).
+:- use_module( '../app/interapp', [
+        isuccess/1,        execute_program/1,   makeanswer/4,
+        writeanswer/1, waves/0,  writeprog/1
+    ] ).
+%% Handle empty answer from buslog 
+:- use_module( '../app/negans', [
+        cannot/1, cannotanswer/1, makenegative/3, trytofool/2, trytofool/3 
+    ] ).
+:- use_module( '../app/pragma', [
+        flatroundre/2, ipragmaor0/2, ip2addto/4, pragma/3, pragma_complete/5
+    ] ).
+
+%% UNIT: utility
+:- use_module( '../utility/datecalc', [
+%    add_days/3,
+%    before_date1/2,
+%    %% creates a string of date  YYYYMMDD
+%    datestring/1,       datetime/6,     dayno/2,        days_between/3,
+%    dayname/2,          dayprefix/2,
+        daysucc/2,
+%    easterdate/2,    findfirstcomingdate/2,
+%    getdaynew/1,        isofloor/2,
+        isday/1 ] ).
+:- use_module( '../utility/utility', [
+        delete1/3, doubt/2, ends_with/3,  for/2,  (listall)/1, remember/1,   roundmember/2,   set_of/3   ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 checkitem(Type, OldFocus, NewFocus) :-
 	user:myflags(teleflag,true),
@@ -33,7 +89,7 @@ checkitem(_,nil, X,X).
 
 checkitem(tele,uati, focus(OldFrame, OldRefer, slot(Slot)), focus(NewFrame, NewRefer, [])) :-
     getcurrent(Cid),
-    getcontex(Cid, context((item, Item isa _), _, _, _)),
+    getcontext(Cid, context((item, Item isa _), _, _, _)),
     frame_getsubslots(Slot, SubSlot),
     frame_gettype_rec(OldFrame, SubSlot, Type),
     istype(Item, Type),

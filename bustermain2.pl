@@ -6,23 +6,31 @@
 %% COMMON CO-VERSION BUSS TELE
 %:- module( bustermain, [ ] ).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Imports
 :- use_module( library(timeout) ). %% timeout WITHOUT " _ "
 :- use_module( library(process) ).
+:- use_module( library(system3) ).
 
 %% Operators used by TUC
-:- ensure_loaded( 'declare' ).
-:- use_module( main, [   user:(:=)/2,  user:(=:)/2, 
-        closereadfile/0, dmeq/2,
-        user:myflags/2,  progtrace/2,  readfrom/1,  run/0, user:set/2  ] ).
+:- ensure_loaded( declare ).
+:- use_module( interfaceroute, [  reset_period/0  ] ).
+
+:- use_module( main, [   user:(:=)/2,   user:(=:)/2, 
+        closereadfile/0, dmeq/2,        end/0,  getfromport/1,
+        user:myflags/2,  processorwait/1,       progtrace/2,   readfrom/1,
+        run/0,      user:set/2,         writelog/1,     writepid/0  ] ).
 
 :- compile( monobus ). %% // after main.pl  Unknown error
 :- use_module( ptbwrite ).           %% Module PennTreeBank
+:- use_module( tucbuses, [  dcg_module/1,  backslash/1,
+        language/1,     legal_language/1, script_file/1  ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :- use_module( 'db/timedat' ).           %% Module db
 
-:- use_module( 'dialog/d_dialogue', [ quit_dialog/0, reset_conns/0,
+:- use_module( 'dialog/d_dialogue', [ %quit_dialog/0, reset_conns/0,
     subst_tql/4,    varmember/2   ] ).
 
 :- use_module( 'utility/utility', [
@@ -32,12 +40,16 @@
         shell_copyfile/2,       starttime/0,    tab/1,          writelist/1
    ] ).  %% Module utility
 
-:- use_module( 'tuc/evaluate',[ evaluateq2/1 ]).
-:- use_module( 'tuc/readin', [  ask_user/1, ask_file/1 ] ). %%reads text to a list
-
-:-use_module( tucbuses, [  dcg_module/1,  backslash/1,
-        language/1,     legal_language/1, script_file/1  ] ).
-
+:- use_module( 'tuc/anaphors', [
+      %%  error_in_anaphors/0,    externalresolveit/2,    inventresolveit/2,
+        %%matchresol0/2,          nabi/3,
+                                  resolve/2  ] ).
+:- use_module( 'tuc/evaluate',[ evaluateq/1, evaluateq2/1 ]).
+:- use_module( 'tuc/lex', [ decide_topic/0, lexproc3/3, mix/2, spread/1,
+        unknown_words/2
+    ] ).
+:- use_module( 'tuc/readin', [  ask_user/1, ask_file/1, read_in/1    ] ). %%reads text to a list
+:- use_module( 'tuc/translat', [  clausifyq/2,   clausifystm/1  ] ).
 :- dynamic difact/2, fact0/1.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -57,12 +69,11 @@ timeout(     S, L, Success):-
 break(_). %% dummy for breakpoints
 
 
-%% Main program
-
+%% Main program for Buster
 
 :-dynamic txt/3,      % elementary words
-          ctxt/3,     % composite words 
-          maxl/1.
+          ctxt/3,     % composite words
+          maxl/1.     % number  of words
 
 
 ?-op(1150,fx,spyg). %% spy grammar rule
@@ -179,8 +190,7 @@ quit:-
     lemmas_proved := 0,  %%
     interp := 0,         %%
     (skolemax =: SZ -> skolocon := SZ; skolocon := 0), 
-    const := 0,
-    quit_dialog. %% <----  without reply
+    const := 0. %,    quit_dialog. %% <----  without reply
 
 reset:-  
     retractall(difact(_,_)),   %% Only Dynamic Facts 
@@ -228,21 +238,6 @@ webrun_norsk :-
     dialog   := 0,  
     webrun.
 
-webrun_tele :-
-    language :=norsk,
-    dialog   := 0,  
-
-	 writepid, 
-    nofileerrors,
-	 %%% TA-060426 %% remember(lastday(-1,noday)), 
-
-    repeat,
-       world := real, 
-	    getfromport(L),
-	    processorwait(L),
-	    fail,
-	 !.
-
 /***
 webrun_dialog :-  --> d_main.pl %% TA-050722
 ***/
@@ -250,7 +245,7 @@ webrun_dialog :-  --> d_main.pl %% TA-050722
 
 webrun :-      
 	 writepid, 
-    nofileerrors,
+    set_prolog_flag(fileerrors,off),
 	 %%% TA-060426 %% remember(lastday(-1,noday)), 
     busflag:= true,    %%  Bustuc Application Program
 	 queryflag := true, %% Statements are implicit queries
@@ -381,85 +376,7 @@ testgram:-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-writepid :-
-         pid(Pid),
-         open('.serverpid',write,Port),
-         write(Port,Pid),
-         close(Port).
-writepid.
 
-
-writelog(L) :-  
-	 open('tuclog.txt',append,Stream) ->
-	 writets(L,Stream) ;
-	 writeiofail.
-
-writets(Tokens,Stream) :-
-	 writets1(Tokens,Stream),
-	 close(Stream).
-
-writets1([],Stream) :-
-	 write(Stream,'\n').
-writets1([Token|Rest],Stream) :-
-	 write(Stream,Token),
-	 write(Stream,' '),
-	 writets1(Rest,Stream).
-
-writeiofail :-
-	 write('Warning: Could not write to logfile tuclog.txt'),nl.
-
-%  
-
-getfromport(L) :-
-	 open('.port',read,Port),
-	 ( read(Port,query(L)) ; L = [] ), 
-        
-
-	 close(Port),
-	 !.
-getfromport([]).  % Else. 
-
-
-processorwait([]) :-
-	 sleep(1),
-	 !.
-
-processorwait(S) :-
-	 psl(S,L),
-    splitlang(L,L1), 
-
-    redirecttoans, 
-
-    (process(L1);true),          % Process always fails...
-
-    redirectfromans,
-
-    clearport,
-    !.
-
-
-
-redirecttoans:- 
-    user:myflags(teleflag,true),
-    !. %% Not Yet
-
-redirecttoans:- 
-  trytellans. 
-
-
-redirectfromans:-
-   user:myflags(teleflag,true),
-   !,
-
-   teledbrowfile(Rowsample0), 
-
-   shell_copyfile(Rowsample0,'.ans').
-
-
-redirectfromans:-
-   told,
-   !.
- 
   
 
 %% From Web
@@ -543,7 +460,7 @@ scanfile(F,L):-
 doask_user(L):-
    interp := 0,  
     
-   pcontext,  
+%% RS-111204   pcontext,  
 
    ask_user(L).   %% readin.pl
 

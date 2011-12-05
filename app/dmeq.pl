@@ -5,6 +5,10 @@
 
 %% Domain Equivalents common  tele and bus
 
+:- use_module( '../tuc/fernando', [ subclass0/2 ]).
+:- use_module( '../utility/utility', [ testmember/2 ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%% dmeq(A,B) betyr at ordet til høyre
 %%%%%%%% betyr det samme som ordet til venstre i dette domenet
@@ -14,7 +18,7 @@
 dmeq(List,U):-   %% traps var
     \+ atom(List),
     !,      
-    user:testmember(U,List).
+    testmember(U,List).
 
 
 dmeq(about,about).
@@ -447,7 +451,8 @@ dmeq(trafficant,vehicle).
 dmeq(trafficant,way). %% muligheter Rough 
 
 dmeq(trafficant,Person):- 
-    user:subclass0(Person,agent). %% kan man ta
+    %user:subclass0(Person,agent). %% kan man ta
+    subclass0(Person,agent). %% kan man ta
 
 dmeq(tram,tram_route_plan). 
 dmeq(tram,tram). 

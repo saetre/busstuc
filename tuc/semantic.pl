@@ -5,7 +5,6 @@
 %% REVISED RS-111121
 
 :- module( semantic, [ 
-%        abnormalverb/2, %% EventLess (Static) verbs etc
         a_compl/4,      %%  bussen er forsinket slik at jeg går
         adj_templ/2, %% object ?  hvem var de første menneskene ? (trytofool)
         adjnamecomp_templ/3,

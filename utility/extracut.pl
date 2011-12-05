@@ -19,6 +19,19 @@
         xi/2
  ] ).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% RS-111205, UNIT: utility/
+:- use_module( utility, [ append_atomlist/2, for/2, set_of/3, output/1 ] ).  % utility functions
+:- use_module( makeauxtables, [ dumppredas/2 ] ).
+
+%% %% RS-111203, UNIT: app/
+:- use_module( '../app/buslog', [  addtotime/3,  difftime/3  ] ).
+
+%% UNIT: db/
+:- use_module(   '../db/busdat', [ cutloop_station/2  ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 /*
 
 cutloop_trace(Station,Trace1,Trace2)),
