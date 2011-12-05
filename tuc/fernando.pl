@@ -8,90 +8,66 @@
 %% Named after the great Computational Linguist  Fernando Pereira
 
 :- module( tuc, [
-        adj_compl/6,
-        adjnamecomp_template/3,
-        adjname_template2/3,
-        adjnoun_template/4,
-        adjust_year/3,%% Special hack,  neste 3 minutter ?????
-        adjustprep/3,
-        adjustprepv/3, %% TA-110629
-        adv_compl/6,
-        align_measure/5,
-        atom_templ/2,
-        atv_template/6,
-        bealign/5,
-        bigno/3,        %% Already decided Horrendous
-%        bottom/2, %% Reminescent // Internal
-        cat_templ/5,
-        co_template/6,
-        comparad/5,
-        compare/5,      %% John is equal/unequal
-        compliancetest/2,
-        compliancetest2/3,
-        compoundtest/4,
-        compatvar/2,
-        constrain0/2,
-        constrain2/3,
-        constrainit/2,
-        ctype/2,         %% NEW REGIME    %% just for safety
-        dayname/1,
-        decide_adjective/3,
-        decide_quantifier/4,
-        defact/3,
-        dtv_template/6,
-        event/4,
-        hour_test/1,
-        idvarx/3,
-        isaprep/1,
-        issiffer/1,
-        issifre/1,
-        isfaktor/1,
-        it_template/1,
-        iv_template/4,
-        joinclass/3,
-        joinclasses/2,
+        adj_compl/6,        adjnamecomp_template/3,                     adjname_template2/3,
+        adjnoun_template/4, adjust_year/3,       %% Special hack, neste 3 minutter ?????
+        adjustprep/3,       adjustprepv/3,       adv_compl/6,
+        align_measure/5,    atom_templ/2,        atv_template/6,        bealign/5,
+        bigno/3,  %% Already decided Horrendous  %bottom/2, %% Reminescent // Internal
+        cat_templ/5,        co_template/6,       comparad/5,            compare/5,      %% John is equal/unequal
+        compliancetest/2,   compliancetest2/3,   compoundtest/4,        compatvar/2,
+        constrain0/2,       constrain2/3,        constrainit/2,         ctype/2,         %% NEW REGIME    %% just for safety
+        dayname/1,          decide_adjective/3,  decide_quantifier/4,   defact/3,
+        dtv_template/6,     event/4,             hour_test/1,           idvarx/3,
+        isaprep/1,          issiffer/1,          issifre/1,             isfaktor/1,
+        it_template/1,      iv_template/4,       joinclass/3,           joinclasses/2,
         %% latin combines names into a compound identifier
-        latin/4,        %% Nardovegen 1     %% Drop road number
-        meetclass/3,
-        nil_noun_compl/1,  %%  Just test IF there is a nil noun complement
-        noun_compl/4, %% TA-110119
-        norpart/3,      %% Adverbial expression for part of day %% Day is determined
-        monthnumber/2,
-        negate/3,
-        noun_adverb/4,
-        numberdate/2,
-        plausibleclocktest/3,
-        pluralis/2,
-        plausible_busno/1,
-        preadjs_template/4,
-        rep_verb/1,
-        rv_template/7,
-        setvartype/2,
-        screenmeasure/2,
-        subclass0/2,
-        subtype0/2,
-        subject_object_test/3,
-        teen/1,
-        testconstraint/2, %% test T <= ID
-        thenwhat/3,
-        tidvarp/3,
-        tv_template/5,
-        type/2,
-        value_world/1,
-        vartype/3,
-        vartypeid/2,
-        verb_compl/6,
-        verbtype/2,
-        which_thing/2,
-        whodunnit/2
+        latin/4,            meetclass/3,         nil_noun_compl/1,  %%  Just test IF there is a nil noun complement
+        noun_compl/4,       norpart/3,           %% Adverbial expression for part of day %% Day is determined
+        monthnumber/2,      negate/3,            noun_adverb/4,         numberdate/2,
+        plausibleclocktest/3, pluralis/2,        plausible_busno/1,     preadjs_template/4,
+        rep_verb/1,         rv_template/7,       setvartype/2,          screenmeasure/2,
+        subclass0/2,        subtype0/2,          subject_object_test/3, teen/1,
+        testconstraint/2,   thenwhat/3,          tidvarp/3,             tv_template/5,
+        type/2,             value_world/1,       vartype/3,             vartypeid/2,
+        verb_compl/6,       verbtype/2,          which_thing/2,         whodunnit/2
     ] ).  %% RS-111121 Module TUC
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :- ensure_loaded( '../declare' ).  % :- use_module( user:'../declare.pl').
 
-:-use_module( dict_e, [ preposition/1 ] ).
+%% RS-111205, UNIT: /
+:- use_module( '../main', [   user:(:=)/2, user:myflags/2, user:set/2  ] ).
+:- use_module( '../tucbuses', [  user:dict_module/1  ] ).
 
- %% RS-111205, UNIT: utility/
+%% RS-111205, UNIT: tuc/
+:- use_module( dict_e, [ preposition/1 ] ).
+:- use_module( semantic, [ 
+        a_compl/4,      %%  bussen er forsinket slik at jeg går
+        adj_templ/2, %% object ?  hvem var de første menneskene ? (trytofool)
+        adjnamecomp_templ/3,
+        adjname_templ/2,        %% TA-110701
+        adjnoun_templ/2,
+        adjnouncomp_templ/3,
+        (ako)/2,
+        aligen2/2,
+        align1/2,
+        coher_class/3,
+        particle/3,
+        (has_a)/2,
+        iv_templ/2, %% Tulle 
+        jako/2, %% hyponym of adjectives
+        measureclass/1,
+        n_compl/3,
+        rv_templ/2,
+        tv_templ/3,
+        v_compl/4,
+        vako/2  %% hyponym of verbs
+  ] ).
+
+%% RS-111205, UNIT: db/
+:- use_module( '../db/timedat', [ this_year/1 ] ).
+
+%% RS-111205, UNIT: utility/
 :- use_module( '../utility/datecalc', [ datetime/6 ]).  %% Module util
 :- use_module( '../utility/utility', [ 
         divmod/4, subcase/2, test/1, testmember/2 ] ).
