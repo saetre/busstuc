@@ -6,14 +6,11 @@
 %% REVISED  RS-111118
 
 %% Unit: app
-:- module(trans, [ rule/2, 
-                  double/0, tracevalue/1
-       ] ).
+:- module( trans, [ (rule)/2, double/0, tracevalue/1 ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :- ensure_loaded( '../declare' ).
-%:- use_module( '../declare', [user:myflags/2] ).
 % :-op( 0, xfx, ako ).    %% "Disable" 'ako' as an operator for this file, e.g. "tightest binding"
 
 :- use_module( '../utility/utility', [] ).

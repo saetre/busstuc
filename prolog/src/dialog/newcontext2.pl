@@ -5,25 +5,11 @@
 %% REVISED RS-111203
 
 :- module( newcontext, [
-        addref/3,
-        clearold/0,
-        commitref/1,
-        commitref/3,
-        current_context/1,
-        current_frame_getvalue/2,
-        dialog_resolve/2,
-        getcontext/2,
-        getcurrent/1,
-        getframe/2,
-        getquery/2,
-        getref/3,
-        reset_context/0,
-        saved_context/3,
-        setcurrent/1,
-        setframe/2,
-        setquery/2,
-        topic_subclass/3
-    ] ).
+        addref/3,          clearold/0,       commitref/1,    commitref/3,
+        current_context/1, current_frame_getvalue/2,         dialog_resolve/2,
+        getcontext/2,      getcurrent/1,     getframe/2,     getquery/2,     getref/3,
+        reset_context/0,   saved_context/3,  setcontext/2,   setcurrent/1,   setframe/2,
+        setquery/2,     topic_subclass/3  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% %%%%%%%% RS-111118

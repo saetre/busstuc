@@ -4,12 +4,7 @@
 %% REVISED  TA-110706
 
 %% Handle empty answer from buslog 
-:- module( negans, [
-        cannot/1,
-        cannotanswer/1,
-        makenegative/3,
-        trytofool/3
-    ] ).
+:- module( negans, [  cannot/1, cannotanswer/1, makenegative/3, trytofool/2, trytofool/3  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Imports

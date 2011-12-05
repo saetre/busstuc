@@ -4,25 +4,33 @@
 %% REVISED TA-090925
 
 :- module( evaluate, [
-    disqev/1,
-    evaluateq2/1,
-    fact/1,
-    fakt/1,
-    included/2,
-
-    qdev/2,
-    unskolemize/2,
-    valof/2,
-    winstant/3
-
-  ] ).
+    disqev/1,   evaluateq/1,    evaluateq2/1,   fact/1, fakt/1, included/2, user:instant/2,
+    qdev/2,     unskolemize/2,  valof/2,        winstant/3  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- ensure_loaded( '../declare' ).       %% Operators for TUC
+:- ensure_loaded( '../declare' ).      %% Operators for TUC
+:- use_module( '../main', [ 
+        user:(:=)/2,    user:(=:)/2,
+        traceprint/2
+   ] ).    %% :=/2 and =:/2 exported from declare, through main, to "user:"
 
 :-volatile difact/2, fact0/1.
 :-dynamic difact/2, fact0/1.
+
+:- use_module( '../app/interapp', [   ieval/1   ] ).
+
+%% RS-111205, UNIT: tuc, %% RS-111204    isa/2
+:- use_module( facts, [ (isa)/2, have/4   ] ).
+:- use_module( fernando, [ subclass0/2 ]).
+:- use_module( metacomp, [ language/1 ] ).
+:- use_module( semantic, [ (ako)/2, testclass/1 ] ).
+:- use_module( slash, [ (def)/1 ] ).
+:- use_module( translat, [ (=>)/2,  testquant/3  ] ).
+
+:- use_module( '../utility/utility', [
+        aggregate/3, doubt/2,   out/1,  output/1, set_of/3,  writelist/1
+   ] ).  %% Module util
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -143,8 +151,8 @@ qdev(X,X).
 unskolemize(sk(J),AMan):-
     !,
     fact(sk(J) isa Man),
-    klassing(Man,AMan).       %% turbo.pl
-
+    klassing(Man,AMan).       %% turbo.pl %% RS-111205, where? very old? ~toreamb/TUC/BACKUP/tuc/turbo.pl
+klassing(G,G).
 
 disqev(P) :-
     qev(nil,P).     %% only allowed to refer to discourse elements
@@ -224,7 +232,7 @@ vfact(N,X):-
 %
 vfact(_,X isa Y):-
      !,
-     instant(X,Y).
+     user:instant(X,Y).
 
 dialog_referent(X,C) :-
     fakt(X is_the C);      %  dynamic or static
@@ -267,19 +275,19 @@ included(X,Z):-
     included(Y,Z).
 included(X,X). % Outside in
 
-instant(X,T):-
+user:instant(X,T):-
      var(X),
      testclass(T),
      !.  %% X= ' not listable '.
 
-instant(X,C):-
+user:instant(X,C):-
     fact(X isa C).
 
 
-instant(X,Z) :- % bottom up
+user:instant(X,Z) :- % bottom up
 %    (ako/Y/Z),
     (Y ako Z),
-    instant(X,Y).
+    user:instant(X,Y).
 
 %%
 

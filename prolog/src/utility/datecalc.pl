@@ -24,6 +24,9 @@
 %:- use_module(library(system), [environ/2, datime/1]).
 :- use_module( library(system), [datime/1]).
 
+:- use_module( utility, [ coerce2d/2,  concat_atomlist/2  ] ).
+
+:- use_module( '../app/buslog', [         today/1    ] ).
 :- use_module( '../db/busdat', []).
 :- use_module( '../db/timedat', [ clock_delay/3, named_date/2 ]).
 %:- ensure_loaded( '../db/timedat'). %% RS-111201

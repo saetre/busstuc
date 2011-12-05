@@ -9,6 +9,8 @@
 % assume all files are separated correctly with a Tab (ASCII 9)
 
 :- ensure_loaded( '../declare' ).
+:- ensure_loaded( '../sicstus4compatibility' ).  %% Compatible with sicstus4, get0/1 etc.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

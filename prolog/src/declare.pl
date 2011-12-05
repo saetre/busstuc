@@ -43,6 +43,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Declarations of hashmap for flags, used by TUC       %user:myflags(origlanguage, norsk).
+%% made available through  module main: , as a user:module)
+%    :=/2      %    =:/2
 :-volatile  user:myflags/2.
 :-dynamic   user:myflags/2.
 

@@ -2,17 +2,12 @@
 %% SYSTEN BUSSTUC/BUSTER
 %% CREATED TA-040421
 %% REVISED TA-060101
+%% REVISED RS-111204
 
 % Interface procedures for handling interface to route modules
-
-:- module( interfaceroute, [
-        current_period/4,
-        default_period/3,
-        decide_period/2,
-        domain_module/2,
-        reset_period/0,
-        thisdate_period_module/3,       %% RS-111202
-        valid_period/2
+:- module( interfaceroute, [ 
+        current_period/4,  default_period/3,  decide_period/2,  domain_module/2,
+        reset_period/0,    thisdate_period_module/3,            valid_period/2
   ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

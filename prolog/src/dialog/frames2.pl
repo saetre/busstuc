@@ -6,26 +6,12 @@
 
 %% Common version for frames and teleframes 
 :-module( frames, [
-        completeframe/1,
-        completeteleframe/1,
-        find_askfor/3,
-        find_parentslot/3,
-        framecounter/1,
-        frame_getcount/2,
-        frame_getexperience/4,
-        frame_getsubslots/2,
-        frame_gettype/2,
-        frame_getvalue_rec/4,
-        frame_iscomplete/1,
-        frame_isempty/1,
-        frame_isfull/1,
-        frame_setexperience/4,
-        frametemplate/2,
-        is_subframe/2,
-        
-        resetframe/0,
-        xframe_getvalue/2,
-        xframe_setvalue/2
+        completeframe/1,        completeteleframe/1,    find_askfor/3,          find_parentslot/3,
+        framecounter/1,         frame_getcount/2,       frame_getexperience/4,
+        frame_getsubslots/2,    frame_gettype/2,        frame_gettype_rec/3,    frame_getvalue_rec/4,
+        frame_iscomplete/1,     frame_iscomplete/2,     frame_isempty/1,        frame_isfull/1,
+        frame_setexperience/4,  frame_setvalue_rec/4,   frametemplate/2,        is_subframe/2,
+        resetframe/0,           xframe_getvalue/2,      xframe_setvalue/2
   ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

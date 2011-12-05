@@ -35,9 +35,15 @@
         xcompword/3
     ] ).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :- use_module( morph_e, [] ).
+:- use_module( evaluate, [] ).
+:- use_module( semantic, [ (ako)/2, gradv_templ/2, particle/3 ] ).
+
+:- use_module( '../tucbuses', [ backslash/1 ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 rewording([can,t],[can,not]).      %% TA-110316
 rewording([cant],[can,not]).       %%
@@ -285,7 +291,7 @@ ow(X) :- user:instant(X,word),!.
 
 ow(X) :- numerid(X,_,_).
 ow(X) :- adjective2(X,_).
-ow(X) :- user:gradv_templ(X,_).  % also cw ? 
+ow(X) :- gradv_templ(X,_).  % also cw ? 
 
 
 
@@ -300,8 +306,8 @@ cw('!').
 cw(':'). 
 cw('/').
 
-cw(X) :- user:particle(X,_,_).
-cw(X) :- user:gradv_templ(X,_). 
+cw(X) :- particle(X,_,_).
+cw(X) :- gradv_templ(X,_). 
 cw(X) :- pronoun(X,_). 
 
 cw(a). cw(b). cw(c). cw(d). cw(e). cw(f). cw(g). cw(h). %% street letters
@@ -1003,7 +1009,7 @@ synword(youre,         tucs).
 synword(yourself,      tuc). 
 
 
-noisew(BS):-user:backslash(BS).   
+noisew(BS):-backslash(BS).   
 
 noisew('«').
 noisew('»'). 
@@ -1086,7 +1092,9 @@ noun2(M,N):-nounsyn(M,N).
 noun2(N,N):-noun(N).
 
 noun(thing).
-noun(X) :- user:(ako/X/_ ),
+%noun(X) :- semantic:((ako)/X/_ ),
+%noun(X) :- user:( X ako _ ),
+noun(X) :- semantic:( X ako _ ),
     \+ unwanted_noun(X). %% second %% TA-100909
 
 %% Replaces synonyms with inflections (Root synonyms)
@@ -1369,7 +1377,7 @@ verb_form(wrote,write,past,fin).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 rep_verb(Tell):- 
-    user:rv_templ(Tell,_). %% Semantic 
+    semantic:rv_templ(Tell,_). %% Semantic 
 
 preposition(by).
 
@@ -1484,7 +1492,7 @@ noun_form(women,woman,plu,u,n).
 
 
 adjective2(X,X):- 
-    user:adj_templ(X,_),
+    semantic:adj_templ(X,_),
     !. %% >1 
 
 adjective2(X,Y):- 

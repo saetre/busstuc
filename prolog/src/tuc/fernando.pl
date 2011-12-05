@@ -87,12 +87,14 @@
     ] ).  %% RS-111121 Module TUC
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%:-use_module('../utility/utility').
-:-use_module( dict_e, [ preposition/1 ] ).
-
 :- ensure_loaded( '../declare' ).  % :- use_module( user:'../declare.pl').
 
+:-use_module( dict_e, [ preposition/1 ] ).
+
+ %% RS-111205, UNIT: utility/
+:- use_module( '../utility/datecalc', [ datetime/6 ]).  %% Module util
+:- use_module( '../utility/utility', [ 
+        divmod/4, subcase/2, test/1, testmember/2 ] ).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

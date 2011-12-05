@@ -24,9 +24,9 @@
         word/5
  ]).
 
- 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:- use_module( lex, [   user:txt/3  ] ).
 
 %% Consensical Grammar Runtime Predicates
 
