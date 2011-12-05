@@ -2,7 +2,10 @@
 %% SYSTEM TUC
 %% CREATED TA-921129
 %% REVISED TA-110825
-%% REVISED RS-111121
+%% REVISED RS-111205
+
+%% UNIT: tuc
+%  TUCs  Lexical Semantic Knowledge Base
 
 :- module( semantic, [ 
         a_compl/4,      %%  bussen er forsinket slik at jeg går
@@ -21,6 +24,7 @@
         (has_a)/2,
         iv_templ/2, %% Tulle 
         jako/2, %% hyponym of adjectives
+        n_compl/3,      %% To fernando.pl
         normalverb/2,   %% normal if not abnormal at all
         measureclass/1,
         pai_templ/2,    %% it is  Adj to VP
@@ -33,15 +37,10 @@
         vako/2  %% hyponym of verbs
     ] ). %% Or define fernando as the main file in the tuc module??
 
-%% MODULE: tuc
-%  TUCs  Lexical Semantic Knowledge Base
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :- ensure_loaded( '../declare' ).
 %:- use_module( main:'../declare.pl' ).
-
-%:- ['fernando'].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -57,11 +56,13 @@ normalverb(V,T):- abnormalverb(V,U),\+ subclass0(T,U).
 %% ABNORMALVERB   EventLess (Static) verbs etc
 
 abnormalverb(cost,_).  
-abnormalverb(be_named,_).  %%   EventLess
+abnormalverb(be_named,_).       %%   EventLess
 %%%% abnormalverb(die,god).     %% just to have 1
-abnormalverb(have,_).      %% ha feil feil(aktig)
+abnormalverb(have,_).           %% ha feil feil(aktig)
+abnormalverb(use2,_).           %%  NB No inheritance   (abnormalverb(use2,bus) tc.       
+abnormalverb(describe,agent).   %%  describe bus 5 at NTH 
 
-    abnormalverb(use2,_).     %%  NB No inheritance   (abnormalverb(use2,bus) tc.       
+%% abnormalverb(lie1,_). %% not lie in time %% so what 
 
 %% NEW RELATION   jako (hyponym of adjectives) 
 

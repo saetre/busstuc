@@ -37,6 +37,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :- ensure_loaded( '../declare' ).       % operators
 
+%% RS-111205, UNIT: /
 :- use_module( '../interfaceroute', [  current_period/4,  decide_period/2,  default_period/3  ] ).
 :- use_module( '../main', [   user:(:=)/2, dmeq/2,  user:myflags/2,  progtrace/2,  user:set/2  ] ).
 :- use_module( '../tucbuses', [  user:dict_module/1  ] ).
