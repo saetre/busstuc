@@ -8,7 +8,7 @@
 %  TUCs  Lexical Semantic Knowledge Base
 
 :- module( semantic, [ 
-        a_compl/4,      %%  bussen er forsinket slik at jeg går
+        a_compl/4,
         abnormalverb/2,
         adj_templ/2, %% object ?  hvem var de første menneskene ? (trytofool)
         adjnamecomp_templ/3,
@@ -42,8 +42,13 @@
         vako/2  %% hyponym of verbs
     ] ). %% Or define fernando as the main file in the tuc module??
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%% The sorting of these predicates are not grouped by predicate name, but by 'term'-name
+:- discontiguous a_compl/4, abnormalverb/2, adj_templ/2, ako/2, has_a/2, iv_templ/2, iv_templ/3, rv_templ/2, tv_templ/3, tv_templ/4, v_compl/4.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :- ensure_loaded( '../declare' ).
 
 %% RS-111205, UNIT: tuc

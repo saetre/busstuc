@@ -303,7 +303,7 @@ attributes( [Name=Value|Attributes], Seen, Namespaces ) -->
 	spaces,
 	"=",
 	spaces,
-	attribute_user:myflags( Value, Namespaces ),
+	attribute_main:myflags( Value, Namespaces ),
 	attributes( Attributes, [Name|Seen], Namespaces ).
 attributes( [], _Seen, _Namespaces ) --> "".
 
@@ -353,7 +353,7 @@ dtd( Namespaces0, Namespaces1 ) -->
 	nmtoken_chars( Name ),
 	spaces,
 	quote( Quote ),
-	entity_user:myflags( Quote, Namespaces0, String ),
+	entity_main:myflags( Quote, Namespaces0, String ),
 	spaces,
 	">",
 	{\+ character_entity( Name, _StandardChar ), 
@@ -372,7 +372,7 @@ dtd( Namespaces, Namespaces ) --> spaces.
 %	nmtokens( Names ).
 %nmtokens( [] ) --> [].
 %
-entity_user:myflags( Quote, Namespaces, String, [Char|Plus], Minus ) :-
+entity_main:myflags( Quote, Namespaces, String, [Char|Plus], Minus ) :-
 	( Char == Quote ->
 		String = [],
 		Minus = Plus
@@ -380,10 +380,10 @@ entity_user:myflags( Quote, Namespaces, String, [Char|Plus], Minus ) :-
 		reference_in_entity( Namespaces, Quote, String, Plus, Minus )
 	; otherwise ->
 		String = [Char|String1],
-		entity_user:myflags( Quote, Namespaces, String1, Plus, Minus )
+		entity_main:myflags( Quote, Namespaces, String1, Plus, Minus )
 	).
 
-attribute_user:myflags( String, Namespaces ) -->
+attribute_main:myflags( String, Namespaces ) -->
 	quote( Quote ),
 	attribute_leading_layouts( Quote, Namespaces, String ).
 
@@ -407,7 +407,7 @@ attribute_layouts( Quote, Namespaces, Layout, String, [Char|Plus], Minus ) :-
 		String = [],
 		Minus = Plus
 	; Char =:= "&" ->
-		reference_in_user:myflags( Namespaces, Quote, Layout, String, Plus, Minus )
+		reference_in_main:myflags( Namespaces, Quote, Layout, String, Plus, Minus )
 	; Char > 32, Char \== 160 ->
 		( Layout == true ->
 			String = [0' ,Char|String1]
@@ -432,7 +432,7 @@ reference_in_layout( NS, Quote, String, Plus, Minus ) :-
 		attribute_layouts( Quote, NS, false, String1, Plus, Minus )
 	).
 
-reference_in_user:myflags( Namespaces, Quote, Layout, String, Plus, Minus ) :-
+reference_in_main:myflags( Namespaces, Quote, Layout, String, Plus, Minus ) :-
 	( standard_character_entity( Char, Plus, Mid ) ->
 		( Layout == true ->
 			String = [0' ,Char|String1]
@@ -464,7 +464,7 @@ reference_in_entity( Namespaces, Quote, String, Plus, Minus ) :-
 		String = String1,
 		append( Text, Suffix, Mid )
 	),
-	entity_user:myflags( Quote, Namespaces, String1, Mid, Minus ).
+	entity_main:myflags( Quote, Namespaces, String1, Mid, Minus ).
 
 standard_character_entity( Char ) -->
 	"#x", hex_character_reference( Char ), ";".

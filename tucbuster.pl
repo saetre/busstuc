@@ -16,29 +16,29 @@
 
 ?-compile('busterversion.pl'). 
 ?-compile('diabus.pl'). 
-?-compile('bustermain2.pl'). %% NEW, TELE COMPATIBLE  
+?-use_module( bustermain2 ). %% NEW, TELE COMPATIBLE  
 ?-compile('tele2.pl'). %% specific tele programs %% TA-051116
 
 %%%%   :-compile('dialog/d_call.pl').
 %%%%
 
-?- ( user:smspermanentflag := true), 
-   ( user:smsflag := true),
-   ( user:unix_language := eng),     %% Standard for IDI/NTNU UNIX Solaris )
+?- ( main:smspermanentflag := true), 
+   ( main:smsflag := true),
+   ( main:unix_language := eng),     %% Standard for IDI/NTNU UNIX Solaris )
       
-   ( user:language := norsk),        %% Initial default user language  
-%%    ( user:duallangflag := false),    %% // NOT DEVELOPED YET// Also try English if unknown words
+   ( main:language := norsk),        %% Initial default user language  
+%%    ( main:duallangflag := false),    %% // NOT DEVELOPED YET// Also try English if unknown words
 %%                                 %% defined in resp. compile file
-   (user:duallangflag := true), %% speech based, 
+   (main:duallangflag := true), %% speech based, 
                           %% but SR will never(?) produce english words.
 
-   ( user:noparentflag := true),     %% Ignore content of parentheses
-   ( user:single_sentence := false), %%  Multiple sentences, 
-%%%%    ( user:nodotflag := true),       %%  Interm. dots are  removed. %% TA-080928
-   ( user:tramflag := false),        %% A/S Gråkallen not OK at TEAM
-   ( user:parsetime_limit := 7000), %% TA-041218
-   ( user:movieflag := false ),     %% TA-030406
-   ( user:wozflag := true),         %% Not into TABUSS modus
-   ( user:notimeoutflag := false),  %% OK Sicstus 3.10
-   ( user:useexternal := true).     %% for the combine  %% TA-051017
-%%%    ( user:disablenightbus := true).  %% TA-061129  %% AD HOC
+   ( main:noparentflag := true),     %% Ignore content of parentheses
+   ( main:single_sentence := false), %%  Multiple sentences, 
+%%%%    ( main:nodotflag := true),       %%  Interm. dots are  removed. %% TA-080928
+   ( main:tramflag := false),        %% A/S Gråkallen not OK at TEAM
+   ( main:parsetime_limit := 7000), %% TA-041218
+   ( main:movieflag := false ),     %% TA-030406
+   ( main:wozflag := true),         %% Not into TABUSS modus
+   ( main:notimeoutflag := false),  %% OK Sicstus 3.10
+   ( main:useexternal := true).     %% for the combine  %% TA-051017
+%%%    ( main:disablenightbus := true).  %% TA-061129  %% AD HOC

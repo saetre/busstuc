@@ -16,7 +16,6 @@
 
 % See also names.pl for general synonyms
 
-
 :- module( places, [
   alias_name/2,            % (NAME,NAME)
   alias_station/2,         % (STATION,STATION)
@@ -37,6 +36,11 @@
   unwanted_place/1,        % (PLACE)
   unwanted_station/1      % (PLACE)
 ]).
+
+%% RS-111205, UNIT: /
+%:- ensure_loaded( '../declare' ).    %% Operators for TUC
+:- use_module( '../main', [  myflags/2 ] ). %% set/2, 
+
 
 
 %% hovedterminalen is technically a station as required in some
@@ -748,7 +752,7 @@ placestat(smistadkrysset,arnt_smistads_veg).
 %% placestat(solbakkenbrua,osbrua). 
 %% placestat(solsiden,solsiden). %% station %% TA-101130
 
-%% placestat(sorgenfriveien,sorgenfri) :- \+ user:myflags(airbusflag,true).  %% (on the map)
+%% placestat(sorgenfriveien,sorgenfri) :- \+ main:myflags(airbusflag,true).  %% (on the map)
 %% krøll med airbus 
 
 placestat(sosialhøgskolen,gildheim).  %% ???
@@ -2115,9 +2119,9 @@ specname(trondheim_torg,'Trondheim Torg').
 specname(trondheim_sentralstasjon,'Trondheim Sentralstasjon'). %% TA-110628
 specname(ts,'Trondheim Sentralstasjon'). 
 
-specname(ts10,'Trondheim Sentralstasjon ') :-user:myflags(airbusflag,true),!. 
-specname(ts11,'Trondheim Sentralstasjon ' ):-user:myflags(airbusflag,true),!.  
-specname(ts13,'Trondheim Sentralstasjon')  :-user:myflags(airbusflag,true),!. 
+specname(ts10,'Trondheim Sentralstasjon ') :- myflags(airbusflag,true),!. 
+specname(ts11,'Trondheim Sentralstasjon ' ):- myflags(airbusflag,true),!.  
+specname(ts13,'Trondheim Sentralstasjon')  :- myflags(airbusflag,true),!. 
 
 specname(ts10,'Trondheim Sentralstasjon holdeplass 10'). 
 specname(ts11,'Trondheim Sentralstasjon holdeplass 11').  %% EH-031017
@@ -5051,20 +5055,20 @@ unwanted_place(øre).    %%  \+ øvre
 
 nostation(arbeidsbuss). %% SIC  endstation bus 100 
 
-nostation(bygrensen):- \+user:myflags(tmnflag,true).    
+nostation(bygrensen):- \+main:myflags(tmnflag,true).    
 
-nostation(ferstad):-   \+user:myflags(tmnflag,true). %% Ferstads vei
+nostation(ferstad):-   \+main:myflags(tmnflag,true). %% Ferstads vei
 
 nostation(frøset). 
 
 
 
-nostation(herlofsonsløypa) :- \+user:myflags(tmnflag,true). 
+nostation(herlofsonsløypa) :- \+main:myflags(tmnflag,true). 
  nostation(heggsnipen). %% fins ikke i rdata(barei hefte). %%fikset 5.307
-nostation(lian):-      \+user:myflags(tmnflag,true).  
-nostation(nordre_hoem) :- \+user:myflags(tmnflag,true). 
-nostation(rognheim) :- \+user:myflags(tmnflag,true). 
-nostation(søndre_hoem):- \+user:myflags(tmnflag,true). 
+nostation(lian):-      \+main:myflags(tmnflag,true).  
+nostation(nordre_hoem) :- \+main:myflags(tmnflag,true). 
+nostation(rognheim) :- \+main:myflags(tmnflag,true). 
+nostation(søndre_hoem):- \+main:myflags(tmnflag,true). 
 
 
 %%%% Nostation  no bus to place ever

@@ -10,7 +10,22 @@
 %% Imports
 %% Operators used by TUC
 :- ensure_loaded( '../declare' ).
+:- use_module( '../main', [ myflags/2,  progtrace/2 ] ).
 
+%% RS-111205, UNIT: app/
+:- use_module( buslog, [ bound/1, bus/1, neverpasses/2, place_station/2, station/1, today/1 ] ).
+
+%% RS-111205, UNIT: db/
+:- use_module(   '../db/busdat', [ disallowed_night/1, vehicletype/2  ] ).   % (PLACE) % (NAME)
+
+%% RS-111205, UNIT: tuc/
+:- use_module( '../tuc/facts', [ (isa)/2 ] ).  %% RS-111204    isa/2 from facts.pl
+
+%% RS-111206, UNIT: utility/
+:- use_module( '../utility/datecalc', [ days_between/3, daysucc/2 ] ).
+:- use_module( '../utility/utility', [ sequence_member/2, testmember/2 ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 makenegative((head,_TF_),_,nl):- 
     progtrace(4,ne00),
@@ -43,26 +58,26 @@ makenegative((new,not _),_,(bcpbc(ok),nl)):-
 %% From telebuster/app/negans.pl
 
 makenegative(_,Q,(bcpbc(please_state),bcp(the(Slot)),exclamation)):-
-	 user:myflags(teleflag,true),
-	 user:myflags(dialog,1),
+	 main:myflags(teleflag,true),
+	 main:myflags(dialog,1),
 	 sequence_member(askfor(_, knows(Slot), _), Q),
 	  progtrace(4,ne07),!.
 
 makenegative(_,Q,(bcpbc(doyouknow),bcp(the(Slot)),question)):-
-	 user:myflags(teleflag,true),
-	 user:myflags(dialog,1),
+	 main:myflags(teleflag,true),
+	 main:myflags(dialog,1),
 	 sequence_member(askfor(_, Slot, _), Q),
 	 progtrace(4,ne07),!.
 
 %% 
 
 makenegative(_,Q,(bcpbc(askfor(Slot)),nl)):-  
-    user:myflags(dialog, 1),
+    main:myflags(dialog, 1),
     sequence_member(askfor(_, Slot, _), Q),
     progtrace(4,ne08),!.
 
 makenegative(_,Q,(bcpbc(which), bcp(Type), comma, bwr(or(List)), question)):- 
-    user:myflags(dialog, 1),
+    main:myflags(dialog, 1),
     sequence_member(askref(Type, List), Q),
     progtrace(4,ne09),!.
 
@@ -194,7 +209,7 @@ makenegative((new,_),P,Ans)        :-
            bcp(notpossible),nl). 
 
 makenegative((new,_),Prog,Ans)  :- 
-      user:myflags(dialog,1),
+      main:myflags(dialog,1),
       sequence_member(message(M),Prog),    %%
       progtrace(4,ne21),!, 
       Ans = (printmessage(M)) .
@@ -287,7 +302,7 @@ makenegative((modifier(_),_),Q,Ans)   :-
 
 
 makenegative(_,Prog,Ans):- 
-    user:myflags(smsflag,true),
+    main:myflags(smsflag,true),
     sequence_member(message(answer(db_reply(_,_,_))),Prog),
      progtrace(4,ne33),!,
     Ans =  space0. %%% ??? 
@@ -420,14 +435,14 @@ makenegative(_,_,true) :- %% no extra nl
  %% not standard nightbus message if following weekend is abnormal
 notthenanswer(Date,_Wed,_,_Q,
            (bcpbc(generalnightbuseaster),period))     :-
-    user:myflags(nightbusflag,true), 
+    main:myflags(nightbusflag,true), 
     following_weekend_abnormal(Date),
     !,                         %%
     progtrace(4,nt0). 
 
 notthenanswer(_Date,easterhol,_,_Q,
            (bcpbc(cannotfindanyroutes),period,bcpbc(generalnightbuseaster),period))
-    :-user:myflags(nightbusflag,true),
+    :-main:myflags(nightbusflag,true),
     !,  
     progtrace(4,nt1).
 
@@ -447,7 +462,7 @@ notthenanswer(_Date,Day,_,Q, (bcpbc(cannotfindanyroutes),nibcp(Day),DirAns,stand
 
 
 notthenanswer(_Date,Day,Clock,Q, (bcpbc(noroutes),nibcp(Day),bcp(before),bwt(Clock),DirAns) ):-
-    \+ user:myflags(nightbusflag,true), 
+    \+ main:myflags(nightbusflag,true), 
     Clock \== 9999,  
     sequence_member(keepbefore1(Clock,_,_),Q),
     \+ sequence_member(keepbetween(_,_,_,_),Q), %% avoid not 1100 (morning ?) when 
@@ -456,7 +471,7 @@ notthenanswer(_Date,Day,Clock,Q, (bcpbc(noroutes),nibcp(Day),bcp(before),bwt(Clo
     dirans(Q,DirAns).
 
 notthenanswer(_Date,Day,Clock,Q, (bcpbc(noroutes),nibcp(Day),bcp(attime),bwt(Clock),DirAns) ):-
-    \+ user:myflags(nightbusflag,true), 
+    \+ main:myflags(nightbusflag,true), 
     Clock \== 9999,  
     \+ sequence_member(keepbetween(_,_,_,_),Q), %% avoid not 1100 (morning ?) when 
     !,                                       %% keepbetween was the restriction
@@ -476,7 +491,7 @@ notthenanswer(_Date,Day,Clock,Q, (bcpbc(noroutes),nibcp(Day),bcp(attime),bwt(Clo
 notthenanswer(_Date,Day,_,Q,(bcpbc(nolonger),  DirAns,standnight(Day))):- 
     sequence_member(connections(_,_,_,_,_,_,_,Options,_,_),Q), %% not test
 
-(  %%%%%%   user:myflags(smsflag,true);  %% Will "always" try solutions after now 
+(  %%%%%%   main:myflags(smsflag,true);  %% Will "always" try solutions after now 
      member(next,Options);
      member(next(_),Options);
      member(nextaftertime(_),Options)
@@ -492,7 +507,7 @@ notthenanswer(_Date,Day,_,Q,(bcpbc(nolonger),  DirAns,standnight(Day))):-
 %% if route day mapped to same day    
 notthenanswer(_Date,Day,_,Q,(       bcpbc(nolonger),nibcp(Day),DirAns,standnight(Day))):- 
      sequence_member(connections(_,_,_,_,_,_,_,Options,_,_),Q),  %% not test 
-(    user:myflags(smsflag,true);  %% dubious, excludes nolonger message if smsflag false
+(    main:myflags(smsflag,true);  %% dubious, excludes nolonger message if smsflag false
      member(next,Options);
      member(next(_),Options)),
 
@@ -539,7 +554,7 @@ notthenanswer(_Date,Day,_,Q,(bcpbc(nolonger),nibcp(Day),DirAns,standnight(Day)))
 
 notthenanswer(_Date,Day,_,Q, 
     (bcpbc(notpossible),nibcp(Day),DirAns,standnight(Day))):- 
-    user:myflags(nightbusflag,true),
+    main:myflags(nightbusflag,true),
     !,
     progtrace(4,nt10night),  
     dirans(Q,DirAns).

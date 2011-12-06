@@ -47,7 +47,7 @@
 %%% %%%%%%%% RS-111118
 :- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
 
-tracevalue(L) :- user:myflags(traceprog,L).  % Trace level 1-4
+tracevalue(L) :- main:myflags(traceprog,L).  % Trace level 1-4
 
 selectroute rule
 is	replace selectroute(_, A, B)
@@ -144,6 +144,6 @@ ip  varmember(A, List),
     frame_getcount(whenis::arrival::before, X), 
     linecounter(Y), 
     \+ X = Y,
-    user: deleteall(lastcorr,Options,NoLastOptions).
+    userNOTME: deleteall(lastcorr,Options,NoLastOptions).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

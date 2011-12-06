@@ -3,10 +3,17 @@
 %% CREATED  TA-020617
 %% REVISED  TA-020624
 
+:- module( xmlparser, [ xmlrowparse/2, xmltaggerparse/2 ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% %%%%%%%% RS-111118
 :- ensure_loaded( 'declare' ).
 
-%% Exported through module main: ?? or module getphonedir ?? Conflict ?!?
+:- use_module( main, [ scanfile/2 ] ).     %%  DESTROYS  web writing
+        
+:- use_module( 'utility/utility', [ output/1 ] ).
+
+%% Exported through module userNOTME: ?? or module getphonedir ?? Conflict ?!?
 
 xmltaggerparse(F,Struct):-
                             output('scan'),output(F),

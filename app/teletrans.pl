@@ -64,7 +64,7 @@
 
 
 
-tracevalue(L) :- user:myflags( traceprog, L ).  % Trace level 1-6
+tracevalue(L) :- main:myflags( traceprog, L ).  % Trace level 1-6
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Oversettingsregler
@@ -75,33 +75,33 @@ tracevalue(L) :- user:myflags( traceprog, L ).  % Trace level 1-6
 listoftql0 rule
 is  [(confirm,_)]
 id  add message(answer(bcpbc(ok)))
-ip  \+ user:myflags(dialog,1). 
+ip  \+ main:myflags(dialog,1). 
 
 listoftql1 rule
 is  replaceall [(confirm,_)|Y]
     with Y
 id  []
-ip  \+ user:myflags(dialog,1).
+ip  \+ main:myflags(dialog,1).
 
 
 listoftql2 rule
 is  replaceall [X]
     with X
 id  []
-ip  \+ user:myflags(dialog,1).
+ip  \+ main:myflags(dialog,1).
 
 listoftql3 rule
 is  replaceall [(doit,replyq(X))|Rest]
     with Rest
 id  addfront reply(X)          %% syndrome  Hei ! Jeg heter Tore
                       %% Jeg heter tore -> OK and failure -> negans on do
-ip  \+ user:myflags(dialog,1).
+ip  \+ main:myflags(dialog,1).
 
 listoftql4 rule
 is  replaceall [X|_]
     with X
 id  addfront message(onlyonesentence)
-ip  \+ user:myflags(dialog,1).
+ip  \+ main:myflags(dialog,1).
 
 error rule
 is  error
@@ -515,8 +515,8 @@ id  not atdate(date(_,_,_)),
     addcon atday(Monday)  %% <---------- %% TA-050808
 ip  today(Thursday),
     Thursday \== Monday,
-    user:number_of_days_between(Thursday,Monday,N),  
-    user:finddate(N,date(X,Y,Z)).
+    main:number_of_days_between(Thursday,Monday,N),  
+    main:finddate(N,date(X,Y,Z)).
 
 
 
@@ -870,7 +870,7 @@ ip  [].
 /* %% dmeq is already supposed to be in module user
 
 dmeq(A,B):-         %% TA-051011 Separated out from teletrans
-    user:dmeq(A,B). %% File dmeq.pl
+    main:dmeq(A,B). %% File dmeq.pl
 
 */
 

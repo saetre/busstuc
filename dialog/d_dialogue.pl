@@ -23,7 +23,7 @@
 
 
 %dialog :- 
-%   user:dialog := 1, 
+%   main:dialog := 1, 
 %   reset_period,
 %   reset_context,
 %   dialog2.
@@ -34,20 +34,20 @@
 %
 %processinput(Q) :-                     %%AM-980301
 %	
-%   user:dialog := 1,
-%	user:error_phase := 0,
-%   user:nightbusflag := false,   %% ad hoc, must be reset %% TA-060706
+%   main:dialog := 1,
+%	main:error_phase := 0,
+%   main:nightbusflag := false,   %% ad hoc, must be reset %% TA-060706
 %	translate2(Q,TQL),
 %	nl,
 %
-%   user:myflags(contextid,Cid),
+%   main:myflags(contextid,Cid),
 %   setcurrent(Cid),
 %
-%  (user:myflags(topic,BT) -> 
+%  (main:myflags(topic,BT) -> 
 %      xframe_setvalue(topic,BT) % put topic into the context frame  %% TA-060426
 %      ;true),
 %
-%  (user:myflags(language,Lan) -> 
+%  (main:myflags(language,Lan) -> 
 %      xframe_setvalue(language,Lan) % put language into the context frame  %% TA-060426
 %      ;true),
 %
@@ -154,7 +154,7 @@
 %
 %
 %reset_conns :-				%% TLF-030523
-%	user:myflags(teleflag,true),
+%	main:myflags(teleflag,true),
 %	reset_ldapcon.
 %
 %reset_conns.		%% TLF-030523 Should never fail!!
@@ -213,7 +213,7 @@
 %
 %
 %evalline(error, _) :-
-%	\+ user:myflags(teleflag,true),
+%	\+ main:myflags(teleflag,true),
 %        getcontext(Cid, context(Tql, Prog, TempRefer, [node(TopName,_, TopFocus, TopRem) | NodeStack])),
 %
 %	ExtraStack = [node(tb_start2,_, TopFocus, 
@@ -245,9 +245,9 @@
 %	setcontext(Cid, context(NewTql, NewProg, NewTempRefer, NewNodeStack)).
 %
 %evalline(_, Tql) :- 
-%	\+ user:myflags(teleflag,true),
+%	\+ main:myflags(teleflag,true),
 %   trackprog(3, output(' *evalline 2*  ')), %% TA-030108
-%   \+ user:myflags(wozflag,true),                     %% TA-031017
+%   \+ main:myflags(wozflag,true),                     %% TA-031017
 %	getcurrent(Cid),
 %	getcontext(Cid, context(_Tql, _Prog, TempRefer, [node(TopName,  _  , TopFocus, TopRem) | NodeStack])),
 %	ExtraStack = [node(tb_start2,  _  , TopFocus, [item(say(tbs_userhelp)), sub(tb_from)]) | [node(TopName,  _  , TopFocus, TopRem) | NodeStack]],

@@ -18,7 +18,7 @@
 %% IMPORTS
 %% RS-111205, UNIT: /
 :- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
-:- use_module( '../main', [   user:(:=)/2, user:myflags/2,  trackprog/2  ] ). %% set/2, 
+:- use_module( '../main', [  myflags/2,  trackprog/2  ] ). %% set/2, 
 
 %% NB  checkteleitem   and checkitem  are mingled %% TA-051106%%%%%%%%%%%%%
 %%     checkitem(tele,     checkitem(trans,
@@ -81,12 +81,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 checkitem(Type, OldFocus, NewFocus) :-
-	user:myflags(teleflag,true),
+	main:myflags(teleflag,true),
 	!,	
 	checkitem(tele,Type,OldFocus,NewFocus). %% name of module
 
 checkitem(Type, OldFocus, NewFocus) :-
-  \+ 	user:myflags(teleflag,true),
+  \+ 	main:myflags(teleflag,true),
   checkitem(trans, Type,OldFocus, NewFocus).   %% name of module
 
 
@@ -677,8 +677,8 @@ writeconstlist([_=Val|Rest]) :-
 %%
 
 invitemore :- 
-    \+ user:myflags(directflag,true),      %% TA-060127
-    \+ user:myflags(telebusterflag,true),  %% TA-060216
+    \+ main:myflags(directflag,true),      %% TA-060127
+    \+ main:myflags(telebusterflag,true),  %% TA-060216
     nl,                             %% TA-051221
     prent0(invitemore),nl. 
 invitemore.
@@ -692,7 +692,7 @@ store_last_answer(Cid,AnswerOut):-
 
 get_last_answer(Cid,AnswerOut):-
     clause(last_answer(Cid,AnswerOut),true).
-%% no Existence error in user:last_answer/0
+%% no Existence error in main:last_answer/0
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

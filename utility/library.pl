@@ -6,13 +6,7 @@
 % Contains some utility predicates
 % that may not be redefined in some Prologs (e.g. SWI-Prolog)
 
-:- module( library, [
-    intersection/3,
-    not/1,
-    nth/3,
-    remove_duplicates/2,
-    reverse/2
-   ]).
+:- module( library, [ intersection/3, (not)/1, nth/3, remove_duplicates/2, reverse/2 ]).
 
 :- ['../declare'].
 not X :- \+ X.

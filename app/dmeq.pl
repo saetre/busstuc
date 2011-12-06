@@ -3,7 +3,10 @@
 %% CREATED TA-051011
 %% REVISED TA-100829
 
+%% UNIT: app
 %% Domain Equivalents common  tele and bus
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :- use_module( '../tuc/fernando', [ subclass0/2 ]).
 :- use_module( '../utility/utility', [ testmember/2 ] ).
@@ -248,7 +251,7 @@ dmeq(notbus,airbus).
 dmeq(notbus,boat). 
 dmeq(notbus,boat_route_plan).
 dmeq(notbus,helicopter).
-dmeq(notbus,nightbus) :- \+ user:myflags(nightbusflag,true). 
+dmeq(notbus,nightbus) :- \+ main:myflags(nightbusflag,true). 
 dmeq(notbus,airplane). 
 dmeq(notbus,plane).     %% 
 dmeq(notbus,schoolbus). 
@@ -451,7 +454,7 @@ dmeq(trafficant,vehicle).
 dmeq(trafficant,way). %% muligheter Rough 
 
 dmeq(trafficant,Person):- 
-    %user:subclass0(Person,agent). %% kan man ta
+    %main:subclass0(Person,agent). %% kan man ta
     subclass0(Person,agent). %% kan man ta
 
 dmeq(tram,tram_route_plan). 

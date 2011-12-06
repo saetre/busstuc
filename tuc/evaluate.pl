@@ -5,16 +5,13 @@
 
 :- module( evaluate, [
     difact/1,     disqev/1,     evaluateq/1,    evaluateq2/1,   %explain/1,
-    fact/1,       fakt/1,       included/2,     user:instant/2,
+    fact/1,       fakt/1,       included/2,     instant/2,
     new_focus/2,  qdev/2,       unskolemize/2,  valof/2,        winstant/3  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :- ensure_loaded( '../declare' ).       %% Operators for TUC
-:- use_module( '../main', [ 
-        user:(:=)/2,    user:(=:)/2,    %% :=/2 and =:/2 exported from declare, through main, to "user:"
-        traceprint/2
-   ] ).
+:- use_module( '../main', [ traceprint/2 ] ).
 
 :-volatile difact/2, fact0/1.
 :-dynamic difact/2, fact0/1.
@@ -39,12 +36,12 @@
 evaluateq2(nil):-!.
 
 evaluateq2(R):-
-    user:myflags(busflag,true), %% Set by Bustuc Application Program
+    main:myflags(busflag,true), %% Set by Bustuc Application Program
 	 !,
     ieval(R).            %%  interapp.pl
 
 evaluateq2(R):-
-    user:myflags(teleflag,true), %% TA-020605
+    main:myflags(teleflag,true), %% TA-020605
 	 !,
     ieval(R).            %%  interapp.pl
 
@@ -92,17 +89,17 @@ evaluateq(howmany(X):::P):-
 
 evaluateq(new:::_). %% Actually a miss
 
-evaluateq(nil).  %% In case user:queryflag =:  true, only nil is produced as TQL.
+evaluateq(nil).  %% In case main:queryflag =:  true, only nil is produced as TQL.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 difact(F):-
-    user:myflags(context_id,UID),
+    main:myflags(context_id,UID),
     difact(UID,F).
 
 update_focus(_):- %% TA-020228
-    user:myflags(queryflag,true),
+    main:myflags(queryflag,true),
     !.
 
 
@@ -121,10 +118,10 @@ update_focus(_).
 
 new_focus(X,M):-      %  Focus is allowed in permament store
 
-    user:myflags(context_id,UID),
+    main:myflags(context_id,UID),
     retractall(difact(UID,_ is_the M)),
     retractall(fact0(_ is_the M)),
-    (user:permanence =:  1 ->
+    (main:permanence =:  1 ->
        asserta(fact0(X is_the M));
        asserta(difact(UID,X is_the M))). %%   % Last Qualified Reference
 
@@ -234,7 +231,7 @@ vfact(N,X):-
 %
 vfact(_,X isa Y):-
      !,
-     user:instant(X,Y).
+     instant(X,Y).
 
 dialog_referent(X,C) :-
     fakt(X is_the C);      %  dynamic or static
@@ -249,7 +246,7 @@ rule(N,Y):-
 %% Hierarchy of facts
 
 fact(X):-               %  Predefined interpretations
-    user:myflags(deflag,true), % AD HOC FLAG  %% DEF IS  FOR COMMANDS
+    main:myflags(deflag,true), % AD HOC FLAG  %% DEF IS  FOR COMMANDS
     nonvar(X),                         %% John shows a car \= command
     X=Y/_,
     nonvar(Y),
@@ -277,19 +274,19 @@ included(X,Z):-
     included(Y,Z).
 included(X,X). % Outside in
 
-user:instant(X,T):-
+instant(X,T):-
      var(X),
      testclass(T),
      !.  %% X= ' not listable '.
 
-user:instant(X,C):-
+instant(X,C):-
     fact(X isa C).
 
 
-user:instant(X,Z) :- % bottom up
+instant(X,Z) :- % bottom up
 %    (ako/Y/Z),
     (Y ako Z),
-    user:instant(X,Y).
+    instant(X,Y).
 
 %%
 
@@ -319,7 +316,7 @@ valof(X,Y):-
 
 
 leveltest(M,N):-
-    user:myflags(maxdepth,K), %% maxlevel(K),
+    main:myflags(maxdepth,K), %% maxlevel(K),
     M < K,
     N is M + 1.
 

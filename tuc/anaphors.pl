@@ -15,26 +15,20 @@
 
 %% RS-111205, UNIT: /
 :- ensure_loaded( '../declare' ).
-:- use_module( '../main', [ %% :=/2 and =:/2 exported from declare, through main, to "user:"
-        user:(:=)/2,    user:(=:)/2, track/2
-   ] ).
+:- use_module( '../main', [ track/2 ] ).
 
+%% RS-111205, UNIT: tuc/
 :- use_module( evaluate, [ disqev/1, fakt/1 ]).         %% tuc/
 :- use_module( facts, [ (isa)/2 ]).
 :- use_module( tuc:fernando, [ subclass0/2, subtype0/2, type/2 ]).
 :- use_module( translat, [ condq/2 ]).
 
-:- use_module( '../dialog/newcontext2', [
-        dialog_resolve/2
-    ] ).
+%% RS-111205, UNIT: dialog/
+:- use_module( '../dialog/newcontext2', [ dialog_resolve/2 ] ).
 
-:- use_module( '../utility/utility', [
-        match/2,
-        reverse/2,
-        test/1
-  ] ).
-
-:- use_module( '../utility/library', [  nth/3  ] ).
+%% RS-111205, UNIT: utility/
+:- use_module( '../utility/library', [  nth/3, reverse/2  ] ).
+:- use_module( '../utility/utility', [ match/2, test/1 ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -116,8 +110,8 @@ resolv(findalt(_,_,_)::P,Q,L):-
 
 
 resolv(findpron(X)::P,Q,L):-     % Internal resolution
-    %% user:myflags(textflag,true),  
-    %% \+ user:myflags(busflag,true), %% <-- Hazard ? 
+    %% main:myflags(textflag,true),  
+    %% \+ main:myflags(busflag,true), %% <-- Hazard ? 
     internalresolve(X,L),  
     !,
     resolv(P,Q,L).    
@@ -146,9 +140,9 @@ resolv(findpron(X:T)::P, exists(X:T)::  Q,L):- % External resolution of pronoun
 
 
 resolv(find(X)::P,Q,L):-     % 1.  Internal resolution  first
-%%%     user:myflags(textflag,true),    %% only for texts  
+%%%     main:myflags(textflag,true),    %% only for texts  
                              %% from nth to this palce \= nth
-    \+ user:myflags(dialog,1), 
+    \+ main:myflags(dialog,1), 
     internalresolve(X,L),  
     !,
     resolv(P,Q,L).    
@@ -330,14 +324,14 @@ externalresolve(tuc,tuc isa savant):- %% this system = TUC
 
 
 externalresolve(X,P):-   %   Resolve references using the dialog manager
-     user:myflags(dialog,1), 
+     main:myflags(dialog,1), 
      !, 
      condq(P,Q),
      dialog_resolve(X,Q),  % dialog/newcontext2.pl
      !.
 
 externalresolve(X,P):-   % Dynamically query the qualia  X:_
-     \+ user:myflags(busflag,true), %% Not allowed for several users !!! 
+     \+ main:myflags(busflag,true), %% Not allowed for several users !!! 
      condq(P,Q),
      disqev(Q),          % query the DB using only discourse elements
      nonvar(X),          % testclass returns variables
@@ -349,7 +343,7 @@ externalresolve(X,P):-   % Dynamically query the qualia  X:_
 externalresolveit(X:_T,_):- nonvar(X),X=(_,_),!,fail. 
 
 externalresolveit(X:MT):-   % reference must not be
-    user:myflags(textflag,true),  
+    main:myflags(textflag,true),  
     is_the(X,K),            % more specific than referent
     type(K,KT),
     nogender(KT),

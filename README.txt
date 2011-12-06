@@ -19,4 +19,14 @@ Oppdater(es/t)
  
  
  
+ About SVN and Eclipse:
+======================
+Subversive w/JavaHL or SVNKit (latest version) REALLY SUCKS, and kills my computer.
+
+Subversion w/Subclipse seems to working almost ok...
+
+Cheers,
+Rune
+
+
  

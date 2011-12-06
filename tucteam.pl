@@ -16,19 +16,19 @@
 ?-compile('monobus.pl'). %% TA-031115
 
 %?-compile('main.pl').    %% TA-031115
-?-use_module( 'main.pl', [ user:(:=)/2 ] ).
+?-use_module( 'main.pl', [ (:=)/2 ] ).
 %?-ensure_loaded( 'main.pl' ).
 
 
-?- (user:unix_language := eng),      %% Standard for IDI/NTNU UNIX Solaris 
-   (user:origlanguage := norsk),     %% TA-040626 
-   (user:language := norsk),         %% Initial default user language  
-   (user:duallangflag := true),      %% Also try English if unknown words
-   (user:noparentflag := true),      %% Ignore content of parentheses
-   (user:tramflag := false),         %% They don't like A/S Gråkallen
-   (user:nodotflag := true),         %% Readymade Q: Når går bussen fra ....
-   (user:parsetime_limit := 10000),  %% 333 Mhz
-   (user:trace := 0).                %% avoid syntax trees
-%%    (user:disablenightbus := true).  %% AD HOC %% TA-040809
+?- (main:unix_language := eng),      %% Standard for IDI/NTNU UNIX Solaris 
+   (main:origlanguage := norsk),     %% TA-040626 
+   (main:language := norsk),         %% Initial default user language  
+   (main:duallangflag := true),      %% Also try English if unknown words
+   (main:noparentflag := true),      %% Ignore content of parentheses
+   (main:tramflag := false),         %% They don't like A/S Gråkallen
+   (main:nodotflag := true),         %% Readymade Q: Når går bussen fra ....
+   (main:parsetime_limit := 10000),  %% 333 Mhz
+   (main:trace := 0).                %% avoid syntax trees
+%%    (main:disablenightbus := true).  %% AD HOC %% TA-040809
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

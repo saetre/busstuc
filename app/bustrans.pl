@@ -9,10 +9,11 @@
 :- module( trans, [ (rule)/2, double/0, tracevalue/1 ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% RS-111205, UNIT: /
+:- ensure_loaded( '../declare' ).  % :- use_module( userNOTME:'../declare.pl').
+:- use_module( '../main', [ myflags/2 ] ). %, set/2  ] ).
 
-:- ensure_loaded( '../declare' ).
-% :-op( 0, xfx, ako ).    %% "Disable" 'ako' as an operator for this file, e.g. "tightest binding"
-
+%% RS-111205, UNIT: utility/
 :- use_module( '../utility/utility', [] ).
 %:- ensure_loaded( '../utility/utility' ).
 
@@ -98,7 +99,7 @@
 
 
 % flag(airbus)      %% airbus/airport query
-%    user:myflags(airbusflag)  global flag
+%    main:myflags(airbusflag)  global flag
 
 %% OPTIONS
 
@@ -135,14 +136,14 @@ nightbus
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                                    % single-question application
-single :- user:myflags(dialog,0) ;   % if dialog is 0   or
-	       \+ user:myflags(dialog,_). % if dialog is undefined .
+single :- myflags(dialog,0) ;   % if dialog is 0   or
+	       \+ main:myflags(dialog,_). % if dialog is undefined .
 
                                    % dialog-question application
-double :- user:myflags(dialog,1).    % if dialog is 1
+double :- main:myflags(dialog,1).    % if dialog is 1
 
 
-tracevalue(L) :- user:myflags(traceprog,L).  % Trace level 1-7
+tracevalue(L) :- main:myflags(traceprog,L).  % Trace level 1-7
 
 
 %%%%%%%%    -> dmeq.pl %%%%%%%%
@@ -195,7 +196,7 @@ tqllist3 rule %  varsel  buss går til nth
 is  [(flag,Flagname),replyq(_)]
 id  add message(mustknow(time)),
     add flag(exit) % no mire action
-ip  user:set(Flagname,true)
+ip  main:set(Flagname,true)
     :-single.
 
 
@@ -203,7 +204,7 @@ tqllist4 rule %  varsel  buss går til nth
 is  replaceall [(flag,Flagname),Rest]
     with Rest
 id  []
-ip  user:set(Flagname,true)
+ip  main:set(Flagname,true)
     :-single.
 
 
@@ -261,7 +262,7 @@ id  flag(nightbusflag),
     clear,
     add message(noinfoabout(nightbus)),
     add flag(exit)
-ip  user:myflags(disablenightbus,true).
+ip  main:myflags(disablenightbus,true).
 
 
 nonightbusatall2 rule %% nattbuss til risvollansenteret (but no nightbusatall)
@@ -269,7 +270,7 @@ is  _ isa midnight,clear
 id  clear,
     add message(noinfoabout(nightbus)),
     add flag(exit)
-ip  user:myflags(disablenightbus,true).
+ip  main:myflags(disablenightbus,true).
 
 
 %%% USE CONTEXT  (Dialog)
@@ -409,7 +410,7 @@ id  not flag(nightbusflag),
     add flag(nightbusflag)
 ip  bound(X),
     nightbus(X),
-    user: set(nightbusflag,true).  %% must be reset initially
+    userNOTME: set(nightbusflag,true).  %% must be reset initially
 
 nightbusquery2 rule
 is  context X isa route  %% not class nightbus
@@ -417,13 +418,13 @@ id  not flag(nightbusflag),
     add flag(nightbusflag)             %% Somewhat dirty
 ip  bound(X),
     nightbus(X),
-    user: set(nightbusflag,true).  %% must be reset initially
+    userNOTME: set(nightbusflag,true).  %% must be reset initially
 
 nightbusquery3 rule
 is  context _X isa nightbus
 id  not flag(nightbusflag),
     add flag(nightbusflag)             %% Somewhat dirty
-ip  user: set(nightbusflag,true).  %% must be reset initially
+ip  userNOTME: set(nightbusflag,true).  %% must be reset initially
 
 nightbusquery4 rule   %% move this after shunt ?
 is  context _x isa midnight,
@@ -434,7 +435,7 @@ is  context _x isa midnight,
     not nrel/around/_/time/_/_ %%
 id  not flag(nightbusflag),
     add flag(nightbusflag)             %% Somewhat dirty
-ip  user: set(nightbusflag,true).  %% must be reset initially
+ip  userNOTME: set(nightbusflag,true).  %% must be reset initially
 
 
 donot rule %% dont do that
@@ -1233,7 +1234,7 @@ is  replaceall (doit/go/A/C,srel/nil/hour/B/C, B isa hour,nrel/after/duration/cl
 id  []
 ip  unbound(B),
     number(Time),
-    user:addtotime(Time,60,Time60).
+    main:addtotime(Time,60,Time60).
 
 hourafter2 rule
 is  replaceall (doit/go/A/C,srel/nil/hour/B/C, B isa hour,nrel/after/duration/clock/B/Time)
@@ -1241,7 +1242,7 @@ is  replaceall (doit/go/A/C,srel/nil/hour/B/C, B isa hour,nrel/after/duration/cl
 id  []
 ip  number(B), Min is B*60,
     number(Time),
-    user:addtotime(Time,Min,Time60).
+    main:addtotime(Time,Min,Time60).
 
 
 graakallen rule  %% Gråkallen syndrom (NOT synbus)
@@ -2042,7 +2043,7 @@ is   not YYYY isa year when { ( number(YYYY),\+ this_year(YYYY))},
       with    (D24 isa date, srel/Prep/date/D24/E),
      {  atom(CE)} %% christmas_eve
 id   []
-ip   user:named_date(CE,D24).
+ip   main:named_date(CE,D24).
 
 
 
@@ -2203,44 +2204,44 @@ ip	 [].
 warning_sentence  rule %% warning + sentence
 is  []
 id  addcon flag(warningflag)
-ip  user:myflags(warning_sentence,true), %%  reset by process
- \+ user:myflags(warningflag,true),
-    user:set(warningflag,true).
+ip  main:myflags(warning_sentence,true), %%  reset by process
+ \+ main:myflags(warningflag,true),
+    main:set(warningflag,true).
 
 warning_sentence_nosms  rule %% warning + sentence,nosms -> cannot
 is  []
 id  flag(warningflag) ,
     not message(sorrycannot),
     add  message(sorrycannot)
-ip  \+ user:myflags(smsflag,true).
+ip  \+ main:myflags(smsflag,true).
 
 
 warningflag1 rule %%  a warning => set warningflag
 is   _ isa notification
 id  addcon flag(warningflag)
-ip  \+ user:myflags(warningflag,true),
-       user:set(warningflag,true).
+ip  \+ main:myflags(warningflag,true),
+       main:set(warningflag,true).
 
 
 warningflag2 rule %% varsler meg at /om/når
 is  dob/notify/_/A/_, A isa coevent       %% do notify coevent <--
 id  addcon flag(warningflag)
-ip  \+ user:myflags(warningflag,true),
-       user:set(warningflag,true).
+ip  \+ main:myflags(warningflag,true),
+       main:set(warningflag,true).
 
 
 warningflag3 rule %% notify   du varsler []
 is  context doit/notify/_/_     %% do notify duration
 id  addcon flag(warningflag)
-ip  \+ user:myflags(warningflag,true),
-       user:set(warningflag,true).
+ip  \+ main:myflags(warningflag,true),
+       main:set(warningflag,true).
 
 
 warningflag4 rule %% set warningflag
 is  context dob/notify/_/_/_
 id  addcon flag(warningflag)
-ip  \+ user:myflags(warningflag,true),
-       user:set(warningflag,true).
+ip  \+ main:myflags(warningflag,true),
+       main:set(warningflag,true).
 
 
 
@@ -2248,7 +2249,7 @@ hourswarningadhoc rule %% trans %% Horrendous Hack
 is  replaceall ( N isa hour,      dob/notify/T/N/E)
     with       ( N60 isa minute,  dob/notify/T/N60/E)
 id  []
-ip  user:myflags(warningflag,true),
+ip  main:myflags(warningflag,true),
     number(N), N =< 24,  %%  ass. no change of date
     N60 is N*60 .
 
@@ -2259,8 +2260,8 @@ is  send/tuc/N/E, ispresent N isa notification,
     srel/nil/duration/Ten/E,
     srel/before/vehicle/_/E
 id  []
-ip  user:myflags(warningflag,true),
-    user:set(prewarningtime,Ten).
+ip  main:myflags(warningflag,true),
+    main:set(prewarningtime,Ten).
 
 
 %%%%%% NN  prewarning rules   with intransitive notify !!!!!
@@ -2272,8 +2273,8 @@ is  doit/notify/tuc/E, srel/nil/duration/Ten/E,
     srel/before/coevent/CE/E,
     event/real/E
 id  []
-ip  user:myflags(warningflag,true),
-    user:set(prewarningtime,Ten).
+ip  main:myflags(warningflag,true),
+    main:set(prewarningtime,Ten).
 
 
 
@@ -2285,8 +2286,8 @@ is  ispresent dob/notify/_Tuc/_/E,
     srel/nil/duration/Ten/E,
     srel/before/_Coveh/_/E %% vehicle/coevent %% TA-110201
 id  []
-ip  user:myflags(warningflag,true),
-    user:set(prewarningtime,Ten).
+ip  main:myflags(warningflag,true),
+    main:set(prewarningtime,Ten).
 
 
 prewarning1after  rule %% warning time after first departure
@@ -2296,48 +2297,48 @@ is  ispresent dob/notify/_Tuc/_/E,
     srel/after/vehicle/_/E
 id  []
 ip  Tenafter is - Ten,
-    user:myflags(warningflag,true),
-    user:set(prewarningtime,Tenafter).
+    main:myflags(warningflag,true),
+    main:set(prewarningtime,Tenafter).
 
 
 prewarning2before  rule %% warning time before first departure
 is  ispresent dob/notify/_Tuc/Ten/_, %% TUC or agent(passive)
     Ten isa minute
 id  []
-ip  user:myflags(warningflag,true),
-    user:set(prewarningtime,Ten).
+ip  main:myflags(warningflag,true),
+    main:set(prewarningtime,Ten).
 
 prewarning2after  rule %% warning time after first departure
 is  ispresent dob/notify/_Tuc/Ten/_, %% TUC or agenet(passive)
     Ten isa minute
 id  []
 ip  Tenafter is - Ten,
-    user:myflags(warningflag,true),
-    user:set(prewarningtime,Tenafter).
+    main:myflags(warningflag,true),
+    main:set(prewarningtime,Tenafter).
 
 
 prewarning3before  rule %% warning time before first departure
 is  replaceall (Ten isa minute, B isa time,srel/nil/duration/Ten/C, srel/before/time/B/C)
     with       (B isa time)
 id  []
-ip  user:myflags(warningflag,true),
-    user:set(prewarningtime,Ten).
+ip  main:myflags(warningflag,true),
+    main:set(prewarningtime,Ten).
 
 prewarning3after  rule %% warning time after first departure
 is  replaceall (Ten isa minute, B isa time,srel/nil/duration/Ten/C, srel/after/time/B/C)
     with       (B isa time)
 id  []
 ip  Tenafter is - Ten,
-    user:myflags(warningflag,true),
-    user:set(prewarningtime,Tenafter).
+    main:myflags(warningflag,true),
+    main:set(prewarningtime,Tenafter).
 
 
 prewarning4before  rule %% warning time before first departure
 is  replaceall (F66 isa departure, Ten isa minute, doit/be1/Ten/F69,srel/before/departure/F66/F69)
     with       (F66 isa departure)
 id  []
-ip  user:myflags(warningflag,true),
-    user:set(prewarningtime,Ten).
+ip  main:myflags(warningflag,true),
+    main:set(prewarningtime,Ten).
 
 
 prewarning4after  rule %% warning time after first departure
@@ -2345,8 +2346,8 @@ is  replaceall (F66 isa departure, Ten isa minute, doit/be1/Ten/F69,srel/after/d
     with       (F66 isa departure)
 id  []
 ip  Tenafter is - Ten,
-    user:myflags(warningflag,true),
-    user:set(prewarningtime,Tenafter).
+    main:myflags(warningflag,true),
+    main:set(prewarningtime,Tenafter).
 
 
 
@@ -2422,7 +2423,9 @@ is  item, _C isa _Class , clear% discard Class
 id  clear,
     add   message(completesentence)
 ip  [].  %% \+ testmember(Class,[nightbus,tram])
-    :-single.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5   :-single.
 
 
 whichdaysbetween  rule %% TA-110411
@@ -2604,7 +2607,7 @@ id  clear,
     addcon message(noroutesto(X))
 ip  street_station(X,Y),
     nostationfor(Y),   %% adm_rit
-    \+ user:placestat(X,_).
+    \+ main:placestat(X,_).
 
 
 nostationx rule %% outside T ( meaning not at T)
@@ -3287,7 +3290,7 @@ is  F5 isa  ticket,dob/buy/_I/F5/_
 id  clear,
     add message(noinfoabout(sale)),
     add ( message(answer(db_reply(TT,webaddress,K))))
-ip  user:myflags(actual_domain,TT),
+ip  main:myflags(actual_domain,TT),
     has_att_val(company,webaddress,TT,K).
 
 whereaboutastt rule % user knows you don't know, astt has answer
@@ -3301,7 +3304,7 @@ ip dmeq([find,get,receive],FG),
          nightbus,season_ticket,special_ticket,
          price,route,agelimit,repair,student,travelinsurance],
          Topic), %% Topics of astt
-   user:myflags(actual_domain,TT),
+   main:myflags(actual_domain,TT),
    has_att_val(company,webaddress,TT,K).
 
 
@@ -3321,7 +3324,7 @@ is  (which(A),B isa self,A isa place,C isa Topic,
 id  add  message(answer(db_reply(TT,webaddress,K)))
 ip  dmeq([card,departure,nightbus,price,route_plan,
          repair,student,travelinsurance],Topic), %% OTHER Topics of astt
-    user:myflags(actual_domain,TT),
+    main:myflags(actual_domain,TT),
     has_att_val(company,webaddress,TT,K).
 
 
@@ -3453,7 +3456,7 @@ is  NotBus isa route, {bound(NotBus)},
     clear
 id	 not flag(exit), %% e.g. foreign
     add message(not(route,NotBus))  %% route
-ip	 not user:myflags(tramflag,true),
+ip	 not main:myflags(tramflag,true),
     NotBus \== it, %% internal anaphora :-)
     not (NotBus  isa otherbus), %% Klæburuta ?
     not exbus(NotBus),
@@ -3465,7 +3468,7 @@ is  NotBus isa bus, {bound(NotBus)},  %% exclude tram
     clear
 id	 not flag(exit), %% e.g. foreign
     add message(not(bus,NotBus))  %% route
-ip	 not user:myflags(tramflag,true),
+ip	 not main:myflags(tramflag,true),
     NotBus \== it, %% internal anaphora :-)
     not (NotBus  isa otherbus), %% Klæburuta ?
     not exbus(NotBus),
@@ -3479,8 +3482,8 @@ is  X isa route,      %% bane fra nationalteateret AFTER nostation
     not ispresent _ isa webaddress,  %% etc
     clear
 id  addcon  message(noroutesfor(tram))
-ip  user:vehicletype(X,tram),
-    \+ user:myflags(tmnflag,true).
+ip  main:vehicletype(X,tram),
+    \+ main:myflags(tmnflag,true).
 
 noroutesforbus1 rule %%  Buss 1
 is  X isa bus ,      %% bane fra nationalteateret AFTER nostation
@@ -3488,8 +3491,8 @@ is  X isa bus ,      %% bane fra nationalteateret AFTER nostation
     not ispresent _ isa webaddress,  %% etc
     clear
 id  addcon  message(noroutesfor(tram))
-ip  user:vehicletype(X,tram),
-    \+ user:myflags(tmnflag,true).
+ip  main:vehicletype(X,tram),
+    \+ main:myflags(tmnflag,true).
 
 
 noroutesfortram1 rule %%  trikk til nth
@@ -3499,7 +3502,7 @@ is  _ isa tram,
     clear
 id  addcon  message(noroutesfor(tram)),
     addcon  message(answer(db_reply('Gråkallbanen',webaddress,K)))
-ip  \+ user:myflags(tmnflag,true),
+ip  \+ main:myflags(tmnflag,true),
     has_att_val(company,webaddress,tram,K).
 
 
@@ -3509,7 +3512,7 @@ is  X isa neighbourhood, { bound(X)},
 id  clear,
     addcon message(noroutesto(X))
 ip  nostationfor(X),   %% adm_rit
-    \+ user:placestat(X,_).
+    \+ main:placestat(X,_).
 
 
 notanightbus rule %%   NN not a nightbus
@@ -3569,7 +3572,7 @@ is  NotClock isa clock,
     clear
 id	 add message(not(clock,NotClock)),
     add flag(exit) % finish it
-ip	 user:notaclock(NotClock).    %%  buslog
+ip	 main:notaclock(NotClock).    %%  buslog
 
 
 whichtrase rule %% which tracee does the route follow
@@ -3840,7 +3843,7 @@ is  exactly (doit,tuc isa savant,C isa Clock, dob/describe/tuc/C/E,event/real/E)
     clear   %% TA-110523 \+ hva er adressa til steinan
 id  clear, add message(answer(bcpbc(Time))),
     add flag(exit)
-ip  user:description(Clock,Time).
+ip  main:description(Clock,Time).
 
 
 describenoun2 rule  %% hva betyr savant
@@ -3849,7 +3852,7 @@ is  A isa thing,dob/mean2/B/A/C,B isa Savant,event/real/C,
     clear
 id  clear, add message(answer(bcpbc(System))),
     add flag(exit)
-ip  user:description(Savant,System).
+ip  main:description(Savant,System).
 
 describe0 rule %% describe X  MEANS what is the class/superclass
 %is which(A), (ako/Man/A),
@@ -3888,7 +3891,7 @@ is (tuc isa savant, dob/describe/tuc/quote(Meaning)/E,event/real/E), %RS-111118 
    clear
 id clear, add message(answer(bcpbc(Abstract))),
    add flag(exit)
-ip user:(Meaning ako Abstract),  %% (ako/Meaning/Abstract)  %% RS-111121
+ip userNOTME:(Meaning ako Abstract),  %% (ako/Meaning/Abstract)  %% RS-111121
    \+ member(Meaning,[god,price]). %% etc.
 
 
@@ -3970,7 +3973,7 @@ ip  today(TODAY),
     number(Six),
     timenow2(0,NOW),
     NOW > Six,
-    user:finddate(1,DATE),
+    main:finddate(1,DATE),
     dayModSeqNo(DATE,DaySeqNo).
 
 
@@ -4000,7 +4003,7 @@ ip  today(TODAY),
     daysucc(TODAY,TOM),
     timenow2(0,NOW),
     NOW > 1200, %% morning must be tomorrow
-    user:finddate(1,DATE),
+    main:finddate(1,DATE),
     dayModSeqNo(DATE,DaySeqNo).
 
 tonightis18ugly  rule
@@ -4166,7 +4169,7 @@ is  MMMM isa clock, {bound(MMMM)},
 
     not ispresent srel/today/_/_/_,  %% etc
 
-    {\+ user:myflags(airbusflag,true)}, %% airbus starts at 400 (!)
+    {\+ main:myflags(airbusflag,true)}, %% airbus starts at 400 (!)
                                          % 430 set as early time
     not srel/early/time/nil/_,  %% then NOT midnight
     not srel/today/_Day/nil/_   %% means coming morning
@@ -4250,7 +4253,7 @@ ip  today(TODAY),
 
     addtotime(Schedtime,MT,SchedtimePlus), %% time many  min before now
     Timenow > SchedtimePlus,
-    user:finddate(1,DATE),
+    main:finddate(1,DATE),
     dayModSeqNo(DATE,DaySeqNo).
 
 
@@ -4310,7 +4313,7 @@ ip  today(TODAY),
 
     (Six < 0430 -> Newtime=Eighteen %% not morning if <5
                 ;  Newtime=Six),  %% next morning
-    user:finddate(1,DATE),
+    main:finddate(1,DATE),
     dayModSeqNo(DATE,DaySeqNo).
 
 
@@ -4361,7 +4364,7 @@ ip  today(TODAY),
     evening_time0(Four,Fourteen),
     NOW > Fourteen,
 
-    user:finddate(1,DATE),
+    main:finddate(1,DATE),
     dayModSeqNo(DATE,DaySeqNo).
 
 %% TA-101025
@@ -4500,7 +4503,7 @@ is  (_NotBus isa BR),
     clear
 id  clear,
     add message(noinfoabout(BR))
-ip  \+ user:myflags(tmnflag,true).
+ip  \+ main:myflags(tmnflag,true).
 
 
 ankomme rule  %% NB after reachtrain  %% Norwagism %% ankomme (reach) = gå til
@@ -4686,8 +4689,8 @@ is  test,(CS isa station,CS isa neighbourhood,event/real/_), %% Ad hoc
     not adj/_/_/_/_           %% yellow bus
 id  clear, add  true %% Yes is added
 ip  bound(CS),
-    user:station(CS),
-    user:neighbourhood(CS).
+    main:station(CS),
+    main:neighbourhood(CS).
 
 
 isitwhat3 rule
@@ -5033,7 +5036,7 @@ ip  [].
 whatis1 rule  %%  what is D means describe D
 is  exactly (which(X),X isa Y, event/real/_)
 id  add message(answer((bcpbc(D))))
-ip  \+ user:myflags(teleflag,true),
+ip  \+ main:myflags(teleflag,true),
     bound(X), X \== it,
     \+ dmeq([answer,clock, departure, self, time],Y),
     description(X,D). %% NB X (?)
@@ -5043,7 +5046,7 @@ whatis2 rule  %% hvem er (det som er) tagore:... X er tagore
 is  which(A),A isa agent,dob/be/A/X/B,X isa D,event/real/B
 id  add message(answer(bcpbc(D))),
     add flag(exit)
-ip  \+ user:myflags(teleflag,true),
+ip  \+ main:myflags(teleflag,true),
     bound(X),
     X \== it, X \== tuc,
     \+ dmeq([answer,clock,departure,self,time],D).
@@ -5052,7 +5055,7 @@ whatis2b rule  %% hvem er tagore:.. tagore er X %% TA-101230
 is  which(A),A isa agent,dob/be/X/A/B,X isa D,event/real/B
 id  add message(answer(bcpbc(D))),
     add flag(exit)
-ip  \+ user:myflags(teleflag,true),
+ip  \+ main:myflags(teleflag,true),
     bound(X),
     X \== it, X \== tuc,
     \+ dmeq([answer,clock,departure,self,time],D).
@@ -5159,7 +5162,7 @@ is  which(A),
     not ispresent has/_Agent/_Leader/_Tuc/_ %% hvem er din sjef  *-> leder
 id  add message(answer(bcpbc(bustuc)))
 ip  bound(Marvin), %% hvem er konge -> Konge ***
-    \+ user:myflags(teleflag,true),
+    \+ main:myflags(teleflag,true),
     \+ dmeq([self,creator,programmer,person],Robot). %% "selv"
 
 whois1 rule  %%  who  is D (which agent is such that A is D)
@@ -5167,7 +5170,7 @@ is  which(A),Marvin isa Robot,A isa agent,event/real/B,dob/be/A/Marvin/B,
     not ispresent has/_Agent/_Leader/_Tuc/_ %% hvem er din sjef  *-> leder
 id  add message(answer((bcpbc(Robot))))
 ip  bound(Marvin), %% hvem er konge -> Konge ***
-    \+ user:myflags(teleflag,true),
+    \+ main:myflags(teleflag,true),
     \+ dmeq([self,creator,programmer,person],Robot). %% "selv"
 
 
@@ -5388,7 +5391,7 @@ is  ispresent srel/to/place/M/E,
     V isa station,
     remove  srel/on/place/V/E
 id  []
-ip  user: V isa neighbourhood. %% also %
+ip  userNOTME: V isa neighbourhood. %% also %
 
 % % % % % % % PART OF DAY RULES
 
@@ -5520,12 +5523,12 @@ ip  before(6,Twelve),before(Twelve,1300),
 inattbuss1 rule
 is  srel/in_midnight/time/nil/_
 id  addcon flag(nightbusflag)
-ip  user: set(nightbusflag,true).
+ip  userNOTME: set(nightbusflag,true).
 
 inattbuss2 rule
 is  srel/this_midnight/time/nil/_
 id  addcon flag(nightbusflag)
-ip  user: set(nightbusflag,true).
+ip  userNOTME: set(nightbusflag,true).
 
 
 inatt rule %% catch
@@ -5978,13 +5981,13 @@ ip  dmeq([city,place],CP),
 trondheim3 rule
 is removeall (Trondheim isa city, srel/in/_/Trondheim/_ ) %% in/for
 id []
-ip \+ user:myflags(teleflag,true),
+ip \+ main:myflags(teleflag,true),
    home_town(Trondheim).
 
 trondheim3n rule
 is removeall (Trondheim isa neighbourhood, srel/in/_/Trondheim/_ ) %% in/for
 id []
-ip \+ user:myflags(teleflag,true),
+ip \+ main:myflags(teleflag,true),
    home_town(Trondheim).
 
 
@@ -6563,7 +6566,7 @@ howmanystations1 rule % How many stations are there?
 is  exactly (howmany(St),St isa station, STAND/St/A,event/real/A)
 id	 add (listofall(station,M),
          numberof(stations,M,_))
-ip  \+ user:myflags(smsflag,true),
+ip  \+ main:myflags(smsflag,true),
     dmeq([be1,exist],STAND).
 
 
@@ -6830,14 +6833,14 @@ is  replaceall (which(A), A isa frequency,doit/go/B20/B,srel/pwith/frequency/A/B
 id  clear,
     add message(noinfoabout(frequency)),
     add flag(exit)
-ip  user:myflags(smsflag,true).
+ip  main:myflags(smsflag,true).
 
 nofrequencies rule  %% how often -> when
 is  replaceall (which(A), A isa frequency,doit/go/B20/B,srel/pwith/frequency/A/B)
     with       (which(A), A isa time,doit/go/B20/B,srel/in/time/A/B)
 
 id  add message(noinfoabout(frequency))
-ip  \+ user:myflags(smsflag,true).
+ip  \+ main:myflags(smsflag,true).
 
 
 perhour rule
@@ -6883,7 +6886,7 @@ ip  [].
 hasattvalwebroute rule %% hva er nettsiden til rutetidene
 is  which(A),A isa webaddress,B isa route_plan,has/route_plan/webaddress/B/A
 id  add  message(answer(db_reply(TT,webaddress,K)))
-ip  user:myflags(actual_domain,TT),
+ip  main:myflags(actual_domain,TT),
     has_att_val(company,webaddress,TT,K).
 
 
@@ -6892,7 +6895,7 @@ is  which(A),TT isa company, A isa Telephone,
     has/agent/Telephone/TT/A
 id  add  message(answer(db_reply(TT,Telephone,K)))
 ip  dmeq([telephone,webaddress],Telephone),
-    user:myflags(actual_domain,TT),
+    main:myflags(actual_domain,TT),
     has_att_val(company,Telephone,TT,K).
 
 
@@ -7112,8 +7115,8 @@ id  flag(nightbusflag),
 ip  dmeq(mtwtfss,Friday),
     today(Tuesday),
     daysucc(Friday,Saturday),
-    user:number_of_days_between(Tuesday,Saturday,N),
-    user:finddate(N,DATE),
+    main:number_of_days_between(Tuesday,Saturday,N),
+    main:finddate(N,DATE),
     extraallowed_night(DATE,Saturday),
     dayModSeqNo(DATE,DaySeqNo).
 
@@ -7134,8 +7137,8 @@ id  flag(nightbusflag),
 ip  dmeq(mtwtfss,Friday),
     today(Tuesday),
     daysucc(Friday,Saturday),
-    user:number_of_days_between(Tuesday,Saturday,N),
-    user:finddate(N,DATE),
+    main:number_of_days_between(Tuesday,Saturday,N),
+    main:finddate(N,DATE),
     \+ disallowed_night(DATE),
     dayModSeqNo(DATE,DaySeqNo).
 
@@ -7155,7 +7158,7 @@ id  flag(nightbusflag),
 ip  dmeq(mtwtfss,Friday),
     today(Tuesday),
     daysucc(Friday,Saturday),
-    user:number_of_days_between(Tuesday,Saturday,N),
+    main:number_of_days_between(Tuesday,Saturday,N),
     finddate(N,DATE),
     dayModSeqNo(DATE,DaySeqNo).
 
@@ -7170,8 +7173,8 @@ id  flag(nightbusflag),
 ip  dmeq([this_midnight,tonight],This_midnight),
     today(Friday),
     daysucc(Friday,Saturday),
-    user:timenow2(0,HHMM), HHMM > 430, %%  not at midnight
-    user:finddate(1,DATE), %% find date tomorrow
+    main:timenow2(0,HHMM), HHMM > 430, %%  not at midnight
+    main:finddate(1,DATE), %% find date tomorrow
     dayModSeqNo(DATE,DaySeqNo).
 
 
@@ -7200,9 +7203,9 @@ id  flag(nightbusflag),
 ip  timenow2(0,T), T > 0430,
     today(Tuesday),
     daysucc(Friday,Saturday),
-    user:number_of_days_between(Tuesday,Saturday,N),
-    user:finddate(N,DATE),
-    user:disallowed_night(DATE).
+    main:number_of_days_between(Tuesday,Saturday,N),
+    main:finddate(N,DATE),
+    main:disallowed_night(DATE).
 
 
 
@@ -7219,10 +7222,10 @@ id  flag(nightbusflag),
 ip  timenow2(0,T), T > 0430,
     today(Tuesday),
     daysucc(Friday,Saturday),
-    user:number_of_days_between(Tuesday,Saturday,N),
-    user:finddate(N,DATE),
+    main:number_of_days_between(Tuesday,Saturday,N),
+    main:finddate(N,DATE),
     \+ extraallowed_night(DATE,_),
-    \+ user:disallowed_night(DATE),
+    \+ main:disallowed_night(DATE),
     dayModSeqNo(DATE,DaySeqNo).
 
 
@@ -7238,9 +7241,9 @@ id  flag(nightbusflag),
 ip  timenow2(0,T), T > 0430,
     today(Friday),
     daysucc(Friday,Saturday),
-    user:finddate(1,DATE),
+    main:finddate(1,DATE),
     \+ extraallowed_night(DATE,_),
-    \+ user:disallowed_night(DATE),
+    \+ main:disallowed_night(DATE),
     dayModSeqNo(DATE,DaySeqNo).
 
 
@@ -7255,7 +7258,7 @@ is  F18 isa night, %% i.e. evening,
 id  not flag(nightbusflag),
     not atdate2(_,_)
 ip  dmeq([to,before],To),
-    user:sub_days(DATE,1,NEXTDATE).
+    main:sub_days(DATE,1,NEXTDATE).
 
 
 setexoneveningbefore1  rule  %% på/om kveld  før dato
@@ -7266,7 +7269,7 @@ is  F18 isa night, %% i.e. evening,
 id  not flag(nightbusflag),
     not atdate2(_,_)
 ip  dmeq([to,before],To),
-    user:sub_days(DATE,1,NEXTDATE).
+    main:sub_days(DATE,1,NEXTDATE).
 
 
 
@@ -7277,7 +7280,7 @@ is  srel/in_night/time/nil/E,
 id  not flag(nightbusflag),
     not atdate2(_,_)
 ip  dmeq([to,before],To),
-    user:sub_days(DATE,1,NEXTDATE).
+    main:sub_days(DATE,1,NEXTDATE).
 
 
 nodatecalc  rule  %%  N dager  før dato % NIX
@@ -7325,9 +7328,9 @@ id  not atdate2(_,_),
     add atday(Monday)
 ip  dmeq(mtwtfss, Monday),
     today(Thursday),
-    user:number_of_days_between(Thursday,Monday,N),
+    main:number_of_days_between(Thursday,Monday,N),
     N7 is N -7,
-    user:finddate(N7,DATE),
+    main:finddate(N7,DATE),
     dayModSeqNo(DATE,DaySeqNo).
 
 %% Next Monday means in a week if Monday  %% However, next tuesday means tuesday (PRAGMATIX)
@@ -7340,7 +7343,7 @@ id  not atdate2(_,_),
     add atday(Monday)
 ip  dmeq(mtwtfss, Monday),
     today(Monday),
-    user:finddate(7,DATE),
+    main:finddate(7,DATE),
     dayModSeqNo(DATE,DaySeqNo).
 
 setexdatemidnighteaster rule  %% midnight in easter
@@ -7373,8 +7376,8 @@ id  not atdate2(_,_),
     add atdate2(DaySeqNo,DATE),
     addcon atday(XDAY)
 ip  bound(KHFD),
-    user: named_date(KHFD,DATE),
-    user: xweekday(DATE,XDAY),
+    userNOTME: named_date(KHFD,DATE),
+    userNOTME: xweekday(DATE,XDAY),
     dayModSeqNo(DATE,DaySeqNo).
 
 setexdate3nightextra rule   %% date  via 2. juledag ->  date -> night to 3. X
@@ -7404,8 +7407,8 @@ id  flag(nightbusflag),
     not atdate2(_,_),
     add atdate2(DaySeqNo,DATE),
     addcon  atday(XDAY)
-ip  \+ user:disallowed_night(DATE),
-    user:xweekday(DATE,XDAY),
+ip  \+ main:disallowed_night(DATE),
+    main:xweekday(DATE,XDAY),
     dayModSeqNo(DATE,DaySeqNo).
 
 
@@ -7415,7 +7418,7 @@ id  addcon atday(XDAY),
     add message(date_isa_day(DATE,XDAY)),
     add message(noroutesforthisdate),
     add flag(exit)
-ip  user:xweekday(DATE,XDAY),
+ip  main:xweekday(DATE,XDAY),
     decide_period(DATE,TTP), %  set(actual_period, ThePeriod)
     TTP == nil. %% <---- %% allow 21.4 2012
 
@@ -7428,7 +7431,7 @@ id  not flag(nightbusflag),
     not atdate2(_,_),
     add atdate2(DaySeqNo,DATE),
     addcon atday(XDAY)
-ip  user:xweekday(DATE,XDAY),
+ip  main:xweekday(DATE,XDAY),
     decide_period(DATE,TTP), %  set(actual_period, ThePeriod)
     TTP \== nil, %% <----
     dayModSeqNo(DATE,DaySeqNo),
@@ -7445,9 +7448,9 @@ id  flag(nightbusflag),
     add flag(exit),
     atday(Day),
     add message(nonightbusesthen) %%
-ip  user:findfirstcomingdate(Day,Date), %% NEW datecalc.pl
+ip  main:findfirstcomingdate(Day,Date), %% NEW datecalc.pl
     \+ extraallowed_night(Date,_),
-    user:disallowed_night(Date).
+    main:disallowed_night(Date).
 
 
 nottodaybutholiday rule
@@ -7474,8 +7477,8 @@ id  not message(nodates), % no point if no routes
     add message(otherperiod(DATE))
 ip  date_day_map(DATE,Holiday),
     special_day(Holiday),
-    user:todaysdate(DATE),
-    user:set(samedayflag,true).
+    main:todaysdate(DATE),
+    main:set(samedayflag,true).
 
 
 holywood2 rule %% Holiday , but another day
@@ -7505,7 +7508,7 @@ id  %% not flag(nightbusflag), %% confusing
     not message(otherperiod(DATE)), %% Used as Retention flag
     add message(date_isa_day(DATE,Day)), %% addfront ?
     add message(otherperiod(DATE))
-ip  \+ user:myflags(samedayflag,true),
+ip  \+ main:myflags(samedayflag,true),
 %%     \+ today(Day0),
     todaysdate(Todate),
     Todate \== DATE,
@@ -7552,7 +7555,7 @@ id   not message(nodates),  %% not addcon
      add flag(exit)  %% dont make connections
 ip   todaysdate(TODAY), %% UNLESS DIFFERENT TIMEZONE AND CHANGE OF DATE
      \+ (TODAY =DATE),
-     user: implies( decide_period(DATE,X),X=nil).
+     userNOTME: implies( decide_period(DATE,X),X=nil).
 
 
 whatistime0 rule %% what is the time %% Fronted
@@ -7577,10 +7580,10 @@ id   not flag(fail),
      add message(date_day_route(DATE,MapDay)),
      remove atday(_),
      add atday(MapDay)
-ip   user:todaysdate(DATE),
+ip   main:todaysdate(DATE),
      date_day_map(DATE,MapDay),
      \+  special_day(MapDay),
-     user:set(samedayflag,true). %% AD HOC, global
+     main:set(samedayflag,true). %% AD HOC, global
 
 
 
@@ -7615,7 +7618,7 @@ id	 not atday(_),                  %% e.g. i morgen torsdag
     add flag(exit)  %% fail? %% Avoid "umulig på nyrsdag"
 ip	 today(Day),   %% Instantiate it
     daysucc(Day,NextDay),
-    user:finddate(1,DATE),
+    main:finddate(1,DATE),
     \+ dayModSeqNo(DATE,DaySeqNo).
 
 
@@ -7630,7 +7633,7 @@ id	 not atday(_),                  %% e.g. i morgen torsdag
          atday(NextDay),
          atdate2(DaySeqNo,DATE))
 ip	 today(Day),   %% Instantiate it
-    user:finddate(1,DATE),
+    main:finddate(1,DATE),
     dayModSeqNo(DATE,DaySeqNo),
     daysucc(Day,NextDay). %% TA-100916
 
@@ -7645,7 +7648,7 @@ id  not atday(_),
 ip	 today(Day),
     daysucc(Day,Day1),
     daysucc(Day1,Day2),
-    user:finddate(2,Date),
+    main:finddate(2,Date),
     dayModSeqNo(Date,DaySeqNo).
 
 yester1 rule % ...yesterday
@@ -7653,7 +7656,7 @@ is  srel/yesterday/day/nil/_ %% time => day
 id	 not atday(_),
     add (today(Day),atday(PrevDay),atdate2(DaySeqNo,Date))
 ip	 today(Day),daysucc(PrevDay,Day),
-    user:finddate(-1,Date),
+    main:finddate(-1,Date),
     dayModSeqNo(Date,DaySeqNo).
 
 yester2 rule %   day_before_yesterday | forgårs
@@ -7665,7 +7668,7 @@ id	 not atday(_),
 ip	 today(Day),
     daysucc(Day1,Day),
     daysucc(PrevDay,Day1),
-    user:finddate(-2,Date),
+    main:finddate(-2,Date),
     dayModSeqNo(Date,DaySeqNo).
 
 
@@ -7703,7 +7706,7 @@ id  atdate2(_DaySeqNo,EX),
     not flag(exit),
     add flag(exit),
     add message(standnight)
-ip  \+  user:extraallowed_night(EX,_).
+ip  \+  main:extraallowed_night(EX,_).
 
 
 
@@ -7801,7 +7804,7 @@ id  not flag(exit),
 ip  nightbusstation(OT),
     \+ neverpasses(NB,OT),
     findfirstcomingdate(Day,Date), %% NEW datecalc.pl
-    \+ user:disallowed_night(Date),
+    \+ main:disallowed_night(Date),
     newfree(E).
 
 
@@ -7957,7 +7960,7 @@ id  not flag(exit),
     add today(Today),
     add atday(Day)
 ip  today(Today),
-    user:frame_getvalue(day,Day,day),
+    main:frame_getvalue(day,Day,day),
     Day \== Today
  :- double.
 
@@ -7996,7 +7999,7 @@ id  not flag(exit),
     not atdate2(_,_),
     not message(completesentence),
     add atdate2(DaySeqNo,DATE)
-ip  user:todaysdate(DATE),
+ip  main:todaysdate(DATE),
     dayModSeqNo(DATE,DaySeqNo).
 
 
@@ -8057,7 +8060,7 @@ id   atdate2(_DaySeqNo,DATE),
      not message(nodates),  %% not addcon
      addfront message(nodates),
      add (message(answer(db_reply(tt,webaddress,K))))
-ip   user: date_day_map( DATE,unknown), %% i.e. no route
+ip   userNOTME: date_day_map( DATE,unknown), %% i.e. no route
      has_att_val(company,webaddress,tt,K).
 
 
@@ -8756,7 +8759,7 @@ ip  has_att_val(company,webaddress,tt,K).
 whatisclass2 rule  %%  what is D means describe D
 is  exactly (which(X),Tagore isa Programmer,dob/be/Tagore/X/B,event/real/B)
 id  add message(answer((bcpbc(Person))))
-ip  \+ user:myflags(teleflag,true),
+ip  \+ main:myflags(teleflag,true),
     \+ testmember(Programmer,[answer,bus,  vehicle,route,tram,train,airplane,
              easter,christmas,whitsun,information,
              moment,clock,hour,date,midnight,month,week,weather,year,arrival,departure]),
@@ -8768,7 +8771,7 @@ is  B isa webaddress, has/_agent/webaddress/Tuc/B,   {unbound(Tuc)},
     {dmeq([agent,savant,route,bus,program],_agent)},
     clear
 id  add ( message(answer(db_reply(TT,webaddress,K))))
-ip  user:myflags(actual_domain,TT),
+ip  main:myflags(actual_domain,TT),
     has_att_val(company,webaddress,TT,K).
 
 
@@ -8777,7 +8780,7 @@ is  B isa webaddress, has/_Agent/webaddress/Tuc/B,
       {dmeq([tuc,bustuc],Tuc)},
     clear
 id  add ( message(answer(db_reply(TT,webaddress,K))))
-ip  user:myflags(actual_domain,TT),
+ip  main:myflags(actual_domain,TT),
     has_att_val(company,webaddress,TT,K).
 
 
@@ -9142,7 +9145,7 @@ ip  [].
 %%%%% Warn at  time and date %%%%%%%%%%%%%%%%%%%
 
 warnattime rule %% varsle kl 1015  %% TA-110201
-is  {user:myflags(smsflag,true)}, %% TA-110202
+is  {main:myflags(smsflag,true)}, %% TA-110202
     tuc isa savant,CLOCK isa clock,
         dob/notify/tuc/_/A,srel/_After/time/CLOCK/A
 id  atdate2(_DaySeqNo,Date),
@@ -9153,7 +9156,7 @@ ip  set(warningtime, notification(Date,CLOCK)).
 
 
 warnwhentimeis rule %% varsle når klokken er 1800  %% TA-110202
-is  {user:myflags(smsflag,true)},
+is  {main:myflags(smsflag,true)},
     tuc isa savant,
     dob/be/A/T1800/D,{bound(T1800)},
     T1800 isa NClock,{dmeq([time,clock,number],NClock)}, %% T1800  may be parsed as number
@@ -9285,7 +9288,7 @@ is  X isa tramstation,
     clear
 id  addcon message(noroutesto(X))
 ip  bound(X),
-    \+ user:myflags(tmnflag,true),
+    \+ main:myflags(tmnflag,true),
     \+ X isa station.                %% Ugla
 
 
@@ -9295,7 +9298,7 @@ is  _X isa tramstation,
     clear
 id	 clear,
     addcon message(noroutesfor(tram))
-ip   \+ user:myflags(tmnflag,true).
+ip   \+ main:myflags(tmnflag,true).
 
 % Sørger for riktig retning i "buss fra/til sted passerer TOFROMBY" etc.
 
@@ -9755,7 +9758,7 @@ is  srel/From/place/StartPlace/D1, %% not "removed from saw%% 1	 context only
 id  add (message(sameplace(StartPlace,EndPlace)))  %% not urgent
 ip  atomic(StartPlace), atomic(EndPlace),
     dmeq([to,for,in,from],To),
-    user:samefplace(StartPlace,EndPlace).
+    main:samefplace(StartPlace,EndPlace).
 
 
 samefplace2b rule
@@ -9764,7 +9767,7 @@ is  context srel/To/place/EndPlace/_D1, %% not "removed from s(c)een
     dob/leave/_Bus/StartPlace/_D2
 id  add (message(sameplace(StartPlace,EndPlace)))  %% not urgent
 ip  atomic(StartPlace), atomic(EndPlace),
-    dmeq([to,for],To),user:samefplace(StartPlace,EndPlace).
+    dmeq([to,for],To),main:samefplace(StartPlace,EndPlace).
 
 samefplace3 rule
 is context srel/From/place/StartPlace/_D1, %% not "removed from s(c)een
@@ -9772,7 +9775,7 @@ is context srel/From/place/StartPlace/_D1, %% not "removed from s(c)een
    srel/at/place/EndPlace/_D2
 id add (message(sameplace(StartPlace,EndPlace)))  %% not urgent
 ip atomic(StartPlace), atomic(EndPlace),
-   user:samefplace(StartPlace,EndPlace),
+   main:samefplace(StartPlace,EndPlace),
    From \== at. %% Different prepositions
 
 
@@ -9783,7 +9786,7 @@ is context srel/_Prep1/place/StartPlace/_D1,
 id add (message(sameplace(StartPlace,EndPlace)))
 ip  atomic(StartPlace), atomic(EndPlace),
    (\+ StartPlace = EndPlace,
-    user:samefplace(StartPlace,EndPlace)).
+    main:samefplace(StartPlace,EndPlace)).
 
 
 samefplace5 rule  %%
@@ -9791,7 +9794,7 @@ is  doit/pass/_X/E,
     srel/_Prep/place/EndPlace/E
 id  add (message(sameplace(StartPlace,EndPlace)))
 ip  atomic(StartPlace), atomic(EndPlace),
-    user:samefplace(StartPlace,EndPlace).
+    main:samefplace(StartPlace,EndPlace).
 
 
 
@@ -10204,7 +10207,7 @@ ip  dmeq(travelbe,TRAVELBE),
     dmeq(trafficant,BVP),
     place_station(Place,Station), Station \== unknown,
     i_or_a_bus(Cat,BVP,Bus),
-    \+ user:frame_getvalue(where::arrival,_,_) %% <-- NB
+    \+ main:frame_getvalue(where::arrival,_,_) %% <-- NB
 :-double.
 
 
@@ -10245,7 +10248,7 @@ ip  dmeq(travelbe,TRAVELBE),
     bus_place_station(Cat,Place,Station), %%   90 risvollankrysset
     Station \== unknown,
     i_or_a_bus(Cat,BVP,Bus),
-    \+ user:frame_getvalue(where::departure,_,_) %% <-- NB
+    \+ main:frame_getvalue(where::departure,_,_) %% <-- NB
 :-double.
 
 
@@ -10333,7 +10336,7 @@ nilplaceeqto rule %%   nth (from risvollan)   TO NTH (from risvollan) //FIRST
 is  srel/nil/Plass/Place/_,  %% NOT coevent
        {dmeq([place,station,neighbourhood],Plass)}, %% ANOMALY
     not ispresent adj/_/next/_/_, %% next means at station
-%%%     { \+ user:myflags(airbusflag,true)},  %% DIRTY   %% ankomst flybuss lerkendal.
+%%%     { \+ main:myflags(airbusflag,true)},  %% DIRTY   %% ankomst flybuss lerkendal.
     ispresent doit/TRAVELBE/Cat/B, { dmeq(travelbe,TRAVELBE)},
     not ispresent _ isa departure,
     not ispresent _ isa arrival,  %% ankomst flybuss lerkendal
@@ -11610,7 +11613,7 @@ id	 atdate2(_DaySeqNo,ATDATE),
 		    passevent(NewDeps,Bus,Place,Opts2,Day,A))
 ip	 todaysdate(TODAYSDATE),
     ATDATE \== TODAYSDATE, %%
-    user:testmember(from,Opts),
+    main:testmember(from,Opts),
     setopt(time,Opts,Opts1),setopt(next(1),Opts1,Opts2)
 
 :-double.
@@ -11643,7 +11646,7 @@ is  adj/_/last/_/_,
 id	 replace passevent(Deps,Bus,Place,Opts,Day,A)
     with		( keepbefore(2500,Deps,NewDeps),  %% 2500 is not paraphrased
 				  passevent(NewDeps,Bus,Place,Opts2,Day,A))
-ip	 user:testmember(from,Opts),    %% last bus is always arrival ?
+ip	 main:testmember(from,Opts),    %% last bus is always arrival ?
     setopts([time,lastcorr,last(1)],Opts,Opts2)  %%% WHY BOTH ?
 :-double.
 
@@ -11662,7 +11665,7 @@ is  adj/_/last/_/_,
 id	 replace passevent(Deps,Bus,Place,Opts,Day,A)
     with (keepbefore(2500,Deps,NewDeps),  %% 2500 is not paraphrased
 		    passevent(NewDeps,Bus,Place,Opts2,Day,A))
-ip	 user:testmember(to,Opts),
+ip	 main:testmember(to,Opts),
     setopts([time,lastcorr,last(1)],Opts,Opts2)
 :-double.
 
@@ -11836,8 +11839,8 @@ id	 not flag(earlierbus),  %% Retention
 	 with (    keepbefore(FDT1,Deps,NewDeps),
 			     passevent(NewDeps,Bus,Place,Opts1,Day,A))
 ip	 member(from,Opts), %% in case two passevents, select the right
-    user:myflags(firstdeparturetime,FDT), %% first
-    user:subfromtime(FDT,1,FDT1),
+    main:myflags(firstdeparturetime,FDT), %% first
+    main:subfromtime(FDT,1,FDT1),
     setopt(time,Opts,Opts0),
     setopt(lastcorr,Opts0,Opts1)
 :-double.
@@ -11855,8 +11858,8 @@ id	 not flag(earlierbus),  %% Retention
 	 with (    keepbefore(FDT1,Deps,NewDeps),
 			     passevent(NewDeps,Bus,Place,Opts1,Day,A))
 ip	 member(to,Opts), %% in case two passevents, select the right
-    user:myflags(lastarrivaltime,FDT),
-    user:subfromtime(FDT,1,FDT1),
+    main:myflags(lastarrivaltime,FDT),
+    main:subfromtime(FDT,1,FDT1),
     setopt(time,Opts,Opts0),
     setopt(lastcorr,Opts0,Opts1)
 :-double.
@@ -11873,8 +11876,8 @@ id	 not flag(earlierbus),  %% Retention
 	 with (    keepbefore(FDT1,Deps,NewDeps),
 			     passevent(NewDeps,Bus,Place,Opts1,Day,A))
 ip	 member(to,Opts), %% in case two passevents, select the right
-    user:myflags(lastarrivaltime,FDT),
-    user:subfromtime(FDT,1,FDT1),
+    main:myflags(lastarrivaltime,FDT),
+    main:subfromtime(FDT,1,FDT1),
     setopt(time,Opts,Opts0),
     setopt(lastcorr,Opts0,Opts1)
 :-double.
@@ -11892,8 +11895,8 @@ id	 not flag(laterbus),  %% Retention
 	 with (    keepafter(FDT1,Deps,NewDeps),
 			     passevent(NewDeps,Bus,Place,Opts1,Day,A))
 ip	 \+ member(from,Opts), %% in case two passevents, select the right
-    user:myflags(lastarrivaltime,FDT),
-    user:addtotime(FDT,1,FDT1),
+    main:myflags(lastarrivaltime,FDT),
+    main:addtotime(FDT,1,FDT1),
     setopt(time,Opts,Opts0),
     setopt(nextaftertime(1),Opts0,Opts1)
 :-double.
@@ -11911,8 +11914,8 @@ id	 not flag(laterbus),  %% Retention
 	 with (    keepafter(FDT1,Deps,NewDeps),
 			     passevent(NewDeps,Bus,Place,Opts1,Day,A))
 ip	 \+ member(to,Opts), %% in case two passevents, select the right
-    user:myflags(firstdeparturetime,FDT),
-    user:addtotime(FDT,1,FDT1),
+    main:myflags(firstdeparturetime,FDT),
+    main:addtotime(FDT,1,FDT1),
     setopt(time,Opts,Opts0),
     setopt(nextaftertime(1),Opts0,Opts1)
 :-double.
@@ -11932,8 +11935,8 @@ id	 not flag(earlierbus),  %% Retention
 	 with (    keepbefore(FDT1,Deps,NewDeps),
 			     passevent(NewDeps,Bus,Place,Opts1,Day,A))
 ip	 \+ member(from,Opts), %% in case two passevents, select the right
-    user:myflags(lastarrivaltime,FDT),
-    user:subfromtime(FDT,1,FDT1),
+    main:myflags(lastarrivaltime,FDT),
+    main:subfromtime(FDT,1,FDT1),
     setopts([time,lastcorr],Opts,Opts1)
 :-double.
 
@@ -11952,8 +11955,8 @@ id	 not flag(laterbus),  %% Retention
 	 with (    keepafter(FDT1,Deps,NewDeps),
 			     passevent(NewDeps,Bus,Place,Opts1,Day,A))
 ip	 \+ member(to,Opts), %% in case two passevents, select the right
-    user:myflags(firstdeparturetime,FDT),
-    user:addtotime(FDT,1,FDT1),
+    main:myflags(firstdeparturetime,FDT),
+    main:addtotime(FDT,1,FDT1),
     setopt(time,Opts,Opts0),
     setopt(nextaftertime(1),Opts0,Opts1)
 :-double.
@@ -11965,7 +11968,7 @@ is  srel/now/time/nil/_
 id	 not atday(_),
     today(Tuesday),
     add atday(Tuesday)
-ip  user:frame_getvalue(day,Friday,day),
+ip  main:frame_getvalue(day,Friday,day),
     Tuesday \== Friday
 :- double.
 
@@ -12017,7 +12020,7 @@ ip  member(to,Opts),
 
 
 keepfrombay rule %% go from center
-is   {\+ user:myflags(new_origin,true)}, %% NO GPS %% TA-110218
+is   {\+ main:myflags(new_origin,true)}, %% NO GPS %% TA-110218
     not ispresent srel/here/place/nil/_, %% fra her .. ???
     not ispresent srel/inwards/place/nil/_,
     not ispresent srel/from/___Place/X/_  %% in case of error srel/from/text/c/free(32)
@@ -12191,7 +12194,7 @@ id	 not flag(defaultdest), %% not given explicitly
     replace passevent(Deps,Bus,Place,Opts,Day,A)
     with (  keepbefore1(Time,Deps,NewDeps),  %% CLOSELY BEFORE !!!
             passevent(NewDeps,Bus,Place,TLCOPT,Day,A))
-ip	  \+ user:member(from,Opts),
+ip	  \+ main:member(from,Opts),
     setopt(time,Opts,Opts1),
     setopt(lastcorr,Opts1,TLCOPT).
 
@@ -12799,7 +12802,7 @@ is  adj/_/first/AD/_, ispresent AD isa ARRDEP
 id	 replace passevent(Deps,Bus,Place,Opts,Day,A)
 	 with		passevent(Deps,Bus,Place,Opts1,Day,A)
 ip	 dmeq(arrdep,ARRDEP),
-    \+ user:member(nextaftertime(_),Opts),
+    \+ main:member(nextaftertime(_),Opts),
     setopt(first(1),Opts,Opts1).            %%
 
 
@@ -12863,7 +12866,7 @@ id	 atday(Wed),
     not message(date_day_route(_,Wed)), %%  not only different routeplan
     replace passevent(Deps,Bus,Place,Opts,Day,A)
 	 with    passevent(Deps,Bus,Place,Opts1,Day,A)
-ip	 \+ user:myflags(samedayflag,true), %% Ad Hoc: Global flag
+ip	 \+ main:myflags(samedayflag,true), %% Ad Hoc: Global flag
     dmeq(vehicle,VEH),
     busorfree(BusF),
     setopt(first(N),Opts,Opts1).
@@ -12889,7 +12892,7 @@ id	 message(assumeyesterdepartures), %%
     replace passevent(Deps,Bus,Place,Opts,Day,A)
 	 with    (keepafter(T2400,Deps,Deps1), %% avoid morning routes!
              passevent(Deps1,Bus,Place,Opts1,Day,A))
-ip	 \+ user:myflags(samedayflag,true),
+ip	 \+ main:myflags(samedayflag,true),
      timenow(LT),LT < 0100, T2400 is LT+2400, %%
      setopt(next(1),Opts,Opts1).
 
@@ -12903,7 +12906,7 @@ id	 atday(Wed),
     not message(date_day_route(_,Wed)), %%  not only different routeplan
     replace passevent(Deps,Bus,Place,Opts,Day,A)
 	 with    passevent(Deps,Bus,Place,Opts1,Day,A)
-ip	 \+ user:myflags(samedayflag,true), %% Ad Hoc: Global flag
+ip	 \+ main:myflags(samedayflag,true), %% Ad Hoc: Global flag
     dmeq(vehicle,VEH),
     setopt(first(1),Opts,Opts1),busorfree(BusF).
 
@@ -12930,7 +12933,7 @@ ip  dmeq([at],AT),dmeq(timeclock,CLO),number(Time), %% bussen går 20 // attime  
 
 
 busdepaftertimegps rule %% missing fromplace %% TA-110406
-is  {user:myflags(gpsflag,true)},
+is  {main:myflags(gpsflag,true)},
 
     srel/AFTER/CLO/Time/E,
             {dmeq(after,AFTER),
@@ -13215,9 +13218,9 @@ ip	 dmeq(busdeparr,BDA),
 %%%%  NTH bus coded as quant(eq/N ..), N < 0 // not anymore
 
 keepfromgpslocation rule %% go from GPS-location %% TA-110418  After busdepaftertime
-is  {user:myflags(gpsflag,true)},
+is  {main:myflags(gpsflag,true)},
 
-    {user:myflags(new_origin,true)},  %% NB TA-110206
+    {main:myflags(new_origin,true)},  %% NB TA-110206
 
     not ispresent srel/from/___Place/X/_
            when { (bound(X), \+ home_town(X))},
@@ -13247,9 +13250,9 @@ ip  member(to,Opts),
 
 
 keepfrombaygps rule %% go from GPS-location %%  After busdepaftertime
-is  {user:myflags(gpsflag,true)},
+is  {main:myflags(gpsflag,true)},
 
-    {user:myflags(new_origin,true)},  %% NB TA-110206
+    {main:myflags(new_origin,true)},  %% NB TA-110206
 
     not ispresent srel/from/___Place/X/_
            when { (bound(X), \+ home_town(X))},
@@ -13653,7 +13656,7 @@ is  NTNU isa neighbourhood,  {bound(NTNU)},
 id	 clear,
     add message(place_resolve(NTNU,List))
 ip  underspecified_place(NTNU),
-    user:set_of(Alt,place_resolve(NTNU,Alt),List),List \== [].
+    main:set_of(Alt,place_resolve(NTNU,Alt),List),List \== [].
 
 %% moved after  underspecneibresolve
 underspecifiedneibbus rule %% underspecified neighbourhood, bus given
@@ -13684,7 +13687,7 @@ is  NTNU isa station, { bound(NTNU)}, % in case neighbourhood is occluded
 id	 clear,
     add message(place_resolve(NTNU,List))
 ip  underspecified_place(NTNU),
-    user:set_of(Alt,place_resolve(NTNU,Alt),List),List \== [].
+    main:set_of(Alt,place_resolve(NTNU,Alt),List),List \== [].
 
 
 
@@ -13857,7 +13860,7 @@ id	 ispresent keepbefore(_4335,_3171,Deps1),
     not ispresent keepafter(_,_,_),
     replace connections(Deps2,_3724,_free,_lade,_nth,_3004,SeqNo,Opts,          _5276,_5277)
     with    connections(Deps2,_3724,_free,_lade,_nth,_3004,SeqNo,[last(1)|Opts],_5276,_5277)
-ip	 user:myflags(smsflag,true),
+ip	 main:myflags(smsflag,true),
     Deps1 == Deps2,  not (member(last(_),Opts)).
 
 
@@ -14441,7 +14444,7 @@ is  not X isa station when { bound(X)},
     exactly (which(A),A isa place,B isa station,doit/be1/B/C,srel/in/place/A/C,event/real/C)
 id  not departure(_,_,_,_),
     add listofall(station,_)
-ip  \+ user:myflags(smsflag,true).
+ip  \+ main:myflags(smsflag,true).
 
 
 wherearestat rule % Where are the bus stations
@@ -14449,7 +14452,7 @@ is  not X isa station when { bound(X)},
     exactly (which(A),A isa place,B isa station,doit/be1/B/C,srel/in/place/A/C,event/real/C)
 id  not departure(_,_,_,_),
     add message(mustknow(bus))
-ip  user:myflags(smsflag,true).
+ip  main:myflags(smsflag,true).
 
 
 whereisfirststat rule % Where is the first the bus stations
@@ -14488,9 +14491,9 @@ is  exactly (which(A),A isa Man),
     clear
 id  clear,
     add message(answer(bcpbc(Abstract)))
-ip  \+ user:myflags(teleflag,true),
-%   user:(ako/Man/Abstract),
-    user:(Man ako Abstract),
+ip  \+ main:myflags(teleflag,true),
+%   userNOTME:(ako/Man/Abstract),
+    userNOTME:(Man ako Abstract),
     \+ member(Man,[airport,god,price,bus,tram,
           route,vehicle,driver,destination,
           clock,telephone,departure,information,route_plan,
@@ -14508,7 +14511,7 @@ fbdefaultfromlerkendal  rule
 is  FB isa Airbus, {dmeq(vehicle,Airbus)},
 
    %%  flag(airbus),
-    {user:myflags(airbusflag,true)},
+    {main:myflags(airbusflag,true)},
 
     not ispresent srel/from/place/Lerk/_,  %% this is a deafult rule
 
@@ -14548,7 +14551,7 @@ ip  default_origin(flybussen,CHLK) %% NEW busdat
 fbdefaulttolerkendal  rule
 is  FB isa Airbus, {dmeq(vehicle,Airbus)},
 
-    {user:myflags(airbusflag,true)},
+    {main:myflags(airbusflag,true)},
     {default_origin(_,CHLK)},
 
     not ispresent srel/from/place/Scandic/_  when { \+ default_destination(_,Scandic)},
@@ -14584,7 +14587,7 @@ ip  []
 
 
 fbdefaultfromværnes rule %% flybuss fra  lerkendal
-is  {user:myflags(airbusflag,true)},
+is  {main:myflags(airbusflag,true)},
     ispresent FB isa Airbus, {dmeq(vehicle,Airbus)},
 
    {default_destination(_,CHLK)},
@@ -14617,7 +14620,7 @@ ip  []
 
 
 fbdefaulttoværnes rule %% flybuss fra  lerkendal
-is  {user:myflags(airbusflag,true)},
+is  {main:myflags(airbusflag,true)},
     {default_destination(_,CHLK)},
     ispresent FB isa Airbus, {dmeq(vehicle,Airbus)},
 
@@ -14742,7 +14745,7 @@ id  not flag(exit), %% Refraction
     add flag(exit),
     atdate2(_DaySeqNo,DATE),
     addfront notification(DATE,TIME)
-ip  user:set(warningtime, notification(DATE,TIME)).
+ip  main:set(warningtime, notification(DATE,TIME)).
 
 
 
@@ -14757,7 +14760,7 @@ id  not flag(exit), %% Refraction
     add flag(exit),
     atdate2(_DaySeqNo,DATE),
     addfront notification(DATE,TIME)
-ip  user:set(warningtime, notification(DATE,TIME)).
+ip  main:set(warningtime, notification(DATE,TIME)).
 
 wakeup2sick rule  %%  sick    %% You notify (me) 1245
 is  ispresent dob/notify/_/TIME/_,
@@ -14769,7 +14772,7 @@ id  not flag(exit), %% Refraction
     add flag(exit),
     atdate2(_DaySeqNo,DATE),
     addfront notification(DATE,TIME)
-ip  user:set(warningtime, notification(DATE,TIME)).
+ip  main:set(warningtime, notification(DATE,TIME)).
 
 
 wakeup2 rule  %%  Just wakeup send notification
@@ -14784,7 +14787,7 @@ id  not flag(exit), %% Refraction
     add flag(exit),
     atdate2(_DaySeqNo,DATE),
     addfront notification(DATE,TIME)
-ip  user:set(warningtime, notification(DATE,TIME)).
+ip  main:set(warningtime, notification(DATE,TIME)).
 
 
 wakeup3 rule  %% Just wakeup send notification
@@ -14799,7 +14802,7 @@ id  not flag(exit), %% Refraction
     add flag(exit),
     atdate2(_DaySeqNo,DATE),
     addfront notification(DATE,TIME)
-ip  user:set(warningtime, notification(DATE,TIME)).
+ip  main:set(warningtime, notification(DATE,TIME)).
 
 
 
@@ -15672,7 +15675,7 @@ id  not flag(exit),
     not message(mustknow(place)),
     add message(mustknow(place)),
     add flag(exit)
-ip  []. %% user:set(warningflag,false).
+ip  []. %% main:set(warningflag,false).
         %% -> comes up again by :warningflag3
 
 
@@ -15686,7 +15689,7 @@ id  not flag(exit),
     not message(mustknow(place)),
     add message(mustknow(place)),
     add flag(exit)
-ip  user:set(warningflag,false).
+ip  main:set(warningflag,false).
 
 
 istand rule %% jeg står på X -> jeg går fra X
@@ -15935,9 +15938,9 @@ id      not depset(to, _),
         ispresent keepafter(_, X, _),
         replace depset(unknown, List)
         with depset(to, List)
-ip   %%    user:myflags(dialog,1),
-        user:frame_getvalue(where::departure,_,place),
-    \+  user:frame_getvalue(where::arrival,_,place),
+ip   %%    main:myflags(dialog,1),
+        main:frame_getvalue(where::departure,_,place),
+    \+  main:frame_getvalue(where::arrival,_,place),
         varmember(X, List)
 :- double.
 

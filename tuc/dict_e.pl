@@ -5,40 +5,21 @@
 
 %% TUC Dictionary for the language E
 :-module( dict_e, [
-        compword/3,
-        ow/1,
-        cw/1, %% TA-100902 %%%%%%%%%  All the words appearing as [ ] constants in grammar
-        noisew/1,
-        noun2/2,
-        noun/1,
-        %% Replaces synonyms with inflections (Root synonyms)
-        nounsyn/2,
-        lexnsingirr/2, 
-        lexnpluirr/2,
-        noun_form/5,
-        rep_verb/1,
-        preposition/1,
-        pronoun/1,
-        pronoun/2,
-        rewording/2,
-        %% split word ahead of analysis. Not implemented ! %%
-        splitword/2,
-        synwordx/2,
-        synsms/2,
-        synword/2,
-        unwanted_interpretation/2,
-        unwanted_adjective/1,
-        unwanted_verb/1,
-        unwanted_noun/1,
-        verbroot2/2,
-        verb_form/4,
-        xcompword/3
+        compword/3,        ow/1,        cw/1, %% TA-100902 %%%%%%%%%  All the words appearing as [ ] constants in grammar
+        noisew/1,        noun2/2,        noun/1,        %% Replaces synonyms with inflections (Root synonyms)
+        nounsyn/2,        lexnsingirr/2,        lexnpluirr/2,        noun_form/5,
+        rep_verb/1,        preposition/1,        pronoun/1,        pronoun/2,
+        rewording/2,        %% split word ahead of analysis. Not implemented ! %%
+        splitword/2,        synwordx/2,        synsms/2,        synword/2,
+        unwanted_interpretation/2,        unwanted_adjective/1,
+        unwanted_verb/1,        unwanted_noun/1,        verbroot2/2,
+        verb_form/4,        xcompword/3
     ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :- use_module( morph_e, [] ).
-:- use_module( evaluate, [] ).
+:- use_module( evaluate, [ instant/2 ] ).
 :- use_module( semantic, [ (ako)/2, gradv_templ/2, particle/3 ] ).
 
 :- use_module( '../tucbuses', [ backslash/1 ] ).
@@ -287,7 +268,7 @@ unwanted_noun(second). %% confuse 2. %% TA-100909
 ow(nb(_)).
 ow(quote(_)).
 
-ow(X) :- user:instant(X,word),!.
+ow(X) :- instant(X,word),!.
 
 ow(X) :- numerid(X,_,_).
 ow(X) :- adjective2(X,_).
@@ -419,7 +400,7 @@ cw(yes). cw(you). cw(younger). cw(your). cw(yours).
 
 % synword names -> synplace  (busdat) 
 
-synwordx(X,Y):-user:myflags(smsflag,true),synsms(X,Y). 
+synwordx(X,Y):-main:myflags(smsflag,true),synsms(X,Y). 
 synwordx(X,Y):-synword(X,Y).
 
 
@@ -1024,8 +1005,8 @@ noisew('-').
 noisew('*'). 
 noisew('¨').
 noisew('#'). 
-noisew('('). %%  :- \+ user:myflags(noparentflag,true). %%  Not nec
-noisew(')'). %%  :- \+ user:myflags(noparentflag,true). 
+noisew('('). %%  :- \+ main:myflags(noparentflag,true). %%  Not nec
+noisew(')'). %%  :- \+ main:myflags(noparentflag,true). 
 noisew(',').
 noisew(';').
 noisew('¡'). 
@@ -1093,7 +1074,7 @@ noun2(N,N):-noun(N).
 
 noun(thing).
 %noun(X) :- semantic:((ako)/X/_ ),
-%noun(X) :- user:( X ako _ ),
+%noun(X) :- userNOTME:( X ako _ ),
 noun(X) :- semantic:( X ako _ ),
     \+ unwanted_noun(X). %% second %% TA-100909
 

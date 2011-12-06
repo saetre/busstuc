@@ -22,9 +22,8 @@
 %:-prolog_flag(discontiguous_warnings,_,off). 
 :-use_module(library(system)). 
 
-?- compile('declare.pl').  %% Loaded in respective modules: app, db, dialog, tagger, tuc, utility, etc.?
-:- use_module( main, [
-        user:(:=)/2,  user:(=:)/2  ]).  %% :=/2 and =:/2 exported from declare, through main, to "user:"
+%%?- compile('declare.pl').  %% Loaded in respective modules: app, db, dialog, tagger, tuc, utility, etc.? RS-111206
+:- use_module( main, [  (:=)/2  ]).  %% :=/2 is exported from declare, through main, to "userNOTME:"
 
 ?- use_module('ptbwrite.pl').%% TA-061030
 
@@ -43,23 +42,23 @@ style_check(_).
 %?- compile('utility/makeauxtables.pl'). %% From utility
 ?- use_module( 'utility/extracut', [] ).  %% TA-080201 %% RS-111204
 
-:- (user:airbusflag := false). %% NEW FLAG %% TA-090331
+:- (airbusflag := false). %% NEW FLAG %% TA-090331
 
-:- (user:busflag := true).     %% Full Bus Application 
-:- (user:queryflag := true).   %% Statements are implicit queries 
-:- (user:semantest := false).  %% No distinction between syntactic/semantic error
-:- (user:spellcheck := 1).
+:- (busflag := true).     %% Full Bus Application 
+:- (queryflag := true).   %% Statements are implicit queries 
+:- (semantest := false).  %% No distinction between syntactic/semantic error
+:- (spellcheck := 1).
 
   %?-compile('utility/extractreg.pl'). %% SUSPENDED
-  %:-(user:tramflag := true).   %% Trams are included ( Route 1 )
+  %:-(tramflag := true).   %% Trams are included ( Route 1 )
 
-  %%  :- (user:single_sentence := true). 
+  %%  :- (single_sentence := true). 
   %% DIS-Allow several sentences on a line
 
 legal_language(english).
 legal_language(norsk). %% NB not 'norwegian'
 
-language(L) :- user:language := L. %% Set dynamically
+language(L) :- language := L. %% Set dynamically
 
 dict_module(D):-language(L),dict_module(L,D).
 
@@ -76,7 +75,7 @@ script_file(S):-
     language(L),script_file(L,S).
 
 %prompt(' ') :-
-%   user:norsource := true. %% TA-110207
+%   norsource := true. %% TA-110207
 %
 prompt(P) :-
     language(L),
@@ -144,7 +143,8 @@ prompt2(norsk,'N: ').
 
 ?-
   compile('tuc/readin.pl'),       % reads text to a list
-  compile('tuc/lex.pl'),          % lexical analysis
+%  compile('tuc/lex.pl'),          % lexical analysis
+  use_module( 'tuc/lex.pl', [] ),          % lexical analysis
 
 %  compile('tuc/proxytagger'),    % disambiguator        %% TA-101010
 %  compile('tuc/proxytagrules'),   % disambiguate rules  %% -> lex/proxyclean

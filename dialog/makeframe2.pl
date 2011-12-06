@@ -53,7 +53,7 @@
 %%% %%%%%%%% RS-111118
 :- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
 
-tracevalue(X):- user:myflags(traceprog,X),!; X=1.
+tracevalue(X):- main:myflags(traceprog,X),!; X=1.
 
 returnfields rule %% TA-051030
 is  ispresent teleprocess([A,B|C],_,_,_) %% at least one (hope they are valid)

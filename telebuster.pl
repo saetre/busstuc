@@ -34,11 +34,11 @@ N: hei.
 ?- compile('busroute.pl').  %% TA-071026
 
 
-?- (user:duallangflag := true). %% telebuster is not  speech based
+?- (main:duallangflag := true). %% telebuster is not  speech based
 
-?- (user:telebusterflag := true). %% Permanent 
+?- (main:telebusterflag := true). %% Permanent 
 
-?- (user:teleflag := true).       %% Volatile %% Ad Hoc 
+?- (main:teleflag := true).       %% Volatile %% Ad Hoc 
 
-?- (user:windowsflag := false).
+?- (main:windowsflag := false).
 

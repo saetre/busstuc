@@ -14,8 +14,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% RS-111205, UNIT: /
-:- ensure_loaded( user:'../declare.pl').
-:- use_module( '../main', [  user:myflags/2, norsource_prefix/0  ] ).
+:- ensure_loaded( userNOTME:'../declare.pl').
+:- use_module( '../main', [  main:myflags/2, norsource_prefix/0  ] ).
 :- use_module( '../tucbuses', [  prompt/1  ] ).
 
 %% RS-111205, UNIT: utility/
@@ -60,7 +60,7 @@ ask_file(P) :-
    nl.
 
 write_prompt(_E):- %% TA-110207
-    user:myflags(norsource,true),
+    main:myflags(norsource,true),
     !.
 write_prompt(E):-
      write(E).
@@ -69,7 +69,7 @@ write_prompt(E):-
 %%% Miscellaneous for File Reading
 
 write_from_user(P):-
-    user:myflags(talk,1), 
+    main:myflags(talk,1), 
     !,
 %    opentalk(question),
         doing(P,0). %% out to \nat\scratch
@@ -79,7 +79,7 @@ write_from_user(_) :- !.
 
 
 write_from_file(P):- %% TA-110207
-   user:myflags(norsource,true),
+   main:myflags(norsource,true),
    !,
 
    norsource_prefix,nl, %% bloody hack %% TA-110207
@@ -142,9 +142,9 @@ initread(U):-
 
    (  member(K1,[37, 92])  % '%' '\'   %% '¤'=164
 
-   -> user:commandflag := true 
+   -> main:commandflag := true 
            ;
-      user:commandflag := false),
+      main:commandflag := false),
            
      readrest0(K1,U).
 
@@ -170,15 +170,15 @@ readrest0(T,Comline):-
 
 
 readrest(T,[]) :- T== -1, %%   EOF
-    user:end_of_file := true,
+    main:end_of_file := true,
 
     seen.  
 
 
 readrest(T,L):- %% (...) = ' ' 
     T=40,     %% ( 
-    user:myflags(noparentflag,true), %% ignore content
-    \+  user:myflags(gpsflag,true),  %% TA-110114
+    main:myflags(noparentflag,true), %% ignore content
+    \+  main:myflags(gpsflag,true),  %% TA-110114
     !,
     skipuntil(41),  %% ) including CR
     readrest(32,L). 
@@ -186,7 +186,7 @@ readrest(T,L):- %% (...) = ' '
 
 readrest(T,Rest):- 
     term_char(T),       %% termchar '.','!'.'?'
-    user:myflags(textflag,true),
+    main:myflags(textflag,true),
     !,
     get0129(Z),  %% next character (blank or not)
     !,
@@ -243,7 +243,7 @@ readrestquote(A,K1,[K1|U]):-
 
 
 to_nl:- 
-     user:myflags(textflag,true),!.
+     main:myflags(textflag,true),!.
 
 to_nl :-
    repeat,
@@ -387,8 +387,8 @@ idchar(A, alpha,  [A| C], C) :-
 
 
 idchar(A, alpha, [A| C], C) :- %%    buss5 -> BUSS 5 
-     (user:myflags(dialog,1);       %% especially context id 
-     user:myflags(commandflag,true)),  %% except for commands
+     (main:myflags(dialog,1);       %% especially context id 
+     main:myflags(commandflag,true)),  %% except for commands
      digit(A).
 
 
@@ -496,7 +496,7 @@ alphanum(K,K):-digit(K).
 alphanum(K,K):-underscore(K). 
 
 underscore(95) :- %% _  
-     user:myflags(commandflag,true). 
+     main:myflags(commandflag,true). 
 
 digsign(X):-digit(X).
 digsign(X):-sign(X).
@@ -520,7 +520,7 @@ blank_char(B):- %% NOT CR !!!!
     B==160.
 
 blank_char(95):- 
-    \+ user:myflags(commandflag,true).
+    \+ main:myflags(commandflag,true).
 
 
 blank(K) :- K =< 32; %% Including CR !
@@ -530,7 +530,7 @@ blank(K) :- K =< 32; %% Including CR !
             K=160. %% (Invisible chracter)
 
 blank(95):- 
-    \+ user:myflags(commandflag,true).
+    \+ main:myflags(commandflag,true).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -577,12 +577,12 @@ lc1(241,209). % Ñ -> ñ
 
 lc(X,Y):-  
    lc1(X,Y),
-   user:myflags(teleflag,true),
+   main:myflags(teleflag,true),
    !.
 
 lc(X,Y):- 
    lc1(_,X),
-   user:myflags(teleflag,true),
+   main:myflags(teleflag,true),
    !,
    Y=X.
 
