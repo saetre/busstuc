@@ -20,7 +20,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- use_module( '../main', [ main:myflags/2 ] ).
+:- use_module( '../main', [ myflags/2 ] ).
 :- use_module( '../tucbuses', [ backslash/1 ] ).
 
 %% RS-111205, UNIT: tuc

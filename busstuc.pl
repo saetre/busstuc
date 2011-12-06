@@ -23,7 +23,8 @@
 %                                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:-use_module( library(system) ). 
+:-use_module( library(system), [ environ/2 ] ). 
+:-use_module( library(file_systems), [] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                     %
@@ -34,7 +35,8 @@
 ?-prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates// Testing
 
 ?- %working_directory(Dir,Dir), write(Dir),nl,          %% Sicstus <= 4.1 way
-   environ('SP_STARTUP_DIR',Dir), write(Dir),nl,        %% Sicstus >= 4.2 way
+   %% Sicstus >= 4.2 way
+   environ('SP_STARTUP_DIR',Dir), write('starting dir: '), write(Dir),nl,
    [sicstus4compatibility],     %% Compatible with sicstus4, new predicates etc.
    ['tucbuss.pl'],              %% Compiles tuc/ etc.
    ['busroute.pl'],             %% Compiles database/

@@ -14,7 +14,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% RS-111205, UNIT: /
-:- use_module( 'main', [   main:myflags/2,  set/2  ] ).
+:- use_module( 'main', [   myflags/2,  set/2  ] ).
 
 % database functions, for time and days %% UNIT util
 :- use_module( 'db/topreg.pl' ).

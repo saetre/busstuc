@@ -3,7 +3,7 @@
 %% REVISED TA-110317
 
 %% Station coordinates with internal station numbers
-:- module( statcoord, [ statcoord2/5 ] ).
+:- module( statcoord2, [ statcoord2/5 ] ).
 
 statcoord2(15057011,7011,'Kristiansund h.båt',0,0).
 statcoord2(15057024,7024,'Ringholmen h.båt',0,0).

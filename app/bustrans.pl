@@ -136,7 +136,7 @@ nightbus
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                                    % single-question application
-single :- myflags(dialog,0) ;   % if dialog is 0   or
+single :-  main:myflags(dialog,0) ;   % if dialog is 0   or
 	       \+ main:myflags(dialog,_). % if dialog is undefined .
 
                                    % dialog-question application

@@ -571,7 +571,11 @@ streetstation2(Ident,_,unknown):-
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- ['../db/discrepancies.pl'].     %% Must be updated before winter
+%%%%%       :- ['../db/discrepancies.pl'].     %% Must be updated before winter
+%% RS-111206, Made module
+:- use_module( '../db/discrepancies', [ alias_station2/3 ] ).
+
+
 optional_alias2(Station,Station2):-     %% in case of period renameing
     alias_station2(_,Station,Station2), %% TA-110803
     !; Station=Station2.

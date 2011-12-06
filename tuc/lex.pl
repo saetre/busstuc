@@ -17,13 +17,13 @@
         decide_topic/0,  exmatchcompword/2,     extract_inter_pares/3,
         full_name/1,     known_name/1,          lcode1/2,          lcompword/3,
         lexcandsearch/3, lexproc3/3,            matchcomp3/3,      matchcompword/2,
-        main:maxl/1,     mix/2,                 no_unprotected_verb/0,
+        maxl/1,          mix/2,                 no_unprotected_verb/0,
         numberalfa/2,    numbernext/1,          occurs_in_txt/1,   part_word/1,
         removeunconnected/0,                    repl1/3,           spread/1,
         substreet0/2,    substreet/2,           synname0/2,        syntxt1/4,
         synw0/2,         synword/2,             target_name/1,     test_known_name/2,
-        termchar/1,      %%toredef/3, torehash/2,  %% from namehashtable
-        tsx/0,           main:txt/3,                  unconnectedtxt/2,unknown/1,
+        termchar/1,      tucsoundex/2,          %%toredef/3, torehash/2,  %% from namehashtable
+        tsx/0,           txt/3,       unconnectedtxt/2,         unknown/1,
         unknown_words/2, unproperstation1/1,    xlcompword/3  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -103,8 +103,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% used for bookkeeping of xcompword matching
-:- volatile ctxt/3, blockmark/1, main:maxl/1, main:txt/3.
-:- dynamic ctxt/3, blockmark/1, main:maxl/1, main:txt/3.
+:- volatile ctxt/3, blockmark/1, maxl/1, txt/3.
+:- dynamic ctxt/3, blockmark/1, maxl/1, txt/3.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -984,7 +984,7 @@ full_name(X):-
 %%%%%%%%%%%%%%%  LAYOUT %%%%%%%%%%%%%%%%%%
 
 spread(L):-
-    retractall(main:txt(_,_,_)),
+    retractall(txt(_,_,_)),
     retractall(ctxt(_,_,_)),
     retractall(main:maxl(_)),
     main:cursor := 0,
@@ -993,7 +993,7 @@ spread(L):-
 
 sprea(M,[X|Y]):-
     N is M+1,
-    spreall(M,X,N), %% assert(main:txt(M,X,N)),
+    spreall(M,X,N), %% assert(txt(M,X,N)),
     sprea(N,Y).
 
 sprea(N,[]):-
@@ -1001,7 +1001,7 @@ sprea(N,[]):-
 
 
 spreall(M,w(X,Z),N):-
-    for(member(U,Z),assert(main:txt(M,w(X,U),N))).
+    for(member(U,Z),assert(txt(M,w(X,U),N))).
 
 
 
@@ -1029,7 +1029,7 @@ outwx(w(H,_)):-out(H).
 
 %%%%%%%% Composite Lexical Analysis
 
-%%% main:txt is initally only elementary steps
+%%% txt is initally only elementary steps
 %   ctxt is temporarily the new texts
 %   finally they are merged
 
@@ -1057,7 +1057,7 @@ composal :-
 %%  removeunconnected, %%  john aaens vei \== aaengv
     %% not necessary ???
 %%  Jeg forstår >st< det hjalp med noe restart ang responstiden på SMS igår.
-%%    ==> main:txt(0, w(jeg,[jeg]), 1).
+%%    ==> txt(0, w(jeg,[jeg]), 1).
 %%  Destroys error message
 %% jeg forstår * st det hjalp med noe restart ang responstiden på sms igår .
 
@@ -1102,7 +1102,7 @@ bustopics(T):- %% ad hoc
                occurs_in_txt(X)),T).
 
 occurs_in_txt(D):-
-    main:txt(_,w(_,Term),_),
+    txt(_,w(_,Term),_),
 
   ( Term=noun(D,_,_,_)
     ;
@@ -1197,21 +1197,21 @@ decide_domain :-
 
 remove_confusing_stations(gb):-
     !,
-    retractall( main:txt(_, w(sentrum,name(tmn_sentrum,n,station)),_)   ).
+    retractall( txt(_, w(sentrum,name(tmn_sentrum,n,station)),_)   ).
 
 
 remove_confusing_stations(tmn):-
     !,
-    retractall( main:txt(_, w(ts,name(ts,n,neighbourhood)),_)   ),
-    retractall( main:txt(_, w(sentrum,name(sentrum,n,neighbourhood)),_)   ).
+    retractall( txt(_, w(ts,name(ts,n,neighbourhood)),_)   ),
+    retractall( txt(_, w(sentrum,name(sentrum,n,neighbourhood)),_)   ).
 
 
 remove_confusing_stations(tt):-
     !,
 
-    retractall( main:txt(_, w(sentrum,name(gb_st_olavs_gt, n,station)),_)   ),
-    retractall( main:txt(_, w(sentrum,name(tmn_sentrum,    n,station)),_)   ),
-    retractall( main:txt(_, w(tmn_sentrum,name(tmn_sentrum,n,station)),_)   ).
+    retractall( txt(_, w(sentrum,name(gb_st_olavs_gt, n,station)),_)   ),
+    retractall( txt(_, w(sentrum,name(tmn_sentrum,    n,station)),_)   ),
+    retractall( txt(_, w(tmn_sentrum,name(tmn_sentrum,n,station)),_)   ).
 % etc
 
 
@@ -1226,10 +1226,10 @@ set_of_stations_advanced(Z):-
 
 
 set_of_names_with_alts(ZZ):-
-    set_of(Name,main:txt(_, w(Name,name(_,n,station)), _),Names),
+    set_of(Name,txt(_, w(Name,name(_,n,station)), _),Names),
     set_of((N,Alts),
              (member(N,Names),
-              set_of( Alt, main:txt(_,w(N,name(Alt,n,station)), _),Alts) ),
+              set_of( Alt, txt(_,w(N,name(Alt,n,station)), _),Alts) ),
            ZZ).
 
 
@@ -1306,7 +1306,7 @@ makecompnames :-
 
 
 makecompwords :- %% Try every word
-    for( main:txt(N1,w(Lap,_TAG),_),
+    for( txt(N1,w(Lap,_TAG),_),
          matchcompword(N1,Lap)).
 
 matchcompword(N1,Lap):-
@@ -1314,14 +1314,14 @@ matchcompword(N1,Lap):-
     N2 is N1+1,
     matchcompwrest(N2,TopComputer,N3),
     lcodew(Computer,WNoun),
-    assertnewa(main:txt(N1,w(Computer,WNoun),N3)). %% first, but only new
+    assertnewa(txt(N1,w(Computer,WNoun),N3)). %% first, but only new
 
 
 make_exclusive_compwords :- %% Try every word
 
     retractall(blockmark(_)),
 
-    for(   (main:txt(N1,w(Lap,_TAG),_),\+ blockmark(N1)),
+    for(   (txt(N1,w(Lap,_TAG),_),\+ blockmark(N1)),
 
         exmatchcompword(N1,Lap)).
 
@@ -1331,25 +1331,25 @@ make_exclusive_compwords :- %% Try every word
 
 
 exmatchcompword(N1,Lap):- %% delete substituents afterwards
-    main:txt(N1,w(Lap,_),N2),  %% word is not removed earlier
+    txt(N1,w(Lap,_),N2),  %% word is not removed earlier
 
     xlcompword(Lap,TopComputer,Computer),
 
     matchcompwrest(N2,TopComputer,N3),
 
-    for( (main:txt(Alpha,W,Omega),
+    for( (txt(Alpha,W,Omega),
          (Alpha >= N1,Omega =< N3)),
 
-          (retractall(main:txt(Alpha,W,Omega)), %% all presences
+          (retractall(txt(Alpha,W,Omega)), %% all presences
            remember(blockmark(Alpha)))),         %% not to be reintroduced
 
     lcodew(Computer,WNoun),
-    assertnewa(main:txt(N1,w(Computer,WNoun),N3)).
+    assertnewa(txt(N1,w(Computer,WNoun),N3)).
 
 
 matchcompwrest(N1,[Top|Computer],N3):-
     !,
-    main:txt(N1,w(Top,_),N2),
+    txt(N1,w(Top,_),N2),
     !,
     matchcompwrest(N2,Computer,N3).
 
@@ -1375,19 +1375,19 @@ emptyclosure :- %% remove all empty edges recursively
 
 movelasttofront:-
    main:maxl(Maxl),
-   for(main:txt(M2,w([],[]),Maxl), % dont remove this
-       for(main:txt(M1,A,M2),
-          (%% retract(main:txt(M1,A,M2)),
-           asserta(main:txt(M1,A,Maxl))))). %% Should be fronted
+   for(txt(M2,w([],[]),Maxl), % dont remove this
+       for(txt(M1,A,M2),
+          (%% retract(txt(M1,A,M2)),
+           asserta(txt(M1,A,Maxl))))). %% Should be fronted
 
 % move start  towards front
 
  movefirsttoback:-
-    for(main:txt(M2,w([],[]),M3),
+    for(txt(M2,w([],[]),M3),
        (
-        for(main:txt(M3,A,M4),
-           (asserta(main:txt(M2,A,M4)))), %% Should be fronted
-          retract(main:txt(M2,w([],[]),M3))
+        for(txt(M3,A,M4),
+           (asserta(txt(M2,A,M4)))), %% Should be fronted
+          retract(txt(M2,w([],[]),M3))
        )).
 
 
@@ -1417,69 +1417,69 @@ proxyclean :- %% TA-101027
 
 
 clean1 :-  %% hans finnes gate %% TA-110114 fronted
-    main:txt(N0,w(hans,_),N1),
-    main:txt(N0, w(John_aaes_veg,name(John_aaes_veg,_,_)),N2),
+    txt(N0,w(hans,_),N1),
+    txt(N0, w(John_aaes_veg,name(John_aaes_veg,_,_)),N2),
         N2 > N1,
-        txtretract(main:txt(N0,w(hans,_),N1)).
+        txtretract(txt(N0,w(hans,_),N1)).
 
 
 clean1 :- %% Odd husbys veg \+ wrong husbys veg %% TA-110105
-    main:txt(N0, w(Odd,adj2(Wrong,nil)) ,N1),
-    main:txt(N0, w(Odd_husbys_street,name(Odd_husbys_street,n,street)), N2),
-        txtretract(main:txt(N0,w(Odd,adj2(Wrong,nil)),N1)),
+    txt(N0, w(Odd,adj2(Wrong,nil)) ,N1),
+    txt(N0, w(Odd_husbys_street,name(Odd_husbys_street,n,street)), N2),
+        txtretract(txt(N0,w(Odd,adj2(Wrong,nil)),N1)),
         N2 > N1.
 
 clean1 :- %% sig (dk) = seg | Sig berg alle %% TA-101215
-    main:txt(N0,w(sig,_),N1),
-    main:txt(N0, w(_,name(_Sig_berg_alle,_,_)),_N2),
-    txtretract(main:txt(N0,w(_,[seg]),N1)).
+    txt(N0,w(sig,_),N1),
+    txt(N0, w(_,name(_Sig_berg_alle,_,_)),_N2),
+    txtretract(txt(N0,w(_,[seg]),N1)).
 
 
  % % % single letter
 clean1 :-  %% j aaes veg \= jeg ...  p morsets veg \+ på
-    main:txt(N0,w(J,_),N1),
+    txt(N0,w(J,_),N1),
     single_letter(J), %% TA-101111
-    main:txt(N0, w(John_aaes_veg,name(John_aaes_veg,_,_)),N2),
+    txt(N0, w(John_aaes_veg,name(John_aaes_veg,_,_)),N2),
         N2 > N1, %% NB >  c.j.hambros vei
-        txtretract(main:txt(N0,w(J,_),N1)).
+        txtretract(txt(N0,w(J,_),N1)).
 
 % % %
 
 clean1 :-  %% feil retning = wrong retning %% TA-101115
-    main:txt(N0,  w(feil,adj2(wrong,nil)), N1),
-    main:txt(N1,  w(_,noun(_Retning,_,_,_)), _N2),
-        txtretract( main:txt(N0, w(feil,noun(error,sin,u,n)), N1)).
+    txt(N0,  w(feil,adj2(wrong,nil)), N1),
+    txt(N1,  w(_,noun(_Retning,_,_,_)), _N2),
+        txtretract( txt(N0, w(feil,noun(error,sin,u,n)), N1)).
 
 
 
 clean1 :-  %% k.o. thornæs \= kl 0 thornæs
-    main:txt(_N0,w(k,[k]),N1),
-    main:txt(N1,w('.',['.']),N2),
-        txtretract(main:txt(N2,  w(o,nb(0,num)), _N3)).
+    txt(_N0,w(k,[k]),N1),
+    txt(N1,w('.',['.']),N2),
+        txtretract(txt(N2,  w(o,nb(0,num)), _N3)).
 
 clean1 :- %% fra vÃ¦re til sorgenfri
-    main:txt(_1, w(_Gra,prep(_Grom)), N2),
-    main:txt(N2, w(være,name(være,n,station)), N3),
-    main:txt(N2, w(være,verb(be,inf,fin)),N3),
-        txtretract( main:txt(N2, w(_,verb(be,inf,fin)),N3)).
+    txt(_1, w(_Gra,prep(_Grom)), N2),
+    txt(N2, w(være,name(være,n,station)), N3),
+    txt(N2, w(være,verb(be,inf,fin)),N3),
+        txtretract( txt(N2, w(_,verb(be,inf,fin)),N3)).
 
 clean1 :-  %% kan jeg reise == \+ kan jeg trip
-    main:txt(N2, w(reise,verb(go,inf,fin)), N3),
-    main:txt(_1, w(Jeg,[Jeg]), N2),
+    txt(N2, w(reise,verb(go,inf,fin)), N3),
+    txt(_1, w(Jeg,[Jeg]), N2),
     testmember(Jeg,[jeg,du,han,hun,vi]),
-       txtretract( main:txt(N2, w(reise,noun(trip,sin,u,n)), N3) ).
+       txtretract( txt(N2, w(reise,noun(trip,sin,u,n)), N3) ).
 
 clean1  :- %% si det nå
-     main:txt(_,w(det, [det]), N3) ,
-        txtretract( main:txt(N3, w(nå,verb(reach,inf,fin)),_)).
+     txt(_,w(det, [det]), N3) ,
+        txtretract( txt(N3, w(nå,verb(reach,inf,fin)),_)).
 
 clean1  :- %% er nå fin=now %% TA-101117
-     main:txt(_,w(_Er,verb(_,pres,fin)), N3),
-        txtretract( main:txt(N3, w(nå,verb(reach,inf,fin)),_)).
+     txt(_,w(_Er,verb(_,pres,fin)), N3),
+        txtretract( txt(N3, w(nå,verb(reach,inf,fin)),_)).
 
 clean1 :- %% bu = buss, \= bo!
-    main:txt(N0, w(BU,verb(live,imp,fin)), N1),
-          txtretract( main:txt(N0, w(BU,verb(live,imp,fin)), N1) ).
+    txt(N0, w(BU,verb(live,imp,fin)), N1),
+          txtretract( txt(N0, w(BU,verb(live,imp,fin)), N1) ).
 
 
 %¤¤¤¤¤
@@ -1487,15 +1487,15 @@ clean1 :- %% bu = buss, \= bo!
 
 % remove subsets of station names  %% dalen removed from dalen hageby !! (Rough)
 
-%% remove main:txt(M1,..,M2) if text(M1,..,M3) and conditions are satisfied
+%% remove txt(M1,..,M2) if text(M1,..,M3) and conditions are satisfied
 
 remove_subnames :-
 
- for( (main:txt(M1, w(_,name(_,n,C1 )),M3),  %% comparison
+ for( (txt(M1, w(_,name(_,n,C1 )),M3),  %% comparison
 
      (C1==station;C1==street;C1==neighbourhood)       ),     %%  dalen_hageby  station
 
-      for( (main:txt(M1,w(Name2,name(NAME,n,C2)),M2), %% .. candidate for elimination
+      for( (txt(M1,w(Name2,name(NAME,n,C2)),M2), %% .. candidate for elimination
 
       (  (C2==station;C2==street;C2==neighbourhood;C2=city;
              C2=company;C2=man;C2=woman;C2=firstname;C2=lastname) ,
@@ -1510,41 +1510,41 @@ remove_subnames :-
 
         )),
 
-          txtretract(main:txt(M1,w(Name2,name(NAME,n,C2)),M2))
+          txtretract(txt(M1,w(Name2,name(NAME,n,C2)),M2))
 
       )
    ).
 
 remove_other_nouns :- %% rutebilstasjonen noun , also name %% TA-110223
                       %% hurtigruta     name|noun(boat)    %% TA-110614
- for( (main:txt(M1, w(RBS,name(RBS,n,Neib )),M3),   (Neib==neighbourhood;Neib==station)),
+ for( (txt(M1, w(RBS,name(RBS,n,Neib )),M3),   (Neib==neighbourhood;Neib==station)),
 
 
-      for( (main:txt(M1,w(SOL,noun(RB,Sin,Def,n)),M2), %% remove this? %% TA-110627
+      for( (txt(M1,w(SOL,noun(RB,Sin,Def,n)),M2), %% remove this? %% TA-110627
       (             %sol     %sun
 
         ( M2  =< M3 )  %% (studenter) samfundet %% TA-110627
                        %% sol siden
       )),
 
-          txtretract(main:txt(M1,w(SOL,noun(RB,Sin,Def,n)),M2)) %% TA-110627
+          txtretract(txt(M1,w(SOL,noun(RB,Sin,Def,n)),M2)) %% TA-110627
 
       )
    ).
 
 remove_other_subnames :- %% Lingit A/S >>  Lingit (Same class)
 
- for( main:txt(M1, w(_,name(_,n,C1 )),M3),
+ for( txt(M1, w(_,name(_,n,C1 )),M3),
 
 
-      for( (main:txt(M1,w(Name2,name(NAME,n,C1)),M2), %% remove this?
+      for( (txt(M1,w(Name2,name(NAME,n,C1)),M2), %% remove this?
       (
 
         ( M2  < M3 )
 
       )),
 
-          txtretract(main:txt(M1,w(Name2,name(NAME,n,C1)),M2))
+          txtretract(txt(M1,w(Name2,name(NAME,n,C1)),M2))
 
       )
    ).
@@ -1554,14 +1554,14 @@ txtretract(X) :- retractall(X),!. %% TA-101110
 txtretract(_). %% unnec
 
 remove_partnames :- %% remove now redundant  part names
-    for( (main:txt(M1,w(W,name(A,B,0)),N1),\+ generic_place(W)),
-         retract(main:txt(M1,w(W,name(A,B,0)),N1))).
-%%%      assert(main:txt(M1, w([],[]),N1))) ).       %% <--- NO
+    for( (txt(M1,w(W,name(A,B,0)),N1),\+ generic_place(W)),
+         retract(txt(M1,w(W,name(A,B,0)),N1))).
+%%%      assert(txt(M1, w([],[]),N1))) ).       %% <--- NO
 
 
 remove_streetsurp:- % Remove streetname (single) if also station/neighbourhood etc.
-     for( (main:txt(M,w(A,name(_a1,_,street)),N),main:txt(M,w(A,name(A2,_,K)),N), K \== street, \+unproperstation1(A2)),
-           retract(main:txt(M,w(A,name(_a1,_,street)),N))).
+     for( (txt(M,w(A,name(_a1,_,street)),N),txt(M,w(A,name(A2,_,K)),N), K \== street, \+unproperstation1(A2)),
+           retract(txt(M,w(A,name(_a1,_,street)),N))).
 
 %% suspended  :   error marking comes meaningless (too early)
 % når må jeg ta bussen * til heimdal sentral banestarsjon før kl 13 . 10 fra kystad ?
@@ -1578,17 +1578,17 @@ removeunconnected :-
 
 removeunconnected1 :-
 
-    for(   (main:txt(M1,w(W,NAMEABC),N1), unconnectedtxt(M1,N1)),
-           retractall(main:txt(M1,w(W,NAMEABC),N1))). %% may be more !
+    for(   (txt(M1,w(W,NAMEABC),N1), unconnectedtxt(M1,N1)),
+           retractall(txt(M1,w(W,NAMEABC),N1))). %% may be more !
 
 
-removeblanks :- %% main:txt(0, w(noe,[]), 1). %% NB Destructive
-   for(   (  (main:txt(M1, w(_W,Emp), N1),(Emp==[];Emp==['-']; Emp=n_w)),
-              main:txt(M0, Whatever, M1) )
+removeblanks :- %% txt(0, w(noe,[]), 1). %% NB Destructive
+   for(   (  (txt(M1, w(_W,Emp), N1),(Emp==[];Emp==['-']; Emp=n_w)),
+              txt(M0, Whatever, M1) )
          ,
 
-          (  retract( main:txt(M0,Whatever,M1)),
-             asserta( main:txt(M0,Whatever,N1))  %% assertz
+          (  retract( txt(M0,Whatever,M1)),
+             asserta( txt(M0,Whatever,N1))  %% assertz
           )
         ).
 
@@ -1599,14 +1599,14 @@ removedots :- \+ main:myflags(nodotflag,true),!. %% Multiple sentences , keep do
 %% Jeg skal til S. Sælands vei
 /*
 %%  prolong forwards
-removeblanks :- %% main:txt(0, w(noe,[]), 1). %% NB Destructive
-   for(   (  main:txt(M1, w(_W,[]), N1),          %% noe mat
-             main:txt(N1, Whatever, N2))
+removeblanks :- %% txt(0, w(noe,[]), 1). %% NB Destructive
+   for(   (  txt(M1, w(_W,[]), N1),          %% noe mat
+             txt(N1, Whatever, N2))
          ,
 
-          (  %% retract( main:txt(M1,w(W,[]),N1)), // shall be reused
-             retract( main:txt(N1,Whatever,N2)),
-             asserta( main:txt(M1,Whatever,N2))  %% assertz
+          (  %% retract( txt(M1,w(W,[]),N1)), // shall be reused
+             retract( txt(N1,Whatever,N2)),
+             asserta( txt(M1,Whatever,N2))  %% assertz
           )
         ).
 
@@ -1615,21 +1615,21 @@ removeblanks :- %% main:txt(0, w(noe,[]), 1). %% NB Destructive
 %%  prolong backwards
 
 removedots :- %% gløs. mot  dravoll %% NB swaps streets and neighbourhood
-   for(   (  main:txt(M1,w(W,name(Gløs,GN,Stat)),N1),
-             main:txt(N1,w('.',['.']),N2),
+   for(   (  txt(M1,w(W,name(Gløs,GN,Stat)),N1),
+             txt(N1,w('.',['.']),N2),
              \+ main:maxl(N2),  %%<- not remove the last
              testmember(Stat,[station,neighbourhood])),
           (
-             retract( main:txt(M1,w(W,name(Gløs,GN,Stat)),N1)),
-             retract( main:txt(N1,w('.',['.']),N2)),
+             retract( txt(M1,w(W,name(Gløs,GN,Stat)),N1)),
+             retract( txt(N1,w('.',['.']),N2)),
 
-             assertz( main:txt(M1,w(W,name(Gløs,GN,Stat)),N2)) %% neib,stat  < street
+             assertz( txt(M1,w(W,name(Gløs,GN,Stat)),N2)) %% neib,stat  < street
 %%                 % Last
           )).
 
 
-unconnectedtxt(M1,_N1):- M1 > 0, \+ main:txt(_,w(_,_),M1).
-unconnectedtxt(_M1,N1):- main:maxl(MAX), N1 < MAX, \+ main:txt(N1,w(_,_),_).
+unconnectedtxt(M1,_N1):- M1 > 0, \+ txt(_,w(_,_),M1).
+unconnectedtxt(_M1,N1):- main:maxl(MAX), N1 < MAX, \+ txt(N1,w(_,_),_).
 
 %  haldens is not street in itself, just a name prefix
 
@@ -1769,19 +1769,19 @@ matchcomp3(N0,P,_):- % P.  Brochs gate 20
 matchcomp2(N0):-  %% Tore Ambles -> ToreAmbles
     N1 is N0+1,
     N2 is N1+1,
-    main:txt(N0,w(_Tor,    name(Tor,n,firstname)),N1),
-    main:txt(N1,w(_ambles,name(Ambl,gen,lastname)),N2),
+    txt(N0,w(_Tor,    name(Tor,n,firstname)),N1),
+    txt(N1,w(_ambles,name(Ambl,gen,lastname)),N2),
     lookupdb2(Tor,Ambl,ToreAmble),
     moshe_class(ToreAmble,_,Class),
     assert( ctxt(N0, w(ToreAmble,name(ToreAmble,gen,Class)), N2)),
-    retract( main:txt(N0,w(Tor,_),N1)),
-    retract( main:txt(N1,w(_ambles,name(Ambl,gen,lastname)),N2)).    %%
+    retract( txt(N0,w(Tor,_),N1)),
+    retract( txt(N1,w(_ambles,name(Ambl,gen,lastname)),N2)).    %%
 
 
 matchcomp2(N0):- %% Tore Amble
     N1 is N0+1,N2 is N1+1,
-    main:txt(N0,w(_Tor,    name(Tor,n,firstname)),N1),
-    main:txt(N1,w(_Ambles,name(Ambl,gen,lastname)),N2),
+    txt(N0,w(_Tor,    name(Tor,n,firstname)),N1),
+    txt(N1,w(_Ambles,name(Ambl,gen,lastname)),N2),
     lookupdb2(Tor,Ambl,ToreAmble),
     moshe_class(ToreAmble,_,Class),
     assert(ctxt(N0, w(ToreAmble,name(ToreAmble,n,Class)), N2)).
@@ -1845,7 +1845,7 @@ matchreststreet5(_,N,[],N,_):-
 
 matchreststreet5(_,N2,[Street],_,_):- %% skip vei allowed if not "vei" follows
     streetsyn(Street), %% Street is to be matched
-    main:txt(N2, VVV,_), %% Street exists in txt
+    txt(N2, VVV,_), %% Street exists in txt
 
 (
      VVV=w(V,_),streetsyn(V)  ;
@@ -1859,12 +1859,12 @@ matchreststreet5(N0,N2,[Street],N2,true):- %% skip vei allowed if not "vei" foll
 
     (Street==street;streetsyn(Street);Street=alle),
 
- \+ main:txt(N2, w(_,[plass]),_),    %% Aleksander Kiellands plass
- \+ (main:txt(N0,w(O,_),_n2), unwanted_place(O)), %% o -> osveien
- \+ main:txt(N0,w(Vold,name(Voll,n,station)),N2), %%  vold -> voll, NOT vollgt
- \+ main:txt(N0,w(Vold,name(Voll,n,neighbourhood)),N2),
- \+ main:txt(N0,w(Reppe,name(Reppe,n,station)),_n2), %% not Reppevegen if Reppe is station
- \+ main:txt(N0,w(Reppe,name(Reppe,n,neighbourhood)),_n2).
+ \+ txt(N2, w(_,[plass]),_),    %% Aleksander Kiellands plass
+ \+ (txt(N0,w(O,_),_n2), unwanted_place(O)), %% o -> osveien
+ \+ txt(N0,w(Vold,name(Voll,n,station)),N2), %%  vold -> voll, NOT vollgt
+ \+ txt(N0,w(Vold,name(Voll,n,neighbourhood)),N2),
+ \+ txt(N0,w(Reppe,name(Reppe,n,station)),_n2), %% not Reppevegen if Reppe is station
+ \+ txt(N0,w(Reppe,name(Reppe,n,neighbourhood)),_n2).
 
 
 
@@ -1891,7 +1891,7 @@ anystreetnumberassert(N0,Ident,N1) :-
 
    !,
 
-	assertnewz(main:txt(N0,w(Ident-Num,name(Ident-Num,n,street)),N2)). %% TA-110509
+	assertnewz(txt(N0,w(Ident-Num,name(Ident-Num,n,street)),N2)). %% TA-110509
 
 %%       a!   Johan Bojers vei = Johan (Bojer)
 %%       z!  hareveien < havreveien
@@ -1904,7 +1904,7 @@ anystreetnumberassert(N0,Ident,N1) :-
 
 anystreetnumberassert(N1,Ident,_N2) :-
     Ident isa street,
-    main:txt(N1,w(_,name(Ident,_,_)),_), %% exists already <-- but not anywhere
+    txt(N1,w(_,name(Ident,_,_)),_), %% exists already <-- but not anywhere
     !.
 
 anystreetnumberassert(N1,Ident,N2) :-
@@ -1918,7 +1918,7 @@ assertstreetxt(N,Ident,N2):- %% priority Station before STREET
     set_of(C,(  classify(Ident,C), C \== street),Z),
     member(Class,Z), %% Ad Hoc, avoid stupid backtracking
 
-    assertnewz(main:txt(N, w(Ident,name(Ident,n,Class)), N2)). %% TA-110520
+    assertnewz(txt(N, w(Ident,name(Ident,n,Class)), N2)). %% TA-110520
 
     %% a!  -> bynesveien -> bryns vei ?
     %% a!  ->  hareveien -> havreveien
@@ -1932,7 +1932,7 @@ assertstreetxt(N,Ident,N2):-  %% priority Station before STREET
 
                 %% Johan Falkbergets vei , Johan = name, Falkberget gets unconnected
                 %% Johan Falkbergets vei is last, John is taken,
-      main:txt(N, w(Ident,name(Ident,n,street)), N2)).
+      txt(N, w(Ident,name(Ident,n,street)), N2)).
 
 
 
@@ -1940,54 +1940,54 @@ assertstreetxt(N,Ident,N2):-  %% priority Station before STREET
 
 monthnamenext(N):-      %%  Vikåsen 17 mai
     skip_dot(N,N1),
-    main:txt(N1,w(_Mai,name(_May,n,month)),_),
+    txt(N1,w(_Mai,name(_May,n,month)),_),
     !.
 
 monthnumbernext(N):-   %%  Vikåsen 17.5
     skip_dot(N,N1),
-    main:txt(N1,w(Nu,nb(Nu,_)),_),
+    txt(N1,w(Nu,nb(Nu,_)),_),
     Nu >=1, Nu =< 12, % nec?
     !.
 
 nameddatenext(N):-  %%     Buss 2. juledag
     skip_dot(N,N1),
-    main:txt(N1,w(_,name(XD,_,_)),_),
+    txt(N1,w(_,name(XD,_,_)),_),
     named_date(XD,_),         %%  busdat.pl
     !.
 
 
 colonnext(N):-  %% tonstadgrenda 8:13
-    main:txt(N,w(':',_),_N1).
+    txt(N,w(':',_),_N1).
 
 
 minutesnext(N):-  %% tonstadgrenda 8.13
-    main:txt(N,w('.',_),N1),
-    main:txt(N1,w(MM,nb(MM,num)),_N2),
+    txt(N,w('.',_),N1),
+    txt(N1,w(MM,nb(MM,num)),_N2),
     MM >= 0, MM < 60.
 
 
 numbernext(N):-  %% tonstadgrenda 8 13
-    main:txt(N,w(MM,nb(MM,num)),_N2).
+    txt(N,w(MM,nb(MM,num)),_N2).
 
 
 parsestreetnumber(N1,Num,N4) :-  %%  yggdrasilvn .  nr. 9
     skip_superf_street(N1,N11), %% TA-100114  garmannsvei vei 3 .
     skip_nr(N11,N2),
-    main:txt(N2,w(_N,nb(Num,_Num)),N3), %% 9a -> nb(9,alf)
+    txt(N2,w(_N,nb(Num,_Num)),N3), %% 9a -> nb(9,alf)
     Num < 500,  %%  Pragmatic test for street numbers/ not clock
     skip_letter(N3,N4).
 
 
 skip_nr(N2,N4):-
-    main:txt(N2,w(N,_),N3), testmember(N,[n,nr,nummer]),
+    txt(N2,w(N,_),N3), testmember(N,[n,nr,nummer]),
     skip_dot(N3,N4),
     !.
-%% skip_nr(N2,N3):-  main:txt(N2,w(nummer,_),N3),!. %% unnec
+%% skip_nr(N2,N3):-  txt(N2,w(nummer,_),N3),!. %% unnec
 
 skip_nr(N2,N2).
 
 skip_superf_street(N1,N11) :- %% TA-100114  (garmannsvei) vei 3
-     main:txt(N1,w(_,noun(street,sin,u,n)),N11),
+     txt(N1,w(_,noun(street,sin,u,n)),N11),
      !.
 skip_superf_street(N1,N1).
 
@@ -1998,7 +1998,7 @@ skip_superf_street(N1,N1).
 
 
 skip_letter(N3,N4):-
-    main:txt(N3,w(C,[C]),N4),
+    txt(N3,w(C,[C]),N4),
     testmember(C,[a,b,c,d,e,f,g,h,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z]),
     !.
 
@@ -2025,10 +2025,10 @@ skip_dotx(_,N1,N2):-
 
 skip_dot(N2,N2):- main:myflags(textflag,true),!.    %% !!!
 
-skip_dot(N2,N3):-main:txt(N2, w('!',['!']), N3), \+ main:maxl(N3),!.  %% TA-110116 dora ! kl. 18:15
-skip_dot(N2,N3):-main:txt(N2, w(':',[':']), N3), \+ main:maxl(N3),!.  %% St:Olav:  %% TA-100208
-skip_dot(N2,N3):-main:txt(N2, w('.',['.']), N3), \+ main:maxl(N3),!.  %% dont skip last
-skip_dot(N2,N3):-main:txt(N2, w('-',['-']), N3), \+ main:maxl(N3),!.
+skip_dot(N2,N3):-txt(N2, w('!',['!']), N3), \+ main:maxl(N3),!.  %% TA-110116 dora ! kl. 18:15
+skip_dot(N2,N3):-txt(N2, w(':',[':']), N3), \+ main:maxl(N3),!.  %% St:Olav:  %% TA-100208
+skip_dot(N2,N3):-txt(N2, w('.',['.']), N3), \+ main:maxl(N3),!.  %% dont skip last
+skip_dot(N2,N3):-txt(N2, w('-',['-']), N3), \+ main:maxl(N3),!.
 
 skip_dot(N2,N2).
 
@@ -2089,13 +2089,13 @@ cmplacebus(X,Y,Z) :-
 %%%%
 
 syntxt1(N,Vei,Veg,N1):- % strict
-    main:txt(N,Word,N1),
+    txt(N,Word,N1),
     (Word = w(Vei,name(Veg,_N_,_));  %% havstads gen ok
      Word = w(Vei,[Veg])).
 
 
 syntxt(N,Veg,N1):- %%   liberal
-    main:txt(N,Word,N1),
+    txt(N,Word,N1),
     (Word = w(Veg,_);
      Word = w(_Vei,[Veg]);
      Word = w(_Vei,name(Veg,n,_))).
@@ -2114,7 +2114,7 @@ matchsyntxt(N,Veh,N1):- %% match lexicals with hash
 
 
 assertnewtxt(M1,WWW,N1):-
-        assertnewz( main:txt(M1,WWW ,N1)). %% TA-110520
+        assertnewz( txt(M1,WWW ,N1)). %% TA-110520
      %% assertnewa NB  latecomers are spell corrected
 
 
@@ -2473,17 +2473,17 @@ unprotected_verb :-
 
 % Være = inf,fin
 
-    main:txt(X,w(_,VVV),Y), %%  <- !
+    txt(X,w(_,VVV),Y), %%  <- !
 
- \+ main:txt(X, w(_,noun(meeting,sin,u,n)), Y), %% møte %% TA-110330
+ \+ txt(X, w(_,noun(meeting,sin,u,n)), Y), %% møte %% TA-110330
 
- \+ main:txt(X, w(g,_), Y),  %% Hazardous %% dronningen g - går | byåsen v g. skole
+ \+ txt(X, w(g,_), Y),  %% Hazardous %% dronningen g - går | byåsen v g. skole
                              %% TA-110610
- \+ main:txt(X,w(_,[nå]),         Y), % nå (reach)
+ \+ txt(X,w(_,[nå]),         Y), % nå (reach)
 
- \+ main:txt(X,w(_,[når]),        Y), % når (reach)  fra kong øysteinsvei når jeg må være i byen.
+ \+ txt(X,w(_,[når]),        Y), % når (reach)  fra kong øysteinsvei når jeg må være i byen.
 
- \+ main:txt(X,w(_,[e]),          Y), % e = er %% du e dum
+ \+ txt(X,w(_,[e]),          Y), % e = er %% du e dum
                                  % til e verket*
    (
     (VVV=verb(_F,_Pastpres,_Gin)) %% bildet finnes verb(show,pres,pass)
@@ -2495,10 +2495,10 @@ unprotected_verb :-
 
  % X not preceded by
 
- \+ main:txt(_,w(_,[å]),X),
- \+ main:txt(_,w(_,[som]),X),         % that doesnt have a relpron ahead
- \+ main:txt(_,w(_,[that]),X),
- \+ main:txt(_,w(_,[which]),X).
+ \+ txt(_,w(_,[å]),X),
+ \+ txt(_,w(_,[som]),X),         % that doesnt have a relpron ahead
+ \+ txt(_,w(_,[that]),X),
+ \+ txt(_,w(_,[which]),X).
 
 
 

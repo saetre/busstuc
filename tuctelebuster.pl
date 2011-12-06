@@ -10,7 +10,7 @@
 
 %%% %%%%%%%% RS-111118
 :- ensure_loaded( 'declare' ).
-:- use_module( main, [   (:=)/2, main:myflags/2, set/2  ] ).
+:- use_module( main, [   (:=)/2, myflags/2, set/2  ] ).
 
 
 

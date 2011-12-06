@@ -7,7 +7,7 @@
 %% About non-determinicaty:
 % http://www.sics.se/sicstus/spider/site/determinacy_analyzer.html#pseudo_directive
 
-:- module( utility, [  %% (:=)/2, (=:)/2, and myflags/2 %% Permanently moved to main.pl!! RS-111204
+:- module( utility, [  %% (:=)/2, (=:)/2, and  main:myflags/2 %% Permanently moved to main.pl!! RS-111204
         myflags/1,
         absorb/3,           aggregate/3,           all/1,               ans/1,
         append_atomlist/2,  append_atoms/3,        append_bl_atoms/3,   appendfiles/3,
@@ -21,7 +21,8 @@
         firstlist1/3,       firstmem/2,            flatlist/2,          flatround/2,
         flatten/2,          fnuttify1/2,           fnuttify2/2,         follow_after/3,
         follow_sequence/3,  for/2,                 foralltest/2,        forget/1,        freshcopy/2,
-        get/1,  ident_member/2,     identical/2,           implies/2,           iso_atom_chars/2,
+        %get/1,
+        ident_member/2,     identical/2,           implies/2,           iso_atom_chars/2,
         last_character/2,   lastmem/2,             lastmems/3,          (listall)/1,     listlength/2, %% length/2  backtracks
         makacc/3,           makeacc/2,             makelistn/2,         makestring/2,
         match/2,            matchinitchars/2,      matchinitchars/3,    maximum/2,       maxval/3,
@@ -29,7 +30,8 @@
         naive/0,               newconst/1,          nreverse/2,      nthval/3,
         number_of/3,        number_to_string/2,    numbervars/1,        occ/2,           occrec/2,
         once1/1,            outputlist/1,          out/1,               output/1,        pling/1,
-        prettyprint/1,      proclaim/0,            pront/1,             psl/2,           purge/3,   put/1,
+        prettyprint/1,      proclaim/0,            pront/1,             psl/2,           purge/3,
+        %put/1,         %% Moved to sicstus4compatibility.pl
         rem_dups/3,         remember/1,            remove_duplicates1/2,% preserves order of first occurrence
         (replace)/4,        replacelist/4,         roundappend/3,       roundmember/2,
         roundrecmember/2,   roundreverse/2,        roundwrite/1,        sequence_append/3,   sequence_flatten/2,
@@ -39,7 +41,9 @@
         splitlast/3,        spyon/1,               spyoncondition/2,    startbatch/0,    starttime/0,
         starttimebatch/0,   stoptimebatch/0,       subcase/2,           subsum1/2,       subsumes/2,   % X at least as general
         sumcount/3,         tab/1,                 takebatch/0,         taketime/0,      test/1,
-        testmember/2,       textlength/2,          tryonce/1,           ttyflush/0,      union/3,   unsquare/2,
+        testmember/2,       textlength/2,          tryonce/1,           
+        %ttyflush/0,
+        union/3,   unsquare/2,
         variant/2,          writelist/1,           writenumber2/2, %% write a number with exactly N digits
         writepred/1,        writeZ/1
    ] ).
@@ -62,7 +66,8 @@
 :- use_module( library(system3), [ shell/1 ] ).
 
 :- ensure_loaded( '../declare' ).   %% Already called from main?!
-:- ensure_loaded( '../sicstus4compatibility' ).  %% Compatible with sicstus4, get0/1 etc.
+%%:- ensure_loaded( '../sicstus4compatibility' ).  %% Compatible with sicstus4, get0/1 etc.
+:- use_module( '../sicstus4compatibility', [ get0/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 %% RS-111121 UNIT: App
 :- use_module( '../app/busanshp', [ memberids/3 ] ).

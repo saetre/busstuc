@@ -12,7 +12,9 @@
 
 ?-use_module( tucbuses, [] ).   % Common File for tucbus  (english) and    tucbuss (norwegian)
 
-?-compile('version.pl').
+%% RS-111206
+:- use_module( version, [ version_date/1 ] ).
+%?-compile('version.pl').
 
 ?-compile('monobus.pl').
 
@@ -30,6 +32,6 @@
    (main:nodotflag := false),       %% Interm. dots are  retained 
    (main:tramflag := false),        %% A/S Gråkallen not OK at TEAM
    (main:parsetime_limit := 3000),  %% Fast server
-   (main:trace := 0).               %% avoid syntax trees 
+   (trace := 0).               %% avoid syntax trees 
 %%%%   (main:disablenightbus := true).  %% AD HOC %% TA-040809
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

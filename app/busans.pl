@@ -37,7 +37,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-tracevalue(L) :- myflags(traceans,L).  % Trace level 1-4    %%%%% RS-111119 :- dynamic tracevalue/1.
+tracevalue(L) :-  main:myflags(traceans,L).  % Trace level 1-4    %%%%% RS-111119 :- dynamic tracevalue/1.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

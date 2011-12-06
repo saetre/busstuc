@@ -17,7 +17,7 @@
         gps_origin/2,    %% TA-110127
         haltword/1,      hei/0,           hi/0,           ho/0,           idiotpoint/0,
         indentprint/2,   jettyrun/1,      layout2/2,      listxt/0,       logrun/0,
-        mtrprocess/1,    mtrprocessweb/1,          myflags/2, %% RS-111204 from declare.pl
+        mtrprocess/1,    mtrprocessweb/1, myflags/2,      %% RS-111204 previously dynamic in declare.pl
         norsk/0,         norsource_prefix/0,             ns/1,
         othercommand/2,  print_tql/1,     printdots/0,    printparse/1,   process_forel/1,
         processorwait/1,
@@ -53,11 +53,19 @@
 :- use_module( bustermain2, [ analyse2/2, maxl/1 ] ).      %% RS-111205, Recursive! Avoid Loops!
 
 :- use_module(    interfaceroute, [  reset_period/0  ] ).
-:- compile(       monobus ). %% // after main.pl  Unknown error
+
+%% RS-111206
+%% :- compile(       monobus ). %% // after main.pl  Unknown error
+%:- compile( monobus ). %% // after main.pl  Unknown error
+:- use_module( 'db/teledat2', [ %% instead of compile (monobus) %% RS-111206
+     teledbrowfile/1,       teledbtagfile/1  ] ).
+
 :- use_module(    ptbwrite ).           %% Module PennTreeBank
 :- use_module(    tucbuses, [  dcg_module/1,  backslash/1,
         language/1,     legal_language/1,  readfile_extension/1,   script_file/1  ] ).
-:- ensure_loaded( version ).    %% version_date/1
+%% RS-111206
+:- use_module( version, [ version_date/1 ] ).
+%:- ensure_loaded( version ).    %% version_date/1
 
 :- use_module( 'db/timedat' ).           %% Module db
 
@@ -126,35 +134,40 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% remove_duplicates  Standard  -> library
-%% Declarations of hashmap for flags, used by TUC       %main:myflags(origlanguage, norsk).
-%% made available through  module user: , as a main:module)
-%    :=/2      %    =:/2
-:-volatile  myflags/2.
-:-dynamic   myflags/2.
+%% Declarations of hashmap for flags, used by TUC
+:-volatile   main:myflags/2.
+:-dynamic    main:myflags/2.
 
-%:- assert(myflags(rune,test)).
-%:- myflags(rune,test).
+% main:myflags(origlanguage, norsk).
+(main:origlanguage := norsk).
 
-%% rune := test.
+%% Current value for hash key "X" is assigned the value +Y
+(X := Y) :-       %% Set value X to Y, :=/2 or (:=)/2
+    set(X,Y).
+
+%% Difficult to make, difficult to understand :-/
+
+%% Current value of hash key "X" is returned to variable -Y
+(X =: Y) :-       %% Set value Y from X, =:/2 or (=:)/2     
+    main:myflags(X,Y).
 
 set(Key,Value) :-
     retractall( main:myflags(Key,_) ),
     assert( main:myflags(Key, Value) ).
 
-
-(X := Y) :-       %% Set value X to Y, :=/2 or (:=)/2
-    set(X,Y).
-
-%% Difficult to make, difficult to understand :-/
-(X =: Y) :-       %% Set value Y from X, =:/2 or (=:)/2     
-    myflags(X,Y).
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 doshell :- write('$SHELL'),
 %    absolute_file_name('$SHELL', Shell),
     absolute_file_name('~/', Dir), write('dir: '),write(Dir),nl.
 %    process_create(Shell, ['-c', [ ls, ' ', file(Dir) ]]).
 
+
+%% made available through  main:module
+%:- assert( main:myflags(rune,test)).
+%:-  main:myflags(rune,test).
+%% Only for testing?? %% RS-111206
+%% rune := test.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -218,18 +231,18 @@ readscript:-
 
 readscript1(X):-
 %%%%%%%%%%%%%%%%%%%%	 assert(lastday(-1,noday)),
-    main:trace := 0,
+    trace := 0,
     erase,
 
     readfrom(X),
 
-    main:trace := 1.
+    trace := 1.
 
 
 % Default settings. May be redefined
 
 initiate :-   %% called at compiletime !
-    main:trace := 1,
+    trace := 1,
     main:maxdepth := 3,
     main:error_phase := 0,
     main:context_id := 1.
@@ -266,9 +279,9 @@ clear:-
 clear1 :-
     main:dialog := 0,
  %% Only complete queries, with defaults ( should be true/false ?)
-    main:trace := 1,
-    main:traceprog := 1,
-    main:traceans := 1,
+    trace := 1,
+    traceprog := 1,
+    traceans := 1,
 %%    main:queryflag := true,
 %%    main:textflag := false,
     main:spellcheck := 1,   %% restored after debug
@@ -305,7 +318,10 @@ run(L):-
 
 
 run :-
-%  (main:origlanguage := norsk),     %%
+    main:origlanguage := norsk,     %%
+
+    listing( main:_ ),
+    
     nl,
     seen,              %% evt. read-files
     main:dialog := 0,
@@ -331,7 +347,7 @@ webrun_norsk :-
     main:language := norsk,
     main:dialog := 0,
 
-    main:traceprog := 3, %% EXPERIMENT DEBUG
+    traceprog := 3, %% EXPERIMENT DEBUG
 
     webrun.
 
@@ -558,7 +574,7 @@ testgram:-
     spy(DCG:statreal/6),
     spy(DCG:do_phrase/10),
     spy(qev/1),
-    main:trace := 3,
+    trace := 3,
 %%     main:spellcheck := 0, %% debug makes it slow // not any longer
     main:parsetime_limit := 100000.  %% ONLY DEBUGGING
 
@@ -723,8 +739,8 @@ readfrom(F):-
     append_atoms(F,X,FE),
     main:permanence := 1,
 
-    main:trace =:  OldTrace, %% NB =:
-    main:trace := 0,
+    trace =:  OldTrace, %% NB =:
+    trace := 0,
      main:textflag := true,        %  Read from text, don't skip to new Line
                               %  destroys  kl. 1720 in batch queries
     main:queryflag =:  Oldqueryflag,%  destroys setting in startupfile
@@ -738,7 +754,7 @@ readfrom(F):-
             process(L),
             !,
     seen,
-    main:trace := OldTrace, %% TA-090203
+    trace := OldTrace, %% TA-090203
 
     main:permanence := 0,
 

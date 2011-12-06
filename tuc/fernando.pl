@@ -60,6 +60,7 @@
 :- use_module( '../utility/datecalc', [ datetime/6 ]).  %% Module util
 :- use_module( '../utility/utility', [ 
         divmod/4, subcase/2, test/1, testmember/2 ] ).
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

@@ -22,8 +22,8 @@
 %:-prolog_flag(discontiguous_warnings,_,off). 
 :-use_module(library(system)). 
 
-%%?- compile('declare.pl').  %% Loaded in respective modules: app, db, dialog, tagger, tuc, utility, etc.? RS-111206
-:- use_module( main, [  (:=)/2  ]).  %% :=/2 is exported from declare, through main, to "userNOTME:"
+%:- use_module( main, [  (:=)/2, set/2  ]).  %% :=/2 is exported from declare, through main, to "userNOTME:"
+:- use_module( main, [  (:=)/2, myflags/2  ]).  %% :=/2 is exported from declare, through main, to "userNOTME:"
 
 ?- use_module('ptbwrite.pl').%% TA-061030
 
@@ -42,12 +42,17 @@ style_check(_).
 %?- compile('utility/makeauxtables.pl'). %% From utility
 ?- use_module( 'utility/extracut', [] ).  %% TA-080201 %% RS-111204
 
-:- (airbusflag := false). %% NEW FLAG %% TA-090331
-
-:- (busflag := true).     %% Full Bus Application 
-:- (queryflag := true).   %% Statements are implicit queries 
-:- (semantest := false).  %% No distinction between syntactic/semantic error
-:- (spellcheck := 1).
+:- airbusflag := false. %% NEW FLAG %% TA-090331
+:- busflag := true.     %% Full Bus Application 
+:- queryflag := true.   %% Statements are implicit queries 
+:- semantest := false.  %% No distinction between syntactic/semantic error
+:- spellcheck := 1.
+%
+%:- set(airbusflag, false). %% NEW FLAG %% TA-090331
+%:- set(busflag, true).     %% Full Bus Application 
+%:- set(queryflag, true).   %% Statements are implicit queries 
+%:- set(semantest, false).  %% No distinction between syntactic/semantic error
+%:- set(spellcheck, 1).
 
   %?-compile('utility/extractreg.pl'). %% SUSPENDED
   %:-(tramflag := true).   %% Trams are included ( Route 1 )
@@ -58,7 +63,7 @@ style_check(_).
 legal_language(english).
 legal_language(norsk). %% NB not 'norwegian'
 
-language(L) :- language := L. %% Set dynamically
+language(L) :-  main:myflags(language, L). %% Set dynamically %% Same as " language =: L "
 
 dict_module(D):-language(L),dict_module(L,D).
 

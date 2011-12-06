@@ -8,8 +8,9 @@
 
 :- module( library, [ intersection/3, (not)/1, nth/3, remove_duplicates/2, reverse/2 ]).
 
-:- ['../declare'].
-not X :- \+ X.
+%% :- ['../declare'].
+:-op( 715, fy, not ).   %% from gram_ %% Redefined her instead... RS-111206
+(not X) :- \+ X.
 
 %% once(P):- P,!. %% THIS IS BUILT-IN   Sicstus 3.8  %% TA-000414  
 %% Gives warning message  in 3.8 ++ 

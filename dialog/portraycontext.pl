@@ -34,7 +34,7 @@ pcon0 :- saved_context(Cid,_Cur,X),  %% ad hoc utility %% TA-041215
  
 
 printcontext :-               %% TA-060126
-    myflags(contextflag,true),
+     main:myflags(contextflag,true),
     !,
     printcontext1
 ;
@@ -157,7 +157,7 @@ printslot(N,X):-
 %% TA-041215
 
 pcontext :-
-    myflags(contextflag,true),
+     main:myflags(contextflag,true),
     !,
     pcon0,
     !
@@ -166,7 +166,7 @@ pcontext :-
 
 	
 printdialogtree(L):-
-    myflags(traceprog,N),N > 1, %% TA-051005
+     main:myflags(traceprog,N),N > 1, %% TA-051005
     !,
     nl,
     output('*** Dialog tree *** '),nl,

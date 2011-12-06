@@ -11,7 +11,9 @@
 
 ?-use_module( tucbuses, [] ).   % Common File for tucbus  (english) and    tucbuss (norwegian)
 
-?-compile('version.pl'). %% TA-031117
+%% RS-111206
+:- use_module( version, [ version_date/1 ] ).
+%?-compile('version.pl'). %% TA-031117
 
 ?-compile('monobus.pl'). %% TA-031115
 
@@ -28,7 +30,7 @@
    (main:tramflag := false),         %% They don't like A/S Gråkallen
    (main:nodotflag := true),         %% Readymade Q: Når går bussen fra ....
    (main:parsetime_limit := 10000),  %% 333 Mhz
-   (main:trace := 0).                %% avoid syntax trees
+   (trace := 0).                %% avoid syntax trees
 %%    (main:disablenightbus := true).  %% AD HOC %% TA-040809
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

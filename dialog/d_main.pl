@@ -97,7 +97,7 @@
 %
 %    reset_period,  %% !"#¤%&/()=?\`@£$[]}+´
 %
-%    main:trace := 1,
+%    trace := 1,
 %
 %    main:contextflag := true, %% TA-060127
 %
