@@ -83,7 +83,7 @@
 %:- ['datecalc'].   %% Already called from main
 
 
-%main:X := Y :-       %% Set value X to Y
+%X := Y :-       %% Set value X to Y
 %    main:set(X,Y).
 %
 %main:X =:  Y :-       %% Set value Y from X
@@ -176,7 +176,7 @@ starttimebatch :- %% TA-100111
 
 startbatch :- 
     statistics(runtime,[T,_]),
-    main:batchstart := T.
+    batchstart := T.
 
 stoptimebatch :-  %% TA-100111
    takebatch.
@@ -536,10 +536,10 @@ do_count(F):-
     main:F =:  M,
     !,
     N is M+1,
-    main:F := N.
+    F := N.
 
 do_count(F):- 
-    main:F := 1 . 
+    F := 1 . 
 
 begins_with(AS,A,S):- 
     atom(AS),
@@ -682,7 +682,7 @@ identical(A,B):-
 
 
 newconst(Y):- 
-    do_count(const), % main:const := const+1
+    do_count(const), % const := const+1
     main:const =:  Y.
 
 

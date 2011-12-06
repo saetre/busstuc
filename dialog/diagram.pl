@@ -12,13 +12,13 @@ tb_from
 %% Common Dialog Grammar for bus and tele
 
 
-% main:Dialog := UserQs
+% Dialog := UserQs
 gram(dialog, [
         [sub(userQs), item(dialogerror), sub(dialog)]
         ],
         []).
 
-% main:UserQs := UserQ UserQs
+% UserQs := UserQ UserQs
 %         | []
 gram(userQs, [
         [sub(userQ), sub(userQs)],
@@ -26,7 +26,7 @@ gram(userQs, [
         ],
         []).
 
-% main:UserQ := uiq, UiqRepl
+% UserQ := uiq, UiqRepl
 %        | uin, UiqRepl %% TA-050719 (was UinRepl)
 %        | []
 gram(userQ, [
@@ -35,7 +35,7 @@ gram(userQ, [
         ],
         []).
 
-% main:UiqRepl := sant
+% UiqRepl := sant
 %          | Askrefs, Askfors, UiqRepl2
 gram(uiqRepl, [
         [item(sant)],
@@ -54,7 +54,7 @@ gram(uiqRepl2, [
         []).
 
 
-% main:Askrefs := Askref Askrefs
+% Askrefs := Askref Askrefs
 %          | []
 gram(askrefs, [
         [sub(askref), sub(askrefs)],
@@ -62,13 +62,13 @@ gram(askrefs, [
         ],
         [queryUp]).
 
-% main:Askref := sqd, SqdRepl
+% Askref := sqd, SqdRepl
 gram(askref, [
         [item(sqd), sub(sqdRepl)]
         ],
         [queryUp]).
 
-% main:SqdRepl := uadi
+% SqdRepl := uadi
 %         | uadm
 %         | uadn
 %         | uadq
@@ -81,7 +81,7 @@ gram(sqdRepl,[
         [queryUp]).
 
 
-% main:Askfors := Askfor Askfors
+% Askfors := Askfor Askfors
 %          | []
 gram(askfors, [
         [sub(askfor), sub(askfors)],
@@ -89,13 +89,13 @@ gram(askfors, [
         ],
         []).
 
-% main:Askfor := sqt, UserQs, SqtRepl
+% Askfor := sqt, UserQs, SqtRepl
 gram(askfor, [
         [item(sqt), sub(userQs), sub(sqtRepl)]
         ],
         []).
 
-% main:SqtRepl := uati
+% SqtRepl := uati
 %         | uatm
 %         | uatn
 %	  | uatg
@@ -109,7 +109,7 @@ gram(sqtRepl,[
         ],
         []).
 
-% main:Modify := uim, UiqRepl
+% Modify := uim, UiqRepl
 %         | []
 gram(modify,[
         [item(uim), sub(uiqRepl)],
@@ -120,7 +120,7 @@ gram(modify,[
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% main:Tb_start := tbs_welcomegreeting, tbs_welcomequestion, Tb_start2 
+% Tb_start := tbs_welcomegreeting, tbs_welcomequestion, Tb_start2 
 %        | []
 gram(tb_start, [
 	[item(say(tbs_welcomegreeting)), item(sayq(tbs_welcomequestion)), sub(tb_start2)],
@@ -138,7 +138,7 @@ gram(tb_start2, [
 	],
 	[]).
 
-% main:Tb_from := tbs_fromwhere, Tb_from2
+% Tb_from := tbs_fromwhere, Tb_from2
 %          | []
 gram(tb_from, [
 	[item(tbs_fromwhere), sub(tb_from2)],

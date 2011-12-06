@@ -15,10 +15,11 @@
         webstat/3,     writeanswer/1,    writeprog/1
    ] ).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% %%%%%%%% RS-111118
 %% RS-111205, UNIT: /
 :- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
-:- use_module( '../main', [ printdots/0, set/2 ] ).
+:- use_module( '../main', [ (:=)/2, printdots/0, set/2 ] ).
 :- use_module( '../interfaceroute', [  search_period_module/3  ] ).
 
 :-volatile webstat/3.
@@ -105,21 +106,21 @@ determine_query_period :-
      
     veh_mod(H),
 
-    (H=r1617_100621 -> main:query_period := team;
-     H=r1611_100823 -> main:query_period := atb;
-     main:query_period := nil).
+    (H=r1617_100621 -> query_period := team;
+     H=r1611_100823 -> query_period := atb;
+     query_period := nil).
 
 determine_application_period([_:::TQL]):-
     veh_mod(H),
     (sequence_member(date(A,B,C) isa date,TQL) -> %% date occurs
         search_period_module(tt,date(A,B,C),_J) ; _J=H),
      !,
-    (H=r1617_100621 -> main:application_period := team;
-     H=r1611_100823 -> main:application_period := atb;
-     main:application_period := nil).
+    (H=r1617_100621 -> application_period := team;
+     H=r1611_100823 -> application_period := atb;
+     application_period := nil).
 
 determine_application_period(_):-
-    main:application_period := nil.
+    application_period := nil.
 
 %いいいいいいいいいいいいいいいいいいい
 

@@ -121,21 +121,21 @@ decide_period(DateInQuestion,ThePeriod):-
     main:myflags(actual_domain,TT), 
     search_period_module(TT,DateInQuestion,ThePeriod),
     !,
-    set(actual_period, ThePeriod). % main:actual_period := ThePeriod
+    set(actual_period, ThePeriod). % actual_period := ThePeriod
 
 decide_period(DateInQuestion,CurrentPeriod):- %% Same date => Period = current period
     main:myflags(actual_domain,TT), 
     todaysdate(DateInQuestion), 
     !,
     thisdate_period_module(TT,_,CurrentPeriod),         
-    set(actual_period, CurrentPeriod). % main:actual_period := CurrentPeriod. 
+    set(actual_period, CurrentPeriod). % actual_period := CurrentPeriod. 
 
 decide_period(DateInQuestion,ActualPeriod):- 
     main:myflags(actual_domain,TT),
     current_period(TT,ActualPeriod,Date1,Date2),            %% Extra Check
     on_valid_period(DateInQuestion,Date1,Date2),    %% utility/datecalc
     !,
-    set(actual_period, ActualPeriod). %   main:actual_period := ActualPeriod.    %% This is the Period in the Question
+    set(actual_period, ActualPeriod). %   actual_period := ActualPeriod.    %% This is the Period in the Question
 
 decide_period(DateInQuestion,NextPeriod):- 
     main:myflags(actual_domain,TT),  
@@ -143,12 +143,12 @@ decide_period(DateInQuestion,NextPeriod):-
     off_valid_period(DateInQuestion,Date1,Date2),    %% utility/datecalc
     search_period_module(TT,DateInQuestion,NextPeriod),
     !,
-    set(actual_period, NextPeriod). % main:actual_period := NextPeriod. %% This is the Period in Question
+    set(actual_period, NextPeriod). % actual_period := NextPeriod. %% This is the Period in Question
 
 decide_period(_,Nil):-
     !,
     Nil= nil, %% Bloody Trap %% TA-060101
-    set(actual_period,nil).  %% main:actual_period := nil.   
+    set(actual_period,nil).  %% actual_period := nil.   
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

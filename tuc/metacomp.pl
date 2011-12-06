@@ -59,7 +59,7 @@
 
 segram:- %% short %% noursource facilities %% TA-100207
     nodebug, 
-    main:norsource := true,
+    norsource := true,
     consult(gramn),
     makegram.
 

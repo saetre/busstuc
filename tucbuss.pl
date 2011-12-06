@@ -14,28 +14,28 @@
 
 ?-use_module( 'version.pl', [] ).
 
-?-use_module( 'main.pl', [ run/0 ] ).
+?-use_module( 'main.pl', [ (:=)/2, run/0 ] ).
 %?-ensure_loaded( 'main.pl' ).
 
 ?-compile('monobus.pl'). %% // after main.pl  Unknown error
 
-?-((main:gpsflag := true),          %% NB TEST VERSION, NTNU Server
-  (main:smsflag := false),          %%  NB NTNU server
-%%(main:internal_airbusflag := true), %% TA-101101 // No. Included pro forma
-  (main:origlanguage := norsk),     %%
-  (main:language := norsk),         %% Initial default user language
-  (main:actual_domain := tt),       %% TA-110301
-  (main:smspermanentflag := false), %% only web
-  (main:unix_language := eng),      %% Standard for IDI/NTNU UNIX Solaris )
-  (main:duallangflag := true),      %% Also try English if unknown words
-  (main:noparentflag := true),      %% Ignore content of parentheses
-  (main:nodotflag := false),        %% Intermediate dots are retained
-%%(main:nodotflag := true),         %% Interm. dots are  removed
-  (main:tramflag := false),         %% A/S Gråkallen not OK at TEAM, OK at NTNU
-  (main:mapflag := false),         %% dont show MAP trace
-  (main:parsetime_limit := 10000)).  %% slower server %%  benchmark
-%%(main:disablenightbus := true).   %% AD HOC !!!!!!!!!!!
-%%(main:notimeoutflag := true),
+?- (gpsflag := true),          %% NB TEST VERSION, NTNU Server
+   (smsflag := false),          %%  NB NTNU server
+%% (internal_airbusflag := true), %% TA-101101 // No. Included pro forma
+   (origlanguage := norsk),     %%
+   (language := norsk),         %% Initial default user language
+   (actual_domain := tt),       %% TA-110301
+   (smspermanentflag := false), %% only web
+   (unix_language := eng),      %% Standard for IDI/NTNU UNIX Solaris )
+   (duallangflag := true),      %% Also try English if unknown words
+   (noparentflag := true),      %% Ignore content of parentheses
+   (nodotflag := false),        %% Intermediate dots are retained
+%% (nodotflag := true),         %% Interm. dots are  removed
+   (tramflag := false),         %% A/S Gråkallen not OK at TEAM, OK at NTNU
+   (mapflag := false),         %% dont show MAP trace
+   (parsetime_limit := 10000).  %% slower server %%  benchmark
+%% (disablenightbus := true).   %% AD HOC !!!!!!!!!!!
+%% (notimeoutflag := true),
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

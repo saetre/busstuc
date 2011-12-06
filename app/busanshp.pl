@@ -927,7 +927,7 @@ justoutputthelist(Deps,DirPlace,Out,Opts,DESTMAP):-
 
     getdeptime(Dep,Firstdeparturetime),
     addrefdialog(firstdeparturetime,Firstdeparturetime),
-    main:firstdeparturetime := Firstdeparturetime, %% Moved to firstdepnotice
+    firstdeparturetime := Firstdeparturetime, %% Moved to firstdepnotice
 
     justoutputthelist0(Deps,DirPlace,Out,Opts,DESTMAP). %% no warning 
 
@@ -1057,7 +1057,7 @@ firstdepnotice(Dep):-
 
     getdeptime(Dep,Firstdeparturetime), 
     addrefdialog(firstdeparturetime,Firstdeparturetime),
-    main:firstdeparturetime := Firstdeparturetime, 
+    firstdeparturetime := Firstdeparturetime, 
 
     ((main:myflags(warningflag,true),main:myflags(smsflag,true)) ->
         (deptimeofwarning(Dep,Date,Time),
@@ -1868,8 +1868,8 @@ outfromtocorr1(_Opts,Dep,OutDep1,Mid01,(OutDep2,earliesttimes),corr(Dep,Mid01)):
     vehicletype(StartBusN,Bust1), 
     vehicletype(EndBusN,Bust2), 
 
-   main:firstdeparturetime := StartTime, %% AD HOC
-   main:lastarrivaltime := EndTime,
+   firstdeparturetime := StartTime, %% AD HOC
+   lastarrivaltime := EndTime,
 
    difftime( OffTime,StartTime,Duration1),
 

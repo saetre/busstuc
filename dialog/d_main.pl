@@ -24,16 +24,16 @@
 
 %dialog2 :-                                     %%AM-980301
 %
-%%%    main:language := norsk, %% TA-060307
+%%%    language := norsk, %% TA-060307
 %
-%   main:dialog := 1,    %% Disable defaults. 
+%   dialog := 1,    %% Disable defaults. 
 %
-%   main:world := real, %% TA-021027
+%   world := real, %% TA-021027
 %
 %	ask_user( Q ),
 %
-%   main:contextid := myid,   
-%   main:location := trondheim,   
+%   contextid := myid,   
+%   location := trondheim,   
 %
 %	processinput( Q ), %% d_dialogue.pl
 %
@@ -50,15 +50,15 @@
 %
 %webrun_dialog :- !, 
 %
-%   main:contextflag := true, %%% <--- Dialog context shown if Teknisk info
+%   contextflag := true, %%% <--- Dialog context shown if Teknisk info
 %
 %	writepid, 
 %	nofileerrors,
-%	main:busflag := true,    %% Bustuc Application Program
-%	main:queryflag := true, %% Statements are implicit queries 
-%   main:dialog := 1,       
-%   main:world := real,   
-%   main:warningflag := false, %% if applicable 
+%	busflag := true,    %% Bustuc Application Program
+%	queryflag := true, %% Statements are implicit queries 
+%   dialog := 1,       
+%   world := real,   
+%   warningflag := false, %% if applicable 
 %
 %  repeat,              %% TA-050723
 %       resetsmsflag, 
@@ -99,11 +99,11 @@
 %
 %    trace := 1,
 %
-%    main:contextflag := true, %% TA-060127
+%    contextflag := true, %% TA-060127
 %
-%	 main:directflag := true,
-%    main:directinputfile := InputFile,
-%    main:directoutputfile := OutputFile,
+%	 directflag := true,
+%    directinputfile := InputFile,
+%    directoutputfile := OutputFile,
 %
 %    closefile(InputFile), 
 %    closefile(OutputFile), 
@@ -119,7 +119,7 @@
 %       d_language(L,Q), 
 %       (processinput(Q);true),
 %
-%      main:directflag := false.
+%      directflag := false.
 %
 %
 
@@ -138,34 +138,34 @@ HIDDEN  contextid
 
 %d_language([Lang,Contextid|Quest],Quest):- %% TA-050805
 %   !,   
-%   main:contextid := Contextid,
+%   contextid := Contextid,
 %
 %  (Lang=eng -> Language=english;
 %   Lang=nor -> Language=norsk;
 %               Language=norsk),
 %					
 %
-%   main:origlanguage := Language, 
-%   main:language := Language.
+%   origlanguage := Language, 
+%   language := Language.
 %
 %
 %
 %
 %d_language([eng|T],T) :-
 %	!,
-%	(main:origlanguage := english),
-%	(main:language := english). 
+%	(origlanguage := english),
+%	(language := english). 
 %
 %d_language([nor|T],T) :- %% no -> nor
 %	!,
-%	(main:origlanguage := norsk),
-%	(main:language := norsk).
+%	(origlanguage := norsk),
+%	(language := norsk).
 %
 %%% Just in case anyone tries to crash the server.
 %d_language(T,T):-
 %   !,
-% 	(main:origlanguage := norsk),
-%	(main:language := norsk).   
+% 	(origlanguage := norsk),
+%	(language := norsk).   
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

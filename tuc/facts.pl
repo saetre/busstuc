@@ -14,7 +14,7 @@
 %  Facts are deliberately kept separate from semantics
 
 :- ensure_loaded( '../declare' ).
-%:- use_module( '../main', [] ).
+:- use_module( '../main', [ myflags/2 ] ).
 
 %% RS-111205, UNIT: tuc/
 :- use_module( evaluate, [ fact/1 ] ).
@@ -66,7 +66,7 @@ have(_,subject,X,Y):-
 have(_,object,X,Y):-
    tv_templ(X,_,Y).
 
-%% have(team,stadium,brann,brann_stadion). %% Eksempel //main:deflag := true.
+%% have(team,stadium,brann,brann_stadion). %% Eksempel //deflag := true.
 
 /* SUSPENDED %% TA-100335
 

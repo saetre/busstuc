@@ -21,17 +21,17 @@
 %?-compile('main.pl').  %?-ensure_loaded( 'main.pl' ).
 ?-use_module( 'main.pl', [ (:=)/2 ] ).
 
-?- (main:internal_aitbusflag := false), %% NB May change <--- ???
-%%%%   (main:smspermanentflag := true),  %% SUSPENDED/NOT USED %% 
-%%%%   (main:smsflag := true), %% ONLY IF PROPER SMS %% TA-110407
-   (main:unix_language := eng),     %% Standard for IDI/NTNU UNIX Solaris )
-   (main:origlanguage := norsk),    %%
-   (main:language := norsk),        %% Initial default user language  
-   (main:duallangflag := true),     %% Also try English if unknown words
-   (main:noparentflag := true),     %% Ignore content of parentheses
-   (main:nodotflag := false),       %% Interm. dots are  retained 
-   (main:tramflag := false),        %% A/S Gråkallen not OK at TEAM
-   (main:parsetime_limit := 3000),  %% Fast server
+?- (internal_aitbusflag := false), %% NB May change <--- ???
+%%%%   (smspermanentflag := true),  %% SUSPENDED/NOT USED %% 
+%%%%   (smsflag := true), %% ONLY IF PROPER SMS %% TA-110407
+   (unix_language := eng),     %% Standard for IDI/NTNU UNIX Solaris )
+   (origlanguage := norsk),    %%
+   (language := norsk),        %% Initial default user language  
+   (duallangflag := true),     %% Also try English if unknown words
+   (noparentflag := true),     %% Ignore content of parentheses
+   (nodotflag := false),       %% Interm. dots are  retained 
+   (tramflag := false),        %% A/S Gråkallen not OK at TEAM
+   (parsetime_limit := 3000),  %% Fast server
    (trace := 0).               %% avoid syntax trees 
-%%%%   (main:disablenightbus := true).  %% AD HOC %% TA-040809
+%%%%   (disablenightbus := true).  %% AD HOC %% TA-040809
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
