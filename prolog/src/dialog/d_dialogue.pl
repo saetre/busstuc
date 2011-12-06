@@ -23,7 +23,7 @@
 
 
 %dialog :- 
-%   main:dialog := 1, 
+%   dialog := 1, 
 %   reset_period,
 %   reset_context,
 %   dialog2.
@@ -34,9 +34,9 @@
 %
 %processinput(Q) :-                     %%AM-980301
 %	
-%   main:dialog := 1,
-%	main:error_phase := 0,
-%   main:nightbusflag := false,   %% ad hoc, must be reset %% TA-060706
+%   dialog := 1,
+%	error_phase := 0,
+%   nightbusflag := false,   %% ad hoc, must be reset %% TA-060706
 %	translate2(Q,TQL),
 %	nl,
 %

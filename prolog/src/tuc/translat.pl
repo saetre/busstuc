@@ -51,7 +51,7 @@ clausifystm( JLM ):-
     clausify(X,Y,[],JLM,CLAUSELIST),
     number(Y),
     writeconjuncts(CLAUSELIST,true),
-    main:skolocon := Y. 
+    skolocon := Y. 
                    
 
 clausify(X,Y,L,P,R):- 
@@ -792,7 +792,7 @@ superbeat(X,Z):-      member(X,Z), \+  (X = (not _Y)).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 newskolem(Y):-  
-    do_count(skolocon), % main:skolocon := skolocon + 1
+    do_count(skolocon), % skolocon := skolocon + 1
     main:skolocon =:  Y.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

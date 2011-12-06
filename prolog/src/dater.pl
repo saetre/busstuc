@@ -14,14 +14,14 @@
 %
 %:-compile('tucbuster.pl').  
 %
-%?- (main:duallangflag := false).      %% speech based
+%?- (duallangflag := false).      %% speech based
 %
-%?- (main:telebusterflag := false). %% Permanent
+%?- (telebusterflag := false). %% Permanent
 %
-%?- (main:daterflag := true).       %% Permanent %% TA-061130
+%?- (daterflag := true).       %% Permanent %% TA-061130
 %
-%?- (main:teleflag := true).       %% Volatile %% Ad Hoc 
+%?- (teleflag := true).       %% Volatile %% Ad Hoc 
 %
-%?- (main:busflag := false).       
+%?- (busflag := false).       
 %
-%?- (main:windowsflag := false).
+%?- (windowsflag := false).

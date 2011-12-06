@@ -22,15 +22,15 @@
 %?-ensure_loaded( 'main.pl' ).
 
 
-?- (main:unix_language := eng),      %% Standard for IDI/NTNU UNIX Solaris 
-   (main:origlanguage := norsk),     %% TA-040626 
-   (main:language := norsk),         %% Initial default user language  
-   (main:duallangflag := true),      %% Also try English if unknown words
-   (main:noparentflag := true),      %% Ignore content of parentheses
-   (main:tramflag := false),         %% They don't like A/S Gråkallen
-   (main:nodotflag := true),         %% Readymade Q: Når går bussen fra ....
-   (main:parsetime_limit := 10000),  %% 333 Mhz
+?- (unix_language := eng),      %% Standard for IDI/NTNU UNIX Solaris 
+   (origlanguage := norsk),     %% TA-040626 
+   (language := norsk),         %% Initial default user language  
+   (duallangflag := true),      %% Also try English if unknown words
+   (noparentflag := true),      %% Ignore content of parentheses
+   (tramflag := false),         %% They don't like A/S Gråkallen
+   (nodotflag := true),         %% Readymade Q: Når går bussen fra ....
+   (parsetime_limit := 10000),  %% 333 Mhz
    (trace := 0).                %% avoid syntax trees
-%%    (main:disablenightbus := true).  %% AD HOC %% TA-040809
+%%    (disablenightbus := true).  %% AD HOC %% TA-040809
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -8,7 +8,7 @@
 
 % Compiles the tele files
 
-?-compile('xmlparser.pl').  
+?- use_module( 'xmlparser.pl', [] ).  
 
 ?-compile('getphonedir.pl').
 

@@ -19,7 +19,7 @@
         (sp)/1,         splitlang/2,    (spyg)/1,       (spyr)/1,       statistics/1,
         status/0,       stopcommand/2,  testgram/0,     traceprint/2,   track/2,     trackprog/2,
         timeout/3,      trytellans/0,   tuc/0,          txt/3,      % elementary words
-        update_tags/1,  webrun/0,       write_taggercall/1,             writelog/1,
+        update_compnames/1, update_tags/1,  webrun/0,       write_taggercall/1,             writelog/1,
         webrun_english/0,               webrun_norsk/0,
         
         %% From getphonedir.pl
@@ -111,10 +111,10 @@ break(_). %% dummy for breakpoints
 %crash :- tore_amble_is_a_genious.  %% test on undefined predicate
 
 spyg X :- dcg_module(L), 
-          main:parsetime_limit := 100000, %%  ONLY FOR DEBUGGING
+          parsetime_limit := 100000, %%  ONLY FOR DEBUGGING
           spy L:X. %% utility
 
-spyr X :- main:debugrule := X,
+spyr X :- debugrule := X,
           spy spy_me.
 
 sp X :- functor(X,F,_),spy F,X.  %% call X with spy on X 
@@ -151,7 +151,7 @@ readscript1(X):-
 
     readfrom(X),
 
-    main:skolocon =:  SM, main:skolemax := SM,   
+    main:skolocon =:  SM, skolemax := SM,   
 
     trace := 1.
 
@@ -160,11 +160,11 @@ readscript1(X):-
 
 initiate :-   %% called at compiletime !  
     trace := 0,   %% Dialog 
-    main:maxdepth := 3,   
-    main:error_phase := 0,
-    main:context_id := 1,
+    maxdepth := 3,   
+    error_phase := 0,
+    context_id := 1,
 
-    main:parsetime_limit := 10000. %% TA-071026
+    parsetime_limit := 10000. %% TA-071026
 
 
 tuc:-        
@@ -184,7 +184,7 @@ restart:-
 
 erase:-
     retractall(fact0(_)),  % Semipermanent facts
-    main:skolemax := 0,  
+    skolemax := 0,  
     reset.
 
 clear:- 
@@ -193,20 +193,20 @@ clear:-
     clear1.
 
 clear1 :-
-    main:dialog := 0, 
+    dialog := 0, 
  %% Only complete queries, with defaults ( should be true/false ?)
     trace := 0,  %% Dialog
     traceprog := 1, 
     traceans := 1,
-%%    main:queryflag := true, 
-%%    main:textflag := false,
-    main:spellcheck := 1,   %% restored after debug 
+%%    queryflag := true, 
+%%    textflag := false,
+    spellcheck := 1,   %% restored after debug 
     closereadfile,       
     reset.
 
 begin :-
     reset,
-    main:permanence := 1,
+    permanence := 1,
     nl.
 
 quit:- 
@@ -214,38 +214,38 @@ quit:-
     !,
     retractall(difact(_,_)),   %% Only Dynamic Facts 
 %    retractall((_ => _)),
-    main:lemmas_proved := 0,  %%
-    main:interp := 0,         %%
-    (main:skolemax =:  SZ -> main:skolocon := SZ; main:skolocon := 0), 
-    main:const := 0. %,    quit_dialog. %% <----  without reply
+    lemmas_proved := 0,  %%
+    interp := 0,         %%
+    (main:skolemax =:  SZ -> skolocon := SZ; skolocon := 0), 
+    const := 0. %,    quit_dialog. %% <----  without reply
 
 reset:-  
     retractall(difact(_,_)),   %% Only Dynamic Facts 
 %    retractall((_ => _)),
-    main:lemmas_proved := 0,  %%
-    main:interp := 0,         %%
-    (main:skolemax =:  SZ -> main:skolocon := SZ; main:skolocon := 0), 
-    main:const := 0. 
+    lemmas_proved := 0,  %%
+    interp := 0,         %%
+    (main:skolemax =:  SZ -> skolocon := SZ; skolocon := 0), 
+    const := 0. 
 
 
 norsk   :- 
-    (main:origlanguage := norsk), % permanently 
-    (main:language := norsk). 
+    (origlanguage := norsk), % permanently 
+    (language := norsk). 
 
 
 english :- 
-    (main:origlanguage := english), % permanently 
-    (main:language := english).  
+    (origlanguage := english), % permanently 
+    (language := english).  
  
 run(L):- 
-   main:language := L,
+   language := L,
    run.
     
 
 %run :- 
 %    nl,
 %    seen,              %% evt. read-files
-%    main:dialog := 0, 
+%    dialog := 0, 
 %    go.
 %
 %
@@ -255,14 +255,14 @@ run(L):-
 %    golog.
 %
 webrun_english :-
-    main:language := english,
-    main:dialog := 0, 
+    language := english,
+    dialog := 0, 
     webrun.
 
 
 webrun_norsk :-
-    main:language := norsk,
-    main:dialog := 0,  
+    language := norsk,
+    dialog := 0,  
     webrun.
 
 /***
@@ -274,11 +274,11 @@ webrun :-
 	 writepid, 
     set_prolog_flag(fileerrors,off),
 	 %%% TA-060426 %% remember(lastday(-1,noday)), 
-    main:busflag := true,    %%  Bustuc Application Program
-	 main:queryflag := true, %% Statements are implicit queries
-    main:warningflag := false, %% if applicable
+    busflag := true,    %%  Bustuc Application Program
+	 queryflag := true, %% Statements are implicit queries
+    warningflag := false, %% if applicable
     repeat,
-       main:world := real, 
+       world := real, 
       %%%   resetsmsflag,  %% TA-081218
        reset_period,       %%   ---> topreg.pl
 	    getfromport(L),
@@ -290,29 +290,29 @@ webrun :-
 
 resetsmsflag :- 
    (main:myflags(smspermanentflag,true) -> 
-        main:smsflag := true;
-        main:smsflag := false).
+        smsflag := true;
+        smsflag := false).
 */
 
 
 %dialog :-  
 %	 nl,
 %	 seen,
-%	 main:permanence := 0, 
-%	 main:dialog := 1,   
-%%    main:queryflag := true,       %% (Statements are implicit queries)
+%	 permanence := 0, 
+%	 dialog := 1,   
+%%    queryflag := true,       %% (Statements are implicit queries)
 %    closereadfile,   
 %    %%% TA-060426 %% remember(lastday(-1,noday)), 
 %    dialogrun0.   
 %
 
 
-hi :-% main:language := english, 
+hi :-% language := english, 
     debug,
     go.
 
 
-hei:-% main:language := norsk, 
+hei:-% language := norsk, 
     debug,
     go.
 
@@ -326,7 +326,7 @@ go :-
     !.
 
 go:-
-    main:permanence := 0, 
+    permanence := 0, 
     restoreworld, 
 	 closereadfile,  
     %%% TA-060426 %% remember(lastday(-1,noday)), 
@@ -338,7 +338,7 @@ go:-
 
 restoreworld :- 
     (main:world =:  _W_) -> true;
-    main:world := real.
+    world := real.
 
 golog:-
 	 closereadfile,  
@@ -352,8 +352,8 @@ golog:-
 
 %end :-  
 %    seen,
-%    main:permanence := 0,
-%    main:world := real.
+%    permanence := 0,
+%    world := real.
 %
 bad_language :- 
     \+ language(_),
@@ -395,8 +395,8 @@ testgram:-
     spy(DCG:do_phrase/9),
     spy(qev/1),       
     trace := 3,
-    main:spellcheck := 0, %% debug makes it slow 
-    main:parsetime_limit := 100000.  %% ONLY DEBUGGING
+    spellcheck := 0, %% debug makes it slow 
+    parsetime_limit := 100000.  %% ONLY DEBUGGING
 
 
 
@@ -412,13 +412,13 @@ testgram:-
  
 splitlang(L,Netto):- %%   If not prefix nor,eng assume no prefix
  
-   L= [eng|Netto] -> main:language := english; 
+   L= [eng|Netto] -> language := english; 
  
-   L= [nor|Netto] -> main:language := norsk;
+   L= [nor|Netto] -> language := norsk;
  
-   L= [sms|Netto] -> main:language := norsk; 
+   L= [sms|Netto] -> language := norsk; 
  
-  ( Netto=L, main:language := norsk).
+  ( Netto=L, language := norsk).
 
 
 
@@ -440,7 +440,7 @@ clearport :-
 readday:-  
    write('weekday ='),nl,
    read(Today),
-   (main:today := Today).
+   (today := Today).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -453,19 +453,19 @@ r(F):-readfrom(F).
 %% RS-111204    Import from main instead!
 %readfrom(F):- 
 %    closereadfile, 
-%    main:end_of_file := false, 
+%    end_of_file := false, 
 %    readfile_extension(X),
 %    append_atoms(F,X,FE), 
-%    main:permanence := 1,
+%    permanence := 1,
 %
 %    
 %
-%     main:textflag := true,        %  Read from text, don't skip to new Line
+%     textflag := true,        %  Read from text, don't skip to new Line
 %                              %  destroys  kl. 1720 in batch queries
 %    main:queryflag =:  Oldqueryflag,%  destroys setting in startupfile
-%    main:queryflag := false,       %  Statements are not implicit queries 
+%    queryflag := false,       %  Statements are not implicit queries 
 %
-%    main:readfile := FE,   
+%    readfile := FE,   
 %    see(FE),
 %        repeat,
 %            reset_period,  
@@ -473,7 +473,7 @@ r(F):-readfrom(F).
 %            process(L),     
 %            !,
 %    seen,
-%    main:permanence := 0.
+%    permanence := 0.
 
 
 scanfile(F,L):- 
@@ -485,7 +485,7 @@ scanfile(F,L):-
 
  
 doask_user(L):-
-   main:interp := 0,  
+   interp := 0,  
     
 %% RS-111204   pcontext,  
 
@@ -497,15 +497,15 @@ process(_):-
     !.
 
 process(L):-           %% Process is under a repeat loop
-    main:error_phase := 0,
+    error_phase := 0,
     main:language =:  O1, 
-    main:origlanguage := O1,
+    origlanguage := O1,
 
     translate2(L,TQL),
     nl,
     exetuc(TQL),       %% Always succeed (command may change origlanguage)
     main:origlanguage =:  O2,
-    main:language := O2, % 
+    language := O2, % 
 
     (TQL=end;  
      TQL=stop).        %% Succeeds and  exit when stop command.
@@ -564,11 +564,11 @@ analyse2(L1,TQL):-
 
     lexproc3(L1,AssumedLanguage,L2),
 
-    main:language := AssumedLanguage,
+    language := AssumedLanguage,
 
     track(3,pront(L2)),  %% TA-060420     
 
-    main:error_phase := 0, 
+    error_phase := 0, 
     starttime,    
 
     layout2(L2,TQL), 
@@ -584,11 +584,11 @@ analyse2(L1,TQL):-
     create_tags(L1), %%%  , _TAGS) , %% TA-060613
     !,   
     lexproc3(L1,AssumedLanguage,L2),
-    main:language := AssumedLanguage,
+    language := AssumedLanguage,
 
     track(3,pront(L2)),  %% TA-060420
 
-    main:error_phase := 0, 
+    error_phase := 0, 
     starttime,    
     layout2(L2,TQL), 
     present(1,TQL),
@@ -605,11 +605,11 @@ analyse2(L1,TQL):-
 
     lexproc3(L1,AssumedLanguage,L2),
 
-    main:language := AssumedLanguage,
+    language := AssumedLanguage,
 
     track(3,pront(L2)),  
 
-    main:error_phase := 0, 
+    error_phase := 0, 
     starttime,    
 
     layout2(L2,TQL), 
@@ -634,9 +634,9 @@ analyse2(L1,TQL):-
 
     lexproc3(L1,AssumedLanguage,L2),
 
-    main:language := AssumedLanguage,
+    language := AssumedLanguage,
      
-    main:error_phase := 0, 
+    error_phase := 0, 
     starttime,    
 
     layout2(L2,TQL), 
@@ -666,7 +666,7 @@ layout2(L,TQL):-
 
     track(2,listing(txt)),
     track(2,nl),  
-    main:cursor := 0,
+    cursor := 0,
     grammar2(L,FOL), %% let teleflag be on %% TA-060208
     transfix(FOL,TQL).
 
@@ -750,7 +750,7 @@ grammar2(L,error):-                % Failed with type check,
 
 
 grammar2(_,FOL):-   
-    main:cursor := 0,
+    cursor := 0,
     maxl(N),
 
     parse_sentence(P,N,Success), 
@@ -781,10 +781,10 @@ grammar2(_,FOL):-
 
 grammar2(L,error):-
     main:myflags(semantest,true), 
-    main:error_phase := 1,                % Reset Type check
+    error_phase := 1,                % Reset Type check
     main:myflags(cursor,Attempt1),
     maxl(N),
-    main:cursor := 0,                     % Failed with type check, but
+    cursor := 0,                     % Failed with type check, but
     parse_sentence(_,N,success),
     !,                               % => Meaningless (semantically)
 
@@ -1083,7 +1083,7 @@ appfilename(Dir,P,DirP):-
 
 
 update_compnames(Compnames) :-                  %% MTK 021018
-    main:compnames := Compnames.
+    compnames := Compnames.
 
 
 create_taggercall(L2,PAT):-

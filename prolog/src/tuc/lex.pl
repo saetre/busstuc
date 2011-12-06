@@ -116,7 +116,7 @@
 
 lexproc3(L1,AssumedLanguage,L3):-
 
-    main:language =:  AssumedLanguage, %% main:AssumedLanguage := value$(language)
+    main:language =:  AssumedLanguage, %% AssumedLanguage := value$(language)
 
     \+ main:myflags(duallangflag,true),  %% without duallangflag, only 1 language
     !,
@@ -137,11 +137,11 @@ lexproc3(L1,AssumedLanguage,L3):-
 
 (
     the_other_language(OldLanguage,NewLanguage),
-    main:language := NewLanguage,
+    language := NewLanguage,
     lexproc2(L1,L2New,NunksNew),
     !,
     track(4,nl),
-    main:language := OldLanguage, % ad hoc, for safety
+    language := OldLanguage, % ad hoc, for safety
 
     decide_language(NunksOld,NunksNew,OldLanguage,NewLanguage,AssumedLanguage),
 
@@ -987,7 +987,7 @@ spread(L):-
     retractall(txt(_,_,_)),
     retractall(ctxt(_,_,_)),
     retractall(main:maxl(_)),
-    main:cursor := 0,
+    cursor := 0,
     sprea(0,L),
     composal.
 
@@ -1169,7 +1169,7 @@ decide_domain :-
     \+ main:myflags(tmnflag,true),
     G = tt, % Ad hoc
 
-    main:actual_domain := G.
+    actual_domain := G.
 */
 
 
@@ -1191,7 +1191,7 @@ decide_domain :-
        ZD=[]  -> G=tt ;
                  G=nil),
 
-     main:actual_domain := G,
+     actual_domain := G,
 
     remove_confusing_stations(G).
 

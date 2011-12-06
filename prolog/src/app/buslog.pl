@@ -2634,8 +2634,8 @@ today(Dag) :-
 findday(Daynr,Dag) :-
     getdaynew(Dag),           %%  utility/ computes day from todate
 
-    main:lastdaynr := Daynr,
-    main:lastday := Dag.
+    lastdaynr := Daynr,
+    lastday := Dag.
  
 
 xlastday(Lastdaynr,Lastday):-
@@ -2758,7 +2758,7 @@ atdate(Date):-
                                     
 
 set_actualdate(Date):-
-     main:actualdate := Date.
+     actualdate := Date.
 
 
  

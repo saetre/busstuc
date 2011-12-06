@@ -14,7 +14,8 @@
 
 ?-compile('compileroute.pl').   %% Bootstrapping for compilation
     
-?-compile('db/statcoord.pl').   %% 
+%?-compile('db/statcoord.pl').   %% 
+?-use_module( 'db/statcoord.pl', [] ).   %% 
 
 ?-use_module( 'db/topreg.pl', [] ).      %% Main Table for Route Modules
     

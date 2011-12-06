@@ -12839,7 +12839,7 @@ npa(X, IT) ---> %%  når går DEN  = it
     not_look_ahead(w(adj2(_,nil))),
     not_look_ahead(w(noun(_,_,_,_))), 
     !,
-    npit(X,IT).      %% unreslved, avoid går den til NTH (main:den := NTH)
+    npit(X,IT).      %% unreslved, avoid går den til NTH (den := NTH)
 
 
 npa(X, VP::P) ---> %%  \ busflag, den = thing 

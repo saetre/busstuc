@@ -15,7 +15,7 @@
 
 %% RS-111205, UNIT: /
 :- ensure_loaded( userNOTME:'../declare.pl').
-:- use_module( '../main', [  myflags/2, norsource_prefix/0  ] ).
+:- use_module( '../main', [  (:=)/2,  myflags/2,  norsource_prefix/0  ] ).
 :- use_module( '../tucbuses', [  prompt/1  ] ).
 
 %% RS-111205, UNIT: utility/
@@ -142,9 +142,9 @@ initread(U):-
 
    (  member(K1,[37, 92])  % '%' '\'   %% '¤'=164
 
-   -> main:commandflag := true 
+   -> commandflag := true 
            ;
-      main:commandflag := false),
+      commandflag := false),
            
      readrest0(K1,U).
 
@@ -170,7 +170,7 @@ readrest0(T,Comline):-
 
 
 readrest(T,[]) :- T== -1, %%   EOF
-    main:end_of_file := true,
+    end_of_file := true,
 
     seen.  
 

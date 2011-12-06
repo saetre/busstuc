@@ -18,13 +18,13 @@
 
 
 
-?- (main:duallangflag := true). %% telebuster is not  speech based
+?- (duallangflag := true). %% telebuster is not  speech based
 
-?- (main:telebusterflag := true). %% Permanent 
+?- (telebusterflag := true). %% Permanent 
 
-?- (main:teleflag := true).       %% Volatile %% Ad Hoc 
+?- (teleflag := true).       %% Volatile %% Ad Hoc 
 
-?- (main:windowsflag := true).
+?- (windowsflag := true).
 
 
 %% Emergency procedure to avoid segmentation violation

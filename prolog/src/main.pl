@@ -120,7 +120,7 @@
 %% To translate.pl? declare.pl?
 %% Declarations of operators and hashmap for flags, used by TUC
 %
-%main:X := Y :-       %% Set value X to Y
+%X := Y :-       %% Set value X to Y
 %    set(X,Y).
 %
 %main:X =:  Y :-       %% Set value Y from X          %% Difficult to make, difficult to understand :-/
@@ -139,7 +139,7 @@
 :-dynamic    main:myflags/2.
 
 % main:myflags(origlanguage, norsk).
-(main:origlanguage := norsk).
+(origlanguage := norsk).
 
 %% Current value for hash key "X" is assigned the value +Y
 (X := Y) :-       %% Set value X to Y, :=/2 or (:=)/2
@@ -184,10 +184,10 @@ break(_). %% dummy for breakpoints
 %crash :- tore_amble_is_a_genious.  %% test on undefined predicate
 
 %spyg X :- dcg_module(L),
-%          main:parsetime_limit := 100000, %%  ONLY FOR DEBUGGING
+%          parsetime_limit := 100000, %%  ONLY FOR DEBUGGING
 %          spy L:X. %% utility
 %
-%spyr X :- main:debugrule := X,
+%spyr X :- debugrule := X,
 %          spy spy_me.
 
 %sp X :- functor(X,F,_),spy F,X.  %% call X with spy on X
@@ -243,11 +243,11 @@ readscript1(X):-
 
 initiate :-   %% called at compiletime !
     trace := 1,
-    main:maxdepth := 3,
-    main:error_phase := 0,
-    main:context_id := 1.
+    maxdepth := 3,
+    error_phase := 0,
+    context_id := 1.
 
-%%%    main:parsetime_limit := 10000. %% Max 10 seconds for parsing
+%%%    parsetime_limit := 10000. %% Max 10 seconds for parsing
                               %% 45/ MegaLIPS is appropriate
 
 tuc :-
@@ -267,8 +267,8 @@ restart :-
 
 erase:-
     retractall(fact0(_)),  % Semipermanent facts
-    main:skolemax := 0,
-    main:skolocon := 0,
+    skolemax := 0,
+    skolocon := 0,
     reset.
 
 clear:-
@@ -277,54 +277,54 @@ clear:-
     clear1.
 
 clear1 :-
-    main:dialog := 0,
+    dialog := 0,
  %% Only complete queries, with defaults ( should be true/false ?)
     trace := 1,
     traceprog := 1,
     traceans := 1,
-%%    main:queryflag := true,
-%%    main:textflag := false,
-    main:spellcheck := 1,   %% restored after debug
+%%    queryflag := true,
+%%    textflag := false,
+    spellcheck := 1,   %% restored after debug
     closereadfile,
-    main:parsetime_limit := 10000, %%% <--- Same as initially// Slower server
+    parsetime_limit := 10000, %%% <--- Same as initially// Slower server
     reset.
 
 begin :-
     reset,
-    main:permanence := 1,
+    permanence := 1,
     nl.
 
 reset:-
-    main:dialog := 0, % moved up
-%    main:textflag := false,
+    dialog := 0, % moved up
+%    textflag := false,
     retractall(difact(_,_)),   %% Only Dynamic Facts
 %    retractall((_ => _)),
-    main:lemmas_proved := 0,  %%
-    main:interp := 0,         %%
-    (main:skolemax =: SZ -> main:skolocon := SZ; main:skolocon := 0),
-    main:const := 0.
+    lemmas_proved := 0,  %%
+    interp := 0,         %%
+    (main:skolemax =: SZ -> skolocon := SZ; skolocon := 0),
+    const := 0.
 
 norsk   :-
-    (main:origlanguage := norsk), % permanently
-    (main:language := norsk).
+    (origlanguage := norsk), % permanently
+    (language := norsk).
 
 english :-
-    (main:origlanguage := english), % permanently
-    (main:language := english).
+    (origlanguage := english), % permanently
+    (language := english).
 
 run(L):-
-   main:language := L,
+   language := L,
    run.
 
 
 run :-
-    main:origlanguage := norsk,     %%
+    origlanguage := norsk,     %%
 
     listing( main:_ ),
     
     nl,
     seen,              %% evt. read-files
-    main:dialog := 0,
+    dialog := 0,
 
     reset_period,       %%Which period the current routes are available for
 
@@ -338,14 +338,14 @@ logrun :-
     golog.
 
 webrun_english :-
-    main:language := english,
-    main:dialog := 0,
+    language := english,
+    dialog := 0,
     webrun.
 
 
 webrun_norsk :-
-    main:language := norsk,
-    main:dialog := 0,
+    language := norsk,
+    dialog := 0,
 
     traceprog := 3, %% EXPERIMENT DEBUG
 
@@ -354,14 +354,14 @@ webrun_norsk :-
 
 
 webrun_tele :-
-    main:language := norsk,
-    main:dialog := 0,
+    language := norsk,
+    dialog := 0,
 
 	 writepid,
     set_prolog_flag(fileerrors,off),
 
     repeat,
-       main:world := real,
+       world := real,
 
        getfromport(L),
 	    processorwait(L),
@@ -371,11 +371,11 @@ webrun_tele :-
 webrun :-
 	 writepid,
     set_prolog_flag(fileerrors,off),
-    main:busflag := true,    %%  Bustuc Application Program
-	 main:queryflag := true, %% Statements are implicit queries
+    busflag := true,    %%  Bustuc Application Program
+	 queryflag := true, %% Statements are implicit queries
     create_named_dates, %% TA-110615
     repeat,
-       main:world := real,
+       world := real,
        reset_period,       %%   ---> topreg.pl
 
  %%%       reset_origins,  %% reset GPS origins %% TA-110206
@@ -390,7 +390,7 @@ webrun :-
 
 
 jettyrun(S) :-
-    main:world := real,
+    world := real,
     reset_period,       %%   ---> topreg.pl
     psl(S,L),
     L = [File|L1],
@@ -401,7 +401,7 @@ jettyrun(S) :-
     !.
 
 %jettyrun(L) :-
-%       main:world := real,
+%       world := real,
 %       reset_period,       %%   ---> topreg.pl
 %
 %       L = [File|L1],
@@ -418,22 +418,22 @@ norsource_postfix :- %% TA-110207
 dialog :-
     nl,
     seen,
-    main:permanence := 0,
-    main:dialog := 1,
-%    main:queryflag := true,       %% (Statements are implicit queries)
+    permanence := 0,
+    dialog := 1,
+%    queryflag := true,       %% (Statements are implicit queries)
     closereadfile. %, dialogrun0.
 
 
 
 hi :-
-    main:origlanguage := english,
+    origlanguage := english,
     debug,
     create_named_dates,
     go.
 
 
 hei:-
-    main:origlanguage := norsk,
+    origlanguage := norsk,
     create_named_dates,
     debug,
     go.
@@ -449,7 +449,7 @@ go :-
     !.
 
 go:-
-    main:permanence := 0,
+    permanence := 0,
     restoreworld,
 	 closereadfile,
 
@@ -461,7 +461,7 @@ go:-
  %%      reset_origins, %% reset GPS origins
 
        main:origlanguage =:  Lang,
-       main:language := Lang,
+       language := Lang,
 
        doask_user(L),
        process(L).
@@ -471,27 +471,27 @@ go:-
 % Added by MTR 2004-08-04.  This predicate is called (repeatedly) from
 % the TUC Transfer Protocol Daemon (TTPD).
 mtrprocess(S) :-
-        main:smsflag := true,
-        main:permanence := 0,
+        smsflag := true,
+        permanence := 0,
         create_named_dates, %% TA-110408 ad hoc
         restoreworld,
         closereadfile,
         reset_period,
         main:origlanguage =:  Lang,
-        main:language := Lang,
+        language := Lang,
         words(L, S, []),
         process(L).
 
 
 mtrprocessweb(S) :-
-        main:smsflag := false,
-        main:permanence := 0,
+        smsflag := false,
+        permanence := 0,
         restoreworld,
         create_named_dates, %% TA-110408  ad hoc
         closereadfile,
         reset_period,
         main:origlanguage =:  Lang,
-        main:language := Lang,
+        language := Lang,
         words(L, S, []),
         process(L).
 
@@ -514,7 +514,7 @@ verify_empty_origins :- %% all gps_origin should be gone !!!!!!
 
 restoreworld :-
     (main:world =:  _W_) -> true;
-    main:world := real.
+    world := real.
 
 golog:-
 	 closereadfile,
@@ -531,8 +531,8 @@ golog:-
 
 end :-
     seen,
-    main:permanence := 0,
-    main:world := real.
+    permanence := 0,
+    world := real.
 
 bad_language :-
     \+ language(_),
@@ -575,8 +575,8 @@ testgram:-
     spy(DCG:do_phrase/10),
     spy(qev/1),
     trace := 3,
-%%     main:spellcheck := 0, %% debug makes it slow // not any longer
-    main:parsetime_limit := 100000.  %% ONLY DEBUGGING
+%%     spellcheck := 0, %% debug makes it slow // not any longer
+    parsetime_limit := 100000.  %% ONLY DEBUGGING
 
 
 
@@ -675,18 +675,18 @@ redirectfromans:-
 
 splitlang(L,Netto):- %%   If not prefix nor,eng assume no prefix
 
-   L= [eng|Netto] -> (main:language := english, main:smsflag := false);
+   L= [eng|Netto] -> (language := english, smsflag := false);
 
-   L= [nor|Netto] -> (main:language := norsk,   main:smsflag := false);
+   L= [nor|Netto] -> (language := norsk,   smsflag := false);
 
-   L= [sms|Netto] -> (main:language := norsk,   main:smsflag := true);
+   L= [sms|Netto] -> (language := norsk,   smsflag := true);
 
-  ( Netto=L,          main:language := norsk,  main:smsflag := true).
+  ( Netto=L,          language := norsk,  smsflag := true).
 
 
 splitfile(L, [Filename|Rest]):- %%   If not prefix numbers, assume .ans
    L = [Filename|Rest]. %;
-%  ( Netto=L,          main:language := norsk,  main:smsflag := true).
+%  ( Netto=L,          language := norsk,  smsflag := true).
 
 
 trytellans(File) :-
@@ -707,7 +707,7 @@ clearport :-
 readday:-
    write('weekday ='),nl,
    read(Today),
-   (main:today := Today).
+   (today := Today).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -734,19 +734,19 @@ closefile(F) :-
 
 readfrom(F):-
     closereadfile,
-    main:end_of_file := false,
+    end_of_file := false,
     readfile_extension(X),
     append_atoms(F,X,FE),
-    main:permanence := 1,
+    permanence := 1,
 
     trace =:  OldTrace, %% NB =:
     trace := 0,
-     main:textflag := true,        %  Read from text, don't skip to new Line
+     textflag := true,        %  Read from text, don't skip to new Line
                               %  destroys  kl. 1720 in batch queries
     main:queryflag =:  Oldqueryflag,%  destroys setting in startupfile
-    main:queryflag := false,       %  Statements are not implicit queries
+    queryflag := false,       %  Statements are not implicit queries
 
-    main:readfile := FE,
+    readfile := FE,
     see(FE),
         repeat,
             reset_period,
@@ -756,10 +756,10 @@ readfrom(F):-
     seen,
     trace := OldTrace, %% TA-090203
 
-    main:permanence := 0,
+    permanence := 0,
 
-    main:textflag := false,       %  Read from text, don't skip to new Line
-    main:queryflag := Oldqueryflag. % destroys setting in startupfile
+    textflag := false,       %  Read from text, don't skip to new Line
+    queryflag := Oldqueryflag. % destroys setting in startupfile
 
 
 
@@ -770,7 +770,7 @@ scanfile(F,L):- %%  DESTROYS  web writing
 
 
 doask_user(L):-
-    main:interp := 0,
+    interp := 0,
     ask_user(L).        %% readin.pl
 
 
@@ -809,9 +809,9 @@ process(_):-
     !.
 
 process(L):-           %% Process is under a repeat loop
-    main:error_phase := 0,
+    error_phase := 0,
     main:language =:  O1,
-    main:origlanguage := O1,
+    origlanguage := O1,
 
     printdots, %% TA-110204
 
@@ -832,7 +832,7 @@ process(L):-           %% Process is under a repeat loop
     norsource_postfix,
 
     main:origlanguage =:  O2,
-    main:language := O2, %
+    language := O2, %
 
 
 
@@ -857,7 +857,7 @@ haltword(johnforbeskerry).   %% <- Top Secret
 translate2(L,TQL):-
     track(1,nl),
 
-    main:new_origin := false,  %% ugly reset explicit  new_origin flag %% TA-110206
+    new_origin := false,  %% ugly reset explicit  new_origin flag %% TA-110206
 
     analyse2(L,TQL).
 
@@ -896,7 +896,7 @@ layout2(L,TQL):-
     decide_domain, %%  which part of country
 
 
-    main:cursor := 0,
+    cursor := 0,
 
     starttime,
 
@@ -960,7 +960,7 @@ grammar2(L,error):-                % Failed with type check,
 
 
 grammar2(_,FOL):-
-    main:cursor := 0,
+    cursor := 0,
     maxl(N),
 
     parse_sentence(P,N,Success),
@@ -991,10 +991,10 @@ grammar2(_,FOL):-
 
 grammar2(L,error):-
     main:myflags(semantest,true),
-    main:error_phase := 1,                % Reset Type check
+    error_phase := 1,                % Reset Type check
     main:myflags(cursor,Attempt1),
     maxl(N),
-    main:cursor := 0,                     % Failed with type check, but
+    cursor := 0,                     % Failed with type check, but
     parse_sentence(_,N,success),
     !,                               % => Meaningless (semantically)
 
@@ -1165,7 +1165,7 @@ indentprint(N,Y):-
 
 transfix([gpsflag:::Orgy | Rest],U) :-!,
 
-   ( Orgy \== [] -> main:smartdepflag := true;main:smartdepflag := false), %% if gps, special output
+   ( Orgy \== [] -> smartdepflag := true;smartdepflag := false), %% if gps, special output
 
     for(member(gps_origin(X,Y),Orgy),
            remember(gps_origin(X,Y))),
@@ -1344,7 +1344,7 @@ receive_tags(Struct):-
 
 update_tags(K):-
 
-   main:tags := K.
+   tags := K.
 
 
 create_taggercall(L2,PAT):-

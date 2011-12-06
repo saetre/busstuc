@@ -67,8 +67,8 @@ track(1, (write('*** Tag: '),out(Expression), write('tag '), write(TagSum), nl))
    Outstream = '$stream'(OutputstreamNo),
 
    % store the streams for later use
-   main:outstream := InputstreamNo,
-   main:instream := OutputstreamNo,
+   outstream := InputstreamNo,
+   instream := OutputstreamNo,
 
    get_chars_t(Result),
    set_input(OldInput).
@@ -134,8 +134,8 @@ reset_ldapcon :-
 	set_output('$stream'(OutstreamNo)),
 	nl,		%% send empty line to java-prog to terminate it
 	set_output(OldOutput),
-	main:outstream := 0,
-	main:instream := 0.
+	outstream := 0,
+	instream := 0.
 
 
 
@@ -282,19 +282,19 @@ y_receive_tags(Tags,Compnames,File) :-          %% MTK 021018/TLF
 
 reset_tags :- %% TA-061009
 
-   main:tags := [].
+   tags := [].
 
 
 update_tags(K):-
 
-   main:tags := K.
+   tags := K.
 
 remove_dummycomps(Compnames,Compnames2):-
     set_filter(X, \+(X = [Lehre,[],Lehre]),Compnames,Compnames2).
 
 %update_compnames(Compnames) :-                  %% MTK 021018
 %    remove_dummycomps(Compnames,Compnames2),
-%    main:compnames := Compnames2.
+%    compnames := Compnames2.
 %
 %
 %create_taggercall(L2,PAT):-
