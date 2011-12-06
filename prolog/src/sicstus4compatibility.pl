@@ -8,6 +8,8 @@
 %% append/3  %% built in Sicstus 4 (library.pl)
 %% member/2  %% built in Sicstus 4 (library.pl)   
 
+%% RS-111206    Exported through utility.pl (utility:)
+
 get(G) :- get_code(F),
           F = 10 -> get(G) %% CR
           ;

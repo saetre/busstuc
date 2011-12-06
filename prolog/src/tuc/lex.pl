@@ -27,13 +27,66 @@
         unknown_words/2, unproperstation1/1,    xlcompword/3  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%% RS-111205, UNIT: /
 :- ensure_loaded( '../declare' ).  % :- use_module( user:'../declare.pl').
+:- use_module( '../interfaceroute', [ domain_module/2 ] ). %% HEAVY DB!
+:- use_module(    '../main', [
+        user:(:=)/2, user:myflags/2,  set/2,
+        traceprint/2, track/2, user:(=:)/2
+] ).
+:- use_module(    '../tucbuses', [  dict_module/1, dict_module/2, morph_module/1  ] ).
 
-%:-use_module( '../tucbuses', [] ).   % Common File for tucbus  (english) and    tucbuss (norwegian)
+%% RS-111205, UNIT: tuc
+:-use_module( dict_n, [
+        compword/3,   kw/1, %% TA-100902 %%%%%%%%%  All the words appearing as [ ] constants in grammar
+        noisew/1,     rewording/2,   synwordx/2,  xcompword/3
+    ] ).
+:- use_module( evaluate, [ fact/1, user:instant/2 ] ).
+:- use_module( facts, [ neighbourhood/1, (isa)/2  ] ).  %% RS-111204    isa/2 from facts.pl
+:- use_module( names, [
+        compname/3,  generic_place/1,  samename/2,  streetsyn/1, synname/2,  unwanted_name/1
+  ] ).
 
-%:- ensure_loaded( '../db/namehashtable' ).
-:- use_module(     '../db/namehashtable' ).
+%% RS-111205, UNIT: app
+:- use_module( '../app/buslog', [  bus/1, composite_stat/3, station/1 ] ).
+
+%% RS-111205, UNIT: db/
+:- use_module( '../db/busdat', [ 
+        cmbus/3,
+        explicit_part_name/1,      % (NAME)
+        synbus/2,                  % (NAME,ROUTE)
+        tramstation/1,             % (STATION)
+        xforeign/1,                % (PLACE)
+        xsynplace/2
+  ] ).
+:- use_module( '../db/namehashtable' ).
+:- use_module( '../db/places', [
+        underspecified_place/1, unwanted_place/1,
+        alias_name/2,            % (NAME,NAME)
+        cmpl/3,                  % (NAME,NAME*,LIST)
+        sameplace/2,             % (PLACE,PLACE)
+        synplace/2,              % (NAME,PLACE)
+        underspecified_place/1,  % (PLACE)
+        unwanted_station/1
+   ]).
+:- use_module( '../db/regcompstr', [ composite_road/3 ] ).
+:- use_module( '../db/regbusall', [ regbus/1 ] ). %% HEAVY DB!
+:- use_module( '../db/regstr', [   streetstat/5 ] ). %% RS-111201 Remember to update source program, which is makeaux?
+:- use_module( '../db/teledat2', [   lookupdb2/3 ] ).
+:- use_module( '../db/timedat', [ named_date/2 ]).
+:- use_module( '../db/topreg', [     routedomain/1,        route_period/4    ] ).
+
+
+%% RS-111205, UNIT: dialog/
+:- use_module( '../dialog/frames2', [  xframe_getvalue/2 ] ).
+
+%% RS-111205, UNIT: utility
+:- use_module( '../utility/utility', [
+        append_atoms/3, begins_with/3, delete1/3, doall/1,  % P, then succeed
+        ends_with/3,    flatten/2, for/2, foralltest/2, iso_atom_chars/2,
+        once1/1,        out/1,    output/1,  set_of/3,   set_ops/3,    set_union/3,  test/1,
+        testmember/2,       textlength/2
+   ] ).
 
 %%%%%% The coding conventions %%%%%%%%%%%%%%%%%%%%%
 %
@@ -66,7 +119,7 @@
 
 lexproc3(L1,AssumedLanguage,L3):-
 
-    language  =: AssumedLanguage, %% AssumedLanguage := value$(language)
+    user:language =:  AssumedLanguage, %% user:AssumedLanguage := value$(language)
 
     \+ user:myflags(duallangflag,true),  %% without duallangflag, only 1 language
     !,
@@ -74,7 +127,7 @@ lexproc3(L1,AssumedLanguage,L3):-
 
 
 lexproc3(L1,AssumedLanguage,L3):-
-    language  =: OldLanguage,
+    user:language =:  OldLanguage,
     lexproc2(L1,L2Old,NunksOld),
     !,
     track(4,nl),
@@ -87,11 +140,11 @@ lexproc3(L1,AssumedLanguage,L3):-
 
 (
     the_other_language(OldLanguage,NewLanguage),
-    language := NewLanguage,
+    user:language := NewLanguage,
     lexproc2(L1,L2New,NunksNew),
     !,
     track(4,nl),
-    language := OldLanguage, % ad hoc, for safety
+    user:language := OldLanguage, % ad hoc, for safety
 
     decide_language(NunksOld,NunksNew,OldLanguage,NewLanguage,AssumedLanguage),
 
@@ -937,7 +990,7 @@ spread(L):-
     retractall(user:txt(_,_,_)),
     retractall(ctxt(_,_,_)),
     retractall(user:maxl(_)),
-    cursor := 0,
+    user:cursor := 0,
     sprea(0,L),
     composal.
 
@@ -1119,7 +1172,7 @@ decide_domain :-
     \+ user:myflags(tmnflag,true),
     G = tt, % Ad hoc
 
-    actual_domain := G.
+    user:actual_domain := G.
 */
 
 
@@ -1141,7 +1194,7 @@ decide_domain :-
        ZD=[]  -> G=tt ;
                  G=nil),
 
-     actual_domain := G,
+     user:actual_domain := G,
 
     remove_confusing_stations(G).
 

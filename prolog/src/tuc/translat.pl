@@ -15,27 +15,28 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%% RS-111205, UNIT: /
 :- ensure_loaded( '../declare' ).
+:- use_module(    '../main', [  user:(:=)/2, user:myflags/2, track/2, user:(=:)/2 ] ).
 
-:- use_module( '../utility/utility', [
-        do_count/1,
-        error/2,
-        flatlist/2,
-        for/2,
-        freshcopy/2,
-        ident_member/2,
-        match/2,
-        numbervars/1,
-        occ/2,
-        reverse/2,
-        subcase/2,
-        subsumes/2,   % X at least as general
-        test/1,
-        unsquare/2
-     ] ).   %% RS-111202    %% error/2, subcase/2
+%% RS-111205, UNIT: tuc/
+:- use_module( evaluate, [  difact/1,   new_focus/2  ] ).
+:- use_module( fernando, [  subclass/2 ] ).
+:- use_module( semantic, [  testclass/1 ] ).
+:- use_module( slash, [ (def)/1 ] ).    %% export def/1. %% Prefix operator-predicate
 
+%% RS-111205, UNIT: app/
 :- use_module( '../app/interapp', [] ).  %% RS-111202    %% ieval
     
+%% RS-111205, UNIT: utility/
+:- use_module( '../utility/utility', [
+        do_count/1,     error/2,        flatlist/2,        flatround/2,
+        for/2,          freshcopy/2,    ident_member/2,    match/2,
+        numbervars/1,   occ/2,          reverse/2,         subcase/2,
+        subsumes/2,   % X at least as general
+        test/1,         unsquare/2
+     ] ).   %% RS-111202    %% error/2, subcase/2
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :- volatile difact/2, fact0/1, (=>)/2.
@@ -49,7 +50,7 @@ clausifystm( JLM ):-
     clausify(X,Y,[],JLM,CLAUSELIST),
     number(Y),
     writeconjuncts(CLAUSELIST,true),
-    skolocon := Y. 
+    user:skolocon := Y. 
                    
 
 clausify(X,Y,L,P,R):- 
@@ -464,14 +465,14 @@ premfakt(_).
 
  
 assertfact(P):-
-    permanence =: 0,
+    user:permanence =:  0,
     user:myflags(context_id,UID),  
     !, 
     retractall(difact(UID,P)), 
     asserta(difact(UID,P)).       %% reverse order
 
 assertfact(P):-
-    permanence =:1,
+    user:permanence =: 1,
     !,
     user:myflags(context_id,UID), 
     retractall(fact0(P)),
@@ -480,7 +481,8 @@ assertfact(P):-
 
 
 testimpossible(P):-
-    explain(false),
+%%    explain(false),   %% RS-111205
+%    explain_query(false),
     !, 
     user:myflags(context_id,UID),     
     retract(difact(UID,P)). 
@@ -789,8 +791,8 @@ superbeat(X,Z):-      member(X,Z), \+  (X = (not _Y)).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 newskolem(Y):-  
-    do_count(skolocon), % skolocon := skolocon + 1
-    skolocon =: Y.
+    do_count(skolocon), % user:skolocon := skolocon + 1
+    user:skolocon =:  Y.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

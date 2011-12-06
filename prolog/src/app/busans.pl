@@ -3,7 +3,7 @@
 %% CREATED JB-970220
 %% REVISED TA-100908 added MAP parameter
 
-:- module(ans,[ rule/2, tracevalue/1 ]).
+:- module(ans,[ (rule)/2, tracevalue/1 ]).
 
 % Lager svarene til BussTUC -
 % Produksjonesregler, predikater som lager fraser og

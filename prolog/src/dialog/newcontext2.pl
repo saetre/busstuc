@@ -12,11 +12,22 @@
         setquery/2,     topic_subclass/3  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% %%%%%%%% RS-111118
+%%% %%%%%%%% RS-111118, everywhere, declare
 :- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
 
+%% IMPORTS
 :- use_module( library(system) ).
 :- use_module( library(lists) ).
+
+%% RS-111205, UNIT: dialog/
+:- use_module( checkitem2, [ current_frame/1 ] ).
+:- use_module( frames2, [ frame_getvalue_rec/4, frametemplate/2 ] ).
+
+%% RS-111205, UNIT: tuc/
+:- use_module( '../tuc/fernando', [ subclass0/2 ]).
+
+%% RS-111205, UNIT: utility/
+:- use_module( '../utility/utility', [  roundmember/2, set_difference/3, set_of/3   ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

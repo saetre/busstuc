@@ -33,7 +33,7 @@
 
 
 :- ensure_loaded( xml_utilities ).
-
+:- use_module( '../utility/utility', [ put/1 ] ) .
 /* xml_pp( +XMLDocument ) "pretty prints" XMLDocument on the current
  * output stream.
  */

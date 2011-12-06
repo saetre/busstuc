@@ -6,17 +6,23 @@
 
 % Interface procedures for handling interface to route modules
 :- module( interfaceroute, [ 
-        current_period/4,  default_period/3,  decide_period/2,  domain_module/2,
-        reset_period/0,    thisdate_period_module/3,            valid_period/2
+        current_period/4,  default_period/3,  decide_period/2,
+        domain_module/2,   reset_period/0,    search_period_module/3,
+        thisdate_period_module/3,             valid_period/2
   ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%% RS-111205, UNIT: /
+:- use_module( 'main', [   user:myflags/2,  set/2  ] ).
+
 % database functions, for time and days %% UNIT util
+:- use_module( 'db/topreg.pl' ).
+
+%% RS-111205, UNIT: /
 :- use_module( 'utility/datecalc', [  off_valid_period/3,  on_valid_period/3,   todaysdate/1  ]).
 :- use_module( 'utility/utility', [output/1] ).  % utility functions
 
-:- use_module( 'db/topreg.pl' ).
 
 %% NB  decide_period is called before each question
 
@@ -115,21 +121,21 @@ decide_period(DateInQuestion,ThePeriod):-
     user:myflags(actual_domain,TT), 
     search_period_module(TT,DateInQuestion,ThePeriod),
     !,
-    set(actual_period, ThePeriod). % actual_period := ThePeriod
+    set(actual_period, ThePeriod). % user:actual_period := ThePeriod
 
 decide_period(DateInQuestion,CurrentPeriod):- %% Same date => Period = current period
     user:myflags(actual_domain,TT), 
     todaysdate(DateInQuestion), 
     !,
     thisdate_period_module(TT,_,CurrentPeriod),         
-    set(actual_period, CurrentPeriod). % actual_period := CurrentPeriod. 
+    set(actual_period, CurrentPeriod). % user:actual_period := CurrentPeriod. 
 
 decide_period(DateInQuestion,ActualPeriod):- 
     user:myflags(actual_domain,TT),
     current_period(TT,ActualPeriod,Date1,Date2),            %% Extra Check
     on_valid_period(DateInQuestion,Date1,Date2),    %% utility/datecalc
     !,
-    set(actual_period, ActualPeriod). %   actual_period := ActualPeriod.    %% This is the Period in the Question
+    set(actual_period, ActualPeriod). %   user:actual_period := ActualPeriod.    %% This is the Period in the Question
 
 decide_period(DateInQuestion,NextPeriod):- 
     user:myflags(actual_domain,TT),  
@@ -137,12 +143,12 @@ decide_period(DateInQuestion,NextPeriod):-
     off_valid_period(DateInQuestion,Date1,Date2),    %% utility/datecalc
     search_period_module(TT,DateInQuestion,NextPeriod),
     !,
-    set(actual_period, NextPeriod). % actual_period := NextPeriod. %% This is the Period in Question
+    set(actual_period, NextPeriod). % user:actual_period := NextPeriod. %% This is the Period in Question
 
 decide_period(_,Nil):-
     !,
     Nil= nil, %% Bloody Trap %% TA-060101
-    set(actual_period,nil).  %% actual_period := nil.   
+    set(actual_period,nil).  %% user:actual_period := nil.   
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

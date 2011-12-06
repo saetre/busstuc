@@ -5,37 +5,45 @@
 
 %% Printing the result from database query 
 :- module( parseres, [
-        busanswer_sat/3,
-        field_is_equal/3,
-        get_chars_t/1,
-        hent_chars_t/3,
-        ldaptotuc/2,
-        listfields/2,
-        listrequirements/1,
-        onelist/1,
-        otherfields/1,
-        outputrecordlist/1,
-        parseresultdatacount/2,
-        parseresultfile/2,
-        recordcount/2,
-        recordfieldvalue/3,
-        teleanswer_sat/2,
-        teleconstraintlist/1,
-        tuctoldap/2,
-        writefieldvalue/2,
-        writefieldvalues/2,
-        writetelebusteranswer4/4,
-        writetelebusteranswer_rep/1,
-        writetelebusteranswer_saf/2,
-        writetelebusteranswer_sqt/3,
-        writetelebusteranswerfields/1,
-        writevaluelist2/2,
-        xwriteanswer/2
+        busanswer_sat/3,        field_is_equal/3,       get_chars_t/1,          hent_chars_t/3,
+        ldaptotuc/2,            listfields/2,           listrequirements/1,     onelist/1,
+        otherfields/1,          outputrecordlist/1,     parseresultdata/2,      parseresultdatacount/2,
+        parseresultfile/2,      recordcount/2,          recordfieldvalue/3,     removefromlist/3,
+        teleanswer_sat/2,       teleconstraintlist/1,   tuctoldap/2,            writefieldvalue/2,
+        writefieldvalues/2,     writetelebusteranswer4/4,                       writetelebusteranswer_rep/1,
+        writetelebusteranswer_saf/2,        writetelebusteranswer_sqt/3,        writetelebusteranswerfields/1,
+        writevaluelist2/2,      xwriteanswer/2
   ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- ensure_loaded( '../declare' ).       %% Operators for TUC
+%% IMPORTS
+%% RS-111205, UNIT: /
+:- ensure_loaded( '../declare' ).    %% Operators for TUC
+:- use_module( '../main', [   user:(:=)/2, user:myflags/2,  trackprog/2  ] ). %% set/2, 
 
+%% RS-111205, UNIT: dialog/
+:- use_module( frames2, [ frame_getvalue_rec/4, frame_setvalue_rec/4 ] ).
+
+%% UNIT: app
+:- use_module( '../app/busanshp', [
+        addrefdialog/2, bcp/1,  bcpbc/1, colon/0, comma/0, space/0, writefield1/1, writename/1
+   ] ).
+:- use_module( '../app/interapp', [ writeanswer/1 ] ).
+
+%% RS-111205, UNIT: db/
+:- use_module( '../db/teledat2', [  ldaptotucplace/2 ] ). %% Tabularized Ad Hoc
+
+%% RS-111205, UNIT: tagger/
+:- use_module( '../tagger/xml', [ xml_parse/2,  xml_subterm/2 ] ).
+
+%% RS-111205, UNIT: utility/
+:- use_module( '../utility/utility', [
+        append_atomlist/2, append_atoms/3,   doubt/2,        for/2,
+        (listall)/1,         listlength/2,     out/1,          output/1,
+        out/1,             output/1,         prettyprint/1,  set_ops/3
+  ] ). %% RS-111204 from utility
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 parseresultfile(File, Results) :-
     getresults(File,Input),
@@ -75,11 +83,11 @@ parseresult([Tag|Tags], InitRes, Res) :-
 
 
 %% separates this in a predicate to be able to change the method later
-%getresults(File, Input) :-
-%    see(File),
-%    get_chars_t(Input),
-%    seen.
-%
+getresults(File, Input) :-
+    see(File),
+    get_chars_t(Input),
+    seen.
+
 
 outputrecordlist([]).
 outputrecordlist([record(Data)|Rest]) :-
@@ -332,7 +340,8 @@ writefieldvalue(Rec, roomnumber) :- %% adds street to the output
 writefieldvalue(Rec, ou) :-
 	set_ops(Value, recordfieldvalue(Rec, ou, Value),Values),
 
-   writevaluelist(Values).  
+%   writevaluelist(Values).  
+   writevaluelist2(Values,'-').
 
 
 writefieldvalue(Rec, Field) :-

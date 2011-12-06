@@ -24,16 +24,16 @@
 
 %dialog2 :-                                     %%AM-980301
 %
-%%%    language:=norsk, %% TA-060307
+%%%    user:language := norsk, %% TA-060307
 %
-%   dialog := 1,    %% Disable defaults. 
+%   user:dialog := 1,    %% Disable defaults. 
 %
-%   world := real, %% TA-021027
+%   user:world := real, %% TA-021027
 %
 %	ask_user( Q ),
 %
-%   contextid := myid,   
-%   location := trondheim,   
+%   user:contextid := myid,   
+%   user:location := trondheim,   
 %
 %	processinput( Q ), %% d_dialogue.pl
 %
@@ -50,15 +50,15 @@
 %
 %webrun_dialog :- !, 
 %
-%   contextflag := true, %%% <--- Dialog context shown if Teknisk info
+%   user:contextflag := true, %%% <--- Dialog context shown if Teknisk info
 %
 %	writepid, 
 %	nofileerrors,
-%	busflag:= true,    %% Bustuc Application Program
-%	queryflag := true, %% Statements are implicit queries 
-%   dialog := 1,       
-%   world  := real,   
-%   warningflag := false, %% if applicable 
+%	user:busflag := true,    %% Bustuc Application Program
+%	user:queryflag := true, %% Statements are implicit queries 
+%   user:dialog := 1,       
+%   user:world := real,   
+%   user:warningflag := false, %% if applicable 
 %
 %  repeat,              %% TA-050723
 %       resetsmsflag, 
@@ -97,13 +97,13 @@
 %
 %    reset_period,  %% !"#¤%&/()=?\`@£$[]}+´
 %
-%    trace := 1,
+%    user:trace := 1,
 %
-%    contextflag  := true, %% TA-060127
+%    user:contextflag := true, %% TA-060127
 %
-%	 directflag := true,
-%    directinputfile  := InputFile,
-%    directoutputfile := OutputFile,
+%	 user:directflag := true,
+%    user:directinputfile := InputFile,
+%    user:directoutputfile := OutputFile,
 %
 %    closefile(InputFile), 
 %    closefile(OutputFile), 
@@ -119,7 +119,7 @@
 %       d_language(L,Q), 
 %       (processinput(Q);true),
 %
-%      directflag := false.
+%      user:directflag := false.
 %
 %
 
@@ -138,34 +138,34 @@ HIDDEN  contextid
 
 %d_language([Lang,Contextid|Quest],Quest):- %% TA-050805
 %   !,   
-%   contextid := Contextid,
+%   user:contextid := Contextid,
 %
 %  (Lang=eng -> Language=english;
 %   Lang=nor -> Language=norsk;
 %               Language=norsk),
 %					
 %
-%   origlanguage:= Language, 
-%   language:= Language.
+%   user:origlanguage := Language, 
+%   user:language := Language.
 %
 %
 %
 %
 %d_language([eng|T],T) :-
 %	!,
-%	(origlanguage:=english),
-%	(language:=english). 
+%	(user:origlanguage := english),
+%	(user:language := english). 
 %
 %d_language([nor|T],T) :- %% no -> nor
 %	!,
-%	(origlanguage:=norsk),
-%	(language:=norsk).
+%	(user:origlanguage := norsk),
+%	(user:language := norsk).
 %
 %%% Just in case anyone tries to crash the server.
 %d_language(T,T):-
 %   !,
-% 	(origlanguage:=norsk),
-%	(language:=norsk).   
+% 	(user:origlanguage := norsk),
+%	(user:language := norsk).   
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

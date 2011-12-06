@@ -8,9 +8,10 @@
 
 %% RS-111204 moved to module user: declared infix in declare.pl
 :- module( main, [
-        user:(:=)/2,    user:(=:)/2,    %% :=/2 and =:/2 exported from declare, through main, to "user:"
+        user:(:=)/2,    user:(=:)/2,    %% :=/2 user:and =: /2 exported from declare, through main, to "user:"
         abortword/1,    begin/0,        break/1,    %% dummy for breakpoints
-        c/1,            closereadfile/0,        %% consult(File). %% TA-110106
+        %(c)/1,
+        closereadfile/0,        %% consult(File). %% TA-110106
         check/0,        create_taggercall/2,            difact/2,   %% Dynamic,  context dependent  %% TA-980301
         dmeq/2,         %% From dmeq.pl
         dialog/0,       doshell/0,      end/0,          english/0,
@@ -22,48 +23,69 @@
         jettyrun/1,     layout2/2,      listxt/0,       logrun/0,
         mtrprocess/1,   mtrprocessweb/1,           user:myflags/2, %% RS-111204 from declare.pl
         norsk/0,        norsource_prefix/0,             ns/1,
-        othercommand/2, print_tql/1,    printparse/1,   process_forel/1,
+        othercommand/2, print_tql/1,    printdots/0,    printparse/1,   process_forel/1,
         processorwait/1,
         progtrace/2,    r/1,            readfrom/1,
         readday/0,      readscript/0,   receive_tags/1, reset_origins/0,
         restart/0,      run/0,          run/1,          scanfile/2,     %%  DESTROYS  web writing
-        send_taggercall/1,         user:set/2,          %% RS-111204 moved to user: in declare.pl
-        splitfile/2,    spyg/1,         %% dcg_module(L), ...X
-        spyr/1,         statistics/1,   status/0,       stopcommand/2,
+        send_taggercall/1,              set/2,          %% RS-111204 moved to user: in declare.pl
+        splitfile/2,    %% dcg_module(L), ...X
+        %(spyg)/1,        %(spyr)/1,
+        statistics/1,   status/0,       stopcommand/2,
         timeout/3,      %% If timeout doesn't work
         testgram/0,     trace/2,        traceprint/2,   traceprog/2,    track/2,     trackprog/2,
         tuc/0,          update_tags/1,  verify_empty_origins/0,
         webrun/0,       webrun_english/0,               webrun_norsk/0,
         webrun_tele/0,  write_taggercall/1,             writelog/1,
-        writepid/0  ] ).
+        writepid/0      %%,     xmlrowparse/2
+   ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Imports
-:- use_module( library(process) ).
-:- use_module( library(timeout) ).
-%:-use_module( library(system) ).
+:- use_module( library(process), [ process_id/1 ] ).
+:- use_module( library(system),  [ sleep/1]).
+:- use_module( library(system3), [ shell/1 ] ).
+:- use_module( library(timeout), [ time_out/3 ] ).
 
 %% Operators used by TUC
 :- ensure_loaded( declare ).
-:- use_module( interfaceroute, [  reset_period/0  ] ).
-:- compile(       monobus ). %% // after main.pl  Unknown error
+:- ensure_loaded( xmlparser ). %% [ xmltaggerparse/2 ] ).
 
-:- use_module( ptbwrite ).           %% Module PennTreeBank
+%%:- ensure_loaded( bustermain2 ).      %% RS-111205, Recursive! Avoid Loops!
+:- use_module( bustermain2, [ analyse2/2, maxl/1 ] ).      %% RS-111205, Recursive! Avoid Loops!
+
+:- use_module(    interfaceroute, [  reset_period/0  ] ).
+:- compile(       monobus ). %% // after main.pl  Unknown error
+:- use_module(    ptbwrite ).           %% Module PennTreeBank
+:- use_module(    tucbuses, [  dcg_module/1,  backslash/1,
+        language/1,     legal_language/1,  readfile_extension/1,   script_file/1  ] ).
+:- ensure_loaded( version ).    %% version_date/1
 
 :- use_module( 'db/timedat' ).           %% Module db
 
+%% RS-111205, UNIT: utility/
 :- use_module( 'utility/utility', [
         append_atomlist/2,      append_atoms/3, doubt/2,        for/2,
         makestring/2,           out/1,          output/1,       prettyprint/1,
-        psl/2,                  purge/3,        reverse/2,      shell_copyfile/2,
+        psl/2,                  purge/3,        shell_copyfile/2,
         starttime/0,            tab/1,          writelist/1
    ] ).  %% Module util
+:- use_module( 'utility/library', [ reverse/2 ] ).
+:- use_module( 'utility/utility', [ output/1, starttime/0, testmember/2 ] ).
 
-:- use_module( 'tuc/evaluate', [ evaluateq/1, evaluateq2/1 ] ).
-:- use_module( 'tuc/readin', [   ask_user/1, ask_file/1,   %%reads text to a list
-        read_in/1
+%% RS-111205, UNIT: tuc/
+:- use_module( 'tuc/anaphors', [
+      %%  error_in_anaphors/0,    externalresolveit/2,    inventresolveit/2,
+        %%matchresol0/2,          nabi/3,
+                                  resolve/2  ] ).
+:- use_module( 'tuc/evaluate',[ evaluateq/1, evaluateq2/1 ]).
+:- use_module( 'tuc/lex', [ decide_domain/0, mix/2, no_unprotected_verb/0, spread/1, unknown_words/2
     ] ).
+:- use_module( 'tuc/readin', [  ask_user/1, ask_file/1,   %%reads text to a list
+        read_in/1, words/3
+    ] ).
+:- use_module( 'tuc/translat', [  clausifyq/2,   clausifystm/1  ] ).
 
 ?-op(1150,fx,spyg). %% spy grammar rule
 ?-op(1150,fx,spyr). %% spy pragma rule
@@ -92,18 +114,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% To translate.pl? declare.pl?
 %% Declarations of operators and hashmap for flags, used by TUC
+%
+%user:X := Y :-       %% Set value X to Y
+%    set(X,Y).
+%
+%user:X =:  Y :-       %% Set value Y from X          %% Difficult to make, difficult to understand :-/
+%    user:myflags(X,Y).
+%
 %% remove_duplicates  Standard  -> library
 %set(Key,Value) :-
 %    retractall( user:myflags(Key,_) ),
 %    assert( user:myflags(Key, Value) ).
 %
-%X := Y :-       %% Set value X to Y
-%    set(X,Y).
-%
-%X =: Y :-       %% Set value Y from X          %% Difficult to make, difficult to understand :-/
-%    user:myflags(X,Y).
-%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 doshell :- write('$SHELL'),
 %    absolute_file_name('$SHELL', Shell),
@@ -120,17 +144,17 @@ gorg :-listing(gps_origin). %% debug %% TA-110128
 break(_). %% dummy for breakpoints
 
 
-c(File) :- consult(File). %% TA-110106
+%c(File) :- consult(File). %% TA-110106
 
 
 %crash :- tore_amble_is_a_genious.  %% test on undefined predicate
 
-spyg X :- dcg_module(L),
-          parsetime_limit := 100000, %%  ONLY FOR DEBUGGING
-          spy L:X. %% utility
-
-spyr X :- debugrule := X,
-          spy spy_me.
+%spyg X :- dcg_module(L),
+%          user:parsetime_limit := 100000, %%  ONLY FOR DEBUGGING
+%          spy L:X. %% utility
+%
+%spyr X :- user:debugrule := X,
+%          spy spy_me.
 
 %sp X :- functor(X,F,_),spy F,X.  %% call X with spy on X
 
@@ -173,23 +197,23 @@ readscript:-
 
 readscript1(X):-
 %%%%%%%%%%%%%%%%%%%%	 assert(lastday(-1,noday)),
-    trace:=0,
+    user:trace := 0,
     erase,
 
     readfrom(X),
 
-    trace := 1.
+    user:trace := 1.
 
 
 % Default settings. May be redefined
 
 initiate :-   %% called at compiletime !
-    trace:=1,
-    maxdepth:=3,
-    error_phase:=0,
-    context_id := 1.
+    user:trace := 1,
+    user:maxdepth := 3,
+    user:error_phase := 0,
+    user:context_id := 1.
 
-%%%    parsetime_limit := 10000. %% Max 10 seconds for parsing
+%%%    user:parsetime_limit := 10000. %% Max 10 seconds for parsing
                               %% 45/ MegaLIPS is appropriate
 
 tuc :-
@@ -209,8 +233,8 @@ restart :-
 
 erase:-
     retractall(fact0(_)),  % Semipermanent facts
-    skolemax := 0,
-    skolocon := 0,
+    user:skolemax := 0,
+    user:skolocon := 0,
     reset.
 
 clear:-
@@ -219,51 +243,51 @@ clear:-
     clear1.
 
 clear1 :-
-    dialog := 0,
+    user:dialog := 0,
  %% Only complete queries, with defaults ( should be true/false ?)
-    trace :=1,
-    traceprog :=1,
-    traceans := 1,
-%%    queryflag := true,
-%%    textflag := false,
-    spellcheck := 1,   %% restored after debug
+    user:trace := 1,
+    user:traceprog := 1,
+    user:traceans := 1,
+%%    user:queryflag := true,
+%%    user:textflag := false,
+    user:spellcheck := 1,   %% restored after debug
     closereadfile,
-    parsetime_limit := 10000, %%% <--- Same as initially// Slower server
+    user:parsetime_limit := 10000, %%% <--- Same as initially// Slower server
     reset.
 
 begin :-
     reset,
-    permanence := 1,
+    user:permanence := 1,
     nl.
 
 reset:-
-    dialog := 0, % moved up
-%    textflag := false,
+    user:dialog := 0, % moved up
+%    user:textflag := false,
     retractall(difact(_,_)),   %% Only Dynamic Facts
 %    retractall((_ => _)),
-    lemmas_proved := 0,  %%
-    interp := 0,         %%
-    (skolemax =: SZ -> skolocon := SZ; skolocon := 0),
-    const := 0.
+    user:lemmas_proved := 0,  %%
+    user:interp := 0,         %%
+    (user:skolemax =: SZ -> user:skolocon := SZ; user:skolocon := 0),
+    user:const := 0.
 
 norsk   :-
-    (origlanguage := norsk), % permanently
-    (language := norsk).
+    (user:origlanguage := norsk), % permanently
+    (user:language := norsk).
 
 english :-
-    (origlanguage := english), % permanently
-    (language := english).
+    (user:origlanguage := english), % permanently
+    (user:language := english).
 
 run(L):-
-   language := L,
+   user:language := L,
    run.
 
 
 run :-
-%  (origlanguage := norsk),     %%
+%  (user:origlanguage := norsk),     %%
     nl,
     seen,              %% evt. read-files
-    dialog:=0,
+    user:dialog := 0,
 
     reset_period,       %%Which period the current routes are available for
 
@@ -277,30 +301,30 @@ logrun :-
     golog.
 
 webrun_english :-
-    language:= english,
-    dialog := 0,
+    user:language := english,
+    user:dialog := 0,
     webrun.
 
 
 webrun_norsk :-
-    language :=norsk,
-    dialog   := 0,
+    user:language := norsk,
+    user:dialog := 0,
 
-    traceprog := 3, %% EXPERIMENT DEBUG
+    user:traceprog := 3, %% EXPERIMENT DEBUG
 
     webrun.
 
 
 
 webrun_tele :-
-    language :=norsk,
-    dialog   := 0,
+    user:language := norsk,
+    user:dialog := 0,
 
 	 writepid,
     set_prolog_flag(fileerrors,off),
 
     repeat,
-       world := real,
+       user:world := real,
 
        getfromport(L),
 	    processorwait(L),
@@ -310,11 +334,11 @@ webrun_tele :-
 webrun :-
 	 writepid,
     set_prolog_flag(fileerrors,off),
-    busflag:= true,    %%  Bustuc Application Program
-	 queryflag := true, %% Statements are implicit queries
+    user:busflag := true,    %%  Bustuc Application Program
+	 user:queryflag := true, %% Statements are implicit queries
     create_named_dates, %% TA-110615
     repeat,
-       world := real,
+       user:world := real,
        reset_period,       %%   ---> topreg.pl
 
  %%%       reset_origins,  %% reset GPS origins %% TA-110206
@@ -329,7 +353,7 @@ webrun :-
 
 
 jettyrun(S) :-
-    world := real,
+    user:world := real,
     reset_period,       %%   ---> topreg.pl
     psl(S,L),
     L = [File|L1],
@@ -340,7 +364,7 @@ jettyrun(S) :-
     !.
 
 %jettyrun(L) :-
-%       world := real,
+%       user:world := real,
 %       reset_period,       %%   ---> topreg.pl
 %
 %       L = [File|L1],
@@ -357,22 +381,22 @@ norsource_postfix :- %% TA-110207
 dialog :-
     nl,
     seen,
-    permanence := 0,
-    dialog := 1,
-%    queryflag := true,       %% (Statements are implicit queries)
+    user:permanence := 0,
+    user:dialog := 1,
+%    user:queryflag := true,       %% (Statements are implicit queries)
     closereadfile. %, dialogrun0.
 
 
 
 hi :-
-    origlanguage := english,
+    user:origlanguage := english,
     debug,
     create_named_dates,
     go.
 
 
 hei:-
-    origlanguage:= norsk,
+    user:origlanguage := norsk,
     create_named_dates,
     debug,
     go.
@@ -388,7 +412,7 @@ go :-
     !.
 
 go:-
-    permanence := 0,
+    user:permanence := 0,
     restoreworld,
 	 closereadfile,
 
@@ -399,8 +423,8 @@ go:-
 
  %%      reset_origins, %% reset GPS origins
 
-       origlanguage =: Lang,
-       language := Lang,
+       user:origlanguage =:  Lang,
+       user:language := Lang,
 
        doask_user(L),
        process(L).
@@ -410,27 +434,27 @@ go:-
 % Added by MTR 2004-08-04.  This predicate is called (repeatedly) from
 % the TUC Transfer Protocol Daemon (TTPD).
 mtrprocess(S) :-
-        smsflag := true,
-        permanence := 0,
+        user:smsflag := true,
+        user:permanence := 0,
         create_named_dates, %% TA-110408 ad hoc
         restoreworld,
         closereadfile,
         reset_period,
-        origlanguage =: Lang,
-        language := Lang,
+        user:origlanguage =:  Lang,
+        user:language := Lang,
         words(L, S, []),
         process(L).
 
 
 mtrprocessweb(S) :-
-        smsflag := false,
-        permanence := 0,
+        user:smsflag := false,
+        user:permanence := 0,
         restoreworld,
         create_named_dates, %% TA-110408  ad hoc
         closereadfile,
         reset_period,
-        origlanguage =: Lang,
-        language := Lang,
+        user:origlanguage =:  Lang,
+        user:language := Lang,
         words(L, S, []),
         process(L).
 
@@ -452,8 +476,8 @@ verify_empty_origins :- %% all gps_origin should be gone !!!!!!
 
 
 restoreworld :-
-    (world =: _W_) -> true;
-    world := real.
+    (user:world =:  _W_) -> true;
+    user:world := real.
 
 golog:-
 	 closereadfile,
@@ -470,8 +494,8 @@ golog:-
 
 end :-
     seen,
-    permanence:=0,
-    world := real.
+    user:permanence := 0,
+    user:world := real.
 
 bad_language :-
     \+ language(_),
@@ -490,7 +514,7 @@ bad_language :-
 
 
 tuc_version:-
-    version_date(V),     %% version.pl
+    version_date(V),     %% from version.pl, version_date/1
     nl,nl,               %%
     output(V).
 
@@ -513,9 +537,9 @@ testgram:-
     spy(DCG:statreal/6),
     spy(DCG:do_phrase/10),
     spy(qev/1),
-    trace := 3,
-%%     spellcheck :=0, %% debug makes it slow // not any longer
-    parsetime_limit := 100000.  %% ONLY DEBUGGING
+    user:trace := 3,
+%%     user:spellcheck := 0, %% debug makes it slow // not any longer
+    user:parsetime_limit := 100000.  %% ONLY DEBUGGING
 
 
 
@@ -614,18 +638,18 @@ redirectfromans:-
 
 splitlang(L,Netto):- %%   If not prefix nor,eng assume no prefix
 
-   L= [eng|Netto] -> (language :=english, smsflag := false);
+   L= [eng|Netto] -> (user:language := english, user:smsflag := false);
 
-   L= [nor|Netto] -> (language :=norsk,   smsflag := false);
+   L= [nor|Netto] -> (user:language := norsk,   user:smsflag := false);
 
-   L= [sms|Netto] -> (language :=norsk,   smsflag := true);
+   L= [sms|Netto] -> (user:language := norsk,   user:smsflag := true);
 
-  ( Netto=L,          language := norsk,  smsflag := true).
+  ( Netto=L,          user:language := norsk,  user:smsflag := true).
 
 
 splitfile(L, [Filename|Rest]):- %%   If not prefix numbers, assume .ans
    L = [Filename|Rest]. %;
-%  ( Netto=L,          language := norsk,  smsflag := true).
+%  ( Netto=L,          user:language := norsk,  user:smsflag := true).
 
 
 trytellans(File) :-
@@ -646,7 +670,7 @@ clearport :-
 readday:-
    write('weekday ='),nl,
    read(Today),
-   (today := Today).
+   (user:today := Today).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -662,7 +686,7 @@ norsource(F) :- %% TA-110207
 
 
 closereadfile :-   % if interrupted
-    (readfile =: OLD -> closefile(OLD);true),
+    (user:readfile =:  OLD -> closefile(OLD);true),
     seen.
 
 closefile(F) :-
@@ -673,19 +697,19 @@ closefile(F) :-
 
 readfrom(F):-
     closereadfile,
-    end_of_file := false,
+    user:end_of_file := false,
     readfile_extension(X),
     append_atoms(F,X,FE),
-    permanence := 1,
+    user:permanence := 1,
 
-    trace =: OldTrace, %% NB =:
-    trace := 0,
-     textflag := true,        %  Read from text, don't skip to new Line
+    user:trace =:  OldTrace, %% NB =:
+    user:trace := 0,
+     user:textflag := true,        %  Read from text, don't skip to new Line
                               %  destroys  kl. 1720 in batch queries
-    queryflag =: Oldqueryflag,%  destroys setting in startupfile
-    queryflag := false,       %  Statements are not implicit queries
+    user:queryflag =:  Oldqueryflag,%  destroys setting in startupfile
+    user:queryflag := false,       %  Statements are not implicit queries
 
-    readfile := FE,
+    user:readfile := FE,
     see(FE),
         repeat,
             reset_period,
@@ -693,12 +717,12 @@ readfrom(F):-
             process(L),
             !,
     seen,
-    trace := OldTrace, %% TA-090203
+    user:trace := OldTrace, %% TA-090203
 
-    permanence := 0,
+    user:permanence := 0,
 
-    textflag := false,       %  Read from text, don't skip to new Line
-    queryflag :=   Oldqueryflag. % destroys setting in startupfile
+    user:textflag := false,       %  Read from text, don't skip to new Line
+    user:queryflag := Oldqueryflag. % destroys setting in startupfile
 
 
 
@@ -709,7 +733,7 @@ scanfile(F,L):- %%  DESTROYS  web writing
 
 
 doask_user(L):-
-    interp := 0,
+    user:interp := 0,
     ask_user(L).        %% readin.pl
 
 
@@ -748,9 +772,9 @@ process(_):-
     !.
 
 process(L):-           %% Process is under a repeat loop
-    error_phase := 0,
-    language     =: O1,
-    origlanguage := O1,
+    user:error_phase := 0,
+    user:language =:  O1,
+    user:origlanguage := O1,
 
     printdots, %% TA-110204
 
@@ -770,8 +794,8 @@ process(L):-           %% Process is under a repeat loop
 
     norsource_postfix,
 
-    origlanguage =: O2,
-    language :=     O2, %
+    user:origlanguage =:  O2,
+    user:language := O2, %
 
 
 
@@ -796,7 +820,7 @@ haltword(johnforbeskerry).   %% <- Top Secret
 translate2(L,TQL):-
     track(1,nl),
 
-    new_origin := false,  %% ugly reset explicit  new_origin flag %% TA-110206
+    user:new_origin := false,  %% ugly reset explicit  new_origin flag %% TA-110206
 
     analyse2(L,TQL).
 
@@ -835,7 +859,7 @@ layout2(L,TQL):-
     decide_domain, %%  which part of country
 
 
-    cursor := 0,
+    user:cursor := 0,
 
     starttime,
 
@@ -899,7 +923,7 @@ grammar2(L,error):-                % Failed with type check,
 
 
 grammar2(_,FOL):-
-    cursor := 0,
+    user:cursor := 0,
     maxl(N),
 
     parse_sentence(P,N,Success),
@@ -930,10 +954,10 @@ grammar2(_,FOL):-
 
 grammar2(L,error):-
     user:myflags(semantest,true),
-    error_phase := 1,                % Reset Type check
+    user:error_phase := 1,                % Reset Type check
     user:myflags(cursor,Attempt1),
     maxl(N),
-    cursor := 0,                     % Failed with type check, but
+    user:cursor := 0,                     % Failed with type check, but
     parse_sentence(_,N,success),
     !,                               % => Meaningless (semantically)
 
@@ -1104,7 +1128,7 @@ indentprint(N,Y):-
 
 transfix([gpsflag:::Orgy | Rest],U) :-!,
 
-   ( Orgy \== [] -> smartdepflag :=true;smartdepflag :=false), %% if gps, special output
+   ( Orgy \== [] -> user:smartdepflag := true;user:smartdepflag := false), %% if gps, special output
 
     for(member(gps_origin(X,Y),Orgy),
            remember(gps_origin(X,Y))),
@@ -1283,7 +1307,7 @@ receive_tags(Struct):-
 
 update_tags(K):-
 
-   tags := K.
+   user:tags := K.
 
 
 create_taggercall(L2,PAT):-

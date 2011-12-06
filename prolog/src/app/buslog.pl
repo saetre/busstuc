@@ -53,16 +53,18 @@
 %% IMPORTS %% RS-111118
 :- ensure_loaded( '../declare' ).
 
+%% RS-111205, UNIT: Prolog
 :- use_module( library(lists), [ delete/3 ] ).
 
+%% RS-111205, UNIT: app/
 :- use_module( 'busanshp', [ time_options/1 ] ).        %% In app
 
+%% RS-111205, UNIT: /
 :- use_module( '../interfaceroute', [  decide_period/2  ] ).
 :- use_module( '../main', [ user:(:=)/2, gps_origin/2, progtrace/2,
                             timeout/3, traceprog/2, trackprog/2  ] ).
-
+%% RS-111205, UNIT: db/
 :- use_module( '../db/auxtables', [  busstat/2,  transbuslist/3  ] ).
-
 :- use_module( '../db/busdat', [
         airbus/1,                  % (BUS?)
         airbusstation/1,           % (STATION)
@@ -81,6 +83,8 @@
         spurious_return/2,
         thetramstreetstation/2
    ] ).  
+
+%% RS-111205, UNIT: dialog/
 :- use_module( '../dialog/frames2', [  frame_getvalue_rec/4 ] ).
 :- use_module( '../db/places',  [ alias_station/2, corr/2, foreign/1, isat/2,
         placestat/2, underspecified_place/1 ] ).
@@ -91,8 +95,10 @@
         delay_margin/1, maxarrivalslack/1, maxtraveltime/1, softime/3  ] ).
 :- use_module( '../db/topreg', [ route_period/4 ] ).
 
+%% RS-111205, UNIT: tuc/
 :- use_module( '../tuc/facts', [ (isa)/2, neighbourhood/1 ] ).
 
+%% RS-111205, UNIT: utility/
 :- use_module( '../utility/datecalc', [
     add_days/3,    datetime/6,    dayno/2,    days_between/3,    getdaynew/1 %%   // Get rid of exec call
   ] ).
@@ -2624,8 +2630,8 @@ today(Dag) :-
 findday(Daynr,Dag) :-
     getdaynew(Dag),           %%  utility/ computes day from todate
 
-    lastdaynr := Daynr,
-    lastday  := Dag.
+    user:lastdaynr := Daynr,
+    user:lastday := Dag.
  
 
 xlastday(Lastdaynr,Lastday):-
@@ -2748,7 +2754,7 @@ atdate(Date):-
                                     
 
 set_actualdate(Date):-
-     actualdate := Date.
+     user:actualdate := Date.
 
 
  

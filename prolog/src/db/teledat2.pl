@@ -7,46 +7,49 @@
 %% co-existing with BUSDAT
 
 :- module( teledat, [
-        expandkey/2,
-        %% DATA BASE INTERFACE SECTION
-        bustopic1/1,
-        building/1,
-
-        has_att_valx/6,
-        have_att_val/4,         %% TA-101110
-        has_att_val/4,          %% TA-110622
-        hazard_tagname/1,       %% goodbye: actually unnecessary
-        is_tagged/2,
-
-        is_dom_val/5,
-        ldaptotucplace/2, %  Tabularized Ad Hoc
-        legal_tagname/1,        %% Exception to hazard_tagname('
-        lookupdb2/3,
-        make_querycall/4,
-        %%%%%%%%%%   DSES  Important Files
-        teledbrowfile/1,
-        standardselect/1,
-        teleprocessdirect/4,
-        perform_querycall/2,
-        perform_querycall2/2,
-        create_dbquery/2,
-        possible_dom/2,
-        plinglist1/2,
-        plingelement/2,
-        unwanted_dbname/1,       %% <--- Ad Hoc
-        printdbresult/1,
-        setoftags/2,
-        tablename/1,      %% TLF-021114     %% Sets the name of the table in the database
-        teletopic1/1,
-        teledbtagfile/1,
-        write_querycall/1
+        expandkey/2,        %% DATA BASE INTERFACE SECTION
+        bustopic1/1,        building/1,
+        has_att_valx/6,       have_att_val/4,        has_att_val/4,        hazard_tagname/1,       %% goodbye: actually unnecessary
+        is_tagged/2,          is_dom_val/5,        ldaptotucplace/2, %  Tabularized Ad Hoc
+        legal_tagname/1,       %% Exception to hazard_tagname('
+        lookupdb2/3,          make_querycall/4,        teledbrowfile/1,        standardselect/1,
+        teleprocessdirect/4,  perform_querycall/2,        perform_querycall2/2,
+        create_dbquery/2,     possible_dom/2,        plinglist1/2,
+        plingelement/2,       unwanted_dbname/1,              printdbresult/1,
+        setoftags/2,          tablename/1,          teletopic1/1,
+        teledbtagfile/1,      write_querycall/1
     ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-
+%% RS-111205, UNIT: /
 :- ensure_loaded( '../declare' ).
+:- ensure_loaded( '../version' ).    %% version_date/1
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+:- use_module( library(lists), [ select/4 ] ).
+%:- use_module( library(system3), [ exec/3, shell/1 ] ).
+
+:- use_module( '../bustermain2', [
+        user:(:=)/2,    user:(=:)/2,    user:myflags/2, %% RS-111204 from declare.pl
+        getdbrowsdirect/2        %% From getphonedir.pl
+   ] ).
+
+%% RS-111205, UNIT: tuc
+%:-use_module( '../tuc/names', [
+%        compword/3,   kw/1, %% TA-100902 %%%%%%%%%  All the words appearing as [ ] constants in grammar
+%        noisew/1,     rewording/2,   synwordx/2,  xcompword/3
+%    ] ).
+%:- use_module( '../tuc/names', [ fact/1, user:instant/2 ] ).
+:- use_module( '../tuc/names', [ unwanted_name/1 ] ).
+:- use_module( '../tuc/semantic', [ (has_a)/2  ] ).  %% RS-111204    has_a/2 from facts.pl
+
+%% RS-111205, UNIT: utility/
+:- use_module( '../utility/utility', [
+        absorb/3,         append_atomlist/2, doubt/2,  for/2,
+        matchinitchars/3, output/1,          output/1, set_of/3,
+        set_ops/3
+   ] ). %% RS-111204 from utility
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% General predicate to expand (or not) a key
 %% fetched from database/telekeys.pl

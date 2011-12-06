@@ -5,22 +5,32 @@
 
 %% Synthesis of old checkitem.pl and checkitemtele.pl
 
+%% RS-111205, UNIT: dialog
+:- module( checkitem, [
+        checkitem/3, current_frame/1, remove_messages/2, remtp/3,
+        sysout_item/1, writeconstlist1st/1
+  ] ).
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% User input terminals
 
 %% IMPORTS
+%% RS-111205, UNIT: /
 :- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
-:- use_module( '../main', [   user:(:=)/2, dmeq/2,  user:myflags/2,  progtrace/2,  user:set/2, trackprog/2  ] ).
+:- use_module( '../main', [   user:(:=)/2, user:myflags/2,  trackprog/2  ] ). %% set/2, 
 
 %% NB  checkteleitem   and checkitem  are mingled %% TA-051106%%%%%%%%%%%%%
 %%     checkitem(tele,     checkitem(trans,
 
 :- dynamic current_frame/1, last_answer/2.
 
-%% UNIT: dialog
+%% RS-111205, UNIT: dialog/
+:- use_module( d_dialogue, [ subst_tql/4 ] ).
 :- use_module( frames2, [
-        frame_gettype_rec/3,  frame_setvalue_rec/4 
+        frame_gettype_rec/3,    frame_setvalue_rec/4,   find_askfor/3,          find_parentslot/3,
+        frame_getsubslots/2,    frame_gettype_rec/3,    frame_getvalue_rec/4,
+        frame_iscomplete/2,     frame_setexperience/4,  frame_setvalue_rec/4
     ] ).
 :- use_module( newcontext2, [
         addref/3, commitref/3, getcontext/2, getcurrent/1,
@@ -31,6 +41,10 @@
         writetelebusteranswer_rep/1,    writetelebusteranswer_saf/2,
         writetelebusteranswer_sqt/3,    writetelebusteranswer4/4
     ] ).
+:- use_module( update2, [
+        dorelax/3,       getuserrefer/2,  issubclass/2,   istype/2,   saturate/3,
+        updateframe/3,   updateframe_checkanswer/4,  updateitems/2
+  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -48,12 +62,8 @@
         writeanswer/1, waves/0,  writeprog/1
     ] ).
 %% Handle empty answer from buslog 
-:- use_module( '../app/negans', [
-        cannot/1, cannotanswer/1, makenegative/3, trytofool/2, trytofool/3 
-    ] ).
-:- use_module( '../app/pragma', [
-        flatroundre/2, ipragmaor0/2, ip2addto/4, pragma/3, pragma_complete/5
-    ] ).
+:- use_module( '../app/negans', [ makenegative/3, trytofool/2  ] ).
+:- use_module( '../app/pragma', [ flatroundre/2,  pragma/3 ] ).
 
 %% UNIT: utility
 :- use_module( '../utility/datecalc', [
@@ -66,8 +76,7 @@
 %    easterdate/2,    findfirstcomingdate/2,
 %    getdaynew/1,        isofloor/2,
         isday/1 ] ).
-:- use_module( '../utility/utility', [
-        delete1/3, doubt/2, ends_with/3,  for/2,  (listall)/1, remember/1,   roundmember/2,   set_of/3   ] ).
+:- use_module( '../utility/utility', [ doubt/2, (listall)/1, roundmember/2 ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

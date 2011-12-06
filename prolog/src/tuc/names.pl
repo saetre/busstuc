@@ -6,15 +6,8 @@
 
 %% Define this as the main file in the tuc module? No...
 :- module( names, [
-        abroad/1,
-        city/1,
-        community/2,
-        compname/3,
-        country/1,
-        generic_place/1,
-        samename/2,
-        streetsyn/1,
-        synname/2,
+        abroad/1, city/1, community/2, compname/3,  country/1,
+        generic_place/1,  samename/2,  streetsyn/1, synname/2,
         unwanted_name/1
   ] ).
 

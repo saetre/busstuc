@@ -5,9 +5,16 @@
 %% REVISED TA-080612
 
 % Tolker for Pragma-regler
-:- module( pragma, [ flatroundre/2, ipragmaor0/2, ip2addto/4, pragma/3, pragma_complete/5  ] ).
+:- module( pragma, [
+     flatroundre/2, ipragmaor0/2, ip2addto/4,
+     pragma/3, pragma_complete/5, pragma_aux/4  ] ).
 
-:- use_module( '../utility/utility.pl' ).       % utility functions like 
+:- use_module( '../app/interapp', [ prettypr/2 ] ).       % utility functions like 
+
+:- use_module( '../utility/utility', [
+        follow_after/3,     follow_sequence/3,  match/2,  out/1,   roundappend/3,   roundmember/2,
+        roundrecmember/2,   roundreverse/2,     test/1
+  ] ).       % utility functions like 
 
 %% Removed / to .. append ../   TA-080612
 %

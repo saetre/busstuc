@@ -3,6 +3,7 @@
 %% CREATED  TA-921129
 %% REVISED  TA-110707  RS-111121
 
+%% RS-111205, UNIT: tuc/
 :- module( facts, [ (isa)/2, have/4,    %% RS-111204    isa/2, from declare/main
         neighbourhood/1, precedent_firstname/1
    ] ).
@@ -19,16 +20,11 @@
 :- use_module( evaluate, [ fact/1 ] ).
 :- use_module( lex, [ unproperstation1/1  ] ).
 :- use_module( names, [ abroad/1, city/1, country/1 ] ).
-:- use_module( semantic, [
-        adj_templ/2, %% object ?  hvem var de første menneskene ? (trytofool)
-        (ako)/2,
-        (has_a)/2,
-        iv_templ/2, %% Tulle 
-        tv_templ/3
-  ] ).
+:- use_module( semantic, [  adj_templ/2, (ako)/2,  (has_a)/2,  iv_templ/2, tv_templ/3  ] ).
 :- use_module( tuc:world0, [ area/2 ] ).
 %:- ensure_loaded( tuc:world0 ).
 
+%% RS-111205, UNIT: app/
 :- use_module( '../app/busanshp', [ description/2 ] ).
 :- use_module( '../app/buslog', [ station/1 ] ).
 
@@ -70,7 +66,7 @@ have(_,subject,X,Y):-
 have(_,object,X,Y):-
    tv_templ(X,_,Y).
 
-%% have(team,stadium,brann,brann_stadion). %% Eksempel //deflag := true.
+%% have(team,stadium,brann,brann_stadion). %% Eksempel //user:deflag := true.
 
 /* SUSPENDED %% TA-100335
 
