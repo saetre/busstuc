@@ -3,6 +3,7 @@
 %% CREATED  TA-020617
 %% REVISED  TA-020624
 
+
 :- module( xmlparser, [ xmlrowparse/2, xmltaggerparse/2 ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

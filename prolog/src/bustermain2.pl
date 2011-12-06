@@ -8,10 +8,10 @@
         %%(:=)/2,    userNOTME:(=:)/2,    %% :=/2 main:and =: /2 exported from declare, through main, to "userNOTME:"
         analyse2/2,     begin/0,        break/1,        (c)/1,          clearport/0,
         closereadfile/0,                check/0,        create_taggercall/2,
-        ctxt/3,         difact/2,       fact0/1,        dmeq/2,         %% From dmeq.pl
+        ctxt/3,         difact/2,       fact0/1,        %% dmeq/2,         %% From dmeq.pl REM, RS-111206
         end/0,          english/0,      getfromport/1,  go/0,           golog/0,
         hei/0,          hi/0,           ho/0,           idiotpoint/0,   indentprintlist/2,
-        layout2/2,      listxt/0,       main:myflags/2, %% RS-111204 from declare.pl
+        layout2/2,      listxt/0,       %%  main:myflags/2, %% RS-111204 from declare.pl 111206
         maxl/1,         norsk/0,        othercommand/2, plustoatom/2,   printparse/1, processorwait/1,
         readfrom/1,     quit/0,         (r)/1,          readscript/0,
         readday/0,      receive_tags/1, run/0,          scanfile/2,     %%  DESTROYS  web writing
@@ -25,7 +25,7 @@
         %% From getphonedir.pl
         emptytag/0,       emptyrow/0,     getdbrowsdirect/2,    hazardous_tagname/1,
         reset_ldapcon/0,  reset_tags/0,   remove_dummycomps/2,  streamnoisopen/1,       
-        tshell/1,         x_getdbtags/2,  x_receive_tags/3,     xmlrowparse/2
+        tshell/1,         x_getdbtags/2,  x_receive_tags/3      %%, xmlrowparse/2
    ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -36,8 +36,8 @@
 
 %% Operators used by TUC
 :- ensure_loaded( declare ).
-%% RS-111205
-:- ensure_loaded( version ).
+%% RS-111206
+:- use_module( version, [ version_date/1 ] ).
 :- ensure_loaded( getphonedir ).
 
 :- use_module( interfaceroute, [  reset_period/0  ] ).
@@ -45,7 +45,14 @@
 :- use_module( main, [ (:=)/2, (=:)/2, closereadfile/0, end/0, getfromport/1,
         myflags/2,  processorwait/1,  readfrom/1, run/0, set/2, writelog/1, writepid/0 ] ).
 
-:- compile( monobus ). %% // after main.pl  Unknown error
+%:- compile( monobus ). %% // after main.pl  Unknown error
+:- use_module( 'db/teledat2', [ %% instead of compile (monobus) %% RS-111206
+     hazard_tagname/1,       %% goodbye: actually unnecessary
+     legal_tagname/1,       %% Exception to hazard_tagname('
+     teledbrowfile/1,       teledbtagfile/1
+    ] ).
+
+
 :- use_module( ptbwrite ).           %% Module PennTreeBank
 :- use_module( tucbuses, [  dcg_module/1,  backslash/1,
         language/1,     legal_language/1, script_file/1  ] ).
@@ -139,20 +146,20 @@ readscript:-
 
 readscript1(X):- 
 
-    main:trace := 0,
+    trace := 0,
     erase,  
 
     readfrom(X),
 
     main:skolocon =:  SM, main:skolemax := SM,   
 
-    main:trace := 1.
+    trace := 1.
 
 
 % Default settings. May be redefined
 
 initiate :-   %% called at compiletime !  
-    main:trace := 0,   %% Dialog 
+    trace := 0,   %% Dialog 
     main:maxdepth := 3,   
     main:error_phase := 0,
     main:context_id := 1,
@@ -188,9 +195,9 @@ clear:-
 clear1 :-
     main:dialog := 0, 
  %% Only complete queries, with defaults ( should be true/false ?)
-    main:trace := 0,  %% Dialog
-    main:traceprog := 1, 
-    main:traceans := 1,
+    trace := 0,  %% Dialog
+    traceprog := 1, 
+    traceans := 1,
 %%    main:queryflag := true, 
 %%    main:textflag := false,
     main:spellcheck := 1,   %% restored after debug 
@@ -387,7 +394,7 @@ testgram:-
     spy(DCG:st/9),        
     spy(DCG:do_phrase/9),
     spy(qev/1),       
-    main:trace := 3,
+    trace := 3,
     main:spellcheck := 0, %% debug makes it slow 
     main:parsetime_limit := 100000.  %% ONLY DEBUGGING
 
@@ -1134,6 +1141,9 @@ plustoatom1(X,X).
 
 %%%%%%%%%%%  THE END %%%%%%%%%%%%%%%%%%%%%%
 
+%% RS-111206 For debugging? or compiling?
+%:-assert(  main:myflags(rune,111206) ).
+%:- rune := 111206.
 
-  :- initiate.
+%:- initiate.
 

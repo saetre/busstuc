@@ -26,8 +26,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- use_module( '../main', [ main:myflags/2, set/2 ] ).
-:- use_module( lex, [   main:txt/3  ] ).
+:- use_module( '../main', [ myflags/2, set/2 ] ).
+:- use_module( lex, [   txt/3  ] ).
 
 %% Consensical Grammar Runtime Predicates
 
@@ -45,12 +45,12 @@ cc(U,UW,W,X,Y):-
 
 cc(U,X,X,UW,W):- 
    \+ frontgap(X),
-    main:txt(UW,w(_,[U]),W),
+    txt(UW,w(_,[U]),W),
     upcur(W).             % UPDATE *  
 
 
 word(U,X,X,UW,W):-        %% Reads the word as is
-   main:txt(UW,w(U,_),W), 
+   txt(UW,w(U,_),W), 
    upcur(W).
 
 % CODED WORDS
@@ -65,7 +65,7 @@ w(U,T,UW,W,X,Y):-
 
 w(U,U,X,X,UW,W):- 
    \+ frontgap(X), %%%%% \+ nogap(X),      %% TA-040809 
-    main:txt(UW,w(_,U),W),    % Experiment (Dont advance pointer if fail)
+    txt(UW,w(_,U),W),    % Experiment (Dont advance pointer if fail)
     upcur(W).            % UPDATE * 
                          % An error message can never come too early
 
@@ -133,7 +133,7 @@ check_stop(nil,[],[],X,X).  %% True if nothing left on stack
 
 look_ahead(w(F),nil,X,X,Y,Y):- 
     \+ frontgap(X),      %% (text blocked also for look_ahead)
-    main:txt(Y,w(_,F),_). 
+    txt(Y,w(_,F),_). 
 
 
 look_ahead(w(F),nil,X,X,Y,Y):- 
@@ -143,7 +143,7 @@ look_ahead(w(F),nil,X,X,Y,Y):-
 
 look_ahead([F],nil,X,X,Y,Y):- 
     \+ frontgap(X),      %% (text blocked also for look_ahead)
-    main:txt(Y,w(_,[F]),_). 
+    txt(Y,w(_,[F]),_). 
 
 
 look_ahead([F],nil,X,X,Y,Y):- 
@@ -160,7 +160,7 @@ not_look_ahead(A,B,C,D,E,F) :- %% TA-081229
 
 not_look_ahead(w(F),nil,X,X,Y,Y):- 
     \+ frontgap(X), 
-    main:txt(Y,w(_,F),_),
+    txt(Y,w(_,F),_),
     !,fail.
 
 
@@ -176,12 +176,12 @@ not_look_ahead([F],nil,X,X,Y,Y):-  %% TA-081229
 
 not_look_ahead([F],nil,X,X,Y,Y):- 
     \+ frontgap(X), 
-    main:txt(Y,w(_,[F]),_),
+    txt(Y,w(_,[F]),_),
     !,fail.
 
 %%  unnec or wrong %% TA-081229
 %% not_look_ahead([F],nil,X,X,Y,Y):- 
-%%     main:txt(Y,w(_,[F]),_),
+%%     txt(Y,w(_,[F]),_),
 %%     !,fail.
 %% 
 

@@ -15,7 +15,7 @@
 :- use_module( 'app/busanshp', [] ).    %%
 :- use_module( 'app/buslog', [] ).  %% Compile LAST, undetected ERROR(?)
 :- use_module( 'app/bustrans', [] ).    %% 
-:- compile(    'app/dmeq').        %%
+:- use_module( 'app/dmeq', [] ).        %%
 :- use_module( 'app/interapp', [] ).
 :- use_module( 'app/negans', [] ).      %%
 :- use_module( 'app/pragma', [] ).

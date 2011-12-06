@@ -2119,9 +2119,9 @@ specname(trondheim_torg,'Trondheim Torg').
 specname(trondheim_sentralstasjon,'Trondheim Sentralstasjon'). %% TA-110628
 specname(ts,'Trondheim Sentralstasjon'). 
 
-specname(ts10,'Trondheim Sentralstasjon ') :- myflags(airbusflag,true),!. 
-specname(ts11,'Trondheim Sentralstasjon ' ):- myflags(airbusflag,true),!.  
-specname(ts13,'Trondheim Sentralstasjon')  :- myflags(airbusflag,true),!. 
+specname(ts10,'Trondheim Sentralstasjon ') :-  main:myflags(airbusflag,true),!. 
+specname(ts11,'Trondheim Sentralstasjon ' ):-  main:myflags(airbusflag,true),!.  
+specname(ts13,'Trondheim Sentralstasjon')  :-  main:myflags(airbusflag,true),!. 
 
 specname(ts10,'Trondheim Sentralstasjon holdeplass 10'). 
 specname(ts11,'Trondheim Sentralstasjon holdeplass 11').  %% EH-031017

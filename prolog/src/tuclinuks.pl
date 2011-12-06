@@ -8,7 +8,7 @@
 %% Operators used by TUC
 %% RS-111205, UNIT: /
 :- ensure_loaded( 'declare' ).
-:- use_module( main, [   (:=)/2, main:myflags/2, set/2  ] ).
+:- use_module( main, [   (:=)/2, myflags/2, set/2  ] ).
 
 ?-use_module( tucbuses, [] ).   % Common File for tucbus  (english) and    tucbuss (norwegian)
 

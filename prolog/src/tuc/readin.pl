@@ -15,7 +15,7 @@
 
 %% RS-111205, UNIT: /
 :- ensure_loaded( userNOTME:'../declare.pl').
-:- use_module( '../main', [  main:myflags/2, norsource_prefix/0  ] ).
+:- use_module( '../main', [  myflags/2, norsource_prefix/0  ] ).
 :- use_module( '../tucbuses', [  prompt/1  ] ).
 
 %% RS-111205, UNIT: utility/

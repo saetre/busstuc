@@ -11,7 +11,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%:- use_module( '../main', [ main:myflags/2, set/2, ':='/2 ] ).
+%:- use_module( '../main', [ myflags/2, set/2, ':='/2 ] ).
 :- ensure_loaded( '../declare' ).
 
 %% RS-111118 "Disable" 'ako' as an operator for this file, "tightest binding"

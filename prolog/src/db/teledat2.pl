@@ -23,14 +23,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 %% RS-111205, UNIT: /
 :- ensure_loaded( '../declare' ).
-:- ensure_loaded( '../version' ).    %% version_date/1
+:- use_module( '../version' ).    %% version_date/1
 
 :- use_module( library(lists), [ select/4 ] ).
 %:- use_module( library(system3), [ exec/3, shell/1 ] ).
 
-:- use_module( '../bustermain2', [
-        %%(:=)/2,    userNOTME:(=:)/2,    main:myflags/2, %% RS-111204 from declare.pl
-        getdbrowsdirect/2        %% From getphonedir.pl
+:- use_module( '../bustermain2', [ getdbrowsdirect/2 ] ).   %% From getphonedir.pl
+:- use_module( '../main', [myflags/2
+        %%(:=)/2,    userNOTME:(=:)/2,    myflags/2, %% RS-111204 from declare.pl
    ] ).
 
 %% RS-111205, UNIT: tuc
@@ -369,7 +369,7 @@ has_att_val(sms,price,tt,1).
 % Address
 
 has_att_val(person,address,X,(Street,Num,Char)):-
-   main:myflags(teleflag,true), 
+    main:myflags(teleflag,true), 
    has_att_val(person,street,X,Street),
    has_att_val(person,streetnumber,X,Num),
    has_att_val(person,streetcharacter,X,Char).
@@ -379,7 +379,7 @@ has_att_val(person,address,X,(Street,Num,Char)):-
 % has_att_valx(person,lastname,telephone,amble,tore_amble,999)
 
 has_att_valx(Person,Lastname,Telephone,Amb,ToreAmble,N):-
-    main:myflags(teleflag,true),
+     main:myflags(teleflag,true),
     is_dom_val(Person,Lastname,Amb,_Amble,ToreAmble),
     has_att_val(Person,Telephone,ToreAmble,N).
 
@@ -387,14 +387,14 @@ has_att_valx(Person,Lastname,Telephone,Amb,ToreAmble,N):-
 
 
 is_tagged(Word,Concept):-
-    main:myflags(tags,Tags),
+     main:myflags(tags,Tags),
     member([Word,Concept],Tags),
 
     \+ unwanted_name(Word). %% hans \= Hans  (ad hoc) 
 
 
 setoftags(Tore,Taglist):-
-    main:myflags(tags,Tags),
+     main:myflags(tags,Tags),
 
     set_of(Tag,
          (member([result=WT],Tags),
@@ -492,14 +492,14 @@ teleprocessdirect(AddSelect,Table,Wherelist,Results):-
 
 
 perform_querycall2(InternalQuery,Result):-
-    main:myflags(useexternal,true),                          %% TLF 030408
+     main:myflags(useexternal,true),                          %% TLF 030408
     !,
     create_dbquery(InternalQuery,Query),
 
     getdbrowsdirect(Query,Result). %% Result is now in TQA (rowsample0)
 
 perform_querycall2(_InternalQuery,_Result):-               %% TLF 030408
-    \+ main:myflags(useexternal,true),
+    \+  main:myflags(useexternal,true),
     !,
     output('flag useexternal false ---> no db lookup').
 
@@ -534,7 +534,7 @@ perform_querycall(select(Select1,Person,Wherelist,Z),Z):-
 
 
 write_querycall(ExternalQuery):-
-     main:myflags(traceprog,M), number(M), M >= 3,
+      main:myflags(traceprog,M), number(M), M >= 3,
      nl,
      write('QUERY:  '),
      output(ExternalQuery),nl. 

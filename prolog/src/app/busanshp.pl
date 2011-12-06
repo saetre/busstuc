@@ -40,8 +40,9 @@
 
 %% RS-111205, UNIT: /
 :- use_module( '../interfaceroute', [  current_period/4,  decide_period/2,  default_period/3  ] ).
-:- use_module( '../main', [   (:=)/2, dmeq/2,  myflags/2,  progtrace/2,  set/2  ] ).
+:- use_module( '../main', [   (:=)/2, myflags/2,  progtrace/2,  set/2  ] ).
 :- use_module( '../tucbuses', [  dict_module/1  ] ).
+
 
 %% RS-111205, UNIT: app/
 :- use_module( buslog, [  %% RS-111203 app/
@@ -52,14 +53,18 @@
         timenow/1,         timenow2/2,       today/1,         unbound/1,   % Hjelpepredikat
         veh_mod/1
     ] ).
-:- use_module( interapp, [   newfree/1   ] ).     %% RS-111203 app/
+:- use_module( dmeq, [     dmeq/2  ] ).     %% RS-111203 app/
+:- use_module( interapp, [ newfree/1   ] ).     %% RS-111203 app/
 
 %% RS-111205, UNIT: db/
 :- use_module(   '../db/busdat', [ cutloop_station/2,  exbusname/2, % (ROUTE,ROUTE)
       home_town/1,  moneyunit/1,   vehicletype/2  ] ).   % (PLACE) % (NAME)
 :- use_module( '../db/places', [   corr/2,   specname/2,   short_specname/2  ] ).
 :- use_module( '../db/regstr', [   streetstat/5 ] ). %% RS-111201 Remember to update source program, which is makeaux?
-:- ensure_loaded('../db/statcoord' ).
+
+%% RS-111206   :- ensure_loaded('../db/statcoord' ).
+:- use_module( '../db/statcoord2', [ statcoord2/5 ] ).
+
 :- use_module(   '../db/timedat', [defaultprewarningtime/1,kindofday/2, % (DAY,DAY)
      maxnumberofindividualdepartures/1,  morning_break/1,  todaysdate/1  ] ). % (NUMBER) %% % (CLOCK)
 :- use_module( '../db/topreg', [   default_message/3,      period_message/2  ] ).
@@ -221,14 +226,16 @@ nullify(X,X):-!.
 
 
 xstatcoord(STATNO, _Intname,Extname, Xcoord,Ycoord):-
-    statcoord(STATNO,Extname, Xcoord,Ycoord),
+%%    statcoord(STATNO,Extname, Xcoord,Ycoord), %% RS-111206, REOVING
+    statcoord2(STATNO, _ , Extname, Xcoord,Ycoord),
     !.
 
 
 xstatcoord(_STATNO, Intname,Extname, Xcoord,Ycoord):- %% NB Missing station in direction,
     veh_mod(CurrMod),                            %% try other side of street
     CurrMod:hpl(STATNO,Intname,_,Extname),        %% e.g Bjarne Næss veg
-    statcoord(STATNO,_Extname, Xcoord,Ycoord),
+    statcoord2(STATNO, _ , Extname, Xcoord,Ycoord),
+%%   statcoord(STATNO,     Extname, Xcoord,Ycoord), %% RS-111206, REMOVING
     !.
 
 

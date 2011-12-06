@@ -9,13 +9,12 @@
 %% ?-prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates// Testing
 
 :- ensure_loaded( 'declare' ).
-%?-use_module('declare.pl').
 
 ?-use_module( tucbuses, [] ).   % Common File for tucbus  (english) and    tucbuss (norwegian)
 
-?-compile('version.pl').
+?-use_module( 'version.pl', [] ).
 
-?-use_module( 'main.pl', [] ).
+?-use_module( 'main.pl', [ run/0 ] ).
 %?-ensure_loaded( 'main.pl' ).
 
 ?-compile('monobus.pl'). %% // after main.pl  Unknown error

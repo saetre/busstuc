@@ -5,9 +5,11 @@
 
 %% UNIT: app
 %% Domain Equivalents common  tele and bus
+:- module( dmeq, [ dmeq/2 ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+:- use_module( '../main', [ myflags/2 ]).
 :- use_module( '../tuc/fernando', [ subclass0/2 ]).
 :- use_module( '../utility/utility', [ testmember/2 ] ).
 
@@ -251,7 +253,7 @@ dmeq(notbus,airbus).
 dmeq(notbus,boat). 
 dmeq(notbus,boat_route_plan).
 dmeq(notbus,helicopter).
-dmeq(notbus,nightbus) :- \+ main:myflags(nightbusflag,true). 
+dmeq(notbus,nightbus) :- \+  main:myflags(nightbusflag,true). 
 dmeq(notbus,airplane). 
 dmeq(notbus,plane).     %% 
 dmeq(notbus,schoolbus). 

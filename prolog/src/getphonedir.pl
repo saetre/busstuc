@@ -4,12 +4,13 @@
 %% REVISED TA-070612
 
 
-:- use_module( library(system), [] ).
+%%:- use_module( library(system), [] ).
 :- use_module( library(system3), [ exec/3, shell/1 ] ).
 
 %% RS-111205, UNIT: /
-:- use_module( main, [   (:=)/2, main:myflags/2, set/2  ] ).
+:- use_module( main, [   (:=)/2, myflags/2, set/2  ] ).
 :- use_module( tucbuses, [  dict_module/2  ] ).
+:- use_module( xmlparser, [ xmltaggerparse/2 ] ).
 
 %% Printing the result from database query 
 :- use_module( 'dialog/parseres', [ get_chars_t/1 ] ).
@@ -23,7 +24,7 @@
         append_atomlist/2,  append_atoms/3,     delete1/3,    output/1,
         set_ops/3,          set_eliminate/4,    set_filter/4   ] ).
 
-:- ensure_loaded( xmlparser ). %% [ xml_parse/2,  xml_parse/3, xml_subterm/2, xml_pp/1 ] ).
+:- use_module( xmlparser, [] ). %% [ xml_parse/2,  xml_parse/3, xml_subterm/2, xml_pp/1 ] ).
 :- ensure_loaded( 'tagger/tagger' ). %% [ xml_parse/2,  xml_parse/3, xml_subterm/2, xml_pp/1 ] ).
 
 
