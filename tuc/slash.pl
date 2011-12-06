@@ -3,10 +3,30 @@
 %% CREATED TA-921106
 %% REVISED TA-081110
 
-:- module( slash, [ (def)/1 ] ).
+:- module( slash, [ (def)/1 ] ).        %% export def/1. %% Prefix operator-predicate
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%% %%%%%%%% RS-111118
 :- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
+
+%% RS-111205, UNIT: tuc
+:- use_module( evaluate, [ fakt/1, fact/1, valof/2 ] ).
+:- use_module( facts, [ have/4   ] ).  %% RS-111204    isa/2 from facts.pl
+:- use_module( semantic, [  iv_templ/2, tv_templ/3  ] ).
+:- use_module( world0, [
+        african/1,        american/1,           asian/1,        australian/1,
+        borders/2,        containsX/4,          european/1,     flows_outfrom/2     
+   ] ).           %% Module TUC  %% RS-111121
+
+
+%% RS-111205, UNIT: app/
+:- use_module( '../app/busanshp', [ description/2 ] ).
+
+%% RS-111205, UNIT: utility/
+:- use_module( '../utility/utility', [ out/1 ] ).  %% Module util
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Definition of facts / 
 %% Not removed by reset
@@ -152,7 +172,7 @@ def time/before/X/Y:-
     number(Y),
     X < Y .
 
-def time/when/X/Y:-
+def time/(when)/X/Y:-
     number(X),
     number(Y),
     X = Y .

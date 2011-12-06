@@ -18,13 +18,13 @@
 
 g:-['tucbuster.pl'].   %% :-[tuctele]. %%% // Tele things %% TA-051018
 
-:- (duallangflag :=true). %% telebuster is not  speech based
+:- (user:duallangflag := true). %% telebuster is not  speech based
 
-?- (telebusterflag := true). %% Permanent 
+?- (user:telebusterflag := true). %% Permanent 
 
-?- (teleflag := true).       %% Volatile %% Ad Hoc 
+?- (user:teleflag := true).       %% Volatile %% Ad Hoc 
 
-?- (windowsflag := false).
+?- (user:windowsflag := false).
 
 
 %% Emergency procedure to avoid segmentation violation %% TA-060208

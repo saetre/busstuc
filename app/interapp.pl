@@ -8,20 +8,38 @@
 % Bruker pragma til å bygge buslog-program fra TQL og svar fra buslog-program
 
 :- module( interapp, [
-        avoidfool/1,    decidewday/2,
-        determine_application_period/1, determine_query_period/0,
-        execute_program/1,             execute_program2/2,             
-        ieval/1,        invisible_mess/1,       isuccess/1,
-        makeanswer/4,   newfree/1,      notbothfree/2,  waves/0,
-        webstat/3,      writeanswer/1,  writeprog/1
+        avoidfool/1,   decidewday/2,     determine_application_period/1,
+        determine_query_period/0,        execute_program/1,     execute_program2/2,             
+        ieval/1,       invisible_mess/1, isuccess/1,            makeanswer/4,
+        newfree/1,     notbothfree/2,    prettypr/2,            waves/0,
+        webstat/3,     writeanswer/1,    writeprog/1
    ] ).
 
 %%% %%%%%%%% RS-111118
+%% RS-111205, UNIT: /
 :- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
+:- use_module( '../main', [ printdots/0 ] ).
+:- use_module( '../interfaceroute', [  search_period_module/3  ] ).
 
 :-volatile webstat/3.
 :-dynamic webstat/3.
 
+%% RS-111205, UNIT: app/
+:- use_module( busanshp, [  empty_sms_message/1, make_total_google/2, pay/0, printmessage/1 ] ).
+:- use_module( buslog, [ veh_mod/1 ] ).
+:- use_module( pragma, [ pragma/3, pragma_aux/4  ] ).
+:- use_module( negans, [ makenegative/3, trytofool/3  ] ).
+
+%% RS-111205, UNIT: db/
+:- use_module( '../db/timedat', [ todaysdate/1  ] ). % (NUMBER) %% % (CLOCK)
+:- use_module( '../tuc/evaluate', [ evaluateq/1 ] ).
+
+%% RS-111205, UNIT: utility/
+:- use_module( '../utility/utility', [
+        flatround/2,    for/2,          foralltest/2,   forget/1,
+        newconst/1,     numbervars/1,   sequence_member/2
+   ] ).
+   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -87,21 +105,21 @@ determine_query_period :-
      
     veh_mod(H),
 
-    (H=r1617_100621 -> query_period :=team;
-     H=r1611_100823 -> query_period :=atb;
-     query_period :=nil).
+    (H=r1617_100621 -> user:query_period := team;
+     H=r1611_100823 -> user:query_period := atb;
+     user:query_period := nil).
 
 determine_application_period([_:::TQL]):-
     veh_mod(H),
     (sequence_member(date(A,B,C) isa date,TQL) -> %% date occurs
         search_period_module(tt,date(A,B,C),_J) ; _J=H),
      !,
-    (H=r1617_100621 -> application_period :=team;
-     H=r1611_100823 -> application_period :=atb;
-     application_period :=nil).
+    (H=r1617_100621 -> user:application_period := team;
+     H=r1611_100823 -> user:application_period := atb;
+     user:application_period := nil).
 
 determine_application_period(_):-
-    application_period :=nil.
+    user:application_period := nil.
 
 %¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
 

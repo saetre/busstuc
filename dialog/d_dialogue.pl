@@ -3,10 +3,9 @@
 %% CREATED AM-980218
 %% REVISED TA-060706
 
-:- module( d_dialog, [confused/1, %evalline_multi/2,
-    last_answer/2, linecounter/1, %processinput/1, quit_dialog/0, reset_conns/0,
-    subst_tql/4,
-    varmember/2
+:- module( d_dialog, [ confused/1,    %evalline_multi/2,
+    last_answer/2,     linecounter/1, %processinput/1, quit_dialog/0, reset_conns/0,
+    subst_tql/4,       varmember/2
    ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -24,7 +23,7 @@
 
 
 %dialog :- 
-%   dialog := 1, 
+%   user:dialog := 1, 
 %   reset_period,
 %   reset_context,
 %   dialog2.
@@ -35,9 +34,9 @@
 %
 %processinput(Q) :-                     %%AM-980301
 %	
-%   dialog := 1,
-%	error_phase := 0,
-%   nightbusflag := false,   %% ad hoc, must be reset %% TA-060706
+%   user:dialog := 1,
+%	user:error_phase := 0,
+%   user:nightbusflag := false,   %% ad hoc, must be reset %% TA-060706
 %	translate2(Q,TQL),
 %	nl,
 %

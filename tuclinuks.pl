@@ -11,8 +11,8 @@
 
 %?-compile(tucbuses). % Both languages are compiled
 
-    :-  (unix_language := nor).    %% Installation language for  unix
-    :-  (language := norsk).       %% Initial default user language  
+    :-  (user:unix_language := nor).    %% Installation language for  unix
+    :-  (user:language := norsk).       %% Initial default user language  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

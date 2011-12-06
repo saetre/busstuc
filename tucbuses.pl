@@ -8,7 +8,7 @@
         backslash/1,    compile_english/0,      compile_norsk/0,
         %%% THESE ARE NOW CALLED FROM MAIN DIRECTORY
         dcg_file/2,     dcg_module/2,           dcg_module/1,        dcg_file/1,
-        dict_file/2,    user:dict_module/1,     dict_module/2,
+        dict_file/2,    dict_module/1,          dict_module/2,
         gram_file/2,    gram_module/1,          gram_module/2,
         morph_file/2,   morph_module/2,
         %%%
@@ -23,8 +23,14 @@
 :-use_module(library(system)). 
 
 ?- compile('declare.pl').  %% Loaded in respective modules: app, db, dialog, tagger, tuc, utility, etc.?
+:- use_module( main, [
+        user:(:=)/2,  user:(=:)/2  ]).  %% :=/2 and =:/2 exported from declare, through main, to "user:"
 
 ?- use_module('ptbwrite.pl').%% TA-061030
+
+%% RS-111205, UNIT: tuc/
+:- use_module( 'tuc/metacomp', [ makegram/1  ] ).
+
 
 ?- use_module('utility/utility.pl').
 ?- use_module('utility/library').
@@ -37,25 +43,25 @@ style_check(_).
 %?- compile('utility/makeauxtables.pl'). %% From utility
 ?- use_module( 'utility/extracut', [] ).  %% TA-080201 %% RS-111204
 
-:- (airbusflag := false). %% NEW FLAG %% TA-090331
+:- (user:airbusflag := false). %% NEW FLAG %% TA-090331
 
-:- (busflag := true).     %% Full Bus Application 
-:- (queryflag := true).   %% Statements are implicit queries 
-:- (semantest := false).  %% No distinction between syntactic/semantic error
-:- (spellcheck := 1).
+:- (user:busflag := true).     %% Full Bus Application 
+:- (user:queryflag := true).   %% Statements are implicit queries 
+:- (user:semantest := false).  %% No distinction between syntactic/semantic error
+:- (user:spellcheck := 1).
 
   %?-compile('utility/extractreg.pl'). %% SUSPENDED
-  %:-(tramflag := true).   %% Trams are included ( Route 1 )
+  %:-(user:tramflag := true).   %% Trams are included ( Route 1 )
 
-  %%  :- (single_sentence := true). 
+  %%  :- (user:single_sentence := true). 
   %% DIS-Allow several sentences on a line
 
 legal_language(english).
 legal_language(norsk). %% NB not 'norwegian'
 
-language(L) :- language := L. %% Set dynamically
+language(L) :- user:language := L. %% Set dynamically
 
-user:dict_module(D):-language(L),dict_module(L,D).
+dict_module(D):-language(L),dict_module(L,D).
 
 morph_module(D):-language(L),morph_module(L,D).
 
@@ -70,7 +76,7 @@ script_file(S):-
     language(L),script_file(L,S).
 
 %prompt(' ') :-
-%   norsource := true. %% TA-110207
+%   user:norsource := true. %% TA-110207
 %
 prompt(P) :-
     language(L),

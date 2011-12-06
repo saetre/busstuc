@@ -29,7 +29,7 @@
 %context( Id ) :-                                    %% AM-980311
 %	dbIskey( state, Id ),
 %	!,
-%	context_id := Id,
+%	user:context_id := Id,
 %	dbUpdate(dman, current, Id),
 %	track(1, 
 %	(nl,write('Old context'),nl)).
@@ -37,7 +37,7 @@
 %context( Id ) :-                                    %% AM-980311
 %	\+ dbIskey(state, Id),
 %	!,
-%	context_id := Id,
+%	user:context_id := Id,
 %	newframe(Id::frame, bustuc),
 %	dbAdditem( state, 
 %	           Id, 

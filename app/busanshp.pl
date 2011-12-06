@@ -6,32 +6,33 @@
 %%%%%%%%% COMMON VERSION BUSTER/BUSTUC %%%%%%%%%%%%%%%
 %% RS-111121 UNIT: App
 :- module( busanshp, [
-        bcp/1,      bcpbc/1,    bcw/2,     busleave/9,  busleaveset/6,  busman/2,
-        bwr2bc/1,   bwc/2,      bwq/1,     bw1/1,       bwrbc/1,        bwrbus/2,
-        bwrbusbc/2, bwrprices/1,bwstat2/2, bwtimes2/1,  bwt2/1,         comma/0,
-        convifpossible/2,       corresporder/3,         colon/0,        comptimeflag/2,
-        db_reply/3, description/2,          dot/0,      doublyprinted/1,
-        earliesttimes/0,        endline/0, evening_time0/2,    evening_time/2, evening_time24/3,
-        find_last_departure/2,  findsetoftimes/2,       firstarrive/5,  firstRID/2,
-        genplural/2,            getlastarrival/3,       gootrace/1,     google/1, %% Just executable mark in busans    
-        i_or_a_bus/3,           languagenr/1,           make_total_google/2,        mixopt/3,
-        nibcp/1,     nopay/0,   nopay1/0,  notatnight/2,                numberofnextbuses/1,
-        numberofnextbuses2/2,   ondate/1,  ondays/1,    outandarrives2/2,       %(_STARTSTOP,_INTSTREET,_INTSTAT)
-        outdeplist/6,           outdeplist00/6,            outdummy/2,  outfromtocorr/6,
-        outstreetconn/3,        paraph2/1, paraphrase/1,                paraphrase_changes1/1,
-        paraphrase_tele/2,      paraphrase2/2,          paraphrase3/3,
-        paraphs/1,        pay/0,           pay1/0,      pen0/1,        period/0,
-        period0/0,       plural/3,         prent0/1,    primeout/1,
-        primeoutput/1,    print_paraphrase_message/1,  printmessage/1,                punkt/0,
-        question/0,
-        relevant_message/1,        reply/1,         %% Just marker 
+        addrefdialog/2,  bcp/1,           bcpbc/1,       bcw/2,
+        busleave/9,      busleaveset/6,   busman/2,      bwr2bc/1,
+        bwc/2,           bwq/1,           bw1/1,         bwrbc/1,
+        bwrbus/2,        bwrbusbc/2,      bwrprices/1,   bwstat2/2,
+        bwtimes2/1,      bwt2/1,          comma/0,
+        convifpossible/2,corresporder/3,  colon/0,    comptimeflag/2,
+        db_reply/3,      description/2,   dot/0,      doublyprinted/1,
+        earliesttimes/0, empty_sms_message/1,       endline/0, evening_time0/2,    evening_time/2, evening_time24/3,
+        find_last_departure/2,            findsetoftimes/2,       firstarrive/5,  firstRID/2,
+        genplural/2,     getlastarrival/3,          gootrace/1,    google/1, %% Just executable mark in busans    
+        i_or_a_bus/3,    languagenr/1,              make_total_google/2,    memberids/3,        mixopt/3,
+        nibcp/1,         nopay/0,       nopay1/0,    notatnight/2,                numberofnextbuses/1,
+        numberofnextbuses2/2,           ondate/1,   ondays/1,    outandarrives2/2,       %(_STARTSTOP,_INTSTREET,_INTSTAT)
+        outdeplist/6,    outdeplist00/6,outdummy/2, outfromtocorr/6,
+        outstreetconn/3, paraph2/1,     paraphrase/1,           paraphrase_changes1/1,
+        paraphrase_tele/2,              paraphrase2/2,          paraphrase3/3,
+        paraphs/1,       pay/0,         pay1/0,     pen0/1,        period/0,
+        period0/0,       plural/3,      prent0/1,   primeout/1,
+        primeoutput/1,   print_paraphrase_message/1,printmessage/1,                punkt/0,
+        question/0,      relevant_message/1,        reply/1,         %% Just marker 
         select/2,        selectmap/2,      %% was var (not assigned)
-        sentenceend/1,        setoffirst/3,        setopts/3,        smart_time_option/1,        smart_time_options/1,
-        sorttimes/4,        space/0,        space0/0,        special_day/1,        specname0/2,        standnight/1,
-        startmark/0,        stationlistorand/3,
-        theplural/2, time_options/1,
+        sentenceend/1,   setoffirst/3,  setopts/3,  smart_time_option/1,        smart_time_options/1,
+        sorttimes/4,     space/0,       space0/0,   special_day/1,        specname0/2,        standnight/1,
+        startmark/0,     stationlistorand/3,
+        theplural/2,     time_options/1,
         warningtime/2, %% super Ad Hoc %% TA-110202
-        writename/1,        writetimes/2
+        writefield1/1,   writename/1,        writetimes/2
    ]).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -39,8 +40,8 @@
 
 %% RS-111205, UNIT: /
 :- use_module( '../interfaceroute', [  current_period/4,  decide_period/2,  default_period/3  ] ).
-:- use_module( '../main', [   user:(:=)/2, dmeq/2,  user:myflags/2,  progtrace/2,  user:set/2  ] ).
-:- use_module( '../tucbuses', [  user:dict_module/1  ] ).
+:- use_module( '../main', [   user:(:=)/2, dmeq/2,  user:myflags/2,  progtrace/2,  set/2  ] ).
+:- use_module( '../tucbuses', [  dict_module/1  ] ).
 
 %% RS-111205, UNIT: app/
 :- use_module( buslog, [  %% RS-111203 app/
@@ -53,6 +54,7 @@
     ] ).
 :- use_module( interapp, [   newfree/1   ] ).     %% RS-111203 app/
 
+%% RS-111205, UNIT: db/
 :- use_module(   '../db/busdat', [ cutloop_station/2,  exbusname/2, % (ROUTE,ROUTE)
       home_town/1,  moneyunit/1,   vehicletype/2  ] ).   % (PLACE) % (NAME)
 :- use_module( '../db/places', [   corr/2,   specname/2,   short_specname/2  ] ).
@@ -62,11 +64,13 @@
      maxnumberofindividualdepartures/1,  morning_break/1,  todaysdate/1  ] ). % (NUMBER) %% % (CLOCK)
 :- use_module( '../db/topreg', [   default_message/3,      period_message/2  ] ).
 
+%% RS-111205, UNIT: dialog/
 :- use_module( '../dialog/newcontext2', [  addref/3, getcurrent/1  ] ).
 :- use_module( '../dialog/frames2', [  frame_getvalue_rec/4 ] ).
 :- use_module( '../dialog/parseres', [ ldaptotuc/2 ] ).
 
-:- use_module( '../tuc/dict_n', [] ).
+%% RS-111205, UNIT: tuc/
+%:- use_module( '../tuc/dict_n', [] ).
 :- use_module( '../tuc/evaluate', [ fact/1 ] ).  %% (ako)/2, %% RS-111204
 :- use_module( '../tuc/facts', [ (isa)/2 ]).
 :- use_module( '../tuc/fernando', [ subclass0/2 ]).
@@ -74,21 +78,18 @@
 :- use_module( '../tuc/metacomp', [ language/1 ] ).
 :- use_module( '../tuc/semantic', [ (ako)/2 ] ).
 
+%% RS-111205, UNIT: utility/
 :- use_module( '../utility/datecalc', [  add_days/3, before_date1/2, sub_days/3 ] ).
-:- use_module( '../utility/library', [  nth/3  ] ).
+:- use_module( '../utility/library', [  nth/3, reverse/2 ] ).
 :- use_module( '../utility/utility', [
-        append_atomlist/2,        append_atoms/3,
-        delete1/3,        deleteall/3,        doubt/2,
-        firstmem/2,        fnuttify2/2,        for/2,
-        lastmem/2,        lastmems/3,
-        out/1,        output/1,
-        maximum/2,        maxval/3,        minimum/2,        minval/3,
-        number_to_string/2,
-        once1/1,        out/1,        output/1,
-        reverse/2,        roundmember/2,        roundwrite/1, %% catches var
-        sequence_member/2,        set_filter/4,        set_of/3,        set_ops/3,        set_union/3,        split/4,
-        test/1,        testmember/2,
-        reverse/2
+        append_atomlist/2,  append_atoms/3,     delete1/3,      deleteall/3,
+        doubt/2,            firstmem/2,         fnuttify2/2,    for/2,
+        lastmem/2,          lastmems/3,         out/1,          output/1,
+        maximum/2,          maxval/3,           minimum/2,      minval/3,
+        number_to_string/2, once1/1,            out/1,          output/1,
+        roundmember/2,      roundwrite/1,   %% catches var
+        sequence_member/2,  set_filter/4,       set_of/3,       set_ops/3,
+        set_union/3,        split/4,            test/1,         testmember/2
   ] ). %% RS-111204 from utility
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -919,7 +920,7 @@ justoutputthelist(Deps,DirPlace,Out,Opts,DESTMAP):-
 
     getdeptime(Dep,Firstdeparturetime),
     addrefdialog(firstdeparturetime,Firstdeparturetime),
-    firstdeparturetime := Firstdeparturetime, %% Moved to firstdepnotice
+    user:firstdeparturetime := Firstdeparturetime, %% Moved to firstdepnotice
 
     justoutputthelist0(Deps,DirPlace,Out,Opts,DESTMAP). %% no warning 
 
@@ -1049,7 +1050,7 @@ firstdepnotice(Dep):-
 
     getdeptime(Dep,Firstdeparturetime), 
     addrefdialog(firstdeparturetime,Firstdeparturetime),
-    firstdeparturetime := Firstdeparturetime, 
+    user:firstdeparturetime := Firstdeparturetime, 
 
     ((user:myflags(warningflag,true),user:myflags(smsflag,true)) ->
         (deptimeofwarning(Dep,Date,Time),
@@ -1860,8 +1861,8 @@ outfromtocorr1(_Opts,Dep,OutDep1,Mid01,(OutDep2,earliesttimes),corr(Dep,Mid01)):
     vehicletype(StartBusN,Bust1), 
     vehicletype(EndBusN,Bust2), 
 
-   firstdeparturetime := StartTime, %% AD HOC
-   lastarrivaltime := EndTime,
+   user:firstdeparturetime := StartTime, %% AD HOC
+   user:lastarrivaltime := EndTime,
 
    difftime( OffTime,StartTime,Duration1),
 
@@ -3751,7 +3752,7 @@ xspecname(TMN_S,S):-
 specname0(S0,S):- specname(S0,S),!.
 specname0(S0,S):- bigcap(S0,S).  
 
-ordinal2(X,Y,Z):-user:dict_module(D),D:ordinal2(X,Y,Z).
+ordinal2(X,Y,Z):-dict_module(D),D:ordinal2(X,Y,Z).
 
 
 description(thing,tao):-!. 

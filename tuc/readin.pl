@@ -7,12 +7,20 @@
 %% UNIT: tuc
 :- module( readin, [
         alpha/3,        alphanums/3,    ask_file/1,     ask_user/1,
-        digits/3,       read_in/1,      readoneline/1,  readrestquote/3  ] ).
+        digits/3,       read_in/1,      readoneline/1,  readrestquote/3,
+        words/3 
+   ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%% RS-111205, UNIT: /
 :- ensure_loaded( user:'../declare.pl').
-    
+:- use_module( '../main', [  user:myflags/2, norsource_prefix/0  ] ).
+:- use_module( '../tucbuses', [  prompt/1  ] ).
+
+%% RS-111205, UNIT: utility/
+:- use_module( '../utility/utility', [ output/1, splitlast/3 ] ).  %% Module util
+
 %% NB 0015 \-> 2415
 
 %%  Read a sentence into a list of symbols
@@ -134,9 +142,9 @@ initread(U):-
 
    (  member(K1,[37, 92])  % '%' '\'   %% '¤'=164
 
-   -> commandflag := true 
+   -> user:commandflag := true 
            ;
-      commandflag := false),
+      user:commandflag := false),
            
      readrest0(K1,U).
 
@@ -162,7 +170,7 @@ readrest0(T,Comline):-
 
 
 readrest(T,[]) :- T== -1, %%   EOF
-    end_of_file := true,
+    user:end_of_file := true,
 
     seen.  
 

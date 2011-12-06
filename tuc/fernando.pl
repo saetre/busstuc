@@ -26,7 +26,7 @@
         monthnumber/2,      negate/3,            noun_adverb/4,         numberdate/2,
         plausibleclocktest/3, pluralis/2,        plausible_busno/1,     preadjs_template/4,
         rep_verb/1,         rv_template/7,       setvartype/2,          screenmeasure/2,
-        subclass0/2,        subtype0/2,          subject_object_test/3, teen/1,
+        subclass/2,        subclass0/2,        subtype0/2,          subject_object_test/3, teen/1,
         testconstraint/2,   thenwhat/3,          tidvarp/3,             tv_template/5,
         type/2,             value_world/1,       vartype/3,             vartypeid/2,
         verb_compl/6,       verbtype/2,          which_thing/2,         whodunnit/2
@@ -36,33 +36,23 @@
 :- ensure_loaded( '../declare' ).  % :- use_module( user:'../declare.pl').
 
 %% RS-111205, UNIT: /
-:- use_module( '../main', [   user:(:=)/2, user:myflags/2, user:set/2  ] ).
-:- use_module( '../tucbuses', [  user:dict_module/1  ] ).
+:- use_module( '../main', [   user:(:=)/2, user:myflags/2 ] ). %, set/2  ] ).
+:- use_module( '../tucbuses', [  dict_module/1  ] ).
 
 %% RS-111205, UNIT: tuc/
 :- use_module( dict_e, [ preposition/1 ] ).
+:- use_module( evaluate, [ fact/1, user:instant/2 ] ).
+:- use_module( facts, [ (isa)/2   ] ).  %% RS-111204    isa/2 from facts.pl
 :- use_module( semantic, [ 
-        a_compl/4,      %%  bussen er forsinket slik at jeg går
-        adj_templ/2, %% object ?  hvem var de første menneskene ? (trytofool)
-        adjnamecomp_templ/3,
+        a_compl/4,       abnormalverb/2,       adj_templ/2,          adjnamecomp_templ/3,
         adjname_templ/2,        %% TA-110701
-        adjnoun_templ/2,
-        adjnouncomp_templ/3,
-        (ako)/2,
-        aligen2/2,
-        align1/2,
-        coher_class/3,
-        particle/3,
-        (has_a)/2,
-        iv_templ/2, %% Tulle 
-        jako/2, %% hyponym of adjectives
-        measureclass/1,
-        n_compl/3,
-        rv_templ/2,
-        tv_templ/3,
-        v_compl/4,
-        vako/2  %% hyponym of verbs
+        adjnoun_templ/2, adjnouncomp_templ/3,  (ako)/2,               aligen2/2,
+        align1/2,        coher_class/3,        dtv_templ/4,           (has_a)/2,
+        iv_templ/2,      jako/2,               measureclass/1,        n_compl/3,
+        particle/3,      rv_templ/2,           stanprep/2,            tv_templ/3,
+        v_compl/4,       vako/2  %% hyponym of verbs
   ] ).
+
 
 %% RS-111205, UNIT: db/
 :- use_module( '../db/timedat', [ this_year/1 ] ).

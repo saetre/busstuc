@@ -20,23 +20,23 @@
 
 ?-compile('monobus.pl'). %% // after main.pl  Unknown error
 
-?-((gpsflag := true),          %% NB TEST VERSION, NTNU Server
-  (smsflag := false),          %%  NB NTNU server
-%%(internal_airbusflag := true), %% TA-101101 // No. Included pro forma
-  (origlanguage := norsk),     %%
-  (language := norsk),         %% Initial default user language
-  (actual_domain := tt),       %% TA-110301
-  (smspermanentflag := false), %% only web
-  (unix_language := eng),      %% Standard for IDI/NTNU UNIX Solaris )
-  (duallangflag := true),      %% Also try English if unknown words
-  (noparentflag := true),      %% Ignore content of parentheses
-  (nodotflag := false),        %% Intermediate dots are retained
-%%(nodotflag := true),         %% Interm. dots are  removed
-  (tramflag := false),         %% A/S Gråkallen not OK at TEAM, OK at NTNU
-  (mapflag  := false),         %% dont show MAP trace
-  (parsetime_limit := 10000)).  %% slower server %%  benchmark
-%%(disablenightbus := true).   %% AD HOC !!!!!!!!!!!
-%%(notimeoutflag := true),
+?-((user:gpsflag := true),          %% NB TEST VERSION, NTNU Server
+  (user:smsflag := false),          %%  NB NTNU server
+%%(user:internal_airbusflag := true), %% TA-101101 // No. Included pro forma
+  (user:origlanguage := norsk),     %%
+  (user:language := norsk),         %% Initial default user language
+  (user:actual_domain := tt),       %% TA-110301
+  (user:smspermanentflag := false), %% only web
+  (user:unix_language := eng),      %% Standard for IDI/NTNU UNIX Solaris )
+  (user:duallangflag := true),      %% Also try English if unknown words
+  (user:noparentflag := true),      %% Ignore content of parentheses
+  (user:nodotflag := false),        %% Intermediate dots are retained
+%%(user:nodotflag := true),         %% Interm. dots are  removed
+  (user:tramflag := false),         %% A/S Gråkallen not OK at TEAM, OK at NTNU
+  (user:mapflag := false),         %% dont show MAP trace
+  (user:parsetime_limit := 10000)).  %% slower server %%  benchmark
+%%(user:disablenightbus := true).   %% AD HOC !!!!!!!!!!!
+%%(user:notimeoutflag := true),
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

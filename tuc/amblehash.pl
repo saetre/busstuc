@@ -7,6 +7,7 @@
 
 
 %% IMPORTS
+%% RS-111205, UNIT: utility/
 :- use_module( '../utility/utility', [
         delete1/3, ends_with/3,  for/2,   remember/1,   roundmember/2,   set_of/3   ] ).
 
@@ -32,7 +33,8 @@
 %% Search with all combinations with one character missing
 
 
-:-dynamic toredef/2, torehash/2.
+:-volatile toredef/2, torehash/2.
+:-dynamic  toredef/2, torehash/2.
 
 
 amblesearch(X,Y):-toresearch(X,Y).

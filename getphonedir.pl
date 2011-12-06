@@ -4,7 +4,26 @@
 %% REVISED TA-070612
 
 
-:- use_module(library(system)).
+:- use_module( library(system), [] ).
+:- use_module( library(system3), [ exec/3, shell/1 ] ).
+
+%% RS-111205, UNIT: /
+:- use_module( main, [   user:(:=)/2, user:myflags/2, set/2  ] ).
+:- use_module( tucbuses, [  dict_module/2  ] ).
+
+%% Printing the result from database query 
+:- use_module( 'dialog/parseres', [ get_chars_t/1 ] ).
+           
+:- use_module( 'tagger/xml',  [        %nmtokens/1,     %%from xml_acquisition
+        xml_parse/2,  xml_subterm/2 ] ).
+
+:- use_module( 'utility/library', [ remove_duplicates/2 ] ).
+:- use_module( 'utility/utility', [
+        append_atomlist/2,  append_atoms/3,     delete1/3,
+        set_eliminate/4,    set_filter/4   ] ).
+
+:- ensure_loaded( xmlparser ). %% [ xml_parse/2,  xml_parse/3, xml_subterm/2, xml_pp/1 ] ).
+:- ensure_loaded( 'tagger/tagger' ). %% [ xml_parse/2,  xml_parse/3, xml_subterm/2, xml_pp/1 ] ).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -46,8 +65,8 @@ track(1, (write('*** Tag: '),out(Expression), write('tag '), write(TagSum), nl))
    Outstream = '$stream'(OutputstreamNo),
 
    % store the streams for later use
-   outstream := InputstreamNo,
-   instream  := OutputstreamNo,
+   user:outstream := InputstreamNo,
+   user:instream := OutputstreamNo,
 
    get_chars_t(Result),
    set_input(OldInput).
@@ -55,39 +74,39 @@ track(1, (write('*** Tag: '),out(Expression), write('tag '), write(TagSum), nl))
 
 
 
-%getdbrowsdirect(Query, Result) :-
-%
-%   %append_atomlist(['javaw ldapconnection.LDAPSearcher srch "', Query, '"'], Expression),
-%
-%
-%  (user:myflags(windowsflag,true) ->  
-%        Expression = 'javaw ldapconnection.LDAPSearcher'
-%        ; 
-%        Expression = 'java ldapconnection.LDAPSearcher'
-%   ),
-%
-%
-%   %write('java 3'), nl,
-%   %write(Expression), nl, 
-%
-%
-%  open('theparam.txt',write,Stream),
-%      write(Stream,'srch '),
-%      write(Stream,Query),
-%      nl(Stream),
-%  close(Stream),
-%
-%
-%
-%track(2, (write('*** Db: '),out(Expression),
-%         write('srch '), write(''''),write(Query),write(''''), nl,nl)), 
-%   
-%   texec(Expression, [pipe(Outstream), pipe(Instream), std], _Pid),
-%
-%   set_input(Instream),
-%   get_chars_t(Result),
-%   write(Outstream),
-%   seen.
+getdbrowsdirect(Query, Result) :-
+
+   %append_atomlist(['javaw ldapconnection.LDAPSearcher srch "', Query, '"'], Expression),
+
+
+  (user:myflags(windowsflag,true) ->  
+        Expression = 'javaw ldapconnection.LDAPSearcher'
+        ; 
+        Expression = 'java ldapconnection.LDAPSearcher'
+   ),
+
+
+   %write('java 3'), nl,
+   %write(Expression), nl, 
+
+
+  open('theparam.txt',write,Stream),
+      write(Stream,'srch '),
+      write(Stream,Query),
+      nl(Stream),
+  close(Stream),
+
+
+
+track(2, (write('*** Db: '),out(Expression),
+         write('srch '), write(''''),write(Query),write(''''), nl,nl)), 
+   
+   texec(Expression, [pipe(Outstream), pipe(Instream), std], _Pid),
+
+   set_input(Instream),
+   get_chars_t(Result),
+   write(Outstream),
+   seen.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -113,8 +132,8 @@ reset_ldapcon :-
 	set_output('$stream'(OutstreamNo)),
 	nl,		%% send empty line to java-prog to terminate it
 	set_output(OldOutput),
-	outstream := 0,
-	instream := 0.
+	user:outstream := 0,
+	user:instream := 0.
 
 
 
@@ -242,38 +261,38 @@ receive_tags(Struct):-
     output(Struct).
 
 
-%y_receive_tags(Tags,Compnames,File) :-          %% MTK 021018/TLF
-%    see(File),
-%    get_chars(Input),
-%    seen,
-%    xml_parse(Input,XML),
-%    xml_subterm(XML, element(result,_,Data)),
-%    !,
-%    parse_tags(Data,T,C),
-%    remove_duplicates(T,Tags),
-%    remove_duplicates(C,Compnames),
-%    nl,nl,
-%    trackprog(3, (
-%        write('tags = '),output(Tags),
-%        write('compnames = '),output(Compnames))
-%    ).
-%
+y_receive_tags(Tags,Compnames,File) :-          %% MTK 021018/TLF
+    see(File),
+    get_chars(Input),
+    seen,
+    xml_parse(Input,XML),
+    xml_subterm(XML, element(result,_,Data)),
+    !,
+    parse_tags(Data,T,C),
+    remove_duplicates(T,Tags),
+    remove_duplicates(C,Compnames),
+    nl,nl,
+    trackprog(3, (
+        write('tags = '),output(Tags),
+        write('compnames = '),output(Compnames))
+    ).
+
 
 reset_tags :- %% TA-061009
 
-   tags := [].
+   user:tags := [].
 
 
 update_tags(K):-
 
-   tags := K.
+   user:tags := K.
 
 remove_dummycomps(Compnames,Compnames2):-
     set_filter(X, \+(X = [Lehre,[],Lehre]),Compnames,Compnames2).
 
 %update_compnames(Compnames) :-                  %% MTK 021018
 %    remove_dummycomps(Compnames,Compnames2),
-%    compnames := Compnames2.
+%    user:compnames := Compnames2.
 %
 %
 %create_taggercall(L2,PAT):-

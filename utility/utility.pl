@@ -8,46 +8,38 @@
 % http://www.sics.se/sicstus/spider/site/determinacy_analyzer.html#pseudo_directive
 
 :- module( utility, [  %% (:=)/2, (=:)/2, %% Permanently moved to main.pl!! RS-11-1204
-        absorb/3,        aggregate/3,        %% not stable, original order swapped
-        all/1,        ans/1,        append_atomlist/2,        append_atoms/3,        append_bl_atoms/3,         appendfiles/3,
-        atomname/2,
-        begins_with/3,        breakpoint/2,
-        charno/3,        code_chars/2, %% ad hoc   8 -> 08, ellers likt
-        code_chars2/2,        coerc2d/2,        coerce2d/2,        compar/3,
-        concat_atomlist/2,        convcodetocharacters/2,        convert_expression_to_atom/2, %% ad hoc
-        debug/2,        default/2,        delall/3,
-        delete1/3,        deleteall/3,
-        divmod/4,        (do)/1,        doall/1,  % P, then succeed
-        do_count/1,       doubt/2,        
-        ends_with/3,        equal/2,        error/2,
-        featurematch/4,        featurematchlist/2,
-        firstlist/3,        firstlist1/3,        firstmem/2,
-        flatlist/2,         flatten/2,          fnuttify1/2,         fnuttify2/2, %% surround single %% TA-100225
-        follow_after/3,        follow_sequence/3,        for/2,        foralltest/2,        forget/1,        freshcopy/2,
-        ident_member/2,        identical/2,        implies/2,        iso_atom_chars/2,
-        last_character/2,        lastmem/2,        lastmems/3,        (listall)/1,        listlength/2, %% length/2  backtracks
-        makacc/3,        makeacc/2,        makelistn/2,        makestring/2,
-        match/2,        matchinitchars/2, %% match(amb,amble).
-        matchinitchars/3,        maximum/2,        maxval/3,        measurecall/2,        measurecall1/2,        mergeavlists/3,
-        minimum/2,        minval/3,        user:myflags/1,
-        naive/0,        newconst/1,        nreverse/2,        nthval/3,
-        number_of/3,        number_to_string/2,        numbervars/1,
-        occ/2,        occrec/2,        once1/1, 
-        outputlist/1,        out/1,        output/1,
-        pling/1,        prettyprint/1,        proclaim/0,        pront/1,        psl/2,        purge/3,
-        rem_dups/3,        remember/1,        remove_duplicates1/2,   % preserves order of first occurrence
-        replace/4,         replacelist/4,        reverse/2,
-        roundappend/3,         roundmember/2,        roundrecmember/2,       roundwrite/1, %% catches var
-        sequence_append/3,     sequence_flatten/2,   sequence_member/2,      sequence_reverse/2,   sequence_write/1, %% New name, more standard
-        set_difference/3,        set_eliminate/4,        set_filter/4,        set_of/3,        set_ops/3,        set_union/3,
-        shell_copyfile/2,        snipfirst/2,        sniplast/2,        split/4,        splitlast/3,
-        spyon/1,        spyoncondition/2,        startbatch/0,        starttime/0,        starttimebatch/0,        stoptimebatch/0,  %% TA-100111
-        subcase/2,        subsum1/2,        subsumes/2,   % X at least as general
-        sumcount/3,
-        tab/1,        takebatch/0,        taketime/0,        test/1,        testmember/2,        textlength/2,        tryonce/1,
-        union/3,        unsquare/2,       
-        variant/2,       
-        writelist/1,        writenumber2/2, %% write a number with exactly N digits
+        absorb/3,           aggregate/3,           all/1,               ans/1,
+        append_atomlist/2,  append_atoms/3,        append_bl_atoms/3,   appendfiles/3,
+        atomname/2,         begins_with/3,         breakpoint/2,        charno/3,
+        code_chars/2,       code_chars2/2,         coerc2d/2,           coerce2d/2,
+        compar/3,           concat_atomlist/2,     convcodetocharacters/2,  convert_expression_to_atom/2, %% ad hoc
+        debug/2,            default/2,             delall/3,            delete1/3,
+        deleteall/3,        divmod/4,              (do)/1,              doall/1,  % P, then succeed
+        do_count/1,         doubt/2,               ends_with/3,         equal/2,
+        error/2,            featurematch/4,        featurematchlist/2,  firstlist/3,
+        firstlist1/3,       firstmem/2,            flatlist/2,          flatround/2,
+        flatten/2,          fnuttify1/2,           fnuttify2/2,         follow_after/3,
+        follow_sequence/3,  for/2,                 foralltest/2,        forget/1,        freshcopy/2,
+        get/1,  ident_member/2,     identical/2,           implies/2,           iso_atom_chars/2,
+        last_character/2,   lastmem/2,             lastmems/3,          (listall)/1,     listlength/2, %% length/2  backtracks
+        makacc/3,           makeacc/2,             makelistn/2,         makestring/2,
+        match/2,            matchinitchars/2,      matchinitchars/3,    maximum/2,       maxval/3,
+        measurecall/2,      measurecall1/2,        mergeavlists/3,      minimum/2,       minval/3,
+        user:myflags/1,     naive/0,               newconst/1,          nreverse/2,      nthval/3,
+        number_of/3,        number_to_string/2,    numbervars/1,        occ/2,           occrec/2,
+        once1/1,            outputlist/1,          out/1,               output/1,        pling/1,
+        prettyprint/1,      proclaim/0,            pront/1,             psl/2,           purge/3,   put/1,
+        rem_dups/3,         remember/1,            remove_duplicates1/2,% preserves order of first occurrence
+        (replace)/4,        replacelist/4,         roundappend/3,       roundmember/2,
+        roundrecmember/2,   roundreverse/2,        roundwrite/1,        sequence_append/3,   sequence_flatten/2,
+        sequence_member/2,  sequence_reverse/2,    sequence_write/1,    %% New name, more standard
+        set_difference/3,   set_eliminate/4,       set_filter/4,        set_of/3,        set_ops/3,
+        set_union/3,        shell_copyfile/2,      snipfirst/2,         sniplast/2,      split/4,
+        splitlast/3,        spyon/1,               spyoncondition/2,    startbatch/0,    starttime/0,
+        starttimebatch/0,   stoptimebatch/0,       subcase/2,           subsum1/2,       subsumes/2,   % X at least as general
+        sumcount/3,         tab/1,                 takebatch/0,         taketime/0,      test/1,
+        testmember/2,       textlength/2,          tryonce/1,           ttyflush/0,      union/3,   unsquare/2,
+        variant/2,          writelist/1,           writenumber2/2, %% write a number with exactly N digits
         writepred/1,        writeZ/1
    ] ).
 
@@ -58,20 +50,31 @@
 %    process_create(Shell, ['-c', [ ls, ' ', file(Dir) ]]).
 
 %% USES
-:- use_module( library(process) ).
-:- use_module( 'library' ).
+:- use_module( library(process), [] ).
+:- use_module( 'library', [ nth/3, reverse/2 ] ).
+:- use_module( library(system3), [ shell/1 ] ).
 
 :- ensure_loaded( '../declare' ).   %% Already called from main?!
+:- ensure_loaded( '../sicstus4compatibility' ).  %% Compatible with sicstus4, get0/1 etc.
+
+%% RS-111121 UNIT: App
+:- use_module( '../app/busanshp', [ memberids/3 ] ).
+
+%% RS-111205, UNIT: tuc/
+%:- use_module( '../tuc/dict_n', [] ).
+:- use_module( '../tuc/metacomp', [ language/1 ] ).
+:- use_module( '../tuc/readin', [  read_in/1    ] ). %%reads text to a list
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %:- ['datecalc'].   %% Already called from main
 
 
-%X := Y :-       %% Set value X to Y
+%user:X := Y :-       %% Set value X to Y
 %    user:set(X,Y).
 %
-%X =: Y :-       %% Set value Y from X
+%user:X =:  Y :-       %% Set value Y from X
 %    user:myflags(X,Y).
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -157,17 +160,17 @@ numbervars(F):-
 
 starttimebatch :- %% TA-100111
     statistics(runtime,[T,_]),
-    batchstart := T.
+    user:batchstart := T.
 
 startbatch :- 
     statistics(runtime,[T,_]),
-    batchstart := T.
+    user:batchstart := T.
 
 stoptimebatch :-  %% TA-100111
    takebatch.
 takebatch :-
    statistics(runtime,[T2,_]),
-   batchstart =: T1,
+   user:batchstart =:  T1,
    Elapse is (T2-T1),
    out('Total: '),out(Elapse),output(ms). %% TA-980115
 
@@ -518,13 +521,13 @@ doall(P):-  % P, then succeed
 
 
 do_count(F):- 
-    F =: M,
+    user:F =:  M,
     !,
     N is M+1,
-    F := N.
+    user:F := N.
 
 do_count(F):- 
-    F := 1 . 
+    user:F := 1 . 
 
 begins_with(AS,A,S):- 
     atom(AS),
@@ -667,8 +670,8 @@ identical(A,B):-
 
 
 newconst(Y):- 
-    do_count(const), % const := const+1
-    const =: Y.
+    do_count(const), % user:const := const+1
+    user:const =:  Y.
 
 
 

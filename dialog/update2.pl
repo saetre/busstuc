@@ -5,7 +5,59 @@
 
 %%% Predicates for updating and using the context frames
 
+%% RS-111205, UNIT: dialog
+:- module( update, [
+        dorelax/3,      framevalue/2,   getuserrefer/2,  issubclass/2,  istype/2,
+        knowFlag/1,     saturate/3,     saturatemod/3,   telerelax/3,
+        updateframe/3,  updateframe_checkanswer/4,       updateitems/2
+  ] ).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% IMPORTS
+%% RS-111205, UNIT: /
+:- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
+:- use_module(    '../main', [   user:(:=)/2, user:myflags/2,  trackprog/2  ] ). %% set/2, 
+
+%% RS-111121 UNIT: App
+:- use_module( '../app/busanshp', [ paraphrase_tele/2, paraphrase2/2 ] ).
+:- use_module( '../app/busanshp', [  paraphrase2/2  ] ).
+:- use_module( '../app/interapp', [ execute_program/1 ] ).
+:- use_module( '../app/pragma', [ pragma/3 ] ).
+
+%% RS-111205, UNIT: dialog/
+%% Common version for frames and teleframes 
+:- use_module( frames2, [ 
+          frame_getvalue_rec/4, frame_setvalue_rec/4,  frametemplate/2, is_subframe/2
+   ] ).
+:- use_module( parseres, [
+        parseresultdata/2,  parseresultdatacount/2,  recordcount/2,   removefromlist/3,  tuctoldap/2
+  ] ).
+
+%% RS-111205, UNIT: dialog/
+:- use_module( frames2, [ frame_setvalue_rec/4,    frame_getvalue_rec/4,  frame_setvalue_rec/4 ] ).
+:- use_module( newcontext2, [  addref/3  ] ).
+
+%% RS-111205, UNIT: app/
+%:- use_module( '../app/busanshp', [  empty_sms_message/1, make_total_google/2, pay/0, printmessage/1 ] ).
+%:- use_module( '../app/buslog', [ veh_mod/1 ] ).
+:- use_module( '../app/pragma', [ pragma/3, pragma_aux/4, pragma_complete/5  ] ).
+%:- use_module( '../app/negans', [ makenegative/3, trytofool/3  ] ).
+
+%% RS-111205, UNIT: db/
+:- use_module( '../db/teledat2', [   teleprocessdirect/4  ] ).
+
+%% RS-111205, UNIT: tuc/
+:- use_module( '../tuc/facts', [ (isa)/2 ] ).  %% RS-111204    isa/2 from facts.pl
+:- use_module( '../tuc/fernando', [ subclass0/2 ]).
+%:- use_module( '../tuc/metacomp', [ language/1 ] ).
+%:- use_module( '../tuc/semantic', [ (ako)/2, testclass/1 ] ).
+%:- use_module( '../tuc/slash', [ (def)/1 ] ).    %% export def/1. %% Prefix operator-predicate
+%:- use_module( '../tuc/translat', [ (=>)/2,  testquant/3  ] ).
+
+%% RS-111205, UNIT: utility/
+:- use_module( '../utility/utility', [  output/1, roundmember/2, set_of/3   ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  updateframe(teleprocess([],_,[],_),_,_) :- !, fail. %% TLF 030611 - bad solution, but stops some stupid behaviour
 %%  Revoked %% TA-051030  e.g. %% N: Kan du gjenta ?
 

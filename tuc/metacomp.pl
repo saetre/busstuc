@@ -7,14 +7,9 @@
 %% MODULE: metacomp
 
 :- module( metacomp, [
-        genprod/2,
-        genvirt/1,
-        language/1,
-        plink/0, plonk/0,
-        optiprod/1,
-        regram/0,
-        segram/0,
-        virtf/1, virtf/2, virtx/1
+        genprod/2,   genvirt/1, language/1,    makegram/1,
+        plink/0,     plonk/0,   optiprod/1,    regram/0,
+        segram/0,    virtf/1,     virtf/2,   virtx/1
   ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -25,6 +20,11 @@
 %http://www.sics.se/sicstus/docs/4.1.3/html/sicstus/PlUnit-Tests-and-Production-Systems.html
 %:- use_module( library(system), [environ/2, datime/1]).
 :- use_module( library(system), [ datime/1 ]).
+
+:- use_module( '../tucbuses', [
+        dcg_file/2,  dcg_module/2,   gram_module/2,  style_check/1
+  ] ).
+
 
 :- use_module( '../utility/utility').
 
@@ -59,7 +59,7 @@
 
 segram:- %% short %% noursource facilities %% TA-100207
     nodebug, 
-    norsource := true,
+    user:norsource := true,
     consult(gramn),
     makegram.
 

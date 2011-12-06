@@ -13,9 +13,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%% RS-111205, UNIT: /
 :- ensure_loaded( '../declare' ).
-:- use_module( '../main', [ track/2 ]).
-
+:- use_module( '../main', [ %% :=/2 and =:/2 exported from declare, through main, to "user:"
+        user:(:=)/2,    user:(=:)/2, track/2
+   ] ).
 
 :- use_module( evaluate, [ disqev/1, fakt/1 ]).         %% tuc/
 :- use_module( facts, [ (isa)/2 ]).

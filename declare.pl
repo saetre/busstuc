@@ -48,15 +48,17 @@
 :-volatile  user:myflags/2.
 :-dynamic   user:myflags/2.
 
+%% :- use_module( main, [ set/2 ] ) .   RECURSIVE! Don't loop!
 %% remove_duplicates  Standard  -> library
-user:set(Key,Value) :-
+set(Key,Value) :-
     retractall( user:myflags(Key,_) ),
     assert( user:myflags(Key, Value) ).
 
-user:X := Y :-       %% Set value X to Y, :=/2 or (:=)/2
-    user:set(X,Y).
+
+user:(X := Y) :-       %% Set value X to Y, :=/2 or (:=)/2
+    set(X,Y).
 
 %% Difficult to make, difficult to understand :-/
-user:X =: Y :-       %% Set value Y from X, =:/2 or (=:)/2     
+user:(X =: Y) :-       %% Set value Y from X, =:/2 or (=:)/2     
     user:myflags(X,Y).
 
