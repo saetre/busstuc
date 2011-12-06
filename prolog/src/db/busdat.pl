@@ -178,13 +178,13 @@ disallowed_night(date(2009,04,13)).  %%  Påskeaften om morgenen
 
 
 %maxnumberofindividualdepartures(2):-
-%    user:myflags(smsflag,true),
-%    \+ user:myflags(nightbusflag,true),
+%    main:myflags(smsflag,true),
+%    \+ main:myflags(nightbusflag,true),
 %    !. 
 %
 %maxnumberofindividualdepartures(3):- %% not ridiculously many sequence
-%    user:myflags(smsflag,true),
-%    user:myflags(nightbusflag,true),
+%    main:myflags(smsflag,true),
+%    main:myflags(nightbusflag,true),
 %    !. 
 %
 %maxnumberofindividualdepartures(3). 
@@ -238,16 +238,16 @@ exbusname(9924,skolebuss).
 
 
 xplacestat(trondheim,tmn_trondheim):- 
-    user:myflags(tmnflag,true).  
+    main:myflags(tmnflag,true).  
 
 
 xplacestat(town,hovedterminalen). 
 xplacestat(trondheim,hovedterminalen) :- 
-    \+user:myflags(dialog,1).
+    \+main:myflags(dialog,1).
 
 
 xplacestat(klæbu,klæbu_sentrum):- %% Not possible mess in daytime
-    user:myflags(nightbusflag,true). %%   NATTBUSSEN
+    main:myflags(nightbusflag,true). %%   NATTBUSSEN
 
 
 
@@ -257,7 +257,7 @@ xplacestat(klæbu,klæbu_sentrum):- %% Not possible mess in daytime
 
 
 xsynplace(X,Y):-
-    user:myflags(tmnflag,true),
+    main:myflags(tmnflag,true),
     !,
     domain_module(_,TMN),
     TMN \== nil, 
@@ -265,7 +265,7 @@ xsynplace(X,Y):-
 
 
 xsynplace(X,Y):-
-    \+ user:myflags(tmnflag,true),
+    \+ main:myflags(tmnflag,true),
     !,
     domain_module(tt,TMN),
     TMN \== nil, 
@@ -276,11 +276,11 @@ xsynplace(X,Y):-
 %% PLACE INTERFACE SECTION
 
 xsynplace(sentrum,gb_st_olavs_gt):- %% Generalize
-    user:myflags(tmnflag,true). 
+    main:myflags(tmnflag,true). 
 
                        
 xsynplace(toget,ts) :-  %% presumes stasjonen is not noun def
-   \+ user:myflags(tmnflag,true).
+   \+ main:myflags(tmnflag,true).
 
                         %%  jeg når toget til oslo
                         %%  jeg bor på (lade og toget) går
@@ -328,7 +328,7 @@ streetstat(A,B,C,D,E):-
 
 
 thetramno(One):-
-    user:myflags(tmnflag,true),  
+    main:myflags(tmnflag,true),  
     unique_vehicle(tram,true),
     thetram(One).
 
@@ -336,7 +336,7 @@ tramstation(st_olavs_gt).
 tramstation(st_olavs_street). %% for street reference 
 %% tram_station(st_olavs_gt). %% Wrong, kep for security %% TA-100317
 tramstation(X):-
-    user:myflags(tramflag,true),  
+    main:myflags(tramflag,true),  
     %tram_module(Tram),   %%  tram_mod(Tram), %% succeeds also if tramflag=false
     Tram \== nil, %% precaution 
     Tram:hpl(_,_,X,_).   %%
@@ -345,7 +345,7 @@ tramstation(X):-
 
 
 thetramstation(STOGT):-
-    user:myflags(tmnflag,true), 
+    main:myflags(tmnflag,true), 
     tramstation(STOGT).
  
 
@@ -363,7 +363,7 @@ nostationfor1(X):-nostation(X).     %%  Places with no close bus station
 
 
 nostationfor1(X):-
-    \+ user:myflags(tmnflag,true), 
+    \+ main:myflags(tmnflag,true), 
     tramstation(X),
     \+ station(X).
 
@@ -377,7 +377,7 @@ nostationfor1(X):-
 
 
 xforeign(X):-
-    user:myflags(actual_domain,TT),
+    main:myflags(actual_domain,TT),
     xforeign(TT,X), %% NB relative to Team !
     \+ nightbusdestination(X).
 
@@ -397,11 +397,11 @@ xforeign(tt,C):- community(C,County), %% tt malvik foreign to fb
                 \+ station(C). %% e.g. berg
 
 nightbusdestination(X):-
-    user:myflags(nightbusflag,true), 
+    main:myflags(nightbusflag,true), 
     member(X,[klæbu]). %% Ad Hoc
 
 
-nostation(st_olavs_gt):- \+ user:myflags(tmnflag,true). 
+nostation(st_olavs_gt):- \+ main:myflags(tmnflag,true). 
 
 
 
@@ -417,11 +417,11 @@ bus_dependent_station(Bus,Said,Meant):-
     bus_depend_station(Bus,Said,Meant),
     !.
 bus_dependent_station(_Bus,Said,Meant):- 
-    \+ user:myflags(airbusflag,true),  
+    \+ main:myflags(airbusflag,true),  
     Meant=Said.
 
 bus_dependent_station(_Bus,_Said,Meant):- 
-    user:myflags(airbusflag,true),       
+    main:myflags(airbusflag,true),       
     default_origin(_,Lerkendal),
     !,
     Meant=Lerkendal. %% Default (but not central!) 
@@ -435,7 +435,7 @@ bus_dependent_station(_Bus,_Said,Meant):-
 % bus_depend_station(<bus no>,<place said>,<station "meant">).
 
 bus_depend_station(_Bus,RGH,RGH) :- %% // busdependent ??????
-    user:myflags(airbusflag,true),  
+    main:myflags(airbusflag,true),  
     testmember(RGH,[royal_garden_hotell,britannia_hotell]),
     !. %%% AD HOC 
 
@@ -580,13 +580,13 @@ corresp0(X,Y):-
 
 corresp(X,Y):-
 
-   user:myflags(actual_domain,T),
+   main:myflags(actual_domain,T),
   (corrx(T,X,Y)
    ;
    corrx(T,Y,X)).
 
 corresp(X,Y):-                    %% 
-   user:myflags(actual_domain,T),
+   main:myflags(actual_domain,T),
    (corrx(T,X,hovedterminalen)
    , %%%%%%% <----------- ; sic
    corrx(T,Y,hovedterminalen)).
@@ -662,7 +662,7 @@ airbusstation(royal_garden).
                                  
 
 internal_airbus(IAB):-  
-    user:myflags(internal_airbusflag,true) -> 
+    main:myflags(internal_airbusflag,true) -> 
         IAB=true
       ; 
         IAB=false.
@@ -741,12 +741,12 @@ preferred_transfer(46,47,pirbadet,munkegate_m4,city_syd).
 %% Airbus Section
 
 default_origin(_,sorgenfriveien) :- %% AD HOC 
-    user:myflags(airbusflag,true),
+    main:myflags(airbusflag,true),
     !.
 
 
 default_destination(_,værnes) :- %% AD HOC 
-    user:myflags(airbusflag,true),
+    main:myflags(airbusflag,true),
     !.
 
 

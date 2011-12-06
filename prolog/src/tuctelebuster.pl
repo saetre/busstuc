@@ -10,7 +10,7 @@
 
 %%% %%%%%%%% RS-111118
 :- ensure_loaded( 'declare' ).
-%:- use_module( 'declare.pl' ).
+:- use_module( main, [   (:=)/2, main:myflags/2, set/2  ] ).
 
 
 
@@ -18,13 +18,13 @@
 
 g:-['tucbuster.pl'].   %% :-[tuctele]. %%% // Tele things %% TA-051018
 
-:- (user:duallangflag := true). %% telebuster is not  speech based
+:- (main:duallangflag := true). %% telebuster is not  speech based
 
-?- (user:telebusterflag := true). %% Permanent 
+?- (main:telebusterflag := true). %% Permanent 
 
-?- (user:teleflag := true).       %% Volatile %% Ad Hoc 
+?- (main:teleflag := true).       %% Volatile %% Ad Hoc 
 
-?- (user:windowsflag := false).
+?- (main:windowsflag := false).
 
 
 %% Emergency procedure to avoid segmentation violation %% TA-060208

@@ -13,9 +13,9 @@
   ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %% USE %%% RS-111118
 :- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
+:- use_module( '../main', [ (:=)/2 ] ).
 
 %http://www.sics.se/sicstus/docs/4.1.3/html/sicstus/PlUnit-Tests-and-Production-Systems.html
 %:- use_module( library(system), [environ/2, datime/1]).
@@ -59,7 +59,7 @@
 
 segram:- %% short %% noursource facilities %% TA-100207
     nodebug, 
-    user:norsource := true,
+    main:norsource := true,
     consult(gramn),
     makegram.
 
@@ -191,7 +191,7 @@ em1(A = B,P,X,Y,(
 %% em1( Symbol, Appearence, StackIn, StackOut, Code)
 
 em1(Symbol, Appearence, StackIn, StackOut, Code) :-
-    user:myflags(norsource,true),
+    main:myflags(norsource,true),
     !,
     em2(Symbol, Appearence, StackIn, StackOut, Code).
 
@@ -203,7 +203,7 @@ em0(!,!,X,X,!):-!.  %% Standard rendering
 em0([],[],X,X,[]):-!.
 em0([U],lit(U),X,Y,cc(U,X,Y)):-!.    %%  lit(jeg) 
 em0({M:P},{},X,X,{M:P}):-!. 
-em0({P},{},X,X,{user:P}):-!.  %%     NB NB write   {P,Q} as {P},{Q}
+em0({P},{},X,X,{main:P}):-!.  %%     NB NB write   {P,Q} as {P},{Q}
 
 em0(X,Free,A,Z,MAX):-
     X =..[H|LIST],
@@ -216,7 +216,7 @@ em2(!,!,X,X,!):-!. %% Rendering with whistles
 em2([],[],X,X,[]):-!.
 em2([U],lit(U),X,Y,cc(U,X,Y)):-!.    %%  lit(jeg) 
 em2({M:P},{},X,X,{M:P}):-!. 
-em2({P},{},X,X,{user:P}):-!.  
+em2({P},{},X,X,{main:P}):-!.  
 
 em2(X,Free,A,Z,MAX):- %% e.g. noun(bus,sin,u,n) 
     X =..[H|LIST],

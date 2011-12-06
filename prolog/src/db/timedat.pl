@@ -339,13 +339,13 @@ softime(midnight,2400,2500).
 
 
 maxnumberofindividualdepartures(2):-
-    user:myflags(smsflag,true),
-    \+ user:myflags(nightbusflag,true),
+    main:myflags(smsflag,true),
+    \+ main:myflags(nightbusflag,true),
     !. 
 
 maxnumberofindividualdepartures(3):- %% not ridiculously many sequence
-    user:myflags(smsflag,true),
-    user:myflags(nightbusflag,true),
+    main:myflags(smsflag,true),
+    main:myflags(nightbusflag,true),
     !. 
 
 maxnumberofindividualdepartures(3). 

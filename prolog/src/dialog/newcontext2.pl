@@ -12,8 +12,9 @@
         setquery/2,     topic_subclass/3  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% %%%%%%%% RS-111118, everywhere, declare
-:- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
+%% RS-111205, UNIT: /    everywhere, declare
+:- ensure_loaded( '../declare' ).
+:- use_module( '../main', [ myflags/2 ] ). %, set/2  ] ).
 
 %% IMPORTS
 :- use_module( library(system) ).
@@ -67,7 +68,7 @@ getcontext(Cid, X) :-
 
 
 newcontext(Cid):-		%% TLF 030402 %% unnec
-	user:myflags(teleflag, true), !,
+	myflags(teleflag, true), !,
 	frametemplate(telebuster, NewFrame), %% TA-051018
 	setcontext(Cid,
                    context([], [], [],
@@ -198,7 +199,7 @@ getref(Cid, X, Type) :-
 %% Topic is not yet in the frame
 
 gettopic(Topic) :- 
-    user:myflags(topic,Hopic) -> 
+    myflags(topic,Hopic) -> 
          Topic=Hopic
        ; Topic = nil.
 

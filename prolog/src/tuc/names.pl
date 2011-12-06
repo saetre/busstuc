@@ -17,10 +17,10 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- ensure_loaded( '../declare' ).  % :- use_module( user:'../declare.pl').
+:- ensure_loaded( '../declare' ).  % :- use_module( userNOTME:'../declare.pl').
 
 
-%user:myflags(rune,35).
+%main:myflags(rune,35).
 
 %% Names that occur several places as general appendages
 %% It is not a rule that the generic lies at the named place
@@ -239,7 +239,7 @@ compname(st,[hans,aften], midsummer_eve).     %%
 compname(the,[understanding,computer],tuc).
 
 compname(tore,[amble],tagore) :-
-         \+user:myflags(teleflag,true).
+         \+main:myflags(teleflag,true).
 
 
 compname(trafikanten,[midt,norge],tmn).

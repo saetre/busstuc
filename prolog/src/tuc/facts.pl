@@ -66,7 +66,7 @@ have(_,subject,X,Y):-
 have(_,object,X,Y):-
    tv_templ(X,_,Y).
 
-%% have(team,stadium,brann,brann_stadion). %% Eksempel //user:deflag := true.
+%% have(team,stadium,brann,brann_stadion). %% Eksempel //main:deflag := true.
 
 /* SUSPENDED %% TA-100335
 
@@ -423,24 +423,24 @@ sone3 isa zone.
 %% web   isa network. %% Technical:  web address
 
 
-tore_amble isa man :- \+ user:myflags(teleflag,true).
+tore_amble isa man :- \+ main:myflags(teleflag,true).
 
-arvid_holme isa man :- \+ user:myflags(teleflag,true).
+arvid_holme isa man :- \+ main:myflags(teleflag,true).
 
-john    isa man :- \+ user:myflags(teleflag,true).    % belongs to every world :-)   -> Johan etc
+john    isa man :- \+ main:myflags(teleflag,true).    % belongs to every world :-)   -> Johan etc
 
-mary    isa woman :- \+ user:myflags(teleflag,true).  % needs some persons for testing
+mary    isa woman :- \+ main:myflags(teleflag,true).  % needs some persons for testing
 
-dave    isa man :-  \+  user:myflags(teleflag,true).  % 2001  :-)
+dave    isa man :-  \+  main:myflags(teleflag,true).  % 2001  :-)
 
 
 %% bob     isa man.     % (Jurafsky)
 
 
 (tore,amble) isa programmer :- %% Experiment
-    \+  user:myflags(teleflag,true).
+    \+  main:myflags(teleflag,true).
 
-(douglas,adams) isa author :-  \+  user:myflags(teleflag,true).
+(douglas,adams) isa author :-  \+  main:myflags(teleflag,true).
 
 
 bill_gates isa programmer.  %% (  :-)
@@ -455,7 +455,7 @@ tagore isa programmer.
 
 Y isa year :-
     number(Y),
-    \+ user:myflags(busflag,true),
+    \+ main:myflags(busflag,true),
     Y >0, Y =< 9999.
 
 
@@ -560,12 +560,12 @@ X isa route :-
 
 
 X isa route :-
-    user:myflags(tmnflag,true),
+    main:myflags(tmnflag,true),
     X isa tram.
 
 
 X isa station :-
-	 user:myflags(busflag,true), %% \+ dater
+	 main:myflags(busflag,true), %% \+ dater
     station(X),                %%  Semantically, not actual
     \+ xforeign(X),             %%   ( adjust database error)
     \+ unwanted_place(X),       %%   ( adjust database error)
@@ -582,7 +582,7 @@ X isa house :-
 /**********
 
 X isa tramstation :-
-% 	 user:myflags(tramflag,true),
+% 	 main:myflags(tramflag,true),
     tramstation(X).           %% E.G LIAN  know about it to give errm
 
 */
@@ -591,7 +591,7 @@ X isa tramstation :-
 
 
 X isa neighbourhood :-
-    user:myflags(busflag,true), %% \+ dater
+    main:myflags(busflag,true), %% \+ dater
     neighbourhood(X).
 
 
@@ -644,7 +644,7 @@ bratseth  isa lastname. %% jon
 
 
 Tor isa firstname :- %% jarle hermansen  // jarle both firstname and lastname
-    teleoption, %% user:myflags(teleflag,true),                %% prefer jarle as firstname first
+    teleoption, %% main:myflags(teleflag,true),                %% prefer jarle as firstname first
     is_dom_val(person,firstname,Tor,_,_).
 
 
@@ -699,7 +699,7 @@ neibor(X):-
 
 
 precedent_firstname(Tor) :-
-	user:myflags(tags,Tags),
+	main:myflags(tags,Tags),
 	precedent_firstname(Tags,Tor).
 
 precedent_firstname([[Tor,firstname]|_],Tor).
@@ -712,9 +712,9 @@ precedent_firstname([First|Rest],Tor) :-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 teleoption :-
-   user:myflags(telebusterflag,true)
+   main:myflags(telebusterflag,true)
    ;
-   user:myflags(teleflag,true).
+   main:myflags(teleflag,true).
 
 %% see teledat2.pl %%
 

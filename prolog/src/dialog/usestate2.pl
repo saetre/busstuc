@@ -15,7 +15,7 @@
         (rule)/2
     ]).
 
-%tracevalue(L) :- user:myflags(traceprog,L).  % Trace level 1-4 %% Where is this defined?? RS-111202
+%tracevalue(L) :- main:myflags(traceprog,L).  % Trace level 1-4 %% Where is this defined?? RS-111202
 
 % pragma(RuleModule,Source,Dest) bygger Dest fra Source vha reglene i RuleModule
 

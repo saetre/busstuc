@@ -40,7 +40,7 @@
 
 % Prolog is really awkard here
 convert_zone(YYY, M, D, H,Min,Sec,   YYY,M,D,H,Min,Sec) :- %% TA-080407
-    \+ user:myflags(busflag,true),
+    \+ main:myflags(busflag,true),
     !.
 
 convert_zone(YYY, M, D, H,Min,Sec,
@@ -298,8 +298,8 @@ valid_date(date(YYYY,MM,DD)):-
 
 /**
 xweekday(Date,HDay):-
-   \+ user:myflags(nightbusflag,true), %% FICTITIOUS DAYS IRRELEVANT
-   \+ user:myflags(airbusflag,true),   %% TA-090506
+   \+ main:myflags(nightbusflag,true), %% FICTITIOUS DAYS IRRELEVANT
+   \+ main:myflags(airbusflag,true),   %% TA-090506
    date_day_map(Date,HDay),  %% creates message: 1. Mai. 2010 er en  søndag .WRONG
    !.
 **/

@@ -17,7 +17,7 @@
 
 %% RS-111205, UNIT: /
 :- ensure_loaded( '../declare' ).
-:- use_module(    '../main', [  user:(:=)/2, user:myflags/2, track/2, user:(=:)/2 ] ).
+:- use_module(    '../main', [  (:=)/2, (=:)/2, myflags/2, track/2 ] ).
 
 %% RS-111205, UNIT: tuc/
 :- use_module( evaluate, [  difact/1,   new_focus/2  ] ).
@@ -28,14 +28,15 @@
 %% RS-111205, UNIT: app/
 :- use_module( '../app/interapp', [] ).  %% RS-111202    %% ieval
     
-%% RS-111205, UNIT: utility/
+%% RS-111206, UNIT: utility/
+:- use_module( '../utility/library', [ reverse/2  ] ).
 :- use_module( '../utility/utility', [
         do_count/1,     error/2,        flatlist/2,        flatround/2,
         for/2,          freshcopy/2,    ident_member/2,    match/2,
-        numbervars/1,   occ/2,          reverse/2,         subcase/2,
-        subsumes/2,   % X at least as general
+        numbervars/1,   occ/2,          subcase/2,         subsumes/2,   % X at least as general
         test/1,         unsquare/2
      ] ).   %% RS-111202    %% error/2, subcase/2
+%:- use_module( '../utility/utility', [ match/2, test/1 ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -50,7 +51,7 @@ clausifystm( JLM ):-
     clausify(X,Y,[],JLM,CLAUSELIST),
     number(Y),
     writeconjuncts(CLAUSELIST,true),
-    user:skolocon := Y. 
+    main:skolocon := Y. 
                    
 
 clausify(X,Y,L,P,R):- 
@@ -175,8 +176,8 @@ skolem(X,Z,CH,(P => Q) ,N1 or Q1):-!,
     skolem(Y,Z,CH,Q,Q1).
 
 %skolem(X,X,_,Y isa C, isa/World/C/Y):- %% Brave New World
-%    user:myflags(textflag,true),
-%    user:myflags(world,World),
+%    main:myflags(textflag,true),
+%    main:myflags(world,World),
 %    World \== real,
 %    !.
 skolem(X,X,_,P,P).
@@ -406,11 +407,11 @@ writeconjunct(P,TF):-!,
 
 
 wrclause(_,_):-
-    user:myflags(queryflag,true), 
+    main:myflags(queryflag,true), 
     !.
 
 wrclause(P,TF):-
- \+ user:myflags(queryflag,true), 
+ \+ main:myflags(queryflag,true), 
     skupdate(P,TF).
 
 
@@ -465,16 +466,16 @@ premfakt(_).
 
  
 assertfact(P):-
-    user:permanence =:  0,
-    user:myflags(context_id,UID),  
+    main:permanence =:  0,
+    main:myflags(context_id,UID),  
     !, 
     retractall(difact(UID,P)), 
     asserta(difact(UID,P)).       %% reverse order
 
 assertfact(P):-
-    user:permanence =: 1,
+    main:permanence =: 1,
     !,
-    user:myflags(context_id,UID), 
+    main:myflags(context_id,UID), 
     retractall(fact0(P)),
     retractall(difact(UID,P)), 
     assert(fact0(P)).            % straight order
@@ -484,7 +485,7 @@ testimpossible(P):-
 %%    explain(false),   %% RS-111205
 %    explain_query(false),
     !, 
-    user:myflags(context_id,UID),     
+    main:myflags(context_id,UID),     
     retract(difact(UID,P)). 
 
 testimpossible(_).
@@ -659,14 +660,14 @@ condq1(not PQ, (not PQ1)):-
 % Update focus also in questions 
 
 %condq1(X isa C,isa/World/C/X):- 
-%    user:myflags(textflag,true),
-%    user:myflags(world,World),
+%    main:myflags(textflag,true),
+%    main:myflags(world,World),
 %    World \== real,
 %    !.
 
 condq1(X isa C,X isa C):- 
     nonvar(X),
- \+ user:myflags(queryflag,true), 
+ \+ main:myflags(queryflag,true), 
     !,
     new_focus(X,C).
 
@@ -791,8 +792,8 @@ superbeat(X,Z):-      member(X,Z), \+  (X = (not _Y)).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 newskolem(Y):-  
-    do_count(skolocon), % user:skolocon := skolocon + 1
-    user:skolocon =:  Y.
+    do_count(skolocon), % main:skolocon := skolocon + 1
+    main:skolocon =:  Y.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

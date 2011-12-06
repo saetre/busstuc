@@ -12,7 +12,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :- ensure_loaded( '../declare' ).
-%:- use_module( '../main', [] ).     %% RS-111204    Includes user:myflags/2
+:- use_module( '../main', [ myflags/2 ] ).     %% RS-111204    Includes main:myflags/2
 
 
 %% Rule format from pragma
@@ -37,7 +37,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-tracevalue(L) :- user:myflags(traceans,L).  % Trace level 1-4    %%%%% RS-111119 :- dynamic tracevalue/1.
+tracevalue(L) :- myflags(traceans,L).  % Trace level 1-4    %%%%% RS-111119 :- dynamic tracevalue/1.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -218,7 +218,7 @@ is  takestime(Diff,Station1,Station2)
 id	 add (bcpbc(thatmeans),bcp(going),bcp(from),bwr(Station1),bcp(to),
 			bwr(Station2),bcp(cantake),bwr(Diff),
 			bcp(minutes),period)
-ip	 \+ user:myflags(smsflag,true).
+ip	 \+ main:myflags(smsflag,true).
 
 keepfrom rule
 is  keepfrom(Place,_,_),passevent(Deps,_,_,Opts,Day,_)
@@ -275,7 +275,7 @@ is  listofall(Dom,List),
     not ispresent numberof(_,_,_)
 id  add (write(Doms),space,bcp(are),nl,bcw(Dom,List),
        period)
-ip  user:theplural(Dom,Doms).
+ip  main:theplural(Dom,Doms).
 
 
 

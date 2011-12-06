@@ -6,7 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Declarations of operators and hashmap for flags, used by TUC
-%% Don't make this a module, user:space is easier ;-)
+%% Don't make this a module, main:space is easier ;-)
 
 %% Declarations of operators used by TUC
 
@@ -41,24 +41,4 @@
 :-op( 500,xfy,-.).   %% same as -
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% Declarations of hashmap for flags, used by TUC       %user:myflags(origlanguage, norsk).
-%% made available through  module main: , as a user:module)
-%    :=/2      %    =:/2
-:-volatile  user:myflags/2.
-:-dynamic   user:myflags/2.
-
-%% :- use_module( main, [ set/2 ] ) .   RECURSIVE! Don't loop!
-%% remove_duplicates  Standard  -> library
-set(Key,Value) :-
-    retractall( user:myflags(Key,_) ),
-    assert( user:myflags(Key, Value) ).
-
-
-user:(X := Y) :-       %% Set value X to Y, :=/2 or (:=)/2
-    set(X,Y).
-
-%% Difficult to make, difficult to understand :-/
-user:(X =: Y) :-       %% Set value Y from X, =:/2 or (=:)/2     
-    user:myflags(X,Y).
 

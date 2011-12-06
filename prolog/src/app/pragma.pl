@@ -107,7 +107,7 @@ wait_to_trace(RuleID):-
     out(RuleID). %% panic
 
 wait_to_trace(RuleID):- 
-    user:myflags(debugrule,RuleID),
+    main:myflags(debugrule,RuleID),
     !,
     spy_me(RuleID).
 wait_to_trace(_).

@@ -7,7 +7,8 @@
 %% About non-determinicaty:
 % http://www.sics.se/sicstus/spider/site/determinacy_analyzer.html#pseudo_directive
 
-:- module( utility, [  %% (:=)/2, (=:)/2, %% Permanently moved to main.pl!! RS-11-1204
+:- module( utility, [  %% (:=)/2, (=:)/2, and myflags/2 %% Permanently moved to main.pl!! RS-111204
+        myflags/1,
         absorb/3,           aggregate/3,           all/1,               ans/1,
         append_atomlist/2,  append_atoms/3,        append_bl_atoms/3,   appendfiles/3,
         atomname/2,         begins_with/3,         breakpoint/2,        charno/3,
@@ -25,7 +26,7 @@
         makacc/3,           makeacc/2,             makelistn/2,         makestring/2,
         match/2,            matchinitchars/2,      matchinitchars/3,    maximum/2,       maxval/3,
         measurecall/2,      measurecall1/2,        mergeavlists/3,      minimum/2,       minval/3,
-        user:myflags/1,     naive/0,               newconst/1,          nreverse/2,      nthval/3,
+        naive/0,               newconst/1,          nreverse/2,      nthval/3,
         number_of/3,        number_to_string/2,    numbervars/1,        occ/2,           occrec/2,
         once1/1,            outputlist/1,          out/1,               output/1,        pling/1,
         prettyprint/1,      proclaim/0,            pront/1,             psl/2,           purge/3,   put/1,
@@ -49,7 +50,13 @@
 %    absolute_file_name('~/', Dir),
 %    process_create(Shell, ['-c', [ ls, ' ', file(Dir) ]]).
 
-%% USES
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% IMPORTS
+%% RS-111205, UNIT: /
+:- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
+:- use_module(    '../main', [ (:=)/2,  myflags/2 ] ). %% set/2, 
+
 :- use_module( library(process), [] ).
 :- use_module( 'library', [ nth/3, reverse/2 ] ).
 :- use_module( library(system3), [ shell/1 ] ).
@@ -71,11 +78,11 @@
 %:- ['datecalc'].   %% Already called from main
 
 
-%user:X := Y :-       %% Set value X to Y
-%    user:set(X,Y).
+%main:X := Y :-       %% Set value X to Y
+%    main:set(X,Y).
 %
-%user:X =:  Y :-       %% Set value Y from X
-%    user:myflags(X,Y).
+%main:X =:  Y :-       %% Set value Y from X
+%    main:myflags(X,Y).
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -160,17 +167,17 @@ numbervars(F):-
 
 starttimebatch :- %% TA-100111
     statistics(runtime,[T,_]),
-    user:batchstart := T.
+    batchstart := T.
 
 startbatch :- 
     statistics(runtime,[T,_]),
-    user:batchstart := T.
+    main:batchstart := T.
 
 stoptimebatch :-  %% TA-100111
    takebatch.
 takebatch :-
    statistics(runtime,[T2,_]),
-   user:batchstart =:  T1,
+   main:batchstart =:  T1,
    Elapse is (T2-T1),
    out('Total: '),out(Elapse),output(ms). %% TA-980115
 
@@ -415,8 +422,8 @@ set_union(List1,List2,List3) :-
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-user:myflags(X) :-             %% RS-111119 Where is value/2 defined?
-    user:myflags(X,Y),
+myflags(X) :-             %% RS-111119 Where is value/2 defined?
+    main:myflags(X,Y),
     out(X),out('='),output(Y),nl.
 
 all(X):- 
@@ -521,13 +528,13 @@ doall(P):-  % P, then succeed
 
 
 do_count(F):- 
-    user:F =:  M,
+    main:F =:  M,
     !,
     N is M+1,
-    user:F := N.
+    main:F := N.
 
 do_count(F):- 
-    user:F := 1 . 
+    main:F := 1 . 
 
 begins_with(AS,A,S):- 
     atom(AS),
@@ -670,8 +677,8 @@ identical(A,B):-
 
 
 newconst(Y):- 
-    do_count(const), % user:const := const+1
-    user:const =:  Y.
+    do_count(const), % main:const := const+1
+    main:const =:  Y.
 
 
 
@@ -1029,7 +1036,7 @@ split(0,List,[],List).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 debug(Prop,Text):- 
-    user:myflags(trace,4) ->
+    main:myflags(trace,4) ->
     (call(Prop) -> output(Text);true)
     ;
     true.
@@ -1040,7 +1047,7 @@ pling(I):-output(pling(I)). %%  Debug
 %% NEW PREDICATE
 
 breakpoint(Pred,Prop):- %% New Predicate Delayed Dynamic set spypoint
-    user:myflags(panic,true)->
+    main:myflags(panic,true)->
     (call(Prop) -> spy Pred;true);
     true.
 

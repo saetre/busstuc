@@ -20,10 +20,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- use_module( '../main', [ user:myflags/2 ] ).
+:- use_module( '../main', [ main:myflags/2 ] ).
 :- use_module( '../tucbuses', [ backslash/1 ] ).
 
 %% RS-111205, UNIT: tuc
+:- use_module( evaluate, [ instant/2 ] ).
 :- use_module( semantic, [ gradv_templ/2, rv_templ/2 ] ).
 
 :- use_module( '../utility/utility', [ testmember/2 ] ).
@@ -2029,7 +2030,7 @@ compword(når,[går,når],når).       %% Repair
 compword(når,[gård,det],[]). 
 compword(når,[gård],[]).  
 % har = går (sms ordliste), men når har siste 9 => siste buss ha rute 9 
-compword(når,[har],går):- user:myflags(smsflag,true). %% ad hoc, ordliste  //nofunc
+compword(når,[har],går):- main:myflags(smsflag,true). %% ad hoc, ordliste  //nofunc
 
 compword(når,[hvilke],hvilke).
 compword(når,[hvilken],hvilken).
@@ -3227,7 +3228,7 @@ kw(X):-cw(X). % Closed Word Class   => uncoded
 ow(nb(_)).
 ow(quote(_)).
 
-ow(X) :- user:instant(X,word),!.
+ow(X) :- instant(X,word),!.
 
 ow(X) :- numerid(X,_,_).
 ow(X) :- adjective2(X,_). 
@@ -3253,7 +3254,7 @@ cw('¤').   %% Headline
 
 cw(';'). %% Sentence delimiter
 
-cw(',') :- user:myflags(teleflag,true).  
+cw(',') :- main:myflags(teleflag,true).  
 cw('.'). 
 cw('?').
 cw('!').
@@ -3456,7 +3457,7 @@ cw(å).
 % Norsk til Norsk
 
 
-synwordx(X,Y):-user:myflags(smsflag,true),synsms(X,Y). 
+synwordx(X,Y):-main:myflags(smsflag,true),synsms(X,Y). 
 synwordx(X,Y):-synword(X,Y).
 
 % SMS synonyms  
@@ -6258,7 +6259,7 @@ synword(jledag,        juledag).
 % synword(jl,            klokken).     %% kl ?
 synword(jnår,          når).  
 
-synword(jo,            ja) :- user:myflags(busterflag,true). %% Jo
+synword(jo,            ja) :- main:myflags(busterflag,true). %% Jo
 
 synword(joa,           ja). 
 %% synword(jo,            []).  %% bussen går jo// redundant 
@@ -7670,8 +7671,8 @@ synword(nåår,          når).
 synword(number,        nummer).   %% ? destroys language selection!
 synword(nummber,       nummer). 
 
-%% synword(nr,rute)     :- \+ user:myflags(teleflag,true). 
-%% synword(nummer,rute) :- \+ user:myflags(teleflag,true). %% hva er et nummer 
+%% synword(nr,rute)     :- \+ main:myflags(teleflag,true). 
+%% synword(nummer,rute) :- \+ main:myflags(teleflag,true). %% hva er et nummer 
 
 synword(nummeret,telefonnummeret). %% ad hoc  nummeret til SMSTUC 
 
@@ -9611,8 +9612,8 @@ synword(februari,february). %% SW
 %% synword(jan,kan).  %%   own sp ?
 
 synword(jan,january) :- 
-    \+ user:myflags(telebusterflag,true),
-    \+ user:myflags(daterflag,true).
+    \+ main:myflags(telebusterflag,true),
+    \+ main:myflags(daterflag,true).
 
 synword(feb,february).
 synword(mar,march).
@@ -10120,12 +10121,12 @@ synword(vei,veg). %%  KarlJohnsons vei."
 
 
 synword(TLF, telefonnummer):-   %% nr 6 -> telefonnummeret 6 // Bare tele
-    user:myflags(teleflag,true),  %% ret -> r
+    main:myflags(teleflag,true),  %% ret -> r
     tlf(TLF).  
 
 
 synword(TLF, telefonnummer):-      %% nr 6 -> telefonnummeret 6 // Bare tele
-    \+ user:myflags(teleflag,true),  %% ret -> r
+    \+ main:myflags(teleflag,true),  %% ret -> r
     \+ testmember(TLF,[nr,nummer,nummeret]), %% ad hoc (BUS no) 
     tlf(TLF).  
 
@@ -10302,7 +10303,7 @@ adjective2(Skrevet,be/Write):-
     morph_n:lexv(Skrevet,Skrive,past,part),
     verbroot2(Skrive,Write),
     \+ adj2(Skrevet,_), %% e.g. svart
-    user:tv_templ(Write,_,_).
+    main:tv_templ(Write,_,_).
 
 */
 
@@ -12304,7 +12305,7 @@ noun2(rute,route).    % NB ambiguous
     noun2(kurs,   route).    
     noun2(line,    route).  
     noun2(melkerute,  route).      %%:-)
-%%     noun2(nummer,  route):-   \+ user:myflags(teleflag,true). 
+%%     noun2(nummer,  route):-   \+ main:myflags(teleflag,true). 
 
     noun2(nussrute,route).   %% sp
     noun2(reiserute,  route).   %% route_plan
@@ -14226,17 +14227,17 @@ noun2(politi,police).
 
 %% Name professor  confuses busstuc   
 noun2(professor,professor):-  %%  tele ...
-    user:myflags(teleflag,true).
+    main:myflags(teleflag,true).
 noun2(førsteamanuensis,associate_professor):-
-    user:myflags(teleflag,true).
+    main:myflags(teleflag,true).
 noun2(amanuensis,assistant_professor):-
-    user:myflags(teleflag,true).
+    main:myflags(teleflag,true).
 noun2(universitetslektor,lecturer):-
-    user:myflags(teleflag,true).
+    main:myflags(teleflag,true).
 noun2(sekretær,secretary):-    
-    user:myflags(teleflag,true).
+    main:myflags(teleflag,true).
 noun2(forsker,researcher):-   
-     user:myflags(teleflag,true). 
+     main:myflags(teleflag,true). 
 
 noun2(semantikk,semantics). 
 noun2(semester,semester). 
@@ -17373,7 +17374,7 @@ preposition2(senest,before).  %%  avoid syn senest -> før -> [før] (adverb)
 
 preposition2(tidligst,after).    %% avoid tidligst-> etter -> beyond
 preposition2(til,to).           
-preposition2(til,of) :-  user:myflags(teleflag,true).
+preposition2(til,of) :-  main:myflags(teleflag,true).
 
 %% preposition2(till,to).         %% Swedicism  
 
@@ -17630,7 +17631,7 @@ noisew('').
 noisew('='). 
 noisew('^'). 
 
-noisew('-'). %%  :- \+ user:myflags(teleflag,true). %% Too much trouble
+noisew('-'). %%  :- \+ main:myflags(teleflag,true). %% Too much trouble
             
                  %% bus   between 1200 - 1300 etc. fails
                  %% Dont remove this, causes more trouble than not
@@ -17652,7 +17653,7 @@ noisew('#').       %% (or nummer ?)
 %                    %% destroys :)
 %% noisew(';'). %% SENTENCE Delimiter
 
-noisew(','):- \+ user:myflags(teleflag,true). 
+noisew(','):- \+ main:myflags(teleflag,true). 
 
 noisew('(').
 noisew(')'). 
@@ -18116,7 +18117,7 @@ noisew(tilsvarende).
 noisew(tja).     
 noisew(totalt).  
 
-%% noisew(trafikk):- user:myflags(smsflag,true). 
+%% noisew(trafikk):- main:myflags(smsflag,true). 
 %% noisew(tvert).       %% nå!/ tvert om / tvert nei %% tvert imot
 %% noisew(tydeligvis). 
 noisew(typisk).      %%  rough 

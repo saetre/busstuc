@@ -8,8 +8,7 @@
 
 %% IMPORTS
 %% RS-111205, UNIT: utility/
-:- use_module( '../utility/utility', [
-        delete1/3, ends_with/3,  for/2,   remember/1,   roundmember/2,   set_of/3   ] ).
+:- use_module( '../utility/utility', [ delete1/3, ends_with/3, for/2, remember/1, roundmember/2, set_of/3 ] ).
 
 %module( 'lex', [ ] ). %% ??
 :- use_module( names, [ streetsyn/1 ]).

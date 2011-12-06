@@ -10,7 +10,14 @@
     alle_args/2,        atomic_length/2,        drucke_baum_list/1,     list_length/2,
     print_parse_tree/1, ptbwrite/1,             term_laenge/2  ] ). %% RS-111204
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% RS-111205, UNIT: /
 :- use_module( main, [  track/2  ] ). %% RS-111204
+
+%% RS-111205, UNIT: utility/
+:- use_module( 'utility/utility', [ output/1, prettyprint/1, tab/1 ] ).  %% Module util
+
 
 /*
 En tom produksjon er rekursivt
@@ -453,8 +460,8 @@ nextvar('U',4).
 nextvar('V',5).
 nextvar('W',6).
 nextvar(X,N):- N > 6,
-               number(N,L),
-               x_append("X",L,Y),
+%%               number(N,L), %% RS-111206      What's wrong here?
+               x_append("X",_L,Y),
                name(X,Y).
 
 atomic_length(X,5):- var(X), !.
@@ -492,7 +499,7 @@ alle_args([K|R],N):-
 %% From main... %% RS-111120
 
 print_parse_tree(Parse1) :- %% TA-110207
-   user:myflags(norsource,true),
+   main:myflags(norsource,true),
    !,
    ptbwrite:shrink_tree(Parse1,Pa1),
 

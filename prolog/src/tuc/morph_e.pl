@@ -7,25 +7,24 @@
 
 %% Morphological Analyser for the language E (english).
 :-module( morph_e, [
-        be_verb/1,
-        ditrans_verb/1,
-        ends_with/3,
-        intrans_verb/1,
-        lexb/2,
-%        lexv/2,
-        lexv/4,
-        lcode2/2,
+        be_verb/1,        ditrans_verb/1,   ends_with/3,        intrans_verb/1,
+        lexv/2,           lexv/4,           lcode2/2,
         pvimodal_verb/1,
-        trans_verb/1,   %% have
-        verbroot/1,
-        verb_form/4
+        trans_verb/1,     verbroot/1,       verb_form/4
     ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+%% IMPORTS
 
-:-use_module( dict_e, [] ).
+%% RS-111205, UNIT: tuc/
+:- use_module( dict_e, [] ).
+:- use_module( lex, [ part_word/1 ] ).
+:- use_module( semantic, [ dtv_templ/4, iv_templ/2, pvi_templ/2, tv_templ/3 ] ).
 
-ends_with(X,Y,Z):-user:ends_with(X,Y,Z).
+%% RS-111205, UNIT: utility/
+:- use_module( '../utility/utility', [ ends_with/3 ] ).
+
+%% ends_with(X,Y,Z):-user:ends_with(X,Y,Z).
 
 verb_form(X,Y,Z,U):-
     dict_e:verb_form(X,Y,Z,U).
@@ -95,7 +94,7 @@ lcode2(X,[X]):-           % Test on actual word
 
                          
 lcode2(X,[X]):-           %% TA-071108  not name(X,n,0) as before
-    user:part_word(X).    %% lex.   
+    part_word(X).    %% lex.   
 
 %% 
 
@@ -108,20 +107,20 @@ verbroot(W):-
     pvimodal_verb(W). % cost 
 
 pvimodal_verb(W):- 
-    user:pvi_templ(W,_).
+    pvi_templ(W,_).
 
 be_verb(be).
 
 ditrans_verb(X):-
-    user:dtv_templ(X,_,_,_).  %% btv -> dtv
+    dtv_templ(X,_,_,_).  %% btv -> dtv
 
 trans_verb(have). %% 
 trans_verb(X):-
-   user:tv_templ(X,_,_),
+   tv_templ(X,_,_),
    !. %% >1 
 
 intrans_verb(X):-
-   user:iv_templ(X,_),
+   iv_templ(X,_),
    !. %% >1 
 
 
@@ -204,9 +203,9 @@ lexv(APPLIES,APPLY,pres,fin):-
 
 lexv(X,X).            
 
-lexb(X,Y):-
-    lexv(X,Y),
-    lexb1(Y).     % dict.pl
+%lexb(X,Y):-
+%    lexv(X,Y),
+%    lexb1(Y).     % dict.pl
 
 /* %% TA-020918  %% OBSOLETE
 lexn(X,Y,sin,u,n):- 

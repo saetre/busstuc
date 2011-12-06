@@ -33,15 +33,14 @@
     ] ).  %% RS-111121 Module TUC
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- ensure_loaded( '../declare' ).  % :- use_module( user:'../declare.pl').
-
 %% RS-111205, UNIT: /
-:- use_module( '../main', [   user:(:=)/2, user:myflags/2 ] ). %, set/2  ] ).
+:- ensure_loaded( '../declare' ).  % :- use_module( userNOTME:'../declare.pl').
+:- use_module( '../main', [ myflags/2 ] ). %, set/2  ] ).
 :- use_module( '../tucbuses', [  dict_module/1  ] ).
 
 %% RS-111205, UNIT: tuc/
 :- use_module( dict_e, [ preposition/1 ] ).
-:- use_module( evaluate, [ fact/1, user:instant/2 ] ).
+:- use_module( evaluate, [ fact/1, instant/2 ] ).
 :- use_module( facts, [ (isa)/2   ] ).  %% RS-111204    isa/2 from facts.pl
 :- use_module( semantic, [ 
         a_compl/4,       abnormalverb/2,       adj_templ/2,          adjnamecomp_templ/3,
@@ -82,7 +81,7 @@ plausibleclocktest(H,M,HM) :- %%   10.10 -> clock / 10.11 -> date,
       HM is 100*H+M.
 
 
-value_world(W):- user:myflags(world,W),!;W=real.
+value_world(W):- main:myflags(world,W),!;W=real.
 
 
 decide_adjective(nil,_BusNo,true):-!.
@@ -532,7 +531,7 @@ bealign(X:Savant,Y:Year,S,P,P and dob/be/X/Y/S):-
 
 
 bealign(X,Y,S, P, Q):- %% Explicitly  X is Noun // not Noun X
-    \+ user:myflags(textflag,true),
+    \+ main:myflags(textflag,true),
     !,
     align(X,Y,S, P, Q).
 
@@ -846,7 +845,7 @@ dtv_template(Give,X:MT, Y:WT,  Z:ZT, S, dob/Give/X/Z/S and srel/ind/Woman/Y/S) :
 % Attribute classes are always bottom %
 
 has_template(_,_,_):-
-    user:myflags(error_phase,1),
+    main:myflags(error_phase,1),
     !.
 
 
@@ -927,7 +926,7 @@ preadj_template(NIL/A1,XT,W,P1):- %% TA-100326 NB
    adj_template(NIL,A1,XT,W,P1).
 
 worldvalue(W):-
-    user:myflags(world,W),!;W=real.
+    main:myflags(world,W),!;W=real.
 
 %% Pre Adjectives are situation invariant (no situation variable)
 %% Post Adjectives are situation dependent (situation parameters)
@@ -1198,7 +1197,7 @@ verb_compl(Sing,Prep,XY:T,U,S,Singing):-
 
 
 verb_compl(_,_,_,_,_,srel/nil/thing/nil/nil):-
-    user:myflags(error_phase,1),
+    main:myflags(error_phase,1),
     !.
 
 
@@ -1209,7 +1208,7 @@ verb_compl(_,_,_,_,_,srel/nil/thing/nil/nil):-
 
 
 verb_compl(See,With,_X:PT,Y:TST,S,srel/pwith/thing/Y/S):-
-    user:myflags(unknownflag,true),
+    main:myflags(unknownflag,true),
     bottom(TST,thing),
     subclass0(PT,Person), %% NB Person superclass
     v_compl(See,Person,With,_Telescope), % takes whatever
@@ -1417,11 +1416,11 @@ negate(often,X, X).
 
 
 type(ID,ID):-
-    user:myflags(error_phase,0),      % initilly, full typecheck
+    main:myflags(error_phase,0),      % initilly, full typecheck
     !.
 
 type(_ID_,thing):-
-    user:myflags(error_phase,1),      % if no meaning,
+    main:myflags(error_phase,1),      % if no meaning,
     !.                           % has a type
                              % try without typecheck
 ctype(X,X). %% NEW REGIME    %% just for safety
@@ -1607,7 +1606,7 @@ latin(and,_:_,VARE:_,_):-    %% og være   %% EXTREMELY AD HOC (NORWAGISM)
 
 
 latin(and,_X:T1,_Y:T2,_):-  %% special for ambiguous names !!!
-    user:myflags(teleflag,true),
+    main:myflags(teleflag,true),
     T1==lastname,
     T2==lastname,
     !,

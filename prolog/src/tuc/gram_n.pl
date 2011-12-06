@@ -73,13 +73,13 @@
 %% GPS SECTION
 
 sentence([gpsflag:::Originlist|S]) --->
-    {user:myflags(gpsflag,true)},
+    {main:myflags(gpsflag,true)},
     origin_phrase(Originlist),
     !,
     sentences(S).
 
 sentence(S) --->
-    {\+ user:myflags(gpsflag,true)},
+    {\+ main:myflags(gpsflag,true)},
     sentences(S).
 
 
@@ -138,13 +138,13 @@ sentence01(S) ---> sentence1(S).
 %%¤ SENTENCES  
 
 sentences([new:::P]) ---> 
-    {user:myflags(queryflag,false)}, %%  Only in multi dialog system 
+    {main:myflags(queryflag,false)}, %%  Only in multi dialog system 
     declaration(P),
     terminatore,  
     !,accept.
 
 sentences([P]) ---> 
-    {user:myflags(queryflag,true)}, 
+    {main:myflags(queryflag,true)}, 
 %%     optional(grums),
     greetings0,   %% haz ? 
     implicitq(P), %% only one on the outer level.
@@ -244,7 +244,7 @@ endofline0 ---> end_of_line0. %% NEW Runtime predicate
 endofline ---> terminator,endofline,!,accept. 
 endofline ---> [':'],end_of_line,!. 
               
-endofline ---> ['+'],{user:myflags(busflag,true)},
+endofline ---> ['+'],{main:myflags(busflag,true)},
                endofline,!,accept.        %% '+' = lower case '?' 
 endofline ---> end_of_line.  %% checks empty stack
 
@@ -578,7 +578,7 @@ sentence1(P) --->
 %% Panic-rule %% item virker ikke i Dialog
 
 sentence1(modifier(A):::(C isa clock and srel/nil/time/C/A and event/real/A)) ---> 
-    {user:myflags(dialog,1)}, 
+    {main:myflags(dialog,1)}, 
     item(P),
     endofline, 
     {P = (C isa clock)},
@@ -586,14 +586,14 @@ sentence1(modifier(A):::(C isa clock and srel/nil/time/C/A and event/real/A)) --
 
 
 sentence1(item:::P) ---> 
-    {user:myflags(dialog,1)}, 
+    {main:myflags(dialog,1)}, 
     item(P),
     endofline, %%%  3 buss 5 nr . går //terminator1, 
     !,accept.
 
  
 sentence1(item::: Now isa clock) ---> 
-    {user:myflags(dialog,1)},
+    {main:myflags(dialog,1)},
     [nå],                             %% now is also a time
     terminator1, 
     !,accept,
@@ -602,13 +602,13 @@ sentence1(item::: Now isa clock) --->
 
 sentence1(item:::P)  --->   %% nr . ( 52 går)
     noun(_Man,_,_U,n,it:_,P),   %%  menn 
-   {user:myflags(dialog,1)},
+   {main:myflags(dialog,1)},
     endofline, 
     !,accept.
 
  
 sentence1(item::: it isa Day) ---> 
-    {user:myflags(dialog,1)},
+    {main:myflags(dialog,1)},
     today, %% i dag etc
     terminator1, 
     !,accept,
@@ -673,14 +673,14 @@ sentence1(item:::P) ---> %% team. jeg vil ta buss after statement
 
 
 item(N isa clock) ---> 
-    {user:myflags(dialog,1)},
+    {main:myflags(dialog,1)},
     time12(N),
     {N \== now},
     endofline. 
 
 
 item(Nisadate) ---> 
-    {user:myflags(dialog,1)},
+    {main:myflags(dialog,1)},
     obviousdate1(_,Nisadate),
     endofline.  %% nec ?
 
@@ -2056,7 +2056,7 @@ statem(S,SEM) --->
 
 
 statem(S,Com::Q) ---> % i morgen kveld går bussen 
-    {user:myflags(dialog,1)}, %% expensive 
+    {main:myflags(dialog,1)}, %% expensive 
     preadverbial1(Prep1,Y1, SC1::P31), 
     preadverbial1(Prep2,Y2, SC2::P32), 
     lexv(Vcat,V,T,fin), 
@@ -3123,7 +3123,7 @@ implicitq(new:::P ) --->     %%  fra sollia som ankommer samfundet 1730 .
 implicitq(modifier(S)::: Com12 and P3) ---> %% Når går (neste) Nidarosdomen
      not_look_ahead([nr]), 
      [når],
-     {\+ user:myflags(dialog,1)},  
+     {\+ main:myflags(dialog,1)},  
      w(verb(go,_,fin)),
      optional([neste]),
      w(name(ND,n,Nei)), {testmember(Nei,[station,neighbourhood])},
@@ -3139,7 +3139,7 @@ implicitq(modifier(S)::: Com12 and P3) ---> %% Når går (neste) Nidarosdomen
 implicitq(WI) ---> %% når + //no verb// + station ->  %% når trollahaugen 
      not_look_ahead([nr]),
      [når],
-     {\+ user:myflags(dialog,1)},  
+     {\+ main:myflags(dialog,1)},  
      {no_unprotected_verb}, %
      look_ahead(w(name(_Th,_,P))), 
      {subclass0(P,place)},
@@ -3149,7 +3149,7 @@ implicitq(WI) ---> %% når + //no verb// + station ->  %% når trollahaugen
 
 
 implicitq(test:::WI) ---> %% når nr 
-     {\+ user:myflags(dialog,1)},  
+     {\+ main:myflags(dialog,1)},  
      not_look_ahead([nr]), 
      [når],
      [nr],
@@ -3162,7 +3162,7 @@ implicitq(test:::WI) ---> %% når nr
 implicitq(test:::WI) ---> %% når + //no verb// -> skip når
      not_look_ahead([nr]), 
      [når],
-     {\+ user:myflags(dialog,1)},  
+     {\+ main:myflags(dialog,1)},  
      {no_unprotected_verb}, %
      optional([det]), %%
      !,accept,
@@ -3203,7 +3203,7 @@ implicitq(new:::P ) --->     %% buss .. som ankommer.. // with care.
 %% avdeling erik harborg // special
 
 implicitq(which(X):::Q) --->   %% teleflag avdeling erik harborg
-    {user:myflags(teleflag,true)},
+    {main:myflags(teleflag,true)},
     w(noun(Dep,_,_,n)), 
     not_look_ahead(w(prep(_))),
     person_name(EH:person,PP,_),
@@ -3216,7 +3216,7 @@ implicitq(which(X):::Q) --->   %% teleflag avdeling erik harborg
 
 
 implicitq(which(X):::P) ---> %% teleflag  Nardo
-    {user:myflags(teleflag,true)},
+    {main:myflags(teleflag,true)},
     no_phrases(X,P), 
     endofline, %% s.p.andersens veg = sentrum. 
     traceprint(4,iq7),
@@ -3224,7 +3224,7 @@ implicitq(which(X):::P) ---> %% teleflag  Nardo
 
 
 implicitq(new:::P ) --->     %% tider fra dragvoll %% Ad Hoc Problem
-    {\+ user:myflags(dialog,1)},   %% // buss til nth
+    {\+ main:myflags(dialog,1)},   %% // buss til nth
     not_look_ahead(w(prep(_))),
     {no_unprotected_verb}, %% NEW AUXILLARY    tuc/lex.pl   
     w(noun(time,_,_,N)),
@@ -3273,7 +3273,7 @@ implicitq(new:::P ) --->     %% buss 5 Dragvoll
 
 
 implicitq(modifier(S)::: Com12 and P3) ---> %% kl 1234 ...
-      {user:myflags(dialog,1)}, 
+      {main:myflags(dialog,1)}, 
       not_look_ahead([nå]), %% not intended
     time1(NI),  
 %%    {number(NI)},
@@ -3292,7 +3292,7 @@ implicitq(modifier(S)::: Com12 and P3) ---> %% kl 1234 ...
 
 
 implicitq(new:::P ) --->     %% buss 5 Dragvoll ///  NOT neste buss
-    {user:myflags(dialog,1)},      %%  buss til nth
+    {main:myflags(dialog,1)},      %%  buss til nth
     not_look_ahead(w(prep(_))),
     not_look_ahead_flnp,
     {no_unprotected_verb},  %% NEW AUXILLARY    tuc/lex.pl   
@@ -3341,7 +3341,7 @@ implicitq(modifier(S)::: Com12 and P3) ---> %%  neste til // ikke
 
 
 implicitq(WI) --->  %% holdeplasser på risvollan
-    {\+ user:myflags(dialog,1)}, %% siste buss -> modifier ! 
+    {\+ main:myflags(dialog,1)}, %% siste buss -> modifier ! 
     w(noun(Station,X,Y,Z)), 
     not_look_ahead(w(name(_D3,_,_))), %% holdeplass D3 -> "Holdeplass" (SIC)
     {testmember(Station,[station])}, %% TA-110816
@@ -3354,7 +3354,7 @@ implicitq(WI) --->  %% holdeplasser på risvollan
 
 
 implicitq(WI) ---> %% nærmeste holdeplass ...
-    {\+ user:myflags(dialog,1)}, %% siste buss -> modifier ! 
+    {\+ main:myflags(dialog,1)}, %% siste buss -> modifier ! 
     w(adj2(nearest,nil)), %%  special
     look_ahead(w(noun(Station,_,_,_))), 
     {testmember(Station,[station])},
@@ -3372,8 +3372,8 @@ implicitq(WI) ---> %% nærmeste holdeplass ...
 
 implicitq(modifier(S)::: Com12 and P3) ---> %% nå Dalen Hageby -> TIL Hageby
     [nå],
-    {\+ user:myflags(teleflag,true)},
-    {\+ user:myflags(textflag,true)},
+    {\+ main:myflags(teleflag,true)},
+    {\+ main:myflags(textflag,true)},
     {no_unprotected_verb}, %% NEW AUXILLARY    tuc/lex.pl
     not_look_ahead(w(adj2(_,nil))), %% raskeste 
     not_look_ahead(w(noun(_,_,_,_))), %% buss etc
@@ -3388,8 +3388,8 @@ implicitq(modifier(S)::: Com12 and P3) ---> %% nå Dalen Hageby -> TIL Hageby
 
 
 implicitq(modifier(S)::: Com12 and P3) ---> %% klokken 17 fra nth til risvollan 
-    {\+ user:myflags(teleflag,true)},
-    {\+ user:myflags(textflag,true)},
+    {\+ main:myflags(teleflag,true)},
+    {\+ main:myflags(textflag,true)},
     {no_unprotected_verb}, %% NEW AUXILLARY    tuc/lex.pl
 
     not_look_ahead(w(nb(_,_))), %% 151 til rykkinn \+ clock %% TA-100923
@@ -3408,7 +3408,7 @@ implicitq(modifier(S)::: Com12 and P3) ---> %% klokken 17 fra nth til risvollan
 
 
 implicitq(modifier(S)::: Com12 and P3) ---> %%   (buss) 5 i morgen
-    {\+ user:myflags(dialog,1)},
+    {\+ main:myflags(dialog,1)},
     {no_unprotected_verb}, %% NEW AUXILLARY    tuc/lex.pl
     namep(_,X,P),
 
@@ -3497,7 +3497,7 @@ implicitq(modifier(S)::: Com12 and P3) ---> %%  neste  Nth til Risvollan
 
 
 implicitq(WI) ---> %% bilett til
-        { \+ user:myflags(dialog,1)},  
+        { \+ main:myflags(dialog,1)},  
         not_look_ahead(w(noun(clock,_,_,_))),
         not_look_ahead(w(noun(thing,_,_,_))), %% etc
         not_look_ahead(w(noun(answer,_,_,_))),
@@ -3513,7 +3513,7 @@ implicitq(WI) ---> %% bilett til
 
 
 implicitq(WI) --->  %% klokka -> hva er klokka
-    { \+ user:myflags(dialog,1)},  
+    { \+ main:myflags(dialog,1)},  
     w(noun(Clock,_,_,_)),
     {testmember(Clock,[clock,date])},
     not_look_ahead(w(nb(_,_))), %%
@@ -3524,8 +3524,8 @@ implicitq(WI) --->  %% klokka -> hva er klokka
 
 
 implicitq(modifier(S)::: Com12 and P3) ---> %% NTH Risvollan
-        {\+ user:myflags(teleflag,true)},
-        {\+ user:myflags(textflag,true)},
+        {\+ main:myflags(teleflag,true)},
+        {\+ main:myflags(textflag,true)},
         {no_unprotected_verb}, 
 
         w(name(NTH,n,P1)),   {subclass0(P1,place)},
@@ -3549,8 +3549,8 @@ implicitq(modifier(S)::: Com12 and P3) ---> %% NTH Risvollan
 
 implicitq(modifier(S)::: Com12 and P3) ---> %% Dalen Hageby -> TIL Hageby
 
-        {\+ user:myflags(teleflag,true)},
-        {\+ user:myflags(textflag,true)},
+        {\+ main:myflags(teleflag,true)},
+        {\+ main:myflags(textflag,true)},
         {no_unprotected_verb}, 
         no_harmful_adj,  
         no_harmful_noun, 
@@ -3674,7 +3674,7 @@ reject_implicitq --->
 %% Complex passover // det --> [det], de --> [det], de OK, det ikke OK
 
 reject_implicitq ---> %% after the0 ...
-    {user:myflags(notimeoutflag,true)},
+    {main:myflags(notimeoutflag,true)},
     [det].  %% Prag.
 
 reject_implicitq ---> %% after the0 ...
@@ -3701,7 +3701,7 @@ reject_implicitq --->   %%   "avganger"
    w(noun(NB,_,_,_)), 
    {\+ testmember(NB,[nightbus,airplane,airbus])}, %% give message 
    endofline,
-   {user:myflags(notimeoutflag,true)}, %% Hazard
+   {main:myflags(notimeoutflag,true)}, %% Hazard
    !,reject.
 
 
@@ -4338,7 +4338,7 @@ ynq(P) --->  %% snakker du engelsk /jobber det kvinner
 %%  NB Fails on  ... har buss 6 gått ..., but ok
 
 ynq(P) --->  %% har buss 5 til dragvoll = går (SMS feiltasting)
-    {user:myflags(smsflag,true)},       %% very irregular 
+    {main:myflags(smsflag,true)},       %% very irregular 
     w(verb(have,pres,fin)),      %% har
     look_ahead_bus, 
 
@@ -4467,7 +4467,7 @@ whichq(WhichX:::P) --->
 
 
 whx_phrase(X,WhichX, VP::P) ---> %% hvilke () går
-    {user:myflags(busflag,true)}, 
+    {main:myflags(busflag,true)}, 
     whichf(X,WhichX), 
     look_ahead(w(verb(Go,_,fin))), %% 
     {testmember(Go,[go,pass,leave,depart,arrive])}, 
@@ -4560,7 +4560,7 @@ whatq(WhichZQ) ---> %% hva bruker vi TVen til %% TA-101004
 
 
 whatq(which(X)::: Man ako X) --->   %%  Hva er en mann -> meaning
-     {\+ user:myflags(dialog,1)}, 
+     {\+ main:myflags(dialog,1)}, 
      whatbemean, 
      art1,          %% * hva er bilettpriser
      w(noun(Man,_,u,n)), %% \+ hva er mannen (...  sterk...)
@@ -4568,7 +4568,7 @@ whatq(which(X)::: Man ako X) --->   %%  Hva er en mann -> meaning
      !.
 
 whatq(which(X)::: Man ako X) --->   %% hva er buss -> buss liste
-     {\+ user:myflags(dialog,1)}, 
+     {\+ main:myflags(dialog,1)}, 
      whatbemean, 
           %% hva er bilettpriser
      w(noun(Man,_,u,n)), 
@@ -4578,7 +4578,7 @@ whatq(which(X)::: Man ako X) --->   %% hva er buss -> buss liste
 
 
 whatq(D) ---> 
-    {\+ user:myflags(dialog,1)}, 
+    {\+ main:myflags(dialog,1)}, 
      whatbemean,  %%  hva er/betyr  
      look_ahead(w(name(_Tuc,_,_))),
      redundant0, %% hva er du da 
@@ -4589,7 +4589,7 @@ whatq(D) --->
 
 /**
 whatq(D) --->
-    {\+ user:myflags(dialog,1)}, 
+    {\+ main:myflags(dialog,1)}, 
      whatbemean,  %%  hva er/betyr  
      specific_phrase(A, NP),     
      redundant0, %% hva er du da 
@@ -5251,7 +5251,7 @@ verb0(be1) ---> [].
 %%% *** hvor stopper buss 6 mellom samfundet og vestre rosten. 
         %% hvor henter du informasjonen (fra) %% TA-110121
 whereq(which(Z):::P) ---> %% hvor tar jeg  bussen (fra) . * 
-    {\+ user:myflags(dialog,1)},
+    {\+ main:myflags(dialog,1)},
     where_adverbial(_Nil,Z,WAdv), %% hvor
  
     subjectverb(S,SNP,Take),  gmem(Take,[take,fetch]),
@@ -5302,7 +5302,7 @@ whereq(which(Z):::P) ---> % prepositional complement  //NB NOMINAL WH
 
 
 whereq(which(Y):::P) ---> %% hvor går bussen // fra 
-    {\+ user:myflags(dialog,1)},
+    {\+ main:myflags(dialog,1)},
     where,
     w(verb(go,_,fin)), 
     !,
@@ -6141,8 +6141,8 @@ vp(X,N,  S,ComP)  --->
 verb_phrase(X,N,  S,Com::P1) --->  %% før siste buss [går]
     look_ahead_endofline, %% TA-101006
 %%%%%%%%%%%%%%    missingo,
-    {user:myflags(busflag,true)},
-    {\+ user:myflags(dialog,1)},   %% (Probably ellipsis)
+    {main:myflags(busflag,true)},
+    {\+ main:myflags(dialog,1)},   %% (Probably ellipsis)
     constrainvehdep(X),
     !,accept,
     verb_phrase1(exist,X,N, S,Com::P1)\w(verb(exist,pres,fin)), %% exist more     neutral
@@ -6156,8 +6156,8 @@ verb_phrase(X, N, S,VP) --->      %% jeg vil vite om haugesund ("eksisterer")
     endofline, %%% look_ahead_endofline,  %% dont eat '.' %% TA-101007
                %%% dos not work when phrase is stacked   når går bussen .             
 
-    {user:myflags(busflag,true)},
-    {\+ user:myflags(dialog,1)},       %% (Probably ellipsis)
+    {main:myflags(busflag,true)},
+    {\+ main:myflags(dialog,1)},       %% (Probably ellipsis)
     {vartypeid(X,H)},
 
     {testmember(H,   
@@ -10741,7 +10741,7 @@ obviousdate1(_,_) --->
     !,reject.
 
 obviousdate1(YDate:date, YDate isa date) ---> 
-    {user:myflags(busflag,true)}, 
+    {main:myflags(busflag,true)}, 
     num_na(DD),
     slashpoint0,
     num_na(MM),
@@ -11502,7 +11502,7 @@ noun_phrases20(X,X,_,P1,P1) ---> [].
 %% NO_PHRASES 
 
 no_phrases(X,P) ---> %% Pure Noun_phrase 
-    {user:myflags(teleflag,true)},
+    {main:myflags(teleflag,true)},
     !,
     np(X,true::P). %%  \ the0.
 
@@ -11891,7 +11891,7 @@ np1(X, NP) ---> %  hvilke N som fins %% NOT INITIALLY
     noun_modifiers0(Ind,X, NPK,NP).  % |  du skriver
 
 np1(X, NP1) --->  %%  de 5 neste fra %% Ad Hoc Hazardous
-   {user:myflags(busflag,true)},
+   {main:myflags(busflag,true)},
    [de],  w(nb(N,num)),flnp(Next),   
    not_look_ahead(w(noun(_,_,_,_))), 
    w(prep(From)),
@@ -11910,7 +11910,7 @@ np1(X, VP::P) ---> %   rutetide gjelder for 2 mai. %% EXPENSIVE ?
 
 
 np1(X, NP1) ---> % en 52  %% Ad Hoc Hazardous
-   {user:myflags(busflag,true)},
+   {main:myflags(busflag,true)},
    [en],  %% art,  \+ de (2 neste ...)
     w(nb(N,num)),
    {plausible_busno(N)},
@@ -12009,7 +12009,7 @@ np_kernel(Ind,XT, VP::Q) ---> %  # 2
 
 
 np_head1(Cind, XT,   VP::P) ---> %% navn, telf og avd til tore amble  
-    {user:myflags(teleflag,true)},     %% msn adresse 
+    {main:myflags(teleflag,true)},     %% msn adresse 
     determiner0(_Num,Cind,XT,  P0 , VP::P),   
     preadjs0(Alist),   
     noun_list2(_,XT,Q0), 
@@ -12022,7 +12022,7 @@ np_head1(Cind, XT,   VP::P) ---> %% navn, telf og avd til tore amble
 %% art  Quant  Next bussE NR Busno  // with subsets and permutations
 
 np_head1(0, BusNo: BnounC,  VP::Bingo ) ---> 
-    {user:myflags(busflag,true)},  
+    {main:myflags(busflag,true)},  
     optional([denne]), %%   denne 46 avgangen
     bus_head(_Def1,Number,FLNP,BnounC,_BnameC,BusNo),
     not_look_ahead_lit([sin,sitt,sine]),
@@ -12033,7 +12033,7 @@ np_head1(0, BusNo: BnounC,  VP::Bingo ) --->
 
 
 np_head1(0, XT,  VP::P) ---> %% neste [som] 
-    {user:myflags(busflag,true)},
+    {main:myflags(busflag,true)},
     [den],
     w(adj2(FILANEPR,nil)), 
     {testmember(FILANEPR,[first,last,next,previous])},
@@ -12834,12 +12834,12 @@ npa(X, VP::P) ---> %%  når går (den/det) neste til TS
 
 
 npa(X, IT) ---> %%  når går DEN  = it 
-    {user:myflags(busflag,true)}, 
+    {main:myflags(busflag,true)}, 
     [den],
     not_look_ahead(w(adj2(_,nil))),
     not_look_ahead(w(noun(_,_,_,_))), 
     !,
-    npit(X,IT).      %% unreslved, avoid går den til NTH (user:den := NTH)
+    npit(X,IT).      %% unreslved, avoid går den til NTH (main:den := NTH)
 
 
 npa(X, VP::P) ---> %%  \ busflag, den = thing 
@@ -13416,7 +13416,7 @@ noun_mods(0,Y,P1,P1 and P2) ---> %% // should be def adressen Possesive 'til'
 
 
 noun_mods(0,Y,P1,P1 and P2) ---> %% email tore amble
-    {user:myflags(teleflag,true)},
+    {main:myflags(teleflag,true)},
     not_look_ahead(w(prep(_))),
     {vartypeid(Y,EM)},  
     {\+ vartypid(EM,[])}, %% ad hoc
@@ -13464,16 +13464,16 @@ noun_mods(name, X, P, Q) --->  % fra munkegata som går
 */
 
 noun_mods(name,X,P,R) --->     %% last dominates first
-   {user:myflags(textflag,true);
-     user:myflags(teleflag,true)}, 
+   {main:myflags(textflag,true);
+     main:myflags(teleflag,true)}, 
    noun_mod(X,P,Q),     
    noun_mods(name,X,Q,R). 
 
 noun_mods(name,X,P,P and Q) --->  %%  Tore Amble Oslo
-    {user:myflags(teleflag,true)},  
-    {user:constrain(X,person)},
+    {main:myflags(teleflag,true)},  
+    {main:constrain(X,person)},
     w(name(Oslo,n,Place)),
-    {user:subclass0(Place,place)},
+    {main:subclass0(Place,place)},
     noun_mod(X,P,Q)\  
          (prep1(in), w(name(Oslo,n,Place))).
         
@@ -13861,7 +13861,7 @@ determiner0(plu,0, X,P1,  P2:: ( quant(eq/N,X)::(P1 and P2))) --->
 
 
 determiner0(sin,0, X,P1, P2::P) --->    % try the file = this  file 
-    {user:myflags(dialog,1)},       %% creates problems if not in dialog mode 
+    {main:myflags(dialog,1)},       %% creates problems if not in dialog mode 
     the,                               % provided 0 of- complements 
     determiner(X,P1, P2::P) \  this.
 
@@ -13905,7 +13905,7 @@ determiner0(sin,0, X,P1,  P2:: (quant(eq/1,X)::(P1 and P2))) ---> %% last
 
                                     
 determiner0(sin,0, X,P1, P2::P) --->    % try the file = this  file 
-    {user:myflags(dialog,1)},       %% creates problems if not in dialog mode 
+    {main:myflags(dialog,1)},       %% creates problems if not in dialog mode 
     the,                               % provided 0 of- complements 
     determiner(X,P1, P2::P) \  this.
 
@@ -14120,7 +14120,7 @@ namep(Ind,X,QP) --->   %% teams ruteopplysning
 
                                             
 namep(name,Y:thing,Y isa unkn) --->   %% compound name list %% was name_compound 
-    {user:myflags(unknownflag,true)},        %% unknown names allowed
+    {main:myflags(unknownflag,true)},        %% unknown names allowed
      unplausible_name(X),
      morenames(X,Y).
 
@@ -14311,7 +14311,7 @@ nameq(C,Q) ---> nameq2(C,Q),not_look_ahead(w(nb(_,_))). %% hva er 2 2
 %% Tina    Rønning Lund  Fornavn Fornavn Etternavn
 
 name1g(Rønning:lastname,Rønning isa lastname,GN) ---> %% (Ståle)  Rønnings
-    {user:myflags(teleflag,true)},
+    {main:myflags(teleflag,true)},
     look_ahead(w(name(Rønning,_,firstname))), 
     w(name(Rønning,GN,lastname)), 
     not_look_ahead(w(name(_Lund,_,lastname))),
@@ -14319,7 +14319,7 @@ name1g(Rønning:lastname,Rønning isa lastname,GN) ---> %% (Ståle)  Rønnings
 
 
 name1g(Ståle:firstname,Ståle isa firstname,n) ---> %%  Ståle (Rønning)
-    {user:myflags(teleflag,true)},
+    {main:myflags(teleflag,true)},
     look_ahead(w(name(Ståle,_,lastname))), 
     w(name(Ståle,n,firstname)), 
     look_ahead(w(name(_Lund,_,lastname))),
@@ -14327,7 +14327,7 @@ name1g(Ståle:firstname,Ståle isa firstname,n) ---> %%  Ståle (Rønning)
 
 
 name1g(Rønning:lastname,Rønning isa lastname,GN) ---> %% Ståle Rønnings
-    {user:myflags(teleflag,true)},
+    {main:myflags(teleflag,true)},
         look_ahead(w(name(Rønning,_,firstname))), 
     w(name(Rønning,GN,lastname)), 
         not_look_ahead(w(name(_Lund,n,lastname))),
@@ -14335,7 +14335,7 @@ name1g(Rønning:lastname,Rønning isa lastname,GN) ---> %% Ståle Rønnings
 
 
 name1g(Rønning:firstname,Rønning isa firstname,n) ---> %% (Tina) Rønning Lund 
-    {user:myflags(teleflag,true)},
+    {main:myflags(teleflag,true)},
     look_ahead(w(name(Rønning,_,lastname))), 
     w(name(Rønning,n,firstname)), 
     look_ahead(w(name(_Lund,n,lastname))),
@@ -14356,7 +14356,7 @@ wnameg(X:F,n,F)   --->  w(name(X,n,F)).
 
 
 nameq1(Rønning:lastname,Rønning isa lastname) ---> %% Ståle Rønning
-    {user:myflags(teleflag,true)},
+    {main:myflags(teleflag,true)},
     look_ahead(w(name(Rønning,n,firstname))), 
     w(name(Rønning,n,lastname)), 
     not_look_ahead(w(name(_Lund,n,lastname))),
@@ -14364,7 +14364,7 @@ nameq1(Rønning:lastname,Rønning isa lastname) ---> %% Ståle Rønning
 
 
 nameq1(Rønning:firstname,Rønning isa firstname) ---> %% Ståle Rønning
-    {user:myflags(teleflag,true)},
+    {main:myflags(teleflag,true)},
     look_ahead(w(name(Rønning,n,lastname))), 
     w(name(Rønning,n,firstname)), 
     look_ahead(w(name(_Lund,n,lastname))),
@@ -14442,7 +14442,7 @@ nameq1(N:Type,N isa Class) --->  %% done = Dons,0 | Done unkn
  
     w(name(N,_n,Class)), %% non numeric names  %% passes trough without unk Word message
         { N \== 1},  %% 1 (alone) is not tram 
-        { Class == unkn -> user:myflags(unknownflag,true);true}, %%  Syndrome  
+        { Class == unkn -> main:myflags(unknownflag,true);true}, %%  Syndrome  
         {_n \== gen},        %%  too late if double
                              %% norges=norge(spell)|norge gen
         {type(Class,Type)}.  %% 
@@ -14453,7 +14453,7 @@ nameq1(N:Type,N isa Class) --->  %% Try number as name as  Last Resort
     w(name(N,n,Class)),
     point0, 
      not_look_ahead(w(name(_Christmas_day,_,date))), %% 1. juledag \== tram 
-    { Class == unkn -> user:myflags(unknownflag,true)},
+    { Class == unkn -> main:myflags(unknownflag,true)},
     {number(N)},                 %% Number as name Last
     {type(Class,Type)}. 
 
@@ -14623,7 +14623,7 @@ clock_kernel(_,_) --->
     reject.
  
 clock_kernel(N:clock,N isa clock) --->  %%  kl 8 17 mai
-    {user:myflags(busflag,true)},
+    {main:myflags(busflag,true)},
     hours(_),
     colemin0(_), 
     w(name(_May,_N,month)), 
@@ -14631,7 +14631,7 @@ clock_kernel(N:clock,N isa clock) --->  %%  kl 8 17 mai
     reject.
  
 clock_kernel(N:clock,N isa clock) --->   
-    {user:myflags(busflag,true)},
+    {main:myflags(busflag,true)},
     hours(N1),
     colemin0(N2), 
     {dedicated_date(date(_,N1,N2))}, %% 12.11 is a DATE
@@ -14752,7 +14752,7 @@ aar0 ---> point0.
 
 
 year(N) --->  
-    {user:myflags(busflag,true)},
+    {main:myflags(busflag,true)},
 %%%%%%%    !, %% 26.6.  05
     number(N:_),
     { N >= 2000, N =< 9999},
@@ -15573,7 +15573,7 @@ hlexv(RTV,U,P,Q,Neg) ---> %% understand something  %% Tricky
 
 
 hlexv(rv,Verb,Time,Mode,Neg) ---> %% jeg vet ikke hva klokken er
-    {user:myflags(textflag,true)},
+    {main:myflags(textflag,true)},
     lexv(rv,Verb,Time,Mode),
     negation0(Neg),  %% dont ignore negation 
     not_look_ahead([det]),
@@ -15934,7 +15934,7 @@ preadj1(NIL/PA) --->
     not_look_ahead(w(prep(_))), %% feil (n) på  
     optional([mye]), %% mye lenger tid 
     w(adj2(PA,NIL)),  
-    {\+ user:post_adjective(PA)}, %% fremme kl 17 # 
+    {\+ main:post_adjective(PA)}, %% fremme kl 17 # 
     !.
 
 %%%
@@ -16115,7 +16115,7 @@ prep(_) ---> [m],w(nb(_,_)), !,reject. %% M1 = m 1 = med 1 = with 1 = with tram
 
 
 prep(from) ---> [dra], %% dra = fra SMS
-    {user:myflags(smsflag,true)},
+    {main:myflags(smsflag,true)},
     look_ahead(w(name(_,n,_))).
 
 
@@ -16441,7 +16441,7 @@ art ---> [de].   %% why was this out ???
 art ---> [all].   %%  Roughly
 art ---> not_look_ahead(w(name(_,_,_))), [alt].   %% ALT/Statoil
 art ---> every,
-         {\+ user:myflags(textflag,true)}. 
+         {\+ main:myflags(textflag,true)}. 
 
  
 art1 ---> [en].
@@ -16541,7 +16541,7 @@ andor0(A) --->
     andor(A). 
 
 andor0(and) ---> 
-    {user:myflags(textflag,true)}.
+    {main:myflags(textflag,true)}.
 
 %%%¤ ANDOR
 
@@ -16552,11 +16552,11 @@ andor(and) ---> and1,
 andor(or)---> [eller],not_look_ahead(w(verb(_,_,_))). %% tar buss eller kjører trikk
 
 andor(and) ---> %% er tore amble en lærer ?
-    {user:myflags(teleflag,true)}, 
+    {main:myflags(teleflag,true)}, 
     art,
     !,reject.
 
-andor(and) --->  {user:myflags(teleflag,true)}.
+andor(and) --->  {main:myflags(teleflag,true)}.
 
 % andor(nil) ---> [].   %%  EXPENSIVE ???
 
@@ -17650,7 +17650,7 @@ when10 ---> [].
 
 when1 ---> [da]. %% confus? bussen gikk da du syklet 
 when1 ---> [når].
-when1 ---> [n], {user:myflags(smsflag,true)},!. %% AVOID REACH
+when1 ---> [n], {main:myflags(smsflag,true)},!. %% AVOID REACH
 when1 ---> [tid],look_ahead([går]). %% TA-110128
 
 %%% when1 ---> [nær]. %% Swedish  synword(nær,når) gives nær = reach 
@@ -18106,7 +18106,7 @@ point0 ---> [].
 pointNO ---> point,!,accept. 
 %%%% pointNO ---> ['/'],!,accept. %% DATE ! 
 pointNO ---> %% Optional in case point is  removed 
-    {user:myflags(nodotflag,true)}. 
+    {main:myflags(nodotflag,true)}. 
 
 point ---> ['.'].
 
@@ -18186,7 +18186,7 @@ ctrailer ---> [din],optional(w(adj2(_,nil))),w(noun(_,sin,_,_)). %% din dust
 %% trailer after dcl
 
 dtrailer0 ---> 
-    {\+ user:myflags(dialog,1)},
+    {\+ main:myflags(dialog,1)},
     %% termchar0, %% bussen står. jeg går %% TA-110105
     dtrailer,
     !. 
@@ -18470,12 +18470,12 @@ pronoun(self) ---> [meg].
 
 pronoun(vehicle) ---> [den],  %% Ad Hoc, Elliptic no anaphor 
     not_look_ahead_np, %% TA-110105
-    {user:myflags(busflag,true)}.
+    {main:myflags(busflag,true)}.
 
 
 pronoun(thing) ---> [de],     %% de som tar buss 
     not_look_ahead_np, %% TA-110105
-    {user:myflags(busflag,true)}.   
+    {main:myflags(busflag,true)}.   
 
 
 pronoun(thing) --->  %% dangerous
@@ -18833,7 +18833,7 @@ the0 --->  the,der0,!,accept.
 % the0 --->  which,!,accept. %% jeg vet hvilken buss som går. %% Infernal Bloody Mess
 %%% hvilke ruter dekker tyholt ***********
 
-the0 ---> {user:myflags(textflag,true)},art. %%  A sweet Liebfraumilch
+the0 ---> {main:myflags(textflag,true)},art. %%  A sweet Liebfraumilch
 
 the0 --->  [].
 
@@ -19192,7 +19192,7 @@ greetings ---> [Ja],
     {testmember(Ja,[ja,jo,joda,nei,neida])}. 
 
 /* %% TA-110215
-greetings --->   {user:myflags(smsflag,true)},
+greetings --->   {main:myflags(smsflag,true)},
      trafikk,
      !,accept. %% Team Trafikk ...
 */
@@ -19245,7 +19245,7 @@ trafikk ---> [t].          %% (if applicable)
 grums0 ---> [].
 
 
-grums ---> [rute], {user:myflags(smsflag,true)}. %% TA-110303
+grums ---> [rute], {main:myflags(smsflag,true)}. %% TA-110303
 
 %% grums ---> hello. %% hei busstuc
 %% hei Tore , når går bussen. %% TA-110215

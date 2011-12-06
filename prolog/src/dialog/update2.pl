@@ -16,7 +16,7 @@
 %% IMPORTS
 %% RS-111205, UNIT: /
 :- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
-:- use_module(    '../main', [   user:(:=)/2, user:myflags/2,  trackprog/2  ] ). %% set/2, 
+:- use_module(    '../main', [   myflags/2,  trackprog/2  ] ). %% set/2, 
 
 %% RS-111121 UNIT: App
 :- use_module( '../app/busanshp', [ paraphrase_tele/2, paraphrase2/2 ] ).
@@ -148,7 +148,7 @@ updateframe(Program, OldFrame, NewFrame) :-
 
    !, %% TA-030110
 
-   (user:myflags(directflag,true) ->
+   (main:myflags(directflag,true) ->
         trackprog(2,output('*** ANSWER ***')); true),  %% TA-060825
 
    paraphrase2(Program,Changes), %% TA-051109 (Both Important messages and Para)
@@ -169,7 +169,7 @@ updateframe_checkanswer(Program, Slot, OldFrame, NewFrame) :- %% moved up %% TA-
 
     is_subframe(SubSlot, Slot),
 
-   (user:myflags(directflag,true) -> %% TA-060607
+   (main:myflags(directflag,true) -> %% TA-060607
         output('*** ANSWER ***'); true),
 
 

@@ -19,7 +19,7 @@
 %% IMPORTS
 %% RS-111205, UNIT: /
 :- ensure_loaded( '../declare' ).    %% Operators for TUC
-:- use_module( '../main', [   user:(:=)/2, user:myflags/2,  trackprog/2  ] ). %% set/2, 
+:- use_module( '../main', [  myflags/2,  trackprog/2  ] ). %% set/2, 
 
 %% RS-111205, UNIT: dialog/
 :- use_module( frames2, [ frame_getvalue_rec/4, frame_setvalue_rec/4 ] ).
@@ -276,7 +276,7 @@ writefieldvalue1(_Rec,Field):- %% field not present %% TA-070112 ad hoc
 
 ldap_addrefdialog(Field,Val):-  %% TA-060208 ...
     ldaptotuc_field(Field,Field1),    %% street -> address
-    ldaptotuc_user:myflags(Field1,Val,Val1), %% 
+    ldaptotuc_main:myflags(Field1,Val,Val1), %% 
     !,
     addrefdialog(Field1,Val1). %% succeds always once
 
@@ -287,11 +287,11 @@ ldaptotuc_field(Field,Field1):-  %% TA-060208 ...
 
 
 
-ldaptotuc_user:myflags(street,Val,Val1):- %% TA-060208 ...
+ldaptotuc_main:myflags(street,Val,Val1):- %% TA-060208 ...
      !,
      convert_tucnf(street,Val,Val1).
 
-ldaptotuc_user:myflags(address,Val,Val1):- %% TA-060208 ...
+ldaptotuc_main:myflags(address,Val,Val1):- %% TA-060208 ...
      !,
      convert_tucnf(street,Val,Val1).
 
@@ -299,7 +299,7 @@ ldaptotuc_user:myflags(address,Val,Val1):- %% TA-060208 ...
 
 
 
-ldaptotuc_user:myflags(_,Val,Val).
+ldaptotuc_main:myflags(_,Val,Val).
 
 
 
@@ -404,9 +404,9 @@ atomlistreplace1(H, [], H).
 
 %% QUIT %% TA-070419
 xwriteanswer(Fql,AnswerOut):-
-    user:myflags(directflag,true),
+    main:myflags(directflag,true),
     !,
-    user:myflags(directoutputfile,Newans), 
+    main:myflags(directoutputfile,Newans), 
     tell(Newans), 
        nl,
 
@@ -428,7 +428,7 @@ xwriteanswer(_Fql,AnswerOut):- %% TA-070608
 %% WRITE TELEBUSTER ANSWER ...
 
 writetelebusteranswer4(sant,TQL,_AnswerOut,_Frame):-%% TA-060905 
-    user:myflags(directflag,true),
+    main:myflags(directflag,true),
     !,
     nl,
     output('*** TQL  ***'),nl,
@@ -445,9 +445,9 @@ writetelebusteranswer_rep(Frame) :- %% TA-060224
 %% sqt
 
 writetelebusteranswer_sqt(TQL,_AnswerOut,_Frame) :-   %% TA-060224
-    user:myflags(directflag,true),
+    main:myflags(directflag,true),
     !,
-%%     user:myflags(directoutputfile,Newans), %% TA-060825
+%%     main:myflags(directoutputfile,Newans), %% TA-060825
 %%     tell(Newans), %% ALREADY OPEN BY PARAPHRASE2
 
         nl,
@@ -466,9 +466,9 @@ writetelebusteranswer_sqt(_TQL,_,_Frame) :-  %% TA-060825
 %% sat
 
 teleanswer_sat(TQL,Frame) :-  %% TA-060224
-    user:myflags(directflag,true),
+    main:myflags(directflag,true),
     !,
-%%    user:myflags(directoutputfile,Newans), %% TA-060825
+%%    main:myflags(directoutputfile,Newans), %% TA-060825
 %%    tell(Newans), %% ALREADY OPEN BY PARAPHRASE2
 
         nl,
@@ -483,9 +483,9 @@ teleanswer_sat(_,Frame) :-
 
 
 busanswer_sat(TQL,AnswerOut,_Frame) :-  %% TA-060224
-    user:myflags(directflag,true),
+    main:myflags(directflag,true),
     !,
-%%    user:myflags(directoutputfile,Newans), %% TA-060825
+%%    main:myflags(directoutputfile,Newans), %% TA-060825
 %%     tell(Newans), %% Already open by PARAPHRASE2
 
         output('*** TQL  ***'),nl,
@@ -509,9 +509,9 @@ busanswer_sat(_Tql,AnswerOut,_Frame):-  %% TA-060428
 
 
 writetelebusteranswer_saf(TQL,Frame) :-  %% TA-060420
-    user:myflags(directflag,true),
+    main:myflags(directflag,true),
     !,
-%%  user:myflags(directoutputfile,Newans),  %% TA-060825
+%%  main:myflags(directoutputfile,Newans),  %% TA-060825
 %%     tell(Newans),  %% Already OPEN by paraphrase2
 
         output('*** TQL  ***'),nl,
@@ -545,7 +545,7 @@ writetelebusteranswer1(Frame) :-
 
 
 writetelebusteranswer1(Frame) :-		%% return not set,show standard (Marvin):
-    user:myflags(telebusterflag,true),     %% Telebuster,  address is important
+    main:myflags(telebusterflag,true),     %% Telebuster,  address is important
     \+ frame_getvalue_rec(Frame, return, _A,_B), %% TA-0605116
 
     frame_setvalue_rec(Frame,return,[roomnumber,address],Frame1),
@@ -557,7 +557,7 @@ writetelebusteranswer1(Frame) :-		%% return not set,show standard (Marvin):
 
 
 writetelebusteranswer1(Frame) :-		%% return not set,show standard (Marvin):
-    user:myflags(teleflag,true),        %% DAter, telephone is important
+    main:myflags(teleflag,true),        %% DAter, telephone is important
     \+ frame_getvalue_rec(Frame, return,_A,_), %% TA-0605116
     !,
     frame_setvalue_rec(Frame,return,[telephonenumber],Frame1),
@@ -569,7 +569,7 @@ writetelebusteranswer1(Frame) :-		%% return not set,show standard (Marvin):
 
 
 writetelebusteranswer1(Frame) :-		%% 
-    user:myflags(teleflag,true),      
+    main:myflags(teleflag,true),      
     frame_getvalue_rec(Frame, return,_A,_), 
     !,
     listall(Frame).
@@ -654,7 +654,7 @@ listrequirements2([_Field=doknow|Rest]) :-
 	listrequirements2(Rest).
 
 listrequirements2([Field=Value|Rest]) :-
-    user:myflags(traceprog,N), N >=2,
+    main:myflags(traceprog,N), N >=2,
     !,
     listreq2([Field=Value|Rest]).
 
