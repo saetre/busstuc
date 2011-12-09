@@ -5,7 +5,7 @@
 
 %% COMMON CO-VERSION BUSS TELE
 :- module( bustermain, [
-        %%(:=)/2,    userNOTME:(=:)/2,    %% :=/2 main:and =: /2 exported from declare, through main, to "userNOTME:"
+        %%(:=)/2,    userNOTME:(=:)/2,    %% :=/2 and =: /2 exported from declare, through main, to "userNOTME:"
         analyse2/2,     begin/0,        break/1,        (c)/1,          clearport/0,
         closereadfile/0,                check/0,        create_taggercall/2,
         ctxt/3,         difact/2,       fact0/1,        %% dmeq/2,         %% From dmeq.pl REM, RS-111206
@@ -151,7 +151,7 @@ readscript1(X):-
 
     readfrom(X),
 
-    main:skolocon =:  SM, skolemax := SM,   
+    skolocon =: SM, skolemax := SM,   
 
     trace := 1.
 
@@ -216,7 +216,7 @@ quit:-
 %    retractall((_ => _)),
     lemmas_proved := 0,  %%
     interp := 0,         %%
-    (main:skolemax =:  SZ -> skolocon := SZ; skolocon := 0), 
+    (skolemax =: SZ -> skolocon := SZ; skolocon := 0), 
     const := 0. %,    quit_dialog. %% <----  without reply
 
 reset:-  
@@ -224,7 +224,7 @@ reset:-
 %    retractall((_ => _)),
     lemmas_proved := 0,  %%
     interp := 0,         %%
-    (main:skolemax =:  SZ -> skolocon := SZ; skolocon := 0), 
+    (skolemax =: SZ -> skolocon := SZ; skolocon := 0), 
     const := 0. 
 
 
@@ -337,7 +337,7 @@ go:-
     process(L).
 
 restoreworld :- 
-    (main:world =:  _W_) -> true;
+    (world =: _W_) -> true;
     world := real.
 
 golog:-
@@ -462,7 +462,7 @@ r(F):-readfrom(F).
 %
 %     textflag := true,        %  Read from text, don't skip to new Line
 %                              %  destroys  kl. 1720 in batch queries
-%    main:queryflag =:  Oldqueryflag,%  destroys setting in startupfile
+%    queryflag =: Oldqueryflag,%  destroys setting in startupfile
 %    queryflag := false,       %  Statements are not implicit queries 
 %
 %    readfile := FE,   
@@ -498,13 +498,13 @@ process(_):-
 
 process(L):-           %% Process is under a repeat loop
     error_phase := 0,
-    main:language =:  O1, 
+    language =: O1, 
     origlanguage := O1,
 
     translate2(L,TQL),
     nl,
     exetuc(TQL),       %% Always succeed (command may change origlanguage)
-    main:origlanguage =:  O2,
+    origlanguage =: O2,
     language := O2, % 
 
     (TQL=end;  

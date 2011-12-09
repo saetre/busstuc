@@ -59,7 +59,7 @@
 %% IMPORTS
 %% RS-111205, UNIT: /
 :- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
-:- use_module(    '../main', [ (:=)/2,  myflags/2 ] ). %% set/2, 
+:- use_module(    '../main', [ (:=)/2,  (=:)/2,  myflags/2 ] ). %% set/2, 
 
 :- use_module( library(process), [] ).
 :- use_module( 'library', [ nth/3, reverse/2 ] ).
@@ -86,7 +86,7 @@
 %X := Y :-       %% Set value X to Y
 %    main:set(X,Y).
 %
-%main:X =:  Y :-       %% Set value Y from X
+%X =: Y :-       %% Set value Y from X
 %    main:myflags(X,Y).
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -182,7 +182,7 @@ stoptimebatch :-  %% TA-100111
    takebatch.
 takebatch :-
    statistics(runtime,[T2,_]),
-   main:batchstart =:  T1,
+   batchstart =: T1,
    Elapse is (T2-T1),
    out('Total: '),out(Elapse),output(ms). %% TA-980115
 
@@ -533,7 +533,7 @@ doall(P):-  % P, then succeed
 
 
 do_count(F):- 
-    main:F =:  M,
+    F =: M,
     !,
     N is M+1,
     F := N.
@@ -683,7 +683,7 @@ identical(A,B):-
 
 newconst(Y):- 
     do_count(const), % const := const+1
-    main:const =:  Y.
+    const =: Y.
 
 
 

@@ -17628,7 +17628,7 @@ ex_departureday(bus_0055_0104,245,2015,6).
 ex_departureday(bus_0055_0105,245,2045,6).
 ex_departureday(bus_0055_0106,245,625,5).
 ex_departureday(bus_0055_0107,245,705,5).
-ex_departureday(bus_0055_0108,245,725,5).
+%ex_departureday(bus_0055_0108,245,725,5). %% RS-111209 Fjernet pva. Karin Marken 
 ex_departureday(bus_0055_0109,245,805,5).
 ex_departureday(bus_0055_0110,245,825,5).
 ex_departureday(bus_0055_0111,245,905,5).

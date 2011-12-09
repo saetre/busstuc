@@ -7,7 +7,7 @@
 %% Main program for BussTUC
 
 :- module( main, [
-        (:=)/2,          (=:)/2,    %% :=/2 main:and =: /2 exported from declare, through main, to "userNOTME:"
+        (:=)/2,          (=:)/2,    %% :=/2 and =: /2 exported from declare, through main, to "userNOTME:"
         abortword/1,     begin/0,         break/1,       closereadfile/0, %% consult(File). %% TA-110106
         check/0,         create_taggercall/2,            difact/2,   %% Dynamic,  context dependent  %% TA-980301
         %%dmeq/2,          %% From dmeq.pl
@@ -57,8 +57,7 @@
 %% RS-111206
 %% :- compile(       monobus ). %% // after main.pl  Unknown error
 %:- compile( monobus ). %% // after main.pl  Unknown error
-:- use_module( 'db/teledat2', [ %% instead of compile (monobus) %% RS-111206
-     teledbrowfile/1,       teledbtagfile/1  ] ).
+:- use_module( 'db/teledat2', [ teledbrowfile/1, teledbtagfile/1  ] ). %% instead of compile (monobus) %% RS-111206
 
 :- use_module(    ptbwrite ).           %% Module PennTreeBank
 :- use_module(    tucbuses, [  dcg_module/1,  backslash/1,
@@ -123,7 +122,7 @@
 %X := Y :-       %% Set value X to Y
 %    set(X,Y).
 %
-%main:X =:  Y :-       %% Set value Y from X          %% Difficult to make, difficult to understand :-/
+%X =: Y :-       %% Set value Y from X          %% Difficult to make, difficult to understand :-/
 %    main:myflags(X,Y).
 %
 %% remove_duplicates  Standard  -> library
@@ -135,10 +134,11 @@
 
 %% remove_duplicates  Standard  -> library
 %% Declarations of hashmap for flags, used by TUC
-:-volatile   main:myflags/2.
-:-dynamic    main:myflags/2.
+:-multifile   myflags/2.
+%:-volatile   main:myflags/2.
+:-dynamic    myflags/2.
 
-% main:myflags(origlanguage, norsk).
+main:myflags(origlanguage, norsk).
 (origlanguage := norsk).
 
 %% Current value for hash key "X" is assigned the value +Y
@@ -149,11 +149,11 @@
 
 %% Current value of hash key "X" is returned to variable -Y
 (X =: Y) :-       %% Set value Y from X, =:/2 or (=:)/2     
-    main:myflags(X,Y).
+    myflags(X,Y).
 
 set(Key,Value) :-
-    retractall( main:myflags(Key,_) ),
-    assert( main:myflags(Key, Value) ).
+    retractall( myflags(Key,_) ),
+    assert( myflags(Key, Value) ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -301,7 +301,7 @@ reset:-
 %    retractall((_ => _)),
     lemmas_proved := 0,  %%
     interp := 0,         %%
-    (main:skolemax =: SZ -> skolocon := SZ; skolocon := 0),
+    (skolemax =: SZ -> skolocon := SZ; skolocon := 0),
     const := 0.
 
 norsk   :-
@@ -460,7 +460,7 @@ go:-
 
  %%      reset_origins, %% reset GPS origins
 
-       main:origlanguage =:  Lang,
+       origlanguage =: Lang,
        language := Lang,
 
        doask_user(L),
@@ -477,7 +477,7 @@ mtrprocess(S) :-
         restoreworld,
         closereadfile,
         reset_period,
-        main:origlanguage =:  Lang,
+        origlanguage =: Lang,
         language := Lang,
         words(L, S, []),
         process(L).
@@ -490,7 +490,7 @@ mtrprocessweb(S) :-
         create_named_dates, %% TA-110408  ad hoc
         closereadfile,
         reset_period,
-        main:origlanguage =:  Lang,
+        origlanguage =: Lang,
         language := Lang,
         words(L, S, []),
         process(L).
@@ -513,7 +513,7 @@ verify_empty_origins :- %% all gps_origin should be gone !!!!!!
 
 
 restoreworld :-
-    (main:world =:  _W_) -> true;
+    (world =: _W_) -> true;
     world := real.
 
 golog:-
@@ -723,7 +723,7 @@ norsource(F) :- %% TA-110207
 
 
 closereadfile :-   % if interrupted
-    (main:readfile =:  OLD -> closefile(OLD);true),
+    (readfile =: OLD -> closefile(OLD);true),
     seen.
 
 closefile(F) :-
@@ -743,7 +743,7 @@ readfrom(F):-
     trace := 0,
      textflag := true,        %  Read from text, don't skip to new Line
                               %  destroys  kl. 1720 in batch queries
-    main:queryflag =:  Oldqueryflag,%  destroys setting in startupfile
+    queryflag =: Oldqueryflag,%  destroys setting in startupfile
     queryflag := false,       %  Statements are not implicit queries
 
     readfile := FE,
@@ -810,7 +810,7 @@ process(_):-
 
 process(L):-           %% Process is under a repeat loop
     error_phase := 0,
-    main:language =:  O1,
+    language =: O1,
     origlanguage := O1,
 
     printdots, %% TA-110204
@@ -831,7 +831,7 @@ process(L):-           %% Process is under a repeat loop
 
     norsource_postfix,
 
-    main:origlanguage =:  O2,
+    origlanguage =: O2,
     language := O2, %
 
 

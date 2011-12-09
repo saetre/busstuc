@@ -8,9 +8,13 @@
 :- use_module( library(system3), [ exec/3, shell/1 ] ).
 
 %% RS-111205, UNIT: /
-:- use_module( main, [   (:=)/2, myflags/2, set/2  ] ).
+:- use_module( bustermain2, [  update_compnames/1  ] ).
+:- use_module( main, [   (:=)/2, myflags/2, set/2, create_taggercall/2, track/2, trackprog/2, write_taggercall/1  ] ).
 :- use_module( tucbuses, [  dict_module/2  ] ).
 :- use_module( xmlparser, [ xmltaggerparse/2 ] ).
+
+%% RS-111205, UNIT: db/
+:- use_module( 'db/teledat2', [ hazard_tagname/1, legal_tagname/1, teledbrowfile/1, teledbtagfile/1  ] ). %% instead of compile (monobus) %% RS-111206
 
 %% Printing the result from database query 
 :- use_module( 'dialog/parseres', [ get_chars_t/1 ] ).
