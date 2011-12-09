@@ -11,7 +11,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :- ensure_loaded( '../declare' ).       %% Operators for TUC
-:- use_module( '../main', [ traceprint/2 ] ).
+:- use_module( '../main', [ (=:)/2, traceprint/2 ] ).
 
 :-volatile difact/2, fact0/1.
 :-dynamic difact/2, fact0/1.
@@ -89,7 +89,7 @@ evaluateq(howmany(X):::P):-
 
 evaluateq(new:::_). %% Actually a miss
 
-evaluateq(nil).  %% In case main:queryflag =:  true, only nil is produced as TQL.
+evaluateq(nil).  %% In case queryflag =: true, only nil is produced as TQL.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -121,7 +121,7 @@ new_focus(X,M):-      %  Focus is allowed in permament store
     main:myflags(context_id,UID),
     retractall(difact(UID,_ is_the M)),
     retractall(fact0(_ is_the M)),
-    (main:permanence =:  1 ->
+    (permanence =: 1 ->
        asserta(fact0(X is_the M));
        asserta(difact(UID,X is_the M))). %%   % Last Qualified Reference
 

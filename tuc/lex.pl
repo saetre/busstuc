@@ -116,7 +116,7 @@
 
 lexproc3(L1,AssumedLanguage,L3):-
 
-    main:language =:  AssumedLanguage, %% AssumedLanguage := value$(language)
+    language =: AssumedLanguage, %% AssumedLanguage := value$(language)
 
     \+ main:myflags(duallangflag,true),  %% without duallangflag, only 1 language
     !,
@@ -124,7 +124,7 @@ lexproc3(L1,AssumedLanguage,L3):-
 
 
 lexproc3(L1,AssumedLanguage,L3):-
-    main:language =:  OldLanguage,
+    language =: OldLanguage,
     lexproc2(L1,L2Old,NunksOld),
     !,
     track(4,nl),

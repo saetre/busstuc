@@ -466,14 +466,14 @@ premfakt(_).
 
  
 assertfact(P):-
-    main:permanence =:  0,
+    permanence =: 0,
     main:myflags(context_id,UID),  
     !, 
     retractall(difact(UID,P)), 
     asserta(difact(UID,P)).       %% reverse order
 
 assertfact(P):-
-    main:permanence =: 1,
+    permanence =: 1,
     !,
     main:myflags(context_id,UID), 
     retractall(fact0(P)),
@@ -793,7 +793,7 @@ superbeat(X,Z):-      member(X,Z), \+  (X = (not _Y)).
 
 newskolem(Y):-  
     do_count(skolocon), % skolocon := skolocon + 1
-    main:skolocon =:  Y.
+    skolocon =: Y.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
