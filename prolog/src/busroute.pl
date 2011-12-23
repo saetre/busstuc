@@ -26,5 +26,7 @@
 
 ?-compile('db/topreg.pl').      %% Main Table for Route Modules
     
+
+%%% COMPILE ALL THE BUS ROUTES NOW %%% RS-111224
 :- consultbase(tt). %% <-------------- %% TA-110302
 
