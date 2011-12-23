@@ -3,17 +3,8 @@
 %% CREATED TA-051011
 %% REVISED TA-100829
 
-%% UNIT: app
 %% Domain Equivalents common  tele and bus
-:- module( dmeq, [ dmeq/2 ] ).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-:- use_module( '../main', [ myflags/2 ]).
-:- use_module( '../tuc/fernando', [ subclass0/2 ]).
-:- use_module( '../utility/utility', [ testmember/2 ] ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%% dmeq(A,B) betyr at ordet til høyre
 %%%%%%%% betyr det samme som ordet til venstre i dette domenet
@@ -23,7 +14,8 @@
 dmeq(List,U):-   %% traps var
     \+ atom(List),
     !,      
-    testmember(U,List).
+    user:testmember(U,List).
+
 
 
 dmeq(about,about).
@@ -253,7 +245,7 @@ dmeq(notbus,airbus).
 dmeq(notbus,boat). 
 dmeq(notbus,boat_route_plan).
 dmeq(notbus,helicopter).
-dmeq(notbus,nightbus) :- \+  main:myflags(nightbusflag,true). 
+dmeq(notbus,nightbus) :- \+ user: value(nightbusflag,true). 
 dmeq(notbus,airplane). 
 dmeq(notbus,plane).     %% 
 dmeq(notbus,schoolbus). 
@@ -456,8 +448,7 @@ dmeq(trafficant,vehicle).
 dmeq(trafficant,way). %% muligheter Rough 
 
 dmeq(trafficant,Person):- 
-    %main:subclass0(Person,agent). %% kan man ta
-    subclass0(Person,agent). %% kan man ta
+    user:subclass0(Person,agent). %% kan man ta
 
 dmeq(tram,tram_route_plan). 
 dmeq(tram,tram). 

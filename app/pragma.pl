@@ -5,16 +5,6 @@
 %% REVISED TA-080612
 
 % Tolker for Pragma-regler
-:- module( pragma, [
-     flatroundre/2, ipragmaor0/2, ip2addto/4,
-     pragma/3, pragma_complete/5, pragma_aux/4  ] ).
-
-:- use_module( '../app/interapp', [ prettypr/2 ] ).       % utility functions like 
-
-:- use_module( '../utility/utility', [
-        follow_after/3,     follow_sequence/3,  match/2,  out/1,   roundappend/3,   roundmember/2,
-        roundrecmember/2,   roundreverse/2,     test/1
-  ] ).       % utility functions like 
 
 %% Removed / to .. append ../   TA-080612
 %
@@ -22,48 +12,46 @@
 
 % Operatorer for Pragma-regler
 
+:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
+
 % is operator prefixed with rule RuleID
 
-:- op(1150,xfy, rule).  
+:- op(1150,xfy,rule).  
 
-:- op(1120, fy, is).
-:- op(1110,xfy, id).
-:- op(1110,xfy, ip).
+:- op(1120, fy,is).
+:- op(1110,xfy,id).
+:- op(1110,xfy,ip).
 
-:- op( 715, fy, context).    %% similar to ispresent, but doesnt mark as saw
-:- op( 715, fy, addfront).   %% (for messages etc) 
-:- op( 725, fy, addcon).     %% add if not already ispresent 
-:- op( 715, fy, removeall).  %% remove all of a list
-:- op( 715, fy, removeif).   %% remove all if any , always succeed 
-:- op( 715, fy, replaceall). %% replace iteratively all elements 
-:- op( 715, fy, replaceif).  %% replace if occuring. 
-:- op( 715, fy, replace).
-:- op( 715, fy, replacelast).
-:- op( 715,xfy, with).
-%:-op( 715, fy, to). %% not used, interferes with SWI-Prolog /srel/to/--
-%:-op( 715,xfy, append).
-:- op( 715, fy, no).
-:- op( 715, fy, exactly). 
-:- op( 715, fy, add).
-:- op( 715, fy, remove).
-:- op( 715, fy, ispresent).
-:- op( 715, fy, assume). 
+:- op( 715, fy,context).    %% similar to present, but doesnt mark as seen 
+:- op( 715, fy,addfront).   %% (for messages etc) 
+:- op( 725, fy,addcon).     %% add if not already present 
+:- op( 715, fy,removeall).  %% remove all of a list
+:- op( 715, fy,removeif).   %% remove all if any , always succeed 
+:- op( 715, fy,replaceall). %% replace iteratively all elements 
+:- op( 715, fy,replaceif).  %% replace if occuring. 
+:- op( 715, fy,replace).
+:- op( 715, fy,replacelast).
+:- op( 715,xfy,with).
+%%  :- op( 715, fy,to). %% not used, interferes with SWI-Prolog /srel/to/--
+%%  :- op( 715,xfy,append).
+:- op( 715, fy,no).
+:- op( 715, fy,exactly). 
+:- op( 715, fy,add).
+:- op( 715, fy,remove).
+:- op( 715, fy,present).
+:- op( 715, fy,assume). 
 
 %% :- op( 715, fy,not).  % Already defined in TUC
 
-:- op( 714,xfy, seq).     %% directly sequence 
-:- op( 714,xfy, cond).    %% new   not X isa place cond bound(X)
-:- op( 714,xfy, when).    %% same as cond %% TA-081106
-:- op( 712, fy, saw). % Lower than "not", higher than "isa"
+:- op( 714,xfy,seq).     %% directly sequence 
+:- op( 714,xfy,cond).    %% new   not X isa place cond bound(X)
+:- op( 714,xfy,when).    %% same as cond %% TA-081106
+:- op( 712, fy,seen). % Lower than "not", higher than "isa"
 
-%%% %%%%%%%% RS-111118
-:- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
-
-%% RS-111205, UNIT: app
-:- use_module( bustrans, [] ).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 
 pragma(RuleModule,Source,DestOut) :-
@@ -107,7 +95,7 @@ wait_to_trace(RuleID):-
     out(RuleID). %% panic
 
 wait_to_trace(RuleID):- 
-    main:myflags(debugrule,RuleID),
+    value(debugrule,RuleID),
     !,
     spy_me(RuleID).
 wait_to_trace(_).
@@ -151,7 +139,7 @@ writefoundrule(_,_,_,_,_). % Else
 p0(X):-call(X).  %% Just for trace 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% i(Inn,Out,Modifier)  (marks matched with saw)
+%% i(Inn,Out,Modifier)  (marks matched with seen )
 %%
 %% Changed to  i(Modifier,Inn,Out) 
 
@@ -184,6 +172,20 @@ i({X},Rinn,Rinn)    :- !,call(X). %% alternative formulation
 
 i(X or  Y,Rinn,Rinn)  :-  ipragmaor(X,Y,Rinn).
 
+ipragmaor(X,Y,Rinn):- 
+    test(
+
+     (roundmember(X,Rinn)
+      ;
+      ipragmaor0(Y,Rinn))
+).
+
+ipragmaor0(Y or Z,Rinn):- !,
+   ipragmaor(Y,Z,Rinn),
+   !.
+ipragmaor0(Y ,Rinn):- roundmember(Y,Rinn),!.
+
+
 i(X seq Y,Rinn,Rinn)  
     :- follow_sequence(X,Y,Rinn). %% directly follows
 
@@ -195,15 +197,24 @@ i(X seq Y,Rinn,Rinn)
 i(X and Y,Rinn,Rut) :- 
     iandrec(X and Y,Rinn,Rut).
 
+iandrec(X and Y and Z,Rinn,Rut):- !, %% slightly haz if   Y,Z,X,Y
+    follow_after(X,Y,Rinn),
+    iandrec(Y and Z,Rinn,Rut).
+
+iandrec(X and Y ,Rinn,Rinn):- !,
+    follow_after(X,Y,Rinn). %% indirectly
+
+                                                         
+
 i(context X,Rinn,Rinn)        :- allroundmember(X,Rinn). 
 
 i(add X,    R,RX)             :- roundappend(R,X,RX).
 
-i(ispresent X,Rinn,Rut)         :- i2is(X,Rinn,Rut).   
+i(present X,Rinn,Rut)         :- i2is(X,Rinn,Rut).   
 
 
 
-i(not ispresent X when { Y },    R,R)  :- varalarm(X), %% NEW, better syntax %% TA-081106
+i(not present X when { Y },    R,R)  :- varalarm(X), %% NEW, better syntax %% TA-081106
                                  !,
                                  \+ i2oddprescond(X,Y,R). 
 
@@ -234,36 +245,13 @@ i(X,     Rinn,Rut)            :- i2(X,Rinn,Rut).
 
 
 
-iandrec(X and Y and Z,Rinn,Rut):- !, %% slightly haz if   Y,Z,X,Y
-    follow_after(X,Y,Rinn),
-    iandrec(Y and Z,Rinn,Rut).
-
-iandrec(X and Y ,Rinn,Rinn):- !,
-    follow_after(X,Y,Rinn). %% indirectly
-
-                                                         
-
-ipragmaor(X,Y,Rinn):- 
-    test(
-
-     (roundmember(X,Rinn)
-      ;
-      ipragmaor0(Y,Rinn))
-).
-
-ipragmaor0(Y or Z,Rinn):- !,
-   ipragmaor(Y,Z,Rinn),
-   !.
-ipragmaor0(Y ,Rinn):- roundmember(Y,Rinn),!.
-
-
 varalarm(X):-var(X),%% write(alarm),nl,
            !,fail.
 varalarm(_).
 
 
 i2oddprescond(X,Y,Z):- 
-    i2odd(ispresent X,Z),
+    i2odd(present X,Z),
     call(Y),
     !.
 
@@ -274,31 +262,31 @@ i2oddcond(X,Y,Z):-
     !.
 
 
-i2odd(ispresent X,R) :- !,
+i2odd(present X,R) :- !,
    (
     roundrecmember(X,R)
- ; 
-    roundrecmember(saw X,R)).  
+ ;   
+    roundrecmember(seen X,R)).  
 
 i2odd(X,R):- roundrecmember(X,R).
 
-i2(X,X,saw X).
-i2(X,(X,Rest),(saw X,Rest)).
+i2(X,X,seen X).
+i2(X,(X,Rest),(seen X,Rest)).
 i2(Mod,(X,Rinn),(X,Rut)) :- i2(Mod,Rinn,Rut).
 
 
-%% ispresent X ... 
-i2is(X,   saw X,saw X).
-i2is(X,   X, X).  %% NOT  sawX :  ispresent does not mark anything
-i2is(X,   (saw X,Rest),(saw X,Rest)).
-i2is(X,   (X,Rest),(X,Rest)).  %% NOT  sawX :  ispresent does not mark anything
+%% present X ... 
+i2is(X,   seen X,seen X).
+i2is(X,   X, X).  %% NOT  seen X :  present does not mark anything
+i2is(X,   (seen X,Rest),(seen X,Rest)).
+i2is(X,   (X,Rest),(X,Rest)).  %% NOT  seen X :  present does not mark anything
 i2is(Mod, (X,Rinn),(X,Rut)) :- i2is(Mod,Rinn,Rut).
 
 
-markseen((X,R),(saw X,Rny)) :- !,
+markseen((X,R),(seen X,Rny)) :- !,
     markseen(R,Rny).
 
-markseen(X,saw X).
+markseen(X,seen X).
 
 
 
@@ -348,7 +336,7 @@ ip(X,           R,R)               :-  i2odd(X,R).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Remove    first if nonempty and ispresent
+%% Remove    first if nonempty and present
 %  Cuts are hazardous here, because matches are nondeterministic
 
 ip2addcon(X , R,R) :- roundrecmember(X,R),!.  %%  RECURSIVE

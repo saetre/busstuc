@@ -3,96 +3,67 @@
 %% CREATED TA-971121
 %% REVISED TA-100315
 
+
 %%%%%%%% Section to create Auxillary Bus Tables          %%%%%%%
 %   Also predicates for analysis and verification of routes   %%
 
 % Create a file of auxillary bustables (auxtables.pl)
+ 
 
 %% NB they are compiled again as a separate file
+%% The dynamic predicates (xxx0) corresponds to (some of) the filed predicates xxx
 
-:- module( makeauxtables, [
-        ambletarget/1,        assertpredlist/1,        busstall/1,        busstat0/2,
-        complies/2,        connive/3,        corr_ht/1,        createbusstat/0,
-        createhash/0,        createhovedt/0,  % mainly for tabuss
-        createonlyfromstations/0,         createonlytostations/0,
-        createstatbus/0,        createtransbuslist/0,        createunproperstations/0,
-        crerr/0,        crerr1/0,        crerr2/0,        devcand/2, 
-        dumppred/1,        dumppredas/2,        ends_with_vg/1,        filterhash/1,
-        fromstation1/1,        generatehash/1,        interior/1,  %% all neigbours have the same buslist
-        interiors/1,        makeauxtables/0,        makeinteriors/0,        makenext/1,
-        nopassanyway/2,        passanyway/2,        passes_ht/2,        propertransfer/1,
-        remembertorehash/2,      %% dalne -> daln /+/ e
-        splitgenroads/2,        splitgenroad/4,        spurious_street_hash/2,        stallbuss/1,  %% NB use actual buses names 
-        station_reference/1,         statbus0/2,  %  tostationonly0/1,
-        toredef0/3,  torehash0/2, %  transbuslist0/3, 
-        taexists/3,        tafind/3,        taforall/3,        toretarget/1,
-        tostation1/1,        transbuslist1/3,        unproperstation0/1,        ver_movedate/0,    %% Added check for May17 %% TA-100106
-        verify_consistency/2,        verify_movedates/0,        writeheading/0,        writepred3/2,
-        writepredicates/1,          writepredicates2/2,        writepredlist/1,        xproperstation/1
-  ] ).
+:-dynamic  
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% RS-111205, UNIT: /
+  toredef0/3,  
 
-:- use_module( '../interfaceroute', [  domain_module/2, thisdate_period_module/3, reset_period/0  ] ).
-:- use_module( '../main', [] ).
+  torehash0/2,  
 
-:- use_module( '../app/buslog', [ composite_stat/3, passeq/6, properstation/1, station/1 ] ).
+  nextstat0/2,  
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% RS-111205, UNIT: db/
-:- use_module( '../db/places', [ cmpl/3, corr/2, isat/2, placestat/2, sameplace/2 ] ).
-:- use_module( '../db/regcompstr', [ composite_road/3 ] ).
-:- use_module( '../db/timedat', [ named_date/2, this_year/1 ] ).
+  interior0/1,  
 
-%% RS-111205, UNIT: tuc/
-:- use_module( '../tuc/lex', [ tucsoundex/2 ] ).%%toredef/3, torehash/2,  %% from namehashtable
-:- use_module( '../tuc/names', [ samename/2,  streetsyn/1 ] ).
+  transbuslist0/3, 
 
-%% RS-111205, UNIT: utility/
-:- use_module( '../utility/datecalc', [ add_days/3, datetime/6, easterdate/2, sub_days/3 ]).  %% Module util
-:- use_module( '../utility/utility', [  
-        test/1,  delete1/3,      ends_with/3,  for/2,    out/1,     output/1,
-        remember/1, set_of/3,    textlength/2 ] ).
+  statbus0/2,  
+    
+  busstat0/2,    
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  unproperstation0/1,  
 
-%% The dynamic (volatile) predicates (xxx0) corresponds to (some of) the filed predicates xxx
-:- volatile  busstat0/2,  interior0/1,
-%%  fromstationonly0/1,  %  nextstat0/2,     
-  statbus0/2,  %  tostationonly0/1,
-  toredef0/3,  torehash0/2, %  transbuslist0/3, 
-%  unproperstation/1,         % (PLACE)
-  unproperstation0/1.
-%
-:-dynamic  busstat0/2,  interior0/1,   statbus0/2,
-  toredef0/3,  torehash0/2, 
-  unproperstation0/1.
+  fromstationonly0/1,
+ 
+  tostationonly0/1.
 
-%%  fromstationonly0/1,  %  nextstat0/2,
-%  tostationonly0/1, %  transbuslist0/3, 
-%  unproperstation/1,         % (PLACE)
 
 
 /*
+
 Run in Main directory
 
+
 %% 0.  Take backup
+
 % cp db/auxtables.pl  db/backup.auxtables.pl
 % cp db/namehashtable.pl  db/backup.namehashtable.pl
 
 %%  1. Create Tables 
 
 % busestuc.sav
+
 ?- makeauxtables.
 
+  
 %% 2. Create namehashtable
-?- createhash.                  %% Stored in busbase.sav
+
+?- createhash.
 
 %% 3. Finish
+
 ?-halt.
 
 %%  4.  Recompile BusstUC
+
 % busbase.sav
 ?-[busstuc]. %% or other
 ?-save_program(busestuc).
@@ -126,6 +97,7 @@ makeauxtables:-
 
     createonlyfromstations, % 2 min
 
+
     createonlytostations, % 2 min
 */
 
@@ -140,9 +112,9 @@ makeauxtables:-
 
 writeheading:-
     datetime(A,B,C,D,E,F),
-    write('% Auxillary tables created by utility/makeauxtables.pl '), 
-    write(datetime(A,B,C,D,E,F)),nl,nl,
-    write(':- module( auxtables, [  busstat/2,  statbus/2,  transbuslist/3  ] ).'),nl,nl.
+    write('% Auxillary tables created '), 
+    write(datetime(A,B,C,D,E,F)),nl,nl.
+
 
 createstatbus:-
 
@@ -507,7 +479,7 @@ createhash :-
         generatehash(X)),
    !,
    tell('db/namehashtable.pl'), 
-   write( 'Created automatically by makeauxtables.pl ' ),nl,
+    writeheading,
 
    dumppredas(toredef0(X,Y,Z),toredef(X,Y,Z)),
    dumppredas(torehash0(X,Y),torehash(X,Y)),
@@ -742,7 +714,7 @@ ver_movedate :-    %% Added check for May17 %% TA-100106
 
     named_date(may17,May17),   
 
-(  Ascension_day = May17  ->  _Sunday=holiday ; _Sunday=sunday),
+(  Ascension_day = May17 -> _Sunday=holiday ; _Sunday=sunday),
 
 
    add_days(Easterday,48,      Whitsun_eve), %% TA-080108
@@ -760,9 +732,7 @@ ver_movedate :-    %% Added check for May17 %% TA-100106
 
 verify_consistency(Mod1,Mod2):-
  
-     out(  '%% Discrepancies'  ),   out(Mod1),out(Mod2),nl,
-     out(  '%% RS-111206-auto, Made module'  ),nl,
-     out(  ':- module( discrepancies, [ alias_station2/3 ] ).'  ),nl,nl,
+     out('%% Discrepancies'),   out(Mod1),out(Mod2),nl,
    
 for(
 

@@ -1,51 +1,17 @@
-%% FILE translat.pl
+%% FILE translat.pl.
 %% SYSTEM TUC
 %% CREATED TA-940218
 %% REVISED TA-110624
-%% REVISED RS-111121
 
-%% UNIT: tuc
-:- module( translat, [
-        (=>)/2,           clausifyq/2,       clausifystm/1,     condq/2,
-        difact/2,         fact0/1,           hazardrule/1,      makedisjunct/2,
-        optand/3,         optor/3,           plunder/3,         protectrule/2, %% Ad Hoc
-        redundant/1,      testimpossible/1,  testquant/3,       unforgettable/2,
-        writeconjunct/2
-   ] ).
+:- ensure_loaded('../declare').
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% RS-111205, UNIT: /
-:- ensure_loaded( '../declare' ).
-:- use_module(    '../main', [  (:=)/2, (=:)/2, myflags/2, track/2 ] ).
-
-%% RS-111205, UNIT: tuc/
-:- use_module( evaluate, [  difact/1,   new_focus/2  ] ).
-:- use_module( fernando, [  subclass/2 ] ).
-:- use_module( semantic, [  testclass/1 ] ).
-:- use_module( slash, [ (def)/1 ] ).    %% export def/1. %% Prefix operator-predicate
-
-%% RS-111205, UNIT: app/
-:- use_module( '../app/interapp', [] ).  %% RS-111202    %% ieval
-    
-%% RS-111206, UNIT: utility/
-:- use_module( '../utility/library', [ reverse/2  ] ).
-:- use_module( '../utility/utility', [
-        do_count/1,     error/2,        flatlist/2,        flatround/2,
-        for/2,          freshcopy/2,    ident_member/2,    match/2,
-        numbervars/1,   occ/2,          subcase/2,         subsumes/2,   % X at least as general
-        test/1,         unsquare/2
-     ] ).   %% RS-111202    %% error/2, subcase/2
-%:- use_module( '../utility/utility', [ match/2, test/1 ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- volatile difact/2, fact0/1, (=>)/2.
-:- dynamic difact/2, fact0/1, (=>)/2.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%  Skolemization of FOL expressions
+
+
 clausifystm( JLM ):- 
     newskolem(X),
     clausify(X,Y,[],JLM,CLAUSELIST),
@@ -175,11 +141,11 @@ skolem(X,Z,CH,(P => Q) ,N1 or Q1):-!,
     skolem(X,Y,CH,not P,N1),
     skolem(Y,Z,CH,Q,Q1).
 
-%skolem(X,X,_,Y isa C, isa/World/C/Y):- %% Brave New World
-%    main:myflags(textflag,true),
-%    main:myflags(world,World),
-%    World \== real,
-%    !.
+skolem(X,X,_,Y isa C, (isa)/World/C/Y):- %% Brave New World
+    value(textflag,true),
+    value(world,World),
+    World \== real,
+    !.
 skolem(X,X,_,P,P).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -407,11 +373,11 @@ writeconjunct(P,TF):-!,
 
 
 wrclause(_,_):-
-    main:myflags(queryflag,true), 
+    value(queryflag,true), 
     !.
 
 wrclause(P,TF):-
- \+ main:myflags(queryflag,true), 
+ \+ value(queryflag,true), 
     skupdate(P,TF).
 
 
@@ -467,25 +433,24 @@ premfakt(_).
  
 assertfact(P):-
     permanence =: 0,
-    main:myflags(context_id,UID),  
+    value(context_id,UID),  
     !, 
     retractall(difact(UID,P)), 
     asserta(difact(UID,P)).       %% reverse order
 
 assertfact(P):-
-    permanence =: 1,
+    permanence =:1,
     !,
-    main:myflags(context_id,UID), 
+    value(context_id,UID), 
     retractall(fact0(P)),
     retractall(difact(UID,P)), 
     assert(fact0(P)).            % straight order
 
 
 testimpossible(P):-
-%%    explain(false),   %% RS-111205
-%    explain_query(false),
+    explain(false),
     !, 
-    main:myflags(context_id,UID),     
+    value(context_id,UID),     
     retract(difact(UID,P)). 
 
 testimpossible(_).
@@ -659,15 +624,15 @@ condq1(not PQ, (not PQ1)):-
 
 % Update focus also in questions 
 
-%condq1(X isa C,isa/World/C/X):- 
-%    main:myflags(textflag,true),
-%    main:myflags(world,World),
-%    World \== real,
-%    !.
+condq1(X isa C, (isa)/World/C/X):- 
+    value(textflag,true),
+    value(world,World),
+    World \== real,
+    !.
 
 condq1(X isa C,X isa C):- 
     nonvar(X),
- \+ main:myflags(queryflag,true), 
+ \+ value(queryflag,true), 
     !,
     new_focus(X,C).
 

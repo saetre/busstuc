@@ -3,14 +3,12 @@
 %% CREATED   TA-051007
 %% REVISED   TA-060208
 
+:- ensure_loaded('declare'). %% RS-111213 General (semantic) Operators
+
 %% UNIX Version
 
 %% Compiles all  the necessary files.
 %% Same function as the file tucbus.
-
-%%% %%%%%%%% RS-111118
-:- ensure_loaded( 'declare' ).
-:- use_module( main, [   (:=)/2, myflags/2, set/2  ] ).
 
 
 
@@ -18,7 +16,7 @@
 
 g:-['tucbuster.pl'].   %% :-[tuctele]. %%% // Tele things %% TA-051018
 
-:- (duallangflag := true). %% telebuster is not  speech based
+:- (duallangflag :=true). %% telebuster is not  speech based
 
 ?- (telebusterflag := true). %% Permanent 
 

@@ -3,8 +3,6 @@
 %% CREATED TA-020101
 %% REVISED TA-110824
 
-:- module( regbusall, [ nightbus/1, regbus/1
-       ] ).
 
 %% Inclusive set of bus routes
 

@@ -2,87 +2,35 @@
 %% SYSTEM TUC
 %% CREATED TA-920323
 %% REVISED TA-110629
-%% REVISED RS-111121
 
 %% Grammar Utility File  GRUF
+
+
 %% Named after the great Computational Linguist  Fernando Pereira
-
-:- module( tuc, [
-        adj_compl/6,        adjnamecomp_template/3,                     adjname_template2/3,
-        adjnoun_template/4, adjust_year/3,       %% Special hack, neste 3 minutter ?????
-        adjustprep/3,       adjustprepv/3,       adv_compl/6,
-        align_measure/5,    atom_templ/2,        atv_template/6,        bealign/5,
-        bigno/3,  %% Already decided Horrendous  %bottom/2, %% Reminescent // Internal
-        cat_templ/5,        co_template/6,       comparad/5,            compare/5,      %% John is equal/unequal
-        compliancetest/2,   compliancetest2/3,   compoundtest/4,        compatvar/2,
-        constrain0/2,       constrain2/3,        constrainit/2,         ctype/2,         %% NEW REGIME    %% just for safety
-        dayname/1,          decide_adjective/3,  decide_quantifier/4,   defact/3,
-        dtv_template/6,     event/4,             hour_test/1,           idvarx/3,
-        isaprep/1,          issiffer/1,          issifre/1,             isfaktor/1,
-        it_template/1,      iv_template/4,       joinclass/3,           joinclasses/2,
-        %% latin combines names into a compound identifier
-        latin/4,            meetclass/3,         nil_noun_compl/1,  %%  Just test IF there is a nil noun complement
-        noun_compl/4,       norpart/3,           %% Adverbial expression for part of day %% Day is determined
-        monthnumber/2,      negate/3,            noun_adverb/4,         numberdate/2,
-        plausibleclocktest/3, pluralis/2,        plausible_busno/1,     preadjs_template/4,
-        rep_verb/1,         rv_template/7,       setvartype/2,          screenmeasure/2,
-        subclass/2,        subclass0/2,        subtype0/2,          subject_object_test/3, teen/1,
-        testconstraint/2,   thenwhat/3,          tidvarp/3,             tv_template/5,
-        type/2,             value_world/1,       vartype/3,             vartypeid/2,
-        verb_compl/6,       verbtype/2,          which_thing/2,         whodunnit/2
-    ] ).  %% RS-111121 Module TUC
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% RS-111205, UNIT: /
-:- ensure_loaded( '../declare' ).  % :- use_module( userNOTME:'../declare.pl').
-:- use_module( '../main', [ myflags/2 ] ). %, set/2  ] ).
-:- use_module( '../tucbuses', [  dict_module/1  ] ).
-
-%% RS-111205, UNIT: tuc/
-:- use_module( dict_e, [ preposition/1 ] ).
-:- use_module( evaluate, [ fact/1, instant/2 ] ).
-:- use_module( facts, [ (isa)/2   ] ).  %% RS-111204    isa/2 from facts.pl
-:- use_module( semantic, [ 
-        a_compl/4,       abnormalverb/2,       adj_templ/2,          adjnamecomp_templ/3,
-        adjname_templ/2,        %% TA-110701
-        adjnoun_templ/2, adjnouncomp_templ/3,  (ako)/2,               aligen2/2,
-        align1/2,        coher_class/3,        dtv_templ/4,           (has_a)/2,
-        iv_templ/2,      jako/2,               measureclass/1,        n_compl/3,
-        particle/3,      rv_templ/2,           stanprep/2,            tv_templ/3,
-        v_compl/4,       vako/2  %% hyponym of verbs
-  ] ).
-
-
-%% RS-111205, UNIT: db/
-:- use_module( '../db/timedat', [ this_year/1 ] ).
-
-%% RS-111205, UNIT: utility/
-:- use_module( '../utility/datecalc', [ datetime/6 ]).  %% Module util
-:- use_module( '../utility/utility', [ 
-        divmod/4, subcase/2, test/1, testmember/2 ] ).
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:- ensure_loaded('../declare').
 
 
 subject_object_test(_ ,_:Self ,_):-
-     subclass0(Self,agent),!. %%
+     subclass0(Self,agent),!. %% 
 
 subject_object_test(_, _      ,_:agent):-!,fail. %% rough
 
 subject_object_test(V,X,Y):-  %% TA-100905
-    test(tv_template(V,X,Y,_S,_)).
+    test(tv_template(V,X,Y,_S,_)). 
 
 thenwhat(SWT,  SWT::EAP, ERS::EAP and ERS). %% Dont Ask, It works
 
 
 plausibleclocktest(H,M,HM) :- %%   10.10 -> clock / 10.11 -> date,
-      M >= 0, M =< 59,
+      M >= 0, M =< 59, 
       M5 is mod(M,5),
      (M>12  ; M5 = 0), %% hazard
       HM is 100*H+M.
 
 
-value_world(W):- main:myflags(world,W),!;W=real.
+value_world(W):- value(world,W),!;W=real. 
 
 
 decide_adjective(nil,_BusNo,true):-!.
@@ -96,18 +44,18 @@ decide_quantifier(N,XT,PQ,  quant(eq/N,XT):: PQ).
 
 adjust_year(M01,YYYY,YYY1) :-     %%  jan 2
     datetime(YYYY,M12,_,_,_,_),   %%  dec 29. // Same year
-    M01 < M12 -6,           %%  ask for   jan 2. => Next year
+    M01 < M12 -6,           %%  ask for   jan 2. => Next year 
     !,
-    YYY1 is YYYY+1.
+    YYY1 is YYYY+1. 
 
 adjust_year(_,Y,Y).
 
 
 
-%% Special hack,  neste 3 minutter ?????
-
-screenmeasure(_,_:money) :-!. %% mange penger
-
+%% Special hack,  neste 3 minutter ????? 
+ 
+screenmeasure(_,_:money) :-!. %% mange penger 
+                        
 screenmeasure(_Plu, _:Time):-
 %%     Plu==plu,                 %% ett kvarter
     measureclass(Time),
@@ -145,13 +93,13 @@ numberdate(DDMMYY,date(YYYY,MM,DD)):- % den 280801
     DDMMYY > 11000, %% probably wrong clock 1100
     divmod(DDMMYY,10000,DD,MMYY),
     DD >= 1,DD =< 31,
-    MM is MMYY//100,
-    MM >=1,MM =<12,
+    MM is MMYY//100, 
+    MM >=1,MM =<12, 
     !,
     YYYY is mod(MMYY,100)+2000.
 
 %% Clock has preference   0610 is TUCs own clock appeareance
-%% Only Date if NOT CLOCK
+%% Only Date if NOT CLOCK 
 
 numberdate(DDMM,date(YYYY,MM,DD)):- % den 2808
     this_year(YYYY),
@@ -162,13 +110,13 @@ numberdate(DDMM,date(YYYY,MM,DD)):- % den 2808
     MM is mod(DDMM,100).
 
 
-numberdate(DD,date(YYYY,MM,DD)):- % den 28
-    DD >0, DD =< 31, %% no check
-    datetime(YYYY,MM,_,_,_,_).
+numberdate(DD,date(YYYY,MM,DD)):- % den 28 
+    DD >0, DD =< 31, %% no check 
+    datetime(YYYY,MM,_,_,_,_). 
 
 
 
-constrain0(_:thing,_):-!. %%  "det"  koster
+constrain0(_:thing,_):-!. %%  "det"  koster 
 constrain0(X,Y):-
     constrain(X,Y).
 
@@ -179,10 +127,10 @@ constrain2(_:Bus,_C:clock,_V):- %% Not buss 8 = buss kl 8
     fail.
 
 constrain2(_,_:B,V):-
-    subclass0(B,V).
+    subclass0(B,V).   
 
 constrain(_:B,V):-
-    subclass0(B,V).
+    subclass0(B,V). 
 
 constrainit(it:Agent,Agent).
 
@@ -192,7 +140,7 @@ isaprep(P):-dict_e:preposition(P).
 
 %% OM %% TA-110401
 
-adjustprepv(know,past,regarding). %% TA-110629
+adjustprepv(know,past,regarding). %% TA-110629 
 
 
 adjustprepv(talk,om,regarding):-!.
@@ -214,10 +162,10 @@ adjustprep(_:coevent,to,until).  %% TA-110106
 
 adjustprep(_:minute,on,within). %% på 10 miniues=within (Norw) %% TA-100912
 
-adjustprep(_:route,at,_):-!,fail.  %% ved 8 (tiden), not route  %% Hazard ?
-adjustprep(_:number,at,_):-!,fail. % nohelp ?
+adjustprep(_:route,at,_):-!,fail.  %% ved 8 (tiden), not route  %% Hazard ? 
+adjustprep(_:number,at,_):-!,fail. % nohelp ? 
 
-adjustprep(_:coevent,by,of). %% stolt av (at...)
+adjustprep(_:coevent,by,of). %% stolt av (at...) 
 
 adjustprep(_:Clock,past,after):-
     subclass0(Clock,time),
@@ -227,10 +175,10 @@ adjustprep(_:Clock,past,after):-
 
 adjustprep(_:Stat,om,past):- %% OM dragvoll %% OM fictive preposition (Norw)
     subclass0(Stat,place),
-    !.
-adjustprep(_:Stat,om,past):- %% OM dragvoll
+    !.              
+adjustprep(_:Stat,om,past):- %% OM dragvoll 
     subclass0(Stat,place),
-    !.
+    !.              
 adjustprep(_:T,om,during2):-  %% om <tid>
     \+ member(T,[age]), %% etc etc ad hoc
     subclass0(T,time), %% not age
@@ -238,19 +186,19 @@ adjustprep(_:T,om,during2):-  %% om <tid>
 adjustprep(_:_Bus,om,regarding):-!.  %%  om saker
 
 %% adjustprep(_:Stat,regarding,past):- %% OM dragvoll// No, strictly angående
-%%     subclass0(Stat,place).          %% TA-110429
+%%     subclass0(Stat,place).          %% TA-110429   
 
-adjustprep(_:Stat,during2,past):- %% OM dragvoll
-    subclass0(Stat,place),
-    !.
+adjustprep(_:Stat,during2,past):- %% OM dragvoll 
+    subclass0(Stat,place), 
+    !.             
 adjustprep(_:T,during2,during2):-  %% om <tid>
     \+ member(T,[age]), %% etc etx ad hoc
     subclass0(T,time), %% not age
     !.
 adjustprep(_:_Bus,during2,regarding):-!.  %%  om saker
+      
 
-
-adjustprep(_:Neib,after,from):-
+adjustprep(_:Neib,after,from):- 
     subclass0(Neib,place),
     !.
 
@@ -261,11 +209,11 @@ adjustprep(_,From,From).
 %% hvilke stasjoner passerer bussen, CUT Garden path
 
 
-compliancetest(have,_:departure):-
+compliancetest(have,_:departure):- 
     !,fail. %% Ad Hoc // Hvilke avganger har
 
 compliancetest(Verb,X:Subject):-
-    X \== it,                         %% det er mulig å ta buss
+    X \== it,                         %% det er mulig å ta buss 
     bottom(Subject,S),
     \+ (iv_templ(Verb,C),   subclass0(S,C)),
     \+ (tv_templ(Verb,C,_), subclass0(S,C)),
@@ -275,13 +223,13 @@ compliancetest(Verb,X:Subject):-
 compliancetest(_,_).
 
 
-compliancetest2(tv,have,_:departure):-
+compliancetest2(tv,have,_:departure):- 
     !,fail. %% Ad Hoc // Hvilke avganger har
 
 compliancetest2(tv,Verb,X:Subject):-
-    X \== it,                         %% det er mulig å ta buss
+    X \== it,                         %% det er mulig å ta buss 
 
-    test(   (tv_templ(Verb,C,_),subclass0(Subject,C))),
+    test(   (tv_templ(Verb,C,_),subclass0(Subject,C))), 
 
     !.
 
@@ -298,9 +246,9 @@ pluralis(sin,1).
 
 %% New Predicate  (Experimental)
 
-noun_adverb(X:BT,Now,Class,nrel/Now/VEH/Class/X/nil):-
+noun_adverb(X:BT,Now,Class,nrel/Now/VEH/Class/X/nil):- 
     n_compl(Now,VEH,nil),
-    bottom(BT,SC1),
+    bottom(BT,SC1), 
     subclass0(SC1,VEH),
     !.
 
@@ -309,11 +257,11 @@ noun_adverb(X:BT,Now,Class,nrel/Now/VEH/Class/X/nil):-
 
 plausible_busno(X):- %% Ad hoc
     number(X),       %% nettbuss
-    X =< 9999.       %%  buss 9914
+    X =< 9999.       %%  buss 9914 
 
 
 
-% compoundtest(FORM,NOUNVAR,NAMEVAR)
+% compoundtest(FORM,NOUNVAR,NAMEVAR) 
 % true if the noun FORM= def/u governs the variable
 
 %% bussen 5  OK   true
@@ -329,31 +277,31 @@ compoundtest(plu,def,_:C,_):-     % bussene 5 *
 
 compoundtest(_,_,_:NT,X:_):- % bussen 5 *
     bottom(NT,Bus),  testmember(Bus,[number,bus,route,tram]), %% * nummer 6(00)
-    possibly_time(X),
-    X > 100, %%   52 = 0052 only 2300
+    possibly_time(X),  
+    X > 100, %%   52 = 0052 only 2300 
     !,
     fail.
 
 compoundtest(_,def,_:NT,_:N):- % bussen(e) 23 *
-    bottom(NT,bus),
+    bottom(NT,bus),  
     bottom(N,number),
     !,
     fail.
 
-compoundtest(_,def,_:Y,_:C):- % året 1920
+compoundtest(_,def,_:Y,_:C):- % året 1920 
     (Y==year,C==clock;
      Y==clock,C==year),
     !,
     fail.
 
 compoundtest(sin,def,_3460:bus,_) :- %% koster bussen 5 kroner
-    !,
+    !,                              
     fail.
 
 compoundtest(_,_,_,_):-!.
 
 %
-
+    
 possibly_time(X):-
      clock_test(X).
 
@@ -371,7 +319,7 @@ monthnumber(october,   10).
 monthnumber(november,  11).
 monthnumber(december,  12).
 
-dayname(monday).
+dayname(monday). 
 dayname(tuesday).
 dayname(wednesday).
 dayname(thursday).
@@ -381,20 +329,20 @@ dayname(sunday).
 
 
 hour_test(X):-number(X),
-    X >0,X <25.
+    X >0,X <25. 
 
-clock_test(HHMM):-
-    number(HHMM),
+clock_test(HHMM):- 
+    number(HHMM), 
 
-    HHMM \== 1939, %% ad hoc
+    HHMM \== 1939, %% ad hoc 
 
-    HHMM >=  25,  %%  100, %% NB  0024 = 24
+    HHMM >=  25,  %%  100, %% NB  0024 = 24 
     HHMM <  2500,
     MM is HHMM-(HHMM // 100 *100),
     MM < 60.
 
 %%    kl 2009 is perfectly allowed
-%%    this_year(YYYY),
+%%    this_year(YYYY), 
 %%    HHMM \== YYYY.   %% Pragmatic // if clock_test is nec, this is a nogo
 
 
@@ -405,60 +353,60 @@ teen(M):-member(M,[20,30,40,50,60,70,80,90]).
 issiffer(N) :- integer(N), N >= 0, N =< 9.
 issifre(N)  :- integer(N), R is N mod 100,R\==0.
 
-isfaktor(100).
+isfaktor(100). 
 isfaktor(1000).
 isfaktor(100000).
 
 
-rep_verb(X):-
+rep_verb(X):-  
     dict_module(D),D:rep_verb(X).
 
-which_thing(X:Thing,which(X:Thing)):-
+which_thing(X:Thing,which(X:Thing)):- 
      type(thing,Thing).
 
 
 %%   ---> dict_n %%  some day
 
 %% Adverbial expression for part of day
-%% Day is determined
+%% Day is determined 
 
-norpart(in,afternoon,   this_afternoon).
-norpart(in,prenoon,     this_prenoon).
+norpart(in,afternoon,   this_afternoon). 
+norpart(in,prenoon,     this_prenoon). 
 
-norpart(in,day,         today).
-% norpart(in,evening,     this_evening).
-norpart(in,evening,     tonight).
+norpart(in,day,         today).  
+% norpart(in,evening,     this_evening). 
+norpart(in,evening,     tonight). 
 
 norpart(in,morning,     in_morning).   %% i morgentimene %% NB morgen is both morning/morrow
 norpart(in,morrow,      tomorrow).  %% i morgen
 
 norpart(in,yester,      yesterday).
 norpart(in,midnight,    this_midnight).     %% (natt ==> midnight)
-norpart(in,morn,        this_morning).      % morges
+norpart(in,morn,        this_morning).      % morges 
 norpart(in,night,       tonight).           %
-norpart(in,day_after_tomorrow,   day_after_tomorrow).
-norpart(in,day_before_yesterday, day_before_yesterday).
+norpart(in,day_after_tomorrow,   day_after_tomorrow).  
+norpart(in,day_before_yesterday, day_before_yesterday). 
 
 %% Day is indetermined
 
 norpart(om,morning,  in_morning).
 norpart(om,day,      in_day).
 norpart(om,afternoon,in_afternoon).    %%  (afternoon)
-norpart(om,evening,  in_evening).
+norpart(om,evening,  in_evening). 
 norpart(om,night,    in_night).          %
 norpart(om,midnight, in_midnight).     %%  (natt ==> midnight)
 norpart(om,prenoon,  in_prenoon).    %% NORSK FORMIDDAG \== (tidl) MORGEN %% NEW
 
 norpart(on,morning,  in_morning).
-norpart(on,day,      in_day).
+norpart(on,day,      in_day). 
 norpart(on,afternoon,in_afternoon).  %%  (afternoon)
-norpart(on,evening,  in_evening).
-norpart(on,night,    in_night).
+norpart(on,evening,  in_evening).  
+norpart(on,night,    in_night).  
 norpart(on,midnight, in_midnight).   %% (natt ==> midnight)
 
 
 
-%%
+%% 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -467,21 +415,21 @@ event(S,P,Q,exists(S)::P and Q).
 
 
 
-%% NB no cuts here
+%% NB no cuts here 
 
 % Verb Types     tv dtv iv rv cv
 
 verbtype(evah,tv). %%   (resiproc have)
 verbtype(have,tv).
-verbtype(be,cv).   %% New verbtype
+verbtype(be,cv).   %% New verbtype 
 
 verbtype(Give,dtv) :- test(dtv_templ(Give,_,_,_)).
 
-verbtype(Kill,tv)  :- test(tv_templ(Kill,_,_)).
+verbtype(Kill,tv)  :- test(tv_templ(Kill,_,_)). 
 
 verbtype(Say, rv)  :- test(rep_verb(Say)).    % Moved last (tell )
 
-verbtype(Live,iv)  :- test(tv_templ(Live,_,nil)). % kjøpe=kjøpe noe
+verbtype(Live,iv)  :- test(tv_templ(Live,_,nil)). % kjøpe=kjøpe noe 
 
 verbtype(Live,iv)  :- test(iv_templ(Live,_)). % important iv after tv
                                               % Greedy Heuristics
@@ -496,7 +444,7 @@ verbtype(Live,iv)  :- test(iv_templ(Live,_)). % important iv after tv
 /*
      align class A and B means that it is pragmatically meaningful
      to believe that an object of class A could be an object of class B.
-     In order to avoid a semantic error message,
+     In order to avoid a semantic error message, 
      a test is issued, unless one of the classes
      is of a general kind (testclass) where the actual test
      is omitted.
@@ -504,7 +452,7 @@ verbtype(Live,iv)  :- test(iv_templ(Live,_)). % important iv after tv
      be a metaquestion) even if the ansewr is known to be false.
 
      align4 is more restricted in that metaquestions are not allowed.
-
+     
 */
 
 %% SOME BUG HERE
@@ -513,32 +461,32 @@ verbtype(Live,iv)  :- test(iv_templ(Live,_)). % important iv after tv
 
 bealign(X:Savant,Y:_Agent,S,P,P and dob/be/X/Y/S):- %% TA-100912
     test(member(Savant,[savant,item])), %% hva er pris fra røros %% TA-110707
-%%%%     Agent \== thing, %% en person er en sykkel
+%%%%     Agent \== thing, %% en person er en sykkel            
     !. %% allow everything
 
 
 
 bealign(X:Savant,Y:Year,S,P,P and dob/be/X/Y/S):-
     subclass0(Savant,Agent),
-    Agent \== thing, %% en person er en sykkel
+    Agent \== thing, %% en person er en sykkel           
     alignable0(Agent,Year),
     !.
 
 
-bealign(X:Savant,Y:Year,S,P,P and dob/be/X/Y/S):-
+bealign(X:Savant,Y:Year,S,P,P and dob/be/X/Y/S):- 
     alignable0(Savant,Year),      %% hvilken ting er 4 ---> * which(4)
     !.
 
 
 
 bealign(X,Y,S, P, Q):- %% Explicitly  X is Noun // not Noun X
-    \+ main:myflags(textflag,true),
+    \+ value(textflag,true),
     !,
     align(X,Y,S, P, Q).
 
 
-alignable0(X,Y):-
-    ( X=Y ;
+alignable0(X,Y):- 
+    ( X=Y ;  
       subclass0(X,Y);
       subclass0(Y,X);
       alignable(X,Y)),
@@ -547,12 +495,12 @@ alignable0(X,Y):-
 alignable(X,Y) :- %% TA-110708 ad hoc
     (X==identification;
      Y==identification),
-     !.
+     !. 
 
 alignable(X,Y):- %% er tore (=) amble %% ad hoc (ugly)
     (X=firstname,Y=lastname;
      X=lastname,Y=firstname),
-    !,fail.
+    !,fail.   
 
 alignable(X,Y):-
     align1(X,Y)
@@ -569,23 +517,23 @@ alignable(Number1,Extrabus1) :-
     aligen2(Number,Vehicle), %% avoid aligen2(Var1, Var2)
     Vehicle \== thing, %% TA-100223
     subclass0(Extrabus1,Vehicle),
-    !.
+    !. 
 
-alignable(Extrabus1,Number1) :-
+alignable(Extrabus1,Number1) :- 
     nonvar(Number1),
     nonvar(Extrabus1),
     subclass0(Number1,Number),
     aligen2(Number,Vehicle), %% avoid aligen2(Var1, Var2)
     Vehicle \== thing, %% TA-100223
     subclass0(Extrabus1,Vehicle),
-    !.
+    !. 
 
 
 %-
 
 align(X:clock,Y:clock,S, P, P and dob/be/X/Y/S):-!. %% Før klokken er 1900
 
-
+ 
 align(X:_,Y:_,_,_,_):-  %% causes havoc, with self referencing lists
    (nonvar(X),X=(_,_) %% er du et program og en maskin
     ;
@@ -595,32 +543,32 @@ align(X:_,Y:_,_,_,_):-  %% causes havoc, with self referencing lists
 
 align(X:_,Y:_,_,_,_):-  %% causes havoc, with self referencing lists
    (nonvar(X),X=(_;_)  %% er du et program eller en  maskin
-    ;
+    ; 
     nonvar(Y),Y=(_;_)),
     !,
     fail.
-
+                    
 
 align(XT,YT,_S,P,Q):- %%  Should be called directly ?
     align_noun_name(XT,YT,P,_,Q),
     !.
-
+  
 align(XT,YT,_S,P,Q):-
     align_name_name(XT,YT,P,Q),
     !.
 
-align(X:MT,Y:WT,S,P,P and dob/be/X/Y/S):-
-   bottom(MT,Program),
-   bottom(WT,Person),
+align(X:MT,Y:WT,S,P,P and dob/be/X/Y/S):- 
+   bottom(MT,Program),   
+   bottom(WT,Person),     
    alignable(Program,Person),
    !.
 
 
 %% NEW predicate   Typical 5 minutes is not a count
 
-align_measure(X:MT,Y:WT,P,X:MT,P):-
-   bottom(MT,Minute),
-   measureclass(Minute),
+align_measure(X:MT,Y:WT,P,X:MT,P):- 
+   bottom(MT,Minute), 
+   measureclass(Minute), 
    bottom(WT,number),    %% was measure     % 1      1 is very likely meant as a bus number
    nonvar(Y),
    !,
@@ -629,51 +577,51 @@ align_measure(X:MT,Y:WT,P,X:MT,P):-
 %% Some very pragmatic tests
 
 align_noun_name(_:MT,_:WT,P,_,P):- % vestlia endeholdeplass is a station name
-   bottom(MT,endstation),
+   bottom(MT,endstation), 
    bottom(WT,station),
    !,
    fail.
 
-align_noun_name(_:MT,_:WT,P,_,P):-
+align_noun_name(_:MT,_:WT,P,_,P):- 
    bottom(MT,clock), %% a clock is not a typical measure like hours
-   subclass0(WT,measure),
+   subclass0(WT,measure), 
    !,
    fail.
 
 
 align_noun_name(X:MT,Y:WT,_,X:WT,X isa WT):-  %% I take number 17 -> nightbus
-   MT = number,
+   MT = number,  
    subclass0(WT,vehicle),         %    1 is very likely meant as a bus number
-   nonvar(Y),
-   plausible_busno(Y),
+   nonvar(Y), 
+   plausible_busno(Y), 
    !,
    X=Y.
 
 
 align_noun_name(T1:MT,T2:WT,_,T00:MT,T00 isa clock):- % 5 tida => 5 isa clock
    bottom(MT,time),             %     tida
-   (bottom(WT,number) ; bottom(WT,clock)),            % 5
+   (bottom(WT,number) ; bottom(WT,clock)),            % 5  
    var(T1),
    ((number(T2), T2 < 25) -> T00 is T2*100; T00=T2),    % thus is a clock
    !.
 
 
-align_noun_name(_T1:MT,_T2:WT,_,_,_):-
+align_noun_name(_T1:MT,_T2:WT,_,_,_):- 
    bottom(MT,time),             %     tida
-   bottom(WT,date),           % 5
+   bottom(WT,date),           % 5    
    !,
    fail.  %% i 7-8 tiden   is not a date    VERY PRAGMATIC
 
 
 
-align_noun_name(XT,YT,P,XT,Q):-  %% The person John
-   align4(XT,YT,P,Q).
+align_noun_name(XT,YT,P,XT,Q):-  %% The person John 
+   align4(XT,YT,P,Q).  
 
-%%  SUSPENDED    buss gløshaugen *** \= gløshaugen:bus
-align_noun_name(X:T,YT,P,X:T,Q):-
-   var(X), %%   Buss 5 er en holdeplass
+%%  SUSPENDED    buss gløshaugen *** \= gløshaugen:bus 
+align_noun_name(X:T,YT,P,X:T,Q):-  
+   var(X), %%   Buss 5 er en holdeplass 
    align5(X:T,YT,P,Q),         %%  gaten NTH OK
-   !.
+   !. 
 
 align4(X:Daughter,X:Woman,P,P):-  %% daughter mary (Mary is closed)
    (subclass0(Daughter,Woman);    %% London Bridge << London:neighbourhood
@@ -684,8 +632,8 @@ align4(XT,XT,P,P):-!.          % If unifiable, accept.
 
 
 align5(X:MT,Y:WT,P,P):- %%  ? %% bus 8  (bus, route)
-   bottom(MT,Neighbourhood),
-   bottom(WT,Bus),
+   bottom(MT,Neighbourhood),   
+   bottom(WT,Bus),     
    alignable(Neighbourhood,Bus),
    X=Y. %% both will be instantiated
 
@@ -695,14 +643,14 @@ align5(X:MT,Y:WT,P,P):- %%  ? %% bus 8  (bus, route)
 
 
 align_name_name(X:MT, Y:WT, P, P and equal/X/Y):- %% Add test for equality
-    nonvar(X),
+    nonvar(X), 
     nonvar(Y),
 
     \+ (MT=firstname,WT=lastname), %% ad hoc er tore (=) amble ...
     \+ (MT=lastname, WT=firstname),
 
 
-    (\+ (number(X),number(Y))), %% Never allow 10 = 66
+    (\+ (number(X),number(Y))), %% Never allow 10 = 66 
 
     subclass(MT,Common),
     subclass(WT,Common),
@@ -711,48 +659,48 @@ align_name_name(X:MT, Y:WT, P, P and equal/X/Y):- %% Add test for equality
 
 
 
-%% plausible_atom, plausible_name moved to lex.pl
+%% plausible_atom, plausible_name moved to lex.pl 
 
 cat_templ(Time,Prep,T1:_,T2:_,Time/Prep/T1/T2).
 
 atom_templ(X,X:T):-
     atom(X),
     type(thing,T).
-
+ 
 it_template(it:thing).
 
 %%% VERBS %%%%%%%%%%%%%%%%%
-
+                        
 
 %%%%%% intransitive verbs
-
-iv_template(Live,XY:PT,S,LXS and RXS):-
+                  
+iv_template(Live,XY:PT,S,LXS and RXS):-  
     subcase(XY:PT,(X,Y):(XT,YT)),
     !,
     iv_template(Live,X:XT,S,LXS),
     iv_template(Live,Y:YT,S,RXS).
 
-iv_template(Live,X:_,S, doit/Live/it/S):-
+iv_template(Live,X:_,S, (do)/Live/it/S):-
      X==it,
      !,
      iv_templ(Live,_). %% any subject class
 
-iv_template(Buy,X:PT,S,dob/Buy/X/nil/S):-
+iv_template(Buy,X:PT,S,dob/Buy/X/nil/S):- 
     tv_templ(Buy,Person,nil),                %% buy = buy somethin
     subtype0(PT,Person), %% allows PT=thing
     !.
-
-iv_template(Come,X:PT,S,  doit/Come/X/S):-
-    vako10(Come,Go),  %% only 1 level
-    iv_templ(Go,Person),
+ 
+iv_template(Come,X:PT,S,  (do)/Come/X/S):- 
+    vako10(Come,Go),  %% only 1 level 
+    iv_templ(Go,Person),          
     subtype0(PT,Person), %% allows PT=thing
     !.
-
+                                          
 %%%%%%% transitive verbs
 
 
 
-atv_template(Afraid,Because,X:MT,Y:WT,S, adj/nil/Afraid/X/S and srel/Because/coevent/Y/S):-
+atv_template(Afraid,Because,X:MT,Y:WT,S, adj/nil/Afraid/X/S and srel/Because/coevent/Y/S):- 
      adj_templ(Afraid,Man),
      subtype0(MT,Man),
      subtype0(WT,coevent),
@@ -774,7 +722,7 @@ tv_template(evah,XT,YT,S,Code):-  %%  Resiproc of have
     tv_template(have,YT,XT,S,Code).
 
 
-tv_template(Love,XY:PT,Z,S,LXS and RXS):-
+tv_template(Love,XY:PT,Z,S,LXS and RXS):-  
     subcase(XY:PT,(X,Y):(XT,YT)),
     !,
     tv_template(Love,X:XT,Z,S,LXS),
@@ -782,14 +730,14 @@ tv_template(Love,XY:PT,Z,S,LXS and RXS):-
 
 
 tv_template(have,X:MT,Y:WT,_S,H):-   % the verb have
-    has_template(X:MT,Y:WT,H).
+    has_template(X:MT,Y:WT,H).                                         
 
 tv_template(have,X:agent,Y:WT,_S,H):-  % agent have X if person has X // Allowed cast
-    has_template(X:person,Y:WT,H).
+    has_template(X:person,Y:WT,H). 
 
 
-tv_template(Love,X:_,Y:WT,S,dob/Love/it/Y/S):-
-     Love \== have,
+tv_template(Love,X:_,Y:WT,S,dob/Love/it/Y/S):- 
+     Love \== have, 
      X==it,
      !,
      tv_templ(Love,_,Woman), %% any subject class
@@ -798,8 +746,8 @@ tv_template(Love,X:_,Y:WT,S,dob/Love/it/Y/S):-
 
 tv_template(Murder,X:MT,Y:WT,S,dob/Murder/X/Y/S):- %% Experiment New Format
      vako10(Murder,Kill), %% only one level
-
-     tv_templ(Kill,Man,Woman),      %% #1
+ 
+     tv_templ(Kill,Man,Woman),      %% #1       
      subtype0(MT,Man),              %% #2
      subtype0(WT,Woman),
      !.
@@ -814,19 +762,19 @@ tv_template(Love,X:MT,Y:WT,S,dob/Love/X/Y/S):-
      subtype0(WT,Woman),
      !.
 
-%%
+%% 
 
 %% gjør (at) bussen (blir)  gul
-co_template(Know,That,X:MT,Y:WT,S,   doit/Know/X/S and  srel/That/WT/Y/S  ):-
+co_template(Know,That,X:MT,Y:WT,S,   (do)/Know/X/S and  srel/That/WT/Y/S  ):- 
      testmember(Know,[get,paint,make,do1]),
-     subtype0(MT,agent),
+     subtype0(MT,agent),   
      subtype0(WT,coevent),
      !.
 
 
 
-co_template(Know,That,X:MT,Y:WT,S,   doit/Know/X/S and  srel/That/WT/Y/S  ):-
-     rv_templ(Know,Agent),
+co_template(Know,That,X:MT,Y:WT,S,   (do)/Know/X/S and  srel/That/WT/Y/S  ):- 
+     rv_templ(Know,Agent),  
      subtype0(MT,Agent),
      subtype0(WT,coevent),
      !.
@@ -835,21 +783,21 @@ co_template(Know,That,X:MT,Y:WT,S,   doit/Know/X/S and  srel/That/WT/Y/S  ):-
 %%%%%%%% Ditranstive verbs
 
 %                 Man   Woman  Kiss
-dtv_template(Give,X:MT, Y:WT,  Z:ZT, S, dob/Give/X/Z/S and srel/ind/Woman/Y/S) :-
+dtv_template(Give,X:MT, Y:WT,  Z:ZT, S, dob/Give/X/Z/S and srel/ind/Woman/Y/S) :-  
      dtv_templ(Give,MT1,Woman,Kiss),
      subtype0(MT,MT1),
      subtype0(WT,Woman),
-     subtype0(ZT,Kiss),
+     subtype0(ZT,Kiss), 
      !.
 
 
 % Attribute classes are always bottom %
 
-has_template(_,_,_):-
-    main:myflags(error_phase,1),
+has_template(_,_,_):- 
+    value(error_phase,1),
     !.
 
-
+ 
 has_template(RList:T,Alfa,Beta) :- %% Uteglemt
     nonvar(RList),RList=(X,Y),
     !,
@@ -861,27 +809,27 @@ has_template(XT,Alfa,Beta):-
 
 
 has_template1(X:TX, Y:TY,  has/TX/TY/X/Y):-
-    (TY == thing), %% generic
+    (TY == thing), %% generic 
     !.
 
 has_template1(Xunk,Y:Telephone,has/unk/Telephone/X/Y):-
-    nonvar(Xunk),
+    nonvar(Xunk), 
     Xunk= (X:unk).
 
 has_template1(X:TX, Y:TY,  has/TW/TY/X/Y):-
     (TW has_a TY),
-    subtype0(TX,TW),   % subject may NOT be specialized
+    subtype0(TX,TW),   % subject may NOT be specialized 
     !.
 
-has_template1(X:TX, Y:TY,  has/TU/TV/X/Y):-
-    tv_templ(have,TU,TV), %%
+has_template1(X:TX, Y:TY,  has/TU/TV/X/Y):- 
+    tv_templ(have,TU,TV), %% 
 
     subclass0(TX,TU),     %% inheritance on both
     subclass0(TY,TV),     %% expensive ?
     !.
 
 
-has_templist(X,YZ:TYZ,P and R):-
+has_templist(X,YZ:TYZ,P and R):-  
     subcase(TYZ,(TY,TZ)),
     subcase(YZ,(Y,Z)),                %% Attribute lists
     !,
@@ -889,15 +837,15 @@ has_templist(X,YZ:TYZ,P and R):-
     has_templist(X,Z:TZ, R).
 
 has_templist(X,YZ:TNIL,P and R):- % MULTITYPES REPLACED BY JOINTYPES
-    nonvar(YZ),
-    subcase(YZ,(Y,Z)),
+    nonvar(YZ), 
+    subcase(YZ,(Y,Z)),            
     !,
     has_template1(X,Y:TNIL,P),
     has_templist(X,Z:TNIL,R).
 
 has_templist(X,Y,P):-
     has_template1(X,Y,P).
-
+  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -906,28 +854,28 @@ has_templist(X,Y,P):-
 preadjs_template(true,_,P,P):-!.
 
 
-preadjs_template((A1,A2),XT,P0,P0 and P):-
+preadjs_template((A1,A2),XT,P0,P0 and P):-  
     !,
     worldvalue(W), %% There are no events, select world
-    preadj_template(A1,XT,W,P1),
+    preadj_template(A1,XT,W,P1), 
     preadjs_template(A2,XT,P1,P).
 
 preadjs_template(A,XT,P0, P0 and P):-
-    worldvalue(W),
+    worldvalue(W),   
     preadj_template(A,XT,W,P).
 
 
 preadj_template(be/_,_XT,_W,_P1):- !,fail. %% (hvem har) kalt deg
 
-preadj_template(A1,X:T,W,P1):-
-    adjname_template( A1,X:T,W,P1).
-
+preadj_template(A1,X:T,W,P1):-      
+    adjname_template( A1,X:T,W,P1). 
+  
 
 preadj_template(NIL/A1,XT,W,P1):- %% TA-100326 NB
-   adj_template(NIL,A1,XT,W,P1).
+   adj_template(NIL,A1,XT,W,P1). 
 
-worldvalue(W):-
-    main:myflags(world,W),!;W=real.
+worldvalue(W):- 
+    value(world,W),!;W=real. 
 
 %% Pre Adjectives are situation invariant (no situation variable)
 %% Post Adjectives are situation dependent (situation parameters)
@@ -936,39 +884,39 @@ worldvalue(W):-
 
 %%  verb as adjective = passive participle
 adj_template(Nil,be/Write,X:TX,S,adj/Nil/Write/X/S):- %%   adj/nil/ Verb = passive
-    tv_templ(Write,_,Xtid),
+    tv_templ(Write,_,Xtid),   
     subtype0(TX,Xtid),
     !.
 
 
-adj_template(Very,Brilliant,X:Persontype,S,adj/Very/Brilliant/X/S):-
-     jako(Brilliant,Clever), %% semantic.pl // Only 1 level (care)
+adj_template(Very,Brilliant,X:Persontype,S,adj/Very/Brilliant/X/S):-  
+     jako(Brilliant,Clever), %% semantic.pl // Only 1 level (care) 
      adj_templ(Clever,Person),                        % adjective
      subtype0(Persontype,Person),
      !.
 
-adj_template(Very,Clever,X:Persontype,S,adj/Very/Clever/X/S):-
+adj_template(Very,Clever,X:Persontype,S,adj/Very/Clever/X/S):- 
     adj_templ(Clever,Person),
     subtype0(Persontype,Person),
     !.
 
 /** NOT USED %% TA-100325
 
-adj_template(_,European,X:Countrytype,_,has/Country/Continent/X/Europe):-
-    attributable(European,Europe,Continent,Country),
+adj_template(_,European,X:Countrytype,_,has/Country/Continent/X/Europe):- 
+    attributable(European,Europe,Continent,Country), 
     subtype0(Countrytype,Country),
     !.
 
 */
 
-adj_template(Very,Clever,X:Persontype,S,adj/Very/Clever/X/S):-
+adj_template(Very,Clever,X:Persontype,S,adj/Very/Clever/X/S):-  
      adj_templ(Clever,Person),                        % adjective
      subtype0(Persontype,Person),
      !.
 
 
-adj_template(Very,Brilliant,X:Persontype,S,adj/Very/Brilliant/X/S):-
-     jako(Brilliant,Clever), %% semantic.pl // Only 1 level (care)
+adj_template(Very,Brilliant,X:Persontype,S,adj/Very/Brilliant/X/S):-  
+     jako(Brilliant,Clever), %% semantic.pl // Only 1 level (care) 
      adj_templ(Clever,Person),                        % adjective
      subtype0(Persontype,Person),
      !.
@@ -980,26 +928,31 @@ adjname_template(Nil/TT,X:Bustype,_S,adj/Nil/TT/X/real):- %% TA-110103
      !.
 
 
+adjnamecomp_template(T, X:Lymphocyte, X isa T_lymphocyte):-   
+     adjnamecomp_templ(T,Lymphocyte,T_lymphocyte),     
+     !.
+
+adjname_template2(Icer, X:Isoform, X isa Isoform and adj/nil/Icer/X/real):- 
+     adjname_templ(Icer,Iso),    % /2   
+     subclass0(Isoform,Iso), %% ?      
+     !.
+
 %% TT bus
-adjname_template(TT,X:VehType,_S,adj/nil/TT/X/real):-
+adjname_template(TT,X:VehType,_S,adj/nil/TT/X/real):- 
     \+ number(TT), %%  2 ruter  \== 2-ruter
     TT isa Company,
     adjnoun_templ(Company,Veh), %% adjnoun/2  semantic
     subtype0(VehType,Veh), %% tt vehicle, tt route but not tt object
     !.
 
-adjnamecomp_template(T, X:Lymphocyte, X isa T_lymphocyte):-
-     adjnamecomp_templ(T,Lymphocyte,T_lymphocyte),
-     !.
 
 
-
-% adjnoun_template(Data,Base,CT,XDatabase).
+% adjnoun_template(Data,Base,CT,XDatabase). 
 
 
 adjnoun_template(Data,Base,X:DBType,X isa Database):- % Adjunktiv
     adjnouncomp_templ(Data,Base,Database),  %% adjnouncomp_templ/3 semantic
-    !,
+    !,                                   
     subtype0(DBType,Database),
     !.
 
@@ -1011,17 +964,12 @@ adjnoun_template(Dialogue,Interface,X:Interface,X isa Interface  and adj/nil/Dia
 
 
 %% With inheritance of prefix  Dog Embryo <: Animal Embryo
-adjnoun_template(Dog,Embryo,X:Embryo,X isa Embryo and adj/nil/Dog/X/real):-
+adjnoun_template(Dog,Embryo,X:Embryo,X isa Embryo and adj/nil/Dog/X/real):- 
     nonvar(Embryo),
     adjnoun_templ(Animal,Embryo), %% adjnoun_templ/2  semantic
     subclass0(Dog,Animal),
     !.
 
-
-adjname_template2(Icer, X:Isoform, X isa Isoform and adj/nil/Icer/X/real):-
-     adjname_templ(Icer,Iso),    % /2
-     subclass0(Isoform,Iso), %% ?
-     !.
 
 
 
@@ -1036,37 +984,37 @@ rv_template(N,Know,TW,X:PT,S,dor/Know/N/TW/X/NewS/S,NewS):- %% DOR
 
 %%%%%%%%%%% Complements %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-adv_compl(_,redundantly,_,_,_,true):-!. %%  Dummy Adverb
+adv_compl(_,redundantly,_,_,_,true):-!. %%  Dummy Adverb 
 
 adv_compl(be/Possible, Today, _:BusT, Day, S, srel/Today/Day/nil/S):-
     !,
-    a_compl(Possible,Bus,in,Time), %% NB   in
+    a_compl(Possible,Bus,in,Time), %% NB   in 
     subtype0(BusT,Bus),
-    subtype0(Day,Time), % OK
+    subtype0(Day,Time), % OK 
     !.
 
-adv_compl(adj/nil/Possible, Today, _:BusT, Day, S, srel/Today/Day/nil/S):-
+adv_compl(adj/nil/Possible, Today, _:BusT, Day, S, srel/Today/Day/nil/S):- 
     !,
-    a_compl(Possible,Bus,in,Time), %%  NB   in
+    a_compl(Possible,Bus,in,Time), %%  NB   in 
     subtype0(BusT,Bus),
-    subclass0(Day,Time), % OK
+    subclass0(Day,Time), % OK 
     !.
 
 adv_compl(be1,punctually,_, __ ,_,_):- !,fail. %% miss be punctual.
 
 
-
-adv_compl(Go,Today,_:BT, _Daypart_ ,S,srel/Today/Day/nil/S):- %% relax  today
-    particle(Today,Day,_), %% I wait on. not allowed
+                        
+adv_compl(Go,Today,_:BT, _Daypart_ ,S,srel/Today/Day/nil/S):- %% relax  today 
+    particle(Today,Day,_), %% I wait on. not allowed 
     subclass0(BT,Bus), %% !!! NB Bus is superclass
     v_compl(Go,Bus,in,Time), %% or stanprep
-    subclass0(Day,Time),     %% only instantiated
+    subclass0(Day,Time),     %% only instantiated 
     !.
 
-
-adv_compl(Go,Today,_:BT, _Daypart_ ,S,srel/Today/Day/nil/S):-
-    particle(Today,Day,_),
-    subclass0(BT,Bus),
+                        
+adv_compl(Go,Today,_:BT, _Daypart_ ,S,srel/Today/Day/nil/S):- 
+    particle(Today,Day,_), 
+    subclass0(BT,Bus), 
     v_compl(Go,Bus,nil,Day), %% NB nil, no inherit
     !.
 
@@ -1075,26 +1023,26 @@ adv_compl(Go,Today,_:BT, _Daypart_ ,S,srel/Today/Day/nil/S):-
 %---------------------------------------------------------------------
 
 
-adj_compl( (Relevant,Comprehensible),For,_x:PT,Y:RT,S,srel/For/Ruler/Y/S):-
+adj_compl( (Relevant,Comprehensible),For,_X:PT,Y:RT,S,srel/For/Ruler/Y/S):- 
     !,
-    a_compl(Relevant,Person,For,Ruler),
+    a_compl(Relevant,Person,For,Ruler), 
     subtype0(PT,Person),
     subtype0(RT,Ruler),
 
-    adj_compl(Comprehensible,For,_x:PT,Y:RT,S,_), %% NB recursive blue,read and yellow
+    adj_compl(Comprehensible,For,_X:PT,Y:RT,S,_), %% NB recursive blue,read and yellow
 
     !.
 
 
 
-adj_compl(be/Write,by,_:PT,Y:AT,S,srel/by/Author/Y/S):-
+adj_compl(be/Write,by,_:PT,Y:AT,S,srel/by/Author/Y/S):- 
     !,
     tv_templ(Write,Author,Program),
     subtype0(PT,Program),
     subtype0(AT,Author),
     !.
 
-adj_compl(be/Make,In,_X:ProT,Y:PlaT,S,srel/In/Place/Y/S):-
+adj_compl(be/Make,In,_X:ProT,Y:PlaT,S,srel/In/Place/Y/S):- 
     !,
     tv_templ(Make,Agent,Program),
     subtype0(ProT,Program),
@@ -1103,36 +1051,36 @@ adj_compl(be/Make,In,_X:ProT,Y:PlaT,S,srel/In/Place/Y/S):-
     !.
 
 
-adj_compl(Loyal,To,_X:PT,Y:RT,S,srel/To/Ruler/Y/S):-
-    a_compl(Loyal,Person,To,Ruler),
+adj_compl(Loyal,To,_X:PT,Y:RT,S,srel/To/Ruler/Y/S):- 
+    a_compl(Loyal,Person,To,Ruler), 
     subtype0(PT,Person),
     subtype0(RT,Ruler),
     !.
 
 %% jeg er syk desverre
 
-adj_compl(_Nice,redundantly,_,Y:_,S,srel/redundantly/thing/Y/S):-!. %% TA-100424 nec?
+adj_compl(_nice,redundantly,_,Y:_,S,srel/redundantly/thing/Y/S):-!. %% TA-100424 nec?
 
-adj_compl(Up,Now,_X:Bus,Y:Hour,S, srel/Now/Time/Y/S):-
+adj_compl(Up,Now,_X:Bus,Y:Hour,S, srel/Now/Time/Y/S):- 
     particle(Now,Time,_),
-    a_compl(Up,Thing,nil,Time0), %% e.f. a_compl(good,X,nil,thing)
+    a_compl(Up,Thing,nil,Time0), %% e.f. a_compl(good,X,nil,thing) 
     subclass0(Time,Time0),       %% TA-100427
     subclass0(Bus,Thing),
     subclass0(Hour,Time).
 
 
 %% Systemet er oppe nå
-adj_compl(Up,Now,_X:Bus,Y:Hour,S, srel/Now/Time/Y/S):-
+adj_compl(Up,Now,_X:Bus,Y:Hour,S, srel/Now/Time/Y/S):- 
     particle(Now,Time,_),
-    a_compl(Up,Thing,nil,Time),
+    a_compl(Up,Thing,nil,Time),   
     subclass0(Bus,Thing),
     subclass0(Hour,Time).
 
 
-adj_compl(_Loyal,To,_X:_PT,Y:RT,S,srel/To/Ruler/Y/S):- %%  Haz?
+adj_compl(_loyal,To,_X:_PT,Y:RT,S,srel/To/Ruler/Y/S):- %%  Haz?
     stanprep(To,Ruler),
     subclass0(RT,Ruler), %% jeg er nysgjerrig på en ting\=date
-    !.
+    !.   
 
 
 
@@ -1148,27 +1096,27 @@ adj_compl(_Loyal,To,_X:_PT,Y:RT,S,srel/To/Ruler/Y/S):- %%  Haz?
 
 %%¤  VERB_COMPL
 
-verb_compl(look,A,_,nil:pmode,S,srel/A/pmode/nil/S):- %% look old = be old
+verb_compl(look,A,_,nil:(mode),S,srel/A/(mode)/nil/S):- %% look old = be old
      !.
 
-verb_compl(_Be1,how, W:Weather,nil,S,srel/how/Weather/W/S):-  %% Hack %% Hvordan er været ?
+verb_compl(_be1,how, W:Weather,nil,S,srel/how/Weather/W/S):-  %% Hack %% Hvordan er været ?
    !.                                                         % Hvordan går bussen
 
-verb_compl(_Go,than,_:_Tram,Y:Bus,S,srel/than/Bus/Y/S):- %% Hack
+verb_compl(_go,than,_:_Tram,Y:Bus,S,srel/than/Bus/Y/S):- %% Hack 
     !.
 
 
-verb_compl(adj/nil/A,P,XT,YT,S,SR):-
+verb_compl(adj/nil/A,P,XT,YT,S,SR):- 
     !,
     adj_compl(A,P,XT,YT,S,SR).  %%   be/A
 
-verb_compl(Be1,In,_:Stat,Y:Neib,S,srel/In/Place/Y/S):-
+verb_compl(Be1,In,_:Stat,Y:Neib,S,srel/In/Place/Y/S):- 
 
-    \+ abnormalverb(Be1,Stat),
+    \+ abnormalverb(Be1,Stat),       
                                        %% hva heter oslo sin hovedstad ->
                                        %% hva heter oslo "i" sin hovedstad
     nonvar(In), %% ? inclusive nil
-    nonvar(Neib),
+    nonvar(Neib), 
     subclass0(Neib,Place),
     stanprep(In,Place),
     !.
@@ -1177,7 +1125,7 @@ verb_compl(Be1,In,_:Stat,Y:Neib,S,srel/In/Place/Y/S):-
 verb_compl(E,nil,_:_,_:thing,_,_):- E\==exist,!,fail. % Ad Hoc %% TA-100907
                                            % The bus arrives a thing
 
-verb_compl(_,nil,_:_,Være:Station,_,_):-   % gå være = station
+verb_compl(_,nil,_:_,Være:Station,_,_):-   % gå være = station 
     Være == være,
     Station==station,
     !,fail. % Ad Hoc , not cut fail syndrome
@@ -1185,31 +1133,31 @@ verb_compl(_,nil,_:_,Være:Station,_,_):-   % gå være = station
 
 % john and mary loved and kissed a baby in the park .
 
-verb_compl(Sees,_With,_X,Y:_,S,srel/pwith/set/Y/S):-
+verb_compl(Sees,With,_X,Y:_,S,srel/With/set/Y/S):- 
     subcase(Sees,(_,_)),
-    !.
+    !.   
 
 verb_compl(Sing,Prep,XY:T,U,S,Singing):-
     nonvar(XY),
     subcase(XY,(_,_)),
-    subcase(T,(_,_)),
+    subcase(T,(_,_)),   
     !,
     verb_complist(Sing,Prep,XY:T,U,S,Singing).
 
 
-verb_compl(_,_,_,_,_,srel/nil/thing/nil/nil):-
-    main:myflags(error_phase,1),
+verb_compl(_,_,_,_,_,srel/nil/thing/nil/nil):- 
+    value(error_phase,1),
     !.
 
 
-% If no prepositional complement is  defined,
+% If no prepositional complement is  defined, 
 % regard it as a semantical error (accept it in error phase 1)
 
 %% Problematic sequencing
 
 
-verb_compl(See,With,_X:PT,Y:TST,S,srel/pwith/thing/Y/S):-
-    main:myflags(unknownflag,true),
+verb_compl(See,With,_X:PT,Y:TST,S,srel/With/thing/Y/S):-
+    value(unknownflag,true),
     bottom(TST,thing),
     subclass0(PT,Person), %% NB Person superclass
     v_compl(See,Person,With,_Telescope), % takes whatever
@@ -1217,7 +1165,7 @@ verb_compl(See,With,_X:PT,Y:TST,S,srel/pwith/thing/Y/S):-
 
 
 % det er dyrt å reise med buss
-verb_compl(See,With,IT:_,Y:TST,S,srel/pwith/Telescope/Y/S):-
+verb_compl(See,With,IT:_,Y:TST,S,srel/With/Telescope/Y/S):-
     IT == it,
     subclass0(TST,Telescope),
     v_compl(See,_Person,With,Telescope),
@@ -1226,34 +1174,34 @@ verb_compl(See,With,IT:_,Y:TST,S,srel/pwith/Telescope/Y/S):-
 %% go on thing = go on fuel ???
 %% trondheim is on nardo ??? yes neighbourhood  is on place
 
-verb_compl(Come,In,_:Stat,Y:Neighbourhood,S,srel/In/TTT/Y/S):-
-    nonvar(Stat),
+verb_compl(Come,In,_:Stat,Y:Neighbourhood,S,srel/In/TTT/Y/S):- 
+    nonvar(Stat), 
 
    %% Stat \== thing, %% TA-101210 fins noe  jeg kan hjelpe deg.
                       %% Dette kommer fra et system %% TA-110111
     vako10(Come,Go),
-    subclass2(Neighbourhood,Place,TTT), %%
-    subclass0(Stat,Station),
-    v_compl(Go,Station,In,Place),
+    subclass2(Neighbourhood,Place,TTT), %% 
+    subclass0(Stat,Station),    
+    v_compl(Go,Station,In,Place), 
     !.
 
 %% LAST!!
 
 
 
-%%% **  verb_compl(have,wrongly,_464:self,nil:pmode,_534,srel/wrongly/pmode/nil/_534) ?
+%%% **  verb_compl(have,wrongly,_464:self,nil:(mode),_534,srel/wrongly/(mode)/nil/_534) ? 
 
-verb_compl(Run,Wrongly,_:Self,_:Mode, S,srel/Wrongly/pmode/nil/S) :- %% kjøre feil
-    Run \== be1,
-    Wrongly \== nil,
-    particle(Wrongly,Mode,_),
+verb_compl(Run,Wrongly,_:Self,_:(mode), S,srel/Wrongly/(mode)/nil/S) :- %% kjøre feil
+    Run \== be1,      
+    Wrongly \== nil, 
+    particle(Wrongly,Mode,_), 
     v_compl(Run,Self,nil,Mode),
     !.
 
-verb_compl(V,Today,Prep,_:Class, S,srel/Today/Class/nil/S) :-
+verb_compl(V,Today,Prep,_:Class, S,srel/Today/Class/nil/S) :- 
     \+ testmember(V,[be,be1]), %%%%%%%%%%%%%%%%%%%%%%%%%%,have]),
     Prep \== nil,
-    particle(Today,Day,_), % adv_compl(V,Today,_,_,_,_), %%
+    particle(Today,Day,_), % adv_compl(V,Today,_,_,_,_), %% 
     subclass0(Day,Class),
     !.
 
@@ -1262,7 +1210,7 @@ verb_compl(V,Today,Prep,_:Class, S,srel/Today/Class/nil/S) :-
     V == be1, %% <----     %% What was the problem  Jeg er her
     Prep \== nil,
     particle(Today,Day,_),
-    subclass0(Day,Class),
+    subclass0(Day,Class), 
     !.
 
 % % %
@@ -1284,19 +1232,19 @@ vako10(Come,Go):-
 subclass2(thing,_,thing):-  !.
 
 subclass2(C,Telescope,Telescope):- %% NB parameter only from v_compl, not item
-    subclass0(C,Telescope).
+    subclass0(C,Telescope).  
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 verb_complist(Sings,Prep,XY:(XT,YT),U,S,Singing and Dancing):-
-    nonvar(XY),
+    nonvar(XY), 
     subcase(XY,(X,Y)),
     !,
     verb_compl(Sings,Prep,X:XT,U,S,Singing),
     verb_complist(Sings,Prep,Y:YT,U,S,Dancing).
 
 verb_complist(Sing,Prep,X,U,S,P):-
-    verb_compl(Sing,Prep,X,U,S,P).
+    verb_compl(Sing,Prep,X,U,S,P).    
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1323,7 +1271,7 @@ noun_compl(To,X:Advice,(Y,Z):(Computer,Broadband),nrel/To/Advice/System/X/(Y,Z))
 
 
 
-noun_compl(Prep,X:XT,Y:YT,nrel/Prep/XTI/YTI/X/Y):-
+noun_compl(Prep,X:XT,Y:YT,nrel/Prep/XTI/YTI/X/Y):- 
    subclass0(XT,XTI), %%  before n_compl // Try to instantiate
    n_compl(Prep,XTI,YTI),
    subclass0(YT,YTI),
@@ -1331,18 +1279,18 @@ noun_compl(Prep,X:XT,Y:YT,nrel/Prep/XTI/YTI/X/Y):-
 
 
 noun_compl(Prep,X:thing,Y:thing,nrel/Prep/thing/thing/X/Y):-!. %% Dummy
-                             %% true
+                             %% true 
 
 %% jeg venter noe av busstuc
 
 
-noun_compl(Prep,X:thing,Y:YT,nrel/Prep/thing/YTI/X/Y):- %% ting i system #
+noun_compl(Prep,X:thing,Y:YT,nrel/Prep/thing/YTI/X/Y):- %% ting i system # 
    Prep \== nil, %%  Jeg gjør en ting 1. mai.
    superclass0(YT,YTI),
    n_compl(Prep,_XTI,YTI),
    !.
 
-noun_compl(Prep,X:XT,Y:thing,nrel/Prep/XTI/thing/X/Y):-
+noun_compl(Prep,X:XT,Y:thing,nrel/Prep/XTI/thing/X/Y):- 
    superclass0(XT,XTI),
    n_compl(Prep,XTI,_YTI),
    !.
@@ -1352,27 +1300,27 @@ noun_compl(Prep,X:XT,Y:thing,nrel/Prep/XTI/thing/X/Y):-
 %%%%%%%%% Comparisions %%%%%%%%%%%%%%%%%
 
 
-%% Unifiable  Types of Subclass measure
+%% Unifiable  Types of Subclass measure 
 
 
 
 %% John is s good as Mary
 
-comparad(QE,Good,X:XT,Y:YT,compar/Alpha/QE/Good/X/Y):-
+comparad(QE,Good,X:XT,Y:YT,compar/Alpha/QE/Good/X/Y):- 
     !,                               %% Compare adjectives
     joinclass(XT,YT,Alpha).
 
 
-%% John is equal/unequal
-compare(QE,Age,X:XT,Y:YT,comp/Alpha/QE/X/Y):-
+%% John is equal/unequal 
+compare(QE,Age,X:XT,Y:YT,comp/Alpha/QE/X/Y):- 
     \+ member(Age,[number]), %% a thing about linguists
-    member(QE,[eq,ne]),
+    member(QE,[eq,ne]), 
     !,
     joinclass(XT,YT,Alpha).
 
 
 %% 23 > 20
-compare(GT,Number,X:Mea1,Y:Mea2,comp/Number/GT/X/Y):-
+compare(GT,Number,X:Mea1,Y:Mea2,comp/Number/GT/X/Y):- 
     subclass0(Mea1,measure),
     subclass0(Mea2,measure),
     !.
@@ -1380,10 +1328,10 @@ compare(GT,Number,X:Mea1,Y:Mea2,comp/Number/GT/X/Y):-
 %% John is older than 23
 compare(GT,Age,X:XT,Y:YT, has/Omega/Age/X/U  and comp/number/GT/U/Y):- % TA-001015
     subclass0(YT,measure),
-    subclass0(XT,Omega),
-    Omega has_a Age,
+    subclass0(XT,Omega), 
+    Omega has_a Age, 
  \+ (Age = number, YT=clock), %% Ad Hoc bus is over 1900 -> bus has a number > 1900
-    !.
+    !.   
 
 %% John is older than Mary
 compare(GT,Age,X:XT,Y:YT,comp/Age/GT/X/Y):- % common type which has a definition
@@ -1398,7 +1346,7 @@ compare(GT,Age,X:XT,Y:YT,comp/Age/GT/X/Y):- % common type which has a definition
 
 bigno(_id,_id,Neg):-nonvar(Neg),!. %% Already decided Horrendous
 
-bigno(id,Neg,Neg):-!.
+bigno(id,Neg,Neg):-!. 
 bigno(Neg,id,Neg):-!.
 bigno(not,not,id).
 bigno(only,neg,neg).
@@ -1408,8 +1356,8 @@ bigno(neg,only,id). %% <-- NB Pragmatic  ikke bare = id
 
 negate(id,X,X):-!.
 negate(not,X,not X).
-negate(only,X, X).
-negate(often,X, X).
+negate(only,X, X).  
+negate(often,X, X). 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1417,23 +1365,23 @@ negate(often,X, X).
 
 
 type(ID,ID):-
-    main:myflags(error_phase,0),      % initilly, full typecheck
+    value(error_phase,0),      % initilly, full typecheck
     !.
 
 type(_ID_,thing):-
-    main:myflags(error_phase,1),      % if no meaning,
+    value(error_phase,1),      % if no meaning, 
     !.                           % has a type
                              % try without typecheck
 ctype(X,X). %% NEW REGIME    %% just for safety
 
 
-%% Lattice  Operations
+%% Lattice  Operations   
 
 %%         join = lub = top =    the most specific generalisation
 %%         meet = glb = bottom = the most general specialisation
 
-whodunnit(V,Meet):-
-    nonvar(V),
+whodunnit(V,Meet):-  
+    nonvar(V),   
     subcase(V,(L,K)),
     !,
     whodunnit(L,Class1),
@@ -1442,7 +1390,7 @@ whodunnit(V,Meet):-
 
 whodunnit(V,Class):-
     tv_templ(V,Class,_);
-    rv_templ(V,Class).
+    rv_templ(V,Class). 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1463,13 +1411,13 @@ joinclass(thing,_,thing):-!. %% TA-110304
 joinclass(_,thing,thing):-!. %%
 
 joinclass(C1,C2,S):-
-    nonvar(C1),
+    nonvar(C1),           
     nonvar(C2),
-    subclass0(C1,S), S \= thing,
+    subclass0(C1,S), S \= thing, 
     subclass0(C2,S),
     !.
 
-joinclass(X,Y,Z) :-
+joinclass(X,Y,Z) :- 
     coherence_class(X,Y,Z),
     !.
 
@@ -1480,15 +1428,15 @@ coherence_class(X,Y,Z) :-
      subclass0(X,SX),
      subclass0(Y,SY),
      coher_class(SX,SY,Z). %% semantic
-
+ 
 /*   %% TA-101022
 
       ; %% NOT symmetric   buss munkegata \= munkegata buss
       coher_class(SY,SX,Z)).
 */
 
-
-
+ 
+    
 
 
 
@@ -1499,7 +1447,7 @@ meetclass(C1,C2,C2):-subclass0(C2,C1),!.
 meetclass(_,_,nil).
 
 
-% % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % 
 
 
 superclass0(X,X).
@@ -1508,7 +1456,7 @@ superclass0(X,Z):-
     superclass0(Y,Z).
 
 
-subclass0(X,Y):-
+subclass0(X,Y):- 
     X=Y;
     subclass(X,Y).
 
@@ -1527,30 +1475,30 @@ subclass(X,Z):-
 
 %% allow   thing as subject argument
 
-subtype0(X,Y):- X==thing,!;
-                subclass0(X,Y),!.
+subtype0(X,Y):- X==thing,!; 
+                subclass0(X,Y),!. 
 
-compatvar(X:T1,X:T2) :-
+compatvar(X:T1,X:T2) :- 
     (subtype0(T1,T2);
      subtype0(T1,T2)),
     !.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
-setvartype(_:T,T).
+setvartype(_:T,T). 
 
 vartype(X:T,X,T).
 
 vartypeid(_:T,T).
 
 
-bottom((Boy;Girl),Person):- %% Are you a boy or a girl
+bottom((Boy;Girl),Person):- %% Are you a boy or a girl 
     !,
-    joinclass(Boy,Girl,Person).
+    joinclass(Boy,Girl,Person).     
 
-bottom((Boy,Girl),Person):-
+bottom((Boy,Girl),Person):- 
     !,
-    joinclass(Boy,Girl,Person).
+    joinclass(Boy,Girl,Person).     
 
 bottom(X,X). %% Reminescent // Internal
 
@@ -1558,7 +1506,7 @@ bottom(X,X). %% Reminescent // Internal
 idvarx(X,E,X:T):-
     type(E,T).
 
-tidvarp(X:T,Typeid,X isa Typeid):-
+tidvarp(X:T,Typeid,X isa Typeid):- 
     type(Typeid,T).
 
 
@@ -1569,70 +1517,72 @@ tidvarp(X:T,Typeid,X isa Typeid):-
 defact(X,Type,class):-
      type(class,Type),  %% class 'professor'
      instant(X,class).  %% love  is a class and a verb
+     
 
-
-defact(X,Type,C):-
+defact(X,Type,C):-   
     fact(X isa C),
     type(X,Type).      %% rank 'professor'
+     
 
-
-defact(_,Type,thing):-
+defact(_,Type,thing):- 
     type(thing,Type).   %% most general
-
+    
 
 
 testconstraint(_X:T,ID):- %% test T <= ID
      bottom(T,B),
-     subclass0(B,ID),
+     subclass0(B,ID), 
      !.
 
 %% latin combines names into a compound identifier
-latin(nil,X:T1,_:T2,X:T1):- %% Nardovegen 1     %% Drop road number
 
+%% Drop road number
+
+latin(nil,X:T1,_:T2,X:T1):- %% Nardovegen 1 
     subclass0(T1,place),
     subclass0(T2,number),
     !.
 
 
-latin(nil,X:T1,Y:T2,(X,Y):T1):- %% 1900 (-) 2000
+latin(nil,X:T1,Y:T2,(X,Y):T1):- %% 1900 (-) 2000 
     subclass0(T1,clock),
     subclass0(T2,clock).
 
 
 
 latin(and,_:_,VARE:_,_):-    %% og være   %% EXTREMELY AD HOC (NORWAGISM)
-    VARE==være,
+    VARE==være, 
     !,
     fail.                   %% Være is a place
 
 
 latin(and,_X:T1,_Y:T2,_):-  %% special for ambiguous names !!!
-    main:myflags(teleflag,true),
+    value(teleflag,true),
     T1==lastname,
     T2==lastname,
     !,
-    fail.
+    fail.    
 
 
 latin(and,X:name,Y:_,(X,Y):name):-  %% navn shell og rema %% Ad Hoc
     !.
 
 
-latin(and,X:T1,Y:T2,(X,Y):T):-
+latin(and,X:T1,Y:T2,(X,Y):T):-  
     joinclass(T1,T2,T),
 
 %%    T \== thing,  %% They must have something in common
 %%    OK if joinclass succeeds %% TA-110304
 
     T \== nil,    %% du bor på (hybel og reiser)* hjem i helgene .
-    !.
+    !.         
 
-latin(or,X:T1,Y:T2,(X;Y):T):-
+latin(or,X:T1,Y:T2,(X;Y):T):- 
     joinclass(T1,T2,T),
-%%     T \== thing,  %% They must have something in common
+%%     T \== thing,  %% They must have something in common 
     !.               %% OK if joinclass allows %% TA-110304
 
-latin(butnot,X:T1,Y:_T2,(X\Y):T1):-  %% Hazard  ?
+latin(butnot,X:T1,Y:_T2,(X\Y):T1):-  %% Hazard  ? 
     !.
 
 

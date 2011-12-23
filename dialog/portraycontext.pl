@@ -5,23 +5,7 @@
 
 %% All sorts of portraying the context information
 
-%% RS-111205, UNIT: /
-%:- ensure_loaded( '../declare' ).    %% Operators for TUC
-:- use_module( '../main', [ indentprint/2, myflags/2 ] ). %% set/2, 
 
-:- use_module( newcontext2, [
-        addref/3,          clearold/0,       commitref/1,    commitref/3,
-        current_context/1, current_frame_getvalue/2,         dialog_resolve/2,
-        getcontext/2,      getcurrent/1,     getframe/2,     getquery/2,     getref/3,
-        reset_context/0,   saved_context/3,  setcontext/2,   setcurrent/1,   setframe/2,
-        setquery/2,     topic_subclass/3  ] ).
-
-%% RS-111206, UNIT: utility/
-:- use_module( '../utility/datecalc', [  add_days/3, before_date1/2, sub_days/3 ] ).
-:- use_module( '../utility/library', [  reverse/2 ] ).
-:- use_module( '../utility/utility', [ for/2, out/1, output/1, roundmember/2, set_of/3, tab/1 ] ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 lcon :- listing(saved_context).       %% ad hoc utility 
 
@@ -34,7 +18,7 @@ pcon0 :- saved_context(Cid,_Cur,X),  %% ad hoc utility %% TA-041215
  
 
 printcontext :-               %% TA-060126
-     main:myflags(contextflag,true),
+    value(contextflag,true),
     !,
     printcontext1
 ;
@@ -157,7 +141,7 @@ printslot(N,X):-
 %% TA-041215
 
 pcontext :-
-     main:myflags(contextflag,true),
+    value(contextflag,true),
     !,
     pcon0,
     !
@@ -166,7 +150,7 @@ pcontext :-
 
 	
 printdialogtree(L):-
-     main:myflags(traceprog,N),N > 1, %% TA-051005
+    value(traceprog,N),N > 1, %% TA-051005
     !,
     nl,
     output('*** Dialog tree *** '),nl,
@@ -242,13 +226,12 @@ dumpframe([], _).
 dumprefer(List) :-
 	dumprefer(List, 0).
 
-dumprefer([]).
-
 dumprefer([Head | Rest], Depth) :-
-        write_indent(Depth),
-        write(Head), nl, 
-        dumprefer(Rest, Depth).
+	write_indent(Depth),
+	write(Head), nl, 
+	dumprefer(Rest, Depth).
 
+dumprefer([]).
 
 write_indent(Depth) :-
 	Depth > 0,

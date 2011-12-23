@@ -5,26 +5,12 @@
 %% REVISED TA-100325
 
 
-%% Morphological Analyser for the language E (english).
-:-module( morph_e, [
-        be_verb/1,        ditrans_verb/1,   ends_with/3,        intrans_verb/1,
-        lexv/2,           lexv/4,           lcode2/2,
-        pvimodal_verb/1,
-        trans_verb/1,     verbroot/1,       verb_form/4
-    ] ).
+%% Morphological Analyser for the language E.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-%% IMPORTS
 
-%% RS-111205, UNIT: tuc/
-:- use_module( dict_e, [] ).
-:- use_module( lex, [ part_word/1 ] ).
-:- use_module( semantic, [ dtv_templ/4, iv_templ/2, pvi_templ/2, tv_templ/3 ] ).
+:-module(morph_e,[]).
 
-%% RS-111205, UNIT: utility/
-:- use_module( '../utility/utility', [ ends_with/3 ] ).
-
-%% ends_with(X,Y,Z):-user:ends_with(X,Y,Z).
+ends_with(X,Y,Z):-user:ends_with(X,Y,Z).
 
 verb_form(X,Y,Z,U):-
     dict_e:verb_form(X,Y,Z,U).
@@ -94,7 +80,7 @@ lcode2(X,[X]):-           % Test on actual word
 
                          
 lcode2(X,[X]):-           %% TA-071108  not name(X,n,0) as before
-    part_word(X).    %% lex.   
+    user:part_word(X).    %% lex.   
 
 %% 
 
@@ -107,20 +93,20 @@ verbroot(W):-
     pvimodal_verb(W). % cost 
 
 pvimodal_verb(W):- 
-    pvi_templ(W,_).
+    user:pvi_templ(W,_).
 
 be_verb(be).
 
 ditrans_verb(X):-
-    dtv_templ(X,_,_,_).  %% btv -> dtv
+    user:dtv_templ(X,_,_,_).  %% btv -> dtv
 
 trans_verb(have). %% 
 trans_verb(X):-
-   tv_templ(X,_,_),
+   user:tv_templ(X,_,_),
    !. %% >1 
 
 intrans_verb(X):-
-   iv_templ(X,_),
+   user:iv_templ(X,_),
    !. %% >1 
 
 
@@ -203,9 +189,9 @@ lexv(APPLIES,APPLY,pres,fin):-
 
 lexv(X,X).            
 
-%lexb(X,Y):-
-%    lexv(X,Y),
-%    lexb1(Y).     % dict.pl
+lexb(X,Y):-
+    lexv(X,Y),
+    lexb1(Y).     % dict.pl
 
 /* %% TA-020918  %% OBSOLETE
 lexn(X,Y,sin,u,n):- 

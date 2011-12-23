@@ -39,3 +39,8 @@ nreverse([X|U],Z):-
 
 nreverse([],[]).
 
+
+%append([],X,X).
+%append([X|Y],U,[X|V]):-
+%    append(Y,U,V).
+%

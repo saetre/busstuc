@@ -34,7 +34,7 @@ N: hei.
 ?- compile('busroute.pl').  %% TA-071026
 
 
-?- (duallangflag := true). %% telebuster is not  speech based
+?- (duallangflag :=true). %% telebuster is not  speech based
 
 ?- (telebusterflag := true). %% Permanent 
 

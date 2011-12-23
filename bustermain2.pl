@@ -3,84 +3,23 @@
 %% CREATED TA-930531
 %% REVISED TA-090617
 
+
 %% COMMON CO-VERSION BUSS TELE
-:- module( bustermain, [
-        %%(:=)/2,    userNOTME:(=:)/2,    %% :=/2 and =: /2 exported from declare, through main, to "userNOTME:"
-        analyse2/2,     begin/0,        break/1,        (c)/1,          clearport/0,
-        closereadfile/0,                check/0,        %% see main.pl: create_taggercall/2, plustoatom/2,   
-        ctxt/3,         difact/2,       fact0/1,        %% dmeq/2,         %% From dmeq.pl REM, RS-111206
-        end/0,          english/0,      getfromport/1,  go/0,           golog/0,
-        hei/0,          hi/0,           ho/0,           idiotpoint/0,   indentprintlist/2,
-        layout2/2,      listxt/0,       %%  main:myflags/2, %% RS-111204 from declare.pl 111206
-        maxl/1,         norsk/0,        othercommand/2, printparse/1, processorwait/1,
-        readfrom/1,     quit/0,         (r)/1,          readscript/0,
-        readday/0,      receive_tags/1, run/0,          scanfile/2,     %%  DESTROYS  web writing
-        restart/0,      run/1,          send_taggercall/1,              set/2,          %% RS-111204 moved to userNOTME: in declare.pl
-        (sp)/1,         splitlang/2,    (spyg)/1,       (spyr)/1,       statistics/1,
-        status/0,       stopcommand/2,  testgram/0,     traceprint/2,   %%track/2,      trackprog/2,
-        timeout/3,      trytellans/0,   tuc/0,          txt/3,      % elementary words
-        update_compnames/1, update_tags/1,  webrun/0,       write_taggercall/1,             writelog/1,
-        webrun_english/0,               webrun_norsk/0,
-        
-        %% From getphonedir.pl
-        emptytag/0,       emptyrow/0,     getdbrowsdirect/2,    hazardous_tagname/1,
-        reset_ldapcon/0,  reset_tags/0,   remove_dummycomps/2,  streamnoisopen/1,       
-        tshell/1,         x_getdbtags/2,  x_receive_tags/3      %%, xmlrowparse/2
-   ] ).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Imports
-:- use_module( library(timeout) ). %% timeout WITHOUT " _ "
-:- use_module( library(process) ).
-:- use_module( library(system3), [ shell/1, sleep/1 ] ).
+:-use_module(library(timeout)). 
 
-%% Operators used by TUC
-:- ensure_loaded( declare ).
-%% RS-111206
-:- use_module( version, [ version_date/1 ] ).
-:- ensure_loaded( getphonedir ).
+%% timeout WITHOUT _
 
-:- use_module( interfaceroute, [  reset_period/0  ] ).
+progtrace(N,P):-
+    value(traceprog,M), number(M), M >= N, 
+    !,
+    write(P),nl
+;
+    true.
 
-:- use_module( main, [ (:=)/2, (=:)/2, closereadfile/0, end/0, getfromport/1,
-        myflags/2,  processorwait/1,  readfrom/1, run/0, set/2, writelog/1, writepid/0 ] ).
-
-%:- compile( monobus ). %% // after main.pl  Unknown error
-:- use_module( 'db/teledat2', [ %% instead of compile (monobus) %% RS-111206
-     hazard_tagname/1,       %% goodbye: actually unnecessary
-     legal_tagname/1,       %% Exception to hazard_tagname('
-     teledbrowfile/1,       teledbtagfile/1
-    ] ).
-
-
-:- use_module( ptbwrite, [] ).           %% Module PennTreeBank
-:- use_module( tucbuses, [  dcg_module/1,  backslash/1,
-        language/1,     legal_language/1, script_file/1  ] ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-:- use_module( 'db/timedat' ).           %% Module db
-
-%:- use_module( 'dialog/d_dialogue', [ %quit_dialog/0, reset_conns/0,
-%    subst_tql/4,    varmember/2   ] ).
-
-:- use_module( 'utility/utility', [
-        append_atoms/3,  doubt/2,        for/2,        makestring/2,           out/1,
-        output/1,        set_ops/3,      starttime/0,  tab/1
-  ] ).  %% Module utility
-
-%% RS-111205, UNIT: tuc/
-:- use_module( 'tuc/anaphors', [ resolve/2 ] ).
-:- use_module( 'tuc/evaluate',[ evaluateq/1, evaluateq2/1 ]).
-:- use_module( 'tuc/lex', [ decide_topic/0, lexproc3/3, mix/2, spread/1, unknown_words/2 ] ).
-:- use_module( 'tuc/readin', [  ask_user/1, read_in/1    ] ). %%reads text to a list
-:- use_module( 'tuc/translat', [  clausifyq/2,   clausifystm/1  ] ).
-
-:- dynamic difact/2, fact0/1.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 timeout(     S, _L, success):-  %% If timeout doesn't work
-    main:myflags(notimeoutflag,true), 
+    value(notimeoutflag,true), 
     !,
     call(S).
 
@@ -95,11 +34,12 @@ timeout(     S, L, Success):-
 break(_). %% dummy for breakpoints
 
 
-%% Main program for Buster
+%% Main program
+
 
 :-dynamic txt/3,      % elementary words
-          ctxt/3,     % composite words
-          maxl/1.     % number  of words
+          ctxt/3,     % composite words 
+          maxl/1.
 
 
 ?-op(1150,fx,spyg). %% spy grammar rule
@@ -107,7 +47,7 @@ break(_). %% dummy for breakpoints
 ?-op(1150,fx,sp).   %% spy X,X
 
 
-%crash :- tore_amble_is_a_genious.  %% test on undefined predicate
+crash :- tore_amble_is_a_genious.  %% test on undefined predicate
 
 spyg X :- dcg_module(L), 
           parsetime_limit := 100000, %%  ONLY FOR DEBUGGING
@@ -145,12 +85,12 @@ readscript:-
 
 readscript1(X):- 
 
-    trace := 0,
+    trace:=0,
     erase,  
 
     readfrom(X),
 
-    skolocon =: SM, skolemax := SM,   
+    skolocon  =: SM, skolemax :=  SM,   
 
     trace := 1.
 
@@ -158,9 +98,9 @@ readscript1(X):-
 % Default settings. May be redefined
 
 initiate :-   %% called at compiletime !  
-    trace := 0,   %% Dialog 
-    maxdepth := 3,   
-    error_phase := 0,
+    trace:= 0,   %% Dialog 
+    maxdepth:=3,   
+    error_phase:=0,
     context_id := 1,
 
     parsetime_limit := 10000. %% TA-071026
@@ -194,8 +134,8 @@ clear:-
 clear1 :-
     dialog := 0, 
  %% Only complete queries, with defaults ( should be true/false ?)
-    trace := 0,  %% Dialog
-    traceprog := 1, 
+    trace :=0,  %% Dialog
+    traceprog :=1, 
     traceans := 1,
 %%    queryflag := true, 
 %%    textflag := false,
@@ -209,18 +149,19 @@ begin :-
     nl.
 
 quit:- 
-    main:myflags(dialog,1),
+    value(dialog,1),
     !,
     retractall(difact(_,_)),   %% Only Dynamic Facts 
-%    retractall((_ => _)),
+    retractall((_ => _)),
     lemmas_proved := 0,  %%
     interp := 0,         %%
     (skolemax =: SZ -> skolocon := SZ; skolocon := 0), 
-    const := 0. %,    quit_dialog. %% <----  without reply
+    const := 0,
+    quit_dialog. %% <----  without reply
 
 reset:-  
     retractall(difact(_,_)),   %% Only Dynamic Facts 
-%    retractall((_ => _)),
+    retractall((_ => _)),
     lemmas_proved := 0,  %%
     interp := 0,         %%
     (skolemax =: SZ -> skolocon := SZ; skolocon := 0), 
@@ -241,28 +182,43 @@ run(L):-
    run.
     
 
-%run :- 
-%    nl,
-%    seen,              %% evt. read-files
-%    dialog := 0, 
-%    go.
-%
-%
-%logrun :- 
-%    nl,
-%    seen,
-%    golog.
-%
+run :- 
+    nl,
+    (seen),              %% evt. read-files
+    dialog:=0, 
+    go.
+
+
+logrun :- 
+    nl,
+    (seen),
+    golog.
+
 webrun_english :-
-    language := english,
+    language:= english,
     dialog := 0, 
     webrun.
 
 
 webrun_norsk :-
-    language := norsk,
-    dialog := 0,  
+    language :=norsk,
+    dialog   := 0,  
     webrun.
+
+webrun_tele :-
+    language :=norsk,
+    dialog   := 0,  
+
+	 writepid, 
+    nofileerrors,
+	 %%% TA-060426 %% remember(lastday(-1,noday)), 
+
+    repeat,
+       world := real, 
+	    getfromport(L),
+	    processorwait(L),
+	    fail,
+	 !.
 
 /***
 webrun_dialog :-  --> d_main.pl %% TA-050722
@@ -271,9 +227,9 @@ webrun_dialog :-  --> d_main.pl %% TA-050722
 
 webrun :-      
 	 writepid, 
-    set_prolog_flag(fileerrors,off),
+    nofileerrors,
 	 %%% TA-060426 %% remember(lastday(-1,noday)), 
-    busflag := true,    %%  Bustuc Application Program
+    busflag:= true,    %%  Bustuc Application Program
 	 queryflag := true, %% Statements are implicit queries
     warningflag := false, %% if applicable
     repeat,
@@ -288,22 +244,22 @@ webrun :-
 /* %% TA-081218
 
 resetsmsflag :- 
-   (main:myflags(smspermanentflag,true) -> 
+   (value(smspermanentflag,true) -> 
         smsflag := true;
         smsflag := false).
 */
 
 
-%dialog :-  
-%	 nl,
-%	 seen,
-%	 permanence := 0, 
-%	 dialog := 1,   
-%%    queryflag := true,       %% (Statements are implicit queries)
-%    closereadfile,   
-%    %%% TA-060426 %% remember(lastday(-1,noday)), 
-%    dialogrun0.   
-%
+dialog :-  
+	 nl,
+	 (seen),
+	 permanence := 0, 
+	 dialog := 1,   
+%    queryflag := true,       %% (Statements are implicit queries)
+    closereadfile,   
+    %%% TA-060426 %% remember(lastday(-1,noday)), 
+    dialogrun0.   
+
 
 
 hi :-% language := english, 
@@ -311,7 +267,7 @@ hi :-% language := english,
     go.
 
 
-hei:-% language := norsk, 
+hei:-% language:= norsk, 
     debug,
     go.
 
@@ -349,11 +305,11 @@ golog:-
     writelog(L),
     process(L).
 
-%end :-  
-%    seen,
-%    permanence := 0,
-%    world := real.
-%
+end :-  
+    (seen),
+    permanence:=0,
+    world := real.
+
 bad_language :- 
     \+ language(_),
     !,
@@ -371,7 +327,7 @@ bad_language :-
 
 
 tuc_version:-   
-    version_date(V),     %% version.pl, version_date/1
+    version_date(V),     %% version.pl
     nl,nl,               %%
     output(V).        
 
@@ -394,7 +350,7 @@ testgram:-
     spy(DCG:do_phrase/9),
     spy(qev/1),       
     trace := 3,
-    spellcheck := 0, %% debug makes it slow 
+    spellcheck :=0, %% debug makes it slow 
     parsetime_limit := 100000.  %% ONLY DEBUGGING
 
 
@@ -402,7 +358,85 @@ testgram:-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+writepid :-
+         pid(Pid),
+         open('.serverpid',write,Port),
+         write(Port,Pid),
+         close(Port).
+writepid.
 
+
+writelog(L) :-  
+	 open('tuclog.txt',append,Stream) ->
+	 writets(L,Stream) ;
+	 writeiofail.
+
+writets(Tokens,Stream) :-
+	 writets1(Tokens,Stream),
+	 close(Stream).
+
+writets1([],Stream) :-
+	 write(Stream,'\n').
+writets1([Token|Rest],Stream) :-
+	 write(Stream,Token),
+	 write(Stream,' '),
+	 writets1(Rest,Stream).
+
+writeiofail :-
+	 write('Warning: Could not write to logfile tuclog.txt'),nl.
+
+%  
+
+getfromport(L) :-
+	 open('.port',read,Port),
+	 ( read(Port,query(L)) ; L = [] ), 
+        
+
+	 close(Port),
+	 !.
+getfromport([]).  % Else. 
+
+
+processorwait([]) :-
+	 sleep(1),
+	 !.
+
+processorwait(S) :-
+	 psl(S,L),
+    splitlang(L,L1), 
+
+    redirecttoans, 
+
+    (process(L1);true),          % Process always fails...
+
+    redirectfromans,
+
+    clearport,
+    !.
+
+
+
+redirecttoans:- 
+    value(teleflag,true),
+    !. %% Not Yet
+
+redirecttoans:- 
+  trytellans. 
+
+
+redirectfromans:-
+   value(teleflag,true),
+   !,
+
+   teledbrowfile(Rowsample0), 
+
+   shell_copyfile(Rowsample0,'.ans').
+
+
+redirectfromans:-
+   told,
+   !.
+ 
   
 
 %% From Web
@@ -411,11 +445,11 @@ testgram:-
  
 splitlang(L,Netto):- %%   If not prefix nor,eng assume no prefix
  
-   L= [eng|Netto] -> language := english; 
+   L= [eng|Netto] -> language :=english; 
  
-   L= [nor|Netto] -> language := norsk;
+   L= [nor|Netto] -> language :=norsk;
  
-   L= [sms|Netto] -> language := norsk; 
+   L= [sms|Netto] -> language :=norsk; 
  
   ( Netto=L, language := norsk).
 
@@ -447,46 +481,55 @@ readday:-
 c(F):-consult(F). 
 r(F):-readfrom(F).
 
+closereadfile :-   % if interrupted 
+    (readfile =: OLD -> closefile(OLD);true),
+    (seen). 
+
+closefile(F):-
+    absolute_file_name(F,FS),
+    current_stream(FS,_,X),close(X),!;true.
+
 % Flags may not be reset if readfrom is interrupted !
 
-%% RS-111204    Import from main instead!
-%readfrom(F):- 
-%    closereadfile, 
-%    end_of_file := false, 
-%    readfile_extension(X),
-%    append_atoms(F,X,FE), 
-%    permanence := 1,
-%
-%    
-%
+readfrom(F):- 
+    closereadfile, 
+    end_of_file := false, 
+    readfile_extension(X),
+    append_atoms(F,X,FE), 
+    permanence := 1,
+
 %     textflag := true,        %  Read from text, don't skip to new Line
 %                              %  destroys  kl. 1720 in batch queries
 %    queryflag =: Oldqueryflag,%  destroys setting in startupfile
 %    queryflag := false,       %  Statements are not implicit queries 
-%
-%    readfile := FE,   
-%    see(FE),
-%        repeat,
-%            reset_period,  
-%            ask_file(L),    % readin.pl
-%            process(L),     
-%            !,
-%    seen,
-%    permanence := 0.
+
+    readfile := FE,   
+    see(FE),
+        repeat,
+            reset_period,  
+            ask_file(L),    % readin.pl
+            process(L),     
+            !,
+    (seen),
+    permanence := 0.
+
+%%    textflag := false,       %  Read from text, don't skip to new Line 
+%%    queryflag :=   Oldqueryflag. % destroys setting in startupfile
+
 
 
 scanfile(F,L):- 
 
     see(F),     
     read_in(L),
-    seen.  
+    (seen).  
 
 
  
 doask_user(L):-
    interp := 0,  
     
-%% RS-111204   pcontext,  
+   pcontext,  
 
    ask_user(L).   %% readin.pl
 
@@ -497,14 +540,14 @@ process(_):-
 
 process(L):-           %% Process is under a repeat loop
     error_phase := 0,
-    language =: O1, 
+    language     =: O1, 
     origlanguage := O1,
 
     translate2(L,TQL),
     nl,
     exetuc(TQL),       %% Always succeed (command may change origlanguage)
     origlanguage =: O2,
-    language := O2, % 
+    language :=     O2, % 
 
     (TQL=end;  
      TQL=stop).        %% Succeeds and  exit when stop command.
@@ -536,7 +579,7 @@ translate2(L,TQL):-
     track(2,taketime). 
 
 
-dotline(''):-main:myflags(smsflag,true),!.
+dotline(''):-value(smsflag,true),!.
 dotline('........................................................................').
    
 
@@ -553,7 +596,7 @@ analyse2(L,command(Rosenborg)):-
 
 analyse2(L1,TQL):-      
 
-    main:myflags(telebusterflag,true),
+    value(telebusterflag,true),
     !,
     set(busflag,true),  %% Dynamic
     set(teleflag,true), %%  TA-060208
@@ -567,7 +610,7 @@ analyse2(L1,TQL):-
 
     track(3,pront(L2)),  %% TA-060420     
 
-    error_phase := 0, 
+    error_phase:= 0, 
     starttime,    
 
     layout2(L2,TQL), 
@@ -577,8 +620,8 @@ analyse2(L1,TQL):-
 
 
 analyse2(L1,TQL):-      
-    main:myflags(teleflag,true),
-    main:myflags(busflag,true),
+    value(teleflag,true),
+    value(busflag,true),
     !,
     create_tags(L1), %%%  , _TAGS) , %% TA-060613
     !,   
@@ -587,7 +630,7 @@ analyse2(L1,TQL):-
 
     track(3,pront(L2)),  %% TA-060420
 
-    error_phase := 0, 
+    error_phase:= 0, 
     starttime,    
     layout2(L2,TQL), 
     present(1,TQL),
@@ -598,8 +641,8 @@ analyse2(L1,TQL):-
 
 
 analyse2(L1,TQL):-      
-    main:myflags(busflag,true),
-    \+ main:myflags(teleflag,true),
+    value(busflag,true),
+    \+ value(teleflag,true),
     !,
 
     lexproc3(L1,AssumedLanguage,L2),
@@ -608,7 +651,7 @@ analyse2(L1,TQL):-
 
     track(3,pront(L2)),  
 
-    error_phase := 0, 
+    error_phase:= 0, 
     starttime,    
 
     layout2(L2,TQL), 
@@ -622,8 +665,8 @@ analyse2(L1,TQL):-
 
 analyse2(L1,TQL):-      
 
-    main:myflags(teleflag,true),
-    \+ main:myflags(busflag,true), %% TA-060107
+    value(teleflag,true),
+    \+ value(busflag,true), %% TA-060107
     !,
 
 
@@ -635,7 +678,7 @@ analyse2(L1,TQL):-
 
     language := AssumedLanguage,
      
-    error_phase := 0, 
+    error_phase:= 0, 
     starttime,    
 
     layout2(L2,TQL), 
@@ -672,19 +715,19 @@ layout2(L,TQL):-
 
 %% AD HOC
 manipulate_teleflag :-
-    main:myflags(telebusterflag,true),
+    value(telebusterflag,true),
     !,
     (
-    main:myflags(topic,bus) -> 
+    value(topic,bus) -> 
         (set(busflag,true), %% TA-061107
          set(teleflag,false));
      
 
-    main:myflags(topic,tele)-> 
+    value(topic,tele)-> 
         (set(teleflag,true),
          set(busflag,false));  %% TA-061107
 
-    main:myflags(topic,nil) -> 
+    value(topic,nil) -> 
        (set(busflag,false),    %% TA-061107
         set(teleflag,false)),  %% <--- or teleflag=true default?
 
@@ -702,7 +745,7 @@ listxt :- listing(txt). %% TA-051101
 
 
 startteleerror :-
-    main:myflags(teleflag,true),
+    value(teleflag,true),
     !,
     teledbrowfile(TDBR),
     tell(TDBR).
@@ -711,14 +754,14 @@ startteleerror :-!.
 
 
 stopteleerror :-
-     main:myflags(teleflag,true),
+     value(teleflag,true),
      !,
      told.
 
 stopteleerror :-!.
 
 grammar2(L,error):-     
-    main:myflags(notimeoutflag,true),
+    value(notimeoutflag,true),
     length(L,M),M > 21, 
     !,
     startteleerror,
@@ -731,7 +774,7 @@ grammar2(L,error):-
 
 
 grammar2(L,error):-                % Failed with type check,
-    \+ main:myflags(teleflag,true),  %% TA-051116 ?
+    \+ value(teleflag,true),  %% TA-051116 ?
     unknown_words(L,Z), 
     \+ (Z == []),  
     !,                             % => Incomprehensible (therefore)
@@ -779,9 +822,9 @@ grammar2(_,FOL):-
 
 
 grammar2(L,error):-
-    main:myflags(semantest,true), 
+    value(semantest,true), 
     error_phase := 1,                % Reset Type check
-    main:myflags(cursor,Attempt1),
+    value(cursor,Attempt1),
     maxl(N),
     cursor := 0,                     % Failed with type check, but
     parse_sentence(_,N,success),
@@ -798,7 +841,7 @@ grammar2(L,error):-
 
 
 grammar2(L,error):-                  % Incomplete sentence 
-    \+ main:myflags(teleflag,true),            % not actual for tele
+    \+ value(teleflag,true),            % not actual for tele
     no_verb(L),                      % no verbs
     !,
 
@@ -812,7 +855,7 @@ grammar2(L,error):-                  % Incomplete sentence
     stopteleerror.
 
 grammar2(L,error):-                  % Failed also with type check
-    main:myflags(cursor,Attempt2),          % =>  Ungrammatical (according to gram),
+    value(cursor,Attempt2),          % =>  Ungrammatical (according to gram),
     nl,                              
 
     startteleerror,
@@ -829,7 +872,7 @@ grammar2(L,error):-                  % Failed also with type check
 
 parse_sentence(P,N,Success):-  %% Parse With TimeLimit
     dcg_module(G),
-    main:myflags(parsetime_limit,Limit),   
+    value(parsetime_limit,Limit),   
 
 %%%% output('trace1'),
 
@@ -886,30 +929,30 @@ present(N,P):-
 
 
 traceprint(N,P):- 
-    main:myflags(trace,M), number(M), M >= N, 
+    value(trace,M), number(M), M >= N, 
     !,
     write(P),nl
 ;
     true.
 
-%trackprog(N,P):- 
-%    main:myflags(traceprog,M), number(M), M >= N, 
-%    !,
-%    (nl,P)
-%;
-%    true.
+track(N,P):- 
+    value(trace,M),  number(M), M >= N, 
+    !,
+    P
+;
+    true.
+ 
+trackprog(N,P):- 
+    value(traceprog,M), number(M), M >= N, 
+    !,
+    (nl,P)
+;
+    true.
 
-%track(N,P):- 
-%    main:myflags(trace,M),  number(M), M >= N, 
-%    !,
-%    P
-%;
-%    true.
-% 
-%main:myflags(X):-   %% Defined in utility/utility.pl
-%    main:myflags(X,Y),
-%    out(X),out('='),output(Y),nl.
-%
+value(X):-
+    value(X,Y),
+    out(X),out('='),output(Y),nl.
+
 
 printparse(X):- 
     write('*** Parse Tree ***'),nl,nl,
@@ -951,7 +994,7 @@ indentprintlist(N,O):-
 
 %% Several statements 
 
-transfix(nil,nil):- main:myflags(dialog,1),!. 
+transfix(nil,nil):- value(dialog,1),!. 
 
 transfix([[]],[replyq('?')]):-!.  %% Avoid empty answers (by synonym)
 
@@ -967,10 +1010,10 @@ transfix1(error,error):-!.
 
 transfix1(new:::P,nil):-   %%  ==> causes an extra [nil]
    
- main:myflags(textflag,true), %%%%%%% <--- %% TA-070122
+ value(textflag,true), %%%%%%% <--- %% TA-070122
 
-  \+ main:myflags(teleflag,true),
-  \+ main:myflags(busflag,true)
+  \+ value(teleflag,true),
+  \+ value(busflag,true)
 
 , %% Set by Bustuc Application Program
 
@@ -979,7 +1022,7 @@ transfix1(new:::P,nil):-   %%  ==> causes an extra [nil]
     !. 
 
 transfix1(new:::P,nil):-
-	 main:myflags(queryflag,false), 
+	 value(queryflag,false), 
 	 !,           
     clausifystm(P).   %% translat.pl
 
@@ -1000,7 +1043,7 @@ exetuc(command(P)):-
     anash(P).
 
 exetuc(_TQL):-
-    main:myflags(noevalflag,true),!. %% New Flag  : No TUC-evaluation
+    value(noevalflag,true),!. %% New Flag  : No TUC-evaluation
 
 exetuc(TQL):- evaluateq2(TQL). %% evaluate.pl
 
@@ -1085,64 +1128,61 @@ update_compnames(Compnames) :-                  %% MTK 021018
     compnames := Compnames.
 
 
-%create_taggercall(L2,PAT):-
-%
-%    append_synnames(L2,L3), %% add synnames (torbjorn=torbjørn)
-%                            %% BEFORE taggercall
-%    
-%    remove_hasardousnames(L3,L4), %% hvilken tittel har  per borgesen
-%
-%    listtoplus(L4,P2),
-%    plustoatom1(P2,PAT).
-%
-%append_synnames(L2,L3):- %% TA-050920 
-%    set_ops(Y,(member(X,L2),synname(X,Y)),Z), %% sequence preserving %% TA-051028
-%    append(L2,Z,L3).
-%
-%remove_hasardousnames(L3,L4):-
-%   set_ops(X,( member(X,L3), \+ hazardous_tagname(X)),L4).   %% sequence preserving %% TA-051028
-%
-%
-%%write_taggercall(Taggercall) :-
-%%    nl,
-%%    write('TAGGING:   '),output(Taggercall),
-%%    nl,nl.
-%%
-%listtoplus(L2,P2):- %% tricky  + is left assoc
-%    reverse(L2,R2),
-%
-%    skipmarks(R2,R3),
-%
-%    ltoplus(R3,P2).
-%
-%skipmarks(R2,R3):-
-%   purge(['.','?','!'],R2,R3).
-%
-%ltoplus([Z,Y|X], ( UY+Z)):-
-%    !,
-%    ltoplus([Y|X],UY).
-%
-%ltoplus([X],X).
-%ltoplus([],[]). %% empty %% TA-051015
-%
-%plustoatom(A+B,AB):- !,%% jævla hack %% TA-020619
-%    plustoatom(A,A1),
-%    plustoatom(B,B1),
-%    append_atomlist([A1,'+',B1],AB).
-%plustoatom(X,X).
-%
-%plustoatom1(A+B,AB):- !,%% uses spaces instead of plus %% TLF-030218
-%    plustoatom1(A,A1),
-%    plustoatom1(B,B1),
-%    append_atomlist([A1,' ',B1],AB).
-%plustoatom1(X,X).
-%
+create_taggercall(L2,PAT):-
+
+    append_synnames(L2,L3), %% add synnames (torbjorn=torbjørn)
+                            %% BEFORE taggercall
+    
+    remove_hasardousnames(L3,L4), %% hvilken tittel har  per borgesen
+
+    listtoplus(L4,P2),
+    plustoatom1(P2,PAT).
+
+append_synnames(L2,L3):- %% TA-050920 
+    set_ops(Y,(member(X,L2),synname(X,Y)),Z), %% sequence preserving %% TA-051028
+    append(L2,Z,L3).
+
+remove_hasardousnames(L3,L4):-
+   set_ops(X,( member(X,L3), \+ hazardous_tagname(X)),L4).   %% sequence preserving %% TA-051028
+
+
+write_taggercall(Taggercall) :-
+    nl,
+    write('TAGGING:   '),output(Taggercall),
+    nl,nl.
+
+listtoplus(L2,P2):- %% tricky  + is left assoc
+    reverse(L2,R2),
+
+    skipmarks(R2,R3),
+
+    ltoplus(R3,P2).
+
+skipmarks(R2,R3):-
+   purge(['.','?','!'],R2,R3).
+
+ltoplus([Z,Y|X], ( UY+Z)):-
+    !,
+    ltoplus([Y|X],UY).
+
+ltoplus([X],X).
+ltoplus([],[]). %% empty %% TA-051015
+
+plustoatom(A+B,AB):- !,%% jævla hack %% TA-020619
+    plustoatom(A,A1),
+    plustoatom(B,B1),
+    append_atomlist([A1,'+',B1],AB).
+plustoatom(X,X).
+
+plustoatom1(A+B,AB):- !,%% uses spaces instead of plus %% TLF-030218
+    plustoatom1(A,A1),
+    plustoatom1(B,B1),
+    append_atomlist([A1,' ',B1],AB).
+plustoatom1(X,X).
+
 
 %%%%%%%%%%%  THE END %%%%%%%%%%%%%%%%%%%%%%
 
-%% RS-111206 For debugging? or compiling?
-%:-assert(  main:myflags(rune,111206) ).
-%:- rune := 111206.
 
-%:- initiate.
+  :- initiate.
 

@@ -4,28 +4,6 @@
 %% REVISED  TA-110706
 
 %% Handle empty answer from buslog 
-:- module( negans, [  cannot/1, cannotanswer/1, makenegative/3, trytofool/2, trytofool/3  ] ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Imports
-%% Operators used by TUC
-:- ensure_loaded( '../declare' ).
-:- use_module( '../main', [ myflags/2,  progtrace/2 ] ).
-
-%% RS-111205, UNIT: app/
-:- use_module( buslog, [ bound/1, bus/1, neverpasses/2, place_station/2, station/1, today/1 ] ).
-
-%% RS-111205, UNIT: db/
-:- use_module(   '../db/busdat', [ disallowed_night/1, vehicletype/2  ] ).   % (PLACE) % (NAME)
-
-%% RS-111205, UNIT: tuc/
-:- use_module( '../tuc/facts', [ (isa)/2 ] ).  %% RS-111204    isa/2 from facts.pl
-
-%% RS-111206, UNIT: utility/
-:- use_module( '../utility/datecalc', [ days_between/3, daysucc/2 ] ).
-:- use_module( '../utility/utility', [ sequence_member/2, testmember/2 ] ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 makenegative((head,_TF_),_,nl):- 
     progtrace(4,ne00),
@@ -58,26 +36,26 @@ makenegative((new,not _),_,(bcpbc(ok),nl)):-
 %% From telebuster/app/negans.pl
 
 makenegative(_,Q,(bcpbc(please_state),bcp(the(Slot)),exclamation)):-
-	 main:myflags(teleflag,true),
-	 main:myflags(dialog,1),
+	 user:value(teleflag,true),
+	 user:value(dialog,1),
 	 sequence_member(askfor(_, knows(Slot), _), Q),
 	  progtrace(4,ne07),!.
 
 makenegative(_,Q,(bcpbc(doyouknow),bcp(the(Slot)),question)):-
-	 main:myflags(teleflag,true),
-	 main:myflags(dialog,1),
+	 user:value(teleflag,true),
+	 user:value(dialog,1),
 	 sequence_member(askfor(_, Slot, _), Q),
 	 progtrace(4,ne07),!.
 
 %% 
 
 makenegative(_,Q,(bcpbc(askfor(Slot)),nl)):-  
-    main:myflags(dialog, 1),
+    user:value(dialog, 1),
     sequence_member(askfor(_, Slot, _), Q),
     progtrace(4,ne08),!.
 
 makenegative(_,Q,(bcpbc(which), bcp(Type), comma, bwr(or(List)), question)):- 
-    main:myflags(dialog, 1),
+    user:value(dialog, 1),
     sequence_member(askref(Type, List), Q),
     progtrace(4,ne09),!.
 
@@ -209,7 +187,7 @@ makenegative((new,_),P,Ans)        :-
            bcp(notpossible),nl). 
 
 makenegative((new,_),Prog,Ans)  :- 
-      main:myflags(dialog,1),
+      value(dialog,1),
       sequence_member(message(M),Prog),    %%
       progtrace(4,ne21),!, 
       Ans = (printmessage(M)) .
@@ -235,14 +213,14 @@ makenegative((new,_),_,Ans)        :-
 
 % 1 ?
 makenegative((which(A),P),Q,Ans)   :-   %% Hvilke busser må jeg ta
-    sequence_member(srel/pwith/frequency/A/_,P),
+    sequence_member(srel/(with)/frequency/A/_,P),
     getactualtime(Q,Date,Day,Clock),                               
     notthenanswer(Date,Day,Clock,Q,Ans), 
    !,progtrace(4,ne24).
 
 % 2 ?
 makenegative((which(_),P),Q,Ans) :- 
-     sequence_member(srel/pwith/frequency/_/_,P), 
+     sequence_member(srel/(with)/frequency/_/_,P), 
      getactualtime(Q,_Date,_Day,_Clock),
      Ans = (bcpbc(nodirectroutes),nl),
     !,progtrace(4,ne25).
@@ -302,7 +280,7 @@ makenegative((modifier(_),_),Q,Ans)   :-
 
 
 makenegative(_,Prog,Ans):- 
-    main:myflags(smsflag,true),
+    value(smsflag,true),
     sequence_member(message(answer(db_reply(_,_,_))),Prog),
      progtrace(4,ne33),!,
     Ans =  space0. %%% ??? 
@@ -434,15 +412,15 @@ makenegative(_,_,true) :- %% no extra nl
 
  %% not standard nightbus message if following weekend is abnormal
 notthenanswer(Date,_Wed,_,_Q,
-           (bcpbc(generalnightbuseaster),period))     :-
-    main:myflags(nightbusflag,true), 
+           (bcpbc(generalnightbuseaster),period)) 
+    :-value(nightbusflag,true), 
     following_weekend_abnormal(Date),
     !,                         %%
     progtrace(4,nt0). 
 
 notthenanswer(_Date,easterhol,_,_Q,
            (bcpbc(cannotfindanyroutes),period,bcpbc(generalnightbuseaster),period))
-    :-main:myflags(nightbusflag,true),
+    :-value(nightbusflag,true),
     !,  
     progtrace(4,nt1).
 
@@ -462,7 +440,7 @@ notthenanswer(_Date,Day,_,Q, (bcpbc(cannotfindanyroutes),nibcp(Day),DirAns,stand
 
 
 notthenanswer(_Date,Day,Clock,Q, (bcpbc(noroutes),nibcp(Day),bcp(before),bwt(Clock),DirAns) ):-
-    \+ main:myflags(nightbusflag,true), 
+    \+ value(nightbusflag,true), 
     Clock \== 9999,  
     sequence_member(keepbefore1(Clock,_,_),Q),
     \+ sequence_member(keepbetween(_,_,_,_),Q), %% avoid not 1100 (morning ?) when 
@@ -471,7 +449,7 @@ notthenanswer(_Date,Day,Clock,Q, (bcpbc(noroutes),nibcp(Day),bcp(before),bwt(Clo
     dirans(Q,DirAns).
 
 notthenanswer(_Date,Day,Clock,Q, (bcpbc(noroutes),nibcp(Day),bcp(attime),bwt(Clock),DirAns) ):-
-    \+ main:myflags(nightbusflag,true), 
+    \+ value(nightbusflag,true), 
     Clock \== 9999,  
     \+ sequence_member(keepbetween(_,_,_,_),Q), %% avoid not 1100 (morning ?) when 
     !,                                       %% keepbetween was the restriction
@@ -491,7 +469,7 @@ notthenanswer(_Date,Day,Clock,Q, (bcpbc(noroutes),nibcp(Day),bcp(attime),bwt(Clo
 notthenanswer(_Date,Day,_,Q,(bcpbc(nolonger),  DirAns,standnight(Day))):- 
     sequence_member(connections(_,_,_,_,_,_,_,Options,_,_),Q), %% not test
 
-(  %%%%%%   main:myflags(smsflag,true);  %% Will "always" try solutions after now 
+(  %%%%%%   value(smsflag,true);  %% Will "always" try solutions after now 
      member(next,Options);
      member(next(_),Options);
      member(nextaftertime(_),Options)
@@ -507,7 +485,7 @@ notthenanswer(_Date,Day,_,Q,(bcpbc(nolonger),  DirAns,standnight(Day))):-
 %% if route day mapped to same day    
 notthenanswer(_Date,Day,_,Q,(       bcpbc(nolonger),nibcp(Day),DirAns,standnight(Day))):- 
      sequence_member(connections(_,_,_,_,_,_,_,Options,_,_),Q),  %% not test 
-(    main:myflags(smsflag,true);  %% dubious, excludes nolonger message if smsflag false
+(    value(smsflag,true);  %% dubious, excludes nolonger message if smsflag false
      member(next,Options);
      member(next(_),Options)),
 
@@ -554,7 +532,7 @@ notthenanswer(_Date,Day,_,Q,(bcpbc(nolonger),nibcp(Day),DirAns,standnight(Day)))
 
 notthenanswer(_Date,Day,_,Q, 
     (bcpbc(notpossible),nibcp(Day),DirAns,standnight(Day))):- 
-    main:myflags(nightbusflag,true),
+    value(nightbusflag,true),
     !,
     progtrace(4,nt10night),  
     dirans(Q,DirAns).
@@ -821,7 +799,7 @@ trytofool(_X isa nonsense,   thatisimpossible).
                                                   
 trytofool(_  isa success,    wonderful). % :-)  
 
-trytofool(dor/ask/myid/that/tuc/_B/_C, sorrycannot). 
+trytofool(dor/ask/(id)/that/tuc/_B/_C, sorrycannot). 
 
 trytofool(adj/_/at_home/tuc/_,   thatisimpossible).  
 trytofool(adj/_/adult/tuc/_,     thatisimpossible). 
@@ -846,7 +824,7 @@ trytofool(adj/_/depressed/_/_,   thatisimpossible).
 %% trytofool(adj/_/drunk/tuc/_,     thatisimpossible).  %% :-)  
 %% trytofool(adj/_/drunk/'I'/_,     thatisnotgood). 
 trytofool(adj/_/drunk/_/_,       nodrinkonbus). 
-trytofool(adj/_/embarrassed/tuc/_,   thatisimpossible). 
+trytoffol(adj/_/embarrassed/tuc/_,   thatisimpossible). 
 trytofool(adj/_/false/_/_,       thatisimpossible). %% rough ?
 trytofool(adj/_/female/tuc/_,    thatisimpossible). 
 trytofool(adj/_/free/tuc/_,      thatisimpossible). %%  :-) 
@@ -868,9 +846,8 @@ trytofool(adj/_/lucky/tuc/_,      thatisimpossible).
 trytofool(adj/_/male/tuc/_,       thatisimpossible). 
 trytofool(adj/_/married/tuc/_,    thatisimpossible). 
 trytofool(adj/_/married/'I'/_,    cannotanswer).  
-%trytofool(adj/_/stupid/_Tuc/_,    thatisimpossible).
-trytofool(adj/_/stupid/ _ /_,    thatisimpossible).
-trytofool(adj/_/tedious/ _ /_,   thatisimpossible).
+trytofool(adj/_/stupid/_tuc/_,    thatisimpossible). 
+trytofool(adj/_/tedious/_tuc/_,   thatisimpossible).  
 
 trytofool(adj/_/wrong/tuc/_,     thatisimpossible).   %% ( er du/jeg gal)
 trytofool(adj/_/wrong/'I'/_,     thatisimpossible). 
@@ -905,7 +882,7 @@ trytofool(nrel/on/lust/agent/_/_,  thatisimpossible).   %% prob. fool-question
 trytofool(nrel/on/pity/agent/_/tuc,  thatisimpossible).
 
 
-trytofool(srel/badly/pmode/_/_,  thatisimpossible). %% idonotunderstand). 
+trytofool(srel/badly/(mode)/_/_,  thatisimpossible). %% idonotunderstand). 
 trytofool(srel/in/mail/_/_, thatisimpossible).  
 
 
@@ -1026,7 +1003,7 @@ trytofool(doit/die/_/_,              thatisimpossible).
      %% idonotunderstand).    %% (  Avoid "I want to die" ==> OK)
 
 trytofool(dob/delete/'I'/tuc/_, bye). %% :-)  // slette bokmerke 
-trytofool(dob/removeit/_/_/_,     bye). %% TA-101112 %% RS-111118 remove->removeit
+trytofool(dob/(remove)/_/_/_,     bye). %% TA-101112
 
 trytofool(dob/drink/tuc/_/_,     thatisimpossible).     
 trytofool(doit/dream/tuc/_,       thatisimpossible). 
@@ -1063,10 +1040,10 @@ trytofool(dob/hate/_/_/_,        thatisimpossible).
 trytofool(dob/hear/tuc/_/_,        thatisimpossible). %% strictly 
 
 trytofool(dob/know1/tuc/tagore/_,     thatisimpossible). %%  :-) %% Ad Hoc
-trytofool(dob/know1/tuc/(_Tore,_Amble)/_, thatisimpossible). 
+trytofool(dob/know1/tuc/(_tore,_amble)/_, thatisimpossible). 
 
 trytofool(dob/know/tuc/tagore/_,     thatisimpossible). %%  :-)
-trytofool(dob/know/tuc/(_Tore,_Amble)/_, thatisimpossible). 
+trytofool(dob/know/tuc/(_tore,_amble)/_, thatisimpossible). 
 
 
 trytofool(dob/lay/tuc/tuc/_,     thatisimpossible). 
@@ -1080,7 +1057,7 @@ trytofool(dob/like/tuc/_/_,      thatisimpossible).
 trytofool(dob/like/_/tuc/_,      thanks).  %% jeg liker deg  %%  :-)
 
 trytofool(dob/like/_/bustuc/_,      ok).                     %%  (doit/tuc=you)
-trytofool(dor/like/myid/_/tuc/_/_, thatisimpossible).          %%   like to
+trytofool(dor/like/(id)/_/tuc/_/_, thatisimpossible).          %%   like to
 
 trytofool(doit/live/tuc/_,        thatisimpossible). 
 trytofool(doit/live/_/_,          idonotknow).   %%  TA-100916

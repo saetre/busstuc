@@ -6,21 +6,21 @@
 
 % Make a slender syntax tree comparable to Penn Tree Bank tagging
 
-:- module( ptbwrite,[
-    alle_args/2,        atomic_length/2,        drucke_baum_list/1,     list_length/2,
-    print_parse_tree/1, ptbwrite/1,             term_laenge/2  ] ). %% RS-111204
+%%:-module(ptbwrite,[ ptbwrite/1, drucke_baum_list/1 ] ). %% RS-111204
+:-module(ptbwrite,[ ptbwrite/1 ] ). %% RS-111218
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% RS-111205, UNIT: /
-:- use_module( main, [  track/2  ] ). %% RS-111204
+%:- use_module( main, [  track/2  ] ). %% RS-111204
 
 %% RS-111205, UNIT: utility/
-:- use_module( 'utility/utility', [ output/1, prettyprint/1, tab/1 ] ).  %% Module util
+%:- use_module( 'utility/utility', [ output/1, prettyprint/1 ] ).  %% Module util
 
 
 /*
 En tom produksjon er rekursivt
+
    []
    {}
    !
@@ -29,9 +29,12 @@ En tom produksjon er rekursivt
 
    [<token>,  <empty production>]
 
+
 En videreføring er å eliminere topp-noden i alle
 subtrær som bare har en produksjon (unnatt POS).
+
 */
+
 
 shrink_tree(K,M):- %% TA-110207
     rewfat(K,L),
@@ -46,10 +49,12 @@ ptbwrite(K):- %% TA-110207
 %%  rewfat(K,L),
 %%  rewprune(L,M),
 
-  track(2,( nl,write(M),nl,nl)),     %% TA-061027
+  user:track(2,( nl,write(M),nl,nl)),     %% TA-061027
 
-  track(1,( nl,nl,drucke_baum_list(M), output('    '),nl)). %% TA-061027 
+  user:track(1,( nl,nl,drucke_baum_list(M), output('    '),nl)). %% TA-061027 
+ 
   
+
 rewfat([Token|Rest],L):-
     rewrats(Rest,K),
     rewfat0([Token|K],L),
@@ -117,17 +122,23 @@ rewprunerest([X|Y],[XX|YY]):-
     rewprune(X,XX),   
     rewprunerest(Y,YY).
 
-
 %%%%%%%%%%%%%%%%
+
+
+  
 %% FILE drucke_baum_list
 %% SYSTEM TUC
 %% CREATED Christoph Lehner 1992
 %% REVISED TA-100922
 
+:- ensure_loaded( 'sicstus4compatibility' ). %, [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+
 tabx(X) :- %% Sictus Doesn take tab(-1) 
-    ( X < 0   ->   true ; tab(X) ). %% Sicstus 4
+    ( X <0 -> true ; tab(X) ). %% Sicstus 4
+
 
 %% Convert lists to terms 
+
 
 drucke_baum_list(F):-
    F=G, %%%%   atomize(F,G), %% TA
@@ -460,8 +471,8 @@ nextvar('U',4).
 nextvar('V',5).
 nextvar('W',6).
 nextvar(X,N):- N > 6,
-%%               number(N,L), %% RS-111206      What's wrong here?
-               x_append("X",_L,Y),
+               number(N,L),
+               x_append("X",L,Y),
                name(X,Y).
 
 atomic_length(X,5):- var(X), !.
@@ -494,22 +505,10 @@ alle_args([K|R],N):-
               alle_args(R,Y),
               N is X + Y.
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% From main... %% RS-111120
-
-print_parse_tree(Parse1) :- %% TA-110207
-   main:myflags(norsource,true),
-   !,
-   ptbwrite:shrink_tree(Parse1,Pa1),
-
-   output('<tree> '),   prettyprint(Pa1),  output('</tree>'),nl.
-
-print_parse_tree(Parse1):- %% TA-110207
-   track(3,printparse(Parse1)), %%  print proper parsetree
-   track(2, output('*** Simplified parse tree ***')),
-   track(1, ptbwrite(Parse1)), %% -> ptbwrite.pl
-   track(2, (output('*****************************'),nl)).
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
 

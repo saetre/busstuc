@@ -4,31 +4,7 @@
 %% REVISED TA-070612
 
 
-%%:- use_module( library(system), [] ).
-:- use_module( library(system3), [ exec/3, shell/1 ] ).
-
-%% RS-111205, UNIT: /
-:- use_module( bustermain2, [  update_compnames/1  ] ).
-:- use_module( main, [   (:=)/2, myflags/2, set/2, create_taggercall/2, track/2, trackprog/2, write_taggercall/1  ] ).
-:- use_module( tucbuses, [  dict_module/2  ] ).
-:- use_module( xmlparser, [ xmltaggerparse/2 ] ).
-
-%% RS-111205, UNIT: db/
-:- use_module( 'db/teledat2', [ hazard_tagname/1, legal_tagname/1, teledbrowfile/1, teledbtagfile/1  ] ). %% instead of compile (monobus) %% RS-111206
-
-%% Printing the result from database query 
-:- use_module( 'dialog/parseres', [ get_chars_t/1 ] ).
-           
-:- use_module( 'tagger/xml',  [        %nmtokens/1,     %%from xml_acquisition
-        xml_parse/2,  xml_subterm/2 ] ).
-
-%% RS-111205, UNIT: utility/
-:- use_module( 'utility/library', [ remove_duplicates/2 ] ).
-:- use_module( 'utility/utility', [
-        append_atoms/3,    delete1/3,   output/1,   set_ops/3,  set_eliminate/4,    set_filter/4   ] ).
-
-:- use_module( xmlparser, [] ). %% [ xml_parse/2,  xml_parse/3, xml_subterm/2, xml_pp/1 ] ).
-:- ensure_loaded( 'tagger/tagger' ). %% [ xml_parse/2,  xml_parse/3, xml_subterm/2, xml_pp/1 ] ).
+:- use_module(library(system)).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -46,7 +22,7 @@ getdbtagsdirect(TagSum, Result) :-
    %append_atomlist(['javaw ldapconnection.LDAPSearcher tag ', TagSum], Expression),
 
 
-  (main:myflags(windowsflag,true) ->  
+  (value(windowsflag,true) ->  
         Expression = 'javaw ldapconnection.LDAPSearcher'
         ; 
         Expression = 'java ldapconnection.LDAPSearcher'
@@ -71,7 +47,7 @@ track(1, (write('*** Tag: '),out(Expression), write('tag '), write(TagSum), nl))
 
    % store the streams for later use
    outstream := InputstreamNo,
-   instream := OutputstreamNo,
+   instream  := OutputstreamNo,
 
    get_chars_t(Result),
    set_input(OldInput).
@@ -84,7 +60,7 @@ getdbrowsdirect(Query, Result) :-
    %append_atomlist(['javaw ldapconnection.LDAPSearcher srch "', Query, '"'], Expression),
 
 
-  (main:myflags(windowsflag,true) ->  
+  (value(windowsflag,true) ->  
         Expression = 'javaw ldapconnection.LDAPSearcher'
         ; 
         Expression = 'java ldapconnection.LDAPSearcher'
@@ -110,8 +86,8 @@ track(2, (write('*** Db: '),out(Expression),
 
    set_input(Instream),
    get_chars_t(Result),
-   write(Outstream),
-   seen.
+   write(Outstream,quit),
+   (seen).      %% Interferes with pragma-rule "seen"
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -131,7 +107,7 @@ streamnoisopen(StreamNo) :-
 
 reset_ldapcon :-
 	%% Find and close old stream
-	main:myflags(outstream, OutstreamNo),
+	value(outstream, OutstreamNo),
 	streamnoisopen(OutstreamNo),
 	current_output(OldOutput),
 	set_output('$stream'(OutstreamNo)),
@@ -221,7 +197,7 @@ remove_hitmarks(L2,L3):-
 
 
 x_getdbtags(PAT,Tags,Compnames) :- %% TLF-030408
-    main:myflags(useexternal,true),
+    value(useexternal,true),
     !,
     getdbtagsdirect(PAT,Input),
     xml_parse(Input,XML),
@@ -238,18 +214,18 @@ x_getdbtags(PAT,Tags,Compnames) :- %% TLF-030408
 
 
 x_getdbtags(_,_) :- 
-    \+ main:myflags(useexternal,true),
+    \+ value(useexternal,true),
     !,
     output('useexternal flag is false -> no tagging performed').
 
 
 x_receive_tags(Tags,Compnames,File) :-           %%
-    main:myflags(useexternal,true),
+    value(useexternal,true),
     !,
     y_receive_tags(Tags,Compnames,File).            %% MTK 021018/TLF
 
 x_receive_tags(_,_,_):-  %%
-    \+main:myflags(useexternal,true).
+    \+value(useexternal,true).
 
 
 
@@ -269,7 +245,7 @@ receive_tags(Struct):-
 y_receive_tags(Tags,Compnames,File) :-          %% MTK 021018/TLF
     see(File),
     get_chars(Input),
-    seen,
+    (seen),
     xml_parse(Input,XML),
     xml_subterm(XML, element(result,_,Data)),
     !,
@@ -292,12 +268,14 @@ update_tags(K):-
 
    tags := K.
 
-remove_dummycomps(Compnames,Compnames2):-
-    set_filter(X, \+(X = [Lehre,[],Lehre]),Compnames,Compnames2).
-
 %update_compnames(Compnames) :-                  %% MTK 021018
 %    remove_dummycomps(Compnames,Compnames2),
 %    compnames := Compnames2.
+%
+%remove_dummycomps(Compnames,Compnames2):-
+%    set_filter(X, \+(X = [Lehre,[],Lehre]),Compnames,Compnames2).
+%
+%
 %
 %
 %create_taggercall(L2,PAT):-
@@ -311,8 +289,8 @@ remove_dummycomps(Compnames,Compnames2):-
 %    plustoatom1(P2,PAT).
 %
 %append_synnames(L2,L3):- 
-%    main:myflags(busflag,true), %% TA-060613
-%    \+ main:myflags(teleflag,true), %% TA-080407 (not bor -> bro(
+%    value(busflag,true), %% TA-060613
+%    \+ value(teleflag,true), %% TA-080407 (not bor -> bro(
 %    !,
 %    set_ops(Y,(member(X,L2),synname(X,Y)),Z), %% seq. pres 
 %    append(L2,Z,L3).
@@ -323,14 +301,14 @@ remove_dummycomps(Compnames,Compnames2):-
 %   set_ops(X,( member(X,L3), \+ hazardous_tagname(X)),L4).   %% sequence preserving
 %
 %
-
+%
 hazardous_tagname(X):- %% TA-060213
  \+ legal_tagname(X),  %% db/teledat2
 
  (   
     number(X);         %% TA-060214
 
-    main:myflags(language,N),dict_module(N,L),L:cw(X);             %% tuc/dict_ %% TA-070612
+    value(language,N),dict_module(N,L),L:cw(X);             %% tuc/dict_ %% TA-070612
 
     hazard_tagname(X) %%  db/teledat2
  ).
@@ -356,11 +334,11 @@ hazardous_tagname(X):- %% TA-060213
 %ltoplus([Z,Y|X], ( UY+Z)):-
 %    !,
 %    ltoplus([Y|X],UY).
-
+%
 %ltoplus([X],X).
 %ltoplus([],[]). 
-
-
+%
+%
 %plustoatom(A+B,AB):- !,%% jævla hack
 %    plustoatom(A,A1),
 %    plustoatom(B,B1),
@@ -373,4 +351,4 @@ hazardous_tagname(X):- %% TA-060213
 %    append_atomlist([A1,' ',B1,' '],AB). %% EXTRA BLANK TO AVOID hvem har telefonnummer94451'
 %plustoatom1(X,X).                        %% DEVIL
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

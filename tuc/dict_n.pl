@@ -2,35 +2,9 @@
 %% SYSTEM BUSSTUC/BUSTER
 %% CREATED TA-930601
 %% REVISED JB-970312  TA-110824
-%% REVISED RS-111118
-%%
 %% TUC Dictionary for the language N
 
-:-module( dict_n, [
-        adjective3/3,    adv2/2,  %% Techn., redundant adverb expression
-        compword/3,      kw/1, %% TA-100902 %%%%%%%%%  All the words appearing as [ ] constants in grammar
-        noisew/1,        noun2/2,         noun3/3,           noun_form/5,      
-        preposition/1,   pronoun/1,       pronoun/2,         rep_verb/1,
-        rewording/2,     split/2,         %% split word ahead of analysis. Not implemented ! %%
-        splitword/2,     synwordx/2,      synsms/2,          synword/2, 
-        unwanted_adjective/1,             unwanted_interpretation/2,
-        unwanted_verb/1, unwanted_noun/1, unwanted_number/1, verbroot2/2,
-        verb_form/4,     xcompword/3
-    ] ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-:- use_module( '../main', [ myflags/2 ] ).
-:- use_module( '../tucbuses', [ backslash/1 ] ).
-
-%% RS-111205, UNIT: tuc
-:- use_module( evaluate, [ instant/2 ] ).
-:- use_module( semantic, [ gradv_templ/2, rv_templ/2 ] ).
-
-:- use_module( '../utility/utility', [ testmember/2 ] ).
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:-module(dict_n,[]). 
 
 %¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
 % sp     spell error (unintended) ,not inflectable
@@ -47,6 +21,8 @@
 % ?      dubious (facetious)
 %¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
 
+
+
 % Prelexical translations
 
 % rewording    List -> List, drop alternatives
@@ -56,13 +32,1034 @@
 % synword      Word -> Word, keep alternatives
 
 
-%% NUMERIC/ SPECIAL 
+%%¤  REWORDING 
+ 
+ %% Use only for context dependent rewriting
+ %% Use with extreme care if synword,compword,splitword is futile
 
-compword(bu,[8,ss],buss).       %% slip 
+%--
+   rewording([1,t],[1,time]).  %% TA-110617  Ad Hoc -> N
+   rewording([2,t],[2,timer]). %% 
+   rewording([3,t],[3,timer]). %% 
 
-compword(vi,[jeg],jeg). 
-compword(jeg,[vi],jeg).
+   rewording([bare,å],            [mulig,å]).       %% TA-110111
+   rewording([beste,buss],        [neste,buss ]).   
+   rewording([buss,dra],          [buss,fra ]).
+   rewording([bussen,dra],        [bussen,fra ]). 
+   rewording([bår,må],            [når,må ]).       %% bår=når|går
+
+   rewording([det,ekle],[det,dårlige]). %% \+ Ekle %% TA-101108  
+
+   rewording([dvs,'.'],[dvs]). %% Tricky %% TA-110304
+ 
+   rewording([det,rare,er],       [det,er,rart ]).  
+%%    rewording([er,det,til],        [er,det,inntil ]).   %% TA-100825 til dragvoll
+   rewording([er,hyppig,forekommende], [skjer,ofte ]). %% 
+    
+   rewording([er,stavet],[er,skrevet]). %% \+ Stavset %% TA-110808
+
+
+   rewording([feiler,det],[er,feil,med]).  %% TA-101103 hva er feil med deg
+
+   rewording([for,kl],            [før,kl ]).  %% for kl 11 \+ for (rute) 11
+   rewording([for,klokken],       [før,kl ]). 
+   rewording([for,klokken],       [før,kl ]). 
+
+   rewording([for,æ,være],        [for,å,være ]). 
+   rewording([for,a,være],        [for,å,være ]).           %% TA-100921
+
+   rewording([føler,jeg,meg],     [er,jeg]). %% ..sikker på %% TA-101025   
+   rewording([gå,til,fradrag],    [være,inkludert ]).   
+
+   rewording([går,fordi],         [går,forbi ]). 
+
+   rewording([ha,vært,på],    [komme,til]). %% skulle gjerne ha vært.. %% rough %% TA-101022
+
+   rewording([han,du],[kan,du]). %% TA-110201 own
+
+   rewording([hvilken,er],    [hva,er]). %% TA-100829
+   rewording([hvilket,er],    [hva,er]). %% 
+
+   rewording([hvor,langt,tar],    [hvor,lang,tid,tar]). 
+
+%%    rewording([i,dette,tilfelle],  [som,er]).   %% etc. %% TA-110807
+
+   rewording([i,ett,tida],        [rundt,kl,1300]). 
+   rewording([i,ett,tiden],       [rundt,kl,1300]).  %% fix
+
+   rewording([ifb,med,'.'],  [i,forbindelse,med ]).
+   rewording([ifm,'.'],      [i,forbindelse,med ]). 
+   rewording([i,forb,'.',m], [i,forbindelse,med ]). 
+   rewording([i,forb,m],     [i,forbindelse,med ]).  
+
+%%%%%   rewording([jeg,når],           [jeg,rekker ]).    %% TA-100923
+%% hva gjør jeg når ...
+
+   rewording([kan,skyldes],       [er,forårsaket,av ]). %% before skyldes =
+   rewording([kommer,jeg,til,å],  [vil,jeg]). %%  hva kommer jeg til  å bli
+
+   rewording([nr,går],            [når,går ]).  
+   rewording([nr,må],             [når,må ]).
+  
+   rewording([nær,går],           [når,går]).       %% TA-110116
+   rewording([når,har,bussen],    [når,går,bussen ]). 
+   rewording([når,jeg,tar,bussen], [når,går,bussen ]).  %%  Haz
+             
+   rewording([og,retur],          [og,tilbake ]).
+
+   rewording([over,halvparten],   [de,fleste ]). 
+                                               %% only from start
+   rewording([på,jeg,ta],         [må,jeg,ta ]).        %%   når ... bussen                    
+   rewording([s,buss],            [siste,buss ]).       %% TA-100825
+   rewording([sa,jeg,er],         [så,jeg,er ]).   
+   rewording([skal,med],          [skal,reise,med ]).   %% TA-100902
+   rewording([straks,dette],      [når,dette ]).  
+   rewording([så,derfor],         [fordi,da]).          %% TA-110105 rough
+   rewording([så,nøye],[]).                             %% TA-110105
+   rewording([står,oppført,med],  [har]).               %% TA-101115 ad hoc
+
+ /*
+   rewording([ta,vare,på],[beholde]).    %% TA-110816
+   rewording([tar,vare,på],[beholder]).  %%
+   rewording([tok,vare,på],[beholdt]).   %%
+   rewording([tatt,vare,på],[beholdt]).  %%
+*/
+
+   rewording([ta,til],[gå,til]). %% .. venstre
+   rewording([ta,utgangspunkt],[starte]).   %% ad hoc %% TA-101115 overgangen vil ta utgangspunkt .
+   rewording([tar,utgangspunkt],[starter]). %%
+
+   rewording([ti,minutter],       [10,minutter ]). %% ti =til/tid %% TA-100912
+
+   rewording([til,buen],[til,byen]). %% Anders buens vei %% TA-110204 
+
+%%    rewording([tid,går],           [når,går ]). %%  hva tid går
+
+   rewording([t,buss],            [ta,buss ]). 
+
+   rewording([tre,i,kraft],[starte]). %% TA-101108 problem tre=3
+
+   rewording([vil,vekk],          [vil,reise,vekk]). %% TA-100902
+   rewording([visst,jeg],         [hvis,jeg]). %% trouble visst=redundantly 
+
+   rewording([være,at],[bli,at]). %% ad hoc fedup %% TA-110810
+
+   rewording([å,svar],            [å,svare]).  %% trouble svar=noun|verb
+   
+
+%--
+
+%% No general rewrite rules (List -> List)  (Precaution)
+
+
+% Numeric (digits are flexible)
+% sorted on 1. alphabetic
+
+%% splitword ('19og20',    [19,og,20]). 
+
+
+%%  Unnnec %% Automatic  SPLIT NNAA 
+%%  Unnnec %% Automatic  SPLIT AANN 
+
+%% splitword only for common words couples , no names.
+
+
+%%%%%%% splitword can also be used as  pre-synword substitution
+%% simplifies compword definitions which has no synning
+%% Destructive
+
+%% Single splitword 1
+
+split('+',[pluss]). %% TA-100902
+
+splitword(null,[0]).   
+%%  splitword(en,[1]).   %% no  en buss
+%%  splitword(et,[1]).   %% 
+
+%% splitword(ett,[1]).   %% ett hotell
+
+%% splitword(to,[2]).    %% når må jeg to bussen 
+splitword(tre,[3]).   
+splitword(fire,[4]).
+splitword(fem,[5]).
+splitword(seks,[6]).
+splitword(sju,[7]).
+splitword(åtte,[8]).
+splitword(ni,[9]). %% Ni muser -> 9 muser
+
+splitword(bortimot,[nesten]).  
+splitword(busen,[bussen]).
+splitword(faør,[før]).          %% simplifies compword   %% fÃ¸r
+
+splitword(faa,[få]).            %% TA-100918
+splitword(faatt,[fått]).  
+
+splitword(fkl,[fra,kl]).  
+splitword(frem,[fram]).         %% NB fram is official, avoid  
+splitword(framme,[fremme]).     %% NB fremme is official (?)     
+
+splitword(gaar,[går]). 
+splitword(gan,[gang]).          %% TA-110324
+splitword(gar,[går]). 
+splitword(gayr,[går]).          %% simplifies compword  
+splitword(greitt,[greit]). 
+splitword(heile,[hele]).  
+
+splitword(ifjor,[i,fjor]).  
+splitword(igjenn,[igjen]).      %% TA-110121
+splitword(in,[inn]). 
+splitword(intil,[inntil]). 
+splitword(jag,jeg). 
+splitword(kjappast,[hurtigst]).
+splitword(kjappest,[hurtigst]). %%
+splitword(km,[kilometer]).
+splitword(may,[må]).            %% mÃ¥
+splitword(mig,meg).  
+%% splitword(morra,[morgen]).   %%  amb morrow/morning
+splitword(muligt,[mulig]). 
+splitword(naa,[nå]). 
+splitword(naar,[når]).   
+splitword(nar,[når]).  
+splitword(nayr,[når]).
+splitword(nedi,[ned,i]). 
+splitword(neri,[ned,i]).  
+splitword(nermeste,[nærmeste]). 
+splitword(nyttigjøre,[nyttiggjøre]).
+%% splitword(noke,[noe]).       %% cuts noke=noen
+splitword(paa,[på]).   
+splitword(pay,[på]). 
+splitword(pensjoneres,[pensjonere,seg]). %% TA-100821 // inf|pres
+splitword(poske,[påske]).  
+splitword(raskes,[raskest]). 
+splitword(rote,[rute]).   
+splitword(roter,[ruter]). 
+splitword(sjøfør,sjåfør).       %% TA-110324
+splitword(slute,[slutte]).      %% involved in compwords
+splitword(smaa,små).  
+splitword(sæ,[seg]).
+splitword(tillfelle,[tilfelle]).
+splitword(turretur,[retur]).    %% rough 
+splitword(untak,[unntak]). 
+splitword(utenbys,[utenfor,byen]). 
+splitword(utåver,[utover]).  
+%% splitword(vert,[blir]).   %% ~~ vært      %% NN (haz? en vert)   
+%% splitword(vor,[for]).           %% TA-10119=hvor
+splitword('va|re',[være]). 
+splitword(vaere,[være]).    
+splitword(ære,[være]). 
+splitword(øyblikket,[øyeblikket]). %% actual %% TA-101123
+splitword(åp,[på]).   
+
+
+%% Composite splitword 2
+
+splitword(avgangerpå,[avganger,på]).  
+%% splitword(hjem,[fra,nth,til,nardo]). %% FREAK 
+%%  splitword(andreneste,[andre,neste]). 
+splitword(ankommerfør,[ankommer,før]).
+splitword(ankomstkl,[ankomst,klokken]). 
+splitword(anå,[an,å]).  
+splitword(atden,[at,den]).  
+splitword(atjeg,[at,jeg]). 
+splitword(avgangerhar,[avganger,har]). 
+splitword(busfra,[buss,fra]). 
+splitword(bussemfra,[bussen,fra]).     %% etc ???
+splitword(busseneste,[buss,neste]).  
+splitword(bussenetter,[bussen,etter]).  
+splitword(bussenefra,[bussene,fra]).  
+splitword(bussenfra,[buss,fra]). 
+splitword(bussennår,[bussen,når]). 
+splitword(bussenskal,[bussen,skal]). %%  own
+splitword(bussentil,[bussen,til]).
+splitword(bussenå,[bussen,å]).  
+splitword(busserfra,[busser,fra]).  
+splitword(bussertil,[bussen,til]).  
+splitword(bussetter,[buss,etter]). 
+splitword(bussfra,[buss,fra]). 
+splitword(bussffra,[buss,fra]).  
+splitword(bussgår,[buss,går]). 
+splitword(bussholdeplassligger,[bussholdeplass,ligger]).
+splitword(bussifra,[buss,fra]). 
+splitword(bussinn,[buss,inn]). 
+splitword(busskan,[buss,kan]).   
+splitword(bussmå,[buss,må]). 
+splitword(bussrundt,[buss,rundt]). 
+splitword(busstil,[buss,til]). 
+splitword(byenca,[byen,ca]). 
+splitword(byenfra,[byen,fra]).    
+splitword(byenfor,[byen,for]).  
+splitword(byeninnen,[byen,innen]). 
+splitword(byenklokken,[byen,klokken]).  
+splitword(byentil,[byen,til]).  
+splitword(bytil,[by,til]). 
+
+splitword(dagetter,   [dag,etter]).
+splitword(dagfra,     [dag,fra]).  
+splitword(deiførste,  [de,første]). 
+splitword(densom,     [den,som]).  
+
+splitword(derkl, [der,kl]). 
+splitword(derklokka, [der,kl]).  %% splitword(detbuss,    [det,buss]).  
+splitword(derklokken, [der,kl]).
+
+splitword(deter,      [det,er]). 
+splitword(detnattbuss,[det,nattbuss]).  
+splitword(direktebuss,[direkte,buss]). 
+splitword(direktebusser,[direkte,busser]).
+splitword(direktelinje,[direkte,linje]).
+splitword(dragvollbussen,[bussen,til,dragvoll]).
+splitword(drarfra,[drar,fra]).  
+splitword(dugjøre,[du,gjøre]). 
+
+%% splitword(dvs,[og]).           %% bussen går dvs trikken står
+%% splitword(dvs,[som,er]).       %% rough 
+%% splitword(dvs,[og,dette,er]). 
+
+%% splitword(nemlig,[som,er]).  %% jeg begynner nemlig
+
+splitword(egta,[jeg,ta]).  
+splitword(ekje,[er,ikke]). 
+splitword(enbuss,[en,buss]).
+splitword(erbuss,[er,buss]).
+splitword(erde,[er,det]). 
+splitword(erder,[er,der]).
+splitword(erdet,[er,det]).
+splitword(erdu,[er,du]).
+splitword(ere,[er,det]). 
+splitword(erfra,[er,fra]).
+splitword(erikke,[er,ikke]). 
+splitword(erjeg,[er,jeg]). 
+splitword(erklokka,[er,klokka]). 
+splitword(erpå,[er,på]).  
+splitword(erru,[er,du]). 
+splitword(eru,[er,du]). 
+splitword(etterkl,[etter,klokken]). 
+splitword(etterklokka,[etter,klokken]). 
+splitword(etterklokken,[etter,klokken]).
+splitword(eterkl,[etter,klokken]). 
+splitword(ettermiddagsruter,[ruter,om,ettermiddagen]). 
+splitword(etterti,    [etter,10]).  
+
+splitword(femmern,[buss,5]). %% etc avoid 5 as 1. word
+splitword(finnespå,[finnes,på]).  
+splitword(fintå,[fint,å]).     
+splitword(flyfra,[fly,fra]). 
+splitword(foray,[for,å]).                %%  forÃ¥
+splitword(forbussen,[for,bussen]).  
+splitword(foreksempel,[for,eksempel]).   %% noise ???
+splitword(formiddagsrute,[rute,om,formiddagen]). 
+splitword(forrigebuss,[forrige,buss]). 
+splitword(forå,[for,å]). 
+splitword(foråvære,[for,å,være]).  
+splitword(frabyen,[fra,byen]).  
+splitword(frasamfundet,[fra,samfundet]).
+   splitword(samfundetetter,[samfundet,etter]).
+   splitword(samfundetkl,[samfundet,klokken]).
+   splitword(samfundetfør,[samfundet,før]).
+   splitword(samfundettil,[samfundet,til]).
+splitword(frasentrum,[fra,sentrum]). 
+splitword(fratorget,[fra,torget]).
+splitword(fratorvet,[fra,torget]).
+splitword(fratr,[fra,trondheim]). 
+splitword(fratrondheim,[fra,trondheim]). 
+splitword(frai,[fra,i]). 
+splitword(fraklokken,[fra,klokken]).  
+splitword(fremmefør,[fremme,før]).
+splitword(førmandag,[før,mandag]).       %%  ETC 
+splitword(førsebuss,[første,buss]).      %% sp
+splitword(førstebuss,[første,buss]).  
+splitword(førstebussen,[første,buss]). 
+splitword(førstepåske,[første,påske]). 
+
+splitword(gateetter,[gate,etter]). 
+splitword(gatefor,[gate,for]).
+splitword(gatekl,[gate,klokken]).
+splitword(gateklokken,[gate,klokken]).  
+splitword(gatemellom,[gate,mellom]).   
+splitword(gatesom,[gate,som]).  
+splitword(gatetil,[gate,til]).    
+splitword(gayrbussen,[går,bussen]). %% TA-110103  gÃ¥rbussen
+splitword(gløsetter,[gløshaugen,etter]).  %% ?
+splitword(gn,[går,neste]).
+splitword(gneste,[går,neste]). 
+splitword(godmorgen,[god,morgen]). 
+splitword(gårbuss,[går,buss]).   
+splitword(gårdetter,[går,det,etter]). 
+splitword(gårflere,[går,flere]). 
+splitword(gårførste,[går,første]).  
+splitword(gårførst,[går,første]).
+splitword(gårinnom,[går,innom]). 
+splitword(gårlinje,[går,neste]).  
+splitword(gårneste,[går,neste]).  
+splitword(gårnetste,[går,neste]). %% sp 
+splitword(gårnestebuss,[går,neste,buss]).
+splitword(gårnærmest,[går,nærmest]).  
+splitword(gårre,[går,det]). 
+splitword(gårsiste,[går,siste]). 
+splitword(gårbuss,[går,buss]). 
+splitword(gårbussen,[går,bussen]).  
+splitword(gåste,[går,neste]).  
+
+splitword(hadu,[har,du]). 
+splitword(hardu,[har,du]).  
+splitword(haru,[har,du]).  %% dial
+splitword(harnoen,[har,noen]).  
+splitword(harru,[har,du]). 
+splitword(heledagen,[hele,dagen]).  
+splitword(helligdagrutetider,[ruter,på,helligdager]). %% ! 
+splitword(helligdagsrutetider,[ruter,på,helligdager]). 
+splitword(heligdagrutetider,[ruter,på,helligdager]). 
+splitword(heligdagsrutetider,[ruter,på,helligdager]).
+splitword(holdeplassfor,[holdeplass,for]). 
+splitword(holdeplasstil,[holdeplass,til]).   
+splitword(hvaer,[hva,er]). 
+splitword(hvaheter,[hva,heter]).  
+splitword(hvakoster,[hva,koster]). 
+splitword(hvemer,[hvem,er]). 
+splitword(hvilkebusser,[hvilke,busser]). 
+splitword(hvilkenbuss,[hvilken,buss]).  
+splitword(hvisjeg,[hvis,jeg]). 
+splitword(hvordangår,[hvordan,går]). 
+splitword(hvorlang,[hvor,lang]).         %% tid ..
+splitword(hvorlenge,[hvor,lenge]). 
+splitword(hvormange,[hvor,mange]).  
+splitword(hvorofte,[hvor,ofte]).  
+splitword(hvorskal,[hvor,skal]).
+
+splitword(idet,[i,det]). 
+
+splitword(ifb,[i,forbindelse,med]).  %%  i forbindelse med // problem
+splitword(ifbm,[i,forbindelse,med]). %%
+
+splitword(ifm,[i,forbindelse,med]).  %% 
+splitword(ibyen,[i,byen]).  
+splitword(ikeabussen,[buss,til,ikea]). %% Ad Hoc (tt)
+splitword(ikeabuss,[buss,til,ikea]).  
+splitword(imeg,[i,meg]).  
+splitword(innenkl,[innen,klokken]).  
+splitword(innenklokka,[innen,klokken]). 
+splitword(innenklokken,[innen,klokken]). 
+splitword(iløpet,[i,løpet]).   
+splitword(imorgenetter,[imorgen,etter]).
+splitword(imorgentidlig,[imorgen,tidlig]). 
+splitword(irute,[i,rute]). 
+splitword(isentrum,[i,sentrum]).  
+splitword(istf,[i,stedet,for]). 
+splitword(itrondheim,[i,trondheim]). 
+
+splitword(januarsenest,[januar,senest]). %% ?
+splitword(jegdra,[jeg,dra]).   
+splitword(jeger,[jeg,er]).    
+splitword(jegspør,[jeg,spør]). 
+splitword(jegta,[jeg,ta]).  
+splitword(jegvil,[jeg,vil]).  
+splitword(julerutetider,[ruter,i,jula]). %% ! 
+%% splitword(juleruter,[ruter,i,jula]).  %% chr...
+%% splitword(julruter,[ruter,i,jula]). 
+
+splitword(kanfå, [kan,få]).  
+splitword(kanjeg, [kan,jeg]).  
+splitword(kinofor,[kino,for]).     
+splitword(kinokl, [kino,kl]).   
+splitword(kommemeg,   [komme,meg]).  
+splitword(kommetil,   [komme,til]).  
+splitword(kommertil,   [kommer,til]).  
+splitword(kommerjeg,  [kommer,jeg]). 
+splitword(klokkahalv,[klokka,halv]).
+splitword(kosteren,   [koster,en]). 
+splitword(kvabuss,[kva,buss]).  
+
+splitword(kveldsavgang,[avgang,om,kvelden]).       %% ad hoc 
+splitword(kveldsavgangen,[avgangen,om,kvelden]).   %% 
+splitword(kveldsavganger,[avganger,om,kvelden]).   %%
+splitword(kveldsavgangene,[avgangene,om,kvelden]). %%
+
+splitword(kveldtil,[kveld,til]).  
+
+splitword(langtid,[lang,tid]).  
+splitword(lillejul,[lille,jul]). %% ... aften
+splitword(lillejuleaften,[lille,julaften]). 
+splitword(lopet,løpet).   %% TA-101215
+splitword(lørdagfør,[lørdag,før]).       %% etc 
+splitword(lørdagnatt,[lørdag,natt]). 
+
+splitword(lørdagsbuss,   [buss,på,lørdag]). 
+splitword(lørdagsbussen, [buss,på,lørdag]). 
+splitword(lørdagsbusser, [buss,på,lørdag]). 
+splitword(lørdagsbussene,[buss,på,lørdag]).
+splitword(lørdagsformiddag,[lørdag,formiddag]).
+splitword(lørdagsvis,[om,lørdager]). %% !
+
+splitword(nayrmay,[når,må]). 
+splitword(nbf,[neste,buss,fra]).  
+splitword(nordtil,[nord,til]). 
+splitword(opptur,[tur,opp]). 
+
+splitword(lørdagsnatt,[lørdag,natt]).       %%  smtotfl /s
+splitword(lørdagnatta,[lørdag,natt]).
+splitword(lørdagsnatten,[lørdag,natt]).
+splitword(lørdagsruta,[ruten,på,lørdag]).  
+
+%% splitword(lørdagsrute,[rute,på,lødag]). %% Concept
+
+splitword(lørdagsruten,[ruten,på,lørdag]).   %%
+splitword(lørdagsrutene,[ruten,på,lørdag]).  %%
+
+
+splitword(sanntidsinfo,[informasjon,om,forsinkelser]).        %% TA-110309
+splitword(sanntidsinformasjon,[informasjon,om,forsinkelser]). %% TA-101013
+
+% ...
+
+splitword(mandagden, [mandag,den]). 
+splitword(tirsdagden,[tirsdag,den]).
+splitword(onsdagden, [onsdag,den]). 
+splitword(torsdagden,[torsdag,den]). 
+splitword(fredagden, [fredag,den]). 
+splitword(lørdagden, [lørdag,den]). 
+splitword(søndagden, [søndag,den]).  
+
+splitword(mandagklokken, [mandag,klokken]).  
+splitword(tirsdagklokken,[tirsdag,klokken]). 
+splitword(onsdagklokken, [onsdag,klokken]). 
+splitword(torsdagklokken,[torsdag,klokken]).
+splitword(fredagklokken, [fredag,klokken]). 
+splitword(lørdagklokken, [lørdag,klokken]). 
+splitword(søndagklokken, [søndag,klokken]). 
+
+%% etc kl ,  klokka, 
+
+splitword(søndagsbuss,   [buss,på,søndag]). 
+splitword(søndagsbussen, [buss,på,søndag]).
+splitword(søndagsbusser, [buss,på,søndag]).
+splitword(søndagsbussene,[buss,på,søndag]). 
+splitword(søndagsformiddag,[søndag,formiddag]). 
+
+splitword(fredagsettermiddag,[fredag,ettermiddag]).   %%  smtotfl /s
+% ...
+
+splitword(fredagkvelden,[fredag,kveld]).   %%  smtotfl /s
+splitword(fredagskveld,[fredag,kveld]).
+splitword(fredagskvelden,[fredag,kveld]).  
+% ...
+
+splitword(fredagsnatt,[fredag,natt]).  %%  smtotfl /s
+splitword(lørdagsnatt,[lørdag,natt]).  
+
+splitword(fredagsnatta,[fredag,natt]).  %%  smtotfl /s
+splitword(lørdagsnatta,[lørdag,natt]).  
+
+
+splitword(fredagsnatten,[fredag,natt]).  %%  smtotfl /s
+splitword(lørdagsnatten,[lørdag,natt]).  
+
+splitword(mandagmorgen,[mandag,morgen]).  %% smtotfl /s %% Most typical
+splitword(mandagskveld,[mandag,kveld]).
+splitword(mandagsmorgen,[mandag,morgen]). %% smtotfl /s
+splitword(mandagsformiddag,[mandag,formiddag]).
+% ...
+splitword(junikl,  [juni,kl]).
+splitword(julikl,  [juli,kl]).
+
+splitword(mangedager,[mange,dager]).  
+splitword(manpå,  [man,på]).  
+
+splitword(marskl,  [mars,kl]). %% etc
+splitword(maikl,   [mai,kl]).
+splitword(maikl,   [mai,kl]).
+
+splitword(megfra,[meg,fra]). 
+splitword(midtbyenklokken,[midtbyen,klokken]). 
+
+splitword(morgenavganger,[avganger,om,morgenen]). 
+splitword(morgenetter,[morgen,etter]).  
+splitword(morgenettermiddag,[morgen,ettermiddag]). 
+splitword(morgenfra,[morgen,fra]). 
+splitword(morgenfør,[morgen,før]). 
+splitword(morgengår,[morgen,går]). %% TA-100823
+splitword(morgenkveld,[morgen,kveld]). 
+splitword(morgenrundt,[morgen,rundt]).
+splitword(morrafør,[morgen,før]).  
+
+
+splitword(munkegatakl,[munkegata,klokken]).
+splitword(munkegatatil,[munkegata,til]). 
+
+splitword(måeg,[må,jeg]).
+splitword(måjeg,[må,jeg]).
+splitword(månedlig,[hver,måned]).
+splitword(måjeg,   [må,jeg]).  
+   splitword(nåjeg,   [må,jeg]). 
+
+splitword(nattkl,[natt,kl]).   
+splitword(nattakst,[takst,for,nattbuss]). 
+splitword(nayrgayr,[når,går]).    
+splitword(nestebus,[neste,buss]). 
+splitword(nestebuss,[neste,buss]). 
+splitword(nestebussen,[neste,buss]). 
+splitword(nestebussene,[neste,bussene]).
+splitword(nestebusser,[neste,busser]). 
+splitword(nesteavgang,[neste,avgang]). 
+splitword(nesteavganger,[neste,avganger]). 
+splitword(nesteavgangen,[neste,avgangen]). 
+splitword(nesteavgangene,[neste,avgangene]).
+splitword(nestebusser,[neste,busser]). 
+splitword(nestefra,[neste,fra]). 
+splitword(nestegang,[neste,gang]).  
+splitword(nestenr,[neste,nr]).
+splitword(nestesiste,[nest,siste]). 
+splitword(nestetrikk,[neste,trikk]). 
+splitword(nestenbuss,[neste,buss]).
+splitword(nestneste,[andre,neste]).
+splitword(nestnestsiste,[andre,siste]).
+splitword(nestnestnestsiste,[tredje,siste]). 
+splitword(ng,[når,går]). 
+splitword(nifra,[9,fra]).    %% ?
+splitword(niog,[ni,og]).     %% ?
+splitword(nærgår,[når,går]).  
+splitword(nærmestebusstopp,[nærmeste,busstopp]). 
+splitword(nåmå,[nå,må]).  
+splitword(nårå,[når,må]). 
+splitword(nårbgår,[når,går]).
+splitword(nårgå,[når,går]).
+splitword(nårgår,[når,går]).  
+splitword(nårgårdet,[når,går,det]). 
+splitword(nårgårbuss,[når,går,buss]). 
+splitword(nårgårneste,[når,går,neste]).
+splitword(nårjeg,[når,jeg]).  
+splitword(nårkan,[når,kan]). 
+splitword(nårkommer,[når,kommer]). 
+splitword(nårmå,[når,må]).  
+splitword(nårmåjeg,[når,må,jeg]). 
+splitword(nårneste,[når,neste]). 
+splitword(nårngår,[når,går]).  
+splitword(nårpasser,[når,passerer]).    %%  sp
+splitword(nårpasserer,[når,passerer]).  %%
+splitword(nårpå,[når,på]).  
+splitword(nårsentrum,[når,sentrum]). 
+
+splitword(omsentrum,[forbi,sentrum]).  %% sic
+splitword(overneste,[andre,neste]).    %% sic 
+splitword(ogfra,       [og,fra]).  
+splitword(ogklokken,   [og,klokken]).  
+%% splitword(også,        [og,så]).  %% noise|[]
+splitword(overett,    [over,ett]).    
+splitword(overto,    [over,to]).  
+splitword(overtre,    [over,tre]). 
+splitword(overfire,    [over,fire]). 
+splitword(overfem,    [over,fem]). 
+splitword(overseks,    [over,seks]). 
+splitword(oversju,    [over,sju]). 
+splitword(overåtte,    [over,åtte]).  
+splitword(overni,    [over,ni]).
+splitword(overti,    [over,ti]).
+splitword(overelve,    [over,elve]).
+splitword(overtolv,    [over,tolv]).
+
+splitword(passererneste,[passerer,neste]).
+splitword(påhverdager, [på,hverdager]). 
+splitword(påstasjonen, [på,stasjonen]).  
+splitword(påtogstasjonen, [på,togstasjonen]). 
+
+splitword(påsju,[på,klokken,7]). %% etc
+
+splitword(raskestmulig,  [raskest,mulig]). 
+splitword(retursentrum,  [retur,sentrum]).   
+splitword(returtrondheim,[retur,trondheim]). 
+splitword(rundtkl,       [rundt,klokken]).  
+
+splitword(seint,[sent]).   
+splitword(senast,[senest]). %% sw, pre lex for compword 
+splitword(senets,[senest]). 
+
+%¤¤
+
+splitword(senteretkl,  [senteret,klokken]).  
+splitword(senterkl,  [senter,klokken]). 
+splitword(senteretklokken,  [senteret,klokken]). 
+splitword(senterklokken,  [senter,klokken]).
+splitword(sentretkl,   [senteret,klokken]).
+splitword(sentretklokken,   [senteret,klokken]).
+
+splitword(sentralstasjonkl,[sentralstasjon,kl]). 
+splitword(sentrumetter,[sentrum,etter]).  
+splitword(sentrumfor,  [sentrum,for]).  
+splitword(sentrumforbi,  [sentrum,forbi]).
+splitword(sentrumfra,  [sentrum,fra]). %% TA-100927
+splitword(sentrumfør,  [sentrum,før]). 
+splitword(sentruminnen,[sentrum,innen]).
+splitword(sentrumkl,   [sentrum,kl]).  
+splitword(sentrumlørdag,[sentrum,lørdag]). %% etc
+splitword(sentrumsøndag,[sentrum,lørdag]).
+splitword(sentrummed,  [sentrum,med]).  
+splitword(sentrumom,   [sentrum,om]).   
+splitword(sentrumpå,   [sentrum,på]).  
+splitword(sentrumrundt,[sentrum,rundt]). 
+splitword(sentrumsbussen,[buss,forbi,sentrum]).
+splitword(sentrumtil,[sentrum,til]). 
+
+splitword(sistebuss,   [siste,buss]).
+splitword(sisstebussen,[siste,buss]). 
+splitword(sistebussen, [siste,buss]).
+splitword(skalfra,     [skal,fra]).  
+splitword(skaltil,     [skal,til]).   
+splitword(skalreise,   [skal,reise]). 
+splitword(skalvære,    [skal,være]).  
+splitword(skoleetter,  [skole,etter]). 
+splitword(skolekl,     [skole,kl]).  
+splitword(skoletil,    [skole,til]).  
+
+splitword(skyldes, [er,forårsaket,av]).  %%  kan skyldes etc
+splitword(skyldtes,[var,forårsaket,av]). %% NB kan skyldes = rewording/
+
+%% splitword(slikt,       [slike,ting]). %%  finn et slikt tidspunkt
+splitword(slikat,      [slik,at]). 
+
+%% splitword(snakkes,      [snakker,sammen]).   %% hilsen %% TA-110310
+splitword(samsnakkes,   [snakker,sammen]). 
+splitword(somgår,       [som,går]). 
+
+splitword(samfunnet, [samfundet]). %% TA-110314
+splitword(sanfundet, [samfundet]). %%
+
+
+splitword(stasjonkl,    [stasjon,kl]). 
+splitword(stasjonenetter, [stasjonen,etter]). 
+splitword(studentbyfor, [studentby,for]). 
+splitword(studentbytil, [studentby,til]). 
+splitword(sydtil,       [syd,til]).  
+splitword(søndagfra,    [søndag,fra]). 
+splitword(søndagmorgen,   [søndag,morgen]). 
+
+splitword(tabuss,[ta,buss]).  
+splitword(tabussen,[ta,bussen]).   
+splitword(tabbussen,[ta,bussen]). %% sp 
+splitword(tafor,[ta,for]). 
+splitword(tafra,[ta,fra]).  
+splitword(tare,[tar,det]).   
+splitword(tatil,[ta,til]). 
+splitword(telefonentil,[telefonen,til]).
+splitword(tidenimorgen,[tiden,imorgen]).
+splitword(tidergår,[tider,går]). 
+splitword(tilbyen,[til,byen]).
+splitword(tildette,[til,dette]). 
+splitword(tilen,  [til,en]).  
+splitword(tilfull,  [til,full]).  %% ?
+splitword(tilog,  [til,og]).      %% ..med
+splitword(tilkl,[til,kl]). 
+splitword(tilklokka,[til,kl]). 
+splitword(tilklokkwn,[til,kl]). 
+splitword(tilmidtbyen,[til,midtbyen]). 
+splitword(tilrette,[til,rette]).
+splitword(tilsentralstasjonen,[til,sentralstasjonen]).
+splitword(tilsentrum,[til,sentrum]). 
+splitword(tiltrondheim,[til,trondheim]).
+splitword(tilå,[til,å]). 
+splitword(tipå,[ti,på]).  
+splitword(tirsdagmellom,[tirsdag,mellom]). %% etc
+splitword(tirsdagmorgen,[tirsdag,morgen]).
+splitword(tirsdagetter,[tirsdag,etter]).   %% etc etc
+splitword(togfra,[tog,fra]).  
+splitword(togtil,[tog,til]).  
+splitword(togtas,[tog,tas]).  
+splitword(torgetden,[torget,den]). 
+splitword(torgetfør,[torget,før]).   
+splitword(torgetkl,[torget,kl]).   
+splitword(torvetden,[torvet,den]).  
+splitword(trafikknår,trafikknår).   
+splitword(tredjenest,[tredje,neste]). 
+splitword(treneste,[tre,neste]).  
+splitword(trikkfra,[trikk,fra]). 
+splitword(trikketur,[tur,med,trikk]). %% ?
+splitword(trondheimtil,[trondheim,til]). 
+splitword(trondheimetter,[trondheim,etter]).
+splitword(trondheimnår,[trondheim,når]). 
+
+%% splitword(turingtesten,[turings,test]). 
+
+splitword(uoppfordret,[uten,oppfordring]).
+splitword(utav,[ut,av]). 
+
+%% splitword(vare,[være]). %%  pre lex for compword 
+
+splitword(varriktig,[var,riktig]). 
+
+%% splitword(varsle10,[varsle,10]). 
+splitword(vegetter,[veg,etter]).  
+splitword(vegfor,[veg,for]). 
+splitword(vegkl,[vei,kl]). 
+splitword(vegtil,[veg,til]). 
+splitword(veietter,[vei,etter]).  
+splitword(veifor,[vei,for]). 
+splitword(veikl,[vei,kl]).   
+splitword(veiklokken,[vei,klokken]).  
+splitword(veimed,[vei,med]).  
+splitword(veitil,[vei,til]). 
+splitword(verkitj,[virker,ikke]).  %%  :-)
+splitword(vetikke,[vet,ikke]).  
+splitword(vilta,[vil,ta]).   
+splitword(vkl,[vei,klokken]).      %%  ?
+splitword(væreder,[være,der]).   
+splitword(væree,[være]). %% pre lex for compword 
+splitword(værei,[være,i]).   
+splitword(væreved,[være,ved]). 
+
+splitword(ække,[er,ikke]). 
+
+splitword(åbli,[å,bli]).  
+splitword(åta,[å,ta]). 
+splitword(åvære,[å,være]).  
+
+
+
+%%%%%%%%%%%%%%%%%%
+
+%% // Dont cheat with compword unless you have to !
+
+
+
+%% NB   xcompword are not applied recursively nor exclusively
+%% System will try xcompword first, but
+%% you should try compword first
+
+
+% Use with extreme care, and only if compword fails
+% Can be used if there is an error rehabilitation
+% No warranty
+
+%% xcompwords is executed sequentially, and must sometimes be carefully sorted.
+% Longest first if identical initially
+
+%% EXCLUSIVE COMPWORD : kills alternatives  
+
+
+%% PRIORITY LIST,   must come first
+    
+
+%% xcompword(her,[er],er). %% selv om det her er %%
+%% xcompword(det,[her],dette). 
+%% replacement are sequential by occurrence 
+
+    xcompword(må,[jeg,to],går). %% SIC (ta) 
+    xcompword(må,[me,ta],går).  %% dial
+    xcompword(mye,[de,vil],mye).   %% <-- left recursive
+
+%%  syndrom.  
+%%  lex tillater ikke venstre-rekursive erstatninger
+
+%%  mye de vil -> mye
+%%  mye  removes de vil
+%%  but 'de vil' are still on the txt, and will be reintroduced
+
+    xcompword(fra,[a,til,b],overalt). %% rough %% TA-110122
+    xcompword(fra,[a,te,b],overalt).  %% rough
+
+%%    xcompword(a,[til,b],atb). %% AtB  når går bussen fra ... %%  TA-100828 :-) 
+%%    xcompword(a,[te,b],atb).  %% TA-110128  rough
+%%    xcompword(a,[t,b],atb).   %% 
+
+%%     xcompword(alt,['/',statoil],'ALT/Statoil'). %% emergency, alt confuses
+
+    xcompword(ga,['å',ayr],går).  %%    gÃƒÂ¥r  %%  ad hoc
+    xcompword(gl,['ö',shaugen],gløshaugen). %%    gÃƒÂ¥r  %%  ad hoc
+    xcompword(na,['å',ayr],når).  %%    nÃƒÂ¥r  %% ad hoc
+
+    xcompword(17,['.',mai,'-',rute],rute17mai). 
+    xcompword(17,['.',mai,'-',ruter],rute17mai). 
+    xcompword(17,['.',mai,'-',rutene],rute17mai). 
+
+    xcompword(17,['.',mai,rute],rute17mai). 
+    xcompword(17,['.',mai,ruter],rute17mai). 
+    xcompword(17,['.',mai,rutene],rute17mai). 
+
+    xcompword(a,['/',s],'A/S'). %%  Problem  A/S
+
+    xcompword(ang,['.'],angående). 
+
+
+    xcompword(da,[':'],da). 
+    xcompword(da,[jeg,må,være,fremme],før). 
+    xcompword(da,[jeg,må,være,der],før). 
+    xcompword(da,[sjø],[]).  %% Dial %% TA-110330 :-)
+    xcompword(da,[som],som). %% TA-101228
+    xcompword(da,[så],[]).   %% TA-101123
+
+    xcompword(du,[','],[]). %%  // only if ',' is not noise
+    xcompword(du,[nå],du).  %% cheat %% hvis du nå løper 
+
+%%     xcompword(dvs,['.'],og). %% TA-110304  (unnec rewording)
+    xcompword(dvs,[],og).    %%
+
+    xcompword(det,[være,seg],enten).
+
+    xcompword(en,[av,de],en).    %%  rough
+    xcompword(en,[av,disse],en). %%
+    xcompword(en,[av,mine],en).  %% 
+    xcompword(en,[din],din).     %% IQ'en din = IQ din
+    xcompword(en,[av,våre],våre).    %% etc 
+
 compword(en,[av],[]). %% Haz ? 
+
+    xcompword(et,[og,samme],samme).  
+
+    xcompword(ett,[av,de],et).    %% rough
+    xcompword(ett,[av,disse],et). %% 
+    xcompword(ett,[av,mine],et).  %%  
+
+    xcompword(f,['.',o,'.',m,'.'],etter). 
+    xcompword(f,['.',o,'.',m],etter). 
+    xcompword(f,['.',eks,'.'],redundant0). %% f.eks. = [] %% NB    
+    xcompword(f,[å,v,p],til).  %%  for å være på, f ambig 
+    
+    xcompword(fom,['.'],etter).
+
+    xcompword(få,[tak,i],finne). %% TA-100902
+    xcompword(får,[opp],mottar). %% nofunk particlev1 
+
+    xcompword(få,[på,plass],lag).  
+    xcompword(får,[på,plass],lager). 
+    xcompword(fikk,[på,plass],laget). 
+
+    xcompword(får,[tak,i],mottar).   %% forstår ? 
+    xcompword(får,[tak,på],forstår). %% forstår ? %% particlev2?
+
+    xcompword(hpl,['.'],holdeplass). 
+
+
+    xcompword(i,[fra],fra).       %% TA-110221
+    xcompword(i,[dag],idag).      %% TA-100828 (NB)
+    xcompword(i,[gjen],igjen).    %% TA-10111
+    xcompword(i,[går],igår).      %% TA-100909
+    xcompword(i,[morra],imorgen). %% TA-101115
+    
+
+    xcompword(i,[morgen],imorgen).            %% #2
+
+    xcompword(i,[hvilken,grad],hvordan). %%(hvormye?) 
+    xcompword(i,[løpet,av],i).   %%  "during"
+    xcompword(i,[orden],bra).    %%  skal være i=ankomme/ være står før i
+
+    xcompword(i,[over,i,morgen],overimorgen). %% #1 %% TA-110401
+%%     xcompword(i,[over],over). %% TA-110401   %% destroys   xcompword(i,[over,i,morgen]
+
+
+
+    xcompword(i,[phone],iphone). 
+    xcompword(i,[prinsippet],redundant0).
+    xcompword(i,[realiteten],redundant0). 
+    xcompword(i,[virkeligheten],redundant0). 
+  
+    xcompword(igjen,[til],til). %% TA-100908
+    xcompword(ikke,[sant],[]).
+    xcompword(ikke,[så],ikke).  %% TA-110105
+    xcompword(nei,[ikke],ikke).  
+    xcompword(nei,[tvert,imot],nei). 
+
+    xcompword(nettside,[ansvarlig],administrator).  %% rough 
+    xcompword(nett,[side,ansvarlig],administrator). %% rough 
+
+    xcompword(noe,[konkret],noe). %% TA-110111
+    xcompword(noe,[rart],noe).    %% TA-100831 :-)
+
+    xcompword(og,[da,altså],[]). 
+    xcompword(om,[bord],ombord). %% TA-100909
+    xcompword(om,[f,'.',eks,'.'],om). %% etc 
+
+%%     xcompword(st,[':'],st). %%  ':' as skipdot//  unnec
+
+    xcompword(sy,['.'],st). %% Olvs.. 
+
+    xcompword(t,[':',kort,periode],tkort).    %% special
+      xcompword(t,[':',kort],tkort).          %% 
+      xcompword(t,[':',kortet],tkort).  
+
+    xcompword(t,['-',kort],tkort).  
+    xcompword(t,['-',kortet],tkort). 
+
+    xcompword(t,[kort],tkort). 
+    xcompword(t,[kortet],tkort). 
+
+    xcompword(t,['.',o,'.',m,'.'],før). 
+    xcompword(t,['.',o,'.',m],før). 
+
+%%     xcompword(t,['.'],til).    %% TA-110405 einar t.
+
+%%     xcompword(tom,['.'],før).  %% bussen er tom %% TA-110620 Haz
+
+    xcompword(team,['-',trafikk],tt). %%  '-' trouble
+
+    xcompword(team,[trafikks],teams). %%  dirty 
+
+    xcompword(web,['-',orientert],webbasert). %% Techn
+    xcompword(web,['-',basert],webbasert).   %% 
+    xcompword(web,['-',side],webside). %% Techn 
+    xcompword(web,['-',siden],websiden).
+    xcompword(web,['-',sider],websider).
+    xcompword(web,['-',sidene],websidene).
+
+    xcompword(web,[basert],webbasert).   %% 
+    xcompword(web,[oriented],webbasert). %% Techn 
+  
+    xcompword(web,[internett],internett).  %% own 
+
+%% Event named days 
+
+
+%% xcompword(når,[pensjoneres,arvid,holme],arvid_holme_day).        %%TA-101013 ...
+%% xcompword(arvid,[holme,går,av,med,pensjon],arvid_holme_day).    
+%% xcompword(arvid,[holme,går,av],arvid_holme_day).    %% går av bussen 
+%% xcompword(arvid,[holme,slutter],arvid_holme_day).  
+%% xcompword(arvid,[holme,blir,pensjonist],arvid_holme_day).
+%% xcompword(arvid,[holme,pensjonerer,seg],arvid_holme_day).
+
+xcompword(president,[kennedy,ble,drept],john_f_kennedy_day).%% 22.11.1963
+xcompword(oddvar,[brå,brakk,staven],oddvar_brå_day).        %% 25.02.1982
+
+xcompword(hans,[finnes,gate],hans_finnes_street). %% Ad Hoc Despair 
+
+
+
+%% xcompword('.',['\''],'.'). %% close to <- (return) %% unnec ?
+xcompword('.',['/'],'.'). 
+
+xcompword(':',[':'],':'). 
+xcompword(':',[')'],[]). %% :) %% \+ '' %% TA-110624
+xcompword(':',['('],[]). %%    %% TA-110630
+
+xcompword(0,[l],1). %% etc 
+
+xcompword(l,[0],10). %% L 
+xcompword(l,[1],11). %% 
+xcompword(l,[2],12). %%
+xcompword(l,[3],13). %%
+xcompword(l,[4],14). %% 
+xcompword(l,[5],15). %%
+xcompword(l,[6],16). %%
+xcompword(l,[7],17). %% 
+xcompword(l,[8],18). %%
+xcompword(l,[9],19). %% 
+
+xcompword(2,[b],2). %% Experiment// not 2 buses
+
+xcompword(2,['-',3],2). %% fast uttrykk, 2 is conservative
+xcompword(3,['-',4],3). 
+xcompword(4,['-',5],4). 
+xcompword(5,['-',6],5). 
+
+xcompword(e,[post],epost).  
+xcompword(e,[posten],eposten).  
+
+xcompword(e,['-',post],epost). 
+xcompword(e,['-',posten],eposten). 
+
+xcompword(email,[adresse],emailadresse). 
+xcompword(email,[adressen],emailadressen). 
+
+xcompword(og,[alt,mulig],[]). %% (trailer ?)
+xcompword(der,[må,jeg,være,seinest],før).  %% ?
+xcompword(så,[å],å).      %% for så å ta buss 
+xcompword(trondheim,[s],ts). %% ikke sentrum %% Special
+
      compword(si,[ifra],fortell).   %% TA-110724
      compword(si,[i,fra],fortell).  %% 
      compword(si,[fra],fortell).    %% 
@@ -71,37 +1068,253 @@ compword(en,[av],[]). %% Haz ?
      compword(si,[i,fra],fortelle).  %% 
      compword(si,[fra],fortelle).    %% 
 
+
+%%%%%%% END PRIORITY LIST %%%
+
+    xcompword(buss,[rute,r],bussruter).   %% TA-110724
+
+%% NUMERIC/ SPECIAL 
+
+compword(bu,[8,ss],buss).       %% slip 
+
+compword(vi,[jeg],jeg). 
+compword(jeg,[vi],jeg).
+    xcompword(jeg,[meg],jeg). %% ? hvordan kommer jeg meg %%** er jeg meg ?
+
+    xcompword(vii,[s],viis).         %% Nød H7 
+    xcompword(den,[sjuendes],viis).  %%
+
+    xcompword(rekke,[bort],gå). %% (også reach)
+    xcompword(rekke,[ned],gå).
+    xcompword(rekke,[opp],gå).
+
+%% // dont split  d1 etc 
+
+    xcompword(d,[1],d1). %% Ad Hoc   Dronningens gt
+    xcompword(d,[2],d2).
+    xcompword(d,[3],d3).
+    xcompword(d,[4],d4).
+
+    xcompword(m,[1],m1). %% Ad Hoc   Munkeg
+    xcompword(m,[2],m2).
+    xcompword(m,[3],m3).
+    xcompword(m,[4],m4).
+    xcompword(m,[5],m5).
+
+    xcompword(1, [o],10).
+    xcompword(2, [o],20).
+    xcompword(3, [o],30).
+    xcompword(4, [o],40).
+    xcompword(5, [o],50).
+    xcompword(6, [o],60).
+
+
+ %%   xcompword(av,[på],til). %% Holdeplassen som jeg skal av på %%  Haz %% TA-110629
+
+ 
+    xcompword(og,['/',eller],eller).  
+
+compword(dom,[kirka],domkirken).  %% TA-110214
+compword(dom,[kirken],domkirken). %%
+
+%% xcompword(e,['.',c], ec).     %%  e.c. dahls gate ? VERY AD HOC
+%% xcompword(e,['.'],etter).     %%  e.c. dahls gate ???
+
+   xcompword(e,['.',l],[]). 
+   xcompword(e,[6],e6).  
+   xcompword(el,['.'],eller).  
+
+compword(eller,[ikke],[]). 
+
+   xcompword(eller,[kl,'.'],etter). 
+      xcompword(eller,[kl],etter).      %%  (kl) NB seq
+
+   xcompword(eller,[annet],[]).
+   xcompword(eller,[for],for).     %% ad hoc
+   xcompword(eller,[hva],[]).      %% TA-101018
+   xcompword(eller,[omvendt],[]).  %% TA-110629
+
+compword(eller,[i],eller).      %% ad hoc, Haz avganger i rutehefte eller (i) ...
+compword(eller,[på],eller).     %% ad hoc
+
+    xcompword(ellers,[ingenting],[]). %%  etc.
+
+    xcompword(f,['.',eks,'.'],[]). %% If redun. adv, then for eksempel
+    xcompword(f,['.',eks],[]). 
+    xcompword(f,[eks,'.'],[]).
+    xcompword(f,[eks],[]).
+
 %% compword(eks,['.'],[]).  
 
+    xcompword(ekstra,[buss],ekstrabuss). 
+    xcompword(ekstra,[busser],ekstrabusser).
+    xcompword(ekstraavganger,[rute],ekstrabusser). %% ekstraavganger rute 10 skistua * fins . 
+    xcompword(ekstraavgang,[rute],ekstrabuss). %% ad hoc
+
+   xcompword(eller,[klokka],etter). 
+   xcompword(eller,[klokken],etter).
 compword(eller, [bare,til], eller).   %% Rough
 
 compword(eller, [til], eller).  %% til nth eller til nardo
                                 %% rough anyway 
+
+    xcompword(eller,[senere],[]).  
+
+
+    xcompword(færre,[eller,ingen],færre). %% problem 
+
+    xcompword(kl,[o],klokken).        %% kl o900? 
+    xcompword(k,[kl],klokken).        %% repair 
+    xcompword(k,[l],klokken). 
+    xcompword(kl,[kl],klokken).   
+    xcompword(kl,['.'],klokken). 
+    xcompword(klok,[ken],klokken).   
+
+
+xcompword(men,[når,'?'],'?'). %% TA-110824
+
+    xcompword(senest,[ta],ta).  %% rough, but context will help 
+ 
+    xcompword(like,[godt],godt).
+    xcompword(like,[greit],godt).
+  
 compword(se,[for,meg],tro). 
 compword(se,[frem,til],forvente). %% fast uttrykk 
 compword(ser,[frem,til],forventer). %%
 
+    xcompword(se,[nærmere,på],undersøke). %% probl. prep(nærmere) 
+
+%% compword(se,[siste],siste).  %% why
+
+    xcompword(se,[å],[]). 
+%%     xcompword(selv,[om],hvis). %% uansett om %% gram 
+%%     xcompword(ser,[ut,som],ligner). %% Det ser ut som om
+%%     xcompword(se,[ut,som],ligne).   %%
+
+    xcompword(selv,[om],selvom).  %% Technical, problem 
+    xcompword(uavhengig,[av,om],selvom). %% TA-110111
+
+    xcompword(senest,[fremme],fremme).  % seinest/ framme etc 
+
+
 compword(seg,[ihjel],[]). %% sprang seg ihjel :-)
+
+%%     xcompword(ser,[ut,som],stemmer). %% rough one word substitute 
 
 compword(sett,[etter],etter). 
 compword(sett,[før],før).
 compword(sette,[opp],øke).    %% prisene ? 
 
+    xcompword(snakk,[om],meningen). %% TA-110724 .. at
+
+%%     xcompword(som,[at],at). %% det virker som at %% TA-110122 unnec
+    xcompword(som,[deretter],som). %%  som deretter går til byen? 
+
+    xcompword(som,[det,skal],bra). %% TA-110110
+    
+    xcompword(som,[følger],følgende).  
+
+%%     xcompword(som,[om],at). %% det virker som om %% rough %% TA-110122
+
+    xcompword(virkelig,[ikke],ikke).
+
+    xcompword(vinter,[ruta],vinterruten). 
+    xcompword(vinter,[rute],vinterrute).
+    xcompword(vinter,[ruten],vinterruten).
+    xcompword(vinter,[rutene],vinterrutene).
+    xcompword(vinter,[ruter],vinterruter).
+
+    xcompword(sommer,[ruta],sommerruten). 
+    xcompword(sommer,[rute],sommerrute).
+    xcompword(sommer,[ruten],sommerruten).
+    xcompword(sommer,[rutene],sommerrutene).
+    xcompword(sommer,[ruter],sommerruter).
+
+    xcompword(være,[med],komme). %% diff in gram
+    xcompword(er,[med],kommer).
+
+%% compword(er,[på],er). %% NB ikke X beløpet er på 30 kroner
+                         %% jeg er på nardo \= jeg er nardo
+    xcompword(er,[':'],er).     %% TA-110107
+    xcompword(var,[':'],var).   %%
+    xcompword(blir,[':'],blir). %%
+
+    xcompword(var,[med],kom). 
+    xcompword(vært,[med],kom). 
+
+    xcompword(være,[til,hjelp],hjelpe).   %% Fast uttrykk ?
+    xcompword(være,[til,hjelpe],hjelpe).  %% sp
+    xcompword(være,[der],ankomme). 
+    xcompword(vær,[ei],til). %% være i 
+
+
+%% NB   compword are not applied recursively nor exclusively
+
+
+/*  %% hva er 4 4. = hva er 4 fjerde 
+compword(1,['.'],første).
+compword(2,['.'],andre). 
+compword(3,['.'],tredje).
+compword(4,['.'],fjerde). 
+*/
+
+% compword(5,['.'],femte).  %%  neste avgang etter 09:05 .  \==> femte %% ? NO Problem 
+
+    xcompword(etter,['.'],etter). %% Etc 
+
+    xcompword('.',[etter],etter).
+    xcompword('.',[fra],fra). 
+    xcompword('.',[før],før). 
+    xcompword('.',[til],til).
+    xcompword('.',['.'],'.'). 
+    xcompword('.',[framme],framme). 
+
+    xcompword('?',[ca,'.'],ca). %% addendum 
+    xcompword('?',[ca],ca).     %% addendum
+
 compword(':',[')'],[]).    %% Smileys 
+    xcompword(':',[d],[]). %% :D  
+    xcompword(':',[p],[]). %% :P 
+
+%% compword(';',[')'],[]). 
+
 compword('+',[retur],tilbake).  %% ? 
 
-compword(dom,[kirka],domkirken).  %% TA-110214
-compword(dom,[kirken],domkirken). %%
+%% buss 7.00 - 8.00 \=>  7 08 00 
 
-compword(eller,[ikke],[]). 
+/* %% TA-110406     kl 06.00 06.04.11 *= 6 . 0 6  .04.11 = 6.6 4.11
 
-compword(eller,[i],eller).      %% ad hoc, Haz avganger i rutehefte eller (i) ...
-compword(eller,[på],eller).     %% ad hoc
+    xcompword(0,[0],00).  
+    xcompword(0,[1],01). 
+    xcompword(0,[2],02).
+    xcompword(0,[3],03).
+    xcompword(0,[4],04). 
+    xcompword(0,[5],05).
+    xcompword(0,[6],06).
+    xcompword(0,[7],07).
+    xcompword(0,[8],08).
+    xcompword(0,[9],09).
+*/
+
+    xcompword(0,[g],og). 
+
+%%% hvilken holdeplass til buss |7 er| nærmest møllenberg
+
+
+
+%% ALPHABETIC 
+
+
+%%    xcompword(videre,[derfra],[]). %% ad hoc subopt 
 
 compword(a,[fra],fra). %% hvor går 5 a fra 
 compword(a,[m],formiddag). 
 
 compword(aldri,[i,verden],nei).  
+    xcompword(aldri,[i,rute],forsinket). 
+    xcompword(aldri,[slik],umulig). %% at trikken står 
+
+    xcompword(i,[første,omgang],[]). %% redundant0). %% TA-110707
 
 compword(ikke,[slik],umulig). %% at trikken står  %% ?
 
@@ -111,6 +1324,12 @@ compword(alias,[],navn). %% TA-101018
 compword(all,[din],din). 
 compword(all,[e],alle). 
 
+   xcompword(alle,[andre],andre). 
+   xcompword(alle,[dine],dine).  
+   xcompword(alle,[disse],disse).  
+   xcompword(alle,[mine],mine). 
+   xcompword(alle,[sine],sine). 
+   xcompword(alle,[våre],våre). 
 
 compword(aller,[helst],[]).       %%  helst not noise //noe som helst
 compword(aller,[først],først).   
@@ -118,10 +1337,12 @@ compword(aller,[første],første).
 compword(aller,[sist],sist).     
 compword(aller,[siste],siste).   
 
+    xcompword(allerede,[nå],nå). %% TA-110426
 
 compword(alt,[i,alt],[]).
 compword(alt,[ialt],[]).
 
+    xcompword(alt,[mulig],alt). 
 compword(alt,[om],om).  
 
 compword(alt,[for],altfor). %% x? %% TA-110503
@@ -131,9 +1352,11 @@ compword(altså,[ikke],unntatt).             %% ? altså noisew !!!
 %%% compword(altså,[],[]).                      %% NB after altså ikke
    %% creates  w(altså,[[altså],name([],n,0),[]]) -> remove
 
+    xcompword(an,[til],an).
 
 compword(andre,[buss,etter,neste],tredje).   %% etc
 compword(andre,[bussen,etter,neste],tredje). %%
+    xcompword(andre,[enn],unntatt).
 compword(andre,[steder,enn],[]). %% rough, works as corrective 
 
     compword(ang,[at],at).
@@ -147,11 +1370,22 @@ compword(ankomst,[rundt],rundt).
 compword(annet,[enn],[]).                   %% Rough, Rhetoric
 
 
+%%    xcompword(anse,[for,å],mene).   %% fast uttrykk 
+%%    xcompword(anser,[for,å],mener). %%
+
+%%       bussen går .. for å være 
+
 
 compword(antall,[kilometer],avstanden). 
 %% compword(arbeids,[buss],arbeidsbuss). 
 %% compword(arbeids,[bussen],arbeidsbussen).  
 
+    xcompword(ass,[buss],ekstrabuss). 
+    xcompword(ass,[bussen],ekstrabussen).
+    xcompword(ass,[bussene],ekstrabussene).
+    xcompword(ass,[busser],ekstrabusser).
+
+    xcompword(at,[det,er,det,at],at).
 compword(at,[at],at).                       %% Repair
 compword(att,[med],forbi). 
 compword(att,[me],forbi).  
@@ -162,12 +1396,15 @@ compword(att,[me],forbi).
 compword(atter,[en,gang],redundant0). 
 
 compword(automatisk,[svarer],automat).  
+%%     xcompword(av,[disse],[]). %% noen av disse 
+
 compword(av,[fra],av). %% .. bussen 
 
 compword(ad,[gangen],[]).
 compword(av,[gangen],[]). 
 
 compword(av,[gårde],[]). 
+    xcompword(av,[og,til],tidvis).  %%  går bussen %% TA-111001
  
 
 compword(av,[på],til). %% av på station/ av bussen
@@ -201,30 +1438,26 @@ compword(b,[ss],buss).   %% "b~ss"
 %% compword(bare,[],[]). %% not noise (ikke bare = []) // s y n w o r d 
 
 
+    xcompword(bare,[hyggelig],ok).    %% * takk ->værsågod -> takk...
 compword(barne,[bilett],barnebillett).
 compword(barne,[billett],barnebillett).
 %% compword(barnehagen,[ved],[]). %% (noinfo)
 
+    xcompword(begynner,[å],vil).  %%  rough
+    xcompword(begynne,[å],[]).     %%
+    xcompword(begynne,[med,å],[]). %%
 
+    xcompword(befinner,[meg],er). %% ETC (replaces befind) 
 
-
-
-
-
-
-
-
-
-%--
-
-%% No general rewrite rules (List -> List)  (Precaution)
-
-
+    xcompword(benytte,[meg,av],benytte).  
+    xcompword(benyttet,[meg,av],benyttet). 
 
 compword(beste,[rute],rute). %% .. fra X 
 compword(billettypen,[midtby],midtbybillett). %% etc 
 compword(billetttypen,[midtby],midtbybillett). 
 compword(billettype,[midtby],midtbybillett).
+
+    xcompword(bl,['.',a,'.'],[]). %% etc 
 
 compword(ble,[d,av],er). 
 compword(ble,[det,av],er).  
@@ -240,6 +1473,11 @@ compword(blir,[det,av],er).
 compword(blir,[av],er).    %% ?
 compword(bortsett,[fra,det],[]). 
 compword(bortsett,[fra],unntatt). 
+    xcompword(bort,[til],til).
+
+
+    xcompword(bra,[når],når). %% Fedup
+    xcompword(bra,[til],bra). %% Fedup %% står bra til 
 
 compword(brutt,[sammen],stoppet).              %% Rough
 
@@ -283,7 +1521,13 @@ compword(buss,[holde,plassenr],holdeplasser).
 compword(buss,['.',neste],neste). %% Team buss. ...
 compword(buss,['.',når],neste).  
 
+    xcompword(buss,['-',stasjonen],busstasjonen). %% nec  
+    xcompword(buss,[flybussen],flybussen). 
+    xcompword(buss,[eller,trikk],kjøretøy).
+
 compword(buss,[nt],buss). %%  (nr)
+    xcompword(buss,[nummer],buss). %% når passerer buss nummer tempe 
+    xcompword(buss,[rute],bussrute).
 compword(buss,[streik],streik).  
 compword(buss,[streiken],streiken). 
 
@@ -301,7 +1545,20 @@ compword(bussorakelets,[mobil],smstuc).        %%
 compword(bussorakelets,[mobiltelefon],smstuc). %% 
 compword(bussorakelets,[mobiltjeneste],smstuc).%% 
 
+
+   xcompword(bussen,[buss],buss). %% repair 
+   xcompword(bussen,[før,siste],nestsiste). %% Hazard 
+
 compword(bussen,[neste],neste). %% gdsgd 
+
+   xcompword(buss,  [n],bussen).         %% buss'n
+   xcompword(bussen,  [nr],bussen). %% Når går bussen... nr fra  wullumsgården
+
+   xcompword(buss,[når,buss], buss).  %% repair 
+   xcompword(buss,[når,går,det,buss], buss).  %% repair
+   xcompword(buss,[når,går,neste,buss], buss). 
+   xcompword(buss,[når,går,neste], buss). 
+
 
 
 
@@ -322,9 +1579,24 @@ compword(buss,[nr,':'], buss).
 
 compword(buss,[nummer], buss).        %% ad hoc
 compword(buss,[neste], neste). 
+%%     xcompword(buss,[når], buss).      %% nr    %% doesnt help 
+    xcompword(buss,[når,går], buss). %% buss når går 6 fra byen   
+
 compword(buss,[og,fra,hvor],buss).  
 compword(buss,[orakel],bussorakel). 
 compword(buss,[plan],bussrute).   
+   xcompword(buss,[på,rute],buss).  
+
+    xcompword(buss,[rute,nr],buss).      %% etc 
+
+    xcompword(buss,[ruta],bussruten).    %% amb. experiment   
+
+
+
+
+%%%     xcompword(buss,[rute],bussrute).     %%   -> gram hovedvogn rute       
+                                             %% suspended for test
+    xcompword(buss,[ruter],bussruter).   %%
 
 compword(buss,[sjafører],bussjåfører).  
 compword(buss,[sjofør],bussjåfører). 
@@ -342,6 +1614,7 @@ compword(buss,[tur],busstur).
 compword(buss,[tuc],busstuc). 
 compword(buss,[busser],busser).   
 compword(buss,[siste],siste).      %% Repair 
+    xcompword(buss,[tider],busstider). 
 compword(bussen,[de],de). %% repair , \+ x 
 compword(bussen,[e],bussene).             %% haz ?
 compword(bussen,[bussen],bussen).           %% Repair
@@ -350,6 +1623,7 @@ compword(bussen,[første,buss],bussen).    %% Repair
 compword(bussen,[første,bussen],bussen).  %% Repair 
 compword(bussen,[første],bussen).         %% standard prompt 
 compword(bussen,[fra,bussen],bussen). 
+    xcompword(bussen,[går,bussen],bussen). %% err ->x
 compword(bussen,[fra,neste],neste).       %% Repair 
 compword(bussen,[neste,bussen],bussen).   %% 
 compword(bussen,[neste,buss],bussen).     %% 
@@ -382,8 +1656,19 @@ compword(bussrute,   [buss],buss).
 compword(bussruter,[til,buss],buss).   
 compword(busstider,[buss],buss).  
 
+    xcompword(by,[en],byen). 
+    xcompword(by,[n],byen).    
+
+    xcompword(by,[buss],buss).  %%  X
+
+    xcompword(bår,[går],går). %% avoid amb 
+
+
 compword(c, [a],ca).  
 compword(ca,['.',i],i).  
+
+    xcompword(ca,['.'],ca).    %%
+    xcompword(ca,[':'],ca).    %%
 
 compword(ca,[i],i).             %% to tiden 
 compword(ca,[imorgen],imorgen).
@@ -392,6 +1677,8 @@ compword(ca,[nå],nå).
 compword(ca,[når],når). 
 compword(ca,[rundt],rundt).     %%   ops: også forbi
 compword(ca,[til],før). 
+   xcompword(ca,[ved],i).  
+
 compword(cirka,[når],når).     %%  sånn cirka når
 compword(cirka,[rundt],rundt). 
 
@@ -399,7 +1686,19 @@ compword(d,      [en], en).
 %% compword(d,      [en], buss). %% Haz 
 compword(d,      [å], []).  %% dette år   
 
+    xcompword(da,[ta],ta).  %% pga da -> ta repair 
+%%  må jeg da ta removes da because må is invoked before  da ta
+    
+    xcompword(dagen,[etter,idag],imorgen). 
+    xcompword(dagen,[etter,i,dag],imorgen). 
+
+    xcompword(dagen,[etter,i,morgen],overimorgen). %% cathch i morgen
+	 %% TA-110401
+
 compword(dagen,[etter,imorgen],overimorgen). 
+    xcompword(dagen,[etter,morgendagen],overimorgen). 
+
+    xcompword(dagen, [før,i,morgen],idag).  %%  :-)  %% TA-110401
 compword(dagen, [før,imorgen],idag).   %%
 
 compword(dagen, [før],igår). 
@@ -407,33 +1706,52 @@ compword(dagen, [busser],buss).  %%  (actual)
 compword(dagens,[siste],siste).  
 compword(data,  [maskin],datamaskin).
 
+    xcompword(de,[ca],de). 
 compword(de,[de],de).
+    xcompword(de,[forskjellige],[]). 
 
 compword(defacto,[],[]). 
 compword(de,[facto],[]).
+    %%% xcompword(de,[fleste],alle). %% rough (?) 
+
+    xcompword(de,[fleste,av],alle). %% rough
+    xcompword(de,[fleste],mange).   %%
+
 compword(de,[i,neste], neste). %% når går de i neste bussen %% ?
  
 
 compword(de,[neste,gangene], heretter). 
 
+    xcompword(definert,[som],lik). %% ad hoc 
+
 compword(definisjonen,[på,en],en).
 
+    xcompword(deg,[og,dine],deg).  %% dine is ellipt.
 
 compword(deg,[selv],deg).  
 
+    xcompword(den,[eller,de],de). 
 
 compword(den,[neste,gangen], heretter). 
+    xcompword(den,[noen], noen). %% det noen
 compword(den,[du,nettopp,oppga],denne). 
 %% compword(den,[en],det). %% da spurte den en mann 
 compword(den,[i,dag],idag).  
 compword(den,[idag],idag).             
+    xcompword(den,[i,morgen],imorgen). %% TA-110401
 compword(den,[imorgen],imorgen).              
+
+
+    xcompword(den,[her],den).
+    xcompword(det,[her],det).
 
 compword(den,[lørdag],lørdag). 
 compword(den,[søndag],søndag). 
 compword(den,[mandag],mandag). 
 compword(den,[nærmeste,til],nærmest). 
 compword(den,[nærmeste],nærmest). 
+
+    xcompword(den,[varianten],denne). %% generic
 
 compword(den,[vet,eg],den). 
 compword(den,[vet,jeg],den).
@@ -447,7 +1765,20 @@ compword(denne,[smstjenesten],smstuc).   %%
 compword(denne,[type],denne).  
 compword(denne,[typen],denne).  
     
+    xcompword(dere,[begge],dere). 
+
 %% compword(det,[av],[]). %%  Hvor ble det av ... 
+
+xcompword(det,[buss,går],buss). %%  \+ x <--- ???
+%%     compword(det,[der],dette).  %% regner det der jeg bor
+
+    xcompword(det,[det,er],noe). %% rough
+
+%% compword(det,[er,greit],ok).  %% -> gram 
+%% compword(det,[er,greitt],ok). 
+    xcompword(det,[der],dette). 
+    
+    xcompword(det,[enkleste],løsningen). %% TA-110807
 
 %% compword(det,[er,greitt],ja).  %% det er greitt å ta buss 
 compword(det,[er,greitt,det],ja). 
@@ -462,8 +1793,17 @@ compword(det,[hele],alt).
 compword(det,[her],dette). 
 
 compword(det,[lenge,til],det).     %% Rough ?
+%%    xcompword(det,[med,buss],buss). %% Hvor langt er det med buss
 compword(det,[med,bussen],bussen).   
 compword(det,[må,du,gjenta],gjenta). 
+
+%%    xcompword(da,[ser,det,ut,til,at],[]).  -> gram
+
+%%    xcompword(det,[samme,som],slik). %% rough hazard  %%  svaret er  ikke det samme som i går *
+%%   jeg sier det samme som deg 
+
+    xcompword(det,[siste,du,sa],dette). 
+    xcompword(det,[siste],dette).
 
 compword(d,[sånn,at],at). 
 compword(d,[slik,at],at).  
@@ -472,15 +1812,35 @@ compword(det,[sånn,at],at).
 %% compword(det,[slik,at],at).  %% før var det slik at
 
 
+    xcompword(det,[spørs,om],[]). %% TA-110112
+    xcompword(spørs,[om],[]).     %%
+
 compword(det,[vil,si],[]). 
 
 compword(dette,[for,noe],dette).  
 compword(dette,[for,en,ting],dette). 
 
+    xcompword(d,[her],dette).  
+    xcompword(d,[hær],dette). 
+    xcompword(det,[for,noe],det).   
+%%     xcompword(det,[her],dette). %% coll det her er 
+    xcompword(det,[hær],dette).
+    xcompword(dette,[her],dette). 
+    xcompword(dette,[hær],dette).
+    xcompword(dette,[for,noe],dette). 
+
 compword(di,[to],to).
 
 compword(dit,    [jeg,skal],dit).  
+   xcompword(dit,    [jeg,bor],hjem).  
    compword(dit,    [du,vil],dit).  %% rough 
+
+   xcompword(der,    [jeg,bor],hjemme). 
+   xcompword(der,    [jeg,må,være],før).  
+   xcompword(der,    [må,jeg,være],før).
+   xcompword(der,    [jeg,må,være,seinest],før). 
+   xcompword(der,    [jeg,må,være,senest],før). 
+   xcompword(der,    [må,jeg,være,senest],før).   %% etc
 
 
 compword(dr,[de], de).            %% dr=de + rep 
@@ -496,6 +1856,7 @@ compword(du,[anbefale,meg,å],jeg). %% cheat
 compword(du,[buss],buss).  
 %%  compword(du,[ikke],du).   %% Rough Rhetorics hvorfor kan du ikke ta trikken
 
+    xcompword(du,[du],du). %% own
 compword(du,[får,ha],ha). %% en god dag 
 compword(du,[går,neste],går). %% error 
 
@@ -505,6 +1866,9 @@ compword(du,[går,neste],går). %% error
 compword(du,[når],når). 
 compword(du,[hvilken],hvilken).   %% ?
 
+    xcompword(du,[personlig],du).
+    xcompword(du,[selv],du).
+
 compword(du,[tuc],tuc).   
 
 compword(dukke,[opp],komme).  
@@ -512,6 +1876,7 @@ compword(dukker,[opp],kommer).
 compword(dukket,[opp],kom).          
 compword(dukket,[opp],kommet). 
 compword(duss,[buss],buss).  %% repair
+    xcompword(dårlig,[gjort],dårlig). %% TA-110113
 compword(døgnets,[tider],tider).   
 
 %%   compword(e,['.'],etter).   %% E.Tambarskj.  
@@ -525,15 +1890,29 @@ compword(e,[r],er).                     %%  own sp
 
 %% compword(egner,[seg],er).   %%..best egner seg = fit (itself) 
 
+    xcompword(eller,[i,nærheten],[]).
+
+
+    xcompword(en,[ca,'.'],ca). %% fra Höiseth om en ca.  en halv time
+    xcompword(en,[ca],ca).  
+
     compword(en,[del],flere). %%  busstuc er en del av// en del feil
     %% TA-110725
     
 compword(en,[en],en). %%  repair
 compword(en,[gang,til],gjenta).     
-
+    xcompword(en,[gang,for,alle],alltid). 
 compword(en,[gang],[]). 
 
 compword(en,[god,del],mye). %% meget? 
+    xcompword(en,[gruppe,med],[]).    %%.. studenter
+%%     xcompword(en,[gruppe],[]).     %% jeg reiser i en gruppe 
+    xcompword(en,[gjeng,med],[]).   %%.. studenter 
+    xcompword(en,[gjeng],[]).      %%.. studenter
+
+    xcompword(en,[sjelden,gang],sjelden). 
+
+
 compword(en,[toer],to). %% ,2) %% (numbers are not atoms)
 compword(en,[treer],tre).  
 compword(en,[firer],fire).
@@ -546,7 +1925,10 @@ compword(en,[tier],ti).
 compword(en,[elver],elve). 
 compword(en,[tolver],tolv).
 
+    xcompword(en,[eller,annen],en).
+
 compword(en,[mengde],mange).
+    xcompword(en,[gjeng],mange).
 
 compword(en,[million],1000000). 
 compword(en,[gang,til],[]).  
@@ -573,13 +1955,24 @@ compword(endeholde,[plass],endeholdeplass).
 
 compword(ender,[opp],kommer).
 
+    xcompword(endres,['/',slettes],endres). %% weaker
+
+
+
 compword(endte,[opp],kom).  
 compword(enda,[en,gang],redundant0). 
 
 compword(engangs,[billett],enkeltbillett). 
 
+    xcompword(en,[gang],redundant0). 
+
     compword(enn,[bare],enn). 
 %% compword(enn,[det],avgang). %% Freak går det noen tidligere enn det 
+
+    xcompword(enn,[avtalt],[]). %% TA-110105
+    xcompword(enn,[før],[]).    %% tidligere enn før %% rough
+    xcompword(enn,[ellers],[]). 
+    xcompword(enn,[tidligere],[]).    %% tidligere enn før %% rough
 
 %% compword(enn,[],[]).     % enn (hva med) buss 5 ? , større enn 
 
@@ -590,10 +1983,18 @@ compword(ennå,[en,gang],redundant0).
 compword(er,[den,neste,til,å,kjøre], går). 
 compword(er,[der,kl],kl). %% IKKE X
 
+    xcompword(er,[det,med],er). %% hvordan e.d.m. 
+    xcompword(gikk,[det,med],var). 
+%%     xcompword(går,[det,med],er).   %% hvordan går det med deg %% TA-101202
+
 compword(er,[det,blitt,av], er). 
+   xcompword(er,[det,du,har],fins).  
 compword(er,[det,med], er). 
 %% compword(er,[det,for], koster).   %% Too rough 
 %% compword(er,[det,noe], eksisterer).   %% ? 
+   xcompword(er,[det,som],[]). %% .. kjører // er det = exist (gram) 
+   xcompword(er,[det,å,være],virker). %% ... en datamaskin :-)
+
 
 %% compword(er,[det],eksisterer). %% NB ikke x 
                                   %% hvor lenge er det til ...
@@ -601,10 +2002,15 @@ compword(er,[det,med], er).
 compword(er,[du,av],er).  
 compword(er,[du,vel],[]). 
 compword(er,[e],er).          %% slang
+   xcompword(er,[enig,i],mener). 
+   xcompword(e,[enig,i],mener). %% ?
 compword(er,[er],er).   
 compword(er,[går], går).      %%  repair 
 
+%%    xcompword(er,[hyppig,forekommende],skjer). %% -- ofte %%
+
 compword(er,[i,drift], går). 
+    xcompword(er,[kjører],går). %% AVOID TAKE kjører
 compword(er,[kommer],kommer).   %% repair
 
 compword(er,[ligger], ligger). %% TA-100823 repair
@@ -615,10 +2021,28 @@ compword(er,[ligger], ligger). %% TA-100823 repair
 compword(er,[må], må).    %%repair 
 
 compword(er,[nå],er). %%  Rough   klokken er -nå- 1545.
+   xcompword(er,[når],er).
+   xcompword(er,[passerer], passerer).      %%  repair  
+%% compword(er,[planlagt], går). %% rough 
+
+    xcompword(er,[tillagt],har). %% ad hoc 
 
 compword(er,[snakk,om],gjelder).  
 
 %% compword(er,[så], er).                  %% er så du/stor 
+
+    xcompword(er,[vil],vil).            %% Repair
+
+    xcompword(er,[ute,etter],søker).  
+    xcompword(var,[ute,etter],søkte).  
+
+    xcompword(et,[eller,annet],noe). 
+    xcompword(ett,[eller,annet],noe). %% 
+
+%    xcompword(et,[aøyeblikk,bare],[]). %% spam
+    xcompword(et,[øyeblikk,bare],[]). 
+
+    xcompword(et,[et],et). %% own 
 
 compword(et,[ja],ja).  
 compword(et,[nei],nei). 
@@ -641,7 +2065,15 @@ compword(ett,[kl],etter).
 
 
 %% compword(etter,[den],deretter).
+    xcompword(etter,[denne],deretter).
+    xcompword(etter,[den,som,går],efter).    %%  efter = strict after/techn 
 compword(ætter,[den,som,går],efter).    %% ? dial
+
+    xcompword(etter,[ønske],redundant0). %% TA-101004 ad hoc
+
+%%     xcompword(etter,[det],deretter).    %% Telebuster!  %% suspended .. etter det jeg forstår 
+
+    xcompword(etter,[dette],deretter).  %% 
 
 compword(etter,[etter],etter).         %%  Repair 
 compword(etter,[fra],fra).             %%  Repair 
@@ -651,6 +2083,7 @@ compword(etter,[med],med).             %%  Repair
 compword(etter,[mellom],mellom).       %%  Repair
 compword(etter,[middag],ettermiddag). 
 compword(etter,[neste],heretter). %%  ? rough, \+ xc..
+    xcompword(etter,[nå],heretter). 
 compword(etter,[passert],etter).       %% å ha passert         
 compword(etter,[til],til).             %%  Repair
 compword(etter,[å,ha,passert],forbi). 
@@ -660,9 +2093,16 @@ compword(ettermiddag,['/',kveld],ettermiddag). %% most inclusive
 compword(eventuelt,[når],[]). 
 
 compword(eventuelt,[],[]).  %% collides ? 
+    xcompword(ev,['.'],[]). 
+    xcompword(evt,['.'],[]). 
 
 compword(evt,[når],[]). 
 %% compword(evt,[],[]). %% destructive ?  
+
+
+    xcompword(f,[eks],redundant0).    
+    xcompword(f,['.',eks,'.'],redundant0). 
+    xcompword(f,['.',eks],redundant0).
 
 
 compword(f,[o,m],etter).  
@@ -679,14 +2119,34 @@ compword(f,[å,komme,til],til).
 
 compword(f,[å,være,i],til). 
 compword(f,[å,være,på],til).
-
+    xcompword(feiler,[det],plager). %% rough (be wrong with) %% TA-101103
 compword(femme,[før],før). 
 compword(ferdig,[til],før).       %% Rough experiment
 compword(ferie,[ruter],ferie).   %%   Rough
 compword(finne,[sted],finnes). 
 compword(finner,[sted],finnes). 
 compword(finner,[ikke],søker). %%  <-- rough 
+    xcompword(fint,[å],å). %% rekker f.å. 
+
+%% Begin FOR
+
+%%       xcompword(for,[å,være],er). %% anser for å være= anser er
+    xcompword(for,[den,sakens,skyld],redundant0). 
+    xcompword(for,[eksempel],redundant0).         %% f.eks. = []
+    xcompword(for,[min,del],redundant0).          %% TA-101117
+    xcompword(for,[sikkerhets,skyld],redundant0). 
+
+    xcompword(for,[øyeblikket],nå). %% TA-101123
+
+    xcompword(for,[å,være,der,før],før).  %#1        %% TA-100921
+    xcompword(for,[å,være,der],før).      %#2        %%
+    xcompword(for,[for],for).      
+    xcompword(for,[p,være,pa],til). 
+
 compword(for,[tiden],nå).
+
+    xcompword(for,[æ,være,i],til).   %%  æ sp
+    xcompword(for,[øvrig],forøvrig). %% 
 
 %% compword(for,[klokka],før).  %% NB for kl 11 \= for rute 11
 %% compword(for,[klokken],før). 
@@ -694,8 +2154,12 @@ compword(for,[tiden],nå).
 compword(familie,[ dagsbilett],familiebilett).
 compword(familie,[ dagsbillett],familiebilett). 
 
+    xcompword(far,[a,være, i],til). %% no pardon
+
 compword(fare,[for],mulig). % .. at
 compword(fler,[enn,en],flere). 
+
+    xcompword(flest,[mulig],mange). 
 
 compword(fly,[buss],flybuss). 
 compword(fly,[bussen],flybuss). 
@@ -710,14 +2174,59 @@ compword(fly,[plassen],flyplassen).
     compword(for,[alt,jeg,vet],redundant0).
 compword(for,[fra],fra).         %% repair
 
+    xcompword(for,[tidlig,framme],fortidlig). 
+    xcompword(for,[tidlig,ute],fortidlig).
+    xcompword(for,[tidlig],fortidlig).
+
+    xcompword(for,[å,vær,ei],til).  %% være i   
+    xcompword(for,[å,våre,på],til). %% æ-trøbbel 
+
+    xcompword(for,[og,være,på],til).     %%   spiw
+    xcompword(fo,[rå,være,i],til).  
+    xcompword(fo,[rå,være,på],til). 
+
+    xcompword(for,[p,være,i], til).  
+    xcompword(for,[p,være,på], til).
+    xcompword(for,[på,være,i], til).  
+    xcompword(for,[på,være,på], til).  
+%% compword(for,[å,komme,til], til). 
+    xcompword(for,['?' ,komme,til], til).
+    xcompword(fortelle,[med],fortelle). %% 
+    xcompword(for,[for],for). 
 compword(for,[guds,skyld],[]).
+    xcompword(for,[i,være,på],til). 
+
+
+     xcompword(for,[langsomt],forsinket). %% 
+     xcompword(for,[sakte],forsinket). %% 
+     xcompword(for,[sent],forsinket). %% 
+
+    xcompword(for,[være,på],til).   %%
 compword(for,[komme,fram,til],til). 
 compword(for,[komme,frem,til],til).
 compword(for,[mye],mye). 
 
+    xcompword(for,[sen],forsinket).  
+    xcompword(for,[sein],forsinket). 
+    xcompword(for,[sent],forsinket).  
+    xcompword(for,[seint],forsinket). 
+
+    xcompword(for,[øyeblikket],[]). %% #->  nå // rough 
+
+    xcompword(for,[å,ved],til). 
+
 compword(for,[på,være],til). %% for å være på *
 
+    xcompword(for,[å,rekke,frem ,til], til). 
+    xcompword(for,[å,rekke,frem],før).  
+    xcompword(for,[å,være,der,til],før). 
 compword(for,[å,være,der],kl).  
+
+   xcompword(for,[å,være,der,før],før).
+
+%% compword(for,[å,være,der],[]).  
+
+    xcompword(for,[være,der],[]). 
 
 compword(for,[være,i],til).  
 compword(for,[vre,i],til).  %%  ?
@@ -727,15 +2236,34 @@ compword(for,[være,på],til).        %% Være-syndrom
 compword(for,[a,være,på],til).      %% etc
 compword(for,[a,være,ved],til). 
 
+   xcompword(for,[æ,være,på],til). 
+   xcompword(for,[æ,vere,på],til). 
+   xcompword(får,[æ,være,på],til). 
+   xcompword(får,[å,vere,på],til). %% no pardon
 
 compword(for,[at,være,i],til).      %%  DK
 compword(for,[at,være,på],til).     %% 
 
 compword(for,[være,i],til). 
 
+    xcompword(fører,[til],forårsaker).  %% problem fører=noun 
+
+
+%% compword(før,[den],derfør).       %% Technical  før dette blir verifisert *
+%%    xcompword(før,[denne],derfør). 
+%% compword(før,[det],derfør).       %% Dialog
+%%    xcompword(før,[dette],derfør). %% 
+
+    xcompword(før,[å,være,i],til).   %% no pardon 
+    xcompword(før,[ay,være,i],til).  %% no pardon %% TA-110518
+    xcompword(før,[og,etter],rundt). %% rough   utenfor ? 
+
+    xcompword(før,[klokka,blir],før). %% etc. ad hoc 
+
 compword(får,[være,i],til).
 compword(får,[være,på],til).
 
+    xcompword(for,[i,morgen],imorgen). %% TA-110401
  compword(for,[imorgen],imorgen).      %%
 
 %% compword(for,[i],forå).          %%  in_order_to
@@ -751,6 +2279,7 @@ compword(for,[og,være,framme,rundt], før).
 compword(for,[og,være,framme], før). 
 compword(for,[og,være,frem], før). 
 compword(for,[og,være,fremme], før). 
+    xcompword(for,[og,være,i],til).     %% TA-101206 %% ... // err
 compword(for,[og,være,på],til).    %% 
 compword(for,[og,være,til],til).   %% 
 
@@ -763,6 +2292,8 @@ compword(for,[sein],forsinket).
 compword(for,[sen],forsinket).   
 compword(for,[seint],forsinket). 
 compword(for,[sent],forsinket). 
+
+    xcompword(for,[så,å,være,på],til). 
 
 compword(for,[så,å],og).         %%  Rough 
 compword(for,[så],og).           %%   Rough 
@@ -786,6 +2317,9 @@ compword(for,[å,var,i],til).
 
 compword(for,[ay,'va|re',der],før). %% etc ad hoc 
 compword(for,[ay,'va¦re',der],før).
+
+%%    xcompword(for,[å,være,der,etter],etter).  
+%%    xcompword(for,[å,være,der],før).          %% suspended
 
 compword(for,[å,være,fra],fra).   
 compword(for,[å,være,fram,på], til). 
@@ -823,10 +2357,22 @@ compword(for,[åværra,i,der,te],før). %% ?
 
 %% End FOR
 
+    xcompword(får,[inn],mottar). %% etc. ad hoc 
+    xcompword(får,[til],klarer). %% ad hoc, incomplete 
+
+
 
 compword(fr,[til],til).     %% repair 
+    xcompword(fr,[5,a],fra). %% slip
 compword(fr,[a],fra). 
 compword(fr,[å,nå],til).  %% for å nå 
+
+    xcompword(fra,[direkte,fra],fra). %% repair 
+    xcompword(fra,[her,jeg,er,nå],herfra).  %% TA-100909
+    xcompword(fra,[her],herfra).  
+    xcompword(fra,[nå,av],heretter).  %% 1.
+    xcompword(fra,[nå],heretter).     %% 2.
+    xcompword(fra,[hvor,og,når],når).  
 
 compword(fra,['.'],fra). %% Ad Hoc 
 
@@ -856,11 +2402,18 @@ compword(fra,[på],fra). %% reversed repair
 compword(fra,[rundt],fra).  
 compword(fra,[sted],utgangspunkt). 
 compword(fra,[til],til).        %% repair   
+    xcompword(fra,[å,være,på],til). %% fra  å være på ikea= til 
 compword(fra,[å],fra). 
 compword(fraog,[med],efter).  
 
 
+%  
+    xcompword(får,[å,være,i],til).  
 % compword(får,[å,være],til).  
+
+    xcompword(får,[fra],forlater). 
+    xcompword(får,[å,være,på],til). 
+    xcompword(får,[å,nå],til).  
 
 compword(foran,[i],i).  
 compword(forrerst,[i],i).           %%
@@ -884,6 +2437,9 @@ compword(forbli,[i],ankomme).  %% repair, forbli=forbi
 compword(forbli,[på],ankomme). 
 
 compword(fordi,[om,det,er],[]). 
+
+    xcompword(foreløpig,[bare],bare).  
+    xcompword(men,[foreløpig,bare],bare). %% ad hoc ?
 
 compword(forsen,[],forsinket).   %% 
 compword(forsent,[],forsinket). 
@@ -909,7 +2465,13 @@ compword(fra,[vest],vestfra).
 compword(fra,[øst], østfra). 
 
 compword(framme,[før],før). %% Ikke x 
+    xcompword(framme,[i],i).   
+%%    xcompword(framme,[på],på).   %% som er framme på
+    xcompword(framme,[ved],ved). %%
+    xcompword(fremme,[til],fremme). %% ? %% TA-100921 fremme official
 
+    xcompword(fram,[til,nå],tidligere). %%  hittil -> tidligere
+%%    xcompword(frem,[til,nå],tidligere). %% unnec
 compword(fram,[til,da],tidligere). %% Rough
 
 %% compword(fram,[til],inntil). %%  frem til i morra 
@@ -927,15 +2489,24 @@ compword(framøte,[],før). %% etc
 
 compword(frem,[til,da],tidligere). %%
 
+    xcompword(frem,[til],til). 
+    xcompword(fram,[til],til).
+
+    xcompword(fremme,[for], før). %%  før
+    xcompword(fremme,[seneste], før). %% spell 
+
 %% compword(fremme,[på], til). %% når er jeg fremme på Nardo %% TA-101108
 compword(fremme,[til], til).  
 compword(fullt,[mulig],mulig).  
 compword(fø,[rste],første).        %% fø#rste
+    xcompword(føler,[meg],er). %% Ad Hoc ..trett %% TA-101117
 compword(før,['/',etter],rundt). 
+    xcompword(før,[at,være,der],før).  
 compword(før,[den,som,går],før). 
 compword(før,[etter],etter).       %%  repair
 compword(før,[før],før).   
    compword(før,[i,morgen],idag).  
+%% xcompword(før,[imorgen],idag).      %% før i morgen kl 12 \= idag kl 12
 
 compword(før,[like,etter],etter).  %%
 compword(før,[til],til).           %%  rep
@@ -967,9 +2538,11 @@ compword(få,[meg],kjøre). %% få meg ny billett *
 compword(få,[opp],få). 
 compword(få,[tak,i],få). %% ta).  %% rough
 compword(få,[fatt,i],ta). %%
+    xcompword(få,[å,være,på],til). %% (if error then xcomp...)
 
 
 compword(får,[fra],forlater).       %% går fra 
+   xcompword(får,[forbi],passerer).
 compword(får,[i], går). %% confus
 compword(får,[klokka], før).
 compword(får,[meg], til). 
@@ -987,13 +2560,22 @@ compword(g,[år],går).
 
 compword(gang,[til], gang).     %% en gang til 
 
+    xcompword(gang,[tid],gangtid).   %% TA-110419
+    xcompword(gang,[tids],gangtid).  %%
+    xcompword(gå,[tid],gangtid).     %% 
+    xcompword(gå,[tids],gangtid).    %%
+
 compword(ganger,[i,døgnet],ganger).  %% Default
 compword(ganger,[om,dagen],ganger).  %% Default 
+
+    xcompword(gate,[adresse],gateadresse). 
+
+    xcompword(godt,[hjulpet],hjulpet). %% old standard phrase 
+    xcompword(godt,[over],over). 
 
     compword(greit,[det],ok).  
     compword(helt,[greit],ok). 
     compword(helt,[greit,det],ok).
-
 % compword(gi,[deg],slutt).  %% Han kan gi deg informasjon 
 
 compword(gi,[med],gi). %% gi meg 
@@ -1001,12 +2583,24 @@ compword(gi,[med],gi). %% gi meg
 compword(gi,[opp],slutt). 
 compword(gir,[opp],slutter). 
 
+    xcompword(gi,[seg,ut,for,å,være],etterligne). 
+    xcompword(gir,[seg,ut,for,å,være],etterligner). 
+    xcompword(ga,[seg,ut,for,å,være],etterlignet). 
+    xcompword(gitt,[seg,ut,for,å,være],etterlignet).
+
 compword(gitt,[at], hvis). 
 
 compword(giæ,['½',r],går).         %% Å trøbbel
 
 compword(gj,['?',r],gjør). %% hva gj?r du 
 compword(gjenta,[det,siste,du,sa],gjenta).
+
+    xcompword(så,[smått],[]).     %% TA-110228
+    xcompword(så,[gjerne],redundant0).    %% grad+adv
+
+    xcompword(gjette,[seg,til],gjette). %% lazy 
+    xcompword(gjetter,[seg,til],gjetter).  
+    xcompword(gjettet,[seg,til],gjettet).
 
 compword(gjør,[at,jeg,kan,komme],går).  
 compword(gjør,[oppmerksom,på],sier).  
@@ -1018,10 +2612,16 @@ compword(gruer,[meg,til,å],må). %%  :-)
 
 
 compword(gå,[meg],gå).     %% avoid transitive go 
+    xcompword(gå,[å],[]).    %% legg deg 
 compword(går,[ankommer],ankommer). %% repair  
 compword(går,[hvilke],går).   
 
+    xcompword(går,[ma,jeg,ta],går). %% ??
+    xcompword(går,[må,jeg,ta],går). %% ?
+
 compword(går,[meg],går). 
+    xcompword(går,[å,være,på],til). 
+    xcompword(går,[neste,går],går).
 %% compword(går,[ofte],går). 
 
 
@@ -1060,6 +2660,8 @@ compword(går,[kommer],kommer).          %%
 compword(går,[me],går).                 %%
 compword(går,[må],må).                  %% 
 compword(går,[neste,gang],går).  
+    xcompword(går,[stopper],går). %% stopper?  %% repair 
+
 %%% compword(går,[når],går).  %% går når? %% bussen går når trikken står 
 
 %% compword(går,[når],går). %%   %% jeg går når bussen kjører
@@ -1071,10 +2673,28 @@ compword(går,[vil],passerer).
 
 compword(h,[p],holdeplass). 
 compword(h,[pl],holdeplass).   %%
+    xcompword(h,[va],hva). 
 compword(ha,[behov,for,å],[]). 
 compword(ha,[en,hyggelig,kveld],adjø). 
 
 %% trouble in gram %% TA-100915
+
+    xcompword(ha,[med,deg],bringe). 
+    xcompword(ha,[med,meg],bringe). 
+    xcompword(ha,[med,seg],bringe). 
+
+    xcompword(har,[med,deg],bringer). 
+    xcompword(har,[med,meg],bringer). 
+    xcompword(har,[med,seg],bringer). 
+
+    xcompword(hadde,[med,deg],brakte). 
+    xcompword(hadde,[med,meg],brakte). 
+    xcompword(hadde,[med,seg],brakte).
+
+    xcompword(hatt,[med,deg],brakt). 
+    xcompword(hatt,[med,meg],brakt). 
+    xcompword(hatt,[med,seg],brakt).
+
 
 compword(ha,[med],ha). 
 
@@ -1092,7 +2712,10 @@ compword(hadde,[tenkt,meg,å],skal).
 compword(hadde,[måttet],måtte). %% Ad hoc    aux(must,nil,past) %%
 compword(hadde,[tenkt,meg],skal).  
 
+    xcompword(hage,[by],hageby). %% problem Brøset hage by 
+
 compword(hal,[9000],hal). %%  :-)
+    xcompword(halv,[fem,fem],1645).    %% Experiment
 
 compword(halv,[time],halvtime). 
 compword(halv,[timen],halvtimen). 
@@ -1107,6 +2730,7 @@ compword(har,[avgang,fra],forlater). %%  *har avgang kl 12
 compword(har,[behov,for,å],må). 
 compword(har,[d],går). %% sms har=går 
 compword(har,[det,blitt,av],er). 
+    xcompword(har,[det,kjørt],kjørte). %% Ad Hoc, grammar 
 compword(har,[et,ønske,om],ønsker).   
 compword(har,[forbi],passerere). %% går f.
 
@@ -1115,14 +2739,21 @@ compword(har,[fått],har). %% aux
 compword(har,[fra],forlater). %% SMS har =~går 
 compword(har,[går],går).    
 
+    xcompword(har,[hast],haster).  
+    xcompword(har,[noen,hast],haster).  %% (ikke) noe h
+
+
 compword(har,[man,hos],har).   
 compword(har,[med],har).  
 compword(har,[tenkt,meg,å],skal).   
 compword(har,[tenkt,meg],skal).  
 compword(har,[til],ankommer). %% SMS ordliste har=går 
+    xcompword(har,[å,gjøre,med],gjelder). %%  har med ... å gjøre
 
 
 compword(he,[he],hei). %% :-) 
+    xcompword(hele,[tiden],alltid).   
+    xcompword(hele,[tida],alltid).  
 
 compword(hellig,[rute],   helligdagsrute).  
 compword(hellige,[rute],  helligdagsrute). 
@@ -1135,12 +2766,17 @@ compword(helst,[],[]).                  %% noe som helst
 %% compword(henne,[],[]).    %% = hen %% noise 
 
 
+    xcompword(her,[som],som). %% Sender over regtop her som skal %% rough 
 
 compword(herfra,[på],fra). 
 
+    xcompword(hetter,[kl],etter). 
 
 compword(hjem,[igjen],hjem).
 %% compword(hjem,[igjenn],hjem). %% TA-110121 splitw
+    xcompword(hjem,[fra],fra).  
+    xcompword(hjem,[til],til).  
+
 compword(hjemme,[fra],hjemmefra).  
 compword(hjemme,[sida],hjemmesiden).
 compword(hjemme,[siden],hjemmesiden).
@@ -1169,12 +2805,21 @@ compword(hv,[a],  hva).
 compword(hv,[9,ilken],hvilken).  %% slip
 compword(hva,[annet],hva). 
 compword(hva,[behager],hva). 
+    xcompword(hva,[med],[]).                  %%  Hva med nth ?
+%%     xcompword(hva,[buss],buss). %%  unnec
 compword(hva,[for,en],hvilken).  
 compword(hva,[for,et],hvilket). 
+
+    xcompword(hva,[jeg,vil],alt).  
+    xcompword(hva,[som,helst],alt).
 
 compword(hva,[mer],hva). 
 compword(hva,[om],[]).  
 compword(hva,[slags], hvilket). 
+    xcompword(hva,[som,helst], alt). %%  ?
+    xcompword(hva,[tid,når],går). %% Ad Hoc
+    xcompword(hva,[tid],når). 
+
 compword(hvad,[for,en],hvilken).  %% DK
 compword(hvad,[for,et],hvilken). 
 
@@ -1208,6 +2853,8 @@ compword(hvilket,[bus,fra],fra).
 compword(hvilke,[buss,fra],fra).    
 compword(hvilken,[buss,fra],fra).   
 
+    xcompword(hvilken,[buss,og,når],når). 
+
 compword(hvilket,[buss,fra],fra). 
 compword(hvilke,[busser,fra],fra).  
 compword(hvilken,[busser,fra],fra). 
@@ -1235,19 +2882,29 @@ compword(hvis,[for],for).      %%Repair
 compword(hvis,[framme],før).  
 
 
+    xcompword(hvis,[ikke],redundant0). %%  Haz
+
 %% compword(hvis,[jeg,skal,være,på],til). %% nec ? 
 compword(hvis,[jeg,skal,hver,der],før). %% feil 
     
+    xcompword(hvis,[være,på],til).  
 
 %% compword(hvis,[jeg],jeg). %% as a first in sent ! 
 
 compword(hvor,[dan], hvordan).
 compword(hvor,[fra,og,når],når).
+    xcompword(hvor,[dan],hvordan). %% TA-110103  
+    xcompword(hvor,[for],hvorfor).
 %%  compword(hvor,[fort],når).  %% rough 
+
+%%     xcompword(hvor,[får],hvorfor).    %% hvor får jeg busskort 
 
 compword(hvor,[hvordan], hvordan). %% Repair
 %% compword(hvor,[i], hvor).   %% hvor i trondheim ligger
 compword(hvor,[jeg,ankommer],[]). 
+
+    xcompword(hvor,[lang,tid,fra],fra). %% rough 
+    xcompword(hvor,[langt,borte],hvor). 
 
 compword(hvor,[mange,og,når],  når). 
 %% compword(hvor,[mange,avganger,fra],fra).   %%  Rough Default
@@ -1255,6 +2912,11 @@ compword(hvor,[mange,minutter],  hvor).    %% .. forsinket
 compword(hvor,[nærmest],nærmest).    %% ?
 
 compword(hvor,[ofte,får],går). %% (rough) .. bussen til 
+
+    xcompword(hvor,[og,når,neste],neste).  
+    xcompword(hvor,[og,når],hvor). %% rough 
+    xcompword(når,[og,hvor],når).  %% rough 
+
 
 compword(hvor,[som,helst],[]). 
 compword(hvor,[ti],når).   
@@ -1264,6 +2926,8 @@ compword(hvor,[tidlig],når).   %% Rough
 
 compword(hvord,[an], hvordan). %%
 compword(hvordan,[fra], fra).  
+   xcompword(hvordan,[gå,fra], fra).  
+   xcompword(hvordan,[går,fra], fra). 
 compword(hvordan,[og,når],når).  
 compword(hvordan,[overganger,går], går).      %%  Rough
 compword(hvordan,[reise],[]).   %% reise=trip
@@ -1279,12 +2943,23 @@ compword(hører,[til],tilhører).
 compword(hørte,[til],tilhørte).     
 compword(hørt,[til],tilhørt). 
 compword(høst,[rutene],høstrutene).   
+    xcompword(høyst,[sannsynlig],sannsynligvis). 
 
 compword(i,[alt],[]). 
 compword(i,[all,verden],[]).    %% NB not both in grammar and in dict
 compword(i,[alminnelighet],redundant0). 
 compword(i,[allverden],[]).  
 compword(i,[alle,dager],[]). 
+
+    xcompword(i,[allefall],redundant0). 
+    xcompword(i,[alle,fall],redundant0).
+    xcompword(i,[det,hele,tatt],redundant0).
+    xcompword(i,[den,anledning],redundant0).
+    xcompword(i,[det,hele,tatt],redundant0).  
+    xcompword(i,[det,heletatt],redundant0).
+    xcompword(i,[ettertid],etterpå).
+    xcompword(i,[hvertfall],[]). 
+    xcompword(i,[hvert,fall],[]).
 
 compword(i,[blir,det,av],er).   %% ?
    compword(i,[ca],i).   
@@ -1300,7 +2975,9 @@ compword(i,[etter],etter).               %%  repair
 compword(i,[fag],idag). 
 compword(i,[forhold,til],til).
 compword(i,[forholdtil],til). 
+    xcompword(iflg,['.'],ifølge).
 compword(iforhold,[til],til). 
+    xcompword(i,[henhold,til],ifølge). 
 
 compword(i,[fra,når],når).  
 compword(i,[frå],ifra).      
@@ -1331,11 +3008,18 @@ compword(i,[mora],imorgen).  %% avoid mora = morning
 compword(i,[morn],imorgen). 
 compword(i,[morgen],imorgen). 
 compword(i,[morra],imorgen).   %% avoid morra = morgen (tidlig) 
+    xcompword(i,[natt],inatt).      %%  +i i (en) natt
 
 compword(i,[nærheten,av],nær).
 
+   xcompword(i,[nærheten,at],nær). %% at :  err -> x 
 compword(fra,[nærheten,av],fra). 
     
+    xcompword(i,[om],om). %% repair 
+
+    xcompword(i,[over,morgen],overimorgen). %% TA-110401
+
+
 
 compword(i,[prinsippet],redundant0). 
 compword(i,[på],på). 
@@ -1345,12 +3029,23 @@ compword(i,[retning,mot],mot).
 compword(i,[retur],tilbake). 
     
 compword(i,[rundt],rundt).               %% Repair
+%%     xcompword(i,[rute],presis). %%  buss i rute 52   
 compword(i,[sin,helhet],[]). 
 
 compword(i,[sta],tidligere). 
 compword(i,[stad],tidligere). 
 compword(i,[stand],istand). %% ready 
 compword(i,[ste],tidligere). 
+
+    xcompword(i,[steden,for],istedenfor). 
+    xcompword(i,[stedet,for],istedenfor).
+    xcompword(i,[stedenfor], istedenfor).  
+    xcompword(i,[stedetfor] ,istedenfor). 
+
+    xcompword(i,[såfall],redundant0).  
+    xcompword(i,[så,fall],redundant0).  
+    xcompword(i,[så,tilfelle],redundant0). 
+
 
 compword(i,[tilfelle],[]).
 compword(i,[såfall],[]). 
@@ -1359,9 +3054,14 @@ compword(i,[stor,utstrekning],redundant0). %% lazy
 
 compword(i,[stykker],ødelagt). 
 
+%%    xcompword(i,[stedet,for],unntatt). %% i stedet for å ta buss
+%%    xcompword(i,[stedet],[]).          %% 
+
 compword(i,[såfall],[]). 
 compword(i,[så,fall],[]). 
 compword(i,[rett,tid],presis).  
+    xcompword(i,[tide],presis).   
+    xcompword(i,[tid],[]).          %% korteste i tid
 compword(i,[til],til).                   %% Repair
 %% compword(i,[tillegg],[]). %% -> sem. 
 
@@ -1376,22 +3076,55 @@ compword(i,[sørlig,retning],sørover).
 compword(i,[vestlig,retning],vestover).
 %% compword(i,[å], å). %% vits i å  %% -> gram 
 
+   xcompword(i,[dag,da],da).  
+   xcompword(id,[ag],idag). 
+   xcompword(id,[kort],legitimasjon). 
+   xcompword(id,['-',kort],legitimasjon).
+
 compword(idet,[hele,tatt],[]).
 compword(idet,[heletatt],[]).
 
 compword(idretts,[anlegget],idrettsanlegget).
 compword(idretts,[plassen],idrettsplassen).  
 
+% ikke
+
+    xcompword(ikke,[annet,en],[]).  
+    xcompword(ikke,[annet,enn],[]).
+    xcompword(ikke,[lenger],ikke).  
+    xcompword(ikke,[like,mange],færre).
+    xcompword(ikke,[mange],fåtallig). %% få=verb trøbbel
+    xcompword(ikke,[ment,å,være],ikke). 
+ 
+%% compword(ikke,[noe],ikke).    %% ikke noe morsomt 
+                                 %% jeg vet ikke noe
+
+%%      xcompword(ikke,[få],mange).    %% så vil dere ikke få 
+    xcompword(ikke,[noen],ingen).
+
+    xcompword(ikke,[alle],noen). %% rough -> gram notall 
+    %% = noen by Griecean convention
+    %% if actually none, that would have been said.
+
+    xcompword(ikke,[akkurat],ikke).
+    xcompword(ikke,[nattbuss],[]). %% default rough 
+    xcompword(ikke,[før],etter).  
+    xcompword(ikke,[glem],husk).  
+
     compword(ikke,[triviell],ikketriviell).  
     compword(ikke,[trivielle],ikketrivielle). 
     compword(ikke,[triviellt],ikketrivielt). 
 
 compword(ikke,[verst],bra). 
+    xcompword(ikke,[vil,være,for,sen,til],rekker). %% Ad Hoc 
 compword(ikke,[værst],bra).
 
 
 compword(iløpet,[av],innen). % den neste timen 
 compword(im,[orgen],imorgen). %% ?
+
+    xcompword(imorgen,[tidlig],imorgen). %% rough 
+    xcompword(morgen,[tidlig],morgen).   %% rough
 
 compword(in,[til],til).  %% spoil language det ? 
 compword(ingen,[andre,enn],[]).             %%  rough 
@@ -1403,9 +3136,25 @@ compword(ingen,[årsak],ok).
 
 compword(inn,[i],til).    %% TA-100830
 %% compword(inn,[i],inni).             %% .. bussen
+    xcompword(innom,[her],her). 
+    xcompword(inntil,[da],heretter). 
+    xcompword(inntil,[videre],heretter).
+
 compword(inn,[til],til). 
+    xcompword(innover,[til],til). %% 
+    xcompword(utover,[til],til).  %%
+
 compword(internett,[side],hjemmeside).
 compword(internt,[i],i).
+
+    xcompword(iphone, [vennlig],vennlig). %% rough
+
+    xcompword(ip,[adresse],ipadresse).
+    xcompword(ip,[nummer],ipadresse). 
+
+    xcompword(istedetfor,[], istedenfor). 
+    xcompword(istedet,[for], istedenfor). 
+    xcompword(isteden,[for], istedenfor).  
 
 compword(itj,[no],ingen). 
 compword(itj,[nå],ingen). 
@@ -1413,6 +3162,7 @@ compword(itj,[nå],ingen).
 compword(j,['?',eg],jeg). %% ??
 compword(j,[eg],jeg).
 
+    xcompword(ja,[men],[]).   %% TA-101221
 compword(ja,[ja], ja).           %%  Repair
 compword(ja,[takk],ja).          %%  Dialog
 
@@ -1421,14 +3171,26 @@ compword(jeg,[jeg], jeg).        %% Repair
 compword(jeg,[må,være,der,før],før).  
 compword(jeg,[må,være,der],før).       %% 
 
+    xcompword(jeg,[personlig],jeg).
+    xcompword(jeg,[selv],jeg).
+
 compword(jeg,[gir,opp],adjø).
 
+    xcompword(jo,[da],ja). 
+    xcompword(jo,[det,er,det],ja). %% TA-101124
+    xcompword(nei,[da],nei). 
+    xcompword(jo,[fordi],[]). %%  ?-)
+    xcompword(nei,[fordi],[]). %% 
+
+%%     xcompword(jeg,[sier,at],[]).  %% Too rough
+%%     xcompword(jeg,[sier],[]). 
 
 compword(jeg,[skal,være,der,før],før). 
     compword(jeg,[skal,være,der],før).     %% Hazardous %%  hvis...
 compword(jeg,[skal,buss],buss). 
 compword(jeg,[slik], slik).      %% Freak  jeg tar bussen jeg, slik at 
 compword(jeg,[vil,buss], buss). 
+    xcompword(jeg,[vet,ikke,men],[]). 
 
 compword(jern,[bane],jernbane). 
 
@@ -1457,8 +3219,12 @@ compword(jule,[ruta],juleruta).
 compword(k,[veld],kveld).  
 compword(ka,[før], hvilken).  
 
+    xcompword(ka,[tid], når). %% TA-110609
+
 compword(kajeg,[ta],går).         %% 
 compword(kan,[d,varsle],varsle). 
+
+    xcompword(kan,[godt],kan). %% rough 
 
 compword(kan,[jeg,ta,som],[]). 
 compword(kanjeg,[ta],går).  
@@ -1557,9 +3323,23 @@ compword(kommer,[til,å],vil). %%
 compword(kommer,[det,til,å],det).             %% ROUGH 
 compword(kommer,[går],går). 
 
+    xcompword(kommer,[passerer],passerer). %% repair %% TA-110330
+    xcompword(kommet,[til],ankommet). %% ad hoc
+
 compword(kong,[haakon],haakon). %% this is really a matter of busdat
                                 %% part word assembly problem
+    xcompword(kor,[tid],når).       %%
+    xcompword(kor,[ti],når).        %% 
+
+
+    xcompword(kort,[tid,etter,det],etterpå).  
+    xcompword(kort,[tid,etterpå],etterpå).  
+
 compword(kort,[tid,etter],etter).         % 1    
+    xcompword(kort,[tid,etter],etterpå).  % 2     %% tricky sequence
+
+    xcompword(korte,[ned],forkorte).
+
 compword(kos,[n],hvordan). 
 compword(koss,[n],hvordan). 
 compword(koss,[d,går],hei).  
@@ -1588,6 +3368,9 @@ compword(l,[5],15). %%
 compword(l,[8,r],senere). %%  sms l8r
 compword(la,[oss,si],[]). 
 
+    xcompword(la,[seg,gjøre],gjøres).         %% TA-110330
+    xcompword(la,[seg,tilpasse],tilpasses).   %% Ad Hoc, Rule ??? %% 
+
 compword(lagt,[til,rette],bra). %% Rough
 compword(lagt,[tilrette],bra).  %% 
 
@@ -1602,6 +3385,8 @@ compword(langt,[oppe,på],på).                %% :-)
 compword(langt,[unna],nær).  
 compword(lar,[meg,komme],går).  
 
+    xcompword(later,[som,om],pretenderer). 
+
 compword(lav,[entre],laventrebuss).   
 compword(laventre,[buss],laventrebuss).   
 compword(legge,[seg],slutte).              %%  rough
@@ -1615,6 +3400,7 @@ compword(lettere,[kan],kan). %% ad hoc
 
 compword(ligger,[vi,an,med],går). %% rough,
 
+    xcompword(like,[før],før). 
 compword(like,[etter],etterpå). 
 compword(like,[etterpå],etterpå).          %%
 compword(like,[godt],[]).  
@@ -1626,22 +3412,34 @@ compword(lille,[juleaften],little_christmas_eve).
 compword(linje,[nr],rute). 
 compword(list,[opp],list).  
 compword(liste,[over,når],når).  
+    xcompword(litt,[annen],annen). %% TA-110331 .. sak
 compword(litt,[av],[]). %% en luring 
 compword(litt,[over,halv],halv). %% rough
+    xcompword(lov,[til],lov). %% probl. %% lov til å 
+    xcompword(litt,[over],etter).
 compword(lykke,[til],adjø). 
 compword(l,[rdag],lørdag). % l;rdag  
 compword(lø,[rdag],lørdag). %l©ªrdag?   
 compword(lønner,[det,seg,å,ta], går).         %%  Rough
 
+    xcompword(lør,[rute],lørdagsrute). 
 compword(søn,[rute],søndagsrute). %%
 
 compword(lørdag,['/',søndag],weekend). 
 compword(lørdager,['/',søndager],weekend).  
 compword(lørdag,[rute],lørdagsrute). 
+    xcompword(m,[å],må). %% trouble with å 
+
+    xcompword(men,[som],som). %% TA-110701
+
 compword(mlm,['.'],mellom). 
 
 
 compword(mye,[forsinket],forsinket). 
+    xcompword(mye,[mer],mye). 
+
+    xcompword(man,[fre],hverdager). %% avoid man=en 
+
 compword(man,['.'],mandag). 
 compword(tir,['.'],tirsdag).
 compword(tirs,['.'],tirsdag).
@@ -1683,10 +3481,15 @@ compword(søn,[dan],søndag).
 
 compword(man,[jeg,ta],går). %% må jeg ta
 compword(man,[fre],hverdager). 
+    xcompword(man,[til,fre],hverdager). 
+
 
 compword(mandag,[til,fredag],hverdager).  
 compword(manglende,[punktlighet],forsinkelser). 
 compword(me,[jeg,ta],går).  %% me \== må (Haz)
+    xcompword(med,[hilsen],hilsen). 
+    xcompword(med,[med],med). 
+
 compword(med,[ankomst,før],før). 
 compword(med,[ankomst,nær],før).   %%  Rough
 
@@ -1699,9 +3502,19 @@ compword(med,[fra],fra).
 compword(med,[gratis],gratis).  
 compword(med,[hjem],hjem). %% meg hjem
 
+    xcompword(med,[inntil],med). %% 250 kr
+
+    xcompword(med,[i,regningen],[]). %% rough
+
+    xcompword(med,[i],i). %% er jeg med i en buss ? (\+ x) %% TA-101006
+
+    xcompword(med,[lørdagsrute],lørdag). 
+    xcompword(med,[søndagssrute],søndag).
+
 compword(med,[overgang,til],til). %% rough 
 compword(med,[på],med).   %% på ? 
 
+    xcompword(med,[tanke,på],for). 
 compword(med,[unntak,ab],unntatt).  %% sp
 compword(med,[unntak,av],unntatt). 
 
@@ -1723,6 +3536,8 @@ compword(men,[ikke],unntatt).
 compword(men,[om],[]). 
 compword(menes,[med],er). 
 
+    xcompword(mer,[om],om).
+
 compword(mest,[mulig,av],[]).  
 compword(mulig,[av],[]).   %% (mest noisew)
 
@@ -1733,8 +3548,14 @@ compword(mulig,[av],[]).   %% (mest noisew)
 %% compword(mulig,[for,deg],mulig).  %%
 %% compword(mulig,[for,noen],mulig). %%
 
+    xcompword(fra,[midt,i],fra). 
 compword(midt,[i],i).   
 compword(midt,[på],på).    
+
+    xcompword(midtby,[bilett],midtbybillett).  
+    xcompword(midtby,[billett],midtbybillett).  
+    xcompword(midtby,[billetten],midtbybilletten). 
+    xcompword(midtbyn,[billetten],midtbybilletten).
 
 compword(minne,[meg],varsle).  
 compword(minner,[meg],varsler).  
@@ -1752,11 +3573,14 @@ compword(morgen,[buss],morgenbuss).
 compword(morgen,[bussen],morgenbussen). %% 
 compword(morgenen,[av],morgenen). %%  (fra) ...
 
+    xcompword(moro,[skyld],moro). %% TA-110627 :-)
+
 compword(mot,[fra],fra). %% Repair   
 compword(mot,[mot],mot). 
 compword(mot,[nord],nordover). 
 compword(mot,[sør],sørover).
 compword(mot,[syd],sørover).  
+   xcompword(mot,[til],til).      %%  Repair
 compword(mot,[vest],vestover).
 compword(mot,[øst],østover).
 %% compword(mus,[eum],museum). 
@@ -1765,25 +3589,42 @@ compword(må,[eg,at],går).     %% confus
     compword(må,[går],går). %% repair
 
 compword(må,[jeg,va],går).    %% Når må jeg va bussen 
+   xcompword(m,[j,ta],går).  
+   xcompword(m,[jeg,ta],går).  
+   xcompword(må,[ja,ta],går).  
+
+%%   xcompword(må,[jeg,da],går).     %%  da ta -> ta // da->ta 
+
+
 compword(må,[jeg,for,å,komme],går). 
 
+    xcompword(må,[jeg,fra],forlater).%%  hvilken buss mÃ¥ jeg fra hegdalen for Ã¥ 
 %% compword(må,[jeg,fra],fra). 
 
 compword(må,[jeg,hvis,jeg,skal],går). %% hvilken buss [ må jeg hvis jeg skal] til s
 compword(må,[jeg,på],går).     
+    xcompword(må,[jeg,tabuss],går). %% (ad hoc splitword) X
 
 compword(må,[jeg,ta,som],[]). %
+
+    xcompword(må,[jeg,to],går). %% .. bussen 
 
 compword(må,[man,for,å,komme],går). %% rough %%  ..ta..
 compword(må,[når,går],går).   %% repair  når....
 %% compword(må,[ta],går).        %%  ?????
 compword(må,[tar],går).       %% confus 
 
+    xcompword(hva,[må,til,for,å],hva). 
+
 %% compword(må,[vær,der],før). %% jeg må være der senest 
 compword(må,[være,der,kl],før).   
+%%     xcompword(må,[være,der,senest],før). %% jeg ...
 compword(må,[være,der],før).  
+    xcompword(må,[være,der,ca],før). 
 compword(må,[være,framme],før). %% 
 compword(må,[være,i],til). 
+
+%%     xcompword(må,[være],ankommer). %%  .. senest
 
 compword(må,[å],må).  
 compword(måjeg,[ta],går).  
@@ -1791,8 +3632,13 @@ compword(månedskort,[buss],månedskort).
 
 compword(mår,[må],må).         %%  Repair
 
+    xcompword(måtte,[sitte,på],passere). %% X %% Rough uten å m.. til
 
+%compword(na,['\203',ayr],når). %% etc
+%compword(ga,['\203',ayr],går).  %% Sictus4
 
+    xcompword(g,[&,r],går).  %% TA-100914
+    xcompword(n,[&,r],når).  %% TA-100914
 compword(n,[2,r],når).     %%  sms å-trøbbel
 compword(n,['.'],nummer). 
 compword(n,['¬',ør],når).  %% Å-trøbbel
@@ -1809,6 +3655,9 @@ compword(v,[11],vii). %% 7
 compword(v,['&',230,re],være). 
 compword(v,['?',ære],være).    %% æ trøbbel 
 
+    xcompword(v,[g,s],vgs).   
+    xcompword(v,['.',g,'.',s],vgs). 
+
 compword('&',[229],å).     
 compword(m,['&',229],må).  
 compword(n,['&',229],nå).  
@@ -1816,6 +3665,7 @@ compword(n,['&',229,r],når).
 compword(p,['&',229],på).   
 compword(pr,['.'],per). 
 
+    xcompword(med,[retur],tilbake).  
 compword(m,[retur],tilbake).     %%
 compword(m,['.',retur],tilbake). %%
 
@@ -1855,6 +3705,8 @@ compword(natt,[bussen],nattbussen).
 compword(natt,[bussene],nattbussene). %%  
 compword(natt,[busser],nattbusser).   %%
 
+    xcompword(natt,[trikk],trikk).      %%  rough  unpriority
+    xcompword(natt,[trikken],trikk).  
 compword(natt,[trikker],trikk).  %%
 compword(natt,[trikkene],trikk). %%
 
@@ -1862,9 +3714,26 @@ compword(natt,[rute],nattbuss).
 compword(nattbussen,[e],nattbuss).   
 compword(nattbussen,[rute],nattbussen). 
 
+    xcompword(naturlig,[nok],naturligvis). 
+
+    xcompword(ne,[3,ste],neste). %% neib 
+    xcompword(ne,[4,ste],neste). 
+    xcompword(ne,[ste],neste).  
+
 compword(nei,[nei],nei).  %% Repair
 compword(nei,[takk],nei). %% Dialog 
+    xcompword(nei,[tvertimot],nei).  
+    xcompword(nei,[tvert,i,mot],nei).
+    xcompword(nei,[tvert,imot],nei). 
+    xcompword(tvertimot,[],nei).   
+    xcompword(tvert,[i,mot],nei).    
+    xcompword(tvert,[imot],nei).     
+
+
 compword(neimen,[om],[]). %%  :-) ikke faen om ...
+
+    xcompword(javel,[men],[]). 
+    xcompword(neivel,[men],[]). 
 
 compword(nest,[nest],tredje). %%  siste/nest nest siste
 compword(nest,[neste],tredje).  
@@ -1876,6 +3745,10 @@ compword(nest,[raskest],[]). %% :-)
 compword(nesten,[alle],mange). %% rough 
 
 compword(neste,[buss,etter,neste],andre). 
+    xcompword(neste,[buss,neste],neste).       %% repair 
+
+    xcompword(neste,[buss,når],når). 
+
 compword(neste,[de],de). 
 
 compword(neste,[deretter],neste).  
@@ -1889,6 +3762,8 @@ compword(neste,[etter,neste,etter,neste],tredje). %% :-) limit
 compword(neste,[etter,nå],neste).
 %%  compword(neste,[fra],fra).  %% når går neste fra buss gløshaugeb
 
+    xcompword(neste,[fra,buss],fra).  %% ?
+
 compword(neste,[første],første).  
 compword(neste,[gang],heretter).   
 compword(neste,[ganger],heretter). 
@@ -1899,6 +3774,11 @@ compword(neste,[nr],neste).
 compword(neste,[på],neste).  
 %% compword(neste,[til],neste).  %% 3 neste til nardo
 compword(neste,[tre,ganger],heretter).
+
+    xcompword(nesten,[alle],alle). 
+    xcompword(nesten,[til],til).  
+
+    xcompword(nettopp,[innom,her],her). %% ad hoc, difficult 
 
 compword(noe,[annet],noe). 
 
@@ -1912,6 +3792,28 @@ compword(noe,[mere],mer).
 
 compword(noe,[om,at],at). %% Rough
 
+    %% compword(noe,[som],som).  %% ? det skjedde noe som jeg likte 
+
+    xcompword(noe,[i,retning,av],[]). %% TA-110330 ? :-)
+    xcompword(noe,[i,retning],[]).    %% 
+
+    xcompword(noen,[andre],noen). %% Rough in dialog 
+    xcompword(noen,[av,de],de).       %%  rough
+    xcompword(noen,[av,disse],disse). %% 
+    xcompword(noen,[av,mine],mine).   %% 
+%%     xcompword(noen,[av],noen).     %% TA-110428  noen [av] våre
+    xcompword(noen,[form,for],noen). 
+    xcompword(noen,[flere],flere).
+    xcompword(noen,[få],få). 
+    xcompword(noen,[gang],[]).        %% ?
+    xcompword(noen,[ganger],tidvis).  %% TA-110111
+
+%% Trouble spot 
+    xcompword('.',[nr,'.'],nr).
+    xcompword('.',[nr],nr).  
+    xcompword(nr,['.'],nr).     %% hvilket nr . går // ikke ruteplan
+    xcompword(nr,[':'],nr).  
+
 %% compword(nr,['.'],nummer).  %% gets priority (alphabetic)
 
 compword(nr,[m,jeg],jeg).
@@ -1919,6 +3821,7 @@ compword(nr,[buss],buss).
 compword(nr,[bussen],bussen). 
 compword(nr,[første],første).  %% repair
 compword(nr,[gr,nste,buss],buss).
+   xcompword(nr,[nr],nr).      %% repair
 
 /* nar splitword 
 compword(nar,[buss],buss).   %% Rough 
@@ -1950,7 +3853,7 @@ compword(nummer,[på,buss],buss).
 
 compword(nytt,[årsaften],new_years_eve). 
 
-    %% compword(noe,[som],som).  %% ? det skjedde noe som jeg likte 
+    xcompword(nyttiggjøre,[seg],bruke).
 
 compword(nyttårs,[aften],new_years_eve). 
 compword(nyttårssaften,[],new_years_eve). %% spiw %% TA-110203
@@ -1967,6 +3870,7 @@ compword(nærmeste,[tid],heretter).
 compword(nøyaktig,[når],når). 
 compword(nøyaktig,[på],på). 
 
+    xcompword(nå,[da],nå). %% Norw %% TA-110112
 compword(nå,['+',r],når). %% Å-trøbbell
 compword(nå,[f],fra). 
 compword(nå,[fra],fra).  
@@ -1993,9 +3897,24 @@ compword(nå,[5,r],når).  %%  nå5r går bussen. slip
 compword(nå,[r],når).  
 compword(nå,[rmå],[]).  %% AVOID nå må ... før = now and before
 
+    xcompword(nå,[som],som). %% Jeg søkte på rute 5 nå som passerer begge..
+
 compword(nå,[ta],tar).  %% repair (må ta)
 
 %%% compword(når,[5],når).   %% slip %% når 5 fra samf 
+
+    xcompword(når,[går,bussen,når],når).  %% repair TEAM web 
+
+    xcompword(når,[ga],går).  %% nar ga = når går 
+    xcompword(når,[når],når).  
+    xcompword(når,[og,hvorfor],når). %% ? %% Facetious     
+    xcompword(når,[jeg,seinest,skal,være,der],før). 
+    xcompword(når,[jeg,skal,til],til). %% bus til A n j s t B 
+    xcompword(når,[går,buss,går],buss).  
+    xcompword(når,[går,bussen,går],buss).
+    xcompword(når,[går,bussen,skal,være],bussen). %% prompt 
+    xcompword(når,[går,fra,bussen],fra). 
+    xcompword(når,[går,fra],fra).  
 
 compword(når,[du,kan],alltid). %% rough
 compword(når,[du,må],ofte). 
@@ -2004,6 +3923,21 @@ compword(når,[du,må],ofte).
 %% når går  neste 2 fra bromstadsvingen
 
 compword(når,[gårnår],når). %% repair 
+
+    xcompword(når,[jeg,skal,være,der,før],før). 
+    xcompword(når,[jeg,skal,være,der,til],før).
+    xcompword(når,[jeg,skal,være,der],før).  
+    xcompword(når,[jeg,skal,være,i,på],til).    %% interaction
+    xcompword(når,[jeg,skal,være,i],til).  
+
+    xcompword(når,[jeg,skal,være,på],til).  
+
+%%    xcompword(når,[jeg,skal,være,ved],til).
+
+    xcompword(når,[kl],klokken). 
+    xcompword(når,[vi,skal,være,på],til).  
+
+    xcompword(da,[jeg,skal,være,i],til).  %% etc
 
 compword(naar,[buss],buss).  % etc 
 %% compword(når,[bus],buss).  %% Rough jeg tar buss når bussen 
@@ -2020,6 +3954,12 @@ compword(når,[dra,fra],fra).       %%   no funk
 compword(når,[dra],[]).            %% ? 
 compword(når,[for],for).           %%  hvilken buss må jeg ta når for å være p
 compword(når,[fra,neste],neste).   %% confusion
+    xcompword(når,[fra],fra).      %% Xclusive
+    xcompword(når,[f],fra).        %% ? når før?
+    xcompword(når,[f,ra],fra).     %%  ?
+    xcompword(når,[til],til).      %%  
+    xcompword(når,[får,buss],buss). 
+
 
 compword(når,[fram],ankommer).  %% disamb
 compword(når,[får],går).           %% Rough 
@@ -2027,10 +3967,16 @@ compword(når,[får],går).           %% Rough
  compword(når,[går,til],til). 
 compword(når,[går,buss,går],[]).   %%  confus
 compword(når,[går,når],når).       %% Repair 
+    xcompword(når,[går,til],til). 
 compword(når,[gård,det],[]). 
 compword(når,[gård],[]).  
+%%  xcompword(når,[til,neste],neste). %% ?  nohelp
+
 % har = går (sms ordliste), men når har siste 9 => siste buss ha rute 9 
-compword(når,[har],går):- main:myflags(smsflag,true). %% ad hoc, ordliste  //nofunc
+
+compword(når,[har],går):- user:value(smsflag,true). %% ad hoc, ordliste  //nofunc
+    xcompword(når,[har,neste],neste).
+
 
 compword(når,[hvilke],hvilke).
 compword(når,[hvilken],hvilken).
@@ -2041,12 +3987,23 @@ compword(når,['/',hvilken],hvilken). %% repair
 compword(når,[hvor],hvor).  %% Repair
 compword(når,[hvordan],hvordan).
 compword(når,[jeg,må,ta],går).   %%  Rough
-
+    xcompword(når,[jeg,må,ja],går).   %%  Rough
 compword(når,[jeg,ta],går).     %% Rough når KAN jeg ta //Interference når når jeg ta
 
 % compword(når,[jeg,skal,komme,meg],[]).  %%  Doesntwork
+
+    xcompword(når,[jeg,må,være,der,før],før). %% some problems 
+    xcompword(når,[jeg,må,være,der,til],før). 
+%%     xcompword(når,[jeg,må,være,der],før).  %% når jeg må være der 
+    xcompword(når,[jeg,må,være,til],før). 
+    xcompword(når,[jeg,må,være,dær],før). 
+
 compword(når,[klokka],når).  
 compword(når,[klokken],når).   
+    xcompword(når,[klokken,er,over],etter).  
+
+    xcompword(når,[man,må,være,der,senest],før).  
+
 compword(når,[meg,jeg,ta],går).  %%  Rough
 
 compword(når,[me,jeg,ta],går).  
@@ -2057,11 +4014,21 @@ compword(når,[må,jeg,at],går).   %% Rough at=ta
 
 
 compword(når,[må,jeg,buss],buss).  
+    xcompword(når,[må,jeg,bussen],bussen). 
+
+    xcompword(når,[må,ta,buss],buss).      %% Rough 
+    xcompword(når,[må,ta,bussen],bussen).  %% Rough
+    xcompword(når,[må,jeg,ta,fra],fra).    %% ? 
+    xcompword(når,[må,jeg,ja],går).  %% ja=ta 
+    xcompword(når,[må,jeg,fra],fra).  
+
 compword(når,[må,reise], reise).  
 compword(når,[må,ta],       går).  
 
 compword(når,[nattbuss],nattbuss).   
 compword(når,[nest,går],       []).     %% rough 
+    xcompword(når,[neste,går],       []).    %%  rough
+
 %%%%  compword(når,[neste],  neste). %% TA-100829 %% kan du si meg når neste \+x 
 
 compword(nar,[neste],       []).   
@@ -2075,6 +4042,8 @@ compword(når,[nå],           må).       %% når må jeg ...
 compword(når,[når],          når).  
 compword(når,[og,ankommer],[]).  
 compword(når,[og,med],med). %% .. hvilken buss 
+
+    xcompword(når,[år],[]).  %% går
 
 compword(når,[nest],nest). %% siste .. 
 
@@ -2100,6 +4069,11 @@ compword(når,[ti],når).
 compword(når,[år],[]). %% når går 
 compword(nårg,[år],går).      %%  (når går) 
 compword(nårmå,[jeg],jeg).     %% Ad Hoc 
+
+% når
+
+    xcompword(o,['/'],over). 
+    xcompword(o,['.',l,'.'],etc). 
 
 compword(o,[0],00). %% O0 
 compword(o,[1],01). 
@@ -2128,11 +4102,34 @@ compword(o,[hoi],hei).
 
 %% OG ...
 
+    xcompword(og,[for],og). 
+
 %% compword(og,[ikke],unntatt). %% rough %% -> gram
 
+    xcompword(og,[da,med],med). %%3 etc..
+                      
+%%%%     xcompword(og,[der],og). %% Too rough 
+    xcompword(og,[hit],hit).   
+    xcompword(og,[vil,være,i],til).   
 compword(og,[fremme],før). %% no pardon 
 
 compword(og,[er,ved],til). 
+
+    xcompword(og,[jeg,drar,fra],fra). 
+    xcompword(og,[mellom],mellom). 
+    xcompword(og,[skal,være,der,før],før). 
+    xcompword(og,[skal,være,fram,på],til). 
+    xcompword(og,[skal,være,framme,på],til).  
+    xcompword(og,[skal,være,frem,på],til). 
+    xcompword(og,[skal,være,fremme,på],til). 
+%%     xcompword(og,[så],og). %% []). %% også -> []     %% .. skal jeg til
+    xcompword(og,[sånt],[]).
+    xcompword(og,[vil,være,der,før],før).  
+
+    xcompword(og,[være,der,kl],før).
+    xcompword(og,[være,der,senest],før). 
+    xcompword(og,[være,framme,senest],før). 
+    xcompword(og,[være,fremme,senest],før). %%  in case incomplete sentence
 
 compword(og,[lignende],etc).
 
@@ -2140,6 +4137,8 @@ compword(og,[lignende],etc).
 
 compword(og,[av],av). 
 compword(og,[bare],og).     
+    xcompword(og,[best,mulig],[]). 
+    xcompword(best,[mulig],[]).     %%  sequence
 %% compword(og,[den],som). 
 compword(og,[er,i],til).  
 compword(og,[etter],etter).   
@@ -2147,6 +4146,7 @@ compword(og,[før],før).         %%
 compword(og,[hjem],hjem).  
 compword(og,[inn,te],til). 
 compword(og,[inn,til],til). 
+    xcompword(og,[joda],[]). %% :-) 
 compword(og,[jeg,er,i],fra). %% Rough
 %            compword(og,[kommer,til],til). 
 compword(og,[lignende],[]). 
@@ -2173,6 +4173,7 @@ compword(og,[retur],tilbake).
 %% compword(og,[så],[]).   %% også %% (destructive)
 
 compword(og,[såtil],og). 
+%%      xcompword(og,[til],til).  %% Haz, try without 
 compword(og,[tilbake],tilbake). 
 compword(og,[ut,kvelden],ikveld). 
 
@@ -2186,6 +4187,9 @@ compword(og,[være, ved],til).        %%
 compword(og,[være,på],til). 
 compword(og,[å,være,på],til).  
 
+   xcompword(ok,[men],[]). %% grums %%  ?
+   xcompword(ok,[så],[]).  %% TA-110629
+
 compword(om,[ca],om).
 compword(om,[cirka],om).
 
@@ -2196,13 +4200,26 @@ compword(om,[f,'.',eks,'.'],om).
 
 compword(om,[man,vil,være,på],til).   %% Ad Hoc, om trøbbel 
 compword(om,[mellom],mellom).         %%  om /morgenen/ mellom
+    xcompword(om,[må,være,på],til).   
+    xcompword(om,[noe,fra],om). 
+    xcompword(om,[mulig],redundant0). 
+
 
 compword(om,[nær],når).   
 compword(om,[fra],om). %% morgenen  repair
 
+    xcompword(om,[mulig],redundant0).
+
+%% xcompword(om,[når],når).  %%     jeg har opplysninger om når toget kommer
+              %% \=  jeg har opplysninger når toget kommer
+
+
 %% compword(om,[når],om).               %% varsel om når \= om 
 
 compword(omkring,[halv],halv). 
+
+   xcompword(områder,[i,nærheten,av],nær). %% 
+   xcompword(områder,[nærheten,av],nær).   %% actual
 
 compword(om,[trent],ca). 
   %% compword(om,[å,gjøre],viktig). %% har AIS noen ønsker om å gjøre 
@@ -2231,6 +4248,7 @@ compword(oss,[begge],oss).       %% Rough
                          %% i praksis, destruktiv 
 
 %% compword(overgang,[til],til). %% Rough når er overgang til 
+    xcompword(over,[i,morgen],overimorgen). %% TA-110401
 compword(over,[morgen],overimorgen). %% TA-110401
 compword(over,[hodet],[]).
 compword(over,[på],på).     
@@ -2262,18 +4280,32 @@ compword(prøve,[med],prøve).
 compword(på,[at],at).   
 compword(på,[best,mulig,måte],[]). 
 
+    xcompword(på,[ca],på). 
+
+%%%    xcompword(på,[der],der).             %% Hazard 
 %% compword(på,[etter],etter). %% repair %% hvilken holdeplass stopper bussen på etter åsveien
 compword(på,[for],for).              %% repair
 compword(på,[fra],fra).              %% repair 
 compword(på,[før],på).               %% ?  
 compword(på,[grunn,av],pga).             %%  Technical
 compword(på,[is],ned).               %% lagt på is
+    xcompword(på,[kort,sikt],snart).
+    xcompword(på,[ordentlig],[]).
+    xcompword(på,[orntlig],[]).       %% :-)
+    xcompword(på,[onkli],[]).         %% :-)
+%%  compword(på,[i],på).         %% på= i ?
+   xcompword(på,[i],i).          %%  Repair 
 compword(på,[idag],idag).    %% repair 
 
+    xcompword(på,[is],ned). %% FOS lagt .. 
+
 compword(på,[jeg,ta],går).   %% må jeg ta 
+    xcompword(på,[kl],klokken).     %%  repair 
+    xcompword(på,[klokka],klokken). %%
 compword(på,[kortest,mulig,tid],snarest). 
 
 compword(på,[kl],klokken).       %% Hva er snareste måte å til nth på kl
+    xcompword(på,[kl,'.'],klokken). 
 compword(på,[klokken],klokken).
 
 compword(på,[med],med). 
@@ -2283,12 +4315,19 @@ compword(på,[nårti],når).
    % compword(på,[på],på).    %%  repair destroys på på på example 
 compword(på,[rundt],rundt).   %%
 compword(på,[siden,av],attmed). %% Techn? beside 
+    xcompword(på,[sikt],heretter). %% TA-110724
+
+    xcompword(på,[tide],mulig).
+    xcompword(p,[tur,til],til). 
 compword(på,[til],til).  
 compword(på,[tur,mot],til). 
 compword(på,[tur,via],fra). 
 compword(på,[tur,t],til). 
+    xcompword(på,[tur,til],til). 
+
 
 compword(på,[v],ved).       %%  repair
+    xcompword(på,[ved],ved).    
 compword(på,[vei,mot],til). 
 compword(på,[vei,til],til). % also gn
 
@@ -2297,17 +4336,28 @@ compword(påske,[ruten],påskeruten).
 compword(påske,[ruter],påskeruter).
 
 compword(r,[d,lenge,til],[]). %% Rough
+   xcompword(rute,[r],ruter).   %% TA-110724
+   xcompword(rb,[stasjon],rutebilstasjon). 
+   xcompword(rb,[stasjonen],rutebilstasjonen).
 compword(rabatt,[kort],rabattkort).
 compword(raskest,[komme],komme).   
 compword(raskest,[mulig],[]).       %% (implic) 
 
 compword(raskeste,[måte],[]).  
+    xcompword(raskeste,[reise],rute).  %%  TA-100805?
+    xcompword(raskeste,[vei],rute). 
+    xcompword(regne,[med,å],[]). 
 compword(regner,[med,å],[]).
 
 compword(regne,[med,at],anta ).  
 compword(regner,[med,at],antar). 
 compword(regnet,[med,at],antok ).  
 compword(regner,[med,å],[]).  
+
+    xcompword(regtop,[eksport], regtoppeksport).
+    xcompword(regtopp,[eksport],regtoppeksport).
+    xcompword(regtop,['-',eksport], regtoppeksport). %% //- noisew now
+    xcompword(regtopp,['-',eksport],regtoppeksport). %% ad hoc
 
 compword(rekke,[å],kan). 
 compword(rekker,[å],kan). 
@@ -2347,6 +4397,8 @@ compword(rett,[sør],nordover).
 compword(rette,[før],før). %% ?
 compword(rette,[etter],etter).
 
+    xcompword(riktig,[god],god). 
+
 compword(rom,[jul],romjula). 
 compword(rom,[jula],romjula).
 compword(rom,[julen],romjula).
@@ -2367,7 +4419,9 @@ compword(rute,[buss],buss).
 compword(rute,[endring],endring).  
 compword(rute,[endringer],endringer). 
 compword(rutehellig,[dag],rutehelligdag). 
+    xcompword(rute,[rute],rute). 
 compword(rute,['/',ruter],ruter).  
+    xcompword(rute,[tiden],rutetiden). 
 compword(rute,[tider],rutetider).  
 %% compword(rutebil,[stasjon],rutebilstasjon). %% -> busdat
 
@@ -2387,14 +4441,28 @@ compword(rutetider,[rute],buss).  %% etc
 
 %¤S
 
+    xcompword(s,[enter],senter).   
+    xcompword(s,[enteret],senteret). %% nec for nardo s enteret
+    xcompword(s,[entret],senteret).  %%
+    xcompword(sent,[ute],forsinket). %% TA-100830
+    xcompword(sentere, [t],senteret).%%  (busdat?)
+
 compword(s,[gate],gate).   
 compword(s,[ndag],søndag).  %% s;ndag 
 
+    xcompword(s,[om],som). 
+
+%%     xcompword(sammen,[med],med). %% hvem er du sammen med %% TA-110221
+
+    xcompword(satt,[opp],arrangert). %% buss til nth 
+    xcompword(satte,[opp],arrangerte). %% nb -e
 compword(seneste,[mulighet],sist).
 compword(sentru,[m],sentrum).
 compword(sentrum,[bussen],bussen).  %% Rough 
 compword(sentrums,[bussen],bussen). %%
 compword(sentrum,[sentrum],sentrum). 
+%% xcompword(si,[alle,tidene,som],[]). %% Rough
+    xcompword(si,[alle,tidene],[]). %% ... buss 5 går             
 compword(si,[det],snakke).                 %%  si det sånn 
 compword(si,[det,en,gang,til],gjenta).   
 compword(sim,[kort],simkort).     %% TA-110707
@@ -2402,6 +4470,8 @@ compword(sim,[kortet],simkortet). %%
 
 
 compword(sikkert,[ikke],ikke).
+    xcompword(siste,[gang],sist). 
+
 %% compword(sikre,[seg],motta).
 %% compword(sikre,[deg],motta). 
 
@@ -2410,6 +4480,25 @@ compword(sier,[fra],varsler).
 compword(sjekke,[det,opp],undersøke). %% det ?
 
 compword(skal,[jeg,med],går). 
+    xcompword(skal,[jeg,når,jeg,skal],skal). 
+    xcompword(skal,[vil],vil). %% repair 
+
+    xcompword(skal,[fra],forlater).  
+%%     xcompword(skal,[i],ankommer).    %%  rough skal i fremtiden... 
+    xcompword(skal,[på],ankommer).      %%
+
+    xcompword(skal,[til],ankommer).     %% 
+    xcompword(skal,[av,på],ankommer).   %% TA-110629 Haz
+
+    xcompword(skal,[innover,til],ankommer).     %% ad hoc 
+    xcompword(skal,[utover,til],ankommer).      %% 
+
+%%%     xcompword(skal,[være,i],ankommer).  %% ... i orden 
+    xcompword(skal,[være,på],ankommer). %% 
+ 
+    xcompword(skal,[vare,i],ankommer).  %% splitword impossible
+    xcompword(skal,[vare,på],ankommer). 
+
 compword(skal,[være,der],før). %% presume jeg skal være der %	 ...hvis
     compword(skal,[være,der,til],før). %% Haz \+x % du * skal være der til 9 : 0 . 
 
@@ -2418,6 +4507,9 @@ compword(skal,[være,fremme],før).
 
 %% compword(skal,[være],ankommer). %% Haz 
 
+    xcompword(skole,[buss],skolebuss).
+    xcompword(skole,[bussen],skolebussen).
+
 compword(skjer,[a],hjelp). %%  #-> hva skjer
 
 compword(skjær,[torsdag],skjærtorsdag).  
@@ -2425,12 +4517,32 @@ compword(skriv,[inn],skriv).                  %%  Lazy
 compword(slapper,[av],hviler).  
 compword(slett,[ikke],ikke).           
 
+    xcompword(slik,[ut],således).  %%  adverb
+    xcompword(sånn,[ut],således).  %% TA-110130  
+
+    xcompword(ut,[slik],således).  %%  adverb
+
+    xcompword(slik, [som],[]).  
+    xcompword(slike,[som],[]).   %% ... dette
+    xcompword(slikt,[som],[]).   %% 
+
+    xcompword(omtrent,[slik,ut],således).  %%  # 
+    xcompword(ut,[omtrent,slik],således).  %%  # 
+
+
 compword(slik,[at,jeg,ankommer],før).  
+    xcompword(slik,[at,jeg,er,der,før],før). 
+    xcompword(slik,[at,jeg,er,der,til],før).
+
 compword(slik,[at,jeg,er,der],før).  %% x is Haz 
 
 compword(slik,[at,jeg,er,framme,før],før). 
+    xcompword(slik,[at,jeg,er,fremme,ør],før).   
 compword(slik,[at,jeg,er,framme],før).   
 compword(slik,[at,jeg,er,fremme],før). 
+    xcompword(slik,[at,jeg,er,på],til). 
+    xcompword(slik,[at,jeg,er,i],til).   
+
 compword(slik,[er,fremme], før).  
 
 compword(slik,[å,forstå],slik).
@@ -2459,16 +4571,82 @@ compword(som,[ankommer],før).
 compword(som,[er,der,før],før).  
 compword(som,[er,der,til],før).       %% 
 
+    xcompword(som,[er,fram,før],før).      %%   1.
+    xcompword(som,[er,fram,kl],før). 
+%%%%         xcompword(som,[er,fram],ankommer). %% Touchy %%    2. 
+    xcompword(som,[er,fram],før). 
+
+    xcompword(som,[er,framme,etter],etter). 
+    xcompword(som,[er,fremme,etter],etter). 
+    xcompword(som,[er,framme,før],før).  
+    xcompword(som,[er,fremme,før],før).  
+    xcompword(som,[er,framme,senest],før). 
+    xcompword(som,[er,fremme,senest],før).  
+    xcompword(som,[er,framme,innen],før).  
+    xcompword(som,[er,fremme,innen],før).  
+
+    xcompword(som,[er,framme,tidligst],etter). 
+    xcompword(som,[er,fremme,tidligst],etter).  
+
+    xcompword(som,[er,framme,på],til).  
+%%%%%    xcompword(som,[er,framme,til],før).  %% Ambiguous ... 9:35/Tiller
+    xcompword(som,[er,framme,ved],til). %% grammar handles ambiguity
+
+    xcompword(som,[er,framme,i],til). 
+
+       xcompword(som,[er,framme,til],til).      %%  til tid/sted????
+    xcompword(som,[er,framme,kl],før).  %% avoid når går  (BUSSEN SOM ER FRAMME) kl
+%%%%%%%%%%%%%%%%%%%%%%%%    xcompword(som,[er,framme,før],før). %% 1. Tricky
+    xcompword(som,[er,fremme,før],før). %% 1. Tricky
+    xcompword(som,[er,fremme,til],før). 
+    xcompword(som,[er,fremme,på],til).  %%
+    xcompword(som,[er,fremme,i],til).  
+    xcompword(som,[er,fremme,ved],til).  
+    xcompword(som,[er,framme],før).     %% Last (som er framme på)
+    xcompword(som,[er,fremme],før).     %% Last !!! <---- 
+
+    xcompword(som,[er,senest,fremme,ved],til). %% seinest/framme etc  Ad Hoc
+
+    xcompword(som,[sagt],redundant0).  
+
 %% compword(som,[er,i],til).             %% buss til A som er i B kl ...
 compword(som,[er,i],til).   %% 
+                                  %% fra munkegata som er på pirterminalen 
+%%     xcompword(som,[er,på],til).   %% NB !! <--- Hazard 
+
+    xcompword(som,[er,ved],til). %% 
+    xcompword(som,[er,på],til).  %%  Haz ?
+
+    xcompword(som,[f,'.',eks],[]).   %% apposition
+    xcompword(som,[f,'.',eks,'.'],[]). 
+    xcompword(som,[f,'.',eksempel],[]).
+
+    xcompword(som,[f,eks],[]).       %% 
+    xcompword(som,[f,eks,'.'],[]). 
+    xcompword(som,[f,eksempel],[]). 
+
+    xcompword(som,[for,eks],[]).     %% 
+    xcompword(som,[for,eks,'.'],[]). 
+    xcompword(som,[for,eksempel],[]).  
+
+
+    xcompword(som,[fremme,før],før).
 compword(som,[fremme],før).   
 
 compword(som,[går,i],i).  
 compword(som,[går,fra],fra).  
+    xcompword(som,[ikke,er,etter],før). %% Ad Hoc, avoid negations 
+
+    xcompword(som,[mer,ved],til). %% error -> x 
+
 compword(som,[passer,med],slik).      %% .. at 
 compword(som,[passerer],til). 
+    %% compword(som,[på],til). %% .. er .. 
+       xcompword(som,[på],på). %%  på samme tid som på julaften %%	 rough
+                               
 compword(som,[erpå],til).   
 compword(som,[her,på],til). %% sp
+    xcompword(som,[helst],[]).
 compword(som,[mulig],[]).  
 compword(som,[jeg,sa],[]). 
 compword(som,[skal,være,i],til).  
@@ -2481,6 +4659,14 @@ compword(sommer,[rute],sommerrute).
 compword(sommer,[rutene],sommerrutene).
 compword(sommer,[ruter],sommerruter). 
 compword(sommer,[tider],sommerruter).
+
+    xcompword(spørsmålet,[':'],spørsmålet). 
+    xcompword(svaret,[':'],svaret).
+
+    xcompword(spørre,[svar,system],savant).  
+    xcompword(spørre,['/',svar,system],savant). 
+    xcompword(spørre,[system],savant). 
+
 
 %% compword(st,['.'],stasjon). 
 
@@ -2497,6 +4683,13 @@ compword(stoppe,[steder],stoppesteder).
 compword(stoppe,[stedet],stoppestedet).
 
 compword(student,[billett],studentbillett). 
+    xcompword(studenter,[samfundet],studentersamfundet). %% ad hoc
+
+%%    xcompword(studenter,[samfunnet],studentersamfundet). %% TA-110314
+
+    xcompword(strengt,[tatt],redundant0). %% Techical, nec for word order
+    xcompword(ideelt,[sett],redundant0). 
+
 compword(svare,[til],ligne). %% ad hoc (\+ partivlev2)
 compword(svarer,[til],ligner).
 compword(svarte,[til],lignet).
@@ -2521,19 +4714,42 @@ compword(søndags,[ruter],søndagsrute).
 compword(søndags,[tur],søndagsrute). 
 compword(søndags,[turer],søndagsrute). 
 
+%%     xcompword(så,[skal],skal). %%  skulle/ville ...
+    xcompword(så,[fort,som,mulig],nå). %% buster/avoid item:clock
+    xcompword(så,[langt,vi,kan,se],derfor). %% Lazy %% ad hoc 
+   
+    xcompword(så,[langt,som],hvis). %% så langt som  det er mulig 
+
 compword(så,[langt],hittil).   %% så langt har alt gått bra 
 compword(så,[langt],hvis).     %% så langt det er mulig   %%
+
+    xcompword(så,[mye,du,vil],ofte).  %%  adv 
+    xcompword(så,[raskt],når). %% sende ruter så snart 
+    xcompword(så,[si],si).     %% så si meg/ du kan så si 
+    xcompword(så,[snart],når). %%
+    xcompword(så,[ta],ta).     %% og så ta
+    xcompword(så,[veldig],[]). %% jeg vil (ikke) s v 
+
 
 compword(så,[bussen,er,i],til).  
 compword(så,[du],du). %% ? %% så du er altså ... 
 compword(så,[er,du,grei],[]). 
+    xcompword(så,[fort,som,mulig],snart).  
 compword(så,[gjerne],[]).             %%  noisew
+
+    xcompword(sa,[jeg,er,der],før). 
+    xcompword(så,[jeg,er,der,til],før). 
+    xcompword(så,[jeg,er,der,før],før).  %% 1
+    xcompword(så,[jeg,er,der],før).      %% 2
 
 compword(så,[jeg,er,framme],før). %% \+ x
 compword(så,[jeg,er,på],til). 
    compword(say,[jeg,er,pay],til).    %% å-tøbbel 
 compword(så,[jeg,er,senest,i],til).   %% rough   
 compword(så,[jeg,er,ved],til).  
+   xcompword(så,[jeg,er,framme,på],til). 
+   xcompword(så,[jeg,er,framme,før],før).  
+
 
 compword(så,[jeg,rekker,å,være,i],til). 
 compword(så,[jeg,rekker,å,være,på],til).
@@ -2542,13 +4758,20 @@ compword(så,[jeg,er,i],til).
 compword(så,[klart],[]).  
 compword(så,[langt],[]).  %% ? da skal du få slippe å busse til heimdal. så langt   
 
+    xcompword(så,[lenge,som],mens). %% TA-110309
+    xcompword(så,[lenge],mens).     %% 
+
 compword(så,[man,er,framme],før). 
 compword(så,[man,er,fremme],før).
+%%%%    xcompword(så,[mye],mye).  %% destroys så mye som mulig.
 compword(så,[nære],nær).              %% (før?)
 compword(så,[nære,som,mulig],før).        
 compword(så,[vi,er,i],til).  
 compword(så,[vi,er,fremme],før).  %% place?
 compword(så,[vi,er,der],før).     %%
+
+    xcompword(så,[vidt,jeg,vet],redundant0).
+    xcompword(såvidt,[jeg,vet],redundant0).
 
 compword(sånn,[at,ankomst,er],[]). 
 compword(sånn,[ca],[]). 
@@ -2556,15 +4779,28 @@ compword(sånn,[cirka],[]).
 compword(sånn,[jeg,er,til],til). 
 compword(sånn,[ved],ved).   %% .. tolv tiden
 
+    xcompword(samfundet,[1],studentersamfundet_1). 
+    xcompword(samfundet,[2],studentersamfundet_2). 
+
+    xcompword(i,[kraft],redundant0). %% TA-101108 ad hoc  metaphor
+
 
 compword(trondheim,[s],ts).  %% not X %% trondheim s -> trondheim sentrum -> sentrum
 
 compword(trondheim,[taxi],taxi). 
+    xcompword(trondheim,[buss],buss).    %% etc
+    xcompword(trondheim,[rutebil],buss). %% 
+
 compword(trøndersk,[dialekt],dialekt). %% rough 
 
 compword(sankt,[hans],sankthans). 
 compword(sankthans,[aften],midsummer_eve). 
 compword(sankthans,[dag],midsummer_day). 
+
+    xcompword(sneket,[seg],kommet). 
+    xcompword(snik,[deg],kom). 
+    xcompword(snike,[seg],komme).
+    xcompword(snek,[seg],kom). 
 
 compword(snilt,[av,deg],snilt).
 
@@ -2572,15 +4808,40 @@ compword(spø,[rre],spørre). %%  ?
 
 compword(sønda,[g],søndag). 
 
+    xcompword(sørg,[for],besørg).  
+    xcompword(sørge,[for],besørge). %% ensure
+
+  xcompword(t,[bane,rute],tbane).  %% 
+   xcompword(t,[bane,ruter],tbane). %% 
+    xcompword(t,[bane],tbane).   %% t = til
+     xcompword(t,[banen],tbane).
+   
+     xcompword(tbane,[ruter],tbane).  %% Rough 
+    xcompword(tbane,[rute],tbane).    %% 
+    xcompword(tbane,[ruter],tbane).   %% 
+
+
 
 compword(t,[o,m],før).
 compword(t,[o,m,'.'],før).      
 compword(t,['.',o,'.',m],før).     
 compword(t,['.',o,'.',m,'.'],før).   
+    xcompword(t,[kort],tkort).  
+    xcompword(t,[':',kort],tkort). 
+
 
 compword(tjo,[hei],hei). 
 
+    xcompword(tog,[stasjonen],togstasjonen). %% ad hoc avoid tog as such 
+    xcompword(tog,[stasjon],togstasjon).     %%
+
 compword(tvers,[over],ved). %% TA-101116 .. veien
+
+%% TA-101207
+    xcompword(tre,[i,kraft],starte).     %%
+    xcompword(trer,[i,kraft],starter).   %%
+    xcompword(trådd,[i,kraft],startet).  %%
+    xcompword(trådde,[i,kraft],startet). %%
 
 
 %% compword(ta,[fra],forlate). %%  hvilken buss skal ta fra nth.? 
@@ -2595,13 +4856,15 @@ compword(ta,[i,bruk],bruke).
 
 compword(ta,[jeg],ta). %% ??? når må jeg ta jeg bussen 
 
-%% compword(ta,[meg], reise).  % ta meg en billett          %%  ? ta meg til nardoit/ kom å ta meg 
+%% compword(ta,[meg], reise).  % ta meg en billett          %%  ? ta meg til nardo/ kom å ta meg 
 
 compword(ta,[meg,til], ankomme).   
 compword(tar,[meg,til], ankommer). 
 
 %% compword(ta,[fra],forlate).  %%  når må jeg ta fra A til B
 
+   xcompword(ta,[jeg],jeg). %% ? Når må ta jeg ta sp 
+                                %   hvilken buss må jeg ta fra 
 compword(ta,[ned],gå). %% bakken ned nth ...
 compword(ta,[opp],gå). 
 
@@ -2638,10 +4901,19 @@ compword(tar,[tar], tar).   %%
 compword(tek,[seg], går).           %% ad hoc 
 compword(tek,[meg], går).           %%
 
+    xcompword(telef,['.'],telefon).    %% ad hoc
+    xcompword(telefon,[nr],telefon). 
+    xcompword(telefon,[nummer],telefon). %% TA-101202
+ 
 compword(te,[neste],neste).           %% err 
 compword(te,[ved],til). 
     
+
+    xcompword(team,[påskeruter],påskeruter). 
+    xcompword(team,[sommerruter],sommerruter). %%  
 compword(tenke,[deg,å],[]).  
+   xcompword(tenker,[å],vil).  %% avoid tenker for å være i stand til
+                                
 compword(tenkt,[å,dukke,opp],ankommet).
 
 compword(tett,[ved],nær). 
@@ -2657,7 +4929,10 @@ compword(hold,[munn],tistille).
 compword(tid,[buss],buss).        %%  repair
 
 %% compword(tid,[går],[]). %% ? destroys = når=hvilken tid
+%%    xcompword(når,[tid,går],[]). %% juks %% TA-101013
 %% compword(tid,[går],[]).  
+%%    xcompword(ti,[går],[]).  %%  Haz
+%%    xcompword(ti,[drar],[]). %% 
 
 %% compword(tid,[går,neste],neste).
 %% compword(tid,[går,buss],buss). 
@@ -2676,6 +4951,9 @@ compword(tid,[oversikt],ruteplan). %% avganger). %% nb times
 compword(tiden,[tiden],tiden).       %%  Repair
 compword(tider,[og,nr],tider). 
 
+    xcompword(tider,[over,rute],rutetider).  
+    xcompword(tider,[over,ruter],rutetider). 
+
 compword(tidlig,[etter],etter).       %% i morgen tidlig etter %% AD HOC
 compword(tidligere,[enn],før). 
 compword(tidligst,[mulig],tidlig).    %% tidligst betyr FØR
@@ -2689,17 +4967,31 @@ compword(tidspunktet,[når],når).
 
 compword(til,[om],at). %%  kjenner du til om ?
 
+   xcompword(til,[overs],[]).
 compword(til,[vanlig],redundant0). 
 
 compword(til,['.'],til). %%  Når går neste 7 til.buran"
 
+    xcompword(til,[alle,tider],alltid). 
+    xcompword(til,[daglig],daglig).       %% TA-100828    
+    xcompword(til,[en,hver,tid],alltid).  %%
+    xcompword(til,[enhver,tid],alltid).   %%
+
 compword(til,[i],i).   %% \+ x Du må oppgi et sted til i slike spørsmål
                        %% du holder til i Th %% TA-101018
+    xcompword(til,[nå],[]).
+
+%%    xcompword(til,[i],i). %% et sted til i slike spørsmål %%  Haz
+                            %% venter til i morgen
+
 compword(til,[sted],destinasjon). 
+    xcompword(til,[stede],her). 
+    xcompword(til,[at,jeg,kommer,til],til).
 compword(til,[ca],til).   
 compword(til,[omtrent],til). 
 
 
+    xcompword(til,[da],da).   %% "derfør"
 compword(til,[dømes],[]).  
 
 
@@ -2710,13 +5002,24 @@ compword(til,[for,å,være,på],til).
 compword(til,[for],for). %%  repair
 
 compword(til,['+'],til).           %% actual ?
+    xcompword(til,[ankommer],ankommer).  
 compword(til,[borti],til).  
 compword(til,[dit],dit). 
+    xcompword(til,[døra],hjem).  
 compword(til,[en,holdeplass,ved],til).
 %% compword(til,[et],til). %% ?
+    xcompword(til,['/',fra],forbi).  %% rough %% tol/fra buss? 
 compword(til,[forbi],forbi).     %%  err repair
 compword(til,[går],går).         %%  hvilken buss til går til /Repair
+    xcompword(til,[hvis],hvis).      %% (repair) X
+
+    xcompword(til,[imorgen],imorgen). 
+    xcompword(til,[i,morgen],imorgen).
+
 compword(til,[i,nærheten,av],til). 
+%   xcompword(til,[i],i). %% et sted til (i tillegg) %% plass til i bussen
+%   compword(til,[i],til).     %%  (i?) Du må oppgi et sted til i slike spørsmål . oo 
+
 compword(til,[klokka,er],før).  
 compword(til,[klokken,er],før). 
 compword(til,[hit],hit).  
@@ -2727,7 +5030,11 @@ compword(til,[lands],[]).
 compword(til,[med,ankomst],til).   %% repair
 
 % compword(til,[med],til).      %% jeg hjelper til med at
+%    xcompword(til,[med],med).  %% repair 
+
 compword(til,[nærheten,av],til).   %% nofunk?
+    xcompword(til,[og,fra],forbi).
+    xcompword(til,[og,med],til).  
 compword(til,[og,være,fremme],til). 
 
 %% compword(til,[på],til).    %% Repair * hvor mange personer  er det  plass til på bussen
@@ -2740,7 +5047,10 @@ compword(til,[sammen],[]).
 compword(til,[slutt], sist). 
 compword(til,[som],som).        %% repair
 
+    xcompword(til,[sted],tilsted). %% destinasjon ? %%  x?
+
 compword(til,[sånn], sånn).     %% repair .. at jeg er  på
+    xcompword(til,[til],til).   %% repair 
 compword(til,[ut], ut).    
 compword(til,[ved],til).   
 compword(til,[via],via).        %% repair 
@@ -2775,12 +5085,28 @@ compword(tur,[retur],tilbake).             %% (ignore)
 compword(tur,[rettur],tilbake). 
 compword(tur,['/',retur],tilbake).   
 
+    xcompword(turing,['-',test],turing_test).  
+    xcompword(turing,['-',testen],turing_test).
+    xcompword(turing,[test],turing_test). 
+    xcompword(turing,[testen],turing_test). 
+    xcompword(turings,[test],turing_test).   %% TA-100907 
+    xcompword(turingtest,[],turing_test).   %% TA-110120
+    xcompword(turingstest,[],turing_test). 
+
 compword(u,[bane],tbane).   
 
+    xcompword(uforståelige,[ord],feil). 
+    xcompword(uff,[da],[]).  %% :-) 
+    xcompword(huff,[da],[]). %% 
 compword(u,[båt],båt).                   %% Rough 
 
 
 compword(uke,[dag],ukedag). 
+
+    xcompword(lure,[på],undre).    %%  rough
+    xcompword(undre,[på],undre).   %% tricky
+    xcompword(lurer,[på],undrer).  %% 
+    xcompword(undrer,[på],undrer). %% 
 
 compword(ungdom,skole,skole). 
 
@@ -2790,17 +5116,33 @@ compword(universelt,[kort],universalkort).
 compword(universelt,[skibusskort],universalkort). %% etc 
 compword(unntatt,[med],unntatt). 
 
+    xcompword(ut,[av,det],løsningen).
+    xcompword(ut,[av,noe],løsningen). 
+
 compword(ut,[av],fra). 
 compword(ut,[om],ut).  
 compword(ut,[på],på).  
 compword(ut,[å],[]).   
 
+    xcompword(ute,[av,drift],nede). 
+
 compword(uten,[bussbytte],direkte). 
 compword(uten,[pause],direkte). 
 compword(uten,[stopp],direkte).  
 
+    xcompword(uten,[unntak],alltid).
+    xcompword(uten,[å,bytte,buss],direkte).  %% ad hoc
+    xcompword(uten,[å,skifte,buss],direkte).  
+
 compword(uttrykke,[deg],snakke). 
 compword(utvidet,[skolekort],skolekort). %% ?? 
+
+    xcompword(v,['/'],ved).   
+%%    xcompword(va,['.'],ca).  %% hva ?
+    xcompword(va,[halv],halv). %% ca halv 
+
+    xcompword(veldig,[gjerne],redundant0). %%=gjerne --> 
+    xcompword(veldig,[ofte],ofte).         %% TA-101228
 
 compword(vi,[gir,opp],adjø). 
 
@@ -2818,8 +5160,14 @@ compword(varsle,[fra],varsle).
 
 compword(vart,[av],er). %% Dial 
 
+    xcompword(ved,[hjelp,av],med). %%  Haz?
+    xcompword(ved,[nærmere,ettertanke],redundant0). %% TA-101102
+
 compword(ved,[navn],[]).  
 compword(ved,[på],på).           %%  repair
+
+    xcompword(vegg,[i,vegg,med],nær).   
+    xcompword(vegg,[til,vegg,med],nær). 
 
 compword(vel,[ikke],[]).  
 compword(vell,[],[]). 
@@ -2847,9 +5195,13 @@ compword(via,[fra],fra).
 compword(via,[til],til).  
 compword(vice,[versa],tilbake). 
 
+    xcompword(vil,[at],ønsker).  %% Haz?
 compword(vil,[det,være],er).     %% Grammar repair
+   xcompword(vil,[det,gå],går).   
 compword(vil,[det,kjøre],kjøre). %%  
 compword(vil,[komme,til,å],vil). 
+
+    xcompword(vil,[skal],skal). %% repair 
 
 compword(vil,[være,der],før).  
 
@@ -2857,9 +5209,14 @@ compword(ville,[det,være],er).    %%
 compword(visa,[kort], visakort ). 
 %% compword(visst,[],[]).       %% hvis     %%  optional noise
 
+    xcompword(visst,[jeg,skal,være,i],til). %% no pardon 
+
+    xcompword(vær,[dag],[]).   %% -> daglig -> noisew %%  err
+
 compword(vær,[hilset],hei).  
 compword(vær,[så,god], værsågod).
 
+   xcompword(vær,[så,snill,'.'],[]). 
 compword(vær,[så,snill,å],[]). 
  
 compword(å,[vær,så,snill],[]). 
@@ -2874,6 +5231,11 @@ compword(være,[kommet,til],til).
 
   %% compword(være,[på],til).  %% haz?  %% når vil bussen være på 
   %% compword(være,[ved],til). %% haz 
+   xcompword(være,[på],ankomme). %% <--- 
+
+    xcompword(være,[så,snill,å],[]).  
+    xcompword(være,[så,snill],[]). 
+
 %% compword(være,[på],ankomme).    %%  Tekn. Fremtid// jeg skal være på nardo
 compword(værsågod,[å],[]). 
 
@@ -2888,6 +5250,8 @@ compword(vært,[ved],til).
 compword(voksen,[billett],billett). %% rough
 compword(vå,[re], være).           %%  vÃ¦re
 
+    xcompword(y,[til],til). %% repair 
+
 compword(øvre,[aldersgrense],aldersgrense). 
 
 %% compword(å,[få],å).  %% .. komme til %% \not x
@@ -2900,8 +5264,13 @@ compword(å,[fra],fra).      %% Repair
 compword(å,[inn],inn).   
 compword(å,[ja],ja).  
 
+    xcompword(å,[jeg,ta],går).   %%  exclusive
+
 compword(å,[jasså],[]).     %%  :-))))))
 
+%%      xcompword(å,[da],ja).  %% TA-101014     %% X å (jo) da
+%%      xcompword(å,[måtte],å).     %% eff. ville skulle burde kunne 
+                                    %% destroys uten å måtte
 compword(å,[ned],ned).  
 compword(å,[nei],nei).      %%  :-)
 %% compword(å,[så],å).         %%  Rough  %% TA-110105 ... å så sier du
@@ -2909,12 +5278,14 @@ compword(å,[t],til).
 compword(å,[ta,fra],fra).   %% Ad Hoc
 compword(å,[ta,til],til).   %% 
 compword(å,[te],til). 
+   xcompword(å,[tid],når).  %% dial 
 compword(å,[til],til).      %% og til
+    xcompword(å,[å],å). %% repair 
+
 compword(år,[går],går).     %% Paste slip når går
 compword(år,[må],må).       %% Very Rough  (n)år må 
 
 compword(års,[kort],årskort).
-
 
 
 %% UNWANTED INTERPRETAION %% TA-101124
@@ -3228,11 +5599,11 @@ kw(X):-cw(X). % Closed Word Class   => uncoded
 ow(nb(_)).
 ow(quote(_)).
 
-ow(X) :- instant(X,word),!.
+ow(X) :- user:instant(X,word),!.
 
 ow(X) :- numerid(X,_,_).
 ow(X) :- adjective2(X,_). 
-ow(X) :- gradv_templ(X,_). 
+ow(X) :- user:gradv_templ(X,_). 
 
 
 %%%%%%%%%  All the words that may appear as literal constants in grammar.
@@ -3254,7 +5625,7 @@ cw('¤').   %% Headline
 
 cw(';'). %% Sentence delimiter
 
-cw(',') :- main:myflags(teleflag,true).  
+cw(',') :- user:value(teleflag,true).  
 cw('.'). 
 cw('?').
 cw('!').
@@ -3457,7 +5828,7 @@ cw(å).
 % Norsk til Norsk
 
 
-synwordx(X,Y):-main:myflags(smsflag,true),synsms(X,Y). 
+synwordx(X,Y):-user:value(smsflag,true),synsms(X,Y). 
 synwordx(X,Y):-synword(X,Y).
 
 % SMS synonyms  
@@ -3685,8 +6056,6 @@ synword('va¦re',være).
 synword('va|re',være). 
 
 synword('a|',jeg). %%   Ã¦ %%  dial+
-synword(søndaksrute,søndagsrute). 
-
 synword('va|re',være). %%  va|re 
 %% synword('va|r',være). %%  va|r  ? %% dial+  
 
@@ -4537,7 +6906,7 @@ synword(dumm,          dum).
 synword(dy,            du).  %% Neib key 
 %% synword(dy,            dyr). %%  dy -> dyr -> animal 
 
-%% synword(doit,            toalett). %% ???
+%% synword(do,            toalett). %% ???
 synword(dor,           for).     %% neib ? 
 synword(dorekte,       direkte). %%  neib k ?
 synword(dorlig,        dårlig). 
@@ -6259,7 +8628,7 @@ synword(jledag,        juledag).
 % synword(jl,            klokken).     %% kl ?
 synword(jnår,          når).  
 
-synword(jo,            ja) :- main:myflags(busterflag,true). %% Jo
+synword(jo,            ja) :- user:value(busterflag,true). %% Jo
 
 synword(joa,           ja). 
 %% synword(jo,            []).  %% bussen går jo// redundant 
@@ -6466,7 +8835,7 @@ synword(kjæmm,         kommer).  %%  Dial
 synword(kjøerer,       kjører).
 synword(kjøm,          kommer).  %%  Dial
 synword(kjøme,         kommer).  %% Dial 
-synword(kjøpeseter,    kjøpesenter).
+sunword(kjøpeseter,    kjøpesenter).
 synword(kjøpre,        kjøpe). 
 synword(kjør,          kjører). %% Dial Haz? 
 synword(kjørere,       kjører). 
@@ -7671,8 +10040,8 @@ synword(nåår,          når).
 synword(number,        nummer).   %% ? destroys language selection!
 synword(nummber,       nummer). 
 
-%% synword(nr,rute)     :- \+ main:myflags(teleflag,true). 
-%% synword(nummer,rute) :- \+ main:myflags(teleflag,true). %% hva er et nummer 
+%% synword(nr,rute)     :- \+ user:value(teleflag,true). 
+%% synword(nummer,rute) :- \+ user:value(teleflag,true). %% hva er et nummer 
 
 synword(nummeret,telefonnummeret). %% ad hoc  nummeret til SMSTUC 
 
@@ -9571,7 +11940,7 @@ synword(tålvte,  tolvte).
 
 %% synword('*',ganger). 
 synword('0g',og). %% 
-%synword(-,til).                        %% EXPERIMENT
+synx1word(-,til).                        %% EXPERIMENT
 synword(&,og).    
 %% synword(+,og).     %% Hva er 2+2
 %% synword(pluss,og). 
@@ -9612,8 +11981,8 @@ synword(februari,february). %% SW
 %% synword(jan,kan).  %%   own sp ?
 
 synword(jan,january) :- 
-    \+ main:myflags(telebusterflag,true),
-    \+ main:myflags(daterflag,true).
+    \+ user:value(telebusterflag,true),
+    \+ user:value(daterflag,true).
 
 synword(feb,february).
 synword(mar,march).
@@ -10121,13 +12490,13 @@ synword(vei,veg). %%  KarlJohnsons vei."
 
 
 synword(TLF, telefonnummer):-   %% nr 6 -> telefonnummeret 6 // Bare tele
-    main:myflags(teleflag,true),  %% ret -> r
+    user:value(teleflag,true),  %% ret -> r
     tlf(TLF).  
 
 
 synword(TLF, telefonnummer):-      %% nr 6 -> telefonnummeret 6 // Bare tele
-    \+ main:myflags(teleflag,true),  %% ret -> r
-    \+ testmember(TLF,[nr,nummer,nummeret]), %% ad hoc (BUS no) 
+    \+ user:value(teleflag,true),  %% ret -> r
+    \+ user:testmember(TLF,[nr,nummer,nummeret]), %% ad hoc (BUS no) 
     tlf(TLF).  
 
 
@@ -10259,7 +12628,7 @@ adv2(selvstendig, redundantly).  %% TA-110128
 adv2(senest,last).               %%  (= latest)
 adv2(sikkert,redundantly). 
 
-adv2(spennende,well). %% rough høres spennende %% TA-110724
+adj2(spennende,well). %% rough høres spennende %% TA-110724
 
 adv2(tydelig,redundantly).       %% TA-110103 Also ADJ !!!  
 adv2(sist,last). 
@@ -10303,7 +12672,7 @@ adjective2(Skrevet,be/Write):-
     morph_n:lexv(Skrevet,Skrive,past,part),
     verbroot2(Skrive,Write),
     \+ adj2(Skrevet,_), %% e.g. svart
-    main:tv_templ(Write,_,_).
+    user:tv_templ(Write,_,_).
 
 */
 
@@ -12305,7 +14674,7 @@ noun2(rute,route).    % NB ambiguous
     noun2(kurs,   route).    
     noun2(line,    route).  
     noun2(melkerute,  route).      %%:-)
-%%     noun2(nummer,  route):-   \+ main:myflags(teleflag,true). 
+%%     noun2(nummer,  route):-   \+ user:value(teleflag,true). 
 
     noun2(nussrute,route).   %% sp
     noun2(reiserute,  route).   %% route_plan
@@ -13374,7 +15743,7 @@ noun2(kortleser,card_reader). %% t-kort
 noun2(lager,storage). %% Haz ?
 
 noun2(land,country). 
-    noun2(nasjon, country).
+    naun2(nasjon, country).
     noun2(rike,   country). 
 
 noun2(landområde,territory). %%  (technical) 
@@ -13809,6 +16178,8 @@ noun2(vestside,westside).
 noun2(standard,standard).
 noun2(stavefeil,spellingerror).   
 
+synword(søndaksrute,søndagsrute). 
+
 
 noun2(søndagsrute,sundayroute). 
 %%    noun2(helgedagsrute,holiday).  %% søndag/helligdag
@@ -14227,17 +16598,17 @@ noun2(politi,police).
 
 %% Name professor  confuses busstuc   
 noun2(professor,professor):-  %%  tele ...
-    main:myflags(teleflag,true).
+    user:value(teleflag,true).
 noun2(førsteamanuensis,associate_professor):-
-    main:myflags(teleflag,true).
+    user:value(teleflag,true).
 noun2(amanuensis,assistant_professor):-
-    main:myflags(teleflag,true).
+    user: value(teleflag,true).
 noun2(universitetslektor,lecturer):-
-    main:myflags(teleflag,true).
+    user: value(teleflag,true).
 noun2(sekretær,secretary):-    
-    main:myflags(teleflag,true).
+    user: value(teleflag,true).
 noun2(forsker,researcher):-   
-     main:myflags(teleflag,true). 
+     user: value(teleflag,true). 
 
 noun2(semantikk,semantics). 
 noun2(semester,semester). 
@@ -15230,7 +17601,7 @@ noun2(varighet,duration).
      noun2(mellomrom,duration). 
      noun2(mellomrum,duration). 
      noun2(stund,duration).  
-%     noun2(tid,duration). %% Hazardous  EXPERIMENT
+     nounq(tid,duration). %% Hazardous  EXPERIMENT
      noun2(tidsforbruk,duration).
      noun2(overgangstid,duration).   %% rough 
      noun2(regulering,duration).     %% ad hoc, rough %
@@ -15349,7 +17720,7 @@ noun2(vær,weather).
     noun2(bris,weather).  
     noun2(styggvær,weather). 
     noun2(temperatur,weather).  
-%    nounw(uvær,weather).         %% sic 
+    nounw(uvær,weather).         %% sic 
     noun2(vejr,weather).         %% DK ? 
     noun2(ver,weather).          %% Nynorsk
     noun2(vind,weather).
@@ -17187,7 +19558,7 @@ verb_form(åpne,  åpne,imp,fin).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 rep_verb(Tell):-  
-    rv_templ(Tell,_). %% Semantic  
+    user:rv_templ(Tell,_). %% Semantic  
 
 
 preposition(X):-preposition2(X,_).  
@@ -17374,7 +19745,7 @@ preposition2(senest,before).  %%  avoid syn senest -> før -> [før] (adverb)
 
 preposition2(tidligst,after).    %% avoid tidligst-> etter -> beyond
 preposition2(til,to).           
-preposition2(til,of) :-  main:myflags(teleflag,true).
+preposition2(til,of) :-  user:value(teleflag,true).
 
 %% preposition2(till,to).         %% Swedicism  
 
@@ -17610,7 +19981,7 @@ pronoun(deg,savant).  %%
 % compword []. Example  compword(vel,[],[]).
 
 
-noisew(BS):-backslash(BS).   
+noisew(BS):-user:backslash(BS).   
 
 noisew('&'). %% TA-110225
 
@@ -17631,7 +20002,7 @@ noisew('').
 noisew('='). 
 noisew('^'). 
 
-noisew('-'). %%  :- \+ main:myflags(teleflag,true). %% Too much trouble
+noisew('-'). %%  :- \+ user:value(teleflag,true). %% Too much trouble
             
                  %% bus   between 1200 - 1300 etc. fails
                  %% Dont remove this, causes more trouble than not
@@ -17653,7 +20024,7 @@ noisew('#').       %% (or nummer ?)
 %                    %% destroys :)
 %% noisew(';'). %% SENTENCE Delimiter
 
-noisew(','):- \+ main:myflags(teleflag,true). 
+noisew(','):- \+ user:value(teleflag,true). 
 
 noisew('(').
 noisew(')'). 
@@ -18117,7 +20488,7 @@ noisew(tilsvarende).
 noisew(tja).     
 noisew(totalt).  
 
-%% noisew(trafikk):- main:myflags(smsflag,true). 
+%% noisew(trafikk):- user:value(smsflag,true). 
 %% noisew(tvert).       %% nå!/ tvert om / tvert nei %% tvert imot
 %% noisew(tydeligvis). 
 noisew(typisk).      %%  rough 
@@ -18179,788 +20550,6 @@ noisew(årntli).
 noisew(årntlig). 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-
-
-
-%%¤  REWORDING 
- 
- %% Use only for context dependent rewriting
- %% Use with extreme care if synword,compword,splitword is futile
-
-%--
-   rewording([1,t],[1,time]).  %% TA-110617  Ad Hoc -> N
-   rewording([2,t],[2,timer]). %% 
-   rewording([3,t],[3,timer]). %% 
-
-   rewording([bare,å],            [mulig,å]).       %% TA-110111
-   rewording([beste,buss],        [neste,buss ]).   
-   rewording([buss,dra],          [buss,fra ]).
-   rewording([bussen,dra],        [bussen,fra ]). 
-   rewording([bår,må],            [når,må ]).       %% bår=når|går
-
-   rewording([det,ekle],[det,dårlige]). %% \+ Ekle %% TA-101108  
-
-   rewording([dvs,'.'],[dvs]). %% Tricky %% TA-110304
- 
-   rewording([det,rare,er],       [det,er,rart ]).  
-%%    rewording([er,det,til],        [er,det,inntil ]).   %% TA-100825 til dragvoll
-   rewording([er,hyppig,forekommende], [skjer,ofte ]). %% 
-    
-   rewording([er,stavet],[er,skrevet]). %% \+ Stavset %% TA-110808
-
-
-   rewording([feiler,det],[er,feil,med]).  %% TA-101103 hva er feil med deg
-
-   rewording([for,kl],            [før,kl ]).  %% for kl 11 \+ for (rute) 11
-   rewording([for,klokken],       [før,kl ]). 
-   rewording([for,klokken],       [før,kl ]). 
-
-   rewording([for,æ,være],        [for,å,være ]). 
-   rewording([for,a,være],        [for,å,være ]).           %% TA-100921
-
-   rewording([føler,jeg,meg],     [er,jeg]). %% ..sikker på %% TA-101025   
-   rewording([gå,til,fradrag],    [være,inkludert ]).   
-
-   rewording([går,fordi],         [går,forbi ]). 
-
-   rewording([ha,vært,på],    [komme,til]). %% skulle gjerne ha vært.. %% rough %% TA-101022
-
-   rewording([han,du],[kan,du]). %% TA-110201 own
-
-   rewording([hvilken,er],    [hva,er]). %% TA-100829
-   rewording([hvilket,er],    [hva,er]). %% 
-
-   rewording([hvor,langt,tar],    [hvor,lang,tid,tar]). 
-
-%%    rewording([i,dette,tilfelle],  [som,er]).   %% etc. %% TA-110807
-
-   rewording([i,ett,tida],        [rundt,kl,1300]). 
-   rewording([i,ett,tiden],       [rundt,kl,1300]).  %% fix
-
-   rewording([ifb,med,'.'],  [i,forbindelse,med ]).
-   rewording([ifm,'.'],      [i,forbindelse,med ]). 
-   rewording([i,forb,'.',m], [i,forbindelse,med ]). 
-   rewording([i,forb,m],     [i,forbindelse,med ]).  
-
-%%%%%   rewording([jeg,når],           [jeg,rekker ]).    %% TA-100923
-%% hva gjør jeg når ...
-
-   rewording([kan,skyldes],       [er,forårsaket,av ]). %% before skyldes =
-   rewording([kommer,jeg,til,å],  [vil,jeg]). %%  hva kommer jeg til  å bli
-
-   rewording([nr,går],            [når,går ]).  
-   rewording([nr,må],             [når,må ]).
-  
-   rewording([nær,går],           [når,går]).       %% TA-110116
-   rewording([når,har,bussen],    [når,går,bussen ]). 
-   rewording([når,jeg,tar,bussen], [når,går,bussen ]).  %%  Haz
-             
-   rewording([og,retur],          [og,tilbake ]).
-
-   rewording([over,halvparten],   [de,fleste ]). 
-                                               %% only from start
-   rewording([på,jeg,ta],         [må,jeg,ta ]).        %%   når ... bussen                    
-   rewording([s,buss],            [siste,buss ]).       %% TA-100825
-   rewording([sa,jeg,er],         [så,jeg,er ]).   
-   rewording([skal,med],          [skal,reise,med ]).   %% TA-100902
-   rewording([straks,dette],      [når,dette ]).  
-   rewording([så,derfor],         [fordi,da]).          %% TA-110105 rough
-   rewording([så,nøye],[]).                             %% TA-110105
-   rewording([står,oppført,med],  [har]).               %% TA-101115 ad hoc
-
- /*
-   rewording([ta,vare,på],[beholde]).    %% TA-110816
-   rewording([tar,vare,på],[beholder]).  %%
-   rewording([tok,vare,på],[beholdt]).   %%
-   rewording([tatt,vare,på],[beholdt]).  %%
-*/
-
-   rewording([ta,til],[gå,til]). %% .. venstre
-   rewording([ta,utgangspunkt],[starte]).   %% ad hoc %% TA-101115 overgangen vil ta utgangspunkt .
-   rewording([tar,utgangspunkt],[starter]). %%
-
-   rewording([ti,minutter],       [10,minutter ]). %% ti =til/tid %% TA-100912
-
-   rewording([til,buen],[til,byen]). %% Anders buens vei %% TA-110204 
-
-%%    rewording([tid,går],           [når,går ]). %%  hva tid går
-
-   rewording([t,buss],            [ta,buss ]). 
-
-   rewording([tre,i,kraft],[starte]). %% TA-101108 problem tre=3
-
-   rewording([vil,vekk],          [vil,reise,vekk]). %% TA-100902
-   rewording([visst,jeg],         [hvis,jeg]). %% trouble visst=redundantly 
-
-   rewording([være,at],[bli,at]). %% ad hoc fedup %% TA-110810
-
-   rewording([å,svar],            [å,svare]).  %% trouble svar=noun|verb
-   
-
-
-
-% Numeric (digits are flexible)
-% sorted on 1. alphabetic
-
-%% splitword ('19og20',    [19,og,20]). 
-
-
-%%  Unnnec %% Automatic  SPLIT NNAA 
-%%  Unnnec %% Automatic  SPLIT AANN 
-
-%% splitword only for common words couples , no names.
-
-
-%%%%%%% splitword can also be used as  pre-synword substitution
-%% simplifies compword definitions which has no synning
-%% Destructive
-
-%% Single splitword 1
-
-split('+',[pluss]). %% TA-100902
-
-splitword(null,[0]).   
-%%  splitword(en,[1]).   %% no  en buss
-%%  splitword(et,[1]).   %% 
-
-%% splitword(ett,[1]).   %% ett hotell
-
-%% splitword(to,[2]).    %% når må jeg to bussen 
-splitword(tre,[3]).   
-splitword(fire,[4]).
-splitword(fem,[5]).
-splitword(seks,[6]).
-splitword(sju,[7]).
-splitword(åtte,[8]).
-splitword(ni,[9]). %% Ni muser -> 9 muser
-
-splitword(bortimot,[nesten]).  
-splitword(busen,[bussen]).
-splitword(faør,[før]).          %% simplifies compword   %% fÃ¸r
-
-splitword(faa,[få]).            %% TA-100918
-splitword(faatt,[fått]).  
-
-splitword(fkl,[fra,kl]).  
-splitword(frem,[fram]).         %% NB fram is official, avoid  
-splitword(framme,[fremme]).     %% NB fremme is official (?)     
-
-splitword(gaar,[går]). 
-splitword(gan,[gang]).          %% TA-110324
-splitword(gar,[går]). 
-splitword(gayr,[går]).          %% simplifies compword  
-splitword(greitt,[greit]). 
-splitword(heile,[hele]).  
-
-splitword(ifjor,[i,fjor]).  
-splitword(igjenn,[igjen]).      %% TA-110121
-splitword(in,[inn]). 
-splitword(intil,[inntil]). 
-splitword(jag,jeg). 
-splitword(kjappast,[hurtigst]).
-splitword(kjappest,[hurtigst]). %%
-splitword(km,[kilometer]).
-splitword(may,[må]).            %% mÃ¥
-splitword(mig,meg).  
-%% splitword(morra,[morgen]).   %%  amb morrow/morning
-splitword(muligt,[mulig]). 
-splitword(naa,[nå]). 
-splitword(naar,[når]).   
-splitword(nar,[når]).  
-splitword(nayr,[når]).
-splitword(nedi,[ned,i]). 
-splitword(neri,[ned,i]).  
-splitword(nermeste,[nærmeste]). 
-splitword(nyttigjøre,[nyttiggjøre]).
-%% splitword(noke,[noe]).       %% cuts noke=noen
-splitword(paa,[på]).   
-splitword(pay,[på]). 
-splitword(pensjoneres,[pensjonere,seg]). %% TA-100821 // inf|pres
-splitword(poske,[påske]).  
-splitword(raskes,[raskest]). 
-splitword(rote,[rute]).   
-splitword(roter,[ruter]). 
-splitword(sjøfør,sjåfør).       %% TA-110324
-splitword(slute,[slutte]).      %% involved in compwords
-splitword(smaa,små).  
-splitword(sæ,[seg]).
-splitword(tillfelle,[tilfelle]).
-splitword(turretur,[retur]).    %% rough 
-splitword(untak,[unntak]). 
-splitword(utenbys,[utenfor,byen]). 
-splitword(utåver,[utover]).  
-%% splitword(vert,[blir]).   %% ~~ vært      %% NN (haz? en vert)   
-%% splitword(vor,[for]).           %% TA-10119=hvor
-splitword('va|re',[være]). 
-splitword(vaere,[være]).    
-splitword(ære,[være]). 
-splitword(øyblikket,[øyeblikket]). %% actual %% TA-101123
-splitword(åp,[på]).   
-
-
-%% Composite splitword 2
-
-splitword(avgangerpå,[avganger,på]).  
-%% splitword(hjem,[fra,nth,til,nardo]). %% FREAK 
-%%  splitword(andreneste,[andre,neste]). 
-splitword(ankommerfør,[ankommer,før]).
-splitword(ankomstkl,[ankomst,klokken]). 
-splitword(anå,[an,å]).  
-splitword(atden,[at,den]).  
-splitword(atjeg,[at,jeg]). 
-splitword(avgangerhar,[avganger,har]). 
-splitword(busfra,[buss,fra]). 
-splitword(bussemfra,[bussen,fra]).     %% etc ???
-splitword(busseneste,[buss,neste]).  
-splitword(bussenetter,[bussen,etter]).  
-splitword(bussenefra,[bussene,fra]).  
-splitword(bussenfra,[buss,fra]). 
-splitword(bussennår,[bussen,når]). 
-splitword(bussenskal,[bussen,skal]). %%  own
-splitword(bussentil,[bussen,til]).
-splitword(bussenå,[bussen,å]).  
-splitword(busserfra,[busser,fra]).  
-splitword(bussertil,[bussen,til]).  
-splitword(bussetter,[buss,etter]). 
-splitword(bussfra,[buss,fra]). 
-splitword(bussffra,[buss,fra]).  
-splitword(bussgår,[buss,går]). 
-splitword(bussholdeplassligger,[bussholdeplass,ligger]).
-splitword(bussifra,[buss,fra]). 
-splitword(bussinn,[buss,inn]). 
-splitword(busskan,[buss,kan]).   
-splitword(bussmå,[buss,må]). 
-splitword(bussrundt,[buss,rundt]). 
-splitword(busstil,[buss,til]). 
-splitword(byenca,[byen,ca]). 
-splitword(byenfra,[byen,fra]).    
-splitword(byenfor,[byen,for]).  
-splitword(byeninnen,[byen,innen]). 
-splitword(byenklokken,[byen,klokken]).  
-splitword(byentil,[byen,til]).  
-splitword(bytil,[by,til]). 
-
-splitword(dagetter,   [dag,etter]).
-splitword(dagfra,     [dag,fra]).  
-splitword(deiførste,  [de,første]). 
-splitword(densom,     [den,som]).  
-
-splitword(derkl, [der,kl]). 
-splitword(derklokka, [der,kl]).  %% splitword(detbuss,    [det,buss]).  
-splitword(derklokken, [der,kl]).
-
-splitword(deter,      [det,er]). 
-splitword(detnattbuss,[det,nattbuss]).  
-splitword(direktebuss,[direkte,buss]). 
-splitword(direktebusser,[direkte,busser]).
-splitword(direktelinje,[direkte,linje]).
-splitword(dragvollbussen,[bussen,til,dragvoll]).
-splitword(drarfra,[drar,fra]).  
-splitword(dugjøre,[du,gjøre]). 
-
-%% splitword(dvs,[og]).           %% bussen går dvs trikken står
-%% splitword(dvs,[som,er]).       %% rough 
-%% splitword(dvs,[og,dette,er]). 
-
-%% splitword(nemlig,[som,er]).  %% jeg begynner nemlig
-
-splitword(egta,[jeg,ta]).  
-splitword(ekje,[er,ikke]). 
-splitword(enbuss,[en,buss]).
-splitword(erbuss,[er,buss]).
-splitword(erde,[er,det]). 
-splitword(erder,[er,der]).
-splitword(erdet,[er,det]).
-splitword(erdu,[er,du]).
-splitword(ere,[er,det]). 
-splitword(erfra,[er,fra]).
-splitword(erikke,[er,ikke]). 
-splitword(erjeg,[er,jeg]). 
-splitword(erklokka,[er,klokka]). 
-splitword(erpå,[er,på]).  
-splitword(erru,[er,du]). 
-splitword(eru,[er,du]). 
-splitword(etterkl,[etter,klokken]). 
-splitword(etterklokka,[etter,klokken]). 
-splitword(etterklokken,[etter,klokken]).
-splitword(eterkl,[etter,klokken]). 
-splitword(ettermiddagsruter,[ruter,om,ettermiddagen]). 
-splitword(etterti,    [etter,10]).  
-
-splitword(femmern,[buss,5]). %% etc avoid 5 as 1. word
-splitword(finnespå,[finnes,på]).  
-splitword(fintå,[fint,å]).     
-splitword(flyfra,[fly,fra]). 
-splitword(foray,[for,å]).                %%  forÃ¥
-splitword(forbussen,[for,bussen]).  
-splitword(foreksempel,[for,eksempel]).   %% noise ???
-splitword(formiddagsrute,[rute,om,formiddagen]). 
-splitword(forrigebuss,[forrige,buss]). 
-splitword(forå,[for,å]). 
-splitword(foråvære,[for,å,være]).  
-splitword(frabyen,[fra,byen]).  
-splitword(frasamfundet,[fra,samfundet]).
-   splitword(samfundetetter,[samfundet,etter]).
-   splitword(samfundetkl,[samfundet,klokken]).
-   splitword(samfundetfør,[samfundet,før]).
-   splitword(samfundettil,[samfundet,til]).
-splitword(frasentrum,[fra,sentrum]). 
-splitword(fratorget,[fra,torget]).
-splitword(fratorvet,[fra,torget]).
-splitword(fratr,[fra,trondheim]). 
-splitword(fratrondheim,[fra,trondheim]). 
-splitword(frai,[fra,i]). 
-splitword(fraklokken,[fra,klokken]).  
-splitword(fremmefør,[fremme,før]).
-splitword(førmandag,[før,mandag]).       %%  ETC 
-splitword(førsebuss,[første,buss]).      %% sp
-splitword(førstebuss,[første,buss]).  
-splitword(førstebussen,[første,buss]). 
-splitword(førstepåske,[første,påske]). 
-
-splitword(gateetter,[gate,etter]). 
-splitword(gatefor,[gate,for]).
-splitword(gatekl,[gate,klokken]).
-splitword(gateklokken,[gate,klokken]).  
-splitword(gatemellom,[gate,mellom]).   
-splitword(gatesom,[gate,som]).  
-splitword(gatetil,[gate,til]).    
-splitword(gayrbussen,[går,bussen]). %% TA-110103  gÃ¥rbussen
-splitword(gløsetter,[gløshaugen,etter]).  %% ?
-splitword(gn,[går,neste]).
-splitword(gneste,[går,neste]). 
-splitword(godmorgen,[god,morgen]). 
-splitword(gårbuss,[går,buss]).   
-splitword(gårdetter,[går,det,etter]). 
-splitword(gårflere,[går,flere]). 
-splitword(gårførste,[går,første]).  
-splitword(gårførst,[går,første]).
-splitword(gårinnom,[går,innom]). 
-splitword(gårlinje,[går,neste]).  
-splitword(gårneste,[går,neste]).  
-splitword(gårnetste,[går,neste]). %% sp 
-splitword(gårnestebuss,[går,neste,buss]).
-splitword(gårnærmest,[går,nærmest]).  
-splitword(gårre,[går,det]). 
-splitword(gårsiste,[går,siste]). 
-splitword(gårbuss,[går,buss]). 
-splitword(gårbussen,[går,bussen]).  
-splitword(gåste,[går,neste]).  
-
-splitword(hadu,[har,du]). 
-splitword(hardu,[har,du]).  
-splitword(haru,[har,du]).  %% dial
-splitword(harnoen,[har,noen]).  
-splitword(harru,[har,du]). 
-splitword(heledagen,[hele,dagen]).  
-splitword(helligdagrutetider,[ruter,på,helligdager]). %% ! 
-splitword(helligdagsrutetider,[ruter,på,helligdager]). 
-splitword(heligdagrutetider,[ruter,på,helligdager]). 
-splitword(heligdagsrutetider,[ruter,på,helligdager]).
-splitword(holdeplassfor,[holdeplass,for]). 
-splitword(holdeplasstil,[holdeplass,til]).   
-splitword(hvaer,[hva,er]). 
-splitword(hvaheter,[hva,heter]).  
-splitword(hvakoster,[hva,koster]). 
-splitword(hvemer,[hvem,er]). 
-splitword(hvilkebusser,[hvilke,busser]). 
-splitword(hvilkenbuss,[hvilken,buss]).  
-splitword(hvisjeg,[hvis,jeg]). 
-splitword(hvordangår,[hvordan,går]). 
-splitword(hvorlang,[hvor,lang]).         %% tid ..
-splitword(hvorlenge,[hvor,lenge]). 
-splitword(hvormange,[hvor,mange]).  
-splitword(hvorofte,[hvor,ofte]).  
-splitword(hvorskal,[hvor,skal]).
-
-splitword(idet,[i,det]). 
-
-splitword(ifb,[i,forbindelse,med]).  %%  i forbindelse med // problem
-splitword(ifbm,[i,forbindelse,med]). %%
-
-splitword(ifm,[i,forbindelse,med]).  %% 
-splitword(ibyen,[i,byen]).  
-splitword(ikeabussen,[buss,til,ikea]). %% Ad Hoc (tt)
-splitword(ikeabuss,[buss,til,ikea]).  
-splitword(imeg,[i,meg]).  
-splitword(innenkl,[innen,klokken]).  
-splitword(innenklokka,[innen,klokken]). 
-splitword(innenklokken,[innen,klokken]). 
-splitword(iløpet,[i,løpet]).   
-splitword(imorgenetter,[imorgen,etter]).
-splitword(imorgentidlig,[imorgen,tidlig]). 
-splitword(irute,[i,rute]). 
-splitword(isentrum,[i,sentrum]).  
-splitword(istf,[i,stedet,for]). 
-splitword(itrondheim,[i,trondheim]). 
-
-splitword(januarsenest,[januar,senest]). %% ?
-splitword(jegdra,[jeg,dra]).   
-splitword(jeger,[jeg,er]).    
-splitword(jegspør,[jeg,spør]). 
-splitword(jegta,[jeg,ta]).  
-splitword(jegvil,[jeg,vil]).  
-splitword(julerutetider,[ruter,i,jula]). %% ! 
-%% splitword(juleruter,[ruter,i,jula]).  %% chr...
-%% splitword(julruter,[ruter,i,jula]). 
-
-splitword(kanfå, [kan,få]).  
-splitword(kanjeg, [kan,jeg]).  
-splitword(kinofor,[kino,for]).     
-splitword(kinokl, [kino,kl]).   
-splitword(kommemeg,   [komme,meg]).  
-splitword(kommetil,   [komme,til]).  
-splitword(kommertil,   [kommer,til]).  
-splitword(kommerjeg,  [kommer,jeg]). 
-splitword(klokkahalv,[klokka,halv]).
-splitword(kosteren,   [koster,en]). 
-splitword(kvabuss,[kva,buss]).  
-
-splitword(kveldsavgang,[avgang,om,kvelden]).       %% ad hoc 
-splitword(kveldsavgangen,[avgangen,om,kvelden]).   %% 
-splitword(kveldsavganger,[avganger,om,kvelden]).   %%
-splitword(kveldsavgangene,[avgangene,om,kvelden]). %%
-
-splitword(kveldtil,[kveld,til]).  
-
-splitword(langtid,[lang,tid]).  
-splitword(lillejul,[lille,jul]). %% ... aften
-splitword(lillejuleaften,[lille,julaften]). 
-splitword(lopet,løpet).   %% TA-101215
-splitword(lørdagfør,[lørdag,før]).       %% etc 
-splitword(lørdagnatt,[lørdag,natt]). 
-
-splitword(lørdagsbuss,   [buss,på,lørdag]). 
-splitword(lørdagsbussen, [buss,på,lørdag]). 
-splitword(lørdagsbusser, [buss,på,lørdag]). 
-splitword(lørdagsbussene,[buss,på,lørdag]).
-splitword(lørdagsformiddag,[lørdag,formiddag]).
-splitword(lørdagsvis,[om,lørdager]). %% !
-
-splitword(nayrmay,[når,må]). 
-splitword(nbf,[neste,buss,fra]).  
-splitword(nordtil,[nord,til]). 
-splitword(opptur,[tur,opp]). 
-
-splitword(lørdagsnatt,[lørdag,natt]).       %%  smtotfl /s
-splitword(lørdagnatta,[lørdag,natt]).
-splitword(lørdagsnatten,[lørdag,natt]).
-splitword(lørdagsruta,[ruten,på,lørdag]).  
-
-%% splitword(lørdagsrute,[rute,på,lødag]). %% Concept
-
-splitword(lørdagsruten,[ruten,på,lørdag]).   %%
-splitword(lørdagsrutene,[ruten,på,lørdag]).  %%
-
-
-splitword(sanntidsinfo,[informasjon,om,forsinkelser]).        %% TA-110309
-splitword(sanntidsinformasjon,[informasjon,om,forsinkelser]). %% TA-101013
-
-% ...
-
-splitword(mandagden, [mandag,den]). 
-splitword(tirsdagden,[tirsdag,den]).
-splitword(onsdagden, [onsdag,den]). 
-splitword(torsdagden,[torsdag,den]). 
-splitword(fredagden, [fredag,den]). 
-splitword(lørdagden, [lørdag,den]). 
-splitword(søndagden, [søndag,den]).  
-
-splitword(mandagklokken, [mandag,klokken]).  
-splitword(tirsdagklokken,[tirsdag,klokken]). 
-splitword(onsdagklokken, [onsdag,klokken]). 
-splitword(torsdagklokken,[torsdag,klokken]).
-splitword(fredagklokken, [fredag,klokken]). 
-splitword(lørdagklokken, [lørdag,klokken]). 
-splitword(søndagklokken, [søndag,klokken]). 
-
-%% etc kl ,  klokka, 
-
-splitword(søndagsbuss,   [buss,på,søndag]). 
-splitword(søndagsbussen, [buss,på,søndag]).
-splitword(søndagsbusser, [buss,på,søndag]).
-splitword(søndagsbussene,[buss,på,søndag]). 
-splitword(søndagsformiddag,[søndag,formiddag]). 
-
-splitword(fredagsettermiddag,[fredag,ettermiddag]).   %%  smtotfl /s
-% ...
-
-splitword(fredagkvelden,[fredag,kveld]).   %%  smtotfl /s
-splitword(fredagskveld,[fredag,kveld]).
-splitword(fredagskvelden,[fredag,kveld]).  
-% ...
-
-splitword(fredagsnatt,[fredag,natt]).  %%  smtotfl /s
-splitword(lørdagsnatt,[lørdag,natt]).  
-
-splitword(fredagsnatta,[fredag,natt]).  %%  smtotfl /s
-splitword(lørdagsnatta,[lørdag,natt]).  
-
-
-splitword(fredagsnatten,[fredag,natt]).  %%  smtotfl /s
-splitword(lørdagsnatten,[lørdag,natt]).  
-
-splitword(mandagmorgen,[mandag,morgen]).  %% smtotfl /s %% Most typical
-splitword(mandagskveld,[mandag,kveld]).
-splitword(mandagsmorgen,[mandag,morgen]). %% smtotfl /s
-splitword(mandagsformiddag,[mandag,formiddag]).
-% ...
-splitword(junikl,  [juni,kl]).
-splitword(julikl,  [juli,kl]).
-
-splitword(mangedager,[mange,dager]).  
-splitword(manpå,  [man,på]).  
-
-splitword(marskl,  [mars,kl]). %% etc
-splitword(maikl,   [mai,kl]).
-splitword(maikl,   [mai,kl]).
-
-splitword(megfra,[meg,fra]). 
-splitword(midtbyenklokken,[midtbyen,klokken]). 
-
-splitword(morgenavganger,[avganger,om,morgenen]). 
-splitword(morgenetter,[morgen,etter]).  
-splitword(morgenettermiddag,[morgen,ettermiddag]). 
-splitword(morgenfra,[morgen,fra]). 
-splitword(morgenfør,[morgen,før]). 
-splitword(morgengår,[morgen,går]). %% TA-100823
-splitword(morgenkveld,[morgen,kveld]). 
-splitword(morgenrundt,[morgen,rundt]).
-splitword(morrafør,[morgen,før]).  
-
-
-splitword(munkegatakl,[munkegata,klokken]).
-splitword(munkegatatil,[munkegata,til]). 
-
-splitword(måeg,[må,jeg]).
-splitword(måjeg,[må,jeg]).
-splitword(månedlig,[hver,måned]).
-splitword(måjeg,   [må,jeg]).  
-   splitword(nåjeg,   [må,jeg]). 
-
-splitword(nattkl,[natt,kl]).   
-splitword(nattakst,[takst,for,nattbuss]). 
-splitword(nayrgayr,[når,går]).    
-splitword(nestebus,[neste,buss]). 
-splitword(nestebuss,[neste,buss]). 
-splitword(nestebussen,[neste,buss]). 
-splitword(nestebussene,[neste,bussene]).
-splitword(nestebusser,[neste,busser]). 
-splitword(nesteavgang,[neste,avgang]). 
-splitword(nesteavganger,[neste,avganger]). 
-splitword(nesteavgangen,[neste,avgangen]). 
-splitword(nesteavgangene,[neste,avgangene]).
-splitword(nestebusser,[neste,busser]). 
-splitword(nestefra,[neste,fra]). 
-splitword(nestegang,[neste,gang]).  
-splitword(nestenr,[neste,nr]).
-splitword(nestesiste,[nest,siste]). 
-splitword(nestetrikk,[neste,trikk]). 
-splitword(nestenbuss,[neste,buss]).
-splitword(nestneste,[andre,neste]).
-splitword(nestnestsiste,[andre,siste]).
-splitword(nestnestnestsiste,[tredje,siste]). 
-splitword(ng,[når,går]). 
-splitword(nifra,[9,fra]).    %% ?
-splitword(niog,[ni,og]).     %% ?
-splitword(nærgår,[når,går]).  
-splitword(nærmestebusstopp,[nærmeste,busstopp]). 
-splitword(nåmå,[nå,må]).  
-splitword(nårå,[når,må]). 
-splitword(nårbgår,[når,går]).
-splitword(nårgå,[når,går]).
-splitword(nårgår,[når,går]).  
-splitword(nårgårdet,[når,går,det]). 
-splitword(nårgårbuss,[når,går,buss]). 
-splitword(nårgårneste,[når,går,neste]).
-splitword(nårjeg,[når,jeg]).  
-splitword(nårkan,[når,kan]). 
-splitword(nårkommer,[når,kommer]). 
-splitword(nårmå,[når,må]).  
-splitword(nårmåjeg,[når,må,jeg]). 
-splitword(nårneste,[når,neste]). 
-splitword(nårngår,[når,går]).  
-splitword(nårpasser,[når,passerer]).    %%  sp
-splitword(nårpasserer,[når,passerer]).  %%
-splitword(nårpå,[når,på]).  
-splitword(nårsentrum,[når,sentrum]). 
-
-splitword(omsentrum,[forbi,sentrum]).  %% sic
-splitword(overneste,[andre,neste]).    %% sic 
-splitword(ogfra,       [og,fra]).  
-splitword(ogklokken,   [og,klokken]).  
-%% splitword(også,        [og,så]).  %% noise|[]
-splitword(overett,    [over,ett]).    
-splitword(overto,    [over,to]).  
-splitword(overtre,    [over,tre]). 
-splitword(overfire,    [over,fire]). 
-splitword(overfem,    [over,fem]). 
-splitword(overseks,    [over,seks]). 
-splitword(oversju,    [over,sju]). 
-splitword(overåtte,    [over,åtte]).  
-splitword(overni,    [over,ni]).
-splitword(overti,    [over,ti]).
-splitword(overelve,    [over,elve]).
-splitword(overtolv,    [over,tolv]).
-
-splitword(passererneste,[passerer,neste]).
-splitword(påhverdager, [på,hverdager]). 
-splitword(påstasjonen, [på,stasjonen]).  
-splitword(påtogstasjonen, [på,togstasjonen]). 
-
-splitword(påsju,[på,klokken,7]). %% etc
-
-splitword(raskestmulig,  [raskest,mulig]). 
-splitword(retursentrum,  [retur,sentrum]).   
-splitword(returtrondheim,[retur,trondheim]). 
-splitword(rundtkl,       [rundt,klokken]).  
-
-splitword(seint,[sent]).   
-splitword(senast,[senest]). %% sw, pre lex for compword 
-splitword(senets,[senest]). 
-
-%¤¤
-
-splitword(senteretkl,  [senteret,klokken]).  
-splitword(senterkl,  [senter,klokken]). 
-splitword(senteretklokken,  [senteret,klokken]). 
-splitword(senterklokken,  [senter,klokken]).
-splitword(sentretkl,   [senteret,klokken]).
-splitword(sentretklokken,   [senteret,klokken]).
-
-splitword(sentralstasjonkl,[sentralstasjon,kl]). 
-splitword(sentrumetter,[sentrum,etter]).  
-splitword(sentrumfor,  [sentrum,for]).  
-splitword(sentrumforbi,  [sentrum,forbi]).
-splitword(sentrumfra,  [sentrum,fra]). %% TA-100927
-splitword(sentrumfør,  [sentrum,før]). 
-splitword(sentruminnen,[sentrum,innen]).
-splitword(sentrumkl,   [sentrum,kl]).  
-splitword(sentrumlørdag,[sentrum,lørdag]). %% etc
-splitword(sentrumsøndag,[sentrum,lørdag]).
-splitword(sentrummed,  [sentrum,med]).  
-splitword(sentrumom,   [sentrum,om]).   
-splitword(sentrumpå,   [sentrum,på]).  
-splitword(sentrumrundt,[sentrum,rundt]). 
-splitword(sentrumsbussen,[buss,forbi,sentrum]).
-splitword(sentrumtil,[sentrum,til]). 
-
-splitword(sistebuss,   [siste,buss]).
-splitword(sisstebussen,[siste,buss]). 
-splitword(sistebussen, [siste,buss]).
-splitword(skalfra,     [skal,fra]).  
-splitword(skaltil,     [skal,til]).   
-splitword(skalreise,   [skal,reise]). 
-splitword(skalvære,    [skal,være]).  
-splitword(skoleetter,  [skole,etter]). 
-splitword(skolekl,     [skole,kl]).  
-splitword(skoletil,    [skole,til]).  
-
-splitword(skyldes, [er,forårsaket,av]).  %%  kan skyldes etc
-splitword(skyldtes,[var,forårsaket,av]). %% NB kan skyldes = rewording/
-
-%% splitword(slikt,       [slike,ting]). %%  finn et slikt tidspunkt
-splitword(slikat,      [slik,at]). 
-
-%% splitword(snakkes,      [snakker,sammen]).   %% hilsen %% TA-110310
-splitword(samsnakkes,   [snakker,sammen]). 
-splitword(somgår,       [som,går]). 
-
-splitword(samfunnet, [samfundet]). %% TA-110314
-splitword(sanfundet, [samfundet]). %%
-
-
-splitword(stasjonkl,    [stasjon,kl]). 
-splitword(stasjonenetter, [stasjonen,etter]). 
-splitword(studentbyfor, [studentby,for]). 
-splitword(studentbytil, [studentby,til]). 
-splitword(sydtil,       [syd,til]).  
-splitword(søndagfra,    [søndag,fra]). 
-splitword(søndagmorgen,   [søndag,morgen]). 
-
-splitword(tabuss,[ta,buss]).  
-splitword(tabussen,[ta,bussen]).   
-splitword(tabbussen,[ta,bussen]). %% sp 
-splitword(tafor,[ta,for]). 
-splitword(tafra,[ta,fra]).  
-splitword(tare,[tar,det]).   
-splitword(tatil,[ta,til]). 
-splitword(telefonentil,[telefonen,til]).
-splitword(tidenimorgen,[tiden,imorgen]).
-splitword(tidergår,[tider,går]). 
-splitword(tilbyen,[til,byen]).
-splitword(tildette,[til,dette]). 
-splitword(tilen,  [til,en]).  
-splitword(tilfull,  [til,full]).  %% ?
-splitword(tilog,  [til,og]).      %% ..med
-splitword(tilkl,[til,kl]). 
-splitword(tilklokka,[til,kl]). 
-splitword(tilklokkwn,[til,kl]). 
-splitword(tilmidtbyen,[til,midtbyen]). 
-splitword(tilrette,[til,rette]).
-splitword(tilsentralstasjonen,[til,sentralstasjonen]).
-splitword(tilsentrum,[til,sentrum]). 
-splitword(tiltrondheim,[til,trondheim]).
-splitword(tilå,[til,å]). 
-splitword(tipå,[ti,på]).  
-splitword(tirsdagmellom,[tirsdag,mellom]). %% etc
-splitword(tirsdagmorgen,[tirsdag,morgen]).
-splitword(tirsdagetter,[tirsdag,etter]).   %% etc etc
-splitword(togfra,[tog,fra]).  
-splitword(togtil,[tog,til]).  
-splitword(togtas,[tog,tas]).  
-splitword(torgetden,[torget,den]). 
-splitword(torgetfør,[torget,før]).   
-splitword(torgetkl,[torget,kl]).   
-splitword(torvetden,[torvet,den]).  
-splitword(trafikknår,trafikknår).   
-splitword(tredjenest,[tredje,neste]). 
-splitword(treneste,[tre,neste]).  
-splitword(trikkfra,[trikk,fra]). 
-splitword(trikketur,[tur,med,trikk]). %% ?
-splitword(trondheimtil,[trondheim,til]). 
-splitword(trondheimetter,[trondheim,etter]).
-splitword(trondheimnår,[trondheim,når]). 
-
-%% splitword(turingtesten,[turings,test]). 
-
-splitword(uoppfordret,[uten,oppfordring]).
-splitword(utav,[ut,av]). 
-
-%% splitword(vare,[være]). %%  pre lex for compword 
-
-splitword(varriktig,[var,riktig]). 
-
-%% splitword(varsle10,[varsle,10]). 
-splitword(vegetter,[veg,etter]).  
-splitword(vegfor,[veg,for]). 
-splitword(vegkl,[vei,kl]). 
-splitword(vegtil,[veg,til]). 
-splitword(veietter,[vei,etter]).  
-splitword(veifor,[vei,for]). 
-splitword(veikl,[vei,kl]).   
-splitword(veiklokken,[vei,klokken]).  
-splitword(veimed,[vei,med]).  
-splitword(veitil,[vei,til]). 
-splitword(verkitj,[virker,ikke]).  %%  :-)
-splitword(vetikke,[vet,ikke]).  
-splitword(vilta,[vil,ta]).   
-splitword(vkl,[vei,klokken]).      %%  ?
-splitword(væreder,[være,der]).   
-splitword(væree,[være]). %% pre lex for compword 
-splitword(værei,[være,i]).   
-splitword(væreved,[være,ved]). 
-
-splitword(ække,[er,ikke]). 
-
-splitword(åbli,[å,bli]).  
-splitword(åta,[å,ta]). 
-splitword(åvære,[å,være]).  
-
 
 
 %% Ways to spell telephone in Norwegian. 
@@ -19783,255 +21372,6 @@ tlf(tnumrene).
 tlf(tnumret).
 
 
-%%%%%%%%%%%%%%%%%%
-
-%% // Dont cheat with compword unless you have to !
-
-
-
-%% NB   xcompword are not applied recursively nor exclusively
-%% System will try xcompword first, but
-%% you should try compword first
-
-
-% Use with extreme care, and only if compword fails
-% Can be used if there is an error rehabilitation
-% No warranty
-
-%% xcompwords is executed sequentially, and must sometimes be carefully sorted.
-% Longest first if identical initially
-
-%% EXCLUSIVE COMPWORD : kills alternatives  
-
-
-%% PRIORITY LIST,   must come first
-    
-
-%% xcompword(her,[er],er). %% selv om det her er %%
-%% xcompword(det,[her],dette). 
-%% replacement are sequential by occurrence 
-
-    xcompword(må,[jeg,to],går). %% SIC (ta) 
-    xcompword(må,[me,ta],går).  %% dial
-    xcompword(mye,[de,vil],mye).   %% <-- left recursive
-
-%%  syndrom.  
-%%  lex tillater ikke venstre-rekursive erstatninger
-
-%%  mye de vil -> mye
-%%  mye  removes de vil
-%%  but 'de vil' are still on the txt, and will be reintroduced
-
-    xcompword(fra,[a,til,b],overalt). %% rough %% TA-110122
-    xcompword(fra,[a,te,b],overalt).  %% rough
-
-%%    xcompword(a,[til,b],atb). %% AtB  når går bussen fra ... %%  TA-100828 :-) 
-%%    xcompword(a,[te,b],atb).  %% TA-110128  rough
-%%    xcompword(a,[t,b],atb).   %% 
-
-%%     xcompword(alt,['/',statoil],'ALT/Statoil'). %% emergency, alt confuses
-
-%    xcompword(ga,['\203',ayr],går).  %%    gÃƒÂ¥r  %%  ad hoc
-%    xcompword(gl,['\211',shaugen],gløshaugen). %%    gÃƒÂ¥r  %%  ad hoc
-%    xcompword(na,['\203',ayr],når).  %%    nÃƒÂ¥r  %% ad hoc
-
-    xcompword(17,['.',mai,'-',rute],rute17mai). 
-    xcompword(17,['.',mai,'-',ruter],rute17mai). 
-    xcompword(17,['.',mai,'-',rutene],rute17mai). 
-
-    xcompword(17,['.',mai,rute],rute17mai). 
-    xcompword(17,['.',mai,ruter],rute17mai). 
-    xcompword(17,['.',mai,rutene],rute17mai). 
-
-    xcompword(a,['/',s],'A/S'). %%  Problem  A/S
-
-    xcompword(ang,['.'],angående). 
-
-
-    xcompword(da,[':'],da). 
-    xcompword(da,[jeg,må,være,fremme],før). 
-    xcompword(da,[jeg,må,være,der],før). 
-    xcompword(da,[sjø],[]).  %% Dial %% TA-110330 :-)
-    xcompword(da,[som],som). %% TA-101228
-    xcompword(da,[så],[]).   %% TA-101123
-
-    xcompword(du,[','],[]). %%  // only if ',' is not noise
-    xcompword(du,[nå],du).  %% cheat %% hvis du nå løper 
-
-%%     xcompword(dvs,['.'],og). %% TA-110304  (unnec rewording)
-    xcompword(dvs,[],og).    %%
-
-    xcompword(det,[være,seg],enten).
-
-    xcompword(en,[av,de],en).    %%  rough
-    xcompword(en,[av,disse],en). %%
-    xcompword(en,[av,mine],en).  %% 
-    xcompword(en,[din],din).     %% IQ'en din = IQ din
-    xcompword(en,[av,våre],våre).    %% etc 
-
-    xcompword(et,[og,samme],samme).  
-
-    xcompword(ett,[av,de],et).    %% rough
-    xcompword(ett,[av,disse],et). %% 
-    xcompword(ett,[av,mine],et).  %%  
-
-    xcompword(f,['.',o,'.',m,'.'],etter). 
-    xcompword(f,['.',o,'.',m],etter). 
-    xcompword(f,['.',eks,'.'],redundant0). %% f.eks. = [] %% NB    
-    xcompword(f,[å,v,p],til).  %%  for å være på, f ambig 
-    
-    xcompword(fom,['.'],etter).
-
-    xcompword(få,[tak,i],finne). %% TA-100902
-    xcompword(får,[opp],mottar). %% nofunk particlev1 
-
-    xcompword(få,[på,plass],lag).  
-    xcompword(får,[på,plass],lager). 
-    xcompword(fikk,[på,plass],laget). 
-
-    xcompword(får,[tak,i],mottar).   %% forstår ? 
-    xcompword(får,[tak,på],forstår). %% forstår ? %% particlev2?
-
-    xcompword(hpl,['.'],holdeplass). 
-
-
-    xcompword(i,[fra],fra).       %% TA-110221
-    xcompword(i,[dag],idag).      %% TA-100828 (NB)
-    xcompword(i,[gjen],igjen).    %% TA-10111
-    xcompword(i,[går],igår).      %% TA-100909
-    xcompword(i,[morra],imorgen). %% TA-101115
-    
-
-    xcompword(i,[morgen],imorgen).            %% #2
-
-    xcompword(i,[hvilken,grad],hvordan). %%(hvormye?) 
-    xcompword(i,[løpet,av],i).   %%  "during"
-    xcompword(i,[orden],bra).    %%  skal være i=ankomme/ være står før i
-
-    xcompword(i,[over,i,morgen],overimorgen). %% #1 %% TA-110401
-%%     xcompword(i,[over],over). %% TA-110401   %% destroys   xcompword(i,[over,i,morgen]
-
-
-
-    xcompword(i,[phone],iphone). 
-    xcompword(i,[prinsippet],redundant0).
-    xcompword(i,[realiteten],redundant0). 
-    xcompword(i,[virkeligheten],redundant0). 
-  
-    xcompword(igjen,[til],til). %% TA-100908
-    xcompword(ikke,[sant],[]).
-    xcompword(ikke,[så],ikke).  %% TA-110105
-    xcompword(nei,[ikke],ikke).  
-    xcompword(nei,[tvert,imot],nei). 
-
-    xcompword(nettside,[ansvarlig],administrator).  %% rough 
-    xcompword(nett,[side,ansvarlig],administrator). %% rough 
-
-    xcompword(noe,[konkret],noe). %% TA-110111
-    xcompword(noe,[rart],noe).    %% TA-100831 :-)
-
-    xcompword(og,[da,altså],[]). 
-    xcompword(om,[bord],ombord). %% TA-100909
-    xcompword(om,[f,'.',eks,'.'],om). %% etc 
-
-%%     xcompword(st,[':'],st). %%  ':' as skipdot//  unnec
-
-    xcompword(sy,['.'],st). %% Olvs.. 
-
-    xcompword(t,[':',kort,periode],tkort).    %% special
-      xcompword(t,[':',kort],tkort).          %% 
-      xcompword(t,[':',kortet],tkort).  
-
-    xcompword(t,['-',kort],tkort).  
-    xcompword(t,['-',kortet],tkort). 
-
-    xcompword(t,[kort],tkort). 
-    xcompword(t,[kortet],tkort). 
-
-    xcompword(t,['.',o,'.',m,'.'],før). 
-    xcompword(t,['.',o,'.',m],før). 
-
-%%     xcompword(t,['.'],til).    %% TA-110405 einar t.
-
-%%     xcompword(tom,['.'],før).  %% bussen er tom %% TA-110620 Haz
-
-    xcompword(team,['-',trafikk],tt). %%  '-' trouble
-
-    xcompword(team,[trafikks],teams). %%  dirty 
-
-    xcompword(web,['-',orientert],webbasert). %% Techn
-    xcompword(web,['-',basert],webbasert).   %% 
-    xcompword(web,['-',side],webside). %% Techn 
-    xcompword(web,['-',siden],websiden).
-    xcompword(web,['-',sider],websider).
-    xcompword(web,['-',sidene],websidene).
-
-    xcompword(web,[basert],webbasert).   %% 
-    xcompword(web,[oriented],webbasert). %% Techn 
-  
-    xcompword(web,[internett],internett).  %% own 
-
-%% Event named days 
-
-
-%% xcompword(når,[pensjoneres,arvid,holme],arvid_holme_day).        %%TA-101013 ...
-%% xcompword(arvid,[holme,går,av,med,pensjon],arvid_holme_day).    
-%% xcompword(arvid,[holme,går,av],arvid_holme_day).    %% går av bussen 
-%% xcompword(arvid,[holme,slutter],arvid_holme_day).  
-%% xcompword(arvid,[holme,blir,pensjonist],arvid_holme_day).
-%% xcompword(arvid,[holme,pensjonerer,seg],arvid_holme_day).
-
-xcompword(president,[kennedy,ble,drept],john_f_kennedy_day).%% 22.11.1963
-xcompword(oddvar,[brå,brakk,staven],oddvar_brå_day).        %% 25.02.1982
-
-xcompword(hans,[finnes,gate],hans_finnes_street). %% Ad Hoc Despair 
-
-
-
-%% xcompword('.',['\''],'.'). %% close to <- (return) %% unnec ?
-xcompword('.',['/'],'.'). 
-
-xcompword(':',[':'],':'). 
-xcompword(':',[')'],[]). %% :) %% \+ '' %% TA-110624
-xcompword(':',['('],[]). %%    %% TA-110630
-
-xcompword(0,[l],1). %% etc 
-
-xcompword(l,[0],10). %% L 
-xcompword(l,[1],11). %% 
-xcompword(l,[2],12). %%
-xcompword(l,[3],13). %%
-xcompword(l,[4],14). %% 
-xcompword(l,[5],15). %%
-xcompword(l,[6],16). %%
-xcompword(l,[7],17). %% 
-xcompword(l,[8],18). %%
-xcompword(l,[9],19). %% 
-
-xcompword(2,[b],2). %% Experiment// not 2 buses
-
-xcompword(2,['-',3],2). %% fast uttrykk, 2 is conservative
-xcompword(3,['-',4],3). 
-xcompword(4,['-',5],4). 
-xcompword(5,['-',6],5). 
-
-xcompword(e,[post],epost).  
-xcompword(e,[posten],eposten).  
-
-xcompword(e,['-',post],epost). 
-xcompword(e,['-',posten],eposten). 
-
-xcompword(email,[adresse],emailadresse). 
-xcompword(email,[adressen],emailadressen). 
-
-xcompword(og,[alt,mulig],[]). %% (trailer ?)
-xcompword(der,[må,jeg,være,seinest],før).  %% ?
-xcompword(så,[å],å).      %% for så å ta buss 
-xcompword(trondheim,[s],ts). %% ikke sentrum %% Special
-
-
-%%%%%%% END PRIORITY LIST %%%
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -20039,1401 +21379,3 @@ xcompword(trondheim,[s],ts). %% ikke sentrum %% Special
 %  This file is already too big to maintain for any               %
 %  sane person. It must under no circumstances exceed             %
 %  20910 lines                                                    % 
-
-
-
-    xcompword(buss,[rute,r],bussruter).   %% TA-110724
-   xcompword(å,[tid],når).  %% dial 
-    xcompword(å,[å],å). %% repair 
-
-    xcompword(jeg,[meg],jeg). %% ? hvordan kommer jeg meg %%** er jeg meg ?
-
-    xcompword(vii,[s],viis).         %% Nød H7 
-    xcompword(den,[sjuendes],viis).  %%
-
-    xcompword(rekke,[bort],gå). %% (også reach)
-    xcompword(rekke,[ned],gå).
-    xcompword(rekke,[opp],gå).
-
-%% // dont split  d1 etc 
-
-    xcompword(d,[1],d1). %% Ad Hoc   Dronningens gt
-    xcompword(d,[2],d2).
-    xcompword(d,[3],d3).
-    xcompword(d,[4],d4).
-
-    xcompword(m,[1],m1). %% Ad Hoc   Munkeg
-    xcompword(m,[2],m2).
-    xcompword(m,[3],m3).
-    xcompword(m,[4],m4).
-    xcompword(m,[5],m5).
-
-    xcompword(1, [o],10).
-    xcompword(2, [o],20).
-    xcompword(3, [o],30).
-    xcompword(4, [o],40).
-    xcompword(5, [o],50).
-    xcompword(6, [o],60).
-
-
- %%   xcompword(av,[på],til). %% Holdeplassen som jeg skal av på %%  Haz %% TA-110629
-
- 
-    xcompword(og,['/',eller],eller).  
-%% xcompword(e,['.',c], ec).     %%  e.c. dahls gate ? VERY AD HOC
-%% xcompword(e,['.'],etter).     %%  e.c. dahls gate ???
-
-   xcompword(e,['.',l],[]). 
-   xcompword(e,[6],e6).  
-   xcompword(el,['.'],eller).  
-
-   xcompword(eller,[kl,'.'],etter). 
-      xcompword(eller,[kl],etter).      %%  (kl) NB seq
-
-   xcompword(eller,[annet],[]).
-   xcompword(eller,[for],for).     %% ad hoc
-   xcompword(eller,[hva],[]).      %% TA-101018
-   xcompword(eller,[omvendt],[]).  %% TA-110629
-
-    xcompword(ellers,[ingenting],[]). %%  etc.
-
-    xcompword(f,['.',eks,'.'],[]). %% If redun. adv, then for eksempel
-    xcompword(f,['.',eks],[]). 
-    xcompword(f,[eks,'.'],[]).
-    xcompword(f,[eks],[]).
-
-    xcompword(ekstra,[buss],ekstrabuss). 
-    xcompword(ekstra,[busser],ekstrabusser).
-    xcompword(ekstraavganger,[rute],ekstrabusser). %% ekstraavganger rute 10 skistua * fins . 
-    xcompword(ekstraavgang,[rute],ekstrabuss). %% ad hoc
-
-   xcompword(eller,[klokka],etter). 
-   xcompword(eller,[klokken],etter).
-
-    xcompword(eller,[senere],[]).  
-
-
-    xcompword(færre,[eller,ingen],færre). %% problem 
-
-    xcompword(kl,[o],klokken).        %% kl o900? 
-    xcompword(k,[kl],klokken).        %% repair 
-    xcompword(k,[l],klokken). 
-    xcompword(kl,[kl],klokken).   
-    xcompword(kl,['.'],klokken). 
-    xcompword(klok,[ken],klokken).   
-
-
-xcompword(men,[når,'?'],'?'). %% TA-110824
-
-    xcompword(senest,[ta],ta).  %% rough, but context will help 
- 
-    xcompword(like,[godt],godt).
-    xcompword(like,[greit],godt).
-  
-    xcompword(se,[nærmere,på],undersøke). %% probl. prep(nærmere) 
-
-%% compword(se,[siste],siste).  %% why
-
-    xcompword(se,[å],[]). 
-%%     xcompword(selv,[om],hvis). %% uansett om %% gram 
-%%     xcompword(ser,[ut,som],ligner). %% Det ser ut som om
-%%     xcompword(se,[ut,som],ligne).   %%
-
-    xcompword(selv,[om],selvom).  %% Technical, problem 
-    xcompword(uavhengig,[av,om],selvom). %% TA-110111
-
-    xcompword(senest,[fremme],fremme).  % seinest/ framme etc 
-
-
-    xcompword(snakk,[om],meningen). %% TA-110724 .. at
-
-%%     xcompword(som,[at],at). %% det virker som at %% TA-110122 unnec
-    xcompword(som,[deretter],som). %%  som deretter går til byen? 
-
-    xcompword(som,[det,skal],bra). %% TA-110110
-    
-    xcompword(som,[følger],følgende).  
-
-%%     xcompword(som,[om],at). %% det virker som om %% rough %% TA-110122
-
-    xcompword(virkelig,[ikke],ikke).
-
-    xcompword(vinter,[ruta],vinterruten). 
-    xcompword(vinter,[rute],vinterrute).
-    xcompword(vinter,[ruten],vinterruten).
-    xcompword(vinter,[rutene],vinterrutene).
-    xcompword(vinter,[ruter],vinterruter).
-
-    xcompword(sommer,[ruta],sommerruten). 
-    xcompword(sommer,[rute],sommerrute).
-    xcompword(sommer,[ruten],sommerruten).
-    xcompword(sommer,[rutene],sommerrutene).
-    xcompword(sommer,[ruter],sommerruter).
-
-    xcompword(være,[med],komme). %% diff in gram
-    xcompword(er,[med],kommer).
-
-%% compword(er,[på],er). %% NB ikke X beløpet er på 30 kroner
-                         %% jeg er på nardo \= jeg er nardo
-    xcompword(er,[':'],er).     %% TA-110107
-    xcompword(var,[':'],var).   %%
-    xcompword(blir,[':'],blir). %%
-
-    xcompword(var,[med],kom). 
-    xcompword(vært,[med],kom). 
-
-    xcompword(være,[til,hjelp],hjelpe).   %% Fast uttrykk ?
-    xcompword(være,[til,hjelpe],hjelpe).  %% sp
-    xcompword(være,[der],ankomme). 
-    xcompword(vær,[ei],til). %% være i 
-
-
-%% NB   compword are not applied recursively nor exclusively
-
-
-/*  %% hva er 4 4. = hva er 4 fjerde 
-compword(1,['.'],første).
-compword(2,['.'],andre). 
-compword(3,['.'],tredje).
-compword(4,['.'],fjerde). 
-*/
-
-% compword(5,['.'],femte).  %%  neste avgang etter 09:05 .  \==> femte %% ? NO Problem 
-
-    xcompword(etter,['.'],etter). %% Etc 
-
-    xcompword('.',[etter],etter).
-    xcompword('.',[fra],fra). 
-    xcompword('.',[før],før). 
-    xcompword('.',[til],til).
-    xcompword('.',['.'],'.'). 
-    xcompword('.',[framme],framme). 
-
-    xcompword('?',[ca,'.'],ca). %% addendum 
-    xcompword('?',[ca],ca).     %% addendum
-
-    xcompword(':',[d],[]). %% :D  
-    xcompword(':',[p],[]). %% :P 
-
-%% compword(';',[')'],[]). 
-
-%% buss 7.00 - 8.00 \=>  7 08 00 
-
-/* %% TA-110406     kl 06.00 06.04.11 *= 6 . 0 6  .04.11 = 6.6 4.11
-
-    xcompword(0,[0],00).  
-    xcompword(0,[1],01). 
-    xcompword(0,[2],02).
-    xcompword(0,[3],03).
-    xcompword(0,[4],04). 
-    xcompword(0,[5],05).
-    xcompword(0,[6],06).
-    xcompword(0,[7],07).
-    xcompword(0,[8],08).
-    xcompword(0,[9],09).
-*/
-
-    xcompword(0,[g],og). 
-
-%%% hvilken holdeplass til buss |7 er| nærmest møllenberg
-
-
-
-%% ALPHABETIC 
-
-
-%%    xcompword(videre,[derfra],[]). %% ad hoc subopt 
-
-    xcompword(begynner,[å],vil).  %%  rough
-    xcompword(begynne,[å],[]).     %%
-    xcompword(begynne,[med,å],[]). %%
-
-    xcompword(befinner,[meg],er). %% ETC (replaces befind) 
-
-    xcompword(benytte,[meg,av],benytte).  
-    xcompword(benyttet,[meg,av],benyttet). 
-
-    xcompword(bl,['.',a,'.'],[]). %% etc 
-
-xcompword(bort,[til],til).
-
-
-    xcompword(bra,[når],når). %% Fedup
-    xcompword(bra,[til],bra). %% Fedup %% står bra til 
-
-%%     xcompword(ser,[ut,som],stemmer). %% rough one word substitute 
-
-%%    xcompword(anse,[for,å],mene).   %% fast uttrykk 
-%%    xcompword(anser,[for,å],mener). %%
-
-%%       bussen går .. for å være 
-
-%%     xcompword(av,[disse],[]). %% noen av disse 
-
-    xcompword(buss,['-',stasjonen],busstasjonen). %% nec  
-    xcompword(buss,[flybussen],flybussen). 
-    xcompword(buss,[eller,trikk],kjøretøy).
-
-    xcompword(buss,[nummer],buss). %% når passerer buss nummer tempe 
-    xcompword(buss,[rute],bussrute).
-
-   xcompword(bussen,[buss],buss). %% repair 
-   xcompword(bussen,[før,siste],nestsiste). %% Hazard 
-
-   xcompword(buss,  [n],bussen).         %% buss'n
-   xcompword(bussen,  [nr],bussen). %% Når går bussen... nr fra  wullumsgården
-
-   xcompword(buss,[når,buss], buss).  %% repair 
-   xcompword(buss,[når,går,det,buss], buss).  %% repair
-   xcompword(buss,[når,går,neste,buss], buss). 
-   xcompword(buss,[når,går,neste], buss). 
-
-
-
-%%     xcompword(buss,[når], buss).      %% nr    %% doesnt help 
-    xcompword(buss,[når,går], buss). %% buss når går 6 fra byen   
-
-xcompword(buss,[på,rute],buss).  
-
-    xcompword(buss,[rute,nr],buss).      %% etc 
-
-    xcompword(buss,[ruta],bussruten).    %% amb. experiment   
-
-
-
-
-%%%     xcompword(buss,[rute],bussrute).     %%   -> gram hovedvogn rute       
-                                             %% suspended for test
-    xcompword(buss,[ruter],bussruter).   %%
-
-    xcompword(buss,[tider],busstider). 
-    xcompword(bussen,[går,bussen],bussen). %% err ->x
-    xcompword(by,[en],byen). 
-    xcompword(by,[n],byen).    
-
-    xcompword(by,[buss],buss).  %%  X
-
-    xcompword(bår,[går],går). %% avoid amb 
-
-
-    xcompword(ca,['.'],ca).    %%
-    xcompword(ca,[':'],ca).    %%
-
-   xcompword(ca,[ved],i).  
-
-    xcompword(da,[ta],ta).  %% pga da -> ta repair 
-%%  må jeg da ta removes da because må is invoked before  da ta
-    
-    xcompword(dagen,[etter,idag],imorgen). 
-    xcompword(dagen,[etter,i,dag],imorgen). 
-
-    xcompword(dagen,[etter,i,morgen],overimorgen). %% cathch i morgen
-         %% TA-110401
-
-    xcompword(dagen,[etter,morgendagen],overimorgen). 
-
-    xcompword(dagen, [før,i,morgen],idag).  %%  :-)  %% TA-110401
-    xcompword(de,[ca],de). 
-    xcompword(de,[forskjellige],[]). 
-    %%% xcompword(de,[fleste],alle). %% rough (?) 
-
-    xcompword(de,[fleste,av],alle). %% rough
-    xcompword(de,[fleste],mange).   %%
-
-    xcompword(definert,[som],lik). %% ad hoc 
-
-    xcompword(deg,[og,dine],deg).  %% dine is ellipt.
-    xcompword(den,[eller,de],de). 
-xcompword(det,[buss,går],buss). %%  \+ x <--- ???
-%%     compword(det,[der],dette).  %% regner det der jeg bor
-
-    xcompword(det,[det,er],noe). %% rough
-
-%% compword(det,[er,greit],ok).  %% -> gram 
-%% compword(det,[er,greitt],ok). 
-    xcompword(det,[der],dette). 
-    
-    xcompword(det,[enkleste],løsningen). %% TA-110807
-
-%%    xcompword(det,[med,buss],buss). %% Hvor langt er det med buss
-%%    xcompword(da,[ser,det,ut,til,at],[]).  -> gram
-
-%%    xcompword(det,[samme,som],slik). %% rough hazard  %%  svaret er  ikke det samme som i går *
-%%   jeg sier det samme som deg 
-
-    xcompword(den,[noen], noen). %% det noen
-    xcompword(den,[i,morgen],imorgen). %% TA-110401
-
-    xcompword(den,[her],den).
-    xcompword(det,[her],det).
-
-    xcompword(den,[varianten],denne). %% generic
-
-    xcompword(dere,[begge],dere). 
-
-    xcompword(det,[siste,du,sa],dette). 
-    xcompword(det,[siste],dette).
-
-    xcompword(det,[spørs,om],[]). %% TA-110112
-    xcompword(spørs,[om],[]).     %%
-
-    xcompword(d,[her],dette).  
-    xcompword(d,[hær],dette). 
-    xcompword(det,[for,noe],det).   
-%%     xcompword(det,[her],dette). %% coll det her er 
-    xcompword(det,[hær],dette).
-    xcompword(dette,[her],dette). 
-    xcompword(dette,[hær],dette).
-    xcompword(dette,[for,noe],dette). 
-
-   xcompword(dit,    [jeg,bor],hjem).  
-   xcompword(der,    [jeg,bor],hjemme). 
-   xcompword(der,    [jeg,må,være],før).  
-   xcompword(der,    [må,jeg,være],før).
-   xcompword(der,    [jeg,må,være,seinest],før). 
-   xcompword(der,    [jeg,må,være,senest],før). 
-   xcompword(der,    [må,jeg,være,senest],før).   %% etc
-
-    xcompword(du,[du],du). %% own
-    xcompword(du,[personlig],du).
-    xcompword(du,[selv],du).
-    xcompword(dårlig,[gjort],dårlig). %% TA-110113
-
-    xcompword(eller,[i,nærheten],[]).
-
-
-    xcompword(en,[ca,'.'],ca). %% fra Höiseth om en ca.  en halv time
-    xcompword(en,[ca],ca).  
-
-    xcompword(en,[gang,for,alle],alltid). 
-    xcompword(en,[gruppe,med],[]).    %%.. studenter
-%%     xcompword(en,[gruppe],[]).     %% jeg reiser i en gruppe 
-    xcompword(en,[gjeng,med],[]).   %%.. studenter 
-    xcompword(en,[gjeng],[]).      %%.. studenter
-
-    xcompword(en,[sjelden,gang],sjelden). 
-
-    xcompword(en,[eller,annen],en).
-
-    xcompword(en,[gjeng],mange).
-
-    xcompword(endres,['/',slettes],endres). %% weaker
-
-
-
-    xcompword(en,[gang],redundant0). 
-
-    xcompword(enn,[avtalt],[]). %% TA-110105
-    xcompword(enn,[før],[]).    %% tidligere enn før %% rough
-    xcompword(enn,[ellers],[]). 
-    xcompword(enn,[tidligere],[]).    %% tidligere enn før %% rough
-
-    xcompword(er,[det,med],er). %% hvordan e.d.m. 
-    xcompword(gikk,[det,med],var). 
-%%     xcompword(går,[det,med],er).   %% hvordan går det med deg %% TA-101202
-
-   xcompword(er,[det,du,har],fins).  
-   xcompword(er,[det,som],[]). %% .. kjører // er det = exist (gram) 
-   xcompword(er,[det,å,være],virker). %% ... en datamaskin :-)
-
-    xcompword(er,[kjører],går). %% AVOID TAKE kjører
-   xcompword(er,[enig,i],mener). 
-   xcompword(e,[enig,i],mener). %% ?
-   xcompword(er,[når],er).
-   xcompword(er,[passerer], passerer).      %%  repair  
-%% compword(er,[planlagt], går). %% rough 
-
-    xcompword(er,[tillagt],har). %% ad hoc 
-    xcompword(er,[vil],vil).            %% Repair
-
-    xcompword(er,[ute,etter],søker).  
-    xcompword(var,[ute,etter],søkte).  
-
-    xcompword(et,[eller,annet],noe). 
-    xcompword(ett,[eller,annet],noe). %% 
-
-%    xcompword(et,[aøyeblikk,bare],[]). %% spam
-    xcompword(et,[øyeblikk,bare],[]). 
-
-    xcompword(et,[et],et). %% own 
-
-%%    xcompword(er,[hyppig,forekommende],skjer). %% -- ofte %%
-
-    xcompword(etter,[denne],deretter).
-    xcompword(etter,[den,som,går],efter).    %%  efter = strict after/techn 
-    xcompword(etter,[ønske],redundant0). %% TA-101004 ad hoc
-
-%%     xcompword(etter,[det],deretter).    %% Telebuster!  %% suspended .. etter det jeg forstår 
-
-    xcompword(etter,[dette],deretter).  %% 
-
-    xcompword(etter,[nå],heretter). 
-
-    xcompword(ev,['.'],[]). 
-    xcompword(evt,['.'],[]). 
-    xcompword(f,[eks],redundant0).    
-    xcompword(f,['.',eks,'.'],redundant0). 
-    xcompword(f,['.',eks],redundant0).
-
-    xcompword(feiler,[det],plager). %% rough (be wrong with) %% TA-101103
-    xcompword(fint,[å],å). %% rekker f.å. 
-
-%% Begin FOR
-
-%%       xcompword(for,[å,være],er). %% anser for å være= anser er
-    xcompword(for,[den,sakens,skyld],redundant0). 
-    xcompword(for,[eksempel],redundant0).         %% f.eks. = []
-    xcompword(for,[min,del],redundant0).          %% TA-101117
-    xcompword(for,[sikkerhets,skyld],redundant0). 
-
-    xcompword(for,[øyeblikket],nå). %% TA-101123
-
-    xcompword(for,[å,være,der,før],før).  %#1        %% TA-100921
-    xcompword(for,[å,være,der],før).      %#2        %%
-    xcompword(for,[for],for).      
-    xcompword(for,[p,være,pa],til). 
-
-    xcompword(for,[æ,være,i],til).   %%  æ sp
-    xcompword(for,[øvrig],forøvrig). %% 
-
-    xcompword(far,[a,være, i],til). %% no pardon
-
-    xcompword(flest,[mulig],mange). 
-
-    xcompword(for,[tidlig,framme],fortidlig). 
-    xcompword(for,[tidlig,ute],fortidlig).
-    xcompword(for,[tidlig],fortidlig).
-
-    xcompword(for,[å,vær,ei],til).  %% være i   
-    xcompword(for,[å,våre,på],til). %% æ-trøbbel 
-
-    xcompword(for,[og,være,på],til).     %%   spiw
-    xcompword(fo,[rå,være,i],til).  
-    xcompword(fo,[rå,være,på],til). 
-
-    xcompword(for,[p,være,i], til).  
-    xcompword(for,[p,være,på], til).
-    xcompword(for,[på,være,i], til).  
-    xcompword(for,[på,være,på], til).  
-%% compword(for,[å,komme,til], til). 
-    xcompword(for,['?' ,komme,til], til).
-    xcompword(fortelle,[med],fortelle). %% 
-    xcompword(for,[for],for). 
-    xcompword(for,[i,være,på],til). 
-
-
-     xcompword(for,[langsomt],forsinket). %% 
-     xcompword(for,[sakte],forsinket). %% 
-     xcompword(for,[sent],forsinket). %% 
-
-    xcompword(for,[være,på],til).   %%
-    xcompword(for,[sen],forsinket).  
-    xcompword(for,[sein],forsinket). 
-    xcompword(for,[sent],forsinket).  
-    xcompword(for,[seint],forsinket). 
-
-    xcompword(for,[øyeblikket],[]). %% #->  nå // rough 
-
-    xcompword(for,[å,ved],til). 
-
-    xcompword(for,[å,rekke,frem ,til], til). 
-    xcompword(for,[å,rekke,frem],før).  
-    xcompword(for,[å,være,der,til],før). 
-   xcompword(for,[å,være,der,før],før).
-
-%% compword(for,[å,være,der],[]).  
-
-    xcompword(for,[være,der],[]). 
-
-   xcompword(for,[æ,være,på],til). 
-   xcompword(for,[æ,vere,på],til). 
-   xcompword(får,[æ,være,på],til). 
-   xcompword(får,[å,vere,på],til). %% no pardon
-
-    xcompword(fører,[til],forårsaker).  %% problem fører=noun 
-
-
-%% compword(før,[den],derfør).       %% Technical  før dette blir verifisert *
-%%    xcompword(før,[denne],derfør). 
-%% compword(før,[det],derfør).       %% Dialog
-%%    xcompword(før,[dette],derfør). %% 
-
-    xcompword(før,[å,være,i],til).   %% no pardon 
-    xcompword(før,[ay,være,i],til).  %% no pardon %% TA-110518
-    xcompword(før,[og,etter],rundt). %% rough   utenfor ? 
-
-    xcompword(før,[klokka,blir],før). %% etc. ad hoc 
-
-    xcompword(for,[i,morgen],imorgen). %% TA-110401
-    xcompword(for,[og,være,i],til).     %% TA-101206 %% ... // err
-    xcompword(for,[så,å,være,på],til). 
-
-%%    xcompword(for,[å,være,der,etter],etter).  
-%%    xcompword(for,[å,være,der],før).          %% suspended
-
-%  
-    xcompword(aldri,[i,rute],forsinket). 
-    xcompword(aldri,[slik],umulig). %% at trikken står 
-
-    xcompword(i,[første,omgang],[]). %% redundant0). %% TA-110707
-   xcompword(alle,[andre],andre). 
-   xcompword(alle,[dine],dine).  
-   xcompword(alle,[disse],disse).  
-   xcompword(alle,[mine],mine). 
-   xcompword(alle,[sine],sine). 
-   xcompword(alle,[våre],våre). 
-    xcompword(allerede,[nå],nå). %% TA-110426
-    xcompword(alt,[mulig],alt). 
-    xcompword(an,[til],an).
-    xcompword(andre,[enn],unntatt).
-    xcompword(ass,[buss],ekstrabuss). 
-    xcompword(ass,[bussen],ekstrabussen).
-    xcompword(ass,[bussene],ekstrabussene).
-    xcompword(ass,[busser],ekstrabusser).
-
-    xcompword(at,[det,er,det,at],at).
-    xcompword(av,[og,til],tidvis).  %%  går bussen %% TA-111001
-    xcompword(bare,[hyggelig],ok).    %% * takk ->værsågod -> takk...
-    xcompword(får,[inn],mottar). %% etc. ad hoc 
-    xcompword(får,[til],klarer). %% ad hoc, incomplete 
-
-    xcompword(fr,[5,a],fra). %% slip
-
-    xcompword(fra,[direkte,fra],fra). %% repair 
-    xcompword(fra,[her,jeg,er,nå],herfra).  %% TA-100909
-    xcompword(fra,[her],herfra).  
-    xcompword(fra,[nå,av],heretter).  %% 1.
-    xcompword(fra,[nå],heretter).     %% 2.
-    xcompword(fra,[hvor,og,når],når).  
-
-    xcompword(fra,[å,være,på],til). %% fra  å være på ikea= til 
-    xcompword(får,[å,være,i],til).  
-    xcompword(får,[fra],forlater). 
-    xcompword(får,[å,være,på],til). 
-    xcompword(får,[å,nå],til).  
-
-    xcompword(foreløpig,[bare],bare).  
-    xcompword(men,[foreløpig,bare],bare). %% ad hoc ?
-
-    xcompword(framme,[i],i).   
-%%    xcompword(framme,[på],på).   %% som er framme på
-    xcompword(framme,[ved],ved). %%
-    xcompword(fremme,[til],fremme). %% ? %% TA-100921 fremme official
-
-    xcompword(fram,[til,nå],tidligere). %%  hittil -> tidligere
-%%    xcompword(frem,[til,nå],tidligere). %% unnec
-    xcompword(frem,[til],til). 
-    xcompword(fram,[til],til).
-
-    xcompword(fremme,[for], før). %%  før
-    xcompword(fremme,[seneste], før). %% spell 
-
-%% xcompword(før,[imorgen],idag).      %% før i morgen kl 12 \= idag kl 12
-    xcompword(føler,[meg],er). %% Ad Hoc ..trett %% TA-101117
-    xcompword(før,[at,være,der],før).  
-    xcompword(få,[å,være,på],til). %% (if error then xcomp...)
-   xcompword(får,[forbi],passerer).
-    xcompword(gang,[tid],gangtid).   %% TA-110419
-    xcompword(gang,[tids],gangtid).  %%
-    xcompword(gå,[tid],gangtid).     %% 
-    xcompword(gå,[tids],gangtid).    %%
-    xcompword(gate,[adresse],gateadresse). 
-
-    xcompword(godt,[hjulpet],hjulpet). %% old standard phrase 
-    xcompword(godt,[over],over). 
-
-    xcompword(gi,[seg,ut,for,å,være],etterligne). 
-    xcompword(gir,[seg,ut,for,å,være],etterligner). 
-    xcompword(ga,[seg,ut,for,å,være],etterlignet). 
-    xcompword(gitt,[seg,ut,for,å,være],etterlignet).
-
-    xcompword(så,[smått],[]).     %% TA-110228
-    xcompword(så,[gjerne],redundant0).    %% grad+adv
-
-    xcompword(gjette,[seg,til],gjette). %% lazy 
-    xcompword(gjetter,[seg,til],gjetter).  
-    xcompword(gjettet,[seg,til],gjettet).
-
-    xcompword(gå,[å],[]).    %% legg deg 
-    xcompword(går,[ma,jeg,ta],går). %% ??
-    xcompword(går,[må,jeg,ta],går). %% ?
-
-    xcompword(går,[å,være,på],til). 
-    xcompword(går,[neste,går],går).
-    xcompword(går,[stopper],går). %% stopper?  %% repair 
-
-    xcompword(h,[va],hva). 
-    xcompword(ha,[med,deg],bringe). 
-    xcompword(ha,[med,meg],bringe). 
-    xcompword(ha,[med,seg],bringe). 
-
-    xcompword(har,[med,deg],bringer). 
-    xcompword(har,[med,meg],bringer). 
-    xcompword(har,[med,seg],bringer). 
-
-    xcompword(hadde,[med,deg],brakte). 
-    xcompword(hadde,[med,meg],brakte). 
-    xcompword(hadde,[med,seg],brakte).
-
-    xcompword(hatt,[med,deg],brakt). 
-    xcompword(hatt,[med,meg],brakt). 
-    xcompword(hatt,[med,seg],brakt).
-
-
-    xcompword(hage,[by],hageby). %% problem Brøset hage by 
-    xcompword(halv,[fem,fem],1645).    %% Experiment
-
-    xcompword(har,[det,kjørt],kjørte). %% Ad Hoc, grammar 
-    xcompword(har,[hast],haster).  
-    xcompword(har,[noen,hast],haster).  %% (ikke) noe h
-
-    xcompword(har,[å,gjøre,med],gjelder). %%  har med ... å gjøre
-
-    xcompword(hele,[tiden],alltid).   
-    xcompword(hele,[tida],alltid).  
-    xcompword(her,[som],som). %% Sender over regtop her som skal %% rough 
-    xcompword(hetter,[kl],etter). 
-    xcompword(hjem,[fra],fra).  
-    xcompword(hjem,[til],til).  
-
-%%     xcompword(hva,[buss],buss). %%  unnec
-    xcompword(hva,[med],[]).                  %%  Hva med nth ?
-    xcompword(hva,[jeg,vil],alt).  
-    xcompword(hva,[som,helst],alt).
-
-    xcompword(hva,[som,helst], alt). %%  ?
-    xcompword(hva,[tid,når],går). %% Ad Hoc
-    xcompword(hva,[tid],når). 
-
-    xcompword(hvilken,[buss,og,når],når). 
-
-    xcompword(hvis,[ikke],redundant0). %%  Haz
-
-    xcompword(hvis,[være,på],til).  
-    xcompword(hvor,[dan],hvordan). %% TA-110103  
-    xcompword(hvor,[for],hvorfor).
-    xcompword(hvor,[lang,tid,fra],fra). %% rough 
-    xcompword(hvor,[langt,borte],hvor). 
-
-
-    xcompword(hvor,[og,når,neste],neste).  
-    xcompword(hvor,[og,når],hvor). %% rough 
-    xcompword(når,[og,hvor],når).  %% rough 
-
-   xcompword(hvordan,[gå,fra], fra).  
-   xcompword(hvordan,[går,fra], fra). 
-
-    xcompword(høyst,[sannsynlig],sannsynligvis). 
-
-    xcompword(i,[allefall],redundant0). 
-    xcompword(i,[alle,fall],redundant0).
-    xcompword(i,[det,hele,tatt],redundant0).
-    xcompword(i,[den,anledning],redundant0).
-    xcompword(i,[det,hele,tatt],redundant0).  
-    xcompword(i,[det,heletatt],redundant0).
-    xcompword(i,[ettertid],etterpå).
-    xcompword(i,[hvertfall],[]). 
-    xcompword(i,[hvert,fall],[]).
-
-    xcompword(iflg,['.'],ifølge).
-    xcompword(i,[henhold,til],ifølge). 
-%%     xcompword(hvor,[får],hvorfor).    %% hvor får jeg busskort 
-
-    xcompword(i,[natt],inatt).      %%  +i i (en) natt
-   xcompword(i,[nærheten,at],nær). %% at :  err -> x 
-    xcompword(i,[om],om). %% repair 
-
-    xcompword(i,[over,morgen],overimorgen). %% TA-110401
-
-
-%%     xcompword(i,[rute],presis). %%  buss i rute 52   
-    xcompword(i,[steden,for],istedenfor). 
-    xcompword(i,[stedet,for],istedenfor).
-    xcompword(i,[stedenfor], istedenfor).  
-    xcompword(i,[stedetfor] ,istedenfor). 
-
-    xcompword(i,[såfall],redundant0).  
-    xcompword(i,[så,fall],redundant0).  
-    xcompword(i,[så,tilfelle],redundant0). 
-
-
-    xcompword(i,[tide],presis).   
-    xcompword(i,[tid],[]).          %% korteste i tid
-% ikke
-   xcompword(i,[dag,da],da).  
-   xcompword(id,[ag],idag). 
-   xcompword(id,[kort],legitimasjon). 
-   xcompword(id,['-',kort],legitimasjon).
-
-    xcompword(ikke,[annet,en],[]).  
-    xcompword(ikke,[annet,enn],[]).
-    xcompword(ikke,[lenger],ikke).  
-    xcompword(ikke,[like,mange],færre).
-    xcompword(ikke,[mange],fåtallig). %% få=verb trøbbel
-    xcompword(ikke,[ment,å,være],ikke). 
- 
-%% compword(ikke,[noe],ikke).    %% ikke noe morsomt 
-                                 %% jeg vet ikke noe
-
-%%      xcompword(ikke,[få],mange).    %% så vil dere ikke få 
-    xcompword(ikke,[noen],ingen).
-
-    xcompword(ikke,[alle],noen). %% rough -> gram notall 
-    %% = noen by Griecean convention
-    %% if actually none, that would have been said.
-
-    xcompword(ikke,[akkurat],ikke).
-    xcompword(ikke,[nattbuss],[]). %% default rough 
-    xcompword(ikke,[før],etter).  
-    xcompword(ikke,[glem],husk).  
-
-%%    xcompword(i,[stedet,for],unntatt). %% i stedet for å ta buss
-%%    xcompword(i,[stedet],[]).          %% 
-
-    xcompword(ikke,[vil,være,for,sen,til],rekker). %% Ad Hoc 
-    xcompword(imorgen,[tidlig],imorgen). %% rough 
-    xcompword(morgen,[tidlig],morgen).   %% rough
-
-    xcompword(innom,[her],her). 
-    xcompword(inntil,[da],heretter). 
-    xcompword(inntil,[videre],heretter).
-
-    xcompword(innover,[til],til). %% 
-    xcompword(utover,[til],til).  %%
-
-    xcompword(iphone, [vennlig],vennlig). %% rough
-
-    xcompword(ip,[adresse],ipadresse).
-    xcompword(ip,[nummer],ipadresse). 
-
-    xcompword(istedetfor,[], istedenfor). 
-    xcompword(istedet,[for], istedenfor). 
-    xcompword(isteden,[for], istedenfor).  
-
-    xcompword(ja,[men],[]).   %% TA-101221
-
-    xcompword(jeg,[personlig],jeg).
-    xcompword(jeg,[selv],jeg).
-
-    xcompword(jo,[da],ja). 
-    xcompword(jo,[det,er,det],ja). %% TA-101124
-    xcompword(nei,[da],nei). 
-    xcompword(jo,[fordi],[]). %%  ?-)
-    xcompword(nei,[fordi],[]). %% 
-
-%%     xcompword(jeg,[sier,at],[]).  %% Too rough
-%%     xcompword(jeg,[sier],[]). 
-xcompword(jeg,[vet,ikke,men],[]). 
-
-    xcompword(ka,[tid], når). %% TA-110609
-
-    xcompword(kan,[godt],kan). %% rough 
-
-    xcompword(kommer,[passerer],passerer). %% repair %% TA-110330
-    xcompword(kommet,[til],ankommet). %% ad hoc
-
-    xcompword(kor,[tid],når).       %%
-    xcompword(kor,[ti],når).        %% 
-
-
-    xcompword(kort,[tid,etter,det],etterpå).  
-    xcompword(kort,[tid,etterpå],etterpå).  
-
-    xcompword(kort,[tid,etter],etterpå).  % 2     %% tricky sequence
-
-    xcompword(korte,[ned],forkorte).
-
-    xcompword(la,[seg,gjøre],gjøres).         %% TA-110330
-    xcompword(la,[seg,tilpasse],tilpasses).   %% Ad Hoc, Rule ??? %% 
-
-    xcompword(later,[som,om],pretenderer). 
-
-    xcompword(like,[før],før). 
-    xcompword(litt,[annen],annen). %% TA-110331 .. sak
-    xcompword(lov,[til],lov). %% probl. %% lov til å 
-    xcompword(litt,[over],etter).
-    xcompword(lør,[rute],lørdagsrute). 
-    xcompword(m,[å],må). %% trouble with å 
-
-    xcompword(men,[som],som). %% TA-110701
-
-    xcompword(mye,[mer],mye). 
-
-    xcompword(man,[fre],hverdager). %% avoid man=en 
-
-    xcompword(man,[til,fre],hverdager). 
-
-    xcompword(med,[hilsen],hilsen). 
-    xcompword(med,[med],med). 
-
-    xcompword(med,[inntil],med). %% 250 kr
-
-    xcompword(med,[i,regningen],[]). %% rough
-
-    xcompword(med,[i],i). %% er jeg med i en buss ? (\+ x) %% TA-101006
-
-    xcompword(med,[lørdagsrute],lørdag). 
-    xcompword(med,[søndagssrute],søndag).
-
-    xcompword(med,[tanke,på],for). 
-    xcompword(mer,[om],om).
-
-    xcompword(fra,[midt,i],fra). 
-    xcompword(midtby,[bilett],midtbybillett).  
-    xcompword(midtby,[billett],midtbybillett).  
-    xcompword(midtby,[billetten],midtbybilletten). 
-    xcompword(midtbyn,[billetten],midtbybilletten).
-
-    xcompword(moro,[skyld],moro). %% TA-110627 :-)
-
-   xcompword(mot,[til],til).      %%  Repair
-   xcompword(m,[j,ta],går).  
-   xcompword(m,[jeg,ta],går).  
-   xcompword(må,[ja,ta],går).  
-
-%%   xcompword(må,[jeg,da],går).     %%  da ta -> ta // da->ta 
-
-
-    xcompword(må,[jeg,fra],forlater).%%  hvilken buss mÃ¥ jeg fra hegdalen for Ã¥ 
-    xcompword(må,[jeg,tabuss],går). %% (ad hoc splitword) X
-%%     xcompword(må,[være,der,senest],før). %% jeg ...
-%%     xcompword(må,[være],ankommer). %%  .. senest
-
-    xcompword(må,[jeg,to],går). %% .. bussen 
-    xcompword(hva,[må,til,for,å],hva). 
-    xcompword(må,[være,der,ca],før). 
-    xcompword(måtte,[sitte,på],passere). %% X %% Rough uten å m.. til
-
-    xcompword(g,[&,r],går).  %% TA-100914
-    xcompword(n,[&,r],når).  %% TA-100914
-%compword(na,['\203',ayr],når). %% etc
-%compword(ga,['\203',ayr],går). 
-    xcompword(v,[g,s],vgs).   
-    xcompword(v,['.',g,'.',s],vgs). 
-
-    xcompword(med,[retur],tilbake).  
-    xcompword(natt,[trikk],trikk).      %%  rough  unpriority
-    xcompword(natt,[trikken],trikk).  
-    xcompword(naturlig,[nok],naturligvis). 
-
-    xcompword(ne,[3,ste],neste). %% neib 
-    xcompword(ne,[4,ste],neste). 
-    xcompword(ne,[ste],neste).  
-
-    xcompword(nei,[tvertimot],nei).  
-    xcompword(nei,[tvert,i,mot],nei).
-    xcompword(nei,[tvert,imot],nei). 
-    xcompword(tvertimot,[],nei).   
-    xcompword(tvert,[i,mot],nei).    
-    xcompword(tvert,[imot],nei).     
-
-
-    xcompword(javel,[men],[]). 
-    xcompword(neivel,[men],[]). 
-
-    xcompword(neste,[buss,neste],neste).       %% repair 
-
-    xcompword(neste,[buss,når],når). 
-
-    xcompword(neste,[fra,buss],fra).  %% ?
-
-    xcompword(nesten,[alle],alle). 
-    xcompword(nesten,[til],til).  
-
-    xcompword(nettopp,[innom,her],her). %% ad hoc, difficult 
-
-   xcompword(nr,[nr],nr).      %% repair
-    xcompword(noe,[i,retning,av],[]). %% TA-110330 ? :-)
-    xcompword(noe,[i,retning],[]).    %% 
-
-    xcompword(noen,[andre],noen). %% Rough in dialog 
-    xcompword(noen,[av,de],de).       %%  rough
-    xcompword(noen,[av,disse],disse). %% 
-    xcompword(noen,[av,mine],mine).   %% 
-%%     xcompword(noen,[av],noen).     %% TA-110428  noen [av] våre
-    xcompword(noen,[form,for],noen). 
-    xcompword(noen,[flere],flere).
-    xcompword(noen,[få],få). 
-    xcompword(noen,[gang],[]).        %% ?
-    xcompword(noen,[ganger],tidvis).  %% TA-110111
-
-%% Trouble spot 
-    xcompword('.',[nr,'.'],nr).
-    xcompword('.',[nr],nr).  
-    xcompword(nr,['.'],nr).     %% hvilket nr . går // ikke ruteplan
-    xcompword(nr,[':'],nr).  
-
-    xcompword(nyttiggjøre,[seg],bruke).
-    xcompword(nå,[da],nå). %% Norw %% TA-110112
-
-    xcompword(nå,[som],som). %% Jeg søkte på rute 5 nå som passerer begge..
-
-    xcompword(når,[går,bussen,når],når).  %% repair TEAM web 
-
-    xcompword(når,[ga],går).  %% nar ga = når går 
-    xcompword(når,[når],når).  
-    xcompword(når,[og,hvorfor],når). %% ? %% Facetious     
-    xcompword(når,[jeg,seinest,skal,være,der],før). 
-    xcompword(når,[jeg,skal,til],til). %% bus til A n j s t B 
-    xcompword(når,[går,buss,går],buss).  
-    xcompword(når,[går,bussen,går],buss).
-    xcompword(når,[går,bussen,skal,være],bussen). %% prompt 
-    xcompword(når,[går,fra,bussen],fra). 
-    xcompword(når,[går,fra],fra).  
-
-    xcompword(når,[jeg,skal,være,der,før],før). 
-    xcompword(når,[jeg,skal,være,der,til],før).
-    xcompword(når,[jeg,skal,være,der],før).  
-    xcompword(når,[jeg,skal,være,i,på],til).    %% interaction
-    xcompword(når,[jeg,skal,være,i],til).  
-
-    xcompword(når,[jeg,skal,være,på],til).  
-
-%%    xcompword(når,[jeg,skal,være,ved],til).
-
-    xcompword(når,[kl],klokken). 
-    xcompword(når,[vi,skal,være,på],til).  
-
-    xcompword(da,[jeg,skal,være,i],til).  %% etc
-
-    xcompword(når,[fra],fra).      %% Xclusive
-    xcompword(når,[f],fra).        %% ? når før?
-    xcompword(når,[f,ra],fra).     %%  ?
-    xcompword(når,[til],til).      %%  
-    xcompword(når,[får,buss],buss). 
-
-    xcompword(når,[går,til],til). 
-    xcompword(når,[har,neste],neste).
-
-    xcompword(når,[jeg,må,ja],går).   %%  Rough
-
-    xcompword(når,[jeg,må,være,der,før],før). %% some problems 
-    xcompword(når,[jeg,må,være,der,til],før). 
-%%     xcompword(når,[jeg,må,være,der],før).  %% når jeg må være der 
-    xcompword(når,[jeg,må,være,til],før). 
-    xcompword(når,[jeg,må,være,dær],før). 
-
-    xcompword(når,[klokken,er,over],etter).  
-
-    xcompword(når,[man,må,være,der,senest],før).  
-
-    xcompword(når,[må,jeg,bussen],bussen). 
-
-    xcompword(når,[må,ta,buss],buss).      %% Rough 
-    xcompword(når,[må,ta,bussen],bussen).  %% Rough
-    xcompword(når,[må,jeg,ta,fra],fra).    %% ? 
-    xcompword(når,[må,jeg,ja],går).  %% ja=ta 
-    xcompword(når,[må,jeg,fra],fra).  
-
-% når
-%%  xcompword(når,[til,neste],neste). %% ?  nohelp
-
-    xcompword(når,[neste,går],       []).    %%  rough
-
-    xcompword(når,[år],[]).  %% går
-
-    xcompword(o,['/'],over). 
-    xcompword(o,['.',l,'.'],etc). 
-
-    xcompword(og,[for],og). 
-    xcompword(og,[da,med],med). %%3 etc..
-                      
-%%%%     xcompword(og,[der],og). %% Too rough 
-    xcompword(og,[hit],hit).   
-    xcompword(og,[vil,være,i],til).   
-    xcompword(og,[jeg,drar,fra],fra). 
-    xcompword(og,[mellom],mellom). 
-    xcompword(og,[skal,være,der,før],før). 
-    xcompword(og,[skal,være,fram,på],til). 
-    xcompword(og,[skal,være,framme,på],til).  
-    xcompword(og,[skal,være,frem,på],til). 
-    xcompword(og,[skal,være,fremme,på],til). 
-%%     xcompword(og,[så],og). %% []). %% også -> []     %% .. skal jeg til
-    xcompword(og,[sånt],[]).
-    xcompword(og,[vil,være,der,før],før).  
-
-    xcompword(og,[være,der,kl],før).
-    xcompword(og,[være,der,senest],før). 
-    xcompword(og,[være,framme,senest],før). 
-    xcompword(og,[være,fremme,senest],før). %%  in case incomplete sentence
-
-    xcompword(og,[for],og). 
-    xcompword(og,[da,med],med). %%3 etc..
-                      
-%%%%     xcompword(og,[der],og). %% Too rough 
-    xcompword(og,[hit],hit).   
-    xcompword(og,[vil,være,i],til).   
-    xcompword(og,[best,mulig],[]). 
-    xcompword(best,[mulig],[]).     %%  sequence
-    xcompword(og,[joda],[]). %% :-) 
-%%      xcompword(og,[til],til).  %% Haz, try without 
-   xcompword(ok,[men],[]). %% grums %%  ?
-   xcompword(ok,[så],[]).  %% TA-110629
-
-    xcompword(om,[må,være,på],til).   
-    xcompword(om,[noe,fra],om). 
-    xcompword(om,[mulig],redundant0). 
-
-
-    xcompword(om,[mulig],redundant0).
-
-%% xcompword(om,[når],når).  %%     jeg har opplysninger om når toget kommer
-              %% \=  jeg har opplysninger når toget kommer
-
-   xcompword(områder,[i,nærheten,av],nær). %% 
-   xcompword(områder,[nærheten,av],nær).   %% actual
-
-    xcompword(over,[i,morgen],overimorgen). %% TA-110401
-    xcompword(på,[ca],på). 
-
-    xcompword(på,[kort,sikt],snart).
-    xcompword(på,[ordentlig],[]).
-    xcompword(på,[orntlig],[]).       %% :-)
-    xcompword(på,[onkli],[]).         %% :-)
-%%  compword(på,[i],på).         %% på= i ?
-   xcompword(på,[i],i).          %%  Repair 
-%%%    xcompword(på,[der],der).             %% Hazard 
-    xcompword(på,[is],ned). %% FOS lagt .. 
-
-    xcompword(på,[kl],klokken).     %%  repair 
-    xcompword(på,[klokka],klokken). %%
-    xcompword(på,[kl,'.'],klokken). 
-    xcompword(på,[sikt],heretter). %% TA-110724
-
-    xcompword(på,[tide],mulig).
-    xcompword(p,[tur,til],til). 
-    xcompword(på,[tur,til],til). 
-
-    xcompword(på,[ved],ved).    
-   xcompword(rute,[r],ruter).   %% TA-110724
-   xcompword(rb,[stasjon],rutebilstasjon). 
-   xcompword(rb,[stasjonen],rutebilstasjonen).
-    xcompword(raskeste,[reise],rute).  %%  TA-100805?
-    xcompword(raskeste,[vei],rute). 
-    xcompword(regne,[med,å],[]). 
-    xcompword(regtop,[eksport], regtoppeksport).
-    xcompword(regtopp,[eksport],regtoppeksport).
-    xcompword(regtop,['-',eksport], regtoppeksport). %% //- noisew now
-    xcompword(regtopp,['-',eksport],regtoppeksport). %% ad hoc
-
-    xcompword(riktig,[god],god). 
-
-%¤S
-
-    xcompword(rute,[rute],rute). 
-    xcompword(rute,[tiden],rutetiden). 
-    xcompword(s,[enter],senter).   
-    xcompword(s,[enteret],senteret). %% nec for nardo s enteret
-    xcompword(s,[entret],senteret).  %%
-    xcompword(sent,[ute],forsinket). %% TA-100830
-    xcompword(sentere, [t],senteret).%%  (busdat?)
-
-    xcompword(s,[om],som). 
-
-%%     xcompword(sammen,[med],med). %% hvem er du sammen med %% TA-110221
-
-    xcompword(satt,[opp],arrangert). %% buss til nth 
-    xcompword(satte,[opp],arrangerte). %% nb -e
-%% xcompword(si,[alle,tidene,som],[]). %% Rough
-    xcompword(si,[alle,tidene],[]). %% ... buss 5 går             
-    xcompword(siste,[gang],sist). 
-
-    xcompword(skal,[jeg,når,jeg,skal],skal). 
-    xcompword(skal,[vil],vil). %% repair 
-
-    xcompword(skal,[fra],forlater).  
-%%     xcompword(skal,[i],ankommer).    %%  rough skal i fremtiden... 
-    xcompword(skal,[på],ankommer).      %%
-
-    xcompword(skal,[til],ankommer).     %% 
-    xcompword(skal,[av,på],ankommer).   %% TA-110629 Haz
-
-    xcompword(skal,[innover,til],ankommer).     %% ad hoc 
-    xcompword(skal,[utover,til],ankommer).      %% 
-
-%%%     xcompword(skal,[være,i],ankommer).  %% ... i orden 
-    xcompword(skal,[være,på],ankommer). %% 
- 
-    xcompword(skal,[vare,i],ankommer).  %% splitword impossible
-    xcompword(skal,[vare,på],ankommer). 
-
-    xcompword(skole,[buss],skolebuss).
-    xcompword(skole,[bussen],skolebussen).
-
-    xcompword(slik,[ut],således).  %%  adverb
-    xcompword(sånn,[ut],således).  %% TA-110130  
-
-    xcompword(ut,[slik],således).  %%  adverb
-
-    xcompword(slik, [som],[]).  
-    xcompword(slike,[som],[]).   %% ... dette
-    xcompword(slikt,[som],[]).   %% 
-
-    xcompword(omtrent,[slik,ut],således).  %%  # 
-    xcompword(ut,[omtrent,slik],således).  %%  # 
-
-
-    xcompword(slik,[at,jeg,er,der,før],før). 
-    xcompword(slik,[at,jeg,er,der,til],før).
-
-    xcompword(slik,[at,jeg,er,fremme,ør],før).   
-    xcompword(slik,[at,jeg,er,på],til). 
-    xcompword(slik,[at,jeg,er,i],til).   
-
-    xcompword(som,[er,fram,før],før).      %%   1.
-    xcompword(som,[er,fram,kl],før). 
-%%%%         xcompword(som,[er,fram],ankommer). %% Touchy %%    2. 
-    xcompword(som,[er,fram],før). 
-
-    xcompword(som,[er,framme,etter],etter). 
-    xcompword(som,[er,fremme,etter],etter). 
-    xcompword(som,[er,framme,før],før).  
-    xcompword(som,[er,fremme,før],før).  
-    xcompword(som,[er,framme,senest],før). 
-    xcompword(som,[er,fremme,senest],før).  
-    xcompword(som,[er,framme,innen],før).  
-    xcompword(som,[er,fremme,innen],før).  
-
-    xcompword(som,[er,framme,tidligst],etter). 
-    xcompword(som,[er,fremme,tidligst],etter).  
-
-    xcompword(som,[er,framme,på],til).  
-%%%%%    xcompword(som,[er,framme,til],før).  %% Ambiguous ... 9:35/Tiller
-    xcompword(som,[er,framme,ved],til). %% grammar handles ambiguity
-
-    xcompword(som,[er,framme,i],til). 
-
-       xcompword(som,[er,framme,til],til).      %%  til tid/sted????
-    xcompword(som,[er,framme,kl],før).  %% avoid når går  (BUSSEN SOM ER FRAMME) kl
-%%%%%%%%%%%%%%%%%%%%%%%%    xcompword(som,[er,framme,før],før). %% 1. Tricky
-    xcompword(som,[er,fremme,før],før). %% 1. Tricky
-    xcompword(som,[er,fremme,til],før). 
-    xcompword(som,[er,fremme,på],til).  %%
-    xcompword(som,[er,fremme,i],til).  
-    xcompword(som,[er,fremme,ved],til).  
-    xcompword(som,[er,framme],før).     %% Last (som er framme på)
-    xcompword(som,[er,fremme],før).     %% Last !!! <---- 
-
-    xcompword(som,[er,senest,fremme,ved],til). %% seinest/framme etc  Ad Hoc
-
-    xcompword(som,[sagt],redundant0).  
-
-                                  %% fra munkegata som er på pirterminalen 
-%%     xcompword(som,[er,på],til).   %% NB !! <--- Hazard 
-
-    xcompword(som,[er,ved],til). %% 
-    xcompword(som,[er,på],til).  %%  Haz ?
-
-    xcompword(som,[f,'.',eks],[]).   %% apposition
-    xcompword(som,[f,'.',eks,'.'],[]). 
-    xcompword(som,[f,'.',eksempel],[]).
-
-    xcompword(som,[f,eks],[]).       %% 
-    xcompword(som,[f,eks,'.'],[]). 
-    xcompword(som,[f,eksempel],[]). 
-
-    xcompword(som,[for,eks],[]).     %% 
-    xcompword(som,[for,eks,'.'],[]). 
-    xcompword(som,[for,eksempel],[]).  
-
-
-    xcompword(som,[fremme,før],før).
-    %% compword(som,[på],til). %% .. er .. 
-    xcompword(som,[ikke,er,etter],før). %% Ad Hoc, avoid negations 
-
-    xcompword(som,[mer,ved],til). %% error -> x 
-
-       xcompword(som,[på],på). %%  på samme tid som på julaften %%       rough
-                               
-    xcompword(som,[helst],[]).
-    xcompword(spørsmålet,[':'],spørsmålet). 
-    xcompword(svaret,[':'],svaret).
-
-    xcompword(spørre,[svar,system],savant).  
-    xcompword(spørre,['/',svar,system],savant). 
-    xcompword(spørre,[system],savant). 
-
-
-    xcompword(studenter,[samfundet],studentersamfundet). %% ad hoc
-
-%%    xcompword(studenter,[samfunnet],studentersamfundet). %% TA-110314
-
-    xcompword(strengt,[tatt],redundant0). %% Techical, nec for word order
-    xcompword(ideelt,[sett],redundant0). 
-
-%%     xcompword(så,[skal],skal). %%  skulle/ville ...
-    xcompword(så,[fort,som,mulig],nå). %% buster/avoid item:clock
-    xcompword(så,[langt,vi,kan,se],derfor). %% Lazy %% ad hoc 
-   
-    xcompword(så,[langt,som],hvis). %% så langt som  det er mulig 
-
-    xcompword(så,[mye,du,vil],ofte).  %%  adv 
-    xcompword(så,[raskt],når). %% sende ruter så snart 
-    xcompword(så,[si],si).     %% så si meg/ du kan så si 
-    xcompword(så,[snart],når). %%
-    xcompword(så,[ta],ta).     %% og så ta
-    xcompword(så,[veldig],[]). %% jeg vil (ikke) s v 
-
-
-    xcompword(så,[fort,som,mulig],snart).  
-    xcompword(sa,[jeg,er,der],før). 
-    xcompword(så,[jeg,er,der,til],før). 
-    xcompword(så,[jeg,er,der,før],før).  %% 1
-    xcompword(så,[jeg,er,der],før).      %% 2
-
-   xcompword(så,[jeg,er,framme,på],til). 
-   xcompword(så,[jeg,er,framme,før],før).  
-
-    xcompword(så,[lenge,som],mens). %% TA-110309
-    xcompword(så,[lenge],mens).     %% 
-
-    xcompword(så,[vidt,jeg,vet],redundant0).
-    xcompword(såvidt,[jeg,vet],redundant0).
-
-    xcompword(samfundet,[1],studentersamfundet_1). 
-    xcompword(samfundet,[2],studentersamfundet_2). 
-
-    xcompword(i,[kraft],redundant0). %% TA-101108 ad hoc  metaphor
-
-%%%%    xcompword(så,[mye],mye).  %% destroys så mye som mulig.
-    xcompword(trondheim,[buss],buss).    %% etc
-    xcompword(trondheim,[rutebil],buss). %% 
-
-    xcompword(sneket,[seg],kommet). 
-    xcompword(snik,[deg],kom). 
-    xcompword(snike,[seg],komme).
-    xcompword(snek,[seg],kom). 
-
-    xcompword(sørg,[for],besørg).  
-    xcompword(sørge,[for],besørge). %% ensure
-
-  xcompword(t,[bane,rute],tbane).  %% 
-   xcompword(t,[bane,ruter],tbane). %% 
-    xcompword(t,[bane],tbane).   %% t = til
-     xcompword(t,[banen],tbane).
-   
-     xcompword(tbane,[ruter],tbane).  %% Rough 
-    xcompword(tbane,[rute],tbane).    %% 
-    xcompword(tbane,[ruter],tbane).   %% 
-
-
-    xcompword(t,[kort],tkort).  
-    xcompword(t,[':',kort],tkort). 
-
-    xcompword(tog,[stasjonen],togstasjonen). %% ad hoc avoid tog as such 
-    xcompword(tog,[stasjon],togstasjon).     %%
-
-%% TA-101207
-    xcompword(tre,[i,kraft],starte).     %%
-    xcompword(trer,[i,kraft],starter).   %%
-    xcompword(trådd,[i,kraft],startet).  %%
-    xcompword(trådde,[i,kraft],startet). %%
-
-   xcompword(ta,[jeg],jeg). %% ? Når må ta jeg ta sp 
-                                %   hvilken buss må jeg ta fra 
-    xcompword(telef,['.'],telefon).    %% ad hoc
-    xcompword(telefon,[nr],telefon). 
-    xcompword(telefon,[nummer],telefon). %% TA-101202
- 
-
-    xcompword(team,[påskeruter],påskeruter). 
-    xcompword(team,[sommerruter],sommerruter). %%  
-   xcompword(tenker,[å],vil).  %% avoid tenker for å være i stand til
-                                
-    xcompword(tider,[over,rute],rutetider).  
-    xcompword(tider,[over,ruter],rutetider). 
-
-   xcompword(til,[overs],[]).
-    xcompword(til,[alle,tider],alltid). 
-    xcompword(til,[daglig],daglig).       %% TA-100828    
-    xcompword(til,[en,hver,tid],alltid).  %%
-    xcompword(til,[enhver,tid],alltid).   %%
-
-    xcompword(til,[nå],[]).
-
-%%    xcompword(til,[i],i). %% et sted til i slike spørsmål %%  Haz
-                            %% venter til i morgen
-
-    xcompword(til,[stede],her). 
-    xcompword(til,[at,jeg,kommer,til],til).
-%%    xcompword(når,[tid,går],[]). %% juks %% TA-101013
-%%    xcompword(ti,[går],[]).  %%  Haz
-%%    xcompword(ti,[drar],[]). %% 
-
-    xcompword(til,[da],da).   %% "derfør"
-    xcompword(til,[ankommer],ankommer).  
-    xcompword(til,[døra],hjem).  
-    xcompword(til,[hvis],hvis).      %% (repair) X
-
-    xcompword(til,[imorgen],imorgen). 
-    xcompword(til,[i,morgen],imorgen).
-
-    xcompword(til,['/',fra],forbi).  %% rough %% tol/fra buss? 
-%   xcompword(til,[i],i). %% et sted til (i tillegg) %% plass til i bussen
-%   compword(til,[i],til).     %%  (i?) Du må oppgi et sted til i slike spørsmål . oo 
-
-    xcompword(til,[og,fra],forbi).
-    xcompword(til,[og,med],til).  
-    xcompword(til,[sted],tilsted). %% destinasjon ? %%  x?
-    xcompword(til,[til],til).   %% repair 
-
-%    xcompword(til,[med],med).  %% repair 
-
-    xcompword(turing,['-',test],turing_test).  
-    xcompword(turing,['-',testen],turing_test).
-    xcompword(turing,[test],turing_test). 
-    xcompword(turing,[testen],turing_test). 
-    xcompword(turings,[test],turing_test).   %% TA-100907 
-    xcompword(turingtest,[],turing_test).   %% TA-110120
-    xcompword(turingstest,[],turing_test). 
-
-    xcompword(uforståelige,[ord],feil). 
-    xcompword(uff,[da],[]).  %% :-) 
-    xcompword(huff,[da],[]). %% 
-    xcompword(lure,[på],undre).    %%  rough
-    xcompword(undre,[på],undre).   %% tricky
-    xcompword(lurer,[på],undrer).  %% 
-    xcompword(undrer,[på],undrer). %% 
-
-    xcompword(ut,[av,det],løsningen).
-    xcompword(ut,[av,noe],løsningen). 
-
-    xcompword(ute,[av,drift],nede). 
-
-    xcompword(uten,[unntak],alltid).
-    xcompword(uten,[å,bytte,buss],direkte).  %% ad hoc
-    xcompword(uten,[å,skifte,buss],direkte).  
-
-    xcompword(v,['/'],ved).   
-%%    xcompword(va,['.'],ca).  %% hva ?
-    xcompword(va,[halv],halv). %% ca halv 
-
-    xcompword(veldig,[gjerne],redundant0). %%=gjerne --> 
-    xcompword(veldig,[ofte],ofte).         %% TA-101228
-
-    xcompword(ved,[hjelp,av],med). %%  Haz?
-    xcompword(ved,[nærmere,ettertanke],redundant0). %% TA-101102
-
-    xcompword(vegg,[i,vegg,med],nær).   
-    xcompword(vegg,[til,vegg,med],nær). 
-
-    xcompword(vil,[at],ønsker).  %% Haz?
-   xcompword(vil,[det,gå],går).   
-    xcompword(vil,[skal],skal). %% repair 
-    xcompword(visst,[jeg,skal,være,i],til). %% no pardon 
-
-    xcompword(vær,[dag],[]).   %% -> daglig -> noisew %%  err
-
-   xcompword(vær,[så,snill,'.'],[]). 
-   xcompword(være,[på],ankomme). %% <--- 
-
-    xcompword(være,[så,snill,å],[]).  
-    xcompword(være,[så,snill],[]). 
-
-    xcompword(y,[til],til). %% repair 
-
-    xcompword(å,[jeg,ta],går).   %%  exclusive
-
-%%      xcompword(å,[da],ja).  %% TA-101014     %% X å (jo) da
-%%      xcompword(å,[måtte],å).     %% eff. ville skulle burde kunne 
-                                    %% destroys uten å måtte

@@ -1,9 +1,3 @@
-%% RS-111205, UNIT: dialog
-:- use_module( checkitem2, [
-        checkitem/3, current_frame/1, remove_messages/2, remtp/3,
-        sysout_item/1, writeconstlist1st/1
-  ] ).
-
 lgra:- load_files('dialog/grammar.pl'). 
 
 % Dialog := UserQs

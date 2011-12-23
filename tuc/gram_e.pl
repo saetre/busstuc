@@ -2,26 +2,20 @@
 %% SYSTEM TUC
 %% CREATED TA-930310
 %% REVISED TA-110823
-%% REVISED RS-111121
+:-module(gram_e,[]).
 
-%% MODULE: gram_e (in tuc?)
 %  Consensical Grammar for English
-%:- op( 1150, xfx, --->).
-:- module( gram_e, [ '--->'/2 ] ).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%:- use_module( '../main', [ myflags/2, set/2, ':='/2 ] ).
-:- ensure_loaded( '../declare' ).
+:- ensure_loaded('../declare').
 
-%% RS-111118 "Disable" 'ako' as an operator for this file, "tightest binding"
-%:- op( 0, xfx, ako ).           %% A very bad hack to remove syntax error %% RS-111121
-%% Legal rewrite? See lines ~700:
-%    whatq(which(X):::X ako Man) --->   %% What is a man
+:- use_module( '../db/busdat', [ clock_delay/3 ] ). %%, named_date/2 ]).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 wx(adj2(NIL,GOOD)) ---> w(adj2(GOOD,NIL)). %% Ad Hoc
+
 
 
 %% Consensical Grammar   (Context Sensitive Categorial Attribute Logic Grammar)
@@ -75,7 +69,7 @@ wx(adj2(NIL,GOOD)) ---> w(adj2(GOOD,NIL)). %% Ad Hoc
 %% New Option: Read from Text 
 
 sentence([S]) ---> 
-   {main:myflags(textflag,true)},  
+   {value(textflag,true)},  
    !,
    sentence1(S), 
    terminator.
@@ -85,13 +79,13 @@ sentence([S]) --->
 
 
 sentence([new:::P]) --->  
-    {main:myflags(queryflag,false)}, %%  Only in multi dialog system ( dialog,1)
+    {value(queryflag,false)}, %%  Only in multi dialog system ( dialog,1)
     declaration(P),
     terminatore, 
     !,accept.
 
 sentence([P]) ---> 
-    {main:myflags(queryflag,true)}, 
+    {user:value(queryflag,true)}, 
     implicitq(P), %% only one on the outer level.
     terminatores0, 
     !,accept.
@@ -197,7 +191,7 @@ command(doit:::exists(S:Event)::Q) ---> %
 
     not_look_ahead(w(verb(be,_,_))), %% are you 
 
-    lexv(_Vt1,V,pres,fin), 
+    lexv(_vt1,V,pres,fin), 
     {\+ testmember(V,[be,be1,thank,do1,cost])}, %%  do[es] the bus stop.
     name_phrase(_IND,X,P1,P)
        \ w(name(tuc,n,savant)), 
@@ -206,7 +200,7 @@ command(doit:::exists(S:Event)::Q) ---> %
     verb_phrase1(X,S,id,ERS) 
              \
                                             % capture clausal_complement
-    lexv(_Vt2,V,pres,fin),
+    lexv(_vt2,V,pres,fin),
     {negate(N,P,Q)},
 
     addressat0. 
@@ -248,7 +242,7 @@ statement(P) --->
 
 
 statemen(NewHere,P) ---> 
-    {main:myflags(queryflag,false)},
+    {value(queryflag,false)},
     ifstatement(NewHere,P).
 
 
@@ -285,7 +279,7 @@ statemen1(R,P) ---> % simple version, with world
 
 
 statemes(S,Com,exists(S:Event):: (Com and Q)) --->
-    {main:myflags(queryflag,false)},
+    {value(queryflag,false)},
     {type(event,Event)}, 
     {type(event,Event)},
     ifstatement(S,Q).
@@ -323,7 +317,7 @@ statem(S,Com,Q) --->
     lexv(iv,Rain,pres,fin)).
 
 statem(S,Com,P) ---> % to work on holidays is fun 
-     {main:myflags(textflag,true)},
+     {value(textflag,true)},
      infinitive,
      {constrainit(IT,agent)}, 
      verb_phrase1(IT,S,id,CVP),
@@ -335,7 +329,7 @@ statem(S,Com,P) ---> % to work on holidays is fun
 
 
 statem(S,Com,Q) --->  %% it is said  that the bus goes 
-    {main:myflags(textflag,true)},
+    {value(textflag,true)},
     thereit,
     be,
     w(verb(say,past,part)),
@@ -345,7 +339,7 @@ statem(S,Com,Q) --->  %% it is said  that the bus goes
 
 
 statem(S,Com,P) ---> % it is good to work // fronted temporarily
-    {main:myflags(textflag,true)},
+    {value(textflag,true)},
     thereit,        
     be,
     {constrainit(IT,agent)}, 
@@ -373,14 +367,14 @@ statem(S,Com,Q) --->
 
 
 statem(S,Com,P) ---> 
-   {main:myflags(textflag,true)},
+   {value(textflag,true)},
    adverbial3(Prep,Y,SC,P3),
    state(S,Com,P)  -  adverbial3(Prep,Y,SC,P3).    
 
 
 statem(S,Com,Q) --->
     adverb(Day,Today,pre), 
-    { Today \== pmode }, %%  In we go ***
+    { Today \== (mode) }, %%  In we go ***
     state(S,Com,Q)  -                    
         adverb(Day,Today,_). 
 
@@ -407,7 +401,7 @@ statem(S,Com,P) ---> % it is good to work
 descend00(Real,  S,event/Real/S:P,P) ---> [].
 
 worldcom(S,P1,event/real/S:P1) ---> []. 
-%%     {main:value_world(Real)}.                   
+%%     {user:value_world(Real)}.                   
 
 
 state(S,Com,Q) --->  
@@ -541,8 +535,8 @@ implicitq(_) ---> %%  where
 
 implicitq(modifier(S)::: Com12 and P3) ---> %% now to Dalen Hageby
     [now],
-    {\+ main:myflags(teleflag,true)},
-    {\+ main:myflags(textflag,true)},
+    {\+ value(teleflag,true)},
+    {\+ value(textflag,true)},
     {no_unprotected_verb}, %% NEW AUXILLARY    tuc/lex.pl
     not_look_ahead(w(adj2(_,_))), %% raskeste 
     not_look_ahead(w(noun(_,_,_,_))), %% buss etc
@@ -569,7 +563,7 @@ implicitq(modifier(S)::: Com12 and P3) ---> %%   buss 5 i morgen
 
 implicitq(_) --->  
     w(adj2(N,nil)),       %% good morning
-    {\+ main:testmember(N,[direct,first,second,nearest,last,next,third,early,last,late,previous,central])}, 
+    {\+ user:testmember(N,[direct,first,second,nearest,last,next,third,early,last,late,previous,central])}, 
     !,reject.   
 
 
@@ -583,7 +577,7 @@ implicitq(modifier(S)::: Com12 and P3) --->
 
 
 implicitq(new:::P ) --->     %% bus 5  \+ bus 5'o clock
-    {\+ main:myflags(dialog,1)},   
+    {\+ user:value(dialog,1)},   
     not_look_ahead(w(prep(_))),
     {no_unprotected_verb},   
     np0(X,P1,P),    
@@ -642,7 +636,7 @@ isq(P) --->
     statement(P)  /  be. 
 
 ynq(P) --->
-    [do],        
+    (do),        
     negation0(_), %% Rhet %% TA-110316
     statement(P).      
 
@@ -720,8 +714,10 @@ whatq(WhichX:::P) --->
     qverb_phrase(X,S,N, ERS), 
     {negate(N,Q1,Q2)}.
 
+
+
 whatq(which(X):::Man ako X) --->   %% What is a man
-     {\+ main:myflags(dialog,1)},  
+     {\+ value(dialog,1)},  
      whatbe(1),
      a0,
      w(noun(Man,sin,u,n)),  % what is a bus
@@ -771,7 +767,7 @@ whatq(P) ---> % what time is it now => when is it now  (OK)
 whatq(P) ---> % what do you do \= which thing that you do #
     what,
     do(id),
-    whichq(P) \ (which2,w(noun(thing,sin,u,n)),[do]). 
+    whichq(P) \ (which2,w(noun(thing,sin,u,n)),(do)). 
 
 
 whatq(which(X):::P) --->  %% Moved front
@@ -863,11 +859,11 @@ whereq(P) --->  %%  where is you from
 
 whereq(which(Y):::P) --->  %% where did john go (to)
     where,     
-    [do], 
+    (do), 
     adverbial1(nil,Y,Subj,P3) =  (the(Y),w(noun(place,_,_,n))),    
     !,
     question0(P) -      
-         ([do],adverbial1(in,Y,Subj,P3)), 
+         ((do),adverbial1(in,Y,Subj,P3)), 
     optional(w(prep(_))).
  
 
@@ -923,7 +919,7 @@ howq(explain:::P) ---> %% hvordan er du laget / hvordan er du ?
 
 howq(explain:::P) --->
     how,
-    [do],  %% NOT empty !!! %% TA-100916
+    (do),  %% NOT empty !!! %% TA-100916
 
     negation0(_), %% Rhet Why didn't %% TA-110316
     statement(P).       
@@ -1113,8 +1109,8 @@ do_phrase(X,S,N, Com3P3 ) --->    % Complement Combination % swapped Com3/Com1
 %%%
 
 vp_kernel(Give,X,S,id,  Com3:(P1 and Q1)) --->
-%%     {main:myflags(textflag,true)},    %% not nec for buses ?
-    lexv(dtv,Give,_Tense,fin), 
+%%     {value(textflag,true)},    %% not nec for buses ?
+    lexv(dtv,Give,_tense,fin), 
     noun_phrase1(Y, E1,P1),     
     noun_phrase1(Z,E1,Q1),     
     {dtv_template(Give,X, Y, Z, S,Code)},
@@ -1132,7 +1128,7 @@ vp_kernel(have,X,_S,N,  _:P )  ---> %% NB
 
 
 vp_kernel(V,X,S,N,  Com3:P1 ) --->
-    lexv(tv,V,_Tense,fin), 
+    lexv(tv,V,_tense,fin), 
     reflexiv0(V), 
     negation0(N), 
     event00(S,P,Com3,E1),         
@@ -1140,7 +1136,7 @@ vp_kernel(V,X,S,N,  Com3:P1 ) --->
     {tv_template(V,X,Y1,S,P)}.
 
 vp_kernel(V,X,S,N,  Com3:E1) --->
-    intrans_verb(V,X,S,P,_Tense,fin), 
+    intrans_verb(V,X,S,P,_tense,fin), 
     reflexiv0(V),  %% + there/it  what time is it 
     negation0(N),
     event00(S,P,Com3,E1). 
@@ -1177,7 +1173,7 @@ event00(S,P,Q,exists(S:Event)::(P and Q)) --->
 %%%¤ CLAUSAL_PHRASE  
 
 clausal_phrase(X,S,Com1:KA) ---> 
-    {main:myflags(textflag,true)},
+    {value(textflag,true)},
     rep_vp(W,TW,X,S,Com2,P2,NewS),   %% told
     {testmember(W,[tell,ask,propose])},
     noun_phrase(AA,BB,CC),           %% John
@@ -1310,7 +1306,7 @@ ap(A,X,S,COM,exists(S:event)::P and COM) --->
 
 
 passive(Z,S,Com, P) --->           %%  (was)
-    {main:myflags(textflag,true)},    
+    {value(textflag,true)},    
     lexv(rv,V,past,part),          %%  told
     whodidit(_,_,X,B,C),           %%  by someone   
     infinitive,                    %%  to
@@ -1320,7 +1316,7 @@ passive(Z,S,Com, P) --->           %%  (was)
 
 
 passive(Z,S,Com, Pli and Q) --->   %%  was 
-    {main:myflags(textflag,true)},    
+    {value(textflag,true)},    
     lexv(dtv,V,past,part),         %%  given
     np1(Y,true,Q),                 %%  a kiss
     whodidit(_,_,X,B,C),   
@@ -1380,7 +1376,7 @@ xverb_phrase(Y,S,N,Com,P2) --->
 
 
 qverb_phrase(X,S,id,Com:P) --->  % (which crown) does it cost to
-    [do], 
+    (do), 
     it,
     pvimodal(Cost,Money),  
     {vartypeid(X,thing);constrain(X,Money)},    %% how much = which thing
@@ -1426,7 +1422,7 @@ qverb_phrase(Y,S,id,Com:P) --->  %% (what) are you doing (now)
 
 
 qverb_phrase(Y,S,N,ComP2) ---> %% which thing does Tagore do 
-    [do],      
+    (do),      
     noun_phrase(X,P,P1),          
     w(verb(Do1,inf,fin)),
     verb_phrase(X,S,N,ComP2) \ 
@@ -1443,11 +1439,11 @@ qverb_phrase(X,S,N,ComP2) --->
     verb_phrase(X,S,N,ComP2).    
 
 qverb_phrase(Y,S,N,ComP2) --->  
-    [do],                                 
+    (do),                                 
     noun_phrase(X,P,P1),          
     hasto0, 
     verb_phrase(X,S,N,ComP2)  - 
-         ([do] , noun_phrase1(Y,P,P1)).  %% noun_phrase 
+         ( (do) , noun_phrase1(Y,P,P1)).  %% noun_phrase 
 
 qverb_phrase(Y,S,N,ComP2) ---> 
     be,
@@ -1515,7 +1511,7 @@ verb_modifier4(Take,X,Y,SC, (exists(Y):: SC and P))  --->
 
 % NB %% there  = to this place 
 verb_modifier(V,X,S,(Com1 and (  findexternal(Y:place)::(Y isa place and STO))):Subj,  Com1:Subj ) ---> 
-    {main:myflags(dialog,1)},
+    {value(dialog,1)},
     thisplace(To),   
     {verb_compl(V,To,X,Y:place,S,STO)}.
 
@@ -1686,7 +1682,7 @@ look_ahead_lit(List) ---> [E],{testmember(E,List)}.
 %% in order to
 
 subordinatex(Prep,Reason,X,T:_,P and srel/Prep/Reason/T/S) --->  
-    {main:myflags(textflag,true)},  
+    {value(textflag,true)},  
     verb_phrase(X,S,N,ComP2),
     !,
     st0(P) 
@@ -1863,7 +1859,7 @@ rel_clause(X,P1,P1 and P2) --->
 %%    a way  to die ==> a way in which someone  die
 
 rel_clause(X,P1,P1 and P2) --->  
-    {main:myflags(textflag,true)},  %% a bus from vestlia to reach SENTRUM !
+    {value(textflag,true)},  %% a bus from vestlia to reach SENTRUM !
     infinitive,   %% to,
     w(verb(Die,pres,fin)),
     verb_modifier1(Prep,Y,SC,P3) \ 
@@ -1923,7 +1919,7 @@ rel_clause(Y,P1,P1 and P2) --->
 
                                 
 rel_clause(Y:T,P1,P1 and P2) ---> %% a method for killing john exists
-    {main:myflags(textflag,true)},
+    {value(textflag,true)},
     prep1(for),
     w(verb(Kill,pres,part)),      %% 
     { tv_templ(Kill,_,_)},
@@ -1940,9 +1936,9 @@ rel_clause(Y:T,P1,P1 and P2) ---> %% a method for killing john exists
                                 
                                 
 rel_clause(Y:T,P1,P1 and P2) ---> %% (there is a) way to kiss mary
-    {main:myflags(textflag,true)},
+    {value(textflag,true)},
     infinitive, 
-    w(verb(Kiss,_Inf,fin)),     %% 
+    w(verb(Kiss,_inf,fin)),     %% 
     { tv_templ(Kiss,_,_)},
 
     % Rough test  Y can be a complement object of kiss
@@ -1957,9 +1953,9 @@ rel_clause(Y:T,P1,P1 and P2) ---> %% (there is a) way to kiss mary
 
                                 
 rel_clause(Y,P1,P1 and P2) ---> %% (mary is a) woman to kiss
-    {main:myflags(textflag,true)},
+    {value(textflag,true)},
     infinitive, 
-    w(verb(Kiss,_Inf,fin)),
+    w(verb(Kiss,_inf,fin)),
     % Rough test  Y can be object of kiss
     { tv_templ(kiss,_,Woman)},
     {constrain(Y,Woman)},
@@ -2219,7 +2215,7 @@ np_kernel(Ind, X,P0,P1,VP ,P) ---> % #2
  
 np_head1(Cind, XT,Q0 and P0,P1,VP, P) ---> 
     determiner0(Num,Cind,XT,P1,VP,P),   
-    w(name(TT,_N,_)),  
+    w(name(TT,_n,_)),  
     noun(_Bus,Num,u,n,  XT, Q0),
     {adjname_template(TT,XT,_,P0)},
     !,accept.
@@ -2262,7 +2258,7 @@ aname_phrase(_IND,_,_,_) --->
 
 aname_phrase(_,_,_,_) ---> %% the station (nearest kolstad)
     wx(adj2(nil,Nearest)), 
-    {main:member(Nearest,[nearest])},
+    {user:member(Nearest,[nearest])},
     w(name(Kolstad,_,_)),
     {\+ number(Kolstad)}, 
     !,
@@ -2319,7 +2315,7 @@ npa(X,VP,P) --->  %% Does it work ?
 %%%¤ NAME_PHRASE  (name,X,P,P and Q)  
 
 name_phrase(name,X,P,P and Q) ---> 
-%%%     {main:myflags(teleflag,true)}, %%  (OK if few names)
+%%%     {value(teleflag,true)}, %%  (OK if few names)
     person_name(X,Q).
 
 name_phrase(Ind,X,P,Q and P) ---> %% keep order/isa first 
@@ -2424,7 +2420,7 @@ np_head(0, XT,P0,P1,VP,
     noun(_,_Num,_,gen,  Y, YisaP),     % program's 
     !,
     preadjs0(Alist),         %% my last question 
-    noun_compound(XT,Q0,_Sin), 
+    noun_compound(XT,Q0,_sin), 
  
     {preadjs_template(Alist,XT,Q0,P0)},
                                         % this mans daughter Mary
@@ -2502,7 +2498,7 @@ name_compound(X,QP) ---> % Must begin with a name
 %-----------
 
 noun_compound(X,XisaBus and QP,Num1) ---> % ... TT bus
-    w(name(TT,_N,_)),  
+    w(name(TT,_n,_)),  
     noun(_Bus,Num1,u,n,  X, XisaBus),
     {adjname_template(TT,X,_,QP)}.    
 
@@ -2758,13 +2754,13 @@ namep(0,NT2,YP) --->
     !,accept.                                     %  Avoid multiple returns (e.g. 3)
 
 namep(0,NT,XP) --->      % the 5 bus 
-    {main:myflags(busflag,true)}, 
+    {user:value(busflag,true)}, 
     the,   
     nameq(NT,_),
     noun(_,sin,_,n, NT, XP).
 
 namep(0,NT,XP) --->      % the orkdal  buses 
-    {\+ main:myflags(busflag,true)}, 
+    {\+ user:value(busflag,true)}, 
     the0,  
     nameq(NT,_),
     noun(_,_,_,n, NT, XP). 
@@ -2950,7 +2946,7 @@ nameq1(X,P) ---> %%  ( Buss går 09.12 => clock)
 nameq1(N:Type,N isa Class) ---> 
   
     w(name(N,_n,Class)), {_n \== gen},
-    {  Class == unkn -> main:myflags(unknownflag,true);true}, 
+    {  Class == unkn -> value(unknownflag,true);true}, 
 
     {type(Class,Type)}.      
 
@@ -2975,7 +2971,7 @@ nameq1(X,P) --->
 % Only full dates allowed, try first
 
 nameq1(Rønning:lastname,Rønning isa lastname) ---> %% Ståle Rønning
-    {main:myflags(teleflag,true)},
+    {value(teleflag,true)},
     look_ahead(w(name(Rønning,n,firstname))), 
     w(name(Rønning,n,lastname)), 
     not_look_ahead(w(name(_Lund,n,lastname))),
@@ -2983,7 +2979,7 @@ nameq1(Rønning:lastname,Rønning isa lastname) ---> %% Ståle Rønning
 
 
 nameq1(Rønning:firstname,Rønning isa firstname) ---> %% Ståle Rønning
-    {main:myflags(teleflag,true)},
+    {value(teleflag,true)},
     look_ahead(w(name(Rønning,n,lastname))), 
     w(name(Rønning,n,firstname)), 
     look_ahead(w(name(_Lund,n,lastame))),
@@ -3451,7 +3447,7 @@ athe0 ---> [].
 be ---> w(verb(be,_,fin)).
 
 be(N) ---> 
-   [do],
+   (do),
    negation0(N),
    has,
    to,
@@ -3569,7 +3565,7 @@ dendagen0(nil) ---> [].                %%
 dendagen(D)   --->  day(D),!,accept. 
 dendagen(nil) ---> [],!,accept.       %% 
 
-do0 ---> [do]. 
+do0 ---> (do). 
 do0 ---> []. 
 
 
@@ -3588,7 +3584,7 @@ do0(_,not,id) --->
     !,accept.
 
 do0(_,N,id) --->
-     [do],!, 
+     (do),!, 
      negation0(N).
 
 do0(_,N,N) ---> [].  
@@ -3608,7 +3604,7 @@ do(not) ---> [never],!,accept.
 do(N) --->  use,negation0(N),to.
 
 do(N) ---> 
-    [do],
+    (do),
     negation0(N),hasto0.
 
 do(id )---> [] .  
@@ -3620,15 +3616,15 @@ do(N) --->      %%%  dont swallow verb have !
 dox ---> [do]. %% TA-110823
 dox ---> [does]. %% not syn do (....> does = inf) 
 
-[do] ---> dox, not_look_ahead([it]).  %% Ad Hoc
+(do) ---> dox, not_look_ahead([it]).  %% Ad Hoc
 
-[do] ---> [can].
-[do] ---> may.
-[do] ---> must.     %%
-[do] ---> [will].    %  shall
+(do) ---> [can].
+(do) ---> may.
+(do) ---> must.     %%
+(do) ---> [will].    %  shall
 
-% do ---> [does].  %% synword
-% do ---> [did].   %% synword
+% (do) ---> [does].  %% synword
+% (do) ---> [did].   %% synword
 
 dont(not) ---> [don],[t]. %% don't
 dont(not) ---> [dont],!,accept.
@@ -3886,7 +3882,7 @@ point0 ---> point,!,accept. %%   Always Optional
 point0 ---> [].
 
 pointNO ---> point,!,accept. %% Optional in case point is  removed 
-pointNO ---> {main:myflags(nodotflag,true)}. 
+pointNO ---> {value(nodotflag,true)}. 
 
 point ---> ['.'].
 
@@ -3941,7 +3937,7 @@ reflexiv(notify) ---> [i],!,accept.
 reflexiv(show) ---> [i],!,accept. %% show me   etc....  
 reflexiv(tell) ---> [i],!,accept. %% tell me   etc....  
 
-reflexiv(_)   ---> {\+ main:myflags(dialog,1)},[there]. 
+reflexiv(_)   ---> {\+ value(dialog,1)},[there]. 
 
 quant_pron(every,person) ---> [all],number(_). 
 quant_pron(every,person) ---> [each]. 
@@ -3964,7 +3960,7 @@ quant_pron(no,person)    ---> [noone].
 quant_pron(no,thing)     ---> [nothing]. % none ?
 
 quant_pron(some,vehicle)  ---> [it], 
-    {main:myflags(busflag,true)}.  
+    {value(busflag,true)}.  
 
 quant0(+ 1) ---> [].
 quant0(+ N) ---> num(N). 
@@ -4086,7 +4082,7 @@ thereit ---> [there]. % preliminary subject
 thereit ---> [it].
 
 
-this1 ---> {main:myflags(textflag,true)},[the]. 
+this1 ---> {value(textflag,true)},[the]. 
 this1 ---> that.  
 this1 ---> [these]. % Anaphoric
 this1 ---> [this],
@@ -4209,10 +4205,10 @@ personal('OK') --->  optional(hello),
 
 
 personal('OK') ---> optional(hello),
-    [how],[do],[you], [do],now0. 
+    [how],(do),[you], (do),now0. 
 
 personal('OK') --->  optional(hello),
-    [how],[do],[you], w(verb(feel,pres,fin)),now0. 
+    [how],(do),[you], w(verb(feel,pres,fin)),now0. 
 
 feeling0 ---> w(verb(feel,pres,part)). 
 feeling0 ---> w(verb(do1,pres,part)). 

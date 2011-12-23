@@ -1,7 +1,7 @@
 %% FILE timedat.pl
 %% SYSTEM BUSSTUC
 %% AUTHOR J.Bratseth
-%% CREATED TA-010207
+%% CREATED TA-110207
 %% REVISED TA-110207
 
 %% Time data for bus routes in general
@@ -9,71 +9,14 @@
 % Domains:   BOOLEAN ROUTETYPE STATION PLACE MINUTES
 %            DATE DAY DOMAIN CLOCK
 
-:- module( timedat, [
-        after_morning/1,        aroundmargin/1,            % (MINUTES)
-        before_morning/1,       buslogtimeout/1,           % (MILLISEC)
-        clock_delay/3,          create_named_dates/0,
-        date_day_map/2,         % (DATE,DAY)
-        dedicated_date/1,       % (DATE)
-        defaultprewarningtime/1,        delay_margin/1,    % (MINUTES)
-        hours_delay/1,
-        kindofday/2,            % (DAY,DAY)
-        maxnumberofindividualdepartures/1,    % (NUMBER)
-        maxtraveltime/1,        % (MINUTES)
-        maxarrivalslack/1,      % (MINUTES)
-        morning_break/1,        % (CLOCK) 
-        named_date/2,           % (NAME)
-        orig_named_date/2,
-        softime/3,                 % (NAME,CLOCK,CLOCK)
-        this_year/1,
-        todaysdate/1           %% Exported as timedat:pred from datecalc.pl
-]).
+%* List of predicates
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-:- use_module( '../utility/utility', [ for/2 ]).  %% Module util
-:- use_module( '../utility/datecalc', [ 
-    add_days/3,    datetime/6,    easterdate/2,    sub_days/3,    todaysdate/1 ]).  %% Module util
-%:- ensure_loaded( '../utility/utility' )
-
-%* Import predicates
-%:- use_module( '../utility/makeauxtables', [
-%        %% FROM makeauxtables %%
-%        busstat0/2,
-%        statbus0/2,  %  tostationonly0/1,
-%        toredef0/3,  torehash0/2, %  transbuslist0/3,
-%        %  unproperstation/1,         % (PLACE)
-%        unproperstation0/1
-%  ] ). %% From Utils?
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Santa Barbara
-%clock_delay(00,00,00). %%  FOR CLOCK ADJUSTMENT
-%hours_delay(0).    %% Time in Trondheim is 0 hours more than server clock
-% hours_delay(-9). %% Time in Santa Barbara  is 9 hours EARLIER than server clock
-% hours_delay(10). %% Time in  Tokyo (?)
-%extraallowed_night/2,      % (DATE, KINDOFDAY)
-%preferred_transfer/4,      % (ROUTE,ROUTE,STATION,STATION)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-:- volatile named_date/2.  %% Created Blank Initially, "remember"-ed later 
-:- dynamic named_date/2.   %% Created Blank Initially, "remember"-ed later
-
-
-this_year(YYYY):-
-    datetime(YYYY,_B,_C,_D,_E,_F).
-
+:-dynamic named_date/2. %% Created Initially 
 
 create_named_dates :-
     list_of_named_dates(L), 
-    for(
-         ( member(A,L), orig_named_date(A,B) ),
-          %% From util:
-         remember(named_date(A,B))). %% To be     refined  
-
-%for(P,Q) :-                    %% From utility.pl
-%  P,Q ,
-%  false ; true.
+    for((member(A,L),orig_named_date(A,B)),
+         remember(named_date(A,B))). %% To be     refined
 
 
 %%%%%%%  TIME  SECTION %%%%%%%%%%%%%%%%%
@@ -84,7 +27,9 @@ create_named_dates :-
 
 % DATES THAT MUST BE CHECKED ON EACH NEW ROUTE PLAN
 
+
 % orig_named_date is defined here, and later recreated as named_date
+
 list_of_named_dates([
     new_years_eve,
     new_years_day,
@@ -127,6 +72,7 @@ list_of_named_dates([
 
 %%% DATES NAMED BY EVENTS  :-)
 
+
 orig_named_date(john_f_kennedy_day,   date(1963,11,22)).  
 orig_named_date(oddvar_brå_day,       date(1982,02,25)).  
 orig_named_date(arvid_holme_day,      date(2011,01,17)).  
@@ -136,7 +82,7 @@ orig_named_date(dooms_day,            date(2012,12,21)). %% :-) %% TA-100323|   
 
 orig_named_date(new_years_eve,date(YYYY,12,31)) :- %% Nyttårsaften& januar  -> i fjor
      todaysdate(date(YYY1,01,_)),
-     YYYY is (YYY1-1),
+     YYYY is YYY1 -1,
      !.
 orig_named_date(new_years_eve,date(YYYY,12,31)) :- %% Nyttårsaften i år
      this_year(YYYY),
@@ -298,9 +244,9 @@ dedicated_date(date(YYYY,12,24)):- this_year(YYYY).
 
 
 
-date_day_map(date(_,05,01), sunday).   % 1.mai Fix, NOT separate route module
+date_day_map(date(_20XX,05,01), sunday).   % 1.mai Fix, NOT separate route module
 
-   %% date_day_map(date(_,05,17),   holiday).  %% OWN route module
+   %% date_day_map(date(_20XX,05,17),   holiday).  %% OWN route module
 
 date_day_map(Date,  sunday):-     %  KrHf- %% NOT OWN route module
      named_date(ascension_day,Date),
@@ -332,13 +278,13 @@ softime(midnight,2400,2500).
 
 
 maxnumberofindividualdepartures(2):-
-    main:myflags(smsflag,true),
-    \+ main:myflags(nightbusflag,true),
+    value(smsflag,true),
+    \+ value(nightbusflag,true),
     !. 
 
 maxnumberofindividualdepartures(3):- %% not ridiculously many sequence
-    main:myflags(smsflag,true),
-    main:myflags(nightbusflag,true),
+    value(smsflag,true),
+    value(nightbusflag,true),
     !. 
 
 maxnumberofindividualdepartures(3). 

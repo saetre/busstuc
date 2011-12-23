@@ -2,27 +2,23 @@
 %% SYSTEM AtB
 %% CREATED TA-100221
 %% REVISED TA-100223
-%% REVISED RS-111218
 
 
 %% Extract  GPS coordinte from table into a predicate
 
 % assume all files are separated correctly with a Tab (ASCII 9)
 
-:- ensure_loaded( '../declare' ).
-%:- ensure_loaded( '../sicstus4compatibility' ).  %% Compatible with sicstus4, get0/1 etc.
-:- use_module( '../sicstus4compatibility' ).  %% Compatible with sicstus4, get0/1 etc.
+:- ensure_loaded( '../sicstus4compatibility' ). %, [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:-volatile val/1, val2/1, val3/1. 
-:-dynamic val/1, val2/1, val3/1. 
 
 extracoord :- 
 
    output('Please wait a minute'),
    extract(statcoord).
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -323,6 +319,19 @@ mini(999,X,X):-!.
 mini(X,_,X).
 
 
+%member(X,[U|V]):-X=U;member(X,V).      %% RS-111212 Moved to sicstus4_compatibility.pl
+%
+%append([],A,A).
+%append([X|Y],U,[X|V]):-
+%    append(Y,U,V).
+%   
+
+
+for(P,Q):-
+  P,Q,
+  false;true.
+
+
 % Prologs setof is baroque %% 
 
 set_of(X,Y,Z):-           %% 
@@ -354,6 +363,8 @@ firstlist(N,[K|Y],[K|Z],Rest):-
 
 firstlist(_,L,[],L).
 
+:-volatile val/1, val2/1, val3/1.
+:-dynamic val/1, val2/1, val3/1.
 
 resetcount :- retractall(val(_)),
               assert(val(0)),
@@ -379,7 +390,7 @@ rev1([X|Y],L,Z):-
     rev1(Y,[X|L],Z).
 
 
-listall(P) :- P, write(P), nl, fail ; true.
+listall(P):-P,write(P),nl,fail;true.
 
 output(X):-write(X),nl.
 

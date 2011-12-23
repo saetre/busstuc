@@ -3,60 +3,18 @@
 %% CREATED TLF-030409 TA-081107
 
 %% REVISED                  COMMON VERSION
-:- module( makeframe2, [
-        (rule)/2,
-        tracevalue/1
-    ] ).
+
+:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
+:- ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators
 
 
-% pragma(RuleModule,Source,Dest) bygger Dest fra Source vha reglene i RuleModule
+:- module(makeframe,[]). %% - maketeleframe
 
-% Operatorer for Pragma-regler
 
-% is operator prefixed with rule RuleID
-
-:- op(1150,xfy,rule).  
-
-:- op(1120, fy,is).
-:- op(1110,xfy,id).
-:- op(1110,xfy,ip).
-
-:- op( 715, fy,context).    %% similar to ispresent, but doesnt mark as saw
-:- op( 715, fy,addfront).   %% (for messages etc) 
-:- op( 725, fy,addcon).     %% add if not already ispresent 
-:- op( 715, fy,removeall).  %% remove all of a list
-:- op( 715, fy,removeif).   %% remove all if any , always succeed 
-:- op( 715, fy,replaceall). %% replace iteratively all elements 
-:- op( 715, fy,replaceif).  %% replace if occuring. 
-:- op( 715, fy,replace).
-:- op( 715, fy,replacelast).
-:- op( 715,xfy,with).
-%%  :- op( 715, fy,to). %% not used, interferes with SWI-Prolog /srel/to/--
-%%  :- op( 715,xfy,append).
-:- op( 715, fy,no).
-:- op( 715, fy,exactly). 
-:- op( 715, fy,add).
-:- op( 715, fy,remove).
-:- op( 715, fy,ispresent).
-:- op( 715, fy,assume). 
-
-%% :- op( 715, fy,not).  % Already defined in TUC
-
-:- op( 714,xfy,seq).     %% directly sequence 
-
-:- op( 714,xfy,cond).    %% new   not X isa place cond bound(X)
-
-:- op( 714,xfy,when).    %% same as cond %% TA-081106
-
-:- op( 712, fy,seen). % Lower than "not", higher than "isa"
-
-%%% %%%%%%%% RS-111118
-:- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
-
-tracevalue(X):- main:myflags(traceprog,X),!; X=1.
+tracevalue(X):- user:value(traceprog,X),!; X=1.
 
 returnfields rule %% TA-051030
-is  ispresent teleprocess([A,B|C],_,_,_) %% at least one (hope they are valid)
+is  present teleprocess([A,B|C],_,_,_) %% at least one (hope they are valid)
 id  not frame_setvalue(return, _),
     add frame_setvalue(return,[A,B|C])
 ip  [].
@@ -64,92 +22,92 @@ ip  [].
 
 
 fieldtelephone rule
-is  ispresent teleprocess([telephone],_,_,_)
+is  present teleprocess([telephone],_,_,_)
 id  not frame_setvalue(return, _),
     add frame_setvalue(return, [telephonenumber])
 ip  [].
 
 fieldfirstname rule
-is  ispresent teleprocess([firstname],_,_,_)
+is  present teleprocess([firstname],_,_,_)
 id  not frame_setvalue(return,_),
     add frame_setvalue(return, [givenname])
 ip  [].
 
 fieldlastname rule
-is  ispresent teleprocess([lastname],_,_,_)
+is  present teleprocess([lastname],_,_,_)
 id  not frame_setvalue(return,_),
     add frame_setvalue(return, [sn])
 ip  [].
 
 fieldcount rule
-is  ispresent teleprocess([count],_,_,_)
+is  present teleprocess([count],_,_,_)
 id  not frame_setvalue(return,_),
     add frame_setvalue(return, [count])
 ip  [].
 
 fieldplace rule
-is  ispresent teleprocess([place],_,_,_)
+is  present teleprocess([place],_,_,_)
 id  not frame_setvalue(return,_),
 	add frame_setvalue(return, [roomnumber])
 ip	[].
 
 fieldroom rule %% TA-061009
-is  ispresent teleprocess([room],_,_,_)
+is  present teleprocess([room],_,_,_)
 id  not frame_setvalue(return,_),
 	add frame_setvalue(return, [roomnumber])
 ip	[].
 
 fieldoffice rule
-is  ispresent teleprocess([office],_,_,_)
+is  present teleprocess([office],_,_,_)
 id  not frame_setvalue(return,_),
 	add frame_setvalue(return, [roomnumber])
 ip	[].
 
 fieldname rule
-is 	ispresent teleprocess([name],_,_,_)
+is 	present teleprocess([name],_,_,_)
 id	not frame_setvalue(return,_),
 	add frame_setvalue(return,[cn])
 ip	[].
 
 fielddepartment rule
-is 	ispresent	teleprocess([department],_,_,_)
+is 	present	teleprocess([department],_,_,_)
 id	not frame_setvalue(return,_),
 	add frame_setvalue(return,[ou])
 ip  [].
 
 fieldmail rule
-is 	ispresent teleprocess([mailaddress],_,_,_)
+is 	present teleprocess([mailaddress],_,_,_)
 id	not frame_setvalue(return,_),
 	add frame_setvalue(return,[mail])
 ip	[].
 
 fieldmail1 rule
-is 	ispresent teleprocess([mail],_,_,_)
+is 	present teleprocess([mail],_,_,_)
 id	not frame_setvalue(return,_),
 	add frame_setvalue(return,[mail])
 ip	[].
 
 fieldadress rule
-is	ispresent teleprocess([address],_,_,_)
+is	present teleprocess([address],_,_,_)
 id	not frame_setvalue(return,_),
 	add	frame_setvalue(return,[street]) %% TA-050921 (was return,[mail])
 ip	[].
 
 fieldtitle rule
-is	ispresent teleprocess([title],_,_,_)
+is	present teleprocess([title],_,_,_)
 id	not frame_setvalue(return,_),
 	add	frame_setvalue(return,[title])
 ip	[].
 
 fieldunknown rule
-is  ispresent teleprocess([unknown],_,_,_)
+is  present teleprocess([unknown],_,_,_)
 id  not frame_setvalue(return,[unknown]),
     add frame_setvalue(return,[unknown])
 ip	[].
 
 
 attribute_givenname rule
-is ispresent teleprocess(_,_,AtrList,_)
+is present teleprocess(_,_,AtrList,_)
 id not frame_setvalue(attributes::givenname, _),
    add frame_setvalue(attributes::givenname, Value)
 ip member(firstname=Value,AtrList).
@@ -157,7 +115,7 @@ ip member(firstname=Value,AtrList).
 
 
 newlastname_oldfirstname rule %% TA-060609
-is ispresent teleprocess(_,_,AtrList,_),
+is present teleprocess(_,_,AtrList,_),
        {  member(lastname=Oien,AtrList), %% TA-081107
           frame_getvalue(attributes::sn,Amble,_Type),
           Oien \== Amble}
@@ -170,44 +128,44 @@ ip [].
 
 
 attribute_sn rule
-is ispresent teleprocess(_,_,AtrList,_)
+is present teleprocess(_,_,AtrList,_)
 id not frame_setvalue(attributes::sn, _),
    add frame_setvalue(attributes::sn, Value)
 ip member(lastname=Value,AtrList).
 
 attribute_department rule
-is ispresent teleprocess(_,_,AtrList,_)
+is present teleprocess(_,_,AtrList,_)
 id not frame_setvalue(attributes::department, _),
    add frame_setvalue(attributes::department, Value)
 ip member(department=Value,AtrList).
 
 attribute_mail rule
-is ispresent teleprocess(_,_,AtrList,_)
+is present teleprocess(_,_,AtrList,_)
 id not frame_setvalue(attributes::mail, _),
    add frame_setvalue(attributes::mail, Value)
 ip member(mail=Value,AtrList).
 
 attribute_cn rule
-is ispresent teleprocess(_,_,AtrList,_)
+is present teleprocess(_,_,AtrList,_)
 id not frame_setvalue(attributes::cn, _),
    add frame_setvalue(attributes::cn, Value)
 ip member(pname=Value,AtrList).
 
 attribute_title rule
-is ispresent teleprocess(_,_,AtrList,_)
+is present teleprocess(_,_,AtrList,_)
 id not frame_setvalue(attributes::title, _),
    add frame_setvalue(attributes::title, Value)
 ip member(title=Value,AtrList).
 
 attribute_telephonenumber rule
-is ispresent teleprocess(_,_,AtrList,_)
+is present teleprocess(_,_,AtrList,_)
 id not frame_setvalue(attributes::telephonenumber, _),
    add frame_setvalue(attributes::telephonenumber, Value)
 ip member(Tel=Value,AtrList),
    (Tel=tel;Tel=telephone).
 
 attribute_roomnumber rule
-is ispresent teleprocess(_,_,AtrList,_)
+is present teleprocess(_,_,AtrList,_)
 id not frame_setvalue(attributes::roomnumber, _),
    add frame_setvalue(attributes::roomnumber, Value)
 ip member(roomnumber=Value,AtrList).
@@ -222,8 +180,8 @@ ip member(roomnumber=Value,AtrList).
 
 relaxkeepbefore rule    %% TA-050502
 is     flag(laterbus)
-id     add frame_setvalue(whenis::arrival::before, ?)  %% TA-051109
-     , add frame_setvalue(whenis::departure::before, ?) %% maybe old constraint
+id     add frame_setvalue((when)::arrival::before, ?)  %% TA-051109
+     , add frame_setvalue((when)::departure::before, ?) %% maybe old constraint
 ip     [].
     
 
@@ -232,8 +190,8 @@ ip     [].
 
 relaxkeepafter rule    %% TA-050502
 is     flag(earlierbus)
-id     add frame_setvalue(whenis::departure::after, ?) %% TA-051109
-     ,  add frame_setvalue(whenis::arrival::after, ?)     %% maybe old constraint
+id     add frame_setvalue((when)::departure::after, ?) %% TA-051109
+     ,  add frame_setvalue((when)::arrival::after, ?)     %% maybe old constraint
 ip     [].
     
 
@@ -253,16 +211,16 @@ id	[]
 ip	timenow2(DD,Y).
 
 toplace rule                       %% ØF-990303
-is     ispresent departure(_, Place, _, Dep), 
-       ispresent depset(to, DepList)
+is     present departure(_, Place, _, Dep), 
+       present depset(to, DepList)
 id     not frame_setvalue(where::arrival, _),
        add frame_setvalue(where::arrival, Place)
 ip     varmember(Dep, DepList),
        \+ Place = free(_).
 
 fromplace rule                       %% ØF-990303
-is     ispresent departure(_, Place, _, Dep), 
-       ispresent depset(from, DepList)
+is     present departure(_, Place, _, Dep), 
+       present depset(from, DepList)
 id     not frame_setvalue(where::departure, _),
        add frame_setvalue(where::departure, Place)
 ip     varmember(Dep, DepList),
@@ -270,8 +228,8 @@ ip     varmember(Dep, DepList),
 
 
 nilplacetofrom rule       
-is     ispresent departure(_, Place, _, _Dep), 
-       ispresent depset(unknown,_ ) %%%%   [Dep]) %% TA-050411
+is     present departure(_, Place, _, _Dep), 
+       present depset(unknown,_ ) %%%%   [Dep]) %% TA-050411
 id     not frame_setvalue(where::unknown, _),
        not frame_setvalue(where::departure, _),
        not frame_setvalue(where::arrival, _),
@@ -284,40 +242,40 @@ ip     % varmember(Dep, DepList),
 
 
 fromafter rule                       %% ØF-990303
-is     ispresent depset(from, DepList),
-       ispresent keepafter(Time, Dep, _)
-id     not frame_setvalue(whenis::departure::after, _),
-       add frame_setvalue(whenis::departure::after, Time)
+is     present depset(from, DepList),
+       present keepafter(Time, Dep, _)
+id     not frame_setvalue((when)::departure::after, _),
+       add frame_setvalue((when)::departure::after, Time)
 ip     bound(Time), varmember(Dep, DepList).
 
 frombefore rule                       %% ØF-990303
-is     ispresent depset(from, DepList),
-       ispresent keepbefore(Time, Dep, _)
-id     not frame_setvalue(whenis::departure::before, _),
-       add frame_setvalue(whenis::departure::before, Time)
+is     present depset(from, DepList),
+       present keepbefore(Time, Dep, _)
+id     not frame_setvalue((when)::departure::before, _),
+       add frame_setvalue((when)::departure::before, Time)
 ip     bound(Time), varmember(Dep, DepList).
 
 frombefore1 rule                       %% ØF-990303
-is     ispresent depset(from, DepList),
-       ispresent keepbefore1(Time, Dep, _)
-id     not frame_setvalue(whenis::departure::before, _),
-       add frame_setvalue(whenis::departure::before, Time)
+is     present depset(from, DepList),
+       present keepbefore1(Time, Dep, _)
+id     not frame_setvalue((when)::departure::before, _),
+       add frame_setvalue((when)::departure::before, Time)
 ip     bound(Time), varmember(Dep, DepList).
 
 frombetween rule
-is     ispresent depset(from, DepList),
-       ispresent keepbetween(LowTime, HighTime, Dep, _)
-id     not frame_setvalue(whenis::departure::after, _),
-       add frame_setvalue(whenis::departure::after, LowTime),
-       not frame_setvalue(whenis::departure::before, _),
-       add frame_setvalue(whenis::departure::before, HighTime)
+is     present depset(from, DepList),
+       present keepbetween(LowTime, HighTime, Dep, _)
+id     not frame_setvalue((when)::departure::after, _),
+       add frame_setvalue((when)::departure::after, LowTime),
+       not frame_setvalue((when)::departure::before, _),
+       add frame_setvalue((when)::departure::before, HighTime)
 ip     bound(LowTime), bound(HighTime), varmember(Dep, DepList).
 
 toafter rule                       %% ØF-990303
-is     ispresent depset(to, DepList),
-       ispresent keepafter(Time, Dep, _)
-id     not frame_setvalue(whenis::arrival::after, _),
-       add frame_setvalue(whenis::arrival::after, Time)
+is     present depset(to, DepList),
+       present keepafter(Time, Dep, _)
+id     not frame_setvalue((when)::arrival::after, _),
+       add frame_setvalue((when)::arrival::after, Time)
 ip     bound(Time), varmember(Dep, DepList).
 
 
@@ -329,20 +287,20 @@ is     replace   depset(unknown, _depList_)  with %% TA-050411
 
 
 
-id     ispresent framevalue(where::departure,_NTH_), % have a departure
-       not ispresent frame_setvalue(where::arrival,_Dragvoll_), %% TA-030913
+id     present framevalue(where::departure,_NTH_), % have a departure
+       not present frame_setvalue(where::arrival,_Dragvoll_), %% TA-030913
        replace frame_setvalue(where::unknown,Dragvoll) with
                frame_setvalue(where::arrival,Dragvoll) % know it's arrival
 ip     [].
 
 toat rule                       %% TA-030913
-is     ispresent depset(unknown, DepList),
-       ispresent keepat(Time, Dep, _)
+is     present depset(unknown, DepList),
+       present keepat(Time, Dep, _)
 
-id     ispresent framevalue(where::departure,_NTH_), % have a departure
-       not frame_setvalue(whenis::departure::after, Time), %% already decided
-       not frame_setvalue(whenis::arrival::before, _),
-       add frame_setvalue(whenis::arrival::before, Time),
+id     present framevalue(where::departure,_NTH_), % have a departure
+       not frame_setvalue((when)::departure::after, Time), %% already decided
+       not frame_setvalue((when)::arrival::before, _),
+       add frame_setvalue((when)::arrival::before, Time),
  
        replaceif frame_setvalue(where::unknown,Dragvoll) with %% <--- if 
                frame_setvalue(where::arrival,Dragvoll)
@@ -350,20 +308,20 @@ id     ispresent framevalue(where::departure,_NTH_), % have a departure
 ip     bound(Time), varmember(Dep, DepList).
 
 fromlett rule                       %% TA-030913
-is     ispresent depset(unknown, _DepList_)
-id     ispresent framevalue(where::arrival,_NTH_), % have a arrival
-       not ispresent frame_setvalue(where::departure,_Dragvoll_), 
+is     present depset(unknown, _DepList_)
+id     present framevalue(where::arrival,_NTH_), % have a arrival
+       not present frame_setvalue(where::departure,_Dragvoll_), 
        replace frame_setvalue(where::unknown,Dragvoll) with
                frame_setvalue(where::departure,Dragvoll) % know it's departure
 ip     [].
 
 fromat rule                       %% TA-030913
-is     ispresent depset(unknown, DepList),
-       ispresent keepat(Time, Dep, _)
-id     ispresent framevalue(where::arrival,_NTH_), % have a arrival
-       not frame_setvalue(whenis::arrival::before, Time), %% already decided
-       not frame_setvalue(whenis::departure::after, _),
-       add frame_setvalue(whenis::departure::after, Time),
+is     present depset(unknown, DepList),
+       present keepat(Time, Dep, _)
+id     present framevalue(where::arrival,_NTH_), % have a arrival
+       not frame_setvalue((when)::arrival::before, Time), %% already decided
+       not frame_setvalue((when)::departure::after, _),
+       add frame_setvalue((when)::departure::after, Time),
  
        replaceif frame_setvalue(where::unknown,Dragvoll) with %% <--- if 
                frame_setvalue(where::departure,Dragvoll)
@@ -373,33 +331,33 @@ ip     bound(Time), varmember(Dep, DepList).
 
 
 tobefore rule                       %% ØF-990303
-is     ispresent depset(to, DepList),
-       ispresent keepbefore(Time, Dep, _)
-id     not frame_setvalue(whenis::arrival::before, _),
-       add frame_setvalue(whenis::arrival::before, Time)
+is     present depset(to, DepList),
+       present keepbefore(Time, Dep, _)
+id     not frame_setvalue((when)::arrival::before, _),
+       add frame_setvalue((when)::arrival::before, Time)
 ip     bound(Time), varmember(Dep, DepList).
 
 tobefore1 rule                       %% ØF-990303
-is     ispresent depset(to, DepList),
-       ispresent keepbefore1(Time, Dep, _)
-id     not frame_setvalue(whenis::arrival::before, _),
-       add frame_setvalue(whenis::arrival::before, Time)
+is     present depset(to, DepList),
+       present keepbefore1(Time, Dep, _)
+id     not frame_setvalue((when)::arrival::before, _),
+       add frame_setvalue((when)::arrival::before, Time)
 ip     bound(Time), varmember(Dep, DepList).
 
 tobetween rule
-is     ispresent depset(to, DepList),
-       ispresent keepbetween(LowTime, HighTime, Dep, _)
-id     not frame_setvalue(whenis::arrival::after, _),
-       add frame_setvalue(whenis::arrival::after, LowTime),
-       not frame_setvalue(whenis::arrival::before, _),
-       add frame_setvalue(whenis::arrival::before, HighTime)
+is     present depset(to, DepList),
+       present keepbetween(LowTime, HighTime, Dep, _)
+id     not frame_setvalue((when)::arrival::after, _),
+       add frame_setvalue((when)::arrival::after, LowTime),
+       not frame_setvalue((when)::arrival::before, _),
+       add frame_setvalue((when)::arrival::before, HighTime)
 ip     bound(LowTime), bound(HighTime), varmember(Dep, DepList).
 
 
 
 nils rule     %% AD HOC Når går buss 5/ Dragvoll    %% TA-031110
-is     ispresent departure(_, Dragvoll, _, Dep), 
-       ispresent depset(unknown,[Dep])   %% depset(unknown -> depset(to %% TA-031111
+is     present departure(_, Dragvoll, _, Dep), 
+       present depset(unknown,[Dep])   %% depset(unknown -> depset(to %% TA-031111
 
 id     frame_setvalue(where::unknown, Dragvoll),
        not frame_setvalue(where::departure, _),
@@ -416,8 +374,8 @@ ip     \+ Dragvoll = free(_).
 
 
 tobus rule                       %% ØF-990303
-is     ispresent departure(Bus, _, _, Dep), 
-       ispresent depset(to, DepList)
+is     present departure(Bus, _, _, Dep), 
+       present depset(to, DepList)
 id     not frame_setvalue(bus, _),   %% JFR frombus
        add frame_setvalue(bus, Bus)  %% TA-030126
 
@@ -428,16 +386,16 @@ ip     varmember(Dep, DepList),
        \+ Bus = free(_). %%%%%% TA-021029 Panic // true
 
 frombus rule                       %% ØF-990303
-is     ispresent departure(Bus, _, _, Dep), 
-       ispresent depset(from, DepList)
+is     present departure(Bus, _, _, Dep), 
+       present depset(from, DepList)
 id     not frame_setvalue(bus, _),
        add frame_setvalue(bus, Bus)
 ip     varmember(Dep, DepList),
        \+ Bus = free(_).
 
 atday rule                       %% ØF-990304
-is     ispresent atday(X),
-       not ispresent today(X)
+is     present atday(X),
+       not present today(X)
 id     not frame_setvalue(day, _), %% separated from when %% TA-051117
        add frame_setvalue(day, X)  %%
 ip     nonvar(X),
@@ -450,22 +408,22 @@ ip     nonvar(X),
 
 consdeptime2 rule
 is	[]
-id	ispresent frame_setvalue(where::departure, _),
-	replace framevalue(whenis::departure::before, _)
-	with	frame_setvalue(whenis::departure::before, ?)
+id	present frame_setvalue(where::departure, _),
+	replace framevalue((when)::departure::before, _)
+	with	frame_setvalue((when)::departure::before, ?)
 ip	[].
 
 consdeptime3 rule
 is	[]
-id	ispresent frame_setvalue(whenis::departure::after, DepTime),
-	replace framevalue(whenis::arrival::before, ArrTime)
-	with	frame_setvalue(whenis::arrival::before, ?)
+id	present frame_setvalue((when)::departure::after, DepTime),
+	replace framevalue((when)::arrival::before, ArrTime)
+	with	frame_setvalue((when)::arrival::before, ?)
 ip	ArrTime \== ? , DepTime \== ? , DepTime > ArrTime.
 
 
 consarrplace rule
 is	[]
-id	ispresent frame_setvalue(where::departure, Place),
+id	present frame_setvalue(where::departure, Place),
 	replace framevalue(where::arrival, Place)
 	with	frame_setvalue(where::arrival, ?)
 ip	[].
@@ -474,21 +432,21 @@ ip	[].
 
 consarrtime2 rule
 is	[]
-id	ispresent frame_setvalue(where::arrival, _),
-	replace framevalue(whenis::arrival::after, _)
-	with	frame_setvalue(whenis::arrival::after, ?)
+id	present frame_setvalue(where::arrival, _),
+	replace framevalue((when)::arrival::after, _)
+	with	frame_setvalue((when)::arrival::after, ?)
 ip	[].
 
 consarrtime3 rule
 is	[]
-id	ispresent frame_setvalue(whenis::arrival::before, ArrTime),
-	replace framevalue(whenis::departure::after, DepTime)
-	with	frame_setvalue(whenis::departure::after, ?)
+id	present frame_setvalue((when)::arrival::before, ArrTime),
+	replace framevalue((when)::departure::after, DepTime)
+	with	frame_setvalue((when)::departure::after, ?)
 ip	ArrTime \== ? , DepTime \== ? , DepTime > ArrTime.
 
 consarrbus rule
 is	[]
-id	ispresent frame_setvalue(where::arrival, _),
+id	present frame_setvalue(where::arrival, _),
 	replace framevalue(arrival::bus, _)
 	with	frame_setvalue(arrival::bus, ?)
 ip	[].
@@ -496,16 +454,16 @@ ip	[].
 
 
 deptimeonly   rule  %% TA-041012
-is frame_remember(whenis::departure::after,Time)
-id not ispresent frame_setvalue(whenis::departure::after,_), %% more specific!
-   add frame_setvalue(whenis::departure::after,Time) 
+is frame_remember((when)::departure::after,Time)
+id not present frame_setvalue((when)::departure::after,_), %% more specific!
+   add frame_setvalue((when)::departure::after,Time) 
 ip [].
 
 
 arrtimeonly   rule    %% TA-041012
-is frame_remember(whenis::arrival::before,Time) 
-id not ispresent frame_setvalue(whenis::arrival::before,_),  %% more specific!
-   add frame_setvalue(whenis::arrival::before,Time) 
+is frame_remember((when)::arrival::before,Time) 
+id not present frame_setvalue((when)::arrival::before,_),  %% more specific!
+   add frame_setvalue((when)::arrival::before,Time) 
 ip [].
 
 

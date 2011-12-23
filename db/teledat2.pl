@@ -3,53 +3,11 @@
 %% CREATED TA-020605
 %% REVISED TA-110825
 
+
 %% File containing TELEDAT 
 %% co-existing with BUSDAT
 
-:- module( teledat, [
-        expandkey/2,        %% DATA BASE INTERFACE SECTION
-        bustopic1/1,        building/1,
-        has_att_valx/6,       have_att_val/4,        has_att_val/4,        hazard_tagname/1,       %% goodbye: actually unnecessary
-        is_tagged/2,          is_dom_val/5,        ldaptotucplace/2, %  Tabularized Ad Hoc
-        legal_tagname/1,       %% Exception to hazard_tagname('
-        lookupdb2/3,          make_querycall/4,        teledbrowfile/1,        standardselect/1,
-        teleprocessdirect/4,  perform_querycall/2,        perform_querycall2/2,
-        create_dbquery/2,     possible_dom/2,        plinglist1/2,
-        plingelement/2,       unwanted_dbname/1,              printdbresult/1,
-        setoftags/2,          tablename/1,          teletopic1/1,
-        teledbtagfile/1,      write_querycall/1
-    ] ).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-%% RS-111205, UNIT: /
-:- ensure_loaded( '../declare' ).
-:- use_module( '../version' ).    %% version_date/1
-
-:- use_module( library(lists), [ select/4 ] ).
-%:- use_module( library(system3), [ exec/3, shell/1 ] ).
-
-:- use_module( '../bustermain2', [ getdbrowsdirect/2 ] ).   %% From getphonedir.pl
-:- use_module( '../main', [myflags/2
-        %%(:=)/2,    userNOTME:(=:)/2,    myflags/2, %% RS-111204 from declare.pl
-   ] ).
-
-%% RS-111205, UNIT: tuc
-%:-use_module( '../tuc/names', [
-%        compword/3,   kw/1, %% TA-100902 %%%%%%%%%  All the words appearing as [ ] constants in grammar
-%        noisew/1,     rewording/2,   synwordx/2,  xcompword/3
-%    ] ).
-%:- use_module( '../tuc/names', [ fact/1, instant/2 ] ).
-:- use_module( '../tuc/names', [ unwanted_name/1 ] ).
-:- use_module( '../tuc/semantic', [ (has_a)/2  ] ).  %% RS-111204    has_a/2 from facts.pl
-
-%% RS-111205, UNIT: utility/
-:- use_module( '../utility/utility', [
-        absorb/3,         append_atomlist/2, doubt/2,  for/2,
-        matchinitchars/3, output/1,          output/1, set_of/3,
-        set_ops/3
-   ] ). %% RS-111204 from utility
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% General predicate to expand (or not) a key
 %% fetched from database/telekeys.pl
@@ -273,18 +231,18 @@ have_att_val(_SubjectClass,Attribute,SubjectId,Values) :-
 
 %% has_att_val(SubjectClass,Attribute,SubjectId,Value).
 
-has_att_val(_Agent,email,tuc,'toreamb@idi.ntnu.no').          %% TA-110622
-has_att_val(_Agent,email,tagore,'toreamb@idi.ntnu.no').       %% i.e. tagore.idi.ntnu.no
-has_att_val(_Agent,email,(tore,amble),'toreamb@idi.ntnu.no'). %%
+has_att_val(_agent,email,tuc,'toreamb@idi.ntnu.no').          %% TA-110622
+has_att_val(_agent,email,tagore,'toreamb@idi.ntnu.no').       %% i.e. tagore.idi.ntnu.no
+has_att_val(_agent,email,(tore,amble),'toreamb@idi.ntnu.no'). %%
 
-has_att_val(_Person,retirement,(tore,amble),date(2012,04,21)). 
-has_att_val(_Person,birthday,(tore,amble),date(1945,04,21)).   %% TA-110519
+has_att_val(_person,retirement,(tore,amble),date(2012,04,21)). 
+has_att_val(_person,birthday,(tore,amble),date(1945,04,21)).   %% TA-110519
 
-has_att_val(_Person,retirement,(arvid,holme),date(2011,1,17)). %% TA-101006
-has_att_val(_Person,birthday,(arvid,holme),date(1941,1,17)).   %% TA-110519
+has_att_val(_person,retirement,(arvid,holme),date(2011,1,17)). %% TA-101006
+has_att_val(_person,birthday,(arvid,holme),date(1941,1,17)).   %% TA-110519
 
-has_att_val(_Agent,language,tuc,norsk).   %% TA-110825
-has_att_val(_Agent,language,tuc,english). %% 
+has_att_val(_agent,language,tuc,norsk).   %% TA-110825
+has_att_val(_agent,language,tuc,english). %% 
 
 has_att_val(person,retirement,tagore,date(2012,04,21)).   
 
@@ -292,7 +250,7 @@ has_att_val(agent,administrator,tuc,tagore).
 has_att_val(agent,creator,tuc,tagore).       %% NB agent 
 has_att_val(agent,leader,tuc,tagore).        %% TA-110606
 
-has_att_val(_Agent,address,atb,'Kongens gate 34b'). %% TA-110622
+has_att_val(_agent,address,atb,'Kongens gate 34b'). %% TA-110622
 has_att_val(person,address,(tore,amble),'Øya Helsehus 5etg'). %% RS-110926
 has_att_val(person,address,tore,'Øya Helsehus 5etg'). %% RS-110926
 has_att_val(person,address,amble,'Øya Helsehus 5etg'). %% RS-110926
@@ -303,8 +261,8 @@ has_att_val(agent,number,tt,177).    %% anomaly
 has_att_val(agent,number,tmn,177).    %% anomaly 
 has_att_val(agent,telephone,tt,177). %% i.e. ruteopplysningen
 
-has_att_val(_Agent,telephone,tuc,73521290).   %% Brage-telefonen
-has_att_val(_Agent,telephone,bustuc,73521290). 
+has_att_val(_agent,telephone,tuc,73521290).   %% Brage-telefonen
+has_att_val(_agent,telephone,bustuc,73521290). 
 
 has_att_val(company,telephone,brann,110).
 has_att_val(company,telephone,politiet,112).
@@ -322,22 +280,22 @@ has_att_val(company,telephone,politiet,112).
 has_att_val(company,telephone,politistasjonen,112). 
 has_att_val(company,telephone,ambulanse,113). 
 
-has_att_val(_Company,webaddress,tt,'http://www.atb.no'). %% agent? %% TA-101006
+has_att_val(_company,webaddress,tt,'http://www.atb.no'). %% agent? %% TA-101006
 
 %% TA-101109
-has_att_val(_Company,webaddress,flybussen,'http://www.flybussen.no/trondheim/').
+has_att_val(_company,webaddress,flybussen,'http://www.flybussen.no/trondheim/').
 
-%%%% has_att_val(_Company,webaddress,flybussen,'http://www.trondheimflybuss.no/').
+%%%% has_att_val(_company,webaddress,flybussen,'http://www.trondheimflybuss.no/').
 %%%% Innstilt %% TA-110308
 
-has_att_val(_Company,webaddress,flybussen,'http://www.vaernesekspressen.no/').
+has_att_val(_company,webaddress,flybussen,'http://www.vaernesekspressen.no/').
 
 
-has_att_val(_Company,webaddress,tram,'http://www.graakallbanen.no').
+has_att_val(_company,webaddress,tram,'http://www.graakallbanen.no').
 
-has_att_val(_Agent,streetaddress,atb,'Kongens gate 34'). %% TA-101112
+has_att_val(_agent,streetaddress,atb,'Kongens gate 34'). %% TA-101112
 
-has_att_val(_Agent,webaddress,atb,'http://www.atb.no'). %% %% agent? %% TA-101006
+has_att_val(_agent,webaddress,atb,'http://www.atb.no'). %% %% agent? %% TA-101006
 
 %%% has_att_val( place,webaddress,tt,'http://www.atb.no'). 
 
@@ -369,7 +327,7 @@ has_att_val(sms,price,tt,1).
 % Address
 
 has_att_val(person,address,X,(Street,Num,Char)):-
-    main:myflags(teleflag,true), 
+   value(teleflag,true), 
    has_att_val(person,street,X,Street),
    has_att_val(person,streetnumber,X,Num),
    has_att_val(person,streetcharacter,X,Char).
@@ -379,7 +337,7 @@ has_att_val(person,address,X,(Street,Num,Char)):-
 % has_att_valx(person,lastname,telephone,amble,tore_amble,999)
 
 has_att_valx(Person,Lastname,Telephone,Amb,ToreAmble,N):-
-     main:myflags(teleflag,true),
+    value(teleflag,true),
     is_dom_val(Person,Lastname,Amb,_Amble,ToreAmble),
     has_att_val(Person,Telephone,ToreAmble,N).
 
@@ -387,14 +345,14 @@ has_att_valx(Person,Lastname,Telephone,Amb,ToreAmble,N):-
 
 
 is_tagged(Word,Concept):-
-     main:myflags(tags,Tags),
+    value(tags,Tags),
     member([Word,Concept],Tags),
 
     \+ unwanted_name(Word). %% hans \= Hans  (ad hoc) 
 
 
 setoftags(Tore,Taglist):-
-     main:myflags(tags,Tags),
+    value(tags,Tags),
 
     set_of(Tag,
          (member([result=WT],Tags),
@@ -492,14 +450,14 @@ teleprocessdirect(AddSelect,Table,Wherelist,Results):-
 
 
 perform_querycall2(InternalQuery,Result):-
-     main:myflags(useexternal,true),                          %% TLF 030408
+    value(useexternal,true),                          %% TLF 030408
     !,
     create_dbquery(InternalQuery,Query),
 
     getdbrowsdirect(Query,Result). %% Result is now in TQA (rowsample0)
 
 perform_querycall2(_InternalQuery,_Result):-               %% TLF 030408
-    \+  main:myflags(useexternal,true),
+    \+ value(useexternal,true),
     !,
     output('flag useexternal false ---> no db lookup').
 
@@ -534,7 +492,7 @@ perform_querycall(select(Select1,Person,Wherelist,Z),Z):-
 
 
 write_querycall(ExternalQuery):-
-      main:myflags(traceprog,M), number(M), M >= 3,
+     value(traceprog,M), number(M), M >= 3,
      nl,
      write('QUERY:  '),
      output(ExternalQuery),nl. 

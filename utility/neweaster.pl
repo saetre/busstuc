@@ -1,12 +1,11 @@
-%% FILE neweaster.pl
-%% SYSTEM BUSSTUC
-%% AUTHOR Rune Sætre
-%% REVISED TA-111118
 
 :-op(800,xfx,isofloor). 
 
-isofloor(X,Y) :-
-    X is Y//1.
+%isofloor(X,Y) :-
+%    X is Y//1.
+%
+isofloor(X,Y) :-   %% NB floor() SICS gives float (SIC)
+    X is floor(Y). %%    floor() ISO  gives integer
 
 
 anonymous(Y,date(Year,Month,Day)):-

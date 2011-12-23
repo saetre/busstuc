@@ -2,30 +2,11 @@
 %% SYSTEM TUC
 %% CREATED TA-930601
 %% REVISED TA-110825
-
 %% TUC Dictionary for the language E
-:-module( dict_e, [
-        compword/3,        ow/1,        cw/1, %% TA-100902 %%%%%%%%%  All the words appearing as [ ] constants in grammar
-        noisew/1,        noun2/2,        noun/1,        %% Replaces synonyms with inflections (Root synonyms)
-        nounsyn/2,        lexnsingirr/2,        lexnpluirr/2,        noun_form/5,
-        rep_verb/1,        preposition/1,        pronoun/1,        pronoun/2,
-        rewording/2,        %% split word ahead of analysis. Not implemented ! %%
-        splitword/2,        synwordx/2,        synsms/2,        synword/2,
-        unwanted_interpretation/2,        unwanted_adjective/1,
-        unwanted_verb/1,        unwanted_noun/1,        verbroot2/2,
-        verb_form/4,        xcompword/3
-    ] ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-:- use_module( morph_e, [] ).
-:- use_module( evaluate, [ instant/2 ] ).
-:- use_module( semantic, [ (ako)/2, gradv_templ/2, particle/3 ] ).
 
 :- ensure_loaded('../declare').
-:- use_module( '../tucbuses', [ backslash/1 ] ).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:-module(dict_e,[]).
 
 rewording([can,t],[can,not]).      %% TA-110316
 rewording([cant],[can,not]).       %%
@@ -71,6 +52,50 @@ compword(':',[')'],[]). %% Smileys
 
 
 compword(all,[the],the). 
+   xcompword(am,[going,to],will). 
+   xcompword(are,[going,to],will). %% 
+
+   xcompword(is,[going,to],will).      %% bus is going to 
+   xcompword(nr,['.'],number).  
+
+xcompword(can,[t],cannot).
+
+xcompword(1,[st],first).
+xcompword(2,[nd],second).
+xcompword(3,[rd],third).
+
+xcompword(4,[th],fourth).
+xcompword(5,[th],fifth).   
+xcompword(6,[th],sixth).    
+xcompword(7,[th],seventh).
+xcompword(8,[th],eight).
+xcompword(9,[th],ninth).
+xcompword(10,[th],tenth).
+xcompword(11,[th],eleventh).
+xcompword(12,[th],twelvth).
+xcompword(13,[th],thirteenth).
+xcompword(14,[th],fourteenth).
+xcompword(15,[th],fifteenth).
+xcompword(16,[th],sixteenth).
+xcompword(17,[th],seventeenth).
+xcompword(18,[th],eighteenth).
+xcompword(19,[th],nineteenth).
+xcompword(20,[th],twentieth).  
+
+xcompword(21,[st],twentyfirst).   xcompword(21,[th],twentyfirst).
+xcompword(22,[nd],twentysecond).  xcompword(22,[th],twentysecond).
+xcompword(23,[rd],twentythird).   xcompword(23,[th],twentythird). 
+
+xcompword(24,[th],twentyfourth). 
+xcompword(25,[th],twentyfifth). 
+xcompword(26,[th],twentysixth). 
+xcompword(27,[th],twentyseventh).
+xcompword(28,[th],twentyeighth). 
+xcompword(29,[th],twentyninth9).  
+xcompword(30,[th],thirtieth).  
+xcompword(31,[st],thirtyfirst).  xcompword(31,[th],thirtyfirst).
+
+
 
 %% Composite words
 
@@ -83,6 +108,9 @@ compword(after,[now],hereafter).
 compword(ain,[t],is). %% Rough query logic 
 compword(air,[bus],airbus).  
 compword(air,[port],airport). 
+    xcompword(airport,[express],airbus). 
+
+    xcompword(any,[other],any). %% TA-100907 Rondane
 
 compword(are,[planned],exist).  %% Which routes are planned for Christmas?
 
@@ -95,11 +123,15 @@ compword(ascension,[day],ascension_day).
 compword(bath,[room],toilet). %% Telebuster
 
 compword(bus,[connection],bus). %% i.e. connection --> bus 
+    xcompword(bus,[number],bus). 
+    xcompword(bus,[ride],trip). %% TA-100902
 compword(bus,[stop],station).        %% but not buses stop !!!
 compword(bus,[stops],stations). 
 
 compword(d,[like],want).             %% I'd like
  
+    xcompword(departure,[time],departure). 
+    xcompword(departure,[times],departures). %% saves problems
 
 compword(didn,[t],does).    %% Rhetoric Query logic 
 compword(don,[t],does).     %%
@@ -129,6 +161,7 @@ compword(going,[on],happening).
 compword(good,[friday],good_friday).
 
 compword(holy,[night],christmas_eve). 
+    xcompword(human,[being],human). %% TA-110825
 
 compword(natural,[language],nl). 
 
@@ -190,6 +223,7 @@ compword(means,[of,transportation],vehicle).    %% Rondane
 compword(nice,[to,meet,you],hello). 
 
 
+    xcompword(pass,[by],pass). 
 compword(passing,[time],departure).  
 compword(passing,[times],departures). % The hours indicate ..
 
@@ -209,9 +243,13 @@ compword(klæbu,[coaches],klæburuta).
 compword(on,[the,other,hand],[]).
 compword(pod,[bay],[]).              %%  :-) Hal
 compword(same,[as],equal).           %%
+    xcompword(season,[ticket],special_ticket). 
 compword(show,[up],arrive).  
 compword(shut,[up],stop). 
 compword(the,[same,as],equal).  
+    xcompword(the,[turing],turings). %% .. test Ad Hoc 
+
+    xcompword(to,[morrow],tomorrow). 
 compword(to,[night],tonight).  
 compword(to,[to],to).                 %% Repair 
 compword(tram,[station],tramstation).
@@ -229,7 +267,7 @@ compword(when,[bus],bus).
 
 %% UNWANTED INTERPRETAION %% TA-101124
 
-unwanted_interpretation(bruker,use). %% >1 dummy
+unwanted_unterpretation(bruker,use). %% >1 dummy
 
 
 unwanted_adjective(supercalif). %% Needs 1 
@@ -269,11 +307,11 @@ unwanted_noun(second). %% confuse 2. %% TA-100909
 ow(nb(_)).
 ow(quote(_)).
 
-ow(X) :- instant(X,word),!.
+ow(X) :- user:instant(X,word),!.
 
 ow(X) :- numerid(X,_,_).
 ow(X) :- adjective2(X,_).
-ow(X) :- gradv_templ(X,_).  % also cw ? 
+ow(X) :- user:gradv_templ(X,_).  % also cw ? 
 
 
 
@@ -288,8 +326,8 @@ cw('!').
 cw(':'). 
 cw('/').
 
-cw(X) :- particle(X,_,_).
-cw(X) :- gradv_templ(X,_). 
+cw(X) :- user:particle(X,_,_).
+cw(X) :- user:gradv_templ(X,_). 
 cw(X) :- pronoun(X,_). 
 
 cw(a). cw(b). cw(c). cw(d). cw(e). cw(f). cw(g). cw(h). %% street letters
@@ -401,7 +439,7 @@ cw(yes). cw(you). cw(younger). cw(your). cw(yours).
 
 % synword names -> synplace  (busdat) 
 
-synwordx(X,Y):-main:myflags(smsflag,true),synsms(X,Y). 
+synwordx(X,Y):-user:value(smsflag,true),synsms(X,Y). 
 synwordx(X,Y):-synword(X,Y).
 
 
@@ -991,7 +1029,7 @@ synword(youre,         tucs).
 synword(yourself,      tuc). 
 
 
-noisew(BS):-backslash(BS).   
+noisew(BS):-user:backslash(BS).   
 
 noisew('«').
 noisew('»'). 
@@ -1006,8 +1044,8 @@ noisew('-').
 noisew('*'). 
 noisew('¨').
 noisew('#'). 
-noisew('('). %%  :- \+ main:myflags(noparentflag,true). %%  Not nec
-noisew(')'). %%  :- \+ main:myflags(noparentflag,true). 
+noisew('('). %%  :- \+ user:value(noparentflag,true). %%  Not nec
+noisew(')'). %%  :- \+ user:value(noparentflag,true). 
 noisew(',').
 noisew(';').
 noisew('¡'). 
@@ -1074,9 +1112,7 @@ noun2(M,N):-nounsyn(M,N).
 noun2(N,N):-noun(N).
 
 noun(thing).
-%noun(X) :- semantic:((ako)/X/_ ),
-%noun(X) :- userNOTME:( X ako _ ),
-noun(X) :- semantic:( X ako _ ),
+noun(X) :- user:(X ako _ ),
     \+ unwanted_noun(X). %% second %% TA-100909
 
 %% Replaces synonyms with inflections (Root synonyms)
@@ -1240,8 +1276,8 @@ verb_form(came,     come,past,fin).
 verb_form(caught,   catch,past,fin).
 verb_form(chosen,   chose,past,part).
 
-verb_form(doit,       do1,pres,fin).
-verb_form(doit,       do1,inf,fin).  %% what do you do1 %% odd, but does a bus \== do1 
+verb_form(do,       do1,pres,fin).
+verb_form(do,       do1,inf,fin).  %% what do you do1 %% odd, but does a bus \== do1 
                                    %% what can you do ?
 verb_form(does,     do1,pres,fin). %%  NOT inf !
 verb_form(doing,    do1,pres,part).    %%  What are you doing
@@ -1359,7 +1395,7 @@ verb_form(wrote,write,past,fin).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 rep_verb(Tell):- 
-    semantic:rv_templ(Tell,_). %% Semantic 
+    user:rv_templ(Tell,_). %% Semantic 
 
 preposition(by).
 
@@ -1474,7 +1510,7 @@ noun_form(women,woman,plu,u,n).
 
 
 adjective2(X,X):- 
-    semantic:adj_templ(X,_),
+    user:adj_templ(X,_),
     !. %% >1 
 
 adjective2(X,Y):- 
@@ -1663,67 +1699,4 @@ pronoun(i,self).
 pronoun(you,program). %% (trans dependent on tuc isa program)
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-
-xcompword(can,[t],cannot).
-
-xcompword(1,[st],first).
-xcompword(2,[nd],second).
-xcompword(3,[rd],third).
-
-xcompword(4,[th],fourth).
-xcompword(5,[th],fifth).   
-xcompword(6,[th],sixth).    
-xcompword(7,[th],seventh).
-xcompword(8,[th],eight).
-xcompword(9,[th],ninth).
-xcompword(10,[th],tenth).
-xcompword(11,[th],eleventh).
-xcompword(12,[th],twelvth).
-xcompword(13,[th],thirteenth).
-xcompword(14,[th],fourteenth).
-xcompword(15,[th],fifteenth).
-xcompword(16,[th],sixteenth).
-xcompword(17,[th],seventeenth).
-xcompword(18,[th],eighteenth).
-xcompword(19,[th],nineteenth).
-xcompword(20,[th],twentieth).  
-
-xcompword(21,[st],twentyfirst).   xcompword(21,[th],twentyfirst).
-xcompword(22,[nd],twentysecond).  xcompword(22,[th],twentysecond).
-xcompword(23,[rd],twentythird).   xcompword(23,[th],twentythird). 
-
-xcompword(24,[th],twentyfourth). 
-xcompword(25,[th],twentyfifth). 
-xcompword(26,[th],twentysixth). 
-xcompword(27,[th],twentyseventh).
-xcompword(28,[th],twentyeighth). 
-xcompword(29,[th],twentyninth9).  
-xcompword(30,[th],thirtieth).  
-xcompword(31,[st],thirtyfirst).  xcompword(31,[th],thirtyfirst).
-
-   xcompword(am,[going,to],will). 
-   xcompword(are,[going,to],will). %% 
-
-   xcompword(is,[going,to],will).      %% bus is going to 
-   xcompword(nr,['.'],number).  
-
-    xcompword(airport,[express],airbus). 
-
-    xcompword(any,[other],any). %% TA-100907 Rondane
-    xcompword(bus,[number],bus). 
-    xcompword(bus,[ride],trip). %% TA-100902
-    xcompword(departure,[time],departure). 
-    xcompword(departure,[times],departures). %% saves problems
-    xcompword(human,[being],human). %% TA-110825
-    xcompword(pass,[by],pass). 
-    xcompword(season,[ticket],special_ticket). 
-    xcompword(the,[turing],turings). %% .. test Ad Hoc 
-
-    xcompword(to,[morrow],tomorrow). 
-
-
-
-
 %%%%% THE END %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-

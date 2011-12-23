@@ -3,31 +3,17 @@
 %% AUTHOR T.Amble
 %% CREATED TA-950728
 %% REVISED TA-110127
-%% REVISED RS-111118
 
 
-% English  clone of runtime routines in gram_n_n.pl
 
-:- module(dcg_e, [
-        cc/5,
-        check_stop/5,
-        end_of_line0/5,
-        lock/5,
-        look_ahead/6,
-        not_look_ahead/6,
-        pushstack/7,
-        pushstack1/4,
-        skip_rest/5,
-        unlock/4,end_of_line/5,
-        w/6,
-        word/5
- ]).
+
+% English  clone of runtime routines in gram_n.pl
+
+ :-module(dcg_e,[]).
+
+ 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-:- use_module( '../main', [ myflags/2, set/2 ] ).
-:- use_module( lex, [   txt/3  ] ).
-
 
 %% Consensical Grammar Runtime Predicates
 
@@ -45,12 +31,12 @@ cc(U,UW,W,X,Y):-
 
 cc(U,X,X,UW,W):- 
    \+ frontgap(X),
-    txt(UW,w(_,[U]),W),
+    user:txt(UW,w(_,[U]),W),
     upcur(W).             % UPDATE *  
 
 
 word(U,X,X,UW,W):-        %% Reads the word as is
-   txt(UW,w(U,_),W), 
+   user:txt(UW,w(U,_),W), 
    upcur(W).
 
 % CODED WORDS
@@ -65,14 +51,14 @@ w(U,T,UW,W,X,Y):-
 
 w(U,U,X,X,UW,W):- 
    \+ frontgap(X), %%%%% \+ nogap(X),      %% TA-040809 
-    txt(UW,w(_,U),W),    % Experiment (Dont advance pointer if fail)
+    user:txt(UW,w(_,U),W),    % Experiment (Dont advance pointer if fail)
     upcur(W).            % UPDATE * 
                          % An error message can never come too early
 
 upcur(N):-
-        (main:myflags(cursor,M),
+        (user:value(cursor,M),
          N > M  ->
-         main:set(cursor,N);  
+         user:set(cursor,N);  
          true).
 
 
@@ -121,13 +107,13 @@ unlock([gap(lock,_)|GS],GS,X,X).
 %% Added argument for parse_tree
 
 end_of_line(nil,[],[],Z,Z):-  %% Absolute end of line 
-    main:maxl(Z). 
+    user:maxl(Z). 
 
 end_of_line0(nil,K,K,Z,Z):-  %% End of line, no empty-check
-    main:maxl(Z).            %% TA-110127
+    user:maxl(Z).            %% TA-110127
 
 skip_rest(nil,_,[],_,Z):-
-    main:maxl(Z).  
+    user:maxl(Z).  
 
 check_stop(nil,[],[],X,X).  %% True if nothing left on stack 
 
@@ -135,7 +121,7 @@ check_stop(nil,[],[],X,X).  %% True if nothing left on stack
 
 look_ahead(w(F),nil,X,X,Y,Y):- 
     \+ frontgap(X),      %% (text blocked also for look_ahead)
-    txt(Y,w(_,F),_). 
+    user:txt(Y,w(_,F),_). 
 
 
 look_ahead(w(F),nil,X,X,Y,Y):- 
@@ -145,7 +131,7 @@ look_ahead(w(F),nil,X,X,Y,Y):-
 
 look_ahead([F],nil,X,X,Y,Y):- 
     \+ frontgap(X),      %% (text blocked also for look_ahead)
-    txt(Y,w(_,[F]),_). 
+    user:txt(Y,w(_,[F]),_). 
 
 
 look_ahead([F],nil,X,X,Y,Y):- 
@@ -156,7 +142,7 @@ look_ahead([F],nil,X,X,Y,Y):-
 
 not_look_ahead(w(F),nil,X,X,Y,Y):- 
     \+ frontgap(X), 
-    txt(Y,w(_,F),_),
+    user:txt(Y,w(_,F),_),
     !,fail.
 
 
@@ -175,12 +161,12 @@ not_look_ahead([F],nil,X,X,Y,Y):-  %% TA-081229
 
 not_look_ahead([F],nil,X,X,Y,Y):- 
     \+ frontgap(X), 
-    txt(Y,w(_,[F]),_),
+    user:txt(Y,w(_,[F]),_),
     !,fail.
 
 /*  unnec or wrong %% TA-081229
 not_look_ahead([F],nil,X,X,Y,Y):- 
-    txt(Y,w(_,[F]),_),
+    user:txt(Y,w(_,[F]),_),
     !,fail.
 */
 

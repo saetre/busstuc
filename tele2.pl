@@ -8,9 +8,9 @@
 
 % Compiles the tele files
 
-?- use_module( xmlparser, [] ).  
+?-compile('xmlparser.pl').  
 
-?-compile( getphonedir ).
+?-compile('getphonedir.pl').
 
 %%  ?- compile('app/teletrans.pl').  <-- compiled by diabus.pl %% TA-080818
 
