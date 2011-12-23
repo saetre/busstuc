@@ -4,35 +4,17 @@
 %% REVISED TA-060419
 
 
+
+
 %% Common version for frames and teleframes 
-:-module( frames, [
-        completeframe/1,        completeteleframe/1,    find_askfor/3,          find_parentslot/3,
-        framecounter/1,         frame_getcount/2,       frame_getexperience/4,
-        frame_getsubslots/2,    frame_gettype/2,        frame_gettype_rec/3,    frame_getvalue_rec/4,
-        frame_iscomplete/1,     frame_iscomplete/2,     frame_isempty/1,        frame_isfull/1,
-        frame_setexperience/4,  frame_setvalue_rec/4,   frametemplate/2,        is_subframe/2,
-        resetframe/0,           xframe_getvalue/2,      xframe_setvalue/2
-  ] ).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-:- ensure_loaded( '../declare' ).       %% Operators for TUC
-
-:- use_module( library(system), []).
-:- use_module( library(lists3), [ substitute/4 ] ).
-
-:-dynamic framecounter/1.
-:- assert(framecounter(1)).
-
-%% RS-111205, UNIT: dialog/
-:- use_module( newcontext2, [ getcurrent/1, getframe/2, setframe/2 ] ).
-:- use_module( d_dialogue, [ linecounter/1 ] ).
-
-:- use_module( parseres, [ field_is_equal/3 ] ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %frameval(Type, Value, Filled, Confirmed, Experience)
 %subframe(Template, Id,)
+
+:- use_module(library(system)).
+
+:- assert(framecounter(1)).
+
 
 %% Frame Declarations
 
@@ -113,7 +95,7 @@ frametemplate(itemsfound,
     ]).
 
 
-%% Don't be dogmatic and ask  whenis::departure or whenis::arrival          '
+%% Don't be dogmatic and ask  when::departure or when::arrival          '
 
 completeframe(
     [
@@ -150,7 +132,7 @@ completeteleframe( %%  hva er adressen til AITEL ?
 
 
 resetframe :-    % unnec                           %% TLF-030402
-    main:myflags(teleflag, true),!,
+    value(teleflag, true),!,
     getcurrent(Cid),
     frametemplate(telebuster, NewFrame),    %% TA-051018
     setframe(Cid, NewFrame).
@@ -196,13 +178,13 @@ frame_getexperience_rec(Frame, Slot, Value, Type) :-
 %%%%%%%%%%%
 
 xframe_setvalue(Slot, Value) :-  %% TA-060328
-    main:myflags(dialog,1),
+    value(dialog,1),
     !,
     frame_setvalue(Slot, Value).
 xframe_setvalue(_Slot, _Value).
 
 xframe_getvalue(Slot, Value) :-  %% TA-060328
-     main:myflags(dialog,1),
+     value(dialog,1),
      frame_getvalue(Slot, Value,_Type).
 xframe_getvalue(_Slot, nil). %% NB nil not []
 
@@ -233,7 +215,7 @@ frame_setvalue_rec(Frame, Slot, Value, NewFrame) :-
     substitute([Slot, OldVal, class(Type), XCount], Frame, [Slot, Value, class(Type), Count], NewFrame).
 
 frame_getsubslots(StartSlot, Slot) :-           %% TLF 030402
-    main:myflags(teleflag, true),!,
+    value(teleflag, true),!,
     frametemplate(telebuster, Frame),           %% TA-051018
     frame_getsubslots(Frame, StartSlot, Slot).
 
@@ -341,12 +323,6 @@ frame_isempty(Slot) :-
     getframe(Cid, Frame),
     frame_isempty_rec(Frame, Slot).
 
-frame_isempty(Slot) :-
-    getcurrent(Cid),
-    getframe(Cid, Frame),
-    frame_isempty_rec(Frame, Slot).
-
-
 frame_isempty_rec(Frame, Super::_) :-
    %% !,				%% TLF 030425
     member([Super, ?, subframe(_), _], Frame).
@@ -368,7 +344,26 @@ frame_isempty_rec(Frame, Slot) :-
 frame_isempty_rec(Frame, Slot) :-
     member([Slot, ?, class(_), _], Frame).
 
+frame_isempty_rec2([ [_, ?, subframe(_), _] | Rest]) :-
+    !,
+    frame_isempty_rec2(Rest).
+frame_isempty_rec2([ [_, SubFrame, subframe(_), _] | Rest]) :-
+    !,
+    frame_isempty_rec2(SubFrame),
+    frame_isempty_rec2(Rest).
 
+frame_isempty_rec2([ [_, ?, class(_), _] | Rest]) :-
+    !,
+    frame_isempty_rec2(Rest).
+
+frame_isempty_rec2([]).
+
+
+
+frame_isempty(Slot) :-
+    getcurrent(Cid),
+    getframe(Cid, Frame),
+    frame_isempty_rec(Frame, Slot).
 
 frame_isempty_rec(Frame, Super::Rest) :-
     !,
@@ -391,29 +386,13 @@ frame_isempty_rec([ [_, ?, class(_), _] | Rest], Slot) :-
 
 frame_isempty_rec([], _).
 
-
-frame_isempty_rec2([ [_, ?, subframe(_), _] | Rest]) :-
-    !,
-    frame_isempty_rec2(Rest).
-frame_isempty_rec2([ [_, SubFrame, subframe(_), _] | Rest]) :-
-    !,
-    frame_isempty_rec2(SubFrame),
-    frame_isempty_rec2(Rest).
-
-frame_isempty_rec2([ [_, ?, class(_), _] | Rest]) :-
-    !,
-    frame_isempty_rec2(Rest).
-
-frame_isempty_rec2([]).
-
-
 frame_iscomplete(Miss) :-
     getcurrent(Cid),
     getframe(Cid, Frame),
     frame_iscomplete(Frame, Miss).
 
 frame_iscomplete(Frame, Miss) :-    %% TLF 030403
-    main:myflags(teleflag, true),
+    value(teleflag, true),
     !,
     (
         frame_isconsistent_tele(Frame),!,
@@ -422,6 +401,17 @@ frame_iscomplete(Frame, Miss) :-    %% TLF 030403
 
         frame_iscomplete_telerec(Frame, Miss)
     ).
+
+frame_isconsistent_tele(Frame) :-
+	frame_getvalue_rec(Frame, return, [count|_], _). %% Asked for NO. of. records
+
+frame_isconsistent_tele(Frame) :-                                   %% TLF 030409
+    frame_getvalue_rec(Frame, itemsfound::itemcount, 1, _Type). %% FOUND 1 record
+
+frame_isconsistent_tele(Frame) :-                                   %% TLF 030409
+    frame_getvalue_rec(Frame, itemsfound::items, Recs, _Type),
+    frame_getvalue_rec(Frame, return, [Field|_], _),
+    field_is_equal(Recs, Field, _Val). %% -> parseres.pl // all equal (?)
 
 frame_iscomplete(Frame, Miss) :-
     completeframe(List),
@@ -436,7 +426,7 @@ frame_iscomplete_rec(_, [], X, X).
 
 
 frame_iscomplete_telerec(Frame, []) :-
-        frame_getvalue_rec(Frame, return, [unknown], _),!.
+	frame_getvalue_rec(Frame, return, [unknown], _),!.
 
 frame_iscomplete_telerec(Frame, Miss) :-                             %% TLF 030409
     frame_getvalue_rec(Frame, itemsfound::itemcount, Count, _Type),
@@ -446,20 +436,9 @@ frame_iscomplete_telerec(Frame, Miss) :-                             %% TLF 0304
     frame_iscomplete_telerec2(Frame, List, Miss).
 
 frame_iscomplete_telerec(Frame, Miss) :-                             %% TLF 030606
-        \+ frame_getvalue_rec(Frame, itemsfound::itemcount, _, _),
-        completeteleframe(List),
-        makeattrlist(List, Miss).
-
-frame_isconsistent_tele(Frame) :-
-	frame_getvalue_rec(Frame, return, [count|_], _). %% Asked for NO. of. records
-
-frame_isconsistent_tele(Frame) :-                                   %% TLF 030409
-    frame_getvalue_rec(Frame, itemsfound::itemcount, 1, _Type). %% FOUND 1 record
-
-frame_isconsistent_tele(Frame) :-                                   %% TLF 030409
-    frame_getvalue_rec(Frame, itemsfound::items, Recs, _Type),
-    frame_getvalue_rec(Frame, return, [Field|_], _),
-    field_is_equal(Recs, Field, _Val). %% -> parseres.pl // all equal (?)
+	\+ frame_getvalue_rec(Frame, itemsfound::itemcount, _, _),
+	completeteleframe(List),
+	makeattrlist(List, Miss).
 
 makeattrlist([Last], [attributes::Last]).
 

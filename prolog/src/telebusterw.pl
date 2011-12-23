@@ -18,7 +18,7 @@
 
 
 
-?- (duallangflag := true). %% telebuster is not  speech based
+?- (duallangflag :=true). %% telebuster is not  speech based
 
 ?- (telebusterflag := true). %% Permanent 
 

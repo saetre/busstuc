@@ -36,8 +36,13 @@
  *
  *
  */
-:- module(xml,	[        %nmtokens/1,     %%from xml_acquisition
-        xml_parse/2,  xml_parse/3, xml_subterm/2, xml_pp/1 ] ).
+:- module( xml,
+	[
+	xml_parse/2,
+	xml_parse/3,
+	xml_subterm/2,
+	xml_pp/1
+	] ).
 
 /* xml_parse( {+Controls}, +?Chars, ?+Document ) parses Chars to/from a data
  * structure of the form xml(<atts>, <content>). <atts> is a list of

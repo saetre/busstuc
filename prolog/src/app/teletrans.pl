@@ -2,17 +2,14 @@
 %% SYSTEM NOTUC
 %% CREATED TA-011101
 %% REVISED TA-090502
-%% REVISED RS-111121
 
 % Transregler for teledomenet
-:- module( tele, [ 
-        rule/2,
-        tracevalue/1
-    ] ).  
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+:- module(tele,[]).
 
-:- ensure_loaded( '../declare' ).
+
+:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
+:- ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators
 
 %% Rule format
 
@@ -21,50 +18,7 @@
 %   id ID
 %   ip IP.
 
-% pragma(RuleModule,Source,Dest) bygger Dest fra Source vha reglene i RuleModule
 
-% Operatorer for Pragma-regler
-
-% is operator prefixed with rule RuleID
-
-:- op(1150,xfy,rule).  
-
-:- op(1120, fy,is).
-:- op(1110,xfy,id).
-:- op(1110,xfy,ip).
-
-:- op( 715, fy,context).    %% similar to ispresent, but doesnt mark as saw
-:- op( 715, fy,addfront).   %% (for messages etc) 
-:- op( 725, fy,addcon).     %% add if not already ispresent 
-:- op( 715, fy,removeall).  %% remove all of a list
-:- op( 715, fy,removeif).   %% remove all if any , always succeed 
-:- op( 715, fy,replaceall). %% replace iteratively all elements 
-:- op( 715, fy,replaceif).  %% replace if occuring. 
-:- op( 715, fy,replace).
-:- op( 715, fy,replacelast).
-:- op( 715,xfy,with).
-%%  :- op( 715, fy,to). %% not used, interferes with SWI-Prolog /srel/to/--
-%%  :- op( 715,xfy,append).
-:- op( 715, fy,no).
-:- op( 715, fy,exactly). 
-:- op( 715, fy,add).
-:- op( 715, fy,remove).
-:- op( 715, fy,ispresent).
-:- op( 715, fy,assume). 
-
-%% :- op( 715, fy,not).  % Already defined in TUC
-
-:- op( 714,xfy,seq).     %% directly sequence 
-
-:- op( 714,xfy,cond).    %% new   not X isa place cond bound(X)
-
-:- op( 714,xfy,when).    %% same as cond %% TA-081106
-
-:- op( 712, fy,seen). % Lower than "not", higher than "isa"
-
-
-
-tracevalue(L) :- main:myflags( traceprog, L ).  % Trace level 1-6
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Oversettingsregler
@@ -75,33 +29,33 @@ tracevalue(L) :- main:myflags( traceprog, L ).  % Trace level 1-6
 listoftql0 rule
 is  [(confirm,_)]
 id  add message(answer(bcpbc(ok)))
-ip  \+ main:myflags(dialog,1). 
+ip  \+ user: value(dialog,1). 
 
 listoftql1 rule
 is  replaceall [(confirm,_)|Y]
     with Y
 id  []
-ip  \+ main:myflags(dialog,1).
+ip  \+ user: value(dialog,1).
 
 
 listoftql2 rule
 is  replaceall [X]
     with X
 id  []
-ip  \+ main:myflags(dialog,1).
+ip  \+ user: value(dialog,1).
 
 listoftql3 rule
 is  replaceall [(doit,replyq(X))|Rest]
     with Rest
 id  addfront reply(X)          %% syndrome  Hei ! Jeg heter Tore
                       %% Jeg heter tore -> OK and failure -> negans on do
-ip  \+ main:myflags(dialog,1).
+ip  \+ user: value(dialog,1).
 
 listoftql4 rule
 is  replaceall [X|_]
     with X
 id  addfront message(onlyonesentence)
-ip  \+ main:myflags(dialog,1).
+ip  \+ user: value(dialog,1).
 
 error rule
 is  error
@@ -285,8 +239,8 @@ ip  [].
 
 postulatetitle rule  %%  Hva er Tore Amble -> Tittel %% TA-060209
 is  which(X),
-    ispresent Tore isa firstname, 
-    ispresent Amble isa lastname,
+    present Tore isa firstname, 
+    present Amble isa lastname,
     be2/(Tore,Amble)/X/_
 id  remove teleprocess(Att,Table,L,R),
     add    teleprocess(Att1,Table,L,R)
@@ -303,7 +257,7 @@ id  add message(donotknow)
 ip	(C = self ; C = program).
 
 findnotplacefield2 rule
-is  which(A), ispresent B isa _,A isa place,live/B/C,srel/in/place/A/C,event/real/C
+is  which(A),present B isa _,A isa place,live/B/C,srel/in/place/A/C,event/real/C
 id  add message(donotknow)
 ip	[].
 
@@ -338,7 +292,7 @@ ip
 	 member(B,List).
 
 findotherfieldbe2 rule  %% new regime %% TA-060319
-is  ispresent which(X),   %% TA-060324
+is  present which(X),   %% TA-060324
     be2/A/X/_,   A isa B,  
 
     not  _ isa exit %% Utgangen %% Ad Hoc %% TA-060419
@@ -417,8 +371,8 @@ ip  teleconstraintlist(List),
     append(Att,[B],AttB).    %% TA-051030
 
 istoreambleteacher rule %% TA-051010 Experiment
-is  ispresent Amble isa lastname,
-    ispresent Tore isa firstname,
+is  present Amble isa lastname,
+    present Tore isa firstname,
     be2/(Tore,Amble)/T/_,
     T isa Teacher
 id  remove teleprocess(Att, Table,L,R),
@@ -501,6 +455,10 @@ ip  has_att_val(person,telephone,Tore_amble,_N),
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+tracevalue(L) :- user:value(traceprog,L).  % Trace level 1-6
+
+
+
 %%% Other rules (makes a buslog equivalent program, without bus handeling)
 
 
@@ -515,8 +473,8 @@ id  not atdate(date(_,_,_)),
     addcon atday(Monday)  %% <---------- %% TA-050808
 ip  today(Thursday),
     Thursday \== Monday,
-    main:number_of_days_between(Thursday,Monday,N),  
-    main:finddate(N,date(X,Y,Z)).
+    user:number_of_days_between(Thursday,Monday,N),  
+    user:finddate(N,date(X,Y,Z)).
 
 
 
@@ -677,7 +635,7 @@ ip [].
 
 life44 rule %% TA-990609
 is  test,42 isa meaning,F1 isa life,be1/42/F2,event/real/F2,
-    srel/pwith/thing/F1/F2
+    srel/(with)/thing/F1/F2
 id  add true
 ip [].
 
@@ -695,7 +653,7 @@ id  add  message(howtuchelp)
 ip  dmeq(tuc,Bustuc).
 
 life41 rule
-is  which(A),A isa meaning,B isa life,nrel/pwith/meaning/thing/A/B
+is  which(A),A isa meaning,B isa life,nrel/(with)/meaning/thing/A/B
 id  add message(answer((bcp(42))))
 ip  [].
 
@@ -722,7 +680,7 @@ id  addfront message((howtuchelp))
 ip  [].
 
 399 rule
-is  which(A),(tuc isa program,work/tuc/B,srel/pwith/thing/A/B)
+is  which(A),(tuc isa program,work/tuc/B,srel/(with)/thing/A/B)
 id  addfront message((howtuchelp))
 ip  [].
 
@@ -778,7 +736,7 @@ ip [].
 
 %  Internet
 internet rule %% TA-990428
-is  _Internet isa network ,
+is  _internet isa network ,
     clear     %% no use in ask for specifications when that is the problem
 id	 add message(noinfoabout(network))
 ip	 [].
@@ -824,7 +782,7 @@ ip  [].
 
 
 goddagmann rule
-is  howmany(Bus), ispresent Bus isa Frog % avoid GodDagMannØkseskaft answers (GDMØ)
+is  howmany(Bus),present Bus isa Frog % avoid GodDagMannØkseskaft answers (GDMØ)
 id  not message(_Already), %% TA-991111
     addfront message(donotknow)
 ip  \+ dmeq(busdeparr,Frog),
@@ -870,7 +828,7 @@ ip  [].
 /* %% dmeq is already supposed to be in module user
 
 dmeq(A,B):-         %% TA-051011 Separated out from teletrans
-    main:dmeq(A,B). %% File dmeq.pl
+    user:dmeq(A,B). %% File dmeq.pl
 
 */
 

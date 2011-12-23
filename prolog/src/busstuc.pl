@@ -5,12 +5,15 @@
 
 %% Makefile for BussTUC  server NTNU , Norwegian
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                     %
 % TUC - The Understanding Computer                    %
 %                                                     %
+%                                                     %
 % A General Natural Language                          %
 %     Understanding System                            %
+%                                                     %
 %                                                     %
 % COPYRIGHT  (C) 2001 -                               %
 %                                                     %
@@ -23,8 +26,7 @@
 %                                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:-use_module( library(system), [ environ/2 ] ). 
-:-use_module( library(file_systems), [] ).
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                     %
@@ -32,14 +34,17 @@
 %                                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-?-prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates// Testing
+%% ?-prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates// Testing
 
-?- %working_directory(Dir,Dir), write(Dir),nl,          %% Sicstus <= 4.1 way
-   %% Sicstus >= 4.2 way
-   environ('SP_STARTUP_DIR',Dir), write('starting dir: '), write(Dir),nl,
-   [sicstus4compatibility],     %% Compatible with sicstus4, new predicates etc.
-   ['tucbuss.pl'],              %% Compiles tuc/ etc.
-   ['busroute.pl'],             %% Compiles database/
-   ['db/discrepancies.pl'].     %% Must be updated before winter
+?- %% [sicstus4compatibility], loaded in drucke_baum
+
+   ['tucbuss.pl'],
+
+   ['busroute.pl'], %% Compiles database/
+
+   ['db/discrepancies.pl']. %% Must be updated before winter
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+

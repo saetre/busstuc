@@ -6,121 +6,119 @@
 
 
 % Bruker pragma til å bygge buslog-program fra TQL og svar fra buslog-program
+% 
 
-:- module( interapp, [
-        avoidfool/1,   decidewday/2,     determine_application_period/1,
-        determine_query_period/0,        execute_program/1,     execute_program2/2,             
-        ieval/1,       invisible_mess/1, isuccess/1,            makeanswer/4,
-        newfree/1,     notbothfree/2,    prettypr/2,            waves/0,
-        webstat/3,     writeanswer/1,    writeprog/1
-   ] ).
+:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% %%%%%%%% RS-111118
-%% RS-111205, UNIT: /
-:- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
-:- use_module( '../main', [ (:=)/2, printdots/0, set/2 ] ).
-:- use_module( '../interfaceroute', [  search_period_module/3  ] ).
 
-:-volatile webstat/3.
-:-dynamic webstat/3.
-
-%% RS-111205, UNIT: app/
-:- use_module( busanshp, [  empty_sms_message/1, make_total_google/2, pay/0, printmessage/1 ] ).
-:- use_module( buslog, [ veh_mod/1 ] ).
-:- use_module( pragma, [ pragma/3, pragma_aux/4  ] ).
-:- use_module( negans, [ makenegative/3, trytofool/3  ] ).
-
-%% RS-111205, UNIT: db/
-:- use_module( '../db/timedat', [ todaysdate/1  ] ). % (NUMBER) %% % (CLOCK)
-:- use_module( '../tuc/evaluate', [ evaluateq/1 ] ).
-
-%% RS-111205, UNIT: utility/
-:- use_module( '../utility/utility', [
-        flatround/2,    for/2,          foralltest/2,   forget/1,
-        newconst/1,     numbervars/1,   sequence_member/2
-   ] ).
-   
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
-ieval(TQL0) :- main:myflags(teleflag,true), 
+ieval(TQL0) :- value(teleflag,true), 
     !,
 	 copy_term(TQL0,TQL),
+
     be_prepared(TQL,FQL), 
+
 	 pragma(tele,FQL,P),       % Builds program
 	 !,                        % Looks only at first try
 	 writeprog(P),
+
     waves,  
+
     first_meat(FQL,FQL1),     % react to first FQL if negative message
+
 	 irun(TQL,FQL,FQL1,P),     % Evaluates program, makes answer if success 
                               % TQL is only for tuc proper
 	 !,                        % Only one program run
+
 	  
     waves.  
 
-ieval(TQL0) :-
-         copy_term(TQL0,TQL),
-    be_prepared(TQL,FQL), 
-%........
-%%%%%%%%%    set(actual_domain,tt),   %% default %% TA-090827
-    set(airbusflag,false),   %% set dynamically if airbus request
-                             %% TA-090331
-    set(nightbusflag,false),  
-    set(warning_sentence,false),  
-    set(warningflag,false),
-%%    determine_query_period, %% OUTDATED %% TA-110302
-%%    determine_application_period(TQL), %% OUTDATED %% TA-110302
-    forget(main:myflags(warningtime,_)), 
-    forget(main:myflags(prewarningtime,_)), %% (all values are relevant)
-    forget(main:myflags(samedayflag,_)), %% i.e. unknown 
-%................
-         pragma(trans,FQL,P),      % Builds program // may set samedayflag
-         !,                        % Looks only at first try
-         writeprog(P),
-    printdots,  %% TA-110204 .. main   ends visible web respons 
-    waves,
-    first_meat(FQL,FQL1),     % react to first FQL if negative message
-         irun(TQL,FQL,FQL1,P),     % Evaluates program, makes answer if success 
-                              % TQL is only for tuc proper
-         !,                        % Only one program run
-                              % // May use  samedayflag
-    update_webstat, %% --- 
-    waves. 
-
-waves :-  main:myflags(norsource,true), %% TA-110207
+waves :-  value(norsource,true), %% TA-110207
     !.
 
-waves :-  main:myflags(traceprog,0), %% TA-110207
+waves :-  value(traceprog,0), %% TA-110207
           !.
 
-waves :-  main:myflags(dialog,1),
+waves :-  value(dialog,1),
           !.
 
 waves :-	
          write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'), % 80 chars
 	      write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'),nl.
 
+ieval(TQL0) :-
+	 copy_term(TQL0,TQL),
+
+    be_prepared(TQL,FQL), 
+
+%........
+
+%%%%%%%%%    set(actual_domain,tt),   %% default %% TA-090827
+
+    set(airbusflag,false),   %% set dynamically if airbus request
+                             %% TA-090331
+    set(nightbusflag,false),  
+
+    set(warning_sentence,false),  
+
+    set(warningflag,false),
+
+
+%%    determine_query_period, %% OUTDATED %% TA-110302
+
+%%    determine_application_period(TQL), %% OUTDATED %% TA-110302
+
+
+    forget(value(warningtime,_)), 
+
+    forget(value(prewarningtime,_)), %% (all values are relevant)
+
+    forget(value(samedayflag,_)), %% i.e. unknown 
+
+%................
+
+	 pragma(trans,FQL,P),      % Builds program // may set samedayflag
+	 !,                        % Looks only at first try
+	 writeprog(P),
+
+    printdots,  %% TA-110204 .. main   ends visible web respons 
+
+    waves,
+
+    first_meat(FQL,FQL1),     % react to first FQL if negative message
+
+	 irun(TQL,FQL,FQL1,P),     % Evaluates program, makes answer if success 
+                              % TQL is only for tuc proper
+	 !,                        % Only one program run
+                              % // May use  samedayflag
+
+    update_webstat, %% --- 
+
+    waves. 
+
 determine_query_period :-
      
     veh_mod(H),
 
-    (H=r1617_100621 -> query_period := team;
-     H=r1611_100823 -> query_period := atb;
+    (H=r1617_100621 -> query_period :=team;
+     H=r1611_100823 -> query_period :=atb;
      query_period := nil).
 
 determine_application_period([_:::TQL]):-
     veh_mod(H),
     (sequence_member(date(A,B,C) isa date,TQL) -> %% date occurs
-        search_period_module(tt,date(A,B,C),_J) ; _J=H),
+        search_period_module(tt,date(A,B,C),J);
+        J=H),
      !,
-    (H=r1617_100621 -> application_period := team;
-     H=r1611_100823 -> application_period := atb;
-     application_period := nil).
+    (H=r1617_100621 -> application_period :=team;
+     H=r1611_100823 -> application_period :=atb;
+     application_period :=nil).
 
 determine_application_period(_):-
-    application_period := nil.
+    application_period :=nil.
 
 %¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
 
@@ -132,7 +130,7 @@ update_webstat :-  %% TA-090430
     retract(webstat(TODAY,SMS,TOT)), %% dynamic/ declare
     !,
 
-   (main:myflags(smsflag,true)
+   (value(smsflag,true)
            -> (SMS1 is SMS+1,TOT1 is TOT + 1)%% 
             ; (SMS1 is SMS,  TOT1 is TOT+1)),
     assert(webstat(TODAY,SMS1,TOT1)),
@@ -143,7 +141,7 @@ update_webstat :-  %% TA-090430
   
     SMS=0, TOT=0,
 
-   (main:myflags(smsflag,true)
+   (value(smsflag,true)
            -> (SMS1 is SMS+1,TOT1 is TOT + 1)%% 
             ; (SMS1 is SMS,  TOT1 is TOT+1)),
     assert(webstat(TODAY,SMS1,TOT1)),
@@ -154,8 +152,8 @@ update_webstat :-  %% TA-090430
 
 %% Need first sentence it should react to
 
-%first_meat([(doit,replyq(_)),Y],Z):-!,
-%    first_meat(Y,Z).
+first_meat([(doit,replyq(_)),Y],Z):-!,
+    first_meat(Y,Z).
 first_meat([confirm:::_|Y],Z):-!, 
     first_meat(Y,Z).
 first_meat([T|_],T):-!. 
@@ -179,7 +177,7 @@ be_prep1(TQL,FQL):-
 	 konstantify(FQL).         % Flat TQL
 
 writeprog(P) :-
-	 main:myflags(traceprog,L),
+	 value(traceprog,L),
 	 L>1,
 	 !,
     copy_term(P,Pwr),
@@ -193,7 +191,7 @@ writeprog(_). % Otherwise
 
 
 traceanswer(Panswer) :- 
-	 main:myflags(traceans,L),
+	 value(traceans,L),
 	 L>1,
     !,
 	 copy_term(Panswer,Pwr),
@@ -210,16 +208,16 @@ traceanswer(_). %% Otherwise
 
 
 irun(_A,_B,_C,_D):-    %% not interested in answer
-    main:myflags(norsource,true),%% TA-110207
+    value(norsource,true),%% TA-110207
     !.
 
 irun(_A,_B,_C,_D):-    %% not interested in answer
-    main:myflags(traceprog,0),%% TA-110207
+    value(traceprog,0),%% TA-110207
     !.
 
 
 irun(A,B,C,D):- 
-    \+ main:myflags(busflag,true), %% TA-110502 \+  !!!
+    \+ value(busflag,true), %% TA-110502 \+  !!!
     irun0(A,B,C,D),      %% Test for dumy answers
     !.
 irun(A,B,C,D):-
@@ -232,7 +230,7 @@ irun(A,B,C,D):-
 % Not proper program.   May be something for standard tuc instead 
 
 irun0(TQL,_FQL,_,PROG):- 
-    \+ main:myflags(busflag,true),  %%  Drop TRY TUC  if busflag 
+    \+ value(busflag,true),  %%  Drop TRY TUC  if busflag 
     \+ isuccess(PROG),
     \+ explain_query(TQL),
     !,    
@@ -262,7 +260,7 @@ find_tag(_,nil).
 
 
 irun1(_,_FlatCode,_FC1,Program) :-
-    main:myflags(teleflag,true),
+    value(teleflag,true),
     !,
     isuccess(Program),
     execute_program(Program),
@@ -277,7 +275,7 @@ irun1(_,FlatCode,_FC1,Program) :-
     !, 
     makeanswer(true,FlatCode,Program,Panswer),
 	 !, 
-    (main:myflags(mapflag,true) -> true;
+    (value(mapflag,true) -> true;
        (printpaytag(Program), 
         writeanswer2(FlatCode,Program,Panswer))). 
 
@@ -383,7 +381,7 @@ standardemptysmsanswer(true,_,               bcpbc(cannotanswer)).
 
 %                      NoDep
 standardemptysmsanswer(false,(new,_),         bcp(ok)).
-%standardemptysmsanswer(false,(doit,_),          bcpbc(sorrycannot)). 
+standardemptysmsanswer(false,(doit,_),          bcpbc(sorrycannot)). 
 standardemptysmsanswer(false,(which(_),_),    bcpbc(cannotanswer)). 
 standardemptysmsanswer(false,(modifier(_),_), bcpbc(cannotanswer)). 
 standardemptysmsanswer(false,_,               bcpbc(cannotanswer)). 
@@ -396,7 +394,7 @@ writeanswer(Panswer) :-
 
 
 blankanswer(Panswer):- 
-%%    main:myflags(smsflag,true),  %% <--- Hva skjer = [ ] (smsflag=false)
+%%    value(smsflag,true),  %% <--- Hva skjer = [ ] (smsflag=false)
    foralltest(sequence_member(X,Panswer), % utility
                   invisible_mess(X)).
 
@@ -594,7 +592,7 @@ isc(timeis(_)).                       % klokka
 isc(tramstations(_)).                 % navnet på trikkestasjonene
 isc(true).                            % Answer Yes
 
-isc(teleprocess(_,_,_,_)) :- main:myflags(teleflag,true). 
+isc(teleprocess(_,_,_,_)) :- value(teleflag,true). 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

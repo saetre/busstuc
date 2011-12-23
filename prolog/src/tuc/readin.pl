@@ -1,25 +1,10 @@
-%% FILE tuc/readin.pl
+%% FILE readin.pl
 %% SYSTEM TUC
 %% CREATED  TA-910531
 %% REVISED  TA-110725
-%% REVISED  RS-111118
 
-%% UNIT: tuc
-:- module( readin, [
-        alpha/3,        alphanums/3,    ask_file/1,     ask_user/1,
-        digits/3,       read_in/1,      readoneline/1,  readrestquote/3,
-        words/3 
-   ] ).
+:- ensure_loaded('../declare').
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% RS-111205, UNIT: /
-:- ensure_loaded( userNOTME:'../declare.pl').
-:- use_module( '../main', [  (:=)/2,  myflags/2,  norsource_prefix/0  ] ).
-:- use_module( '../tucbuses', [  prompt/1  ] ).
-
-%% RS-111205, UNIT: utility/
-:- use_module( '../utility/utility', [ output/1, splitlast/3 ] ).  %% Module util
 
 %% NB 0015 \-> 2415
 
@@ -43,7 +28,7 @@
 
 
 ask_user(P) :- !, 
-   flush_output(user),
+   ttyflush,
    nl,
    prompt(E), %% Defined in Makefile  
    write_prompt(E), %% TA-110207
@@ -60,7 +45,7 @@ ask_file(P) :-
    nl.
 
 write_prompt(_E):- %% TA-110207
-    main:myflags(norsource,true),
+    value(norsource,true),
     !.
 write_prompt(E):-
      write(E).
@@ -69,17 +54,17 @@ write_prompt(E):-
 %%% Miscellaneous for File Reading
 
 write_from_user(P):-
-    main:myflags(talk,1), 
+    value(talk,1), 
     !,
-%    opentalk(question),
-        doing(P,0). %% out to \nat\scratch
-%    closetalk(question).
+    opentalk(question),
+        doing(P,0), %% out to \nat\scratch
+    closetalk(question).
 
-write_from_user(_) :- !.
+write_from_user(_):-!.
 
 
 write_from_file(P):- %% TA-110207
-   main:myflags(norsource,true),
+   value(norsource,true),
    !,
 
    norsource_prefix,nl, %% bloody hack %% TA-110207
@@ -177,8 +162,8 @@ readrest(T,[]) :- T== -1, %%   EOF
 
 readrest(T,L):- %% (...) = ' ' 
     T=40,     %% ( 
-    main:myflags(noparentflag,true), %% ignore content
-    \+  main:myflags(gpsflag,true),  %% TA-110114
+    value(noparentflag,true), %% ignore content
+    \+  value(gpsflag,true),  %% TA-110114
     !,
     skipuntil(41),  %% ) including CR
     readrest(32,L). 
@@ -186,7 +171,7 @@ readrest(T,L):- %% (...) = ' '
 
 readrest(T,Rest):- 
     term_char(T),       %% termchar '.','!'.'?'
-    main:myflags(textflag,true),
+    value(textflag,true),
     !,
     get0129(Z),  %% next character (blank or not)
     !,
@@ -213,7 +198,7 @@ readrest(K,[K|U]):- % A Proper Character
 
 skipuntil(CH):- 
     repeat,
-    get_code(C),
+    get0(C),
     (C=CH;C=10), %% stop at CR %% TA-101115
     !.
 
@@ -243,7 +228,7 @@ readrestquote(A,K1,[K1|U]):-
 
 
 to_nl:- 
-     main:myflags(textflag,true),!.
+     value(textflag,true),!.
 
 to_nl :-
    repeat,
@@ -322,7 +307,7 @@ getnext_bl(X):-  % _bl
 
 % get0   Built-in
 
-get0129(C):-get_code(K),       %% Avoid a  \201 ahead of every norwegian character
+get0129(C):-get0(K),       %% Avoid a  \201 ahead of every norwegian character
     (K=129 -> get0129(C);  %% Problem in emacs on linux for european display
     K=C).                  %% when running through shell
                            %% Probably remedied by (standard-display-european 1)
@@ -387,8 +372,8 @@ idchar(A, alpha,  [A| C], C) :-
 
 
 idchar(A, alpha, [A| C], C) :- %%    buss5 -> BUSS 5 
-     (main:myflags(dialog,1);       %% especially context id 
-     main:myflags(commandflag,true)),  %% except for commands
+     (value(dialog,1);       %% especially context id 
+     value(commandflag,true)),  %% except for commands
      digit(A).
 
 
@@ -496,7 +481,7 @@ alphanum(K,K):-digit(K).
 alphanum(K,K):-underscore(K). 
 
 underscore(95) :- %% _  
-     main:myflags(commandflag,true). 
+     value(commandflag,true). 
 
 digsign(X):-digit(X).
 digsign(X):-sign(X).
@@ -520,7 +505,7 @@ blank_char(B):- %% NOT CR !!!!
     B==160.
 
 blank_char(95):- 
-    \+ main:myflags(commandflag,true).
+    \+ value(commandflag,true).
 
 
 blank(K) :- K =< 32; %% Including CR !
@@ -530,7 +515,7 @@ blank(K) :- K =< 32; %% Including CR !
             K=160. %% (Invisible chracter)
 
 blank(95):- 
-    \+ main:myflags(commandflag,true).
+    \+ value(commandflag,true).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -539,6 +524,41 @@ blank(95):-
 %% lc(original,official)   translates upper case to lower case
 %                          in addition, some ad hoc normalisations
 
+
+
+lc(X,Y):-  
+   lc1(X,Y),
+   value(teleflag,true),
+   !.
+
+lc(X,Y):- 
+   lc1(_,X),
+   value(teleflag,true),
+   !,
+   Y=X.
+
+
+
+%% In tele-modus (teleflag), some foreign characters 
+%% shall not be translated to Norwegian characters,
+%% but just to their lower case counterparts.
+/*
+
+ÂÄÀÁ -> âäàá
+
+ÊËÈÉ -> êëèé
+
+ÔÖÒÓ -> ôöòó
+
+ÛÜÙÚ -> ûüùú
+
+Ñ -> ñ
+
+*/
+
+lc(152,248). %% ø Ã˜stre %% TA-101124 ???
+
+lc(133,121). %% Ã…sheim  %% TA-101129 ???
 
 lc1(194,226).  % ÂÄÀÁ -> âäàá
 lc1(196,230).  % Ä -> æ
@@ -573,41 +593,6 @@ lc1(241,209). % Ñ -> ñ
           [230,248,229,198,216,197,91,92 93, 123,124,166,125]
  
 */
-
-
-lc(X,Y):-  
-   lc1(X,Y),
-   main:myflags(teleflag,true),
-   !.
-
-lc(X,Y):- 
-   lc1(_,X),
-   main:myflags(teleflag,true),
-   !,
-   Y=X.
-
-
-
-%% In tele-modus (teleflag), some foreign characters 
-%% shall not be translated to Norwegian characters,
-%% but just to their lower case counterparts.
-/*
-
-ÂÄÀÁ -> âäàá
-
-ÊËÈÉ -> êëèé
-
-ÔÖÒÓ -> ôöòó
-
-ÛÜÙÚ -> ûüùú
-
-Ñ -> ñ
-
-*/
-
-lc(152,248). %% ø Ã˜stre %% TA-101124 ???
-
-lc(133,121). %% Ã…sheim  %% TA-101129 ???
 
 %% The use of [ | ] for ÆØÅ is now outdated
 

@@ -5,31 +5,14 @@
 %% REVISED TA-110511
 %% Extended with tallmorph  Norwegian textual numbers.
 
+:- ensure_loaded('../declare').
 
 %% Morphological Analyser for the language N.
 
-:-module(morph_n,[
-        adjective/1,      be_verb/1,        ditrans_verb/1,   intrans_verb/1,
-        lexv/4,           lcode2/2,         noun/1,           pvimodal_verb/1,
-        trans_verb/1,     verbroot/1,       verb_form/4
-    ]).
+:-module(morph_n,[]).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
-:-use_module( dict_n, [] ).
-
-:- ensure_loaded( '../declare' ).
-%:-op( 710,xfx, ako ).
-
-%ends_with(X,Y,Z):-main:ends_with(X,Y,Z).
-%% IMPORTS
-%% RS-111205, UNIT: utility/
-
-:- use_module( semantic, [ adj_templ/2, (ako)/2, dtv_templ/4, iv_templ/2, pvi_templ/2, tv_templ/3 ] ).
-
-:- use_module( '../utility/utility', [ ends_with/3, last_character/2, once1/1, testmember/2 ] ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ends_with(X,Y,Z):-user:ends_with(X,Y,Z).
 
 verb_form(X,Y,Z,U):-
     dict_n:verb_form(X,Y,Z,U).
@@ -185,7 +168,7 @@ lcode2(X,[X]):-           % Test on actual word
 
                          
 lcode2(X,[X]):-           %%   not name(X,n,0) as before
-    once1(part_word(X)).   
+    user:once1(user:part_word(X)).   
 
 verbroot(W):- 
     be_verb(W);
@@ -196,24 +179,24 @@ verbroot(W):-
     pvimodal_verb(W). % cost
 
 pvimodal_verb(W):-
-    pvi_templ(W,_).
+    user:pvi_templ(W,_).
 
 be_verb(be).
 
 ditrans_verb(X):-
-    dtv_templ(X,_,_,_). %% btv -> dtv
+    user:dtv_templ(X,_,_,_). %% btv -> dtv
 
 trans_verb(have). %% 
 trans_verb(X):-
-   tv_templ(X,_,_),
+   user:tv_templ(X,_,_),
    !. %% >1 
 
 intrans_verb(X):-
-   iv_templ(X,_),
+   user:iv_templ(X,_),
    !. %% >1 
 
 adjective(X):-
-    adj_templ(X,_),
+    user:adj_templ(X,_),
     !. %% >1 
  
 
@@ -285,7 +268,7 @@ lexv(ELSKET,ELSKE,past,fin):-      %% NB, viktig at Inf.formen opptrer (ELSKE)
     \+  dict_n:unwanted_verb(ELSKET), %% oppdatert
 
     ends_with(ELSKET,ELSKE,t),
-    \+ testmember(ELSKE,[komme]),
+    \+ user:testmember(ELSKE,[komme]),
     ends_with(ELSKE,_,e).     %% not gå --> gåt 
 
 
@@ -309,7 +292,7 @@ lexv(GODKJENT,GODKJENNE,past,part) :-
 
 lexv(MISTA,MISTE,past,part):- 
       ends_with(MISTA,MIST,a),
-      \+ testmember(MIST,[s,l]), %% se|le \= sa|la
+      \+ user:testmember(MIST,[s,l]), %% se|le \= sa|la
       MIST \== l, %% LE=L+E, LA=L+A    %% TA-110330
       ends_with(MISTE,MIST,e).  
 
@@ -342,8 +325,8 @@ lexv(X,X,inf,fin). %% NB was pres fin
 
 lexv(GI,GI,imp,fin):-  %% vil IKKE imp !!!
    GI \== nå, %% ikke nå!   %% AD Hoc 
-   last_character(GI,Vok), %% New utility predicate
-   member(Vok,[a,i,o,u,y,æ,ø,å]). %% e is dropped as a rule
+   user:last_character(GI,Vok), %% New utility predicate
+   user:member(Vok,[a,i,o,u,y,æ,ø,å]). %% e is dropped as a rule
                                        %% Reintroduced when necessary
                                   %%  Trykksterk e (kle,bre,gre,le,re,te)
 
@@ -357,9 +340,9 @@ lexv(STEMTE,STEMME,past,fin):-  %% TA-110114
    ends_with(STEMME,STE,mme).   %% \+ lite = lime
 
 
-%lexb(X,Y):-
-%    lexv(X,Y),
-%    lexb1(Y).     % dict.pl %% RS-111206 Can't find this file
+lexb(X,Y):-
+    lexv(X,Y),
+    lexb1(Y).     % dict.pl
 
 
 
@@ -546,8 +529,8 @@ adjflex(SULTENT,SULTEN,nil):-
 
 adjflex(FRITT,FRI,nil):- 
     ends_with(FRITT,FRI,tt), 
-    last_character(FRI,Vok), 
-    member(Vok,[i]). %% other ?
+    user:last_character(FRI,Vok), 
+    user:member(Vok,[i]). %% other ?
 
 
 adjflex(GODE,GOD,nil):-

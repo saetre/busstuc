@@ -5,36 +5,34 @@
 
 % Compiles the bus files
 
- :-prolog_flag(redefine_warnings,_,off). %% Avoiding conflicts (buslog/monobus etc.)
+ :-prolog_flag(redefine_warnings,_,off). 
 
 %% annoying when recompiling files by soft links 
 
+
+
 %% :- compile('db/discrepancies.pl').  %% NB Ad Hoc Swap routeplan data
 
-:- use_module( 'app/busans', [] ).      %% Module ans:
-:- use_module( 'app/busanshp', [] ).    %%
-:- use_module( 'app/buslog', [] ).  %% Compile LAST, undetected ERROR(?)
-:- use_module( 'app/bustrans', [] ).    %% 
-:- use_module( 'app/dmeq', [] ).        %%
-:- use_module( 'app/interapp', [] ).
-:- use_module( 'app/negans', [] ).      %%
-:- use_module( 'app/pragma', [] ).
 
-%:- compile(   'db/busdat').    %% split, Trondheim
-:- use_module( 'db/busdat').  %% RS-111120, Module busdat
-:- use_module( 'db/teledat2').   %% Mandatory
-:- use_module( 'db/timedat'). %% TA-110407, Module timedat
+:- compile('app/pragma.pl').
+:- compile('app/interapp.pl').
+:- compile('app/bustrans.pl').    %% 
+:- compile('app/dmeq.pl').        %% 
+:- compile('app/busans.pl').      %%
+:- compile('app/negans.pl').      %%
+:- compile('app/busanshp.pl').    %%
 
-%:- compile(   'db/places').
-:- use_module( 'db/places', [] ).
-:- use_module( 'db/auxtables', [] ).
-%:- consult(   'db/namehashtable'). %% compile is too expensive  
-:- use_module( 'db/namehashtable', [] ). %% compile is too expensive  
-%:- consult(    'db/statcoord2').
-:- use_module( 'db/statcoord2', [] ).    %% TA-110317
+:- compile('db/timedat.pl').  %% TA-110407
+:- compile('db/teledat2.pl'). %% Mandatory
+:- compile('db/busdat.pl').   %% split, Trondheim
+
+:- compile('db/places.pl').  
+:- compile('db/auxtables.pl').  
+:- consult('db/namehashtable.pl'). %% compile is too expensive  
+:- consult('db/statcoord2.pl').
+
+:- compile('app/buslog.pl').  %% Compile LAST, undetected ERROR(?)
+
 
 
 %%%%%%% THE END %%%%%%%%%%%%%%%%%%%%%%%%%
-
-%:-['../interfaceroute'].       %% RS-111111 Moved "up" from buslog -> 
-%:- use_module( interfaceroute, []). %%Buslog conflict?

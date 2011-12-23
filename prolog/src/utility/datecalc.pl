@@ -4,117 +4,17 @@
 %% REVISED TA-110408
 
 % Contains the utility predicates that has to do with dates
-
-:- module( datecalc, [
-    add_days/3,
-    before_date1/2,
-    %% creates a string of date  YYYYMMDD
-    datestring/1,       datetime/6,     dayno/2,        days_between/3,
-    dayname/2,          dayprefix/2,    daysucc/2,      easterdate/2,
-    findfirstcomingdate/2,
-    getdaynew/1,        isofloor/2,     isday/1,        month_name/2,
-    number_of_days_between/3,           
-    off_valid_period/3, on_valid_period/3,      % X is not in [Y -- Z]
-    sub_days/3,         timestring/1,   todaysdate/1,  %% Lifted up to main -> usually compiled in tucbuses.pl ?  %%-RS 111121
-    valid_date/1,       weeknumber/2,   xweekday/2
-   ]).
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%:- use_module(library(system), [environ/2, datime/1]).
-:- use_module( library(system), [datime/1]).
 
-:- use_module( utility, [ coerce2d/2,  concat_atomlist/2  ] ).
-
-:- use_module( '../app/buslog', [         today/1    ] ).
-:- use_module( '../db/busdat', []).
-:- use_module( '../db/timedat', [ clock_delay/3, named_date/2 ]).
-%:- ensure_loaded( '../db/timedat'). %% RS-111201
-
-%% should also export :
-% timedat:todaysdate(date(Y,M,D))       %% RS-111120
-% timedat:this_year(YYYY) :-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
-
-% Prolog is really awkard here
-convert_zone(YYY, M, D, H,Min,Sec,   YYY,M,D,H,Min,Sec) :- %% TA-080407
-    \+ main:myflags(busflag,true),
-    !.
-
-convert_zone(YYY, M, D, H,Min,Sec,
-             YYYY,MM,DD,HH,Min,Sec) :-
-    clock_delay(0,0,0), %% <--- %% New %% TA-080407
-    !,
-    YYY=YYYY, %% classic trap ! %% TA-060101
-    M=MM,
-    D=DD,
-    H=HH.
-
-convert_zone(YYY, M, D, H,Min,Sec,
-             YYYY,MM,DD,HH,Min,Sec):-
-
-    clock_delay(SBtime,_,_),     %% busdat.pl  %% TA-080407
-
-%%%     SBtime = -9,             %% test
-
-    H1 is H+SBtime,          %% e.g -9 since SB time is 9 h less.
-    conzoneH(YYY, M, D, H1,YYYY,MM,DD,HH).
-
-
-
-conzoneH(YYYY, MM, DD, HH, YYYY,MM,DD,HH):-
-    ( HH >= 0, HH =< 24 ),
-    !.
-conzoneH(YYY, M, D, H, YYYY,MM,DD,HH):-
-    (H < 0  -> (D1 is D-1,HH is H+24);
-     H > 24 -> (D1 is D+1,HH is H-24);
-     D1 = D,HH=H),
-    conzoneD(YYY, M, D1, YYYY,MM,DD). %% HH is finished
-
-conzoneD(YYY, M, D, YYYY,MM,DD):-
-     D = 0,
-     !,
-     M1 is M -1,
-     monthdays(YYY,M1,D1),
-     conzoneM(YYY,M1,D1, YYYY,MM,DD).
-conzoneD(YYY, M, D, YYYY,MM,DD):-
-     monthdays(YYY,M,Max),
-     D > Max,
-     !,
-     D1 = 1,
-     M1 is M+1,
-     conzoneM(YYY, M1,D1, YYYY,MM,DD).
-conzoneD(YYY, M, D, YYY,M,D).
-
-conzoneM(YYYY, M,D, YYYY,MM,DD):-
-    D=0,
-    M >=2, %% not 1. january
-    !,
-    previousmonth(M,MM),
-    monthdays(YYYY,MM,DD).
-conzoneM(YYY, M,_, YYYY,MM,DD):-
-    M =1, %%  1. january
-    !,
-    YYYY is YYY-1,MM=12,DD=31.
-conzoneM(YYYY, MM,DD, YYYY,MM,DD):-
-    MM >=1,MM =< 12,
-    !.
-conzoneM(YYY,M,_, YYYY,MM,DD):-
-    M > 12,
-    !,
-    YYYY is YYY+1, MM is 1, DD=1.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-
-%% Rule:  A week must have at least  4  days to count as a week
+%% Rule:  A week must have at least has  4 days to count as a week
+ 
 %% Special rule (e.g. 2010), january  1,2,3 = Week 53 (SIC)
 
 %% 4.1.2009   = week 1
 %% 5.1.2009   = week 2
 %% 31.12.2009 = week 53
-%% 1.1.2010   = week 53
+%% 1.1.2010   = week 53 
 %% 3.1.2010   = week 53
 %% 4.1.2010   = week 1
 %% 21.4.2010  = week 16
@@ -144,8 +44,8 @@ weeknumber(DATE,WeekNo):-  %% (e.g. 2010, Jan 4)
     DATE= date(YYYY,_MM,_DD),
 
        NEWYDATE=date(YYYY,01,01), %%  ODD year, 1.1= Week 53
-       weekday(NEWYDATE,NewYDay),
-       dayno(NewYDay,WDNO),
+       weekday(NEWYDATE,NewYDay), 
+       dayno(NewYDay,WDNO), 
        WDNO >= 5, %% Friday   %% not within 1. monday
     !,
     N  is (8-WDNO),
@@ -158,8 +58,8 @@ weeknumber(DATE,WeekNo):-  %% (e.g. 2009, Jan 4)
     DATE= date(YYYY,_MM,_DD),
 
        NEWYDATE=date(YYYY,01,01), %% Not ODD year, 1.1= Week 1
-       weekday(NEWYDATE,NewYDay),
-       dayno(NewYDay,WDNO),
+       weekday(NEWYDATE,NewYDay), 
+       dayno(NewYDay,WDNO), 
     !,
     N  is WDNO-1, %% days since 1. monday
     sub_days(NEWYDATE, N, MON1), %% Date of Monday of week 1
@@ -177,20 +77,20 @@ days_between(Date1,Date2,N) :-
     !,
     days_between(Date2,Date1,M), %% ugly recursion
     N is -M.
-
+ 
 
 %% NB No check on validity of dates
-
+ 
 days_between(Date1,Date2,N):-  %% Days between within widely different Years
-    Date1= date(YYY1,_MM1,_DD1),
-    Date2= date(YYY2,_MM2,_DD2),
-    YYY2 > YYY1 + 1,
-    !,
-    days_between(Date1,date(YYY1,12,31),Rest1), %% careful <> leap day
-    days_between(date(YYY2,01,01),Date2,Rest2),
-    whole_year_days_between(YYY1,YYY2,NYD), % exclusive
-    N is Rest1 + 1 + Rest2 + NYD.
-
+    Date1= date(YYY1,_MM1,_DD1), 
+    Date2= date(YYY2,_MM2,_DD2), 
+    YYY2 > YYY1 + 1, 
+    !, 
+    days_between(Date1,date(YYY1,12,31),Rest1), %% careful <> leap day 
+    days_between(date(YYY2,01,01),Date2,Rest2), 
+    whole_year_days_between(YYY1,YYY2,NYD), % exclusive 
+    N is Rest1 + 1 + Rest2 + NYD. 
+ 
 
 
 days_between(Date1,Date2,N):- %% Same Year & Month
@@ -205,12 +105,12 @@ days_between(Date1,Date2,N):-  %% Days between within same year
     Date2= date(YYYY,MM2,DD2),
     !,
     MM2 > MM1,
-    whole_month_days_between(YYYY,MM1,MM2,MDS), % exclusive
+    whole_month_days_between(YYYY,MM1,MM2,MDS), % exclusive 
     monthdays(YYYY,MM1,DIM),
     N is  DD2 +(DIM-DD1) +  MDS.
 
 
-days_between(Date1,Date2,N):- %% Over next year
+days_between(Date1,Date2,N):- %% Over next year 
     Date1= date(YYYY,_,_),
     Date2= date(YYY1,_,_),
     YYY1 is YYYY+1,
@@ -222,8 +122,8 @@ days_between(Date1,Date2,N):- %% Over next year
 
 %% whole_year_days_between(YYY1,YYY2,NYD), % exclusive  -- Year 9999
 
-%% Periodic period 400 years = 146097
-
+%% Periodic period 400 years = 146097 
+  
 %% 146097  =  365*400 + 100 (leapdays) -3 ( 100 200 300 , \+ 400)
 
 whole_year_days_between(YYY1,YYY2,NYD) :-
@@ -238,8 +138,8 @@ wydays(YYY1,YYY2,NYD) :- %% inclusive
    zerodays(YYY2,N2),    %% top exclusive
    NYD is N2 - N1. %% +-
 
-
-zerodays(YYYY,N) :-  %% # days [0000 - YYYY>
+  
+zerodays(YYYY,N) :-  %% # days [0000 - YYYY> 
     znofleapdays(YYYY,NL), % top exclusive
     N is YYYY*365 + NL.
 
@@ -262,7 +162,7 @@ whole_month_days_between(_YYYY,MM1,MM2,MDS):-
 
 whole_month_days_between(YYYY,M1,M2,MDS):-
     !,
-    M11 is M1+1,
+    M11 is M1+1,               
     monthdays(YYYY,M11,MX),
     whole_month_days_between(YYYY,M11,M2,MDSX),
     MDS is MX + MDSX.
@@ -276,30 +176,30 @@ valid_date(date(YYYY,MM,DD)):-
     MM =< 31,
     DD >= 1,
     DD =< 31,
-
+    
     Z4 is mod(YYYY,4),
     Z100 is mod(YYYY,100),
     Z400 is mod(YYYY,400),
 
-  ( (Z4 = 0, (\+ Z100 = 0; Z400 = 0))
+  ( (Z4 = 0, (\+ Z100 = 0; Z400 = 0)) 
          -> LeapYear = 1;
             LeapYear = 0),
-    (MM=2 ->
+    (MM=2 -> 
          (LeapYear=1 -> Max is 29; Max is 28)
          ;
           monthlength(MM,Max)),
-
+    
     DD =< Max.
 
-
-
+   
+   
 
 %% New Predicate, relies on busdat.pl
 
 /**
-xweekday(Date,HDay):-
-   \+ main:myflags(nightbusflag,true), %% FICTITIOUS DAYS IRRELEVANT
-   \+ main:myflags(airbusflag,true),   %% TA-090506
+xweekday(Date,HDay):- 
+   \+ value(nightbusflag,true), %% FICTITIOUS DAYS IRRELEVANT
+   \+ value(airbusflag,true),   %% TA-090506
    date_day_map(Date,HDay),  %% creates message: 1. Mai. 2010 er en  søndag .WRONG
    !.
 **/
@@ -307,11 +207,16 @@ xweekday(Date,HDay):-
 xweekday(Date,HDay):-
     weekday(Date,HDay).
 
-todaysdate(date(Y,M,D)):-
-     datetime(Y,M,D,_,_,_).
+
+
+
+
+
+todaysdate(date(Y,M,D)):- 
+     datetime(Y,M,D,_,_,_).       
 
 %% daysdate(date(Y,M,D)):-   %% Obsolete, kept for security
-%%     datetime(Y,M,D,_,_,_).
+%%     datetime(Y,M,D,_,_,_).       
 
 
 dayname(String,Day) :-
@@ -366,7 +271,7 @@ dayno(tuesday,2).
 dayno(wednesday,3).
 dayno(thursday,4).
 dayno(friday,5).
-dayno(saturday,6).
+dayno(saturday,6). 
 dayno(sunday,7).
 
 %% End of  Import
@@ -379,32 +284,88 @@ dayno(sunday,7).
 
 
 getdaynew(DayOfWeek):- %%   // Get rid of exec call
-     datime( datime(Year,Month,Day,_,_,_) ), %% SICSTUS VERSION, NOT REDEFINABLE
+     datime(datime(Year,Month,Day,_,_,_)), %% SICSTUS VERSION, NOT REDEFINABLE
      weekday(date(Year,Month,Day), DayOfWeek). %% weekday.pl
 
 
-datetime(YYYY,MM,DD,HH,MIN,SEC):-
-    datime( datime(YYY,M,D,H,Min,Sec) ), %% built_in %% Min Sec  stay the same
+datetime(YYYY,MM,DD,HH,MIN,SEC):- 
+    datime(datime(YYY,M,D,H,Min,Sec)), %% built_in %% Min Sec  stay the same
 
     convert_zone(YYY, M, D, H, Min,Sec, %% TA-080407
                  YYYY,MM,DD,HH, MIN,SEC).
 
-timestring(Z):- %% creates a string of time-point YYYYMMDDHHMMSS
-    datetime(X1,X2,X3,X4,X5,X6),
-    coerce2d([X1,X2,X3,X4,X5,X6],[D1,D2,D3,D4,D5,D6]),
-    concat_atomlist([D1,D2,D3,D4,D5,D6],Z),
-    !.
-timestring('00000000000000').
-%           YYYYMMDDHHMMSS
+this_year(YYYY):-
+    datetime(YYYY,_B,_C,_D,_E,_F).
 
 
-datestring(Z):- %% creates a string of date  YYYYMMDD
-    datetime(X1,X2,X3,_X4,_X5,_X6),
-    coerce2d([X1,X2,X3],[D1,D2,D3]),
-    concat_atomlist([D1,D2,D3],Z),
+% Prolog is really awkard here
+
+convert_zone(YYY, M, D, H,Min,Sec,   YYY,M,D,H,Min,Sec):- %% TA-080407
+    \+ value(busflag,true),
     !.
-datestring('00000000').
-%           YYYYMMDD
+
+convert_zone(YYY, M, D, H,Min,Sec,
+             YYYY,MM,DD,HH,Min,Sec):-
+    clock_delay(0,0,0), %% <--- %% New %% TA-080407
+    !,
+    YYY=YYYY, %% classic trap ! %% TA-060101
+    M=MM,
+    D=DD,
+    H=HH.
+
+convert_zone(YYY, M, D, H,Min,Sec, 
+             YYYY,MM,DD,HH,Min,Sec):-
+
+    clock_delay(SBtime,_,_),     %% busdat.pl  %% TA-080407
+
+%%%     SBtime = -9,             %% test
+
+    H1 is H+SBtime,          %% e.g -9 since SB time is 9 h less.
+    conzoneH(YYY, M, D, H1,YYYY,MM,DD,HH).
+
+
+ 
+conzoneH(YYYY, MM, DD, HH, YYYY,MM,DD,HH):-  
+    ( HH >= 0, HH =< 24 ),
+    !.
+conzoneH(YYY, M, D, H, YYYY,MM,DD,HH):-  
+    (H < 0  -> (D1 is D-1,HH is H+24);
+     H > 24 -> (D1 is D+1,HH is H-24);
+     D1 = D,HH=H),
+    conzoneD(YYY, M, D1, YYYY,MM,DD). %% HH is finished
+
+conzoneD(YYY, M, D, YYYY,MM,DD):- 
+     D = 0,
+     !,
+     M1 is M -1,
+     monthdays(YYY,M1,D1),
+     conzoneM(YYY,M1,D1, YYYY,MM,DD).
+conzoneD(YYY, M, D, YYYY,MM,DD):- 
+     monthdays(YYY,M,Max),
+     D > Max,
+     !,
+     D1 = 1,
+     M1 is M+1,
+     conzoneM(YYY, M1,D1, YYYY,MM,DD).
+conzoneD(YYY, M, D, YYY,M,D).
+
+conzoneM(YYYY, M,D, YYYY,MM,DD):-
+    D=0,
+    M >=2, %% not 1. january
+    !,
+    previousmonth(M,MM),
+    monthdays(YYYY,MM,DD).
+conzoneM(YYY, M,_, YYYY,MM,DD):-
+    M =1, %%  1. january
+    !,
+    YYYY is YYY-1,MM=12,DD=31.
+conzoneM(YYYY, MM,DD, YYYY,MM,DD):-
+    MM >=1,MM =< 12,
+    !.
+conzoneM(YYY,M,_, YYYY,MM,DD):-
+    M > 12,
+    !,
+    YYYY is YYY+1, MM is 1, DD=1.
 
 
 
@@ -430,13 +391,13 @@ monthdays(_,11,30).
 monthdays(_,12,31).
 
 
-
+ 
 %% Taken from trans
 
-%%%%  DATE CALCULATIONS
+%%%%  DATE CALCULATIONS  
 
 on_valid_period(X,Y,Z) :- % X in [Y -- Z] inclusive %% TA-110411
-   X=date(_,_,_), %% NOT free( )
+   X=date(_,_,_), %% NOT free( ) 
    before_date0(Y,X),
    before_date0(X,Z).
 
@@ -452,13 +413,13 @@ on_valid_period(X,Y,Z) :- % X in [Y -- Z] inclusive
 off_valid_period(X,Y,Z) :- % X is not in [Y -- Z]
    (before_date1(X,Y)
     ;
-    before_date1(Z,X)),
+    before_date1(Z,X)),    
     !.
 
 
 
 
-findfirstcomingdate(Day,Date):-
+findfirstcomingdate(Day,Date):- 
     named_date(Day, Date),
     !.
 
@@ -468,42 +429,42 @@ findfirstcomingdate(easterhol,Date):- %% TA-050322 = easterday
     !.
 
 
-findfirstcomingdate(Day,Date):-
+findfirstcomingdate(Day,Date):- 
     today(X),
     number_of_days_between(X,Day,N),
     finddate(N,Date).
 
 
-finddate(Displacement,Date) :-
+finddate(Displacement,Date):- 
     Displacement >= 0,
     !,
     datetime(Y,M,D,_,_,_),
     add_days(date(Y,M,D),Displacement,Date).
 
-finddate(Displacement,Date) :-
-    Displacement < 0,
+finddate(Displacement,Date):- 
+    Displacement < 0, 
     !,
     NegDisp is  - Displacement,
     datetime(Y,M,D,_,_,_),
-    sub_days(date(Y,M,D),NegDisp,Date).
+    sub_days(date(Y,M,D),NegDisp,Date). 
 
 
 
 add_days(date(YYYY,MM,DD),N,date(YYY2,M2,D2)):- %% < 28 days after
-    N >= 0,
+    N >= 0, 
     N =< 366, %% TA-100106
     D0 is DD+N,
     !,
-    monthdays(YYYY,MM,L),
+    monthdays(YYYY,MM,L), 
 
     (D0 =< L ->  (YYY2=YYYY,M2 = MM, D2=D0 );
 
-    (RESTDAYS is L-DD+1,
+    (RESTDAYS is L-DD+1, 
      N1 is N-RESTDAYS,
      MM1 is MM+1,
      D01 = 01,
 
-    (MM1 is 13 -> (YYY1 is YYYY +1,
+    (MM1 is 13 -> (YYY1 is YYYY +1, 
             add_days(date(YYY1,01,D01),N1,date(YYY2,M2,D2)))
             ;
             add_days(date(YYYY,MM1,D01),N1,date(YYY2,M2,D2)))
@@ -534,13 +495,13 @@ sub_days(date(YYYY,MM,DD),N,date(YYY2,M2,D2)):- %% from January to December
     D2 is 31+D0.
 
 sub_days(date(YYYY,MM,DD),N,date(YYY2,M2,D2)):- %% Previous month, same year
-    N > 0, N < 28,
+    N > 0, N < 28, 
     D0 is DD -N,
     D0 =< 0,
     !,
     YYY2 = YYYY,
     M2 is MM-1,
-    monthdays(YYYY,M2,ML2),
+    monthdays(YYYY,M2,ML2), 
     D2 is D0+ML2.
 
 
@@ -649,14 +610,14 @@ weekday(date(Year,Month,Day), DayOfWeek) :- %% Special TUC date frmat
         ;  cal_key(_, Month, _, Key, LeapC)
         ;  cal_key(_, _, Month, Key, LeapC)
         ), !,
-
+ 
         YearDay is (Century * 5 + Century // 4 +
                  YearInCentury + YearInCentury // 4) mod 7 ,
 
         (leap_year(Year) -> LeapYear is LeapC; LeapYear is 0),
 
-        DOW is ( YearDay +
-                 Day + Key  -  LeapYear
+        DOW is ( YearDay + 
+                 Day + Key  -  LeapYear 
                  ) mod 7,
 
         dow(DOW, _, DayOfWeek).
@@ -671,9 +632,9 @@ divisible by 100 then it must also be divisible by 400 (thus,
 
 leap_year(Year) :-
         mod(Year,4) =:= 0,
-       (mod(Year,100) =:= 0 ->
-            mod(Year,400) =:=0
-            ;
+       (mod(Year,100) =:= 0 -> 
+            mod(Year,400) =:=0 
+            ; 
             true ). %% TA-001214
 
 
@@ -689,10 +650,11 @@ leap_year(Year) :-
 % Computes date of easter day for a given year
 
 
-:-op(800,xfx,isofloor).
+:-op(800,xfx,isofloor). 
 
-isofloor(X,Y) :-   %% NB floor() SICS gives float (SIC)
-    X is floor(Y). %%    floor() ISO  gives integer
+isofloor(X,Y) :- %% NB floor() SICS gives float (SIC)
+%%    X is Y//1.   %%    floor() ISO  gives integer
+    X is floor(Y).   %%    floor() ISO  gives integer
 
 easterdate(Y,date(Year,Month,Day)):-
 
@@ -714,12 +676,12 @@ easterdate(Y,date(Year,Month,Day)):-
     Day is ((H+L-7*M+114)mod 31)+1.
 
 
-/**** Old version   Gives wrong answer for 2011
+/**** Old version   Gives wrong answer for 2011   
 
 easterdate(Y,Date):-
 
     FirstDig is Y // 100,
-
+ 
     Remain19 is Y mod 19,
 
 % Calculate Paschal Full Moon (PMF) date
@@ -736,7 +698,7 @@ easterdate(Y,Date):-
 
     Ta is Temp4 + 21,
 
-    if3( (Temp4 = 28 ,Remain19 > 10), Ta1,Ta -1, Ta),
+    if3( (Temp4 = 28 ,Remain19 > 10), Ta1,Ta -1, Ta), 
 
 % find next sunday
 
@@ -766,8 +728,8 @@ easterdate(Y,Date):-
 
 % utils
 
-if3(Expr,Var,Expr1,Expr2):-
-    Expr,!,
+if3(Expr,Var,Expr1,Expr2):- 
+    Expr,!, 
     Var is Expr1
           ;
     Var is Expr2.

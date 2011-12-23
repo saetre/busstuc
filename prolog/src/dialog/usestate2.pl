@@ -3,7 +3,13 @@
 %% CREATED TO-970319
 %% REVISED TO-970421  TA-100521
 
+:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
+:- ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators
+
+
+
 %% COMMON TELE BUS VERSION 
+
 
 % Pragma rule for using the state information in the dialogue system
 % Source: State (round list)
@@ -11,52 +17,13 @@
 % statetment.
 % Information from the state is added to the BUSLOG  statement.
 
-:- module(usestate2, [
-        (rule)/2
-    ]).
+:- module(usestate,[]).
 
-%tracevalue(L) :- main:myflags(traceprog,L).  % Trace level 1-4 %% Where is this defined?? RS-111202
+tracevalue(L) :- user:value(traceprog,L).  % Trace level 1-4
 
-% pragma(RuleModule,Source,Dest) bygger Dest fra Source vha reglene i RuleModule
-
-% Operatorer for Pragma-regler
-% is operator prefixed with rule RuleID
-:- op(1150,xfy,rule).  
-
-:- op(1120, fy,is).
-:- op(1110,xfy,id).
-:- op(1110,xfy,ip).
-
-:- op( 715, fy,context).    %% similar to ispresent, but doesnt mark as saw
-:- op( 715, fy,addfront).   %% (for messages etc) 
-:- op( 725, fy,addcon).     %% add if not already isispresent 
-:- op( 715, fy,removeall).  %% remove all of a list
-:- op( 715, fy,removeif).   %% remove all if any , always succeed 
-:- op( 715, fy,replaceall). %% replace iteratively all elements 
-:- op( 715, fy,replaceif).  %% replace if occuring. 
-:- op( 715, fy,replace).
-:- op( 715, fy,replacelast).
-:- op( 715,xfy,with).
-%%  :- op( 715, fy,to). %% not used, interferes with SWI-Prolog /srel/to/--
-%%  :- op( 715,xfy,append).
-:- op( 715, fy,no).
-:- op( 715, fy,exactly). 
-:- op( 715, fy,add).
-:- op( 715, fy,remove).
-:- op( 715, fy,ispresent).
-:- op( 715, fy,assume). 
-
-%% :- op( 715, fy,not).  % Already defined in TUC
-:- op( 714,xfy,seq).     %% directly sequence 
-:- op( 714,xfy,cond).    %% new   not X isa place cond bound(X)
-:- op( 714,xfy,when).    %% same as cond %% TA-081106
-:- op( 712, fy,seen). % Lower than "not", higher than "isa"
-
-%%% %%%%%%%% RS-111118
-:- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
 
 askfor rule
-is	ispresent frame(Frame)
+is	present frame(Frame)
 id	replace askfor([], Slot, Value)
         with    askfor(Frame, Slot, Value)
 ip      [].
@@ -76,7 +43,7 @@ ip	[].
 nocontext0 rule 
 is	[]
 id	not nocontext,
-   message(answer(_)), %%%% db_reply(_tuc,_Version,_))),
+   message(answer(_)), %%%% db_reply(_tuc,_version,_))),
 	add nocontext
 ip	[].
 
@@ -119,14 +86,14 @@ ip	[].
 nocontext1 rule
 is	[]
 id	not nocontext,
-	ispresent stationsat(_, _, _),
+	present stationsat(_, _, _),
 	add nocontext
 ip	[].
 
 nocontext2 rule
 is	[]
 id	not nocontext,
-	ispresent timeis(_),
+	present timeis(_),
 	add nocontext
 ip	[].
 
@@ -135,7 +102,7 @@ ip	[].
 nocontextm1 rule
 is	[]
 id	not nocontext,
-	ispresent message(date_isa_day(_, _)), %% TA-071214
+	present message(date_isa_day(_, _)), %% TA-071214
 	add nocontext
 ip	[].
 */
@@ -147,7 +114,7 @@ ip	[].
 nocontextm2 rule
 is	[]
 id	not nocontext,
-	ispresent message(howtuchelp),
+	present message(howtuchelp),
 	add nocontext
 ip	[].
 
@@ -157,49 +124,49 @@ ip	[].
 nocontext4 rule
 is	[]
 id	not nocontext,
-	ispresent allstations(_),
+	present allstations(_),
 	add nocontext
 ip	[].
 
 nocontext5 rule
 is	[]
 id	not nocontext,
-	ispresent properstation(_),
+	present properstation(_),
 	add nocontext
 ip	[].
 
 nocontext6 rule
 is	[]
 id	not nocontext,
-	ispresent stationsnear(_, _, _),
+	present stationsnear(_, _, _),
 	add nocontext
 ip	[].
 
 nocontext7 rule
 is	[]
 id	not nocontext,
-	ispresent endstations(_, _), %% TA-080228
+	present endstations(_, _), %% TA-080228
 	add nocontext
 ip	[].
 
 nocontext7b rule 
 is	[]
 id	not nocontext,
-	ispresent findstations(_, _, _),
+	present findstations(_, _, _),
 	add nocontext
 ip	[].
 
 nocontext8 rule
 is	[]
 id	not nocontext,
-	ispresent true,
+	present true,
 	add nocontext
 ip	[].
 
 nocontext8b rule %% TA-030107
 is	[]
 id	not nocontext,
-	ispresent selectroute(_, _, _), %% No more constraints if we know the route
+	present selectroute(_, _, _), %% No more constraints if we know the route
 	add nocontext
 ip	[].
 
@@ -207,7 +174,7 @@ ip	[].
 nocontext9 rule %% TA-041005
 is	[]
 id	not nocontext,
-	ispresent ticketprice2(_,_),   %% TA-041005
+	present ticketprice2(_,_),   %% TA-041005
 	add nocontext
 ip	[].
 
@@ -382,7 +349,7 @@ is     framevalue(where::departure, Place)
 id     not nocontext, 
        not depset(from, _),
        depset(unknown,TOTO),
-       ispresent departure(_, OtherStat, _, _),     
+       present departure(_, OtherStat, _, _),     
 
        remove  keepat(_Time,D1,D2),
 
@@ -405,7 +372,7 @@ arrplacepanic rule  %% TA-030913
 is     framevalue(where::arrival, Place)
 id     not nocontext, 
        not depset(to, _),
-       ispresent departure(_, OtherStat, _, _),     
+       present departure(_, OtherStat, _, _),     
 
        remove  keepat(_Time,D1,D2),
 
@@ -428,10 +395,10 @@ ip     place_station(Place,Stat), OtherStat \== Stat.
 
 depplace2 rule  
 is     framevalue(where::departure, Place)
-id     not ispresent departure(_,Place,_62213,_63879), % panic %% TA-030913
+id     not present departure(_,Place,_62213,_63879), % panic %% TA-030913
        not nocontext, 
        not depset(from, _),
-       ispresent departure(_, OtherStat, _, _),         %% Not to and from same place
+       present departure(_, OtherStat, _, _),         %% Not to and from same place
 
        add depset(from, [A]),    %% , B]), %% TA-030831
        atday(Day),            %%% TA-030409
@@ -446,7 +413,7 @@ ip     place_station(Place,Stat), OtherStat \== Stat.
 depbus rule  
 is     framevalue(bus, Bus)
 id     not nocontext, 
-       ispresent depset(from, List),
+       present depset(from, List),
        replace departure(OldBus, Place, DaySeq, A) 
        with departure(Bus, Place, DaySeq, A)
 ip     varmember(A, List), unbound(OldBus).
@@ -455,7 +422,7 @@ ip     varmember(A, List), unbound(OldBus).
 % % %
 
 depbefore_dep rule  
-is     framevalue(whenis::departure::before, Time)
+is     framevalue((when)::departure::before, Time)
 id     not nocontext, 
        not keepbefore1(_, _, _),
        not keepbefore(_, _, _),
@@ -476,7 +443,7 @@ ip     varmember(A, Rest).
 
 
 depbefore_pass rule  
-is     framevalue(whenis::departure::before, Time)
+is     framevalue((when)::departure::before, Time)
 id     not nocontext, 
 
        not keepbefore(_, _, _),
@@ -492,7 +459,7 @@ ip     [].
 
 
 depafter_dep rule  
-is     framevalue(whenis::departure::after, Time)
+is     framevalue((when)::departure::after, Time)
 id     not nocontext, 
        not keepafter(_, _, _),
        replace depset(from, Rest)
@@ -508,7 +475,7 @@ ip     varmember(A, Rest),
        setopt(nextaftertime(1),Opts1,Opts2). %%
 
 depafter_pass rule  
-is     framevalue(whenis::departure::after, Time)
+is     framevalue((when)::departure::after, Time)
 id     not nocontext, 
        not keepafter(_, _, _),
        replace passevent(B,TA2,TA3, [from], TA5,TA6)  %% TA-030409
@@ -533,10 +500,10 @@ ip     place_station(Place,Stat).
 
 arrplace2 rule  
 is     framevalue(where::arrival, Place)
-id     not ispresent departure(_,Place,_62213,_63879), % panic %% TA-030913
+id     not present departure(_,Place,_62213,_63879), % panic %% TA-030913
        not nocontext, 
        not depset(to, _),
-       ispresent departure(_, OtherStat, _, _),         
+       present departure(_, OtherStat, _, _),         
        add depset(to, [A]), %% , B]),
        atday(Day),           
        atdate2(DaySeq,_Date),             %% TA-090828
@@ -549,7 +516,7 @@ ip     place_station(Place,Stat), OtherStat \== Stat.
 whendeparturebus rule  
 is     framevalue(arrival::bus, Bus)
 id     not nocontext, 
-       ispresent depset(to, List),
+       present depset(to, List),
        replace departure(OldBus, Place, DaySeq, A) 
        with departure(Bus, Place, DaySeq, A)
 ip     varmember(A, List), unbound(OldBus).
@@ -559,7 +526,7 @@ ip     varmember(A, List), unbound(OldBus).
 usedepbus rule   %% TA-041007
 is     framevalue(bus, Bus)  %% bus on outer level 
 id     not nocontext, 
-       ispresent depset(from, List),
+       present depset(from, List),
        replace departure(OldBus, Place, DaySeq, A) 
        with departure(Bus, Place, DaySeq, A)
 ip     varmember(A, List), unbound(OldBus).
@@ -569,7 +536,7 @@ ip     varmember(A, List), unbound(OldBus).
 arrbus rule  
 is     framevalue(arrival::bus, Bus)
 id     not nocontext, 
-       ispresent depset(to, List),
+       present depset(to, List),
        replace departure(OldBus, Place, DaySeq, A) 
        with departure(Bus, Place, DaySeq, A)
 ip     varmember(A, List), unbound(OldBus).
@@ -578,7 +545,7 @@ ip     varmember(A, List), unbound(OldBus).
 
 
 arrbefore0 rule %%  no passevent -> connection
-is     framevalue(whenis::arrival::before, Time)
+is     framevalue((when)::arrival::before, Time)
 id     not passevent(_,_,_,_,_,_), 
        not nocontext, 
        not keepafter(_, _, _),
@@ -598,7 +565,7 @@ ip     varmember(A, Rest).
 
 
 arrbefore1 rule  %% only before time %% TA-041212
-is     framevalue(whenis::arrival::before, Time)
+is     framevalue((when)::arrival::before, Time)
 id     not nocontext, 
        replace depset(to, [Head | Rest])
        with depset(to, [B | [Head | Rest]]),
@@ -609,7 +576,7 @@ ip     [].
 
 
 arrbefore rule  
-is     framevalue(whenis::arrival::before, Time),
+is     framevalue((when)::arrival::before, Time),
        not framevalue(day,_) %% Another day is set
                       %% Dont use arrival time !!!
 
@@ -629,7 +596,7 @@ id     not nocontext,
 ip     [].
 
 arrafter1 rule  
-is     framevalue(whenis::arrival::after, Time)
+is     framevalue((when)::arrival::after, Time)
 id     not nocontext, 
        not keepafter(_, _, _),
        replace depset(to, Rest)
@@ -643,7 +610,7 @@ id     not nocontext,
 ip     varmember(A, Rest).
 
 arrafter rule  
-is     framevalue(whenis::arrival::after, Time)
+is     framevalue((when)::arrival::after, Time)
 id     not nocontext, 
        replace depset(to, [Head | Rest])
        with depset(to, [B | [Head | Rest]]),
@@ -654,7 +621,7 @@ ip     [].
 %% Modifier rules, allowed to overwrite existing information
 
 moddepplace1 rule  
-is     ispresent modify,
+is     present modify,
        context framevalue(where::departure, Place)
 id     not nocontext, 
        replace connections(A1, A2, A3, OldPlace, A5, A6,DaySeqNo, A7, A8, A9) 
@@ -662,52 +629,52 @@ id     not nocontext,
 ip     OldPlace \== Place.
 
 moddepplace rule  
-is     ispresent modify,
+is     present modify,
        framevalue(where::departure, Place)
 id     not nocontext, 
-       ispresent depset(from, List),
+       present depset(from, List),
        replace departure(Bus, OldPlace, DaySeq, A) 
        with departure(Bus, Place, DaySeq, A)
 ip     varmember(A, List), OldPlace \== Place.
 
 moddepbus rule  
-is     ispresent modify,
+is     present modify,
        framevalue(bus, Bus)
 id     not nocontext, 
-       ispresent depset(from, List),
+       present depset(from, List),
        replace departure(OldBus, Place, DaySeq, A) 
        with departure(Bus, Place, DaySeq, A)
 ip     varmember(A, List), OldBus \== Bus.
 
 moddepbefore rule  
-is     ispresent modify,
-       framevalue(whenis::departure::before, Time)
+is     present modify,
+       framevalue((when)::departure::before, Time)
 id     not nocontext, 
-       ispresent depset(from, List),
+       present depset(from, List),
        replace keepbefore(OldTime, A, B) 
        with keepbefore(Time, A, B)          %% TA-030122 was keepbefore1  
 ip     varmember(A, List), OldTime \== Time.
 
 moddepbefore1 rule  
-is     ispresent modify,
-       framevalue(whenis::departure::before, Time)
+is     present modify,
+       framevalue((when)::departure::before, Time)
 id     not nocontext, 
-       ispresent depset(from, List),
+       present depset(from, List),
        replace keepbefore1(OldTime, A, B) 
        with keepbefore1(Time, A, B)            %% OK 
 ip     varmember(A, List), OldTime \== Time.
 
 moddepafter rule  
-is     ispresent modify,
-       framevalue(whenis::departure::after, Time)
+is     present modify,
+       framevalue((when)::departure::after, Time)
 id     not nocontext, 
-       ispresent depset(from, List),
+       present depset(from, List),
        replace keepafter(OldTime, A, B) 
        with keepafter(Time, A, B)            
 ip     varmember(A, List), OldTime \== Time.
 
 modarrplace1 rule  
-is     ispresent modify,
+is     present modify,
        context framevalue(where::arrival, Place)
 id     not nocontext, 
        replace connections(A1, A2, A3, A4, OldPlace, A6, DaySeqNo,A7, A8, A9) 
@@ -715,46 +682,46 @@ id     not nocontext,
 ip     OldPlace \== Place.
 
 modarrplace rule  
-is     ispresent modify,
+is     present modify,
        framevalue(where::arrival, Place)
 id     not nocontext, 
-       ispresent depset(to, List),
+       present depset(to, List),
        replace departure(Bus, OldPlace, DaySeq, A) 
        with departure(Bus, Place, DaySeq, A)
 ip     varmember(A, List), OldPlace \== Place.
 
 modarrbus rule  
-is     ispresent modify,
+is     present modify,
        framevalue(arrival::bus, Bus)
 id     not nocontext, 
-       ispresent depset(to, List),
+       present depset(to, List),
        replace departure(OldBus, Place, DaySeq, A) 
        with departure(Bus, Place, DaySeq, A)
 ip     varmember(A, List), OldBus \== Bus.
 
 modarrbefore rule  
-is     ispresent modify,
-       framevalue(whenis::arrival::before, Time)
+is     present modify,
+       framevalue((when)::arrival::before, Time)
 id     not nocontext, 
-       ispresent depset(to, List),
+       present depset(to, List),
        replace keepbefore(OldTime, A, B) 
        with keepbefore(Time, A, B)          %% TA-030122 was keepbefore1  
 ip     varmember(A, List), OldTime \== Time.
 
 modarrbefore rule  
-is     ispresent modify,
-       framevalue(whenis::arrival::before, Time)
+is     present modify,
+       framevalue((when)::arrival::before, Time)
 id     not nocontext, 
-       ispresent depset(to, List),
+       present depset(to, List),
        replace keepbefore1(OldTime, A, B) 
        with keepbefore1(Time, A, B)            %% OK
 ip     varmember(A, List), OldTime \== Time.
 
 modarrafter rule  
-is     ispresent modify,
-       framevalue(whenis::arrival::after, Time)
+is     present modify,
+       framevalue((when)::arrival::after, Time)
 id     not nocontext, 
-       ispresent depset(to, List),
+       present depset(to, List),
        replace keepafter(OldTime, A, B) 
        with keepafter(Time, A, B)            
 ip     varmember(A, List), OldTime \== Time.
@@ -788,8 +755,8 @@ ip  (member(from,Opts1)   %%    Which buses pass A and B
    Station1 \== Station2. %% TA-030126 <---------
 
 modatday1 rule
-is     ispresent modify,
-       framevalue(day, Day)   %% whenis::day
+is     present modify,
+       framevalue(day, Day)   %% (when)::day
 id     replace (X=_, atday(X))
        with (X=Day, atday(X))
 ip     [].
@@ -805,7 +772,7 @@ ip      [].
 
 usestate_fledsboprice2 rule 
 is      []
-id      ispresent ticketprice(_,_),
+id      present ticketprice(_,_),
         remove passevent(_, _, _, _, _, _)
 ip      [].
 

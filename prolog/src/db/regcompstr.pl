@@ -3,10 +3,6 @@
 %% CREATED  Automatically initially
 %% REVISED TA-091125
 
-:- module( regcompstr, [ composite_road/3 ] ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 composite_road(anders,[estenstads,street],anders_estenstads_street). %% New %% TA-091125
 
 composite_road(anders,[wigens,street],anders_wigens_street). %% New %% TA-091117

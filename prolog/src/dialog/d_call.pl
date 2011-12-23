@@ -6,15 +6,13 @@
 %% Compiles all of the necessary files.
 %% Same function as the file tucbuses.
 
-%:-use_module( d_main ).
-:-use_module( d_dialogue ).
-:-ensure_loaded( d_main ).
-%:-ensure_loaded( d_dialogue ).
+:-compile(d_main).
+:-compile(d_dialogue).
+
+ :-compile(frames2). %% Common version %% TA-051017
 
 %% :-compile(frames).
-:-use_module( frames2 ). %% Common version %% TA-051017 %% RS-111204
-
-:-use_module( newcontext2, [] ).
+:-compile(newcontext2).
 :-compile(portraycontext). %% New file %% TA-051005
 
 %% :-compile(grammar). %% split %% TA-050906
@@ -27,18 +25,17 @@
 :-compile(checkitem2).  %% TA-051010
 
 
-:-ensure_loaded(relax).
+:-compile(relax).
 
 
 % new files in tele-domain %% CO-VERSION
-:-use_module( parseres, [] ).
+:-compile(parseres).
 
 :-compile(update2).    %% COMMON VERSION
-%:-ensure_loaded(makeframe2). %% COMMON VERSION
-:-use_module( makeframe2 ). %% COMMON VERSION
+:-compile(makeframe2). %% COMMON VERSION
 
 
-:-use_module( usestate2 ).
+:-compile(usestate2).
 
 
 %%%%%%%% =

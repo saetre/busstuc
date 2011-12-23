@@ -1,8 +1,3 @@
-%% TODO: Make sure this file is turned into a module, somewhere automatic?
-%% Hmmm, this is superseeded by statcoord2.pl ;-)
-
-:- module( statcoord, [ statcoord/4 ] ).
-
 statcoord(15057011,'Kristiansund h.båt',0,0).
 statcoord(15057024,'Ringholmen h.båt',0,0).
 statcoord(15768911,'Aure',0,0).

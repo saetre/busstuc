@@ -4,124 +4,13 @@
 %% REVISED TA-100225
 
 %% Utility Routines that are not built in 
-%% About non-determinicaty:
-% http://www.sics.se/sicstus/spider/site/determinacy_analyzer.html#pseudo_directive
 
-:- module( utility, [  %% (:=)/2, (=:)/2, and  main:myflags/2 %% Permanently moved to main.pl!! RS-111204
-        myflags/1,
-        absorb/3,           aggregate/3,           all/1,               ans/1,
-        append_atomlist/2,  append_atoms/3,        append_bl_atoms/3,   appendfiles/3,
-        atomname/2,         begins_with/3,         breakpoint/2,        charno/3,
-        code_chars/2,       code_chars2/2,         coerc2d/2,           coerce2d/2,
-        compar/3,           concat_atomlist/2,     convcodetocharacters/2,  convert_expression_to_atom/2, %% ad hoc
-        debug/2,            default/2,             delall/3,            delete1/3,
-        deleteall/3,        divmod/4,              (do)/1,              doall/1,  % P, then succeed
-        do_count/1,         doubt/2,               ends_with/3,         equal/2,
-        error/2,            featurematch/4,        featurematchlist/2,  firstlist/3,
-        firstlist1/3,       firstmem/2,            flatlist/2,          flatround/2,
-        flatten/2,          fnuttify1/2,           fnuttify2/2,         follow_after/3,
-        follow_sequence/3,  for/2,                 foralltest/2,        forget/1,        freshcopy/2,
-        %get/1,
-        ident_member/2,     identical/2,           implies/2,           iso_atom_chars/2,
-        last_character/2,   lastmem/2,             lastmems/3,          (listall)/1,     listlength/2, %% length/2  backtracks
-        makacc/3,           makeacc/2,             makelistn/2,         makestring/2,
-        match/2,            matchinitchars/2,      matchinitchars/3,    maximum/2,       maxval/3,
-        measurecall/2,      measurecall1/2,        mergeavlists/3,      minimum/2,       minval/3,
-        naive/0,               newconst/1,          nreverse/2,      nthval/3,
-        number_of/3,        number_to_string/2,    numbervars/1,        occ/2,           occrec/2,
-        once1/1,            outputlist/1,          out/1,               output/1,        pling/1,
-        prettyprint/1,      proclaim/0,            pront/1,             psl/2,           purge/3,
-        %put/1,         %% Moved to sicstus4compatibility.pl
-        rem_dups/3,         remember/1,            remove_duplicates1/2,% preserves order of first occurrence
-        (replace)/4,        replacelist/4,         roundappend/3,       roundmember/2,
-        roundrecmember/2,   roundreverse/2,        roundwrite/1,        sequence_append/3,   sequence_flatten/2,
-        sequence_member/2,  sequence_reverse/2,    sequence_write/1,    %% New name, more standard
-        set_difference/3,   set_eliminate/4,       set_filter/4,        set_of/3,        set_ops/3,
-        set_union/3,        shell_copyfile/2,      snipfirst/2,         sniplast/2,      split/4,
-        splitlast/3,        spyon/1,               spyoncondition/2,    startbatch/0,    starttime/0,
-        starttimebatch/0,   stoptimebatch/0,       subcase/2,           subsum1/2,       subsumes/2,   % X at least as general
-        sumcount/3,         tab/1,                 takebatch/0,         taketime/0,      test/1,
-        testmember/2,       textlength/2,          tryonce/1,           
-        %ttyflush/0,
-        union/3,   unsquare/2,
-        variant/2,          writelist/1,           writenumber2/2, %% write a number with exactly N digits
-        writepred/1,        writeZ/1
-   ] ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
-
-%:- absolute_file_name('$SHELL', Shell),
-%    absolute_file_name('~/', Dir),
-%    process_create(Shell, ['-c', [ ls, ' ', file(Dir) ]]).
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% IMPORTS
-%% RS-111205, UNIT: /
-:- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
-:- use_module(    '../main', [ (:=)/2,  (=:)/2,  myflags/2 ] ). %% set/2, 
-
-:- use_module( library(process), [] ).
-:- use_module( 'library', [ reverse/2 ] ). %% RS-111212 Moving around: nth/3, 
-:- use_module( library(system3), [ shell/1 ] ).
-
-:- ensure_loaded( '../declare' ).   %% Already called from main?!
-%%:- ensure_loaded( '../sicstus4compatibility' ).  %% Compatible with sicstus4, get0/1 etc.
-:- use_module( '../sicstus4compatibility', [ get0/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
-
-%% RS-111121 UNIT: App
-:- use_module( '../app/busanshp', [ memberids/3 ] ).
-
-%% RS-111205, UNIT: tuc/
-%:- use_module( '../tuc/dict_n', [] ).
-:- use_module( '../tuc/metacomp', [ language/1 ] ).
-:- use_module( '../tuc/readin', [  read_in/1    ] ). %%reads text to a list
-
+:- ensure_loaded( '../sicstus4compatibility' ). %, [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%:- ['datecalc'].   %% Already called from main
-
-
-%X := Y :-       %% Set value X to Y
-%    main:set(X,Y).
-%
-%X =: Y :-       %% Set value Y from X
-%    main:myflags(X,Y).
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% panic(_H). %% just for comment-predication
-
-append_bl_atoms(A,B,C) :-  %% append atoms with a blank
-    atomname(A,AL),
-        name(' ',H), 
-        append(AL,H,ALH),
-    atomname(B,BL),
-    append(ALH,BL,CL),
-    name(C,CL).
-
-append_atomlist([A],A) :-!.
-append_atomlist([A|B],AB):-
-    append_atomlist(B,B1),
-    append_atoms(A,B1,AB).
-
-append_atoms(A,B,C) :-
-    atomname(A,AL),
-    atomname(B,BL),
-    append(AL,BL,CL),
-    name(C,CL).  %% <- %% name(94451, [32,57,52,52,53,49]). %% leading blanks
-
-atomname(X,L):-atom(X),!,name(X,L).
-
-atomname(X,L):-number(X), 
-    !,
-    name(X,L).
-
-atomname(X,L):-  
-    \+ atom(X),
-    convert_expression_to_atom(X,Y),
-    name(Y,L). 
 
 %% Character no Index in string String
 charno(Index,String,Char) :- %% TA-090618
@@ -152,6 +41,14 @@ number_to_string(X,XS):- %% (no preceding blanks)
       atom_codes(XS,XL).
 
 
+%write_blanks(N):-  %% RS-111212 Moved to sictus4_compatability.pl
+%     N > 0,
+%     !,
+%     write(' '),
+%     N1 is N-1,
+%     write_blanks(N1).
+%write_blanks(_).
+%
 spyon(_).
 
 spyoncondition(Cond,Mess):-
@@ -195,6 +92,25 @@ taketime :-
 
 
 
+timestring(Z):- %% creates a string of time-point YYYYMMDDHHMMSS
+    datetime(X1,X2,X3,X4,X5,X6),
+    coerce2d([X1,X2,X3,X4,X5,X6],[D1,D2,D3,D4,D5,D6]),
+    concat_atomlist([D1,D2,D3,D4,D5,D6],Z),
+    !.
+timestring('00000000000000').
+%           YYYYMMDDHHMMSS
+
+
+datestring(Z):- %% creates a string of date  YYYYMMDD
+    datetime(X1,X2,X3,_X4,_X5,_X6),
+    coerce2d([X1,X2,X3],[D1,D2,D3]),
+    concat_atomlist([D1,D2,D3],Z),
+    !.
+datestring('00000000').
+%           YYYYMMDD
+
+
+
 %% NEW PREDICATE
 
 iso_atom_chars(X,Y):-
@@ -215,47 +131,6 @@ convcodetocharacters([X|Y],[C|D]):-
     convcodetocharacters(Y,D).
 
 
-concat_atomlist([A],A) :- !. 
-concat_atomlist([A,B], C) :- !,
-    atom_concat(A,B,C).
-concat_atomlist([A|B],C) :-
-    concat_atomlist(B,B1),
-    atom_concat(A,B1,C).
-
-concat_atomlist([],'').
-
-convert_expression_to_atom(X,Y):- %% ad hoc 
-   X= (Nardoveien - NR1),
-   !,
-   append_atomlist([Nardoveien,'-', NR1],Y).
-    
-convert_expression_to_atom(_,' ? ').
-
-
-compar(after,X,Y) :-
-   number(X),number(Y), X > Y .
-
-compar(before,X,Y):- 
-   number(X),number(Y), X < Y .
-
-
-default(V,E):- 
-    V=E,!;
-    true.
-
-
-%% avoid conflict with SWI (other parameter sequence)
-
-delete1(X,[X|Y],Y).  
-delete1(X,[U|V],[U|W]):-   
-    delete1(X,V,W).
-
-deleteall(X,Y,Z):- delall(X,Y,Z).
-
-delall(_,[],[]):-!.
-delall(X,[X|Y],Z):-!,delall(X,Y,Z).
-delall(X,[U|Y],[U|Z]):-delall(X,Y,Z).
-
 
 
 coerce2d([X|Y],[X1|Z]):-
@@ -264,6 +139,7 @@ coerce2d([X|Y],[X1|Z]):-
 coerce2d([],[]).
 
 %% Prolog is really stupid here
+
 %% number to fixed length character sequence
 
 coerc2d(D,DD)  :- 
@@ -317,12 +193,11 @@ follow_after(A,B,(A1,C)):-
 follow_after(A,B,(_X,Y)):- 
    follow_after(A,B,Y).   
 
-for(P,Q):-
-  P,Q,
-  false;true.
 
-shell_copyfile(S,D):-
+shell_copyfile(S,D):- 
+
      append_atomlist(['cp ',S,' ',D],CMD),
+
      shell(CMD). 
 
 
@@ -427,9 +302,14 @@ set_union(List1,List2,List3) :-
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-myflags(X) :-             %% RS-111119 Where is value/2 defined?
-    main:myflags(X,Y),
-    out(X),out('='),output(Y),nl.
+X := Y :- 
+    set(X,Y).
+
+X =: Y :-  
+    value(X,Y). 
+
+
+
 
 all(X):- 
     output(X),
@@ -470,9 +350,9 @@ aggregate(number,L,X):-
     length(L,X).
 
 
-%append3([],A,A). 
-%append3([X|Y],U,[X|V]):-
-%append3(Y,U,V).
+% append([],A,A). 
+% append([X|Y],U,[X|V]):-
+%    append(Y,U,V).
 
 
 appendfiles(A,B,C):-
@@ -503,17 +383,95 @@ sumcount([X- _Y|R],S,N):-
     S is S1 +X.
 
 
-tab(N):- write_blanks(N). %% ad hoc
-
-write_blanks(N):-
-     N > 0,
-     !,
-     write(' '),
-     N1 is N-1,
-     write_blanks(N1).
-write_blanks(_).
-
 % % % % % % % % % % % % % % 
+
+
+concat_atomlist([X1|Y],Z):-
+    concat_atomlist(Y,Y1),
+    atom_concat(X1,Y1,Z).
+concat_atomlist([],'').
+
+concat_atomlist([A],A):-!. 
+concat_atomlist([A,B],C):-!,
+    atom_concat(A,B,C).
+concat_atomlist([A|B],C):-
+    concat_atomlist(B,B1),
+    atom_concat(A,B1,C).
+
+
+append_bl_atoms(A,B,C):-  %% append atoms with a blank
+    atomname(A,AL),         
+        name(' ',H), 
+        append(AL,H,ALH),
+    atomname(B,BL),
+    append(ALH,BL,CL),
+    name(C,CL).   %% <-
+
+
+append_atomlist([A],A):-!.  
+append_atomlist([A|B],AB):-
+    append_atomlist(B,B1),
+    append_atoms(A,B1,AB).
+
+
+
+append_atoms(A,B,C):-  
+    atomname(A,AL),
+    atomname(B,BL),
+    append(AL,BL,CL),
+    name(C,CL).  %% <- %% name(94451, [32,57,52,52,53,49]). %% leading blanks
+
+
+atomname(X,L):-atom(X),!,name(X,L).
+
+atomname(X,L):-number(X), 
+    !,
+    name(X,L).
+
+
+    
+
+atomname(X,L):-  
+    \+ atom(X),
+    convert_expression_to_atom(X,Y),
+    name(Y,L). 
+
+convert_expression_to_atom(X,Y):- %% ad hoc 
+   X= (Nardoveien - NR1),
+   !,
+   append_atomlist([Nardoveien,'-', NR1],Y).
+    
+
+convert_expression_to_atom(_,' ? ').
+
+
+
+
+
+
+compar(after,X,Y) :-
+   number(X),number(Y), X > Y .
+
+compar(before,X,Y):- 
+   number(X),number(Y), X < Y .
+
+
+default(V,E):- 
+    V=E,!;
+    true.
+
+
+%% avoid conflict with SWI (other parameter sequence)
+
+delete1(X,[X|Y],Y).  
+delete1(X,[U|V],[U|W]):-   
+    delete1(X,V,W).
+
+deleteall(X,Y,Z):- delall(X,Y,Z).
+
+delall(_,[],[]):-!.
+delall(X,[X|Y],Z):-!,delall(X,Y,Z).
+delall(X,[U|Y],[U|Z]):-delall(X,Y,Z).
 
 purge(_,[],[]):-!. 
 purge(Dels,[X|Y],Z):- 
@@ -650,6 +608,12 @@ flatround((X,Y),(X,Z)):-
     flatround(Y,Z).
 
 flatround(X,X).
+
+
+
+for(P,Q):-
+  P,Q,
+  false;true.
 
 foralltest(P,Q):- \+ ( P, \+ Q). 
 
@@ -886,10 +850,18 @@ psl(S,L):-
     seen.
 
 
-remember(F) :- F, ! ; assert(F).
+remember(F):-F,!;assert(F).
+
+%% remove_duplicates  Standard  -> library
+
+
+set(Counter,Value):- 
+    retractall(value(Counter,_)),
+    assert(value(Counter,Value)).
 
 
 % Prologs setof is baroque %% 
+
 set_of(X,Y,Z):-           %% 
     setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
     Z=[].                 %% What is wrong with empty sets ?
@@ -938,7 +910,7 @@ subcase(Y,X):-
     subsumes(X,Y),  %% no variable is instantiated
     X=Y.            %% to a structure
 
-test(X) :- \+ ( \+ ( X)).
+test(X):- \+ ( \+ ( X)).
 
 
 once1(P):-P,!. %% same as once, but version independent
@@ -1041,7 +1013,7 @@ split(0,List,[],List).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 debug(Prop,Text):- 
-    main:myflags(trace,4) ->
+    value(trace,4) ->
     (call(Prop) -> output(Text);true)
     ;
     true.
@@ -1052,7 +1024,7 @@ pling(I):-output(pling(I)). %%  Debug
 %% NEW PREDICATE
 
 breakpoint(Pred,Prop):- %% New Predicate Delayed Dynamic set spypoint
-    main:myflags(panic,true)->
+    value(panic,true)->
     (call(Prop) -> spy Pred;true);
     true.
 

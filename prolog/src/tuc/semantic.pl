@@ -2,59 +2,12 @@
 %% SYSTEM TUC
 %% CREATED TA-921129
 %% REVISED TA-110825
-%% REVISED RS-111205
 
-%% UNIT: tuc
 %  TUCs  Lexical Semantic Knowledge Base
 
-:- module( semantic, [ 
-        a_compl/4,
-        abnormalverb/2,
-        adj_templ/2, %% object ?  hvem var de første menneskene ? (trytofool)
-        adjnamecomp_templ/3,
-        adjname_templ/2,        %% TA-110701
-        adjnoun_templ/2,
-        adjnouncomp_templ/3,
-        (ako)/2,        %% RS-111205  ako/2
-        aligen2/2,
-        align1/2,
-        apos/2,
-        coher_class/3,
-        dtv_templ/4,
-        gradv_templ/2,
-        particle/3,
-        (has_a)/2,  %% RS-111205  has_a/2
-        iv_templ/2, %% Babble = Tulle 
-        iv_templ/3,
-        jako/2, %% hyponym of adjectives
-        n_compl/3,      %% To fernando.pl
-        normalverb/2,   %% normal if not abnormal at all
-        measureclass/1,
-        pai_templ/2,    %% it is  Adj to VP
-        post_adjective/1,
-        pvi_templ/2,    %it costs money to ...
-        rv_templ/2,
-        stanprep/2,
-        tv_templ/3,
-        tv_templ/4,
-        testclass/1,  %% <=== NB
-        v_compl/4,
-        vako/2  %% hyponym of verbs
-    ] ). %% Or define fernando as the main file in the tuc module??
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% The sorting of these predicates are not grouped by predicate name, but by 'term'-name
-:- discontiguous a_compl/4, abnormalverb/2, adj_templ/2, ako/2, has_a/2, iv_templ/2, iv_templ/3, rv_templ/2, tv_templ/3, tv_templ/4, v_compl/4.
+:- ensure_loaded('../declare').
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- ensure_loaded( '../declare' ).
-
-%% RS-111205, UNIT: tuc
-:- use_module( '../tuc/facts', [ (isa)/2  ] ).  %% RS-111204    isa/2 from facts.pl
-:- use_module( '../tuc/fernando', [ subclass0/2 ]).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -600,8 +553,8 @@ align1(station,street).  %% holdeplass fykenvegen (street -> fykenborg)
 
 %   stratified, alphabetic 
 
-% ako/2      subclass
-% has_a/2    has attribute
+% ako      subclass
+% has_a    has attribute
 
 
 
@@ -1019,7 +972,7 @@ bed             ako    place.   %% placoid
 beginning       ako    part.
 bicycle         ako    vehicle. %% EXPERIMENT object. / using bicycle
                                 %% take on the bus / take to NTH
-[block]         ako    object.
+(block)           ako    object.
 bodypart        ako    object.
 
 foot            ako    bodypart. %% ?? //by foot
@@ -1298,7 +1251,7 @@ meter           ako    measure.
 method          ako    abstract.  %%  ( = way ???)
 mile            ako    measure.  
 mobile          ako    telephone. %% number. 
-[mode]          ako    abstract.
+(mode)            ako    abstract.
 modification    ako    activity. %%  = av ruteplaner etc.
 monster         ako    agent. 
 motor           ako    object.   %% engine ???
@@ -1679,7 +1632,7 @@ corridor        ako     space.
 pizza           ako     food. 
 sausage         ako     food. 
 
-behaviour       ako     [mode]. 
+behaviour       ako     (mode). 
 
 font            ako     format. 
 
@@ -1935,7 +1888,7 @@ milk            ako    liquid.
 module          ako    system.
 money           ako    measure. %%  number.   * money on the bus
 morningroute    ako    route_plan. 
-mood            ako    [mode].
+mood            ako    (mode).
 mouse           ako    animal.
 music           ako    sound. 
 
@@ -2089,8 +2042,8 @@ restart         ako    start.
 return          ako    trip. 
 ringroute       ako    route_plan. 
 risk            ako    abstract.    %%
-%%  roomnumber  ako    room.    %% Confuse Buster: Go there ? 
-[rule]          ako    statement.   %% Reserved in SWI 
+%%  roomnumber      ako    room.    %% Confuse Buster: Go there ? 
+rule            ako    statement.   %% Reserved in SWI 
 
 
 safety          ako    abstract.
@@ -2992,6 +2945,9 @@ rv_templ(resist,agent).   %%  vegre/kvie
 rv_templ(risk,agent). 
 
 rv_templ(say,agent).
+    v_compl(say,agent,to,agent).
+    v_compl(say,agent,in,language).
+    v_compl(say,agent,on,language). %% Norw
 
 rv_templ(say,information).
 
@@ -8641,7 +8597,7 @@ n_compl(after,period,time). %% i (perioden fra ..) til
 n_compl(before,period,time). 
 
     n_compl(after,minute,vehicle).  %% varslet etter bussen til nardo. %%%%%%%%%
-    n_compl(before,minute,vehicle). %% varslet før bussen til nardoit/ Garden path
+    n_compl(before,minute,vehicle). %% varslet før bussen til nardo/ Garden path
 
 n_compl(behind,system,system). %% programvaren bak  "Spør Anna".
 
@@ -10303,7 +10259,7 @@ particle(in_morning,time,pre).
 particle(in_night,time,pre).
 particle(in_midnight,time,pre).
 
-particle(Day,day,pre) :- (Day isa day).  
+particle(Day,day,pre) :- user:(Day isa day).  
 
 %% can not be prefix
 

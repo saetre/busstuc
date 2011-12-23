@@ -2,6 +2,7 @@
 %% SYSTEM BusTUC/REGTOP
 %% CREATED TA-040421
 %% REVISED TA-110302
+%% REVISED RS-111220
 
 % Compiles the Busroute tables
 
@@ -9,9 +10,8 @@
 
 %% Data taken from topreg.pl
 
-%:-prolog_flag(discontiguous_warnings,_,off). 
+%%:-prolog_flag(discontiguous_warnings,_,off). 
 
-:- use_module( 'db/topreg', [ route_period/4 ] ).
 
 %%% Local Bootstrap predicates %%%
 %%% Must come first            %%%
@@ -58,7 +58,7 @@ consult_route_set_list([]).
 
 compile_route_set(Module):-
      make_mod_file_list(Module,MF),
-     consult(Module:MF).
+     consult(Module:MF).   %% RS-111220 , create_regcut(Module).
 
 
 make_mod_file_list(Module,MF):-

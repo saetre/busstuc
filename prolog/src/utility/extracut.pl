@@ -4,34 +4,7 @@
 %% REVISED TA-110317   NEW db-organisation
 
 %% Create regcut files for modules
-:-module( extracut, [
-        create_regcut/1,
-        ex_cutloop_rid/7,
-        ex_cutloop_trace/3,
 
-        ex_departureday/4,
-        ex_ntourstops/2,
-        ex_passes4/6,
-        mod_cut_rid/8,
-        pax/4,
-        reset_dynamic_predicates/0,
-        whattoget/7,
-        xi/2
- ] ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% RS-111205, UNIT: utility/
-:- use_module( utility, [ append_atomlist/2, for/2, set_of/3, output/1 ] ).  % utility functions
-:- use_module( makeauxtables, [ dumppredas/2 ] ).
-
-%% %% RS-111203, UNIT: app/
-:- use_module( '../app/buslog', [  addtotime/3,  difftime/3  ] ).
-
-%% UNIT: db/
-:- use_module(   '../db/busdat', [ cutloop_station/2  ] ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 /*
 
 cutloop_trace(Station,Trace1,Trace2)),
@@ -55,8 +28,7 @@ Program is run in same directory as busestuc.
 */
 
 
-:-dynamic
-          ex_cutloop_rid/7,
+:-dynamic ex_cutloop_rid/7,
           ex_cutloop_trace/3,
 
           ex_departureday/4,

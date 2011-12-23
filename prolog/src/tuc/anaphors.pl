@@ -2,35 +2,10 @@
 %% SYSTEM TUC
 %% CREATED TA-930805
 %% REVISED TA-100201
-%% REVISED RS-111121
 
-%% UNIT: tuc
+:- ensure_loaded('../declare').
+
 %% Anaphoric resolution
-:- module( anaphors, [
-        error_in_anaphors/0,    externalresolveit/2,    inventresolveit/2,
-        matchresol0/2,          nabi/3,                 resolve/2
-  ] ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% RS-111205, UNIT: /
-:- ensure_loaded( '../declare' ).
-:- use_module( '../main', [ track/2 ] ).
-
-%% RS-111205, UNIT: tuc/
-:- use_module( evaluate, [ disqev/1, fakt/1 ]).         %% tuc/
-:- use_module( facts, [ (isa)/2 ]).
-:- use_module( tuc:fernando, [ subclass0/2, subtype0/2, type/2 ]).
-:- use_module( translat, [ condq/2 ]).
-
-%% RS-111205, UNIT: dialog/
-:- use_module( '../dialog/newcontext2', [ dialog_resolve/2 ] ).
-
-%% RS-111205, UNIT: utility/
-:- use_module( '../utility/library', [  reverse/2  ] ).
-:- use_module( '../utility/utility', [ match/2, test/1 ] ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 resolve(P,Q):- % Only 1 external
     resolves(P,Q).
@@ -110,8 +85,8 @@ resolv(findalt(_,_,_)::P,Q,L):-
 
 
 resolv(findpron(X)::P,Q,L):-     % Internal resolution
-    %% main:myflags(textflag,true),  
-    %% \+ main:myflags(busflag,true), %% <-- Hazard ? 
+    %% value(textflag,true),  
+    %% \+ user:value(busflag,true), %% <-- Hazard ? 
     internalresolve(X,L),  
     !,
     resolv(P,Q,L).    
@@ -140,9 +115,9 @@ resolv(findpron(X:T)::P, exists(X:T)::  Q,L):- % External resolution of pronoun
 
 
 resolv(find(X)::P,Q,L):-     % 1.  Internal resolution  first
-%%%     main:myflags(textflag,true),    %% only for texts  
+%%%     value(textflag,true),    %% only for texts  
                              %% from nth to this palce \= nth
-    \+ main:myflags(dialog,1), 
+    \+ value(dialog,1), 
     internalresolve(X,L),  
     !,
     resolv(P,Q,L).    
@@ -324,14 +299,14 @@ externalresolve(tuc,tuc isa savant):- %% this system = TUC
 
 
 externalresolve(X,P):-   %   Resolve references using the dialog manager
-     main:myflags(dialog,1), 
+     user:value(dialog,1), 
      !, 
      condq(P,Q),
      dialog_resolve(X,Q),  % dialog/newcontext2.pl
      !.
 
 externalresolve(X,P):-   % Dynamically query the qualia  X:_
-     \+ main:myflags(busflag,true), %% Not allowed for several users !!! 
+     \+ user:value(busflag,true), %% Not allowed for several users !!! 
      condq(P,Q),
      disqev(Q),          % query the DB using only discourse elements
      nonvar(X),          % testclass returns variables
@@ -343,7 +318,7 @@ externalresolve(X,P):-   % Dynamically query the qualia  X:_
 externalresolveit(X:_T,_):- nonvar(X),X=(_,_),!,fail. 
 
 externalresolveit(X:MT):-   % reference must not be
-    main:myflags(textflag,true),  
+    value(textflag,true),  
     is_the(X,K),            % more specific than referent
     type(K,KT),
     nogender(KT),
@@ -389,8 +364,7 @@ resolist(P,DL,UL):-       %% Finds list of referents
                           %% DZ undefined references
 
 %--------------------------------------
-:- volatile error_in_anaphors/0.
-:- dynamic error_in_anaphors/0.
+
 
 res2(V,    _,_,_,_):-var(V),!,error_in_anaphors. 
 

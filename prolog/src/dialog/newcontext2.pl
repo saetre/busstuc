@@ -2,39 +2,10 @@
 %% SYSTEM BUSTER
 %% CREATED ØF-000101
 %% REVISED TA-080110
-%% REVISED RS-111203
 
-:- module( newcontext, [
-        addref/3,          clearold/0,       commitref/1,    commitref/3,
-        current_context/1, current_frame_getvalue/2,         dialog_resolve/2,
-        getcontext/2,      getcurrent/1,     getframe/2,     getquery/2,
-        getref/3,          reset_context/0,  rc/0,           saved_context/3,
-        setcontext/2,      setcurrent/1,     setframe/2,     setquery/2,
-        topic_subclass/3
-  ] ).
+:- use_module(library(system)).
+:- use_module(library(lists)).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% RS-111205, UNIT: /    everywhere, declare
-:- ensure_loaded( '../declare' ).
-:- use_module( '../main', [ myflags/2 ] ). %, set/2  ] ).
-
-%% IMPORTS
-:- use_module( library(system) ).
-:- use_module( library(lists) ).
-
-%% RS-111205, UNIT: dialog/
-:- use_module( checkitem2, [ current_frame/1 ] ).
-:- use_module( frames2, [ frame_getvalue_rec/4, frametemplate/2 ] ).
-
-%% RS-111205, UNIT: tuc/
-:- use_module( '../tuc/fernando', [ subclass0/2 ]).
-
-%% RS-111205, UNIT: utility/
-:- use_module( '../utility/utility', [  roundmember/2, set_difference/3, set_of/3   ] ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-:- dynamic current_context/1, saved_context/3.
 
 %% current is the id of the current context
 
@@ -70,7 +41,7 @@ getcontext(Cid, X) :-
 
 
 newcontext(Cid):-		%% TLF 030402 %% unnec
-	 main:myflags(teleflag, true), !,
+	value(teleflag, true), !,
 	frametemplate(telebuster, NewFrame), %% TA-051018
 	setcontext(Cid,
                    context([], [], [],
@@ -201,7 +172,7 @@ getref(Cid, X, Type) :-
 %% Topic is not yet in the frame
 
 gettopic(Topic) :- 
-     main:myflags(topic,Hopic) -> 
+    value(topic,Hopic) -> 
          Topic=Hopic
        ; Topic = nil.
 
@@ -280,8 +251,5 @@ rc :-
 	newcontext(id),
 	assert(current_context(id)).
 
-
-%% RS-111206 For debugging? or compiling?
-%:-assert(  main:myflags(rune,111206) ).
-%:- rc.
+:- rc.
 

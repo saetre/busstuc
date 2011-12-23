@@ -3,67 +3,60 @@
 %% CREATED TA-970726
 %% REVISED TA-110303
 
-% Common File for tucbus  (english) and    tucbuss (norwegian)
-:- module( tucbuses, [
-        backslash/1,    compile_english/0,      compile_norsk/0,
-        %%% THESE ARE NOW CALLED FROM MAIN DIRECTORY
-        dcg_file/2,     dcg_module/2,           dcg_module/1,        dcg_file/1,
-        dict_file/2,    dict_module/1,          dict_module/2,
-        gram_file/2,    gram_module/1,          gram_module/2,
-        morph_file/2,   morph_module/2,
-        %%%
-        language/1,     legal_language/1,       morph_module/1,
-        prompt/1,       prompt2/2,
-        readfile_extension/2,                   readfile_extension/1,
-        script_file/1,  script_file/2,          style_check/1
-  ] ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%:-prolog_flag(discontiguous_warnings,_,off). 
 :-use_module(library(system)). 
 
-%:- use_module( main, [  (:=)/2, set/2  ]).  %% :=/2 is exported from declare, through main, to "userNOTME:"
-:- use_module( main, [  (:=)/2, myflags/2  ]).  %% :=/2 is exported from declare, through main, to "userNOTME:"
+:- use_module( sicstus4compatibility, [ get0/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+:- use_module( 'db/busdat', [ clock_delay/3 ] ). %%, named_date/2 ]).
 
-?- use_module('ptbwrite.pl').%% TA-061030
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% RS-111205, UNIT: tuc/
-:- use_module( 'tuc/metacomp', [ makegram/1  ] ).
+% Common File for tucbus  (english) and
+%                 tucbuss (norwegian)
 
 
-?- use_module('utility/utility.pl').
-?- use_module('utility/library').
+:-prolog_flag(discontiguous_warnings,_,off). 
+
 
 backslash('\\'). 
 style_check(_).
 
-%?-compile('utility/drucke_baum'). %% TA-061030
-?- use_module('utility/datecalc').  %% Kalles fra utility module
-?- use_module('utility/makeauxtables'). %% From utility
-?- use_module( 'utility/extracut', [] ).  %% TA-080201 %% RS-111204
+%?-compile('declare.pl').
+?-compile('utility/library.pl').
+?-compile('utility/utility.pl'). 
 
-:- airbusflag := false. %% NEW FLAG %% TA-090331
-:- busflag := true.     %% Full Bus Application 
-:- queryflag := true.   %% Statements are implicit queries 
-:- semantest := false.  %% No distinction between syntactic/semantic error
-:- spellcheck := 1.
-%
-%:- set(airbusflag, false). %% NEW FLAG %% TA-090331
-%:- set(busflag, true).     %% Full Bus Application 
-%:- set(queryflag, true).   %% Statements are implicit queries 
-%:- set(semantest, false).  %% No distinction between syntactic/semantic error
-%:- set(spellcheck, 1).
+?-use_module('utility/drucke_baum'). %% TA-061030 %% RS-111218
+?-use_module('ptbwrite').%% TA-061030
 
-  %?-compile('utility/extractreg.pl'). %% SUSPENDED
-  %:-(tramflag := true).   %% Trams are included ( Route 1 )
+?-compile('utility/datecalc.pl').  
+?-compile('utility/makeauxtables.pl'). 
+
+%%% ?-compile('utility/extractreg.pl'). %% SUSPENDED
+
+
+?-compile('utility/extracut.pl').  %% TA-080201
+
+:- (airbusflag := false). %% NEW FLAG %% TA-090331
+%% :- (tramflag := true).   %% Trams are included ( Route 1 )
+
+:- (busflag := true).     %% Full Bus Application 
+:- (queryflag := true).   %% Statements are implicit queries 
+:- (semantest := false).  %% No distinction between syntactic/semantic error
+:- (spellcheck := 1).
 
   %%  :- (single_sentence := true). 
   %% DIS-Allow several sentences on a line
 
+
+%%%  ?-compile('sicstuc.pl'). 
+
+
+
+
 legal_language(english).
 legal_language(norsk). %% NB not 'norwegian'
 
-language(L) :-  main:myflags(language, L). %% Set dynamically %% Same as " language =: L "
+language(L) :- value(language,L). %% Set dynamically
+
 
 dict_module(D):-language(L),dict_module(L,D).
 
@@ -79,10 +72,10 @@ dcg_file(U) :-language(L),dcg_file(L,U).
 script_file(S):-
     language(L),script_file(L,S).
 
-%prompt(' ') :-
-%   norsource := true. %% TA-110207
-%
-prompt(P) :-
+prompt(' '):-
+   value(norsource,true). %% TA-110207
+
+prompt(P):-
     language(L),
     prompt2(L,P),
     !. 
@@ -148,20 +141,19 @@ prompt2(norsk,'N: ').
 
 ?-
   compile('tuc/readin.pl'),       % reads text to a list
-%  compile('tuc/lex.pl'),          % lexical analysis
-  use_module( 'tuc/lex.pl', [] ),          % lexical analysis
+  compile('tuc/lex.pl'),          % lexical analysis
 
-%  compile('tuc/proxytagger'),    % disambiguator        %% TA-101010
-%  compile('tuc/proxytagrules'),   % disambiguate rules  %% -> lex/proxyclean
+%%%%  compile('tuc/proxytagger'),    % disambiguator        %% TA-101010
+%%%%  compile('tuc/proxytagrules'),   % disambiguate rules  %% -> lex/proxyclean
 
   compile('tuc/translat.pl'),     % code generation 
   compile('tuc/evaluate.pl'),     % translate and evaluate
-%   compile('tuc/inger.pl'),        % intelligent resolution 
+%%%%   compile('tuc/inger.pl'),        % intelligent resolution 
   compile('tuc/anaphors.pl'),     % anaphoric resolution  
-%  compile('tuc/metacomp.pl'),     % compiles the grammar       %% RS-111119 "imported" below instead
+  compile('tuc/metacomp.pl'),     % compiles the grammar 
   compile('tuc/fernando.pl'),     % semantic interface
-%   compile('tuc/world0.pl'),       % empty world predicates %% TA-110301
-%   compile('tuc/slash.pl'),        % slash facts / %% Irrelevant
+%%   compile('tuc/world0.pl'),       % empty world predicates %% TA-110301
+%%%   compile('tuc/slash.pl'),        % slash facts / %% Irrelevant
 
   compile(dcg_e:'tuc/dagrun_e.pl'),      % split into English and 
   compile(dcg_n:'tuc/dagrun_n.pl'),      % Norwegian clones 
@@ -174,8 +166,6 @@ prompt2(norsk,'N: ').
 %% Moved from tucbuses.pl 
 
 %% Compile both languages  %% TA-000529
-
-:- use_module( 'tuc/metacomp.pl', [] ).     % RS-1111119 compiles the grammar (with makegram predicate)
 
 compile_english :-
     dict_file(english,L),compile(L),       % dictionary for E 
@@ -192,11 +182,18 @@ compile_norsk:-
   
     makegram(norsk).
 
-%?- compile_english.
+?-compile_english.
 
-%?- compile_norsk.
+?-compile_norsk.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+ 
+
+
+
 
 
 

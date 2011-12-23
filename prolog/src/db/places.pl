@@ -16,30 +16,25 @@
 
 % See also names.pl for general synonyms
 
-:- module( places, [
+
+/*
+
   alias_name/2,            % (NAME,NAME)
   alias_station/2,         % (STATION,STATION)
-  aliasteamatb/3,
   cmpl/3,                  % (NAME,NAME*,LIST)
   corr/2,                  % (PLACE,PLACE)
-  foreign/1,
   isat/2,                  % (STATION,PLACE)
-  nostation/1,
   place_resolve/2,         % (PLACE,STATION).
   placestat/2,             % (PLACE,STATION)
   sameplace/2,             % (PLACE,PLACE)
-%  short_specname/1,        % (NAME,STRING)
-  short_specname/2,
+  short_specname/1,        % (NAME,STRING)
   specname/2,              % (NAME,STRING)
   synplace/2,              % (NAME,PLACE)
   underspecified_place/1,  % (PLACE)
   unwanted_place/1,        % (PLACE)
-  unwanted_station/1      % (PLACE)
-]).
+  unwanted_station/1,      % (PLACE)
 
-%% RS-111205, UNIT: /
-%:- ensure_loaded( '../declare' ).    %% Operators for TUC
-:- use_module( '../main', [  myflags/2 ] ). %% set/2, 
+*/
 
 
 
@@ -244,21 +239,6 @@ isat(østre_berg,berg_østre). %% AtB  tricky
 isat(østre_rosten,city_syd).    %% Ø R must be station
 isat(øvre_flatåsveg,flatåsen). % 9,17 
 
-isat(moholt,lingit). %% Ad HOC, best conn from NTH
-isat(moholt_storsenter,lingit).
-%%¤¤¤ %% ulykke AtB %% TA-100715
-isat(lade_alle_80,lade).
-%%%%%%placestat(lade,lade_alle_80).  %% ( lade-alle_80 more passages)
-%%¤¤¤
-
-isat(fagerliveien,fagerliv). %% Panic %% AtB
-
-
-isat(trondheim_s_10,ts). %% SUMMER %% TA-110627
-isat(trondheim_s_11,ts). %%
-isat(trondheim_s_13,ts). %%
-
-
 
 %%% PLACESTAT  neighbourhood station
 
@@ -309,6 +289,8 @@ placestat(multiconsult,postterminalen). %% sluppenvegen 23 %% TA-110415
 %% placestat(lingit,moholt_storsenter). %% //confuse Lingit company
 
 placestat(lingit,moholt). %% TA-110401
+isat(moholt,lingit). %% Ad HOC, best conn from NTH
+isat(moholt_storsenter,lingit).
 
 placestat(idi,gløshaugen_syd). %% TA-110401
 
@@ -551,6 +533,11 @@ placestat(kyvatnet,skavlans_veg).
 
 placestat(lade_alle,lade_alle_80).  %%
 
+%%¤¤¤ %% ulykke AtB %% TA-100715
+isat(lade_alle_80,lade).
+%%%%%%placestat(lade,lade_alle_80).  %% ( lade-alle_80 more passages)
+%%¤¤¤
+
 placestat(ladehammerveien,ladehammeren).  %%(manystations,
 placestat(lademoen,rønningsbakken). 
 placestat(lademoen_kirke,rosendal). 
@@ -752,7 +739,7 @@ placestat(smistadkrysset,arnt_smistads_veg).
 %% placestat(solbakkenbrua,osbrua). 
 %% placestat(solsiden,solsiden). %% station %% TA-101130
 
-%% placestat(sorgenfriveien,sorgenfri) :- \+ main:myflags(airbusflag,true).  %% (on the map)
+%% placestat(sorgenfriveien,sorgenfri) :- \+ value(airbusflag,true).  %% (on the map)
 %% krøll med airbus 
 
 placestat(sosialhøgskolen,gildheim).  %% ???
@@ -867,6 +854,13 @@ placestat(wollumsgarden,byåsen_butikksenter).  %% TA-110114 wollumsgarden
 
 placestat(østmarka,østmarkveien). %% TA-110623
 
+
+isat(fagerliveien,fagerliv). %% Panic %% AtB
+
+
+isat(trondheim_s_10,ts). %% SUMMER %% TA-110627
+isat(trondheim_s_11,ts). %%
+isat(trondheim_s_13,ts). %%
 
 
 %%% END REFERENCE TO STATION SECTION
@@ -1153,10 +1147,6 @@ sameplace(høgseth,høiset).
 %% sameplace(høgskoleringen,høgskoleringen). 
 sameplace(høiseth,høiset). %% < høisteh 
 sameplace(høyset,høiset). 
-
-sameplace(høyskole,høgskole).   %% TA-110221
-sameplace(høyskolen,høgskolen). %%
-
 sameplace(idrettshuset,idrettsbygget). 
 sameplace(ilakrysset,ila).  
 sameplace(inheradsveien,innherredsveien). 
@@ -1351,9 +1341,9 @@ sameplace(pirtersenteret,pirbadet).   %%
 %% sameplace(politi,ts).      %% AtB. 
 %% sameplace(politihuset,ts). %% AtB.                 %% 
 
-sameplace(postsentralen,postterminalen). 
-sameplace(postterminal,postterminalen). %% posttermunal %% TA-110221
 
+
+sameplace(postsentralen,postterminalen). 
 sameplace(presteaunet,persaunet). 
 sameplace(prestegayrdjordet,prestegårdsjordet).   %% TA-101123
 sameplace(prestgayrdsjordet,prestegårdsjordet).   %% 
@@ -1386,7 +1376,6 @@ sameplace(ragnhildsgt,ragnhlds_gate).
 sameplace(rambech,f_rambech).  %% F Rambech 
 sameplace(regionsykehus,regionsykehuset). 
 
-sameplace(ringvemuseum,ringve_museum).  
 sameplace(risvollansenter,risvollan_senter). 
 sameplace(risvollansenteret,risvollan_senter). 
 
@@ -1671,7 +1660,7 @@ sameplace(østmarkneset,østmarkveien).  %%nesset
 sameplace(øvreromolslia,romolslia_øvre). 
 sameplace(kattemsentret,kattemsenteret). 
 
-short_specname(ranheim_stasjon,'Ranheim st. '). 
+short_specame(ranheim_stasjon,'Ranheim st. '). 
 short_specname(d1,'Dronn. gt D1'). 
 short_specname(d2,'Dronn. gt D2'). 
 short_specname(d3,'Dronn. gt D3'). 
@@ -1850,8 +1839,8 @@ specname(d2,'Dronningens gate D2').  %%
 specname(d3,'Dronningens gate D3').  %%
 specname(d4,'Dronningens gate D4').  %%
 
-specname(den,'den'). %% M .. den godes gate ... 
 
+specmame(den,'den'). %% M .. den godes gate ... 
 specname(devle_gård,'Devlegård'). 
 specname(dist_lege_øvrelids_v,'Distriktslege Øvrelid svei').    %% EH-030616
 specname(distriktslege_øverlidsv,'Distriktlege Øvrelids vei').  %% EH-030616
@@ -2119,9 +2108,9 @@ specname(trondheim_torg,'Trondheim Torg').
 specname(trondheim_sentralstasjon,'Trondheim Sentralstasjon'). %% TA-110628
 specname(ts,'Trondheim Sentralstasjon'). 
 
-specname(ts10,'Trondheim Sentralstasjon ') :-  main:myflags(airbusflag,true),!. 
-specname(ts11,'Trondheim Sentralstasjon ' ):-  main:myflags(airbusflag,true),!.  
-specname(ts13,'Trondheim Sentralstasjon')  :-  main:myflags(airbusflag,true),!. 
+specname(ts10,'Trondheim Sentralstasjon ') :-value(airbusflag,true),!. 
+specname(ts11,'Trondheim Sentralstasjon ' ):-value(airbusflag,true),!.  
+specname(ts13,'Trondheim Sentralstasjon')  :-value(airbusflag,true),!. 
 
 specname(ts10,'Trondheim Sentralstasjon holdeplass 10'). 
 specname(ts11,'Trondheim Sentralstasjon holdeplass 11').  %% EH-031017
@@ -2958,6 +2947,9 @@ synplace(hølock,hørløcks).
 synplace(hørlocs,hørløcks). 
 synplace(hørløc,hørløcks). 
 
+sameplace(høyskole,høgskole).   %% TA-110221
+sameplace(høyskolen,høgskolen). %%
+
 synplace(høyskolring,høyskoleringen). 
 synplace(høysteh,høiset). 
 synplace(ia,ila). 
@@ -3091,7 +3083,7 @@ synplace(jonsvansveikrysset,jonsvannsveikrysset).   %% unnec
 synplace(jonsvatnveien,jonsvannsveien).  %% (etc)
 
 synplace(jskobli,jakobsli). 
-synplace(k_johnssonsveg,karl_jonssons_veg). 
+synplace(k,johnssonsveg,karl_jonssons_veg). 
 synplace(kade,lade). 
 synplace(kadehammeren,ladehammeren).  %%?
 synplace(kaien,pirbadet).
@@ -3611,6 +3603,8 @@ synplace(postenterminalen,postterminalen).
 synplace(postterimalen,postterminalen). 
 synplace(postterm,postterminalen). 
 
+sameplace(postterminal,postterminalen). %% posttermunal %% TA-110221
+
 synplace(prbade,pirbadet). 
 synplace(prbadet,pirbadet). 
 synplace(prestegårdsbakken,prestegårdsjordet).  %%  ?
@@ -3670,6 +3664,8 @@ synplace(ringv,ringve).  %%?
 synplace(ringvaal,ringvål). 
 synplace(ringvedskole,ringved_skole). 
 synplace(ringvemuseet,ringve_museum). 
+
+sameplace(ringvemuseum,ringve_museum).  
 
 synplace(ringveskole,ringve_skole). 
 synplace(ringveskolen,ringve_skole). 
@@ -4479,10 +4475,7 @@ synplace(åsveiskolen,åsveien_skole).
 synplace(åveienskole,åsveien_skole). 
 synplace(åøstmarka,østmarka). 
 
-%%% synplace(atb,kongens_street-34). %%  %% <----- AtB Funk // hva er atb
-synplace(ts,ts).   %% <----- AtB
-synplace(ts10,ts). %% 
-synplace(ts11,ts). %%
+
 
 underspecified_place(adolf_øien).  %%
 underspecified_place(alpinanlegget). 
@@ -5048,6 +5041,7 @@ unwanted_place(øre).    %%  \+ øvre
 
 
 %% NOSTATION 
+
 %% places in Trondheim without station (not foreign)
 
 %% TRAM  stations
@@ -5055,23 +5049,23 @@ unwanted_place(øre).    %%  \+ øvre
 
 nostation(arbeidsbuss). %% SIC  endstation bus 100 
 
-nostation(bygrensen):- \+main:myflags(tmnflag,true).    
+nostation(bygrensen):- \+value(tmnflag,true).    
 
-nostation(ferstad):-   \+main:myflags(tmnflag,true). %% Ferstads vei
+nostation(ferstad):-   \+value(tmnflag,true). %% Ferstads vei
 
 nostation(frøset). 
 
 
 
-nostation(herlofsonsløypa) :- \+main:myflags(tmnflag,true). 
- nostation(heggsnipen). %% fins ikke i rdata(barei hefte). %%fikset 5.307
-nostation(lian):-      \+main:myflags(tmnflag,true).  
-nostation(nordre_hoem) :- \+main:myflags(tmnflag,true). 
-nostation(rognheim) :- \+main:myflags(tmnflag,true). 
-nostation(søndre_hoem):- \+main:myflags(tmnflag,true). 
+nostation(herlofsonsløypa) :- \+value(tmnflag,true). 
+%% nostation(heggsnipen). %% fins ikke i rdata(barei hefte). %%fikset 5.307
+nostation(lian):-      \+value(tmnflag,true).  
+nostation(nordre_hoem) :- \+value(tmnflag,true). 
+nostation(rognheim) :- \+value(tmnflag,true). 
+nostation(søndre_hoem):- \+value(tmnflag,true). 
 
 
-%%%% Nostation  no bus to place ever
+%%%%%% Nostation  no bus to place ever
 
 nostation(lian). 
 
@@ -5087,7 +5081,7 @@ nostation(bybro).
 
 nostation(byneset_kirke).  
 
- nostation(byåsveien).              %%   On Map, not on Route 
+% nostation(byåsveien).              %%   On Map, not on Route 
 nostation(devlebukta). 
 nostation(devlebukten). 
 
@@ -5097,7 +5091,7 @@ nostation(elgsetshytta).
 
 nostation(estenestaddammen). 
 nostation(estenstadhytta). 
-  nostation(fjellseter).  
+%%  nostation(fjellseter).  
 nostation(fjordgata). %% as street, OK , but underspecified
 nostation(flaktveit). %% i Th??? Foreign
 
@@ -5108,22 +5102,22 @@ nostation(gråkallen).
 
 
 
- nostation(kjøpmannsgata).          %%  (m. var.)  STREET  
- nostation(leuthenhaven).           %% NOT as such
+% nostation(kjøpmannsgata).          %%  (m. var.)  STREET  
+% nostation(leuthenhaven).           %% NOT as such
 
 
- % % %
+% % % %
 
- nostation(arbeidsbuss). %% spurious Reg stations %% fikset 5.3.07
+%% nostation(arbeidsbuss). %% spurious Reg stations %% fikset 5.3.07
 nostation(g).  
 
 nostation(grønningen). 
 
- nostation(heggstadmyra).  %% -> heggstadmoen
- nostation(hornebergveien).         %%  OK (ONLY in WINTER)
- nostation(haakon_vii_gate). %% Not in summer 
+% nostation(heggstadmyra).  -> heggstadmoen
+% nostation(hornebergveien).         %%  OK (ONLY in WINTER)
+% nostation(haakon_vii_gate). %% Not in summer 
 
- nostation(hårstad).        %% hpl 503 Non Existent -> Krgeness
+%% nostation(hårstad).        %% hpl 503 Non Existent -> Krgeness
 nostation(hårstadstien). %% 
 
 nostation(lavoll). 
@@ -5134,19 +5128,19 @@ nostation(grønnlia).
 nostation(lillegårdsbakken).    
 nostation(munkholm).  
 nostation(munkholmen).  
-  nostation(møller_bil).        %% not in summer 
+%  nostation(møller_bil).        %% not in summer 
 nostation(nardoskrenten). 
 
-%  nostation(nidelv_bru). %% nedlagt 22. mars %% TA-110822
+%%%  nostation(nidelv_bru). %% nedlagt 22. mars %% TA-110822
 
-% nostation(nidarø).    %% Trondheim spektrum 
- nostation(nordre_ilevollen).  
- nostation(omkjøringsveien_nardo). %% Not in summer 
+%%% nostation(nidarø).    %% Trondheim spektrum 
+% nostation(nordre_ilevollen).  
+% nostation(omkjøringsveien_nardo). %% Not in summer 
 nostation(olsborg).   %%  Trlag ???
- nostation(royal_garden).   
-  nostation(skistua). 
+%% nostation(royal_garden).   
+%%  nostation(skistua). 
 
- nostation(roial_garden). %% only 1 departure with nightbus 
+%% nostation(roial_garden). %% only 1 departure with nightbus 
                             %% However, hotell royal garden neighbourhood                     
 nostation(sommerseter). 
 nostation(sommersæter). 
@@ -5155,24 +5149,24 @@ nostation(sommersetra).
 
 
 nostation(stokkmarka).
- nostation(storgata).    %%  foreign 
+%% nostation(storgata).    %%  foreign 
 
- nostation(steinaunet).
+%% nostation(steinaunet).
 
- nostation(studenterhytta). 
+%% nostation(studenterhytta). 
 nostation(sundalsveien). 
 nostation(sundlandsskrenten). 
 nostation(sunnlandsskrenten).      %%  (no spellc)
 nostation(sundlandsveien). 
     nostation(sundlandsvn). %% NO SPELLCORR to NOSTATION 
  nostation(sundlandsskrenten). 
-  nostation(st_olavs_gate). 
+%  nostation(st_olavs_gate). 
 
 nostation(teisendammen).  
 nostation(theisendammen). 
 
-nostation(teisendamen).   %% X
-nostation(theisendamen).  %% X
+%nostation(teisendamen).   %% X
+%nostation(theisendamen).  %% X
 
 nostation(ullins_vei). %% abandoned 2006 
                        %% street remains
@@ -7642,6 +7636,14 @@ cmpl(saøndregt,[],søndregate).  %% nec?? sÃ¸ndregt %% TA-110419
 cmpl(sør,trøndelag,sørtrøndelag). 
 cmpl(t,bane,tbanen). 
 cmpl(t,banen,tbanen).  %%tbanenname,tbanenoun
+
+
+%%% synplace(atb,kongens_street-34). %%  %% <----- AtB Funk // hva er atb
+
+synplace(ts,ts).   %% <----- AtB
+synplace(ts10,ts). %% 
+synplace(ts11,ts). %%
+
 
 cmpl(ts,10,trondheim_s_10). %% AtB
 cmpl(ts,11,trondheim_s_11). %% TA-110627

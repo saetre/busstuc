@@ -3,51 +3,14 @@
 %% CREATED TO-970319
 %% REVISED TO-970421 TA-041217
 
+:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
+:- ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators
 
-%:- module(relax,[]).
 
 
-% pragma(RuleModule,Source,Dest) bygger Dest fra Source vha reglene i RuleModule
+:- module(relax,[]).
 
-% Operatorer for Pragma-regler
-
-% is operator prefixed with rule RuleID
-
-:- op(1150,xfy,rule).  
-
-:- op(1120, fy,is).
-:- op(1110,xfy,id).
-:- op(1110,xfy,ip).
-
-:- op( 715, fy,context).    %% similar to ispresent, but doesnt mark as saw
-:- op( 715, fy,addfront).   %% (for messages etc) 
-:- op( 725, fy,addcon).     %% add if not already ispresent 
-:- op( 715, fy,removeall).  %% remove all of a list
-:- op( 715, fy,removeif).   %% remove all if any , always succeed 
-:- op( 715, fy,replaceall). %% replace iteratively all elements 
-:- op( 715, fy,replaceif).  %% replace if occuring. 
-:- op( 715, fy,replace).
-:- op( 715, fy,replacelast).
-:- op( 715,xfy,with).
-%%  :- op( 715, fy,to). %% not used, interferes with SWI-Prolog /srel/to/--
-%%  :- op( 715,xfy,append).
-:- op( 715, fy,no).
-:- op( 715, fy,exactly). 
-:- op( 715, fy,add).
-:- op( 715, fy,remove).
-:- op( 715, fy,ispresent).
-:- op( 715, fy,assume). 
-
-%% :- op( 715, fy,not).  % Already defined in TUC
-:- op( 714,xfy,seq).     %% directly sequence 
-:- op( 714,xfy,cond).    %% new   not X isa place cond bound(X)
-:- op( 714,xfy,when).    %% same as cond %% TA-081106
-:- op( 712, fy,seen). % Lower than "not", higher than "isa"
-
-%%% %%%%%%%% RS-111118
-:- ensure_loaded( '../declare' ).  % :- use_module( '../declare.pl').
-
-tracevalue(L) :- main:myflags(traceprog,L).  % Trace level 1-4
+tracevalue(L) :- user:value(traceprog,L).  % Trace level 1-4
 
 selectroute rule
 is	replace selectroute(_, A, B)
@@ -70,7 +33,7 @@ id	exactly [],
 
 ip    deleteall(last(_),Opts1,Opts2),
       deleteall(lastcorr,Opts2,Opts3),      
-      varmember(A, List), frame_getcount(whenis::departure::before, X), linecounter(Y), \+ X = Y.
+      varmember(A, List), frame_getcount((when)::departure::before, X), linecounter(Y), \+ X = Y.
 
 
 depbefore1 rule
@@ -87,7 +50,7 @@ id	exactly [],
 
 ip    deleteall(last(_),Opts1,Opts2),
       deleteall(lastcorr,Opts2,Opts3),      
-      varmember(A, List), frame_getcount(whenis::departure::before, X), linecounter(Y), \+ X = Y.
+      varmember(A, List), frame_getcount((when)::departure::before, X), linecounter(Y), \+ X = Y.
 
 
 arrafter rule
@@ -96,7 +59,7 @@ is	context depset(to, List),
         with    A = B
 id	exactly [],
 	add relax(time(arrival, after, Time))
-ip      varmember(A, List), frame_getcount(whenis::arrival::after, X), linecounter(Y), \+ X = Y.
+ip      varmember(A, List), frame_getcount((when)::arrival::after, X), linecounter(Y), \+ X = Y.
 
 
 depafter rule
@@ -116,7 +79,7 @@ ip  deleteall(nextaftertime(_U_),Opts1,Opts2)  , %% utility
     setopt(lastcorr,Opts2,Opts3),   
     varmember(A, List).
 
-%% ,frame_getcount(whenis::departure::after, X), linecounter(Y), \+ X = Y.
+%% ,frame_getcount((when)::departure::after, X), linecounter(Y), \+ X = Y.
 
 %% this constraint invalidates:  fra nth til nardo.  etter kl 24.
 
@@ -128,7 +91,7 @@ is	context depset(to, List),
         with    A = B
 id	exactly [],
 	add relax(time(arrival, before, Time))
-ip      varmember(A, List), frame_getcount(whenis::arrival::before, X), linecounter(Y), \+ X = Y.
+ip      varmember(A, List), frame_getcount((when)::arrival::before, X), linecounter(Y), \+ X = Y.
 
 arrbefore1 rule
 is	 context depset(to, List),
@@ -141,9 +104,9 @@ is	 context depset(to, List),
 id	 exactly [],
 	 add relax(time(arrival, before, Time))
 ip  varmember(A, List), 
-    frame_getcount(whenis::arrival::before, X), 
+    frame_getcount((when)::arrival::before, X), 
     linecounter(Y), 
     \+ X = Y,
-    userNOTME: deleteall(lastcorr,Options,NoLastOptions).
+    user: deleteall(lastcorr,Options,NoLastOptions).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

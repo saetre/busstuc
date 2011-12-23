@@ -89,7 +89,7 @@ layouts( [], Context, _Plus, _Minus, Terms, [], WF ) :-
 	close_context( Context, Terms, WF ).
 layouts( [Char|Chars], Context, Plus, Minus, Terms, Residue, WF ) :-
 	( Char =:= "<" ->
-		_Chars1 = [],         %RS-111121 Why Singleton?
+		Chars1 = [],
 		xml_markup_structure( Chars, Context, Terms, Residue, WF )
 	; Char =:= "&" ->
 		entity_reference( Chars, Context, Terms, Residue, WF )
@@ -303,7 +303,7 @@ attributes( [Name=Value|Attributes], Seen, Namespaces ) -->
 	spaces,
 	"=",
 	spaces,
-	attribute_main:myflags( Value, Namespaces ),
+	attribute_value( Value, Namespaces ),
 	attributes( Attributes, [Name|Seen], Namespaces ).
 attributes( [], _Seen, _Namespaces ) --> "".
 
@@ -353,7 +353,7 @@ dtd( Namespaces0, Namespaces1 ) -->
 	nmtoken_chars( Name ),
 	spaces,
 	quote( Quote ),
-	entity_main:myflags( Quote, Namespaces0, String ),
+	entity_value( Quote, Namespaces0, String ),
 	spaces,
 	">",
 	{\+ character_entity( Name, _StandardChar ), 
@@ -366,13 +366,13 @@ dtd( Namespaces0, Namespaces1 ) -->
 	dtd( Namespaces0, Namespaces1 ).
 dtd( Namespaces, Namespaces ) --> spaces.
 
-%nmtokens( [Name|Names] ) -->
-%	spaces,
-%	nmtoken( Name ),
-%	nmtokens( Names ).
-%nmtokens( [] ) --> [].
-%
-entity_main:myflags( Quote, Namespaces, String, [Char|Plus], Minus ) :-
+nmtokens( [Name|Names] ) -->
+	spaces,
+	nmtoken( Name ),
+	nmtokens( Names ).
+nmtokens( [] ) --> [].
+
+entity_value( Quote, Namespaces, String, [Char|Plus], Minus ) :-
 	( Char == Quote ->
 		String = [],
 		Minus = Plus
@@ -380,10 +380,10 @@ entity_main:myflags( Quote, Namespaces, String, [Char|Plus], Minus ) :-
 		reference_in_entity( Namespaces, Quote, String, Plus, Minus )
 	; otherwise ->
 		String = [Char|String1],
-		entity_main:myflags( Quote, Namespaces, String1, Plus, Minus )
+		entity_value( Quote, Namespaces, String1, Plus, Minus )
 	).
 
-attribute_main:myflags( String, Namespaces ) -->
+attribute_value( String, Namespaces ) -->
 	quote( Quote ),
 	attribute_leading_layouts( Quote, Namespaces, String ).
 
@@ -407,7 +407,7 @@ attribute_layouts( Quote, Namespaces, Layout, String, [Char|Plus], Minus ) :-
 		String = [],
 		Minus = Plus
 	; Char =:= "&" ->
-		reference_in_main:myflags( Namespaces, Quote, Layout, String, Plus, Minus )
+		reference_in_value( Namespaces, Quote, Layout, String, Plus, Minus )
 	; Char > 32, Char \== 160 ->
 		( Layout == true ->
 			String = [0' ,Char|String1]
@@ -432,7 +432,7 @@ reference_in_layout( NS, Quote, String, Plus, Minus ) :-
 		attribute_layouts( Quote, NS, false, String1, Plus, Minus )
 	).
 
-reference_in_main:myflags( Namespaces, Quote, Layout, String, Plus, Minus ) :-
+reference_in_value( Namespaces, Quote, Layout, String, Plus, Minus ) :-
 	( standard_character_entity( Char, Plus, Mid ) ->
 		( Layout == true ->
 			String = [0' ,Char|String1]
@@ -464,7 +464,7 @@ reference_in_entity( Namespaces, Quote, String, Plus, Minus ) :-
 		String = String1,
 		append( Text, Suffix, Mid )
 	),
-	entity_main:myflags( Quote, Namespaces, String1, Mid, Minus ).
+	entity_value( Quote, Namespaces, String1, Mid, Minus ).
 
 standard_character_entity( Char ) -->
 	"#x", hex_character_reference( Char ), ";".

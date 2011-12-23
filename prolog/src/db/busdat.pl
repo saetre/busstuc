@@ -2,16 +2,19 @@
 %% SYSTEM BUSSTUC
 %% AUTHOR J.Bratseth
 %% CREATED JB-970312
-%% REVISED EH-031121 TA-110824 RS-111121
+%% REVISED EH-031121 TA-110824
 
 %% Bussrute database tilpasning PLACES in TRONDHEIM
+
 %     This is adapted to reghpl.pl created from REGTOP format by
 %     the program extractreg.pl.
+
 % Domains:   BOOLEAN ROUTETYPE STATION PLACE MINUTES
 %            DATE DAY DOMAIN CLOCK
+
 %* List of predicates
 
-:- module( busdat, [
+:-module(busdat,[
         airbus/1,                  % (BUS?)
         airbusstation/1,           % (STATION)
         bus_depend_station/3,      % (ROUTE,PLACE,STATION)
@@ -21,6 +24,7 @@
         central_airbus_station/1,  % (STATION) 
         central_fromstation/1,     % (STATION) avoid default to ST
         cmbus/3,
+        clock_delay/3,
         corr0/2,
         corresp/2,                 % (PLACE,PLACE)
         corresp0/2,                % (PLACE,PLACE)
@@ -31,6 +35,7 @@
         default_destination/2,     % (ROUTE,STATION)
 
         endneighbourhood/2,        % (ROUTE,PLACE)
+        exbus/1,                   % (ROUTE)
         exbusname/2,               % (ROUTE,ROUTE)
         explicit_part_name/1,      % (NAME)
 
@@ -44,7 +49,6 @@
         moneyunit/1,               % (NAME)
         nightbusstation/1,         % (STATION) 
         nightbusdestination/1,     % (STATION)
-        
         nostation/1,              % (PLACE) -> places.pl
         nostationfor/1,            % (PLACE)
         nostationfor1/1,           % (PLACE)
@@ -65,28 +69,39 @@
         xforeign/1,                % (PLACE)
         xplacestat/2,
         xsynplace/2
-    ]).
+]). 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- ensure_loaded( '../declare' ).
-:- use_module( '../interfaceroute', [ domain_module/2 ] ). %% HEAVY DB!
+%:- ensure_loaded( '../declare' ).
+%:- use_module( '../interfaceroute', [ domain_module/2 ] ). %% HEAVY DB!
+%
+%:- use_module( 'places', [ corr/2, foreign/1, isat/2, placestat/2 ] ).
 
-:- use_module( 'places', [ corr/2, foreign/1, isat/2, placestat/2 ] ).
 %:- ensure_loaded( [ regbusall, regcompstr, regstr, teledat2 ] ). %% HEAVY DB!
-:- use_module( regbusall, [ nightbus/1 ] ). %% HEAVY DB!
-:- use_module( regcompstr, [] ). %% HEAVY DB!
-:- use_module( regstr, [] ). %% HEAVY DB!
-:- use_module( teledat2, [] ). %% HEAVY DB!
-
-:- use_module( '../app/buslog', [ bound/1, bus/1, station/1 ] ).
-
-:- use_module( '../tuc/names', [ abroad/1, community/2, country/1 ] ).
-
-:- use_module( '../utility/utility', [ testmember/2 ] ).
-
+%%%%%%
+ :- ensure_loaded( regbusall ). %, [ nightbus/1 ] ). %% HEAVY DB!
+%:- ensure_loaded( regbusall ). %% HEAVY DB!
+%:- use_module( regcompstr, [] ). %% HEAVY DB!
+%:- use_module( regstr, [] ). %% HEAVY DB!
+%:- use_module( teledat2, [] ). %% HEAVY DB!
+%%%%
+%:- use_module( '../app/buslog', [ bound/1, bus/1, station/1 ] ).
+%
+%:- use_module( '../tuc/names', [ abroad/1, community/2, country/1 ] ).
+%
+%:- use_module( '../utility/utility', [ testmember/2 ] ).
+%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:-dynamic named_date/2. %% Created Initially 
+
+create_named_dates :-
+    list_of_named_dates(L), 
+    for((member(A,L),orig_named_date(A,B)),
+         remember(named_date(A,B))). %% To be     refined
+
 
 railway_station(ts). %% NB not STATION ! %% TA-110724
 
@@ -105,8 +120,8 @@ cutloop_station(pling,plong). %%
 
 %%%  cutloop_station(3,carl_schjetnans_vei). %% TA-110331 NB creates double loop
 
-%%% fra lade gård  anders buens gt carl_schjetnans_vei -> hagen anders_buens_gate
-
+%%% fra lade gÃ¥rd  anders buens gt carl_schjetnans_vei -> hagen anders_buens_gate
+                                       
 
 %% cutloop_station(3,munkegata_m2). %% Lade - M2 - (Sjetnmarka)
 %% cutloop_station(3,munkegata_m5). %% Sjetnmarka - M5 - (Lade) 
@@ -162,30 +177,312 @@ cutloop_station(66,stokkhaugen). %% TA-110824 charlottenlund_krk).
 % DATES THAT MUST BE CHECKED ON EACH NEW ROUTE PLAN
 
 
+% orig_named_date is defined here, and later recreated as named_date
+
+list_of_named_dates([
+    new_years_eve,
+    new_years_day,
+    palm_sunday,
+    palm_monday,
+    palm_tuesday,
+    palm_wednesday,
+    maundy_thursday,
+    good_friday,
+    eastereve,
+    easterday,
+    easterday2,
+    ascension_day,
+    whitsun_eve,
+    whitsun_day, 
+    whitsun_day2, 
+
+    may1,    
+    may17,      
+
+%   vernal_equinox, 
+%   autumnal_equinox, 
+%   summer_solstice,
+%   winter_solstice,
+
+    midsummer_eve, 
+    midsummer_day, 
+
+    little_christmas_eve,
+    christmas_eve,           
+
+    christmas_day, 
+
+    john_f_kennedy_day, 
+    oddvar_brå_day, 
+    arvid_holme_day, 
+    dooms_day]).
+
+
+
+%%% DATES NAMED BY EVENTS  :-)
+
+
+orig_named_date(john_f_kennedy_day,   date(1963,11,22)).  
+orig_named_date(oddvar_brå_day,       date(1982,02,25)).  
+orig_named_date(arvid_holme_day,      date(2011,01,17)).  
+orig_named_date(dooms_day,            date(2012,12,21)). %% :-) %% TA-100323|      date(10000,01,01)). 
+
+%% Named dates
+
+orig_named_date(new_years_eve,date(YYYY,12,31)) :- %% Nyttårsaften& januar  -> i fjor
+     todaysdate(date(YYY1,01,_)),
+     YYYY is YYY1 -1,
+     !.
+orig_named_date(new_years_eve,date(YYYY,12,31)) :- %% Nyttårsaften i år
+     this_year(YYYY),
+     !.
+
+orig_named_date(new_years_day,date(YYYY,01,01)):- %% january -> this year
+    todaysdate(date(YYYY,01,_)),
+    !.
+orig_named_date(new_years_day,date(YYY1,01,01)):- %% all other todays date 
+     this_year(YYYY),
+     YYY1 is YYYY+1,
+     !.
+
+orig_named_date(easterday,         ED):- %% datecalc
+    this_year(YYYY),
+    easterdate(YYYY,ED).
+
+orig_named_date(palm_sunday, ND ) :- 
+    this_year(YYYY),
+    easterdate(YYYY,ED),
+    sub_days(ED,7, ND).
+
+orig_named_date(palm_monday,   ND) :- %% Pro forma
+    this_year(YYYY),
+    easterdate(YYYY,ED),
+    sub_days(ED,6, ND).
+
+orig_named_date(palm_tuesday,  ND) :- %% Pro forma
+    this_year(YYYY),
+    easterdate(YYYY,ED),
+    sub_days(ED,5, ND).
+
+orig_named_date(palm_wednesday,   ND) :- 
+    this_year(YYYY),
+    easterdate(YYYY,ED),
+    sub_days(ED,4, ND).
+
+orig_named_date(maundy_thursday,   ND) :- %% skjærT NOT monday  
+    this_year(YYYY),
+    easterdate(YYYY,ED),
+    sub_days(ED,3, ND).
+
+orig_named_date(good_friday,    ND) :-
+    this_year(YYYY),
+    easterdate(YYYY,ED),
+    sub_days(ED,2, ND).
+
+orig_named_date(eastereve,    ND) :-    
+    this_year(YYYY),
+    easterdate(YYYY,ED),
+    sub_days(ED,1, ND).
+
+orig_named_date(easterday2,     ND) :- %% 2. påskedag 
+    this_year(YYYY),
+    easterdate(YYYY,ED),
+    add_days(ED,1, ND).
+
+orig_named_date(ascension_day,   ND) :- %% Krhf 
+    this_year(YYYY),
+    easterdate(YYYY,ED),
+    add_days(ED,39,ND).
+
+
+orig_named_date(whitsun_eve, ND):-    %% pinseaften
+    this_year(YYYY),
+    easterdate(YYYY,ED),
+    add_days(ED,48,ND).
+
+orig_named_date(whitsun_day,   ND):-   %% pinsedag
+    this_year(YYYY),
+    easterdate(YYYY,ED),
+    add_days(ED,49,ND).
+
+
+orig_named_date(whitsun_day2,  ND):-       %% 2. pinsedag
+    this_year(YYYY),
+    easterdate(YYYY,ED),
+    add_days(ED,50,ND).
+
+
+orig_named_date(little_christmas_eve,date(YYYY,12,23)):- 
+      this_year(YYYY).
+
+orig_named_date(christmas_eve,     date(YYYY,12,24)):- this_year(YYYY).
+orig_named_date(christmas_day,     date(YYYY,12,25)):- this_year(YYYY).
+
+%% orig_named_date(vernal_equinox,    date(YYYY,03,21)):- this_year(YYYY). 
+%% orig_named_date(autumnal_equinox,  date(YYYY,09,21)):- this_year(YYYY).
+
+orig_named_date(midsummer_eve,     date(YYYY,06,23)):- this_year(YYYY). 
+orig_named_date(midsummer_day,     date(YYYY,06,24)):- this_year(YYYY). 
+
+orig_named_date(may1,              date(YYYY,05,01)):- this_year(YYYY). 
+
+orig_named_date(may17,             date(YYYY,05,17)):- this_year(YYYY). 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% END OF CRITICAL SECTION 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%% SPECIAL DATES FOR NIGHTBUS
+
+%% SEE busanshp.pl for correct default messages !!!
+
+
+
+%% extraallowed_night(DATE,DAY). 
+%% NIGHTBUS GOES extra, even if not sat-sun, following routes of DAY (pro forma)
+extraallowed_night(date(9999,12,31),saturday). %% Just at least1
+extraallowed_night(date(2009,04,12),saturday).  %%  Påskedag om morgenen 
+
+
+%% if DAY=nil, it means NO nightbus routes at all in module,
+
+%% disallowed_night(DATE)  
+%% NIGHTBUS does not go even if sat-sun
+
+%  JUST standard answer (misfjord rule: NB May vary)
+
+%% ADJUSTMENT NIGHTBUS Holidays
+
+%% disallowed_night(date(9999,12,31)).    %% Just at least 1
+
+disallowed_night(date(2011,04,23)).  %% natt til påskeaften %% TA-110426
+
+%% CHRISTMAS
+
+%% Extrallowed
+
+%% none in 2008 ( "extra night to 3. X day is actually Saturday)
+
+
+%% Disallowed    Days  sat-sun  without nightbus
+
+%% none 
+
+
 %% EASTER 
+
 disallowed_night(date(2009,04,13)).  %%  Påskeaften om morgenen 
 
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%% Dedicated Date
+%% Example   22.10 not clock if 22.10 is date of new route tables
+
+
+%% dedicated_date(date(YYYY,05,17)):- this_year(YYYY). %% Suspended ved gløshaugen før 17.05 
+dedicated_date(date(YYYY,12,24)):- this_year(YYYY).
+
+%% dedicated_date(date(2006,06,19)). %% Check %% summer route
+
+
+
+%% Special dates that run a specific day route
+%% holiday means special route
+
+
+%% VARIABLE DATES
+
+
+%% DATE_DAY_MAP    
+
+%% Maps dates to day, when this is different from the actual day
+%% and not covered by route module (as. f.ex.  christmas  2010)
+%% 
+%% e.g sunday route, BUT only sunday route OF the same route module
+%% e.g. 2. juledag 2010 was coverd by a separate datamodule but also declared sunday route,
+%% However, there was no sunday day code in THAT module.
+
+
+%% Easter week may have a separate module, NOT 2011!
+%% Mon-Wed in easter are saturday routes (+ extra departures?)
+%% These are ad hoc definitions 
+
+
+%%%  Easter (2011), no own schedule
+
+date_day_map(Date,   saturday):-       %% stille uke
+     named_date(palm_monday,Date).     %% palmemandag
+
+date_day_map(Date,   saturday):-       %% stille uke
+     named_date(palm_tuesday,Date).    %% palmetirsdag
+
+date_day_map(Date,   saturday):-       %% stille uke
+     named_date(palm_wednesday,Date).  %% palmeonsdag
+
+date_day_map(Date,   sunday):-        
+     named_date(maundy_thursday,Date). %% skjærtorsdag
+
+date_day_map(Date,   sunday):-  
+     named_date(good_friday,Date).     %% langfredag
+
+date_day_map(Date,  sunday):-         
+     named_date(eastereve,Date).       %% påskeaften
+
+date_day_map(Date,  sunday):-          
+     named_date(easterday,Date).       %% 1. påskedag
+
+date_day_map(Date,  sunday):-  
+     named_date(easterday2,Date).      %% 2 Påskedag 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+date_day_map(date(_20XX,05,01), sunday).   % 1.mai Fix, NOT separate route module
+
+date_day_map(date(_20XX,05,17),   may17).  %% OWN route module %% TA-110518
+
+date_day_map(Date,  sunday):-     %  KrHf- %% NOT OWN route module
+     named_date(ascension_day,Date),
+     \+ named_date(may17,Date).   
+
+date_day_map(Date,  sunday):-  named_date(whitsun_day,Date).    %  1. pinsedag 
+  
+date_day_map(Date,  sunday):-  named_date(whitsun_day2,Date).   %  2. pinsedag
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 
 %% RESPONSE PARAMETERS
 
 
-%maxnumberofindividualdepartures(2):-
-%    main:myflags(smsflag,true),
-%    \+ main:myflags(nightbusflag,true),
-%    !. 
-%
-%maxnumberofindividualdepartures(3):- %% not ridiculously many sequence
-%    main:myflags(smsflag,true),
-%    main:myflags(nightbusflag,true),
-%    !. 
-%
-%maxnumberofindividualdepartures(3). 
-%
-%
+maxnumberofindividualdepartures(2):-
+    user:value(smsflag,true),
+    \+ user:value(nightbusflag,true),
+    !. 
+
+maxnumberofindividualdepartures(3):- %% not ridiculously many sequence
+    user:value(smsflag,true),
+    user:value(nightbusflag,true),
+    !. 
+
+maxnumberofindividualdepartures(3). 
+
+
 
 intbusname(X,X). 
 intbusnr(X,X). 
@@ -234,16 +531,16 @@ exbusname(9924,skolebuss).
 
 
 xplacestat(trondheim,tmn_trondheim):- 
-    main:myflags(tmnflag,true).  
+    user:value(tmnflag,true).  
 
 
 xplacestat(town,hovedterminalen). 
 xplacestat(trondheim,hovedterminalen) :- 
-    \+main:myflags(dialog,1).
+    \+user:value(dialog,1).
 
 
 xplacestat(klæbu,klæbu_sentrum):- %% Not possible mess in daytime
-    main:myflags(nightbusflag,true). %%   NATTBUSSEN
+    user:value(nightbusflag,true). %%   NATTBUSSEN
 
 
 
@@ -253,17 +550,17 @@ xplacestat(klæbu,klæbu_sentrum):- %% Not possible mess in daytime
 
 
 xsynplace(X,Y):-
-    main:myflags(tmnflag,true),
+    user:value(tmnflag,true),
     !,
-    domain_module(_,TMN),
+    user:domain_module(_,TMN),
     TMN \== nil, 
     TMN:hpl(_,X,Y,_).
 
 
 xsynplace(X,Y):-
-    \+ main:myflags(tmnflag,true),
+    \+ user:value(tmnflag,true),
     !,
-    domain_module(tt,TMN),
+    user:domain_module(tt,TMN),
     TMN \== nil, 
     TMN:hpl(_,X,Y,_).
 
@@ -272,11 +569,11 @@ xsynplace(X,Y):-
 %% PLACE INTERFACE SECTION
 
 xsynplace(sentrum,gb_st_olavs_gt):- %% Generalize
-    main:myflags(tmnflag,true). 
+    user:value(tmnflag,true). 
 
                        
 xsynplace(toget,ts) :-  %% presumes stasjonen is not noun def
-   \+ main:myflags(tmnflag,true).
+   \+ user:value(tmnflag,true).
 
                         %%  jeg når toget til oslo
                         %%  jeg bor på (lade og toget) går
@@ -324,24 +621,12 @@ streetstat(A,B,C,D,E):-
 
 
 thetramno(One):-
-    main:myflags(tmnflag,true),  
+    user:value(tmnflag,true),  
     unique_vehicle(tram,true),
     thetram(One).
 
-tramstation(st_olavs_gt). 
-tramstation(st_olavs_street). %% for street reference 
-%% tram_station(st_olavs_gt). %% Wrong, kep for security %% TA-100317
-tramstation(X):-
-    main:myflags(tramflag,true),  
-    %tram_module(Tram),   %%  tram_mod(Tram), %% succeeds also if tramflag=false
-    Tram \== nil, %% precaution 
-    Tram:hpl(_,_,X,_).   %%
-
-
-
-
 thetramstation(STOGT):-
-    main:myflags(tmnflag,true), 
+    user:value(tmnflag,true), 
     tramstation(STOGT).
  
 
@@ -359,7 +644,7 @@ nostationfor1(X):-nostation(X).     %%  Places with no close bus station
 
 
 nostationfor1(X):-
-    \+ main:myflags(tmnflag,true), 
+    \+ user:value(tmnflag,true), 
     tramstation(X),
     \+ station(X).
 
@@ -369,35 +654,47 @@ nostationfor1(X):-
 
 
 
+tramstation(st_olavs_gt). 
+tramstation(st_olavs_street). %% for street reference 
+%% tram_station(st_olavs_gt). %% Wrong, kep for security %% TA-100317
+
+tramstation(X):-
+    user:value(tramflag,true),  
+    tram_module(Tram),   %%  tram_mod(Tram), %% succeeds also if tramflag=false
+    Tram \== nil, %% precaution 
+    Tram:hpl(_,_,X,_).   %%
+
+
+
 %% Nightbus extend to some foreign stations
 
 
 xforeign(X):-
-    main:myflags(actual_domain,TT),
+    user:value(actual_domain,TT),
     xforeign(TT,X), %% NB relative to Team !
     \+ nightbusdestination(X).
 
-xforeign(tt,X):-foreign(X). 
+xforeign(tt,X) :- user:foreign(X). 
 
-xforeign(_,C):- abroad(C). 
+xforeign(_,C) :- user:abroad(C). 
 
-xforeign(_,C):- country(C). 
+xforeign(_,C) :- user:country(C). 
 
-xforeign(fb,C):- foreign(C), %% værnes malvik %%
+xforeign(fb,C):- user:foreign(C), %% værnes malvik %%
                  \+ airbusstation(C).         %% TA-100322
 
 
-xforeign(tt,C):- community(C,County), %% tt malvik foreign to fb
+xforeign(tt,C):- user:community(C,County), %% tt malvik foreign to fb
                 County \== sør_trøndelag,
          %% e.g. Klæbu //=> \+ trondheim   isa neighbourhood
                 \+ station(C). %% e.g. berg
 
 nightbusdestination(X):-
-    main:myflags(nightbusflag,true), 
+    user:value(nightbusflag,true), 
     member(X,[klæbu]). %% Ad Hoc
 
 
-nostation(st_olavs_gt):- \+ main:myflags(tmnflag,true). 
+nostation(st_olavs_gt):- \+ user:value(tmnflag,true). 
 
 
 
@@ -409,15 +706,15 @@ nostation(st_olavs_gt):- \+ main:myflags(tmnflag,true).
 
 
 bus_dependent_station(Bus,Said,Meant):-
-    bound(Bus),
+    user:bound(Bus),
     bus_depend_station(Bus,Said,Meant),
     !.
 bus_dependent_station(_Bus,Said,Meant):- 
-    \+ main:myflags(airbusflag,true),  
+    \+ user:value(airbusflag,true),  
     Meant=Said.
 
 bus_dependent_station(_Bus,_Said,Meant):- 
-    main:myflags(airbusflag,true),       
+    user:value(airbusflag,true),       
     default_origin(_,Lerkendal),
     !,
     Meant=Lerkendal. %% Default (but not central!) 
@@ -431,7 +728,7 @@ bus_dependent_station(_Bus,_Said,Meant):-
 % bus_depend_station(<bus no>,<place said>,<station "meant">).
 
 bus_depend_station(_Bus,RGH,RGH) :- %% // busdependent ??????
-    main:myflags(airbusflag,true),  
+    user:value(airbusflag,true),  
     testmember(RGH,[royal_garden_hotell,britannia_hotell]),
     !. %%% AD HOC 
 
@@ -576,13 +873,13 @@ corresp0(X,Y):-
 
 corresp(X,Y):-
 
-   main:myflags(actual_domain,T),
+   user:value(actual_domain,T),
   (corrx(T,X,Y)
    ;
    corrx(T,Y,X)).
 
 corresp(X,Y):-                    %% 
-   main:myflags(actual_domain,T),
+   user:value(actual_domain,T),
    (corrx(T,X,hovedterminalen)
    , %%%%%%% <----------- ; sic
    corrx(T,Y,hovedterminalen)).
@@ -590,7 +887,7 @@ corresp(X,Y):-                    %%
 
 %% corrx(Domain,Place1,Place2).
 
-corrx(tt,X,Y):-corr(X,Y).    %% Default Ad Hoc
+corrx(tt,X,Y) :- user:corr(X,Y).    %% Default Ad Hoc
 
 corrx(gb,gb_st_olavs_gt,hovedterminalen). 
 
@@ -607,21 +904,21 @@ corrx(tmn,tmn_trondheim,hovedterminalen).
 
 corresponds(X,X).                     % Refleksiv
 corresponds(X,Y) :-                   % Transitiv i sentrum
-   corr(X,hovedterminalen),
-   corr(Y,hovedterminalen).
-corresponds(X,Y) :- corr(X,Y).        % 
-corresponds(X,Y) :- corr(Y,X).        % symmetrisk
+   user:corr(X,hovedterminalen),
+   user:corr(Y,hovedterminalen).
+corresponds(X,Y) :- user:corr(X,Y).        % 
+corresponds(X,Y) :- user:corr(Y,X).        % symmetrisk
 
 
 corr0(X,Y):- X=Y   % Utility: fast check
-           ; corr(X,Y).         
+           ; user:corr(X,Y).         
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-exbus(G) :- bus(G), \+ vehicletype(G,tram).  
+exbus(G) :- user:bus(G), \+ vehicletype(G,tram).  
 
 
 
@@ -658,14 +955,27 @@ airbusstation(royal_garden).
                                  
 
 internal_airbus(IAB):-  
-    main:myflags(internal_airbusflag,true) -> 
+    user:value(internal_airbusflag,true) -> 
         IAB=true
       ; 
         IAB=false.
-
-
+     
+                            
+                      
 % Santa Barbara
 % internal_airbus(true). %% The airport is covered
+
+
+
+clock_delay(00,00,00). %%  FOR CLOCK ADJUSTMENT
+
+
+hours_delay(0).    %% Time in Trondheim is 0 hours more than server clock
+
+% hours_delay(-9). %% Time in Santa Barbara  is 9 hours EARLIER than server clock
+% hours_delay(10). %% Time in  Tokyo (?)
+
+
 
 
 home_town(trondheim).
@@ -737,12 +1047,12 @@ preferred_transfer(46,47,pirbadet,munkegate_m4,city_syd).
 %% Airbus Section
 
 default_origin(_,sorgenfriveien) :- %% AD HOC 
-    main:myflags(airbusflag,true),
+    user:value(airbusflag,true),
     !.
 
 
 default_destination(_,værnes) :- %% AD HOC 
-    main:myflags(airbusflag,true),
+    user:value(airbusflag,true),
     !.
 
 
@@ -1127,9 +1437,10 @@ synbus('9e', 9).
 
 %¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
 
+
 xisat(X,Y) :-  %% Last isat Predicate
-    corr(X,hovedterminalen),
-    places:isat(hovedterminalen,Y).
+    user:corr(X,hovedterminalen),
+    isat(hovedterminalen,Y).
 
 
 %% Special predicates for nightbuses 
