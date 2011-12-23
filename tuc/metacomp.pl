@@ -54,8 +54,9 @@ makegram(Lang):-
     tell('dcg.pl'),
         %% write('%% '),write(dadatetimenl,
         writeheading,
-        write('%% Automatically created by metacomp.pl, based on dict and tuc/gram_...'),nl,nl,
+        write('%% Automatically created by tuc/metacomp.pl, based on dict and tuc/gram_...'),nl,nl,
         write(':- ensure_loaded(declare). %% RS-111213 General (semantic) Operators'),nl,nl,
+        write(':- :-prolog_flag(discontiguous_warnings,_,off).'),nl,nl,
  
         gram_module(Lang,G),   
         for((G: (X ---> Y)), genprod(X,Y)),

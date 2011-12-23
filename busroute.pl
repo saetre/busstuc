@@ -8,6 +8,15 @@
 
 :-prolog_flag(discontiguous_warnings,_,off). 
 
+:- ensure_loaded( compileroute ).
+%From Compileroute %% RS-111224
+%consultbase(TT):- %% TA-110301
+%   ta_for(compilerouteaux(TT,Z), 
+%          compile(Z)), %% TA-110302
+%   ta_for(routedomain(X), 
+%          consult_periodset(X)).
+
+
 
 ?-compile('interfaceroute.pl'). %% Interface modules
 
@@ -17,5 +26,5 @@
 
 ?-compile('db/topreg.pl').      %% Main Table for Route Modules
     
-  :- consultbase(tt). %% <-------------- %% TA-110302
+:- consultbase(tt). %% <-------------- %% TA-110302
 
