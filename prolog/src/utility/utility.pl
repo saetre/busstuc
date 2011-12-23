@@ -62,7 +62,7 @@
 :- use_module(    '../main', [ (:=)/2,  (=:)/2,  myflags/2 ] ). %% set/2, 
 
 :- use_module( library(process), [] ).
-:- use_module( 'library', [ nth/3, reverse/2 ] ).
+:- use_module( 'library', [ reverse/2 ] ). %% RS-111212 Moving around: nth/3, 
 :- use_module( library(system3), [ shell/1 ] ).
 
 :- ensure_loaded( '../declare' ).   %% Already called from main?!

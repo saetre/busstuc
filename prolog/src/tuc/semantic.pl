@@ -48,6 +48,7 @@
 :- discontiguous a_compl/4, abnormalverb/2, adj_templ/2, ako/2, has_a/2, iv_templ/2, iv_templ/3, rv_templ/2, tv_templ/3, tv_templ/4, v_compl/4.
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :- ensure_loaded( '../declare' ).
 

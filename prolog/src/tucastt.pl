@@ -9,7 +9,7 @@
 %% RS-111205, UNIT: /
 :- ensure_loaded( declare ).
 :- use_module( interfaceroute, [  current_period/4,  decide_period/2,  default_period/3  ] ).
-:- use_module( main, [   (:=)/2, dmeq/2,  myflags/2,  progtrace/2,  set/2  ] ).
+:- use_module( main, [   (:=)/2, myflags/2,  progtrace/2,  set/2  ] ).
 :- use_module( tucbuses, [  dict_module/1  ] ).
 
 %?-compile(tucbuses).

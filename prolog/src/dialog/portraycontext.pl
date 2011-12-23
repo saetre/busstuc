@@ -18,7 +18,7 @@
 
 %% RS-111206, UNIT: utility/
 :- use_module( '../utility/datecalc', [  add_days/3, before_date1/2, sub_days/3 ] ).
-:- use_module( '../utility/library', [  nth/3, reverse/2 ] ).
+:- use_module( '../utility/library', [  reverse/2 ] ).
 :- use_module( '../utility/utility', [ for/2, out/1, output/1, roundmember/2, set_of/3, tab/1 ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

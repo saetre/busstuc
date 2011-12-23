@@ -85,7 +85,7 @@
 
 %% RS-111205, UNIT: utility/
 :- use_module( '../utility/datecalc', [  add_days/3, before_date1/2, sub_days/3 ] ).
-:- use_module( '../utility/library', [  nth/3, reverse/2 ] ).
+:- use_module( '../utility/library', [  reverse/2 ] ).
 :- use_module( '../utility/utility', [
         append_atomlist/2,  append_atoms/3,     delete1/3,      deleteall/3,
         doubt/2,            firstmem/2,         fnuttify2/2,    for/2,

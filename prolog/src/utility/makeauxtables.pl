@@ -46,11 +46,7 @@
 :- use_module( '../db/timedat', [ named_date/2, this_year/1 ] ).
 
 %% RS-111205, UNIT: tuc/
-:- use_module( '../tuc/lex', [
-       tucsoundex/2          %%toredef/3, torehash/2,  %% from namehashtable
-   ] ).
-
-%% RS-111206, UNIT: tuc/
+:- use_module( '../tuc/lex', [ tucsoundex/2 ] ).%%toredef/3, torehash/2,  %% from namehashtable
 :- use_module( '../tuc/names', [ samename/2,  streetsyn/1 ] ).
 
 %% RS-111205, UNIT: utility/

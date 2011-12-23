@@ -22,6 +22,7 @@
 :- use_module( evaluate, [ instant/2 ] ).
 :- use_module( semantic, [ (ako)/2, gradv_templ/2, particle/3 ] ).
 
+:- ensure_loaded('../declare').
 :- use_module( '../tucbuses', [ backslash/1 ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

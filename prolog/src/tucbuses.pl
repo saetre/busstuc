@@ -37,9 +37,9 @@
 backslash('\\'). 
 style_check(_).
 
-%?-compile('utility/drucke_baum.pl'). %% TA-061030
-%?- compile('utility/datecalc.pl').  %% Kalles fra utility module
-%?- compile('utility/makeauxtables.pl'). %% From utility
+%?-compile('utility/drucke_baum'). %% TA-061030
+?- use_module('utility/datecalc').  %% Kalles fra utility module
+?- use_module('utility/makeauxtables'). %% From utility
 ?- use_module( 'utility/extracut', [] ).  %% TA-080201 %% RS-111204
 
 :- airbusflag := false. %% NEW FLAG %% TA-090331

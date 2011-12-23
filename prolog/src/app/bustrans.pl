@@ -10,8 +10,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RS-111205, UNIT: /
-:- ensure_loaded( '../declare' ).  % :- use_module( userNOTME:'../declare.pl').
-:- use_module( '../main', [ myflags/2 ] ). %, set/2  ] ).
+:- ensure_loaded( '../declare' ).
 
 %% RS-111205, UNIT: utility/
 :- use_module( '../utility/utility', [] ).

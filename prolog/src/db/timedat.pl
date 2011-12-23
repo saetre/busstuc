@@ -26,22 +26,8 @@
         orig_named_date/2,
         softime/3,                 % (NAME,CLOCK,CLOCK)
         this_year/1,
-        todaysdate/1,           %% Exported as timedat:pred from datecalc.pl
-
-        %% FROM makeauxtables %%
-        busstat0/2,             
-        statbus0/2,  %  tostationonly0/1,
-        toredef0/3,  torehash0/2, %  transbuslist0/3, 
-        %  unproperstation/1,         % (PLACE)
-        unproperstation0/1
-                   %% FROM makeauxtables %%
+        todaysdate/1           %% Exported as timedat:pred from datecalc.pl
 ]).
-%% RS-111204    Surplus
-        %cmbus/2,               % (NAME,NAMES,ROUTE)
-        %corrx/2,               % (DOMAIN,PLACE,PLACE)
-        %hours_delay/2,         % (NUMBER)
-        %nightbus/1,            % (ROUTE)
-        %spurious_return/1         % (ROUTE,PLACE)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -51,7 +37,14 @@
 %:- ensure_loaded( '../utility/utility' )
 
 %* Import predicates
-:- use_module( '../utility/makeauxtables' ). %% From Utils?
+%:- use_module( '../utility/makeauxtables', [
+%        %% FROM makeauxtables %%
+%        busstat0/2,
+%        statbus0/2,  %  tostationonly0/1,
+%        toredef0/3,  torehash0/2, %  transbuslist0/3,
+%        %  unproperstation/1,         % (PLACE)
+%        unproperstation0/1
+%  ] ). %% From Utils?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Santa Barbara
