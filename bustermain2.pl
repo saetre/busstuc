@@ -7,17 +7,17 @@
 :- module( bustermain, [
         %%(:=)/2,    userNOTME:(=:)/2,    %% :=/2 and =: /2 exported from declare, through main, to "userNOTME:"
         analyse2/2,     begin/0,        break/1,        (c)/1,          clearport/0,
-        closereadfile/0,                check/0,        create_taggercall/2,
+        closereadfile/0,                check/0,        %% see main.pl: create_taggercall/2, plustoatom/2,   
         ctxt/3,         difact/2,       fact0/1,        %% dmeq/2,         %% From dmeq.pl REM, RS-111206
         end/0,          english/0,      getfromport/1,  go/0,           golog/0,
         hei/0,          hi/0,           ho/0,           idiotpoint/0,   indentprintlist/2,
         layout2/2,      listxt/0,       %%  main:myflags/2, %% RS-111204 from declare.pl 111206
-        maxl/1,         norsk/0,        othercommand/2, plustoatom/2,   printparse/1, processorwait/1,
+        maxl/1,         norsk/0,        othercommand/2, printparse/1, processorwait/1,
         readfrom/1,     quit/0,         (r)/1,          readscript/0,
         readday/0,      receive_tags/1, run/0,          scanfile/2,     %%  DESTROYS  web writing
         restart/0,      run/1,          send_taggercall/1,              set/2,          %% RS-111204 moved to userNOTME: in declare.pl
         (sp)/1,         splitlang/2,    (spyg)/1,       (spyr)/1,       statistics/1,
-        status/0,       stopcommand/2,  testgram/0,     traceprint/2,   track/2,     trackprog/2,
+        status/0,       stopcommand/2,  testgram/0,     traceprint/2,   %%track/2,      trackprog/2,
         timeout/3,      trytellans/0,   tuc/0,          txt/3,      % elementary words
         update_compnames/1, update_tags/1,  webrun/0,       write_taggercall/1,             writelog/1,
         webrun_english/0,               webrun_norsk/0,
@@ -53,7 +53,7 @@
     ] ).
 
 
-:- use_module( ptbwrite ).           %% Module PennTreeBank
+:- use_module( ptbwrite, [] ).           %% Module PennTreeBank
 :- use_module( tucbuses, [  dcg_module/1,  backslash/1,
         language/1,     legal_language/1, script_file/1  ] ).
 
@@ -65,9 +65,8 @@
 %    subst_tql/4,    varmember/2   ] ).
 
 :- use_module( 'utility/utility', [
-        append_atomlist/2,      append_atoms/3, doubt/2,        for/2,
-        makestring/2,           out/1,          output/1,       purge/3,
-        set_ops/3,              starttime/0,    tab/1
+        append_atoms/3,  doubt/2,        for/2,        makestring/2,           out/1,
+        output/1,        set_ops/3,      starttime/0,  tab/1
   ] ).  %% Module utility
 
 %% RS-111205, UNIT: tuc/
@@ -893,20 +892,20 @@ traceprint(N,P):-
 ;
     true.
 
-track(N,P):- 
-    main:myflags(trace,M),  number(M), M >= N, 
-    !,
-    P
-;
-    true.
- 
-trackprog(N,P):- 
-    main:myflags(traceprog,M), number(M), M >= N, 
-    !,
-    (nl,P)
-;
-    true.
+%trackprog(N,P):- 
+%    main:myflags(traceprog,M), number(M), M >= N, 
+%    !,
+%    (nl,P)
+%;
+%    true.
 
+%track(N,P):- 
+%    main:myflags(trace,M),  number(M), M >= N, 
+%    !,
+%    P
+%;
+%    true.
+% 
 %main:myflags(X):-   %% Defined in utility/utility.pl
 %    main:myflags(X,Y),
 %    out(X),out('='),output(Y),nl.
@@ -1086,58 +1085,58 @@ update_compnames(Compnames) :-                  %% MTK 021018
     compnames := Compnames.
 
 
-create_taggercall(L2,PAT):-
-
-    append_synnames(L2,L3), %% add synnames (torbjorn=torbjørn)
-                            %% BEFORE taggercall
-    
-    remove_hasardousnames(L3,L4), %% hvilken tittel har  per borgesen
-
-    listtoplus(L4,P2),
-    plustoatom1(P2,PAT).
-
-append_synnames(L2,L3):- %% TA-050920 
-    set_ops(Y,(member(X,L2),synname(X,Y)),Z), %% sequence preserving %% TA-051028
-    append(L2,Z,L3).
-
-remove_hasardousnames(L3,L4):-
-   set_ops(X,( member(X,L3), \+ hazardous_tagname(X)),L4).   %% sequence preserving %% TA-051028
-
-
-write_taggercall(Taggercall) :-
-    nl,
-    write('TAGGING:   '),output(Taggercall),
-    nl,nl.
-
-listtoplus(L2,P2):- %% tricky  + is left assoc
-    reverse(L2,R2),
-
-    skipmarks(R2,R3),
-
-    ltoplus(R3,P2).
-
-skipmarks(R2,R3):-
-   purge(['.','?','!'],R2,R3).
-
-ltoplus([Z,Y|X], ( UY+Z)):-
-    !,
-    ltoplus([Y|X],UY).
-
-ltoplus([X],X).
-ltoplus([],[]). %% empty %% TA-051015
-
-plustoatom(A+B,AB):- !,%% jævla hack %% TA-020619
-    plustoatom(A,A1),
-    plustoatom(B,B1),
-    append_atomlist([A1,'+',B1],AB).
-plustoatom(X,X).
-
-plustoatom1(A+B,AB):- !,%% uses spaces instead of plus %% TLF-030218
-    plustoatom1(A,A1),
-    plustoatom1(B,B1),
-    append_atomlist([A1,' ',B1],AB).
-plustoatom1(X,X).
-
+%create_taggercall(L2,PAT):-
+%
+%    append_synnames(L2,L3), %% add synnames (torbjorn=torbjørn)
+%                            %% BEFORE taggercall
+%    
+%    remove_hasardousnames(L3,L4), %% hvilken tittel har  per borgesen
+%
+%    listtoplus(L4,P2),
+%    plustoatom1(P2,PAT).
+%
+%append_synnames(L2,L3):- %% TA-050920 
+%    set_ops(Y,(member(X,L2),synname(X,Y)),Z), %% sequence preserving %% TA-051028
+%    append(L2,Z,L3).
+%
+%remove_hasardousnames(L3,L4):-
+%   set_ops(X,( member(X,L3), \+ hazardous_tagname(X)),L4).   %% sequence preserving %% TA-051028
+%
+%
+%%write_taggercall(Taggercall) :-
+%%    nl,
+%%    write('TAGGING:   '),output(Taggercall),
+%%    nl,nl.
+%%
+%listtoplus(L2,P2):- %% tricky  + is left assoc
+%    reverse(L2,R2),
+%
+%    skipmarks(R2,R3),
+%
+%    ltoplus(R3,P2).
+%
+%skipmarks(R2,R3):-
+%   purge(['.','?','!'],R2,R3).
+%
+%ltoplus([Z,Y|X], ( UY+Z)):-
+%    !,
+%    ltoplus([Y|X],UY).
+%
+%ltoplus([X],X).
+%ltoplus([],[]). %% empty %% TA-051015
+%
+%plustoatom(A+B,AB):- !,%% jævla hack %% TA-020619
+%    plustoatom(A,A1),
+%    plustoatom(B,B1),
+%    append_atomlist([A1,'+',B1],AB).
+%plustoatom(X,X).
+%
+%plustoatom1(A+B,AB):- !,%% uses spaces instead of plus %% TLF-030218
+%    plustoatom1(A,A1),
+%    plustoatom1(B,B1),
+%    append_atomlist([A1,' ',B1],AB).
+%plustoatom1(X,X).
+%
 
 %%%%%%%%%%%  THE END %%%%%%%%%%%%%%%%%%%%%%
 

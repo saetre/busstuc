@@ -2,6 +2,7 @@
 %% SYSTEM AtB
 %% CREATED TA-100221
 %% REVISED TA-100223
+%% REVISED RS-111218
 
 
 %% Extract  GPS coordinte from table into a predicate
@@ -9,7 +10,8 @@
 % assume all files are separated correctly with a Tab (ASCII 9)
 
 :- ensure_loaded( '../declare' ).
-:- ensure_loaded( '../sicstus4compatibility' ).  %% Compatible with sicstus4, get0/1 etc.
+%:- ensure_loaded( '../sicstus4compatibility' ).  %% Compatible with sicstus4, get0/1 etc.
+:- use_module( '../sicstus4compatibility' ).  %% Compatible with sicstus4, get0/1 etc.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -6,7 +6,7 @@
 % Contains some utility predicates
 % that may not be redefined in some Prologs (e.g. SWI-Prolog)
 
-:- module( library, [ intersection/3, (not)/1, nth/3, remove_duplicates/2, reverse/2 ]).
+:- module( library, [ intersection/3, (not)/1, remove_duplicates/2, reverse/2 ]).
 
 %% :- ['../declare'].
 :-op( 715, fy, not ).   %% from gram_ %% Redefined her instead... RS-111206
@@ -17,15 +17,15 @@
 %% Will be removed
 
 
-%% Find nth element                           %% TA-030922
-nth(N,Set,Nth) :- 
-	 nth_aux(N,Set,Nth,1).
-
-nth_aux(N,[Nth|_],Nth,N).
-nth_aux(N,[_|R],Nth,C) :-
-	 CN is C+1,
-	 nth_aux(N,R,Nth,CN).
-
+%%% Find nth element                           %% TA-030922
+%nth(N,Set,Nth) :- 
+%	 nth_aux(N,Set,Nth,1).
+%
+%nth_aux(N,[Nth|_],Nth,N).
+%nth_aux(N,[_|R],Nth,C) :-
+%	 CN is C+1,
+%	 nth_aux(N,R,Nth,CN).
+%
 % intersection(X,Y,Z)  Z is intersection of sets X and Y
 % Preserves order of first argument
 % X should be a set. (Duplicates will be copied)

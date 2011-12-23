@@ -12,11 +12,6 @@
 %* List of predicates
 
 :- module( busdat, [
-        %% abroad/1,                 % (PLACE) -> names.pl
-        %% city/1,                   % (PLACE) -> names.pl
-        %% foreign/2,                % (DOMAIN,PLACE) -> places.pl
-        %% foreign/1,                % (PLACE) -> places.pl
-        nostation/1,              % (PLACE) -> places.pl
         airbus/1,                  % (BUS?)
         airbusstation/1,           % (STATION)
         bus_depend_station/3,      % (ROUTE,PLACE,STATION)
@@ -50,6 +45,7 @@
         nightbusstation/1,         % (STATION) 
         nightbusdestination/1,     % (STATION)
         
+        nostation/1,              % (PLACE) -> places.pl
         nostationfor/1,            % (PLACE)
         nostationfor1/1,           % (PLACE)
 
@@ -625,7 +621,7 @@ corr0(X,Y):- X=Y   % Utility: fast check
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-exbus(G):-bus(G), \+ vehicletype(G,tram).  
+exbus(G) :- bus(G), \+ vehicletype(G,tram).  
 
 
 

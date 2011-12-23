@@ -139,7 +139,7 @@
 :-dynamic    myflags/2.
 
 main:myflags(origlanguage, norsk).
-(origlanguage := norsk).
+origlanguage := norsk.
 
 %% Current value for hash key "X" is assigned the value +Y
 (X := Y) :-       %% Set value X to Y, :=/2 or (:=)/2
@@ -1115,7 +1115,6 @@ traceprint(N,P):- %% same as trace
     write(P),nl
 ;
     true.
-
 %///
 progtrace(N,P):- %% same as traceprog
     main:myflags(traceprog,M), number(M), M >= N,
@@ -1124,13 +1123,13 @@ progtrace(N,P):- %% same as traceprog
 ;
     true.
 
-
 track(N,P):- 
     main:myflags(trace,M),  number(M), M >= N, 
     !,
     call(P)   %% TA-110130
 ;
     true.
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%

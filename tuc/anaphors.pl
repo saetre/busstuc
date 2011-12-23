@@ -27,7 +27,7 @@
 :- use_module( '../dialog/newcontext2', [ dialog_resolve/2 ] ).
 
 %% RS-111205, UNIT: utility/
-:- use_module( '../utility/library', [  nth/3, reverse/2  ] ).
+:- use_module( '../utility/library', [  reverse/2  ] ).
 :- use_module( '../utility/utility', [ match/2, test/1 ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

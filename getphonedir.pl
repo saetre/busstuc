@@ -25,8 +25,7 @@
 %% RS-111205, UNIT: utility/
 :- use_module( 'utility/library', [ remove_duplicates/2 ] ).
 :- use_module( 'utility/utility', [
-        append_atomlist/2,  append_atoms/3,     delete1/3,    output/1,
-        set_ops/3,          set_eliminate/4,    set_filter/4   ] ).
+        append_atoms/3,    delete1/3,   output/1,   set_ops/3,  set_eliminate/4,    set_filter/4   ] ).
 
 :- use_module( xmlparser, [] ). %% [ xml_parse/2,  xml_parse/3, xml_subterm/2, xml_pp/1 ] ).
 :- ensure_loaded( 'tagger/tagger' ). %% [ xml_parse/2,  xml_parse/3, xml_subterm/2, xml_pp/1 ] ).
