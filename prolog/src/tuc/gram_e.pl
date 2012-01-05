@@ -490,7 +490,7 @@ question0(P) ---> ynq(P).
 
 %% Implicit What IS 
 
-%%%¤ IMPLICITQ 
+%%% IMPLICITQ 
 
 implicitq(_) ---> 
     reject_implicitq, 
@@ -591,7 +591,7 @@ implicitq(new:::P ) --->     %% bus 5  \+ bus 5'o clock
     endofline,     
     !,accept. 
 
-implicitq(modifier(S)::: Com12 and P3) ---> %%   første buss i morgen
+implicitq(modifier(S)::: Com12 and P3) ---> %%   fÃ¸rste buss i morgen
     np_kernel(0,X,W1,W1,true ,P),
     constrainvehdep(X), 
     not_look_ahead(w(verb(_,_,fin))), 
@@ -636,7 +636,7 @@ isq(P) --->
     statement(P)  /  be. 
 
 ynq(P) --->
-    (do),        
+    doit,        
     negation0(_), %% Rhet %% TA-110316
     statement(P).      
 
@@ -648,7 +648,7 @@ ynq(P) --->          % not RP %%  Goes the bus to NTH// Norwagism
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%¤ PPQ
+%%%% PPQ
 
 ppq(WhichX:::P) --->
     prep(Prep), 
@@ -744,7 +744,7 @@ whatq(WhichX:::P) --->
     {negate(N,Q1,Q2)}.
 
 
-whatq(P) --->  % hva er klokka nå ? 
+whatq(P) --->  % hva er klokka nÃ¥ ? 
      whatbe(1),
      the,
      w(noun(Cl,_,_,n)),
@@ -767,7 +767,7 @@ whatq(P) ---> % what time is it now => when is it now  (OK)
 whatq(P) ---> % what do you do \= which thing that you do #
     what,
     do(id),
-    whichq(P) \ (which2,w(noun(thing,sin,u,n)),(do)). 
+    whichq(P) \ (which2,w(noun(thing,sin,u,n)),doit). 
 
 
 whatq(which(X):::P) --->  %% Moved front
@@ -832,10 +832,10 @@ whenq(P) ---> % what time is it (now) => what is the time (now)
 
 
 
-%%%¤ WHEREQ 
+%%% WHEREQ 
  
 
-whereq(WhichY::: Q and Abra) ---> %% hvor er/har  john gått
+whereq(WhichY::: Q and Abra) ---> %% hvor er/har  john gÃ¥tt
     where,
     behave,  
     np1_accept(X,A,B),
@@ -859,11 +859,11 @@ whereq(P) --->  %%  where is you from
 
 whereq(which(Y):::P) --->  %% where did john go (to)
     where,     
-    (do), 
+    doit, 
     adverbial1(nil,Y,Subj,P3) =  (the(Y),w(noun(place,_,_,n))),    
     !,
     question0(P) -      
-         ((do),adverbial1(in,Y,Subj,P3)), 
+         (doit,adverbial1(in,Y,Subj,P3)), 
     optional(w(prep(_))).
  
 
@@ -886,7 +886,7 @@ whoseq(P) --->   % whose dog barked ?
     noun(_,Num,u,n, Y, R), %%
     whoq(P) \ (who,has,art,noun(_,Num,u,n, Y, R),that). 
 
-%%%¤  WHYQ   %% TA-110215
+%%%  WHYQ   %% TA-110215
 
 whyq(explain:::P) --->
     [why],
@@ -900,7 +900,7 @@ whyq(explain:::P) --->
   
 
 
-%%%¤  HOWQ 
+%%%  HOWQ 
 
 howq(explain:::P) --->
     how,
@@ -919,7 +919,7 @@ howq(explain:::P) ---> %% hvordan er du laget / hvordan er du ?
 
 howq(explain:::P) --->
     how,
-    (do),  %% NOT empty !!! %% TA-100916
+    doit,  %% NOT empty !!! %% TA-100916
 
     negation0(_), %% Rhet Why didn't %% TA-110316
     statement(P).       
@@ -1170,7 +1170,7 @@ event00(S,P,Q,exists(S:Event)::(P and Q)) --->
 
 %% Clausal Complements %%%%%%%  
 
-%%%¤ CLAUSAL_PHRASE  
+%%% CLAUSAL_PHRASE  
 
 clausal_phrase(X,S,Com1:KA) ---> 
     {value(textflag,true)},
@@ -1194,7 +1194,7 @@ clausal_phrase(X,S,Com1:KA) --->
 
 thatto0(_W,that,X) ---> infinitive,[] - npgap(X). %%   infinitive first
 thatto0(W,TW,_)   ---> that(TW),
-    {W \== start}.        %% starte å OK starte at NO 
+    {W \== start}.        %% starte Ã¥ OK starte at NO 
 
 thatto0(ask,that,_) ---> []. 
 thatto0(believe,that,_) ---> []. 
@@ -1203,7 +1203,7 @@ thatto0(let,that,_) ---> [].
 thatto0(W,that,_) ---> [], 
                        {\+ member(W,[cause,make])}. 
 
-%%%¤ REP_VP
+%%% REP_VP
 
 rep_vp(let,TW,X,S,Com,KA,NewS) ---> %% I let you go ===> I "let" that you go
      w(verb(let,_,fin)),
@@ -1376,7 +1376,7 @@ xverb_phrase(Y,S,N,Com,P2) --->
 
 
 qverb_phrase(X,S,id,Com:P) --->  % (which crown) does it cost to
-    (do), 
+    doit, 
     it,
     pvimodal(Cost,Money),  
     {vartypeid(X,thing);constrain(X,Money)},    %% how much = which thing
@@ -1422,7 +1422,7 @@ qverb_phrase(Y,S,id,Com:P) --->  %% (what) are you doing (now)
 
 
 qverb_phrase(Y,S,N,ComP2) ---> %% which thing does Tagore do 
-    (do),      
+    doit,      
     noun_phrase(X,P,P1),          
     w(verb(Do1,inf,fin)),
     verb_phrase(X,S,N,ComP2) \ 
@@ -1439,11 +1439,11 @@ qverb_phrase(X,S,N,ComP2) --->
     verb_phrase(X,S,N,ComP2).    
 
 qverb_phrase(Y,S,N,ComP2) --->  
-    (do),                                 
+    doit,                                 
     noun_phrase(X,P,P1),          
     hasto0, 
     verb_phrase(X,S,N,ComP2)  - 
-         ( (do) , noun_phrase1(Y,P,P1)).  %% noun_phrase 
+         ( doit , noun_phrase1(Y,P,P1)).  %% noun_phrase 
 
 qverb_phrase(Y,S,N,ComP2) ---> 
     be,
@@ -1469,7 +1469,7 @@ verb_modifiers0(V,X,S,Com1P1,Com12P3) ---> % 1-n for be1, otherwise 0-n
 verb_modifiers0(V,_,_,CP,CP) ---> 
     {\+ V=be1}.
 
-%%%¤  VERB_MODIFIERS
+%%%  VERB_MODIFIERS
 
 verb_modifiers(V,X,S,Com1P1,Com12P3) --->
     verb_modifier(V,X,S,Com1P1,Com12P2),
@@ -1745,14 +1745,14 @@ properadverb(X,Y,Z) --->
 
 
 
-%%¤ ADJUNCT1 (Nil,Y,SC,P3) 
+%%% ADJUNCT1 (Nil,Y,SC,P3) 
 
 
 
 adjunct1(Nil,Y,SC,P3) ---> %%  ( Bus goes     09.12 => clock ) at -> nil
     {Nil == nil},
     dendagen0(_),     %% date more probable than clock 
-    date(X,P),       %% Buss går lørdag den 09.12 => Date 
+    date(X,P),       %% Buss gÃ¥r lÃ¸rdag den 09.12 => Date 
     np1(Y,SC,P3) - date(X,P).     
 
 
@@ -1799,7 +1799,7 @@ adjunct1(Dir,Y,SC,P3) --->
     noun_phrase1(Y,SC,P3).   
 
 
-%%%¤  PP (Prep,Y,SC,P3)
+%%%  PP (Prep,Y,SC,P3)
 
 pp(Prep,Y,SC,P3) ---> 
     prep(Prep),
@@ -2076,7 +2076,7 @@ noun_phrase2(X,Y,P,findalt(diff,X,Y)::(Q and P)) --->
 noun_phrase2(_X,Y,P1,P2) --->   %% Y may or may not
     noun_phrase(Y,P1,P2).       %% be qual to X    
 
-%%%¤ NOUN_PHRASE 
+%%% NOUN_PHRASE 
                               
 noun_phrase(X,P1,P) --->        
     noun_phrases(X,P1,P).
@@ -2138,7 +2138,7 @@ no_phrase(X,P) ---> %% Pure Noun_phrase
 
 
 
-%%%¤ NOUN_PHRASE1
+%%% NOUN_PHRASE1
 
 
 noun_phrase1(X,P,P and Q)---> 
@@ -2188,7 +2188,7 @@ np0(X,VP,P) --->
 np0(X,P,P) --->
     npgap(X).
 
-%%%¤ NP1
+%%% NP1
 
 np1_accept(X,VP,P) ---> %  %% dont bt %% TA-100908
     np1(X,VP,P),
@@ -2312,7 +2312,7 @@ npa(X,VP,P) --->  %% Does it work ?
 
 % % % %
 
-%%%¤ NAME_PHRASE  (name,X,P,P and Q)  
+%%% NAME_PHRASE  (name,X,P,P and Q)  
 
 name_phrase(name,X,P,P and Q) ---> 
 %%%     {value(teleflag,true)}, %%  (OK if few names)
@@ -2336,11 +2336,11 @@ person_name((Tore,Amble):person, ToreP  and  AmbleP) --->
     !,accept.
  
 
-properfirstname(Rønning,RønningP) --->
-   nameq1(Rønning:firstname,RønningP).
+properfirstname(Ronning,RonningP) --->
+   nameq1(Ronning:firstname,RonningP).
 
-properlastname(Rønning,RønningP) ---> 
-    nameq1(Rønning:lastname,RønningP).
+properlastname(Ronning,RonningP) ---> 
+    nameq1(Ronning:lastname,RonningP).
 
 
 % % % %
@@ -2411,7 +2411,7 @@ np2(X,VP,P)--->                  %% lacks complements !!!!
 % Every is instantiated by now))).
 
 
-%%%¤ NP_HEAD
+%%% NP_HEAD
 
 % his father 
 np_head(0, XT,P0,P1,VP, 
@@ -2516,7 +2516,7 @@ ncomps0(_,X,YT,P,QP) ---> %% days first departure
 ncomps0(n,X1,X2,P,P) ---> % if previous was n, then optionally no more.
     {compatvar(X1,X2)}. 
 
-%%%¤ NCOMPS 
+%%% NCOMPS 
 
 ncomps(_,X,Y,P,QP) ---> 
     not_look_ahead(w(verb(_End,_,_))), %% when will the world end %% TA-110608
@@ -2535,7 +2535,7 @@ sine(_,gen,gen) ---> [].
 % % % % % % % % % % % % % % % % % % %
 
 
-%%¤ NOUN_MODIFIERS0 
+%%% NOUN_MODIFIERS0 
 
 %% noun_modifiers0(Ind,X,P,Q)  Ind = of/0    OF-complement/ No OF-compl.
 
@@ -2574,14 +2574,14 @@ noun_modifiers10(_,X,Q,R)---> %% TA-100908
 noun_modifiers10(Ind,X,P,Q) --->  %% TA-101215
    noun_modifiers0(Ind,X,P,Q).
 
-%%¤ NOUN_MODIFIERS 
+%%% NOUN_MODIFIERS 
 
 noun_modifiers(_,X,P,R) ---> %% 1..n
    noun_modifier(X,P,Q),  
    noun_modifiers10(_,X,Q,R). 
 
 
-%%%¤ NOUN_MODIFIER 
+%%% NOUN_MODIFIER 
 
 noun_modifier(X,P,P and Q) ---> 
     comparison(X,_,Q).            %%  comparisons (TWO KINDS OF LOOPS ?)
@@ -2726,7 +2726,7 @@ noun(Homepage,Num,U,Gen, X:Homepage, X isa Homepage) --->
 
 % Name Noun expressions  (Complicated, and Pragmatic).
 
-%%%¤  NAMEP  (Ind,NT,XP) 
+%%%  NAMEP  (Ind,NT,XP) 
 
 namep(0,NT,XP) ---> %% NB 8 hours is also a clock (% fronted%)
     measure(NT,XP).  %% e.g. 5 minutes
@@ -2818,13 +2818,13 @@ measure(NT1,YP) --->
 %%  Name Expressions
 
 
-%%%¤  NAMEQ (C,Q)
+%%%  NAMEQ (C,Q)
 
 nameq(C,Q) ---> nameq1(C,Q).
 
 nameq(C,Q) ---> nameq2(C,Q).
 
-%%%¤ PLAUSIBLEDATE1   %% TA-110516
+%%% PLAUSIBLEDATE1   %% TA-110516
 
 plausibledate1(YDate:date, YDate isa date) ---> %% last with care Fredag 13
     w(nb(DD,num)),                                %% TA-110516
@@ -2837,10 +2837,10 @@ plausibledate1(YDate:date, YDate isa date) ---> %% last with care Fredag 13
 
 
 
-%%%¤ DATE
+%%% DATE
 
 
-%%   påskeaften, pinseaften, nyttårsaften etc
+%%   pÃ¥skeaften, pinseaften, nyttÃ¥rsaften etc
 date(Date:date,Date isa date) ---> %%  n'te pinsedag etc. some may change month 
      w(name(Whitsun_eve,n,date)),
      {testmember(Whitsun_eve,
@@ -2936,9 +2936,9 @@ kl0 ---> [kl],!.
 kl0 ---> [].
 
 
-%%%¤  NAMEQ1
+%%%  NAMEQ1
 
-nameq1(X,P) ---> %%  ( Buss går 09.12 => clock)
+nameq1(X,P) ---> %%  ( Buss gÃ¥r 09.12 => clock)
    date(X,P).    
 
 
@@ -2970,18 +2970,18 @@ nameq1(X,P) --->
 
 % Only full dates allowed, try first
 
-nameq1(Rønning:lastname,Rønning isa lastname) ---> %% Ståle Rønning
+nameq1(Ronning:lastname,Ronning isa lastname) ---> %% StÃ¥le RÃ¸nning
     {value(teleflag,true)},
-    look_ahead(w(name(Rønning,n,firstname))), 
-    w(name(Rønning,n,lastname)), 
+    look_ahead(w(name(Ronning,n,firstname))), 
+    w(name(Ronning,n,lastname)), 
     not_look_ahead(w(name(_Lund,n,lastname))),
     !,accept.
 
 
-nameq1(Rønning:firstname,Rønning isa firstname) ---> %% Ståle Rønning
+nameq1(Ronning:firstname,Ronning isa firstname) ---> %% Stole Ronning
     {value(teleflag,true)},
-    look_ahead(w(name(Rønning,n,lastname))), 
-    w(name(Rønning,n,firstname)), 
+    look_ahead(w(name(Ronning,n,lastname))), 
+    w(name(Ronning,n,firstname)), 
     look_ahead(w(name(_Lund,n,lastame))),
     !,accept.
 
@@ -3359,7 +3359,7 @@ subjunction(nil,   coevent, because_of) --->   because.
 %% Most typical: which bus... IF I SHALL .... == so_that
 %% subjunction(being_the,   reason, because_of) --->  if1.    %%  Ambiguous!
 
-subjunction(because_of,  coevent, nil)  ---> if1. %% jeg går hvis bussen står   
+subjunction(because_of,  coevent, nil)  ---> if1. %% jeg gÃ¥r hvis bussen stÃ¥r   
 
 
 
@@ -3447,7 +3447,7 @@ athe0 ---> [].
 be ---> w(verb(be,_,fin)).
 
 be(N) ---> 
-   (do),
+   doit,
    negation0(N),
    has,
    to,
@@ -3565,7 +3565,7 @@ dendagen0(nil) ---> [].                %%
 dendagen(D)   --->  day(D),!,accept. 
 dendagen(nil) ---> [],!,accept.       %% 
 
-do0 ---> (do). 
+do0 ---> doit. 
 do0 ---> []. 
 
 
@@ -3584,14 +3584,14 @@ do0(_,not,id) --->
     !,accept.
 
 do0(_,N,id) --->
-     (do),!, 
+     doit,!, 
      negation0(N).
 
 do0(_,N,N) ---> [].  
 
 
 do0(_,not,id) --->    %% you not take the bus ( not RP) 
-     negation0(not), %% (når bussen) ikke (vil) ... gå 
+     negation0(not), %% (nÃ¥r bussen) ikke (vil) ... gÃ¥ 
      do0.            %% du ikke tar bussen (not RP)
 
 % do(id) --->  use,to.
@@ -3604,7 +3604,7 @@ do(not) ---> [never],!,accept.
 do(N) --->  use,negation0(N),to.
 
 do(N) ---> 
-    (do),
+    doit,
     negation0(N),hasto0.
 
 do(id )---> [] .  
@@ -3616,15 +3616,15 @@ do(N) --->      %%%  dont swallow verb have !
 dox ---> [do]. %% TA-110823
 dox ---> [does]. %% not syn do (....> does = inf) 
 
-(do) ---> dox, not_look_ahead([it]).  %% Ad Hoc
+doit ---> dox, not_look_ahead([it]).  %% Ad Hoc
 
-(do) ---> [can].
-(do) ---> may.
-(do) ---> must.     %%
-(do) ---> [will].    %  shall
+doit ---> [can].
+doit ---> may.
+doit ---> must.     %%
+doit ---> [will].    %  shall
 
-% (do) ---> [does].  %% synword
-% (do) ---> [did].   %% synword
+% doit ---> [does].  %% synword
+% doit ---> [did].   %% synword
 
 dont(not) ---> [don],[t]. %% don't
 dont(not) ---> [dont],!,accept.
@@ -4205,10 +4205,10 @@ personal('OK') --->  optional(hello),
 
 
 personal('OK') ---> optional(hello),
-    [how],(do),[you], (do),now0. 
+    [how],doit,[you], doit,now0. 
 
 personal('OK') --->  optional(hello),
-    [how],(do),[you], w(verb(feel,pres,fin)),now0. 
+    [how],doit,[you], w(verb(feel,pres,fin)),now0. 
 
 feeling0 ---> w(verb(feel,pres,part)). 
 feeling0 ---> w(verb(do1,pres,part)). 
