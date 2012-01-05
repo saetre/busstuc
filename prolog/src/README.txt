@@ -16,9 +16,16 @@ Oppdater(es/t)
  bustrans -> app/bustrans.pl
  app/dmeq.pl
  teledat2.pl
- 
- 
- 
+
+
+ Character Encoding in Eclipse and Windows
+-------------------------------------------
+To use utf8 encoding on Windows, with SPIDER, the "environment varible" (Computer->Properties->Advanced->e.v.)
+ must be set to "euc" before starting Eclipse
+
+
+
+
  About SVN and Eclipse:
 ======================
 Subversive w/JavaHL or SVNKit (latest version) REALLY SUCKS, and kills my computer.
