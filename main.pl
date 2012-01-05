@@ -245,6 +245,17 @@ webrun :-
        fail,
 	 !.
 
+jettyrun(S) :-
+        world := real,
+        reset_period, %% ---> topreg.pl
+        psl(S,L),
+        L = [File|L1],
+        redirecttoans(File),
+        
+        splitlang(L1,L2),
+        (process(L2);true), % Process always fails...
+        !.
+
 norsource_prefix :- %% TA-110207
     value(norsource,true) ->
     output('<bustuc>');true.
@@ -632,7 +643,7 @@ process([GWB|_]):- %% Provoked Halt
 
 
 
-%¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+%Ã¦Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 %% NEW  %% OMNITUC !
 
@@ -643,7 +654,7 @@ process([GWB|_]):- %% Provoked Halt
 %    exetuc(TQL).
  
 
-%¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+%Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 
@@ -843,7 +854,7 @@ grammar2(L,error):-                % Failed with type check,
 
        nl, 
        doubt('- - - Incomprehensible words: ', %% '-'  means No Pay 
-             '- - - Uforståelige ord    '), %% Freak test AtB drops list of words
+             '- - - UforstÃ¥elige ord    '), %% Freak test AtB drops list of words
                                          %% after : ????
                                          %% TA-101201
 
@@ -895,7 +906,7 @@ grammar2(L,error):-
 
        nl,                             
        doubt('- - - Meaningless at * - - -',
-             '- - - Meningsløst ved * - - -'),
+             '- - - MeningslÃ¸st ved * - - -'),
        mix(Attempt1,L),
 
    stopteleerror.
@@ -922,7 +933,7 @@ grammar2(L,error):-                  % Failed also with type check
     startteleerror,
 
         doubt('- - - Incomprehensible at  * - - -',
-              '- - - Uforståelig ved * - - -'), 
+              '- - - UforstÃ¥elig ved * - - -'), 
         mix(Attempt2,L),
 
      stopteleerror.
@@ -967,13 +978,13 @@ no_verb(L) :- \+ verbed_sentence(L).  %% no_unprotected_verb
 verbed_sentence(L):- 
     member(W,L), 
     W = w(R,ListV),
-    R \== når,                % = nå = now (doesn' count)
-    R \== nå,  
-    R \== så,  
+    R \== nÃ¥r,                % = nÃ¥ = now (doesn' count)
+    R \== nÃ¥,  
+    R \== sÃ¥,  
     (member(verb(_,_,_),ListV);
      member([skal],ListV); 
      member([vil],ListV);   %%
-     member([må],ListV)),   %%
+     member([mÃ¥],ListV)),   %%
    !.
 
 present(_,nil):-!.      % code printed by side effect 
@@ -1072,7 +1083,7 @@ indentprint(N,Y):-
 
 %% Control Section
 
-%% [gps_origin('Gløshaugen syd',3)]
+%% [gps_origin('GlÃ¸shaugen syd',3)]
 
 transfix([gpsflag:::Orgy | Rest],U) :-!,
 
@@ -1285,7 +1296,7 @@ ltoplus([Z,Y|X], ( UY+Z)):-
 
 ltoplus([X],X).
 
-plustoatom(A+B,AB):- !,%% jævla hack
+plustoatom(A+B,AB):- !,%% jÃ¦vla hack
     plustoatom(A,A1),
     plustoatom(B,B1),
     append_atomlist([A1,'+',B1],AB).
