@@ -74,6 +74,7 @@ Run in Main directory
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+:- ensure_loaded( '../interfaceroute' ).
 
 makeauxtables:-
  
