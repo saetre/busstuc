@@ -212,8 +212,8 @@ rewordreplace(XL,XL,Max):-
 
 
 
-rewordrepl1([A|XL],ÅR,1):- % only 1 replacement
-   reword1d([A|AZ],XZ:ÅR),  %% dictn/e  
+rewordrepl1([A|XL],Ã…R,1):- % only 1 replacement
+   reword1d([A|AZ],XZ:Ã…R),  %% dictn/e  
    rewordmatches(AZ,XL,XZ),
    !.
 
@@ -228,9 +228,9 @@ rewordmatches([],X,X).
 rewordmatches([X|Y],[X|Z],U):-
     rewordmatches(Y,Z,U).
 
-reword1d([A|AZ],XZÅR):- %% TA-101006
+reword1d([A|AZ],XZÃ…R):- %% TA-101006
     reword1([A|AZ],XZL),
-    make_dlist(XZL,XZÅR).
+    make_dlist(XZL,XZÃ…R).
 
 make_dlist([A|AZ],X:[A|AX]):-
     mdlistrest(X,AZ,AX).
@@ -247,10 +247,10 @@ reword1(X,KL):-
     Dict:rewording(X,KL).
 
  
-%% reword1([for,æ,være],[for,å,være]). %%% <---- Special format
+%% reword1([for,Ã¦,vÃ¦re],[for,Ã¥,vÃ¦re]). %%% <---- Special format
 
 
-% ¤ 
+% Â¤ 
 
 lexps([],[]).
 lexps([X|Y],[XL|YL]):-
@@ -267,7 +267,7 @@ lcodes(N,w(N,S2)):-
 
   
 %% Levange = leangen/levanger Different names ==> just unknown
-%% gårn = gran/gård  Different partnames, no mess
+%% gÃ¥rn = gran/gÃ¥rd  Different partnames, no mess
 
 
 squirtsurplus(_,[name(Hare_street,n,street)|R],[name(Hare_street,n,street)]):- %% TA-100311
@@ -275,7 +275,7 @@ squirtsurplus(_,[name(Hare_street,n,street)|R],[name(Hare_street,n,street)]):- %
      \+ member(name(_tempev,n,0),R). %% Tempevegen 11 station/Tempeveien 11 street %% TA-101124
 
 %%  squirtsurplus(brosetveien,
-%%    [name(brøset_street,n,street),name(brøsetv,n,station),name(brøsetveien,n,0)],[name(brøset_street,n,street)]) ?
+%%    [name(brÃ¸set_street,n,street),name(brÃ¸setv,n,station),name(brÃ¸setveien,n,0)],[name(brÃ¸set_street,n,street)]) ?
 %%  dont drop if stations
 
 %% IF one street, only the first 
@@ -323,7 +323,7 @@ dont_spell_check_test(Strandveien,L):-
      ;
 %%%%     test(synname(Strandveien,_))    %% already a synname   **solem veien -> skole veien**
 %%%%     ;                               %% bishops -> biskops %% TA-110411
-     test(member(noun(_weather,_,_,_),L)) %% Ad Hoc været \-> Være  
+     test(member(noun(_weather,_,_,_),L)) %% Ad Hoc vÃ¦ret \-> VÃ¦re  
      ;
      test(nostation(Strandveien))   
      ;
@@ -335,7 +335,7 @@ dont_spell_check_test(Strandveien,L):-
 %% NB   known_name has failed
 
 
-believed_name(Brosetveien,Brøsetv,n,Class,1):-    %% Brosetveien %% Special
+believed_name(Brosetveien,BrÃ¸setv,n,Class,1):-    %% Brosetveien %% Special
     value(spellcheck,1),  
     \+ value(textflag,true),  
     \+ unwanted_name(Brosetveien), 
@@ -345,11 +345,11 @@ believed_name(Brosetveien,Brøsetv,n,Class,1):-    %% Brosetveien %% Special
 
     Street \== 'g', %% \+  frig g| rosenbor g %% TA-110401
 
-    sameplace(Broset,Brøset),
+    sameplace(Broset,BrÃ¸set),
  
-    composite_stat(Brøset,[street],Brøsetv), 
+    composite_stat(BrÃ¸set,[street],BrÃ¸setv), 
 
-    classify(Brøsetv,Class).
+    classify(BrÃ¸setv,Class).
  %% !  NB  brosetveien 145 = street + station clock %% TA-100312 
  
 
@@ -391,8 +391,8 @@ avoid_spurious_street(Z) :- %% avoid rosenborg -> rosenborg _street %% issamveie
 
 %%// avoid_spurious_street([rosenborg-nil,rosenborg-street]) // fails (OK)
 %%// avoid_spurious_street([marienbor-nil,marienbor-street,marienborg-nil]) fails(NO)
-%%//avoid_spurious_street([brøset-nil,brøset-street,brøseth-nil,brøseth-street, fails(NO)
-%%      brøsethveien-nil,brøsetv-nil,brøsetveien-nil]) ? 
+%%//avoid_spurious_street([brÃ¸set-nil,brÃ¸set-street,brÃ¸seth-nil,brÃ¸seth-street, fails(NO)
+%%      brÃ¸sethveien-nil,brÃ¸setv-nil,brÃ¸setveien-nil]) ? 
 
 
 avoid_spurious_street(_).
@@ -483,7 +483,7 @@ remove_noise([   w('(',_)   |Y],V):-
    extract_origins(U). %% neib stations
 
  extract_origins(U):- %% Not implemented
-    ¤¤¤ for(member(quote(O),_pluss,T),remember(gps_origin(O,T))).
+    Â¤Â¤Â¤ for(member(quote(O),_pluss,T),remember(gps_origin(O,T))).
 ***/
 
 
@@ -498,7 +498,7 @@ remove_noise([W|Y],Z):-
 
 %% Dots
 
-%% Initial template //  Når går bussen ... 
+%% Initial template //  NÃ¥r gÃ¥r bussen ... 
 
 remove_noise([w('.',_),w('.',_),w('.',_)|R],R1) :-
     !,                           
@@ -621,7 +621,7 @@ lcode1(N1,N2):-
     lcode2(N1,N2).
 
 
-%%¤  LCODE2
+%%Â¤  LCODE2
 
 
 lcode2(X,Y):-
@@ -665,7 +665,7 @@ lcode2(BUSSTUCS,name(BUSTUC,gen,Class)):-  %% Busstucs = bustuc's
 
 lcode2(JOHNS,name(JOHN,gen,Class)):- 
     \+ unwanted_name(JOHNS), %% e.g.oss \= os 's 
-        %% døden unwanted, dødens OK
+        %% dÃ¸den unwanted, dÃ¸dens OK
     ends_with(JOHNS,JOHN,s), 
     JOHN \== '', 
     plausible_name(JOHN,Class). 
@@ -758,7 +758,7 @@ try_alias_station1(_,Bekasin,Bekkasinv) :-
     torehash(Bekasin,Bekkasin),
     toredef(Bekkasin,streetstat,Bekkasinv). %% NB streetstat
 
-%¤
+%Â¤
 
 try_alias_street(X,Official):- 
     splitstreet0(X,Y,G),
@@ -1046,10 +1046,10 @@ composal :-
 
 %%  removeunconnected, %%  john aaens vei \== aaengv
     %% not necessary ???  
-%%  Jeg forstår >st< det hjalp med noe restart ang responstiden på SMS igår. 
+%%  Jeg forstÃ¥r >st< det hjalp med noe restart ang responstiden pÃ¥ SMS igÃ¥r. 
 %%    ==> txt(0, w(jeg,[jeg]), 1).
 %%  Destroys error message  
-%% jeg forstår * st det hjalp med noe restart ang responstiden på sms igår . 
+%% jeg forstÃ¥r * st det hjalp med noe restart ang responstiden pÃ¥ sms igÃ¥r . 
 
 
 
@@ -1396,8 +1396,8 @@ cleantxt :-
 %% lerkendal studentby
 %% lerkendal  --> out
 
-%% vikåsen 31.5
-%% vikåsen   --> out ###
+%% vikÃ¥sen 31.5
+%% vikÃ¥sen   --> out ###
 
 %% dronningens -> out
 %% dronningens gate
@@ -1426,7 +1426,7 @@ clean1 :- %% sig (dk) = seg | Sig berg alle %% TA-101215
 
 
  % % % single letter
-clean1 :-  %% j aaes veg \= jeg ...  p morsets veg \+ på
+clean1 :-  %% j aaes veg \= jeg ...  p morsets veg \+ pÃ¥
     txt(N0,w(J,_),N1), 
     single_letter(J), %% TA-101111
     txt(N0, w(John_aaes_veg,name(John_aaes_veg,_,_)),N2),
@@ -1442,15 +1442,15 @@ clean1 :-  %% feil retning = wrong retning %% TA-101115
 
 
  
-clean1 :-  %% k.o. thornæs \= kl 0 thornæs
+clean1 :-  %% k.o. thornÃ¦s \= kl 0 thornÃ¦s
     txt(_N0,w(k,[k]),N1),
     txt(N1,w('.',['.']),N2),
         txtretract(txt(N2,  w(o,nb(0,num)), _N3)).
 
-clean1 :- %% fra vÃ¦re til sorgenfri 
+clean1 :- %% fra vÃƒÂ¦re til sorgenfri 
     txt(_1, w(_fra,prep(_from)), N2),
-    txt(N2, w(være,name(være,n,station)), N3),
-    txt(N2, w(være,verb(be,inf,fin)),N3), 
+    txt(N2, w(vÃ¦re,name(vÃ¦re,n,station)), N3),
+    txt(N2, w(vÃ¦re,verb(be,inf,fin)),N3), 
         txtretract( txt(N2, w(_,verb(be,inf,fin)),N3)).
 
 clean1 :-  %% kan jeg reise == \+ kan jeg trip 
@@ -1459,20 +1459,20 @@ clean1 :-  %% kan jeg reise == \+ kan jeg trip
     testmember(Jeg,[jeg,du,han,hun,vi]),
        txtretract( txt(N2, w(reise,noun(trip,sin,u,n)), N3) ).
 
-clean1  :- %% si det nå
+clean1  :- %% si det nÃ¥
      txt(_,w(det, [det]), N3) ,
-        txtretract( txt(N3, w(nå,verb(reach,inf,fin)),_)). 
+        txtretract( txt(N3, w(nÃ¥,verb(reach,inf,fin)),_)). 
 
-clean1  :- %% er nå fin=now %% TA-101117
+clean1  :- %% er nÃ¥ fin=now %% TA-101117
      txt(_,w(_er,verb(_,pres,fin)), N3),
-        txtretract( txt(N3, w(nå,verb(reach,inf,fin)),_)). 
+        txtretract( txt(N3, w(nÃ¥,verb(reach,inf,fin)),_)). 
 
 clean1 :- %% bu = buss, \= bo! 
     txt(N0, w(BU,verb(live,imp,fin)), N1),
           txtretract( txt(N0, w(BU,verb(live,imp,fin)), N1) ).
 
 
-%¤¤¤¤¤
+%Â¤Â¤Â¤Â¤Â¤
 
 
 % remove subsets of station names  %% dalen removed from dalen hageby !! (Rough)
@@ -1554,8 +1554,8 @@ remove_streetsurp:- % Remove streetname (single) if also station/neighbourhood e
            retract(txt(M,w(A,name(_A1,_,street)),N))).
 
 %% suspended  :   error marking comes meaningless (too early) 
-% når må jeg ta bussen * til heimdal sentral banestarsjon før kl 13 . 10 fra kystad ? 
-% når må jeg ta bussen til heimdal sentral * banestarsjon før kl 13 . 10 fra kystad ? 
+% nÃ¥r mÃ¥ jeg ta bussen * til heimdal sentral banestarsjon fÃ¸r kl 13 . 10 fra kystad ? 
+% nÃ¥r mÃ¥ jeg ta bussen til heimdal sentral * banestarsjon fÃ¸r kl 13 . 10 fra kystad ? 
 
 removeunconnected :-  removeunconnected1.
 
@@ -1578,7 +1578,7 @@ removeunconnected1 :-
 
 removedots :- \+ value(nodotflag,true),!. %% Multiple sentences , keep dot
 
-%% Jeg skal til S. Sælands vei      
+%% Jeg skal til S. SÃ¦lands vei      
 
 /*
 %%  prolong forwards  
@@ -1608,16 +1608,16 @@ removeblanks :- %% txt(0, w(noe,[]), 1). %% NB Destructive
         ).
 
 
-removedots :- %% gløs. mot  dravoll %% NB swaps streets and neighbourhood
-   for(   (  txt(M1,w(W,name(Gløs,GN,Stat)),N1),
+removedots :- %% glÃ¸s. mot  dravoll %% NB swaps streets and neighbourhood
+   for(   (  txt(M1,w(W,name(GlÃ¸s,GN,Stat)),N1),
              txt(N1,w('.',['.']),N2), 
              \+ maxl(N2),  %%<- not remove the last
              testmember(Stat,[station,neighbourhood])),
           (
-             retract( txt(M1,w(W,name(Gløs,GN,Stat)),N1)),
+             retract( txt(M1,w(W,name(GlÃ¸s,GN,Stat)),N1)),
              retract( txt(N1,w('.',['.']),N2)),
 
-             assertz( txt(M1,w(W,name(Gløs,GN,Stat)),N2)) %% neib,stat  < street
+             assertz( txt(M1,w(W,name(GlÃ¸s,GN,Stat)),N2)) %% neib,stat  < street
 %%                 % Last
           )).
 
@@ -1653,8 +1653,8 @@ moshe_class(W,W,Stat):-
     classify(W,Stat),
     \+ (Stat=station,unwanted_station(W)). 
 
-/*  %% TA-100311   composite_stat(brøset_street,[],brøsetv) 
-    %% does not make brøset_street isa station
+/*  %% TA-100311   composite_stat(brÃ¸set_street,[],brÃ¸setv) 
+    %% does not make brÃ¸set_street isa station
 
 moshe_class(Strand_street,Strandveien,station):- 
     composite_stat(Strand_street,[],Strandveien). 
@@ -1712,7 +1712,7 @@ matchcomp3(N0,P,_):-
 
     P \== d, %% Dora 1 %% Ad Hoc 
     P \== i, %% i bussen = ikea bussen *      %% Ad Hoc
-    P \== g, %% g n = gløshaugen n/ går neste %% Ad Hoc
+    P \== g, %% g n = glÃ¸shaugen n/ gÃ¥r neste %% Ad Hoc
     P \== t, %% t(rondheim) sentrum    til    %% Ad Hoc
 
     skip_dot(N0,N1),
@@ -1780,7 +1780,7 @@ matchcomp2(N0):- %% Tore Amble
     moshe_class(ToreAmble,_,Class),
     assert(ctxt(N0, w(ToreAmble,name(ToreAmble,n,Class)), N2)). 
 
-%%%¤¤  MATCHRESTASSERT  
+%%%Â¤Â¤  MATCHRESTASSERT  
 
 matchrestassert(N0,N1,[],Ident):- 
     value(tmnflag,true),          %% No streets as such
@@ -1795,7 +1795,7 @@ matchrestassert(N0,N1,Brochsgate,Ident):-
 
 
 
-%%%¤¤  MATCHRESTSTREET  (stations or street)
+%%%Â¤Â¤  MATCHRESTSTREET  (stations or street)
    
 matchreststreet(_,N,X,N1):- 
     X \== [], 
@@ -1812,7 +1812,7 @@ matchreststreet(_,N,[],N):-
 matchreststreet(N0,N,[X|Z],N4):- %% First occurrence
     skip_dotx([X|Z],N,NN),  
     matchsyntxt(NN,X,N1),
-    skip_dotx(Z,N1,N2),  %% K. O. Thornæsv. %% \+ skip '.' %% TA-100118
+    skip_dotx(Z,N1,N2),  %% K. O. ThornÃ¦sv. %% \+ skip '.' %% TA-100118
        (Z \== [] -> Opt=true;Opt=false), 
     matchreststreet5(N0,N2,Z,N4,Opt), 
     !. 
@@ -1823,7 +1823,7 @@ matchreststreet(N0,N,[X|Z],N4):- %% First occurrence
 matchreststreet5(N0,N,[X|Z],N4,Opt):- 
     skip_dotx([X|Z],N,NN),  
     matchsyntxt(NN,X,N1),
-    skip_dotx(Z,N1,N2),  %% K. O. Thornæsv. %% www.klaburuten.no %% \+ skip '.'
+    skip_dotx(Z,N1,N2),  %% K. O. ThornÃ¦sv. %% www.klaburuten.no %% \+ skip '.'
     matchreststreet5(N0,N2,Z,N4,Opt),   %% TA-100118
     !. 
  
@@ -1875,9 +1875,9 @@ anystreetnumberassert(N0,Ident,N1) :-
    parsestreetnumber(N1,Num,N2),  %%   yggdrasilvn. nr. 9
    Num < 500,  %%%%%%%%   Pragmatic test for street numbers/ not clock !!!
 
-   \+ monthnamenext(N2),     %% Vikåsen 17 . mai 
-   \+ monthnumbernext(N2),   %% Vikåsen 17 .5  
-   \+ nameddatenext(N2),     %% Vikåsen 2. juledag
+   \+ monthnamenext(N2),     %% VikÃ¥sen 17 . mai 
+   \+ monthnumbernext(N2),   %% VikÃ¥sen 17 .5  
+   \+ nameddatenext(N2),     %% VikÃ¥sen 2. juledag
    \+ colonnext(N2),         %% tonstadgrenda 8:13 
    \+ minutesnext(N2), 
 
@@ -1932,12 +1932,12 @@ assertstreetxt(N,Ident,N2):-  %% priority Station before STREET
 
 %%
 
-monthnamenext(N):-      %%  Vikåsen 17 mai
+monthnamenext(N):-      %%  VikÃ¥sen 17 mai
     skip_dot(N,N1), 
     txt(N1,w(_mai,name(_may,n,month)),_),
     !.
 
-monthnumbernext(N):-   %%  Vikåsen 17.5 
+monthnumbernext(N):-   %%  VikÃ¥sen 17.5 
     skip_dot(N,N1),  
     txt(N1,w(Nu,nb(Nu,_)),_),
     Nu >=1, Nu =< 12, % nec?
@@ -2026,7 +2026,7 @@ skip_dot(N2,N3):-txt(N2, w('-',['-']), N3), \+ maxl(N3),!.
 skip_dot(N2,N2).
 
 
-%%%¤¤ XCOMPOSITE
+%%%Â¤Â¤ XCOMPOSITE
 
 xcomposite(First,_Restlist,_Key) :- 
     var(First),
@@ -2094,7 +2094,7 @@ syntxt(N,Veg,N1):- %%   liberal
      Word = w(_Vei,name(Veg,n,_))).
 
 
-%%¤¤¤  MATCHSYNTXT
+%%Â¤Â¤Â¤  MATCHSYNTXT
 
 matchsyntxt(N,street,N1):- 
     syntxt(N,Vei,N1),
@@ -2188,24 +2188,24 @@ lexcandsearch(X,Y,Street):-   %% amblesgate
 
 teststr(U,Y) :- 
     (synname(U,Y);synplace(U,Y)), 
-    \+ xforeign(Y), %% strans -> strand (even if komm) | avoid gøran -> gran 
+    \+ xforeign(Y), %% strans -> strand (even if komm) | avoid gÃ¸ran -> gran 
     \+ streetsyn(Y).  %% avoid wigens -> vegen 
 
 
 lexcandsearch(X,Y,Street):-
-    lexsplitroad(X,U,Street1), %% dalgård vegen |  stransvegen
-    lexhash(U,Y,Street),       %%  strans -> sætran ..    
+    lexsplitroad(X,U,Street1), %% dalgÃ¥rd vegen |  stransvegen
+    lexhash(U,Y,Street),       %%  strans -> sÃ¦tran ..    
     
     subordstreet(Street1,Street), %% street < street | streetstat
                                   
-    \+ (xforeign(Y), \+ part_name(Y)),      %% avoid gøran -> gran
+    \+ (xforeign(Y), \+ part_name(Y)),      %% avoid gÃ¸ran -> gran
     \+ streetsyn(Y).    %% avoid wigens -> vegen %% TA-071013 
 
-%%  brannåsen -> buran      NO
-%%  skovgården -> skovgård  YES
+%%  brannÃ¥sen -> buran      NO
+%%  skovgÃ¥rden -> skovgÃ¥rd  YES
 %%  dragviold -> dragvoll   YES (no loop)
 
-%%   subordstreet(street,nil) //NO strans_street \+  -> sætran
+%%   subordstreet(street,nil) //NO strans_street \+  -> sÃ¦tran
 
 subordstreet(street,streetstat). %% no cut
 subordstreet(X,X).
@@ -2220,7 +2220,7 @@ lexhash(U,Y,Street):-    %% Lewin + Hashtable   %% Johan,Y
                   S \= U. %%  UNTESTED %% TA-110511
 
 lexhash(X,Z,Street):-       %% Soundex + Hashtable 
-    textlength(X,N), N > 5, %% mårra -> mara -> marka 
+    textlength(X,N), N > 5, %% mÃ¥rra -> mara -> marka 
     tucsoundex(X,Y),     
     lexhash0(X,Y,Z,Street). 
 
@@ -2229,12 +2229,12 @@ lexhash0(_X,Y,Z,Street):-
    lexhash1(Y,Z,Street). 
 
 lexhash0(X,Y,Z,Street):-  %%  Soundex + Lewin with care
-    \+toredef(X,_,_),     %% avoid  spurious slåss -> slas -> sas
-    X \== Y,              %% skovgården -> skovgard %% slåss -> slas
+    \+toredef(X,_,_),     %% avoid  spurious slÃ¥ss -> slas -> sas
+    X \== Y,              %% skovgÃ¥rden -> skovgard %% slÃ¥ss -> slas
     \+toredef(Y,_,_), 
     textlength(Y,M), M > 4, %% \+ sletten -> slet -> set  
     lexdevcand(Y,Y1),       % slas -> sas
-    lexhash1(Y1,Z,Street).  % X=brattås, Z=bauta ??
+    lexhash1(Y1,Z,Street).  % X=brattÃ¥s, Z=bauta ??
 
 
 lexhash1(X,Y,Street):-  %% Alternativ A Lewin distance
@@ -2254,7 +2254,7 @@ lexsplitroad(X,Y,Street):-
     V \== 'g', %% frig g, rosenbor g %% TA-110401
 
 %%%%%%%%%%%    !,      issamveien
-    Street=street. %% !trap %% braøsetveien \+ nil
+    Street=street. %% !trap %% braÃ¸setveien \+ nil
 
 
 
@@ -2271,7 +2271,7 @@ lextorehash0(X,Y):-
 single_letter(X):- %% TA-101117
     atom(X),
     iso_atom_chars(X,[ASCII]),
-    (X=='æ';X=='ø';X=='å';
+    (X=='Ã¦';X=='Ã¸';X=='Ã¥';
 
      (ASCII >=97 ,ASCII =<122)), %% a--z
     !.
@@ -2290,7 +2290,7 @@ single_letter(X):- %% TA-101117
 
   rw1([a,i,l,l],       X:[a,l,l|X]).   %  aill -> all
 
-  rw1([h,a,ø,y],       X:[h,ø,y|X]).   %  hÃ¸yskoleparken 
+  rw1([h,a,Ã¸,y],       X:[h,Ã¸,y|X]).   %  hÃƒÂ¸yskoleparken 
   rw1([m,a,n,d],       X:[m,a,n,n|X]). %  tiedemand %% TA-100204
   rw1([s,c,h,j],       X:[s,j|X]).     %  schj -> sj 
   rw1([s,c,h,i],       X:[s,j|X]).     %  schi -> sj 
@@ -2302,7 +2302,7 @@ single_letter(X):- %% TA-101117
   rw1([c,h,o],         X:[s,j,o|X]).   %  cho  -> sjo %% choice 
   rw1([c,h,u],         X:[s,j,u|X]).   %  chu  -> sju
   rw1([i,e,d],         X:[i,d|X]).     %  tiedeman -> tideman  
-  rw1([i,æ,'½'],       X:[å|X]).       %  iæ½   -> å  %% flatiæ½stoppen
+  rw1([i,Ã¦,'Â½'],       X:[Ã¥|X]).       %  iÃ¦Â½   -> Ã¥  %% flatiÃ¦Â½stoppen
   rw1([o,c,h],         X:[o,k|X]).     %  och  -> ok
   rw1([o,i,l],         X:[o,l|X]).     %  oil  -> ol
   rw1([r,o,p],         X:[r,u,p|X]).   %  rop  -> rup   Most common
@@ -2316,7 +2316,7 @@ single_letter(X):- %% TA-101117
 %%   rw1([s,k,e],       X:[s,j,e|X]).  %  ske  -> sje  %% norske
   rw1([s,k,j],         X:[s,j|X]).     %  skj  -> sj 
   rw1([s,k,y],         X:[s,j,y|X]).   %  sky  -> sjy 
-  rw1([s,t,j],         X:[s,j|X]).     %  stj  -> sj   %%  stjørdal ->
+  rw1([s,t,j],         X:[s,j|X]).     %  stj  -> sj   %%  stjÃ¸rdal ->
   rw1([t,i,e],         X:[t,i|X]).     %  matiesen -> matisen
   rw1([t,i,o],         X:[s,j,o|X]).   %  tio  -> sjo
   rw1([u,r,g],         X:[o,r,g|X]).   %  urg  -> org 
@@ -2324,14 +2324,14 @@ single_letter(X):- %% TA-101117
 
   rw1([a,e],           X:[e|X]).       %  ae   -> e
 
-  rw1([a,'¦'],         X:[e|X]).     %  ae   -> e  steinkjÃ¦r?
-  rw1([a,'|'],         X:[e|X]).     %  ae   -> e  steinkjÃ|r?
+  rw1([a,'Â¦'],         X:[e|X]).     %  ae   -> e  steinkjÃƒÂ¦r?
+  rw1([a,'|'],         X:[e|X]).     %  ae   -> e  steinkjÃƒ|r?
 
 %%  rw1([a,f],           X:[a,v|X]).     %  af   -> av  drafiol -> draviol ->drafiol ooooooooooo
-%%  rw1([a,y],           X:[ø|X]).       %  ay   -> ø %%  graaemÃ¥lna -> graaemaylna 
-  rw1([a,y],           X:[å|X]).       % PrestegÃ¥rdsjordet? 
-  rw1([a,ø],           X:[ø|X]).       %  aø   -> ø [-> o] %%           rÃ¸ros ->  raøros 
-  rw1([a,a],           X:[å|X]).       %  aa   -> å (å-trøbbel) %% TA-071217
+%%  rw1([a,y],           X:[Ã¸|X]).       %  ay   -> Ã¸ %%  graaemÃƒÂ¥lna -> graaemaylna 
+  rw1([a,y],           X:[Ã¥|X]).       % PrestegÃƒÂ¥rdsjordet? 
+  rw1([a,Ã¸],           X:[Ã¸|X]).       %  aÃ¸   -> Ã¸ [-> o] %%           rÃƒÂ¸ros ->  raÃ¸ros 
+  rw1([a,a],           X:[Ã¥|X]).       %  aa   -> Ã¥ (Ã¥-trÃ¸bbel) %% TA-071217
   rw1([c,a],           X:[k,a|X]).     %  ca   -> ka
   rw1([c,e],           X:[s,e|X]).     %  ce   -> se
   rw1([c,i],           X:[s,j|X]).     %  ci   -> sj
@@ -2340,7 +2340,7 @@ single_letter(X):- %% TA-101117
 %%   rw1([d,s],           X:[t,s|X]).    %  ds   -> ts  // sigurd
   rw1([d,t],           X:[t|X]).       %  dt   -> t  
 %%  rw1([e,i],           X:[e|X]).       %  ei   -> e   %% Meierier <-- /veien->v->[]
-  rw1([e,u],           X:[ø,y|X]).     %  eu   -> øy  
+  rw1([e,u],           X:[Ã¸,y|X]).     %  eu   -> Ã¸y  
   rw1([g,h],           X:[g|X]).       %  gh   -> g
   rw1([g,j],           X:[j|X]).       %  gj   -> j  
   rw1([h,n],           X:[n|X]).       %  hn   -> n
@@ -2350,9 +2350,9 @@ single_letter(X):- %% TA-101117
   rw1([k,h],           X:[k|X]).       %  kh   -> k
   rw1([k,y],           X:[s,j,y|X]).   %  ky   -> sjy %% Kystad/ Kyvann <-- 
   rw1([l,d],           X:[l|X]).       %  ld   -> l
-  rw1([o,e],           X:[ø|X]).       %  oe   -> ø ( -> o) 
+  rw1([o,e],           X:[Ã¸|X]).       %  oe   -> Ã¸ ( -> o) 
   rw1([o,u],           X:[a,u|X]).     %  ou   -> au
-  rw1([o,y],           X:[ø,y|X]).     %  oy   -> øy 
+  rw1([o,y],           X:[Ã¸,y|X]).     %  oy   -> Ã¸y 
   rw1([q,u],           X:[k,v|X]).     %  qu   -> kv
 %%   rw1([r,s],           X:[s|X]).      %  rs   -> s %% norsk -> nosk
 %%  rw1([s,h],           X:[s,j|X]).     %  sh   -> sj %% sammfunnshus -> samfunsjus *
@@ -2360,10 +2360,10 @@ single_letter(X):- %% TA-101117
 %%   rw1([t,n],           X:[n|X]).       %  tn   -> n  %% schjetnan -> sjenan ?
   rw1([t,h],           X:[t|X]).       %  th   -> t  
   rw1([u,y],           X:[u|X]).       %  uy  -> u   ?
-  rw1([ø,g],           X:[ø,y|X]).     %  øg   -> øy 
-  rw1([ø,i],           X:[ø,y|X]).     %  øi   -> øy 
-  rw1([ø,ª],           X:[ø|X]).       %  øª -> ø  %%   løªrdag %% TA-100131
-  rw1([å,e],           X:[å|X]).       %  åesen -> åsen 
+  rw1([Ã¸,g],           X:[Ã¸,y|X]).     %  Ã¸g   -> Ã¸y 
+  rw1([Ã¸,i],           X:[Ã¸,y|X]).     %  Ã¸i   -> Ã¸y 
+  rw1([Ã¸,Âª],           X:[Ã¸|X]).       %  Ã¸Âª -> Ã¸  %%   lÃ¸Âªrdag %% TA-100131
+  rw1([Ã¥,e],           X:[Ã¥|X]).       %  Ã¥esen -> Ã¥sen 
 
 
   rw1([q],             X:[k|X]).       %  q    -> k  
@@ -2371,10 +2371,10 @@ single_letter(X):- %% TA-101117
 %%  rw1([y],               X:[i|X]).        %  y    -> i ? statsbigd
   rw1([z],             X:[s|X]).       %  z    -> s
   rw1([w],             X:[v|X]).       %  w    -> v  
-  rw1([æ],             X:[e|X]).       %  æ    -> e % sound
-%%   rw1([ø],             X:[o|X]).       %  ø    -> o % sound hoyskoleringen 
+  rw1([Ã¦],             X:[e|X]).       %  Ã¦    -> e % sound
+%%   rw1([Ã¸],             X:[o|X]).       %  Ã¸    -> o % sound hoyskoleringen 
 
-    rw1([å],             X:[a|X]).       %  å    -> a % \+ sound // asvang -> åsvang 
+    rw1([Ã¥],             X:[a|X]).       %  Ã¥    -> a % \+ sound // asvang -> Ã¥svang 
 
 
 %% General
@@ -2437,8 +2437,8 @@ tsxreplace(XL,XL,Max):-
     traceprint(4, ' '). 
 
 
-tsxrepl1([A|XL],ÅR,1):- % only 1 replacement
-   rw1([A|AZ],XZ:ÅR),
+tsxrepl1([A|XL],Ã…R,1):- % only 1 replacement
+   rw1([A|AZ],XZ:Ã…R),
    tsxmatches(AZ,XL,XZ),
    !.
 
@@ -2468,17 +2468,17 @@ no_unprotected_verb :-
 unprotected_verb :- 
   
 
-% Være = inf,fin
+% VÃ¦re = inf,fin
  
     txt(X,w(_,VVV),Y), %%  <- !
 
- \+ txt(X, w(_,noun(meeting,sin,u,n)), Y), %% møte %% TA-110330
+ \+ txt(X, w(_,noun(meeting,sin,u,n)), Y), %% mÃ¸te %% TA-110330
 
- \+ txt(X, w(g,_), Y),  %% Hazardous %% dronningen g - går | byåsen v g. skole
+ \+ txt(X, w(g,_), Y),  %% Hazardous %% dronningen g - gÃ¥r | byÃ¥sen v g. skole
                              %% TA-110610
- \+ txt(X,w(_,[nå]),         Y), % nå (reach)
+ \+ txt(X,w(_,[nÃ¥]),         Y), % nÃ¥ (reach)
 
- \+ txt(X,w(_,[når]),        Y), % når (reach)  fra kong øysteinsvei når jeg må være i byen.
+ \+ txt(X,w(_,[nÃ¥r]),        Y), % nÃ¥r (reach)  fra kong Ã¸ysteinsvei nÃ¥r jeg mÃ¥ vÃ¦re i byen.
 
  \+ txt(X,w(_,[e]),          Y), % e = er %% du e dum  
                                  % til e verket*                   
@@ -2486,13 +2486,13 @@ unprotected_verb :-
     (VVV=verb(_F,_Pastpres,_fin)) %% bildet finnes verb(show,pres,pass)
    ;
    (VVV=[Vil], %% hjelpeverb
-        testmember(Vil,[kan,vil,må,bør,skal, %% kan også verb! 
-                        kunne,ville,måtte,burde,skulle])) %% burde?
+        testmember(Vil,[kan,vil,mÃ¥,bÃ¸r,skal, %% kan ogsÃ¥ verb! 
+                        kunne,ville,mÃ¥tte,burde,skulle])) %% burde?
    ),
 
  % X not preceded by
 
- \+ txt(_,w(_,[å]),X),  
+ \+ txt(_,w(_,[Ã¥]),X),  
  \+ txt(_,w(_,[som]),X),         % that doesnt have a relpron ahead
  \+ txt(_,w(_,[that]),X), 
  \+ txt(_,w(_,[which]),X). 
