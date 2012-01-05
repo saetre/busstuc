@@ -1986,7 +1986,7 @@ statem(S,Com::Q) ---> %%  Da er ikke du  et orakel
 statem(S,Com::Q) ---> %% 'Nå' skal vi 'gå'
     adverbx(Day,DayClass,pre), 
     saa0,
-    (do),
+    doit,
     state(S, Com::Q)  -                    
         (xadverb(Day,DayClass)). %% -x 
 
@@ -2015,7 +2015,7 @@ statem(S,SemSt) --->
 
 statem(S, SEM) ---> % i morgen kveld 'må' %% EXPERIMENT 
     preadverbials0,      % are stored
-    aux1, %% (do),  'må'/skal 
+    aux1, %% doit,  'må'/skal 
     !,accept,
     state(S, SEM).               
 
@@ -2031,7 +2031,7 @@ statem(S,Com::Q) ---> %% I Trondheim er det en buss
 
 statem(S,Com::Q) ---> %% 'på' mandag skal jeg <dra> til nth 
     preadverbial1(Prep,Y, SC::P3),
-    (do),
+    doit,
     specific_phrase(A, B::C),
 %   <dra>
     w(prep(TO)),
@@ -2045,7 +2045,7 @@ statem(S,Com::Q) ---> %% 'på' mandag skal jeg <dra> til nth
 
 statem(S,Com::Q) ---> %% fronted %% I Trondheim vil/(ambig) vi ta buss
     preadverbial1(Prep,Y, SC::P3), 
-    (do),
+    doit,
     !,
     state(S, Com::Q)  -                    
         ( adverbial1(Prep,Y, SC::P3)).
@@ -4159,7 +4159,7 @@ ynq(P) --->    %% Rhetorical negation (incomplete)
 
 
 ynq(P) ---> % YES NO Questions  %% Kan du vise meg
-    (do),
+    doit,
     you,
     w(verb(V,_,fin)), %% imp/inf/pres 
     {testmember(V,[list,show])}, %% etc. 
@@ -4169,7 +4169,7 @@ ynq(P) ---> % YES NO Questions  %% Kan du vise meg
 
 
 ynq(P) ---> % YES NO Questions
-    (do), 
+    doit, 
     negation0(_), %% ignore negation
     statreal1(P).      
  
@@ -4420,7 +4420,7 @@ forwq(P,Prep,X,Q1::Q) ---> %% HVOR ER = be1
 
 
 forwq(P,Prep,X,Q1::Q) ---> %% before verb: kan,skal,vil er also "verbs"
-    (do),  
+    doit,  
     !, 
     statreal(P)
         -  adverbial1(Prep,X, Q1::Q).
@@ -4690,8 +4690,8 @@ whatq(which(Y:thing):::P) ---> %% hva sier du til det ?
 
 whatq(WhichY:::P and Q) ---> %% hva 'gjør' du %% //hva betyr/mener
     what_phrase(YT,WhichY,P),
-    lexv(tv,do,_,fin), 
-    {\+ testmember(do,[cost,be2,have])}, 
+    lexv(tv,'do',_,fin), 
+    {\+ testmember('do',[cost,be2,have])}, 
     subject(XT,NP),
     not_look_ahead([at]), %% e.g. rv-sense
     not_look_ahead(['å']),
@@ -5058,8 +5058,8 @@ whatq(WhichX:::P) --->
 
 whatq(P) --->
     [hva], 
-    (do), 
-    whichq(P)  \  (which,w(noun(thing,sin,u,n)),(do)). 
+    doit, 
+    whichq(P)  \  (which,w(noun(thing,sin,u,n)),doit). 
 
 
 whatq(P) ---> %% * Hva skjer 
@@ -5372,7 +5372,7 @@ whereq(which(_Y):::_P) --->
 whereq(P) --->   %% hvor 'får' jeg ta buss %% TA-100902
     where,
     aux1,         %% NB ikke 'får' %% hvor 'får' jeg buss
-    ppq(P) \ (prep(in),which,w(noun(place,sin,u,n)),(do)).
+    ppq(P) \ (prep(in),which,w(noun(place,sin,u,n)),doit).
 
 
 whereq(WP) ---> % object %% moved after pp
@@ -5611,7 +5611,7 @@ howadjq(P) ---> % moved forw
     {testmember(FREQ,
           [frequency,speed,lateness,earliness,duration,distance])},
     !,     %%  <----    !!!!!
-    ppq(P)  \  (prep(with),which,w(noun(FREQ,sin,u,n)),(do)). %% iv
+    ppq(P)  \  (prep(with),which,w(noun(FREQ,sin,u,n)),doit). %% iv
 
 
 howadjq(P) ---> 
@@ -5775,7 +5775,7 @@ howadjq(P) ---> % hvor gammel/lang    er
 howadjq(P) ---> % hvor lang tid vil X  bruke /Nominal Front 
     hvor, 
     howadj1(Noun), % hvor lang tid 
-    (do),
+    doit,
     np(A,NP),
     w(verb(Use,_,_)), %% bruke/brukt
     {testmember(Use,[use,take])}, %% not use2
@@ -5909,8 +5909,8 @@ howadjq(P) ---> % hvor lang tid bruker ==> go with duration
 howadjq(P) ---> % hvor lenge 'må' jeg
     hvor, 
     howadj1(Noun), % hvor lang tid  
-    (do),
-    ppq(P)  \  (prep(with),which,w(noun(Noun,sin,u,n)),(do)),
+    doit,
+    ppq(P)  \  (prep(with),which,w(noun(Noun,sin,u,n)),doit),
     !,accept. %% <-- !!!
 
 howadjq(P) --->  
@@ -8469,7 +8469,7 @@ qverb_phrase(Y,N, S,ComP2) --->
         npgap(Y)).
 
 qverb_phrase(Y,N, S,ComP2) ---> %% hva vil du vite
-    (do),
+    doit,
     noun_phrase1(X, P::P1),
     lexv(Vcat,know1,Tense,fin),
     traceprint(4,qv21), 
@@ -8555,7 +8555,7 @@ qverb_phrase(Y,N, S, ComP2 )---> % tror du at jeg kan ta -> tar jeg
 
 
 qverb_phrase(Y,N, S, ComP2 )---> 
-    (do),                         % kan       
+    doit,                         % kan       
     noun_phrase1(X, NP1),       % du
     negation2(id,N),            % ikke 
     redundant0x, %% 'så' allowed here 
@@ -15730,13 +15730,13 @@ lexv(tv,know1,P,Q) ---> %% kjenne
 
 
 lexv(T,Live,P,Q)--->
-    (do), faa,
+    doit, faa,
     w(verb(Live,P,Q)),
     {verbtype(Live,T)},    
     !,accept.
 
 lexv(T,Live,P,Q)--->
-    (do),                   %% SUSPECT
+    doit,                   %% SUSPECT
     not_look_ahead(['nå']), %% <--
     w(verb(Live,P,Q)),
     {verbtype(Live,T)},    
@@ -16775,7 +16775,7 @@ aux10 ---> [].
 aux0 ---> faa,look_ahead(w(verb(_help,_,_))),!. %% 'få'|r hj_lpe(t)
 aux0 ---> ['må']. %% Special case, jeg 'må' til nth/ jeg 'må' 'gå' til nth
 aux0 ---> be,['så'], w(adj2(good,nil)),['å'],!,accept. %% ( fronted)
-aux0 ---> (do). 
+aux0 ---> doit. 
 aux0 ---> [].
 
 
@@ -16800,12 +16800,12 @@ paux0 ---> [].
 do(N) --->  use,negation0(N),infinitive.
 
 do(N) ---> 
-    (do),
+    doit,
     negation0(N),hasto0.
 
 do(id )---> [] .  
 
-do0 ---> (do).
+do0 ---> doit.
 
 do0 ---> []. 
 
@@ -16813,21 +16813,21 @@ do0 ---> [].
 docan ---> [kan].
 docan ---> ['må'].
 docan ---> ['får']. %% .. 'får' jeg ta ...
-docan ---> (do),!.
+docan ---> doit,!.
 
 %%%%¤¤¤  DO   Basic active aux
 
-(do) ---> faa, 
+doit ---> faa, 
     w(noun(information,_,_,_)), %% 'få' greie 'på' 
     !,
     reject.                          
 
-(do) ---> [vil],[vil],!,accept. %% e.g.  skulle ville 
+doit ---> [vil],[vil],!,accept. %% e.g.  skulle ville 
 
-(do) ---> skalsaa. %% aux1 
+doit ---> skalsaa. %% aux1 
 
-(do) ---> may.
-(do) ---> must.
+doit ---> may.
+doit ---> must.
 
 
 
@@ -17688,7 +17688,7 @@ negation2(often,often) ---> [].
 
 %%%%¤¤ NEGATION0 
 
-negation0(N) ---> {nonvar(N),N==(not)},!. %% vil ikke til trondheim %% TA-110128
+negation0(N) ---> {nonvar(N),N==not},!. %% vil ikke til trondheim %% TA-110128
 negation0(N) ---> negation(N),!.
 negation0(id) --->  [].         %% cut trap if negation0(id)
 
