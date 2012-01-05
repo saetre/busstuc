@@ -585,9 +585,9 @@ spurious_street_hash(Kroglunds,Kroglundsv) :- %% TA-061108
     composite_stat(Johan,[Kroglundsv],      Johan_kroglundsv),
     ends_with_vg(Johan_kroglundsv).
 
-spurious_street_hash(Flatås,Flatåsv) :- 
-    composite_stat(Flatås,[street],Flatåsv),
-    ends_with_vg(Flatåsv).
+spurious_street_hash(Flatas,Flatasv) :- 
+    composite_stat(Flatas,[street],Flatasv),
+    ends_with_vg(Flatasv).
 
 
 ends_with_vg(JPv):- 
