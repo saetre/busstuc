@@ -121,7 +121,7 @@ gps_time(T) ---> w(nb(T,num)).
 
 %% varsle + ordinary sentence %% Defies all rules  
 
-% varsle 10 minutter før buss [går] fra nth til risvollan. 
+% varsle 10 minutter fÃ¸r buss [gÃ¥r] fra nth til risvollan. 
 
 %% sentence ====> sentenceG
 
@@ -134,7 +134,7 @@ sentence01(S) ---> sentence1(S).
 
 %% END NOTIFY SECTION
 
-%%¤ SENTENCES  
+%%Â¤ SENTENCES  
 
 sentences([new:::P]) ---> 
     {user:value(queryflag,false)}, %%  Only in multi dialog system 
@@ -175,7 +175,7 @@ evenmore0(S1,S2,[S1|Square]) --->  %% 2
     moresentences0(S2,Square).
 
 
-%%%¤ ONESENTENCE 
+%%%Â¤ ONESENTENCE 
 
 onesentence([])    ---> endofline,!,accept.
 
@@ -221,13 +221,13 @@ terminatores ---> terminator,!,terminatores.
 terminatores ---> check_stop,endofline,!,accept. %% Really end
                   %%%%%%%%%% TA-101212
 %% terminatore --->  [og], not_look_ahead(w(verb(_,_,_))).  %% Bloody experiment 
-                                                            %% og (å) få
+                                                            %% og (Ã¥) fÃ¥
 terminatore ---> terminator1.
 
 terminator1 ---> terminator,
     not_look_ahead(w(nb(_,num))), %% klokken er 09.04 %% sentences dont start with numbers
     not_look_ahead(w(name(_Jan_,_,month))), %% buss 2. jan
-    not_look_ahead(w(name(_Jan_,_,day))),   %% buss 2 (.) nyttårsdag 
+    not_look_ahead(w(name(_Jan_,_,day))),   %% buss 2 (.) nyttÃ¥rsdag 
     not_look_ahead(w(name(_Jan_,_,date))), 
    !,accept.                               
   
@@ -278,10 +278,10 @@ assemble_stop_locations([]) ---> end_of_line.
 
 %% Part: sentence is undecided
 
-% ennå en gang ser det ut til at bussoraklet ikke er min venn.
+% ennÃ¥ en gang ser det ut til at bussoraklet ikke er min venn.
 
 
-%%%¤ SENTENCE1  (new:::P)
+%%%Â¤ SENTENCE1  (new:::P)
 
 
 sentence1(new:::P) ---> %% fint at =(Det er) fint at %% TA-110518
@@ -294,17 +294,17 @@ sentence1(new:::P) ---> %% fint at =(Det er) fint at %% TA-110518
 
 
 
-sentence1(new:::P) ---> %% (Det) å ta buss er  bra %% TA-110111
+sentence1(new:::P) ---> %% (Det) Ã¥ ta buss er  bra %% TA-110111
     detaa,        %%
     clausal_object1(NewSCo,CNP)\[noen],
     !,
     statreal(P)\ xnp(NewSCo,CNP).
 
-detaa ---> [det],[å]. %% TA-110111
-detaa ---> [å].  
+detaa ---> [det],[Ã¥]. %% TA-110111
+detaa ---> [Ã¥].  
 
 
-sentence1(new:::P) ---> %% Hvorvidt bussen går er bra
+sentence1(new:::P) ---> %% Hvorvidt bussen gÃ¥r er bra
     hvorvidt,        %% special, ad hoc
     clausal_object1(NewSCo,CNP),
     !,
@@ -345,7 +345,7 @@ sentence1(new:::P)  --->   %% tolkes (som) = noen tolker dette (som)
 
 
                           %% bare et ord -> dette er et ord
-sentence1(new:::P)  --->  %%  kanskje     ikke    i tråd med intensjonen
+sentence1(new:::P)  --->  %%  kanskje     ikke    i trÃ¥d med intensjonen
                           %%  -> dette er ikke    ...
      optional([kanskje]), %% if visible
      negation(N),         
@@ -357,12 +357,12 @@ sentence1(new:::P)  --->  %%  kanskje     ikke    i tråd med intensjonen
  
   
 
-%% Det er ofte slike spm brukere er interessert i å stille når man ikke
+%% Det er ofte slike spm brukere er interessert i Ã¥ stille nÃ¥r man ikke
 %% kjenner rutene...
 
 
 
-%% Det spørsmålet er brukerne interessert i å stille
+%% Det spÃ¸rsmÃ¥let er brukerne interessert i Ã¥ stille
 sentence1(new:::P)  --->  %%  
      one_of_lit([den,det,dette,disse,slike]), %%0 
      w(noun(Answer,S,U,n)), %1
@@ -370,7 +370,7 @@ sentence1(new:::P)  --->  %%
      subject(X, SNP),       %3
      w(adj2(Interes,nil)),  %4
      w(prep(In)),           %5
-     [å],                   %6
+     [Ã¥],                   %6
      w(verb(Ask,inf,fin)),  %7
      !,
      statreal(P) \ 
@@ -378,13 +378,13 @@ sentence1(new:::P)  --->  %%
         w(verb(be,Pres,fin)),   %2 %%
         w(adj2(Interes,nil)),   %4
         w(prep(In)),            %5
-        [å],                    %6
+        [Ã¥],                    %6
         w(verb(Ask,inf,fin)),   %7
         w(noun(Answer,S,U,n))). %1
 
 
 %% Topicalised prepostional object 
-%% Det spørsmålet er brukerne interessert i
+%% Det spÃ¸rsmÃ¥let er brukerne interessert i
 
 sentence1(new:::P)  --->  %%  det svaret er jeg interessert i
      one_of_lit([den,det,dette,disse,slike]), %% 
@@ -424,7 +424,7 @@ sentence1(new:::P)  --->  %%
      one_of_lit([den,det,dette,disse,slike]), %% 
      w(noun(Answer,S,U,n)),
      w(verb(Like,Pres,fin)),
-     {\+ testmember(Like,[have,get])}, %% har jeg besvart/ får et svar
+     {\+ testmember(Like,[have,get])}, %% har jeg besvart/ fÃ¥r et svar
                                
      subject(X, SNP),  
      !,
@@ -433,7 +433,7 @@ sentence1(new:::P)  --->  %%
         w(verb(Like,Pres,fin)),
         w(noun(Answer,S,U,n))).
 
-sentence1(new:::P) ---> %% Hvorvidt bussen går kan diskuteres
+sentence1(new:::P) ---> %% Hvorvidt bussen gÃ¥r kan diskuteres
     [hvorvidt],        %% special, ad hoc
      clausal_object1(NewSCo,CNP),
     !,
@@ -445,7 +445,7 @@ sentence1(new:::P) ---> %% Hvorvidt bussen går kan diskuteres
 
 
 %% VERB ---> DU Verb %% TA-110504
-sentence1(new:::P) ---> %%  Snakkes på bussen i morgen
+sentence1(new:::P) ---> %%  Snakkes pÃ¥ bussen i morgen
     w(verb(Talk,_Pres,_FinPass)),  gmem(Talk,[talk,speak]),
     look_ahead(w(prep(_))),
     !,
@@ -453,7 +453,7 @@ sentence1(new:::P) ---> %%  Snakkes på bussen i morgen
 
 %% AUX = JEG AUX 
 
-sentence1(new:::P) ---> %% TA-110518  må til byen
+sentence1(new:::P) ---> %% TA-110518  mÃ¥ til byen
     aux1,
     not_look_ahead_np,  
     !,
@@ -462,7 +462,7 @@ sentence1(new:::P) ---> %% TA-110518  må til byen
 
 
 %% Verb past part = Jeg past fin %% TA-101102
-sentence1(new:::P) ---> %%  %% Fått = jeg har fått= jeg fikk
+sentence1(new:::P) ---> %%  %% FÃ¥tt = jeg har fÃ¥tt= jeg fikk
     w(verb(See,past,part)), 
     !,
     statreal(P)\ ([jeg],w(verb(See,past,fin))).
@@ -471,14 +471,14 @@ sentence1(new:::P) ---> %%  %% Fått = jeg har fått= jeg fikk
 %% VERB = JEG VERB
 
 %% Verb past part = Jeg past fin %% TA-101102
-sentence1(new:::P) ---> %%  %% Fått = jeg har fått= jeg fikk
+sentence1(new:::P) ---> %%  %% FÃ¥tt = jeg har fÃ¥tt= jeg fikk
     w(verb(See,past,part)), 
     !,
     statreal(P)\ ([jeg],w(verb(See,past,fin))).
 
 
 %% VERB = JEG VERB
-sentence1(new:::P) ---> %%  Har ikke vært i oslo
+sentence1(new:::P) ---> %%  Har ikke vÃ¦rt i oslo
     [har],
     negation0(N),
     w(verb(See,past,part)), 
@@ -486,27 +486,27 @@ sentence1(new:::P) ---> %%  Har ikke vært i oslo
     statreal(P)\ ([jeg],w(verb(See,past,fin)),negation(N)).
 
 %% VERB = JEG VERB
-sentence1(new:::P) ---> %%  GÅR (til)---> JEG GÅR (til)
-    not_look_ahead([så]),
-    w(verb(Go,pres,fin)), %% tenk på en buss \= jeg tenker på ..%% TA-110824
+sentence1(new:::P) ---> %%  GÃ…R (til)---> JEG GÃ…R (til)
+    not_look_ahead([sÃ¥]),
+    w(verb(Go,pres,fin)), %% tenk pÃ¥ en buss \= jeg tenker pÃ¥ ..%% TA-110824
         gmem(Go, [go,think]), %% TA-110624
 
-        not_look_ahead_np, %% går bussen er Q // går lørdag ok
-        not_look_ahead([ikke]), %%  går ikke = rhet q
+        not_look_ahead_np, %% gÃ¥r bussen er Q // gÃ¥r lÃ¸rdag ok
+        not_look_ahead([ikke]), %%  gÃ¥r ikke = rhet q
         not_look_ahead_lit([jeg,meg,du]), 
     !,
     statreal(P)\ ([jeg],w(verb(Go,pres,fin))).
 
 %% VERB = JEG VERB
 sentence1(new:::P) ---> %%  VERB presens---> JEG VERB 
-    not_look_ahead([så]),
+    not_look_ahead([sÃ¥]),
     w(verb(Go,T,fin)), gmem(T,[pres]), 
 
         gmem(Go, [arrive,calculate,discover,give,hope,  %% expect, ambig: if stacked, no BT 
                pass,run,send, start,take,think,try,wait]), %% TA-110623
         particlev1(Go), %% regner med 
         
-        not_look_ahead([ikke]), %%  går ikke = rhet q
+        not_look_ahead([ikke]), %%  gÃ¥r ikke = rhet q
 
         not_look_ahead_lit([jeg,meg,du,vi]), 
     !,
@@ -514,14 +514,14 @@ sentence1(new:::P) ---> %%  VERB presens---> JEG VERB
 
 %% VERB = JEG VERB
 sentence1(new:::P) ---> 
-    not_look_ahead([så]),
+    not_look_ahead([sÃ¥]),
     w(verb(Go,T,fin)), gmem(T,[imp,inf]), 
 
         gmem(Go, [arrive,discover,  %% expect, ambig: if stacked, no BT 
                pass,run,send,start,take,try]), %% TA-100916 \+ wait  command
                                                                   %% regret beklager
         reflexiv0(Go), %% fortell meg det %% TA-110615
-        not_look_ahead([ikke]), %%  går ikke = rhet q
+        not_look_ahead([ikke]), %%  gÃ¥r ikke = rhet q
 
         
         not_look_ahead_lit([jeg,meg,du,vi]), 
@@ -530,8 +530,8 @@ sentence1(new:::P) --->
 
 
 %% VERB = JEG VERB
-sentence1(new:::P) ---> %% Regner med det er en smal sak for Amble å endre dette
-    not_look_ahead([så]), 
+sentence1(new:::P) ---> %% Regner med det er en smal sak for Amble Ã¥ endre dette
+    not_look_ahead([sÃ¥]), 
     w(verb(Hope,pres,fin)), 
         {testmember(Hope,[believe,calculate,think,see,know])}, %% TA-110504%% ,regret = beklager
     not_look_ahead([det]), %% ad hoc  regner det   
@@ -543,19 +543,19 @@ sentence1(new:::P) ---> %% Regner med det er en smal sak for Amble å endre dette
 
 %% VERB = JEG VERB
 sentence1(new:::P) ---> %% Tenkte bare jeg skulle 
-    not_look_ahead([så]), 
+    not_look_ahead([sÃ¥]), 
     w(verb(Think,_,fin)),  
     redundant0,
     [jeg],
     aux1,
     !,    
     statement(P) \ 
-       ( [jeg], w(verb(Think,pres,fin)),[å]).
+       ( [jeg], w(verb(Think,pres,fin)),[Ã¥]).
 
 %% VERB = JEG VERB
 sentence1(new:::P) ---> %% kan se at det regner (not se! command)
     aux1,
-    redundants0,   %% må vel nesten %% TA-110106
+    redundants0,   %% mÃ¥ vel nesten %% TA-110106
     negation0(Neg),
     w(verb(Think,inf,fin)),
     !,    
@@ -587,19 +587,19 @@ sentence1(modifier(A):::(C isa clock and srel/nil/time/C/A and event/real/A)) --
 sentence1(item:::P) ---> 
     {value(dialog,1)}, 
     item(P),
-    endofline, %%%  3 buss 5 nr . går //terminator1, 
+    endofline, %%%  3 buss 5 nr . gÃ¥r //terminator1, 
     !,accept.
 
  
 sentence1(item::: Now isa clock) ---> 
     {user:value(dialog,1)},
-    [nå],                             %% now is also a time
+    [nÃ¥],                             %% now is also a time
     terminator1, 
     !,accept,
     {timenow(Now)}.
 
 
-sentence1(item:::P)  --->   %% nr . ( 52 går)
+sentence1(item:::P)  --->   %% nr . ( 52 gÃ¥r)
     noun(_Man,_,_u,n,it:_,P),   %%  menn 
    {user:value(dialog,1)},
     endofline, 
@@ -623,8 +623,8 @@ sentence1(new:::P) ---> %%  ble  kanskje feil ...%% <-> ynq isq
 
 
 
-sentence1(new:::P) --->    %% er på Kuset --> jeg er på kuset
-    w(verb(be,_,_)), %% er på/ (skulle ha) vært på / var på
+sentence1(new:::P) --->    %% er pÃ¥ Kuset --> jeg er pÃ¥ kuset
+    w(verb(be,_,_)), %% er pÃ¥/ (skulle ha) vÃ¦rt pÃ¥ / var pÃ¥
     now0,   
     w(prep(Ion)), 
     {testmember(Ion,[in,on,at])},
@@ -668,7 +668,7 @@ sentence1(item:::P) ---> %% team. jeg vil ta buss after statement
 
 
 
-%%%¤  ITEM 
+%%%Â¤  ITEM 
 
 
 item(N isa clock) ---> 
@@ -696,17 +696,17 @@ command(_) ---> [vil],!,reject.
 command(_) ---> [skal],!,reject.  
 
 
-command(doit:::P) ---> %% du må slutte %% TA-110609
+command(doit:::P) ---> %% du mÃ¥ slutte %% TA-110609
     [du],
-    [må],
+    [mÃ¥],
     not_look_ahead([ikke]),
-    w(verb(V,inf,fin)), %% ** går bussen -> du går bussen
+    w(verb(V,inf,fin)), %% ** gÃ¥r bussen -> du gÃ¥r bussen
     !,  
     statreal(P)\ ([du],w(verb(V,pres,fin))).
 
 
 command(doit:::quit(Message)) ---> 
-    grums0,     %% så ha det bra 
+    grums0,     %% sÃ¥ ha det bra 
     okeys0, %% optional([ok]),  optoken, 
     quit(Message),
     skip_rest.
@@ -714,7 +714,7 @@ command(doit:::quit(Message)) --->
 command(doit:::reply(Ans)) ---> 
     personal(Ans),
     dtrailer0,
-    endofline. %%  går det bra  ... i morgen 
+    endofline. %%  gÃ¥r det bra  ... i morgen 
 
 command(doit:::replyq('Hei')) --->  %%  Literal answer %% Fronted due to a sick error
     hellos, %% \+ nei,  
@@ -725,7 +725,7 @@ command(doit:::replyq('Hei')) --->  %%  Literal answer %% Fronted due to a sick 
 %% NOT   actually commands 
 
 command(new:::P) ---> %%  ser ut til at %% TA-110309
-    w(verb(See,pres,fin)), %% avoid så="sedde" 
+    w(verb(See,pres,fin)), %% avoid sÃ¥="sedde" 
     not_look_ahead([du]), %% ad hoc
     [ut],
         gmem(See,[see,look]), 
@@ -738,7 +738,7 @@ tilat ---> [som],[om],!.
 tilat ---> [som].
 
 command(new:::P) ---> %%  See you in hell  --> VERB -> Jeg VERB .
-    w(verb(See,pres,fin)), %% avoid så="sedde" 
+    w(verb(See,pres,fin)), %% avoid sÃ¥="sedde" 
     not_look_ahead([du]), %% ad hoc
     gmem(See,[expect,miss,need,get,receive,see,understand]),
     !,
@@ -747,7 +747,7 @@ command(new:::P) ---> %%  See you in hell  --> VERB -> Jeg VERB .
 
 
 command(new:::P) ---> %% not a command  INF/IMP ankomme Nardo
-    not_look_ahead([nå]), %% command nå! *
+    not_look_ahead([nÃ¥]), %% command nÃ¥! *
     not_look_ahead(w(verb(come,imp,fin))), 
     w(verb(Go,Imp,fin)),
     {testmember(Go,[go,take,run,arrive,leave,leave2,depart,start,pass])}, %% \+ reach
@@ -763,7 +763,7 @@ command(new:::P) ---> %%  tror jeg tar bussen
     {testmember(B,[believe])},     %% tror 
     that0(B,that),
     [jeg],
-    not_look_ahead(w(prep(_Prep))), %% går bussen ... NOT command
+    not_look_ahead(w(prep(_Prep))), %% gÃ¥r bussen ... NOT command
     !,
     statreal(P)\ ([jeg]).
 
@@ -777,11 +777,11 @@ command(new:::P) ---> %%  ankommer NTH
 
 %% Command    VERB -> Du VERB !
 
-command(doit:::P) ---> %% ikke gjør en ting. 
+command(doit:::P) ---> %% ikke gjÃ¸r en ting. 
     optional(grums), %%  "Team, ...
-    please0,         %% vær så snill å 
+    please0,         %% vÃ¦r sÃ¥ snill Ã¥ 
     negation0(N), 
-    w(verb(V,imp,fin)), %% ** går bussen -> du går bussen
+    w(verb(V,imp,fin)), %% ** gÃ¥r bussen -> du gÃ¥r bussen
     {verbtype(V,tv)}, %% se=look/see
     look_ahead_np,   %% must take xnp %% TA-110506
     !,  
@@ -833,14 +833,14 @@ imp_phrase(wait) --->
  
 
 imp_phrase(V) ---> 
-     not_look_ahead([må]),   
+     not_look_ahead([mÃ¥]),   
      comeand0, 
      lexv(Vt,V,imp,fin),   {Vt \== rv},       %% show means transitive show 
      {\+ testmember(V,[have,expect])}. %% expect=wait, be OK 
         
 
 imp_phrase(V) --->
-     not_look_ahead([må]),  
+     not_look_ahead([mÃ¥]),  
      comeand0, 
      lexv(rv,V,imp,fin), %% Fortell meg 
      {V \== be},
@@ -849,7 +849,7 @@ imp_phrase(V) --->
 
 
 imp_phrase(V) --->  %   reise til nth NOT imp 
-    not_look_ahead([må]),  
+    not_look_ahead([mÃ¥]),  
     comeand0, 
     lexv(_,V,inf,fin), 
     {testmember(V,[list,show,make])}, 
@@ -858,7 +858,7 @@ imp_phrase(V) --->  %   reise til nth NOT imp
 %%%%
 
 
-comeand0 ---> w(verb(come,imp,fin)), [å],!.
+comeand0 ---> w(verb(come,imp,fin)), [Ã¥],!.
 comeand0 ---> [].
 
 
@@ -900,7 +900,7 @@ declaration(P) --->
 
 %%% INITIAL STATEMENT ONLY 
 
-%%%%¤¤¤¤     STATEMENT (P)
+%%%%Â¤Â¤Â¤Â¤     STATEMENT (P)
 
 
 statement(P) --->  %% det betyr at   
@@ -908,7 +908,7 @@ statement(P) --->  %% det betyr at
        [det],
        be_truefalse(_N), %% Ignored  AD HOC
        [at],
-       look_ahead_lit([før,etter,når]), %%
+       look_ahead_lit([fÃ¸r,etter,nÃ¥r]), %%
 
    adverbial3(Prep, Y,SCP3),  %%        %% f?r bussen kom
    comma0,
@@ -918,30 +918,30 @@ statement(P) --->  %% det betyr at
 
 
 
-statement(P) --->  %% Hvis trikken står (så) tar jeg bussen
+statement(P) --->  %% Hvis trikken stÃ¥r (sÃ¥) tar jeg bussen
    look_ahead_lit([hvis,om,selvom  ,da]), %% TA-110112
    adverbial3(Prep, Y,SCP3),
-   soredundant, %% look_ahead([så]),
+   soredundant, %% look_ahead([sÃ¥]),
    !,
-   substatement1(P)/([så], xadverbial1(Prep, Y,SCP3)).
+   substatement1(P)/([sÃ¥], xadverbial1(Prep, Y,SCP3)).
 
 
 
-statement(P) --->  %% Ad Hoc %% Hvis trikken står  lønner det (seg å ta  bussen) 
+statement(P) --->  %% Ad Hoc %% Hvis trikken stÃ¥r  lÃ¸nner det (seg Ã¥ ta  bussen) 
    look_ahead([hvis]),
    adverbial3(Prep, Y,SCP3),
-   not_look_ahead([så]),
-   w(verb(Take,Pres,fin)), %% lønner \= så (see,past,fin)!
+   not_look_ahead([sÃ¥]),
+   w(verb(Take,Pres,fin)), %% lÃ¸nner \= sÃ¥ (see,past,fin)!
    [det],
    !,accept,
    substatement1(P)/
         ([det],w(verb(Take,Pres,fin)),xadverbial1(Prep, Y,SCP3)).
 
 
-statement(P) --->  %% Ad Hoc %% Hvis trikken står  vil det ikke lønne (seg å ta  bussen) 
+statement(P) --->  %% Ad Hoc %% Hvis trikken stÃ¥r  vil det ikke lÃ¸nne (seg Ã¥ ta  bussen) 
    look_ahead([hvis]),
    adverbial3(Prep, Y,SCP3),
-   not_look_ahead([så]),
+   not_look_ahead([sÃ¥]),
    aux1,
    [det],
    negation0(N),
@@ -950,10 +950,10 @@ statement(P) --->  %% Ad Hoc %% Hvis trikken står  vil det ikke lønne (seg å ta 
         ([det],aux1,negation(N),xadverbial1(Prep, Y,SCP3)).
 
 
-statement(P) --->  %% Ad Hoc %% Hvis trikken står  vil dere ikke ta trikken
+statement(P) --->  %% Ad Hoc %% Hvis trikken stÃ¥r  vil dere ikke ta trikken
    look_ahead([hvis]),
    adverbial3(Prep, Y,SCP3),
-   not_look_ahead([så]), 
+   not_look_ahead([sÃ¥]), 
    aux1,
    subject(X,XNP),
    redundant0,    
@@ -962,11 +962,11 @@ statement(P) --->  %% Ad Hoc %% Hvis trikken står  vil dere ikke ta trikken
    substatement1(P)/
         (xnp(X,XNP),aux1,negation(N),xadverbial1(Prep, Y,SCP3)).
 
-statement(P) --->  %% %% Hvis trikken står  lønner det seg å ta bussen 
+statement(P) --->  %% %% Hvis trikken stÃ¥r  lÃ¸nner det seg Ã¥ ta bussen 
    look_ahead([hvis]),  %% Ad Hoc
    adverbial3(Prep, Y,SCP3),
-   not_look_ahead([så]), 
-   w(verb(Take,Pres,fin)), %% Take \= så (see,past,fin)!
+   not_look_ahead([sÃ¥]), 
+   w(verb(Take,Pres,fin)), %% Take \= sÃ¥ (see,past,fin)!
    !,
    subject(X,XNP),
    !,accept,
@@ -974,16 +974,16 @@ statement(P) --->  %% %% Hvis trikken står  lønner det seg å ta bussen
         (xnp(X,XNP),w(verb(Take,Pres,fin)),xadverbial1(Prep, Y,SCP3)).
 
 
-%% før bussen går // AVOID før klokka 1234
-%% NB  før  å = for å (sp) is trapped
+%% fÃ¸r bussen gÃ¥r // AVOID fÃ¸r klokka 1234
+%% NB  fÃ¸r  Ã¥ = for Ã¥ (sp) is trapped
 
 
-statement(P) --->  %% før bussen stopper vil trikken gå.
-                   %% når jeg spør bussoraklet %%
+statement(P) --->  %% fÃ¸r bussen stopper vil trikken gÃ¥.
+                   %% nÃ¥r jeg spÃ¸r bussoraklet %%
 
-       look_ahead_lit([før,etter,når]), %% når det gjelder ... = hvis det gjelder%% Hazard ???
+       look_ahead_lit([fÃ¸r,etter,nÃ¥r]), %% nÃ¥r det gjelder ... = hvis det gjelder%% Hazard ???
 
-   adverbial3(Prep, Y,SCP3),  %%        %% før bussen kom    
+   adverbial3(Prep, Y,SCP3),  %%        %% fÃ¸r bussen kom    
    comma0,                               
    !,accept, 
    [] -  adverbial1(Prep, Y,SCP3),  %% ikke xadverbial1 ?
@@ -998,23 +998,23 @@ statement(P) --->     %%  Real Statement
 
 
   
-%%%¤¤¤¤  SUBSTATEMENT1 (P)
+%%%Â¤Â¤Â¤Â¤  SUBSTATEMENT1 (P)
 
 
-substatement1(P)  --->  %%  (bussen går selv om) det er nardo kunden * spør om . 
+substatement1(P)  --->  %%  (bussen gÃ¥r selv om) det er nardo kunden * spÃ¸r om . 
 
      dether,  
 
      w(verb(be,_pres,fin)),
      optional([ofte]),  %% sent_adv
-     np0_accept(Z,ZNP), %% slike spørsmål
+     np0_accept(Z,ZNP), %% slike spÃ¸rsmÃ¥l
      optional([som]),
      subject(X, XNP),     
      !,
      statreal(P) - 
        (xnp(X,XNP),  %% brukerne    
-                       %% er interessert i å stille 
-        xnp(Z,ZNP)).    %% spørsmål
+                       %% er interessert i Ã¥ stille 
+        xnp(Z,ZNP)).    %% spÃ¸rsmÃ¥l
 
  
 dether ---> [det].  
@@ -1026,7 +1026,7 @@ substatement1(P) --->    %% Single Real Statement
 
 /* %% TA-101115
 
-%%%¤¤¤¤  STATEMENREAL(P)
+%%%Â¤Â¤Â¤Â¤  STATEMENREAL(P)
 
 
 statemenreal(P) --->  
@@ -1034,7 +1034,7 @@ statemenreal(P) --->
 */
 
 
-%%%%¤¤¤    STATEMENS(R,P)
+%%%%Â¤Â¤Â¤    STATEMENS(R,P)
 
 
 statemens(R,PQ) --->
@@ -1042,7 +1042,7 @@ statemens(R,PQ) --->
     statemens0(R,P,PQ).
 
 
-%%%%¤¤¤ STATEMENS0  (R,P,Q)
+%%%%Â¤Â¤Â¤ STATEMENS0  (R,P,Q)
 
 statemens0(R,P,P and Q) ---> %% jeg skal til dragvoll men [jeg] vil sykle
    stm_conjunction,         
@@ -1051,14 +1051,14 @@ statemens0(R,P,P and Q) ---> %% jeg skal til dragvoll men [jeg] vil sykle
    statemens(R,Q)\[jeg].
 
 
-statemens0(R,P,P and Q) ---> %% jeg går og så er jeg sikker 
+statemens0(R,P,P and Q) ---> %% jeg gÃ¥r og sÃ¥ er jeg sikker 
    stm_conjunction, 
-   look_ahead_lit([så,nå,da]), 
+   look_ahead_lit([sÃ¥,nÃ¥,da]), 
    !,
    statemens(R,Q).
 
-statemens0(R,P,P and Q) ---> %% jeg går så er jeg sikker
-   look_ahead([så]),
+statemens0(R,P,P and Q) ---> %% jeg gÃ¥r sÃ¥ er jeg sikker
+   look_ahead([sÃ¥]),
    !,
    statemens(R,Q).
 
@@ -1073,21 +1073,21 @@ statemens0(R,P,P and Q) --->
 statemens0(_,P,P) ---> [].
 
 
- stm_conjunction ---> [hvorav]. %% TA-110617 jeg har flere vinduer hvorav  ett [vindu] er åpent .  
+ stm_conjunction ---> [hvorav]. %% TA-110617 jeg har flere vinduer hvorav  ett [vindu] er Ã¥pent .  
   
- stm_conjunction ---> [å],look_ahead([så]). %% TA-110105
- stm_conjunction ---> [å],look_ahead([nå]). %%
+ stm_conjunction ---> [Ã¥],look_ahead([sÃ¥]). %% TA-110105
+ stm_conjunction ---> [Ã¥],look_ahead([nÃ¥]). %%
 
- stm_conjunction ---> [og],look_ahead([nå]).
+ stm_conjunction ---> [og],look_ahead([nÃ¥]).
 
  stm_conjunction ---> [og],[at]. 
  stm_conjunction ---> [men],[at].  
- stm_conjunction ---> [altså],[at].
+ stm_conjunction ---> [altsÃ¥],[at].
  stm_conjunction ---> and1. 
  stm_conjunction ---> [men].
              
  
-stm_conjunction  ---> look_ahead([så]). %% Haz? 
+stm_conjunction  ---> look_ahead([sÃ¥]). %% Haz? 
 
  stm_conjunction  ---> 
      optional([',']), % if present
@@ -1095,13 +1095,13 @@ stm_conjunction  ---> look_ahead([så]). %% Haz?
  stm_conjunction ---> [mens]. %%  (also subjunction with)
 
 
-%%%%%¤¤¤  STATEMEN1 (R,Q)   %% initial statement of R
+%%%%%Â¤Â¤Â¤  STATEMEN1 (R,Q)   %% initial statement of R
 
 statemen1(R,Q) --->   %%  allowed initial
      stateme1(R,Q).   %%% statem1(S,event/R/S::Q). %% TA-101115
 
 
-statemen1(R,P) ---> %% mulig at bussen går 
+statemen1(R,P) ---> %% mulig at bussen gÃ¥r 
      w(adj2(Poss,nil)), {testmember(Poss,[possible,clear,ready])}, %% klart  du vet det
      optional([at]),                                
      !,
@@ -1120,7 +1120,7 @@ statemen1(R,P) ---> % vedlagt ligger filen
     !,accept.
 
 
-statemen1(R,P) ---> % ellers blir det snø  
+statemen1(R,P) ---> % ellers blir det snÃ¸  
     redundant, %% \+ 0 
     w(verb(Be,_Pres,fin)), {\+ testmember(Be,[])}, %% ad hoc
     [det],
@@ -1143,7 +1143,7 @@ statemen1(R,P) ---> % simple version, with world %% TA-101027
     substateme1(R,P).   
 
 
-statemen1(R,P) ---> %% som du ser går bussen %% Ad Hoc, ignore init
+statemen1(R,P) ---> %% som du ser gÃ¥r bussen %% Ad Hoc, ignore init
      [som],
      [du],
      w(verb(Know1,_pres,fin)),{testmember(Know1,[know,see,understand])}, %% etc
@@ -1152,7 +1152,7 @@ statemen1(R,P) ---> %% som du ser går bussen %% Ad Hoc, ignore init
      substateme1(R,P)\ (xnp(X,NP), w(verb(Go,pres,fin))).
 
 
-statemen1(R,P) --->  %% så er det bra (INITIALLY)
+statemen1(R,P) --->  %% sÃ¥ er det bra (INITIALLY)
     soredundant,
     w(verb(Be,Pres,fin)), %% kommer det/er det
     [det],
@@ -1167,17 +1167,17 @@ stateme1(R,Q) --->  %% TA-101115 <--- only initial
     statem(S,event/R/S::Q).
 
 
-%%%%¤  SUBSTATEME1 (R, P).
+%%%%Â¤  SUBSTATEME1 (R, P).
 
 
 substateme1(R,Q) --->   %% NOT INITIAL
      substatem1(S,event/R/S::Q). 
     
 
-%%%%¤  SUBSTATEM (S,EQ)    subordinate statement
+%%%%Â¤  SUBSTATEM (S,EQ)    subordinate statement
 
 
-%%  %% jeg vet at bussen går og at trikken ikke står. 
+%%  %% jeg vet at bussen gÃ¥r og at trikken ikke stÃ¥r. 
 %%  permutes the lexical sequence 
 
 substatem(S,EQ) --->
@@ -1194,7 +1194,7 @@ ogat(_S,EST,EST) ---> [].
 
 
 
-%%%%¤¤¤ SUBSTATEM1 (S,EQ)  also   called from clasual_object1 
+%%%%Â¤Â¤Â¤ SUBSTATEM1 (S,EQ)  also   called from clasual_object1 
 
 %% jeg vet at det er slik %% TA-110309
 
@@ -1207,7 +1207,7 @@ substatem1(S,STM) ---> %% jeg vet at det (ikke)  er (ikke) nyttig
      !,
     []- negation(Neg), %% no blocking
     statem(S,STM)\
-      ([det],             %% (når) det går buss %% TA-110609
+      ([det],             %% (nÃ¥r) det gÃ¥r buss %% TA-110609
          w(verb(be,pres,fin))).
 
 
@@ -1218,13 +1218,13 @@ substatem1(S,STM) ---> %% det kommer fram i teksten
     {bigno(SubN,N,Neg)},
      !,
     statem(S,STM)\
-      ([det],             %% (når) det går buss %% TA-110609
+      ([det],             %% (nÃ¥r) det gÃ¥r buss %% TA-110609
          w(verb(Appear,pres,fin)),negation(Neg)).
 
    
 
-substatem1(S,STM) ---> %% å sykle er det (som) jeg vil (gjøre).
-    [å],
+substatem1(S,STM) ---> %% Ã¥ sykle er det (som) jeg vil (gjÃ¸re).
+    [Ã¥],
     !,
     clausal_object1(CO,ST)\[jeg], %% ad hoc, noen 
     !,
@@ -1232,21 +1232,21 @@ substatem1(S,STM) ---> %% å sykle er det (som) jeg vil (gjøre).
 
 
 
-substatem1(S,EQ) --->  %% for å komme til Lian må du ta trikk
-     forå,
+substatem1(S,EQ) --->  %% for Ã¥ komme til Lian mÃ¥ du ta trikk
+     forÃ¥,
      w(verb(V,inf,fin)),
      clausal_object1(Y,true::NP)\([jeg], w(verb(V,pres,fin))),
-     hvisaa0, %% [så], %% if not swallowed  
+     hvisaa0, %% [sÃ¥], %% if not swallowed  
      !,
-     statem(S,EQ) / ([så], subordinate(in_order_to,Y,NP)).
+     statem(S,EQ) / ([sÃ¥], subordinate(in_order_to,Y,NP)).
 
 
-substatem1(S,EQ) --->  %%% hvis trikken står så hadde det sikert  vært til glede 
+substatem1(S,EQ) --->  %%% hvis trikken stÃ¥r sÃ¥ hadde det sikert  vÃ¦rt til glede 
      look_ahead_lit([for,fordi,hvis,om,selv,siden,uansett,selvom ]), 
          
      subordinate(Prep,T,P),                                    
      []-subordinate(Prep,T,P),
-     hvisaa0, %% [så], %% if not swallowed 
+     hvisaa0, %% [sÃ¥], %% if not swallowed 
      has,
      [det],
      redundant0, 
@@ -1258,26 +1258,26 @@ substatem1(S,EQ) --->  %%% hvis trikken står så hadde det sikert  vært til glede
 
 substatem1(S,EQ) --->  %%  Experiment
      look_ahead_lit([for,fordi,hvis,om,selv,siden,uansett,selvom,  da,
-      når]), %% /når/ skal molde spille  %% TA-110503
+      nÃ¥r]), %% /nÃ¥r/ skal molde spille  %% TA-110503
      subordinate(Prep,T,P),     %%%                                %% TA-110112
-     hvisaa0, %% [så], %% if not swallowed  
+     hvisaa0, %% [sÃ¥], %% if not swallowed  
      !,
-     statem(S,EQ) / ([så], subordinate(Prep,T,P)).
+     statem(S,EQ) / ([sÃ¥], subordinate(Prep,T,P)).
 
 substatem1(S,STM) ---> substate(S,STM).
 
 %%%%%%%%  substatem1(S,STM) ---> statem(S,STM).  %% <--> %% ? %% TA-101115
 
-hvisaa0 ---> [så],!.
-hvisaa0 ---> look_ahead_lit([ble]),!. %% siden bussoraklet  foreslår direkte ruter (så) ble det foreslått ringruter
-hvisaa0 ---> look_ahead_lit([kan,får]),!. %% hvis bussen står kan du gå 
+hvisaa0 ---> [sÃ¥],!.
+hvisaa0 ---> look_ahead_lit([ble]),!. %% siden bussoraklet  foreslÃ¥r direkte ruter (sÃ¥) ble det foreslÃ¥tt ringruter
+hvisaa0 ---> look_ahead_lit([kan,fÃ¥r]),!. %% hvis bussen stÃ¥r kan du gÃ¥ 
 hvisaa0 ---> look_ahead(w(verb(Be,_,fin))),{testmember(Be,[avoid,be,come,have])}. %% etc with care 
 hvisaa0 ---> []. 
 
 
 
 
-%%%¤ SOSTATEM (S,ST)    Statement after så
+%%%Â¤ SOSTATEM (S,ST)    Statement after sÃ¥
 
 sostatem(S,ST) --->  %% s? kan bussen g?
 
@@ -1292,7 +1292,7 @@ sostatem(S,ST) --->  %% s? kan bussen g?
     !.
 
 
-sostatem(S,EQ) ---> %% desverre virker det rart at bussen går
+sostatem(S,EQ) ---> %% desverre virker det rart at bussen gÃ¥r
 
     w(verb(Be,Pres,fin)),
     [det],          %% prelim
@@ -1309,7 +1309,7 @@ sostatem(S,EQ) ---> %% desverre virker det rart at bussen går
           adj1(ABig,A:_,AS,ABIGX)). %% stacked as thing
 
 
-sostatem(S,ST) --->  %% så har det kommet en buss 
+sostatem(S,ST) --->  %% sÃ¥ har det kommet en buss 
 
     has,
     [det],
@@ -1322,7 +1322,7 @@ sostatem(S,ST) --->  %% så har det kommet en buss
     !.
 
 %% TA-110112
-sostatem(S,ST) --->  %% så betyr ikke dette at|betyr det ikke at
+sostatem(S,ST) --->  %% sÃ¥ betyr ikke dette at|betyr det ikke at
 
     lexvaccept(rv,Indicate,Pres,fin,N),
    
@@ -1335,7 +1335,7 @@ sostatem(S,ST) --->  %% så betyr ikke dette at|betyr det ikke at
     !.
 
 
-sostatem(S,ST) --->  %% så går ikke bussen | så går bussen ikke
+sostatem(S,ST) --->  %% sÃ¥ gÃ¥r ikke bussen | sÃ¥ gÃ¥r bussen ikke
 
     w(verb(Want,Pres,fin)),  
     negation0(N1),
@@ -1347,7 +1347,7 @@ sostatem(S,ST) --->  %% så går ikke bussen | så går bussen ikke
     !.
 
 
-sostatem(S,ST) --->  %% så benyttes serveren 
+sostatem(S,ST) --->  %% sÃ¥ benyttes serveren 
 
     w(verb(Use,Pres,pass)),
     thereit0,  
@@ -1357,7 +1357,7 @@ sostatem(S,ST) --->  %% så benyttes serveren
     !.
 
 
-sostatem(S,ST) --->  %% så skal det gå bra 
+sostatem(S,ST) --->  %% sÃ¥ skal det gÃ¥ bra 
  
     aux1,
     [det],
@@ -1368,7 +1368,7 @@ sostatem(S,ST) --->  %% så skal det gå bra
     state(S, ST) \  ([noe], w(verb(Ext,pres,fin))), %%  ... noe
     !.
 
-sostatem(S,ST) --->  %% så må det gjøres noe 
+sostatem(S,ST) --->  %% sÃ¥ mÃ¥ det gjÃ¸res noe 
  
     aux1,
     [det],
@@ -1378,9 +1378,9 @@ sostatem(S,ST) --->  %% så må det gjøres noe
     !.
 
 
-sostatem(S,ST) --->  %% egentlig kan dette gjøres 
+sostatem(S,ST) --->  %% egentlig kan dette gjÃ¸res 
  
-    aux1, %% docan,  %% da må noe gjøres
+    aux1, %% docan,  %% da mÃ¥ noe gjÃ¸res
     object(X,NP), %% allow dette
     w(verb(Ext,pres,pass)),%% ad HOC  
     !,
@@ -1388,11 +1388,11 @@ sostatem(S,ST) --->  %% egentlig kan dette gjøres
     !.
 
 
-sostatem(S,ST) --->  %% hvis trikken står (så) er det bra 
+sostatem(S,ST) --->  %% hvis trikken stÃ¥r (sÃ¥) er det bra 
  
-    not_look_ahead([så]), 
+    not_look_ahead([sÃ¥]), 
     w(verb(Be,PP,fin)), {PP \== inf}, %% AD HACK % ... kommer  det en buss
-    [det],                            %% (jeg vil vente med å) legge det inn
+    [det],                            %% (jeg vil vente med Ã¥) legge det inn
     !,                               
     state(S, ST) -   w(verb(Be,pres,fin)),
     !.
@@ -1407,9 +1407,9 @@ sostatem(S,ST) --->  %% ellers kan ...busstuc utvides
     !.
 
 
-%%%%¤¤¤¤  STATEM (S,STM)    
+%%%%Â¤Â¤Â¤Â¤  STATEM (S,STM)    
     
-%%  Det  ønskes  %% Ad Hoc %% TA-110429
+%%  Det  Ã¸nskes  %% Ad Hoc %% TA-110429
 statem(S,STM) --->  
     [det],
     w(verb(Want,Pres,pass)),   gmem(Want,[want,wish,need]), 
@@ -1430,7 +1430,7 @@ statem(S,STM) --->  %% TA-110310 Fronted
 
 
 
-%% den 21. mai  kjører vi vanlige ruter 
+%% den 21. mai  kjÃ¸rer vi vanlige ruter 
 statem(S,STM) ---> 
     obviousdate1(Z,ZNP),
     w(verb(V,Pres,fin)),
@@ -1444,8 +1444,8 @@ statem(S,STM) --->
            
 
 
-%% den 21. mai  kjøres vanlige ruter
-statem(S,STM) --->  %% den 21. mai  kjøres vanlige ruter
+%% den 21. mai  kjÃ¸res vanlige ruter
+statem(S,STM) --->  %% den 21. mai  kjÃ¸res vanlige ruter
     obviousdate1(Z,ZNP),
     w(verb(V,Pres,pass)),
     optional([det]), 
@@ -1544,23 +1544,23 @@ statem(S,STM) ---> % er mora en mann = morgenen , en mann er
          adverbial1(Prep,Z,APS),
          adverbial1(Prep2,Z2,APS2)).
 
-statem(S,STM) --->  %% OBJECT MODAL  SUBJECT VERB   %% dette ønsker jeg å se
-    not_look_ahead([det]), %% går det busser = det går busser
-    obvious_object(Z,ZNP),  %% alt som du trenger å vite %% TA-110401
+statem(S,STM) --->  %% OBJECT MODAL  SUBJECT VERB   %% dette Ã¸nsker jeg Ã¥ se
+    not_look_ahead([det]), %% gÃ¥r det busser = det gÃ¥r busser
+    obvious_object(Z,ZNP),  %% alt som du trenger Ã¥ vite %% TA-110401
  %%    np0_accept(Z,ZNP),           %% ad hoc careful
     w(verb(Want,Pres,fin)),   gmem(Want,[want,wish,need]), 
     lit_of(Vi,[jeg,vi,han,hun,du]),  
     negation0(N),
-    optional([å]), 
+    optional([Ã¥]), 
     w(verb(See,inf,fin)),
     !, 
     state(S, STM) \ 
-        ([Vi],  w(verb(Want,Pres,fin)), negation(N),[å],w(verb(See,Pres,fin)),xnp(Z,ZNP)).
+        ([Vi],  w(verb(Want,Pres,fin)), negation(N),[Ã¥],w(verb(See,Pres,fin)),xnp(Z,ZNP)).
 
-statem(S,STM) --->  %%   klippekort får  du kjøpt
+statem(S,STM) --->  %%   klippekort fÃ¥r  du kjÃ¸pt
     not_look_ahead([det]), 
 %%     np0_accept(Z,ZNP),           %% ad hoc careful
-    obvious_object(Z,ZNP),  %% alt som du trenger å vite %% TA-110401
+    obvious_object(Z,ZNP),  %% alt som du trenger Ã¥ vite %% TA-110401
     w(verb(H,Pres,fin)), gmem(H,[have,get]),
     lit_of(Vi,[jeg,vi,han,hun,du]), 
     w(verb(See,past,part)),
@@ -1568,8 +1568,8 @@ statem(S,STM) --->  %%   klippekort får  du kjøpt
     state(S, STM) \ ([Vi], w(verb(See,Pres,fin)), xnp(Z,ZNP)).
 
 
-statem(S,STM) --->  %%   %% årsaken sjekker vi 
-    not_look_ahead([det]), %% går det busser
+statem(S,STM) --->  %%   %% Ã¥rsaken sjekker vi 
+    not_look_ahead([det]), %% gÃ¥r det busser
     obvious_object(Z,ZNP), %% TA-110401
 %% np0_accept(Z,ZNP),           %% ad hoc careful
     w(verb(See,Pres,fin)), 
@@ -1582,20 +1582,20 @@ statem(S,STM) --->  %%   %% årsaken sjekker vi
 
  
 statem(S,STM) --->  %% OBJECT MODAL  SUBJECT VERB PREP     
-                    %% dette ønsker jeg å se  på
+                    %% dette Ã¸nsker jeg Ã¥ se  pÃ¥
                     %%    6     2    1  3  4  5
-    not_look_ahead([det]), %% går det busser 
+    not_look_ahead([det]), %% gÃ¥r det busser 
 
     obvious_object(Z,ZNP),       %% np0_accept( %% TA-110428   %% ad hoc careful
     w(verb(Want,Pres,fin)),   gmem(Want,[want,wish,need]), 
     lit_of(Vi,[jeg,vi,han,hun,du]), 
-    optional([å]), 
+    optional([Ã¥]), 
     w(verb(See,inf,fin)),
-    w(prep(On)),              %% NB * nærmere (på)
+    w(prep(On)),              %% NB * nÃ¦rmere (pÃ¥)
     !, 
-    state(S, STM) \ ([Vi],  w(verb(Want,Pres,fin)),[å],w(verb(See,Pres,fin)), w(prep(On)), xnp(Z,ZNP)).
+    state(S, STM) \ ([Vi],  w(verb(Want,Pres,fin)),[Ã¥],w(verb(See,Pres,fin)), w(prep(On)), xnp(Z,ZNP)).
 
-statem(S,STM) --->  %% dette kan du (gjøre) %% TA-101103
+statem(S,STM) --->  %% dette kan du (gjÃ¸re) %% TA-101103
    
     obvious_object(Z,ZNP),     %% ad hoc careful
     [kan],
@@ -1605,8 +1605,8 @@ statem(S,STM) --->  %% dette kan du (gjøre) %% TA-101103
     state(S, STM) \ ([Vi], w(verb(do1,pres,fin)), xnp(Z,ZNP)).
 
 
-statem(S,STM) --->  %% OBJECT AUX SUBJECT  VERB      %% årsaken skal vi finne
-    not_look_ahead([det]), %% går det busser 
+statem(S,STM) --->  %% OBJECT AUX SUBJECT  VERB      %% Ã¥rsaken skal vi finne
+    not_look_ahead([det]), %% gÃ¥r det busser 
     obvious_object(Z,ZNP),           %% ad hoc careful
     aux1,
     lit_of(Vi,[jeg,vi,han,hun,du]), 
@@ -1614,8 +1614,8 @@ statem(S,STM) --->  %% OBJECT AUX SUBJECT  VERB      %% årsaken skal vi finne
     !, 
     state(S, STM) \ ([Vi], w(verb(Find,pres,fin)), xnp(Z,ZNP)).
 
-statem(S,STM) --->  %% OBJECT AUX SUBJECT  VERB      %% årsaken skal vi finne
-    not_look_ahead([det]), %% går det busser 
+statem(S,STM) --->  %% OBJECT AUX SUBJECT  VERB      %% Ã¥rsaken skal vi finne
+    not_look_ahead([det]), %% gÃ¥r det busser 
     obvious_object(Z,ZNP),           %% ad hoc careful
     aux1,
     lit_of(Vi,[jeg,vi,han,hun,du]), 
@@ -1632,25 +1632,25 @@ statem(S,ST) --->  %% det som er relevant  fins .
        ([en],w(noun(thing,sin,u,n)),[som]).
 
 
-statem(S,ST) --->  %% nå skulle det være riktig %% /DET preliminary
-    one_of_lit([nå,så,da,redundant0]), %% om mulig 
+statem(S,ST) --->  %% nÃ¥ skulle det vÃ¦re riktig %% /DET preliminary
+    one_of_lit([nÃ¥,sÃ¥,da,redundant0]), %% om mulig 
     shoulditbe,
     w(adj2(Good,Nil)),
-	 [å],
+	 [Ã¥],
     !,
-    itstatem(S,ST)\  (w(verb(be,pres,fin)),w(adj2(Good,Nil)), [å]). 
+    itstatem(S,ST)\  (w(verb(be,pres,fin)),w(adj2(Good,Nil)), [Ã¥]). 
 
 
-statem(S,ST) --->  %% nå skulle det være riktig %%  /DET subject
-    one_of_lit([nå,så,da]), %% TA-110810
+statem(S,ST) --->  %% nÃ¥ skulle det vÃ¦re riktig %%  /DET subject
+    one_of_lit([nÃ¥,sÃ¥,da]), %% TA-110810
     shoulditbe,
     itstatem(S, ST) \  
         (w(verb(be,pres,fin))),
     !.
 
 /* %% TA-110810
-statem(S,ST) --->  %% nå skulle det være riktig %%  /DET subject
-    one_of_lit([nå,så,da]),
+statem(S,ST) --->  %% nÃ¥ skulle det vÃ¦re riktig %%  /DET subject
+    one_of_lit([nÃ¥,sÃ¥,da]),
     shoulditbe,
     state(S, ST) \  
         ([dette],w(verb(be,pres,fin))),
@@ -1660,18 +1660,18 @@ statem(S,ST) --->  %% nå skulle det være riktig %%  /DET subject
 shoulditbe ---> w(verb(be,_,fin)),redundant0,[det].          %% hvertfall det
 shoulditbe ---> aux1,redundant0,[det],w(verb(be,inf,fin)). 
 
-shoulditbe ---> one_of_lit([kan,kunne,får,fikk]),[det],vaere. %% 
+shoulditbe ---> one_of_lit([kan,kunne,fÃ¥r,fikk]),[det],vaere. %% 
                           %% touchy  aux/verb 
 
 
-vaere --->  one_of_lit([være,vært,bli,blitt]). 
+vaere --->  one_of_lit([vÃ¦re,vÃ¦rt,bli,blitt]). 
 
  
 statem(S,STM) --->    %% det burde du vite
     [det],
     aux1,
     subject(X,XNP),
-    w(verb(B,inf,fin)), {testmember(B,[believe,know])}, %% busstuc foreslår
+    w(verb(B,inf,fin)), {testmember(B,[believe,know])}, %% busstuc foreslÃ¥r
         {verbtype(B,rv)},
     !,   
     state(S,STM)\
@@ -1682,7 +1682,7 @@ statem(S,STM) --->    %% det burde du vite
 
 statem(S,STM) --->    %% dette tror jeg er farlig
     obvious_object(Y,YNP),  
-    w(verb(B,T,fin)), {testmember(B,[believe,know])}, %% busstuc foreslår
+    w(verb(B,T,fin)), {testmember(B,[believe,know])}, %% busstuc foreslÃ¥r
         {verbtype(B,rv)},
     subject(X,XNP),
     !,   
@@ -1694,7 +1694,7 @@ statem(S,STM) --->    %% dette tror jeg er farlig
 
 
 
-statem(S,STM) --->     %% spørsmålet har jeg svart på.
+statem(S,STM) --->     %% spÃ¸rsmÃ¥let har jeg svart pÃ¥.
     obvious_object(Y,YNP),    %%  with care, not subject
     has,
     subject(X,XNP),
@@ -1706,8 +1706,8 @@ statem(S,STM) --->     %% spørsmålet har jeg svart på.
          xnp(Y,YNP)).
 
 
-statem(S,EQ) --->  %%  å komme til Lian er lett.
-     [å],
+statem(S,EQ) --->  %%  Ã¥ komme til Lian er lett.
+     [Ã¥],
      w(verb(V,inf,fin)),
      clausal_object1(Y, SC::NP)\
          ([noen], w(verb(V,pres,fin))),
@@ -1716,22 +1716,22 @@ statem(S,EQ) --->  %%  å komme til Lian er lett.
      state(S,EQ) \xnp(Y,SC::NP).
 
 
-statem(S,ST) --->  %% dette lar seg ikke gjøre å 
+statem(S,ST) --->  %% dette lar seg ikke gjÃ¸re Ã¥ 
     [det],
     w(verb(let,_Pres,fin)),  
     [seg],
     negation0(N),
     w(verb(do1,inf,fin)),
-    [å],
+    [Ã¥],
     !,
     state(S, ST) \ 
         (w(noun(agent,sin,u,n)), aux1, negation(N)), %% not negation0 
     !.
 
-%%% ... SÅ .. STATE
+%%% ... SÃ… .. STATE
 
 
-statem(S,T) ---> %% så,  da  
+statem(S,T) ---> %% sÃ¥,  da  
     soredundant, %% s
     sostatem(S,T). 
 
@@ -1747,7 +1747,7 @@ statem(S,STM) --->
           pp(Prep,Y, PP)).
 
 
-statem(S,ST) --->  %% dette løser jeg // Object Verb Subject
+statem(S,ST) --->  %% dette lÃ¸ser jeg // Object Verb Subject
                    %% dette tar tid
     lit_of(Det,[dette]), %% NEW predicate // det may be prelim
     w(verb(Solve,Pres,fin)), 
@@ -1789,7 +1789,7 @@ statem(S,ST) ---> %% Bra for deg
 statem(S, SEM) ---> 
     init, %%   thereit, Initial IT 
     negation(N),
-    not_look_ahead(w(verb(_solve,_,pass))), %% det løses -> dette løses 
+    not_look_ahead(w(verb(_solve,_,pass))), %% det lÃ¸ses -> dette lÃ¸ses 
     !,
     itstatem(S, SEM) - negation(N), %% \+ /
     !,accept.
@@ -1798,7 +1798,7 @@ statem(S, SEM) ---> %% TA-110114 %% det(te) kan du
     redundants0, %% jo           %%  3       2  1
     dette, %% pronoun = object
     aux1,  %% kan
-    not_look_ahead([være]), %% TA-110624
+    not_look_ahead([vÃ¦re]), %% TA-110624
     obvious_object(X,NPX),
     !,
     []-[dette],
@@ -1808,7 +1808,7 @@ statem(S, SEM) ---> %% TA-110114 %% det(te) kan du
 
 statem(S, SEM) ---> 
     init, 
-%%%%%%%%%    not_look_ahead(w(verb(_solve,_,pass))), %% det løses -> dette løses 
+%%%%%%%%%    not_look_ahead(w(verb(_solve,_,pass))), %% det lÃ¸ses -> dette lÃ¸ses 
     !,
     itstatem(S, SEM),
     !,accept.
@@ -1821,22 +1821,22 @@ statem(S,Com::Q) --->  %% dont try state if thereit %% INITIL NP
 
 %% Following very expensive if subject is hard
 
-statem(S,Com::Q) --->  %% bussen er lett å ta
+statem(S,Com::Q) --->  %% bussen er lett Ã¥ ta
     subject(Y,SNP),
     be(N),
     so0,
     gradverb0(_Very),  
     w(adj2(Good,nil)),
-    [å],
+    [Ã¥],
     {testmember(Good,
     [difficult,easy,expensive,free,funny,good,intelligent,sad,stupid,tedious  ])},  
         []-xnp(Y,SNP),
     {it_template(IT)},
-    be_complements(IT,S, Com::P ) \ (w(adj2(Good,nil)) ,[å]), 
+    be_complements(IT,S, Com::P ) \ (w(adj2(Good,nil)) ,[Ã¥]), 
     {negate(N,P,Q)}.
 
 
-statem(S,Com::Q) --->  %% jeg skal/vil på  byen  = til 
+statem(S,Com::Q) --->  %% jeg skal/vil pÃ¥  byen  = til 
     np1_accept(X, NP), %% en venn     pronoun(X), %% [jeg],
     aux1,
     prepnof(Prep),
@@ -1846,13 +1846,13 @@ statem(S,Com::Q) --->  %% jeg skal/vil på  byen  = til
 
 
 
-statem(S,Com::Q) --->  %% jeg skal til  byen -> jeg går  %% Hazard Norwagism 
+statem(S,Com::Q) --->  %% jeg skal til  byen -> jeg gÃ¥r  %% Hazard Norwagism 
     not_look_ahead([dette]),
     not_look_ahead([det]),
     np1_accept(X, NP), %% pronoun(X), %% [jeg], 
     aux1,
     prepnof(Prep),
-    {testmember(Prep,[to,from,near,in,on,past])}, %% Prag (not around)/ i  møte 
+    {testmember(Prep,[to,from,near,in,on,past])}, %% Prag (not around)/ i  mÃ¸te 
 %    !,       fra = after/from   COMMIT error
     state(S, Com::Q) \  (np(X,NP),w(verb(go,pres,fin)),prep(Prep)).
 
@@ -1863,7 +1863,7 @@ statem(S,Com::Q) --->  %% /jeg) skal hjem
     np1_accept(X, NP), 
     not_look_ahead([kan]), 
     aux1,
-    look_ahead([hjem]), %% // Opps Jeg må ikveld*
+    look_ahead([hjem]), %% // Opps Jeg mÃ¥ ikveld*
     not_look_ahead([kunne]), %% AD HOC !!! 
     not_look_ahead(w(verb(_,_,_))), %% ta bussen ... 
     state(S, Com::Q) \  (np(X,NP),w(verb(go,pres,fin))).
@@ -1882,24 +1882,24 @@ dedette ---> [det].
 dedette ---> [dette].
                                         %% Hvis du ...kan ...
 soredundant0 ---> soredundant,!.
-%% soredundant0 ---> []. %% er det torsdag \= så er det torsdag
+%% soredundant0 ---> []. %% er det torsdag \= sÃ¥ er det torsdag
 
-soredundant ---> [når],!. %% hvor bussen står, NÅR går trikken %% TA-110418
-                          %% capture hvis NÅR as hvis så
+soredundant ---> [nÃ¥r],!. %% hvor bussen stÃ¥r, NÃ…R gÃ¥r trikken %% TA-110418
+                          %% capture hvis NÃ…R as hvis sÃ¥
                  
 soredundant ---> so,!.
 soredundant ---> redundant.
 
-so ---> [så],!.
+so ---> [sÃ¥],!.
 so ---> [derfor],!. 
-so ---> look_ahead_lit([kan,må,vil,skal,bør]). 
+so ---> look_ahead_lit([kan,mÃ¥,vil,skal,bÃ¸r]). 
 so ---> look_ahead(w(verb(know,_,fin))).  
    %% VERY careful hvis du vet hvor du skal, vet vi
 %% so ---> look_ahead(w(verb(_Use,_,fin))).     %% TA-101207
 
 %%...
 
-statem(S,Com::Q) ---> %% for eksempel KAN  jeg  ...engelsk/ gå .
+statem(S,Com::Q) ---> %% for eksempel KAN  jeg  ...engelsk/ gÃ¥ .
     adverbx(Day,DayClass,pre), 
     saa0, 
     [kan],     %% ad hoc,  know1???
@@ -1911,7 +1911,7 @@ statem(S,Com::Q) ---> %% for eksempel KAN  jeg  ...engelsk/ gå .
          [kan],                  
          xadverb(Day,DayClass)). %% -x 
 
-statem(S,Com::Q) ---> %% i morgen vil jeg hoppe fra bjørndalsbrua
+statem(S,Com::Q) ---> %% i morgen vil jeg hoppe fra bjÃ¸rndalsbrua
     adverbx(Day,DayClass,pre), 
     saa0, 
     aux1,
@@ -1935,14 +1935,14 @@ statem(S,Com::Q) ---> % idag skal jeg til NTH
 
 
 
-statem(S,Com::Q) --->  %% at bussen går er sant 
+statem(S,Com::Q) --->  %% at bussen gÃ¥r er sant 
     [at], %% that, not "this"
-    statem(S,Com::P),   %% ... det går en buss
+    statem(S,Com::P),   %% ... det gÃ¥r en buss
     be_truefalse(N),
     {negate(N,P,Q)}.
 
 
-statem(S,Com::Q) ---> % nå er jeg på nth %% Fronted 
+statem(S,Com::Q) ---> % nÃ¥ er jeg pÃ¥ nth %% Fronted 
     adverbx(Day,DayClass,pre), 
     saa0, 
     w(verb(BE,P,F)),
@@ -1950,7 +1950,7 @@ statem(S,Com::Q) ---> % nå er jeg på nth %% Fronted
     state(S, Com::Q)  /                    
         ( w(verb(BE,P,F)),  negation(N), xadverb(Day,DayClass) ). %% -x %% TA-101021
 
-statem(S,Com::Q) ---> % nå er bussen kommet
+statem(S,Com::Q) ---> % nÃ¥ er bussen kommet
     adverbx(Day,DayClass,pre), 
     w(verb(be,_,fin)),
     np1_accept(X,NP),
@@ -1970,8 +1970,8 @@ statem(S,Com::Q) ---> %%   Da er du ikke et orakel
         (  np(A,B::C), 
            be(N) ,
            xadverb(Day,DayClass)).   %% adverbx, not noun_compl  %% -x 
-                                       %% nå må jeg kjøpe en bil
-                                       %% -> jeg må kjøpe en (bil nå)                                       
+                                       %% nÃ¥ mÃ¥ jeg kjÃ¸pe en bil
+                                       %% -> jeg mÃ¥ kjÃ¸pe en (bil nÃ¥)                                       
 
 statem(S,Com::Q) ---> %%  Da er ikke du  et orakel
     adverbx(Day,DayClass,pre), 
@@ -1983,7 +1983,7 @@ statem(S,Com::Q) ---> %%  Da er ikke du  et orakel
 
 
 
-statem(S,Com::Q) ---> %% Nå skal vi gå
+statem(S,Com::Q) ---> %% NÃ¥ skal vi gÃ¥
     adverbx(Day,DayClass,pre), 
     saa0,
     (do),
@@ -2002,10 +2002,10 @@ statem(S,ComQ) ---> %% da har du stoppet
 
 
 %% adverb prefixes moved after thereit prefixes of very subtle reasons
-%% ///  jeg vet når det går buss
+%% ///  jeg vet nÃ¥r det gÃ¥r buss
 
 
-%% i en tid er den på dragvoll.
+%% i en tid er den pÃ¥ dragvoll.
 statem(S,SemSt) ---> 
     preadverbial1(Prep,Y, SemAdv), 
     w(verb(be,pres,fin)),
@@ -2013,9 +2013,9 @@ statem(S,SemSt) --->
         ( w(verb(be,pres,fin)),  
           adverbial1(Prep,Y,SemAdv )).
 
-statem(S, SEM) ---> % i morgen kveld må %% EXPERIMENT 
+statem(S, SEM) ---> % i morgen kveld mÃ¥ %% EXPERIMENT 
     preadverbials0,      % are stored
-    aux1, %% (do),  må/skal 
+    aux1, %% (do),  mÃ¥/skal 
     !,accept,
     state(S, SEM).               
 
@@ -2029,7 +2029,7 @@ statem(S,Com::Q) ---> %% I Trondheim er det en buss
         ( thereit, be,adverbial1(Prep,Y, SC::P3)).
 
 
-statem(S,Com::Q) ---> %% på mandag skal jeg <dra> til nth 
+statem(S,Com::Q) ---> %% pÃ¥ mandag skal jeg <dra> til nth 
     preadverbial1(Prep,Y, SC::P3),
     (do),
     specific_phrase(A, B::C),
@@ -2050,7 +2050,7 @@ statem(S,Com::Q) ---> %% fronted %% I Trondheim vil/(ambig) vi ta buss
     state(S, Com::Q)  -                    
         ( adverbial1(Prep,Y, SC::P3)).
 
-%% For oss har bussen gått
+%% For oss har bussen gÃ¥tt
 statem(S,SEM) ---> 
     preadverbial1(Prep,Y, ADVSEM), 
     so0,  
@@ -2063,7 +2063,7 @@ statem(S,SEM) --->
           adverbial1(Prep,Y, ADVSEM)).
 
 
-statem(S,Com::Q) ---> % i morgen kveld går bussen 
+statem(S,Com::Q) ---> % i morgen kveld gÃ¥r bussen 
     {user:value(dialog,1)}, %% expensive 
     preadverbial1(Prep1,Y1, SC1::P31), 
     preadverbial1(Prep2,Y2, SC2::P32), 
@@ -2077,7 +2077,7 @@ statem(S,Com::Q) ---> % i morgen kveld går bussen
 
 %%%%%%% End Statem
 
-%%%¤ PRESTATEM  (S,STM)
+%%%Â¤ PRESTATEM  (S,STM)
 
 
 prestatem(S,STM) ---> %% her er det godt
@@ -2093,7 +2093,7 @@ prestatem(S,STM) ---> %% her er det godt
  
 
 
-prestatem(S,STM) ---> %% da skal bussen kjøres av en sjåfør 
+prestatem(S,STM) ---> %% da skal bussen kjÃ¸res av en sjÃ¥fÃ¸r 
  
     so0, 
     aux1,
@@ -2113,9 +2113,9 @@ prestatem(S,STM) ---> %% da skal bussen kjøres av en sjåfør
 
     
 
-prestatem(S,STM) ---> %% til nardo er det på lørdag  en buss
+prestatem(S,STM) ---> %% til nardo er det pÃ¥ lÃ¸rdag  en buss
 
-    shoulditbe, %% TA-110810  ville det være
+    shoulditbe, %% TA-110810  ville det vÃ¦re
     % w(verb(be,T,fin)),
     % [det],
         not_look_ahead(w(adj2(_,_))), %% for meg er det bra |sikkert bra   
@@ -2126,7 +2126,7 @@ prestatem(S,STM) ---> %% til nardo er det på lørdag  en buss
          xadverbial1(Q,Z,QZ)).
 
 
-prestatem(S,STM) ---> %% i går var det slik at bussen sto
+prestatem(S,STM) ---> %% i gÃ¥r var det slik at bussen sto
 
     w(verb(be,_,fin)),
     [det],
@@ -2135,20 +2135,20 @@ prestatem(S,STM) ---> %% i går var det slik at bussen sto
     state(S,STM).
 
 
-prestatem(S,STM) ---> %% da hadde det sikkert vært en buss  (ad Hoc)
+prestatem(S,STM) ---> %% da hadde det sikkert vÃ¦rt en buss  (ad Hoc)
 
     w(verb(Have,_,fin)), gmem(Have,[have,be]), %% her ER det hendt noe 
     [det],
     redundant0,
     w(verb(Happen,past,part)),  
-    look_ahead_np,       %% her har det hendt noe som jeg ikke * forstår . 
+    look_ahead_np,       %% her har det hendt noe som jeg ikke * forstÃ¥r . 
     !,
     subject(X,NP), 
     state(S, STM)  \                    
         ( xnp(X,NP),
           w(verb(Happen,past,fin))).
 
-prestatem(S,STM) ---> %% i dag har jeg fått en ide %% TA-101117
+prestatem(S,STM) ---> %% i dag har jeg fÃ¥tt en ide %% TA-101117
 
     has,
     subject(X,XNP), 
@@ -2180,11 +2180,11 @@ prestatem(S,STM) ---> %% i dag har jeg en ide
 prestatem(S,STM) --->  %% (idag) virker det ikke %% TA-110304
 
     not_look_ahead(w(verb(be,_,_))), %% her er bussen -> adverb
-    not_look_ahead(w(verb(be1,_,_))), %%  når er jeg fremme %%
+    not_look_ahead(w(verb(be1,_,_))), %%  nÃ¥r er jeg fremme %%
     so0,    
     w(verb(V,Pres,fin)),
     [det],
-    not_look_ahead_np, %%  til nth går det en buss. %% TA-110426
+    not_look_ahead_np, %%  til nth gÃ¥r det en buss. %% TA-110426
     negation0(N),    
     !,
     state(S, STM)  \                   
@@ -2192,10 +2192,10 @@ prestatem(S,STM) --->  %% (idag) virker det ikke %% TA-110304
 
 
 
-prestatem(S,STM) --->  %% i morgen går bussen. 
+prestatem(S,STM) --->  %% i morgen gÃ¥r bussen. 
 
     not_look_ahead(w(verb(be,_,_))), %% her er bussen -> adverb
-    not_look_ahead(w(verb(be1,_,_))), %%  når er jeg fremme %%
+    not_look_ahead(w(verb(be1,_,_))), %%  nÃ¥r er jeg fremme %%
     so0,    
     w(verb(V,Pres,fin)),
     det0,             %% TA-110228
@@ -2238,13 +2238,13 @@ prestatem(S,STM) ---> %% her er bussen %% TA-101008
 
 
 
-prestatem(S,STM) ---> % Nå kan man ikke det %% kan = verb| aux problem
+prestatem(S,STM) ---> % NÃ¥ kan man ikke det %% kan = verb| aux problem
 
     so0,
     [kan],
     subject(X,NP),
     redundant0, 
-    not_look_ahead(w(verb(_,_,_))), %% ..gå
+    not_look_ahead(w(verb(_,_,_))), %% ..gÃ¥
     not_look_ahead([ikke]), %% da kan du ikke hjelpe meg % ad hoc
     !,
     state(S, STM)  -                   
@@ -2252,7 +2252,7 @@ prestatem(S,STM) ---> % Nå kan man ikke det %% kan = verb| aux problem
          w(verb(do1,pres,fin))). %% OR know1 ???
 
 
-prestatem(S,STM) ---> %% i morgen skal  bussen gå
+prestatem(S,STM) ---> %% i morgen skal  bussen gÃ¥
 
     so0,
     aux1,
@@ -2269,13 +2269,13 @@ prestatem(S,STM) ---> %% i morgen skal  bussen gå
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%¤¤¤   ITSTATEM (S,SEM)
+%%%%Â¤Â¤Â¤   ITSTATEM (S,SEM)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-itstatem(S,SEM) ---> %% Det er en løsning at  Bingo%% TA-110809
+itstatem(S,SEM) ---> %% Det er en lÃ¸sning at  Bingo%% TA-110809
     be,
     np0_accept(XS,NPS),
     [at], 
@@ -2283,7 +2283,7 @@ itstatem(S,SEM) ---> %% Det er en løsning at  Bingo%% TA-110809
     !,
     clausal_object1(OX,ONP),
     state(S,SEM) \
-        (xnp(OX,ONP),w(verb(be,pres,fin)),xnp(XS,NPS)). %% Bingo er en løsning
+        (xnp(OX,ONP),w(verb(be,pres,fin)),xnp(XS,NPS)). %% Bingo er en lÃ¸sning
        
 
 
@@ -2299,7 +2299,7 @@ itstatem(S,SEM) ---> %% Det er en buss %% TA-110809
 
 
 
-itstatem(S,SEM) ---> %% Det er|går en buss  %% TA-110809
+itstatem(S,SEM) ---> %% Det er|gÃ¥r en buss  %% TA-110809
     w(verb(Help,Tens,fin)), {Help \== be},
     look_ahead_np,  
     traceprint(4,it02),
@@ -2368,7 +2368,7 @@ itstatem(S,SEM) ---> %% Det er ikke kartet som er feil//
 
 %% Sentence DET ... %%%
 
-itstatem(S,ST) ---> %% det er jeg ikke sikker på %% TA-101025
+itstatem(S,ST) ---> %% det er jeg ikke sikker pÃ¥ %% TA-101025
 
     be,
 
@@ -2391,7 +2391,7 @@ itstatem(S,ST) ---> %% det er jeg ikke sikker på %% TA-101025
 
 
 
-itstatem(S,ST) ---> %% det vil jeg gjøre %% TA-100914
+itstatem(S,ST) ---> %% det vil jeg gjÃ¸re %% TA-100914
 
     aux1,
     subject(X,NP),
@@ -2405,11 +2405,11 @@ itstatem(S,ST) ---> %% det vil jeg gjøre %% TA-100914
          negation(N),
         [dette]).
 
-/* ( det er  en løsning at  det) er en gjennomgang. %% TA-110808
+/* ( det er  en lÃ¸sning at  det) er en gjennomgang. %% TA-110808
 itstatem(S,Com::Q) ---> %% Fronted %% TA-110122
 
     be_truefalse_that(N), %% slik at
-    statem(S,Com::P), %% ... det går en buss %% Recursion
+    statem(S,Com::P), %% ... det gÃ¥r en buss %% Recursion
      traceprint(4,it6),
     !,
     {negate(N,P,Q)}.
@@ -2418,11 +2418,11 @@ itstatem(S,Com::Q) ---> %% Fronted %% TA-110122
 
 
 
-itstatem(S,EQ) ---> %% TA-100912 det er rart å ta bussen
+itstatem(S,EQ) ---> %% TA-100912 det er rart Ã¥ ta bussen
     be(N),
     gradverb0(_Very),  
     w(adj2(Inc,NIL)), %% sant/feil ? veldig interessant 
-    [å],
+    [Ã¥],
     traceprint(4,it7),
     !,
     clausal_object1(X,XNP)\([jeg],[vil]),  
@@ -2435,7 +2435,7 @@ itstatem(S,EQ) ---> %% TA-100912 det er rart å ta bussen
 
 
 
-itstatem(S,EQ) ---> %% FRONTEST det er nødvendig med opplæring
+itstatem(S,EQ) ---> %% FRONTEST det er nÃ¸dvendig med opplÃ¦ring
     be(N),
     ap(A,XT,S, AP ),
     pp(with,Y,NP), %% assembled by isq
@@ -2450,7 +2450,7 @@ itstatem(S,EQ) ---> %% FRONTEST det er nødvendig med opplæring
           negation(N), 
           ap(A,XT,S, AP )).
 
-itstatem(S,EQ) ---> %% det er rart at bussen går
+itstatem(S,EQ) ---> %% det er rart at bussen gÃ¥r
     be(N),
     gradverb0(_Very),  
     w(adj2(Inc,NIL)), %% adj1(ABig,AV,AS,ABIGX), %% veldig interessant 
@@ -2466,14 +2466,14 @@ itstatem(S,EQ) ---> %% det er rart at bussen går
           w(adj2(Inc,NIL))). %% stacked thing
 
 
-itstatem(S,EQ) ---> %%  det er veldig lett for meg å ta buss
+itstatem(S,EQ) ---> %%  det er veldig lett for meg Ã¥ ta buss
     be(N),         
     gradverb0(_), 
     w(adj2(Easy,Nil)),
     w(prep(for)),
     object(Z,ZNP),
   
-    [å],
+    [Ã¥],
       traceprint(4,it10),
     !,accept,
 
@@ -2486,11 +2486,11 @@ itstatem(S,EQ) ---> %%  det er veldig lett for meg å ta buss
             w(adj2(Easy,Nil))).   % lett
          
 
-itstatem(S,EQ) ---> %%  det er veldig lett for noen å ta buss %% NEC ???
+itstatem(S,EQ) ---> %%  det er veldig lett for noen Ã¥ ta buss %% NEC ???
     be(N),          %% det er lett for meg at noen tar buss // ad hoc
     w(adj2(Easy,Nil)),
     pp(PP,Z,PPS),  %% for meg        (with care)
-    [å],
+    [Ã¥],
       traceprint(4,it11),
     !,accept,
 
@@ -2505,10 +2505,10 @@ itstatem(S,EQ) ---> %%  det er veldig lett for noen å ta buss %% NEC ???
 
 
 
-itstatem(S,EQ) ---> %%  det er lett å ta buss
+itstatem(S,EQ) ---> %%  det er lett Ã¥ ta buss
     be(N),
     adj1(ABig,A:_,AS,ABIGX), %% veldig interessant 
-    [å],
+    [Ã¥],
     w(verb(Take,inf,fin)), %% lexv(tv,Take,inf,fin), %% se=see (\+look)  
     reflexiv0(Take), %% seg 
       traceprint(4,it12),
@@ -2525,10 +2525,10 @@ itstatem(S,EQ) ---> %%  det er lett å ta buss
 
 
 
-itstatem(S,EQ) ---> %%  det er nødvendig = dette er nødvendig
+itstatem(S,EQ) ---> %%  det er nÃ¸dvendig = dette er nÃ¸dvendig
     be(N),
     adj1(ABig,AP,AS,ABIGX), 
-    not_look_ahead_np, %% det er fin vær
+    not_look_ahead_np, %% det er fin vÃ¦r
     %% endofline, %% requires empty stack ????
       traceprint(4,it13),
     !,
@@ -2550,7 +2550,7 @@ itstatem(S,Com::P) ---> %% be --> exist ?  // FRONTED // dubious
       not_look_ahead_lit([jeg,du]),   %% det -er- du 
     not_look_ahead([det]), %% det er det ---> ooo %% TA-101012
 
-    np1_accept(X,NP), %% feil på hjemmesiden %% TA-110527
+    np1_accept(X,NP), %% feil pÃ¥ hjemmesiden %% TA-110527
 
     [som], %%% ?????  det er en del feil \= det er en del (som) er feil
 
@@ -2584,11 +2584,11 @@ itstatem(S,SEM) ---> %% Det hjalp med restart
 
 
 
-itstatem(S,SEM) ---> %% Det koster 30 kroner å ta buss %% preliminary clausal SUBJECT 
+itstatem(S,SEM) ---> %% Det koster 30 kroner Ã¥ ta buss %% preliminary clausal SUBJECT 
 
     w(verb(Cost,Tense,fin)), gmem(Cost,[cost,take]),
     np0_accept(M,K),
-    [å],
+    [Ã¥],
       traceprint(4,it16),
     !,
     clausal_object1(XCO,COSEM)\([noen],[vil]), %% noen tar buss = dette
@@ -2597,7 +2597,7 @@ itstatem(S,SEM) ---> %% Det koster 30 kroner å ta buss %% preliminary clausal SU
 
 
 
-itstatem(S,Com::P1) ---> %% Det går an å ta buss #1 %% TA-110426
+itstatem(S,Com::P1) ---> %% Det gÃ¥r an Ã¥ ta buss #1 %% TA-110426
      
     w(verb(go,pres,fin)),
     redundants0,   %% TA-110426 sikkert
@@ -2608,7 +2608,7 @@ itstatem(S,Com::P1) ---> %% Det går an å ta buss #1 %% TA-110426
     state(S,Com::P) \ someone,
     {negate(N,P,P1)}.
 
-itstatem(S,ISEM) --->  %% det går (ikke)(an) = er (ikke) mulig
+itstatem(S,ISEM) --->  %% det gÃ¥r (ikke)(an) = er (ikke) mulig
     negation0(N1),     %% TA-110803
     hlexv(_iv,go,T,fin,N2),  
     {bigno(N1,N2,N)},    
@@ -2629,7 +2629,7 @@ itstatem(S,ISEM) --->  %% det skjedde ikke noe som jeg likte    #2
                             %% TA-110706
         {bigno(N1,N2,N)},    
    {\+ testmember(V,[cost,take])}, %% be ??  %% TA-110808 Haz ?
-   preadverbials0,   %% TA-110527            %% da vil  løsningen være at det blir en bus   
+   preadverbials0,   %% TA-110527            %% da vil  lÃ¸sningen vÃ¦re at det blir en bus   
    look_ahead_np,    
       traceprint(4,it18),
     !,             
@@ -2640,9 +2640,9 @@ itstatem(S,ISEM) --->  %% det skjedde ikke noe som jeg likte    #2
 
 
 
-itstatem(S,SEM) ---> %% Det hjelper å ta buss %% preliminary clausal SUBJECT
+itstatem(S,SEM) ---> %% Det hjelper Ã¥ ta buss %% preliminary clausal SUBJECT
     w(verb(Help,Tense,fin)),
-    [å],
+    [Ã¥],
       traceprint(4,it19),
     !,
     clausal_object1(XCO,COSEM)\([noen],[vil]), %% noen tar buss = dette
@@ -2668,7 +2668,7 @@ itstatem(S,STM) ---> %%  det ble sagt at bussen sto
 
 
 
-itstatem(S,STM) --->   %% det er/ble arrangert et møte
+itstatem(S,STM) --->   %% det er/ble arrangert et mÃ¸te
 
     blei,
     preadverbial0(Prep,Z,APS),
@@ -2688,7 +2688,7 @@ itstatem(S,STM) --->   %% det er/ble arrangert et møte
 
 
 
-itstatem(S,SEM) ---> %% Det kjøres ruter = Noen kjører ruter 
+itstatem(S,SEM) ---> %% Det kjÃ¸res ruter = Noen kjÃ¸rer ruter 
 
     w(verb(Run,Tense,pass)),
     negation0(N),
@@ -2698,7 +2698,7 @@ itstatem(S,SEM) ---> %% Det kjøres ruter = Noen kjører ruter
         ([noen], w(verb(Run,Tense,fin)), negation(N)).
 
 
-itstatem(S,EQ) ---> %% Det er sikkert at bussen går
+itstatem(S,EQ) ---> %% Det er sikkert at bussen gÃ¥r
 
     w(verb(be,Pres,fin)),
     redundant0, %% likevel  
@@ -2717,12 +2717,12 @@ atom ---> [at].
 atom ---> [om].
 
 
-itstatem(S,EQ) ---> %%  (Object) Det er lett å lage = Dette
+itstatem(S,EQ) ---> %%  (Object) Det er lett Ã¥ lage = Dette
 
     w(verb(be,Pres,fin)),
     redundant0, %% likevel   
     w(adj2(Easy,nil)),
-    [å],
+    [Ã¥],
     w(verb(Make,inf,fin)),
     reflexiv0(Make), %% seg 
     not_look_ahead_np,
@@ -2761,11 +2761,11 @@ itstatem(S,EQ) --->
 % Antecipatory Subject
 
 
-itstatem(S,EQ) --->  %%  det er lett å komme til Lian 
+itstatem(S,EQ) --->  %%  det er lett Ã¥ komme til Lian 
  
      w(verb(be,pres,fin)),
      w(adj2(Easy,nil)),
-     [å], 
+     [Ã¥], 
      w(verb(V,inf,fin)),
        traceprint(4,it27),
      !,
@@ -2776,7 +2776,7 @@ itstatem(S,EQ) --->  %%  det er lett å komme til Lian
         (xnp(Y,CONP), w(verb(be,pres,fin)), w(adj2(Easy,nil))).
 
 
-itstatem(S,ST) ---> %% det forstår jeg (IT er object)
+itstatem(S,ST) ---> %% det forstÃ¥r jeg (IT er object)
 
     w(verb(See,_,fin)), {verbtype(See,rv)},
     subject(X,NP),
@@ -2820,7 +2820,7 @@ itstatem(S,ST) ---> %% det gjelder systemet
    
 
 
-itstatem(S,ST) ---> %% det går  bra i morgen %% -> ting går bra
+itstatem(S,ST) ---> %% det gÃ¥r  bra i morgen %% -> ting gÃ¥r bra
 
     w(verb(Go,_,fin)),
    {testmember(Go,[go,look,see,function])}, %% etc  
@@ -2850,10 +2850,10 @@ itstatem(S,Com::P) ---> %% Experiment
       traceprint(4,it32),
     verb_phrase1(Cost,IT,id, S,Com::P) \ 
         w(verb(Cost,pres,fin)).  %   koster penger aa ta buss
-                                 % = koster penger for å ta buss
+                                 % = koster penger for Ã¥ ta buss
 
 
-itstatem(S,Com::P1) ---> %% Det begynner å gå en buss 
+itstatem(S,Com::P1) ---> %% Det begynner Ã¥ gÃ¥ en buss 
      
     beginverb(Go,N), 
     np1(A, NP1),
@@ -2882,7 +2882,7 @@ itstatem(S,Com::P) ---> %% Det er godt at jeg lever
     one_of_lit([at,om]), %% that, 
       traceprint(4,it35),
     !,accept,           
-    statem(S,Com::P). %% i.e.was substatem  IGNORE the adjective %% bussen ikke går
+    statem(S,Com::P). %% i.e.was substatem  IGNORE the adjective %% bussen ikke gÃ¥r
 
 itstatem(S,Com::P) ---> %% Det er godt jeg lever
             
@@ -2890,14 +2890,14 @@ itstatem(S,Com::P) ---> %% Det er godt jeg lever
     negation0(_N),
     saa0,
     w(adj2(Good,nil)),
-   {testmember(Good,[good])},  %%  Er det edru sjåfører
+   {testmember(Good,[good])},  %%  Er det edru sjÃ¥fÃ¸rer
 
     not_look_ahead(w(noun(_,_,_,_))), %% det er gode svar ****
     traceprint(4,it36),
 
     statem(S,Com::P).           %% Recursion
 
-%%   det er mørke kvelder #*** 
+%%   det er mÃ¸rke kvelder #*** 
 itstatem(S,Com::Q) --->  
             
     be(N),
@@ -2911,7 +2911,7 @@ itstatem(S,Com::Q) --->
          sad,stupid,tedious  ])},  
     %% late is also adverb
       traceprint(4,it37),
-    be_complements(IT,S, Com::P ) \ w(adj2(Good,nil)), % Det er mørkt i kveld. 
+    be_complements(IT,S, Com::P ) \ w(adj2(Good,nil)), % Det er mÃ¸rkt i kveld. 
     {negate(N,P,Q)}.
  
 
@@ -2938,7 +2938,7 @@ itstatem(S,ST) --->  %% det er = det fins %% Last
     !.
 
 
-%%%%¤¤¤¤  STATREAL  (P) 
+%%%%Â¤Â¤Â¤Â¤  STATREAL  (P) 
 
 %% statreal(_P) ---> which,!,reject. %% vet du hvilken -> du vet hvilken 
 %% statreal(_P) ---> [hvilken],!,reject. %% 
@@ -2949,21 +2949,21 @@ statreal(P) ---> %%  without cut
     stat(real,P). 
 
 
-%%%%¤¤¤¤  STAT(R,P) 
+%%%%Â¤Â¤Â¤Â¤  STAT(R,P) 
 
 stat(Real,Q) ---> 
     state(S,  Com::P), %% without cut
     worldcomp(Real,  S,Com::P,Q).
 
 
-%%%%¤¤¤¤  STATREAL1  (P) 
+%%%%Â¤Â¤Â¤Â¤  STATREAL1  (P) 
 
 statreal1(Q) ---> %%  with cut
     state1(S, ComP), %% with cut
     worldcomp(real,  S,ComP,Q).
  
 
-%%%%¤¤¤ STATE1 (S,EP)
+%%%%Â¤Â¤Â¤ STATE1 (S,EP)
 
 state1(S, Com::P) ---> 
     np(X,NVP::P),       %% -> vet du ikke/vet ikke du
@@ -2975,7 +2975,7 @@ state1(S, Com::P) --->
     {negate(O,VP,NVP)},
     !.
 
-%%¤ SUBSTATE (Sm ComP)
+%%Â¤ SUBSTATE (Sm ComP)
 
 substate(S, Com::P) --->  %% experiment   (at) jeg idag tar bussen
     subject(X,NVP::P),    %% jeg
@@ -2988,7 +2988,7 @@ substate(S, Com::P) --->  %% experiment   (at) jeg idag tar bussen
 
 
 
-%%%%¤¤  STATE (S,EP)  - normal np vp
+%%%%Â¤Â¤  STATE (S,EP)  - normal np vp
 
 
 state(S, Com::P) --->  
@@ -3016,11 +3016,11 @@ state(S, Com::P) --->
 beginverb(Go,N) ---> 
 	 w(verb(start,_,fin)), %% begynner
     negation0(N),         %% ikke
-    infinitiveand,        %% å ( og)
-    w(verb(Go,_,fin)).    %% gå
+    infinitiveand,        %% Ã¥ ( og)
+    w(verb(Go,_,fin)).    %% gÃ¥
 
 
-%%%¤ QUESTION  (P)
+%%%Â¤ QUESTION  (P)
 
 question(P) --->  %% klokka ? 
             
@@ -3053,7 +3053,7 @@ question(P) --->   %% Avoid ( Er klokka 23 === Ja)
     w(noun(clock,_,_,_)),
     !,
     np1(_, __), %% 23 (ignore)
-    danow0,     %% nå da 
+    danow0,     %% nÃ¥ da 
     !,
     whatq(P)  \  ([hva],be,the,w(noun(clock,sin,def,n))). 
 
@@ -3062,12 +3062,12 @@ question(P) ---> question1(P).
 
 
 question1(test:::P) ---> % YES NO Questions %% Fronted 
-    [får],
+    [fÃ¥r],
     specific_phrase(X,NP), %% was iman
     !,
-    statement(P) \ (np(X,NP),[får]).      %% neutral wrt får aux | verb
+    statement(P) \ (np(X,NP),[fÃ¥r]).      %% neutral wrt fÃ¥r aux | verb
 
-question1(new:::P) ---> % har tenkt å ta buss 
+question1(new:::P) ---> % har tenkt Ã¥ ta buss 
     w(verb(have,pres,fin)),   
     w(verb(Want,past,part)),
     {testmember(Want,[want,think])}, 
@@ -3078,7 +3078,7 @@ question1(new:::P) ---> % har tenkt å ta buss
 question1(new:::P) ---> % YES NO Questions 
     w(verb(Want,pres,fin)),
     {testmember(Want,[want,think,hope])}, 
-    particlev0(Want,W), %% håper på 
+    particlev0(Want,W), %% hÃ¥per pÃ¥ 
     not_look_ahead([du]), 
     !,
     statement(P) \  ([jeg], w(verb(W,pres,fin))).
@@ -3089,7 +3089,7 @@ question1(test:::P) ---> question0(P).
 np_question(which(XT):::Z) ---> np1(XT, true::Z).
 
 
-%%%%¤ QUESTION0  
+%%%%Â¤ QUESTION0  
 
 % question with no quantifier
 
@@ -3104,11 +3104,11 @@ question0(P) ---> hoq,statement(P). % Er det slik at ...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%¤ IMPLICITQ 
+%%Â¤ IMPLICITQ 
 
 %% This is extreme
 implicitq(new:::P ) --->     %%  fra sollia som ankommer samfundet 1730 . 
-                            %% = buss <   > går
+                            %% = buss <   > gÃ¥r
     w(prep(From)), {testmember(From,[from,to])},
     w(name(Sollia,n,Station)), {testmember(Station,[station,neighbourhood])},
     {no_unprotected_verb},   
@@ -3128,9 +3128,9 @@ implicitq(new:::P ) --->     %%  fra sollia som ankommer samfundet 1730 .
 
 
 
-implicitq(modifier(S)::: Com12 and P3) ---> %% Når går (neste) Nidarosdomen
+implicitq(modifier(S)::: Com12 and P3) ---> %% NÃ¥r gÃ¥r (neste) Nidarosdomen
      not_look_ahead([nr]), 
-     [når],
+     [nÃ¥r],
      {\+ user:value(dialog,1)},  
      w(verb(go,_,fin)),
      optional([neste]),
@@ -3144,9 +3144,9 @@ implicitq(modifier(S)::: Com12 and P3) ---> %% Når går (neste) Nidarosdomen
 
 
 
-implicitq(WI) ---> %% når + //no verb// + station ->  %% når trollahaugen 
+implicitq(WI) ---> %% nÃ¥r + //no verb// + station ->  %% nÃ¥r trollahaugen 
      not_look_ahead([nr]),
-     [når],
+     [nÃ¥r],
      {\+ user:value(dialog,1)},  
      {no_unprotected_verb}, %
      look_ahead(w(name(_Th,_,P))), 
@@ -3156,10 +3156,10 @@ implicitq(WI) ---> %% når + //no verb// + station ->  %% når trollahaugen
      implicitq(WI)  \  w(prep(to)). %% Hazardous ????  
 
 
-implicitq(test:::WI) ---> %% når nr 
+implicitq(test:::WI) ---> %% nÃ¥r nr 
      {\+ user:value(dialog,1)},  
      not_look_ahead([nr]), 
-     [når],
+     [nÃ¥r],
      [nr],
      {no_unprotected_verb}, %
      !,accept,
@@ -3167,9 +3167,9 @@ implicitq(test:::WI) ---> %% når nr
      ynq(WI)\ w(verb(go,pres,fin)).
 
 
-implicitq(test:::WI) ---> %% når + //no verb// -> skip når
+implicitq(test:::WI) ---> %% nÃ¥r + //no verb// -> skip nÃ¥r
      not_look_ahead([nr]), 
-     [når],
+     [nÃ¥r],
      {\+ user:value(dialog,1)},  
      {no_unprotected_verb}, %
      optional([det]), %%
@@ -3191,7 +3191,7 @@ implicitq(new:::P ) --->     %% buss .. som ankommer.. // with care.
 
     {no_unprotected_verb},   %% som ankommer protected
     np1_accept(X, P1::P),      
-    {\+ vartypeid(X,time)}, %% tid "går ikke"
+    {\+ vartypeid(X,time)}, %% tid "gÃ¥r ikke"
     {\+ vartypeid(X,clock)}, 
     constrainvehdep(X), 
     not_look_ahead([som]), %% not a new one
@@ -3201,7 +3201,7 @@ implicitq(new:::P ) --->     %% buss .. som ankommer.. // with care.
     traceprint(4,iq4b),
     verb_phrase1(go,X,id, S,event/real/S::P1) \ w(verb(go,pres,fin)),
                  %% \+ _ 
-    optional(itrailer),  %% buss 8 fra byen    når ?
+    optional(itrailer),  %% buss 8 fra byen    nÃ¥r ?
     endofline,           %%  s.p. andersens veg = sentrum . ...
     !,accept.            %%% skummel %%%
   
@@ -3257,13 +3257,13 @@ implicitq(new:::P ) --->     %% tider fra dragvoll %% Ad Hoc Problem
 implicitq(new:::P ) --->     %% buss 5 Dragvoll 
 
     not_look_ahead(w(nb(_,num))), %% avoid 2 2 = bus 2 goes (with) route	 2
-                                %% TA-101129, første ok
+                                %% TA-101129, fÃ¸rste ok
     not_look_ahead(w(prep(_))),
     {no_unprotected_verb},   
     np1_accept(X, P1::P), %% TA-101022 
                           %% NP with modifiers dont backtrack to shorter  (longest first)        
 
-    {\+ vartypeid(X,time)}, %% tid "går ikke"
+    {\+ vartypeid(X,time)}, %% tid "gÃ¥r ikke"
     {\+ vartypeid(X,clock)}, 
     constrainvehdep(X), 
     not_look_ahead([som]), 
@@ -3273,7 +3273,7 @@ implicitq(new:::P ) --->     %% buss 5 Dragvoll
     !,accept,                
     traceprint(4,iq9),
     verb_phrase1(_V,X,id, S,event/real/S::P1) \ w(verb(go,pres,fin)),
-    optional(itrailer),  %% buss 8 fra byen    når ?
+    optional(itrailer),  %% buss 8 fra byen    nÃ¥r ?
     endofline,           %%  s.p. andersens veg = sentrum . ...
     !,accept.            %%% skummel %%%
 
@@ -3282,7 +3282,7 @@ implicitq(new:::P ) --->     %% buss 5 Dragvoll
 
 implicitq(modifier(S)::: Com12 and P3) ---> %% kl 1234 ...
       {user:value(dialog,1)}, 
-      not_look_ahead([nå]), %% not intended
+      not_look_ahead([nÃ¥]), %% not intended
     time1(NI),  
 %%    {number(NI)},
     endofline,
@@ -3305,7 +3305,7 @@ implicitq(new:::P ) --->     %% buss 5 Dragvoll ///  NOT neste buss
     not_look_ahead_flnp,
     {no_unprotected_verb},  %% NEW AUXILLARY    tuc/lex.pl   
     np0(X, P1::P),            %% NP without modifiers
-    {\+ vartypeid(X,time)}, %% tid "går ikke"
+    {\+ vartypeid(X,time)}, %% tid "gÃ¥r ikke"
     {\+ vartypeid(X,clock)}, 
     constrainvehdep(X), 
     not_look_ahead([om]), %% morgenen %% ad hoc
@@ -3348,7 +3348,7 @@ implicitq(modifier(S)::: Com12 and P3) ---> %%  neste til // ikke
 
 
 
-implicitq(WI) --->  %% holdeplasser på risvollan
+implicitq(WI) --->  %% holdeplasser pÃ¥ risvollan
     {\+ value(dialog,1)}, %% siste buss -> modifier ! 
     w(noun(Station,X,Y,Z)), 
     not_look_ahead(w(name(_D3,_,_))), %% holdeplass D3 -> "Holdeplass" (SIC)
@@ -3361,7 +3361,7 @@ implicitq(WI) --->  %% holdeplasser på risvollan
 
 
 
-implicitq(WI) ---> %% nærmeste holdeplass ...
+implicitq(WI) ---> %% nÃ¦rmeste holdeplass ...
     {\+ value(dialog,1)}, %% siste buss -> modifier ! 
     w(adj2(nearest,nil)), %%  special
     look_ahead(w(noun(Station,_,_,_))), 
@@ -3373,13 +3373,13 @@ implicitq(WI) ---> %% nærmeste holdeplass ...
 
 
 
-%% Protected verb:    (bussen ...) som går ...
-%% Unrotected verb:    (bussen ...) går ...
+%% Protected verb:    (bussen ...) som gÃ¥r ...
+%% Unrotected verb:    (bussen ...) gÃ¥r ...
 %% {no_unprotected_verb},  
 
 
-implicitq(modifier(S)::: Com12 and P3) ---> %% nå Dalen Hageby -> TIL Hageby
-    [nå],
+implicitq(modifier(S)::: Com12 and P3) ---> %% nÃ¥ Dalen Hageby -> TIL Hageby
+    [nÃ¥],
     {\+ value(teleflag,true)},
     {\+ value(textflag,true)},
     {no_unprotected_verb}, %% NEW AUXILLARY    tuc/lex.pl
@@ -3390,7 +3390,7 @@ implicitq(modifier(S)::: Com12 and P3) ---> %% nå Dalen Hageby -> TIL Hageby
 
     {setvartype(XB,vehicle)}, 
     realcomp(S,  ERS,P3),  
-    verb_modifiers(go,XB,S, Com12 ::true, ERS) - [nå],  
+    verb_modifiers(go,XB,S, Com12 ::true, ERS) - [nÃ¥],  
     traceprint(4,iq15),
     !,accept. %%   ( don t waste time )
 
@@ -3459,7 +3459,7 @@ implicitq(new:::P ) --->     %% buss 5 til Dragvoll
 
     np1_accept(X, P1::P), 
     {\+ vartypeid(X,thing)}, %% noe
-    {\+ vartypeid(X,time)}, %% tid "går ikke"
+    {\+ vartypeid(X,time)}, %% tid "gÃ¥r ikke"
     {\+ vartypeid(X,clock)},
     {\+ vartypeid(X,arrival)}, %% ankomst 1300 # \+ 1300 go 
     {\+ vartypeid(X,departure)},     
@@ -3477,8 +3477,8 @@ implicitq(new:::P ) --->     %% buss 5 til Dragvoll
 
 
 
-implicitq(new:::P ) --->  %% når bussen = går bussen 
-    [når], %% w(verb(reach,pres,fin)), 
+implicitq(new:::P ) --->  %% nÃ¥r bussen = gÃ¥r bussen 
+    [nÃ¥r], %% w(verb(reach,pres,fin)), 
     np_kernel(_0_,X, R1R2),        %% // returns of
     !,accept,   
     constrainvehdep(X),                    %% only vehicle
@@ -3575,7 +3575,7 @@ implicitq(modifier(S)::: Com12 and P3) ---> %% Dalen Hageby -> TIL Hageby
         qtrailer0.  %% takk 
 
 
-%%%%¤¤ REJECT-IMPLICITQ     
+%%%%Â¤Â¤ REJECT-IMPLICITQ     
 
 reject_implicitq ---> [hvilke]. %% etc etc 
 
@@ -3592,7 +3592,7 @@ reject_implicitq ---> w(noun(error,_,_,_)).
 reject_implicitq ---> 
      not_look_ahead(w(adj2(fast,_))), %% raskeste etc
      not_look_ahead(w(adj2(best,_))),
-     w(adj2(good,nil)). %% nyttår
+     w(adj2(good,nil)). %% nyttÃ¥r
 
 reject_implicitq --->  [kan].
 
@@ -3600,11 +3600,11 @@ reject_implicitq --->
     not_look_ahead([e]), %%  e b schieldrops veg,e=er
     w(verb(When1,_,_)),
     
-    {When1 \== reach}. %% når 
+    {When1 \== reach}. %% nÃ¥r 
 
 reject_implicitq ---> 
     w(noun(_,_,_,_)), %% bussen 
-    w(verb(_,_,_)).   %% går
+    w(verb(_,_,_)).   %% gÃ¥r
 
 reject_implicitq ---> 
    not_look_ahead([de]),   % e.g. art 
@@ -3638,17 +3638,17 @@ reject_implicitq --->
 reject_implicitq ---> 
     [hvem].  %% (explicit hvem question is covered) %% hvem initierer verb_komplement
 
-reject_implicitq ---> %% når bussen fra X til Y// når går bussen 
+reject_implicitq ---> %% nÃ¥r bussen fra X til Y// nÃ¥r gÃ¥r bussen 
     not_look_ahead([nr]),
     not_look_ahead([n]), 
-    [når],  %% ikke [n] som betyr neste 
-    not_look_ahead(w(prep(from))). %% når fra ... 
+    [nÃ¥r],  %% ikke [n] som betyr neste 
+    not_look_ahead(w(prep(from))). %% nÃ¥r fra ... 
 
 reject_implicitq ---> 
-    so.          %% så flink du er 
+    so.          %% sÃ¥ flink du er 
 
 reject_implicitq ---> 
-    w(nb(1000,num)),     %% første OK 
+    w(nb(1000,num)),     %% fÃ¸rste OK 
     look_ahead([takk]). %% tusen takk 
 
 reject_implicitq --->  %%  Huff da *
@@ -3660,7 +3660,7 @@ reject_implicitq --->  %%  og takk for det
 reject_implicitq --->   %%  men  takk allikevel
     [men].
 
-reject_implicitq --->    %%  Hvis bussen starter kl 1234, når er ..   
+reject_implicitq --->    %%  Hvis bussen starter kl 1234, nÃ¥r er ..   
     not_look_ahead([om]),  
     [hvis]. 
 
@@ -3701,8 +3701,8 @@ reject_implicitq --->         %%      "Natta !"
     {testmember(Mid,[midnight])}.
 
 reject_implicitq ---> 
-    [på],
-    [forhånd],
+    [pÃ¥],
+    [forhÃ¥nd],
     [takk].
 
 reject_implicitq --->   %%   "avganger"
@@ -3713,8 +3713,8 @@ reject_implicitq --->   %%   "avganger"
    !,reject.
 
 
-reject_implicitq --->   %% nå er jeg på nth
-   [nå],
+reject_implicitq --->   %% nÃ¥ er jeg pÃ¥ nth
+   [nÃ¥],
    endofline, 
    !,reject. %% sic
 
@@ -3777,7 +3777,7 @@ not_fnlp ---> [].
 
 % % % % % % % % % % % % % % % % % % % %
 
-%%¤ CONSTRAINVEHDEP (X)
+%%Â¤ CONSTRAINVEHDEP (X)
 
 constrainvehdep(X) ---> {vartypeid(X,thing)},!,reject. %% Don't instantiate 
 constrainvehdep(X) ---> {constrain(X,clock)},!,reject.
@@ -3804,9 +3804,9 @@ constrainvehdep(X) ---> {constrain(X,trip)},           !.
 
 %% Has question
 
-%%%¤ HASQ (P)
+%%%Â¤ HASQ (P)
 
-hasq(P) --->  %% har det gått en buss 
+hasq(P) --->  %% har det gÃ¥tt en buss 
     has,
     thereit(_ikke), % Rhetorical
     w(verb(Go,past,part)), %% lexv ???
@@ -3833,21 +3833,21 @@ hasq(P) --->  %% har ikke = har dere  Rhet ???
     negation0(_),    %% Rhet
     statement(P)  /  w(verb(have,Pres,fin)).
 
-%% OOPS    er det første buss til nth
-%%     ==> (det er første) buss til nth
-%%     ==> buss til nth  (er første)
+%% OOPS    er det fÃ¸rste buss til nth
+%%     ==> (det er fÃ¸rste) buss til nth
+%%     ==> buss til nth  (er fÃ¸rste)
 %
 
-%%%¤ ISQ (P)  IS-question
+%%%Â¤ ISQ (P)  IS-question
 
-isq(P) --->   %% Er det mulig å 
+isq(P) --->   %% Er det mulig Ã¥ 
     be,       % er det mulig at jeg ...      
     negation0(_), %% rhet
     thereit(_), % ignore neg 
     negation0(_), %% rhet
     so0, 
     w(adj2(True,nil)), gmem(True,[true,false,wrong,correct]),
-    [å],
+    [Ã¥],
     !, 
     clausal_object1(COV,CNP)\[jeg],
     !,
@@ -3896,7 +3896,7 @@ isq(P) --->   %% er du i trondeim
     substatement1(P)  \   (pronoun(Du),w(verb(be,pres,fin))).
 
 
-isq(P) --->   %% Er det umulig for deg å være sur %% TA-101022
+isq(P) --->   %% Er det umulig for deg Ã¥ vÃ¦re sur %% TA-101022
     be,                
     [det],
     negation0(_), %% rhet %% 
@@ -3904,9 +3904,9 @@ isq(P) --->   %% Er det umulig for deg å være sur %% TA-101022
     w(adj2(Poss,nil)),
     w(prep(for)),
     object(Z,NPZ),
-    [å],
+    [Ã¥],
     !,
-    clausal_object1(COV,CONP)\(xnp(Z,NPZ),[vil]), %% .. være sur
+    clausal_object1(COV,CONP)\(xnp(Z,NPZ),[vil]), %% .. vÃ¦re sur
     
     substatement1(P) \
        (xnp(COV,CONP), be,w(adj2(Poss,nil))).
@@ -3922,11 +3922,11 @@ isq(P) --->   %% Er det kaldt i Trondheim
     so0, 
     w(adj2(Cold,nil)),
     prepnog(Cold,In),  %% er det langt fra=after*/ til = of*
-     !, %% er det lov med hund på bussen %% Hazardous
+     !, %% er det lov med hund pÃ¥ bussen %% Hazardous
     substatement1(P) \  (something, be,w(adj2(Cold,nil)),w(prep(In))).
 
 
-isq(P) --->   %% Er det gøy å være bussorakel 
+isq(P) --->   %% Er det gÃ¸y Ã¥ vÃ¦re bussorakel 
     be,                
     negation0(_), %% rhet
     thereit(_),   %% ignore neg Rhetoric
@@ -3934,9 +3934,9 @@ isq(P) --->   %% Er det gøy å være bussorakel
     so0, 
     w(adj2(Good,nil)), 
        {\+ testmember(Good,[])}, %% ad hoc rough 
-    [å],
+    [Ã¥],
     !,
-    substatement1(P) \  ([det],w(verb(be,pres,fin)),w(adj2(Good,nil)),[å]).
+    substatement1(P) \  ([det],w(verb(be,pres,fin)),w(adj2(Good,nil)),[Ã¥]).
         
 
 isq(P) --->   %% Er det kaldt 
@@ -3966,12 +3966,12 @@ isq(P) --->   %% er det ingen avganger til skistua ?
     !,
     substatement1(P)  -  ([det],w(verb(be,pres,fin))).  %% dont preselect
 
-%%  er personen som jeg ser tøff  | * |/  personen som jeg er  ser tøff 
+%%  er personen som jeg ser tÃ¸ff  | * |/  personen som jeg er  ser tÃ¸ff 
 
 
 
-isq(P) --->   %%     er personen som jeg ser tøff  
-    be,       %% \+  personen som jeg er  ser *tøff  
+isq(P) --->   %%     er personen som jeg ser tÃ¸ff  
+    be,       %% \+  personen som jeg er  ser *tÃ¸ff  
     negation0(_), 
     
     subject(X,XNP), %% personen som jeg ser
@@ -3984,7 +3984,7 @@ isq(P) --->   %%     er personen som jeg ser tøff
 
 
 
-isq(P) --->   %%  Når er det første buss 
+isq(P) --->   %%  NÃ¥r er det fÃ¸rste buss 
     be,
     det0,
     negation0(_), 
@@ -4026,11 +4026,11 @@ orwill(P,P) ---> [].
 
 %%
 
-%%%%¤¤  YNQ (P)
+%%%%Â¤Â¤  YNQ (P)
 
 
-ynq(P) --->  %% går det bra ?
-    w(verb(Go,Pres,fin)),      %% nå
+ynq(P) --->  %% gÃ¥r det bra ?
+    w(verb(Go,Pres,fin)),      %% nÃ¥
     {\+ testmember(Go,[be,have])}, %% er du = er du redundantly
     [det],
     negation0(_),
@@ -4040,13 +4040,13 @@ ynq(P) --->  %% går det bra ?
 
 
 
-ynq(P) ---> %%  koster det XX å ta bussen
+ynq(P) ---> %%  koster det XX Ã¥ ta bussen
  
     w(verb(V,_,fin)),
     {testmember(V,[cost])},
     [det],
     np0_accept(Y,YNP),
-    [å],
+    [Ã¥],
     clausal_object1(COV,COST)\([noen],[vil]),     
     !,
     statreal1(P)  \ 
@@ -4069,7 +4069,7 @@ ynq(P) --->    %% vil det skje en ulykke
 
 
 
-%% (i morgen) skal jeg til = gå til// FRONTED TEST
+%% (i morgen) skal jeg til = gÃ¥ til// FRONTED TEST
 
 
 ynq(P) --->    %% Kan  as main verb
@@ -4082,19 +4082,19 @@ ynq(P) --->    %% Kan  as main verb
     !,accept. 
 
 
-ynq(P) --->  %% får jeg (kjøpt) billett  
-    [Får], {testmember(Får,[får,kan,kunne])}, 
+ynq(P) --->  %% fÃ¥r jeg (kjÃ¸pt) billett  
+    [FÃ¥r], {testmember(FÃ¥r,[fÃ¥r,kan,kunne])}, 
     negation0(_),    %% rethoric 
     subject(A,BC),
     negation0(_),          
     !,
-    statreal1(P) \ (xnp(A,BC),[Får]). %% delay decision
+    statreal1(P) \ (xnp(A,BC),[FÃ¥r]). %% delay decision
 
-ynq(P) --->  %% vil bussen være gul = er bussen gul
+ynq(P) --->  %% vil bussen vÃ¦re gul = er bussen gul
     aux1,   
     subject(A,BC),
     w(verb(Verb,inf,fin)),  
-        not_look_ahead(w(verb(_borrow,_,_))), %% skal han få låne spillet
+        not_look_ahead(w(verb(_borrow,_,_))), %% skal han fÃ¥ lÃ¥ne spillet
     {\+ verbtype(Verb,rv)}, %% wait=expect Ad Hoc
     negation0(_),          
     !,
@@ -4102,11 +4102,11 @@ ynq(P) --->  %% vil bussen være gul = er bussen gul
 
 
 ynq(_) --->  %% \+ see,past,fin 
-    [så],
+    [sÃ¥],
     !,reject.
 
 
-%% (i morgen) skal jeg av (på NTH) = gå av 
+%% (i morgen) skal jeg av (pÃ¥ NTH) = gÃ¥ av 
 ynq(P) --->  
     aux1,   
     not_look_ahead(w(verb(go,_,_))), %% go = reise = noun(travel)
@@ -4119,14 +4119,14 @@ ynq(P) --->
                w(verb(go,pres,fin)),
                [av]).
 
-%% (i morgen) skal jeg til = gå til
+%% (i morgen) skal jeg til = gÃ¥ til
 ynq(P) --->  
     aux1,  
     not_look_ahead(w(verb(go,_,_))), %% go = reise = noun(travel)
     subject(A,NP), 
     redundant0, 
     w(prep(TO)), 
-               {TO \== av}, %% må jeg av på NTH 
+               {TO \== av}, %% mÃ¥ jeg av pÃ¥ NTH 
     !,accept, 
     adverbx0,                   
     negation0(_), %% Rhetorical 
@@ -4137,7 +4137,7 @@ ynq(P) --->
 
 
 ynq(P) --->    %% Rhetorical negation (incomplete) 
-    aux1(_,_), %% burde %%  % skal bussen ikke gå   % kan du sommerrutene
+    aux1(_,_), %% burde %%  % skal bussen ikke gÃ¥   % kan du sommerrutene
     negation0(_), %% rhetorical %% skal ikke du 
 
     not_look_ahead([man]), %% mandag
@@ -4179,11 +4179,11 @@ ynq(_) ---> aux1,prep(_),!,reject. %% skal til byen
 %% Verb Question
 
 
-ynq(P) --->  %% koster det en krone å ta bussen 
+ynq(P) --->  %% koster det en krone Ã¥ ta bussen 
     w(verb(Cost,_,fin)), gmem(Cost,[cost,take,be]),
     [det],
     np0_accept(M,K), 
-    [å],
+    [Ã¥],
     !,
     clausal_object1(XCO,COSEM)\([noen],[vil]), %% noen vil ta buss = dette
 
@@ -4198,7 +4198,7 @@ ynq(P) --->  %% ambiguous  tv/rv
                           
 
 
-ynq(P) --->  %% passerer det nå en buss fiolsvingen ? 
+ynq(P) --->  %% passerer det nÃ¥ en buss fiolsvingen ? 
     lexv(tv,Stop,Tense,fin), 
 
 %%     {\+ rv_templ(Stop,_)}, %%   oops  find
@@ -4213,10 +4213,10 @@ ynq(P) --->  %% passerer det nå en buss fiolsvingen ?
 
 
 
-ynq(P) --->  %% kommer jeg til å -> vil jeg 
+ynq(P) --->  %% kommer jeg til Ã¥ -> vil jeg 
     lexv(iv,come,_Tense,fin),
     subject(X,NP),
-    [til],[å],
+    [til],[Ã¥],
     !,
     statreal(P) \(xnp(X,NP),[vil]).
                                              
@@ -4236,12 +4236,12 @@ ynq(P) --->
     infinitive,
     !,
     statreal(P) \ %% not infinitive  because of look_ahead later
-       (xnp(X,NP),w(verb(Like,Tense,fin)),[å]).
+       (xnp(X,NP),w(verb(Like,Tense,fin)),[Ã¥]).
 
                                                    %% evt redundantly
  
 ynq(P) --->  %% kjenner du til bussavganger
-    w(verb(Know,Pres,fin)),      %% nå
+    w(verb(Know,Pres,fin)),      %% nÃ¥
     {\+ testmember(Know,[be,have])}, %%  er du = er du redundantly
     not_look_ahead([det]), %% tar  (det lang tid) * 
     not_look_ahead(w(adj2(_,_))), %% tidlig adv+adj 
@@ -4255,9 +4255,9 @@ ynq(P) --->  %% kjenner du til bussavganger
                                                     %% evt redundantly
  
 
-%% Special  rekker jeg å ta bussen
+%% Special  rekker jeg Ã¥ ta bussen
 ynq(P) --->   
-    w(verb(reach,pres,fin)), %% ønsker(?),nekter(?)
+    w(verb(reach,pres,fin)), %% Ã¸nsker(?),nekter(?)
     np1_accept(A, B::C), 
     infinitive,        
     !,accept, 
@@ -4268,7 +4268,7 @@ ynq(P) --->
 
 
 ynq(_) ---> 
-    not_look_ahead(w(verb(go,_,fin))), %% repair of repair / er går det
+    not_look_ahead(w(verb(go,_,fin))), %% repair of repair / er gÃ¥r det
     be,!,reject. %% -> isq    
 
 
@@ -4280,7 +4280,7 @@ ynq(P) --->
                % bussene
                w(verb(V,past,part))).
 
-ynq(_) ---> %% ønsker = jeg ønsker !
+ynq(_) ---> %% Ã¸nsker = jeg Ã¸nsker !
     w(verb(want,pres,fin)),
     not_look_ahead([du]),  
     not_look_ahead([jeg]),  %% trenger jeg
@@ -4288,7 +4288,7 @@ ynq(_) ---> %% ønsker = jeg ønsker !
 
 
 ynq(P) --->  
-    w(verb(go,_,fin)),  %% Norwagism  Går det an å 
+    w(verb(go,_,fin)),  %% Norwagism  GÃ¥r det an Ã¥ 
     thereit,
     negation0(_), %% Rhetoric
 
@@ -4306,7 +4306,7 @@ ynq(P) ---> %% regner det ???
     statement(P) \  ([det], w(verb(Rain,Pres,fin))).  
 
 
-ynq(P) --->  %% (når) går det fra nth til risvollan ? 
+ynq(P) --->  %% (nÃ¥r) gÃ¥r det fra nth til risvollan ? 
     w(verb(Go,Pres,fin)),
     [det],
     look_ahead(w(prep(_Prep))),
@@ -4316,9 +4316,9 @@ ynq(P) --->  %% (når) går det fra nth til risvollan ?
       (w(noun(vehicle,plu,u,n)), 
        w(verb(Go,Pres,fin))).
  
-ynq(P) --->  %% går det en buss
+ynq(P) --->  %% gÃ¥r det en buss
     w(verb(Go,Pres,fin)),
-    {\+ rv_templ(Go,_)},  %% Skjønner det.
+    {\+ rv_templ(Go,_)},  %% SkjÃ¸nner det.
     negation0(_),    % Rhetorical 
     thereit(_ikke),
     !,
@@ -4328,11 +4328,11 @@ ynq(P) --->  %% går det en buss
 
 
 ynq(P) --->  %% snakker du engelsk /jobber det kvinner
-%%     not_look_ahead([når]), %%  når neste rosenborg skole til samfundet?
-    w(verb(Speak,Pres,fin)),      %% nå
-    not_look_ahead(w(verb,_,_)) , %% er (jeg på nth)* 
+%%     not_look_ahead([nÃ¥r]), %%  nÃ¥r neste rosenborg skole til samfundet?
+    w(verb(Speak,Pres,fin)),      %% nÃ¥
+    not_look_ahead(w(verb,_,_)) , %% er (jeg pÃ¥ nth)* 
     not_look_ahead([det]), 
-%%     thereit0,           %% Forstår det. 
+%%     thereit0,           %% ForstÃ¥r det. 
     saa0,  
     {Speak \== have}, %% -> hasq
     negation0(_N),
@@ -4343,21 +4343,21 @@ ynq(P) --->  %% snakker du engelsk /jobber det kvinner
 
 %% HVOR HAR BUSS 5 HOLDEPLASS // accidentally adequate 
 
-%%  NB Fails on  ... har buss 6 gått ..., but ok
+%%  NB Fails on  ... har buss 6 gÃ¥tt ..., but ok
 
-ynq(P) --->  %% har buss 5 til dragvoll = går (SMS feiltasting)
+ynq(P) --->  %% har buss 5 til dragvoll = gÃ¥r (SMS feiltasting)
     {value(smsflag,true)},       %% very irregular 
     w(verb(have,pres,fin)),      %% har
     look_ahead_bus, 
 
     !,
-    statreal(P) - w(verb(go,pres,fin)). %% går
+    statreal(P) - w(verb(go,pres,fin)). %% gÃ¥r
 
 
-ynq(P) --->  %% passerer det nå en buss fiolsvingen ? 
-    not_look_ahead([vil]), %% skulle gjerne vært 
+ynq(P) --->  %% passerer det nÃ¥ en buss fiolsvingen ? 
+    not_look_ahead([vil]), %% skulle gjerne vÃ¦rt 
     lexv(iv,Stop,Tense,fin), %%  iv for efficiency  %% Unnnec
-    {\+ rv_templ(Stop,_)}, %% Forstår det 
+    {\+ rv_templ(Stop,_)}, %% ForstÃ¥r det 
     saa0, 
     { Tense \== imp},                         %% not command here !
     anyadverb0,
@@ -4374,9 +4374,9 @@ look_ahead_bus ---> look_ahead(w(adj2(next,nil))).
 
 % 
 
-%%¤ PPQ( W P)
+%%Â¤ PPQ( W P)
 
-ppq(WhichX:::P) --->     %% Fra hvilket sted  selges månedskort
+ppq(WhichX:::P) --->     %% Fra hvilket sted  selges mÃ¥nedskort
     prep(Prep),
     whx_phrase(X,WhichX, Q1::Q), 
     w(verb(Sell,pres,pass)),
@@ -4396,7 +4396,7 @@ ppq(WhichX:::P) ---> %% fra hvilket sted  fra = after/from ???
     {adjustprep(X,After,From)}, %%% Bloody hack 
     !,  % <--- !!!  
     forwq(P,From,X,Q1::Q), % not kan !!! 
-    optionalprep(From),  %% hvor går bussen fra %% Hack
+    optionalprep(From),  %% hvor gÃ¥r bussen fra %% Hack
     !,accept.  % <--- !!! %% Wrong, but Necessary (TIME)
 
 
@@ -4404,8 +4404,8 @@ optionalprep(in) ---> prep1(_),!,accept. %% in stems from whereq
 optionalprep(_)  ---> [].         %% 
 
 
-% går 3 neste busser *         ( 3 = bus 3) 
-% til hvilken stasjon går 5 *  ( til = of)  
+% gÃ¥r 3 neste busser *         ( 3 = bus 3) 
+% til hvilken stasjon gÃ¥r 5 *  ( til = of)  
 
 
 
@@ -4435,22 +4435,22 @@ forwq(P,Prep,X,Q1::Q) --->
             adverbial1(Prep,X, Q1::Q)).
 
 
-%%¤  WHICHQ 
+%%Â¤  WHICHQ 
 
 
 whichq(WhichX:::(P and Q)) ---> 
     whx_phrase(X,WhichX, true::P), 
-    w(verb(recommend,T,pass)), %% anbefales det (å ta)
+    w(verb(recommend,T,pass)), %% anbefales det (Ã¥ ta)
     det0,
     infinitive,
     w(verb(Take,inf,_)),
     !,accept,
     statreal(Q)\
        ([noen], w(verb(recommend,T,fin)),
-        [å],  w(verb(Take,inf,_)),npgap(X)).
+        [Ã¥],  w(verb(Take,inf,_)),npgap(X)).
          %% low stack level                                
 
-whichq(WhichY:::P and Q) --->  %% Hvilken ting må gjøres
+whichq(WhichY:::P and Q) --->  %% Hvilken ting mÃ¥ gjÃ¸res
      whx_phrase(Y,WhichY,true::P),   
      paux0,  
      w(verb(Do1,Pres,pass)),
@@ -4471,10 +4471,10 @@ whichq(WhichX:::P) --->
     qverb_phrase(X,N, S, ERQ), 
     {negate(N,Q1,Q2)}.
 
-%%%¤  WHX_PHRASE (X,WhichX, SEM) 
+%%%Â¤  WHX_PHRASE (X,WhichX, SEM) 
 
 
-whx_phrase(X,WhichX, VP::P) ---> %% hvilke () går
+whx_phrase(X,WhichX, VP::P) ---> %% hvilke () gÃ¥r
     {value(busflag,true)}, 
     whichf(X,WhichX), 
     look_ahead(w(verb(Go,_,fin))), %% 
@@ -4496,8 +4496,8 @@ whx_phrase(X,WhichX, VP::P) ---> %% hvilke andre busser enn buss 5 ...
 
 whx_phrase(X,which(X), VP::P) ---> %% hvordan farge har bussen
     hvordan, %% hva ..
-    not_look_ahead(w(verb(_Request,pres,fin))), %% ønsker
-    w(noun(Colour,_,_,_)), % "går" is no longer noun 
+    not_look_ahead(w(verb(_Request,pres,fin))), %% Ã¸nsker
+    w(noun(Colour,_,_,_)), % "gÃ¥r" is no longer noun 
     {Colour \== type},     % hvordan type = hvilken
     !,
     noun_phrase1(X, VP::P)  \  (%% the(X), try without 
@@ -4518,7 +4518,7 @@ whx_phrase(X,WhichX, VP::P) ---> %% which subject
     noun_phrase1(X, VP::P) , %%   \  the(X), unnec ?
     !,accept.  
 
-whx_phrase(X,WhichX, VP::P) ---> %% hvilke 2 busser går
+whx_phrase(X,WhichX, VP::P) ---> %% hvilke 2 busser gÃ¥r
     whichf(X,WhichX), 
     w(nb(N,num)),
     !,
@@ -4526,11 +4526,11 @@ whx_phrase(X,WhichX, VP::P) ---> %% hvilke 2 busser går
     !,accept. 
 
 
-%%¤ WHICHF (XT,which(XT))
+%%Â¤ WHICHF (XT,which(XT))
 
 whichf(XT,which(XT)) ---> which2. 
 
-%%¤ WHICHG (Noun,Pred, Pex) %% TA-100908
+%%Â¤ WHICHG (Noun,Pred, Pex) %% TA-100908
 
 whichg00(Noun,P,  X:Noun, which(X):::X isa Noun and P) ---> [].
 
@@ -4549,7 +4549,7 @@ what_phrase(X:thing,which(X:thing),  X isa thing  ) ---> %% hva = hvilke ting
     [hva].    
 
 
-%%%%%¤¤  WHATQ      QUESTIONS
+%%%%%Â¤Â¤  WHATQ      QUESTIONS
 
 whatq(WhichZQ) ---> %% hva bruker vi TVen til %% TA-101004
     [hva],
@@ -4609,13 +4609,13 @@ whatq(D) --->
 **/
 
 
-%%  hva hadde du  ventet at  kunne gjøres.  // special
+%%  hva hadde du  ventet at  kunne gjÃ¸res.  // special
 
-whatq(which(Y:thing):::P) ---> %% hva holder|deiver du på med 
+whatq(which(Y:thing):::P) ---> %% hva holder|deiver du pÃ¥ med 
     [hva],
     lexv(tv,Hold,_,fin), gmem(Hold,[hold,keep,drive,operate]),
     subject(X,NP),
-    particlev2(Hold,Do1),  %% på med
+    particlev2(Hold,Do1),  %% pÃ¥ med
     statreal(P) \ 
           (xnp(X,NP),w(verb(Do1,pres,fin)),npgap(Y:thing)).
 
@@ -4639,7 +4639,7 @@ whatq(WhichX:::P) --->
            npgap(X)).
 
 
-whatq(WhichY:::  P and Q) ---> %% hva må gjøres 
+whatq(WhichY:::  P and Q) ---> %% hva mÃ¥ gjÃ¸res 
      what_phrase(Y,WhichY,P),  
      paux0,  
      w(verb(Do1,Pres,pass)),
@@ -4650,7 +4650,7 @@ whatq(WhichY:::  P and Q) ---> %% hva må gjøres
 
 
 
-whatq(WhichU:::  P and Q) ---> %% hva vet du at du vil gjøre 
+whatq(WhichU:::  P and Q) ---> %% hva vet du at du vil gjÃ¸re 
     what_phrase(UT,WhichU,P),  
     lexv(rv,Know,_,fin), {\+ testmember(Know,[])}, %% ad hoc
     subject(Y,NPY),
@@ -4666,7 +4666,7 @@ whatq(WhichU:::  P and Q) ---> %% hva vet du at du vil gjøre
                xnp(Z,NPZ)). %% first
 
 
-whatq(WhichY:::Q and P) --->  %% hva er det (som) du gjør
+whatq(WhichY:::Q and P) --->  %% hva er det (som) du gjÃ¸r
     what_phrase(YT,WhichY,Q), %%     % hva 
     w(verb(be,_,fin)),
     [det],
@@ -4688,13 +4688,13 @@ whatq(which(Y:thing):::P) ---> %% hva sier du til det ?
           (xnp(X,NP),w(verb(Speak,pres,fin)),w(prep(Prep)),npgap(Y:thing)).
 
 
-whatq(WhichY:::P and Q) ---> %% hva gjør du %% //hva betyr/mener
+whatq(WhichY:::P and Q) ---> %% hva gjÃ¸r du %% //hva betyr/mener
     what_phrase(YT,WhichY,P),
     lexv(tv,do,_,fin), 
     {\+ testmember(do,[cost,be2,have])}, 
     subject(XT,NP),
     not_look_ahead([at]), %% e.g. rv-sense
-    not_look_ahead([å]),
+    not_look_ahead([Ã¥]),
     negation0(_),   %% Rhetoric 
     statreal(Q) \  
               (xnp(XT,NP),w(verb(do,pres,fin)),npgap(YT)).
@@ -4736,13 +4736,13 @@ whatq(WhichX:::P) ---> %% hva har du informasjon om
 %% WHAT COST QUESTIONS // hva koster/veier 
 
 
-whatq(which(Y:thing):::P) ---> %% hvor mye koster det å ta bussen
+whatq(which(Y:thing):::P) ---> %% hvor mye koster det Ã¥ ta bussen
     [hva],
     w(verb(V,_,fin)),
     {testmember(V,[cost])},
     [det],
     for0,  %% TA-110316
-    [å],
+    [Ã¥],
     clausal_object1(COV,COST)\([noen],[vil]),     
     !,
     statreal1(P)  \ 
@@ -4772,7 +4772,7 @@ whatq(WhichX:::P and Q) --->
     what_phrase(XT,WhichX,P),  
     w(verb(Cost,Tense,fin)), 
        gmem(Cost,[cost,weigh]),  
-    np1_accept(AT,NP),  %% en øl
+    np1_accept(AT,NP),  %% en Ã¸l
     {\+ constrain(AT,place)}, %% Filthy hack,   toget = TS 
     !,
     statreal(Q)  \  
@@ -4791,7 +4791,7 @@ whatq(WhichX:::P and Q) --->  %% Hva er det som skjer
 whatq(which(X:thing):::D) --->  %% hva er det du snakker om
      whatbe,  
      [det],
-     not_look_ahead(w(adj2(_,nil))), %% det store spørsmålet
+     not_look_ahead(w(adj2(_,nil))), %% det store spÃ¸rsmÃ¥let
      subject(Y,NP),
      negation0(_),
      !,
@@ -4800,11 +4800,11 @@ whatq(which(X:thing):::D) --->  %% hva er det du snakker om
 
 whatq(P) ---> %% hva er ukjent %% Fronted for Test
      whatbe, 
-     so0,           %%  <===  (Hvorfor er det så dyrt  å ta bussen)
+     so0,           %%  <===  (Hvorfor er det sÃ¥ dyrt  Ã¥ ta bussen)
      dent0,    
      not_look_ahead(w(nb(_,_))), %% fourth etc
      w(adj2(Poss,nil)),  
-     {\+ testmember(Poss,[near,nearest,next])}, %% nærmeste hpl
+     {\+ testmember(Poss,[near,nearest,next])}, %% nÃ¦rmeste hpl
      !,
      whichq(P)  \  
           (which,w(noun(thing,sin,u,n)),
@@ -4815,9 +4815,9 @@ whatq(which(X):::P) --->
      whatbe,thereit,prep1(for), %% Norwagism
      !,
      noun_phrase1(X, true::P),  
-     danow0. %% nå da 
+     danow0. %% nÃ¥ da 
                                       
-whatq(which(Y):::Q) --->   %% hva er det [som] du kan gjøre 
+whatq(which(Y):::Q) --->   %% hva er det [som] du kan gjÃ¸re 
      whatbe,           
      [det],                         
      [som], 
@@ -4829,7 +4829,7 @@ whatq(which(Y):::Q) --->   %% hva er det [som] du kan gjøre
          np(Y,YVP::YP)).
 
 
-whatq(which(X):::P) --->   %% hva er tid fra nth ( buss går kl (12 fra nth))
+whatq(which(X):::P) --->   %% hva er tid fra nth ( buss gÃ¥r kl (12 fra nth))
      whatbe,  
      w(noun(time,_,_,n)), 
      look_ahead(w(prep(_))), %% Ad Hoc Panic
@@ -4843,7 +4843,7 @@ whatq(WhichX:::D) --->  %% hva er det du vet
      {which_thing(X,WhichX)},    
      whatbe,  
      [det],
-     not_look_ahead(w(adj2(_,nil))), %% det store spørsmålet
+     not_look_ahead(w(adj2(_,nil))), %% det store spÃ¸rsmÃ¥let
      noun_phrase1(A, B::C),
      negation0(_),
      !,
@@ -4927,9 +4927,9 @@ whatq( which(X:thing)  :::P) --->  %% hva kan du  hjelpe  med () ( Prepositional
     w(verb(V,Y,Z)),
     reflexiv0(V),              %% (hjelpe) meg    ad hoc 
     prepnom(U), %% om ==> regarding
- {  testmember(U,[regarding,with])}, %% gjøre for meg 
+ {  testmember(U,[regarding,with])}, %% gjÃ¸re for meg 
     !,
-    statreal(P)  \   %%      hva kan du svare på 
+    statreal(P)  \   %%      hva kan du svare pÃ¥ 
         ( xnp(A,NP), %% noun_phrase1(A,NP), 
           w(verb(V,Y,Z)),
           w(prep(U)),npgap(X:thing)).  
@@ -4949,14 +4949,14 @@ whatq(WhichX:::P) ---> %% Hva kan du om busser %% Ad Hoc
           [om]).  
 
 
-whatq(WhichX:::P) --->  %% Hva kan du svare på
+whatq(WhichX:::P) --->  %% Hva kan du svare pÃ¥
     whatcan,
     {which_thing(X,WhichX)}, 
     specific_phrase(A, B::C), 
     negation0(_), %% Ignore negation 
     w(verb(V,Y,Z)),  
     reflexiv0(V),   %% fortelle meg / avoid dtv 
-    [OM], {testmember(OM,[på,om,til])},
+    [OM], {testmember(OM,[pÃ¥,om,til])},
     not_look_ahead(w(noun(_,_,_,_))), 
     !,
     statreal(P)  \   
@@ -4992,7 +4992,7 @@ whatq(WhichX:::P) --->  % hva kan jeg  bruke busstuc til
     np1(D, E::F),
     prepnom(U), %% om ==> regarding
     !,
-    statreal(P)  \   %%      hva kan du svare på 
+    statreal(P)  \   %%      hva kan du svare pÃ¥ 
         ( noun_phrase1(A, B::C), 
           w(verb(V,Y,Z)),
           np1(D, E::F), 
@@ -5019,16 +5019,16 @@ whatq(WhichX:::P) ---> %% Hva kan du ?
     {which_thing(X,WhichX)}, 
     specific_phrase(A, B::C), 
     negation0(_), %% Ignore negation
-    not_look_ahead(w(verb(_gjøre_,_,_))), 
+    not_look_ahead(w(verb(_gjÃ¸re_,_,_))), 
     !,
-    statreal(P)  \   %%     hva kan du gjøre
+    statreal(P)  \   %%     hva kan du gjÃ¸re
         ( noun_phrase1(A, B::C), 
           w(verb(do1,pres,fin)), 
           npgap(X)).  
 
 
 
-whatq(WhichX:::P) --->   % hva kan du gjøre
+whatq(WhichX:::P) --->   % hva kan du gjÃ¸re
     whatcan, 
     {which_thing(X,WhichX)}, 
     specific_phrase(A, B::C), 
@@ -5036,7 +5036,7 @@ whatq(WhichX:::P) --->   % hva kan du gjøre
     w(verb(V,Y,Z)),  
     reflexiv0(V),   %% fortelle meg / avoid dtv 
     !,
-    statreal(P)  \   %%     hva kan du svare på 
+    statreal(P)  \   %%     hva kan du svare pÃ¥ 
         ( noun_phrase1(A, B::C), 
           w(verb(V,Y,Z)),
           npgap(X)).  
@@ -5074,20 +5074,20 @@ whatq(P) ---> %% * Hva skjer
 
 %%%%%%%%%%%%%%%%%%%%% 
 
-%%%¤¤¤  WHENQ    When Questions
+%%%Â¤Â¤Â¤  WHENQ    When Questions
 
 
-whenq(which(Y):::P) ---> %% Når er det  AT 
+whenq(which(Y):::P) ---> %% NÃ¥r er det  AT 
     when_adverbialq(In,Y, Subj::P3),
     be,
     [det],
-    that0, %%% når er det første buss til nth ? # %% TA-110411
+    that0, %%% nÃ¥r er det fÃ¸rste buss til nth ? # %% TA-110411
     !, 
     statreal(P) -  xadverbial1(In,Y, Subj::P3). %% stack syndrome %%
  
 
-%% når buss -> buss // Haz?
-whenq(which(Y):::P) ---> %% Når bussen går til nth
+%% nÃ¥r buss -> buss // Haz?
+whenq(which(Y):::P) ---> %% NÃ¥r bussen gÃ¥r til nth
     when_adverbialq(In,Y, Subj::P3),
     look_ahead( w(noun(bus,_,_,n)) ),
     !,accept, 
@@ -5095,7 +5095,7 @@ whenq(which(Y):::P) ---> %% Når bussen går til nth
                 xadverbial1(In,Y, Subj::P3). 
 
 
-whenq(which(Y):::P) ---> %% Når gå(r) fra 
+whenq(which(Y):::P) ---> %% NÃ¥r gÃ¥(r) fra 
     when_adverbialq(In,Y, Subj::P3),
     w(verb(go,PP,fin)),
 
@@ -5110,21 +5110,21 @@ whenq(which(Y):::P) ---> %% Når gå(r) fra
 
 
 
-whenq(which(Y):::P) ---> %% Når er det 
+whenq(which(Y):::P) ---> %% NÃ¥r er det 
     when_adverbialq(In,Y, Subj::P3),
     be,
 
     detnexttime, %%  Rough "(det) (neste gang) (at)" 
                  %%        but not  " "
-    np1(A, B::C),  %% første bussen
+    np1(A, B::C),  %% fÃ¸rste bussen
     !,accept,
     negation0(_), %% Rhetoric 
     whencomplex(A,B::C,In,Y,Subj::P3,P). 
 
 
  
-%% Når fra  %% Short version
-whenq(which(_):::_) ---> %% Når fra nth 
+%% NÃ¥r fra  %% Short version
+whenq(which(_):::_) ---> %% NÃ¥r fra nth 
     when, %% pure q 
     look_ahead(w(prep(Prep))),
     {testmember(Prep,[from,to])},
@@ -5133,10 +5133,10 @@ whenq(which(_):::_) ---> %% Når fra nth
 
 
 %% Double Pre Advp  
-whenq(which(Y):::P) ---> %% Når i dag før kl 12 går bussen // AD HOC
-    when, %% [når],  hvor tidlig 
+whenq(which(Y):::P) ---> %% NÃ¥r i dag fÃ¸r kl 12 gÃ¥r bussen // AD HOC
+    when, %% [nÃ¥r],  hvor tidlig 
     preadverbial1(A1,B1, C1::D1), % i dag  | etter 12 %%%%% 
-    preadverbial1(A2,B2, C2::D2), % før 12 | fredag
+    preadverbial1(A2,B2, C2::D2), % fÃ¸r 12 | fredag
     !,accept,
     adverbial1(_,Y, Subj::P3)  \                       %% =
             (prep(in), %%   the(Y),
@@ -5148,8 +5148,8 @@ whenq(which(Y):::P) ---> %% Når i dag før kl 12 går bussen // AD HOC
              adverbial1(A2,B2, C2::D2)).
 
 
-whenq(which(Y):::P) ---> %% Når på lørdag går bussen ??? 
-    when, %% [når],  hvor tidlig 
+whenq(which(Y):::P) ---> %% NÃ¥r pÃ¥ lÃ¸rdag gÃ¥r bussen ??? 
+    when, %% [nÃ¥r],  hvor tidlig 
     not_look_ahead([e]), %% er/etter
     adverbial1(AA,BB, CC::DD), % i dag
     !,accept,  
@@ -5163,8 +5163,8 @@ whenq(which(Y):::P) ---> %% Når på lørdag går bussen ???
 
 
 
-whenq(which(Y):::P) ---> %% Når i dag går bussen ??? 
-    when, %% [når],  hvor tidlig 
+whenq(which(Y):::P) ---> %% NÃ¥r i dag gÃ¥r bussen ??? 
+    when, %% [nÃ¥r],  hvor tidlig 
     adverb(AA,BB,pre), % idag 
     !,
     adverbial1(_,Y, Subj::P3)  = 
@@ -5174,7 +5174,7 @@ whenq(which(Y):::P) ---> %% Når i dag går bussen ???
             (xadverbial1(in,Y, Subj::P3), xadverb(AA,BB)).
 
 
-whenq(which(Y):::P) ---> % når er det mulig å 
+whenq(which(Y):::P) ---> % nÃ¥r er det mulig Ã¥ 
     howlongto(In,Y, Subj::P3),
     w(adj2(Poss,nil)),
     {testmember(Poss,[easy,possible,good])}, 
@@ -5186,7 +5186,7 @@ whenq(which(Y):::P) ---> % når er det mulig å
                      adverbial1(In,Y, Subj::P3)).
 
 
-whenq(which(Y):::P) ---> % når er det AT  ( ... det går buss )
+whenq(which(Y):::P) ---> % nÃ¥r er det AT  ( ... det gÃ¥r buss )
     howlongto(In,Y, Subj::P3),
 %    [det], howlongto eats it 
     w(verb(V,_,fin)),
@@ -5195,19 +5195,19 @@ whenq(which(Y):::P) ---> % når er det AT  ( ... det går buss )
                      adverbial1(In,Y, Subj::P3)).
 
 
-% når er (det) neste buss til nth ? 
-% når er neste avgang (=) buss 5  %% NB
+% nÃ¥r er (det) neste buss til nth ? 
+% nÃ¥r er neste avgang (=) buss 5  %% NB
 
 
 whenq(which(Y):::P) ---> 
     when_adverbialq(In,Y, Subj::P3),
-    !,   %%  når går  
+    !,   %%  nÃ¥r gÃ¥r  
     question0(P) - 
             xadverbial1(In,Y, Subj::P3), 
     
     not_look_ahead([a]), %% 5 a \= 5 av 
-    prep0(_HOC).  %% ad hoc,   % Når gjelder bussrutene fra 
-                               % Når passerer bussen  åsveien til (*)
+    prep0(_HOC).  %% ad hoc,   % NÃ¥r gjelder bussrutene fra 
+                               % NÃ¥r passerer bussen  Ã¥sveien til (*)
 
 % .............
 
@@ -5225,14 +5225,14 @@ nexttime ---> w(adj2(next,nil)), optional([gang]). %% Haz?
 
 
 
-whencomplex(A,B::C,In,Y,Subj::P3,P) ---> %% når er det første buss går .
+whencomplex(A,B::C,In,Y,Subj::P3,P) ---> %% nÃ¥r er det fÃ¸rste buss gÃ¥r .
     do0,   
     w(verb(Go,_,finy)),
     !,accept,
     statreal(P) - (np(A,B::C), %% stack syndrome 
                w(verb(Go,pres,fin)),adverbial1(In,Y, Subj::P3)).
 
-whencomplex(A,B::C,In,Y,Subj::P3,P) ---> %% når er det første buss .
+whencomplex(A,B::C,In,Y,Subj::P3,P) ---> %% nÃ¥r er det fÃ¸rste buss .
     statreal(P) -  
         (np(A,B::C),  %% stack syndrome 
          w(verb(be,pres,fin)), %% exist
@@ -5240,13 +5240,13 @@ whencomplex(A,B::C,In,Y,Subj::P3,P) ---> %% når er det første buss .
 
 %%% 
 
-% når er det .............. går   // Garden path
+% nÃ¥r er det .............. gÃ¥r   // Garden path
  
 verb0(V)  ---> w(verb(V,_,_)),!,accept.
 verb0(be1) ---> [].
 
 
-%%%¤  WHEREQ (WH:::P)
+%%%Â¤  WHEREQ (WH:::P)
 
 
 %% Caveat
@@ -5277,26 +5277,26 @@ whereq(which(Z):::P) ---> %% hvor tar jeg  bussen (fra) . *
 */
 
  subjectverb(S,SNP,Take) ---> % tar jeg %% TA-110121
-                              % bør jeg kunne ta ...
+                              % bÃ¸r jeg kunne ta ...
      w(verb(Take,_,fin)),
      subject(S,SNP),
      !.
 
- subjectverb(S,SNP,Take) ---> % bør jeg (kunne) ta ... %% TA-110121
+ subjectverb(S,SNP,Take) ---> % bÃ¸r jeg (kunne) ta ... %% TA-110121
      aux1, %% ad hoc
      subject(S,SNP),
      w(verb(Take,inf,fin)).
 
-            %%   hvor drar rute 2 til på lørdag
+            %%   hvor drar rute 2 til pÃ¥ lÃ¸rdag
 whereq(which(Z):::P) ---> % prepositional complement  //NB NOMINAL WH
-    dummyprep0,          %% til hvilke S går B fra 
+    dummyprep0,          %% til hvilke S gÃ¥r B fra 
     where_adverbial(Prep,Z,WAdv),
     w(verb(Find,Pres,fin)),
     thereit0, 
-    not_look_ahead(w(nb(_,_))),  %% * hvor går 411=hvor går klokken
+    not_look_ahead(w(nb(_,_))),  %% * hvor gÃ¥r 411=hvor gÃ¥r klokken
     subject(X,NP),
     !,accept,
-    dummyprep0, %% hvor får bussen (fra) Haz ???
+    dummyprep0, %% hvor fÃ¥r bussen (fra) Haz ???
     !,accept,
     [] -  adverbial1(Prep,Z,WAdv),
 
@@ -5309,7 +5309,7 @@ whereq(which(Z):::P) ---> % prepositional complement  //NB NOMINAL WH
 
 
 
-whereq(which(Y):::P) ---> %% hvor går bussen // fra 
+whereq(which(Y):::P) ---> %% hvor gÃ¥r bussen // fra 
     {\+ value(dialog,1)},
     where,
     w(verb(go,_,fin)), 
@@ -5323,7 +5323,7 @@ whereq(which(Y):::P) ---> %% hvor går bussen // fra
 
 
 
-whereq(which(Y):::P) ---> %% Hvor  i midtbyen går bussen ??? 
+whereq(which(Y):::P) ---> %% Hvor  i midtbyen gÃ¥r bussen ??? 
     where, 
     not_look_ahead(w(prep(after))), %% e = etter/ er // Kor e = hvor etter/er 
     adverbial1(AA,BB, CC::DD), % i midtbyen
@@ -5337,7 +5337,7 @@ whereq(which(Y):::P) ---> %% Hvor  i midtbyen går bussen ???
 
 
 
-whereq(which(Y):::P) ---> %% Hvor er det   mulig å 
+whereq(which(Y):::P) ---> %% Hvor er det   mulig Ã¥ 
     where_adverbial(In,Y, Subj::P3),
     be,
     [det],
@@ -5369,9 +5369,9 @@ whereq(which(_Y):::_P) --->
 
 
 
-whereq(P) --->   %% hvor får jeg ta buss %% TA-100902
+whereq(P) --->   %% hvor fÃ¥r jeg ta buss %% TA-100902
     where,
-    aux1,         %% NB ikke får %% hvor får jeg buss
+    aux1,         %% NB ikke fÃ¥r %% hvor fÃ¥r jeg buss
     ppq(P) \ (prep(in),which,w(noun(place,sin,u,n)),(do)).
 
 
@@ -5382,28 +5382,28 @@ whereq(WP) ---> % object %% moved after pp
 
 %%%
 
-when_adverbial(in,T, P::Q) ---> %%   Hvilket år ble du født
+when_adverbial(in,T, P::Q) ---> %%   Hvilket Ã¥r ble du fÃ¸dt
     which,
     np1(T, P::Q),
     !,
     {testconstraint(T,time)}. %% not which thing !!
 
 
-%%¤ WHEN_ADVERBIALQ 
+%%Â¤ WHEN_ADVERBIALQ 
 
 when_adverbialq(in,T:time, P::(T isa time and P)) ---> %% pure q
-    when. %%  når  jeg ==> når verb!!
+    when. %%  nÃ¥r  jeg ==> nÃ¥r verb!!
 
 when_adverbial(in,T:time, P::(T isa time and P)) ---> 
-    whenx. %%  når  jeg ==> når verb!!
+    whenx. %%  nÃ¥r  jeg ==> nÃ¥r verb!!
 
 %%%%
 
 %% nil also acts as an adverbial
 
-%%%¤ WHERE_ADVERBIAL 
+%%%Â¤ WHERE_ADVERBIAL 
 
-where_adverbial(nil,XT, PQ) ---> %%  hvilket sted drar rute  2 (til) på lørdag.
+where_adverbial(nil,XT, PQ) ---> %%  hvilket sted drar rute  2 (til) pÃ¥ lÃ¸rdag.
     which,
     np1(XT, PQ),
     !,
@@ -5432,7 +5432,7 @@ wherefromq(P) --->
     ppq(P)  \  
             (prep(from),which,w(noun(place,sin,u,n))). 
 
-%%%¤ WHOQ 
+%%%Â¤ WHOQ 
 
 
 whoq(P) --->   %% hvem laget deg  lag=make|team
@@ -5474,12 +5474,12 @@ whyq(explain:::P) --->
 
 %% HOWQ 
 
-howq(doit:::reply('OK')) --->   %% hvordan går det 
+howq(doit:::reply('OK')) --->   %% hvordan gÃ¥r det 
     [hvordan],
     w(verb(go,_,fin)),
     [det],   
     !,
-    skip_rest.  %% TA-110104 .. på jobben
+    skip_rest.  %% TA-110104 .. pÃ¥ jobben
 
 howq(explain:::P) --->   %% NB skal = go %% After ynq
     [hvordan], 
@@ -5505,7 +5505,7 @@ howq(explain:::P) ---> %% hvordan er bussen %% Experiment
     isq(P).
 
 
-howq(explain:::P) --->  % Hvorfor er en buss rød ?
+howq(explain:::P) --->  % Hvorfor er en buss rÃ¸d ?
     how, %% [hvorfor]  % hvordan er Anna opptatt 
     be,
     np1_accept(A, NP), %% not np1 because of quant_pron etc.
@@ -5528,7 +5528,7 @@ howq(explain:::P) --->
     statreal1(P).
 
 
-howq(P) ---> %% hvorfor er det så få avganger
+howq(P) ---> %% hvorfor er det sÃ¥ fÃ¥ avganger
     how, %% [hvorfor],% hvordan er det mulig
     be,
     thereit,    %% hvorfor er du *
@@ -5552,28 +5552,28 @@ howq(explain:::P) --->
     how,
     hasq(P). 
 
-erdetaa0 ---> be,[det],[å],!,accept.
+erdetaa0 ---> be,[det],[Ã¥],!,accept.
 erdetaa0 ---> [].
 
 % % % % % % % % % % % % % % % % % % % % % %
 
-%%%¤¤ ISITLONGTO (Prep, Y, SUBJ)
+%%%Â¤Â¤ ISITLONGTO (Prep, Y, SUBJ)
 
 
 
-% hvor lenge er det til bussen går.%% NB NOT hvor lenge er det til jul
-% NB  som info hvor lenge \= når necessary for application
+% hvor lenge er det til bussen gÃ¥r.%% NB NOT hvor lenge er det til jul
+% NB  som info hvor lenge \= nÃ¥r necessary for application
 
 howlongto(In,Y, Subj::P3) --->
      be,[det],[lenge],prep1(to),
 
-        when_adverbial(In,Y, Subj::P3) = [når].
+        when_adverbial(In,Y, Subj::P3) = [nÃ¥r].
             
 
 howlongto(In,Y, Subj::P3) --->
      [hvor],[lenge],be,[det],prep1(to),
 
-        when_adverbial(In,Y, Subj::P3) = [når].
+        when_adverbial(In,Y, Subj::P3) = [nÃ¥r].
 
 
 howlongto(In,Y, Subj::P3) --->
@@ -5585,7 +5585,7 @@ howlongto(In,Y, Subj::P3) --->
 
 
 
-%%¤ HOWADJQ (P)
+%%Â¤ HOWADJQ (P)
 
 %%%%%%% FRONTEST
  
@@ -5596,7 +5596,7 @@ howadjq(P) ---> % hvor langt er det fra Trondheim til Alta %% TA-110225
     w(verb(Bet,Pres,fin)), 
      {testmember(Bet,[take,be])}, 
     [det],  %% not thereit_not_pronoun
-    not_look_ahead([å]), %% TA-110530 (-> qverb_phrase)
+    not_look_ahead([Ã¥]), %% TA-110530 (-> qverb_phrase)
     redundant0, %% "normalt"
     not_look_ahead(w(prep(with))), %%
      whichq(P)  \  (which,w(noun(Noun,sin,u,n)),w(verb(Bet,Pres,fin))),
@@ -5607,7 +5607,7 @@ howadjq(P) ---> % hvor langt er det fra Trondheim til Alta %% TA-110225
 howadjq(P) ---> % moved forw
     hvor,  
     howadj1(FREQ), % often -> frequency 
-    docan,    %% e.g. kan (= know) NOT få !!!
+    docan,    %% e.g. kan (= know) NOT fÃ¥ !!!
     {testmember(FREQ,
           [frequency,speed,lateness,earliness,duration,distance])},
     !,     %%  <----    !!!!!
@@ -5618,7 +5618,7 @@ howadjq(P) --->
     hvor, 
     howadj1(FREQ), % often -> frequency 
     {testmember(FREQ,[frequency,earliness,lateness])}, %% PP gap 
-    w(verb(V,_,Pas)),        % gå/gikk/gå  passes // not kan = know 
+    w(verb(V,_,Pas)),        % gÃ¥/gikk/gÃ¥  passes // not kan = know 
     {\+ V=be}, 
      !,     %%  <----    !!!!!
     ppq(P)  \  (prep(with),which,w(noun(FREQ,sin,u,n)), 
@@ -5634,7 +5634,7 @@ howadjq(P) ---> % hvor gammel/lang    er %% TA-100908
     (which,w(noun(Noun,sin,u,n)),w(verb(have,pres,fin))). %%% has).
     % => hvilken  alder har
 
-howadjq(which(T:time):::T isa time and P) ---> % hvor lenge er det til påske|bussen går
+howadjq(which(T:time):::T isa time and P) ---> % hvor lenge er det til pÃ¥ske|bussen gÃ¥r
     hvor,                      %% TA-100905
     howadj1(duration), % hvor lang tid 
     w(verb(be,Pres,fin)), %% 
@@ -5721,17 +5721,17 @@ howadjq(which(T):::T isa Noun and P) ---> % hvor lenge venter bussen %% TA-10090
 howadjq(P) ---> 
     [hvor],[lenge],w(verb(be,pres,fin)),[det],w(prep(to)),
     !,
-    clausal_object0(XC,NP), %% bussen .. bussen går
+    clausal_object0(XC,NP), %% bussen .. bussen gÃ¥r
     whenq(P) \ 
-       ( [når],w(verb(be,pres,fin)),xnp(XC,NP)).
+       ( [nÃ¥r],w(verb(be,pres,fin)),xnp(XC,NP)).
 
 
-howadjq(P) ---> %% Hvor mange minutter er det til (bussen går) %% ad hoc
+howadjq(P) ---> %% Hvor mange minutter er det til (bussen gÃ¥r) %% ad hoc
     [hvor],
     [mange],w(noun(minute,plu,u,n)),w(verb(be,pres,fin)),[det],w(prep(to)),
     !,
     whenq(P) - 
-       ( [når],w(verb(be,pres,fin)),[det],[at]). %% ugly
+       ( [nÃ¥r],w(verb(be,pres,fin)),[det],[at]). %% ugly
 
 
 howadjq(P) ---> 
@@ -5786,12 +5786,12 @@ howadjq(P) ---> % hvor lang tid vil X  bruke /Nominal Front
 
 
                                                
-howadjq(which(Y):::P) ---> % hvor fort går bussen
+howadjq(which(Y):::P) ---> % hvor fort gÃ¥r bussen
 
     hvor, 
     howadj1(Noun),         % hvor fort/langt 
     {testmember(Noun,[speed,distance])},%% etc 
-    w(verb(Go,pres,fin)), % går/gikk/gå
+    w(verb(Go,pres,fin)), % gÃ¥r/gikk/gÃ¥
     {\+ testmember(Go,[know,be])}, 
     np1(X, NP),           % bussen
     !,
@@ -5806,7 +5806,7 @@ howadjq(which(Y):::P) ---> % hvor fort går bussen
 
 
 %% Fronted 
-howadjq(P) ---> % hvor lenge .. er kontoret åpent /  er det fra nth til lade 
+howadjq(P) ---> % hvor lenge .. er kontoret Ã¥pent /  er det fra nth til lade 
     hvor,        
     [lenge],
     be,    
@@ -5833,14 +5833,14 @@ howadjq(P) ---> % hvor mye tid/lang tid/  tar det med bussen
 
 
 
-howadjq(P) ---> % hvor mye tid/lang tid/  tar det(kjøretøyet) fra
+howadjq(P) ---> % hvor mye tid/lang tid/  tar det(kjÃ¸retÃ¸yet) fra
     hvor,       %                            
     howadj1(Noun), % hvor lang tid 
     {testmember(Noun,[duration])}, 
     w(verb(Take,pres,fin)), 
    {testmember(Take,[take])}, %% hvor lenge er det siden 1.3.
     [det],  %% not thereit_not_pronoun 
-    not_look_ahead([å]), %% TA-110530
+    not_look_ahead([Ã¥]), %% TA-110530
     redundant0, %% "normalt"
     look_ahead(w(prep(_))),
     !,accept,
@@ -5849,13 +5849,13 @@ howadjq(P) ---> % hvor mye tid/lang tid/  tar det(kjøretøyet) fra
 
 
 
-howadjq(P) ---> % hvor mye tid/lang tid/  tar det å
+howadjq(P) ---> % hvor mye tid/lang tid/  tar det Ã¥
     hvor,                                           %% Before 
     howadj1(Noun), % hvor lang tid  
     {testmember(Noun,[duration])}, 
     w(verb(Take,pres,fin)), 
     [det],    
-    not_look_ahead([å]), 
+    not_look_ahead([Ã¥]), 
     {testmember(Take,[take,be])}, 
     redundant0, %% "normalt"
     whichq(P)  \  (which,w(noun(Noun,sin,u,n)),w(verb(exist,pres,fin)) ),
@@ -5871,7 +5871,7 @@ howadjq(P) ---> % hvor mye tid/lang tid/ bruker  %% Moved back
 
 
 % after   hvor lang tid 
-howadjq(P) ---> % hvor lenge er kontoret åpent 
+howadjq(P) ---> % hvor lenge er kontoret Ã¥pent 
                   %% hvor lenge er det fra nth til lade 
     hvor,           %% moved back 
     [lenge],
@@ -5906,7 +5906,7 @@ howadjq(P) ---> % hvor lang tid bruker ==> go with duration
     !,     %%  <----    !!!!!
     ppq(P)  \  (prep(with),which,w(noun(duration,sin,u,n)),w(verb(go,pres,fin))).
 
-howadjq(P) ---> % hvor lenge må jeg
+howadjq(P) ---> % hvor lenge mÃ¥ jeg
     hvor, 
     howadj1(Noun), % hvor lang tid  
     (do),
@@ -5922,7 +5922,7 @@ howadjq(P) --->
     whatq(P)  \  ([hva],w(verb(be,pres,fin)),w(noun(duration,sin,def,n))). 
 
 
-howadjq(P) ---> % hvor lang tid tar bussen fra nth /// hvor lang tid tar det å
+howadjq(P) ---> % hvor lang tid tar bussen fra nth /// hvor lang tid tar det Ã¥
     hvor, 
     howadj1(duration), 
     w(verb(take,pres,fin)), 
@@ -5932,10 +5932,10 @@ howadjq(P) ---> % hvor lang tid tar bussen fra nth /// hvor lang tid tar det å
 
 
 
-%%%%¤¤ HOWMUCHQ  %% How much questions
+%%%%Â¤Â¤ HOWMUCHQ  %% How much questions
 
 howmuchq(which(X):::P) ---> %% hvor lenge er det til =
-    hvor,                   %% hvilken varighet eksisterer før
+    hvor,                   %% hvilken varighet eksisterer fÃ¸r
     [lenge],
     w(verb(be,Pres,fin)),
     [det],
@@ -5944,12 +5944,12 @@ howmuchq(which(X):::P) ---> %% hvor lenge er det til =
         (which,w(noun(duration,plu,u,n)),w(verb(be,Pres,fin)),[det]).
 
 
-howmuchq(which(Y):::P) ---> %% hvor mye koster det å ta bussen
+howmuchq(which(Y):::P) ---> %% hvor mye koster det Ã¥ ta bussen
     hvor,much,
     w(verb(V,_,fin)),
     {testmember(V,[cost])},
     [det],
-    [å],
+    [Ã¥],
     clausal_object1(COV,COST)\([noen],[vil]),     
     !,
     statreal1(P)  \ 
@@ -5987,7 +5987,7 @@ howmuchq(howmany(X):::P) --->
 
 
 % hvor mange jobber er slitsomme
-% hvor mange jobber på tt
+% hvor mange jobber pÃ¥ tt
 
 howmuchq(howmany(X):::P) --->  %% NB last
     hvor, 
@@ -6046,8 +6046,8 @@ whattrans(Earn,Y,P) --->
          npgap(Y)).
 
 
-%%%¤ HOWADJ (noun)
-%%%¤ HOWADJ1 (noun)
+%%%Â¤ HOWADJ (noun)
+%%%Â¤ HOWADJ1 (noun)
 
 howadj1(C) ---> howadj(C),!. %% tired of backtracking 
 
@@ -6112,8 +6112,8 @@ howadj(weight) ---> w(adj2(heavy,nil)).
 % howmuch(thing)  ---> much. %%
 
 
-%%   hvor lenge har postkontoret åpent ?
-%% hvor lenge er  postkontoret åpent ?
+%%   hvor lenge har postkontoret Ã¥pent ?
+%% hvor lenge er  postkontoret Ã¥pent ?
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -6121,7 +6121,7 @@ howadj(weight) ---> w(adj2(heavy,nil)).
 %  V E R B  - P H R A S E    S E C T I O N
 %
   
-%%%¤ VP (X,N, S,Com::P)
+%%%Â¤ VP (X,N, S,Com::P)
 
 vp(_X,_N, _S,_::true) --->  %% NP: pure NP, no pred
     [':'],
@@ -6143,10 +6143,10 @@ vp(X,N,  S,ComP)  --->
 
 % I depart  and do not arrive  *
 
-%%¤ VERB_PHRASE   (X,N,  S,ComP) 
+%%Â¤ VERB_PHRASE   (X,N,  S,ComP) 
 
 /* everything exists except for syn/sem errors %% TA-101006
-verb_phrase(X,N,  S,Com::P1) --->  %% før siste buss [går]
+verb_phrase(X,N,  S,Com::P1) --->  %% fÃ¸r siste buss [gÃ¥r]
     look_ahead_endofline, %% TA-101006
 %%%%%%%%%%%%%%    missingo,
     {value(busflag,true)},
@@ -6157,12 +6157,12 @@ verb_phrase(X,N,  S,Com::P1) --->  %% før siste buss [går]
     !.
 */
 
-%%%    første buss 43 fra ringvål til kvenild etter kl 2015
+%%%    fÃ¸rste buss 43 fra ringvÃ¥l til kvenild etter kl 2015
 
 verb_phrase(X, N, S,VP) --->      %% jeg vil vite om haugesund ("eksisterer")
 
     endofline, %%% look_ahead_endofline,  %% dont eat '.' %% TA-101007
-               %%% dos not work when phrase is stacked   når går bussen .             
+               %%% dos not work when phrase is stacked   nÃ¥r gÃ¥r bussen .             
 
     {value(busflag,true)},
     {\+ value(dialog,1)},       %% (Probably ellipsis)
@@ -6200,20 +6200,20 @@ verb_phrase(X,N, S,Com::P12) --->   %% leser og korrigerer teksten
 
 
 
-verb_phrase(X,N, S,Com::P12) --->  %% ønsker og sykle ***
+verb_phrase(X,N, S,Com::P12) --->  %% Ã¸nsker og sykle ***
     verb_phrase1(V,X,N, S,Com::P1),
     verb_phrases0(V,X,S,P1,Com::P12).   %% Local negation 
 
 
 
-%% jeg er på dragvoll og skal til nth
+%% jeg er pÃ¥ dragvoll og skal til nth
 
 %% jeg bruker global tid og ikke lokal tid
 %% -->
 %% jeg bruker global tid og (bruker) ikke lokal tid
 
 
-%%%¤  VERB_PHRASES0 (V,X,S,P1,SEM) 
+%%%Â¤  VERB_PHRASES0 (V,X,S,P1,SEM) 
 
 verb_phrases0(V,X,S,P1,Com::P1 and P) --->  
     vp_conjunction, %% andor(and), 
@@ -6227,7 +6227,7 @@ verb_phrases0(V,X,S,P1,Com::P1 and P) --->
 
 verb_phrases0(_V,X,S,P1,Com::P1 and P) ---> 
     vp_conjunction, %% andor(and), 
-    not_look_ahead([så]), %% most likely conj 
+    not_look_ahead([sÃ¥]), %% most likely conj 
     verb_phrase1(_V1,X,N, S,Com::P2),
     {negate(N,P2,Q2)},            %% Local negation %% // SUSPECT NEGATION
     verb_phrases0(_V2,X,S,Q2,Com::P). 
@@ -6244,14 +6244,14 @@ verb_phrases0(be,X,S,P1,Com::P1 and P) ---> %% filene ligger vedlagt (adj)
 
 verb_phrases0(_V,_,_,P1, _::P1) ---> [].
 
-%%%¤  VP_CONJUNCTION
+%%%Â¤  VP_CONJUNCTION
 
 vp_conjunction ---> [som],  %% du er dum som tar trikk %% AD HOC %% TA-110106
-    look_ahead_vp. %% er det jeg som skal spørre deg %% TA-110329
+    look_ahead_vp. %% er det jeg som skal spÃ¸rre deg %% TA-110329
     %%%%   look_ahead(w(verb(_skriver,_pres,fin))). % #-> dum fordi du
 
 
-vp_conjunction ---> [å],  %% sitter å skriver %% \+ jeg tenker å ta bussen
+vp_conjunction ---> [Ã¥],  %% sitter Ã¥ skriver %% \+ jeg tenker Ã¥ ta bussen
      look_ahead(w(verb(_skriver,pres,fin))).%% \+ inf %% TA-110623
 
 
@@ -6259,51 +6259,51 @@ vp_conjunction ---> [evt].
 
 vp_conjunction ---> 
     and1,
-    not_look_ahead([nå]), %% confutant %%  bussen går og nå stopper trikken
-    not_look_ahead([så]), %% confutant
+    not_look_ahead([nÃ¥]), %% confutant %%  bussen gÃ¥r og nÃ¥ stopper trikken
+    not_look_ahead([sÃ¥]), %% confutant
     not_look_ahead(w(adv(redundantly))), 
     !.
 
 vp_conjunction --->  
     [men],
-    not_look_ahead([så]),
+    not_look_ahead([sÃ¥]),
     look_ahead_lit([skal,vil]),
     !.
 
 vp_conjunction --->  
     [men],
-    not_look_ahead([så]), %% confutant 
-    look_ahead(w(verb(_has,_,_fin))), %% men markedsføres OK 
+    not_look_ahead([sÃ¥]), %% confutant 
+    look_ahead(w(verb(_has,_,_fin))), %% men markedsfÃ¸res OK 
     !.
 
 vp_conjunction ---> or1,  %%  EXPERIMENT  
     look_ahead(w(verb(_,_,fin))).
 
-%%¤¤  VERB_PHRASE1 (V,X,N,S,VP) %% one single verb_phrase
+%%Â¤Â¤  VERB_PHRASE1 (V,X,N,S,VP) %% one single verb_phrase
 
-/** %% TA-101103 tistille å -> jeg vil tistille for å ...***
+/** %% TA-101103 tistille Ã¥ -> jeg vil tistille for Ã¥ ...***
 verb_phrase1(V,X,N, S,ComP2 ) --->   %% (hvor) jeg vil. %% HAZARD %% TA-100912
-    aux1,                            %% = reise gjøre
+    aux1,                            %% = reise gjÃ¸re
     endofline1, %% without check !.
     not_look_ahead(w(verb(_,_,_))), 
-%%%     look_ahead(xadverbial1(_,_,_)), %% hvor|når %%nofunk
+%%%     look_ahead(xadverbial1(_,_,_)), %% hvor|nÃ¥r %%nofunk
     !,accept, 
     do_phrase(V,X,N, S,ComP2) \
         (w(verb(go,pres,fin))). 
 ***/
 
  
-verb_phrase1(V,X,N, S,ComP2 ) --->   %% hvis du vet hvor du skal [gå] så
+verb_phrase1(V,X,N, S,ComP2 ) --->   %% hvis du vet hvor du skal [gÃ¥] sÃ¥
     aux1,                            %% ad hoc with care 
     not_look_ahead(w(verb(_,_,_))),  %% se-dde
-    look_ahead_lit([så, tilbake,fram]), %% jeg vil tilbake til byen
+    look_ahead_lit([sÃ¥, tilbake,fram]), %% jeg vil tilbake til byen
     !,accept, 
     do_phrase(V,X,N, S,ComP2) \
         w(verb(go,pres,fin)).
 
 
  
-verb_phrase1(V,X,N, S,ComP2 ) --->   %% jeg vil hendelse ( å sykle)
+verb_phrase1(V,X,N, S,ComP2 ) --->   %% jeg vil hendelse ( Ã¥ sykle)
     aux1,                           %% ad hoc with care 
     not_look_ahead(w(verb(_,_,_))), 
 
@@ -6348,13 +6348,13 @@ verb_phrase1(V,X,N, S,ComP2 ) --->   %% jeg vil i fremtiden ta buss
 
 verb_phrase1(V,X, N, S,ComP2 ) --->   %% jeg vil da vaske bussen
     aux1,                            
-    not_look_ahead(w(verb(_,_,_))),   %% feiler på  NÅ
-    one_of_lit([da,nå]), %% ad hoc
+    not_look_ahead(w(verb(_,_,_))),   %% feiler pÃ¥  NÃ…
+    one_of_lit([da,nÃ¥]), %% ad hoc
     !,accept,              
     do_phrase(V,X,N, S,ComP2).
 
 
-verb_phrase1(V,X, N, S,ComP2 ) --->   %% jeg vil på lørdag ta buss
+verb_phrase1(V,X, N, S,ComP2 ) --->   %% jeg vil pÃ¥ lÃ¸rdag ta buss
     aux1,                           %% ad hoc with care 
     not_look_ahead(w(verb(_,_,_))), 
     w(prep(On)),
@@ -6369,7 +6369,7 @@ verb_phrase1(V,X, N, S,ComP2 ) --->   %% jeg vil på lørdag ta buss
 
 verb_phrase1(be1,X,Neg, S,ComP) ---> 
     [skal],
-     negation0(N1),       %%  være %% Elliptic
+     negation0(N1),       %%  vÃ¦re %% Elliptic
      optional(w(verb(be,inf,fin))), 
     [med],
     not_look_ahead_np,    %%
@@ -6384,7 +6384,7 @@ verb_phrase1(be,X,id, S,ComP) ---> %% filene ligger vedlagt (adj)
 
 
 
-%% bussen er gått ( ikke passive) 
+%% bussen er gÃ¥tt ( ikke passive) 
 verb_phrase1(V,X, N, S,Com3P3) ---> 
     constrainvehdep(X), 
     w(verb(be,Pres,fin)),
@@ -6397,7 +6397,7 @@ verb_phrase1(V,X, N, S,Com3P3) --->
     {bigno(N1,N2,N)}.
 	
 
-%%%%%%%%   busstuc er siden utvidet til   å forstå tekst.
+%%%%%%%%   busstuc er siden utvidet til   Ã¥ forstÃ¥ tekst.
 
 verb_phrase1(Sell,Y,Neg, S,VP1) ---> 
     blei, 
@@ -6409,7 +6409,7 @@ verb_phrase1(Sell,Y,Neg, S,VP1) --->
         ( w(verb(Sell,past,part))).   
  
 
-verb_phrase1(Sell,Y,Neg, S,VP1) ---> %% skal i så fall være
+verb_phrase1(Sell,Y,Neg, S,VP1) ---> %% skal i sÃ¥ fall vÃ¦re
     aux1,
     redundant0, %
     negation0(Neg),
@@ -6432,27 +6432,27 @@ verb_phrase1(Sell,Y,Neg, S,VP1) ---> %% bli solgt -> selges/ ble -> solgtes
         ( w(verb(Sell,past,part))).   
           %%%%% adverbial1(Prep,Z, PPZ) ).
 
-%% en buss er i byen  // må ha verb (eller adj)! %% TA-100905
+%% en buss er i byen  // mÃ¥ ha verb (eller adj)! %% TA-100905
 
 
 verb_phrase1(be,X, N, S,ComP2) ---> %% Bussen er gul torsdag %% Fronted
-    not_look_ahead(w(verb(go,_,fin))), %% går buss e kl 12 (Subtle)
+    not_look_ahead(w(verb(go,_,fin))), %% gÃ¥r buss e kl 12 (Subtle)
  
-    aux10, %% TA-110106 må vel nesten  være
+    aux10, %% TA-110106 mÃ¥ vel nesten  vÃ¦re
     redundants0, %% danow0, 
     be(N),                          % be_complement before do_phrase
  
      not_look_ahead_verbx  , %% TA-110113
      
     danow0, 
-    redundant0,                    % bussene er nå alltid forsinket   %% ? 
+    redundant0,                    % bussene er nÃ¥ alltid forsinket   %% ? 
 
     not_look_ahead_prepx, %% allow FOR .. vanskelig  %% TA-110105
  %%     not_look_ahead(w(prep(_))),  %% not  jeg er i spania %% TA-100905
 
     be_complements(X,S,ComP2).      % Non-Empty complements to BE 
 
-not_look_ahead_verbx ---> [så],!. %% TA-110113
+not_look_ahead_verbx ---> [sÃ¥],!. %% TA-110113
 not_look_ahead_verbx --->  not_look_ahead(w(verb(_,_,_))).
 
 
@@ -6469,7 +6469,7 @@ verb_phrase1(V,X, N, S,ComP2) --->     %% Fronted du vil kunne svare
      
      redundants0, %% TA-110106
      
-%%      danow0, %% avoids NÅ=reach %% TA-110303
+%%      danow0, %% avoids NÃ…=reach %% TA-110303
 
 
      negation0(N3), %% aldri??? 
@@ -6482,7 +6482,7 @@ verb_phrase1(V,X, N, S,ComP2) --->     %% Fronted du vil kunne svare
     !,accept.  %%% <---  !!!               %% HAZARDOUS BUT ESSENTIAL 
 
 
-verb_phrase1(go,X,N, S,ComP2) --->   %% må (gå) av  
+verb_phrase1(go,X,N, S,ComP2) --->   %% mÃ¥ (gÃ¥) av  
     aux1,
     not_look_ahead(w(verb(_,_,_))), 
     [av], %% Ad Hoc
@@ -6493,7 +6493,7 @@ verb_phrase1(go,X,N, S,ComP2) --->   %% må (gå) av
 
 
 verb_phrase1(Sell,Y,id, S,Com::Pli) --->
-    paux0,         %% kan,må?     %%
+    paux0,         %% kan,mÃ¥?     %%
     redundant0, %% i prinsippet
     w(verb(Sell,_Pres,pass)),  %% skyldtes 
 %     !,                          %% Vi snakkes / meet2
@@ -6521,34 +6521,34 @@ verb_phrase1(be,X,N, S,ComP2) --->
 
 
 
-% hvilken buss er den første som      ...                     
+% hvilken buss er den fÃ¸rste som      ...                     
 verb_phrase1(be,X,N, S,ComP2) --->        
-    not_look_ahead(w(verb(go,_,fin))), %% repair of repair er går 
+    not_look_ahead(w(verb(go,_,fin))), %% repair of repair er gÃ¥r 
     w(verb(be,_,fin)), %% ikke aux1 
-    not_look_ahead(w(verb(_go_,_,part))), %% gående/ gått 
+    not_look_ahead(w(verb(_go_,_,part))), %% gÃ¥ende/ gÃ¥tt 
     !,accept,                       % last chance for DO BE 
     not_look_ahead(w(name(_,_,_))), %% tore (er) amble 
     negation0(N1),
     it0, 
-    redundant0,                     % bussene er alltid på veien
+    redundant0,                     % bussene er alltid pÃ¥ veien
     do_phrase(be,X,N2, S,ComP2)  \      % be as intransitive verb
         w(verb(be,pres,fin)),  %% \be  ALWAYS LOWEST/LEAST COMMITTING
     {bigno(N1,N2,N)}.  %% som har ikke 
 
 
 verb_phrase1(Plage,X, id,S,ComP2) --->   % fronted  Jeg  plages  av en kvinne
-    paux0,            % kan,må,
+    paux0,            % kan,mÃ¥,
     w(verb(Plage,pres,pass)), 
     thereit0, 
     be_complements(X,S,ComP2) \   
          w(adj2(Plage,nil)).  %% passive verbs are adjectives
 
 
-%%%¤¤¤  DO_PHRASE       (ACTIVE VERB_PHRASE)
+%%%Â¤Â¤Â¤  DO_PHRASE       (ACTIVE VERB_PHRASE)
 
 
 
-do_phrase(V,X,N,S,BP) --->     %% klokka  går 7 minutter forsinket 
+do_phrase(V,X,N,S,BP) --->     %% klokka  gÃ¥r 7 minutter forsinket 
     w(verb(V,_T,fin)),  {testmember(V,[go,come])},
     negation0(N),    %%    ofte0,    %% grade adv
 
@@ -6571,7 +6571,7 @@ morethan0 ---> [].
 
 
                                             
-do_phrase(V,X,id,S,SC::(EXS and KA)) --->          % (jeg ber) deg om å ta bussen  
+do_phrase(V,X,id,S,SC::(EXS and KA)) --->          % (jeg ber) deg om Ã¥ ta bussen  
     w(verb(ask,_,fin)),   %% lexv(rv,V,_tense,fin), // speedup
     not_look_ahead([om]), %% TA-110111
     object(Y,YNP), {constrain(Y,agent)}, %%  object control ad  hoc
@@ -6587,9 +6587,9 @@ do_phrase(V,X,id,S,SC::(EXS and KA)) --->          % (jeg ber) deg om å ta busse
 omaa0 --> omaa,!.
 omaa0 ---> [].
 
-omaa ---> [om],[å].
+omaa ---> [om],[Ã¥].
 omaa ---> [om],[og]. 
-omaa ---> [å].
+omaa ---> [Ã¥].
 
 
 
@@ -6600,10 +6600,10 @@ do_phrase(V,X,N, S,Com3P3) --->
     verb_modifiers0(V,X,S,ComP1, Com3P3 ).
 
 
-%% jeg har vanskelig for å ta buss -> jeg misliker å ta buss
+%% jeg har vanskelig for Ã¥ ta buss -> jeg misliker Ã¥ ta buss
 do_phrase(have,X,id,  S,Com1::( P3  and  P1)) ---> 
      has,w(adj2(A,nil)), {testmember(A,[difficult])}, [for],
-    [å],
+    [Ã¥],
     !,accept,  %% notify ?
     clausal_object1(NewS:coevent, Com1::P1) \ (npgap(X),aux1), %% jeg  vil ta bussen  
         {tv_template(dislike,X,NewS:coevent,S,P3)}. %% techn
@@ -6611,18 +6611,18 @@ do_phrase(have,X,id,  S,Com1::( P3  and  P1)) --->
 
 do_phrase(V,X,N, S,Com3P3) ---> %% jeg tar bussen til nardo %% Normal Case
     vp_kernel(V,X,N0,  S,ComP1 ), 
-%%     it0,  %%  destroys %  bussene  kjører det vil si 17. mai? 
+%%     it0,  %%  destroys %  bussene  kjÃ¸rer det vil si 17. mai? 
     verb_modifiers0(V,X,S,ComP1, Com3P3 ),
-    negation2(N0,N). %% ved søk tas buss 66 ikke. %% Haz? 
+    negation2(N0,N). %% ved sÃ¸k tas buss 66 ikke. %% Haz? 
 
 
 
-do_phrase(V,X,N, S, Com3P3) ---> %% ad hoc hva skal du [gjøre] i dag 
+do_phrase(V,X,N, S, Com3P3) ---> %% ad hoc hva skal du [gjÃ¸re] i dag 
     not_look_ahead(w(verb(_,_,_))),
     look_ahead(w(prep(_))), 
     !,
     vp_kernel(V,X,N,  S,ComP1 )\ w(verb(do1,pres,fin)), 
-    it0,  %%  destroys %  bussene  kjører det vil si 17. mai? 
+    it0,  %%  destroys %  bussene  kjÃ¸rer det vil si 17. mai? 
     verb_modifiers0(V,X,S,ComP1, Com3P3 ). 
 
 /*  Faren din er dum tenker jeg %% TA-110623
@@ -6645,10 +6645,10 @@ do_phrase(V,X,N, S, Com3P3) --->    %% ad hoc hvor skal du ?
 
 
 
-%%%%¤¤¤¤   RVP_KERNEL (V,X,N, S,SEM)
+%%%%Â¤Â¤Â¤Â¤   RVP_KERNEL (V,X,N, S,SEM)
 
 
-%% Spørre DEG om   bussen går 
+%% SpÃ¸rre DEG om   bussen gÃ¥r 
 
 rvp_kernel(V,X,N, S,Com3P3) ---> 
     hlexv(dtv,V,Pres,Fin,_Neg), %% FORTELLER
@@ -6659,7 +6659,7 @@ rvp_kernel(V,X,N, S,Com3P3) --->
     not_look_ahead(w(nb(_,_))), 
 
     ind_object(Z,NPZ), %% short %% DEG * np0_accept(
-    {constrain(Z,agent)}, %% (jeg påpeker) feilen 
+    {constrain(Z,agent)}, %% (jeg pÃ¥peker) feilen 
     optional([om]),                       %% OM
     not_look_ahead([at]),   
     np1_accept(Y,NP),  %% BUSSEN
@@ -6675,7 +6675,7 @@ rvp_kernel(V,X,N, S,Com3P3) --->
 
 rvp_kernel(V,X,Neg, S,SEM) --->  
     lexvaccept(rv,V,_Pres,_Fin,Neg),  %% TA-110111 speedup
-    reflexiv0(V), %% tenke seg å      %% TA-100905
+    reflexiv0(V), %% tenke seg Ã¥      %% TA-100905
 
     rvpk(V,X,id, S,SEM),
     !.
@@ -6683,7 +6683,7 @@ rvp_kernel(V,X,Neg, S,SEM) --->
 
 %% VET  I hvilket .... // special fake 
 
-%  si meg i hvilket format ruteinformasjonen må være for at BusTUC skal forstå den? 
+%  si meg i hvilket format ruteinformasjonen mÃ¥ vÃ¦re for at BusTUC skal forstÃ¥ den? 
 % actually an ordinary transitive VP
 
 rvp_kernel(V,X,id, S,event/real/S::( P  and  P3)) ---> 
@@ -6702,7 +6702,7 @@ rvp_kernel(adj/nil/Afraid,X,N, S,Com1:: ( P3  and  P1)) --->
     negation0(N),
     w(adj2(Afraid,nil)),
     forat, %% ad hoc  jeg er redd at 
-    clausal_object1(NewS:Coevent, Com1::P1), %%  "at bussen går"   
+    clausal_object1(NewS:Coevent, Com1::P1), %%  "at bussen gÃ¥r"   
                                             %% dette ...... er feil    
         {atv_template(Afraid,because_of,X,NewS:Coevent,S,P3)}. 
 
@@ -6711,10 +6711,10 @@ rvp_kernel(adj/nil/Afraid,X,N, S,Com1:: ( P3  and  P1)) --->
 %%    hlexv(rv,V,_Pres,_Fin,_Neg), 
 
 
-%%%%¤¤¤ RVPK   Reporting Verb Normal Kernel 
+%%%%Â¤Â¤Â¤ RVPK   Reporting Verb Normal Kernel 
 
-%% Hvis du vet hvor du skal så vet vi hvordan. %% TA-110127
-%%                                [ bussen går ].
+%% Hvis du vet hvor du skal sÃ¥ vet vi hvordan. %% TA-110127
+%%                                [ bussen gÃ¥r ].
 
 rvpk(V,X,id, S,Com1::( P3  and  P1)) ---> %% vet HVORDAN  TA-110127 #1
         {testmember(V,[ask,answer,answer1,discuss,know,know1])},
@@ -6724,7 +6724,7 @@ rvpk(V,X,id, S,Com1::( P3  and  P1)) ---> %% vet HVORDAN  TA-110127 #1
   
     !,accept, 
 
-    clausal_object1(NewS:Coevent, Com1::P1)\ %%  " bussen går"  
+    clausal_object1(NewS:Coevent, Com1::P1)\ %%  " bussen gÃ¥r"  
             (w(noun(bus,sin,def,n)),w(verb(go,pres,fin))),
 
       {co_template(V,how,X,NewS:Coevent,S,P3)}. %% clause object
@@ -6732,7 +6732,7 @@ rvpk(V,X,id, S,Com1::( P3  and  P1)) ---> %% vet HVORDAN  TA-110127 #1
   
                                               
 
-%% Vet HVORDAN   bussen går %% TA-110127 #2
+%% Vet HVORDAN   bussen gÃ¥r %% TA-110127 #2
 
 rvpk(V,X,N, S,Com1::( P3  and  P1)) --->
         {testmember(V,[ask,answer,answer1,discuss,know,know1])}, %% 
@@ -6743,20 +6743,20 @@ rvpk(V,X,N, S,Com1::( P3  and  P1)) --->
          {test(rv_templ(V,_))}, %% pretest
          %% {rv_template(id,V,that,X,S,_,NewS)}, 
     !,accept,  %% notify ?
-    clausal_object1(NewS:Coevent, Com1::P1), %%  " bussen går"  
+    clausal_object1(NewS:Coevent, Com1::P1), %%  " bussen gÃ¥r"  
 
        {co_template(V,how,X,NewS:Coevent,S,P3)}. %% clause object
                                                   %% co-event template
                                                 
 
 
-%% vet at hvis bussen går så står trikken
+%% vet at hvis bussen gÃ¥r sÃ¥ stÃ¥r trikken
 
-rvpk(V,X,N, S,Com1::( P3  and  P1)) ---> %% Fortelle til Bussoraklet  AT bussen går
+rvpk(V,X,N, S,Com1::( P3  and  P1)) ---> %% Fortelle til Bussoraklet  AT bussen gÃ¥r
         gmem(V,[calculate,say,tell,know,decide,believe,doubt,think]), %% etc 
     negation0(N),
     [at],
-    look_ahead_lit([hvis,når,selvom]), %% TA-110111
+    look_ahead_lit([hvis,nÃ¥r,selvom]), %% TA-110111
  
     !,  
     subordinate(Prep,PX,PO),
@@ -6765,7 +6765,7 @@ rvpk(V,X,N, S,Com1::( P3  and  P1)) ---> %% Fortelle til Bussoraklet  AT bussen 
  
 
 
-%% Vet   bussen (går) 
+%% Vet   bussen (gÃ¥r) 
 
 rvpk(V,X,N, S,Com1::( P3  and  P1)) ---> 
         gmem(V,[calculate,fear,hope,know,mean,recognize,think,understand]), %% ambiguous rv/tv %% TA-110624
@@ -6773,18 +6773,18 @@ rvpk(V,X,N, S,Com1::( P3  and  P1)) --->
     negation0(N),
     not_look_ahead_lit([at,om]), %% TA-110113
 
-    clausal_object0(NewS:Coevent, Com1::P1), %% bussen (går)
+    clausal_object0(NewS:Coevent, Com1::P1), %% bussen (gÃ¥r)
         {tv_template(V,X,NewS:Coevent,S,P3)}.
 
 
 
-%% Gjør turen mer behagelig= Gjør at turen er mer behagelig 
+%% GjÃ¸r turen mer behagelig= GjÃ¸r at turen er mer behagelig 
 
 rvpk(V,X,N, S,Com1::( P3  and  P1)) ---> 
         gmem(V,[do1,paint]), 
      negation0(N), 
     
-     [at], %% TA-110114                                   %% hva gjør du orakel
+     [at], %% TA-110114                                   %% hva gjÃ¸r du orakel
  
      np0_accept(TU,NPTU), 
 
@@ -6796,9 +6796,9 @@ rvpk(V,X,N, S,Com1::( P3  and  P1)) --->
 
 
 
-%% du sa til meg i stad at trikken går
+%% du sa til meg i stad at trikken gÃ¥r
 
-rvpk(V,X,N, S,Com1::( P3  and  P1)) ---> %% Fortelle til Bussoraklet  AT bussen går
+rvpk(V,X,N, S,Com1::( P3  and  P1)) ---> %% Fortelle til Bussoraklet  AT bussen gÃ¥r
         {testmember(V,[base,say,tell])}, %% TA-110708
     negation0(N),
     preadverbials0,  %% one or more adverbials are stacked, order is reversed
@@ -6822,43 +6822,43 @@ rvpk(V,X,N, S,Com1::( P3  and  P1)) --->
         {tv_template(V,X,NewS:Coevent,S,P3)}.
 
 
-%% Anser BusstUC for å være bra
+%% Anser BusstUC for Ã¥ vÃ¦re bra
 
 rvpk(V,X,N, S,Com::(P3  and P1)) ---> 
          {testmember(V,[regard])},
     negation0(N),
     object1(Y,YNP),
     optional([for]), 
-    [å],
+    [Ã¥],
     !,
     clausal_object1(NCO, Com::P1)\
        xnp(Y,YNP),
     {tv_template(V,X,NCO,S,P3)}.
 
 
-rvpk(V,X,id, S,Com1::( P3  and  P1 )) --->  %% Jeg  lurer (på) (om) NÅR bussen går
+rvpk(V,X,id, S,Com1::( P3  and  P1 )) --->  %% Jeg  lurer (pÃ¥) (om) NÃ…R bussen gÃ¥r
        {testmember(V, [wonder] )},          %% TA-101124
-    optional([på]),
+    optional([pÃ¥]),
     optional([om]), 
-    [når],
+    [nÃ¥r],
     !,accept, 
     clausal_object1(NewS1:coevent, Com1::P1), 
         {co_template(V,when,X,NewS1:coevent,S,P3)}. 
 
-rvpk(V,X,id, S,Com1::( P3  and  P1 )) --->  %% Jeg  lurer på om bussen går
+rvpk(V,X,id, S,Com1::( P3  and  P1 )) --->  %% Jeg  lurer pÃ¥ om bussen gÃ¥r
        {testmember(V, [think,wonder] )}, 
-    optional([på]), 
+    optional([pÃ¥]), 
     [om],
     !,accept, 
     clausal_object1(NewS1:coevent, Com1::P1), 
         {co_template(V,whether,X,NewS1:coevent,S,P3)}. 
 
    
-altsogå ---> [altså],[å].
-altsogå ---> [og],[å]. 
+altsogÃ¥ ---> [altsÃ¥],[Ã¥].
+altsogÃ¥ ---> [og],[Ã¥]. 
 
 
-ppstnp(Z,P) ---> %% Z : i hvilket format (Z) ruteinformasjonen må være
+ppstnp(Z,P) ---> %% Z : i hvilket format (Z) ruteinformasjonen mÃ¥ vÃ¦re
     w(prep(In)),
     which,
     np_kernel(0,Z,NPK),
@@ -6893,25 +6893,25 @@ rvpk(V,X,id, S,Com1::( P3  and  P1)) --->
                                                  
 
 
-%% Vet NÅR  bussen går
+%% Vet NÃ…R  bussen gÃ¥r
 
 rvpk(V,X,N, S,Com1::( P3  and  P1)) ---> 
         gmem(V,[ask,answer,answer1,discover,discuss,know,know1,say]), 
     reflexiv0(V), %% si meg %%
     redundant0, %% jo %% TA-110609
     omut0,
-    [når],   
+    [nÃ¥r],   
     {test(rv_templ(V,_))}, %% pretest 
     !,
     negation0(N),
     !,accept,  %% notify ?
-    clausal_object1(NewS:Coevent, Com1::P1), %%  "at bussen går"   <-- 1
+    clausal_object1(NewS:Coevent, Com1::P1), %%  "at bussen gÃ¥r"   <-- 1
 
        {co_template(V,when,X,NewS:Coevent,S,P3)}. %% clause object// WHEN
                                                   %% co-event template
                                                 
 
-%% Vet HVORFOR  bussen går
+%% Vet HVORFOR  bussen gÃ¥r
 
 rvpk(V,X,N, S,Com1::( P3  and  P1)) ---> 
         {\+ testmember(V,[fail,help,let,lie2,slip,try])},
@@ -6925,10 +6925,10 @@ rvpk(V,X,N, S,Com1::( P3  and  P1)) --->
 
 
 
-%% Sier til bussoraklet at fredag er lørdag 
-%% = Sier  (at fredag er lørdag) til bussoraklet.
+%% Sier til bussoraklet at fredag er lÃ¸rdag 
+%% = Sier  (at fredag er lÃ¸rdag) til bussoraklet.
 
-rvpk(V,X,N, S,Com1::( P3  and  P1)) ---> %% Fortelle til Bussoraklet  AT bussen går
+rvpk(V,X,N, S,Com1::( P3  and  P1)) ---> %% Fortelle til Bussoraklet  AT bussen gÃ¥r
         {testmember(V,[say,tell])},
     negation0(N),
     pp(Prep,Z,NPZ), %% til bussoraklet %% <----    pps %%  sa til meg i stad
@@ -6936,12 +6936,12 @@ rvpk(V,X,N, S,Com1::( P3  and  P1)) ---> %% Fortelle til Bussoraklet  AT bussen 
     !,  
     clausal_object1(NewS:Coevent, Com1::P1),
          {tv_template(V,X,NewS:Coevent,S,P3)},
-    []- adverbial1(Prep,Z,NPZ). %%  "at bussen går"   <-- 1
+    []- adverbial1(Prep,Z,NPZ). %%  "at bussen gÃ¥r"   <-- 1
 
 
 
 
-%% Vet (at)  bussen går
+%% Vet (at)  bussen gÃ¥r
 
 rvpk(V,X,N, S,Com1::( P3  and  P1)) ---> 
         {\+ testmember(V,[fail,help,let,lie2,slip,think,try,propose])}, %% ber om at
@@ -6952,7 +6952,7 @@ rvpk(V,X,N, S,Com1::( P3  and  P1)) --->
           {test(rv_templ(V,_))}, 
           {\+ verbtype(V,tv)}, %% propose ringroute 
     !,accept,  %% notify ?
-    clausal_object0(NewS:Coevent, Com1::P1),  %% be om et svar %%  "at bussen går"   <-- 1
+    clausal_object0(NewS:Coevent, Com1::P1),  %% be om et svar %%  "at bussen gÃ¥r"   <-- 1
         {tv_template(V,X,NewS:Coevent,S,P3)}. %% TA-110111
 
 
@@ -6964,7 +6964,7 @@ omut0 ---> [om],!.
 omut0 ---> [ut],!. %% finne (ut)
 omut0 ---> [].
 
-%% Si/spørre om   bussen går
+%% Si/spÃ¸rre om   bussen gÃ¥r
 
 rvpk(V,X,N, S,Com1::( P3  and  P1)) ---> 
         { testmember(V,[ask,say,know,know1,answer,answer1])},
@@ -6978,7 +6978,7 @@ rvpk(V,X,N, S,Com1::( P3  and  P1)) --->
         {co_template(V,whether,X, NewS:Coevent,S,P3)}.
 
 
-%% Vet AT  bussen går
+%% Vet AT  bussen gÃ¥r
 
 rvpk(V,X,N, S,Com1::( P3  and  P1)) ---> 
         {test(rv_templ(V,_))},
@@ -6991,7 +6991,7 @@ rvpk(V,X,N, S,Com1::( P3  and  P1)) --->
     negation0(N),
 
     !,accept,  %% notify ?
-    clausal_object1(NewS:Coevent, Com1::P1), %%  "at bussen går"   <-- 1
+    clausal_object1(NewS:Coevent, Com1::P1), %%  "at bussen gÃ¥r"   <-- 1
         {tv_template(V,X,NewS:Coevent,S,P3)}.
 
 
@@ -7003,13 +7003,13 @@ omut0 ---> [om],!.
 omut0 ---> [ut],!. %% finne (ut)
 omut0 ---> [].
 
-%% Spørre om hvilke  busser (SOM) går    
+%% SpÃ¸rre om hvilke  busser (SOM) gÃ¥r    
 
 rvpk(V,X,N, S,Com3P3) --->
          {testmember(V,[ask,check,discuss,know,know1,tell])},
     optional([om]),
     hvilkemange,
-    clausal_object0(Y,NP), %% busser går // busser som går %% <---
+    clausal_object0(Y,NP), %% busser gÃ¥r // busser som gÃ¥r %% <---
     !,
     do_phrase(V,X,N, S,Com3P3)\      
           (w(verb(V,pres,fin)),
@@ -7021,70 +7021,70 @@ hvilkemange ---> [hvor],[mange].
 
 
 
-%% Å clausal_object %% jeg ønsker å ta bussen
+%% Ã… clausal_object %% jeg Ã¸nsker Ã¥ ta bussen
 
-%% ber om  Å synge i kirken
+%% ber om  Ã… synge i kirken
 
 rvpk(V,X,id, S,Com1::( P3  and  P1)) --->
     [om],
-    [å], 
+    [Ã¥], 
         {testmember(V,
            [ask])},  %%  
           {test(rv_templ(V,_))}, 
     !,
-    clausal_object1(NewS:coevent, Com1::P1) \ (npgap(X),aux1), %%  "at bussen går"      
+    clausal_object1(NewS:coevent, Com1::P1) \ (npgap(X),aux1), %%  "at bussen gÃ¥r"      
         {tv_template(V,X,NewS:coevent,S,P3)}.
 
 
-%% behøver (å) synge
+%% behÃ¸ver (Ã¥) synge
 rvpk(V,X,id, S,Com1::( P3  and  P1)) --->
    
         gmem(V, [need,start,stop,try,use2]),
-        optional([å]),
+        optional([Ã¥]),
       !,
-      clausal_object1(NewS:coevent, Com1::P1) \ (npgap(X),aux1), %%  "at bussen går"      
+      clausal_object1(NewS:coevent, Com1::P1) \ (npgap(X),aux1), %%  "at bussen gÃ¥r"      
         {tv_template(V,X,NewS:coevent,S,P3)}.
 
 
-%% Unngå Å synge i kirken
+%% UnngÃ¥ Ã… synge i kirken
 
 rvpk(V,X,id, S,Com1::( P3  and  P1)) --->
-    optional([på]), %% particlev? %% TA-110623
-    [å], 
+    optional([pÃ¥]), %% particlev? %% TA-110623
+    [Ã¥], 
         {testmember(V,
            [avoid,choose,consider,deny,end,expect,forget,hate,hope,learn,like, %% TA-110429
             manage,need,postpone,promise,propose,
             reach,recommend,refuse,remember,resist,risk,
             seem,slip,start,think,try,use2,want,wish,wonder])},  %%
-    %% TA-110623 tenkte å ta buss
+    %% TA-110623 tenkte Ã¥ ta buss
          %%  {test(rv_templ(V,_))}, %% pretest ?? %% TA-110623
 
     !,accept,  %% notify ?
-    clausal_object1(NewS:coevent, Com1::P1) \ (npgap(X),aux1), %%  "at bussen går"      
+    clausal_object1(NewS:coevent, Com1::P1) \ (npgap(X),aux1), %%  "at bussen gÃ¥r"      
         {tv_template(V,X,NewS:coevent,S,P3)}.
 
 
-%% Svare PÅ OM   bussen går 
+%% Svare PÃ… OM   bussen gÃ¥r 
 
 rvpk(V,X,Neg, S,Com1::( P4  and  P1))  --->
         {testmember(V,[answer,answer1,say])},
     reflexiv0(V),                    
-    optional([på]), %% generalize!
+    optional([pÃ¥]), %% generalize!
     [om],
     np1_accept(Y,NP), %% trikken
     negation0(IK), 
-    look_ahead_vp, %% .. går  ad hoc
+    look_ahead_vp, %% .. gÃ¥r  ad hoc
     !,accept,
     lexv(_xv,Go,Pres,fin), %% be -> // possibly  lexv(cv,be,Pres,fin)
           {test(rv_templ(V,_))}, %% pretest 
-    clausal_object1(NewS:coevent, Com1::P1)\ %%  "at bussen går"      
+    clausal_object1(NewS:coevent, Com1::P1)\ %%  "at bussen gÃ¥r"      
               (xnp(Y,NP),w(verb(Go,Pres,fin)),negation0(IK)),
         {tv_template(V,X,NewS:coevent,S,P3)},
     
      {negate(Neg,P3,P4)}.
 
 
-%% Spørre om TING SOM (ad hoc/ avoid heavy clausal subject
+%% SpÃ¸rre om TING SOM (ad hoc/ avoid heavy clausal subject
 
 rvpk(V,X,N, S,Com3P3) --->
          {testmember(V,[ask,worry,tell])}, 
@@ -7098,7 +7098,7 @@ rvpk(V,X,N, S,Com3P3) --->
            np_kernel(0,Y,NP)).
 
 
-%% Spørre om det går buss   // Alltid clausal
+%% SpÃ¸rre om det gÃ¥r buss   // Alltid clausal
 
 rvpk(V,X,id, S,Com1::( P3  and  P1)) --->
         {testmember(V,[ask,check,discuss,know,know1,see])}, 
@@ -7107,7 +7107,7 @@ rvpk(V,X,id, S,Com1::( P3  and  P1)) --->
         {tv_template(V,X,NewS:coevent,S,P3)}.
 
 
-%% Spørre om TING.
+%% SpÃ¸rre om TING.
 
 rvpk(V,X,N, S,Com3P3) --->
          {testmember(V,[ask,worry,tell])}, 
@@ -7120,7 +7120,7 @@ rvpk(V,X,N, S,Com3P3) --->
            xnp(Y,NP)).
 
 
-%% VET () bussen går  last
+%% VET () bussen gÃ¥r  last
 
 rvpk(V,X,N, S,Com1::( P3  and  P1)) ---> %% TA-
          {testmember(V,[believe,clculate,know,know1,mean,tell,say])}, %% not manage 
@@ -7129,10 +7129,10 @@ rvpk(V,X,N, S,Com1::( P3  and  P1)) ---> %% TA-
     not_look_ahead([om]), 
          {test(rv_templ(V,_))}, %% pretest
     !,accept,  %% notify ?
-    clausal_object0(NewS:Coevent, Com1::P1), %%   bussen går"    <-- 0
+    clausal_object0(NewS:Coevent, Com1::P1), %%   bussen gÃ¥r"    <-- 0
         {tv_template(V,X,NewS:Coevent,S,P3)}.
 
-%% SLIPPE (å) vente
+%% SLIPPE (Ã¥) vente
 
 
 rvpk(V,X,id, S,Com1::( P3  and  P1)) -->
@@ -7141,15 +7141,15 @@ rvpk(V,X,id, S,Com1::( P3  and  P1)) -->
             slip,start,try,use2,want])},  %%   dont take at
           {test(rv_templ(V,_))}, %% pretest
     !,accept, 
-    clausal_object1(NewS:coevent, Com1::P1) \ (npgap(X),aux1), %%  "at bussen går"      
+    clausal_object1(NewS:coevent, Com1::P1) \ (npgap(X),aux1), %%  "at bussen gÃ¥r"      
         {tv_template(V,X,NewS:coevent,S,P3)}.
 
 
-%%%%¤¤  CLAUSAL_OBJECT
+%%%%Â¤Â¤  CLAUSAL_OBJECT
 
 %% Garden path    NP.. ST
 
-%%¤  CLAUSAL_OBJECT0    
+%%Â¤  CLAUSAL_OBJECT0    
 
 clausal_object0(X,NP) --->  %% til 1. mai       
     look_ahead(w(nb(_,_))),
@@ -7158,11 +7158,11 @@ clausal_object0(X,NP) --->  %% til 1. mai
 
   
 
-clausal_object0(OT,COB) --->         %% til bussen ..... går? 
-    not_look_ahead(w(nb(_,_))), %% før 21 ¤¤ number %% TA-110107
-    np(X,XNP),             %% (varsle) før jeg tar buss
+clausal_object0(OT,COB) --->         %% til bussen ..... gÃ¥r? 
+    not_look_ahead(w(nb(_,_))), %% fÃ¸r 21 Â¤Â¤ number %% TA-110107
+    np(X,XNP),             %% (varsle) fÃ¸r jeg tar buss
  
-%%%   object(X,XNP),  %% foreslå buss 20 og buss 36 
+%%%   object(X,XNP),  %% foreslÃ¥ buss 20 og buss 36 
 %%%   noun_phrase1(X,XNP),  %%_accept   // subject/object ambiguity    %% either bus or coevent 
                           %%  en agent som tror at du hater ham  fins. 
     cond_vp(X,XNP,OT,COB).
@@ -7174,7 +7174,7 @@ cond_vp(X,XNP,OT,COB) --->
 
 
 cond_vp(X,XNP,OT,COB) --->
-    not_look_ahead([så]), %%  here, så=so ,\+ see
+    not_look_ahead([sÃ¥]), %%  here, sÃ¥=so ,\+ see
 %%%%     not_look_ahead(w(verb(have,_,fin))), %% ad hoc %% TA-110106
     look_ahead_vp,                    %% det som man ikke vet har man ingen anelse om.
     clausal_object1(OT,COB)\ xnp(X,XNP),
@@ -7182,14 +7182,14 @@ cond_vp(X,XNP,OT,COB) --->
 cond_vp(X,XNP,X,XNP) ---> [].
 
 
-%%%¤  CLAUSAL_OBJECT1 (VAR,P)  %% at bussen går
+%%%Â¤  CLAUSAL_OBJECT1 (VAR,P)  %% at bussen gÃ¥r
 
 clausal_object1(NewS:coevent, 
         P3::(exists(NewS:coevent)::(NewS isa coevent and event/NewS/S and  KA))) --->  
-    substatem(S,P3::KA). %% allow hvis .. så
+    substatem(S,P3::KA). %% allow hvis .. sÃ¥
 
 
-%%%¤  CLAUSAL_OBJECT2 (VAR,P) %% at i sommer (så)går bussen
+%%%Â¤  CLAUSAL_OBJECT2 (VAR,P) %% at i sommer (sÃ¥)gÃ¥r bussen
 
 clausal_object2(NewS:coevent, 
         P3::(exists(NewS:coevent)::(NewS isa coevent and event/NewS/S and  KA))) --->  
@@ -7197,21 +7197,21 @@ clausal_object2(NewS:coevent,
 
 
 
-%%%¤ VP_KERNEL (V,X,N, S,COM)
+%%%Â¤ VP_KERNEL (V,X,N, S,COM)
 
 
 % DTV
 
-%% månedskort gir overgang til buss | NOT dtv
+%% mÃ¥nedskort gir overgang til buss | NOT dtv
 
 
-vp_kernel(V,X,N,  S,Com3::P1 )  ---> %% jeg tillater deg å gå
+vp_kernel(V,X,N,  S,Com3::P1 )  ---> %% jeg tillater deg Ã¥ gÃ¥
     hlexv(dtv,V,_Tense,_Part,N1),  
        {testmember(V,[allow,let])},  
 
    ind_object(U, UNP), %% deg 
 
-    optional([å]), %% tillater .. å gå /lar .. gå
+    optional([Ã¥]), %% tillater .. Ã¥ gÃ¥ /lar .. gÃ¥
     clausal_object1(Y1,E1::P1) \ (xnp(U,UNP),[vil]),
        {tv_template(V,X,Y1,S,P)},
     someevent00(S,P, (Com3::E1) ), 
@@ -7226,20 +7226,20 @@ vp_kernel(Give,X,N,  S,Com3::(P1 and Q1)) ---> %% TA-101207 FRONTEST
         not_look_ahead_lit([en,et,den,det,han,hun,vi]), %% NOT ind object
 
     negation0(N1),
-    ind_object(Y, E1::P1),  %%   månedskort gir overgang til buss |  NOT dtv 
+    ind_object(Y, E1::P1),  %%   mÃ¥nedskort gir overgang til buss |  NOT dtv 
     negation0(N2),
-        not_look_ahead([så]), %% very ad hoc  sende ruter så snart rundene  er ferdig
+        not_look_ahead([sÃ¥]), %% very ad hoc  sende ruter sÃ¥ snart rundene  er ferdig
     {bigno(N1,N2,N)},  
                        
     object(Z, E1::Q1), 
        {dtv_template(Give,X, Y, Z, S,Code)},
 
     optional([til]), %% ad hoc  Garden path %%   
-                     %% hvilken dame fortalte sjåføren deg å  gi billetten (til) ?   
+                     %% hvilken dame fortalte sjÃ¥fÃ¸ren deg Ã¥  gi billetten (til) ?   
     someevent00(S,Code, (Com3::E1) ).         
 
 
-vp_kernel(notify,X,N,  S,Com3::P1 )  --->  %% TA-110225 %%  du varsler [meg] 2 minutter før
+vp_kernel(notify,X,N,  S,Com3::P1 )  --->  %% TA-110225 %%  du varsler [meg] 2 minutter fÃ¸r
                                      %%  special, 2 min not object
     hlexv(tv,notify,_Tense,_Part,N),   
  
@@ -7251,7 +7251,7 @@ vp_kernel(notify,X,N,  S,Com3::P1 )  --->  %% TA-110225 %%  du varsler [meg] 2 m
     someevent00(S,P, (Com3::E1) ).
 
 
-vp_kernel(V,X,N,  S,Com3::P1 )  ---> %%  jeg kjørte idag en buss
+vp_kernel(V,X,N,  S,Com3::P1 )  ---> %%  jeg kjÃ¸rte idag en buss
                                      %% Extreme care %% TA-110107
     lexvaccept(tv,V,_Tense,fin,N),    %% TA-110112  
     redundant0,   %% nok | dessverre %% TA-110411
@@ -7263,14 +7263,14 @@ vp_kernel(V,X,N,  S,Com3::P1 )  ---> %%  jeg kjørte idag en buss
         [] - adverbx(AA,BB,CC). %% <-
 
 
-%% vi kjørte 21 februar
+%% vi kjÃ¸rte 21 februar
 
 
 vp_kernel(V,X,N,  S,Com3::P1 )  ---> %%  jeg har  brakt penger
 
     hlexv(tv,V,_Tense,_Part,N),    %% = brakte
 
-    not_look_ahead_lit([om,hver]),  %% ad hoc hver søndag %% TA-110724
+    not_look_ahead_lit([om,hver]),  %% ad hoc hver sÃ¸ndag %% TA-110724
 
   %% AD HOC %% TA-110401 hvilken holdeplass vil tagore snakke om.
 %%%%%%%%    not_look_ahead(w(prep(_to))),  %% .. change %% TA-110113
@@ -7310,7 +7310,7 @@ vp_kernel(have,X,N,  S,Com3::P1 )  --->  % ???? %% (et navn som) du har  informa
     {bigno(N1,N2,N)},
     w(noun(information,sin,u,n)) ,       %% avoid   som du har (navn).
     [om],
-     not_look_ahead_lit([når,å,at]), 
+     not_look_ahead_lit([nÃ¥r,Ã¥,at]), 
     !,
     np1(Y,E1::P1) \ 
         (w(noun(information,sin,u,n)),w(prep(regarding))), %% informasjon om busser
@@ -7318,7 +7318,7 @@ vp_kernel(have,X,N,  S,Com3::P1 )  --->  % ???? %% (et navn som) du har  informa
     someevent00(S,P, Com3::E1 ). 
 
 
-vp_kernel(have,X,N,  S,Com3P1 )  --->  %% TT har åpent = er åpent 
+vp_kernel(have,X,N,  S,Com3P1 )  --->  %% TT har Ã¥pent = er Ã¥pent 
     negation0(N),
     has,        
     w(adj2(Open,nil)), {testmember(Open,[open,closed])}, %% FOS
@@ -7354,11 +7354,11 @@ vp_kernel(V,X,N,  S,Com3::P1 )  ---> %% allow have taken as took
 
 %%%%%%%    {compliancetest2(tv,V,X)}, %%  Garden Path Pruning !!! Unnec?
 
-     redundant0, %% preadverbials0, %%      %% Haz ?? %% jeg får nå svar
+     redundant0, %% preadverbials0, %%      %% Haz ?? %% jeg fÃ¥r nÃ¥ svar
                  %% funker ikke hvis objekt er stakket
-                 %% hvilken buss må jeg ta fra vestlia
+                 %% hvilken buss mÃ¥ jeg ta fra vestlia
 %%     not_look_ahead(w(nb(_,_))), %% TA-101116 %% NB not number (3 minutter)
-    object2(X,Y1, E1::P1),         %% jeg kjøper 1 billett %% TA-101118
+    object2(X,Y1, E1::P1),         %% jeg kjÃ¸per 1 billett %% TA-101118
     !,accept, %% terrible haz ?   Overgangen tar utgangspunkt.
    {tv_template(V,X,Y1,S,P)},
     someevent00(S,P, (Com3::E1) ), 
@@ -7378,7 +7378,7 @@ vp_kernel(V,X,N,  S,Com3::P1 )  ---> %% tok idag bussen // With care
     {V \== have},
     {V \== be2}, 
         {\+ verbtype(V,iv)}, %%  e.g.stop
-    adverb(AA,BB,pre), %% idag er pre  %% bussen stoppet igår //stoppe =iv|tv
+    adverb(AA,BB,pre), %% idag er pre  %% bussen stoppet igÃ¥r //stoppe =iv|tv
        not_look_ahead(w(noun(night,_,_,_))), %% horrendous ad hoc
     object2(X,Y1, E1::P1),             %% kveld (SIC)
 %%        !,  
@@ -7390,7 +7390,7 @@ vp_kernel(V,X,N,  S,Com3::P1 )  ---> %% tok idag bussen // With care
  
 % be 
 
-vp_kernel(be1,X, N, S,VPK )  ---> %% møtet er (på) torsdag
+vp_kernel(be1,X, N, S,VPK )  ---> %% mÃ¸tet er (pÃ¥) torsdag
     be,
     negation0(N),
     look_ahead(w(noun(Thursday,_,_,_))), {subclass0(Thursday,time)}, %%
@@ -7445,7 +7445,7 @@ vp_kernel(have,X,N,  S,Com3::P1 )  ---> %% have %% after hlexv(tv   har  rettet 
         {bigno(N1,N2,N0)},
     object2(X,Y1, E1::P1), %% NB not number (3 minutter)
 
-    !,accept, %% hazardous   har du ost (øst) %% TA-101115
+    !,accept, %% hazardous   har du ost (Ã¸st) %% TA-101115
 
     {tv_template(have,X,Y1,S,P)},
     someevent00(S,P, Com3::E1 ), 
@@ -7457,15 +7457,15 @@ vp_kernel(have,X,N,  S,Com3::P1 )  ---> %% have %% after hlexv(tv   har  rettet 
 
 
 %% TVERB1 PARTICLE OBJECT -> TVERB2 OBJECT
-vp_kernel(V,X,N, S,Com3::P1 )  ---> %% ha på (seg) 
+vp_kernel(V,X,N, S,Com3::P1 )  ---> %% ha pÃ¥ (seg) 
     w(verb(Have,_,fin)),
     {testmember(Have,[have])}, 
     negation0(N1), 
-    particlev2(Have,V), %% ha på = attend| finne ut av = finne
+    particlev2(Have,V), %% ha pÃ¥ = attend| finne ut av = finne
     reflexiv0(V),  
     redundant0,     
 
-    not_look_ahead(w(verb(_go,past,part))), %% har gått
+    not_look_ahead(w(verb(_go,past,part))), %% har gÃ¥tt
 
     object2(X,Y1, E1::P1), 
     {tv_template(V,X,Y1,S,P)},
@@ -7526,10 +7526,10 @@ vp_kernel(V,X,N, S,VPK )  ---> %% har levet -> levde
 
 
 
-vp_kernel(V,X,N,  S,(Com3::P1)  )  ---> %% Jeg må hjem
+vp_kernel(V,X,N,  S,(Com3::P1)  )  ---> %% Jeg mÃ¥ hjem
     {constrain(X,person)}, %% ikke busstuc 
         not_look_ahead([kan]), 
-    [Må], {testmember(Må,[må,skal,vil])}, %% Ad Hoc  
+    [MÃ¥], {testmember(MÃ¥,[mÃ¥,skal,vil])}, %% Ad Hoc  
         not_look_ahead(w(verb(_,_,_))), 
     !,
     intrans_verb(V,X,N1, S,P,_tense,_fin)\ 
@@ -7543,29 +7543,29 @@ vp_kernel(V,X,N,  S,(Com3::P1)  )  ---> %% Jeg må hjem
 
 %% CODE SEMANTIC SECTION 
 
-%%%¤ WORLDCOMP 
+%%%Â¤ WORLDCOMP 
 
 worldcomp(Real,  S,event/Real/S::P,P) ---> []. 
 
 
-%%%¤ REALCOMP 
+%%%Â¤ REALCOMP 
 
 realcomp(        S,event/real/S::P,P ) ---> [].  %%  // real
 
-%%¤¤ SOMEEVENT00 
+%%Â¤Â¤ SOMEEVENT00 
 
 someevent00(S,P, Q::(exists(S:event)::P and Q) ) ---> []. 
 
 
 %%   om  NP(exists)  %% Ambiguous, very ad hoc
 
-thatto0(_W,that,X) ---> infinitive,!,[]-npgap(X). %% Å = AT JEG
+thatto0(_W,that,X) ---> infinitive,!,[]-npgap(X). %% Ã… = AT JEG
 
 thatto0(_tell,_whether,_) ---> 
-     w(prep(on)), %% tenker på 
+     w(prep(on)), %% tenker pÃ¥ 
      !,reject.
 
-thatto0(_tell,_whether,_) ---> [om], %% bussene ..... går 
+thatto0(_tell,_whether,_) ---> [om], %% bussene ..... gÃ¥r 
      look_ahead(w(name(_,_,_))),           %% navn er objekt
      !,reject.
 
@@ -7575,19 +7575,19 @@ thatto0(_tell,_whether,_) ---> [om], %% bussen
 
 
 
-%  Vet du |når går bussen -> når bussen  går 
+%  Vet du |nÃ¥r gÃ¥r bussen -> nÃ¥r bussen  gÃ¥r 
 
 %%% THAT0  
 
 
 that0(_Think,that) ---> 
-    [på],
+    [pÃ¥],
     !,reject.
 
 
 that0(Know,when) ---> 
         gmem(Know,[know,know1,think,ask,notify,tell]),
-    [når],
+    [nÃ¥r],
     w(verb(Go,P,fin)),
     np1(A, NP1),%% TA-110314
         !,accept,
@@ -7595,11 +7595,11 @@ that0(Know,when) --->
         !,accept.
 
 
-that0(ask,that) ---> look_ahead(w(verb(_,inf,_))). %% be (om å) gå 
+that0(ask,that) ---> look_ahead(w(verb(_,inf,_))). %% be (om Ã¥) gÃ¥ 
 
 that0(answer,whether) ---> on0,[om]. 
 
-that0(ask,that) ---> [om],infinitive,!,accept.  %%  (ber deg om å gå)
+that0(ask,that) ---> [om],infinitive,!,accept.  %%  (ber deg om Ã¥ gÃ¥)
 that0(ask,whether) ---> [om],!,accept. 
 
 that0(ask,that) ---> infinitive,!,accept. 
@@ -7648,9 +7648,9 @@ that0(think,that)   ---> [].
 that0(understand,how)    ---> [hvordan].
 
 that0(want,that)    ---> [at],!. 
-that0(want,to)    ---> [og].  %%   Incorr. N ønsker og ta buss 
+that0(want,to)    ---> [og].  %%   Incorr. N Ã¸nsker og ta buss 
 
-that0(wish,that)    ---> look_ahead(w(verb(_,_,_))). %% jeg ønsker reise
+that0(wish,that)    ---> look_ahead(w(verb(_,_,_))). %% jeg Ã¸nsker reise
 
 that0(_W,TW)    ---> that(TW),!,
     not_look_ahead(w(noun(departure,_,_,_))), %% ad hoc, bussavg objekt"
@@ -7697,9 +7697,9 @@ rep_modifiers0(_Say,_X,_S,ComPis,ComPis) ---> [].
 
 %% Complements to be other than as intransitive verb be1  %%
 
-%%¤  BE_COMPLEMENTS (X,S, VP)
+%%Â¤  BE_COMPLEMENTS (X,S, VP)
 
-be_complements(X,S,Com::(B and CNP)) ---> %% Feilen er at i sommer går bussen
+be_complements(X,S,Com::(B and CNP)) ---> %% Feilen er at i sommer gÃ¥r bussen
     [at],                                 %% TA-110808, with care
     look_ahead(w(prep(_In))),
     !,
@@ -7709,7 +7709,7 @@ be_complements(X,S,Com::(B and CNP)) ---> %% Feilen er at i sommer går bussen
 
 
 
-be_complements(X,S,Com::(B and CNP)) ---> %% Feilen er at bussen står
+be_complements(X,S,Com::(B and CNP)) ---> %% Feilen er at bussen stÃ¥r
     [at],  
     !,accept,
   
@@ -7718,8 +7718,8 @@ be_complements(X,S,Com::(B and CNP)) ---> %% Feilen er at bussen står
 
 
 
-be_complements(X,S,Com::(B and CNP)) ---> %% er å ta buss
-    [å],  
+be_complements(X,S,Com::(B and CNP)) ---> %% er Ã¥ ta buss
+    [Ã¥],  
     !,accept,
     clausal_object1(Y,Com::CNP)\ someone, %% rough
     {bealign(X,Y,S,CNP,B)}. 
@@ -7731,7 +7731,7 @@ be_complements(X,S, ComP3 ) --->
     be_complements20(X,S, (Com::P1), ComP3 ).    % i oslo ?????
   
 
-%%%¤ BE_COMPLEMENTS_20 
+%%%Â¤ BE_COMPLEMENTS_20 
 
 be_complements20(X,S, Com::P1,  Com::(P1 or P3) ) ---> 
    [eller],                          %% ? Haz ?
@@ -7748,7 +7748,7 @@ be_complements20(X,S, (Com::P1),  (Com::(P1 and P3) )) --->
 
 be_complements20(_,_,ComP,ComP) ---> redundant0. 
 
-%%%¤ BE_COMPL_CONJUNCTION 
+%%%Â¤ BE_COMPL_CONJUNCTION 
 
 be_compl_conjunction ---> [og],!. %% Too careful ?? 
 be_compl_conjunction ---> [men],look_ahead(w(verb(_send,past,part))),!.
@@ -7756,7 +7756,7 @@ be_compl_conjunction ---> [men],look_ahead(w(verb(_send,past,part))),!.
 
 % 1                                                 
 
-%%%¤ BE_COMPLEMENT  
+%%%Â¤ BE_COMPLEMENT  
 
 
 be_complement(X,B, CD ) ---> %% bussen er sen (* ikke en sen buss *) 
@@ -7764,13 +7764,13 @@ be_complement(X,B, CD ) ---> %% bussen er sen (* ikke en sen buss *)
    be_pred(X,B, CD ).       %% in reduced_rel
 
 % 2
-be_complement(A,B, CD ) ---> %% er den første som går 
+be_complement(A,B, CD ) ---> %% er den fÃ¸rste som gÃ¥r 
     not_look_ahead_lit([der,her]), 
 %%%     not_look_ahead([det]),  %% du er det beste orkaklet 
     be_noun(A,B, CD ).      %% not in reduced_rel (lived a miner fortyniner *)
 
 
-%%%¤  BE_PRED         BE predication (not adverbial?)
+%%%Â¤  BE_PRED         BE predication (not adverbial?)
 
 
 
@@ -7779,7 +7779,7 @@ be_pred(X,S, BP ) --->  %% after comparisons... smartere enn meg
 
     ap(A,X,S,  AP ),
 
-    {\+ testmember(A,[true,whole])}, %% den nærmeste // 
+    {\+ testmember(A,[true,whole])}, %% den nÃ¦rmeste // 
 
     not_look_ahead_nounx, %% // OOPS kl
 
@@ -7852,7 +7852,7 @@ be_pred(X,S,BP) --->     %% 1 minutt forsinket =
 
 be_pred(X,S, BP ) --->  %% after comparisons... smartere enn meg 
     [mer],
-    look_ahead([enn]), %% større enn
+    look_ahead([enn]), %% stÃ¸rre enn
     ap(A,X,S, AP ) = w(adj2(great,nil)), %% Ad Hoc
     verb_modifiers0(adj/nil/A,X,S, AP, BP ).   
 
@@ -7870,13 +7870,13 @@ be_pred(X,S, ComKA ) --->
     someevent00(S,P2, ComKA).
 
 % 4
-be_pred(X,S, (Com::P2) ) ---> %%  (moved up) % være sikker -> know -> know1
+be_pred(X,S, (Com::P2) ) ---> %%  (moved up) % vÃ¦re sikker -> know -> know1
     sure,
     do_phrase(know,X,id, S,(Com::P2) )\  w(verb(know,pres,fin)). 
 
 % 4B
 
-be_pred(X,S, AP2 ) --->  %% usikker (på) hva %% Special
+be_pred(X,S, AP2 ) --->  %% usikker (pÃ¥) hva %% Special
     ap(A,X,S, AP1 ),
     look_ahead([hva]), %%     
      {\+ testmember(A,[true,whole])}, %% / near .. nearest
@@ -7894,9 +7894,9 @@ not_look_ahead_nounx ---> not_look_ahead(w(noun(_,_,_,_))).
 
 
  
-%%%¤¤¤  BE_NOUN  (X,S, COMV)
+%%%Â¤Â¤Â¤  BE_NOUN  (X,S, COMV)
 
-be_noun(X,S, (Com::(exists(S:event)::P2)) ) ---> %% årsaken er at trikken står
+be_noun(X,S, (Com::(exists(S:event)::P2)) ) ---> %% Ã¥rsaken er at trikken stÃ¥r
     [at],
     clausal_object1(Y,Com::P1),
     {bealign(X,Y,S,P1,P2)}, 
@@ -7915,19 +7915,19 @@ be_noun(X,S, (Com::(exists(S:event)::P2)) ) ---> %% klokken er 18.
 
 be_noun(X,S, (Com::(exists(S:event)::P2)) ) ---> 
 
-%%  hva er nærmeste holdeplass
+%%  hva er nÃ¦rmeste holdeplass
                    %%  hvilken farge er neste buss *  
     
     redundant0, %%  optional([dermed]),
 
-    object(Y,Com2::P1),   %% dete er jeg sikker på %% TA-101025
+    object(Y,Com2::P1),   %% dete er jeg sikker pÃ¥ %% TA-101025
     {bealign(X,Y,S,P1,P11)}, 
     optional([bare]),
     !,
     verb_modifiers0(exist ,X,S, (Com2::P11) ,(Com::P2) ).
 
 
-%%%%%¤¤¤ AP (A,X,S, Com )
+%%%%%Â¤Â¤Â¤ AP (A,X,S, Com )
 
 ap(A,X,S, ComKA ) ---> 
     mthe10,            %% den raskeste
@@ -7937,7 +7937,7 @@ ap(A,X,S, ComKA ) --->
 
 
 
-ap(Borne,X,S, ComKA ) ---> %% Pass  %% jeg er født
+ap(Borne,X,S, ComKA ) ---> %% Pass  %% jeg er fÃ¸dt
     w(verb(Borne,past,part)),
     {\+ testmember(Borne,[be,have])}, %% jeg er hatt * 
     {adj_template(nil,be/Borne,X,S,P)}, 
@@ -7946,16 +7946,16 @@ ap(Borne,X,S, ComKA ) ---> %% Pass  %% jeg er født
 mthe10 ---> [mye]. %% ad hoc
 mthe10 ---> the0. 
 
-%%%%¤¤¤   PASSIVE  (Y, S, STM) %% passive phrase after BE
+%%%%Â¤Â¤Â¤   PASSIVE  (Y, S, STM) %% passive phrase after BE
 
 
-passive(Y,S, STM ) ---> %% bussen er video-overvåket %% TA-110526
+passive(Y,S, STM ) ---> %% bussen er video-overvÃ¥ket %% TA-110526
     w(noun(Video,sin,u,n)), gmem(Video,[video,camera]), %% etc
     lexv(tv,V,Tense,part),
     {\+ testmember(V,[be2,have])}, %% jeg er "hatt" 
     whodidit(X,BC),          
     !,                                    
-    state(S, STM) \ (np(X,BC), %% X overvåker bussen med Video
+    state(S, STM) \ (np(X,BC), %% X overvÃ¥ker bussen med Video
                        w(verb(V,Tense,fin)), 
                         npgap(Y),
                         w(prep(by)),
@@ -7965,7 +7965,7 @@ passive(Y,S, STM ) ---> %% jeg vil bli ilagt et gebyr
     lexv(dtv,V,past,part), 
     
         {\+ testmember(V,[be2,have,wish,want])},
-        not_look_ahead(w(adj2(_first,_))), %% (utviklet) første gang
+        not_look_ahead(w(adj2(_first,_))), %% (utviklet) fÃ¸rste gang
 
     whodidit(X,BC),   
     !,
@@ -7981,7 +7981,7 @@ passive(Y,S, STM ) ---> %% jeg er kalt tore
     
     {\+ testmember(V,[be2,have,wish,want])}, 
 
-    not_look_ahead(w(adj2(_first,_))), %% (utviklet) første gang
+    not_look_ahead(w(adj2(_first,_))), %% (utviklet) fÃ¸rste gang
     ind_object(Z,NPZ), %% IKKE jeg,du 
 
     whodidit(X,BC),   
@@ -8019,15 +8019,15 @@ passive(Y,S, STM ) --->
 passive(Y,S, STM ) ---> 
     lexv(tv,V,Tense,part),
     {\+ testmember(V,[be2,have])}, %% jeg er "hatt" 
-    particlev0(V,W), %% omdøpt til = kalt %% TA-110708
+    particlev0(V,W), %% omdÃ¸pt til = kalt %% TA-110708
 
     redundant0, %% to make     not_look_ahead([og] work
 
-%%     not_look_ahead([og]), %%  korrigert og lagt inn | systemet er  restartet og nå ...
+%%     not_look_ahead([og]), %%  korrigert og lagt inn | systemet er  restartet og nÃ¥ ...
 
     whodidit(X,BC),          
     !,                                    
-    state(S, STM) \ (np(X,BC),  %%  NB \   Når det er verifisert ønsker  jeg bussen.
+    state(S, STM) \ (np(X,BC),  %%  NB \   NÃ¥r det er verifisert Ã¸nsker  jeg bussen.
                         w(verb(W,Tense,fin)), 
                         npgap(Y)).
 
@@ -8050,7 +8050,7 @@ passive(Y,S, STM ) --->   %%  korrigert og lagt inn
          npgap(Y)).
 
  
-%%¤ WHODIDIT (X,NP)
+%%Â¤ WHODIDIT (X,NP)
 
 
 
@@ -8077,12 +8077,12 @@ whodidit(X,BC)--->
 
 
 
-%%%¤ QVERB_PHRASE  ( X,N, S, ComP) 
+%%%Â¤ QVERB_PHRASE  ( X,N, S, ComP) 
 
-qverb_phrase(Y,N, S, QNP) ---> % hvilken tid tar det å kjøre buss
+qverb_phrase(Y,N, S, QNP) ---> % hvilken tid tar det Ã¥ kjÃ¸re buss
     lexv(tv,V,Tense,fin),  
     [det],
-    [å],
+    [Ã¥],
 
     clausal_object1(X,SNP)\[noen], %% i.e. clausal_subject
 
@@ -8117,13 +8117,13 @@ qverb_phrase(Z,N, S, QNP) ---> % hvilken holdeplass tar jeg buss 52 til
 
 
 
-qverb_phrase(Z,N, S, QNP) --->   %% (Hvilken buss) kjører du med
+qverb_phrase(Z,N, S, QNP) --->   %% (Hvilken buss) kjÃ¸rer du med
     lexv(iv,V,Tense,fin),        %% TA-100915
     {\+ testmember(V,[think])}, 
     subject(X, NP),  
     negation0(N),
     w(prep(With)), 
- %%%        gmem(With,[to,from,with,past,as]), %% \+ for Å %% TA-110401
+ %%%        gmem(With,[to,from,with,past,as]), %% \+ for Ã… %% TA-110401
     not_look_ahead_np, %% fra sentrum ...   %% TA-101124
     traceprint(4,qv1), 
     !,accept,                 
@@ -8135,33 +8135,33 @@ qverb_phrase(Z,N, S, QNP) --->   %% (Hvilken buss) kjører du med
          npgap(Z)).        
            
 
-qverb_phrase(Y,N, S, QNP ) ---> % Hvilke ting tenker du å gjøre
+qverb_phrase(Y,N, S, QNP ) ---> % Hvilke ting tenker du Ã¥ gjÃ¸re
     lexv(rv,Think,pres,fin),
     subject(X, SNP),    % du
-    infinitive,         % å
+    infinitive,         % Ã¥
     w(verb(do,inf,fin)),
     []- xnp(Y,SNP), 
     traceprint(4,qv2), 
     !,
     verb_phrase(X,N, S, QNP )
-         \  ( w(verb(Think,pres,fin)),[å], w(verb(do,inf,fin))).
+         \  ( w(verb(Think,pres,fin)),[Ã¥], w(verb(do,inf,fin))).
 
 
 qverb_phrase(Y,N, S, QNP) --->  %% HV OBJECT VERB SUBJECT INDOBJECT
                                  %% hvilken dame 
     lexv(dtv,B,Tense,fin),       %% ba          
-    subject(X ,SNP),             %% sjåføren
+    subject(X ,SNP),             %% sjÃ¥fÃ¸ren
     ind_object(U,UNP),               %% deg
-    omaa,                        %% (om)  å
-    traceprint(4,qv3),                %% ... besøke
+    omaa,                        %% (om)  Ã¥
+    traceprint(4,qv3),                %% ... besÃ¸ke
     !,
     []- xnp(Y,SNP),              %% ... hvilken dame
     verb_phrase(X,N, S, QNP) 
          \  ( w(verb(B,Tense,fin)),  %% ba  
               xnp(U,UNP),           %% deg
               [om],                 %% om
-              [å]).                 %% å
-                                    %% ... besøke
+              [Ã¥]).                 %% Ã¥
+                                    %% ... besÃ¸ke
 
 
 qverb_phrase(Y,N, S, QNP) ---> % hvilken buss tar jeg til dragvoll
@@ -8199,7 +8199,7 @@ qverb_phrase(Y,N, S, QNP) ---> % hvilken buss vil jeg ta
 qverb_phrase(Y,N, S, QNP) ---> % hvilken kvinne vil jeg bli gift med
     aux1,                 
     subject(X ,SNP),  
-    w(verb(be,inf,fin)), %% bli/være
+    w(verb(be,inf,fin)), %% bli/vÃ¦re
     w(adj2(A,G)),
     w(prep(W)),
     traceprint(4,qv6), 
@@ -8208,10 +8208,10 @@ qverb_phrase(Y,N, S, QNP) ---> % hvilken kvinne vil jeg bli gift med
          \  (w(verb(be,pres,fin)), w(adj2(A,G)),w(prep(W)),xnp(Y ,SNP)).
 
 
-qverb_phrase(Y,N, S, QVP ) --->   %% hvilken pris har du på bussen ?
+qverb_phrase(Y,N, S, QVP ) --->   %% hvilken pris har du pÃ¥ bussen ?
     has,                          %% har 
     [du], %% np0_accept(X, NP),   %% du  
-                              %*** hvem har bussruter i Ålesund
+                              %*** hvem har bussruter i Ã…lesund
     negation0(N),        
     prepnom(Om),                   %% om (past) -> regarding
     traceprint(4,qv7), 
@@ -8232,7 +8232,7 @@ qverb_phrase(Y,N, S,ComP2 ) --->    %% % Hvilken buss har du informasjon om ?
 
 
 
-qverb_phrase(Y,N, S,QVP) --->  %% hvor lenge har bussen gått
+qverb_phrase(Y,N, S,QVP) --->  %% hvor lenge har bussen gÃ¥tt
     has,  
     subject(X, NP1),     
     negation0(N),
@@ -8247,7 +8247,7 @@ qverb_phrase(Y,N, S,QVP) --->  %% hvor lenge har bussen gått
          npgap(Y)).
 
 
-qverb_phrase(Y,N, S, QVP) --->  % (hvilke busser) har du kjørt ?
+qverb_phrase(Y,N, S, QVP) --->  % (hvilke busser) har du kjÃ¸rt ?
     has,
     subject(X,NP),
     negation0(N),
@@ -8260,7 +8260,7 @@ qverb_phrase(Y,N, S, QVP) --->  % (hvilke busser) har du kjørt ?
          npgap(Y)).
 
 
-qverb_phrase(X,N, S, QVP) --->  % (hvor lenge) har bussen gått 
+qverb_phrase(X,N, S, QVP) --->  % (hvor lenge) har bussen gÃ¥tt 
     has,
     np1_accept(Y,NP),
     negation0(N),
@@ -8270,7 +8270,7 @@ qverb_phrase(X,N, S, QVP) --->  % (hvor lenge) har bussen gått
     verb_phrase(X,id, S,QVP) \  (xnp(Y,NP),w(verb(Go,Past,fin))).
 
 
-qverb_phrase(Y,N, S, QVP)--->  %% Hvilke språk kan du
+qverb_phrase(Y,N, S, QVP)--->  %% Hvilke sprÃ¥k kan du
     [kan],
     subject(X, NP),             % du
     negation2(id,N),            % ikke 
@@ -8288,11 +8288,11 @@ qverb_phrase(Y,N, S, QVP)---> %% Hvilken ting  snakker du om (AD HOC)
     look_ahead(w(prep(_))),
     traceprint(4,qv13a), 
     !,
-    do_phrase(_Do,  X,id, S,QVP)/  % svare på
+    do_phrase(_Do,  X,id, S,QVP)/  % svare pÃ¥
         ( xnp(Y, NP),w(verb(Talk,Pres,fin)),negation(N)).
 
 
-qverb_phrase(Y,id, S,ComP2) ---> % Hvilken person  vil du være ? %% TA-110615
+qverb_phrase(Y,id, S,ComP2) ---> % Hvilken person  vil du vÃ¦re ? %% TA-110615
     aux1,
     subject(X, NPX),
     w(verb(be,_,fin)),
@@ -8304,18 +8304,18 @@ qverb_phrase(Y,id, S,ComP2) ---> % Hvilken person  vil du være ? %% TA-110615
        
 
 
-qverb_phrase(Y,N, S, QVP)---> %% Hvilke språk kan du snakke 
+qverb_phrase(Y,N, S, QVP)---> %% Hvilke sprÃ¥k kan du snakke 
     docan,                      % kan   
     subject(X, NP),             % du
     negation2(id,N),            % ikke 
     traceprint(4,qv13b), 
     !,
-    do_phrase(_Do,  X,id, S,QVP)/  % svare på
+    do_phrase(_Do,  X,id, S,QVP)/  % svare pÃ¥
         xnp(Y, NP). 
 
 
-qverb_phrase(Y,N, S, ComP2 ) ---> %% hvilke hpl må jeg av (på)
-    {constrain(Y,place)}, %% hvilke busser går kl 21::30
+qverb_phrase(Y,N, S, ComP2 ) ---> %% hvilke hpl mÃ¥ jeg av (pÃ¥)
+    {constrain(Y,place)}, %% hvilke busser gÃ¥r kl 21::30
     aux1,
     np1_accept(X, P::P1), % jeg
     negation0(N),
@@ -8329,7 +8329,7 @@ qverb_phrase(Y,N, S, ComP2 ) ---> %% hvilke hpl må jeg av (på)
         npgap(Y)).
 
 
-qverb_phrase(Y,N, S, ComP2 ) ---> % Hvilket programmeringsspråk er du skrevet i
+qverb_phrase(Y,N, S, ComP2 ) ---> % Hvilket programmeringssprÃ¥k er du skrevet i
     w(verb(be,pres,_)),
     thereit0,
     np1_accept(Du, VP::P),
@@ -8391,7 +8391,7 @@ qverb_phrase(Y,N, S,ComP2) ---> % Hvilket holdeplass er bussen ved ?
 
 qverb_phrase(Y,N, S,ComP2) ---> %% Hva  bruker jeg  busstuc til
     lexv(tv,Use,Tense,fin),       % bruke
-    {\+ testmember(Use,[pass,be1,be,be2,cost,have,know1])}, %%  Hva er hhh før kl 20 
+    {\+ testmember(Use,[pass,be1,be,be2,cost,have,know1])}, %%  Hva er hhh fÃ¸r kl 20 
     np1_accept(X, P::P1),       % tore 
     negation0(N),
     np1_accept(Y, Q::Q1), 
@@ -8411,11 +8411,11 @@ qverb_phrase(Y,N, S,ComP2) ---> %% Hva  bruker jeg  busstuc til
 
 %% InTransitive Prepositional Complement   
 
-qverb_phrase(Y,N, S, ComP2 ) --->  %% hvilken hp kjører buss til
+qverb_phrase(Y,N, S, ComP2 ) --->  %% hvilken hp kjÃ¸rer buss til
 
     not_look_ahead([kan]),       %% also iv  know1 
     not_look_ahead(w(verb(be,_,_))), 
-    lexv(IV,Go,Tense,fin),       % kjører
+    lexv(IV,Go,Tense,fin),       % kjÃ¸rer
     {IV==iv;IV==rv}, 
     {\+ testmember(Go,[pass])}, 
     thereit0,  %% eksister det %% TA-100902
@@ -8435,8 +8435,8 @@ qverb_phrase(Y,N, S, ComP2 ) --->  %% hvilken hp kjører buss til
 
 
 %% Default go nil             %% hvilken dato er dette i morgen ***
-qverb_phrase(Y,N, S,ComP2) ---> %% hvilke steder går bussen til 
-    {constrain(Y,place)}, %% hvilke busser går kl 21:30
+qverb_phrase(Y,N, S,ComP2) ---> %% hvilke steder gÃ¥r bussen til 
+    {constrain(Y,place)}, %% hvilke busser gÃ¥r kl 21:30
     w(verb(Go,_,fin)),  
     {\+ testmember(Go,[be,take,pass])},
     not_look_ahead([det]), %% ad hoc %% TA-100902
@@ -8452,7 +8452,7 @@ qverb_phrase(Y,N, S,ComP2) ---> %% hvilke steder går bussen til
          npgap(Y)).
 
 
-%% Hvilket sted går jeg (til) / -- Hvilken buss går 12. aug før --
+%% Hvilket sted gÃ¥r jeg (til) / -- Hvilken buss gÃ¥r 12. aug fÃ¸r --
 qverb_phrase(Y,N, S,ComP2) ---> 
     lexv(iv,Go,_Tense,fin), {Go \== be1}, %%  hvilken buss tar jeg til NTH ....
     np1_accept(X, P::P1),       % buss 5
@@ -8478,7 +8478,7 @@ qverb_phrase(Y,N, S,ComP2) ---> %% hva vil du vite
          \  ( lexv(Vcat,know1,Tense,fin), np(Y,P::P1)). 
 
 
-qverb_phrase(Y,N, S, Com::P2 ) --->  %%   bruker subjekt X (på Y)
+qverb_phrase(Y,N, S, Com::P2 ) --->  %%   bruker subjekt X (pÃ¥ Y)
     use,
     noun_phrase1(X, P3::P2),
     in_order_to,
@@ -8494,7 +8494,7 @@ qverb_phrase(X,N, S, ComP2 )--->  %% er det ?
                                %% hvilken varighet eksisterer til jul
 
     not_look_ahead(w(noun(_,_,u,_))), %% ... plass til // siden <----
-                                      %% ##¤¤ 
+                                      %% ##Â¤Â¤ 
     traceprint(4,qv23), 
     !,
     verb_phrase1(exist,X,N, S, ComP2 )  \  
@@ -8502,7 +8502,7 @@ qverb_phrase(X,N, S, ComP2 )--->  %% er det ?
 
 
 
-qverb_phrase(Z,id, S, SNP ) ---> % hvilken rute går buss  (nil complement)
+qverb_phrase(Z,id, S, SNP ) ---> % hvilken rute gÃ¥r buss  (nil complement)
     {constrain(Z,route)}, %% ad hoc
     lexv(iv,V,Tense,fin), {testmember(V,[go])}, %% ad hoc
     subject(X ,NP1),  {constrain(X,vehicle)}, %% ad hoc
@@ -8518,7 +8518,7 @@ qverb_phrase(Y,N, S, QNP) ---> % hvilken holdeplass passerer buss
     subject(X ,SNP), 
     {subject_object_test(V,X,Y)}, %% TA-100905
  
-    not_look_ahead(w(prep(_))), %% kjører bussen til //not here 
+    not_look_ahead(w(prep(_))), %% kjÃ¸rer bussen til //not here 
     traceprint(4,qv25), 
     !,
     verb_phrase(X,N, S, QNP) 
@@ -8526,7 +8526,7 @@ qverb_phrase(Y,N, S, QNP) ---> % hvilken holdeplass passerer buss
 
 
 qverb_phrase(X,N, S, ComP2 ) --->  % hvilket subjekt verb objekt
-    look_ahead(w(verb(be,_,fin))),         % hva er rødt
+    look_ahead(w(verb(be,_,fin))),         % hva er rÃ¸dt
     traceprint(4,qv26),   
     !,
     verb_phrase(X,N, S, ComP2 ).   % including be1  
@@ -8558,10 +8558,10 @@ qverb_phrase(Y,N, S, ComP2 )--->
     (do),                         % kan       
     noun_phrase1(X, NP1),       % du
     negation2(id,N),            % ikke 
-    redundant0x, %% så allowed here 
+    redundant0x, %% sÃ¥ allowed here 
     traceprint(4,qv29), 
     !,
-    do_phrase(__Do, X,id, S, ComP2 )/  % svare på
+    do_phrase(__Do, X,id, S, ComP2 )/  % svare pÃ¥
         xnp(Y, NP1). 
 
 
@@ -8571,7 +8571,7 @@ qverb_phrase(Y,N, S, ComP2 ) ---> %% spurte jeg nettopp om
     thereit, %%  ( not hvilke stasjoner passerer bussen) 
     noun_phrase1(X, NP1),
     adverbx0,                     %% spurte jeg nettopp om
-    prep0(Prep),                  %% Hvilke dager går det busser (på) ??? prep0
+    prep0(Prep),                  %% Hvilke dager gÃ¥r det busser (pÃ¥) ??? prep0
     traceprint(4,qv30), 
     !,
     verb_phrase(X,N, S,ComP2)
@@ -8579,12 +8579,12 @@ qverb_phrase(Y,N, S, ComP2 ) ---> %% spurte jeg nettopp om
 
 
 
-% Hvilke spørsmål har du tenkt å  motta %% EXPENSIVE (Ad Hoc)
+% Hvilke spÃ¸rsmÃ¥l har du tenkt Ã¥  motta %% EXPENSIVE (Ad Hoc)
 qverb_phrase(Y,N, S, ComP2 ) --->
     has,
     np1_accept(X, P::P1),    % du
     lexv(rv,_thought,past,part),     % tenkt
-    infinitive,                      % å
+    infinitive,                      % Ã¥
     lexv(tv,Take,inf,fin),  
     traceprint(4,qv31), 
     !,
@@ -8592,7 +8592,7 @@ qverb_phrase(Y,N, S, ComP2 ) --->
          \  ( lexv(tv,Take,pres,fin),np(Y,P::P1)). 
 
 
-% Hvilke spørsmål har du mottatt %% EXPENSIVE 
+% Hvilke spÃ¸rsmÃ¥l har du mottatt %% EXPENSIVE 
 qverb_phrase(Y,N, S, ComP2 ) --->
     has,
     np1_accept(X, P::P1),  % du
@@ -8615,7 +8615,7 @@ qverb_phrase(Y,N, S, ComP2  ) --->    %% Hvilken alder
         (w(verb(have,pres,fin)),noun_phrase1(Y, NP1)). 
 
 
-% Prepositional % hvilket språk %% VERY EXPENSIVE 
+% Prepositional % hvilket sprÃ¥k %% VERY EXPENSIVE 
 qverb_phrase(Y,N, S, ComP2 ) --->
     has,
     np1_accept(X, P::P1),  % jeg
@@ -8653,19 +8653,19 @@ qverb_phrase(Y,N, S, ComP2 ) ---> % (hvilken tid) %
          \  ( lexv(Vcat,V,Tense,fin), xnp(Y, NP1)). 
 
 
-qverb_phrase(Y,N, S, ComP2 ) --->   % går jeg på bussen ved
-    lexv(iv,V,Tense,fin),         % går  \+ mean
+qverb_phrase(Y,N, S, ComP2 ) --->   % gÃ¥r jeg pÃ¥ bussen ved
+    lexv(iv,V,Tense,fin),         % gÃ¥r  \+ mean
     {\+ testmember(V,[think])}, %% iv
     np1_accept(X, NP),  % jeg 
     negation0(N),
-    adverbial1(On,Z, SC::P3),       % på bussen
+    adverbial1(On,Z, SC::P3),       % pÃ¥ bussen
     traceprint(4,qv38), 
     !,accept,                 
     defaultprep(V,Y,At),          % ved (default)
     state(S,ComP2) \              
        ( xnp(X, NP),   % jeg 
-         lexv(iv,V,Tense,fin),   % går
-         adverbial1(On,Z, SC::P3), % på bussen  
+         lexv(iv,V,Tense,fin),   % gÃ¥r
+         adverbial1(On,Z, SC::P3), % pÃ¥ bussen  
          prep1(At),              % ved
          npgap(Y)).                % Y
 
@@ -8677,20 +8677,20 @@ qverb_phrase(Y,N, S, ComP2 ) --->   % går jeg på bussen ved
 %% If several verb_modifiers, they are nested first innermost,
 %%   and the state is existantiated innermost
 
-%%%¤ VERB_MODIFIERS0  (V,X,S,COMP1,COMP2)
+%%%Â¤ VERB_MODIFIERS0  (V,X,S,COMP1,COMP2)
 
 verb_modifiers0(_V,_X,_S,_,_) ---> [hva],!,reject.
 
 
-%% verb_modifiers0(_V,_,_,CP,CP) ---> look_ahead([så]),!. %% Experiment Hazard 
-%%                                                      %% necessary for hvis... så 
+%% verb_modifiers0(_V,_,_,CP,CP) ---> look_ahead([sÃ¥]),!. %% Experiment Hazard 
+%%                                                      %% necessary for hvis... sÃ¥ 
 %%  meets itself in the inner state (?!)
 
 %%%%  Experimental
 
 %% prep + adverb ==> adverb + prep
-%% før i morgen kl 7 ==> i morgen før kl 7
-%% "til i nærheten av " ???
+%% fÃ¸r i morgen kl 7 ==> i morgen fÃ¸r kl 7
+%% "til i nÃ¦rheten av " ???
 
 
 verb_modifiers0(V,X,S,Com1P1,Com12P3) ---> % 1-n for be1, otherwise 0-n 
@@ -8708,7 +8708,7 @@ verb_modifiers0(V,_,_,CP,CP) --->
 
 
 
-%%¤  VERB_MODIFIERS  (V,X,S,Com1,Com2) 
+%%Â¤  VERB_MODIFIERS  (V,X,S,Com1,Com2) 
 
 verb_modifiers(V,X,S,Com1P1,Com12P3) --->
     verb_modifier(V,X,S,Com1P1,Com12P2),
@@ -8718,11 +8718,11 @@ verb_modifiers(V,X,S,Com1P1,Com12P3) --->
 
     verb_modifiers10(V,X,S,Com12P2,Com12P3).  % last dominates first ?
 
-%%%¤ VERB_MODIFIERS10  (V,X,S,Com1,Com2) 
+%%%Â¤ VERB_MODIFIERS10  (V,X,S,Com1,Com2) 
 
 verb_modifiers10(V,X,S,Com1P1,Com12P3) ---> %% 0-n 
-    vmod_conjunction, %% HAZARD     Jeg bor på Nidarvoll og i ettermiddag ...
-          %%            bussen går før 1300 men etter 0900
+    vmod_conjunction, %% HAZARD     Jeg bor pÃ¥ Nidarvoll og i ettermiddag ...
+          %%            bussen gÃ¥r fÃ¸r 1300 men etter 0900
     look_ahead_prepadv, %% HAZARD  jeg bytter buss hvis  jeg skal til  pirbadet og  tar buss 8 
     verb_modifiers(V,X,S,Com1P1,Com12P3). %% 1-n 
 
@@ -8747,7 +8747,7 @@ look_ahead_prepadv --->  look_ahead(w(prep(_))),!.
 look_ahead_prepadv --->  look_ahead(w(adv(_))),!. 
 
 
-%%%%¤  VERB_MODIFIER  (V,X,S,Com1,Com2)
+%%%%Â¤  VERB_MODIFIER  (V,X,S,Com1,Com2)
 
 %% Problem                    %% til nardosenteret 1730.  %% TA-101019
 %%                            %% neste nardo nth          %% TA-100909
@@ -8758,7 +8758,7 @@ look_ahead_prepadv --->  look_ahead(w(adv(_))),!.
 % 5. %% dit = to this place / der = in this place 
 verb_modifier(V,X,S,(FCompl and Com1)::Subj,  Com1::Subj ) ---> 
     thisplace(To),   
-    not_look_ahead([jegdu]), %% der jeg skal være %% TA-110127
+    not_look_ahead([jegdu]), %% der jeg skal vÃ¦re %% TA-110127
     {verb_compl(V,To,X,Y:place,S,STO)},
     {FCompl= (findexternal(Y:place)::(Y isa place and STO))}.
 
@@ -8780,7 +8780,7 @@ verb_modifier(V,_X,_S, VV,VV) --->
      !,accept.
 
 
-verb_modifier(V,_X,_S, VV,VV) ---> %% ønsker meg
+verb_modifier(V,_X,_S, VV,VV) ---> %% Ã¸nsker meg
     {testmember(V,[want])}, %% ... 
      reflexiv(V).
                                          
@@ -8798,9 +8798,9 @@ verb_modifier(V,X,S, (Com1 and Compl)::Subj,Com1::P3    ) --->    % this afterno
     {verb_compl(V,Prep,X,Y,S,Compl)}.
 
 
-% 4.  (lørdag) kveld
+% 4.  (lÃ¸rdag) kveld
 verb_modifier(V,X,S, (Compl and Com1)::Subj,Com1::Subj    ) ---> 
-    partday(Today,DayClass,_),                %% (lørdag)... kveld 
+    partday(Today,DayClass,_),                %% (lÃ¸rdag)... kveld 
     {adv_compl(V,Today,X,DayClass,S,Compl)}.  %% not compl to adverb :-!
 
 %% jeg tar bussen 10 \= jeg tar bussen kl 10
@@ -8811,7 +8811,7 @@ verb_modifier(V,X,S, (Compl and Com1)::Subj,Com1::Subj    ) --->
 
 %%% Bogus
 verb_modifier(Tell,X,S, ( Compl and Com1)::Subj,Com1::P3    ) --->   %% Moved Last
-   nil_compl(Tell),   %% Keep sequence, e.g.  gløshaugen sentrum
+   nil_compl(Tell),   %% Keep sequence, e.g.  glÃ¸shaugen sentrum
    adjunct1(nil,Y, Subj::P3), 
    %% !,  
    {verb_compl(Tell,nil,X,Y,S,Compl)},
@@ -8826,7 +8826,7 @@ verb_modifier(Tell,X,S, ( Compl and Com1)::Subj,Com1::P3    ) --->
    !,accept.  %%% <---!!!  Hazardous, but essential
 
 
-%% dyrt å  komme til Risvoillan
+%% dyrt Ã¥  komme til Risvoillan
 verb_modifier(adj/nil/Expensive,X,S,(Compl and Com1)::Subj,Com1 ::KA) ---> 
     infinitive,
     subordinateinfnosubj(nil,coevent,X,T1,Subord), 
@@ -8836,7 +8836,7 @@ verb_modifier(adj/nil/Expensive,X,S,(Compl and Com1)::Subj,Com1 ::KA) --->
 
 %%%%%%%%%%%%%%%%
 
-%%¤  VERB_MOD1 (V,X,S,Compl, SEM) 
+%%Â¤  VERB_MOD1 (V,X,S,Compl, SEM) 
 
 
 verb_mod1(V,X,S,Compl,NP) --->  %% jeg er i hamar etter 6 %% TA-110228
@@ -8864,7 +8864,7 @@ verb_mod1(V,X,S,Compl,NP) --->  %% nardosenteret er i nardo
      {verb_compl(V,In,X,Y,S,Compl)}.  %% NEW technical prep
 
 
-verb_mod1(V,X,S,Compl,NP) --->  %% bussen kjører som i eksemplet
+verb_mod1(V,X,S,Compl,NP) --->  %% bussen kjÃ¸rer som i eksemplet
      [som],
      w(prep(in)),
      !,
@@ -8872,7 +8872,7 @@ verb_mod1(V,X,S,Compl,NP) --->  %% bussen kjører som i eksemplet
      {verb_compl(V,as_in,X,Y,S,Compl)}.  %% NEW technical prep
 
 
-verb_mod1(V,X,S,Compl,NP) --->  %% bussen kjører som trikken
+verb_mod1(V,X,S,Compl,NP) --->  %% bussen kjÃ¸rer som trikken
      [som],  
      !,
      np1_accept(Y,NP), %% dette  
@@ -8881,12 +8881,12 @@ verb_mod1(V,X,S,Compl,NP) --->  %% bussen kjører som trikken
 
 verb_mod1(V,X,S,Compl,CO) ---> %% (lenge(\) er det siden  bussen gikk |  jul OBS
      gmem(V,[exist]),  
-     one_of_lit([til,før]),   %% TA-110520
+     one_of_lit([til,fÃ¸r]),   %% TA-110520
      {vartypeid(X,M), subclass0(M,duration)},
      not_look_ahead(w(name(_Alta,n,place))), %% lenge (langt) til Alta
-                                   %%%%% TA-110426 %% til Arvid holme går av
+                                   %%%%% TA-110426 %% til Arvid holme gÃ¥r av
       !,
-     clausal_object0(Y,CO),    %% EXPERIMENT   (til) bussen .... går
+     clausal_object0(Y,CO),    %% EXPERIMENT   (til) bussen .... gÃ¥r
      {verb_compl(V,until,X,Y,S,Compl)}. %% minutter ekisterer siden hendelse
 
 
@@ -8895,7 +8895,7 @@ verb_mod1(V,X,S,Compl,CO) ---> %% (lenge(\) er det siden  bussen gikk |  jul OBS
      [Til], {testmember(Til,[siden])},
      {vartypeid(X,M), subclass0(M,duration)},
      !,
-     clausal_object0(Y,CO),    %% EXPERIMENT   (til) bussen .... går
+     clausal_object0(Y,CO),    %% EXPERIMENT   (til) bussen .... gÃ¥r
      {verb_compl(V,since,X,Y,S,Compl)}. %% minutter ekisterer siden hendelse
 
 
@@ -8907,9 +8907,9 @@ verb_mod1(V,X,S,Compl, VMod) ---> %% (mene noe) om at
      {verb_compl(V,with,X,Y,S,Compl)}.
 
 
-verb_mod1(V,X,S,Compl,SC::KA) ---> %% be (T)   (om å) ta bussen
+verb_mod1(V,X,S,Compl,SC::KA) ---> %% be (T)   (om Ã¥) ta bussen
      {testmember(V,[ask])},    
-     not_look_ahead([nå]),
+     not_look_ahead([nÃ¥]),
      look_ahead(w(verb(_take,inf,fin))),
      !,
      clausal_object1(Y,SC::KA)\ (npgap(X),[vil]), 
@@ -8934,14 +8934,14 @@ verb_mod1(adj/nil/Delayed,X, S,Compl,NPZ) --->  %%   forsinket 1 minutt
 
 %
 
-utenå ---> [uten],ogå,måtte,!. 
-utenå ---> [uten],ogå. 
+utenÃ¥ ---> [uten],ogÃ¥,mÃ¥tte,!. 
+utenÃ¥ ---> [uten],ogÃ¥. 
 
-måtte ---> 
-    one_of_lit([måtte,ville,skulle,burde,kunne]). %% aux inf 
+mÃ¥tte ---> 
+    one_of_lit([mÃ¥tte,ville,skulle,burde,kunne]). %% aux inf 
 
 
-verb_mod1(adj/nil/Proud,X, S,Compl,NPZ) --->  %% jeg er redd (for at) jeg  må gå
+verb_mod1(adj/nil/Proud,X, S,Compl,NPZ) --->  %% jeg er redd (for at) jeg  mÃ¥ gÃ¥
     {testmember(Proud,[afraid,happy])},  %% redd fordi
     foratx0,
     !,
@@ -8962,9 +8962,9 @@ verb_mod1(V,X,S,Compl,NPZ) --->  %% bussen er merket 1
      !.
 
 %% ENN    
-verb_mod1(V,X,S,Compl,SC::P3) --->  %% (kjører fortere) enn trikken %% Ad Hack!
+verb_mod1(V,X,S,Compl,SC::P3) --->  %% (kjÃ¸rer fortere) enn trikken %% Ad Hack!
      { \+ testmember(V,[be,be1,be2])},  %% testmember(rain,snow,be_urgent]),
-     [enn],[å],
+     [enn],[Ã¥],
      !,
      clausal_object1(Y,SC::P3)\[noen], 
      {verb_compl(V,than,X,Y,S,Compl)}.
@@ -8979,28 +8979,28 @@ verb_mod1(V,X,S,Compl,SC::P3) --->  %% enn at ?
      {verb_compl(V,than,X,Y,S,Compl)}.
 
 
-verb_mod1(V,X,S,Compl,SC::P3) --->  %% (kjører fortere) enn trikken %% Ad Hack!
+verb_mod1(V,X,S,Compl,SC::P3) --->  %% (kjÃ¸rer fortere) enn trikken %% Ad Hack!
      { \+ testmember(V,[be,be1,be2])},  
      [enn],
      np1(Y,SC::P3),
      {verb_compl(V,than,X,Y,S,Compl)}.
 
 
-verb_mod1(V,X,S,Compl,CO) ---> %% varsle meg før buss xxx |går.
+verb_mod1(V,X,S,Compl,CO) ---> %% varsle meg fÃ¸r buss xxx |gÃ¥r.
      {testmember(V,[notify,wait])},    %% ad hoc %% TA-110106
      w(prep(Before)), 
-        {\+ testmember(Before,[for])}, %% for å.. %% TA-110107
+        {\+ testmember(Before,[for])}, %% for Ã¥.. %% TA-110107
      !, %% only for [notify,wait]
-     clausal_object0(Y,CO),    %% EXPERIMENT   (til) bussen .... går
+     clausal_object0(Y,CO),    %% EXPERIMENT   (til) bussen .... gÃ¥r
      {verb_compl(V,Before,X,Y,S,Compl)}.
 
 
 /********* %% TA-110629  %% Experiment!
-verb_mod1(adj/nil/Nice,X,S,Compl,SC::KA) ---> %% (dette er) enkelt å lage
+verb_mod1(adj/nil/Nice,X,S,Compl,SC::KA) ---> %% (dette er) enkelt Ã¥ lage
      {testmember(Nice,[easy,difficult,nice,good,bad,interesting])}, %% ad hoc
-     [å],
+     [Ã¥],
      w(verb(Make,inf,fin)),
-%%%%%%%%%%%%     not_look_ahead_np, %% det er nyttig å ta buss %% TA-110629
+%%%%%%%%%%%%     not_look_ahead_np, %% det er nyttig Ã¥ ta buss %% TA-110629
       !,
      clausal_object1(Y,SC::KA)\
           ([noen], w(verb(Make,pres,fin)),npgap(X)),
@@ -9010,10 +9010,10 @@ verb_mod1(adj/nil/Nice,X,S,Compl,SC::KA) ---> %% (dette er) enkelt å lage
 
 
 
-verb_mod1(adj/nil/Nice,X,S,Compl,SC::KA) ---> %% (det er) hyggelig å høre fra deg
+verb_mod1(adj/nil/Nice,X,S,Compl,SC::KA) ---> %% (det er) hyggelig Ã¥ hÃ¸re fra deg
      {testmember(Nice,[nice,good,bad,interested,interesting])}, %% ad hoc
      optional(w(prep(_))), %% i/for/over   ....
-     [å],
+     [Ã¥],
       !,
      clausal_object1(Y,SC::KA)\ npgap(X), 
      {verb_compl(adj/nil/Nice,because_of,X,Y,S,Compl)}.
@@ -9037,25 +9037,25 @@ verb_mod1(adj/nil/Dep,X, S,Compl, NPZ) --->     %% avhengig av hvilken buss
 
 
 
-verb_mod1(adj/nil/Proud,X,S,Compl,SC::KA) ---> %% stolt av å 
+verb_mod1(adj/nil/Proud,X,S,Compl,SC::KA) ---> %% stolt av Ã¥ 
      {\+ testmember(Proud,[])}, %% ad hoc
-     overaa, %%  [av],[å],
+     overaa, %%  [av],[Ã¥],
       !,
      clausal_object1(Y,SC::KA)\ npgap(X), % hjelpe til
      {verb_compl(adj/nil/Proud,because_of,X,Y,S,Compl)}.
 
 
-overaa ---> [av],[å]. 
-overaa ---> [over],[å].
-overaa ---> [til],[å].
+overaa ---> [av],[Ã¥]. 
+overaa ---> [over],[Ã¥].
+overaa ---> [til],[Ã¥].
 
 
 
 
-verb_mod1(V,X,S,Compl,VM) ---> %% (tar bussen) istedenfor å gå
+verb_mod1(V,X,S,Compl,VM) ---> %% (tar bussen) istedenfor Ã¥ gÃ¥
      {\+ testmember(V,[])},   
      instead_of,
-     [å],
+     [Ã¥],
      !,
      clausal_object1(Y,VM)\npgap(X), 
      {verb_compl(V,instead_of,X,Y,S,Compl)}.
@@ -9075,21 +9075,21 @@ verb_mod1(V,X,S,Compl,Subj::Subj) ---> %% raskere enn trikken %% ad hoc
 
 
 
-verb_mod1(V,X,S,Compl,SC::KA) ---> %% spørre (T) om å
+verb_mod1(V,X,S,Compl,SC::KA) ---> %% spÃ¸rre (T) om Ã¥
      {testmember(V,[ask])},
      [om],
-     [å],  
+     [Ã¥],  
      !,
      clausal_object1(Y,SC::KA)\npgap(X), 
      {verb_compl(V,regarding,X,Y,S,Compl)}.
 
 
 
-verb_mod1(V,X,S,  Compl,SC:: KA) ---> %% hjelpe (til)  (med) å
+verb_mod1(V,X,S,  Compl,SC:: KA) ---> %% hjelpe (til)  (med) Ã¥
      {testmember(V,[extend,help])},  
      optional([til]),
      optional([med]),
-     [å],  
+     [Ã¥],  
      !,
      clausal_object1(Y,SC::KA)\npgap(X), 
      {verb_compl(V,with,X,Y,S,Compl)}.
@@ -9098,7 +9098,7 @@ verb_mod1(V,X,S,  Compl,SC:: KA) ---> %% hjelpe (til)  (med) å
 verb_mod1(V,X,S,Compl,Subj::P3) ---> %% WH adverbials 
      xadverbial1(IN,Y, Subj::P3),  
      !,
-     {verb_compl(V,IN,X,Y,S,Compl)}. %% HÆ  IN= redundantly
+     {verb_compl(V,IN,X,Y,S,Compl)}. %% HÃ†  IN= redundantly
 
 
 verb_mod1(V,X,S,Compl,Subj::P3) ---> %% om + thing 
@@ -9109,17 +9109,17 @@ verb_mod1(V,X,S,Compl,Subj::P3) ---> %% om + thing
     {verb_compl(V,regarding,X,Y,S,Compl)}.
 
 
-verb_mod1(adj/_/Proud,X,S,Compl,Subj::P3) --->  % (jeg er stolt av) " at bussen går " 
+verb_mod1(adj/_/Proud,X,S,Compl,Subj::P3) --->  % (jeg er stolt av) " at bussen gÃ¥r " 
     adverbial4(Prep,Y, Subj::P3),        
     {adj_compl(Proud,Prep,X,Y,S,Compl)}. 
   
 
 verb_mod1(V,X,S,Compl,Subj::P3) --->
     {\+ testmember(V,[know,know1,speak,hope])}, %% \ask,\tell \propose 
-                                %% TA-110106 %% think  ... tenk (på miljøet) før du skriver ut
+                                %% TA-110106 %% think  ... tenk (pÃ¥ miljÃ¸et) fÃ¸r du skriver ut
     adverbial3(Prep,Y, Subj::P3),   %% subordinate clause %% tell story because
    {verb_compl(V,Prep,X,Y,S,Compl)}.%% NB  adverbial3 may be stacked!
-                                    %% hvis trikken står  så foreslår    jeg en buss.
+                                    %% hvis trikken stÃ¥r  sÃ¥ foreslÃ¥r    jeg en buss.
 
 
 
@@ -9152,7 +9152,7 @@ verb_mod1(V,X,S,Compl,Subj::P3) --->
 
 verb_mod1(Tell,X,S,  Compl ,Subj::P3    ) ---> %% dette er gule busser|  bussene er gule torsdag
 
-  {\+ testmember(Tell,[go])}, %% nattbuss går buss ???? %% TA-110311
+  {\+ testmember(Tell,[go])}, %% nattbuss gÃ¥r buss ???? %% TA-110311
 
    nil_compl(Tell),   
    adjunct1(nil,Y, Subj::P3), 
@@ -9160,7 +9160,7 @@ verb_mod1(Tell,X,S,  Compl ,Subj::P3    ) ---> %% dette er gule busser|  bussene
    {constrain(Y,time);
     constrain(Y,departure);
      constrain(Y,arrival);    %% ankomst flybuss
-      constrain(Y,route);     %% går rute
+      constrain(Y,route);     %% gÃ¥r rute
         constrain(Y,number);  %% 
          constrain(Y,bus)},   %% etc 
 
@@ -9172,7 +9172,7 @@ verb_mod1(Tell,X,S,  Compl ,Subj::P3    ) ---> %% dette er gule busser|  bussene
 
 /* %% Bogus 
 verb_mod1(Tell,X,S, ( Compl and Com1)::Subj,Com1::P3    ) --->  %% TA-110311
-   nil_compl(Tell),   %% Keep sequence, e.g.  gløshaugen sentrum
+   nil_compl(Tell),   %% Keep sequence, e.g.  glÃ¸shaugen sentrum
    adjunct1(nil,Y, Subj::P3), 
    %% !,  
    {verb_compl(Tell,nil,X,Y,S,Compl)},
@@ -9183,21 +9183,21 @@ verb_mod1(Tell,X,S, ( Compl and Com1)::Subj,Com1::P3    ) --->  %% TA-110311
 
 
 
-%%%¤ DIR_COMPL      Transitive verb ala dir complement
+%%%Â¤ DIR_COMPL      Transitive verb ala dir complement
 
 dir_compl(Tell) ---> 
     {v_compl(Tell,_,dir,_)}, 
     !,accept. 
 
 
-%%%%¤¤¤ NIL_COMPL  %% test if possible empty (no preposition) complement
+%%%%Â¤Â¤Â¤ NIL_COMPL  %% test if possible empty (no preposition) complement
 
-nil_compl(Tell) ---> %% har spørsmål hver dag %% special 
+nil_compl(Tell) ---> %% har spÃ¸rsmÃ¥l hver dag %% special 
     gmem(Tell,[have]),
     look_ahead_lit([hver]),
     !.
 
-/*  hvilke (nil-) kilometer kjører du   PÅ  søndag %% TA-110429
+/*  hvilke (nil-) kilometer kjÃ¸rer du   PÃ…  sÃ¸ndag %% TA-110429
 
 nil_compl(_) --->  %% -> not_look_ahead(w(name(EBS,n,station) 
 %%    not_look_ahead_lit([e,p,m,o]),   %%  (etter) e b schieldrops veg 
@@ -9222,31 +9222,31 @@ nil_compl(adj/nil/Nice) --->
     !,reject.
 
 nil_compl(go) ---> 
-    w(nb(N,num)), { N < 100}, %%   // Was 500   bussen går 0120
+    w(nb(N,num)), { N < 100}, %%   // Was 500   bussen gÃ¥r 0120
             %% til sandmoveien 22 30.7.2004 
 
     not_look_ahead(w(noun(time_count,plu,u,n))), %%  til Pirbadet 2 ganger 
 
-    not_look_ahead(w(nb(_,num))), % 10 45 = clock // Bus går lørdag  28/5 
+    not_look_ahead(w(nb(_,num))), % 10 45 = clock // Bus gÃ¥r lÃ¸rdag  28/5 
 
     not_look_ahead([':']),    %% i.e. obviousclock
 
     not_look_ahead(['?']),  
-    not_look_ahead(['.']),    %% i.e. obviousclock/obviousdate %% 1 påskedag
+    not_look_ahead(['.']),    %% i.e. obviousclock/obviousdate %% 1 pÃ¥skedag
 
     not_look_ahead(['/']),    %% i.e. obviousdate 
     not_look_ahead(['den']),  %% i.e. obviousdate 
     not_look_ahead(w(name(_,_,month))), %% i.e. obviousdate 
 
-    not_look_ahead(w(name(new_years_day,_,date))),   %% nyttårsdag
+    not_look_ahead(w(name(new_years_day,_,date))),   %% nyttÃ¥rsdag
     not_look_ahead(w(name(whitsun_day,_,date))),     %% pinsedag  
     not_look_ahead(w(name(christmas_day,_,date))),   %% juledag  
-    not_look_ahead(w(name(easterday,_,date))),       %% påskedag: NB  no _
+    not_look_ahead(w(name(easterday,_,date))),       %% pÃ¥skedag: NB  no _
  
-    not_look_ahead(w(prep(_to_))),  %% TA-110516  buss går (fredag) 13
+    not_look_ahead(w(prep(_to_))),  %% TA-110516  buss gÃ¥r (fredag) 13
 
        not_look_ahead(w(prep(over))),  %%  10 over  = clock 
-       not_look_ahead(w(prep(on))),    %%  10 på
+       not_look_ahead(w(prep(on))),    %%  10 pÃ¥
        not_look_ahead(w(prep(in))),    %% to i ettermiddag OK
 
 %% except 2 minutes
@@ -9257,7 +9257,7 @@ nil_compl(go) --->
 
     not_look_ahead([om]),     %%  9 om morgenen 
 
-    !,reject.  %% til Olav Nygårds vei 5 ***
+    !,reject.  %% til Olav NygÃ¥rds vei 5 ***
 
 
 
@@ -9277,7 +9277,7 @@ nil_compl(Tell) ---> %%   not_look_ahead([e]), %% e b (schieldrops veg) = er bus
 %
 
 
-verb_modifier3(Sing,X,Y,SC, KA)  ---> % du kommer gående
+verb_modifier3(Sing,X,Y,SC, KA)  ---> % du kommer gÃ¥ende
         statreal(P) 
         - (npgap(X),
            lexv(iv,Sing,pres,fin),
@@ -9301,11 +9301,11 @@ adverbix0(redundantly,nil:thing, Subj::Subj) --->
     [].
 
 
-%%%¤  ADVERBIX (Prep,Y, Compl) %% simple adverbial
+%%%Â¤  ADVERBIX (Prep,Y, Compl) %% simple adverbial
 
 
 adverbix(Old,nil:Mode, Subj::Subj) ---> %% gammel ut %% TA-110506
-    w(adv(Old)),                        %% nå går bussen
+    w(adv(Old)),                        %% nÃ¥ gÃ¥r bussen
     {particle(Old,Mode,_pre)}.
 
 
@@ -9313,7 +9313,7 @@ adverbix(redundantly,nil:thing, Subj::Subj) --->
     w(adv(redundantly)),
     !.
 
-adverbix(Prep,Y, Subj::P3) ---> %% ligger NS på risvollan 
+adverbix(Prep,Y, Subj::P3) ---> %% ligger NS pÃ¥ risvollan 
      adverbial1(Prep,Y, Subj::P3).     
 
 
@@ -9348,7 +9348,7 @@ adverbial(Prep,Y, SC::P3) --->
 
 %% Does NOT  change to substatement word sequence (this is decided already)
 
-%%%%¤¤ PREADVERBIAL
+%%%%Â¤Â¤ PREADVERBIAL
 
 
 preadverbial0(Prep,X,APS) ---> 
@@ -9364,7 +9364,7 @@ preadverbial0(redundantly,nil:thing, Subj::Subj)  ---> []. %% Ad Hoc
 
 
 
-%% (16 minutter) før avgang %% special// SIMPLIFIED
+%% (16 minutter) fÃ¸r avgang %% special// SIMPLIFIED
 
 preadverbial1(Prep,X,APS) --->
      w(nb(_N,num)),
@@ -9412,9 +9412,9 @@ preadverbial1(nil,X, PQ) --->  %%  den  30. mai er det buss .
 
 
 
-%%%¤¤¤  ADVERBIALS0 
+%%%Â¤Â¤Â¤  ADVERBIALS0 
 
-%% du sa til meg i stad at du ikke kunne svare på spørsmålet.
+%% du sa til meg i stad at du ikke kunne svare pÃ¥ spÃ¸rsmÃ¥let.
 
 preadverbials ---> %% stack advarbials %% TA-101117
     redundant,     %% dont stack redundant
@@ -9454,16 +9454,16 @@ adverbial_conjunction0 ---> [].                      %%
 adverbial_conjunction ---> [og],look_ahead(w(prep(_))),!. %% TA-110304   
 
 
-%%%¤¤¤  ADVERBIAL1 (Prep,Var,Pred)
+%%%Â¤Â¤Â¤  ADVERBIAL1 (Prep,Var,Pred)
 
 
 adverbial1(Prep,Y,SCP) ---> 
-    [slik],                 %% bussen går slik jeg ønsker
-    !,                      %% = bussen går på måten som jeg ønsker
+    [slik],                 %% bussen gÃ¥r slik jeg Ã¸nsker
+    !,                      %% = bussen gÃ¥r pÃ¥ mÃ¥ten som jeg Ã¸nsker
     adjunct1(Prep,Y, SCP)\
         (w(prep(in)),w(noun(way,sin,def,n)),[som]).
       
-%% bussen går dit jeg vil. %% TA-110127
+%% bussen gÃ¥r dit jeg vil. %% TA-110127
 adverbial1(Prep,Y,SCP) --->
     [dit],
     lit_of(J,[jeg,du]), %% dit jeg vil
@@ -9475,7 +9475,7 @@ adverbial1(Prep,Y,SCP) --->
 
 
 
-/** på torsdag kl 10 ...%% TA-101109  TEST
+/** pÃ¥ torsdag kl 10 ...%% TA-101109  TEST
 adverbial1(in,D:Day, P::(exists(D:Day)::D isa Day and P)) ---> %% also verb_modifier
     ompa, %% [om],
     w(noun(Day,_,_,n)),
@@ -9503,32 +9503,32 @@ adverbial1(Prep,Y, SCP3) --->
     adjunct1(Prep,Y, SCP3).  
 
 
-adverbial1(in,D:Day, P::(exists(D:Day)::D isa Day and P)) ---> %% lørdag går bussen
+adverbial1(in,D:Day, P::(exists(D:Day)::D isa Day and P)) ---> %% lÃ¸rdag gÃ¥r bussen
                                           %% after adjunct1 %% TA-110516
     w(noun(Day,_,_,n)),
     {testmember(Day,[monday,tuesday,wednesday,thursday,friday,saturday,sunday])},
     !,accept.
 
-%%%%¤¤¤  ADVERBIAL3 
+%%%%Â¤Â¤Â¤  ADVERBIAL3 
 
 
-adverbial3(Nil,T:Cat, SC::KA) --->  %%  for å
+adverbial3(Nil,T:Cat, SC::KA) --->  %%  for Ã¥
     xsubjunction(Nil,Cat,In),
     adverbial_object00(T:Cat,AP1),
-    []-adverbial1(In,T:Cat, AP1), %% nec  uten å bytte buss, bytte=transfer
+    []-adverbial1(In,T:Cat, AP1), %% nec  uten Ã¥ bytte buss, bytte=transfer
     substatement1(P) 
-        \([jeg],aux1),             %% uten å bytte buss, bytte=transfer
+        \([jeg],aux1),             %% uten Ã¥ bytte buss, bytte=transfer
     determiner00(T:Cat,SC, P::KA). 
 
 
-adverbial3(_Prep,_T1, _SCKA) ---> %% før halv 3 %% TA-110520
-    [før],
+adverbial3(_Prep,_T1, _SCKA) ---> %% fÃ¸r halv 3 %% TA-110520
+    [fÃ¸r],
     look_ahead_time, %% \+ halv 3 // not subordinate
     !,
     reject.
 
 
-adverbial3(Prep,T1, SC::KA) ---> %% .. til=før jeg ...
+adverbial3(Prep,T1, SC::KA) ---> %% .. til=fÃ¸r jeg ...
     [til],
     not_look_ahead([j]), %% j. aees veg 
     look_ahead([jeg]), %% etc  
@@ -9546,16 +9546,16 @@ adverbial3(Prep,T1, SC::KA) --->
 
 
 
-%%%%¤¤¤   ADVERBIAL4
+%%%%Â¤Â¤Â¤   ADVERBIAL4
 
-adverbial4(Prep,Y,SC::SC and KA) ---> %% våken til bussen går %% TA-110106
+adverbial4(Prep,Y,SC::SC and KA) ---> %% vÃ¥ken til bussen gÃ¥r %% TA-110106
     not_look_ahead([om]),
     prep(Prep1),                   
     clausal_object0(Y,true::KA),   %% 21= number
     {adjustprep(Y,Prep1,Prep)}.    %% (av) by -> of              
 
 
-adverbial4(Prep,Y,SC::SC and KA) ---> %% stolt av at bussen går 
+adverbial4(Prep,Y,SC::SC and KA) ---> %% stolt av at bussen gÃ¥r 
     not_look_ahead([om]),
     prep(Prep1),   
     [at],   
@@ -9565,23 +9565,23 @@ adverbial4(Prep,Y,SC::SC and KA) ---> %% stolt av at bussen går
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%¤ SUBORDINATE   
+%%%Â¤ SUBORDINATE   
 
 subordinate(nil,T:coevent,P) --->  %% Special. 
-    [de],[samme],[som],   %%     =  slik de er (på)
+    [de],[samme],[som],   %%     =  slik de er (pÃ¥)
     adverbial_object00(T:coevent,AP1), %% imbed  = clauses
     substatement1(P) 
         /([de],
            w(verb(be,pres,fin)),   
-           adverbial1(nil,T:coevent, AP1)). %% <-- på lørdag
+           adverbial1(nil,T:coevent, AP1)). %% <-- pÃ¥ lÃ¸rdag
 
 
 subordinate(_,_,_) --->  %% i stedet for ruter / NOT subordinate
       w(prep(ISO)), {testmember(ISO,[instead_of])}, 
-      not_look_ahead_lit([at,å]), 
+      not_look_ahead_lit([at,Ã¥]), 
        !,reject.
 
-subordinate(_,_,_) --->  %% før jul gikk bussen \+ subord 
+subordinate(_,_,_) --->  %% fÃ¸r jul gikk bussen \+ subord 
       not_look_ahead([siden]),
       w(prep(_)), %% prep and subjunc
       look_ahead(w(noun(Xmas,_,_,_))),
@@ -9591,15 +9591,15 @@ subordinate(_,_,_) --->  %% før jul gikk bussen \+ subord
 
 subordinate(Prep,T,P) --->  
     subjunction(Prep,Category,In), 
-    not_look_ahead(w(verb(_be,_,_))), %% før var det slik at 
+    not_look_ahead(w(verb(_be,_,_))), %% fÃ¸r var det slik at 
     subord_clause(In,Category,T,P). 
 
 
-%%¤ SUBORD_CLAUSE (In,Cat,T:Cat,P )
+%%Â¤ SUBORD_CLAUSE (In,Cat,T:Cat,P )
 
 subord_clause(In,Cat,T:Cat,P ) ---> 
     adverbial_object00(T:Cat,AP1), %%  imbed  = clauses
-    !,  % trikken går når DET går busser 
+    !,  % trikken gÃ¥r nÃ¥r DET gÃ¥r busser 
     substatement1(P) 
         /xadverbial1(In,T:Cat, AP1). %%  x
 
@@ -9610,14 +9610,14 @@ adverbial_object00(W:CO, P:: (exists(W:CO):: W  isa CO and P)) --->  [].
 
 
 subordinateinfnosubj(Prep,Reason,X,_T,P) ---> 
-    {it_template(X)}, % Det er dyrt å ta buss
+    {it_template(X)}, % Det er dyrt Ã¥ ta buss
 
     np00(Reason,Y,SC::P3), %% <--- replace and check
     !,
     statreal(P) 
         - (npgap(X),adverbial1(Prep,Y, SC::P3)).
 
-%% TUC er lett å hjelpe -> Noen hjelper TUC 
+%% TUC er lett Ã¥ hjelpe -> Noen hjelper TUC 
 subordinateinfnosubj(Prep,Reason,X,_T,P) ---> 
     {\+ it_template(X)},
     lexv(tv,Take,_inf,fin), 
@@ -9630,7 +9630,7 @@ subordinateinfnosubj(Prep,Reason,X,_T,P) --->
            adverbial1(Prep,Y, SC::P3)).
 
 
-%% TUC er snill  å hjelpe -> TUC hjelper noen 
+%% TUC er snill  Ã¥ hjelpe -> TUC hjelper noen 
 subordinateinfnosubj(Prep,Reason,X,_T,P) ---> 
     {\+ it_template(X)},      
     lexv(tv,Take,_inf,fin), 
@@ -9648,7 +9648,7 @@ subordinateinfnosubj(Prep,Reason,X,_T,P) --->
 %%   adverbial1 + subject + verb
 
 
-%%%¤ PARTDAY (part,class,Pred)
+%%%Â¤ PARTDAY (part,class,Pred)
 
 partday(Evening,Day,P) ---> %% Special Part day adverbial expressions
     w(noun(Evening,_,_,n)), %% (i morgen) kveld
@@ -9680,7 +9680,7 @@ partday(Yesterday,Day,P) ---> %% Special Part day adverbial expressions
 
 
 
-%%%¤  ADVERBX (A C PRE)
+%%%Â¤  ADVERBX (A C PRE)
 
 
 adverbx(with,mode,post) ---> %% very touchy %% ta med=bring
@@ -9699,7 +9699,7 @@ adverbx(thereafter,time,post) ---> %% very touchy
      !.
 
 adverbx(earlier,time,post) ---> %% very touchy 
-    [før],
+    [fÃ¸r],
     [det],
     !.
 
@@ -9712,7 +9712,7 @@ adverbx(_,_,_) --->
 
 
 adverbx(Honestly,Y,Z) ---> 
-    not_look_ahead_prepx , %%  not_look_ahead(w(prep(_før))), %% TA-110128
+    not_look_ahead_prepx , %%  not_look_ahead(w(prep(_fÃ¸r))), %% TA-110128
     w(adv(Honestly)), 
     !,
     {particle(Honestly,Y,Z)}.
@@ -9729,7 +9729,7 @@ adverbx(X,Y,Z) --->
 
 adverbx(yesterday,Y,Z) ---> 
     prep1(in),
-    [går],
+    [gÃ¥r],
     !,
     {particle(yesterday,Y,Z)}.
 
@@ -9746,9 +9746,9 @@ anyadverb0 --->
 adverbx0 ---> w(adv(redundantly)),!. 
 adverbx0 ---> 
     not_look_ahead(w(noun(_error,sin,u,n))), %% har jeg feil = feilaktig
-    not_look_ahead(w(prep(_))), %% før = earlier
+    not_look_ahead(w(prep(_))), %% fÃ¸r = earlier
     adverb(X,Y,Z),
-    {\+ testmember(X,[home])}, %% går bussen hjem => hoq bussen hjem går 
+    {\+ testmember(X,[home])}, %% gÃ¥r bussen hjem => hoq bussen hjem gÃ¥r 
    !,
     []-adverb(X,Y,Z).
 
@@ -9763,7 +9763,7 @@ adverb0(Fast,Mode,P) --->
 adverb0(redundantly,thing,post) ---> []. %% return redundantly if []
 
 
-%%¤ ADVERB (NAME,CLASS,PREPOST)
+%%Â¤ ADVERB (NAME,CLASS,PREPOST)
 
 adverb(delayed,time,post) ---> 
      w(adj2(delayed,nil)),          %% for sent
@@ -9780,7 +9780,7 @@ adverb(now,Mode,P) --->
     detsamme,  
     {particle(now,Mode,P)}.
 
-adverb(first,time,_P) ---> [først]. 
+adverb(first,time,_P) ---> [fÃ¸rst]. 
 
 adverb(today,day,pre) ---> % (i dag) 
     prep1(in),
@@ -9794,9 +9794,9 @@ adverb(day_after_tomorrow,day,pre) --->  % (i overimorgen)
     prep1(in),
     [overimorgen].
 
-adverb(day_before_yesterday,day,pre) ---> % (i forgårs) 
+adverb(day_before_yesterday,day,pre) ---> % (i forgÃ¥rs) 
     prep1(in),
-    [forgårs].
+    [forgÃ¥rs].
 
 adverb(tonight,daypart,pre) ---> %% i Natt
     prep1(in),
@@ -9818,17 +9818,17 @@ adverb(_,_,_) --->
 adverb(Today,Day,P) --->  %% LOOP   preadverbials stack adv... %% TA-101117
     particle(Today),        
     {particle(Today,Day,P)}. %%
-%%     da0.      ... da jeg skulle til byen  %%   Norwagism (nå da')
+%%     da0.      ... da jeg skulle til byen  %%   Norwagism (nÃ¥ da')
 
 
 
 adverb(Today,Day,P) ---> 
     particle(Today),   
     {testmember(Today,[on,off])},      %% i.e. prepositions
-    not_look_ahead(w(noun(_,_,_,_))),  %% på kvelden
-    not_look_ahead(w(name(_,_,_))),    %% på nth 
+    not_look_ahead(w(noun(_,_,_,_))),  %% pÃ¥ kvelden
+    not_look_ahead(w(name(_,_,_))),    %% pÃ¥ nth 
     {particle(Today,Day,P)},
-    da0.                     %%   Norwagism (nå da')
+    da0.                     %%   Norwagism (nÃ¥ da')
 
 
 %%% PARTICLES %%%
@@ -9840,7 +9840,7 @@ adverb(Today,Day,P) --->
 %% particlev1(Verb) ---> particle(<--->). %%  Dummy
 %% particlev2(SyntVerb,SemVerb) ---> particle(<--->). %% Changes verb
 
-%%%¤ PARTICLEV0 
+%%%Â¤ PARTICLEV0 
 
 particlev0(Give,Resign) ---> 
     particlev2(Give,Resign),
@@ -9854,12 +9854,12 @@ particlev0(List,List) ---> [].
 particle0(P) ---> particle(P),!. 
 particle0(_) ---> [].
 
-%%%¤ PARTICLEV1  (Verb) 
+%%%Â¤ PARTICLEV1  (Verb) 
 
 
 %% Dummy effect, but grammatically necessary 
 
-particlev1(believe)  ---> [på].   %% tro på
+particlev1(believe)  ---> [pÃ¥].   %% tro pÃ¥
 
 particlev1(calculate) ---> [med]. %% regne med
 
@@ -9882,26 +9882,26 @@ particlev1(get) ---> [med].
 particlev1(get)  ---> [opp]. 
 
 %% particlev1(go)  ---> [med].   %% HAZARD 
-particlev1(have) ---> [på].      %% TA-110103
+particlev1(have) ---> [pÃ¥].      %% TA-110103
 
 particlev1(help) ---> [til],[med].
 particlev1(help) ---> [til]. 
 
-%% particlev1(know1) ---> [om]. %% intressant å vite om bussen går 
+%% particlev1(know1) ---> [om]. %% intressant Ã¥ vite om bussen gÃ¥r 
 
 particlev1(improve) ---> [inn]. %% skjerpe inn 
 
-particlev1(indicte) ---> [på]. %% Norw tyde på
+particlev1(indicte) ---> [pÃ¥]. %% Norw tyde pÃ¥
 particlev1(lay) ---> [inn].    %% legge inn 
 particlev1(lie1) ---> [med]. 
 
-particlev1(name) ---> [til]. %% omdøpt til %% TA-110707
+particlev1(name) ---> [til]. %% omdÃ¸pt til %% TA-110707
 
 particlev1(reach) ---> [til]. %% TA-110419
 particlev1(reach) ---> [fram],[til]. %% fram til=til Dict %% TA-110419
 
 particlev1(read) ---> [gjennom].    %% TA-110105
-particlev1(receive)  ---> [opp].    %%  (får opp (på skjerm))
+particlev1(receive)  ---> [opp].    %%  (fÃ¥r opp (pÃ¥ skjerm))
 particlev1(get)  ---> [opp].  
 
 particlev1(send)  ---> [med]. 
@@ -9920,29 +9920,29 @@ particlev1(tell)   ---> [ifra]. %% TA-110724
 particlev1(tell)   ---> w(prep(regarding)). 
                         %% stacked as such
 
-%% particlev1(think)   ---> [på].  %% TA-110623// jeg tenkte på deg
+%% particlev1(think)   ---> [pÃ¥].  %% TA-110623// jeg tenkte pÃ¥ deg
            
-particlev1(wonder)   ---> [på]. %%  NB particlev2(fool on) lure på
+particlev1(wonder)   ---> [pÃ¥]. %%  NB particlev2(fool on) lure pÃ¥
 
 particlev1(write) ---> [inn].
 
 
 
 
-%%%%¤¤ PARTICLEV2 (Verb, NewVerb)
+%%%%Â¤Â¤ PARTICLEV2 (Verb, NewVerb)
 
 %% particlev2(answer1,resemble) ---> [til]. %% jeg har svart tilbake til
 
 particlev2(avoid,release) ---> [fri]. %% slippe fri %% TA-110330
 
-particlev2(be,come) ---> [med]. %% være med
+particlev2(be,come) ---> [med]. %% vÃ¦re med
 
 particlev2(belong,belong_to) ---> [til]. %% TA-110707 sogner til
-particlev2(hear,belong_to) ---> [til].   %% TA-110707 hører til
+particlev2(hear,belong_to) ---> [til].   %% TA-110707 hÃ¸rer til
 
 particlev2(calculate,expect) ---> [med].
 
-particlev2(care1,ensure) ---> [for]. %% sørge for 
+particlev2(care1,ensure) ---> [for]. %% sÃ¸rge for 
 
 particlev2(come,appear) ---> [fram]. %% TA-110504
 
@@ -9951,30 +9951,30 @@ particlev2(come,disappear) ---> [bort], %% Haz, bussen kom bort til
 particlev2(comment,remove) ---> [ut]. %% kommentere ut=fjerne %% TA-101102
 
 particlev2(do1,finish) ---> [ferdig].
-particlev2(do1,make) ---> [meg]. %% gjøre meg tanker
+particlev2(do1,make) ---> [meg]. %% gjÃ¸re meg tanker
 
-particlev2(find,do1) ---> [på]. %% finne på %% TA-101112
+particlev2(find,do1) ---> [pÃ¥]. %% finne pÃ¥ %% TA-101112
 
 particlev2(find,discover) ---> [ut]. %% TA-110309 
 
 
-particlev2(fool,wonder) ---> [på]. %% lure på
+particlev2(fool,wonder) ---> [pÃ¥]. %% lure pÃ¥
 
 particlev2(go,stop) ---> [ned]. %%  experiment  go,go
 
 %% particlev2(get,receive) ---> [inn]. %%  get supersyn
 
-particlev2(get,manage) ---> [til].   %%  får til
+particlev2(get,manage) ---> [til].   %%  fÃ¥r til
 
-%% particlev2(have,use)  ---> [på].  %% ha på mobilen/frakken  
-                                     %% har jeg feil på maskinen
+%% particlev2(have,use)  ---> [pÃ¥].  %% ha pÃ¥ mobilen/frakken  
+                                     %% har jeg feil pÃ¥ maskinen
 particlev2(have,bring) ---> [med].   %% TA-101125
 
 particlev2(hold,be)  ---> [deg]. %% TA-110104
 particlev2(hold,be)  ---> [meg]. %%
 particlev2(hold,be)  ---> [seg]. %%
 
-particlev2(hold,do1)  ---> [på],[med]. 
+particlev2(hold,do1)  ---> [pÃ¥],[med]. 
 
 particlev2(hold,be1)  ---> [til]. 
 
@@ -9986,7 +9986,7 @@ particlev2(improve,ensure) ---> [inn]. %% "skjerpe inn"
 
 particlev2(lay,include)  ---> [inn]. %% TA-110504
 
-particlev2(lay,include)  ---> [på]. %% legger på  T:KORT Periode.   %% ad hoc
+particlev2(lay,include)  ---> [pÃ¥]. %% legger pÃ¥  T:KORT Periode.   %% ad hoc
 
 particlev2(lay,enclose) ---> [ved]. %% TA-110429                                  
 
@@ -10007,13 +10007,13 @@ particlev2(meet,meetup)    ---> [opp]. %%  Technical, \+ arrive (bus)
 
 particlev2(negotiate,discuss) ---> [om]. %% TA-110707
 
-particlev2(operate,do1) ---> optional([på]),[med]. %% TA-110309 drive på med
+particlev2(operate,do1) ---> optional([pÃ¥]),[med]. %% TA-110309 drive pÃ¥ med
 
-particlev2(pay,pay2)    ---> [seg]. %% lønne seg
+particlev2(pay,pay2)    ---> [seg]. %% lÃ¸nne seg
 
 particlev2(put,arrange)    ---> [opp]. %%  sette opp
 
-%% particlev2(put,expel)    ---> [av] %%  no bli satt_av av sjåføren
+%% particlev2(put,expel)    ---> [av] %%  no bli satt_av av sjÃ¥fÃ¸ren
 
 particlev2(say,tell) ---> [fra]. 
 particlev2(say,tell) ---> [ifra]. %% TA-110724
@@ -10023,7 +10023,7 @@ particlev2(see,appear)     ---> [ut]. %% TA-101210
 %% particlev2(see,exist) ---> [ut].  %% Ad Hoc koden ser slik ut %% TA-101102
 particlev2(see,appear) ---> [ut].
 
-particlev2(stand,indicate) ---> [for]. %% hva står BussTUC for=bety %% TA-110112
+particlev2(stand,indicate) ---> [for]. %% hva stÃ¥r BussTUC for=bety %% TA-110112
 
 particlev2(take,bring)    ---> [med]. %% TA-110128
 
@@ -10038,7 +10038,7 @@ particlev2(take,get)    ---> [i],[mot].
 particlev2(take,treat)    ---> [opp]. %% ta opp = behandle 
 
 particlev2(turn,stop) ---> [av].  
-particlev2(turn,start) ---> [på]. 
+particlev2(turn,start) ---> [pÃ¥]. 
 
 particlev2(write,print) ---> [ut].
 
@@ -10050,19 +10050,19 @@ rep_particlev0(_)  ---> []. %%
 
 rep_particlev(ask) --->     [':'],!. 
 rep_particlev(deny) --->    [for]. 
-rep_particlev(wonder) --->  [på],which0,!,accept.  %% Norwagism
+rep_particlev(wonder) --->  [pÃ¥],which0,!,accept.  %% Norwagism
 rep_particlev(know) --->    prep1(to),!,accept. %% kjenne til
 rep_particlev(find) --->    [ut]. 
 rep_particlev(recognize) ---> [til]. %% kjenne til 
-rep_particlev(think) --->   [på],not_look_ahead([om]),!,reject.  %% Norwagism
-rep_particlev(think) --->   [på],not_look_ahead([at]),!,reject.
-rep_particlev(think) --->   [på],!,accept.
+rep_particlev(think) --->   [pÃ¥],not_look_ahead([om]),!,reject.  %% Norwagism
+rep_particlev(think) --->   [pÃ¥],not_look_ahead([at]),!,reject.
+rep_particlev(think) --->   [pÃ¥],!,accept.
 
 
 
 %% particle(SemPart) ---> [<synpart>].
 
-%%%¤¤  PARTICLE    (single adverb)
+%%%Â¤Â¤  PARTICLE    (single adverb)
 
 particle(redundantly) ---> redundant. %% Redundant except grammatically nec
 
@@ -10072,7 +10072,7 @@ particle(Badly) ---> w(adv(Badly)),!.
 %% particle(at_home) --->   [hjemme]. %% adv
 particle(back) --->      [tilbake]. 
 
-particle(badly) --->     [dårlig]. 
+particle(badly) --->     [dÃ¥rlig]. 
 
 particle(beforethat) ---> beforethat. 
 
@@ -10086,13 +10086,13 @@ particle(down) --->      [under].
 particle(earlier) ---> earlier. 
 
 particle(early) --->    
-   [så],[tidlig],[som],w(adj2(possible,nil)),!,accept. 
+   [sÃ¥],[tidlig],[som],w(adj2(possible,nil)),!,accept. 
 particle(early) --->    
    [tidligst],w(adj2(possible,nil)),!,accept. 
 particle(early) --->     [tidlig]. 
 particle(early) --->     [am]. %% 820 am must be early
 
-particle(eastward) --->  [østover]. 
+particle(eastward) --->  [Ã¸stover]. 
 particle(everywhere) ---> [overalt].
 
 particle(far) ---> [langt]. 
@@ -10102,10 +10102,10 @@ particle(fast) --->      w(adj2(fast,comp)).
 
 % particle(fast) --->      w(adj2(fast,sup)). %% ==> particle(hereafter) collision 
 
-% particle(freely) ---> [gratis].   %% Er bussen som går til IKEA
+% particle(freely) ---> [gratis].   %% Er bussen som gÃ¥r til IKEA
                                      %% gratis (adj)? 
                                       
-% particle(from) --->      [fra].   %% hvor går bussen fra i sentrum %% (Hazard)
+% particle(from) --->      [fra].   %% hvor gÃ¥r bussen fra i sentrum %% (Hazard)
 
 particle(from) --->      [ifra].   %% NB Subtle  Jeg sier ifra 
 particle(gratis) --->      [gratis]. %% Techn, also E
@@ -10132,8 +10132,8 @@ particle(much) ---> so,[mye]. %% // so0
 particle(normally) ---> [normalt]. 
 particle(northward) ---> [nordover].  
 particle(now) --->       now1.
-particle(now) --->       prep1(for),[øyeblikket]. 
-%% particle(now) --->       [da]. %% ( not now1) når skal jeg dra da 
+particle(now) --->       prep1(for),[Ã¸yeblikket]. 
+%% particle(now) --->       [da]. %% ( not now1) nÃ¥r skal jeg dra da 
 
 particle(on) --->        prep1(on).  %% hazard ?
 particle(off) --->       [av].       %% hazard ?
@@ -10142,7 +10142,7 @@ particle(often) --->     so0,  [ofte].
 particle(recently)    ---> recently. 
 particle(out) --->       [ut]. 
 
-particle(past) --->      [forbi].          %% bussen går forbi på rosten
+particle(past) --->      [forbi].          %% bussen gÃ¥r forbi pÃ¥ rosten
 particle(present) --->   [framme].
 
 particle(punctually) ---> [presis].         %% er bussen min presis 
@@ -10155,12 +10155,12 @@ particle(regularly) ---> [som],[normalt]. %% NB not delay
 %% particle(regularly) ---> [som],w(adj2(ordinary,nil)). 
 %% ble gjenkjent som vanlig navn   
 
-particle(silent) ---> [stille]. %% stå/stille , gå/stille rough 
+particle(silent) ---> [stille]. %% stÃ¥/stille , gÃ¥/stille rough 
 
 particle(simultaneously) ---> [samtidig]. 
 particle(slowly)    ---> [langsomt]. 
 particle(somewhere) ---> [noensted].  
-particle(southward) ---> [sørover].
+particle(southward) ---> [sÃ¸rover].
 
 particle(there) --->     [dit]. %% telebuster %%? %% TA-110127
 
@@ -10184,16 +10184,16 @@ particle(with1)    --->  [med], %% Norwagism
     not_look_ahead(w(name(_TS,_,_))). %% med toget # 
           
 particle(wrongly) --->  saa0,  [feil]. 
-particle(yesterday) ---> [igår].
+particle(yesterday) ---> [igÃ¥r].
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%%¤¤¤  ADJUNCT1 (Prep, Var, Sem)  
+%%%%Â¤Â¤Â¤  ADJUNCT1 (Prep, Var, Sem)  
 
 
-adjunct1(Nil,Y, SC::P3) ---> %% Buss går   20. minutt
+adjunct1(Nil,Y, SC::P3) ---> %% Buss gÃ¥r   20. minutt
     {Nil == nil},            %% 20 minutter senere 
     w(nb(Five,_ord)),
     point0,
@@ -10204,36 +10204,36 @@ adjunct1(Nil,Y, SC::P3) ---> %% Buss går   20. minutt
     np0_accept(Y,SC::P3) =   (w(nb(Five,num)),    w(noun(Min,sin,u,n))), 
     !,accept.
 
-adjunct1(after,COX, CONP) ---> %% jeg klager etter å ha ventet
+adjunct1(after,COX, CONP) ---> %% jeg klager etter Ã¥ ha ventet
     w(prep(after)),  
-    [å],                        
+    [Ã¥],                        
     !,
     clausal_object1(COX, CONP)/([noen],aux1). %% ad hoc
 
 
-adjunct1(when,COX, CONP) ---> %% om når bussen går
+adjunct1(when,COX, CONP) ---> %% om nÃ¥r bussen gÃ¥r
     [om], 
-    [når],
+    [nÃ¥r],
     !,
     clausal_object1(COX,CONP).
 
 
-adjunct1(where,COX, CONP) ---> %% om hvor bussen går 
+adjunct1(where,COX, CONP) ---> %% om hvor bussen gÃ¥r 
     [om], 
     [hvor],
     !,
     clausal_object1(COX,CONP).
  
-adjunct1(regarding,COX, CONP) ---> %% om at bussen går
+adjunct1(regarding,COX, CONP) ---> %% om at bussen gÃ¥r
     [om], 
     [at],
     !,
     clausal_object1(COX,CONP).
 
  
-adjunct1(with,Y,CO) ---> %% (med ) det å ta bussen
+adjunct1(with,Y,CO) ---> %% (med ) det Ã¥ ta bussen
    [med], 
-   [det],[å],
+   [det],[Ã¥],
    !,
    clausal_object1(Y,CO)\(someone,aux1). %% 
 
@@ -10243,10 +10243,10 @@ adjunct1(_,_, _) --->
     [hva],!,reject. 
 
 %% Complex Passover Meningen ME livet   ME = med/meg/
-%% jeg får besøk de neste dagene  OK
+%% jeg fÃ¥r besÃ¸k de neste dagene  OK
 
-%% Moved before clock   buss lørdag 11.11 går 
-%                       buss går lørdag 11.11
+%% Moved before clock   buss lÃ¸rdag 11.11 gÃ¥r 
+%                       buss gÃ¥r lÃ¸rdag 11.11
 
 adjunct1(_,_,_) --->     %% i morgen \= in (a) morning !
      prep1(in),               %% Pragmatix  
@@ -10257,7 +10257,7 @@ adjunct1(_,_,_) --->     %% i morgen \= in (a) morning !
 
     
 
-adjunct1(Nil,Y, SC::P3) ---> %% ( Buss går     09.12 => clock ) at -> nil
+adjunct1(Nil,Y, SC::P3) ---> %% ( Buss gÃ¥r     09.12 => clock ) at -> nil
     {Nil == nil},
     !,
     complement_nil(Y, SC::P3).
@@ -10310,7 +10310,7 @@ adjunct1(between,(X1,X2):clock, SC::SC and P1 and P2 ) ---> % mellom 8 og 9
      prep1(between),                                          % Special
      clock0, 
      clock_kernel(X1:clock,P1),
-     betwand0, %% og å 
+     betwand0, %% og Ã¥ 
      clock0,
      clock_kernel(X2:clock,P2),
      !,accept.
@@ -10339,9 +10339,9 @@ adjunct1(Dir,Y, SCP3) --->   %% tuc starter () sommerruter
     noun_phrase1(Y, SCP3). 
 
 
-%%%¤¤ PP   Prepositional Phrase
+%%%Â¤Â¤ PP   Prepositional Phrase
  
-%% Jeg baserere bussoraklet på at
+%% Jeg baserere bussoraklet pÃ¥ at
 
 pp(on,Y, NPZ) ---> %% TA-110708
     prep(on),  
@@ -10366,7 +10366,7 @@ pp(Prep,Y, SCP3) ---> %% om jeg \+ pp
 
 
 pp(_Prep,_Y,_) ---> 
-    [før], %% subjunction
+    [fÃ¸r], %% subjunction
     [det],
     !,reject.
 
@@ -10386,21 +10386,21 @@ pp(Prep,Y, SC::SC and P3) ---> %% etter 17.10 ==> most probably clock
     [before,after,around,to,over,within])},  %% T  Rundt 4 (\=rute 4) 
     not_look_ahead([et]),                    %% \+ til (kl 1) 
     not_look_ahead([en]),                    %% 
-    clock_kernel(Y,P3),                      %% før 12.10 
+    clock_kernel(Y,P3),                      %% fÃ¸r 12.10 
     not_look_ahead(w(noun(station,_,_,_))),  %% til 500 hpl 
     not_look_ahead(w(noun(hour,_,_,_))),     %% etter 2 timer
     not_look_ahead(w(noun(minute,_,_,_))),
     !,accept.
 
 
-%%%¤¤ COMPLEMENT_NIL (FF, MM) 
+%%%Â¤Â¤ COMPLEMENT_NIL (FF, MM) 
 
 
-complement_nil(FF, MM) ---> %% (bussen går) 10 minutter før trikken |stopper
+complement_nil(FF, MM) ---> %% (bussen gÃ¥r) 10 minutter fÃ¸r trikken |stopper
     w(nb(N,num)),  
     w(noun(minute,_,_,_)),
 %%    w(prep(Before)), 
-    subjunction(Before,  time,_), %% før| etter at
+    subjunction(Before,  time,_), %% fÃ¸r| etter at
     !,
     clausal_object0(Y,CNP),
     np1(FF,MM) =  
@@ -10408,7 +10408,7 @@ complement_nil(FF, MM) ---> %% (bussen går) 10 minutter før trikken |stopper
            w(prep(Before)),xnp(Y,CNP)).
 
 
-complement_nil(Y, CNP) ---> %% (bussen går) 10 minutter (etter)
+complement_nil(Y, CNP) ---> %% (bussen gÃ¥r) 10 minutter (etter)
     w(nb(N,num)),  
     w(noun(minute,_,_,_)),
     look_ahead(w(prep(_))), 
@@ -10418,7 +10418,7 @@ complement_nil(Y, CNP) ---> %% (bussen går) 10 minutter (etter)
 
 
 complement_nil(Y, VPP) ---> %%  til Brundalen kl 0930. 
-    obviousclock(Y,VPP).    %% avoid  går klokken(et klokkeslett) + (kl) 0930.
+    obviousclock(Y,VPP).    %% avoid  gÃ¥r klokken(et klokkeslett) + (kl) 0930.
 
 
 complement_nil(Y, NP1) ---> 
@@ -10440,9 +10440,9 @@ complement_nil(_, __) --->  %% den = bussen, moved after obviousdate
 %%  not_look_ahead([man]),  %%  w(noun(monday,sin,u,n))), 
 %%  man =    mandag (abandoned) 
 
-    not_look_ahead(w(noun(street,sin,u,n))), %% gå [singsaker] gate
+    not_look_ahead(w(noun(street,sin,u,n))), %% gÃ¥ [singsaker] gate
     not_look_ahead([den]),  %% .. den neste timen
-    not_look_ahead([det]),  %% d. l. øvrelidsv 
+    not_look_ahead([det]),  %% d. l. Ã¸vrelidsv 
 %%%%%%unnec    not_look_ahead([j]),    %% j \= jeg %% j falkbergets vei = jeg 
     not_look_ahead(w(prep(with))), %% me = med (dial)
     pronoun1(_),  
@@ -10452,11 +10452,11 @@ complement_nil(_, __) --->  %% den = bussen, moved after obviousdate
 complement_nil(Y, VP::VP and P3) ---> 
     plausibleclock1(Y,P3).          %% 10.10
 
-complement_nil(Y, SC::P3) ---> %% ( Buss går     09.12 date )
+complement_nil(Y, SC::P3) ---> %% ( Buss gÃ¥r     09.12 date )
     obviousdate(Y, SC::P3),    %% moved after obviousclock 
     !.
 
-complement_nil(Y,  SC:: SC and P3) ---> %% ( Buss går     09.10 => clock )
+complement_nil(Y,  SC:: SC and P3) ---> %% ( Buss gÃ¥r     09.10 => clock )
     plausibledate1(Y, P3).    %% moved after obviousclock 
 
 
@@ -10473,9 +10473,9 @@ complement_nil(M,T) ---> %% (til pirbadet) 2 ganger
 
 
 
-complement_nil(_,_) ---> %% (bussen går) 10 minutter etter
+complement_nil(_,_) ---> %% (bussen gÃ¥r) 10 minutter etter
     not_look_ahead(w(name(_3T,_,_))), %% 3T Rosten 
-    w(nb(_,num)),                 %%  første OK
+    w(nb(_,num)),                 %%  fÃ¸rste OK
         not_look_ahead([ganger]), 
         not_look_ahead(w(noun(hour,_,_,_))),
         not_look_ahead(w(noun(minute,_,_,_))),
@@ -10483,13 +10483,13 @@ complement_nil(_,_) ---> %% (bussen går) 10 minutter etter
     !,reject.
 
 complement_nil(Y, NP) ---> %% expensive ? hazardous 
-    not_look_ahead(w(nb(_,_))), %%  Bussen går 4 \= route 4
+    not_look_ahead(w(nb(_,_))), %%  Bussen gÃ¥r 4 \= route 4
     not_look_ahead(w(_august,name(_august,_,month))), %% bus goes  august 
 
     not_look_ahead_lit([sin,sitt,sine]), 
 
-    not_look_ahead(w(noun(hour,plu,u,n))),    %% gå (to) timer 
-    not_look_ahead(w(noun(minute,plu,u,n))),  %% gå (to) minutter
+    not_look_ahead(w(noun(hour,plu,u,n))),    %% gÃ¥ (to) timer 
+    not_look_ahead(w(noun(minute,plu,u,n))),  %% gÃ¥ (to) minutter
     not_look_ahead(w(noun(second,plu,u,n))),  %% ..
     not_look_ahead(w(noun(room,_,u,n))),      %% sent rum 
     object(Y, NP),    
@@ -10504,7 +10504,7 @@ complement1_accept(Prep,Y, SEM) --->
 complement1_accept(Prep,Y, SC::P3) ---> 
     prep(Prep), %% om bussruter
     {\+ testmember(Prep,[of,between])}, 
-    not_look_ahead([jeg]),    %% Ad Hoc   om jeg skal være ....
+    not_look_ahead([jeg]),    %% Ad Hoc   om jeg skal vÃ¦re ....
     not_look_ahead([man]),    %%
     noun_phrase_accept(Y, SC::P3),
     !,accept.   
@@ -10513,7 +10513,7 @@ complement1_accept(Prep,Y, SC::P3) --->
 
 %%%%%%%%%-------------------------------%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%¤ PLAUSIBLEDATE1   
+%%%Â¤ PLAUSIBLEDATE1   
 
 plausibledate1(YDate:date, YDate isa date) ---> %% 2009-05-17
     num_na(YYYY),
@@ -10539,7 +10539,7 @@ plausibledate1(YDate:date, YDate isa date) ---> %%  17.5  TA-110406
     !,accept,
     {adjust_year(MM,YYYY,YYY1),YDate =date(YYY1,MM,DD)}.
 
-/*  buss går til sentrum 13 %% TA-110518
+/*  buss gÃ¥r til sentrum 13 %% TA-110518
 plausibledate1(YDate:date, YDate isa date) ---> %% last with care Fredag 13
     num_na(DD),                                 %% TA-110516
     {DD =<31},
@@ -10550,19 +10550,19 @@ plausibledate1(YDate:date, YDate isa date) ---> %% last with care Fredag 13
 */
 
 
-%% N: bussen går (mandag) 22.  // after mandag/ 22 is a date
+%% N: bussen gÃ¥r (mandag) 22.  // after mandag/ 22 is a date
 
 
 %% A date by its own syntax
 
-%%%¤  OBVIOUSDATE   lambda level
+%%%Â¤  OBVIOUSDATE   lambda level
 
 obviousdate(DateT, SC::DateP and SC) ---> 
     obviousdate1(DateT,DateP).
 
 %%  adjust_year(M01,YYYY,YYY1) :-
 
-%%%¤ OBVIOUSDATE1   
+%%%Â¤ OBVIOUSDATE1   
 
 
 obviousdate1(Date:date,Date isa date) --->   %% (til) 25. jan 2011
@@ -10591,7 +10591,7 @@ obviousdate1(YDate:date, YDate isa date) ---> %% 2009-05-17
 obviousdate1(X, (T isa day) and  P) --->  %% tirsdag 3. mars (SIC) 
     dendagen(T),      %% date more probable than clock
    {dayname(T)},
-    date(X,P),        %% Buss går lørdag den 09.12 => Date 
+    date(X,P),        %% Buss gÃ¥r lÃ¸rdag den 09.12 => Date 
     !,accept.         %%  (don' try other nil complements)
 
 
@@ -10599,7 +10599,7 @@ obviousdate1(YDate:date, YDate isa date) ---> %% (natt til) 31.12   etc// Hazard
     point0,    %% slip %% TA-110527
     num_na(DD),  
     {DD >= 25, DD =<31},  %% \+ 52/3 
-    slash, %%  slashpoint0,  før 10.10 = clock
+    slash, %%  slashpoint0,  fÃ¸r 10.10 = clock
     num_na(MM), 
     {MM =< 12},
     xyear0(MM,YY), %% adjusts year
@@ -10607,7 +10607,7 @@ obviousdate1(YDate:date, YDate isa date) ---> %% (natt til) 31.12   etc// Hazard
     {YDate=date(YY,MM,DD)}. 
 
 
-%%  1. påskedag (år) 2012
+%%  1. pÃ¥skedag (Ã¥r) 2012
 
 obviousdate1(Date:date,Date isa date) ---> %%  n'te pinsedag etc. some may change month 
      den0, 
@@ -10624,7 +10624,7 @@ obviousdate1(Date:date,Date isa date) ---> %%  n'te pinsedag etc. some may chang
      add_days(ED1,N1,Date)}.
 
 
-obviousdate1(Date:date,Date isa date) ---> %% nyttårsaften år 9999
+obviousdate1(Date:date,Date isa date) ---> %% nyttÃ¥rsaften Ã¥r 9999
     {Date=date(YYYY,MM,DD)},
     
     w(name(NY_eve,n,date)),
@@ -10651,7 +10651,7 @@ obviousdate1(Date:date,Date isa date) ---> %%  n'te pinsedag etc. some may chang
      add_days(date(X,Y,Z),N1,Date)}.
 
 
-%%  påskeaften, pinseaften, nyttårsaften etc
+%%  pÃ¥skeaften, pinseaften, nyttÃ¥rsaften etc
 obviousdate1(Date:date,Date isa date) ---> %%  pinsedag etc. some may change month 
      w(name(Whitsun_eve,n,date)),
      {testmember(Whitsun_eve,
@@ -10685,7 +10685,7 @@ obviousdate1(YDate:date, YDate isa date) ---> %% den  280801  etc
 
 obviousdate1(X,P) ---> 
     dendagen(_),      %% date more probable than clock
-    date(X,P),        %% Buss går lørdag den 09.12 => Date 
+    date(X,P),        %% Buss gÃ¥r lÃ¸rdag den 09.12 => Date 
     !.                %%  (don' try other nil complements)
 
 
@@ -10733,7 +10733,7 @@ obviousdate1(Date:date,Date isa date) ---> %% 1. mai 2014 %% TA-110221
               Date= date(Y1,MM,DD)}.
  
 
-%% NOT   den første (bussen) !!! 
+%% NOT   den fÃ¸rste (bussen) !!! 
 obviousdate1(_,_) ---> 
     dendagen(_),  
     num_na(_),
@@ -10742,7 +10742,7 @@ obviousdate1(_,_) --->
     reject.
 
 
-%% NOT   den første  går/ til nth / !!! 
+%% NOT   den fÃ¸rste  gÃ¥r/ til nth / !!! 
 obviousdate1(_,_) ---> 
     [den],
     w(nb(_,ord)),
@@ -10758,7 +10758,7 @@ obviousdate1(YDate:date, YDate isa date) --->
      YDate=date(YYYY,MM,DD)}.
 
 
-obviousdate1(_YDate:date, _) ---> %% lørdag 10.30 // fail as date 
+obviousdate1(_YDate:date, _) ---> %% lÃ¸rdag 10.30 // fail as date 
     dendagen(_), 
     num_na(DD),
     {DD >= 1, DD =< 31},  
@@ -10829,7 +10829,7 @@ plausibleclock(X, VP::VP and Colock) ---> % (etter)6 = clock %% TA-110228
     clock_sequel(X,Colock).
 
 
-plausibleclock1(HM:clock,HM isa clock) --->  %% buss går 10.10 =clock ,10.12 = date
+plausibleclock1(HM:clock,HM isa clock) --->  %% buss gÃ¥r 10.10 =clock ,10.12 = date
     w(nb(H,num)), { H >= 1, H =< 24},
     point0,
     w(nb(M,num)), 
@@ -10839,7 +10839,7 @@ plausibleclock1(HM:clock,HM isa clock) --->  %% buss går 10.10 =clock ,10.12 = d
     {plausibleclocktest(H,M,HM)}, %% fernando
     !. 
 
-%%¤ OBVIOUSCLOCK (Var, Compl) 
+%%Â¤ OBVIOUSCLOCK (Var, Compl) 
 
 obviousclock(_X, __) ---> %% 17.5 is a date 
      w(nb(DD,num)), % 17
@@ -10851,7 +10851,7 @@ obviousclock(_X, __) ---> %% 17.5 is a date
 obviousclock(X, VP::VP and Colock) ---> 
     obviousclock1(X,Colock).
 
-%%¤ OBVIOUSCLOCK1 (Var, Pred) 
+%%Â¤ OBVIOUSCLOCK1 (Var, Pred) 
 
 obviousclock1(X,Colock) ---> % kl  whatever
     clock,
@@ -10892,11 +10892,11 @@ obviousclock1(X:clock,X isa clock) --->  %% buss 10 minutter over 4
 
 %%%%%%%% i fra syndrom
 
-% du sier når bussen går fra nth
+% du sier nÃ¥r bussen gÃ¥r fra nth
 % =
-% du sier en tid; bussen går i (denne tiden) fra nth
+% du sier en tid; bussen gÃ¥r i (denne tiden) fra nth
 % =
-%                 bussen går i fra (denne tiden) nth *
+%                 bussen gÃ¥r i fra (denne tiden) nth *
 %
 %%%%%%%%
 
@@ -10904,7 +10904,7 @@ obviousclock1(X:clock,X isa clock) --->  %% buss 10 minutter over 4
 % lock unlock :   block Stack below, BUT don't block INPUT !!!
 
 
-%%%¤¤ REL_CLAUSES (X,COM, COM2)
+%%%Â¤Â¤ REL_CLAUSES (X,COM, COM2)
 
 
 rel_clauses(_,_,_) ---> [hva],!,reject.
@@ -10913,7 +10913,7 @@ rel_clauses(_,_,_) ---> [hva],!,reject.
 %% tester kan gi forskjellige resulateter [som er] avhengig * av belastning . rough 
                          
 
-% bussen går dit jeg besøker 
+% bussen gÃ¥r dit jeg besÃ¸ker 
 rel_clauses(X,Com,Com and  P) --->  
     % X = stedet
     derhvor, 
@@ -10938,13 +10938,13 @@ rel_clauses(X,Com,Com and  P) ---> %% den sonen tkort (SOM)  gjelder for
         npgap(X)).
 
 
-rel_clauses(X,Com,CP) ---> %% den sonen (SOM) den første billetten   gjelder for 
+rel_clauses(X,Com,CP) ---> %% den sonen (SOM) den fÃ¸rste billetten   gjelder for 
     lit_of(Jeg,[jeg,hun,han,vi,  man,du]),   %% TA-110607 *jeg tar bussen DEN 28 februar/
     rel_clause(X,Com,CP)\([som],[Jeg]).   %% jeg visste bussen jeg skulle ta
 
 
 
-% bussen er et sted der det står en trikk 
+% bussen er et sted der det stÃ¥r en trikk 
 rel_clauses(X,Com,Com and  P) --->  
     % X = stedet
     derhvor, 
@@ -10956,7 +10956,7 @@ rel_clauses(X,Com,Com and  P) --->
         ([det],  xadverbial1(A,B,C)).
 
 
-% bussen er et sted hvor trikken står. %% vet du hvor sandvika er ***
+% bussen er et sted hvor trikken stÃ¥r. %% vet du hvor sandvika er ***
 rel_clauses(X,Com,Com and  P) --->   % huset hvor jeg bor er fint
     % X = huset
     derhvor, 
@@ -10994,14 +10994,14 @@ and1x ---> and1.
 and1x ---> look_ahead([som]). 
 
 dvs ---> [dvs].
-dvs ---> [altså].
+dvs ---> [altsÃ¥].
 dvs ---> [a],[la]. 
 
 
 
-%%%¤ REL_CLAUSE  (X,COM, COM2)
+%%%Â¤ REL_CLAUSE  (X,COM, COM2)
 
-rel_clause(X,Com,Com and  P) ---> % jeg tar buss altså/dvs/ala  buss 5
+rel_clause(X,Com,Com and  P) ---> % jeg tar buss altsÃ¥/dvs/ala  buss 5
     dvs, 
     !,
     statreal(P) / (npgap(X),w(verb(be,pres,fin))).
@@ -11029,14 +11029,14 @@ rel_clause(X,Com,Com and  P) ---> % ( liker jeg en mann) som jeg misliker en bus
     statreal(P) - npgap(X). %% X is object for Jeg liker, subject for mislike
 
 /* SUBSUMED %% TA-110329
-rel_clause(X,Com,Com and  P) ---> % mannen som jeg ikke så *
-    rel(X),                       % jeg ser en buss som det er mulig å ta ***
+rel_clause(X,Com,Com and  P) ---> % mannen som jeg ikke sÃ¥ *
+    rel(X),                       % jeg ser en buss som det er mulig Ã¥ ta ***
     not_look_ahead([at]),
     statreal(P) / npgap(X). %% general (object) 
 */
 
 
-rel_clause(X,Com,Com and  P) ---> % bussen som det er mulig å ta
+rel_clause(X,Com,Com and  P) ---> % bussen som det er mulig Ã¥ ta
     rel(X),           
     [det],
     !,
@@ -11056,7 +11056,7 @@ relneg(Neg) --->  %% after rel()  som
     !.
 
 
-relblabla ---> [nå],!.
+relblabla ---> [nÃ¥],!.
 relblabla ---> [bare],!.
 relblabla ---> redundant0.
 
@@ -11071,7 +11071,7 @@ whose_noun(Z,R) --->
 
 relwhat(X) ---> 
     hva, 
-    som0,   %% bussen går til hva er klokken *
+    som0,   %% bussen gÃ¥r til hva er klokken *
      {constrain(X,thing)},
     !,accept.  %% dont backtrack on subclasses 
 
@@ -11086,14 +11086,14 @@ relwhat(X) --->
 rel(X) ---> 
     relpron(P),
     not_look_ahead(w(quote(_))), %% = as 
-    optional([nå]), %% ad hoc ... som nå ligger  
+    optional([nÃ¥]), %% ad hoc ... som nÃ¥ ligger  
     {constrain(X,P)},
     !,accept.  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%¤¤¤ COMPARISONS
+%%%Â¤Â¤Â¤ COMPARISONS
 
 comparisons(X,S,P) ---> 
     comparison(X,S,P1),
@@ -11106,7 +11106,7 @@ comparisons0(X,S,P1,P1 and P3) --->
 
 comparisons0(_,_,P,P) ---> [].
 
-%%%¤¤¤ COMPARISON
+%%%Â¤Â¤Â¤ COMPARISON
 
 
 comparison(X,_,P2) --->  %%  hastighet (lik) 50 kmt/ pris 50 kroner 
@@ -11157,7 +11157,7 @@ comparison(X,_,P2) --->  %%  Compare adjectives %% John is  as good as Mary
 
 
 
-%%%%¤¤¤¤ NP (
+%%%%Â¤Â¤Â¤Â¤ NP (
 
 np(X, NP) --->   %%  fronted (/ is last anyway)
      xnp(X,NP).  %% stacked np, accessible for all
@@ -11172,14 +11172,14 @@ np(X, P1::P) --->
 np(X, P::P) ---> npgap(X). %% last
 
   
-%%%¤ NP0_ACCEPT
+%%%Â¤ NP0_ACCEPT
 
 
 np0_accept(X, P1::P) ---> 
     np0(X, P1::P),
     !,accept.
 
-%%%¤ NP00  invent a Class NP
+%%%Â¤ NP00  invent a Class NP
 
 np00(Class,X:Class, P::(exists(X:Class)::X isa Class and P)) ---> []. 
 
@@ -11187,10 +11187,10 @@ raise_object00(Pred, P::(P and Pred)) --->  [].
 
 
 
-%%¤  SUBJECT (VAR, NPSEM) %% NP accept excluding obvious objects
+%%Â¤  SUBJECT (VAR, NPSEM) %% NP accept excluding obvious objects
 
 subject(X, NPX) ---> %% subject noun phrase ( hvem laget -du-)
-     not_look_ahead(w(name(være,n,_))), %% Være %% TA-110624
+     not_look_ahead(w(name(vÃ¦re,n,_))), %% VÃ¦re %% TA-110624
      not_look_ahead(w(name(norwegian,n,language))), %% ad hoc //adj+name
      
      not_look_ahead_lit(
@@ -11205,18 +11205,18 @@ subject(X, NPX) ---> %% subject noun phrase ( hvem laget -du-)
 
 
 
-%%%¤  OBJECT1 %% simple object without mods 
+%%%Â¤  OBJECT1 %% simple object without mods 
 
 object1(X,NP) ---> %% simple object without mods 
     not_look_ahead_lit([jeg,du,han,hun,vi]),
     np0(X,NP),
     !.
 
-%%%¤ OBJECT   
+%%%Â¤ OBJECT   
 
 /* unnec (lex) %% TA-101110
 object(X, NP) ---> %% Ad Hack 
-    look_ahead([j]),  %% j aaes veg, også [jeg]
+    look_ahead([j]),  %% j aaes veg, ogsÃ¥ [jeg]
     w(name(JAV,NG,CL)), %% j aaes veg, j= jeg, dont select the j=jeg interpretation
     noun_phrase_accept(X, NP)\  w(name(JAV,NG,CL)),
     !.
@@ -11230,13 +11230,13 @@ object(X, NP) ---> %% object noun phrase (hvem laget -deg-)
 
 
 
-%%%¤ IND_OBJECT 
+%%%Â¤ IND_OBJECT 
 
 ind_object(X, NP) ---> %% 
       not_look_ahead_subject, %% Ad Hack  %% huset hvor jeg bor fins//   huset on  stack
 
     noun_phrase_accept(X, NP). %%  np0_accept(X,NP). %% Problem???
-                               %%   du gir turen fra ringvål en turtype 
+                               %%   du gir turen fra ringvÃ¥l en turtype 
 
 
 not_look_ahead_time ---> look_ahead_time,!,reject. %% TA-110520
@@ -11266,7 +11266,7 @@ subject2(X,Y, NP) --->      %% not  meg,ham,henne,oss,dem // NOT en
 
 object2hnn(_X,_Y, _NP) --->   %% have  // NOT name  bus has 9
     w(name(_,_,_)), %%  ha   MSN * 
-    not_look_ahead(w(prep(on))), %% har Tagore på hjernen  :-) 
+    not_look_ahead(w(prep(on))), %% har Tagore pÃ¥ hjernen  :-) 
     not_look_ahead(w(noun(_,_,_,_))),
     not_look_ahead([deg]), 
     !,reject.
@@ -11289,11 +11289,11 @@ object2h(X,Y , NP) --->
     object2(X,Y, NP).
 
 
-%%%%¤¤¤  OBJECT2 Object with subject parameter
+%%%%Â¤Â¤Â¤  OBJECT2 Object with subject parameter
 
-object2(_X,_Y, __) ---> [en],[gang],!,reject. %% (=nå) 
+object2(_X,_Y, __) ---> [en],[gang],!,reject. %% (=nÃ¥) 
 
-/* Hva gjør du %% TA-101130
+/* Hva gjÃ¸r du %% TA-101130
 object2(X,Y, ONP) --->   %% TA-101129 Ad Hoc, notify TV
     {vartypeid(X,savant)}, %% du varsler [meg].
     not_look_ahead_lit([meg,deg,seg]),
@@ -11329,13 +11329,13 @@ object2(_X,_Y, __) ---> %% du|tu %% TA-110624 moved back
     !,reject.
 
 
-%%%¤¤¤  NOUN_PHRASE2 Object compared with the subject X 
+%%%Â¤Â¤Â¤  NOUN_PHRASE2 Object compared with the subject X 
 
 % noun_phrase2(X,Y, VP::P)   % object Y compared with the subject X 
 
 % The object Y is or is not identical to the subject X
 
-% hvilken buss bør jeg ta når   jeg skal til dragvoll
+% hvilken buss bÃ¸r jeg ta nÃ¥r   jeg skal til dragvoll
 
 
 
@@ -11388,13 +11388,13 @@ adverbial_noun_phrase1(U, VP::VP and P) --->
 
 % % % % % % % % % % % % % 
 
-%%%%¤¤¤  NOUN_PHRASE_ACCEPT
+%%%%Â¤Â¤Â¤  NOUN_PHRASE_ACCEPT
 
 noun_phrase_accept(X, NP) ---> 
    np(X, NP),  %% buss (mellom 10) og 11
    !,accept.                 
 
-%%%¤ NP1_ACCEPT   
+%%%Â¤ NP1_ACCEPT   
 
 
 np1_accept(X, NP) ---> %% Ad Hoc SpeedUp 
@@ -11409,7 +11409,7 @@ noun_phrases2(YZ, VP::P2 and P3) --->         % exactly 2 NPs
     {latin(and,Y,Z,YZ)},   
     !,accept.
 
-%%¤   NOUN_PHRASES (YZ, VP::P1 and P2 and P3) --
+%%Â¤   NOUN_PHRASES (YZ, VP::P1 and P2 and P3) --
 
 
 noun_phrases(YZ, VP::P1 and P2 and P3) --->          % strekningen A B 
@@ -11431,7 +11431,7 @@ noun_phrases(Z, VP::P2) --->         % 1...more
     !,accept.  %% DONT backtrach to noun_phrase1 !!! %% TA-110429
 
 
-%%¤   NOUN_PHRASES0 (X,XZ, ,VP::P1,P1 and P3) 
+%%Â¤   NOUN_PHRASES0 (X,XZ, ,VP::P1,P1 and P3) 
 
 %% stop at some conditions
 
@@ -11445,12 +11445,12 @@ noun_phrases0(X,X,_::P,P) ---> %% TA-101013
     look_ahead_lit([etc,samme]),  %% etc gi turen samme turtype %% TA-101013
     !.  
 noun_phrases0(X,X,_::P,P) ---> 
-    look_ahead(w(verb(Be,inf,fin))),      %% Være "#%:/()=?
+    look_ahead(w(verb(Be,inf,fin))),      %% VÃ¦re "#%:/()=?
     {testmember(Be,[be,use])}, %% Ad Hoc  bruker
     !.  
 noun_phrases0(X,X,_::P,P) --->
-    look_ahead(w(verb(Be,pres,fin))),      %% Være "#%:/()=?
-    {testmember(Be,[wish,want])}, %% ønsker
+    look_ahead(w(verb(Be,pres,fin))),      %% VÃ¦re "#%:/()=?
+    {testmember(Be,[wish,want])}, %% Ã¸nsker
     !.  
 
 
@@ -11465,7 +11465,7 @@ noun_phrases0(X,XZ,VP::P1,P1 and P3) --->
     {latin(And,X,Z,XZ)}.   
 
 noun_phrases0(X,XZ,VP::P1,P1 and P3) ---> 
-   {\+ vartypeid(X,savant)}, %% ad hoc.. skjønner du noe 
+   {\+ vartypeid(X,savant)}, %% ad hoc.. skjÃ¸nner du noe 
 
    noun_phrase1(Y, VP::P2), 
 
@@ -11476,7 +11476,7 @@ noun_phrases0(X,X,_::P,P) ---> [].
 
 %% list then and
 
-%%%¤ NOUN_PHRASES10 X0,X,V P,P1,SEM) 
+%%%Â¤ NOUN_PHRASES10 X0,X,V P,P1,SEM) 
 
 noun_phrases10(X,XZ,VP,P1,P1 and P3) ---> %%  and
     andor(And),
@@ -11526,10 +11526,10 @@ no_phrase(X,P) ---> %% One Pure Noun_phrase
 
 
 
-%%%¤  NOUN_PHRASE1  (X,NP)
+%%%Â¤  NOUN_PHRASE1  (X,NP)
 
 
-noun_phrase1(_,__) ---> [og],!,reject. %% går buss 3 OG 5 
+noun_phrase1(_,__) ---> [og],!,reject. %% gÃ¥r buss 3 OG 5 
 
 
 
@@ -11548,7 +11548,7 @@ noun_phrase1(X,NP1)--->
 
 noun_phrase1(X,NP1)--->    %%  den er brun
     one_of_lit([den,det]), %% 
-    not_look_ahead(w(verb(_run,_,pass))), %% det kjøres 
+    not_look_ahead(w(verb(_run,_,pass))), %% det kjÃ¸res 
     not_look_ahead_np, 
     np00(thing,X,NP1).
 
@@ -11562,7 +11562,7 @@ noun_phrase1(X, VP::P) --->  %% NOEN
 
     !,accept,     
     np1(X, VP::P) =  %% ikke \
-                   %% når går det buss fra X \= når går en ting fra X
+                   %% nÃ¥r gÃ¥r det buss fra X \= nÃ¥r gÃ¥r en ting fra X
         ( some,w(noun(Person,sin,u,n))). %% tar man buss \== tar man(s) buss
 
 
@@ -11636,9 +11636,9 @@ sp1(X, NP) --->
 
 
 
-%%%%¤¤  NP0     np without modifiers
+%%%%Â¤Â¤  NP0     np without modifiers
 
-np0(X, NP) ---> %% koster det mye (å ta buss)
+np0(X, NP) ---> %% koster det mye (Ã¥ ta buss)
     [mye],
     not_look_ahead_np,
     not_look_ahead(w(adj(_,_))),
@@ -11666,7 +11666,7 @@ np0(X, VP::P) --->
 np0(X, P::P) ---> %% NB  NPGAP
     npgap(X).
 
-%%%¤ OBVIOUS_OBJECT 
+%%%Â¤ OBVIOUS_OBJECT 
 
 obvious_object(_X,_NP) ---> %% TA-110429
     [det],    %% ad hoc
@@ -11688,29 +11688,29 @@ obvious_object(X,NP) ---> %%
 % NB np1 breaks the greedy heuristics rule, and
 % may return shorter phrases before longer
 
-% Bussen går til 2 steder     np_head først !!!
-% Bussen går før klokken 10   aname_phrase først !!!
+% Bussen gÃ¥r til 2 steder     np_head fÃ¸rst !!!
+% Bussen gÃ¥r fÃ¸r klokken 10   aname_phrase fÃ¸rst !!!
 
 
 %-------------------------------------------------------------
   
-% buss 5 går til 2 stasjoner før klokken 10 
+% buss 5 gÃ¥r til 2 stasjoner fÃ¸r klokken 10 
 
 %% Due to cut regime, both must be right at first try
 
 
 
-%%%%¤¤  NP1 
+%%%%Â¤Â¤  NP1 
 
 /*
 
 MEMO
-whatq(which(Y):::P) ---> %% hvor mye koster det å ta bussen
+whatq(which(Y):::P) ---> %% hvor mye koster det Ã¥ ta bussen
     [hva],
     w(verb(V,_,fin)),
     {testmember(V,[cost])},
     [det],
-    [å],
+    [Ã¥],
     clausal_object1(COV,COST)\([noen],[vil]),     
     !,
     statreal1(P)  \ 
@@ -11722,11 +11722,11 @@ whatq(which(Y):::P) ---> %% hvor mye koster det å ta bussen
 
 %% EXPERIMENTAL
 
-np1(X, P::P and Q ) ---> %   hvor mye  det koster å ta buss
+np1(X, P::P and Q ) ---> %   hvor mye  det koster Ã¥ ta buss
     hvormye,     %% TA-110104 ..|hva
     [det], 
     w(verb(Cost,Pres,fin)),
-    [å],
+    [Ã¥],
     !,
     clausal_object1(NewSCo,CNP) \ %% NewsCO: noen vil ta buss
       ( [noen],[vil]),
@@ -11759,7 +11759,7 @@ np1(X, NP) ---> %  en buss 6 ulykke -> en ulykke med buss 6
        {\+ testmember(Acc,[minute,hour,direction,
            home,        %% bus 60 hjem  
            station])},  %% (passerere) buss 9 holdeplass 
-        %% (på) rønningsbakken 16 minutter (etter avgang)
+        %% (pÃ¥) rÃ¸nningsbakken 16 minutter (etter avgang)
 
 %% buss 60 hjem
 
@@ -11825,12 +11825,12 @@ np1(X, NP) ---> %  (da sender) de meldingeN
 
 
 
-np1(X, NP1) ---> %  (X har)   noe med Z å gjøre= X har noe mwd  Z
+np1(X, NP1) ---> %  (X har)   noe med Z Ã¥ gjÃ¸re= X har noe mwd  Z
     noemed,      %% ad hoc
     !,
     np0_accept(Err,ErrNP),
-    [å],
-    w(verb(do1,inf,fin)), %% gjøre
+    [Ã¥],
+    w(verb(do1,inf,fin)), %% gjÃ¸re
     !,
     np_kernel(Ind, X, NPK)=w(noun(thing,sin,u,n)),   %% noe
 
@@ -11840,13 +11840,13 @@ np1(X, NP1) ---> %  (X har)   noe med Z å gjøre= X har noe mwd  Z
 noemed ---> [noe],[med]. %% fast uttrykk
 
  
-np1(X, NP1) ---> %   noe å gjøre = noe som X vil gjøre 
-    noeå,
+np1(X, NP1) ---> %   noe Ã¥ gjÃ¸re = noe som X vil gjÃ¸re 
+    noeÃ¥,
     !,
     np_kernel(0, X, NPK)=w(noun(thing,sin,u,n)),   %% 
     noun_modifiers0(0,X,NPK,NP1) \ ([som],[jeg]). %% ad hoc ...jeg
                                                %% not aux1 pga look_ahead
-noeå ---> [noe],[å]. %% ad hoc (en stor oppgave ... å )
+noeÃ¥ ---> [noe],[Ã¥]. %% ad hoc (en stor oppgave ... Ã¥ )
 
 
 np1(X, NP1) ---> %   noe som  du skriver ? 
@@ -11946,7 +11946,7 @@ np_kernel(0, X:thing, Q::(findpron(X:thing):: X isa thing and Q)) --->
 np_kernel(0, X:agent, Q::(findpron(X:agent):: X isa agent and Q)) ---> %% de reiser
     [de],  
      not_look_ahead(w(nb(_,_))),
-     not_look_ahead(w(adj2(_,_))), %% nå går de neste bussene. -> de .. går
+     not_look_ahead(w(adj2(_,_))), %% nÃ¥ gÃ¥r de neste bussene. -> de .. gÃ¥r
     look_ahead(w(verb(_reiser,pres,fin))),
     !.
 
@@ -11976,10 +11976,10 @@ np_kernel(name, X:Man, Q::(findpron(X:Man):: X isa Man and Q)) --->
     pronoun(Man), 
     !.
 
-%% jeg liker alt som lever| har alt å tape
+%% jeg liker alt som lever| har alt Ã¥ tape
 np_kernel(0, X:thing, Q::(exists(X:thing):: X isa thing and Q)) ---> 
    one_of_lit([alt,noe]),
-   look_ahead_lit([som,å]),
+   look_ahead_lit([som,Ã¥]),
    !.
 
 np_kernel(Ind, X,  VP::P) ---> % #0
@@ -12065,13 +12065,13 @@ np_head1(0, XT,   VP::(exists(XT):: P0 and Q0 and VP)) --->
 
 %% Check that a number is not a name
 % dont return (bus) 3 when " 3 neste " 
-%% OOPS   30 minutter over/på/før 1400 
+%% OOPS   30 minutter over/pÃ¥/fÃ¸r 1400 
 % dont return (bus) 3 when " 3 noun_plural" 
 % unless  time measure
 
 
 
-%%%¤  BUS_HEAD (Def1,Number,FLNP,BnameC,BnameC,BusNo)  
+%%%Â¤  BUS_HEAD (Def1,Number,FLNP,BnameC,BnameC,BusNo)  
 
 
 % de to neste 11 
@@ -12181,7 +12181,7 @@ bus_head(Def1,1,FLNP,BnounC,BnameC,BusNo)  --->
     nr0,
     colon0, 
     busnumber(BusNo,BnameC), 
-    not_look_ahead(w(noun(minute,_,_,_))), %% tar  bussen 10 minutter før %%  unnec?
+    not_look_ahead(w(noun(minute,_,_,_))), %% tar  bussen 10 minutter fÃ¸r %%  unnec?
     traceprint(4,bh11). %% allow bus 331 
 
 bus_head(Def1,Number,FLNP,BnounC,BnameC,BusNo)  ---> 
@@ -12232,7 +12232,7 @@ bus_head(Def1,1,FLNP,BnounC,BnameC,BusNo)  --->
     traceprint(4,bh16).    
 
 
-%%  Vil 17 (SIC) bussen gå -> no such bus // EXPERIMENT
+%%  Vil 17 (SIC) bussen gÃ¥ -> no such bus // EXPERIMENT
 bus_head(u,1,nil,bus,number,BusNo)  --->  
     traceprint(5,bx17),
     not_look_ahead(w(name(_,n,route))), %% 17 not a route 
@@ -12269,7 +12269,7 @@ bus_head(Def1,1,FLNP,BnounC,BnameC,BusNo)  ---> %% de neste buss 5 (SIC)
     nr0,
     colon0, %% buss: 4
     busnumber(BusNo,BnameC), 
-    not_look_ahead(w(noun(minute,_,_,_))), %% tar  bussen 10 minutter før ...
+    not_look_ahead(w(noun(minute,_,_,_))), %% tar  bussen 10 minutter fÃ¸r ...
     traceprint(4,bh20). %% allow bus 331 
 
 
@@ -12292,7 +12292,7 @@ art(def,plu) ---> [det],!.
 art(def,plu) ---> [de],!.
 
 
-%%%¤  QUANTNEXT   3 neste| neste 3
+%%%Â¤  QUANTNEXT   3 neste| neste 3
 
 quantnext(Number,FLNP) --->
     quant(Number),
@@ -12312,7 +12312,7 @@ quant(Number) ---> w(nb(Number,num)).
 filanepr(Next) ---> flnp(Next),!. %% flnp0 <--- better name 
 filanepr(nil)  ---> [].
 
-%%¤  BUSSENO (BusNo,BnounC,BnameC) 
+%%Â¤  BUSSENO (BusNo,BnounC,BnameC) 
 
 busseno(BusNo,BnounC,BnameC) --->
     busnoun(BnounC,_,_),    
@@ -12327,7 +12327,7 @@ busseno(BusNo,BnounC,BnameC) --->
     busnoun(BnounC,_,_),    
     !.
 
-%%¤  BUSNO (BusNo,BnounC,BnameC) 
+%%Â¤  BUSNO (BusNo,BnounC,BnameC) 
 
 busnumber(BusNo,Class) ---> 
      optional(w(noun(route,sin,u,n))), %% assistansebuss rute 36 
@@ -12336,7 +12336,7 @@ busnumber(BusNo,Class) --->
      not_look_ahead(w(noun(minute,_,_,_))), %% buss 10 minutter 
      not_look_ahead([':']), %% buss 11:15  
      point0, %% buss 6. mai \= buss 6
-     not_look_ahead(w(name(_Jan_,_,month))), %% buss 2 nyttårsdag 
+     not_look_ahead(w(name(_Jan_,_,month))), %% buss 2 nyttÃ¥rsdag 
      not_look_ahead(w(name(_Jan_,_,day))),
      not_look_ahead(w(name(whitsun_day,_,date))), 
      not_look_ahead(w(name(christmas_day,_,date))),
@@ -12351,7 +12351,7 @@ busnumber(BusNo,number) ---> %% hazard EXPERIMENT %% TA-101206 buss 118
      not_look_ahead(w(noun(minute,_,_,_))), %% buss 10 minutter 
      not_look_ahead([':']), %% buss 11:15  
      point0, %% buss 6. mai \= buss 6
-     not_look_ahead(w(name(_Jan_,_,month))), %% buss 2 nyttårsdag 
+     not_look_ahead(w(name(_Jan_,_,month))), %% buss 2 nyttÃ¥rsdag 
      not_look_ahead(w(name(_Jan_,_,day))),
      not_look_ahead(w(name(whitsun_day,_,date))), 
      not_look_ahead(w(name(christmas_day,_,date))),
@@ -12367,7 +12367,7 @@ busse0(_C,Class,Def,SINPLU) --->
 busse0(C,C,u,sin) ---> [].%% optional, inherit class
 
 
-%%¤ BUSSE  
+%%Â¤ BUSSE  
 
 busnoun(Class,Def,SINPLU) ---> 
     w(noun(Class,SINPLU,Def,n)),!,
@@ -12383,9 +12383,9 @@ busnoun(Class,Def,SINPLU) --->
 %%%%%%%%%%%%%%%%%%%%
 
 
-%% complex passover  går 52 neste gang
+%% complex passover  gÃ¥r 52 neste gang
 
-%%%¤ ANAME_PHRASE 
+%%%Â¤ ANAME_PHRASE 
 
 
 %% called if first item is  name,  make special treatment of
@@ -12417,7 +12417,7 @@ aname_phrase(Ind,X, P::P and Q) --->
   
 
 
-aname_phrase(_IND,_,__) ---> %% er sjåføren på 36  blid
+aname_phrase(_IND,_,__) ---> %% er sjÃ¥fÃ¸ren pÃ¥ 36  blid
     number(_),                %% 36
     not_look_ahead(w(prep(from))), %% e.g. [f]
     filanepr,  %% NB over = finished = adjective !!! (SIC)// 46 f = 46 fra
@@ -12438,8 +12438,8 @@ aname_phrase(_IND,_,__) --->
     !,
     reject. 
 
-%% OOPS halv åtte = "liten" buss 8
-aname_phrase(_,_,__) ---> %% Hvilken holdeplass er nærmest Kolstad
+%% OOPS halv Ã¥tte = "liten" buss 8
+aname_phrase(_,_,__) ---> %% Hvilken holdeplass er nÃ¦rmest Kolstad
     dent0,  
     w(adj2(Nearest,nil)), 
         gmem(Nearest,[nearest]), 
@@ -12451,12 +12451,12 @@ aname_phrase(_,_,__) ---> %% Hvilken holdeplass er nærmest Kolstad
 
 %% en gps lokasjon -> backtract to en gps.
 aname_phrase(Ind,XT, VP::P1) ---> %% oops  ferdig kl 14 #1 //returns msn (addresse)
-    a0, %%  dent0,  %% includes "en"  %% nå var det 2 ulike busser  ->%% 2 var ulike busser  
+    a0, %%  dent0,  %% includes "en"  %% nÃ¥ var det 2 ulike busser  ->%% 2 var ulike busser  
 
 %%     not_look_ahead(w(name(_odd_husbys_street,_,_))), %% TA-110103
 %% odd(e) = funny
 
-    preadjs0(Alist), %% 0   allow  en fin nyttårsaften %%
+    preadjs0(Alist), %% 0   allow  en fin nyttÃ¥rsaften %%
         not_look_ahead([jeg]), %% etc ad hoc
         not_look_ahead([du]),
     name_phrase(Ind,XT, VP::P0),
@@ -12475,7 +12475,7 @@ aname_phrase(name,XT, NSEM) --->
     person_name(XT, NSEM,_).
 
 
-%%¤  NAME_PHRASE (Ind,Var,NP)
+%%Â¤  NAME_PHRASE (Ind,Var,NP)
 
 
 name_phrase(0,NT2, P::Q) --->   % i tidsrommet  13.15 - 14.15  %%  13 15 14 15
@@ -12500,7 +12500,7 @@ name_phrase(0,NT2, P::Q) --->  % i tidsrommet  1300 (til) 1400
     noun_phrases(NT2, P::Q)  \  (time1(A),and1,time1(B)). 
 
 
-%% Problem : til risvollan området = risvollan [and to] området
+%% Problem : til risvollan omrÃ¥det = risvollan [and to] omrÃ¥det
 %% name_complex before namep because of commit error
 %% Hvor er TT webadressen NO / Hva er TT webadressen OK
 %% hvor er tore ambles kontor  
@@ -12526,7 +12526,7 @@ name_phrase(Ind,X, P::ISA and P) --->      %% yggdrasilveien 9c 7033 trondheim.
     namep(Ind,X,ISA).  
 
 
-%%%¤  PERSON-NAME
+%%%Â¤  PERSON-NAME
 
 person_name((Tore,Berg,Hansen):person, ToreP  and BergP and HansenP,GN) --->
     properfirstname(Tore,ToreP,_),
@@ -12541,15 +12541,15 @@ person_name((Tore,Amble):person, ToreP  and  AmbleP,GN) --->
     !,accept.
  
 
-properfirstname(Rønning,RønningP,GN) ---> 
-   name1g(Rønning:firstname,RønningP,GN). %% 1g with genitive
+properfirstname(RÃ¸nning,RÃ¸nningP,GN) ---> 
+   name1g(RÃ¸nning:firstname,RÃ¸nningP,GN). %% 1g with genitive
 
-properlastname(Rønning,RønningP,GN) ---> 
-    name1g(Rønning:lastname,RønningP,GN). %% 1g with genitive
+properlastname(RÃ¸nning,RÃ¸nningP,GN) ---> 
+    name1g(RÃ¸nning:lastname,RÃ¸nningP,GN). %% 1g with genitive
 
 
 
-%%%%%¤¤  NP_HEAD (Ind, Var, Sem).
+%%%%%Â¤Â¤  NP_HEAD (Ind, Var, Sem).
 
 np_head(_,_,_) ---> %% ett tiden \= en tid %% Ad Hoc
     [ett],
@@ -12560,7 +12560,7 @@ np_head(_,_,_) ---> %% ett tiden \= en tid %% Ad Hoc
 np_head(0, XT,  VP::P) --->  % de neste 5 gode dagene %% TA-101105
     the0,
     preadjs0(Alist),   
-    quantifier(XT, P0 ,( P0 and VP):: P),  %% to første buss *
+    quantifier(XT, P0 ,( P0 and VP):: P),  %% to fÃ¸rste buss *
     !,
     preadjs0(Blist),   
     noun_complex(_Num,XT,Q0),         % but not 3 buss ( as 3 busser)
@@ -12579,7 +12579,7 @@ np_head(Cind, XT,    NP) --->
     {preadjs_template(Alist,XT,Q0,P0)}.   
 
 
-% Våre 200 busser: -< DENNE AGENTS 200 BUSSER  ## 
+% VÃ¥re 200 busser: -< DENNE AGENTS 200 BUSSER  ## 
 np_head(0, XT, VP::(findpron(Y)::(exists(XT):: Q0 and YisaP  and VP))) --->
     thispron,
     noun(_,_Num,_,gen,  Y, YisaP),     % program's 
@@ -12597,9 +12597,9 @@ np_head(0, XT, VP::(findpron(Y)::(exists(XT)::P0 and Q0 and YisaP and HasYX and 
     preadjs0(Alist),         %% my last question 
     noun_compound(XT,Q0,_sin), 
 
-%%  våre kunder * bruker regtop .%% TA-110428
+%%  vÃ¥re kunder * bruker regtop .%% TA-110428
     not_look_aheadnounx , %% not_look_ahead(w(noun(_KMH,_,_,_))), %% TA-110128
-                          %% // w(fører,noun(driver,sin,u,n)), 5).
+                          %% // w(fÃ¸rer,noun(driver,sin,u,n)), 5).
 
     %% try longest possible
 
@@ -12612,11 +12612,11 @@ not_look_aheadnounx --->  not_look_ahead(w(noun(_KMH,_,_,_))). %%
 
 
 
-%%%¤  NOUN_COMPLEX  (SINPLU, Var, Pred) 
+%%%Â¤  NOUN_COMPLEX  (SINPLU, Var, Pred) 
 
 %% Mars -planeten 
 
-%%¤ NOUN_COMPLEX 
+%%Â¤ NOUN_COMPLEX 
 
 noun_complex(Sin,Mars:Place,Mars isa Place) --->  %% Mars planeten 
      not_look_ahead(w(nb(_,_))), %% 
@@ -12637,7 +12637,7 @@ noun_complex(sin,Mars:Planet,Mars isa Planet) --->  %% ruteperioden 'r1613_10032
 noun_complex(sin,Mars:Place,Mars isa Planet) --->  %%  TA-110816planeten Mars 
      w(noun(Planet,sin,_def,n)),  
      not_look_ahead([du]), %% = name tuc  
-     w(name(Mars,n,Neib)),                  %% RUTETILBUDET skjærtorsdag:
+     w(name(Mars,n,Neib)),                  %% RUTETILBUDET skjÃ¦rtorsdag:
      not_look_ahead(w(noun(minute,_,_,_))), %%   unnec?
      point0,
      not_look_ahead(w(name(_Xmas,_,date))), %%  1. juledag  \== tram
@@ -12645,7 +12645,7 @@ noun_complex(sin,Mars:Place,Mars isa Planet) --->  %%  TA-110816planeten Mars
      !.
 
 
-noun_complex(sin,NNNN:Year,NNNN isa Year) ---> %% år 1945 og 1946 %% ad hoc
+noun_complex(sin,NNNN:Year,NNNN isa Year) ---> %% Ã¥r 1945 og 1946 %% ad hoc
      w(noun(Year,_,_,n)),                      %% fotnote 1
      w(nb(NNNN,num)),                          %% uke 42
      {testmember(Year,
@@ -12654,20 +12654,20 @@ noun_complex(sin,NNNN:Year,NNNN isa Year) ---> %% år 1945 og 1946 %% ad hoc
      w(nb(_,_)), %% Ignore - ad hoc  
      !.
 
-noun_complex(Sin,NNNN:Year,NNNN isa Year) --->  %% år(et) 1945 %% ad hoc
+noun_complex(Sin,NNNN:Year,NNNN isa Year) --->  %% Ã¥r(et) 1945 %% ad hoc
      w(noun(Year,Sin,_u,n)),                    %% fotnote 1
      w(nb(NNNN,num)),                           %% uke 42
      {testmember(Year,[footnote,page,sms,telephone,week,year,number])},  %% TA-101102
      !.
 
-noun_complex(Sintef,N:Bus,N isa Bus) --->  %% buss no 5  \  AD HOC Når går de to neste buss no. 5
+noun_complex(Sintef,N:Bus,N isa Bus) --->  %% buss no 5  \  AD HOC NÃ¥r gÃ¥r de to neste buss no. 5
     w(noun(Bus,Sintef,_U,n)), %% bussen  6 
     {subtype0(Bus,vehicle)},  %% Not wednesday !!!
     plausibleno(Bus,N),
     not_look_ahead([ganger]),
     plausibleno(Bus,N),
     not_look_ahead_lit([sin,sitt,sine]), 
-    not_look_ahead(w(name(_Jan_,_,month))), %% Ad Hoc   buss 2    nyttårsdag.
+    not_look_ahead(w(name(_Jan_,_,month))), %% Ad Hoc   buss 2    nyttÃ¥rsdag.
     not_look_ahead(w(name(_Jan_,_,date))),
     not_look_ahead(w(noun(_kroner,plu,_,_))),
     !,accept.
@@ -12685,12 +12685,12 @@ noun_complex(Num,X,P) --->  % bus and tram
                                  %% hazard ?
 
 noun_complex(Num,X,P) --->  
-    not_look_ahead([noe]), %% går det noe tog
+    not_look_ahead([noe]), %% gÃ¥r det noe tog
     not_look_ahead([min]), %%
     noun_compound(X,P,Num). %  mans daughter (Mary)
 
 
-%%%%¤¤ PLAUSIBLENO  Plausible Bus number
+%%%%Â¤Â¤ PLAUSIBLENO  Plausible Bus number
 
 plausibleno(_,_) ---> 
    num(_),
@@ -12709,7 +12709,7 @@ plausibleno(_,_) --->
 
 plausibleno(_,_) ---> 
    num(_),
-   monthname(_),  %% går buss 5 påskedag 
+   monthname(_),  %% gÃ¥r buss 5 pÃ¥skedag 
    !,
    reject.
 
@@ -12729,20 +12729,20 @@ plausibleno(_Bus,N) --->
 %% NPA  Noun Phrase Anaphoric
 
 
-npa(X:T, VP::(findexternal(X:T):: (X isa T and VP))) ---> %% når er jeg fremme
+npa(X:T, VP::(findexternal(X:T):: (X isa T and VP))) ---> %% nÃ¥r er jeg fremme
     one_of_lit([det,dette]),  
     look_ahead(w(adv(_sikkert))), %% NB also adjective  //riktig/bra/Haz 
     !,
     {T=thing}. 
 
 
-npa(X:T, VP::(findexternal(X:T):: (X isa T and VP))) ---> %% når er jeg fremme
+npa(X:T, VP::(findexternal(X:T):: (X isa T and VP))) ---> %% nÃ¥r er jeg fremme
     [dette],  %% dette is never internal 
     not_look_ahead_np,%%  da er dette riktig // should forbid adj. def form
     {T=thing}. %% <--- NB   was coevent   
 
 
-npa(X:T, VP::(findexternal(X:thing):: (X isa T and VP))) ---> %% det ønsker jeg
+npa(X:T, VP::(findexternal(X:thing):: (X isa T and VP))) ---> %% det Ã¸nsker jeg
     [det],  %% NB Hazard ???  
     look_ahead(w(verb(_,_,fin))),
     not_look_ahead_np.
@@ -12759,7 +12759,7 @@ npa(Y, VP::(findit(X)::P))--->
 npa(_X, __) ---> %% er  
 
      this,         %% dette
-     look_ahead_np,    %% dårlig  
+     look_ahead_np,    %% dÃ¥rlig  
      !,reject. 
 
 npa(X, P::(find(X)::(Q and P))) --->  
@@ -12775,7 +12775,7 @@ npa(X:T, VP::(findexternal(X:T):: (X isa Man) and VP)) ---> %% denne er fin
     {type(Man,T)}.                
 
 
-npa(X:T, VP::(findpron(X:T):: (X isa thing) and VP)) ---> %% når er jeg fremme
+npa(X:T, VP::(findpron(X:T):: (X isa thing) and VP)) ---> %% nÃ¥r er jeg fremme
     [det],
     endofline, %% hvor er det ?
     {type(thing,T)}.           
@@ -12784,7 +12784,7 @@ npa(X:T, VP::(findpron(X:T):: (X isa thing) and VP)) ---> %% når er jeg fremme
 npa(X, VP::P) --->  
     allsome0, %% alle | noen av .. mine problemer %% TA-110428
     posspron(Man),
-    w(nb(N,num)), %% alle våre 200 busser
+    w(nb(N,num)), %% alle vÃ¥re 200 busser
     np1(X, VP::P)  
          \  ( thispron , w(noun(Man,sin,u,gen)), w(nb(N,num))). 
 
@@ -12798,20 +12798,20 @@ npa(X, VP::P) --->
 
 
 
-npa(X, NP) ---> %%  når går de 5 neste til TS
+npa(X, NP) ---> %%  nÃ¥r gÃ¥r de 5 neste til TS
     [de],
     w(nb(Five,num)),
     flnp(Adj),   
-    not_look_ahead(w(name(_,_,_))), %%  1. nyttårsdag
+    not_look_ahead(w(name(_,_,_))), %%  1. nyttÃ¥rsdag
     not_look_ahead(w(noun(_,_,_,_))), 
     !,
     np1(X, NP)  \  (w(nb(Five,num)),w(adj2(Adj,nil)),
                     w(noun(vehicle,sin,u,n))). 
 
-npa(X, VP::P) ---> %%  når går (den/det)NEST siste til TS 
+npa(X, VP::P) ---> %%  nÃ¥r gÃ¥r (den/det)NEST siste til TS 
     dent0,
 
-    not_look_ahead([først]), %% adverbs! 
+    not_look_ahead([fÃ¸rst]), %% adverbs! 
     not_look_ahead([sist]),
     not_look_ahead([senest]),
     not_look_ahead([tidligst]),
@@ -12827,13 +12827,13 @@ npa(X, VP::P) ---> %%  når går (den/det)NEST siste til TS
 
 
 
-npa(X, VP::P) ---> %%  når går (den/det) neste til TS
+npa(X, VP::P) ---> %%  nÃ¥r gÃ¥r (den/det) neste til TS
     dent0,
 
-    not_look_ahead([f,s,først,sist,senest,tidligst]), %% TA-101029
-                   %% bare s:  ikke det siste kjøretøyet
+    not_look_ahead([f,s,fÃ¸rst,sist,senest,tidligst]), %% TA-101029
+                   %% bare s:  ikke det siste kjÃ¸retÃ¸yet
     flnp(Adj),   
-       not_look_ahead(w(name(_,_,_))), %% 1. nyttårsdag
+       not_look_ahead(w(name(_,_,_))), %% 1. nyttÃ¥rsdag
        not_look_ahead(w(noun(_,_,_,_))), 
     !,
     np1(X, VP::P)  \ (a,w(adj2(Adj,nil)),
@@ -12841,13 +12841,13 @@ npa(X, VP::P) ---> %%  når går (den/det) neste til TS
     optional(w(noun(bus,sin,_,_))). %% neste etter kl 1200 bussen (SIC)
 
 
-npa(X, IT) ---> %%  når går DEN  = it 
+npa(X, IT) ---> %%  nÃ¥r gÃ¥r DEN  = it 
     {value(busflag,true)}, 
     [den],
     not_look_ahead(w(adj2(_,nil))),
     not_look_ahead(w(noun(_,_,_,_))), 
     !,
-    npit(X,IT).      %% unreslved, avoid går den til NTH (den := NTH)
+    npit(X,IT).      %% unreslved, avoid gÃ¥r den til NTH (den := NTH)
 
 
 npa(X, VP::P) ---> %%  \ busflag, den = thing 
@@ -12867,10 +12867,10 @@ npit(X:T,VP::(X isa T and VP)) --->
 adjnoun ---> w(adj2(nil,nil)).
 adjnoun ---> w(noun(_,plu,u,_)). % 3 buses
 
-% Must be qualified " !!! %% not  1700 lørdag 
+% Must be qualified " !!! %% not  1700 lÃ¸rdag 
 
 
-%%¤  NP2    some special constructions
+%%Â¤  NP2    some special constructions
 
 
 np2(X, NP1) ---> %  noe spennende = (en) spennende ting
@@ -12884,11 +12884,11 @@ np2(X, NP1) ---> %  noe spennende = (en) spennende ting
 
 %% 1525 avgangen
 
-/*  ** går noen ^~ noen går(vp) %% TA-110823
+/*  ** gÃ¥r noen ^~ noen gÃ¥r(vp) %% TA-110823
 
-np2(X, NP1) ---> %  noen prøver å like deg 
+np2(X, NP1) ---> %  noen prÃ¸ver Ã¥ like deg 
     [noen],
-    look_ahead_vp, %% ** går noen ^~ noen går(vp)
+    look_ahead_vp, %% ** gÃ¥r noen ^~ noen gÃ¥r(vp)
     !,
     np_kernel(0, X, NPK)=w(noun(thing,sin,u,n)), %% agent?
     noun_modifiers0(0,X,NPK,NP1).
@@ -12955,16 +12955,16 @@ np2(X, NP) ---> %% IKT-sjefen
 
  
 
-np2(X, NP) ---> %% Ad Hoc    %% Tåsen bussen = Buss til Tåsen
-    w(name(Tåsen,n,Neighbourhood)), 
+np2(X, NP) ---> %% Ad Hoc    %% TÃ¥sen bussen = Buss til TÃ¥sen
+    w(name(TÃ¥sen,n,Neighbourhood)), 
         {testmember(Neighbourhood,[neighbourhood,station,street])},
-        {\+ testmember(Tåsen,[sentrum])}, %% 
+        {\+ testmember(TÃ¥sen,[sentrum])}, %% 
     w(noun(Bus,_,_,n)),
     not_look_ahead([nr]), %% til samfundet buss nr 5 %% TA-101206
     not_look_ahead(w(nb(_,_))),  %% NB til valgrindveien rute 9 =* til (valgrindveien rute) 9 
     {subclass0(Bus,vehicle)}, 
     !,accept,
-    np1(X, NP)=  (w(noun(Bus,sin,def,n)),w(prep(to)),w(name(Tåsen,n,Neighbourhood))),
+    np1(X, NP)=  (w(noun(Bus,sin,def,n)),w(prep(to)),w(name(TÃ¥sen,n,Neighbourhood))),
     !.
 
 
@@ -12989,8 +12989,8 @@ np2(X, NP) --->
     np1(X, NP)\ (a,  w(noun(Bus,sin,u,n)),[ulik]).
 
 
-% Meant to cover  Hva er den nærmeste stasjonen til
-% Must be refined : går bussen til munkegate nærmeste time
+% Meant to cover  Hva er den nÃ¦rmeste stasjonen til
+% Must be refined : gÃ¥r bussen til munkegate nÃ¦rmeste time
 
 
 
@@ -12998,7 +12998,7 @@ np2(X, NP) --->
 
 
 np2(X, VP::P)--->                  %% lacks complements !!!!
-    not_look_ahead([alle]),      %% Precaution  går alle bussene
+    not_look_ahead([alle]),      %% Precaution  gÃ¥r alle bussene
 %%     not_look_ahead([alt]),       %% er alt bra ??? 
     not_look_ahead(w(name(_ALT_Statoil,_,_))), %% ALT is a partname 
     quant_pron(every,Person), 
@@ -13037,7 +13037,7 @@ bus_number(N:T) --->
 
 road_number(N:T) ---> 
     number(N:T),
-    { N =< 200 }.     %% Brøsetvegen 168 
+    { N =< 200 }.     %% BrÃ¸setvegen 168 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -13045,7 +13045,7 @@ road_number(N:T) --->
 
 %% they must have something in common
 
-%%  jeg arbeider i påsken og bussen går.
+%%  jeg arbeider i pÃ¥sken og bussen gÃ¥r.
 
 noun_list2(Num, X,Q) --->    %% name [, address] and phonenumber  of 
     noun(_,Num,u,n, Y, P),      %  first noun decides  Num    
@@ -13062,7 +13062,7 @@ nlists10(X:TX,P, (X,Z):(TX,TZ),P and R) --->
      noun(_,_,_,n, Z:TZ, R).
 
 
-%%%¤ NOUN_LIST 
+%%%Â¤ NOUN_LIST 
 
 noun_list(Num, X,Q) --->
     not_look_ahead([noe]),  %% qua noun(thing)
@@ -13080,14 +13080,14 @@ nlists0join(Y,P,L:LJoin,Q) --->
 
    !,accept, %%  planeten mars, dont backtrack to planeten  ??? 
 
-   {LJoin \== thing}.  %% jeg arbeider i (påsken og bussen) går. *
+   {LJoin \== thing}.  %% jeg arbeider i (pÃ¥sken og bussen) gÃ¥r. *
 
 
-%%%¤ NLISTS0 
+%%%Â¤ NLISTS0 
 
 nlists0(X:TX,P, (X,Z):(TX,TZ),P and R) ---> 
-     [og],   %% optional([og]),   %% når går bussen boss
-     not_look_ahead_lit([da,så,min]), %% TA-110527 minutes
+     [og],   %% optional([og]),   %% nÃ¥r gÃ¥r bussen boss
+     not_look_ahead_lit([da,sÃ¥,min]), %% TA-110527 minutes
 
 %%%     not_look_ahead(w(noun(_owner,sin,def,n))), %% du er bare en datamaskin og  eieren er dum
                           %% hva er meningen med livet og universet    
@@ -13118,13 +13118,13 @@ postcode(X) --->
 %% This mans wifes house =  man has wife and wife has house
 %% Find man
 %                               % er 42 meningen =\= 42 meninger
-%                               % 5 de to første buss *
+%                               % 5 de to fÃ¸rste buss *
 
 % rute opplysninger tidspunkt NO
 % rute opplysninger           OK
 
 
-%%%¤ NOUN_COMPOUND (X, QP, SIN)
+%%%Â¤ NOUN_COMPOUND (X, QP, SIN)
 
 noun_compound(X,QP,sin) --->  % Buss 6 sin avgang
     not_look_ahead([man]), %% one 
@@ -13159,8 +13159,8 @@ unplausible_name(X) ---> w(name(X,unknown,_0)),!,accept.
 
 
                           
-ncomps0(gen,X,YT,P,Q,0) ---> %% NB gen ( har ) team[s] dårlig service
-                             %% dagens første avgang || NOT buss 8A 
+ncomps0(gen,X,YT,P,Q,0) ---> %% NB gen ( har ) team[s] dÃ¥rlig service
+                             %% dagens fÃ¸rste avgang || NOT buss 8A 
 %%  not_look_ahead(w(verb(_Reise,pres,_))), %% kan en voksen reise  %% be1 ok .. hvor er   %% Turings test
     preadjs0(Alist), 
     ncomps(X,YT,P1,Q),
@@ -13169,7 +13169,7 @@ ncomps0(gen,X,YT,P,Q,0) ---> %% NB gen ( har ) team[s] dårlig service
 
                                        %% NB repair
 ncomps0(n,X:Neib,X:Neib,P,P,0) ---> %% NB 0=noun 
-                    %%  (til) risvollan området = risvollan if risvollan:neibourhood
+                    %%  (til) risvollan omrÃ¥det = risvollan if risvollan:neibourhood
      w(noun(Neib,_sin,_def,n)).        %%   erlendsveg vegen
 
 
@@ -13217,7 +13217,7 @@ s0(_,_,gen,gen) ---> [].
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%¤ NOUN_MODIFIERS0 
+%%Â¤ NOUN_MODIFIERS0 
 
 noun_modifiers0(OP,X, Q::NP,P::NP) ---> %% Paradox
         noun_modsx0(OP,X,P,Q).
@@ -13226,13 +13226,13 @@ noun_modifiers0(OP,X, Q::NP,P::NP) ---> %% Paradox
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 
-%%¤  NOUN_MODSX0 (0,X:T,P1, P)
+%%Â¤  NOUN_MODSX0 (0,X:T,P1, P)
 
 noun_modsx0(0, X, P, Q) --->  % not serial nonnested rel_clauses  % not name
-    rel_clauses(X,P,Q).     %% TA-110112      % avgang til 5 som går til nth  *
+    rel_clauses(X,P,Q).     %% TA-110112      % avgang til 5 som gÃ¥r til nth  *
 
  
-noun_modsx0(0,X:T,P1,    %% årsaken til at
+noun_modsx0(0,X:T,P1,    %% Ã¥rsaken til at
         P1  and NewS isa coevent and BINGO and P2) ---> 
     {testmember(T,[cause])}, 
     [til],
@@ -13243,18 +13243,18 @@ noun_modsx0(0,X:T,P1,    %% årsaken til at
     !,accept.  
 
 
-noun_modsx0(0,X:T,P1,    %% måter for å  spørre
+noun_modsx0(0,X:T,P1,    %% mÃ¥ter for Ã¥  spÃ¸rre
         P1  and NewS isa coevent and BINGO and P2) ---> 
     {testmember(T,[way])}, 
     [for],
-    [å],
+    [Ã¥],
     !,
     clausal_object1(NewS:coevent,true::P2)\[noen],  
     {noun_compl(regarding,X:T,NewS:coevent,BINGO)},
     !,accept.  
 
 
-noun_modsx0(0,X:T,P1,    %% måter for hvordan man kan spørre
+noun_modsx0(0,X:T,P1,    %% mÃ¥ter for hvordan man kan spÃ¸rre
         P1  and NewS isa coevent and BINGO and P2) ---> 
     {testmember(T,[way])}, 
     [for],
@@ -13265,7 +13265,7 @@ noun_modsx0(0,X:T,P1,    %% måter for hvordan man kan spørre
     !,accept.  
 
 
-noun_modsx0(0,X:T,P1,        %% (spørsmål) om hvor viktig det er
+noun_modsx0(0,X:T,P1,        %% (spÃ¸rsmÃ¥l) om hvor viktig det er
         P1  and NewS isa coevent and BINGO and P2) ---> 
     {testmember(T,[question])}, 
     [om],
@@ -13279,21 +13279,21 @@ noun_modsx0(0,X:T,P1,        %% (spørsmål) om hvor viktig det er
 
 
 
-noun_modsx0(0,X:T,P1,        %% ( eksempel) der bussen går
+noun_modsx0(0,X:T,P1,        %% ( eksempel) der bussen gÃ¥r
         P1  and NewS isa coevent and BINGO and P2) ---> 
     {testmember(T,[example])}, %%
     [der], %% hvor ...
     !,
-    clausal_object1(NewS:coevent, true::P2), %% der bussen går 
-    {noun_compl(on,X:T,NewS:coevent,BINGO)}, %% eksempel på 
+    clausal_object1(NewS:coevent, true::P2), %% der bussen gÃ¥r 
+    {noun_compl(on,X:T,NewS:coevent,BINGO)}, %% eksempel pÃ¥ 
     !,accept.  
 
 
-noun_modsx0(0,X:T,P1,        %% et argument for å 
+noun_modsx0(0,X:T,P1,        %% et argument for Ã¥ 
         P1  and NewS isa coevent and BINGO and P2) ---> 
     {testmember(T,[cause])}, %% argument
     optional([for]),
-    [å],
+    [Ã¥],
     !,
     clausal_object1(NewS:coevent,true::P2) 
          \(someone,aux1), %% ad hoc., noen
@@ -13302,11 +13302,11 @@ noun_modsx0(0,X:T,P1,        %% et argument for å
 
 
 
-noun_modsx0(0,X:T,P1,        %% lov (til) å røyke 
+noun_modsx0(0,X:T,P1,        %% lov (til) Ã¥ rÃ¸yke 
         P1  and NewS isa coevent and BINGO and P2) ---> 
     {testmember(T,[permission,possibility])}, %% lov
     optional([til]),
-    [å],
+    [Ã¥],
     !,
     clausal_object1(NewS:coevent,true::P2) 
          \(someone,aux1), %% ad hoc., noen
@@ -13314,10 +13314,10 @@ noun_modsx0(0,X:T,P1,        %% lov (til) å røyke
     !,accept.  
 
 
-noun_modsx0(0,X:T,P1,        %% beskjed om å løpe
+noun_modsx0(0,X:T,P1,        %% beskjed om Ã¥ lÃ¸pe
         P1  and NewS isa coevent and BINGO and P2) ---> 
-    {testmember(T,[notification,request,plan,wish])}, %% beskjed|ønske   
-    [om],[å],                           %% TA-101124
+    {testmember(T,[notification,request,plan,wish])}, %% beskjed|Ã¸nske   
+    [om],[Ã¥],                           %% TA-101124
     !,
     clausal_object1(NewS:coevent,true::P2) 
          \(someone,aux1), %% ad hoc., noen
@@ -13337,7 +13337,7 @@ noun_modsx0(0,X:T,P1,
 
 
 
-noun_modsx0(0,X,P1,P1  and P2) ---> %% en måte til/for/med/av/ å
+noun_modsx0(0,X,P1,P1  and P2) ---> %% en mÃ¥te til/for/med/av/ Ã¥
     {constrain(X,way)}, 
     in_order_tox, %% infinitive  
     lexv(tv,Take,inf,fin), %%   ta buss
@@ -13349,7 +13349,7 @@ noun_modsx0(0,X,P1,P1  and P2) ---> %% en måte til/for/med/av/ å
 
 
 
-noun_modsx0(0,X,P1,P1  and P2) ---> %% en måte til/for/med/av/ å
+noun_modsx0(0,X,P1,P1  and P2) ---> %% en mÃ¥te til/for/med/av/ Ã¥
     {constrain(X,way)}, 
     in_order_tox, %% infinitive  
     lexv(iv,Come,inf,fin),  %%  komme  
@@ -13364,9 +13364,9 @@ noun_modsx0(_, _XT ,P, P) ---> %%  buss den 23.10 %% NB buss den 23.10
     !,accept.   
 
 
-noun_modsx0(_, XT ,P, P) ---> %% (før) ettermiddagen kl 1800
+noun_modsx0(_, XT ,P, P) ---> %% (fÃ¸r) ettermiddagen kl 1800
    {vartypeid(XT,Afternoon),
-    subclass(Afternoon,daypart)}, %% 5 min. før bussen ...
+    subclass(Afternoon,daypart)}, %% 5 min. fÃ¸r bussen ...
     not_look_ahead(w(prep(_to))), %% natt til 27.12. 
    !,accept.   
 
@@ -13392,17 +13392,17 @@ fictitiousprep(abstract,with) ---> []. %%  with possibility
 %    lengden til en buss   OK
 
 
-%%%%¤  NOUN_MODS0   noun modifiers
+%%%%Â¤  NOUN_MODS0   noun modifiers
 
 
 %% POSSESSIV TIL  %% adressen til Tagore
 
-%%%¤ NOUN_MODS 
+%%%Â¤ NOUN_MODS 
 
 noun_mods(0,Y,P1,P1 and P2) ---> %% // should be def adressen Possesive 'til'
 
     {vartypeid(Y,M), 
-     testmember(M,[address,email,mind,mailaddress,telephone,webaddress])}, %% Ad Hoc  \+  råd til
+     testmember(M,[address,email,mind,mailaddress,telephone,webaddress])}, %% Ad Hoc  \+  rÃ¥d til
                            %% TA-110622
     prep1(to),                    %% but not adverbial
        {vartypeid(Y,N),
@@ -13413,7 +13413,7 @@ noun_mods(0,Y,P1,P1 and P2) ---> %% // should be def adressen Possesive 'til'
 
     not_look_ahead_lit([deg,meg,seg]), 
 
-    not_look_ahead(w(noun(station,_,_,_))),   %% fra holdeplassen (på A) |til holdeplassen på B
+    not_look_ahead(w(noun(station,_,_,_))),   %% fra holdeplassen (pÃ¥ A) |til holdeplassen pÃ¥ B
     not_look_ahead(w(name(_,_,station))),
     not_look_ahead(w(name(_,_,neighbourhood))), %% hpl til risvollan/buss til samfundet
     not_look_ahead(w(name(_,_,city))), %% buss til trondheim %% trondheim har buss
@@ -13436,14 +13436,14 @@ noun_mods(0,Y,P1,P1 and P2) ---> %% email tore amble
 noun_mods(0,X,P,R) --->    %% last dominates first
    noun_mod(X,P,Q),                %% not _ind = name  !!!!!  %% not and here
    !,accept,  
-   noun_modsx0(0,X,Q,R).  %% x  fra brukere før bussen går
+   noun_modsx0(0,X,Q,R).  %% x  fra brukere fÃ¸r bussen gÃ¥r
  
 
 %% noun_mods(0, _ ,P, P) ---> []. %% MYST
 %% noun_mods(name, _,P, P) ---> []. %% /buss/ 5 til nth fins *** 
 
 
-%% noun mods0  following name ( (Bussavgang fra ) Værnes || etter en  flyankomst fins.
+%% noun mods0  following name ( (Bussavgang fra ) VÃ¦rnes || etter en  flyankomst fins.
 
  
 noun_mods(name,X,P,R) --->  %% 7 fra munkegata (til ikea) %% Haz?
@@ -13456,19 +13456,19 @@ noun_mods(name,X,P,R) --->  %% 7 fra munkegata (til ikea) %% Haz?
  
 noun_mods(name,X,P,R) --->  
    look_ahead(w(prep(On))), 
-      {testmember(On,[on,towards])}, %% postterminalen på sluppen
+      {testmember(On,[on,towards])}, %% postterminalen pÃ¥ sluppen
                                      %% nova mot sentrum
-   {vartypeid(X,C),subclass0(C,place)}, %%  jeg på NTH*
+   {vartypeid(X,C),subclass0(C,place)}, %%  jeg pÃ¥ NTH*
    noun_mod(X,P,Q),                %% not _ind = name  !!!!!  %% not and here
    !,accept,  
    noun_mods(name,X,Q,R). 
 
 /*  vet tuc hvor sandvika er *** %% TA-110314
-noun_mods(name, X, P, Q) --->  % fra munkegata som går 
+noun_mods(name, X, P, Q) --->  % fra munkegata som gÃ¥r 
          { vartypeid(X,Gumbo)}, 
          {\+ testmember(Gumbo,
              [station,neighbourhood,street])}, %% TA-110110 %% til buran  som ankommer
-         rel_clauses(X,P,Q).            % avgang til 5 som går til nth  *   % RESTRICTION
+         rel_clauses(X,P,Q).            % avgang til 5 som gÃ¥r til nth  *   % RESTRICTION
 */
 
 noun_mods(name,X,P,R) --->     %% last dominates first
@@ -13490,7 +13490,7 @@ noun_mods(name,X,P,P and Q) --->  %%  Tore Amble Oslo
 
 
 
-%%%¤  NOUN_MOD (X:T,P1, P1   and BINGO and P2) 
+%%%Â¤  NOUN_MOD (X:T,P1, P1   and BINGO and P2) 
 
 
 
@@ -13501,7 +13501,7 @@ noun_mod(X:T,P,  nrel/nil/day/clock/X/Y and P and YP ) --->  %% torsdag kl 10 %%
     clock_sequel(Y:_U,YP).
 
 
-% hva er avgangstid nå
+% hva er avgangstid nÃ¥
 
 noun_mod(B,P,P and R) ---> % bus now %%  moved forward
      adverb(Fast,Q,_),     %% NB \+ av
@@ -13511,8 +13511,8 @@ noun_mod(B,P,P and R) ---> % bus now %%  moved forward
 
 
 
-noun_mod(X:T,P1, P1 and BINGO and P2) ---> %% forutsetningen for å ta buss
-    [for],[å],                             %% TA-110427
+noun_mod(X:T,P1, P1 and BINGO and P2) ---> %% forutsetningen for Ã¥ ta buss
+    [for],[Ã¥],                             %% TA-110427
         gmem(T,[condition]), %% etc 
     !,
     clausal_object1(NewS:coevent,true::P2)\[noen],
@@ -13524,7 +13524,7 @@ noun_mod(X:T,P1, P1   and BINGO and P2) ---> %% melding (fra publikum) om at
     [om],[at],
         {testmember(T,[information,message,notification,question])},
     !,
-    clausal_object1(NewS:coevent,COM2::P2),  {COM2 = true}, %% bussen står
+    clausal_object1(NewS:coevent,COM2::P2),  {COM2 = true}, %% bussen stÃ¥r
     {noun_compl(regarding,X:T,NewS:coevent,BINGO)},
     !,accept.  
 
@@ -13542,9 +13542,9 @@ noun_mod(X,P,P and Q) --->
     comparison(X,_,Q).     
 
 
-noun_mod(X,P1,P1 and P3) ---> %% en mann ikke på bussen ???
+noun_mod(X,P1,P1 and P3) ---> %% en mann ikke pÃ¥ bussen ???
     negation0(N),        
-   {\+ vartypeid(X,self)}, %% skal (jeg på jobb) // vi i team %% 
+   {\+ vartypeid(X,self)}, %% skal (jeg pÃ¥ jobb) // vi i team %% 
                            %% vi gleder oss til veien videre %% TA-110128
     adjunct1(Prep,Y, NotP2::P3), %% _accept too Haz
     {noun_compl(Prep,X,Y,P2)},
@@ -13659,13 +13659,13 @@ look_ahead_place --->
 
 
 look_ahead_conjuction --->   %% ad hoc 
-     look_ahead([før]).
+     look_ahead([fÃ¸r]).
 
 look_ahead_conjuction --->   %% etc ad hoc
      look_ahead([etter]). % .. at
 
 look_ahead_conjuction --->  
-     look_ahead([når]).
+     look_ahead([nÃ¥r]).
 
 
 not_look_ahead_flnp --->
@@ -13735,8 +13735,8 @@ look_ahead_vp ---> look_ahead_aux.
 %% look_ahead_aux ---> ... aux1 ... on stack NO
 
 look_ahead_aux --->
-    look_ahead_lit([vil,skal,bør,må,kan, 
-                    ville,skulle,burde,måtte,kunne]). 
+    look_ahead_lit([vil,skal,bÃ¸r,mÃ¥,kan, 
+                    ville,skulle,burde,mÃ¥tte,kunne]). 
 
 not_look_ahead_lit(List) ---> 
     look_ahead_lit(List),
@@ -13772,9 +13772,9 @@ not_look_ahead_number ---> [ett],!.             %% TA-110617
 not_look_ahead_number ---> w(nb(_,_)),!,fail.   %%
 not_look_ahead_number ---> [].                  %% TA-110620
 
-%%¤ LOOK_AHEAD_NP 
+%%Â¤ LOOK_AHEAD_NP 
 
-%%%¤ NOT_LOOK_AHEAD_NP 
+%%%Â¤ NOT_LOOK_AHEAD_NP 
 not_look_ahead_np ---> look_ahead(w(adv(Directly))),
      gmem(Directly,
 
@@ -13790,7 +13790,7 @@ not_look_ahead_np ---> look_ahead(w(adv(Directly))),
 not_look_ahead_np ---> look_ahead_np,!,reject. %% ad hoc
 not_look_ahead_np ---> [].  
 
-%%%¤ LOOK_AHEAD_NP 
+%%%Â¤ LOOK_AHEAD_NP 
 
 /*
 look_ahead_np ---> 
@@ -13801,7 +13801,7 @@ look_ahead_np --->
 
 look_ahead_np ---> 
     look_ahead_lit([den,det,de,denne,dere,dette,disse,du,en,et,ei,han,hun,jeg,noe,noen,vi,
-                    meg,deg,seg,min,mine,din,dine,hans,hennes,seg,vår,våre,deres,
+                    meg,deg,seg,min,mine,din,dine,hans,hennes,seg,vÃ¥r,vÃ¥re,deres,
                     mange,noen,noe]). %% TA-110506
  
 look_ahead_np ---> 
@@ -13812,7 +13812,7 @@ look_ahead_np ---> look_ahead(w(noun(_,_,_,_))).
 look_ahead_np ---> look_ahead(w(nb(_,_))).
 
 look_ahead_np ---> 
-    look_ahead_lit([halv,kvart]). %%  før (halv 5) %% TA-110520
+    look_ahead_lit([halv,kvart]). %%  fÃ¸r (halv 5) %% TA-110520
 
 
 %% look_ahead_np ---> look_ahead([En]),
@@ -13825,7 +13825,7 @@ look_ahead_np --->
 
 
 look_ahead_subject ---> [Jeg],
-    {testmember(Jeg,[jeg,du,han,hun,vi])}. %% ,de])}. de også art 
+    {testmember(Jeg,[jeg,du,han,hun,vi])}. %% ,de])}. de ogsÃ¥ art 
 
 
 look_ahead_pron ---> look_ahead_lit([jeg,vi,du,dere]). %% ad hoc
@@ -13835,7 +13835,7 @@ not_look_ahead_pron --->
     !,reject.
  
 not_look_ahead_pron --->
-    not_look_ahead_lit([jeg,du,han,hun]). %% bussen jeg må ta
+    not_look_ahead_lit([jeg,du,han,hun]). %% bussen jeg mÃ¥ ta
  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -13860,12 +13860,12 @@ determiner0(plu,0, X,P1,  P2:: ( quant(eq/N,X)::(P1 and P2))) --->
     w(adj2(FILANEPR,nil)),
     {testmember(FILANEPR,[first,last,next,previous])},
     number(N:_),
-%%%     {N =< 5}, %% NB   første 301 buss ---> 301 X  første buss * %% siste 10 dagene
+%%%     {N =< 5}, %% NB   fÃ¸rste 301 buss ---> 301 X  fÃ¸rste buss * %% siste 10 dagene
     look_ahead(w(noun(_,plu,_,_))),
     !,accept,
     []-  w(adj2(FILANEPR,nil)). %% free order
 
-%%%% NB   første 301 buss ---> 301 *  første buss *** 
+%%%% NB   fÃ¸rste 301 buss ---> 301 *  fÃ¸rste buss *** 
 
 
 determiner0(sin,0, X,P1, P2::P) --->    % try the file = this  file 
@@ -13931,7 +13931,7 @@ determiner0(_,0, X,P1, P2::P) --->   %%  _ ==> 0 (  sentrum til buvika)
 determiner0(_,0, X,P1, P2::(exists(X):: P1 and P2)) ---> 
      the0.
 %%%      not_look_ahead(w(verb(_travel,pres,fin))).
-%% nå går de neste bussene  
+%% nÃ¥ gÃ¥r de neste bussene  
 
 %% DETERMINER00  (empty)
 
@@ -13939,13 +13939,13 @@ determiner00(X:T,P1, P2::(P1 and P2)) ---> %% Explicitly NO determiner %% THE
     the(X:T), %% swallow the().
     !.
 
-determiner00(X,P1, P2:: (exists(X):: P1 and P2) ) --->  [].   %% Lørdag kveld den
+determiner00(X,P1, P2:: (exists(X):: P1 and P2) ) --->  [].   %% LÃ¸rdag kveld den
 
                                            
 
 % % % % % % % % % % % % % % % % % % % % % % % 
 
-%%¤ DETERMINER  (X,P, NPSEM)
+%%Â¤ DETERMINER  (X,P, NPSEM)
 
 determiner(X,P1, P2:: (forall(X):: P1 => P2) ) ---> 
     [alle],
@@ -13966,7 +13966,7 @@ determiner(X,P1, P2::P1 and P2) --->
 determiner(X,P1, P2::(exists(X):: P1 and P2) ) ---> 
      only0, 
      art,
-     look_ahead(w(noun(_Teacher,sin,u,n))), %% reiser/lærer
+     look_ahead(w(noun(_Teacher,sin,u,n))), %% reiser/lÃ¦rer
      off0,
      !. 
 
@@ -13974,7 +13974,7 @@ determiner(X,P1, P2::(exists(X):: P1 and P2) ) --->
      only0, 
      art,
 %%%%%%%     not_look_ahead(w(verb(_travel,pres,fin))), %% de (pron)  reiser  
-     off0.                                             %% nå går de    neste 
+     off0.                                             %% nÃ¥ gÃ¥r de    neste 
   
      
 
@@ -13999,7 +13999,7 @@ determiner(X,P1,  P2::QP) --->
     quantifier(X,P1, P2::QP).
  
 
-%%%¤  QUANTIFIER  (X,P1,  NP)
+%%%Â¤  QUANTIFIER  (X,P1,  NP)
 
 quantifier(X,P1, P2::(quant(eq/En,X)::(P1 and P2))) ---> %% bare 1
     [bare],                                              %% TA-101116
@@ -14054,8 +14054,8 @@ quantifier(X,P1,  P2::(quant(count,X)::(P1 and P2)) ) --->
     look_ahead_np. 
 
 
-few ---> [få].  
-few ---> [færre]. %% problem
+few ---> [fÃ¥].  
+few ---> [fÃ¦rre]. %% problem
 
 
 %-------------------------------------------------------------------
@@ -14082,7 +14082,7 @@ plausible_name(N:Class,N isa Class,GN) ---> %% w(name(dalen_hageby-12,n,street))
 
 
 
-%%%¤¤  NAME_COMPOUND   left associative with genitive
+%%%Â¤Â¤  NAME_COMPOUND   left associative with genitive
 
 
 
@@ -14097,7 +14097,7 @@ name_compound(Ind,X,QP) --->    % Must begin with a name %% tt sommerruter
 
 
 
-%%%¤¤¤  NAMEP 
+%%%Â¤Â¤Â¤  NAMEP 
 
 
 % namep(Ind,NT,XP)      Ind=name  Pure name
@@ -14205,7 +14205,7 @@ optional_suffix(_:Bus) --->  %% buss 8 ruta
 optional_suffix(_:_Bus) ---> point0. %% buss 66. til ... % []. 
 
 
-%%%%¤¤  NOUN2 (PLU,DEF, GEN,Var, Pred)
+%%%%Â¤Â¤  NOUN2 (PLU,DEF, GEN,Var, Pred)
 
 
 noun2(sin,u,n, X:thing, X isa thing) ---> %% de som 
@@ -14230,7 +14230,7 @@ noun2(sin,u,n, X:thing,X isa thing) ---> %% allow relative clause
     look_ahead([som]).  
 
 
-noun2(Num,U,Gen, A,B) ---> %% til nth fre. kl 12. %% dot-trøbbel
+noun2(Num,U,Gen, A,B) ---> %% til nth fre. kl 12. %% dot-trÃ¸bbel
     noun(Sat,Num,U,Gen, A,B),
     {testmember(Sat,[monday,tuesday,wednesday,thursday,friday,saturday,sunday,month])},
     point0,
@@ -14257,11 +14257,11 @@ noun2(sin,u,n, X:thing,X isa thing) ---> %% den som er dum tar trikken
     !.
 
 agent_pronoun ---> [jeg].
-agent_pronoun ---> [du]. %% er det du som er sjåfør 
+agent_pronoun ---> [du]. %% er det du som er sjÃ¥fÃ¸r 
 
 agent_pronoun ---> [noen]. 
 agent_pronoun ---> [mange].
-agent_pronoun ---> [få].
+agent_pronoun ---> [fÃ¥].
 
 agent_pronoun ---> [han].
 agent_pronoun ---> [ham].
@@ -14278,7 +14278,7 @@ noun(Country,Num,U,Gen,  X:Country, X isa Country) --->
     w(noun(Country,Num,U,Gen)).
 
 
-%%%¤  MEASURE 
+%%%Â¤  MEASURE 
 
 measure(NT1,YP) ---> %%    kr. 1
     noun(M,_,_,n, NT, XP),        
@@ -14293,7 +14293,7 @@ measure(NT1,YP) ---> %%    NOT    two buses !!!!!
     point0,          %% 5. 
     noun(M,_,_,n, NT, XP),              %  minutes, hours, days
     point0,                             %% min.
-    not_overon_clock(M), %% 3 min PÅ 5
+    not_overon_clock(M), %% 3 min PÃ… 5
     {measureclass(M)}, 
     {align_measure(NT,NU,XP,NT1,YP)}. %% 5 isa number and X isa minute => 5 isa minute
 
@@ -14307,7 +14307,7 @@ not_overon_clock(Minute) --->
 	 !,reject.
 not_overon_clock(_) ---> []. 
 
-%%%%¤¤  NAMEQ    Name Expressions
+%%%%Â¤Â¤  NAMEQ    Name Expressions
 
 nameq(C,Q) ---> nameq1(C,Q),not_look_ahead(w(nb(_,_))). %% hva er 2 2 
 
@@ -14315,42 +14315,42 @@ nameq(C,Q) ---> nameq2(C,Q),not_look_ahead(w(nb(_,_))). %% hva er 2 2
 
 
 
-%% Ståle   Rønning       Fornavn Etternavn  
-%% Tina    Rønning Lund  Fornavn Fornavn Etternavn
+%% StÃ¥le   RÃ¸nning       Fornavn Etternavn  
+%% Tina    RÃ¸nning Lund  Fornavn Fornavn Etternavn
 
-name1g(Rønning:lastname,Rønning isa lastname,GN) ---> %% (Ståle)  Rønnings
+name1g(RÃ¸nning:lastname,RÃ¸nning isa lastname,GN) ---> %% (StÃ¥le)  RÃ¸nnings
     {value(teleflag,true)},
-    look_ahead(w(name(Rønning,_,firstname))), 
-    w(name(Rønning,GN,lastname)), 
+    look_ahead(w(name(RÃ¸nning,_,firstname))), 
+    w(name(RÃ¸nning,GN,lastname)), 
     not_look_ahead(w(name(_Lund,_,lastname))),
     !,accept.
 
 
-name1g(Ståle:firstname,Ståle isa firstname,n) ---> %%  Ståle (Rønning)
+name1g(StÃ¥le:firstname,StÃ¥le isa firstname,n) ---> %%  StÃ¥le (RÃ¸nning)
     {value(teleflag,true)},
-    look_ahead(w(name(Ståle,_,lastname))), 
-    w(name(Ståle,n,firstname)), 
+    look_ahead(w(name(StÃ¥le,_,lastname))), 
+    w(name(StÃ¥le,n,firstname)), 
     look_ahead(w(name(_Lund,_,lastname))),
     !,accept.
 
 
-name1g(Rønning:lastname,Rønning isa lastname,GN) ---> %% Ståle Rønnings
+name1g(RÃ¸nning:lastname,RÃ¸nning isa lastname,GN) ---> %% StÃ¥le RÃ¸nnings
     {value(teleflag,true)},
-        look_ahead(w(name(Rønning,_,firstname))), 
-    w(name(Rønning,GN,lastname)), 
+        look_ahead(w(name(RÃ¸nning,_,firstname))), 
+    w(name(RÃ¸nning,GN,lastname)), 
         not_look_ahead(w(name(_Lund,n,lastname))),
     !,accept.
 
 
-name1g(Rønning:firstname,Rønning isa firstname,n) ---> %% (Tina) Rønning Lund 
+name1g(RÃ¸nning:firstname,RÃ¸nning isa firstname,n) ---> %% (Tina) RÃ¸nning Lund 
     {value(teleflag,true)},
-    look_ahead(w(name(Rønning,_,lastname))), 
-    w(name(Rønning,n,firstname)), 
+    look_ahead(w(name(RÃ¸nning,_,lastname))), 
+    w(name(RÃ¸nning,n,firstname)), 
     look_ahead(w(name(_Lund,n,lastname))),
     !,accept.
 
 name1g(X:F,X isa F,GN) ---> %%
-    wnameg(X:F ,GN,F).      %%  Rønning sitt 
+    wnameg(X:F ,GN,F).      %%  RÃ¸nning sitt 
 
 
 wnameg(X:F,gen,F) --->  w(name(X,n,F)), sin,!.   
@@ -14360,21 +14360,21 @@ wnameg(X:F,n,F)   --->  w(name(X,n,F)).
 
 
 
-%%%¤¤ NAMEQ1   basic name or interpreted number
+%%%Â¤Â¤ NAMEQ1   basic name or interpreted number
 
 
-nameq1(Rønning:lastname,Rønning isa lastname) ---> %% Ståle Rønning
+nameq1(RÃ¸nning:lastname,RÃ¸nning isa lastname) ---> %% StÃ¥le RÃ¸nning
     {value(teleflag,true)},
-    look_ahead(w(name(Rønning,n,firstname))), 
-    w(name(Rønning,n,lastname)), 
+    look_ahead(w(name(RÃ¸nning,n,firstname))), 
+    w(name(RÃ¸nning,n,lastname)), 
     not_look_ahead(w(name(_Lund,n,lastname))),
     !,accept.
 
 
-nameq1(Rønning:firstname,Rønning isa firstname) ---> %% Ståle Rønning
+nameq1(RÃ¸nning:firstname,RÃ¸nning isa firstname) ---> %% StÃ¥le RÃ¸nning
     {value(teleflag,true)},
-    look_ahead(w(name(Rønning,n,lastname))), 
-    w(name(Rønning,n,firstname)), 
+    look_ahead(w(name(RÃ¸nning,n,lastname))), 
+    w(name(RÃ¸nning,n,firstname)), 
     look_ahead(w(name(_Lund,n,lastname))),
     !,accept.
 
@@ -14429,7 +14429,7 @@ nameq1(N:T,N isa clock) --->
 
 % Only full dates allowed, try last 
 
-nameq1(X,P) ---> %%  ( Buss går 09.12 => clock)
+nameq1(X,P) ---> %%  ( Buss gÃ¥r 09.12 => clock)
    date(X,P).    %%    20 august should be tried before (bus) 20
 
 nameq1(_N:_Type,_) --->  %% dont accept 1 zone as tram 
@@ -14467,7 +14467,7 @@ nameq1(N:Type,N isa Class) --->  %% Try number as name as  Last Resort
 
 
 nameq1(X:T,P) --->   %% Finally, Try number as clock with care 
-    timeq1(X:T,P),   %% 5 bussen går  After clock
+    timeq1(X:T,P),   %% 5 bussen gÃ¥r  After clock
     { number(X),X  >= 100}.     %% Pragmatic, avoid bus goes 50 
 
 
@@ -14482,7 +14482,7 @@ nameq1(X:year,X isa year) --->   %% or year
 
 
 
-date(Date:date,Date isa date) ---> %%  n'te nyttårsdag
+date(Date:date,Date isa date) ---> %%  n'te nyttÃ¥rsdag
      num_na(N), {N >=1,N =<7}, 
      slashpoint0,    %% pointNO,  %% points mostly ignored    
      w(name(new_years_day,n,date)), %% Special for new years day
@@ -14515,7 +14515,7 @@ date(Date:date,Date isa date) ---> %%   with YYYY
      {Date= date(YYYY,MM,DD)}. 
 
 
-%% Første 5 -> 1. may
+%% FÃ¸rste 5 -> 1. may
 date(Date:date,Date isa date) ---> %%  IS NOT A CLOCK
      dayno(DD),                    %% Last ditch test
      slashpoint,  %% // den 22 9  NOT OK hva er 1 1 
@@ -14560,7 +14560,7 @@ timeq1(N:clock,N isa clock) --->    %%  clock Time Constant, known to be a time
     time12(N), 
     !, accept.            
 
-%%%¤  CLOCK_SEQUEL 
+%%%Â¤  CLOCK_SEQUEL 
 
 clock_sequel(N:clock,N isa clock) ---> %%  AFTER klokken
     clock_kernel(N:clock,N isa clock),
@@ -14587,7 +14587,7 @@ clock_sequel(N100:clock,N100 isa clock) ---> %% WILL BE DETECTED ELSEWHERE
 
 
 
-%%¤  CLOCK_KERNEL (var,Pred)
+%%Â¤  CLOCK_KERNEL (var,Pred)
 
 clock_kernel(N:clock,N isa clock) ---> %% WILL BE DETECTED ELSEWHERE
     number(N:_),                       %% 
@@ -14595,7 +14595,7 @@ clock_kernel(N:clock,N isa clock) ---> %% WILL BE DETECTED ELSEWHERE
     !.
 
 clock_kernel(_,_) --->  
-    [nå], %% hva er klokken nå, now is def. as clock
+    [nÃ¥], %% hva er klokken nÃ¥, now is def. as clock
     !,
     reject.
 
@@ -14626,7 +14626,7 @@ clock_kernel(N:clock,N isa clock) --->
 clock_kernel(_,_) --->   
     num_na(_),
     point0,
-    monthname(_), %% skjærtorsdag OK *monthnamex  
+    monthname(_), %% skjÃ¦rtorsdag OK *monthnamex  
     !,
     reject.
  
@@ -14698,13 +14698,13 @@ namenb(_) ---> a,!,reject.
 namenb(N) ---> w(name(N,n,_)). 
 namenb(N) ---> w(nb(N,num)).    %% nummer "femtito" 
 
-%%%¤ DAYNO
+%%%Â¤ DAYNO
 
 dayno(N) ---> 
     num_na(N),
     { N > 0, N =< 31}.
     
-%%¤  MONTH  
+%%Â¤  MONTH  
 
 month(N) ---> monthnamed(N),!. %% TA-110214
 month(N) ---> monthnum(N).
@@ -14805,7 +14805,7 @@ clock_time(1300) ---> %% We know it is after clock, allow en/et/ei
     !,accept.
 
 clock_time(1300) ---> %% We know it is after clock, allow en/et/ei
-    [nå], 
+    [nÃ¥], 
     !,
     reject.
 
@@ -14820,7 +14820,7 @@ clock_time(N) --->
 
 
 
-%%%%¤¤ TIME012  ??
+%%%%Â¤Â¤ TIME012  ??
 
 %% know clock, accept off time values
 time012(N) ---> time12(N) .    %% maybe reject wrong values
@@ -14861,7 +14861,7 @@ timeoff(N) --->
         {N is N1*100+N2}. %% Freak
 
 
-%%%¤¤ TIME1  
+%%%Â¤Â¤ TIME1  
 %%%% time1   Time is given by 1 number
 
 
@@ -14901,11 +14901,11 @@ time1(N2) --->
     {N1 is N*100},
     ampm0(N1,N2). 
 
-time1(now) ---> [nå],[av],!,reject. 
-time1(now) ---> [nå]. 
+time1(now) ---> [nÃ¥],[av],!,reject. 
+time1(now) ---> [nÃ¥]. 
 
 
-%%%%¤¤  TIME2  
+%%%%Â¤Â¤  TIME2  
 % time2 is given by 2 numbers
 
 time2(N) --->  %%  mandag (8.30) %% special case
@@ -14921,7 +14921,7 @@ time2(N) --->  %%  Norwagism 5 over 20 // not 5 etter 20
     w(prep(over)), %% 5 over is allowed
     !, 
   { Min < 60}, % after (trap nonsense) 
-    hours30(N100), %% (halv) åtte
+    hours30(N100), %% (halv) Ã¥tte
     {N is N100 + Min}. 
  
 time2(N) --->  %%    fem minutter over/etter over
@@ -14930,21 +14930,21 @@ time2(N) --->  %%    fem minutter over/etter over
     overclock, 
     !, 
   { Min < 60}, % after (trap nonsense)
-    hours30(N100), %% (halv) åtte
+    hours30(N100), %% (halv) Ã¥tte
     {N is N100 + Min}. 
 
-time2(N) ---> %%  Norwagism 5 på  20 // not 5 før 20 
+time2(N) ---> %%  Norwagism 5 pÃ¥  20 // not 5 fÃ¸r 20 
     num(Min), { Min < 60}, 
     w(prep(on)),
     !,
-    hours30(N100), %% (halv) åtte
+    hours30(N100), %% (halv) Ã¥tte
     {subfromtime(N100,Min,N)}. %% {N is ((N100 -100 + 60-Min))}. 
 
-time2(N) --->  %% F minutter før/på 
+time2(N) --->  %% F minutter fÃ¸r/pÃ¥ 
     num(Min),
     minutes, % not minutes0 
     onclock,
-    !,             % etter 16 før 18 \= 16 på 18
+    !,             % etter 16 fÃ¸r 18 \= 16 pÃ¥ 18
     { Min < 60},  %% after (trap nonsense)
     clock0, 
     hours30(N100),  %% allow halv
@@ -14954,7 +14954,7 @@ time2(N) --->  %% F minutter før/på
 time2(N) --->
     optional(w(prep(in))),
     [halv],       %%   
-    hours100(N1), %% allow halv åttetiden = halv 800 
+    hours100(N1), %% allow halv Ã¥ttetiden = halv 800 
     {N is N1 -100 +30}, %% 800-100+30 = 730
     optional(w(noun(time,sin,def,n))). 
 
@@ -14967,14 +14967,14 @@ time2(N) ---> %% halv over ...
 
 
 time2(N) --->
-    [kvart], %%    kvart på, kvart over, N på  N over  etc.
+    [kvart], %%    kvart pÃ¥, kvart over, N pÃ¥  N over  etc.
     onclock,
-    hours100(N1), %% kvart på ett
+    hours100(N1), %% kvart pÃ¥ ett
      {N is N1-100 + 45}.
    
 
 time2(N) --->
-    [kvart],   %%  kvart på, kvart over, N på  N over  etc.
+    [kvart],   %%  kvart pÃ¥, kvart over, N pÃ¥  N over  etc.
     overclock, %%  prep1(over),  %% etter
     hours(N1), %%
      {N is N1*100 + 15}.
@@ -14996,9 +14996,9 @@ time2(_) ---> %% 8 17 mai %% *
      reject.
 
 
-%%  bussen går 16 10  %% NB should noot be called from obviousclock1
-time2(N3) --->     %% bussen går 3 9 ==> 3:09  NO
-     hours24(N1),    %% bussen går 3.9 ==> 3:09  NO , date
+%%  bussen gÃ¥r 16 10  %% NB should noot be called from obviousclock1
+time2(N3) --->     %% bussen gÃ¥r 3 9 ==> 3:09  NO
+     hours24(N1),    %% bussen gÃ¥r 3.9 ==> 3:09  NO , date
      colemin(N2),        %% TA-101126
 %      {0 is mod(N2,5)}, 
      {N is N1*100 + N2},  
@@ -15012,9 +15012,9 @@ time2(_) ---> %%  17 18.00 %% NOT 17:18
     !,reject.
 
 time2(N3) --->     %% Pragmatic Test:  16.50 OK 
-     hours24(N1),   %% bussen går 3.13        clock %% TA-101126
+     hours24(N1),   %% bussen gÃ¥r 3.13        clock %% TA-101126
      minutes(N2),
-     {N2 > 12},   %% bussen går 3.12        Not clock (Date)
+     {N2 > 12},   %% bussen gÃ¥r 3.12        Not clock (Date)
      {N is N1*100 + N2},
      ampm0(N,N3). 
  
@@ -15042,7 +15042,7 @@ hours30(N100) --->
     hours100(N100).
 
 
-hours100(N100) ---> %% 17 på 17 mai 
+hours100(N100) ---> %% 17 pÃ¥ 17 mai 
    num(N100),    
    monthname(_),
    !,
@@ -15051,7 +15051,7 @@ hours100(N100) ---> %% 17 på 17 mai
 
 hours100(N100) ---> 
     num(N100), 
-    {N100 is N100//100*100, %% divisible by 100 * når går buss lørdag  46 etter 1130? 
+    {N100 is N100//100*100, %% divisible by 100 * nÃ¥r gÃ¥r buss lÃ¸rdag  46 etter 1130? 
      N100 > 100, N100 < 2500},
     !,accept.
 
@@ -15301,12 +15301,12 @@ anumber(1:Type)--->
 
 %% VERB PARTICLE  SECTION
 
-intrans_verb(work,X,  id, S,EXS,P,Q) --->   %% holde på = arbeide
+intrans_verb(work,X,  id, S,EXS,P,Q) --->   %% holde pÃ¥ = arbeide
     lexv(tv,hold,P,Q),               
     w(prep(on)),   %% particle
     {iv_template(work,X,S,EXS)}.
 
-intrans_verb(be1,X,id, S,EXS,P,Q) --->   %% holde til = være
+intrans_verb(be1,X,id, S,EXS,P,Q) --->   %% holde til = vÃ¦re
     lexv(tv,hold,P,Q),               
     w(prep(to)),   %% particle
     {iv_template(be1,X,S,EXS)}.
@@ -15318,8 +15318,8 @@ intrans_verb(Live,X,id, S,EXS,P,Q) --->
 
 
 intrans_verb(be1,X,N, S,BXS,pres,fin) ---> %% er (i byen)
-     not_look_ahead(w(verb(go,_,fin))),   %% går buss e kl 12 %% Syndrome
-%%      not_look_ahead(w(verb(be,inf,fin))), %% være qua hovedverb=ankomme ? 
+     not_look_ahead(w(verb(go,_,fin))),   %% gÃ¥r buss e kl 12 %% Syndrome
+%%      not_look_ahead(w(verb(be,inf,fin))), %% vÃ¦re qua hovedverb=ankomme ? 
      be1(N),  
      not_look_ahead(w(verb(_,_,_))), 
      {iv_template(be1,X,S,BXS)}.
@@ -15327,7 +15327,7 @@ intrans_verb(be1,X,N, S,BXS,pres,fin) ---> %% er (i byen)
 
 intrans_verb(Live,X,N, S,EXS,past,fin) ---> %% levet ikke =
      has(N),                               %% har  (ikke)
-     now0,                                 %% // jeg har nå ventet
+     now0,                                 %% // jeg har nÃ¥ ventet
      lexv(iv,Live,past,part),              %% levet
      {iv_template(Live,X,S,EXS)}.
 
@@ -15353,13 +15353,13 @@ trans_verbs0(Love,Love,X:_,Y:_, S,Love/X/Y/S) ---> [].
 
 %%  This rule must be refined, due to ambiguity in transitivity
 
-% å komme  seg til NTH:   transitive
-% å komme  til NTH:       intransitive
-% å kjøre  til            intransitive
-% å kjøre  buss til       transitive
+% Ã¥ komme  seg til NTH:   transitive
+% Ã¥ komme  til NTH:       intransitive
+% Ã¥ kjÃ¸re  til            intransitive
+% Ã¥ kjÃ¸re  buss til       transitive
 
 % go1      komme seg 
-% go2      kjøre rute     
+% go2      kjÃ¸re rute     
 
 
 trans_verb(tell,X,Y,id, S,EXS,Pres,fin) ---> %% fortelle (om) busser
@@ -15386,8 +15386,8 @@ rep_v(be_free,pres,fin) --->   %% Technical  BE FREE OF CHARGE
 rep_v(Say,P,Q) --->  
     aux0,    
     lexv(rv,Say,P,Q),
-    reflexiv0(Say), %% spørre (deg)
-    rep_particlev0(Say). %% spørre etter %%
+    reflexiv0(Say), %% spÃ¸rre (deg)
+    rep_particlev0(Say). %% spÃ¸rre etter %%
 
 rep_v(want,pres,fin) ---> %% ikke skal !!!
     [skal],
@@ -15428,21 +15428,21 @@ tobetrue(N)  ---> infinitive,be_truefalse(N).
 tobetrue(id) ---> [].
 
 
-pvimodal(Cost,Money) --->   %% Søkt
+pvimodal(Cost,Money) --->   %% SÃ¸kt
      lexv(tv,Cost,_,fin),
     { Cost \== be}, 
     {pvi_templ(Cost,Money)}. 
 
-%%%¤ LEXVACCEPT 
+%%%Â¤ LEXVACCEPT 
 
 lexvaccept(Type,Verb,Tense,FIN,Neg) ---> %% TA-110111
    hlexv(Type,Verb,Tense,FIN,Neg),
    !.
 
 
-%%%%¤¤¤¤  HLEXV  (Type,Verb,Tense,FIN,Neg)   lexical verb expression 
+%%%%Â¤Â¤Â¤Â¤  HLEXV  (Type,Verb,Tense,FIN,Neg)   lexical verb expression 
 
-         %% (distinguish have/får/get  as verb/aux) and negation
+         %% (distinguish have/fÃ¥r/get  as verb/aux) and negation
 
 
 hlexv(Type,Verb2,Pres,Fin,Neg) ---> %% (det)( vil) ikke komme fram
@@ -15465,7 +15465,7 @@ hlexv(iv,Verb,Pres,fin,Neg) --->  %% gudes gt er ikke med %% TA-110503
 
 hlexv(Type,Bring,past,fin,Neg) ---> %%  Norwagism har brakt
     has,
-    danow0, %% har nå prøvd %% TA-110303
+    danow0, %% har nÃ¥ prÃ¸vd %% TA-110303
     negation0(Neg),
     lexv(Type,Bring,past,part),  %% Bring tv1dtv
     reflexiv0(Bring).     %% .. meg
@@ -15479,19 +15479,19 @@ hlexv(tv,bring,P,Q,id) ---> %%  Norwagism  Ha med seg
 
 
 
-hlexv(Type,Verb2,past,fin,Neg) ---> %% Får ikke laget en feil 
+hlexv(Type,Verb2,past,fin,Neg) ---> %% FÃ¥r ikke laget en feil 
     w(verb(get,_Pres,fin)), 
     negation0(Neg),
     w(verb(Verb2,past,part)),
        {verbtype(Verb2,Type)}. %% no cut
 
 
-hlexv(Type,Verb,Pres,fin,Neg) ---> % får kjøre/kjørt 
-    w(verb(get,Pres,fin)), %% får/fikk
+hlexv(Type,Verb,Pres,fin,Neg) ---> % fÃ¥r kjÃ¸re/kjÃ¸rt 
+    w(verb(get,Pres,fin)), %% fÃ¥r/fikk
     negation0(Neg),
-    lexv(Type,Verb,Q,R), %% fikk kjøre/ fikk kjørt
+    lexv(Type,Verb,Q,R), %% fikk kjÃ¸re/ fikk kjÃ¸rt
     {Q \== imp, %% fikk kontakt \= kontaktet
-     R \= fin},   %% * fikk kjører
+     R \= fin},   %% * fikk kjÃ¸rer
      !.
 
 
@@ -15499,7 +15499,7 @@ hlexv(Type,Verb,Pres,fin,Neg) ---> % får kjøre/kjørt
 
 
 
-hlexv(Type,Verb,past,fin,Neg) ---> % tiden er nå ikke kommet 
+hlexv(Type,Verb,past,fin,Neg) ---> % tiden er nÃ¥ ikke kommet 
     w(verb(be,_Pres,fin)),
     now0,   %% now is redundant here
     negation0(Neg),
@@ -15518,7 +15518,7 @@ hlexv(Type,know1,P,Q,Neg) ---> %% vet (hva du heter)
      w(verb(know,P,Q)),   
      negation0(Neg),
      look_ahead([Hva]),  {testmember(Hva,[hva,hvem,hvilken,hvilket,hvilke])},
-     !,               %%         %%  når* *hvor* viktig
+     !,               %%         %%  nÃ¥r* *hvor* viktig
      {Type=tv}.  
 
 
@@ -15528,9 +15528,9 @@ hlexv(tv,know1,P,Q,Neg) ---> %% Tricky vite om = vite
      [om].
      %% not !
 
-%% Experiment fikk bussen kjørt \== fikk kjørt bussen %% Rough 
-hlexv(tv,Do1,Pres,fin,Neg) ---> %% får dette gjort -> får gjort dette
-     w(verb(get,Pres,fin)), %% får/fikk/        .. vil få?
+%% Experiment fikk bussen kjÃ¸rt \== fikk kjÃ¸rt bussen %% Rough 
+hlexv(tv,Do1,Pres,fin,Neg) ---> %% fÃ¥r dette gjort -> fÃ¥r gjort dette
+     w(verb(get,Pres,fin)), %% fÃ¥r/fikk/        .. vil fÃ¥?
      negation0(Neg),
      look_ahead_np,
      np1_accept(X,NP), %% [dette], %% very special
@@ -15539,9 +15539,9 @@ hlexv(tv,Do1,Pres,fin,Neg) ---> %% får dette gjort -> får gjort dette
      []- xnp(X,NP).
 
 
-hlexv(tv,get,pres,fin,Neg) ---> %% delayed decision får=aux/verb 
-     [får],   
-     not_look_ahead(w(verb(_,inf,_))), %% få synge/synger 
+hlexv(tv,get,pres,fin,Neg) ---> %% delayed decision fÃ¥r=aux/verb 
+     [fÃ¥r],   
+     not_look_ahead(w(verb(_,inf,_))), %% fÃ¥ synge/synger 
      negation0(Neg),
      optional([opp]), %% ad hoc 
      !.
@@ -15561,7 +15561,7 @@ hlexv(RTV,U,P,Q,Neg) ---> %% Tricky
      w(verb(U,P,Q)), %% understand that|why|how
         {testmember(U,[understand,believe,know])},
      negation0(Neg),
-     look_ahead_lit([at,hvordan,hvorfor,når]),
+     look_ahead_lit([at,hvordan,hvorfor,nÃ¥r]),
      !,
      {RTV=rv}. 
 
@@ -15612,7 +15612,7 @@ hlexv(Type,Verb,Time,Mode,N) --->
 
 
 
-%%%%%¤¤¤¤   LEXV 
+%%%%%Â¤Â¤Â¤Â¤   LEXV 
 
 %% lexical verb,   verb expression with subcategory
 
@@ -15631,19 +15631,19 @@ lexv(Type,Come,past,fin) ---> %% holde ut = vente| legge ned=stoppe
 
 
 
-lexv(Type,Arrive,Pres,part) ---> %% møtt opp = arrived
+lexv(Type,Arrive,Pres,part) ---> %% mÃ¸tt opp = arrived
     w(verb(Meet,Pres,part)),
 
-    particlev2(Meet,Arrive), %% møtt opp
+    particlev2(Meet,Arrive), %% mÃ¸tt opp
     {verbtype(Arrive,Type)},
     !.
 
-lexv(iv,Go,past,fin) --->   %% (ville) gått -> gikk %% ad hoc, 
+lexv(iv,Go,past,fin) --->   %% (ville) gÃ¥tt -> gikk %% ad hoc, 
     w(verb(Go,past,part)),  %% ad hoc, dont kbow prefix aux 
     {verbtype(Go,iv)},
     !.
 
-lexv(iv,Go,pres,part) ---> %% er/var  gående = går/gikk 
+lexv(iv,Go,pres,part) ---> %% er/var  gÃ¥ende = gÃ¥r/gikk 
     w(verb(Go,pres,part)),
     {verbtype(Go,iv)},
     !.
@@ -15654,7 +15654,7 @@ lexv(dtv,Tell,Pres,Fin) --->
     {verbtype(Tell,dtv)}.
 
 
-lexv(iv,be1,pres,fin) --->  %% (vil) være  %% ad Hoc
+lexv(iv,be1,pres,fin) --->  %% (vil) vÃ¦re  %% ad Hoc
     w(verb(be,inf,fin)). %% after aux have been taken
 
 
@@ -15684,12 +15684,12 @@ lexv(rv,Want,Pres,Fin) --->
 
 
 
-lexv(iv,Go,Tense,fin) ---> %% er/var  gående = går/gikk
+lexv(iv,Go,Tense,fin) ---> %% er/var  gÃ¥ende = gÃ¥r/gikk
     w(verb(be,Tense,fin)),
     w(verb(Go,pres,part)),
     !.
 
-lexv(iv,Go,past,fin) ---> %% er/var  gående = gikk
+lexv(iv,Go,past,fin) ---> %% er/var  gÃ¥ende = gikk
     w(verb(be,_Tense,fin)),
     w(verb(Go,pres,part)),
     !.
@@ -15725,7 +15725,7 @@ lexv(rv,mean,P,Q) ---> %%  Ugly %%  jeg mener du er dum
 
 lexv(tv,know1,P,Q) ---> %% kjenne  
      w(verb(know,P,Q)),    
-     not_look_ahead([når]),
+     not_look_ahead([nÃ¥r]),
      not_look_ahead([at]).
 
 
@@ -15737,7 +15737,7 @@ lexv(T,Live,P,Q)--->
 
 lexv(T,Live,P,Q)--->
     (do),                   %% SUSPECT
-    not_look_ahead([nå]), %% <--
+    not_look_ahead([nÃ¥]), %% <--
     w(verb(Live,P,Q)),
     {verbtype(Live,T)},    
     !,accept.
@@ -15745,10 +15745,10 @@ lexv(T,Live,P,Q)--->
 
 lexv(T,KNOW,P,Q)--->
     faa,
-    not_look_ahead([nå]), %% <-- 
+    not_look_ahead([nÃ¥]), %% <-- 
     lexv(T,KNOW,P,Q), 
     {verbtype(KNOW,T)},  
-    {\+  KNOW = manage}. %% få greie på 
+    {\+  KNOW = manage}. %% fÃ¥ greie pÃ¥ 
     %% !,accept. Not "!" here
 
 lexv(tv,run,P,Q) ---> %% IV before TV   run with 
@@ -15767,15 +15767,15 @@ lexv(cv,be,pres,fin) ---> %% possibly aux (auxilary) %% New verbtype (copula)!
     aux0, 
     be.
 
-lexv(tv,wonder,P,Q) ---> %% lure (på)
+lexv(tv,wonder,P,Q) ---> %% lure (pÃ¥)
      w(verb(wonder,P,Q)).    
 
-lexv(tv,want,P,Q) ---> %% tenke meg = ønske 
+lexv(tv,want,P,Q) ---> %% tenke meg = Ã¸nske 
      w(verb(think,P,Q)),
      rfxpron.  
 
 
-lexv(VT,Speak,past,fin)--->   %% ville sett -> så
+lexv(VT,Speak,past,fin)--->   %% ville sett -> sÃ¥
     aux1,  
     w(verb(Give,past,part)),
     not_look_ahead([om]), %% i am fed up 
@@ -15829,10 +15829,10 @@ lexv(T,Live,past,fin)---> %%  skulle ha hatt -> hadde
     {verbtype(Live,T)}.
 
 
-%% Moved back:  hvilken øl kan jeg ta () med meg. %%
+%% Moved back:  hvilken Ã¸l kan jeg ta () med meg. %%
 lexv(tv,bring,P,Q) ---> %% Norwagism  Ta med
-    w(verb(take,P,Q)),  %% kjøre = take  OOPS
-    prep1(with).        %% jeg kjører med bus
+    w(verb(take,P,Q)),  %% kjÃ¸re = take  OOPS
+    prep1(with).        %% jeg kjÃ¸rer med bus
   
 
 lexv(Type,Wait,Pres,Part) ---> %% holde ut = vente| legge ned=stoppe 
@@ -15854,7 +15854,7 @@ lexv(Type,Wait,Pres,Part) ---> %% holde ut = vente| legge ned=stoppe
 
 
 
-%%%¤ PREADJS0 (Seq) 
+%%%Â¤ PREADJS0 (Seq) 
 
 preadjs0(_) --->
     [s], %% s before kl does not mean "sist" last
@@ -15880,7 +15880,7 @@ preadjs0((A,Alist)) --->
      dent0, %% den gamle bybrua 
      preadj1(A),
 
-     not_look_ahead(w(prep(_))), %% feil (n) på  
+     not_look_ahead(w(prep(_))), %% feil (n) pÃ¥  
 
      %% !,    %% allow backtrack  en feil  (n|a) og svakheten 
      preadjs0(Alist).
@@ -15896,11 +15896,11 @@ preadjs0(true)---> []. %% ?optional([av]).
 preadjs((PA,Blist)) --->
     preadj1(PA),
 
-    not_look_ahead(w(prep(_))), %% feil (n) på  
+    not_look_ahead(w(prep(_))), %% feil (n) pÃ¥  
  
     preadjs0(Blist).
 
-%%%¤ PREADJ1 (gr/ADJ)
+%%%Â¤ PREADJ1 (gr/ADJ)
 
 
 preadj1(nil/first) --->  %% 1. = first %% TA-110411
@@ -15938,8 +15938,8 @@ preadj1(VERY/PA) ---> %% TA-110427
     w(adj2(PA,nil)). 
 
 preadj1(NIL/PA) ---> 
-    not_look_ahead_lit([først,senest,tidligst]), 
-    not_look_ahead(w(prep(_))), %% feil (n) på  
+    not_look_ahead_lit([fÃ¸rst,senest,tidligst]), 
+    not_look_ahead(w(prep(_))), %% feil (n) pÃ¥  
     optional([mye]), %% mye lenger tid 
     w(adj2(PA,NIL)),  
     {\+ user:post_adjective(PA)}, %% fremme kl 17 # 
@@ -15956,7 +15956,7 @@ preadj1(NIL/PA) --->
  adj_conjunction ---> ['/'].
 
 
-%%%%¤¤  ADJ1S    1 eller flere 
+%%%%Â¤Â¤  ADJ1S    1 eller flere 
 
 adj1s((Big;Blue),X,S,BIGX or BLUEY) --->   %% ad hoc
     adj1(Big,X,S,BIGX),
@@ -15968,14 +15968,14 @@ adj1s((Big,Blue),X,S,BIGX and BLUEY) --->   %% ad hoc
     adj1(Big,X,S,BIGX),
     [og],
     adj1(Blue,X,S,BLUEY),
-    not_look_ahead(w(prep(_for))), %% konsis og forståelig for alle
+    not_look_ahead(w(prep(_for))), %% konsis og forstÃ¥elig for alle
     !.                             %% then separate be_pred
 
 adj1s(Big,X,S,BIGX) --->   %% ad hoc
     adj1(Big,X,S,BIGX).
 
 
-%%%¤¤¤ ADJ1 
+%%%Â¤Â¤Â¤ ADJ1 
  
 
 
@@ -15987,14 +15987,14 @@ adj1(Big,X,S,BIGX) --->
 
 adj1(Big,X,S,BIGX) --->  
     w(adj2(Big,Comp)),
-    {adj_template(Comp,Big,X,S,BIGX)}.  %% Størst=sup big
+    {adj_template(Comp,Big,X,S,BIGX)}.  %% StÃ¸rst=sup big
 
 
 %% Adjective A treated like an intransitive verb be/A
                                            
 %% gradverb1(Very) ---> [Very],{gradv_templ(Very,_)}.  %% SUSPENDED
 
-%%%¤¤ GRADVERBS0 
+%%%Â¤Â¤ GRADVERBS0 
 
 gradverbs0(Very) --->  %% TA-110110
     gradverb(Very),
@@ -16002,9 +16002,9 @@ gradverbs0(Very) --->  %% TA-110110
     gradverbs0(_).
 gradverbs0(nil) ---> [].
 
-%%%¤¤ GRADVERB0
+%%%Â¤Â¤ GRADVERB0
 
-% jeg forsket litt mer på dette
+% jeg forsket litt mer pÃ¥ dette
 
 gradverb0(more) ---> 
     [mer],                %% also s-adverb
@@ -16018,9 +16018,9 @@ gradverb0(Gradverb) --->
 
 gradverb0(nil) ---> [].           
 
-%%%¤ GRADVERB 
+%%%Â¤ GRADVERB 
 
-gradverb(little) ---> [dårlig]. %% TA-110301
+gradverb(little) ---> [dÃ¥rlig]. %% TA-110301
 gradverb(more) --->[litt], [mer],!.
 gradverb(more) --->[mye], [mer],!.
 
@@ -16034,13 +16034,13 @@ gradverb(little) ---> [litt].
 gradverb(somewhat)---> [noe]. 
 gradverb(often) ---> [ofte]. %%  " very delayed" not similar to "often delayed" ?
 
-  gradverb(nil) ---> [så].     %%   collides with så fort som mulig
+  gradverb(nil) ---> [sÃ¥].     %%   collides with sÃ¥ fort som mulig
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-prepnom(P) ---> prep(P),{P==regarding},!,accept. %% hva kan jeg spørre om
+prepnom(P) ---> prep(P),{P==regarding},!,accept. %% hva kan jeg spÃ¸rre om
 prepnom(P) ---> prepnof(P). 
 
 prepnog(long,from) ---> prep1(from),!,accept. %% Ugly  but fra = after/from ?*?*
@@ -16051,7 +16051,7 @@ prepnof(P) ---> prep(P),     %%  Fix ( til => to)
     {\+ ( P = of)}. 
 
 
-% Hvor går bussen <> 
+% Hvor gÃ¥r bussen <> 
 % Missing Preposition Repair
 % Careful selection
 
@@ -16077,7 +16077,7 @@ adjustprep(know,_,regarding)  --->   [om]. %% not during2
 adjustprep(know1,_,regarding) --->   [om]. %% not during2
 
 
-adjustprep(go, _,from)    ---> prep(after). %% har du besvart etter påske****
+adjustprep(go, _,from)    ---> prep(after). %% har du besvart etter pÃ¥ske****
 adjustprep(go, _,to)      ---> prep(of).    %% Dirty hack
 
 adjustprep(_, _,Prep)    ---> prep(Prep). %% correct
@@ -16104,13 +16104,13 @@ missingprep(stop, _, at) ---> [].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%¤¤ PREP (WORD)
+%%%%Â¤Â¤ PREP (WORD)
 
 
-prep0(from) ---> prep(from),!,accept.  %% AD HAC   Hvor går bussen (i) fra
+prep0(from) ---> prep(from),!,accept.  %% AD HAC   Hvor gÃ¥r bussen (i) fra
 
-prep0(P) ---> prep(P), %% ,!,accept.  %%   hvor går buss 6 from (fra/etter)
-    {P\==of}.                  %% hvor lang tid bruker bussen *på* 
+prep0(P) ---> prep(P), %% ,!,accept.  %%   hvor gÃ¥r buss 6 from (fra/etter)
+    {P\==of}.                  %% hvor lang tid bruker bussen *pÃ¥* 
 
 prep0(in) ---> [].              %% hvor kommer bussen 
 
@@ -16127,7 +16127,7 @@ prep(from) ---> [dra], %% dra = fra SMS
     look_ahead(w(name(_,n,_))).
 
 
-prep(P) ---> % and0,  Bussen går (og i dag) skal jeg ...
+prep(P) ---> % and0,  Bussen gÃ¥r (og i dag) skal jeg ...
              %  (i fra syndrom)
       prep2(P).      % Prepositional Expressions (moved (greed))
 
@@ -16136,11 +16136,11 @@ prep(P) ---> % and0
              prep1(P).  
 
 
-%%%%¤¤ PREP1 (WORD)
+%%%%Â¤Â¤ PREP1 (WORD)
 
 prep1(after) ---> [e],not_look_ahead(['.']),!. %% til e. tambarskjelves gat e 1700
 
-prep1(P) ---> w(prep(P)), not_look_ahead([å]). 
+prep1(P) ---> w(prep(P)), not_look_ahead([Ã¥]). 
 
 prep1(to) ---> [ti],look_ahead(w(name(_,_,_))). %% ti=til/10 Dial.
 
@@ -16186,20 +16186,20 @@ newatomid(NN) --->
 % John died after the time that Mary died in
 %           *****     ****                **
 
-%%%%%¤¤¤¤¤    XSUBJUNCTION  
+%%%%%Â¤Â¤Â¤Â¤Â¤    XSUBJUNCTION  
 
 
 xsubjunction(nil, coevent, instead_of) ---> [fremfor]. %% E 
 
 xsubjunction(nil, coevent, in_order_to) ---> in_order_to.  
 
-xsubjunction(nil, coevent, without) ---> utenå.   
+xsubjunction(nil, coevent, without) ---> utenÃ¥.   
 
-xsubjunction(nil, coevent, by) ---> [ved],[å]. 
+xsubjunction(nil, coevent, by) ---> [ved],[Ã¥]. 
 
 
 
-%%%%¤¤¤  SUBJUNCTION 
+%%%%Â¤Â¤Â¤  SUBJUNCTION 
 
 subjunction(before,  time,  in)  ---> prep1(to), %% inntil 
                                       look_ahead_np. 
@@ -16213,18 +16213,18 @@ subjunction(after,  time,  in)  --->
     look_ahead([jeg]),!. %% etc
 
 
-subjunction(before, time,  in)  --->  [før],  %% ! not prep 
-    not_look_ahead(w(nb(_,_))),               %% før 20 means clock %% Ad Hoc
+subjunction(before, time,  in)  --->  [fÃ¸r],  %% ! not prep 
+    not_look_ahead(w(nb(_,_))),               %% fÃ¸r 20 means clock %% Ad Hoc
     not_look_ahead(w(noun(clock,sin,def,n))).  
 
 
 subjunction(before, time,  in)  --->  [til],  % ... til jeg skal til DV
                                       not_look_ahead(w(name(_Dragvoll,_,_))). %% til dragvoll
 
-%%    bussen som kjører til dragvoll finnes. // not inntil 
+%%    bussen som kjÃ¸rer til dragvoll finnes. // not inntil 
 
 % subjunction(before, time,  in)  --->  prep1(to).  %% Norwagism
-% buss som går idag til munkegata fins = før munkegata fins 
+% buss som gÃ¥r idag til munkegata fins = fÃ¸r munkegata fins 
 
 
 subjunction(not_withstanding,coevent,nil)  ---> uansett,[om]. 
@@ -16244,7 +16244,7 @@ subjunction(nil, coevent, so_that) --->  because.  %%  NB
 
 
 
-subjunction(nil, coevent, so_that) --->  if1.      %% hvis.. så .. <--  
+subjunction(nil, coevent, so_that) --->  if1.      %% hvis.. sÃ¥ .. <--  
 
 subjunction(nil, coevent, despite_of)    --->  prep1(without),[at]. 
 
@@ -16259,10 +16259,10 @@ subjunction(during, time,  in)  --->  while.
 
 subjunction(in,     time,  in)  --->  [om],when1. 
 subjunction(in,     time,  in)  --->  when1.  
-subjunction(in,     time,  in)  --->  [så],w(adv(fast)). %% raskt/snart/hurtig
+subjunction(in,     time,  in)  --->  [sÃ¥],w(adv(fast)). %% raskt/snart/hurtig
 
 subjunction(in,     time,  in)  --->  [om],[hvordan].
-subjunction(in,     time,  in)  --->  [på],[hvordan]. 
+subjunction(in,     time,  in)  --->  [pÃ¥],[hvordan]. 
 
 subjunction(in,     time,  in)  --->  [da]. 
 
@@ -16286,7 +16286,7 @@ because ---> [siden].
 
 /* ruter for buss 60 %% TA-110622
 because ---> [for],  %% TA-110105
-    look_ahead_np.   %% Haz  for trikken står precaution, for is also prep
+    look_ahead_np.   %% Haz  for trikken stÃ¥r precaution, for is also prep
 */
     
 
@@ -16314,8 +16314,8 @@ be_it_tf_that(N) ---> %% TA-110106
 
 
 
-omaa ---> [om],[å],!.
-omaa ---> [å],!.
+omaa ---> [om],[Ã¥],!.
+omaa ---> [Ã¥],!.
 
 gadd ---> [vil]. %%
 
@@ -16339,20 +16339,20 @@ hver0 ---> [hvert],!.
 hver0 ---> [hver],!.
 hver0 ---> [].
 
-detå --->  %% ad hoc
+detÃ¥ --->  %% ad hoc
     [det],
     infinitive,
     !.
-detå ---> 
+detÃ¥ ---> 
     [det],
     [og],
     !.
-detå --->  
+detÃ¥ --->  
     [det],
     [for],
     infinitive,
     !.
-detå --->  
+detÃ¥ --->  
     [det],
     [for],
     [og],
@@ -16437,9 +16437,9 @@ a ---> [noen],
     not_look_ahead([de]),  
     look_ahead_np.
 
-a ---> [noe],  not_look_ahead([de]),  %%   Går det noe tog 
+a ---> [noe],  not_look_ahead([de]),  %%   GÃ¥r det noe tog 
                look_ahead_np.           
-    %% jeg så noe de liket 
+    %% jeg sÃ¥ noe de liket 
 
 a ---> art1, optional([slik]).
 
@@ -16480,7 +16480,7 @@ andor ---> [og],!.
 
 andor ---> [eller],!.
 
-betwand0 ---> [å],!.  %% (between A) and (B)
+betwand0 ---> [Ã¥],!.  %% (between A) and (B)
 betwand0 ---> [og],!.
 betwand0 ---> w(prep(to)),!. %%  mellom A til B
 betwand0 ---> [].
@@ -16489,9 +16489,9 @@ betwand0 ---> [].
 and1 ---> [og].
 
 and1 ---> [men], %% statement conjunction  %% Haz %% TA-110725
-    look_ahead_lit([en,et]). %% ikke en bil men en båt
+    look_ahead_lit([en,et]). %% ikke en bil men en bÃ¥t
 
-%% and1 ---> [å]. %% Hazard ? er det gratis å ta buss 
+%% and1 ---> [Ã¥]. %% Hazard ? er det gratis Ã¥ ta buss 
 
 
 %% vmod_conjunction is conjunction between verb complements !
@@ -16499,19 +16499,19 @@ and1 ---> [men], %% statement conjunction  %% Haz %% TA-110725
 vmod_conjunction ---> [mao]. %% TA-110107
 
 vmod_conjunction ---> [men], %% Technicality  %% TA-101125
-    not_look_ahead_lit([med,nå]). %% men med internett får
-                 %% Jeg kjører etter kl 13 og før kl 16.
-                 %% Jeg kjører etter kl 13  og  før kl 16  skal jeg ...
-                 %% Jeg kjører etter kl 13 men før kl 16
+    not_look_ahead_lit([med,nÃ¥]). %% men med internett fÃ¥r
+                 %% Jeg kjÃ¸rer etter kl 13 og fÃ¸r kl 16.
+                 %% Jeg kjÃ¸rer etter kl 13  og  fÃ¸r kl 16  skal jeg ...
+                 %% Jeg kjÃ¸rer etter kl 13 men fÃ¸r kl 16
 
 %% Ad hoc:  dont allow  "til nidarvoll og <time clause>"
 
 vmod_conjunction ---> one_of_lit([og,eller]), 
 
-   optional([så]), 
-   not_look_ahead_lit([da,så,nå]), %% TA-110724      %% og nå //stm stm 
+   optional([sÃ¥]), 
+   not_look_ahead_lit([da,sÃ¥,nÃ¥]), %% TA-110724      %% og nÃ¥ //stm stm 
 
-   not_look_ahead(w(prep(in))),  %% og i kveld. Ad Hoc %% * bussen går i dag og i kveld
+   not_look_ahead(w(prep(in))),  %% og i kveld. Ad Hoc %% * bussen gÃ¥r i dag og i kveld
    not_look_ahead(w([ikveld])),  %%
    not_look_ahead(w([imorgen])), %% etc
    not_look_ahead(w(name(_,_,_))).
@@ -16528,7 +16528,7 @@ andwhere0 ---> and1,where,!,accept.
 andwhere0 ---> and1,[hvorfra],!,accept.
 andwhere0 ---> [].  
 
-%%%¤ NP_CONJUNCTION 
+%%%Â¤ NP_CONJUNCTION 
 
 np_conjunction(_) ---> %% jeg tar bussen og det er bra
     andor(_), %% og|men
@@ -16538,11 +16538,11 @@ np_conjunction(_) ---> %% jeg tar bussen og det er bra
 
 np_conjunction(AO) ---> 
     andor(AO),
-    not_look_ahead_lit([da,så]), %% TA-110725
+    not_look_ahead_lit([da,sÃ¥]), %% TA-110725
     not_look_ahead(w(prep(_))),  %% TA-110304 .. og uten **
-    not_look_ahead(['.']).       %% endofline=> også
+    not_look_ahead(['.']).       %% endofline=> ogsÃ¥
 
-%%%¤ ANDOR0
+%%%Â¤ ANDOR0
 
 
 andor0(A) --->
@@ -16551,15 +16551,15 @@ andor0(A) --->
 andor0(and) ---> 
     {user:value(textflag,true)}.
 
-%%%¤ ANDOR
+%%%Â¤ ANDOR
 
 andor(and) ---> and1, 
-    not_look_ahead(['.']),   %% -> også 
+    not_look_ahead(['.']),   %% -> ogsÃ¥ 
     not_look_ahead_lit([jeg,mange,ikke,ingen,noen,disse,dette]). %% ad hoc 
 
-andor(or)---> [eller],not_look_ahead(w(verb(_,_,_))). %% tar buss eller kjører trikk
+andor(or)---> [eller],not_look_ahead(w(verb(_,_,_))). %% tar buss eller kjÃ¸rer trikk
 
-andor(and) ---> %% er tore amble en lærer ?
+andor(and) ---> %% er tore amble en lÃ¦rer ?
     {user:value(teleflag,true)}, 
     art,
     !,reject.
@@ -16571,9 +16571,9 @@ andor(and) --->  {user:value(teleflag,true)}.
 
 
 
-also0 ---> [også],[samtidig],!. %% smalltalk 
-also0 ---> [samtidig],[også],!.
-also0 ---> [også],!.
+also0 ---> [ogsÃ¥],[samtidig],!. %% smalltalk 
+also0 ---> [samtidig],[ogsÃ¥],!.
+also0 ---> [ogsÃ¥],!.
 also0 ---> [samtidig],!.
 also0 ---> [deretter],!. 
 also0 ---> [].
@@ -16582,7 +16582,7 @@ also0 ---> [].
 
 anaa ---> ann0,ogaa,!. %% TA-110331
 
-ogaa ---> [å].  %% TA-110331
+ogaa ---> [Ã¥].  %% TA-110331
 ogaa ---> [og]. %% spiw 
 
 ann0 ---> [an],!,accept. %% Norwagism
@@ -16608,7 +16608,7 @@ as0 ---> [].
 andsoon ---> [og], sovidere0. 
 
   sovidere0 ---> sov0,videre0.
-  sov0  ---> [så].
+  sov0  ---> [sÃ¥].
   sov0  ---> [].
   videre0   ---> [videre].
   videre0   ---> [].
@@ -16624,7 +16624,7 @@ aspossible --->
 
 
 
-aso0 ---> [så],!,accept. 
+aso0 ---> [sÃ¥],!,accept. 
 aso0 ---> too,!,accept.
 aso0 ---> as.
 aso0 ---> [].  
@@ -16633,7 +16633,7 @@ at ---> prep(at).
 
 athe ---> the.  
 athe ---> a.
-% athe ---> all. %% de første buss 5 -> np_head
+% athe ---> all. %% de fÃ¸rste buss 5 -> np_head
 
 athe0 ---> athe,!.    % The book 'ABC' // den 16. september
 athe0 ---> [].
@@ -16652,18 +16652,18 @@ athe0 ---> [].
 
 
 
-%  skal få gå ==> gå
-%  skal få    ==> få
-%  skal    gå ==> gå
-%       få gå ==> gå
-%       få    ==> få
-%  skal       ==> gå 
-%          gå ==> gå
+%  skal fÃ¥ gÃ¥ ==> gÃ¥
+%  skal fÃ¥    ==> fÃ¥
+%  skal    gÃ¥ ==> gÃ¥
+%       fÃ¥ gÃ¥ ==> gÃ¥
+%       fÃ¥    ==> fÃ¥
+%  skal       ==> gÃ¥ 
+%          gÃ¥ ==> gÃ¥
 
 
 %% Passive aux   (..ble)  %% Ad Hoc
 
-blei(N) --->  %% står listet
+blei(N) --->  %% stÃ¥r listet
    
     w(verb(stand,pres,fin)),
     negation0(N),
@@ -16673,7 +16673,7 @@ blei(N) --->  %% står listet
 blei(N) --->  blei,negation0(N).
 
 
-blei --->  %% står listet 
+blei --->  %% stÃ¥r listet 
    
     w(verb(stand,pres,fin)),
     look_ahead(w(verb(_list,past,part))), %% parkert,listet,plassert ...
@@ -16716,7 +16716,7 @@ aux0(id,pres) --->   aux0. %% ad hoc  [].
 
 
 
-%%%¤¤ AUXS0/2
+%%%Â¤Â¤ AUXS0/2
 
 auxs0(Neg,Tense) ---> %% Ad Hoc
     aux1(Neg,Tense),
@@ -16731,7 +16731,7 @@ auxs0 ---> aux1,!,auxs0.
 auxs0 ---> [].
 
 
-%%%¤¤ AUX1/2
+%%%Â¤Â¤ AUX1/2
 
 aux1(Neg,pres) ---> [kan],
     redundant0,  
@@ -16750,36 +16750,36 @@ aux1(N,pres) ---> aux1,negation0(N).
 
 skalsaa ---> aux1,so0. 
 
-%%%¤¤ AUX1/0 
+%%%Â¤Â¤ AUX1/0 
 
 faux1 ---> w(verb(get,_,fin)),!. %% faa as aux
 faux1 ---> aux1.
 
-aux1 ---> one_of_lit([kan,kunne,får,fikk]),
-    not_look_ahead([nå]),
+aux1 ---> one_of_lit([kan,kunne,fÃ¥r,fikk]),
+    not_look_ahead([nÃ¥]),
     look_ahead(w(verb(_,inf,_))),
-    !. %% kan  være
+    !. %% kan  vÃ¦re
 
 
-%% jeg får nå : not i will reach !
+%% jeg fÃ¥r nÃ¥ : not i will reach !
 
-%% så kunne dette gjøres | han kunne dette
-aux1 ---> one_of_lit([kan,kunne]). %% kan oså verb 
+%% sÃ¥ kunne dette gjÃ¸res | han kunne dette
+aux1 ---> one_of_lit([kan,kunne]). %% kan osÃ¥ verb 
 %%    look_ahead_lit([man,du,jeg,vi,dere]), %% ad hoc %% TA-110330
-aux1 ---> one_of_lit([bør,burde,må,måtte,skal,skulle,vil,ville]). 
+aux1 ---> one_of_lit([bÃ¸r,burde,mÃ¥,mÃ¥tte,skal,skulle,vil,ville]). 
 
 
 aux10 ---> aux1,!. %% simple, no neg
 aux10 ---> [].
 
-aux0 ---> faa,look_ahead(w(verb(_help,_,_))),!. %% få|r hj_lpe(t)
-aux0 ---> [må]. %% Special case, jeg må til nth/ jeg må gå til nth
-aux0 ---> be,[så], w(adj2(good,nil)),[å],!,accept. %% ( fronted)
+aux0 ---> faa,look_ahead(w(verb(_help,_,_))),!. %% fÃ¥|r hj_lpe(t)
+aux0 ---> [mÃ¥]. %% Special case, jeg mÃ¥ til nth/ jeg mÃ¥ gÃ¥ til nth
+aux0 ---> be,[sÃ¥], w(adj2(good,nil)),[Ã¥],!,accept. %% ( fronted)
 aux0 ---> (do). 
 aux0 ---> [].
 
 
-%%%%¤¤¤  PAUX0   aux before pres pass
+%%%%Â¤Â¤Â¤  PAUX0   aux before pres pass
 
 
 paux0 ---> has,[blitt],!. %% skulle ha blitt %% ad hoc
@@ -16789,8 +16789,8 @@ paux0 ---> [vil],[bli],!. %% .. ilagt en bot
 
 paux0 ---> [Skal],
         {testmember(Skal,
-                         [skal,vil,bør,må,kan,
-                          skulle,ville,burde,måtte,kunne])},!.
+                         [skal,vil,bÃ¸r,mÃ¥,kan,
+                          skulle,ville,burde,mÃ¥tte,kunne])},!.
 
 paux0 ---> []. 
 
@@ -16811,14 +16811,14 @@ do0 ---> [].
 
 
 docan ---> [kan].
-docan ---> [må].
-docan ---> [får]. %% .. får jeg ta ...
+docan ---> [mÃ¥].
+docan ---> [fÃ¥r]. %% .. fÃ¥r jeg ta ...
 docan ---> (do),!.
 
-%%%%¤¤¤  DO   Basic active aux
+%%%%Â¤Â¤Â¤  DO   Basic active aux
 
 (do) ---> faa, 
-    w(noun(information,_,_,_)), %% få greie på 
+    w(noun(information,_,_,_)), %% fÃ¥ greie pÃ¥ 
     !,
     reject.                          
 
@@ -16833,12 +16833,12 @@ docan ---> (do),!.
 
 may ---> [kan], look_ahead(w(verb(_,_,_))).  %% + kan synge, - kan  %% kan passeres  engelsk,  
 
-may ---> [får],look_ahead(w(verb(_,_,_))).  
+may ---> [fÃ¥r],look_ahead(w(verb(_,_,_))).  
 
-may ---> [bør].   %%  ??? 
-may ---> [må].    %%   hvor må jeg vente
+may ---> [bÃ¸r].   %%  ??? 
+may ---> [mÃ¥].    %%   hvor mÃ¥ jeg vente
 
-must ---> [må].
+must ---> [mÃ¥].
 must ---> [skal]. 
 
 
@@ -16850,8 +16850,8 @@ must ---> [skal].
 
 %%% BE DO BE DO BE DO
 
-be(N) ---> w(verb(hold,_,fin)), %% TA-110106  %% holder meg våken
-           negation0(N1),  %% stacked .. må holde meg våken
+be(N) ---> w(verb(hold,_,fin)), %% TA-110106  %% holder meg vÃ¥ken
+           negation0(N1),  %% stacked .. mÃ¥ holde meg vÃ¥ken
            rfxpron,
            !,
            negation0(N2),
@@ -16866,7 +16866,7 @@ be(id)  ---> be.  %% Stack
 
 be0 ---> optional(be). 
 
-%%%¤ BE 
+%%%Â¤ BE 
 
 
 be ---> aux1, 
@@ -16876,28 +16876,28 @@ be ---> w(verb(have,_,fin)),
         redundant0,   %% sikkert 
         w(verb(be,past,part)),!.
 
-be ---> w(verb(be,_,part)),!. %% skulle vært
+be ---> w(verb(be,_,part)),!. %% skulle vÃ¦rt
 
 be ---> w(verb(be,_,fin)), %% be is basic uninterpreted be
         been0,!. %% er blitt
 
 
-%% John er ikk død
+%% John er ikk dÃ¸d
 
-%%%¤ BE1 
+%%%Â¤ BE1 
 
 be1(N) --->  %% = be(N?)
     w(verb(be,_Pres,fin)),
     redundant0, %% likevel   
     negation0(N).
 
-be1(N) --->  %% = be(N?) skulle ikke være
+be1(N) --->  %% = be(N?) skulle ikke vÃ¦re
     aux1,
     redundant0, %% likevel 
     negation0(N),
     w(verb(be,inf,fin)).
 
-be1(N) --->    %% vil ikke være/ ikke vil være
+be1(N) --->    %% vil ikke vÃ¦re/ ikke vil vÃ¦re
     negation0(M),
     aux1,
     negation2(M,N), %% not dbl neg 
@@ -16929,7 +16929,7 @@ be1(not) --->
 
 %%% 
 
-%%%¤ BE_TRUEFALSE_THAT (NEG)
+%%%Â¤ BE_TRUEFALSE_THAT (NEG)
 
 be_truefalse_that(N) ---> %%  det ser (ikke) ut som at 
    w(verb(See,_,fin)), %% = det ser ut som
@@ -16978,9 +16978,9 @@ be_truefalse_that(N) ---> %%  det ser ut som at
    !.
 
 
-be_truefalse_that(N) ---> %% det er så at 
+be_truefalse_that(N) ---> %% det er sÃ¥ at 
    negation0(N),
-   one_of_lit([så,slik]),
+   one_of_lit([sÃ¥,slik]),
    optional([at]),
    !.
 
@@ -17012,7 +17012,7 @@ be_truefalse_that(N) ---> %% det ser (ikke) ut som (om)
    optional([at]),
    !.
 
-%%%¤ BE_TRUEFALSE 
+%%%Â¤ BE_TRUEFALSE 
 
 be_truefalse(N) ---> %% det virker|er (ikke) ut som (om) 
    w(verb(See,_,fin)), {testmember(See,[be,appear])},
@@ -17072,7 +17072,7 @@ been ---> w(verb(be,past,part)).
 betake ---> be.
 betake ---> w(verb(take,_,fin)).
 
-both0 ---> [både].
+both0 ---> [bÃ¥de].
 both0 ---> [].
 
 by ---> [av],not_look_ahead([hensyn]). 
@@ -17087,7 +17087,7 @@ ca ---> prep1(around), point0,!,accept. %% ca.
 clock0 ---> clock. 
 clock0 ---> [].
 
-%%%¤ CLOCK
+%%%Â¤ CLOCK
 
 clock ---> [k],look_ahead(w(nb(_,_))),!. %% K.Johnsens vei \+ kl 
 clock ---> [k],point,look_ahead(w(nb(_,_))),!. 
@@ -17107,11 +17107,11 @@ colon0 ---> not_look_ahead(['.']). %% fre. = fra. not prep
 colon ---> [':']. 
 colon ---> [';'].  
 
-%% colon ---> ['.']. % if visible  %% bussen går 20. august
+%% colon ---> ['.']. % if visible  %% bussen gÃ¥r 20. august
 
 %% Simple Comparators 
 
-%%¤ COMPARATOR1 
+%%Â¤ COMPARATOR1 
 
 comparator1(X)  ---> comparel(X),!.
 
@@ -17163,10 +17163,10 @@ comparator2(gt,age) ---> older,than.
 comparator2(lt,age) ---> younger,than.
 
 comparator2(gt,latitude) ---> [nord],[for].
-comparator2(lt,latitude) ---> [sør],[for].
+comparator2(lt,latitude) ---> [sÃ¸r],[for].
 
 comparator2(gt,longitude) ---> [vest],[for].
-comparator2(lt,longitude) ---> [øst],[for]. 
+comparator2(lt,longitude) ---> [Ã¸st],[for]. 
 
 comparator2(gt,size) ---> greater,than.
 comparator2(lt,size) ---> [mindre],than.
@@ -17180,9 +17180,9 @@ comparator2(lt,size) ---> [mindre],than.
 comparator3(eq,Good) ---> [like],w(adj2(Good,nil)),[som]. 
 comparator3(gt,Good) ---> [mer],w(adj2(Good,nil)),[enn]. 
 comparator3(lt,Good) ---> [mindre],w(adj2(Good,nil)),[enn]. 
-comparator3(lt,Good) ---> [ikke],[så],w(adj2(Good,nil)),[som]. 
+comparator3(lt,Good) ---> [ikke],[sÃ¥],w(adj2(Good,nil)),[som]. 
 comparator3(ge,Good) ---> [minst],[like],w(adj2(Good,nil)),[som].
-comparator3(le,Good) ---> [høyst],[så],w(adj2(Good,nil)),[som].   %% etc etc
+comparator3(le,Good) ---> [hÃ¸yst],[sÃ¥],w(adj2(Good,nil)),[som].   %% etc etc
 
 
 superlative(M,Q) ---> filanepr(M,N,Q),quant1(N),!,accept.
@@ -17191,7 +17191,7 @@ superlative(M,Q) ---> quant0(N),filanepr(M,N,Q).
 
 %% Section FILANEPR    First Last Next Previous
 
-%%%¤ FLNP
+%%%Â¤ FLNP
 
 flnp(A) ---> w(adj2(A,nil)),
     gmem(A,[first,last,next,previous]). 
@@ -17200,7 +17200,7 @@ flnp(last) ---> w(adj2(late,sup)),!. %% seneste %% TA-101029
 
 flnp(first) ---> w(nb(1,ord)). 
 
-flnpproper(_) ---> [først],!,reject.
+flnpproper(_) ---> [fÃ¸rst],!,reject.
 flnpproper(_) ---> [sist],!,reject. 
 flnpproper(_) ---> [nest],!,reject. 
 
@@ -17224,7 +17224,7 @@ filanepr(min(N),N,size) ---> [minste].
 %% End FILANEPR
 
 
-faaverb(V) ---> faa, w(verb(V,_inf,_fin)),!. %% kan jeg få vite 
+faaverb(V) ---> faa, w(verb(V,_inf,_fin)),!. %% kan jeg fÃ¥ vite 
 faaverb(V) ---> w(verb(V,inf,fin)),!. %% kan jeg vite  
 
 
@@ -17255,14 +17255,14 @@ qm0 ---> [].                  %%
 detsamme ---> [en],[gang].
 detsamme ---> prep1(with),[det],[samme].
 
-%%%¤ DEN0 %% TA-110221
+%%%Â¤ DEN0 %% TA-110221
 
 den0 ---> den,!. %% TA-110221
 den0 ---> [].
 
 den ---> [den]. %% TA-110221
 
-dendet0 ---> look_ahead([d]),!. %% d.l. øvrelids veg (dont eat)
+dendet0 ---> look_ahead([d]),!. %% d.l. Ã¸vrelids veg (dont eat)
 dendet0 ---> [den],
     not_look_ahead(w(nb(_,_))), 
     !,accept. %% den 12. special
@@ -17275,7 +17275,7 @@ dent0 ---> [den],!.  %%   den neste (bussen) / det neste(toget)
 dent0 ---> [det],!.  
 dent0 ---> [de],!,accept.
 dent0 ---> [noen],!. 
-dent0 ---> [en],!. %% Hazard? .. fin nyttårsdag
+dent0 ---> [en],!. %% Hazard? .. fin nyttÃ¥rsdag
 dent0 ---> [].
 
 det0 ---> thereit,thereit_not_pronoun,!,accept. 
@@ -17293,10 +17293,10 @@ each ---> [alle],the.
 
 earlier ---> [tidligere].
 %% earlier ---> prep1(in),sta. %%  dict_n
-earlier ---> prep1(on),[forhånd]. 
-earlier ---> [derfør]. %% Technical
+earlier ---> prep1(on),[forhÃ¥nd]. 
+earlier ---> [derfÃ¸r]. %% Technical
 
-%% earlier ---> [før].  %% Too Hazardous %% buss går før ..
+%% earlier ---> [fÃ¸r].  %% Too Hazardous %% buss gÃ¥r fÃ¸r ..
 
 either0 ---> [enten],!,accept.
 either0 ---> [].
@@ -17310,7 +17310,7 @@ iyou(vi) ---> [vi].
 
 areyou ---> [erru],negation0(_).  %%  Rhetoric
 areyou ---> w(verb(be,_,fin)),[du],negation0(_).
-areyou ---> [vil],[du],negation0(_), w(verb(be,_,fin)). % vær(e)
+areyou ---> [vil],[du],negation0(_), w(verb(be,_,fin)). % vÃ¦r(e)
 
 every ---> [alle],de0. 
 every ---> [en],[hver]. 
@@ -17323,14 +17323,14 @@ false ---> [usant].
 false ---> [feil].
 false ---> [uriktig].
 
-few ---> [få].
-few ---> [fåtallig]. %% avoid trouble få=verb|aux 
+few ---> [fÃ¥].
+few ---> [fÃ¥tallig]. %% avoid trouble fÃ¥=verb|aux 
 
 first ---> w(adj2(first,nil)). 
 first ---> [tidligste].
 
-faa  ---> [få]. 
-faa  ---> [får]. 
+faa  ---> [fÃ¥]. 
+faa  ---> [fÃ¥r]. 
 
 faa0 ---> faa,!,accept. 
 faa0 ---> []. 
@@ -17342,23 +17342,23 @@ fast ---> hereafter. %%  (e.g.  snart)
 
 from ---> prep(from).
 
-førnår ---> [når].
-førnår ---> [før].
+fÃ¸rnÃ¥r ---> [nÃ¥r].
+fÃ¸rnÃ¥r ---> [fÃ¸r].
 
 
 great ---> w(adj2(great,nil)). 
-great ---> [høy].
+great ---> [hÃ¸y].
 
 greater ---> prep(after).
-greater ---> [større]. 
-greater ---> [høyere].
+greater ---> [stÃ¸rre]. 
+greater ---> [hÃ¸yere].
 %% greater ---> [senere]. 
 greater ---> [mer]. 
 
 greater ---> great. 
 
-greatest ---> [størst].
-greatest ---> [største].  % biggest
+greatest ---> [stÃ¸rst].
+greatest ---> [stÃ¸rste].  % biggest
 % greatest ---> [largest].
 
 halfhour ---> [halv],
@@ -17389,11 +17389,11 @@ hasto0 ---> [].
 % having ---> w(verb(have,pres,part)). " havende "
 % having ---> w(prep(with)).           
 
-hereafter  ---> [om],[ikke],[så],[lenge]. 
+hereafter  ---> [om],[ikke],[sÃ¥],[lenge]. 
 
 hereafter ---> soonar,aspossible0. 
                                                            %% Bare fort = fast
-hereafter ---> [så],soon,[som],w(adj2(possible,nil)),!. 
+hereafter ---> [sÃ¥],soon,[som],w(adj2(possible,nil)),!. 
 hereafter ---> prep1(in),near,w(noun(future,_,_,_)),!.
 hereafter ---> [med],[en],[gang].  
 hereafter ---> [heretter]. % snart
@@ -17506,7 +17506,7 @@ in_order_to(adj/nil/_Expensive,id) ---> infinitiveand.
 in_order_to(begin,id) ---> infinitive,!,accept. 
 in_order_to(like,id)  ---> infinitive,!,accept. 
 
-% in_order_to(let,id) ---> [],!,accept. %% Jeg lar deg gå %%  object mod
+% in_order_to(let,id) ---> [],!,accept. %% Jeg lar deg gÃ¥ %%  object mod
 
 in_order_to(start,id) ---> infinitive,!,accept. 
 in_order_to(stop,id)  ---> infinitive,!,accept.
@@ -17527,52 +17527,52 @@ in_order_to(_,id) ---> in_order_to.
 in_order_tox ---> infinitive,!. 
 in_order_tox ---> in_order_to.
 
-in_order_to ---> forå. 
-in_order_to ---> [får],infinitive,!. %% får å // spell
+in_order_to ---> forÃ¥. 
+in_order_to ---> [fÃ¥r],infinitive,!. %% fÃ¥r Ã¥ // spell
 in_order_to ---> [for],infinitiveand,!. %% \+ prep 
-in_order_to ---> [før],infinitive,!. %% Dialect før
+in_order_to ---> [fÃ¸r],infinitive,!. %% Dialect fÃ¸r
 in_order_to ---> prep1(on),infinitive,!. 
 in_order_to ---> prep1(with),infinitive,!.
 in_order_to ---> prep1(to),infinitiveand,!. 
 in_order_to ---> [av],infinitive,!.
 in_order_to ---> [for],[og],!.     %% \+ prep       
-in_order_to ---> [får],[å],!.   %% får å 
-in_order_to ---> [får],[og],!.  %% får og
+in_order_to ---> [fÃ¥r],[Ã¥],!.   %% fÃ¥r Ã¥ 
+in_order_to ---> [fÃ¥r],[og],!.  %% fÃ¥r og
 
 %% in_order_to ---> infinitive,!. %% examples ? %% Hazard %% TA-101103
 
 
-forå ---> [i],ogå. 
-forå ---> [med],ogå.
-forå ---> [mot],ogå. %% vegre seg mot 
-forå ---> [for],ogå.
-forå ---> [til],ogå.
-forå ---> [over],ogå.
-forå ---> [før],[å]. 
-forå ---> [ved],[å]. %%   rough  ved å \== for å
+forÃ¥ ---> [i],ogÃ¥. 
+forÃ¥ ---> [med],ogÃ¥.
+forÃ¥ ---> [mot],ogÃ¥. %% vegre seg mot 
+forÃ¥ ---> [for],ogÃ¥.
+forÃ¥ ---> [til],ogÃ¥.
+forÃ¥ ---> [over],ogÃ¥.
+forÃ¥ ---> [fÃ¸r],[Ã¥]. 
+forÃ¥ ---> [ved],[Ã¥]. %%   rough  ved Ã¥ \== for Ã¥
 
-%% forå ---> [å]. %% Haz ???
+%% forÃ¥ ---> [Ã¥]. %% Haz ???
 
-ogå ---> [å]. 
-ogå ---> [og].
-
-
+ogÃ¥ ---> [Ã¥]. 
+ogÃ¥ ---> [og].
 
 
 
-infinitiveand ---> [å].
+
+
+infinitiveand ---> [Ã¥].
 infinitiveand ---> [og].
 
-infinitive ---> [å],faa,look_ahead(w(verb(_,_,_))),!. %% .. få komme/få en billett no !
-infinitive ---> [å]. 
-infinitive ---> [til],[å].  %%  ?
+infinitive ---> [Ã¥],faa,look_ahead(w(verb(_,_,_))),!. %% .. fÃ¥ komme/fÃ¥ en billett no !
+infinitive ---> [Ã¥]. 
+infinitive ---> [til],[Ã¥].  %%  ?
 
-%% infinitive ---> forto0,[å],!. 
+%% infinitive ---> forto0,[Ã¥],!. 
 
 
 inom(in) ---> prep1(in). %% i morgen \= om morgenen
 inom(om) ---> [om].      %% om kvelden / i kveld  Norwagism
-inom(om) ---> prep1(on). %% på kvelden/kveldstid
+inom(om) ---> prep1(on). %% pÃ¥ kvelden/kveldstid
 
 instead_of ---> [fremfor]. 
 instead_of ---> prep1(in),w(noun(place,sin,def,n)),[for],!.
@@ -17596,7 +17596,7 @@ later ---> [deretter].
 latest ---> w(adj2(sup,late)).
 latest ---> w(adj2(last,nil)).
 
-less ---> [før].
+less ---> [fÃ¸r].
 less ---> [tidligere].
 less ---> [mindre].
 less ---> [lavere].
@@ -17616,11 +17616,11 @@ manypersons ---> [mange], adjnoun,!,reject. % mange () er
 manypersons ---> [mange].
 
 many1 ---> [mange],off0.  
-%% many1 ---> [få],off0.  % few (Rhetoric) 
+%% many1 ---> [fÃ¥],off0.  % few (Rhetoric) 
 
 many  ---> so0, [mange],off0.
 
-%% many  ---> so0, [få],off0.% few (Rhetoric)
+%% many  ---> so0, [fÃ¥],off0.% few (Rhetoric)
 %% many ---> so0, [mye]. %% bussen bruker mye tid \= mange tider 
 
 meny ---> [mange]. %% klokka
@@ -17657,12 +17657,12 @@ when10 ---> when1.
 when10 ---> [].
 
 when1 ---> [da]. %% confus? bussen gikk da du syklet 
-when1 ---> [når].
+when1 ---> [nÃ¥r].
 when1 ---> [n], {value(smsflag,true)},!. %% AVOID REACH
-when1 ---> [tid],look_ahead([går]). %% TA-110128
+when1 ---> [tid],look_ahead([gÃ¥r]). %% TA-110128
 
-%%% when1 ---> [nær]. %% Swedish  synword(nær,når) gives nær = reach 
-       %% hvilke hpl ligger nær ... %% TA-110510
+%%% when1 ---> [nÃ¦r]. %% Swedish  synword(nÃ¦r,nÃ¥r) gives nÃ¦r = reach 
+       %% hvilke hpl ligger nÃ¦r ... %% TA-110510
 
 
 %% SECTION NEGATION
@@ -17671,7 +17671,7 @@ when1 ---> [tid],look_ahead([går]). %% TA-110128
 
 
 
-%%%%¤¤ NEGATION2   % negation2( initial  final ).
+%%%%Â¤Â¤ NEGATION2   % negation2( initial  final ).
 
 
 negation2(only,only) ---> [],!. %%  %% id 
@@ -17686,13 +17686,13 @@ negation2(id,N) ---> negation0(N).
 
 negation2(often,often) ---> [].
 
-%%%%¤¤ NEGATION0 
+%%%%Â¤Â¤ NEGATION0 
 
 negation0(N) ---> {nonvar(N),N==(not)},!. %% vil ikke til trondheim %% TA-110128
 negation0(N) ---> negation(N),!.
 negation0(id) --->  [].         %% cut trap if negation0(id)
 
-%%%%¤¤ NEGATION  
+%%%%Â¤Â¤ NEGATION  
 
 negation(id) ---> (not),[bare],!.  %%   ikke er redun
 %% negation(not) ---> (not),[bare],!,reject. %% ?
@@ -17721,7 +17721,7 @@ near --->  w(adj2(near,nil)).
 near --->  the0,w(adj2(nearest,nil)).
 
 nearest ---> w(adj2(near,sup)).
-nearest ---> w(adj2(nearest,nil)). % Norwagism   Nærmeste stasjon til NTH
+nearest ---> w(adj2(nearest,nil)). % Norwagism   NÃ¦rmeste stasjon til NTH
 nearest ---> prep1(nearest) . % 
 
 
@@ -17748,15 +17748,15 @@ not0 ---> [].
 
 notwithstanding ---> [selv_om]. %% Technical 
 notwithstanding ---> [selv],[om]. %
-%               ---> på tross av
+%               ---> pÃ¥ tross av
 
 now0 ---> now1,!. 
 now0 ---> today. 
 now0 ---> [].
 
-now1 ---> [ennå]. 
-now1 ---> [nå].
-now1 ---> [no]. %% NB  synword(no,nå) gives no -> nå -> reach 
+now1 ---> [ennÃ¥]. 
+now1 ---> [nÃ¥].
+now1 ---> [no]. %% NB  synword(no,nÃ¥) gives no -> nÃ¥ -> reach 
 
 nowon ---> now1,[av],!. 
 nowon ---> now1.
@@ -17776,13 +17776,13 @@ number1 ---> w(noun(number,sin,_,n)),   %% number 5 = 5  %%
             colon0.    
 
 of_course0 ---> of_course.     
-of_course0 ---> not_look_ahead(w(verb(_,_,_))). %% []. ja gjør det
+of_course0 ---> not_look_ahead(w(verb(_,_,_))). %% []. ja gjÃ¸r det
 
 of_coursenot0 ---> of_course,[ikke].  
-of_coursenot0 --->  not_look_ahead(w(verb(_,_,_))). %%[].nei gjør ikke det
+of_coursenot0 --->  not_look_ahead(w(verb(_,_,_))). %%[].nei gjÃ¸r ikke det
 
 of_course ---> [naturligvis]. 
-of_course ---> [selvfølgelig].
+of_course ---> [selvfÃ¸lgelig].
 of_course ---> [det],w(verb(agree,pres,fin)). %% det stemmer
 
 of0 ---> of,!.
@@ -17799,10 +17799,10 @@ offrom ---> [av].
 offrom ---> prep1(from).
 offrom ---> [ifra].   %% ?
 
-often ---> w(adj2(often,nil)). %% også sjelden, etc.
+often ---> w(adj2(often,nil)). %% ogsÃ¥ sjelden, etc.
 often ---> [ofte]. 
 often ---> [sjelden]. %%  (SIC) how seldom
-often ---> [jevnlig]. %% går bussen jevnlig
+often ---> [jevnlig]. %% gÃ¥r bussen jevnlig
 
 ofthe ---> of,the.
 
@@ -17815,12 +17815,12 @@ on0 ---> prep1(on),!.
 on0 ---> []. 
 
 newyear ---> w(adj2(new,nil)),w(noun(year,_,_,_)).
-newyear ---> [nyttår]. 
+newyear ---> [nyttÃ¥r]. 
 
-om0 ---> [om],!. %% fortelle om bussen ... går
+om0 ---> [om],!. %% fortelle om bussen ... gÃ¥r
 om0 ---> [].  
 
-on0   ---> [på],!. %% En måte å reise (på)   Norwagism
+on0   ---> [pÃ¥],!. %% En mÃ¥te Ã¥ reise (pÃ¥)   Norwagism
 on0   ---> []. 
 
 one   ---> w(nb(1,num)). 
@@ -17854,7 +17854,7 @@ possible0 ---> w(adj2(possible,nil)),!. %% (snarest) mulig
 possible0 ---> [].
 
 
-%%%¤  REFLEXIV0    reflexive pronoun is not taken as an object
+%%%Â¤  REFLEXIV0    reflexive pronoun is not taken as an object
 
 reflexiv0(F) ---> reflexiv(F),!,accept. 
 
@@ -17864,12 +17864,12 @@ reflexiv0(Owe) ---> %% skylde MEG 40 kroner
    
 reflexiv0(_) ---> [].  
 
-%%%¤ REFLEXIV 
+%%%Â¤ REFLEXIV 
 
 reflexiv(ask) --->  rfxpron. %%  ( ## dtv ) %% Rough 
 %
 % reflexiv(ask) ---> w(prep(after)). %% Opps  particlev
-%% spør etter nth og nard
+%% spÃ¸r etter nth og nard
 
 reflexiv(befind) ---> rfxpron.   %% befinne  Norw
 reflexiv(beworry) ---> rfxpron.  %% bekymre
@@ -17878,7 +17878,7 @@ reflexiv(buy) --->  rfxpron.
 reflexiv(change) --->  rfxpron. 
 reflexiv(come)   --->  rfxpron. 
 reflexiv(cost)   --->  rfxpron.
-reflexiv(decide) --->  rfxpron.  %% bestemme seg/? avgjøre seg
+reflexiv(decide) --->  rfxpron.  %% bestemme seg/? avgjÃ¸re seg
 reflexiv(feel)   --->  rfxpron. 
 reflexiv(fit)    --->  rfxpron.  %% egne seg 
 reflexiv(find)   --->  rfxpron.
@@ -17889,13 +17889,13 @@ reflexiv(go)    ---> rfxpron.
 %  reflexiv(go)   ---> [med].  %%  ( rough ) hvordan kommer jeg med (bussen) til
 
 reflexiv(have) ---> [meg]. %% rfxpron.  
-reflexiv(have) ---> [seg]. %% \+ deg   TA har deg på hjernen <--- only exception
+reflexiv(have) ---> [seg]. %% \+ deg   TA har deg pÃ¥ hjernen <--- only exception
 
 
 %% reflexiv(help)  ---> rfxpron. %% no, object %% TA-101210
 reflexiv(hurry) ---> rfxpron. 
 
-reflexiv(learn) ---> rfxpron.   %% lære seg 
+reflexiv(learn) ---> rfxpron.   %% lÃ¦re seg 
 reflexiv(move)  ---> rfxpron.   %% flytte seg
 
 %% reflexiv(notify) ---> rfxpron.  %% varsle seg (?) %% Haz, varsle 2 minutter...
@@ -17907,11 +17907,11 @@ reflexiv(pay2)   ---> [seg].
 
 reflexiv(promise) ---> rfxpron.
 
-reflexiv(get) ---> rfxpron. %% få meg 
+reflexiv(get) ---> rfxpron. %% fÃ¥ meg 
 reflexiv(get) ---> [med]. 
 
-reflexiv(receive) ---> rfxpron. %% få meg 
-reflexiv(receive) ---> [med].   %% få med (rough) // particle <-----------
+reflexiv(receive) ---> rfxpron. %% fÃ¥ meg 
+reflexiv(receive) ---> [med].   %% fÃ¥ med (rough) // particle <-----------
 
 %% reflexiv(resist) ---> rfxpron. %% vegre seg 
 %% ad hoc, tv_templ
@@ -17930,8 +17930,8 @@ reflexiv(take) ---> [med],rfxpron. %% // particle <-----------
 reflexiv(take) ---> [med].         %% 
 
 reflexiv(take) ---> not_look_ahead([dere]), %% also subject
-          rfxpron. %% TA-110215 ta meg en øl
-          %% tar dere vare på hittegods
+          rfxpron. %% TA-110215 ta meg en Ã¸l
+          %% tar dere vare pÃ¥ hittegods
 
 reflexiv(tell) --->  rfxpron. %% jeg/du  forteller deg/meg 
 
@@ -17965,19 +17965,19 @@ compassly ---> [nordover].
 
 compassly ---> [sydfra].
 compassly ---> [sydover].
-compassly ---> [sørfra].
-compassly ---> [sørover].
+compassly ---> [sÃ¸rfra].
+compassly ---> [sÃ¸rover].
 
 compassly ---> [vestfra].
 compassly ---> [vestover].
 
-compassly ---> [østfra].
-compassly ---> [østover].
+compassly ---> [Ã¸stfra].
+compassly ---> [Ã¸stover].
 
   
-%%%¤  REDUNDANT 
+%%%Â¤  REDUNDANT 
 
-redundant0x ---> [så].
+redundant0x ---> [sÃ¥].
 redundant0x ---> redundants0.
 
 redundant0 ---> redundant,!.
@@ -18006,7 +18006,7 @@ redundant ---> prep1(in),[gjen].
 redundant ---> prep1(for),w(noun(time,sin,def,n)). %%  ?r
 redundant ---> prep1(from),a,w(noun(place,sin,u,n)),!,accept.
 redundant ---> prep1(on),w(adj2(new,nil)).
-redundant ---> prep1(on),[en],w(noun(time_count,sin,u,n)). %% på en g
+redundant ---> prep1(on),[en],w(noun(time_count,sin,u,n)). %% pÃ¥ en g
 redundant ---> prep1(to),slutt.
 redundant ---> prep1(to),[sammen].
 redundant ---> prep1(to),w(adj2(ordinary,nil)), %% til vanlig ( Norwagism)
@@ -18015,7 +18015,7 @@ redundant ---> prep1(to),w(adj2(ordinary,nil)), %% til vanlig ( Norwagism)
 redundant ---> always.  
 redundant ---> aspossible.  
 
-redundant ---> [altså],not_look_ahead_lit([at,å]).
+redundant ---> [altsÃ¥],not_look_ahead_lit([at,Ã¥]).
 
 redundant ---> [bare].    %%  problems ?
 redundant ---> [da],not_look_ahead_np. %% Bussen gikk da jeg syklet  
@@ -18024,18 +18024,18 @@ redundant ---> [derfra].
 redundant ---> [derfor]. 
 redundant ---> [alene].  %% er du alene
 redundant ---> [bort].      %% (= vekk) 
-%% redundant ---> [du],[da]. %% ser om du da får feil 
+%% redundant ---> [du],[da]. %% ser om du da fÃ¥r feil 
 redundant ---> [dessverre]. %% 2s 
 redundant ---> [egentlig].
 redundant ---> [ellers].  
 redundant ---> [engang].  
 redundant ---> [enklest],[mulig]. 
 redundant ---> [enklest].
-redundant ---> [ergo].              %%  (altså  noisew)
+redundant ---> [ergo].              %%  (altsÃ¥  noisew)
 redundant ---> [farefritt]. %%  :-)
 redundant ---> [faktisk]. 
-redundant ---> [forøvrig]. 
-redundant ---> [forøvrig]. 
+redundant ---> [forÃ¸vrig]. 
+redundant ---> [forÃ¸vrig]. 
 redundant ---> [fram]. 
 redundant ---> [gjerne]. 
 redundant ---> [heller]. 
@@ -18057,8 +18057,8 @@ redundant ---> [likevel].   %% ( syn  allikevel)
 redundant ---> [minst]. 
 redundant ---> [mon],w(verb(believe,imp,fin)). %% mon tro 
 redundant ---> [normalt]. 
-redundant ---> [når],[som],[helst]. 
-redundant ---> [også].
+redundant ---> [nÃ¥r],[som],[helst]. 
+redundant ---> [ogsÃ¥].
 redundant ---> sometimes. 
 redundant ---> [om],w(noun(time_count,sin,def,n)).  %%  om gangen
 redundant ---> [ad],w(noun(time_count,sin,def,n)).  
@@ -18068,8 +18068,8 @@ redundant ---> [straks].
 redundant ---> [selvsagt]. %% not noise/ influences word position 
 redundant ---> [totalt]. 
 redundant ---> [uansett]. %% TA-110426
-%% redundant ---> [ut].   %% går ut av byen %% TA-110808
-%% redundant ---> [ute].  %% været er fint ute | er du ute %% TA-110309
+%% redundant ---> [ut].   %% gÃ¥r ut av byen %% TA-110808
+%% redundant ---> [ute].  %% vÃ¦ret er fint ute | er du ute %% TA-110309
 redundant ---> [vanligvis]. 
 redundant ---> [vel].  
 redundant ---> [videre].      %% (vidre?)
@@ -18084,7 +18084,7 @@ please0 ---> [bare],!,accept.
 please0 ---> []. 
 
 please ---> be,so,good,infinitive. %%  snill,good (pre)
-please ---> [kan],you,be,so0,w(adj2(good,nil)),[å]. 
+please ---> [kan],you,be,so0,w(adj2(good,nil)),[Ã¥]. 
 % please ---> be,[du],good.  %%  er du snill (post)
 % please ---> [skal],[vi].   %%  in case vi =/=> jeg 
 
@@ -18124,7 +18124,7 @@ point ---> ['.'].
 % = dtrailer ?
 
 itrailer ---> [n].  %% neste | bakke"n
-itrailer ---> not_look_ahead([n]),[når]. %% lundåsen n
+itrailer ---> not_look_ahead([n]),[nÃ¥r]. %% lundÃ¥sen n
 itrailer ---> not_look_ahead([n]),w(adj2(next,nil)).
 itrailer ---> [takk].
 
@@ -18159,22 +18159,22 @@ qtrailer ---> optional(w(adj2(great,nil))),
 qtrailer ---> w(noun(Program,sin,u,n)), %% \+ orakelet 
     {testmember(Program,[program,oracle,boss])},!. 
 
-qtrailer ---> [og]. %% = også %%  Haz? 
+qtrailer ---> [og]. %% = ogsÃ¥ %%  Haz? 
  
-qtrailer ---> [og],[når]. %%  ?
+qtrailer ---> [og],[nÃ¥r]. %%  ?
 
-qtrailer ---> [lenger],!. %% går ikke bussen lenger ?   
-qtrailer ---> [lengre],!. %% går ikke bussen lenger ?  (slight error) 
-qtrailer ---> [så],w(verb(be,_,_)),[du],w(adj2(nice,nil)),!. 
+qtrailer ---> [lenger],!. %% gÃ¥r ikke bussen lenger ?   
+qtrailer ---> [lengre],!. %% gÃ¥r ikke bussen lenger ?  (slight error) 
+qtrailer ---> [sÃ¥],w(verb(be,_,_)),[du],w(adj2(nice,nil)),!. 
 qtrailer ---> w(verb(believe,inf,fin)). %% tro?
 qtrailer ---> w(verb(believe,pres,fin)),[du]. %% tror du ?
 
 %%% qtrailer ---> [n].  %% neste | bakke"n %% unnec
-qtrailer ---> [ø].  %% mis for'.'
-qtrailer ---> not_look_ahead([n]),[når]. %% Lundåsen n 
+qtrailer ---> [Ã¸].  %% mis for'.'
+qtrailer ---> not_look_ahead([n]),[nÃ¥r]. %% LundÃ¥sen n 
 
 qtrailer ---> [din],optional(w(adj2(_,nil))),w(noun(_,sin,_,_)). %% din dust 
-              %% din will be eaten. når går (bussen din) idiot
+              %% din will be eaten. nÃ¥r gÃ¥r (bussen din) idiot
 
 qtrailer ---> w(name(_johanne,_,W)),{testmember(W,[man,woman])},!. 
 qtrailer ---> [uansett]. 
@@ -18188,7 +18188,7 @@ ctrailer0 ---> [].
 ctrailer ---> please.
 ctrailer ---> [takk].  
 ctrailer ---> w(verb(be,pres,fin)),[du],w(adj2(nice,nil)). 
-ctrailer ---> [da]. %% gjør det da! 
+ctrailer ---> [da]. %% gjÃ¸r det da! 
 ctrailer ---> [din],optional(w(adj2(_,nil))),w(noun(_,sin,_,_)). %% din dust 
 
 
@@ -18196,7 +18196,7 @@ ctrailer ---> [din],optional(w(adj2(_,nil))),w(noun(_,sin,_,_)). %% din dust
 
 dtrailer0 ---> 
     {\+ value(dialog,1)},
-    %% termchar0, %% bussen står. jeg går %% TA-110105
+    %% termchar0, %% bussen stÃ¥r. jeg gÃ¥r %% TA-110105
     dtrailer,
     !. 
 dtrailer0 ---> [].
@@ -18206,8 +18206,8 @@ dtrailer --->  w(name(tore,n,firstname)). %% det er bra, tore %% TA-110707
 dtrailer ---> w(verb(think,_,fin)),[jeg]. %% TA-110623
 dtrailer ---> w(verb(mean,_,fin)),[jeg].  %% TA-101006
 dtrailer ---> w(name(bustuc,_,_)).
-%% dtrailer ---> [adjø].    %%  etc %% TA-110221 hei hade=hei ?
-dtrailer ---> [ass]. %% altså 
+%% dtrailer ---> [adjÃ¸].    %%  etc %% TA-110221 hei hade=hei ?
+dtrailer ---> [ass]. %% altsÃ¥ 
 dtrailer ---> [da]. %% TA-110504
 dtrailer ---> [din],optional(w(adj2(_,nil))),w(noun(fool,sin,u,n)). 
 dtrailer ---> [du].  
@@ -18218,9 +18218,9 @@ dtrailer ---> [hvordan].
 dtrailer ---> [hei].     %%  etc 
 dtrailer ---> [ja]. 
 dtrailer ---> [jeg]. 
-dtrailer ---> [men],[når]. %% TA-110824
+dtrailer ---> [men],[nÃ¥r]. %% TA-110824
 dtrailer ---> [ok].  
-dtrailer ---> [sjø].     %% Dial
+dtrailer ---> [sjÃ¸].     %% Dial
 %% dtrailer ---> [takk],forhjelpen0. %% not ignore, yawelcome
 dtrailer ---> ['?'], [takk]. 
 
@@ -18249,7 +18249,7 @@ thereafter  ---> prep1(after),[der].        %%  (igjen)
 thereafter  ---> [nest],prep1(after),[der]. %%  (igjen)
 thereafter  ---> prep1(after),[hvert].  
 
-beforethat  ---> [derfør]. %% Technical
+beforethat  ---> [derfÃ¸r]. %% Technical
 beforethat  ---> andor0,earlier.       %% ( kl 13 eller senere )
 beforethat  ---> prep1(before),[det].
 beforethat  ---> prep1(after),[dette].  
@@ -18271,7 +18271,7 @@ preperly ---> [virkelig].
 
 
 
-%%%¤¤  PREP2 
+%%%Â¤Â¤  PREP2 
 
 prep2(after)  ---> [avgang], not_look_ahead(w(prep(_))).   %% avgang kl 18
 prep2(before) ---> [ankomst],not_look_ahead(w(prep(_))).    %% ankomst 18
@@ -18279,12 +18279,12 @@ prep2(before) ---> [ankomst],not_look_ahead(w(prep(_))).    %% ankomst 18
 
 prep2(after) ---> preperly,prep1(after).
 prep2(after) ---> preperly,w(adj2(later,nil)),[enn].
-%% prep2(after) ---> etter den som går 
+%% prep2(after) ---> etter den som gÃ¥r 
 
 prep2(before) ---> preperly,prep1(before).
 prep2(before) ---> preperly,w(adj2(earlier,nil)),[enn].
 
-prep2(according_to) ---> prep1(in),[følge]. 
+prep2(according_to) ---> prep1(in),[fÃ¸lge]. 
 
 prep2(after)    ---> clock,prep1(after). 
 prep2(after)    ---> around1,prep1(after). 
@@ -18308,7 +18308,7 @@ prep2(at)  ---> prep1(on),prep1(at). %% repair
 prep2(at)   ---> prep1(at),w(noun(side,_,_,_)),[av].
 
 
-prep2(before) ---> [for], look_ahead(w(nb(_,num))). %% for 12.30=før 12.30
+prep2(before) ---> [for], look_ahead(w(nb(_,num))). %% for 12.30=fÃ¸r 12.30
 
 prep2(before)   ---> w(noun(arrival,sin,u,n)),prep1(before),!. 
 %%% prep2(before)   ---> w(noun(arrival,sin,u,n)),!. %% ankomst Buenget 
@@ -18320,7 +18320,7 @@ prep2(before)   ---> [senest].
 prep2(before)   ---> w(adj2(present,nil)),prep1(before). 
 prep2(before)   ---> prep1(to),prep1(before). % Norw
 prep2(before)   ---> prep1(to),[ca]. 
-% prep2(before)   ---> prep1(between),[nå],[og]. 
+% prep2(before)   ---> prep1(between),[nÃ¥],[og]. 
 
 %% prep2(beside)   ---> [ved],[siden],[av]. 
 
@@ -18328,7 +18328,7 @@ prep2(between)  ---> prep1(from),prep1(between).
 prep2(between)  ---> prep1(in),prep1(between). 
 prep2(between)  ---> a0,w(noun(place,_,_,n)),prep1(between). 
 
-prep2(during)   ---> prep1(in),[løpet],[av]. 
+prep2(during)   ---> prep1(in),[lÃ¸pet],[av]. 
 prep2(during2)  ---> [om],ca.
 
 prep2(from)     ---> prep1(from),colon0.  
@@ -18343,12 +18343,12 @@ prep2(from)     ---> [inn],prep1(from).        % inn fra
 prep2(from)     ---> [ut],offrom.  
 prep2(from)     ---> prep1(with),w(noun(start,sin,_,_)),prep1(in). 
 prep2(from)     ---> umpover,prep1(from). 
-prep2(from)     ---> prep1(from),prep1(in),[nærheten],[av].
+prep2(from)     ---> prep1(from),prep1(in),[nÃ¦rheten],[av].
 %  prep2(from)     ---> offrom.  % ut may be adv  
 %% prep2(from)     ---> prep1(from),[og],prep1(with). %% after ?
 
 
-%% prep2(in)   ---> [fra],prep1(in). % hvor går bussen fra i (Roughly)
+%% prep2(in)   ---> [fra],prep1(in). % hvor gÃ¥r bussen fra i (Roughly)
 prep2(in)       ---> prep1(around),prep1(in). 
 prep2(in)       ---> [inne],prep1(in). 
 prep2(in)       ---> [nede],prep1(in). 
@@ -18356,17 +18356,17 @@ prep2(in)       ---> [nede],prep1(in).
 prep2(instead_of) ---> [i],[stedet],[for]. 
 
 prep2(near)     ---> so0,prep1(near),to0. 
-prep2(near)     ---> prep1(in),[nærheten],[av].
+prep2(near)     ---> prep1(in),[nÃ¦rheten],[av].
 %% prep2(near)     ---> [langt],prep1(from). %% Rough Nonlogic //
 %%  Er det  langt fra A til B
 prep2(near)     ---> [like],prep1(at).
 prep2(near)     ---> and0,w(adj2(nearest,nil)),possible0,to0. 
-prep2(near)     ---> w(adj2(near,nil)),prep1(at). %% nær ved Norw 
+prep2(near)     ---> w(adj2(near,nil)),prep1(at). %% nÃ¦r ved Norw 
 prep2(near)     ---> prep1(to),[eller],   w(adj2(near,nil)). 
 prep2(near)     ---> prep1(past),[eller], w(adj2(near,nil)). 
 
 prep2(on)       ---> prep1(in),prep1(on).       %%  repair
-prep2(on)       ---> prep1(with),prep1(on).     %% NB on / med / med på
+prep2(on)       ---> prep1(with),prep1(on).     %% NB on / med / med pÃ¥
 prep2(on)       ---> ca0,[midt],prep1(on),!,accept.  
 prep2(on)       ---> [nede],prep1(on). 
 
@@ -18382,8 +18382,8 @@ prep2(past)     ---> [og],[ned].
 prep2(past)     ---> [og],prep1(past). 
 prep2(past)     ---> [ned].       %%
 % prep2(past)     ---> [og],[opp]. %% og opp igjen 
-prep2(past)     ---> prep1(past),['/'],  prep1(in),[nærheten],[av].  
-prep2(past)     ---> prep1(past),[eller],prep1(in),[nærheten],[av]. 
+prep2(past)     ---> prep1(past),['/'],  prep1(in),[nÃ¦rheten],[av].  
+prep2(past)     ---> prep1(past),[eller],prep1(in),[nÃ¦rheten],[av]. 
 prep2(past)     ---> prep1(to),['/'],prep1(from),!,accept. 
 prep2(past)     ---> prep1(to),and0,prep1(from),!,accept.  %% and0 // Probl?
 prep2(past)     ---> prep1(from),and1,prep1(to),!,accept.  %% fra til repair 
@@ -18395,7 +18395,7 @@ prep2(past)     ---> prep1(past), ['/'], prep1(past). %% forbi/inom
 
 prep2(to)       ---> prep1(to),colon0. 
 prep2(to)       ---> prep1(to),prep1(to),!,accept.
-prep2(to)       ---> prep1(to),prep1(near). %%  + inærheten av ?
+prep2(to)       ---> prep1(to),prep1(near). %%  + inÃ¦rheten av ?
 prep2(to)       ---> prep1(in),w(noun(connection,_,u,n)),prep1(with).
 prep2(to)       ---> prep1(over),prep1(to). 
 prep2(to)       ---> prep1(with),w(noun(arrival,_,_,_)).  
@@ -18434,13 +18434,13 @@ prep2(without)  ---> [fri],[for].
  umpover ---> [oppover].
  umpover ---> [nedover].
  umpover ---> [hitover].
- umpover ---> prep1(on),w(noun(route,sin,_,n)).     %%  Norw på vei
+ umpover ---> prep1(on),w(noun(route,sin,_,n)).     %%  Norw pÃ¥ vei
  umpover ---> prep1(on),w(noun(direction,sin,_,n)). %%  Norw
 
 %   umpover ---> [nordover]. %% -> warning direction
-%   umpover ---> [sørover].
+%   umpover ---> [sÃ¸rover].
 %   umpover ---> [vestover].
-%   umpover ---> [østover].
+%   umpover ---> [Ã¸stover].
 
 
 
@@ -18450,9 +18450,9 @@ pronoun1(X) --->
     pronoun(X).
 
 
-%%%¤¤ PRONOUN (word) 
+%%%Â¤Â¤ PRONOUN (word) 
 
-pronoun(thing) ---> one_of_lit([noe,det]),  %% kofør jør du det %% TA-110228
+pronoun(thing) ---> one_of_lit([noe,det]),  %% kofÃ¸r jÃ¸r du det %% TA-110228
     not_look_ahead_np,      %% TA-110114
     !,accept.
 
@@ -18517,12 +18517,12 @@ pronoun(savant) ---> [du].
 pronoun(agent)  ---> [dere]. %% hva er den fineste bussen dere har
 
 %% pronoun(self) ---> [i]. %% (Dialect for 'jeg', NOT SYNONYM !)
-%% NO   jeg reiser for å være i Th. 
+%% NO   jeg reiser for Ã¥ vÃ¦re i Th. 
 
 
 %%% QUANT_PRON (pron, class)      Quantified pronoun
 
-quant_pron(some,person) --->  %%  hva kan en spørre om
+quant_pron(some,person) --->  %%  hva kan en spÃ¸rre om
     [en],
     look_ahead(w(verb(_ask,_,_))), 
     !.
@@ -18557,7 +18557,7 @@ quant_pron(some,agent)   ---> [noen],   %% experiment
      avdem0, %% especially   
      not_look_ahead(w(adj(_,_))).
 
-avdem0 ---> [av],[våre],!,reject. %% Ad Hoc %% TA-110428
+avdem0 ---> [av],[vÃ¥re],!,reject. %% Ad Hoc %% TA-110428
 avdem0 ---> [av],[dem],!. 
 avdem0 ---> [].          
 
@@ -18569,7 +18569,7 @@ quant_pron(some,agent)  ---> someone. %% WAS person
 % quant_pron(some,place)   ---> [noensted]. 
 
 quant_pron(some,thing)   ---> something,
-    not_look_ahead(w(verb(_run,_,pass))). %% det kjøres ruter
+    not_look_ahead(w(verb(_run,_,pass))). %% det kjÃ¸res ruter
 
 quant_pron(no,person)    ---> [ingen],not_look_ahead_np. 
 
@@ -18584,7 +18584,7 @@ quant_pron(much,thing)   ---> somuch,       %%  jeg vet mye
 quant_pron(little,thing) ---> 
     not_look_ahead(w(adv(_little))), %%  det hjelper lite  
     solittle,    %%  lite 
-    not_look_ahead([å]),
+    not_look_ahead([Ã¥]),
     not_look_ahead(w(adj2(late,nil))). 
 
 quant_pron(some,feeling) --->  somegood.   %% Freak  har du det bra?
@@ -18632,7 +18632,7 @@ something   ---> [det],endofline,!.
 
 something   ---> [det], 
 
-    not_look_ahead([å]),  %% det å 
+    not_look_ahead([Ã¥]),  %% det Ã¥ 
     not_look_ahead(w(noun(_,_,_,_))).
 
 
@@ -18645,7 +18645,7 @@ sometimes ---> [noen],w(noun(time_count,_,_,_)),!,accept.
 sometimes ---> [tidvis]. %% TA-110111 
 
 
-%% nå og da
+%% nÃ¥ og da
 %% en og annen gang
 %% etc  
 sometimes0 ---> [].
@@ -18654,7 +18654,7 @@ sometimes0 ---> [].
 notrel ---> look_ahead([som]),!,reject. 
 notrel ---> [].
 
-%%%¤¤ RELPRON 
+%%%Â¤Â¤ RELPRON 
 
 relpron(thing)    ---> [som],also0. 
 %% relpron(thing)    ---> so_that,it. %% grunnen til at den versjonen virker %% TA-110708
@@ -18694,7 +18694,7 @@ sin ---> [sitt].
 
 % postadj prefix
 saa0 ---> [bare],!,accept. 
-saa0 ---> [så],optional([ofte]),!,accept.
+saa0 ---> [sÃ¥],optional([ofte]),!,accept.
 saa0 ---> [mye],!,accept.
 saa0 ---> [da],!,accept. 
 saa0 ---> [].
@@ -18704,7 +18704,7 @@ saa0 ---> [].
 so0 ---> so,!.
 so0 ---> [].
 
-so ---> [så].
+so ---> [sÃ¥].
 so ---> too.
 so ---> [heretter]. %% straks 
 %%%% so ---> very.  
@@ -18713,28 +18713,28 @@ so_that ---> [forat].
 
 so_that ---> [som],[at]. %% det virker som at
 so_that ---> [slik],that,optional([bare]). %% ad hoc 
-so_that ---> [så],that.  
+so_that ---> [sÃ¥],that.  
 so_that ---> [som],w(verb(do1,_,fin)),that.
 
-so_that ---> [så],look_ahead_lit([jeg,da,den,det]),!. 
+so_that ---> [sÃ¥],look_ahead_lit([jeg,da,den,det]),!. 
 
-so_that ---> [så],look_ahead(w(noun(_question,_,_,_))),!. %% Haz? 
-                                           %% tore justerte klokka så
-														 %% spørmål kunne besvares
+so_that ---> [sÃ¥],look_ahead(w(noun(_question,_,_,_))),!. %% Haz? 
+                                           %% tore justerte klokka sÃ¥
+														 %% spÃ¸rmÃ¥l kunne besvares
 
-so_that ---> [til],[at],!. %% rough  %% de får nok samvittighet til at 
+so_that ---> [til],[at],!. %% rough  %% de fÃ¥r nok samvittighet til at 
 
 so_that ---> prep1(for),[at].   
 
 
-    %%%%  so_that ---> [så],        %% confuse hvis ... så ... 
+    %%%%  so_that ---> [sÃ¥],        %% confuse hvis ... sÃ¥ ... 
     %%%%    not_look_ahead([skal]). %% // vil // verb 
 
 %% so_that ---> [at].  %%  redd at %% jeg vet at // clausal, not subordinate
                        %% TA-110629
 
-%% so_that ---> look_ahead([jeg]). %% jeg er redd jeg må gå %% //NOT in start !!!
-%% bussen er på rønningsbakken  jeg leser 
+%% so_that ---> look_ahead([jeg]). %% jeg er redd jeg mÃ¥ gÃ¥ %% //NOT in start !!!
+%% bussen er pÃ¥ rÃ¸nningsbakken  jeg leser 
 
 
 som0 ---> som. 
@@ -18759,14 +18759,14 @@ someone ---> [noen],look_ahead(w(verb(_,_,_))).
 someone ---> so0,[mange]. 
 someone ---> [den],look_ahead([som]). %% ?
 
-someone ---> [en],  %% HAZARDOUS destroys   en sjåfør
+someone ---> [en],  %% HAZARDOUS destroys   en sjÃ¥fÃ¸r
     look_ahead([som]).
 
 %%%%%%%%%
 
 soonar --->   [snart].      %% bare fort == hurtig
 soonar --->   [snarest].  
-soonar --->   [fort].       %% så fort som mulig 
+soonar --->   [fort].       %% sÃ¥ fort som mulig 
 
 soon ---> [fort].   
 soon ---> w(adj2(fast,nil)). %% also snarest 
@@ -18810,13 +18810,13 @@ that(that)    ---> that.     %% (last) First, capture om at
 that(how) ---> how.
 that(when)    ---> when.  
 that(where)   ---> where. 
-that(whether) ---> paa0,[hvorvidt]. %% undrer på
+that(whether) ---> paa0,[hvorvidt]. %% undrer pÃ¥
 that(whether) ---> paa0,[om].
-%% that(whether) ---> [hvis]. %% du svarer hvis jeg spør 
+%% that(whether) ---> [hvis]. %% du svarer hvis jeg spÃ¸r 
 that(why) ---> [hvorfor].
 
                              %% THAT0  jeg vil vite avgangen (= objekt!)
-paa0 ---> [på],!,accept.
+paa0 ---> [pÃ¥],!,accept.
 paa0 ---> [].
 
 
@@ -18839,7 +18839,7 @@ themost ---> the, [mest].
 
 the0 --->  the,der0,!,accept. 
 
-% the0 --->  which,!,accept. %% jeg vet hvilken buss som går. %% Infernal Bloody Mess
+% the0 --->  which,!,accept. %% jeg vet hvilken buss som gÃ¥r. %% Infernal Bloody Mess
 %%% hvilke ruter dekker tyholt ***********
 
 the0 ---> {value(textflag,true)},art. %%  A sweet Liebfraumilch
@@ -18866,7 +18866,7 @@ then0 ---> then1,!,accept.
 then0 ---> [].
 
 then1 ---> [da].   %% then/2 is an operator ( dcg_n.pl)
-then1 ---> [så].  
+then1 ---> [sÃ¥].  
 
 theonly0 ---> the0,only0. 
 
@@ -18882,13 +18882,13 @@ therenot0 ---> [].
 thereit(N) ---> thereit,negation0(N),redundant0,been0,
                 !,accept. 
 
-% in subordinate sentences  % Hvis det ikke går
+% in subordinate sentences  % Hvis det ikke gÃ¥r
 
 thereitN ---> thereit,look_ahead([ikke]),!.
 thereitN ---> thereit.
 
 
-% ¤¤¤¤ DET 
+% Â¤Â¤Â¤Â¤ DET 
 
 dette ---> [det],it_was_pronoun.
 dette ---> [dette].  
@@ -18914,7 +18914,7 @@ it_was_pronoun  ---> look_ahead_vp. %% TA-110114
 
 %% it_was_pronoun  ---> w(prep(P)). %% hvilken dag  er det i dag 
 
-%% ¤¤¤¤
+%% Â¤Â¤Â¤Â¤
  
 
 this(X) ---> this,{it_template(X)}. 
@@ -18932,7 +18932,7 @@ this ---> [det],end_of_line,!,accept.
 
 this ---> [slik],not_look_ahead_lit([at,som]).
 
-%%%¤ THISPLACE 
+%%%Â¤ THISPLACE 
 
 thisplace(in) ---> [her]. 
 thisplace(to) ---> [hit]. 
@@ -19016,7 +19016,7 @@ whatbe ---> what,be,!,accept.
 whatbe ---> [hvilke],be,!,accept. 
 whatbe ---> [hvilken],be,!,accept. 
 whatbe ---> [hvilket],be,!,accept. 
-%%%% whatbe ---> [hvordan],be,!,accept. %% ..været
+%%%% whatbe ---> [hvordan],be,!,accept. %% ..vÃ¦ret
 
 % whatbe ---> be,[dette],!,accept. 
 
@@ -19034,15 +19034,15 @@ whatbemean ---> [hva],w(verb(indicate,pres,fin)). %% TA-110112
 when0 ---> when,!,accept. 
 when0 ---> [].
 
-whenx ---> when1,[jeg],!,reject. %% AD HOC. når is verb reach 
+whenx ---> when1,[jeg],!,reject. %% AD HOC. nÃ¥r is verb reach 
                  % etc.
 whenx ---> when.
 
 
 %% when   pure question
 
-when ---> [når],timepoint,!,accept.   %% Dialect 
-when ---> [når].
+when ---> [nÃ¥r],timepoint,!,accept.   %% Dialect 
+when ---> [nÃ¥r].
 
 when ---> [hvordan],w(noun(time,_,u,n)),!,accept. 
 when ---> [hvor],timepoint,!,accept.  %% Dialect 
@@ -19050,12 +19050,12 @@ when ---> [hva],timepoint,!,accept.   %% Dialect (kva tid)
 when ---> which,timepoint,!,accept. 
 when ---> prep1(to),which,timepoint,!,accept.  %% ppq is tricked by tid=departure
 when ---> prep1(on),which,timepoint,!,accept. 
-when ---> [så],[snart],!,accept. 
+when ---> [sÃ¥],[snart],!,accept. 
 %% when ---> when1,andwhere0,!,accept. %% pure question
 when ---> [hva],[ti].     %% Dialect
 when ---> [hvordan],[ti]. %% Dialect %%  koss ti
 
-when ---> [tid],look_ahead([går]). 
+when ---> [tid],look_ahead([gÃ¥r]). 
 
 
 
@@ -19089,17 +19089,17 @@ which ---> [hvilken].
 which ---> [hvilket].
 which ---> [hvilke],off0. 
 
-%%%¤ WHICH2  
+%%%Â¤ WHICH2  
 
 which2 ---> which,
             numbertype0, %%  Dummy  which 3 buses ignored assumption
             ofthe0.
 
-which2 ---> [hvem], look_ahead(w(noun(Bus,sin,u,n))), %% hvem buss går
+which2 ---> [hvem], look_ahead(w(noun(Bus,sin,u,n))), %% hvem buss gÃ¥r
     gmem(Bus,[bus,tram,day]),
     !.        %% etc
 
-which2 ---> [hvordan], look_ahead(w(noun(Bus,sin,u,n))), %% hvem buss går
+which2 ---> [hvordan], look_ahead(w(noun(Bus,sin,u,n))), %% hvem buss gÃ¥r
     gmem(Bus,[label,bus,tram,day]),
     !.        %% etc
 
@@ -19126,7 +19126,7 @@ you ---> [du], not_look_ahead([jeg]). %% Freak,  du, jeg skal til nth
 
 %% you ---> [dere]. %% More probably company behind
 
-yesterday ---> prep1(in),[går]. 
+yesterday ---> prep1(in),[gÃ¥r]. 
 younger ---> [yngre].
 
 your ---> [din]. %% yours ==> your 
@@ -19135,7 +19135,7 @@ your ---> [dine].
 your ---> [di]. 
 
 num_na(_) ---> art,!,reject. %% en 5 ===> 1.5.2000 *
-num_na(N) --->  w(nb(N,_num_ord)). %% første
+num_na(N) --->  w(nb(N,_num_ord)). %% fÃ¸rste
 
 
 num(N) ---> w(nb(N,num)),! .
@@ -19150,12 +19150,12 @@ num(N) ---> w(nb(N,num)),! .
 
 personal('    ') ---> [hysj].  %% :-)
 
-personal('RPGOLRAM') ---> [rpgol].   %% ruller på gulvet (og ler R av meg)                                        
+personal('RPGOLRAM') ---> [rpgol].   %% ruller pÃ¥ gulvet (og ler R av meg)                                        
 personal('OK') ---> [rpgolram].      %% TA-110524       
 
 
-personal('Takk') ---> [værsågod]. 
-personal('Takk') ---> w(verb(be,imp,fin)),[så],w(adj2(good,nil)).
+personal('Takk') ---> [vÃ¦rsÃ¥god]. 
+personal('Takk') ---> w(verb(be,imp,fin)),[sÃ¥],w(adj2(good,nil)).
 personal('Takk') ---> so,good,you,be. 
 personal('Takk') ---> [bravo].
 personal('Takk') ---> w(verb(congratulate,pres,fin)),with0,skip_rest. 
@@ -19177,7 +19177,7 @@ greetings0 ---> optional(grums),greetings, optoken,!.
 greetings0 ---> optional(grums).
 
 greetings('OK') ---> okeys, endofline.
-greetings('Hei på deg') ---> hello,daddy. %% :-) 
+greetings('Hei pÃ¥ deg') ---> hello,daddy. %% :-) 
 greetings('Hei') ---> greetings. 
 
 
@@ -19190,12 +19190,12 @@ daddy ---> w(name(_tore,n,man)),!.
 
 %%%%%%%%%%%%%%%%%%%%
 
-optoken ---> [':']. %% Kjære bussorakel: når går n b 
+optoken ---> [':']. %% KjÃ¦re bussorakel: nÃ¥r gÃ¥r n b 
 optoken ---> ['!']. 
 optoken ---> ['.']. 
 optoken ---> []. 
 
-%%¤  greetings ---> jo/joda/ja %%  joda du er dum 
+%%Â¤  greetings ---> jo/joda/ja %%  joda du er dum 
 
 greetings ---> [Ja],
     {testmember(Ja,[ja,jo,joda,nei,neida])}. 
@@ -19222,7 +19222,7 @@ greetings  ---> w(noun(Oracle,sin,u,n)),
     {testmember(Oracle,[oracle,brother,
                                sister])}, %% etc Kvinnedagen :-)
     colon0,  
-    look_ahead([når]), %% verb(reach
+    look_ahead([nÃ¥r]), %% verb(reach
     !.
 greetings  ---> w(noun(Oracle,sin,u,n)),
     {testmember(Oracle,[oracle,brother,sister])}, %% :-)
@@ -19235,7 +19235,7 @@ greetings  ---> w(name(bustuc,n,_)),
     colon0,   
     not_look_ahead(w(verb(_,_,_))), %% pass .. brukes
     not_look_ahead_vp,  %% busstuc kan brukes ... 
-    not_look_ahead_np.  %% busstuc serveren går
+    not_look_ahead_np.  %% busstuc serveren gÃ¥r
 
 
 
@@ -19247,7 +19247,7 @@ trafikk ---> [t].          %% (if applicable)
 
 
 
-%%%%¤¤¤ GRUMS   %% Intial noise (hawk,  "throat clearing")
+%%%%Â¤Â¤Â¤ GRUMS   %% Intial noise (hawk,  "throat clearing")
 
 
 %% grums0 ---> hellos0,grums. %% TA-110516 %% hei. -> ?
@@ -19257,7 +19257,7 @@ grums0 ---> [].
 grums ---> [rute], {value(smsflag,true)}. %% TA-110303
 
 %% grums ---> hello. %% hei busstuc
-%% hei Tore , når går bussen. %% TA-110215
+%% hei Tore , nÃ¥r gÃ¥r bussen. %% TA-110215
                   %% hei, ser ut som...
 grums ---> ['.']. 
 grums ---> ['?'].  
@@ -19291,7 +19291,7 @@ grums ---> w(adj2(good,nil)),[om],!. %% ad hoc
 grums ---> [bare]. %% bare serveren er operativ
 grums ---> [eller].
 %% grums ---> [for].   %% for denne dagen gjelder
-%% grums ---> [forøvrig]. %% redindant0 \+ forøvrig fikk jeg \+ test
+%% grums ---> [forÃ¸vrig]. %% redindant0 \+ forÃ¸vrig fikk jeg \+ test
 grums ---> [fyi],point0. 
 grums ---> [grr].   
 grums ---> [huff].     %% :-)
@@ -19314,14 +19314,14 @@ grums ---> [ja],look_ahead(w(verb(_,_,_))).
 grums ---> [typisk]. 
 grums ---> [uff].   %%  :-)
 grums ---> [vel].  
-grums ---> [å],not_look_ahead_vp.  %% Å komme til Lian er lett
+grums ---> [Ã¥],not_look_ahead_vp.  %% Ã… komme til Lian er lett
                                   
 grums ---> w(nb(1939,num)),point0.
 
 grums ---> optional([for]), 
           w(noun(example,sin,u,n)),optional([':']).  
 
-grums ---> w(noun(question,sin,u,n)),[':']. %%\+ opt.   %% \+ spørsmålet ...
+grums ---> w(noun(question,sin,u,n)),[':']. %%\+ opt.   %% \+ spÃ¸rsmÃ¥let ...
 grums ---> [svar],optional([':']). 
 
 %% grums ---> w(noun(answer,sin,u,n)),optional([':']).    %% 
@@ -19336,10 +19336,10 @@ grums ---> w(noun(traffic,sin,u,n)),colon,!.
 
 grums ---> not_look_ahead([dere]), [tt].  
 
-grums ---> [så],w(adj2(funny,nil)),!.
+grums ---> [sÃ¥],w(adj2(funny,nil)),!.
 
-grums ---> [så],not_look_ahead_vp. %% (w(verb(_,_,_))). %% +\ så gikk bussen
-grums ---> [ja],[så],not_look_ahead_vp. %% TA-110819
+grums ---> [sÃ¥],not_look_ahead_vp. %% (w(verb(_,_,_))). %% +\ sÃ¥ gikk bussen
+grums ---> [ja],[sÃ¥],not_look_ahead_vp. %% TA-110819
 
 grums ---> [nb],one_of_lit(['.',':','!']).
 grums ---> [obs],one_of_lit(['.',':','!']). %% also OBS 
@@ -19420,7 +19420,7 @@ hello --->
      {testmember(Day,[day,morning,evening,night,afternoon])}. %% NB Norwegian conventions !
 
 paadeg   ---> prep1(on),[deg],!,accept.
-paadeg   ---> [og],[hå],!,accept. 
+paadeg   ---> [og],[hÃ¥],!,accept. 
 
 
 forhjelpen0 ---> 
@@ -19457,7 +19457,7 @@ kan ---> [kan].
 paabadet0 ---> prep1(on), [badet],!,accept. % :-)
 paabadet0 ---> []. 
 
-%%¤ QUIT 
+%%Â¤ QUIT 
 
 %% quit(error) ---> w(noun(error,sin,u,_)). %% feil, \+ feilen 
 %% -> greetings 
@@ -19465,7 +19465,7 @@ paabadet0 ---> [].
 quit(thanks) ---> w(adj2(good,nil)),w(noun(trip,sin,u,n)),!. 
 
 quit(bye) --->   w(verb(hear,pres,pass)),skip_rest. %% Sees
-quit(bye) --->   w(verb(see,pres,pass)),skip_rest.  %% Høres
+quit(bye) --->   w(verb(see,pres,pass)),skip_rest.  %% HÃ¸res
 quit(bye) --->   w(verb(tals,pres,pass)),skip_rest. %% Snakkes
 
 quit(bye) --->  [med],[vennlig],w(noun(greeting,_,_,_)),skip_rest. %% TA-110804
@@ -19475,8 +19475,8 @@ quit(bye) --->  w(noun(greeting,_,_,_)),skip_rest.
 quit(bye) --->  w(noun(midnight,plu,def,n)). %% Natta
 quit(bye) --->  [jeg],[snakkes],skip_rest. %% vi snakkes 
 quit(bye) --->  w(verb(stop,imp,_)). 
-quit(bye) --->  [adjø].
-quit(bye) --->  [på],[gjensyn]. 
+quit(bye) --->  [adjÃ¸].
+quit(bye) --->  [pÃ¥],[gjensyn]. 
 quit(bye) --->  hadet.  
 quit(bye) --->  hadet,godt.
 quit(bye) --->  [hei],[da]. 
@@ -19504,10 +19504,10 @@ quit(bye) --->
     w(noun(_whatever,_,_,_)).  %% (day,...)
 
 
-quit(you_are_welcome) ---> [på],[forhånd],thanks,!. 
+quit(you_are_welcome) ---> [pÃ¥],[forhÃ¥nd],thanks,!. 
 quit(you_are_welcome) ---> w(nb(1000,_)),thanks,!. 
 quit(you_are_welcome) ---> thanks,alot. 
-quit(you_are_welcome) ---> w(adj2(nice,nil)),[å],w(verb(speak,_,_)),prep1(with),[deg].
+quit(you_are_welcome) ---> w(adj2(nice,nil)),[Ã¥],w(verb(speak,_,_)),prep1(with),[deg].
 
 quit(merry_christmas) ---> godt,[jul]. %% :-)
 
@@ -19521,12 +19521,12 @@ quit(bye) ---> [hilsen],skip_rest. %% if allowed UNK
 % quit(insult) ---> [din],[tosk]...
 
 alot ---> [].  
-alot ---> [så],[mye].
-alot ---> [så],[meget].
+alot ---> [sÃ¥],[mye].
+alot ---> [sÃ¥],[meget].
 alot ---> [skal],[du],w(verb(have,inf,fin)).
 
 godt --->  w(adj2(good,nil)).          %% godt 
-godt --->  w(verb(go,past,part)). %% gått
+godt --->  w(verb(go,past,part)). %% gÃ¥tt
 godt --->  w(adj2(good,nil)),w(noun(day,sin,u,n)). %% (ha en) god dag
 
 
@@ -19571,7 +19571,7 @@ persok ---> [sorry].
 
 persok --->
     w(verb(be,imp,fin)),
-    [så],
+    [sÃ¥],
     w(adj2(good,nil)).
 
 persok ---> 
@@ -19641,20 +19641,20 @@ withyou0 ---> prep1(with),[_],!,accept. %% henne
 
 withyou0 ---> [].
 
-%%%¤¤¤ DA DA NOW 0
+%%%Â¤Â¤Â¤ DA DA NOW 0
 
 % Informal, allow time 
 dadanow0 ---> todax,danow0. %
 dadanow0 ---> danow0.
 
-% Hva er datoen i går (dont skip)
+% Hva er datoen i gÃ¥r (dont skip)
 
 %% Complex passover (Deep Cut Fail)
 
 danow0 ---> 
-    look_ahead([nå]),
+    look_ahead([nÃ¥]),
     notreachphrase, %% succeeds with []
-    [nå],
+    [nÃ¥],
     !.
 danow0 ---> [].
 
@@ -19662,15 +19662,15 @@ notreachphrase ---> reachphrase,!,reject.
 notreachphrase ---> [].
 
 reachphrase ---> 
-    w(verb(reach,inf,fin)), %% (å) nå (et tog)
+    w(verb(reach,inf,fin)), %% (Ã¥) nÃ¥ (et tog)
     look_ahead_np,!. 
 
 
 danow0 ---> danow,!.
 danow0 ---> [].
 
-danow ---> w(adv(now)),danow,!. %% nå da
-danow ---> w(adv(now)).         %% nå
+danow ---> w(adv(now)),danow,!. %% nÃ¥ da
+danow ---> w(adv(now)).         %% nÃ¥
 danow ---> [da],danow.   %% da da
 
 % danow ---> w(name(bustuc,_,_)). 
@@ -19679,7 +19679,7 @@ danow ---> [da],danow.   %% da da
 
 
 todax ---> today,!,accept.
-todax ---> prep1(in),[går],!,accept. %% :-)
+todax ---> prep1(in),[gÃ¥r],!,accept. %% :-)
 
 good0 ---> so0,good,!,accept.
 good0 ---> [].
