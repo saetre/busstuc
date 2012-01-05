@@ -150,7 +150,11 @@ prompt2(norsk,'N: ').
   compile('tuc/evaluate.pl'),     % translate and evaluate
 %%%%   compile('tuc/inger.pl'),        % intelligent resolution 
   compile('tuc/anaphors.pl'),     % anaphoric resolution  
-  compile('tuc/metacomp.pl'),     % compiles the grammar 
+
+  
+  compile('tuc/metacomp.pl'),     % compiles the grammar
+
+
   compile('tuc/fernando.pl'),     % semantic interface
 %%   compile('tuc/world0.pl'),       % empty world predicates %% TA-110301
 %%%   compile('tuc/slash.pl'),        % slash facts / %% Irrelevant
