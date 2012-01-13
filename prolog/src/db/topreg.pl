@@ -25,7 +25,7 @@
 %% Route Domains %%
 
 routedomain(tt).  %% Team Trafikk
-routedomain(gb).  %% Gr�kallbanen
+routedomain(gb).  %% Gråkallbanen
 routedomain(fb).  %% Flybussen
 routedomain(tmn). %% Generic for TMN related routes
 
@@ -84,7 +84,8 @@ default_message(tt,summer,['AtB summer routes are from Jun. 27 to  Aug. 21. 2012
 %route_period( tt, r1603_111227, date(2011,12,26),    date(2011,12,30) ).
 %route_period( tt, r1604_111231, date(2011,12,31),    date(2011,12,31) ).
 %route_period( tt, r1605_120101, date(2012,1,1),      date(2012,1,1) ).
-route_period( tt, r1606_120102, date(2012,1,2),      date(2012,12,31) ).
+route_period( tt, r1606_120102, date(2012,1,2),       date(2012,01,11) ).
+route_period( tt, r1602_120112, date(2012,1,12),      date(2012,12,31) ).
 
 %period_message( r1618_110517,                        
 %['AtB Routes for Constitution Day',             
@@ -105,32 +106,32 @@ period_message( r1600_111201,
 %period_message( r1601_111224,                      
 %['Saturday schedule (Christmas Eve) with last departure (to/from city center) at 15.45',
 %% 'AtB Ruter for Julaften']).           %% RS-111218
-% 'L�rdagsrute (Julaften) med siste avganger (til/fra sentrum) kl 15.45']).           %% RS-111223
+% 'Lï¿½rdagsrute (Julaften) med siste avganger (til/fra sentrum) kl 15.45']).           %% RS-111223
 %
 %period_message(r1602_111225,
 %['Sunday schedule (Christmas Day) with first departures from 12.30',
-%% 'AtB Ruter for f�rste Juledag']).           %% RS-111218
-% 'S�ndagsrute (f�rste Juledag) med f�rste avganger fra kl 12.30']).           %% RS-111223
+%% 'AtB Ruter for fï¿½rste Juledag']).           %% RS-111218
+% 'Sï¿½ndagsrute (fï¿½rste Juledag) med fï¿½rste avganger fra kl 12.30']).           %% RS-111223
 %
 %period_message(r1603_111226,
 %['Sunday schedule (2nd Christmas Day)',
-% 'S�ndagsrute (andre juledag)']).           %% RS-111223
+% 'Sï¿½ndagsrute (andre juledag)']).           %% RS-111223
 %
 %period_message(r1603_111227,
 %['Saturday Schedule with extra departures (Middle Christmas)',
-% 'L�rdagsruter med ekstra avganger (Mellomjula)']).           %% RS-111223
+% 'Lï¿½rdagsruter med ekstra avganger (Mellomjula)']).           %% RS-111223
 %
 %period_message( r1604_111231,
 %['Saturday schedule (New Years Eve) with last departure (to/from city center) at 20.15',
-%% 'AtB Ruter for Nytt�rsaften']).           %% RS-111220
-% 'L�rdagsrute (Nytt�rsaften) med siste avganger (til/fra sentrum) kl 20.15']).           %% RS-111223
+%% 'AtB Ruter for Nyttï¿½rsaften']).           %% RS-111220
+% 'Lï¿½rdagsrute (Nyttï¿½rsaften) med siste avganger (til/fra sentrum) kl 20.15']).           %% RS-111223
 %
 %period_message(r1605_120101,
 %['Sunday schedule (New Years Day) with first departures from 12.30',
-%% 'AtB Ruter for f�rste Nytt�rsdag']).           %% RS-111218
-% 'S�ndagsrute (Nytt�rsdag) med f�rste avganger fra kl 12.30']).           %% RS-111223
+%% 'AtB Ruter for fï¿½rste Nyttï¿½rsdag']).           %% RS-111218
+% 'Sï¿½ndagsrute (Nyttï¿½rsdag) med fï¿½rste avganger fra kl 12.30']).           %% RS-111223
 
-period_message( r1606_120102,
+period_message( r1602_120102,
 ['AtB Winter routes',           
  'AtB Vinterruter']). %% \+ .   %% RS-111220
 
