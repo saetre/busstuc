@@ -1,0 +1,20 @@
+Gammel:
+========
+21. Jan. 2012 er en  lørdag .
+Første buss , nummer 55 passerer  Rate kl. 0705 
+og  kommer til  Torget kl. 0724 .
+Siste buss , nummer 55 passerer  Rate kl. 1635 
+og  kommer til  Torget kl. 1654 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+
+
+Ny:
+========
+21. Jan. 2012 er en  lørdag .
+Første buss , nummer 55 passerer  Rate kl. 0625 
+og  kommer til  Torget kl. 0644 .
+Siste buss , nummer 55 passerer  Rate kl. 1635 
+og  kommer til  Torget kl. 1654 .
+
+Tidene angir tidligste passeringer av holdeplassene. 

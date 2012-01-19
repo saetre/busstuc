@@ -42,7 +42,7 @@ compilerouteaux(tt,[ %% 'db/regbusall', %% Inclusive  set of buses
 %% DEFAULT ROUTE PERIODS 
 
 %default_period(tt,winter, r1601_110822).  %% 2011 Autumn
-default_period(tt,winter, r1605_120102).  %% 2012 Winter/Spring?
+default_period(tt,winter, r1609_120117).  %% 2012 Winter/Spring?
 default_period(tt,summer, r1611_110627).  %% 2011 Summer
 
 default_message(tt,winter,['AtB winter routes are from  Jan. 2 2012  to Dec 23.  2012.',
@@ -85,7 +85,7 @@ default_message(tt,summer,['AtB summer routes are from Jun. 27 to  Aug. 21. 2012
 %route_period( tt, r1604_111231, date(2011,12,31),    date(2011,12,31) ).
 %route_period( tt, r1605_120101, date(2012,1,1),      date(2012,1,1) ).
 route_period( tt, r1606_120102, date(2012,1,2),       date(2012,01,11) ).
-route_period( tt, r1602_120112, date(2012,1,12),      date(2012,12,31) ).
+route_period( tt, r1609_120117, date(2012,1,17),      date(2012,12,31) ).
 
 %period_message( r1618_110517,                        
 %['AtB Routes for Constitution Day',             
@@ -99,7 +99,7 @@ period_message( r1611_110627,
 %['AtB Routes for week 33 (2011)',           
 % 'AtB Ruter uke 33 (2011)']).
 
-period_message( r1600_111201,
+period_message( r1609_120117,
 ['AtB Winter routes',
  'AtB Vinterruter']). %% \+ .   %% RS-111220
 
