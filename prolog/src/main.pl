@@ -9,7 +9,6 @@
 
 :-use_module(library(timeout)). 
 % ?-prolog_flag(gc_trace,_,verbose).
-:- ensure_loaded( 'declare' ).  % [ (:=)/2, (=:)/2, myflags/2,  set/2,  traceprint/2, track/2 ]
 
 %% Main program
 
@@ -226,6 +225,18 @@ webrun_tele :-
 	    fail,
 	 !.
 
+jettyrun(S) :-
+        world := real,
+        reset_period, %% ---> topreg.pl
+        psl(S,L),
+        L = [File|L1],
+        tell(File),
+
+        splitlang(L1,L2),
+        (process(L2);true), % Process always fails...
+        !.
+
+
 webrun :-      
 	 writepid, 
     nofileerrors,
@@ -245,17 +256,6 @@ webrun :-
 
        fail,
 	 !.
-
-jettyrun(S) :-
-        world := real,
-        reset_period, %% ---> topreg.pl
-        psl(S,L),
-        L = [File|L1],
-        tell(File),
-        
-        splitlang(L1,L2),
-        (process(L2);true), % Process always fails...
-        !.
 
 norsource_prefix :- %% TA-110207
     value(norsource,true) ->
@@ -979,13 +979,13 @@ no_verb(L) :- \+ verbed_sentence(L).  %% no_unprotected_verb
 verbed_sentence(L):- 
     member(W,L), 
     W = w(R,ListV),
-    R \== 'nÃ¥r',                % = nÃ¥ = now (doesn't count)
-    R \== 'nÃ¥',
-    R \== 'sÃ¥',
+    R \== når,                % = nÃ¥ = now (doesn' count)
+    R \== nå,  
+    R \== så,  
     (member(verb(_,_,_),ListV);
      member([skal],ListV); 
      member([vil],ListV);   %%
-     member(['mÃ¥'],ListV)),   %%
+     member([må],ListV)),   %%
    !.
 
 present(_,nil):-!.      % code printed by side effect 

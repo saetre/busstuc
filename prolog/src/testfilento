@@ -1,0 +1,47 @@
+........................................................................
+
+
+
+
+                                        sentence
+                      ______________________|_____________________
+                     /                                            \
+               origin_phrase                                   sentences
+  ___________________|__________________                   ________|_______
+ /         |                            \                 /                \
+ (  origin_element                origin_phrase0n        pp                 .
+       ___|__                        ____|____       _____|_____
+      /   |  \                      /         \     /           \
+    name  +  nb              origin_element    )  prep         name
+      |       |               ______|______         |            |
+      |       |              /          |  \        |            |
+     ila      1            name         +  nb      to   studentersamfundet
+                             |              |
+                             |              |
+                    studentersamfundet      2
+
+
+    
+
+[modifier(A):::(studentersamfundet isa station,srel/to/place/studentersamfundet/A,event/real/A)]
+
+
+........................................................................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Ila","busstopnumber":16011192,"busnumber":5,"time":1627,"duration":14,"destination":"Studentersamfundet"}
+{"busstopname":"Ila","busstopnumber":16011192,"busnumber":8,"time":1628,"duration":16,"destination":"Studentersamfundet"}
+{"busstopname":"Ila","busstopnumber":16011192,"busnumber":63,"time":1637,"duration":12,"destination":"Studentersamfundet"}
+]}
+
+Buss 5 passerer  Ila kl. 1627 , kl. 1637  og  kl. 1647 
+og  kommer til  Studentersamfundet ,  14 minutter senere .
+Buss 8 passerer  Ila kl. 1628  og  kl. 1638 
+og  kommer til  Studentersamfundet ,  16 minutter senere .
+Buss 63 passerer  Ila kl. 1637 
+og  kommer til  Studentersamfundet ,  12-28 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
