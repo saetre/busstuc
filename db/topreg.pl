@@ -106,30 +106,30 @@ period_message( r1609_120117,
 %period_message( r1601_111224,                      
 %['Saturday schedule (Christmas Eve) with last departure (to/from city center) at 15.45',
 %% 'AtB Ruter for Julaften']).           %% RS-111218
-% 'Lï¿½rdagsrute (Julaften) med siste avganger (til/fra sentrum) kl 15.45']).           %% RS-111223
+% 'Lørdagsrute (Julaften) med siste avganger (til/fra sentrum) kl 15.45']).           %% RS-111223
 %
 %period_message(r1602_111225,
 %['Sunday schedule (Christmas Day) with first departures from 12.30',
-%% 'AtB Ruter for fï¿½rste Juledag']).           %% RS-111218
-% 'Sï¿½ndagsrute (fï¿½rste Juledag) med fï¿½rste avganger fra kl 12.30']).           %% RS-111223
+%% 'AtB Ruter for første Juledag']).           %% RS-111218
+% 'Søndagsrute (første Juledag) med første avganger fra kl 12.30']).           %% RS-111223
 %
 %period_message(r1603_111226,
 %['Sunday schedule (2nd Christmas Day)',
-% 'Sï¿½ndagsrute (andre juledag)']).           %% RS-111223
+% 'Søndagsrute (andre juledag)']).           %% RS-111223
 %
 %period_message(r1603_111227,
 %['Saturday Schedule with extra departures (Middle Christmas)',
-% 'Lï¿½rdagsruter med ekstra avganger (Mellomjula)']).           %% RS-111223
+% 'Lørdagsruter med ekstra avganger (Mellomjula)']).           %% RS-111223
 %
 %period_message( r1604_111231,
 %['Saturday schedule (New Years Eve) with last departure (to/from city center) at 20.15',
-%% 'AtB Ruter for Nyttï¿½rsaften']).           %% RS-111220
-% 'Lï¿½rdagsrute (Nyttï¿½rsaften) med siste avganger (til/fra sentrum) kl 20.15']).           %% RS-111223
+%% 'AtB Ruter for Nyttørsaften']).           %% RS-111220
+% 'Lørdagsrute (Nyttørsaften) med siste avganger (til/fra sentrum) kl 20.15']).           %% RS-111223
 %
 %period_message(r1605_120101,
 %['Sunday schedule (New Years Day) with first departures from 12.30',
-%% 'AtB Ruter for fï¿½rste Nyttï¿½rsdag']).           %% RS-111218
-% 'Sï¿½ndagsrute (Nyttï¿½rsdag) med fï¿½rste avganger fra kl 12.30']).           %% RS-111223
+%% 'AtB Ruter for første Nyttørsdag']).           %% RS-111218
+% 'Søndagsrute (Nyttørsdag) med første avganger fra kl 12.30']).           %% RS-111223
 
 period_message( r1602_120102,
 ['AtB Winter routes',           
