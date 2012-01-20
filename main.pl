@@ -225,18 +225,6 @@ webrun_tele :-
 	    fail,
 	 !.
 
-jettyrun(S) :-
-        world := real,
-        reset_period, %% ---> topreg.pl
-        psl(S,L),
-        L = [File|L1],
-        tell(File),
-
-        splitlang(L1,L2),
-        (process(L2);true), % Process always fails...
-        !.
-
-
 webrun :-      
 	 writepid, 
     nofileerrors,
@@ -644,7 +632,7 @@ process([GWB|_]):- %% Provoked Halt
 
 
 
-%Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
+%¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
 
 %% NEW  %% OMNITUC !
 
@@ -655,7 +643,7 @@ process([GWB|_]):- %% Provoked Halt
 %    exetuc(TQL).
  
 
-%Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
+%¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
 
 
 
@@ -855,7 +843,7 @@ grammar2(L,error):-                % Failed with type check,
 
        nl, 
        doubt('- - - Incomprehensible words: ', %% '-'  means No Pay 
-             '- - - UforstÃ¥elige ord    '), %% Freak test AtB drops list of words
+             '- - - Uforståelige ord    '), %% Freak test AtB drops list of words
                                          %% after : ????
                                          %% TA-101201
 
@@ -907,7 +895,7 @@ grammar2(L,error):-
 
        nl,                             
        doubt('- - - Meaningless at * - - -',
-             '- - - MeningslÃ¸st ved * - - -'),
+             '- - - Meningsløst ved * - - -'),
        mix(Attempt1,L),
 
    stopteleerror.
@@ -934,7 +922,7 @@ grammar2(L,error):-                  % Failed also with type check
     startteleerror,
 
         doubt('- - - Incomprehensible at  * - - -',
-              '- - - UforstÃ¥elig ved * - - -'), 
+              '- - - Uforståelig ved * - - -'), 
         mix(Attempt2,L),
 
      stopteleerror.
@@ -979,7 +967,7 @@ no_verb(L) :- \+ verbed_sentence(L).  %% no_unprotected_verb
 verbed_sentence(L):- 
     member(W,L), 
     W = w(R,ListV),
-    R \== når,                % = nÃ¥ = now (doesn' count)
+    R \== når,                % = nå = now (doesn' count)
     R \== nå,  
     R \== så,  
     (member(verb(_,_,_),ListV);
@@ -1084,7 +1072,7 @@ indentprint(N,Y):-
 
 %% Control Section
 
-%% [gps_origin('GlÃ¸shaugen syd',3)]
+%% [gps_origin('Gløshaugen syd',3)]
 
 transfix([gpsflag:::Orgy | Rest],U) :-!,
 
@@ -1297,7 +1285,7 @@ ltoplus([Z,Y|X], ( UY+Z)):-
 
 ltoplus([X],X).
 
-plustoatom(A+B,AB):- !,%% jÃ¦vla hack
+plustoatom(A+B,AB):- !,%% jævla hack
     plustoatom(A,A1),
     plustoatom(B,B1),
     append_atomlist([A1,'+',B1],AB).
