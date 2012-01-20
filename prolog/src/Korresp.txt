@@ -13,7 +13,7 @@ Kronologisk
 
 --------------------------------------------------------------------------------------------------------
 
-Hvordan kommer jeg fra yggdrasilvegen 9c til GlÃ¸shaugen med buss.
+Hvordan kommer jeg fra yggdrasilvegen 9c til Gløshaugen med buss.
 
 
 
@@ -23,17 +23,17 @@ Veibeskrivelse for gange til Norges teknisk-naturvitenskapelige universitet
 
  Yggdrasilvegen 97033 Trondheim 
 
-1. KjÃ¸r mot Ã¸st pÃ¥ Yggdrasilvegen mot Utleirvegen 81 m 
+1. Kjør mot øst på Yggdrasilvegen mot Utleirvegen 81 m 
 2. Ta til venstre ved Utleirvegen 0,2 km 
-3. Ta til venstre for Ã¥ holde deg pÃ¥ Utleirvegen 0,4 km 
-4. I Nardobrua: ta 1. avkjÃ¸ring ut pÃ¥ TorbjÃ¸rn Bratts veg 0,9 km 
-5. I rundkjÃ¸ringen: ta 2. avkjÃ¸ring ut pÃ¥ Strindvegen 0,3 km 
+3. Ta til venstre for å holde deg på Utleirvegen 0,4 km 
+4. I Nardobrua: ta 1. avkjøring ut på Torbjørn Bratts veg 0,9 km 
+5. I rundkjøringen: ta 2. avkjøring ut på Strindvegen 0,3 km 
 6. Ta til venstre ved Richard Birkelands vei 0,2 km 
-7. Hold til hÃ¸yre ved HÃ¸gskoleringen 0,3 km 
-8. Ta til venstre ved KolbjÃ¸rn Hejes vei 15 m 
-9. Ta til hÃ¸yre ved HÃ¸gskoleringen 0,2 km 
-10. Ta til venstre ved HÃ¸gskoleveien 
-MÃ¥let blir pÃ¥ venstre side 48 m 
+7. Hold til høyre ved Høgskoleringen 0,3 km 
+8. Ta til venstre ved Kolbjørn Hejes vei 15 m 
+9. Ta til høyre ved Høgskoleringen 0,2 km 
+10. Ta til venstre ved Høgskoleveien 
+Målet blir på venstre side 48 m 
 
  Norges teknisk-naturvitenskapelige universitet 
 
@@ -41,25 +41,25 @@ MÃ¥let blir pÃ¥ venstre side 48 m
 -------------------------------------------------------------------------------------------------------
 
 /*
-1.  Kan bussoraklet fortelle deg hvilken buss du skal ta for Ã¥ komme
-    fra din hjemmeadresse til skolen din fÃ¸r skolen starter om  morgenen ?
+1.  Kan bussoraklet fortelle deg hvilken buss du skal ta for å komme
+    fra din hjemmeadresse til skolen din før skolen starter om  morgenen ?
 
-2.  Hvor mange mÃ¥ter tror du det er mulig Ã¥ skrive Edgar B. Schieldropsvei, 
+2.  Hvor mange måter tror du det er mulig å skrive Edgar B. Schieldropsvei, 
     med eller uten trykkfeil og forkotninger, slik at  det blir
-    forstÃ¥tt av bussoraklet ?
+    forstått av bussoraklet ?
 */
 
 
 
 
-1. Hvordan kan jeg fÃ¥ bussoraklet til Ã¥ fortelle meg hvilken buss jeg
-   skal ta for Ã¥ komme fra min hjemmeadresse til skolen min fÃ¸r skolen
+1. Hvordan kan jeg få bussoraklet til å fortelle meg hvilken buss jeg
+   skal ta for å komme fra min hjemmeadresse til skolen min før skolen
    starter om morgenen ?
 
 
-2.  Hvor mange mÃ¥ter tror du det er mulig Ã¥ skrive Edgar B. Schieldropsvei, 
+2.  Hvor mange måter tror du det er mulig å skrive Edgar B. Schieldropsvei, 
     med eller uten trykkfeil og forkotninger, slik at  det blir
-    forstÃ¥tt av bussoraklet ?
+    forstått av bussoraklet ?
 
 
 
@@ -73,21 +73,21 @@ Subject: VS: Feil i bussoraklet
 
 Hei!
  
-Har mottat vedlagte feilmelding pÃ¥ e-post.
+Har mottat vedlagte feilmelding på e-post.
  
 Kan ikke finne feil i ruteoppsettet i Hastus slik at jeg dermed
-utifra min kunskap har grunn til Ã¥ tro at regtop-filene ikke er
-Ã¥rsaken til feilen. FÃ¥r du sjekket opp dette mot bussorakelet?
+utifra min kunskap har grunn til å tro at regtop-filene ikke er
+årsaken til feilen. Får du sjekket opp dette mot bussorakelet?
  
  
 En annen feil som skriver seg fra hastus og regtop er at vi har lagt
-feil trasÃ¨ pÃ¥ avganger pÃ¥ linje 44 som ska kjÃ¸re hovedtrasse (blank
-variant) disse ligger nÃ¥ feilplassert som 44A slik at publikum fÃ¥r
-opp linje 44 som alternativ nÃ¥r de vil til CitySyd pÃ¥ ettermiddagen.
+feil trasè på avganger på linje 44 som ska kjøre hovedtrasse (blank
+variant) disse ligger nå feilplassert som 44A slik at publikum får
+opp linje 44 som alternativ når de vil til CitySyd på ettermiddagen.
  
 Avganger som skal ha hovedtrasse er 0825 - 1410 - 1440 - 1510 - 1540
-- 1610 - 1640.  greier du endre trasÃ¨ variant i Bussoraklet sÃ¥ hadde
-det vÃ¦rt fint.
+- 1610 - 1640.  greier du endre trasè variant i Bussoraklet så hadde
+det vært fint.
  
  
 Lars
@@ -104,19 +104,19 @@ Sendt: 26. juni 2008 12:26
 Til: Firmapostkasse Team Trafikk AS
 Emne: Feil i bussoraklet
 
-Enten har dere fÃ¥tt nye busser som har en hastighet pÃ¥ 1000 km/t,
-eller sÃ¥ er det en bug i bussoraklet. Jeg skal til LundÃ¥sen fra
-Brundalen, og stilte fÃ¸lgende spÃ¸rsmÃ¥l med pÃ¥fÃ¸lgende svar:
+Enten har dere fått nye busser som har en hastighet på 1000 km/t,
+eller så er det en bug i bussoraklet. Jeg skal til Lundåsen fra
+Brundalen, og stilte følgende spørsmål med påfølgende svar:
 
-Q: "NÃ¥r mÃ¥ jeg ta bussen fra Brundalen for Ã¥ vÃ¦re pÃ¥ LundÃ¥sen klokka
+Q: "Når må jeg ta bussen fra Brundalen for å være på Lundåsen klokka
 1600?"
-A: "Buss 36 gÃ¥r fra Brundalen kl. 1526 til Heimdal sentrum kl. 1527
-og buss 9 gÃ¥r fra Heimdal sentrum kl. 1532 til LundÃ¥sen kl. 1539 ."
+A: "Buss 36 går fra Brundalen kl. 1526 til Heimdal sentrum kl. 1527
+og buss 9 går fra Heimdal sentrum kl. 1532 til Lundåsen kl. 1539 ."
 
-Kjappere har det aldri gÃ¥tt Ã¥ komme seg fra Brundalen til Heimdal.
-Jeg vet ikke om det er dere i Team Trafikk eller folka pÃ¥
-kunnskapssystemer-linja pÃ¥ GlÃ¸s som vedlikeholder Bussoraklet, men
-sender til denne mailadressen og hÃ¥per det kommer fram til riktig
+Kjappere har det aldri gått å komme seg fra Brundalen til Heimdal.
+Jeg vet ikke om det er dere i Team Trafikk eller folka på
+kunnskapssystemer-linja på Gløs som vedlikeholder Bussoraklet, men
+sender til denne mailadressen og håper det kommer fram til riktig
 person.
 
 Vennlig hilsen
@@ -128,7 +128,7 @@ Runar Os Mathisen
 
 Subject: SV: SV: SV: SV: VS: Ekstra avgang rute 46, ny tur fra Torvtaket, man-fre
 
- det er filene r1619 som er for perioden 24/12 - 01/01 mens r1618 er for tiden fÃ¸r og etter med hull for jula
+ det er filene r1619 som er for perioden 24/12 - 01/01 mens r1618 er for tiden før og etter med hull for jula
 
 Mvh
 Lars Mo
@@ -141,13 +141,13 @@ Emne: Re: SV: SV: SV: VS: Ekstra avgang rute 46, ny tur fra Torvtaket, man-fre
 
 
 
-Jeg vil gjerne ha regtopp-eksporten for vinterruter nÃ¥, sÃ¥ blir det riktig fra starten.
+Jeg vil gjerne ha regtopp-eksporten for vinterruter nå, så blir det riktig fra starten.
 
 
-Deretter juleruter nÃ¥r de er ferdige, og reviderte vinterruter.
+Deretter juleruter når de er ferdige, og reviderte vinterruter.
 
 (Turene til skistua  fra helga 18-19/1 til 18-19/4 - 2009
-  fÃ¥r kommmer som en gledelig overaskelse nÃ¥r reviderte vinterruter blir lagt inn).
+  får kommmer som en gledelig overaskelse når reviderte vinterruter blir lagt inn).
 
 
 
@@ -155,9 +155,9 @@ Deretter juleruter nÃ¥r de er ferdige, og reviderte vinterruter.
 
 On Wed, 26 Nov 2008, Lars Mo wrote:
 
- Da mener vi at vi har fÃ¥tt inn de riktige data i Hastus slik at vi kan prÃ¸ve en ny regtopeksport
- AngÃ¥ende linje 10 skistua sÃ¥ skal de turene gÃ¥ fra helga 18-19/1 til 18-19/4 - 2009
- Skal jeg da sende deg rgtopp nÃ¥ uten disse avgangene og en ny pÃ¥ nyÃ¥ret der disse er med?
+ Da mener vi at vi har fått inn de riktige data i Hastus slik at vi kan prøve en ny regtopeksport
+ Angående linje 10 skistua så skal de turene gå fra helga 18-19/1 til 18-19/4 - 2009
+ Skal jeg da sende deg rgtopp nå uten disse avgangene og en ny på nyåret der disse er med?
 
  Mvh
  Lars Mo
@@ -175,23 +175,23 @@ On Wed, 26 Nov 2008, Lars Mo wrote:
 
  Desverre er ikke tidligere oppdateringer gjort slik det var forventet.
 
- Jeg vil nÃ¸dig foreta manuelle rettinger (ennÃ¥ en gang).
+ Jeg vil nødig foreta manuelle rettinger (ennå en gang).
 
- Er det mulig Ã¥ fÃ¥ dette kjÃ¸rt en gang til etter en oppdatering, og pÃ¥se at Hastus-kjÃ¸ringen bruker de riktige filene nÃ¥r vinterrutene genereres.
+ Er det mulig å få dette kjørt en gang til etter en oppdatering, og påse at Hastus-kjøringen bruker de riktige filene når vinterrutene genereres.
 
  %%%%%%%%%%%%
 
- (Alle eksemplene under er kjÃ¸rt med dato = 24.11.08)
+ (Alle eksemplene under er kjørt med dato = 24.11.08)
 
 
- 1.  Nattbussen er fortsatt oppfÃ¸rt med avganger kl 0400
+ 1.  Nattbussen er fortsatt oppført med avganger kl 0400
 
 
- N: siste nattbuss pÃ¥ fredag til risvollan.
+ N: siste nattbuss på fredag til risvollan.
 
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  +
- 29. Nov. 2008 er en  lÃ¸rdag .
+ 29. Nov. 2008 er en  lørdag .
  Nattbuss  188 passerer  Dronn. gt D3 kl.  0402 og  Risvollan senter kl.  0423 .
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -201,19 +201,19 @@ On Wed, 26 Nov 2008, Lars Mo wrote:
  N: neste fra sentrum til k. jonsons vei etter 1740.
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  +
- Buss 55 gÃ¥r fra Munkegt M3 kl.  1740 til NygÃ¥rd kl.  1750 og  buss 55 gÃ¥r fra NygÃ¥rd kl.  1755 til K Jonssons vei kl.  1756 .
+ Buss 55 går fra Munkegt M3 kl.  1740 til Nygård kl.  1750 og  buss 55 går fra Nygård kl.  1755 til K Jonssons vei kl.  1756 .
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
- 3. GraaemÃ¸lna er fortsatt en holdeplass med passeringer
+ 3. Graaemølna er fortsatt en holdeplass med passeringer
 
 
- N: til graamÃ¸lna .
+ N: til graamølna .
 
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  +
  Buss 7 passerer  Munkegt M5 kl.  0825 og  kl.  0835
- og   GraaemÃ¸lna ,  4 min. senere .
+ og   Graaemølna ,  4 min. senere .
  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  4. Jeg har ikke sjekket om endringer i ruter til Skistua er tatt med.
@@ -223,7 +223,7 @@ On Wed, 26 Nov 2008, Lars Mo wrote:
 
  Hei
 
- Da skal dette vÃ¦re ny og komplett regtopp med oppdaterte og rettede holdplassnavn, avganger og varianter for vinterutene.
+ Da skal dette være ny og komplett regtopp med oppdaterte og rettede holdplassnavn, avganger og varianter for vinterutene.
 
 
  Med hilsen
@@ -241,19 +241,19 @@ On Wed, 26 Nov 2008, Lars Mo wrote:
 
 
 
- Jeg vil gjerne har full regtop-eksport pÃ¥ oppdaterte vanlige vinterruter innen  1.  desember. Dette omfatter korrigerte holdeplassnavn.
+ Jeg vil gjerne har full regtop-eksport på oppdaterte vanlige vinterruter innen  1.  desember. Dette omfatter korrigerte holdeplassnavn.
 
  Jeg er ikke interessert i separate liste over holdeplasser.
 
- NÃ¥r det er verifisert Ã¸nsker jeg en full regtopp-eksport av juleruter (fortrinssvis innen  8 desember), med de samme korrigerete holdeplassnavnene.
+ Når det er verifisert ønsker jeg en full regtopp-eksport av juleruter (fortrinssvis innen  8 desember), med de samme korrigerete holdeplassnavnene.
 
 
 
 
  On Tue, 18 Nov 2008, Lars Mo wrote:
 
- Det var sÃ¥ at korreksjoner pÃ¥ holdeplassnavn skulle inn fra 1. desember mens juleruter mÃ¥ inn uken etterpÃ¥?
- Skal du ha fulstendig regtopeksport pÃ¥ vinterrutene innen 1/12 og/eller skal du ha liste over holdeplassene du etterspurte med riktig navn pÃ¥?
+ Det var så at korreksjoner på holdeplassnavn skulle inn fra 1. desember mens juleruter må inn uken etterpå?
+ Skal du ha fulstendig regtopeksport på vinterrutene innen 1/12 og/eller skal du ha liste over holdeplassene du etterspurte med riktig navn på?
 
  Mvh
  Lars
@@ -276,8 +276,8 @@ On Wed, 26 Nov 2008, Lars Mo wrote:
 
  Hei
 
- Kan denne tiren legges inn i bussorakelet nÃ¥ eller mÃ¥ den vente til
- full oppdatering Det gjelder  altsÃ¥ Ekstra avgang rute 46 fraTiller
+ Kan denne tiren legges inn i bussorakelet nå eller må den vente til
+ full oppdatering Det gjelder  altså Ekstra avgang rute 46 fraTiller
  Kl 08:50 1) (fotnote)
 
 
@@ -290,23 +290,23 @@ On Wed, 26 Nov 2008, Lars Mo wrote:
  Fra: Johanne S. Bakke
  Sendt: 18. november 2008 13:01
  Til: Lars Mo
- Kopi: Johanne S. Bakke; BjÃ¸rn Holm; Erling Bjerkvik
+ Kopi: Johanne S. Bakke; Bjørn Holm; Erling Bjerkvik
  Emne: Ekstra avgang rute 46, ny tur fra Torvtaket, man-fre
 
 
  Hei Lars!
 
  Rute 46
- Pga et krav fra fylket (eller kommunen) om hÃ¸yere bussfrekvens ned
+ Pga et krav fra fylket (eller kommunen) om høyere bussfrekvens ned
  til Trondheim S og Pirbadet ble det i august satt opp en ekstra avgang fra Torvtaket (Tiller) til Pirbadet.
  Avgangen har fotnote 1.
 
  Ekstra avgang rute 46 fraTiller
  Kl 08:50 1) (fotnote)
 
- Kan du sÃ¸rge for at denne blir lagt inn i vÃ¥rt Bussorakel?
+ Kan du sørge for at denne blir lagt inn i vårt Bussorakel?
 
- Jeg legger straks ut korrigert statisk versjon pÃ¥ vÃ¥rt nettsted.
+ Jeg legger straks ut korrigert statisk versjon på vårt nettsted.
 
  Mvh
  Johanne S. Bakke
@@ -320,96 +320,96 @@ On Wed, 26 Nov 2008, Lars Mo wrote:
 
 
     Hei.
-    Ja, jeg tenkte at BusTUC kunne brukes som det er og alikevel kunne lÃ¸se noen av problemene for folk uten bredbÃ¥nd.
-    BusTUC overfÃ¸rer kanskje mindre data enn Google Maps, og ergo overfÃ¸rer BusTUC data  raskere?
-    BusTUC kunne brukes for SMS grensesnitt for de uten PC eller folk pÃ¥ farta.
-    Naturlig sprÃ¥k er mer forstÃ¥elig for de uten datakunnskaper.
+    Ja, jeg tenkte at BusTUC kunne brukes som det er og alikevel kunne løse noen av problemene for folk uten bredbånd.
+    BusTUC overfører kanskje mindre data enn Google Maps, og ergo overfører BusTUC data  raskere?
+    BusTUC kunne brukes for SMS grensesnitt for de uten PC eller folk på farta.
+    Naturlig språk er mer forståelig for de uten datakunnskaper.
     Det ser ikke ut som om Santa Barbara har beholdt BusTUC. 
     Det var leit.
-    Jeg skal foresten ned dit i april og se pÃ¥ parkeringsystemet deres.
+    Jeg skal foresten ned dit i april og se på parkeringsystemet deres.
 
 .....
 
-Jeg er i Oslo nÃ¥ men skal sjekke ut dette sÃ¥ snart som mulig nÃ¥r jeg er tilbake i Trondheim.
+Jeg er i Oslo nå men skal sjekke ut dette så snart som mulig når jeg er tilbake i Trondheim.
 
 Jeg har mottatt nye vinterruter, og ekstra avgang fra  Tiller (Torvtaket) kl 0850 er riktig.
 
 Desverre er ikke tidligere oppdateringer gjort slik det var forventet.
 
-Jeg vil nÃ¸dig foreta manuelle rettinger (ennÃ¥ en gang).
+Jeg vil nødig foreta manuelle rettinger (ennå en gang).
 
-Er det mulig Ã¥ fÃ¥ dette kjÃ¸rt en gang til etter en oppdatering, og pÃ¥se at Hastus-kjÃ¸ringen bruker de riktige filene nÃ¥r vinterrutene genereres.
+Er det mulig å få dette kjørt en gang til etter en oppdatering, og påse at Hastus-kjøringen bruker de riktige filene når vinterrutene genereres.
 
-Jeg vil gjerne har full regtop-eksport pÃ¥ oppdaterte vanlige vinterruter innen  1.  desember. Dette omfatter korrigerte holdeplassnavn.
+Jeg vil gjerne har full regtop-eksport på oppdaterte vanlige vinterruter innen  1.  desember. Dette omfatter korrigerte holdeplassnavn.
 
 Jeg er ikke interessert i separate liste over holdeplasser.
 
-NÃ¥r det er verifisert Ã¸nsker jeg en full regtopp-eksport av juleruter (fortrinssvis innen  8 desember), med de samme korrigerete holdeplassnavnene.
+Når det er verifisert ønsker jeg en full regtopp-eksport av juleruter (fortrinssvis innen  8 desember), med de samme korrigerete holdeplassnavnene.
 
 
-  Det var sÃ¥ at korreksjoner pÃ¥ holdeplassnavn skulle inn fra 1. desember mens juleruter mÃ¥ inn uken etterpÃ¥?
-  Skal du ha fulstendig regtopeksport pÃ¥ vinterrutene innen 1/12 og/eller skal du ha liste over holdeplassene du etterspurte med riktig navn pÃ¥?
+  Det var så at korreksjoner på holdeplassnavn skulle inn fra 1. desember mens juleruter må inn uken etterpå?
+  Skal du ha fulstendig regtopeksport på vinterrutene innen 1/12 og/eller skal du ha liste over holdeplassene du etterspurte med riktig navn på?
  
  
   Jeg kan godt legge den inn hvis det er viktig, men etter mitt forslag skulle "full oppdatering" allikevel skje innen 1.
   desember, dvs om 12 dager.
  
   
-   Kan denne tiren legges inn i bussorakelet nÃ¥ eller mÃ¥ den vente til
-   full oppdatering Det gjelder  altsÃ¥ Ekstra avgang rute 46 fraTiller Kl
+   Kan denne tiren legges inn i bussorakelet nå eller må den vente til
+   full oppdatering Det gjelder  altså Ekstra avgang rute 46 fraTiller Kl
    08:50 1) (fotnote)
   
   
    Rute 46
-   Pga et krav fra fylket (eller kommunen) om hÃ¸yere bussfrekvens ned til
+   Pga et krav fra fylket (eller kommunen) om høyere bussfrekvens ned til
    Trondheim S og Pirbadet ble det i august satt opp en ekstra avgang fra Torvtaket (Tiller) til Pirbadet.
    Avgangen har fotnote 1.
   
    Ekstra avgang rute 46 fraTiller
    Kl 08:50 1) (fotnote)
   
-   Kan du sÃ¸rge for at denne blir lagt inn i vÃ¥rt Bussorakel?
+   Kan du sørge for at denne blir lagt inn i vårt Bussorakel?
   
-   Jeg legger straks ut korrigert statisk versjon pÃ¥ vÃ¥rt nettsted.
+   Jeg legger straks ut korrigert statisk versjon på vårt nettsted.
  
 
-Da skal dette vÃ¦re ny og komplett regtopp med oppdaterte og rettede holdplassnavn, avganger og varianter for vinterutene.
+Da skal dette være ny og komplett regtopp med oppdaterte og rettede holdplassnavn, avganger og varianter for vinterutene.
 
 
-Det var sÃ¥ at korreksjoner pÃ¥ holdeplassnavn skulle inn fra 1. desember mens juleruter mÃ¥ inn uken etterpÃ¥?
-Skal du ha fulstendig regtopeksport pÃ¥ vinterrutene innen 1/12 og/eller skal du ha liste over holdeplassene du etterspurte med riktig navn pÃ¥?
+Det var så at korreksjoner på holdeplassnavn skulle inn fra 1. desember mens juleruter må inn uken etterpå?
+Skal du ha fulstendig regtopeksport på vinterrutene innen 1/12 og/eller skal du ha liste over holdeplassene du etterspurte med riktig navn på?
 
   
-LÃ¸rdagsrute!!!!! del 2  (Adressa 8.4.2009)
+Lørdagsrute!!!!! del 2  (Adressa 8.4.2009)
 
 Jeg var heldig og kom hjem 17.15.
-Det er ikke noe sÃ¦rlig morsomt nÃ¥r fÃ¸rste buss til jobben om morgenen
-gÃ¥r 5 minutter etter at du skulle begynt Ã¥ arbeide.
-Jeg forstÃ¥r hvorfor det er innfÃ¸rt lÃ¸rdgasrute, men det er faktisk
-mange som MÃ… arbeide i pÃ¥ske og ikka alle av dem har sjefer som blir
-glade nÃ¥r det kommer forsent.
-Ã… VÃ†R SÃ… SNILL, IKKE INNFÃ˜R PÃ…SKERUTA NESTE PÃ…SKE. 
-Lag heller en egen rute slik at folk kommer seg pÃ¥ jobb til rett tid.
+Det er ikke noe særlig morsomt når første buss til jobben om morgenen
+går 5 minutter etter at du skulle begynt å arbeide.
+Jeg forstår hvorfor det er innført lørdgasrute, men det er faktisk
+mange som MÅ arbeide i påske og ikka alle av dem har sjefer som blir
+glade når det kommer forsent.
+Å VÆR SÅ SNILL, IKKE INNFØR PÅSKERUTA NESTE PÅSKE. 
+Lag heller en egen rute slik at folk kommer seg på jobb til rett tid.
 
 Aarrrggg
 ---
 
-Det stemmer at buss 9919 er oppfÃ¸rt i rutedata med  bl.a. den nevnte passeringen.
+Det stemmer at buss 9919 er oppført i rutedata med  bl.a. den nevnte passeringen.
 
-Det kan vÃ¦re anonyme ekstraavganger som har fÃ¥tt tildelt et linjenummer i rutedatabasen, men du mÃ¥ nesten spÃ¸rre noen i trafikkplanleggingsavdelingen  om det.
+Det kan være anonyme ekstraavganger som har fått tildelt et linjenummer i rutedatabasen, men du må nesten spørre noen i trafikkplanleggingsavdelingen  om det.
 
-Hvis det er sÃ¥ at slike avganger skal holdes hemmelig, sÃ¥ er det mulig Ã¥ innpasse det i bussoraklet.
+Hvis det er så at slike avganger skal holdes hemmelig, så er det mulig å innpasse det i bussoraklet.
 
 
 
-N:gÃ¥r buss 9919 til maskinagentur fra sÃ¸ndre gate etter kl 0738.
+N:går buss 9919 til maskinagentur fra søndre gate etter kl 0738.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Jeg antar du mener ruter for i morgen.
 15. Apr. 2009 er en  onsdag .
 For denne dato gjelder Team vinterruter.
-Buss 9919 passerer  SÃ¸ndre gate 22 kl.  0738
+Buss 9919 passerer  Søndre gate 22 kl.  0738
 og  kommer til  Maskinagentur kl.  0754 .
 
 Tidene angir tidligste passeringer av holdeplassene.
@@ -423,42 +423,42 @@ On Tue, 14 Apr 2009, Johanne S. Bakke wrote:
  Hei Tore!
 
 
- ForstÃ¥r du hva som har gÃ¥tt galt ang spÃ¸rsmÃ¥let nedenfor
+ Forstår du hva som har gått galt ang spørsmålet nedenfor
  Der svaret er buss nr 9919?
 
 
 
  Hei
- Jeg fÃ¥r forslag om buss nr 9919 pÃ¥ Oraklet deres.
- Men jeg finner den ikke pÃ¥ ruteoversikten.
+ Jeg får forslag om buss nr 9919 på Oraklet deres.
+ Men jeg finner den ikke på ruteoversikten.
 
- Hvilken buss er det? Og stemmer det at den gÃ¥r fra SÃ¸ndregt kl 07.38 pÃ¥ hverdager og er pÃ¥ Maskinagentur kl 07.54?
+ Hvilken buss er det? Og stemmer det at den går fra Søndregt kl 07.38 på hverdager og er på Maskinagentur kl 07.54?
 
  mvh
  Wenche Sekse
 
 
 Jeg vet ikke om Johanne har videresendt denne til deg, men jeg er litt
-nyssgjerrig pÃ¥ svaret selv.
+nyssgjerrig på svaret selv.
 
 Hei!
 
-Joda, den har jeg fÃ¥tt og besvart tilbake til Johanne. Vi mÃ¥ skylde pÃ¥ svikt i internkomunikasjonen ettersom svaret ikke er kommet videre til deg.
+Joda, den har jeg fått og besvart tilbake til Johanne. Vi må skylde på svikt i internkomunikasjonen ettersom svaret ikke er kommet videre til deg.
 Her er svaret jeg ga:
 
 *
-Busser med nr 99 i starten av nummeret er skolebussene vÃ¥re. Selv om de ogsÃ¥ er Ã¥pne for vanlig betalende passasjerer sÃ¥ burde de kanskje ikke ligge inne i
-bussorakelet siden de heller ikke stÃ¥r i ruteheftet?
-Disse turene mÃ¥ ligge ikke i eksporten fra HASTUS inn i billettmaskinene slik at det kan billeteres. Dersom disse kan "skjules" i orakelet slipper vi bygge en helt
+Busser med nr 99 i starten av nummeret er skolebussene våre. Selv om de også er åpne for vanlig betalende passasjerer så burde de kanskje ikke ligge inne i
+bussorakelet siden de heller ikke står i ruteheftet?
+Disse turene må ligge ikke i eksporten fra HASTUS inn i billettmaskinene slik at det kan billeteres. Dersom disse kan "skjules" i orakelet slipper vi bygge en helt
 egen eksport til bruk der.
 *
 
 ----
 
-Jeg sendet deg i dag 16.3 svar pÃ¥ henvendelse angÃ¥ende rute 66 Dragvoll,
+Jeg sendet deg i dag 16.3 svar på henvendelse angående rute 66 Dragvoll,
 men fikk feilmelding fra email-systemet, muligens borte hos dere.
 
-Har du fÃ¥tt den meldingen ?
+Har du fått den meldingen ?
 
 ----
 
@@ -481,9 +481,9 @@ og  kommer til  NTNU Dragvoll kl.  2400 .
 Tidene angir tidligste passeringer av holdeplassene.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Situasjonen som var hÃ¥ndtert riktig  tidligere " kom  bort"  ved en
-feil, men svakheten er nÃ¥ rettet og vil vÃ¦re borte i neste versjon,
-senest nÃ¥r pÃ¥skerutene legges inn.
+Situasjonen som var håndtert riktig  tidligere " kom  bort"  ved en
+feil, men svakheten er nå rettet og vil være borte i neste versjon,
+senest når påskerutene legges inn.
 
 
 Hvorvidt man trenger  mer eksplisitt opplysning om flertydigheten kan diskuteres.
@@ -494,8 +494,8 @@ Hvorvidt man trenger  mer eksplisitt opplysning om flertydigheten kan diskuteres
 
 Mon Mar 16 22:50:35 MET 2009
 : nor
-der fikk jeg tekstmelding fra sjefen som akkurat har landet pÃ¥ Bardufoss, og som nÃ¥ mÃ¥ kjÃ¸re busse i drÃ¸ye to timer for Ã¥ komme seg til TromsÃ¸ --
-- - - UforstÃ¥elige ord:  drÃ¸ye 
+der fikk jeg tekstmelding fra sjefen som akkurat har landet på Bardufoss, og som nå må kjøre busse i drøye to timer for å komme seg til Tromsø --
+- - - Uforståelige ord:  drøye 
 
 -------------------------------------------------------
 
@@ -506,16 +506,16 @@ Beklager at disse mailene druknet litt i en hektisk hverdag, men jeg
 ville bare si at jeg syns det saa interessant ut, og at jeg gjerne vil
 hoere mer om hva som skjer etterhvert...
 
-Nar det gjelder systemet vi lagde for 8 aar siden, sÃ¥ var det bare en  prototype, 
-og selv om vi faktisk hadde et mote med SBMTD for Ã¥ drofte videre utvikling,
- sÃ¥ tror jeg de vegret seg litt for Ã¥ satse pa to studenter som ikke hadde
+Nar det gjelder systemet vi lagde for 8 aar siden, så var det bare en  prototype, 
+og selv om vi faktisk hadde et mote med SBMTD for å drofte videre utvikling,
+ så tror jeg de vegret seg litt for å satse pa to studenter som ikke hadde
 permanent oppholdstilatelse en gang.
 
 Framgangsmaten den gang var enkel.
 
 SBMTD ga oss noen digre rutedata-filer, og jeg oversatte dem til predikater av forskjellige typer. 
 
-tore justerte klokka pa systemet i norge sÃ¥ foresporsler fra santa
+tore justerte klokka pa systemet i norge så foresporsler fra santa
 barbara ble  gjengitt med california tid og ikke lokal tid da serveren sto i norge .
  
 Kjapp hilsen fra Rune
@@ -536,20 +536,20 @@ Tore justerte klokka pa systemet i norge, sa foresporsler fra santa barbara ble 
 
 Denne henvendelsen er litt interessant.
 
-I vinter var det mye problemer med mye snÃ¸, lite brÃ¸yting og dÃ¥rlig
-fremkommelighet for bussene.  SÃ¥ hender det  at folk sitter pÃ¥ PC, og at
+I vinter var det mye problemer med mye snø, lite brøyting og dårlig
+fremkommelighet for bussene.  Så hender det  at folk sitter på PC, og at
 de har bussoraklet framme. De skriver en melding til noen de kjenner
-om problemer, men ved en feiltagelse sÃ¥ skriver de meldingen inn i
+om problemer, men ved en feiltagelse så skriver de meldingen inn i
 vinduet til bussoraklet, som dermed svarer etter beste evne. 
 
 
 
 N: .. og der hadde de bare blitt satt av bussen med beskjed 
-om Ã¥ gÃ¥ til lerkendal og se om det kom noen busser som skulle mot byen
+om å gå til lerkendal og se om det kom noen busser som skulle mot byen
  
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
-Neste buss , nummer 20 passerer  Lerchendal gÃ¥rd kl.  2117
+Neste buss , nummer 20 passerer  Lerchendal gård kl.  2117
 og  kommer til  Dronningens gate, holdeplass D4 kl.  2125 .
 Siste buss , nummer 8 passerer  Lerkendal stadion kl.  2400
 og  kommer til  Dronningens gate, holdeplass D1 kl.  0011 .
@@ -566,7 +566,7 @@ Tidene angir tidligste passeringer av holdeplassene.
 
 Attack (coupling   System X / SMSTUC) (Windows Live Agents?)
 
-Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
 
 "you care if I put this picture of you on my homepage?"
 
@@ -597,7 +597,7 @@ Thats interesting that you should say that, but I dont think I can answer.
 
 I dont understand this fully enough to say anything smart about it...
 
-Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
 
 i was designed to answer questions. // ok
 was i designed to answer questions. // ok
@@ -644,7 +644,7 @@ I dont understand this fully enough to say anything smart about it.
 Takk for det.
 
 
-1. mai er innlagt som sÃ¸ndagsruter allerede, sÃ¥ det er ikke nÃ¸dvendig Ã¥ legge inn nye ruter.
+1. mai er innlagt som søndagsruter allerede, så det er ikke nødvendig å legge inn nye ruter.
 
 
 N: fra yggdrasilveien 9c til nth i overimorgen.
@@ -653,13 +653,13 @@ N: fra yggdrasilveien 9c til nth i overimorgen.
 
 1. Mai. 2009 er en  fredag .
 For denne dato gjelder Team vinterruter.
-Rutene  1. Mai. 2009 er de samme som pÃ¥ sÃ¸ndager .
-Holdeplassen nÃ¦rmest NTH er  GlÃ¸shaugen Syd .
-Holdeplassen nÃ¦rmest Yggdrasilvegen 9 er  Nardosenteret .
-FÃ¸rste buss , nummer 52 passerer  Nardosenteret kl.  1002
-og  kommer til  GlÃ¸shaugen Syd kl.  1009 .
+Rutene  1. Mai. 2009 er de samme som på søndager .
+Holdeplassen nærmest NTH er  Gløshaugen Syd .
+Holdeplassen nærmest Yggdrasilvegen 9 er  Nardosenteret .
+Første buss , nummer 52 passerer  Nardosenteret kl.  1002
+og  kommer til  Gløshaugen Syd kl.  1009 .
 Siste buss , nummer 52 passerer  Nardosenteret kl.  0012
-og  kommer til  GlÃ¸shaugen Syd kl.  0019 .
+og  kommer til  Gløshaugen Syd kl.  0019 .
 
 Tidene angir tidligste passeringer av holdeplassene.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -671,25 +671,25 @@ On Wed, 29 Apr 2009, Lars Mo wrote:
  Hei
 
 
- 1.mai kjÃ¸rer vi sÃ¸ndagsruter.
- Jeg vet ikke om det ordnes direkte i orakelet slik at denne dagen defineres som sÃ¸ndag der eller om du mÃ¥ benytte ny regtop
+ 1.mai kjører vi søndagsruter.
+ Jeg vet ikke om det ordnes direkte i orakelet slik at denne dagen defineres som søndag der eller om du må benytte ny regtop
 
- Jeg har vedlagt regtop for 1.mai altsÃ¥ en vanlig sÃ¸ndagskjÃ¸ring i tilfelle dette er pÃ¥krevet
+ Jeg har vedlagt regtop for 1.mai altså en vanlig søndagskjøring i tilfelle dette er påkrevet
 
 
 ---------------------------------------------------------------------
 
  ________________________________
 
- Fra: andreas@andreas.ringdal.no [mailto:andreas@andreas.ringdal.no] PÃ¥
+ Fra: andreas@andreas.ringdal.no [mailto:andreas@andreas.ringdal.no] På
  vegne av Andreas Ringdal
  Sendt: 30. april 2009 06:24
  Til: Firmapostkasse Team Trafikk AS
- Emne: Bussorakelet trenger Ã¥ fÃ¥ stilt klokken
+ Emne: Bussorakelet trenger å få stilt klokken
 
 
- 06:17 i dag kjÃ¸rte jeg sÃ¸ket
- "NÃ¥r gÃ¥r bussen fra kroppanmarka til sentrum"
+ 06:17 i dag kjørte jeg søket
+ "Når går bussen fra kroppanmarka til sentrum"
 
  og fikk dette svaret
 
@@ -702,20 +702,20 @@ On Wed, 29 Apr 2009, Lars Mo wrote:
 
 
 
- Det hjelper veldig lite Ã¥ vite at det gikk en buss for 5 minutter siden,
- kan dere be noen ta en justering pÃ¥ bussorakelet slik at jeg slipper Ã¥
- mÃ¥tte taste inn "etter
- 06:17" for Ã¥ fÃ¥ med neste buss.
+ Det hjelper veldig lite å vite at det gikk en buss for 5 minutter siden,
+ kan dere be noen ta en justering på bussorakelet slik at jeg slipper å
+ måtte taste inn "etter
+ 06:17" for å få med neste buss.
 
- Savner at den viser de 2-3 neste avgangene, nÃ¥r neste buss gÃ¥r om 1 minutt
+ Savner at den viser de 2-3 neste avgangene, når neste buss går om 1 minutt
  er det ikke sikkert at jeg rekker til holdeplassen, og da er det veldig
- interessant Ã¥ vite
- nÃ¥r neste buss gÃ¥r.
+ interessant å vite
+ når neste buss går.
 
- Savner ogsÃ¥ en versjon av bussoraklet som er iphonevennlig. Er mye lettere
- Ã¥ bruke nettleseren pÃ¥ telefonen fremfor Ã¥ sende sms, men nettsidene deres
+ Savner også en versjon av bussoraklet som er iphonevennlig. Er mye lettere
+ å bruke nettleseren på telefonen fremfor å sende sms, men nettsidene deres
  egner seg ikke
- sÃ¥ veldig til bruk fra telefon. Trenger ikke mobilvenlig utgave av hele
+ så veldig til bruk fra telefon. Trenger ikke mobilvenlig utgave av hele
  nettstedet, bare ruteinformasjon
 
 
@@ -726,7 +726,7 @@ On Wed, 29 Apr 2009, Lars Mo wrote:
 ----------------------------------------------------------------
 
 
-Kristian skal se pÃ¥ det. Men han avapaserer i dag, og jeg vet ikke nÃ¥r han fÃ¥r gjort det. Erfaringsmessig sÃ¥ fort som rÃ¥d er nÃ¥r det gjelder ham ...
+Kristian skal se på det. Men han avapaserer i dag, og jeg vet ikke når han får gjort det. Erfaringsmessig så fort som råd er når det gjelder ham ...
 
 -torbj
 
@@ -734,21 +734,21 @@ Kristian skal se pÃ¥ det. Men han avapaserer i dag, og jeg vet ikke nÃ¥r han fÃ¥
 Sent: Thu, 30 Apr 2009 12:51:57 +0200 (MEST)
 From: Tore Amble <toreamb@idi.ntnu.no
 To: torbjorn@lingit.no
-Subject: Klokka pÃ¥ BussTUC-serveren gÃ¥r 7 minutter for langsomt.
+Subject: Klokka på BussTUC-serveren går 7 minutter for langsomt.
 
 
 
 
- Klokka pÃ¥ BussTUC-serveren gÃ¥r 7 minutter for langsomt.
+ Klokka på BussTUC-serveren går 7 minutter for langsomt.
 
  Hvem kan stille den riktig ?
 
 
- NÃ¥r det gjelder I-Phone vennlig format er det en god ide,
- men jeg vet ikke akkurat hva som mÃ¥ gjÃ¸res av oss.
+ Når det gjelder I-Phone vennlig format er det en god ide,
+ men jeg vet ikke akkurat hva som må gjøres av oss.
 
- (SMS-inntektene fÃ¥r vel ogsÃ¥ konkurranse pÃ¥ sikt, men det betyr kanskje
- ikke sÃ¥ mye).
+ (SMS-inntektene får vel også konkurranse på sikt, men det betyr kanskje
+ ikke så mye).
 
  De andre forslagene skal vurderes .
 
@@ -758,11 +758,11 @@ Subject: Klokka pÃ¥ BussTUC-serveren gÃ¥r 7 minutter for langsomt.
  ----------------------------------------------------------------------
  God morgen, Tore!
 
- Vi har mottatt klage pÃ¥ klokken pÃ¥ Bussoraklet.
- Jeg opplever ogsÃ¥ at jeg fÃ¥r svar om kommende bussavgang,
+ Vi har mottatt klage på klokken på Bussoraklet.
+ Jeg opplever også at jeg får svar om kommende bussavgang,
  etter at det klokkeslettet er passert.
 
- Har du mulighet til Ã¥ sjekke opp,
+ Har du mulighet til å sjekke opp,
  og gi meg tilbakemelding?
 
  Mvh
@@ -775,7 +775,7 @@ Subject: Klokka pÃ¥ BussTUC-serveren gÃ¥r 7 minutter for langsomt.
 
 Hei Tore!
 
-Har du noe godt svar pÃ¥ slikt som dette?
+Har du noe godt svar på slikt som dette?
 
 Mvh
 Johanne S. Bakke
@@ -786,7 +786,7 @@ team-trafikk.no <http://www.team-trafikk.no/
 
 
 
- Trenger du Ã¥ skrive ut denne e-posten?
+ Trenger du å skrive ut denne e-posten?
 
 
 
@@ -801,16 +801,16 @@ Emne: Bussorakelet
 
 Hei
 
-Jeg lurer pÃ¥ en ting angÃ¥ende bussorakelet.
+Jeg lurer på en ting angående bussorakelet.
 
-FÃ¸r var det slik at man kunne be om Ã¥ fÃ¥ vite hvilken buss man kan ta for Ã¥ komme f.eks. fra Buran til Samfundet innen et visst klokkeslett, og bussorakelet ville
-vise ruter som gÃ¥r igjennom sentrum. NÃ¥ kan man ikke lenger det, for hvis man prÃ¸ver, fÃ¥r man bare oversikt over ringruter som gÃ¥r en omvei om f.eks. Jakobsli eller
-Valentinlyst, men ingen ruter gjennom sentrum. GÃ¥r det an Ã¥ gjÃ¸re noe med dette? Det er et problem for meg som bor pÃ¥ den andre siden av sentrum, hvis jeg vil ha
-ruter til Samfundet eller andre stoppesteder som (ogsÃ¥) tilhÃ¸rer en ringrute, for i sÃ¥ fall fÃ¥r jeg bare opp ringrutene som svar, og disse alternativene er ofte
-lengre og mer tidkrevende, og de gÃ¥r ikke like mange ganger i timen som de rutene som gÃ¥r gjennom sentrum. F.eks. vet jeg at jeg kan ta buss nummer 7 fra min nÃ¦rmeste
-holdeplass, gjennom sentrum, og til Prof. Brochs Gate, men bussorakelet foreslÃ¥r bare buss 20 eller buss 36, som gÃ¥r en voldsom omvei.
+Før var det slik at man kunne be om å få vite hvilken buss man kan ta for å komme f.eks. fra Buran til Samfundet innen et visst klokkeslett, og bussorakelet ville
+vise ruter som går igjennom sentrum. Nå kan man ikke lenger det, for hvis man prøver, får man bare oversikt over ringruter som går en omvei om f.eks. Jakobsli eller
+Valentinlyst, men ingen ruter gjennom sentrum. Går det an å gjøre noe med dette? Det er et problem for meg som bor på den andre siden av sentrum, hvis jeg vil ha
+ruter til Samfundet eller andre stoppesteder som (også) tilhører en ringrute, for i så fall får jeg bare opp ringrutene som svar, og disse alternativene er ofte
+lengre og mer tidkrevende, og de går ikke like mange ganger i timen som de rutene som går gjennom sentrum. F.eks. vet jeg at jeg kan ta buss nummer 7 fra min nærmeste
+holdeplass, gjennom sentrum, og til Prof. Brochs Gate, men bussorakelet foreslår bare buss 20 eller buss 36, som går en voldsom omvei.
 
-Hvis det hadde vÃ¦rt mulig Ã¥ lÃ¸se dette, hadde det sikkert vÃ¦rt til stor glede for mange!
+Hvis det hadde vært mulig å løse dette, hadde det sikkert vært til stor glede for mange!
 
 mvh
 Maja H. Kvendseth
@@ -833,14 +833,14 @@ Takk for feilmeldingen.
 
 Feilen skyldes at Buss 7 har en skjult overgang i sentrum.
 
-    VikÃ¥sen -M2-FlatÃ¥sen
-    FlatÃ¥sen-M2-VikÃ¥sen
+    Vikåsen -M2-Flatåsen
+    Flatåsen-M2-Vikåsen
 
-Denne var ikke registert i Bussoraklet, dvs at bussoraklet til nÃ¥
-opererte med direkte overganger mellom VikÃ¥sen og FlatÃ¥sen.
+Denne var ikke registert i Bussoraklet, dvs at bussoraklet til nå
+opererte med direkte overganger mellom Vikåsen og Flatåsen.
 
 
-Siden Bussoraklet  i alminnelighet foreslÃ¥r  direkte ruter framfor ruter med overgang ble det  derfor foreslÃ¥tt noen tidkrevende (men direkte) ringruter.
+Siden Bussoraklet  i alminnelighet foreslår  direkte ruter framfor ruter med overgang ble det  derfor foreslått noen tidkrevende (men direkte) ringruter.
 
 Feilen er rettet, og vil bli lagt inn i bussoraklet om kort tid.
 
@@ -851,7 +851,7 @@ On Mon, 4 May 2009, Johanne S. Bakke wrote:
 
  Hei Tore!
 
- Har du noe godt svar pÃ¥ slikt som dette?
+ Har du noe godt svar på slikt som dette?
 
  Mvh
  Johanne S. Bakke
@@ -862,7 +862,7 @@ On Mon, 4 May 2009, Johanne S. Bakke wrote:
 
 
 
- Trenger du Ã¥ skrive ut denne e-posten?
+ Trenger du å skrive ut denne e-posten?
 
 
 
@@ -877,14 +877,14 @@ On Mon, 4 May 2009, Johanne S. Bakke wrote:
 
  Hei
 
- Jeg lurer pÃ¥ en ting angÃ¥ende bussorakelet.
+ Jeg lurer på en ting angående bussorakelet.
 
- FÃ¸r var det slik at man kunne be om Ã¥ fÃ¥ vite hvilken buss man kan ta for Ã¥ komme f.eks. fra Buran til Samfundet innen et visst klokkeslett, og bussorakelet ville
- vise ruter som gÃ¥r igjennom sentrum. NÃ¥ kan man ikke lenger det, for hvis man prÃ¸ver, fÃ¥r man bare oversikt over ringruter som gÃ¥r en omvei om f.eks. Jakobsli eller
- Valentinlyst, men ingen ruter gjennom sentrum. GÃ¥r det an Ã¥ gjÃ¸re noe med dette? Det er et problem for meg som bor pÃ¥ den andre siden av sentrum, hvis jeg vil ha
- ruter til Samfundet eller andre stoppesteder som (ogsÃ¥) tilhÃ¸rer en ringrute, for i sÃ¥ fall fÃ¥r jeg bare opp ringrutene som svar, og disse alternativene er ofte
- lengre og mer tidkrevende, og de gÃ¥r ikke like mange ganger i timen som de rutene som gÃ¥r gjennom sentrum. F.eks. vet jeg at jeg kan ta buss nummer 7 fra min
- nÃ¦rmeste holdeplass, gjennom sentrum, og til Prof. Brochs Gate, men bussorakelet foreslÃ¥r bare buss 20 eller buss 36, som gÃ¥r en voldsom omvei.
+ Før var det slik at man kunne be om å få vite hvilken buss man kan ta for å komme f.eks. fra Buran til Samfundet innen et visst klokkeslett, og bussorakelet ville
+ vise ruter som går igjennom sentrum. Nå kan man ikke lenger det, for hvis man prøver, får man bare oversikt over ringruter som går en omvei om f.eks. Jakobsli eller
+ Valentinlyst, men ingen ruter gjennom sentrum. Går det an å gjøre noe med dette? Det er et problem for meg som bor på den andre siden av sentrum, hvis jeg vil ha
+ ruter til Samfundet eller andre stoppesteder som (også) tilhører en ringrute, for i så fall får jeg bare opp ringrutene som svar, og disse alternativene er ofte
+ lengre og mer tidkrevende, og de går ikke like mange ganger i timen som de rutene som går gjennom sentrum. F.eks. vet jeg at jeg kan ta buss nummer 7 fra min
+ nærmeste holdeplass, gjennom sentrum, og til Prof. Brochs Gate, men bussorakelet foreslår bare buss 20 eller buss 36, som går en voldsom omvei.
 
 
 
@@ -895,18 +895,18 @@ From torbjorn@lingit.com Mon May  4 12:27:40 2009
 Date: Mon, 04 May 2009 12:27:23 +0200
 From: Torbjorn Nordgard <torbjorn@lingit.com
 To: Tore Amble <toreamb@idi.ntnu.no
-Subject: [Fwd: [Fwd: Re: [Fwd: Fwd: Klokka pÃ¥ BussTUC-serveren gÃ¥r 7 minutter for langsomt.]]]
+Subject: [Fwd: [Fwd: Re: [Fwd: Fwd: Klokka på BussTUC-serveren går 7 minutter for langsomt.]]]
 
-NÃ¥ skulle det vÃ¦re i orden.
+Nå skulle det være i orden.
 
 -torbj
 
     [ Part 2: "Included Message" ]
 
 Date: Mon, 04 May 2009 12:02:55 +0200
-From: Kristian SkarbÃ¸ <kristian@lingit.no
+From: Kristian Skarbø <kristian@lingit.no
 To: Torbjorn Nordgard <torbjorn@lingit.com
-Subject: [Fwd: Re: [Fwd: Fwd: Klokka pÃ¥ BussTUC-serveren gÃ¥r 7 minutter for langsomt.]]
+Subject: [Fwd: Re: [Fwd: Fwd: Klokka på BussTUC-serveren går 7 minutter for langsomt.]]
 
 FYI.
 
@@ -914,51 +914,51 @@ FYI.
 -Kristian
 
 -------- Original Message --------
-Subject: Re: [Fwd: Fwd: Klokka pÃ¥ BussTUC-serveren gÃ¥r 7 minutter for
+Subject: Re: [Fwd: Fwd: Klokka på BussTUC-serveren går 7 minutter for
 langsomt.]
 Date: Mon, 04 May 2009 11:17:47 +0200
 From: Tor Rune Skoglund <trs@lingit.no
-To: Kristian SkarbÃ¸ <kristian@lingit.no
+To: Kristian Skarbø <kristian@lingit.no
 References: <49FEABEB.5060402@lingit.no
 
-Ventelo Hosting fikser klokka og legger inn ntp, sÃ¥ slipper vi
+Ventelo Hosting fikser klokka og legger inn ntp, så slipper vi
 dette i framtiden. De fakturerer lingit 1 konsulenttime for dette.
 
 Maskina er forresten en "gammel" 2.6.8 kernel, burde kanskje
-pÃ¥ sikt fÃ¥ dette inn i mer oppdaterte former...
+på sikt få dette inn i mer oppdaterte former...
 
-Ã˜yvind stod fortsatt som kontaktperson pÃ¥ mail/driftstjenester.
+Øyvind stod fortsatt som kontaktperson på mail/driftstjenester.
 Fikk dette endret til support@lingit.no
 
 Mvh
 Tor Rune Skoglund
 Lingit AS
 
-Kristian SkarbÃ¸ skrev:
+Kristian Skarbø skrev:
  Dette gjelder serveren busstuc.lingit.no som driftes av Ventelo. Vi har
  ikke rot, men passord til to brukere: tore og mtr. Bussorakelet er satt
  opp som brukeren tore.
  
- Det var Ã˜B som var kontakt mot Ventelo, sÃ¥ vi burde nok fÃ¥tt litt mer
- ordnede former pÃ¥ dette.
+ Det var ØB som var kontakt mot Ventelo, så vi burde nok fått litt mer
+ ordnede former på dette.
  
- En tidligere e-post med en driftsmelding fra Ventelo som TorbjÃ¸rn
- videresendte meg inneholdt fÃ¸lgende kontaktinformasjon:
+ En tidligere e-post med en driftsmelding fra Ventelo som Torbjørn
+ videresendte meg inneholdt følgende kontaktinformasjon:
  
  """
  Kontakt:
  
- Ved spÃ¸rsmÃ¥l kan Ventelo Hosting kontaktes ved Ã¥:
+ Ved spørsmål kan Ventelo Hosting kontaktes ved å:
  
    * Sende mail til support@ventelohosting.no.
-   * Ringte vÃ¥rt vaktnummer pÃ¥ telefon +47 21 65 00 99.
+   * Ringte vårt vaktnummer på telefon +47 21 65 00 99.
  """
  
  
  -Kristian
  
  -------- Original Message --------
- Subject: Fwd: Klokka pÃ¥ BussTUC-serveren gÃ¥r 7 minutter for langsomt.
+ Subject: Fwd: Klokka på BussTUC-serveren går 7 minutter for langsomt.
  Date: Thu, 30 Apr 2009 13:36:06 +0200 (CEST)
  From: Torbjorn Nordgard <torbjorn@lingit.com
  To: kristian@lingit.no
@@ -966,7 +966,7 @@ Kristian SkarbÃ¸ skrev:
  
  Hei
  
- Kan du se pÃ¥ dette? Jeg vet ikke engang hvilken maskin det er snakk om ...
+ Kan du se på dette? Jeg vet ikke engang hvilken maskin det er snakk om ...
  
  -torbj
  
@@ -974,21 +974,21 @@ Kristian SkarbÃ¸ skrev:
  Sent: Thu, 30 Apr 2009 12:51:57 +0200 (MEST)
  From: Tore Amble <toreamb@idi.ntnu.no
  To: torbjorn@lingit.no
- Subject: Klokka pÃ¥ BussTUC-serveren gÃ¥r 7 minutter for langsomt.
+ Subject: Klokka på BussTUC-serveren går 7 minutter for langsomt.
  
  
  
  
- Klokka pÃ¥ BussTUC-serveren gÃ¥r 7 minutter for langsomt.
+ Klokka på BussTUC-serveren går 7 minutter for langsomt.
  
  Hvem kan stille den riktig ?
  
  
- NÃ¥r det gjelder I-Phone vennlig format er det en god ide,
- men jeg vet ikke akkurat hva som mÃ¥ gjÃ¸res av oss.
+ Når det gjelder I-Phone vennlig format er det en god ide,
+ men jeg vet ikke akkurat hva som må gjøres av oss.
  
- (SMS-inntektene fÃ¥r vel ogsÃ¥ konkurranse pÃ¥ sikt, men det betyr kanskje
- ikke sÃ¥ mye).
+ (SMS-inntektene får vel også konkurranse på sikt, men det betyr kanskje
+ ikke så mye).
  
  De andre forslagene skal vurderes .
  
@@ -998,11 +998,11 @@ Kristian SkarbÃ¸ skrev:
  ----------------------------------------------------------------------
  God morgen, Tore!
  
- Vi har mottatt klage pÃ¥ klokken pÃ¥ Bussoraklet.
- Jeg opplever ogsÃ¥ at jeg fÃ¥r svar om kommende bussavgang,
+ Vi har mottatt klage på klokken på Bussoraklet.
+ Jeg opplever også at jeg får svar om kommende bussavgang,
  etter at det klokkeslettet er passert.
  
- Har du mulighet til Ã¥ sjekke opp,
+ Har du mulighet til å sjekke opp,
  og gi meg tilbakemelding?
  
  Mvh
@@ -1014,21 +1014,21 @@ Kristian SkarbÃ¸ skrev:
  
  
  
-   Trenger du Ã¥ skrive ut denne e-posten?
+   Trenger du å skrive ut denne e-posten?
  
  
  
  ________________________________
  
- Fra: andreas@andreas.ringdal.no [mailto:andreas@andreas.ringdal.no] PÃ¥
+ Fra: andreas@andreas.ringdal.no [mailto:andreas@andreas.ringdal.no] På
  vegne av Andreas Ringdal
  Sendt: 30. april 2009 06:24
  Til: Firmapostkasse Team Trafikk AS
- Emne: Bussorakelet trenger Ã¥ fÃ¥ stilt klokken
+ Emne: Bussorakelet trenger å få stilt klokken
  
  
- 06:17 i dag kjÃ¸rte jeg sÃ¸ket
- "NÃ¥r gÃ¥r bussen fra kroppanmarka til sentrum"
+ 06:17 i dag kjørte jeg søket
+ "Når går bussen fra kroppanmarka til sentrum"
  
  og fikk dette svaret
  
@@ -1042,20 +1042,20 @@ Kristian SkarbÃ¸ skrev:
  
  
  
- Det hjelper veldig lite Ã¥ vite at det gikk en buss for 5 minutter siden,
- kan dere be noen ta en justering pÃ¥ bussorakelet slik at jeg slipper Ã¥
- mÃ¥tte taste inn "etter
- 06:17" for Ã¥ fÃ¥ med neste buss.
+ Det hjelper veldig lite å vite at det gikk en buss for 5 minutter siden,
+ kan dere be noen ta en justering på bussorakelet slik at jeg slipper å
+ måtte taste inn "etter
+ 06:17" for å få med neste buss.
  
- Savner at den viser de 2-3 neste avgangene, nÃ¥r neste buss gÃ¥r om 1 minutt
+ Savner at den viser de 2-3 neste avgangene, når neste buss går om 1 minutt
  er det ikke sikkert at jeg rekker til holdeplassen, og da er det veldig
- interessant Ã¥ vite
- nÃ¥r neste buss gÃ¥r.
+ interessant å vite
+ når neste buss går.
  
- Savner ogsÃ¥ en versjon av bussoraklet som er iphonevennlig. Er mye lettere
- Ã¥ bruke nettleseren pÃ¥ telefonen fremfor Ã¥ sende sms, men nettsidene deres
+ Savner også en versjon av bussoraklet som er iphonevennlig. Er mye lettere
+ å bruke nettleseren på telefonen fremfor å sende sms, men nettsidene deres
  egner seg ikke
- sÃ¥ veldig til bruk fra telefon. Trenger ikke mobilvenlig utgave av hele
+ så veldig til bruk fra telefon. Trenger ikke mobilvenlig utgave av hele
  nettstedet, bare ruteinformasjon
  
  
@@ -1064,22 +1064,22 @@ Kristian SkarbÃ¸ skrev:
  
  
 ate: Mon, 04 May 2009 15:31:30 +0200
-From: Kristian SkarbÃ¸ <kristian@lingit.no
+From: Kristian Skarbø <kristian@lingit.no
 To: Tore Amble <toreamb@idi.ntnu.no
-Subject: Re: Justering av klokke pÃ¥ busstuc server
+Subject: Re: Justering av klokke på busstuc server
 
 Tore Amble wrote:
 
 
- Jeg ser du har justert klokka pÃ¥ Busstuc-serveren. Bra.
- Antakelig ble den ikke stilt riktig etter innfÃ¸ring av sommertid.
+ Jeg ser du har justert klokka på Busstuc-serveren. Bra.
+ Antakelig ble den ikke stilt riktig etter innføring av sommertid.
 
- Satte du en kommando selv, eller ba du noen i vert-selskapet om Ã¥ gjÃ¸re det ?
+ Satte du en kommando selv, eller ba du noen i vert-selskapet om å gjøre det ?
 
- I siste tilfelle bÃ¸r noen fortelle vertskapet Ã¥ skjerpe inn prosedyren nÃ¥r dato eller klokkeslett endres/settes slik at det ikke gjentar seg.
+ I siste tilfelle bør noen fortelle vertskapet å skjerpe inn prosedyren når dato eller klokkeslett endres/settes slik at det ikke gjentar seg.
 
 
-Vi har ikke rottilgang pÃ¥ busstuc.lingit.no. Men Ventelo lover at det ikke skal gjenta seg for fremtiden:
+Vi har ikke rottilgang på busstuc.lingit.no. Men Ventelo lover at det ikke skal gjenta seg for fremtiden:
 
 
 support@comnet.no wrote:
@@ -1087,7 +1087,7 @@ support@comnet.no wrote:
 
  Hei,
 
- ntp-server er nÃ¥ satt opp pÃ¥ busstuc.lingit.no
+ ntp-server er nå satt opp på busstuc.lingit.no
 
  Carsten Murbreck, Ventelo Hosting
 
@@ -1102,13 +1102,13 @@ To: Lars Mo <lars.mo@team-as.no
 Subject: RE: Ruter 17.5 og 22.5
 
 
-Jeg gjÃ¸r oppmerksom pÃ¥ at jeg har fÃ¥tt med en fil ekstra som jeg
-ikke pleier Ã¥ fÃ¥, nemlig
+Jeg gjør oppmerksom på at jeg har fått med en fil ekstra som jeg
+ikke pleier å få, nemlig
 
  r1610.vlp
 
-Jeg har ikke dokumentasjon over denne fila  ("VognlÃ¸p?"),
-og bussoraklet kan ikke nyttiggjÃ¸re seg den.
+Jeg har ikke dokumentasjon over denne fila  ("Vognløp?"),
+og bussoraklet kan ikke nyttiggjøre seg den.
 
 
 
@@ -1120,9 +1120,9 @@ On Mon, 11 May 2009, Lars Mo wrote:
  
  Her kommer 22.mai med ekstra-avgangene
  
- 21.mai og 1.juni kjÃ¸res det vanlige sÃ¸ndagsruter
+ 21.mai og 1.juni kjøres det vanlige søndagsruter
  
- Sommeren er snart klar og vil bli sendt over sÃ¥ raskt de siste rundene med
+ Sommeren er snart klar og vil bli sendt over så raskt de siste rundene med
  kvalitetsikring er unnagjort
  
  Mvh
@@ -1135,11 +1135,11 @@ On Mon, 11 May 2009, Lars Mo wrote:
  Emne: Ruter 17.5 og 22.5
  
  
- Jeg ser at det er lÃ¸rdagsruter (+X) pÃ¥ fredag 22.5.
+ Jeg ser at det er lørdagsruter (+X) på fredag 22.5.
  
- Kommer du til Ã¥ sende ruter for 22.5 ?
+ Kommer du til å sende ruter for 22.5 ?
  
- Hvis ikke kan jeg sette i bussoraklet at det er LÃ¸rdagsrute den 22.5,
+ Hvis ikke kan jeg sette i bussoraklet at det er Lørdagsrute den 22.5,
  men da kommer ikke ekstra-avgangene  med.
  
  
@@ -1158,7 +1158,7 @@ On Mon, 11 May 2009, Lars Mo wrote:
   Emne: 17.mai ruter
   
   
-  Kommer jeg til Ã¥ fÃ¥ tilsendt 17.mai-ruter snart ?
+  Kommer jeg til å få tilsendt 17.mai-ruter snart ?
   
   
   
@@ -1169,11 +1169,11 @@ Utbrudd Adr.avisen  13.5.09
 
 
 
-Takk team trafikk, som tenkte pÃ¥ alle de som 
-FAKTISK mÃ¥ arbeide pÃ¥ 17. mai. Enda godt
- dere hadde oss i tankene nÃ¥r dere satt opp
-fÃ¸rste buss 17. mai til kl 09.50. Jeg begynner
- nemlig pÃ¥ jobb kl07.30. Gir dere meg gratis taxi til jobb?
+Takk team trafikk, som tenkte på alle de som 
+FAKTISK må arbeide på 17. mai. Enda godt
+ dere hadde oss i tankene når dere satt opp
+første buss 17. mai til kl 09.50. Jeg begynner
+ nemlig på jobb kl07.30. Gir dere meg gratis taxi til jobb?
 
 -------------------------
 
@@ -1189,11 +1189,11 @@ On Mon, 18 May 2009, Johanne S. Bakke wrote:
  Tusen takk, Tore!
 
  Dette er nyttig for oss.
- Godt Ã¥ fÃ¥ bekreftet at Bussorakelet brukes sÃ¥pass!
+ Godt å få bekreftet at Bussorakelet brukes såpass!
 
- Flott om dere har mulighet Ã¥ sende oss en logg
- like fÃ¸r dere legger inn ny versjon,
- evt gjÃ¸r oss oppmerksom slik at vi tar ut en fersk logg.
+ Flott om dere har mulighet å sende oss en logg
+ like før dere legger inn ny versjon,
+ evt gjør oss oppmerksom slik at vi tar ut en fersk logg.
  OK?
 
 
@@ -1202,13 +1202,13 @@ OK
 
  Oppdaget forresten at mine tall ikke stemmer helt med dine tall
  i logg for samme dager.
- (Ikke bare i dag. Noen dager flere, andre dager fÃ¦rre.)
+ (Ikke bare i dag. Noen dager flere, andre dager færre.)
  Legger ved en printscreen...
 
 
 Det var rart.
 
-Jeg mÃ¥  forske litt mer pÃ¥ hva som forgÃ¥r.
+Jeg må  forske litt mer på hva som forgår.
 
 
 
@@ -1226,17 +1226,17 @@ Jeg mÃ¥  forske litt mer pÃ¥ hva som forgÃ¥r.
 
 
 
- Det er nÃ¥ mulig Ã¥ fÃ¥ ut litt statistikk ved Ã¥ spÃ¸rre bussoraklet selv.
+ Det er nå mulig å få ut litt statistikk ved å spørre bussoraklet selv.
 
 
- Man mÃ¥ foreÃ¸pig spÃ¸rre med akkurat denne ordlyden:
+ Man må foreøpig spørre med akkurat denne ordlyden:
 
- Hvor mange spÃ¸rsmÃ¥l har du besvart ?
+ Hvor mange spørsmål har du besvart ?
 
 
  ==
 
- Jeg kan ikke svare pÃ¥ det.
+ Jeg kan ikke svare på det.
 
 
 
@@ -1251,11 +1251,11 @@ Jeg mÃ¥  forske litt mer pÃ¥ hva som forgÃ¥r.
  2009-5-18 18 175
 
 
- Som man kan se var det pÃ¥ 17. mai i alt 3457 forespÃ¸rsler, hvorav 725 pÃ¥ SMS.
+ Som man kan se var det på 17. mai i alt 3457 forespørsler, hvorav 725 på SMS.
 
- Jeg tror at med nye mobil-telefoner (a.la IPhone) er det nÃ¥ mye lettere Ã¥ spÃ¸rre pÃ¥ SMS enn med vanlige trippel-trykk tastaturer.
+ Jeg tror at med nye mobil-telefoner (a.la IPhone) er det nå mye lettere å spørre på SMS enn med vanlige trippel-trykk tastaturer.
 
- Statistikk-muligheten er forelÃ¸pig bare begrenset til kjÃ¸rende versjon.
+ Statistikk-muligheten er foreløpig bare begrenset til kjørende versjon.
  Ved innlegg av nye ruter blir statistikken resatt til null.
 
 -------------------------------------------------------------------------
@@ -1263,15 +1263,15 @@ Jeg mÃ¥  forske litt mer pÃ¥ hva som forgÃ¥r.
 
 
 
-Jeg sendte denne forsspÃ¸rselen til Lars Mo, som henvendte meg til deg.
+Jeg sendte denne forsspørselen til Lars Mo, som henvendte meg til deg.
 
 
-Jeg fÃ¥r stadig henvendelser fra studenter om Ã¥ lage et grafisk grensesnitt mot bussoraklet, og i den forbindelse lurer jeg pÃ¥ om Team (eller noen
+Jeg får stadig henvendelser fra studenter om å lage et grafisk grensesnitt mot bussoraklet, og i den forbindelse lurer jeg på om Team (eller noen
 andre) har geografiske koordinater til bussholdeplassene ?
 
-Jeg antar at noe slikt mÃ¥ finnese i forbindelse med T-kort system-opplegget.
-I den forbindelse vil jeg ogsÃ¥ Ã¸nske Ã¥ komme i inngrep med de som styrer reell-tids informasjon busspasseringer.
-Det er da mulig Ã¥ lage et rell-tids bussorakel som kan gi reelle anslag pÃ¥ passeringstider.
+Jeg antar at noe slikt må finnese i forbindelse med T-kort system-opplegget.
+I den forbindelse vil jeg også ønske å komme i inngrep med de som styrer reell-tids informasjon busspasseringer.
+Det er da mulig å lage et rell-tids bussorakel som kan gi reelle anslag på passeringstider.
 
 Date: Wed, 3 Jun 2009 14:57:32 +0200
 From: Olaf Misfjord <olaf.misfjord@stfk.no
@@ -1282,7 +1282,7 @@ Parts/Attachments:
    2          5.9 MB     Application, "Hlp.reg. for ST med noen kordinater(Misfjord).xls"
 ----------------------------------------
 
-Sender over koordinater for SÃ¸r TrÃ¸ndelag som finnes i dag. Tar forbehold om eventuelle feil i koordinatene.
+Sender over koordinater for Sør Trøndelag som finnes i dag. Tar forbehold om eventuelle feil i koordinatene.
 
 Med vennlig hilsen
 Olaf Misfjord
@@ -1307,15 +1307,15 @@ Kjempeflott!
 
 Jeg fikk den, og det ser absolutt ut som dette passer direkte inn i systemet!
 
-Demo fÃ¥r du selvfÃ¸lgelig:)
+Demo får du selvfølgelig:)
 http://geomatikk.eksplisitt.net/atle/buss/
 
-Ideen er Ã¥ kunne finne hvilke(n) bussrute som passer Ã¸nsket om Ã¥ dra fra a til b _uten_ Ã¥ vite navnet pÃ¥ holdeplassen/nÃ¦rliggende navn. AltsÃ¥ uten tekstlig interface.
-BussTuc er ganske overlegent pÃ¥ Ã¥ gi svar pÃ¥ hvilke(n) buss(er) som passer relativt til tid og sted, men ikke hvis man ikke vet hva det heter.
+Ideen er å kunne finne hvilke(n) bussrute som passer ønsket om å dra fra a til b _uten_ å vite navnet på holdeplassen/nærliggende navn. Altså uten tekstlig interface.
+BussTuc er ganske overlegent på å gi svar på hvilke(n) buss(er) som passer relativt til tid og sted, men ikke hvis man ikke vet hva det heter.
 
 Forbedringer som er tenkt:
 1. Automatisk posisjon til brukeren (i.e. typisk mobil-app, evt. ip-lokasjon)
-2. Vise den faktiske ruten som orakelet velger. Kan vÃ¦re noe vanskelig + systemet mÃ¥ vite om rutene.
+2. Vise den faktiske ruten som orakelet velger. Kan være noe vanskelig + systemet må vite om rutene.
 
 Mvh.
 Alexander Nossum
@@ -1327,7 +1327,7 @@ I-IKT Geomatikk
 
 Bra!
 
-Takker for info, og Ã¸nsker deg en bra sommer :)
+Takker for info, og ønsker deg en bra sommer :)
 
 Mvh johanne
 
@@ -1341,15 +1341,15 @@ Emne: Bussoraklet - revidert versjon
 
 
 Jeg har lagt inn en revidert versjon for sommerrutene.
-Den inneholder fÃ¸lgende korreksjoner
+Den inneholder følgende korreksjoner
 
      Dokkparken har skiftet navn til Solsiden.
-     WullumsgÃ¥rden har skiftet navn til TrÃ¸ndelag Folkemuseum.
+     Wullumsgården har skiftet navn til Trøndelag Folkemuseum.
 
-Dessuten er nÃ¥ ekstra-avgangene for rute 5 og 9 i uke 33  innkorporert slik at det ikke skulle vÃ¦re nÃ¸dvendig Ã¥
-sende en ny versjon (slik det var nÃ¸dvendig i fjor).
+Dessuten er nå ekstra-avgangene for rute 5 og 9 i uke 33  innkorporert slik at det ikke skulle være nødvendig å
+sende en ny versjon (slik det var nødvendig i fjor).
 
-Statistikk siden forrige revisjon er som fÃ¸lger:
+Statistikk siden forrige revisjon er som følger:
 ---------------------------------
 
 Date: Tue, 23 Jun 2009 15:01:06 +0200
@@ -1359,10 +1359,10 @@ Subject: SV: Bussoraklet - revidert versjon
 
 Hei
 
-Det skal vÃ¦re disse holdeplassene som har endret navn
+Det skal være disse holdeplassene som har endret navn
 
 Dokkparken  til Solsiden
-WullumsgÃ¥rden skal endres til ByÃ¥sen butikksenter
+Wullumsgården skal endres til Byåsen butikksenter
 og
 Nordre Hallset til Migosenteret
 
@@ -1393,15 +1393,15 @@ Parts/Attachments:
 
 Hei Tore!
 
-Jeg ble gjort oppmerksom pÃ¥ at det kommer opp informasjon om at rute 80 kjÃ¸rer denne uken ogsÃ¥.
-Trolig utover sommeren ogsÃ¥, og trolig rute 81 og 82.
+Jeg ble gjort oppmerksom på at det kommer opp informasjon om at rute 80 kjører denne uken også.
+Trolig utover sommeren også, og trolig rute 81 og 82.
 
-Dette mÃ¥ endres ang rute 80, og sjekkes ut og evt endres ang rute 81 og 82.
+Dette må endres ang rute 80, og sjekkes ut og evt endres ang rute 81 og 82.
 
-GÃ¥r det greit for deg Ã¥ fikse dette?
-HÃ¥per pÃ¥ tilbakemelding fra deg.
+Går det greit for deg å fikse dette?
+Håper på tilbakemelding fra deg.
 
-PÃ¥ forhÃ¥nd takk - og god sommer :)
+På forhånd takk - og god sommer :)
 
 Mvh
 Johanne S. Bakke
@@ -1422,10 +1422,10 @@ team-trafikk.no <http://www.team-trafikk.no/
 
  Feilen skyldes feil rutedata for sommerutene.
 
- Her er det oppfÃ¸rt en del avganger for buss 80 (og 81,82) med dagkode 1 ( hverdager uke 25-32) i tillegg til dagkode 7 (Uke 33).
+ Her er det oppført en del avganger for buss 80 (og 81,82) med dagkode 1 ( hverdager uke 25-32) i tillegg til dagkode 7 (Uke 33).
 
  Jeg har fjernet avgangene med dagkode 1 for rute 80,81 og 82.
- En ny versjon vil bli lagt inn i lÃ¸pet av dagen.
+ En ny versjon vil bli lagt inn i løpet av dagen.
 
 
                 Linje_Avgang Turtype Avg.Tid  Dagkode ...
@@ -1458,7 +1458,7 @@ Reviderte ruter er lagt inn.
 Statistikk for siste periode:
 
 --------------------------------------------------------------------------------
-Jeg kan ikke svare pÃ¥ det.
+Jeg kan ikke svare på det.
 
 DATE SMS TOTAL
 
@@ -1510,10 +1510,10 @@ On Tue, 14 Jul 2009, Johanne S. Bakke wrote:
 H ei
 
 Vi fikk denne fra en kunde.
-Det ser ut til at noe er feil nÃ¥r kunden spÃ¸r slik hun gjÃ¸r
-1010 og 1040 er avganger pÃ¥ rute 5 til Dragvoll mens 1033 er tidligste ankomstid D3 pÃ¥ den buss som har avgang kl 1040.
+Det ser ut til at noe er feil når kunden spør slik hun gjør
+1010 og 1040 er avganger på rute 5 til Dragvoll mens 1033 er tidligste ankomstid D3 på den buss som har avgang kl 1040.
 
-NÃ¥r kunden spÃ¸rr om de 2 neste avganger burde vel ogsÃ¥ rute 9 kl 1023 komme opp som alternativ fÃ¸r rute 5 1040?
+Når kunden spørr om de 2 neste avganger burde vel også rute 9 kl 1023 komme opp som alternativ før rute 5 1040?
 
 Fra: Ingvild Borgen [mailto:ingvbo@gmail.com]
 Sendt: 15. juli 2009 01:31
@@ -1521,13 +1521,13 @@ Til: Firmapostkasse Team Trafikk AS
 Emne: Buss Orakelet
 
 
-Ser ut som om hele eller deler av ruta til buss nr 5 mangler i Buss Orakelet pÃ¥ nettsidene deres. Dette skjedde da dere
-byttet til sommerruter. Dere bÃ¸r dobbeltsjekke dette, og eventuelt gjÃ¸re noe med det snarest mulig.
+Ser ut som om hele eller deler av ruta til buss nr 5 mangler i Buss Orakelet på nettsidene deres. Dette skjedde da dere
+byttet til sommerruter. Dere bør dobbeltsjekke dette, og eventuelt gjøre noe med det snarest mulig.
 
 ----------------
 
-Her er resultatet da jeg spurte orakelet akkurat nÃ¥. Riktige avganger skal vÃ¦re 1640, 1710,1740
-Her mangler ogsÃ¥ alternativet med rute 9
+Her er resultatet da jeg spurte orakelet akkurat nå. Riktige avganger skal være 1640, 1710,1740
+Her mangler også alternativet med rute 9
 
 ----------------------
 
@@ -1539,15 +1539,15 @@ Lars Mo
 
 Hei!
 
-Har fÃ¥tt beskjed om en endring i rute 8 tidtabell
+Har fått beskjed om en endring i rute 8 tidtabell
 
-Vi skal kjÃ¸re avgangene 0545 og 0605 om nÃ¥ ligger fra Blakli med fotnote 1 altsÃ¥ avgang fra SteinÃ¥sen 2 min
+Vi skal kjøre avgangene 0545 og 0605 om nå ligger fra Blakli med fotnote 1 altså avgang fra Steinåsen 2 min
 tidligere
 
-Disse turene blir da 0543 og 0603 fra SteinÃ¥sen.
+Disse turene blir da 0543 og 0603 fra Steinåsen.
 
 
-Skal jeg lage ny regtop for Ã¥ fÃ¥ disse turene riktig sÃ¸kbar i Bussorakelet eller er det greit Ã¥ justere
+Skal jeg lage ny regtop for å få disse turene riktig søkbar i Bussorakelet eller er det greit å justere
 der?
 
 
@@ -1560,21 +1560,21 @@ Jeg kan legge dem inn selv.
 
 LM:
 
-AltsÃ¥ det skal fortsatt vÃ¦re Blakli 0545 og 0605 mens bussene skal starte fra STEINÃ…SEN 0543 og 0503 altsÃ¥ 2 minutter fÃ¸r de
+Altså det skal fortsatt være Blakli 0545 og 0605 mens bussene skal starte fra STEINÅSEN 0543 og 0503 altså 2 minutter før de
 passerer Blakli
 
 
 
 TA:
 
-Beklager misforstÃ¥elsen, jeg skal fikse det.
+Beklager misforståelsen, jeg skal fikse det.
 
 
 TA:
 
-NÃ¥ skulle det vÃ¦re riktig.
+Nå skulle det være riktig.
 
-N: fra steinÃ¥sen til blakli pÃ¥ mandag.
+N: fra steinåsen til blakli på mandag.
 
 LM:
 
@@ -1591,15 +1591,15 @@ Subject: Re: SV: VS: Busssoraklet virker ikke
 
 
 
-Det er en feil med bussoraklet pÃ¥ Teams hjemmeside, men det skyldes antagelig problemer pÃ¥ Teams webservere.
-Man fÃ¥r rett og slett ikke kontakt med bussoraklet.
+Det er en feil med bussoraklet på Teams hjemmeside, men det skyldes antagelig problemer på Teams webservere.
+Man får rett og slett ikke kontakt med bussoraklet.
 
 Bussoraklet virker fint via SMS og via en direkte-forbindelse
 
 http://busstuc.lingit.no/~tore/smstuc/
 
-Jeg foreslÃ¥r at du tar opp problemet med nettside-ansvarlig pÃ¥ Team.
-Jeg stÃ¥r selvfÃ¸lgelig til tjeneste.
+Jeg foreslår at du tar opp problemet med nettside-ansvarlig på Team.
+Jeg står selvfølgelig til tjeneste.
 
 
 
@@ -1621,14 +1621,14 @@ On Fri, 28 Aug 2009, Lars Mo wrote:
  Emne: Re: VS: Busssoraklet virker ikke
 
 
- Det stemmer at bussoraklet gikk ned i gÃ¥r kveld.
- Det skal vÃ¦re oppe nÃ¥.
+ Det stemmer at bussoraklet gikk ned i går kveld.
+ Det skal være oppe nå.
 
 
 
- Jeg vet ikke hva som har skjedd, det var ikke en feil ved selve bussoraklet. Jeg antar det har vÃ¦rt en driftsforstyrrelse  et sted.
+ Jeg vet ikke hva som har skjedd, det var ikke en feil ved selve bussoraklet. Jeg antar det har vært en driftsforstyrrelse  et sted.
 
- Jeg skal fÃ¸lge nÃ¸ye med fremover.
+ Jeg skal følge nøye med fremover.
 
 
 
@@ -1637,12 +1637,12 @@ On Fri, 28 Aug 2009, Lars Mo wrote:
 
   Hei!
  
-  Har fÃ¥tt lignende meldinger fra flere kunder i dag og ser det de
+  Har fått lignende meldinger fra flere kunder i dag og ser det de
   skriver stemmer er orakelet nede i dag?
  
  
   Mvh
-  Â¨Lars
+  ¨Lars
  
   ________________________________
  
@@ -1654,7 +1654,7 @@ On Fri, 28 Aug 2009, Lars Mo wrote:
  
   Hei
  
-  Bussoraklet har sluttet Ã¥ virke. Jeg fÃ¥r ingen svar fra det pÃ¥ nettet.
+  Bussoraklet har sluttet å virke. Jeg får ingen svar fra det på nettet.
  
   Mvh
   Eva
@@ -1666,7 +1666,7 @@ On Fri, 28 Aug 2009, Lars Mo wrote:
 
 Topp!
 
-Takker sÃ¥ mye
+Takker så mye
 
 
 
@@ -1687,12 +1687,12 @@ Ny versjon er lagt inn.
 
 
 
-N: nÃ¥r gÃ¥r buss 3 til ts pÃ¥ lÃ¸rdag ?
+N: når går buss 3 til ts på lørdag ?
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-5. Sep. 2009 er en  lÃ¸rdag .
-FÃ¸rste buss , nummer 3 passerer  Munkegata holdeplass M5 kl.  0705 og  kommer til  Trondheim Sentralstasjon holdeplass 13 kl.  0708 .
+5. Sep. 2009 er en  lørdag .
+Første buss , nummer 3 passerer  Munkegata holdeplass M5 kl.  0705 og  kommer til  Trondheim Sentralstasjon holdeplass 13 kl.  0708 .
 Siste buss , nummer 3 passerer  Munkegata holdeplass M5 kl.  0005 og  kommer til  Trondheim Sentralstasjon holdeplass 13 kl.  0009 .
 
 Tidene angir tidligste passeringer av holdeplassene.
@@ -1701,7 +1701,7 @@ Tidene angir tidligste passeringer av holdeplassene.
 
 On Mon, 31 Aug 2009, Lars Mo wrote:
 
- Det ser ut som at fÃ¸rste tur M5 0705- 0708 TS13  mangler selv om den
+ Det ser ut som at første tur M5 0705- 0708 TS13  mangler selv om den
  er innlagt og definert lik resten av turene
 
  Ellers tror jeg det ser greit ut.
@@ -1725,11 +1725,11 @@ On Mon, 31 Aug 2009, Lars Mo wrote:
  Jeg har testet  siste regtop ( gjeldende fra 31.8.09 ikke
  21.8.09 som du skrev).
 
- Jeg fÃ¥r dette svaret pÃ¥ angjeldende spÃ¸rsmÃ¥l (som er forskjellig fra klagerens ).
+ Jeg får dette svaret på angjeldende spørsmål (som er forskjellig fra klagerens ).
 
  Kan du sjekke om det er riktig.
 
- Evt gi et konkret spÃ¸rsmÃ¥l med feil orakel svar, og angivelse av riktig svar).
+ Evt gi et konkret spørsmål med feil orakel svar, og angivelse av riktig svar).
 
 
 
@@ -1737,8 +1737,8 @@ On Mon, 31 Aug 2009, Lars Mo wrote:
 
 Hei Tore!
 
-Har fÃ¥tt et par eksempler fra Bussorakelet som jeg ikke forstÃ¥r noe av.
-ForstÃ¥r du de?
+Har fått et par eksempler fra Bussorakelet som jeg ikke forstår noe av.
+Forstår du de?
 
 Det er jo ikke spesielt gode svar til kunden...
 
@@ -1749,7 +1749,7 @@ Team Trafikk AS
 Tlf 480 13 861
 www.team-trafikk.no
 
- Trenger du Ã¥ skrive ut denne e-posten?
+ Trenger du å skrive ut denne e-posten?
 
 
 Date: Thu, 10 Sep 2009 14:01:50 +0200 (MEST)
@@ -1763,37 +1763,37 @@ Subject: Re: VS: Bussorakel, ubrukelige svar
 Takk for feilmeldinger.
 
  1.
- NÃ¥r gÃ¥r buss nummer 19...
+ Når går buss nummer 19...
 
- Svar: Buss 5 gÃ¥r ...
+ Svar: Buss 5 går ...
 
 
-Jeg fÃ¥r ikke gjenskapt denne feilen. Jeg fÃ¥r meldingen
+Jeg får ikke gjenskapt denne feilen. Jeg får meldingen
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Du mÃ¥ oppgi et sted i slike spÃ¸rsmÃ¥l .
+Du må oppgi et sted i slike spørsmål .
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
  2.
- NÃ¥r gÃ¥r buss nummer 19 fra byÃ¥sen skole...
+ Når går buss nummer 19 fra byåsen skole...
 
  Svar: Buss 19 passerer aldri Migosenteret
 
 
-"ByÃ¥sen skole"  ble ved en feiltagelse "dirigert" til Migosenteret da holdeplassen Nordre Halset skiftet navn.
+"Byåsen skole"  ble ved en feiltagelse "dirigert" til Migosenteret da holdeplassen Nordre Halset skiftet navn.
 
-Feilen er funnet, og oraklet vil bli oppdatert i nÃ¦r fremtid.
+Feilen er funnet, og oraklet vil bli oppdatert i nær fremtid.
 
 
- Svar: Buss 5 gÃ¥r ...
+ Svar: Buss 5 går ...
 
 
  2.
- NÃ¥r gÃ¥r buss nummer 19 fra byÃ¥sen skole...
+ Når går buss nummer 19 fra byåsen skole...
 
  Svar: Buss 19 passerer aldri Migosenteret
 
@@ -1817,20 +1817,20 @@ Subject: Re: VS: Bussorakel, ubrukelige svar
 
 
 Jeg ser i ettertid at noen feilmeldinger som ikke skyldes feil
-kan komme av at nÃ¥r man pÃ¥ hjemmesiden til Bussoraklet bruke pilen <-,
-vil man fÃ¥ fram det forrige svaret, mens det siste spÃ¸rsmÃ¥let blir stÃ¥ende igjen i ruten, noe som kan virke forvirrende.
+kan komme av at når man på hjemmesiden til Bussoraklet bruke pilen <-,
+vil man få fram det forrige svaret, mens det siste spørsmålet blir stående igjen i ruten, noe som kan virke forvirrende.
 
-Dette gjelder hÃ¸yst sannsynlig denne feilrapporten.
+Dette gjelder høyst sannsynlig denne feilrapporten.
 
  1.
- NÃ¥r gÃ¥r buss nummer 19...
+ Når går buss nummer 19...
 
- Svar: Buss 5 gÃ¥r ...
+ Svar: Buss 5 går ...
 
 
-Dette  gjelder ogsÃ¥ noen  tidligere rare feilmeldinger.
+Dette  gjelder også noen  tidligere rare feilmeldinger.
 
-Dette er ikke en feil ved bussoraklet, men kan kanskje pÃ¥hjelpes
+Dette er ikke en feil ved bussoraklet, men kan kanskje påhjelpes
 av noen som er ansvarlig for hjemmesiden til Bussoraklet.
 
 
@@ -1839,23 +1839,23 @@ av noen som er ansvarlig for hjemmesiden til Bussoraklet.
 Date: Fri, 11 Sep 2009 11:01:29 +0200
 From: Lars Mo <lars.mo@team-as.no
 To: Tore Amble <toreamb@idi.ntnu.no
-Cc: Jon Olav SÃ¦tertrÃ¸ <jon.olav.setertro@nettbuss.no, Johanne Sundby <johanne.sundby@team-as.no
+Cc: Jon Olav Sætertrø <jon.olav.setertro@nettbuss.no, Johanne Sundby <johanne.sundby@team-as.no
 Subject: SV: VS: Bussorakel, ubrukelige svar
 
 Hei!
-Jeg ser ogsÃ¥ den med at nÃ¥r man at trykker back-knappen i nettleseren er det bare svaret som endres til forige og ikke spÃ¸rsmÃ¥let slik at dette pÃ¥ en
-mÃ¥te kan fremprovoseres.
+Jeg ser også den med at når man at trykker back-knappen i nettleseren er det bare svaret som endres til forige og ikke spørsmålet slik at dette på en
+måte kan fremprovoseres.
 
-NÃ¥r det gjelder sÃ¸k etter bussavgang fra ByÃ¥sen skole der man fÃ¥r opp svar om Migosenteret virker det pÃ¥ meg som det er en konflikt. Holdeplassen
-Migosenteret ligger jo ved ByÃ¥sen VideregÃ¥ende skole og kommer kanskje derfor opp selv om det her er Hpl. ByÃ¥sen Skole (barne/ungdomskole) kunden
-spÃ¸r om. 19 passerer jo ByÃ¥sen skole men ikke ByÃ¥sen videregÃ¥ende skole.
+Når det gjelder søk etter bussavgang fra Byåsen skole der man får opp svar om Migosenteret virker det på meg som det er en konflikt. Holdeplassen
+Migosenteret ligger jo ved Byåsen Videregående skole og kommer kanskje derfor opp selv om det her er Hpl. Byåsen Skole (barne/ungdomskole) kunden
+spør om. 19 passerer jo Byåsen skole men ikke Byåsen videregående skole.
 
-Jeg sÃ¸kte pÃ¥ rute 5 nÃ¥ som passerer begge de to skolene med ganske likt navn og fikk fÃ¸lgende resultat:
+Jeg søkte på rute 5 nå som passerer begge de to skolene med ganske likt navn og fikk følgende resultat:
 
 
 
-SpÃ¸rsmÃ¥l :
-NÃ¥r gÃ¥r linje 5 fra byÃ¥sen skole
+Spørsmål :
+Når går linje 5 fra byåsen skole
 
 --------------------------------------------------------------------------------
 Buss 5 passerer Migosenteret kl. 1054 , kl. 1104 og kl. 1114
@@ -1863,7 +1863,7 @@ og kommer til Dronningens gate, holdeplass D3 , 14 minutter senere .
 
 
 
-AltsÃ¥ ser det ut som Orakelet svarer fra feil skole.
+Altså ser det ut som Orakelet svarer fra feil skole.
 
 
 Mvh
@@ -1873,7 +1873,7 @@ Lars Mo
 Date: Fri, 11 Sep 2009 13:46:21 +0200 (MEST)
 From: Tore Amble <toreamb@idi.ntnu.no
 To: Lars Mo <lars.mo@team-as.no
-Cc: Jon Olav SÃ¦tertrÃ¸ <jon.olav.setertro@nettbuss.no, Johanne Sundby <johanne.sundby@team-as.no
+Cc: Jon Olav Sætertrø <jon.olav.setertro@nettbuss.no, Johanne Sundby <johanne.sundby@team-as.no
 Subject: Re: SV: VS: Bussorakel, ubrukelige svar
 
 
@@ -1882,10 +1882,10 @@ Subject: Re: SV: VS: Bussorakel, ubrukelige svar
 Jeg har gjort noen forandringer i navnekatalogen i bussoraklet, og lagt inn en ny versjon.
 
 
-N: SpÃ¸rsmÃ¥l :NÃ¥r gÃ¥r linje 5 fra byÃ¥sen skole.
+N: Spørsmål :Når går linje 5 fra byåsen skole.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Buss 5 passerer  ByÃ¥sen skole kl.  1247 , kl.  1257 og  kl.  1307
+Buss 5 passerer  Byåsen skole kl.  1247 , kl.  1257 og  kl.  1307
 og  kommer til  Dronningens gate, holdeplass D3 ,  11 minutter senere .
 
 Tidene angir tidligste passeringer av holdeplassene.
@@ -1893,19 +1893,19 @@ Tidene angir tidligste passeringer av holdeplassene.
 
 
 
-N: SpÃ¸rsmÃ¥l :NÃ¥r gÃ¥r linje 5 fra byÃ¥sen videregÃ¥ende skole.
+N: Spørsmål :Når går linje 5 fra byåsen videregående skole.
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Holdeplassen nÃ¦rmest ByÃ¥sen videregÃ¥ende skole er  Migosenteret .
+Holdeplassen nærmest Byåsen videregående skole er  Migosenteret .
 Buss 5 passerer  Migosenteret kl.  1254 , kl.  1304 og  kl.  1314
 og  kommer til  Dronningens gate, holdeplass D3 ,  14 minutter senere .
 
 Tidene angir tidligste passeringer av holdeplassene.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Â¤Â¤Â¤Â¤Â¤
+¤¤¤¤¤
 
 Date: Tue, 15 Sep 2009 14:24:19 +0200 (MEST)
 From: Tore Amble <toreamb@idi.ntnu.no
@@ -1913,14 +1913,14 @@ To: lars.mo@team-as.no
 Subject: Uregelmeesigheter i  rutedata for  nattbuss
 
 
-For gjeldende ruter for nattbussen er det oppfÃ¸rt dobbelt sett med avganger, typisk
+For gjeldende ruter for nattbussen er det oppført dobbelt sett med avganger, typisk
 
 Buss 107       Fredag   kl 2500
-og             LÃ¸rdag   kl 0100
+og             Lørdag   kl 0100
 
-Dette -kan- ha medfÃ¸rt noen feilopplysninger angÃ¥ende nattbussen.
+Dette -kan- ha medført noen feilopplysninger angående nattbussen.
 
-Jeg kan legge inn kompensasjon/oppretting i bussoraklet manuelt, men det bÃ¸r vel rettes opp permanent.
+Jeg kan legge inn kompensasjon/oppretting i bussoraklet manuelt, men det bør vel rettes opp permanent.
 
 
 ----------------------
@@ -1932,12 +1932,12 @@ Subject: SV: Uregelmeesigheter i  rutedata for  nattbuss
 
 Hei
 
-Jeg skal sÃ¸rge for at kun den ene avgangstypen ligger inne ved neste regtop-eksport
+Jeg skal sørge for at kun den ene avgangstypen ligger inne ved neste regtop-eksport
 
-Ã…rsaken til at det ligger i to typer i Hastus er at nattbuss i daglig disponering i dagplanene ligger pÃ¥ fredagsplanen kl 2500 for sjÃ¥fÃ¸rene, mens
-for billettsystemet ligger turen etter midnat og da altsÃ¥ kl 0100
+Årsaken til at det ligger i to typer i Hastus er at nattbuss i daglig disponering i dagplanene ligger på fredagsplanen kl 2500 for sjåførene, mens
+for billettsystemet ligger turen etter midnat og da altså kl 0100
 
-For Bussoraklelets del er det sikkert riktig at den fÃ¸lger vanlig klokke og ligger 0100 pÃ¥ lÃ¸rdag?
+For Bussoraklelets del er det sikkert riktig at den følger vanlig klokke og ligger 0100 på lørdag?
 
 
 Mvh
@@ -1950,7 +1950,7 @@ Date: Wed, 30 Sep 2009 13:20:21 +0200 (MEST)
 From: Tore Amble <toreamb@idi.ntnu.no
 To: Torbjorn Nordgard <torbjorn@lingit.no
 Cc: kristian@lingit.no, johanne.sundby@team-as.no
-Subject: Re: [Fwd: SV: SV: Krise ang Bussorakel pÃ¥ www.team-trafikk.no]
+Subject: Re: [Fwd: SV: SV: Krise ang Bussorakel på www.team-trafikk.no]
 
 
 OK.
@@ -1959,10 +1959,10 @@ Torsdag 8. oktober kl 12:30.
 
 
 Jeg vet ikke hva bakgrunnen for dette er, bortsett fra en
-episode i forrige mÃ¥ned. (se nedenfor)
+episode i forrige måned. (se nedenfor)
 
-Hvis det er hyppig forekommende, sÃ¥ mÃ¥ det gjÃ¸res noe, men jeg tror ikke det
-er selve bussoraklet som er Ã¥rsaken.
+Hvis det er hyppig forekommende, så må det gjøres noe, men jeg tror ikke det
+er selve bussoraklet som er årsaken.
 
 
 
@@ -1976,16 +1976,16 @@ Subject: Re: SV: VS: Busssoraklet virker ikke
 
 
 
-Det er en feil med bussoraklet pÃ¥ Teams hjemmeside, men det skyldes
-antagelig problemer pÃ¥ Teams webservere.
-Man fÃ¥r rett og slett ikke kontakt med bussoraklet.
+Det er en feil med bussoraklet på Teams hjemmeside, men det skyldes
+antagelig problemer på Teams webservere.
+Man får rett og slett ikke kontakt med bussoraklet.
 
 Bussoraklet virker fint via SMS og via en direkte-forbindelse
 
 http://busstuc.lingit.no/~tore/smstuc/
 
-Jeg foreslÃ¥r at du tar opp problemet med nettside-ansvarlig pÃ¥ Team.
-Jeg stÃ¥r selvfÃ¸lgelig til tjeneste.
+Jeg foreslår at du tar opp problemet med nettside-ansvarlig på Team.
+Jeg står selvfølgelig til tjeneste.
 
 
 
@@ -1996,39 +1996,39 @@ God helg.
 On Wed, 30 Sep 2009, Torbjorn Nordgard wrote:
 
  
- Tore, kan du delta pÃ¥ det tidspunktet de foreslÃ¥r? VI samsnakkes litt i
- forkant av mÃ¸tet.
+ Tore, kan du delta på det tidspunktet de foreslår? VI samsnakkes litt i
+ forkant av møtet.
  
  -torbj
  
  ----- Start Original Message -----
  Sent: Wed, 30 Sep 2009 12:54:07 +0200
- From: Kristian SkarbÃ¸ <kristian@lingit.no
+ From: Kristian Skarbø <kristian@lingit.no
  To: Torbjorn Nordgard <torbjorn@lingit.no,
  Tore Amble <toreamb@idi.ntnu.no
- Subject: [Fwd: SV: SV: Krise ang Bussorakel pÃ¥ www.team-trafikk.no]
+ Subject: [Fwd: SV: SV: Krise ang Bussorakel på www.team-trafikk.no]
  
-  Tore: Jeg har snakket med TorbjÃ¸rn om dette -- han har mer informasjon.
+  Tore: Jeg har snakket med Torbjørn om dette -- han har mer informasjon.
   
   
   -Kristian
   
   -------- Original Message --------
-  Subject: 	SV: SV: Krise ang Bussorakel pÃ¥ www.team-trafikk.no
+  Subject: 	SV: SV: Krise ang Bussorakel på www.team-trafikk.no
   Date: 	Thu, 24 Sep 2009 12:38:52 +0200
   From: 	Johanne Sundby <johanne.sundby@team-as.no
-  To: 	Kristian SkarbÃ¸ <kristian@lingit.no
+  To: 	Kristian Skarbø <kristian@lingit.no
   CC: 	Eirik Rambech-Knoff <Eirik.Rambech-Knoff@team-as.no
   
   
   
   *Hei igjen, Kristian!*
   
-  Vi Ã¸nsker oss et mÃ¸te med dere der tema er Bussorakel og stabilitet.
-  Dette med tanke pÃ¥ Ã¥ forebygge problemer for kundene vÃ¥re,
+  Vi ønsker oss et møte med dere der tema er Bussorakel og stabilitet.
+  Dette med tanke på å forebygge problemer for kundene våre,
   Da det noen ganger ikke har fungert.
   
-  Har dere mulighet Ã¥ komme til oss torsdag 8. oktober kl 12:30?
+  Har dere mulighet å komme til oss torsdag 8. oktober kl 12:30?
   
   Mvh
   *Johanne Sundby
@@ -2037,24 +2037,24 @@ On Wed, 30 Sep 2009, Torbjorn Nordgard wrote:
   Tlf 480 13 861
   *www.team-trafikk.no* <http://www.team-trafikk.no/
   
-    Trenger du Ã¥ skrive ut denne e-posten?
+    Trenger du å skrive ut denne e-posten?
   
 
   -----Opprinnelig melding-----
-  Fra: Kristian SkarbÃ¸ [mailto:kristian@lingit.no]
+  Fra: Kristian Skarbø [mailto:kristian@lingit.no]
   Sendt: 25. februar 2009 12:27
   Til: Johanne S. Bakke
   Kopi: support@lingit.no
-  Emne: Re: SV: Krise ang Bussorakel pÃ¥ www.team-trafikk.no
+  Emne: Re: SV: Krise ang Bussorakel på www.team-trafikk.no
   
   Hei,
   
-  da hÃ¥per jeg at alt skal vÃ¦re i orden, bÃ¥de pÃ¥ web og i forhold til
+  da håper jeg at alt skal være i orden, både på web og i forhold til
   trege SMS-svar :-)
   
   
-  Det ser ut til at problemet skyldtes overbelastning pÃ¥ serveren. Ã…rsaken
-  til dette skal vi se nÃ¦rmere pÃ¥.
+  Det ser ut til at problemet skyldtes overbelastning på serveren. Årsaken
+  til dette skal vi se nærmere på.
   
   
   -Kristian
@@ -2063,32 +2063,32 @@ On Wed, 30 Sep 2009, Torbjorn Nordgard wrote:
   Johanne S. Bakke wrote:
     Hei igjen, Kristian!
    
-    HÃ¸rt noe - eller funnet ut noe?
+    Hørt noe - eller funnet ut noe?
    
     Mvh Johanne :)
    
     -----Opprinnelig melding-----
-    Fra: Kristian SkarbÃ¸ [mailto:kristian@lingit.no]
+    Fra: Kristian Skarbø [mailto:kristian@lingit.no]
     Sendt: 25. februar 2009 10:54
     Til: lars.p.olstoren@gmail.com
     Kopi: Johanne S. Bakke
-    Emne: Re: Krise ang Bussorakel pÃ¥ www.team-trafikk.no
+    Emne: Re: Krise ang Bussorakel på www.team-trafikk.no
    
     Hei,
    
-    jeg forstÃ¥r det slik at du er mannen som vet hvordan Team Trafikks
+    jeg forstår det slik at du er mannen som vet hvordan Team Trafikks
   nettsted henvender seg til BussTUC-serveren. Jeg skulle gjerne hatt noen
   detaljer om dette :-)
    
-    Om mulig kunne det vÃ¦rt greit Ã¥ sett skriptet som sender
-  forespÃ¸rslene, men ellers ville jeg vÃ¦rt godt hjulpet om jeg fikk vite
-  f.eks. hvilken URL forespÃ¸rselen blir sendt til, hvordan data kodes og
+    Om mulig kunne det vært greit å sett skriptet som sender
+  forespørslene, men ellers ville jeg vært godt hjulpet om jeg fikk vite
+  f.eks. hvilken URL forespørselen blir sendt til, hvordan data kodes og
   sendes o.l.
    
    
     vennlig hilsen
    
-    Kristian SkarbÃ¸
+    Kristian Skarbø
     LingIT AS
    
    
@@ -2108,7 +2108,7 @@ On Wed, 30 Sep 2009, Torbjorn Nordgard wrote:
     Tlf 480 13 861
     *team-trafikk.no <http://www.team-trafikk.no/*
    
-     Trenger du Ã¥ skrive ut denne e-posten?
+     Trenger du å skrive ut denne e-posten?
    
    
    
@@ -2133,9 +2133,9 @@ Tore Amble skrev:
  On Mon, 5 Oct 2009, Johanne Sundby wrote:
 
  
-  Hei Tore og TorbjÃ¸rn!
+  Hei Tore og Torbjørn!
  
-  GÃ¥r det greit Ã¥ endre mÃ¸testart pÃ¥ torsdag til kl 12:00?
+  Går det greit å endre møtestart på torsdag til kl 12:00?
  
   Mvh johanne :)
  
@@ -2145,27 +2145,27 @@ Tore Amble skrev:
   Sendt: 30. september 2009 13:54
   Til: 'Tore Amble'; 'torbjorn@lingit.no'
   Kopi: Eirik Rambech-Knoff
-  Emne: SV: [Fwd: SV: SV: Krise ang Bussorakel pÃ¥ www.team-trafikk.no]
+  Emne: SV: [Fwd: SV: SV: Krise ang Bussorakel på www.team-trafikk.no]
  
-  Hei Tore og TorbjÃ¸rn!
+  Hei Tore og Torbjørn!
  
   Flott at dere kommer.
-  Det er ikke ment Ã¥ vÃ¦re noe klagemÃ¸te,
-  Men et mÃ¸te for Ã¥ forebygge ustabilitet fremover.
-  Vi opplever for Ã¸vrig at Bussorakelet generelt er veldig stabilt.
+  Det er ikke ment å være noe klagemøte,
+  Men et møte for å forebygge ustabilitet fremover.
+  Vi opplever for øvrig at Bussorakelet generelt er veldig stabilt.
  
   Velkommen :)
 
 ------------------------
 
-Ja, jeg kjÃ¸rer i dag. SÃ¥ bare kom nedom rundt den tida.
+Ja, jeg kjører i dag. Så bare kom nedom rundt den tida.
 
 -torbj
 
 Tore Amble skrev:
 
 
- Hvis du (allikevel) skal ta bil til Team idag sÃ¥ kan jeg like godt komme ned pÃ¥ Lingit i forkant, f.eks. 1130.
+ Hvis du (allikevel) skal ta bil til Team idag så kan jeg like godt komme ned på Lingit i forkant, f.eks. 1130.
 
 
 
@@ -2178,13 +2178,13 @@ Subject: SV: Irregulariteter i rutedata
 
 Hei!
 
-Turen pÃ¥ rute 3 dreide seg om en assistansetur fra ringve skole som jeg dessverre hadde glemt Ã¥ endre rutevariant pÃ¥ nÃ¥r hovedtraseen ble endret til Ã¥ gÃ¥ vi TS i
-hÃ¸st. Dette er nÃ¥ endret og pÃ¥ plass.
+Turen på rute 3 dreide seg om en assistansetur fra ringve skole som jeg dessverre hadde glemt å endre rutevariant på når hovedtraseen ble endret til å gå vi TS i
+høst. Dette er nå endret og på plass.
 
-Reppeveien holdeplass i vÃ¥rt rutehefte har beskrivelsested vikelveien n og s i hastus, noe som Nettbus Trlg benytter seg av mens Hastus kortnavn er reppev. Jeg har nÃ¥
+Reppeveien holdeplass i vårt rutehefte har beskrivelsested vikelveien n og s i hastus, noe som Nettbus Trlg benytter seg av mens Hastus kortnavn er reppev. Jeg har nå
 endret regtopnavn til Reppeveien og regtop kortnavn til Reppv
 
-Dette vil da komme inn korrekt ved neste regtopeksport og da med julerutene. Jeg kan ikke se for meg at det har noen hast med Ã¥ rette det opp fÃ¸r den tid.
+Dette vil da komme inn korrekt ved neste regtopeksport og da med julerutene. Jeg kan ikke se for meg at det har noen hast med å rette det opp før den tid.
 
 
 
@@ -2195,11 +2195,11 @@ Lars Mo
 Date: Mon, 12 Oct 2009 11:08:35 +0200
 From: Torbjorn Nordgard <torbjorn@lingit.com
 To: Tore Amble <toreamb@idi.ntnu.no
-Subject: TrÃ¸ndelag kollektivtrafikk
+Subject: Trøndelag kollektivtrafikk
 
 Tore,
 
-Kan du ta kontakt med Grete Opsal og/eller Olaf Mistfjord i TrÃ¸ndelag kollektivtrafikk og  lodde interessen for bussorakel der? Fint om de er rede til et mÃ¸te med
+Kan du ta kontakt med Grete Opsal og/eller Olaf Mistfjord i Trøndelag kollektivtrafikk og  lodde interessen for bussorakel der? Fint om de er rede til et møte med
 oss.
 
 -torbj
@@ -2209,15 +2209,15 @@ oss.
 OK.
 
 
-Vi trenger Ã¥ fÃ¥ vite om bussoraklets fremtid for Ã¥ kunne planlegge.
+Vi trenger å få vite om bussoraklets fremtid for å kunne planlegge.
 
 
-Jeg tror kanskje svaret blir at det er for tidlig Ã¥ ta noen avgjÃ¸relser,
-fordi alt er sÃ¥ usikkert mhp Team/ TKT.
+Jeg tror kanskje svaret blir at det er for tidlig å ta noen avgjørelser,
+fordi alt er så usikkert mhp Team/ TKT.
 
-Men vi kan tilkjennegi vÃ¥r klare intensjon om  Ã¥ viderefÃ¸re bussoraklet
+Men vi kan tilkjennegi vår klare intensjon om  å videreføre bussoraklet
 for  Teams busser,  og gjerne resten av TMN- sine ruter hvis det er
-Ã¸nskelig.
+ønskelig.
 
 Dette har Olaf Misfjord stilt seg positiv til tidligere.
 
@@ -2230,7 +2230,7 @@ Date: Thu, 15 Oct 2009 10:56:49 +0200
 From: Johanne Sundby <johanne.sundby@team-as.no
 To: toreamb@idi.ntnu.no
 Cc: Lars Mo <Lars.Mo@nettbuss.no, Eirik Rambech-Knoff <Eirik.Rambech-Knoff@team-as.no
-Subject: VS: Vi takker for din tilbakemelding pÃ¥ vÃ¥rt Bussorakel
+Subject: VS: Vi takker for din tilbakemelding på vårt Bussorakel
 Parts/Attachments:
    1 Shown    ~60 lines  Text
    2   OK    ~159 lines  Text
@@ -2241,34 +2241,34 @@ Hei Tore og takk for sist!
 Vi har mottatt klage fra kunde som opplevde nylig at bussorakelet ikke fungerer.
 Jeg tror han imidlertid han bare ikke ventet lenge nok.
 
-Hans erfaring nÃ¥ er at det tar mye lenger tid Ã¥ fÃ¥ svar, enn tidligere.
-Jeg opplever ogsÃ¥ at det tar lang tid Ã¥ fÃ¥ svar.
+Hans erfaring nå er at det tar mye lenger tid å få svar, enn tidligere.
+Jeg opplever også at det tar lang tid å få svar.
 
 Tror du det skyldes serveren for www.team-trafikk.no
-eller at det lÃ¸ses med en restart av server for Bussorakelet?
+eller at det løses med en restart av server for Bussorakelet?
 
 Mvh johanne :)
  ...
 
-er snakk om pÃ¥ hjemmesiden, team-trafikk.no. Men nÃ¥ fungerer det plutselig typisk nok, men det tar ca 12 sekunder Ã¥ hente et svar (bÃ¥de i opera og firefox). FÃ¸r gikk
-det pÃ¥ ca 1 sekund. Er vel kanskje naturlig Ã¥ tenke at det egentlig fungerte tidligere ogsÃ¥ da, men jeg mener jeg ventet mye lengre enn 12 sekund da uten respons. 12
+er snakk om på hjemmesiden, team-trafikk.no. Men nå fungerer det plutselig typisk nok, men det tar ca 12 sekunder å hente et svar (både i opera og firefox). Før gikk
+det på ca 1 sekund. Er vel kanskje naturlig å tenke at det egentlig fungerte tidligere også da, men jeg mener jeg ventet mye lengre enn 12 sekund da uten respons. 12
 sekund er uansett mye...
 
 mvh
 ....
 
 
-        Vi takker for din tilbakemelding pÃ¥ vÃ¥rt Bussorakel.
+        Vi takker for din tilbakemelding på vårt Bussorakel.
 
-        Det hÃ¸rtes merkelig ut.
-        SpÃ¸r du via www.team-trafikk.no, andre nettsteder, eller SMS?
+        Det hørtes merkelig ut.
+        Spør du via www.team-trafikk.no, andre nettsteder, eller SMS?
 
-        Jeg har fÃ¥tt svar i de siste dager,
-        og fÃ¥r ogsÃ¥ nÃ¥ svar fra bÃ¥de med Opera, Safari og Internet Exporer,
-        har forsÃ¸kt via bÃ¥de PC og mac,
-        samt at jeg fikk svar pÃ¥ SMS-tjenesten ogsÃ¥.
+        Jeg har fått svar i de siste dager,
+        og får også nå svar fra både med Opera, Safari og Internet Exporer,
+        har forsøkt via både PC og mac,
+        samt at jeg fikk svar på SMS-tjenesten også.
 
-        HÃ¥per Ã¥ hÃ¸re mer fra deg - for Ã¥ bidra til at dette fungerer for deg ;)
+        Håper å høre mer fra deg - for å bidra til at dette fungerer for deg ;)
 
 
         Mvh
@@ -2276,7 +2276,7 @@ mvh
 
 
         Hei,
-        er dere klar over at orakelet har vÃ¦rt lÃ¥st/nede i hvertfall godt over en uke? PrÃ¸vd fra flere steder sÃ¥ det er nok feil pÃ¥ deres side...
+        er dere klar over at orakelet har vært låst/nede i hvertfall godt over en uke? Prøvd fra flere steder så det er nok feil på deres side...
         mvh
 
 --------------
@@ -2286,13 +2286,13 @@ Date: Fri, 16 Oct 2009 09:57:36 +0200
 From: Johanne Sundby <johanne.sundby@team-as.no
 To: Tore Amble <toreamb@idi.ntnu.no
 Cc: Eirik Rambech-Knoff <Eirik.Rambech-Knoff@team-as.no
-Subject: SV: VS: Vi takker for din tilbakemelding pÃ¥ vÃ¥rt Bussorakel
+Subject: SV: VS: Vi takker for din tilbakemelding på vårt Bussorakel
 
 Takk for nyttig respons, Tore!
 
-Fint at du undersÃ¸ker.
-Jeg skal ogsÃ¥ undersÃ¸ke med serveren for www.team-trafikk.no
-da svarene kommer altfor tregt via vÃ¥r nettside.
+Fint at du undersøker.
+Jeg skal også undersøke med serveren for www.team-trafikk.no
+da svarene kommer altfor tregt via vår nettside.
 
 Mvh johanne :)
 
@@ -2303,14 +2303,14 @@ Fra: Tore Amble [mailto:toreamb@idi.ntnu.no]
 Sendt: 16. oktober 2009 09:46
 Til: Johanne Sundby
 Kopi: Lars Mo; Eirik Rambech-Knoff; torbjorn@lingit.no
-Emne: Re: VS: Vi takker for din tilbakemelding pÃ¥ vÃ¥rt Bussorakel
+Emne: Re: VS: Vi takker for din tilbakemelding på vårt Bussorakel
 
 
 
-Jeg skal undersÃ¸ke om det er noe ved vÃ¥r bussorakel-server som kan vÃ¦re Ã¥rsaken. Jeg fÃ¥r en sjelden gang lang responstid nÃ¥r jeg bruker bussoraklet direkte, altsÃ¥
-utenom Teams bussorakelside, men det kan skyldes opphopning av spÃ¸rsmÃ¥l i kÃ¸. Det hender oftere at jeg fÃ¥r lang responstid fra Team.
+Jeg skal undersøke om det er noe ved vår bussorakel-server som kan være årsaken. Jeg får en sjelden gang lang responstid når jeg bruker bussoraklet direkte, altså
+utenom Teams bussorakelside, men det kan skyldes opphopning av spørsmål i kø. Det hender oftere at jeg får lang responstid fra Team.
 
-NÃ¥ er responsen upÃ¥klagelig.
+Nå er responsen upåklagelig.
 
 ------------------------
 
@@ -2323,16 +2323,16 @@ Subject: VS: Arrive Saksnr: 65690 vedr. Haster - serveren for www.trafikk.no
 Hei Tore!
 
 Arrive, som drifter server for www.team-trafikk.no har sjekket litt mer ang at Bussorakelet fortsatt er tregt via www.team-trafikk.no.
-De forteller at ved Ã¥ spÃ¸rre  mot web-siden  til "Bussorakel" "http://busstuc.lingit.no/~tore/smstuc/"  benyttes ikke web-server hos de i det hele tatt. De har gjort
-dette og sÃ¥ langt vi kan se gir dette de samme responstider.
-De lurer pÃ¥ om leverandÃ¸ren av denne web-siden har gjort endringer eller annet som tilsier dÃ¥rligere responstider?
+De forteller at ved å spørre  mot web-siden  til "Bussorakel" "http://busstuc.lingit.no/~tore/smstuc/"  benyttes ikke web-server hos de i det hele tatt. De har gjort
+dette og så langt vi kan se gir dette de samme responstider.
+De lurer på om leverandøren av denne web-siden har gjort endringer eller annet som tilsier dårligere responstider?
 
 Ble det gjort spesielle endringer med Bussorakel eller serveren forrige uke?
 
-Responstiden pÃ¥ sprÃ¸smÃ¥l til Bussorakel er nÃ¥ ca 12 sek, mot ca 2-5 sekunder til vanlig.
-AltsÃ¥ - vi mÃ¥ finne ut av dette.
+Responstiden på sprøsmål til Bussorakel er nå ca 12 sek, mot ca 2-5 sekunder til vanlig.
+Altså - vi må finne ut av dette.
 
-Ser frem til Ã¥ hÃ¸re fra deg igjen :)
+Ser frem til å høre fra deg igjen :)
 
 Mvh
 Johanne Sundby
@@ -2356,14 +2356,14 @@ Emne: Re: VS: Arrive Saksnr: 65690 vedr. Haster - serveren for www.trafikk.no
 
 Takk for henvendelse.
 
-Jeg tror hovedÃ¥rsaken til lang responstid har med overbelastning Ã¥ gjÃ¸re, altsÃ¥ at  for mange spÃ¸rsmÃ¥l som krever lang "tenketid" kommer pÃ¥ samme tid. Det betyr at
+Jeg tror hovedårsaken til lang responstid har med overbelastning å gjøre, altså at  for mange spørsmål som krever lang "tenketid" kommer på samme tid. Det betyr at
 tester kan gi  forskjellige resulateter avhengig av belastning.
 
-Jeg har nettopp lagt inn en ny versjon som skal vÃ¦re litt raskere pÃ¥ "vanskelige spÃ¸rsmÃ¥l" og restartet serveren.
+Jeg har nettopp lagt inn en ny versjon som skal være litt raskere på "vanskelige spørsmål" og restartet serveren.
 
-Jeg har ogsÃ¥ bedt en av vÃ¥re eksperter pÃ¥ server-drift om Ã¥ analysere eventuelle problemer med driften.
+Jeg har også bedt en av våre eksperter på server-drift om å analysere eventuelle problemer med driften.
 
-Jeg er veldig  interessert i Ã¥ hÃ¸re nÃ¥r problemer oppstÃ¥r, og spesielt under hvilke omstendigheter (tidspunkt, hvorfra, andre forhold).
+Jeg er veldig  interessert i å høre når problemer oppstår, og spesielt under hvilke omstendigheter (tidspunkt, hvorfra, andre forhold).
 
 
 Her er siste statistikk.
@@ -2379,16 +2379,16 @@ Subject: SV: VS: Arrive Saksnr: 65690 vedr. Haster - serveren for www.trafikk.no
 
 Takk for ny oppdatering, Tore!
 
-ForstÃ¥r at overbelastning kan forsinke svar i noen tilfeller.
+Forstår at overbelastning kan forsinke svar i noen tilfeller.
 
-Jeg har ogsÃ¥ innsett at vÃ¥r terminalserver, der jeg oftest bruker vÃ¥rt Bussorakel, er veldig treg for tiden.
+Jeg har også innsett at vår terminalserver, der jeg oftest bruker vårt Bussorakel, er veldig treg for tiden.
 Bruker jeg en lokal browser er responstiden "bare" 3-5 sek, og mange har noe kjappere nett enn dette.
-Dermed gjÃ¸r jeg ikke noe mer nÃ¥ for Ã¥ bedre sitasjonen.
-Mne det er likevel interessant Ã¥ hÃ¸re hva deres eksperter finner ut.
+Dermed gjør jeg ikke noe mer nå for å bedre sitasjonen.
+Mne det er likevel interessant å høre hva deres eksperter finner ut.
 Gode tiltak fra deg.
 
-Vi skal rapportere til deg sÃ¥ snart vi merker avvik og problemer.
-Ser ut til at UKA-gjester er aktive brukere, og det er jo fint Ã¥ se.
+Vi skal rapportere til deg så snart vi merker avvik og problemer.
+Ser ut til at UKA-gjester er aktive brukere, og det er jo fint å se.
 
 Mvh johanne :)
 
@@ -2406,7 +2406,7 @@ Mvh johanne :)
  
   Hei,
  
-  busstuc.lingit.no bruker uvanlig mye memory. Kan dere se pÃ¥ saken?
+  busstuc.lingit.no bruker uvanlig mye memory. Kan dere se på saken?
  
   root@busstuc:~# free -m
               total       used       free     shared    buffers     cached
@@ -2431,8 +2431,8 @@ Parts/Attachments:
    2   OK    ~132 lines  Text
 ----------------------------------------
 
-SMS gir nÃ¥ svar, men 10-15 minutter responstid.
-HÃ¥per pÃ¥ snarlig respons.
+SMS gir nå svar, men 10-15 minutter responstid.
+Håper på snarlig respons.
 
 Mvh johanne :)
 
@@ -2445,16 +2445,16 @@ Kopi: Eirik Rambech-Knoff; Terje Skavland; Arve Johan Solli
 Emne: Bussorakel er ute av drift!
 
 
-Hei Tore og TorbjÃ¸rn!
+Hei Tore og Torbjørn!
 
-Bussorakelet er nÃ¥ ute av drift, bÃ¥de pÃ¥ www.team-trafikk.no og via SMS 1939.
-(Eks pÃ¥ kunderespons/klage nedenfor.)
+Bussorakelet er nå ute av drift, både på www.team-trafikk.no og via SMS 1939.
+(Eks på kunderespons/klage nedenfor.)
 
-HÃ¥per dere raskt kan bidra med Ã¥ forsÃ¸ke Ã¥ finne ut HVOR feilen ligger,
-slik at vi fÃ¥r lÃ¸st problemet.
-Feks veldig interessant Ã¥ vite om orakelet fungerer direkte til/fra orakelserver.
+Håper dere raskt kan bidra med å forsøke å finne ut HVOR feilen ligger,
+slik at vi får løst problemet.
+Feks veldig interessant å vite om orakelet fungerer direkte til/fra orakelserver.
 
-HÃ¥per Ã¥ hÃ¸re fra dere veldig kjapt!
+Håper å høre fra dere veldig kjapt!
 
 
 Mvh
@@ -2464,13 +2464,13 @@ Team Trafikk AS
 Tlf 480 13 861
 www.team-trafikk.no <http://www.team-trafikk.no/
 
-Trenger du Ã¥ skrive ut denne e-posten?
+Trenger du å skrive ut denne e-posten?
 
 
 
 ________________________________
 
-Fra: Jorunn Stokkaune PÃ¥ vegne av Firmapostkasse Team Trafikk AS
+Fra: Jorunn Stokkaune På vegne av Firmapostkasse Team Trafikk AS
 Sendt: 23. november 2009 12:39
 Til: Johanne Sundby
 Emne: VS: Bussorakel
@@ -2484,10 +2484,10 @@ Emne: Bussorakel
 
 Hei,
 
-Jeg har forsÃ¸kt Ã¥ benytte meg av buss oraklet pÃ¥ deres nettsider for Ã¥ finne fÃ¸lgende informasjon. "nÃ¥r mÃ¥ jeg ta bussen fra tunga fo Ã¥ vÃ¦re pÃ¥ heimdal kl 1230?"
-Dette er nesten nÃ¸yaktig kopi av deres eksempel spÃ¸rsmÃ¥l sÃ¥ jeg regnet med at det skulle fungere. Etter Ã¥ ha ventet i over 30 minutter uten svar kan jeg ikke annet en
-klage pÃ¥ at denne servicen ikke er tilgjengelig og at dere virkelig burde se pÃ¥ tjeneste applikkasjonene dere har og tilbyr. Jeg har ogsÃ¥ tidligere forsÃ¸kt Ã¥ benytte
-meg av SMS versjonen, noe som jeg ikke kommer til Ã¥ benytte meg av da det tok godt over 30 minutter fÃ¸r jeg fikk tilbakemelding.
+Jeg har forsøkt å benytte meg av buss oraklet på deres nettsider for å finne følgende informasjon. "når må jeg ta bussen fra tunga fo å være på heimdal kl 1230?"
+Dette er nesten nøyaktig kopi av deres eksempel spørsmål så jeg regnet med at det skulle fungere. Etter å ha ventet i over 30 minutter uten svar kan jeg ikke annet en
+klage på at denne servicen ikke er tilgjengelig og at dere virkelig burde se på tjeneste applikkasjonene dere har og tilbyr. Jeg har også tidligere forsøkt å benytte
+meg av SMS versjonen, noe som jeg ikke kommer til å benytte meg av da det tok godt over 30 minutter før jeg fikk tilbakemelding.
 
 MVH,
  NN
@@ -2505,14 +2505,14 @@ Subject: Re: Fwd: (ejTag:1511293) busstuc.lingit.no.cpu
 
 
 
- Beklager sent svar, jeg har vÃ¦rt pÃ¥ konferanse.
+ Beklager sent svar, jeg har vært på konferanse.
 
 
- Jeg vet ikke nÃ¸yktig hva som har skjedd, men jeg konstaterer at systemet
- er restartet (av hvem ?) og nÃ¥ er responstiden  momentan.
+ Jeg vet ikke nøyktig hva som har skjedd, men jeg konstaterer at systemet
+ er restartet (av hvem ?) og nå er responstiden  momentan.
 
- Jeg antar at man fÃ¥r problemer hvis BussTUC har gÃ¥tt uavbrutt i mye over
- en  mÃ¥ned. Jeg skal passe pÃ¥ at  bussoraklet blir restartet hver mÃ¥ned
+ Jeg antar at man får problemer hvis BussTUC har gått uavbrutt i mye over
+ en  måned. Jeg skal passe på at  bussoraklet blir restartet hver måned
  heretter.
 
 
@@ -2524,10 +2524,10 @@ Subject: Re: Fwd: (ejTag:1511293) busstuc.lingit.no.cpu
   -torbj
 
 
-Jeg vet ikke nÃ¸yaktig hva som hendte, men
-jeg tror denne type oppfÃ¸rsel  lettere kan oppstÃ¥ hvis bussoraklet har gÃ¥tt uavbrudt over lengre tid, dvs over en mÃ¥ned.
+Jeg vet ikke nøyaktig hva som hendte, men
+jeg tror denne type oppførsel  lettere kan oppstå hvis bussoraklet har gått uavbrudt over lengre tid, dvs over en måned.
 
-Jeg skal i fremtiden sÃ¸rge for at bussoraklet blir restartet oftere, slik at det kanskje ikke gjentar seg.
+Jeg skal i fremtiden sørge for at bussoraklet blir restartet oftere, slik at det kanskje ikke gjentar seg.
 
 
 
@@ -2536,11 +2536,11 @@ On Tue, 24 Nov 2009, Johanne Sundby wrote:
 
  Bussorakel fungerer heldigvis igjen :)
 
- Oppdaget det da jeg sjekket ca kl 19-20 igÃ¥r.
- Jeg forstÃ¥r det hjalp med noe restarting ang responstiden pÃ¥ SMS igÃ¥r.
+ Oppdaget det da jeg sjekket ca kl 19-20 igår.
+ Jeg forstår det hjalp med noe restarting ang responstiden på SMS igår.
 
- Noen som forstÃ¥r noe hvorfor Bussorakelet ikke fungerte,
- eller hvorfor det begynte Ã¥ fungere igjen?
+ Noen som forstår noe hvorfor Bussorakelet ikke fungerte,
+ eller hvorfor det begynte å fungere igjen?
 
  Mvh johanne :)
 
@@ -2565,9 +2565,9 @@ Kopi: Torbjorn Nordgard; Eirik Rambech-Knoff
 Emne: Re: VS: Bussorakel er ute av drift!
 
 
-Jeg vet ikke nÃ¸yaktig hva som hendte, men jeg tror denne type oppfÃ¸rsel  lettere kan oppstÃ¥ hvis bussoraklet har gÃ¥tt uavbrudt over lengre tid, dvs over en mÃ¥ned.
+Jeg vet ikke nøyaktig hva som hendte, men jeg tror denne type oppførsel  lettere kan oppstå hvis bussoraklet har gått uavbrudt over lengre tid, dvs over en måned.
 
-Jeg skal i fremtiden sÃ¸rge for at bussoraklet blir restartet oftere, slik at det kanskje ikke gjentar seg.
+Jeg skal i fremtiden sørge for at bussoraklet blir restartet oftere, slik at det kanskje ikke gjentar seg.
 
 
 Date: Fri, 27 Nov 2009 09:21:01 +0100
@@ -2579,8 +2579,8 @@ Subject: VS: feil i team-trafikks bussorakel
 
 Hei Tore og Lars!
 
-Er dette dere forstÃ¥r`?
-Jeg kan ogsÃ¥ se at det kommer feil svar.
+Er dette dere forstår`?
+Jeg kan også se at det kommer feil svar.
 
 Mvh johanne :)
 
@@ -2593,12 +2593,12 @@ Sendt: 27. november 2009 07:23
 Til: Firmapostkasse Team Trafikk AS
 Emne: feil i team-trafikks bussorakel
 
-Ville bare gjÃ¸re dere oppmerksom pÃ¥ at bussorakelet og busstidene til buss
+Ville bare gjøre dere oppmerksom på at bussorakelet og busstidene til buss
 nr 20 valentinlyst-dronningens gate er feil. Det er da bussorakelet og ikke
 busskartet som er feil.
 
-Har ikke sjekket alle steder det er feil. men hvis dere sÃ¸ker etter "nÃ¥r gÃ¥r
-bussen fra tyholttÃ¥rnet kl 2000" vil dere ikke fÃ¥ riktig svar
+Har ikke sjekket alle steder det er feil. men hvis dere søker etter "når går
+bussen fra tyholttårnet kl 2000" vil dere ikke få riktig svar
 
 Mvh Anders Colberg
 
@@ -2611,16 +2611,16 @@ Cc: Eirik Rambech-Knoff <Eirik.Rambech-Knoff@team-as.no, Johanne Sundby <johanne
 Subject: SV: VS: feil i team-trafikks bussorakel
 
 Hei
-Her er det skjedd ett eller annet jeg ikke har fÃ¥tt tak pÃ¥ noen fornuftig forklaring pÃ¥ enda i forhold til varianten med kjÃ¸retider pÃ¥
+Her er det skjedd ett eller annet jeg ikke har fått tak på noen fornuftig forklaring på enda i forhold til varianten med kjøretider på
 kveldsavgangene.
-Jeg sjekka utskrevne vognlÃ¸p fra august der vi har den korrekte avgangstid fra valentinlyst 20:27 Dvs 4 minutter reguleringstid fÃ¸r avgang Val. til
+Jeg sjekka utskrevne vognløp fra august der vi har den korrekte avgangstid fra valentinlyst 20:27 Dvs 4 minutter reguleringstid før avgang Val. til
 sentrum og dette stemmer med ruteheftet
-Den varianten som nÃ¥ av en eller annen merkelig grunn ligger inne har avgangstid 20:23 og da altsÃ¥ med 0 min regulering pÃ¥ Valentinlyst.
+Den varianten som nå av en eller annen merkelig grunn ligger inne har avgangstid 20:23 og da altså med 0 min regulering på Valentinlyst.
 
-Jeg skal rette dette nÃ¥ i full fart og sende korigert regtop.
+Jeg skal rette dette nå i full fart og sende korigert regtop.
 
-Regtop for jula er ogsÃ¥ snart ferdig og vil bli oversendt i lÃ¸pet av neste uke. AngÃ¥ende ekstraavganger rute 10 skistua for vinteren skal disse
-settes inn fra 16 januarog jeg vil da sende ny regtop over nyttÃ¥r der disse turene er inkludert.
+Regtop for jula er også snart ferdig og vil bli oversendt i løpet av neste uke. Angående ekstraavganger rute 10 skistua for vinteren skal disse
+settes inn fra 16 januarog jeg vil da sende ny regtop over nyttår der disse turene er inkludert.
 
 
 Date: Sun, 29 Nov 2009 12:38:19 +0100 (MET)
@@ -2633,7 +2633,7 @@ Subject: Re: SV: VS: feil i team-trafikks bussorakel
 
 Ny versjon er lagt inn
 
-( Jeg er usikker pÃ¥ hva du mener med
+( Jeg er usikker på hva du mener med
 
 "Her er oppdaterte og riktige filer som er i drift frem til 15/12-2010"
                                                             **********
@@ -2647,7 +2647,7 @@ To: Tore Amble <toreamb@idi.ntnu.no
 Subject: SV: SV: VS: feil i team-trafikks bussorakel
 
 Beklager,
-SelfÃ¸lgelig skal det vÃ¦re 15/1-2010
+Selfølgelig skal det være 15/1-2010
 
 
 Mvh
@@ -2662,11 +2662,11 @@ Subject: SV: Jula 2009
 
 Hei,
 
-2/1 er en lÃ¸rdag med lÃ¸rdagskjÃ¸ring mens 1/1 er en fredagg med sÃ¸ndagskjÃ¸ring.
+2/1 er en lørdag med lørdagskjøring mens 1/1 er en fredagg med søndagskjøring.
 
-Natt til 2/1 skal vi kjÃ¸re nattbuss og nattbuss natt til lÃ¸rdag lÃ¥ tidligere inn pÃ¥ fredag kl 25 - 26 og 27
-Siden 1/1 er sÃ¸mdagskjÃ¸ring mangla nattbussen og jeg la den inn pÃ¥ lÃ¸rdag kl 01 - 02 og 03 for Ã¥ fÃ¥ den mesd i billettmaskinene. Slik at dersom nattbuss skal vÃ¦re
-sÃ¸kbar i bussorakelet lÃ¸rdag 2/1-2010 gÃ¥r jeg ut fra at du ogsÃ¥ ma ta med den lÃ¸rdagen der?
+Natt til 2/1 skal vi kjøre nattbuss og nattbuss natt til lørdag lå tidligere inn på fredag kl 25 - 26 og 27
+Siden 1/1 er sømdagskjøring mangla nattbussen og jeg la den inn på lørdag kl 01 - 02 og 03 for å få den mesd i billettmaskinene. Slik at dersom nattbuss skal være
+søkbar i bussorakelet lørdag 2/1-2010 går jeg ut fra at du også ma ta med den lørdagen der?
 
 
 Mvh
@@ -2682,11 +2682,11 @@ Emne: Re: Jula 2009
 
 Juleruter er lagt inn i bussoraklet.
 
-Jeg ser i ettertid at jeg har  satt gyldighet 24/12 - 2009 til 1/1-2010 , som kanskje ikke er riktig, men for Ã¥ vÃ¦re helt sikker:
+Jeg ser i ettertid at jeg har  satt gyldighet 24/12 - 2009 til 1/1-2010 , som kanskje ikke er riktig, men for å være helt sikker:
 
 Er rutene 2/1-2010 forskjellig fra vinterrutene, og i tilfelle hva er forskjellen.
 
-Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
+¤¤¤¤¤¤¤¤
 
 
 On Wed, 9 Dec 2009, Torbjorn Nordgard wrote:
@@ -2709,7 +2709,7 @@ On Wed, 9 Dec 2009, Torbjorn Nordgard wrote:
  
   Dette er ikke det ferdige utkastet, bare et forslag.
  
-  Har du forslag til endringer/ stÃ¸rrelse/ vinkling ?
+  Har du forslag til endringer/ størrelse/ vinkling ?
  
  
 
@@ -2718,9 +2718,9 @@ Utmerket.
 
 Det er en liten brekasjefeil i 1.avsnitt
 
-      , i dette spÃ¸rsmÃ¥l om ruteopplysning
+      , i dette spørsmål om ruteopplysning
 
-skal vÃ¦re
+skal være
 
       , i dette tilfelle ruteopplysning.
 
@@ -2730,13 +2730,13 @@ Dessuten skrives det alternativt  "bussorakelet" og "bussoraklet".
 
 Det siste er vel korrekt.
 
-Si fra nÃ¥r resulatet er lagt inn pÃ¥ nett.
+Si fra når resulatet er lagt inn på nett.
 
 
 
 PS.
 
-Takk for i gÃ¥r.
+Takk for i går.
 
 
 
@@ -2745,7 +2745,7 @@ wrote:
 
  Hei
 
- Har omsider fÃ¥tt sett over, vedlagt en komprimering som kan passe pÃ¥ vÃ¥re hjemmesider, tror jeg. Hva tror du?
+ Har omsider fått sett over, vedlagt en komprimering som kan passe på våre hjemmesider, tror jeg. Hva tror du?
 
  -torbj
 
@@ -2760,7 +2760,7 @@ Web:  http://www.idi.ntnu.no/~toreamb
 
 %%%%%
 
-Ja, den som starter en dialog pÃ¥ den mÃ¥ten, fortjener ikke noe bedre svar.  :-)
+Ja, den som starter en dialog på den måten, fortjener ikke noe bedre svar.  :-)
 
 Lars
 
@@ -2768,7 +2768,7 @@ Lars
 
 Tore Amble wrote:
 
- Jeg skulle akkurat til Ã¥ sende denne, som er et eksempel fra Rondane  korpuset.
+ Jeg skulle akkurat til å sende denne, som er et eksempel fra Rondane  korpuset.
 
  Jeg sender den allikevel :-)
 
@@ -2776,11 +2776,11 @@ Tore Amble wrote:
 Date: Wed, 6 Jan 2010 12:33:47 +0100
 From: Lars Mo <lars.mo@team-as.no
 
-Hei og godt nyttÃ¥r!
+Hei og godt nyttår!
 
 Her kommer nye komplette regtopdata for Team Trafikk gyldige for perioden fom 11/1 tom 18/4
 
-Endringene bestÃ¥r av noen ekstra avganger pÃ¥ rute 10 Skistua kun pÃ¥ lÃ¸rdager og sÃ¸ndager i denne vinterperioden.
+Endringene består av noen ekstra avganger på rute 10 Skistua kun på lørdager og søndager i denne vinterperioden.
 
 Date 
 From TA
@@ -2795,9 +2795,9 @@ Emne: Re: Regtop 11/01-2010 -18/4-2010
 
 Rutene er lagt inn i bussoraklet.
 
-Jeg observerer at pÃ¥skerutene ikke er lagt inn selv om pÃ¥sken ligger innenfor denne perioden.
+Jeg observerer at påskerutene ikke er lagt inn selv om påsken ligger innenfor denne perioden.
 
-(Jeg har "blokkert" ut pÃ¥sketiden inntil videre).
+(Jeg har "blokkert" ut påsketiden inntil videre).
 
 
 Statistikk siden forrige restart
@@ -2810,7 +2810,7 @@ Cc: Johanne Sundby <johanne.sundby@team-as.no
 Subject: SV: Regtop 11/01-2010 -18/4-2010
 
 Det er riktig,
-Selve pÃ¥skeperioden vil lages i en egen pakke og oversendt nÃ¥r den er klar
+Selve påskeperioden vil lages i en egen pakke og oversendt når den er klar
 
 Mvh
 Lars
@@ -2819,38 +2819,38 @@ Lars
 To      : torbjorn@lingit.no
 Cc      :
 Attchmnt:
-Subject : Nytt  MÃ¸te med STFK om Bussoraklet  (utsettes)
+Subject : Nytt  Møte med STFK om Bussoraklet  (utsettes)
 ----- Message Text -----
 
 
-IfÃ¸lge avtale  skulle vi ha et mÃ¸te om bussoraklet og TKF onsdag 27.1 kl
+Ifølge avtale  skulle vi ha et møte om bussoraklet og TKF onsdag 27.1 kl
 0900-1000 (i nye lokaler i Olavs gate 1).
 
-NÃ¥ er jeg imidlertid i Ã˜stersund den dagen, sÃ¥ jeg foreslÃ¥r Ã¥ utsette  mÃ¸tet,
+Nå er jeg imidlertid i Østersund den dagen, så jeg foreslår å utsette  møtet,
 
 f. eks til onsdag 3. 2 kl 0900-1000.
 
-Si fra nÃ¥r det ikke passer, sÃ¥ kan jeg gÃ¥ videre med saken.
+Si fra når det ikke passer, så kan jeg gå videre med saken.
 
 PS.
 
-Jeg har kikket pÃ¥ GoogleMaps og gjort meg noen tanker, men det er ikke
+Jeg har kikket på GoogleMaps og gjort meg noen tanker, men det er ikke
 laget noe demo.
 
 
-Subject : Ang. mÃ¸te med Lingit om Bussoraklet
+Subject : Ang. møte med Lingit om Bussoraklet
 ----- Message Text -----
 
 
-Det er ifÃ¸lge avtale planlagt et mÃ¸te onsdag den 27.1 2010 0900-1000 i
-Olavs gate 1 om Bussoraklet. Desverre er jeg bortreist til utlandet pÃ¥ den
-tiden, sÃ¥ jeg foreslÃ¥r at mÃ¸tet utsettes en uke.
+Det er ifølge avtale planlagt et møte onsdag den 27.1 2010 0900-1000 i
+Olavs gate 1 om Bussoraklet. Desverre er jeg bortreist til utlandet på den
+tiden, så jeg foreslår at møtet utsettes en uke.
 
-Jeg kan foreslÃ¥ Ã¥ mÃ¸tes
+Jeg kan foreslå å møtes
 
   onsdag 3. februar kl 0900-1000
 
-Si fra om det ikke passer, og  foreslÃ¥ evt. et annet (senere) tidspunkt.
+Si fra om det ikke passer, og  foreslå evt. et annet (senere) tidspunkt.
 
 
 
@@ -2867,9 +2867,9 @@ On Wed, 13 Jan 2010, Alexander Nossum wrote:
 
  Spennende!
 
- Jeg skal prÃ¸ve Ã¥ fÃ¥ reddet informasjonen og fÃ¥ igang demoen. Jeg kan ogsÃ¥
- prÃ¸ve Ã¥ fikse litt pÃ¥ systemet for Ã¥ luke vekk de kraftigste bugs'ene. Han
- andre som var med pÃ¥ prosjektet jobber nÃ¥ i Geomatikk AS som
+ Jeg skal prøve å få reddet informasjonen og få igang demoen. Jeg kan også
+ prøve å fikse litt på systemet for å luke vekk de kraftigste bugs'ene. Han
+ andre som var med på prosjektet jobber nå i Geomatikk AS som
  softwarekonsulent. Kanskje de kan ta en del av jobben hvis det blir snakk om
  fullutvikling.
 
@@ -2888,20 +2888,20 @@ On Wed, 13 Jan 2010, Alexander Nossum wrote:
  Kjempefint.
 
 
- Saken er den at bussoraklet  vil overfÃ¸res fra Team trafikk til det nytt
- selskap TKF (TrÃ¸ndelag kollektiv trafikk), i forbindelse med en omlegging
+ Saken er den at bussoraklet  vil overføres fra Team trafikk til det nytt
+ selskap TKF (Trøndelag kollektiv trafikk), i forbindelse med en omlegging
  av kollektiv-trafikken i Trondheim. (Team-trafikk vil i prinsippet bli et
  rent bussdrifts-selskap, mens TKF overtar ansvar for ruteopplysning).
 
- PÃ¥ et mÃ¸te i november mellom Lingit A/S og TKF kom det fram  et Ã¸nske om Ã¥
- kople Google-maps til bussoraklet (pÃ¥ en eller annen mÃ¥te).
+ På et møte i november mellom Lingit A/S og TKF kom det fram  et ønske om å
+ kople Google-maps til bussoraklet (på en eller annen måte).
 
- Vi skal ha et nytt mÃ¸te 3. februar, og da ville det passe glimrende om vi
+ Vi skal ha et nytt møte 3. februar, og da ville det passe glimrende om vi
  kunne vise en demo.
 
- Du kan regne med Ã¥ fÃ¥ betaling for det arbeidet du legger ned i denne
- demoen. Hvis det blir interesse for Ã¥ gÃ¥ videre, kan det bli mer ut av
- det. Jeg kommer selvfÃ¸lgelig til Ã¥ bistÃ¥ pÃ¥ alle mulige mÃ¥ter for at det
+ Du kan regne med å få betaling for det arbeidet du legger ned i denne
+ demoen. Hvis det blir interesse for å gå videre, kan det bli mer ut av
+ det. Jeg kommer selvfølgelig til å bistå på alle mulige måter for at det
  skal bli et vellykket resultat.
 
 
@@ -2915,16 +2915,16 @@ On Wed, 13 Jan 2010, Alexander Nossum wrote:
 
  Hei!
 
- Prosjektet gikk forsÃ¥vidt bra! Det var kun en proof-of-concept vi lagde,
+ Prosjektet gikk forsåvidt bra! Det var kun en proof-of-concept vi lagde,
  men
- den fungerte bra. Dessverre sÃ¥ krasjet serveren dette stod pÃ¥ sÃ¥ jeg er
+ den fungerte bra. Dessverre så krasjet serveren dette stod på så jeg er
  igang
- med Ã¥ redde informasjonen som lÃ¥ der. Jeg hÃ¥per Ã¥ fÃ¥ reddet dette Ã¥ fÃ¥
+ med å redde informasjonen som lå der. Jeg håper å få reddet dette å få
  igang
  systemet igjen.
 
  Det vi lagde var nettopp en kopling av bussorakelet til Google maps. Mer
- presist sÃ¥ lagde vi et kart-interface til bussorakelet, slik at
+ presist så lagde vi et kart-interface til bussorakelet, slik at
  bussorakelet
  ble mer "klikke-vennlig". Jeg tror potensialet for dette er stort -
  spesielt
@@ -2963,8 +2963,8 @@ Parts/Attachments:
 
 Hei!
 
-Jeg sÃ¸kte med orakelet pÃ¥ rute 82 og jeg greier heller ikke fÃ¥ opplysninger om denne ruta.
-Har sjekka de tabellene jeg har laga regtop fra og der ligger turene pÃ¥ rute 82 inne.
+Jeg søkte med orakelet på rute 82 og jeg greier heller ikke få opplysninger om denne ruta.
+Har sjekka de tabellene jeg har laga regtop fra og der ligger turene på rute 82 inne.
 
 Kan du sjekke dette i orakelet?
 
@@ -2984,10 +2984,10 @@ Emne: VS: Buss Orakelet
 
 Hei Lars!
 
-En kunde har problemer med Ã¥ finne rute 82 i vÃ¥rt Bussorakel, det samme har jeg.
+En kunde har problemer med å finne rute 82 i vårt Bussorakel, det samme har jeg.
 
 Finnes den?
-Ellers skulle den vel vÃ¦rt lagt inn?
+Ellers skulle den vel vært lagt inn?
 
 Mvh
 Johanne Sundby
@@ -2996,13 +2996,13 @@ Team Trafikk AS
 Tlf 480 13 861
 www.team-trafikk.no <http://www.team-trafikk.no/
 
-Trenger du Ã¥ skrive ut denne e-posten?
+Trenger du å skrive ut denne e-posten?
 
 
 
 ________________________________
 
-Fra: Jorunn Stokkaune PÃ¥ vegne av Firmapostkasse Team Trafikk AS
+Fra: Jorunn Stokkaune På vegne av Firmapostkasse Team Trafikk AS
 Sendt: 18. januar 2010 09:50
 Til: Eirik Rambech-Knoff
 Kopi: Team Trafikk Ledergruppe; Johanne Sundby
@@ -3021,7 +3021,7 @@ Emne: Re: Buss Orakelet
 
 Hei
 
-Ser ut som hele eller deler av ruta til buss nr 82 mangler i Buss rakelet pÃ¥ nettsidene deres. Dere bÃ¸r dobbeltsjekke dette, og eventuelt gjÃ¸re noe med det snarest
+Ser ut som hele eller deler av ruta til buss nr 82 mangler i Buss rakelet på nettsidene deres. Dere bør dobbeltsjekke dette, og eventuelt gjøre noe med det snarest
 mulig.
 
 Ingvild
@@ -3030,8 +3030,8 @@ Ingvild
 2009/7/15 Ingvild Borgen <ingvbo@gmail.com
 
 
-        Ser ut som om hele eller deler av ruta til buss nr 5 mangler i Buss Orakelet pÃ¥ nettsidene deres. Dette skjedde da dere byttet til sommerruter. Dere bÃ¸r
-dobbeltsjekke dette, og eventuelt gjÃ¸re noe med det snarest mulig.
+        Ser ut som om hele eller deler av ruta til buss nr 5 mangler i Buss Orakelet på nettsidene deres. Dette skjedde da dere byttet til sommerruter. Dere bør
+dobbeltsjekke dette, og eventuelt gjøre noe med det snarest mulig.
 
 
  ate: Thu, 21 Jan 2010 16:19:42 +0100
@@ -3040,9 +3040,9 @@ To: Tore Amble <toreamb@idi.ntnu.no
 Cc: Eirik Rambech-Knoff <Eirik.Rambech-Knoff@team-as.no, Johanne Sundby <johanne.sundby@team-as.no
 Subject: SV: VS: Buss Orakelet
 
-Ser det fungerer dersom man spÃ¸r pÃ¥ i morgen.
-Er det mulig Ã¥ fÃ¥ oraklet til Ã¥ forstÃ¥ kunden spÃ¸rr pÃ¥ neste dag dersom det ikke er flerer avganger samme dag?
-Dersom kunde for eksempel spÃ¸r om neste avgang bÃ¸r svaret vÃ¦re fÃ¸rsta avgang neste dag?
+Ser det fungerer dersom man spør på i morgen.
+Er det mulig å få oraklet til å forstå kunden spørr på neste dag dersom det ikke er flerer avganger samme dag?
+Dersom kunde for eksempel spør om neste avgang bør svaret være førsta avgang neste dag?
 
 
 Lars
@@ -3056,41 +3056,41 @@ Emne: Re: VS: Buss Orakelet
 
 
 
-Buss 82 gÃ¥r bare tidlig pÃ¥ morgenen. Kan det vÃ¦re forklaringen ?
+Buss 82 går bare tidlig på morgenen. Kan det være forklaringen ?
 
 
 
 Velkommen til Bussorakelet
-SpÃ¸rsmÃ¥l :
-buss 82 fra dalgÃ¥rd til stavsetveien
+Spørsmål :
+buss 82 fra dalgård til stavsetveien
 
 
 --------------------------------------------------------------------------------
-Jeg kan ikke finne flere ruteforbindelser pÃ¥ torsdag .
+Jeg kan ikke finne flere ruteforbindelser på torsdag .
 
 
 
-SpÃ¸rsmÃ¥l :
-buss 82 fra dalgÃ¥rd til stavsetveien i morgen.
+Spørsmål :
+buss 82 fra dalgård til stavsetveien i morgen.
 
 
 --------------------------------------------------------------------------------
 22. Jan. 2010 er en fredag .
 For denne dato gjelder Team vinterruter .
-FÃ¸rste buss , nummer 82 passerer DalgÃ¥rd kl. 0730 og kommer til Stavsetveien kl. 0732 .
-Siste buss , nummer 82 passerer DalgÃ¥rd kl. 0730 og kommer til Stavsetveien kl. 0732 .
+Første buss , nummer 82 passerer Dalgård kl. 0730 og kommer til Stavsetveien kl. 0732 .
+Siste buss , nummer 82 passerer Dalgård kl. 0730 og kommer til Stavsetveien kl. 0732 .
 
 Tidene angir tidligste passeringer av holdeplassene.
 
 
-Jeg skal tenke pÃ¥ det, men det er ikke sÃ¥ enkelt.
+Jeg skal tenke på det, men det er ikke så enkelt.
 
-For eksempel,  dersom man spÃ¸r kl 23 pÃ¥ kvelden,
-og fÃ¥r beskjed om det ikke gÃ¥r flere ruter, sÃ¥ er virker det dumt
-Ã¥ fÃ¥ opplysning om at det gÃ¥r en buss neste morgen.
+For eksempel,  dersom man spør kl 23 på kvelden,
+og får beskjed om det ikke går flere ruter, så er virker det dumt
+å få opplysning om at det går en buss neste morgen.
 
-En mulighet er Ã¥ opplyse nÃ¥r siste buss gikk dersom det ikke er flere
-ruteforbindelser den dagen. Men slik bussoraklet er nÃ¥, krever dette
+En mulighet er å opplyse når siste buss gikk dersom det ikke er flere
+ruteforbindelser den dagen. Men slik bussoraklet er nå, krever dette
 egentlig to bussrute-oppslag :
 
    ett  der man ekskluderer avganger i fortid
@@ -3100,9 +3100,9 @@ egentlig to bussrute-oppslag :
 
 On Thu, 21 Jan 2010, Lars Mo wrote:
 
- Ser det fungerer dersom man spÃ¸r pÃ¥ i morgen.
- Er det mulig Ã¥ fÃ¥ oraklet til Ã¥ forstÃ¥ kunden spÃ¸rr pÃ¥ neste dag dersom det ikke er flerer avganger samme dag?
- Dersom kunde for eksempel spÃ¸r om neste avgang bÃ¸r svaret vÃ¦re fÃ¸rsta avgang neste dag?
+ Ser det fungerer dersom man spør på i morgen.
+ Er det mulig å få oraklet til å forstå kunden spørr på neste dag dersom det ikke er flerer avganger samme dag?
+ Dersom kunde for eksempel spør om neste avgang bør svaret være førsta avgang neste dag?
 
 
  Lars
@@ -3111,34 +3111,34 @@ On Thu, 21 Jan 2010, Lars Mo wrote:
 
 Date: Tue, 26 Jan 2010 09:30:51 +0100
 From: Johanne Sundby <johanne.sundby@team-as.no
-To: Runar Valheim VÃ¦rnes <runarvv@online.no
+To: Runar Valheim Værnes <runarvv@online.no
 Cc: Eirik Rambech-Knoff <Eirik.Rambech-Knoff@team-as.no, toreamb@idi.ntnu.no, torbjorn@lingit.no
-Subject: SV: SV: bussorakelet pÃ¥ nettsidene virker ikke
+Subject: SV: SV: bussorakelet på nettsidene virker ikke
 
 Hei Runar!
 
-Fint Ã¥ hÃ¸re at Bussorakelet fungerer igjen hos deg oxo.
+Fint å høre at Bussorakelet fungerer igjen hos deg oxo.
 
-Vi forsÃ¸ker Ã¥ fÃ¸lge med Ã¥ ta grep om det skjer noe,
-men supert om du sier fra om du har noe pÃ¥ hjertet pÃ¥ bussorakelet
-eller annet pÃ¥ www.team-trafikk.no
+Vi forsøker å følge med å ta grep om det skjer noe,
+men supert om du sier fra om du har noe på hjertet på bussorakelet
+eller annet på www.team-trafikk.no
 Ha en bra dag!
 
 Mvh johanne :)
 
 
 -----Opprinnelig melding-----
-Fra: Runar Valheim VÃ¦rnes [mailto:runarvv@online.no]
+Fra: Runar Valheim Værnes [mailto:runarvv@online.no]
 Sendt: 25. januar 2010 21:57
 Til: Johanne Sundby
-Emne: Re: SV: bussorakelet pÃ¥ nettsidene virker ikke
+Emne: Re: SV: bussorakelet på nettsidene virker ikke
 
-Det fungerer nÃ¥, har vÃ¦rt borte hele dagen. Tenkte det var greit Ã¥ si fra:)
+Det fungerer nå, har vært borte hele dagen. Tenkte det var greit å si fra:)
 
 Jeg liker bussorakelfunksjonen godt.
 
 mvh
-Runar V VÃ¦rnes
+Runar V Værnes
 
 
 Den 25. jan. 2010 kl. 12.07 skrev Johanne Sundby:
@@ -3146,15 +3146,15 @@ Den 25. jan. 2010 kl. 12.07 skrev Johanne Sundby:
 
  Hei Runar!
 
- Tusen takk for din henvendelse om vÃ¥rt Bussorakel.
+ Tusen takk for din henvendelse om vårt Bussorakel.
 
  Mottok nylig din epost.
- Alt ser ut til Ã¥ fungere her nÃ¥.
- GjÃ¸r det det hos deg ogsÃ¥ - eller er det fortsatt ikke svar Ã¥ fÃ¥?
+ Alt ser ut til å fungere her nå.
+ Gjør det det hos deg også - eller er det fortsatt ikke svar å få?
 
- Mulig det gÃ¥r tregere enn vanlig...
+ Mulig det går tregere enn vanlig...
 
- Setter veldig stor pris pÃ¥ respons.
+ Setter veldig stor pris på respons.
  Kom gjerne tilbake igjen om det er noe feil.
 
  Mvh
@@ -3165,24 +3165,24 @@ Den 25. jan. 2010 kl. 12.07 skrev Johanne Sundby:
  www.team-trafikk.no
 
 
- Trenger du Ã¥ skrive ut denne e-posten?
+ Trenger du å skrive ut denne e-posten?
 
 
 
 
 
  -----Opprinnelig melding-----
- Fra: Runar Valheim VÃ¦rnes [mailto:runarvv@online.no]
+ Fra: Runar Valheim Værnes [mailto:runarvv@online.no]
  Sendt: 25. januar 2010 08:10
  Til: Firmapostkasse Team Trafikk AS
- Emne: bussorakelet pÃ¥ nettsidene virker ikke
+ Emne: bussorakelet på nettsidene virker ikke
 
  Hei,
 
- Bussorakelet pÃ¥ nettsidene virker ikke nÃ¥. Ville bare si fra:)
+ Bussorakelet på nettsidene virker ikke nå. Ville bare si fra:)
 
  mvh
- Runar Valheim VÃ¦rnes
+ Runar Valheim Værnes
  97520042
 
 
@@ -3203,9 +3203,9 @@ Parts/Attachments:
 
 Hei!
 
-Her er vÃ¥re regtopdata for kjÃ¸ringa i pÃ¥skeuka tom 2.pÃ¥skedag
-Fra 6/4-2010 gÃ¥r vi tilbake til gammelt sett.
-Nye data for resten av vÃ¥ren frem til sommerrutene regner jeg med vil bli oversendt i uke 14
+Her er våre regtopdata for kjøringa i påskeuka tom 2.påskedag
+Fra 6/4-2010 går vi tilbake til gammelt sett.
+Nye data for resten av våren frem til sommerrutene regner jeg med vil bli oversendt i uke 14
 
 Lars Mo
 Trafikkplanlegger
@@ -3213,7 +3213,7 @@ Team Trafikk AS
 Tlf: +47 480 13 829
 www.Team-trafikk.no <http://www.team-trafikk.no/
 Post: Pb 2912 Sluppen, 7438 Trondheim
-BesÃ¸k: Sorgenfriveien 7
+Besøk: Sorgenfriveien 7
 
 ----------------------------------------------------------------------------------------------
 te: Thu, 4 Feb 2010 13:46:41 +0100
@@ -3226,7 +3226,7 @@ Parts/Attachments:
 ----------------------------------------
 
 Hei!
-Kan du se pÃ¥ denne?
+Kan du se på denne?
 
 
 Fra: Edgar Skaug Nilsen [mailto:edgarsn@online.no]
@@ -3235,23 +3235,23 @@ Til: Johanne Sundby
 Emne: Buss oraklet
 
 
-Vil bare informere om at det er feil i buss oraklet. Gata Tiedemannsgaten er pÃ¥ Singsaker og nÃ¦rmeste holdeplass blir HÃ¸yskoleringen eller Gudes gate pÃ¥ linje 63...
+Vil bare informere om at det er feil i buss oraklet. Gata Tiedemannsgaten er på Singsaker og nærmeste holdeplass blir Høyskoleringen eller Gudes gate på linje 63...
 
 
-Hadde en passasjer som var mindre fornÃ¸yd her en dag nÃ¥r jeg kjÃ¸rte linje 5 til Dragvoll  og han hadde fÃ¥tt opplyst at Gryta var nÃ¦rmeste holdeplass og han mÃ¥tte vÃ¦re
+Hadde en passasjer som var mindre fornøyd her en dag når jeg kjørte linje 5 til Dragvoll  og han hadde fått opplyst at Gryta var nærmeste holdeplass og han måtte være
 med ned til byen igjen.
 
 
-Her ser du hva som kommer opp nÃ¥r det sÃ¸kes pÃ¥ denne gaten
+Her ser du hva som kommer opp når det søkes på denne gaten
 
 
 Velkommen til Bussorakelet
 
-SpÃ¸rsmÃ¥l :
+Spørsmål :
 
 ________________________________
 
-Holdeplassen nÃ¦rmest Tiedemanns gate er Gryta .
+Holdeplassen nærmest Tiedemanns gate er Gryta .
 Buss 5 passerer Dronningens gate, holdeplass D3 kl. 1417 og kl. 1425
 og kommer til Gryta , 14 minutter senere .
 Buss 9 passerer Munkegata holdeplass M5 kl. 1423
@@ -3275,13 +3275,13 @@ Subject: Re: VS: Buss oraklet
 
 Feilen er rettet. Den skyldes en feil opplysning som vi fikk fra Trondheim Trafikkselskap i sin tid.
 
-Vil bli riktig nÃ¥r pÃ¥skerutene blir lagt inn.
+Vil bli riktig når påskerutene blir lagt inn.
 
 
 N: til Tiedemands gate.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Holdeplassen nÃ¦rmest Tidemands gate er  Gudes gate .
+Holdeplassen nærmest Tidemands gate er  Gudes gate .
 Buss 63 passerer  Munkegata holdeplass M3 kl.  1545 , kl.  1615 og  kl.   1645
 og  kommer til  Gudes gate ,  18 minutter senere .
 
@@ -3300,8 +3300,8 @@ Parts/Attachments:
 
 Hei Tore!
 
-Har du noen god forklaring pÃ¥ denne?
-Evt kjenner til om det er enkelt Ã¥ rette opp hvis dette er en fil?
+Har du noen god forklaring på denne?
+Evt kjenner til om det er enkelt å rette opp hvis dette er en fil?
 
 Mvh
 Johanne Sundby
@@ -3310,7 +3310,7 @@ Team Trafikk AS
 Tlf 480 13 861
 www.team-trafikk.no <http://www.team-trafikk.no/
 
-Trenger du Ã¥ skrive ut denne e-posten?
+Trenger du å skrive ut denne e-posten?
 
 
 ________________________________
@@ -3321,9 +3321,9 @@ Til: Firmapostkasse Team Trafikk AS
 Emne: Feil i orakel
 
 
-Jeg har kommet for sent til bussen 2 ganger nÃ¥ fra HÃ¸yset ved Ã¥ bruke bussorakelet pÃ¥ deres
+Jeg har kommet for sent til bussen 2 ganger nå fra Høyset ved å bruke bussorakelet på deres
 nettsider. Det viser seg at bussrutene og orakelet ikke er synkronisert for denne ruten. Den
-sier bussen gÃ¥r 7:37 fra hÃ¸yset mens den egentlig gÃ¥r 7:31.
+sier bussen går 7:37 fra høyset mens den egentlig går 7:31.
 
 
 Mvh
@@ -3338,10 +3338,10 @@ To: Tore Amble <toreamb@idi.ntnu.no
 Subject: SV: VS: Feil i orakel (fwd)
 
 Dette gjelder en assistansebuss/dublering rute 36 som starter fra Stokkhaugen.
-Siden det er innlagt reguleringstid/stÃ¥tid pÃ¥ Stokkhaugen pÃ¥ 5 minutter i denne varianten har det i Hastus-dataene og ogsÃ¥ regtoppeksporten kommet til 5 minutter
-stÃ¥tid fÃ¸r avgang noe som selvsagt er feil siden denne bussen skal ha avgang pÃ¥ innlagte tidspunk.
-Assistansebusser/dubleringer behÃ¸ver uansett ikke ligge sÃ¸kbare siden det gÃ¥r en hovedavgang som er riktig og den kan sÃ¥ledes bare slettes fra systemet.
-Jeg skal forsÃ¸ke skjerpe inn at disse ass/ dubleringene ikke kommer med i eksporter i fremtiden.
+Siden det er innlagt reguleringstid/ståtid på Stokkhaugen på 5 minutter i denne varianten har det i Hastus-dataene og også regtoppeksporten kommet til 5 minutter
+ståtid før avgang noe som selvsagt er feil siden denne bussen skal ha avgang på innlagte tidspunk.
+Assistansebusser/dubleringer behøver uansett ikke ligge søkbare siden det går en hovedavgang som er riktig og den kan således bare slettes fra systemet.
+Jeg skal forsøke skjerpe inn at disse ass/ dubleringene ikke kommer med i eksporter i fremtiden.
 
 
 Mvh
@@ -3354,7 +3354,7 @@ Til: Lars Mo
 Emne: Re: VS: Feil i orakel (fwd)
 
 
-Jeg spÃ¸r deg for sikkerhets skyld om du kan sjekke om det er feil i rutedata, som beskrevet under, eller ikke.
+Jeg spør deg for sikkerhets skyld om du kan sjekke om det er feil i rutedata, som beskrevet under, eller ikke.
 
 
 
@@ -3367,33 +3367,33 @@ Cc: Lars Mo <Lars.Mo@nettbuss.no,
 Subject: Re: VS: Feil i orakel
 
 
-Jeg etterprÃ¸vet denne forespÃ¸rselen:
+Jeg etterprøvet denne forespørselen:
 
 --------------------------------------------
-N: fra HÃ¸yset til sentrum etter kl 7:31 .
+N: fra Høyset til sentrum etter kl 7:31 .
 
 Jeg antar du mener ruter for i morgen.
 4. Mar. 2010 er en  torsdag .
 For denne dato gjelder Team vinterruter .
-Buss 36 passerer  HÃ¸iset kl.  0732 og  kl.  0737
+Buss 36 passerer  Høiset kl.  0732 og  kl.  0737
 og  kommer til  Munkegata holdeplass M4 ,  23 minutter senere .
-Buss 66 passerer  HÃ¸iset kl.  0744
+Buss 66 passerer  Høiset kl.  0744
 og  kommer til  Munkegata holdeplass M3 ,  43 minutter senere .
 
 Tidene angir tidligste passeringer av holdeplassene.
 -----------------------------------------------------
 
 
-IfÃ¸lge rutedata er det 2 avganger med buss 36:
+Ifølge rutedata er det 2 avganger med buss 36:
 
-   Linje 36 Turnr 1848 fra Munkegata M4 kl 0700 ankommer HÃ¸iset kl 0732
-   Linje 36 Turnr 2775 fra Stokkhaugen  kl 0730 ankommer HÃ¸iset kl 0737
+   Linje 36 Turnr 1848 fra Munkegata M4 kl 0700 ankommer Høiset kl 0732
+   Linje 36 Turnr 2775 fra Stokkhaugen  kl 0730 ankommer Høiset kl 0737
 
-Hvis det er slik at bussturen som passerer HÃ¸iset kl 0737 ikke
-ankommer, sÃ¥ er det noe feil med rutedata som vi har fÃ¥tt fra Team.
+Hvis det er slik at bussturen som passerer Høiset kl 0737 ikke
+ankommer, så er det noe feil med rutedata som vi har fått fra Team.
 
-(For den sakens skyld virker det pÃ¥fallende at det er kun 1 avgang med
-buss 36 fra Stokkhaugen (turnr 2775), alle Ã¸vrige er fra Munkegata M4)
+(For den sakens skyld virker det påfallende at det er kun 1 avgang med
+buss 36 fra Stokkhaugen (turnr 2775), alle øvrige er fra Munkegata M4)
 
 
 mvh
@@ -3404,50 +3404,50 @@ Tore Amble
 Date: Wed, 24 Mar 2010 11:40:25 +0100
 From: Torbjorn Nordgard <torbjorn@lingit.com
 To: Tore Amble <toreamb@idi.ntnu.no
-Subject: Re: Bussorakel pÃ¥ SMS kan vÃ¦re litt ustabil 24. mars kl 1112.
+Subject: Re: Bussorakel på SMS kan være litt ustabil 24. mars kl 1112.
 
 Tore Amble skrev:
 
- Denne meldingen kom opp pÃ¥ Team nettside.
+ Denne meldingen kom opp på Team nettside.
 
- Det virker som en kontrollert affÃ¦re, men er det
- en uttesting vi gjÃ¸r ?
-
-
+ Det virker som en kontrollert affære, men er det
+ en uttesting vi gjør ?
 
 
- Bussorakel pÃ¥ SMS
- Bussorakel pÃ¥ SMS kan vÃ¦re litt ustabil
+
+
+ Bussorakel på SMS
+ Bussorakel på SMS kan være litt ustabil
  24. mars kl 1112. Les mer Nyhetsarkiv
 
 
 
-Sjekker at PayEX virker nÃ¥r vi flytter serveren opp i skyen.
+Sjekker at PayEX virker når vi flytter serveren opp i skyen.
 
 -torbj
 
 Date: Fri, 9 Apr 2010 11:17:45 +0200 (MEST)
 From: Tore Amble <toreamb@idi.ntnu.no
 To: Martin Thorsen Ranang <mtr@ranang.org
-Cc: "[utf-8] TorbjÃ¸rn NordgÃ¥rd" <torbjorn@lingit.com
+Cc: "[utf-8] Torbjørn Nordgård" <torbjorn@lingit.com
 Subject: Re: BussTUC
 
 
 
 
 
-Jeg tenkte Ã¥ si fra at nye rutene som ligger inne nÃ¥ gÃ¥r ut 18/4.
+Jeg tenkte å si fra at nye rutene som ligger inne nå går ut 18/4.
 
-Det betyr at nÃ¥r jeg snart fÃ¥r tilsendt nye ruter, sÃ¥ mÃ¥ jeg legge dem inn pÃ¥ rett sted, og helst bare ett sted ( 79.125.17.150).
+Det betyr at når jeg snart får tilsendt nye ruter, så må jeg legge dem inn på rett sted, og helst bare ett sted ( 79.125.17.150).
 
-Da mÃ¥ jeg kunne loge meg inn der, men...
+Da må jeg kunne loge meg inn der, men...
 
 
 furu% ssh tore@79.125.17.150
 Permission denied (publickey).
 
 
-Jeg antar at innleggelse av ruter pÃ¥ den nye serveren er lik den gamle.
+Jeg antar at innleggelse av ruter på den nye serveren er lik den gamle.
 
 
 
@@ -3458,30 +3458,30 @@ On Tue, 30 Mar 2010, Martin Thorsen Ranang wrote:
 
   Hei.
  
-  Jeg tenkte bare Ã¥ si i fra at jeg nÃ¥ er pÃ¥ saken vedrÃ¸rende BussTUC og
-  SMS-grensesnittet.  Etter samtale med TorbjÃ¸rn har vi besluttet at nÃ¥r
-  vi fÃ¸rst har denne nedetiden, benytter jeg den for Ã¥ teste om vi fÃ¥r
-  dette til Ã¥ fungere med den Amazon-lokaliserte tjeneren.
+  Jeg tenkte bare å si i fra at jeg nå er på saken vedrørende BussTUC og
+  SMS-grensesnittet.  Etter samtale med Torbjørn har vi besluttet at når
+  vi først har denne nedetiden, benytter jeg den for å teste om vi får
+  dette til å fungere med den Amazon-lokaliserte tjeneren.
 
  Hei igjen.
 
- Da har jeg fÃ¥tt korrigert noen mindre detaljer (encoding), og det er for
- Ã¸yeblikket tjeneren hos Amazon Elastic Cloud Computing (EC2) med IP-adresse
- 79.125.17.150 som leverer svar pÃ¥ SMS-spÃ¸rsmÃ¥l.
+ Da har jeg fått korrigert noen mindre detaljer (encoding), og det er for
+ øyeblikket tjeneren hos Amazon Elastic Cloud Computing (EC2) med IP-adresse
+ 79.125.17.150 som leverer svar på SMS-spørsmål.
 
  Fordi PayEx satt opp sin konfigurasjon med ovennevnte IP-nummer, og
- ingen endringer er gjort i DNS-konfigurasjonen, er situasjonen nÃ¥:
+ ingen endringer er gjort i DNS-konfigurasjonen, er situasjonen nå:
 
-  - SMS hÃ¥ndteres av 79.125.17.150; og
+  - SMS håndteres av 79.125.17.150; og
 
-  - Web (inkludert Team Trafikk sitt Web-grensesnitt) hÃ¥ndteres av
+  - Web (inkludert Team Trafikk sitt Web-grensesnitt) håndteres av
     busstuc.lingit.no (som fremdeles peker til tjeneren hos Ventelo).
 
- Det gjenstÃ¥r litt testing av Amazon-tjeneren: sjekke at logrotasjonen
- fungerer godt og stabilt, fÃ¥ pÃ¥ plass statistikk-genereringen, etc.
- Dette skal jeg drÃ¸fte med TorbjÃ¸rn straks.
+ Det gjenstår litt testing av Amazon-tjeneren: sjekke at logrotasjonen
+ fungerer godt og stabilt, få på plass statistikk-genereringen, etc.
+ Dette skal jeg drøfte med Torbjørn straks.
 
-  Ellers fÃ¥r dere begge ha en flott pÃ¥ske!
+  Ellers får dere begge ha en flott påske!
 
 
 
@@ -3505,9 +3505,9 @@ Subject: Re: BussTUC
 
 Hei
 
-ForelÃ¸pig bruker vi to servere, den i skyen og den gamle.
+Foreløpig bruker vi to servere, den i skyen og den gamle.
 
-Jeg foreslÃ¥r at jeg i dag mellom kl 12 og 14 endrer i DNS slik at bare serveren hos St. Peter er operativ. Gir beskjed til dere nÃ¥r jeg har meldt inn endringen.
+Jeg foreslår at jeg i dag mellom kl 12 og 14 endrer i DNS slik at bare serveren hos St. Peter er operativ. Gir beskjed til dere når jeg har meldt inn endringen.
 
 -torbj
 
@@ -3521,10 +3521,10 @@ PINE 4.64   MESSAGE TEXT                                                        
 Date: Mon, 12 Apr 2010 14:32:11 +0200 (MEST)
 From: Tore Amble <toreamb@idi.ntnu.no
 To: lars.mo@team-as.no
-Subject: Feil i nattbussrutene for pÃ¥sken ?
+Subject: Feil i nattbussrutene for påsken ?
 
 
-Jeg ser i ettertid at avganger for nattbussen i pÃ¥skeuken er
+Jeg ser i ettertid at avganger for nattbussen i påskeuken er
 misvisende i rutedata.
 
 Eksempelvis:
@@ -3534,8 +3534,8 @@ N:   nattbuss  til risvollan den 2.4 .
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 2. Apr. 2010 er en  fredag .
-For denne dato gjelder Team pÃ¥skeruter.
-Holdeplassen nÃ¦rmest Risvollan er  Risvollan senter .
+For denne dato gjelder Team påskeruter.
+Holdeplassen nærmest Risvollan er  Risvollan senter .
 Nattbuss  188 passerer  Olav Tryggvasons gate kl.  0100 , kl.  0200  og kl.  0300
 og  kommer til  Risvollan senter ,  23 minutter senere .
 
@@ -3543,14 +3543,14 @@ Tidene angir tidligste passeringer av holdeplassene.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Dette skyldes at rutedata inneholder fÃ¸lgende avganger
+Dette skyldes at rutedata inneholder følgende avganger
 
              Linje   TurNr      Tid Dagkode
 
-departureday(bus_188_2305,56537,100,2).     To Fr SÃ¸
+departureday(bus_188_2305,56537,100,2).     To Fr Sø
 departureday(bus_188_2315,56537,200,2).
 departureday(bus_188_2325,56537,300,2).
-departureday(bus_188_3804,56537,100,3).     LÃ¸
+departureday(bus_188_3804,56537,100,3).     Lø
 departureday(bus_188_3813,56537,100,3).
 departureday(bus_188_3837,56537,200,3).
 departureday(bus_188_3845,56537,200,3).
@@ -3558,19 +3558,19 @@ departureday(bus_188_3850,56537,300,3).
 departureday(bus_188_3867,56537,300,3).
 
 
-Dagkoder  for ruteperiode r1613_100329 er som fÃ¸lger
+Dagkoder  for ruteperiode r1613_100329 er som følger
 
 
 1:  Ma Ti On
 
-2:  To Fr SÃ¸
+2:  To Fr Sø
 
-3:  LÃ¸
+3:  Lø
 
-Det stÃ¥r  altsÃ¥ at nattbuss 188 gÃ¥r natt til Torsdag, Fredag og SÃ¸ndag i pÃ¥skeuken.
+Det står  altså at nattbuss 188 går natt til Torsdag, Fredag og Søndag i påskeuken.
 
-Det fremgÃ¥r heller ikke at nattbussene ikke gikk natt til LÃ¸rdag slik det
-var meldt pÃ¥ hjemmesidene.
+Det fremgår heller ikke at nattbussene ikke gikk natt til Lørdag slik det
+var meldt på hjemmesidene.
 
 
 
@@ -3587,7 +3587,7 @@ Web:  http://www.idi.ntnu.no/~toreamb
 
 
 
-.... mÃ¥ vente litt ...
+.... må vente litt ...
 
 -torbj
 
@@ -3595,10 +3595,10 @@ Torbjorn Nordgard skrev:
 
  Hei
 
- ForelÃ¸pig bruker vi to servere, den i skyen og den gamle.
+ Foreløpig bruker vi to servere, den i skyen og den gamle.
 
- Jeg foreslÃ¥r at jeg i dag mellom kl 12 og 14 endrer i DNS slik at bare serveren hos St. Peter er operativ. Gir
- beskjed til dere nÃ¥r jeg har meldt inn endringen.
+ Jeg foreslår at jeg i dag mellom kl 12 og 14 endrer i DNS slik at bare serveren hos St. Peter er operativ. Gir
+ beskjed til dere når jeg har meldt inn endringen.
 
  -torbj
 
@@ -3612,7 +3612,7 @@ ate: Mon, 12 Apr 2010 22:41:42 +0200
 From: Lars Mo <lars.mo@team-as.no
 To: Christel Reinertsen NRI <christel@reiseinfo.no, Gunn K Skaug TMN <gunn@tmn.no,
     Reidun Nordhammer TMN <reidun.nordhammer@tmn.no, Tore Amble  Bussorakelet <toreamb@idi.ntnu.no
-Subject: rutedata vÃ¥r 2010
+Subject: rutedata vår 2010
 Parts/Attachments:
    1.1 Shown    ~22 lines  Text
    1.2   OK     ~52 lines  Text
@@ -3622,30 +3622,30 @@ Parts/Attachments:
    5            4.8 MB     Application, "r1615.tda"
 ----------------------------------------
 
-Her kommer rutedata for Team Trafikk vÃ¥r vÃ¥ren 2010 inkl rÃ¸dagene.
+Her kommer rutedata for Team Trafikk vår våren 2010 inkl rødagene.
 
-Gyldighetsdato er fom lÃ¸rdag 17/4 tom sÃ¸ndag 20/6
+Gyldighetsdato er fom lørdag 17/4 tom søndag 20/6
 
-Ã…rsaken til oppstart fom lÃ¸rdag er at ekstraavgangene pÃ¥ helg i vinterperioden rute 10 til og fra skistua er tatt ut
+Årsaken til oppstart fom lørdag er at ekstraavgangene på helg i vinterperioden rute 10 til og fra skistua er tatt ut
 fra 17/4
 
 
 Date: Mon, 12 Apr 2010 17:05:48 +0200
 From: Lars Mo <lars.mo@team-as.no
 To: Tore Amble <toreamb@idi.ntnu.no
-Subject: SV: Feil i nattbussrutene for pÃ¥sken ?
+Subject: SV: Feil i nattbussrutene for påsken ?
 
 Hei
 
-Regner med dette er fordi natbussene ligger pÃ¥ tidligmorgenen pÃ¥ dager definert som sÃ¸ndag og lÃ¸rdag og derfor ligger
-med ogsÃ¥ pÃ¥ dager vi har sÃ¸ndagskjÃ¸ring men ikke kjÃ¸rer natbuss
-Dette mÃ¥ jeg vel lÃ¸se med Ã¥ lage egne samletabeller for  kristi himmelfart og 2. pinsedag som ogsÃ¥ er definert som
-sÃ¸ndager ellers blir nattbuss ogsÃ¥ med natt til disse dager.
+Regner med dette er fordi natbussene ligger på tidligmorgenen på dager definert som søndag og lørdag og derfor ligger
+med også på dager vi har søndagskjøring men ikke kjører natbuss
+Dette må jeg vel løse med å lage egne samletabeller for  kristi himmelfart og 2. pinsedag som også er definert som
+søndager ellers blir nattbuss også med natt til disse dager.
 
-Takk for at du fant dette slik at jeg kan rette opp nÃ¥ pÃ¥ vÃ¥ren.
+Takk for at du fant dette slik at jeg kan rette opp nå på våren.
 
 
- Sender nye filer straks dette er ordnet der ogsÃ¥ ekstrakjÃ¸ring vinter pÃ¥ rute 10 er tatt ut.
+ Sender nye filer straks dette er ordnet der også ekstrakjøring vinter på rute 10 er tatt ut.
 
 Mvh
 Lars
@@ -3674,7 +3674,7 @@ Team Trafikk AS
 Tlf 480 13 861
 www.team-trafikk.no
 
-Trenger du Ã¥ skrive ut denne e-posten?
+Trenger du å skrive ut denne e-posten?
 
 
 
@@ -3685,11 +3685,11 @@ Sendt: 14. april 2010 12:20
 Til: Johanne Sundby
 Emne: Vedr. SV: Orakelet
 
-Igjen kommer det merkelige svar nÃ¥r jeg spÃ¸r. Sender ved et bilde av skjermen der jeg viser bÃ¥de mitt spÃ¸rsmÃ¥l og orakelets svar. Dette var andre forsÃ¸k. Jeg ville
-egentlig til byen fÃ¸r 19.00, men da mÃ¥tte jeg bytte til rute 46 (husker ikke hvor). Men bussen da ogsÃ¥ kom frem 18.07. Dette selv om det gÃ¥r en buss helt til Lade
+Igjen kommer det merkelige svar når jeg spør. Sender ved et bilde av skjermen der jeg viser både mitt spørsmål og orakelets svar. Dette var andre forsøk. Jeg ville
+egentlig til byen før 19.00, men da måtte jeg bytte til rute 46 (husker ikke hvor). Men bussen da også kom frem 18.07. Dette selv om det går en buss helt til Lade
 18.08 fra Sjetnemarka.
 
-Jeg mÃ¥ legge til at jeg bruker orakelet mye og nÃ¥r det fungerer, sÃ¥ er det en utmerket tjeneste. Jeg flyttet ogsÃ¥ nylig fra ByÃ¥sen (linje 5) og der var det aldri
+Jeg må legge til at jeg bruker orakelet mye og når det fungerer, så er det en utmerket tjeneste. Jeg flyttet også nylig fra Byåsen (linje 5) og der var det aldri
 slike problemer.
 
 Sofie Sunde Lykkmarka 2 B 7081 Sjetnemarka
@@ -3703,23 +3703,23 @@ Sofie Sunde Lykkmarka 2 B 7081 Sjetnemarka
  Dato: Fredag 9. april 2010 09.40
  Hei Sofie!
 
- Tusen takk for din henvendelse om Bussorakelet pÃ¥ www.team-trafikk.no
- og om skjerminformasjon. Vi setter stor pris pÃ¥ responsen!
+ Tusen takk for din henvendelse om Bussorakelet på www.team-trafikk.no
+ og om skjerminformasjon. Vi setter stor pris på responsen!
 
  Jeg mottok nettopp eposten fra deg,
  Kastet meg rundt og sjekket ut.
  Det rare er at jeg fikk andre svar enn deg.
- Dette tyder vel pÃ¥ at det var noe merkelig ustabilitet da du spurte i
- gÃ¥r, Og at alt er i orden i dag, i alle fall etter hva jeg kan se.
+ Dette tyder vel på at det var noe merkelig ustabilitet da du spurte i
+ går, Og at alt er i orden i dag, i alle fall etter hva jeg kan se.
 
- Vi hÃ¸rer veldig gjerne fra deg igjen,
- Supert om du spÃ¸r Bussorakel en gang til og ser om du da fÃ¥r gode
+ Vi hører veldig gjerne fra deg igjen,
+ Supert om du spør Bussorakel en gang til og ser om du da får gode
  eller merkelige svar.
- PÃ¥ forhÃ¥nd takk!
+ På forhånd takk!
 
- Ang skjermene pÃ¥ sentralstasjonen
+ Ang skjermene på sentralstasjonen
  har jeg videreformidlet spm til Trafikanten Midt-Norge som er
- ansvarlige der, Og venter pÃ¥ respons.
+ ansvarlige der, Og venter på respons.
 
 
  Mvh
@@ -3742,27 +3742,27 @@ Sofie Sunde Lykkmarka 2 B 7081 Sjetnemarka
 
  Hei
 
- Det er noe rart med orakelet deres i dag. Skal sjekke ruten for Ã¥
- komme meg til AsbjÃ¸rnsens gate fra Sjetnemarka, men tidene og
- overgangene er helt tullete. Nesten-direkteruten gÃ¥r ikke, sÃ¥ jeg
- sjekker buss til Samfundet, da mÃ¥ jeg via Prinsen kinosenter og gÃ¥
- over pÃ¥ buss der for Ã¥ komme til Samfundet. Vel, sÃ¥ skriver jeg til
- kinosenteret, nei, da mÃ¥ jeg ta bussen til Samfundet og bytte buss
- her. SÃ¥ skriver jeg til sentrum og her er svaret: "Buss 3 gÃ¥r fra
- Lykkmarka kl. 1736 til Tempe kirke kl. 1750 og buss 20 gÃ¥r fra
+ Det er noe rart med orakelet deres i dag. Skal sjekke ruten for å
+ komme meg til Asbjørnsens gate fra Sjetnemarka, men tidene og
+ overgangene er helt tullete. Nesten-direkteruten går ikke, så jeg
+ sjekker buss til Samfundet, da må jeg via Prinsen kinosenter og gå
+ over på buss der for å komme til Samfundet. Vel, så skriver jeg til
+ kinosenteret, nei, da må jeg ta bussen til Samfundet og bytte buss
+ her. Så skriver jeg til sentrum og her er svaret: "Buss 3 går fra
+ Lykkmarka kl. 1736 til Tempe kirke kl. 1750 og buss 20 går fra
  Lerkendal stadion kl. 1818 til Dronningens gate, holdeplass D4 kl.
- 1825" Jeg vil bare til AsbjÃ¸rnsens gate fÃ¸r eller like etter 19.30 og
- om jeg bruker rutene, sÃ¥ skulle det gÃ¥ greit, men dette er helt
- sprÃ¸tt.
+ 1825" Jeg vil bare til Asbjørnsens gate før eller like etter 19.30 og
+ om jeg bruker rutene, så skulle det gå greit, men dette er helt
+ sprøtt.
 
- Vil bare gjÃ¸re dere oppmerksom pÃ¥ denne feilen.
+ Vil bare gjøre dere oppmerksom på denne feilen.
 
  En annen ting: Jeg tar ofte 3'eren fra Jernbanestasjonen.
- Av en eller annen merkelig grunn stÃ¥r ikke 3E-rutene oppfÃ¸rt pÃ¥
- skjermen. Det bÃ¸r dere gjÃ¸re noe med. Har tatt 3E flere ganger derfra
- siden det stÃ¥r i ruten. Halve tiden er det forresten ikke mulig Ã¥ se
- teksten pÃ¥ skjermen. Jeg tror mange hadde satt pris pÃ¥ at ogsÃ¥ de
- tidene sto pÃ¥ en (flat-)skjerm inne i gangen.
+ Av en eller annen merkelig grunn står ikke 3E-rutene oppført på
+ skjermen. Det bør dere gjøre noe med. Har tatt 3E flere ganger derfra
+ siden det står i ruten. Halve tiden er det forresten ikke mulig å se
+ teksten på skjermen. Jeg tror mange hadde satt pris på at også de
+ tidene sto på en (flat-)skjerm inne i gangen.
 
 
  Sofie Sunde Sjetnemarka
@@ -3805,31 +3805,31 @@ Subject: Oraklet
 Parts/Attachments:
   
 
-Mulig Ã¥ endre?:
+Mulig å endre?:
 
 *       Font
-*       FontstÃ¸rrelser
+*       Fontstørrelser
 *       Bakgrunnsfarge
 *       Tekst fra "eksempler og nedover"
-*       Mulig Ã¥ omdefinere "omrÃ¥der" ? Eks byÃ¥sen peker mot byÃ¥sensentret. Dvs rute 5 kommer ikke med.
+*       Mulig å omdefinere "områder" ? Eks byåsen peker mot byåsensentret. Dvs rute 5 kommer ikke med.
 
 --- 
  
 
-FontstÃ¸rrelser pog bakgrunnsfarger bestemmes av WEB-grenesnittet som betjener bussoraklet. De kan forandres i
-samarbeid med dem som har ansvaret for WEB-design pÃ¥ AtB's hjemmside.
+Fontstørrelser pog bakgrunnsfarger bestemmes av WEB-grenesnittet som betjener bussoraklet. De kan forandres i
+samarbeid med dem som har ansvaret for WEB-design på AtB's hjemmside.
 
-Tekst fra "eksempler og nedover" er ferdig tekst som Team-trafikk har lagt inn pÃ¥ WEB-siden, helt uavhengig av
-bussoraklet. Her stÃ¥r det fritt for AtB Ã¥ skrive det som er hensiktsmessig.
+Tekst fra "eksempler og nedover" er ferdig tekst som Team-trafikk har lagt inn på WEB-siden, helt uavhengig av
+bussoraklet. Her står det fritt for AtB å skrive det som er hensiktsmessig.
 
-NÃ¥r det gjelder omdefinering av omrÃ¥der er det flere muligheter.
-OmrÃ¥der kan gjÃ¸res avhengig av buss, som i eksemplet nedenfor.
+Når det gjelder omdefinering av områder er det flere muligheter.
+Områder kan gjøres avhengig av buss, som i eksemplet nedenfor.
 
-Dersom buss ikke oppgis kan man fÃ¥ melding om at stedsnavnet er flertydig.
+Dersom buss ikke oppgis kan man få melding om at stedsnavnet er flertydig.
 
-Se eksempler nedenfor som er implementert i vÃ¥r forsÃ¸ksversjon.
+Se eksempler nedenfor som er implementert i vår forsøksversjon.
 
-Dette kan gjÃ¸res mer avansert etter Ã¸nske,
+Dette kan gjøres mer avansert etter ønske,
 
 ---------------------------------------------------
 
@@ -3837,19 +3837,19 @@ Date: Fri, 23 Apr 2010 10:13:20 +0200 (MEST)
 From: Tore Amble <toreamb@idi.ntnu.no
 To: mtr@ranang.org
 
-Er bÃ¥de WEB og SMS lagt opp pÃ¥ skyen ?
+Er både WEB og SMS lagt opp på skyen ?
 
-Jeg ville gjerne logge meg inn pÃ¥ Amazon-maskinen og sjekke loggen.
+Jeg ville gjerne logge meg inn på Amazon-maskinen og sjekke loggen.
 
 Jeg hadde i sin tid en liten snutt ./Fastlog som dumpet de ca 400 siste
-forespÃ¸rslene fra loggen. Da kunne jeg se om alt sto bra til.
-Denne fins ikke pÃ¥ Amazon lenger, og jeg vet ikke hvor web-loggen ligger.
+forespørslene fra loggen. Da kunne jeg se om alt sto bra til.
+Denne fins ikke på Amazon lenger, og jeg vet ikke hvor web-loggen ligger.
 
-Jeg ser at de filene jeg brukte for Ã¥ stoppe/starte/save/kopiere/
-ikke ligger der nÃ¥. Det kan vÃ¦re like greitt inntil jeg fÃ¥r nye instrukser.
+Jeg ser at de filene jeg brukte for å stoppe/starte/save/kopiere/
+ikke ligger der nå. Det kan være like greitt inntil jeg får nye instrukser.
 
-Jeg fÃ¥r ikke logget meg inn pÃ¥ busstuc.lingit.no pga
-forandret host key, sÃ¥ jeg fÃ¥r ikke sjekket ./Fastlog her.
+Jeg får ikke logget meg inn på busstuc.lingit.no pga
+forandret host key, så jeg får ikke sjekket ./Fastlog her.
 
 
 ---
@@ -3865,13 +3865,13 @@ Parts/Attachments:
 ----------------------------------------
 
 
-Jeg har laget (for hÃ¥nd) en liste over navn utenfor Trondheim som noen en gang har spurt om ruter til. Se vedlegg.
+Jeg har laget (for hånd) en liste over navn utenfor Trondheim som noen en gang har spurt om ruter til. Se vedlegg.
 
-Jeg har tenkt, men ikke orket, Ã¥ legge inn, for hvert sted, URL
+Jeg har tenkt, men ikke orket, å legge inn, for hvert sted, URL
 til de ruteselskap som betjener dette stedet.
 
 De URLer som er TUC-sertifisert (f.eks. Team.trafikk) kan bare videresende
-spÃ¸rsmÃ¥let, og fÃ¥ direkte svar.
+spørsmålet, og få direkte svar.
 
 
 
@@ -3879,13 +3879,13 @@ From: Lars Mo <lars.mo@team-as.no
 To: Tore Amble  Bussorakelet <toreamb@idi.ntnu.no
 Subject: VS: Feilmelding i forhold til bussoraklet
 
- SkjÃ¸nner du noe av dette?
+ Skjønner du noe av dette?
 
 Mvh
 Lars
 
 -----Opprinnelig melding-----
-Fra: BjÃ¸rn Holm 
+Fra: Bjørn Holm 
 Sendt: 20. mai 2010 08:04
 Til: Johanne Sundby; Lars Mo
 Emne: VS: Feilmelding i forhold til bussoraklet
@@ -3893,9 +3893,9 @@ Emne: VS: Feilmelding i forhold til bussoraklet
  
 
 -----Opprinnelig melding-----
-Fra: Jorunn Stokkaune PÃ¥ vegne av Firmapostkasse Team Trafikk AS
+Fra: Jorunn Stokkaune På vegne av Firmapostkasse Team Trafikk AS
 Sendt: 19. mai 2010 14:01
-Til: BjÃ¸rn Holm
+Til: Bjørn Holm
 Kopi: Eirik Rambech-Knoff
 Emne: VS: Feilmelding i forhold til bussoraklet
 
@@ -3908,24 +3908,24 @@ Til: Firmapostkasse Team Trafikk AS
 Emne: Feilmelding i forhold til bussoraklet
 
 
-VI bor i Trolla og tar buss fra Brukseier Olsens vei 50. NÃ¥r vi sÃ¸ker pÃ¥ busser fra det busstoppet (NÃ¥r gÃ¥r bussen fra
+VI bor i Trolla og tar buss fra Brukseier Olsens vei 50. Når vi søker på busser fra det busstoppet (Når går bussen fra
 brukseier olsens vei 50 til
-sentrum?) blir det opplyst at "Holdeplassen nÃ¦rmest Brukseier Olsens veg 50 er Brukseier Olsens vei . Buss 75 passerer
+sentrum?) blir det opplyst at "Holdeplassen nærmest Brukseier Olsens veg 50 er Brukseier Olsens vei . Buss 75 passerer
 Brukseier Olsens vei kl. 
 1451 , kl. 1641 og kl. 1836 og kommer til Munkegata holdeplass M4 , 11 minutter senere ."
 
-Bruker vi buss-stoppet rett oppe i bakken, Trollahaugen 64 (NÃ¥r gÃ¥r bussen fra trollahaugen 64 til sentrum?), fÃ¥r vi
+Bruker vi buss-stoppet rett oppe i bakken, Trollahaugen 64 (Når går bussen fra trollahaugen 64 til sentrum?), får vi
 riktige svar: "Buss 11 passerer TROLLAHAUGEN 64 kl. 1345 , kl. 1430 og kl. 1500 og kommer til Munkegata holdeplass M5 ,
 15 minutter senere .
 
 Jeg har en mistanke om at det er det at det er mange ord i Brukseier Olsensvei-stoppet, samt at det er flere stopp med
-forskjellig husnummer som forvirrer (selv om ogsÃ¥ Trollahugen har flere husnummer-stopp).
+forskjellig husnummer som forvirrer (selv om også Trollahugen har flere husnummer-stopp).
 
 
 
-Jeg er ikke lokalkjent i omrÃ¥det.
+Jeg er ikke lokalkjent i området.
 
-Det svaret som ble gitt er i fÃ¸lge de opplysninger som er gitt av Team-trafikk, og antakelig  tilfredstillende, om enn
+Det svaret som ble gitt er i følge de opplysninger som er gitt av Team-trafikk, og antakelig  tilfredstillende, om enn
 uventet.
 
 Vedlagt parafrase av tabellinformasjon for kopling gateadresse/holdeplass.
@@ -3954,10 +3954,10 @@ Til: Johanne Sundby
 Emne: Re: VS: Feilmelding i forhold til bussoraklet (fwd)
 
 
-Jeg har allerede svart pÃ¥ denne mailen til Lars Mo.
+Jeg har allerede svart på denne mailen til Lars Mo.
 
-Basert pÃ¥ de opplysninger jeg har fÃ¥tt fra Team er det neppe feil i bussoraklet (som sÃ¥dan) , men hvis noen
-lokalkjente personer kan pÃ¥vise feil i tilknytningen mellom gateadresser og holdeplasser, sÃ¥ korrigerer jeg
+Basert på de opplysninger jeg har fått fra Team er det neppe feil i bussoraklet (som sådan) , men hvis noen
+lokalkjente personer kan påvise feil i tilknytningen mellom gateadresser og holdeplasser, så korrigerer jeg
 gjerne det.
 
 
@@ -3970,9 +3970,9 @@ Subject: Re: VS: Feilmelding i forhold til bussoraklet
 
 
 
-Jeg er ikke lokalkjent i omrÃ¥det.
+Jeg er ikke lokalkjent i området.
 
-Det svaret som ble gitt er i fÃ¸lge de opplysninger som er gitt av Team-trafikk, og antakelig  tilfredstillende,
+Det svaret som ble gitt er i følge de opplysninger som er gitt av Team-trafikk, og antakelig  tilfredstillende,
 om enn uventet.
 
 Vedlagt parafrase av tabellinformasjon for kopling gateadresse/holdeplass.
@@ -3980,57 +3980,57 @@ Hvis det er feil her kan de rettes ved en pssende anledning.
 
 %% TA-100909
 
-Hei. Hva har skjedd med bussorakelet? NÃ¥r man sender
-melding fra mobiltelefon vil man gjerne slippe Ã¥ skrive
+Hei. Hva har skjedd med bussorakelet? Når man sender
+melding fra mobiltelefon vil man gjerne slippe å skrive
 fulle setninger, og derfor er det fint at orakelet
-alltid har godtatt forespÃ¸rsler som: "neste sentrum
+alltid har godtatt forespørsler som: "neste sentrum
 nardo" Da gir den deg neste buss fra sentrum til nardo.
-Orakelet svarer fremdeles, men nÃ¥ snur det om
-rekkefÃ¸lgen pÃ¥ stedene, slik at om man vil ta bussen fra
-sentrum til nardo, mÃ¥ man skrive "neste nardo sentrum"
-som virker ganske ulogisk. (Ellers sÃ¥ mÃ¥ man skrive inn
+Orakelet svarer fremdeles, men nå snur det om
+rekkefølgen på stedene, slik at om man vil ta bussen fra
+sentrum til nardo, må man skrive "neste nardo sentrum"
+som virker ganske ulogisk. (Ellers så må man skrive inn
 "fra sentrum til nardo" som tar lengre tid.) Det er som
-sagt veldig upraktisk Ã¥ tappe inn fullstendige setninger
-pÃ¥ en mobiltelefon, sÃ¦rlig om man har dÃ¥rlig tid, sÃ¥ det
+sagt veldig upraktisk å tappe inn fullstendige setninger
+på en mobiltelefon, særlig om man har dårlig tid, så det
 er viktig at orakelet godtar forkortet syntaks, men om
-denne nÃ¥ er endret pÃ¥ vil det fÃ¸re til mye forvirring, i
+denne nå er endret på vil det føre til mye forvirring, i
 alle fall for meg?
 
-Â¤Â¤Â¤Â¤Â¤
+¤¤¤¤¤
 
 Hei Tore ,
 
 
-Kan du gi turen 21:50 fra RingvÃ¥l samme turtype som turen 20:15.
+Kan du gi turen 21:50 fra Ringvål samme turtype som turen 20:15.
 
 // (Buss 43)
-Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
+¤¤¤¤¤¤¤¤¤¤¤¤
 
 Jeg har lagt inn en revidert versjon av bussoraklet.
 
-N: fÃ¸rste buss 43 fra ringvÃ¥l til peder morsets vei etter kl 2015.
+N: første buss 43 fra ringvål til peder morsets vei etter kl 2015.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Buss 43 passerer  RingvÃ¥l kl.  2015
+Buss 43 passerer  Ringvål kl.  2015
 og  kommer til  Peder Morsets vei kl.  2026 .
 
 Tidene angir tidligste passeringer av holdeplassene.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-N: fÃ¸rste buss 43 fra ringvÃ¥l til peder morsets vei etter kl 2150.
+N: første buss 43 fra ringvål til peder morsets vei etter kl 2150.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Buss 43 passerer  RingvÃ¥l kl.  2150
+Buss 43 passerer  Ringvål kl.  2150
 og  kommer til  Peder Morsets vei kl.  2201 .
 
 Tidene angir tidligste passeringer av holdeplassene.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-N: fÃ¸rste buss 43 fra ringvÃ¥l til kvenild etter kl 2150.
+N: første buss 43 fra ringvål til kvenild etter kl 2150.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Jeg kan ikke finne flere ruteforbindelser pÃ¥ torsdag kl.  2150 .
+Jeg kan ikke finne flere ruteforbindelser på torsdag kl.  2150 .
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Statistikk siden forrige oppdatering
@@ -4050,47 +4050,47 @@ Olaf Misfjord
 Hei Tore!
  
 
-FÃ¥tt feilmelding av en kunde som har avdekket at bussoraklet ikke forstÃ¥r ordet
+Fått feilmelding av en kunde som har avdekket at bussoraklet ikke forstår ordet
 "Havstadvegen". 
 
-Han mener at dette ikke gav feilmelding nÃ¥r tjenesten lÃ¥ under TT. Er det noen
+Han mener at dette ikke gav feilmelding når tjenesten lå under TT. Er det noen
 grunn til at dette er endret?
 
-Er det mulig at feilmelding sier hvilket\hvilke ord som ikke forstÃ¥s?
+Er det mulig at feilmelding sier hvilket\hvilke ord som ikke forstås?
 
 
-Et siste spÃ¸rsmÃ¥l:
+Et siste spørsmål:
 
-NÃ¥r vi fÃ¥r statistikk fra Oraklet, hvordan leses dette?
+Når vi får statistikk fra Oraklet, hvordan leses dette?
 
 2010-10-29 70 1255
 
-Hva stÃ¥r tallene 70 og 1255 for?
+Hva står tallene 70 og 1255 for?
 -------------------------------------
 
 
-Ved nÃ¦rmere ettertanke ble Havstadvegen kommentert ut fordi
-tilhÃ¸rende holdeplass var Bergheim, som var Ã¥penbart feil.
+Ved nærmere ettertanke ble Havstadvegen kommentert ut fordi
+tilhørende holdeplass var Bergheim, som var åpenbart feil.
                                     
-Den riktige holdeplassen skal vÃ¦re Havstadsenteret.
-Det er nÃ¥ korrigert  i bussoraklet pÃ¥ NTNU, og blir tilgjengelig ved neste
+Den riktige holdeplassen skal være Havstadsenteret.
+Det er nå korrigert  i bussoraklet på NTNU, og blir tilgjengelig ved neste
 oppdtering.
 
 ///
  
-For min del har jeg fÃ¥tt behandling pÃ¥ St Olavs , og fÃ¸ler meg nÃ¥ fin,
- men jeg har fortsatt kreft. Jeg er i fullt arbeide, og kan gÃ¥ til jobben nÃ¥r vÃ¦ret tillater det.
- Prognosene er gode, og jeg regner med Ã¥ stÃ¥ i jobb
- til pensjonsalderen om snaue to Ã¥r. ForÃ¸vrig gÃ¥r arbeidet i sine faste spor. Bussoraklet er nÃ¥ lagt over
- til AtB (det nye kollektivselskapet i SÃ¸rTrÃ¸ndelag), og virker utmerket. (http://www.atb.no/).
- Dog bekymrer det meg litt Ã¥ tenke pÃ¥ om bussoraklet vil overleve meg :-).
+For min del har jeg fått behandling på St Olavs , og føler meg nå fin,
+ men jeg har fortsatt kreft. Jeg er i fullt arbeide, og kan gå til jobben når været tillater det.
+ Prognosene er gode, og jeg regner med å stå i jobb
+ til pensjonsalderen om snaue to år. Forøvrig går arbeidet i sine faste spor. Bussoraklet er nå lagt over
+ til AtB (det nye kollektivselskapet i SørTrøndelag), og virker utmerket. (http://www.atb.no/).
+ Dog bekymrer det meg litt å tenke på om bussoraklet vil overleve meg :-).
  
 
 
  Hei Torfinn
  
- Det er en feil i bussoraklet. Buss 46 fra pirbadet kl. 09:05 og 10:05 som har overgang til 47 pÃ¥ City Syd stÃ¥r oppfÃ¸rt med
- overgang kl. 09:37 men den gÃ¥r 09:31, og 10:31.
+ Det er en feil i bussoraklet. Buss 46 fra pirbadet kl. 09:05 og 10:05 som har overgang til 47 på City Syd står oppført med
+ overgang kl. 09:37 men den går 09:31, og 10:31.
  
  
  
@@ -4100,8 +4100,8 @@ On Thu, 11 Nov 2010, Torfinn Utne wrote:
 
  
  
- Hei, ser ut som det er en feil i bussoraklet. Overgangen ser ut til Ã¥ ta utgangspunkt i feil retning for rute 47 hvis kunden
- skal fra for eksempel pirbadet til klÃ¦bu.
+ Hei, ser ut som det er en feil i bussoraklet. Overgangen ser ut til å ta utgangspunkt i feil retning for rute 47 hvis kunden
+ skal fra for eksempel pirbadet til klæbu.
  
  
  
@@ -4109,30 +4109,30 @@ On Thu, 11 Nov 2010, Torfinn Utne wrote:
 
 
 
-Det er kommet klage pÃ¥ at bussoraklet angir feil overgangstid  pÃ¥ City Syd
+Det er kommet klage på at bussoraklet angir feil overgangstid  på City Syd
 for buss 46.
 
-( SpÃ¸rretidspunkt satt til mandag morgen kl 9)
+( Spørretidspunkt satt til mandag morgen kl 9)
 
-N: nÃ¥r gÃ¥r buss  fra sentrum etter kl 9:05 til KlÃ¦bu.
+N: når går buss  fra sentrum etter kl 9:05 til Klæbu.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Buss 46 gÃ¥r fra Munkegata holdeplass M1 kl. 0915 til City Syd kl. 0931
-og  buss 47 gÃ¥r fra City Syd kl. 0937 til KlÃ¦bu sentrum kl. 0956 .
+Buss 46 går fra Munkegata holdeplass M1 kl. 0915 til City Syd kl. 0931
+og  buss 47 går fra City Syd kl. 0937 til Klæbu sentrum kl. 0956 .
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-I ruteheftet stÃ¥r det oppfÃ¸rt at rute 47 gÃ¥r fra Munkegata m1 kl 0925
-og passerer city syd 16 minutter etterpÃ¥, altsÃ¥ 09:31.
+I ruteheftet står det oppført at rute 47 går fra Munkegata m1 kl 0925
+og passerer city syd 16 minutter etterpå, altså 09:31.
 
-Men i rutedata stÃ¥r det oppfÃ¸rt at rute 47 (tur 6) -starter- fra City
-Syd kl 1937, som forÃ¥rsaker det svaret som bussoraklet gir.
+Men i rutedata står det oppført at rute 47 (tur 6) -starter- fra City
+Syd kl 1937, som forårsaker det svaret som bussoraklet gir.
 
-N: nÃ¥r gÃ¥r buss 47   City Syd til KlÃ¦bu etter kl 931.
+N: når går buss 47   City Syd til Klæbu etter kl 931.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Buss 47 passerer  City Syd kl. 0937
-og  kommer til  KlÃ¦bu sentrum kl. 0956 .
+og  kommer til  Klæbu sentrum kl. 0956 .
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-altsÃ¥, fÃ¸rste buss etter kl 0931 gÃ¥r fÃ¸rst kl 0937.
+altså, første buss etter kl 0931 går først kl 0937.
 
 ---------
 
@@ -4150,7 +4150,7 @@ Takk for feilmelding.
 Slik blir det i den nye versjonen:
 
 
-N: nÃ¥r gÃ¥r bussen fra studentersamfundet til romulslia etter 1520.
+N: når går bussen fra studentersamfundet til romulslia etter 1520.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Buss 6 passerer  Studentersamfundet kl. 1520 , kl. 1535  og  kl. 1550
@@ -4159,16 +4159,16 @@ og  kommer til  Romolslia ,  14-16 minutter senere .
 Tidene angir tidligste passeringer av holdeplassene.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-( "14-16 minutter senere" henspeiler pÃ¥ at bussen gÃ¥r fÃ¸rst til Romolslia nedre, og deretter Romolslia Ã¸vre 2 miutter senere).
+( "14-16 minutter senere" henspeiler på at bussen går først til Romolslia nedre, og deretter Romolslia øvre 2 miutter senere).
 
 ------------
 
-Emne: "Det er for Ã¸yblikket stor trafikk pÃ¥ tjenesten"
+Emne: "Det er for øyblikket stor trafikk på tjenesten"
 
-"Det er for Ã¸yblikket stor trafikk pÃ¥ tjenesten, vennligst prÃ¸v igjen
-senere."- Er en melding jeg fÃ¥r 90% av gangene jeg bruker bussorakelet. Dette var aldri et problem med team-trafikk sitt
+"Det er for øyblikket stor trafikk på tjenesten, vennligst prøv igjen
+senere."- Er en melding jeg får 90% av gangene jeg bruker bussorakelet. Dette var aldri et problem med team-trafikk sitt
 orakel.
-Har dere noen planer om Ã¥ utbedre dette problemet i nÃ¦rmeste fremtid, for jeg begynner Ã¥ bli mektig irritert av Ã¥ fÃ¥ den
+Har dere noen planer om å utbedre dette problemet i nærmeste fremtid, for jeg begynner å bli mektig irritert av å få den
 feilmeldingen der.
 
 
@@ -4177,15 +4177,15 @@ Date: Fri, 19 Nov 2010 09:38:45 +0100 (MET)
 From: Tore Amble <toreamb@idi.ntnu.no
 To: Torfinn Utne <Torfinn.Utne@atb.no
 Cc: support@coretrek.no, torbjorn@lingit.no
-Subject: Re: [utf-8] VS: "Det er for Ã¸yblikket stor trafikk pÃ¥ tjenesten"
+Subject: Re: [utf-8] VS: "Det er for øyblikket stor trafikk på tjenesten"
 
 
 
 Jeg har aldri opplevde denne feilmeldingen fra BussTUC/AtB-serveren, og den stammer ikke fra BussTUC.
 
-Er det mulig Ã¥ spÃ¸rre klageren om tidspunkt/andre forhold nÃ¥r feilmeldingen oppsto ?
+Er det mulig å spørre klageren om tidspunkt/andre forhold når feilmeldingen oppsto ?
 
-Har AtB fÃ¥tt lignende klager fÃ¸r ?
+Har AtB fått lignende klager før ?
 
 Date: Thu, 30 Dec 2010 14:58:01 +0100
 
@@ -4204,23 +4204,23 @@ Hei og God Jul!
 
 
 Det er flere som har rapportert at oraklet rapporterer
-feil i jula. Selv prÃ¸vde jeg i dag "rute fra vÃ¦re Ã¸stre
+feil i jula. Selv prøvde jeg i dag "rute fra være østre
 til sentrum" (til 2027) og fikk til svar:  
 
-"Buss 36 passerer VÃ¦re Ã˜stre kl 1447 og
+"Buss 36 passerer Være Østre kl 1447 og
 Sentrumsterminalen 22-48 min senere. Buss 6 passerer
-VÃ¦re Ã˜stre kl. 1447 og Sentrumsterminalen, 16-26"
+Være Østre kl. 1447 og Sentrumsterminalen, 16-26"
 
-Dvs rute 36 burde ikke vÃ¦re der.
+Dvs rute 36 burde ikke være der.
  
 
-Ser ogsÃ¥ at uavhengig av om jeg ber om SMS svar eller
-fra AtB sine hjemmesider, ser det ut til Ã¥ vÃ¦re tidvis
+Ser også at uavhengig av om jeg ber om SMS svar eller
+fra AtB sine hjemmesider, ser det ut til å være tidvis
 lang responstid. Da dette kommer fra to ulike
 grensesnitt (SMS via PSWincom og WWW via Coretrek) kan
-det tyde pÃ¥ at det er reponstiden til evt Bustuc
-serverer eller en annen mellomserver som forÃ¥rsaker
-forsinkelsen. Har du mulighet til Ã¥ sjekke dette?
+det tyde på at det er reponstiden til evt Bustuc
+serverer eller en annen mellomserver som forårsaker
+forsinkelsen. Har du mulighet til å sjekke dette?
 
   
 
@@ -4235,13 +4235,13 @@ Subject: Re: Oraklet
 Takk for feilmelding.
 
 
-HovedÃ¥rsaken til feilen med buss 36 og VÃ¦re Ã˜stre skyldes at
+Hovedårsaken til feilen med buss 36 og Være Østre skyldes at
 
 rutedata for juletiden  (henholdvis 24/12, 26/12 og 31/12)
 inneholdt et annet navn for holdeplassen Stokkanhaugen, nemlig
 "Stokkhaugen".
 
-I ruteheftet stÃ¥r det offisielle navnet Stokkanhaugen  i oversikten (side 15). Dette navnet ble ogsÃ¥ brukt konsekvent i rutene
+I ruteheftet står det offisielle navnet Stokkanhaugen  i oversikten (side 15). Dette navnet ble også brukt konsekvent i rutene
 som gjaldt fra 23.8.2010.
 
 Men i  oversikten for rute 36 er brukt navnet Stokkhaugen.
@@ -4250,14 +4250,14 @@ Dette navnet ble brukt i de nye tilsendte rutedata.
 Bussoraklet oppfattet som en annen holdeplass og ble forvirret fordi dette er en holdeplass som regnes som en skjult overgang for
 buss 36.
 
-Jeg har rettet feilen ved Ã¥ rette opp manuelt i bussoraklet.
-Jeg hÃ¥per at feilen i rutedata blir korrigert i fremtidige leveranser.
+Jeg har rettet feilen ved å rette opp manuelt i bussoraklet.
+Jeg håper at feilen i rutedata blir korrigert i fremtidige leveranser.
 
-Jeg har restarter bussoraklet, og det ser nÃ¥ ut til Ã¥ virke (fra Web).
+Jeg har restarter bussoraklet, og det ser nå ut til å virke (fra Web).
 
-N: fra vÃ¦re Ã¸stre til sentrum
+N: fra være østre til sentrum
 
-Buss 6 passerer VÃ¦re Ã˜stre kl. 1522, kl. 1552 og kl. 1622 og kommer
+Buss 6 passerer Være Østre kl. 1522, kl. 1552 og kl. 1622 og kommer
 til Munkegata holdeplass M2, 22-26 minutter senere. Tidene angir
 tidligste passeringer av holdeplassene.
 
@@ -4273,47 +4273,47 @@ Subject: Re: VS: Boomerang Klage
 
 Takk for feilmelding.
 
-Jeg har kjÃ¸rt dette pÃ¥ bussoraklet idag, og fikk fÃ¸lgende resultat:
+Jeg har kjørt dette på bussoraklet idag, og fikk følgende resultat:
 
 
 
-N: buss fra lars onsagers vei 10 til jÃ¸rgen b lysholms vei 53 klokken 19.
+N: buss fra lars onsagers vei 10 til jørgen b lysholms vei 53 klokken 19.
 
-Holdeplassen nÃ¦rmest Lars Onsagers veg 10 er Berg studentby. Holdeplassen nÃ¦rmest JÃ¸rgen B. Lysholms vei 53 er JÃ¸rgen B
-Lysholms vei. Buss 5 gÃ¥r fra Berg studentby kl. 1819 til Dronningens gate holdeplass D2 kl. 1830 og buss 3 gÃ¥r fra Munkegata
-holdeplass M5 kl. 1835 til JÃ¸rgen B Lysholms vei kl. 1852. Tidene angir tidligste passeringer av holdeplassene.
+Holdeplassen nærmest Lars Onsagers veg 10 er Berg studentby. Holdeplassen nærmest Jørgen B. Lysholms vei 53 er Jørgen B
+Lysholms vei. Buss 5 går fra Berg studentby kl. 1819 til Dronningens gate holdeplass D2 kl. 1830 og buss 3 går fra Munkegata
+holdeplass M5 kl. 1835 til Jørgen B Lysholms vei kl. 1852. Tidene angir tidligste passeringer av holdeplassene.
 
 Det ser ut som feilen er rettet.
 
-Jeg antar at kunden har gjort spÃ¸rringen fÃ¸r fredag 30.12 da det ble gjort en oppdatering og restart.
+Jeg antar at kunden har gjort spørringen før fredag 30.12 da det ble gjort en oppdatering og restart.
 
 
 
 On Mon, 3 Jan 2011, Olaf Misfjord wrote:
 
-  Kan du se pÃ¥ denne?
+  Kan du se på denne?
  
   mvh
   
   Olaf Misfjord
   
-  RÃ¥dgiver
+  Rådgiver
   
   +47 952 62 290
   
-  Tenk pÃ¥ miljÃ¸et fÃ¸r du skriver ut denne meldingen
+  Tenk på miljøet før du skriver ut denne meldingen
   
-  Hei. Jeg brukte bussoraklet i dag da jeg skulle ta buss fra lars onsagers vei 10 til jÃ¸rgen b lysholms vei 53 klokken 19.
+  Hei. Jeg brukte bussoraklet i dag da jeg skulle ta buss fra lars onsagers vei 10 til jørgen b lysholms vei 53 klokken 19.
   
   Svaret jeg fikk var:
-  "Holdeplassen nÃ¦rmest Lars Onsagers veg 10 er Berg studentby. Holdeplassen nÃ¦rmest JÃ¸rgen B. Lysholms vei 53 er JÃ¸rgen B
-  Lysholms vei. Buss 5 gÃ¥r fra Berg studentby kl. 1834 til Dronningens gate holdeplass D2 kl. 1845 og buss 3 gÃ¥r fra Munkegata
-  holdeplass M2 kl. 1857 til JÃ¸rgen B Lysholms vei kl. 1858. Tidene angir tidligste passeringer av holdeplassene".
+  "Holdeplassen nærmest Lars Onsagers veg 10 er Berg studentby. Holdeplassen nærmest Jørgen B. Lysholms vei 53 er Jørgen B
+  Lysholms vei. Buss 5 går fra Berg studentby kl. 1834 til Dronningens gate holdeplass D2 kl. 1845 og buss 3 går fra Munkegata
+  holdeplass M2 kl. 1857 til Jørgen B Lysholms vei kl. 1858. Tidene angir tidligste passeringer av holdeplassene".
   
-  Det er helt tydelig en feil her ettersom buss 3 her bruker 1 minutt fra munkegata til JÃ¸rgen Lysholms vei.
+  Det er helt tydelig en feil her ettersom buss 3 her bruker 1 minutt fra munkegata til Jørgen Lysholms vei.
   
-  Jeg leste ikke nÃ¸ye gjennom svaret, jeg noterte meg kun nÃ¥r fÃ¸rste buss gikk og hvilken buss jeg skulle bytte til og nÃ¥r jeg
-  skulle komme frem. Dermed ble jeg veldig forvirret da jeg kom til sentrum og fant ut at dette ikke stemte, jeg kom ogsÃ¥
+  Jeg leste ikke nøye gjennom svaret, jeg noterte meg kun når første buss gikk og hvilken buss jeg skulle bytte til og når jeg
+  skulle komme frem. Dermed ble jeg veldig forvirret da jeg kom til sentrum og fant ut at dette ikke stemte, jeg kom også
   senere frem enn avtalt.
   
   Det er veldig viktig at bussorakelet stemmer og at kundene slipper slike hendelser.
@@ -4322,9 +4322,9 @@ On Mon, 3 Jan 2011, Olaf Misfjord wrote:
   
 
 Date: Sun, 27 Feb 2011 17:06:06 +0100
-From: TorbjÃ¸rn NordgÃ¥rd <torbjorn@lingit.no
+From: Torbjørn Nordgård <torbjorn@lingit.no
 To: Tore Amble <toreamb@idi.ntnu.no
-Subject: Re: Fara bussruter for Hedmark pÃ¥ nett
+Subject: Re: Fara bussruter for Hedmark på nett
 Parts/Attachments:
    1 Shown   ~46 lines  Text
    2   OK    ~42 lines  Text
@@ -4332,41 +4332,41 @@ Parts/Attachments:
 
 Hei
 
-Har sÃ¥ smÃ¥tt testet litt. Ingen ruter for Tolga, Kongsvinger, Trysil,
+Har så smått testet litt. Ingen ruter for Tolga, Kongsvinger, Trysil,
 Tynset? For Hamar kommer det opp flere alternativer som jeg kan velge
-mellom. De er kanskje lagt inn manuelt akkurat der? Jeg er sÃ¥ dÃ¥rlig
-lokalkjent at jeg kjenner rutene man bÃ¸r spÃ¸rre om ....
+mellom. De er kanskje lagt inn manuelt akkurat der? Jeg er så dårlig
+lokalkjent at jeg kjenner rutene man bør spørre om ....
 
-Sjekket litt pÃ¥ bybussen i Kongsvinder (bybuss 501).
+Sjekket litt på bybussen i Kongsvinder (bybuss 501).
 
-SPM: NÃ¥r gÃ¥r bussen fra Holt Sykehjem til Kongsvinger rÃ¥dhus i morgen?
+SPM: Når går bussen fra Holt Sykehjem til Kongsvinger rådhus i morgen?
 SVAR: 28. Feb. 2011 er en mandag .
 For denne dato gjelder FARA vinterruter .
-Det er ikke mulig pÃ¥ mandager .
+Det er ikke mulig på mandager .
 
 Kan du sjekke den?
 
 -torbj
 
-Den 25. februar 2011 18:58 skrev Tore Amble <toreamb@idi.ntnu.no fÃ¸lgende:
+Den 25. februar 2011 18:58 skrev Tore Amble <toreamb@idi.ntnu.no følgende:
 
 
  Jeg har laget en nett-versjon av Fara bussruter for Hedmark.
 
- Den finnes pÃ¥
+ Den finnes på
 
  http://www.idi.ntnu.no/~toreamb/web/busstuc/fara.html
 
  Vedlagt en liten demorun.
 
- Kan du prÃ¸ve litt selv, og gi tilbakemelding  fÃ¸r du eventuelt
+ Kan du prøve litt selv, og gi tilbakemelding  før du eventuelt
  forteller det videre til noen.
 
 
 
 ---------
 
-Jeg vet ikke hva du skrev nÃ¸yaktig, men du mÃ¥ ha kopiert "rute" nÃ¥r du trykket linjeskift.
+Jeg vet ikke hva du skrev nøyaktig, men du må ha kopiert "rute" når du trykket linjeskift.
 
 Tore B skrev rute+ linjeskift og fikk ikke problemer.
 
@@ -4377,23 +4377,23 @@ Her er din logg
 2011-03-03 12:15:17,083 ttpd INFO [192c] billing=0 SMS (127.0.0.1, LINGSMSIN) FREE
 SMS FREE
 "RUTE Rute
-NÃƒÂ¥r gÃƒÂ¥r neste buss til VÃƒÂ¦re?"
-"- - - UforstÃƒÂ¥elig ved * - - -
+NÃ¥r gÃ¥r neste buss til VÃ¦re?"
+"- - - UforstÃ¥elig ved * - - -
 
-rute rute nÃƒÂ¥r * gÃƒÂ¥r neste buss til vÃƒÂ¦re ?"
+rute rute nÃ¥r * gÃ¥r neste buss til vÃ¦re ?"
 ----
 
 
-Jeg har nÃ¥ prÃ¸vd flere ganger, og det viser seg at
-telefonen eller noe annet i systemet pÃ¥ et eller annet
-vis selv kopierer "rute" nÃ¥r jeg tar linjeskift. Uten
+Jeg har nå prøvd flere ganger, og det viser seg at
+telefonen eller noe annet i systemet på et eller annet
+vis selv kopierer "rute" når jeg tar linjeskift. Uten
 linjeskift - dvs. kun med mellomrom - virker det fint.
 
 -agnar-
 
 
 Date: Fri, 1 Apr 2011 09:27:47 +0200
-From: TorbjÃ¸rn NordgÃ¥rd <torbjorn@lingit.no
+From: Torbjørn Nordgård <torbjorn@lingit.no
 To: Tore Amble <toreamb@idi.ntnu.no
 Subject: Re: konsept
 Parts/Attachments:
@@ -4403,9 +4403,9 @@ Parts/Attachments:
 
 Hei igjen.
 
-Med disse avklaringene tenker jeg at vi er klare for et mÃ¸te om hvordan vi
-gÃ¥r frem mht FARA. Jeg tror det er best at Ingrid, du og jeg setter oss ned
-fÃ¸rst, og deretter tar vi mÃ¸ter med FARA. Har du anledning fredag 8. april
+Med disse avklaringene tenker jeg at vi er klare for et møte om hvordan vi
+går frem mht FARA. Jeg tror det er best at Ingrid, du og jeg setter oss ned
+først, og deretter tar vi møter med FARA. Har du anledning fredag 8. april
 etter lunsj?
 
 -torbj
@@ -4415,48 +4415,48 @@ etter lunsj?
 
 
  Det er ikke noe generisk i disse tallene. Det er ment som ekstra-arbeide
- fra nÃ¥ for Ã¥ ferdigstille Hedmark-busstuc.
- Ingen av de listete aktiviteter er "pÃ¥begynt" ennÃ¥ utover det  at
+ fra nå for å ferdigstille Hedmark-busstuc.
+ Ingen av de listete aktiviteter er "påbegynt" ennå utover det  at
  Hemark-busstuc allerede er klar til uttesting.
 
- Konvertering og seksjonering av Busstuc til Ã¥ behandle flere omrÃ¥der
- er gjort ("en gang for alle"), og er ikke fÃ¸rt opp.
+ Konvertering og seksjonering av Busstuc til å behandle flere områder
+ er gjort ("en gang for alle"), og er ikke ført opp.
 
- Det betyr vel at hvis vi skal lag noe for et nytt omrÃ¥de blir det likedanne
+ Det betyr vel at hvis vi skal lag noe for et nytt område blir det likedanne
  utgifter.
 
  Jeg kan godt ta de aktivitetene som er listet (med noen opplagte unntak),
- men jeg gjÃ¸r det "ikke for pengenes skyld" hvis kostnadene  blir et
- forhandlingsspÃ¸rsmÃ¥l.
+ men jeg gjør det "ikke for pengenes skyld" hvis kostnadene  blir et
+ forhandlingsspørsmål.
 
  Jeg regner med at utvidelsene vil resultere i en fullt brukbar demonstrator
  (for Trondheim) ved levering av masteroppgaven til Raaum.
 
  Tilpasning til Hedmark er teknisk ikke vanskelig, men det er avhengig av
  koordinat-data. Drift av et slik system er kanskje noe mer krevende, og
- avhening av FARA- sin ekspertise og stÃ¸tte.
+ avhening av FARA- sin ekspertise og støtte.
 
 
 
 
 Date: Fri, 1 Apr 2011 14:30:17 +0200 (MEST)
 From: Tore Amble <toreamb@idi.ntnu.no
-To: TorbjÃ¸rn NordgÃ¥rd <torbjorn@lingit.no
+To: Torbjørn Nordgård <torbjorn@lingit.no
 Subject: Re: konsept
 
 
 Det er fint.
 
-Jeg gleder meg til Ã¥ besÃ¸ke dere.
+Jeg gleder meg til å besøke dere.
 Jeg kommer med bussen.
 
-N: Fra IDI til Lingit  fredag  8.4 fÃ¸r kl 13.
+N: Fra IDI til Lingit  fredag  8.4 før kl 13.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 8. Apr. 2011 er en  fredag .
-Holdeplassen nÃ¦rmest LingIT er  Moholt .
-Holdeplassen nÃ¦rmest IDI er  GlÃ¸shaugen Syd .
-Buss 5 passerer  GlÃ¸shaugen Syd kl. 1254
+Holdeplassen nærmest LingIT er  Moholt .
+Holdeplassen nærmest IDI er  Gløshaugen Syd .
+Buss 5 passerer  Gløshaugen Syd kl. 1254
 og  kommer til  Moholt kl. 1259 .
 
 Tidene angir tidligste passeringer av holdeplassene.
@@ -4469,7 +4469,7 @@ Fra: Tore Amble [mailto:toreamb@idi.ntnu.no]
 Sendt: 7. april 2011 21:26
 Til: Arvid Staupe
 Kopi: Arvid Holme
-Emne: Hjem til tillerringen etter mÃ¸te pÃ¥ CJ
+Emne: Hjem til tillerringen etter møte på CJ
 
 
 
@@ -4481,13 +4481,13 @@ Date: Thu, 7 Apr 2011 21:33:03 +0200
 From: Arvid Staupe <ahs@idi.ntnu.no
 To: 'Tore Amble' <toreamb@idi.ntnu.no
 Cc: 'Arvid Holme' <arvidh@idi.ntnu.no
-Subject: SV: Hjem til tillerringen etter mÃ¸te pÃ¥ CJ
+Subject: SV: Hjem til tillerringen etter møte på CJ
 
 Hei igjen,
 
-Det er nesten rett, noe vel optimistiske kjÃ¸retider 
+Det er nesten rett, noe vel optimistiske kjøretider 
 - spesielt for 46 (zikzakruta) som brukar nok meir tid enn det som er angitt
-- men det er nok ogsÃ¥ tilfellet for 47 (KlÃ¦buruta)
+- men det er nok også tilfellet for 47 (Klæburuta)
 
 Arvid s
 
@@ -4497,57 +4497,57 @@ From: Tore Amble <toreamb@idi.ntnu.no
 To: magnus.raaum@gmail.com
 Subject: Siste versjon ab Busstuc/GPS
 
-Jeg har laget en ny versjon (pÃ¥ web) som tar med flere avgangsholdeplasser, og individelle gÃ¥-tids
+Jeg har laget en ny versjon (på web) som tar med flere avgangsholdeplasser, og individelle gå-tids
 restriksjoner (bare de avganger som du rekker fram til).
 
-Et ulÃ¸st problem er avganger som du kanskje kunne ha rukket fordi bussen
-er forsinket pÃ¥ den holdeplassen.
+Et uløst problem er avganger som du kanskje kunne ha rukket fordi bussen
+er forsinket på den holdeplassen.
 
 %%
 
 Takk for tilsendt ruteformat for Sverige.
 
 Jeg fant ikke det fulle samsvar mellom  det formatet, og REGTOP, men det
-gÃ¥r sikkert an Ã¥ finne ut av det.
+går sikkert an å finne ut av det.
 
-For meg er det en  nesten opphissende tanke Ã¥ kunne lage en svensk versjon av bussoraklet. Jeg er sikker pÃ¥ at det
+For meg er det en  nesten opphissende tanke å kunne lage en svensk versjon av bussoraklet. Jeg er sikker på at det
 er mulig, men det blir ganske arbeidskrevende utover en prototype som demonstrerer konseptet.
 
-Det er allerede nÃ¥  mulig Ã¥ bruke svenske ord i den norske versjonen av bussoraklet ( i tillegg til nynorsk,
-trÃ¸ndersk og skrivefeil)
+Det er allerede nå  mulig å bruke svenske ord i den norske versjonen av bussoraklet ( i tillegg til nynorsk,
+trøndersk og skrivefeil)
 
-N: nÃ¦r gÃ¥r sista bussen frÃ¥n glÃ¸shaugen till nardo innan klokkan 20 pÃ¥ tisdag.
+N: nær går sista bussen från gløshaugen till nardo innan klokkan 20 på tisdag.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Holdeplassen nÃ¦rmest GlÃ¸shaugen er  GlÃ¸shaugen Syd .
-Holdeplassen nÃ¦rmest Nardo er  Nardosenteret .
-Buss 52 passerer  GlÃ¸shaugen Syd kl. 1947
+Holdeplassen nærmest Gløshaugen er  Gløshaugen Syd .
+Holdeplassen nærmest Nardo er  Nardosenteret .
+Buss 52 passerer  Gløshaugen Syd kl. 1947
 og  kommer til  Nardosenteret kl. 1951 .
 
 Tidene angir tidligste passeringer av holdeplassene.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-(Det er en smal sak Ã¥ endre norske fraser i utskriftene).
+(Det er en smal sak å endre norske fraser i utskriftene).
 
 
-Forutsetningen for Ã¥ lage en prototyp er imidlertid at det er et "marked" for det, ikke bare for moro skyld. Uansett
-kan det ikke bli aktuelt fÃ¸r
-bussoraklet for Hedmark er pÃ¥ plass.
+Forutsetningen for å lage en prototyp er imidlertid at det er et "marked" for det, ikke bare for moro skyld. Uansett
+kan det ikke bli aktuelt før
+bussoraklet for Hedmark er på plass.
 
 On Tue, 26 Apr 2011, Tor Rune Skoglund wrote:
 
  Hei,
  
- HÃ¥per dere har hatt en god pÃ¥ske!
+ Håper dere har hatt en god påske!
  
- Vedr Sverige, sÃ¥ er situasjonen den at noen av vÃ¥re kunder bruker faktisk Regtop der ogsÃ¥, men de fleste
+ Vedr Sverige, så er situasjonen den at noen av våre kunder bruker faktisk Regtop der også, men de fleste
  bruker "REBUS".
- Vi har tilgang til disse dataene i Sverige ogsÃ¥, og kan oversende testdatasett pÃ¥ sikt dersom det Ã¸nskes.
+ Vi har tilgang til disse dataene i Sverige også, og kan oversende testdatasett på sikt dersom det ønskes.
  
  Jeg legger vedlegge beskrivelsen av format.
  
- Dette bare til info i tilfelle dere vurderer Ã¥ implementere en tilsvarende lÃ¸sning for Sverige som Fara
+ Dette bare til info i tilfelle dere vurderer å implementere en tilsvarende løsning for Sverige som Fara
  kan selge i det markedet.
  
  Best regards / Vennlig hilsen
@@ -4588,25 +4588,25 @@ Subject: SV: Statistikk for Bussoraklet AtB mars 2011
 
 Hei Tore,
 
-Ser at du har lagt inn tidene for pÃ¥ske.
-Jeg skulle gjerne sett at nÃ¥r vi for eksempel pÃ¥ skjÃ¦rtorsdag kjÃ¸rer sÃ¸ndagsruter sÃ¥ burde det kommet fram
+Ser at du har lagt inn tidene for påske.
+Jeg skulle gjerne sett at når vi for eksempel på skjærtorsdag kjører søndagsruter så burde det kommet fram
 i teksten.
-Likeledes at det kjÃ¸res lÃ¸rdagsrute man.-onsdag i den "stille" uke.
+Likeledes at det kjøres lørdagsrute man.-onsdag i den "stille" uke.
 
 Med vennlig hilsen
 Olaf Misfjord
 
 -------
-Av og til hender det at en nettbruker har flere vinduer Ã¥pne, hvorav ett vindu er til bussoraklet, og et annet er
+Av og til hender det at en nettbruker har flere vinduer åpne, hvorav ett vindu er til bussoraklet, og et annet er
 et email-vindu.
 
-SÃ¥ hender det at et hjertessukk til en pennevenn havner i feil vindu.
+Så hender det at et hjertessukk til en pennevenn havner i feil vindu.
 
 
 :  kan jo eventuelt ta hurtigruta til Kirkenes, buss til Murmansk, tog
 til Sankt-Petersburg via Moskva og fly til tallinn, color line til
-Stockholm, tog til GÃ¸teborg,  for sÃ¥ nytt tog til Oslo hvor du mÃ¥ gÃ¥ av
-i Sarpsborg og vente 2t pÃ¥ buss pga signalfeil.
+Stockholm, tog til Gøteborg,  for så nytt tog til Oslo hvor du må gå av
+i Sarpsborg og vente 2t på buss pga signalfeil.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Jeg har ingen informasjon om ferge .
@@ -4614,68 +4614,68 @@ Jeg har ingen informasjon om ferge .
  
 Hei,
  
-Tenkte jeg skulle skrive ned det jeg spurte orakelet om.  Jeg tenkte det kunne vÃ¦re nyttig Ã¥ vite hvilken
-holdeplass var fÃ¸r den jeg skulle av pÃ¥, sÃ¥ jeg kunne gjÃ¸re meg klar og spurte derfor:
+Tenkte jeg skulle skrive ned det jeg spurte orakelet om.  Jeg tenkte det kunne være nyttig å vite hvilken
+holdeplass var før den jeg skulle av på, så jeg kunne gjøre meg klar og spurte derfor:
  
 -----------------
  
-AK:Hvor er prestegÃ¥rdsjordet?
+AK:Hvor er prestegårdsjordet?
  
-- Jeg kjenner ingen steder nÃ¦r PrestegÃ¥rdsjordet
+- Jeg kjenner ingen steder nær Prestegårdsjordet
  
-AK:hvilken holdeplass er fÃ¸r prestegÃ¥rdsjordet for rute 60?
+AK:hvilken holdeplass er før prestegårdsjordet for rute 60?
  
 -
-Jeg kan ikke svare for sÃ¥ mange steder av gangen ! Buss 60 passerer Munkegata M3 kl. 1905, kl. 1950 og kl.
+Jeg kan ikke svare for så mange steder av gangen ! Buss 60 passerer Munkegata M3 kl. 1905, kl. 1950 og kl.
 2035 og kommer til Valentinlyst, 17 minutter senere. Tidene angir tidligste passeringer av holdeplassene.
  
-AK:hvilken holdeplass er fÃ¸r prestegÃ¥rdsjordet pÃ¥ rute 60?
+AK:hvilken holdeplass er før prestegårdsjordet på rute 60?
  
--Buss 60 gÃ¥r til holdeplassene Bakkegate, Berg PrestegÃ¥rd, Buran, Cecilie Thoresens veg, Dalen Hageby, Einar
-Tambarskjelves gate, Gina Krogs veg, Harald Bothners veg, Harald Gilles veg, Kvilhaugen, Lerchendal gÃ¥rd,
-Lerkendal stadion, Magnus BerrfÃ¸tts vei, Magnus Blindes vei, Munkegata M3, Nova kinosenter, Otto Nielsens
-vei, Persaunet leir, PrestegÃ¥rdsjordet, Prinsen kinosenter, Prof. Brochs gate, Rosendal, RÃ¸nningsbakken,
-Saxenborg allÃ©, Solsiden, Strandveien, Studentersamfundet, Torget, Tyholt, Tyholtveien, Valentinlyst. 
+-Buss 60 går til holdeplassene Bakkegate, Berg Prestegård, Buran, Cecilie Thoresens veg, Dalen Hageby, Einar
+Tambarskjelves gate, Gina Krogs veg, Harald Bothners veg, Harald Gilles veg, Kvilhaugen, Lerchendal gård,
+Lerkendal stadion, Magnus Berrføtts vei, Magnus Blindes vei, Munkegata M3, Nova kinosenter, Otto Nielsens
+vei, Persaunet leir, Prestegårdsjordet, Prinsen kinosenter, Prof. Brochs gate, Rosendal, Rønningsbakken,
+Saxenborg allé, Solsiden, Strandveien, Studentersamfundet, Torget, Tyholt, Tyholtveien, Valentinlyst. 
  
-(Her kom de altsÃ¥ i alfabetisk rekkefÃ¸lge og ikke trasÃ©)
+(Her kom de altså i alfabetisk rekkefølge og ikke trasé)
  
-AK:hvilken holdeplass er fÃ¸r prestegÃ¥rdsjordet for rute 60 pÃ¥ vei til valentinlyst?
+AK:hvilken holdeplass er før prestegårdsjordet for rute 60 på vei til valentinlyst?
 
--Jeg kan ikke svare for sÃ¥ mange steder av gangen ! Buss 60 passerer Munkegata M3 kl. 1905, kl. 1950 og kl.
+-Jeg kan ikke svare for så mange steder av gangen ! Buss 60 passerer Munkegata M3 kl. 1905, kl. 1950 og kl.
 2035 og kommer til Valentinlyst, 17 minutter senere. Tidene angir tidligste passeringer av holdeplassene. 
 
 -----
-Du mÃ¥ vel vÃ¦re flau over faren din nÃ¥ tenker jeg .
+Du må vel være flau over faren din nå tenker jeg .
 
-Jeg fÃ¸ler meg bedre.
+Jeg føler meg bedre.
 
 
 On Tue, 21 Jun 2011, Anne Kristine Amble wrote:
 
  
- NÃ¥ spurte jeg jo litt andre spÃ¸rsmÃ¥l enn det som er vanlig, men tenkte kankjse du synes det var artig med
+ Nå spurte jeg jo litt andre spørsmål enn det som er vanlig, men tenkte kankjse du synes det var artig med
  en utfordring.
  
- HÃ¥per du fÃ¸ler deg bedre igjen.
+ Håper du føler deg bedre igjen.
 
 //email tagore 
  
-Hei, finnes det noe API til bussTuc som man kan bruke for Ã¥ lage
-utenforstÃ¥ende applikasjoner som bruker busstuc? Tenkte pÃ¥ Ã¥ lage en
-applikasjon til iPhone som benytter bussTuc i bakgrunnen for Ã¥ spÃ¸rre etter
+Hei, finnes det noe API til bussTuc som man kan bruke for å lage
+utenforstående applikasjoner som bruker busstuc? Tenkte på å lage en
+applikasjon til iPhone som benytter bussTuc i bakgrunnen for å spørre etter
 bussruter i Trondheim.
 
 On Thu, 30 Jun 2011, Magnus Raaum wrote:
 
  Heisann!
  
- Jeg er pÃ¥ ferie i italia for tiden, men vil vÃ¦re tilbake 15 juni.
+ Jeg er på ferie i italia for tiden, men vil være tilbake 15 juni.
  
- Videreutvikling av applikasjonen hÃ¸res veldig spennende ut! Jeg sender en ny
- mail med spÃ¸rsmÃ¥l nÃ¥r jeg kommer tilbake.
+ Videreutvikling av applikasjonen høres veldig spennende ut! Jeg sender en ny
+ mail med spørsmål når jeg kommer tilbake.
  
- Bra du har fÃ¥tt simkortet, Tore. Applikasjonen kan installeres manuelt (uten
- App-store), sÃ¥ si ifra nÃ¥r du fÃ¥r mobilen din sÃ¥ kan jeg gi deg en guide
+ Bra du har fått simkortet, Tore. Applikasjonen kan installeres manuelt (uten
+ App-store), så si ifra når du får mobilen din så kan jeg gi deg en guide
  hvis det trengs.
  
  Mvh
@@ -4688,24 +4688,24 @@ On Thu, 30 Jun 2011, Magnus Raaum wrote:
  
  SIM-kortet er mottatt.
  
- Jeg skal ved anledning kjÃ¸pe meg en ny HTC (med litt stÃ¸rre skjerm) uten
+ Jeg skal ved anledning kjøpe meg en ny HTC (med litt større skjerm) uten
  abonnement, og sette inn SIM-kortet.
  
- Men for at det skal vÃ¦re meningsfyllt mÃ¥ applikasjonen vÃ¦re tilgjengelig,
+ Men for at det skal være meningsfyllt må applikasjonen være tilgjengelig,
  f. eks. som en app-store (?).
  
  Kan du lage den .
  
- Neste punkt er et Ã¸nske om at applikasjonen har et AtB-logo.
+ Neste punkt er et ønske om at applikasjonen har et AtB-logo.
  
- Her kommer vi innn pÃ¥ kommersiell utnyttelse av ditt arbeide, og da har du
- krav pÃ¥ honorar. Det er ikke snakk om at Lingit skal ta betaling fra AtB for
+ Her kommer vi innn på kommersiell utnyttelse av ditt arbeide, og da har du
+ krav på honorar. Det er ikke snakk om at Lingit skal ta betaling fra AtB for
  noe du har laget, men vi kan komme tilbake til saken.
  
- I fÃ¸rste omgang, kan du lage en applikasjon med AtB-logo, sÃ¥ kan vi
+ I første omgang, kan du lage en applikasjon med AtB-logo, så kan vi
  forhandle om saken senere.
  
- Har du noen spÃ¸rsmÃ¥l eller forhÃ¥ndsbetingelser, sÃ¥ er det bare Ã¥ si fra.
+ Har du noen spørsmål eller forhåndsbetingelser, så er det bare å si fra.
  
  
  mvh
@@ -4719,30 +4719,30 @@ Subject: Re: SV: ref. Twitter /Bussorakelet. er det noe vi kan sjekke ut? Endrin
 
 
 
-Det er en del feil som oppsto med sommerrutene fordi navnene pÃ¥ holdeplassene er endret fra
+Det er en del feil som oppsto med sommerrutene fordi navnene på holdeplassene er endret fra
 vinter-ruter til sommerruter.
 
-Telenorsenteret sogner til Magnus BerrfÃ¸tts vei  som ble
-                omdÃ¸pt til Magnus BerrfÃ¸tts veg.
+Telenorsenteret sogner til Magnus Berrføtts vei  som ble
+                omdøpt til Magnus Berrføtts veg.
 
-Det skapte noe forvirring fordi bussoraklet bruker navnene som identifikasjon, og nÃ¥r
-navnet endres sÃ¥ "tror" bussoraklet at det er en annen holdeplass, selv om forskjellen er
-aldri sÃ¥ liten.
+Det skapte noe forvirring fordi bussoraklet bruker navnene som identifikasjon, og når
+navnet endres så "tror" bussoraklet at det er en annen holdeplass, selv om forskjellen er
+aldri så liten.
 (Dette gjelder ikke brukergrensesnittet, som har en utmerket navnegjenkjenning og
 korreksjon, men selve databasens konsistens).
 
 Dette er en svakhet ved bussoraklet som skal bli rettet opp, men generelt skaper endring av
 navn merarbeid).
 
-De fleste feil skulle vÃ¦re rettet opp ifb med en oppdatering 29.6, men ikke den som gjaldt
-Magnus BerrfÃ¸tts veg.
+De fleste feil skulle være rettet opp ifb med en oppdatering 29.6, men ikke den som gjaldt
+Magnus Berrføtts veg.
 
-Jeg kan prÃ¸ve Ã¥ rette denne feilen ogsÃ¥  idag.
+Jeg kan prøve å rette denne feilen også  idag.
 
 On Thu, 30 Jun 2011, Torfinn Utne wrote:
 
- Hei Tore, vi har en kunde her som sier at Bussorakelet har "skjÃ¸nt" telenorsentret fÃ¸r
- men at det ikke gir svar nÃ¥. Er det en endring eller tar han feil?
+ Hei Tore, vi har en kunde her som sier at Bussorakelet har "skjønt" telenorsentret før
+ men at det ikke gir svar nå. Er det en endring eller tar han feil?
  
  
  
@@ -4759,95 +4759,95 @@ Subject: VS: Feil i bussorakelet
 Hei Tore.
 
 
-SÃ¸k pÃ¥:
-fra Olav NygÃ¥rds veg (Trondheim) til Prinsen Kinosenter (Trondheim) gir svar med bytte av buss nÃ¥r sÃ¸ket gjÃ¸res via
-iphone applikasjonen, mens det gÃ¥r direkte buss.
-SÃ¸k pÃ¥ nett gir fÃ¸lgende svar:
+Søk på:
+fra Olav Nygårds veg (Trondheim) til Prinsen Kinosenter (Trondheim) gir svar med bytte av buss når søket gjøres via
+iphone applikasjonen, mens det går direkte buss.
+Søk på nett gir følgende svar:
 
-Buss 19 gÃ¥r fra Olav Nygards veg kl. 1301 til FlatÃ¥sen senter kl. 1310 og buss 7 gÃ¥r fra FlatÃ¥sen senter kl. 1319
+Buss 19 går fra Olav Nygards veg kl. 1301 til Flatåsen senter kl. 1310 og buss 7 går fra Flatåsen senter kl. 1319
 til Prinsen kinosenter kl. 1331. Tidene angir tidligste passeringer av holdeplassene.
 
-Burde vel gi svar pÃ¥ rute19 mot sentrum som passerer Prinsen kinosenter.
+Burde vel gi svar på rute19 mot sentrum som passerer Prinsen kinosenter.
 
 Med vennlig hilsen
 Olaf Misfjord
 
 AtB
-RÃ¥dgiver 
+Rådgiver 
 952 62 290
 www.atb.no
 
 
-Ã…rsaken til feilen er at i sommerrutene er Olav NygÃ¥rds veg er stavet forskjellig for
+Årsaken til feilen er at i sommerrutene er Olav Nygårds veg er stavet forskjellig for
 holdeplassene  inn til byen, og ut av byen:
 
 
-   inn til byen:    16011138   Olav NygÃ¥rds veg
+   inn til byen:    16011138   Olav Nygårds veg
    ut av byen:      16010348   Olav Nygards veg
 
 
-Dette fÃ¸rte til at den direkte ruten (inn til byen)
+Dette førte til at den direkte ruten (inn til byen)
 
-     Olav NygÃ¥rds veg - Prinsen kinosenter
+     Olav Nygårds veg - Prinsen kinosenter
 
-ikke ble funnet fordi navnet  Olav NygÃ¥rds veg ble knyttet til
+ikke ble funnet fordi navnet  Olav Nygårds veg ble knyttet til
 
 holdeplassen  16010138 Olav Nygards veg (ut av byen)
 
 i stedet for
 
-holdeplassen  16011138 Olav NygÃ¥rds vei (inn til byen).
+holdeplassen  16011138 Olav Nygårds vei (inn til byen).
 
 pga navne-korreksjon.
 
 ( I dette tilfellet burde oraklet ikke benyttet stavefeilkorreksjon,
-  som ville gitt riktig resultat, men problemet ville bli nÃ¸yaktig det
+  som ville gitt riktig resultat, men problemet ville bli nøyaktig det
   samme om man hadde skrevet
 
     :Fra Olav Nygards veg  til Prinsen Kinosenter ).
 
 
-Dette avslÃ¸rer en svakhet ved bussoraklet, ved at holdeplassene er
+Dette avslører en svakhet ved bussoraklet, ved at holdeplassene er
 identifisert ved sitt navn, og ikke ved holdeplassnummer.
 Bussoraklet oppfatter to forskjellige holdeplassnavn som to ulike
-holdeplasser, selv om forskjellen er aldri sÃ¥ liten.
+holdeplasser, selv om forskjellen er aldri så liten.
 
 Dette gjelder ikke brukergrensesnittet, som har en utmerket navnegjenkjenning og
 korreksjon, men selve databasens korrekthet.
 
 Det er en rekke navn i sommerrutene som er stavet forskjellig fra
 navnene i vinterrutene, og  sommerrutene, (se nedenfor) og det skyldes muligens antagelig at
-sommerutene editeres ved gjenbruk av fjorÃ¥rets sommerruter, som er
+sommerutene editeres ved gjenbruk av fjorårets sommerruter, som er
 forskjellig fra gjeldende vinterruter.
-Problemet lar seg lÃ¸se ved nitid oppdatering av holdeplassnavnene ved
+Problemet lar seg løse ved nitid oppdatering av holdeplassnavnene ved
 skifte av ruteperioder, men problemet er akutt  ved
-forespÃ¸rsler fÃ¸r ruteperiodeskifte som gjelder ruter etter skiftet.
-(Dette er uheldig, siden forespÃ¸rsler om ruteavganger neste dag er spesielt
-aktuelt for dato fÃ¸r ruteskifte).
+forespørsler før ruteperiodeskifte som gjelder ruter etter skiftet.
+(Dette er uheldig, siden forespørsler om ruteavganger neste dag er spesielt
+aktuelt for dato før ruteskifte).
 
 Siden det er kort tid igjen til nye vinterruter, ville det enkleste
-for oss vÃ¦re at det ble en gjennomgang av holdeplassnavnene slik
+for oss være at det ble en gjennomgang av holdeplassnavnene slik
 at de var riktige, og  i samsvar med holdeplassnavnene for
-sommerrutene. En slik gjennomgang ble gjennomfÃ¸rt ved Team trafikk
+sommerrutene. En slik gjennomgang ble gjennomført ved Team trafikk
 da tilsvarende problem oppsto, med godt resultat.
 
 --------------
 
 Date: Wed, 17 Aug 2011 09:40:42 +0200 (MEST)
 From: Tore Amble <toreamb@idi.ntnu.no>
-To: "[UTF-8] TorbjÃ¸rn NordgÃ¥rd" <torbjorn@lingit.no>
+To: "[UTF-8] Torbjørn Nordgård" <torbjorn@lingit.no>
 Subject: Android-saken
 
 
 
-Som sagt sÃ¥ har jeg ikke hÃ¸rt noe fra ham, og jeg fÃ¥r ikke til Ã¥ laste    
-Smartpone-applikasjonen (FUIROS) pÃ¥ min Android.
+Som sagt så har jeg ikke hørt noe fra ham, og jeg får ikke til å laste    
+Smartpone-applikasjonen (FUIROS) på min Android.
 
-Jeg ser det som en forutsetning for Ã¥ gÃ¥ videre med FUIROS og AtB at
-det er mulig Ã¥ laste opp FUIROS pÃ¥ en vilkÃ¥rlig Android.
+Jeg ser det som en forutsetning for å gå videre med FUIROS og AtB at
+det er mulig å laste opp FUIROS på en vilkårlig Android.
 
-Skal jeg forhÃ¸re meg om hvordan det gÃ¥r med opplasting, eller er det du   
-som gÃ¥r videre med saken.
+Skal jeg forhøre meg om hvordan det går med opplasting, eller er det du   
+som går videre med saken.
 
 ---------------------------------------
 ate: Wed, 17 Aug 2011 12:45:48 +0200 (MEST)
@@ -4860,14 +4860,14 @@ Subject: Android app
 
 Hei.
 
-Hvordan gÃ¥r det.
+Hvordan går det.
 
-Som nevnt har vi ikke klart Ã¥ laste ned FUIROS pÃ¥ min Android-sak.
+Som nevnt har vi ikke klart å laste ned FUIROS på min Android-sak.
 Problemet var manglende sertifiseing (Certificate).
 
-Dette er en forutsetning for Ã¥ kunne gÃ¥ videre med saken overfor AtB.
+Dette er en forutsetning for å kunne gå videre med saken overfor AtB.
 
-Har du prÃ¸vd Ã¥ laste ned FUIROS (pÃ¥ nytt) pÃ¥ din egen Android (evt. en annen) fra nettet.
+Har du prøvd å laste ned FUIROS (på nytt) på din egen Android (evt. en annen) fra nettet.
 
 Eller har du andre forslag ?
 
@@ -4894,7 +4894,7 @@ gjeldende fra 22.08.2011.
 Kan du ta bort disse avgangene fra oraklet?
 
 Date: Wed, 3 Aug 2011 09:51:56 +0200
-From: "[UTF-8] TorbjÃ¸rn NordgÃ¥rd" <torbjorn@lingit.no>
+From: "[UTF-8] Torbjørn Nordgård" <torbjorn@lingit.no>
 To: Magnus Raaum <magnus.raaum@gmail.com>
 Cc: Tore Amble <toreamb@idi.ntnu.no>
 Subject: Re: Applikasjon AtB
@@ -4909,42 +4909,42 @@ Parts/Attachments:
 
 Hei Magnus.
 
-Flott at du kan gjÃ¸re dette (om jeg forstÃ¥r deg rett)!
+Flott at du kan gjøre dette (om jeg forstår deg rett)!
 
 Fint om du kan lage et forslag med estimat over timer.
 
 AtB forholder seg til Lingit. Vi formidler leveransen til dem og er
 ansvarlig for at den fungerer.
 
-NÃ¥r det gjelder kravspesifikasjonen Ã¸nsker vi (og AtB) en overordnet
-beskrivelse av det som skal gjÃ¸res og nÃ¥r det kan utfÃ¸res, etc.
-Detaljeringsgraden er flytende; det viktigste er at jeg skjÃ¸nner hva som
-skal gjÃ¸res, er overbevist om at tidsestimatene holder og kan forklare AtB
+Når det gjelder kravspesifikasjonen ønsker vi (og AtB) en overordnet
+beskrivelse av det som skal gjøres og når det kan utføres, etc.
+Detaljeringsgraden er flytende; det viktigste er at jeg skjønner hva som
+skal gjøres, er overbevist om at tidsestimatene holder og kan forklare AtB
 hvordan applikasjonen virker.
 
 ---------------
 
 
- Den 19. juli 2011 10:39 skrev Magnus Raaum <magnus.raaum@gmail.comfÃ¸lgende:
+ Den 19. juli 2011 10:39 skrev Magnus Raaum <magnus.raaum@gmail.comfølgende:
 
- Hei Tore og TorbjÃ¸rn
+ Hei Tore og Torbjørn
 
- Det som gjenstÃ¥r Ã¥ gjÃ¸re fÃ¸r applikasjonen kan bli lagt ut pÃ¥ marked
+ Det som gjenstår å gjøre før applikasjonen kan bli lagt ut på marked
  er hovedsaklig et nytt GUI og testing.
- Men er det noen fra AtB jeg kan kontakte for Ã¥ utarbeide en
+ Men er det noen fra AtB jeg kan kontakte for å utarbeide en
  kravspesifikasjon?
  Eller skal jeg bare lage et forslag med et time-estimat?
 
- Som du vet Tore, sÃ¥ trenger applikasjonen en utvidet utgave av BusTUC.
- NÃ¥ ligger den pÃ¥ Tagore, som gjÃ¸r at en enkel spÃ¸rring tar ca 15 sekunder.
- Vil det vÃ¦re mulig Ã¥ fÃ¥ utvidet AtB's BusTUC? Eller fÃ¥ flyttet den
+ Som du vet Tore, så trenger applikasjonen en utvidet utgave av BusTUC.
+ Nå ligger den på Tagore, som gjør at en enkel spørring tar ca 15 sekunder.
+ Vil det være mulig å få utvidet AtB's BusTUC? Eller få flyttet den
  over til en bedre server hos NTNU?
 
  Er det slik at dette er et produkt som Lingit selger til AtB?
  Eller er det jeg som selger det til AtB som privatperson?
 
- Jeg vil forresten jobbe fulltid framover, sÃ¥ dette er noe jeg mÃ¥ gjÃ¸re
- pÃ¥ fritiden min.
+ Jeg vil forresten jobbe fulltid framover, så dette er noe jeg må gjøre
+ på fritiden min.
  Men jeg fikk ikke noe intrykk om at dette var noe som hastet?
 
  mvh

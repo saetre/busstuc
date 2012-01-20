@@ -42,7 +42,7 @@ regram:- %% short
 
 
 makegram:- 
-    nodebug, %% TA-001027     %% RS-120105 Want to know what's hapenning here...
+    nodebug, %% TA-001027
     language(Lang),
     makegram(Lang).
 
@@ -52,10 +52,11 @@ makegram(Lang):-
     retractall(optiprod(_)), 
 
     tell('dcg.pl'),
+        %% write('%% '),write(dadatetimenl,
         writeheading,
         write('%% Automatically created by tuc/metacomp.pl, based on dict and tuc/gram_...'),nl,nl,
         write(':- ensure_loaded(declare). %% RS-111213 General (semantic) Operators'),nl,nl,
-        write(':-prolog_flag(discontiguous_warnings, off).'),nl,nl,
+        write(':- :-prolog_flag(discontiguous_warnings,_,off).'),nl,nl,
  
         gram_module(Lang,G),   
         for((G: (X ---> Y)), genprod(X,Y)),
@@ -227,7 +228,7 @@ foundmeta(X):-  %% TA-100114
     told, %% make message appear online
     nl,
     tell(user),
-    write('Â¤Â¤Â¤ CATASTROPHIC ERROR Â¤Â¤Â¤'),nl,
+    write('¤¤¤ CATASTROPHIC ERROR ¤¤¤'),nl,
     write('*** Attempt to make a Variable Meta Production ***'),nl,
 
     told,
