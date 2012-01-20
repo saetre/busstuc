@@ -80,8 +80,8 @@ period_message( r1611_110627,
 ['AtB Routes for summer',
  'AtB Ruter sommeren']).
 
-route_period( tt, r1606_120102, date(2012,1,2),      date(2012,12,31) ).
-period_message( r1606_120102,
+route_period( tt, r1609_120120, date(2012,1,20),      date(2012,12,31) ).
+period_message( r1606_120120,
 ['AtB Winter routes',           
  'AtB Vinterruter']). %% \+ .   %% RS-111220
 
