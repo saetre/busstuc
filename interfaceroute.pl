@@ -65,9 +65,9 @@ set_period_module(TT) :-
 
     !. %% /////////
  
-set_period_module(_TT_) :- 
-    output('UNABLE TO FIND CURRENT MODULE FOR THIS DATE'),
-    abort.
+set_period_module(TT) :-
+    output('interfacesroute.pl~69: UNABLE TO FIND CURRENT MODULE FOR THIS DATE for '),output(TT).
+%%,   abort.
 
 
 

@@ -251,9 +251,9 @@ has_att_val(agent,creator,tuc,tagore).       %% NB agent
 has_att_val(agent,leader,tuc,tagore).        %% TA-110606
 
 has_att_val(_agent,address,atb,'Kongens gate 34b'). %% TA-110622
-has_att_val(person,address,(tore,amble),'Øya Helsehus 5etg'). %% RS-110926
-has_att_val(person,address,tore,'Øya Helsehus 5etg'). %% RS-110926
-has_att_val(person,address,amble,'Øya Helsehus 5etg'). %% RS-110926
+has_att_val(person,address,(tore,amble),'Charlottenlund helse- og velferdssenter på Brundalen, Yrkesskoleveien 21'). %% RS-120202
+has_att_val(person,address,tore,'Charlottenlund helse- og velferdssenter på Brundalen, Yrkesskoleveien 21'). %% RS-120202
+has_att_val(person,address,amble,'Charlottenlund helse- og velferdssenter på Brundalen, Yrkesskoleveien 21'). %% RS-120202
 
 has_att_val(agent,mailaddress,tagore,'toreamb@idi.ntnu.no'). %% TA-110120
 has_att_val(agent,mailaddress,tuc,'tagore@idi.ntnu.no'). %% ( only tuc ???)

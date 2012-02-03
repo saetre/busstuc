@@ -177,6 +177,7 @@ isat(kvt,city_syd).             %%
 
 isat(lerkendal_stadion,lerkendal). 
 isat(lerchendal_gård,lerkendal).   %% ?
+isat(lerchendal_gård,lerkendal).   %% ?
 
 isat(loholtbakken,loholt). 
 isat(lohove,loholt). 
@@ -1231,9 +1232,10 @@ sameplace(leirbrugård,leirbrua_gård).
 sameplace(leirfoss,nedre_leirfoss). 
 sameplace(leirfossen,nedre_leirfoss). 
 sameplace(leirgårdbru,leirbrua_gård). 
+sameplace(lerchendalsgård,lerkendal_gård).
 sameplace(lerchendalskrysset,lerkendalskrysset). 
 %% sameplace(lerkendal,lerkendal_stadion).  %% NB lerk //unnec,creates dbl entry
-sameplace(lerkendalgård,lerchendal_gård). 
+sameplace(lerkendalgård,lerchendal_gård).
 sameplace(lerkendalstadion,lerkendal_stadion). 
 sameplace(leutehagen,leuthenhaven). 
 sameplace(leutehaven,leuthenhaven). 

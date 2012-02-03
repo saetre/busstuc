@@ -6,6 +6,7 @@
 
 %% Main program for BussTUC
 
+:- ensure_loaded('declare'). %% RS-111213 General (semantic) Operators
 
 :-use_module(library(timeout)). 
 % ?-prolog_flag(gc_trace,_,verbose).
