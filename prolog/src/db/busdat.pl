@@ -97,6 +97,8 @@
 
 :-dynamic named_date/2. %% Created Initially 
 
+tram_module( r1630_111201 ).
+
 create_named_dates :-
     list_of_named_dates(L), 
     for((member(A,L),orig_named_date(A,B)),

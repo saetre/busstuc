@@ -44,6 +44,8 @@
 
    (tramflag := false),         %% A/S Gråkallen not OK at TEAM, OK at NTNU
 
+   (tmnflag := false),         %%
+
    (mapflag  := false),         %% dont show MAP trace
 
    (parsetime_limit := 10000).  %% slower server %%  benchmark

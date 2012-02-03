@@ -8,7 +8,7 @@
 
 %% NB NB Has the same name as the <module>:rebus
 
-
+regbus(1). %% Tram/trikk
 
 regbus(2).
 regbus(3).
@@ -36,7 +36,7 @@ regbus(41). %% only summer
 regbus(43).
 regbus(44).
 regbus(46).
-regbus(47). %%  (Klæbu)
+regbus(47). %%  (Klï¿½bu)
 %% regbus(48). %% Out 070305
 regbus(49).
 
@@ -97,4 +97,4 @@ nightbus(155).
 nightbus(175). 
 nightbus(188). 
 
-%¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+%ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
