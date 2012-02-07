@@ -255,6 +255,17 @@ norsource_postfix :- %% TA-110207
     (output('</bustuc>'),nl);true.
 
 
+jettyrun(S)  :- %% This was gone so I reimplemented it. %% TE-120207
+        world := real,
+        reset_period, %% ---> topreg.pl
+        psl(S,L),
+        L = [File|L1],
+        tell(File),
+        
+        splitlang(L1,L2),
+        (process(L2);true), % Process always fails...
+        !.
+
 
 dialog :-  
 	 nl,
