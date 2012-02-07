@@ -260,7 +260,6 @@ outdeplist02(Deps,Day,Opts,DirPlace,Out,MAP) :-
 
 
 print_smart_init(Opts) :- 
-    smartdepflag :=true, %% Quickfix to allow json output to all queries. %% TE-120206   
     value(smartdepflag,true),
     !,
     comptimeflag(Opts,Trans,TF),

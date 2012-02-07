@@ -1088,7 +1088,8 @@ indentprint(N,Y):-
 
 transfix([gpsflag:::Orgy | Rest],U) :-!,
 
-   ( Orgy \== [] -> smartdepflag :=true;smartdepflag :=false), %% if gps, special output
+    %%( Orgy \== [] -> smartdepflag := true ; smartdepflag := true ), %% if gps, special output
+    smartdepflag := true, %% Quickfix to allow json output to all queries. %% TE-120206   
 
     for(member(gps_origin(X,Y),Orgy), 
            remember(gps_origin(X,Y))),
