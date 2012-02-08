@@ -1204,9 +1204,7 @@ outdeponly(Dep,DirPlace,
           ; 
           getcurrent(Cid), 
           addref(Cid, Rid,lastrid)      
-    ),
-
-  
+    ),    
 
     outandarrivesonly(Station,Time9,DirPlace,Rid,BegTime,DelDep,ARRIVALTIME,OutArr,FINAL), 
 
@@ -1315,6 +1313,9 @@ outsmalldeps0([ x3(TimesDuration,BusN,Station)|BusDeps],DirPlace, %% TimesDurati
              bcp(Passes),     bwr(Station), 
     			  
     OutDeps2,period,OutDeps),Opts) :-
+        
+     %%   write( 'BusDeps: '),
+     %%   write(BusDeps),
 
     vehicletype(BusN,Bus),
 
@@ -1322,6 +1323,9 @@ outsmalldeps0([ x3(TimesDuration,BusN,Station)|BusDeps],DirPlace, %% TimesDurati
 
 	 outsmalldeps2(duration,Station,TimesDuration,DirPlace,OutDeps2,Opts),  
 	 ensure_removed([BusN,Station,TimesDuration],BusDeps,BusDeps2),
+         
+         ( BusDeps \== [] -> output(',') ; true ), %%Comma between list elements %%TE-120207
+                 
 	 outsmalldeps0(BusDeps2,DirPlace,OutDeps,Opts).
 
 
@@ -1351,7 +1355,6 @@ outsmalldeps2(arrivaltime,_Station,[TimesDuration],DirPlace, (bwt(Time),OutArr),
 	 outandarrives3(UT,arrival(Arrival),OutArr).
 
 outsmalldeps2(duration,Station,TimesDurations,DirPlace,(bwtimes2(Times),OutArr),_Opts ) :- 
-
     create_smartdep_entry(Station,TimesDurations,   DirPlace,Smartdep_entry), %% TA-110405
 
     print_smartdep_entry(Smartdep_entry),
@@ -1461,7 +1464,8 @@ print_smartdep_entry(smartdepentry(Fullstatname1,Localstatno1,BusNo,Time,Duratio
    fnuttify2(Destination,FDestination),
 
    !,
-   output(ItemList).
+   out(ItemList).
+
 
 
   
@@ -1798,6 +1802,8 @@ outfromtocorr1(_Opts,Dep,OutDep1,Mid01,(OutDep2,earliesttimes),corr(Dep,Mid01)):
    print_smartdep_entry(Smartdep_entry1),
 
 
+   output(','), %% Comma between list elements %%TE-120208
+   
    difftime( EndTime,OnTime,Duration2),
 
    create_smartdep_entry3(OnStation,OnTime,Duration2,EndBusN, EndStation,Smartdep_entry2),
