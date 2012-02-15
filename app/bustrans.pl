@@ -7009,7 +7009,7 @@ id  flag(nightbusflag),
     addcon  atday(Saturday) 
 ip  \+ (DATE = date(_,12,24)), %% not in the evening!
     \+ (DATE = date(_,12,31)),
-    extraallowed_night(DATE,Saturday),
+    busdat:extraallowed_night(DATE,Saturday),
     dayModSeqNo(DATE,DaySeqNo).
 
 
@@ -7019,7 +7019,7 @@ id  flag(nightbusflag),
     atdate2(_DaySeqNo,DATE),
     not atday(_),
     add  atday(Saturday)  
-ip  extraallowed_night(DATE,Saturday).
+ip  busdat:extraallowed_night(DATE,Saturday).
 
 
 
@@ -7033,7 +7033,7 @@ id  flag(nightbusflag),
 ip  timenow(D), D > 0430, %% NOT moday 27 between 2400 - 0059
     todaysdate(DATE),
     add_days(DATE,1,ED),
-    extraallowed_night(ED,Saturday),
+    busdat:extraallowed_night(ED,Saturday),
     dayModSeqNo(DaySeqNo,ED).
 
 
@@ -7045,7 +7045,7 @@ id  flag(nightbusflag),
     add  atday(Saturday)
 ip  timenow(D), D =< 0400, 
     todaysdate(DATE),
-    extraallowed_night(DATE,Saturday).
+    busdat:extraallowed_night(DATE,Saturday).
 
      
    
@@ -7064,7 +7064,7 @@ id  flag(nightbusflag),
 ip  xweekday(Date1,H), 
     today(T),  T \== H, 
     add_days(Date1,1,ED),
-    extraallowed_night(ED,Saturday),
+    busdat:extraallowed_night(ED,Saturday),
     dayModSeqNo(DaySeqNo,ED).
 
 setdatexdagnattextra rule  %% Nightbus Friday (night) = Saturday
@@ -7085,7 +7085,7 @@ ip  dmeq(mtwtfss,Friday),
     daysucc(Friday,Saturday),
     user:number_of_days_between(Tuesday,Saturday,N), 
     user:finddate(N,DATE),
-    extraallowed_night(DATE,Saturday),
+    busdat:extraallowed_night(DATE,Saturday),
     dayModSeqNo(DATE,DaySeqNo).
 
 
@@ -7192,7 +7192,7 @@ ip  timenow2(0,T), T > 0430,
     daysucc(Friday,Saturday),
     user:number_of_days_between(Tuesday,Saturday,N), 
     user:finddate(N,DATE),
-    \+ extraallowed_night(DATE,_),  
+    \+ busdat:extraallowed_night(DATE,_),  
     \+ user:disallowed_night(DATE), 
     dayModSeqNo(DATE,DaySeqNo).
 
@@ -7210,7 +7210,7 @@ ip  timenow2(0,T), T > 0430,
     today(Friday),
     daysucc(Friday,Saturday),
     user:finddate(1,DATE),
-    \+ extraallowed_night(DATE,_), 
+    \+ busdat:extraallowed_night(DATE,_), 
     \+ user:disallowed_night(DATE), 
     dayModSeqNo(DATE,DaySeqNo).
 
@@ -7356,7 +7356,7 @@ id  flag(nightbusflag),
     addcon  atday(Saturday) 
 ip  add_days(DATE,0,ED), %% If date means same date
     dayModSeqNo(ED,DaySeqNo), 
-    extraallowed_night(ED,Saturday),
+    busdat:extraallowed_night(ED,Saturday),
     dayModSeqNo(DaySeqNo,ED).  
 
 setexdate3nightcrazy rule   %% Set date if explicit midnight Xmas
@@ -7417,7 +7417,7 @@ id  flag(nightbusflag),
     atday(Day),  
     add message(nonightbusesthen) %% 
 ip  user:findfirstcomingdate(Day,Date), %% NEW datecalc.pl
-    \+ extraallowed_night(Date,_), 
+    \+ busdat:extraallowed_night(Date,_), 
     user:disallowed_night(Date).
 
 
@@ -7674,7 +7674,7 @@ id  atdate2(_DaySeqNo,EX),
     not flag(exit),
     add flag(exit),
     add message(standnight)
-ip  \+  extraallowed_night(EX,_).
+ip  \+  busdat:extraallowed_night(EX,_).
 
 
 
