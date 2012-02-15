@@ -1,4 +1,6 @@
 
+\nodebug
+
 \set queryflag true
 
 \set smsflag false

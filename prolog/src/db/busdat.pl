@@ -99,6 +99,9 @@
 
 tram_module( r1630_111201 ).
 
+station(X) :-
+        user:station(X).
+
 create_named_dates :-
     list_of_named_dates(L), 
     for((member(A,L),orig_named_date(A,B)),
