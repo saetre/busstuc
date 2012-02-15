@@ -1,3 +1,5 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
+
 %% FILE dict_n.pl
 %% SYSTEM BUSSTUC/BUSTER
 %% CREATED TA-930601
@@ -6,7 +8,7 @@
 
 :-module(dict_n,[]). 
 
-%¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+%Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 % sp     spell error (unintended) ,not inflectable
 % spiw   incorrect  writing (intended), inflectable
 % repair repair (without deletion)
@@ -19,7 +21,7 @@
 % neib   key neighbour error
 % nec    necessary (surprisingly)
 % ?      dubious (facetious)
-%¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+%Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 
@@ -32,7 +34,7 @@
 % synword      Word -> Word, keep alternatives
 
 
-%%¤  REWORDING 
+%%Â¤  REWORDING 
  
  %% Use only for context dependent rewriting
  %% Use with extreme care if synword,compword,splitword is futile
@@ -42,13 +44,13 @@
    rewording([2,t],[2,timer]). %% 
    rewording([3,t],[3,timer]). %% 
 
-   rewording([bare,å],            [mulig,å]).       %% TA-110111
+   rewording([bare,Ã¥],            [mulig,Ã¥]).       %% TA-110111
    rewording([beste,buss],        [neste,buss ]).   
    rewording([buss,dra],          [buss,fra ]).
    rewording([bussen,dra],        [bussen,fra ]). 
-   rewording([bår,må],            [når,må ]).       %% bår=når|går
+   rewording([bÃ¥r,mÃ¥],            [nÃ¥r,mÃ¥ ]).       %% bÃ¥r=nÃ¥r|gÃ¥r
 
-   rewording([det,ekle],[det,dårlige]). %% \+ Ekle %% TA-101108  
+   rewording([det,ekle],[det,dÃ¥rlige]). %% \+ Ekle %% TA-101108  
 
    rewording([dvs,'.'],[dvs]). %% Tricky %% TA-110304
  
@@ -61,19 +63,19 @@
 
    rewording([feiler,det],[er,feil,med]).  %% TA-101103 hva er feil med deg
 
-   rewording([for,kl],            [før,kl ]).  %% for kl 11 \+ for (rute) 11
-   rewording([for,klokken],       [før,kl ]). 
-   rewording([for,klokken],       [før,kl ]). 
+   rewording([for,kl],            [fÃ¸r,kl ]).  %% for kl 11 \+ for (rute) 11
+   rewording([for,klokken],       [fÃ¸r,kl ]). 
+   rewording([for,klokken],       [fÃ¸r,kl ]). 
 
-   rewording([for,æ,være],        [for,å,være ]). 
-   rewording([for,a,være],        [for,å,være ]).           %% TA-100921
+   rewording([for,Ã¦,vÃ¦re],        [for,Ã¥,vÃ¦re ]). 
+   rewording([for,a,vÃ¦re],        [for,Ã¥,vÃ¦re ]).           %% TA-100921
 
-   rewording([føler,jeg,meg],     [er,jeg]). %% ..sikker på %% TA-101025   
-   rewording([gå,til,fradrag],    [være,inkludert ]).   
+   rewording([fÃ¸ler,jeg,meg],     [er,jeg]). %% ..sikker pÃ¥ %% TA-101025   
+   rewording([gÃ¥,til,fradrag],    [vÃ¦re,inkludert ]).   
 
-   rewording([går,fordi],         [går,forbi ]). 
+   rewording([gÃ¥r,fordi],         [gÃ¥r,forbi ]). 
 
-   rewording([ha,vært,på],    [komme,til]). %% skulle gjerne ha vært.. %% rough %% TA-101022
+   rewording([ha,vÃ¦rt,pÃ¥],    [komme,til]). %% skulle gjerne ha vÃ¦rt.. %% rough %% TA-101022
 
    rewording([han,du],[kan,du]). %% TA-110201 own
 
@@ -92,40 +94,40 @@
    rewording([i,forb,'.',m], [i,forbindelse,med ]). 
    rewording([i,forb,m],     [i,forbindelse,med ]).  
 
-%%%%%   rewording([jeg,når],           [jeg,rekker ]).    %% TA-100923
-%% hva gjør jeg når ...
+%%%%%   rewording([jeg,nÃ¥r],           [jeg,rekker ]).    %% TA-100923
+%% hva gjÃ¸r jeg nÃ¥r ...
 
-   rewording([kan,skyldes],       [er,forårsaket,av ]). %% before skyldes =
-   rewording([kommer,jeg,til,å],  [vil,jeg]). %%  hva kommer jeg til  å bli
+   rewording([kan,skyldes],       [er,forÃ¥rsaket,av ]). %% before skyldes =
+   rewording([kommer,jeg,til,Ã¥],  [vil,jeg]). %%  hva kommer jeg til  Ã¥ bli
 
-   rewording([nr,går],            [når,går ]).  
-   rewording([nr,må],             [når,må ]).
+   rewording([nr,gÃ¥r],            [nÃ¥r,gÃ¥r ]).  
+   rewording([nr,mÃ¥],             [nÃ¥r,mÃ¥ ]).
   
-   rewording([nær,går],           [når,går]).       %% TA-110116
-   rewording([når,har,bussen],    [når,går,bussen ]). 
-   rewording([når,jeg,tar,bussen], [når,går,bussen ]).  %%  Haz
+   rewording([nÃ¦r,gÃ¥r],           [nÃ¥r,gÃ¥r]).       %% TA-110116
+   rewording([nÃ¥r,har,bussen],    [nÃ¥r,gÃ¥r,bussen ]). 
+   rewording([nÃ¥r,jeg,tar,bussen], [nÃ¥r,gÃ¥r,bussen ]).  %%  Haz
              
    rewording([og,retur],          [og,tilbake ]).
 
    rewording([over,halvparten],   [de,fleste ]). 
                                                %% only from start
-   rewording([på,jeg,ta],         [må,jeg,ta ]).        %%   når ... bussen                    
+   rewording([pÃ¥,jeg,ta],         [mÃ¥,jeg,ta ]).        %%   nÃ¥r ... bussen                    
    rewording([s,buss],            [siste,buss ]).       %% TA-100825
-   rewording([sa,jeg,er],         [så,jeg,er ]).   
+   rewording([sa,jeg,er],         [sÃ¥,jeg,er ]).   
    rewording([skal,med],          [skal,reise,med ]).   %% TA-100902
-   rewording([straks,dette],      [når,dette ]).  
-   rewording([så,derfor],         [fordi,da]).          %% TA-110105 rough
-   rewording([så,nøye],[]).                             %% TA-110105
-   rewording([står,oppført,med],  [har]).               %% TA-101115 ad hoc
+   rewording([straks,dette],      [nÃ¥r,dette ]).  
+   rewording([sÃ¥,derfor],         [fordi,da]).          %% TA-110105 rough
+   rewording([sÃ¥,nÃ¸ye],[]).                             %% TA-110105
+   rewording([stÃ¥r,oppfÃ¸rt,med],  [har]).               %% TA-101115 ad hoc
 
  /*
-   rewording([ta,vare,på],[beholde]).    %% TA-110816
-   rewording([tar,vare,på],[beholder]).  %%
-   rewording([tok,vare,på],[beholdt]).   %%
-   rewording([tatt,vare,på],[beholdt]).  %%
+   rewording([ta,vare,pÃ¥],[beholde]).    %% TA-110816
+   rewording([tar,vare,pÃ¥],[beholder]).  %%
+   rewording([tok,vare,pÃ¥],[beholdt]).   %%
+   rewording([tatt,vare,pÃ¥],[beholdt]).  %%
 */
 
-   rewording([ta,til],[gå,til]). %% .. venstre
+   rewording([ta,til],[gÃ¥,til]). %% .. venstre
    rewording([ta,utgangspunkt],[starte]).   %% ad hoc %% TA-101115 overgangen vil ta utgangspunkt .
    rewording([tar,utgangspunkt],[starter]). %%
 
@@ -133,7 +135,7 @@
 
    rewording([til,buen],[til,byen]). %% Anders buens vei %% TA-110204 
 
-%%    rewording([tid,går],           [når,går ]). %%  hva tid går
+%%    rewording([tid,gÃ¥r],           [nÃ¥r,gÃ¥r ]). %%  hva tid gÃ¥r
 
    rewording([t,buss],            [ta,buss ]). 
 
@@ -142,9 +144,9 @@
    rewording([vil,vekk],          [vil,reise,vekk]). %% TA-100902
    rewording([visst,jeg],         [hvis,jeg]). %% trouble visst=redundantly 
 
-   rewording([være,at],[bli,at]). %% ad hoc fedup %% TA-110810
+   rewording([vÃ¦re,at],[bli,at]). %% ad hoc fedup %% TA-110810
 
-   rewording([å,svar],            [å,svare]).  %% trouble svar=noun|verb
+   rewording([Ã¥,svar],            [Ã¥,svare]).  %% trouble svar=noun|verb
    
 
 %--
@@ -178,30 +180,30 @@ splitword(null,[0]).
 
 %% splitword(ett,[1]).   %% ett hotell
 
-%% splitword(to,[2]).    %% når må jeg to bussen 
+%% splitword(to,[2]).    %% nÃ¥r mÃ¥ jeg to bussen 
 splitword(tre,[3]).   
 splitword(fire,[4]).
 splitword(fem,[5]).
 splitword(seks,[6]).
 splitword(sju,[7]).
-splitword(åtte,[8]).
+splitword(Ã¥tte,[8]).
 splitword(ni,[9]). %% Ni muser -> 9 muser
 
 splitword(bortimot,[nesten]).  
 splitword(busen,[bussen]).
-splitword(faør,[før]).          %% simplifies compword   %% fÃ¸r
+splitword(faÃ¸r,[fÃ¸r]).          %% simplifies compword   %% fÃƒÂ¸r
 
-splitword(faa,[få]).            %% TA-100918
-splitword(faatt,[fått]).  
+splitword(faa,[fÃ¥]).            %% TA-100918
+splitword(faatt,[fÃ¥tt]).  
 
 splitword(fkl,[fra,kl]).  
 splitword(frem,[fram]).         %% NB fram is official, avoid  
 splitword(framme,[fremme]).     %% NB fremme is official (?)     
 
-splitword(gaar,[går]). 
+splitword(gaar,[gÃ¥r]). 
 splitword(gan,[gang]).          %% TA-110324
-splitword(gar,[går]). 
-splitword(gayr,[går]).          %% simplifies compword  
+splitword(gar,[gÃ¥r]). 
+splitword(gayr,[gÃ¥r]).          %% simplifies compword  
 splitword(greitt,[greit]). 
 splitword(heile,[hele]).  
 
@@ -213,52 +215,52 @@ splitword(jag,jeg).
 splitword(kjappast,[hurtigst]).
 splitword(kjappest,[hurtigst]). %%
 splitword(km,[kilometer]).
-splitword(may,[må]).            %% mÃ¥
+splitword(may,[mÃ¥]).            %% mÃƒÂ¥
 splitword(mig,meg).  
 %% splitword(morra,[morgen]).   %%  amb morrow/morning
 splitword(muligt,[mulig]). 
-splitword(naa,[nå]). 
-splitword(naar,[når]).   
-splitword(nar,[når]).  
-splitword(nayr,[når]).
+splitword(naa,[nÃ¥]). 
+splitword(naar,[nÃ¥r]).   
+splitword(nar,[nÃ¥r]).  
+splitword(nayr,[nÃ¥r]).
 splitword(nedi,[ned,i]). 
 splitword(neri,[ned,i]).  
-splitword(nermeste,[nærmeste]). 
-splitword(nyttigjøre,[nyttiggjøre]).
+splitword(nermeste,[nÃ¦rmeste]). 
+splitword(nyttigjÃ¸re,[nyttiggjÃ¸re]).
 %% splitword(noke,[noe]).       %% cuts noke=noen
-splitword(paa,[på]).   
-splitword(pay,[på]). 
+splitword(paa,[pÃ¥]).   
+splitword(pay,[pÃ¥]). 
 splitword(pensjoneres,[pensjonere,seg]). %% TA-100821 // inf|pres
-splitword(poske,[påske]).  
+splitword(poske,[pÃ¥ske]).  
 splitword(raskes,[raskest]). 
 splitword(rote,[rute]).   
 splitword(roter,[ruter]). 
-splitword(sjøfør,sjåfør).       %% TA-110324
+splitword(sjÃ¸fÃ¸r,sjÃ¥fÃ¸r).       %% TA-110324
 splitword(slute,[slutte]).      %% involved in compwords
-splitword(smaa,små).  
-splitword(sæ,[seg]).
+splitword(smaa,smÃ¥).  
+splitword(sÃ¦,[seg]).
 splitword(tillfelle,[tilfelle]).
 splitword(turretur,[retur]).    %% rough 
 splitword(untak,[unntak]). 
 splitword(utenbys,[utenfor,byen]). 
-splitword(utåver,[utover]).  
-%% splitword(vert,[blir]).   %% ~~ vært      %% NN (haz? en vert)   
+splitword(utÃ¥ver,[utover]).  
+%% splitword(vert,[blir]).   %% ~~ vÃ¦rt      %% NN (haz? en vert)   
 %% splitword(vor,[for]).           %% TA-10119=hvor
-splitword('va|re',[være]). 
-splitword(vaere,[være]).    
-splitword(ære,[være]). 
-splitword(øyblikket,[øyeblikket]). %% actual %% TA-101123
-splitword(åp,[på]).   
+splitword('va|re',[vÃ¦re]). 
+splitword(vaere,[vÃ¦re]).    
+splitword(Ã¦re,[vÃ¦re]). 
+splitword(Ã¸yblikket,[Ã¸yeblikket]). %% actual %% TA-101123
+splitword(Ã¥p,[pÃ¥]).   
 
 
 %% Composite splitword 2
 
-splitword(avgangerpå,[avganger,på]).  
+splitword(avgangerpÃ¥,[avganger,pÃ¥]).  
 %% splitword(hjem,[fra,nth,til,nardo]). %% FREAK 
 %%  splitword(andreneste,[andre,neste]). 
-splitword(ankommerfør,[ankommer,før]).
+splitword(ankommerfÃ¸r,[ankommer,fÃ¸r]).
 splitword(ankomstkl,[ankomst,klokken]). 
-splitword(anå,[an,å]).  
+splitword(anÃ¥,[an,Ã¥]).  
 splitword(atden,[at,den]).  
 splitword(atjeg,[at,jeg]). 
 splitword(avgangerhar,[avganger,har]). 
@@ -268,21 +270,21 @@ splitword(busseneste,[buss,neste]).
 splitword(bussenetter,[bussen,etter]).  
 splitword(bussenefra,[bussene,fra]).  
 splitword(bussenfra,[buss,fra]). 
-splitword(bussennår,[bussen,når]). 
+splitword(bussennÃ¥r,[bussen,nÃ¥r]). 
 splitword(bussenskal,[bussen,skal]). %%  own
 splitword(bussentil,[bussen,til]).
-splitword(bussenå,[bussen,å]).  
+splitword(bussenÃ¥,[bussen,Ã¥]).  
 splitword(busserfra,[busser,fra]).  
 splitword(bussertil,[bussen,til]).  
 splitword(bussetter,[buss,etter]). 
 splitword(bussfra,[buss,fra]). 
 splitword(bussffra,[buss,fra]).  
-splitword(bussgår,[buss,går]). 
+splitword(bussgÃ¥r,[buss,gÃ¥r]). 
 splitword(bussholdeplassligger,[bussholdeplass,ligger]).
 splitword(bussifra,[buss,fra]). 
 splitword(bussinn,[buss,inn]). 
 splitword(busskan,[buss,kan]).   
-splitword(bussmå,[buss,må]). 
+splitword(bussmÃ¥,[buss,mÃ¥]). 
 splitword(bussrundt,[buss,rundt]). 
 splitword(busstil,[buss,til]). 
 splitword(byenca,[byen,ca]). 
@@ -295,7 +297,7 @@ splitword(bytil,[by,til]).
 
 splitword(dagetter,   [dag,etter]).
 splitword(dagfra,     [dag,fra]).  
-splitword(deiførste,  [de,første]). 
+splitword(deifÃ¸rste,  [de,fÃ¸rste]). 
 splitword(densom,     [den,som]).  
 
 splitword(derkl, [der,kl]). 
@@ -309,9 +311,9 @@ splitword(direktebusser,[direkte,busser]).
 splitword(direktelinje,[direkte,linje]).
 splitword(dragvollbussen,[bussen,til,dragvoll]).
 splitword(drarfra,[drar,fra]).  
-splitword(dugjøre,[du,gjøre]). 
+splitword(dugjÃ¸re,[du,gjÃ¸re]). 
 
-%% splitword(dvs,[og]).           %% bussen går dvs trikken står
+%% splitword(dvs,[og]).           %% bussen gÃ¥r dvs trikken stÃ¥r
 %% splitword(dvs,[som,er]).       %% rough 
 %% splitword(dvs,[og,dette,er]). 
 
@@ -330,7 +332,7 @@ splitword(erfra,[er,fra]).
 splitword(erikke,[er,ikke]). 
 splitword(erjeg,[er,jeg]). 
 splitword(erklokka,[er,klokka]). 
-splitword(erpå,[er,på]).  
+splitword(erpÃ¥,[er,pÃ¥]).  
 splitword(erru,[er,du]). 
 splitword(eru,[er,du]). 
 splitword(etterkl,[etter,klokken]). 
@@ -341,21 +343,21 @@ splitword(ettermiddagsruter,[ruter,om,ettermiddagen]).
 splitword(etterti,    [etter,10]).  
 
 splitword(femmern,[buss,5]). %% etc avoid 5 as 1. word
-splitword(finnespå,[finnes,på]).  
-splitword(fintå,[fint,å]).     
+splitword(finnespÃ¥,[finnes,pÃ¥]).  
+splitword(fintÃ¥,[fint,Ã¥]).     
 splitword(flyfra,[fly,fra]). 
-splitword(foray,[for,å]).                %%  forÃ¥
+splitword(foray,[for,Ã¥]).                %%  forÃƒÂ¥
 splitword(forbussen,[for,bussen]).  
 splitword(foreksempel,[for,eksempel]).   %% noise ???
 splitword(formiddagsrute,[rute,om,formiddagen]). 
 splitword(forrigebuss,[forrige,buss]). 
-splitword(forå,[for,å]). 
-splitword(foråvære,[for,å,være]).  
+splitword(forÃ¥,[for,Ã¥]). 
+splitword(forÃ¥vÃ¦re,[for,Ã¥,vÃ¦re]).  
 splitword(frabyen,[fra,byen]).  
 splitword(frasamfundet,[fra,samfundet]).
    splitword(samfundetetter,[samfundet,etter]).
    splitword(samfundetkl,[samfundet,klokken]).
-   splitword(samfundetfør,[samfundet,før]).
+   splitword(samfundetfÃ¸r,[samfundet,fÃ¸r]).
    splitword(samfundettil,[samfundet,til]).
 splitword(frasentrum,[fra,sentrum]). 
 splitword(fratorget,[fra,torget]).
@@ -364,12 +366,12 @@ splitword(fratr,[fra,trondheim]).
 splitword(fratrondheim,[fra,trondheim]). 
 splitword(frai,[fra,i]). 
 splitword(fraklokken,[fra,klokken]).  
-splitword(fremmefør,[fremme,før]).
-splitword(førmandag,[før,mandag]).       %%  ETC 
-splitword(førsebuss,[første,buss]).      %% sp
-splitword(førstebuss,[første,buss]).  
-splitword(førstebussen,[første,buss]). 
-splitword(førstepåske,[første,påske]). 
+splitword(fremmefÃ¸r,[fremme,fÃ¸r]).
+splitword(fÃ¸rmandag,[fÃ¸r,mandag]).       %%  ETC 
+splitword(fÃ¸rsebuss,[fÃ¸rste,buss]).      %% sp
+splitword(fÃ¸rstebuss,[fÃ¸rste,buss]).  
+splitword(fÃ¸rstebussen,[fÃ¸rste,buss]). 
+splitword(fÃ¸rstepÃ¥ske,[fÃ¸rste,pÃ¥ske]). 
 
 splitword(gateetter,[gate,etter]). 
 splitword(gatefor,[gate,for]).
@@ -378,27 +380,27 @@ splitword(gateklokken,[gate,klokken]).
 splitword(gatemellom,[gate,mellom]).   
 splitword(gatesom,[gate,som]).  
 splitword(gatetil,[gate,til]).    
-splitword(gayrbussen,[går,bussen]). %% TA-110103  gÃ¥rbussen
-splitword(gløsetter,[gløshaugen,etter]).  %% ?
-splitword(gn,[går,neste]).
-splitword(gneste,[går,neste]). 
+splitword(gayrbussen,[gÃ¥r,bussen]). %% TA-110103  gÃƒÂ¥rbussen
+splitword(glÃ¸setter,[glÃ¸shaugen,etter]).  %% ?
+splitword(gn,[gÃ¥r,neste]).
+splitword(gneste,[gÃ¥r,neste]). 
 splitword(godmorgen,[god,morgen]). 
-splitword(gårbuss,[går,buss]).   
-splitword(gårdetter,[går,det,etter]). 
-splitword(gårflere,[går,flere]). 
-splitword(gårførste,[går,første]).  
-splitword(gårførst,[går,første]).
-splitword(gårinnom,[går,innom]). 
-splitword(gårlinje,[går,neste]).  
-splitword(gårneste,[går,neste]).  
-splitword(gårnetste,[går,neste]). %% sp 
-splitword(gårnestebuss,[går,neste,buss]).
-splitword(gårnærmest,[går,nærmest]).  
-splitword(gårre,[går,det]). 
-splitword(gårsiste,[går,siste]). 
-splitword(gårbuss,[går,buss]). 
-splitword(gårbussen,[går,bussen]).  
-splitword(gåste,[går,neste]).  
+splitword(gÃ¥rbuss,[gÃ¥r,buss]).   
+splitword(gÃ¥rdetter,[gÃ¥r,det,etter]). 
+splitword(gÃ¥rflere,[gÃ¥r,flere]). 
+splitword(gÃ¥rfÃ¸rste,[gÃ¥r,fÃ¸rste]).  
+splitword(gÃ¥rfÃ¸rst,[gÃ¥r,fÃ¸rste]).
+splitword(gÃ¥rinnom,[gÃ¥r,innom]). 
+splitword(gÃ¥rlinje,[gÃ¥r,neste]).  
+splitword(gÃ¥rneste,[gÃ¥r,neste]).  
+splitword(gÃ¥rnetste,[gÃ¥r,neste]). %% sp 
+splitword(gÃ¥rnestebuss,[gÃ¥r,neste,buss]).
+splitword(gÃ¥rnÃ¦rmest,[gÃ¥r,nÃ¦rmest]).  
+splitword(gÃ¥rre,[gÃ¥r,det]). 
+splitword(gÃ¥rsiste,[gÃ¥r,siste]). 
+splitword(gÃ¥rbuss,[gÃ¥r,buss]). 
+splitword(gÃ¥rbussen,[gÃ¥r,bussen]).  
+splitword(gÃ¥ste,[gÃ¥r,neste]).  
 
 splitword(hadu,[har,du]). 
 splitword(hardu,[har,du]).  
@@ -406,10 +408,10 @@ splitword(haru,[har,du]).  %% dial
 splitword(harnoen,[har,noen]).  
 splitword(harru,[har,du]). 
 splitword(heledagen,[hele,dagen]).  
-splitword(helligdagrutetider,[ruter,på,helligdager]). %% ! 
-splitword(helligdagsrutetider,[ruter,på,helligdager]). 
-splitword(heligdagrutetider,[ruter,på,helligdager]). 
-splitword(heligdagsrutetider,[ruter,på,helligdager]).
+splitword(helligdagrutetider,[ruter,pÃ¥,helligdager]). %% ! 
+splitword(helligdagsrutetider,[ruter,pÃ¥,helligdager]). 
+splitword(heligdagrutetider,[ruter,pÃ¥,helligdager]). 
+splitword(heligdagsrutetider,[ruter,pÃ¥,helligdager]).
 splitword(holdeplassfor,[holdeplass,for]). 
 splitword(holdeplasstil,[holdeplass,til]).   
 splitword(hvaer,[hva,er]). 
@@ -419,7 +421,7 @@ splitword(hvemer,[hvem,er]).
 splitword(hvilkebusser,[hvilke,busser]). 
 splitword(hvilkenbuss,[hvilken,buss]).  
 splitword(hvisjeg,[hvis,jeg]). 
-splitword(hvordangår,[hvordan,går]). 
+splitword(hvordangÃ¥r,[hvordan,gÃ¥r]). 
 splitword(hvorlang,[hvor,lang]).         %% tid ..
 splitword(hvorlenge,[hvor,lenge]). 
 splitword(hvormange,[hvor,mange]).  
@@ -439,7 +441,7 @@ splitword(imeg,[i,meg]).
 splitword(innenkl,[innen,klokken]).  
 splitword(innenklokka,[innen,klokken]). 
 splitword(innenklokken,[innen,klokken]). 
-splitword(iløpet,[i,løpet]).   
+splitword(ilÃ¸pet,[i,lÃ¸pet]).   
 splitword(imorgenetter,[imorgen,etter]).
 splitword(imorgentidlig,[imorgen,tidlig]). 
 splitword(irute,[i,rute]). 
@@ -450,14 +452,14 @@ splitword(itrondheim,[i,trondheim]).
 splitword(januarsenest,[januar,senest]). %% ?
 splitword(jegdra,[jeg,dra]).   
 splitword(jeger,[jeg,er]).    
-splitword(jegspør,[jeg,spør]). 
+splitword(jegspÃ¸r,[jeg,spÃ¸r]). 
 splitword(jegta,[jeg,ta]).  
 splitword(jegvil,[jeg,vil]).  
 splitword(julerutetider,[ruter,i,jula]). %% ! 
 %% splitword(juleruter,[ruter,i,jula]).  %% chr...
 %% splitword(julruter,[ruter,i,jula]). 
 
-splitword(kanfå, [kan,få]).  
+splitword(kanfÃ¥, [kan,fÃ¥]).  
 splitword(kanjeg, [kan,jeg]).  
 splitword(kinofor,[kino,for]).     
 splitword(kinokl, [kino,kl]).   
@@ -479,31 +481,31 @@ splitword(kveldtil,[kveld,til]).
 splitword(langtid,[lang,tid]).  
 splitword(lillejul,[lille,jul]). %% ... aften
 splitword(lillejuleaften,[lille,julaften]). 
-splitword(lopet,løpet).   %% TA-101215
-splitword(lørdagfør,[lørdag,før]).       %% etc 
-splitword(lørdagnatt,[lørdag,natt]). 
+splitword(lopet,lÃ¸pet).   %% TA-101215
+splitword(lÃ¸rdagfÃ¸r,[lÃ¸rdag,fÃ¸r]).       %% etc 
+splitword(lÃ¸rdagnatt,[lÃ¸rdag,natt]). 
 
-splitword(lørdagsbuss,   [buss,på,lørdag]). 
-splitword(lørdagsbussen, [buss,på,lørdag]). 
-splitword(lørdagsbusser, [buss,på,lørdag]). 
-splitword(lørdagsbussene,[buss,på,lørdag]).
-splitword(lørdagsformiddag,[lørdag,formiddag]).
-splitword(lørdagsvis,[om,lørdager]). %% !
+splitword(lÃ¸rdagsbuss,   [buss,pÃ¥,lÃ¸rdag]). 
+splitword(lÃ¸rdagsbussen, [buss,pÃ¥,lÃ¸rdag]). 
+splitword(lÃ¸rdagsbusser, [buss,pÃ¥,lÃ¸rdag]). 
+splitword(lÃ¸rdagsbussene,[buss,pÃ¥,lÃ¸rdag]).
+splitword(lÃ¸rdagsformiddag,[lÃ¸rdag,formiddag]).
+splitword(lÃ¸rdagsvis,[om,lÃ¸rdager]). %% !
 
-splitword(nayrmay,[når,må]). 
+splitword(nayrmay,[nÃ¥r,mÃ¥]). 
 splitword(nbf,[neste,buss,fra]).  
 splitword(nordtil,[nord,til]). 
 splitword(opptur,[tur,opp]). 
 
-splitword(lørdagsnatt,[lørdag,natt]).       %%  smtotfl /s
-splitword(lørdagnatta,[lørdag,natt]).
-splitword(lørdagsnatten,[lørdag,natt]).
-splitword(lørdagsruta,[ruten,på,lørdag]).  
+splitword(lÃ¸rdagsnatt,[lÃ¸rdag,natt]).       %%  smtotfl /s
+splitword(lÃ¸rdagnatta,[lÃ¸rdag,natt]).
+splitword(lÃ¸rdagsnatten,[lÃ¸rdag,natt]).
+splitword(lÃ¸rdagsruta,[ruten,pÃ¥,lÃ¸rdag]).  
 
-%% splitword(lørdagsrute,[rute,på,lødag]). %% Concept
+%% splitword(lÃ¸rdagsrute,[rute,pÃ¥,lÃ¸dag]). %% Concept
 
-splitword(lørdagsruten,[ruten,på,lørdag]).   %%
-splitword(lørdagsrutene,[ruten,på,lørdag]).  %%
+splitword(lÃ¸rdagsruten,[ruten,pÃ¥,lÃ¸rdag]).   %%
+splitword(lÃ¸rdagsrutene,[ruten,pÃ¥,lÃ¸rdag]).  %%
 
 
 splitword(sanntidsinfo,[informasjon,om,forsinkelser]).        %% TA-110309
@@ -516,24 +518,24 @@ splitword(tirsdagden,[tirsdag,den]).
 splitword(onsdagden, [onsdag,den]). 
 splitword(torsdagden,[torsdag,den]). 
 splitword(fredagden, [fredag,den]). 
-splitword(lørdagden, [lørdag,den]). 
-splitword(søndagden, [søndag,den]).  
+splitword(lÃ¸rdagden, [lÃ¸rdag,den]). 
+splitword(sÃ¸ndagden, [sÃ¸ndag,den]).  
 
 splitword(mandagklokken, [mandag,klokken]).  
 splitword(tirsdagklokken,[tirsdag,klokken]). 
 splitword(onsdagklokken, [onsdag,klokken]). 
 splitword(torsdagklokken,[torsdag,klokken]).
 splitword(fredagklokken, [fredag,klokken]). 
-splitword(lørdagklokken, [lørdag,klokken]). 
-splitword(søndagklokken, [søndag,klokken]). 
+splitword(lÃ¸rdagklokken, [lÃ¸rdag,klokken]). 
+splitword(sÃ¸ndagklokken, [sÃ¸ndag,klokken]). 
 
 %% etc kl ,  klokka, 
 
-splitword(søndagsbuss,   [buss,på,søndag]). 
-splitword(søndagsbussen, [buss,på,søndag]).
-splitword(søndagsbusser, [buss,på,søndag]).
-splitword(søndagsbussene,[buss,på,søndag]). 
-splitword(søndagsformiddag,[søndag,formiddag]). 
+splitword(sÃ¸ndagsbuss,   [buss,pÃ¥,sÃ¸ndag]). 
+splitword(sÃ¸ndagsbussen, [buss,pÃ¥,sÃ¸ndag]).
+splitword(sÃ¸ndagsbusser, [buss,pÃ¥,sÃ¸ndag]).
+splitword(sÃ¸ndagsbussene,[buss,pÃ¥,sÃ¸ndag]). 
+splitword(sÃ¸ndagsformiddag,[sÃ¸ndag,formiddag]). 
 
 splitword(fredagsettermiddag,[fredag,ettermiddag]).   %%  smtotfl /s
 % ...
@@ -544,14 +546,14 @@ splitword(fredagskvelden,[fredag,kveld]).
 % ...
 
 splitword(fredagsnatt,[fredag,natt]).  %%  smtotfl /s
-splitword(lørdagsnatt,[lørdag,natt]).  
+splitword(lÃ¸rdagsnatt,[lÃ¸rdag,natt]).  
 
 splitword(fredagsnatta,[fredag,natt]).  %%  smtotfl /s
-splitword(lørdagsnatta,[lørdag,natt]).  
+splitword(lÃ¸rdagsnatta,[lÃ¸rdag,natt]).  
 
 
 splitword(fredagsnatten,[fredag,natt]).  %%  smtotfl /s
-splitword(lørdagsnatten,[lørdag,natt]).  
+splitword(lÃ¸rdagsnatten,[lÃ¸rdag,natt]).  
 
 splitword(mandagmorgen,[mandag,morgen]).  %% smtotfl /s %% Most typical
 splitword(mandagskveld,[mandag,kveld]).
@@ -562,7 +564,7 @@ splitword(junikl,  [juni,kl]).
 splitword(julikl,  [juli,kl]).
 
 splitword(mangedager,[mange,dager]).  
-splitword(manpå,  [man,på]).  
+splitword(manpÃ¥,  [man,pÃ¥]).  
 
 splitword(marskl,  [mars,kl]). %% etc
 splitword(maikl,   [mai,kl]).
@@ -575,25 +577,25 @@ splitword(morgenavganger,[avganger,om,morgenen]).
 splitword(morgenetter,[morgen,etter]).  
 splitword(morgenettermiddag,[morgen,ettermiddag]). 
 splitword(morgenfra,[morgen,fra]). 
-splitword(morgenfør,[morgen,før]). 
-splitword(morgengår,[morgen,går]). %% TA-100823
+splitword(morgenfÃ¸r,[morgen,fÃ¸r]). 
+splitword(morgengÃ¥r,[morgen,gÃ¥r]). %% TA-100823
 splitword(morgenkveld,[morgen,kveld]). 
 splitword(morgenrundt,[morgen,rundt]).
-splitword(morrafør,[morgen,før]).  
+splitword(morrafÃ¸r,[morgen,fÃ¸r]).  
 
 
 splitword(munkegatakl,[munkegata,klokken]).
 splitword(munkegatatil,[munkegata,til]). 
 
-splitword(måeg,[må,jeg]).
-splitword(måjeg,[må,jeg]).
-splitword(månedlig,[hver,måned]).
-splitword(måjeg,   [må,jeg]).  
-   splitword(nåjeg,   [må,jeg]). 
+splitword(mÃ¥eg,[mÃ¥,jeg]).
+splitword(mÃ¥jeg,[mÃ¥,jeg]).
+splitword(mÃ¥nedlig,[hver,mÃ¥ned]).
+splitword(mÃ¥jeg,   [mÃ¥,jeg]).  
+   splitword(nÃ¥jeg,   [mÃ¥,jeg]). 
 
 splitword(nattkl,[natt,kl]).   
 splitword(nattakst,[takst,for,nattbuss]). 
-splitword(nayrgayr,[når,går]).    
+splitword(nayrgayr,[nÃ¥r,gÃ¥r]).    
 splitword(nestebus,[neste,buss]). 
 splitword(nestebuss,[neste,buss]). 
 splitword(nestebussen,[neste,buss]). 
@@ -613,36 +615,36 @@ splitword(nestenbuss,[neste,buss]).
 splitword(nestneste,[andre,neste]).
 splitword(nestnestsiste,[andre,siste]).
 splitword(nestnestnestsiste,[tredje,siste]). 
-splitword(ng,[når,går]). 
+splitword(ng,[nÃ¥r,gÃ¥r]). 
 splitword(nifra,[9,fra]).    %% ?
 splitword(niog,[ni,og]).     %% ?
-splitword(nærgår,[når,går]).  
-splitword(nærmestebusstopp,[nærmeste,busstopp]). 
-splitword(nåmå,[nå,må]).  
-splitword(nårå,[når,må]). 
-splitword(nårbgår,[når,går]).
-splitword(nårgå,[når,går]).
-splitword(nårgår,[når,går]).  
-splitword(nårgårdet,[når,går,det]). 
-splitword(nårgårbuss,[når,går,buss]). 
-splitword(nårgårneste,[når,går,neste]).
-splitword(nårjeg,[når,jeg]).  
-splitword(nårkan,[når,kan]). 
-splitword(nårkommer,[når,kommer]). 
-splitword(nårmå,[når,må]).  
-splitword(nårmåjeg,[når,må,jeg]). 
-splitword(nårneste,[når,neste]). 
-splitword(nårngår,[når,går]).  
-splitword(nårpasser,[når,passerer]).    %%  sp
-splitword(nårpasserer,[når,passerer]).  %%
-splitword(nårpå,[når,på]).  
-splitword(nårsentrum,[når,sentrum]). 
+splitword(nÃ¦rgÃ¥r,[nÃ¥r,gÃ¥r]).  
+splitword(nÃ¦rmestebusstopp,[nÃ¦rmeste,busstopp]). 
+splitword(nÃ¥mÃ¥,[nÃ¥,mÃ¥]).  
+splitword(nÃ¥rÃ¥,[nÃ¥r,mÃ¥]). 
+splitword(nÃ¥rbgÃ¥r,[nÃ¥r,gÃ¥r]).
+splitword(nÃ¥rgÃ¥,[nÃ¥r,gÃ¥r]).
+splitword(nÃ¥rgÃ¥r,[nÃ¥r,gÃ¥r]).  
+splitword(nÃ¥rgÃ¥rdet,[nÃ¥r,gÃ¥r,det]). 
+splitword(nÃ¥rgÃ¥rbuss,[nÃ¥r,gÃ¥r,buss]). 
+splitword(nÃ¥rgÃ¥rneste,[nÃ¥r,gÃ¥r,neste]).
+splitword(nÃ¥rjeg,[nÃ¥r,jeg]).  
+splitword(nÃ¥rkan,[nÃ¥r,kan]). 
+splitword(nÃ¥rkommer,[nÃ¥r,kommer]). 
+splitword(nÃ¥rmÃ¥,[nÃ¥r,mÃ¥]).  
+splitword(nÃ¥rmÃ¥jeg,[nÃ¥r,mÃ¥,jeg]). 
+splitword(nÃ¥rneste,[nÃ¥r,neste]). 
+splitword(nÃ¥rngÃ¥r,[nÃ¥r,gÃ¥r]).  
+splitword(nÃ¥rpasser,[nÃ¥r,passerer]).    %%  sp
+splitword(nÃ¥rpasserer,[nÃ¥r,passerer]).  %%
+splitword(nÃ¥rpÃ¥,[nÃ¥r,pÃ¥]).  
+splitword(nÃ¥rsentrum,[nÃ¥r,sentrum]). 
 
 splitword(omsentrum,[forbi,sentrum]).  %% sic
 splitword(overneste,[andre,neste]).    %% sic 
 splitword(ogfra,       [og,fra]).  
 splitword(ogklokken,   [og,klokken]).  
-%% splitword(også,        [og,så]).  %% noise|[]
+%% splitword(ogsÃ¥,        [og,sÃ¥]).  %% noise|[]
 splitword(overett,    [over,ett]).    
 splitword(overto,    [over,to]).  
 splitword(overtre,    [over,tre]). 
@@ -650,18 +652,18 @@ splitword(overfire,    [over,fire]).
 splitword(overfem,    [over,fem]). 
 splitword(overseks,    [over,seks]). 
 splitword(oversju,    [over,sju]). 
-splitword(overåtte,    [over,åtte]).  
+splitword(overÃ¥tte,    [over,Ã¥tte]).  
 splitword(overni,    [over,ni]).
 splitword(overti,    [over,ti]).
 splitword(overelve,    [over,elve]).
 splitword(overtolv,    [over,tolv]).
 
 splitword(passererneste,[passerer,neste]).
-splitword(påhverdager, [på,hverdager]). 
-splitword(påstasjonen, [på,stasjonen]).  
-splitword(påtogstasjonen, [på,togstasjonen]). 
+splitword(pÃ¥hverdager, [pÃ¥,hverdager]). 
+splitword(pÃ¥stasjonen, [pÃ¥,stasjonen]).  
+splitword(pÃ¥togstasjonen, [pÃ¥,togstasjonen]). 
 
-splitword(påsju,[på,klokken,7]). %% etc
+splitword(pÃ¥sju,[pÃ¥,klokken,7]). %% etc
 
 splitword(raskestmulig,  [raskest,mulig]). 
 splitword(retursentrum,  [retur,sentrum]).   
@@ -672,7 +674,7 @@ splitword(seint,[sent]).
 splitword(senast,[senest]). %% sw, pre lex for compword 
 splitword(senets,[senest]). 
 
-%¤¤
+%Â¤Â¤
 
 splitword(senteretkl,  [senteret,klokken]).  
 splitword(senterkl,  [senter,klokken]). 
@@ -686,14 +688,14 @@ splitword(sentrumetter,[sentrum,etter]).
 splitword(sentrumfor,  [sentrum,for]).  
 splitword(sentrumforbi,  [sentrum,forbi]).
 splitword(sentrumfra,  [sentrum,fra]). %% TA-100927
-splitword(sentrumfør,  [sentrum,før]). 
+splitword(sentrumfÃ¸r,  [sentrum,fÃ¸r]). 
 splitword(sentruminnen,[sentrum,innen]).
 splitword(sentrumkl,   [sentrum,kl]).  
-splitword(sentrumlørdag,[sentrum,lørdag]). %% etc
-splitword(sentrumsøndag,[sentrum,lørdag]).
+splitword(sentrumlÃ¸rdag,[sentrum,lÃ¸rdag]). %% etc
+splitword(sentrumsÃ¸ndag,[sentrum,lÃ¸rdag]).
 splitword(sentrummed,  [sentrum,med]).  
 splitword(sentrumom,   [sentrum,om]).   
-splitword(sentrumpå,   [sentrum,på]).  
+splitword(sentrumpÃ¥,   [sentrum,pÃ¥]).  
 splitword(sentrumrundt,[sentrum,rundt]). 
 splitword(sentrumsbussen,[buss,forbi,sentrum]).
 splitword(sentrumtil,[sentrum,til]). 
@@ -704,20 +706,20 @@ splitword(sistebussen, [siste,buss]).
 splitword(skalfra,     [skal,fra]).  
 splitword(skaltil,     [skal,til]).   
 splitword(skalreise,   [skal,reise]). 
-splitword(skalvære,    [skal,være]).  
+splitword(skalvÃ¦re,    [skal,vÃ¦re]).  
 splitword(skoleetter,  [skole,etter]). 
 splitword(skolekl,     [skole,kl]).  
 splitword(skoletil,    [skole,til]).  
 
-splitword(skyldes, [er,forårsaket,av]).  %%  kan skyldes etc
-splitword(skyldtes,[var,forårsaket,av]). %% NB kan skyldes = rewording/
+splitword(skyldes, [er,forÃ¥rsaket,av]).  %%  kan skyldes etc
+splitword(skyldtes,[var,forÃ¥rsaket,av]). %% NB kan skyldes = rewording/
 
 %% splitword(slikt,       [slike,ting]). %%  finn et slikt tidspunkt
 splitword(slikat,      [slik,at]). 
 
 %% splitword(snakkes,      [snakker,sammen]).   %% hilsen %% TA-110310
 splitword(samsnakkes,   [snakker,sammen]). 
-splitword(somgår,       [som,går]). 
+splitword(somgÃ¥r,       [som,gÃ¥r]). 
 
 splitword(samfunnet, [samfundet]). %% TA-110314
 splitword(sanfundet, [samfundet]). %%
@@ -728,8 +730,8 @@ splitword(stasjonenetter, [stasjonen,etter]).
 splitword(studentbyfor, [studentby,for]). 
 splitword(studentbytil, [studentby,til]). 
 splitword(sydtil,       [syd,til]).  
-splitword(søndagfra,    [søndag,fra]). 
-splitword(søndagmorgen,   [søndag,morgen]). 
+splitword(sÃ¸ndagfra,    [sÃ¸ndag,fra]). 
+splitword(sÃ¸ndagmorgen,   [sÃ¸ndag,morgen]). 
 
 splitword(tabuss,[ta,buss]).  
 splitword(tabussen,[ta,bussen]).   
@@ -740,7 +742,7 @@ splitword(tare,[tar,det]).
 splitword(tatil,[ta,til]). 
 splitword(telefonentil,[telefonen,til]).
 splitword(tidenimorgen,[tiden,imorgen]).
-splitword(tidergår,[tider,går]). 
+splitword(tidergÃ¥r,[tider,gÃ¥r]). 
 splitword(tilbyen,[til,byen]).
 splitword(tildette,[til,dette]). 
 splitword(tilen,  [til,en]).  
@@ -754,8 +756,8 @@ splitword(tilrette,[til,rette]).
 splitword(tilsentralstasjonen,[til,sentralstasjonen]).
 splitword(tilsentrum,[til,sentrum]). 
 splitword(tiltrondheim,[til,trondheim]).
-splitword(tilå,[til,å]). 
-splitword(tipå,[ti,på]).  
+splitword(tilÃ¥,[til,Ã¥]). 
+splitword(tipÃ¥,[ti,pÃ¥]).  
 splitword(tirsdagmellom,[tirsdag,mellom]). %% etc
 splitword(tirsdagmorgen,[tirsdag,morgen]).
 splitword(tirsdagetter,[tirsdag,etter]).   %% etc etc
@@ -763,24 +765,24 @@ splitword(togfra,[tog,fra]).
 splitword(togtil,[tog,til]).  
 splitword(togtas,[tog,tas]).  
 splitword(torgetden,[torget,den]). 
-splitword(torgetfør,[torget,før]).   
+splitword(torgetfÃ¸r,[torget,fÃ¸r]).   
 splitword(torgetkl,[torget,kl]).   
 splitword(torvetden,[torvet,den]).  
-splitword(trafikknår,trafikknår).   
+splitword(trafikknÃ¥r,trafikknÃ¥r).   
 splitword(tredjenest,[tredje,neste]). 
 splitword(treneste,[tre,neste]).  
 splitword(trikkfra,[trikk,fra]). 
 splitword(trikketur,[tur,med,trikk]). %% ?
 splitword(trondheimtil,[trondheim,til]). 
 splitword(trondheimetter,[trondheim,etter]).
-splitword(trondheimnår,[trondheim,når]). 
+splitword(trondheimnÃ¥r,[trondheim,nÃ¥r]). 
 
 %% splitword(turingtesten,[turings,test]). 
 
 splitword(uoppfordret,[uten,oppfordring]).
 splitword(utav,[ut,av]). 
 
-%% splitword(vare,[være]). %%  pre lex for compword 
+%% splitword(vare,[vÃ¦re]). %%  pre lex for compword 
 
 splitword(varriktig,[var,riktig]). 
 
@@ -799,16 +801,16 @@ splitword(verkitj,[virker,ikke]).  %%  :-)
 splitword(vetikke,[vet,ikke]).  
 splitword(vilta,[vil,ta]).   
 splitword(vkl,[vei,klokken]).      %%  ?
-splitword(væreder,[være,der]).   
-splitword(væree,[være]). %% pre lex for compword 
-splitword(værei,[være,i]).   
-splitword(væreved,[være,ved]). 
+splitword(vÃ¦reder,[vÃ¦re,der]).   
+splitword(vÃ¦ree,[vÃ¦re]). %% pre lex for compword 
+splitword(vÃ¦rei,[vÃ¦re,i]).   
+splitword(vÃ¦reved,[vÃ¦re,ved]). 
 
-splitword(ække,[er,ikke]). 
+splitword(Ã¦kke,[er,ikke]). 
 
-splitword(åbli,[å,bli]).  
-splitword(åta,[å,ta]). 
-splitword(åvære,[å,være]).  
+splitword(Ã¥bli,[Ã¥,bli]).  
+splitword(Ã¥ta,[Ã¥,ta]). 
+splitword(Ã¥vÃ¦re,[Ã¥,vÃ¦re]).  
 
 
 
@@ -840,8 +842,8 @@ splitword(åvære,[å,være]).
 %% xcompword(det,[her],dette). 
 %% replacement are sequential by occurrence 
 
-    xcompword(må,[jeg,to],går). %% SIC (ta) 
-    xcompword(må,[me,ta],går).  %% dial
+    xcompword(mÃ¥,[jeg,to],gÃ¥r). %% SIC (ta) 
+    xcompword(mÃ¥,[me,ta],gÃ¥r).  %% dial
     xcompword(mye,[de,vil],mye).   %% <-- left recursive
 
 %%  syndrom.  
@@ -854,15 +856,15 @@ splitword(åvære,[å,være]).
     xcompword(fra,[a,til,b],overalt). %% rough %% TA-110122
     xcompword(fra,[a,te,b],overalt).  %% rough
 
-%%    xcompword(a,[til,b],atb). %% AtB  når går bussen fra ... %%  TA-100828 :-) 
+%%    xcompword(a,[til,b],atb). %% AtB  nÃ¥r gÃ¥r bussen fra ... %%  TA-100828 :-) 
 %%    xcompword(a,[te,b],atb).  %% TA-110128  rough
 %%    xcompword(a,[t,b],atb).   %% 
 
 %%     xcompword(alt,['/',statoil],'ALT/Statoil'). %% emergency, alt confuses
 
-    xcompword(ga,['å',ayr],går).  %%    gÃƒÂ¥r  %%  ad hoc
-    xcompword(gl,['ö',shaugen],gløshaugen). %%    gÃƒÂ¥r  %%  ad hoc
-    xcompword(na,['å',ayr],når).  %%    nÃƒÂ¥r  %% ad hoc
+    xcompword(ga,['Ã¥',ayr],gÃ¥r).  %%    gÃƒÂƒÃ‚Â¥r  %%  ad hoc
+    xcompword(gl,['Ã¶',shaugen],glÃ¸shaugen). %%    gÃƒÂƒÃ‚Â¥r  %%  ad hoc
+    xcompword(na,['Ã¥',ayr],nÃ¥r).  %%    nÃƒÂƒÃ‚Â¥r  %% ad hoc
 
     xcompword(17,['.',mai,'-',rute],rute17mai). 
     xcompword(17,['.',mai,'-',ruter],rute17mai). 
@@ -874,29 +876,29 @@ splitword(åvære,[å,være]).
 
     xcompword(a,['/',s],'A/S'). %%  Problem  A/S
 
-    xcompword(ang,['.'],angående). 
+    xcompword(ang,['.'],angÃ¥ende). 
 
 
     xcompword(da,[':'],da). 
-    xcompword(da,[jeg,må,være,fremme],før). 
-    xcompword(da,[jeg,må,være,der],før). 
-    xcompword(da,[sjø],[]).  %% Dial %% TA-110330 :-)
+    xcompword(da,[jeg,mÃ¥,vÃ¦re,fremme],fÃ¸r). 
+    xcompword(da,[jeg,mÃ¥,vÃ¦re,der],fÃ¸r). 
+    xcompword(da,[sjÃ¸],[]).  %% Dial %% TA-110330 :-)
     xcompword(da,[som],som). %% TA-101228
-    xcompword(da,[så],[]).   %% TA-101123
+    xcompword(da,[sÃ¥],[]).   %% TA-101123
 
     xcompword(du,[','],[]). %%  // only if ',' is not noise
-    xcompword(du,[nå],du).  %% cheat %% hvis du nå løper 
+    xcompword(du,[nÃ¥],du).  %% cheat %% hvis du nÃ¥ lÃ¸per 
 
 %%     xcompword(dvs,['.'],og). %% TA-110304  (unnec rewording)
     xcompword(dvs,[],og).    %%
 
-    xcompword(det,[være,seg],enten).
+    xcompword(det,[vÃ¦re,seg],enten).
 
     xcompword(en,[av,de],en).    %%  rough
     xcompword(en,[av,disse],en). %%
     xcompword(en,[av,mine],en).  %% 
     xcompword(en,[din],din).     %% IQ'en din = IQ din
-    xcompword(en,[av,våre],våre).    %% etc 
+    xcompword(en,[av,vÃ¥re],vÃ¥re).    %% etc 
 
 compword(en,[av],[]). %% Haz ? 
 
@@ -909,19 +911,19 @@ compword(en,[av],[]). %% Haz ?
     xcompword(f,['.',o,'.',m,'.'],etter). 
     xcompword(f,['.',o,'.',m],etter). 
     xcompword(f,['.',eks,'.'],redundant0). %% f.eks. = [] %% NB    
-    xcompword(f,[å,v,p],til).  %%  for å være på, f ambig 
+    xcompword(f,[Ã¥,v,p],til).  %%  for Ã¥ vÃ¦re pÃ¥, f ambig 
     
     xcompword(fom,['.'],etter).
 
-    xcompword(få,[tak,i],finne). %% TA-100902
-    xcompword(får,[opp],mottar). %% nofunk particlev1 
+    xcompword(fÃ¥,[tak,i],finne). %% TA-100902
+    xcompword(fÃ¥r,[opp],mottar). %% nofunk particlev1 
 
-    xcompword(få,[på,plass],lag).  
-    xcompword(får,[på,plass],lager). 
-    xcompword(fikk,[på,plass],laget). 
+    xcompword(fÃ¥,[pÃ¥,plass],lag).  
+    xcompword(fÃ¥r,[pÃ¥,plass],lager). 
+    xcompword(fikk,[pÃ¥,plass],laget). 
 
-    xcompword(får,[tak,i],mottar).   %% forstår ? 
-    xcompword(får,[tak,på],forstår). %% forstår ? %% particlev2?
+    xcompword(fÃ¥r,[tak,i],mottar).   %% forstÃ¥r ? 
+    xcompword(fÃ¥r,[tak,pÃ¥],forstÃ¥r). %% forstÃ¥r ? %% particlev2?
 
     xcompword(hpl,['.'],holdeplass). 
 
@@ -929,15 +931,15 @@ compword(en,[av],[]). %% Haz ?
     xcompword(i,[fra],fra).       %% TA-110221
     xcompword(i,[dag],idag).      %% TA-100828 (NB)
     xcompword(i,[gjen],igjen).    %% TA-10111
-    xcompword(i,[går],igår).      %% TA-100909
+    xcompword(i,[gÃ¥r],igÃ¥r).      %% TA-100909
     xcompword(i,[morra],imorgen). %% TA-101115
     
 
     xcompword(i,[morgen],imorgen).            %% #2
 
     xcompword(i,[hvilken,grad],hvordan). %%(hvormye?) 
-    xcompword(i,[løpet,av],i).   %%  "during"
-    xcompword(i,[orden],bra).    %%  skal være i=ankomme/ være står før i
+    xcompword(i,[lÃ¸pet,av],i).   %%  "during"
+    xcompword(i,[orden],bra).    %%  skal vÃ¦re i=ankomme/ vÃ¦re stÃ¥r fÃ¸r i
 
     xcompword(i,[over,i,morgen],overimorgen). %% #1 %% TA-110401
 %%     xcompword(i,[over],over). %% TA-110401   %% destroys   xcompword(i,[over,i,morgen]
@@ -951,7 +953,7 @@ compword(en,[av],[]). %% Haz ?
   
     xcompword(igjen,[til],til). %% TA-100908
     xcompword(ikke,[sant],[]).
-    xcompword(ikke,[så],ikke).  %% TA-110105
+    xcompword(ikke,[sÃ¥],ikke).  %% TA-110105
     xcompword(nei,[ikke],ikke).  
     xcompword(nei,[tvert,imot],nei). 
 
@@ -961,7 +963,7 @@ compword(en,[av],[]). %% Haz ?
     xcompword(noe,[konkret],noe). %% TA-110111
     xcompword(noe,[rart],noe).    %% TA-100831 :-)
 
-    xcompword(og,[da,altså],[]). 
+    xcompword(og,[da,altsÃ¥],[]). 
     xcompword(om,[bord],ombord). %% TA-100909
     xcompword(om,[f,'.',eks,'.'],om). %% etc 
 
@@ -979,12 +981,12 @@ compword(en,[av],[]). %% Haz ?
     xcompword(t,[kort],tkort). 
     xcompword(t,[kortet],tkort). 
 
-    xcompword(t,['.',o,'.',m,'.'],før). 
-    xcompword(t,['.',o,'.',m],før). 
+    xcompword(t,['.',o,'.',m,'.'],fÃ¸r). 
+    xcompword(t,['.',o,'.',m],fÃ¸r). 
 
 %%     xcompword(t,['.'],til).    %% TA-110405 einar t.
 
-%%     xcompword(tom,['.'],før).  %% bussen er tom %% TA-110620 Haz
+%%     xcompword(tom,['.'],fÃ¸r).  %% bussen er tom %% TA-110620 Haz
 
     xcompword(team,['-',trafikk],tt). %%  '-' trouble
 
@@ -1005,15 +1007,15 @@ compword(en,[av],[]). %% Haz ?
 %% Event named days 
 
 
-%% xcompword(når,[pensjoneres,arvid,holme],arvid_holme_day).        %%TA-101013 ...
-%% xcompword(arvid,[holme,går,av,med,pensjon],arvid_holme_day).    
-%% xcompword(arvid,[holme,går,av],arvid_holme_day).    %% går av bussen 
+%% xcompword(nÃ¥r,[pensjoneres,arvid,holme],arvid_holme_day).        %%TA-101013 ...
+%% xcompword(arvid,[holme,gÃ¥r,av,med,pensjon],arvid_holme_day).    
+%% xcompword(arvid,[holme,gÃ¥r,av],arvid_holme_day).    %% gÃ¥r av bussen 
 %% xcompword(arvid,[holme,slutter],arvid_holme_day).  
 %% xcompword(arvid,[holme,blir,pensjonist],arvid_holme_day).
 %% xcompword(arvid,[holme,pensjonerer,seg],arvid_holme_day).
 
 xcompword(president,[kennedy,ble,drept],john_f_kennedy_day).%% 22.11.1963
-xcompword(oddvar,[brå,brakk,staven],oddvar_brå_day).        %% 25.02.1982
+xcompword(oddvar,[brÃ¥,brakk,staven],oddvar_brÃ¥_day).        %% 25.02.1982
 
 xcompword(hans,[finnes,gate],hans_finnes_street). %% Ad Hoc Despair 
 
@@ -1056,8 +1058,8 @@ xcompword(email,[adresse],emailadresse).
 xcompword(email,[adressen],emailadressen). 
 
 xcompword(og,[alt,mulig],[]). %% (trailer ?)
-xcompword(der,[må,jeg,være,seinest],før).  %% ?
-xcompword(så,[å],å).      %% for så å ta buss 
+xcompword(der,[mÃ¥,jeg,vÃ¦re,seinest],fÃ¸r).  %% ?
+xcompword(sÃ¥,[Ã¥],Ã¥).      %% for sÃ¥ Ã¥ ta buss 
 xcompword(trondheim,[s],ts). %% ikke sentrum %% Special
 
      compword(si,[ifra],fortell).   %% TA-110724
@@ -1081,12 +1083,12 @@ compword(vi,[jeg],jeg).
 compword(jeg,[vi],jeg).
     xcompword(jeg,[meg],jeg). %% ? hvordan kommer jeg meg %%** er jeg meg ?
 
-    xcompword(vii,[s],viis).         %% Nød H7 
+    xcompword(vii,[s],viis).         %% NÃ¸d H7 
     xcompword(den,[sjuendes],viis).  %%
 
-    xcompword(rekke,[bort],gå). %% (også reach)
-    xcompword(rekke,[ned],gå).
-    xcompword(rekke,[opp],gå).
+    xcompword(rekke,[bort],gÃ¥). %% (ogsÃ¥ reach)
+    xcompword(rekke,[ned],gÃ¥).
+    xcompword(rekke,[opp],gÃ¥).
 
 %% // dont split  d1 etc 
 
@@ -1109,7 +1111,7 @@ compword(jeg,[vi],jeg).
     xcompword(6, [o],60).
 
 
- %%   xcompword(av,[på],til). %% Holdeplassen som jeg skal av på %%  Haz %% TA-110629
+ %%   xcompword(av,[pÃ¥],til). %% Holdeplassen som jeg skal av pÃ¥ %%  Haz %% TA-110629
 
  
     xcompword(og,['/',eller],eller).  
@@ -1135,7 +1137,7 @@ compword(eller,[ikke],[]).
    xcompword(eller,[omvendt],[]).  %% TA-110629
 
 compword(eller,[i],eller).      %% ad hoc, Haz avganger i rutehefte eller (i) ...
-compword(eller,[på],eller).     %% ad hoc
+compword(eller,[pÃ¥],eller).     %% ad hoc
 
     xcompword(ellers,[ingenting],[]). %%  etc.
 
@@ -1161,7 +1163,7 @@ compword(eller, [til], eller).  %% til nth eller til nardo
     xcompword(eller,[senere],[]).  
 
 
-    xcompword(færre,[eller,ingen],færre). %% problem 
+    xcompword(fÃ¦rre,[eller,ingen],fÃ¦rre). %% problem 
 
     xcompword(kl,[o],klokken).        %% kl o900? 
     xcompword(k,[kl],klokken).        %% repair 
@@ -1171,7 +1173,7 @@ compword(eller, [til], eller).  %% til nth eller til nardo
     xcompword(klok,[ken],klokken).   
 
 
-xcompword(men,[når,'?'],'?'). %% TA-110824
+xcompword(men,[nÃ¥r,'?'],'?'). %% TA-110824
 
     xcompword(senest,[ta],ta).  %% rough, but context will help 
  
@@ -1182,11 +1184,11 @@ compword(se,[for,meg],tro).
 compword(se,[frem,til],forvente). %% fast uttrykk 
 compword(ser,[frem,til],forventer). %%
 
-    xcompword(se,[nærmere,på],undersøke). %% probl. prep(nærmere) 
+    xcompword(se,[nÃ¦rmere,pÃ¥],undersÃ¸ke). %% probl. prep(nÃ¦rmere) 
 
 %% compword(se,[siste],siste).  %% why
 
-    xcompword(se,[å],[]). 
+    xcompword(se,[Ã¥],[]). 
 %%     xcompword(selv,[om],hvis). %% uansett om %% gram 
 %%     xcompword(ser,[ut,som],ligner). %% Det ser ut som om
 %%     xcompword(se,[ut,som],ligne).   %%
@@ -1202,17 +1204,17 @@ compword(seg,[ihjel],[]). %% sprang seg ihjel :-)
 %%     xcompword(ser,[ut,som],stemmer). %% rough one word substitute 
 
 compword(sett,[etter],etter). 
-compword(sett,[før],før).
-compword(sette,[opp],øke).    %% prisene ? 
+compword(sett,[fÃ¸r],fÃ¸r).
+compword(sette,[opp],Ã¸ke).    %% prisene ? 
 
     xcompword(snakk,[om],meningen). %% TA-110724 .. at
 
 %%     xcompword(som,[at],at). %% det virker som at %% TA-110122 unnec
-    xcompword(som,[deretter],som). %%  som deretter går til byen? 
+    xcompword(som,[deretter],som). %%  som deretter gÃ¥r til byen? 
 
     xcompword(som,[det,skal],bra). %% TA-110110
     
-    xcompword(som,[følger],følgende).  
+    xcompword(som,[fÃ¸lger],fÃ¸lgende).  
 
 %%     xcompword(som,[om],at). %% det virker som om %% rough %% TA-110122
 
@@ -1230,29 +1232,29 @@ compword(sette,[opp],øke).    %% prisene ?
     xcompword(sommer,[rutene],sommerrutene).
     xcompword(sommer,[ruter],sommerruter).
 
-    xcompword(være,[med],komme). %% diff in gram
+    xcompword(vÃ¦re,[med],komme). %% diff in gram
     xcompword(er,[med],kommer).
 
-%% compword(er,[på],er). %% NB ikke X beløpet er på 30 kroner
-                         %% jeg er på nardo \= jeg er nardo
+%% compword(er,[pÃ¥],er). %% NB ikke X belÃ¸pet er pÃ¥ 30 kroner
+                         %% jeg er pÃ¥ nardo \= jeg er nardo
     xcompword(er,[':'],er).     %% TA-110107
     xcompword(var,[':'],var).   %%
     xcompword(blir,[':'],blir). %%
 
     xcompword(var,[med],kom). 
-    xcompword(vært,[med],kom). 
+    xcompword(vÃ¦rt,[med],kom). 
 
-    xcompword(være,[til,hjelp],hjelpe).   %% Fast uttrykk ?
-    xcompword(være,[til,hjelpe],hjelpe).  %% sp
-    xcompword(være,[der],ankomme). 
-    xcompword(vær,[ei],til). %% være i 
+    xcompword(vÃ¦re,[til,hjelp],hjelpe).   %% Fast uttrykk ?
+    xcompword(vÃ¦re,[til,hjelpe],hjelpe).  %% sp
+    xcompword(vÃ¦re,[der],ankomme). 
+    xcompword(vÃ¦r,[ei],til). %% vÃ¦re i 
 
 
 %% NB   compword are not applied recursively nor exclusively
 
 
 /*  %% hva er 4 4. = hva er 4 fjerde 
-compword(1,['.'],første).
+compword(1,['.'],fÃ¸rste).
 compword(2,['.'],andre). 
 compword(3,['.'],tredje).
 compword(4,['.'],fjerde). 
@@ -1264,7 +1266,7 @@ compword(4,['.'],fjerde).
 
     xcompword('.',[etter],etter).
     xcompword('.',[fra],fra). 
-    xcompword('.',[før],før). 
+    xcompword('.',[fÃ¸r],fÃ¸r). 
     xcompword('.',[til],til).
     xcompword('.',['.'],'.'). 
     xcompword('.',[framme],framme). 
@@ -1298,7 +1300,7 @@ compword('+',[retur],tilbake).  %% ?
 
     xcompword(0,[g],og). 
 
-%%% hvilken holdeplass til buss |7 er| nærmest møllenberg
+%%% hvilken holdeplass til buss |7 er| nÃ¦rmest mÃ¸llenberg
 
 
 
@@ -1307,16 +1309,16 @@ compword('+',[retur],tilbake).  %% ?
 
 %%    xcompword(videre,[derfra],[]). %% ad hoc subopt 
 
-compword(a,[fra],fra). %% hvor går 5 a fra 
+compword(a,[fra],fra). %% hvor gÃ¥r 5 a fra 
 compword(a,[m],formiddag). 
 
 compword(aldri,[i,verden],nei).  
     xcompword(aldri,[i,rute],forsinket). 
-    xcompword(aldri,[slik],umulig). %% at trikken står 
+    xcompword(aldri,[slik],umulig). %% at trikken stÃ¥r 
 
-    xcompword(i,[første,omgang],[]). %% redundant0). %% TA-110707
+    xcompword(i,[fÃ¸rste,omgang],[]). %% redundant0). %% TA-110707
 
-compword(ikke,[slik],umulig). %% at trikken står  %% ?
+compword(ikke,[slik],umulig). %% at trikken stÃ¥r  %% ?
 
 compword(alias,[navn],navn). 
 compword(alias,[],navn). %% TA-101018
@@ -1329,15 +1331,15 @@ compword(all,[e],alle).
    xcompword(alle,[disse],disse).  
    xcompword(alle,[mine],mine). 
    xcompword(alle,[sine],sine). 
-   xcompword(alle,[våre],våre). 
+   xcompword(alle,[vÃ¥re],vÃ¥re). 
 
 compword(aller,[helst],[]).       %%  helst not noise //noe som helst
-compword(aller,[først],først).   
-compword(aller,[første],første). 
+compword(aller,[fÃ¸rst],fÃ¸rst).   
+compword(aller,[fÃ¸rste],fÃ¸rste). 
 compword(aller,[sist],sist).     
 compword(aller,[siste],siste).   
 
-    xcompword(allerede,[nå],nå). %% TA-110426
+    xcompword(allerede,[nÃ¥],nÃ¥). %% TA-110426
 
 compword(alt,[i,alt],[]).
 compword(alt,[ialt],[]).
@@ -1347,10 +1349,10 @@ compword(alt,[om],om).
 
 compword(alt,[for],altfor). %% x? %% TA-110503
 
-compword(altså,[ikke],unntatt).             %% ? altså noisew !!!
+compword(altsÃ¥,[ikke],unntatt).             %% ? altsÃ¥ noisew !!!
 
-%%% compword(altså,[],[]).                      %% NB after altså ikke
-   %% creates  w(altså,[[altså],name([],n,0),[]]) -> remove
+%%% compword(altsÃ¥,[],[]).                      %% NB after altsÃ¥ ikke
+   %% creates  w(altsÃ¥,[[altsÃ¥],name([],n,0),[]]) -> remove
 
     xcompword(an,[til],an).
 
@@ -1361,19 +1363,19 @@ compword(andre,[steder,enn],[]). %% rough, works as corrective
 
     compword(ang,[at],at).
 
-compword(ankom,[før],før).    
-%% compword(ankomme,[før],før). 
+compword(ankom,[fÃ¸r],fÃ¸r).    
+%% compword(ankomme,[fÃ¸r],fÃ¸r). 
 
-%% compword(ankomst,[før],før).  %% SUSPENDED Buster 
+%% compword(ankomst,[fÃ¸r],fÃ¸r).  %% SUSPENDED Buster 
 
 compword(ankomst,[rundt],rundt). 
 compword(annet,[enn],[]).                   %% Rough, Rhetoric
 
 
-%%    xcompword(anse,[for,å],mene).   %% fast uttrykk 
-%%    xcompword(anser,[for,å],mener). %%
+%%    xcompword(anse,[for,Ã¥],mene).   %% fast uttrykk 
+%%    xcompword(anser,[for,Ã¥],mener). %%
 
-%%       bussen går .. for å være 
+%%       bussen gÃ¥r .. for Ã¥ vÃ¦re 
 
 
 compword(antall,[kilometer],avstanden). 
@@ -1403,11 +1405,11 @@ compword(av,[fra],av). %% .. bussen
 compword(ad,[gangen],[]).
 compword(av,[gangen],[]). 
 
-compword(av,[gårde],[]). 
-    xcompword(av,[og,til],tidvis).  %%  går bussen %% TA-111001
+compword(av,[gÃ¥rde],[]). 
+    xcompword(av,[og,til],tidvis).  %%  gÃ¥r bussen %% TA-111001
  
 
-compword(av,[på],til). %% av på station/ av bussen
+compword(av,[pÃ¥],til). %% av pÃ¥ station/ av bussen
 
 compword(avg,[pr,time],avgangshyppighet). 
 compword(avg,[buss],buss). 
@@ -1438,14 +1440,14 @@ compword(b,[ss],buss).   %% "b~ss"
 %% compword(bare,[],[]). %% not noise (ikke bare = []) // s y n w o r d 
 
 
-    xcompword(bare,[hyggelig],ok).    %% * takk ->værsågod -> takk...
+    xcompword(bare,[hyggelig],ok).    %% * takk ->vÃ¦rsÃ¥god -> takk...
 compword(barne,[bilett],barnebillett).
 compword(barne,[billett],barnebillett).
 %% compword(barnehagen,[ved],[]). %% (noinfo)
 
-    xcompword(begynner,[å],vil).  %%  rough
-    xcompword(begynne,[å],[]).     %%
-    xcompword(begynne,[med,å],[]). %%
+    xcompword(begynner,[Ã¥],vil).  %%  rough
+    xcompword(begynne,[Ã¥],[]).     %%
+    xcompword(begynne,[med,Ã¥],[]). %%
 
     xcompword(befinner,[meg],er). %% ETC (replaces befind) 
 
@@ -1467,7 +1469,7 @@ compword(bli,[med],komme).
 compword(ble,[med],kom).  
 compword(blir,[med],kommer).
 
-compword(blir,[det,satt,opp],kjører).          %%  Pragmatic
+compword(blir,[det,satt,opp],kjÃ¸rer).          %%  Pragmatic
 compword(blir,[d,av],er).  
 compword(blir,[det,av],er). 
 compword(blir,[av],er).    %% ?
@@ -1476,8 +1478,8 @@ compword(bortsett,[fra],unntatt).
     xcompword(bort,[til],til).
 
 
-    xcompword(bra,[når],når). %% Fedup
-    xcompword(bra,[til],bra). %% Fedup %% står bra til 
+    xcompword(bra,[nÃ¥r],nÃ¥r). %% Fedup
+    xcompword(bra,[til],bra). %% Fedup %% stÃ¥r bra til 
 
 compword(brutt,[sammen],stoppet).              %% Rough
 
@@ -1489,7 +1491,7 @@ compword(bus,[ser],busser).
 compword(buss,[':'],buss). %% not x  //last : conevntion 
 
 compword(buss,['/',busser],busser).  
-compword(buss,['/',trikk],kjøretøy).         %%  ETC ETC
+compword(buss,['/',trikk],kjÃ¸retÃ¸y).         %%  ETC ETC
 
 compword(buss,[avgang],bussavgang).  
 compword(buss,[avgangen],bussavgangn). 
@@ -1503,30 +1505,30 @@ compword(buss,[buss],buss).
 compword(buss,[bussen],bussen). 
 compword(buss,[det,buss],buss).              %% repair
 compword(buss,[det,en,buss],buss).  
-compword(buss,[eller,trikk],kjøretøy). 
+compword(buss,[eller,trikk],kjÃ¸retÃ¸y). 
 compword(buss,[eller,tog],tog).              %% mess no routes 
 compword(buss,[en,buss],buss).  %% repair
 compword(buss,[en],bussen). 
-compword(buss,[folka],sjåførene). 
-compword(buss,[første,buss],buss).            %% Repair
-compword(buss,[første],buss).                 %% buss første nummer 
+compword(buss,[folka],sjÃ¥fÃ¸rene). 
+compword(buss,[fÃ¸rste,buss],buss).            %% Repair
+compword(buss,[fÃ¸rste],buss).                 %% buss fÃ¸rste nummer 
 compword(buss,[hold],holdeplass).   
 compword(buss,[holdplass],holdeplass). 
 compword(buss,[holde,plass],holdeplass).  
 compword(buss,[holde,plassen],holdeplassen). 
 compword(buss,[holde,plassenr],holdeplasser). 
 
-%% compword(buss,[':'],buss). %%  destroys  BARNEVOGN PÅ BUSS:
+%% compword(buss,[':'],buss). %%  destroys  BARNEVOGN PÃ… BUSS:
 
 compword(buss,['.',neste],neste). %% Team buss. ...
-compword(buss,['.',når],neste).  
+compword(buss,['.',nÃ¥r],neste).  
 
     xcompword(buss,['-',stasjonen],busstasjonen). %% nec  
     xcompword(buss,[flybussen],flybussen). 
-    xcompword(buss,[eller,trikk],kjøretøy).
+    xcompword(buss,[eller,trikk],kjÃ¸retÃ¸y).
 
 compword(buss,[nt],buss). %%  (nr)
-    xcompword(buss,[nummer],buss). %% når passerer buss nummer tempe 
+    xcompword(buss,[nummer],buss). %% nÃ¥r passerer buss nummer tempe 
     xcompword(buss,[rute],bussrute).
 compword(buss,[streik],streik).  
 compword(buss,[streiken],streiken). 
@@ -1547,17 +1549,17 @@ compword(bussorakelets,[mobiltjeneste],smstuc).%%
 
 
    xcompword(bussen,[buss],buss). %% repair 
-   xcompword(bussen,[før,siste],nestsiste). %% Hazard 
+   xcompword(bussen,[fÃ¸r,siste],nestsiste). %% Hazard 
 
 compword(bussen,[neste],neste). %% gdsgd 
 
    xcompword(buss,  [n],bussen).         %% buss'n
-   xcompword(bussen,  [nr],bussen). %% Når går bussen... nr fra  wullumsgården
+   xcompword(bussen,  [nr],bussen). %% NÃ¥r gÃ¥r bussen... nr fra  wullumsgÃ¥rden
 
-   xcompword(buss,[når,buss], buss).  %% repair 
-   xcompword(buss,[når,går,det,buss], buss).  %% repair
-   xcompword(buss,[når,går,neste,buss], buss). 
-   xcompword(buss,[når,går,neste], buss). 
+   xcompword(buss,[nÃ¥r,buss], buss).  %% repair 
+   xcompword(buss,[nÃ¥r,gÃ¥r,det,buss], buss).  %% repair
+   xcompword(buss,[nÃ¥r,gÃ¥r,neste,buss], buss). 
+   xcompword(buss,[nÃ¥r,gÃ¥r,neste], buss). 
 
 
 
@@ -1579,13 +1581,13 @@ compword(buss,[nr,':'], buss).
 
 compword(buss,[nummer], buss).        %% ad hoc
 compword(buss,[neste], neste). 
-%%     xcompword(buss,[når], buss).      %% nr    %% doesnt help 
-    xcompword(buss,[når,går], buss). %% buss når går 6 fra byen   
+%%     xcompword(buss,[nÃ¥r], buss).      %% nr    %% doesnt help 
+    xcompword(buss,[nÃ¥r,gÃ¥r], buss). %% buss nÃ¥r gÃ¥r 6 fra byen   
 
 compword(buss,[og,fra,hvor],buss).  
 compword(buss,[orakel],bussorakel). 
 compword(buss,[plan],bussrute).   
-   xcompword(buss,[på,rute],buss).  
+   xcompword(buss,[pÃ¥,rute],buss).  
 
     xcompword(buss,[rute,nr],buss).      %% etc 
 
@@ -1598,12 +1600,12 @@ compword(buss,[plan],bussrute).
                                              %% suspended for test
     xcompword(buss,[ruter],bussruter).   %%
 
-compword(buss,[sjafører],bussjåfører).  
-compword(buss,[sjofør],bussjåfører). 
-compword(buss,[sjåfør],bussjåfør). 
-compword(buss,[sjåføren],bussjåføren). 
-compword(buss,[sjåfører],bussjåfører).   
-compword(buss,[sjåførene],bussjåførene). 
+compword(buss,[sjafÃ¸rer],bussjÃ¥fÃ¸rer).  
+compword(buss,[sjofÃ¸r],bussjÃ¥fÃ¸rer). 
+compword(buss,[sjÃ¥fÃ¸r],bussjÃ¥fÃ¸r). 
+compword(buss,[sjÃ¥fÃ¸ren],bussjÃ¥fÃ¸ren). 
+compword(buss,[sjÃ¥fÃ¸rer],bussjÃ¥fÃ¸rer).   
+compword(buss,[sjÃ¥fÃ¸rene],bussjÃ¥fÃ¸rene). 
 compword(buss,[stop],holdeplass).  
 compword(buss,[stopp],holdeplass). 
 compword(buss,[stoppen],holdeplassen). 
@@ -1619,11 +1621,11 @@ compword(bussen,[de],de). %% repair , \+ x
 compword(bussen,[e],bussene).             %% haz ?
 compword(bussen,[bussen],bussen).           %% Repair
 compword(bussen,[etter,neste],andre).     %% ... buss 
-compword(bussen,[første,buss],bussen).    %% Repair
-compword(bussen,[første,bussen],bussen).  %% Repair 
-compword(bussen,[første],bussen).         %% standard prompt 
+compword(bussen,[fÃ¸rste,buss],bussen).    %% Repair
+compword(bussen,[fÃ¸rste,bussen],bussen).  %% Repair 
+compword(bussen,[fÃ¸rste],bussen).         %% standard prompt 
 compword(bussen,[fra,bussen],bussen). 
-    xcompword(bussen,[går,bussen],bussen). %% err ->x
+    xcompword(bussen,[gÃ¥r,bussen],bussen). %% err ->x
 compword(bussen,[fra,neste],neste).       %% Repair 
 compword(bussen,[neste,bussen],bussen).   %% 
 compword(bussen,[neste,buss],bussen).     %% 
@@ -1661,7 +1663,7 @@ compword(busstider,[buss],buss).
 
     xcompword(by,[buss],buss).  %%  X
 
-    xcompword(bår,[går],går). %% avoid amb 
+    xcompword(bÃ¥r,[gÃ¥r],gÃ¥r). %% avoid amb 
 
 
 compword(c, [a],ca).  
@@ -1673,21 +1675,21 @@ compword(ca,['.',i],i).
 compword(ca,[i],i).             %% to tiden 
 compword(ca,[imorgen],imorgen).
 compword(ca,[mellom],mellom). 
-compword(ca,[nå],nå).   
-compword(ca,[når],når). 
-compword(ca,[rundt],rundt).     %%   ops: også forbi
-compword(ca,[til],før). 
+compword(ca,[nÃ¥],nÃ¥).   
+compword(ca,[nÃ¥r],nÃ¥r). 
+compword(ca,[rundt],rundt).     %%   ops: ogsÃ¥ forbi
+compword(ca,[til],fÃ¸r). 
    xcompword(ca,[ved],i).  
 
-compword(cirka,[når],når).     %%  sånn cirka når
+compword(cirka,[nÃ¥r],nÃ¥r).     %%  sÃ¥nn cirka nÃ¥r
 compword(cirka,[rundt],rundt). 
 
 compword(d,      [en], en).   
 %% compword(d,      [en], buss). %% Haz 
-compword(d,      [å], []).  %% dette år   
+compword(d,      [Ã¥], []).  %% dette Ã¥r   
 
     xcompword(da,[ta],ta).  %% pga da -> ta repair 
-%%  må jeg da ta removes da because må is invoked before  da ta
+%%  mÃ¥ jeg da ta removes da because mÃ¥ is invoked before  da ta
     
     xcompword(dagen,[etter,idag],imorgen). 
     xcompword(dagen,[etter,i,dag],imorgen). 
@@ -1698,10 +1700,10 @@ compword(d,      [å], []).  %% dette år
 compword(dagen,[etter,imorgen],overimorgen). 
     xcompword(dagen,[etter,morgendagen],overimorgen). 
 
-    xcompword(dagen, [før,i,morgen],idag).  %%  :-)  %% TA-110401
-compword(dagen, [før,imorgen],idag).   %%
+    xcompword(dagen, [fÃ¸r,i,morgen],idag).  %%  :-)  %% TA-110401
+compword(dagen, [fÃ¸r,imorgen],idag).   %%
 
-compword(dagen, [før],igår). 
+compword(dagen, [fÃ¸r],igÃ¥r). 
 compword(dagen, [busser],buss).  %%  (actual)
 compword(dagens,[siste],siste).  
 compword(data,  [maskin],datamaskin).
@@ -1717,14 +1719,14 @@ compword(de,[facto],[]).
     xcompword(de,[fleste,av],alle). %% rough
     xcompword(de,[fleste],mange).   %%
 
-compword(de,[i,neste], neste). %% når går de i neste bussen %% ?
+compword(de,[i,neste], neste). %% nÃ¥r gÃ¥r de i neste bussen %% ?
  
 
 compword(de,[neste,gangene], heretter). 
 
     xcompword(definert,[som],lik). %% ad hoc 
 
-compword(definisjonen,[på,en],en).
+compword(definisjonen,[pÃ¥,en],en).
 
     xcompword(deg,[og,dine],deg).  %% dine is ellipt.
 
@@ -1745,18 +1747,18 @@ compword(den,[imorgen],imorgen).
     xcompword(den,[her],den).
     xcompword(det,[her],det).
 
-compword(den,[lørdag],lørdag). 
-compword(den,[søndag],søndag). 
+compword(den,[lÃ¸rdag],lÃ¸rdag). 
+compword(den,[sÃ¸ndag],sÃ¸ndag). 
 compword(den,[mandag],mandag). 
-compword(den,[nærmeste,til],nærmest). 
-compword(den,[nærmeste],nærmest). 
+compword(den,[nÃ¦rmeste,til],nÃ¦rmest). 
+compword(den,[nÃ¦rmeste],nÃ¦rmest). 
 
     xcompword(den,[varianten],denne). %% generic
 
 compword(den,[vet,eg],den). 
 compword(den,[vet,jeg],den).
 
-compword(den,[som,går],[]).  %% Removeblanks is destructive
+compword(den,[som,gÃ¥r],[]).  %% Removeblanks is destructive
 
 
 compword(denne,[sms,tjenesten],smstuc). 
@@ -1769,7 +1771,7 @@ compword(denne,[typen],denne).
 
 %% compword(det,[av],[]). %%  Hvor ble det av ... 
 
-xcompword(det,[buss,går],buss). %%  \+ x <--- ???
+xcompword(det,[buss,gÃ¥r],buss). %%  \+ x <--- ???
 %%     compword(det,[der],dette).  %% regner det der jeg bor
 
     xcompword(det,[det,er],noe). %% rough
@@ -1778,16 +1780,16 @@ xcompword(det,[buss,går],buss). %%  \+ x <--- ???
 %% compword(det,[er,greitt],ok). 
     xcompword(det,[der],dette). 
     
-    xcompword(det,[enkleste],løsningen). %% TA-110807
+    xcompword(det,[enkleste],lÃ¸sningen). %% TA-110807
 
-%% compword(det,[er,greitt],ja).  %% det er greitt å ta buss 
+%% compword(det,[er,greitt],ja).  %% det er greitt Ã¥ ta buss 
 compword(det,[er,greitt,det],ja). 
 
 
 
 compword(det,[fikk,jeg,ikke,med,meg],gjenta). 
 %% compword(det,[fra],buss).  
-%% compword(det,[hadde,vært,fint],takk). 
+%% compword(det,[hadde,vÃ¦rt,fint],takk). 
 compword(det,[hele],alt).  
 
 compword(det,[her],dette). 
@@ -1795,25 +1797,25 @@ compword(det,[her],dette).
 compword(det,[lenge,til],det).     %% Rough ?
 %%    xcompword(det,[med,buss],buss). %% Hvor langt er det med buss
 compword(det,[med,bussen],bussen).   
-compword(det,[må,du,gjenta],gjenta). 
+compword(det,[mÃ¥,du,gjenta],gjenta). 
 
 %%    xcompword(da,[ser,det,ut,til,at],[]).  -> gram
 
-%%    xcompword(det,[samme,som],slik). %% rough hazard  %%  svaret er  ikke det samme som i går *
+%%    xcompword(det,[samme,som],slik). %% rough hazard  %%  svaret er  ikke det samme som i gÃ¥r *
 %%   jeg sier det samme som deg 
 
     xcompword(det,[siste,du,sa],dette). 
     xcompword(det,[siste],dette).
 
-compword(d,[sånn,at],at). 
+compword(d,[sÃ¥nn,at],at). 
 compword(d,[slik,at],at).  
 
-compword(det,[sånn,at],at). 
-%% compword(det,[slik,at],at).  %% før var det slik at
+compword(det,[sÃ¥nn,at],at). 
+%% compword(det,[slik,at],at).  %% fÃ¸r var det slik at
 
 
-    xcompword(det,[spørs,om],[]). %% TA-110112
-    xcompword(spørs,[om],[]).     %%
+    xcompword(det,[spÃ¸rs,om],[]). %% TA-110112
+    xcompword(spÃ¸rs,[om],[]).     %%
 
 compword(det,[vil,si],[]). 
 
@@ -1821,12 +1823,12 @@ compword(dette,[for,noe],dette).
 compword(dette,[for,en,ting],dette). 
 
     xcompword(d,[her],dette).  
-    xcompword(d,[hær],dette). 
+    xcompword(d,[hÃ¦r],dette). 
     xcompword(det,[for,noe],det).   
 %%     xcompword(det,[her],dette). %% coll det her er 
-    xcompword(det,[hær],dette).
+    xcompword(det,[hÃ¦r],dette).
     xcompword(dette,[her],dette). 
-    xcompword(dette,[hær],dette).
+    xcompword(dette,[hÃ¦r],dette).
     xcompword(dette,[for,noe],dette). 
 
 compword(di,[to],to).
@@ -1836,11 +1838,11 @@ compword(dit,    [jeg,skal],dit).
    compword(dit,    [du,vil],dit).  %% rough 
 
    xcompword(der,    [jeg,bor],hjemme). 
-   xcompword(der,    [jeg,må,være],før).  
-   xcompword(der,    [må,jeg,være],før).
-   xcompword(der,    [jeg,må,være,seinest],før). 
-   xcompword(der,    [jeg,må,være,senest],før). 
-   xcompword(der,    [må,jeg,være,senest],før).   %% etc
+   xcompword(der,    [jeg,mÃ¥,vÃ¦re],fÃ¸r).  
+   xcompword(der,    [mÃ¥,jeg,vÃ¦re],fÃ¸r).
+   xcompword(der,    [jeg,mÃ¥,vÃ¦re,seinest],fÃ¸r). 
+   xcompword(der,    [jeg,mÃ¥,vÃ¦re,senest],fÃ¸r). 
+   xcompword(der,    [mÃ¥,jeg,vÃ¦re,senest],fÃ¸r).   %% etc
 
 
 compword(dr,[de], de).            %% dr=de + rep 
@@ -1850,20 +1852,20 @@ compword(dra,    [klokka], etter).          %%  rough
 compword(dreide, [seg,om], gjaldt).   %% fast uttr
 compword(dreier, [seg,om], gjelder).  %% fast uttr
 
-compword(driver, [med], gjør). 
-compword(driver, [på], arbeider).  
-compword(du,[anbefale,meg,å],jeg). %% cheat
+compword(driver, [med], gjÃ¸r). 
+compword(driver, [pÃ¥], arbeider).  
+compword(du,[anbefale,meg,Ã¥],jeg). %% cheat
 compword(du,[buss],buss).  
 %%  compword(du,[ikke],du).   %% Rough Rhetorics hvorfor kan du ikke ta trikken
 
     xcompword(du,[du],du). %% own
-compword(du,[får,ha],ha). %% en god dag 
-compword(du,[går,neste],går). %% error 
+compword(du,[fÃ¥r,ha],ha). %% en god dag 
+compword(du,[gÃ¥r,neste],gÃ¥r). %% error 
 
 %% compword(du,[jeg],jeg). %% tror du jeg kan ta bussen 
                            %% Du, jeg skal ... 
 
-compword(du,[når],når). 
+compword(du,[nÃ¥r],nÃ¥r). 
 compword(du,[hvilken],hvilken).   %% ?
 
     xcompword(du,[personlig],du).
@@ -1876,11 +1878,11 @@ compword(dukker,[opp],kommer).
 compword(dukket,[opp],kom).          
 compword(dukket,[opp],kommet). 
 compword(duss,[buss],buss).  %% repair
-    xcompword(dårlig,[gjort],dårlig). %% TA-110113
-compword(døgnets,[tider],tider).   
+    xcompword(dÃ¥rlig,[gjort],dÃ¥rlig). %% TA-110113
+compword(dÃ¸gnets,[tider],tider).   
 
 %%   compword(e,['.'],etter).   %% E.Tambarskj.  
-compword(e,[går],går). %% dial.. repair 
+compword(e,[gÃ¥r],gÃ¥r). %% dial.. repair 
 compword(e,[m],ettermiddag). 
 compword(e,['.',m],ettermiddag). 
 compword(e,[mail],email). 
@@ -1890,10 +1892,10 @@ compword(e,[r],er).                     %%  own sp
 
 %% compword(egner,[seg],er).   %%..best egner seg = fit (itself) 
 
-    xcompword(eller,[i,nærheten],[]).
+    xcompword(eller,[i,nÃ¦rheten],[]).
 
 
-    xcompword(en,[ca,'.'],ca). %% fra Höiseth om en ca.  en halv time
+    xcompword(en,[ca,'.'],ca). %% fra HÃ¶iseth om en ca.  en halv time
     xcompword(en,[ca],ca).  
 
     compword(en,[del],flere). %%  busstuc er en del av// en del feil
@@ -1919,7 +1921,7 @@ compword(en,[firer],fire).
 compword(en,[femmer],fem).
 compword(en,[sekser],seks).  
 compword(en,[sjuer],sju). 
-compword(en,[åtter],åtte). 
+compword(en,[Ã¥tter],Ã¥tte). 
 compword(en,[nier],ni).
 compword(en,[tier],ti).
 compword(en,[elver],elve). 
@@ -1934,8 +1936,8 @@ compword(en,[million],1000000).
 compword(en,[gang,til],[]).  
 %% compword(en,[gang],[]).  %% per time
 compword(en,[slik], en).  
-compword(en,[sånn], en). 
-compword(en,[så],en).    
+compword(en,[sÃ¥nn], en). 
+compword(en,[sÃ¥],en).    
 compword(en,[viss], en).     
 compword(en,[slik],en). 
 compword(en,[slikt],en).  
@@ -1967,33 +1969,33 @@ compword(engangs,[billett],enkeltbillett).
     xcompword(en,[gang],redundant0). 
 
     compword(enn,[bare],enn). 
-%% compword(enn,[det],avgang). %% Freak går det noen tidligere enn det 
+%% compword(enn,[det],avgang). %% Freak gÃ¥r det noen tidligere enn det 
 
     xcompword(enn,[avtalt],[]). %% TA-110105
-    xcompword(enn,[før],[]).    %% tidligere enn før %% rough
+    xcompword(enn,[fÃ¸r],[]).    %% tidligere enn fÃ¸r %% rough
     xcompword(enn,[ellers],[]). 
-    xcompword(enn,[tidligere],[]).    %% tidligere enn før %% rough
+    xcompword(enn,[tidligere],[]).    %% tidligere enn fÃ¸r %% rough
 
-%% compword(enn,[],[]).     % enn (hva med) buss 5 ? , større enn 
+%% compword(enn,[],[]).     % enn (hva med) buss 5 ? , stÃ¸rre enn 
 
-compword(ennå,[en,gang],redundant0).
+compword(ennÃ¥,[en,gang],redundant0).
 
 
-%% compword(er,[den,første,som],[]).       %%  doesntwork 
-compword(er,[den,neste,til,å,kjøre], går). 
+%% compword(er,[den,fÃ¸rste,som],[]).       %%  doesntwork 
+compword(er,[den,neste,til,Ã¥,kjÃ¸re], gÃ¥r). 
 compword(er,[der,kl],kl). %% IKKE X
 
     xcompword(er,[det,med],er). %% hvordan e.d.m. 
     xcompword(gikk,[det,med],var). 
-%%     xcompword(går,[det,med],er).   %% hvordan går det med deg %% TA-101202
+%%     xcompword(gÃ¥r,[det,med],er).   %% hvordan gÃ¥r det med deg %% TA-101202
 
 compword(er,[det,blitt,av], er). 
    xcompword(er,[det,du,har],fins).  
 compword(er,[det,med], er). 
 %% compword(er,[det,for], koster).   %% Too rough 
 %% compword(er,[det,noe], eksisterer).   %% ? 
-   xcompword(er,[det,som],[]). %% .. kjører // er det = exist (gram) 
-   xcompword(er,[det,å,være],virker). %% ... en datamaskin :-)
+   xcompword(er,[det,som],[]). %% .. kjÃ¸rer // er det = exist (gram) 
+   xcompword(er,[det,Ã¥,vÃ¦re],virker). %% ... en datamaskin :-)
 
 
 %% compword(er,[det],eksisterer). %% NB ikke x 
@@ -2005,12 +2007,12 @@ compword(er,[e],er).          %% slang
    xcompword(er,[enig,i],mener). 
    xcompword(e,[enig,i],mener). %% ?
 compword(er,[er],er).   
-compword(er,[går], går).      %%  repair 
+compword(er,[gÃ¥r], gÃ¥r).      %%  repair 
 
 %%    xcompword(er,[hyppig,forekommende],skjer). %% -- ofte %%
 
-compword(er,[i,drift], går). 
-    xcompword(er,[kjører],går). %% AVOID TAKE kjører
+compword(er,[i,drift], gÃ¥r). 
+    xcompword(er,[kjÃ¸rer],gÃ¥r). %% AVOID TAKE kjÃ¸rer
 compword(er,[kommer],kommer).   %% repair
 
 compword(er,[ligger], ligger). %% TA-100823 repair
@@ -2018,29 +2020,29 @@ compword(er,[ligger], ligger). %% TA-100823 repair
 %% compword(er,[med], er). %% er sammen med = er med =er*
                            %% TA-110221
 
-compword(er,[må], må).    %%repair 
+compword(er,[mÃ¥], mÃ¥).    %%repair 
 
-compword(er,[nå],er). %%  Rough   klokken er -nå- 1545.
-   xcompword(er,[når],er).
+compword(er,[nÃ¥],er). %%  Rough   klokken er -nÃ¥- 1545.
+   xcompword(er,[nÃ¥r],er).
    xcompword(er,[passerer], passerer).      %%  repair  
-%% compword(er,[planlagt], går). %% rough 
+%% compword(er,[planlagt], gÃ¥r). %% rough 
 
     xcompword(er,[tillagt],har). %% ad hoc 
 
 compword(er,[snakk,om],gjelder).  
 
-%% compword(er,[så], er).                  %% er så du/stor 
+%% compword(er,[sÃ¥], er).                  %% er sÃ¥ du/stor 
 
     xcompword(er,[vil],vil).            %% Repair
 
-    xcompword(er,[ute,etter],søker).  
-    xcompword(var,[ute,etter],søkte).  
+    xcompword(er,[ute,etter],sÃ¸ker).  
+    xcompword(var,[ute,etter],sÃ¸kte).  
 
     xcompword(et,[eller,annet],noe). 
     xcompword(ett,[eller,annet],noe). %% 
 
-%    xcompword(et,[aøyeblikk,bare],[]). %% spam
-    xcompword(et,[øyeblikk,bare],[]). 
+%    xcompword(et,[aÃ¸yeblikk,bare],[]). %% spam
+    xcompword(et,[Ã¸yeblikk,bare],[]). 
 
     xcompword(et,[et],et). %% own 
 
@@ -2055,10 +2057,10 @@ compword(et,[mer],et).   %% et mer presist navn
 compword(et,[slik],et).  
 compword(et,[slikt],et). 
 compword(et,[snes],20).  
-compword(et,[sted,på],på).  
+compword(et,[sted,pÃ¥],pÃ¥).  
 compword(et,[ter],etter). 
 compword(et,[visst],et).  
-compword(et,[så],et).  
+compword(et,[sÃ¥],et).  
 
 compword(ett,[er],etter).  %% Hazardous ???
 compword(ett,[kl],etter). 
@@ -2066,37 +2068,37 @@ compword(ett,[kl],etter).
 
 %% compword(etter,[den],deretter).
     xcompword(etter,[denne],deretter).
-    xcompword(etter,[den,som,går],efter).    %%  efter = strict after/techn 
-compword(ætter,[den,som,går],efter).    %% ? dial
+    xcompword(etter,[den,som,gÃ¥r],efter).    %%  efter = strict after/techn 
+compword(Ã¦tter,[den,som,gÃ¥r],efter).    %% ? dial
 
-    xcompword(etter,[ønske],redundant0). %% TA-101004 ad hoc
+    xcompword(etter,[Ã¸nske],redundant0). %% TA-101004 ad hoc
 
-%%     xcompword(etter,[det],deretter).    %% Telebuster!  %% suspended .. etter det jeg forstår 
+%%     xcompword(etter,[det],deretter).    %% Telebuster!  %% suspended .. etter det jeg forstÃ¥r 
 
     xcompword(etter,[dette],deretter).  %% 
 
 compword(etter,[etter],etter).         %%  Repair 
 compword(etter,[fra],fra).             %%  Repair 
-compword(etter,[før],før).             %%  Repair
-compword(etter,[går],går).             %%  Repair
+compword(etter,[fÃ¸r],fÃ¸r).             %%  Repair
+compword(etter,[gÃ¥r],gÃ¥r).             %%  Repair
 compword(etter,[med],med).             %%  Repair 
 compword(etter,[mellom],mellom).       %%  Repair
 compword(etter,[middag],ettermiddag). 
 compword(etter,[neste],heretter). %%  ? rough, \+ xc..
-    xcompword(etter,[nå],heretter). 
-compword(etter,[passert],etter).       %% å ha passert         
+    xcompword(etter,[nÃ¥],heretter). 
+compword(etter,[passert],etter).       %% Ã¥ ha passert         
 compword(etter,[til],til).             %%  Repair
-compword(etter,[å,ha,passert],forbi). 
-compword(etter,[å,ha,startet,i],fra). 
+compword(etter,[Ã¥,ha,passert],forbi). 
+compword(etter,[Ã¥,ha,startet,i],fra). 
 
 compword(ettermiddag,['/',kveld],ettermiddag). %% most inclusive 
-compword(eventuelt,[når],[]). 
+compword(eventuelt,[nÃ¥r],[]). 
 
 compword(eventuelt,[],[]).  %% collides ? 
     xcompword(ev,['.'],[]). 
     xcompword(evt,['.'],[]). 
 
-compword(evt,[når],[]). 
+compword(evt,[nÃ¥r],[]). 
 %% compword(evt,[],[]). %% destructive ?  
 
 
@@ -2109,52 +2111,52 @@ compword(f,[o,m],etter).
 compword(f,[o,m,'.'],etter).  
 compword(f,['.',o,'.',m],etter). 
 compword(f,['.',o,'.',m,'.'],etter). 
-compword(f,[r],før).  % f;r 
+compword(f,[r],fÃ¸r).  % f;r 
 compword(f,[ra],fra). 
-compword(f,[rste],første).   %%  f;rste
+compword(f,[rste],fÃ¸rste).   %%  f;rste
 compword(f,[til],til).       %% Repair  
 
-compword(f,[å,komme,t],til).    %%
-compword(f,[å,komme,til],til). 
+compword(f,[Ã¥,komme,t],til).    %%
+compword(f,[Ã¥,komme,til],til). 
 
-compword(f,[å,være,i],til). 
-compword(f,[å,være,på],til).
+compword(f,[Ã¥,vÃ¦re,i],til). 
+compword(f,[Ã¥,vÃ¦re,pÃ¥],til).
     xcompword(feiler,[det],plager). %% rough (be wrong with) %% TA-101103
-compword(femme,[før],før). 
-compword(ferdig,[til],før).       %% Rough experiment
+compword(femme,[fÃ¸r],fÃ¸r). 
+compword(ferdig,[til],fÃ¸r).       %% Rough experiment
 compword(ferie,[ruter],ferie).   %%   Rough
 compword(finne,[sted],finnes). 
 compword(finner,[sted],finnes). 
-compword(finner,[ikke],søker). %%  <-- rough 
-    xcompword(fint,[å],å). %% rekker f.å. 
+compword(finner,[ikke],sÃ¸ker). %%  <-- rough 
+    xcompword(fint,[Ã¥],Ã¥). %% rekker f.Ã¥. 
 
 %% Begin FOR
 
-%%       xcompword(for,[å,være],er). %% anser for å være= anser er
+%%       xcompword(for,[Ã¥,vÃ¦re],er). %% anser for Ã¥ vÃ¦re= anser er
     xcompword(for,[den,sakens,skyld],redundant0). 
     xcompword(for,[eksempel],redundant0).         %% f.eks. = []
     xcompword(for,[min,del],redundant0).          %% TA-101117
     xcompword(for,[sikkerhets,skyld],redundant0). 
 
-    xcompword(for,[øyeblikket],nå). %% TA-101123
+    xcompword(for,[Ã¸yeblikket],nÃ¥). %% TA-101123
 
-    xcompword(for,[å,være,der,før],før).  %#1        %% TA-100921
-    xcompword(for,[å,være,der],før).      %#2        %%
+    xcompword(for,[Ã¥,vÃ¦re,der,fÃ¸r],fÃ¸r).  %#1        %% TA-100921
+    xcompword(for,[Ã¥,vÃ¦re,der],fÃ¸r).      %#2        %%
     xcompword(for,[for],for).      
-    xcompword(for,[p,være,pa],til). 
+    xcompword(for,[p,vÃ¦re,pa],til). 
 
-compword(for,[tiden],nå).
+compword(for,[tiden],nÃ¥).
 
-    xcompword(for,[æ,være,i],til).   %%  æ sp
-    xcompword(for,[øvrig],forøvrig). %% 
+    xcompword(for,[Ã¦,vÃ¦re,i],til).   %%  Ã¦ sp
+    xcompword(for,[Ã¸vrig],forÃ¸vrig). %% 
 
-%% compword(for,[klokka],før).  %% NB for kl 11 \= for rute 11
-%% compword(for,[klokken],før). 
-%% compword(for,[kl],før).      %% 
+%% compword(for,[klokka],fÃ¸r).  %% NB for kl 11 \= for rute 11
+%% compword(for,[klokken],fÃ¸r). 
+%% compword(for,[kl],fÃ¸r).      %% 
 compword(familie,[ dagsbilett],familiebilett).
 compword(familie,[ dagsbillett],familiebilett). 
 
-    xcompword(far,[a,være, i],til). %% no pardon
+    xcompword(far,[a,vÃ¦re, i],til). %% no pardon
 
 compword(fare,[for],mulig). % .. at
 compword(fler,[enn,en],flere). 
@@ -2178,30 +2180,30 @@ compword(for,[fra],fra).         %% repair
     xcompword(for,[tidlig,ute],fortidlig).
     xcompword(for,[tidlig],fortidlig).
 
-    xcompword(for,[å,vær,ei],til).  %% være i   
-    xcompword(for,[å,våre,på],til). %% æ-trøbbel 
+    xcompword(for,[Ã¥,vÃ¦r,ei],til).  %% vÃ¦re i   
+    xcompword(for,[Ã¥,vÃ¥re,pÃ¥],til). %% Ã¦-trÃ¸bbel 
 
-    xcompword(for,[og,være,på],til).     %%   spiw
-    xcompword(fo,[rå,være,i],til).  
-    xcompword(fo,[rå,være,på],til). 
+    xcompword(for,[og,vÃ¦re,pÃ¥],til).     %%   spiw
+    xcompword(fo,[rÃ¥,vÃ¦re,i],til).  
+    xcompword(fo,[rÃ¥,vÃ¦re,pÃ¥],til). 
 
-    xcompword(for,[p,være,i], til).  
-    xcompword(for,[p,være,på], til).
-    xcompword(for,[på,være,i], til).  
-    xcompword(for,[på,være,på], til).  
-%% compword(for,[å,komme,til], til). 
+    xcompword(for,[p,vÃ¦re,i], til).  
+    xcompword(for,[p,vÃ¦re,pÃ¥], til).
+    xcompword(for,[pÃ¥,vÃ¦re,i], til).  
+    xcompword(for,[pÃ¥,vÃ¦re,pÃ¥], til).  
+%% compword(for,[Ã¥,komme,til], til). 
     xcompword(for,['?' ,komme,til], til).
     xcompword(fortelle,[med],fortelle). %% 
     xcompword(for,[for],for). 
 compword(for,[guds,skyld],[]).
-    xcompword(for,[i,være,på],til). 
+    xcompword(for,[i,vÃ¦re,pÃ¥],til). 
 
 
      xcompword(for,[langsomt],forsinket). %% 
      xcompword(for,[sakte],forsinket). %% 
      xcompword(for,[sent],forsinket). %% 
 
-    xcompword(for,[være,på],til).   %%
+    xcompword(for,[vÃ¦re,pÃ¥],til).   %%
 compword(for,[komme,fram,til],til). 
 compword(for,[komme,frem,til],til).
 compword(for,[mye],mye). 
@@ -2211,235 +2213,235 @@ compword(for,[mye],mye).
     xcompword(for,[sent],forsinket).  
     xcompword(for,[seint],forsinket). 
 
-    xcompword(for,[øyeblikket],[]). %% #->  nå // rough 
+    xcompword(for,[Ã¸yeblikket],[]). %% #->  nÃ¥ // rough 
 
-    xcompword(for,[å,ved],til). 
+    xcompword(for,[Ã¥,ved],til). 
 
-compword(for,[på,være],til). %% for å være på *
+compword(for,[pÃ¥,vÃ¦re],til). %% for Ã¥ vÃ¦re pÃ¥ *
 
-    xcompword(for,[å,rekke,frem ,til], til). 
-    xcompword(for,[å,rekke,frem],før).  
-    xcompword(for,[å,være,der,til],før). 
-compword(for,[å,være,der],kl).  
+    xcompword(for,[Ã¥,rekke,frem ,til], til). 
+    xcompword(for,[Ã¥,rekke,frem],fÃ¸r).  
+    xcompword(for,[Ã¥,vÃ¦re,der,til],fÃ¸r). 
+compword(for,[Ã¥,vÃ¦re,der],kl).  
 
-   xcompword(for,[å,være,der,før],før).
+   xcompword(for,[Ã¥,vÃ¦re,der,fÃ¸r],fÃ¸r).
 
-%% compword(for,[å,være,der],[]).  
+%% compword(for,[Ã¥,vÃ¦re,der],[]).  
 
-    xcompword(for,[være,der],[]). 
+    xcompword(for,[vÃ¦re,der],[]). 
 
-compword(for,[være,i],til).  
+compword(for,[vÃ¦re,i],til).  
 compword(for,[vre,i],til).  %%  ?
-compword(for,[være,ii],til).        %% ?
-compword(for,[være,på],til).        %% Være-syndrom
+compword(for,[vÃ¦re,ii],til).        %% ?
+compword(for,[vÃ¦re,pÃ¥],til).        %% VÃ¦re-syndrom
 
-compword(for,[a,være,på],til).      %% etc
-compword(for,[a,være,ved],til). 
+compword(for,[a,vÃ¦re,pÃ¥],til).      %% etc
+compword(for,[a,vÃ¦re,ved],til). 
 
-   xcompword(for,[æ,være,på],til). 
-   xcompword(for,[æ,vere,på],til). 
-   xcompword(får,[æ,være,på],til). 
-   xcompword(får,[å,vere,på],til). %% no pardon
+   xcompword(for,[Ã¦,vÃ¦re,pÃ¥],til). 
+   xcompword(for,[Ã¦,vere,pÃ¥],til). 
+   xcompword(fÃ¥r,[Ã¦,vÃ¦re,pÃ¥],til). 
+   xcompword(fÃ¥r,[Ã¥,vere,pÃ¥],til). %% no pardon
 
-compword(for,[at,være,i],til).      %%  DK
-compword(for,[at,være,på],til).     %% 
+compword(for,[at,vÃ¦re,i],til).      %%  DK
+compword(for,[at,vÃ¦re,pÃ¥],til).     %% 
 
-compword(for,[være,i],til). 
+compword(for,[vÃ¦re,i],til). 
 
-    xcompword(fører,[til],forårsaker).  %% problem fører=noun 
+    xcompword(fÃ¸rer,[til],forÃ¥rsaker).  %% problem fÃ¸rer=noun 
 
 
-%% compword(før,[den],derfør).       %% Technical  før dette blir verifisert *
-%%    xcompword(før,[denne],derfør). 
-%% compword(før,[det],derfør).       %% Dialog
-%%    xcompword(før,[dette],derfør). %% 
+%% compword(fÃ¸r,[den],derfÃ¸r).       %% Technical  fÃ¸r dette blir verifisert *
+%%    xcompword(fÃ¸r,[denne],derfÃ¸r). 
+%% compword(fÃ¸r,[det],derfÃ¸r).       %% Dialog
+%%    xcompword(fÃ¸r,[dette],derfÃ¸r). %% 
 
-    xcompword(før,[å,være,i],til).   %% no pardon 
-    xcompword(før,[ay,være,i],til).  %% no pardon %% TA-110518
-    xcompword(før,[og,etter],rundt). %% rough   utenfor ? 
+    xcompword(fÃ¸r,[Ã¥,vÃ¦re,i],til).   %% no pardon 
+    xcompword(fÃ¸r,[ay,vÃ¦re,i],til).  %% no pardon %% TA-110518
+    xcompword(fÃ¸r,[og,etter],rundt). %% rough   utenfor ? 
 
-    xcompword(før,[klokka,blir],før). %% etc. ad hoc 
+    xcompword(fÃ¸r,[klokka,blir],fÃ¸r). %% etc. ad hoc 
 
-compword(får,[være,i],til).
-compword(får,[være,på],til).
+compword(fÃ¥r,[vÃ¦re,i],til).
+compword(fÃ¥r,[vÃ¦re,pÃ¥],til).
 
     xcompword(for,[i,morgen],imorgen). %% TA-110401
  compword(for,[imorgen],imorgen).      %%
 
-%% compword(for,[i],forå).          %%  in_order_to
+%% compword(for,[i],forÃ¥).          %%  in_order_to
 compword(for,[idag],idag).       %%  hairy
-compword(for,[kl,'.'],før).   
-compword(for,[kl],før).  
-compword(for,[klokka],før).  
+compword(for,[kl,'.'],fÃ¸r).   
+compword(for,[kl],fÃ¸r).  
+compword(for,[klokka],fÃ¸r).  
 compword(for,[komme,til],til).   
 
-compword(for,[og,være,der],før).  %% ... // err
-compword(for,[og,være,framme,før], før).   
-compword(for,[og,være,framme,rundt], før).
-compword(for,[og,være,framme], før). 
-compword(for,[og,være,frem], før). 
-compword(for,[og,være,fremme], før). 
-    xcompword(for,[og,være,i],til).     %% TA-101206 %% ... // err
-compword(for,[og,være,på],til).    %% 
-compword(for,[og,være,til],til).   %% 
+compword(for,[og,vÃ¦re,der],fÃ¸r).  %% ... // err
+compword(for,[og,vÃ¦re,framme,fÃ¸r], fÃ¸r).   
+compword(for,[og,vÃ¦re,framme,rundt], fÃ¸r).
+compword(for,[og,vÃ¦re,framme], fÃ¸r). 
+compword(for,[og,vÃ¦re,frem], fÃ¸r). 
+compword(for,[og,vÃ¦re,fremme], fÃ¸r). 
+    xcompword(for,[og,vÃ¦re,i],til).     %% TA-101206 %% ... // err
+compword(for,[og,vÃ¦re,pÃ¥],til).    %% 
+compword(for,[og,vÃ¦re,til],til).   %% 
 
-%%%% compword(for,[og,være],til). %%  Haz? %% TA-101206
+%%%% compword(for,[og,vÃ¦re],til). %%  Haz? %% TA-101206
 
 compword(for,[noe],[]). 
-compword(for,[oppmøte],før). %% for oppmøte kl 8:15 på ...
+compword(for,[oppmÃ¸te],fÃ¸r). %% for oppmÃ¸te kl 8:15 pÃ¥ ...
 
 compword(for,[sein],forsinket). 
 compword(for,[sen],forsinket).   
 compword(for,[seint],forsinket). 
 compword(for,[sent],forsinket). 
 
-    xcompword(for,[så,å,være,på],til). 
+    xcompword(for,[sÃ¥,Ã¥,vÃ¦re,pÃ¥],til). 
 
-compword(for,[så,å],og).         %%  Rough 
-compword(for,[så],og).           %%   Rough 
+compword(for,[sÃ¥,Ã¥],og).         %%  Rough 
+compword(for,[sÃ¥],og).           %%   Rough 
 compword(for,[til],til).         %%  fort til ? (Rough)
 
-compword(for,[å,i],til).  
-compword(for,[å,for],for).       %% repair
-     %% compword(for,[å,komme],går).     %%  Harmful and unnec
-     %% compword(for,[å,komme,til],til). 
+compword(for,[Ã¥,i],til).  
+compword(for,[Ã¥,for],for).       %% repair
+     %% compword(for,[Ã¥,komme],gÃ¥r).     %%  Harmful and unnec
+     %% compword(for,[Ã¥,komme,til],til). 
 compword(for,[komme,meg,til],til).  
-compword(for,[å,komme,meg,til],til).
+compword(for,[Ã¥,komme,meg,til],til).
 
 compword(for,[a,komme,til],til). 
 compword(for,[at,komme,til],til). 
-compword(for,[å,nå],til).  
-compword(for,[å,på],til).        %% ?????
-compword(for,[å,rekke,det],[]). 
-compword(for,[å,ta,buss,til],til).
-%%% compword(for,[å,rekke],til).   rekke en avtale/buss
-compword(for,[å,var,i],til).   
+compword(for,[Ã¥,nÃ¥],til).  
+compword(for,[Ã¥,pÃ¥],til).        %% ?????
+compword(for,[Ã¥,rekke,det],[]). 
+compword(for,[Ã¥,ta,buss,til],til).
+%%% compword(for,[Ã¥,rekke],til).   rekke en avtale/buss
+compword(for,[Ã¥,var,i],til).   
 
-compword(for,[ay,'va|re',der],før). %% etc ad hoc 
-compword(for,[ay,'va¦re',der],før).
+compword(for,[ay,'va|re',der],fÃ¸r). %% etc ad hoc 
+compword(for,[ay,'vaÂ¦re',der],fÃ¸r).
 
-%%    xcompword(for,[å,være,der,etter],etter).  
-%%    xcompword(for,[å,være,der],før).          %% suspended
+%%    xcompword(for,[Ã¥,vÃ¦re,der,etter],etter).  
+%%    xcompword(for,[Ã¥,vÃ¦re,der],fÃ¸r).          %% suspended
 
-compword(for,[å,være,fra],fra).   
-compword(for,[å,være,fram,på], til). 
-compword(for,[å,være,fram], før). 
-compword(for,[å,være,framme,før], før).  
-compword(for,[å,være,framme,rundt], før).
-compword(for,[å,være,framme], før). 
-compword(for,[å,være,frem], før). 
-compword(for,[å,være,fremme], før). 
-%%   compword(for,[å,være,i],til). %% destroys in_order_to 
-                                   %% når må jeg ta bussen fra bekasinveien for og være i byen ca kl0900?
-compword(for,[å,være,må],til).     %% sp 
+compword(for,[Ã¥,vÃ¦re,fra],fra).   
+compword(for,[Ã¥,vÃ¦re,fram,pÃ¥], til). 
+compword(for,[Ã¥,vÃ¦re,fram], fÃ¸r). 
+compword(for,[Ã¥,vÃ¦re,framme,fÃ¸r], fÃ¸r).  
+compword(for,[Ã¥,vÃ¦re,framme,rundt], fÃ¸r).
+compword(for,[Ã¥,vÃ¦re,framme], fÃ¸r). 
+compword(for,[Ã¥,vÃ¦re,frem], fÃ¸r). 
+compword(for,[Ã¥,vÃ¦re,fremme], fÃ¸r). 
+%%   compword(for,[Ã¥,vÃ¦re,i],til). %% destroys in_order_to 
+                                   %% nÃ¥r mÃ¥ jeg ta bussen fra bekasinveien for og vÃ¦re i byen ca kl0900?
+compword(for,[Ã¥,vÃ¦re,mÃ¥],til).     %% sp 
 
-compword(for,[å,være,på,på],til).  %% difficult case 
-compword(for,[å,være,på],til).     %% Subsumes trans rule/ busaroundtimearrdep 
-                                   %%  ... for å være på ... 
-   compword(for,[å,hver,på],til).
+compword(for,[Ã¥,vÃ¦re,pÃ¥,pÃ¥],til).  %% difficult case 
+compword(for,[Ã¥,vÃ¦re,pÃ¥],til).     %% Subsumes trans rule/ busaroundtimearrdep 
+                                   %%  ... for Ã¥ vÃ¦re pÃ¥ ... 
+   compword(for,[Ã¥,hver,pÃ¥],til).
 
-%% compword(for,[å,være],til).   %% Ad Hoc EXPERIMENT 
+%% compword(for,[Ã¥,vÃ¦re],til).   %% Ad Hoc EXPERIMENT 
 
-compword(for,[å,komme,meg,til],til).  
-compword(for,[ay,vaøre,pay],til).
-compword(for,[å,hvære,på],til). 
-compword(for,[å,være,til],til). 
-compword(for,[å,være,å],til).      %%  p/å neib  %% ... LAST
-compword(for,[åvære,der,til],før). %% ... kl 0900
-compword(for,[åvære,i],til).  
-compword(for,[åvære,på],til).  
-compword(for,[å,værepå],til). 
-compword(for,[åværra,der,te],før).  
-compword(for,[åværra,i,der,te],før). %% ?
+compword(for,[Ã¥,komme,meg,til],til).  
+compword(for,[ay,vaÃ¸re,pay],til).
+compword(for,[Ã¥,hvÃ¦re,pÃ¥],til). 
+compword(for,[Ã¥,vÃ¦re,til],til). 
+compword(for,[Ã¥,vÃ¦re,Ã¥],til).      %%  p/Ã¥ neib  %% ... LAST
+compword(for,[Ã¥vÃ¦re,der,til],fÃ¸r). %% ... kl 0900
+compword(for,[Ã¥vÃ¦re,i],til).  
+compword(for,[Ã¥vÃ¦re,pÃ¥],til).  
+compword(for,[Ã¥,vÃ¦repÃ¥],til). 
+compword(for,[Ã¥vÃ¦rra,der,te],fÃ¸r).  
+compword(for,[Ã¥vÃ¦rra,i,der,te],fÃ¸r). %% ?
 
-%%     compword(for,[å,være],til).   %% .. for å være sentrum før %% Haz
-                                     %% som jeg anser for å være
+%%     compword(for,[Ã¥,vÃ¦re],til).   %% .. for Ã¥ vÃ¦re sentrum fÃ¸r %% Haz
+                                     %% som jeg anser for Ã¥ vÃ¦re
 
 %% End FOR
 
-    xcompword(får,[inn],mottar). %% etc. ad hoc 
-    xcompword(får,[til],klarer). %% ad hoc, incomplete 
+    xcompword(fÃ¥r,[inn],mottar). %% etc. ad hoc 
+    xcompword(fÃ¥r,[til],klarer). %% ad hoc, incomplete 
 
 
 
 compword(fr,[til],til).     %% repair 
     xcompword(fr,[5,a],fra). %% slip
 compword(fr,[a],fra). 
-compword(fr,[å,nå],til).  %% for å nå 
+compword(fr,[Ã¥,nÃ¥],til).  %% for Ã¥ nÃ¥ 
 
     xcompword(fra,[direkte,fra],fra). %% repair 
-    xcompword(fra,[her,jeg,er,nå],herfra).  %% TA-100909
+    xcompword(fra,[her,jeg,er,nÃ¥],herfra).  %% TA-100909
     xcompword(fra,[her],herfra).  
-    xcompword(fra,[nå,av],heretter).  %% 1.
-    xcompword(fra,[nå],heretter).     %% 2.
-    xcompword(fra,[hvor,og,når],når).  
+    xcompword(fra,[nÃ¥,av],heretter).  %% 1.
+    xcompword(fra,[nÃ¥],heretter).     %% 2.
+    xcompword(fra,[hvor,og,nÃ¥r],nÃ¥r).  
 
 compword(fra,['.'],fra). %% Ad Hoc 
 
-compword(fra,[der,jeg,er,nå],herfra). 
-compword(fra,[for],for).       %%  hvor tar jeg bussen fra for å %% Rough
+compword(fra,[der,jeg,er,nÃ¥],herfra). 
+compword(fra,[for],for).       %%  hvor tar jeg bussen fra for Ã¥ %% Rough
 compword(fra,['/',forbi],forbi).
 compword(fra,[forbi],fra). 
 compword(fra,[fra],fra).   %% repair
-compword(fra,[før],fra). 
+compword(fra,[fÃ¸r],fra). 
 compword(fra,['/',til],forbi). 
-compword(fra,[her,på],fra). 
+compword(fra,[her,pÃ¥],fra). 
 compword(fra,[herfra],herfra).
 compword(fra,[herifra],herfra). 
 compword(fra,[hvis],hvis).      %% ta bussen fra ... 
-%% compword(fra,[i],i).   %% Repair hvor gå bussen fra i sentrum
-% compword(fra,[i,nærheten,av],fra). 
+%% compword(fra,[i],i).   %% Repair hvor gÃ¥ bussen fra i sentrum
+% compword(fra,[i,nÃ¦rheten,av],fra). 
 compword(fra,[hjem],hjemmefra). 
 compword(fra,[hjemme],hjemmefra).
 compword(fra,[med],med). %%  repair
 compword(fra,[nr],nr).  
 compword(fra,[nummer],nmmer). 
-compword(fra,[nå,til,klokken],før). % ??? 
-compword(fra,[nå,til],før). 
-compword(fra,[når],når). %% Rough hvor skal jeg ta bussen fra når...
+compword(fra,[nÃ¥,til,klokken],fÃ¸r). % ??? 
+compword(fra,[nÃ¥,til],fÃ¸r). 
+compword(fra,[nÃ¥r],nÃ¥r). %% Rough hvor skal jeg ta bussen fra nÃ¥r...
 compword(fra,[og,med],efter).  
-compword(fra,[på],fra). %% reversed repair 
+compword(fra,[pÃ¥],fra). %% reversed repair 
 compword(fra,[rundt],fra).  
 compword(fra,[sted],utgangspunkt). 
 compword(fra,[til],til).        %% repair   
-    xcompword(fra,[å,være,på],til). %% fra  å være på ikea= til 
-compword(fra,[å],fra). 
+    xcompword(fra,[Ã¥,vÃ¦re,pÃ¥],til). %% fra  Ã¥ vÃ¦re pÃ¥ ikea= til 
+compword(fra,[Ã¥],fra). 
 compword(fraog,[med],efter).  
 
 
 %  
-    xcompword(får,[å,være,i],til).  
-% compword(får,[å,være],til).  
+    xcompword(fÃ¥r,[Ã¥,vÃ¦re,i],til).  
+% compword(fÃ¥r,[Ã¥,vÃ¦re],til).  
 
-    xcompword(får,[fra],forlater). 
-    xcompword(får,[å,være,på],til). 
-    xcompword(får,[å,nå],til).  
+    xcompword(fÃ¥r,[fra],forlater). 
+    xcompword(fÃ¥r,[Ã¥,vÃ¦re,pÃ¥],til). 
+    xcompword(fÃ¥r,[Ã¥,nÃ¥],til).  
 
 compword(foran,[i],i).  
 compword(forrerst,[i],i).           %%
 compword(forbi,['/',til],til).  
-compword(forbi,['/',i,nærheten],forbi). 
-compword(forbi,['/',i,nærheten,av],forbi).
-compword(forbi,['/',nærheten],forbi).
-compword(forbi,['/',nærheten,av],forbi). 
+compword(forbi,['/',i,nÃ¦rheten],forbi). 
+compword(forbi,['/',i,nÃ¦rheten,av],forbi).
+compword(forbi,['/',nÃ¦rheten],forbi).
+compword(forbi,['/',nÃ¦rheten,av],forbi). 
 
 compword(forbi,[bortenfor],forbi). 
 compword(forbi,[etter],etter).     %% repair
 compword(forbi,[fra],fra).         %% repair
 compword(forbi,[her],hit).  
 compword(forbi,[mot],mot).         %% repair ?
-compword(forbi,[på],forbi).        %%   prep2 ?
+compword(forbi,[pÃ¥],forbi).        %%   prep2 ?
 compword(forbi,[ved],forbi). 
 
 compword(forbin,[delse],forbindelse). 
 
 compword(forbli,[i],ankomme).  %% repair, forbli=forbi
-compword(forbli,[på],ankomme). 
+compword(forbli,[pÃ¥],ankomme). 
 
 compword(fordi,[om,det,er],[]). 
 
-    xcompword(foreløpig,[bare],bare).  
-    xcompword(men,[foreløpig,bare],bare). %% ad hoc ?
+    xcompword(forelÃ¸pig,[bare],bare).  
+    xcompword(men,[forelÃ¸pig,bare],bare). %% ad hoc ?
 
 compword(forsen,[],forsinket).   %% 
 compword(forsent,[],forsinket). 
@@ -2451,40 +2453,40 @@ compword(fotball,[bussen],fotballbuss).
 compword(fra,[buss,fra],fra). 
 compword(fra,[dit],dit). 
 compword(fra,[hit],hit). %%
-compword(fra,[før],allerede).
+compword(fra,[fÃ¸r],allerede).
 compword(fra,[heim],hjemmefra). 
 compword(fra,[hvor,i],fra).  
 compword(fra,[mot],mot).                  %% repair
 compword(fra,[nord],nordfra). 
-compword(fra,[sør], sørfra). 
-compword(fra,[syd], sørfra). 
+compword(fra,[sÃ¸r], sÃ¸rfra). 
+compword(fra,[syd], sÃ¸rfra). 
 compword(fra,[t],til).    %% Repair (forbi)
 compword(fra,[til],til).  %%
 compword(fra,[ved],ved).  %% repair
 compword(fra,[vest],vestfra). 
-compword(fra,[øst], østfra). 
+compword(fra,[Ã¸st], Ã¸stfra). 
 
-compword(framme,[før],før). %% Ikke x 
+compword(framme,[fÃ¸r],fÃ¸r). %% Ikke x 
     xcompword(framme,[i],i).   
-%%    xcompword(framme,[på],på).   %% som er framme på
+%%    xcompword(framme,[pÃ¥],pÃ¥).   %% som er framme pÃ¥
     xcompword(framme,[ved],ved). %%
     xcompword(fremme,[til],fremme). %% ? %% TA-100921 fremme official
 
-    xcompword(fram,[til,nå],tidligere). %%  hittil -> tidligere
-%%    xcompword(frem,[til,nå],tidligere). %% unnec
+    xcompword(fram,[til,nÃ¥],tidligere). %%  hittil -> tidligere
+%%    xcompword(frem,[til,nÃ¥],tidligere). %% unnec
 compword(fram,[til,da],tidligere). %% Rough
 
 %% compword(fram,[til],inntil). %%  frem til i morra 
                                 %%  jeg ser fram til et samarbeide
 
-compword(frammøte,[før],før).  
-compword(framøte,[før],før).
-compword(frammøte,[kl],før).  
-compword(framøte,[kl],før).
-compword(frammøte,[før],før).  
-compword(framøte,[før],før).
-compword(frammøte,[],før).  
-compword(framøte,[],før). %% etc 
+compword(frammÃ¸te,[fÃ¸r],fÃ¸r).  
+compword(framÃ¸te,[fÃ¸r],fÃ¸r).
+compword(frammÃ¸te,[kl],fÃ¸r).  
+compword(framÃ¸te,[kl],fÃ¸r).
+compword(frammÃ¸te,[fÃ¸r],fÃ¸r).  
+compword(framÃ¸te,[fÃ¸r],fÃ¸r).
+compword(frammÃ¸te,[],fÃ¸r).  
+compword(framÃ¸te,[],fÃ¸r). %% etc 
 
 
 compword(frem,[til,da],tidligere). %%
@@ -2492,80 +2494,80 @@ compword(frem,[til,da],tidligere). %%
     xcompword(frem,[til],til). 
     xcompword(fram,[til],til).
 
-    xcompword(fremme,[for], før). %%  før
-    xcompword(fremme,[seneste], før). %% spell 
+    xcompword(fremme,[for], fÃ¸r). %%  fÃ¸r
+    xcompword(fremme,[seneste], fÃ¸r). %% spell 
 
-%% compword(fremme,[på], til). %% når er jeg fremme på Nardo %% TA-101108
+%% compword(fremme,[pÃ¥], til). %% nÃ¥r er jeg fremme pÃ¥ Nardo %% TA-101108
 compword(fremme,[til], til).  
 compword(fullt,[mulig],mulig).  
-compword(fø,[rste],første).        %% fø#rste
-    xcompword(føler,[meg],er). %% Ad Hoc ..trett %% TA-101117
-compword(før,['/',etter],rundt). 
-    xcompword(før,[at,være,der],før).  
-compword(før,[den,som,går],før). 
-compword(før,[etter],etter).       %%  repair
-compword(før,[før],før).   
-   compword(før,[i,morgen],idag).  
-%% xcompword(før,[imorgen],idag).      %% før i morgen kl 12 \= idag kl 12
+compword(fÃ¸,[rste],fÃ¸rste).        %% fÃ¸#rste
+    xcompword(fÃ¸ler,[meg],er). %% Ad Hoc ..trett %% TA-101117
+compword(fÃ¸r,['/',etter],rundt). 
+    xcompword(fÃ¸r,[at,vÃ¦re,der],fÃ¸r).  
+compword(fÃ¸r,[den,som,gÃ¥r],fÃ¸r). 
+compword(fÃ¸r,[etter],etter).       %%  repair
+compword(fÃ¸r,[fÃ¸r],fÃ¸r).   
+   compword(fÃ¸r,[i,morgen],idag).  
+%% xcompword(fÃ¸r,[imorgen],idag).      %% fÃ¸r i morgen kl 12 \= idag kl 12
 
-compword(før,[like,etter],etter).  %%
-compword(før,[til],til).           %%  rep
-compword(først,[kommende],neste).
-compword(først,[som,sist],[]). 
-    compword(først,[skal],skal).  
-compword(første,[av],første). 
-compword(første,[etter,nå],neste). 
-compword(første,[fra,nå],neste). 
-compword(før,[i,kveld],ikveld). %% Rough
-compword(før,[kvelden],ikveld). %%
-
-
-
-compword(første,[neste],neste). %% repair 
-
-%%% compword(første,[og,andre],begge). %% Ignored , loses precision
-
-compword(få,[bekreftet],vite).  %% rough lazy ad hoc
-compword(fikk,[bekreftet],vet). %% .. nå
-compword(fått,[bekreftet],vet). 
-
-compword(få,[se],vis).   
-compword(få,[høre],vis).    %%  Rough
-
-compword(få,[meg],kjøre). %% få meg ny billett * 
-                          %% få meg til NTH      %% <--
-
-compword(få,[opp],få). 
-compword(få,[tak,i],få). %% ta).  %% rough
-compword(få,[fatt,i],ta). %%
-    xcompword(få,[å,være,på],til). %% (if error then xcomp...)
+compword(fÃ¸r,[like,etter],etter).  %%
+compword(fÃ¸r,[til],til).           %%  rep
+compword(fÃ¸rst,[kommende],neste).
+compword(fÃ¸rst,[som,sist],[]). 
+    compword(fÃ¸rst,[skal],skal).  
+compword(fÃ¸rste,[av],fÃ¸rste). 
+compword(fÃ¸rste,[etter,nÃ¥],neste). 
+compword(fÃ¸rste,[fra,nÃ¥],neste). 
+compword(fÃ¸r,[i,kveld],ikveld). %% Rough
+compword(fÃ¸r,[kvelden],ikveld). %%
 
 
-compword(får,[fra],forlater).       %% går fra 
-   xcompword(får,[forbi],passerer).
-compword(får,[i], går). %% confus
-compword(får,[klokka], før).
-compword(får,[meg], til). 
 
-compword(g,['&',aring,r],går). 
-compword(g,['¬',ør],går). 
-compword(g,[ør],går).  
-compword(g,[r],går).  %% g?r   
-compword(g,['?',r],går). %% g?r  
-compword(g,[år],går).  
+compword(fÃ¸rste,[neste],neste). %% repair 
 
-%% compword(g, ['\214',r],går).   %% Sicstus 4 
-%% compword(ga,['\205',r],går).   %% Sicstus 4
-%% compword(ga,['\203',ayr],går). %% Sicstus 4 
+%%% compword(fÃ¸rste,[og,andre],begge). %% Ignored , loses precision
+
+compword(fÃ¥,[bekreftet],vite).  %% rough lazy ad hoc
+compword(fikk,[bekreftet],vet). %% .. nÃ¥
+compword(fÃ¥tt,[bekreftet],vet). 
+
+compword(fÃ¥,[se],vis).   
+compword(fÃ¥,[hÃ¸re],vis).    %%  Rough
+
+compword(fÃ¥,[meg],kjÃ¸re). %% fÃ¥ meg ny billett * 
+                          %% fÃ¥ meg til NTH      %% <--
+
+compword(fÃ¥,[opp],fÃ¥). 
+compword(fÃ¥,[tak,i],fÃ¥). %% ta).  %% rough
+compword(fÃ¥,[fatt,i],ta). %%
+    xcompword(fÃ¥,[Ã¥,vÃ¦re,pÃ¥],til). %% (if error then xcomp...)
+
+
+compword(fÃ¥r,[fra],forlater).       %% gÃ¥r fra 
+   xcompword(fÃ¥r,[forbi],passerer).
+compword(fÃ¥r,[i], gÃ¥r). %% confus
+compword(fÃ¥r,[klokka], fÃ¸r).
+compword(fÃ¥r,[meg], til). 
+
+compword(g,['&',aring,r],gÃ¥r). 
+compword(g,['Â¬',Ã¸r],gÃ¥r). 
+compword(g,[Ã¸r],gÃ¥r).  
+compword(g,[r],gÃ¥r).  %% g?r   
+compword(g,['?',r],gÃ¥r). %% g?r  
+compword(g,[Ã¥r],gÃ¥r).  
+
+%% compword(g, ['\214',r],gÃ¥r).   %% Sicstus 4 
+%% compword(ga,['\205',r],gÃ¥r).   %% Sicstus 4
+%% compword(ga,['\203',ayr],gÃ¥r). %% Sicstus 4 
 
 compword(gang,[til], gang).     %% en gang til 
 
     xcompword(gang,[tid],gangtid).   %% TA-110419
     xcompword(gang,[tids],gangtid).  %%
-    xcompword(gå,[tid],gangtid).     %% 
-    xcompword(gå,[tids],gangtid).    %%
+    xcompword(gÃ¥,[tid],gangtid).     %% 
+    xcompword(gÃ¥,[tids],gangtid).    %%
 
-compword(ganger,[i,døgnet],ganger).  %% Default
+compword(ganger,[i,dÃ¸gnet],ganger).  %% Default
 compword(ganger,[om,dagen],ganger).  %% Default 
 
     xcompword(gate,[adresse],gateadresse). 
@@ -2583,99 +2585,99 @@ compword(gi,[med],gi). %% gi meg
 compword(gi,[opp],slutt). 
 compword(gir,[opp],slutter). 
 
-    xcompword(gi,[seg,ut,for,å,være],etterligne). 
-    xcompword(gir,[seg,ut,for,å,være],etterligner). 
-    xcompword(ga,[seg,ut,for,å,være],etterlignet). 
-    xcompword(gitt,[seg,ut,for,å,være],etterlignet).
+    xcompword(gi,[seg,ut,for,Ã¥,vÃ¦re],etterligne). 
+    xcompword(gir,[seg,ut,for,Ã¥,vÃ¦re],etterligner). 
+    xcompword(ga,[seg,ut,for,Ã¥,vÃ¦re],etterlignet). 
+    xcompword(gitt,[seg,ut,for,Ã¥,vÃ¦re],etterlignet).
 
 compword(gitt,[at], hvis). 
 
-compword(giæ,['½',r],går).         %% Å trøbbel
+compword(giÃ¦,['Â½',r],gÃ¥r).         %% Ã… trÃ¸bbel
 
-compword(gj,['?',r],gjør). %% hva gj?r du 
+compword(gj,['?',r],gjÃ¸r). %% hva gj?r du 
 compword(gjenta,[det,siste,du,sa],gjenta).
 
-    xcompword(så,[smått],[]).     %% TA-110228
-    xcompword(så,[gjerne],redundant0).    %% grad+adv
+    xcompword(sÃ¥,[smÃ¥tt],[]).     %% TA-110228
+    xcompword(sÃ¥,[gjerne],redundant0).    %% grad+adv
 
     xcompword(gjette,[seg,til],gjette). %% lazy 
     xcompword(gjetter,[seg,til],gjetter).  
     xcompword(gjettet,[seg,til],gjettet).
 
-compword(gjør,[at,jeg,kan,komme],går).  
-compword(gjør,[oppmerksom,på],sier).  
-compword(gjør,[rede,for],fortell). 
+compword(gjÃ¸r,[at,jeg,kan,komme],gÃ¥r).  
+compword(gjÃ¸r,[oppmerksom,pÃ¥],sier).  
+compword(gjÃ¸r,[rede,for],fortell). 
 
 compword(gt,[gt],gt).  
 
-compword(gruer,[meg,til,å],må). %%  :-) 
+compword(gruer,[meg,til,Ã¥],mÃ¥). %%  :-) 
 
 
-compword(gå,[meg],gå).     %% avoid transitive go 
-    xcompword(gå,[å],[]).    %% legg deg 
-compword(går,[ankommer],ankommer). %% repair  
-compword(går,[hvilke],går).   
+compword(gÃ¥,[meg],gÃ¥).     %% avoid transitive go 
+    xcompword(gÃ¥,[Ã¥],[]).    %% legg deg 
+compword(gÃ¥r,[ankommer],ankommer). %% repair  
+compword(gÃ¥r,[hvilke],gÃ¥r).   
 
-    xcompword(går,[ma,jeg,ta],går). %% ??
-    xcompword(går,[må,jeg,ta],går). %% ?
+    xcompword(gÃ¥r,[ma,jeg,ta],gÃ¥r). %% ??
+    xcompword(gÃ¥r,[mÃ¥,jeg,ta],gÃ¥r). %% ?
 
-compword(går,[meg],går). 
-    xcompword(går,[å,være,på],til). 
-    xcompword(går,[neste,går],går).
-%% compword(går,[ofte],går). 
-
-
-compword(gåår,[går],går).       %% repair
-
-%compword(gå,[avstand],gangavstand). 
-compword(gå,[r],går). 
-compword(gå,[å],[]). %% .. legg deg 
-
-%% compword(gå,[til],ta).   %% gå til NTH           
-%%  compword(går,[bra],passerer).  %% bra=fra ? %% Haz, det går bra 
+compword(gÃ¥r,[meg],gÃ¥r). 
+    xcompword(gÃ¥r,[Ã¥,vÃ¦re,pÃ¥],til). 
+    xcompword(gÃ¥r,[neste,gÃ¥r],gÃ¥r).
+%% compword(gÃ¥r,[ofte],gÃ¥r). 
 
 
-compword(bussen,[går,bussen],bussen). %% repair (når går b g b) I was fooled
+compword(gÃ¥Ã¥r,[gÃ¥r],gÃ¥r).       %% repair
 
-compword(går,[dem,en],går).    %% sp
+%compword(gÃ¥,[avstand],gangavstand). 
+compword(gÃ¥,[r],gÃ¥r). 
+compword(gÃ¥,[Ã¥],[]). %% .. legg deg 
 
-compword(går,[de,ei],går). 
-compword(går,[de,en],går).    %% nofunk
-compword(går,[de,et],går). 
+%% compword(gÃ¥,[til],ta).   %% gÃ¥ til NTH           
+%%  compword(gÃ¥r,[bra],passerer).  %% bra=fra ? %% Haz, det gÃ¥r bra 
 
-compword(går,[det,ei],går). 
-%%%  compword(går,[det,en],går). %% nofunk %% går det en tidligere buss
-compword(går,[det,et],går).    %%
-    compword(går,[det,med],går).   %% \+ x hvordan går det med deg 
 
-compword(går,[drar],går).      %% repair
-%% compword(går,[e],går).      %%  slang   e=etter/er
-%%  compword(går,[er],er).   %% Repair no %% når  bussen går er klokken 3
-compword(går,[går],går).                %% Repair 
-compword(går,[jeg,ta],går).     
-%% compword(går,[ofte],går).               %% ignore
-compword(går,[kjøre],kjører).           %% Repair .. 
-compword(går,[kjører],kjører).          %%
-compword(går,[kommer],kommer).          %% 
-compword(går,[me],går).                 %%
-compword(går,[må],må).                  %% 
-compword(går,[neste,gang],går).  
-    xcompword(går,[stopper],går). %% stopper?  %% repair 
+compword(bussen,[gÃ¥r,bussen],bussen). %% repair (nÃ¥r gÃ¥r b g b) I was fooled
 
-%%% compword(går,[når],går).  %% går når? %% bussen går når trikken står 
+compword(gÃ¥r,[dem,en],gÃ¥r).    %% sp
 
-%% compword(går,[når],går). %%   %% jeg går når bussen kjører
+compword(gÃ¥r,[de,ei],gÃ¥r). 
+compword(gÃ¥r,[de,en],gÃ¥r).    %% nofunk
+compword(gÃ¥r,[de,et],gÃ¥r). 
 
-compword(går,[passerer],passerer).      %% Repair (doesnt help?)
+compword(gÃ¥r,[det,ei],gÃ¥r). 
+%%%  compword(gÃ¥r,[det,en],gÃ¥r). %% nofunk %% gÃ¥r det en tidligere buss
+compword(gÃ¥r,[det,et],gÃ¥r).    %%
+    compword(gÃ¥r,[det,med],gÃ¥r).   %% \+ x hvordan gÃ¥r det med deg 
 
-compword(går,[ta],går). 
-compword(går,[vil],passerer). 
+compword(gÃ¥r,[drar],gÃ¥r).      %% repair
+%% compword(gÃ¥r,[e],gÃ¥r).      %%  slang   e=etter/er
+%%  compword(gÃ¥r,[er],er).   %% Repair no %% nÃ¥r  bussen gÃ¥r er klokken 3
+compword(gÃ¥r,[gÃ¥r],gÃ¥r).                %% Repair 
+compword(gÃ¥r,[jeg,ta],gÃ¥r).     
+%% compword(gÃ¥r,[ofte],gÃ¥r).               %% ignore
+compword(gÃ¥r,[kjÃ¸re],kjÃ¸rer).           %% Repair .. 
+compword(gÃ¥r,[kjÃ¸rer],kjÃ¸rer).          %%
+compword(gÃ¥r,[kommer],kommer).          %% 
+compword(gÃ¥r,[me],gÃ¥r).                 %%
+compword(gÃ¥r,[mÃ¥],mÃ¥).                  %% 
+compword(gÃ¥r,[neste,gang],gÃ¥r).  
+    xcompword(gÃ¥r,[stopper],gÃ¥r). %% stopper?  %% repair 
+
+%%% compword(gÃ¥r,[nÃ¥r],gÃ¥r).  %% gÃ¥r nÃ¥r? %% bussen gÃ¥r nÃ¥r trikken stÃ¥r 
+
+%% compword(gÃ¥r,[nÃ¥r],gÃ¥r). %%   %% jeg gÃ¥r nÃ¥r bussen kjÃ¸rer
+
+compword(gÃ¥r,[passerer],passerer).      %% Repair (doesnt help?)
+
+compword(gÃ¥r,[ta],gÃ¥r). 
+compword(gÃ¥r,[vil],passerer). 
 
 compword(h,[p],holdeplass). 
 compword(h,[pl],holdeplass).   %%
     xcompword(h,[va],hva). 
-compword(ha,[behov,for,å],[]). 
-compword(ha,[en,hyggelig,kveld],adjø). 
+compword(ha,[behov,for,Ã¥],[]). 
+compword(ha,[en,hyggelig,kveld],adjÃ¸). 
 
 %% trouble in gram %% TA-100915
 
@@ -2702,17 +2704,17 @@ compword(ha,[med],ha).
 
 compword(ha,[ha],hei).    %%  ???
 compword(ha,[ha,ha],hei). 
-compword(ha,[neste],går). %% ?  når ha neste
+compword(ha,[neste],gÃ¥r). %% ?  nÃ¥r ha neste
 
 compword(ho,[ho],hei).    %% TA-101029
 
 
-compword(hadde,[tenkt,meg,å],skal).   
+compword(hadde,[tenkt,meg,Ã¥],skal).   
 
-compword(hadde,[måttet],måtte). %% Ad hoc    aux(must,nil,past) %%
+compword(hadde,[mÃ¥ttet],mÃ¥tte). %% Ad hoc    aux(must,nil,past) %%
 compword(hadde,[tenkt,meg],skal).  
 
-    xcompword(hage,[by],hageby). %% problem Brøset hage by 
+    xcompword(hage,[by],hageby). %% problem BrÃ¸set hage by 
 
 compword(hal,[9000],hal). %%  :-)
     xcompword(halv,[fem,fem],1645).    %% Experiment
@@ -2727,17 +2729,17 @@ compword(har,[ankomst],ankommer).
 
 compword(har,[avgang,fra],forlater). %%  *har avgang kl 12
 
-compword(har,[behov,for,å],må). 
-compword(har,[d],går). %% sms har=går 
+compword(har,[behov,for,Ã¥],mÃ¥). 
+compword(har,[d],gÃ¥r). %% sms har=gÃ¥r 
 compword(har,[det,blitt,av],er). 
-    xcompword(har,[det,kjørt],kjørte). %% Ad Hoc, grammar 
-compword(har,[et,ønske,om],ønsker).   
-compword(har,[forbi],passerere). %% går f.
+    xcompword(har,[det,kjÃ¸rt],kjÃ¸rte). %% Ad Hoc, grammar 
+compword(har,[et,Ã¸nske,om],Ã¸nsker).   
+compword(har,[forbi],passerere). %% gÃ¥r f.
 
-compword(har,[fått],har). %% aux 
+compword(har,[fÃ¥tt],har). %% aux 
 
-compword(har,[fra],forlater). %% SMS har =~går 
-compword(har,[går],går).    
+compword(har,[fra],forlater). %% SMS har =~gÃ¥r 
+compword(har,[gÃ¥r],gÃ¥r).    
 
     xcompword(har,[hast],haster).  
     xcompword(har,[noen,hast],haster).  %% (ikke) noe h
@@ -2745,10 +2747,10 @@ compword(har,[går],går).
 
 compword(har,[man,hos],har).   
 compword(har,[med],har).  
-compword(har,[tenkt,meg,å],skal).   
+compword(har,[tenkt,meg,Ã¥],skal).   
 compword(har,[tenkt,meg],skal).  
-compword(har,[til],ankommer). %% SMS ordliste har=går 
-    xcompword(har,[å,gjøre,med],gjelder). %%  har med ... å gjøre
+compword(har,[til],ankommer). %% SMS ordliste har=gÃ¥r 
+    xcompword(har,[Ã¥,gjÃ¸re,med],gjelder). %%  har med ... Ã¥ gjÃ¸re
 
 
 compword(he,[he],hei). %% :-) 
@@ -2762,13 +2764,13 @@ compword(hellige,[ruter], helligdagsrute).
 
 compword(helst,[],[]).                  %% noe som helst
 
-%% compword(har,[neste],går). %% sms har=går  %% Hvilken farge har neste buss
+%% compword(har,[neste],gÃ¥r). %% sms har=gÃ¥r  %% Hvilken farge har neste buss
 %% compword(henne,[],[]).    %% = hen %% noise 
 
 
     xcompword(her,[som],som). %% Sender over regtop her som skal %% rough 
 
-compword(herfra,[på],fra). 
+compword(herfra,[pÃ¥],fra). 
 
     xcompword(hetter,[kl],etter). 
 
@@ -2781,7 +2783,7 @@ compword(hjemme,[fra],hjemmefra).
 compword(hjemme,[sida],hjemmesiden).
 compword(hjemme,[siden],hjemmesiden).
 
-compword(hold,[opp],adjø). 
+compword(hold,[opp],adjÃ¸). 
 
 compword(holde,[plass],holdeplass).  
 compword(holde,[plassen],holdeplassen).
@@ -2789,17 +2791,17 @@ compword(holde,[plassene],holdeplassene).
 compword(holde,[plasser],holdeplasser). 
 %% compword(holder,[til],er).  -> %% gn  particlev2 
 compword(holder,[plass],holdeplass).  
-compword(holdt,[på,med],gjort).  
+compword(holdt,[pÃ¥,med],gjort).  
 
-compword(honnør,[billett],honnørbillett). 
-compword(honnør,[bilett], honnørbillett). 
-compword(honnør,[rabatt], honnørbillett).   
+compword(honnÃ¸r,[billett],honnÃ¸rbillett). 
+compword(honnÃ¸r,[bilett], honnÃ¸rbillett). 
+compword(honnÃ¸r,[rabatt], honnÃ¸rbillett).   
 
 compword(hos,[meg],hjemme).
     compword(hos,[de],deres). 
 
 compword(hurtigst,[mulig],[]).
-compword(hurtigst,[råd],[]).   %% kjappest råd
+compword(hurtigst,[rÃ¥d],[]).   %% kjappest rÃ¥d
 
 compword(hv,[a],  hva).  
 compword(hv,[9,ilken],hvilken).  %% slip
@@ -2817,15 +2819,15 @@ compword(hva,[mer],hva).
 compword(hva,[om],[]).  
 compword(hva,[slags], hvilket). 
     xcompword(hva,[som,helst], alt). %%  ?
-    xcompword(hva,[tid,når],går). %% Ad Hoc
-    xcompword(hva,[tid],når). 
+    xcompword(hva,[tid,nÃ¥r],gÃ¥r). %% Ad Hoc
+    xcompword(hva,[tid],nÃ¥r). 
 
 compword(hvad,[for,en],hvilken).  %% DK
 compword(hvad,[for,et],hvilken). 
 
 compword(hvem,[der],hei). %% # hvem er du
-compword(hver,[gang],når).   
-compword(hvert,[øyeblikk],straks).   
+compword(hver,[gang],nÃ¥r).   
+compword(hvert,[Ã¸yeblikk],straks).   
 
 compword(hviken, [vei], hvor).  
 compword(hvilke, [av],  hvilke). 
@@ -2853,23 +2855,23 @@ compword(hvilket,[bus,fra],fra).
 compword(hvilke,[buss,fra],fra).    
 compword(hvilken,[buss,fra],fra).   
 
-    xcompword(hvilken,[buss,og,når],når). 
+    xcompword(hvilken,[buss,og,nÃ¥r],nÃ¥r). 
 
 compword(hvilket,[buss,fra],fra). 
 compword(hvilke,[busser,fra],fra).  
 compword(hvilken,[busser,fra],fra). 
 compword(hvilket,[busser,fra],fra).  
 
-compword(hvilken,[må,jeg,ta],buss). %% rough
+compword(hvilken,[mÃ¥,jeg,ta],buss). %% rough
 
-compword(hvilke,[og,når],  når). 
-compword(hvilken,[og,når],  når).  
-compword(hvilkent,[og,når],  når).   
+compword(hvilke,[og,nÃ¥r],  nÃ¥r). 
+compword(hvilken,[og,nÃ¥r],  nÃ¥r).  
+compword(hvilkent,[og,nÃ¥r],  nÃ¥r).   
 
 compword(hvilken,[en],    hvilken).           %%  dial
-compword(hvilken,[går,buss],buss).  
-compword(hvilken,[som,går],buss).     %%  ?
-compword(hvilken,[går],buss). 
+compword(hvilken,[gÃ¥r,buss],buss).  
+compword(hvilken,[som,gÃ¥r],buss).     %%  ?
+compword(hvilken,[gÃ¥r],buss). 
 compword(hvilken,[hvilken],hvilken).  %% Repair
 compword(hvilken,[hvilket],hvilket).  %% 
 compword(hvilken,[som,helst],alle). 
@@ -2879,25 +2881,25 @@ compword(hvilket,[hvilket],hvilken).  %%
 
 
 compword(hvis,[for],for).      %%Repair
-compword(hvis,[framme],før).  
+compword(hvis,[framme],fÃ¸r).  
 
 
     xcompword(hvis,[ikke],redundant0). %%  Haz
 
-%% compword(hvis,[jeg,skal,være,på],til). %% nec ? 
-compword(hvis,[jeg,skal,hver,der],før). %% feil 
+%% compword(hvis,[jeg,skal,vÃ¦re,pÃ¥],til). %% nec ? 
+compword(hvis,[jeg,skal,hver,der],fÃ¸r). %% feil 
     
-    xcompword(hvis,[være,på],til).  
+    xcompword(hvis,[vÃ¦re,pÃ¥],til).  
 
 %% compword(hvis,[jeg],jeg). %% as a first in sent ! 
 
 compword(hvor,[dan], hvordan).
-compword(hvor,[fra,og,når],når).
+compword(hvor,[fra,og,nÃ¥r],nÃ¥r).
     xcompword(hvor,[dan],hvordan). %% TA-110103  
     xcompword(hvor,[for],hvorfor).
-%%  compword(hvor,[fort],når).  %% rough 
+%%  compword(hvor,[fort],nÃ¥r).  %% rough 
 
-%%     xcompword(hvor,[får],hvorfor).    %% hvor får jeg busskort 
+%%     xcompword(hvor,[fÃ¥r],hvorfor).    %% hvor fÃ¥r jeg busskort 
 
 compword(hvor,[hvordan], hvordan). %% Repair
 %% compword(hvor,[i], hvor).   %% hvor i trondheim ligger
@@ -2906,44 +2908,44 @@ compword(hvor,[jeg,ankommer],[]).
     xcompword(hvor,[lang,tid,fra],fra). %% rough 
     xcompword(hvor,[langt,borte],hvor). 
 
-compword(hvor,[mange,og,når],  når). 
+compword(hvor,[mange,og,nÃ¥r],  nÃ¥r). 
 %% compword(hvor,[mange,avganger,fra],fra).   %%  Rough Default
 compword(hvor,[mange,minutter],  hvor).    %% .. forsinket
-compword(hvor,[nærmest],nærmest).    %% ?
+compword(hvor,[nÃ¦rmest],nÃ¦rmest).    %% ?
 
-compword(hvor,[ofte,får],går). %% (rough) .. bussen til 
+compword(hvor,[ofte,fÃ¥r],gÃ¥r). %% (rough) .. bussen til 
 
-    xcompword(hvor,[og,når,neste],neste).  
-    xcompword(hvor,[og,når],hvor). %% rough 
-    xcompword(når,[og,hvor],når).  %% rough 
+    xcompword(hvor,[og,nÃ¥r,neste],neste).  
+    xcompword(hvor,[og,nÃ¥r],hvor). %% rough 
+    xcompword(nÃ¥r,[og,hvor],nÃ¥r).  %% rough 
 
 
 compword(hvor,[som,helst],[]). 
-compword(hvor,[ti],når).   
-compword(hvor,[tid],når).   
-%%% compword(hvor,[sent],når).  %%no, ... last   %% Rough %% TA-100914
-compword(hvor,[tidlig],når).   %% Rough
+compword(hvor,[ti],nÃ¥r).   
+compword(hvor,[tid],nÃ¥r).   
+%%% compword(hvor,[sent],nÃ¥r).  %%no, ... last   %% Rough %% TA-100914
+compword(hvor,[tidlig],nÃ¥r).   %% Rough
 
 compword(hvord,[an], hvordan). %%
 compword(hvordan,[fra], fra).  
-   xcompword(hvordan,[gå,fra], fra).  
-   xcompword(hvordan,[går,fra], fra). 
-compword(hvordan,[og,når],når).  
-compword(hvordan,[overganger,går], går).      %%  Rough
+   xcompword(hvordan,[gÃ¥,fra], fra).  
+   xcompword(hvordan,[gÃ¥r,fra], fra). 
+compword(hvordan,[og,nÃ¥r],nÃ¥r).  
+compword(hvordan,[overganger,gÃ¥r], gÃ¥r).      %%  Rough
 compword(hvordan,[reise],[]).   %% reise=trip
 compword(hvordan,[skal,til], til). 
 compword(hvordan,[type], hvilken). 
-compword(hvordan,[å,komme,fra],fra).
-compword(hvordan,[å,komme,til],til).
+compword(hvordan,[Ã¥,komme,fra],fra).
+compword(hvordan,[Ã¥,komme,til],til).
 
 compword(hvorfor,[ikke],hvorfor).
 compword(hvorfor,[hva],hva).                  %% Repair
-compword(høre,[til],tilhøre). 
-compword(hører,[til],tilhører).        
-compword(hørte,[til],tilhørte).     
-compword(hørt,[til],tilhørt). 
-compword(høst,[rutene],høstrutene).   
-    xcompword(høyst,[sannsynlig],sannsynligvis). 
+compword(hÃ¸re,[til],tilhÃ¸re). 
+compword(hÃ¸rer,[til],tilhÃ¸rer).        
+compword(hÃ¸rte,[til],tilhÃ¸rte).     
+compword(hÃ¸rt,[til],tilhÃ¸rt). 
+compword(hÃ¸st,[rutene],hÃ¸strutene).   
+    xcompword(hÃ¸yst,[sannsynlig],sannsynligvis). 
 
 compword(i,[alt],[]). 
 compword(i,[all,verden],[]).    %% NB not both in grammar and in dict
@@ -2957,7 +2959,7 @@ compword(i,[alle,dager],[]).
     xcompword(i,[den,anledning],redundant0).
     xcompword(i,[det,hele,tatt],redundant0).  
     xcompword(i,[det,heletatt],redundant0).
-    xcompword(i,[ettertid],etterpå).
+    xcompword(i,[ettertid],etterpÃ¥).
     xcompword(i,[hvertfall],[]). 
     xcompword(i,[hvert,fall],[]).
 
@@ -2975,32 +2977,32 @@ compword(i,[etter],etter).               %%  repair
 compword(i,[fag],idag). 
 compword(i,[forhold,til],til).
 compword(i,[forholdtil],til). 
-    xcompword(iflg,['.'],ifølge).
+    xcompword(iflg,['.'],ifÃ¸lge).
 compword(iforhold,[til],til). 
-    xcompword(i,[henhold,til],ifølge). 
+    xcompword(i,[henhold,til],ifÃ¸lge). 
 
-compword(i,[fra,når],når).  
-compword(i,[frå],ifra).      
-compword(i,[følge],ifølge).     
-compword(i,[før],før).           %% repair
+compword(i,[fra,nÃ¥r],nÃ¥r).  
+compword(i,[frÃ¥],ifra).      
+compword(i,[fÃ¸lge],ifÃ¸lge).     
+compword(i,[fÃ¸r],fÃ¸r).           %% repair
 
 compword(i,[gang],igang). %% -> ready (adj
 
-compword(i,[går],igår).                  %%  Drop yester
-%% compword(i,[gayr],igår). %%   i gÃ¥r // splitword
+compword(i,[gÃ¥r],igÃ¥r).                  %%  Drop yester
+%% compword(i,[gayr],igÃ¥r). %%   i gÃƒÂ¥r // splitword
 
 compword(i,[hele],i). 
 
 
 compword(i,[hvilken,grad],hvordan).  
-compword(i,[hvilket,intervall],når).     %%  Rough #hvor ofte
-compword(i,[hvilken,intervall],når).     %% ?
+compword(i,[hvilket,intervall],nÃ¥r).     %%  Rough #hvor ofte
+compword(i,[hvilken,intervall],nÃ¥r).     %% ?
 compword(i,[i],i).                       %% Repair 
 compword(i,[ikveld],ikveld).  
 compword(i,[kilometer],[]).              %% repair
 compword(i,[live],levende).  
-compword(i,[løpet,av],innen).  
-    compword(løpet,[av],innen). %% ?
+compword(i,[lÃ¸pet,av],innen).  
+    compword(lÃ¸pet,[av],innen). %% ?
 compword(i,[mellem],mellom).   
 compword(i,[mellom],mellom).  
 compword(i,[morgen],imorgen).            %%  Drop morrow
@@ -3010,10 +3012,10 @@ compword(i,[morgen],imorgen).
 compword(i,[morra],imorgen).   %% avoid morra = morgen (tidlig) 
     xcompword(i,[natt],inatt).      %%  +i i (en) natt
 
-compword(i,[nærheten,av],nær).
+compword(i,[nÃ¦rheten,av],nÃ¦r).
 
-   xcompword(i,[nærheten,at],nær). %% at :  err -> x 
-compword(fra,[nærheten,av],fra). 
+   xcompword(i,[nÃ¦rheten,at],nÃ¦r). %% at :  err -> x 
+compword(fra,[nÃ¦rheten,av],fra). 
     
     xcompword(i,[om],om). %% repair 
 
@@ -3022,7 +3024,7 @@ compword(fra,[nærheten,av],fra).
 
 
 compword(i,[prinsippet],redundant0). 
-compword(i,[på],på). 
+compword(i,[pÃ¥],pÃ¥). 
 compword(i,[retning,av],mot). 
 compword(i,[retning],mot).  
 compword(i,[retning,mot],mot).   
@@ -3042,23 +3044,23 @@ compword(i,[ste],tidligere).
     xcompword(i,[stedenfor], istedenfor).  
     xcompword(i,[stedetfor] ,istedenfor). 
 
-    xcompword(i,[såfall],redundant0).  
-    xcompword(i,[så,fall],redundant0).  
-    xcompword(i,[så,tilfelle],redundant0). 
+    xcompword(i,[sÃ¥fall],redundant0).  
+    xcompword(i,[sÃ¥,fall],redundant0).  
+    xcompword(i,[sÃ¥,tilfelle],redundant0). 
 
 
 compword(i,[tilfelle],[]).
-compword(i,[såfall],[]). 
+compword(i,[sÃ¥fall],[]). 
 
 compword(i,[stor,utstrekning],redundant0). %% lazy 
 
-compword(i,[stykker],ødelagt). 
+compword(i,[stykker],Ã¸delagt). 
 
-%%    xcompword(i,[stedet,for],unntatt). %% i stedet for å ta buss
+%%    xcompword(i,[stedet,for],unntatt). %% i stedet for Ã¥ ta buss
 %%    xcompword(i,[stedet],[]).          %% 
 
-compword(i,[såfall],[]). 
-compword(i,[så,fall],[]). 
+compword(i,[sÃ¥fall],[]). 
+compword(i,[sÃ¥,fall],[]). 
 compword(i,[rett,tid],presis).  
     xcompword(i,[tide],presis).   
     xcompword(i,[tid],[]).          %% korteste i tid
@@ -3069,12 +3071,12 @@ compword(i,[til],til).                   %% Repair
 %% compword(i,[tillfelle],[]). 
 compword(i,[tilfelle],hvis). %%  I tilfelle, hva er forskjellen 
 
-compword(i,[østlig,retning],østover).
+compword(i,[Ã¸stlig,retning],Ã¸stover).
 compword(i,[nordlig,retning],nordover). 
-compword(i,[sydlig,retning],sørover). 
-compword(i,[sørlig,retning],sørover).
+compword(i,[sydlig,retning],sÃ¸rover). 
+compword(i,[sÃ¸rlig,retning],sÃ¸rover).
 compword(i,[vestlig,retning],vestover).
-%% compword(i,[å], å). %% vits i å  %% -> gram 
+%% compword(i,[Ã¥], Ã¥). %% vits i Ã¥  %% -> gram 
 
    xcompword(i,[dag,da],da).  
    xcompword(id,[ag],idag). 
@@ -3092,14 +3094,14 @@ compword(idretts,[plassen],idrettsplassen).
     xcompword(ikke,[annet,en],[]).  
     xcompword(ikke,[annet,enn],[]).
     xcompword(ikke,[lenger],ikke).  
-    xcompword(ikke,[like,mange],færre).
-    xcompword(ikke,[mange],fåtallig). %% få=verb trøbbel
-    xcompword(ikke,[ment,å,være],ikke). 
+    xcompword(ikke,[like,mange],fÃ¦rre).
+    xcompword(ikke,[mange],fÃ¥tallig). %% fÃ¥=verb trÃ¸bbel
+    xcompword(ikke,[ment,Ã¥,vÃ¦re],ikke). 
  
 %% compword(ikke,[noe],ikke).    %% ikke noe morsomt 
                                  %% jeg vet ikke noe
 
-%%      xcompword(ikke,[få],mange).    %% så vil dere ikke få 
+%%      xcompword(ikke,[fÃ¥],mange).    %% sÃ¥ vil dere ikke fÃ¥ 
     xcompword(ikke,[noen],ingen).
 
     xcompword(ikke,[alle],noen). %% rough -> gram notall 
@@ -3108,7 +3110,7 @@ compword(idretts,[plassen],idrettsplassen).
 
     xcompword(ikke,[akkurat],ikke).
     xcompword(ikke,[nattbuss],[]). %% default rough 
-    xcompword(ikke,[før],etter).  
+    xcompword(ikke,[fÃ¸r],etter).  
     xcompword(ikke,[glem],husk).  
 
     compword(ikke,[triviell],ikketriviell).  
@@ -3116,11 +3118,11 @@ compword(idretts,[plassen],idrettsplassen).
     compword(ikke,[triviellt],ikketrivielt). 
 
 compword(ikke,[verst],bra). 
-    xcompword(ikke,[vil,være,for,sen,til],rekker). %% Ad Hoc 
-compword(ikke,[værst],bra).
+    xcompword(ikke,[vil,vÃ¦re,for,sen,til],rekker). %% Ad Hoc 
+compword(ikke,[vÃ¦rst],bra).
 
 
-compword(iløpet,[av],innen). % den neste timen 
+compword(ilÃ¸pet,[av],innen). % den neste timen 
 compword(im,[orgen],imorgen). %% ?
 
     xcompword(imorgen,[tidlig],imorgen). %% rough 
@@ -3132,7 +3134,7 @@ compword(ingen,[andre,busser,enn],[]).
 
 compword(ingen,[fare,for],umulig). 
 % compword(ingen,[flere],ruter).    %% OBS. retorisk/ellipsis(doesntwork)
-compword(ingen,[årsak],ok).  
+compword(ingen,[Ã¥rsak],ok).  
 
 compword(inn,[i],til).    %% TA-100830
 %% compword(inn,[i],inni).             %% .. bussen
@@ -3157,7 +3159,7 @@ compword(internt,[i],i).
     xcompword(isteden,[for], istedenfor).  
 
 compword(itj,[no],ingen). 
-compword(itj,[nå],ingen). 
+compword(itj,[nÃ¥],ingen). 
 
 compword(j,['?',eg],jeg). %% ??
 compword(j,[eg],jeg).
@@ -3168,13 +3170,13 @@ compword(ja,[takk],ja).          %%  Dialog
 
 compword(jeg,[jeg], jeg).        %% Repair
 
-compword(jeg,[må,være,der,før],før).  
-compword(jeg,[må,være,der],før).       %% 
+compword(jeg,[mÃ¥,vÃ¦re,der,fÃ¸r],fÃ¸r).  
+compword(jeg,[mÃ¥,vÃ¦re,der],fÃ¸r).       %% 
 
     xcompword(jeg,[personlig],jeg).
     xcompword(jeg,[selv],jeg).
 
-compword(jeg,[gir,opp],adjø).
+compword(jeg,[gir,opp],adjÃ¸).
 
     xcompword(jo,[da],ja). 
     xcompword(jo,[det,er,det],ja). %% TA-101124
@@ -3185,8 +3187,8 @@ compword(jeg,[gir,opp],adjø).
 %%     xcompword(jeg,[sier,at],[]).  %% Too rough
 %%     xcompword(jeg,[sier],[]). 
 
-compword(jeg,[skal,være,der,før],før). 
-    compword(jeg,[skal,være,der],før).     %% Hazardous %%  hvis...
+compword(jeg,[skal,vÃ¦re,der,fÃ¸r],fÃ¸r). 
+    compword(jeg,[skal,vÃ¦re,der],fÃ¸r).     %% Hazardous %%  hvis...
 compword(jeg,[skal,buss],buss). 
 compword(jeg,[slik], slik).      %% Freak  jeg tar bussen jeg, slik at 
 compword(jeg,[vil,buss], buss). 
@@ -3217,20 +3219,20 @@ compword(jule,[dagen],christmas_day).
 compword(jule,[ruta],juleruta).  
 
 compword(k,[veld],kveld).  
-compword(ka,[før], hvilken).  
+compword(ka,[fÃ¸r], hvilken).  
 
-    xcompword(ka,[tid], når). %% TA-110609
+    xcompword(ka,[tid], nÃ¥r). %% TA-110609
 
-compword(kajeg,[ta],går).         %% 
+compword(kajeg,[ta],gÃ¥r).         %% 
 compword(kan,[d,varsle],varsle). 
 
     xcompword(kan,[godt],kan). %% rough 
 
 compword(kan,[jeg,ta,som],[]). 
-compword(kanjeg,[ta],går).  
+compword(kanjeg,[ta],gÃ¥r).  
 
 
-compword(kan,[å],kan).            %% (dial)
+compword(kan,[Ã¥],kan).            %% (dial)
 
 compword(kilometer,['/',t],kmt). %% split km -> kilometer
 compword(kilometer,['/',time],kmt).
@@ -3238,7 +3240,7 @@ compword(kilometer,[pr,time],kmt).
 compword(kilometer,[i,timen],kmt).
 
 
-compword(kjøpe,[senter],kjøpesenter). 
+compword(kjÃ¸pe,[senter],kjÃ¸pesenter). 
 
 compword(kl,[0,kka],klokken). 
 compword(kl,[0,kken],klokken). 
@@ -3251,7 +3253,7 @@ compword(klippe,[kort],klippekort).
 
 %% Ad Hoc    kl 17   = 1700, kl 17.10 = kl 17
 
-%% Til nygårdsveien kl17.15  Jeg kan ikke finne forbindelser til  Nygårdvegen 17
+%% Til nygÃ¥rdsveien kl17.15  Jeg kan ikke finne forbindelser til  NygÃ¥rdvegen 17
 
 /** doesnt work
 
@@ -3301,54 +3303,54 @@ compword(klokken,[etter],etter).              %% Repair  rough ...etc
 compword(klokken,[har,blitt],klokken).  
 compword(klokken,[klokken],klokken).  
 
-compword(klokkeslettet,[når],når). %% Ad Hoc
+compword(klokkeslettet,[nÃ¥r],nÃ¥r). %% Ad Hoc
 
 
 
-compword(klæbu,[ruta],klæburuta). 
+compword(klÃ¦bu,[ruta],klÃ¦buruta). 
 
-compword(kollektiv,[kjøretøy],rute).  
+compword(kollektiv,[kjÃ¸retÃ¸y],rute).  
 compword(kollektiv,[trafikk],trafikk). %% rough
 
 compword(kom,[igjen],kom).  
-%% compword(kom,[å],[]).           %% kom å gi meg en klem 
+%% compword(kom,[Ã¥],[]).           %% kom Ã¥ gi meg en klem 
 %% compword(komme,[med],rekke).    %% Jeg vil komme med buss
 
-compword(komme,[på],ankomme).   %% \+ være på 
-compword(kommer,[på],ankommer). %% 
+compword(komme,[pÃ¥],ankomme).   %% \+ vÃ¦re pÃ¥ 
+compword(kommer,[pÃ¥],ankommer). %% 
 
 
-compword(kommer,[til,å],vil). %%
+compword(kommer,[til,Ã¥],vil). %%
 
-compword(kommer,[det,til,å],det).             %% ROUGH 
-compword(kommer,[går],går). 
+compword(kommer,[det,til,Ã¥],det).             %% ROUGH 
+compword(kommer,[gÃ¥r],gÃ¥r). 
 
     xcompword(kommer,[passerer],passerer). %% repair %% TA-110330
     xcompword(kommet,[til],ankommet). %% ad hoc
 
 compword(kong,[haakon],haakon). %% this is really a matter of busdat
                                 %% part word assembly problem
-    xcompword(kor,[tid],når).       %%
-    xcompword(kor,[ti],når).        %% 
+    xcompword(kor,[tid],nÃ¥r).       %%
+    xcompword(kor,[ti],nÃ¥r).        %% 
 
 
-    xcompword(kort,[tid,etter,det],etterpå).  
-    xcompword(kort,[tid,etterpå],etterpå).  
+    xcompword(kort,[tid,etter,det],etterpÃ¥).  
+    xcompword(kort,[tid,etterpÃ¥],etterpÃ¥).  
 
 compword(kort,[tid,etter],etter).         % 1    
-    xcompword(kort,[tid,etter],etterpå).  % 2     %% tricky sequence
+    xcompword(kort,[tid,etter],etterpÃ¥).  % 2     %% tricky sequence
 
     xcompword(korte,[ned],forkorte).
 
 compword(kos,[n],hvordan). 
 compword(koss,[n],hvordan). 
-compword(koss,[d,går],hei).  
-compword(koss,[det,går],hei).    
-compword(kossn,[vi,kjæm,oss],buss).          %% Freak
+compword(koss,[d,gÃ¥r],hei).  
+compword(koss,[det,gÃ¥r],hei).    
+compword(kossn,[vi,kjÃ¦m,oss],buss).          %% Freak
 compword(koste,[r],koster).  
 compword(koster,[er],koster).  
 compword(koster,[det,for,et],koster). 
-%% compword(koster,[å,ta],koster).  
+%% compword(koster,[Ã¥,ta],koster).  
 
 
 compword(kristi,[himmelfartsdag],ascension_day).
@@ -3368,7 +3370,7 @@ compword(l,[5],15). %%
 compword(l,[8,r],senere). %%  sms l8r
 compword(la,[oss,si],[]). 
 
-    xcompword(la,[seg,gjøre],gjøres).         %% TA-110330
+    xcompword(la,[seg,gjÃ¸re],gjÃ¸res).         %% TA-110330
     xcompword(la,[seg,tilpasse],tilpasses).   %% Ad Hoc, Rule ??? %% 
 
 compword(lagt,[til,rette],bra). %% Rough
@@ -3381,9 +3383,9 @@ compword(lang,[avstand],langt).
 
 compword(lang,[fredag],langfredag). 
 compword(lang,[reisetid],langt).  
-compword(langt,[oppe,på],på).                %% :-)
-compword(langt,[unna],nær).  
-compword(lar,[meg,komme],går).  
+compword(langt,[oppe,pÃ¥],pÃ¥).                %% :-)
+compword(langt,[unna],nÃ¦r).  
+compword(lar,[meg,komme],gÃ¥r).  
 
     xcompword(later,[som,om],pretenderer). 
 
@@ -3398,37 +3400,37 @@ compword(lei,[deg],trist).                 %%
 
 compword(lettere,[kan],kan). %% ad hoc 
 
-compword(ligger,[vi,an,med],går). %% rough,
+compword(ligger,[vi,an,med],gÃ¥r). %% rough,
 
-    xcompword(like,[før],før). 
-compword(like,[etter],etterpå). 
-compword(like,[etterpå],etterpå).          %%
+    xcompword(like,[fÃ¸r],fÃ¸r). 
+compword(like,[etter],etterpÃ¥). 
+compword(like,[etterpÃ¥],etterpÃ¥).          %%
 compword(like,[godt],[]).  
 compword(like,[over],etter).  
-compword(like,[ved],nær).  
-compword(like,[ved,på],nær).     %% 
+compword(like,[ved],nÃ¦r).  
+compword(like,[ved,pÃ¥],nÃ¦r).     %% 
 compword(lille,[julaften],little_christmas_eve).  %%   Norwagism
 compword(lille,[juleaften],little_christmas_eve). 
 compword(linje,[nr],rute). 
 compword(list,[opp],list).  
-compword(liste,[over,når],når).  
+compword(liste,[over,nÃ¥r],nÃ¥r).  
     xcompword(litt,[annen],annen). %% TA-110331 .. sak
 compword(litt,[av],[]). %% en luring 
 compword(litt,[over,halv],halv). %% rough
-    xcompword(lov,[til],lov). %% probl. %% lov til å 
+    xcompword(lov,[til],lov). %% probl. %% lov til Ã¥ 
     xcompword(litt,[over],etter).
-compword(lykke,[til],adjø). 
-compword(l,[rdag],lørdag). % l;rdag  
-compword(lø,[rdag],lørdag). %l©ªrdag?   
-compword(lønner,[det,seg,å,ta], går).         %%  Rough
+compword(lykke,[til],adjÃ¸). 
+compword(l,[rdag],lÃ¸rdag). % l;rdag  
+compword(lÃ¸,[rdag],lÃ¸rdag). %lÂ©Âªrdag?   
+compword(lÃ¸nner,[det,seg,Ã¥,ta], gÃ¥r).         %%  Rough
 
-    xcompword(lør,[rute],lørdagsrute). 
-compword(søn,[rute],søndagsrute). %%
+    xcompword(lÃ¸r,[rute],lÃ¸rdagsrute). 
+compword(sÃ¸n,[rute],sÃ¸ndagsrute). %%
 
-compword(lørdag,['/',søndag],weekend). 
-compword(lørdager,['/',søndager],weekend).  
-compword(lørdag,[rute],lørdagsrute). 
-    xcompword(m,[å],må). %% trouble with å 
+compword(lÃ¸rdag,['/',sÃ¸ndag],weekend). 
+compword(lÃ¸rdager,['/',sÃ¸ndager],weekend).  
+compword(lÃ¸rdag,[rute],lÃ¸rdagsrute). 
+    xcompword(m,[Ã¥],mÃ¥). %% trouble with Ã¥ 
 
     xcompword(men,[som],som). %% TA-110701
 
@@ -3446,8 +3448,8 @@ compword(tirs,['.'],tirsdag).
 compword(ons,['.'],onsdag).  
 compword(tors,['.'],torsdag). 
 compword(fre,['.'],fredag). 
-compword(lør,['.'],lørdag).  
-compword(søn,['.'],søndag).  
+compword(lÃ¸r,['.'],lÃ¸rdag).  
+compword(sÃ¸n,['.'],sÃ¸ndag).  
 
 compword(man,[dag],mandag). 
 compword(tir,[dag],tirsdag).
@@ -3455,8 +3457,8 @@ compword(tirs,[dag],tirsdag).
 compword(ons,[dag],onsdag).  
 compword(tors,[dag],torsdag). 
 compword(fre,[dag],fredag). 
-compword(lør,[dag],lørdag).  
-compword(søn,[dag],søndag).  
+compword(lÃ¸r,[dag],lÃ¸rdag).  
+compword(sÃ¸n,[dag],sÃ¸ndag).  
 
 
 compword(man,[dagen],mandag). 
@@ -3465,8 +3467,8 @@ compword(tirs,[dagen],tirsdag).
 compword(ons,[dagen],onsdag).  
 compword(tors,[dagen],torsdag). 
 compword(fre,[dagen],fredag). 
-compword(lør,[dagen],lørdag).  
-compword(søn,[dagen],søndag).  
+compword(lÃ¸r,[dagen],lÃ¸rdag).  
+compword(sÃ¸n,[dagen],sÃ¸ndag).  
 
 
 compword(man,[dan],mandag).
@@ -3475,29 +3477,29 @@ compword(tirs,[dan],tirsdag).
 compword(ons,[dan],onsdag).  
 compword(tors,[dan],torsdag). 
 compword(fre,[dan],fredag). 
-compword(lør,[dan],lørdag).  
-compword(søn,[dan],søndag).  
+compword(lÃ¸r,[dan],lÃ¸rdag).  
+compword(sÃ¸n,[dan],sÃ¸ndag).  
 
 
-compword(man,[jeg,ta],går). %% må jeg ta
+compword(man,[jeg,ta],gÃ¥r). %% mÃ¥ jeg ta
 compword(man,[fre],hverdager). 
     xcompword(man,[til,fre],hverdager). 
 
 
 compword(mandag,[til,fredag],hverdager).  
 compword(manglende,[punktlighet],forsinkelser). 
-compword(me,[jeg,ta],går).  %% me \== må (Haz)
+compword(me,[jeg,ta],gÃ¥r).  %% me \== mÃ¥ (Haz)
     xcompword(med,[hilsen],hilsen). 
     xcompword(med,[med],med). 
 
-compword(med,[ankomst,før],før). 
-compword(med,[ankomst,nær],før).   %%  Rough
+compword(med,[ankomst,fÃ¸r],fÃ¸r). 
+compword(med,[ankomst,nÃ¦r],fÃ¸r).   %%  Rough
 
-compword(med,[ankomst],før).   %% TA-110610
+compword(med,[ankomst],fÃ¸r).   %% TA-110610
 compword(med,[avgang],etter).  %% 
 
-compword(med,[det,første],snart).
-compword(med,[en,gang],nå). 
+compword(med,[det,fÃ¸rste],snart).
+compword(med,[en,gang],nÃ¥). 
 compword(med,[fra],fra). 
 compword(med,[gratis],gratis).  
 compword(med,[hjem],hjem). %% meg hjem
@@ -3508,28 +3510,28 @@ compword(med,[hjem],hjem). %% meg hjem
 
     xcompword(med,[i],i). %% er jeg med i en buss ? (\+ x) %% TA-101006
 
-    xcompword(med,[lørdagsrute],lørdag). 
-    xcompword(med,[søndagssrute],søndag).
+    xcompword(med,[lÃ¸rdagsrute],lÃ¸rdag). 
+    xcompword(med,[sÃ¸ndagssrute],sÃ¸ndag).
 
 compword(med,[overgang,til],til). %% rough 
-compword(med,[på],med).   %% på ? 
+compword(med,[pÃ¥],med).   %% pÃ¥ ? 
 
-    xcompword(med,[tanke,på],for). 
+    xcompword(med,[tanke,pÃ¥],for). 
 compword(med,[unntak,ab],unntatt).  %% sp
 compword(med,[unntak,av],unntatt). 
 
 compword(meg,[jeg], jeg).   %% meg 
-%% compword(meg,[jeg,ta], går). %% Nofunk
+%% compword(meg,[jeg,ta], gÃ¥r). %% Nofunk
 compword(meget,[bra],bra). 
 compword(mellom,[etter],etter).
-compword(mellom,[før],før). %% repair
+compword(mellom,[fÃ¸r],fÃ¸r). %% repair
 compword(mellom,[fra],fra). %% repair
 compword(mellom,[i,ca],i).  %% .. tiden
-compword(mellom,[nå,og],før). 
+compword(mellom,[nÃ¥,og],fÃ¸r). 
 compword(mellom,[til],til).     %% repair
 
 compword(men,[etter],etter).  
-compword(men,[før],før).  
+compword(men,[fÃ¸r],fÃ¸r).  
 
 compword(men,[ikke,med],unntatt).
 compword(men,[ikke],unntatt). 
@@ -3550,7 +3552,7 @@ compword(mulig,[av],[]).   %% (mest noisew)
 
     xcompword(fra,[midt,i],fra). 
 compword(midt,[i],i).   
-compword(midt,[på],på).    
+compword(midt,[pÃ¥],pÃ¥).    
 
     xcompword(midtby,[bilett],midtbybillett).  
     xcompword(midtby,[billett],midtbybillett).  
@@ -3559,15 +3561,15 @@ compword(midt,[på],på).
 
 compword(minne,[meg],varsle).  
 compword(minner,[meg],varsler).  
-compword(minne,[meg,på],varsle).  
-compword(minner,[meg,på],varsler). 
+compword(minne,[meg,pÃ¥],varsle).  
+compword(minner,[meg,pÃ¥],varsler). 
 compword(minner,[om],vet).   
 
 compword(minste,[alder],aldersgrense). 
 compword(mitt,[bosted],[]). %% Voll 
-compword(mnd,[kort],månedskort). 
-compword(mnd,[merke],månedskort).  
-compword(mnd,[merker],månedskort).  %%
+compword(mnd,[kort],mÃ¥nedskort). 
+compword(mnd,[merke],mÃ¥nedskort).  
+compword(mnd,[merker],mÃ¥nedskort).  %%
 compword(morgen,['/',formiddag],formiddag). 
 compword(morgen,[buss],morgenbuss). 
 compword(morgen,[bussen],morgenbussen). %% 
@@ -3578,70 +3580,70 @@ compword(morgenen,[av],morgenen). %%  (fra) ...
 compword(mot,[fra],fra). %% Repair   
 compword(mot,[mot],mot). 
 compword(mot,[nord],nordover). 
-compword(mot,[sør],sørover).
-compword(mot,[syd],sørover).  
+compword(mot,[sÃ¸r],sÃ¸rover).
+compword(mot,[syd],sÃ¸rover).  
    xcompword(mot,[til],til).      %%  Repair
 compword(mot,[vest],vestover).
-compword(mot,[øst],østover).
+compword(mot,[Ã¸st],Ã¸stover).
 %% compword(mus,[eum],museum). 
-compword(må,['+'],må).        %% Å-trøbbel  
-compword(må,[eg,at],går).     %% confus
-    compword(må,[går],går). %% repair
+compword(mÃ¥,['+'],mÃ¥).        %% Ã…-trÃ¸bbel  
+compword(mÃ¥,[eg,at],gÃ¥r).     %% confus
+    compword(mÃ¥,[gÃ¥r],gÃ¥r). %% repair
 
-compword(må,[jeg,va],går).    %% Når må jeg va bussen 
-   xcompword(m,[j,ta],går).  
-   xcompword(m,[jeg,ta],går).  
-   xcompword(må,[ja,ta],går).  
+compword(mÃ¥,[jeg,va],gÃ¥r).    %% NÃ¥r mÃ¥ jeg va bussen 
+   xcompword(m,[j,ta],gÃ¥r).  
+   xcompword(m,[jeg,ta],gÃ¥r).  
+   xcompword(mÃ¥,[ja,ta],gÃ¥r).  
 
-%%   xcompword(må,[jeg,da],går).     %%  da ta -> ta // da->ta 
+%%   xcompword(mÃ¥,[jeg,da],gÃ¥r).     %%  da ta -> ta // da->ta 
 
 
-compword(må,[jeg,for,å,komme],går). 
+compword(mÃ¥,[jeg,for,Ã¥,komme],gÃ¥r). 
 
-    xcompword(må,[jeg,fra],forlater).%%  hvilken buss mÃ¥ jeg fra hegdalen for Ã¥ 
-%% compword(må,[jeg,fra],fra). 
+    xcompword(mÃ¥,[jeg,fra],forlater).%%  hvilken buss mÃƒÂ¥ jeg fra hegdalen for ÃƒÂ¥ 
+%% compword(mÃ¥,[jeg,fra],fra). 
 
-compword(må,[jeg,hvis,jeg,skal],går). %% hvilken buss [ må jeg hvis jeg skal] til s
-compword(må,[jeg,på],går).     
-    xcompword(må,[jeg,tabuss],går). %% (ad hoc splitword) X
+compword(mÃ¥,[jeg,hvis,jeg,skal],gÃ¥r). %% hvilken buss [ mÃ¥ jeg hvis jeg skal] til s
+compword(mÃ¥,[jeg,pÃ¥],gÃ¥r).     
+    xcompword(mÃ¥,[jeg,tabuss],gÃ¥r). %% (ad hoc splitword) X
 
-compword(må,[jeg,ta,som],[]). %
+compword(mÃ¥,[jeg,ta,som],[]). %
 
-    xcompword(må,[jeg,to],går). %% .. bussen 
+    xcompword(mÃ¥,[jeg,to],gÃ¥r). %% .. bussen 
 
-compword(må,[man,for,å,komme],går). %% rough %%  ..ta..
-compword(må,[når,går],går).   %% repair  når....
-%% compword(må,[ta],går).        %%  ?????
-compword(må,[tar],går).       %% confus 
+compword(mÃ¥,[man,for,Ã¥,komme],gÃ¥r). %% rough %%  ..ta..
+compword(mÃ¥,[nÃ¥r,gÃ¥r],gÃ¥r).   %% repair  nÃ¥r....
+%% compword(mÃ¥,[ta],gÃ¥r).        %%  ?????
+compword(mÃ¥,[tar],gÃ¥r).       %% confus 
 
-    xcompword(hva,[må,til,for,å],hva). 
+    xcompword(hva,[mÃ¥,til,for,Ã¥],hva). 
 
-%% compword(må,[vær,der],før). %% jeg må være der senest 
-compword(må,[være,der,kl],før).   
-%%     xcompword(må,[være,der,senest],før). %% jeg ...
-compword(må,[være,der],før).  
-    xcompword(må,[være,der,ca],før). 
-compword(må,[være,framme],før). %% 
-compword(må,[være,i],til). 
+%% compword(mÃ¥,[vÃ¦r,der],fÃ¸r). %% jeg mÃ¥ vÃ¦re der senest 
+compword(mÃ¥,[vÃ¦re,der,kl],fÃ¸r).   
+%%     xcompword(mÃ¥,[vÃ¦re,der,senest],fÃ¸r). %% jeg ...
+compword(mÃ¥,[vÃ¦re,der],fÃ¸r).  
+    xcompword(mÃ¥,[vÃ¦re,der,ca],fÃ¸r). 
+compword(mÃ¥,[vÃ¦re,framme],fÃ¸r). %% 
+compword(mÃ¥,[vÃ¦re,i],til). 
 
-%%     xcompword(må,[være],ankommer). %%  .. senest
+%%     xcompword(mÃ¥,[vÃ¦re],ankommer). %%  .. senest
 
-compword(må,[å],må).  
-compword(måjeg,[ta],går).  
-compword(månedskort,[buss],månedskort). 
+compword(mÃ¥,[Ã¥],mÃ¥).  
+compword(mÃ¥jeg,[ta],gÃ¥r).  
+compword(mÃ¥nedskort,[buss],mÃ¥nedskort). 
 
-compword(mår,[må],må).         %%  Repair
+compword(mÃ¥r,[mÃ¥],mÃ¥).         %%  Repair
 
-    xcompword(måtte,[sitte,på],passere). %% X %% Rough uten å m.. til
+    xcompword(mÃ¥tte,[sitte,pÃ¥],passere). %% X %% Rough uten Ã¥ m.. til
 
-%compword(na,['\203',ayr],når). %% etc
-%compword(ga,['\203',ayr],går).  %% Sictus4
+%compword(na,['\203',ayr],nÃ¥r). %% etc
+%compword(ga,['\203',ayr],gÃ¥r).  %% Sictus4
 
-    xcompword(g,[&,r],går).  %% TA-100914
-    xcompword(n,[&,r],når).  %% TA-100914
-compword(n,[2,r],når).     %%  sms å-trøbbel
+    xcompword(g,[&,r],gÃ¥r).  %% TA-100914
+    xcompword(n,[&,r],nÃ¥r).  %% TA-100914
+compword(n,[2,r],nÃ¥r).     %%  sms Ã¥-trÃ¸bbel
 compword(n,['.'],nummer). 
-compword(n,['¬',ør],når).  %% Å-trøbbel
+compword(n,['Â¬',Ã¸r],nÃ¥r).  %% Ã…-trÃ¸bbel
 
 compword(n,[i,neste],neste). %% n i = n g (sms)
 compword(n,[i,buss],buss).
@@ -3652,17 +3654,17 @@ compword(nord,[og,ned],nordover). %% :-(
 compword(v,[11],7).   %% VII
 compword(v,[11],vii). %% 7
 
-compword(v,['&',230,re],være). 
-compword(v,['?',ære],være).    %% æ trøbbel 
+compword(v,['&',230,re],vÃ¦re). 
+compword(v,['?',Ã¦re],vÃ¦re).    %% Ã¦ trÃ¸bbel 
 
     xcompword(v,[g,s],vgs).   
     xcompword(v,['.',g,'.',s],vgs). 
 
-compword('&',[229],å).     
-compword(m,['&',229],må).  
-compword(n,['&',229],nå).  
-compword(n,['&',229,r],når). 
-compword(p,['&',229],på).   
+compword('&',[229],Ã¥).     
+compword(m,['&',229],mÃ¥).  
+compword(n,['&',229],nÃ¥).  
+compword(n,['&',229,r],nÃ¥r). 
+compword(p,['&',229],pÃ¥).   
 compword(pr,['.'],per). 
 
     xcompword(med,[retur],tilbake).  
@@ -3671,24 +3673,24 @@ compword(m,['.',retur],tilbake). %%
 
 compword(n,[este],neste). 
 
-%% compword(n,[g],går).  %% NÅR GÅR (n \= når) %%  n g n b
+%% compword(n,[g],gÃ¥r).  %% NÃ…R GÃ…R (n \= nÃ¥r) %%  n g n b
 
-%% compword(n,[gayr],går). %% split 
-%% compword(n,[går],går).  %% når går 
-compword(n,[må],må).  %% når/neste må jeg // Rough 
-compword(n,[r],når).  %% n?r 
-compword(n,[år],når). %% n¨år   neib k 
-compword(n,['?',r],når). %% n?r 
+%% compword(n,[gayr],gÃ¥r). %% split 
+%% compword(n,[gÃ¥r],gÃ¥r).  %% nÃ¥r gÃ¥r 
+compword(n,[mÃ¥],mÃ¥).  %% nÃ¥r/neste mÃ¥ jeg // Rough 
+compword(n,[r],nÃ¥r).  %% n?r 
+compword(n,[Ã¥r],nÃ¥r). %% nÂ¨Ã¥r   neib k 
+compword(n,['?',r],nÃ¥r). %% n?r 
 
-compword(n,['¬',ør],når). 
-compword(n,[ør],når).  
+compword(n,['Â¬',Ã¸r],nÃ¥r). 
+compword(n,[Ã¸r],nÃ¥r).  
 
-compword(niæ,['½',r],når).         %% 
-%% compword(na,['\203',ayr],når).     %%%% Sicstus 4 
-%% compword(na,['\205',r],når).       %%
-%% compword(n,['\214',r],når).        %%
+compword(niÃ¦,['Â½',r],nÃ¥r).         %% 
+%% compword(na,['\203',ayr],nÃ¥r).     %%%% Sicstus 4 
+%% compword(na,['\205',r],nÃ¥r).       %%
+%% compword(n,['\214',r],nÃ¥r).        %%
 
-compword(naar,[neste],går). %%  Rough
+compword(naar,[neste],gÃ¥r). %%  Rough
 
 compword(nat,[bus],nattbuss).   
 compword(nat,[buss],nattbuss).  
@@ -3747,7 +3749,7 @@ compword(nesten,[alle],mange). %% rough
 compword(neste,[buss,etter,neste],andre). 
     xcompword(neste,[buss,neste],neste).       %% repair 
 
-    xcompword(neste,[buss,når],når). 
+    xcompword(neste,[buss,nÃ¥r],nÃ¥r). 
 
 compword(neste,[de],de). 
 
@@ -3755,23 +3757,23 @@ compword(neste,[deretter],neste).
 compword(neste,[der,igjen],neste).  
 compword(neste,[der,igjen,da],neste). 
 compword(neste,[det],neste).  
-compword(neste,[etter,første],andre). 
+compword(neste,[etter,fÃ¸rste],andre). 
 compword(neste,[etter,nest],andre).  
 compword(neste,[etter,neste],andre).
 compword(neste,[etter,neste,etter,neste],tredje). %% :-) limit
-compword(neste,[etter,nå],neste).
-%%  compword(neste,[fra],fra).  %% når går neste fra buss gløshaugeb
+compword(neste,[etter,nÃ¥],neste).
+%%  compword(neste,[fra],fra).  %% nÃ¥r gÃ¥r neste fra buss glÃ¸shaugeb
 
     xcompword(neste,[fra,buss],fra).  %% ?
 
-compword(neste,[første],første).  
+compword(neste,[fÃ¸rste],fÃ¸rste).  
 compword(neste,[gang],heretter).   
 compword(neste,[ganger],heretter). 
 compword(neste,[to,ganger],heretter).  %% veldig Ad Hoc
 compword(neste,[2,ganger],heretter).   %%
 compword(neste,[3,ganger],heretter).   %%
 compword(neste,[nr],neste).  
-compword(neste,[på],neste).  
+compword(neste,[pÃ¥],neste).  
 %% compword(neste,[til],neste).  %% 3 neste til nardo
 compword(neste,[tre,ganger],heretter).
 
@@ -3782,7 +3784,7 @@ compword(neste,[tre,ganger],heretter).
 
 compword(noe,[annet],noe). 
 
-compword(noe,[av],[]).  %% som jeg ikke forstår noe av
+compword(noe,[av],[]).  %% som jeg ikke forstÃ¥r noe av
 compword(noe,[annet,enn],ikke).  %%  Rough
 compword(noe,[mere,enn],[]). 
 compword(noe,[mer],noe).  
@@ -3801,17 +3803,17 @@ compword(noe,[om,at],at). %% Rough
     xcompword(noen,[av,de],de).       %%  rough
     xcompword(noen,[av,disse],disse). %% 
     xcompword(noen,[av,mine],mine).   %% 
-%%     xcompword(noen,[av],noen).     %% TA-110428  noen [av] våre
+%%     xcompword(noen,[av],noen).     %% TA-110428  noen [av] vÃ¥re
     xcompword(noen,[form,for],noen). 
     xcompword(noen,[flere],flere).
-    xcompword(noen,[få],få). 
+    xcompword(noen,[fÃ¥],fÃ¥). 
     xcompword(noen,[gang],[]).        %% ?
     xcompword(noen,[ganger],tidvis).  %% TA-110111
 
 %% Trouble spot 
     xcompword('.',[nr,'.'],nr).
     xcompword('.',[nr],nr).  
-    xcompword(nr,['.'],nr).     %% hvilket nr . går // ikke ruteplan
+    xcompword(nr,['.'],nr).     %% hvilket nr . gÃ¥r // ikke ruteplan
     xcompword(nr,[':'],nr).  
 
 %% compword(nr,['.'],nummer).  %% gets priority (alphabetic)
@@ -3819,7 +3821,7 @@ compword(noe,[om,at],at). %% Rough
 compword(nr,[m,jeg],jeg).
 compword(nr,[buss],buss).  
 compword(nr,[bussen],bussen). 
-compword(nr,[første],første).  %% repair
+compword(nr,[fÃ¸rste],fÃ¸rste).  %% repair
 compword(nr,[gr,nste,buss],buss).
    xcompword(nr,[nr],nr).      %% repair
 
@@ -3836,241 +3838,241 @@ compword(nor,[og,hvilket],   hvilket).
 
 compword(norges,[nasjonaldag],may17).  
 
-compword(naar,[går],går).  %%  Rough  
-compword(naar,[gar],går).  % å-trøbb 
-compword(naar,[gr],går).   %
-compword(naar,[gaar],går). %% å-trøbbel
+compword(naar,[gÃ¥r],gÃ¥r).  %%  Rough  
+compword(naar,[gar],gÃ¥r).  % Ã¥-trÃ¸bb 
+compword(naar,[gr],gÃ¥r).   %
+compword(naar,[gaar],gÃ¥r). %% Ã¥-trÃ¸bbel
 
 
-%% compword(nr,[går],går).  %%  Rough 
-compword(nr,[gar],går).  % å-trøbb 
-compword(nr,[gr],går).   %
-compword(nr,[gaar],går). %% å-trøbbel
+%% compword(nr,[gÃ¥r],gÃ¥r).  %%  Rough 
+compword(nr,[gar],gÃ¥r).  % Ã¥-trÃ¸bb 
+compword(nr,[gr],gÃ¥r).   %
+compword(nr,[gaar],gÃ¥r). %% Ã¥-trÃ¸bbel
 
-compword(nr,[på,buss],buss). 
+compword(nr,[pÃ¥,buss],buss). 
 compword(nummer,[buss],buss). 
-compword(nummer,[på,buss],buss). 
+compword(nummer,[pÃ¥,buss],buss). 
 
-compword(nytt,[årsaften],new_years_eve). 
+compword(nytt,[Ã¥rsaften],new_years_eve). 
 
-    xcompword(nyttiggjøre,[seg],bruke).
+    xcompword(nyttiggjÃ¸re,[seg],bruke).
 
-compword(nyttårs,[aften],new_years_eve). 
-compword(nyttårssaften,[],new_years_eve). %% spiw %% TA-110203
-compword(nyttårs,[dag],nyttårsdag). 
-compword(nyttårs,[helga],helgen). %% anb on purp 
-
-
-compword(nærmere,[kl],før).  %% = før kl Rough  
-compword(nærmes,[te],nærmeste). 
-compword(nermest,[mulig],nærmest). 
-compword(nærmest,[mulig],nærmest). 
-compword(nærmeste,[tid],heretter). 
-
-compword(nøyaktig,[når],når). 
-compword(nøyaktig,[på],på). 
-
-    xcompword(nå,[da],nå). %% Norw %% TA-110112
-compword(nå,['+',r],når). %% Å-trøbbell
-compword(nå,[f],fra). 
-compword(nå,[fra],fra).  
-
-compword(nå,[fram,til],ankomme). 
-compword(nå,[frem,til],ankomme). 
-
-compword(nå,[fram,til],til).  
-compword(nå,[frem,til],til). 
-
-%% compword(nå,[går],går). %% Nå går bussen -> når går.. 
-                           %% .. og nå går bussen
-
-compword(nå,[jeg,skal,være,der],før). %% nå(r), Ad Hoc 
-compword(nå,[jeg,senest,skal,være,der],før). 
+compword(nyttÃ¥rs,[aften],new_years_eve). 
+compword(nyttÃ¥rssaften,[],new_years_eve). %% spiw %% TA-110203
+compword(nyttÃ¥rs,[dag],nyttÃ¥rsdag). 
+compword(nyttÃ¥rs,[helga],helgen). %% anb on purp 
 
 
-compword(nå,[jeg,skal,være,i],  til). %% nå(r), Ad Hoc 
-compword(nå,[jeg,ta],går).            %% nå
-compword(nå,[kl],nå). %% klokka overrides 
-compword(nå,[klokka],nå). 
-compword(nå,[klokken],nå). 
-compword(nå,[5,r],når).  %%  nå5r går bussen. slip 
-compword(nå,[r],når).  
-compword(nå,[rmå],[]).  %% AVOID nå må ... før = now and before
+compword(nÃ¦rmere,[kl],fÃ¸r).  %% = fÃ¸r kl Rough  
+compword(nÃ¦rmes,[te],nÃ¦rmeste). 
+compword(nermest,[mulig],nÃ¦rmest). 
+compword(nÃ¦rmest,[mulig],nÃ¦rmest). 
+compword(nÃ¦rmeste,[tid],heretter). 
 
-    xcompword(nå,[som],som). %% Jeg søkte på rute 5 nå som passerer begge..
+compword(nÃ¸yaktig,[nÃ¥r],nÃ¥r). 
+compword(nÃ¸yaktig,[pÃ¥],pÃ¥). 
 
-compword(nå,[ta],tar).  %% repair (må ta)
+    xcompword(nÃ¥,[da],nÃ¥). %% Norw %% TA-110112
+compword(nÃ¥,['+',r],nÃ¥r). %% Ã…-trÃ¸bbell
+compword(nÃ¥,[f],fra). 
+compword(nÃ¥,[fra],fra).  
 
-%%% compword(når,[5],når).   %% slip %% når 5 fra samf 
+compword(nÃ¥,[fram,til],ankomme). 
+compword(nÃ¥,[frem,til],ankomme). 
 
-    xcompword(når,[går,bussen,når],når).  %% repair TEAM web 
+compword(nÃ¥,[fram,til],til).  
+compword(nÃ¥,[frem,til],til). 
 
-    xcompword(når,[ga],går).  %% nar ga = når går 
-    xcompword(når,[når],når).  
-    xcompword(når,[og,hvorfor],når). %% ? %% Facetious     
-    xcompword(når,[jeg,seinest,skal,være,der],før). 
-    xcompword(når,[jeg,skal,til],til). %% bus til A n j s t B 
-    xcompword(når,[går,buss,går],buss).  
-    xcompword(når,[går,bussen,går],buss).
-    xcompword(når,[går,bussen,skal,være],bussen). %% prompt 
-    xcompword(når,[går,fra,bussen],fra). 
-    xcompword(når,[går,fra],fra).  
+%% compword(nÃ¥,[gÃ¥r],gÃ¥r). %% NÃ¥ gÃ¥r bussen -> nÃ¥r gÃ¥r.. 
+                           %% .. og nÃ¥ gÃ¥r bussen
 
-compword(når,[du,kan],alltid). %% rough
-compword(når,[du,må],ofte). 
+compword(nÃ¥,[jeg,skal,vÃ¦re,der],fÃ¸r). %% nÃ¥(r), Ad Hoc 
+compword(nÃ¥,[jeg,senest,skal,vÃ¦re,der],fÃ¸r). 
 
-%% compword(når,[går,neste],avgang). %% når går neste nth * møller bil . %% Haz
-%% når går  neste 2 fra bromstadsvingen
 
-compword(når,[gårnår],når). %% repair 
+compword(nÃ¥,[jeg,skal,vÃ¦re,i],  til). %% nÃ¥(r), Ad Hoc 
+compword(nÃ¥,[jeg,ta],gÃ¥r).            %% nÃ¥
+compword(nÃ¥,[kl],nÃ¥). %% klokka overrides 
+compword(nÃ¥,[klokka],nÃ¥). 
+compword(nÃ¥,[klokken],nÃ¥). 
+compword(nÃ¥,[5,r],nÃ¥r).  %%  nÃ¥5r gÃ¥r bussen. slip 
+compword(nÃ¥,[r],nÃ¥r).  
+compword(nÃ¥,[rmÃ¥],[]).  %% AVOID nÃ¥ mÃ¥ ... fÃ¸r = now and before
 
-    xcompword(når,[jeg,skal,være,der,før],før). 
-    xcompword(når,[jeg,skal,være,der,til],før).
-    xcompword(når,[jeg,skal,være,der],før).  
-    xcompword(når,[jeg,skal,være,i,på],til).    %% interaction
-    xcompword(når,[jeg,skal,være,i],til).  
+    xcompword(nÃ¥,[som],som). %% Jeg sÃ¸kte pÃ¥ rute 5 nÃ¥ som passerer begge..
 
-    xcompword(når,[jeg,skal,være,på],til).  
+compword(nÃ¥,[ta],tar).  %% repair (mÃ¥ ta)
 
-%%    xcompword(når,[jeg,skal,være,ved],til).
+%%% compword(nÃ¥r,[5],nÃ¥r).   %% slip %% nÃ¥r 5 fra samf 
 
-    xcompword(når,[kl],klokken). 
-    xcompword(når,[vi,skal,være,på],til).  
+    xcompword(nÃ¥r,[gÃ¥r,bussen,nÃ¥r],nÃ¥r).  %% repair TEAM web 
 
-    xcompword(da,[jeg,skal,være,i],til).  %% etc
+    xcompword(nÃ¥r,[ga],gÃ¥r).  %% nar ga = nÃ¥r gÃ¥r 
+    xcompword(nÃ¥r,[nÃ¥r],nÃ¥r).  
+    xcompword(nÃ¥r,[og,hvorfor],nÃ¥r). %% ? %% Facetious     
+    xcompword(nÃ¥r,[jeg,seinest,skal,vÃ¦re,der],fÃ¸r). 
+    xcompword(nÃ¥r,[jeg,skal,til],til). %% bus til A n j s t B 
+    xcompword(nÃ¥r,[gÃ¥r,buss,gÃ¥r],buss).  
+    xcompword(nÃ¥r,[gÃ¥r,bussen,gÃ¥r],buss).
+    xcompword(nÃ¥r,[gÃ¥r,bussen,skal,vÃ¦re],bussen). %% prompt 
+    xcompword(nÃ¥r,[gÃ¥r,fra,bussen],fra). 
+    xcompword(nÃ¥r,[gÃ¥r,fra],fra).  
+
+compword(nÃ¥r,[du,kan],alltid). %% rough
+compword(nÃ¥r,[du,mÃ¥],ofte). 
+
+%% compword(nÃ¥r,[gÃ¥r,neste],avgang). %% nÃ¥r gÃ¥r neste nth * mÃ¸ller bil . %% Haz
+%% nÃ¥r gÃ¥r  neste 2 fra bromstadsvingen
+
+compword(nÃ¥r,[gÃ¥rnÃ¥r],nÃ¥r). %% repair 
+
+    xcompword(nÃ¥r,[jeg,skal,vÃ¦re,der,fÃ¸r],fÃ¸r). 
+    xcompword(nÃ¥r,[jeg,skal,vÃ¦re,der,til],fÃ¸r).
+    xcompword(nÃ¥r,[jeg,skal,vÃ¦re,der],fÃ¸r).  
+    xcompword(nÃ¥r,[jeg,skal,vÃ¦re,i,pÃ¥],til).    %% interaction
+    xcompword(nÃ¥r,[jeg,skal,vÃ¦re,i],til).  
+
+    xcompword(nÃ¥r,[jeg,skal,vÃ¦re,pÃ¥],til).  
+
+%%    xcompword(nÃ¥r,[jeg,skal,vÃ¦re,ved],til).
+
+    xcompword(nÃ¥r,[kl],klokken). 
+    xcompword(nÃ¥r,[vi,skal,vÃ¦re,pÃ¥],til).  
+
+    xcompword(da,[jeg,skal,vÃ¦re,i],til).  %% etc
 
 compword(naar,[buss],buss).  % etc 
-%% compword(når,[bus],buss).  %% Rough jeg tar buss når bussen 
-%% compword(når,[buss],buss).        %% Rough
-%% compword(når,[bussen],bussen). 
-%% compword(når,[busser],busser).    %%
+%% compword(nÃ¥r,[bus],buss).  %% Rough jeg tar buss nÃ¥r bussen 
+%% compword(nÃ¥r,[buss],buss).        %% Rough
+%% compword(nÃ¥r,[bussen],bussen). 
+%% compword(nÃ¥r,[busser],busser).    %%
 
-%% compword(når,[bussen,gå,fra],fra).   %% nohelp
-compword(når,[de,går],går).        %% Rough når (er det) de går (,disse) b
-compword(når,[det,buss],buss). 
-%% compword(når,[det,er],[]). %% ..mandag / sommerrute Too rough
-compword(når,[det,går],går).
-compword(når,[dra,fra],fra).       %%   no funk
-compword(når,[dra],[]).            %% ? 
-compword(når,[for],for).           %%  hvilken buss må jeg ta når for å være p
-compword(når,[fra,neste],neste).   %% confusion
-    xcompword(når,[fra],fra).      %% Xclusive
-    xcompword(når,[f],fra).        %% ? når før?
-    xcompword(når,[f,ra],fra).     %%  ?
-    xcompword(når,[til],til).      %%  
-    xcompword(når,[får,buss],buss). 
-
-
-compword(når,[fram],ankommer).  %% disamb
-compword(når,[får],går).           %% Rough 
-%%  compword(når,[går,fra],fra).   %%  Doesnt help 
- compword(når,[går,til],til). 
-compword(når,[går,buss,går],[]).   %%  confus
-compword(når,[går,når],når).       %% Repair 
-    xcompword(når,[går,til],til). 
-compword(når,[gård,det],[]). 
-compword(når,[gård],[]).  
-%%  xcompword(når,[til,neste],neste). %% ?  nohelp
-
-% har = går (sms ordliste), men når har siste 9 => siste buss ha rute 9 
-
-compword(når,[har],går):- user:value(smsflag,true). %% ad hoc, ordliste  //nofunc
-    xcompword(når,[har,neste],neste).
+%% compword(nÃ¥r,[bussen,gÃ¥,fra],fra).   %% nohelp
+compword(nÃ¥r,[de,gÃ¥r],gÃ¥r).        %% Rough nÃ¥r (er det) de gÃ¥r (,disse) b
+compword(nÃ¥r,[det,buss],buss). 
+%% compword(nÃ¥r,[det,er],[]). %% ..mandag / sommerrute Too rough
+compword(nÃ¥r,[det,gÃ¥r],gÃ¥r).
+compword(nÃ¥r,[dra,fra],fra).       %%   no funk
+compword(nÃ¥r,[dra],[]).            %% ? 
+compword(nÃ¥r,[for],for).           %%  hvilken buss mÃ¥ jeg ta nÃ¥r for Ã¥ vÃ¦re p
+compword(nÃ¥r,[fra,neste],neste).   %% confusion
+    xcompword(nÃ¥r,[fra],fra).      %% Xclusive
+    xcompword(nÃ¥r,[f],fra).        %% ? nÃ¥r fÃ¸r?
+    xcompword(nÃ¥r,[f,ra],fra).     %%  ?
+    xcompword(nÃ¥r,[til],til).      %%  
+    xcompword(nÃ¥r,[fÃ¥r,buss],buss). 
 
 
-compword(når,[hvilke],hvilke).
-compword(når,[hvilken],hvilken).
-compword(når,[hvilket],hvilket). 
+compword(nÃ¥r,[fram],ankommer).  %% disamb
+compword(nÃ¥r,[fÃ¥r],gÃ¥r).           %% Rough 
+%%  compword(nÃ¥r,[gÃ¥r,fra],fra).   %%  Doesnt help 
+ compword(nÃ¥r,[gÃ¥r,til],til). 
+compword(nÃ¥r,[gÃ¥r,buss,gÃ¥r],[]).   %%  confus
+compword(nÃ¥r,[gÃ¥r,nÃ¥r],nÃ¥r).       %% Repair 
+    xcompword(nÃ¥r,[gÃ¥r,til],til). 
+compword(nÃ¥r,[gÃ¥rd,det],[]). 
+compword(nÃ¥r,[gÃ¥rd],[]).  
+%%  xcompword(nÃ¥r,[til,neste],neste). %% ?  nohelp
 
-compword(når,['/',hvilken],hvilken). %% repair
+% har = gÃ¥r (sms ordliste), men nÃ¥r har siste 9 => siste buss ha rute 9 
 
-compword(når,[hvor],hvor).  %% Repair
-compword(når,[hvordan],hvordan).
-compword(når,[jeg,må,ta],går).   %%  Rough
-    xcompword(når,[jeg,må,ja],går).   %%  Rough
-compword(når,[jeg,ta],går).     %% Rough når KAN jeg ta //Interference når når jeg ta
-
-% compword(når,[jeg,skal,komme,meg],[]).  %%  Doesntwork
-
-    xcompword(når,[jeg,må,være,der,før],før). %% some problems 
-    xcompword(når,[jeg,må,være,der,til],før). 
-%%     xcompword(når,[jeg,må,være,der],før).  %% når jeg må være der 
-    xcompword(når,[jeg,må,være,til],før). 
-    xcompword(når,[jeg,må,være,dær],før). 
-
-compword(når,[klokka],når).  
-compword(når,[klokken],når).   
-    xcompword(når,[klokken,er,over],etter).  
-
-    xcompword(når,[man,må,være,der,senest],før).  
-
-compword(når,[meg,jeg,ta],går).  %%  Rough
-
-compword(når,[me,jeg,ta],går).  
-
-compword(når,[mjeg,ta],går).  
-compword(når,[må,dra],buss).     %% Rough
-compword(når,[må,jeg,at],går).   %% Rough at=ta
+compword(nÃ¥r,[har],gÃ¥r):- user:value(smsflag,true). %% ad hoc, ordliste  //nofunc
+    xcompword(nÃ¥r,[har,neste],neste).
 
 
-compword(når,[må,jeg,buss],buss).  
-    xcompword(når,[må,jeg,bussen],bussen). 
+compword(nÃ¥r,[hvilke],hvilke).
+compword(nÃ¥r,[hvilken],hvilken).
+compword(nÃ¥r,[hvilket],hvilket). 
 
-    xcompword(når,[må,ta,buss],buss).      %% Rough 
-    xcompword(når,[må,ta,bussen],bussen).  %% Rough
-    xcompword(når,[må,jeg,ta,fra],fra).    %% ? 
-    xcompword(når,[må,jeg,ja],går).  %% ja=ta 
-    xcompword(når,[må,jeg,fra],fra).  
+compword(nÃ¥r,['/',hvilken],hvilken). %% repair
 
-compword(når,[må,reise], reise).  
-compword(når,[må,ta],       går).  
+compword(nÃ¥r,[hvor],hvor).  %% Repair
+compword(nÃ¥r,[hvordan],hvordan).
+compword(nÃ¥r,[jeg,mÃ¥,ta],gÃ¥r).   %%  Rough
+    xcompword(nÃ¥r,[jeg,mÃ¥,ja],gÃ¥r).   %%  Rough
+compword(nÃ¥r,[jeg,ta],gÃ¥r).     %% Rough nÃ¥r KAN jeg ta //Interference nÃ¥r nÃ¥r jeg ta
 
-compword(når,[nattbuss],nattbuss).   
-compword(når,[nest,går],       []).     %% rough 
-    xcompword(når,[neste,går],       []).    %%  rough
+% compword(nÃ¥r,[jeg,skal,komme,meg],[]).  %%  Doesntwork
 
-%%%%  compword(når,[neste],  neste). %% TA-100829 %% kan du si meg når neste \+x 
+    xcompword(nÃ¥r,[jeg,mÃ¥,vÃ¦re,der,fÃ¸r],fÃ¸r). %% some problems 
+    xcompword(nÃ¥r,[jeg,mÃ¥,vÃ¦re,der,til],fÃ¸r). 
+%%     xcompword(nÃ¥r,[jeg,mÃ¥,vÃ¦re,der],fÃ¸r).  %% nÃ¥r jeg mÃ¥ vÃ¦re der 
+    xcompword(nÃ¥r,[jeg,mÃ¥,vÃ¦re,til],fÃ¸r). 
+    xcompword(nÃ¥r,[jeg,mÃ¥,vÃ¦re,dÃ¦r],fÃ¸r). 
+
+compword(nÃ¥r,[klokka],nÃ¥r).  
+compword(nÃ¥r,[klokken],nÃ¥r).   
+    xcompword(nÃ¥r,[klokken,er,over],etter).  
+
+    xcompword(nÃ¥r,[man,mÃ¥,vÃ¦re,der,senest],fÃ¸r).  
+
+compword(nÃ¥r,[meg,jeg,ta],gÃ¥r).  %%  Rough
+
+compword(nÃ¥r,[me,jeg,ta],gÃ¥r).  
+
+compword(nÃ¥r,[mjeg,ta],gÃ¥r).  
+compword(nÃ¥r,[mÃ¥,dra],buss).     %% Rough
+compword(nÃ¥r,[mÃ¥,jeg,at],gÃ¥r).   %% Rough at=ta
+
+
+compword(nÃ¥r,[mÃ¥,jeg,buss],buss).  
+    xcompword(nÃ¥r,[mÃ¥,jeg,bussen],bussen). 
+
+    xcompword(nÃ¥r,[mÃ¥,ta,buss],buss).      %% Rough 
+    xcompword(nÃ¥r,[mÃ¥,ta,bussen],bussen).  %% Rough
+    xcompword(nÃ¥r,[mÃ¥,jeg,ta,fra],fra).    %% ? 
+    xcompword(nÃ¥r,[mÃ¥,jeg,ja],gÃ¥r).  %% ja=ta 
+    xcompword(nÃ¥r,[mÃ¥,jeg,fra],fra).  
+
+compword(nÃ¥r,[mÃ¥,reise], reise).  
+compword(nÃ¥r,[mÃ¥,ta],       gÃ¥r).  
+
+compword(nÃ¥r,[nattbuss],nattbuss).   
+compword(nÃ¥r,[nest,gÃ¥r],       []).     %% rough 
+    xcompword(nÃ¥r,[neste,gÃ¥r],       []).    %%  rough
+
+%%%%  compword(nÃ¥r,[neste],  neste). %% TA-100829 %% kan du si meg nÃ¥r neste \+x 
 
 compword(nar,[neste],       []).   
 compword(nor,[neste],       []). 
 
 
 
-   compword(nær,[neste],        går).   %% Å-trøbbel
-compword(når,[nøyaktig],     når). 
-compword(når,[nå],           må).       %% når må jeg ...
-compword(når,[når],          når).  
-compword(når,[og,ankommer],[]).  
-compword(når,[og,med],med). %% .. hvilken buss 
+   compword(nÃ¦r,[neste],        gÃ¥r).   %% Ã…-trÃ¸bbel
+compword(nÃ¥r,[nÃ¸yaktig],     nÃ¥r). 
+compword(nÃ¥r,[nÃ¥],           mÃ¥).       %% nÃ¥r mÃ¥ jeg ...
+compword(nÃ¥r,[nÃ¥r],          nÃ¥r).  
+compword(nÃ¥r,[og,ankommer],[]).  
+compword(nÃ¥r,[og,med],med). %% .. hvilken buss 
 
-    xcompword(når,[år],[]).  %% går
+    xcompword(nÃ¥r,[Ã¥r],[]).  %% gÃ¥r
 
-compword(når,[nest],nest). %% siste .. 
+compword(nÃ¥r,[nest],nest). %% siste .. 
 
-%%% compword(når,[neste],neste). %% du sier når neste buss går %% TA-100829
+%%% compword(nÃ¥r,[neste],neste). %% du sier nÃ¥r neste buss gÃ¥r %% TA-100829
 
-compword(når,[og,hviklen],   hvilken).  %%  ?
-compword(når,[og,hvilke],    hvilke). 
-compword(når,[og,hvilken],   hvilken). 
-compword(når,[og,hvilken],   når).      %% ambig
-compword(når,[og,hvilket],   hvilket). 
-compword(når,[og,hvor],      hvor).     %%  ,når)  ?
-compword(når,[og,hvorfra],   når). 
-compword(når,[og,hvor,fra],  når).      %%
-compword(når,[og,hvor,ifra], når).      %%
-compword(når,[og,vilken],    hvilken). 
-compword(når,[på,dagen],når).      %%  ... på hverdager 
-%% compword(når,[på,jeg,ta],går).     %%  rough, but err reording
-compword(når,[på],på).             %% være når på
-%% compword(når,[siste],siste). %% TA-110105 kan du fortelle når siste
-compword(når,[sånn,ca],når).  
-compword(når,[ta],går).  
-compword(når,[ti],når). 
-compword(når,[år],[]). %% når går 
-compword(nårg,[år],går).      %%  (når går) 
-compword(nårmå,[jeg],jeg).     %% Ad Hoc 
+compword(nÃ¥r,[og,hviklen],   hvilken).  %%  ?
+compword(nÃ¥r,[og,hvilke],    hvilke). 
+compword(nÃ¥r,[og,hvilken],   hvilken). 
+compword(nÃ¥r,[og,hvilken],   nÃ¥r).      %% ambig
+compword(nÃ¥r,[og,hvilket],   hvilket). 
+compword(nÃ¥r,[og,hvor],      hvor).     %%  ,nÃ¥r)  ?
+compword(nÃ¥r,[og,hvorfra],   nÃ¥r). 
+compword(nÃ¥r,[og,hvor,fra],  nÃ¥r).      %%
+compword(nÃ¥r,[og,hvor,ifra], nÃ¥r).      %%
+compword(nÃ¥r,[og,vilken],    hvilken). 
+compword(nÃ¥r,[pÃ¥,dagen],nÃ¥r).      %%  ... pÃ¥ hverdager 
+%% compword(nÃ¥r,[pÃ¥,jeg,ta],gÃ¥r).     %%  rough, but err reording
+compword(nÃ¥r,[pÃ¥],pÃ¥).             %% vÃ¦re nÃ¥r pÃ¥
+%% compword(nÃ¥r,[siste],siste). %% TA-110105 kan du fortelle nÃ¥r siste
+compword(nÃ¥r,[sÃ¥nn,ca],nÃ¥r).  
+compword(nÃ¥r,[ta],gÃ¥r).  
+compword(nÃ¥r,[ti],nÃ¥r). 
+compword(nÃ¥r,[Ã¥r],[]). %% nÃ¥r gÃ¥r 
+compword(nÃ¥rg,[Ã¥r],gÃ¥r).      %%  (nÃ¥r gÃ¥r) 
+compword(nÃ¥rmÃ¥,[jeg],jeg).     %% Ad Hoc 
 
-% når
+% nÃ¥r
 
     xcompword(o,['/'],over). 
     xcompword(o,['.',l,'.'],etc). 
@@ -4096,7 +4098,7 @@ compword(o,['.',lignende],etc).
 
 compword(ofte,[fullt],fullt).   %% Ad Hoc, fedup
 compword(ofte,[i,timen],ofte). 
-compword(ofte,[og,når],ofte).
+compword(ofte,[og,nÃ¥r],ofte).
 
 compword(o,[hoi],hei). 
 
@@ -4110,26 +4112,26 @@ compword(o,[hoi],hei).
                       
 %%%%     xcompword(og,[der],og). %% Too rough 
     xcompword(og,[hit],hit).   
-    xcompword(og,[vil,være,i],til).   
-compword(og,[fremme],før). %% no pardon 
+    xcompword(og,[vil,vÃ¦re,i],til).   
+compword(og,[fremme],fÃ¸r). %% no pardon 
 
 compword(og,[er,ved],til). 
 
     xcompword(og,[jeg,drar,fra],fra). 
     xcompword(og,[mellom],mellom). 
-    xcompword(og,[skal,være,der,før],før). 
-    xcompword(og,[skal,være,fram,på],til). 
-    xcompword(og,[skal,være,framme,på],til).  
-    xcompword(og,[skal,være,frem,på],til). 
-    xcompword(og,[skal,være,fremme,på],til). 
-%%     xcompword(og,[så],og). %% []). %% også -> []     %% .. skal jeg til
-    xcompword(og,[sånt],[]).
-    xcompword(og,[vil,være,der,før],før).  
+    xcompword(og,[skal,vÃ¦re,der,fÃ¸r],fÃ¸r). 
+    xcompword(og,[skal,vÃ¦re,fram,pÃ¥],til). 
+    xcompword(og,[skal,vÃ¦re,framme,pÃ¥],til).  
+    xcompword(og,[skal,vÃ¦re,frem,pÃ¥],til). 
+    xcompword(og,[skal,vÃ¦re,fremme,pÃ¥],til). 
+%%     xcompword(og,[sÃ¥],og). %% []). %% ogsÃ¥ -> []     %% .. skal jeg til
+    xcompword(og,[sÃ¥nt],[]).
+    xcompword(og,[vil,vÃ¦re,der,fÃ¸r],fÃ¸r).  
 
-    xcompword(og,[være,der,kl],før).
-    xcompword(og,[være,der,senest],før). 
-    xcompword(og,[være,framme,senest],før). 
-    xcompword(og,[være,fremme,senest],før). %%  in case incomplete sentence
+    xcompword(og,[vÃ¦re,der,kl],fÃ¸r).
+    xcompword(og,[vÃ¦re,der,senest],fÃ¸r). 
+    xcompword(og,[vÃ¦re,framme,senest],fÃ¸r). 
+    xcompword(og,[vÃ¦re,fremme,senest],fÃ¸r). %%  in case incomplete sentence
 
 compword(og,[lignende],etc).
 
@@ -4142,7 +4144,7 @@ compword(og,[bare],og).
 %% compword(og,[den],som). 
 compword(og,[er,i],til).  
 compword(og,[etter],etter).   
-compword(og,[før],før).         %% 
+compword(og,[fÃ¸r],fÃ¸r).         %% 
 compword(og,[hjem],hjem).  
 compword(og,[inn,te],til). 
 compword(og,[inn,til],til). 
@@ -4151,44 +4153,44 @@ compword(og,[jeg,er,i],fra). %% Rough
 %            compword(og,[kommer,til],til). 
 compword(og,[lignende],[]). 
 compword(og,[mot], mot). 
-compword(og,[mot,kl], før).          %% .. kl
+compword(og,[mot,kl], fÃ¸r).          %% .. kl
 compword(og,[ned,til],til).   
-%% compword(og,[nærmest,mulig],til). 
-compword(og,[når,er,den,ved],til). 
-compword(og,[når,er,den,på],til).  
-compword(og,[når,er,den,da,på],til). %% ad hoc 
-compword(og,[når,går,den],går). 
-compword(og,[når,den,er,i],til).      %% Experiment
-%% compword(og,[når,må,jeg,ta,den],[]).   
+%% compword(og,[nÃ¦rmest,mulig],til). 
+compword(og,[nÃ¥r,er,den,ved],til). 
+compword(og,[nÃ¥r,er,den,pÃ¥],til).  
+compword(og,[nÃ¥r,er,den,da,pÃ¥],til). %% ad hoc 
+compword(og,[nÃ¥r,gÃ¥r,den],gÃ¥r). 
+compword(og,[nÃ¥r,den,er,i],til).      %% Experiment
+%% compword(og,[nÃ¥r,mÃ¥,jeg,ta,den],[]).   
 compword(og,[opp,til],til).  
 compword(og,[oppover,til],til). 
-    compword(å,[oppover,til],til). 
+    compword(Ã¥,[oppover,til],til). 
 
 compword(og,[passering],forbi).    
 compword(og,[retur],tilbake).  
 
-%% compword(og,[skal],til).  %% (og skal) til  være *         
-%% compword(og,[som],til).   %% og som går til 
+%% compword(og,[skal],til).  %% (og skal) til  vÃ¦re *         
+%% compword(og,[som],til).   %% og som gÃ¥r til 
 
-%% compword(og,[så],[]).   %% også %% (destructive)
+%% compword(og,[sÃ¥],[]).   %% ogsÃ¥ %% (destructive)
 
-compword(og,[såtil],og). 
+compword(og,[sÃ¥til],og). 
 %%      xcompword(og,[til],til).  %% Haz, try without 
 compword(og,[tilbake],tilbake). 
 compword(og,[ut,kvelden],ikveld). 
 
 compword(og,[utover],[]).            %% Rough   
-compword(og,[utåver],[]).  %% nec %%  (nofunk synword)
+compword(og,[utÃ¥ver],[]).  %% nec %%  (nofunk synword)
 
-compword(og,[være, framme,klokka],før). 
-compword(og,[være, fremme,på],til).  %% Xservice
-compword(og,[være, fremme,ved],til). %% Xservice 
-compword(og,[være, ved],til).        %%
-compword(og,[være,på],til). 
-compword(og,[å,være,på],til).  
+compword(og,[vÃ¦re, framme,klokka],fÃ¸r). 
+compword(og,[vÃ¦re, fremme,pÃ¥],til).  %% Xservice
+compword(og,[vÃ¦re, fremme,ved],til). %% Xservice 
+compword(og,[vÃ¦re, ved],til).        %%
+compword(og,[vÃ¦re,pÃ¥],til). 
+compword(og,[Ã¥,vÃ¦re,pÃ¥],til).  
 
    xcompword(ok,[men],[]). %% grums %%  ?
-   xcompword(ok,[så],[]).  %% TA-110629
+   xcompword(ok,[sÃ¥],[]).  %% TA-110629
 
 compword(om,[ca],om).
 compword(om,[cirka],om).
@@ -4198,33 +4200,33 @@ compword(om,[f,'.',eks,'.'],om).
 %% compword(om,[for],for). 
 
 
-compword(om,[man,vil,være,på],til).   %% Ad Hoc, om trøbbel 
+compword(om,[man,vil,vÃ¦re,pÃ¥],til).   %% Ad Hoc, om trÃ¸bbel 
 compword(om,[mellom],mellom).         %%  om /morgenen/ mellom
-    xcompword(om,[må,være,på],til).   
+    xcompword(om,[mÃ¥,vÃ¦re,pÃ¥],til).   
     xcompword(om,[noe,fra],om). 
     xcompword(om,[mulig],redundant0). 
 
 
-compword(om,[nær],når).   
+compword(om,[nÃ¦r],nÃ¥r).   
 compword(om,[fra],om). %% morgenen  repair
 
     xcompword(om,[mulig],redundant0).
 
-%% xcompword(om,[når],når).  %%     jeg har opplysninger om når toget kommer
-              %% \=  jeg har opplysninger når toget kommer
+%% xcompword(om,[nÃ¥r],nÃ¥r).  %%     jeg har opplysninger om nÃ¥r toget kommer
+              %% \=  jeg har opplysninger nÃ¥r toget kommer
 
 
-%% compword(om,[når],om).               %% varsel om når \= om 
+%% compword(om,[nÃ¥r],om).               %% varsel om nÃ¥r \= om 
 
 compword(omkring,[halv],halv). 
 
-   xcompword(områder,[i,nærheten,av],nær). %% 
-   xcompword(områder,[nærheten,av],nær).   %% actual
+   xcompword(omrÃ¥der,[i,nÃ¦rheten,av],nÃ¦r). %% 
+   xcompword(omrÃ¥der,[nÃ¦rheten,av],nÃ¦r).   %% actual
 
 compword(om,[trent],ca). 
-  %% compword(om,[å,gjøre],viktig). %% har AIS noen ønsker om å gjøre 
+  %% compword(om,[Ã¥,gjÃ¸re],viktig). %% har AIS noen Ã¸nsker om Ã¥ gjÃ¸re 
 compword(ombord,[i],i). 
-compword(områder,[nær],nær). 
+compword(omrÃ¥der,[nÃ¦r],nÃ¦r). 
 compword(omtrent,[samtidig],samtidig). %% [] ?   
 compword(omtrent,[som],som).   
 compword(omtrent,[til],til).  
@@ -4233,7 +4235,7 @@ compword(opp,[i],til).
 compword(opp,[igjen],tilbake). %% igjen not noisew 
 compword(opp,[med],med). 
 compword(opp,[til,opp,i],til).        %% Repair 
-compword(oppe,[på],på). 
+compword(oppe,[pÃ¥],pÃ¥). 
 
 compword(oppfordre,[til],anbefale).   %% ad hoc
 compword(oppfordrer,[til],anbefaler).
@@ -4247,25 +4249,25 @@ compword(oss,[begge],oss).       %% Rough
 %% compword(oss,[i],[]). %% Lingit  %% Rough : * Dere hadde oss i tankene
                          %% i praksis, destruktiv 
 
-%% compword(overgang,[til],til). %% Rough når er overgang til 
+%% compword(overgang,[til],til). %% Rough nÃ¥r er overgang til 
     xcompword(over,[i,morgen],overimorgen). %% TA-110401
 compword(over,[morgen],overimorgen). %% TA-110401
 compword(over,[hodet],[]).
-compword(over,[på],på).     
+compword(over,[pÃ¥],pÃ¥).     
 compword(over,[sikt],oversikt). 
 
 compword(overgangs,[billett],overgangsbillett). 
 compword(overgangs,[bilett],overgangsbillett). 
-compword(p,['¬',ø],     på).%%  p¬Ö l©ªrdag?  
-compword(p,[ø],     på).
+compword(p,['Â¬',Ã¸],     pÃ¥).%%  pÂ¬Ã– lÂ©Âªrdag?  
+compword(p,[Ã¸],     pÃ¥).
 
 compword(p,[m], ettermiddag).
-compword(p,[å], på).   %%  Trouble with å 
+compword(p,[Ã¥], pÃ¥).   %%  Trouble with Ã¥ 
 compword(pas,[serer],passerer). 
 
-compword(passer,[det,best,å,ta],passer). %%  Lazy
-compword(passer,[best,å,ta],passer).     %%
-compword(passer,[det,best,for,meg,å,ta],passer).   %%  Lazy
+compword(passer,[det,best,Ã¥,ta],passer). %%  Lazy
+compword(passer,[best,Ã¥,ta],passer).     %%
+compword(passer,[det,best,for,meg,Ã¥,ta],passer).   %%  Lazy
 
 %% compword(passer,[til],passerer). %% 
 
@@ -4274,66 +4276,66 @@ compword(per,[dags,dato],idag).
 compword(pinse,[dag],pinsedag).   
 %% compword(prof,['.'],professor).    %% \+ nodotflag ???
 
-compword(prøve,[med],prøve).  
+compword(prÃ¸ve,[med],prÃ¸ve).  
 
 
-compword(på,[at],at).   
-compword(på,[best,mulig,måte],[]). 
+compword(pÃ¥,[at],at).   
+compword(pÃ¥,[best,mulig,mÃ¥te],[]). 
 
-    xcompword(på,[ca],på). 
+    xcompword(pÃ¥,[ca],pÃ¥). 
 
-%%%    xcompword(på,[der],der).             %% Hazard 
-%% compword(på,[etter],etter). %% repair %% hvilken holdeplass stopper bussen på etter åsveien
-compword(på,[for],for).              %% repair
-compword(på,[fra],fra).              %% repair 
-compword(på,[før],på).               %% ?  
-compword(på,[grunn,av],pga).             %%  Technical
-compword(på,[is],ned).               %% lagt på is
-    xcompword(på,[kort,sikt],snart).
-    xcompword(på,[ordentlig],[]).
-    xcompword(på,[orntlig],[]).       %% :-)
-    xcompword(på,[onkli],[]).         %% :-)
-%%  compword(på,[i],på).         %% på= i ?
-   xcompword(på,[i],i).          %%  Repair 
-compword(på,[idag],idag).    %% repair 
+%%%    xcompword(pÃ¥,[der],der).             %% Hazard 
+%% compword(pÃ¥,[etter],etter). %% repair %% hvilken holdeplass stopper bussen pÃ¥ etter Ã¥sveien
+compword(pÃ¥,[for],for).              %% repair
+compword(pÃ¥,[fra],fra).              %% repair 
+compword(pÃ¥,[fÃ¸r],pÃ¥).               %% ?  
+compword(pÃ¥,[grunn,av],pga).             %%  Technical
+compword(pÃ¥,[is],ned).               %% lagt pÃ¥ is
+    xcompword(pÃ¥,[kort,sikt],snart).
+    xcompword(pÃ¥,[ordentlig],[]).
+    xcompword(pÃ¥,[orntlig],[]).       %% :-)
+    xcompword(pÃ¥,[onkli],[]).         %% :-)
+%%  compword(pÃ¥,[i],pÃ¥).         %% pÃ¥= i ?
+   xcompword(pÃ¥,[i],i).          %%  Repair 
+compword(pÃ¥,[idag],idag).    %% repair 
 
-    xcompword(på,[is],ned). %% FOS lagt .. 
+    xcompword(pÃ¥,[is],ned). %% FOS lagt .. 
 
-compword(på,[jeg,ta],går).   %% må jeg ta 
-    xcompword(på,[kl],klokken).     %%  repair 
-    xcompword(på,[klokka],klokken). %%
-compword(på,[kortest,mulig,tid],snarest). 
+compword(pÃ¥,[jeg,ta],gÃ¥r).   %% mÃ¥ jeg ta 
+    xcompword(pÃ¥,[kl],klokken).     %%  repair 
+    xcompword(pÃ¥,[klokka],klokken). %%
+compword(pÃ¥,[kortest,mulig,tid],snarest). 
 
-compword(på,[kl],klokken).       %% Hva er snareste måte å til nth på kl
-    xcompword(på,[kl,'.'],klokken). 
-compword(på,[klokken],klokken).
+compword(pÃ¥,[kl],klokken).       %% Hva er snareste mÃ¥te Ã¥ til nth pÃ¥ kl
+    xcompword(pÃ¥,[kl,'.'],klokken). 
+compword(pÃ¥,[klokken],klokken).
 
-compword(på,[med],med). 
-compword(på,[mindre,enn],innen). 
-compword(på,[når],når). %% svare på når  
-compword(på,[nårti],når). 
-   % compword(på,[på],på).    %%  repair destroys på på på example 
-compword(på,[rundt],rundt).   %%
-compword(på,[siden,av],attmed). %% Techn? beside 
-    xcompword(på,[sikt],heretter). %% TA-110724
+compword(pÃ¥,[med],med). 
+compword(pÃ¥,[mindre,enn],innen). 
+compword(pÃ¥,[nÃ¥r],nÃ¥r). %% svare pÃ¥ nÃ¥r  
+compword(pÃ¥,[nÃ¥rti],nÃ¥r). 
+   % compword(pÃ¥,[pÃ¥],pÃ¥).    %%  repair destroys pÃ¥ pÃ¥ pÃ¥ example 
+compword(pÃ¥,[rundt],rundt).   %%
+compword(pÃ¥,[siden,av],attmed). %% Techn? beside 
+    xcompword(pÃ¥,[sikt],heretter). %% TA-110724
 
-    xcompword(på,[tide],mulig).
+    xcompword(pÃ¥,[tide],mulig).
     xcompword(p,[tur,til],til). 
-compword(på,[til],til).  
-compword(på,[tur,mot],til). 
-compword(på,[tur,via],fra). 
-compword(på,[tur,t],til). 
-    xcompword(på,[tur,til],til). 
+compword(pÃ¥,[til],til).  
+compword(pÃ¥,[tur,mot],til). 
+compword(pÃ¥,[tur,via],fra). 
+compword(pÃ¥,[tur,t],til). 
+    xcompword(pÃ¥,[tur,til],til). 
 
 
-compword(på,[v],ved).       %%  repair
-    xcompword(på,[ved],ved).    
-compword(på,[vei,mot],til). 
-compword(på,[vei,til],til). % also gn
+compword(pÃ¥,[v],ved).       %%  repair
+    xcompword(pÃ¥,[ved],ved).    
+compword(pÃ¥,[vei,mot],til). 
+compword(pÃ¥,[vei,til],til). % also gn
 
-compword(påske,[rute],påskerute). 
-compword(påske,[ruten],påskeruten).
-compword(påske,[ruter],påskeruter).
+compword(pÃ¥ske,[rute],pÃ¥skerute). 
+compword(pÃ¥ske,[ruten],pÃ¥skeruten).
+compword(pÃ¥ske,[ruter],pÃ¥skeruter).
 
 compword(r,[d,lenge,til],[]). %% Rough
    xcompword(rute,[r],ruter).   %% TA-110724
@@ -4343,31 +4345,31 @@ compword(rabatt,[kort],rabattkort).
 compword(raskest,[komme],komme).   
 compword(raskest,[mulig],[]).       %% (implic) 
 
-compword(raskeste,[måte],[]).  
+compword(raskeste,[mÃ¥te],[]).  
     xcompword(raskeste,[reise],rute).  %%  TA-100805?
     xcompword(raskeste,[vei],rute). 
-    xcompword(regne,[med,å],[]). 
-compword(regner,[med,å],[]).
+    xcompword(regne,[med,Ã¥],[]). 
+compword(regner,[med,Ã¥],[]).
 
 compword(regne,[med,at],anta ).  
 compword(regner,[med,at],antar). 
 compword(regnet,[med,at],antok ).  
-compword(regner,[med,å],[]).  
+compword(regner,[med,Ã¥],[]).  
 
     xcompword(regtop,[eksport], regtoppeksport).
     xcompword(regtopp,[eksport],regtoppeksport).
     xcompword(regtop,['-',eksport], regtoppeksport). %% //- noisew now
     xcompword(regtopp,['-',eksport],regtoppeksport). %% ad hoc
 
-compword(rekke,[å],kan). 
-compword(rekker,[å],kan). 
+compword(rekke,[Ã¥],kan). 
+compword(rekker,[Ã¥],kan). 
 
 compword(rei,[gjerne,reise],reise). %% disrupt
 compword(rei,[reise],reise). 
 
 compword(reise,[forbindelse],forbindelse). 
 compword(reise,[klokka],etter).               %% rough
-compword(reise,[måte],reisemåte).  
+compword(reise,[mÃ¥te],reisemÃ¥te).  
 
 compword(resten,[av,dagen],heretter).  
 compword(resten,[av],etter).  %% rough %% .. kvelden
@@ -4375,26 +4377,26 @@ compword(resten,[av],etter).  %% rough %% .. kvelden
 %% compword(resten,[av],[]). %% resten av livet ....
 
 compword(retning,[nord], nordover).
-compword(retning,[syd],  sørover).
-compword(retning,[sør],  sørover).
+compword(retning,[syd],  sÃ¸rover).
+compword(retning,[sÃ¸r],  sÃ¸rover).
 compword(retning,[vest], vestover).
-compword(retning,[øst],  østover).
+compword(retning,[Ã¸st],  Ã¸stover).
 
 compword(rett,[etter],etter).
-compword(rett,[for],før).   %% rett ikke noise (rett og slett)
+compword(rett,[for],fÃ¸r).   %% rett ikke noise (rett og slett)
 compword(rett,[forbi],forbi). 
 compword(rett,[fra],fra). 
-compword(rett,[før],før). 
+compword(rett,[fÃ¸r],fÃ¸r). 
 compword(rett,[og,slett],[]).
 compword(rett,[til],til). 
 
 compword(rett,[vest],vestover). %% :-)
-compword(rett,[øst],østover). 
+compword(rett,[Ã¸st],Ã¸stover). 
 compword(rett,[nord],nordover). 
-compword(rett,[syd],sørover). 
-compword(rett,[sør],nordover). 
+compword(rett,[syd],sÃ¸rover). 
+compword(rett,[sÃ¸r],nordover). 
 
-compword(rette,[før],før). %% ?
+compword(rette,[fÃ¸r],fÃ¸r). %% ?
 compword(rette,[etter],etter).
 
     xcompword(riktig,[god],god). 
@@ -4403,7 +4405,7 @@ compword(rom,[jul],romjula).
 compword(rom,[jula],romjula).
 compword(rom,[julen],romjula).
 
-compword(rukket,[å],[]).  
+compword(rukket,[Ã¥],[]).  
 
 compword(rukket,[opp],reist). %% etc
 
@@ -4412,7 +4414,7 @@ compword(rundt,[i],i).
 compword(rundt,[og,rundt],[]). %%  :-)
 compword(rundt,[om,i],i).      %% TA-110506
 compword(rundt,[omkring,i],i). 
-compword(rundt,[på],på).   
+compword(rundt,[pÃ¥],pÃ¥).   
 compword(rush,[trafikk],rushtrafikk). 
 compword(rush,[tid],rushtrafikk). 
 compword(rute,[buss],buss).    
@@ -4439,7 +4441,7 @@ compword(rutetider,[rute],buss).  %% etc
     compword(rutatider,[buss],buss). 
 
 
-%¤S
+%Â¤S
 
     xcompword(s,[enter],senter).   
     xcompword(s,[enteret],senteret). %% nec for nardo s enteret
@@ -4448,7 +4450,7 @@ compword(rutetider,[rute],buss).  %% etc
     xcompword(sentere, [t],senteret).%%  (busdat?)
 
 compword(s,[gate],gate).   
-compword(s,[ndag],søndag).  %% s;ndag 
+compword(s,[ndag],sÃ¸ndag).  %% s;ndag 
 
     xcompword(s,[om],som). 
 
@@ -4462,8 +4464,8 @@ compword(sentrum,[bussen],bussen).  %% Rough
 compword(sentrums,[bussen],bussen). %%
 compword(sentrum,[sentrum],sentrum). 
 %% xcompword(si,[alle,tidene,som],[]). %% Rough
-    xcompword(si,[alle,tidene],[]). %% ... buss 5 går             
-compword(si,[det],snakke).                 %%  si det sånn 
+    xcompword(si,[alle,tidene],[]). %% ... buss 5 gÃ¥r             
+compword(si,[det],snakke).                 %%  si det sÃ¥nn 
 compword(si,[det,en,gang,til],gjenta).   
 compword(sim,[kort],simkort).     %% TA-110707
 compword(sim,[kortet],simkortet). %%
@@ -4475,135 +4477,135 @@ compword(sikkert,[ikke],ikke).
 %% compword(sikre,[seg],motta).
 %% compword(sikre,[deg],motta). 
 
-compword(sitte,[på,med],ta). 
+compword(sitte,[pÃ¥,med],ta). 
 compword(sier,[fra],varsler).  
-compword(sjekke,[det,opp],undersøke). %% det ?
+compword(sjekke,[det,opp],undersÃ¸ke). %% det ?
 
-compword(skal,[jeg,med],går). 
-    xcompword(skal,[jeg,når,jeg,skal],skal). 
+compword(skal,[jeg,med],gÃ¥r). 
+    xcompword(skal,[jeg,nÃ¥r,jeg,skal],skal). 
     xcompword(skal,[vil],vil). %% repair 
 
     xcompword(skal,[fra],forlater).  
 %%     xcompword(skal,[i],ankommer).    %%  rough skal i fremtiden... 
-    xcompword(skal,[på],ankommer).      %%
+    xcompword(skal,[pÃ¥],ankommer).      %%
 
     xcompword(skal,[til],ankommer).     %% 
-    xcompword(skal,[av,på],ankommer).   %% TA-110629 Haz
+    xcompword(skal,[av,pÃ¥],ankommer).   %% TA-110629 Haz
 
     xcompword(skal,[innover,til],ankommer).     %% ad hoc 
     xcompword(skal,[utover,til],ankommer).      %% 
 
-%%%     xcompword(skal,[være,i],ankommer).  %% ... i orden 
-    xcompword(skal,[være,på],ankommer). %% 
+%%%     xcompword(skal,[vÃ¦re,i],ankommer).  %% ... i orden 
+    xcompword(skal,[vÃ¦re,pÃ¥],ankommer). %% 
  
     xcompword(skal,[vare,i],ankommer).  %% splitword impossible
-    xcompword(skal,[vare,på],ankommer). 
+    xcompword(skal,[vare,pÃ¥],ankommer). 
 
-compword(skal,[være,der],før). %% presume jeg skal være der %	 ...hvis
-    compword(skal,[være,der,til],før). %% Haz \+x % du * skal være der til 9 : 0 . 
+compword(skal,[vÃ¦re,der],fÃ¸r). %% presume jeg skal vÃ¦re der %	 ...hvis
+    compword(skal,[vÃ¦re,der,til],fÃ¸r). %% Haz \+x % du * skal vÃ¦re der til 9 : 0 . 
 
-compword(skal,[være,framme],før).  
-compword(skal,[være,fremme],før). 
+compword(skal,[vÃ¦re,framme],fÃ¸r).  
+compword(skal,[vÃ¦re,fremme],fÃ¸r). 
 
-%% compword(skal,[være],ankommer). %% Haz 
+%% compword(skal,[vÃ¦re],ankommer). %% Haz 
 
     xcompword(skole,[buss],skolebuss).
     xcompword(skole,[bussen],skolebussen).
 
 compword(skjer,[a],hjelp). %%  #-> hva skjer
 
-compword(skjær,[torsdag],skjærtorsdag).  
+compword(skjÃ¦r,[torsdag],skjÃ¦rtorsdag).  
 compword(skriv,[inn],skriv).                  %%  Lazy
 compword(slapper,[av],hviler).  
 compword(slett,[ikke],ikke).           
 
-    xcompword(slik,[ut],således).  %%  adverb
-    xcompword(sånn,[ut],således).  %% TA-110130  
+    xcompword(slik,[ut],sÃ¥ledes).  %%  adverb
+    xcompword(sÃ¥nn,[ut],sÃ¥ledes).  %% TA-110130  
 
-    xcompword(ut,[slik],således).  %%  adverb
+    xcompword(ut,[slik],sÃ¥ledes).  %%  adverb
 
     xcompword(slik, [som],[]).  
     xcompword(slike,[som],[]).   %% ... dette
     xcompword(slikt,[som],[]).   %% 
 
-    xcompword(omtrent,[slik,ut],således).  %%  # 
-    xcompword(ut,[omtrent,slik],således).  %%  # 
+    xcompword(omtrent,[slik,ut],sÃ¥ledes).  %%  # 
+    xcompword(ut,[omtrent,slik],sÃ¥ledes).  %%  # 
 
 
-compword(slik,[at,jeg,ankommer],før).  
-    xcompword(slik,[at,jeg,er,der,før],før). 
-    xcompword(slik,[at,jeg,er,der,til],før).
+compword(slik,[at,jeg,ankommer],fÃ¸r).  
+    xcompword(slik,[at,jeg,er,der,fÃ¸r],fÃ¸r). 
+    xcompword(slik,[at,jeg,er,der,til],fÃ¸r).
 
-compword(slik,[at,jeg,er,der],før).  %% x is Haz 
+compword(slik,[at,jeg,er,der],fÃ¸r).  %% x is Haz 
 
-compword(slik,[at,jeg,er,framme,før],før). 
-    xcompword(slik,[at,jeg,er,fremme,ør],før).   
-compword(slik,[at,jeg,er,framme],før).   
-compword(slik,[at,jeg,er,fremme],før). 
-    xcompword(slik,[at,jeg,er,på],til). 
+compword(slik,[at,jeg,er,framme,fÃ¸r],fÃ¸r). 
+    xcompword(slik,[at,jeg,er,fremme,Ã¸r],fÃ¸r).   
+compword(slik,[at,jeg,er,framme],fÃ¸r).   
+compword(slik,[at,jeg,er,fremme],fÃ¸r). 
+    xcompword(slik,[at,jeg,er,pÃ¥],til). 
     xcompword(slik,[at,jeg,er,i],til).   
 
-compword(slik,[er,fremme], før).  
+compword(slik,[er,fremme], fÃ¸r).  
 
-compword(slik,[å,forstå],slik).
+compword(slik,[Ã¥,forstÃ¥],slik).
 
-compword(slipp,[på],tillate).    %% dial 
-compword(slippe,[på],tillate).   %% allow , rough 
+compword(slipp,[pÃ¥],tillate).    %% dial 
+compword(slippe,[pÃ¥],tillate).   %% allow , rough 
 compword(slippe,[inn],tillate).  %%
 
 %% To handle misformed relative clauses ( go to X which arrives before Y)
 %% To be removed if they cause trouble 
 
-compword(slutte,[med],slutte). %% å røyke  (uniqe for slutte)\+ x 
+compword(slutte,[med],slutte). %% Ã¥ rÃ¸yke  (uniqe for slutte)\+ x 
 compword(slutter,[med],slutter). 
 
-compword(slutte,[me],slutte). %% å røyke  (uniqe for slutte)\+ x 
+compword(slutte,[me],slutte). %% Ã¥ rÃ¸yke  (uniqe for slutte)\+ x 
 compword(slutter,[me],slutter). 
 
-compword(so,[mgår],[]).  %% if sp, anything goes
+compword(so,[mgÃ¥r],[]).  %% if sp, anything goes
 
     compword(som,[man,kan,se],redundant0).  
 
-compword(som,[ankommer],før).   
+compword(som,[ankommer],fÃ¸r).   
 
     compword(som,[det,er],[]). %% Haz %%  brukes ..
 
-compword(som,[er,der,før],før).  
-compword(som,[er,der,til],før).       %% 
+compword(som,[er,der,fÃ¸r],fÃ¸r).  
+compword(som,[er,der,til],fÃ¸r).       %% 
 
-    xcompword(som,[er,fram,før],før).      %%   1.
-    xcompword(som,[er,fram,kl],før). 
+    xcompword(som,[er,fram,fÃ¸r],fÃ¸r).      %%   1.
+    xcompword(som,[er,fram,kl],fÃ¸r). 
 %%%%         xcompword(som,[er,fram],ankommer). %% Touchy %%    2. 
-    xcompword(som,[er,fram],før). 
+    xcompword(som,[er,fram],fÃ¸r). 
 
     xcompword(som,[er,framme,etter],etter). 
     xcompword(som,[er,fremme,etter],etter). 
-    xcompword(som,[er,framme,før],før).  
-    xcompword(som,[er,fremme,før],før).  
-    xcompword(som,[er,framme,senest],før). 
-    xcompword(som,[er,fremme,senest],før).  
-    xcompword(som,[er,framme,innen],før).  
-    xcompword(som,[er,fremme,innen],før).  
+    xcompword(som,[er,framme,fÃ¸r],fÃ¸r).  
+    xcompword(som,[er,fremme,fÃ¸r],fÃ¸r).  
+    xcompword(som,[er,framme,senest],fÃ¸r). 
+    xcompword(som,[er,fremme,senest],fÃ¸r).  
+    xcompword(som,[er,framme,innen],fÃ¸r).  
+    xcompword(som,[er,fremme,innen],fÃ¸r).  
 
     xcompword(som,[er,framme,tidligst],etter). 
     xcompword(som,[er,fremme,tidligst],etter).  
 
-    xcompword(som,[er,framme,på],til).  
-%%%%%    xcompword(som,[er,framme,til],før).  %% Ambiguous ... 9:35/Tiller
+    xcompword(som,[er,framme,pÃ¥],til).  
+%%%%%    xcompword(som,[er,framme,til],fÃ¸r).  %% Ambiguous ... 9:35/Tiller
     xcompword(som,[er,framme,ved],til). %% grammar handles ambiguity
 
     xcompword(som,[er,framme,i],til). 
 
        xcompword(som,[er,framme,til],til).      %%  til tid/sted????
-    xcompword(som,[er,framme,kl],før).  %% avoid når går  (BUSSEN SOM ER FRAMME) kl
-%%%%%%%%%%%%%%%%%%%%%%%%    xcompword(som,[er,framme,før],før). %% 1. Tricky
-    xcompword(som,[er,fremme,før],før). %% 1. Tricky
-    xcompword(som,[er,fremme,til],før). 
-    xcompword(som,[er,fremme,på],til).  %%
+    xcompword(som,[er,framme,kl],fÃ¸r).  %% avoid nÃ¥r gÃ¥r  (BUSSEN SOM ER FRAMME) kl
+%%%%%%%%%%%%%%%%%%%%%%%%    xcompword(som,[er,framme,fÃ¸r],fÃ¸r). %% 1. Tricky
+    xcompword(som,[er,fremme,fÃ¸r],fÃ¸r). %% 1. Tricky
+    xcompword(som,[er,fremme,til],fÃ¸r). 
+    xcompword(som,[er,fremme,pÃ¥],til).  %%
     xcompword(som,[er,fremme,i],til).  
     xcompword(som,[er,fremme,ved],til).  
-    xcompword(som,[er,framme],før).     %% Last (som er framme på)
-    xcompword(som,[er,fremme],før).     %% Last !!! <---- 
+    xcompword(som,[er,framme],fÃ¸r).     %% Last (som er framme pÃ¥)
+    xcompword(som,[er,fremme],fÃ¸r).     %% Last !!! <---- 
 
     xcompword(som,[er,senest,fremme,ved],til). %% seinest/framme etc  Ad Hoc
 
@@ -4611,11 +4613,11 @@ compword(som,[er,der,til],før).       %%
 
 %% compword(som,[er,i],til).             %% buss til A som er i B kl ...
 compword(som,[er,i],til).   %% 
-                                  %% fra munkegata som er på pirterminalen 
-%%     xcompword(som,[er,på],til).   %% NB !! <--- Hazard 
+                                  %% fra munkegata som er pÃ¥ pirterminalen 
+%%     xcompword(som,[er,pÃ¥],til).   %% NB !! <--- Hazard 
 
     xcompword(som,[er,ved],til). %% 
-    xcompword(som,[er,på],til).  %%  Haz ?
+    xcompword(som,[er,pÃ¥],til).  %%  Haz ?
 
     xcompword(som,[f,'.',eks],[]).   %% apposition
     xcompword(som,[f,'.',eks,'.'],[]). 
@@ -4630,29 +4632,29 @@ compword(som,[er,i],til).   %%
     xcompword(som,[for,eksempel],[]).  
 
 
-    xcompword(som,[fremme,før],før).
-compword(som,[fremme],før).   
+    xcompword(som,[fremme,fÃ¸r],fÃ¸r).
+compword(som,[fremme],fÃ¸r).   
 
-compword(som,[går,i],i).  
-compword(som,[går,fra],fra).  
-    xcompword(som,[ikke,er,etter],før). %% Ad Hoc, avoid negations 
+compword(som,[gÃ¥r,i],i).  
+compword(som,[gÃ¥r,fra],fra).  
+    xcompword(som,[ikke,er,etter],fÃ¸r). %% Ad Hoc, avoid negations 
 
     xcompword(som,[mer,ved],til). %% error -> x 
 
 compword(som,[passer,med],slik).      %% .. at 
 compword(som,[passerer],til). 
-    %% compword(som,[på],til). %% .. er .. 
-       xcompword(som,[på],på). %%  på samme tid som på julaften %%	 rough
+    %% compword(som,[pÃ¥],til). %% .. er .. 
+       xcompword(som,[pÃ¥],pÃ¥). %%  pÃ¥ samme tid som pÃ¥ julaften %%	 rough
                                
-compword(som,[erpå],til).   
-compword(som,[her,på],til). %% sp
+compword(som,[erpÃ¥],til).   
+compword(som,[her,pÃ¥],til). %% sp
     xcompword(som,[helst],[]).
 compword(som,[mulig],[]).  
 compword(som,[jeg,sa],[]). 
-compword(som,[skal,være,i],til).  
+compword(som,[skal,vÃ¦re,i],til).  
 compword(som,[til],til).   
 compword(som,[vanlig],presis).   
-compword(som,[verst],mye).   %% snødde .. :-) 
+compword(som,[verst],mye).   %% snÃ¸dde .. :-) 
 
 compword(sommer,[ruta],sommerruten). 
 compword(sommer,[rute],sommerrute).  
@@ -4660,12 +4662,12 @@ compword(sommer,[rutene],sommerrutene).
 compword(sommer,[ruter],sommerruter). 
 compword(sommer,[tider],sommerruter).
 
-    xcompword(spørsmålet,[':'],spørsmålet). 
+    xcompword(spÃ¸rsmÃ¥let,[':'],spÃ¸rsmÃ¥let). 
     xcompword(svaret,[':'],svaret).
 
-    xcompword(spørre,[svar,system],savant).  
-    xcompword(spørre,['/',svar,system],savant). 
-    xcompword(spørre,[system],savant). 
+    xcompword(spÃ¸rre,[svar,system],savant).  
+    xcompword(spÃ¸rre,['/',svar,system],savant). 
+    xcompword(spÃ¸rre,[system],savant). 
 
 
 %% compword(st,['.'],stasjon). 
@@ -4695,89 +4697,89 @@ compword(svarer,[til],ligner).
 compword(svarte,[til],lignet).
 compword(svart,[til],lignet).
 
-%% compword(svare,[på],besvare).     
-   compword(svare,[pay],vite).          %% pÃ¥
-compword(svart,[på],besvart).           %% ad hoc
-compword(søndag,[påske],påskesøndag).  
+%% compword(svare,[pÃ¥],besvare).     
+   compword(svare,[pay],vite).          %% pÃƒÂ¥
+compword(svart,[pÃ¥],besvart).           %% ad hoc
+compword(sÃ¸ndag,[pÃ¥ske],pÃ¥skesÃ¸ndag).  
 
-compword(lørdags,[runde],lørdagsrute). 
-compword(lørdags,[runder],lørdagsrute). 
-compword(lørdags,[rute],lørdagsrute). 
-compword(lørdags,[ruter],lørdagsrute). 
-compword(lørdags,[tur],lørdagsrute). 
-compword(lørdags,[turer],lørdagsrute).  
+compword(lÃ¸rdags,[runde],lÃ¸rdagsrute). 
+compword(lÃ¸rdags,[runder],lÃ¸rdagsrute). 
+compword(lÃ¸rdags,[rute],lÃ¸rdagsrute). 
+compword(lÃ¸rdags,[ruter],lÃ¸rdagsrute). 
+compword(lÃ¸rdags,[tur],lÃ¸rdagsrute). 
+compword(lÃ¸rdags,[turer],lÃ¸rdagsrute).  
 
-compword(søndags,[runde],søndagsrute). 
-compword(søndags,[runder],søndagsrute). 
-compword(søndags,[rute],søndagsrute). 
-compword(søndags,[ruter],søndagsrute). 
-compword(søndags,[tur],søndagsrute). 
-compword(søndags,[turer],søndagsrute). 
+compword(sÃ¸ndags,[runde],sÃ¸ndagsrute). 
+compword(sÃ¸ndags,[runder],sÃ¸ndagsrute). 
+compword(sÃ¸ndags,[rute],sÃ¸ndagsrute). 
+compword(sÃ¸ndags,[ruter],sÃ¸ndagsrute). 
+compword(sÃ¸ndags,[tur],sÃ¸ndagsrute). 
+compword(sÃ¸ndags,[turer],sÃ¸ndagsrute). 
 
-%%     xcompword(så,[skal],skal). %%  skulle/ville ...
-    xcompword(så,[fort,som,mulig],nå). %% buster/avoid item:clock
-    xcompword(så,[langt,vi,kan,se],derfor). %% Lazy %% ad hoc 
+%%     xcompword(sÃ¥,[skal],skal). %%  skulle/ville ...
+    xcompword(sÃ¥,[fort,som,mulig],nÃ¥). %% buster/avoid item:clock
+    xcompword(sÃ¥,[langt,vi,kan,se],derfor). %% Lazy %% ad hoc 
    
-    xcompword(så,[langt,som],hvis). %% så langt som  det er mulig 
+    xcompword(sÃ¥,[langt,som],hvis). %% sÃ¥ langt som  det er mulig 
 
-compword(så,[langt],hittil).   %% så langt har alt gått bra 
-compword(så,[langt],hvis).     %% så langt det er mulig   %%
+compword(sÃ¥,[langt],hittil).   %% sÃ¥ langt har alt gÃ¥tt bra 
+compword(sÃ¥,[langt],hvis).     %% sÃ¥ langt det er mulig   %%
 
-    xcompword(så,[mye,du,vil],ofte).  %%  adv 
-    xcompword(så,[raskt],når). %% sende ruter så snart 
-    xcompword(så,[si],si).     %% så si meg/ du kan så si 
-    xcompword(så,[snart],når). %%
-    xcompword(så,[ta],ta).     %% og så ta
-    xcompword(så,[veldig],[]). %% jeg vil (ikke) s v 
-
-
-compword(så,[bussen,er,i],til).  
-compword(så,[du],du). %% ? %% så du er altså ... 
-compword(så,[er,du,grei],[]). 
-    xcompword(så,[fort,som,mulig],snart).  
-compword(så,[gjerne],[]).             %%  noisew
-
-    xcompword(sa,[jeg,er,der],før). 
-    xcompword(så,[jeg,er,der,til],før). 
-    xcompword(så,[jeg,er,der,før],før).  %% 1
-    xcompword(så,[jeg,er,der],før).      %% 2
-
-compword(så,[jeg,er,framme],før). %% \+ x
-compword(så,[jeg,er,på],til). 
-   compword(say,[jeg,er,pay],til).    %% å-tøbbel 
-compword(så,[jeg,er,senest,i],til).   %% rough   
-compword(så,[jeg,er,ved],til).  
-   xcompword(så,[jeg,er,framme,på],til). 
-   xcompword(så,[jeg,er,framme,før],før).  
+    xcompword(sÃ¥,[mye,du,vil],ofte).  %%  adv 
+    xcompword(sÃ¥,[raskt],nÃ¥r). %% sende ruter sÃ¥ snart 
+    xcompword(sÃ¥,[si],si).     %% sÃ¥ si meg/ du kan sÃ¥ si 
+    xcompword(sÃ¥,[snart],nÃ¥r). %%
+    xcompword(sÃ¥,[ta],ta).     %% og sÃ¥ ta
+    xcompword(sÃ¥,[veldig],[]). %% jeg vil (ikke) s v 
 
 
-compword(så,[jeg,rekker,å,være,i],til). 
-compword(så,[jeg,rekker,å,være,på],til).
-compword(så,[jeg,ankommer],før).   
-compword(så,[jeg,er,i],til). 
-compword(så,[klart],[]).  
-compword(så,[langt],[]).  %% ? da skal du få slippe å busse til heimdal. så langt   
+compword(sÃ¥,[bussen,er,i],til).  
+compword(sÃ¥,[du],du). %% ? %% sÃ¥ du er altsÃ¥ ... 
+compword(sÃ¥,[er,du,grei],[]). 
+    xcompword(sÃ¥,[fort,som,mulig],snart).  
+compword(sÃ¥,[gjerne],[]).             %%  noisew
 
-    xcompword(så,[lenge,som],mens). %% TA-110309
-    xcompword(så,[lenge],mens).     %% 
+    xcompword(sa,[jeg,er,der],fÃ¸r). 
+    xcompword(sÃ¥,[jeg,er,der,til],fÃ¸r). 
+    xcompword(sÃ¥,[jeg,er,der,fÃ¸r],fÃ¸r).  %% 1
+    xcompword(sÃ¥,[jeg,er,der],fÃ¸r).      %% 2
 
-compword(så,[man,er,framme],før). 
-compword(så,[man,er,fremme],før).
-%%%%    xcompword(så,[mye],mye).  %% destroys så mye som mulig.
-compword(så,[nære],nær).              %% (før?)
-compword(så,[nære,som,mulig],før).        
-compword(så,[vi,er,i],til).  
-compword(så,[vi,er,fremme],før).  %% place?
-compword(så,[vi,er,der],før).     %%
+compword(sÃ¥,[jeg,er,framme],fÃ¸r). %% \+ x
+compword(sÃ¥,[jeg,er,pÃ¥],til). 
+   compword(say,[jeg,er,pay],til).    %% Ã¥-tÃ¸bbel 
+compword(sÃ¥,[jeg,er,senest,i],til).   %% rough   
+compword(sÃ¥,[jeg,er,ved],til).  
+   xcompword(sÃ¥,[jeg,er,framme,pÃ¥],til). 
+   xcompword(sÃ¥,[jeg,er,framme,fÃ¸r],fÃ¸r).  
 
-    xcompword(så,[vidt,jeg,vet],redundant0).
-    xcompword(såvidt,[jeg,vet],redundant0).
 
-compword(sånn,[at,ankomst,er],[]). 
-compword(sånn,[ca],[]). 
-compword(sånn,[cirka],[]).
-compword(sånn,[jeg,er,til],til). 
-compword(sånn,[ved],ved).   %% .. tolv tiden
+compword(sÃ¥,[jeg,rekker,Ã¥,vÃ¦re,i],til). 
+compword(sÃ¥,[jeg,rekker,Ã¥,vÃ¦re,pÃ¥],til).
+compword(sÃ¥,[jeg,ankommer],fÃ¸r).   
+compword(sÃ¥,[jeg,er,i],til). 
+compword(sÃ¥,[klart],[]).  
+compword(sÃ¥,[langt],[]).  %% ? da skal du fÃ¥ slippe Ã¥ busse til heimdal. sÃ¥ langt   
+
+    xcompword(sÃ¥,[lenge,som],mens). %% TA-110309
+    xcompword(sÃ¥,[lenge],mens).     %% 
+
+compword(sÃ¥,[man,er,framme],fÃ¸r). 
+compword(sÃ¥,[man,er,fremme],fÃ¸r).
+%%%%    xcompword(sÃ¥,[mye],mye).  %% destroys sÃ¥ mye som mulig.
+compword(sÃ¥,[nÃ¦re],nÃ¦r).              %% (fÃ¸r?)
+compword(sÃ¥,[nÃ¦re,som,mulig],fÃ¸r).        
+compword(sÃ¥,[vi,er,i],til).  
+compword(sÃ¥,[vi,er,fremme],fÃ¸r).  %% place?
+compword(sÃ¥,[vi,er,der],fÃ¸r).     %%
+
+    xcompword(sÃ¥,[vidt,jeg,vet],redundant0).
+    xcompword(sÃ¥vidt,[jeg,vet],redundant0).
+
+compword(sÃ¥nn,[at,ankomst,er],[]). 
+compword(sÃ¥nn,[ca],[]). 
+compword(sÃ¥nn,[cirka],[]).
+compword(sÃ¥nn,[jeg,er,til],til). 
+compword(sÃ¥nn,[ved],ved).   %% .. tolv tiden
 
     xcompword(samfundet,[1],studentersamfundet_1). 
     xcompword(samfundet,[2],studentersamfundet_2). 
@@ -4791,7 +4793,7 @@ compword(trondheim,[taxi],taxi).
     xcompword(trondheim,[buss],buss).    %% etc
     xcompword(trondheim,[rutebil],buss). %% 
 
-compword(trøndersk,[dialekt],dialekt). %% rough 
+compword(trÃ¸ndersk,[dialekt],dialekt). %% rough 
 
 compword(sankt,[hans],sankthans). 
 compword(sankthans,[aften],midsummer_eve). 
@@ -4804,12 +4806,12 @@ compword(sankthans,[dag],midsummer_day).
 
 compword(snilt,[av,deg],snilt).
 
-compword(spø,[rre],spørre). %%  ?
+compword(spÃ¸,[rre],spÃ¸rre). %%  ?
 
-compword(sønda,[g],søndag). 
+compword(sÃ¸nda,[g],sÃ¸ndag). 
 
-    xcompword(sørg,[for],besørg).  
-    xcompword(sørge,[for],besørge). %% ensure
+    xcompword(sÃ¸rg,[for],besÃ¸rg).  
+    xcompword(sÃ¸rge,[for],besÃ¸rge). %% ensure
 
   xcompword(t,[bane,rute],tbane).  %% 
    xcompword(t,[bane,ruter],tbane). %% 
@@ -4822,10 +4824,10 @@ compword(sønda,[g],søndag).
 
 
 
-compword(t,[o,m],før).
-compword(t,[o,m,'.'],før).      
-compword(t,['.',o,'.',m],før).     
-compword(t,['.',o,'.',m,'.'],før).   
+compword(t,[o,m],fÃ¸r).
+compword(t,[o,m,'.'],fÃ¸r).      
+compword(t,['.',o,'.',m],fÃ¸r).     
+compword(t,['.',o,'.',m,'.'],fÃ¸r).   
     xcompword(t,[kort],tkort).  
     xcompword(t,[':',kort],tkort). 
 
@@ -4840,12 +4842,12 @@ compword(tvers,[over],ved). %% TA-101116 .. veien
 %% TA-101207
     xcompword(tre,[i,kraft],starte).     %%
     xcompword(trer,[i,kraft],starter).   %%
-    xcompword(trådd,[i,kraft],startet).  %%
-    xcompword(trådde,[i,kraft],startet). %%
+    xcompword(trÃ¥dd,[i,kraft],startet).  %%
+    xcompword(trÃ¥dde,[i,kraft],startet). %%
 
 
 %% compword(ta,[fra],forlate). %%  hvilken buss skal ta fra nth.? 
-%% hvilken buss må jeg ta fra angelltrøa
+%% hvilken buss mÃ¥ jeg ta fra angelltrÃ¸a
 
 compword(ta,[hvilke],ta). 
 compword(ta,[hvilken],ta).
@@ -4854,32 +4856,32 @@ compword(ta,[hvilket],ta).
 compword(ta,[i,bruk],bruke). 
 %% compword(ta,[i],[]).               %% tak i 
 
-compword(ta,[jeg],ta). %% ??? når må jeg ta jeg bussen 
+compword(ta,[jeg],ta). %% ??? nÃ¥r mÃ¥ jeg ta jeg bussen 
 
-%% compword(ta,[meg], reise).  % ta meg en billett          %%  ? ta meg til nardo/ kom å ta meg 
+%% compword(ta,[meg], reise).  % ta meg en billett          %%  ? ta meg til nardo/ kom Ã¥ ta meg 
 
 compword(ta,[meg,til], ankomme).   
 compword(tar,[meg,til], ankommer). 
 
-%% compword(ta,[fra],forlate).  %%  når må jeg ta fra A til B
+%% compword(ta,[fra],forlate).  %%  nÃ¥r mÃ¥ jeg ta fra A til B
 
-   xcompword(ta,[jeg],jeg). %% ? Når må ta jeg ta sp 
-                                %   hvilken buss må jeg ta fra 
-compword(ta,[ned],gå). %% bakken ned nth ...
-compword(ta,[opp],gå). 
+   xcompword(ta,[jeg],jeg). %% ? NÃ¥r mÃ¥ ta jeg ta sp 
+                                %   hvilken buss mÃ¥ jeg ta fra 
+compword(ta,[ned],gÃ¥). %% bakken ned nth ...
+compword(ta,[opp],gÃ¥). 
 
 
 compword(ta,[og,ta],ta). 
 
-%%% compword(ta,[når], ta).  %% ta når for å 
-                                 %% hv. buss skal jeg ta når jeg skal
+%%% compword(ta,[nÃ¥r], ta).  %% ta nÃ¥r for Ã¥ 
+                                 %% hv. buss skal jeg ta nÃ¥r jeg skal
 compword(ta,[seg], komme).  
-compword(ta,[som,går],ta). 
+compword(ta,[som,gÃ¥r],ta). 
 compword(ta,[til,seg],motta). 
 
-compword(ta,[å,ta],ta). 
-compword(ta,[å],ta).  %% ta å (sp) 
-compword(ta,[å],[]).  %% ta å komme seg til byen
+compword(ta,[Ã¥,ta],ta). 
+compword(ta,[Ã¥],ta).  %% ta Ã¥ (sp) 
+compword(ta,[Ã¥],[]).  %% ta Ã¥ komme seg til byen
 
 compword(ta,[av],dra).   %% rough
 compword(tar,[av],drar). %%
@@ -4898,8 +4900,8 @@ compword(tanke,['-',arbeid],tankearbeid). %% nec ?
 %% compword(tar,[meg], kommer).           %%
 compword(tar,[tar], tar).   %% 
 
-compword(tek,[seg], går).           %% ad hoc 
-compword(tek,[meg], går).           %%
+compword(tek,[seg], gÃ¥r).           %% ad hoc 
+compword(tek,[meg], gÃ¥r).           %%
 
     xcompword(telef,['.'],telefon).    %% ad hoc
     xcompword(telefon,[nr],telefon). 
@@ -4909,41 +4911,41 @@ compword(te,[neste],neste).           %% err
 compword(te,[ved],til). 
     
 
-    xcompword(team,[påskeruter],påskeruter). 
+    xcompword(team,[pÃ¥skeruter],pÃ¥skeruter). 
     xcompword(team,[sommerruter],sommerruter). %%  
-compword(tenke,[deg,å],[]).  
-   xcompword(tenker,[å],vil).  %% avoid tenker for å være i stand til
+compword(tenke,[deg,Ã¥],[]).  
+   xcompword(tenker,[Ã¥],vil).  %% avoid tenker for Ã¥ vÃ¦re i stand til
                                 
-compword(tenkt,[å,dukke,opp],ankommet).
+compword(tenkt,[Ã¥,dukke,opp],ankommet).
 
-compword(tett,[ved],nær). 
+compword(tett,[ved],nÃ¦r). 
 compword(ti,[l],til).  
 %%%  compword(tid,[fra],fra). %% tid fra nth til nardo 
 
 compword(ti,[stille],tistille). %% techn, avoid 'ti' 
 
 compword(hold,[kjeft],tistille). 
-compword(hold,[kjæft],tistille). 
+compword(hold,[kjÃ¦ft],tistille). 
 compword(hold,[munn],tistille). 
 
 compword(tid,[buss],buss).        %%  repair
 
-%% compword(tid,[går],[]). %% ? destroys = når=hvilken tid
-%%    xcompword(når,[tid,går],[]). %% juks %% TA-101013
-%% compword(tid,[går],[]).  
-%%    xcompword(ti,[går],[]).  %%  Haz
+%% compword(tid,[gÃ¥r],[]). %% ? destroys = nÃ¥r=hvilken tid
+%%    xcompword(nÃ¥r,[tid,gÃ¥r],[]). %% juks %% TA-101013
+%% compword(tid,[gÃ¥r],[]).  
+%%    xcompword(ti,[gÃ¥r],[]).  %%  Haz
 %%    xcompword(ti,[drar],[]). %% 
 
-%% compword(tid,[går,neste],neste).
-%% compword(tid,[går,buss],buss). 
-%% compword(tid,[går,bussen],bussen).
-%% compword(tid,[går,bussene],bussene).
-%% compword(tid,[går,busser],busser).
+%% compword(tid,[gÃ¥r,neste],neste).
+%% compword(tid,[gÃ¥r,buss],buss). 
+%% compword(tid,[gÃ¥r,bussen],bussen).
+%% compword(tid,[gÃ¥r,bussene],bussene).
+%% compword(tid,[gÃ¥r,busser],busser).
 
-%% compword(tid,[går,båt],båt).     %%
-%% compword(tid,[går,rute],rute).   %%
-%% compword(tid,[går,rute],rute).   %%
-%% compword(tid,[går,trikk],trikk). %%
+%% compword(tid,[gÃ¥r,bÃ¥t],bÃ¥t).     %%
+%% compword(tid,[gÃ¥r,rute],rute).   %%
+%% compword(tid,[gÃ¥r,rute],rute).   %%
+%% compword(tid,[gÃ¥r,trikk],trikk). %%
 
 
 compword(tid,[oversikt],ruteplan). %% avganger). %% nb times 
@@ -4955,33 +4957,33 @@ compword(tider,[og,nr],tider).
     xcompword(tider,[over,ruter],rutetider). 
 
 compword(tidlig,[etter],etter).       %% i morgen tidlig etter %% AD HOC
-compword(tidligere,[enn],før). 
-compword(tidligst,[mulig],tidlig).    %% tidligst betyr FØR
+compword(tidligere,[enn],fÃ¸r). 
+compword(tidligst,[mulig],tidlig).    %% tidligst betyr FÃ˜R
 
 compword(tids,[avgang],avgang).   
 compword(tids,[avgangen],avgangen).   
 compword(tids,[avgangene],avgangene).  
 compword(tids,[avganger],avganger).  
 
-compword(tidspunktet,[når],når).
+compword(tidspunktet,[nÃ¥r],nÃ¥r).
 
 compword(til,[om],at). %%  kjenner du til om ?
 
    xcompword(til,[overs],[]).
 compword(til,[vanlig],redundant0). 
 
-compword(til,['.'],til). %%  Når går neste 7 til.buran"
+compword(til,['.'],til). %%  NÃ¥r gÃ¥r neste 7 til.buran"
 
     xcompword(til,[alle,tider],alltid). 
     xcompword(til,[daglig],daglig).       %% TA-100828    
     xcompword(til,[en,hver,tid],alltid).  %%
     xcompword(til,[enhver,tid],alltid).   %%
 
-compword(til,[i],i).   %% \+ x Du må oppgi et sted til i slike spørsmål
+compword(til,[i],i).   %% \+ x Du mÃ¥ oppgi et sted til i slike spÃ¸rsmÃ¥l
                        %% du holder til i Th %% TA-101018
-    xcompword(til,[nå],[]).
+    xcompword(til,[nÃ¥],[]).
 
-%%    xcompword(til,[i],i). %% et sted til i slike spørsmål %%  Haz
+%%    xcompword(til,[i],i). %% et sted til i slike spÃ¸rsmÃ¥l %%  Haz
                             %% venter til i morgen
 
 compword(til,[sted],destinasjon). 
@@ -4991,39 +4993,39 @@ compword(til,[ca],til).
 compword(til,[omtrent],til). 
 
 
-    xcompword(til,[da],da).   %% "derfør"
-compword(til,[dømes],[]).  
+    xcompword(til,[da],da).   %% "derfÃ¸r"
+compword(til,[dÃ¸mes],[]).  
 
 
-compword(til,[for,å,være,i],til).  %%   // fronted
-compword(til,[for,å,være,ved],til).%%  repair
-compword(til,[for,å,være,på],til).
-compword(til,[for,å,være,på],til). 
+compword(til,[for,Ã¥,vÃ¦re,i],til).  %%   // fronted
+compword(til,[for,Ã¥,vÃ¦re,ved],til).%%  repair
+compword(til,[for,Ã¥,vÃ¦re,pÃ¥],til).
+compword(til,[for,Ã¥,vÃ¦re,pÃ¥],til). 
 compword(til,[for],for). %%  repair
 
 compword(til,['+'],til).           %% actual ?
     xcompword(til,[ankommer],ankommer).  
 compword(til,[borti],til).  
 compword(til,[dit],dit). 
-    xcompword(til,[døra],hjem).  
+    xcompword(til,[dÃ¸ra],hjem).  
 compword(til,[en,holdeplass,ved],til).
 %% compword(til,[et],til). %% ?
     xcompword(til,['/',fra],forbi).  %% rough %% tol/fra buss? 
 compword(til,[forbi],forbi).     %%  err repair
-compword(til,[går],går).         %%  hvilken buss til går til /Repair
+compword(til,[gÃ¥r],gÃ¥r).         %%  hvilken buss til gÃ¥r til /Repair
     xcompword(til,[hvis],hvis).      %% (repair) X
 
     xcompword(til,[imorgen],imorgen). 
     xcompword(til,[i,morgen],imorgen).
 
-compword(til,[i,nærheten,av],til). 
+compword(til,[i,nÃ¦rheten,av],til). 
 %   xcompword(til,[i],i). %% et sted til (i tillegg) %% plass til i bussen
-%   compword(til,[i],til).     %%  (i?) Du må oppgi et sted til i slike spørsmål . oo 
+%   compword(til,[i],til).     %%  (i?) Du mÃ¥ oppgi et sted til i slike spÃ¸rsmÃ¥l . oo 
 
-compword(til,[klokka,er],før).  
-compword(til,[klokken,er],før). 
+compword(til,[klokka,er],fÃ¸r).  
+compword(til,[klokken,er],fÃ¸r). 
 compword(til,[hit],hit).  
-compword(til,[hvilken,tid],når). 
+compword(til,[hvilken,tid],nÃ¥r). 
 compword(til,[hvis],hvis).       %% repair
 %% compword(til,[l],til).  %%? %% TA-110818
 compword(til,[lands],[]). 
@@ -5032,40 +5034,40 @@ compword(til,[med,ankomst],til).   %% repair
 % compword(til,[med],til).      %% jeg hjelper til med at
 %    xcompword(til,[med],med).  %% repair 
 
-compword(til,[nærheten,av],til).   %% nofunk?
+compword(til,[nÃ¦rheten,av],til).   %% nofunk?
     xcompword(til,[og,fra],forbi).
     xcompword(til,[og,med],til).  
-compword(til,[og,være,fremme],til). 
+compword(til,[og,vÃ¦re,fremme],til). 
 
-%% compword(til,[på],til).    %% Repair * hvor mange personer  er det  plass til på bussen
+%% compword(til,[pÃ¥],til).    %% Repair * hvor mange personer  er det  plass til pÃ¥ bussen
 
 compword(til,[rett,tid],presis). 
 compword(til,[retning],til).  
-compword(til,[rundt],før).  
+compword(til,[rundt],fÃ¸r).  
 compword(til,[sammen],[]).  
-%% compword(til,[sent],[]). %% gløs til sent -> sentrum -> gløs 
+%% compword(til,[sent],[]). %% glÃ¸s til sent -> sentrum -> glÃ¸s 
 compword(til,[slutt], sist). 
 compword(til,[som],som).        %% repair
 
     xcompword(til,[sted],tilsted). %% destinasjon ? %%  x?
 
-compword(til,[sånn], sånn).     %% repair .. at jeg er  på
+compword(til,[sÃ¥nn], sÃ¥nn).     %% repair .. at jeg er  pÃ¥
     xcompword(til,[til],til).   %% repair 
 compword(til,[ut], ut).    
 compword(til,[ved],til).   
 compword(til,[via],via).        %% repair 
 compword(til,[viss],hvis).      %% doesnt help
-%% compword(til,[å],til).          %% sms lov til å 
+%% compword(til,[Ã¥],til).          %% sms lov til Ã¥ 
 %%%%%%% compword(til,[vanlig,tid],presis). %% // ordinary route
-compword(til,[øverst,i],til).      %% Rough
-compword(til,[å,være,i],til).
+compword(til,[Ã¸verst,i],til).      %% Rough
+compword(til,[Ã¥,vÃ¦re,i],til).
 
-%%% compword(til,[å],[]). %%\+ x jeg skulle akkurat til å ...* mulighet til å
-compword(skal,[til,å],skal). 
-compword(skulle,[til,å],skulle). 
+%%% compword(til,[Ã¥],[]). %%\+ x jeg skulle akkurat til Ã¥ ...* mulighet til Ã¥
+compword(skal,[til,Ã¥],skal). 
+compword(skulle,[til,Ã¥],skulle). 
 
 compword(tilsentrum,[],[]).  %% also splitword
-compword(tilbake,[på],på).  
+compword(tilbake,[pÃ¥],pÃ¥).  
 compword(tilbake,[til],til).
 compword(til,[tilbake],til). %% ?
 
@@ -5095,18 +5097,18 @@ compword(tur,['/',retur],tilbake).
 
 compword(u,[bane],tbane).   
 
-    xcompword(uforståelige,[ord],feil). 
+    xcompword(uforstÃ¥elige,[ord],feil). 
     xcompword(uff,[da],[]).  %% :-) 
     xcompword(huff,[da],[]). %% 
-compword(u,[båt],båt).                   %% Rough 
+compword(u,[bÃ¥t],bÃ¥t).                   %% Rough 
 
 
 compword(uke,[dag],ukedag). 
 
-    xcompword(lure,[på],undre).    %%  rough
-    xcompword(undre,[på],undre).   %% tricky
-    xcompword(lurer,[på],undrer).  %% 
-    xcompword(undrer,[på],undrer). %% 
+    xcompword(lure,[pÃ¥],undre).    %%  rough
+    xcompword(undre,[pÃ¥],undre).   %% tricky
+    xcompword(lurer,[pÃ¥],undrer).  %% 
+    xcompword(undrer,[pÃ¥],undrer). %% 
 
 compword(ungdom,skole,skole). 
 
@@ -5116,13 +5118,13 @@ compword(universelt,[kort],universalkort).
 compword(universelt,[skibusskort],universalkort). %% etc 
 compword(unntatt,[med],unntatt). 
 
-    xcompword(ut,[av,det],løsningen).
-    xcompword(ut,[av,noe],løsningen). 
+    xcompword(ut,[av,det],lÃ¸sningen).
+    xcompword(ut,[av,noe],lÃ¸sningen). 
 
 compword(ut,[av],fra). 
 compword(ut,[om],ut).  
-compword(ut,[på],på).  
-compword(ut,[å],[]).   
+compword(ut,[pÃ¥],pÃ¥).  
+compword(ut,[Ã¥],[]).   
 
     xcompword(ute,[av,drift],nede). 
 
@@ -5131,8 +5133,8 @@ compword(uten,[pause],direkte).
 compword(uten,[stopp],direkte).  
 
     xcompword(uten,[unntak],alltid).
-    xcompword(uten,[å,bytte,buss],direkte).  %% ad hoc
-    xcompword(uten,[å,skifte,buss],direkte).  
+    xcompword(uten,[Ã¥,bytte,buss],direkte).  %% ad hoc
+    xcompword(uten,[Ã¥,skifte,buss],direkte).  
 
 compword(uttrykke,[deg],snakke). 
 compword(utvidet,[skolekort],skolekort). %% ?? 
@@ -5144,35 +5146,35 @@ compword(utvidet,[skolekort],skolekort). %% ??
     xcompword(veldig,[gjerne],redundant0). %%=gjerne --> 
     xcompword(veldig,[ofte],ofte).         %% TA-101228
 
-compword(vi,[gir,opp],adjø). 
+compword(vi,[gir,opp],adjÃ¸). 
 
-%% compword(videregående,[skole],skole). %% Haz ?
-compword(videregående,[skoler],skoler).  %% 
+%% compword(videregÃ¥ende,[skole],skole). %% Haz ?
+compword(videregÃ¥ende,[skoler],skoler).  %% 
 
-compword(v,[re],være).   
-compword(va,[re],være).         %% vÃ¦re 
+compword(v,[re],vÃ¦re).   
+compword(va,[re],vÃ¦re).         %% vÃƒÂ¦re 
 compword(vanlig,[dag],hverdag). 
-%%%%  compword(vanlig,[],presis).   %% på en vanlig dag
+%%%%  compword(vanlig,[],presis).   %% pÃ¥ en vanlig dag
 
-compword(var,[så], var).   
+compword(var,[sÃ¥], var).   
 
 compword(varsle,[fra],varsle). 
 
 compword(vart,[av],er). %% Dial 
 
     xcompword(ved,[hjelp,av],med). %%  Haz?
-    xcompword(ved,[nærmere,ettertanke],redundant0). %% TA-101102
+    xcompword(ved,[nÃ¦rmere,ettertanke],redundant0). %% TA-101102
 
 compword(ved,[navn],[]).  
-compword(ved,[på],på).           %%  repair
+compword(ved,[pÃ¥],pÃ¥).           %%  repair
 
-    xcompword(vegg,[i,vegg,med],nær).   
-    xcompword(vegg,[til,vegg,med],nær). 
+    xcompword(vegg,[i,vegg,med],nÃ¦r).   
+    xcompword(vegg,[til,vegg,med],nÃ¦r). 
 
 compword(vel,[ikke],[]).  
 compword(vell,[],[]). 
 compword(ved,[i], i).         %% Repair
-compword(ved,[på], på).       %% Repair 
+compword(ved,[pÃ¥], pÃ¥).       %% Repair 
 
   compword(ve,[sia,av],attmed).   
   compword(ve,[sida,av],attmed).  
@@ -5195,97 +5197,97 @@ compword(via,[fra],fra).
 compword(via,[til],til).  
 compword(vice,[versa],tilbake). 
 
-    xcompword(vil,[at],ønsker).  %% Haz?
-compword(vil,[det,være],er).     %% Grammar repair
-   xcompword(vil,[det,gå],går).   
-compword(vil,[det,kjøre],kjøre). %%  
-compword(vil,[komme,til,å],vil). 
+    xcompword(vil,[at],Ã¸nsker).  %% Haz?
+compword(vil,[det,vÃ¦re],er).     %% Grammar repair
+   xcompword(vil,[det,gÃ¥],gÃ¥r).   
+compword(vil,[det,kjÃ¸re],kjÃ¸re). %%  
+compword(vil,[komme,til,Ã¥],vil). 
 
     xcompword(vil,[skal],skal). %% repair 
 
-compword(vil,[være,der],før).  
+compword(vil,[vÃ¦re,der],fÃ¸r).  
 
-compword(ville,[det,være],er).    %%
+compword(ville,[det,vÃ¦re],er).    %%
 compword(visa,[kort], visakort ). 
 %% compword(visst,[],[]).       %% hvis     %%  optional noise
 
-    xcompword(visst,[jeg,skal,være,i],til). %% no pardon 
+    xcompword(visst,[jeg,skal,vÃ¦re,i],til). %% no pardon 
 
-    xcompword(vær,[dag],[]).   %% -> daglig -> noisew %%  err
+    xcompword(vÃ¦r,[dag],[]).   %% -> daglig -> noisew %%  err
 
-compword(vær,[hilset],hei).  
-compword(vær,[så,god], værsågod).
+compword(vÃ¦r,[hilset],hei).  
+compword(vÃ¦r,[sÃ¥,god], vÃ¦rsÃ¥god).
 
-   xcompword(vær,[så,snill,'.'],[]). 
-compword(vær,[så,snill,å],[]). 
+   xcompword(vÃ¦r,[sÃ¥,snill,'.'],[]). 
+compword(vÃ¦r,[sÃ¥,snill,Ã¥],[]). 
  
-compword(å,[vær,så,snill],[]). 
+compword(Ã¥,[vÃ¦r,sÃ¥,snill],[]). 
 
-compword(væ,[der],ankomme).        %%  dial
-compword(være,[der,klokken],før).     %% no funk 
-%% compword(være,[der],før).  %% Hazard  %% no funk 
-compword(være,[framme],før).   
-compword(være,[i],til).  
-compword(være,[komme],komme).   
-compword(være,[kommet,til],til).  
+compword(vÃ¦,[der],ankomme).        %%  dial
+compword(vÃ¦re,[der,klokken],fÃ¸r).     %% no funk 
+%% compword(vÃ¦re,[der],fÃ¸r).  %% Hazard  %% no funk 
+compword(vÃ¦re,[framme],fÃ¸r).   
+compword(vÃ¦re,[i],til).  
+compword(vÃ¦re,[komme],komme).   
+compword(vÃ¦re,[kommet,til],til).  
 
-  %% compword(være,[på],til).  %% haz?  %% når vil bussen være på 
-  %% compword(være,[ved],til). %% haz 
-   xcompword(være,[på],ankomme). %% <--- 
+  %% compword(vÃ¦re,[pÃ¥],til).  %% haz?  %% nÃ¥r vil bussen vÃ¦re pÃ¥ 
+  %% compword(vÃ¦re,[ved],til). %% haz 
+   xcompword(vÃ¦re,[pÃ¥],ankomme). %% <--- 
 
-    xcompword(være,[så,snill,å],[]).  
-    xcompword(være,[så,snill],[]). 
+    xcompword(vÃ¦re,[sÃ¥,snill,Ã¥],[]).  
+    xcompword(vÃ¦re,[sÃ¥,snill],[]). 
 
-%% compword(være,[på],ankomme).    %%  Tekn. Fremtid// jeg skal være på nardo
-compword(værsågod,[å],[]). 
+%% compword(vÃ¦re,[pÃ¥],ankomme).    %%  Tekn. Fremtid// jeg skal vÃ¦re pÃ¥ nardo
+compword(vÃ¦rsÃ¥god,[Ã¥],[]). 
 
 compword(verden,[over],overalt).  %% rough 
 
-compword(versågod,[å],[]). %% no spell before
+compword(versÃ¥god,[Ã¥],[]). %% no spell before
 
-    %% compword(vært,[på],til). %% har noen vært på månen
-compword(vært,[ved],til). 
+    %% compword(vÃ¦rt,[pÃ¥],til). %% har noen vÃ¦rt pÃ¥ mÃ¥nen
+compword(vÃ¦rt,[ved],til). 
 
 
 compword(voksen,[billett],billett). %% rough
-compword(vå,[re], være).           %%  vÃ¦re
+compword(vÃ¥,[re], vÃ¦re).           %%  vÃƒÂ¦re
 
     xcompword(y,[til],til). %% repair 
 
-compword(øvre,[aldersgrense],aldersgrense). 
+compword(Ã¸vre,[aldersgrense],aldersgrense). 
 
-%% compword(å,[få],å).  %% .. komme til %% \not x
-                                        %% \+ x, jeg ønsker å få en billett
+%% compword(Ã¥,[fÃ¥],Ã¥).  %% .. komme til %% \not x
+                                        %% \+ x, jeg Ã¸nsker Ã¥ fÃ¥ en billett
                                                         
-compword(å,[fra],fra).      %% Repair
+compword(Ã¥,[fra],fra).      %% Repair
 
-%% compword(å,[gjøre],arbeide).  %% hva liker jeg å gjøre
+%% compword(Ã¥,[gjÃ¸re],arbeide).  %% hva liker jeg Ã¥ gjÃ¸re
 
-compword(å,[inn],inn).   
-compword(å,[ja],ja).  
+compword(Ã¥,[inn],inn).   
+compword(Ã¥,[ja],ja).  
 
-    xcompword(å,[jeg,ta],går).   %%  exclusive
+    xcompword(Ã¥,[jeg,ta],gÃ¥r).   %%  exclusive
 
-compword(å,[jasså],[]).     %%  :-))))))
+compword(Ã¥,[jassÃ¥],[]).     %%  :-))))))
 
-%%      xcompword(å,[da],ja).  %% TA-101014     %% X å (jo) da
-%%      xcompword(å,[måtte],å).     %% eff. ville skulle burde kunne 
-                                    %% destroys uten å måtte
-compword(å,[ned],ned).  
-compword(å,[nei],nei).      %%  :-)
-%% compword(å,[så],å).         %%  Rough  %% TA-110105 ... å så sier du
-compword(å,[t],til).  
-compword(å,[ta,fra],fra).   %% Ad Hoc
-compword(å,[ta,til],til).   %% 
-compword(å,[te],til). 
-   xcompword(å,[tid],når).  %% dial 
-compword(å,[til],til).      %% og til
-    xcompword(å,[å],å). %% repair 
+%%      xcompword(Ã¥,[da],ja).  %% TA-101014     %% X Ã¥ (jo) da
+%%      xcompword(Ã¥,[mÃ¥tte],Ã¥).     %% eff. ville skulle burde kunne 
+                                    %% destroys uten Ã¥ mÃ¥tte
+compword(Ã¥,[ned],ned).  
+compword(Ã¥,[nei],nei).      %%  :-)
+%% compword(Ã¥,[sÃ¥],Ã¥).         %%  Rough  %% TA-110105 ... Ã¥ sÃ¥ sier du
+compword(Ã¥,[t],til).  
+compword(Ã¥,[ta,fra],fra).   %% Ad Hoc
+compword(Ã¥,[ta,til],til).   %% 
+compword(Ã¥,[te],til). 
+   xcompword(Ã¥,[tid],nÃ¥r).  %% dial 
+compword(Ã¥,[til],til).      %% og til
+    xcompword(Ã¥,[Ã¥],Ã¥). %% repair 
 
-compword(år,[går],går).     %% Paste slip når går
-compword(år,[må],må).       %% Very Rough  (n)år må 
+compword(Ã¥r,[gÃ¥r],gÃ¥r).     %% Paste slip nÃ¥r gÃ¥r
+compword(Ã¥r,[mÃ¥],mÃ¥).       %% Very Rough  (n)Ã¥r mÃ¥ 
 
-compword(års,[kort],årskort).
+compword(Ã¥rs,[kort],Ã¥rskort).
 
 
 %% UNWANTED INTERPRETAION %% TA-101124
@@ -5316,24 +5318,24 @@ unwanted_adjective(begynte).  %% begynt (past,part) -> adj (sin) -> adj(plu)
 unwanted_adjective(eit).      %% eidd ?? 
 unwanted_adjective(eitt).     %% eidd ?? 
 unwanted_adjective(ekkle).    %% Ekle %% TA-110812
-unwanted_adjective(ett).      %% spist (av en løve) 
-unwanted_adjective(fått).   
+unwanted_adjective(ett).      %% spist (av en lÃ¸ve) 
+unwanted_adjective(fÃ¥tt).   
 unwanted_adjective(gidte).    %% \+ giddet 
 unwanted_adjective(gifte).    %% most prob verb
 unwanted_adjective(hatt). 
-unwanted_adjective(håpet). 
+unwanted_adjective(hÃ¥pet). 
 %%  unwanted_adjective(hele).     %% (determiner) %% rundt hele byneset 
 unwanted_adjective(kalte).    %% not plu of kalt
-unwanted_adjective(kjørt).  
-unwanted_adjective(kjørte).   %% 
+unwanted_adjective(kjÃ¸rt).  
+unwanted_adjective(kjÃ¸rte).   %% 
 unwanted_adjective(ledet).
 unwanted_adjective(leie).     %% hire
 unwanted_adjective(likte).    %% " de er likt(e)"
 unwanted_adjective(lille).    %% lille julaften \== small Xmas 
 unwanted_adjective(logget).   %% problems  bli logget
-unwanted_adjective(loggført). 
+unwanted_adjective(loggfÃ¸rt). 
 unwanted_adjective(lurte). 
-unwanted_adjective(møtet).    %% \+ møtt 
+unwanted_adjective(mÃ¸tet).    %% \+ mÃ¸tt 
 unwanted_adjective(nesten).   %% redunt adverb %% TA-110106
 unwanted_adjective(nestet).   %% det nestet toget *
 
@@ -5346,9 +5348,9 @@ unwanted_adjective(passert).
 unwanted_adjective(rettet).   %% \+right (det rette toget)
 unwanted_adjective(ringte). 
 unwanted_adjective(satt). 
-unwanted_adjective(senest).   %% =før
+unwanted_adjective(senest).   %% =fÃ¸r
 unwanted_adjective(seneste).  %%  ?
-unwanted_adjective(seinest).  %% = før
+unwanted_adjective(seinest).  %% = fÃ¸r
 unwanted_adjective(seineste). %% ?
 unwanted_adjective(sent).     %% TA-100905  ???  
 unwanted_adjective(seint).    %% hazard  et sent tog
@@ -5364,7 +5366,7 @@ unwanted_adjective(stilt).    %% (stilt,adj(be/ask))
 unwanted_adjective(stoppet). 
 unwanted_adjective(svaret). 
 unwanted_adjective(tenkt).    %%  et tenkt tilfelle?
-unwanted_adjective(tidligst). %% confuse før 
+unwanted_adjective(tidligst). %% confuse fÃ¸r 
 unwanted_adjective(trengte).
 unwanted_adjective(varte).    %% \+ lasted 
 unwanted_adjective(vekt).     %% \+ vekk 
@@ -5378,7 +5380,7 @@ unwanted_adjective(vist).     %%  et vist bilde ?
 
 
 unwanted_verb(an).      %% \+ believe!
-unwanted_verb(angående).%% prep 
+unwanted_verb(angÃ¥ende).%% prep 
 unwanted_verb(ankomt).  %% TA-110523
 unwanted_verb(b).       %% be  %% mix with English and confuses error message 
 unwanted_verb(bar).     %% bear
@@ -5388,7 +5390,7 @@ unwanted_verb(bet).     %% \+ bedt
 unwanted_verb(betalende).     %% adj 
 unwanted_verb(bt).      %% bedt
 unwanted_verb(blinde).  %% \+ blivende 
-unwanted_verb(bråk).    %% \+ lag bråk %% TA-100830
+unwanted_verb(brÃ¥k).    %% \+ lag brÃ¥k %% TA-100830
 unwanted_verb(bus).     %% \+ passive of bu /bo )
 unwanted_verb(bust).    %% \+ buast 
 unwanted_verb(dekk).    %% \+ cover !  
@@ -5416,20 +5418,20 @@ unwanted_verb(finnses).  %% \+ Finnsnes %% TA-110118
 unwanted_verb(fint).    %% \+ funnet
 unwanted_verb(forsinket). %% TA-100823 adj
 unwanted_verb(forsvinnende). 
-unwanted_verb(forsøket). %% \+ Forsøket %% TA-110724
-unwanted_verb(færre).   %% =få, but not the verb 
-unwanted_verb(følgende).%% \+ follow-ing 
-unwanted_verb(før).     %% \+ imp 
+unwanted_verb(forsÃ¸ket). %% \+ ForsÃ¸ket %% TA-110724
+unwanted_verb(fÃ¦rre).   %% =fÃ¥, but not the verb 
+unwanted_verb(fÃ¸lgende).%% \+ follow-ing 
+unwanted_verb(fÃ¸r).     %% \+ imp 
 unwanted_verb(gidte).   %% \+ giddet
 unwanted_verb(gjeldende). 
-unwanted_verb(gjører). 
+unwanted_verb(gjÃ¸rer). 
 unwanted_verb(grei).    %% \+ manage! 
 unwanted_verb(greit).   %% \+ manage!
 unwanted_verb(greitt).  %% \+ manage!
 unwanted_verb(grense).  %% infin 
 unwanted_verb(greia). 
 unwanted_verb(grue).    %% dread | municipality 
-unwanted_verb(gås).     %% Passive -> går 
+unwanted_verb(gÃ¥s).     %% Passive -> gÃ¥r 
 unwanted_verb(h).       %% ha ?
 unwanted_verb(hast).    %% \+ be urgent! 
 unwanted_verb(hat).     %% \+ hat! 
@@ -5437,7 +5439,7 @@ unwanted_verb(havn).    %% \+ havn! (endup!)
 unwanted_verb(havna).   %% \+ havnet (ended) 
 unwanted_verb(hei).     %% \+ heie
 unwanted_verb(ht).      %% hatt
-unwanted_verb(håp).     %% \+ håp! 
+unwanted_verb(hÃ¥p).     %% \+ hÃ¥p! 
 
 %% unwanted_verb(het).     %% \+ imperative  Het Titanic!
                         %% hva het faren din 
@@ -5445,9 +5447,9 @@ unwanted_verb(håp).     %% \+ håp!
 unwanted_verb(innlegg). %% \+ legg inn
 unwanted_verb(insa).    %% \+ understand // a-form
 unwanted_verb(jobb).    %% \+  jobb!
-unwanted_verb(kati).    %% \+ når=reach 
+unwanted_verb(kati).    %% \+ nÃ¥r=reach 
 
-%% unwanted_verb(kjørende). %% -> adj %%  unnec
+%% unwanted_verb(kjÃ¸rende). %% -> adj %%  unnec
 
 unwanted_verb(klar).    %% \+  imp (Klar en klassiker :-)
 unwanted_verb(kommes).  %% kommer
@@ -5457,13 +5459,13 @@ unwanted_verb(l).       %% le
 unwanted_verb(lei).     %% \+ hire!
 unwanted_verb(leier).   %% \+ hire \+ Leira %% TA-110615 ?
 
-unwanted_verb(lopet).   %% løpet   %% TA-101215
-unwanted_verb(låv).     %% \+ promise!
+unwanted_verb(lopet).   %% lÃ¸pet   %% TA-101215
+unwanted_verb(lÃ¥v).     %% \+ promise!
 
 %% unwanted_verb(lagt).    %% \+ lag(e)t %%  <--- dette blir lagt
 
 unwanted_verb(land).    %% \+  imperative, for pilots 
-unwanted_verb(last).    %% laes (å la) 
+unwanted_verb(last).    %% laes (Ã¥ la) 
 unwanted_verb(leit).    %% \+ leiet
 %% unwanted_verb(ler).     %% \+ Ler %% TA-110116
 unwanted_verb(lett).    %% \+ letet 
@@ -5474,23 +5476,23 @@ unwanted_verb(logg).    %% \+ (take) logg
 unwanted_verb(lov).     %% \+ promise!
 unwanted_verb(loves).   %% \+ elsker (eng) 
 unwanted_verb(lur).     %% \+ imperative
-unwanted_verb(lønn).    %% \+ lønne (seg)
+unwanted_verb(lÃ¸nn).    %% \+ lÃ¸nne (seg)
 
 unwanted_verb(melda).   %% \+ Meldal %% TA-101228
 unwanted_verb(men).     %% - mean !
 unwanted_verb(mor).     %% \+ amuse! 
-unwanted_verb(mora).    %% å more (seg)
-unwanted_verb(møt). 
-unwanted_verb(møtet).   %% \+ møtte %% TA-110330
-unwanted_verb(mår).     %% må = go, mår = goes  (må til nth)
-unwanted_verb(måtter). 
+unwanted_verb(mora).    %% Ã¥ more (seg)
+unwanted_verb(mÃ¸t). 
+unwanted_verb(mÃ¸tet).   %% \+ mÃ¸tte %% TA-110330
+unwanted_verb(mÃ¥r).     %% mÃ¥ = go, mÃ¥r = goes  (mÃ¥ til nth)
+unwanted_verb(mÃ¥tter). 
 
-unwanted_verb(n).       %% sms n= nå
-unwanted_verb(no).      %% \+ nå=reach
+unwanted_verb(n).       %% sms n= nÃ¥
+unwanted_verb(no).      %% \+ nÃ¥=reach
 unwanted_verb(np).      %%  doesnt help
 unwanted_verb(nu).  
-unwanted_verb(nytte).   %% haz, only as nyte/nøt not as benytte
-unwanted_verb(nær).     %% når
+unwanted_verb(nytte).   %% haz, only as nyte/nÃ¸t not as benytte
+unwanted_verb(nÃ¦r).     %% nÃ¥r
 
 unwanted_verb(oppdatert).  %% problem %% Try again 
 unwanted_verb(oppdaterte). %% confuse 
@@ -5519,29 +5521,29 @@ unwanted_verb(skapet). %% \+skapte
 unwanted_verb(snakkes). %% not passive, split=snakker sammen 
 unwanted_verb(sne). 
 unwanted_verb(snus).   %%  snuff
-unwanted_verb(snø). 
-unwanted_verb(so).     %% so=så=sedde** 
+unwanted_verb(snÃ¸). 
+unwanted_verb(so).     %% so=sÃ¥=sedde** 
 unwanted_verb(spillet).  
 unwanted_verb(spor).   %% TA-101117 \+ spor!
 unwanted_verb(st).     %% \+ sett
 unwanted_verb(stav).   %% \+ spell!  # Stav  
 unwanted_verb(stavet). %% \+ spell!  # Stavset
 unwanted_verb(stavest).%% \+ Stavset %% TA-110725
-unwanted_verb(ste).    %% \+ så 
+unwanted_verb(ste).    %% \+ sÃ¥ 
 unwanted_verb(stengt). %% only adjective 
 unwanted_verb(stigende). 
 unwanted_verb(stolt).  %% \+ trusted
 unwanted_verb(stopp). 
 
-unwanted_verb(strand). %% strande = ankomme (slæng) 
+unwanted_verb(strand). %% strande = ankomme (slÃ¦ng) 
 unwanted_verb(stranda). %% comm 
 
 
 unwanted_verb(streik). %% \+  Streik!
-unwanted_verb(svar).   %%  Jeg får svar// kan du svar //  svar på spørsmålet mitt !
+unwanted_verb(svar).   %%  Jeg fÃ¥r svar// kan du svar //  svar pÃ¥ spÃ¸rsmÃ¥let mitt !
 unwanted_verb(svaret). %% \+ svarte
-unwanted_verb(søket).  %% \+ search
-unwanted_verb(så).     %% confusion,ooo %% TA-110127  then/ as fast as // Jeg så en buss* 
+unwanted_verb(sÃ¸ket).  %% \+ search
+unwanted_verb(sÃ¥).     %% confusion,ooo %% TA-110127  then/ as fast as // Jeg sÃ¥ en buss* 
 
 unwanted_verb(tak).    %% \+ ta!
 unwanted_verb(take).   %% \+ ta NN, but destroys lang. sel.
@@ -5550,7 +5552,7 @@ unwanted_verb(tast).   %% \+ taes
 unwanted_verb(tasta).  %% TA-101006
 unwanted_verb(te).     %% dial, \+ t-e 
 unwanted_verb(ti).     %% \+ ti(e)
-unwanted_verb(tilhørende). %% adj
+unwanted_verb(tilhÃ¸rende). %% adj
 unwanted_verb(tillatt).%% adj %% ad hoc
 unwanted_verb(tillegg).%% \+ add 
 unwanted_verb(tull).   %% \+ speak! 
@@ -5561,17 +5563,17 @@ unwanted_verb(visa).   %% Visa,  \+ show
 unwanted_verb(varet).  %% \+ varte
 unwanted_verb(vedlikehold). %% \+ maintain!
 %%  unwanted_verb(veit).   %% also   knows %% TA-110804
-unwanted_verb(veret).  %% \+ vær NN 
+unwanted_verb(veret).  %% \+ vÃ¦r NN 
 %% unwanted_verb(vist).   %% vist = hvis %% hazard ?? Bildet ble vist 
 %%% unwanted_verb(var).    %% \+ var!  Funker ikke, spesialregel
-unwanted_verb(været).  %% \+ vært
-%% unwanted_verb(værte).  %% å være \+ var
+unwanted_verb(vÃ¦ret).  %% \+ vÃ¦rt
+%% unwanted_verb(vÃ¦rte).  %% Ã¥ vÃ¦re \+ var
 
 unwanted_verb(yt).   %% \+ give
 
-unwanted_verb(når).  %% \+ reach,  Hazard ? nå=reach ok 
+unwanted_verb(nÃ¥r).  %% \+ reach,  Hazard ? nÃ¥=reach ok 
 
-%% unwanted_verb(nå).  %% = now  (Roughly) 
+%% unwanted_verb(nÃ¥).  %% = now  (Roughly) 
 
 %% Some words are out of alphabetical order due to
 %% backward translation from english, which selects the first word.
@@ -5621,7 +5623,7 @@ ow(X) :- user:gradv_templ(X,_).
 
 %% CW 
 
-cw('¤').   %% Headline 
+cw('Â¤').   %% Headline 
 
 cw(';'). %% Sentence delimiter
 
@@ -5640,49 +5642,49 @@ cw(a). cw(b). cw(c). cw(d). cw(e). cw(f). cw(g). cw(h). %% street letters
 cw(i). cw(j). cw(k). cw(l). cw(m). cw(n). cw(o). cw(p). 
 cw(q). cw(r). cw(s). cw(t). cw(u). cw(v). cw(w).
 
-cw(ad). cw(adjø). cw(alene). cw(all). cw(alle). cw(alltid).
-    cw(allverden).  cw(alt). cw(altså). cw(am). cw(an). 
+cw(ad). cw(adjÃ¸). cw(alene). cw(all). cw(alle). cw(alltid).
+    cw(allverden).  cw(alt). cw(altsÃ¥). cw(am). cw(an). 
     cw(andre). cw(andres). 
     cw(annen). cw(annet). cw(antall). cw(at). cw(av).
 
 cw(badet). cw(bakfra). cw(bakover).  cw(baklengs). cw(bedre). cw(best). %%
     cw(banen). %% T-banen 
-    cw(bare). cw(begge).  cw(bort). cw(bra). cw(bravo).  cw(bruk).   cw(bør).
-    cw(bli). cw(blir). cw(bortover). cw(burde). cw(både). 
+    cw(bare). cw(begge).  cw(bort). cw(bra). cw(bravo).  cw(bruk).   cw(bÃ¸r).
+    cw(bli). cw(blir). cw(bortover). cw(burde). cw(bÃ¥de). 
 
 
 cw(ca). 
 
 cw(da). cw(dag). cw(daglig).
     cw(de). cw(deg). cw(den). cw(denne). cw(dens). cw(der). 
-    cw(dere). cw(deretter). cw(derfor).  cw(derfra).  cw(derfør). cw(dessverre) .
+    cw(dere). cw(deretter). cw(derfor).  cw(derfra).  cw(derfÃ¸r). cw(dessverre) .
     cw(det). cw(dets). cw(dette). cw(din). %% cw(di). 
     cw(disse). cw(direkte). 
-    cw(dit). cw(ditt).   cw(dra). % fra(sms)| gå
-    cw(du).   cw(dårlig). %% adverb
+    cw(dit). cw(ditt).   cw(dra). % fra(sms)| gÃ¥
+    cw(du).   cw(dÃ¥rlig). %% adverb
     
 cw(egen). cw(egentlig). cw(egne). cw(eget). cw(eksempelvis). cw(ekte). 
     cw(en). cw(enda). cw(ende). %% 9ende
-    cw(enklest). cw(engang). cw(enn). cw(ennå). cw(eren). cw(ergo). cw(erru).
+    cw(enklest). cw(engang). cw(enn). cw(ennÃ¥). cw(eren). cw(ergo). cw(erru).
     cw(et). cw(etc). cw(ei). cw(ett). %%  Tricky !!!
     cw(eldre). cw(eller). cw(enten). 
 %%     cw(exit).
 
 cw(faktisk). cw(fall). 
      cw(farefritt).  cw(fler). cw(flere). cw(fleste). 
-     cw(for). cw(forat). cw(forhånd). cw(formiddag).
-     cw(forøvrig).  
+     cw(for). cw(forat). cw(forhÃ¥nd). cw(formiddag).
+     cw(forÃ¸vrig).  
      cw(forbi). 
-     cw(fordi). cw(forgårs).
-     cw(forskjellig). cw(fort). cw(forå). cw(fra). cw(fram). % adv 
+     cw(fordi). cw(forgÃ¥rs).
+     cw(forskjellig). cw(fort). cw(forÃ¥). cw(fra). cw(fram). % adv 
      cw(fremfor). 
-     cw(fri). cw(følge). cw(før). cw(fyi). cw(først). cw(færre). %%
-     cw(få). cw(får). %%
+     cw(fri). cw(fÃ¸lge). cw(fÃ¸r). cw(fyi). cw(fÃ¸rst). cw(fÃ¦rre). %%
+     cw(fÃ¥). cw(fÃ¥r). %%
 
 cw(galt). cw(gang). cw(gitt). cw(gjen). cw(gjennom).  
 %    cw(gjennomsnittet). 
     cw(gjensyn). cw(gratis). %%  
-    cw(greitt). cw(grr).  cw(går). %% cw(gt).   confuses lex
+    cw(greitt). cw(grr).  cw(gÃ¥r). %% cw(gt).   confuses lex
     cw(goddag). cw(godnatt). 
 
 cw(ha). cw(hade). cw(hadet). cw(halvtime). 
@@ -5696,11 +5698,11 @@ cw(ha). cw(hade). cw(hadet). cw(halvtime).
     cw(hva). cw(hvem). cw(hver).  cw(hverandre). 
     cw(hvert). cw(hvertfall). cw(hvilke).  cw(hvilken). 
     cw(hvilket). cw(hvis). cw(hvor). cw(hvorav). cw(hvordan). cw(hvorfor). cw(hvorfra).
-    cw(hvorvidt). cw(høy). cw(høyere). cw(høyest). 
+    cw(hvorvidt). cw(hÃ¸y). cw(hÃ¸yere). cw(hÃ¸yest). 
     cw(hysj). %% :-)
 
-%% cw(i). %% (Molde) dialect for Jeg  jeg reiser for å være i Th  NO!
-     cw(idag). cw(igår). cw(ikt). cw(imens). cw(imorgen).
+%% cw(i). %% (Molde) dialect for Jeg  jeg reiser for Ã¥ vÃ¦re i Th  NO!
+     cw(idag). cw(igÃ¥r). cw(ikt). cw(imens). cw(imorgen).
     cw(ifra). cw(igjen).  cw(ihvertfall).
 cw(ikke). cw(ikveld). cw(inatt). cw(ingen). cw(ingenting). cw(inn). cw(inne).
    cw(innimellom). cw(innover). cw(inntil).  
@@ -5723,7 +5725,7 @@ cw(langsomt). cw(langt).
      cw(lavere). cw(lenge). cw(lenger). cw(lengre). 
      cw(lik). cw(like). cw(likeledes). cw(likevel). cw(likt). cw(lite).
      cw(lokalt). cw(rpgol).  cw(rpgolram). %% TA-110524
-     cw(løpet). 
+     cw(lÃ¸pet). 
 
 cw(m). 
 cw(maksimum).
@@ -5732,7 +5734,7 @@ cw(maksimum).
     cw(meget).  cw(men).  cw(mens). cw(mer). 
     cw(midt). cw(million). cw(millioner). cw(milliard). cw(milliarder). 
     cw(min). cw(mindre).  cw(minst). cw(mine).   cw(minimum). cw(minst).  cw(mitt). 
-    cw(mon). cw(morges). cw(morgen). cw(mulig). cw(mye). cw(må). 
+    cw(mon). cw(morges). cw(morgen). cw(mulig). cw(mye). cw(mÃ¥). 
 
 cw(n). %% n = nr in certain places 
     cw(nb). %% 'NB' 
@@ -5742,20 +5744,20 @@ cw(n). %% n = nr in certain places
     cw(nylig).
     cw(noe). cw(noen). cw(noensted). cw(nord). cw(nordfra). cw(nordover). 
     cw(nordligste). cw(normalt). cw(nr).  %%  buss nr. 5 =/=>  (buss nummmer) .
-    cw(nyttår). 
-    cw(nær). %% Swedish, but    s y n w o r d nær,når ==> nær = reach
-    cw(nærheten). 
-    cw(nå).  cw(når). 
+    cw(nyttÃ¥r). 
+    cw(nÃ¦r). %% Swedish, but    s y n w o r d nÃ¦r,nÃ¥r ==> nÃ¦r = reach
+    cw(nÃ¦rheten). 
+    cw(nÃ¥).  cw(nÃ¥r). 
 
 cw(o). cw(obs). cw(ok). cw(om). cw(ommorgenen). cw(overalt). 
     cw(overmorgen). cw(overimorgen). cw(ofte).
-    cw(og). cw(også).  cw(om). cw(opp). cw(oppover). 
+    cw(og). cw(ogsÃ¥).  cw(om). cw(opp). cw(oppover). 
     cw(oss). 
 
 cw(p). cw(ps).
 cw(ping). cw(pong). %% cw(pm). %% cw(presis). 
     cw(punktlighet).  
-    cw(på). %%  lure på  , stige på 
+    cw(pÃ¥). %%  lure pÃ¥  , stige pÃ¥ 
 
 cw(rart). %%  adv 
 cw(raskest). 
@@ -5767,7 +5769,7 @@ cw(redundant0).%% Techn  % redundant adverb %%  only internal
 
 cw(s). %%  (  NSB s buss ==> nsb s buss) 
    cw(samme). cw(sammen). cw(samtidig).
-   cw(sann). cw(sanne). cw(sant). cw(seg). cw(selv). cw(selvom). cw(selvfølgelig).
+   cw(sann). cw(sanne). cw(sant). cw(seg). cw(selv). cw(selvom). cw(selvfÃ¸lgelig).
    cw(selvsagt). 
    cw(senere).  cw(sent). %% cw(senest).  cw(seneste).
    cw(siden). cw(sikker).  cw(sikkert). cw(sikre). 
@@ -5777,9 +5779,9 @@ cw(s). %%  (  NSB s buss ==> nsb s buss)
    cw(skal). cw(slags). cw(slik). cw(snakkes).  
    cw(snarest). cw(snarere).  cw(snart).
    cw(som). cw(sorry). cw(sta). cw(stad). cw(stille). %%  
-   cw(størst). cw(største).  cw(sør). cw(sørligste). cw(sørfra). cw(sørover).
+   cw(stÃ¸rst). cw(stÃ¸rste).  cw(sÃ¸r). cw(sÃ¸rligste). cw(sÃ¸rfra). cw(sÃ¸rover).
    cw(straks). cw(supert). cw(svar).  
-   cw(sydfra). cw(sydover). cw(så). 
+   cw(sydfra). cw(sydover). cw(sÃ¥). 
 
 
 cw(takk). cw(team). cw(tem).
@@ -5804,17 +5806,17 @@ cw(vel).
     cw(veldig).  cw(velkommen). 
     cw(vest). cw(vestligste). cw(vestover). 
     cw(videre).
-    cw(vil). cw(værsågod). %%
+    cw(vil). cw(vÃ¦rsÃ¥god). %%
 
 cw(www). 
 
 cw(yngre).
 
-cw(ække). 
+cw(Ã¦kke). 
 
-cw(ø). cw(øst). cw(østfra). cw(østover). cw(øyeblikket). 
+cw(Ã¸). cw(Ã¸st). cw(Ã¸stfra). cw(Ã¸stover). cw(Ã¸yeblikket). 
 
-cw(å).  
+cw(Ã¥).  
 
 
 
@@ -5836,7 +5838,7 @@ synwordx(X,Y):-synword(X,Y).
 synsms('1r',etter).  %% c m p l(1,[r],etter). if split NNAA
 
 
-synsms(a,å).  %% collides with 5a (accepted, but no bus 5a)
+synsms(a,Ã¥).  %% collides with 5a (accepted, but no bus 5a)
 synsms(a,av).
 
 synsms(ats,buss).   %% bus (actual) 
@@ -5844,13 +5846,13 @@ synsms(auss,buss).  %% sms neib
 synsms(aussen,bussen).
 synsms(b,buss).        %%  to b = to busser, ikke buss 2 
 %% synsms(bra,fra).       %%  Haz %% er det bra med deg
-%% synsms(bar,når). %% act  ?
-synsms(brn,bru).       %%  bakke brñ
+%% synsms(bar,nÃ¥r). %% act  ?
+synsms(brn,bru).       %%  bakke brÃ±
 synsms(bu,buss). 
 synsms(bur,buss). 
 synsms(busp,buss).     %% smstab 
 synsms(cup,buss).      %% smstabl
-synsms(cul8r,adjø).    %% see you later
+synsms(cul8r,adjÃ¸).    %% see you later
 %% synsms(d,du).          %% Haz 
 %% synsms(d,det).      %%  -> synword
 synsms(depa,fra).      %% d(1#) ... e(2#) = f(3#) 
@@ -5861,7 +5863,7 @@ synsms(dro,for).   %% ordliste ?
 
 %% synsms(dra,          fra).  %%   Hazardous 
 %% "dra" Will be removed if followed by a name /remove-smers
-%% // når må jeg dra fra NTH Feil
+%% // nÃ¥r mÃ¥ jeg dra fra NTH Feil
 
 
 %% synsms(e, en).       %%  ?  Hazard ?
@@ -5870,47 +5872,47 @@ synsms(e,etter).       %%  collides with er
 
 %%% synsms(ei,jeg).        %% ? (actual) %%  Collides ei datter
 
-%% synsms(eller,etter).   %% hazard %% fra strindheim skole til gløs med buss 20 eller 60.
+%% synsms(eller,etter).   %% hazard %% fra strindheim skole til glÃ¸s med buss 20 eller 60.
 
 synsms(etteq,etter).   %% neib k  
 
-%% synsms(f,fra).      %%  NB ikke før //unnec prep(f,from
+%% synsms(f,fra).      %%  NB ikke fÃ¸r //unnec prep(f,from
 
 %% synsms(f,for). %% causes trouble
 
-%% synsms(f,første).      %%  Haz
+%% synsms(f,fÃ¸rste).      %%  Haz
 synsms(far,fra).       %% // blocks father
 synsms(fia,fra). 
 %% synsms(fengs,fengsel).
-%% synsms(for,før).    %%  neib key %% tar buss for å 
+%% synsms(for,fÃ¸r).    %%  neib key %% tar buss for Ã¥ 
 synsms(fnr,for). 
 synsms(fpa,fra).       %% // neib key sms
 synsms(fr,fra).        %%  Nei, bare fredag ???
 synsms(frab,fra).      %% 
 
-synsms(ft,første).     %% for tiden? 
+synsms(ft,fÃ¸rste).     %% for tiden? 
 synsms(furr,buss).     %% ?
 synsms(futer,etter).   %% double neib 
 
-synsms(førstpe,første). 
-synsms(føs,før).  
+synsms(fÃ¸rstpe,fÃ¸rste). 
+synsms(fÃ¸s,fÃ¸r).  
 
 %% synsms(galt,halv).     %% ordliste / neib %%  nohelp
 synsms(gave,gate).     %% neib # k
-%% synsms(gr,går).     %% synw
-synsms(g,går). 
-synsms(gåi,går). 
-synsms(gåq,går).      %%  Ordliste
-synsms(gåsa,går).     %%  Ordliste, actual
+%% synsms(gr,gÃ¥r).     %% synw
+synsms(g,gÃ¥r). 
+synsms(gÃ¥i,gÃ¥r). 
+synsms(gÃ¥q,gÃ¥r).      %%  Ordliste
+synsms(gÃ¥sa,gÃ¥r).     %%  Ordliste, actual
 
 synsms(halt,halv).   
-%% synsms(har,går). %% Ordliste // Hvilke st har rute 5 // hvem har tuc det 
+%% synsms(har,gÃ¥r). %% Ordliste // Hvilke st har rute 5 // hvem har tuc det 
 %% NB  HAZARD// DOESNT WORK // hvilken adresse har Tagore
 
-synsms(hjå,ila). 
+synsms(hjÃ¥,ila). 
 %% synsms(hpl,holdeplass).
-synsms(håp,går).   %%  tabl
-synsms(håpe,gård).
+synsms(hÃ¥p,gÃ¥r).   %%  tabl
+synsms(hÃ¥pe,gÃ¥rd).
 
 
 synsms(j,jeg). 
@@ -5919,59 +5921,59 @@ synsms(jep,jeg).    %% smstab
 synsms(jg,jeg). 
 
 %% synsms(k,klokken). %% confuse K. Jonssons vei
-synsms(kjøkken,klokken). 
+synsms(kjÃ¸kken,klokken). 
 
-%% synsms(kjøper,kjører).   %%  .. billett ? 
+%% synsms(kjÃ¸per,kjÃ¸rer).   %%  .. billett ? 
 
 synsms(kommeq,kommer).   %% neib k
 
 synsms(lei,jeg).     %% :-)
 %% synsms(liv,til).     %% ordliste %% ? 
 synsms(l8r,senere).  %% 
-%% synsms(lø,lørdag).%% synword 
-synsms(løgn,john).   %% :-) tablatur
+%% synsms(lÃ¸,lÃ¸rdag).%% synword 
+synsms(lÃ¸gn,john).   %% :-) tablatur
 
 %% synsms(m,med).       %% synw
 %% synsms(m,meg).    %% Hazard // jeg vil dra m buss 5
 
-synsms(m,må).     %% Haz ? // %%  hvilken buss m jeg ta, doesnt help
+synsms(m,mÃ¥).     %% Haz ? // %%  hvilken buss m jeg ta, doesnt help
 
 %% synsms(man,mandag).  %%  NB NB  man = noen// Hazardous !
-%% hvor går man av ...
+%% hvor gÃ¥r man av ...
 
-synsms(mar,når).  
+synsms(mar,nÃ¥r).  
 %% synsms(marte,neste). %% ?? 
 synsms(mlm,mellom). 
 synsms(mrg,morgen). 
-synsms(mu,må).   %% act 
+synsms(mu,mÃ¥).   %% act 
 synsms(n,neste). 
 synsms(ns,nr). 
 
 %% -> gn
-%% synsms(n,når).  %% n g   %% Too hazardous
-                         %% \+  n= når = REACH !
+%% synsms(n,nÃ¥r).  %% n g   %% Too hazardous
+                         %% \+  n= nÃ¥r = REACH !
 
-synsms(nas,når).  
-synsms(nat,når). 
+synsms(nas,nÃ¥r).  
+synsms(nat,nÃ¥r). 
 %% synsms(nbuss,nattbuss). %% most likeley on sms/slip ? (n)buss 
-synsms(ncr,når).        %%  Actual 
-% synsms(nr,når).       %% NO  Too Haz 
-% synsms(nær,når).      %% (men ikke reach; fixed in gram)
+synsms(ncr,nÃ¥r).        %%  Actual 
+% synsms(nr,nÃ¥r).       %% NO  Too Haz 
+% synsms(nÃ¦r,nÃ¥r).      %% (men ikke reach; fixed in gram)
 synsms(ne,neste).
 synsms(neite,neste).  
 synsms(nesthe,neste).
-synsms(ngb,buss).     %% år går buss
-synsms(nåq,når). 
+synsms(ngb,buss).     %% Ã¥r gÃ¥r buss
+synsms(nÃ¥q,nÃ¥r). 
 
 synsms(o,over).      %% (om) ? 
-synsms(oar,når). 
-synsms(oår,når). 
+synsms(oar,nÃ¥r). 
+synsms(oÃ¥r,nÃ¥r). 
 synsms(ob,nattbuss). %% neib key 
 synsms(or,nummer). 
 synsms(ora,fra). 
 
-synsms(p,på). 
-synsms(påsserer,passerer).   %% neib key 
+synsms(p,pÃ¥). 
+synsms(pÃ¥sserer,passerer).   %% neib key 
 synsms(qlt,kult).   
 
     synsms(drqlt,bra). %% as single word
@@ -5984,14 +5986,14 @@ synsms(rulr,bestemmer). %% ruler :-)
 synsms(s,sentrum).    %% NB trondheim s -> trondheim sentrum* (#->TS) 
 
 %% synsms(s,siste). %% TA-100825  %%  Hazardous, change to fnlp = [s] 
-                         %%  Buss 6 går fra s kl 16.00   
+                         %%  Buss 6 gÃ¥r fra s kl 16.00   
 
 % synsms(sett,rett).  %%  noise
 
 %%%%%% synsms(st,sentrumsterminalen). %%  NB St Olavs hosp. 
 synsms(sundt,rundt).   
 
-%% synsms(så,på). %% for å være på %% Haz?
+%% synsms(sÃ¥,pÃ¥). %% for Ã¥ vÃ¦re pÃ¥ %% Haz?
 
 
 synsms(t4l,til).         %% sms tastatur 
@@ -6006,15 +6008,15 @@ synsms(tijk,til).        %% j=1,+ k=2 = l=3 smstab
 synsms(tilw,til).  
 synsms(tolk,voll).       %% ordliste 
 
-synsms(u,du). %% E/N confuse %% er'u gærn eller 
-synsms(uære,være).       %% neib key 
+synsms(u,du). %% E/N confuse %% er'u gÃ¦rn eller 
+synsms(uÃ¦re,vÃ¦re).       %% neib key 
 
 synsms(v,ved).  
-synsms(v,være).    %%  haz ?
+synsms(v,vÃ¦re).    %%  haz ?
 
 synsms(va,ta).           %% neib key ?
 
-                %% destroys va re = være
+                %% destroys va re = vÃ¦re
 %% synsms(var,tar).         %% Hazardous %% det var buss 5 som gikk
 %% synsms(v,varsle).     %% Hazard
 %% synsms(v,ved).  %%## johan falkberges v <--- 
@@ -6027,7 +6029,7 @@ synsms(vik,til).         %%  low haz
 synsms(vt,vet).  
 
 
-synsms(øste,neste). %% actual
+synsms(Ã¸ste,neste). %% actual
 
 % sms names
 synsms(lgctr,elgeseter). 
@@ -6037,7 +6039,7 @@ synsms(lgctr,elgeseter).
 
 synword(femtes,femte). %% Lack gen  of ordinals
 %% etc etc
-synword('f|r',før). 
+synword('f|r',fÃ¸r). 
 
 
 synword('-',til). %% 24/12 - 1/1 
@@ -6052,12 +6054,12 @@ synword(iii ,3).
 synword(iv,  4).   
 
 
-synword('va¦re',være). 
-synword('va|re',være). 
+synword('vaÂ¦re',vÃ¦re). 
+synword('va|re',vÃ¦re). 
 
-synword('a|',jeg). %%   Ã¦ %%  dial+
-synword('va|re',være). %%  va|re 
-%% synword('va|r',være). %%  va|r  ? %% dial+  
+synword('a|',jeg). %%   ÃƒÂ¦ %%  dial+
+synword('va|re',vÃ¦re). %%  va|re 
+%% synword('va|r',vÃ¦re). %%  va|r  ? %% dial+  
 
 
 
@@ -6170,47 +6172,47 @@ synword(ll,11).
 
 synword(l030,1030). %% NB L030 etc etc 
 
-synword('liæ½rdag',lørdag). %%  ? ø trøbbel
-synword('siæ½ndag',søndag). %% iæ½ = ø 
+synword('liÃ¦Â½rdag',lÃ¸rdag). %%  ? Ã¸ trÃ¸bbel
+synword('siÃ¦Â½ndag',sÃ¸ndag). %% iÃ¦Â½ = Ã¸ 
 
 
-synword('iæ½',å). %% special  æøå trøbbel Ad Hoc 
-synword('miæ½',må).
-synword('niæ½',nå).
-synword('niæ½r',når).
-synword('piæ½',på).
-synword('viæ½re',være).
-synword('giæ½r',       går).     %%  gï¿½r
+synword('iÃ¦Â½',Ã¥). %% special  Ã¦Ã¸Ã¥ trÃ¸bbel Ad Hoc 
+synword('miÃ¦Â½',mÃ¥).
+synword('niÃ¦Â½',nÃ¥).
+synword('niÃ¦Â½r',nÃ¥r).
+synword('piÃ¦Â½',pÃ¥).
+synword('viÃ¦Â½re',vÃ¦re).
+synword('giÃ¦Â½r',       gÃ¥r).     %%  gÃ¯Â¿Â½r
 
 
 
-%% synword('/',og).    %%  Heimdal/Lundåsen  never from H to L 
+%% synword('/',og).    %%  Heimdal/LundÃ¥sen  never from H to L 
 synword('/',eller). %% Hazardious ? %% buss Lademoen/Dragvoll 
 
 %%%
 
-%%¤ synword(a   
+%%Â¤ synword(a   
 
-synword(a,             å). %% å-probl %% Haz
+synword(a,             Ã¥). %% Ã¥-probl %% Haz
 
-synword(aa,            å). 
-synword(aadjø,         adjø). 
-synword(aatte,         åtte).
+synword(aa,            Ã¥). 
+synword(aadjÃ¸,         adjÃ¸). 
+synword(aatte,         Ã¥tte).
 synword(aav,           av).   
 synword(abuss,         buss).   %% ? ala buss 3A
 synword(abussen,       bussen). %% t abussen ??? 
-synword(adhø,          adjø). 
-synword(adhjø,         adjø). 
-synword(adhlø,         adjø).
-synword(adj,           adjø). 
-synword(adjaø,         adjø).           %% adjÃ¸
-synword(adjjø,         adjø). 
-synword(adjo,          adjø). 
-synword(adjoe,         adjø). 
-synword(adjæ,          adjø).           %% own
+synword(adhÃ¸,          adjÃ¸). 
+synword(adhjÃ¸,         adjÃ¸). 
+synword(adhlÃ¸,         adjÃ¸).
+synword(adj,           adjÃ¸). 
+synword(adjaÃ¸,         adjÃ¸).           %% adjÃƒÂ¸
+synword(adjjÃ¸,         adjÃ¸). 
+synword(adjo,          adjÃ¸). 
+synword(adjoe,         adjÃ¸). 
+synword(adjÃ¦,          adjÃ¸).           %% own
 synword(adkomst,       ankomst).        %%  (spell ?)
-synword(adkæ,          adjø).  
-synword(adkø,          adjø). 
+synword(adkÃ¦,          adjÃ¸).  
+synword(adkÃ¸,          adjÃ¸). 
 synword(adre,          andre). 
 synword(adresseb,      adressen).  %% TA-110324 own 
 synword(af,            av).        %% DK
@@ -6221,7 +6223,7 @@ synword(aftem,         aften).
 synword(ah,            av).        %% own 
 synword(ai,            intelligens).    %% kunstig dog :-)
 synword(aillt,         alt).            %%  Dial
-synword(ajø,           adjø).  
+synword(ajÃ¸,           adjÃ¸).  
 synword(akomst,        ankomst).  
 synword(alik,          slik). 
 %% synword(all,           alle).        %% all -> article  Roughly
@@ -6233,9 +6235,9 @@ synword(ale,           alle). %%  all /all'e
 synword(all_e,         alle). %% if applicable 
 synword(alla,          alle).  
 synword(alldri,        ikke).           %%  (spell)
-%% synword(allerede,      nå).             %%  (roughly) -> reach %% nå syndrome
+%% synword(allerede,      nÃ¥).             %%  (roughly) -> reach %% nÃ¥ syndrome
 synword(allerede,[]). 
-synword(allereie,      nå).             %% allerede, closure 
+synword(allereie,      nÃ¥).             %% allerede, closure 
 synword(allle,         alle). 
 synword(allt,          alt).  
 synword(alikevel,      likevel).        %%  (spell)
@@ -6244,7 +6246,7 @@ synword(allikevel,     likevel).
 synword(altid,         alltid).         %% (spell)
 synword(altsay,        []). 
 
-%%  synword(altså,         []). %% ikke noisew (altså ikke)
+%%  synword(altsÃ¥,         []). %% ikke noisew (altsÃ¥ ikke)
 
 synword(allting,       alt). 
 synword(alting,        alt). 
@@ -6262,7 +6264,7 @@ synword(andres,        deres).  %% rough
 % synword(andre,         ulik).           %%  / ikke ulike ! synw
 % den andre bussen = #2  
 %% synword(andreneste,    andre).    %% rough, also split
-synword(ang,           angående).
+synword(ang,           angÃ¥ende).
 %% synword(angitt,        gitt). %% adj
 synword(angjeldende,   disse).
 synword(annlegg,       anlegg).   
@@ -6270,7 +6272,7 @@ synword(annt,          annet).    %% own
 synword(annlegget,     anlegget). %%
 synword(ansides,       attmed).   %% beside 
 synword(anskomst,      ankomst). 
-synword(anslå,         si). 
+synword(anslÃ¥,         si). 
 synword(aog,           og).          %% own
 synword(aom,           som).    
 %% synword(applikkasjon,  applikasjon). %% -> noun
@@ -6288,7 +6290,7 @@ synword(avgssted,      holdeplass).
 synword(avganh,        avgang).
 synword(avgitt,        gitt).  
 synword(avr,           avreise).
-%%   synword(avreise,       etter).     %% tid Hazard ? ¤ avreise = avgang
+%%   synword(avreise,       etter).     %% tid Hazard ? Â¤ avreise = avgang
 %%   synword(avreise,       fra).       %% sted 
 
 synword(avkomst,       ankomst).  
@@ -6302,7 +6304,7 @@ synword(annenhvert,     mange).   %% rough
 synword(annethver,     mange).    %% rough 
 synword(annethvert,     mange).   %% rough 
 
-synword(ank,           før).            %%  ank 1234
+synword(ank,           fÃ¸r).            %%  ank 1234
 synword(ank,           ankomst). 
 synword(ankmst,        ankomst). 
 %% synword(ankom,         ankomst). %% TA-101103
@@ -6316,25 +6318,25 @@ synword(ankomsy,       ankomst).        %% neibk
 synword(ankosmt,       ankomst).  
 synword(annkomst,      ankomst). 
 
-%%%%%%%%     synword(ankomst,       før).    %% tid  Hazard ?
-%% ankomst buss værnes 
+%%%%%%%%     synword(ankomst,       fÃ¸r).    %% tid  Hazard ?
+%% ankomst buss vÃ¦rnes 
 
-     synword(ankomstid,     før). 
-     synword(ankomsttid,    før).    %%
+     synword(ankomstid,     fÃ¸r). 
+     synword(ankomsttid,    fÃ¸r).    %%
 
 %%%%  jeg vil ha en tidligere ankomst NB NB
 
 synword(antallet,      antall).         %%  antall(et) busser
 synword(ar,            er). 
 synword(arabisk,       arabic). %% arabian ? 
-synword(aring,         å).    %% Ringv&aring;lvn =  Ringvålveien
+synword(aring,         Ã¥).    %% Ringv&aring;lvn =  RingvÃ¥lveien
 synword(asap,          heretter).  
 synword(asp,           heretter).
-%%% synword(at,            å).    %% Hazardous  
+%%% synword(at,            Ã¥).    %% Hazardous  
 synword(att,           at). 
-synword(att,           å).              %% (Swedish)
+synword(att,           Ã¥).              %% (Swedish)
 synword(att,           tilbake). %% Hazard ? 
-synword(atte,          åtte). 
+synword(atte,          Ã¥tte). 
 synword(attenda,       tilbake). %% sp
 synword(attende,       tilbake).
 synword(atter,         etter). 
@@ -6343,32 +6345,32 @@ synword(atme,          ved).     %%  forbi?
 synword(atmed,         ved).     %%  forbi?
 synword(attme,         ved).   %%
 synword(attmed,        ved).   %%
-synword(aust,          øst). 
+synword(aust,          Ã¸st). 
 synword(avg,           avgang). 
 
-%% synword(avg,           før).            %%  buss avg 1234 ...
-%% synword(avgang,           før).    %% Hazardious  avg nr 9 fra 
+%% synword(avg,           fÃ¸r).            %%  buss avg 1234 ...
+%% synword(avgang,           fÃ¸r).    %% Hazardious  avg nr 9 fra 
 
 synword(avgamg,        avgang).  
 synword(avstigning,   ankomst). 
 synword(ay,            at). 
-synword(ay,            å).        %%  Ã¥ 
+synword(ay,            Ã¥).        %%  ÃƒÂ¥ 
 synword(aytte,         8). 
-synword(aønsker,       ønsker). 
-synword(aøyeblikk,     øyeblikk).
-synword(ayr,           år).  
-%% synword(ayr,           går).  %% År
-%% synword(ayr,           når).  %% ??
-synword(aypen,         åpen).
-synword(ayssen,        hvordan). %% åassen
+synword(aÃ¸nsker,       Ã¸nsker). 
+synword(aÃ¸yeblikk,     Ã¸yeblikk).
+synword(ayr,           Ã¥r).  
+%% synword(ayr,           gÃ¥r).  %% Ã…r
+%% synword(ayr,           nÃ¥r).  %% ??
+synword(aypen,         Ã¥pen).
+synword(ayssen,        hvordan). %% Ã¥assen
 synword(ayssn,         hvordan). 
-synword(aøst,          øst).  
-synword(aøstre,        østre).
-synword(aøvre,         øvre). 
-synword(aå,            å).   
-synword(aå,            må). %% ? actual   
+synword(aÃ¸st,          Ã¸st).  
+synword(aÃ¸stre,        Ã¸stre).
+synword(aÃ¸vre,         Ã¸vre). 
+synword(aÃ¥,            Ã¥).   
+synword(aÃ¥,            mÃ¥). %% ? actual   
 
-%%¤ synword(b   
+%%Â¤ synword(b   
 
 
 synword(b,             buss). 
@@ -6376,7 +6378,7 @@ synword(baklengs,      tilbake).        %%  :-)
 synword(ban,           man). 
 %% synword(banan,         banene).  %% ? :-) 
 synword(bar,           bra). 
-synword(bar,           når).  %% neib nar
+synword(bar,           nÃ¥r).  %% neib nar
 
 %% synword(bare,  []). %% bare engelsk %% not noise ( ikke bare \== ikke)
 
@@ -6384,7 +6386,7 @@ synword(basserer,      passerer).    %% own
 synword(battbus,       nattbuss).  
 synword(battbuss,      nattbuss).    %% own   neib
 synword(bauss,         buss). 
-synword(bayt,          båt). 
+synword(bayt,          bÃ¥t). 
 synword(bbuss,         buss).   
 synword(bdet,          det). 
 synword(bed,           ved). 
@@ -6407,13 +6409,13 @@ synword(besser,        busser).
 %% synword(beste,         neste).   %% Ambiguous Rough Norges beste system 
 synword(bestandig,     alltid).  
 
-%% synword(bestemte,      en).      %% jeg ønsker bestemte ruter ( not noise!) %% jeg bestemte at
+%% synword(bestemte,      en).      %% jeg Ã¸nsker bestemte ruter ( not noise!) %% jeg bestemte at
 
 synword(betse,         beste).   %% neste? 
 synword(beyn,          byen).  
 synword(bfr,           fra).     %% b fra 
 synword(bfra,          fra).     %%
-synword(bførste,       første).
+synword(bfÃ¸rste,       fÃ¸rste).
 synword(bgynte,        begynte).
 synword(bhilke,        hvilke). 
 synword(bhva,          hva). 
@@ -6426,7 +6428,7 @@ synword(biuss,         buss).
 synword(biussen,       bussen). 
 synword(biussene,      bussene). 
 synword(biusser,       busser).
-synword(blaa,          blå). 
+synword(blaa,          blÃ¥). 
 synword(ble,           er).
 synword(blei,          er).  
 synword(blidere,       blid). 
@@ -6439,7 +6441,7 @@ synword(bluss,         buss).
 synword(bn,            bussnummer). %%  ?
 synword(bneste,        neste). 
 synword(bnussen,       bussen). 
-synword(bnår,          når).    %%  neib
+synword(bnÃ¥r,          nÃ¥r).    %%  neib
 synword(borbi,         forbi). 
 synword(bortafor,      bortenfor).
 synword(bortfra,       fra). 
@@ -6457,8 +6459,8 @@ synword(brukker,       bruker).
 synword(brukr,         bruker).
 synword(bruss,         buss).  
 synword(bs,            buss).
-synword(bsod,          kræsj).       %% blue screen of death :-)
-synword(bluescreen,          kræsj). 
+synword(bsod,          krÃ¦sj).       %% blue screen of death :-)
+synword(bluescreen,          krÃ¦sj). 
 synword(bss,           buss). 
 synword(bssen,         bussen). 
 synword(bssene,        bussene).
@@ -6475,7 +6477,7 @@ synword(btsser,        busser).
 synword(bu,            buss). %% NN bo ?
 synword(bu8ss,         buss).   %% not actual if numsplit
 synword(buaa,          buss). 
-synword(bub,           buss).   %% buß
+synword(bub,           buss).   %% buÃŸ
 synword(bubb,          buss). 
 synword(bubuss,        buss). 
 synword(budd,          buss). 
@@ -6487,7 +6489,7 @@ synword(buff,          buss).
 synword(buffen,        bussen). 
 
 % synword(bug,feil).        %% Not adjektiv // messy
-synword(bugs,bug).       %% NB, skal ikke bøyes som subst
+synword(bugs,bug).       %% NB, skal ikke bÃ¸yes som subst
 synword(buiss,         buss).
 synword(buissen,       bussen).
 synword(buissene,      bussene).
@@ -6525,7 +6527,7 @@ synword(bussd,         buss).           %%  NeibK
 synword(bussden,       bussen).  
 synword(bussdn,        bussen).         %% 
 synword(busse,         busser).         %%   DANSK  
-synword(busse,         kjøre).          %%  ( take_bus )
+synword(busse,         kjÃ¸re).          %%  ( take_bus )
 synword(busseb,        bussen).         %% neighb key  spell
 synword(bussebe,       bussene).  
 % synword(busseene,      bussene).   
@@ -6562,7 +6564,7 @@ synword(bussewr,       busser).
 
 synword(bussf,         buss).  
 synword(bussholderplasse, bussholdeplass).
-synword(bussholdeålass, bussholdeplass).   
+synword(bussholdeÃ¥lass, bussholdeplass).   
 synword(bussi,         buss).  
 %% synword(bussinn,       buss). %%... til (also split) 
 synword(bussin,        bussen).   %% 1n 
@@ -6573,21 +6575,21 @@ synword(bussm,         buss).
 synword(bussorakalet,  bussoraklet). 
 synword(bussoreklet,   bussoraklet).    %% own
 
-synword(busjåfør,      bussjåfør). 
-synword(busjoffør,     bussjåfør).
-synword(bussjårfør,    bussjåfør).  
-synword(buusjåfør,     bussjåfør).  
+synword(busjÃ¥fÃ¸r,      bussjÃ¥fÃ¸r). 
+synword(busjoffÃ¸r,     bussjÃ¥fÃ¸r).
+synword(bussjÃ¥rfÃ¸r,    bussjÃ¥fÃ¸r).  
+synword(buusjÃ¥fÃ¸r,     bussjÃ¥fÃ¸r).  
 
 
-synword(bussjayfaør,   bussjåfør).   
-synword(bussjåføre,    bussjåfører).  
-synword(busssjøforen,  bussjåføren).
-synword(busssjåførern,bussjåføren).
-synword(busssjåførern,bussjåføren).
-synword(bussførern,bussjåføren).
-synword(bussføren,bussjåføren).
-synword(bussføreren,bussjåføren).
-synword(busssjåføreren,bussjåføren).
+synword(bussjayfaÃ¸r,   bussjÃ¥fÃ¸r).   
+synword(bussjÃ¥fÃ¸re,    bussjÃ¥fÃ¸rer).  
+synword(busssjÃ¸foren,  bussjÃ¥fÃ¸ren).
+synword(busssjÃ¥fÃ¸rern,bussjÃ¥fÃ¸ren).
+synword(busssjÃ¥fÃ¸rern,bussjÃ¥fÃ¸ren).
+synword(bussfÃ¸rern,bussjÃ¥fÃ¸ren).
+synword(bussfÃ¸ren,bussjÃ¥fÃ¸ren).
+synword(bussfÃ¸reren,bussjÃ¥fÃ¸ren).
+synword(busssjÃ¥fÃ¸reren,bussjÃ¥fÃ¸ren).
 
 synword(bussrt,        busser).         %% dbl neib
 synword(bussrue,       bussrute).       %%  spc
@@ -6625,7 +6627,7 @@ synword(bussser,       busser).
 synword(busst,         buss). 
 %% synword(busstasjone,   holdeplass). %%  no HT   
 synword(bussterm,      bussterminalen). 
-synword(busstøk,       bustuc).  
+synword(busstÃ¸k,       bustuc).  
 synword(bussum,        bussen).  
 synword(bussun,        bussen).   
 synword(bosstrerminalen,  bussterminalen).  %% ?
@@ -6636,7 +6638,7 @@ synword(busstrute,     bussrute).
 synword(bustt,         buss). 
 synword(bustter,       busser).   
 synword(busss,         buss).           %% not genitive
-synword(bussnr,        rute). %%  kvilket bussnr går til ... 
+synword(bussnr,        rute). %%  kvilket bussnr gÃ¥r til ... 
 synword(bussten,       bussen).  
 synword(busstuc,       bustuc).
 synword(busspen,       bussen).
@@ -6663,11 +6665,11 @@ synword(buzzorakel,    bustuc). %%
 synword(bva,           hva).
 synword(bvs,           buss).  
 synword(bwtyr,         betyr).  
-%% synword(bye,           byen).    %% er bye = adjø på norsk ?
-%% synword(bye,           adjø).   
+%% synword(bye,           byen).    %% er bye = adjÃ¸ pÃ¥ norsk ?
+%% synword(bye,           adjÃ¸).   
 synword(byeb,          byen).    %% neib k
-synword(byebye,        adjø).
-synword(byby,          adjø). %% ?
+synword(byebye,        adjÃ¸).
+synword(byby,          adjÃ¸). %% ?
 synword(bygd,          laget). 
 synword(bysss,         buss). 
 synword(byta,          bytte).
@@ -6679,25 +6681,25 @@ synword(byussen,       bussen).
 synword(byussene,      bussene). 
 synword(byusser,       busser). 
 synword(byy,           by). 
-synword(bær,           nær).
-synword(bære,          være). %%  prob.
-synword(bæst,          best).  
-synword(bø,            hei).   %% :-) Bø i Telemark 
-synword(bøøøh,         hei).  %% act 
+synword(bÃ¦r,           nÃ¦r).
+synword(bÃ¦re,          vÃ¦re). %%  prob.
+synword(bÃ¦st,          best).  
+synword(bÃ¸,            hei).   %% :-) BÃ¸ i Telemark 
+synword(bÃ¸Ã¸Ã¸h,         hei).  %% act 
 
-% synword(bør,           må).  -> gå (jeg må til) ***
-% synword(burde,         må).  -> 
+% synword(bÃ¸r,           mÃ¥).  -> gÃ¥ (jeg mÃ¥ til) ***
+% synword(burde,         mÃ¥).  -> 
 
 synword(burdte,       burde). %%  spiw
 
-%% synword(bør,           kan). // ikke kan=know1 
-synword(bøss,          buss). 
-synword(bå,             nå).  %%  neib k  ?
-synword(bår,            går). %%  neib k
-synword(bår,            når). %%  neib k
-synword(bår,            båt). %%  own sp 
+%% synword(bÃ¸r,           kan). // ikke kan=know1 
+synword(bÃ¸ss,          buss). 
+synword(bÃ¥,             nÃ¥).  %%  neib k  ?
+synword(bÃ¥r,            gÃ¥r). %%  neib k
+synword(bÃ¥r,            nÃ¥r). %%  neib k
+synword(bÃ¥r,            bÃ¥t). %%  own sp 
 
-%%¤ synword(c  
+%%Â¤ synword(c  
 
 synword(cakl,          klokken).  %% Rough
 synword(caklokken,     klokken).  
@@ -6709,13 +6711,13 @@ synword(clokken,       klokken).
 synword(cpu,           computer).
 synword(cuss,          buss).
 synword(cyberspace,    internett). 
-synword(cære,          være). %% slip 
+synword(cÃ¦re,          vÃ¦re). %% slip 
 
-%%¤ synword(d  
+%%Â¤ synword(d  
 
 
 synword(d,             det).  %% from synsms
-%% synword(da,   nå).              %%  ==> da= reach etc
+%% synword(da,   nÃ¥).              %%  ==> da= reach etc
 synword(daa,           da).   
 synword(daaa,          da).  
 synword(daegen,        dagene).    %%  own 
@@ -6760,11 +6762,11 @@ synword(dia,           via).       %%  ?
 synword(dib,           din).  
 synword(didd,          ditt).
 synword(diu,           du). 
-synword(djø,           adjø).  
+synword(djÃ¸,           adjÃ¸).  
 synword(dkal,          skal).  
 synword(dn,            den). 
 synword(dne,           den). 
-synword(dnår,          når). 
+synword(dnÃ¥r,          nÃ¥r). 
 
 synword(dua,           du). 
 synword(due,           du).  
@@ -6776,7 +6778,7 @@ synword(duss,          buss).
 synword(dussen,        bussen).
 synword(dusser,        busser).
 synword(duu,           du). 
-% synword(de,            det). %% Dial. Hazard // går de to=går det 2
+% synword(de,            det). %% Dial. Hazard // gÃ¥r de to=gÃ¥r det 2
 % synword(de,            du).  %% De %% Hazard 
 
 synword(dea,           fra).  %% parall 
@@ -6813,7 +6815,7 @@ synword(dere,          tt).  %% NB Application Specific
 %% synword(dere,          tuc). 
 synword(dereter,       deretter).
 synword(derifra,       derfra). 
-synword(derifrå,       derfra). 
+synword(derifrÃ¥,       derfra). 
 synword(derefter,      deretter). 
 synword(deres,         din). 
 synword(dermed,        derfor). 
@@ -6847,14 +6849,14 @@ synword(detye,         dette).
 synword(deu,           du).
 synword(deyt,          det).  
 synword(dfag,          dag).
-synword(dfør,          før). 
+synword(dfÃ¸r,          fÃ¸r). 
 synword(dga,           dag).   %% own
 synword(di,            din). 
 %% synword(di,            de).    %%  dial Er mora di mann ?
 
 synword(dialekt,       norwegian). %% wrongeian :-)
 
-synword(dialækt,       norwegian). %%  dial :-)
+synword(dialÃ¦kt,       norwegian). %%  dial :-)
 synword(dig,           tuc). %%   %% Dan/Sve 
 synword(digre,         store). 
 synword(dil,           til).     %% own
@@ -6885,7 +6887,7 @@ synword(dommedag,      dooms_day).
 
    synword(pensjonsalderen,      dooms_day). %% :-) %% TA-101117
 
-synword(dpå,           på). %% d på %% own sp 
+synword(dpÃ¥,           pÃ¥). %% d pÃ¥ %% own sp 
 synword(draa,          dra). 
 synword(drikk,         drikker). %% TA-10210
 synword(spis,          spiser).  %%
@@ -6909,33 +6911,33 @@ synword(dy,            du).  %% Neib key
 %% synword(do,            toalett). %% ???
 synword(dor,           for).     %% neib ? 
 synword(dorekte,       direkte). %%  neib k ?
-synword(dorlig,        dårlig). 
+synword(dorlig,        dÃ¥rlig). 
 
 %% synword(dvs,           men). %% Rough %% ? 
 
 % synword(dyrt,          dyr). 
 
-synword(dæ,            deg). 
-synword(dæg,           deg).
-synword(dæm,           de).  %%  (dem??)
-synword(dæn,           den). 
-synword(dær,           der).  
+synword(dÃ¦,            deg). 
+synword(dÃ¦g,           deg).
+synword(dÃ¦m,           de).  %%  (dem??)
+synword(dÃ¦n,           den). 
+synword(dÃ¦r,           der).  
 
-%% synword(dø,            du). %% Dialect die 
-synword(døgne,         døgnet).
-synword(døgned,        døgnet). 
-synword(dør,           før). %% når dør jeg ?
-synword(døygnet,       døgnet). %% spiw 
-synword(då,            da). 
-synword(dåkker,        tuc). 
-%% synword(dåkker,        dere). %% shadows for tuc ? ad hoc
-synword(dår,           går). 
-synword(dårli,         dårlig).
+%% synword(dÃ¸,            du). %% Dialect die 
+synword(dÃ¸gne,         dÃ¸gnet).
+synword(dÃ¸gned,        dÃ¸gnet). 
+synword(dÃ¸r,           fÃ¸r). %% nÃ¥r dÃ¸r jeg ?
+synword(dÃ¸ygnet,       dÃ¸gnet). %% spiw 
+synword(dÃ¥,            da). 
+synword(dÃ¥kker,        tuc). 
+%% synword(dÃ¥kker,        dere). %% shadows for tuc ? ad hoc
+synword(dÃ¥r,           gÃ¥r). 
+synword(dÃ¥rli,         dÃ¥rlig).
 
-%%¤ synword(e  
+%%Â¤ synword(e  
 
 synword(e,        er).       %% Dialect collides etter fossegrenda t trondheim s e kl 1215
-synword(e,        etter).    %% (destroys når e æ på nardo)
+synword(e,        etter).    %% (destroys nÃ¥r e Ã¦ pÃ¥ nardo)
 %% synword(e,        jeg).      %% dial, Haz
 synword(eb,       en).       %% own ?
 synword(ebuss,    buss).     %% sist ebuss 
@@ -6947,9 +6949,9 @@ synword(eet,      et).
 synword(eetr,     etter). 
 synword(eetter,   etter).  
 
-synword(èn, ett).   %% ( no eq in masc) 
+synword(Ã¨n, ett).   %% ( no eq in masc) 
 
-% når passerer bussen e-verket
+% nÃ¥r passerer bussen e-verket
 
 synword(ee,          er). %%  ?
 synword(een,         en). %%  (even ?)
@@ -6961,7 +6963,7 @@ synword(eftermiddagsrute,ettermiddagsrute).
 
 synword(efter,         etter).  %% efter = strict after ??no %% TA-110314   
 
-synword(efør,          før).  %%  ... fremm efør 8?
+synword(efÃ¸r,          fÃ¸r).  %%  ... fremm efÃ¸r 8?
 synword(eg,            jeg). 
 
 %% synword(egenlig,       []).  
@@ -7005,7 +7007,7 @@ synword(elerl,         eller).
 synword(elelr,         eller).
 synword(elker,         eller).
 %% synword(eller,         etter).  %%  buss 5 eller 36 fra moholt =>  2436 
-%% synword(ellers,        []).     %% destroys ellers tenkte jeg på bussen     
+%% synword(ellers,        []).     %% destroys ellers tenkte jeg pÃ¥ bussen     
 synword(elle,          eller).  
 synword(ellee,         11).   
 synword(elller,        eller).
@@ -7026,10 +7028,10 @@ synword(engelsk,       english).
 synword(englesk,       english). 
 synword(enhver,        alle). 
 synword(enste,         neste). %% eneste). 
-synword(ennu,          nå).            %%  rough
-synword(ennå,          nå).            %%  rough
+synword(ennu,          nÃ¥).            %%  rough
+synword(ennÃ¥,          nÃ¥).            %%  rough
 
-% synword(enda,          nå).   % Noise
+% synword(enda,          nÃ¥).   % Noise
 
 synword(endrede,       endrete). 
 synword(endrerde,      endrete). 
@@ -7037,14 +7039,14 @@ synword(endrerde,      endrete).
 synword(enkelte,       noen). 
 synword(enklast,       enklest). 
 synword(enkleste,      beste). 
-synword(enår,          når).  
+synword(enÃ¥r,          nÃ¥r).  
 
 
 synword(eom,      som). 
-synword(epå,      på).  
+synword(epÃ¥,      pÃ¥).  
 synword(era,      fra).  
 synword(erv,      er). %% e r bl sperr
-synword(eræ,      er).
+synword(erÃ¦,      er).
 
 %% synword(erdet,    eksisterer). 
 synword(erf,      er).  
@@ -7067,7 +7069,7 @@ synword(eterr,         etter). %% own
 synword(etermida,      ettermiddag). 
 synword(etermidda,     ettermiddag). 
 synword(etetr,         etter). 
-synword(etfør,         før).   
+synword(etfÃ¸r,         fÃ¸r).   
 synword(etgter,        etter).  
 synword(ether,         etter).  %% TA-110120
 synword(etn,           en).          %% repair 
@@ -7088,7 +7090,7 @@ synword(ettel,         etter).
 synword(ettellerannet, noe).   
 synword(etterb,        etter). 
 synword(ettere,        etter). 
-synword(etterfør,      før).    %%  own 
+synword(etterfÃ¸r,      fÃ¸r).    %%  own 
 synword(etterhvert,    deretter). 
 %% synword(etterkl,       etter).  %% split
 %% synword(etterklokka,   etter). 
@@ -7099,9 +7101,9 @@ synword(ettermiddadg,  ettermiddag).
 synword(ettermidddag,  ettermiddag). 
 synword(ettermkl,      etter). 
 synword(ettermida,     ettermiddag). 
-synword(etternå,       heretter). 
-synword(etterpay,      deretter).   %% etterpÃ¥ 
-synword(etterpå,       deretter).  
+synword(etternÃ¥,       heretter). 
+synword(etterpay,      deretter).   %% etterpÃƒÂ¥ 
+synword(etterpÃ¥,       deretter).  
 synword(ettersom,      fordi).    
 synword(ettes,         etter).  
 synword(ettet,         etter). 
@@ -7111,7 +7113,7 @@ synword(ettr,          etter).
 synword(ettre,         etter).  
 synword(ettrer,        etter).       %% own sp
 synword(ettrmiddag,    ettermiddag).
-synword(ettrpå,        etterpå). 
+synword(ettrpÃ¥,        etterpÃ¥). 
 synword(ettrt,         etter). 
 synword(ettter,        etter). 
 synword(etyter,        etter). 
@@ -7134,35 +7136,35 @@ synword(evnt,eller).
 %% synword(evt,[]).  %% blocks evt. ? 
 synword(evt,eller). 
 synword(ev,eller).  
-%%  synword(exit,          adjø).    %% -> eng
+%%  synword(exit,          adjÃ¸).    %% -> eng
 synword(ewr,           er).      %% ? own
 synword(eyter,         etter).   %%  slip
 synword(eytter,        etter). 
 
 
-%%¤ synwordf  
+%%Â¤ synwordf  
 
 
 %% synword(f,             fra).     %%   f -> fra -> etter #####   
-%% synword(f,             før).     %% causes ambig 
-%% synword(f,             første).  %% også synsms ? 
+%% synword(f,             fÃ¸r).     %% causes ambig 
+%% synword(f,             fÃ¸rste).  %% ogsÃ¥ synsms ? 
 
-synword('fiæ½r',       før).  
-synword(f0rste,        første). 
+synword('fiÃ¦Â½r',       fÃ¸r).  
+synword(f0rste,        fÃ¸rste). 
 synword(fa,            fra).  
-%% synword(fa,            få). %% Haz 
+%% synword(fa,            fÃ¥). %% Haz 
 
-synword(faorste,       første).     %% Ø-trøbbel  fÃ¸rste
-%% synword(far,           får).        %% TA-110122 // fra ??
-synword(faølger,       følger).  
-synword(faør,          før).        %% fÃ¸r .
-synword(faørste,       første).     %% Ø-trøbbel
-synword(faørstkommende, første). 
-%% synword(fa,            få).      %%  Collision ?
-synword(faa,           få). 
-synword(faar,          får). 
-synword(faarstaar,     forstår).  
-synword(faerre,        få).      %%  enn???
+synword(faorste,       fÃ¸rste).     %% Ã˜-trÃ¸bbel  fÃƒÂ¸rste
+%% synword(far,           fÃ¥r).        %% TA-110122 // fra ??
+synword(faÃ¸lger,       fÃ¸lger).  
+synword(faÃ¸r,          fÃ¸r).        %% fÃƒÂ¸r .
+synword(faÃ¸rste,       fÃ¸rste).     %% Ã˜-trÃ¸bbel
+synword(faÃ¸rstkommende, fÃ¸rste). 
+%% synword(fa,            fÃ¥).      %%  Collision ?
+synword(faa,           fÃ¥). 
+synword(faar,          fÃ¥r). 
+synword(faarstaar,     forstÃ¥r).  
+synword(faerre,        fÃ¥).      %%  enn???
 synword(famile,        familie).
 synword(famme,         framme). 
 synword(fakta,         informasjon). 
@@ -7170,41 +7172,41 @@ synword(far,           fra).
 %% synword(fara,          fra). %% FARA a/s 
 % synword(farefritt,     safely). 
 synword(farve,         farge). 
-synword(farvell,       adjø).  
+synword(farvell,       adjÃ¸).  
 synword(farven,        fargen).
 synword(farvene,       fargene). 
 synword(farvens,       fargens). 
 synword(farvenes,      fargenes). 
-synword(farvel,        adjø).
+synword(farvel,        adjÃ¸).
 %% synword(favoritt,      beste). %% ? 
-synword(fay,           få).     %%  fÃ¥
-synword(fayr,          får).    %%  fÃ¥r
-synword(faytt,         fått). 
-synword(faøste,        første). %% fÃ¸ste 
-synword(fbuss,         buss).   %% første? 
+synword(fay,           fÃ¥).     %%  fÃƒÂ¥
+synword(fayr,          fÃ¥r).    %%  fÃƒÂ¥r
+synword(faytt,         fÃ¥tt). 
+synword(faÃ¸ste,        fÃ¸rste). %% fÃƒÂ¸ste 
+synword(fbuss,         buss).   %% fÃ¸rste? 
 synword(fca,           fra). 
 synword(fda,           fra). 
 synword(fdra,          fra). 
 synword(fea,           fra).
 synword(femme,         fremme). 
 synword(fen,           fem). 
-synword(feorste,       første).
-synword(fer,           kjører). 
+synword(feorste,       fÃ¸rste).
+synword(fer,           kjÃ¸rer). 
 synword(fer,           for).  %% dial
 synword(fera,          fra).  %%           sp 
 synword(ferdag,        fredag). 
-synword(ferdes,        går).  
+synword(ferdes,        gÃ¥r).  
 synword(ferdi,         ferdig).  
 synword(ferm,          5).  
-synword(ferrest,       færre).   %%  incomplete #
-synword(ferrest,       få). 
-synword(ferste,        første). 
+synword(ferrest,       fÃ¦rre).   %%  incomplete #
+synword(ferrest,       fÃ¥). 
+synword(ferste,        fÃ¸rste). 
 synword(festbussen,    nattbussen). 
 synword(fetter,        etter).   %% actual
-synword(feå,           fra). 
+synword(feÃ¥,           fra). 
 synword(ffor,          for).  
 synword(ffra,          fra). 
-synword(ffør,          før).  
+synword(ffÃ¸r,          fÃ¸r).  
 synword(fgra,          fra). 
 synword(fil,           til).   %% file? Haz?
 synword(fims,          eksisterer).
@@ -7222,36 +7224,36 @@ synword(fior,          for).
 synword(fir,           for). %% own 
 synword(firmiddag,     formiddag). 
 synword(firmiddagen,   formiddagen). 
-synword(firste,        første). 
+synword(firste,        fÃ¸rste). 
 synword(fjede,         fjerde).   
 synword(fla,           fra).  
 synword(fleire,        flere).  
 synword(fleksibelt,    bra).        %%   (roughly)
 synword(flere,         mange).      %% rough
 synword(flinkest,      flink).
-synword(flr,           før).        %%  neib k
-synword(flrste,        første).     %%  neib k
+synword(flr,           fÃ¸r).        %%  neib k
+synword(flrste,        fÃ¸rste).     %%  neib k
 synword(fluybuss,      flybuss).   
 synword(fluybussen,    flybussen).  %%
 synword(flyavg,        flyavgang). 
 synword(flybusse,      flybusser).  %% Da 
-synword(flypøass,      flyplass). 
-synword(flypøassen,    flyplassen).
-synword(flyåbuss,      flybuss).   
+synword(flypÃ¸ass,      flyplass). 
+synword(flypÃ¸assen,    flyplassen).
+synword(flyÃ¥buss,      flybuss).   
 synword(fnattbussen,   nattbussen).
 synword(fneste,        neste).      %% Repair 
-synword(fnår,          når).  
+synword(fnÃ¥r,          nÃ¥r).  
 synword(fo,            for).  
 synword(fof,           for). 
 synword(foill,         full). 
 synword(foir,          for). 
 synword(fobi,          forbi). 
-synword(foelgende,     følgende). 
-synword(foer,          før). 
+synword(foelgende,     fÃ¸lgende). 
+synword(foer,          fÃ¸r). 
 synword(foerbi,        forbi). 
-synword(foerst,        først). 
-synword(foerste,       første). 
-synword(folgende,      følgende).  
+synword(foerst,        fÃ¸rst). 
+synword(foerste,       fÃ¸rste). 
+synword(folgende,      fÃ¸lgende).  
 synword(folk,          personer). 
 synword(fom,           etter).    %% fra og med 
 synword(foor,          for).    
@@ -7261,7 +7263,7 @@ synword(foprbi,        forbi).
 synword(fora,          for).  %%  ?
 synword(forai,         forbi). 
 synword(forci,         forbi). 
-synword(fori,          for). %  fori å være .. 
+synword(fori,          for). %  fori Ã¥ vÃ¦re .. 
 synword(forb,          forbi). 
 synword(forbe,         forbi). 
 synword(forbiu,        forbi). 
@@ -7276,12 +7278,12 @@ synword(forbli,        forbi).
 synword(ford,          fordi). 
 synword(fordbi,        forbi).      %%  neik
 %% synword(fordi,         forbi).   %% Haz
-%% Haz ? går bussen fordi det er streik ? 
-synword(foregående,    forrige). 
+%% Haz ? gÃ¥r bussen fordi det er streik ? 
+synword(foregÃ¥ende,    forrige). 
 synword(forelsening,   forelesning). 
 synword(forerst,       forrerst).
 synword(foresten,      forresten). 
-synword(foreøpig,      foreløpig). %% own 
+synword(foreÃ¸pig,      forelÃ¸pig). %% own 
 synword(forressten,    forresten). %%
 
 synword(forf,          for). 
@@ -7289,13 +7291,13 @@ synword(forferdelig,   veldig).
 synword(forgi,         forbi).  
 synword(forgie,        forrige). 
 synword(forgif,        forrige).    %% ?
-synword(forgår,        foregår).    %%  own
+synword(forgÃ¥r,        foregÃ¥r).    %%  own
 synword(fori,          forbi).      %%  "Frei" sic
 synword(forib,         forbi). 
 synword(foribi,        forbi).  
 synword(forige,        forrige). 
-synword(forigårs,      forgårs). 
-synword(forigårs,      forgårs). 
+synword(forigÃ¥rs,      forgÃ¥rs). 
+synword(forigÃ¥rs,      forgÃ¥rs). 
 synword(forje,         forrige). 
 synword(forni,         forbi). 
 synword(foro,          for). 
@@ -7306,7 +7308,7 @@ synword(forsent,       sent). %%  forsinket).
 synword(forsi,         forbi). 
 synword(forsinka,      forsinket). 
 synword(forsinkede,    forsinket).  %%  ( DANSK)
-synword(forrigårs,     forgårs). 
+synword(forrigÃ¥rs,     forgÃ¥rs). 
 synword(forsjelie,     forskjellige). 
 synword(forsjelige,    forskjellige). %%
 synword(forsjellig,    forskjellig).
@@ -7315,11 +7317,11 @@ synword(forsjelige,    forskjellige).
 synword(forskinket,    forsinket). 
 synword(forskjelie,    forskjellige).
 synword(forskjelige,   forskjellige). 
-synword(forst,         første).        %% most prob (først?) 
-synword(forstayr,      forstår).
-synword(forste,        første). 
+synword(forst,         fÃ¸rste).        %% most prob (fÃ¸rst?) 
+synword(forstayr,      forstÃ¥r).
+synword(forste,        fÃ¸rste). 
 synword(forstod,       forsto). 
-synword(forståe,       forstår). 
+synword(forstÃ¥e,       forstÃ¥r). 
 %% synword(forsvant,      gikk). 
 synword(forsunket,     forsinket).  
 synword(fortast,       snarest). 
@@ -7328,15 +7330,15 @@ synword(fortest,       snarest).
 synword(fortes,        snarest). 
 synword(fortest,       bra). 
 synword(forteste,      beste). 
-%% synword(fortsatt,      nå).        %%  NOT the verb !!!
-synword(fortæl,        fortelle). 
-synword(fortæll,       fortelle). 
-synword(fortælle,      fortelle). 
+%% synword(fortsatt,      nÃ¥).        %%  NOT the verb !!!
+synword(fortÃ¦l,        fortelle). 
+synword(fortÃ¦ll,       fortelle). 
+synword(fortÃ¦lle,      fortelle). 
 synword(foruten,       uten). 
 synword(forvbi,        forbi).  
-synword(forvirrende,   dårlig). 
+synword(forvirrende,   dÃ¥rlig). 
 
-synword(forøvrig,      redundant0). %% redundant adverb
+synword(forÃ¸vrig,      redundant0). %% redundant adverb
                                     %% but necessary for word order %% TA-101117
 
 synword(fot,           for).      %% NEIB KEY 
@@ -7347,10 +7349,10 @@ synword(fotbi,         forbi).
 synword(fote,          ofte).
 synword(fotelle,       fortelle). 
 synword(fots,          fot). %% ad hoc  Til fots 
-synword(fp,            få).       %% neib k 
-synword(fpr,           før). 
+synword(fp,            fÃ¥).       %% neib k 
+synword(fpr,           fÃ¸r). 
 synword(fpr,           for).      %% neib k 
-synword(fprstår,       forstår).  %%  own sp
+synword(fprstÃ¥r,       forstÃ¥r).  %%  own sp
 synword(fprt,          fort). 
 synword(fqa,           fra).  
 synword(fr,            fra). 
@@ -7364,7 +7366,7 @@ synword(frak,          fra).
 synword(fral,          fra).  
 synword(fram,          framme). 
 %% synword(fram,        fra).     %% ignored anyway
-synword(framdeles,     nå). 
+synword(framdeles,     nÃ¥). 
 synword(frame,         framme).  
 
 synword(framfor,       foran).   
@@ -7373,22 +7375,22 @@ synword(framfor,       foran).
 
 synword(framkomst,     ankomst). 
 synword(framm,         framme).   %% dial 
-synword(framme,        før).
+synword(framme,        fÃ¸r).
 synword(frammen,         framme).  
-synword(framleis,      nå). 
+synword(framleis,      nÃ¥). 
 synword(frammme,       framme). 
-synword(framover,      fram).         %%   ( går det framover ?)
+synword(framover,      fram).         %%   ( gÃ¥r det framover ?)
 synword(framover,      heretter). 
-synword(framste,  første).    %%
-synword(framerste,  første).  %%
-synword(frammerste,  første). %%
+synword(framste,  fÃ¸rste).    %%
+synword(framerste,  fÃ¸rste).  %%
+synword(frammerste,  fÃ¸rste). %%
 % synword(framover,      bra).        %%  :-)
 synword(fran,          fra). %% - Fana amblehash
 synword(franm,         fram). 
 synword(franme,        framme).
 synword(franmme,       framme).
 synword(fransk,        french).
-synword(franår,        hvorfra).  %%  Rough
+synword(franÃ¥r,        hvorfra).  %%  Rough
 synword(frap,          fra).
 synword(frar,          fra).    
 synword(frar,          drar). %% ?  own
@@ -7398,7 +7400,7 @@ synword(frat,          fra).
 synword(fratil,        forbi). 
 %%  synword(fratr,         fra).     %% fra tr sentralst.
 synword(fray,          fra).  
-synword(fraø,          fra).  
+synword(fraÃ¸,          fra).  
 synword(frbi,          forbi). 
 synword(frd,           fra).  
 synword(frda,          fra).  
@@ -7406,7 +7408,7 @@ synword(frea,          fra).
 synword(frem,          fram).  
 %% synword(fremfor,       foran). %% ?  %% also "better than"
 synword(fremm,         fram). 
-synword(fremdeles,     nå).
+synword(fremdeles,     nÃ¥).
 synword(fremkomst,     ankomst). 
 synword(fremover,      heretter). 
 synword(fremmover,     heretter). 
@@ -7414,7 +7416,7 @@ synword(freme,         framme).
 synword(fremma,        framme). 
 
 synword(fremme,        framme). 
-%% synword(fremme,        før).   %%  (Trans.  -> framme ->) 
+%% synword(fremme,        fÃ¸r).   %%  (Trans.  -> framme ->) 
                                   %% bussen er fremme  onsdag
 
 synword(fremmede,      personer). %% rough  (most persons are ...
@@ -7423,8 +7425,8 @@ synword(fremmme,       framme).
 synword(frfa,          fra). 
 synword(frta,          fra). 
 synword(forbh,         forbi).  
-synword(forrerste,     første).  %% Rough 
-synword(fremste,       første).
+synword(forrerste,     fÃ¸rste).  %% Rough 
+synword(fremste,       fÃ¸rste).
 
 
 %% fram er redundant  buss 66 er fremme 10 ==> buss 66 = 10 # 
@@ -7438,31 +7440,31 @@ synword(frla,          fra).
 %% synword(frm,           fra). %% fram?
 synword(frmeme,        framme).
 %% synword(fro,           fra). %% causes commit error
-synword(fro,           for).    %% for å være
+synword(fro,           for).    %% for Ã¥ vÃ¦re
 
 synword(frobi,         forbi). 
-%% synword(fron,          fra). %% TA-110415  (Sør) Fron
+%% synword(fron,          fra). %% TA-110415  (SÃ¸r) Fron
 synword(fror,          for). 
 synword(frorbi,        forbi).  
 synword(fraa,          fra). 
 synword(frq,           fra).
 synword(frqa,          fra). 
-synword(frp,           fra). %% frå? :-) 
+synword(frp,           fra). %% frÃ¥? :-) 
 synword(frr,           fra).
 synword(frra,          fra).  
 synword(frrra,         fra).
-synword(fryktelig,     dårlig). 
-synword(fræ,           fra). 
-synword(frækk,         frekk). 
-synword(frø,           fra).
-synword(frørste,       første).
-synword(frøste,        første). 
-synword(frå,           fra).  
-synword(från,          fra).          %% Swedish 
+synword(fryktelig,     dÃ¥rlig). 
+synword(frÃ¦,           fra). 
+synword(frÃ¦kk,         frekk). 
+synword(frÃ¸,           fra).
+synword(frÃ¸rste,       fÃ¸rste).
+synword(frÃ¸ste,        fÃ¸rste). 
+synword(frÃ¥,           fra).  
+synword(frÃ¥n,          fra).          %% Swedish 
 synword(frs,           fra).     %% neib k 
 synword(frsa,          fra). 
-synword(frst,          først). 
-synword(frste,         første).  %% 
+synword(frst,          fÃ¸rst). 
+synword(frste,         fÃ¸rste).  %% 
 synword(fru,           fra).     %%  ?
 synword(fsa,           fra). 
 synword(fta,           fra).     %% own sp 
@@ -7477,150 +7479,150 @@ synword(fllstendige,   fullstendige).
 synword(fult,          fullt). 
 synword(fusser,        busser). %% etc
 synword(fvra,          fra).  
-%% synword(fy,            dårlig). %% :-) 
-synword(fydda,         dårlig).
-synword(fyrst,         først). 
-synword(fyrste,        første).
-synword(fyste,         første). 
-synword(fæm,           fem).  
-%% synword(fær,           går).      %%  Dial %% confuse før %% TA-110214
-%% synword(fær,           reise).    %%  dial \+ en reise
-synword(fær,           før).      %%   f¿r  %%  Når fær bussen
-%% synword(fær,           kjører).   %%  Dial.%% confuse før %% TA-110214
+%% synword(fy,            dÃ¥rlig). %% :-) 
+synword(fydda,         dÃ¥rlig).
+synword(fyrst,         fÃ¸rst). 
+synword(fyrste,        fÃ¸rste).
+synword(fyste,         fÃ¸rste). 
+synword(fÃ¦m,           fem).  
+%% synword(fÃ¦r,           gÃ¥r).      %%  Dial %% confuse fÃ¸r %% TA-110214
+%% synword(fÃ¦r,           reise).    %%  dial \+ en reise
+synword(fÃ¦r,           fÃ¸r).      %%   fÂ¿r  %%  NÃ¥r fÃ¦r bussen
+%% synword(fÃ¦r,           kjÃ¸rer).   %%  Dial.%% confuse fÃ¸r %% TA-110214
 
-synword(færdi,         ferdig).  
-synword(fære,          være). %% sp 
-%% synword(færre,         få).  %% (unwanted_verb) \+ get  
-synword(færrest,       få).           %%  Rough 
-synword(færste,        første).  
-synword(fø,            før). 
-synword(fødd,          født). 
-synword(føe,           før).  
-synword(føer,          før).  
-synword(føk,           før).  
-synword(føl,           før).
-synword(føles,         er).           %% For all PP 
-synword(følgelig,      derfor).
-synword(følges,        går).    %% hvilke ruter følges 
-synword(føprste,       første).  
+synword(fÃ¦rdi,         ferdig).  
+synword(fÃ¦re,          vÃ¦re). %% sp 
+%% synword(fÃ¦rre,         fÃ¥).  %% (unwanted_verb) \+ get  
+synword(fÃ¦rrest,       fÃ¥).           %%  Rough 
+synword(fÃ¦rste,        fÃ¸rste).  
+synword(fÃ¸,            fÃ¸r). 
+synword(fÃ¸dd,          fÃ¸dt). 
+synword(fÃ¸e,           fÃ¸r).  
+synword(fÃ¸er,          fÃ¸r).  
+synword(fÃ¸k,           fÃ¸r).  
+synword(fÃ¸l,           fÃ¸r).
+synword(fÃ¸les,         er).           %% For all PP 
+synword(fÃ¸lgelig,      derfor).
+synword(fÃ¸lges,        gÃ¥r).    %% hvilke ruter fÃ¸lges 
+synword(fÃ¸prste,       fÃ¸rste).  
 
-%% synword(før,           tidligere).    %% (Hazard// Adverb)
-%%                    %% (buss passerer) nth 33 før klokka 20
+%% synword(fÃ¸r,           tidligere).    %% (Hazard// Adverb)
+%%                    %% (buss passerer) nth 33 fÃ¸r klokka 20
                       %% ==>             nth 33 tidlige klokker (SIC)
 
-%% synword(før,           for).          %% Swe/Dial  %% Hazard
-synword(førbi,       forbi).
-synword(førdte,      første). 
-synword(førkl,       før). 
-synword(førklokka,   før). 
-synword(førklokken,   før). 
+%% synword(fÃ¸r,           for).          %% Swe/Dial  %% Hazard
+synword(fÃ¸rbi,       forbi).
+synword(fÃ¸rdte,      fÃ¸rste). 
+synword(fÃ¸rkl,       fÃ¸r). 
+synword(fÃ¸rklokka,   fÃ¸r). 
+synword(fÃ¸rklokken,   fÃ¸r). 
 
-synword(førr,           for).             %% Trønd 
-synword(førre,          forrige).         %% NN 
-synword(føre,          før).              %%  (dialect)
-synword(førehand,      forhånd).          %%  (dialect)
+synword(fÃ¸rr,           for).             %% TrÃ¸nd 
+synword(fÃ¸rre,          forrige).         %% NN 
+synword(fÃ¸re,          fÃ¸r).              %%  (dialect)
+synword(fÃ¸rehand,      forhÃ¥nd).          %%  (dialect)
 
-synword(føreste,       første).
-synword(førete,        første). 
-synword(førrste,       første). 
-synword(førse,         første). 
-synword(førset,        første).  
+synword(fÃ¸reste,       fÃ¸rste).
+synword(fÃ¸rete,        fÃ¸rste). 
+synword(fÃ¸rrste,       fÃ¸rste). 
+synword(fÃ¸rse,         fÃ¸rste). 
+synword(fÃ¸rset,        fÃ¸rste).  
 
-synword(førstgående,   første). 
+synword(fÃ¸rstgÃ¥ende,   fÃ¸rste). 
 
-synword(førskommende,  første). 
-synword(førstkomende,  første). 
-synword(førstkommenede,første). 
-synword(førstekommende,første). 
-   synword(førtskommende,første). 
-synword(først,         første).        %% Haz Ambig ??? 
-synword(førsta,        første).
-synword(førstd,        første).       %% sms neib key 
-%%  synword(førstebuss,    buss).         %% also splitword
-synword(førstew,       første). 
-synword(førstre,       første). 
-synword(førstye,       første).       %% neib k 
-synword(førswte,       første).  
-synword(førsye,        første). 
-synword(ført,          før).          %% slip
-synword(førte,         første).  %%  ( spell ) %%   haz?
-synword(førts,         først).  
-synword(førtse,        første). 
-synword(førtste,       første).  
-synword(førtæl,        fortelle).  
-synword(føsst,         først).  
-synword(føsr,          før).          %% own
-synword(føst,          først).        %% Dialect
-synword(føste,         første).       %% Dialect
-synword(føør,          før).   
-synword(føørste,       første).
-synword(føs,           første).       %% \+ først
-synword(føsret,        første). 
-synword(føsrte,        første). 
-synword(føt,           før).   
-synword(føtr,          før).  
-synword(føtste,        første).  
-%% synword(får,           for).       %%  Hvor får man kjøpt kort?
-%% synword(får,           går).       %%   Hazardous
-synword(fårbi,         forbi). 
-synword(fårrbi,        forbi).
-synword(fårrå,         reise).  
-synword(fårste,        første). 
-synword(fåt,           fått).  
-synword(fåør,          før).          %%  fÃ¸r 
-synword(fåørste,       første). 
-
-
-%%¤ synword(g  
+synword(fÃ¸rskommende,  fÃ¸rste). 
+synword(fÃ¸rstkomende,  fÃ¸rste). 
+synword(fÃ¸rstkommenede,fÃ¸rste). 
+synword(fÃ¸rstekommende,fÃ¸rste). 
+   synword(fÃ¸rtskommende,fÃ¸rste). 
+synword(fÃ¸rst,         fÃ¸rste).        %% Haz Ambig ??? 
+synword(fÃ¸rsta,        fÃ¸rste).
+synword(fÃ¸rstd,        fÃ¸rste).       %% sms neib key 
+%%  synword(fÃ¸rstebuss,    buss).         %% also splitword
+synword(fÃ¸rstew,       fÃ¸rste). 
+synword(fÃ¸rstre,       fÃ¸rste). 
+synword(fÃ¸rstye,       fÃ¸rste).       %% neib k 
+synword(fÃ¸rswte,       fÃ¸rste).  
+synword(fÃ¸rsye,        fÃ¸rste). 
+synword(fÃ¸rt,          fÃ¸r).          %% slip
+synword(fÃ¸rte,         fÃ¸rste).  %%  ( spell ) %%   haz?
+synword(fÃ¸rts,         fÃ¸rst).  
+synword(fÃ¸rtse,        fÃ¸rste). 
+synword(fÃ¸rtste,       fÃ¸rste).  
+synword(fÃ¸rtÃ¦l,        fortelle).  
+synword(fÃ¸sst,         fÃ¸rst).  
+synword(fÃ¸sr,          fÃ¸r).          %% own
+synword(fÃ¸st,          fÃ¸rst).        %% Dialect
+synword(fÃ¸ste,         fÃ¸rste).       %% Dialect
+synword(fÃ¸Ã¸r,          fÃ¸r).   
+synword(fÃ¸Ã¸rste,       fÃ¸rste).
+synword(fÃ¸s,           fÃ¸rste).       %% \+ fÃ¸rst
+synword(fÃ¸sret,        fÃ¸rste). 
+synword(fÃ¸srte,        fÃ¸rste). 
+synword(fÃ¸t,           fÃ¸r).   
+synword(fÃ¸tr,          fÃ¸r).  
+synword(fÃ¸tste,        fÃ¸rste).  
+%% synword(fÃ¥r,           for).       %%  Hvor fÃ¥r man kjÃ¸pt kort?
+%% synword(fÃ¥r,           gÃ¥r).       %%   Hazardous
+synword(fÃ¥rbi,         forbi). 
+synword(fÃ¥rrbi,        forbi).
+synword(fÃ¥rrÃ¥,         reise).  
+synword(fÃ¥rste,        fÃ¸rste). 
+synword(fÃ¥t,           fÃ¥tt).  
+synword(fÃ¥Ã¸r,          fÃ¸r).          %%  fÃƒÂ¸r 
+synword(fÃ¥Ã¸rste,       fÃ¸rste). 
 
 
-synword(g,             går). %% Hazard ?? 
+%%Â¤ synword(g  
 
-%% synword(ga,            går).  %% haz?
-synword(ga,            gå).  
 
-synword(gaard,         gård).         %% (Lade gaard)
-synword(gaat,          går). 
-synword(gadd,          ønsket).       %% rough
+synword(g,             gÃ¥r). %% Hazard ?? 
+
+%% synword(ga,            gÃ¥r).  %% haz?
+synword(ga,            gÃ¥).  
+
+synword(gaard,         gÃ¥rd).         %% (Lade gaard)
+synword(gaat,          gÃ¥r). 
+synword(gadd,          Ã¸nsket).       %% rough
 synword(gamal,         gammel). 
 synword(gamel,         gammel). 
 synword(gamla,         gamle). 
 synword(gamleste,      gammel).  
 synword(gammal,        gammel). 
-synword(gaa,           gå). 
-synword(gaar,          går). 
-synword(gaayr,         går).  
+synword(gaa,           gÃ¥). 
+synword(gaar,          gÃ¥r). 
+synword(gaayr,         gÃ¥r).  
  synword(gan,          gang). %% TA-110324
 %% synword(gange,         ganger). %% spasertur
 %% synword(ganske,        meget). %% noise
-synword(gaor,          går). 
-synword(gar,           går).  
+synword(gaor,          gÃ¥r). 
+synword(gar,           gÃ¥r).  
 
-synword(garr,          går).  
-synword(garr,          gård).  %% act
+synword(garr,          gÃ¥r).  
+synword(garr,          gÃ¥rd).  %% act
 
 synword(garde,         sted).  %% av garde = av sted ?
-synword(garneste,      går).  
+synword(garneste,      gÃ¥r).  
 synword(gas,           gass). 
-%% synword(gay,           gå).    %% not nec, hom 
-synword(gayr,          går).   %% gÃ¥r  Å-trøbbel also splitword
-synword(gayt,          går).   %% gÃ¥t (?) %% act 
-synword(gaytt,         gått). 
-synword(gaø,           gå).
-synword(gaør,          går).   %%  gÃ¸r 
-synword(gaå,           gå).  
-synword(gaår,          går). 
+%% synword(gay,           gÃ¥).    %% not nec, hom 
+synword(gayr,          gÃ¥r).   %% gÃƒÂ¥r  Ã…-trÃ¸bbel also splitword
+synword(gayt,          gÃ¥r).   %% gÃƒÂ¥t (?) %% act 
+synword(gaytt,         gÃ¥tt). 
+synword(gaÃ¸,           gÃ¥).
+synword(gaÃ¸r,          gÃ¥r).   %%  gÃƒÂ¸r 
+synword(gaÃ¥,           gÃ¥).  
+synword(gaÃ¥r,          gÃ¥r). 
 synword(gbussen,       bussen).
 synword(geg,           jeg).   %% LAST SYNONYM 
 synword(genere,        generere). %% own
 % synword(generellt,     generelt).     %% No,Noise
-synword(gengur,        går). %% Isl
-synword(ger,           går).
-synword(geår,          går).
+synword(gengur,        gÃ¥r). %% Isl
+synword(ger,           gÃ¥r).
+synword(geÃ¥r,          gÃ¥r).
 synword(gfra,          fra). %% slip 
-synword(ggår,          går). 
+synword(ggÃ¥r,          gÃ¥r). 
 synword(ghvilken,      hvilken). %% slip
-synword(ghår,          går). %% own 
+synword(ghÃ¥r,          gÃ¥r). %% own 
 %% synword(gidder,        vil).   %%  manage
 synword(gies,          gis).
 synword(giff,          gikk).  
@@ -7628,8 +7630,8 @@ synword(gii,           gi).
 synword(gik,           gikk). 
 synword(gio,           gi). 
 
-synword(gjaør,         gjør).  
-synword(gjaøre,        gjøre).  
+synword(gjaÃ¸r,         gjÃ¸r).  
+synword(gjaÃ¸re,        gjÃ¸re).  
 synword(gje,           gi).     %% NN 
 synword(gjeg,          jeg). 
 synword(gjele,         gjelde). 
@@ -7643,8 +7645,8 @@ synword(gjennsyn,      gjensyn).
 synword(gjennomsnitts, vanlig).
 % hva er en gjennomsnitts pris = measure ?
 synword(gjennta,       gjenta). 
-synword(gjer,          gjør). 
-synword(gjere,         gjøre).
+synword(gjer,          gjÃ¸r). 
+synword(gjere,         gjÃ¸re).
 %% synword(gjerne,        ja).   
 synword(gji,           gi).  
 synword(gjikk,         gikk).  
@@ -7652,25 +7654,25 @@ synword(gjik,          gikk).
 
 synword(gjleder,       gjelder). 
 
-synword(gjoer,         gjør). 
-synword(gjoere,        gjøre). 
-synword(gjor,          gjør). 
-synword(gjore,         gjøre). 
-synword(gjorde,        gjøre).       
+synword(gjoer,         gjÃ¸r). 
+synword(gjoere,        gjÃ¸re). 
+synword(gjor,          gjÃ¸r). 
+synword(gjore,         gjÃ¸re). 
+synword(gjorde,        gjÃ¸re).       
 synword(gjrlder,       gjelder). %% \+ Jarle
-synword(gjæng,         går).  
-synword(gjænge,        går).   
-synword(gjær,          gjør). %% TA-100823
-synword(gjøe,          gjør).   %% own
-synword(gjører,        gjøre). 
-synword(gjørr,         gjøre). 
-synword(gjår,          går).  
-%% synword(gkør,          gjør).   %%  verb
-synword(gkørse,        gjøres). %%  own
-synword(glæm,          glem).   %% dial
-synword(gløm,          glem).   %%
+synword(gjÃ¦ng,         gÃ¥r).  
+synword(gjÃ¦nge,        gÃ¥r).   
+synword(gjÃ¦r,          gjÃ¸r). %% TA-100823
+synword(gjÃ¸e,          gjÃ¸r).   %% own
+synword(gjÃ¸rer,        gjÃ¸re). 
+synword(gjÃ¸rr,         gjÃ¸re). 
+synword(gjÃ¥r,          gÃ¥r).  
+%% synword(gkÃ¸r,          gjÃ¸r).   %%  verb
+synword(gkÃ¸rse,        gjÃ¸res). %%  own
+synword(glÃ¦m,          glem).   %% dial
+synword(glÃ¸m,          glem).   %%
 synword(gmmel,         gammel). %% own 
-synword(gmå,           må). 
+synword(gmÃ¥,           mÃ¥). 
 synword(gnag,          gang). 
 
 %% synword(go,            god). %% Destroys lang sel.
@@ -7685,15 +7687,15 @@ synword(godtt,         bra).         %%  spell
 synword(gof,           god).   %% own
 synword(gomorn,        goddag).      %%  (Rough)
 synword(gonatt,        godnatt).
-synword(gor,           går). 
-synword(gp,            gå).  %% Neib
-synword(gpr,           går). 
-synword(gprd,          gård). %% own
-synword(gpå,           gå). 
-synword(gr,            går). 
-synword(gpår,          går). 
+synword(gor,           gÃ¥r). 
+synword(gp,            gÃ¥).  %% Neib
+synword(gpr,           gÃ¥r). 
+synword(gprd,          gÃ¥rd). %% own
+synword(gpÃ¥,           gÃ¥). 
+synword(gr,            gÃ¥r). 
+synword(gpÃ¥r,          gÃ¥r). 
 synword(gra,           fra). 
-synword(greie,         informasjon). %% Norw   greie på
+synword(greie,         informasjon). %% Norw   greie pÃ¥
 synword(greiest,       bra). 
 synword(greit,         bra). 
 synword(greitt,        bra).
@@ -7701,8 +7703,8 @@ synword(gretne,        sure).
 synword(gretten,       sur). 
 synword(grovt,         veldig).
 synword(grunnet,       pga).  %% techn
-synword(grå,           går). %% Haz 
-synword(grår,          går). 
+synword(grÃ¥,           gÃ¥r). %% Haz 
+synword(grÃ¥r,          gÃ¥r). 
 
 synword(gta,           fra). %% dbl neib %%  .. + street 
 synword(gta,           ta). %% je gta 
@@ -7711,87 +7713,87 @@ synword(gta,           ta). %% je gta
 
 synword(gtil,          til).    %% slip
 
-synword(gur,           går).  
+synword(gur,           gÃ¥r).  
 synword(guss,          buss).       %%  neib k
 synword(gussen,        bussen).     %%  neib k
 synword(guut,          gutt). 
 synword(gva,           hva).        %% own sp
-synword(gyr,           går). 
-synword(gür,           går).   
+synword(gyr,           gÃ¥r). 
+synword(gÃ¼r,           gÃ¥r).   
 
-synword(gør,          går).    %%  gør klokken 20.10 
+synword(gÃ¸r,          gÃ¥r).    %%  gÃ¸r klokken 20.10 
 
-% synword(gør,          før).       %% Haz ? når gør bussen %% Destroy each other
-% synword(gør,          gjør).        %% ?
+% synword(gÃ¸r,          fÃ¸r).       %% Haz ? nÃ¥r gÃ¸r bussen %% Destroy each other
+% synword(gÃ¸r,          gjÃ¸r).        %% ?
 
-synword(gøra,          gjøre). 
-synword(gæ,            gå). 
-synword(gær,           går).          %% g[r ?
-synword(gærn,          gal). 
-synword(gæærn,         gal).
-synword(gæern,         gal).  
+synword(gÃ¸ra,          gjÃ¸re). 
+synword(gÃ¦,            gÃ¥). 
+synword(gÃ¦r,           gÃ¥r).          %% g[r ?
+synword(gÃ¦rn,          gal). 
+synword(gÃ¦Ã¦rn,         gal).
+synword(gÃ¦ern,         gal).  
 
-synword(gåa,           gå).  
-synword(gåar,          går). 
-synword(gåd,           går).  
-synword(gådd,          gått). 
-synword(gådr,          går).   
-synword(gådr,          gård).
-synword(gåe,           går).        %% neighbour key 
-synword(gåfr,          går).  
-synword(gåg,           går). 
-synword(gågr,          går). 
-synword(gåir,          går). 
-synword(gån,           går).  %%  ?
-synword(gång,          gang).  
-synword(gåp,           går).
-synword(gåpr,          går).
+synword(gÃ¥a,           gÃ¥).  
+synword(gÃ¥ar,          gÃ¥r). 
+synword(gÃ¥d,           gÃ¥r).  
+synword(gÃ¥dd,          gÃ¥tt). 
+synword(gÃ¥dr,          gÃ¥r).   
+synword(gÃ¥dr,          gÃ¥rd).
+synword(gÃ¥e,           gÃ¥r).        %% neighbour key 
+synword(gÃ¥fr,          gÃ¥r).  
+synword(gÃ¥g,           gÃ¥r). 
+synword(gÃ¥gr,          gÃ¥r). 
+synword(gÃ¥ir,          gÃ¥r). 
+synword(gÃ¥n,           gÃ¥r).  %%  ?
+synword(gÃ¥ng,          gang).  
+synword(gÃ¥p,           gÃ¥r).
+synword(gÃ¥pr,          gÃ¥r).
 
-synword(gårde,         går).          %% går det 
-synword(gårde,         sted).         %% av gårde = av sted ? 
-synword(gårdet,        går).  
-synword(gåre,          går).  
-synword(gårf,          går). 
-%% synword(gårførst,      går). %% rough, (split)
-synword(gårl,          går). 
-synword(gårn,          går). 
-%% synword(gårneste,      går).          %% also splitword 
+synword(gÃ¥rde,         gÃ¥r).          %% gÃ¥r det 
+synword(gÃ¥rde,         sted).         %% av gÃ¥rde = av sted ? 
+synword(gÃ¥rdet,        gÃ¥r).  
+synword(gÃ¥re,          gÃ¥r).  
+synword(gÃ¥rf,          gÃ¥r). 
+%% synword(gÃ¥rfÃ¸rst,      gÃ¥r). %% rough, (split)
+synword(gÃ¥rl,          gÃ¥r). 
+synword(gÃ¥rn,          gÃ¥r). 
+%% synword(gÃ¥rneste,      gÃ¥r).          %% also splitword 
 
-%%% synword(gård,          går).  %%  Hazardous Lerkenda gård nardo
+%%% synword(gÃ¥rd,          gÃ¥r).  %%  Hazardous Lerkenda gÃ¥rd nardo
 
-%% synword(gårfra,        passerer).     %%  Rough
-synword(gårtil,        passerer).     %% 
-synword(gårr,          går). 
-synword(gårsj,         går). %% ?
-synword(gårø,          går).  
-synword(gås,           går). %% doesnt help? 
-synword(gårmå,         må).  %% repair 
-synword(gårt,          går). %% --> gård ? 
-synword(gårw,          går). 
-synword(gåt,           går).          %% neighbour key
-synword(gåtr,          går).
-synword(gåyr,          går). %% gÃ¥r 
-synword(gåår,          går). 
-
-
-%%¤ synword(h 
+%% synword(gÃ¥rfra,        passerer).     %%  Rough
+synword(gÃ¥rtil,        passerer).     %% 
+synword(gÃ¥rr,          gÃ¥r). 
+synword(gÃ¥rsj,         gÃ¥r). %% ?
+synword(gÃ¥rÃ¸,          gÃ¥r).  
+synword(gÃ¥s,           gÃ¥r). %% doesnt help? 
+synword(gÃ¥rmÃ¥,         mÃ¥).  %% repair 
+synword(gÃ¥rt,          gÃ¥r). %% --> gÃ¥rd ? 
+synword(gÃ¥rw,          gÃ¥r). 
+synword(gÃ¥t,           gÃ¥r).          %% neighbour key
+synword(gÃ¥tr,          gÃ¥r).
+synword(gÃ¥yr,          gÃ¥r). %% gÃƒÂ¥r 
+synword(gÃ¥Ã¥r,          gÃ¥r). 
 
 
-synword(hada,          adjø). 
+%%Â¤ synword(h 
+
+
+synword(hada,          adjÃ¸). 
 synword(hadd,          hadde). 
-synword(hade,          adjø).         %% ikke Lade :-)
-synword(hadet,         adjø).  
-synword(hadebra,       adjø). 
-synword(hadeok,        adjø).  
-synword(hadetbra,      adjø). 
-synword(hadegvækk,     adjø).  
+synword(hade,          adjÃ¸).         %% ikke Lade :-)
+synword(hadet,         adjÃ¸).  
+synword(hadebra,       adjÃ¸). 
+synword(hadeok,        adjÃ¸).  
+synword(hadetbra,      adjÃ¸). 
+synword(hadegvÃ¦kk,     adjÃ¸).  
 synword(hadre,         hadet). 
-synword(hadæ,          adjø). 
-synword(hadævækk,      adjø).         %%  :-)
+synword(hadÃ¦,          adjÃ¸). 
+synword(hadÃ¦vÃ¦kk,      adjÃ¸).         %%  :-)
 synword(haer,          her). 
 
 synword(hai,           hei).  
-synword(haidå,         adjø).  %% ?
+synword(haidÃ¥,         adjÃ¸).  %% ?
 synword(haihai,        hei).   %% ? :-)))
 
 synword(hakv,          halv).  %% own
@@ -7809,7 +7811,7 @@ synword(halloi,        hei).
 synword(halloo,        hei). 
 synword(hallosann,     hei). 
 synword(halloy,        hei). 
-synword(halløy,        hei). 
+synword(hallÃ¸y,        hei). 
 synword(halo,          hei). 
 synword(haloen,        hei). 
 synword(halloen,       hei). 
@@ -7849,9 +7851,9 @@ synword(halvsjutiden,   630).
 synword(halvsyvtida,    630).  % ?
 synword(halvsyvtiden,   630).  
 
-synword(halvåtte,       730).         %%   etc etc ad hoc
-synword(halvåttetida,   730).   
-synword(halvåttetiden,  730).   
+synword(halvÃ¥tte,       730).         %%   etc etc ad hoc
+synword(halvÃ¥ttetida,   730).   
+synword(halvÃ¥ttetiden,  730).   
 
 synword(halvni,         830). 
 synword(halvnitida,     830). 
@@ -7919,8 +7921,8 @@ synword(heh,           hei).
 synword(hehei,         hei). 
 synword(heia,          hei). 
 synword(heiaa,         hei). 
-synword(heida,         adjø). 
-synword(heidå,         adjø). 
+synword(heida,         adjÃ¸). 
+synword(heidÃ¥,         adjÃ¸). 
 synword(heidu,         hei). 
 synword(heii,          hei).  
 synword(heiia,         hei).  
@@ -7936,8 +7938,8 @@ synword(heilt,         helt).
 
 synword(heime,         hjemme). 
 synword(heimefra,      hjem).         %%  wrong direction, but error anyway
-synword(heimefrå,      hjem).         %%
-synword(heimanfrå,     hjem).         %% 
+synword(heimefrÃ¥,      hjem).         %%
+synword(heimanfrÃ¥,     hjem).         %% 
 synword(heim,          hjem). 
 synword(heisan,        hei). 
 synword(heisann,       hei). 
@@ -7955,7 +7957,7 @@ synword(hem,           hvem).
 synword(hem,           hjem).   %% ?
 synword(hemmat,        hjem). 
 synword(hendeholdeplass,  endeholdeplass). %% diffusion
-synword(henholdsvis,   både). 
+synword(henholdsvis,   bÃ¥de). 
 synword(henne,         hen). %% hen may be noiseword
 synword(hensiktsmessig,bra).  
 synword(herefter,      heretter). 
@@ -8005,7 +8007,7 @@ synword(hjelep,        hjelpe). %%  ?
 synword(hjelpem,       hjelpen).  
 synword(hjennom,       gjennom).      %% own 
 synword(hjenta,        gjenta).       %%  own sp
-synword(hjertet,       minnet).       %% legge det på 
+synword(hjertet,       minnet).       %% legge det pÃ¥ 
 synword(hjemme,        hjem).         %% ? til hjemme
 synword(hjemmefra,     hjem).         %% wrong direction, but error anyway
 synword(hjemmefra,     fra).          %% hjemmefra moholt
@@ -8020,9 +8022,9 @@ synword(hjlp,          hjelp).
 synword(hjlpe,         hjelpe).  
 synword(hjlpen,        hjelpen).  
 synword(hjvilken,      hvilken).  
-synword(hjælp,         hjelp). 
-synword(hjæm,          hjem).         %%   (dialect)
-synword(hjå,           ved). %% hos %% NN
+synword(hjÃ¦lp,         hjelp). 
+synword(hjÃ¦m,          hjem).         %%   (dialect)
+synword(hjÃ¥,           ved). %% hos %% NN
 
 synword(hkvart,        kvart). 
 synword(hl,            klokken). %% own (kl) 
@@ -8030,7 +8032,7 @@ synword(hliken,        hvilken).
 synword(hlv,           halv).    
 synword(hna,           hva). 
 synword(hnor,          hvor). 
-synword(hnår,          når).  
+synword(hnÃ¥r,          nÃ¥r).  
 synword(ho,            hun). 
 synword(hoho,          hei). 
 synword(hoi,           hei). 
@@ -8081,14 +8083,14 @@ synword(hter,          heter).
 synword(hu,            hun). 
 synword(huh,           hva). 
 synword(huis,          hvis).  
-synword(humor,         humør).        %% incorrect though
+synword(humor,         humÃ¸r).        %% incorrect though
 synword(hunn,          hun). 
 
 synword(hur,           hvor).         %% (Swed)  .. lenge
 synword(hur,           hvordan).      %% (Swed)
 
 synword(hurra,         hei). 
-synword(hurtigbår,     hurtigrute).   %%  ?
+synword(hurtigbÃ¥r,     hurtigrute).   %%  ?
 synword(hurtigrute,    hurtigruta). 
 synword(hurtiruta,     hurtigruta). 
 synword(hurtirute,     hurtigruta). 
@@ -8115,7 +8117,7 @@ synword(hvar,          var).     %%
 synword(hvart,         kvart). 
 synword(hvas,          hva). 
 synword(hvaslags,      hvilken). %%
-synword(hvaør,         hvor).    %% hvÃ¸r
+synword(hvaÃ¸r,         hvor).    %% hvÃƒÂ¸r
 synword(hvcor,         hvor).    %% TA-110110 neib
 synword(hve,           hva).     %% ??? 
 synword(hveem,         hvem). 
@@ -8125,10 +8127,10 @@ synword(hvemm,         hvem).
 synword(hveld,         kveld).   %%  own
 synword(hvelke,        hvilke). 
 synword(hven,          hvem). 
-synword(hvenær,        når). %% Isl. 
+synword(hvenÃ¦r,        nÃ¥r). %% Isl. 
 synword(hver,          alle).  
 synword(hvere,         hver).  %% ?
-synword(hvere,         være).  
+synword(hvere,         vÃ¦re).  
 synword(hverken,       ikke). %% rough 
 synword(hvet,          vet).  
 synword(hvha,          hva). 
@@ -8142,7 +8144,7 @@ synword(hverdah,       hverdag).
 synword(hverdaher,     hverdager).
 
 %% synword(hvert,         hver). %%   ???
-%% synword(hvert,         vært). %% Not worth it
+%% synword(hvert,         vÃ¦rt). %% Not worth it
 %%%
 synword(hvga,          hva).  
 synword(hvi,           jeg). %% (vi) %% actual
@@ -8220,9 +8222,9 @@ synword(hvillket,      hvilket).
 synword(hviloke,       hvilke).  
 synword(hviloken,      hvilken).  
 synword(hviloket,      hvilket). 
-synword(hviløke,       hvilke).   
-synword(hviløken,      hvilken).   
-synword(hviløket,      hvilket).  
+synword(hvilÃ¸ke,       hvilke).   
+synword(hvilÃ¸ken,      hvilken).   
+synword(hvilÃ¸ket,      hvilket).  
 synword(hvilsken,      hvilken).  
 synword(hvinlken,      hvilken). 
 synword(hvioke,        hvilke). 
@@ -8288,7 +8290,7 @@ synword(hvopr,         hvor).
 synword(hvoradn,       hvordan).  
 %% synword(hvorav,    og). %% TA-110617 rough  vp_conjunction, \+ np_conjunction 
 synword(hvorcan,       hvordan).      %% neib 
-synword(hvordån,       hvordan).      %% TA-110111
+synword(hvordÃ¥n,       hvordan).      %% TA-110111
 synword(hvorda,        hvordan). 
 synword(hvordab,       hvordan).      %% neib k
 synword(hvordagn,      hvordan).  
@@ -8302,7 +8304,7 @@ synword(hvordand,      hvordan).
 synword(hvordang,      hvordan). 
 synword(hvordann,      hvordan). 
 synword(hvordsan,      hvordan).  
-synword(hvordti,       når).  
+synword(hvordti,       nÃ¥r).  
 synword(hvore,         hvor).    
 synword(hvorfoe,       hvorfor).   %%  own 
 synword(hvori,         hvor).      %%  (also sp.adv)
@@ -8321,8 +8323,8 @@ synword(hvorfayr,      hvorfor).
 synword(hvorfer,       hvorfor). 
 synword(hvorfoer,      hvorfor). 
 synword(hvorfro,       hvorfor). 
-synword(hvorfå,        hvorfor). 
-synword(hvorfår,       hvorfor).  
+synword(hvorfÃ¥,        hvorfor). 
+synword(hvorfÃ¥r,       hvorfor).  
 synword(hvorhen,       hvor). 
 synword(hvorhenn,      hvor). 
 synword(hvorifra,      hvorfra). 
@@ -8331,12 +8333,12 @@ synword(hvorledes,     hvordan).
 synword(hvorleis,      hvordan). 
 synword(hvormeget,     hva). 
 synword(hvormye,       hva). 
-synword(hvornår,       når). 
+synword(hvornÃ¥r,       nÃ¥r). 
 synword(hvorsan,       hvordan).
 synword(hvorsteds,     hvor). 
 synword(hvort,         hvor). 
-synword(hvorti,        når).  
-synword(hvortid,       når). 
+synword(hvorti,        nÃ¥r).  
+synword(hvortid,       nÃ¥r). 
 %  synword(hvos,          hvis). %% NEI
 %  synword(hvos,          hvor). %% NEI
 synword(hvot,          hvor). 
@@ -8362,8 +8364,8 @@ synword(hvvor,         hvor).
 synword(hvvordan,      hvordan). 
 synword(hvvorfor,      hvorfor).  
 synword(hvwm,          hvem). 
-synword(hvære,         være). 
-synword(hvør,          hvor). 
+synword(hvÃ¦re,         vÃ¦re). 
+synword(hvÃ¸r,          hvor). 
 
 synword(hygelig,       hyggelig). 
 synword(hyggeligst,    hyggelig). 
@@ -8372,30 +8374,30 @@ synword(hyppige,       ofte).
 synword(hyppigere,     ofte). 
 synword(hyppigst,      ofte).  
 synword(hyvor,         hvor).  
-synword(hæ,            hva).
-synword(hæh,           hva). 
-synword(hæj,           hei). 
-synword(hæilt,         helt). 
-synword(hækken,        hvem). %%dial
-synword(hælsningar,    hilsen). 
-synword(hænn,          hvor). %% -hen 
-synword(hær,           her).
-synword(hærfra,        her). 
-synword(hææ,           hva).  
-synword(høg,           høy). %% NN
-synword(høgaste,       største). 
-synword(høstjevndøgn,  autumnal_equinox).  %%
-synword(høstgjevndøgn,  autumnal_equinox). %%
-synword(høtt,          hva). %% dial
-synword(høyest,        størst). 
-synword(høyeste,       største). 
-synword(hå,            hei).  
-synword(hår,           går).  
-% synword(håpløs,        dårlig). % adj
-synword(håpløst,       umulig). 
+synword(hÃ¦,            hva).
+synword(hÃ¦h,           hva). 
+synword(hÃ¦j,           hei). 
+synword(hÃ¦ilt,         helt). 
+synword(hÃ¦kken,        hvem). %%dial
+synword(hÃ¦lsningar,    hilsen). 
+synword(hÃ¦nn,          hvor). %% -hen 
+synword(hÃ¦r,           her).
+synword(hÃ¦rfra,        her). 
+synword(hÃ¦Ã¦,           hva).  
+synword(hÃ¸g,           hÃ¸y). %% NN
+synword(hÃ¸gaste,       stÃ¸rste). 
+synword(hÃ¸stjevndÃ¸gn,  autumnal_equinox).  %%
+synword(hÃ¸stgjevndÃ¸gn,  autumnal_equinox). %%
+synword(hÃ¸tt,          hva). %% dial
+synword(hÃ¸yest,        stÃ¸rst). 
+synword(hÃ¸yeste,       stÃ¸rste). 
+synword(hÃ¥,            hei).  
+synword(hÃ¥r,           gÃ¥r).  
+% synword(hÃ¥plÃ¸s,        dÃ¥rlig). % adj
+synword(hÃ¥plÃ¸st,       umulig). 
 
 
-%%¤ synword(i  
+%%Â¤ synword(i  
 
 synword(iadg,          idag).  
 synword(iaften,        ikveld). 
@@ -8403,8 +8405,8 @@ synword(iag,           idag).
 
 synword(icke,          ikke). %% Sv
 synword(ig,            og). 
-synword(iht,           ifølge). 
-synword(ihht,          ifølge). 
+synword(iht,           ifÃ¸lge). 
+synword(ihht,          ifÃ¸lge). 
 synword(iherdig,       mye). 
 %% synword(iherdig,       ofte). %% rough 
 
@@ -8419,12 +8421,12 @@ synword(iei,           jeg).
 synword(ietter,        etter). %% repair?
 synword(ifra,          fra). 
 synword(ifraa,         fra). 
-synword(ifrå,          ifra).  
-% synword(ifrå,          fra). 
-synword(iflg,          ifølge). 
-synword(igaar,         igår).
+synword(ifrÃ¥,          ifra).  
+% synword(ifrÃ¥,          fra). 
+synword(iflg,          ifÃ¸lge). 
+synword(igaar,         igÃ¥r).
 synword(igag,          idag). 
-synword(igayr,         igår).  
+synword(igayr,         igÃ¥r).  
 synword(igjenom,       gjennom). 
 synword(igjennom,      gjennom).
 %% synword(igjenn,        igjen). %% splitw %% TA-110121
@@ -8456,7 +8458,7 @@ synword(ikvell,        ikveld).
 synword(ikverld,       ikveld). 
 synword(ikvled,        ikveld). 
 synword(il,            til).  
-synword(ille,          dårlig).
+synword(ille,          dÃ¥rlig).
 synword(ilt,           til).  
 
 synword(imelleom,      mellom). 
@@ -8481,10 +8483,10 @@ synword(imorro,        imorgen).
 synword(imponerende,   bra). 
 synword(imprgen,       imorgen).
 synword(imot,          mot).  
-synword(imåra,         imorgen). 
-synword(imårgen,       imorgen). 
-synword(imårn,         imorgen). 
-synword(imårra,        imorgen). 
+synword(imÃ¥ra,         imorgen). 
+synword(imÃ¥rgen,       imorgen). 
+synword(imÃ¥rn,         imorgen). 
+synword(imÃ¥rra,        imorgen). 
 synword(inden,         innen). 
 synword(inegn,         ingen). 
 synword(infgen,        ingen). 
@@ -8500,10 +8502,10 @@ synword(inklusive,     med).
 synword(inklusivt,     med).
 synword(innn,          inn). %% own %% TA-110707
 synword(innan,         innen).         %% Dialect/Swe
-%% synword(inne,          før).  %% Haz 
+%% synword(inne,          fÃ¸r).  %% Haz 
 synword(innenfor,      innen).   %% actual
-%%  synword(innenkl,       før). 
-%% synword(innenklokken,  før).
+%%  synword(innenkl,       fÃ¸r). 
+%% synword(innenklokken,  fÃ¸r).
 synword(innerst,       inne).          %%  Rough
 synword(innimellem,    innimellom). 
 synword(innin,         innen).
@@ -8514,7 +8516,7 @@ synword(innnen,        innen).
 %% synword(innom,         ved).   
  synword(innom,        her). 
 
-synword(innpå,         til).   
+synword(innpÃ¥,         til).   
 synword(inom,          innom).  
 synword(inoom,         innom). synword(instilt,       innstillt). 
 synword(innstilt,      innstillt).
@@ -8527,14 +8529,14 @@ synword(internet,      internett).    %%  made noun (internet syndrome)
 synword(intet,         ingen).  
 synword(intil,         inntil). 
 synword(inttil,        inntil).
-synword(inå,           nå). %% repair 
+synword(inÃ¥,           nÃ¥). %% repair 
 synword(io,            i).            %%   slip
 %% synword(io,            jo). 
 synword(iovermorgen,   overimorgen).
 synword(ioverimorgen,   overimorgen). 
-synword(ipa,           på).     %% Repair 
-synword(ipå,           på).     %% Repair 
-   synword(iåp,           på).  %% Repair
+synword(ipa,           pÃ¥).     %% Repair 
+synword(ipÃ¥,           pÃ¥).     %% Repair 
+   synword(iÃ¥p,           pÃ¥).  %% Repair
 %% synword(iq,            intelligens).   %%  :-)
 synword(irundt,        rundt).  
 %% synword(irute,        presis).  
@@ -8561,7 +8563,7 @@ synword(ittj,           ikke).        %%  (dialect)
 synword(iukke,         ikke).  
 
 
-%%¤ synword(j  
+%%Â¤ synword(j  
 
 synword(j,             jeg). %% j aaes veg syn in gram
                              %% Fixed   
@@ -8581,13 +8583,13 @@ synword(jalla,         hei).        %%  ?
 synword(janur,         januar).  
 synword(jaok,          ok).     %% ja, ok
 synword(jau,           ja). 
-synword(javel,         ja).     %% bra). --> du må oppgi... 
+synword(javel,         ja).     %% bra). --> du mÃ¥ oppgi... 
 synword(javell,        bra). 
 synword(javvel,        bra).  
-synword(javæl,         bra). 
-synword(javæll,        bra).  
-% synword(jasså,         hei).         %%(?)
-% synword(jaså,          hei). 
+synword(javÃ¦l,         bra). 
+synword(javÃ¦ll,        bra).  
+% synword(jassÃ¥,         hei).         %%(?)
+% synword(jasÃ¥,          hei). 
 
 synword(jdg,           jeg).  
 synword(je,            jeg).           %%  ( dialect )
@@ -8626,12 +8628,12 @@ synword(jkan,          kan). %% own
 synword(jkeg,          jeg). 
 synword(jledag,        juledag). 
 % synword(jl,            klokken).     %% kl ?
-synword(jnår,          når).  
+synword(jnÃ¥r,          nÃ¥r).  
 
 synword(jo,            ja) :- user:value(busterflag,true). %% Jo
 
 synword(joa,           ja). 
-%% synword(jo,            []).  %% bussen går jo// redundant 
+%% synword(jo,            []).  %% bussen gÃ¥r jo// redundant 
 synword(joho,          ja).            %% \+ john
 synword(johoi,         hei). 
 synword(jojo,          ja). 
@@ -8648,10 +8650,10 @@ synword(jvem,          hvem).          %% own
 synword(jvilken,       hvilken).       %% own
 synword(jvor,          hvor).  
 synword(jvorfor,       hvorfor).  
-synword(jæ,            jeg). 
-synword(jæg,           jeg).  
-synword(jær,           gjøre).         %% dial      
-synword(jår,           når).           %% neib k
+synword(jÃ¦,            jeg). 
+synword(jÃ¦g,           jeg).  
+synword(jÃ¦r,           gjÃ¸re).         %% dial      
+synword(jÃ¥r,           nÃ¥r).           %% neib k
 
 synword(jonsok,        midsummer_day). 
 synword(jonsokaften,   midsummer_eve).
@@ -8685,45 +8687,45 @@ synword(julekvelden,   christmas_eve).
 synword(jweg,          jeg). 
 synword(jwg,           jeg). 
 
-%%¤ synword(k  
+%%Â¤ synword(k  
 
 synword(kbvart,        kvart). 
 synword(kj,            klokken).
 synword(kjan,          kan).
-synword(kjaør,         kjør).  %% kjÃ¸r
-synword(kjaøre,        kjøre).
-synword(kjaøpesenter,  kjøpesenter). %% TA-110325
+synword(kjaÃ¸r,         kjÃ¸r).  %% kjÃƒÂ¸r
+synword(kjaÃ¸re,        kjÃ¸re).
+synword(kjaÃ¸pesenter,  kjÃ¸pesenter). %% TA-110325
 synword(kje,           ikke).
 synword(kjekt,         bra). 
-%% synword(kjipt,         dårlig).   %% 
-synword(kjuører,       kjører).   %%
-synword(kjære,         kjøre).    %%  .. gud
-synword(kjærer,        kjører).   %% 
+%% synword(kjipt,         dÃ¥rlig).   %% 
+synword(kjuÃ¸rer,       kjÃ¸rer).   %%
+synword(kjÃ¦re,         kjÃ¸re).    %%  .. gud
+synword(kjÃ¦rer,        kjÃ¸rer).   %% 
 
 
-%%¤ synword(l 
+%%Â¤ synword(l 
 
 synword(lbe,           ble).      %% ??
 synword(likeledes,     redundant0). %% TA-110411
 synword(lng,           lang). 
 synword(lurt,          bra). 
 synword(lveien,        veien). %% ?
-synword(lvære,         være).  %% 
+synword(lvÃ¦re,         vÃ¦re).  %% 
 synword(lysst,         lyst). 
-synword(lyt,           må).  
-synword(lærerere,      lærere). %% own 
+synword(lyt,           mÃ¥).  
+synword(lÃ¦rerere,      lÃ¦rere). %% own 
 
-synword('løªrdag',       lørdag). %% løªrdag? 
-synword('søªndag',       søndag). %%
+synword('lÃ¸Âªrdag',       lÃ¸rdag). %% lÃ¸Âªrdag? 
+synword('sÃ¸Âªndag',       sÃ¸ndag). %%
 
-synword(srdag,       lørdag).
+synword(srdag,       lÃ¸rdag).
 
-synword(lø,            lørdag). 
+synword(lÃ¸,            lÃ¸rdag). 
 
-synword(lødagsrute,    lørdagsrute). 
-synword(lødagsruter,   lørdagsruter).
-synword(løsdagsrute,   lørdagsrute).
-synword(løsdagsruter,  lørdagsruter).
+synword(lÃ¸dagsrute,    lÃ¸rdagsrute). 
+synword(lÃ¸dagsruter,   lÃ¸rdagsruter).
+synword(lÃ¸sdagsrute,   lÃ¸rdagsrute).
+synword(lÃ¸sdagsruter,  lÃ¸rdagsruter).
 %% synword(k,             klokken).  %%    til k jonssons vei %% Haz
 
 synword(ka,            hva). 
@@ -8769,10 +8771,10 @@ synword(kann,          kan).
 synword(kar,           hvilken). %% Dial
 synword(kas,           hvordan). %% Dial (?)
 synword(kass,          hvordan). %% Dial (?) 
-synword(katastrofalt,  dårlig). 
-synword(kati,          når). %%  Dial.
-synword(katid,         når). %%  Dial.
-synword(katti,         når). %%  Dial. 
+synword(katastrofalt,  dÃ¥rlig). 
+synword(kati,          nÃ¥r). %%  Dial.
+synword(katid,         nÃ¥r). %%  Dial.
+synword(katti,         nÃ¥r). %%  Dial. 
 synword(kavrt,         kvart).
 synword(keffer,        hvorfor). %% Dial? 
 synword(keffor,        hvorfor). 
@@ -8788,7 +8790,7 @@ synword(kerr,          hvor).    %%  Dial ?
 synword(kes,           hvordan). 
 synword(kess,          hvordan). 
 synword(kest,          hvordan).
-synword(keti,          når).     %%  Dial. 
+synword(keti,          nÃ¥r).     %%  Dial. 
 synword(kevld,         kveld).  
 synword(keveld,        kveld). 
 synword(khva,          hva).     %% own
@@ -8804,8 +8806,8 @@ synword(kinon,         kinoene).
 synword(kjapp,         fort). 
 synword(kjappeste,     beste).  
 synword(kjapt,         fort).  
-synword(kjaøre,        kjøre).      %% kjÃ¸re  
-synword(kjaører,       kjører). 
+synword(kjaÃ¸re,        kjÃ¸re).      %% kjÃƒÂ¸re  
+synword(kjaÃ¸rer,       kjÃ¸rer). 
 synword(kjedeli,       kjedelig).  
 synword(kjederlig,     kjedelig). 
 synword(kjedli,        kjedelig).  
@@ -8821,37 +8823,37 @@ synword(kjempefint,    bra).   %% closure fint
 synword(kjempeflink,   flink). 
 synword(kjolkken,      klokken). 
 synword(kjomme,        komme). 
-synword(kjoere,        kjøre). 
-synword(kjorer,        kjører).  
-synword(kjoerer,       kjører).
-synword(kjorte,        kjørte). 
-synword(kjoerte,       kjørte).
-synword(kjort,         kjørt). 
-synword(kjoert,        kjørt). 
-synword(kjrøe,         kjøre).  
-synword(kjrøer,        kjører).
-synword(kjæm,          kommer).
-synword(kjæmm,         kommer).  %%  Dial
-synword(kjøerer,       kjører).
-synword(kjøm,          kommer).  %%  Dial
-synword(kjøme,         kommer).  %% Dial 
-sunword(kjøpeseter,    kjøpesenter).
-synword(kjøpre,        kjøpe). 
-synword(kjør,          kjører). %% Dial Haz? 
-synword(kjørere,       kjører). 
-synword(kjørerer,      kjører).  
-synword(kjørerr,       kjører). 
-synword(kjørers,       kjøres). 
-synword(kjøyrde,       kjørte). 
-synword(kjøyrd,        kjørt).   %% NN
+synword(kjoere,        kjÃ¸re). 
+synword(kjorer,        kjÃ¸rer).  
+synword(kjoerer,       kjÃ¸rer).
+synword(kjorte,        kjÃ¸rte). 
+synword(kjoerte,       kjÃ¸rte).
+synword(kjort,         kjÃ¸rt). 
+synword(kjoert,        kjÃ¸rt). 
+synword(kjrÃ¸e,         kjÃ¸re).  
+synword(kjrÃ¸er,        kjÃ¸rer).
+synword(kjÃ¦m,          kommer).
+synword(kjÃ¦mm,         kommer).  %%  Dial
+synword(kjÃ¸erer,       kjÃ¸rer).
+synword(kjÃ¸m,          kommer).  %%  Dial
+synword(kjÃ¸me,         kommer).  %% Dial 
+sunword(kjÃ¸peseter,    kjÃ¸pesenter).
+synword(kjÃ¸pre,        kjÃ¸pe). 
+synword(kjÃ¸r,          kjÃ¸rer). %% Dial Haz? 
+synword(kjÃ¸rere,       kjÃ¸rer). 
+synword(kjÃ¸rerer,      kjÃ¸rer).  
+synword(kjÃ¸rerr,       kjÃ¸rer). 
+synword(kjÃ¸rers,       kjÃ¸res). 
+synword(kjÃ¸yrde,       kjÃ¸rte). 
+synword(kjÃ¸yrd,        kjÃ¸rt).   %% NN
 synword(kk,            kl).      %% klokken?
 synword(kkan,          kan). 
 synword(kke,           ikke). 
-synword(kkjøre,        kjøre). 
-synword(kkjører,       kjører).
+synword(kkjÃ¸re,        kjÃ¸re). 
+synword(kkjÃ¸rer,       kjÃ¸rer).
 synword(klareer,       klarer). 
 synword(kle,           klokken). %%  (?)
-synword(klem,          adjø). %  %%  ? 
+synword(klem,          adjÃ¸). %  %%  ? 
 
 synword(kkl,           klokken). 
 synword(kklk,          klokken). 
@@ -8880,7 +8882,7 @@ synword(kllokken,      klokken).
 
 
 % OBS 
-% går  bussen  kl8       buss kl8 = buss 8 #
+% gÃ¥r  bussen  kl8       buss kl8 = buss 8 #
 
 %% kl14.00 = 1400 not 1400 , 0000
 
@@ -8981,7 +8983,7 @@ synword(klokkr,        klokken).
 synword(klokkrn,       klokken). 
 synword(klokkw,        klokken). 
 synword(klokkwn,       klokken).  
-synword(klokkå,        klokken). 
+synword(klokkÃ¥,        klokken). 
 synword(klokla,        klokken). 
 synword(kloklka,       klokken). 
 synword(klolla,        klokka).  
@@ -8995,8 +8997,8 @@ synword(klpkken,       klokken).
 synword(klpokka,       klokken). 
 synword(klpokken,      klokken).
 synword(klr,           klokken). 
-synword(klåkka,        klokken).
-synword(klåkken,       klokken).  
+synword(klÃ¥kka,        klokken).
+synword(klÃ¥kken,       klokken).  
 % synword(km,            kilometer). %% splitword
 synword(kmme,          komme).  
 synword(kmmer,         kommer).  
@@ -9008,12 +9010,12 @@ synword(ko,            klokken).
 synword(kofer,         hvorfor). 
 synword(koffer,        hvorfor). 
 synword(koffor,        hvorfor). 
-synword(koffør,        hvorfor).  
-synword(koffår,        hvorfor).  
+synword(koffÃ¸r,        hvorfor).  
+synword(koffÃ¥r,        hvorfor).  
 synword(kofo,          hvorfor). 
 synword(kofor,         hvorfor). 
-synword(kofør,         hvorfor). %% TA-101221
-synword(kofår,         hvorfor). %% TA-101123
+synword(kofÃ¸r,         hvorfor). %% TA-101221
+synword(kofÃ¥r,         hvorfor). %% TA-101123
 synword(kokke,         klokken). 
 synword(kokken,        klokken). 
 synword(kokka,         klokken). 
@@ -9085,11 +9087,11 @@ synword(korrsn,        hvordan).
 %% synword(kortere,       kort).         %% Rough `\+card 
 synword(kortes,        kort).  
 synword(kortest,       snarest). 
-synword(korti,         når).          %% dialekt
-synword(kortid,        når).          %% dialekt 
+synword(korti,         nÃ¥r).          %% dialekt
+synword(kortid,        nÃ¥r).          %% dialekt 
 synword(kos,           hvordan).      %% hvordan? Kos buss // actual
-%% synword(kos,           adjø).   
-synword(koz,           adjø).         %% jargon 
+%% synword(kos,           adjÃ¸).   
+synword(koz,           adjÃ¸).         %% jargon 
 synword(kozn,          hvordan).  
 synword(kosjn,         hvordan). 
 synword(kosjen,        hvordan). 
@@ -9099,7 +9101,7 @@ synword(kosse,         hvordan).
 synword(kosen,         hvilken).   %% kosen buss ... // inconseq
 synword(kossen,        hvordan).   %% hvilken ?
 synword(kossn,         hvordan).   %% 
-synword(koti,          når).       %%  Dial
+synword(koti,          nÃ¥r).       %%  Dial
 synword(kpmmer,        kommer).  
 synword(kr,            kroner).
 synword(kra,           fra). 
@@ -9123,7 +9125,7 @@ synword(kvbart,        kvart).
 synword(kvalitetsikring, kvalitetssikring).  %%  own  ss
 synword(kvalt,         kvart). 
 synword(kvar,          hvor). 
-synword(kvar,          kvart). %% på 6 
+synword(kvar,          kvart). %% pÃ¥ 6 
 synword(kvar,          hver).  %% NN 
 synword(kvarhen,       hvor). 
 synword(kve,           hva).
@@ -9142,8 +9144,8 @@ synword(kven,          hvem).
 synword(kver,          hver). %% own
 synword(kvert,         kvart).
 synword(kvifor,        hvorfor). 
-synword(kvikt,         nå). 
-synword(kvikkt,        nå).  
+synword(kvikt,         nÃ¥). 
+synword(kvikkt,        nÃ¥).  
 synword(kvilke,        hvilke). 
 synword(kvilken,       hvilken). 
 synword(kvilket,       hvilket). 
@@ -9154,31 +9156,31 @@ synword(kvld,          kveld).
 synword(kvled,         kveld). 
 synword(kvor,          hvor).  
 synword(kvordan,       hvordan).
-synword(kvæll,         kveld). 
-synword(kvær,          hver). 
+synword(kvÃ¦ll,         kveld). 
+synword(kvÃ¦r,          hver). 
 
 synword(kystekspressen,hurtigruta). 
 
-synword(kæ,            hva). 
-synword(kæinn,         kan).  %% Dial 
-synword(kæm,           hvem). 
-synword(kær,           hvor). %% dial
-synword(kø,            kl).  %%  haz lang kø..
-synword(køffer,        hvorfor). 
-synword(køyrde,        kjørte). 
-synword(køyrd,         kjørt). 
+synword(kÃ¦,            hva). 
+synword(kÃ¦inn,         kan).  %% Dial 
+synword(kÃ¦m,           hvem). 
+synword(kÃ¦r,           hvor). %% dial
+synword(kÃ¸,            kl).  %%  haz lang kÃ¸..
+synword(kÃ¸ffer,        hvorfor). 
+synword(kÃ¸yrde,        kjÃ¸rte). 
+synword(kÃ¸yrd,         kjÃ¸rt). 
 
-synword(kå,            hva). 
-synword(kår,           går).     %% own spell
-synword(kår,           hvor).    %%  ???
-synword(kårr,          hvor).    %%  ???
-synword(kåsen,         hvordan).
-synword(kåss,          hvordan). 
-synword(kåssen,        hvordan). 
-synword(kåste,         koste).  
+synword(kÃ¥,            hva). 
+synword(kÃ¥r,           gÃ¥r).     %% own spell
+synword(kÃ¥r,           hvor).    %%  ???
+synword(kÃ¥rr,          hvor).    %%  ???
+synword(kÃ¥sen,         hvordan).
+synword(kÃ¥ss,          hvordan). 
+synword(kÃ¥ssen,        hvordan). 
+synword(kÃ¥ste,         koste).  
 
 
-%%¤ synword(l 
+%%Â¤ synword(l 
 
 synword(l1,            11).  % L1
 
@@ -9221,17 +9223,17 @@ synword(letter,        etter). %% dragvol letter ???
 
 synword(leva,          leve).   
 synword(levva,         leve).  %%  dial
-synword(længe,         lenge). 
-synword(lænt,          fint). 
-synword(læva,          leve). 
-synword(lævva,         leve). 
+synword(lÃ¦nge,         lenge). 
+synword(lÃ¦nt,          fint). 
+synword(lÃ¦va,          leve). 
+synword(lÃ¦vva,         leve). 
 synword(liggeer,       ligger).    %%  own sp    
 synword(lingnende,     lignende). 
 synword(linhe,         linje).     %% own sp 
 synword(linle,         linje). 
 synword(lije,          linje). 
 synword(lika,          liker).  
-synword(likar,         bra).       %%  (trans. closure) (Det går likar no)
+synword(likar,         bra).       %%  (trans. closure) (Det gÃ¥r likar no)
 synword(likeer,        liker). 
 synword(likevell,      likevel).  
 synword(likt,          samme). %% likt navn 
@@ -9255,7 +9257,7 @@ synword(litt,          noe ).
 synword(litte,         lite).   %% ? dial
 synword(littover,      over). 
 synword(bittelitt,     noe ).   %%  ? Facetious
-%% synword(lite,          ikke).   %% du er lite glup %%  forstår lite
+%% synword(lite,          ikke).   %% du er lite glup %%  forstÃ¥r lite
 synword(live,          livet).  %% Norwagism
 synword(livvet,        livet). 
 
@@ -9274,32 +9276,32 @@ synword(lokken,        klokken). %%
 synword(lov,           mulig). 
 synword(lovlig,        mulig).  
 synword(lovva,         love). 
-synword(lovvå,         love). 
+synword(lovvÃ¥,         love). 
 synword(lsng,          lang).  
-synword(lstre,         østre).   %% neib 
-synword(lune,          humør).
+synword(lstre,         Ã¸stre).   %% neib 
+synword(lune,          humÃ¸r).
 %%%%synword(lunch,         1200). %%NO, 1200 -> 2400 if too late
 %%%%synword(lunsh,         1200).  
 %%%%synword(lunsj,         1200).
 synword(lurest,        beste). 
 synword(lureste,       beste). 
 
-synword(lægg,          legg).  
-synword(læget,         situasjonen). 
-synword(læng,          lenge). 
-synword(længte,        lengter).      %% ( :-)
-synword(lång,          lang).
-synword(långa,         lange). %% SWE
-synword(låv,           lov). 
-synword(låv,           mulig). %% nec 
+synword(lÃ¦gg,          legg).  
+synword(lÃ¦get,         situasjonen). 
+synword(lÃ¦ng,          lenge). 
+synword(lÃ¦ngte,        lengter).      %% ( :-)
+synword(lÃ¥ng,          lang).
+synword(lÃ¥nga,         lange). %% SWE
+synword(lÃ¥v,           lov). 
+synword(lÃ¥v,           mulig). %% nec 
 
-%%¤ synword(m 
+%%Â¤ synword(m 
 
 synword(m,             med). 
-synword('ma|',         må).
+synword('ma|',         mÃ¥).
 synword(maangw,        mange). 
-synword(maar,          må). %% act 
-synword(mae,           må).
+synword(maar,          mÃ¥). %% act 
+synword(mae,           mÃ¥).
 synword(mag,           meg).  
 %% synword(man,           mann). %%  Haz
 synword(mang,          mange).                     %% (dialect)
@@ -9307,8 +9309,8 @@ synword(mangen,        mange).
 synword(manger,        mange).  
 synword(maskine,       maskin).    %%  DK
 synword(masse,         mye). 
-synword(ma,            må).  
-synword(maa,           må). 
+synword(ma,            mÃ¥).  
+synword(maa,           mÃ¥). 
 synword(maeg,          meg).   %% own sp
 synword(mage,          mange). 
 synword(maile,         sende). 
@@ -9320,10 +9322,10 @@ synword(mane,          mange).
 synword(mangen,        mange). 
 synword(mangt,         mye). 
 synword(manhe,         mange). 
-synword(may,           må).  
-synword(maynedskort,   månedskort). 
-synword(maøte,         møte). 
-synword(maå,           må). 
+synword(may,           mÃ¥).  
+synword(maynedskort,   mÃ¥nedskort). 
+synword(maÃ¸te,         mÃ¸te). 
+synword(maÃ¥,           mÃ¥). 
 synword(md,            med).
 synword(mde,           med).  
 synword(mded,          med).  
@@ -9331,7 +9333,7 @@ synword(mded,          med).
 synword(me,            med).          %% Dialect 
 synword(me,            meg).    % dial
 %% synword(me,            vi).  %   %% NN
-%% synword(me,            må).  %% Å-trøbbel %% Hazardous
+%% synword(me,            mÃ¥).  %% Ã…-trÃ¸bbel %% Hazardous
 
 synword(medd,          med). 
 synword(mede,          med). 
@@ -9346,7 +9348,7 @@ synword(meh,           meg). %% own
 synword(mei,           meg).
 synword(meir,          mer). 
 synword(meiningo,      meningen). %% Dial :-) 
-synword(meiningå,      meningen). %%
+synword(meiningÃ¥,      meningen). %%
 synword(mej,           meg). 
 synword(meed,          med). 
 synword(meeg,          meg). 
@@ -9366,7 +9368,7 @@ synword(mellon,        mellom).
 synword(mellomhvis,    hvis).         %% ?
 synword(mellomk,       mellom). 
 synword(mellomm,       mellom). 
-synword(melløm,        mellom).  
+synword(mellÃ¸m,        mellom).  
 synword(melom,         mellom).
 synword(melomm,        mellom). 
 synword(meloom,        mellom). 
@@ -9375,10 +9377,10 @@ synword(menigen,       meningen).
 synword(meningn,       meningen). 
 synword(met,           med). 
 %% synword(metan,         gass). 
-synword(meå,           må).  
+synword(meÃ¥,           mÃ¥).  
 synword(mfra,          fra). 
-synword(mfør,          før).  %% ? sentru mfør
-synword(mhp,           for). %% alt er så usikkert mhp Team
+synword(mfÃ¸r,          fÃ¸r).  %% ? sentru mfÃ¸r
+synword(mhp,           for). %% alt er sÃ¥ usikkert mhp Team
 synword(mi,            min).          %% (dialect)
 synword(mib,           min).  %% beib
 synword(mida,          middag). 
@@ -9397,8 +9399,8 @@ synword(midtsommer,    sommertid).
 synword(milig,         mulig).  %%  spc
 synword(millom,        mellom).
 synword(min,           minutter). 
-     %% OOPS  jeg er større enn min mor
-     %% bussen går om 5 min
+     %% OOPS  jeg er stÃ¸rre enn min mor
+     %% bussen gÃ¥r om 5 min
 synword(miorgen,       morgen). %%  own
 synword(mirgen,        morgen). %% TA-110328
 synword(mit,           mitt). 
@@ -9414,9 +9416,9 @@ synword(mlm,           mellom).
 synword(mndag,         mandag). %% TA-110214 own
 synword(mna,           man). 
 synword(mne,           men). 
-synword(mnt,           mot). %%  mñt
+synword(mnt,           mot). %%  mÃ±t
 synword(mofrgen,       morgen).  %% TA-110704 own, dbl neib
-%% synword(mo,            må). %% collides Mo (i Rana) 
+%% synword(mo,            mÃ¥). %% collides Mo (i Rana) 
 synword(moegen,        morgen).  
 synword(moegenbuss,    morgenbuss). 
 synword(mogen,         morgen). 
@@ -9435,7 +9437,7 @@ synword(moregn,        morgen).
 synword(moren,         morgen).      %% -- mother ? // hva heter moren din*
 synword(morga,         morgen). 
 synword(morgoen,       morgen). %% TA-110214
-synword(morgå,         morgen).  
+synword(morgÃ¥,         morgen).  
 synword(morgan,        morgen).  
 synword(morge,         morgen). 
 synword(morgeb,        morgen).      %% neib 
@@ -9465,7 +9467,7 @@ synword(morgwn,        morgen).
 synword(morhen,        morgen). 
 synword(morn,          hei). 
 
-synword(morna,         adjø). 
+synword(morna,         adjÃ¸). 
 synword(morosamt,      morsomt). 
 synword(morosomt,      morsomt). 
 synword(morra,         imorgen). %% not morra -> morgen -> gomorgen
@@ -9476,7 +9478,7 @@ synword(morrgen,       morgen).
 synword(morro,         moro). 
 synword(morrra,        morgen). %% ?
 
-synword(mote,          møte).   
+synword(mote,          mÃ¸te).   
 synword(mote,          mot).
 
 synword(motgen,        morgen). 
@@ -9486,46 +9488,46 @@ synword(mh,            hilsen).
 synword(mht,           til).       
 synword(mvh,           hilsen).   
 synword(my,            mye). 
-synword(my,            må). 
+synword(my,            mÃ¥). 
 %%% synword(mye,           ting).     %%  Techn.
 synword(mycket,        meget).  %% S
 synword(myr,           mye). %% gen place ? %% act
 synword(mykje,         meget). 
 synword(mytji,         meget).
-synword(mæ,            meg).          %%  (NB, not jeg  only use in reciproc )
-synword(mæ,            må).           %%  Haz ? (Doesnt help)
-synword(mæg,           meg). 
-synword(mærmeste,      nærmeste).
-synword(mæst,          mest). 
-synword(maanedskort,   månedskort).
-synword(måendskort,    månedskort).  
-synword(måndeskort,    månedskort).   %%  Sp.
-synword(månedkort,     månedskort). 
-synword(månedskotr,    månedskort).   %% Sp 
-synword(månedspris,    månedskort).   %% Rough
-synword(måneskort,     månedskort).  
-synword(måa,           må). 
-synword(mån,           mandag).   %% Sv 
-synword(många,         mange).    %% SV
-synword(månge,         mange).    %% 
-synword(måp,           må).       %% neib k
+synword(mÃ¦,            meg).          %%  (NB, not jeg  only use in reciproc )
+synword(mÃ¦,            mÃ¥).           %%  Haz ? (Doesnt help)
+synword(mÃ¦g,           meg). 
+synword(mÃ¦rmeste,      nÃ¦rmeste).
+synword(mÃ¦st,          mest). 
+synword(maanedskort,   mÃ¥nedskort).
+synword(mÃ¥endskort,    mÃ¥nedskort).  
+synword(mÃ¥ndeskort,    mÃ¥nedskort).   %%  Sp.
+synword(mÃ¥nedkort,     mÃ¥nedskort). 
+synword(mÃ¥nedskotr,    mÃ¥nedskort).   %% Sp 
+synword(mÃ¥nedspris,    mÃ¥nedskort).   %% Rough
+synword(mÃ¥neskort,     mÃ¥nedskort).  
+synword(mÃ¥a,           mÃ¥). 
+synword(mÃ¥n,           mandag).   %% Sv 
+synword(mÃ¥nga,         mange).    %% SV
+synword(mÃ¥nge,         mange).    %% 
+synword(mÃ¥p,           mÃ¥).       %% neib k
 
 
-synword(mår,           må).  
-synword(måra,          morgen).   
-synword(mårn,          hei).
-synword(måro,          morgen).  
-synword(mårra,         morgen).  %% dial
-synword(mårrå,         morgen). 
-synword(mårres,        morges).  
-synword(mårrest,       morges). 
-synword(mårå,          morgen).  %% dial 
-synword(måste,         må).      %% Sv 
-%% synword(måte,          møte).        %%  !  
-%% synword(måte,          må).          %% 
-synword(mått,          må). 
-synword(måtte,         må).          %% Confusion ???
-synword(måå,           må).  
+synword(mÃ¥r,           mÃ¥).  
+synword(mÃ¥ra,          morgen).   
+synword(mÃ¥rn,          hei).
+synword(mÃ¥ro,          morgen).  
+synword(mÃ¥rra,         morgen).  %% dial
+synword(mÃ¥rrÃ¥,         morgen). 
+synword(mÃ¥rres,        morges).  
+synword(mÃ¥rrest,       morges). 
+synword(mÃ¥rÃ¥,          morgen).  %% dial 
+synword(mÃ¥ste,         mÃ¥).      %% Sv 
+%% synword(mÃ¥te,          mÃ¸te).        %%  !  
+%% synword(mÃ¥te,          mÃ¥).          %% 
+synword(mÃ¥tt,          mÃ¥). 
+synword(mÃ¥tte,         mÃ¥).          %% Confusion ???
+synword(mÃ¥Ã¥,           mÃ¥).  
 %% synword(mellomjula,    christmas).     %% roughly 
 
 synword(mena,          mene).  
@@ -9541,15 +9543,15 @@ synword(meste,         neste).         %% ?
 % synword(mester,         neste).        %% ??
 
 synword(mg,            meg). 
-synword(mgå,           gå). 
-synword(mgår,          går).   %% blank  neib m
+synword(mgÃ¥,           gÃ¥). 
+synword(mgÃ¥r,          gÃ¥r).   %% blank  neib m
 synword(mleeom,        mellom). 
-synword(mmp,           må).            %% ??
-synword(mnd,           måned). 
+synword(mmp,           mÃ¥).            %% ??
+synword(mnd,           mÃ¥ned). 
 synword(mneste,        neste). 
-synword(mp,            må).            %%  nb key
+synword(mp,            mÃ¥).            %%  nb key
 synword(mpt,           mot). %% own 
-synword(mpå,           må).  %% actual
+synword(mpÃ¥,           mÃ¥).  %% actual
 synword(mr,            nr). 
 synword(mrd,           med). 
 synword(mrg,           morgen).
@@ -9565,49 +9567,49 @@ synword(muli,          mulig).
 synword(mulighe,       mulighet). 
 synword(muloig,        mulig). 
 synword(murlig,        mulig).         %% TA-110331
-synword(møjlig,        mulig).         %% (SWE)
-synword(møjligt,       mulig).         %% (SWE)
-synword(møt,           mot).     
-synword(måj,           må).            %%   måj eg
-synword(mål,           må). 
-synword(mår,           når). 
-synword(mårgen,        morgen). 
-synword(mårran,        morgenen). 
-synword(måy,           må).            %%  mÃ¥ 
+synword(mÃ¸jlig,        mulig).         %% (SWE)
+synword(mÃ¸jligt,       mulig).         %% (SWE)
+synword(mÃ¸t,           mot).     
+synword(mÃ¥j,           mÃ¥).            %%   mÃ¥j eg
+synword(mÃ¥l,           mÃ¥). 
+synword(mÃ¥r,           nÃ¥r). 
+synword(mÃ¥rgen,        morgen). 
+synword(mÃ¥rran,        morgenen). 
+synword(mÃ¥y,           mÃ¥).            %%  mÃƒÂ¥ 
 
-%%¤ synword(n  
+%%Â¤ synword(n  
 
 synword(n,             neste).    %% sms 
-synword(n,             når).      %% sms 
-synword('na|r',        nær).      %% TA-100829 
+synword(n,             nÃ¥r).      %% sms 
+synword('na|r',        nÃ¦r).      %% TA-100829 
 synword('na|ste',      neste). 
-synword('na|rheten',   nærheten). %% TA-101001
-synword('na|rmeste',   nærmeste). %% TA-100829 
-synword(na,            nå). 
+synword('na|rheten',   nÃ¦rheten). %% TA-101001
+synword('na|rmeste',   nÃ¦rmeste). %% TA-100829 
+synword(na,            nÃ¥). 
 synword(nai,           nei).  
-synword(naerheten,     nærheten). 
+synword(naerheten,     nÃ¦rheten). 
 synword(naermest,      neste). 
-synword(naermeste,     nærmeste).  
-synword(naermste,      nærmeste).  
-synword(naert,         nær).  %% nær, act
+synword(naermeste,     nÃ¦rmeste).  
+synword(naermste,      nÃ¦rmeste).  
+synword(naert,         nÃ¦r).  %% nÃ¦r, act
 synword(naeste,        neste). 
 synword(nalle,         alle). 
 synword(namge,         mange).  
-synword(nar,           når). 
-synword(narmest,       nærmest).   
-synword('na|rmest',       nærmest). 
-synword(narmeste,      nærmeste). 
+synword(nar,           nÃ¥r). 
+synword(narmest,       nÃ¦rmest).   
+synword('na|rmest',       nÃ¦rmest). 
+synword(narmeste,      nÃ¦rmeste). 
 %% synword(narr,          natt).  %% TA-110609
 synword(narsle,        varsle).  
 synword(naubuss,       nattbuss).
 synword(navne,         navn).     %% Dan
-synword(nay,           nå).       %% nÃ¥
-synword(nayr,          når).      %%  nÃ¥r also splitword
-synword(naå,           nå). 
-synword(naå,           når).      %%  actual
-synword(naår,          når). 
-synword(naer,          nær).      %% Svensk (aktuell) 
-synword(naer,          når). 
+synword(nay,           nÃ¥).       %% nÃƒÂ¥
+synword(nayr,          nÃ¥r).      %%  nÃƒÂ¥r also splitword
+synword(naÃ¥,           nÃ¥). 
+synword(naÃ¥,           nÃ¥r).      %%  actual
+synword(naÃ¥r,          nÃ¥r). 
+synword(naer,          nÃ¦r).      %% Svensk (aktuell) 
+synword(naer,          nÃ¥r). 
 
 synword(nasjonaldagen, may17).   
 synword(naste,         neste).  
@@ -9647,7 +9649,7 @@ synword(nbeste,        neste).
 %% synword(nbussen,       bussen).
 %% synword(nbusser,       busser).
 
-synword(nbår,          når). 
+synword(nbÃ¥r,          nÃ¥r). 
 synword(nde,           ned).       %%
 synword(nde,           de).        %% actual 
 synword(ndet,          det).
@@ -9657,11 +9659,11 @@ synword(ne,            ned).
 synword(neafor,        nedenfor).
 synword(neaste,        neste). 
 synword(neate,         neste). 
-synword(nebte,         neste).     %%  neßte buss 
+synword(nebte,         neste).     %%  neÃŸte buss 
 synword(nedafor,       nedenfor). 
 synword(nednefor,      nedenfor). %% own 
-synword(nedenstående,  dette). %% rough 
-synword(nedstående,    dette). %% rough
+synword(nedenstÃ¥ende,  dette). %% rough 
+synword(nedstÃ¥ende,    dette). %% rough
 synword(nederst,       nede).  
 
 synword(nedom,         ned).  
@@ -9681,36 +9683,36 @@ synword(neivel,        nei).
 synword(neivell,       nei).  
 synword(nekste,        neste). 
 synword(nellom,        mellom).  
-synword(nemest,        nærmest).  
-synword(nemeste,       nærmeste). 
+synword(nemest,        nÃ¦rmest).  
+synword(nemeste,       nÃ¦rmeste). 
 synword(nemste,        neste). 
 synword(nen,           noen).  
 synword(nenste,        neste).  
 synword(neom,          nedenom). 
 synword(neon,          noen). 
 synword(neppe,         ikke). 
-synword(ner,           ned).       %%  SWE (nær?)
+synword(ner,           ned).       %%  SWE (nÃ¦r?)
 synword(ner,           nr).  
 
 
-%%NÆRMEST     adverb, adjective, preposition
+%%NÃ†RMEST     adverb, adjective, preposition
 
-synword(nerheten,      nærheten).
-synword(nerhetern,     nærheten).
-synword(nerleiken,     nærhetent).
-synword(nerme,         nær).
-synword(nermer,        nær).
-synword(nermere,       nær). 
-synword(nermes,        nærmest). 
-synword(nermeset,      nærmeste).  
-synword(nermest,       nærmest). 
-synword(nermest,       nærmeste).  
-%%% synword(nermeste,      nærmest).     %% etc. %% når går nermeste buss 
+synword(nerheten,      nÃ¦rheten).
+synword(nerhetern,     nÃ¦rheten).
+synword(nerleiken,     nÃ¦rhetent).
+synword(nerme,         nÃ¦r).
+synword(nermer,        nÃ¦r).
+synword(nermere,       nÃ¦r). 
+synword(nermes,        nÃ¦rmest). 
+synword(nermeset,      nÃ¦rmeste).  
+synword(nermest,       nÃ¦rmest). 
+synword(nermest,       nÃ¦rmeste).  
+%%% synword(nermeste,      nÃ¦rmest).     %% etc. %% nÃ¥r gÃ¥r nermeste buss 
 
-synword(nermaste,      nærmeste). 
-%% synword(nermeste,      nærmeste).   %% splitword
+synword(nermaste,      nÃ¦rmeste). 
+%% synword(nermeste,      nÃ¦rmeste).   %% splitword
 %% synword(nermeste,      neste).  
-synword(nermetse,      nærmeste). 
+synword(nermetse,      nÃ¦rmeste). 
 synword(nermetse,      neste).  
 
 synword(nerse,         neste).
@@ -9729,7 +9731,7 @@ synword(nesre,         neste).
 synword(nesrte,        neste).  
 synword(nesste,        neste). 
 
-synword(nest,          neste).     %%   nest første / nest siste
+synword(nest,          neste).     %%   nest fÃ¸rste / nest siste
 synword(nesta,         neste).     %%  (dialect)
 synword(nestd,         neste).  
 synword(nesteb,        neste). 
@@ -9754,7 +9756,7 @@ synword(nestetter,     etter).
 synword(nestew,        neste). 
 
 synword(nestf,         neste). 
-synword(nestførste,    andre). 
+synword(nestfÃ¸rste,    andre). 
 synword(nestn,         neste). 
 synword(nestneste,     andre). 
 
@@ -9768,7 +9770,7 @@ synword(nestre,        neste).
 synword(nests,         neste). 
 synword(nestte,        neste). 
 
-% Når går nest buss = neste buss                                     
+% NÃ¥r gÃ¥r nest buss = neste buss                                     
 
 % synword(nest,          andre).   %% Fixed in bustrans
 
@@ -9785,54 +9787,54 @@ synword(nets,          nest).
 synword(netse,         neste). 
 synword(netst,         neste). 
 synword(netste,        neste). 
-% synword(nettop,        nå).     %%  = reach * 
-% synword(nettopp,       nå).     %%  = reach * 
+% synword(nettop,        nÃ¥).     %%  = reach * 
+% synword(nettopp,       nÃ¥).     %%  = reach * 
 %% synword(nevnte,        dette). %% -> adj2 
 synword(newste,        neste).   
 synword(newte,         neste). 
 synword(nexte,         neste).  
 %% synword(next,         nest(e)). %% No, lang sel.
-synword(neår,          når).  
+synword(neÃ¥r,          nÃ¥r).  
 synword(nfra,          fra). 
-%% synword(ng,            [når,går]).  %% når går (also splitword)
-synword(ngn,           neste). %% når går neste 
+%% synword(ng,            [nÃ¥r,gÃ¥r]).  %% nÃ¥r gÃ¥r (also splitword)
+synword(ngn,           neste). %% nÃ¥r gÃ¥r neste 
 synword(ngnb,          buss). 
-synword(ngår,          går).  %%  act
-synword(nhår,          når). 
+synword(ngÃ¥r,          gÃ¥r).  %%  act
+synword(nhÃ¥r,          nÃ¥r). 
 synword(nkan,          kan). 
-synword(nkår,          når). 
+synword(nkÃ¥r,          nÃ¥r). 
 
 %% synword(ni,            du).        %%  SVENSK ( EXPERIMENT )    
-                                    %% failed  Når går ni til dragvoll ?
+                                    %% failed  NÃ¥r gÃ¥r ni til dragvoll ?
 synword(nie,           noe).
 synword(nien,          noen). 
 synword(nii,           9).  
 synword(nio,           9).  
 synword(niste,         neste).
 synword(njeste,        neste). 
-synword(njår,          når). 
-synword(nlår,          når).  
+synword(njÃ¥r,          nÃ¥r). 
+synword(nlÃ¥r,          nÃ¥r).  
 synword(nmed,          med). 
 synword(nmeste,        neste). 
 synword(nmmer,         nummer).  
 synword(nmr,           nr). 
-synword(nmå,           nå).  
-synword(nmår,          når). 
+synword(nmÃ¥,           nÃ¥).  
+synword(nmÃ¥r,          nÃ¥r). 
 synword(nneste,        neste). 
-synword(nnå,           nå).      %%  own spc
-synword(nnår,          når). 
+synword(nnÃ¥,           nÃ¥).      %%  own spc
+synword(nnÃ¥r,          nÃ¥r). 
 synword(nnr,           nr).  
-synword(nnrå,          når).  
-synword(nnrå,          når). 
+synword(nnrÃ¥,          nÃ¥r).  
+synword(nnrÃ¥,          nÃ¥r). 
 synword(nnummer,       nummer).  
-synword(nnår,          når). 
+synword(nnÃ¥r,          nÃ¥r). 
 
-synword(no,            nå). %% no -> nå -> reach 
+synword(no,            nÃ¥). %% no -> nÃ¥ -> reach 
 %%                                  %% ( "synparticle" , solved in  grammar) 
 %% synword(no,            noe). %% er det no post ? 
 %% synword(no,            nr). 
 
-%% synword(noe,           []).  %% er det noe gøy %% jeg liker noe
+%% synword(noe,           []).  %% er det noe gÃ¸y %% jeg liker noe
  
 synword(noe,           ting).  %% jeg vet noe (som er) rart
 synword(noe,           litt).  %% Hazard
@@ -9862,40 +9864,40 @@ synword(nommere,       nummer).
 synword(nomrer,        nummer).
 synword(non,           noen). 
 % synword(nor,         nord).    %% ?
-synword(nor,           når).     %% ? 
+synword(nor,           nÃ¥r).     %% ? 
 synword(nordmenn,      personer). 
 synword(normenn,       personer). 
 synword(norgestaxi,taxi). 
 synword(norover,       nordover). 
-synword(norr,          når). 
+synword(norr,          nÃ¥r). 
 synword(norsk,         norwegian). %%  the language
 %% synword(nordover,      nord). 
 synword(norover,       nordover). 
 synword(nort,          nord). %% TA-101210
 synword(noste,         neste).  
 
-synword(np,              nå).  
+synword(np,              nÃ¥).  
 synword(npe,             noe). 
-synword(npr,             når). 
-synword(npår,            når).  
+synword(npr,             nÃ¥r). 
+synword(npÃ¥r,            nÃ¥r).  
 
 % synword(nr,            rute).      %% Ad Hoc, destroys busphrases
-% synword(nr,            buss).      %%  en nr.9 går
+% synword(nr,            buss).      %%  en nr.9 gÃ¥r
 
 synword(nr,            nummer).      %% Experiment
-%% synword(nr,            når).      %%  haz! Når går nr 5 fra dragvoll til sentrum?
+%% synword(nr,            nÃ¥r).      %%  haz! NÃ¥r gÃ¥r nr 5 fra dragvoll til sentrum?
 
 synword(nreste,        neste).  
 synword(nri,           nei). 
 synword(nrr,           nummer).  
 synword(nrste,         neste).
 synword(nrummer,       numer).  
-synword(nrå,           når). 
+synword(nrÃ¥,           nÃ¥r). 
 synword(nteste,        neste). 
 synword(ntidlig,       tidlig).  %% morge|n tidlig
 synword(nvor,          hvor).  
 
-%%    når er avgangene nr9 ? ==> kl 9  %% HAZARD 
+%%    nÃ¥r er avgangene nr9 ? ==> kl 9  %% HAZARD 
 
 %% Solve by    w(nr9,name(9,u,route)). 
 
@@ -9925,23 +9927,23 @@ synword(nsste,         neste).
 synword(nst,           neste). 
 synword(nste,          neste).   
 
-synword(nyttårsfeiring,feiring). %% rough
+synword(nyttÃ¥rsfeiring,feiring). %% rough
 
 synword(nyttayrsaften,new_years_eve). 
 synword(nyttarsaften,new_years_eve).
-synword(nyttårsafen, new_years_eve).
-synword(nyttårsafta, new_years_eve).
-synword(nyttårsften, new_years_eve).
+synword(nyttÃ¥rsafen, new_years_eve).
+synword(nyttÃ¥rsafta, new_years_eve).
+synword(nyttÃ¥rsften, new_years_eve).
 synword(nyttarsaften,new_years_eve ). 
-synword(nyttårsfaten,new_years_eve ). 
-synword(nttårsaften,new_years_eve ).
-synword(nyttåeraften,new_years_eve ).
+synword(nyttÃ¥rsfaten,new_years_eve ). 
+synword(nttÃ¥rsaften,new_years_eve ).
+synword(nyttÃ¥eraften,new_years_eve ).
 synword( nyaften,new_years_eve ).
 
-synword(nu,            nå). 
+synword(nu,            nÃ¥). 
 %% synword(nu,            nr). %% ... og nu =og nummer Confuse 
 synword(nudd,          buss). 
-synword(nuh,           nå).          %% :-) 
+synword(nuh,           nÃ¥).          %% :-) 
 synword(nume,          nummer). 
 synword(numummer,      nummer).  
 synword(nunummer,      nummer). 
@@ -9949,94 +9951,94 @@ synword(nussem,        bussen).
 synword(nuste,         neste). 
 synword(nymmer,        nummer). 
 synword(nur,           nummer).  
-synword(nür,           når).  
+synword(nÃ¼r,           nÃ¥r).  
 synword(nweste,        neste). 
 synword(nwste,         neste). 
-synword(nyr,           når).
-synword(næemeste,      nærmeste).  
-synword(næi,           nei).   
-synword(næj,           nei).      
-synword(næjj,          nei).         %% ?  
-synword(næmeste,       nærmeste).  
-synword(næraste,       nærmest). 
-synword(næremere,      nærmere). 
-synword(næremest,      nærmest). 
-synword(næremeste,     nærmeste). 
-synword(næremset,      nærmest). 
-synword(næremst,       nærmest). 
-synword(næremste,      nærmeste). 
-synword(nærest,        nærmest). 
-synword(nerest,        nærmest). 
+synword(nyr,           nÃ¥r).
+synword(nÃ¦emeste,      nÃ¦rmeste).  
+synword(nÃ¦i,           nei).   
+synword(nÃ¦j,           nei).      
+synword(nÃ¦jj,          nei).         %% ?  
+synword(nÃ¦meste,       nÃ¦rmeste).  
+synword(nÃ¦raste,       nÃ¦rmest). 
+synword(nÃ¦remere,      nÃ¦rmere). 
+synword(nÃ¦remest,      nÃ¦rmest). 
+synword(nÃ¦remeste,     nÃ¦rmeste). 
+synword(nÃ¦remset,      nÃ¦rmest). 
+synword(nÃ¦remst,       nÃ¦rmest). 
+synword(nÃ¦remste,      nÃ¦rmeste). 
+synword(nÃ¦rest,        nÃ¦rmest). 
+synword(nerest,        nÃ¦rmest). 
 
-synword(nærheyen,      nærheten).  
-synword(nærleiken,     nærheten). 
-synword(nærliggende,   nær).          %%  ?
-synword(nærtliggende,  nær).          %%
-synword(nærmaste,       nærmeste).  
-%% synword(nærmenste,     nærmest).  
-%% synword(nærmenste,     nærmeste).  
-synword(nærmesst,      nærmest). 
-%%%% synword(nærmeste,      nærmest). %% makes ADJ -> PREP *
-synword(nærmes,        nærmest).  
-synword(nærmheten,     nærheten). 
-synword(nærmmeste,     nærmest).      %% hard to spot spell
-synword(nærmet,        nærmest).   
-synword(nærmete,       nærmeste). 
-synword(nærmset,       nærmest).  
-synword(nærma,         nær).         %% dial
-synword(nærmast,       nærmest). 
-synword(nærmaste,      nærmest).  
-synword(nærme,         nær). 
-% synword(nærmeste,  nærmest).   %%  " Nærmeste stasjon ==> forbi stasjon ==> buss forbi stasjon
-synword(nærmeset,      nærmest).
-   %% synword(nærmeste,      neste).         %%% Repair  nærmeste time //
+synword(nÃ¦rheyen,      nÃ¦rheten).  
+synword(nÃ¦rleiken,     nÃ¦rheten). 
+synword(nÃ¦rliggende,   nÃ¦r).          %%  ?
+synword(nÃ¦rtliggende,  nÃ¦r).          %%
+synword(nÃ¦rmaste,       nÃ¦rmeste).  
+%% synword(nÃ¦rmenste,     nÃ¦rmest).  
+%% synword(nÃ¦rmenste,     nÃ¦rmeste).  
+synword(nÃ¦rmesst,      nÃ¦rmest). 
+%%%% synword(nÃ¦rmeste,      nÃ¦rmest). %% makes ADJ -> PREP *
+synword(nÃ¦rmes,        nÃ¦rmest).  
+synword(nÃ¦rmheten,     nÃ¦rheten). 
+synword(nÃ¦rmmeste,     nÃ¦rmest).      %% hard to spot spell
+synword(nÃ¦rmet,        nÃ¦rmest).   
+synword(nÃ¦rmete,       nÃ¦rmeste). 
+synword(nÃ¦rmset,       nÃ¦rmest).  
+synword(nÃ¦rma,         nÃ¦r).         %% dial
+synword(nÃ¦rmast,       nÃ¦rmest). 
+synword(nÃ¦rmaste,      nÃ¦rmest).  
+synword(nÃ¦rme,         nÃ¦r). 
+% synword(nÃ¦rmeste,  nÃ¦rmest).   %%  " NÃ¦rmeste stasjon ==> forbi stasjon ==> buss forbi stasjon
+synword(nÃ¦rmeset,      nÃ¦rmest).
+   %% synword(nÃ¦rmeste,      neste).         %%% Repair  nÃ¦rmeste time //
 
 
-synword(nærmenste,     neste).   %% (succeeds as neste) 
+synword(nÃ¦rmenste,     neste).   %% (succeeds as neste) 
 
-synword(næsrmest,      nærmest).  
-synword(næsrmeste,     nærmeste). %% 
-synword(næst,          neste).  
-synword(næt,           når).  %%  ?  N[t g[r
+synword(nÃ¦srmest,      nÃ¦rmest).  
+synword(nÃ¦srmeste,     nÃ¦rmeste). %% 
+synword(nÃ¦st,          neste).  
+synword(nÃ¦t,           nÃ¥r).  %%  ?  N[t g[r
 
-synword(nødig,         ikke). %% rough 
-synword(nør,           når). 
-synword(nørme,         nærme).  
-synword(nørmere,       nærmere). 
-synword(nørmest,       nærmest). 
-synword(nøste,         neste).  
-synword(nåa,           nå). 
-synword(nåar,          når).  
-synword(nåd,           nå).
-synword(nåe,           når). 
-synword(nåer,          når). 
-synword(nåf,           når). 
-synword(nåhr,          når). 
-synword(nåi,           når). 
-synword(nåmr,          når). 
-synword(nån,           noen). 
-synword(nånr,          når).  
-synword(nåp,           når). 
-synword(nåpr,          når). 
-synword(nåpq,          når). 
-synword(nånår,         når). 
-synword(nåra,          når).
-synword(nårb,          når).
-synword(nårhvilken,    hvilken). %%  Repair
-synword(nårk,          når).     %% 
-synword(nårm,          når). 
-synword(nårn,          når).   
-synword(nårneste,      neste). 
-synword(nårnår,        når).
-synword(nårsj,         når). 
-synword(nårt,          når). 
-synword(nårtid,        når). 
-synword(nårå,          når). 
-synword(nåy,           nå). 
-synword(nåyr,          når). %% nÃ¥r 
-synword(nåær,          når). 
-synword(nåå,           nå). 
-synword(nåår,          når). 
+synword(nÃ¸dig,         ikke). %% rough 
+synword(nÃ¸r,           nÃ¥r). 
+synword(nÃ¸rme,         nÃ¦rme).  
+synword(nÃ¸rmere,       nÃ¦rmere). 
+synword(nÃ¸rmest,       nÃ¦rmest). 
+synword(nÃ¸ste,         neste).  
+synword(nÃ¥a,           nÃ¥). 
+synword(nÃ¥ar,          nÃ¥r).  
+synword(nÃ¥d,           nÃ¥).
+synword(nÃ¥e,           nÃ¥r). 
+synword(nÃ¥er,          nÃ¥r). 
+synword(nÃ¥f,           nÃ¥r). 
+synword(nÃ¥hr,          nÃ¥r). 
+synword(nÃ¥i,           nÃ¥r). 
+synword(nÃ¥mr,          nÃ¥r). 
+synword(nÃ¥n,           noen). 
+synword(nÃ¥nr,          nÃ¥r).  
+synword(nÃ¥p,           nÃ¥r). 
+synword(nÃ¥pr,          nÃ¥r). 
+synword(nÃ¥pq,          nÃ¥r). 
+synword(nÃ¥nÃ¥r,         nÃ¥r). 
+synword(nÃ¥ra,          nÃ¥r).
+synword(nÃ¥rb,          nÃ¥r).
+synword(nÃ¥rhvilken,    hvilken). %%  Repair
+synword(nÃ¥rk,          nÃ¥r).     %% 
+synword(nÃ¥rm,          nÃ¥r). 
+synword(nÃ¥rn,          nÃ¥r).   
+synword(nÃ¥rneste,      neste). 
+synword(nÃ¥rnÃ¥r,        nÃ¥r).
+synword(nÃ¥rsj,         nÃ¥r). 
+synword(nÃ¥rt,          nÃ¥r). 
+synword(nÃ¥rtid,        nÃ¥r). 
+synword(nÃ¥rÃ¥,          nÃ¥r). 
+synword(nÃ¥y,           nÃ¥). 
+synword(nÃ¥yr,          nÃ¥r). %% nÃƒÂ¥r 
+synword(nÃ¥Ã¦r,          nÃ¥r). 
+synword(nÃ¥Ã¥,           nÃ¥). 
+synword(nÃ¥Ã¥r,          nÃ¥r). 
 synword(number,        nummer).   %% ? destroys language selection!
 synword(nummber,       nummer). 
 
@@ -10045,8 +10047,8 @@ synword(nummber,       nummer).
 
 synword(nummeret,telefonnummeret). %% ad hoc  nummeret til SMSTUC 
 
-% synword(nummer,        buss).          %%  hva er nummer = kjøretøy 
- % Try without   <<Hvor kan  jeg få et nummer>> 
+% synword(nummer,        buss).          %%  hva er nummer = kjÃ¸retÃ¸y 
+ % Try without   <<Hvor kan  jeg fÃ¥ et nummer>> 
 
 synword(num,           nummer). 	
 synword(numme,         nummer). 
@@ -10076,71 +10078,71 @@ synword(nyeste,        siste).
 
 synword(nyttayr,        new_years_day).       
 
-synword(nyårsaften,     new_years_eve).  
+synword(nyÃ¥rsaften,     new_years_eve).  
 
 
-synword(nyttåraften,    new_years_eve).  
-synword(nyttårsaften,   new_years_eve).  
-synword(nyttårsaftenen, new_years_eve).   %% (name, not noun)
-synword(nyttårsfeiring, new_years_eve).   %% rough 
+synword(nyttÃ¥raften,    new_years_eve).  
+synword(nyttÃ¥rsaften,   new_years_eve).  
+synword(nyttÃ¥rsaftenen, new_years_eve).   %% (name, not noun)
+synword(nyttÃ¥rsfeiring, new_years_eve).   %% rough 
 
-synword(nyttår,         new_years_day).   %%   Ambiguous/ but ny.eve is not the new year
-synword(nyttårshelga,   new_years_day).   %% ambi, but helgen is mentioned
-synword(nyttårshelgen,  new_years_day).   %% ambi, but helgen is mentioned
-synword(nyttårahelgen,  new_years_day).   %% sp
+synword(nyttÃ¥r,         new_years_day).   %%   Ambiguous/ but ny.eve is not the new year
+synword(nyttÃ¥rshelga,   new_years_day).   %% ambi, but helgen is mentioned
+synword(nyttÃ¥rshelgen,  new_years_day).   %% ambi, but helgen is mentioned
+synword(nyttÃ¥rahelgen,  new_years_day).   %% sp
 
-synword(nyttårdag,      new_years_day). 
-synword(nyttårsdag,     new_years_day).
-synword(nyttårsdagen,   new_years_day).   %% (name, not noun)
-synword(nytårsaften,    new_years_eve). 
-synword(nytårsdagen,    new_years_day).  
-synword(nyårsdagen,     new_years_day).   %
-synword(nyårsdag,       new_years_day). 
+synword(nyttÃ¥rdag,      new_years_day). 
+synword(nyttÃ¥rsdag,     new_years_day).
+synword(nyttÃ¥rsdagen,   new_years_day).   %% (name, not noun)
+synword(nytÃ¥rsaften,    new_years_eve). 
+synword(nytÃ¥rsdagen,    new_years_day).  
+synword(nyÃ¥rsdagen,     new_years_day).   %
+synword(nyÃ¥rsdag,       new_years_day). 
 
-synword(næ,            nå).          %% TA-101228
-synword(nært,          nær).  
-synword(nøyktig,       nøyaktig).    %%  own
-synword(när,           når).         %%  Swedish   Can not be nær (near :-)
+synword(nÃ¦,            nÃ¥).          %% TA-101228
+synword(nÃ¦rt,          nÃ¦r).  
+synword(nÃ¸yktig,       nÃ¸yaktig).    %%  own
+synword(nÃ¤r,           nÃ¥r).         %%  Swedish   Can not be nÃ¦r (near :-)
 
-%% synword(nær,           når).      %%  Swedish NOT reach !!!!!!! 
+%% synword(nÃ¦r,           nÃ¥r).      %%  Swedish NOT reach !!!!!!! 
 
-synword(næse,          neste).       %% ? 
-synword(næsta,         neste).       %% Swedish 
-synword(næsti,         neste).       %% Isl
-% synword(nästa,         neste).     %% not surfacing
-synword(næste,         neste). 
-% synword(næsten,        nesten).  
+synword(nÃ¦se,          neste).       %% ? 
+synword(nÃ¦sta,         neste).       %% Swedish 
+synword(nÃ¦sti,         neste).       %% Isl
+% synword(nÃ¤sta,         neste).     %% not surfacing
+synword(nÃ¦ste,         neste). 
+% synword(nÃ¦sten,        nesten).  
 
-synword(naa,           nå).   
+synword(naa,           nÃ¥).   
 
-synword(naar,          når). 
-synword(naaar,         når).  
-synword(naayr,         når). 
-synword(någ,           når).    %% når går
-synword(någe,          noe).    %% TA-101029 
-synword(någen,         noen). 
-synword(nåk,           når). %%  -.. kommer
-synword(nåkka,         noen).
-synword(nånn,          noen). 
-synword(nåre,          når).  
-synword(nårg,          når).   
-%% synword(nårgår,        går).     %%  Rough
-%%  synword(nårgårbuss,    buss).    %%  Rough 
-%%  synword(nårgårneste,   neste).   %%  Rough
-synword(nårr,          når). 
-synword(nårti,         når).   
-%% synword(nårtid,        når).  %% preposition2 \+ reach
-synword(nås,           når).   %% actual
-synword(nåt,           når).   %% key neigh
-synword(nåtiden,       nå). 
-synword(nåttid,        nå). 
-synword(nåtr,          når).  
-synword(nåyr,          når).   %% nÃ¥r 
-synword(naartid,       når). 
-synword(nåværende,     denne).        %%  Rough %% TA-110725
-%%  synword(nåværende,     dette).        %%  Rough %% TA-110725
+synword(naar,          nÃ¥r). 
+synword(naaar,         nÃ¥r).  
+synword(naayr,         nÃ¥r). 
+synword(nÃ¥g,           nÃ¥r).    %% nÃ¥r gÃ¥r
+synword(nÃ¥ge,          noe).    %% TA-101029 
+synword(nÃ¥gen,         noen). 
+synword(nÃ¥k,           nÃ¥r). %%  -.. kommer
+synword(nÃ¥kka,         noen).
+synword(nÃ¥nn,          noen). 
+synword(nÃ¥re,          nÃ¥r).  
+synword(nÃ¥rg,          nÃ¥r).   
+%% synword(nÃ¥rgÃ¥r,        gÃ¥r).     %%  Rough
+%%  synword(nÃ¥rgÃ¥rbuss,    buss).    %%  Rough 
+%%  synword(nÃ¥rgÃ¥rneste,   neste).   %%  Rough
+synword(nÃ¥rr,          nÃ¥r). 
+synword(nÃ¥rti,         nÃ¥r).   
+%% synword(nÃ¥rtid,        nÃ¥r).  %% preposition2 \+ reach
+synword(nÃ¥s,           nÃ¥r).   %% actual
+synword(nÃ¥t,           nÃ¥r).   %% key neigh
+synword(nÃ¥tiden,       nÃ¥). 
+synword(nÃ¥ttid,        nÃ¥). 
+synword(nÃ¥tr,          nÃ¥r).  
+synword(nÃ¥yr,          nÃ¥r).   %% nÃƒÂ¥r 
+synword(naartid,       nÃ¥r). 
+synword(nÃ¥vÃ¦rende,     denne).        %%  Rough %% TA-110725
+%%  synword(nÃ¥vÃ¦rende,     dette).        %%  Rough %% TA-110725
 
-%%¤ synword(o 
+%%Â¤ synword(o 
 
 
 synword(o1,01). 
@@ -10154,13 +10156,13 @@ synword(o8,08).
 synword(o9,09). 
 
 synword(och,           og).           %%  (Swedish)
-synword(också,         også).
+synword(ocksÃ¥,         ogsÃ¥).
   
 synword(odte,          ofte). 
-synword(oest,          øst).          %% also avoids vest
-%% synword(oestover,        østover). %% NO, cant handle anyway 
-synword(oestre,        østre).        %%  avoids vestre
-synword(oevre,         øvre). 
+synword(oest,          Ã¸st).          %% also avoids vest
+%% synword(oestover,        Ã¸stover). %% NO, cant handle anyway 
+synword(oestre,        Ã¸stre).        %%  avoids vestre
+synword(oevre,         Ã¸vre). 
 %% synword(of,            og).  %% destroys lang. selection 
 synword(offer,         hvorfor). 
 synword(offte,         ofte).  
@@ -10188,24 +10190,24 @@ synword(oki,           ok).
 synword(okii,          ok).  
 synword(okok,          ok).
 synword(oky,           ok). 
-synword(okå,           ok).
+synword(okÃ¥,           ok).
 synword(ook,           ok).
 
 synword(okken,         hvilken). 
 %%% synword(om,            hvis). %% Hazardous  
 synword(ombord,        inn). 
-synword(omgående,      nå).  
+synword(omgÃ¥ende,      nÃ¥).  
 synword(omkting,       omkring). 
 synword(omm,           om). 
 
 %% synword(omme,          slutt). %% tiden er .. %%  -> Ha det bra
-synword(omme,          komme). %% for å omme 
+synword(omme,          komme). %% for Ã¥ omme 
 
 synword(omorgenen,     ommorgenen). 
-synword(omradet,       området). 
+synword(omradet,       omrÃ¥det). 
 synword(omrking,       omkring). 
 synword(omrkring,      omkring). 
-synword(omrpde,        område). 
+synword(omrpde,        omrÃ¥de). 
 synword(omrtent,       omtrent). 
 synword(omtrendt,      omtrent).
 synword(omvendt,       tilbake). 
@@ -10216,44 +10218,44 @@ synword(online,        her).   %% Ad Hoc
 
 synword(onnen,         innen). %%  own
 synword(op,            opp). 
-synword(op,            på). %%  doubl neibk
-synword(open,          åpen). 
-synword(opent,         åpent). 
+synword(op,            pÃ¥). %%  doubl neibk
+synword(open,          Ã¥pen). 
+synword(opent,         Ã¥pent). 
 synword(opg,           og).      %% slip
 synword(opgitt,        opgitt). 
 synword(oppbygd,       laget). 
 synword(oppi,          i). 
-synword(opne,          åpne). 
+synword(opne,          Ã¥pne). 
 synword(oppdaterte,    oppdatert). %% Rule her 
 synword(oppmot,        mot).  
 synword(oppom,         forbi).
-synword(oppsto,        hendte). % oppstår/oppstå
-synword(oppstå,        hende). 
+synword(oppsto,        hendte). % oppstÃ¥r/oppstÃ¥
+synword(oppstÃ¥,        hende). 
 synword(oppsto,        hendte).
-synword(oppstått,      hendt).
-synword(oppå,          til). %% opp på byåsen 
-synword(oppåver,       oppover). 
+synword(oppstÃ¥tt,      hendt).
+synword(oppÃ¥,          til). %% opp pÃ¥ byÃ¥sen 
+synword(oppÃ¥ver,       oppover). 
 synword(or,            for).  
 synword(orakwl,        orakel). 
 synword(orakle,        orakel). 
 synword(oraklet,       orakelet).     %%  (there is a rule)
 synword(orbi,          forbi).
-%% synword(ord,           ordinær).   %%  du bruker -ord- som fins
+%% synword(ord,           ordinÃ¦r).   %%  du bruker -ord- som fins
 synword(oreklet,       orakelet).    %% oraklet er selv syn orakelet 
 synword(orgenen,       morgenen).     %%  om (m)orgenen
 
 synword(orsak,         unnskyld). 
-synword(otti,          åtti). 
+synword(otti,          Ã¥tti). 
 
 %% synword(oss,           jeg).  %% Need Case distinction 
-synword(ossen,         hvordan). %%  åssen
+synword(ossen,         hvordan). %%  Ã¥ssen
 synword(ossn,          hvordan).
-synword(ost,           øst). 
+synword(ost,           Ã¸st). 
 
 synword(otil,          til). 
-synword(otte,          åtte). 
-synword(otter,         åtte).  
-synword(otterne,       åtte). 
+synword(otte,          Ã¥tte). 
+synword(otter,         Ã¥tte).  
+synword(otterne,       Ã¥tte). 
 
 synword(ovenfor,       ved). 
 synword(ovennevnte,    denne).
@@ -10263,17 +10265,17 @@ synword(overmorra,     overimorgen).
 synword(overstadig,    veldig).
 synword(overt,         over). 
 synword(ovet,          over). 
-synword(ovre,          øvre). 
-synword(oxo,           også). 
-synword(oå,            på). 
+synword(ovre,          Ã¸vre). 
+synword(oxo,           ogsÃ¥). 
+synword(oÃ¥,            pÃ¥). 
 
 %% synword(p 
 
-synword(p,             på). %% sms 
-synword(pa,            på).
-synword(palmesøndag,   palm_sunday). 
+synword(p,             pÃ¥). %% sms 
+synword(pa,            pÃ¥).
+synword(palmesÃ¸ndag,   palm_sunday). 
 
-synword(paa,           på).
+synword(paa,           pÃ¥).
 
 synword(paserere,      passere).  
 synword(pasererer,     passerer). 
@@ -10281,9 +10283,9 @@ synword(pasesrer,      passerer).
 
 synword(paskedag,      easterday).  %% NB
 synword(paskeaften,    eastereve). 
-synword(pæskedag,      easterday).  %% NB
-synword(pæskeaften,    eastereve). 
-synword(pæskerute,     påskerute).
+synword(pÃ¦skedag,      easterday).  %% NB
+synword(pÃ¦skeaften,    eastereve). 
+synword(pÃ¦skerute,     pÃ¥skerute).
 
 
 synword(passeer,       passerer).  
@@ -10303,19 +10305,19 @@ synword(passererer,    passerer). %% avoid noun(passerere --> passerer=imp
 synword(passeser,      passerer).
 synword(passeserer,    passerer).
 synword(passeses,      passerer). 
-synword(pay,           på). %%  pÃ¥  %% å-trøbbel
-synword(payske,        påske).
+synword(pay,           pÃ¥). %%  pÃƒÂ¥  %% Ã¥-trÃ¸bbel
+synword(payske,        pÃ¥ske).
 
 synword(pb,            postboks). 
-synword(pi,            på).       %% actual
-%% synword(pils,øl).  %% Facetious  
-synword(pinlig,        dårlig).
+synword(pi,            pÃ¥).       %% actual
+%% synword(pils,Ã¸l).  %% Facetious  
+synword(pinlig,        dÃ¥rlig).
 synword(pinsedag,      whitsun_day). 
 synword(pinseaften,    whitsun_eve). 
 synword(pinsaften,     whitsun_eve).
 synword(pirs,          pris). %% own 
 synword(pisneaften,    whitsun_eve). 
-synword(pinsesøndag,   whitsun_day). 
+synword(pinsesÃ¸ndag,   whitsun_day). 
 %% synword(pc,            datamaskin). %% noun
 synword(pemger,        penger). 
 synword(penest,        pen).  
@@ -10329,16 +10331,16 @@ synword(pfra,          fra).          %% ? act
 synword(pg,            og).           %%  own sp
 synword(pl,            kl).           %% ?? Haz?
 %% synword(pm,            om).           %%  ? Eng,  dislike om
-synword(po,            på).   
+synword(po,            pÃ¥).   
 synword(pog,           og).           %% own 
 synword(polities,      politiets). 
-synword(poå,           på).           %% slip 
-synword(pp,            på).  
+synword(poÃ¥,           pÃ¥).           %% slip 
+synword(pp,            pÃ¥).  
 synword(ppasserer,     passerer).  
-synword(ppå,           på). 
+synword(ppÃ¥,           pÃ¥). 
 synword(pr,            hver).         %% For hver ? 
 synword(pra,           fra).          %% ?
-synword(praøver,       prøver).
+synword(praÃ¸ver,       prÃ¸ver).
 synword(precis,        presis). 
 synword(priesen,       prisen).       %%  own sp
 synword(prise,         priser).       %% DK 
@@ -10351,53 +10353,53 @@ synword(propan,        gass).
 synword(psserer,       passerer).  
 synword(ptte,          8).            %%  neib
 synword(pussene,       bussene).
-synword(py,            på).           %% pü 
-synword(pøls,          pølse).  
-synword(pøstre,        østre).        %% slip
-synword(pæ,            på).  
-synword(påe,           på).       %%  own
-synword(påfølgende,    neste). 
-synword(pål,           på). %% ? 
-%% synword(pålitelig,     presis).   %% rough reliable (good)
-%% synword(pålitelige,    presise).  %% 
-synword(pålogget,      her).      %% Ad Hoc 
-synword(påp,           på).  
-synword(pår,           går).  
-synword(pår,           når).   
-synword(påseke,        påske).   %% own
-synword(påsøndag,      søndag). 
-synword(påmandag,      mandag). 
-synword(påtirsdag,     tirsdag). 
-synword(påonsdag,      onsdag). 
-synword(påtorsdag,     torsdag).
-synword(påfredag,      fredag). 
-synword(pålørdag,      lørdag). 
+synword(py,            pÃ¥).           %% pÃ¼ 
+synword(pÃ¸ls,          pÃ¸lse).  
+synword(pÃ¸stre,        Ã¸stre).        %% slip
+synword(pÃ¦,            pÃ¥).  
+synword(pÃ¥e,           pÃ¥).       %%  own
+synword(pÃ¥fÃ¸lgende,    neste). 
+synword(pÃ¥l,           pÃ¥). %% ? 
+%% synword(pÃ¥litelig,     presis).   %% rough reliable (good)
+%% synword(pÃ¥litelige,    presise).  %% 
+synword(pÃ¥logget,      her).      %% Ad Hoc 
+synword(pÃ¥p,           pÃ¥).  
+synword(pÃ¥r,           gÃ¥r).  
+synword(pÃ¥r,           nÃ¥r).   
+synword(pÃ¥seke,        pÃ¥ske).   %% own
+synword(pÃ¥sÃ¸ndag,      sÃ¸ndag). 
+synword(pÃ¥mandag,      mandag). 
+synword(pÃ¥tirsdag,     tirsdag). 
+synword(pÃ¥onsdag,      onsdag). 
+synword(pÃ¥torsdag,     torsdag).
+synword(pÃ¥fredag,      fredag). 
+synword(pÃ¥lÃ¸rdag,      lÃ¸rdag). 
 
-synword(påskaften,     eastereve). 
-synword(påskdag,       easterday). 
-synword(påskfag,       easterday). %% sms
+synword(pÃ¥skaften,     eastereve). 
+synword(pÃ¥skdag,       easterday). 
+synword(pÃ¥skfag,       easterday). %% sms
 
-synword(påskeaftem,    eastereve). 
-synword(påskeaften,    eastereve). 
+synword(pÃ¥skeaftem,    eastereve). 
+synword(pÃ¥skeaften,    eastereve). 
 
 synword(paaskeaften,    eastereve). 
 
-synword(påskaften,     eastereve).
-synword(påskedag,      easterday). 
-synword(påskesøndag,   easterday).
-synword(påskehelligdag,påske).       %% (Rough, -> must specify date) 
-synword(påskehellidag, påske).       %%
-synword(påsledag,      påskedag).    %% own sp
-synword(påt,           på). 
-synword(påy,           på).          %% pÃ¥
-synword(påå,           på).  
+synword(pÃ¥skaften,     eastereve).
+synword(pÃ¥skedag,      easterday). 
+synword(pÃ¥skesÃ¸ndag,   easterday).
+synword(pÃ¥skehelligdag,pÃ¥ske).       %% (Rough, -> must specify date) 
+synword(pÃ¥skehellidag, pÃ¥ske).       %%
+synword(pÃ¥sledag,      pÃ¥skedag).    %% own sp
+synword(pÃ¥t,           pÃ¥). 
+synword(pÃ¥y,           pÃ¥).          %% pÃƒÂ¥
+synword(pÃ¥Ã¥,           pÃ¥).  
 
 
-%%¤  synword(q 
+%%Â¤  synword(q 
 
 synword(qtter,         etter).  
 
-%%¤  synword(r 
+%%Â¤  synword(r 
 
 synword(r,             er). %% TA-101103 Haz?
 
@@ -10406,29 +10408,29 @@ synword(r,             er). %% TA-101103 Haz?
 
 synword(raf,           fra).        
 synword(rakt,          hurtig). 
-synword(rar,           uforståelig).  %% ( There is a wisdom herein !)
-synword(rare,          uforståelig).  
-%%%  synword(rart,          dårlig). 
-synword(rart,          uforståelig).  
+synword(rar,           uforstÃ¥elig).  %% ( There is a wisdom herein !)
+synword(rare,          uforstÃ¥elig).  
+%%%  synword(rart,          dÃ¥rlig). 
+synword(rart,          uforstÃ¥elig).  
 
 % synword(rasende,       veldig). %% ..fort 
 % synword(rask,          hurtig).  %% not adverb
 % synword(raske,         hurtig).  %% not adverb 
 
 synword(rb,            rutebil). 
-synword(rbuss,         buss). %% gå rbuss
-synword(rdet,          det).  %% gå rdet 
+synword(rbuss,         buss). %% gÃ¥ rbuss
+synword(rdet,          det).  %% gÃ¥ rdet 
 synword(rdu,           du).   %% bo rdu
 synword(rjeg,          jeg). 
-synword(rmå,           må). 
+synword(rmÃ¥,           mÃ¥). 
 synword(rsakest,       raskest). 
 synword(rumdt,         rundt). 
 synword(rvndt,         rundt). %% TA-101011
 synword(russ,          buss). 
-synword(rår,           går). 
+synword(rÃ¥r,           gÃ¥r). 
 
 
-synword(raskt, []). %% hurtig). %%   håper   dere raskt  kan bidra .
+synword(raskt, []). %% hurtig). %%   hÃ¥per   dere raskt  kan bidra .
 
 synword(raskesk,       raskest).  
 synword(raskeste,      beste).
@@ -10437,9 +10439,9 @@ synword(raskeset,      beste).
 %% synword(romjulen,      christmas). 
 %% synword(julehelgen,    christmas).  
 
-synword(raud,          rød). 
+synword(raud,          rÃ¸d). 
 synword(re,            er).   %% provoc?
-synword(rede,          informasjon).  %% rede på
+synword(rede,          informasjon).  %% rede pÃ¥
 synword(regelmessig,   ofte).         %%  (roughly)
 synword(registert,     registrert).   %% own
 synword(rei,           reise).        %% disrupt
@@ -10459,7 +10461,7 @@ synword(resise,        reise).
 synword(restart,       start).
 %% synword(restarting,    start). %% ?
 
-synword(reste,         neste). %% går reste (contag)
+synword(reste,         neste). %% gÃ¥r reste (contag)
 synword(retn,          retning). 
 synword(reting,        retning). 
 synword(retnig,        retning).  
@@ -10467,7 +10469,7 @@ synword(retnig,        retning).
 %%%% synword(retning,       mot).   %% starter i feil retning %% TA-101115
 
 %% synword(retur,         til).    %% retur munkegata
-synword(retur,         tilbake). %% når går det retur ? No help
+synword(retur,         tilbake). %% nÃ¥r gÃ¥r det retur ? No help
 synword(returbuss,     til).    %% rough
 % synword(retur,         tur).        %%  (knows word, but cant handle)
 %% buss i retur = buss i tur = buss i rute = buss uten forsinkelse !!!
@@ -10483,7 +10485,7 @@ synword(rettur,  tur). %% useless
 synword(returtider, retur).
 synword(ret,           rett).    %% retur ???
 synword(rfa,           fra).  
-synword(rgår,          går).     %% own spc
+synword(rgÃ¥r,          gÃ¥r).     %% own spc
 synword(ril,           til). 
 synword(rindt,         rundt).   %%  neib k
 synword(rite,          rute).    %%  own
@@ -10492,7 +10494,7 @@ synword(rkl,           kl).      %%  ette rkl
 synword(rklokka,       klokken). 
 synword(rklokken,      klokken).
 synword(rndt,          rundt).  
-synword(rneste,        neste).   %%  gå rneste
+synword(rneste,        neste).   %%  gÃ¥ rneste
 synword(rnudt,         rundt).
 synword(roinntur,      rundtur).    %% rough
 
@@ -10505,10 +10507,10 @@ synword(roter,         ruter).
 
 synword(raf,           fra).        
 synword(rakt,          hurtig). 
-synword(rar,           uforståelig).  %% ( There is a wisdom herein !)
-synword(rare,          uforståelig).  
-%%%  synword(rart,          dårlig). 
-synword(rart,          uforståelig).  
+synword(rar,           uforstÃ¥elig).  %% ( There is a wisdom herein !)
+synword(rare,          uforstÃ¥elig).  
+%%%  synword(rart,          dÃ¥rlig). 
+synword(rart,          uforstÃ¥elig).  
 
 % synword(rasende,       veldig). %% ..fort 
 % synword(rask,          hurtig).  %% not adverb
@@ -10522,9 +10524,9 @@ synword(rutetide,      rutetider).
 synword(rutider,       rutetider).    %%  ( slightly dyslex.)
 synword(ryte,          rute). 
 
-synword(rætning,       retning).  %% dial
-synword(rækk,          rekker).  
-synword(røking,        røyking). %% no need for inflect 
+synword(rÃ¦tning,       retning).  %% dial
+synword(rÃ¦kk,          rekker).  
+synword(rÃ¸king,        rÃ¸yking). %% no need for inflect 
 
 synword(rra,           fra).     %%  neib k
 synword(rrundt,        rundt).  
@@ -10568,13 +10570,13 @@ synword(rutepln,       ruteplan). %% own sp
 
 
 
-%%¤ synword(s 
+%%Â¤ synword(s 
  
 synword(s,            sentrum).   %% avoid Trondheim S = sentrum %% 
 %%% synword(s,            siste).  %% TA-100825     %%  Hazardous, change to fnlp = [s] 
-                      %%  Buss 6 går fra s kl 16.00   
+                      %%  Buss 6 gÃ¥r fra s kl 16.00   
 
-%% synword(sa,           så). %% ø-problem Haz
+%% synword(sa,           sÃ¥). %% Ã¸-problem Haz
 
 synword(saklig,       bra).  
 synword(sal,          skal).    
@@ -10585,25 +10587,25 @@ synword(sankthansdag, midsummer_day).
 synword(sannt,        sant). 
 synword(sap,          heretter). 
 synword(sato,         dato).      %% Not 'Stor'   amble# anomaly 
-synword(satsa,        håpet). 
-synword(say,          så).        %% sÃ¥  destroys lang select ?
+synword(satsa,        hÃ¥pet). 
+synword(say,          sÃ¥).        %% sÃƒÂ¥  destroys lang select ?
 synword(sbuss,        buss). 
 synword(sdet,         det).       %%  own
-synword(sdjø,         adjø).      %% Neibk
+synword(sdjÃ¸,         adjÃ¸).      %% Neibk
 synword(sdu,          du).        %% TA-11033	 neib
-%% synword(sfall,        såfall). %% ?
+%% synword(sfall,        sÃ¥fall). %% ?
 synword(sfra,         fra). 
 synword(sge,          seg). 
-synword(sgår,         går).       %% buss sgår
+synword(sgÃ¥r,         gÃ¥r).       %% buss sgÃ¥r
 synword(sher,         skjer). %% ? 
 synword(skejr,        skjer).
 synword(sm,           som). 
-synword(småpenger,    penger).   
+synword(smÃ¥penger,    penger).   
 
 
-synword(saynn,         slik). %% sÃ¥nn 
+synword(saynn,         slik). %% sÃƒÂ¥nn 
 
-synword(saa,           så).  
+synword(saa,           sÃ¥).  
 synword(sakl,          skal).  
 
 %% synword(sakte,         fort).    %% -> slowly 
@@ -10614,7 +10616,7 @@ synword(samarbeid,     samarbeide).
 synword(sammmen,       sammen).  
 %% synword( sammen,       []). %% together
 synword(samen,         sammen). 
-synword(samnorsk,      bokmål).  %% rough
+synword(samnorsk,      bokmÃ¥l).  %% rough
 synword(samt,          og).  
 synword(samtaln,       samtalen). 
 synword(samtlige,      alle). 
@@ -10623,7 +10625,7 @@ synword(sanne,         sant).
 synword(sarest,        heretter).  
 synword(sarkastisk,    bra). %% returnerer Takk, (som er sarkastisk :-) 
 
-%% synword(se,            så).   %% Åtrøbbel haz
+%% synword(se,            sÃ¥).   %% Ã…trÃ¸bbel haz
 synword(sedan,         siden).    %% Swe
 %% synword(seg,           jeg).   %% han liker seg
 synword(sei,           si).       %% NN 
@@ -10642,8 +10644,8 @@ synword(sein,           sen).
 
  synword(selv,          redundant0).     %% selv er jeg nyssgjerrig %% TA-110103
 
- synword(selvfølgelig,  redundant0). 
- synword(selfølgelig,   redundant0). 
+ synword(selvfÃ¸lgelig,  redundant0). 
+ synword(selfÃ¸lgelig,   redundant0). 
                             
 %% destroys selv om// not any more (selv om -> selvom
 
@@ -10726,20 +10728,20 @@ synword(sjher,         ser).    %% Dial
 synword(sjkal,         skal).  
 synword(sjue,          7). 
 synword(sjukehus,      sykehus). 
-synword(sjæl,          selv).   %% Dial 
-synword(sjøs,          sjøen). 
-synword(sjå,           se). 
-synword(sjåførere,     sjåfør).  
+synword(sjÃ¦l,          selv).   %% Dial 
+synword(sjÃ¸s,          sjÃ¸en). 
+synword(sjÃ¥,           se). 
+synword(sjÃ¥fÃ¸rere,     sjÃ¥fÃ¸r).  
 synword(skel,          skal).  
 synword(skitur,        tur).    %% Rough 
-synword(skjaønner,     forstår).%%  skjÃ¸nner
+synword(skjaÃ¸nner,     forstÃ¥r).%%  skjÃƒÂ¸nner
 synword(skjelden,      ofte).   %% Rough
 synword(skjeldent,     ofte).   %% Rough
 synword(skjera,        skjer). 
-synword(skjøre,        kjøre). 
-synword(skjører,       kjører). 
-synword(skjørte,       kjørte).
-synword(skjørt,        kjørt). 
+synword(skjÃ¸re,        kjÃ¸re). 
+synword(skjÃ¸rer,       kjÃ¸rer). 
+synword(skjÃ¸rte,       kjÃ¸rte).
+synword(skjÃ¸rt,        kjÃ¸rt). 
 synword(skl,           skal).  
 synword(skla,          skal).
 synword(skoel,         skole).  
@@ -10750,43 +10752,43 @@ synword(ska,           vil).       %% dialect NB takk ska du ha
 synword(skaf,          skaff).     %% TA-110128 DK
 %% synword(skal,          vil).        %%   Unnec
 synword(skaj,          skal). 
-synword(skalø,         skal). 
+synword(skalÃ¸,         skal). 
 synword(skak,          skal).   
 synword(skall,         vil).           %% slight misspell (Swedish)
 synword(skam,          skal).  
 synword(skap,          vil).           %% skal 
 synword(skasl,         vil).           %% slip
-synword(skav,          skal).          %% .. være 
-synword(skaø,          skal).     %% TA-110817
-synword(skaøl,         skal).  
+synword(skav,          skal).          %% .. vÃ¦re 
+synword(skaÃ¸,          skal).     %% TA-110817
+synword(skaÃ¸l,         skal).  
 synword(skoill,        vil).  
 synword(sku,           vil). 
 synword(skulla,        vil).  
 synword(skulle,        vil).   
 
-synword(skute,         båt). %% NB ikke skuter (scooter)
-synword(skuter,        motorsykkel). %% NB ikke båte
+synword(skute,         bÃ¥t). %% NB ikke skuter (scooter)
+synword(skuter,        motorsykkel). %% NB ikke bÃ¥te
 
-synword(skjærtorsdag,      maundy_thursday). %% Correct,  not monday
-   synword(skjærtorsda,    maundy_thursday). %%
-   synword(skjæretorsdag,  maundy_thursday). %% own
-   synword(skjærtorsdags,  maundy_thursday). %%
-   synword(sjærtorsdag,    maundy_thursday). %% should be a name
-   synword(skjærtorsag,    maundy_thursday).
-   synword(skjørtorsdag,   maundy_thursday). 
-   synword(skjærtordag,    maundy_thursday). 
-   synword(skjærtorstag,   maundy_thursday).
-   synword(skjørtorstag,   maundy_thursday).
+synword(skjÃ¦rtorsdag,      maundy_thursday). %% Correct,  not monday
+   synword(skjÃ¦rtorsda,    maundy_thursday). %%
+   synword(skjÃ¦retorsdag,  maundy_thursday). %% own
+   synword(skjÃ¦rtorsdags,  maundy_thursday). %%
+   synword(sjÃ¦rtorsdag,    maundy_thursday). %% should be a name
+   synword(skjÃ¦rtorsag,    maundy_thursday).
+   synword(skjÃ¸rtorsdag,   maundy_thursday). 
+   synword(skjÃ¦rtordag,    maundy_thursday). 
+   synword(skjÃ¦rtorstag,   maundy_thursday).
+   synword(skjÃ¸rtorstag,   maundy_thursday).
 
 
-synword(skjønar,       forstår). 
-% synword(slett,         dårlig).
-% synword(slette,        dårlig). %%
-% synword(slik,          sånn). 
+synword(skjÃ¸nar,       forstÃ¥r). 
+% synword(slett,         dÃ¥rlig).
+% synword(slette,        dÃ¥rlig). %%
+% synword(slik,          sÃ¥nn). 
 
 synword(slk,           slik).  
 
-  %% synword(slik,          denne). %% rough %% slik * oppførsel skjer .
+  %% synword(slik,          denne). %% rough %% slik * oppfÃ¸rsel skjer .
   %% slik at ... 
 
 synword(slike,          disse). %% rough 
@@ -10795,33 +10797,33 @@ synword(slrive,skrive). %%  own
 
 synword(skreven,       skrevet). 
 % synword(skrv,          skrev). %% ? 
-synword(skål,          skal).
+synword(skÃ¥l,          skal).
 synword(sli,           slik). 
 synword(slika,         slik). %% slik|a t 
-%%  synword(slikat,        så).   %% splitword? 
-synword(små,           liten). 
+%%  synword(slikat,        sÃ¥).   %% splitword? 
+synword(smÃ¥,           liten). 
 
 synword(snacks,  mat).
 
-synword(snakkes,        adjø).
-  synword(prates,       adjø).
-  synword(sees,         adjø). 
-  synword(snakes,       adjø).
-  synword(snakkast,     adjø). 
-  synword(talast,       adjø).
-  synword(tastes,       adjø). 
+synword(snakkes,        adjÃ¸).
+  synword(prates,       adjÃ¸).
+  synword(sees,         adjÃ¸). 
+  synword(snakes,       adjÃ¸).
+  synword(snakkast,     adjÃ¸). 
+  synword(talast,       adjÃ¸).
+  synword(tastes,       adjÃ¸). 
 
-synword(sne,  snø).   
+synword(sne,  snÃ¸).   
 synword(snr,  nr). %% bus snr
-synword(snæll,snill). %% Dial
-synword(snål,           uforståelig).  %% ( There is a wisdom herein !)
-synword(snår,           når). 
+synword(snÃ¦ll,snill). %% Dial
+synword(snÃ¥l,           uforstÃ¥elig).  %% ( There is a wisdom herein !)
+synword(snÃ¥r,           nÃ¥r). 
 
 synword(snil,          snill).  
 synword(snkomst,       ankomst). 
 %% problematic
 
-%%synword(snarest,       nå).           %%  ---> reach ***
+%%synword(snarest,       nÃ¥).           %%  ---> reach ***
 
 synword(snarets,       heretter). 
 synword(snarast,       heretter).  %%  ???
@@ -10832,14 +10834,14 @@ synword(snartest,      heretter).  %% slight
 synword(snartest,      snarest). 
 synword(snareste,      fort).
 synword(snart,         heretter). 
-% synword(snart,         fort).  %% går bussen snart
+% synword(snart,         fort).  %% gÃ¥r bussen snart
 
 
-synword(snodig,        uforståelig). 
-synword(so,            så).     %%  dial// \+ see 
+synword(snodig,        uforstÃ¥elig). 
+synword(so,            sÃ¥).     %%  dial// \+ see 
 %% synword(so,            som). %%  
-synword(soendre,       søndre). 
-synword(soer,          sør).
+synword(soendre,       sÃ¸ndre). 
+synword(soer,          sÃ¸r).
 synword(soiste,        siste). 
 synword(some,          som). 
 synword(somm,          som). %% TA-110329
@@ -10853,41 +10855,41 @@ synword(somnormalt,    som). %% rough
 
 synword(sort,          svart).
 
-% sad story   skal -> vil -> gå -> komme : 
+% sad story   skal -> vil -> gÃ¥ -> komme : 
 % hvordan skal jeg komme til nth ==> 
 % hvordan kommer jeg ! * komme til nth
 
-synword(soørre,       spørre). %% own
+synword(soÃ¸rre,       spÃ¸rre). %% own
 
 
 synword(sopinj,        sulten). %% dial Telf kat ST
 %% synword(st,            stasjon). %% Moholt St. Olavs Hospital
 synword(spessielt,    spesielt). 
-synword(spår,         spør). 
-synword(spårsmål,     spørsmål).  %% own 
-%% synword(sp,        så).        %% Neib K %% sp andersens vei 
+synword(spÃ¥r,         spÃ¸r). 
+synword(spÃ¥rsmÃ¥l,     spÃ¸rsmÃ¥l).  %% own 
+%% synword(sp,        sÃ¥).        %% Neib K %% sp andersens vei 
 synword(ssom,         som).       %% TA-110330
 synword(ssyd,         syd).   
-%% synword(spasserer,    passerer). %%  (går?)
+%% synword(spasserer,    passerer). %%  (gÃ¥r?)
 
-synword(spaørre,      spørre).  
-synword(spaørsmayl,   spørsmål).  %% spÃ¸rsmÃ¥l 
-synword(spaørsmaylet, spørsmålet).
+synword(spaÃ¸rre,      spÃ¸rre).  
+synword(spaÃ¸rsmayl,   spÃ¸rsmÃ¥l).  %% spÃƒÂ¸rsmÃƒÂ¥l 
+synword(spaÃ¸rsmaylet, spÃ¸rsmÃ¥let).
 
-synword(spm,          spørsmål). 
+synword(spm,          spÃ¸rsmÃ¥l). 
 synword(spm,          som). %%  ?
-synword(spoer,        spør). 
-synword(spoersmaal,   spørsmål). 
-synword(spraak,       språk). 
-synword(sprayk,       språk).  
+synword(spoer,        spÃ¸r). 
+synword(spoersmaal,   spÃ¸rsmÃ¥l). 
+synword(spraak,       sprÃ¥k). 
+synword(sprayk,       sprÃ¥k).  
 synword(sprek,        god).       %%  ? 
-synword(sprog,        språk).  
-synword(spørja,       spørre).    %% NN 
-synword(spørr,        spør).  
-synword(spørsml,      spørsmål). 
-synword(spørsmpl,     spørsmål). 
-synword(spørsål,      spørsmål).  
-synword(srayk,        språk).
+synword(sprog,        sprÃ¥k).  
+synword(spÃ¸rja,       spÃ¸rre).    %% NN 
+synword(spÃ¸rr,        spÃ¸r).  
+synword(spÃ¸rsml,      spÃ¸rsmÃ¥l). 
+synword(spÃ¸rsmpl,     spÃ¸rsmÃ¥l). 
+synword(spÃ¸rsÃ¥l,      spÃ¸rsmÃ¥l).  
+synword(srayk,        sprÃ¥k).
 synword(srever,       server).  
 synword(sror,         stor).  
 synword(ssite,        siste).     %% contag 
@@ -10903,11 +10905,11 @@ synword(svensker,     personer).  %%
 
 synword(svr,          svar). 
 synword(svret,        svaret). 
-synword(svære,        svare). 
-synword(svært,        meget). 
+synword(svÃ¦re,        svare). 
+synword(svÃ¦rt,        meget). 
 
                                     
-synword(sta,           stå).
+synword(sta,           stÃ¥).
 
     synword(stajon,station). %% -> TS 
     synword(stadjonon,station).  
@@ -10916,9 +10918,9 @@ synword(sta,           stå).
 synword(staks,         heretter). 
 synword(stand,         tilstand). %% \+ i stand  
 synword(standard,      vanlig). 
-synword(staa,          stå).
-synword(staar,         står).
-synword(star,          står).
+synword(staa,          stÃ¥).
+synword(staar,         stÃ¥r).
+synword(star,          stÃ¥r).
 synword(stater,        land).
 synword(statene,       landene).
 synword(stat,          land). % USA ???
@@ -10926,7 +10928,7 @@ synword(statio,        stasjon).
 synword(statsjonen,        stasjonen). %% avoid ts if possible
 synword(station,        stasjon).  
 synword(statjon,        stasjon).
-synword(stay,           stå). %%  stÃ¥ //lang. confusion
+synword(stay,           stÃ¥). %%  stÃƒÂ¥ //lang. confusion
 synword(stede,         stedet).
 synword(sten,          stein).
 synword(stertsted,     startsted).   
@@ -10946,115 +10948,115 @@ synword(strasjon,      stasjon).
 synword(strax,         heretter).  
 synword(stste,         siste).   
 synword(stykkje,       stykke).  
-    synword(ståa,          tilstanden). %% NN :-) %% TA-100831
-synword(ståt,          står).  
+    synword(stÃ¥a,          tilstanden). %% NN :-) %% TA-100831
+synword(stÃ¥t,          stÃ¥r).  
 synword(su,            du).            %%  ?
 synword(su,            si).            %%  Own spc, neib K
 synword(sundt,         bra).   
 synword(sunt,          bra).         %%
 synword(supert,        bra). 
 
-synword(suss,          buss).   %%  kan jeg få en suss
-           %% intentional humour -> du må oppgi et sted
+synword(suss,          buss).   %%  kan jeg fÃ¥ en suss
+           %% intentional humour -> du mÃ¥ oppgi et sted
 
 synword(suste,         siste).         %% spell neibor
-synword(svensker,      personer).   %% de også :-) 
+synword(svensker,      personer).   %% de ogsÃ¥ :-) 
 synword(svenskene,     personene).  %% ?   
 synword(sybs,          syns). 
-synword(syd,           sør).
-synword(sydetter,      sørover).  
+synword(syd,           sÃ¸r).
+synword(sydetter,      sÃ¸rover).  
 synword(synest,        synes). 
 synword(synnes,        synes). 
 synword(syns,          synes).
-synword(sydover,       sørover). 
+synword(sydover,       sÃ¸rover). 
 synword(systam,        system).  
 synword(syvende,       7).  %% TA-110203
 synword(syvendes,      7).             %% Haakon VII gate
 
-synword(sæ,            seg).           %%  Dialect
-% synword(særli,         særlig).  
-synword(såe,           så). %% own 
-synword(såleis,        slik). 
-synword(såm,           som).  
-synword(såmm,          som). 
+synword(sÃ¦,            seg).           %%  Dialect
+% synword(sÃ¦rli,         sÃ¦rlig).  
+synword(sÃ¥e,           sÃ¥). %% own 
+synword(sÃ¥leis,        slik). 
+synword(sÃ¥m,           som).  
+synword(sÃ¥mm,          som). 
 
-synword(såpass,        mye).  %%  det brukes såpass
-synword(såpass,        så). 
+synword(sÃ¥pass,        mye).  %%  det brukes sÃ¥pass
+synword(sÃ¥pass,        sÃ¥). 
 
-synword(sændag,søndag). 
-synword(sø,søndag). 
-synword(sød,syd).
-synword(sød,sør).
+synword(sÃ¦ndag,sÃ¸ndag). 
+synword(sÃ¸,sÃ¸ndag). 
+synword(sÃ¸d,syd).
+synword(sÃ¸d,sÃ¸r).
 
-synword(søta,søte).    %% ..bror
-% synword(sørover,       sør). 
+synword(sÃ¸ta,sÃ¸te).    %% ..bror
+% synword(sÃ¸rover,       sÃ¸r). 
 
-synword(sørsia,          sør).  
-synword(sørsida,         sør).  
-synword(sørsiden,        sør).  
+synword(sÃ¸rsia,          sÃ¸r).  
+synword(sÃ¸rsida,         sÃ¸r).  
+synword(sÃ¸rsiden,        sÃ¸r).  
 synword(nordsia,         nord). 
 synword(nordsida,        nord). 
 synword(nordsiden,       nord). 
 
-synword(sørre,         spørre).    
+synword(sÃ¸rre,         spÃ¸rre).    
 
 synword(son,           som).   %% Son ? 
-synword(sonn,          slik).  %% sånn 
+synword(sonn,          slik).  %% sÃ¥nn 
 
 % synword(sondere,       slike). %% no synword to noise
 % synword(sonderre,      slike). %%
-% synword(sånnderre,     slike). %%  
+% synword(sÃ¥nnderre,     slike). %%  
 
-synword(sundag,        søndag). 
+synword(sundag,        sÃ¸ndag). 
 synword(suspekt,       gal).
 
-%% synword(så,            deretter).  %% confuse  hvis ... så ...
-synword(såh,           deretter).    %%  ???
-synword(sån,           slik).
-synword(sånn,          slik).
-synword(sånna,         slik). %% sånna
-synword(sånne,         slike).  
-synword(sånt,          slikt).  
-synword(sånt,          slik). %% dial
-synword(sånt,          noe).  
-synword(såå,           så).   
-synword(såå,           deretter).  %% ?
+%% synword(sÃ¥,            deretter).  %% confuse  hvis ... sÃ¥ ...
+synword(sÃ¥h,           deretter).    %%  ???
+synword(sÃ¥n,           slik).
+synword(sÃ¥nn,          slik).
+synword(sÃ¥nna,         slik). %% sÃ¥nna
+synword(sÃ¥nne,         slike).  
+synword(sÃ¥nt,          slikt).  
+synword(sÃ¥nt,          slik). %% dial
+synword(sÃ¥nt,          noe).  
+synword(sÃ¥Ã¥,           sÃ¥).   
+synword(sÃ¥Ã¥,           deretter).  %% ?
 
-%%¤ synword(t 
+%%Â¤ synword(t 
 
-synword(sørgående,     sørover). 
-synword(sørovergående, sørover).
+synword(sÃ¸rgÃ¥ende,     sÃ¸rover). 
+synword(sÃ¸rovergÃ¥ende, sÃ¸rover).
 
-synword(nordgående,     nordover). 
-synword(nordovergående, nordover).
+synword(nordgÃ¥ende,     nordover). 
+synword(nordovergÃ¥ende, nordover).
 
 synword(ves,ved). %% vest? %%  neib
 synword(vesjon,versjon).   %%  own
 
-%%¤ synword(v 
+%%Â¤ synword(v 
 
-synword(vestgående,     vestover). 
-synword(vestovergående, vestover).
-synword(vorfår,         hvorfor). %% TA-101126 
+synword(vestgÃ¥ende,     vestover). 
+synword(vestovergÃ¥ende, vestover).
+synword(vorfÃ¥r,         hvorfor). %% TA-101126 
 synword(vyss,buss).  
 
-%%¤ synword(ø 
+%%Â¤ synword(Ã¸ 
 
-synword(øfrste,          øverste).
-%% synword(øste,            østre).   %% busdat
-synword(øl,              øler). %% ad hoc, 2 øl(er) 
-synword(ømsker,          ønsker). %%  own
-synword(øog,             og).
-synword(østsia,          øst).  
-synword(østsida,         øst). 
-synword(østsiden,        øst). 
-synword(øve,             over).  %% Dial
-synword(øvrige,          andre). 
+synword(Ã¸frste,          Ã¸verste).
+%% synword(Ã¸ste,            Ã¸stre).   %% busdat
+synword(Ã¸l,              Ã¸ler). %% ad hoc, 2 Ã¸l(er) 
+synword(Ã¸msker,          Ã¸nsker). %%  own
+synword(Ã¸og,             og).
+synword(Ã¸stsia,          Ã¸st).  
+synword(Ã¸stsida,         Ã¸st). 
+synword(Ã¸stsiden,        Ã¸st). 
+synword(Ã¸ve,             over).  %% Dial
+synword(Ã¸vrige,          andre). 
 
-synword(østgående,     østover).
-synword(østovergående, østover).
+synword(Ã¸stgÃ¥ende,     Ã¸stover).
+synword(Ã¸stovergÃ¥ende, Ã¸stover).
 
-%%¤ synword(t 
+%%Â¤ synword(t 
 
 synword(t,               til). %% from synsms
 synword(t,               timer). %%  ?? Hazard
@@ -11084,11 +11086,11 @@ synword(tea,           ta).  %%  ?
 
 synword(teambuss,      buss).         %% Local TT ? 
 
-%% synword(teamnår,       når). %% TA-110128 SMS system matches Team without space
-                             %% then team når is not taken as preheader
+%% synword(teamnÃ¥r,       nÃ¥r). %% TA-110128 SMS system matches Team without space
+                             %% then team nÃ¥r is not taken as preheader
 
-synword(team,          teams).  % Team påskeruter// ad hoc
-% synword(te,            ta).         %% Æ vil te sæntrum
+synword(team,          teams).  % Team pÃ¥skeruter// ad hoc
+% synword(te,            ta).         %% Ã† vil te sÃ¦ntrum
 synword(teiden,        tiden). 
 synword(teikk,         trikk). 
 synword(teikken,       trikken). 
@@ -11111,12 +11113,12 @@ synword(tfor,          for).
 synword(tfra,          fra).   
 synword(tg,            tog).  
 synword(tgl,           til).  
-synword(tgår,          går). 
+synword(tgÃ¥r,          gÃ¥r). 
 synword(thankz,        takk).           %%  ? eng
 synword(thil,          til).  
 synword(thl,           til).  
 
-synword(tiaø,          til).  %% TA-101019   tiÃ
+synword(tiaÃ¸,          til).  %% TA-101019   tiÃƒ
 synword(tij,           til).  
 synword(tijl,          til). %% dialect
 
@@ -11133,11 +11135,11 @@ synword(tidd,          tid).
 %% synword(tide,          tid).  %% i tide 
 %% i tide ==> presis
 
-synword(tidenes,       den). %% største idiot 
+synword(tidenes,       den). %% stÃ¸rste idiot 
 synword(tidenne,       tidene). 
 %% synword(tider,         avgangstider). %% TIME FROM syndrome %% XP
-%%   hvilke tider går bussen = når 
-%% bussen går tidlig = om morgenen 
+%%   hvilke tider gÃ¥r bussen = nÃ¥r 
+%% bussen gÃ¥r tidlig = om morgenen 
 
 synword(tide,          tiden).
 synword(tideb,         tiden). %% neib
@@ -11167,22 +11169,22 @@ synword(tidlog,        tidlig).
 synword(tdlig,         tidlig). 
 synword(tidliog,       tidlig).  
 synword(tidliogere,    tidligere).
-synword(tideligste,    første). 
-synword(tidelikste,    første).  
+synword(tideligste,    fÃ¸rste). 
+synword(tidelikste,    fÃ¸rste).  
 synword(tidliere,      tidligere). 
 synword(tidliegere,    tidligere). %%
 synword(tidliger,      tidligere).
 synword(tidligerere,   tidligere). 
-synword(tidligære,     tidligere).
-synword(tidligse,      tidlig).    %% første). 
-synword(tidligste,     første). 
-synword(tidlikste,     første). 
-synword(tisligste,     første). 
-synword(tidligset,     første).  
+synword(tidligÃ¦re,     tidligere).
+synword(tidligse,      tidlig).    %% fÃ¸rste). 
+synword(tidligste,     fÃ¸rste). 
+synword(tidlikste,     fÃ¸rste). 
+synword(tisligste,     fÃ¸rste). 
+synword(tidligset,     fÃ¸rste).  
 synword(tidligste,     tidlig). 
-synword(tidligtste,    tidlig). %%første). 
-synword(tidligest,     først).          %%  Problem ?
-synword(tidligeste,    tidlig). %%første).         %%  (regular 
+synword(tidligtste,    tidlig). %%fÃ¸rste). 
+synword(tidligest,     fÃ¸rst).          %%  Problem ?
+synword(tidligeste,    tidlig). %%fÃ¸rste).         %%  (regular 
 %% synword(tidligst,      etter).  %%  avoid tidligst -> etter -> beyond
 %% tidligst >=   etter > (formally)
 %%       synword(tidligst,      tidlig). %% confuse 
@@ -11196,7 +11198,7 @@ synword(tidsperriode,  periode).
 synword(tidspunk,      tidspunkt). 
 synword(tidssjema,     tidsskjema).     %%   (spell)
 synword(innimellom,    tidvis). %%  TA-110111
-synword(tidøig,        tidlig). %% own 
+synword(tidÃ¸ig,        tidlig). %% own 
 synword(tifra,         forbi). 
 synword(tikl,          til). 
 %% synword(tim,           team). %%  trafikk %% TA-110214
@@ -11209,12 +11211,12 @@ synword(tildig,        tidlig).
 synword(tildilig,      tidlig). 
 synword(tildlig,       tidlig).
 synword(tildligere,    tidligere). 
-synword(tildligste,    første).
+synword(tildligste,    fÃ¸rste).
 synword(tile,          til). 
 synword(tilfra,        forbi). 
 synword(tilgi,         tidlig).  
 synword(tilh,          til).  
-synword(tilhørere,     tilhører). 
+synword(tilhÃ¸rere,     tilhÃ¸rer). 
 synword(tiliare,       tidligere).
 synword(tiliast,       tidligst). 
 synword(tiliaste,      tidligste). 
@@ -11225,9 +11227,9 @@ synword(tilist,        tidligst).
 
 synword(tilj,          til). %% dial 
 synword(tilk,          til).
-%%  synword(tilkl,         før). %% also splitword 
-%%  synword(tilklokka,     før). %% also splitword
-synword(tilklokken,    før). %% also splitword
+%%  synword(tilkl,         fÃ¸r). %% also splitword 
+%%  synword(tilklokka,     fÃ¸r). %% also splitword
+synword(tilklokken,    fÃ¸r). %% also splitword
 
 synword(tilm,          til). 
 synword(tilt,          til). 
@@ -11250,8 +11252,8 @@ synword(tii,           til).
 synword(tiil,          til). 
 synword(till,          til).            %%  (Sewdish)
 synword(tili,          tidlig).  %%  (til?)
-synword(tiligst,       tidlig).  %% først). 
-synword(tiligste,      første).  %%
+synword(tiligst,       tidlig).  %% fÃ¸rst). 
+synword(tiligste,      fÃ¸rste).  %%
 synword(til0,          til). 
 synword(tillig,        tidlig). 
 synword(tills,         til).  
@@ -11259,22 +11261,22 @@ synword(tilo,          til).
 synword(tilogmed,      til). 
 synword(tils,          til). 
 synword(tilsv,         tilsvarende). 
-synword(tilø,          til).            %%  key slip
+synword(tilÃ¸,          til).            %%  key slip
 synword(tilatt,        mulig).          %% spell + transitive till.
 synword(tillat,        mulig).   
 synword(tillatt,       mulig). 
 synword(tip,           til).  
 
 synword(tit,           til). 
-synword(tit,           når).   %% ?? %% Dial
+synword(tit,           nÃ¥r).   %% ?? %% Dial
 
 synword(titei,         hei). 
 synword(tittei,        hei).    %%  \+ Tine (amble#)
 synword(titil,         til).    
 synword(titlig,        tidlig). 
 synword(tiul,          til).  
-synword(tiø,           til). 
-synword(tiøl,          til).   
+synword(tiÃ¸,           til). 
+synword(tiÃ¸l,          til).   
 synword(tjenetse,      tjeneste). %% own
 synword(tjenste,       tjeneste). 
 synword(tjl,           til). 
@@ -11284,9 +11286,9 @@ synword(tkk,           takk).
 	%% Experiment %% TA-110221 failed klokka er to
 
 synword(toeget,        toget).
-%% synword(tom,           før).  %% t.o.m. %% TA-110620 Haz Bussen er tom.
+%% synword(tom,           fÃ¸r).  %% t.o.m. %% TA-110620 Haz Bussen er tom.
 synword(tover,         over). %% act (utover?) 
-synword(toø,           til). %%  dbl neib k
+synword(toÃ¸,           til). %%  dbl neib k
  synword(toge,         toget). 
 % synword(toget,         jernbanestasjonen).  %% (Whatever that gives)
 synword(togh,          tog).  
@@ -11304,18 +11306,18 @@ synword(tq,            ta).
 %% synword(tra,           fra).     %% slip  
 synword(tra,           ta).  
 synword(traff,         trafikk). %% ?
-synword(trasaøen,      traseen). 
-synword(traønder,      trønder).
+synword(trasaÃ¸en,      traseen). 
+synword(traÃ¸nder,      trÃ¸nder).
 synword(tredde,        tredje). 
 synword(tredhe,        tredje).   %%  own
-synword(treff,         spørsmål). %%  hvor mange treff
+synword(treff,         spÃ¸rsmÃ¥l). %%  hvor mange treff
 synword(tregest,       snarest).  %% Rough, Rhet
 synword(tregt,         langsomt). 
 synword(tremme,        framme). 
 synword(trengs,        trenges).
 synword(trengst,       trenges).
 synword(trejde,        tredje). 
-%% synword(trene,         være).    %% Too Rough 
+%% synword(trene,         vÃ¦re).    %% Too Rough 
 synword(tres,          tre). 
 synword(trid,          tid). 
 synword(trikke,        trikk). 
@@ -11328,12 +11330,12 @@ synword(tronjem,       trondheim).
 synword(trukk,         trikk). %% own 
  %%  synword(trykk,         trikk). %% neib confuse trikk %% TA-110303
 synword(tryk,          trikk). %%  neib
-synword(træg,          dum). 
-synword(træng, trenger).   %%  Dial
-synword(trøndertaxi,taxi). 
+synword(trÃ¦g,          dum). 
+synword(trÃ¦ng, trenger).   %%  Dial
+synword(trÃ¸ndertaxi,taxi). 
 
-synword(trøndersk,     norwegian).          %%    :-)
-synword(trøng,         trenger). 
+synword(trÃ¸ndersk,     norwegian).          %%    :-)
+synword(trÃ¸ng,         trenger). 
 synword(tsom,          som).  
 synword(tta,           ta).  
 synword(tter,          etter). 
@@ -11353,8 +11355,8 @@ synword(tusentakk,     takk).
 synword(tusind,        1000). %%  DK
 synword(tusinde,       1000). 
 synword(tusn,          1000).  
-synword(tvært,         tvert). 
-synword(två,           to). 
+synword(tvÃ¦rt,         tvert). 
+synword(tvÃ¥,           to). 
 synword(tyar,          tar).  %% slip 
 
 synword(tyil,          til). 
@@ -11362,24 +11364,24 @@ synword(tyl,           til).
 synword(type,          slags).
 synword(tysen,         tusen). 
 synword(tysdag,        tirsdag). 
-synword(tæ,            til).         %% ? dial 
-synword(tæk,           tar).  
-synword(tæl,           til). 
-synword(tæll,          til).  
-synword(tør,             vil). 
-synword(tørr,            vil). 
-synword(tå,            ta).  
-synword(tå,            av).   %% Dial
-synword(tåg,           tog).            %% SWE
-% synword(tåget,         jernbanestasjonen). 
-synword(tår,           tar). 
+synword(tÃ¦,            til).         %% ? dial 
+synword(tÃ¦k,           tar).  
+synword(tÃ¦l,           til). 
+synword(tÃ¦ll,          til).  
+synword(tÃ¸r,             vil). 
+synword(tÃ¸rr,            vil). 
+synword(tÃ¥,            ta).  
+synword(tÃ¥,            av).   %% Dial
+synword(tÃ¥g,           tog).            %% SWE
+% synword(tÃ¥get,         jernbanestasjonen). 
+synword(tÃ¥r,           tar). 
 
 
-%%¤ synword(u 
+%%Â¤ synword(u 
 
 synword(u,du).         %% har u en tier
 %% synword(uansett,       []). %% reduntant0
-%% synword(uansett,        i). %% ? uansett vær
+%% synword(uansett,        i). %% ? uansett vÃ¦r
 synword(uavbrudt,       []).  %% not redundant
 synword(uavbrutt,       []).  %% not redundant
 
@@ -11387,15 +11389,15 @@ synword(ud,            du).
 synword(ud,            ut). 
 synword(uendelig,      []). 
 synword(ubss,          buss). 
-% synword(ufoståelig,    uforståelig).  %%   Dont invite
-synword(uforstålig,    uforståelig).    %% acceptable
-% synword(uforstålige,   uforståelige). %%
-synword(uforstayelig,  uforståelig).  
-synword(uforståeleig,  uforståelig).  
+% synword(ufostÃ¥elig,    uforstÃ¥elig).  %%   Dont invite
+synword(uforstÃ¥lig,    uforstÃ¥elig).    %% acceptable
+% synword(uforstÃ¥lige,   uforstÃ¥elige). %%
+synword(uforstayelig,  uforstÃ¥elig).  
+synword(uforstÃ¥eleig,  uforstÃ¥elig).  
 synword(ufra,          fra).            %% (u(t))fra
 synword(uil,           til).            %%  neibk
 synword(ukenr,         ukenummer). 
-synword(umiddelbart,   nå).
+synword(umiddelbart,   nÃ¥).
 synword(umiulig,       umulig).         %% ? 
 synword(ummer,         nummer). 
 synword(universitet,   universitetet).
@@ -11409,20 +11411,20 @@ synword(uss,           buss).
 synword(ussb,          buss). 
 synword(ussen,         bussen).
 synword(utafor,        utenfor). 
-synword(utafør,        utenfor). 
+synword(utafÃ¸r,        utenfor). 
 synword(utanfor,       utenfor).  
-   synword(utaførsj,        utenfor).  %%  ?
+   synword(utafÃ¸rsj,        utenfor).  %%  ?
 %% synword(utbrede,       utbedre). %% utbre
 synword(utenifra,      inn). 
 synword(utenfra,       inn).  
 
-%% synword(utenforstående,personer). %% rough %% TA-110622
-synword(utenforstående,ekstern).
+%% synword(utenforstÃ¥ende,personer). %% rough %% TA-110622
+synword(utenforstÃ¥ende,ekstern).
 
 synword(utfor,         fra). %% outfrom?
 synword(utfordrende,   []).  %% veldig ? 
-synword(utfør,         fra). %% 
-synword(utgjør,        blir). 
+synword(utfÃ¸r,         fra). %% 
+synword(utgjÃ¸r,        blir). 
 synword(uti,           i). 
 synword(util,          i). 
 synword(utti,          i).  
@@ -11434,26 +11436,26 @@ synword(utmerket,      bra).
 
 synword(utover,        utenfor). 
 
-synword(utpå,          på). 
-synword(utåver,        utover). %% spiw 
+synword(utpÃ¥,          pÃ¥). 
+synword(utÃ¥ver,        utover). %% spiw 
 
 %% synword(v  
 
 
-synword('va|r',        vær).   
-synword('va|re',       være). 
-synword('va|rt',       vært). 
+synword('va|r',        vÃ¦r).   
+synword('va|re',       vÃ¦re). 
+synword('va|rt',       vÃ¦rt). 
 
 synword(va,            hva).
 synword(va,            var).    %%  Dialect
 %% synword(va,            ta).  %% ? haz HVA 
 
 synword(vad,           hva). 
-synword(vae,           være). 
-synword(vaer,          være).   %% more probable (dial)
-%% synword(vaere,         være). %% split
-synword(vaert,         vært).  
-synword(vaeret,        været). 
+synword(vae,           vÃ¦re). 
+synword(vaer,          vÃ¦re).   %% more probable (dial)
+%% synword(vaere,         vÃ¦re). %% split
+synword(vaert,         vÃ¦rt).  
+synword(vaeret,        vÃ¦ret). 
 synword(vanig,         vanlig). 
 synword(vanli,         vanlig).  
 %% synword(vanlig,        []). 
@@ -11461,17 +11463,17 @@ synword(vanli,         vanlig).
 synword(vanligfe,      vanlige).
 synword(vanvittig,     meget).          %% (- bra)
  
-%% synword(var,           være).  %% Dial? Doesnt help
+%% synword(var,           vÃ¦re).  %% Dial? Doesnt help
 %% synword(var,           hvor).  %% Swedish  %% Haz
 
-synword(vara,          være).           %% Swe
-synword(vare,          være).     %% Hazard (sp) 
-synword(varfør,        hvorfor).
+synword(vara,          vÃ¦re).           %% Swe
+synword(vare,          vÃ¦re).     %% Hazard (sp) 
+synword(varfÃ¸r,        hvorfor).
 synword(varsl,         varsel).   
 synword(varske,        varsle).  
 synword(vart,          hvor).      %%  also blei NN
 synword(vasrle,        varsle).   %% own
-synword(vaør,          vær).      %% Æ trøbbel
+synword(vaÃ¸r,          vÃ¦r).      %% Ã† trÃ¸bbel
 
 synword(vbuss,         buss).     %%  slip
 synword(vbussen,       bussen).   %% 
@@ -11496,8 +11498,8 @@ synword(vedkommende,   han). % obje ham           %%   (han,hun, "hen")
 synword(vedkommende,   hun). 
 */
 
-synword(vedr,          angående). %% = "om" = past ??? %% TA-110429 
-synword(vedrørende,    angående). %%
+synword(vedr,          angÃ¥ende). %% = "om" = past ??? %% TA-110429 
+synword(vedrÃ¸rende,    angÃ¥ende). %%
 
 synword(vef,           ved). %% own, neib k 
 synword(veh,           veg). %% neib k  
@@ -11511,24 +11513,24 @@ synword(vey,           vei).            %%
 synword(vekk,          bort).  
 synword(vel,           []).    %%  istedet for noisew
 synword(vell,          []). 
-synword(væare,         være).
-synword(væll,          []).    %% dial 
-%% synword(væære,         være). %% verb_form 
+synword(vÃ¦are,         vÃ¦re).
+synword(vÃ¦ll,          []).    %% dial 
+%% synword(vÃ¦Ã¦re,         vÃ¦re). %% verb_form 
 synword(vem,           hvem). 
 synword(veed,          ved).  
 %% synword(ver,           var). %% ?
 synword(ver,           hver).
 synword(verda,         verden). %% NN
 %% synword(verdt,         godt). %% ? 
-synword(versegod,      værsågod).  
+synword(versegod,      vÃ¦rsÃ¥god).  
 synword(versjom,       versjon).      %% own
 synword(vesrjon,       versjon).      %% own
-synword(verst,         dårlig).
-synword(veære,         være).  
-%%%%%% synword(vera,          være).  %% Hva er problemet ?
-%%%%%% synword(vere,          være).  %%
-synword(verre,          være).        %% Dial
-synword(vert,           vært).
+synword(verst,         dÃ¥rlig).
+synword(veÃ¦re,         vÃ¦re).  
+%%%%%% synword(vera,          vÃ¦re).  %% Hva er problemet ?
+%%%%%% synword(vere,          vÃ¦re).  %%
+synword(verre,          vÃ¦re).        %% Dial
+synword(vert,           vÃ¦rt).
 % synword(vestover,      vest). 
 synword(vess,          hvis). 
 synword(vestsia,         vest). 
@@ -11589,7 +11591,7 @@ synword(vilket,        hvilket).
 synword(villke,        hvilke). 
 synword(villken,       hvilken). 
 synword(villket,       hvilket). 
-synword(vilø,          vil). 
+synword(vilÃ¸,          vil). 
 synword(vinterrutr,   vinterruter). %% own
 synword(sommerrutr,   sommerruter).
 
@@ -11604,12 +11606,12 @@ synword(viss,          hvis).
 synword(visst,         hvis). 
 synword(vist,          hvis).  %% haz? 
 
-synword(viø,           vil).  
+synword(viÃ¸,           vil).  
 synword(vl,            vil). 
 synword(vli,           bli). %% own 
 synword(vli,           vil). %%
 synword(vneste,        neste). %% slip 
-synword(vnår,          når).   %% slip 
+synword(vnÃ¥r,          nÃ¥r).   %% slip 
 synword(vofor,         hvorfor).
 synword(voldsomt,      veldig).
 %% synword(vor,           for).  %% neib %% // shadows hvo
@@ -11617,11 +11619,11 @@ synword(vor,           hvor).
 synword(vordan,        hvordan). 
 synword(vorfor,        hvorfor). 
 synword(vorrfor,       hvorfor).  
-synword(vortid,        når). 
+synword(vortid,        nÃ¥r). 
 synword(vra,           fra). 
-synword(vre,           være).   
+synword(vre,           vÃ¦re).   
 synword(vri,           vei).      %% own sp
-synword(vrære,         være).  
+synword(vrÃ¦re,         vÃ¦re).  
 
 %% synword(vta,           ta). %% TA-110426
 synword(vtil,          til).  
@@ -11633,46 +11635,46 @@ synword(vussen,        bussen).
 synword(vusser,        busser). 
 synword(vva,           hva).   
 synword(vved,            ved).  
-synword(vvære,         være). 
-synword(væ,            være).  
-synword(væe,           være).  
-synword(væer,          være). 
-synword(væere,         være).  
-synword(væøre,         være).  
-synword(væl,           vel).  
-synword(væla,          verden). 
-synword(værd,          være).  
-synword(væred,         være).  
-%%  synword(værei,         til).      %% rough 
-%%  synword(væreved,       passere).  %% ad hoc, splitword 
-synword(væri,          vært).   
-synword(værra,         være). 
-synword(værre,         være).  
-synword(værst,         dårlig).
-synword(vært,          hvert). %% ?
-synword(væte,          være).  
-synword(vøre,          være).  
-synword(vøri,          vært). 
-synword(våe,           vår).  
-synword(våksen,        voksen). 
-synword(vår,           min). 
-synword(våre,          mine).  
-%% synword(våre,          være).    %% Haz %% Busene våre går 
+synword(vvÃ¦re,         vÃ¦re). 
+synword(vÃ¦,            vÃ¦re).  
+synword(vÃ¦e,           vÃ¦re).  
+synword(vÃ¦er,          vÃ¦re). 
+synword(vÃ¦ere,         vÃ¦re).  
+synword(vÃ¦Ã¸re,         vÃ¦re).  
+synword(vÃ¦l,           vel).  
+synword(vÃ¦la,          verden). 
+synword(vÃ¦rd,          vÃ¦re).  
+synword(vÃ¦red,         vÃ¦re).  
+%%  synword(vÃ¦rei,         til).      %% rough 
+%%  synword(vÃ¦reved,       passere).  %% ad hoc, splitword 
+synword(vÃ¦ri,          vÃ¦rt).   
+synword(vÃ¦rra,         vÃ¦re). 
+synword(vÃ¦rre,         vÃ¦re).  
+synword(vÃ¦rst,         dÃ¥rlig).
+synword(vÃ¦rt,          hvert). %% ?
+synword(vÃ¦te,          vÃ¦re).  
+synword(vÃ¸re,          vÃ¦re).  
+synword(vÃ¸ri,          vÃ¦rt). 
+synword(vÃ¥e,           vÃ¥r).  
+synword(vÃ¥ksen,        voksen). 
+synword(vÃ¥r,           min). 
+synword(vÃ¥re,          mine).  
+%% synword(vÃ¥re,          vÃ¦re).    %% Haz %% Busene vÃ¥re gÃ¥r 
 
-synword(vårjevndøgn,   vernal_equinox).    %% Must be Eng.
-synword(vårgjevndøgn,  vernal_equinox).    %% sp. Must be Eng. 
+synword(vÃ¥rjevndÃ¸gn,   vernal_equinox).    %% Must be Eng.
+synword(vÃ¥rgjevndÃ¸gn,  vernal_equinox).    %% sp. Must be Eng. 
 
 synword(sommersolverv,summer_solstice). 
 synword(vintersolverv,winter_solstice). 
 
-synword(vårres,        min).     %% ind
-synword(vårrå,         være).  
-synword(vårt,          mitt). 
+synword(vÃ¥rres,        min).     %% ind
+synword(vÃ¥rrÃ¥,         vÃ¦re).  
+synword(vÃ¥rt,          mitt). 
 
-%%¤ synword(w 
+%%Â¤ synword(w 
 
 
-synword(wc,            toalett).    %% er det wc på bussen 
+synword(wc,            toalett).    %% er det wc pÃ¥ bussen 
 synword(wer,           er).     %% own 
 synword(wha,           hva).    %%  what->...
 synword(whem,          hvem).  
@@ -11682,7 +11684,7 @@ synword(wskal,         skal).
 synword(wtter,         etter). 
 synword(wttwr,         etter).  %% own
 
-%%¤ synword(y 
+%%Â¤ synword(y 
 
 synword(ya,            ta). 
 synword(yay,           jeg).  %% :-) 
@@ -11693,74 +11695,74 @@ synword(yngst,         ung).  %% rough
 
 synword(yo,            ja). % ? 
 synword(yolv,          tolv).  
-synword(yoø,           til). %% trippel slip 
-synword(ypperlig,      bra). %% ! (også adj) 
+synword(yoÃ¸,           til). %% trippel slip 
+synword(ypperlig,      bra). %% ! (ogsÃ¥ adj) 
 synword(ytil,          til).
 synword(zom,           som). %% :-)
 
 % synword(y2k,           2000).           %%  not clock
 
-%%¤ synword(æ
+%%Â¤ synword(Ã¦
 
 synword(ae,            jeg).  
 synword(aen,           annen).  %% dial
 synword(aer,           er).     %%  own
-synword(æ,             jeg).   
-synword(æbruker,       bruker).   %% ? 
-%% synword(æ,             å).     %%  // destroys jeg 
-synword(æg,            jeg). 
-synword(ænkelte,       enkelte). 
-synword(ær,            er).  
-%% synword(ære,           være).   %% \+ confuse Være station 
-synword(ærmeste,       nærmeste). 
-synword(ætte,          etter). 
-synword(ætter,         etter).    %% dial.
-%% synword(ævre,          være).  
-synword(ævre,         øvre). %% jakobsli   %%
+synword(Ã¦,             jeg).   
+synword(Ã¦bruker,       bruker).   %% ? 
+%% synword(Ã¦,             Ã¥).     %%  // destroys jeg 
+synword(Ã¦g,            jeg). 
+synword(Ã¦nkelte,       enkelte). 
+synword(Ã¦r,            er).  
+%% synword(Ã¦re,           vÃ¦re).   %% \+ confuse VÃ¦re station 
+synword(Ã¦rmeste,       nÃ¦rmeste). 
+synword(Ã¦tte,          etter). 
+synword(Ã¦tter,         etter).    %% dial.
+%% synword(Ã¦vre,          vÃ¦re).  
+synword(Ã¦vre,         Ã¸vre). %% jakobsli   %%
 
-%%¤ synword(ø
+%%Â¤ synword(Ã¸
 
-% synword(ø,1).   %% Neib key  1 |
-% synword(ø4,14). %% Neib key|  ETC
+% synword(Ã¸,1).   %% Neib key  1 |
+% synword(Ã¸4,14). %% Neib key|  ETC
 
-synword(økseskaft,     hei).          %%  :-)
-synword(ønser,         ønsker).  
-% synword(østover,       øst). 
+synword(Ã¸kseskaft,     hei).          %%  :-)
+synword(Ã¸nser,         Ã¸nsker).  
+% synword(Ã¸stover,       Ã¸st). 
 
-synword(øyeblikkelig,  nå). 
+synword(Ã¸yeblikkelig,  nÃ¥). 
 
-%%synword(å 
+%%synword(Ã¥ 
 
-% synword(å,             og).     %%  HAZARD, Nofunk
-synword(åffer,         hvorfor). 
-synword(åfte,          ofte).  
-synword(ågr,           går). 
-synword(åhenn,         hvor). 
-synword(åja,           ja).  
-synword(åjo,           ja). 
-synword(åjoda,         ja).  
-synword(åkken,         hvem). 
-synword(åkken,         hvilken). 
-synword(åltså,         altså).   %%  (doesnt help)
-synword(åm,            må).   
-synword(ånr,           når).   
-synword(åp,            på). 
-%% synword(år,            går).     %% ? SUSPENDED
-%% synword(år,            når).     %% Haz 
-synword(årk,           orker). %% dial 
-synword(åssen,         hvordan). 
-synword(åssn,          hvordan). 
-synword(åsså,          også).   
-synword(åt,            til).     %%   Sw 
-synword(åte,           åtte). 
-synword(åver,          over).  
-synword(åy,            å).       %% Ã¥
-synword(åytte,         åtte).    %% Ã¥tte 
-synword(åøstre,        østre).   %% Ã¸stre berg
-synword(åå,            på).  %% neib 
-synword(åå,            å).   
-synword(ååå,           å). 
-synword(åååå,          å). 
+% synword(Ã¥,             og).     %%  HAZARD, Nofunk
+synword(Ã¥ffer,         hvorfor). 
+synword(Ã¥fte,          ofte).  
+synword(Ã¥gr,           gÃ¥r). 
+synword(Ã¥henn,         hvor). 
+synword(Ã¥ja,           ja).  
+synword(Ã¥jo,           ja). 
+synword(Ã¥joda,         ja).  
+synword(Ã¥kken,         hvem). 
+synword(Ã¥kken,         hvilken). 
+synword(Ã¥ltsÃ¥,         altsÃ¥).   %%  (doesnt help)
+synword(Ã¥m,            mÃ¥).   
+synword(Ã¥nr,           nÃ¥r).   
+synword(Ã¥p,            pÃ¥). 
+%% synword(Ã¥r,            gÃ¥r).     %% ? SUSPENDED
+%% synword(Ã¥r,            nÃ¥r).     %% Haz 
+synword(Ã¥rk,           orker). %% dial 
+synword(Ã¥ssen,         hvordan). 
+synword(Ã¥ssn,          hvordan). 
+synword(Ã¥ssÃ¥,          ogsÃ¥).   
+synword(Ã¥t,            til).     %%   Sw 
+synword(Ã¥te,           Ã¥tte). 
+synword(Ã¥ver,          over).  
+synword(Ã¥y,            Ã¥).       %% ÃƒÂ¥
+synword(Ã¥ytte,         Ã¥tte).    %% ÃƒÂ¥tte 
+synword(Ã¥Ã¸stre,        Ã¸stre).   %% ÃƒÂ¸stre berg
+synword(Ã¥Ã¥,            pÃ¥).  %% neib 
+synword(Ã¥Ã¥,            Ã¥).   
+synword(Ã¥Ã¥Ã¥,           Ã¥). 
+synword(Ã¥Ã¥Ã¥Ã¥,          Ã¥). 
 
 % Buss-slang
 synword(toa,           2).
@@ -11788,9 +11790,9 @@ synword(femmer,        5).
 synword(femmern,       5).
 synword(femmerne,      5).
 synword(femmeren,      5).
-synword(fæmma,         5). 
-synword(fæmmeren,      5). 
-synword(fæmmern,       5). 
+synword(fÃ¦mma,         5). 
+synword(fÃ¦mmeren,      5). 
+synword(fÃ¦mmern,       5). 
 
 synword(sekd,          6). 
 synword(seksa,         6).
@@ -11808,14 +11810,14 @@ synword(sjuerne,       7).
 synword(syva,          7).
 synword(syvern,        7).
 synword(syveren,       7).
-synword(åtta,          8).
-synword(åtte,          8).
-synword(åttene,        åttende).  
-synword(åtter,         8). 
-synword(åttern,        8).
-synword(åtteren,       8).
-synword(åtterne,       8). 
-synword(åttte,         8).
+synword(Ã¥tta,          8).
+synword(Ã¥tte,          8).
+synword(Ã¥ttene,        Ã¥ttende).  
+synword(Ã¥tter,         8). 
+synword(Ã¥ttern,        8).
+synword(Ã¥tteren,       8).
+synword(Ã¥tterne,       8). 
+synword(Ã¥ttte,         8).
 synword(ni,            9). %%  as a bus
 synword(nia,           9).
 synword(nie,           9). %% ?
@@ -11838,7 +11840,7 @@ synword(firerne,4).
 synword(femerne,5).
 synword(sekserne,6).
 synword(sjuerne,7).
-synword(åtterne,8).
+synword(Ã¥tterne,8).
 synword(nierne,9).
 synword(tierne,10). % ... osv
 
@@ -11874,9 +11876,9 @@ synword(sjutiden,0700).
 synword( syvtia, 0700). 
 synword( syvtida,0700). % OK ?
 synword( syvtiden,  0700).
-synword(åttetia, 0800).
-synword(åttetida,0800).
-synword(åttetiden,  0800).
+synword(Ã¥ttetia, 0800).
+synword(Ã¥ttetida,0800).
+synword(Ã¥ttetiden,  0800).
 synword(  nitia,0900).
 synword(  nitida,0900).
 synword(  nitiden,  0900).
@@ -11908,10 +11910,10 @@ synword(syti,70).
 synword(syttentia,1700).
 synword(syttentida,1700).
 synword(syttentiden,1700).
-synword(søtende,syttende).
-synword(søttentia,1700).
-synword(søttentida,1700).
-synword(søttentiden,1700).
+synword(sÃ¸tende,syttende).
+synword(sÃ¸ttentia,1700).
+synword(sÃ¸ttentida,1700).
+synword(sÃ¸ttentiden,1700).
 synword(attentia,1800).
 synword(attentida,1800).
 synword(attentiden,1800).
@@ -11920,9 +11922,9 @@ synword(nittentida,1900).
 synword(nittentiden,1900).
 %-
 
-synword(lørdagskjøring,lørdagsrute).  
-synword(søndagskjøring,søndagsrute). 
-synword(sømdagskjøring,søndagsrute).  %% own 
+synword(lÃ¸rdagskjÃ¸ring,lÃ¸rdagsrute).  
+synword(sÃ¸ndagskjÃ¸ring,sÃ¸ndagsrute). 
+synword(sÃ¸mdagskjÃ¸ring,sÃ¸ndagsrute).  %% own 
 
 
 synword(tolevte, tolvte).
@@ -11931,8 +11933,8 @@ synword(tollevte,tolvte).
 synword(tollvte, tolvte).
 synword(tolvde,  tolvte).
 synword(tolvete, tolvte).
-synword(tållte,  tolvte).
-synword(tålvte,  tolvte).
+synword(tÃ¥llte,  tolvte).
+synword(tÃ¥lvte,  tolvte).
 %% etc etc :-)
 
 
@@ -12008,7 +12010,7 @@ synword(septrmber,september). %%  own
 synword(jaunar,january). 
 synword(januar,january).
 synword(februar,february).
-synword(mar,når). %% synsms haz ?
+synword(mar,nÃ¥r). %% synsms haz ?
 synword(mars,march). %% Eng. names
    synword(april,april).
 synword(mai,may).
@@ -12029,8 +12031,8 @@ synword(disember,december).
 %% ODD DAYS
 synword(tirrsdag,tirsdag). 
 synword(tirsdagf,tirsdag). 
-synword(løradag,lørdag). 
-synword(løtrdag,lørdag).   %% own 
+synword(lÃ¸radag,lÃ¸rdag). 
+synword(lÃ¸trdag,lÃ¸rdag).   %% own 
 synword(onsadag,  onsdag).
 synword(onsdak,  onsdag). 
 
@@ -12038,16 +12040,16 @@ synword(tirstag, onsdag).
 synword(onstag, onsdag).  
 synword(torstag, onsdag). 
 
-synword(løsrdag, lørdag).  
-synword(løndag , lørdag). 
+synword(lÃ¸srdag, lÃ¸rdag).  
+synword(lÃ¸ndag , lÃ¸rdag). 
 synword(masndag,mandag). 
-synword(lølrdag, lørdag).     
+synword(lÃ¸lrdag, lÃ¸rdag).     
 synword(fedag,fredag). 
-synword(ørdag, lørdag).  
-synword(søndasg,søndag). 
-synword(søndaag,søndag).   
-synword(lønsdag,lørdag).  
-synword(lørdagenne,lørdag).
+synword(Ã¸rdag, lÃ¸rdag).  
+synword(sÃ¸ndasg,sÃ¸ndag). 
+synword(sÃ¸ndaag,sÃ¸ndag).   
+synword(lÃ¸nsdag,lÃ¸rdag).  
+synword(lÃ¸rdagenne,lÃ¸rdag).
 synword(gredag,fredag). 
 synword(manddag,mandag). 
 synword(mandeg,mandag). 
@@ -12059,10 +12061,10 @@ synword(onsdah,onsdag).
 synword(torsdah,torsdag). 
 synword(fredah,fredag).   
 synword(freedag,fredag).  
-synword(layrdag,lørdag).  
-synword(lørdah,lørdag). 
-synword(søndah,søndag). 
-synword(sønsdag,søndag). 
+synword(layrdag,lÃ¸rdag).  
+synword(lÃ¸rdah,lÃ¸rdag). 
+synword(sÃ¸ndah,sÃ¸ndag). 
+synword(sÃ¸nsdag,sÃ¸ndag). 
 
 synword(fred,fredag). %% <------- ???
 
@@ -12072,56 +12074,56 @@ synword(manedag,mandag).
 synword(fredagt,fredag). 
 synword(frdager,fredag). 
 synword(maandag,mandag). 
-synword(sødags ,søndag).
+synword(sÃ¸dags ,sÃ¸ndag).
 
-synword(lrdag,lørdag).   
-synword(løragene,lørdag). 
-synword(lørager,lørdag). 
-synword(lørdadag,lørdag).
-synword(lørdak,lørdag). 
-synword(lørdal,lørdag). 
-synword(lørdsag,lørdag).  
-synword(lørdsg,lørdag). 
-synword(lørgad,lørdag). 
-synword(lørgad,lørdag). 
+synword(lrdag,lÃ¸rdag).   
+synword(lÃ¸ragene,lÃ¸rdag). 
+synword(lÃ¸rager,lÃ¸rdag). 
+synword(lÃ¸rdadag,lÃ¸rdag).
+synword(lÃ¸rdak,lÃ¸rdag). 
+synword(lÃ¸rdal,lÃ¸rdag). 
+synword(lÃ¸rdsag,lÃ¸rdag).  
+synword(lÃ¸rdsg,lÃ¸rdag). 
+synword(lÃ¸rgad,lÃ¸rdag). 
+synword(lÃ¸rgad,lÃ¸rdag). 
 
-synword(såøndag,søndag).  %% sÃ¸ndag  
-synword(låørdag,lødag).   %% lÃ¸rdag 
-synword(lørrdag, lørdag).
-synword(lørdaag, lørdag).
+synword(sÃ¥Ã¸ndag,sÃ¸ndag).  %% sÃƒÂ¸ndag  
+synword(lÃ¥Ã¸rdag,lÃ¸dag).   %% lÃƒÂ¸rdag 
+synword(lÃ¸rrdag, lÃ¸rdag).
+synword(lÃ¸rdaag, lÃ¸rdag).
 
-synword(sømdag,søndag). 
+synword(sÃ¸mdag,sÃ¸ndag). 
 synword(magndag,mandag).  
 synword(manndag,mandag).  
 synword(mondag, mandag).  
 synword(tosdag, torsdag). 
 synword(torstag, torsdag).
-synword(sønndag,søndag). 
-synword(søndad,søndag).  
+synword(sÃ¸nndag,sÃ¸ndag). 
+synword(sÃ¸ndad,sÃ¸ndag).  
 
 
 synword(mansag, mandag). 
 synword(msndag, mandag).  
-    synword(månsag, mandag). %% spell
+    synword(mÃ¥nsag, mandag). %% spell
 synword(tirsag, tirsdag).    %% ...
 synword(onsag,  onsdag). 
 synword(onsfag, onsdag).
 synword(torsag, torsdag). 
 synword(fresag, fredag). 
-synword(lørsag, lørdag). 
-synword(sønsag, søndag).  
+synword(lÃ¸rsag, lÃ¸rdag). 
+synword(sÃ¸nsag, sÃ¸ndag).  
 
-synword(lørsaf, lørdag). 
+synword(lÃ¸rsaf, lÃ¸rdag). 
 
 synword(mandags, mandag).  
-    synword(måndags, mandag). 
+    synword(mÃ¥ndags, mandag). 
 synword(tirsdags,tirsdag).  
 synword(onsdags, onsdag). 
 synword(onsdsag, onsdag). 
 synword(torsdags,torsdag). 
 synword(fredags, fredag). 
-synword(lørdags, lørdag). 
-synword(søndags, søndag).  
+synword(lÃ¸rdags, lÃ¸rdag). 
+synword(sÃ¸ndags, sÃ¸ndag).  
 
 
 synword(mandagg, mandag). 
@@ -12129,16 +12131,16 @@ synword(tirsdagg,tirsdag).
 synword(onsdagg, onsdag). 
 synword(torsdagg,torsdag). 
 synword(fredagg, fredag). 
-synword(lørdagg, lørdag). 
-synword(søndagg, søndag).  
+synword(lÃ¸rdagg, lÃ¸rdag). 
+synword(sÃ¸ndagg, sÃ¸ndag).  
 
 synword(mandas, mandag). 
 synword(tirsdas,tirsdag).  
 synword(onsdas, onsdag). 
 synword(torsdas,torsdag). 
 synword(fredas, fredag). 
-synword(lørdas, lørdag). 
-synword(søndas, søndag).  
+synword(lÃ¸rdas, lÃ¸rdag). 
+synword(sÃ¸ndas, sÃ¸ndag).  
 
 
 
@@ -12147,16 +12149,16 @@ synword(tirsdagan,tirsdag).
 synword(onsdagan, onsdag). 
 synword(torsdagan,torsdag). 
 synword(fredagan, fredag). 
-synword(lørdagan, lørdag). 
-synword(søndagan, søndag).  
+synword(lÃ¸rdagan, lÃ¸rdag). 
+synword(sÃ¸ndagan, sÃ¸ndag).  
 
 synword(mandage, mandag). %%   Danish
 synword(tirsdage,tirsdag).  
 synword(onsdage, onsdag). 
 synword(torsdage,torsdag). 
 synword(fredage, fredag). 
-synword(lørdage, lørdag). 
-synword(søndage, søndag).  
+synword(lÃ¸rdage, lÃ¸rdag). 
+synword(sÃ¸ndage, sÃ¸ndag).  
 
 
 synword(manda, mandag). 
@@ -12164,24 +12166,24 @@ synword(tirsda,tirsdag).
 synword(onsda, onsdag). 
 synword(torsda,torsdag). 
 synword(freda, fredag). 
-synword(lørda, lørdag). 
-synword(sønda, søndag).  
+synword(lÃ¸rda, lÃ¸rdag). 
+synword(sÃ¸nda, sÃ¸ndag).  
 
 synword(mandaf, mandag). 
 synword(tirsdaf,tirsdag).  
 synword(onsdaf, onsdag). 
 synword(torsdaf,torsdag). 
 synword(fredaf, fredag). 
-synword(lørdaf, lørdag). 
-synword(søndaf, søndag).  
+synword(lÃ¸rdaf, lÃ¸rdag). 
+synword(sÃ¸ndaf, sÃ¸ndag).  
 
 synword(mandafg, mandag). 
 synword(tirsdafg,tirsdag). 
 synword(onsdafg, onsdag).  
 synword(torsdafg,torsdag). 
 synword(fredafg, fredag). 
-synword(lørdafg, lørdag). 
-synword(søndafg, søndag).  
+synword(lÃ¸rdafg, lÃ¸rdag). 
+synword(sÃ¸ndafg, sÃ¸ndag).  
 
 
 synword(mandan, mandag).  
@@ -12189,24 +12191,24 @@ synword(tirsdan,tirsdag).
 synword(onsdan, onsdag). 
 synword(torsdan,torsdag). 
 synword(fredan, fredag). 
-synword(lørdan, lørdag). 
-synword(søndan, søndag).  
+synword(lÃ¸rdan, lÃ¸rdag). 
+synword(sÃ¸ndan, sÃ¸ndag).  
 
 synword(mandg, mandag).
 synword(tirsdg,tirsdag).  
 synword(onsdg, onsdag). 
 synword(torsdg,torsdag). 
 synword(fredg, fredag). 
-synword(lørdg, lørdag). 
-synword(søndg, søndag).  
+synword(lÃ¸rdg, lÃ¸rdag). 
+synword(sÃ¸ndg, sÃ¸ndag).  
 
 synword(mandga, mandag). 
 synword(tirsdga,tirsdag).  
 synword(onsdga, onsdag). 
 synword(torsdga,torsdag). 
 synword(fredga, fredag). 
-synword(lørdga, lørdag). 
-synword(søndga, søndag).  
+synword(lÃ¸rdga, lÃ¸rdag). 
+synword(sÃ¸ndga, sÃ¸ndag).  
 
 synword(madag, mandag). 
 synword(tidag,tirsdag).  
@@ -12216,9 +12218,9 @@ synword(frdag, fredag).
 synword(fredga, fredag). 
 synword(fredafa, fredag). 
 synword(fredat, fredag). 
-% synword(lødag, lørdag). 
-synword(lørsdag, lørdag).
-synword(sødag, søndag).  
+% synword(lÃ¸dag, lÃ¸rdag). 
+synword(lÃ¸rsdag, lÃ¸rdag).
+synword(sÃ¸dag, sÃ¸ndag).  
 synword(tirddag,tirsdag). 
 synword(tirdsdag,tirsdag). %% own
 
@@ -12228,8 +12230,8 @@ synword(tirdsag,tirsdag).
 synword(ondsag, onsdag). 
 synword(tordsag,torsdag). 
 synword(freadg, fredag). 
-synword(lødrag, lørdag). 
-synword(sødnag, søndag).  
+synword(lÃ¸drag, lÃ¸rdag). 
+synword(sÃ¸dnag, sÃ¸ndag).  
 
 
 
@@ -12238,8 +12240,8 @@ synword(tirsag,tirsdag).
 synword(onsag, onsdag). 
 synword(torsag,torsdag). 
 synword(freag, fredag). 
-synword(lørag, lørdag). 
-synword(sønag, søndag).  
+synword(lÃ¸rag, lÃ¸rdag). 
+synword(sÃ¸nag, sÃ¸ndag).  
 
 
 synword(manadg, mandag). 
@@ -12247,8 +12249,8 @@ synword(tirsadg,tirsdag).
 synword(onsadg, onsdag). 
 synword(torsadg,torsdag). 
 synword(freadg, fredag). 
-synword(løradg, lørdag). 
-synword(sønadg, søndag).  
+synword(lÃ¸radg, lÃ¸rdag). 
+synword(sÃ¸nadg, sÃ¸ndag).  
 
 
 synword(managd, mandag). 
@@ -12256,8 +12258,8 @@ synword(tirsagd,tirsdag).
 synword(onsagd, onsdag). 
 synword(torsagd,torsdag). 
 synword(freagd, fredag). 
-synword(løragd, lørdag). 
-synword(sønagd, søndag).  
+synword(lÃ¸ragd, lÃ¸rdag). 
+synword(sÃ¸nagd, sÃ¸ndag).  
 
 
 
@@ -12266,8 +12268,8 @@ synword(tirsday,tirsdag).
 synword(onsday, onsdag). 
 synword(torsday,torsdag). 
 synword(freday, fredag).  
-synword(lørday, lørdag). 
-synword(sønday, søndag).  
+synword(lÃ¸rday, lÃ¸rdag). 
+synword(sÃ¸nday, sÃ¸ndag).  
 
 
 
@@ -12276,8 +12278,8 @@ synword(tirsd,tirsdag).
 synword(onsd, onsdag). 
 synword(torsd,torsdag). 
 %% synword(fred, fredag). %% hva er fred -> Dag  peace 
-synword(lørd, lørdag). 
-synword(sønd, søndag).  
+synword(lÃ¸rd, lÃ¸rdag). 
+synword(sÃ¸nd, sÃ¸ndag).  
 
 
 %% synword(man, mandag). %%  collides with man=en
@@ -12289,8 +12291,8 @@ synword(toradag,torsdag).
 %%%%  synword(tors,torsdag).   %% tors veg ???
 synword(fre, fra).       %%  Doesnt work (fre=fredag)
 synword(fre, fredag).    %% - fre= fra  Hazard  
-synword(lør, lørdag). 
-synword(søn, søndag).  
+synword(lÃ¸r, lÃ¸rdag). 
+synword(sÃ¸n, sÃ¸ndag).  
 
 synword(fr, fra).  %% Fredag ? 
 synword(fradag,fredag). 
@@ -12306,26 +12308,26 @@ synword(tirsdsag,tirsdag).
 synword(tisrdag,tirsdag). 
 synword(tisrdage,tirsdag). 
 
-synword(laørdag,lørdag). 
-synword(laørdagen,lørdag). 
-synword(laørdager,lørdag). 
-synword(laørdagene,lørdag). 
-synword(lørsdags,lørdag).
+synword(laÃ¸rdag,lÃ¸rdag). 
+synword(laÃ¸rdagen,lÃ¸rdag). 
+synword(laÃ¸rdager,lÃ¸rdag). 
+synword(laÃ¸rdagene,lÃ¸rdag). 
+synword(lÃ¸rsdags,lÃ¸rdag).
 
-synword(sandag,søndag).  %%  ?
-synword(sødag,søndag). 
-synword(sødager,søndager).
-synword(saøndag ,søndag).   %% sÃ¸ndag?
-synword(saøndagen ,søndag). %% sÃ¸ndag?
-synword(saøndager ,søndag). %%
+synword(sandag,sÃ¸ndag).  %%  ?
+synword(sÃ¸dag,sÃ¸ndag). 
+synword(sÃ¸dager,sÃ¸ndager).
+synword(saÃ¸ndag ,sÃ¸ndag).   %% sÃƒÂ¸ndag?
+synword(saÃ¸ndagen ,sÃ¸ndag). %% sÃƒÂ¸ndag?
+synword(saÃ¸ndager ,sÃ¸ndag). %%
 
 synword(mangag,mandag). 
 synword(mnadag,mandag).  
 synword(magndag,mandag).  
-synword(møndag,mandag).  
+synword(mÃ¸ndag,mandag).  
 
 
-synword(saør,          sør).  
+synword(saÃ¸r,          sÃ¸r).  
 synword(aprol,         april).  
 synword(autgust,       august).      
 synword(frbruar,       february).  
@@ -12341,29 +12343,29 @@ synword(freadg,        fredag).
 synword(fredig,        fredag). 
 synword(ferbruaur,     february ). 
 synword(ferbruar,      february ).    %% Name = English
-synword(kløkken,       klokken).   
-synword(kløokka,       klokken). 
-synword(klørdag,       lørdag).       %% neib k 
+synword(klÃ¸kken,       klokken).   
+synword(klÃ¸okka,       klokken). 
+synword(klÃ¸rdag,       lÃ¸rdag).       %% neib k 
 
-synword(lordag,        lørdag).  
-synword(lordagsrute,   lørdagsrute). 
-synword(lordagan,      lørdag).       %% smtotfl
-synword(loerdag,       lørdag). 
-synword(loerdagen,     lørdag). 
-synword(loerdager,     lørdag). 
-synword(loerdags,      lørdag). 
+synword(lordag,        lÃ¸rdag).  
+synword(lordagsrute,   lÃ¸rdagsrute). 
+synword(lordagan,      lÃ¸rdag).       %% smtotfl
+synword(loerdag,       lÃ¸rdag). 
+synword(loerdagen,     lÃ¸rdag). 
+synword(loerdager,     lÃ¸rdag). 
+synword(loerdags,      lÃ¸rdag). 
 
-synword(lærdag,lørdag). 
-synword(løprdag,lørdag). 
-synword(lørag,lørdag).  
-synword(løradg,lørdag). 
-synword(løradger,lørdag). 
-synword(lørdad,lørdag). 
-synword(løredag,lørdag). 
-synword(lørgag,lørdag). 
-synword(lødarg,lørdag).  
-synword(lødrag,lørdag).  
-synword(lørdeg,lørdag).  
+synword(lÃ¦rdag,lÃ¸rdag). 
+synword(lÃ¸prdag,lÃ¸rdag). 
+synword(lÃ¸rag,lÃ¸rdag).  
+synword(lÃ¸radg,lÃ¸rdag). 
+synword(lÃ¸radger,lÃ¸rdag). 
+synword(lÃ¸rdad,lÃ¸rdag). 
+synword(lÃ¸redag,lÃ¸rdag). 
+synword(lÃ¸rgag,lÃ¸rdag). 
+synword(lÃ¸darg,lÃ¸rdag).  
+synword(lÃ¸drag,lÃ¸rdag).  
+synword(lÃ¸rdeg,lÃ¸rdag).  
 synword(mamdag,mandag).  
 
 synword(novemeber,november). %% // Name = English
@@ -12374,10 +12376,10 @@ synword(onadag,onsdag).
 
 synword(onsdadg,onsdag). 
 synword(onsndag,onsdag). 
-synword(søandag,søndag).  
-synword(søandager,søndag). 
-synword(sømndag,søndag).     %% own
-synword(sønmdag,søndag).     %% own
+synword(sÃ¸andag,sÃ¸ndag).  
+synword(sÃ¸andager,sÃ¸ndag). 
+synword(sÃ¸mndag,sÃ¸ndag).     %% own
+synword(sÃ¸nmdag,sÃ¸ndag).     %% own
 synword(tirdag,tirsdag).  
 synword(tirsadag,tirsdag).  
 synword(torsdad,torsdag). 
@@ -12410,10 +12412,10 @@ synword(gtate,gate).
 synword(gte,gate). 
 synword(gtn,gate).  
 synword(gtr,gate). 
-%% synword(gåte,gate). %% TA-110798 problem
+%% synword(gÃ¥te,gate). %% TA-110798 problem
 
 
-synword(vente,forvente).     %% ad hoc løsning
+synword(vente,forvente).     %% ad hoc lÃ¸sning
 synword(venter,forventer).
 synword(ventet,forventet).
 
@@ -12476,13 +12478,13 @@ synword(vig,vei).
 synword(vn,vei).
 synword(vrg,vei). 
 synword(vweien,vei).
-synword(væg,vei). 
-synword(vægen,vei).   
+synword(vÃ¦g,vei). 
+synword(vÃ¦gen,vei).   
 
 synword(veg,vei). %% Ad Hoc (Brit Grytbakks vei) 
 
 % synword(g,gate).  %% Experiment g streetsyn, but vollg hazard
-                    %%  Når går bussen  etter kl 20.00.G. // G \+ street
+                    %%  NÃ¥r gÃ¥r bussen  etter kl 20.00.G. // G \+ street
 
 synword(vei,veg). %%  KarlJohnsons vei."
 
@@ -12527,18 +12529,18 @@ adv2(dessuten, redundantly).
 adv2(dessverre, redundantly).
 %%  adv2(direkte, directly).   %% SUSPENDED TEST en direkte forbindelse
 adv2(dog, redundantly). 
-adv2(dårlig, badly).           %% 
+adv2(dÃ¥rlig, badly).           %% 
 adv2(egentlig,redundantly).  
-adv2(ennå,redundantly). 
+adv2(ennÃ¥,redundantly). 
 adv2(erfaringsmessig,redundantly).  
 adv2(ergo,redundantly).  
-adv2(etterpå,thereafter).
+adv2(etterpÃ¥,thereafter).
 adv2(fast,redundantly).        %% satt seg fast 
 adv2(generelt, redundantly).   %% TA-110607
 %%%              adv2(feil,wrongly).            %% trouble test 
 
-adv2(foreløpig, redundantly). 
-adv2(forhåpentligvis, redundantly). %% TA-110701
+adv2(forelÃ¸pig, redundantly). 
+adv2(forhÃ¥pentligvis, redundantly). %% TA-110701
 adv2(forsinket, delayed). 
 
 adv2(forskjellig,differently). %% TA-110808  
@@ -12549,7 +12551,7 @@ adv2(fortere,fast).            %% faster ? (context depends
 adv2(forresten, redundantly). 
 adv2(frekt,badly).  
 
-     adv2(før,earlier).  %%  Hazard? SUSPENDED TEST for å trikk ...
+     adv2(fÃ¸r,earlier).  %%  Hazard? SUSPENDED TEST for Ã¥ trikk ...
 
 adv2(galt,wrongly). 
 adv2(godt, well).  
@@ -12580,27 +12582,27 @@ adv2(langsommere,slowly).        %% slowlier (context depends)
 
 adv2(lenger,longer).             %%  enn 12 sekunder 
 
-%% adv2(lettest,redundantly).   %% TA-110510 hvoe er det lettest å
+%% adv2(lettest,redundantly).   %% TA-110510 hvoe er det lettest Ã¥
 adv2(likevel, redundantly).  
 adv2(lite,little). 
 adv2(manuelt,manually). 
 adv2(mer,more). 
 adv2(merkelig, badly).           %%  rough
-adv2(miljøvennlig,redundantly).  %% ? kjøre m..
+adv2(miljÃ¸vennlig,redundantly).  %% ? kjÃ¸re m..
 adv2(muligens,redundantly). 
 adv2(mye,much).                  %%  reiste mye (suspended?)
 
 adv2(naturligvis,redundantly).   %% redundant adverb
-adv2(nedenfor, below).           %%  spørsmålet nedenfor
+adv2(nedenfor, below).           %%  spÃ¸rsmÃ¥let nedenfor
 %% adv2(nemlig,redundantly).     %%  noisew
 adv2(nesten,redundantly).  
 adv2(nok,redundantly).   
-adv2(nærmere, hereafter).        %% vi høres nærmere ????
-adv2(nødvendigvis,redundantly).  %% TA-110324
-adv2(nøyaktig,redundantly). 
-adv2(nøye,redundantly). 
-%% adv2(naa,now).  %% = nå
-adv2(nå,now).  
+adv2(nÃ¦rmere, hereafter).        %% vi hÃ¸res nÃ¦rmere ????
+adv2(nÃ¸dvendigvis,redundantly).  %% TA-110324
+adv2(nÃ¸yaktig,redundantly). 
+adv2(nÃ¸ye,redundantly). 
+%% adv2(naa,now).  %% = nÃ¥
+adv2(nÃ¥,now).  
 adv2(ofte,often).
 adv2(oppe,up).   
 adv2(ovenfor,above).            
@@ -12628,22 +12630,22 @@ adv2(selvstendig, redundantly).  %% TA-110128
 adv2(senest,last).               %%  (= latest)
 adv2(sikkert,redundantly). 
 
-adj2(spennende,well). %% rough høres spennende %% TA-110724
+adj2(spennende,well). %% rough hÃ¸res spennende %% TA-110724
 
 adv2(tydelig,redundantly).       %% TA-110103 Also ADJ !!!  
 adv2(sist,last). 
-%%%  adv2(slik,redundantly).     %%  ? bussen går slik som trikken
+%%%  adv2(slik,redundantly).     %%  ? bussen gÃ¥r slik som trikken
 adv2(snart,redundantly).         %% ? 
 adv2(stabilt,well).              %%  reliably?
-adv2(således,redundantly). 
-%% adv2(således,thus).              %%   slik ut|ut slik
+adv2(sÃ¥ledes,redundantly). 
+%% adv2(sÃ¥ledes,thus).              %%   slik ut|ut slik
 adv2(tidligere,earlier).        
 adv2(tilgjengelig,available).    %% semi adjective
 adv2(tilsvarende,redundantly). 
 adv2(trolig, redundantly).  
 adv2(trygt,redundantly).    
 adv2(tydeligvis,redundantly). 
-%% adv2(uansett,redundantly).  %% .. vær  %% TA-100828 %% (?) suspended. bussen går uansett om
+%% adv2(uansett,redundantly).  %% .. vÃ¦r  %% TA-100828 %% (?) suspended. bussen gÃ¥r uansett om
 adv2(uheldigvis,redundantly). 
 adv2(uoppfordret,redundantly).  
 adv2(ute,outside).       
@@ -12652,8 +12654,8 @@ adv2(vanligvis, redundantly).    %%  som v..
 adv2(videre, redundantly).       %%
 %%  adv2(virkelig, redundantly).   %% not initially
 adv2(visst, redundantly). 
-adv2(ærlig,honestly).   
-%% adv2(åpent,openly).           %% Not really necessary har LingIT åpen
+adv2(Ã¦rlig,honestly).   
+%% adv2(Ã¥pent,openly).           %% Not really necessary har LingIT Ã¥pen
 
 
 
@@ -12690,33 +12692,33 @@ adj3(enklest,sup,good).
 adj3(flere,comp,many).       %% ? 
 adj3(flest,sup,many).        %% ? 
 
-%% adj3(færre,comp,few).  %% confuse quantifier 
+%% adj3(fÃ¦rre,comp,few).  %% confuse quantifier 
 
 adj3(lengre,comp,long). %% lang lengre lengst 
 adj3(lengst,sup,long). 
 adj3(lengste,sup,long). %% 
 
-%% adj3(nær,nil,near).  %% i nærheten av = nær SUSPENDED TEST
+%% adj3(nÃ¦r,nil,near).  %% i nÃ¦rheten av = nÃ¦r SUSPENDED TEST
 
 adj3(mindre,comp,small). 
 adj3(minst,sup,small).  
 
-adj3(nærere,comp,near).
-adj3(nærest,sup,near).
+adj3(nÃ¦rere,comp,near).
+adj3(nÃ¦rest,sup,near).
 
-adj3(nærme,nil,near).
-adj3(nærmere,comp,near).
-%% adj3(nærmest,sup,near). %% -> prep 
-adj3(nærmeste,sup,near).
+adj3(nÃ¦rme,nil,near).
+adj3(nÃ¦rmere,comp,near).
+%% adj3(nÃ¦rmest,sup,near). %% -> prep 
+adj3(nÃ¦rmeste,sup,near).
 
 adj3(sen,nil,late).
 adj3(senere,comp,late).
-adj3(senest,sup,late).    %% ? (also før)
+adj3(senest,sup,late).    %% ? (also fÃ¸r)
 
 adj3(stor,nil,great).
-adj3(større,comp,great).
-adj3(størst,sup,great).
-adj3(største,sup,great). 
+adj3(stÃ¸rre,comp,great).
+adj3(stÃ¸rst,sup,great).
+adj3(stÃ¸rste,sup,great). 
 
 adj3(tidligere,comp,early). 
 
@@ -12748,7 +12750,7 @@ adj2(avhengig,dependent).
 
 adj2(begrenset,limited). 
 
-adj2(berømt,famous). %% TA-110301
+adj2(berÃ¸mt,famous). %% TA-110301
 
 adj2(best,best). 
     adj2(likest,best). 
@@ -12765,7 +12767,7 @@ adj2(billig,cheap).
    adj2(rabattert,cheap). 
 
 adj2(blid,nice). 
-  %%  adj2(søt,nice). % Facetious
+  %%  adj2(sÃ¸t,nice). % Facetious
 
 adj2(borte,absent).   %% ? %% away,gone 
    adj2(vekk,absent). %%
@@ -12795,7 +12797,7 @@ adj2(god,good).
     adj2(bra,good).  
     adj2(behagelig,good). 
     adj2(brukbar,good).  
-    adj2(dyp,good). %% .. forståelse 
+    adj2(dyp,good). %% .. forstÃ¥else 
     adj2(effektiv,good). 
     adj2(egned,good). %% egnede 
     adj2(egnet,good). %%
@@ -12812,7 +12814,7 @@ adj2(god,good).
     adj2(fullgod,good).  
 
     adj2(grei,good). 
-    adj2(gøy,good).            %% :-) = bra
+    adj2(gÃ¸y,good).            %% :-) = bra
 
     adj2(hensiktsmessig,good). 
 
@@ -12823,26 +12825,26 @@ adj2(god,good).
 
     adj2(kjempekul,good).   %% ? 
     adj2(kjempebra,good). 
-    adj2(kjørende,current). 
+    adj2(kjÃ¸rende,current). 
     adj2(komfortabel,good). 
     adj2(komfortable,good). %% Missing Morph 
     adj2(kul,good).            %% Facetious ?
     adj2(kurant,good).      %% TA-110329
     adj2(kuul,good).          
     adj2(lekkert,good).  
-    adj2(lækkert,good).  % :-))))))
+    adj2(lÃ¦kkert,good).  % :-))))))
     adj2(meningsfylt,good).  %% TA-110725 rough
     adj2(meningsfyllt,good). %% spiw
  
-    adj2(målretted,good). %%-e %% ad hoc 
-    adj2(miljøvennlig,good). %% :-) rough 
-    adj2(misfornøyd,dissatisfied). %%  displeased
+    adj2(mÃ¥lretted,good). %%-e %% ad hoc 
+    adj2(miljÃ¸vennlig,good). %% :-) rough 
+    adj2(misfornÃ¸yd,dissatisfied). %%  displeased
     adj2(mobilvennlig,good). %% 
-    adj2(målrettet,good).     %%
+    adj2(mÃ¥lrettet,good).     %%
 
-    adj2(nyttig,good).       adj2(næringsrik,good). %% :-))) 
+    adj2(nyttig,good).       adj2(nÃ¦ringsrik,good). %% :-))) 
 
-    adj2(ok,good).      %% er det OK å ta buss
+    adj2(ok,good).      %% er det OK Ã¥ ta buss
     adj2(oppe,up).      %% Haz? 
     adj2(spennende,good).
     adj2(opphissende,good). %% :-) %% TA-110426
@@ -12851,7 +12853,7 @@ adj2(god,good).
     adj2(opptatt,occupied).  
     adj2(optimal,good).  
     adj2(perfekt,good).     
-    adj2(populær,good). 
+    adj2(populÃ¦r,good). 
     adj2(positiv,good).     
     adj2(praktisk,good). 
 
@@ -12861,26 +12863,26 @@ adj2(god,good).
     adj2(sunn,good). 
     adj2(spennende,good). 
     adj2(stilig,good). 
-    adj2(strålende,good).
+    adj2(strÃ¥lende,good).
     adj2(super,good). %% -> bra 
     adj2(superb,good).
 
-    adj2(trivelig,good). %% også nice 
-    adj2(tøff,good).  
+    adj2(trivelig,good). %% ogsÃ¥ nice 
+    adj2(tÃ¸ff,good).  
 
     adj2(uavhengig,independent).  
          adj2(uavhenig,independent). %% own 
 
     adj2(underholdende,good).  
-    adj2(upåklagelig,good).  
+    adj2(upÃ¥klagelig,good).  
 
     adj2(velfortjent,good).    %% rough 
     adj2(velfungerende,good).
 
     adj2(ypperlig,good).  
-    adj2(ønskelig,good).  %% rough 
-    adj2(ålreit,good).  
-    adj2(åreit,good).     %% spiw
+    adj2(Ã¸nskelig,good).  %% rough 
+    adj2(Ã¥lreit,good).  
+    adj2(Ã¥reit,good).     %% spiw
 
 % adj2(daglig,daily).          %%  (day_to_day)
 adj2(dansk,danish). 
@@ -12905,34 +12907,34 @@ adj2(dum,stupid).
    adj2(idiotisk,stupid). 
    adj2(inkompetent,stupid). 
    adj2(lat,stupid).           %% Rough 
-   adj2(sprø,stupid).          %% (roughly)
+   adj2(sprÃ¸,stupid).          %% (roughly)
    adj2(stupid,stupid).
-   adj2(sær,stupid).  
-   adj2(tilbakestående,stupid). %% -> forsinket :-)
+   adj2(sÃ¦r,stupid).  
+   adj2(tilbakestÃ¥ende,stupid). %% -> forsinket :-)
 %%    adj2(treg,stupid).  %% forsinket        %% \= treg = late  :-)  Jargon ( not late ???)  
 %%    adj2(treig,stupid).  
-   adj2(tilhørende,true). %% ad hoc rough 
+   adj2(tilhÃ¸rende,true). %% ad hoc rough 
    adj2(tungnem,stupid).   
-   adj2(tåpelig,stupid).  
+   adj2(tÃ¥pelig,stupid).  
    adj2(uintelligent,stupid). 
    adj2(uinteligent,stupid). 
    adj2(uklok,stupid).
-   adj2(useriøs,stupid). 
+   adj2(useriÃ¸s,stupid). 
    adj2(uvitende,stupid). 
 
 adj2(dyr,expensive). 
 
-adj2(død,dead).  %%  ikke spøke :-( ? 
+adj2(dÃ¸d,dead).  %%  ikke spÃ¸ke :-( ? 
     adj2(slettet,dead). %%  :-)
 
-adj2(dårlig,bad). 
-    adj2(dålig,bad).  %% sp
+adj2(dÃ¥rlig,bad). 
+    adj2(dÃ¥lig,bad).  %% sp
     adj2(elendig,bad). 
     adj2(fetende,bad).     %%  :-) 
     adj2(flertydig,bad).   %% T (Rough , ambiguous)
-    adj2(forferdelig,bad). %% også adverb 
-    adj2(fæl,bad).
-    adj2(håpløs,bad).
+    adj2(forferdelig,bad). %% ogsÃ¥ adverb 
+    adj2(fÃ¦l,bad).
+    adj2(hÃ¥plÃ¸s,bad).
     adj2(horribel,bad).  
     adj2(ille,bad).   
     adj2(irriterende,bad). 
@@ -12950,12 +12952,12 @@ adj2(dårlig,bad).
     adj2(uheldig,bad). %% rough
     adj2(ustabil,bad). 
     adj2(usund,bad).
-       adj2(usunn,bad).    %% TA-110331 .. å røyke :-) 
+       adj2(usunn,bad).    %% TA-110331 .. Ã¥ rÃ¸yke :-) 
  
     adj2(vond,bad).   
     adj2(vondt,bad).   %% vondt adv (ok) 
-    adj2(ødelagt,bad).  
-    adj2(ødelagt,bad).     %%  :-)
+    adj2(Ã¸delagt,bad).  
+    adj2(Ã¸delagt,bad).     %%  :-)
 
 adj2(edru,sober).           %%  Facetious ?? 
 adj2(ekstra,extra). 
@@ -12963,7 +12965,7 @@ adj2(ekte,real).
 adj2(eldre,old). 
 adj2(elektrisk,electric).
 adj2(elektronisk,electronic). 
-adj2(elementær,single). 
+adj2(elementÃ¦r,single). 
 adj2(endret,different). 
 adj2(engelsk,english).  
 adj2(enig,agreed).  %%  ( Norw  Tech).  
@@ -12995,7 +12997,7 @@ adj2(flink,clever).
 %%     adj2(avansert,clever). 
     adj2(behjelpelig,clever).  %% ( snill?)
     adj2(dyktig,clever). 
-    adj2(enestående,clever).
+    adj2(enestÃ¥ende,clever).
     adj2(fantastisk,clever). %% ? facetious
     adj2(hjelpsom,clever).  
     adj2(kompetent,clever). 
@@ -13009,7 +13011,7 @@ adj2(fortidlig,tooearly). %% Techn.
 
 adj2(forsinket,delayed). 
     adj2(forsein,delayed). 
-    adj2(tilbakestående,delayed). %%  :-))
+    adj2(tilbakestÃ¥ende,delayed). %%  :-))
     adj2(treg,delayed). 
     adj2(treig,delayed). 
 
@@ -13023,16 +13025,16 @@ adj2(forskjellig,different).   % forskjellige dager ... ?
 
 %  adj2(fort,fast).                %% Adverb
 adj2(fortere,faster). 
-% adj2(fortest,fast).            %% (fastest) %% Krøll med fortest mulig
+% adj2(fortest,fast).            %% (fastest) %% KrÃ¸ll med fortest mulig
 
 adj2(fremmed,foreign).  
 
 adj2(fri,free).
 
-adj2(forståelig,comprehensible). 
+adj2(forstÃ¥elig,comprehensible). 
 
 adj2(fransk,french). 
-adj2(fraværende,absent).  
+adj2(fravÃ¦rende,absent).  
     adj2(bortreist,absent).
 
 
@@ -13052,8 +13054,8 @@ adj2(fullstendig,full).
     adj2(utfyllende,whole). 
 %%   adj2(skikkelig,whole).   
 
-%% adj2(førstgående,next).   %%  = first
-%% adj2(førstkommende,next). %%  = first
+%% adj2(fÃ¸rstgÃ¥ende,next).   %%  = first
+%% adj2(fÃ¸rstkommende,next). %%  = first
 
 adj2(framme,present). 
 
@@ -13075,12 +13077,12 @@ adj2(gal,wrong).
     adj2(mangelfull,wrong). 
     adj2(optimistisk,wrong). %% rough but wise %% TA-110411 (cmp pessimistisk)
 
-    adj2(sprø,wong).    
-    adj2(sprøtt,wrong).      %% .. rule ?
+    adj2(sprÃ¸,wong).    
+    adj2(sprÃ¸tt,wrong).      %% .. rule ?
     adj2(tullet,wrong).  
     adj2(tullete,wrong).    %% nec ?
     adj2(uriktig,wrong).  
-%%    adj2(uforståelig,wrong).    %% rough -> incomp.. 
+%%    adj2(uforstÃ¥elig,wrong).    %% rough -> incomp.. 
     adj2(uforutsigbar,wrong).   %% rough
 
 
@@ -13089,7 +13091,7 @@ adj2(gammel,old).
 adj2(gift,married). 
 adj2(glad,happy).              %%  :-)
    adj2(gla,happy). 
-   adj2(fornøyd,happy). 
+   adj2(fornÃ¸yd,happy). 
    adj2(tilfreds,happy).       %%
 adj2(glatt,icy).               %%  (slippery)
 
@@ -13134,18 +13136,18 @@ adj2(hurtig,fast).
 adj2(hurtigere,faster). 
 % adj2(hurtigst,fastest). 
 adj2(hyggelig,nice).           %%   more general
-   adj2(høflig,nice).  
-   adj2(høfleg,nice).  
+   adj2(hÃ¸flig,nice).  
+   adj2(hÃ¸fleg,nice).  
    adj2(koselig,nice).  
    adj2(kultivert,nice). 
    adj2(serviceinnstilt,nice). 
    adj2(sympatisk,nice). 
    adj2(trivelig,nice). 
 
-adj2(høy,high). 
-    %% adj2(høy,great). %% høy skoleringen 
-adj2(høyere,high).
-adj2(høyest,high). 
+adj2(hÃ¸y,high). 
+    %% adj2(hÃ¸y,great). %% hÃ¸y skoleringen 
+adj2(hÃ¸yere,high).
+adj2(hÃ¸yest,high). 
 
 %% adj2(i 
 
@@ -13164,10 +13166,10 @@ adj2(innvendig,internal).
 adj2(intelligent,intelligent).
 %%     adj2(avansert,intelligent).  %% ?
     adj2(fornuftig, intelligent). 
-    adj2(forståelsesfull, intelligent).
+    adj2(forstÃ¥elsesfull, intelligent).
     adj2(genial,intelligent). 
     adj2(glup,intelligent).
-    adj2(gløgg,intelligent).  
+    adj2(glÃ¸gg,intelligent).  
 %%%    adj2(inteligent,intelligent).    %%  (spell)
 %%%    adj2(innteligent,intelligent). 
     adj2(klog, intelligent). 
@@ -13211,13 +13213,13 @@ adj2(kjedelig,tedious).  %% boring?
    adj2(uinteressant,tedious).    
 
 adj2(kjent,known). 
-%%    adj2(berømt,known). %%  TA-110301???    
+%%    adj2(berÃ¸mt,known). %%  TA-110301???    
     adj2(lokalkjent,known). %% TA-110301 NB 
 
 adj2(klar,clear). %% indication ... %% (generic)
 
 adj2(klar,ready).  
-    adj2(rede,ready).          %%  rede til et møte
+    adj2(rede,ready).          %%  rede til et mÃ¸te
     adj2(villig,ready).        %%   (Rough) 
 
     
@@ -13242,7 +13244,7 @@ adj2(kvinnelig,female).
 
 
 adj2(lang,long).
-    adj2(drøy,long). 
+    adj2(drÃ¸y,long). 
 %%     adj2(bred,long).   %%  (roughly)  \+ duration 
     adj2(langvarig,long).       %% rough
 
@@ -13281,9 +13283,9 @@ adj2(lignende, similar).
 adj2(likeglad,  indifferent).
 adj2(likegyldig,indifferent).  
 
-adj2(lite,small). %% TA-110511 et lite spørsmål %% TA-110511
+adj2(lite,small). %% TA-110511 et lite spÃ¸rsmÃ¥l %% TA-110511
 
-adj2(lineær,simple). %% rough, who cares %% TA-110503
+adj2(lineÃ¦r,simple). %% rough, who cares %% TA-110503
 
 adj2(liten,small). 
     adj2(forsvinnende,small). %% also gradverb
@@ -13306,7 +13308,7 @@ adj2(menneskelig,human).
     adj2(menneskelignende,human). 
 
 adj2(merkelig,funny). 
-adj2(mild,mild).   %% mildt vær 
+adj2(mild,mild).   %% mildt vÃ¦r 
 %% adj2(minst,small).             %% adj3
 adj2(mistet,lost).  
     adj2(gjenglemt,lost). 
@@ -13317,23 +13319,23 @@ adj2(morsom,funny).            %%  ( :-)
    adj2(arti,funny).  
    adj2(artig,funny). 
    adj2(festlig,funny).   
-   adj2(gøy,funny).            %%  :-)
+   adj2(gÃ¸y,funny).            %%  :-)
    adj2(komisk,funny).  
 
 adj2(motsatt,opposite). 
 adj2(mulig,possible). 
     adj2(mogleg,possible). %% NN %% TA-100830
     adj2(tenkbar,possible). 
-adj2(månedlig,monthly). 
+adj2(mÃ¥nedlig,monthly). 
 
 
 adj2(nasjonal,national). 
 
 adj2(naturlig,natural). %% language/ also ordinary
 
-adj2(nede,down).     %% adj2(nede,present). %% ikke synword nede = framme ==> 'før'
+adj2(nede,down).     %% adj2(nede,present). %% ikke synword nede = framme ==> 'fÃ¸r'
   
-adj2(nedenfor,below). %% spørsmålet nedenfor ? 
+adj2(nedenfor,below). %% spÃ¸rsmÃ¥let nedenfor ? 
 
 
 adj2(nedlagt,closed).          %%  (roughly)
@@ -13341,28 +13343,28 @@ adj2(nedlagt,closed).          %%  (roughly)
 %% adj2(nest,nex).                %% NEST  %% EXPERIMENT  
 
 adj2(nest,second).             %% NB, not next ( nest siste )
-                                       %% når går nest nr 9 ? 
+                                       %% nÃ¥r gÃ¥r nest nr 9 ? 
 adj2(neste,next).
-    adj2(fortløpende,next). 
+    adj2(fortlÃ¸pende,next). 
     adj2(framtidig,next).  
     adj2(fremtidig,next). 
-    adj2(følgende,next).  
+    adj2(fÃ¸lgende,next).  
     adj2(nestebuss,next).  
     adj2(nestebus,next).   
 
 adj2(nestsiste,second_last). 
    adj2(sistneste,second_last).
 
-adj2(nordgående,waybound).  %% Technical
-   adj2(sørgående,waybound).
-   adj2(sydgående,waybound).
-   adj2(østgående,waybound).
-   adj2(vestgående,waybound).
+adj2(nordgÃ¥ende,waybound).  %% Technical
+   adj2(sÃ¸rgÃ¥ende,waybound).
+   adj2(sydgÃ¥ende,waybound).
+   adj2(Ã¸stgÃ¥ende,waybound).
+   adj2(vestgÃ¥ende,waybound).
 
    adj2(nordligst,waybound).  %% Technical
-   adj2(sørligst,waybound).
+   adj2(sÃ¸rligst,waybound).
    adj2(sydligst,waybound).
-   adj2(østligst,waybound).
+   adj2(Ã¸stligst,waybound).
    adj2(vestligst,waybound).
 
 adj2(nevnt,named). %% den nevnte avgangen
@@ -13378,22 +13380,22 @@ adj2(nysgjerrig,curious).
     adj2(nyssgjerrig,curious). 
 adj2(nytt,new). 
 
-%% NÆRMEST
+%% NÃ†RMEST
 
-%% adj2(nær,near). %% SUSPENDED TEST 
+%% adj2(nÃ¦r,near). %% SUSPENDED TEST 
 
-adj2(nære,near).  
-adj2(nærere, near). 
-adj2(nærmere,near).  %% er).
+adj2(nÃ¦re,near).  
+adj2(nÃ¦rere, near). 
+adj2(nÃ¦rmere,near).  %% er).
 
-adj2(nærest, nearest).
-%% adj2(nærmest,nearest).  %% SUSPENDED TEST %% nærmeste time/ nærmeste stasjon 
-%% adj2(nærmest,near).      % nærmest festningen 
+adj2(nÃ¦rest, nearest).
+%% adj2(nÃ¦rmest,nearest).  %% SUSPENDED TEST %% nÃ¦rmeste time/ nÃ¦rmeste stasjon 
+%% adj2(nÃ¦rmest,near).      % nÃ¦rmest festningen 
 
-adj2(nødvendig,necessary). 
-    adj2(påkrevet,necessary). 
+adj2(nÃ¸dvendig,necessary). 
+    adj2(pÃ¥krevet,necessary). 
 
-adj2(nøyaktig,precise).    %%  accurate?
+adj2(nÃ¸yaktig,precise).    %%  accurate?
 
 %% adj2(odd,funny). %% odde %% Odd Husbys Veg
 
@@ -13401,8 +13403,8 @@ adj2(offentlig,public).
 adj2(offisiell,public).        %% Not corect
     adj2(kollektiv,public).  
     adj2(oficiell,public).     %% Danish
-    adj2(uniformert,public).   %% rough .. kontrollør
-    adj2(rutegående,public).   %% rough
+    adj2(uniformert,public).   %% rough .. kontrollÃ¸r
+    adj2(rutegÃ¥ende,public).   %% rough
 
 
 adj2(online,online).  
@@ -13415,7 +13417,7 @@ adj2(oppe,up).
  
 adj2(oppdatert,updated). 
 
-adj2(ordinær,ordinary).        %%  (dummy, really)
+adj2(ordinÃ¦r,ordinary).        %%  (dummy, really)
     adj2(ordinar,ordinary).
     adj2(ordiner,ordinary).    %% sp
 %%% adj2(over,finished). %% IKKE ADJ  over 10 busser venter\=finished 
@@ -13446,14 +13448,14 @@ adj2(presis,punctual).
 adj2(presis,precise). 
 
 adj2(privat,private). 
-adj2(pålitelig,reliable).
+adj2(pÃ¥litelig,reliable).
 
 
 adj2(rask,fast). 
 % adj2(raskere,fast).      %% (fastest)
 % adj2(raskest,fast).      %% (fastest)
 adj2(redd,afraid). 
-    adj2(nervøs,afraid).  
+    adj2(nervÃ¸s,afraid).  
 adj2(realistisk,actual).   %% TA-110503 possible?
 adj2(reell,actual).        %% tid 
 
@@ -13466,7 +13468,7 @@ adj2(relevant,relevant).
 
 adj2(resterende,remaining). 
 adj2(riktig,correct). 
-    adj2(forståelig,correct). %% rough
+    adj2(forstÃ¥elig,correct). %% rough
     adj2(korrekt,correct). 
     adj2(korekt,correct).    %% spell :-)
     adj2(korrigert,correct).
@@ -13475,7 +13477,7 @@ adj2(riktig,correct).
     adj2(sant,correct). 
     adj2(tydelig,correct).     %%  rough
 
-adj2(røykfri,smokefree).
+adj2(rÃ¸ykfri,smokefree).
 
 %% adj2(s 
 
@@ -13496,7 +13498,7 @@ adj2(skriftlig,printed).
    adj2(utskrevet,printed).
 
 
-adj2(sen,late).      %% NB senere \= forsinket | senest = før ***
+adj2(sen,late).      %% NB senere \= forsinket | senest = fÃ¸r ***
     adj2(sein,late). %% Technical %%  fremme seinest
     adj2(treg,slow). 
     adj2(treig,slow).
@@ -13526,14 +13528,14 @@ adj2(slik,dummish). %% kunstig %% TA-101106
 adj2(slutt,finished). 
     adj2(omme,finished).  %%  ?
 
-%% adj2(snarest,fast).    %%  også adverb (snareste buss) " snarest mulig"
+%% adj2(snarest,fast).    %%  ogsÃ¥ adverb (snareste buss) " snarest mulig"
 
 adj2(smal,little). %% small 
 
 adj2(snill,nice).  
 %   adj2(grei,nice).  %% good 
-    adj2(rørende,nice).  
-    adj2(søt,nice). 
+    adj2(rÃ¸rende,nice).  
+    adj2(sÃ¸t,nice). 
 
 adj2(snillest,nice). 
 adj2(snilt,nice). 
@@ -13545,10 +13547,10 @@ adj2(spesiell,special).
     adj2(spessiell,special). 
     adj2(egen,special).
     adj2(spessiell,special). 
-%    adj2(særlig,special). 
+%    adj2(sÃ¦rlig,special). 
 
 
-adj2(språklig,linguistic). %% naturlig språklig ES 
+adj2(sprÃ¥klig,linguistic). %% naturlig sprÃ¥klig ES 
 adj2(stabil,reliable).  
 adj2(statisk,static). 
 adj2(stengt,closed).
@@ -13564,12 +13566,12 @@ adj2(stor,great).
 %%%      adj2(voksende,increasing). 
     adj2(voldsom,great).  
 
-%% adj2(større,great).        %%  (rough, for chat) %% SUSPENDED
+%% adj2(stÃ¸rre,great).        %%  (rough, for chat) %% SUSPENDED
 
-%%% adj2(størst,great).        %% SUSPENDED TEST 
+%%% adj2(stÃ¸rst,great).        %% SUSPENDED TEST 
   adj2(maksimal,great).  
 adj2(stygg,ugly). 
-    adj2(støgg,ugly). 
+    adj2(stÃ¸gg,ugly). 
 adj2(sulten,hungry). 
     adj2(mett,satisfied). 
 adj2(sur,sour).          %%   grumpy :-)
@@ -13588,16 +13590,16 @@ adj2(sur,sour).          %%   grumpy :-)
     adj2(spydig,sour).
     adj2(udanned,sour).  
     adj2(udannet,sour). 
-    adj2(uhøflig,sour). 
+    adj2(uhÃ¸flig,sour). 
     adj2(zur,sour).  % :-)
 
 adj2(svensk,swedish). 
 adj2(syk,ill). 
    adj2(sjuk,ill).   
-%% adj2(søt,nice).          %% (sweet ?)  Facetious 
+%% adj2(sÃ¸t,nice).          %% (sweet ?)  Facetious 
 
 
-adj2(sånn,true). %% rough, ad hoc det skal være sånn 
+adj2(sÃ¥nn,true). %% rough, ad hoc det skal vÃ¦re sÃ¥nn 
 
 adj2(takknemlig,grateful). 
 
@@ -13618,7 +13620,7 @@ adj2(tidlig,early).
 %%% adj2(tidligere,earlier). %% e // incorrect %% adj3(eraly,comp) 
                              %% not tidlig = morning
 adj2(tilgjengelig,available). 
-    adj2(søkbar,available).  %% rough
+    adj2(sÃ¸kbar,available).  %% rough
 
 adj2(tilstrekkelig,sufficient). 
     adj2(nok,sufficient). %% bruker nok mer tid %% TA-110411
@@ -13627,12 +13629,12 @@ adj2(tolerant,tolerant).
 adj2(tom,empty). 
 adj2(topp,good). 
 
-adj2(tospråklig,bilingual). 
+adj2(tosprÃ¥klig,bilingual). 
 
 adj2(travel,busy). 
 adj2(trett,tired).  
     adj2(sliten,tired).  
-    adj2(trøtt,tired).  
+    adj2(trÃ¸tt,tired).  
 
 
 adj2(trinn,step).
@@ -13651,11 +13653,11 @@ adj2(trygg,safe).
 
 adj2(tung,heavy).
 
-adj2(uforståelig,incomprehensible).
-    adj2(meningsløse,incomprehensible). 
-    adj2(påfallende,incomprehensible). 
+adj2(uforstÃ¥elig,incomprehensible).
+    adj2(meningslÃ¸se,incomprehensible). 
+    adj2(pÃ¥fallende,incomprehensible). 
     adj2(rar,incomprehensible).         %% 
-    adj2(ufårståelig,incomprehensible).  
+    adj2(ufÃ¥rstÃ¥elig,incomprehensible).  
     adj2(ufullstendig,incomprehensible).
   
 
@@ -13672,8 +13674,8 @@ adj2(ukjent,unknown).
 
 adj2(umulig,impossible). 
     adj2(forbudt,impossible). 
-    adj2(meningsløst,impossible). %% Rough 
-    adj2(påbudt,possible).        %% Rough 
+    adj2(meningslÃ¸st,impossible). %% Rough 
+    adj2(pÃ¥budt,possible).        %% Rough 
     adj2(ulovlig,impossible).
 
 adj2(ung,young). 
@@ -13684,11 +13686,11 @@ adj2(usant,false).
    adj2(galt,false). 
 
 adj2(utdatert,expired). %% rough 
-    adj2(utgått,expired). %% expired 
+    adj2(utgÃ¥tt,expired). %% expired 
 
 adj2(vanlig,ordinary). 
     adj2(alminnelig,ordinary). 
-    adj2(forutsetningsløs,ordinary). 
+    adj2(forutsetningslÃ¸s,ordinary). 
     adj2(generell,ordinary).  
     adj2(naturlig,ordinary).   %%  Rough
     adj2(normal,ordinary). 
@@ -13701,7 +13703,7 @@ adj2(vanskelig,difficult).
     adj2(ikketriviell,difficult). 
     adj2(komplisert,difficult).  
     adj2(slitsomt,difficult). 
-    adj2(uløst,difficult).      %% TA-110419
+    adj2(ulÃ¸st,difficult).      %% TA-110419
     adj2(vanskerlig,difficult). %% sperr
     adj2(vrang,difficult).      %% ?
     adj2(vrien,difficult).      %% ?
@@ -13720,7 +13722,7 @@ adj2(vennlig,good).
    adj2(verdifull,good). 
 
 adj2(venstre,left).
-adj2(høyre,right).
+adj2(hÃ¸yre,right).
 
 adj2(viktig,important). 
 
@@ -13729,33 +13731,33 @@ adj2(virkelig,real).
     adj2(verkeleg,real). 
 adj2(vis,intelligent).   
 adj2(voksen,adult).        %% NB ALSO NOUN
-adj2(våken,awake). 
-adj2(våt,wet).             %% rainy
+adj2(vÃ¥ken,awake). 
+adj2(vÃ¥t,wet).             %% rainy
 
 adj2(webbasert,webbased).  %%  techn
 
 
-adj2(ærlig,honest). 
-adj2(åpen,open). 
+adj2(Ã¦rlig,honest). 
+adj2(Ã¥pen,open). 
     adj2(aapen,open).
     adj2(oppe,open). %% folk talk 
 
-adj2(årlig,annual).
+adj2(Ã¥rlig,annual).
 
-adj2(mørk,dark). 
+adj2(mÃ¸rk,dark). 
 
 adj2(beige,beige). %% Berge ? 
 adj2(rosa,pink).                 
 adj2(svart,black).               
 adj2(sort,black).                
-adj2(grå,grey).                  
+adj2(grÃ¥,grey).                  
 adj2(hvit,white).                
-adj2(rød,red).                   
+adj2(rÃ¸d,red).                   
     adj2(roed,red). 
-adj2(blå,blue).                  
+adj2(blÃ¥,blue).                  
 adj2(gul,yellow).                
-adj2(grønn,green).               
-    adj2(grønt,green). %% \= grønnt 
+adj2(grÃ¸nn,green).               
+    adj2(grÃ¸nt,green). %% \= grÃ¸nnt 
 adj2(brun,brown).                
 adj2(lilla,violet).              
 adj2(purpur,purple).             
@@ -13776,7 +13778,7 @@ unwanted_noun(buger).    %% messy (softw error)
 unwanted_noun(bugene).   %%
 
 %% unwanted_noun(byen). %% = sentrum, otherwise irrelevant 
-%% byen Hønefoss %% TEST %% TA-110120
+%% byen HÃ¸nefoss %% TEST %% TA-110120
 
 unwanted_noun(bygger). %% \+ plu bygg
 
@@ -13790,8 +13792,8 @@ unwanted_noun(fara). %% \+ fathers %% TA-110303
 
 unwanted_noun(feiler).   %% not plu error 
 unwanted_noun(festet).
-unwanted_noun(fester). %% ? %%på fest (fast utt)
-unwanted_noun(flatas).   %% \+ Flatås 
+unwanted_noun(fester). %% ? %%pÃ¥ fest (fast utt)
+unwanted_noun(flatas).   %% \+ FlatÃ¥s 
 
 unwanted_noun(g).        %% \+ street (only in addresses) 
 unwanted_noun(gleder).   %% \+ happinesses 
@@ -13801,7 +13803,7 @@ unwanted_noun(havnet).   %% \+ harbour
 unwanted_noun(hender).   %% \+ hands %% ?
 unwanted_noun(himmels).  %% \+ gen av himmel
 unwanted_noun(hjelper).
-unwanted_noun(høsta).    %% \+ høst
+unwanted_noun(hÃ¸sta).    %% \+ hÃ¸st
 unwanted_noun(ida).      %% ikke idea ( a la klokka)
 
 unwanted_noun(jobber).   %% probably verb, hvilken agent jobber i trondheim
@@ -13811,12 +13813,12 @@ unwanted_noun(katten). %% \+ Kattem  (Katt ok) %% TA-100920
 
 unwanted_noun(kirkenes). %% \+ of churches %% TA-110531
 
-unwanted_noun(kjøper).   %% \+ kjøp (plu) 
+unwanted_noun(kjÃ¸per).   %% \+ kjÃ¸p (plu) 
 unwanted_noun(kodet). 
 unwanted_noun(konges).   %% confuse konges gate %%  ad hoc
 unwanted_noun(kongens).  %% confuse kongens gate %%  ad hoc
 unwanted_noun(kortere).  
-unwanted_noun(kræsjer).  %% \+ plu %% TA-100903
+unwanted_noun(krÃ¦sjer).  %% \+ plu %% TA-100903
 
 unwanted_noun(lager).    %%  lag(plu)
 unwanted_noun(laget).    %% \+ team -et. 
@@ -13827,7 +13829,7 @@ unwanted_noun(lander).   %% land
 unwanted_noun(liver).    %% pl av liv 
 unwanted_noun(logget).   %% Verb
 unwanted_noun(lover).    %% \+ permissions 
-unwanted_noun(lønner).   %% \+ salaries
+unwanted_noun(lÃ¸nner).   %% \+ salaries
 
 unwanted_noun(mana).     %% \+ menn 
 unwanted_noun(manna).    %% \+ menn
@@ -13843,14 +13845,14 @@ unwanted_noun(pluss).    %% \+ plass
 unwanted_noun(prater).   %% \+ talks 
 unwanted_noun(prisens).  %% -> prinsens 
 
-unwanted_noun(prøven).   %% TA-110520   collides with Prøven (ex. station) 
+unwanted_noun(prÃ¸ven).   %% TA-110520   collides with PrÃ¸ven (ex. station) 
 
-unwanted_noun(prøver).   %% TA-101115
+unwanted_noun(prÃ¸ver).   %% TA-101115
 
 unwanted_noun(regner). 
 
 
-%%% unwanted_noun(reiser).   %%  \+ trips %% Hazard ? %% ad hoc  når de reiser sammen
+%%% unwanted_noun(reiser).   %%  \+ trips %% Hazard ? %% ad hoc  nÃ¥r de reiser sammen
  
 
 unwanted_noun(restartet). %% \+  restarten
@@ -13861,15 +13863,15 @@ unwanted_noun(rette).
 
 unwanted_noun(roma). %% \+ rooms %% TA-100905
 
-unwanted_noun(røyken).   %% \+ Røyken
-unwanted_noun(røyker).  
+unwanted_noun(rÃ¸yken).   %% \+ RÃ¸yken
+unwanted_noun(rÃ¸yker).  
 
 unwanted_noun(setter). %% Team setter opp ruter 
 unwanted_noun(serveres). %% not servers (comouters)
 unwanted_noun(serverer). 
 
 %%% unwanted_noun(siden). %% cofuse .. i ruteheftet siden dette er ..
-                          %% på den andre siden
+                          %% pÃ¥ den andre siden
 
 unwanted_noun(skien).    %% / Skien 
 unwanted_noun(skifter). 
@@ -13890,7 +13892,7 @@ unwanted_noun(steinan). %% \+ steinene
 unwanted_noun(stian).   %% \+ stiene 
 
 unwanted_noun(stoper).   %% \+ stations 
-unwanted_noun(stopper).  %% \+ plu of stopp // en buss gjør stopper Avoid confusion
+unwanted_noun(stopper).  %% \+ plu of stopp // en buss gjÃ¸r stopper Avoid confusion
 unwanted_noun(stoppet).  %% \+ plu of stopp /  buss stoppet
 unwanted_noun(stops).    %% \+ holdeplassens 
 
@@ -13898,11 +13900,11 @@ unwanted_noun(streiket). %%\+ the strike
 
 %% unwanted_noun(studenter). %% - samfundet 
 unwanted_noun(svarer).  %%  (not plu svar)
-unwanted_noun(søker).   %% \+ søk 
-unwanted_noun(taket).   %% få tak i
+unwanted_noun(sÃ¸ker).   %% \+ sÃ¸k 
+unwanted_noun(taket).   %% fÃ¥ tak i
 unwanted_noun(tasta).   %% TA-101006
 unwanted_noun(testet).  %% \+ testen 
-unwanted_noun(tide).    %% i tide/på tide 
+unwanted_noun(tide).    %% i tide/pÃ¥ tide 
 unwanted_noun(togstasjonen). %%    shadows name(ts 
 % unwanted_noun(tosk).    %%  not Tysk // = fool 
 unwanted_noun(tra).     %% not trea a la klokka 
@@ -13916,23 +13918,23 @@ unwanted_noun(ura).     %% \+ clocks %% TA-110818
 %                      % programmer erne  ~ v erne
 
 unwanted_noun(varsler). %% confuses  
-unwanted_noun(vera).    %% not værene
-unwanted_noun(vere).    %% not været 
-unwanted_noun(verene).  %% not værene
-unwanted_noun(værene).  %% not værene
-unwanted_noun(værenes). %% not Nærnes 
-unwanted_noun(våra).    %% \+ våren 
+unwanted_noun(vera).    %% not vÃ¦rene
+unwanted_noun(vere).    %% not vÃ¦ret 
+unwanted_noun(verene).  %% not vÃ¦rene
+unwanted_noun(vÃ¦rene).  %% not vÃ¦rene
+unwanted_noun(vÃ¦renes). %% not NÃ¦rnes 
+unwanted_noun(vÃ¥ra).    %% \+ vÃ¥ren 
 
-unwanted_noun(verne).  %% \+  værenes (plu def  of weather !) 
-unwanted_noun(vernes). %% \+  værenes (plu def gen of weather !) 
+unwanted_noun(verne).  %% \+  vÃ¦renes (plu def  of weather !) 
+unwanted_noun(vernes). %% \+  vÃ¦renes (plu def gen of weather !) 
 
-%%% unwanted_noun(ønsker). %% try with again with care
-%% \+ many wishes // har du  noen ønsker     
+%%% unwanted_noun(Ã¸nsker). %% try with again with care
+%% \+ many wishes // har du  noen Ã¸nsker     
 
-unwanted_noun(øren).   %% \+  the cent
-unwanted_noun(ørens).  %% \+  the cent's /rule here?
+unwanted_noun(Ã¸ren).   %% \+  the cent
+unwanted_noun(Ã¸rens).  %% \+  the cent's /rule here?
 
-unwanted_noun(øyer).   %% Comm, \+ islands %% TA-110310
+unwanted_noun(Ã¸yer).   %% Comm, \+ islands %% TA-110310
 
 % noun2 is also used as a de facto synword definition,
 % because all inflection comes with  the bargain
@@ -13950,7 +13952,7 @@ unwanted_noun(øyer).   %% Comm, \+ islands %% TA-110310
    noun3(hus,house,n).    %% hus -> sin|plu
    noun3(hjul,wheel,n).   %% hjul -> sin|plu
    noun3(holdeplass,station,m).
-   noun3(kjøretøy,vehicle,n).
+   noun3(kjÃ¸retÃ¸y,vehicle,n).
    noun3(klokke,clock,f).  
 
  %%%%   noun3(lag,team,n).   %% (should exclude lager = team plu
@@ -13959,7 +13961,7 @@ unwanted_noun(øyer).   %% Comm, \+ islands %% TA-110310
  noun3(rett,right,m). %% rett til skyss \+ rettet 
    noun3(rute,route,f). % avoid ruta = ruter 
 
-   noun3(spørsmål,question,n). %% shall give question, sin|plu ,u,n
+   noun3(spÃ¸rsmÃ¥l,question,n). %% shall give question, sin|plu ,u,n
  
 %%    noun3(sted,place,n). %YES, but inflected as  1 sted, 2 steder 
    noun3(tid,time,f).   %
@@ -13988,7 +13990,7 @@ noun2(adresse,address).
     noun2(adrese,address). 
     noun2(adres,address).   
     noun2(adress,address).     
-    noun2(besøksadresse,address).
+    noun2(besÃ¸ksadresse,address).
     noun2(gateadresse,address). 
     noun2(kontoradresse,address). 
 
@@ -14006,10 +14008,10 @@ noun2(aktivitet,activity).    %%  Spurious  What is a route ???
 noun2(alder,age). 
 noun2(aldersgrense,agelimit). %% agelimit  capture the oneword 
     noun2(aldergrense,agelimit). 
-    noun2(årsgrense,agelimit). %% TA-101020 
+    noun2(Ã¥rsgrense,agelimit). %% TA-101020 
     noun2(lavalder,agelimit). 
 
-noun2(alternativ,alternative). %% \= måte (confuse) %% TA-110228
+noun2(alternativ,alternative). %% \= mÃ¥te (confuse) %% TA-110228
 
 noun2(analyse,analysis).
  
@@ -14025,13 +14027,13 @@ noun2(ankomst,arrival).
     noun2(ankomstid,arrival). 
     noun2(ankomsttid,arrival).
     noun2(ankosmyt,arrival).   
-    noun2(anløp,arrival). 
-       noun2(båtanløp,arrival).   %% rough, ad hoc
+    noun2(anlÃ¸p,arrival). 
+       noun2(bÃ¥tanlÃ¸p,arrival).   %% rough, ad hoc
     noun2(annkomst,arrival). 
     noun2(bussankomst,arrival). 
 
 
-%     noun2(stopp,arrival). %%  ( Hazardous) Hvilken stopp er nærmest nth
+%     noun2(stopp,arrival). %%  ( Hazardous) Hvilken stopp er nÃ¦rmest nth
 
 noun2(anropstidspunkt,callingtime). 
    noun2(anropstid,callingtime).
@@ -14085,7 +14087,7 @@ noun2(avgang,departure).
     noun2(avgangstidspunkt,departure). 
     noun2(avgangtid,    departure). 
     noun2(avgnag,       departure). 
-    noun2(avgång,       departure).  %% SWE
+    noun2(avgÃ¥ng,       departure).  %% SWE
     noun2(avreise,      departure). 
     noun2(busavgang,    departure). 
     noun2(bussadgang,   departure).  %%  spell
@@ -14098,7 +14100,7 @@ noun2(avgang,departure).
     noun2(bussenavgang, departure). 
     noun2(bussertid,    departure).  %%  own
     noun2(bussgang,     departure). 
-    noun2(bussmåte,     departure).  %%   ???
+    noun2(bussmÃ¥te,     departure).  %%   ???
     noun2(busspassering,departure).
     noun2(busspassring, departure).  %% sp
     noun2(busrutetid,   departure).  %% sp
@@ -14113,10 +14115,10 @@ noun2(avgang,departure).
 %%    noun2(kveldsavgang, departure).  %% rough 
 %%    noun2(morgenavgang, departure).  %% rough 
     noun2(hovedavgang,    departure). 
-    noun2(oppføring,    departure). 
-    noun2(oppmøte,      departure). 
-    noun2(ordinæravgang,   departure).  %% rough 
-    noun2(påstigning,   departure).  
+    noun2(oppfÃ¸ring,    departure). 
+    noun2(oppmÃ¸te,      departure). 
+    noun2(ordinÃ¦ravgang,   departure).  %% rough 
+    noun2(pÃ¥stigning,   departure).  
     noun2(rutatid,      departure). 
     noun2(ruteavgang,   departure). 
     noun2(rutebusstid,  departure). 
@@ -14138,7 +14140,7 @@ noun2(avgang,departure).
  
 % noun2(bussavgang,bus).             %% Siste bussavgang til lian    
 
-noun2(avgjørelse,decision). 
+noun2(avgjÃ¸relse,decision). 
    noun2(beslutning,decision). 
    noun2(bestemmelse,decision).
 
@@ -14172,9 +14174,9 @@ noun2(bagasje,luggage).   %% all kind of losable things(lost property)
 %%     noun2(ski,luggage).     %% Ski 
     noun2(skistav,luggage).    %% TA-100828
     noun2(stav,luggage).       %%
-    noun2(småting,luggage).        %% rough
+    noun2(smÃ¥ting,luggage).        %% rough
     noun2(spark,luggage).          %% rough 
-    noun2(sparkstøtting,luggage).  %% rough
+    noun2(sparkstÃ¸tting,luggage).  %% rough
     noun2(sportskjelke,luggage).   %% rough
     noun2(veske,luggage).          %% 
     noun2(vott,luggage). 
@@ -14195,15 +14197,15 @@ noun2(barn,child).
     noun2(barnebarn,child).   %% Rough 
     noun2(elev,child).        %%
 %%     noun2(klasse,child).      %% TA-101201
-    noun2(lærling,child).     %% 
+    noun2(lÃ¦rling,child).     %% 
     noun2(skoleelev,child).  
     noun2(skoleklasse,child). 
-    noun2(småbarn,child).     %% TA-101105
-    noun2(smågutt,child).     %%
-    noun2(småjente,child).    %%
+    noun2(smÃ¥barn,child).     %% TA-101105
+    noun2(smÃ¥gutt,child).     %%
+    noun2(smÃ¥jente,child).    %%
     noun2(unge,child). 
 
-    noun2(treåring,child).    %% etc 
+    noun2(treÃ¥ring,child).    %% etc 
 
 
 noun2(barnevogn,pram).  
@@ -14211,7 +14213,7 @@ noun2(barnevogn,pram).
 noun2(barnehage,kindergarten). 
     noun2(barnehave,kindergarten).   
     noun2(barnhage,kindergarten).  
-    noun2(førskole,kindergarten). 
+    noun2(fÃ¸rskole,kindergarten). 
 
 noun2(bart,beard).                 %%   :-#)
 
@@ -14240,14 +14242,14 @@ noun2(bestefar,grandfather).          %% visit ...
 
 noun2(bestilling,order). 
 
-noun2(besøk,visit). 
+noun2(besÃ¸k,visit). 
 
 noun2(betaling,payment). 
     noun2(omsetning,payment). %% rough
     noun2(refusjon,payment). 
 
 noun2(betingelse,condition).             %% TA-110707
-    noun2(forhåndsbetingelse,condition). %% 
+    noun2(forhÃ¥ndsbetingelse,condition). %% 
 
 %% consciousness ---> mind
 noun2(bevissthet,mind). 
@@ -14304,7 +14306,7 @@ noun2(billett,ticket).
     noun2(voksenbillett,ticket).      %%
 
 noun2(billettpris,price).
-   noun2(betalingsmåte,price).        %%  (Rough)  
+   noun2(betalingsmÃ¥te,price).        %%  (Rough)  
    noun2(billetpris,price).           %%  (spell)
    noun2(bilettpris,price).           %%  (spell)
    noun2(billettakst,price). 
@@ -14321,12 +14323,12 @@ noun2(bok,book).
    
 noun2(bokstav,letter). 
    noun2(alfabet,letter).   %% Rough 
-   noun2(ordforråd,letter). %% Rough
+   noun2(ordforrÃ¥d,letter). %% Rough
    noun2(tegn,letter).      %% Rough
 
 
 
-noun2(bredbånd,broadband).
+noun2(bredbÃ¥nd,broadband).
 noun2(breddegrad,latitude). 
 noun2(lengdegrad,latitude). 
 
@@ -14350,7 +14352,7 @@ noun2(bruk,use).
 
 noun2(brus,fizzydrink).
 
-noun2(fødselsdag,birthday). %% more time absolute %% TA-110520
+noun2(fÃ¸dselsdag,birthday). %% more time absolute %% TA-110520
     noun2(bursdag,birthday). 
  
 
@@ -14385,7 +14387,7 @@ noun2(buss,bus).
     noun2(bussee,bus).        %%  spc
     noun2(bussekspress,bus).  
     noun2(bussernummer,bus). 
-    noun2(busskjøretøy,bus). 
+    noun2(busskjÃ¸retÃ¸y,bus). 
     noun2(busskyss,bus).
     noun2(busselinje,bus). 
     noun2(bussertype,bus).  
@@ -14412,7 +14414,7 @@ noun2(buss,bus).
     noun2(bvss,bus). 
     noun2(bvuss,bus).                  %%   neib k
     noun2(byss,bus).  
-    noun2(bøss,bus).  
+    noun2(bÃ¸ss,bus).  
     noun2(dagbuss,bus).            %% rough, adequate
     noun2(direktebuss,bus).            %%  ( answer will be adequate)
     noun2(ekspressbuss,bus). 
@@ -14471,7 +14473,7 @@ noun2(ekstraavgang,extrabus).
     noun2(ekstrarute,extrabus).   
     noun2(ekstratur,extrabus).  
     noun2(ekstravgang,extrabus).   
-    noun2(ekstrakjøring,extrabus).   
+    noun2(ekstrakjÃ¸ring,extrabus).   
     noun2(fotballbuss,extrabus).  
     noun2(gratisbuss,extrabus).  
     noun2(helsebuss,extrabus).    
@@ -14502,7 +14504,7 @@ noun2(evne,ability).
 % noun2(f 
 
 noun2(font,font).   
-    noun2(fontstørrelse,font). %% rough 
+    noun2(fontstÃ¸rrelse,font). %% rough 
 
 noun2(forsker,researcher). %% TA-110204 .. scientist
 
@@ -14587,9 +14589,9 @@ noun2(holdeplass,station).          % Fronted as official name
     noun2(hopldplass,station).  
     noun2(hopldeplass,station).     %%
     noun2(hpldeplass,station).      %%  own
-    noun2(håldeplass,station).  
-    noun2(hållplass,station).   
-    noun2(håldeplass,station).  
+    noun2(hÃ¥ldeplass,station).  
+    noun2(hÃ¥llplass,station).   
+    noun2(hÃ¥ldeplass,station).  
     noun2(joldeplass,station).      %% own sp
     noun2(perrong,station).         %% Rough
     noun2(perong,station).          %% Rough
@@ -14603,7 +14605,7 @@ noun2(import,import).
 
 noun2(stabilitet,stability). %% opposite error 
 
-noun2(stasjon,station). %% hvilken stasjoner finnes på huseby 
+noun2(stasjon,station). %% hvilken stasjoner finnes pÃ¥ huseby 
     
     noun2(busstasjon,station). 
     noun2(bustop ,  station).  
@@ -14670,7 +14672,7 @@ noun2(rute,route).    % NB ambiguous
     noun2(linje,   route).      %% sometimes they mean the route
     noun2(lnje,    route).      %% sp 
     noun2(linjenummer,route). 
-    noun2(kjørerute,  route). 
+    noun2(kjÃ¸rerute,  route). 
     noun2(kurs,   route).    
     noun2(line,    route).  
     noun2(melkerute,  route).      %%:-)
@@ -14710,25 +14712,25 @@ noun2(bussrute,route).      %% Prefer this one (bussrute for buss 5)
 
 
 noun2(ruteplan, route_plan). %% abstract, not a vehicle
-    noun2(busskjøring, route_plan). 
+    noun2(busskjÃ¸ring, route_plan). 
     noun2(busstilbud,  route_plan). 
     noun2(busstrafikk, route_plan).
     noun2(bustrafik,route_plan).   %% etc
-    noun2(busskjøring, route_plan). 
+    noun2(busskjÃ¸ring, route_plan). 
     noun2(busstilbud,  route_plan). 
     noun2(busstrafikk, route_plan).
     noun2(bustrafik,route_plan).   %% etc
     noun2(rutevariant,route_plan). 
     noun2(tidtabell,route_plan).  %% ambiguous  tidtabell om avganger
 
-%     noun2(rute,route_plan).       %%  ( Ambiguous !) NO! 36 -> route_plan  %% Må stå etter route
+%     noun2(rute,route_plan).       %%  ( Ambiguous !) NO! 36 -> route_plan  %% MÃ¥ stÃ¥ etter route
 %     noun2(rutetid,route_plan).    %%  ( Ambiguous !) 
 
-    noun2(lørdagskjøring, route_plan). %% rough ad hoc
+    noun2(lÃ¸rdagskjÃ¸ring, route_plan). %% rough ad hoc
     
     noun2(ruteformat,route_plan). %% rough ad hoc %% TA-110426
 
-    noun2(søndagskjøring, route_plan). %% rough ad hoc 
+    noun2(sÃ¸ndagskjÃ¸ring, route_plan). %% rough ad hoc 
   
 noun2(alternativ,way). %% alternative). 
 
@@ -14742,14 +14744,14 @@ noun2(bybuss,bus).
 
 noun2(ferge,boat).
     noun2(bat,boat). 
-    noun2(båt,boat).  
+    noun2(bÃ¥t,boat).  
        noun2(bot,boat). %% fine ?
-    noun2(bæt,boat).  
+    noun2(bÃ¦t,boat).  
     noun2(baat,boat).  
-%     noun2(båtrute,boat). %% confuse with brp 
-    noun2(båtforbindelse,boat). 
-    noun2(båtskyss,boat). 
-    noun2(ekspressbåt,boat).
+%     noun2(bÃ¥trute,boat). %% confuse with brp 
+    noun2(bÃ¥tforbindelse,boat). 
+    noun2(bÃ¥tskyss,boat). 
+    noun2(ekspressbÃ¥t,boat).
     noun2(ferje,boat). 
     noun2(hurtigrute,boat).
     noun2(kystbuss,boat). 
@@ -14812,7 +14814,7 @@ noun2(del,part).
     
 noun2(detalj,detail). %% rough
 
-noun2(reisemål,destination).
+noun2(reisemÃ¥l,destination).
     noun2(avstigningsholdeplass,destination).
     noun2(bestemmelsessted,destination). 
     noun2(destinasjon,destination). 
@@ -14835,13 +14837,13 @@ noun2(dialog,dialogue).          %%  Eng. spell.
 noun2(diesel,oil).               %%  ( rather ako oil)
 noun2(direkterute,directroute). 
 noun2(dokument,document).  
-noun2(domene,domain).            %%  Område abstract
+noun2(domene,domain).            %%  OmrÃ¥de abstract
 
 noun2(drift,operation). %% i drift
     noun2(operasjon,operation). 
     noun2(funksjonalitet,operation). %% rough ..
     noun2(vedlikehold,operation). %% rough .. 
-    noun2(virkemåte,operation).   %% rough 
+    noun2(virkemÃ¥te,operation).   %% rough 
 
 noun2(drink,drink).  
 noun2(drikk,drink).     %% e.g. beer 
@@ -14852,12 +14854,12 @@ noun2(drivstoff,fuel).
 
 noun2(dyr,animal).  %% also expensive 
     noun2(husdyr,animal).
-    noun2(kjæledyr,animal). 
-noun2(døgn,day). 
-    noun2(driftsdøgn,day). %% rough
-noun2(døgndel,daypart).             %%  Internal
-    noun2(dør, door).  %% Experiment   Døra -> Dora *
-    noun2(dørr, door). %% Dialect 
+    noun2(kjÃ¦ledyr,animal). 
+noun2(dÃ¸gn,day). 
+    noun2(driftsdÃ¸gn,day). %% rough
+noun2(dÃ¸gndel,daypart).             %%  Internal
+    noun2(dÃ¸r, door).  %% Experiment   DÃ¸ra -> Dora *
+    noun2(dÃ¸rr, door). %% Dialect 
 
 noun2(egenskap,property).  
 
@@ -14968,7 +14970,7 @@ noun2(ferje,boat).
 noun2(ferge,boat).
 
 noun2(ferjerute,boat_route_plan). 
-    noun2(båtrute,boat_route_plan). %%
+    noun2(bÃ¥trute,boat_route_plan). %%
 
 noun2(ferie,vacation).       %%  (not holiday). Techn. term
     noun2(ferieruter,vacation). 
@@ -14977,13 +14979,13 @@ noun2(ferie,vacation).       %%  (not holiday). Techn. term
     noun2(vinterferie,vacation).  
     noun2(vinterferieruter,vacation). %% ?
     noun2(vinterferieuke,vacation).
-    noun2(vårferie,vacation).  
+    noun2(vÃ¥rferie,vacation).  
     noun2(sommerferieferie,vacation).  
-    noun2(høstferie,vacation).  
+    noun2(hÃ¸stferie,vacation).  
 
 noun2(feil,error).
     noun2(avvik,error).  
-    noun2(bug,error).           %% NB skal ikke bøyes som subst.// buger*
+    noun2(bug,error).           %% NB skal ikke bÃ¸yes som subst.// buger*
     noun2(driftsforstyrrelse,error).  
     noun2(feiltagelse,error).  
     noun2(feilrapport,error).   %% rough 
@@ -15078,19 +15080,19 @@ noun2(flyplass,airport).
 noun2(forfalskning,forgery).
 
 noun2(forhold,condition). 
-    noun2(bymiljø,condition).  
+    noun2(bymiljÃ¸,condition).  
     noun2(forutsetning,condition).  %% TA-110426
     noun2(infrastruktur,condition). 
-    noun2(miljø,condition). 
+    noun2(miljÃ¸,condition). 
     noun2(omstendighet,condition). 
-    noun2(vilkår,condition).         %% TA-110426
+    noun2(vilkÃ¥r,condition).         %% TA-110426
 
 noun2(forbindelse,connection). %%  (Overgang)
     noun2(forbindeles,connection).  %% own 
     noun2(samband,connection).
     noun2(tilknytning,connection). 
     noun2(tilknyttning,connection).
-    noun2(tråd,connection).    %% holde tråden %%  rough
+    noun2(trÃ¥d,connection).    %% holde trÃ¥den %%  rough
     noun2(videreforbindelse,connection). 
 
 noun2(forbindelse,bus).   %%          
@@ -15100,7 +15102,7 @@ noun2(foreldre,parent).
 
 noun2(forestilling,show). 
 noun2(forfatter,author).  
-noun2(forgårs,day_before_yesterday).
+noun2(forgÃ¥rs,day_before_yesterday).
 
 noun2(forhold,relation).  
 
@@ -15127,9 +15129,9 @@ noun2(fornavn,firstname).
     noun2(frokost,morning).      %% ( "after breakfast")
     noun2(frokosttid,morning).   %% NB i frokosttid = i morgen ???
     noun2(frukost,morning).      %% NN
-    noun2(føremiddag,morning).   %% NN 
-    noun2(førmiddag,morning).    %%
- %%    noun2(mjølketid,morning). %% amb
+    noun2(fÃ¸remiddag,morning).   %% NN 
+    noun2(fÃ¸rmiddag,morning).    %%
+ %%    noun2(mjÃ¸lketid,morning). %% amb
 
 noun2(forside,front). 
 
@@ -15139,7 +15141,7 @@ noun2(forsinkelse,delay).
     noun2(bussforsinkelse,delay).
     noun2(forsenking,delay).      %%  NN
     noun2(forsinkelsestid,delay). 
-    noun2(kø,delay).              %% ( rough)
+    noun2(kÃ¸,delay).              %% ( rough)
 %     noun2(ventetid,delay). 
 
     noun2(tidligankomst,earlyarrival). %% Techn
@@ -15147,9 +15149,9 @@ noun2(forsinkelse,delay).
 %% noun2(forslag,proposal). %% noun3 %% to forslag  NB oppfordring er m 
     noun2(oppfordring,proposal). %% question). 
 
-noun2(forståelse,understanding). 
+noun2(forstÃ¥else,understanding). 
 
-noun2(forsøk,attempt). 
+noun2(forsÃ¸k,attempt). 
 
 noun2(fortid,past). 
 noun2(forvei,advance). %% tech. i forveien 
@@ -15180,20 +15182,20 @@ noun2(funksjonshemmede,handicapped). %% inflection as for ADJ
    noun2(bevegelseshemmede,handicapped). 
    noun2(bevegelseshemmet,handicapped). 
    noun2(bevegelseshemmete,handicapped). 
-   noun2(døvblind,handicapped). 
-   noun2(døvblinde,handicapped). 
+   noun2(dÃ¸vblind,handicapped). 
+   noun2(dÃ¸vblinde,handicapped). 
    noun2(funksjonshemmet,handicapped). 
    noun2(funksjonshemmete,handicapped). 
    noun2(handicapped,handicapped).   
    noun2(handicappede,handicapped).  %%  adj/noun flex
    noun2(handicaped,handicapped). 
-   noun2(ufør,handicapped). %% plu
-   noun2(uføre,handicapped). %% plu
-   noun2(uføretrygdede,handicapped). 
+   noun2(ufÃ¸r,handicapped). %% plu
+   noun2(ufÃ¸re,handicapped). %% plu
+   noun2(ufÃ¸retrygdede,handicapped). 
 
 
 noun2(fylke,county).
-noun2(følelse,feeling).      %%  (Meta)
+noun2(fÃ¸lelse,feeling).      %%  (Meta)
    noun2(affekt,feeling). 
 
 %% noun2(g 
@@ -15204,7 +15206,7 @@ noun2(gang,time_count).      %%  ( Norwagism, how many times )
     %%    noun2(gang,trip).     %% togets gang  ? %% TA-110511
 
 noun2(gangavstand,walking_distance). 
-   noun2(gåavstand,walking_distance).
+   noun2(gÃ¥avstand,walking_distance).
 
 noun2(gangtid,walking_time). %% TA-110419
 
@@ -15255,14 +15257,14 @@ noun2(gutt,boy).
 
 noun2(gyldighet,validity). %% application? 
 
-noun2(gåte,problem). %% "gate" %% TA-110708
+noun2(gÃ¥te,problem). %% "gate" %% TA-110708
 
 %% noun2(h 
 
 
 noun2(halvtime,halfhour). 
    noun2(halltime,halfhour). %% spiw
-noun2(halvår,halfyear). 
+noun2(halvÃ¥r,halfyear). 
 noun2(hastighet,speed).
     noun2(busshastighet,speed). 
     noun2(fart,speed). 
@@ -15286,7 +15288,7 @@ noun2(hendelse,event).
    noun2(episode,event).     
    noun2(hendelse,event).       %% ?
 
-noun2(hendelsesforløp,coevent).  %%
+noun2(hendelsesforlÃ¸p,coevent).  %%
 
 noun2(hensyn,consideration). 
 
@@ -15294,7 +15296,7 @@ noun2(henvisning,reference).
     noun2(peker,reference).  
 
 noun2(hest,horse). 
-    noun2(hæst,horse).
+    noun2(hÃ¦st,horse).
 
 
 noun2(hestekrefter,horsepower). %%  lazy:   hestekreft(er))
@@ -15302,8 +15304,8 @@ noun2(hestekrefter,horsepower). %%  lazy:   hestekreft(er))
 
 noun2(hjelp,help).            %% ( hazardous ?)
     noun2(guide,help).     %% TA-110724
-    noun2(støtte,help).    %% TA-110701
-%%    noun2(hjælp,help).   %% syn 
+    noun2(stÃ¸tte,help).    %% TA-110701
+%%    noun2(hjÃ¦lp,help).   %% syn 
 
 noun2(hjem,home). 
 %% noun2(hjul,wheel). %% noun3
@@ -15315,12 +15317,12 @@ noun2(hovedstad,capital).
 noun2(hukommelse,memory). 
     noun2(hukomelse,memory). %%  spc
     noun2(minne,memory). 
-noun2(humør,humour).           %% :-)
+noun2(humÃ¸r,humour).           %% :-)
    noun2(humor,humour).        %% TA-110114
 
 noun2(hund,dog).             %% (actual, avoids hund = Lund)
     noun2(bikkje,dog). 
-    noun2(førerhund,dog).    % rough 
+    noun2(fÃ¸rerhund,dog).    % rough 
     noun2(politihund,dog).   %
 
 %% noun2(hurtigrute,boat).  %% shadows Pirterminalen
@@ -15352,8 +15354,8 @@ noun2(helligdag,holiday).     %%  NOT SUNDAY
     noun2(rutehellidag,holiday).  
     noun2(rutehelligdag,holiday).  
     noun2(rutehellogdag,holiday). %% sp
-    noun2(rødag,holiday).  %% sp
-    noun2(røddag,holiday). %% sp
+    noun2(rÃ¸dag,holiday).  %% sp
+    noun2(rÃ¸ddag,holiday). %% sp
 
 noun2(hilsen,greeting).       %% IDIOM ?
    noun2(hilsn,greeting). %% -> hilsner
@@ -15368,14 +15370,14 @@ noun2(historie,story).
 
 noun2(holdeplasstid,departure). %% (SIC)
 
-noun2(hurtigbåt,boat).
+noun2(hurtigbÃ¥t,boat).
 noun2(hverdag,weekday). 
     noun2(arbeidsdag,weekday).
     noun2(hverdagsmorgen,weekday). %%  ( OR morning ?)
-    noun2(hværdag,weekday).  
+    noun2(hvÃ¦rdag,weekday).  
     noun2(reisehverdag,weekday). %% rough
     noun2(virkedag,weekday). 
-    noun2(værdag,weekday).
+    noun2(vÃ¦rdag,weekday).
 
 noun2(hverdagsrute,workdayroute).   %% 
    noun2(hverdagsbuss,workdayroute).
@@ -15383,21 +15385,21 @@ noun2(hverdagsrute,workdayroute).   %%
    noun2(verdagsrute,workdayroute). 
 
 
-noun2(høst,autumn). 
+noun2(hÃ¸st,autumn). 
     noun2(haust,autumn). 
-noun2(høyde,height). 
+noun2(hÃ¸yde,height). 
 
 
-noun2(høytidsdag,holiday). %% not just sunday ?????
-    noun2(høytid,holiday).
+noun2(hÃ¸ytidsdag,holiday). %% not just sunday ?????
+    noun2(hÃ¸ytid,holiday).
 
-noun2(hånd,hand). 
-    noun2(hånd,hand).
+noun2(hÃ¥nd,hand). 
+    noun2(hÃ¥nd,hand).
 
-noun2(håndtering,management). %% handling?
+noun2(hÃ¥ndtering,management). %% handling?
     noun2(disponering,management).
 
-noun2(håp,hope). %% haz ? 
+noun2(hÃ¥p,hope). %% haz ? 
 
 %% noun2(i 
 
@@ -15439,7 +15441,7 @@ noun2(informasjon,information).
     noun2(tips,information). 
     noun2(prognose,information).  %% ? %% TA-101117
 
-noun2(innføring,introduction). 
+noun2(innfÃ¸ring,introduction). 
 
 noun2(integrering,integration).  
    noun2(integrasjon,integration). 
@@ -15465,7 +15467,7 @@ noun2(htc,smartphone).     %% rough
 
 noun2(ironi,irony). 
 
-noun2(iskrem,icecream).  %% pizza, etc %%  spise på buss
+noun2(iskrem,icecream).  %% pizza, etc %%  spise pÃ¥ buss
     noun2(is,icecream).
 
 %% noun2(j 
@@ -15499,12 +15501,12 @@ noun2(julerute,christmasroute).         %% _
    noun2(juletabell,christmasroute). 
    noun2(juleurte,christmasroute).  
    noun2(julerurte,christmasroute).     %% 
-   noun2(nyttårsrute,christmasroute).   %%  (Rough)
+   noun2(nyttÃ¥rsrute,christmasroute).   %%  (Rough)
 
 
 %% noun2(k 
 
-noun2(klær,clothing). %% plu 
+noun2(klÃ¦r,clothing). %% plu 
 
 noun2(konsistens,consistency). %% riktighet %% TA-110707
 
@@ -15520,7 +15522,7 @@ noun2(kort,card).  %% collides with Kort tid etter
     noun2(flerdagskort,card). 
     noun2(frikort,card).
     noun2(fylkeskort,card). 
-    noun2(førerkort,card).  %% rough 
+    noun2(fÃ¸rerkort,card).  %% rough 
     noun2(klippekort,card).           %% (Rough, but so is answer (no info)  etc
     noun2(kredittkort,card).
     noun2(kortterminal,card). %% rough
@@ -15530,14 +15532,14 @@ noun2(kort,card).  %% collides with Kort tid etter
     noun2(kvantumsklippekort,card). 
     noun2(mastercard,card). 
     noun2(masterkort,card).  
-    noun2(månadskort,card). 
-    noun2(månedskort,card). 
-    noun2(måneskort,card). 
-    noun2(månedsmerke,card).  
-    noun2(måndesmerke,card). 
-    noun2(månesmerke,card).   
-    noun2(måndedskort,card).  
-    noun2(halvmånedskort,card). 
+    noun2(mÃ¥nadskort,card). 
+    noun2(mÃ¥nedskort,card). 
+    noun2(mÃ¥neskort,card). 
+    noun2(mÃ¥nedsmerke,card).  
+    noun2(mÃ¥ndesmerke,card). 
+    noun2(mÃ¥nesmerke,card).   
+    noun2(mÃ¥ndedskort,card).  
+    noun2(halvmÃ¥nedskort,card). 
     noun2(oblat,card). %% rough 
     noun2(periodekort,card).  
     noun2(pluz,card).  
@@ -15550,20 +15552,20 @@ noun2(kort,card).  %% collides with Kort tid etter
     noun2(skolekort,card).          
     noun2(studentbusskort,card).    
     noun2(studentkort,card).  
-    noun2(studentmånedskort,card). 
+    noun2(studentmÃ¥nedskort,card). 
     noun2(trondheimkort,card). 
     noun2(trondheimskort,card). 
-    noun2(studentmånedskort,card). 
+    noun2(studentmÃ¥nedskort,card). 
     noun2(tkort,card).  
     noun2(tilleggskort,card).   
     noun2(ungdomskort,card).          %% (Rough, but so is answer)
     noun2(ungdommskort,card). 
-    noun2(ungdomsmånedskort,card). 
+    noun2(ungdomsmÃ¥nedskort,card). 
     noun2(universalkort,card).
     noun2(visacard,card). 
     noun2(visakort,card).
-    noun2(økonomikort,card). 
-    noun2(årskort,card). 
+    noun2(Ã¸konomikort,card). 
+    noun2(Ã¥rskort,card). 
     noun2(bankkort,card). % not bus cards
     noun2(visakort,card). 
 
@@ -15687,8 +15689,8 @@ noun2(kino,cinema).
 noun2(kmt,kmh).  
 
 noun2(kjekken,sweetheart). %% :-) %% ?
-    noun2(søten,sweetheart).  %%   
-%   noun2(søta,sweetheart). %% TA-110309 Busstuc er mann :-)
+    noun2(sÃ¸ten,sweetheart).  %%   
+%   noun2(sÃ¸ta,sweetheart). %% TA-110309 Busstuc er mann :-)
 
 noun2(kopi,copy). 
 
@@ -15702,7 +15704,7 @@ noun2(kompliment,compliment).
 
 noun2(kone,wife). 
    noun2(kjerring,wife). 
-   noun2(kjærring,wife). 
+   noun2(kjÃ¦rring,wife). 
 noun2(konge,king).  
 %%     noun2(kong,king). %% confuse kong inges gate 
 noun2(konsert,concert). 
@@ -15712,14 +15714,14 @@ noun2(konto,account).
     noun2(kontonummer,account).    %%
 noun2(kontroll,control).  
     noun2(billettkontroll,control).
-noun2(kontrollør,inspector).  
+noun2(kontrollÃ¸r,inspector).  
 
 
-noun2(kjøpesenter,supermarket). 
-noun2(kjøretid,departure).
-noun2(kjøretøy,vehicle).
+noun2(kjÃ¸pesenter,supermarket). 
+noun2(kjÃ¸retid,departure).
+noun2(kjÃ¸retÃ¸y,vehicle).
     noun2(befraktningsmiddel,vehicle). 
-    noun2(befraktningsmåte,vehicle).  
+    noun2(befraktningsmÃ¥te,vehicle).  
     noun2(vagn,vehicle).  %% Isl
     noun2(fremkomstmiddel,vehicle). 
     noun2(framkomstmiddel,vehicle).
@@ -15729,7 +15731,7 @@ noun2(kjøretøy,vehicle).
     noun2(vogn,vehicle). 
     noun2(vongn,vehicle).    %% sp
 %%     noun2(nr,vehicle).   
-%%     noun2(nummer,vehicle). %% nr 5 fra nth går EXPERIMENT
+%%     noun2(nummer,vehicle). %% nr 5 fra nth gÃ¥r EXPERIMENT
                               %% buss har nummer 8
 noun2(kortleser,card_reader). %% t-kort
     %% noun2(leser,card_reader). %% haz?    
@@ -15746,8 +15748,8 @@ noun2(land,country).
     naun2(nasjon, country).
     noun2(rike,   country). 
 
-noun2(landområde,territory). %%  (technical) 
-    noun2(landområde,territory). %
+noun2(landomrÃ¥de,territory). %%  (technical) 
+    noun2(landomrÃ¥de,territory). %
  
 
 noun2(laventrebuss,lowentry_bus). 
@@ -15767,13 +15769,13 @@ noun2(liste,list).
     noun2(listing,list). 
 noun2(liv,life).
     noun2(eksistens,life). 
-    noun2(tilværelse,life).    
+    noun2(tilvÃ¦relse,life).    
 
 noun2(leddbuss,articulated_bus).
 
 noun2(leder,leader).  
     noun2(arbeidsgiver,leader).   
-    noun2(direktør,leader). 
+    noun2(direktÃ¸r,leader). 
     noun2(konsernsjef,leader). 
     noun2(mester,leader).  
     noun2(sjef,leader). 
@@ -15785,8 +15787,8 @@ noun2(ledsager,escort). %%  passenger
 %% noun2(legesenter,healthcenter).  %% generic name
 
 noun2(legitimasjon,identification). 
-   noun2(hønnørbevis,identification).    
-   noun2(honnørlegitimasjon,identification).    
+   noun2(hÃ¸nnÃ¸rbevis,identification).    
+   noun2(honnÃ¸rlegitimasjon,identification).    
    noun2(identifikasjon,identification). 
    noun2(ledsagerbevis,identification).  %%  rough
    noun2(pass,identification).           %% passport
@@ -15818,18 +15820,18 @@ noun2(lunsj,lunchtime).
     noun2(lunch,lunchtime). %%
     noun2(lunsjtid,lunchtime).
 
-noun2(lærer,teacher).    %% tele
+noun2(lÃ¦rer,teacher).    %% tele
 
-noun2(løfte,promise).   
-    noun2(serviceløfte,promise).
+noun2(lÃ¸fte,promise).   
+    noun2(servicelÃ¸fte,promise).
 
-noun2(lørdagsrute,saturdayroute).  %% etc.
-   %%  noun2(lørdagsbuss,saturdayroute).   %%  Hazardous
+noun2(lÃ¸rdagsrute,saturdayroute).  %% etc.
+   %%  noun2(lÃ¸rdagsbuss,saturdayroute).   %%  Hazardous
     noun2(loerdagsrute,saturdayroute). 
-    noun2(lørdagrute,saturdayroute).   
-    noun2(lørdagsavgang,saturdayroute). 
-    noun2(lørdagsrutetabell,saturdayroute).
-noun2(løsning,solution). 
+    noun2(lÃ¸rdagrute,saturdayroute).   
+    noun2(lÃ¸rdagsavgang,saturdayroute). 
+    noun2(lÃ¸rdagsrutetabell,saturdayroute).
+noun2(lÃ¸sning,solution). 
 
 %% noun2(m 
 
@@ -15879,7 +15881,7 @@ noun2(motorsykkel,motorcycle).
 
 noun2(museum,museum). %%  et museum
 
-noun2(møte,meeting).
+noun2(mÃ¸te,meeting).
     noun2(arrangement,meeting).  %%  rough
     noun2(avtale,meeting). 
     noun2(eksamen,meeting).      %%  Rough
@@ -15888,31 +15890,31 @@ noun2(møte,meeting).
     noun2(fest,meeting).         %%  Rough
     noun2(forelesning,meeting).  %%  (with prof :-)
     noun2(forhandling,meeting).  %%  Rough %% negotiation %% TA-110329
-    noun2(fæst,meeting).         %%  Dialect
+    noun2(fÃ¦st,meeting).         %%  Dialect
     noun2(intervju,meeting).
     noun2(jobbintervju,meeting). 
     noun2(julebord,meeting). 
-    noun2(kjøretime,meeting). 
-    noun2(klagemøte,meeting).    
+    noun2(kjÃ¸retime,meeting). 
+    noun2(klagemÃ¸te,meeting).    
     noun2(konferanse,meeting). 
     noun2(konfirmasjon,meeting). 
 %%     noun2(kino,meeting).   %% som begynner %%  nohelp
     noun2(legetime,meeting).  
-    noun2(møtestart,meeting).   
-    noun2(møtetid,meeting).        %% rough
-    noun2(møtetidspunkt,meeting).  %%
+    noun2(mÃ¸testart,meeting).   
+    noun2(mÃ¸tetid,meeting).        %% rough
+    noun2(mÃ¸tetidspunkt,meeting).  %%
     noun2(nachspiel,meeting).  
     noun2(party,meeting).  
 %%     noun2(selskap,meeting). % (bus) company ?
-    noun2(stevnemøte,meeting). 
+    noun2(stevnemÃ¸te,meeting). 
     noun2(trening,meeting). 
     noun2(turnering,meeting).  
     noun2(vorspiel,meeting).  
-    noun2(ærend,meeting). 
-    noun2(ærende,meeting). 
+    noun2(Ã¦rend,meeting). 
+    noun2(Ã¦rende,meeting). 
 
-noun2(møterom,meetingroom). 
-   noun2(møterum,meetingroom). 
+noun2(mÃ¸terom,meetingroom). 
+   noun2(mÃ¸terum,meetingroom). 
 
 %% noun2(n 
 
@@ -15976,20 +15978,20 @@ noun2(nettleser,browser).
 
 noun2(nummer,number).        
     noun2(bussnummer,number).  
-                                %% Hvilket bussnummer går | bussnummeret til bussen
+                                %% Hvilket bussnummer gÃ¥r | bussnummeret til bussen
 %%     noun2(merke,number).  %% bokstav ??? buss merket 1 stopper ikke
 
     noun2(nr,number).  
     noun2(nummerering,nummer). %% Rough 
     noun2(numner,number).      %% TA-110318 neib
 
-% noun2(nummer,bus).            %% nummeret på bus til nardo
+% noun2(nummer,bus).            %% nummeret pÃ¥ bus til nardo
 
 noun2(nyhet,news).  
     noun2(nytt,news). 
 
-noun2(nødvendighet,necessity). 
-noun2(nøkkel,key).  
+noun2(nÃ¸dvendighet,necessity). 
+noun2(nÃ¸kkel,key).  
 
 
 noun2(nettadresse,webaddress). %% TA-101115
@@ -16005,13 +16007,13 @@ noun2(nysgjerrighet,curiosity).
 
 noun2(omforming,transformation).   %% TA-110503
 
-noun2(operatør,operator).
-noun2(oppførsel,behaviour). 
+noun2(operatÃ¸r,operator).
+noun2(oppfÃ¸rsel,behaviour). 
 
 noun2(overgang,transfer). %% TA-100903
-    noun2(overføring,transfer).     
+    noun2(overfÃ¸ring,transfer).     
     noun2(sending,transfer).   %% rough   
-    noun2(overføringskapasitet,transfer). %% rough
+    noun2(overfÃ¸ringskapasitet,transfer). %% rough
     noun2(videresending,transfer).  
 
 noun2(oversettelse,translation).   %% TA-110503
@@ -16071,33 +16073,33 @@ noun2(programmerer,programmer).
 
 
 noun2(prosedyre,procedure). 
-    noun2(framgangsmåte,procedure). 
-    noun2(fremgangsmåte,procedure). 
+    noun2(framgangsmÃ¥te,procedure). 
+    noun2(fremgangsmÃ¥te,procedure). 
 noun2(prosent,percent). 
 
-noun2(pølse,sausage). 
+noun2(pÃ¸lse,sausage). 
    noun2(hamburger,sausage). %% rough 
 
    noun2(chips,chip).     %% special, avoid chipss
 
 noun2(prosjekt,project). 
 
-noun2(påskerute,easterroute).     
+noun2(pÃ¥skerute,easterroute).     
    noun2(payskerute,easterroute).  
-   noun2(påskerut,easterroute).    %% dial 
-   noun2(påaskerute,easterroute).  
-   noun2(påskebussrute,easterroute).  
-   noun2(påskerutetabell,easterroute). 
+   noun2(pÃ¥skerut,easterroute).    %% dial 
+   noun2(pÃ¥askerute,easterroute).  
+   noun2(pÃ¥skebussrute,easterroute).  
+   noun2(pÃ¥skerutetabell,easterroute). 
    
-noun2(påske,easter).  
+noun2(pÃ¥ske,easter).  
    noun2(paaske,easter).
    noun2(poske,easter).    
-   noun2(påskeferie,easter).      %% (Rough, -> must specify date)
-   noun2(påskeperiode,easter).  
-   noun2(påsketrafikken,easter).
-   noun2(påsketid,easter). 
-   noun2(påskeuke,easter). 
-   noun2(påskeveke,easter). 
+   noun2(pÃ¥skeferie,easter).      %% (Rough, -> must specify date)
+   noun2(pÃ¥skeperiode,easter).  
+   noun2(pÃ¥sketrafikken,easter).
+   noun2(pÃ¥sketid,easter). 
+   noun2(pÃ¥skeuke,easter). 
+   noun2(pÃ¥skeveke,easter). 
 
 %% noun2(q 
 
@@ -16140,7 +16142,7 @@ noun2(savant,savant).
    noun2(nerd,savant).
    noun2(nles,savant).   %%  Nat. Lang. Expert System 
    noun2(softbot,savant). %%
-   noun2(spørresystem,savant). %%  e.g. Anna rough 
+   noun2(spÃ¸rresystem,savant). %%  e.g. Anna rough 
    noun2(dialogsystem,savant). %% rough
 
 noun2(sikkerhet,safety). 
@@ -16156,52 +16158,52 @@ noun2(skole,school).  %% Destroy name %% Experiment
 
 noun2(skolebuss,schoolbus).
    noun2(skolerute,schoolbus). 
-noun2(snø,snow).   
-    noun2(skiføre,snow). 
+noun2(snÃ¸,snow).   
+    noun2(skifÃ¸re,snow). 
     noun2(sne,snow). 
-    noun2(snøfall,snow).
+    noun2(snÃ¸fall,snow).
 
-noun2(snøbrøyting,snowploughing).  %% GBR
-    noun2(brøyting,snowploughing).
+noun2(snÃ¸brÃ¸yting,snowploughing).  %% GBR
+    noun2(brÃ¸yting,snowploughing).
 
-noun2(skuddår,leapyear). 
-noun2(søking,search).
-    noun2(søk,search).  
+noun2(skuddÃ¥r,leapyear). 
+noun2(sÃ¸king,search).
+    noun2(sÃ¸k,search).  
 
 
-noun2(søkeord,word). %% rough 
-noun2(østside,eastside).
+noun2(sÃ¸keord,word). %% rough 
+noun2(Ã¸stside,eastside).
 noun2(nordside,northside).
-noun2(sørside,southside). 
+noun2(sÃ¸rside,southside). 
 noun2(vestside,westside).
 
 noun2(standard,standard).
 noun2(stavefeil,spellingerror).   
 
-synword(søndaksrute,søndagsrute). 
+synword(sÃ¸ndaksrute,sÃ¸ndagsrute). 
 
 
-noun2(søndagsrute,sundayroute). 
-%%    noun2(helgedagsrute,holiday).  %% søndag/helligdag
+noun2(sÃ¸ndagsrute,sundayroute). 
+%%    noun2(helgedagsrute,holiday).  %% sÃ¸ndag/helligdag
     noun2(helgerute,sundayroute).     %% Not correct 
-    noun2(søndagrute,sundayroute). 
-    noun2(søndagsavgang,sundayroute). 
-    noun2(søndasrute,sundayroute).  %%  sp/dial
-    noun2(søndagsute,sundayroute).  %% own
+    noun2(sÃ¸ndagrute,sundayroute). 
+    noun2(sÃ¸ndagsavgang,sundayroute). 
+    noun2(sÃ¸ndasrute,sundayroute).  %%  sp/dial
+    noun2(sÃ¸ndagsute,sundayroute).  %% own
 
 noun2(ruter17mai,may17route). 
 
 
-%%     noun2(søndagsbuss,sundayroute). %% Hazard
-noun2(sønn,son).  
-noun2(søsken,relative).            %%  (doesnt matter)
-   noun2(søskenbarn,relative).     %%  (doesnt matter)
+%%     noun2(sÃ¸ndagsbuss,sundayroute). %% Hazard
+noun2(sÃ¸nn,son).  
+noun2(sÃ¸sken,relative).            %%  (doesnt matter)
+   noun2(sÃ¸skenbarn,relative).     %%  (doesnt matter)
 %    noun2(fetter,relative). 
 %    noun2(kusine,relative). 
 
-noun2(søster,sister). 
-   noun2(lillesøster,sister). %% rough
-   noun2(storesøster,sister). %% rough
+noun2(sÃ¸ster,sister). 
+   noun2(lillesÃ¸ster,sister). %% rough
+   noun2(storesÃ¸ster,sister). %% rough
 
 
 noun2(utskrift,printout).    
@@ -16219,7 +16221,7 @@ noun2(epostadresse,mailaddress).
     noun2(mailaddresse,mailaddress).  % spell
 
 
-noun2(formål,meaning).  %% purpose).  %% TA-110607
+noun2(formÃ¥l,meaning).  %% purpose).  %% TA-110607
 noun2(hensikt,meaning). %% purpose).  %%  
 
 
@@ -16258,7 +16260,7 @@ noun2(melding,message).
 
 noun2(mening,meaning). 
     noun2(betydning,meaning).  
-    noun2(formål,meaning).  
+    noun2(formÃ¥l,meaning).  
     noun2(hemmelighet,meaning). 
     noun2(hensikt,meaning). 
     noun2(intensjon,meaning). 
@@ -16270,7 +16272,7 @@ noun2(mening,meaning).
     noun2(menging,meaning). 
     noun2(menning,meaning).  
     noun2(mnging,meaning). 
-    noun2(mål,meaning). 
+    noun2(mÃ¥l,meaning). 
     noun2(opphopning,set).     %% rough 
     noun2(poeng,meaning). 
     noun2(vits,meaning).         %% :-)  joke
@@ -16288,12 +16290,12 @@ noun2(natt,midnight).
 
 % noun2(middagstid,noon).       %%  why???
 noun2(mil,kilometer).           %% I know, but this is only for questions 
-noun2(militære,military). 
-    noun2(militær,military). 
+noun2(militÃ¦re,military). 
+    noun2(militÃ¦r,military). 
     noun2(vernepliktig,military). 
     noun2(vernepliktige,military). 
-    noun2(værnepliktig,military).   %% nominalisert adj
-    noun2(værnepliktige,military).  %% nominalisert adj
+    noun2(vÃ¦rnepliktig,military).   %% nominalisert adj
+    noun2(vÃ¦rnepliktige,military).  %% nominalisert adj
 noun2(minibuss,minibus). 
 noun2(minstetakst,price).
 noun2(minutt,minute).
@@ -16338,8 +16340,8 @@ noun2(mulighet,way).
 %    noun2(tillatelse ,way). 
 
     noun2(opsjon,way).       %% option?
-    noun2(måte,way).           %% fleksibilitet i valg
-    noun2(vis,way).     %% på et vis %% TA-110304
+    noun2(mÃ¥te,way).           %% fleksibilitet i valg
+    noun2(vis,way).     %% pÃ¥ et vis %% TA-110304
 
 noun2(valg,choice).            
     noun2(fleksibilitet,choice).  
@@ -16352,25 +16354,25 @@ noun2(merke,label). %% mark?
 
 noun2(musikk,music). 
 
-noun2(mål,measure).  
-noun2(mål,destination).
+noun2(mÃ¥l,measure).  
+noun2(mÃ¥l,destination).
 
-noun2(måne,moon).
+noun2(mÃ¥ne,moon).
 
-noun2(måned,month). 
-    noun2(månde,month). 
-    noun2(månte,month). 
-noun2(månedsbillett,season_ticket). 
-    noun2(månedsbilett,season_ticket).  %%  mispel
+noun2(mÃ¥ned,month). 
+    noun2(mÃ¥nde,month). 
+    noun2(mÃ¥nte,month). 
+noun2(mÃ¥nedsbillett,season_ticket). 
+    noun2(mÃ¥nedsbilett,season_ticket).  %%  mispel
     noun2(periodebillett,season_ticket). 
 
-%% noun2(månedskort,season_ticket). % card
+%% noun2(mÃ¥nedskort,season_ticket). % card
 %% noun2(periodekort,season_ticket).% card
 
-noun2(måte,way). 
+noun2(mÃ¥te,way). 
     noun2(knep,way). 
     noun2(metode,way). 
-    noun2(måde,way). %% DK 
+    noun2(mÃ¥de,way). %% DK 
     noun2(spor,way). %% ? %% TA-101117 double metonym
 
 noun2(tilfelle,case).
@@ -16407,7 +16409,7 @@ noun2(talegjenkjenning,speech_recognition).
 noun2(tankearbeid,job). %%  rough \+ work
 
 noun2(tosk,fool). %% ?-) 
-    noun2(amatør,fool). 
+    noun2(amatÃ¸r,fool). 
     noun2(domming,fool). 
     noun2(domrian,fool). 
     noun2(duming,fool).  
@@ -16418,7 +16420,7 @@ noun2(tosk,fool). %% ?-)
     noun2(fjols,fool). 
     noun2(fjott,fool).  
     noun2(frekkas,fool). 
-    noun2(gjøk,fool).  
+    noun2(gjÃ¸k,fool).  
     noun2(idiot,fool).
     noun2(mehe,fool).
     noun2(klovn,fool). 
@@ -16433,7 +16435,7 @@ noun2(tosk,fool). %% ?-)
     noun2(tufs,fool). 
     noun2(tullebukk,fool). 
     noun2(tulling ,fool).
-    noun2(tåsk,fool).      %% ?
+    noun2(tÃ¥sk,fool).      %% ?
 
 
 noun2(gjenstand,object). 
@@ -16441,27 +16443,27 @@ noun2(gjenstand,object).
 
 
 noun2(lingvist,linguist).
-noun2(lønn,salary).  
+noun2(lÃ¸nn,salary).  
 
 noun2(olje, oil).         %%  diesel, disel
 
 noun2(omgivelse,environment). 
 
-noun2(område,neighbourhood). 
+noun2(omrÃ¥de,neighbourhood). 
     noun2(bydel,neighbourhood). 
-    noun2(distrikt,neighbourhood).     %%  After område (official name, 
+    noun2(distrikt,neighbourhood).     %%  After omrÃ¥de (official name, 
     noun2(grend,neighbourhood).  %% ??
-    noun2(hjemmeområde,neighbourhood). %%
+    noun2(hjemmeomrÃ¥de,neighbourhood). %%
     noun2(nabolag,neighbourhood). 
-    noun2(nærhet,neighbourhood). %% i nærheten %% TA-101108
+    noun2(nÃ¦rhet,neighbourhood). %% i nÃ¦rheten %% TA-101108
     noun2(omegn,neighbourhood).
-    noun2(ommråde,neighbourhood). 
+    noun2(ommrÃ¥de,neighbourhood). 
     noun2(omrade,neighbourhood). 
-    noun2(omrayde,neighbourhood).  %%  omrÃ¥de 
-    noun2(områdenavn,neighbourhood). 
-    noun2(oråde,neighbourhood).
-%%%     noun2(nærhet,neighbourhood). %% destroys i nærheten av
-    noun2(nærområde,neighbourhood). 
+    noun2(omrayde,neighbourhood).  %%  omrÃƒÂ¥de 
+    noun2(omrÃ¥denavn,neighbourhood). 
+    noun2(orÃ¥de,neighbourhood).
+%%%     noun2(nÃ¦rhet,neighbourhood). %% destroys i nÃ¦rheten av
+    noun2(nÃ¦romrÃ¥de,neighbourhood). 
     noun2(utested,neighbourhood).   %% Rough 
 
 noun2(omvei,way). %% rough
@@ -16476,7 +16478,7 @@ noun2(oppgave,task).
     noun2(hensikt,task).               %%
     noun2(misjon,task).   
 %     noun2(mening,task).              %% confusing  commitments
-    noun2(øving,task). 
+    noun2(Ã¸ving,task). 
 
 noun2(oppdatering,update). %% \+ version 
     noun2(oppdtering,update). %% authentic sperr %% TA-101102
@@ -16500,22 +16502,22 @@ noun2(orakel,oracle).
 
 noun2(ord,word).
     noun2(ordlyd,word). %% rough  
-noun2(ordfører,mayor). 
+noun2(ordfÃ¸rer,mayor). 
     noun2(borgermester,mayor).
     noun2(burgermester,mayor). %% :-) Marvin Wiseth
-noun2(overbærenhet,indulgence).  %%(leniency ?)
+noun2(overbÃ¦renhet,indulgence).  %%(leniency ?)
 noun2(overgang,transfer). %% // i.e. BYTTE AV BUSS
     noun2(bussbytte,transfer). 
     noun2(bussovergang,transfer). 
     noun2(busskifte,transfer). 
     noun2(bussskifte,transfer). 
-%%     noun2(bytte,transfer). %%  (NB Også verb ) kan en bytte?? 
+%%     noun2(bytte,transfer). %%  (NB OgsÃ¥ verb ) kan en bytte?? 
     noun2(bytting,transfer). 
     noun2(gjennomgang,transfer). 
     noun2(mellomstopp,transfer).
     noun2(omstigning,transfer). 
     noun2(overgan,transfer).   %% spc
-    noun2(overang,transfer). %% own, * overan-gaten=øverås_street%% 
+    noun2(overang,transfer). %% own, * overan-gaten=Ã¸verÃ¥s_street%% 
     noun2(overgangsmulighet,transfer).  
     noun2(skifte,transfer).    
     noun2(skifting,transfer). 
@@ -16533,8 +16535,8 @@ noun2(oversikt,overview). %% information).
 
 noun2(passasjer,passenger). 
     noun2(busspassasjer,passenger).  
-    noun2(klager,passenger).  %% misfornøyd sådan 
-    noun2(kunde,passenger).        %% ja, på bussen, ikke på SMS
+    noun2(klager,passenger).  %% misfornÃ¸yd sÃ¥dan 
+    noun2(kunde,passenger).        %% ja, pÃ¥ bussen, ikke pÃ¥ SMS
     noun2(medpassasjer,passenger).
     noun2(passager,passenger). 
     noun2(pasasjer,passenger).     %% spell
@@ -16551,7 +16553,7 @@ noun2(passering,departure).
     noun2(stoppetid,departure).
 
 noun2(penge,money). %%  mange penger=plu
-    noun2(beløp,money). 
+    noun2(belÃ¸p,money). 
     noun2(busspenge,money).
           noun2(inntekt,income).    
     noun2(kontant,money).  
@@ -16562,8 +16564,8 @@ noun2(penge,money). %%  mange penger=plu
     noun2(seddel,money).
     noun2(kronestykke,money). 
 
-    noun2(femtiøre,money). 
-    noun2(femtiøring,money).   %% 
+    noun2(femtiÃ¸re,money). 
+    noun2(femtiÃ¸ring,money).   %% 
 %%     noun2(periode,time). %%moved because of paraphrase (backwards translation)
 
 noun2(person,person). %% NB Used for backwards translation
@@ -16572,14 +16574,14 @@ noun2(person,person). %% NB Used for backwards translation
 %%     noun2(folk,person). %% plu
          noun2(fremmed,person). %% rough 
     noun2(innbygger,person). 
-    noun2(innfødt,person).         %% trønder? 
-    noun2(innfødte,person).        %% 
+    noun2(innfÃ¸dt,person).         %% trÃ¸nder? 
+    noun2(innfÃ¸dte,person).        %% 
     noun2(meneske,person).  
     noun2(menneske,person).        %% Must come after 
     noun2(menneskehet,person).  
     noun2(menneskelig,person).     %% rough
     noun2(mennesklig,person).  
-     noun2(mænniska,person).        %% ? SV  
+     noun2(mÃ¦nniska,person).        %% ? SV  
      noun2(nordmann,person).        %%  :-)  
      noun2(normann,person).  
 %     noun2(passasjer,person).      %% Try with passenger
@@ -16589,8 +16591,8 @@ noun2(person,person). %% NB Used for backwards translation
      noun2(publikum,person).   %% e.g. set of
     
      noun2(nordlending,person).     %%  :-)                           
-     noun2(sørlending,person). 
-     noun2(trønder,person).  
+     noun2(sÃ¸rlending,person). 
+     noun2(trÃ¸nder,person).  
 
 noun2(politi,police).  
 
@@ -16599,13 +16601,13 @@ noun2(politi,police).
 %% Name professor  confuses busstuc   
 noun2(professor,professor):-  %%  tele ...
     user:value(teleflag,true).
-noun2(førsteamanuensis,associate_professor):-
+noun2(fÃ¸rsteamanuensis,associate_professor):-
     user:value(teleflag,true).
 noun2(amanuensis,assistant_professor):-
     user: value(teleflag,true).
 noun2(universitetslektor,lecturer):-
     user: value(teleflag,true).
-noun2(sekretær,secretary):-    
+noun2(sekretÃ¦r,secretary):-    
     user: value(teleflag,true).
 noun2(forsker,researcher):-   
      user: value(teleflag,true). 
@@ -16614,7 +16616,7 @@ noun2(semantikk,semantics).
 noun2(semester,semester). 
 
 
-%% noun2(skriver,printer). %% skjønner du det som du skriver * %%   problem
+%% noun2(skriver,printer). %% skjÃ¸nner du det som du skriver * %%   problem
     noun2(printer,printer). 
 
 %% noun2(prins,prince). %% just to avoid prins -> paris 
@@ -16622,7 +16624,7 @@ noun2(semester,semester).
 
 noun2(pris,price).
     noun2(kostnad,price). 
-    noun2(prisnivå,price). 
+    noun2(prisnivÃ¥,price). 
     noun2(utgift,price). %% TA-110411
 
 noun2(problem,problem). 
@@ -16646,17 +16648,17 @@ noun2(program,program).
 noun2(programmerer,programmer).  
 noun2(programvare,software). 
    noun2(programvaresystem,software). 
-noun2(programmeringsspråk,programminglanguage). 
-    noun2(programeringsspråk,programminglanguage).  %% ( spell )
+noun2(programmeringssprÃ¥k,programminglanguage). 
+    noun2(programeringssprÃ¥k,programminglanguage).  %% ( spell )
 
 %% niun2(r 
 
 noun2(rabatt,discount). 
     noun2(fradrag,discount). 
     noun2(grupperabatt,discount). 
-    noun2(honnørrabatt,discount). 
-    noun2(honørrabatt,discount).
-    noun2(militærrabatt,discount). 
+    noun2(honnÃ¸rrabatt,discount). 
+    noun2(honÃ¸rrabatt,discount).
+    noun2(militÃ¦rrabatt,discount). 
     noun2(moderasjon,discount). 
     noun2(prisduksjon,discount). 
     noun2(rabbat,discount). 
@@ -16689,7 +16691,7 @@ noun2(regionbuss,otherbus).
     noun2(turbuss,otherbus). 
 noun2(regn,rain).  
     noun2(regnfall,rain).  
-    noun2(regnvær,rain). 
+    noun2(regnvÃ¦r,rain). 
 noun2(regning,bill).  
 
 noun2(regtoppeksport,regtop_export). 
@@ -16709,9 +16711,9 @@ noun2(reise,trip). %% journey).
     noun2(ferd,trip). 
     noun2(fisketur,trip). %% very rough
     noun2(forflyttning,trip).    %%  :-)  tni tti ti
-    noun2(kjøring,trip).  
-    noun2(kjøretur,trip).  
-    noun2(langkjøring,trip).  %%  rough
+    noun2(kjÃ¸ring,trip).  
+    noun2(kjÃ¸retur,trip).  
+    noun2(langkjÃ¸ring,trip).  %%  rough
     noun2(omvisning,trip).
   
     noun2(produkt,trip).      %% tkort-produkt
@@ -16730,16 +16732,16 @@ noun2(reise,trip). %% journey).
 
 noun2(reisegaranti,travelinsurance). %% rough
 
-noun2(reisemåte,route). 
+noun2(reisemÃ¥te,route). 
     noun2(reisemate,route).  
 
 noun2(reisetid,traveltime).  % problematic
 noun2(rreisetid,traveltime).  
      noun2(rekord,traveltime).    %%  :-)
-noun2(rekkefølge,sequence). 
+noun2(rekkefÃ¸lge,sequence). 
 noun2(rekvisisjon,requisition). 
  
-noun2(rengjøring,cleaning). 
+noun2(rengjÃ¸ring,cleaning). 
 noun2(reparasjon,repair). 
     noun2(behandling,repair). %%  rough %% TA-101117
 
@@ -16760,12 +16762,12 @@ noun2(rest,rest).
 noun2(restriksjon,restriction). %% TA-110419
 
 noun2(retning,direction). 
-    noun2(kjøreretning,direction). 
+    noun2(kjÃ¸reretning,direction). 
     noun2(rentning, direction).  
     noun2(retnning, direction). 
     noun2(rettning, direction).   
 %%    noun2(retur,    direction).  %% Very Rough
-%%    noun2(tur,      direction).  %% på tur til %% tur    vollabakken \= retning vollabakken
+%%    noun2(tur,      direction).  %% pÃ¥ tur til %% tur    vollabakken \= retning vollabakken
 
 %%    noun2(veg,direction). %% IKKE veien
 %%    noun2(vei,direction). %% 
@@ -16827,13 +16829,13 @@ noun2(ruteplan, route_plan).
    noun2(busstabell,       route_plan). 
    noun2(holdeplasstabell, route_plan). 
    noun2(katalog,          route_plan). 
-   noun2(kjøremønster,     route_plan).
-   noun2(kjøreplan,        route_plan).  
+   noun2(kjÃ¸remÃ¸nster,     route_plan).
+   noun2(kjÃ¸replan,        route_plan).  
    noun2(oversiktsrute,    route_plan). 
    noun2(passeringsoversikt, route_plan).  
 %%    noun2(plan,          route_plan).  % "buss plan"   %% ad hoc \= 
    noun2(reisealternativ,  route_plan).
-   noun2(rudetabell,       route_plan).  %% Sørlandsk 
+   noun2(rudetabell,       route_plan).  %% SÃ¸rlandsk 
    noun2(rutebok,          route_plan).  %% paper?
    noun2(rutedata,         route_plan).  %% data? 
    noun2(sanntidsdata,     route_plan).  %% Rough %% TA-110330
@@ -16860,7 +16862,7 @@ noun2(ruteplan, route_plan).
 
 %%    noun2(veg,      route_plan).  
 %%    noun2(vei,      route_plan). %% veien til Arvid Holme %% telebuster 
-   noun2(vognløp,  route_plan). %% ?
+   noun2(vognlÃ¸p,  route_plan). %% ?
 
 %   noun2(ruteopplysning, route_plan).      %% ==> information
 %   noun2(reiserute,route_plan). %% == route   reiserute om morgenen 
@@ -16870,7 +16872,7 @@ noun2(rutehefte,    timetable). %%  route_plan).  %% paper?   %% = information r
     noun2(hefte,        timetable). 
     noun2(ruteside,     timetable). %%  rough side i rutehefte
 
-noun2(råd,advice).   
+noun2(rÃ¥d,advice).   
 
 
 noun2(severdighet,landmark).    %% 1 ? 
@@ -16879,13 +16881,13 @@ noun2(severdighet,landmark).    %% 1 ?
 noun2(sms,sms).            %%  Short Message System 
 noun2(sol,sun). 
    noun2(solskinn,sun). 
-   noun2(tørke,sun).        %% rough  
+   noun2(tÃ¸rke,sun).        %% rough  
    noun2(vannmangel,sun).  
 
 noun2(spasertur,jog).    %% rough
 %%    noun2(gange,jog).  %% TA-110511
     noun2(joggetur,jog).
-    noun2(løpetur,jog). 
+    noun2(lÃ¸petur,jog). 
 
 
 noun2(spebarn,baby).    %% (free of charge ?)
@@ -16893,8 +16895,8 @@ noun2(spebarn,baby).    %% (free of charge ?)
 
 noun2(spesialbillett, special_ticket).
 
-    noun2(honør,special_ticket).  
-    noun2(honnør,special_ticket).              %%  (?)
+    noun2(honÃ¸r,special_ticket).  
+    noun2(honnÃ¸r,special_ticket).              %%  (?)
     noun2(overgangsbilett,special_ticket).  
     noun2(overgangsbillett,special_ticket).  
     noun2(overgangsbillet,special_ticket). 
@@ -16906,30 +16908,30 @@ noun2(spesialbillett, special_ticket).
     noun2(dagsbillet, special_ticket).  
     noun2(dagsbilett, special_ticket). 
     noun2(dagstur, special_ticket). 
-    noun2(døgnbilet,  special_ticket). 
-    noun2(døgnbillet, special_ticket). 
-    noun2(døgnbilett, special_ticket).
-    noun2(døgnbillett,special_ticket). 
+    noun2(dÃ¸gnbilet,  special_ticket). 
+    noun2(dÃ¸gnbillet, special_ticket). 
+    noun2(dÃ¸gnbilett, special_ticket).
+    noun2(dÃ¸gnbillett,special_ticket). 
     noun2(enhetstakst,special_ticket).  
     noun2(familiebillett,special_ticket).
     noun2(familiebillet,special_ticket).
     noun2(familiebilett,special_ticket). 
     noun2(familiedagbillett,special_ticket). 
     noun2(familiedagsbillett,special_ticket). 
-    noun2(familiedøgnbillett,special_ticket). 
+    noun2(familiedÃ¸gnbillett,special_ticket). 
    
     noun2(heldagsbillett,  special_ticket). %% TA-100905
     noun2(heldagsbilett,   special_ticket). %%
-    noun2(honnørbillett,special_ticket). 
-    noun2(honnørbilett, special_ticket).  
-    noun2(honørbillett, special_ticket).  
-    noun2(honørbilett,  special_ticket).  
-    noun2(honnørbillet, special_ticket).  
-    noun2(honnørbilet,  special_ticket).  
-    noun2(honørbillet,  special_ticket).  
-    noun2(honørbilet,   special_ticket).  
-    noun2(honnørpris,   special_ticket). 
-    noun2(honørpris,     special_ticket). 
+    noun2(honnÃ¸rbillett,special_ticket). 
+    noun2(honnÃ¸rbilett, special_ticket).  
+    noun2(honÃ¸rbillett, special_ticket).  
+    noun2(honÃ¸rbilett,  special_ticket).  
+    noun2(honnÃ¸rbillet, special_ticket).  
+    noun2(honnÃ¸rbilet,  special_ticket).  
+    noun2(honÃ¸rbillet,  special_ticket).  
+    noun2(honÃ¸rbilet,   special_ticket).  
+    noun2(honnÃ¸rpris,   special_ticket). 
+    noun2(honÃ¸rpris,     special_ticket). 
     noun2(midbybillett,  special_ticket). 
     noun2(midtbybillett, special_ticket).  
     noun2(midtbybillet,  special_ticket).  %% spiw
@@ -16957,14 +16959,14 @@ noun2(periode,period).
     noun2(ruteperiode,period).   %% rough
 
 noun2(produsent,producer). 
-    noun2(leverandør,producer). 
+    noun2(leverandÃ¸r,producer). 
 
-noun2(røyk,smoke). 
+noun2(rÃ¸yk,smoke). 
     noun2(snus,smoke).  %% rough //er snusing tillatt i buss?:-) 
     noun2(tobakk,smoke).  
     noun2(sigarett,smoke). 
 
-noun2(røyking,smoking). 
+noun2(rÃ¸yking,smoking). 
 
 
 
@@ -16972,8 +16974,8 @@ noun2(røyking,smoking).
     
 noun2(billettsalg,sale).   %%  rough
     noun2(billettering,sale).  
-    noun2(billettkjøp,sale). 
-    noun2(kjøp,sale).  
+    noun2(billettkjÃ¸p,sale). 
+    noun2(kjÃ¸p,sale).  
     noun2(salg,sale).  
 
 %% noun2(s 
@@ -17015,7 +17017,7 @@ noun2(signal,signal).
     noun2(stoppsignal,signal). 
 
 noun2(sitteplass,seat). 
-    noun2(ståplass,seat).  %% rough   %% TA-100902  %%  ( :-)
+    noun2(stÃ¥plass,seat).  %% rough   %% TA-100902  %%  ( :-)
     noun2(barnesete,seat). %%  Rough
     noun2(benk,seat).      %%  rough (ako) 
     noun2(kapasitet,seat).  
@@ -17025,7 +17027,7 @@ noun2(sitteplass,seat).
 
 noun2(setning,sentence). 
 %%    noun2(setning,statement). %% paraphrase only %% ? 
-    noun2(påstand,sentence).     %% TA-110824
+    noun2(pÃ¥stand,sentence).     %% TA-110824
     noun2(testsetning,sentence). %% rough
     noun2(utsagn,sentence).     %% TA-110824
 
@@ -17043,40 +17045,40 @@ noun2(tilstand,situation). %% hva er kaos -> tilstand
     noun2(situasjon,situation). 
 
 noun2(sitteplass,seat). 
-noun2(sjø,sea).  
-    noun2(innsjø,sea).  %% TA-110105
+noun2(sjÃ¸,sea).  
+    noun2(innsjÃ¸,sea).  %% TA-110105
 
-noun2(sjåfør,driver).  
+noun2(sjÃ¥fÃ¸r,driver).  
     noun2(bussnisse,driver). %% :-)
-    noun2(bussfører,driver).
-    noun2(busfører,driver). 
-    noun2(bussjæfør,driver).
-    noun2(bussjåfør,driver). 
+    noun2(bussfÃ¸rer,driver).
+    noun2(busfÃ¸rer,driver). 
+    noun2(bussjÃ¦fÃ¸r,driver).
+    noun2(bussjÃ¥fÃ¸r,driver). 
     noun2(bussjafor,driver).
     noun2(bussjofor,driver).
-    noun2(bussjåførdame,driver). 
-    noun2(bussjåførherre,driver). 
-    noun2(bussjårør,driver). %% sp
-    noun2(bussjåffør,driver). 
+    noun2(bussjÃ¥fÃ¸rdame,driver). 
+    noun2(bussjÃ¥fÃ¸rherre,driver). 
+    noun2(bussjÃ¥rÃ¸r,driver). %% sp
+    noun2(bussjÃ¥ffÃ¸r,driver). 
     noun2(bussjaafor,driver).  
-    noun2(busssjafør,driver). 
-    noun2(busssjåfør,driver).  
+    noun2(busssjafÃ¸r,driver). 
+    noun2(busssjÃ¥fÃ¸r,driver).  
     noun2(bussjaafoer,driver). %%  ?
-    noun2(bussjafør,driver). 
-    noun2(bussjofør, driver).  
-    noun2(busssjofør, driver).  %%  ? 
+    noun2(bussjafÃ¸r,driver). 
+    noun2(bussjofÃ¸r, driver).  
+    noun2(busssjofÃ¸r, driver).  %%  ? 
     noun2(bussmann, driver).
-    noun2(busssjåfør, driver).
-    noun2(fører, driver). 
-    noun2(konduktør,driver).  %% rough 
-    noun2(sjafør,driver). 
-    noun2(sjaåfør,driver). 
-    noun2(sjofør,driver). 
-    noun2(sjæfør,driver).  
-    noun2(sjøfør,driver). 
-    noun2(sjåør,driver). 
-    noun2(sjåfær,driver).  
-    noun2(sjåfår,driver).  
+    noun2(busssjÃ¥fÃ¸r, driver).
+    noun2(fÃ¸rer, driver). 
+    noun2(konduktÃ¸r,driver).  %% rough 
+    noun2(sjafÃ¸r,driver). 
+    noun2(sjaÃ¥fÃ¸r,driver). 
+    noun2(sjofÃ¸r,driver). 
+    noun2(sjÃ¦fÃ¸r,driver).  
+    noun2(sjÃ¸fÃ¸r,driver). 
+    noun2(sjÃ¥Ã¸r,driver). 
+    noun2(sjÃ¥fÃ¦r,driver).  
+    noun2(sjÃ¥fÃ¥r,driver).  
 
 noun2(slutt,end).  
    noun2(slut,end).  %% ( inc slutet )
@@ -17086,8 +17088,8 @@ noun2(sommer,summer).
     noun2(somar,summer). 
     noun2(sommar,summer). 
     noun2(somer,summer). 
-    noun2(sommerhalvår,summer). 
-    noun2(sommermåned,summer). 
+    noun2(sommerhalvÃ¥r,summer). 
+    noun2(sommermÃ¥ned,summer). 
     noun2(sommertid,summer).  
     noun2(sommmer,summer).  
     noun2(sumar,summer). 
@@ -17110,7 +17112,7 @@ noun2(sommerrute,summerroute).
 noun2(sone,zone).            %%   = takstsone (?)
     noun2(sonegrense,zone). 
     noun2(soneinndeling,zone). 
-    noun2(soneområde,zone). 
+    noun2(soneomrÃ¥de,zone). 
     noun2(sonepris,zone). 
     noun2(sonetakst,zone). 
     noun2(sonetakstgrense,zone). 
@@ -17122,39 +17124,39 @@ noun2(sprit,alcohol). %% illegal
     noun2(alkohol,alcohol).
     noun2(karsk,alcohol). %% local brew 
 
-noun2(språk,language).  
+noun2(sprÃ¥k,language).  
     noun2(dialekt,language). 
-    noun2(dialækt,language). %% dial :-)
-    noun2(morsmål,language). %% TA-110824
-    noun2(målføre,language).  
+    noun2(dialÃ¦kt,language). %% dial :-)
+    noun2(morsmÃ¥l,language). %% TA-110824
+    noun2(mÃ¥lfÃ¸re,language).  
     noun2(spraak, language).
  
-noun2(spøk,joke). 
-    noun2(gjøn,joke). 
+noun2(spÃ¸k,joke). 
+    noun2(gjÃ¸n,joke). 
 
-noun2(spørsmål,question).  
-    noun2(bussavgangsspørsmål,question). %% etc. 
-    noun2(busspørsmål,question). %% etc.
-    noun2(bussspørsmål,question). %% etc. 
-    noun2(bussrutespørsmål,question). %% etc.
+noun2(spÃ¸rsmÃ¥l,question).  
+    noun2(bussavgangsspÃ¸rsmÃ¥l,question). %% etc. 
+    noun2(busspÃ¸rsmÃ¥l,question). %% etc.
+    noun2(bussspÃ¸rsmÃ¥l,question). %% etc. 
+    noun2(bussrutespÃ¸rsmÃ¥l,question). %% etc.
     noun2(foresporsel,question). 
-    noun2(forespørsel,question). 
+    noun2(forespÃ¸rsel,question). 
     noun2(formulering,question). %% Rough 
-    noun2(forspørsel,question).  %% own 
+    noun2(forspÃ¸rsel,question).  %% own 
     noun2(henvendelse,question). 
     noun2(kommando,question). %% Rough 
     noun2(oppfordring,question). %% reguest 
-    noun2(orakelspørsmål,question). 
-    noun2(rutespørsmål,question). 
+    noun2(orakelspÃ¸rsmÃ¥l,question). 
+    noun2(rutespÃ¸rsmÃ¥l,question). 
     noun2(sporsmal,question). 
     noun2(sporsmaal,question). 
-    noun2(sprøsmål,question).  
-    noun2(spørgsmål,question). 
-    noun2(spørsmaal,question). 
-    noun2(spørmål,question).  
-    noun2(spørring,question). 
-    noun2(spøsmål,question).  
-    noun2(spøsrmål,question).  
+    noun2(sprÃ¸smÃ¥l,question).  
+    noun2(spÃ¸rgsmÃ¥l,question). 
+    noun2(spÃ¸rsmaal,question). 
+    noun2(spÃ¸rmÃ¥l,question).  
+    noun2(spÃ¸rring,question). 
+    noun2(spÃ¸smÃ¥l,question).  
+    noun2(spÃ¸srmÃ¥l,question).  
  
 
 noun2(start,start).   
@@ -17171,7 +17173,7 @@ noun2(gyldighetsdato,stopdate). %% more relevant than start date
 noun2(startsted,startingpoint). %%  starting point
     noun2(utgangspunkt,startingpoint).
     noun2(frasted,startingpoint).
-    noun2(påstigningsholdeplass,startingpont). %% Techn 
+    noun2(pÃ¥stigningsholdeplass,startingpont). %% Techn 
 
 
 noun2(statistikk,statistics).
@@ -17196,12 +17198,12 @@ noun2(plass,seat).  %% after noun2(plass,place).
 
 %% noun2(stein,stone). 
 
-noun2(stempel,stamp). %% på busskort
+noun2(stempel,stamp). %% pÃ¥ busskort
 
 noun2(stopp,station).  
     noun2(stop,station).  
 
-    noun2(ståpp,station).  
+    noun2(stÃ¥pp,station).  
 noun2(stoppested,station). 
     noun2(stoppsted,station). 
 noun2(strategi,strategy). 
@@ -17212,7 +17214,7 @@ noun2(streik,strike).
 noun2(strekning,distance). 
     noun2(bussrutestrekning,distance).
     noun2(rutestrekning,distance). 
-noun2(strøk,neighbourhood). 
+noun2(strÃ¸k,neighbourhood). 
 noun2(synspunkt,opinion). 
 
 noun2(student,student). 
@@ -17223,7 +17225,7 @@ noun2(suksess,success).
 
 noun2(styre,board). %%  ? 
 
-noun2(størrelse,size). 
+noun2(stÃ¸rrelse,size). 
 noun2(svar,answer).  
     noun2(scar,answer).          %% own
     noun2(orakelsvar,answer).
@@ -17237,7 +17239,7 @@ noun2(svar,answer).
 %%     noun2(svartid,answer).   
     noun2(svarstrategi,answer).  %% rough
 
-noun2(svømmebasseng,swimmingpool). 
+noun2(svÃ¸mmebasseng,swimmingpool). 
 
 %% noun2(sykehus,hospital).       %% sykehuset st olav//noinfo
     noun2(klinikk,hospital).   %%
@@ -17297,7 +17299,7 @@ noun2(teknologi,technology).
 
 noun2(tekst,text). 
     noun2(korpus,text).
-    noun2(skrivemåte,text). %% rough
+    noun2(skrivemÃ¥te,text). %% rough
     noun2(text,text). %% Angl
 
 
@@ -17333,8 +17335,8 @@ noun2(telefontype,phonetype).
 % noun2(terminal,endstation). % ST    %%  (terminal is a better word)
 
 noun2(test,test).  
-    noun2(prøve,test).         %%  kolliderer med Prøven som tidl. stasjon
-    noun2(prøving,test).  
+    noun2(prÃ¸ve,test).         %%  kolliderer med PrÃ¸ven som tidl. stasjon
+    noun2(prÃ¸ving,test).  
     noun2(eksamen,test).  
     noun2(kontroll,test).    
     noun2(kvalitetskontroll,test).  %%
@@ -17344,7 +17346,7 @@ noun2(test,test).
 
 noun2(tid,time).
     noun2(bustid,time).   
-    noun2(busstid,time).    %% departure   %% til hvilke busstider går 5a
+    noun2(busstid,time).    %% departure   %% til hvilke busstider gÃ¥r 5a
     noun2(intervall,time).
     noun2(mellomtid,time).      %% rough
 %%     noun2(periode,time).     %%  NB after tid because of paraphrase
@@ -17378,11 +17380,11 @@ noun2(time,hour).
    noun2(tilme,hour). % ?
 
 noun2(ting,thing). 
-   noun2(affære,thing).  %% rough 
+   noun2(affÃ¦re,thing).  %% rough 
    noun2(emne,thing).   
    noun2(greie,thing).  
    noun2(sak,thing).              %%  After ting (paraphrase) 
-   noun2(selvfølgelighet,thing).  %% deep,rough (except buses), that's  what TUC knows
+   noun2(selvfÃ¸lgelighet,thing).  %% deep,rough (except buses), that's  what TUC knows
    noun2(stykke,thing).           %% personer/biter/ 
    noun2(tema,thing).     
 
@@ -17416,7 +17418,7 @@ noun2(tog,train).
 /* confuse  with no message   
 noun2(togstasjon,railwaystation).
    noun2(togholdeplass,railwaystation). 
-   noun2(tågstasjon,railwaystation).
+   noun2(tÃ¥gstasjon,railwaystation).
    noun2(jernbanestopp,railwaystation).
 */
  
@@ -17427,13 +17429,13 @@ noun2(topp,top).  %%  toppen av veien
 
 
 noun2(trafikk,traffic). 
-    noun2(belegg,traffic).  %% høyt belegg = lite plass 
-    noun2(bussrutekjøring,traffic). 
+    noun2(belegg,traffic).  %% hÃ¸yt belegg = lite plass 
+    noun2(bussrutekjÃ¸ring,traffic). 
     noun2(kollektivtrafikk,traffic).   
     noun2(kollektivtransport,traffic).  
-    noun2(oppdragskjøring,traffic).
-    noun2(rutekjøring,traffic). 
-    noun2(skolekjøring,traffic). 
+    noun2(oppdragskjÃ¸ring,traffic).
+    noun2(rutekjÃ¸ring,traffic). 
+    noun2(skolekjÃ¸ring,traffic). 
     noun2(traffik,traffic). 
     noun2(traffikk,traffic).
     noun2(trafik,traffic).   %% SWE
@@ -17451,13 +17453,13 @@ noun2(trapp,stair). %% stairs trapper
 noun2(trase,trace). 
     noun2(busstrase,trace). 
     noun2(hovedtrase,trace).
-    noun2(kjøretrase,  trace). 
-    noun2(tràse,trace).  %%   (illog.)
+    noun2(kjÃ¸retrase,  trace). 
+    noun2(trÃ se,trace).  %%   (illog.)
     noun2(trace,trace).  %% eng
-    noun2(trasé,trace).   
+    noun2(trasÃ©,trace).   
     noun2(trasee,trace).  
     noun2(trasse,trace). 
-    noun2(trasæ,trace).  
+    noun2(trasÃ¦,trace).  
     noun2(rutetrase,trace). 
     noun2(rutetrasee,  trace). 
     noun2(rutetrasse,  trace).
@@ -17512,8 +17514,8 @@ noun2(trykknapp,button).
     noun2(stoppeknapp,button). 
 
 noun2(tull,nonsense). 
-    noun2(tøv,nonsense). 
-    noun2(tøys,nonsense). 
+    noun2(tÃ¸v,nonsense). 
+    noun2(tÃ¸ys,nonsense). 
 
 noun2(tunnel,tunnel). 
     noun2(tunel,tunnel).
@@ -17526,7 +17528,7 @@ noun2(turingtest,turing_test).
 noun2(tv,television).   
    noun2(fjernsyn,tv). 
 
-noun2(tvil,doubt). %% også v imp
+noun2(tvil,doubt). %% ogsÃ¥ v imp
 
 noun2(type,type). 
 
@@ -17538,7 +17540,7 @@ noun2(uhell,accident).
     noun2(bussulykke,accident). 
     noun2(kollisjon,accident).     
     noun2(ulykke,accident).  
-    noun2(kræsj,accident). 
+    noun2(krÃ¦sj,accident). 
     noun2(sammenbrudd,accident). 
 
 noun2(uke,week).  
@@ -17550,7 +17552,7 @@ noun2(uke,week).
 noun2(underholdning,entertainment). 
 
 noun2(undervisning,education).
-    noun2(opplæring,education).
+    noun2(opplÃ¦ring,education).
 
 noun2(ungdom,youth). %% Important distinction child).                 %%  (roughly) ???
 
@@ -17562,10 +17564,10 @@ noun2(univers,universe).
 noun2(universitet,university).
 noun2(ur,  clock). 
 noun2(usannhet,untruth).  %% lie ?
-   noun2(løgn,untruth).   
+   noun2(lÃ¸gn,untruth).   
    noun2(selvmotsigele,untruth). 
 
-noun2(utførelse,implementation). %%  rough
+noun2(utfÃ¸relse,implementation). %%  rough
 
 noun2(utgang,exit). 
     noun2(inngang,entry). 
@@ -17592,7 +17594,7 @@ noun2(vakt,watch).
 noun2(vane,habit).  
    noun2(bussvane,habit). 
 
-noun2(vare,care). %% .. på %% TA-110815
+noun2(vare,care). %% .. pÃ¥ %% TA-110815
 
 noun2(variant,variant).  
 
@@ -17606,13 +17608,13 @@ noun2(varighet,duration).
      noun2(overgangstid,duration).   %% rough 
      noun2(regulering,duration).     %% ad hoc, rough %
      noun2(reguleringstid,duration).  %% 
-     noun2(ståtid,duration).  
+     noun2(stÃ¥tid,duration).  
      noun2(ventetid,duration). %% not forsinkelse
      noun2(venting,duration).  %% rough  
 
 noun2(varsel,notification).  
-   noun2(påminnelse,notification). %%  reminder). 
-   noun2(påminning,notification). %
+   noun2(pÃ¥minnelse,notification). %%  reminder). 
+   noun2(pÃ¥minning,notification). %
    noun2(advarsel,notification).   
    noun2(beskjed,notification).  
    noun2(alarm,notification). 
@@ -17628,12 +17630,12 @@ noun2(verden,world).
     noun2(jord,world). 
     noun2(klode,world).       %% TA-110118
     noun2(utland,world).      %% rough 
-    noun2(værd,world). 
+    noun2(vÃ¦rd,world). 
 
 noun2(verksted,workshop).       %%  (garage?)
 noun2(versjon,version).
 %%     noun2(oppdatering,version).  %% update
-    noun2(forsøksversjon,version). 
+    noun2(forsÃ¸ksversjon,version). 
     noun2(nettversjon,version).     %% rough %% TA-110309
     noun2(instans,version).   
     noun2(oppgradering,version). 
@@ -17654,12 +17656,12 @@ noun2(voksen,adult).             %%  MAIN DEFINITION first !!! (paraphrase)
 %%    noun2(foreldre,adult).        %%    -> parent
 
 noun2(veg,street).  %% STREET is official
-    noun2(avkjøring,street).  %% Rough
+    noun2(avkjÃ¸ring,street).  %% Rough
     noun2(vei,street).  
     noun2(sti,street).   %%  rough 
     noun2(veikryss,street).    %%  rough 
     noun2(kryss,street).       %%  rough %% TA-110825
-    noun2(rundkjøring,street). %%  rough %%
+    noun2(rundkjÃ¸ring,street). %%  rough %%
     
 noun2(vei,way).      %% ? kort vei //nb way after street
 
@@ -17679,7 +17681,7 @@ noun2(venn,friend).
     noun2(veninne,friend).  %%
 
 noun2(venstre,left). 
-noun2(høyre,right). 
+noun2(hÃ¸yre,right). 
 
 noun2(vin,wine). %%  :-)
 
@@ -17694,10 +17696,10 @@ noun2(vinter,winter).
  
 
 noun2(vinterrute,winterroute).  
-    noun2(høsttid,winterroute).  
-    noun2(høstrute,winterroute).   %% not 2001
-    noun2(høsttabell,winterroute). %%  
-    noun2(skoleår,winterroute).    %% rough
+    noun2(hÃ¸sttid,winterroute).  
+    noun2(hÃ¸strute,winterroute).   %% not 2001
+    noun2(hÃ¸sttabell,winterroute). %%  
+    noun2(skoleÃ¥r,winterroute).    %% rough
     noun2(vinterrue,winterroute). 
     noun2(vinterute,winterroute).
     noun2(vinterrrute,winterroute). %%  own 
@@ -17706,35 +17708,35 @@ noun2(vinterrute,winterroute).
 noun2(virus,virus). 
 
 
-noun2(vær,weather).
+noun2(vÃ¦r,weather).
     noun2(blest,weather). 
-    noun2(blæst,weather).
-    noun2(finvær,weather).       %%  (Rough) 
-    noun2(godvær,weather).  
+    noun2(blÃ¦st,weather).
+    noun2(finvÃ¦r,weather).       %%  (Rough) 
+    noun2(godvÃ¦r,weather).  
     noun2(grad,weather).  
-    noun2(gråvær,weather).     
-    noun2(regnvær,weather).   
+    noun2(grÃ¥vÃ¦r,weather).     
+    noun2(regnvÃ¦r,weather).   
     noun2(storm,orkan). 
     noun2(storm,weather). 
     noun2(kuling,weather).  
     noun2(bris,weather).  
-    noun2(styggvær,weather). 
+    noun2(styggvÃ¦r,weather). 
     noun2(temperatur,weather).  
-    nounw(uvær,weather).         %% sic 
+    nounw(uvÃ¦r,weather).         %% sic 
     noun2(vejr,weather).         %% DK ? 
     noun2(ver,weather).          %% Nynorsk
     noun2(vind,weather).
     noun2(vindretning,weather). 
-    noun2(værforhold,weather).   %% TA-100828
-    noun2(værmelding,weather). 
+    noun2(vÃ¦rforhold,weather).   %% TA-100828
+    noun2(vÃ¦rmelding,weather). 
 
-noun2(væske,liquid). 
+noun2(vÃ¦ske,liquid). 
 
-%% noun2(vår,spring).   %% SUSPENDED , ambig 
+%% noun2(vÃ¥r,spring).   %% SUSPENDED , ambig 
 
-noun2(vår,spring).   %% allows vårenen %% TA-110415
+noun2(vÃ¥r,spring).   %% allows vÃ¥renen %% TA-110415
 
-noun2(nyår, spring).  %% nyåret
+noun2(nyÃ¥r, spring).  %% nyÃ¥ret
 
 
 
@@ -17766,50 +17768,50 @@ noun2(postnummer,zip).
 %% noun2(y
 %% noun2(z
 
-noun2(ære,honour).   %% du skal ha ...
+noun2(Ã¦re,honour).   %% du skal ha ...
 
-%% noun2(æ 
+%% noun2(Ã¦ 
 
 
-%% noun2(ø 
+%% noun2(Ã¸ 
 
-noun2(økning,increase).      %% TA-110502
+noun2(Ã¸kning,increase).      %% TA-110502
     noun2(dobling,increase). %%  rough
 
-noun2(øl,beer). %% ?-)
+noun2(Ã¸l,beer). %% ?-)
     noun2(pils,beer). %
-    noun2(øll,beer).  
+    noun2(Ã¸ll,beer).  
 
-noun2(ønske,request). %% a wish  %% TA-101124 // haz, ønsker verb
+noun2(Ã¸nske,request). %% a wish  %% TA-101124 // haz, Ã¸nsker verb
 
-noun2(øre,cent). %% ear). %%  body and coin
-noun2(øring,cent). %% rough (1/100) crown 
+noun2(Ã¸re,cent). %% ear). %%  body and coin
+noun2(Ã¸ring,cent). %% rough (1/100) crown 
 
-noun2(øy,island). %% confuse Øya ? 
-noun2(øyeblikk,moment). 
+noun2(Ã¸y,island). %% confuse Ã˜ya ? 
+noun2(Ã¸yeblikk,moment). 
 
 noun2(hull,interval). %% rough 
-noun2(åpningstid,opening_hours). 
-noun2(år,year). 
+noun2(Ã¥pningstid,opening_hours). 
+noun2(Ã¥r,year). 
     noun2(aar,year).  
-    noun2(årstal,year).   %% NN 
-    noun2(årstall,year). 
+    noun2(Ã¥rstal,year).   %% NN 
+    noun2(Ã¥rstall,year). 
 
-%% noun2(å 
+%% noun2(Ã¥ 
 
-noun2(årsak,cause).   
+noun2(Ã¥rsak,cause).   
    noun2(argument,cause). %% rough 
    noun2(bakgrunn,cause).
    noun2(grunn,cause). 
-   noun2(hovedårsak,cause).
+   noun2(hovedÃ¥rsak,cause).
    noun2(orsak,cause). 
 
 
-noun2(årstid,season). 
+noun2(Ã¥rstid,season). 
 
 % % % %
 
-noun2(mandag,monday).  noun2(måndag,monday). 
+noun2(mandag,monday).  noun2(mÃ¥ndag,monday). 
     noun2(mandagsmorgen,monday). %% Rough  
 noun2(tirsdag,tuesday).    
     noun2(tirsdagsmorgen,tuesday).    
@@ -17822,22 +17824,22 @@ noun2(fredag,friday).
     noun2(fredagsmorgen,friday).      
     noun2(fredagkveld,friday).  %% Rough 
     noun2(fredagskveld,friday). %% Rough 
-noun2(lørdag,saturday).    
+noun2(lÃ¸rdag,saturday).    
     noun2(laurdag,saturday). 
     noun2(lordag,saturday). 
-    noun2(lødag,saturday).  
-    noun2(lørdagsmorgen,saturday). %% Rough (Rough, but adequate) 
-    noun2(lørdagsmorran,saturday). %% 
-    noun2(lørdagskveld,saturday).  %%   splitword
-    noun2(lørdagmorgen,saturday).  %% Rough
-    noun2(lørdagkveld,saturday). 
+    noun2(lÃ¸dag,saturday).  
+    noun2(lÃ¸rdagsmorgen,saturday). %% Rough (Rough, but adequate) 
+    noun2(lÃ¸rdagsmorran,saturday). %% 
+    noun2(lÃ¸rdagskveld,saturday).  %%   splitword
+    noun2(lÃ¸rdagmorgen,saturday).  %% Rough
+    noun2(lÃ¸rdagkveld,saturday). 
 
-noun2(søndagmorgen,sunday).  %% Rough (but works)
+noun2(sÃ¸ndagmorgen,sunday).  %% Rough (but works)
 
-noun2(søndag,sunday).      
+noun2(sÃ¸ndag,sunday).      
     noun2(sondag,sunday).
     noun2(soendag,sunday). 
-    noun2(søndagsmorgen,sunday). %% Rough, but adequate
+    noun2(sÃ¸ndagsmorgen,sunday). %% Rough, but adequate
 
 
 noun2(mandagsaften, monday).  %% Rough
@@ -17845,16 +17847,16 @@ noun2(tirsdagsaften,tuesday).
 noun2(onsdagsaften, wednesday). 
 noun2(torsdagsaften,thursday). 
 noun2(fredagsaften, friday). 
-noun2(lørdagsaften, saturday). 
-noun2(søndagsaften, sunday).  
+noun2(lÃ¸rdagsaften, saturday). 
+noun2(sÃ¸ndagsaften, sunday).  
 
 noun2(mandagskveld, monday).  %% Rough 
 noun2(tirsdagskveld,tuesday).  
 noun2(onsdagskveld, wednesday). 
 noun2(torsdagskveld,thursday). 
 noun2(fredagskveld, friday). 
-noun2(lørdagskveld, saturday). 
-noun2(søndagskveld, sunday).  
+noun2(lÃ¸rdagskveld, saturday). 
+noun2(sÃ¸ndagskveld, sunday).  
 
 
 
@@ -17864,8 +17866,8 @@ noun2(søndagskveld, sunday).
 verbroot2(X,Y):-verb2(X,Y).
 
 
-verb2(angå,concern). 
-     verb2(anngå,concern).       %% spiw
+verb2(angÃ¥,concern). 
+     verb2(anngÃ¥,concern).       %% spiw
 %%     verb2(gjelde,concern).    %% also apply 
      verb2(omhandle,concern). 
 
@@ -17911,8 +17913,8 @@ verb2(automatisere,automatize).
     verb2(billetere,automatize).  %% ad hoc 
     verb2(billettere,automatize). %%   
     verb2(helautomatisere,automatize). %%   
-verb2(avblåse,cancel).
-verb2(avgå,depart).
+verb2(avblÃ¥se,cancel).
+verb2(avgÃ¥,depart).
 verb2(avlede,derive).
 verb2(avslutte,stop). 
 
@@ -17923,14 +17925,14 @@ verb2(begripe,understand).
 verb2(begynne,start). 
     verb2(begyne,start).
     verb2(beynne,start). %%  own spc
-    verb2(bynne,start).  %% Trøndersk
+    verb2(bynne,start).  %% TrÃ¸ndersk
 verb2(behandle,treat). 
      verb2(betjene,treat). 
 verb2(beholde,keep).  
 verb2(beklage,regret). 
 verb2(bekymre,beworry).   %%  Norwagism (bekymre seg)
 
-verb2(benytte,use).  %% unngå benyttet = bruke .. å   
+verb2(benytte,use).  %% unngÃ¥ benyttet = bruke .. Ã¥   
 
 verb2(beskrive,describe).
 verb2(bestemme,decide).  
@@ -17938,10 +17940,10 @@ verb2(bestemme,decide).
    verb2(besteme,decide).  
    verb2(ombestemme,decide).  %% roug
 
-verb2(bestille,order).   %% Telebuster %% (kjøpe) 
+verb2(bestille,order).   %% Telebuster %% (kjÃ¸pe) 
 
-verb2(bestå,manage). 
-    verb2(bestå,consist).
+verb2(bestÃ¥,manage). 
+    verb2(bestÃ¥,consist).
 %   verb2(bestaa,consist). 
 %% :-) Turings test
 
@@ -17952,10 +17954,10 @@ verb2(besvare,answer1).   %% ?
    verb2(gjengi,answer1).
 
 
-%% verb2(besøke,pass).  %%  (a place) %% jeg besøker en person****
-verb2(besøke,visit). 
+%% verb2(besÃ¸ke,pass).  %%  (a place) %% jeg besÃ¸ker en person****
+verb2(besÃ¸ke,visit). 
 
-verb2(besørge,ensure). %% sørge for
+verb2(besÃ¸rge,ensure). %% sÃ¸rge for
 
 verb2(betale,pay).  
     verb2(bettale,pay). 
@@ -17966,7 +17968,7 @@ verb2(betrakte,regard).
 
 verb2(bety,indicate).  %% "mean2" %% TA-110112  
                        %% technical, miss sense in E // signify
-    verb2(innebære,indicate).
+    verb2(innebÃ¦re,indicate).
     verb2(indikere,indicate). 
     verb2(tilsi,indicate).   
 
@@ -17988,13 +17990,13 @@ verb2(bruke,use2).        %% pleie (Norwagism) %%  NB  MIXED WITH SPEND
    verb2(beregne,use).     %% ..tid 
    verb2(misbruke,use).    %% Rough 
    verb2(missbruke,use).   %% 
-   verb2(nyttiggjøre,use).   %   utilize (rough, reflexive) 
+   verb2(nyttiggjÃ¸re,use).   %   utilize (rough, reflexive) 
   
 
 verb2(misoppfatte,misunderstand). 
 
 
-%%% verb2(busse,run).  %%  å busse  %% Hazard
+%%% verb2(busse,run).  %%  Ã¥ busse  %% Hazard
 
 %% verb2(bruke,take).        %% causes backtracking 
 
@@ -18017,7 +18019,7 @@ verb2(delta,be).          %% rough
 verb2(demonstrere,demonstrate). 
 
 verb2(diskutere, discuss). 
-    verb2(drøfte, discuss).  
+    verb2(drÃ¸fte, discuss).  
     verb2(drofte, discuss). 
 
 verb2(distribuere, distribute). 
@@ -18033,11 +18035,11 @@ verb2(drive,operate).
 verb2(drikke,drink).      %% :-) 
      verb2(nyte,drink).    %%  alkohol... // ad hoc  nytte
 
-verb2(drive,work).        %%  hva driver du (på) medv
+verb2(drive,work).        %%  hva driver du (pÃ¥) medv
 %% verb2(drive,drive).       %%  company "drives"  a bus(iness)
-  % verb2(drive,make).    %%  drive gjøn med ?-)
-verb2(drømme,dream).  
-verb2(dø,die).
+  % verb2(drive,make).    %%  drive gjÃ¸n med ?-)
+verb2(drÃ¸mme,dream).  
+verb2(dÃ¸,die).
 
 
 verb2(egne,fit). %% .. seg 
@@ -18046,7 +18048,7 @@ verb2(eie,own).
    verb2(disponere,own). 
 
 verb2(eksistere,exist).
-    verb2(inngå,exist). 
+    verb2(inngÃ¥,exist). 
 
 
 %% verb2(elske,love).    %% Facetious
@@ -18062,10 +18064,10 @@ verb2(endre,modify). %% change).  change means change bus/modify means modify ro
 verb2(erstatte,replace).
 
 verb2(estimere,estimate). 
-verb2(etterspørre,seek).
+verb2(etterspÃ¸rre,seek).
 
         
-verb2(falle,fall).        %%  ( 17. mai faller på en torsdag)
+verb2(falle,fall).        %%  ( 17. mai faller pÃ¥ en torsdag)
 verb2(fatte,understand). 
 verb2(finne,find).        %%          ( jeg finner 
     verb2(finde,find).    %%  (DAN)
@@ -18073,7 +18075,7 @@ verb2(finne,find).        %%          ( jeg finner
    verb2(hitte,find).     %% SW
 verb2(fjerne,remove).     %%         (remove is reserved i sicstus)
     verb2(blokkere,remove).  %%  rough
-    verb2(fjærne,remove).   
+    verb2(fjÃ¦rne,remove).   
 
 verb2(fly,fly). 
 verb2(flytte,move).   
@@ -18087,7 +18089,7 @@ verb2(forbedre,improve).
 verb2(forebygge,prevent).  %% tell 
     verb2(hindre,prevent). %% rough? hinder/obstruct
 
-verb2(foreslå,propose). %% tell 
+verb2(foreslÃ¥,propose). %% tell 
 
 verb2(foreta,do1).  
 
@@ -18103,18 +18105,18 @@ verb2(forsinke,delay).
 
 verb2(forske,investigate). 
 
-verb2(forstå,understand).
-    verb2(førstå,understand).  
-    verb2(fårstå,understand). 
+verb2(forstÃ¥,understand).
+    verb2(fÃ¸rstÃ¥,understand).  
+    verb2(fÃ¥rstÃ¥,understand). 
     verb2(godta,understand). 
     verb2(innse,understand).  
     verb2(inse,understand).   %% sp
     verb2(konstatere,understand). %% see?
     verb2(oppfatte,understand).
-    verb2(sjønne,understand). 
-    verb2(skjøne,understand). %%  NN
-    verb2(skjønne,understand).
-    verb2(skønne,understand). %% DK 
+    verb2(sjÃ¸nne,understand). 
+    verb2(skjÃ¸ne,understand). %%  NN
+    verb2(skjÃ¸nne,understand).
+    verb2(skÃ¸nne,understand). %% DK 
     verb2(takle,understand).    %%  :-)
 
 verb2(forsvinne,disappear).  
@@ -18123,9 +18125,9 @@ verb2(forsvinne,disappear).
 
 
 verb2(fortelle,tell). %% requires at
-%%     verb2(foreslå,tell).   %% propose vako tell 
+%%     verb2(foreslÃ¥,tell).   %% propose vako tell 
     verb2(annonsere,tell).
-    verb2(avsløre,tell).  %% TA-110808
+    verb2(avslÃ¸re,tell).  %% TA-110808
     verb2(fotrelle,tell). %% sp 
     verb2(hevde,tell).   
     verb2(begrunne,tell). 
@@ -18134,14 +18136,14 @@ verb2(fortelle,tell). %% requires at
     verb2(fortele,tell).  
     verb2(fotelle,tell).  
     verb2(informere,tell).
-    verb2(innrømme,tell).  %% Rough 
-    verb2(kunngjøre,tell). 
+    verb2(innrÃ¸mme,tell).  %% Rough 
+    verb2(kunngjÃ¸re,tell). 
     verb2(melde,tell). 
     verb2(oppgi,tell). 
     verb2(opplyse,tell). 
     verb2(publisere,tell). 
     verb2(tilkjennegi,tell). 
-    verb2(spå,tell). %% :-) om bussavganger? Ja 
+    verb2(spÃ¥,tell). %% :-) om bussavganger? Ja 
     verb2(tipse,tell). 
     verb2(utdype,tell).  
     verb2(videreformidle,tell). 
@@ -18150,7 +18152,7 @@ verb2(fortelle,tell). %% requires at
 
 %% verb2(oppgi,state). %% pure TV 
     verb2(oppgi,tell).   %% tv/rv
-    verb2(påpeke,tell).  
+    verb2(pÃ¥peke,tell).  
 
 
 verb2(forkorte,shorten). 
@@ -18160,20 +18162,20 @@ verb2(forutsette,require).
 verb2(fortsette,continue). 
 
 verb2(forvente,expect). 
-%%     verb2(vente,expect).  %%  vente å rekke bussen Hazard ? 
+%%     verb2(vente,expect).  %%  vente Ã¥ rekke bussen Hazard ? 
                              %% vennligst vent
-verb2(forårsake,cause). 
-   verb2(medføre,cause). 
+verb2(forÃ¥rsake,cause). 
+   verb2(medfÃ¸re,cause). 
 
 verb2(frakte,take).       %%  ( bring )
     verb2(transportere,take). 
     verb2(tranportere,take).   %%  spell
 
 verb2(frigi,release). %% TA-110320
-   verb2(frigjøre,release).
+   verb2(frigjÃ¸re,release).
 verb2(fryse,freeze). 
 
-verb2(fullføre,finish).  
+verb2(fullfÃ¸re,finish).  
 
 verb2(fungere,function).  
     verb2(funke,function). 
@@ -18181,46 +18183,46 @@ verb2(fungere,function).
     verb2(virke,function).  %%  appear/function %% TA-110304
 
 verb2(fylle,fill). %% .. t:kort 
-        %% Norw rough f. 67 år 
+        %% Norw rough f. 67 Ã¥r 
 
-verb2(føde,bear2). 
-verb2(føle,feel).
+verb2(fÃ¸de,bear2). 
+verb2(fÃ¸le,feel).
 
-verb2(føre,lead). 
+verb2(fÃ¸re,lead). 
 
 verb2(kjede,bore).  
 
 
-%% Følge  %%%%%%%
+%% FÃ¸lge  %%%%%%%
 
-%% Problematic følges vanlige bussruter ? 
+%% Problematic fÃ¸lges vanlige bussruter ? 
 
-verb2(følge,accompany).   %% jeg følger ham på bussen
+verb2(fÃ¸lge,accompany).   %% jeg fÃ¸lger ham pÃ¥ bussen
 
-% Hvilken buss følger Inneheredsveien til Lademoen kirke? 
+% Hvilken buss fÃ¸lger Inneheredsveien til Lademoen kirke? 
 
-verb2(følge,take).        %% hvilken rute skal jeg følge (Hazard ?)
-verb2(følge,follow).      %% buss følger rute 
-verb2(følge,pass).        %% bus follows road
+verb2(fÃ¸lge,take).        %% hvilken rute skal jeg fÃ¸lge (Hazard ?)
+verb2(fÃ¸lge,follow).      %% buss fÃ¸lger rute 
+verb2(fÃ¸lge,pass).        %% bus follows road
 
 %%%%%%%%%%
 
 
 
-% SYNDROME    hvilken rute følger bussen = ? bus pass route FAILS, then intransitive and !
+% SYNDROME    hvilken rute fÃ¸lger bussen = ? bus pass route FAILS, then intransitive and !
 
 
 verb2(feste,fasten).
 
-%% verb2(føre, do1). %% føre en dialog %% special // blocks førte -> første
+%% verb2(fÃ¸re, do1). %% fÃ¸re en dialog %% special // blocks fÃ¸rte -> fÃ¸rste
 
-verb2(få,get).  %% generic verb/aux  få kjørt 
+verb2(fÃ¥,get).  %% generic verb/aux  fÃ¥ kjÃ¸rt 
     verb2(motta,get). 
     verb2(fortjene,get).
-    verb2(oppnå,get).
+    verb2(oppnÃ¥,get).
 
 /*  get er  supersyn
-verb2(få,receive).        %%  ( get is ambiguous )
+verb2(fÃ¥,receive).        %%  ( get is ambiguous )
     verb2(motta,receive). 
     verb2(fortjene,receive).
 */
@@ -18230,7 +18232,7 @@ verb2(gi,give).
     verb2(avgi,give). 
     verb2(donere,gi).  
     verb2(give,give).       %%  (Danish)
-    verb2(muliggjøre,give). %%  ?
+    verb2(muliggjÃ¸re,give). %%  ?
     verb2(overdra,give). %% buy
 %%     verb2(skaffe,give). 
     verb2(tildele,give).  
@@ -18250,7 +18252,7 @@ verb2(generere,make).
 verb2(gjemme,hide). 
     verb2(skjule,hide). 
 
-verb2(gjenstå,remain). 
+verb2(gjenstÃ¥,remain). 
 
 verb2(gjenta,repeat). 
     verb2(repetere,repeat). 
@@ -18258,13 +18260,13 @@ verb2(gjenta,repeat).
 verb2(gjette,guess). %% tell). 
 
 
-verb2(gjøre,do1).         %%   (what do you do1 ?-)
+verb2(gjÃ¸re,do1).         %%   (what do you do1 ?-)
     verb2(bedrive,do1). 
-    verb2(gjennomføre,do1).    
+    verb2(gjennomfÃ¸re,do1).    
     verb2(gjere,do1).     %% NN 
-    verb2(gkøre,do1).     %% gkøres 
-    verb2(jøre,do1). 
-    verb2(utføre,do1). 
+    verb2(gkÃ¸re,do1).     %% gkÃ¸res 
+    verb2(jÃ¸re,do1). 
+    verb2(utfÃ¸re,do1). 
     verb2(utrette,do1).   %%
 
 verb2(glane,look).        %% NB ikke se %% (se at) 
@@ -18283,32 +18285,32 @@ verb2(gripe,take).
 
 verb2(grue,dread).          %% gue seg for/til (not impl) 
 
-verb2(gå,go).
+verb2(gÃ¥,go).
 
 
 
 %%     verb2(komme,go). %% NB after go under komme
 %%     verb2(havne,go). %% come
 
-    verb2(bevege,go).       %%   bevege seg = gå seg OK
+    verb2(bevege,go).       %%   bevege seg = gÃ¥ seg OK
     verb2(forflytte,go).    %%
-%%    verb2(føre,go). 
-%%     verb2(hoppe,go).        %% hoppe på bussen %% -> walk
+%%    verb2(fÃ¸re,go). 
+%%     verb2(hoppe,go).        %% hoppe pÃ¥ bussen %% -> walk
     verb2(klatre,go).   
     verb2(returnere,go). 
     verb2(rykke,go).        %%  (ut?)
-    verb2(satse,go).        %% hvilken buss skal jeg satse på / jump
+    verb2(satse,go).        %% hvilken buss skal jeg satse pÃ¥ / jump
     verb2(stige,go).        %%  (steg,steget)
     verb2(stikke,go). 
 
     verb2(kkomme,go).
-    verb2(kåme,go).  
-    verb2(kåmme,go). 
+    verb2(kÃ¥me,go).  
+    verb2(kÃ¥mme,go). 
     verb2(strande,go).
 
 
-% verb2(gå,go1).            %%  gå meg   transitive (Norwagism)
-% verb2(gå,go2).            %%  bus goes route      (Norwagism)
+% verb2(gÃ¥,go1).            %%  gÃ¥ meg   transitive (Norwagism)
+% verb2(gÃ¥,go2).            %%  bus goes route      (Norwagism)
                             %% Too complicated
 verb2(ha,have). 
     verb2(fylle,have). %% rough  fylle bursdag %% TA-110215
@@ -18325,9 +18327,9 @@ verb2(haste,be_urgent).
 verb2(hate,hate). 
     verb2(mislike,hate). 
 verb2(hende,happen). 
-    verb2(foregå,happen). %% irreg 
+    verb2(foregÃ¥,happen). %% irreg 
     verb2(forekomme,happen). %%  irreg 
-    verb2(oppstå,happen). %% irreg
+    verb2(oppstÃ¥,happen). %% irreg
     verb2(skje,happen). 
 
 verb2(hente,fetch). 
@@ -18343,7 +18345,7 @@ verb2(henvende,turn).      %% technical  henvende seg
     verb2(hennvenne,turn). 
 
 /*
-verb2(hete,be2).     %%  Norwagism  // hete -> være 
+verb2(hete,be2).     %%  Norwagism  // hete -> vÃ¦re 
    verb2(hede,be2).     %%  danish    
    verb2(hedde,be2).    %%  dial
 */
@@ -18364,10 +18366,10 @@ verb2(hilse,greet).
 verb2(hjelpe,help).
    verb2(avhjelpe,help).
    verb2(bidra,help).
-   verb2(påhjelpe,help). %% ? own
+   verb2(pÃ¥hjelpe,help). %% ? own
 
 verb2(holde,hold). 
-    verb2(holde,keep).  %% holde møte ???
+    verb2(holde,keep).  %% holde mÃ¸te ???
     verb2(oppbevare,keep).  %% .. billetten
 
 verb2(hoppe,walk). %%  ? 
@@ -18378,19 +18380,19 @@ verb2(huske,remember).
 verb2(hvile,sit).   %% rough 
     verb2(avspasere,sit). %% rough 
 
-verb2(høre,hear).   %% trans 
-    verb2(haøre,hear).   %% hÃ¸rer 
+verb2(hÃ¸re,hear).   %% trans 
+    verb2(haÃ¸re,hear).   %% hÃƒÂ¸rer 
     verb2(hoere,hear). 
-    verb2(høyre,hear).   %%  NN
-verb2(høre,listen).      %% intrans
+    verb2(hÃ¸yre,hear).   %%  NN
+verb2(hÃ¸re,listen).      %% intrans
     verb2(lytte,listen). 
 
-verb2(høres,appear). %% Norw høres rart ut 
-%%%%%%%%%%%%%%%%    verb2(virke,appear). %% virke påfallende 
-    verb2(fremgå,appear). %% ?
-verb2(håpe,hope).  
+verb2(hÃ¸res,appear). %% Norw hÃ¸res rart ut 
+%%%%%%%%%%%%%%%%    verb2(virke,appear). %% virke pÃ¥fallende 
+    verb2(fremgÃ¥,appear). %% ?
+verb2(hÃ¥pe,hope).  
 
-%%     verb2(håpe,believe). %% Suspended
+%%     verb2(hÃ¥pe,believe). %% Suspended
     verb2(satse,believe). 
 
 verb2(ilegge,fine). %% eng: to fine
@@ -18400,7 +18402,7 @@ verb2(inneholde,contain).
 %%    verb2(inneheld,contain).   %% NN pres fin -> verb_form
     verb2(indeholde,contain).  %%  (Dan)
     verb2(inkludere,contain).
-verb2(innrømme,admit). 
+verb2(innrÃ¸mme,admit). 
 verb2(innstille,cancel). 
     verb2(kansellere,cancel). 
     verb2(kanselere,cancel). 
@@ -18409,8 +18411,8 @@ verb2(jobbe,work).      %%(roughly)
 %% verb2(kalle,call).   %% kalle noen en dust  ( special, bitransitive)
                         %% kan kalles 
 verb2(kalle,name).      %%  confutant kalles
-   verb2(døpe,name).       %% TA-110707
-   verb2(omdøpe,name).     %% TA-110707
+   verb2(dÃ¸pe,name).       %% TA-110707
+   verb2(omdÃ¸pe,name).     %% TA-110707
 
 
 verb2(kaste,throw). 
@@ -18420,41 +18422,41 @@ verb2(kjenne,recognize).     %% OK B Spelling
 %% verb2(kjenne,know1).  %% OK
 
 
-verb2(kjøpe,buy).
+verb2(kjÃ¸pe,buy).
     verb2(bestille,buy). 
     verb2(fornye,buy).  %% roughly
     verb2(kjope,buy). 
-    verb2(købe,buy).    %% Dan 
-    verb2(køpe,buy).    %% Dan?
+    verb2(kÃ¸be,buy).    %% Dan 
+    verb2(kÃ¸pe,buy).    %% Dan?
     verb2(sikre,secure).   %% sikre seg 
     verb2(skaffe,buy).  %% rough     %% 
 
-%% kjøre  % % % % % % % % 
+%% kjÃ¸re  % % % % % % % % 
 
 
-verb2(kjørevrel,kjøre_v_rel). %% exerimant vako  run
+verb2(kjÃ¸revrel,kjÃ¸re_v_rel). %% exerimant vako  run
 
-verb2(kjøre,run).         %% run a bus(iness)
+verb2(kjÃ¸re,run).         %% run a bus(iness)
     verb2(administrere,run). %% rough
 %%     verb2(drifte,run).    %% rough    %% operate 
-    verb2(hjøre,run).     %% own
+    verb2(hjÃ¸re,run).     %% own
     verb2(kjore,run).  
 
     verb2(befordre,run).
 %%     verb2(bringe,run). 
     verb2(frakte,run).    %%   meg til byen
-    verb2(khøre,run).     %% own slip
+    verb2(khÃ¸re,run).     %% own slip
     verb2(kjre,run).  
 
-%%  verb2(kjøre,take).    %% last option?     %% transitive (I take bus/ bus takes me ...)
+%%  verb2(kjÃ¸re,take).    %% last option?     %% transitive (I take bus/ bus takes me ...)
 
-    verb2(køre,run).      %% Dansk
-    verb2(køyre,run).     %% NN     %%
-    verb2(kjøyre,run).    %% NN     %%
+    verb2(kÃ¸re,run).      %% Dansk
+    verb2(kÃ¸yre,run).     %% NN     %%
+    verb2(kjÃ¸yre,run).    %% NN     %%
     verb2(renne,run).  
     verb2(rulle,run). 
-    verb2(skjøre,run).    %% spiw %% TA-110526   
-    verb2(sjøre,run).     %% spiw 
+    verb2(skjÃ¸re,run).    %% spiw %% TA-110526   
+    verb2(sjÃ¸re,run).     %% spiw 
     verb2(svippe,run).    %% Coll
     verb2(trille,run).  
 %%     verb2(ta,run).        %% jeg tar kontakt  // run tv
@@ -18463,12 +18465,12 @@ verb2(kjøre,run).         %% run a bus(iness)
 verb2(klage,complain).
 
 verb2(klare,manage). 
-%%    verb2(bestå,manage).    %%  :-)
+%%    verb2(bestÃ¥,manage).    %%  :-)
     verb2(fikse,manage).  
     verb2(gidde,manage). 
     verb2(gide,manage).   
     verb2(greie,manage).
-    verb2(håndtere,manage). 
+    verb2(hÃ¥ndtere,manage). 
     verb2(makte,manage).
     verb2(mestre,manage).  
     verb2(orke,manage).
@@ -18481,7 +18483,7 @@ verb2(komme,come).   %% spec.   station come/ day come after
     verb2(fremkomme,come). 
 
     verb2(komme,go). %% after komme
-    verb2(køyre,go).        %% NN     
+    verb2(kÃ¸yre,go).        %% NN     
 
 verb2(kommentere,comment). 
 
@@ -18516,12 +18518,12 @@ verb2(korrespondere,correspond).
     verb2(korresponere, correspond).
     verb2(korspondere,  correspond). 
     verb2(krysse,       correspond).  
-    verb2(samkjøre,     correspond). 
+    verb2(samkjÃ¸re,     correspond). 
 
 verb2(koste,cost).
     verb2(joste,cost). %%  own
     verb2(korste,cost). 
-    verb2(kåste,cost).
+    verb2(kÃ¥ste,cost).
 
 %% verb2(l 
 
@@ -18542,7 +18544,7 @@ verb2(lage,make). %% NB laget laget // ikke lagt
     verb2(kompilere,  make).  
     verb2(konstruere, make). 
     verb2(lave,       make). %%  DK
-    verb2(muliggjøre, make).
+    verb2(muliggjÃ¸re, make).
     verb2(opprette,make).  
 %%     verb2(ordne,   make).  %% det ordner seg (SIC)
     verb2(orne,    make).  %% Dial
@@ -18550,7 +18552,7 @@ verb2(lage,make). %% NB laget laget // ikke lagt
     verb2(utvide,  extend). 
 
     verb2(utvikle, make).       %% develop ?
-    verb2(videreføre, make). %%  rough develop ?
+    verb2(viderefÃ¸re, make). %%  rough develop ?
     verb2(videreutvikle, make). %%  rough develop ?
 
 verb2(lande,arrive). %% land).  
@@ -18567,20 +18569,20 @@ verb2(legge,lay).
 verb2(lengte,long).         %% :-)
     verb2(ivre,long).  %% rough %% TA-110329 etter
 
-verb2(leie,hire).           %%  også noun
+verb2(leie,hire).           %%  ogsÃ¥ noun
 verb2(lese,read). 
-    verb2(gjennomgå,read). 
+    verb2(gjennomgÃ¥,read). 
 verb2(lete,search). 
 verb2(leve,live).   
 
 verb2(overleve,survive).  %% TA-101117 :-)
 
-verb2(overvåke,watch). %% TA-110526
+verb2(overvÃ¥ke,watch). %% TA-110526
 
 verb2(levere,deliver). 
 
 % verb2(ligge,be).   
-%  Sad story:   bus goes to nth which is in sentrum at 13 => means bus passes gløs
+%  Sad story:   bus goes to nth which is in sentrum at 13 => means bus passes glÃ¸s
 %                                                            not   nth is in sentrum
 %  Needs be for internal reasons                         
 %
@@ -18599,7 +18601,7 @@ verb2(liste,list).
     verb2(dumpe,list). 
 verb2(logge,log). 
    verb2(loge,log). %% own
-   verb2(loggføre,log).  
+   verb2(loggfÃ¸re,log).  
 verb2(lokalisere,finne). %% TA-110724
 verb2(love,promise). 
 verb2(lukke,close).
@@ -18613,23 +18615,23 @@ verb2(lyve,lie2).
     verb2(juge,lie2).
     verb2(lyge,lie2). 
 
-verb2(lære,learn).   %% SUSPENDED TEST
+verb2(lÃ¦re,learn).   %% SUSPENDED TEST
    verb2(oppleve,learn). %% Rough (experience)
 
-verb2(lønne,pay2). %% det lønner seg 
-    verb2(løne,pay2). 
-verb2(løpe,walk).          %% For all PP, buses go, humans walk
-    verb2(løpe,run). %% after kjøre=run
+verb2(lÃ¸nne,pay2). %% det lÃ¸nner seg 
+    verb2(lÃ¸ne,pay2). 
+verb2(lÃ¸pe,walk).          %% For all PP, buses go, humans walk
+    verb2(lÃ¸pe,run). %% after kjÃ¸re=run
     verb2(jogge,walk).  
     verb2(renne,walk).     %% (rant,rant)
     verb2(springe,walk). 
 
-verb2(løse,buy). %% .. ticket 
-verb2(løse,solve). 
+verb2(lÃ¸se,buy). %% .. ticket 
+verb2(lÃ¸se,solve). 
 
-verb2(låne,borrow). %% lend?
+verb2(lÃ¥ne,borrow). %% lend?
 
-verb2(låse,stop). %% låst=stoppet %% rough
+verb2(lÃ¥se,stop). %% lÃ¥st=stoppet %% rough
 
 verb2(more,amuse).   
 
@@ -18637,7 +18639,7 @@ verb2(more,amuse).
 
 verb2(narre,fool). 
     verb2(dumme,fool).  %% dumme (seg) ut
-    verb2(lure,fool).  %% lure på
+    verb2(lure,fool).  %% lure pÃ¥
 
 verb2(nekte,deny).  
 verb2(nekte,refuse). 
@@ -18647,51 +18649,51 @@ verb2(nevne,say). %% TA-100824
 verb2(notere,write). 
 
 %% verb2(nytte,use).  %% confuse  har nytte av
-% verb2(nå,pass) .                %% ONLY TRANSITIVE, 
+% verb2(nÃ¥,pass) .                %% ONLY TRANSITIVE, 
                                       %% pass is also intransitive
-                                      %% buss 5 nå(r)
+                                      %% buss 5 nÃ¥(r)
 
-verb2(nå,reach) .               %% (take)  ...  bussen når jeg skal til 
+verb2(nÃ¥,reach) .               %% (take)  ...  bussen nÃ¥r jeg skal til 
                                     %                     ==>  bussen tar meg ....
-                                    % og i kveld må jeg nå
+                                    % og i kveld mÃ¥ jeg nÃ¥
 
-%% når bussen fra kroppan marka kl 1200 ?
+%% nÃ¥r bussen fra kroppan marka kl 1200 ?
 
 verb2(mangle,miss).   
 
 verb2(mene,mean). %% hva mener du \+ hva betyr du 
    %% verb2(mene,believe). 
-%%     verb2(anse,mean). %% "anser for å være" %%  -> regard
+%%     verb2(anse,mean). %% "anser for Ã¥ vÃ¦re" %%  -> regard
 
 
 verb2(merke,discover).
 
 verb2(merke,label).             %% En buss merket 73
 
-verb2(misforstå,misunderstand). 
+verb2(misforstÃ¥,misunderstand). 
     verb2(feiloppfatter,misunderstand). 
 verb2(miste,lose). 
    verb2(misste,lose). 
    verb2(mistte,lose). 
-verb2(møte,meet). 
+verb2(mÃ¸te,meet). 
     verb2(treffe,meet). 
-verb2(møtes,meet2).             %% intransitive for a set
-    verb2(høras,meet2). %%  ?
-    verb2(høres,meet2). %%
+verb2(mÃ¸tes,meet2).             %% intransitive for a set
+    verb2(hÃ¸ras,meet2). %%  ?
+    verb2(hÃ¸res,meet2). %%
     verb2(sees,meet2).  
     verb2(samles,meet2). 
     verb2(snakkes,meet2). 
     verb2(treffes,meet2).
 
 
-%% verb2(måle,measure). 
+%% verb2(mÃ¥le,measure). 
   
 
 verb2(omfatte,contain).         %%  (comprise)
 
 verb2(operere,work). %% rough %% operate 
 
-verb2(oppføre,list).  
+verb2(oppfÃ¸re,list).  
 
 verb2(oppdage,discover).  
     verb2(detektere,discover). 
@@ -18699,7 +18701,7 @@ verb2(oppdage,discover).
 verb2(oppdatere,update). 
    verb2(oppgradere,update).   
 
-verb2(overføre,transfer).
+verb2(overfÃ¸re,transfer).
 verb2(oversette,translate).  
 
 % verb2(oppgi,know). 
@@ -18718,7 +18720,7 @@ verb2(parkere,park).
 
 verb2(passe,correspond).
 verb2(passere,pass).
-    verb2(besøke,pass). %% ? 
+    verb2(besÃ¸ke,pass). %% ? 
     verb2(paasere,pass).   
     verb2(paassere,pass).   %% 
     verb2(frekventere,pass). 
@@ -18728,8 +18730,8 @@ verb2(passere,pass).
     verb2(trafikkere,pass).  %%
     verb2(traffikere,pass).  %%
     verb2(traffikkere,pass). %%
-    verb2(værepå,pass).      %% ? 
-    verb2(værrepå,pass).     %% ? 
+    verb2(vÃ¦repÃ¥,pass).      %% ? 
+    verb2(vÃ¦rrepÃ¥,pass).     %% ? 
 %%     verb2(paserere,pass).  %% => pasere = imp
 %%     verb2(passerere,pass). %% => passerer = imp
 
@@ -18747,7 +18749,7 @@ verb2(feile,fail).   %% very rough Norw: hva feiler deg
 
 %%% verb2(halte,fail). %% Techn halt Eng
 
-verb2(planlegge,plan). %% å ta buss=want? 
+verb2(planlegge,plan). %% Ã¥ ta buss=want? 
 verb2(plassere,put). 
    verb2(stasjonere,put). 
 verb2(pleie,use2).           %% Technical
@@ -18761,10 +18763,10 @@ verb2(programmere,make).
     verb2(kode,make). 
     verb2(programere,make).  %% spell
 
-verb2(prøve,try).   
-    verb2(forsøke,try).
+verb2(prÃ¸ve,try).   
+    verb2(forsÃ¸ke,try).
 
-verb2(påse,ensure). 
+verb2(pÃ¥se,ensure). 
 verb2(ramse,list). 
 
 verb2(rapportere,report).   
@@ -18774,7 +18776,7 @@ verb2(rapportere,report).
 verb2(reagere,react). %% TA-110701
 
 verb2(regne,rain). 
-    verb2(blåse,rain). %% rough , weather
+    verb2(blÃ¥se,rain). %% rough , weather
 
 verb2(regne,calculate). 
 
@@ -18782,8 +18784,8 @@ verb2(reise,go).          %% (travel)
     verb2(fare,go). 
     verb2(fera,go).       %% dial 
     verb2(flykte,go). 
-%%     verb2(fær,go).        %% dialect %% confuse før 
-%%     verb2(færra,go).   %% few
+%%     verb2(fÃ¦r,go).        %% dialect %% confuse fÃ¸r 
+%%     verb2(fÃ¦rra,go).   %% few
     verb2(pendle,go).     %% Rough
     verb2(rase,go). 
     verb2(rejse,go).      %%  Danish
@@ -18792,7 +18794,7 @@ verb2(rekke,reach).
 
 verb2(relatere,relate).  %% TA-110111
    
-%%     verb2(naa,reach). %% ad hoc %% =nå
+%%     verb2(naa,reach). %% ad hoc %% =nÃ¥
     verb2(rekkke,reach).  
 
 verb2(resette,reset). 
@@ -18807,14 +18809,14 @@ verb2(ringe,call).
 verb2(risikere,risk). 
 
 verb2(rope,call). %% ..opp 
-verb2(røyke,smoke).        %%  :-(
-    verb2(røke,smoke).    
+verb2(rÃ¸yke,smoke).        %%  :-(
+    verb2(rÃ¸ke,smoke).    
 
 verb2(samarbeide,work).   %% (roughly)
 verb2(savne,miss). 
 
 
-verb2(se,look). %% 1. intransitive  se ut// kan jeg få se ??? 
+verb2(se,look). %% 1. intransitive  se ut// kan jeg fÃ¥ se ??? 
                 %% se slik ut = look thus 
 
     verb2(kikke,look). 
@@ -18830,7 +18832,7 @@ verb2(se,see).  %% 2   %% Transitive
 verb2(seile,sail).  
 verb2(selge,sell). 
     verb2(kommersialisere,sell). %%  rough
-    verb2(markedsføre,sell). 
+    verb2(markedsfÃ¸re,sell). 
 verb2(sende,send).
     verb2(overbringe,send).
     verb2(oversende,send). 
@@ -18841,7 +18843,7 @@ verb2(sette,put).       %% sette meg Norwagism
 
 verb2(si,say).  %% does not require 'at' 
     verb2(seie,say). %% NN
-    verb2(påstå,say). 
+    verb2(pÃ¥stÃ¥,say). 
 
 
 verb2(sjekke,check). 
@@ -18860,7 +18862,7 @@ verb2(skape,make).
    verb2(gjenskape,make). 
 verb2(skifte,change).
 verb2(skje,happen). 
-verb2(skjønne,understand).
+verb2(skjÃ¸nne,understand).
 verb2(skrive,write). 
    verb2(stave,write).  
    verb2(taste,write).  
@@ -18868,7 +18870,7 @@ verb2(slutte,end).        %% not stop as for busstops
    verb2(slute,end). 
 
 
-verb2(skylde,blame1). %% rough %%  skylde på
+verb2(skylde,blame1). %% rough %%  skylde pÃ¥
 
 verb2(skyldes,is_caused_by).     %% Technical 
    verb2(skyldtes,is_caused_by).
@@ -18877,9 +18879,9 @@ verb2(skyldes,is_caused_by).     %% Technical
 
 verb2(skynde,hurry). 
 
-verb2(slå,turn). %% off/on 
+verb2(slÃ¥,turn). %% off/on 
    verb2(skru,turn). %% TA-110518
-verb2(slå,beat). %% TA-101112
+verb2(slÃ¥,beat). %% TA-101112
 
 
 verb2(smake,taste).  %%  both tv and iv
@@ -18889,7 +18891,7 @@ verb2(snakke,talk). %% intrans
     verb2(skryte,talk).     %%  .. av
 
 verb2(snakke,speak).
-    verb2(bråke, speak).    %% rough (people) 
+    verb2(brÃ¥ke, speak).    %% rough (people) 
     verb2(chatte, speak). 
     verb2(mase, speak).  %% :-)
     verb2(prate,speak). 
@@ -18902,7 +18904,7 @@ verb2(snakke,speak).
 
 verb2(snike,sneak). 
 verb2(snu,turn). 
-verb2(snø,snow). 
+verb2(snÃ¸,snow). 
 verb2(spore,find).
 verb2(sove,sleep).
 verb2(spasere,walk). %% not go 
@@ -18913,11 +18915,11 @@ verb2(spasere,walk). %% not go
 verb2(spille,play). 
 verb2(spise,eat). 
     verb2(ete,eat).  
-verb2(spørre,ask). 
+verb2(spÃ¸rre,ask). 
     verb2(anmode,ask).  
     verb2(be,ask).
     verb2(formulere,ask).
-    verb2(spøre,ask).  
+    verb2(spÃ¸re,ask).  
 
 verb2(stanse,stop).
 verb2(starte,start). 
@@ -18925,13 +18927,13 @@ verb2(starte,start).
     verb2(etablere,start). 
     verb2(grunnlegge,start). 
     verb2(igangsette,start). 
-    verb2(innføre,start).
+    verb2(innfÃ¸re,start).
     verb2(innlede,start). %% TA-110329
     verb2(lansere,start). 
     verb2(opprette,start). 
     verb2(restarte,start). %%  rough
     verb2(stifte,start).
-    verb2(utløse,start). %% .. garantien 
+    verb2(utlÃ¸se,start). %% .. garantien 
 
 verb2(stavefeilskorrigere,correct).  
     verb2(stavefeilkorrigere,correct). 
@@ -18940,8 +18942,8 @@ verb2(stenge,close).
 verb2(stige,increase). 
 
 
-%% verb2(stille,ask).       %%  ... et spørsmål
-%% verb2(stille,adjust).   % 1 %  klokka // stille spørsmål NORW/
+%% verb2(stille,ask).       %%  ... et spÃ¸rsmÃ¥l
+%% verb2(stille,adjust).   % 1 %  klokka // stille spÃ¸rsmÃ¥l NORW/
 %% verb2(stille,make).         % 2 % ask rv verb, confuse
 
 verb2(stille,set).     %% technical compromise 
@@ -18957,29 +18959,29 @@ verb2(stoppe,stop).  %% ,end ?
     verb2(terminere,stop). 
 
     verb2(knekke,stop).
-    verb2(ødelegge,stop).
+    verb2(Ã¸delegge,stop).
 
 verb2(streike,strike). 
 verb2(studere,study).  
 verb2(styre,drive). 
-verb2(stå,stand).   
+verb2(stÃ¥,stand).   
 
 verb2(svare,answer1).    %%  Bare Intransitivt
 % verb2(svare,tell).     %% not answer %%  WHY NOT ?
 
-verb2(svømme,swim).
+verb2(svÃ¸mme,swim).
 verb2(synes,mean).       %% (think)
    verb2(syntes,mean).   %%
    verb2(tykkje,mean).   %%
 
 %% verb2(synes,believe). %%
 
-verb2(søke,search).       %% intransitive 
+verb2(sÃ¸ke,search).       %% intransitive 
 
-%% verb2(søke,want).  %%  transitive %% TA-110331  // søke på andre steder en i trondheim? -->
+%% verb2(sÃ¸ke,want).  %%  transitive %% TA-110331  // sÃ¸ke pÃ¥ andre steder en i trondheim? -->
 
 
-verb2(sørge,care1). %% sørge for = take care of 
+verb2(sÃ¸rge,care1). %% sÃ¸rge for = take care of 
                     %% make sure
 %% verb2(t 
 
@@ -18993,35 +18995,35 @@ verb2(takke,thank).
     verb2(takkke,thank).  
 verb2(overta,take). 
 % verb2(ta,bring).        %% (Fail bring < take)
-    verb2(forfølge,take).  %% Slang 
+    verb2(forfÃ¸lge,take).  %% Slang 
 verb2(telle,count). 
-    verb2(tallfeste,count). %% måle? 
+    verb2(tallfeste,count). %% mÃ¥le? 
 
 verb2(tenke,think). 
     verb2(filosofere,think).
-    verb2(pønske,think). 
+    verb2(pÃ¸nske,think). 
     verb2(resonere,think). 
     verb2(resonnere,think). 
     verb2(ressonere,think).  %% spc
     verb2(stusse,think).     %%  rough
     verb2(tenkje,think).     %% NN
     verb2(tygge,think).      %% slang 
-    verb2(tænke,think).      %% (Dan)
+    verb2(tÃ¦nke,think).      %% (Dan)
 
 verb2(teste,test).  
-    verb2(testkjøre,test). 
+    verb2(testkjÃ¸re,test). 
 
 verb2(tie,silence). %% e.g. keep s
 
 verb2(tulle,babble).  %%  :-)
     verb2(bable, babble). %% :-) 
     verb2(babble, babble). 
-    verb2(tøyse,babble). 
+    verb2(tÃ¸yse,babble). 
 
 verb2(tilby,sell). %%  offer %% rough
 verb2(tilgi,forgive). 
 
-verb2(tilhøre,belong_to). 
+verb2(tilhÃ¸re,belong_to). 
     verb2(sogne,belong).  %% TA-110707
 
 verb2(tillate,allow).   
@@ -19037,9 +19039,9 @@ verb2(trafikkere,pass).
 %% verb2(tre,start). %% tre i kraft %% TA-101207 tr=start
 
 verb2(trenge,need).   
-    verb2(behøve,need).    %% .. å 
+    verb2(behÃ¸ve,need).    %% .. Ã¥ 
 verb2(trenge,want).        %%   (I need a bus)
-   %%  verb2(behøve,want). 
+   %%  verb2(behÃ¸ve,want). 
 verb2(trives,thrive).  
 verb2(tro,believe).
    verb2(tru,believe).  
@@ -19053,18 +19055,18 @@ verb2(trykke,write).   %% fapp %% TA-110303
 verb2(tvile,doubt).  
 verb2(tvinge,force). 
 
-verb2(tyde,indicate). %% .. på Norw 
+verb2(tyde,indicate). %% .. pÃ¥ Norw 
     verb2(indikere,indicate).  
 
-verb2(tømme,empty). 
+verb2(tÃ¸mme,empty). 
 
-verb2(undersøke,check).    %%  rough
+verb2(undersÃ¸ke,check).    %%  rough
    verb2(analysere,check).
    verb2(lodde,check). 
    verb2(sjekke,check).  
 
 verb2(undervise,teach). 
-verb2(unngå,avoid). 
+verb2(unngÃ¥,avoid). 
 
 verb2(utelate,exclude).
 
@@ -19077,8 +19079,8 @@ verb2(varsle,notify).
    verb2(advarere,notify).   %% own
    verb2(alarmere,notify). 
    verb2(anrope,notify).  
-   verb2(påkalle,notify). 
-   verb2(påminne,notify). 
+   verb2(pÃ¥kalle,notify). 
+   verb2(pÃ¥minne,notify). 
    verb2(varlse,notify).
    verb2(vekke,notify). 
 
@@ -19107,12 +19109,12 @@ verb2(velge,choose).
 
 %% verb2(vente,take).        %%  (expect) 
 verb2(vente,wait).
-    verb2(vænte,wait).  
+    verb2(vÃ¦nte,wait).  
 %% verb2(vil,go).          %%  ( gives inf )
 
-%% verb2(ville,go).          %%  å ville    % vil reise til  = går reisen til
-%%     verb2(måtte,go).   %% Jeg må til nth// hvilken buss må (går) jeg ta
-                                 %% må = pres 
+%% verb2(ville,go).          %%  Ã¥ ville    % vil reise til  = gÃ¥r reisen til
+%%     verb2(mÃ¥tte,go).   %% Jeg mÃ¥ til nth// hvilken buss mÃ¥ (gÃ¥r) jeg ta
+                                 %% mÃ¥ = pres 
 
 verb2(verifisere,verify).
 
@@ -19121,7 +19123,7 @@ verb2(vinke,wave).    %% for signals.
 %% verb2(virke,work).
 
 %% verb2(virke,be).  %%   du virker dum  Confuse  
-                  %%  (da) virker det påfallende at
+                  %%  (da) virker det pÃ¥fallende at
 
 verb2(vise,show).
     verb2(anvise,show). 
@@ -19131,7 +19133,7 @@ verb2(vise,show).
 
 verb2(vite,know).           %%    Jeg vet at
     verb2(ane,know). 
-    verb2(avgjøre,know).    %% bestemme?
+    verb2(avgjÃ¸re,know).    %% bestemme?
     verb2(garantere,know).  %% Rough 
 
 %    verb2(vete,know).       %% Dialect (Swe) %% ==> vet = vit!
@@ -19141,51 +19143,51 @@ verb2(vite,know).           %%    Jeg vet at
 
 verb2(vurdere,consider). %% ? 
 
-verb2(være,be).
-   verb2(vere,be).   %% Not Synword   Vera -> Være
-%%    verb2(trene,be).  %% Rough.. trene på dragvoll 
+verb2(vÃ¦re,be).
+   verb2(vere,be).   %% Not Synword   Vera -> VÃ¦re
+%%    verb2(trene,be).  %% Rough.. trene pÃ¥ dragvoll 
    verb2('va|re',be). 
    verb2('va|rre',be). 
 
 
-verb2(øke,increase). 
+verb2(Ã¸ke,increase). 
     verb2(auke,increase). %% NN
 
-verb2(ønske,want).  
+verb2(Ã¸nske,want).  
   verb2(foretrekke,want). 
   verb2(forlange,want).  
   verb2(gidde,want).       %% rough
   verb2(gide,want).  
   verb2(orke,want).        %%  rough
-  verb2(oenske,want).      %% Ã¸nsker
+  verb2(oenske,want).      %% ÃƒÂ¸nsker
   verb2(onske,want).  
 %%     verb2(planlegge,want).   %% rough ? plan 
   verb2(ynskje,want).      %%  NN
   verb2(ynsje,want). 
-  verb2(ønke,want).        %% sp 
-  verb2(ønskje,want).      %%  dial
-  verb2(ønsje,want).  
+  verb2(Ã¸nke,want).        %% sp 
+  verb2(Ã¸nskje,want).      %%  dial
+  verb2(Ã¸nsje,want).  
 
-verb2(ønske,wish).          % ? Reporting verb
+verb2(Ã¸nske,wish).          % ? Reporting verb
 
-%% verb2(åke,take).            %%   (Swedicism)
-verb2(åke,go).  
+%% verb2(Ã¥ke,take).            %%   (Swedicism)
+verb2(Ã¥ke,go).  
 
-verb2(åpne,open). 
+verb2(Ã¥pne,open). 
     verb2(opne,open).
     verb2(oppne,open). 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-% verb_form  %% sortert på hovedform (?)
+% verb_form  %% sortert pÃ¥ hovedform (?)
 
 verb_form(ankjem,ankomme,pres,fin). %% NN
 verb_form(ankom,ankomme,past,fin).
 
 verb_form(antok,  anta,past,fin). 
 verb_form(antatt, anta,past,part).
-verb_form(avgjør,   avgjøre,pres,fin). %% ikke avgjører 
+verb_form(avgjÃ¸r,   avgjÃ¸re,pres,fin). %% ikke avgjÃ¸rer 
 
 verb_form(ba,be,past,fin).  
 verb_form(bedt,be,past,part). 
@@ -19206,9 +19208,9 @@ verb_form(bestemt,bestemme,past,part).
     verb_form(ombestemt,  bestemme,past,part).
 
 verb_form(bestilt,bestille,past,part). %% reg is bestillt 
-verb_form(besto,  bestå,past,fin).  
-verb_form(bestått,bestå,past,part).   
-verb_form(blitt,  være,past,part). 
+verb_form(besto,  bestÃ¥,past,fin).  
+verb_form(bestÃ¥tt,bestÃ¥,past,part).   
+verb_form(blitt,  vÃ¦re,past,part). 
 verb_form(bodd,   bo,past,part). 
 verb_form(bodde,  bo,past,fin). 
 
@@ -19225,33 +19227,33 @@ verb_form(drakk,drikke,past,fin).
 verb_form(drukket,drikke,past,part). %%
    verb_form(drekki,drikke,past,part). %% :-)
 
-verb_form(døde,   dø,past,fin). 
-verb_form(dødd,   dø,past,part).
+verb_form(dÃ¸de,   dÃ¸,past,fin). 
+verb_form(dÃ¸dd,   dÃ¸,past,part).
 
 %% verb_form(eide,   eie,past,fin). 
-verb_form(er,     være,pres,fin).       
+verb_form(er,     vÃ¦re,pres,fin).       
 
-verb_form(etterspør,    etterspørre,pres,fin).  
-verb_form(etterspurte,  etterspørre,past,fin).   
-verb_form(etterspurt,   etterspørre,past,part).  
+verb_form(etterspÃ¸r,    etterspÃ¸rre,pres,fin).  
+verb_form(etterspurte,  etterspÃ¸rre,past,fin).   
+verb_form(etterspurt,   etterspÃ¸rre,past,part).  
 
 
 verb_form(fant,   finne,past,fin). 
 verb_form(fantes, finne,past,pass).
 
-verb_form(fikk,   få,past,fin).
+verb_form(fikk,   fÃ¥,past,fin).
 
 %% verb_form(for,fare,past,fin).    %% Too Hazardous
 %% verb_form(fart,fare,past,part). 
 
-verb_form(foregikk,foregå,past,fin).  
-verb_form(foregått,foregå,past,part). 
+verb_form(foregikk,foregÃ¥,past,fin).  
+verb_form(foregÃ¥tt,foregÃ¥,past,part). 
 
 verb_form(forekom,forekomme,past,fin). 
 verb_form(forekommet,forekomme,past,part).
 
-verb_form(foreslo,foreslå,past,fin).  
-verb_form(foreslått, foreslå,past,part). 
+verb_form(foreslo,foreslÃ¥,past,fin).  
+verb_form(foreslÃ¥tt, foreslÃ¥,past,part). 
 
 verb_form(foretok,  foreta,past,fin).  
 verb_form(foretatt, foreta,past,part).  
@@ -19261,15 +19263,15 @@ verb_form(foretrukket, foretrekke,past,part).
 
 verb_form(forlatt,forlate,past,part).
 verb_form(forlot, forlate,past,fin). 
-verb_form(forsto, forstå,past,fin).
-verb_form(forstått,  forstå,past,part). 
+verb_form(forsto, forstÃ¥,past,fin).
+verb_form(forstÃ¥tt,  forstÃ¥,past,part). 
 verb_form(forsvant, forsvinne,past,fin). 
 verb_form(forsvunnet, forsvinne,past,part).
 
 verb_form(fortalt,fortelle,past,part). 
 verb_form(fortalte,  fortelle,past,fin). 
 
-% verb_form(funker, være,pres,fin). 
+% verb_form(funker, vÃ¦re,pres,fin). 
 
 verb_form(friga,frigi,past,fin).     %% TA-110330
 verb_form(frigitt,frigi,past,part).  %%
@@ -19279,30 +19281,30 @@ verb_form(frigjort,frigi,past,part).  %%
 verb_form(funnet, finne,past,part). 
 verb_form(fylt,   fylle,past,part). %% fyllt? 
 
-%% verb_form(før,    kjøre,imp,fin).   %%  før meg!
-verb_form(fått,   få,past,part).
+%% verb_form(fÃ¸r,    kjÃ¸re,imp,fin).   %%  fÃ¸r meg!
+verb_form(fÃ¥tt,   fÃ¥,past,part).
 
 verb_form(ga,     gi,past,fin). 
 verb_form(gav,    gi,past,fin). 
-verb_form(gikk,   gå,past,fin).
+verb_form(gikk,   gÃ¥,past,fin).
 verb_form(gitt,   gi,past,part). 
 verb_form(gjemt,  gjemme,past,part). 
-verb_form(gjeng,  gå,pres,fin). 
+verb_form(gjeng,  gÃ¥,pres,fin). 
 
 verb_form(gjaldt,gjelde,past,fin). 
 verb_form(gjeldt,gjelde,past,part). 
 
-verb_form(gjenge, gå,pres,fin). % NN
+verb_form(gjenge, gÃ¥,pres,fin). % NN
 verb_form(gjenga, gjengi,past,fin).  
 verb_form(gjengav, gjengi,past,fin).  
 verb_form(gjengitt, gjengi,past,part). 
 verb_form(gjenkjent,  gjenkjenne,past,part). %% Rule here 
 verb_form(gjenkjente, gjenkjenne,past,fin). 
 
-verb_form(gjekk,  gå,past,fin). 
-verb_form(gjorde, gjøre,past,fin). 
-verb_form(gjort,  gjøre,past,part). 
-verb_form(gjør,   gjøre,pres,fin). %% ikke gjører
+verb_form(gjekk,  gÃ¥,past,fin). 
+verb_form(gjorde, gjÃ¸re,past,fin). 
+verb_form(gjort,  gjÃ¸re,past,part). 
+verb_form(gjÃ¸r,   gjÃ¸re,pres,fin). %% ikke gjÃ¸rer
 verb_form(glemt,  glemme,past,part).
 verb_form(gjenglemt, glemme,past,part). 
 verb_form(glemte, glemme,past,fin).
@@ -19310,7 +19312,7 @@ verb_form(gravde, grave,past,fin).
 verb_form(grunnla,grunnlegge,past,fin). %% ?
 verb_form(grunnlagt,grunnlegge,past,part).
 
-verb_form(gått,   gå,past,part). 
+verb_form(gÃ¥tt,   gÃ¥,past,part). 
 
 verb_form(har,    ha,pres,fin).
 verb_form(hadde,  ha,past,fin).
@@ -19326,8 +19328,8 @@ verb_form(kaltes,hete,past,fin).
 verb_form(hjalp,  hjelpe,past,fin).
 verb_form(hjulpet,hjelpe,past,part).
 
-verb_form(høres,høres,pres,fin). 
-verb_form(hørtes,høres,past,fin).
+verb_form(hÃ¸res,hÃ¸res,pres,fin). 
+verb_form(hÃ¸rtes,hÃ¸res,past,fin).
 
 verb_form(iakttok,se,past,fin). 
 verb_form(iakttatt,se,past,fin).
@@ -19341,9 +19343,9 @@ verb_form(ilagt,ilegge,past,part).
 verb_form(inneheld,inneholde,pres,fin). 
 verb_form(innlagt,innlegge,past,part). 
 verb_form(innlagt,innlegge,past,part). 
-verb_form(innså,innse,past,fin).   
+verb_form(innsÃ¥,innse,past,fin).   
 
-verb_form(jør,gjøre,pres,fin). %% TA-110114 nec 
+verb_form(jÃ¸r,gjÃ¸re,pres,fin). %% TA-110114 nec 
 
 verb_form(kalte,  kalle,past,fin). 
 
@@ -19356,8 +19358,8 @@ verb_form(kan,    kunne,pres,fin).
 verb_form(kunne,  kunne,past,fin). 
 verb_form(kunnet, kunne,past,part). 
 
-verb_form(kunngjorde,  kunngjøre,past,fin). 
-verb_form(kunngjort,   kunngjøre,past,part).
+verb_form(kunngjorde,  kunngjÃ¸re,past,fin). 
+verb_form(kunngjort,   kunngjÃ¸re,past,part).
 
 %% verb_form(kan,    kjenne,pres,fin). 
 %% verb_form(kunne,  kjenne,past,fin). 
@@ -19366,8 +19368,8 @@ verb_form(kunngjort,   kunngjøre,past,part).
 verb_form(kjent,  kjenne,past,part).
 verb_form(kjente, kjenne,past,fin). 
 
-verb_form(kjørt,  kjøre,past,part).
-verb_form(kjørte, kjøre,past,fin).
+verb_form(kjÃ¸rt,  kjÃ¸re,past,part).
+verb_form(kjÃ¸rte, kjÃ¸re,past,fin).
 % verb_form(kjent,  vite,past,part).   %% -> know1 ??? 
 % verb_form(kjent,  kjenne,past,part).
 
@@ -19388,20 +19390,20 @@ verb_form(levd,   leve,past,part).
 verb_form(ligg,   ligge,pres,fin). %% TA-110825
 verb_form(lot,    la,past,fin). 
 
-verb_form(løp,    løpe,past,fin). 
-verb_form(løpt,   løpe,past,part).
+verb_form(lÃ¸p,    lÃ¸pe,past,fin). 
+verb_form(lÃ¸pt,   lÃ¸pe,past,part).
 
-verb_form(løy,    lyve,past,fin).
-verb_form(løyet,  lyve,past,part).
-verb_form(lå,     ligge,past,fin).
+verb_form(lÃ¸y,    lyve,past,fin).
+verb_form(lÃ¸yet,  lyve,past,part).
+verb_form(lÃ¥,     ligge,past,fin).
 
-verb_form(misforsto,misforstå,past,fin). 
+verb_form(misforsto,misforstÃ¥,past,fin). 
 verb_form(mista,miste,past,fin). %% Missing Morf 
 verb_form(mista,miste,past,part).
 verb_form(motatt,  motta,past,part). %%  spc
 verb_form(mottatt, motta,past,part).
 verb_form(mottok,  motta,past,fin). 
-verb_form(må,   måtte,pres,fin).
+verb_form(mÃ¥,   mÃ¥tte,pres,fin).
 
 % verb_form(oppgi,vise,imp,fin). % fortelle !
 % verb_form(oppgir,  vise,pres,fin).
@@ -19412,20 +19414,20 @@ verb_form(oppgav,  fortelle,past,fin).
 verb_form(oppgitt, fortelle,past,part). %% | sad
 verb_form(oppsatt, arrangere,past,part). 
 
-verb_form(oppsto, oppstå,past,fin). 
-verb_form(oppstått, oppstå,past,part). 
+verb_form(oppsto, oppstÃ¥,past,fin). 
+verb_form(oppstÃ¥tt, oppstÃ¥,past,part). 
 
 verb_form(oversatte, oversette,past,fin).  
 verb_form(oversatt,  oversette,past,part). 
 
 verb_form(planla,planlegge,past,fin).  
 verb_form(planlagt,planlegge,past,part). 
-verb_form(prøvde,prøve,past,fin). 
-verb_form(prøvd, prøve,past,part).
+verb_form(prÃ¸vde,prÃ¸ve,past,fin). 
+verb_form(prÃ¸vd, prÃ¸ve,past,part).
 
-verb_form(påsto, påstå,past,fin). 
-verb_form(påstod, påstå,past,fin).    %%
-verb_form(påstått, påstå,past,part). %%
+verb_form(pÃ¥sto, pÃ¥stÃ¥,past,fin). 
+verb_form(pÃ¥stod, pÃ¥stÃ¥,past,fin).    %%
+verb_form(pÃ¥stÃ¥tt, pÃ¥stÃ¥,past,part). %%
 
 
 verb_form(rakk,    rekke,past,fin).  
@@ -19435,8 +19437,8 @@ verb_form(resatt,  resette,past,part).
 
 verb_form(rukket,  rekke,past,part). 
 
-verb_form(røyka, røyke,past,fin).  %% not plu sigaretter
-verb_form(røyka, røyke,past,part). 
+verb_form(rÃ¸yka, rÃ¸yke,past,fin).  %% not plu sigaretter
+verb_form(rÃ¸yka, rÃ¸yke,past,part). 
 
 verb_form(sa,    si,past,fin).  
 verb_form(sagt,  si,past,part).
@@ -19454,8 +19456,8 @@ verb_form(saes,  si,past,pass). %% ?
 
 verb_form(skjedd,skje,past,part). 
 verb_form(skjedde, skje,past,fin). 
-verb_form(skjønte, skjønne,past,fin). 
-verb_form(skjønt, skjønne,past,part). 
+verb_form(skjÃ¸nte, skjÃ¸nne,past,fin). 
+verb_form(skjÃ¸nt, skjÃ¸nne,past,part). 
 verb_form(skrev, skrive,past,fin). 
 verb_form(skrevet,skrive,past,part). 
 
@@ -19465,8 +19467,8 @@ verb_form(skyldes,skyldes,pres,fin).
 verb_form(slapp,slippe,past,fin).    %% TA-110401
 verb_form(sluppet,slippe,past,part). %%
 
-verb_form(snødde,snø,past,fin).  
-verb_form(snødd,snø,past,part).
+verb_form(snÃ¸dde,snÃ¸,past,fin).  
+verb_form(snÃ¸dd,snÃ¸,past,part).
 verb_form(sov,sove,past,fin). 
 
 verb_form(spilte, spille,past,fin).  
@@ -19474,27 +19476,27 @@ verb_form(spilt, spille,past,part).
 verb_form(sprang, springe,past,fin).  
 verb_form(sprunget, springe,past,part). 
 
-verb_form(spurde, spørre,past,fin).  %%  Irrelevant 
-verb_form(spurd,  spørre,past,part). %%  Hva spurte jeg om \= hva kan jeg spørre om
-verb_form(spurte, spørre,past,fin).  %%  Irrelevant,
-verb_form(spurt,  spørre,past,part). %%  Hva spurte jeg om \= hva kan jeg spørre om
-verb_form(spurt,  spørre,past,fin).  %% æ spurt om no %% Dial
+verb_form(spurde, spÃ¸rre,past,fin).  %%  Irrelevant 
+verb_form(spurd,  spÃ¸rre,past,part). %%  Hva spurte jeg om \= hva kan jeg spÃ¸rre om
+verb_form(spurte, spÃ¸rre,past,fin).  %%  Irrelevant,
+verb_form(spurt,  spÃ¸rre,past,part). %%  Hva spurte jeg om \= hva kan jeg spÃ¸rre om
+verb_form(spurt,  spÃ¸rre,past,fin).  %% Ã¦ spurt om no %% Dial
 
-verb_form(spør,  spørre,pres,fin). 
-%%% verb_form(spør,  spørre,imp,fin).  %% Irrelevant
-verb_form(spørr,  spørre,pres,fin).    %% slight problem 
-verb_form(spørr,  spørre,imp,fin).  
+verb_form(spÃ¸r,  spÃ¸rre,pres,fin). 
+%%% verb_form(spÃ¸r,  spÃ¸rre,imp,fin).  %% Irrelevant
+verb_form(spÃ¸rr,  spÃ¸rre,pres,fin).    %% slight problem 
+verb_form(spÃ¸rr,  spÃ¸rre,imp,fin).  
 
-verb_form(steg,  øke,past,fin).  %%  Ad Hoc , not syn go
+verb_form(steg,  Ã¸ke,past,fin).  %%  Ad Hoc , not syn go
 %% verb_form(steg,  go,past,fin). %% TA-110118
-verb_form(steget,øke,past,part).
+verb_form(steget,Ã¸ke,past,part).
 %% verb_form(steget,  go,past,part). %% TA-110118
 
 verb_form(stilt, stille,past,part). 
 verb_form(stilte,stille,past,fin). 
-verb_form(sto,   stå,past,fin). 
-verb_form(stått, stå,past,part).
-verb_form(svar,  svare,inf,fin). %%  dial  like å svar
+verb_form(sto,   stÃ¥,past,fin). 
+verb_form(stÃ¥tt, stÃ¥,past,part).
+verb_form(svar,  svare,inf,fin). %%  dial  like Ã¥ svar
 verb_form(svar,  svare,imp,fin). 
 
 verb_form(syns,  mene,pres,fin). 
@@ -19502,7 +19504,7 @@ verb_form(synes, mene,pres,fin).
 verb_form(synest, mene,pres,fin). %% NYN
 verb_form(synst, mene,pres,fin). %%
 
-verb_form(så,    se,past,fin). %% nb also unwanted 
+verb_form(sÃ¥,    se,past,fin). %% nb also unwanted 
 
 verb_form(taka,  ta,inf,fin).
 verb_form(take,  ta,inf,fin).
@@ -19526,10 +19528,10 @@ verb_form(tvunget,tvinge,past,part).
 
 verb_form(valgte, velge,past,fin). 
 verb_form(valgt,  velge,past,part). %% 
-verb_form(var, være,past,fin).   %% past 
-%%   verb_form(var, være,inf,fin).    %% Dial // not synword(var,våre)
+verb_form(var, vÃ¦re,past,fin).   %% past 
+%%   verb_form(var, vÃ¦re,inf,fin).    %% Dial // not synword(var,vÃ¥re)
 verb_form(varsle, varsle,imp,fin).  %% rule?
-verb_form(vart,være,past,fin).   %% NN 
+verb_form(vart,vÃ¦re,past,fin).   %% NN 
 verb_form(vedla,  vedlegge,past,fin).
 verb_form(vedlagt,vedlegge,past,part). 
 
@@ -19542,18 +19544,18 @@ verb_form(ville,  ville,past,fin).  %%
 verb_form(visste, vite,past,fin). 
 %% verb_form(visst,  vite,past,part). %% hvis ??
 
-%% verb_form(vore,være,inf,fin).  %% ?
-verb_form(vore,være,past,part). 
-%% verb_form(være,ankomme,inf,fin). %% (Techn: future be) %% Try without
-verb_form(vori,være,past,part).  %% Dial
-verb_form(virri,være,past,part).
-verb_form(vært,være,past,part).  
+%% verb_form(vore,vÃ¦re,inf,fin).  %% ?
+verb_form(vore,vÃ¦re,past,part). 
+%% verb_form(vÃ¦re,ankomme,inf,fin). %% (Techn: future be) %% Try without
+verb_form(vori,vÃ¦re,past,part).  %% Dial
+verb_form(virri,vÃ¦re,past,part).
+verb_form(vÃ¦rt,vÃ¦re,past,part).  
 
-verb_form(værte,være,past,part). %%  (? actual)
+verb_form(vÃ¦rte,vÃ¦re,past,part). %%  (? actual)
 
-verb_form(væære,være,inf,fin). %%  avoid Være
+verb_form(vÃ¦Ã¦re,vÃ¦re,inf,fin). %%  avoid VÃ¦re
 
-verb_form(åpne,  åpne,imp,fin). 
+verb_form(Ã¥pne,  Ã¥pne,imp,fin). 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -19565,20 +19567,20 @@ preposition(X):-preposition2(X,_).
 
 % preposition2(akkurat,at). 
 
-preposition2(angående,regarding). 
+preposition2(angÃ¥ende,regarding). 
 preposition2(attmed,beside). 
 preposition2(attom,past).  
 
-%% preposition2(av,by).                %%  født av en kvinne
+%% preposition2(av,by).                %%  fÃ¸dt av en kvinne
 %% passive is handled as [av] !! %% (conjunction?)
 %% causes confusion... restene av livet
 
 
 preposition2(av,of).                %%   (sentrum av byen)
-preposition2(av,off).               %% gå av bussen
+preposition2(av,off).               %% gÃ¥ av bussen
 
 preposition2(bak,behind).
-preposition2(bakpå,on).   %% upon/behind). %% Rough  bakpå bussen \= bak bussen
+preposition2(bakpÃ¥,on).   %% upon/behind). %% Rough  bakpÃ¥ bussen \= bak bussen
 preposition2(baki,in).
 
 preposition2(blant,among).  
@@ -19597,38 +19599,38 @@ preposition2(forbi,past).           %% ("by" is ambiguous!)
 preposition2(for,for).     %% prisen for en billett Norw %% TA-110105
 % preposition2(for,of).             %% Hazardous
 
-preposition2(forå,in_order_to).     %%  Technical
+preposition2(forÃ¥,in_order_to).     %%  Technical
 preposition2(foran,at). %% afore).         %%  ? == in front of  
 
-%% preposition2(fordi,because_of). %%  // fordi= forbi Åsvang skole
+%% preposition2(fordi,because_of). %%  // fordi= forbi Ã…svang skole
 %% preposition2(fordi,being_the).  %% 
 
 preposition2(f,from). %% NOT f  -> fra -> etter !!! (Ad Hoc)
 
-%%% preposition2(fra,after).  %% e.g. time  Hazardous %% spørsmål fra brukere
+%%% preposition2(fra,after).  %% e.g. time  Hazardous %% spÃ¸rsmÃ¥l fra brukere
 
 preposition2(fra,from).
 
 preposition2(fremfor,instead_of). %% also subjunction
 
-preposition2(før,before). 
+preposition2(fÃ¸r,before). 
 
 %% preposition2(gjennom,through). %% unwanted in Bus domain 
    
 preposition2(gjennom,past).   
 
-%% preposition2(ganger,times).    %% :-) bussen går (3) ganger
+%% preposition2(ganger,times).    %% :-) bussen gÃ¥r (3) ganger
 preposition2(henimot,towards).  
 preposition2(hinsides,beyond).  %% jargon ???
 
-%% preposition2(hver,every).   %% bussen går hvert minutt // pron,determ ??? emergency
+%% preposition2(hver,every).   %% bussen gÃ¥r hvert minutt // pron,determ ??? emergency
 %% preposition2(hvere,hver). 
 %% preposition2(hvert,every).       %% hver time  // emergency
 
 preposition2(i,in).
-preposition2(ifølge,according_to).
+preposition2(ifÃ¸lge,according_to).
 
-%%     preposition2(etter,according_to). %% Experiment bussen går etter    det jeg forstår
+%%     preposition2(etter,according_to). %% Experiment bussen gÃ¥r etter    det jeg forstÃ¥r
    %% Haz, fom -> etter ->  according_to  
 
 % preposition2(innen,before).      %% before clock / within an hour ???
@@ -19663,25 +19665,25 @@ preposition2(mot,towards).
 % preposition2(nedenfor,below). 
 preposition2(nedenfor,past). %% Rough
 preposition2(nedenom,past).  
-preposition2(nøyaktig,at).
-preposition2(nær,near).
-preposition2(nære,near). %% sted 
-   preposition2(nær,around).  %%% tid
-   preposition2(nære,around).
-preposition2(nærere,nearer).
-preposition2(nærmere,near). 
+preposition2(nÃ¸yaktig,at).
+preposition2(nÃ¦r,near).
+preposition2(nÃ¦re,near). %% sted 
+   preposition2(nÃ¦r,around).  %%% tid
+   preposition2(nÃ¦re,around).
+preposition2(nÃ¦rere,nearer).
+preposition2(nÃ¦rmere,near). 
 
-%% NÆRMEST
+%% NÃ†RMEST
    
-preposition2(nærest,near). 
+preposition2(nÃ¦rest,near). 
 
-preposition2(nærmest,near).      %%
-preposition2(nærmest,around).   
-%% preposition2(nærmeste,nearest).  %%  problematic ( adjective)%% ** 
+preposition2(nÃ¦rmest,near).      %%
+preposition2(nÃ¦rmest,around).   
+%% preposition2(nÃ¦rmeste,nearest).  %%  problematic ( adjective)%% ** 
 
-preposition2(nårtid,when). %% \+ reach 
+preposition2(nÃ¥rtid,when). %% \+ reach 
 
-%% OM (også = HVIS)
+%% OM (ogsÃ¥ = HVIS)
 
 
 preposition2(om,past).   %% TA-110429 #1
@@ -19698,7 +19700,7 @@ preposition2(om,om).          %% Fictive preposition %% TA-110429
 % preposition2(om,about).         %  om bussavganger
 % preposition2(om,after).         %  om en time  = etter en time 
 % preposition2(om,in).            %  om kvelden  (covered by 'by night')
-% preposition2(om,within).        %  være om en time  = før en time 
+% preposition2(om,within).        %  vÃ¦re om en time  = fÃ¸r en time 
 
 %%%%%%%%%
 
@@ -19706,8 +19708,8 @@ preposition2(omkring,about).
 preposition2(omkring,around).    
 preposition2(omlag,around).
 preposition2(omtrent,around).
-%% preposition2(opp,past).         %% (opp Byåsveien) // opp igjen 
-preposition2(oppå,upon).
+%% preposition2(opp,past).         %% (opp ByÃ¥sveien) // opp igjen 
+preposition2(oppÃ¥,upon).
 preposition2(oppover,past). 
 
 %%%%  preposition2(over,above).  %% informasjon over ...
@@ -19725,10 +19727,10 @@ preposition2(per,per).         %%  Per Bogesen (Tele) ?
     preposition2(pr,per).      %%
 preposition2(pga,because_of).  %% (Norwagism) 
 preposition2(presis,at).    %% er bussen min presis *** 
-preposition2(på,on).
+preposition2(pÃ¥,on).
 
- % preposition2(på,of).          %% ( Norwagism  lengden på en buss ) % Haz ??
- % går bussen på onsdag = onsdagens buss * 
+ % preposition2(pÃ¥,of).          %% ( Norwagism  lengden pÃ¥ en buss ) % Haz ??
+ % gÃ¥r bussen pÃ¥ onsdag = onsdagens buss * 
 
 preposition2(rundt,around). 
 preposition2(rundtklokka,around). 
@@ -19741,7 +19743,7 @@ preposition2(rundt,past).      %%   Rundt Trygvason
 preposition2(som,as).          %% NB Doubly defined (no problem) 
 preposition2(som,like). 
 
-preposition2(senest,before).  %%  avoid syn senest -> før -> [før] (adverb)
+preposition2(senest,before).  %%  avoid syn senest -> fÃ¸r -> [fÃ¸r] (adverb)
 
 preposition2(tidligst,after).    %% avoid tidligst-> etter -> beyond
 preposition2(til,to).           
@@ -19757,7 +19759,7 @@ preposition2(tversover,across).
 preposition2(ulik,except). %%  ? 
 preposition2(under,below).
 preposition2(under,during). 
-preposition2(under,under).  %% adv på engelsk ? 
+preposition2(under,under).  %% adv pÃ¥ engelsk ? 
 preposition2(unntatt,except).
 
 preposition2(uten,without).
@@ -19780,17 +19782,17 @@ preposition2(ved,at).
 % preposition2(ved,near).  %% unnecessary %% stopper bussen fra A ved B ?
 preposition2(vha,with).    %%  ( Norw Acronym) 
 preposition2(via,past). 
-preposition2(via,via).     %% nå nth via #1
+preposition2(via,via).     %% nÃ¥ nth via #1
     
 
 %% Preposition to denote directions off place 
-    preposition2(sønnenfor,offside). %% Rough 
-    preposition2(sønnenom,offside).  %% ETC ETC  
+    preposition2(sÃ¸nnenfor,offside). %% Rough 
+    preposition2(sÃ¸nnenom,offside).  %% ETC ETC  
     preposition2(sydfor,offside).    %% 
-    preposition2(sydfør,offside).    %% 
+    preposition2(sydfÃ¸r,offside).    %% 
 %     preposition2(sydfra,offside).    %% particle
 
-    % nord øst vest
+    % nord Ã¸st vest
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -19799,15 +19801,15 @@ preposition2(via,via).     %% nå nth via #1
 noun_form(ansatte,ansatt,plu,u,n).  
 noun_form(barn,barn,plu,u,n).    
 noun_form(bussnumre,bussnummer,plu,u,n). 
-noun_form(bøkene,bok,plu,def,n). %% MTR-020919
-noun_form(bøker,bok,plu,u,n).
+noun_form(bÃ¸kene,bok,plu,def,n). %% MTR-020919
+noun_form(bÃ¸ker,bok,plu,u,n).
 noun_form(foreldre,foreldre,plu,u,n).
-noun_form(forespørselen,spørsmål,sin,def,n).
-noun_form(forespørsler,spørsmål,plu,u,n). 
-noun_form(forespørslene,spørsmål,plu,def,n). %
-noun_form(hender,hånd,plu,u,n). 
+noun_form(forespÃ¸rselen,spÃ¸rsmÃ¥l,sin,def,n).
+noun_form(forespÃ¸rsler,spÃ¸rsmÃ¥l,plu,u,n). 
+noun_form(forespÃ¸rslene,spÃ¸rsmÃ¥l,plu,def,n). %
+noun_form(hender,hÃ¥nd,plu,u,n). 
 noun_form(hus,hus,plu,u,n).       %% Neutrum Nec ?
-noun_form(klærne,klær,plu,def,n). %% klær root 
+noun_form(klÃ¦rne,klÃ¦r,plu,def,n). %% klÃ¦r root 
 noun_form(menn,mann,plu,u,n).         
 noun_form(mennene,mann,plu,def,n).
 noun_form(nettene,natt,plu,def,n). 
@@ -19819,10 +19821,10 @@ noun_form(sedler,seddel,plu,u,n).
 noun_form(syklen,sykkel,sin,def,n).
 noun_form(tidsrommet,tidsrom,sin,def,n).
 noun_form(tidsrom,tidsrom,plu,u,n).   
-noun_form(ting,ting,plu,u,n).     %% Gjelder også alle Intetkjønn!!!!!
+noun_form(ting,ting,plu,u,n).     %% Gjelder ogsÃ¥ alle IntetkjÃ¸nn!!!!!
 noun_form(voksne,voksen,plu,u,n).
-noun_form(værnepliktige,vernepliktig,plu,u,n).
-noun_form(år,år,plu,u,n). % nec?
+noun_form(vÃ¦rnepliktige,vernepliktig,plu,u,n).
+noun_form(Ã¥r,Ã¥r,plu,u,n). % nec?
 
 
 % Numerids
@@ -19832,7 +19834,7 @@ numerid(M,N,num):-
     numerid(M,N).
 
 
-ordinal2(første,first,1).    ordinal2(først,first,1).
+ordinal2(fÃ¸rste,first,1).    ordinal2(fÃ¸rst,first,1).
 ordinal2(andre,second,2).  %  ordinal2(nest,second,2). (nest siste ?)
 %%%     ordinal2(annet,second,2). %% annen en \+ 2. 
 %%%     ordinal2(annen,second,2). 
@@ -19843,7 +19845,7 @@ ordinal2(femte,fifth,5).
 ordinal2(sjette,sixth,6).
 ordinal2(sjuede,seventh,7).
 ordinal2(sjuende,seventh,7). ordinal2(syvende,seventh,7). 
-ordinal2(åttende,eighth,8). 
+ordinal2(Ã¥ttende,eighth,8). 
 ordinal2(niende,ninth,9).
 ordinal2(tiende,tenth,10).
 ordinal2(ellevte,eleventh,11).  
@@ -19857,7 +19859,7 @@ ordinal2(femtende,fifteenth,15).
 ordinal2(sekstende,sixteenth,16).
    ordinal2(sekstonde,seventeenth,17).
 ordinal2(syttende,seventeenth,17).
-   ordinal2(søttende,seventeenth,17).
+   ordinal2(sÃ¸ttende,seventeenth,17).
    ordinal2(sjuttonde,seventeenth,17).
 ordinal2(attende,eighteenth,18).
     ordinal2(attonde,eighteenth,18).
@@ -19865,21 +19867,21 @@ ordinal2(nittende,nineteenth,19).
     ordinal2(nittonde,nineteenth,19).
 ordinal2(tyvende,twentieth,20). 
 ordinal2(tjuende,twentieth,20). 
-ordinal2(tjueførste,twentyfirst,21). 
+ordinal2(tjuefÃ¸rste,twentyfirst,21). 
 ordinal2(tjueandre,twentysecond,22). 
 ordinal2(tjuetredje,twentythird,23). 
 ordinal2(tjuefjerde,twentyfourth,24). 
 ordinal2(tjuefemte,twentyfifth,25). 
 ordinal2(tjuesjette,twentysixth,26). 
 ordinal2(tjuesjuende,twentyseventh,27). 
-ordinal2(tjueåttende,twentyeighth,28). 
+ordinal2(tjueÃ¥ttende,twentyeighth,28). 
 ordinal2(tjueniende,twentyninth,29). 
 
 ordinal2(trettiende,thirtieth,30). 
 ordinal2(tredevte,thirtieth,30). 
 ordinal2(treddevte,thirtieth,30).  
 ordinal2(tredjevte,thirtieth,30).  
-ordinal2(trettiførste,thirtyfirst,31). %% MTR-020918
+ordinal2(trettifÃ¸rste,thirtyfirst,31). %% MTR-020918
 
 % covers the dates
 
@@ -19900,7 +19902,7 @@ numerid(fire,4).
 numerid(fem,5).
 numerid(seks,6).
 numerid(sju,7). numerid(syv,7).
-numerid(åtte,8).
+numerid(Ã¥tte,8).
 numerid(ni,9).
 numerid(ti,10).
 numerid(elve,11).
@@ -19921,11 +19923,11 @@ numerid(atten,18).
 numerid(nitten,19).     
 numerid(tjue,20).    numerid(tyve,20).      
 numerid(tretti,30).  numerid(tredve,30). 
-numerid(førti,40).      
+numerid(fÃ¸rti,40).      
 numerid(femti,50).      
 numerid(seksti,60).     
-numerid(søtti,70).   numerid(sytti,70).   
-numerid(åtti,80).  
+numerid(sÃ¸tti,70).   numerid(sytti,70).   
+numerid(Ã¥tti,80).  
 numerid(nitti,90). 
 numerid(hundre,100).
 numerid(tusen,1000).
@@ -19991,10 +19993,10 @@ noisew(quote('')).
 noisew('{'). %% ad hoc 
 noisew('}'). %%
 
-noisew('«'). 
-noisew('»').
+noisew('Â«'). 
+noisew('Â»').
 
-%%% noisew('ª'). %% l©ªrdag .
+%%% noisew('Âª'). %% lÂ©Âªrdag .
 noisew(' '). 
 noisew('').
 
@@ -20010,14 +20012,14 @@ noisew('-'). %%  :- \+ user:value(teleflag,true). %% Too much trouble
 noisew('~').  
 noisew('_'). 
 
-%% når+går bussen ...
+%% nÃ¥r+gÃ¥r bussen ...
 
 %% TA-100902
-%% noisew('+').  %% hva er 2+2   %%  og ? %% Du må oppgi et sted .....
+%% noisew('+').  %% hva er 2+2   %%  og ? %% Du mÃ¥ oppgi et sted .....
               %% neste+til+ila+fra+voll  
 
 noisew('*').     %% hva er 3*3  => 3:03 %%   6*4 -> 6 4-buses OK
-noisew('¨').     %% NB  ¨ \=  " 
+noisew('Â¨').     %% NB  Â¨ \=  " 
 noisew('#').       %% (or nummer ?)
 
 % noisew(':').       %%  17:04 is a clock, not a date
@@ -20030,17 +20032,17 @@ noisew('(').
 noisew(')'). 
 
 %%  add to cited text to make it compreh. ?
-%% noisew('['). %% buss går fra idrettsbygget til  by[sen butikksenter kl 2000
+%% noisew('['). %% buss gÃ¥r fra idrettsbygget til  by[sen butikksenter kl 2000
 %% noisew(']'). %%                  = BY SENT 
 
 noisew('<'). 
 noisew('>'). 
 
-noisew('¡'). 
-noisew('¯'). 
+noisew('Â¡'). 
+noisew('Â¯'). 
 
 noisew('|'). %% [124] 
-noisew('¦'). %% [166]
+noisew('Â¦'). %% [166]
 
 noisew('%').
 
@@ -20074,27 +20076,27 @@ noisew(alikevel).  %% (spiw)
 
 noisew(altfor). 
 
-%% noisew(altså). %% altså å  %% (redundant) altså ikke => unntatt  NB 
-%% noisew(an).      %%  går an ==> redundant
+%% noisew(altsÃ¥). %% altsÃ¥ Ã¥  %% (redundant) altsÃ¥ ikke => unntatt  NB 
+%% noisew(an).      %%  gÃ¥r an ==> redundant
 
 %% noisew(ane).       %% (9'ane)
-noisew(anslått).  
+noisew(anslÃ¥tt).  
 noisew(antatt).  
 %% noisew(beregnet).   Tidsfristene blir beregnet 
-noisew(anslåtte).  
+noisew(anslÃ¥tte).  
 noisew(antagelig).
 noisew(arane).     %%  (9' arane)
 noisew(aren).      %% 
 noisew(as).        %% company AS
 %% noisew(ass).       %%  as-buss = extrabuss
 noisew(assa).  
-noisew(asså).   
+noisew(assÃ¥).   
 %% noisew(att).   
 %% noisew(atter).     %%  (igjen) =etter
 %% noisew(avd).       %% ???
 %%%%  noisew(avdeling).  
 
-noisew(avgårde). 
+noisew(avgÃ¥rde). 
 
 %% noisew(bare).   %% ikke bare = () \= ikke
 noisew(berre).     %% NB ikkje berre = []
@@ -20104,15 +20106,15 @@ noisew(bla).       %% bla a / bla bla
 noisew(blabla).  
 %% noisew(borte).  %% feilen er borte    
 noisew(bortover). 
-noisew(både).      %% ( very pragmatic)
+noisew(bÃ¥de).      %% ( very pragmatic)
 
-noisew(chø). %% Dial 
+noisew(chÃ¸). %% Dial 
 
-%% noisew(da).     %%  = når ???
+%% noisew(da).     %%  = nÃ¥r ???
 
 noisew(davel).  
 
-noisew(daså).  
+noisew(dasÃ¥).  
 
 %% noisew(dagleg).     %%  redundant
 
@@ -20125,7 +20127,7 @@ noisew(delvis).
 %% noisew(derfor). 
 %% noisew(derimot).  %%redundant
 noisew(derre).     %% di derre
-   noisew(dærre). 
+   noisew(dÃ¦rre). 
 
 noisew(dermed). %% da  . blir dermed %% ad hoc 
 
@@ -20137,7 +20139,7 @@ noisew(detmed). %% det med, but redundant
 noisew(div).  
 noisew(diverse). 
 
-noisew(ds). %% dennes (denne måned) 
+noisew(ds). %% dennes (denne mÃ¥ned) 
 
 noisew(egen).      %%   (roughly)
 
@@ -20170,14 +20172,14 @@ noisew(eneste).
    noisew(enste). 
    noisew(eneset).     %% no spc to noisew
 noisew(engang).     %% redundant ? 
-%% noisew(ennå).    %%  red.
+%% noisew(ennÃ¥).    %%  red.
 % noisew(enklest).    %%  enklest mulig ==> mulig *
 noisew(eine).       %% (?)
 noisew(enten).      %%  enten eller (enten not required)
 noisew(ern).        %% 9 ern
 noisew(erne). 
 
-% noisew(esse).       %% altså Dial %% :-) ? 
+% noisew(esse).       %% altsÃ¥ Dial %% :-) ? 
 % noisew(ass). 
 % noisew(evnt).       %%  -> eller
 % noisew(eventuell). 
@@ -20190,7 +20192,7 @@ noisew(erne).
 noisew(faktisk). 
 noisew(feks).  
 %% noisew(flest).    %%  sup many ? %% flest mulig
-noisew(fordømte).    %% bad ?
+noisew(fordÃ¸mte).    %% bad ?
 noisew(foreksempel). 
 noisew(forlengs). 
 noisew(formodentlig). 
@@ -20201,14 +20203,14 @@ noisew(forresten). %% redundant ?
 
 noisew(forressten).  %% no pardon
 
-% noisew(forståelig). %% hazardous 
+% noisew(forstÃ¥elig). %% hazardous 
 noisew(fortsatt).
-%% noisew(forøvrig). %% (forøvrig) går bussen NOT question
+%% noisew(forÃ¸vrig). %% (forÃ¸vrig) gÃ¥r bussen NOT question
 %% noisew(fram).  %% rekke fram  
 %% noisew(frem).  %% rekke frem
-%% noisew(fritt). %%  :-) Rough her står det fritt for AtB å... 
+%% noisew(fritt). %%  :-) Rough her stÃ¥r det fritt for AtB Ã¥... 
 noisew(fx).       %% f. eks
-noisew(førstkommende). %% alltid default 
+noisew(fÃ¸rstkommende). %% alltid default 
 
 noisew(ganske).   
 noisew(garantert).  
@@ -20224,11 +20226,11 @@ noisew(gjenomsnittlig).
 
 % noisew(gjennomsnitts). %%  -> vanlig 
 
-%% noisew(gjerne). %% // så gjerne * / veldig gjerne 
+%% noisew(gjerne). %% // sÃ¥ gjerne * / veldig gjerne 
 
-noisew(gjærne). 
+noisew(gjÃ¦rne). 
 noisew(gjertlig).
-noisew(gjærtlig).  
+noisew(gjÃ¦rtlig).  
 
 noisew(gresselig). 
 noisew(gresslig).
@@ -20275,20 +20277,20 @@ noisew(hmm).
 noisew(hmm). 
 noisew(hmmm). 
 noisew(huh).
-noisew(hø).
-noisew(hæ).
+noisew(hÃ¸).
+noisew(hÃ¦).
 %% noisew(huff). %% destroys huff da
 noisew(huffda). 
-noisew(hæhæ). 
-noisew(hæn).    %% Dial 
-noisew(hænn).   %%
-noisew(høyt).   %%  :-) Rough
+noisew(hÃ¦hÃ¦). 
+noisew(hÃ¦n).    %% Dial 
+noisew(hÃ¦nn).   %%
+noisew(hÃ¸yt).   %%  :-) Rough
 
 %% noisew(ialt).  %%  destroys alt ialt
 %% noisew(igjen). %% opp igjen = tilbake
 
 %% noisew(ihjel). %% fryse ??  :-)
-noisew(imidlertid). %%  ( but imidlertid går bussen NOT question)
+noisew(imidlertid). %%  ( but imidlertid gÃ¥r bussen NOT question)
 noisew(implisitt). 
 noisew(indirekte).  %%  (Rough)
 noisew(intenst).    %% not used as pre-statement
@@ -20297,30 +20299,30 @@ noisew(intenst).    %% not used as pre-statement
 %% noisew(isteden).
 %% noisew(istedet). 
 %% noisew(istedetfor).  
-%% noisew(istedenfor).   %% istedenfor å si 
+%% noisew(istedenfor).   %% istedenfor Ã¥ si 
  
-noisew(isåfall).  %% what about i så fall/ i såfall ?
-noisew(iår). 
+noisew(isÃ¥fall).  %% what about i sÃ¥ fall/ i sÃ¥fall ?
+noisew(iÃ¥r). 
 %% noisew(jada). %%  ja
 %% noisew(jaja). %%
 noisew(jaggu). 
 noisew(jammen).
 noisew(jamen). 
 noisew(jamvel). 
-noisew(jaså). 
-noisew(jasså). %%
+noisew(jasÃ¥). 
+noisew(jassÃ¥). %%
 noisew(jertlig).
 noisew(jertelig).
 
 % noisew(jo).       %% jeg har jo ingen penger %% jo skjermo 
 % noisew(joda).   %% = ja
-noisew(jøss).  
+noisew(jÃ¸ss).  
 
 %% noisew(kanskje).  %% redun %% TA-110624
 %% noisew(kansje).   %% spiw  %%
 
 noisew(kjempe).   %% kjempe bra 
-%% noisew(kjære).      %% :-)
+%% noisew(kjÃ¦re).      %% :-)
 
 %% noisew(klart). %% det er klart at 
 noisew(kronologisk). 
@@ -20333,12 +20335,12 @@ noisew(kun). %% = bare %% TA-110304
 noisew(lell).
 noisew(letteste). 
 noisew(lokalisert). %% fapp 
-noisew(læll). %% dial
+noisew(lÃ¦ll). %% dial
 
-%% noisew(like).       %% (like før) alle menn er like
+%% noisew(like).       %% (like fÃ¸r) alle menn er like
 
-noisew(likesågodt). 
-noisew(liksågodt).  %%
+noisew(likesÃ¥godt). 
+noisew(liksÃ¥godt).  %%
 
 noisew(likedan).    %% hazardous ? 
 noisew(liksom). 
@@ -20349,7 +20351,7 @@ noisew(mao).        %% TA-110107 also vmod_conjunction
 noisew(max).  
 noisew(medio).      %%  rough
 noisew(mest). 
-noisew(mø).  
+noisew(mÃ¸).  
 
 noisew(iallefall).   
 noisew(iallfall).
@@ -20372,15 +20374,15 @@ noisew(nylig).
 
 noisew(noengang).
 noisew(noensinne). 
-%% noisew(nok). %% -> redundant       %% forståelig nok funker ikke
-noisew(nokså). 
-noisew(nøye).  %% TA-110105
-%% noisew(nøyaktig).   %% er bussen n.   
-noisew(næsten).     %%  ( ikke synword+ noisew)
+%% noisew(nok). %% -> redundant       %% forstÃ¥elig nok funker ikke
+noisew(noksÃ¥). 
+noisew(nÃ¸ye).  %% TA-110105
+%% noisew(nÃ¸yaktig).   %% er bussen n.   
+noisew(nÃ¦sten).     %%  ( ikke synword+ noisew)
 
 noisew(ogsay). 
-noisew(også).       %% ( it should not disappear in the error message)
-   noisew(åsså).
+noisew(ogsÃ¥).       %% ( it should not disappear in the error message)
+   noisew(Ã¥ssÃ¥).
 noisew(oh).    
 noisew(oi). 
 noisew(oj).
@@ -20400,16 +20402,16 @@ noisew(overhodet).
 
 noisew(pang).          %%  :-)
 %% noisew(plutselig).  %% redundantly %% TA-110520   
-noisew(primær).
+noisew(primÃ¦r).
 %% noisew(ps).      %% P.S. -> personal 
-noisew(pøh). 
-noisew(påvei).  %% pragm 
+noisew(pÃ¸h). 
+noisew(pÃ¥vei).  %% pragm 
 
 noisew(rasende). %% fort
 noisew(relativt).
 %% noisew(rent). %% clean 
 noisew(respektive).
-%% noisew(rett).       %% (rett før) rett og slett
+%% noisew(rett).       %% (rett fÃ¸r) rett og slett
 %% noisew(riktig).     %%  er du riktig klok // du varer riktig
 noisew(rimelig).
 noisew(rn).   %% 5ern 
@@ -20419,33 +20421,33 @@ noisew(sannelig).
 noisew(sannerlig).  
 %% noisew(sannsynligvis). %% redun
 % noisew(seg).        %% NO
-% noisew(sjø).        %% Dial+ lake
-noisew(sjøh).         %% Dial :-) 
-noisew(schø).         %% Dial :-) 
-noisew(schøh).        %% Dial :-) 
+% noisew(sjÃ¸).        %% Dial+ lake
+noisew(sjÃ¸h).         %% Dial :-) 
+noisew(schÃ¸).         %% Dial :-) 
+noisew(schÃ¸h).        %% Dial :-) 
 %% noisew(selv)       %% selv om  
-   noisew(sjøl).  
-   noisew(sjølv). 
+   noisew(sjÃ¸l).  
+   noisew(sjÃ¸lv). 
 noisew(selve).         %%  hva koster selve bussen ?
-%  noisew(selvfølgelig). %% redundant0
-%  noisew(selfølgelig).
-noisew(seriøst). 
+%  noisew(selvfÃ¸lgelig). %% redundant0
+%  noisew(selfÃ¸lgelig).
+noisew(seriÃ¸st). 
 noisew(serska). %% dial
 %% noisew(sikkert).   %% sikkert best 
 %% noisew(singel).       %%  default 
 
-%% noisew(sjø).  %% TA-110330        %% (dialect, "you see")
+%% noisew(sjÃ¸).  %% TA-110330        %% (dialect, "you see")
 
 noisew(skikkelig). 
 noisew(sikkelig).     %%
-   noisew(skjø). 
+   noisew(skjÃ¸). 
 noisew(slag). 
-noisew(slags).     %%   hva slags vær  =/=> hva vær
+noisew(slags).     %%   hva slags vÃ¦r  =/=> hva vÃ¦r
    noisew(slaks). 
 % noisew(slik).    %%  Allow slik at // Soft Noise
 %% noisew(slike).  %% disse 
 %% noisew(slikt).  %% slik er vanlig 
-%% noisew(snart).     %% ? så snart=når
+%% noisew(snart).     %% ? sÃ¥ snart=nÃ¥r
 noisew(sondere).   %%  (no synwords to noise)
 noisew(sonderre).  %%
 noisew(spesielt). 
@@ -20462,26 +20464,26 @@ noisew(stk).
 noisew(stykk).  
 %% noisew(stykker). %% i stykker ? 
 noisew(sukk). 
-%% noisew(søren). %% allowed swearword :-) %% TA-100912 
-noisew(særli). 
-noisew(særlig). 
-noisew(særlige).
-noisew(særlg). 
-noisew(såkalt). 
-   noisew(såkalte). 
-%% noisew(sånn). %%   sånn at 
-noisew(sånndærre). %%
-%% noisew(sånt).   %% du sier sånt 
-noisew(såjnn). %%  :-)
-noisew(sånnj). %%  :-)
+%% noisew(sÃ¸ren). %% allowed swearword :-) %% TA-100912 
+noisew(sÃ¦rli). 
+noisew(sÃ¦rlig). 
+noisew(sÃ¦rlige).
+noisew(sÃ¦rlg). 
+noisew(sÃ¥kalt). 
+   noisew(sÃ¥kalte). 
+%% noisew(sÃ¥nn). %%   sÃ¥nn at 
+noisew(sÃ¥nndÃ¦rre). %%
+%% noisew(sÃ¥nt).   %% du sier sÃ¥nt 
+noisew(sÃ¥jnn). %%  :-)
+noisew(sÃ¥nnj). %%  :-)
 noisew(saann). 
 noisew(sammenlagt). 
 noisew(temmelig).  
 %% noisew(tidsnok).  %% = presis  punctually ??
 noisew(tilfeldigvis).
-noisew(tilnærmet).  
+noisew(tilnÃ¦rmet).  
 noisew(tilsammen).    %% (eller redundant ?)
-%% noisew(tilsendt).     %% få tilsendt 
+%% noisew(tilsendt).     %% fÃ¥ tilsendt 
 noisew(tilstede).  
 noisew(tilsvarende). 
 
@@ -20489,11 +20491,11 @@ noisew(tja).
 noisew(totalt).  
 
 %% noisew(trafikk):- user:value(smsflag,true). 
-%% noisew(tvert).       %% nå!/ tvert om / tvert nei %% tvert imot
+%% noisew(tvert).       %% nÃ¥!/ tvert om / tvert nei %% tvert imot
 %% noisew(tydeligvis). 
 noisew(typisk).      %%  rough 
 
-noisew(uansett). %% * uansett vær  %% TA-110503
+noisew(uansett). %% * uansett vÃ¦r  %% TA-110503
 
 %% noisew(uff). %% destroys uff da 
  noisew(uffda).   
@@ -20515,7 +20517,7 @@ noisew(utrolig).      %% :-)
 %% noisew(veldig).   %% positivt gradsadverb     
 noisew(venligst).     %%  (DK)
 noisew(vennligst). 
-noisew(versågod). 
+noisew(versÃ¥god). 
 noisew(vesentlig).  
 noisew(vettu). 
 noisew(vidare).  
@@ -20526,28 +20528,28 @@ noisew(visse).
 %% noisew(visst). 
 noisew(visstnok).  
 noisew(voldsomt). 
-noisew(væresågod). 
-noisew(værsåsnill).
-noisew(værsågod). %% N: takk -> S:værsågod  -> N: takk
-noisew(værsegod).
+noisew(vÃ¦resÃ¥god). 
+noisew(vÃ¦rsÃ¥snill).
+noisew(vÃ¦rsÃ¥god). %% N: takk -> S:vÃ¦rsÃ¥god  -> N: takk
+noisew(vÃ¦rsegod).
 noisew(versegod).
 
 
 %% noisew(yo).  %% jo , ja
 
-noisew(øh). 
-noisew(øhh).  
-noisew(ørten). %% umpteen 
-noisew(æsj).
+noisew(Ã¸h). 
+noisew(Ã¸hh).  
+noisew(Ã¸rten). %% umpteen 
+noisew(Ã¦sj).
 
-noisew(åh). 
-noisew(ååh). 
-noisew(ånei). 
-noisew(ånej). 
-noisew(ånkli). %% ordentlig
-noisew(åpenbart). %% TA-111002 *det er åpenbart at
-noisew(årntli).  
-noisew(årntlig). 
+noisew(Ã¥h). 
+noisew(Ã¥Ã¥h). 
+noisew(Ã¥nei). 
+noisew(Ã¥nej). 
+noisew(Ã¥nkli). %% ordentlig
+noisew(Ã¥penbart). %% TA-111002 *det er Ã¥penbart at
+noisew(Ã¥rntli).  
+noisew(Ã¥rntlig). 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

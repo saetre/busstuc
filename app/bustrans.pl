@@ -7674,7 +7674,7 @@ id  atdate2(_DaySeqNo,EX),
     not flag(exit),
     add flag(exit),
     add message(standnight)
-ip  \+  user:extraallowed_night(EX,_).
+ip  \+  extraallowed_night(EX,_).
 
 
 
