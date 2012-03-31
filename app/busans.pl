@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE busans.pl
 %% SYSTEM BUSTUC
 %% CREATED JB-970220
@@ -8,7 +9,7 @@
 
 % Lager svarene til BussTUC - 
 % Produksjonesregler, predikater som lager fraser og 
-% relasjoner mellom konsepter og ord på hvert språk
+% relasjoner mellom konsepter og ord pÃ¥ hvert sprÃ¥k
 %
 
 :- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
@@ -71,7 +72,7 @@ ip  [].
 
 
 
-%% Notify about relaxations in the query ØF-991005
+%% Notify about relaxations in the query Ã˜F-991005
 relaxroute rule
 is relax(selectroute)
 id add (bcpbc(not), bcp(withthat), bcp(arrivaltime), period) 
@@ -230,7 +231,7 @@ ip	 %% Place == hovedterminalen, %%  skriv ut retning !
 
 % Denne matcher bare en gang, av en eller annen merkelig grunn
 coming rule 
-is  present keepto(Place,_,_),seen passevent(_,_,_,_,_,_) % både from og to
+is  present keepto(Place,_,_),seen passevent(_,_,_,_,_,_) % bÃ¥de from og to
 id	 replace (bcp(coming),bcp(from),bwr(FP),period)
 	 with    (bcp(coming),bcp(from),bwr(FP),bcp(to),bwr(Place),period)
 ip	 [].
@@ -480,9 +481,9 @@ ip  atomic(Station).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Språkavhengige regler. Skal være nest sist
+% SprÃ¥kavhengige regler. Skal vÃ¦re nest sist
 
-% På Dag,  buss passerer --> På Dag passerer buss
+% PÃ¥ Dag,  buss passerer --> PÃ¥ Dag passerer buss
 thereare rule 
 is  []
 id  not bcp(there),  %% not there are 1 departure. ... passes ... 
@@ -501,7 +502,7 @@ id	 replace (bcp(on),outday(Day),comma,bcp(there),bcp(are))  %% at -> on
 ip  isday(Day),language(norsk).
 
 % Dag abus goes --> Dag goes abus
-dagenbussgår rule 
+dagenbussgÃ¥r rule 
 is  []
 id	 replace (bcp(on),outday(Day),comma,bcp(abus),bcp(goes)) %% at -> on
 	 with    (bcp(on),outday(Day),bcp(goes),bcp(abus))       %%
@@ -509,7 +510,7 @@ ip  isday(Day),language(norsk).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Formatering. Skal være sist  
+% Formatering. Skal vÃ¦re sist  
 
 % Lager stor bokstav etter punktum etc.
 periodB rule 
@@ -523,7 +524,7 @@ is  []
 id	 replace (startmark,Sentenceend) with startmark
 ip	 sentenceend(Sentenceend).
 
-% Lager stor bokstav først i svaret
+% Lager stor bokstav fÃ¸rst i svaret
 bigstart rule 
 is  []
 id  replace (startmark,bcp(A)) with (startmark,bcpbc(A))

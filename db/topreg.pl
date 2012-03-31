@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE topreg.pl
 %% SYSTEM BussTUC DOMAIN TT
 %% CREATED TA-981231
@@ -25,7 +26,7 @@
 %% Route Domains %%
 
 routedomain(tt).  %% Team Trafikk
-routedomain(gb).  %% Gråkallbanen
+routedomain(gb).  %% GrÃ¥kallbanen
 routedomain(fb).  %% Flybussen
 routedomain(tmn). %% Generic for TMN related routes
 

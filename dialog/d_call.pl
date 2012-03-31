@@ -1,6 +1,7 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE: d_call.pl
 %% SYSTEM BUSTER
-%% CREATED ØF-010101
+%% CREATED Ã˜F-010101
 %% REVISED TA-051017
 
 %% Compiles all of the necessary files.

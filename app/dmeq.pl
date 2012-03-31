@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE dmeq.pl
 %% SYSTEM BUSTER/TELEBUSTER
 %% CREATED TA-051011
@@ -6,7 +7,7 @@
 %% Domain Equivalents common  tele and bus
 
 
-%%%%%%%% dmeq(A,B) betyr at ordet til høyre
+%%%%%%%% dmeq(A,B) betyr at ordet til hÃ¸yre
 %%%%%%%% betyr det samme som ordet til venstre i dette domenet
 %%%%%%%% First argument must be bound !!!
 
@@ -64,7 +65,7 @@ dmeq(battime,within).
 
 dmeq(beforenil,before).
 dmeq(beforenil,nil). 
-dmeq(beforenil,to).     %% Norwagism (være på Nardo til 0800)  
+dmeq(beforenil,to).     %% Norwagism (vÃ¦re pÃ¥ Nardo til 0800)  
 
 
 %  dmeq(bepass,be1). %% if be, other rules apply
@@ -114,7 +115,7 @@ dmeq(busdeparrN,nightbus).
 dmeq(busdeparrN,X):- 
    dmeq(busdeparr,X). 
 
-%% dmeq(busdeparr,time).        %%  IKKE ALLE NÅR-spørsmål
+%% dmeq(busdeparr,time).        %%  IKKE ALLE NÃ…R-spÃ¸rsmÃ¥l
 
 dmeq(busstation,station).   
 dmeq(busstation,busstation). %%  (busstation is new subclass)
@@ -211,7 +212,7 @@ dmeq(intime,nil).
 dmeq(intime,in).
 
 dmeq(knownlanguage,norsk).
-dmeq(knownlanguage,bokmål).
+dmeq(knownlanguage,bokmÃ¥l).
 dmeq(knownlanguage,nynorsk).
 dmeq(knownlanguage,norwegian).
 dmeq(knownlanguage,english).
@@ -262,7 +263,7 @@ dmeq(nato,on). %% wanna be ...
 dmeq(nato,at).
 dmeq(nato,outside). 
 dmeq(nato,in).      %% in sentrum
-dmeq(nato,nil).     %%  Jeg vil ankomme  nardo før 18 og er på nth.
+dmeq(nato,nil).     %%  Jeg vil ankomme  nardo fÃ¸r 18 og er pÃ¥ nth.
 
 dmeq(near,at).
 dmeq(near,close).
@@ -401,7 +402,7 @@ dmeq(timeprep,after).
 dmeq(timeprep,around).
 dmeq(timeprep,at).
 
-dmeq(timeclass,time). %%  buss på kvelden ==> srel/on/evening/E 
+dmeq(timeclass,time). %%  buss pÃ¥ kvelden ==> srel/on/evening/E 
 dmeq(timeclass,evening).
 dmeq(timeclass,daypart). 
 %% etc ad nauseam
@@ -411,7 +412,7 @@ dmeq(timeunit,minute).
 dmeq(timeunit,hour).
 dmeq(timeunit,day).    %% :-)
 
-dmeq(to,on).    %% Busstider for buss 9 på Teglverkskrysset. 
+dmeq(to,on).    %% Busstider for buss 9 pÃ¥ Teglverkskrysset. 
 dmeq(to,to).
 dmeq(to,for).      %% Anglicism, not 100% correct in Norwegian
 dmeq(to,towards). 
@@ -434,13 +435,13 @@ dmeq(trafficant,airbus).   %% TA-090331
 dmeq(trafficant,bus).          %%  allowed to go by bus ( e.g. no cats )
 dmeq(trafficant,car). 
 dmeq(trafficant,departure). 
-dmeq(trafficant,direction).    %% far fetched ???  %% hvilken vei går til
+dmeq(trafficant,direction).    %% far fetched ???  %% hvilken vei gÃ¥r til
 dmeq(trafficant,duration).     %% technical: varigheten er fra A til B
 dmeq(trafficant,eveningroute).
 dmeq(trafficant,nightbus).
 dmeq(trafficant,number). %% TA-091215 in case nr 7 \= route 7
 dmeq(trafficant,route). 
-dmeq(trafficant,route_plan). %% hvilke trasee går til
+dmeq(trafficant,route_plan). %% hvilke trasee gÃ¥r til
 dmeq(trafficant,tram).  
 dmeq(trafficant,tram_route_plan). 
 dmeq(trafficant,trip).
@@ -465,7 +466,7 @@ dmeq(travel,pass).
 dmeq(travel,run).  
 dmeq(travel,stop). 
 dmeq(travel,take).
-dmeq(travel,think).   %% tenker på buss
+dmeq(travel,think).   %% tenker pÃ¥ buss
 dmeq(travel,travel).
 % dmeq(travel,use).   %% use a bus
 
@@ -493,7 +494,7 @@ dmeq(travelfrom,pass).
 dmeq(travelfrom,run).  
 dmeq(travelfrom,start).
 dmeq(travelfrom,take).
-dmeq(travelfrom,think).   %% tenker på buss
+dmeq(travelfrom,think).   %% tenker pÃ¥ buss
 dmeq(travelfrom,travel).
 
  %% travel, intention to arrive
@@ -513,7 +514,7 @@ dmeq(travelto,pass).
 dmeq(travelto,run).  
 dmeq(travelto,stop). 
 dmeq(travelto,take).
-dmeq(travelto,think).   %% tenker på buss
+dmeq(travelto,think).   %% tenker pÃ¥ buss
 dmeq(travelto,travel).
 
 
@@ -549,7 +550,7 @@ dmeq(within,at).
 dmeq(within,before).
 dmeq(within,by). 
 dmeq(within,in).     %%  contra   in means possibly  i 8 tiden 
-dmeq(within,on).     %%  (Norwagism) på 30 minutter
+dmeq(within,on).     %%  (Norwagism) pÃ¥ 30 minutter
 dmeq(within,to).     %% Norwagism   til Kl 2100
 dmeq(within,until). 
 dmeq(within,within).

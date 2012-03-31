@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE tucsms.pl 
 %% SYSTEM TUC
 %% CREATED  TA-020125
@@ -37,7 +38,7 @@
 
    (nodotflag := false),       %% Interm. dots are  retained 
 
-   (tramflag := false),        %% A/S Gråkallen not OK at TEAM
+   (tramflag := false),        %% A/S GrÃ¥kallen not OK at TEAM
 
    (parsetime_limit := 3000),  %% Fast server
 

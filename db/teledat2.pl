@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE teledat2.pl   
 %% SYSTEM TeleTUC
 %% CREATED TA-020605
@@ -35,14 +36,14 @@ teletopic1(X):-
 bustopic1(X):- 
     member(X,[address, arrive,clock,date,station,neighbourhood,
               city,bus,place,route, 
-              go,dit,her,hit,kl,           %% nå
+              go,dit,her,hit,kl,           %% nÃ¥
               street,
               to,from]).
 
 
 
 
-building(itbygget).       %% IT-vest/IT-syd/IT-øst
+building(itbygget).       %% IT-vest/IT-syd/IT-Ã¸st
 building(elektrobygget).  %% Elektro A/B/C/D
 building(hovedbygget).
 building(sentralbygget).  %% sentralbygg I/ sentralbygg II
@@ -54,7 +55,7 @@ building(realfagbygget).  %% [s] Off name
 %% Convert all street filed values to legal busstuc terms 
 
 %  Tabularized Ad Hoc
-ldaptotucplace('Høgskoleringen 1',høgskoleringen-1).
+ldaptotucplace('HÃ¸gskoleringen 1',hÃ¸gskoleringen-1).
 
 ldaptotucplace('Bragstads Pl 2b',o_s_bragstads_plass-2). %% Pl
 ldaptotucplace('Bragstads Pl 6', o_s_bragstads_plass-6).
@@ -66,8 +67,8 @@ ldaptotucplace('Bragstads pl 6', o_s_bragstads_plass-6).
 ldaptotucplace('O. S. Bragstads plass 2',o_s_bragstads_plass-2). 
 
 ldaptotucplace('Dragvoll',dragvoll).
-ldaptotucplace('S. Sælands v 7',sem_sælands_street-7).
-ldaptotucplace('S. Sælands v 9',sem_sælands_street-9).
+ldaptotucplace('S. SÃ¦lands v 7',sem_sÃ¦lands_street-7).
+ldaptotucplace('S. SÃ¦lands v 9',sem_sÃ¦lands_street-9).
 
 
 tablename(katnavn).     %% TLF-021114
@@ -88,9 +89,9 @@ legal_tagname(amble). %% just to have one
 
 %% NORWEGIAN %%%%%%%%%
 
-hazard_tagname(adjø). %% actually unnecessary 
+hazard_tagname(adjÃ¸). %% actually unnecessary 
 
-hazard_tagname(sælands). %% Panic:  Tagger ->  lastname
+hazard_tagname(sÃ¦lands). %% Panic:  Tagger ->  lastname
 
 
 hazard_tagname('-').       %% svein-o hvassovd =>  svein o hvassovd
@@ -116,22 +117,22 @@ hazard_tagname(du).
 
 hazard_tagname(en).   
 hazard_tagname(english).   %% do you speak english
-hazard_tagname(er).        %% er Arne Halaas lærer 
+hazard_tagname(er).        %% er Arne Halaas lÃ¦rer 
 
 hazard_tagname(etg). 
 hazard_tagname(etage). 
 hazard_tagname(etasje).    %% tagged as departent ! 
-hazard_tagname(etter).     %% søker etter
+hazard_tagname(etter).     %% sÃ¸ker etter
 
 hazard_tagname(fins). 
 hazard_tagname(folk).
 hazard_tagname(fra). 
 hazard_tagname(fredag). %% ?
-hazard_tagname(før).    %% 
-hazard_tagname(første). 
+hazard_tagname(fÃ¸r).    %% 
+hazard_tagname(fÃ¸rste). 
 
 hazard_tagname(gate). 
-hazard_tagname(går).
+hazard_tagname(gÃ¥r).
 
 hazard_tagname(han). 
 hazard_tagname(hans).   
@@ -154,16 +155,16 @@ hazard_tagname(mai).
 hazard_tagname(med).  
 hazard_tagname(meeting).
 hazard_tagname(must).    %% English 
-hazard_tagname(møte).    %%  (møterom ok) 
+hazard_tagname(mÃ¸te).    %%  (mÃ¸terom ok) 
 
 hazard_tagname(navn). 
-hazard_tagname(når). 
+hazard_tagname(nÃ¥r). 
 
 hazard_tagname(lerkendal). %% NOT Firstname 
 hazard_tagname(nardo).     %% NOT Firstname 
 hazard_tagname(nth). 
 %% hazard_tagname(ntnu).  %% but not firstname
-hazard_tagname(nå). 
+hazard_tagname(nÃ¥). 
 
 hazard_tagname(og). 
 hazard_tagname(program).
@@ -193,7 +194,7 @@ hazard_tagname(vil).
 
 hazard_tagname(bus).  
 
-hazard_tagname(gløshaugen). %% Ad Hoc 
+hazard_tagname(glÃ¸shaugen). %% Ad Hoc 
 
 hazard_tagname(get).  
 hazard_tagname(have). 
@@ -208,7 +209,7 @@ hazard_tagname(you).
 hazard_tagname(with).      %% With navn
 
 
-%%%  synname(torbjorn,torbjørn). %% for lack of æøå // busdat
+%%%  synname(torbjorn,torbjÃ¸rn). %% for lack of Ã¦Ã¸Ã¥ // busdat
 
 %% Unwanted name: Ad hoc total rejection
 
@@ -216,7 +217,7 @@ hazard_tagname(with).      %% With navn
 
 %%%% unwanted_dbname(X) :- unwanted_name(X). 
 
-unwanted_dbname(gløshaugen). %% <--- Ad Hoc
+unwanted_dbname(glÃ¸shaugen). %% <--- Ad Hoc
 
 
 %%%%%%%%%%%%%%%%%%%%%%
@@ -241,6 +242,8 @@ has_att_val(_person,birthday,(tore,amble),date(1945,04,21)).   %% TA-110519
 has_att_val(_person,retirement,(arvid,holme),date(2011,1,17)). %% TA-101006
 has_att_val(_person,birthday,(arvid,holme),date(1941,1,17)).   %% TA-110519
 
+has_att_val(_person,birthday,(trond,engell),date(1985,03,09)). %% TE-120215
+
 has_att_val(_agent,language,tuc,norsk).   %% TA-110825
 has_att_val(_agent,language,tuc,english). %% 
 
@@ -251,9 +254,13 @@ has_att_val(agent,creator,tuc,tagore).       %% NB agent
 has_att_val(agent,leader,tuc,tagore).        %% TA-110606
 
 has_att_val(_agent,address,atb,'Kongens gate 34b'). %% TA-110622
-has_att_val(person,address,(tore,amble),'Guds høyre hånd'). %% RS-120305
-has_att_val(person,address,tore,'Guds høyre hånd'). %% RS-120305
-has_att_val(person,address,amble,'Guds høyre hånd'). %% RS-120305
+has_att_val(person,address,(tore,amble),'Guds hÃ¸yre hÃ¥nd'). %% RS-120305
+has_att_val(person,address,tore,'Guds hÃ¸yre hÃ¥nd'). %% RS-120305
+has_att_val(person,address,amble,'Guds hÃ¸yre hÃ¥nd'). %% RS-120305
+
+has_att_val(person,address,(trond,engell),'IT-Vest'). %% TE-120215
+has_att_val(person,address,trond,'IT-Vest'). %% TE-120215
+has_att_val(person,address,engell,'IT-Vest'). %% TE-120215
 
 has_att_val(agent,mailaddress,tagore,'toreamb@idi.ntnu.no'). %% TA-110120
 has_att_val(agent,mailaddress,tuc,'tagore@idi.ntnu.no'). %% ( only tuc ???)

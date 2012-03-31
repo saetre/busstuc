@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE pragma.pl
 %% SYSTEM BUSTUC
 %% AUTHOR J.S.Bratseth
@@ -68,7 +69,7 @@ pragma_aux(_,_,Dest,Dest).  % Succeeds and  stops recursion when no more
 
 
 %% This allows makes it possible to use the changes in both source and
-%% destination - ØF-991005
+%% destination - Ã˜F-991005
 
 pragma_complete(RuleModule, SourceIn, SourceOut, DestIn, DestOut) :-
 	writepragmastep(RuleModule,SourceIn,DestIn),

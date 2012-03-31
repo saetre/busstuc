@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE bustermain2.pl
 %% SYSTEM BUSTER
 %% CREATED TA-930531
@@ -783,7 +784,7 @@ grammar2(L,error):-                % Failed with type check,
 
        nl, 
        doubt('- - - Incomprehensible words: ', %% '-'  means No Pay 
-             '- - - Uforståelige ord: '),
+             '- - - UforstÃ¥elige ord: '),
        nl,                                     %% TA-050810
        writeq(Z),nl, nl.
 
@@ -834,7 +835,7 @@ grammar2(L,error):-
 
        nl,                             
        doubt('- - - Meaningless at * - - -',
-             '- - - Meningsløst ved * - - -'),
+             '- - - MeningslÃ¸st ved * - - -'),
        mix(Attempt1,L),
 
    stopteleerror.
@@ -861,7 +862,7 @@ grammar2(L,error):-                  % Failed also with type check
     startteleerror,
 
         doubt('- - - Incomprehensible at  * - - -',
-              '- - - Uforståelig ved * - - -'), 
+              '- - - UforstÃ¥elig ved * - - -'), 
         mix(Attempt2,L),
 
      stopteleerror.
@@ -907,13 +908,13 @@ no_verb(L) :- \+ verbed_sentence(L).
 verbed_sentence(L):- 
     member(W,L), 
     W = w(R,ListV),
-    R \== når,                % = nå = now (doesn' count)
-    R \== nå,  
-    R \== så, 
+    R \== nÃ¥r,                % = nÃ¥ = now (doesn' count)
+    R \== nÃ¥,  
+    R \== sÃ¥, 
     (member(verb(_,_,_),ListV);
      member([skal],ListV); 
      member([vil],ListV); 
-     member([må],ListV)), 
+     member([mÃ¥],ListV)), 
    !.
 
 present(_,nil):-!.      % code printed by side effect 
@@ -1130,7 +1131,7 @@ update_compnames(Compnames) :-                  %% MTK 021018
 
 create_taggercall(L2,PAT):-
 
-    append_synnames(L2,L3), %% add synnames (torbjorn=torbjørn)
+    append_synnames(L2,L3), %% add synnames (torbjorn=torbjÃ¸rn)
                             %% BEFORE taggercall
     
     remove_hasardousnames(L3,L4), %% hvilken tittel har  per borgesen
@@ -1168,7 +1169,7 @@ ltoplus([Z,Y|X], ( UY+Z)):-
 ltoplus([X],X).
 ltoplus([],[]). %% empty %% TA-051015
 
-plustoatom(A+B,AB):- !,%% jævla hack %% TA-020619
+plustoatom(A+B,AB):- !,%% jÃ¦vla hack %% TA-020619
     plustoatom(A,A1),
     plustoatom(B,B1),
     append_atomlist([A1,'+',B1],AB).

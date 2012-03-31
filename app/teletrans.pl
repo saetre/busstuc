@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE teletrans.pl
 %% SYSTEM NOTUC
 %% CREATED TA-011101
@@ -514,7 +515,7 @@ is  exactly (which(Time),Time isa Timeq)
 id   add (timenow(T),timeis(T))
 ip    dmeq([time,clock],Timeq). %% not duration   %% TA-990916
 
-% Hva er klokka nÂ?
+% Hva er klokka n√•?
 212 rule
 is  exactly (which(A),B isa Timeq,be1/A/C,event/real/C,
              srel/nil/time/B/C,srel/now/time/nil/C)
@@ -782,7 +783,7 @@ ip  [].
 
 
 goddagmann rule
-is  howmany(Bus),present Bus isa Frog % avoid GodDagMannÿkseskaft answers (GDMÿ)
+is  howmany(Bus),present Bus isa Frog % avoid GodDagMann√òkseskaft answers (GDM√ò)
 id  not message(_Already), %% TA-991111
     addfront message(donotknow)
 ip  \+ dmeq(busdeparr,Frog),

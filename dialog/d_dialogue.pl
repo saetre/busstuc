@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE   d_dialogue.pl
 %% SYSTEM BUSTER
 %% CREATED AM-980218
@@ -185,7 +186,7 @@ evalline(error, _) :-
 
    waves, %% TA-050809
 
-	write('Jeg forstår ikke.'), nl.
+	write('Jeg forstÃ¥r ikke.'), nl.
 
 
 
@@ -196,7 +197,7 @@ evalline(error, _) :- %% TA-070201
 
    waves, %% TA-050809
 
-	write('Jeg forstår fortsatt ikke'), nl.  %%% og må desverre avbryte samtalen
+	write('Jeg forstÃ¥r fortsatt ikke'), nl.  %%% og mÃ¥ desverre avbryte samtalen
 %%    reset_dialog.
 
 

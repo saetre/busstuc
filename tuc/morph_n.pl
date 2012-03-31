@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE morph_n.pl
 %% SYSTEM TUC
 %% AUTHOR T.Amble
@@ -57,7 +58,7 @@ lcode2(ADVN,adv(ADVE)):-
 
 
 lcode2(V,verb(VE,X,Y)):-  
-    \+ dict_n:unwanted_verb(V), %%  ( mår \= må+r)
+    \+ dict_n:unwanted_verb(V), %%  ( mÃ¥r \= mÃ¥+r)
     lexv(V,VNO,X,Y),
     dict_n:verbroot2(VNO,VE).      
 
@@ -137,7 +138,7 @@ lcode2(TRYGT,adj2(SAFE,nil)):- %% rasjonelt
     dict_n:adjective2(TRYGG,SAFE).   %% dict_n.pl
 
 
-lcode2(TRYGT,adj2(SAFE,nil)):- %% tøft 
+lcode2(TRYGT,adj2(SAFE,nil)):- %% tÃ¸ft 
     \+  dict_n:unwanted_adjective(TRYGT), 
     ends_with(TRYGT,TRY,ft),
     ends_with(TRYGG,TRY,ff),
@@ -221,7 +222,7 @@ lexv(ELSKE,ELSKE,inf,fin):- %% New tense  inf
     ends_with(ELSKE,_,e).
 
 
-/* være \== pres,fin 
+/* vÃ¦re \== pres,fin 
 
 lexv(ELSKE,ELSKE,pres,fin):- %% Dialect 
     ends_with(ELSKE,_,e).
@@ -230,7 +231,7 @@ lexv(ELSKE,ELSKE,pres,fin):- %% Dialect
 lexv(sende,sende,inf,fin):-!. %%  emphatic E  sEnde \= seende 
 lexv(lande,lande,inf,fin):-!.
 
-lexv(SEENDE,SE,pres,part):-   %% gående 
+lexv(SEENDE,SE,pres,part):-   %% gÃ¥ende 
     ends_with(SEENDE,SE,ende).
 
 lexv(ELSKENDE,ELSKE,pres,part):-     
@@ -269,7 +270,7 @@ lexv(ELSKET,ELSKE,past,fin):-      %% NB, viktig at Inf.formen opptrer (ELSKE)
 
     ends_with(ELSKET,ELSKE,t),
     \+ user:testmember(ELSKE,[komme]),
-    ends_with(ELSKE,_,e).     %% not gå --> gåt 
+    ends_with(ELSKE,_,e).     %% not gÃ¥ --> gÃ¥t 
 
 
 
@@ -313,7 +314,7 @@ lexv(SENDTES,SENDE,past,pass):-
     ends_with(SENDE,SEND,e).
 
 
-lexv(var,være,past,fin):-!. %% not imperative of vare
+lexv(var,vÃ¦re,past,fin):-!. %% not imperative of vare
 
 lexv(ELSK,ELSKE,imp,fin):-  %%  (or fin,imp ?)  %% vise = imp ???
     \+ dict_n:unwanted_verb(ELSK), %% e.g. lov
@@ -321,12 +322,12 @@ lexv(ELSK,ELSKE,imp,fin):-  %%  (or fin,imp ?)  %% vise = imp ???
                             %% NB  komme ==> komm!   (OK ?)
 
 lexv(X,X,inf,fin). %% NB was pres fin 
-                   %% inf fin before imp fin (gå)
+                   %% inf fin before imp fin (gÃ¥)
 
 lexv(GI,GI,imp,fin):-  %% vil IKKE imp !!!
-   GI \== nå, %% ikke nå!   %% AD Hoc 
+   GI \== nÃ¥, %% ikke nÃ¥!   %% AD Hoc 
    user:last_character(GI,Vok), %% New utility predicate
-   user:member(Vok,[a,i,o,u,y,æ,ø,å]). %% e is dropped as a rule
+   user:member(Vok,[a,i,o,u,y,Ã¦,Ã¸,Ã¥]). %% e is dropped as a rule
                                        %% Reintroduced when necessary
                                   %%  Trykksterk e (kle,bre,gre,le,re,te)
 
@@ -366,7 +367,7 @@ lexn(HELGA,HELG,sin,def,n):-
 
 
 lexn(HUSA,HUS,plu,def,n):-      %%   IKKE INFO om Neutr
-    ends_with(HUSA,HUS,a),      %% NB OGSÅ  FRAMTIDA, MORA
+    ends_with(HUSA,HUS,a),      %% NB OGSÃ…  FRAMTIDA, MORA
     dict_n:noun3(HUS,_,n).  % e.g. tid
  
 lexn(HUS,HUS,plu,u,n):-  %%  2 hus 
@@ -421,7 +422,7 @@ lexn(TIMANE,TIME,plu,def,n):-
 lexn(BUSSANE,BUSS,plu,def,n):- 
     ends_with(BUSSANE,BUSS,ane).         %% Nynorsk
 
-lexn(GAVENE,GAVE,plu,def,n):-    % trærne, o.l 
+lexn(GAVENE,GAVE,plu,def,n):-    % trÃ¦rne, o.l 
     ends_with(GAVENE,GAVE,ne),
     ends_with(GAVE,_GAV,e).              %% ikke by ne
 
@@ -470,9 +471,9 @@ lexn(EKSEMPLET,EKSEMPEL,sin,def,n) :-
     ends_with(EKSEMPEL,EKSEM,pel).
 
 
-lexn(LÆRERE,LÆRER,plu,u,n):- 
-    ends_with(LÆRERE,LÆR,ere),
-    ends_with(LÆRER,LÆR,er).
+lexn(LÃ†RERE,LÃ†RER,plu,u,n):- 
+    ends_with(LÃ†RERE,LÃ†R,ere),
+    ends_with(LÃ†RER,LÃ†R,er).
 
 
 
@@ -515,7 +516,7 @@ lexnplureg(UNGAR,UNGE):-      %%  Nynorsk
 lexnplureg(BAKKAR,BAKK):-     %%  Nynorsk 
     ends_with(BAKKAR,BAKK,ar).
 
-lexnplureg(GAVER,GAVE):-  %% gårr \-> går(er)
+lexnplureg(GAVER,GAVE):-  %% gÃ¥rr \-> gÃ¥r(er)
     ends_with(GAVER,GAVE,r),
     ends_with(GAVE,_,e).
 
@@ -629,7 +630,7 @@ sifre(F) -->
      siffer(N),
      [&],
      siffer(M),
-    { N < 10, M > 10}, %% gml tellemåte
+    { N < 10, M > 10}, %% gml tellemÃ¥te
     { F is N+M}. 
 
 sifre(F)  --> siffer(M),
@@ -660,7 +661,7 @@ tokens([Verdi|RStr]) --> verdi(Verdi),tokens0(RStr).
 tokens0(X)        --> tokens(X). 
 tokens0([])       --> [].
 
-verdi(10) --> "ti".  %% 50 før 5 10
+verdi(10) --> "ti".  %% 50 fÃ¸r 5 10
 verdi(11) --> "elve".
 verdi(11) --> "elleve".
 verdi(12) --> "tolv".
@@ -669,20 +670,20 @@ verdi(14) --> "fjorten".
 verdi(15) --> "femten".
 verdi(16) --> "seksten".
 verdi(17) --> "sytten".
-verdi(17) --> "søtten".
+verdi(17) --> "sÃ¸tten".
 verdi(18) --> "atten".
 verdi(19) --> "nitten".
 verdi(20) --> "tjue".
 verdi(20) --> "tyve".
 verdi(30) --> "tretti".
 verdi(30) --> "tredve".
-verdi(40) --> "førti".
-verdi(40) --> "førr".
+verdi(40) --> "fÃ¸rti".
+verdi(40) --> "fÃ¸rr".
 verdi(50) --> "femti".  %% before 5 10
 verdi(60) --> "seksti". %% before 6 10
 verdi(70) --> "sytti".
-verdi(70) --> "søtti".
-verdi(80) --> "åtti".
+verdi(70) --> "sÃ¸tti".
+verdi(80) --> "Ã¥tti".
 verdi(90) --> "nitti".
 
 verdi(0) --> "null".
@@ -699,9 +700,9 @@ verdi(5) --> "fem".
 verdi(6) --> "seks".
 verdi(7) --> "sju".
 verdi(7) --> "syv".
-verdi(8) --> "åtte".
-verdi(8) --> "åtta".
-%% verdi(8) --> "ått". %% åttet = 801 * 
+verdi(8) --> "Ã¥tte".
+verdi(8) --> "Ã¥tta".
+%% verdi(8) --> "Ã¥tt". %% Ã¥ttet = 801 * 
 verdi(9) --> "ni".
 
 verdi(100) --> "hundre".

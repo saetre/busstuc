@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE interapp.pl
 %% SYSTEM TUC
 %% AUTHOR J.Bratseth
@@ -5,7 +6,7 @@
 %% REVISED  TA-110511
 
 
-% Bruker pragma til å bygge buslog-program fra TQL og svar fra buslog-program
+% Bruker pragma til Ã¥ bygge buslog-program fra TQL og svar fra buslog-program
 % 
 
 :- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
@@ -120,7 +121,7 @@ determine_application_period([_:::TQL]):-
 determine_application_period(_):-
     application_period :=nil.
 
-%¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+%Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 
@@ -369,7 +370,7 @@ printallmessagesanswer([FQL|_],Answer,Dep):-
     \+ member(printmessage(_),Answer),
     !,
     standardemptysmsanswer(Dep,FQL,STAM),
-%%     call(nopay),  %% bussen går kl 18 ->> OK + - 
+%%     call(nopay),  %% bussen gÃ¥r kl 18 ->> OK + - 
     call(STAM),nl.  
 
 
@@ -553,19 +554,19 @@ decidewday(Wday,Wday).
 isc(listofall(_Entity,_)).                % generalized list of entities 
 
 /*
-  isc(allbuses(_)).                     % navnet på bussene 
-  isc(allnightbuses(_)).                % navnet på nattbussene 
-  isc(allstations(_)).                  % navnet på stasjonene 
+  isc(allbuses(_)).                     % navnet pÃ¥ bussene 
+  isc(allnightbuses(_)).                % navnet pÃ¥ nattbussene 
+  isc(allstations(_)).                  % navnet pÃ¥ stasjonene 
 */
 
-%% isc(atdate(_)).                       % Hvilken dato turen går
+%% isc(atdate(_)).                       % Hvilken dato turen gÃ¥r
 
 isc(notification(_Date,_Time)).       % notification independent of departures
 isc(connections(_,_,_,_,_,_,_,_,_,_)).  % en rute mellom to steder
 isc(coupled(_,_,_,_,_,_,_,_)).        % en rute mellom to steder
 isc(db_reply(_,_,_)).                 % answer from database
 isc(dateis(_,_,_,_)).                 % datoen
-% isc(daysucc(_,_)).                    % next day %% hva klokka i går 
+% isc(daysucc(_,_)).                    % next day %% hva klokka i gÃ¥r 
 % isc(diffdep(_,_,_,_,_)).              % tidsdifferanser
 isc(diffdep4(_,_,_,_)).               % tidsdifferanser 
 isc(endstation(_,_)).                 % endestasjoner // old %%  /3 -> /3
@@ -583,13 +584,13 @@ isc(properstation(_)).                % er en busstasjon
 isc(reply(_)). 
 isc(replyq(_)).                       %
 isc(station(_)).                      % er en stasjon
-isc(stationsat(_,_,_)).               % stasjoner på sted, implicit
-isc(stationsnear(_,_,_)).             % stasjoner nært sted
+isc(stationsat(_,_,_)).               % stasjoner pÃ¥ sted, implicit
+isc(stationsnear(_,_,_)).             % stasjoner nÃ¦rt sted
 isc(takestime(_,_,_)).                % lag tidsforbruks liste 
 isc(testanswer(_,_)).                 % yes or no test 
 isc(ticketprice2(_,_)).               % en billettpris specific 
 isc(timeis(_)).                       % klokka
-isc(tramstations(_)).                 % navnet på trikkestasjonene
+isc(tramstations(_)).                 % navnet pÃ¥ trikkestasjonene
 isc(true).                            % Answer Yes
 
 isc(teleprocess(_,_,_,_)) :- value(teleflag,true). 

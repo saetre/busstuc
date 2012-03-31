@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE metacomp.pl  EXPERIMENTAL
 %% SYSTEM TUC
 %% CREATED  TA-940128
@@ -228,7 +229,7 @@ foundmeta(X):-  %% TA-100114
     told, %% make message appear online
     nl,
     tell(user),
-    write('¤¤¤ CATASTROPHIC ERROR ¤¤¤'),nl,
+    write('Â¤Â¤Â¤ CATASTROPHIC ERROR Â¤Â¤Â¤'),nl,
     write('*** Attempt to make a Variable Meta Production ***'),nl,
 
     told,

@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE  datecalc.pl
 %% SYSTEM TUC
 %% CREATED TA-010919
@@ -200,7 +201,7 @@ valid_date(date(YYYY,MM,DD)):-
 xweekday(Date,HDay):- 
    \+ value(nightbusflag,true), %% FICTITIOUS DAYS IRRELEVANT
    \+ value(airbusflag,true),   %% TA-090506
-   date_day_map(Date,HDay),  %% creates message: 1. Mai. 2010 er en  søndag .WRONG
+   date_day_map(Date,HDay),  %% creates message: 1. Mai. 2010 er en  sÃ¸ndag .WRONG
    !.
 **/
 
@@ -240,8 +241,8 @@ dayprefix(nor,tuesday,"tir").
 dayprefix(nor,wednesday,"ons").
 dayprefix(nor,thursday,"tor").
 dayprefix(nor,friday,"fre").
-dayprefix(nor,saturday,"lør").
-dayprefix(nor,sunday,"søn").
+dayprefix(nor,saturday,"lÃ¸r").
+dayprefix(nor,sunday,"sÃ¸n").
 
 
 daysucc(monday,tuesday).

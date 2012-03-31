@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE extracoord.pl
 %% SYSTEM AtB
 %% CREATED TA-100221
@@ -173,7 +174,7 @@ convertf(Flist1,Field1):- %% Number   NNNN  | NNN NNNN | NNNN,NNNN
 convertf(Flist1,Field1):- %% Name, Starting with big letter
     Flist1=[B|_],
     B >= 65,   %% A
-    B =< 216,  %% Ø
+    B =< 216,  %% Ã˜
     !,
     fnuttify(Flist1,Flist2),
     name(Field1,Flist2).
@@ -266,38 +267,38 @@ skipch(96). % `
 
 %% Obviously wrong coded characters appear
 
-% ø and Ø seems yom be replaced by o and O,
-% Big Æ does not occur
+% Ã¸ and Ã˜ seems yom be replaced by o and O,
+% Big Ã† does not occur
 
 % Lower case character conversion
 
 
-special(198,230). %% Æ-> æ
-special(216,248). %% Ø-> ø
-special(197,229). %% Å-> å
+special(198,230). %% Ã†-> Ã¦
+special(216,248). %% Ã˜-> Ã¸
+special(197,229). %% Ã…-> Ã¥
 
 
-special(145,230).       %% \221 -> æ
-special(146,230).       %% \222  ->    Æ -> æ
+special(145,230).       %% \221 -> Ã¦
+special(146,230).       %% \222  ->    Ã† -> Ã¦
 
-special(155,248).       %% \233 -> ø
-special(157,248).       %% \235 -> ø
+special(155,248).       %% \233 -> Ã¸
+special(157,248).       %% \235 -> Ã¸
 
-special(134,229).       %% \206 -> å
-special(143,229).       %% \217 -> Å (197)  -> å
+special(134,229).       %% \206 -> Ã¥
+special(143,229).       %% \217 -> Ã… (197)  -> Ã¥
 
 special(X,X).  %% Default
 
 
 
-iso(145,230).           %% \221 -> æ
-iso(146,198).           %% \222  ->    Æ -> æ
+iso(145,230).           %% \221 -> Ã¦
+iso(146,198).           %% \222  ->    Ã† -> Ã¦
 
-iso(155,248).           %% \233 -> ø
-iso(157,216).           %% \235 -> Ø
+iso(155,248).           %% \233 -> Ã¸
+iso(157,216).           %% \235 -> Ã˜
 
-iso(134,229).           %% \206 -> å
-iso(143,197).           %% \217 -> Å (197)  -> å
+iso(134,229).           %% \206 -> Ã¥
+iso(143,197).           %% \217 -> Ã… (197)  -> Ã¥
 
 
 

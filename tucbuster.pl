@@ -1,6 +1,7 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE tucbuster.pl
 %% SYSTEM BUSTER
-%% CREATED ØF-000101
+%% CREATED Ã˜F-000101
 %% REVISED TA-090828
 
 
@@ -50,7 +51,7 @@
 
 %%%%    ( nodotflag := true),       %%  Interm. dots are  removed. %% TA-080928
 
-   ( tramflag := false),        %% A/S Gråkallen not OK at TEAM
+   ( tramflag := false),        %% A/S GrÃ¥kallen not OK at TEAM
 
    ( parsetime_limit := 7000), %% TA-041218
 

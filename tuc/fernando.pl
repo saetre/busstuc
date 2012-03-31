@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE fernando.pl
 %% SYSTEM TUC
 %% CREATED TA-920323
@@ -160,7 +161,7 @@ adjustprepv(_,P,P).
 
 adjustprep(_:coevent,to,until).  %% TA-110106
 
-adjustprep(_:minute,on,within). %% på 10 miniues=within (Norw) %% TA-100912
+adjustprep(_:minute,on,within). %% pÃ¥ 10 miniues=within (Norw) %% TA-100912
 
 adjustprep(_:route,at,_):-!,fail.  %% ved 8 (tiden), not route  %% Hazard ? 
 adjustprep(_:number,at,_):-!,fail. % nohelp ? 
@@ -185,7 +186,7 @@ adjustprep(_:T,om,during2):-  %% om <tid>
     !.
 adjustprep(_:_Bus,om,regarding):-!.  %%  om saker
 
-%% adjustprep(_:Stat,regarding,past):- %% OM dragvoll// No, strictly angående
+%% adjustprep(_:Stat,regarding,past):- %% OM dragvoll// No, strictly angÃ¥ende
 %%     subclass0(Stat,place).          %% TA-110429   
 
 adjustprep(_:Stat,during2,past):- %% OM dragvoll 
@@ -213,7 +214,7 @@ compliancetest(have,_:departure):-
     !,fail. %% Ad Hoc // Hvilke avganger har
 
 compliancetest(Verb,X:Subject):-
-    X \== it,                         %% det er mulig å ta buss 
+    X \== it,                         %% det er mulig Ã¥ ta buss 
     bottom(Subject,S),
     \+ (iv_templ(Verb,C),   subclass0(S,C)),
     \+ (tv_templ(Verb,C,_), subclass0(S,C)),
@@ -227,7 +228,7 @@ compliancetest2(tv,have,_:departure):-
     !,fail. %% Ad Hoc // Hvilke avganger har
 
 compliancetest2(tv,Verb,X:Subject):-
-    X \== it,                         %% det er mulig å ta buss 
+    X \== it,                         %% det er mulig Ã¥ ta buss 
 
     test(   (tv_templ(Verb,C,_),subclass0(Subject,C))), 
 
@@ -288,7 +289,7 @@ compoundtest(_,def,_:NT,_:N):- % bussen(e) 23 *
     !,
     fail.
 
-compoundtest(_,def,_:Y,_:C):- % året 1920 
+compoundtest(_,def,_:Y,_:C):- % Ã¥ret 1920 
     (Y==year,C==clock;
      Y==clock,C==year),
     !,
@@ -429,7 +430,7 @@ verbtype(Kill,tv)  :- test(tv_templ(Kill,_,_)).
 
 verbtype(Say, rv)  :- test(rep_verb(Say)).    % Moved last (tell )
 
-verbtype(Live,iv)  :- test(tv_templ(Live,_,nil)). % kjøpe=kjøpe noe 
+verbtype(Live,iv)  :- test(tv_templ(Live,_,nil)). % kjÃ¸pe=kjÃ¸pe noe 
 
 verbtype(Live,iv)  :- test(iv_templ(Live,_)). % important iv after tv
                                               % Greedy Heuristics
@@ -460,7 +461,7 @@ verbtype(Live,iv)  :- test(iv_templ(Live,_)). % important iv after tv
 
 
 bealign(X:Savant,Y:_Agent,S,P,P and dob/be/X/Y/S):- %% TA-100912
-    test(member(Savant,[savant,item])), %% hva er pris fra røros %% TA-110707
+    test(member(Savant,[savant,item])), %% hva er pris fra rÃ¸ros %% TA-110707
 %%%%     Agent \== thing, %% en person er en sykkel            
     !. %% allow everything
 
@@ -509,7 +510,7 @@ alignable(X,Y):-
     !.
 
 
-%% *** alignable(bus,company) *** bus gløshaugen
+%% *** alignable(bus,company) *** bus glÃ¸shaugen
 alignable(Number1,Extrabus1) :-
     nonvar(Number1),
     nonvar(Extrabus1),
@@ -531,7 +532,7 @@ alignable(Extrabus1,Number1) :-
 
 %-
 
-align(X:clock,Y:clock,S, P, P and dob/be/X/Y/S):-!. %% Før klokken er 1900
+align(X:clock,Y:clock,S, P, P and dob/be/X/Y/S):-!. %% FÃ¸r klokken er 1900
 
  
 align(X:_,Y:_,_,_,_):-  %% causes havoc, with self referencing lists
@@ -617,7 +618,7 @@ align_noun_name(_T1:MT,_T2:WT,_,_,_):-
 align_noun_name(XT,YT,P,XT,Q):-  %% The person John 
    align4(XT,YT,P,Q).  
 
-%%  SUSPENDED    buss gløshaugen *** \= gløshaugen:bus 
+%%  SUSPENDED    buss glÃ¸shaugen *** \= glÃ¸shaugen:bus 
 align_noun_name(X:T,YT,P,X:T,Q):-  
    var(X), %%   Buss 5 er en holdeplass 
    align5(X:T,YT,P,Q),         %%  gaten NTH OK
@@ -708,7 +709,7 @@ atv_template(Afraid,Because,X:MT,Y:WT,S, adj/nil/Afraid/X/S and srel/Because/coe
 
 
 
-%% special adjective   redd (for) at bussen går
+%% special adjective   redd (for) at bussen gÃ¥r
 
 
 tv_template(be2,X:MT,Y:WT,S,dob/be/X/Y/S):- %%  er jeg en hest
@@ -764,7 +765,7 @@ tv_template(Love,X:MT,Y:WT,S,dob/Love/X/Y/S):-
 
 %% 
 
-%% gjør (at) bussen (blir)  gul
+%% gjÃ¸r (at) bussen (blir)  gul
 co_template(Know,That,X:MT,Y:WT,S,   (do)/Know/X/S and  srel/That/WT/Y/S  ):- 
      testmember(Know,[get,paint,make,do1]),
      subtype0(MT,agent),   
@@ -1069,7 +1070,7 @@ adj_compl(Up,Now,_X:Bus,Y:Hour,S, srel/Now/Time/Y/S):-
     subclass0(Hour,Time).
 
 
-%% Systemet er oppe nå
+%% Systemet er oppe nÃ¥
 adj_compl(Up,Now,_X:Bus,Y:Hour,S, srel/Now/Time/Y/S):- 
     particle(Now,Time,_),
     a_compl(Up,Thing,nil,Time),   
@@ -1079,7 +1080,7 @@ adj_compl(Up,Now,_X:Bus,Y:Hour,S, srel/Now/Time/Y/S):-
 
 adj_compl(_loyal,To,_X:_PT,Y:RT,S,srel/To/Ruler/Y/S):- %%  Haz?
     stanprep(To,Ruler),
-    subclass0(RT,Ruler), %% jeg er nysgjerrig på en ting\=date
+    subclass0(RT,Ruler), %% jeg er nysgjerrig pÃ¥ en ting\=date
     !.   
 
 
@@ -1094,13 +1095,13 @@ adj_compl(_loyal,To,_X:_PT,Y:RT,S,srel/To/Ruler/Y/S):- %%  Haz?
 
 %%%%%%% [new:::(tuc isa savant,adj/nil/old/tuc/A,event/real/A)]//du er gammel
 
-%%¤  VERB_COMPL
+%%Â¤  VERB_COMPL
 
 verb_compl(look,A,_,nil:(mode),S,srel/A/(mode)/nil/S):- %% look old = be old
      !.
 
-verb_compl(_be1,how, W:Weather,nil,S,srel/how/Weather/W/S):-  %% Hack %% Hvordan er været ?
-   !.                                                         % Hvordan går bussen
+verb_compl(_be1,how, W:Weather,nil,S,srel/how/Weather/W/S):-  %% Hack %% Hvordan er vÃ¦ret ?
+   !.                                                         % Hvordan gÃ¥r bussen
 
 verb_compl(_go,than,_:_Tram,Y:Bus,S,srel/than/Bus/Y/S):- %% Hack 
     !.
@@ -1125,8 +1126,8 @@ verb_compl(Be1,In,_:Stat,Y:Neib,S,srel/In/Place/Y/S):-
 verb_compl(E,nil,_:_,_:thing,_,_):- E\==exist,!,fail. % Ad Hoc %% TA-100907
                                            % The bus arrives a thing
 
-verb_compl(_,nil,_:_,Være:Station,_,_):-   % gå være = station 
-    Være == være,
+verb_compl(_,nil,_:_,VÃ¦re:Station,_,_):-   % gÃ¥ vÃ¦re = station 
+    VÃ¦re == vÃ¦re,
     Station==station,
     !,fail. % Ad Hoc , not cut fail syndrome
 
@@ -1164,7 +1165,7 @@ verb_compl(See,With,_X:PT,Y:TST,S,srel/With/thing/Y/S):-
     !.
 
 
-% det er dyrt å reise med buss
+% det er dyrt Ã¥ reise med buss
 verb_compl(See,With,IT:_,Y:TST,S,srel/With/Telescope/Y/S):-
     IT == it,
     subclass0(TST,Telescope),
@@ -1191,7 +1192,7 @@ verb_compl(Come,In,_:Stat,Y:Neighbourhood,S,srel/In/TTT/Y/S):-
 
 %%% **  verb_compl(have,wrongly,_464:self,nil:(mode),_534,srel/wrongly/(mode)/nil/_534) ? 
 
-verb_compl(Run,Wrongly,_:Self,_:(mode), S,srel/Wrongly/(mode)/nil/S) :- %% kjøre feil
+verb_compl(Run,Wrongly,_:Self,_:(mode), S,srel/Wrongly/(mode)/nil/S) :- %% kjÃ¸re feil
     Run \== be1,      
     Wrongly \== nil, 
     particle(Wrongly,Mode,_), 
@@ -1228,7 +1229,7 @@ vako10(Come,Go):-
 
 
 
-% hva går bussen på ?
+% hva gÃ¥r bussen pÃ¥ ?
 subclass2(thing,_,thing):-  !.
 
 subclass2(C,Telescope,Telescope):- %% NB parameter only from v_compl, not item
@@ -1285,7 +1286,7 @@ noun_compl(Prep,X:thing,Y:thing,nrel/Prep/thing/thing/X/Y):-!. %% Dummy
 
 
 noun_compl(Prep,X:thing,Y:YT,nrel/Prep/thing/YTI/X/Y):- %% ting i system # 
-   Prep \== nil, %%  Jeg gjør en ting 1. mai.
+   Prep \== nil, %%  Jeg gjÃ¸r en ting 1. mai.
    superclass0(YT,YTI),
    n_compl(Prep,_XTI,YTI),
    !.
@@ -1337,7 +1338,7 @@ compare(GT,Age,X:XT,Y:YT, has/Omega/Age/X/U  and comp/number/GT/U/Y):- % TA-0010
 compare(GT,Age,X:XT,Y:YT,comp/Age/GT/X/Y):- % common type which has a definition
     joinclass(XT,YT,Alpha),
     subclass0(Alpha,Omega),
-    Omega has_a Age,              %OOPS  % bus er på nth litt over kl 13
+    Omega has_a Age,              %OOPS  % bus er pÃ¥ nth litt over kl 13
     !.
 
 
@@ -1550,10 +1551,10 @@ latin(nil,X:T1,Y:T2,(X,Y):T1):- %% 1900 (-) 2000
 
 
 
-latin(and,_:_,VARE:_,_):-    %% og være   %% EXTREMELY AD HOC (NORWAGISM)
-    VARE==være, 
+latin(and,_:_,VARE:_,_):-    %% og vÃ¦re   %% EXTREMELY AD HOC (NORWAGISM)
+    VARE==vÃ¦re, 
     !,
-    fail.                   %% Være is a place
+    fail.                   %% VÃ¦re is a place
 
 
 latin(and,_X:T1,_Y:T2,_):-  %% special for ambiguous names !!!
@@ -1574,7 +1575,7 @@ latin(and,X:T1,Y:T2,(X,Y):T):-
 %%    T \== thing,  %% They must have something in common
 %%    OK if joinclass succeeds %% TA-110304
 
-    T \== nil,    %% du bor på (hybel og reiser)* hjem i helgene .
+    T \== nil,    %% du bor pÃ¥ (hybel og reiser)* hjem i helgene .
     !.         
 
 latin(or,X:T1,Y:T2,(X;Y):T):- 

@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE tucbuss.pl 
 %% SYSTEM BussTUC  DOMAIN TT
 %% CREATED  TA-020125
@@ -42,7 +43,7 @@
 
 %%%%%%%   (nodotflag := true),         %% Interm. dots are  removed
 
-   (tramflag := false),         %% A/S Gråkallen not OK at TEAM, OK at NTNU
+   (tramflag := false),         %% A/S GrÃ¥kallen not OK at TEAM, OK at NTNU
 
    (tmnflag := false),         %%
 

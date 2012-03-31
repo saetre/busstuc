@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE checkitem2.pl %% Common Version for checkitem bus/tele
 %% SYSTEM BUSTER
 %% CREATED TA-050927
@@ -59,7 +60,7 @@ checkitem(trans,uati, focus(OldFrame, OldRefer, slot(Slot)), focus(NewFrame, New
 
     paraphrase(frame_setvalue(SubSlot,Item)). %% TA-030224 
 
-%% ¤¤¤¤¤¤¤¤
+%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 %% uatc 
 %% Both tele and bus %% TA-060321
@@ -83,7 +84,7 @@ checkitem(_tele,uatc, focus(OldFrame, OldRefer, slot(Slot)), focus(NewFrame, New
 	frame_setvalue_rec(OldFrame, Slot, dontknow, NewFrame),
 	commitref(Cid, OldRefer, NewRefer).
 
-%% ¤¤¤¤¤¤¤¤
+%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 %% uadi
 
@@ -103,7 +104,7 @@ checkitem(TELETRANS,uadi, focus(OldFrame, OldRefer, [Tql, _Prog]), focus(NewFram
 
 
 
-%% ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 %% uin
@@ -138,7 +139,7 @@ checkitem(TELETRANS,uin, focus(OldFrame, OldRefer, _Query), focus(NewFrame, NewR
 
    
 
-%% ¤¤¤¤¤¤¤¤¤¤
+%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 %% uim
@@ -148,7 +149,7 @@ checkitem(TELETRANS,uim, focus(OldFrame, OldRefer, [Tql, _OldProg]), focus(NewFr
 
 %%    \+ roundmember(nocontext,OldProg), %% Do not Modify nocontext 
 
-%% hva er klokka ? //  fra  fra Lerkendal til Dragvoll nå.
+%% hva er klokka ? //  fra  fra Lerkendal til Dragvoll nÃ¥.
 
 
     getcurrent(Cid),
@@ -165,7 +166,7 @@ checkitem(TELETRANS,uim, focus(OldFrame, OldRefer, [Tql, _OldProg]), focus(NewFr
 
 %%%    saturatemod(NewFrame, OldProg, NewProg). %% <--- copies old program!
 
-%% ¤¤¤¤¤¤¤¤¤¤¤¤
+%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 %% uatm
@@ -229,7 +230,7 @@ checkitem(TELETRANS,uiq, focus(OldFrame, OldRefer, _), focus(NewFrame, NewRefer,
     getuserrefer(Cid, Rest),
     commitref(Cid, OldRefer, NewRefer). 
 
-%%% ¤¤¤¤¤¤¤¤¤¤
+%%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 %% uatg
@@ -247,7 +248,7 @@ checkitem(TELETRANS,uatg, focus(OldFrame, OldRefer, slot(Slot)), focus(NewFrame,
 
 
 
-%% ¤¤¤¤¤¤¤¤¤¤¤¤
+%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 %% sant
 
@@ -270,7 +271,7 @@ checkitem(_,sant, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, [T
 remtp(tele,(teleprocess(_,_,_,_),B),B):-!.
 
 
-%% ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 %% sat
 
@@ -280,7 +281,7 @@ checkitem(tele,sat, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, OldRefer, 
     !,
     waves,  %% TA-050809 
 
-    doubt('You are welcome.','Vær så god.'),nl, %% TA-061208 ad hoc
+    doubt('You are welcome.','VÃ¦r sÃ¥ god.'),nl, %% TA-061208 ad hoc
 
     invitemore. 
 
@@ -366,7 +367,7 @@ checkitem(trans,sat, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer,
     invitemore. 
 
 
-%% ¤¤¤¤¤¤¤¤
+%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 %% saf
 
@@ -392,7 +393,7 @@ checkitem(_,saf, focus(Frame, OldRefer, A), focus(Frame, NewRefer, A)) :-
     !,  %%  return unknown case %% TA-060706
 	 getcurrent(Cid),
 	 waves,
-    paraphrase(Frame), %% søker etter ukjent felt %% TA-061009
+    paraphrase(Frame), %% sÃ¸ker etter ukjent felt %% TA-061009
     writeanswer((bcpbc(icannotfind),nl)),     %%
     !,
     commitref(Cid, OldRefer, NewRefer).
@@ -408,7 +409,7 @@ checkitem(_,saf, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, [Tq
     commitref(Cid, OldRefer, NewRefer).
 
 
-%% ¤¤¤¤¤¤¤¤¤¤
+%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 
@@ -466,7 +467,7 @@ find_askfor2(tele,Frame, Slot, NewSlot):-
 find_askfor2(trans,Frame, Slot, NewSlot):-
     find_askfor(Frame, Slot, NewSlot). %% frames.pl
 
-%% ¤¤¤¤¤¤¤¤¤¤
+%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 %% sal
@@ -493,7 +494,7 @@ checkitem(tele,sal, focus(Frame, OldRefer, A), focus(Frame, NewRefer, A)) :-
 
     commitref(Cid, OldRefer, NewRefer).
 
-%% ¤¤¤¤¤¤¤¤¤¤¤¤
+%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 %% sqd
 
@@ -506,7 +507,7 @@ checkitem(_,sqd, focus(Frame, Refer, [Tql, Prog]), focus(Frame, Refer, [Tql, Pro
     waves,
     writeanswer(AnswerOut).
 
-%% ¤¤¤¤¤¤¤¤¤¤¤
+%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 %% relax
@@ -519,7 +520,7 @@ checkitem(trans,relax, focus(Frame, Refer, [Tql, Prog]), focus(Frame, Refer, [Tq
     dorelax(Prog2, NewProg, Results),  %% update2.pl
     flatroundre((nocontext, (Results, NewProg)), NewProg2).
  
-%% ¤¤¤¤¤¤¤¤¤¤
+%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 %% uatf
 
@@ -530,7 +531,7 @@ checkitem(_,uatf, focus(OldFrame, Refer, slot(Slot)), focus(NewFrame, Refer, slo
     find_parentslot(OldFrame, Slot, PSlot),
     frame_setexperience(OldFrame, PSlot, 0, NewFrame).
 
-%% ¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -542,7 +543,7 @@ checkitem(_,no, Focus, Focus) :-
     getcurrent(Cid),
     getcontext(Cid, context((confirm,false), _, _, _)).
 
-%% ¤¤¤¤¤¤¤
+%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 checkitem(_,yes, Focus, Focus) :-
@@ -550,7 +551,7 @@ checkitem(_,yes, Focus, Focus) :-
     getcontext(Cid, context((confirm,true), _, _, _)).
 
 
-%% ¤¤¤¤¤¤¤
+%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 %% reset_context
@@ -561,7 +562,7 @@ checkitem(_,reset_context, X,X):- %% TA-030108
     reset_context.
 
 
-%%  ¤¤¤¤¤¤¤¤¤¤
+%%  Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 %% uadm
@@ -583,7 +584,7 @@ checkitem(_,uadm, focus(OldFrame, OldRefer, [Tql, _Prog]), focus(NewFrame, NewRe
     retractall(current_frame(_)),
     updateframe(NewProg, OldFrame, NewFrame).
 
-%% ¤¤¤¤¤¤¤¤¤¤¤¤¤
+%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 %% say
@@ -593,7 +594,7 @@ checkitem(_,say(Output), Focus, Focus) :-
     waves, %% TA-050809
     writeanswer(bcpbc(Output)), nl.
 
-%% ¤¤¤¤¤¤¤¤¤¤¤¤¤
+%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 %% sayq
@@ -603,7 +604,7 @@ checkitem(_,sayq(Output), Focus, Focus) :-
     waves, %% TA-050809
     writeanswer(bcpbc(Output)), nl.
 
-%% ¤¤¤¤¤¤¤¤¤¤¤¤¤
+%% Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 

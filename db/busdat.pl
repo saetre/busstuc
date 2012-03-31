@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE busdat.pl
 %% SYSTEM BUSSTUC
 %% AUTHOR J.Bratseth
@@ -119,13 +120,13 @@ cutloop_station(pling,plong). %%
 
 %% Pendelruter (via Sentrum)   
 
-%% Hvis pendelruter er oppført i rutehefte med fjern destinasjon
-%% så er det registrert som direkterute
+%% Hvis pendelruter er oppfÃ¸rt i rutehefte med fjern destinasjon
+%% sÃ¥ er det registrert som direkterute
 %% TA-101115
 
 %%%  cutloop_station(3,carl_schjetnans_vei). %% TA-110331 NB creates double loop
 
-%%% fra lade gÃ¥rd  anders buens gt carl_schjetnans_vei -> hagen anders_buens_gate
+%%% fra lade gÃƒÂ¥rd  anders buens gt carl_schjetnans_vei -> hagen anders_buens_gate
                                        
 
 %% cutloop_station(3,munkegata_m2). %% Lade - M2 - (Sjetnmarka)
@@ -137,11 +138,11 @@ cutloop_station(pling,plong). %%
 %% cutloop_station(5,dronningens_gate_d2). %% Dragvoll - D2 - (Buenget)
 %% cutloop_station(5,dronningens_gate_d3). %% Buenget- D3 - (Dragvoll)
 
-%% cutloop_station(6,munkegata_m2). %% Værestrøa - M2 - Romolslia
-%% cutloop_station(6,munkegata_m5). %% Romolslia - M5 - Værestrøa
+%% cutloop_station(6,munkegata_m2). %% VÃ¦restrÃ¸a - M2 - Romolslia
+%% cutloop_station(6,munkegata_m5). %% Romolslia - M5 - VÃ¦restrÃ¸a
 
-%% cutloop_station(7,munkegata_m2). %% Vikåsen -M2-Flatåsen
-%% cutloop_station(7,munkegata_m5). %% Flatåsen-M2-Vikåsen
+%% cutloop_station(7,munkegata_m2). %% VikÃ¥sen -M2-FlatÃ¥sen
+%% cutloop_station(7,munkegata_m5). %% FlatÃ¥sen-M2-VikÃ¥sen
  
 %% cutloop_station(8,dronningens_gate_d1). %% Risvollan - D1 - Stavset
 %% cutloop_station(8,dronningens_gate_d3). %% Stavset - D3 - Risvollan 
@@ -157,12 +158,12 @@ cutloop_station(49,carl_schjetnans_vei). %% TA-100913
 
 % cutloop_station(52,othilienborg). %%  ?( > 5 min wait ?)
 % cutloop_station(52,vestlia_endeholdeplass). %% etter 070806
-    % Too many  spurious departures ( Gløs Vestlia Sentrum)
+    % Too many  spurious departures ( GlÃ¸s Vestlia Sentrum)
 
 cutloop_station(60,valentinlyst). 
 
 
-cutloop_station(63,asbjørnsens_gate). %% TA-110315 NB
+cutloop_station(63,asbjÃ¸rnsens_gate). %% TA-110315 NB
 
 %% cutloop_station(63,dronningens_gate_d1). %% TA-110315 wrong
 %% cutloop_station(63,munkegata_m3).        %% TA-110315 wrong
@@ -218,7 +219,7 @@ list_of_named_dates([
     christmas_day, 
 
     john_f_kennedy_day, 
-    oddvar_brå_day, 
+    oddvar_brÃ¥_day, 
     arvid_holme_day, 
     dooms_day]).
 
@@ -228,17 +229,17 @@ list_of_named_dates([
 
 
 orig_named_date(john_f_kennedy_day,   date(1963,11,22)).  
-orig_named_date(oddvar_brå_day,       date(1982,02,25)).  
+orig_named_date(oddvar_brÃ¥_day,       date(1982,02,25)).  
 orig_named_date(arvid_holme_day,      date(2011,01,17)).  
 orig_named_date(dooms_day,            date(2012,12,21)). %% :-) %% TA-100323|      date(10000,01,01)). 
 
 %% Named dates
 
-orig_named_date(new_years_eve,date(YYYY,12,31)) :- %% Nyttårsaften& januar  -> i fjor
+orig_named_date(new_years_eve,date(YYYY,12,31)) :- %% NyttÃ¥rsaften& januar  -> i fjor
      todaysdate(date(YYY1,01,_)),
      YYYY is YYY1 -1,
      !.
-orig_named_date(new_years_eve,date(YYYY,12,31)) :- %% Nyttårsaften i år
+orig_named_date(new_years_eve,date(YYYY,12,31)) :- %% NyttÃ¥rsaften i Ã¥r
      this_year(YYYY),
      !.
 
@@ -274,7 +275,7 @@ orig_named_date(palm_wednesday,   ND) :-
     easterdate(YYYY,ED),
     sub_days(ED,4, ND).
 
-orig_named_date(maundy_thursday,   ND) :- %% skjærT NOT monday  
+orig_named_date(maundy_thursday,   ND) :- %% skjÃ¦rT NOT monday  
     this_year(YYYY),
     easterdate(YYYY,ED),
     sub_days(ED,3, ND).
@@ -289,7 +290,7 @@ orig_named_date(eastereve,    ND) :-
     easterdate(YYYY,ED),
     sub_days(ED,1, ND).
 
-orig_named_date(easterday2,     ND) :- %% 2. påskedag 
+orig_named_date(easterday2,     ND) :- %% 2. pÃ¥skedag 
     this_year(YYYY),
     easterdate(YYYY,ED),
     add_days(ED,1, ND).
@@ -350,7 +351,7 @@ orig_named_date(may17,             date(YYYY,05,17)):- this_year(YYYY).
 %% extraallowed_night(DATE,DAY). 
 %% NIGHTBUS GOES extra, even if not sat-sun, following routes of DAY (pro forma)
 extraallowed_night(date(9999,12,31),saturday). %% Just at least1
-extraallowed_night(date(2009,04,12),saturday).  %%  Påskedag om morgenen 
+extraallowed_night(date(2009,04,12),saturday).  %%  PÃ¥skedag om morgenen 
 
 
 %% if DAY=nil, it means NO nightbus routes at all in module,
@@ -364,7 +365,7 @@ extraallowed_night(date(2009,04,12),saturday).  %%  Påskedag om morgenen
 
 %% disallowed_night(date(9999,12,31)).    %% Just at least 1
 
-disallowed_night(date(2011,04,23)).  %% natt til påskeaften %% TA-110426
+disallowed_night(date(2011,04,23)).  %% natt til pÃ¥skeaften %% TA-110426
 
 %% CHRISTMAS
 
@@ -380,7 +381,7 @@ disallowed_night(date(2011,04,23)).  %% natt til påskeaften %% TA-110426
 
 %% EASTER 
 
-disallowed_night(date(2009,04,13)).  %%  Påskeaften om morgenen 
+disallowed_night(date(2009,04,13)).  %%  PÃ¥skeaften om morgenen 
 
 
 
@@ -394,7 +395,7 @@ disallowed_night(date(2009,04,13)).  %%  Påskeaften om morgenen
 %% Example   22.10 not clock if 22.10 is date of new route tables
 
 
-%% dedicated_date(date(YYYY,05,17)):- this_year(YYYY). %% Suspended ved gløshaugen før 17.05 
+%% dedicated_date(date(YYYY,05,17)):- this_year(YYYY). %% Suspended ved glÃ¸shaugen fÃ¸r 17.05 
 dedicated_date(date(YYYY,12,24)):- this_year(YYYY).
 
 %% dedicated_date(date(2006,06,19)). %% Check %% summer route
@@ -435,19 +436,19 @@ date_day_map(Date,   saturday):-       %% stille uke
      named_date(palm_wednesday,Date).  %% palmeonsdag
 
 date_day_map(Date,   sunday):-        
-     named_date(maundy_thursday,Date). %% skjærtorsdag
+     named_date(maundy_thursday,Date). %% skjÃ¦rtorsdag
 
 date_day_map(Date,   sunday):-  
      named_date(good_friday,Date).     %% langfredag
 
 date_day_map(Date,  sunday):-         
-     named_date(eastereve,Date).       %% påskeaften
+     named_date(eastereve,Date).       %% pÃ¥skeaften
 
 date_day_map(Date,  sunday):-          
-     named_date(easterday,Date).       %% 1. påskedag
+     named_date(easterday,Date).       %% 1. pÃ¥skedag
 
 date_day_map(Date,  sunday):-  
-     named_date(easterday2,Date).      %% 2 Påskedag 
+     named_date(easterday2,Date).      %% 2 PÃ¥skedag 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -504,8 +505,8 @@ exbusname(airbus,'Flybussen').
 exbusname(flybussen,'Flybussen'). 
 exbusname(fb,'Flybussen'). 
 
-exbusname(254,'Klæburuten'). 
-exbusname(255,'Klæburuten').
+exbusname(254,'KlÃ¦buruten'). 
+exbusname(255,'KlÃ¦buruten').
 
 exbusname(13,'ekstrabuss'). 
 
@@ -544,7 +545,7 @@ xplacestat(trondheim,hovedterminalen) :-
     \+user:value(dialog,1).
 
 
-xplacestat(klæbu,klæbu_sentrum):- %% Not possible mess in daytime
+xplacestat(klÃ¦bu,klÃ¦bu_sentrum):- %% Not possible mess in daytime
     user:value(nightbusflag,true). %%   NATTBUSSEN
 
 
@@ -580,9 +581,9 @@ xsynplace(sentrum,gb_st_olavs_gt):- %% Generalize
 xsynplace(toget,ts) :-  %% presumes stasjonen is not noun def
    \+ user:value(tmnflag,true).
 
-                        %%  jeg når toget til oslo
-                        %%  jeg bor på (lade og toget) går
-                        %%  rekke toget(ts, !) som går
+                        %%  jeg nÃ¥r toget til oslo
+                        %%  jeg bor pÃ¥ (lade og toget) gÃ¥r
+                        %%  rekke toget(ts, !) som gÃ¥r
 
 %%%%%%%% INTERDOMAIN SECTION  %%%%%%%%%%%%%
 
@@ -685,18 +686,18 @@ xforeign(_,C) :- user:abroad(C).
 
 xforeign(_,C) :- user:country(C). 
 
-xforeign(fb,C):- user:foreign(C), %% værnes malvik %%
+xforeign(fb,C):- user:foreign(C), %% vÃ¦rnes malvik %%
                  \+ airbusstation(C).         %% TA-100322
 
 
 xforeign(tt,C):- user:community(C,County), %% tt malvik foreign to fb
-                County \== sør_trøndelag,
-         %% e.g. Klæbu //=> \+ trondheim   isa neighbourhood
+                County \== sÃ¸r_trÃ¸ndelag,
+         %% e.g. KlÃ¦bu //=> \+ trondheim   isa neighbourhood
                 \+ station(C). %% e.g. berg
 
 nightbusdestination(X):-
     user:value(nightbusflag,true), 
-    member(X,[klæbu]). %% Ad Hoc
+    member(X,[klÃ¦bu]). %% Ad Hoc
 
 
 nostation(st_olavs_gt):- \+ user:value(tmnflag,true). 
@@ -741,25 +742,25 @@ bus_depend_station(_Bus,RGH,RGH) :- %% // busdependent ??????
 %% Berg   Berg is an obscure station on route 75,  76 (not in rutehefte)
 
 
-bus_depend_station(60,berg,berg_prestegård). 
-bus_depend_station(94,berg,berg_østre).
+bus_depend_station(60,berg,berg_prestegÃ¥rd). 
+bus_depend_station(94,berg,berg_Ã¸stre).
 
 %% 75 Berg , Berg bedehus , 
 
-% bus_depend_station(66,berg,berg_østre).     % 5,20,36,66,94
+% bus_depend_station(66,berg,berg_Ã¸stre).     % 5,20,36,66,94
 
 % bus_depend_station(66,berg,berg_studentby). % 5,20,36,66,94
 
-%% 66 Berg studentby , Berg Østre // not unique
-%% 20 Berg studentby , Berg Østre 
-%% 36 Berg studentby , Berg Østre
+%% 66 Berg studentby , Berg Ã˜stre // not unique
+%% 20 Berg studentby , Berg Ã˜stre 
+%% 36 Berg studentby , Berg Ã˜stre
 
 
 bus_depend_station(3,buran, mellomv_5). 
 
 bus_depend_station(4,    buran,          mellomv_5).
 bus_depend_station(4,    mellomstreet,   mellomv_5).      %%  Mellomveien
-% Oops:   Holdeplassen nærmest  Mellomveien er  Buran ---> mellomv_5 allikevel
+% Oops:   Holdeplassen nÃ¦rmest  Mellomveien er  Buran ---> mellomv_5 allikevel
 
 
 
@@ -769,20 +770,20 @@ bus_depend_station(1,hovedterminalen, st_olavs_gt).
 %% bus_depend_station(4,    tonstadkrysset,tonstadkrysset_2). %% fra heimdal
 
 
-bus_depend_station(5,    byåsen,byåsen_sk).  
-bus_depend_station(8,    byåsen,byåsen_butikksenter).
+bus_depend_station(5,    byÃ¥sen,byÃ¥sen_sk).  
+bus_depend_station(8,    byÃ¥sen,byÃ¥sen_butikksenter).
 
 
 bus_depend_station(5,    ntnu_dragvoll,dragvoll). 
 
-bus_depend_station(5,   brøsetveien  ,brøsetv). 
+bus_depend_station(5,   brÃ¸setveien  ,brÃ¸setv). 
 
 % bus_depend_station(5,    steinan, vestlia).  
 % bus_depend_station(5,    universitetet_dragvoll,dragvoll).
 
 
 bus_depend_station(6,    charlottenlund,charlottenlund_nedre). 
-bus_depend_station(6,    romolslia,romolslia_øvre). 
+bus_depend_station(6,    romolslia,romolslia_Ã¸vre). 
 bus_depend_station(6,    leangen, leangen_all).    %%% NBNBNB   AtB feil
 bus_depend_station(6,    travbanen, leangen_all).  %% TA-101019
 
@@ -793,14 +794,14 @@ bus_depend_station(8,    steinan, steinan).
 
 bus_depend_station(9,    bromstad,bromstadsvingen). 
 
-bus_depend_station(9,    brøsetv,brøsetveien_168). %% NB double  
-bus_depend_station(9,    brøsetv,brøsetveien_186).  
+bus_depend_station(9,    brÃ¸setv,brÃ¸setveien_168). %% NB double  
+bus_depend_station(9,    brÃ¸setv,brÃ¸setveien_186).  
 
-bus_depend_station(9,    brøsetveien,brøsetveien_168). %% NB double  
-bus_depend_station(9,    brøsetveien,brøsetveien_186).  
+bus_depend_station(9,    brÃ¸setveien,brÃ¸setveien_168). %% NB double  
+bus_depend_station(9,    brÃ¸setveien,brÃ¸setveien_186).  
 
-bus_depend_station(9,    flatåsen, flatåsen_senter).  %% not Flatåstoppen 
-bus_depend_station(9,    byåsen, havstadsenteret).  
+bus_depend_station(9,    flatÃ¥sen, flatÃ¥sen_senter).  %% not FlatÃ¥stoppen 
+bus_depend_station(9,    byÃ¥sen, havstadsenteret).  
 
 bus_depend_station(9,    moholt, moholt_storsenter). 
 
@@ -830,24 +831,24 @@ bus_depend_station(36,   charlottenlund,charlottenlund_kirke). %% AtB
 bus_depend_station(36,   dragvoll,ntnu_dragvoll). 
 bus_depend_station(36,   ntnu,ntnu_dragvoll). 
 
-bus_depend_station(36,   voll, voll_gård).   %% not voll_studentby (missing in db)).
+bus_depend_station(36,   voll, voll_gÃ¥rd).   %% not voll_studentby (missing in db)).
 
-%%%% bus_depend_station(36,   voll_studentby, voll_gård). %% NB NB
+%%%% bus_depend_station(36,   voll_studentby, voll_gÃ¥rd). %% NB NB
 
 bus_depend_station(43,   romolslia,romolslia). 
 
 %% bus_depend_station(44,    tonstadkrysset,tonstadkrysset_3). %% Hastus
 
 /*
-bus_depend_station(46,    tonstadkrysset,tonstadkrysset_2). %% // fra lundåsen
+bus_depend_station(46,    tonstadkrysset,tonstadkrysset_2). %% // fra lundÃ¥sen
 bus_depend_station(46,    tonstadkrysset,tonstadkrysset_4). %% // fra sandmoen                  
 */
 
-bus_depend_station(52,   ntnu,gløshaugen_syd). 
+bus_depend_station(52,   ntnu,glÃ¸shaugen_syd). 
 bus_depend_station(52,   steinan, vestlia).  
 %%% bus_depend_station(52,   studentersamfundet, studentersamfundet_2). %% AtB %% TA-110119
 
-bus_depend_station(60,   tyholttårnet,tyholt). 
+bus_depend_station(60,   tyholttÃ¥rnet,tyholt). 
 
 bus_depend_station(66,   charlottenlund,charlottenlund_kirke). %% AtB 
 bus_depend_station(66,   ntnu,ntnu_dragvoll).
@@ -860,8 +861,8 @@ bus_depend_station(71,   romolslia,romolslia). %%  (rutedata)
 bus_depend_station(73,   romolslia,romolslia). %%
 
 bus_depend_station(90,   lade,  obs_lade). 
-bus_depend_station(90,   nardo,  omkjøringsveien_nardo). 
-bus_depend_station(90,   nardokrysset,  omkjøringsveien_nardo). 
+bus_depend_station(90,   nardo,  omkjÃ¸ringsveien_nardo). 
+bus_depend_station(90,   nardokrysset,  omkjÃ¸ringsveien_nardo). 
 
 bus_depend_station(103,  sjetnmarka,paul_skolemesters_vei). 
 
@@ -940,11 +941,11 @@ exbus(G) :- user:bus(G), \+ vehicletype(G,tram).
 
 %% Additional Airbus stations
 
-airbusstation(værnes). 
+airbusstation(vÃ¦rnes). 
 
 airbusstation(sorgenfriveien).
 airbusstation(bratsbergveien).
-airbusstation(valøyvegen).
+airbusstation(valÃ¸yvegen).
 airbusstation(britannia).
    airbusstation(britannia_hotell).
 airbusstation(royal_garden).
@@ -1006,7 +1007,7 @@ busfare2(bus,[30,15]).
 busfare2(airbus,[90,45]). 
 busfare2(nightbus,[60]). 
 
-%%  Ikke Klæbu/Melhus/Byneset (80) but that is foreign
+%%  Ikke KlÃ¦bu/Melhus/Byneset (80) but that is foreign
 
 
 
@@ -1031,12 +1032,12 @@ explicit_part_name(skj). %% E. Tamb.skj gt %% TA-110310
 %% PREFERRED TRANSFER %%
 
 
-% All bus 47 starting in klæbu_sentrum and transfers to bus 46 shall
+% All bus 47 starting in klÃ¦bu_sentrum and transfers to bus 46 shall
 % preferrably transfer at city_syd  (not e.g. torvtaket).
 
-preferred_transfer(47,46,klæbu_sentrum,sandmoen,city_syd_østre). 
-%% NB Østre
-%% bus 47 direction from klæbu_sentrum (start),  
+preferred_transfer(47,46,klÃ¦bu_sentrum,sandmoen,city_syd_Ã¸stre). 
+%% NB Ã˜stre
+%% bus 47 direction from klÃ¦bu_sentrum (start),  
 %% switches to
 %% bus 46 direction from sandmoen(start(
 %% have to correspond at city syd !
@@ -1056,7 +1057,7 @@ default_origin(_,sorgenfriveien) :- %% AD HOC
     !.
 
 
-default_destination(_,værnes) :- %% AD HOC 
+default_destination(_,vÃ¦rnes) :- %% AD HOC 
     user:value(airbusflag,true),
     !.
 
@@ -1074,14 +1075,14 @@ default_destination(24,jonsvatnet). %% solbakken?
 %% default_destination(36,stokkanhaugen). %%  TA-101228
    %stokkhaugen?%  %% Aternating official names! %% TA-101228
 
-%% default_destination(43,ringvål). %%  except some routes on sunday (Heimdal stasjon) 
+%% default_destination(43,ringvÃ¥l). %%  except some routes on sunday (Heimdal stasjon) 
 default_destination(44,heggstadmoen). 
 
 %% default_destination(46,sandmoen). %% not since 2006
 
 default_destination(46,torvtaket).  
 
-default_destination(48,lundåsen). %% ..nedre
+default_destination(48,lundÃ¥sen). %% ..nedre
 default_destination(49,sjetnemarka).
 default_destination(52,vestlia).
 default_destination(54,bratsberg).
@@ -1102,15 +1103,15 @@ default_destination(76,spongdal).
 default_destination(103,sjetnmarka).  %% kroppnmarka/sjetnemarka
 default_destination(104,heimdal).     %% kolstad/heimdal
 default_destination(105,buenget).     %% buenget
-default_destination(106,værestrøa).   %% lade/værestrøa
-default_destination(107,fortunalia).  %% reppe/vikåsen/fortunalia
+default_destination(106,vÃ¦restrÃ¸a).   %% lade/vÃ¦restrÃ¸a
+default_destination(107,fortunalia).  %% reppe/vikÃ¥sen/fortunalia
 default_destination(108,stavset).     %% stavset
-default_destination(109,lundåsen).    %% bjørdalen/kattem/lundåsen
-default_destination(119,flatåsen_senter).    %% byåsen/flatåsen
+default_destination(109,lundÃ¥sen).    %% bjÃ¸rdalen/kattem/lundÃ¥sen
+default_destination(119,flatÃ¥sen_senter).    %% byÃ¥sen/flatÃ¥sen
 default_destination(136,jakobsli).    %% valentinlyst/jakobsli %% 
 default_destination(146,tiller).      %% tiller
-default_destination(154,klæbu).       %% nidarvoll/klæbu
-default_destination(155,brøset).      %% moholt/brøset
+default_destination(154,klÃ¦bu).       %% nidarvoll/klÃ¦bu
+default_destination(155,brÃ¸set).      %% moholt/brÃ¸set
 default_destination(175,byneset).     %% byneset
 default_destination(188,steinan).     %% othilienborg/risvollan/steinan
 
@@ -1206,7 +1207,7 @@ cmbus(9,eren,9).
 cmbus(9,ern,9). 
 
 
-%  cmbus(10,er,10). %%  hvilke stoppested for buss 10 er nærmest samfundet? 
+%  cmbus(10,er,10). %%  hvilke stoppested for buss 10 er nÃ¦rmest samfundet? 
                    %%   etc
 cmbus(10,ere,10). 
 cmbus(10,eren,10). 
@@ -1225,7 +1226,7 @@ synbus(firerbussen , 4).
 synbus(femmerbussen , 5). 
 synbus(sekserbussen , 6). 
 synbus(sjuerbussen , 7). 
-synbus(åtterbussen , 8). 
+synbus(Ã¥tterbussen , 8). 
 synbus(nierbussen , 9). 
 synbus(tierbussen , 10).  
 
@@ -1237,7 +1238,7 @@ synbus(firebuss , 4).
 synbus(fembuss , 5). 
 synbus(seksbuss , 6). 
 synbus(sjubuss , 7). 
-synbus(åttbuss , 8). 
+synbus(Ã¥ttbuss , 8). 
 synbus(nibuss , 9). 
 synbus(tibuss , 10).  
 
@@ -1248,7 +1249,7 @@ synbus(firebussen , 4).
 synbus(fembussen , 5). 
 synbus(seksbussen , 6). 
 synbus(sjubussen , 7). 
-synbus(åttbussen , 8). 
+synbus(Ã¥ttbussen , 8). 
 synbus(nibussen , 9). 
 synbus(tibussen , 10).  
 
@@ -1260,7 +1261,7 @@ synbus(firerbuss , 4).
 synbus(femerbuss , 5). 
 synbus(sekserbuss , 6). 
 synbus(sjuerbuss , 7). 
-synbus(åtterbuss , 8). 
+synbus(Ã¥tterbuss , 8). 
 synbus(nierbuss , 9). 
 synbus(tierbuss , 10).  %% etc etc %%
 
@@ -1270,7 +1271,7 @@ synbus(firerbussen , 4).
 synbus(femerbussen , 5). 
 synbus(sekserbussen , 6). 
 synbus(sjuerbussen , 7). 
-synbus(åtterbussen , 8). 
+synbus(Ã¥tterbussen , 8). 
 synbus(nierbussen , 9). 
 synbus(tierbussen , 10).  %% etc etc %%
 
@@ -1317,7 +1318,7 @@ synbus(buss66,66).
 
 /* not true 
 
-%% når går ikeabussen fra sentrum == du må oppgi en holdeplass til (SIC)
+%% nÃ¥r gÃ¥r ikeabussen fra sentrum == du mÃ¥ oppgi en holdeplass til (SIC)
 
 synbus(ikeabuss,25).  
 synbus(ikeabussen,25).
@@ -1399,9 +1400,9 @@ synbus(sjueren,7).
 synbus(sjuern,7).
 synbus(sjuen,7).
 
-synbus(åtteren,8).
-synbus(åttern,9).
-synbus(åtten,9).
+synbus(Ã¥tteren,8).
+synbus(Ã¥ttern,9).
+synbus(Ã¥tten,9).
 
 synbus(nieren,9). 
 synbus(niern,9).  %% ..etc
@@ -1437,10 +1438,10 @@ synbus('9e', 9).
 
 */
 
-%% synbus(gråkallbanen,1). %% Buss til gråkallbanen (SIC) =1 o'clock
+%% synbus(grÃ¥kallbanen,1). %% Buss til grÃ¥kallbanen (SIC) =1 o'clock
 
 
-%¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+%Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 xisat(X,Y) :-  %% Last isat Predicate
@@ -1454,20 +1455,20 @@ xisat(X,Y) :-  %% Last isat Predicate
 
 %% morten_erichsen_forbid
 
-spurious_return(154,hesttrø).
-spurious_return(154,prestgårdskrysset).
-spurious_return(154,sørborgen).
+spurious_return(154,hesttrÃ¸).
+spurious_return(154,prestgÃ¥rdskrysset).
+spurious_return(154,sÃ¸rborgen).
 spurious_return(154,ostangen).
 spurious_return(154,tanem_bru).
-spurious_return(154,tanem_gård).
-spurious_return(154,sjøl).
+spurious_return(154,tanem_gÃ¥rd).
+spurious_return(154,sjÃ¸l).
 spurious_return(154,torgardshaugen).
 spurious_return(154,torgard).
-spurious_return(154,torgårdsletta).
+spurious_return(154,torgÃ¥rdsletta).
 spurious_return(154,sandmoen).
 
 
 
-endneighbourhood(57,klæbu).
+endneighbourhood(57,klÃ¦bu).
 
 %% END BUS SECTION

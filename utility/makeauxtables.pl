@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE makeauxtables.pl
 %% SYSTEM BUSSTUC
 %% CREATED TA-971121
@@ -425,7 +426,7 @@ propertransfer(P):-
 
 /* 
 
-¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
    toredef(nardosenteret,nil,nardosenteret).     %% full name/ not street
         hpl(16010341,nardosenteret,nardosenteret,'Nardosenteret').
@@ -446,7 +447,7 @@ propertransfer(P):-
 
        //   skytter gaten -> skytter_street
 
-¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 */
 
@@ -561,8 +562,8 @@ devcand(U,(Y,nil)):-
     tucsoundex(U,Y).
 
 remembertorehash(U,_):-      %% dalne -> daln /+/ e
-    textlength(U,N),N =< 3,  %% vere \-> være TA-080731 *
-    !. % bus -> buås/ gl ->  (gol,gls,...)
+    textlength(U,N),N =< 3,  %% vere \-> vÃ¦re TA-080731 *
+    !. % bus -> buÃ¥s/ gl ->  (gol,gls,...)
 
 remembertorehash(U,Y):- 
 
@@ -584,9 +585,9 @@ spurious_street_hash(Kroglunds,Kroglundsv) :- %% TA-061108
     composite_stat(Johan,[Kroglundsv],      Johan_kroglundsv),
     ends_with_vg(Johan_kroglundsv).
 
-spurious_street_hash(Flatås,Flatåsv) :- 
-    composite_stat(Flatås,[street],Flatåsv),
-    ends_with_vg(Flatåsv).
+spurious_street_hash(FlatÃ¥s,FlatÃ¥sv) :- 
+    composite_stat(FlatÃ¥s,[street],FlatÃ¥sv),
+    ends_with_vg(FlatÃ¥sv).
 
 
 ends_with_vg(JPv):- 

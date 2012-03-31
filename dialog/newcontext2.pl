@@ -1,6 +1,7 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE newcontext2.pl
 %% SYSTEM BUSTER
-%% CREATED ØF-000101
+%% CREATED Ã˜F-000101
 %% REVISED TA-080110
 
 :- use_module(library(system)).
@@ -200,7 +201,7 @@ topic_subclass(bus,SubType,Type) :-
     subclass0(SubType, Type),
 
     \+ (Type==place,SubType=room).  %% Ad Hoc   %% Magne Johnsen  reise dit -> address
-                                    %%                gå dit    -> room
+                                    %%                gÃ¥ dit    -> room
 
 topic_subclass(_Topic,SubType, Type) :- 
     subclass0(SubType, Type). 

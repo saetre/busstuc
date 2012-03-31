@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE parseres.pl
 %% SYSTEM TELEBUSTER
 %% CREATED TLF-030402
@@ -503,7 +504,7 @@ writetelebusteranswer1(Frame) :-
 writetelebusteranswer1(Frame) :- 
     frame_getvalue_rec(Frame, return, [], _),
     !, 
-    output('Fant ingen felt å finne verdien til.'),nl.  %% doubt
+    output('Fant ingen felt Ã¥ finne verdien til.'),nl.  %% doubt
 
 
 writetelebusteranswer1(Frame) :-		%% return not set,show standard (Marvin):

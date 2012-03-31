@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE semantic.pl
 %% SYSTEM TUC
 %% CREATED TA-921129
@@ -53,7 +54,7 @@ vako(leave2,leave).     %% nec?
 
 vako(reach,pass).       %% I reach an appointment
 
-vako(kjøre_v_rel,run).  %% OMNITUC 
+vako(kjÃ¸re_v_rel,run).  %% OMNITUC 
 
 vako(propose,tell). 
 
@@ -160,7 +161,7 @@ coher_class(correction,name_recognition,correction). %% TA-110707
 coher_class(name_recognition,correction,correction). %%
 
 
-%% coher_class(departure,price,information). %% TA-101018 priser og busstider fra røros
+%% coher_class(departure,price,information). %% TA-101018 priser og busstider fra rÃ¸ros
 
 coher_class(error,text,error).
 
@@ -207,12 +208,12 @@ coher_class(traffic,vehicle,traffic).
 
 coher_class(route,destination,information). %% on bus 
 %%% coher_class(_,_,information). %% Ad Hoc %%  tider priser og trase 
-%%    RUTETILBUDET skjærtorsdag:
+%%    RUTETILBUDET skjÃ¦rtorsdag:
 
 
 % with vars
 
-/* %% TA-110325 østensjø ring : 
+/* %% TA-110325 Ã¸stensjÃ¸ ring : 
      ringroute neighbourhood ---> information neighbourhood
 coher_class(_C,information,information).
 coher_class(information,_C,information).
@@ -232,9 +233,9 @@ aligen2(area,thing).
 
 aligen2(basis,system).  
 
-aligen2(cause,thing).    %%  alt kan være en årsak
+aligen2(cause,thing).    %%  alt kan vÃ¦re en Ã¥rsak
 
-aligen2(condition,thing). %% infrastrukturen for  by og  miljø://*** disamb
+aligen2(condition,thing). %% infrastrukturen for  by og  miljÃ¸://*** disamb
 
 %% aligen2(company,vehicle). %% team bus \= team isa bus 
 
@@ -286,7 +287,7 @@ align1(age,number).
 
 align1(agent,part). %% ad hoc 
 
-%% align1(airbus,neighbourhood). %% Flybussen værnes (AD HOC)
+%% align1(airbus,neighbourhood). %% Flybussen vÃ¦rnes (AD HOC)
 %%   NOT flybussen lade %% TA-100630
 
 align1(amount,money). 
@@ -360,13 +361,13 @@ align1(customer,user).
 
 align1(data,program). %% i.e. datamaskin,TUC 
 
-align1(date,route_plan). %% 1. mai er en søndagskjøring 
+align1(date,route_plan). %% 1. mai er en sÃ¸ndagskjÃ¸ring 
 
 align1(daycode,number).
 %% align1(day,number).  %%   Om 3 dager *
 
 align1(date,holidaydayroute).
-align1(date,sundayroute).  %% er 17 mai en søndagsrute.
+align1(date,sundayroute).  %% er 17 mai en sÃ¸ndagsrute.
 align1(date,saturdayroute). 
 
 align1(departure,route). %% avgang 36 
@@ -466,7 +467,7 @@ align1(number,route).
 align1(number,speed). 
 
 align1(number,saturdayroute). 
-align1(number,sundayroute).   %% søndagsrute 4
+align1(number,sundayroute).   %% sÃ¸ndagsrute 4
 
 align1(number,speed).  
 align1(number,subscription).
@@ -619,7 +620,7 @@ agent           ako    thing.
 
     agent           has_a  accident.       %% (qua company)
     agent           has_a  account. 
-    agent           has_a  activity.       %% Mye å gjøre
+    agent           has_a  activity.       %% Mye Ã¥ gjÃ¸re
     agent           has_a  address.  
     agent           has_a  advice.  
     agent           has_a  age. 
@@ -646,7 +647,7 @@ agent           ako    thing.
     agent           has_a  child.  
     agent           has_a  christmas.
     agent           has_a  christmasroute. 
-    agent           has_a  city. %% byen vår 
+    agent           has_a  city. %% byen vÃ¥r 
     agent           has_a  coffee. 
     agent           has_a  correction. %% i.e. spell corr.. 
     agent           has_a  crown. 
@@ -697,7 +698,7 @@ agent           ako    thing.
     agent           has_a  luck.          %% :-) ?  
     agent           has_a  badluck.       %% Norw  uflaks 
     agent           has_a  lunch.          
-    agent           has_a  lust.           %% ha lyst på (Norwagism)
+    agent           has_a  lust.           %% ha lyst pÃ¥ (Norwagism)
 
     agent           has_a  mail.           %%  ( mail address)
     agent           has_a  mailaddress.    %% email
@@ -708,7 +709,7 @@ agent           ako    thing.
     agent           has_a  message. 
     agent           has_a  meeting.
     agent           has_a  memory.  
-    agent           has_a  midnight.       %% du får ha en GN
+    agent           has_a  midnight.       %% du fÃ¥r ha en GN
     agent           has_a  mobile.         %% no. 
     agent           has_a  mood.           %%  (spirit ?)
     agent           has_a  mother.         %%  :-)
@@ -742,7 +743,7 @@ agent           ako    thing.
     agent           has_a  question. 
     agent           has_a  relation. 
     agent           has_a  relative. 
-    agent           has_a  request.        %% ønske 
+    agent           has_a  request.        %% Ã¸nske 
     agent           has_a  right.   
     agent           has_a  route. 
     agent           has_a  route_plan. 
@@ -767,7 +768,7 @@ agent           ako    thing.
     agent           has_a  taxi.  
     agent           has_a  telephone. 
     agent           has_a  ticket.  
-    agent           has_a  time.           %% har du tiden på bussen ?
+    agent           has_a  time.           %% har du tiden pÃ¥ bussen ?
     agent           has_a  train. 
     agent           has_a  train_route_plan. 
     agent           has_a  tram. 
@@ -785,11 +786,11 @@ agent           ako    thing.
     agent           has_a  wife.           %% ?
     agent           has_a  word.           %% i.e. vocabulary
 
-alternative     ako    thing. %% TA-110228 confuse way (måte)
+alternative     ako    thing. %% TA-110228 confuse way (mÃ¥te)
 
 base            ako    thing.
 
-care            ako    abstract. %% ta vare på %% TA-110815
+care            ako    abstract. %% ta vare pÃ¥ %% TA-110815
 
 chance          ako    abstract. %% sjanse
 
@@ -840,7 +841,7 @@ object          ako    thing.   %% class.
        object       has_a  size. 
 
 %% part            ako    place.  %% syndrome part is generic 
-                                  %% du må være en av delen
+                                  %% du mÃ¥ vÃ¦re en av delen
 part            ako    thing.    
 
 place           ako    thing.
@@ -930,7 +931,7 @@ company         ako    agent.       %%   e.g. TT
     company         has_a  winterroute. 
 
 %% company         ako    place. %% NB also agent |Deliberately
-%% take 47 klæburuten -> \+ take (route) 47 (to) klæburuten (qua place)
+%% take 47 klÃ¦buruten -> \+ take (route) 47 (to) klÃ¦buruten (qua place)
 
     company         has_a   luggage. %% hittegods-kontor 
 
@@ -948,7 +949,7 @@ agreement       ako    abstract.
 
 ambiguity       ako    abstract.
 
-%% air             ako    place. %% kan bussen gå i lufta ? 
+%% air             ako    place. %% kan bussen gÃ¥ i lufta ? 
 analysis        ako    abstract.
 
 animate         ako    agent.  
@@ -1183,7 +1184,7 @@ informationcentre  ako agent.
 irony              ako abtract. 
 
 
-job             ako    activity. %% place. %% activity. %% jeg går jobb *
+job             ako    activity. %% place. %% activity. %% jeg gÃ¥r jobb *
 
 %% journey         ako    activity.  %%  --> trip
 
@@ -1218,7 +1219,7 @@ motorcycle      ako    vehicle.
 
 lack_of_space   ako    space. %% sic
 
-lap             ako    bodypart. %% på fanget
+lap             ako    bodypart. %% pÃ¥ fanget
 leg             ako    bodypart. %% /on leg  
 
 length          ako    measure. 
@@ -1266,7 +1267,7 @@ negation        ako    abstract.  %% meta ?  :-)
 neighbourhood   ako    place. 
 
 %%  neighbourhood   has_a  bus. %% Fredrikstads busser %%
-%%  // når går bussen til fredrikstad
+%%  // nÃ¥r gÃ¥r bussen til fredrikstad
     neighbourhood   has_a  centre. 
     neighbourhood   has_a  location. %% place. 
     neighbourhood   has_a  computer. %% special, NTNU sin server 
@@ -1304,7 +1305,7 @@ oracle          ako    program.   %% agent.
     oracle          has_a     bus.       %% qua TT 
     oracle          has_a     otherbus.  %% qua TT 
 
-order           ako    abstract. %% //NB, rekkefølge bestilling %% rough
+order           ako    abstract. %% //NB, rekkefÃ¸lge bestilling %% rough
 
 organisation    ako    company. %% or vv ??
 origin          ako    place. 
@@ -1339,7 +1340,7 @@ problem         ako    error. %% abstract %% feil og problemer (vv?)
 
 procedure       ako    activity. 
 
-producer        ako    company. %% leverandør 
+producer        ako    company. %% leverandÃ¸r 
 
 property        ako    abstract.
 
@@ -1494,7 +1495,7 @@ tourtype       ako    information. %% TA-101008
 
 phonenumber ako telephone.   
 
-%%%%  ¤ telephone   ako phonenumber.  %%    SMOKETEST 
+%%%%  Â¤ telephone   ako phonenumber.  %%    SMOKETEST 
 
 
 
@@ -1581,7 +1582,7 @@ vehicle         ako    thing. %% EXPERIMENT %% TA-110309
     vehicle         has_a  time.  
     vehicle         has_a  time_count. %% togets gang ad hoc 
     vehicle         has_a  trip. %% togets gang ad hoc 
-    vehicle         has_a  departure. %% når har siste 9 ...
+    vehicle         has_a  departure. %% nÃ¥r har siste 9 ...
     vehicle         has_a  weight. 
 
 way             ako    direction. %% abstract. %%  "the best way to.."// direction?
@@ -1852,7 +1853,7 @@ internet        ako    network.  %% changed from fact due to internet syndrome
 
 ipaddress       ako    address.
 
-jog             ako    trip. %% i.e spasertur/løpetur
+jog             ako    trip. %% i.e spasertur/lÃ¸petur
 
 journal         ako    document.
 
@@ -1873,7 +1874,7 @@ lion            ako    animal.
 logic           ako    language.
 logo            ako    identification. %% TA-110707
 lunch           ako    food.  %% meal ?
-lust            ako    feeling. %% Techn. Ha lyst på 
+lust            ako    feeling. %% Techn. Ha lyst pÃ¥ 
 
 manual          ako    document.
 mood            ako    feeling. %% spirit
@@ -2225,7 +2226,7 @@ building        ako    house.
 
 capital         ako    city.
 carrier         ako    employee. 
-cent            ako    money. %% incl "øre"
+cent            ako    money. %% incl "Ã¸re"
 charge          ako    money.
 christmas       ako    time. %% not date
 church          ako    building. %% (house)
@@ -2301,8 +2302,8 @@ day             ako    time.
     day             has_a  midnight.  %% natt (Norwagism) natt til fredag = fredag "morgen"
                                       %% torsdag natt // tvetydig	
     day             has_a  night.    
-    day             has_a  bus.      %% søndagens rute // når går i dag %%
-                                     %% dagens første buss bussen  
+    day             has_a  bus.      %% sÃ¸ndagens rute // nÃ¥r gÃ¥r i dag %%
+                                     %% dagens fÃ¸rste buss bussen  
     day             has_a  route.    %% hvilke tider har rute 5 ? 
     day             has_a  time.      %% dagens tider 
     day             has_a  weather.
@@ -2405,10 +2406,10 @@ management      ako   activity.
 
 mayor           ako    person.
 
-midnight        ako    daypart.  %% (natt til søndag) 
+midnight        ako    daypart.  %% (natt til sÃ¸ndag) 
 military        ako    person. 
 
-moment          ako    time. %%  Øyeblikk
+moment          ako    time. %%  Ã˜yeblikk
 month           ako    time.
 morning         ako    daypart.  
 
@@ -2484,7 +2485,7 @@ salary          ako    money.
 sale            ako    activity. 
 sale            ako    money.      
 sea             ako    water_surface.
-season          ako    time. % årstid
+season          ako    time. % Ã¥rstid
 self            ako    user. 
 %%      self   has_a bus.  %% unnec 
 
@@ -2508,7 +2509,7 @@ station         ako    place.    %% GENERIC BUS STOP etc
     station          has_a  address.
     station          has_a  place. % ( location ?), i.e. neighbourhood 
 
-%    station          has_a  saturdayroute. %% søndagsrute 5 til dragvoll
+%    station          has_a  saturdayroute. %% sÃ¸ndagsrute 5 til dragvoll
 %    station          has_a  sundayroute.  
 
     station          has_a  seat. 
@@ -2560,7 +2561,7 @@ workshop        ako    place. %% garage ?
 world           ako    territory. 
 year            ako    time. 
         year         has_a  route_plan. 
-        year         has_a  bus. %% årets siste 
+        year         has_a  bus. %% Ã¥rets siste 
 yester          ako    day. %% Norwagism  (i) gaar 
 
 %-LEVEL 5 -------------------
@@ -2618,7 +2619,7 @@ cousin          ako    person.
 daughter        ako    girl.
 
 day             ako    duration.  %%   om 3 dager 
-%%  buss går på mandag ==>  srel/on/duration/ %% NB
+%%  buss gÃ¥r pÃ¥ mandag ==>  srel/on/duration/ %% NB
 
 
 endstation      ako    station.
@@ -2775,7 +2776,7 @@ rv_templ(admit,agent).
 rv_templ(allow,agent). 
 
 rv_templ(answer1,agent). 
-    v_compl(answer1,agent,nil,abstract). %% ærlig
+    v_compl(answer1,agent,nil,abstract). %% Ã¦rlig
     v_compl(answer1,agent,nil,agent). %% allows  john answered mary 
 
     v_compl(answer1,agent,to,agent). 
@@ -2787,7 +2788,7 @@ rv_templ(approve,agent).
 rv_templ(ask,agent). 
     v_compl(ask,agent,nil,agent). %% allows  john asked  mary 
     v_compl(ask,agent,on,sms).  
-    v_compl(ask,agent,to,place).  %% ? spørre [om ruter] til nardo 
+    v_compl(ask,agent,to,place).  %% ? spÃ¸rre [om ruter] til nardo 
     v_compl(ask,agent,with,word).  %% med ordlyd 
     v_compl(ask,agent,with,sms).
     v_compl(ask,agent,with,telephone).  %% med ordlyd
@@ -2795,11 +2796,11 @@ rv_templ(ask,agent).
 rv_templ(arrange,agent). 
     v_compl(arrange,agent,to,agent). %% sic satt opp til
     v_compl(arrange,person,with,person).
-%% rv_templ(be_free,agent). %%   være gratis å kjøre
+%% rv_templ(be_free,agent). %%   vÃ¦re gratis Ã¥ kjÃ¸re
 
 rv_templ(avoid,agent). 
 
-rv_templ(base,agent). %% basert på at bussen går %% TA-110708
+rv_templ(base,agent). %% basert pÃ¥ at bussen gÃ¥r %% TA-110708
 
 rv_templ(believe,agent).
 
@@ -2833,12 +2834,12 @@ rv_templ(discuss,agent).
 
 rv_templ(dislike,agent). %%   ..ha vanskeligheter med
 
-rv_templ(do1,agent). %% Norw  det gjør at man 
+rv_templ(do1,agent). %% Norw  det gjÃ¸r at man 
 
 rv_templ(doubt,agent).
     v_compl(doubt,agent,on,thing). 
 
-rv_templ(end,thing).    %% slutte (med) å
+rv_templ(end,thing).    %% slutte (med) Ã¥
 rv_templ(ensure,agent). 
 
 rv_templ(expect,agent). 
@@ -2848,26 +2849,26 @@ rv_templ(explain,agent).
 %% rv_templ(fail,agent). %% ? 
 rv_templ(feel,agent). 
 rv_templ(find,agent). 
-%% rv_templ(fit,thing). %% egne seg til å ...wait
+%% rv_templ(fit,thing). %% egne seg til Ã¥ ...wait
 rv_templ(forget,agent). 
 
 rv_templ(hate,agent). 
 
 rv_templ(hear,agent).   %%  he heard  her leave 
 
-rv_templ(help,thing). %% det hjelper at trikken går.  
+rv_templ(help,thing). %% det hjelper at trikken gÃ¥r.  
 
 
 rv_templ(hope,agent).   
    v_compl(hope,agent,for,thing).
    v_compl(hope,agent,on,thing). %% Norw 
 
-iv_templ(hope,agent). %% håpet på et svar
+iv_templ(hope,agent). %% hÃ¥pet pÃ¥ et svar
 
-rv_templ(blame1,thing).      %% Feilen skyldes at bussen står
+rv_templ(blame1,thing).      %% Feilen skyldes at bussen stÃ¥r
 
-rv_templ(indicate,thing). %% tyde på Norw
-rv_templ(is_caused_by,thing). %% Feilen skyldes at bussen står
+rv_templ(indicate,thing). %% tyde pÃ¥ Norw
+rv_templ(is_caused_by,thing). %% Feilen skyldes at bussen stÃ¥r
 
 rv_templ(know,agent).   
     v_compl(know,agent,nil,day). 
@@ -2902,12 +2903,12 @@ rv_templ(mean,agent).
 
 rv_templ(miss,agent). %% savne
 
-rv_templ(need,agent).   %% trenge å 
+rv_templ(need,agent).   %% trenge Ã¥ 
 
 rv_templ(notify,agent).   %% varsle 
     v_compl(notify,agent,nil,time).
 
-rv_templ(pay2,thing). %% lønne seg å
+rv_templ(pay2,thing). %% lÃ¸nne seg Ã¥
 
 rv_templ(plan,agent). 
 
@@ -2925,7 +2926,7 @@ rv_templ(promise,agent).
 rv_templ(propose,agent). 
 rv_templ(prove,agent).      
 
-%% rv_templ(reach,agent). %% rekke å stoppe bussen 
+%% rv_templ(reach,agent). %% rekke Ã¥ stoppe bussen 
 %%  NOR english reach a bus
 
 
@@ -2981,7 +2982,7 @@ rv_templ(want,agent). %% need is reserved for plain transitive verb
 
 rv_templ(wish,agent).      
 rv_templ(wonder,agent).
-    v_compl(wonder,agent,on,thing).  %% Norwagism  lure på
+    v_compl(wonder,agent,on,thing).  %% Norwagism  lure pÃ¥
     v_compl(wonder,agent,regarding,thing).   %%  ( not about)
 
 
@@ -3000,7 +3001,7 @@ pvi_templ(cost,crown). %% no inheritance ?
 pvi_templ(take,time).
 pvi_templ(last,time).
 pvi_templ(pay,person).
-pvi_templ(suit,time). %% det passer meg (i) tid å ta buss %% Norwagism
+pvi_templ(suit,time). %% det passer meg (i) tid Ã¥ ta buss %% Norwagism
 
 
 %% PAI_TEMPL 
@@ -3008,7 +3009,7 @@ pvi_templ(suit,time). %% det passer meg (i) tid å ta buss %% Norwagism
 %% it is  Adj to VP
 
 pai_templ(be,cheap). 
-pai_templ(be,clever).   %% Too far   er det lurt å ...
+pai_templ(be,clever).   %% Too far   er det lurt Ã¥ ...
 pai_templ(be,dangerous). 
 pai_templ(be,difficult). 
 pai_templ(be,easy). 
@@ -3034,11 +3035,11 @@ iv_templ(be1,thing).
     v_compl(be1,vehicle,nil,minute).  %% Technical ...16 minutes ( after depatrure)
     v_compl(be1,place,along,route).   %% TA-100905
     v_compl(be1,thing,without,thing). %% rough 
-    v_compl(be1,thing,below,measure). %% under 4 år 
+    v_compl(be1,thing,below,measure). %% under 4 Ã¥r 
 
     v_compl(be1,thing,on,computer).   %% metagorical 
 
-%%    v_compl(be1,thing,in,neighbourhood). %% i nærheten av %% ?=nær 
+%%    v_compl(be1,thing,in,neighbourhood). %% i nÃ¦rheten av %% ?=nÃ¦r 
 
     v_compl(be1,duration,to,place). %% TA-110225
 
@@ -3076,19 +3077,19 @@ iv_templ(be1,thing).
    v_compl(be1,agent,in,network).   
    v_compl(be1,agent,in,place).          %%   (Q: where are you)
    v_compl(be1,agent,in,time).           %%   (Q: where are you now)
-   v_compl(be1,agent,in,vehicle).        %% har du vært i en buss
+   v_compl(be1,agent,in,vehicle).        %% har du vÃ¦rt i en buss
 
-   v_compl(be1,agent,on,activity).       %% på tur
-   v_compl(be1,agent,on,duration). %% skal være på NTH på 5 minutter 
+   v_compl(be1,agent,on,activity).       %% pÃ¥ tur
+   v_compl(be1,agent,on,duration). %% skal vÃ¦re pÃ¥ NTH pÃ¥ 5 minutter 
    v_compl(be1,agent,on,job).  
    v_compl(be1,agent,on,meeting).        %% Norwag
    v_compl(be1,agent,on,network).   
    v_compl(be1,agent,on,place). 
-   v_compl(be1,agent,on,problem).    %% inne på et 
+   v_compl(be1,agent,on,problem).    %% inne pÃ¥ et 
    v_compl(be1,agent,on,time).   
    v_compl(be1,agent,on,vehicle).  
 
-   v_compl(be1,agent,to,direction). %% Norw til venstre/høyre 
+   v_compl(be1,agent,to,direction). %% Norw til venstre/hÃ¸yre 
    v_compl(be1,agent,to,meeting). %% .. meeting-place 
    v_compl(be1,agent,to,place).          %% bli (med) til ... %%?
    v_compl(be1,agent,to,time).           %% NON-standard 
@@ -3101,7 +3102,7 @@ iv_templ(be1,thing).
    v_compl(be1,object,in,place). 
    v_compl(be1,object,in,sale). 
 
-   v_compl(be1,operation,for,thing). %% virkemåte 
+   v_compl(be1,operation,for,thing). %% virkemÃ¥te 
 
    v_compl(be1,permission,on,vehicle).   %%  (Norwag)
    v_compl(be1,person,nil,daypart).      %% I am  on NTH monday morning
@@ -3120,14 +3121,14 @@ iv_templ(be1,thing).
 
    v_compl(be1,thing,so_that,thing). %% abnormalverb
 
-   v_compl(be1,clock,in,time).           %% klokka nå 
+   v_compl(be1,clock,in,time).           %% klokka nÃ¥ 
    v_compl(be1,day,in,day).              %% what day is it today 
 
    v_compl(be1,day,in,time).   %% (mange) dager er det til julaften
    v_compl(be1,hour,in,time).  
    v_compl(be1,minute,in,time).  
 
-   v_compl(be1,minute,to,coevent).  %% til bussen går
+   v_compl(be1,minute,to,coevent).  %% til bussen gÃ¥r
 
    v_compl(be1,day,in,time).
    v_compl(be1,hour,in,time).  
@@ -3154,7 +3155,7 @@ iv_templ(be1,thing).
    v_compl(be1,person,nil,day).          %%  I am on NTH monday
    v_compl(be1,person,nil,date).         %%  I am on NTH 21.4.45  ??? 
    v_compl(be1,person,from,place). 
-   v_compl(be1,person,to,place).         %% (i.e. skal være )
+   v_compl(be1,person,to,place).         %% (i.e. skal vÃ¦re )
    v_compl(be1,person,within,clock). 
    v_compl(be1,person,within,hour). 
    v_compl(be1,person,within,minute). 
@@ -3166,7 +3167,7 @@ iv_templ(be1,thing).
    v_compl(be1,place,near,place).   
 
 %  v_compl(be1,place,in,place).          %%  (Where is NTH )
-%% PROBLEM   bus to nth that is in gløshaugen (at 1200)
+%% PROBLEM   bus to nth that is in glÃ¸shaugen (at 1200)
 
    v_compl(be1,place,in,city). 
    v_compl(be1,price,in,city).           %%  Generalize ?
@@ -3180,16 +3181,16 @@ iv_templ(be1,thing).
    v_compl(be1,station,on,place). 
    v_compl(be1,station,to,place).  %% stasjoner fra A til B
    v_compl(be1,station,towards,place). %% on bus X 
-   v_compl(be1,station,with,bus).  %% Ad Hoc  første holdeplass med
-                                   %% buss 5 etter gløshaugen syd mot moholt 
+   v_compl(be1,station,with,bus).  %% Ad Hoc  fÃ¸rste holdeplass med
+                                   %% buss 5 etter glÃ¸shaugen syd mot moholt 
 
    v_compl(be1,thing,for,time).   %% filene er for jula 
    v_compl(be1,thing,in,comparison). 
    v_compl(be1,thing,in,use). 
    v_compl(be1,thing,in_order_to,thing).
 
-   v_compl(be1,thing,on,distance). %%  på strekningen ( distance ako measure#)
-   v_compl(be1,thing,on,webaddress). %%  "alt kan være der"
+   v_compl(be1,thing,on,distance). %%  pÃ¥ strekningen ( distance ako measure#)
+   v_compl(be1,thing,on,webaddress). %%  "alt kan vÃ¦re der"
 
    v_compl(be1,thing,offside,place). 
    v_compl(be1,thing,outside,place). 
@@ -3249,7 +3250,7 @@ v_compl(be1,weather,in,place).
    
 % v_compl(be1,station,on,neighbourhood).
 %%  (bus from A which is on B before T)
-%%  (hvilke busser er på lade)
+%%  (hvilke busser er pÃ¥ lade)
 
 %% TV-TEMPL
 
@@ -3283,13 +3284,13 @@ tv_templ(have,agent,suspicion).
     v_compl(have,thing,redundantly,thing). %% ???
 
     v_compl(have,agent,according_to,thing).  %% iglge avtale
-    v_compl(have,agent,from,agent).   %% ha (få) fra  meg %% Norw 
+    v_compl(have,agent,from,agent).   %% ha (fÃ¥) fra  meg %% Norw 
     v_compl(have,agent,off,agent).    %%         av
-    v_compl(have,agent,on,connection).   %% Tagore på tråden
+    v_compl(have,agent,on,connection).   %% Tagore pÃ¥ trÃ¥den
     v_compl(have,agent,in,addition). %% stanprep, but have is abnormal  
     v_compl(have,agent,in,idea). %% disam  tankene 
     v_compl(have,agent,in,mind).
-    v_compl(have,agent,on,bodypart). %% på fanget ? 
+    v_compl(have,agent,on,bodypart). %% pÃ¥ fanget ? 
     v_compl(have,thing,so_that,coevent). %% stanprep, but have  abnormal 
 
 tv_templ(have,agent,answer).  
@@ -3302,15 +3303,15 @@ tv_templ(have,agent,honour).
 tv_templ(have,agent,information). 
 tv_templ(have,agent,need).   
 tv_templ(have,agent,part).  
-tv_templ(have,agent,phrase).     %%  kommentar/ løfte
+tv_templ(have,agent,phrase).     %%  kommentar/ lÃ¸fte
 tv_templ(have,agent,responsibility).
 tv_templ(have,agent,room). 
 
     v_compl(have,agent,in,place). %% TA-110111
 
 tv_templ(have,agent,route_plan). 
-tv_templ(have,agent,side).       %%  vår side
-    tv_templ(have,agent,page).   %%  vår side//ad hoc disamb
+tv_templ(have,agent,side).       %%  vÃ¥r side
+    tv_templ(have,agent,page).   %%  vÃ¥r side//ad hoc disamb
 tv_templ(have,agent,stability).  
 tv_templ(have,agent,traffic).   
 
@@ -3320,12 +3321,12 @@ tv_templ(have,departure,vehicle).
     v_compl(have,agent,in,mind).   
     v_compl(have,agent,on,mind).    %% 
     v_compl(have,agent,on,vehicle).
-    v_compl(have,agent,to,time).    %% har en øving til i morgen 
+    v_compl(have,agent,to,time).    %% har en Ã¸ving til i morgen 
     v_compl(have,thing,to,coevent). %% ha samvittighet til at 
 
 tv_templ(have,agent,language).   %% e.g. logic 
 tv_templ(have,agent,list).       %% doesnt work if attribute
-%% tv_templ(have,agent,management). %% håndtering %%  has_a
+%% tv_templ(have,agent,management). %% hÃ¥ndtering %%  has_a
 
 tv_templ(have,agent,object).     %% event, not attribute 
 
@@ -3369,7 +3370,7 @@ tv_templ(have,X,Y):-
     v_compl(have,agent,to,place).     %% have buses to nardo   
 
     v_compl(have,person,on,mind). 
-    v_compl(have,person,on,self).     %% penger på seg 
+    v_compl(have,person,on,self).     %% penger pÃ¥ seg 
     v_compl(have,vehicle,from,place). 
     v_compl(have,vehicle,at,place).    %% Hvilke passeringer har buss nr. 44 ved prof. Brochs gate 
     v_compl(have,vehicle,before,place). %% -"- 
@@ -3396,7 +3397,7 @@ tv_templ(start,agent,thing). %%  system/message
 
 tv_templ(start,agent,route_plan). 
 
-    v_compl(start,agent,nil,time).      %% Haz ? starter (i) påsken 
+    v_compl(start,agent,nil,time).      %% Haz ? starter (i) pÃ¥sken 
 
     v_compl(start,agent,from,place).    %% nonstandard   
     v_compl(start,agent,on,activity).   %%
@@ -3405,7 +3406,7 @@ tv_templ(start,agent,route_plan).
     v_compl(start,agent,with,thing).    %% start message with Team 
 
 
-iv_templ(start,card). %% å gjelde  
+iv_templ(start,card). %% Ã¥ gjelde  
 
 iv_templ(start,departure). 
     v_compl(start,departure,at,place).
@@ -3414,14 +3415,14 @@ iv_templ(start,departure).
 
 iv_templ(start,file).               
     v_compl(start,file,with,string).
-iv_templ(start,special_ticket).  %% å gjelde 
+iv_templ(start,special_ticket).  %% Ã¥ gjelde 
 iv_templ(start,movie).
 iv_templ(start,name).               
     v_compl(start,name,with,string). 
 iv_templ(start,meeting). 
 iv_templ(start,price). 
 
-iv_templ(start,vehicle).  %% når starter NTH *
+iv_templ(start,vehicle).  %% nÃ¥r starter NTH *
    v_compl(start,vehicle,at,place). 
    v_compl(start,vehicle,with,route_plan).  
 
@@ -3454,7 +3455,7 @@ tv_templ(stop,agent,activity).
 tv_templ(stop,agent,system).  
 tv_templ(stop,agent,vehicle). %%  ( by signal ?) 
 
-    v_compl(stop,agent,nil,daypart). %%  BT stoppe (igår) kveld
+    v_compl(stop,agent,nil,daypart). %%  BT stoppe (igÃ¥r) kveld
     v_compl(stop,agent,nil,time). %%  stoppe ikveld
     v_compl(stop,agent,on,activity).            %% (Norw)
     v_compl(stop,agent,on,time). 
@@ -3469,7 +3470,7 @@ iv_templ(stop,thing). %% TA-110609 stop verden
 /*
 iv_templ(stop,agent). 
 iv_templ(stop,company). %% qua neib qua company %% TA-101118 Korsen stanset
-iv_templ(stop,weather).   %%  (techn. stoppe å regne
+iv_templ(stop,weather).   %%  (techn. stoppe Ã¥ regne
 iv_templ(stop,departure). 
 
 */
@@ -3516,7 +3517,7 @@ tv_templ(use2,agent,coevent).
 
 /*
 iv_templ(use2,vehicle).     %%   (Pleie  Norwagism)
-iv_templ(use2,agent).       %% pleie å gå = pleier for å gå.
+iv_templ(use2,agent).       %% pleie Ã¥ gÃ¥ = pleier for Ã¥ gÃ¥.
 iv_templ(use2,delay).
 */
     abnormalverb(use2,_).     %%  NB No inheritance   (abnormalverb(use2,bus) tc.
@@ -3557,15 +3558,15 @@ iv_templ(abstain,person).
 
 tv_templ(accept,vehicle,card). 
 
-tv_templ(accompany,agent,explanation). %% AMB  følge anvisninger 
+tv_templ(accompany,agent,explanation). %% AMB  fÃ¸lge anvisninger 
 
-tv_templ(accompany,thing,thing).  %% ad hoc  merking må følges AMB 
+tv_templ(accompany,thing,thing).  %% ad hoc  merking mÃ¥ fÃ¸lges AMB 
 
 tv_templ(accompany,agent,agent). 
     v_compl(accompany,agent,from,agent). 
     v_compl(accompany,agent,from,place). 
     v_compl(accompany,agent,of,consideration).  %% av hensyn til 
-    v_compl(accompany,agent,to,agent).          %% "følges" amb
+    v_compl(accompany,agent,to,agent).          %% "fÃ¸lges" amb
     v_compl(accompany,agent,to,place).  
 
 % tv_templ(accompany,thing,vehicle).  %% -> go2 
@@ -3594,7 +3595,7 @@ tv_templ(amuse,thing,agent).
 
 
 %%
-tv_templ(answer1,thing,nil). %% den svare (noe) på engelsk
+tv_templ(answer1,thing,nil). %% den svare (noe) pÃ¥ engelsk
 
 iv_templ(answer1,agent). %%  Norwegian: Intransitivt
 tv_templ(answer1,agent,thing). %% Ambiguity problem %% hva kan jeg svare.
@@ -3610,11 +3611,11 @@ tv_templ(answer1,agent,thing). %% Ambiguity problem %% hva kan jeg svare.
     v_compl(answer1,thing,on,thing). 
     v_compl(answer1,thing,with,sentence). 
 
-tv_templ(answer1,agent,nil).      %%  svare (noe) på engelsk
+tv_templ(answer1,agent,nil).      %%  svare (noe) pÃ¥ engelsk
 tv_templ(answer1,agent,question). %%  besvare   //
 tv_templ(answer1,agent,sentence). %%  svart med //
 
-tv_templ(answer,agent,nil).      %%  svare (noe) på engelsk
+tv_templ(answer,agent,nil).      %%  svare (noe) pÃ¥ engelsk
 tv_templ(answer,agent,question). %%  besvare   //
 tv_templ(answer,agent,sentence). %%  svart med //
 
@@ -3661,7 +3662,7 @@ iv_templ(arrive,thing).
 
     v_compl(arrive,thing,in,information). %% metagoric
  
-    v_compl(arrive,agent,nil,activity). %% skal på = ankomme jobb 
+    v_compl(arrive,agent,nil,activity). %% skal pÃ¥ = ankomme jobb 
     v_compl(arrive,agent,nil,time). 
     v_compl(arrive,agent,nil,meeting). 
     v_compl(arrive,agent,nil,place). 
@@ -3669,7 +3670,7 @@ iv_templ(arrive,thing).
     v_compl(arrive,agent,from,place). %% ankomme X fra Y
     v_compl(arrive,agent,on,place). 
     v_compl(arrive,agent,on,duration). 
-    v_compl(arrive,agent,on,vehicle). %%  være på toget
+    v_compl(arrive,agent,on,vehicle). %%  vÃ¦re pÃ¥ toget
     v_compl(arrive,agent,to,place).   %%  (Norwagism) 
     v_compl(arrive,agent,to,time).    %%  ankomme til kl 1234
     v_compl(arrive,agent,by,vehicle).
@@ -3677,7 +3678,7 @@ iv_templ(arrive,thing).
     v_compl(arrive,agent,for,meeting). 
     v_compl(arrive,agent,on,meeting). 
     v_compl(arrive,agent,to,meeting). 
-    v_compl(arrive,agent,towards,place). %% Techn. jeg må mot nth
+    v_compl(arrive,agent,towards,place). %% Techn. jeg mÃ¥ mot nth
     v_compl(arrive,agent,via,place). 
 
 
@@ -3712,15 +3713,15 @@ iv_templ(arrive,version).  %% Metagoric
 % 
 
 iv_templ(ask,agent). 
-tv_templ(ask,agent,coevent). %% e.g.  om (trikken går)
-tv_templ(ask,agent,sentence). %%  Skjønner du hva jeg spør om
+tv_templ(ask,agent,coevent). %% e.g.  om (trikken gÃ¥r)
+tv_templ(ask,agent,sentence). %%  SkjÃ¸nner du hva jeg spÃ¸r om
 tv_templ(ask,agent,agent).    %% I beg you to go  
 
     v_compl(ask,agent,about,thing).      %% about is for times and places
     v_compl(ask,agent,after,thing).  %% rough ask after)ask regarding 
 
     v_compl(ask,agent,from,thing).  %% rough ask after)ask regarding
-    %% spør etter sted = ask after place = ask from place %%   weak
+    %% spÃ¸r etter sted = ask after place = ask from place %%   weak
     v_compl(ask,agent,nil,time_count).   %% ask many times  (standard ?)
     v_compl(ask,agent,on,language).       %%  (Norw)
     v_compl(ask,agent,in,language).       %%  (Eng)
@@ -3751,7 +3752,7 @@ iv_templ(bicycle,agent). %%  ( :-))
     v_compl(bicycle,agent,to,place).   %%  not standard
     v_compl(bicycle,agent,to,agent).  
 
-iv_templ(blame1,agent). %% Norw, skylde /det/  på
+iv_templ(blame1,agent). %% Norw, skylde /det/  pÃ¥
     v_compl(blame1,agent,on,thing). 
 
 
@@ -3761,11 +3762,11 @@ iv_templ(burn,house).
 
 %% iv_templ(check,system). 
 
-tv_templ(check,agent,nil). %% jeg undersøker () 
+tv_templ(check,agent,nil). %% jeg undersÃ¸ker () 
 tv_templ(check,agent,thing). 
     v_compl(check,thing,against,thing). 
     v_compl(check,thing,towards,thing). %% lex dependent 
-    v_compl(check,agent,with,thing).    %%  undersøke med server/undersøke (ting) med ..
+    v_compl(check,agent,with,thing).    %%  undersÃ¸ke med server/undersÃ¸ke (ting) med ..
 
 tv_templ(choose,agent,nil).   %%jeg velger mellom ... CONFUSE %% TA-110310
 
@@ -3774,7 +3775,7 @@ tv_templ(choose,agent,thing).
     v_compl(choose,agent,between,thing).
     v_compl(choose,agent,for,thing).     %% TA-110228
     v_compl(choose,agent,in,time). %% nec?
-    v_compl(choose,agent,on,object). %% velge på t:kort
+    v_compl(choose,agent,on,object). %% velge pÃ¥ t:kort
 
 
 tv_templ(close,agent,door). %% etc
@@ -3791,11 +3792,11 @@ iv_templ(come,thing). %% * kan katten|m bli med
     v_compl(come,thing,from,system).
     v_compl(come,thing,in,database).   %% i.e. export 
 %%     v_compl(come,thing,in,text).       %% metagoric %% TA-110504
-    v_compl(come,thing,on,time).       %% bus/person komme på 10 minutter
+    v_compl(come,thing,on,time).       %% bus/person komme pÃ¥ 10 minutter
     v_compl(come,thing,to,agent).
     v_compl(come,thing,to,coevent). %%  come to moholte.g. coevent %% TA-110411
     v_compl(come,thing,via,thing). 
-    v_compl(come,thing,with,thing).    %% den kommer fram ved søking 
+    v_compl(come,thing,with,thing).    %% den kommer fram ved sÃ¸king 
 
     v_compl(come,place,after,place). %% stat/neigh 
     v_compl(come,place,before,place).   
@@ -3846,7 +3847,7 @@ iv_templ(continue,thing).
 iv_templ(correspond,vehicle).  %% \+ thing torvet korrepsonderer
 iv_templ(correspond,company). 
 
-    v_compl(correspond,thing,on,thing).   %% passer på nettside
+    v_compl(correspond,thing,on,thing).   %% passer pÃ¥ nettside
     v_compl(correspond,thing,with,thing). 
     v_compl(correspond,company,with,company). 
     v_compl(correspond,company,with,vehicle).
@@ -3886,7 +3887,7 @@ tv_templ(cost,thing,nil).
 %%%%     v_compl(cost,thing,in,place).      %%  -> n_compl
 
     v_compl(cost,thing,over,money).    %% > 1 kr
-    v_compl(cost,thing,per,thing).     %% koste per måned 
+    v_compl(cost,thing,per,thing).     %% koste per mÃ¥ned 
     v_compl(cost,thing,under,money).   %% < 1 kr
     v_compl(cost,thing,with,card).  
     v_compl(cost,thing,within,place).  
@@ -3954,7 +3955,7 @@ tv_templ(end,station,route). %% (endstation) ends route
                              
 iv_templ(end,thing). %% TA-110606 the world
 
-    v_compl(end,agent,on,activity). %% Norw på jobb
+    v_compl(end,agent,on,activity). %% Norw pÃ¥ jobb
     v_compl(end,text,with,text).     
 
 /* %% TA-110606
@@ -3979,7 +3980,7 @@ tv_templ(estimate,agent,measure).
     v_compl(estimate,thing,from,place). 
     v_compl(estimate,thing,to,place). 
 
-iv_templ(exercise,agent). %%  trene/øve
+iv_templ(exercise,agent). %%  trene/Ã¸ve
 
 
 
@@ -4000,7 +4001,7 @@ iv_templ(exist,thing).
     v_compl(exist,thing,nil,day ).  
     v_compl(exist,thing,nil,place). %% hvor eksisterer bussene ?
 
-    v_compl(exist,thing,as,thing). %% gjelde som søndagsrute 
+    v_compl(exist,thing,as,thing). %% gjelde som sÃ¸ndagsrute 
     v_compl(exist,thing,at,thing). %% gjelde ved reise 
 
     v_compl(exist,thing,after,coevent). 
@@ -4015,17 +4016,17 @@ iv_templ(exist,thing).
     v_compl(exist,thing,in,company).          %%  (ako place ?)
     v_compl(exist,thing,in,information).  %% metagoric 
     v_compl(exist,thing,in,text). 
-    v_compl(exist,thing,in,ticket).   %% inngå i .. 
+    v_compl(exist,thing,in,ticket).   %% inngÃ¥ i .. 
     v_compl(exist,thing,in,vehicle).  %%  delays in route (SIC)
     v_compl(exist,thing,on,system).  
-    v_compl(exist,thing,on,activity). %% på reiser 
+    v_compl(exist,thing,on,activity). %% pÃ¥ reiser 
     v_compl(exist,thing,on,network).  
 
     v_compl(exist,place,on,route). 
   
     v_compl(exist,time,to,place).  %% tid til nardo 
 
-    v_compl(exist,place,from,place).  %% i.e. (på veg) fra 
+    v_compl(exist,place,from,place).  %% i.e. (pÃ¥ veg) fra 
 
     v_compl(exist,time,since,time). 
     v_compl(exist,time,since,coevent). 
@@ -4080,8 +4081,8 @@ tv_templ(feel,agent,thing).
 tv_templ(fill,agent,birthday). %% TA-110215
 tv_templ(fill,agent,card). %% t-kort (med penger)
 tv_templ(fill,agent,special_ticket). %% t-kort (med penger)
-tv_templ(fill,agent,year). %% fylle år (Norw, rough) 
-tv_templ(fill,agent,nil). %% fyller (penger) på t-kort 
+tv_templ(fill,agent,year). %% fylle Ã¥r (Norw, rough) 
+tv_templ(fill,agent,nil). %% fyller (penger) pÃ¥ t-kort 
     v_compl(fill,agent,on,card). 
 
 tv_templ(finish,thing,thing). %% veh, agent 
@@ -4121,12 +4122,12 @@ iv_templ(get,agent). %%   = go, semantically and factual
     v_compl(get,agent,from,agent).   %% TA-101102
 	 v_compl(get,agent,in,place).     %% nec?
 	 v_compl(get,agent,in,time). 
-    v_compl(get,agent,of,agent).     %% få av %% TA-101102 
+    v_compl(get,agent,of,agent).     %% fÃ¥ av %% TA-101102 
     v_compl(get,agent,off,agent).    %%
 	 v_compl(get,agent,off,vehicle). 
 	 v_compl(get,agent,on,vehicle). 
     v_compl(get,agent,past,place). 
-    v_compl(get,agent,to,vehicle). %% få ruter til buss 
+    v_compl(get,agent,to,vehicle). %% fÃ¥ ruter til buss 
     v_compl(get,agent,to,place).
     v_compl(get,agent,to,time). %% til jul ..
     v_compl(get,agent,with,vehicle). 
@@ -4134,7 +4135,7 @@ iv_templ(get,agent). %%   = go, semantically and factual
 
 tv_templ(get,question,answer). 
 
-tv_templ(get,agent,thing). %%  gå svar/buss 
+tv_templ(get,agent,thing). %%  gÃ¥ svar/buss 
 
 tv_templ(get,agent,coevent). 
     tv_templ(receive,agent,coevent). 
@@ -4166,19 +4167,19 @@ iv_templ(get,vehicle). %%   = go, semantically and factual
 iv_templ(go,activity).
 
 iv_templ(go,traffic).  
-   v_compl(go,traffic,nil,place).  %% hvor går trafikken
+   v_compl(go,traffic,nil,place).  %% hvor gÃ¥r trafikken
 
 
 
 iv_templ(go,agent).       %% include command:  go to hell!  
     v_compl(go,agent,nil,time). %% I go now
     v_compl(go,agent,nil,direction). %% go home
-    v_compl(go,agent,nil,place).     %%  Jeg går et sted 
+    v_compl(go,agent,nil,place).     %%  Jeg gÃ¥r et sted 
     v_compl(go,agent,nil,speed).     %%  How fast can I go     
     v_compl(go,agent,nil,time_count). 
     v_compl(go,agent,nil,trip).      %% reise en tur
 %%     v_compl(go,agent,nil,vehicle).   %% go to X next busy
-%%                                      %%   nå går de(pron)  neste bussene .
+%%                                      %%   nÃ¥ gÃ¥r de(pron)  neste bussene .
 
 
     v_compl(go,agent,after,agent).    
@@ -4188,16 +4189,16 @@ iv_templ(go,agent).       %% include command:  go to hell!
     v_compl(go,agent,by,foot).
 
 %%%    v_compl(go,agent,except,vehicle).   %% unntatt (med) buss 9
-%%%    v_compl(go,vehicle,except,vehicle). %% hvilke busser går unntatt  46
+%%%    v_compl(go,vehicle,except,vehicle). %% hvilke busser gÃ¥r unntatt  46
 
     v_compl(go,agent,for,money). 
     v_compl(go,agent,for,price).  
 
-    v_compl(go,agent,from,coevent).  %% gå ut fra=believe (metaphor)
+    v_compl(go,agent,from,coevent).  %% gÃ¥ ut fra=believe (metaphor)
     v_compl(go,agent,from,meeting).  %% TA-110330
     v_compl(go,agent,from,seat). 
  %%    v_compl(go,agent,from,vehicle).  %% komme til roseborg fra buss 63
- %%          når går neste fra buss -> ooo0
+ %%          nÃ¥r gÃ¥r neste fra buss -> ooo0
     v_compl(go,agent,from,intelligence). %% :-) vettet Norw  
     v_compl(go,agent,from,meeting).  
          %% ( can you go  ) 
@@ -4208,27 +4209,27 @@ iv_templ(go,agent).       %% include command:  go to hell!
     v_compl(go,agent,in,group).  
     v_compl(go,agent,in,vehicle). 
 
-    v_compl(go,agent,off,vehicle).   %% man kan gå av 
-    v_compl(go,agent,off,station).   %% man kan gå av [på] hpl
+    v_compl(go,agent,off,vehicle).   %% man kan gÃ¥ av 
+    v_compl(go,agent,off,station).   %% man kan gÃ¥ av [pÃ¥] hpl
 
 
 
 %%%    v_compl(go,agent,on,time).    %% PROBLEM 
 
 %    v_compl(go,agent,nil,place).  %% hvilket sted kan jeg ta bussen ( fra/til )
-                                   %% jeg går oslo veien  ( road ako place)                        
+                                   %% jeg gÃ¥r oslo veien  ( road ako place)                        
                                    %% hvordan kommer jeg meg fra OBS
-                                   %% Lade >OBS< på heimdal
+                                   %% Lade >OBS< pÃ¥ heimdal
 
     v_compl(go,agent,on,christmas). 
-    v_compl(go,agent,on,daypart).    %%  Norw på kvelden 
+    v_compl(go,agent,on,daypart).    %%  Norw pÃ¥ kvelden 
     v_compl(go,agent,on,easter).  
     v_compl(go,agent,on,meeting).   
-    v_compl(go,agent,on,midnight).     %% Norw reise midt på natta
+    v_compl(go,agent,on,midnight).     %% Norw reise midt pÃ¥ natta
     v_compl(go,agent,on,vacation).          %% Norw 
-    v_compl(go,agent,on,vehicle).    %% man kan gå på ("spasere innepå ")    v_compl(go,agent,through,place). 
+    v_compl(go,agent,on,vehicle).    %% man kan gÃ¥ pÃ¥ ("spasere innepÃ¥ ")    v_compl(go,agent,through,place). 
 
-    v_compl(go,agent,to,person).   %%  :-) ** jeg går til Lingit/company/neighbourhood 
+    v_compl(go,agent,to,person).   %%  :-) ** jeg gÃ¥r til Lingit/company/neighbourhood 
     v_compl(go,agent,to,clock).             %% Norwagism = before 
     v_compl(go,agent,to,company). 
     v_compl(go,agent,to,foot). %% Norw til fots 
@@ -4236,7 +4237,7 @@ iv_templ(go,agent).       %% include command:  go to hell!
     v_compl(go,agent,to,place).             %% (figuratively )
     v_compl(go,agent,to,strike). %% :-( 
     v_compl(go,agent,to,summerroute). 
-    v_compl(go,agent,to,winterroute).      %% gå over til  FOS
+    v_compl(go,agent,to,winterroute).      %% gÃ¥ over til  FOS
 
     v_compl(go,agent,via,vehicle).     %% odd
 %%    v_compl(go,agent,with,object).   %% Hazard  vehicle ako object    
@@ -4259,7 +4260,7 @@ iv_templ(go,correction). %% rettelse
 iv_templ(go,information).  %% come -> come/go -> go (1 pass)
 
 iv_templ(go,sentence).           %% i.e. come
-iv_templ(go,street). %% TA-110121 veien går til nardo
+iv_templ(go,street). %% TA-110121 veien gÃ¥r til nardo
 iv_templ(go,summer). %% komme -> go/come
 iv_templ(go,sun). 
 iv_templ(go,moon).  
@@ -4286,7 +4287,7 @@ iv_templ(go,test).            %%  .. bra
     v_compl(go,person,by,place).  
     v_compl(go,person,for,place). 
     v_compl(go,person,for,activity).     %% (Norwagism)
-    v_compl(go,person,in,activity).    %% i møte
+    v_compl(go,person,in,activity).    %% i mÃ¸te
     v_compl(go,person,in,direction).
     v_compl(go,person,near,place). 
     v_compl(go,person,on,ski).
@@ -4304,12 +4305,12 @@ iv_templ(go,test).            %%  .. bra
 
 %    v_compl(go,person,withafter,duration). %% OBSOL
 %    v_compl(go,person,on,clock).   %% Norwagism  to ... on 1 hour
-    v_compl(go,person,on,duration).     %% Jeg går på en time
-    v_compl(go,person,within,duration). %% Jeg går innen en time 
+    v_compl(go,person,on,duration).     %% Jeg gÃ¥r pÃ¥ en time
+    v_compl(go,person,within,duration). %% Jeg gÃ¥r innen en time 
 
     v_compl(go,agent,on,activity).      %%  (Norwagism)
-    v_compl(go,agent,on,foot).  %% gå på bena    
-    v_compl(go,agent,on,leg).   %% gå på bena
+    v_compl(go,agent,on,foot).  %% gÃ¥ pÃ¥ bena    
+    v_compl(go,agent,on,leg).   %% gÃ¥ pÃ¥ bena
     v_compl(go,agent,on,ticket).        %%  Norw 
     v_compl(go,person,offside,place).   %%  ( e.g. south of)
     v_compl(go,person,outside,place).   %%  (e.g. utenom)
@@ -4357,14 +4358,14 @@ iv_templ(go,development).
 
 %% iv_templ(go,clock).   %%  does a bus that arrives before 9:30 go ...
 
-iv_templ(go,duration). %% det går 5 minutter 
+iv_templ(go,duration). %% det gÃ¥r 5 minutter 
 
-iv_templ(go,coevent). %% gå galt|dårlig   .. 
+iv_templ(go,coevent). %% gÃ¥ galt|dÃ¥rlig   .. 
     v_compl(go,coevent,nil,mode). 
 
 iv_templ(go,company).
 
-%% Når går  buss forbi moholt på mandag som kommer  til samfundet .
+%% NÃ¥r gÃ¥r  buss forbi moholt pÃ¥ mandag som kommer  til samfundet .
 %% iv_templ(go,duration). %% between ... %% NOT time, not Day:
 %%                       %%   will a bus that goes before 930 go (to...
 %%    v_compl(go,duration,between,departure). 
@@ -4374,7 +4375,7 @@ iv_templ(go,limit).  %% ambiguous
 
 iv_templ(go,movie).
 
-iv_templ(go,number).  %%  (qua route) %% går 52 neste gang 
+iv_templ(go,number).  %%  (qua route) %% gÃ¥r 52 neste gang 
     v_compl(go,number,X,Y):- %% ad hoc 
         v_compl(go,vehicle,X,Y). %%%% NB No inheritance        
 
@@ -4382,8 +4383,8 @@ iv_templ(go,number).  %%  (qua route) %% går 52 neste gang
 % OK, someone can say   number 52 goes ==> number
 
 
-iv_templ(go,relation). %%Ad Hoc  hvor lenge kommer forholdet til å vare
-                       %% = hvor lenge går forholdet for å vare
+iv_templ(go,relation). %%Ad Hoc  hvor lenge kommer forholdet til Ã¥ vare
+                       %% = hvor lenge gÃ¥r forholdet for Ã¥ vare
 
     v_compl(go,relation,nil,duration).
     v_compl(go,relation,with,duration).
@@ -4393,7 +4394,7 @@ iv_templ(go,relation). %%Ad Hoc  hvor lenge kommer forholdet til å vare
 iv_templ(go,route_plan). %% Winter routes/ summer routes 
     v_compl(go,route_plan,nil,date).  %% ETC.
     v_compl(go,route_plan,nil,place). %% hazard ?
-    v_compl(go,route_plan,nil,way).   %% ringrute går en omvei 
+    v_compl(go,route_plan,nil,way).   %% ringrute gÃ¥r en omvei 
     v_compl(go,route_plan,between,place). 
     v_compl(go,route_plan,for,place). 
     v_compl(go,route_plan,from,place). 
@@ -4419,8 +4420,8 @@ iv_templ(go,plane).
     v_compl(go,plane,to,country). 
  
 
-% iv_templ(go,street).   %% går  K gate til ila/ når kommer K gate F+ 
-%    når går neste yggdrasilvegen 
+% iv_templ(go,street).   %% gÃ¥r  K gate til ila/ nÃ¥r kommer K gate F+ 
+%    nÃ¥r gÃ¥r neste yggdrasilvegen 
 %    v_compl(go,street,past,route).  %% Special
 
     v_compl(go,agent,nil,street).  
@@ -4428,9 +4429,9 @@ iv_templ(go,plane).
 
 
 %% NB 
-%% iv_templ(go,time).  %% Den første (sept*) går
-%% iv_templ(go,clock).     %% når går 131 = klokken (01:30) går 
-                        %% * klokken går riktig %% TA-110701
+%% iv_templ(go,time).  %% Den fÃ¸rste (sept*) gÃ¥r
+%% iv_templ(go,clock).     %% nÃ¥r gÃ¥r 131 = klokken (01:30) gÃ¥r 
+                        %% * klokken gÃ¥r riktig %% TA-110701
 
 iv_templ(go,day).      %% Hazard
 
@@ -4456,11 +4457,11 @@ iv_templ(go,return). % retur
 %% Experiment %%
 
 
-%% iv_templ(go,thing). %%  Experiment går nardo
+%% iv_templ(go,thing). %%  Experiment gÃ¥r nardo
 
-    v_compl(go,thing,nil,mode). %% det går bra 
-    v_compl(go,thing,nil,departure). %% de går (siste) avgang ... 
-    v_compl(go,thing,for,agent).   %% gå greitt for deg ? 
+    v_compl(go,thing,nil,mode). %% det gÃ¥r bra 
+    v_compl(go,thing,nil,departure). %% de gÃ¥r (siste) avgang ... 
+    v_compl(go,thing,for,agent).   %% gÃ¥ greitt for deg ? 
     v_compl(go,thing,from,place).  
     v_compl(go,thing,to,place).      %% OK
 
@@ -4470,8 +4471,8 @@ iv_templ(go,return). % retur
 
 iv_templ(go,vehicle).                    
  
-    v_compl(go,vehicle,nil,bus). %% buss går (med) siste buss %% haz  ? 
-%%%    v_compl(go,vehicle,nil,vehicle).     %%  værnes sentrum  buss 9
+    v_compl(go,vehicle,nil,bus). %% buss gÃ¥r (med) siste buss %% haz  ? 
+%%%    v_compl(go,vehicle,nil,vehicle).     %%  vÃ¦rnes sentrum  buss 9
 
 %     v_compl(go,vehicle,nil,time).    IS TOO GENERAL (WHY)
 
@@ -4481,7 +4482,7 @@ iv_templ(go,vehicle).
 	 v_compl(go,vehicle,nil,arrival). 
     v_compl(go,vehicle,nil,clock). %%  Important  go 1200, not go 5 minutes
     v_compl(go,vehicle,nil,departure).   
-    v_compl(go,vehicle,nil,direction).       %% hvilken vei går bussen
+    v_compl(go,vehicle,nil,direction).       %% hvilken vei gÃ¥r bussen
     v_compl(go,vehicle,nil,distance). 
     v_compl(go,vehicle,nil,duration).        %%  hour,minute
     v_compl(go,vehicle,nil,day).  
@@ -4497,13 +4498,13 @@ iv_templ(go,vehicle).
     v_compl(go,vehicle,nil,semester).
     v_compl(go,vehicle,nil,easter).   
     v_compl(go,vehicle,nil,christmas). %% 
-    v_compl(go,vehicle,nil,time_count).  %% 9 times 10 = 9 goes (times) 10'clock  %% bussen går noen ganger 
-    v_compl(go,vehicle,nil,midnight).        %%  gå natt til lørdag (Norwagism)
+    v_compl(go,vehicle,nil,time_count).  %% 9 times 10 = 9 goes (times) 10'clock  %% bussen gÃ¥r noen ganger 
+    v_compl(go,vehicle,nil,midnight).        %%  gÃ¥ natt til lÃ¸rdag (Norwagism)
     v_compl(go,vehicle,nil,nightbus).    %% i.e. with nightbus
     v_compl(go,vehicle,nil,route_plan). 
     v_compl(go,vehicle,nil,route).   
 
-     %%   nå går de(pron)  neste bussene . 
+     %%   nÃ¥ gÃ¥r de(pron)  neste bussene . 
     v_compl(go,vehicle,nil,place). 
 
     v_compl(go,vehicle,nil,way). %%  e.g. omvei
@@ -4512,18 +4513,18 @@ iv_templ(go,vehicle).
 
     v_compl(go,vehicle,according_to,route_plan).
 
-  %    v_compl(go,vehicle,after,vehicle).        %% PROHIBITED  %    buss går   fra vestlia etter ni (buss ?)
+  %    v_compl(go,vehicle,after,vehicle).        %% PROHIBITED  %    buss gÃ¥r   fra vestlia etter ni (buss ?)
 
     v_compl(go,vehicle,after,route_plan).  
 
-    v_compl(go,vehicle,after,arrival).    %% båtens ankomst 
+    v_compl(go,vehicle,after,arrival).    %% bÃ¥tens ankomst 
     v_compl(go,vehicle,along,place).  
     v_compl(go,vehicle,around,place). 
     v_compl(go,vehicle,as,route_plan). 
     v_compl(go,vehicle,as,route).      %% go as number 9
     v_compl(go,vehicle,as,rule).   %% Norw .. som regel
 
-    v_compl(go,vehicle,before,departure). %% båtens avgang 
+    v_compl(go,vehicle,before,departure). %% bÃ¥tens avgang 
 
 %   v_compl(go,vehicle,before,vehicle).  %% cant handle it though 
 %                                        %% bus goes before 5 *** %% HAZARD
@@ -4532,7 +4533,7 @@ iv_templ(go,vehicle).
     v_compl(go,vehicle,by,vehicle).     %% go from X by bus 9
 
 
-% during = i løpet av
+% during = i lÃ¸pet av
 % during2 = om
 
     v_compl(go,vehicle,for,duration). 
@@ -4540,9 +4541,9 @@ iv_templ(go,vehicle).
     v_compl(go,vehicle,for,vehicle). 
                       %%  (  derived:  buss for rute 66)
                       %% avgang for rute 66
-                      %% = avgang går for rute 66
-                      %% = vehicle går for tute 66
-%%             ***   %% buss går for 10 minutter siden
+                      %% = avgang gÃ¥r for rute 66
+                      %% = vehicle gÃ¥r for tute 66
+%%             ***   %% buss gÃ¥r for 10 minutter siden
     v_compl(go,vehicle,for,time_count). 
     v_compl(go,vehicle,for,self).  
 
@@ -4569,13 +4570,13 @@ iv_templ(go,vehicle).
     v_compl(go,vehicle,on,fuel). 
     v_compl(go,vehicle,on,route).  
     v_compl(go,vehicle,on,route_plan). %% Norw
-%     v_compl(go,vehicle,on,place).          %%  (hazardous) bus pass NTH on Gløshaugen
+%     v_compl(go,vehicle,on,place).          %%  (hazardous) bus pass NTH on GlÃ¸shaugen
 
 %%    v_compl(go,vehicle,on,route).            %%  (on bus)
 
 %% Problem --------------------------
 
-%   v_compl(go,vehicle,on,time).             %% på tidspunkt/ på 3 minutter  %% Problem
+%   v_compl(go,vehicle,on,time).             %% pÃ¥ tidspunkt/ pÃ¥ 3 minutter  %% Problem
 %       v_compl(go,vehicle,on,clock). % on 17.5 = date 
     v_compl(go,vehicle,on,daytime).
     v_compl(go,vehicle,on,christmas). 
@@ -4588,16 +4589,16 @@ iv_templ(go,vehicle).
 %%%    v_compl(go,vehicle,on,duration). 
 %%%    OOOPS   bus goes on monday + day ako duration %% SYNDROME 
 
-    v_compl(go,vehicle,on,hour).  %%  på en time 
+    v_compl(go,vehicle,on,hour).  %%  pÃ¥ en time 
 
-%%    v_compl(go,vehicle,on,way).            %%  ( Norwagism  på en måte) 
+%%    v_compl(go,vehicle,on,way).            %%  ( Norwagism  pÃ¥ en mÃ¥te) 
     v_compl(go,vehicle,out_of,place). 
                                        %% rutetid = departure
     v_compl(go,departure,over,vehicle). %% <### rutetider over buss 5
 
     v_compl(go,departure,in,system). %% metagoric %% virke i bussoraklet
 
-    v_compl(go,vehicle,offside,place).       %% (e.g. sønnenfor 
+    v_compl(go,vehicle,offside,place).       %% (e.g. sÃ¸nnenfor 
     v_compl(go,vehicle,outside,place).       %% (e.g. utenom) 
     v_compl(go,vehicle,past,place). 
     v_compl(go,vehicle,through,place). 
@@ -4611,7 +4612,7 @@ iv_templ(go,vehicle).
     v_compl(go,vehicle,to,clock).
 %%%     v_compl(go,vehicle,to,company). %% // qua place %% Experiment
     v_compl(go,vehicle,to,date). %% from date is coverd by standard 
-    v_compl(go,vehicle,to,day).  %% til mandag ss på mandag %% Norw 
+    v_compl(go,vehicle,to,day).  %% til mandag ss pÃ¥ mandag %% Norw 
     v_compl(go,vehicle,to,direction).
     v_compl(go,vehicle,to,meeting). 
     v_compl(go,vehicle,to,place).         %% fra 16:00 til 17:00
@@ -4619,14 +4620,14 @@ iv_templ(go,vehicle).
     v_compl(go,vehicle,to,self). %% person).  % bus comes to me
                                               %  not to tagore
 
-    v_compl(go,vehicle,to,time).    %% bussen går til.. tider % EXPERIMENT 
+    v_compl(go,vehicle,to,time).    %% bussen gÃ¥r til.. tider % EXPERIMENT 
     v_compl(go,vehicle,to,train).            %%  (train station)
 
     v_compl(go,vehicle,towards,place).  
     v_compl(go,vehicle,towards,direction). %% nec? 
 
     v_compl(go,vehicle,via,route).   %% via rute 36
-    v_compl(go,vehicle,via,vehicle). %% via buss/båt 
+    v_compl(go,vehicle,via,vehicle). %% via buss/bÃ¥t 
 
     v_compl(go,vehicle,with,arrival).        %%   Norwagism ( arriving )
     v_compl(go,vehicle,with,vehicle).        %%  no narrowing %% TA-101115
@@ -4654,12 +4655,12 @@ iv_templ(go,vehicle).
 
 %% END  GO VEHICLE
 
-iv_templ(go,job). %% TA-101117 arbeidet går sin gang
+iv_templ(go,job). %% TA-101117 arbeidet gÃ¥r sin gang
     v_compl(go,activity,in,way).
 
 iv_templ(go,version). 
 
-iv_templ(go,world). %% går under :-) 
+iv_templ(go,world). %% gÃ¥r under :-) 
     v_compl(go,world,in,place).   %% :-) 
     v_compl(go,world,in,time).    %% :-) 
     v_compl(go,world,from,place). %% :-)  Sophies world
@@ -4678,7 +4679,7 @@ iv_templ(happen,thing).
     v_compl(happen,thing,nil,time). 
     v_compl(happen,thing,at,activity).
     v_compl(happen,thing,with,thing). 
-    v_compl(happen,thing,to,time).      %%  til høsten ???
+    v_compl(happen,thing,to,time).      %%  til hÃ¸sten ???
     v_compl(happen,thing,in,vehicle). 
     v_compl(happen,thing,on,vehicle).   %% 
 
@@ -4714,7 +4715,7 @@ tv_templ(keep,place,system).  %% TH har behold BT
     v_compl(keep,agent,for,thing).   %% for kontroll
 
 /*
-tv_templ(keep,agent,meeting). %% Norw holde møte 
+tv_templ(keep,agent,meeting). %% Norw holde mÃ¸te 
 tv_templ(keep,agent,meeting). %%
 tv_templ(keep,agent,job).     %% e.g activity, but job ako place.
 tv_templ(keep,agent,speech).  %% Norwagism holde tale 
@@ -4780,7 +4781,7 @@ iv_templ(leave,person).
     v_compl(leave,person,with,vehicle). 
 
 
-iv_templ(leave,vehicle).  %% når forlater 60 sentrum 
+iv_templ(leave,vehicle).  %% nÃ¥r forlater 60 sentrum 
     v_compl(leave,vehicle,nil,direction). 
     v_compl(leave,vehicle,between,time). 
 
@@ -4805,14 +4806,14 @@ iv_templ(lie1,thing). %% metagoric (e.g. in DB)
     v_compl(lie1,thing,in,system).
     v_compl(lie1,thing,in,type).   %% ad hoc  , metagoric 
     v_compl(lie1,thing,in,variant).
-    v_compl(lie1,place,on,vehicle). %% Metagorical holdeplass ligger på buss 52
+    v_compl(lie1,place,on,vehicle). %% Metagorical holdeplass ligger pÃ¥ buss 52
 
     v_compl(lie1,departure,from,place). %% special Metagorial
-%   v_compl(lie1,station,in,time). %%  ... når man tar buss 3  %% doesnt help
+%   v_compl(lie1,station,in,time). %%  ... nÃ¥r man tar buss 3  %% doesnt help
     v_compl(lie1,station,within,place).                             
     v_compl(lie1,thing,in,place).  
     v_compl(lie1,thing,as,thing). 
-%%    v_compl(lie1,place,nil,place).   %% hpl ligger haukåsen
+%%    v_compl(lie1,place,nil,place).   %% hpl ligger haukÃ¥sen
     v_compl(lie1,object,below,object). %% OK all subclasses
     v_compl(lie1,thing,with,thing).    %%  ligger med fotnote . 
     v_compl(lie1,place,around,place).  
@@ -4833,7 +4834,7 @@ iv_templ(lie1,thing). %% metagoric (e.g. in DB)
     v_compl(lie1,place,with,route).
 
     v_compl(lie1,program,on,computer).
-    v_compl(lie1,station,on,trip). %% Very Special // ligger på veien
+    v_compl(lie1,station,on,trip). %% Very Special // ligger pÃ¥ veien
     v_compl(lie1,thing,after,place).  
     v_compl(lie1,thing,before,place). 
     v_compl(lie1,thing,on,network). %% i.e. information about
@@ -4898,11 +4899,11 @@ tv_templ(operate,agent,thing).
 
 v_compl(operate,agent,with,thing).
 
-tv_templ(order,agent,ticket). %% (bestille rom) på mandag # 
+tv_templ(order,agent,ticket). %% (bestille rom) pÃ¥ mandag # 
                               %% bestille frokost = time
 
-    v_compl(order,agent,nil,clock). %%           lø 12
-    v_compl(order,agent,on,time).   %% på mandag
+    v_compl(order,agent,nil,clock). %%           lÃ¸ 12
+    v_compl(order,agent,on,time).   %% pÃ¥ mandag
     v_compl(order,agent,to,time).   %% 
 
 iv_templ(park,person). 
@@ -4910,7 +4911,7 @@ iv_templ(park,vehicle).
 
 tv_templ(park,driver,vehicle).
 
-iv_templ(pay2,thing).  %% lønne seg
+iv_templ(pay2,thing).  %% lÃ¸nne seg
 
 %% iv_templ(pay,agent).    %% without paying
 
@@ -4988,7 +4989,7 @@ tv_templ(read,agent,thing). %% dette blir lest
 tv_templ(read,agent,nil). 
 iv_templ(read,agent). 
 
-    v_compl(read,agent,nil,page). %% les (på) side 16
+    v_compl(read,agent,nil,page). %% les (pÃ¥) side 16
     v_compl(read,agent,in,information). 
     v_compl(read,agent,on,mailaddress).  %% etc 
     v_compl(read,agent,on,webaddress).   %% 
@@ -5046,18 +5047,18 @@ iv_templ(revolve,thing).
 
 %%% NB   new relation v_templ includes iv_templ
 
-tv_templ(run,agent,agent). %% du kjører meg %% TA-110105
+tv_templ(run,agent,agent). %% du kjÃ¸rer meg %% TA-110105
 tv_templ(run,agent,program). 
 tv_templ(run,agent,trip).
 tv_templ(run,agent,route_plan).
 tv_templ(run,agent,vehicle).
 tv_templ(run,company,vehicle).
-    v_compl(run,company,nil,departure). %% tt kjører [] rutetide
+    v_compl(run,company,nil,departure). %% tt kjÃ¸rer [] rutetide
 
 
 tv_templ(run,vehicle,agent).   %% ambiguous
 tv_templ(run,vehicle,trip).    %% ambiguous
-tv_templ(run,vehicle,station). %% kjøre en stasjon
+tv_templ(run,vehicle,station). %% kjÃ¸re en stasjon
 tv_templ(run,vehicle,route_plan).
 tv_templ(run,vehicle,route).
 tv_templ(run,vehicle,person).
@@ -5067,17 +5068,17 @@ tv_templ(run,vehicle,person).
     v_compl(run,vehicle,nil,distance). %%
  
     v_compl(run,agent,nil,zone). 
-    v_compl(run,agent,nil,route_plan). %% vi kjører søndagsrute   
+    v_compl(run,agent,nil,route_plan). %% vi kjÃ¸rer sÃ¸ndagsrute   
 
-    v_compl(run,agent,from,day). %% kjøre søndagsrute     %% TA-110504
+    v_compl(run,agent,from,day). %% kjÃ¸re sÃ¸ndagsrute     %% TA-110504
     v_compl(run,thing,to,day).   %% fra mandag til onsdag %% (to time \= stanprep)
 
-    v_compl(run,thing,with,vehicle). %% ? noen kjører med buss
+    v_compl(run,thing,with,vehicle). %% ? noen kjÃ¸rer med buss
     v_compl(run,agent,with,vehicle). 
     v_compl(run,agent,with,speed).   %% TA-110520
 
 %%     v_compl(run,agent,to,day).   %%   special
-    v_compl(run,agent,to,time). %% kjøre buss natt til 2/1
+    v_compl(run,agent,to,time). %% kjÃ¸re buss natt til 2/1
 
     v_compl(run,program,on,system).
     v_compl(run,program,on,operatingsystem).
@@ -5085,18 +5086,18 @@ tv_templ(run,vehicle,person).
 
     v_compl(run,vehicle,nil,zone). %%
     v_compl(run,vehicle,nil,direction). 
-    v_compl(run,vehicle,nil,neighbourhood). %%  kjøre innherredsveien
+    v_compl(run,vehicle,nil,neighbourhood). %%  kjÃ¸re innherredsveien
     v_compl(run,vehicle,with,speed). %% TA-110701
 
-%% iv_templ(run,thing). %% begge disse kjører fra samme instans
-                        %% varighet kjører
+%% iv_templ(run,thing). %% begge disse kjÃ¸rer fra samme instans
+                        %% varighet kjÃ¸rer
     iv_templ(run,vehicle). 
     iv_templ(run,agent).
     iv_templ(run,system).
 
     v_compl(run,thing,from,version).
 
-iv_templ(run,agent).   %% jeg kjører [] en sone
+iv_templ(run,agent).   %% jeg kjÃ¸rer [] en sone
 
 iv_templ(run,river).
     v_compl(run,river,past,place). %% gjennom=past (veh)
@@ -5120,7 +5121,7 @@ iv_templ(run,vehicle). % = go
     v_compl(run,vehicle,towards,place).
 
 
-iv_templ(run,route_plan). %% kjøres søndagsruter 
+iv_templ(run,route_plan). %% kjÃ¸res sÃ¸ndagsruter 
 
     v_compl(run,vehicle,past,place). 
 
@@ -5134,12 +5135,12 @@ iv_templ(sail,vehicle).
 
 
 iv_templ(see,vehicle). %% se ut Norwagism 
-                     %% buss kom til moholt så fort som mulig// moholt ser
+                     %% buss kom til moholt sÃ¥ fort som mulig// moholt ser
 
 iv_templ(search,agent).
     v_compl(search,agent,on,thing).
-    v_compl(search,agent,dir,thing).    %% jeg søker  asyl %% NB   DIR 
-%     v_compl(search,agent,nil,thing).  %% jeg søker (i) et sted     %% adjunct
+    v_compl(search,agent,dir,thing).    %% jeg sÃ¸ker  asyl %% NB   DIR 
+%     v_compl(search,agent,nil,thing).  %% jeg sÃ¸ker (i) et sted     %% adjunct
     v_compl(search,agent,after,thing).  %%  (Norwagism)
     v_compl(search,agent,for,thing). 
 
@@ -5175,7 +5176,7 @@ tv_templ(shop,person,object).
 
 
 tv_templ(shorten,agent,thing). %% reise(tide)n
-    tv_templ(shorten,agent,on,thing). %% forkorte reisen på måte 
+    tv_templ(shorten,agent,on,thing). %% forkorte reisen pÃ¥ mÃ¥te 
 
 tv_templ(show,agent,thing). 
 tv_templ(show,information,thing). %% TA-101102 
@@ -5195,7 +5196,7 @@ tv_templ(show,ticket,thing).  %%  metagoric
     v_compl(show,agent,at,activity). %% sale/use 
 
 
-%% tv_templ(silence.agent,agent). %% få noen til å 
+%% tv_templ(silence.agent,agent). %% fÃ¥ noen til Ã¥ 
 iv_templ(silence,agent). %% e.g. tie , keep silence
 
 tv_templ(sing,agent,song).  %% :-)
@@ -5266,11 +5267,11 @@ iv_templ(squeak,animal).
 iv_templ(stand,thing).
    v_compl(stand,thing,behind,thing). 
    v_compl(stand,thing,for,thing). 
-   v_compl(stand,thing,in,information). %% stå i rutehefte Norw
-   v_compl(stand,thing,on,information). %% Norw  står på %% paper, roof %% TA-101013
-   v_compl(stand,thing,in,thing).       %% stå igjen i ruten  // Difficult 
-   v_compl(stand,agent,in,vehicle).     %% stå i bussen
-   v_compl(stand,agent,off,vehicle).    %% Dial.  stå av = gå av
+   v_compl(stand,thing,in,information). %% stÃ¥ i rutehefte Norw
+   v_compl(stand,thing,on,information). %% Norw  stÃ¥r pÃ¥ %% paper, roof %% TA-101013
+   v_compl(stand,thing,in,thing).       %% stÃ¥ igjen i ruten  // Difficult 
+   v_compl(stand,agent,in,vehicle).     %% stÃ¥ i bussen
+   v_compl(stand,agent,off,vehicle).    %% Dial.  stÃ¥ av = gÃ¥ av
    v_compl(stand,thing,on,object).      %%
    v_compl(stand,thing,outside,place).  %% object ?
    v_compl(stand,agent,to,service).  %% Norwagism 
@@ -5312,10 +5313,10 @@ tv_templ(tank,agent,agent).
 
 %% tv_templ(think,thing,meta). %% what do you think about
 
-tv_templ(think,agent,meta). %% hva tenker maria=marka på
+tv_templ(think,agent,meta). %% hva tenker maria=marka pÃ¥
 
-iv_templ(think,agent).  %% **jeg tenker (for å gjøre meg i stand til)  å ta bussen
-                        %% tenker å --> vil
+iv_templ(think,agent).  %% **jeg tenker (for Ã¥ gjÃ¸re meg i stand til)  Ã¥ ta bussen
+                        %% tenker Ã¥ --> vil
     v_compl(think,agent,after,coevent). %% TA-110106
     v_compl(think,agent,on,thing). 
     v_compl(think,agent,over,thing).  
@@ -5351,7 +5352,7 @@ iv_templ(trust,agent). %% Norwagism
     v_compl(trust,agent,on,thing). 
 
 tv_templ(try,agent,thing). 
-tv_templ(try,agent,nil).  %% prøvde fra flere steder
+tv_templ(try,agent,nil).  %% prÃ¸vde fra flere steder
 %%% iv_templ(try,agent). 
     v_compl(try,agent,from,place). 
 
@@ -5385,7 +5386,7 @@ iv_templ(wait,agent).
     v_compl(wait,agent,with,duration). %%  (techn:  how long)
     v_compl(wait,agent,without,thing). %% respons
 
-iv_templ(wait,trip). %%  i.e. kjøring
+iv_templ(wait,trip). %%  i.e. kjÃ¸ring
     v_compl(wait,thing,to,activity). %%
 
 iv_templ(wait,vehicle).  
@@ -5417,7 +5418,7 @@ iv_templ(win,person).
 
 
 iv_templ(function,thing). %% det virker 
-    v_compl(function,thing,nil,mode). %% e.g. dårlig/direkte 
+    v_compl(function,thing,nil,mode). %% e.g. dÃ¥rlig/direkte 
 
     v_compl(function,thing,to,thing). 
     v_compl(function,thing,from,thing). 
@@ -5425,7 +5426,7 @@ iv_templ(function,thing). %% det virker
     v_compl(function,thing,for,thing).  %% 
     v_compl(function,thing,in,language).  
 
-    v_compl(function,thing,on,agent).     %% det virker på meg %%  Norw
+    v_compl(function,thing,on,agent).     %% det virker pÃ¥ meg %%  Norw
     v_compl(function,thing,on,language).  %% Norw ion
 
     v_compl(function,thing,via,thing).    %% viker via sms 
@@ -5479,7 +5480,7 @@ dtv_templ(ask,agent,agent,thing).
 dtv_templ(ask,agent,agent,thing).  
 
 dtv_templ(bring,agent,agent,thing).  %% I brought him a beer
-dtv_templ(buy,agent,agent,thing).    %% kjøpe seg billett 
+dtv_templ(buy,agent,agent,thing).    %% kjÃ¸pe seg billett 
 
 dtv_templ(call,agent,thing,thing).   %% I called him a man
 dtv_templ(give,agent,thing,thing).   %% I brought mary an apple
@@ -5492,7 +5493,7 @@ dtv_templ(owe,agent,thing,thing).    %% I owe you 10 crowns
 dtv_templ(sell,agent,thing,thing).   %% I sold Team a program
 dtv_templ(send,agent,thing,thing).   %% I sent him a package//NB not places
 dtv_templ(secure,agent,agent,thing). %% sikre seg
-dtv_templ(set,agent,agent,thing).    %% jeg stiller deg et spørsmål (Techn) 
+dtv_templ(set,agent,agent,thing).    %% jeg stiller deg et spÃ¸rsmÃ¥l (Techn) 
 dtv_templ(show,agent,thing,thing).   %% I showed him the ticket
 dtv_templ(tell,agent,agent,thing).   %% I told him a joke
 dtv_templ(wish,agent,agent,thing).   %% I wish you a merry christmas
@@ -5531,7 +5532,7 @@ tv_templ(avoid,vehicle,thing).
 %%%%%%%  BE2  Transitive  be (hete, kalles)
 
 
-tv_templ(be2,agent,year). %% ad hoc du er .. år 
+tv_templ(be2,agent,year). %% ad hoc du er .. Ã¥r 
 
 tv_templ(be2,thing,thing). 
 %  tv_templ(be2,vehicle,departure).   %% which buses are last departure (SIC) 
@@ -5556,7 +5557,7 @@ iv_templ(belong,thing).
 iv_templ(beworry,agent). 
     v_compl(beworry,agent,over,thing). 
 
-tv_templ(belong_to,thing,thing). %% tilhører tt %% TA-110707
+tv_templ(belong_to,thing,thing). %% tilhÃ¸rer tt %% TA-110707
 
 tv_templ(boil,person,liquid).
 tv_templ(boil,person,food).  
@@ -5575,7 +5576,7 @@ iv_templ(be_urgent,thing). %% Norw  haste
 tv_templ(bear1,animate,object).   
 
 
-/*  NEW Structure  fødes = iv
+/*  NEW Structure  fÃ¸des = iv
 tv_templ(bear2,woman,agent). %% Just to allow the question when are you born ?? :-)     
 */
 
@@ -5587,7 +5588,7 @@ tv_templ(break,animate,object).
 
 tv_templ(bring,agent,bicycle).  %% i.e. vehicle
 tv_templ(bring,agent,agent). 
-tv_templ(bring,agent,object).   %% ta med på bussen
+tv_templ(bring,agent,object).   %% ta med pÃ¥ bussen
 tv_templ(bring,agent,animate).  %% ..hund/barn  
 tv_templ(bring,agent,money).    %% thing is too general (COMIX) 
 tv_templ(bring,agent,abstract). %% problems :-(
@@ -5631,7 +5632,7 @@ tv_templ(buy,agent,trip).
     v_compl(buy,agent,from,agent).
     v_compl(buy,agent,off,agent).  %%  Norw
     v_compl(buy,agent,to,agent).   %%  Norw
-    v_compl(buy,agent,to,time).    %%  Norw til lørdag
+    v_compl(buy,agent,to,time).    %%  Norw til lÃ¸rdag
     v_compl(buy,agent,via,servicecenter). 
     v_compl(buy,agent,via,webaddress). 
 
@@ -5666,7 +5667,7 @@ tv_templ(carry,person,thing).
 
 tv_templ(catch,animate,animate).
 
-tv_templ(cause,thing,thing). %% medføre
+tv_templ(cause,thing,thing). %% medfÃ¸re
 
 
 
@@ -5691,7 +5692,7 @@ tv_templ(change,agent,thing).
     v_compl(change,agent,for,thing). 
     v_compl(change,agent,from,vehicle).
     v_compl(change,agent,in,thing).    
-    v_compl(change,agent,on,distance). % bytte på strekning 
+    v_compl(change,agent,on,distance). % bytte pÃ¥ strekning 
     v_compl(change,agent,on,vehicle).    %%  "man" (Norw)
     v_compl(change,agent,past,vehicle).  %% ugly  til/fra 
     v_compl(change,agent,to,vehicle).  
@@ -5782,8 +5783,8 @@ tv_templ(copy,agent,information).
 
 
 %%%
-tv_templ(correct,agent,nil).  %% justere (på) elliptic
-    %% not working %% ??      %% rette på
+tv_templ(correct,agent,nil).  %% justere (pÃ¥) elliptic
+    %% not working %% ??      %% rette pÃ¥
 
 tv_templ(correct,agent,thing). 
     v_compl(correct,agent,nil,place).
@@ -5882,9 +5883,9 @@ tv_templ(display,system,thing).
 tv_templ(distribute,agent,thing).  %% db, system 
     v_compl(distribute,agent,to,place). %% 
 
-tv_templ(do1,thing,coevent).    %% kortet gjør hverdagen effektiv 
+tv_templ(do1,thing,coevent).    %% kortet gjÃ¸r hverdagen effektiv 
 
-%% tv_templ(do1,vehicle,coevent).  % buss gjør at trikken står
+%% tv_templ(do1,vehicle,coevent).  % buss gjÃ¸r at trikken stÃ¥r
 
 tv_templ(do1,vehicle,stop).     %  (activity?)
 tv_templ(do1,vehicle,station).  % activity is hidden by station
@@ -5896,16 +5897,16 @@ tv_templ(do1,agent,activity).
 
     v_compl(do1,agent,in,system).   %% metagoric 
     v_compl(do1,agent,in,mode).     
-    v_compl(do1,agent,off,station).   %% man kan [metaverb] av [på]    hpl 
+    v_compl(do1,agent,off,station).   %% man kan [metaverb] av [pÃ¥]    hpl 
     v_compl(do1,agent,on,system). %% server 
     v_compl(do1,agent,via,thing). %% TA-110804
   
-tv_templ(do1,agent,fool). %% gjør du narr
-tv_templ(do1,agent,thing). %% hva kan du gjøre for meg 
+tv_templ(do1,agent,fool). %% gjÃ¸r du narr
+tv_templ(do1,agent,thing). %% hva kan du gjÃ¸re for meg 
 
     v_compl(do1,thing,nil,time). %% I do it 1. may
     v_compl(do1,agent,for,agent). 
-    v_compl(do1,agent,to,time).     %% gjøre noe fra tid til tid 
+    v_compl(do1,agent,to,time).     %% gjÃ¸re noe fra tid til tid 
     v_compl(do1,agent,on,time). 
     v_compl(do1,agent,with,thing). 
     v_compl(do1,agent,without,thing). %
@@ -5930,7 +5931,7 @@ tv_templ(drink,agent,nil).
 
 %%%  tv_templ(drive,agent,company). %% N: drive """ must give place """
 
-iv_templ(drive,vehicle). %% i.e. kjøre/go
+iv_templ(drive,vehicle). %% i.e. kjÃ¸re/go
 iv_templ(drive,agent). 
 
 tv_templ(drive,agent,nil).  
@@ -5996,7 +5997,7 @@ tv_templ(expect,agent,thing). %% ?? kreve= demand %% ambig
 tv_templ(expect,question,thing). %% kreve lang responstid
     v_compl(expect,agent,from,agent). %% i.e.   demand     
     v_compl(expect,agent,off,agent).  
-    v_compl(expect,agent,on,thing).  %% jeg venter på trikken på holdeplassen
+    v_compl(expect,agent,on,thing).  %% jeg venter pÃ¥ trikken pÃ¥ holdeplassen
                                      %% vente=wait/expect/await 
 tv_templ(explain,agent,thing). 
     v_compl(explain,agent,to,agent). 
@@ -6044,7 +6045,7 @@ tv_templ(follow,agent,route_plan).
 
 tv_templ(fool,agent,agent). 
 
-tv_templ(force,agent,thing). %% jeg er nødt til å gå. 
+tv_templ(force,agent,thing). %% jeg er nÃ¸dt til Ã¥ gÃ¥. 
 
 tv_templ(forget,agent,thing). %% tuc forgets bag ??? 
     v_compl(forget,thing,in,vehicle). 
@@ -6055,7 +6056,7 @@ tv_templ(forgive,agent,thing).
 tv_templ(give,activity,thing). %% tester gir resultater 
 tv_templ(give,agent,thing).
 
-    v_compl(give,agent,nil,duration). %% gi meg varsel 10 min før ...
+    v_compl(give,agent,nil,duration). %% gi meg varsel 10 min fÃ¸r ...
     v_compl(give,agent,nil,time).     
     v_compl(give,agent,before,vehicle). %% warning before bus
     v_compl(give,agent,in,meeting). 
@@ -6082,15 +6083,15 @@ tv_templ(give,card,discount). %%  kort gir rabatt
 tv_templ(give,question,answer). 
 
 
-tv_templ(go2,thing,vehicle).  %% følges vanlige ruter idag ?
-                        %% noe følger vanlige ruter 
+tv_templ(go2,thing,vehicle).  %% fÃ¸lges vanlige ruter idag ?
+                        %% noe fÃ¸lger vanlige ruter 
 
 tv_templ(go2,vehicle,route).      %%  bus 5 goes bus 6 *
-     v_compl(go2,vehicle,nil,direction).  %% buss følger rute  motsatt retning 
+     v_compl(go2,vehicle,nil,direction).  %% buss fÃ¸lger rute  motsatt retning 
 %      v_compl(go2,vehicle,in,time). 
                               %% This is WRONG , but the alternative
                               %% is worse (a minute's silence)
-                              % når går neste buss fra mellomvn. 5 mot byen.
+                              % nÃ¥r gÃ¥r neste buss fra mellomvn. 5 mot byen.
 tv_templ(go2,vehicle,route_plan).  %% trase 
 tv_templ(go2,vehicle,place).       %% bus follows road
 tv_templ(go2,vehicle,trip). 
@@ -6102,7 +6103,7 @@ tv_templ(go2,vehicle,trip).
 %% tv_templ(greet,agent,agent).
 %% tv_templ(greet,agent,team). 
 
-iv_templ(greet,agent).  %% hilser på 
+iv_templ(greet,agent).  %% hilser pÃ¥ 
     v_compl(greet,agent,nil,agent).
     v_compl(greet,agent,on,agent).
     v_compl(greet,agent,from,agent). 
@@ -6162,7 +6163,7 @@ tv_templ(interpret,agent,thing).
 tv_templ(interview,person,person). 
 
 iv_templ(investigate,agent).
-    v_compl(investigate,agent,on,thing). %% Norw forske på 
+    v_compl(investigate,agent,on,thing). %% Norw forske pÃ¥ 
 
 tv_templ(kill,agent,animate).       %%  whoq demands agent 
     v_compl(kill,agent,with,weapon).   %% not person. type chex forbids
@@ -6224,9 +6225,9 @@ tv_templ(lay,agent,thing).
     v_compl(lay,agent,in,system).    
     v_compl(lay,agent,into,database).
     v_compl(lay,agent,into,system). 
-    v_compl(lay,agent,on,memory).     %% legge det på minnet 
-    v_compl(lay,agent,on,network).    %% legge på nett
-    v_compl(lay,agent,on,system).     %% på server 
+    v_compl(lay,agent,on,memory).     %% legge det pÃ¥ minnet 
+    v_compl(lay,agent,on,network).    %% legge pÃ¥ nett
+    v_compl(lay,agent,on,system).     %% pÃ¥ server 
     v_compl(lay,agent,to,thing).   
 
 tv_templ(lay,agent,information).  %%  e.g. route_plan
@@ -6248,7 +6249,7 @@ tv_templ(list,agent,thing).
     v_compl(list,agent,as,thing).    
 
     v_compl(list,agent,for,thing). %% information/route 
-                                   %% oppført avganger for ruter
+                                   %% oppfÃ¸rt avganger for ruter
     v_compl(list,agent,for,demonstration).
     v_compl(list,agent,in,information). 
     v_compl(list,agent,on,information).  %% screen 
@@ -6312,9 +6313,9 @@ tv_templ(mean,thing,meta). %% mean a thing
     v_compl(mean,agent,with,thing).      %%   Norwagism 
     v_compl(mean,agent,regarding,thing).
 
-%% iv_templ(meet,agent).  %% kan vi møtes = møte // look ahead trouble
+%% iv_templ(meet,agent).  %% kan vi mÃ¸tes = mÃ¸te // look ahead trouble
 
-iv_templ(meetup,agent). %% arrive person (møte opp) %% \= arrive
+iv_templ(meetup,agent). %% arrive person (mÃ¸te opp) %% \= arrive
 
 tv_templ(meet,agent,nil). 
     
@@ -6364,10 +6365,10 @@ tv_templ(notify,agent,nil). %% EXPERIMENT %% TA-101129
 %% iv_templ(notify,agent). %% Unlucky duality
 
 tv_templ(notify,agent,coevent). 
-tv_templ(notify,agent,clock). %%  to minutter før 4/ to  minutter før bussen 
+tv_templ(notify,agent,clock). %%  to minutter fÃ¸r 4/ to  minutter fÃ¸r bussen 
 
 %%%  tv_templ(notify,agent,hour).   %% TA-101126 // NO, nil-complement
-%%%  tv_templ(notify,agent,minute). %% varsle 2 min | før bussen går 
+%%%  tv_templ(notify,agent,minute). %% varsle 2 min | fÃ¸r bussen gÃ¥r 
 
 tv_templ(notify,agent,agent).    
 tv_templ(notify,agent,departure).   
@@ -6444,7 +6445,7 @@ v_compl(pass,vehicle,with,route_plan). %% summerroute|
 
 %% tv_templ(pass,person,person).  
     %% E.G visit , but pass/visit syndrome
-    %% ambiguity of besøke, pass is acce
+    %% ambiguity of besÃ¸ke, pass is acce
     %% because also transitive
 
 iv_templ(pass,clock).   %% klokken passerer 12 
@@ -6540,7 +6541,7 @@ tv_templ(push,person,thing).
 
 tv_templ(put,vehicle,agent).  %% technical 
     v_compl(put,vehicle,off,vehicle). %% bli satt av bussen
-                                      %% Norw, bli "satt_av"  av sjåføren
+                                      %% Norw, bli "satt_av"  av sjÃ¥fÃ¸ren
     v_compl(put,thing,in,activity).  %% sette i drift
 
 tv_templ(put,agent,thing).
@@ -6554,7 +6555,7 @@ tv_templ(put,agent,thing).
 
 
 
-tv_templ(put,vehicle,thing). %% Problem: bli satt av bussen/sjåføren
+tv_templ(put,vehicle,thing). %% Problem: bli satt av bussen/sjÃ¥fÃ¸ren
     v_compl(put,vehicle,with,information). %% med beskjed // ad hoc   nonsense 
         
 
@@ -6576,7 +6577,7 @@ tv_templ(reach,agent,meeting).
 
 
     v_compl(reach,agent,past,place).
-    v_compl(reach,person,via,vehicle). %%  nå NTH via linje 1
+    v_compl(reach,person,via,vehicle). %%  nÃ¥ NTH via linje 1
 %%     v_compl(reach,X,Y,Z):-  v_compl(pass,X,Y,Z).
 
 tv_templ(reach,vehicle,place).  
@@ -6585,7 +6586,7 @@ tv_templ(reach,vehicle,place).
 
 tv_templ(reach,vehicle,vehicle). %% correspondance 
 
-%  når(rekker)  buss nr 3 fra kroppan marka 17. Mai (ca kl) ni ?  
+%  nÃ¥r(rekker)  buss nr 3 fra kroppan marka 17. Mai (ca kl) ni ?  
 
 %%%%%%%%%%% tv_templ(reach,agent,thing). %% man 
 
@@ -6603,36 +6604,36 @@ tv_templ(reach,vehicle,vehicle). %% correspondance
 tv_templ(receive,thing,competition). 
 
 
-tv_templ(receive,agent,thing).         %%  ( Norw. 'få' )// Jeg får Danmark ?
+tv_templ(receive,agent,thing).         %%  ( Norw. 'fÃ¥' )// Jeg fÃ¥r Danmark ?
     v_compl(receive,agent,nil,time). 
     v_compl(receive,agent,by,mail). 
     v_compl(receive,agent,from,agent).
     v_compl(receive,agent,from,place). 
     v_compl(receive,agent,in,database). 
     v_compl(receive,agent,in,mail).  
-    v_compl(receive,agent,in,place).  %% Norw. hvor fåe heg tak
+    v_compl(receive,agent,in,place).  %% Norw. hvor fÃ¥e heg tak
     v_compl(receive,agent,in,vehicle).
     v_compl(receive,agent,in,system).
     v_compl(receive,agent,in,vehicle). 
 
     v_compl(receive,agent,on,memory). 
     v_compl(receive,agent,on,mind).
-    v_compl(receive,agent,on,question). %% få svar på spørsm. /V-compl
+    v_compl(receive,agent,on,question). %% fÃ¥ svar pÃ¥ spÃ¸rsm. /V-compl
     v_compl(receive,agent,on,sms).   
-    v_compl(receive,agent,on,system).   %%  forslag på oraklet (qua  skjerm?)    
+    v_compl(receive,agent,on,system).   %%  forslag pÃ¥ oraklet (qua  skjerm?)    
     v_compl(receive,agent,on,ticket).
     v_compl(receive,agent,on,vehicle).  %% placoid 
     v_compl(receive,agent,under,time).  %% SIC  under sommerrutene
 
-    tv_templ(receive,income,thing).     %% f.o.s. %% få konkurranse
-    v_compl(receive,thing,to,coevent).  %% få samvittighet til at 
+    tv_templ(receive,income,thing).     %% f.o.s. %% fÃ¥ konkurranse
+    v_compl(receive,thing,to,coevent).  %% fÃ¥ samvittighet til at 
 
 tv_templ(receive,service,message). 
 
 
 tv_templ(receive,vehicle,departure). %% fut have 
     v_compl(receive,vehicle,under,route_plan). % special 
-tv_templ(receive,vehicle,modification). %% fått ruteendring
+tv_templ(receive,vehicle,modification). %% fÃ¥tt ruteendring
 
 tv_templ(recognize,processor,word). %%  s->z
 tv_templ(recognize,agent,thing). %% kjenner du meg ?
@@ -6659,7 +6660,7 @@ tv_templ(repair,person,equipment).
 tv_templ(repair,person,fault).
 
 tv_templ(resemble,thing,thing). 
-    v_compl(resemble,thing,at,thing). %% Norw ved god oppførsel
+    v_compl(resemble,thing,at,thing). %% Norw ved god oppfÃ¸rsel
     v_compl(resemble,thing,by,thing). 
 
 tv_templ(reset,agent,thing).  
@@ -6708,7 +6709,7 @@ tv_templ(send,agent,thing). % e.g. notification // not places
     v_compl(send,agent,nil,agent).  
     v_compl(send,agent,after,thing). %% etter forslag fra    
     v_compl(send,agent,for,activity).
-    v_compl(send,agent,on,question). %%  Norw sende på forespørsel
+    v_compl(send,agent,on,question). %%  Norw sende pÃ¥ forespÃ¸rsel
     v_compl(send,agent,past,thing). 
     v_compl(send,agent,to,agent).
     v_compl(send,agent,to,number).   %% 1939
@@ -6775,7 +6776,7 @@ tv_templ(support,object,object).
 
 tv_templ(take,agent,care). %% TA-110816
 
-tv_templ(take,coevent,time). %% hvor lang tid tar det å %% TA-110530
+tv_templ(take,coevent,time). %% hvor lang tid tar det Ã¥ %% TA-110530
 
 tv_templ(take,thing,street). %% "ta veien" %% TA-101126
   
@@ -6795,11 +6796,11 @@ tv_templ(take,agent,money).  %% TA-101124
     v_compl(take,thing,towards,direction). %%
     v_compl(take,agent,for,thing).  %% TA-110228
 
-tv_templ(take,agent,activity). %% ta avgjørelse
+tv_templ(take,agent,activity). %% ta avgjÃ¸relse
 
 tv_templ(take,activity,time).  
     v_compl(take,activity,from,place).   %%
-    v_compl(take,activity,on,daypart).   %% ta buss midt på natta
+    v_compl(take,activity,on,daypart).   %% ta buss midt pÃ¥ natta
     v_compl(take,activity,to,place).     %%
     v_compl(take,trip,with,vehicle).
 
@@ -6811,7 +6812,7 @@ tv_templ(take,activity,time).
 
 
 tv_templ(take,agent,activity). %%  (not thing)
-tv_templ(take,agent,animal).   % ta hunden på bussen 
+tv_templ(take,agent,animal).   % ta hunden pÃ¥ bussen 
 tv_templ(take,agent,consideration). 
 tv_templ(take,agent,contact).  
 tv_templ(take,agent,error).  %% Du tar feil  :-)
@@ -6824,7 +6825,7 @@ tv_templ(take,agent,object).   % not thing, (=> person) %% e.g. cat takes bus
 tv_templ(take,agent,otherbus). %% Freak, ako company 
 tv_templ(take,agent,pause).   
 tv_templ(take,agent,person).    %% ta med seg folk 
-tv_templ(take,agent,route_plan). %% få tak i rute...
+tv_templ(take,agent,route_plan). %% fÃ¥ tak i rute...
 tv_templ(take,agent,self).      %%  :-) take me to your leader/ not
 tv_templ(take,agent,sentence). %% "velge " %% Ad hoc 
 %% tv_templ(take,agent,station). %% TA toget = Take Trainstation
@@ -6840,7 +6841,7 @@ tv_templ(take,agent,vehicle).  %% vehicle \+ object. %% TA-110309
     v_compl(take,agent,nil,place). %% take bus nardo to city 
     v_compl(take,agent,nil,time_count). 
 
-    v_compl(take,agent,according_to,thing). %% ifølge 
+    v_compl(take,agent,according_to,thing). %% ifÃ¸lge 
     v_compl(take,agent,as,thing). %% ta det som det kommer
 
     v_compl(take,agent,between,place).     %%  ta seg fram mellom 
@@ -6859,9 +6860,9 @@ tv_templ(take,agent,vehicle).  %% vehicle \+ object. %% TA-110309
     v_compl(take,agent,near,place). 
     v_compl(take,agent,on,place).           %%  (Norwagism)
     v_compl(take,agent,on,ticket).          %%  Norw
-    v_compl(take,agent,on,time).            %% på natta 
-    v_compl(take,agent,on,activity).        %%  ta tur på reise 
-    v_compl(take,agent,on,vehicle).         %%  ta tur på toget
+    v_compl(take,agent,on,time).            %% pÃ¥ natta 
+    v_compl(take,agent,on,activity).        %%  ta tur pÃ¥ reise 
+    v_compl(take,agent,on,vehicle).         %%  ta tur pÃ¥ toget
     v_compl(take,agent,out_of,place).
     v_compl(take,agent,past,place). %% i.e. bus 
     v_compl(take,agent,to,clock).           %% ( i.e. before )
@@ -6929,10 +6930,10 @@ tv_templ(tell,agent,nil).  %% fortelle () om
     v_compl(tell,agent,nil,place). %% Hazardous 
 
     v_compl(tell,agent,about,thing).   %% DANGEROUS   tell that 
-    v_compl(tell,agent,in,question).   %% hvorfor må jeg oppgi et sted i slike spørsmål
+    v_compl(tell,agent,in,question).   %% hvorfor mÃ¥ jeg oppgi et sted i slike spÃ¸rsmÃ¥l
     v_compl(tell,agent,in,time).       %% ?
     v_compl(tell,agent,in,information).  %%  kunngjort i ruteheftet 
-    v_compl(tell,agent,on,thing).      %% (Norwagism) svare på
+    v_compl(tell,agent,on,thing).      %% (Norwagism) svare pÃ¥
     v_compl(tell,agent,per,thing).     %% (Norwagism) svareper telefon  
     v_compl(tell,agent,regarding,thing). 
     v_compl(tell,agent,to,agent).  %% tell to mary 
@@ -6944,7 +6945,7 @@ tv_templ(throw,agent,thing).
     v_compl(throw,agent,off,vehicle). %% bussen/baren    
     v_compl(throw,agent,off,place).  
 
-tv_templ(throw,vehicle,thing). %% Problem: bli kastet av bussen/sjåføren 
+tv_templ(throw,vehicle,thing). %% Problem: bli kastet av bussen/sjÃ¥fÃ¸ren 
      v_compl(throw,vehicle,off,agent).
 
      v_compl(throw,agent,nil,vehicle).  %% vi ble kastet av
@@ -6984,8 +6985,8 @@ tv_templ(type,person,text).
 %%% iv_templ(understand,agent). 
 
 tv_templ(understand,agent,thing). 
-tv_templ(understand,development,thing). %% ad hoc..   utviklingen går
-                                        %% mot å forstå teksten
+tv_templ(understand,development,thing). %% ad hoc..   utviklingen gÃ¥r
+                                        %% mot Ã¥ forstÃ¥ teksten
 
     v_compl(understand,agent,as,thing).
     v_compl(understand,agent,by,thing).
@@ -7009,7 +7010,7 @@ tv_templ(use,agent,thing).
 
 %%     v_compl(use,agent,for,place). 
     v_compl(use,agent,for,thing). %% different senses
-                                  %% oops for formål| for brukere
+                                  %% oops for formÃ¥l| for brukere
 
     v_compl(use,agent,in,thing). 
 
@@ -7023,7 +7024,7 @@ tv_templ(use,agent,thing).
 
     v_compl(use,agent,on,telephone).  
     v_compl(use,agent,on,trip). 
-    v_compl(use,agent,on,ticket).     %% benytte overgang på billett
+    v_compl(use,agent,on,ticket).     %% benytte overgang pÃ¥ billett
     v_compl(use,agent,on,vehicle). 
 
 	 v_compl(use,agent,to,place).   %% 
@@ -7036,12 +7037,12 @@ tv_templ(use,agent,thing).
     v_compl(use,agent,without,thing).
 
 v_compl(use,agent,for,thing). %% different senses
-                               %% oops for formål| for brukere
+                               %% oops for formÃ¥l| for brukere
 
 % v_compl(use,system,as,thing).
 
 
-tv_templ(use,trip,thing). %% kjøring 
+tv_templ(use,trip,thing). %% kjÃ¸ring 
 
 tv_templ(use,vehicle,fuel).
 
@@ -7074,7 +7075,7 @@ tv_templ(want,company,thing).
     v_compl(want,agent,nil,clock).  %% need a bus 0815 
     v_compl(want,agent,to,time).    %% til jul :-)
 tv_templ(want,vehicle,time).        %%  Norw.   trenger
-    v_compl(want,vehicle,on,trip). %% Norw.  trenger tid på tur
+    v_compl(want,vehicle,on,trip). %% Norw.  trenger tid pÃ¥ tur
 
 
 tv_templ(wash,person,route). %% :-)
@@ -7087,7 +7088,7 @@ tv_templ(weigh,vehicle,weight).
 %%     v_compl(wish,thing,to,agent).   
 
 
-tv_templ(wonder,agent,thing). %% lure på en ting 
+tv_templ(wonder,agent,thing). %% lure pÃ¥ en ting 
 
 tv_templ(worry,agent,agent). %% bryr meg/bryr deg %% Norwagism
 
@@ -7097,7 +7098,7 @@ tv_templ(write,agent,thing). % well,   software, file, letter, etc.
     v_compl(write,agent,in,detail).  
     v_compl(write,agent,in,part).     %% =detail
     v_compl(write,agent,in,language).
-    v_compl(write,agent,on,activity).   %%  på reise
+    v_compl(write,agent,on,activity).   %%  pÃ¥ reise
     v_compl(write,agent,on,language).   %% Norw 
     v_compl(write,agent,on,ticket). 
     v_compl(write,agent,in,file).
@@ -7114,7 +7115,7 @@ tv_templ(write,agent,thing). % well,   software, file, letter, etc.
 %% adj_compl  fernando.pl
 
 
-a_compl(_A,thing,nil,coevent).       %%  bussen er forsinket slik at jeg går
+a_compl(_A,thing,nil,coevent).       %%  bussen er forsinket slik at jeg gÃ¥r
 a_compl(_A,thing,so_that,coevent).
 a_compl(_A,thing,because_of,coevent).
 
@@ -7134,7 +7135,7 @@ a_compl(_A,_C,in_order_to,coevent).
 
 %%  OOPS  Er det andre ruter*
 
-adj_templ(Ordinal,thing) :- %% object ?  hvem var de første menneskene ? (trytofool)
+adj_templ(Ordinal,thing) :- %% object ?  hvem var de fÃ¸rste menneskene ? (trytofool)
     ordinal1(Ordinal). 
 
 
@@ -7199,7 +7200,7 @@ adj_templ(accepted,language).
 adj_templ(acceptable,sentence).
 adj_templ(active,thing).
 adj_templ(actual,thing). %% time/ 
-adj_templ(adult,agent).         %%  NB Also noun   %% Når er man voksen
+adj_templ(adult,agent).         %%  NB Also noun   %% NÃ¥r er man voksen
 adj_templ(affected,thing). %% maybe tv ?
 adj_templ(afraid,agent). 
     a_compl(afraid,agent,for,thing). %% Norw
@@ -7222,7 +7223,7 @@ adj_templ(ascending,thing).
 adj_templ(asian,thing).
 
 adj_templ(at_home,agent).   %% adv? ProForma     %%   (Norwagism)
-    a_compl(at_home,agent,nil,time). %% hjemme nå %% TA-100910
+    a_compl(at_home,agent,nil,time). %% hjemme nÃ¥ %% TA-100910
 
 adj_templ(australian,thing).  
 adj_templ(automatic,thing). %% activity). %% TA-100907 Rondane
@@ -7257,7 +7258,7 @@ adj_templ(aware,thing).
 
 
 adj_templ(bad,thing). 
-    a_compl(bad,thing,for,agent). %% dårlig til å være 
+    a_compl(bad,thing,for,agent). %% dÃ¥rlig til Ã¥ vÃ¦re 
     a_compl(bad,thing,in,place). 
 adj_templ(beautiful,thing). 
     a_compl(beautiful,thing,in,place).  
@@ -7364,7 +7365,7 @@ adj_templ(delayed,vehicle).
     a_compl(delayed,vehicle,on,route).   %% vehicle? 
     a_compl(delayed,vehicle,to,place). 
     a_compl(delayed,vehicle,to,place).   %% (not standard ?)
-    a_compl(delayed,agent,to,activity).  %% for sen til møte 
+    a_compl(delayed,agent,to,activity).  %% for sen til mÃ¸te 
     a_compl(delayed,person,to,vehicle).  %% jeg er for sen 
     a_compl(delayed,thing,with,time).    %% buss|klokke  med 2 minutter  
     a_compl(delayed,vehicle,with,frequency). %% ofte (with frequency)
@@ -7387,7 +7388,7 @@ adj_templ(tooearly,vehicle).
     a_compl(tooearly,vehicle,on,route).   %% vehicle? 
     a_compl(tooearly,vehicle,to,place). 
     a_compl(tooearly,vehicle,to,place).   %% (not standard ?)
-    a_compl(tooearly,agent,to,activity).  %%  for sen til møte  
+    a_compl(tooearly,agent,to,activity).  %%  for sen til mÃ¸te  
     a_compl(tooearly,person,to,vehicle).  %%  jeg er for sen 
     a_compl(tooearly,vehicle,with,frequency).
 
@@ -7417,7 +7418,7 @@ adj_templ(double,thing).
 adj_templ(down,thing).      %% DOWN
     a_compl(down,thing,nil,time). %% 
     a_compl(down,thing,via,thing). %% irreg, bussoraklet er nede via SMS 
-    a_compl(down,thing,on,thing).  %% nedrest på ruteheftet
+    a_compl(down,thing,on,thing).  %% nedrest pÃ¥ ruteheftet
   
 %% full -> full|drunk Norw
 
@@ -7498,7 +7499,7 @@ adj_templ(faster,thing).
 adj_templ(fastest,thing). 
     a_compl(fast,thing,in,place). 
     a_compl(fast,thing,from,place).
-    a_compl(fast,thing,on,thing).  %% Norw  raskere på spørsmål
+    a_compl(fast,thing,on,thing).  %% Norw  raskere pÃ¥ spÃ¸rsmÃ¥l
     a_compl(fast,thing,to,place). 
 
 
@@ -7513,7 +7514,7 @@ adj_templ(finished,thing).
 % adj_templ(finished,summer). %% NOT thing incl time/ number:
 % adj_templ(finished,winter).
 %%%                  ti  over 11 -> til finished 11
-    a_compl(finished,thing,on,thing).  %% Norwagism  slutt på sommeren
+    a_compl(finished,thing,on,thing).  %% Norwagism  slutt pÃ¥ sommeren
     a_compl(finished,agent,with,thing). 
 
 
@@ -7541,10 +7542,10 @@ adj_templ(french,thing).
 adj_templ(full,departure).  %% -- list, i.e. timetable 
 adj_templ(full,vehicle). 
     a_compl(full,thing,in,vehicle).
-    a_compl(full,thing,on,vehicle). %%  fullt på bussen
+    a_compl(full,thing,on,vehicle). %%  fullt pÃ¥ bussen
 adj_templ(full,place). 
     a_compl(full,place,with,thing).
-    a_compl(full,place,on,thing).   %%  (på bussen :-)
+    a_compl(full,place,on,thing).   %%  (pÃ¥ bussen :-)
     a_compl(full,place,off,thing).  %%  (av)
     a_compl(full,thing,on,vehicle). %% ?
 adj_templ(funny,thing).  %%   :-)
@@ -7562,7 +7563,7 @@ adj_templ(good,thing). %% not friday :-(
     a_compl(good,thing,among,thing). %% best in Norway
     a_compl(good,thing,for,thing).
     a_compl(good,thing,in,place).  
-    a_compl(good,thing,on,thing). %% god på bussruter %% TA-110825 %%  Norw
+    a_compl(good,thing,on,thing). %% god pÃ¥ bussruter %% TA-110825 %%  Norw
     a_compl(good,thing,to,agent). %% thing). %% gode svar til bruker 
     a_compl(good,thing,with,thing). 
     
@@ -7581,18 +7582,18 @@ adj_templ(grateful,person).
 adj_templ(great,thing). 
     a_compl(great,thing,in,place).
     a_compl(great,thing,on,place). %%  Norw
-    a_compl(great,thing,off,place). %% størst av Norge og Sverige %% TA-110331
+    a_compl(great,thing,off,place). %% stÃ¸rst av Norge og Sverige %% TA-110331
 
 % adj_templ(half,thing).       %%  Confuses  halv tre
 adj_templ(half,hour).          %% bus goes a half hour
 adj_templ(half,month).  %% etc
-adj_templ(half,abstract). %% halve æren :-) 
+adj_templ(half,abstract). %% halve Ã¦ren :-) 
 
 %%%   adj_templ(half,object). %%  NEI halv 7 = halv object route
 
 adj_templ(happy,agent). 
     a_compl(happy,agent,in,thing).   %% i.e. glad i ( Norwagism)
-    a_compl(happy,agent,with,thing). %% fornøyd med 
+    a_compl(happy,agent,with,thing). %% fornÃ¸yd med 
 
 adj_templ(happy,time). %% (incl life)  :-)
 
@@ -7637,7 +7638,7 @@ adj_templ(impossible,thing).
     a_compl(impossible,thing,with,thing).  %% Norw %% relax qual
     a_compl(impossible,bus,from,place).
     a_compl(impossible,bus,to,place).
-    a_compl(impossible,pram,on,vehicle). %%   ( umulig med barnevogn på bussen ?)
+    a_compl(impossible,pram,on,vehicle). %%   ( umulig med barnevogn pÃ¥ bussen ?)
 
 
 adj_templ(impressed,person).
@@ -7659,11 +7660,11 @@ adj_templ(independent,thing).
 
 adj_templ(indifferent,agent). 
     a_compl(indifferent,agent,in,thing).   %% i.e. glad i ( Norwagism)
-    a_compl(indifferent,agent,with,thing). %% fornøyd med 
+    a_compl(indifferent,agent,with,thing). %% fornÃ¸yd med 
 
 adj_templ(individual,thing). %% ACT as a dummy adjective %% TA-110419
 
-adj_templ(intelligent,coevent). %% å reise til Lian er smart
+adj_templ(intelligent,coevent). %% Ã¥ reise til Lian er smart
 adj_templ(intelligent,agent).
     a_compl(intelligent,agent,in,place). %%  :-)
 adj_templ(intelligent,game).   
@@ -7778,13 +7779,13 @@ adj_templ(national,thing).
 **/
 
 adj_templ(natural,thing).  
-adj_templ(linguistic,thing). %% metagorical naturlig språklig 
+adj_templ(linguistic,thing). %% metagorical naturlig sprÃ¥klig 
 
 adj_templ(near,place). 
     a_compl(near,thing,to,place).
 
 adj_templ(near,time).    %% near future 
-adj_templ(near,vehicle). %%   err nærmeste buss -> neste buss 
+adj_templ(near,vehicle). %%   err nÃ¦rmeste buss -> neste buss 
 
 
 
@@ -7792,9 +7793,9 @@ adj_templ(near,vehicle). %%   err nærmeste buss -> neste buss
 adj_templ(nearest,place). %% ad hoc = sup near 
     a_compl(nearest,city,to,city). %% special ?
     a_compl(nearest,place,to,place).
-    a_compl(nearest,place,off,place). %% i nærheten AV 
+    a_compl(nearest,place,off,place). %% i nÃ¦rheten AV 
 
-adj_templ(nearest,departure). %%  (nærmest)   means next
+adj_templ(nearest,departure). %%  (nÃ¦rmest)   means next
 adj_templ(nearest,vehicle).  
 
 
@@ -7808,7 +7809,7 @@ adj_templ(necessary,thing).
     a_compl(necessary,thing,for,agent).  
     a_compl(necessary,bus,from,place).
     a_compl(necessary,bus,to,place).
-    a_compl(necessary,pram,on,vehicle).  %%   ( lov med barnevogn på bussen ?)
+    a_compl(necessary,pram,on,vehicle).  %%   ( lov med barnevogn pÃ¥ bussen ?)
     a_compl(necessary,thing,with,thing).
 
 
@@ -7885,7 +7886,7 @@ adj_templ(possible,thing).
     a_compl(possible,thing,for,agent). 
     a_compl(possible,bus,from,place).
     a_compl(possible,bus,to,place).
-    a_compl(possible,pram,on,vehicle).   %%  ( lov med barnevogn på bussen ?)
+    a_compl(possible,pram,on,vehicle).   %%  ( lov med barnevogn pÃ¥ bussen ?)
     a_compl(possible,thing,with,pram).   %% tillatt med barnevogn %% SIC %% TA-100915
     a_compl(possible,pram,with,vehicle). 
 
@@ -7899,7 +7900,7 @@ adj_templ(present,thing).  %%   NOT place ! // OK
     a_compl(present,thing,at,place). 
     a_compl(present,thing,on,place). %% TA-101108
     a_compl(present,thing,to,place). %% Norw  fremme til
-    a_compl(present,thing,to,time).  %% Norw  fremme før 
+    a_compl(present,thing,to,time).  %% Norw  fremme fÃ¸r 
     a_compl(present,thing,from,place). %%   fremme (til A) fra B
 
 %% etc 
@@ -8026,11 +8027,11 @@ adj_templ(unchanged,thing).
 adj_templ(understanding,agent). 
 
 adj_templ(sad,thing). %% beklagelig feil 
-    a_compl(sad,agent,nil,time).   %%  trist nå %%  nec?
-    a_compl(sad,agent,off,thing).  %%  Norw lei av å
+    a_compl(sad,agent,nil,time).   %%  trist nÃ¥ %%  nec?
+    a_compl(sad,agent,off,thing).  %%  Norw lei av Ã¥
 
 adj_templ(unhappy,agent).      %% -> sad
-    a_compl(unhappy,agent,off,thing).  %%  Norwag lei av å
+    a_compl(unhappy,agent,off,thing).  %%  Norwag lei av Ã¥
 
 
 adj_templ(unknown,thing).  
@@ -8102,7 +8103,7 @@ post_adjective(down).     %% down town
 
 post_adjective(present).  %% a present bus ##
 
-%% post_adjective(possible). %% mulig nth  / et mulig spørsmål 
+%% post_adjective(possible). %% mulig nth  / et mulig spÃ¸rsmÃ¥l 
 
 
 % ADJECTIVAL NOUN PREFIX
@@ -8202,7 +8203,7 @@ adjnoun_templ(host,computer).  %%
 adjnoun_templ(knowledge,base).       
 
 adjnoun_templ(language,processor).
-adjnoun_templ(language,savant). %% (natural) language spørresystem
+adjnoun_templ(language,savant). %% (natural) language spÃ¸rresystem
 adjnoun_templ(language,system). %% natural language system
 
 adjnoun_templ(mobile,subscription). %% no inheritance  
@@ -8254,7 +8255,7 @@ adjnoun_templ(web,log).
 %%% adjname_templ/3 ->adjnamecomp_templ/3 
 
 %% adjnamecomp_templ(regtop,export,regtop_export). 
-%% adjnamecomp_templ(hastus,trip,regtop_export).   %% kjøring=trip (metaphoric)
+%% adjnamecomp_templ(hastus,trip,regtop_export).   %% kjÃ¸ring=trip (metaphoric)
   
 
 adjnamecomp_templ(internet,address,webadress). 
@@ -8291,7 +8292,7 @@ adjname_templ(hastus,name).  %% Metagoric
 adjname_templ(ikt,person).   %% IKT-sjefen %% TA-110114
 adjname_templ(internet,address). %%  ( webadress !! )
 adjname_templ(ip,address). 
-adjname_templ(klæbu,route). 
+adjname_templ(klÃ¦bu,route). 
 adjname_templ(msn,address).  %% ?
 adjname_templ(prolog,system).
 adjname_templ(sms,interface). 
@@ -8325,7 +8326,7 @@ n_compl(ago,time,duration). %% TA-100915
 n_compl(as,thing,thing).    %% Ad Hoc  samme dag som onsdag %% Technical
 
 % This is only necessary for incomplete sentences
-% N: buss fra gløshaugen 2000 til moholt. 
+% N: buss fra glÃ¸shaugen 2000 til moholt. 
 % Also Time consuming
 
 % n_compl COULD have been organised under subject class,
@@ -8334,7 +8335,7 @@ n_compl(as,thing,thing).    %% Ad Hoc  samme dag som onsdag %% Technical
 
 %%   NBNBNB  New use of n_compl
 
-n_compl(below,thing,nil).  %% bussen nedenfor so står 
+n_compl(below,thing,nil).  %% bussen nedenfor so stÃ¥r 
 n_compl(day_after_tomorrow,vehicle,nil).   %% nattbuss i overimorgen
 n_compl(day_before_yesterday,vehicle,nil). %% 
 n_compl(directly,vehicle,nil).   %% buss direkte fra voll
@@ -8342,16 +8343,16 @@ n_compl(early,vehicle,nil).
 n_compl(today,arrival,nil). 
 n_compl(today,departure,nil).
 n_compl(hereafter,departure,nil). 
-n_compl(hereafter,vehicle,nil).  %%   går buss heretter/snarest
+n_compl(hereafter,vehicle,nil).  %%   gÃ¥r buss heretter/snarest
 
 %% n_compl(now,vehicle,nil). %% will bus now go // i take the bus now 
 
-n_compl(now,weather,nil).  %% været nå
+n_compl(now,weather,nil).  %% vÃ¦ret nÃ¥
 
 n_compl(today,route_plan,nil).  
 n_compl(today,vehicle,nil). 
 
-n_compl(today,question,nil). %% spørsmål idag 
+n_compl(today,question,nil). %% spÃ¸rsmÃ¥l idag 
 
 n_compl(tomorrow,weather,nil). 
 n_compl(tomorrow,vehicle,nil). 
@@ -8389,7 +8390,7 @@ n_compl(nil,arrival,night).
 n_compl(nil,group,thing). %% en gruppe mennesker 
 
 n_compl(nil,route,date). %% rute 1. juledag
-n_compl(nil,route,station).        %% når er nr 19 Flatåsen %%%% rute (til) dragvoll .
+n_compl(nil,route,station).        %% nÃ¥r er nr 19 FlatÃ¥sen %%%% rute (til) dragvoll .
 
 n_compl(nil,route,neighbourhood).  %% TA-101006 ???
 n_compl(nil,route,direction). %%  avgang retning lade ?
@@ -8426,11 +8427,11 @@ n_compl(nil,direction,clock).
 n_compl(nil,extrabus,thing). %% time/route, 
 
 n_compl(nil,length,clock).
-n_compl(nil,meeting,time). %% har møte kl 11
+n_compl(nil,meeting,time). %% har mÃ¸te kl 11
 
 n_compl(nil,notification,time).  
 
-n_compl(nil,plan,time). %% ad hoc disponering  ligger på planen kl 2500 for sjåførene 
+n_compl(nil,plan,time). %% ad hoc disponering  ligger pÃ¥ planen kl 2500 for sjÃ¥fÃ¸rene 
 
 n_compl(nil,price,card).  
 n_compl(nil,price,day).     %% price monday ? 
@@ -8472,31 +8473,31 @@ n_compl(nil,trip,time). %% tur hver dag
 n_compl(nil,vehicle,date).      %% buss 17. mai 
 n_compl(nil,vehicle,clock).     %%  (no inheritance ???)
 n_compl(nil,vehicle,direction). %% buss (i) retning byen ??? 
-n_compl(nil,vehicle,midnight).  %% buss natt (til søndag)
+n_compl(nil,vehicle,midnight).  %% buss natt (til sÃ¸ndag)
 n_compl(nil,vehicle,daypart).   %%  (? dangerous)
 n_compl(nil,vehicle,return).    %%  buss fra nth  med retur kl 19. 
 %% n_compl(nil,vehicle,month).  %% buss april ?
 
-%% n_compl(nil,vehicle,place).  %% buss (til folkvang) skole   %%  Når er nr 19 Flatåsen NB
+%% n_compl(nil,vehicle,place).  %% buss (til folkvang) skole   %%  NÃ¥r er nr 19 FlatÃ¥sen NB
 
 %% n_compl(nil,vehicle,station).  %% TA-110405 *-> nrel/vehicle/station/ila/torvet
                                                                 %%%%%%%
 
 n_compl(nil,vehicle,neighboutrhood).  %% 
 
-n_compl(nil,weather,time).      %% været i morgen 
-%% n_compl(nil,weather,today).     %% været idag ?
-n_compl(nil,weather,place).     %% været ute 
+n_compl(nil,weather,time).      %% vÃ¦ret i morgen 
+%% n_compl(nil,weather,today).     %% vÃ¦ret idag ?
+n_compl(nil,weather,place).     %% vÃ¦ret ute 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 n_compl(about,departure,daypart).           %% busstider  om kvelden  (sloppy)
-n_compl(about,departure,day).           %%  (om lørdagen)  Norwagism
+n_compl(about,departure,day).           %%  (om lÃ¸rdagen)  Norwagism
 n_compl(about,route,day). 
 n_compl(about,information,thing). %% regarding is precise %% Need it in English
 n_compl(about,vehicle,daypart).   %% om kvelden  (sloppy)
 
-n_compl(about,request,thing). %% et ønske om å ...  
+n_compl(about,request,thing). %% et Ã¸nske om Ã¥ ...  
 
 
 % n_compl(about,route,time).  
@@ -8533,7 +8534,7 @@ n_compl(after,time,arrival).
 n_compl(after,time,departure). 
 
 
- n_compl(after,vehicle,time). %%  vil buss etter kl 1200 gå til nth ?
+ n_compl(after,vehicle,time). %%  vil buss etter kl 1200 gÃ¥ til nth ?
 
 % n_compl(after,vehicle,vehicle).       %%  NO " bus after 20" => 2000
 % n_compl(after,route_plan, time).  %%   rutetider     tabell over 17
@@ -8569,7 +8570,7 @@ n_compl(at,job,company).
 n_compl(at,meaning,thing).  %% == with  
 n_compl(at,meeting,place).
 
-n_compl(at,neighbourhood,place). %% området ved ...
+n_compl(at,neighbourhood,place). %% omrÃ¥det ved ...
 
 n_compl(at,person,place). 
 n_compl(at,property,thing). 
@@ -8589,7 +8590,7 @@ n_compl(at,station,route).
 n_compl(at,strike,company). 
 n_compl(at,subscription,company). 
 
-% n_compl(at,station,route).   % vis stasjoner på rute  5 %% EXPERIMENT FAILED 
+% n_compl(at,station,route).   % vis stasjoner pÃ¥ rute  5 %% EXPERIMENT FAILED 
 % bus 5  pass Prinsen Kino at 20 ==> station at route ***
 
 
@@ -8597,9 +8598,9 @@ n_compl(after,period,time). %% i (perioden fra ..) til
 n_compl(before,period,time). 
 
     n_compl(after,minute,vehicle).  %% varslet etter bussen til nardo. %%%%%%%%%
-    n_compl(before,minute,vehicle). %% varslet før bussen til nardo/ Garden path
+    n_compl(before,minute,vehicle). %% varslet fÃ¸r bussen til nardo/ Garden path
 
-n_compl(behind,system,system). %% programvaren bak  "Spør Anna".
+n_compl(behind,system,system). %% programvaren bak  "SpÃ¸r Anna".
 
 
 
@@ -8624,11 +8625,11 @@ n_compl(after,minute,coevent).
 n_compl(after,start,time).  
 %%    n_compl(from,start,time).   %%?
 
-n_compl(before,minute,coevent).  %% 15 minutter før bussen går 
+n_compl(before,minute,coevent).  %% 15 minutter fÃ¸r bussen gÃ¥r 
 n_compl(before,arrival,time). 
 n_compl(before,bus,time).            %% (before =\ within)
 n_compl(before,departure,time). 
-%%%%%% n_compl(before,minute,vehicle).      %% 4 minutter før buss  
+%%%%%% n_compl(before,minute,vehicle).      %% 4 minutter fÃ¸r buss  
 
 
 n_compl(before,midnight,date).  
@@ -8650,7 +8651,7 @@ n_compl(before,time,departure).
 n_compl(before,time,arrival). 
 
 
-%% n_compl(before,minute,time). %% to be taken by syntax  ????  %% 16 minutter før 18 = 1744 
+%% n_compl(before,minute,time). %% to be taken by syntax  ????  %% 16 minutter fÃ¸r 18 = 1744 
 
 n_compl(before,way,time). 
 
@@ -8663,7 +8664,7 @@ n_compl(between,agelimit,person).
 n_compl(between,arrival,time). 
 n_compl(between,border,place). 
 n_compl(between,bus,place).     %% Time Between Sentrum ???  %%  buss mellom A og B
-% n_compl(between,bus,time).    %% når går bussen mellom 11 og 12
+% n_compl(between,bus,time).    %% nÃ¥r gÃ¥r bussen mellom 11 og 12
 n_compl(between,delay,place). 
 n_compl(between,departure,place). 
 n_compl(between,departure,time). 
@@ -8712,10 +8713,10 @@ n_compl(during,departure,time).
 n_compl(during2,clock,time).     %%  :-) %% OM duration 
 n_compl(during2,departure,time). 
 
-n_compl(during2,vehicle,time). %% når går buss kl 0830 om morgenen
+n_compl(during2,vehicle,time). %% nÃ¥r gÃ¥r buss kl 0830 om morgenen
                                %% <-- Problem ?
      
-n_compl(during2,route_plan,time). %% søndagsrute om 4 dager
+n_compl(during2,route_plan,time). %% sÃ¸ndagsrute om 4 dager
 
 %% n_compl(during2,vehicle,minute). %% buss om 10 min. %% Suspended 
 
@@ -8761,7 +8762,7 @@ n_compl(for,period,time).
 
 
 
-  %% n_compl(for,bus,route).   %%  bus for route 5// bss fo(ø)r 19 NB
+  %% n_compl(for,bus,route).   %%  bus for route 5// bss fo(Ã¸)r 19 NB
                              
 n_compl(for,card,person).  
 n_compl(for,card,place).
@@ -8771,11 +8772,11 @@ n_compl(for,claim,agent).   %% kriterium for
 n_compl(for,clock,departure).        %%  (tidspunkt for avgang)
 n_compl(for,clock,vehicle). 
 
-n_compl(for,time,easter). %% careful  n_compl(for,time,time). %% tider for påske
+n_compl(for,time,easter). %% careful  n_compl(for,time,time). %% tider for pÃ¥ske
                           %% TA-110504
 
 % n_compl(for,time,vehicle).   %% i.e. departure %% NOT DAY
-                             %% rute på <lørdag for buss> 54
+                             %% rute pÃ¥ <lÃ¸rdag for buss> 54
 n_compl(for,cause,thing). %% bakgrunn for Norw 
 
 n_compl(for,computer,webaddress). %% server 
@@ -8850,13 +8851,13 @@ n_compl(for,opening_hours,luggage). %% hittegods-kontor
 n_compl(for,oracle,place). %% e.g. oslo 
 
 n_compl(for,pity,agent).  
-n_compl(for,place,liquid). %% sted for øl :-) 
+n_compl(for,place,liquid). %% sted for Ã¸l :-) 
 %% n_compl(for,plan,time). 
-n_compl(for,plan,thing). %% plan for sjåfører
+n_compl(for,plan,thing). %% plan for sjÃ¥fÃ¸rer
 
 n_compl(for,price,thing).  
 
-n_compl(for,price,activity).  %% for å reise 
+n_compl(for,price,activity).  %% for Ã¥ reise 
 n_compl(for,price,animal).    %%  ( ako object)
 n_compl(for,price,bus).  
 n_compl(for,price,fare). 
@@ -8866,7 +8867,7 @@ n_compl(for,price,person).
 n_compl(for,price,ticket).   %% ako object ???
 
 
-n_compl(for,problem,agent). %%  løser problemer for folk
+n_compl(for,problem,agent). %%  lÃ¸ser problemer for folk
 
 n_compl(for,regtop_export,thing). %%  metagoric
 n_compl(for,responsibility,thing). %% (har) ansvar for ...
@@ -8962,7 +8963,7 @@ n_compl(for,vehicle,winter).
 n_compl(for,vehicle,christmas).
 
 %%% n_compl(for,vehicle,time).   %%  buss for neste time =
-                                 %%  buss for kl 11 #= buss før kl 11
+                                 %%  buss for kl 11 #= buss fÃ¸r kl 11
                                 
 n_compl(for,vehicle,duration).   %%  buss for neste time
 n_compl(for,vehicle,spring). 
@@ -8974,7 +8975,7 @@ n_compl(for,vehicle,winter).
 
 n_compl(for,way,thing).      %% muligheter for
 n_compl(for,webaddress,thing).
-n_compl(for,word,thing). %% søkeord for
+n_compl(for,word,thing). %% sÃ¸keord for
 
 
 n_compl(from,need,thing). %% special %%
@@ -9002,7 +9003,7 @@ n_compl(from,distance,place).
 %% n_compl(from,duration,place).  %%   om en time fra nth
 %% n_compl(from,duration,place).  %% tid(sforbruk) fra NTH
 
-n_compl(from,error,thing). %% feil fra vår side 
+n_compl(from,error,thing). %% feil fra vÃ¥r side 
 
 n_compl(from,export,agent).    
 n_compl(from,frequency,place).       %% avgangshyppighet 
@@ -9053,7 +9054,7 @@ n_compl(from,route_plan,place).  %%   rutetider
 %   n_compl(to,station,place). 
 %   NO                is there a bus from (pirterminalen to torvet).  
                    
-%% n_compl(from,street,station). % vei fra  dalgård til tyholt         
+%% n_compl(from,street,station). % vei fra  dalgÃ¥rd til tyholt         
 n_compl(from,street,place).      % ... fra byen 
 
 %% n_compl(from,person,place).   %% The man from Trondheim 
@@ -9066,7 +9067,7 @@ n_compl(from,money,place).
 n_compl(from,thing,set).          
 n_compl(from,ticket,place). 
 
-% n_compl(from,time,place).    %% NB bussen går (i morgen formiddag fra byen)
+% n_compl(from,time,place).    %% NB bussen gÃ¥r (i morgen formiddag fra byen)
 
 n_compl(from,train,place).  
 
@@ -9147,7 +9148,7 @@ n_compl(in,driver,vehicle).
 n_compl(in,duration,time). %% venting i 30 minutter
 
 
-n_compl(in,education,use). %% opplæring i bruk
+n_compl(in,education,use). %% opplÃ¦ring i bruk
 n_compl(in,employee,company). 
 n_compl(in,employee,office).   
 
@@ -9222,7 +9223,7 @@ n_compl(in,route_plan,neighbourhood).
 n_compl(in,route_plan,system). 
 
 %% n_compl(in,route_plan,time). %% from adverbial  om morgenen = in ... 
-%% går det søndagsrute i dag   
+%% gÃ¥r det sÃ¸ndagsrute i dag   
 
 
 n_compl(in,salary,month).       
@@ -9263,7 +9264,7 @@ n_compl(in,thing,database).
 
 
 %% n_compl(in,thing,street).    %% Norwagism  noe i veien. %% road %%
-%% ## går det (busser i wessels gate) 
+%% ## gÃ¥r det (busser i wessels gate) 
 
 %%% n_compl(in,thing,city).    %% place  byer i Trondheim #
  
@@ -9286,7 +9287,7 @@ n_compl(in,tram_route_plan,place).
 n_compl(in,transfer,place).   %%  bytte i Mkgt. 
 
 n_compl(in,monday,time).   
-n_compl(in,tuesday,time).   %% i påsken
+n_compl(in,tuesday,time).   %% i pÃ¥sken
 n_compl(in,wednesday,time). %% 
 n_compl(in,thursday,time).  %% 
 n_compl(in,friday,time).    %% 
@@ -9340,13 +9341,13 @@ n_compl(in,zone,place).
 
 n_compl(into,export,system). 
 
-n_compl(like,thing,thing). %% dager lik søndag %% Techn 
+n_compl(like,thing,thing). %% dager lik sÃ¸ndag %% Techn 
 
 n_compl(minus,thing,thing).
 
 n_compl(near,   place,place).   
 n_compl(nearer, place,place).  
-%  n_compl(nearest,place,place).  % EXPERIMENT  bussen går til nth nærneste time 
+%  n_compl(nearest,place,place).  % EXPERIMENT  bussen gÃ¥r til nth nÃ¦rneste time 
 
 
 %% n_compl(of   , possessive unnecesary  .. X  has_a Y
@@ -9365,7 +9366,7 @@ n_compl(of,activity,thing).
 n_compl(of,amount,money). 
 n_compl(of,author,system). 
 n_compl(of,care,thing). %% (take) care of thing
-n_compl(on,care,thing). %% (ta) vare på ting %% Norw
+n_compl(on,care,thing). %% (ta) vare pÃ¥ ting %% Norw
 
 n_compl(of,centre,city). 
 n_compl(of,copy,thing).      
@@ -9432,7 +9433,7 @@ n_compl(off,bus,route).        %% busser av  linje 36
 n_compl(off,enemy,agent). 
 n_compl(off,friend,agent).     %%  venn av  Norw
 n_compl(off,list,thing).               %%  (lista av...)(norwagism)
-n_compl(off,neighbourhood,place).  %% nærheten av 
+n_compl(off,neighbourhood,place).  %% nÃ¦rheten av 
 n_compl(off,part,thing). 
 n_compl(off,pause,thing).     %% Norw  frysing av abonnementet (SIC)
 n_compl(off,picture,thing).            %% bilde av noe
@@ -9444,7 +9445,7 @@ n_compl(off,top,place).                %%  toppen av bakken
 n_compl(off,transfer,vehicle).         %%  av (norwagism) better as off
 n_compl(off,user,thing).  
 n_compl(off,version,program).
-n_compl(off,thing,version).  %% disse kjører fra instans (SIC) 
+n_compl(off,thing,version).  %% disse kjÃ¸rer fra instans (SIC) 
 n_compl(off,version,route_plan). 
 
 n_compl(offside,place,place). 
@@ -9454,34 +9455,34 @@ n_compl(offside,place,place).
 
 %% n_compl(on,Name,Company):- Company has_a Name. %% Too General ??
              
-n_compl(on,activity,day).  %% TA-101109 har et møte på torsdag
+n_compl(on,activity,day).  %% TA-101109 har et mÃ¸te pÃ¥ torsdag
                                      %%%%%%%%%%%%%%%%%
 n_compl(on,agent,activity).  
 n_compl(on,agent,department).   %% telebuster
 n_compl(on,agent,telephone). 
-n_compl(on,agent,speed).     %% på farta
+n_compl(on,agent,speed).     %% pÃ¥ farta
 
 n_compl(on,animal,vehicle). 
-n_compl(on,answer,thing). %% Svar på alt
+n_compl(on,answer,thing). %% Svar pÃ¥ alt
 n_compl(on,arrival,place).           %% ( Norwagism ???)
 
 n_compl(on,age,card).  
 n_compl(on,agelimit,card).   %% Norw
 n_compl(on,database,thing).  
 n_compl(on,discount,trip).
-n_compl(on,family,person).   %% Norwagism familie på 3
+n_compl(on,family,person).   %% Norwagism familie pÃ¥ 3
 n_compl(on,format,thing).    %% design
 n_compl(on,lack,thing).      %% Norw 
 n_compl(on,load,system). 
 n_compl(on,money,thing).     %% rough
 
-%% n_compl(on,place,place).  %% Når er 43 til sentrum på korsen 
+%% n_compl(on,place,place).  %% NÃ¥r er 43 til sentrum pÃ¥ korsen 
 n_compl(on,name,thing). 
 n_compl(on,number,vehicle).  %%
-n_compl(on,number,sms).      %% ad hoc  ellipt. 17 (meldinger) på SMS
+n_compl(on,number,sms).      %% ad hoc  ellipt. 17 (meldinger) pÃ¥ SMS
 n_compl(on,payment,thing). 
 
-%%%%%%%%%%%%%%% n_compl(on,vehicle,time).  %% buss på morgenen
+%%%%%%%%%%%%%%% n_compl(on,vehicle,time).  %% buss pÃ¥ morgenen
 %%  shamefully subtle,   ==> on/day   needs distinction
 
 n_compl(on,bicycle,vehicle).
@@ -9497,7 +9498,7 @@ n_compl(on,bus,afternoon).
 n_compl(on,bus,evening).  
 n_compl(on,bus,night). 
 
-n_compl(on,bus,bus).  %% buss(nummeret) på bussen.
+n_compl(on,bus,bus).  %% buss(nummeret) pÃ¥ bussen.
 n_compl(on,bus,route_plan).  
 
 n_compl(on,card,place).  
@@ -9507,7 +9508,7 @@ n_compl(on,class,person).
 
 n_compl(on,clock,place).        %% i see (departure) times on nardo 
 n_compl(on,clock,system).
-n_compl(on,clock,agent).        %%  klokke på deg    
+n_compl(on,clock,agent).        %%  klokke pÃ¥ deg    
 n_compl(on,colour,object). 
 n_compl(on,correction,thing).  
 
@@ -9525,7 +9526,7 @@ n_compl(on,departure,time).
 n_compl(on,departure,winter). 
 
 n_compl(on,difference,thing).  %% Norwagism
-%% n_compl(on,direction,day).  %%   bussen til nth  -vei på mandag-?
+%% n_compl(on,direction,day).  %%   bussen til nth  -vei pÃ¥ mandag-?
 n_compl(on,direction,route).   %% rute 81 SIC
 n_compl(on,discount,ticket).   %% Norw 
 n_compl(on,discount,vehicle).  
@@ -9542,13 +9543,13 @@ n_compl(on,export,route_plan).
 n_compl(on,frequency,departure).
 n_compl(on,idea,thing).  
 
-n_compl(on,information,sms).    %% special  %% greie/rede på  %% Norw ? 
+n_compl(on,information,sms).    %% special  %% greie/rede pÃ¥  %% Norw ? 
 n_compl(on,information,system). %% TA-110506
 
 n_compl(on,house,place).         %%  (Norwagism)
-n_compl(on,mood,job).      %% TA-110114 humor|humør på jobben
+n_compl(on,mood,job).      %% TA-110114 humor|humÃ¸r pÃ¥ jobben
 n_compl(on,job,place).  
-n_compl(on,length,time).   %% lengde på periode=poss       %% hvor langte er det ... på mandag
+n_compl(on,length,time).   %% lengde pÃ¥ periode=poss       %% hvor langte er det ... pÃ¥ mandag
 n_compl(on,life,place). 
 n_compl(on,luggage,vehicle). 
 n_compl(on,lust,thing).          %% Norwagism Facetious
@@ -9562,14 +9563,14 @@ n_compl(on,number,route_plan).
 n_compl(on,opinion,thing). 
 
 n_compl(on,person,company).  
-n_compl(on,person,place).      %% tore på nardo
-n_compl(on,person,vehicle).    %% passasjer på rute 
-n_compl(on,person,year).       %%  barn på 3 år %% Tore på Nardo
+n_compl(on,person,place).      %% tore pÃ¥ nardo
+n_compl(on,person,vehicle).    %% passasjer pÃ¥ rute 
+n_compl(on,person,year).       %%  barn pÃ¥ 3 Ã¥r %% Tore pÃ¥ Nardo
 
 n_compl(on,picture,card).
-n_compl(on,pity,agent). %% "synd på deg "   Norw
+n_compl(on,pity,agent). %% "synd pÃ¥ deg "   Norw
 
-%% n_compl(on,place,vehicle).   %% plass/sete ** nardo på 17. 5 
+%% n_compl(on,place,vehicle).   %% plass/sete ** nardo pÃ¥ 17. 5 
 
 n_compl(on,pram,vehicle). 
 n_compl(on,wheelchair,vehicle). 
@@ -9588,15 +9589,15 @@ n_compl(on,program,sms).
 
 n_compl(on,roof,place).        %% station/house 
 
-n_compl(on,route,vehicle).  %%  nummer på bussen -> route on b  
-n_compl(on,route,date).     %%   ( ruter på julaften)
+n_compl(on,route,vehicle).  %%  nummer pÃ¥ bussen -> route on b  
+n_compl(on,route,date).     %%   ( ruter pÃ¥ julaften)
 n_compl(on,route,bus).      %%   (Norwagism)
 n_compl(on,route,day).      %% (etc) 
 n_compl(on,route,daypart). 
 
 n_compl(on,route,system). %% metagoric 
 
-n_compl(on,route_plan,date).     %%   ( ruter på julaften)
+n_compl(on,route_plan,date).     %%   ( ruter pÃ¥ julaften)
 n_compl(on,route_plan,bus).      %%   (Norwagism)
 n_compl(on,route_plan,day).      %% (etc) 
 
@@ -9617,18 +9618,18 @@ n_compl(on,specification,thing).
 
 
 n_compl(on,speed,vehicle). %% TA-100905
-n_compl(on,speed,kmh).     %% hastighet på 50 kmt (Norw) 
+n_compl(on,speed,kmh).     %% hastighet pÃ¥ 50 kmt (Norw) 
 
-n_compl(on,station,route).           % vis stasjoner på buss 5 %% EXPERIMENT
+n_compl(on,station,route).           % vis stasjoner pÃ¥ buss 5 %% EXPERIMENT
 n_compl(on,station,vehicle). %% e.g. route 
 
 
 % n_compl(on,station,place).   % ( neighbourhood) compatibility
 
-n_compl(on,station,neighbourhood).  %% ligger nardosenteret på nardo%% NO 
-                                    %% hva heter holdeplassen på nardo . # 
+n_compl(on,station,neighbourhood).  %% ligger nardosenteret pÃ¥ nardo%% NO 
+                                    %% hva heter holdeplassen pÃ¥ nardo . # 
 
-n_compl(on,station,station).  %% # holdeplassen på skjetlein (st)  %% ProfBrochsgt ON Torget  
+n_compl(on,station,station).  %% # holdeplassen pÃ¥ skjetlein (st)  %% ProfBrochsgt ON Torget  
     
 n_compl(on,sundayroute,vehicle). 
 n_compl(on,system,network).  
@@ -9643,17 +9644,17 @@ n_compl(on,special_ticket,vehicle).
 n_compl(on,sentence,language).       %% (Norwagism)
 n_compl(on,sequence,thing). 
 
-n_compl(on,thing,language). %% på engelsk Norw 
+n_compl(on,thing,language). %% pÃ¥ engelsk Norw 
 n_compl(on,thing,picture). 
 n_compl(on,thing,television).  
 
-n_compl(on,ticket,vehicle). %% hva koster biletten på bussen Norw
+n_compl(on,ticket,vehicle). %% hva koster biletten pÃ¥ bussen Norw
 n_compl(on,thing,language). %%
-n_compl(on,thing,way).      %% på vei (til)       
-n_compl(on,thing,street).   %% på vei disamb (til)
+n_compl(on,thing,way).      %% pÃ¥ vei (til)       
+n_compl(on,thing,street).   %% pÃ¥ vei disamb (til)
 
 n_compl(on,time,bus).
-n_compl(on,time,thing). %% frist på 45 minutter
+n_compl(on,time,thing). %% frist pÃ¥ 45 minutter
 
 n_compl(on,toilet,vehicle).
 n_compl(on,transfer,place). %% TA-101115
@@ -9662,26 +9663,26 @@ n_compl(on,transfer,place). %% TA-101115
 n_compl(on,vehicle,day).                %%   (vehicle ?) 
 n_compl(on,vehicle,date).  
 
-n_compl(on,vehicle,departure).    %% talemåte, busser på avgang
-n_compl(on,vehicle,direction).    %%  (Norwagism  på veg = on direction)  
+n_compl(on,vehicle,departure).    %% talemÃ¥te, busser pÃ¥ avgang
+n_compl(on,vehicle,direction).    %%  (Norwagism  pÃ¥ veg = on direction)  
 n_compl(on,vehicle,place).        %% TA-110807
-n_compl(on,vehicle,route).        %% busser på rute 66 
+n_compl(on,vehicle,route).        %% busser pÃ¥ rute 66 
 n_compl(on,vehicle,summer).  %% ekstraavganger 
 n_compl(on,vehicle,winter).  %%
 
-%% n_compl(on,vehicle,place).   % route 66 on moholt +   buss forbi nth på gløshaugen * 
-%%                           % når er neste buss på Torplassen som går til sentrum
-%% når  er buss 36 på Buran  % unwerwunscht
+%% n_compl(on,vehicle,place).   % route 66 on moholt +   buss forbi nth pÃ¥ glÃ¸shaugen * 
+%%                           % nÃ¥r er neste buss pÃ¥ Torplassen som gÃ¥r til sentrum
+%% nÃ¥r  er buss 36 pÃ¥ Buran  % unwerwunscht
 
 n_compl(on,vehicle,service).  
 
 
 
-% n_compl(on,thing,thing).           %  TOO GENERAL ti på fire ?
+% n_compl(on,thing,thing).           %  TOO GENERAL ti pÃ¥ fire ?
 % n_compl(on,object,place).          %  Too general 
 % n_compl(on,object,time).  
 %% n_compl(on,television,vehicle). %% 
-n_compl(on,time,vehicle).     %%  tiden på bussene %% OOPS klokka på to
+n_compl(on,time,vehicle).     %%  tiden pÃ¥ bussene %% OOPS klokka pÃ¥ to
 n_compl(on,time,daytime). 
 n_compl(on,time,day). 
 n_compl(on,time,date). 
@@ -9723,7 +9724,7 @@ n_compl(past,street,place).
 n_compl(past,route_plan,place).
 
 %% n_compl(past,clock,place).       %% (passerings)tidspunkt forbi nth
-                                    %% når går buss etter (1830 forbi nardo)
+                                    %% nÃ¥r gÃ¥r buss etter (1830 forbi nardo)
 
 n_compl(past,departure,place). 
 n_compl(past,time,place).  
@@ -9732,25 +9733,25 @@ n_compl(past,vehicle,place).   %% hvilke avganger har rute 5 forbi DV
 n_compl(past,station,place). 
 
 n_compl(per,thing,vehicle). 
-n_compl(per,departure,time).  %% en avgang pr døgn 
-n_compl(per,time_count,time). %% en gang per døgn  
+n_compl(per,departure,time).  %% en avgang pr dÃ¸gn 
+n_compl(per,time_count,time). %% en gang per dÃ¸gn  
 
 n_compl(plus,number,number).   
 
         
 %% n_compl(regarding,thing,vehicle). %% I know something about
-                                     %% OOPS     søndagsruter om 4 dager 
-%%% når går bussen om 10 minutter 
+                                     %% OOPS     sÃ¸ndagsruter om 4 dager 
+%%% nÃ¥r gÃ¥r bussen om 10 minutter 
 
 n_compl(regarding,claim,thing).  
 
-n_compl(regarding,doubt,thing).  %%  incl tvil om bussen går 
+n_compl(regarding,doubt,thing).  %%  incl tvil om bussen gÃ¥r 
 
 n_compl(regarding,information,thing). %% regarding is moreunambiguous than about
 n_compl(regarding,meaning,thing).
 n_compl(regarding,meeting,thing).  
 n_compl(regarding,plan,thing). 
-n_compl(regarding,request,thing).   %% ønske om
+n_compl(regarding,request,thing).   %% Ã¸nske om
 n_compl(regarding,suspicion,thing).
 n_compl(regarding,text,thing).   
 n_compl(regarding,truth,thing).
@@ -9766,7 +9767,7 @@ n_compl(times,number,number).
 
 %%% n_compl(to,Name,Company):- Company has_a Name. %% Too Geeneral ??
 %%%                      // buss til tagore        %% EXPERIMENT
-n_compl(to,number,place). %% nr nr til flatåsen etter kl19 
+n_compl(to,number,place). %% nr nr til flatÃ¥sen etter kl19 
 
 n_compl(to,access,thing).  %% TA-110429
 n_compl(to,activity,thing). 
@@ -9783,10 +9784,10 @@ n_compl(to,answer,test).
 n_compl(to,arrival,place). 
 n_compl(to,author,system).   %% Norw: forfatter til
 
-% n_compl(to,bus,time).      %% når går bussen (fra sju) til elleve 
+% n_compl(to,bus,time).      %% nÃ¥r gÃ¥r bussen (fra sju) til elleve 
 
 n_compl(to,capital,country). %% Norw hovedstaden til Pakistan %% TA-110225
-n_compl(to,card,card).       %% i.e. månedsmerke til kort
+n_compl(to,card,card).       %% i.e. mÃ¥nedsmerke til kort
 
 n_compl(to,cause,thing). %% coevent). 
 n_compl(to,claim,thing).  
@@ -9836,7 +9837,7 @@ n_compl(to,name,station). %% Hazard
 
 n_compl(to,need,thing). 
 
-n_compl(to,permission,coevent). %% lov å røyke %% (infin)
+n_compl(to,permission,coevent). %% lov Ã¥ rÃ¸yke %% (infin)
 n_compl(to,period,time).     %% \+ (i perioden) (fra ...)   ? 
 n_compl(to,place,person).  %% e.g. seat
 
@@ -9857,10 +9858,10 @@ n_compl(to,transfer,vehicle).
 
 n_compl(to,money,thing).     %% overgenerate? 
 
-%% Syndrome:   natt til søndag = søndag morgen ( 0000 - ),
+%% Syndrome:   natt til sÃ¸ndag = sÃ¸ndag morgen ( 0000 - ),
 %% men rutetidene om kvelden oppgis som 0000, selv om det er over midnatt
 %% og det formelt er neste dag.
-%% Kan løses ved å gjeninnføre   2415 + forandre datoen
+%% Kan lÃ¸ses ved Ã¥ gjeninnfÃ¸re   2415 + forandre datoen
 
 
 % n_compl(to,night,day).      %% (Not English)  Night to saturday 
@@ -9886,7 +9887,7 @@ n_compl(to,relation,thing).
 
 % n_compl(to,roof,vehicle).  %% AD HOC  taket til bussen :-)
 
-n_compl(to,route,place).   %% ruter til Ålesund %%  way = route = bus  ? 
+n_compl(to,route,place).   %% ruter til Ã…lesund %%  way = route = bus  ? 
 
 n_compl(to,route,vehicle).  % allow bussrute til buss 9 %% TA-110105
                             % possessive %% TA-110105
@@ -9897,7 +9898,7 @@ n_compl(to,route_plan,vehicle).   % allow bussrute til buss 9
 
 n_compl(to,seat,person).       %% (Norwagism) plass til 
 n_compl(to,seat,pram).       %% not elephant :))))
-n_compl(to,seat,place).       %% ledig plass til Tromsø 
+n_compl(to,seat,place).       %% ledig plass til TromsÃ¸ 
 
 n_compl(to,service,agent).    %%  ??? agent has_a service
 
@@ -9913,10 +9914,10 @@ n_compl(to,ticket,place).
 %%% n_compl(to,ticket,vehicle). 
 
 n_compl(to,time,meeting).        %%  Norw ( for)
-%%  n_compl(to,time,place).      %% bussen går om (5 minutter til nth) *
+%%  n_compl(to,time,place).      %% bussen gÃ¥r om (5 minutter til nth) *
 
 %% n_compl(to,time,vehicle).        %% gi meg tidene til buss 5 
-%%  det er åtte timer til bussen går
+%%  det er Ã¥tte timer til bussen gÃ¥r
 
 % n_compl(to,time,time).    %% tid (fram) til midnatt ???? EXPERIMENT
 %%    (buss fra  sju om) morgenen til elleve
@@ -9948,12 +9949,12 @@ n_compl(to,vehicle,job).
 n_compl(to,vehicle,place). 
 %% n_compl(to,vehicle,agent). %% send en rute til meg
 
-n_compl(to,way,thing).    %% på veg til møte 
-n_compl(to,street,thing). %% disamb på veg til møte 
+n_compl(to,way,thing).    %% pÃ¥ veg til mÃ¸te 
+n_compl(to,street,thing). %% disamb pÃ¥ veg til mÃ¸te 
 %% n_compl(to,way,place). 
 %% n_compl(to,way,vehicle). 
 
-n_compl(to,weather,time). %%  Norw snø til vinteren y
+n_compl(to,weather,time). %%  Norw snÃ¸ til vinteren y
 
 n_compl(to,webaddress,thing). %%  metagoric
 %% n_compl(to,webaddress,agent).  %% busstuc  
@@ -9969,16 +9970,16 @@ n_compl(towards,midnight,date).
 n_compl(towards,midnight,day).    %% night to sunday (Norwagism)
 n_compl(towards,route,place). 
 n_compl(towards,route_plan,place). %% 
-n_compl(towards,station,place). %% holdeplasser mot Gløs (på buss 5)
+n_compl(towards,station,place). %% holdeplasser mot GlÃ¸s (pÃ¥ buss 5)
 
-n_compl(under,person,year).   %% NB under 8 ÅR
+n_compl(under,person,year).   %% NB under 8 Ã…R
 n_compl(until,vehicle,time).
 
 n_compl(via,vehicle,sms).
 n_compl(via,price,place). 
 n_compl(via,way,place). 
 
-n_compl(when,information,coevent). %% NB %% oppl. om når bussen går
+n_compl(when,information,coevent). %% NB %% oppl. om nÃ¥r bussen gÃ¥r
 
 n_compl(where,doubt,coevent). %% ad hoc 
 
@@ -10003,7 +10004,7 @@ n_compl(with,meeting,agent).
 n_compl(with,computer,address). 
 n_compl(with,set,thing).        %% sett med ting  Norw 
 n_compl(with,system,screen).    %% TA-110527
-n_compl(with,thing,idea).       %%  med tanke på ....
+n_compl(with,thing,idea).       %%  med tanke pÃ¥ ....
 n_compl(with,word,thing).       %% ad hoc 
 
 n_compl(with,time,gap).
@@ -10038,7 +10039,7 @@ n_compl(with,comparison,thing).
 n_compl(with,connection,place).     %% forbindelse med tiller 
 n_compl(with,connection,company).   %% TT
 n_compl(with,connection,vehicle).   %% otherbus
-n_compl(with,connection,coevent).   %% med at bussen går
+n_compl(with,connection,coevent).   %% med at bussen gÃ¥r
 
 n_compl(with,contact,agent). 
 n_compl(with,contact,company). 
@@ -10073,7 +10074,7 @@ n_compl(with,permission,thing).
 n_compl(with,place,distance). %% med avstand til ...
 n_compl(with,problem,thing). 
 
-% n_compl(with,thing,agent).    %% tar (øl med meg) %% noe i veien med deg
+% n_compl(with,thing,agent).    %% tar (Ã¸l med meg) %% noe i veien med deg
 n_compl(with,ticket,discount).  
 
 n_compl(with,trip,agent).   
@@ -10103,7 +10104,7 @@ n_compl(with,route_plan,map).
 n_compl(with,route_plan,time).  
 
 
-n_compl(with,route_plan,vehicle).    %%  (lørdags)rute med buss 5
+n_compl(with,route_plan,vehicle).    %%  (lÃ¸rdags)rute med buss 5
 
 n_compl(with,sentence,thing).  
 n_compl(with,station,vehicle).   %% Experiment % stasjon etter M0 med buss 4
@@ -10286,7 +10287,7 @@ particle(badly,mode,post).
 %% particle(before,time,post). % does a bus that arrives before 900 go ? %% EXPERIMENT
 particle(behind,time,post).
 
-particle(below,place,post).  %% ? spørsmålet nedenfor
+particle(below,place,post).  %% ? spÃ¸rsmÃ¥let nedenfor
 
 % particle(best,mode,post).  %% == well 
 % particle(by,place,post).   %%  preposition is preferred
@@ -10313,7 +10314,7 @@ particle(forward,place,post).
 particle(freely,mode,post).
 %% particle(from,mode,post).  %%  Si ifra   %% Norwagism %% Hazardous 
 
-particle(gratis,mode,post).  %% kjøre gratis, also E 
+particle(gratis,mode,post).  %% kjÃ¸re gratis, also E 
 
 particle(home,direction,post).  
 particle(honestly,abstract,post). 
@@ -10327,7 +10328,7 @@ particle(southward,direction,post).
 particle(westward,direction,post).  
 
 particle(late,time,post).
-particle(last,time,post).       %%  går sist
+particle(last,time,post).       %%  gÃ¥r sist
 particle(little,mode,post). %% hjelper lite 
 particle(locally,place,post). 
 particle(logically,mode,post).
@@ -10339,19 +10340,19 @@ particle(offside,direction,post). %% southward/southbound etc
 
 particle(on,vehicle,post).      %%  NOT place 
 
-particle(openly,mode,post).     %% adjective  holde åpent 
+particle(openly,mode,post).     %% adjective  holde Ã¥pent 
 
 particle(out,mode,post).        %% se ut (Norwagism) 
 particle(out,place,post). 
 
 particle(outside,place,post). 
 
-% particle(past,place,post).        %%   gå forbi.  (reductant)  
+% particle(past,place,post).        %%   gÃ¥ forbi.  (reductant)  
 particle(punctually,time,post).   %%  
 particle(regularly,time,post).   %% according to schedule 
 particle(round,place,post).
 particle(secretly,mode,post). 
-particle(silent,mode,post). %% stå stille/ gå stille 
+particle(silent,mode,post). %% stÃ¥ stille/ gÃ¥ stille 
 particle(simultaneously,time,post). 
 %% particle(soon,mode,post). %% ??? not pre ???// herafter
 particle(there,place,post). 
@@ -10365,7 +10366,7 @@ particle(well,mode,post).
 particle(wrongly,mode,post).
 
 % particle(with1,mode,post).   %% Norwagism,EXPERIMENT (hva kan jeg ta med)
-                               %% Failed,  jeg går med bussen
+                               %% Failed,  jeg gÃ¥r med bussen
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -10376,7 +10377,7 @@ v_compl(V,thing,nil,daypart) :- normalverb(V,_).
 v_compl(V,thing,nil,day):-      normalverb(V,_).
 v_compl(V,thing,nil,day):-      normalverb(V,_). 
 v_compl(V,thing,nil,week):-     normalverb(V,_).
-%%% v_compl(V,thing,nil,month):-    normalverb(V,_). %% Går buss 2 januar 
+%%% v_compl(V,thing,nil,month):-    normalverb(V,_). %% GÃ¥r buss 2 januar 
 v_compl(V,thing,nil,year):-     normalverb(V,_). %%
 
 %% NB   v_compl(be1,plonk,on,date). ## 
@@ -10427,7 +10428,7 @@ stanprep(nil,duration).  %% hvor lenge (venter) %% TA-100905
 stanprep(nil,date).      %%  ?
 stanprep(nil,day).  
 stanprep(nil,mode). 
-stanprep(nil,place).     %% hvor (går bussen) ...til  
+stanprep(nil,place).     %% hvor (gÃ¥r bussen) ...til  
 
 stanprep(id,coevent).      %% alt.
 stanprep(not,coevent).     %% and not doing %% pro forma
@@ -10437,7 +10438,7 @@ stanprep(without,problem).
 
 
 
-stanprep(nil,mode).    %% kjøre gratis
+stanprep(nil,mode).    %% kjÃ¸re gratis
 %% stanprep(nil,duration). %% \+ go friday morning
 stanprep(nil,time_count). 
 
@@ -10464,7 +10465,7 @@ stanprep(at,activity).   %% ved fremvisning
 stanprep(at,coevent).    %% 
 stanprep(at,error).      %% mistake Norw  ved feil
 stanprep(at,place). 
-stanprep(at,question).   %% ved forespørsel %% Norw 
+stanprep(at,question).   %% ved forespÃ¸rsel %% Norw 
 stanprep(at,time).
 
 
@@ -10489,7 +10490,7 @@ stanprep(during,coevent).
     stanprep(below,activity). %% Norwagism under = during // ad hoc, 
 
 stanprep(during,time). 
-stanprep(during2,time). %% om våren
+stanprep(during2,time). %% om vÃ¥ren
 
 stanprep(for,fun). %% for moro skyld %% TA-110427
 
@@ -10537,14 +10538,14 @@ stanprep(on,day).
 stanprep(on,evening).  %%  on monday evening
 stanprep(on,morning).  %%     ...    morning
 stanprep(on,place).      
-stanprep(on,way).      %% Norwagism ( på en måte)
+stanprep(on,way).      %% Norwagism ( pÃ¥ en mÃ¥te)
 stanprep(outside,place).
 stanprep(over,place). 
 %% stanprep(over,thing). %%   bus runs over me # 
 stanprep(per,time).   
 
 %% stanprep(rather_than,thing). %% ..Norw framfor= instead:of
-stanprep(regarding,thing). %% angående 
+stanprep(regarding,thing). %% angÃ¥ende 
 
 stanprep(since,thing). %% date/coevent 
 stanprep(so_that,thing). 
@@ -10565,7 +10566,7 @@ stanprep(with,possibility). %%
 
 stanprep(within,time).
 
-stanprep(without,thing). %% coevent). %% uten å måtte ... %% TA-110304
+stanprep(without,thing). %% coevent). %% uten Ã¥ mÃ¥tte ... %% TA-110304
 
 % % % % % % % % % % % % % % % % % % % % % % % %
 

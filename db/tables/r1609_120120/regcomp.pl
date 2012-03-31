@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 composite_stat(munkegata,[m1],munkegata_m1).
 composite_stat(munkegata,[m2],munkegata_m2).
 composite_stat(munkegata,[m3],munkegata_m3).
