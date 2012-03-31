@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE tucteam.pl 
 %% SYSTEM TUC
 %% CREATED TA-010127
@@ -29,9 +30,9 @@
 
    (noparentflag := true),      %% Ignore content of parentheses
 
-   (tramflag := false),         %% They don't like A/S Gråkallen
+   (tramflag := false),         %% They don't like A/S GrÃ¥kallen
 
-   (nodotflag := true),         %% Readymade Q: Når går bussen fra ....
+   (nodotflag := true),         %% Readymade Q: NÃ¥r gÃ¥r bussen fra ....
 
    (parsetime_limit := 10000),  %% 333 Mhz
 

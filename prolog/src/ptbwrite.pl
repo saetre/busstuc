@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE ptbwrite.pl
 %% SYSTEM TUC
 %% CREATED TA-061030
@@ -30,8 +31,8 @@ En tom produksjon er rekursivt
    [<token>,  <empty production>]
 
 
-En videreføring er å eliminere topp-noden i alle
-subtrær som bare har en produksjon (unnatt POS).
+En viderefÃ¸ring er Ã¥ eliminere topp-noden i alle
+subtrÃ¦r som bare har en produksjon (unnatt POS).
 
 */
 

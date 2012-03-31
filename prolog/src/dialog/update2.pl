@@ -1,6 +1,7 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE   update2.pl
 %% SYSTEM BUSTER
-%% CREATED ØF-000101
+%% CREATED Ã˜F-000101
 %% REVISED TLF-030402 TA-060705
 
 %%% Predicates for updating and using the context frames

@@ -1,4 +1,4 @@
-
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %%% 
 
 cutloop_trace(valentinlyst,6805,6825).

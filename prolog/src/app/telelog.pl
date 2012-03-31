@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE telelog.pl
 % Hjelpepredikat for tele
 
@@ -18,7 +19,7 @@ passesstations(_,_,_,_).
 
 %timenow(1200).
 
-timenow(Tid) :-  % Tiden akkurat nå
+timenow(Tid) :-  % Tiden akkurat nÃ¥
 	 datetime(_,_,_,Hour,Min,_),
 	 Tid is Hour*100+Min.
 

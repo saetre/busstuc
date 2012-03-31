@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE usestate2.pl
 %% SYSTEM BUSTER
 %% CREATED TO-970319
@@ -267,7 +268,7 @@ ip		\+ member(department=_,Condlist),
 
 
 
-%%%%%%% Hvor ønsker du å reise : Dravoll => TO Dragvoll
+%%%%%%% Hvor Ã¸nsker du Ã¥ reise : Dravoll => TO Dragvoll
 
 
 %% add atday 
@@ -303,7 +304,7 @@ id     not nocontext,
 ip     place_station(Place,Stat). 
 
 
-%% Hvor ønsker du å reise
+%% Hvor Ã¸nsker du Ã¥ reise
 depplacebusto rule  %% TA-030514  Already Got a Bus, Mix IN 
 is     framevalue(where::departure, Place)
 id     not nocontext, 

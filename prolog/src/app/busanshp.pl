@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE busanshp.pl
 %% SYSTEM BUSTUC/BUSTER
 %% CREATED  JB-970220 
@@ -154,7 +155,7 @@ xstatcoord(STATNO, _Intname,Extname, Xcoord,Ycoord):-
 
 xstatcoord(_STATNO, Intname,Extname, Xcoord,Ycoord):- %% NB Missing station in direction,
     veh_mod(CurrMod),                            %% try other side of street
-    CurrMod:hpl(STATNO,Intname,_,Extname),        %% e.g Bjarne Næss veg
+    CurrMod:hpl(STATNO,Intname,_,Extname),        %% e.g Bjarne NÃ¦ss veg
     statcoord(STATNO,_Extname, Xcoord,Ycoord),
     !.
 
@@ -165,28 +166,28 @@ xstatcoord(_0, Intname,Intname, 0,0). %% NB Missing station in direction,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-maptrace( dir(depnode(_,_,_,_,_,Rid,_,_,Gløshaugen_syd),Nardosenteret),dual(LIST,[])):-
+maptrace( dir(depnode(_,_,_,_,_,Rid,_,_,GlÃ¸shaugen_syd),Nardosenteret),dual(LIST,[])):-
     !,
-    xstation_trace(Rid,Gløshaugen_syd,Nardosenteret,LIST).
+    xstation_trace(Rid,GlÃ¸shaugen_syd,Nardosenteret,LIST).
 
 
-maptrace( corr(depans(_,Rid1,_,Prinsen_kinosenter,_,_Rid2,_,Gløshaugen_nord), %% Special, dummy corr-> direct
+maptrace( corr(depans(_,Rid1,_,Prinsen_kinosenter,_,_Rid2,_,GlÃ¸shaugen_nord), %% Special, dummy corr-> direct
                nil),dual(List1,[])):-
     !,
-    xstation_trace(Rid1,Prinsen_kinosenter,Gløshaugen_nord,List1). %% TA-110323
+    xstation_trace(Rid1,Prinsen_kinosenter,GlÃ¸shaugen_nord,List1). %% TA-110323
 
 
-maptrace( corr(depans(_,Rid1,_,Prinsen_kinosenter,_,Rid2,_,Gløshaugen_nord),
+maptrace( corr(depans(_,Rid1,_,Prinsen_kinosenter,_,Rid2,_,GlÃ¸shaugen_nord),
                midans(_,_,Studentersamfundet_1,_,_,Studentersamfundet_2)),dual(List1,List2)):-
 
     xstation_trace(Rid1,Prinsen_kinosenter,   Studentersamfundet_1, List1), %% TA-110323
-    xstation_trace(Rid2,Studentersamfundet_2, Gløshaugen_nord,      List2). %%
+    xstation_trace(Rid2,Studentersamfundet_2, GlÃ¸shaugen_nord,      List2). %%
 
 
-xstation_trace(Rid,Gløshaugen_syd,Nardosenteret,LIST):-
-    station_trace(Rid,Gløshaugen_syd,Nardosenteret,LIST),!.
+xstation_trace(Rid,GlÃ¸shaugen_syd,Nardosenteret,LIST):-
+    station_trace(Rid,GlÃ¸shaugen_syd,Nardosenteret,LIST),!.
 
-xstation_trace(_Rid,_Gløshaugen_syd,_Nardosenteret,[]). %% error berg_studentby-> lerchendal_gård
+xstation_trace(_Rid,_GlÃ¸shaugen_syd,_Nardosenteret,[]). %% error berg_studentby-> lerchendal_gÃ¥rd
 
 
 
@@ -215,7 +216,7 @@ outdeplist(Deps,Day,Opts,DirPlace,TF,MAP):-
 
  
 
-%¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+%Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 outfromtocorr(Opts,Dep,OutDep,Mid01,OutAns,MAP):- %% TA-110511
    outfromtocorr0(Opts,Dep,OutDep,Mid01,OutAns,MAP0),
@@ -229,7 +230,7 @@ outfromtocorr(Opts,Dep,OutDep,Mid01,OutAns,MAP):- %% TA-110511
 %%%  OUTDEPLIST1
  
 
-outdeplist00(Deps,Day,Opts,DirPlace,Out,MAP) :-   
+outdeplist00(Deps,Day,Opts,DirPlace,Out,MAP) :-  
     sort_deps_deptime(Deps,Deps1),
     outdeplist01(Deps1,Day,Opts,DirPlace,Out,MAP),
     ! %% must not backtrack into busans
@@ -300,7 +301,7 @@ smart_time_option(prev(_)).
 smart_time_option(lastcorr). 
 smart_time_option(nextaftertime(_)). 
 
-smart_time_option(nth(N)) :-N >1. %% første = nth(1) innocent
+smart_time_option(nth(N)) :-N >1. %% fÃ¸rste = nth(1) innocent
 
 %%  smart_time_option(first(_)). 
 %%  smart_time_option(next(_)).   
@@ -390,7 +391,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP) :-   % siste avgan
 	 outdeplisttime([Dep],Day,Opts,DirPlace,Out,MAP). 
 
 % moved up, last takes priority 
-outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP) :-   % ankomst FØR == siste ankomst
+outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP) :-   % ankomst FÃ˜R == siste ankomst
     member(lastcorr,Opts), 
     !, 
     progtrace(4,case6), 
@@ -399,7 +400,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP) :-   % ankomst FØR
 
  
 
-outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP) :-   % Nte første avgang
+outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP) :-   % Nte fÃ¸rste avgang
 	 member(nth(N),Opts),
 %%%%   	 member(first(1),Opts), %% TA-101022 ??
     !,
@@ -449,7 +450,7 @@ outdeplist1(Deps,_Day,Opts,DirPlace,(Out,earliesttimes),MAP) :-   % neste =< N a
 
 
 %% SMS Check if first / first(1) is really EARLY (ANOTHER DAY)
-outdeplist1(Deps0,Day,Opts,DirPlace,(OutFirst), MAP) :- % første/neste avgang 
+outdeplist1(Deps0,Day,Opts,DirPlace,(OutFirst), MAP) :- % fÃ¸rste/neste avgang 
     value(smsflag,true),
      anotherday(Day), 
 	test(  
@@ -471,7 +472,7 @@ outdeplist1(Deps0,Day,Opts,DirPlace,(OutFirst), MAP) :- % første/neste avgang
 
 
             %% SMS first means only next
-outdeplist1(Deps,Day,Opts,DirPlace,(OutNext,earliesttimes),MAP) :- % første/neste avgang 
+outdeplist1(Deps,Day,Opts,DirPlace,(OutNext,earliesttimes),MAP) :- % fÃ¸rste/neste avgang 
     value(smsflag,true),
     \+ member(firstcorr,Opts), 
     \+ member(time,Opts),      % time means a clock has been set
@@ -492,7 +493,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,(OutNext,earliesttimes),MAP) :- % første/nest
 
 %% Avoid Night to saturday if saturday is just daycode !!!
 
-outdeplist1(Deps0,Day,Opts,DirPlace,(OutFirst,OutNext,earliesttimes), MAP) :- % første/neste avgang 
+outdeplist1(Deps0,Day,Opts,DirPlace,(OutFirst,OutNext,earliesttimes), MAP) :- % fÃ¸rste/neste avgang
    \+ value(smsflag,true), %% NONSMS -> FIRST/LAST
    \+ member(firstcorr,Opts), 
    \+ member(time,Opts),       % time means a clock has been set 
@@ -517,7 +518,7 @@ outdeplist1(Deps0,Day,Opts,DirPlace,(OutFirst,OutNext,earliesttimes), MAP) :- % 
     outdepnext(NextDeps,Opts,TimeF,_TimeL,DirPlace,OutNext, _NAP). %% NB calls timenow again!
 
 
-outdeplist1(Deps,Day,Opts,DirPlace,Out,MAP) :-   % første N avganger 
+outdeplist1(Deps,Day,Opts,DirPlace,Out,MAP) :-   % fÃ¸rste N avganger 
 	 delete1(first(N),Opts,Opts1), 
     !, 
     progtrace(4,case16), 
@@ -546,7 +547,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP) :-   % neste avgan
 	 nextdep(Tid,Dep,Deps), %% DepTime >= Tid  buslog.pl
 	 outdeplisttime([Dep],Day,Opts,DirPlace,Out,MAP).
 
-outdeplist1(Deps,Day,Opts,DirPlace, ((Out,earliesttimes)),dir(Dep1,DirPlace)) :-   % første avgang
+outdeplist1(Deps,Day,Opts,DirPlace, ((Out,earliesttimes)),dir(Dep1,DirPlace)) :-   % fÃ¸rste avgang
 	 (member(first(1),Opts)   ;  
      member(firstcorr,Opts)),   
 	 member(Dep,Deps),
@@ -580,7 +581,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP) :-   % Nte avgang
 
 
 
-% Få eller alle avganger 
+% FÃ¥ eller alle avganger 
 outdeplist1(Deps,_,Opts,DirPlace,((Out,earliesttimes)),MAP) :- 
     (testmember(time,Opts);testmember(timeset,Opts)), 
   
@@ -639,7 +640,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP) :- %% from A to B
     \+ value(dialog,1),
     
     !,
-    progtrace(4,case26), 
+    progtrace(4,case26),
     justoutputtheliststar(Deps,DirPlace,Out,Opts,MAP).
 
 
@@ -826,14 +827,14 @@ justoutputtheliststar(Deps,DirPlace,Out,Opts,MAP):-
  
 %%%%%%%%%   ridof(Dep1,RID1),           
 
-    avoidsamerid2(Dep1,Deps1,Deps2), %% avoid Gløs N/Gløs S same time / same RID
+    avoidsamerid2(Dep1,Deps1,Deps2), %% avoid GlÃ¸s N/GlÃ¸s S same time / same RID
                                      %% if smartdep, cut all subsequent RIDS ??
                                      %% TA-110503
     timenow2(5,NOW5), 
     keepafter(NOW5,Deps2,Deps3),
     append([Dep1],Deps3,Deps4),
 
-    memberids(NActual,Deps4,Deps5),
+    memberids(NActual,Deps4,Deps5),    
 
     justoutputthelist(Deps5,DirPlace,Out,Opts,MAP). 
 
@@ -856,9 +857,7 @@ justoutputthelist0(Deps,DirPlace,Out,Opts, dir(Dep1,Bingo)):-  %% no warning
 
       busleaveset(BusN1,Station1,Deps,DirPlace,Opts,   TimeDurations), 
       BusDeps),
-
- 
-
+    
     outsmalldeps(BusDeps,DirPlace,Out,Opts),
 
     first_dep(Deps,Dep1),   ridof(Dep1, RID),
@@ -1263,7 +1262,7 @@ busleave(Xopt,Time09, Rid1, BusN1,Station1,Duration,Deps,DirPlace,ToStation) :-
 	ridtobusname(Rid1,BusN1),
 	firstarrive(Rid1,DirPlace,ToStation,DelArr2,_),
    DelArr2 \== 999, %% spurious cut dep 
-   DelArr2 >= DelDep1, %% spurious arrival  %%  buss 63 fra asbjørnsens gt til m
+   DelArr2 >= DelDep1, %% spurious arrival  %%  buss 63 fra asbjÃ¸rnsens gt til m
 	Duration is DelArr2-DelDep1.
 
 
@@ -1277,7 +1276,7 @@ firstarrive(Rid,Place,Station,   DelArr2,DelDep):-
 
     adjust999(DelArr2,DelDep2,DelDep).
 
-%%%%%%%%    !.  %% NB  Gløs -> D2 CUT D2 -> Buenget 
+%%%%%%%%    !.  %% NB  GlÃ¸s -> D2 CUT D2 -> Buenget 
                               %%
  
 outsmalldeps( [],_sentrum,_,_opts):- %% Empty ( <= error ?) 
@@ -1320,7 +1319,7 @@ outsmalldeps0([ x3(TimesDuration,BusN,Station)|BusDeps],DirPlace, %% TimesDurati
     vehicletype(BusN,Bus),
 
     code_passes(Opts,Passes),
-
+    
 	 outsmalldeps2(duration,Station,TimesDuration,DirPlace,OutDeps2,Opts),  
 	 ensure_removed([BusN,Station,TimesDuration],BusDeps,BusDeps2),
          
@@ -1337,7 +1336,6 @@ code_passes(_,passes):-!.
 outsmalldeps2(arrivaltime,_Station,[TimesDuration],DirPlace, (bwt(Time),OutArr),_Opts ) :- 
 	 faenta([TimesDuration],Times,Duration,SetOfDest), % Duration =  Short - Long
     Times = [Time],  %% assumption: only one time 
-    
     addtotime(Time,Duration,Arrival),
 
     set(firstdeparturetime,Time),  %% for reference
@@ -1351,14 +1349,11 @@ outsmalldeps2(arrivaltime,_Station,[TimesDuration],DirPlace, (bwt(Time),OutArr),
     ),
 
    (SetOfDest=[M4] -> UT=M4;UT=DirPlace),
-
 	 outandarrives3(UT,arrival(Arrival),OutArr).
 
 outsmalldeps2(duration,Station,TimesDurations,DirPlace,(bwtimes2(Times),OutArr),_Opts ) :- 
     create_smartdep_entry(Station,TimesDurations,   DirPlace,Smartdep_entry), %% TA-110405
-
     print_smartdep_entry(Smartdep_entry),
-
 	 faenta(TimesDurations,Times,Duration,SetofStations),
     outandarrivesset(Station,DirPlace,SetofStations,duration(Duration),OutArr).
 
@@ -1440,6 +1435,7 @@ fullstatname(Localstatno,Station,Fullstatname) :- %% official station name
 
     
 print_smartdep_entry(_):-
+        
      \+ value(smartdepflag,true),
      !.
 
@@ -1455,14 +1451,14 @@ print_smartdep_entry(smartdepentry(Fullstatname1,Localstatno1,BusNo,Time,Duratio
                 '"time"':Time, 
                 '"duration"':Duration,
                 '"destination"':FDestination},
-
+    
    fullstatname(_Localstatno,DirPlace,Destination), %% TA-110530
 
             %% bwstat2(DirPlace,Destination),  %% detailed station name (M3) hard to find
    
    fnuttify2(Fullstatname1,FFullstatname1),
    fnuttify2(Destination,FDestination),
-
+   
    !,
    out(ItemList).
 
@@ -1652,7 +1648,7 @@ outandarrives6(_,Station1,Station2,_,_,[],passes,_FINAL):- %% SAME station
     (Station1==hovedterminalen , corr(Station2,hovedterminalen));
     (Station2==hovedterminalen , corr(Station1,hovedterminalen))
 ),
- !. %% Genialt hvis  ..ankommer m1 0738 og går fra m1 0745  
+ !. %% Genialt hvis  ..ankommer m1 0738 og gÃ¥r fra m1 0745  
 
 outandarrives6(_,Station,from(Place),_,_,[],passes,_FINAL):- %% arrivesat) :-
     Station == Place,
@@ -1692,7 +1688,7 @@ outandarrivesonly(FromPlace,FromTime,DirPlace,Rid,BegTime,DelDep1,ArrivalTime,Ou
 
     FromPlace \== ToStation, 
                                        %% avoid arrival =999 appears as after departure
-    DelArr >=  DelDep1,  %% should have seq?   %%  buss 63  fra singsaker til TS  før 15.25 
+    DelArr >=  DelDep1,  %% should have seq?   %%  buss 63  fra singsaker til TS  fÃ¸r 15.25 
 	 addtotime(BegTime,DelArr,ArrivalTime),
 
     !,
@@ -2046,16 +2042,16 @@ writename(TA):-bwrbc(TA).
 % 
 
 
-print_paraphrase_message(nearest_station(_STARTSTOP,A,B)):- % e.g. Holdeplassen nærmest A er B
+print_paraphrase_message(nearest_station(_STARTSTOP,A,B)):- % e.g. Holdeplassen nÃ¦rmest A er B
     !,
     printmessageunconditionally(nearest_station(_STARTSTOP,A,B)). 
 
 
-print_paraphrase_message(nearest_station(_STARTSTOP,A,B)):- % e.g. Holdeplassen nærmest A er B
+print_paraphrase_message(nearest_station(_STARTSTOP,A,B)):- % e.g. Holdeplassen nÃ¦rmest A er B
     !,
     printmessageunconditionally(nearest_station(_STARTSTOP,A,B)). 
 
-print_paraphrase_message(X):- % e.g. NOT 27. Aug. 2005 er en  lørdag.
+print_paraphrase_message(X):- % e.g. NOT 27. Aug. 2005 er en  lÃ¸rdag.
    printmessage(X).
 
 
@@ -2307,7 +2303,7 @@ write_mess_off(   _      ):-! . %% assume message has been written already
 
 obvious_station(sentrum).   
 
-%% obvious_station(munkegata).           %%  Skal vi møtes på D.g.
+%% obvious_station(munkegata).           %%  Skal vi mÃ¸tes pÃ¥ D.g.
 %% obvious_station(dronningens_gate).    %%
 
 
@@ -2389,7 +2385,7 @@ pmess(quit):-(bcpbc(bye)).
 
 pmess(howtuchelp):- home_town(Trondheim), 
          doubt('I can answer questions about bus departures in',
-              'Jeg kan svare på spørsmål om bussavganger i'),
+              'Jeg kan svare pÃ¥ spÃ¸rsmÃ¥l om bussavganger i'),
 		    bwr(Trondheim),period0. 
 
 
@@ -2540,21 +2536,21 @@ pmess(nearest_station(_STARTSTOP,Street,Station)):-
 %% General Nightbus message ( following weekend is normal )
 pmess(generalnightbusmessage):- 
     pen(['Nightbus goes from O.Tryggvasons gt. at  0100,0200,0300  am night to Saturday and Sunday.',
-         'Nattbuss går  fra O.Tryggvasons gt. kl 0100,0200 og 0300 natt til lørdag og søndag.']).
+         'Nattbuss gÃ¥r  fra O.Tryggvasons gt. kl 0100,0200 og 0300 natt til lÃ¸rdag og sÃ¸ndag.']).
 
 %% 400 deps cancelled
 
-%% Påske-nattbuss
+%% PÃ¥ske-nattbuss
 
-pmess(generalnightbuseaster):- %% Sjekk hvert år ! %% TA-110426
+pmess(generalnightbuseaster):- %% Sjekk hvert Ã¥r ! %% TA-110426
     pen(['At easter, the nightbus only goes night to  Easter Sunday from O.Tryggvasons gt. at 0100,0200 and 0300  am.',
-         'I påsken går nattbuss  bare natt til 1. påskedag fra O.Tryggvasons gt. kl 0100,0200 og 0300. ']).
+         'I pÃ¥sken gÃ¥r nattbuss  bare natt til 1. pÃ¥skedag fra O.Tryggvasons gt. kl 0100,0200 og 0300. ']).
 
 
 /* %% TA-110426
 pmess(generalnightbuseaster):- 
     pen(['Nightbus goes night to  Easter Sunday from O.Tryggvasons gt. at  0100,0200 and 0300  am.',
-         'Nattbuss går natt til 1. påskedag fra O.Tryggvasons gt. kl 0100,0200 og 0300. ']).
+         'Nattbuss gÃ¥r natt til 1. pÃ¥skedag fra O.Tryggvasons gt. kl 0100,0200 og 0300. ']).
 */
 
 
@@ -2692,7 +2688,7 @@ nibcp(Day):- bcp(on), bcp(Day).
 
 %% Standard Nightbus Information Message
 
-standnight(easterhol):- %% Standnight  påsken 
+standnight(easterhol):- %% Standnight  pÃ¥sken 
     value(nightbusflag,true),
     pmess(generalnightbuseaster),nl. 
 
@@ -2706,9 +2702,9 @@ standnight(D):-
 
 (    value(language,norsk)->
 (
-    output('Nattbussen går ikke mellomjula,unntatt natt til tredje juledag.'),
+    output('Nattbussen gÃ¥r ikke mellomjula,unntatt natt til tredje juledag.'),
  
-    output('Ellers går nattbuss bare natt til lørdag og natt til søndag') %% <160 nattbuss[en]
+    output('Ellers gÃ¥r nattbuss bare natt til lÃ¸rdag og natt til sÃ¸ndag') %% <160 nattbuss[en]
 );(
 
     output('There are no nightbus during Christmas holidays except night to Dec. 27'),
@@ -2726,8 +2722,8 @@ standnight(D):-
 (    value(language,norsk)->
 
 (
-                                                        %% unntatt i påskehelgen'
-    output('Nattbussen går bare natt til lørdag og søndag.') %% <160 nattbuss[en]
+                                                        %% unntatt i pÃ¥skehelgen'
+    output('Nattbussen gÃ¥r bare natt til lÃ¸rdag og sÃ¸ndag.') %% <160 nattbuss[en]
 );(                                               % natt til %% <160
                                                               %%  except Easter holiday
     output('The Nightbus only goes night to Saturdays and Sundays.')
@@ -2752,7 +2748,7 @@ ondays(Day):-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Mapping fra konsept til ord på hvert språk
+% Mapping fra konsept til ord pÃ¥ hvert sprÃ¥k
 
 
 cwc(quote(S),[S,S]).
@@ -2770,7 +2766,7 @@ cwc(anotherplace,['another place','et sted til']).
 cwc(aplace,['a place','et sted']).
 cwc(atime,['a time','et tidspunkt']). 
 cwc(are,['are','er']).
-cwc(are_the_same_as,['are the same as on','er de samme som på']).
+cwc(are_the_same_as,['are the same as on','er de samme som pÃ¥']).
 cwc(aroute,['a route','en rute']).
 cwc(arrivesat,['','']):- value(smsflag,true),!.
 cwc(arrivesat,['arrives at ','kommer til ']).
@@ -2778,7 +2774,7 @@ cwc(arrival,['arrival', 'ankomst']).
 cwc(arrivaltime,['arrival time', 'ankomsttid']). 
 
 cwc(andsoon,[',...',',...']). %%  ( Realspeak ?)
-%% cwc(andsoon,['and so on','og så videre']). 
+%% cwc(andsoon,['and so on','og sÃ¥ videre']). 
 
 
 cwc(as,['as','som']).
@@ -2786,7 +2782,7 @@ cwc(astation,['a station','en holdeplass']).
 
 
 cwc(assumetomorrow,['I assume you want routes for tomorrow.',    %% TA-110201
-                    'Jeg antar du ønsker ruter for i morgen.']). %%
+                    'Jeg antar du Ã¸nsker ruter for i morgen.']). %%
 
 
 % cwc(assumetomorrow,['I assume you mean routes the day after.',
@@ -2799,19 +2795,19 @@ cwc(assumeyesterdepartures,['I assume you mean departures tonight.',
 
 cwc(atram,['a tram','en trikk']). 
 cwc(at,['at','ved']).
-cwc(atday,['at','på']).
-cwc(atstation,['at ','ved ']). %% 'på'  ved mer nøytralt  ( "Hovedterminalen er på Trondheim")
+cwc(atday,['at','pÃ¥']).
+cwc(atstation,['at ','ved ']). %% 'pÃ¥'  ved mer nÃ¸ytralt  ( "Hovedterminalen er pÃ¥ Trondheim")
 
 cwc(attime,['at','klokken']):- value(dialog,1),!. 
 cwc(attime,['at','kl.']).  % otherwise
 
 cwc(athing,['a thing','en ting']). %% hva koster det
 
-cwc(avehicle,['a vehicle','et kjøretøy']). 
+cwc(avehicle,['a vehicle','et kjÃ¸retÃ¸y']). 
 
-cwc(before,['before','før']).
+cwc(before,['before','fÃ¸r']).
 cwc(between,['between','mellom']).
-cwc(both,['both','både']).
+cwc(both,['both','bÃ¥de']).
 cwc(bus,['bus','buss']).
 cwc(buses,['buses','busser']).
 cwc(bus_det,['bus','bussen']).      % den siste bussen/the last bus          % Bestemt form
@@ -2835,27 +2831,27 @@ cwc(smshelp,['Prefix question with RUTE , and send to 2027.', %% TA-100924
              'Begynn meldingen med RUTE , og send til 2027.']).
 
 cwc(so_on,['...','...']).
-%% cwc(so_on,['so on','så videre']). 
+%% cwc(so_on,['so on','sÃ¥ videre']). 
 
 
 
 cwc(sorrycannot,['I''m afraid I can''t do that.', %% HAL :-)
-                 'Jeg kan dessverre ikke gjøre det.']). %%   //Actions
+                 'Jeg kan dessverre ikke gjÃ¸re det.']). %%   //Actions
 
 cwc(sorrynot,['No, I don''t. ',   %%  Non action (kjenne/like)
               'Nei, desverre']).  
 
 
 cwc(sorrydont,['No, I don''t. ',   %%  Non action (kjenne/like)
-               'Jeg  gjør dessverre ikke det.']).  
+               'Jeg  gjÃ¸r dessverre ikke det.']).  
 
-cwc(cannotanswer,['I can not answer that.','Jeg kan ikke svare på det.']). 
+cwc(cannotanswer,['I can not answer that.','Jeg kan ikke svare pÃ¥ det.']). 
 
 cwc(cannotanswermyself,['I can not answer that on my own.', %% self judgment
-                        'Jeg kan ikke svare på det selv.']). 
+                        'Jeg kan ikke svare pÃ¥ det selv.']). 
 
-cwc(cannotanswersuchquestions,['I can not answer such questions.', %% slutte å...
-                        'Jeg kan ikke svare på slike spørsmål.']). 
+cwc(cannotanswersuchquestions,['I can not answer such questions.', %% slutte Ã¥...
+                        'Jeg kan ikke svare pÃ¥ slike spÃ¸rsmÃ¥l.']). 
 
 cwc(cannotfindanyroutes,['I cannot find any connections ',  
                          'Jeg kan ikke finne noen ruteforbindelser']). 
@@ -2869,7 +2865,7 @@ cwc(change,['change','bytte']).
 cwc(changeorder,['change','bytt']). 
 
 cwc(comes,['comes','kommer']).
-cwc(coming,['coming','på vei']).
+cwc(coming,['coming','pÃ¥ vei']).
 cwc(company,[company,selskap]). 
 cwc(completesentence,['Please use a complete sentence',
                        'Vennligst bruk en fullstendig setning']).
@@ -2877,8 +2873,8 @@ cwc(congratulations,['Congratulations!','Gratulerer!']).
 
 cwc(dateof,['of','']). 
 
-cwc(day8,['New years eve','nyttårsaften']). %% Ad Hoc for X,mas routes 24.12--31.1
-cwc(day9,['New years day','nyttårsdag']).  
+cwc(day8,['New years eve','nyttÃ¥rsaften']). %% Ad Hoc for X,mas routes 24.12--31.1
+cwc(day9,['New years day','nyttÃ¥rsdag']).  
 
 cwc(delays,[delays,forsinkelser]).
 cwc(departure,['departure','avgang']).
@@ -2889,22 +2885,22 @@ cwc(donotknow,['don''t know','vet ikke']).
 
 
 cwc(idonotknowanyplacesnear,['I do not know any places near', 
-                            'Jeg kjenner ingen steder nær']).
+                            'Jeg kjenner ingen steder nÃ¦r']).
 cwc(idonotknowanystationsnear,['I do not know any stops near', 
-                              'Jeg kjenner ingen holdeplasser nær']).
+                              'Jeg kjenner ingen holdeplasser nÃ¦r']).
 
 %% cwc(drink,['drink','drikk']). 
 
 cwc(earliesttimes,[ 'The hours indicate the earliest passing times.', 
                     'Tidene angir tidligste passeringer av holdeplassene.']).
 
-cwc(easterday2,['2. Easter day','2. påskedag']).   
+cwc(easterday2,['2. Easter day','2. pÃ¥skedag']).   
  
-cwc(eastereve,['Easter eve','påskeaften']). 
-cwc(easterhol,['Easter holiday','påskehelligdag']). 
+cwc(eastereve,['Easter eve','pÃ¥skeaften']). 
+cwc(easterhol,['Easter holiday','pÃ¥skehelligdag']). 
 cwc(each,['each','hvert']).
 cwc(end_stations,['the end stations','endestasjonene']).
-cwc(entering,['entering','å gå på']).
+cwc(entering,['entering','Ã¥ gÃ¥ pÃ¥']).
 
 cwc(error_reports_sent,        %% TA-101206
        ['Error reports will be forwarded to the administrator',
@@ -2920,28 +2916,28 @@ cwc(for,['for','for']).
 cwc(friday,['Friday','fredag']).
 cwc(fridays,['Fridays','fredager']). 
 cwc(from,['from','fra']).
-cwc(first,['first','første']).
+cwc(first,['first','fÃ¸rste']).
 
 /* %% TA-110426
 cwc(generalnightbuseaster, %% also pmess !
          ['Nightbus goes night to  Easter Sunday from O.Tryggvasons gt. at  0100,0200 and 300 am.',
-          'Nattbuss går natt til 1. påskedag fra O.Tryggvasons gt. kl 0100,0200 og 0300.']).
+          'Nattbuss gÃ¥r natt til 1. pÃ¥skedag fra O.Tryggvasons gt. kl 0100,0200 og 0300.']).
 */
 
 
 cwc(godknows,['God knows.','Gud vet.']). %% :-)
 
-cwc(goes,['goes','går']).
-cwc(goesfrom, ['goes from','går fra']). 
-cwc(goesto,  ['goes to','går til']). 
-cwc(going,['going','å dra']).
-cwc(happy_new_year,['Happy New Year','Godt Nyttår']).
+cwc(goes,['goes','gÃ¥r']).
+cwc(goesfrom, ['goes from','gÃ¥r fra']). 
+cwc(goesto,  ['goes to','gÃ¥r til']). 
+cwc(going,['going','Ã¥ dra']).
+cwc(happy_new_year,['Happy New Year','Godt NyttÃ¥r']).
 cwc(endure,['Endure!','Hold ut!']). 
 cwc(holiday,['route holiday','rutehelligdag']). 
 cwc(have,['have','har']).
 cwc(has,['has','har']). 
 cwc(hello,['hello','hallo']).
-cwc(hereafter,['after now','etter nå']). %% heretter can mean "after the above" 
+cwc(hereafter,['after now','etter nÃ¥']). %% heretter can mean "after the above" 
 cwc(hi,['Hi','Hei']).  
 
 cwc(i,['I','jeg']).
@@ -2953,18 +2949,18 @@ cwc(icannot,['I am sorry I cannot do that','Det kan jeg dessverre ikke']).
 
 
 cwc(icannotanswer,['I am not able to answer that.',
-                  'Jeg kan ikke svare på det.']).
+                  'Jeg kan ikke svare pÃ¥ det.']).
 
 cwc(icannotfind,['I am sorry I cannot answer that.', 
-                 'Det kan jeg dessverre ikke svare på.']). 
+                 'Det kan jeg dessverre ikke svare pÃ¥.']). 
 
 cwc(idonotknow,['I don''t know.','Jeg vet ikke.']). 
 
 %% cwc(idonotknow,['I am not able to answer that.', 
-%%                'Jeg kan ikke svare på det.']).
+%%                'Jeg kan ikke svare pÃ¥ det.']).
 
 cwc(idonotunderstand,['I don''t understand that', %%  (  Avoid I want to die ==> OK)
-                      'Jeg forstår ikke det']).
+                      'Jeg forstÃ¥r ikke det']).
 
 cwc(idkwhether,['I don''t know whether', 
                 'Jeg vet ikke om']).
@@ -2985,31 +2981,31 @@ cwc(inconsistenttimes, ['This  time interval is not possible.',
                         'Dette tidsintervallet er ikke mulig.']).
 
 cwc(inconsistentduration, ['This duration  is too large.', 
-                           'Jeg kan ikke svare for så store tidsintervaller.']).
+                           'Jeg kan ikke svare for sÃ¥ store tidsintervaller.']).
 
 cwc(may17,['May 17.','17. mai']). %% TA-110518
 
 cwc(mustknowfood,['You must specify food in such questions', 
-                  'Du må spesifisere mat i slike spørsmål']).
+                  'Du mÃ¥ spesifisere mat i slike spÃ¸rsmÃ¥l']).
 
-cwc(new_years_eve,['New years eve','nyttårsaften']).
-cwc(new_years_day,['New years day','nyttårsdag']).  
+cwc(new_years_eve,['New years eve','nyttÃ¥rsaften']).
+cwc(new_years_day,['New years day','nyttÃ¥rsdag']).  
 
 cwc(nofoodonbus,
      ['It is not allowed to  eat sausages, chips,  icecream  etc on the bus.',  %% :-)
-      'Det er ikke tillatt å spise pølser, chips, is  o.l. ombord i bussen.']).
+      'Det er ikke tillatt Ã¥ spise pÃ¸lser, chips, is  o.l. ombord i bussen.']).
 
 %  cwc(nofoodonbus, %% plakat i bussen
 %    ['Please don''t eat sausages, chips,  icecream etc on the bus.', 
-%     'Vennligst ikke spis pølser, is, chips o.l. ombord i bussen.']).
+%     'Vennligst ikke spis pÃ¸lser, is, chips o.l. ombord i bussen.']).
 
 cwc(nodrinkonbus,
     ['It is not allowed to drink alcoholic beverages in the bus.', 
-     'Det er ikke tillatt å nyte alkoholholdige drikker på bussen.']).
+     'Det er ikke tillatt Ã¥ nyte alkoholholdige drikker pÃ¥ bussen.']).
 
 
 cwc(noneedtoanswer,['I don''t need to answer that.',
-                    'Jeg trenger ikke å svare på det.']).
+                    'Jeg trenger ikke Ã¥ svare pÃ¥ det.']).
 
 cwc(nosenseofhumour,   %% TA-110125
      ['I have no sense of humour.',
@@ -3017,7 +3013,7 @@ cwc(nosenseofhumour,   %% TA-110125
 
 cwc(nosmokeonbus,        
     ['It is not allowed to smoke in the bus.', 
-     'Røyking er forbudt i bussene.']).
+     'RÃ¸yking er forbudt i bussene.']).
 
 cwc(nonightbus,['I have no routes for the nightbus', 
                 'Jeg har for tiden ingen ruter for nattbussen']).
@@ -3050,7 +3046,7 @@ cwc(indirectionfrom,['in direction from',
 cwc(inthisperiod,['in this route period','i denne ruteperioden']).
                                                 %% dont mix with time period
 cwc(invitemore,['If you want more information, you may ask now, or end the conversation.',
-                'Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.']).
+                'Ã˜nsker du flere opplysninger kan du spÃ¸rre nÃ¥, eller avslutte samtalen.']).
                                                                     
 
 cwc(irregularity,['changes in schedules',  
@@ -3065,13 +3061,13 @@ cwc(it,['it','det']).
 
 cwc(knownostations, 
      ['I have no information about its neighbour stations',
-     'Jeg vet ikke om noen stasjoner i nærheten']). 
+     'Jeg vet ikke om noen stasjoner i nÃ¦rheten']). 
 cwc(kroner,['NOK','kr']).
 
 cwc(last,['last','siste']).
 cwc(later,['later','senere']).
 cwc(leaves,['leaves',forlater]).
-cwc(leaving,['leaving','å gå av']).
+cwc(leaving,['leaving','Ã¥ gÃ¥ av']).
 cwc(length,[lengths,lengder]). %% nb plu  
 cwc(luggage,['luggage or lost property', 
              'bagasje eller hittegods']). 
@@ -3092,23 +3088,23 @@ cwc(mondays,['Mondays','mandager']).
 
 cwc(more,[more,flere]).  
 
-cwc(must,['must','må']).
+cwc(must,['must','mÃ¥']).
 
 cwc(nopassages,['There are none passing then.','Det er ingen som passererer da.']).
 cwc(notthestation, ['This route does not pass the station.', 
                     'Denne ruten passerer ikke stasjonen.']).
 
-cwc(near,['near','nær']).
+cwc(near,['near','nÃ¦r']).
 
 cwc(never,['never','aldri']).
 cwc(neverpasses,['never passes ','passerer aldri ']). 
 cwc(next,['next','neste']).
 
 cwc(nocorresponse,['I cannot answer the request for correspondance',
-                   'Jeg kan ikke besvare forespørsel om korrespondering']). 
+                   'Jeg kan ikke besvare forespÃ¸rsel om korrespondering']). 
 
 cwc(nodatesX,[ 'Route data for this date is not available yet', 
-               'Rutedata for denne dato er ikke tilgjengelig ennå']). 
+               'Rutedata for denne dato er ikke tilgjengelig ennÃ¥']). 
 
 cwc(nodirectroutes,['There are no direct routes ', 'Det er ingen direkteruter']).
 
@@ -3123,31 +3119,31 @@ cwc(no,['No.','Nei.']).
 /*
 cwc(misfjordeaster,
      ['Nightbus goes night to  Easter Sunday from O.Tryggvasons gt. at  0100,0200 and 0300  am.',
-      'Nattbuss går natt til 1. påskedag fra O.Tryggvasons gt. kl 0100,0200 og 0300. ']). 
+      'Nattbuss gÃ¥r natt til 1. pÃ¥skedag fra O.Tryggvasons gt. kl 0100,0200 og 0300. ']). 
 
 
 cwc(misfjordxmas, ['Nightbus goes from O.Tryggvasons gt.: 0100, 0200 and 0300 am.',
-  'Nattbussen har følgende avganger 27.12 fra O.Tryggvasons gt.: 0100, 0200 og  0300. ']).
+  'Nattbussen har fÃ¸lgende avganger 27.12 fra O.Tryggvasons gt.: 0100, 0200 og  0300. ']).
 
 
 cwc(misfjordmessage, ['Nightbus goes from O.Tryggvasons gt.: 0100, 0200 and   0300 am.',
-  'Nattbussen har følgende avganger 27.12 fra O.Tryggvasons gt.: 0100, 0200 og 300.']).
+  'Nattbussen har fÃ¸lgende avganger 27.12 fra O.Tryggvasons gt.: 0100, 0200 og 300.']).
 
 */
 
 
 
 cwc(nonightbusdepartures,['No nightbus on this date in holidays',
-                'Det er ingen nattbusser på denne dato i helgen.']).
-                   %%       'Det er ingen nattbusser på denne dato i helgen. (Bare natt til 27.12)']).
+                'Det er ingen nattbusser pÃ¥ denne dato i helgen.']).
+                   %%       'Det er ingen nattbusser pÃ¥ denne dato i helgen. (Bare natt til 27.12)']).
                         
 
 cwc(nightbusdepartures,['The nightbus has the following departures from the center on the night to ',
-                        'Nattbussen har følgende avganger fra O.Tryggvasons gt. natt til ']).
+                        'Nattbussen har fÃ¸lgende avganger fra O.Tryggvasons gt. natt til ']).
 
 
 cwc(nightbusdeparturesshort,['The nightbus has the following departures from O.Tryggvasons gt.',
-                        'Nattbussen har følgende avganger fra O.Tryggvasons gt.']).
+                        'Nattbussen har fÃ¸lgende avganger fra O.Tryggvasons gt.']).
 
                                                          
 cwc(nobodyisperfect,['Nobody is perfect','Ingen er feilfri']).
@@ -3158,14 +3154,14 @@ cwc(noinformation,
 %% cwc(nolonger,['There are no more','Det er ingen flere']). 
 
 cwc(nolonger,['I cannot find any more connections',  
-              'Jeg kan ikke finne flere ruteforbindelser']). %% .. på tirsdag.
+              'Jeg kan ikke finne flere ruteforbindelser']). %% .. pÃ¥ tirsdag.
 
 cwc(nolongerperiod,['I cannot find any more connections.',
                     'Jeg kan ikke finne flere ruteforbindelser.']). %% .
 
 
 cwc(nomark,['No,','Nei,']).
-cwc(nomoreon,['There are no more on ', 'Det er ingen flere på ']). 
+cwc(nomoreon,['There are no more on ', 'Det er ingen flere pÃ¥ ']). 
 cwc(none,['none','ingen']).
 
 cwc(nonightbusesthen, 
@@ -3185,7 +3181,7 @@ cwc(not,[not,ikke]).
 %% cwc(notpossible,['not possible','umulig']). % ? 
 
 cwc(thatisagoodquestion,['That was a good question.', %%  :-) 
-                         'Det var et godt spørsmål.']). %% det er et g.s.  :-)
+                         'Det var et godt spÃ¸rsmÃ¥l.']). %% det er et g.s.  :-)
 
 
 cwc(thatisnotgood,['That is not good', 
@@ -3194,10 +3190,10 @@ cwc(notpossible,['That is not possible',
                    'Det er ikke mulig']).
 
 cwc(notpossibleon,['That is not possible on', 
-                   'Det er ikke mulig på']).
+                   'Det er ikke mulig pÃ¥']).
 
 cwc(notany,['no','ingen']). 
-cwc(now,['now','nå']).
+cwc(now,['now','nÃ¥']).
 cwc(nowhere,['nowhere','ingen steder']).
 cwc(nth(N),[Ord,Ord]) :- ordinal2(Ord,_,N).
 
@@ -3206,18 +3202,18 @@ cwc(number,['number','nummer']).
 
 cwc(of,['of','i']).
 cwc(ofa,['of a','til en']). 
-cwc(ofabus,['of a vehicle','til et kjøretøy']). %%  (tram ?)
-cwc(ofmonth,['a month','i måneden']). 
-cwc(ofatrip,['of a trip','på en tur']).
+cwc(ofabus,['of a vehicle','til et kjÃ¸retÃ¸y']). %%  (tram ?)
+cwc(ofmonth,['a month','i mÃ¥neden']). 
+cwc(ofatrip,['of a trip','pÃ¥ en tur']).
 cwc(ok,['OK','OK']).  
-cwc(on,['on','på']).  
+cwc(on,['on','pÃ¥']).  
 cwc(ondate,[' on ',' den ']). 
 cwc(once,[once,'en gang']).
 cwc(only,['only','bare']).
 
 cwc(onlyonedestination,
     ['I can only answer for one destination at a time.', 
-     'Jeg kan bare svare for ett reisemål av gangen.']). 
+     'Jeg kan bare svare for ett reisemÃ¥l av gangen.']). 
 
 cwc(onlyonebus,['I can only answer for one  bus at a time.', 
                 'Jeg kan bare svare for en buss av gangen.']).  %% ad?
@@ -3230,15 +3226,15 @@ cwc(onlyoneplace,['I can only answer for one place at a time.',
 
 
 cwc(onlyonething,['I can only answer one thing at a time.',  
-                  'Jeg kan bare svare på en ting av gangen.']). %% ad?
+                  'Jeg kan bare svare pÃ¥ en ting av gangen.']). %% ad?
 
 cwc(onlyonesentence,['I can only answer one sentence at a time.', 
-                     'Jeg kan bare svare på en setning av gangen.']). %% ad?
+                     'Jeg kan bare svare pÃ¥ en setning av gangen.']). %% ad?
 
 cwc(onthecontrary,['No, on the contrary.', 'Nei, tvertimot.']). %%  :-)
 
 
-cwc(onthisday,['on this day','på denne dagen']). 
+cwc(onthisday,['on this day','pÃ¥ denne dagen']). 
 
 cwc(picture,[picture,bilde]).
 
@@ -3247,7 +3243,7 @@ cwc(put,[placement,plassering]). %% T-100308 the verb as action
 cwc(the_routes_on,['The routes on ','Rutene ']).  
 
 cwc(theneareststationto,['The station nearest to', 
-                         'Holdeplassen nærmest']). 
+                         'Holdeplassen nÃ¦rmest']). 
 
 cwc(todayis,['Todays day: ','Dagen idag: ']). 
 
@@ -3255,7 +3251,7 @@ cwc(toolate,['Time of notification has already passed.',
              'Tidspunkt for varsling er allerede passert.']).
 
 cwc(toomanyplaces,['I can not handle so many places at a time !', 
-                   'Jeg kan ikke svare for så mange steder av gangen !']). 
+                   'Jeg kan ikke svare for sÃ¥ mange steder av gangen !']). 
 
 cwc(or,['or','eller']).
 
@@ -3274,45 +3270,45 @@ cwc(precize,['Please use a more specific name.',
              'Vennligst bruk et mer presist navn.']). 
 
 cwc(probably,['probably','sannsynligvis']).
-cwc(questions,['questions','spørsmål']).
+cwc(questions,['questions','spÃ¸rsmÃ¥l']).
 cwc(routes,['routes','ruter']).
 
 cwc(ruteopplysningen,['Route Information','Ruteopplysningen']). 
-cwc(saturday,['Saturday','lørdag']).
-cwc(saturdays,['Saturdays','lørdager']).
+cwc(saturday,['Saturday','lÃ¸rdag']).
+cwc(saturdays,['Saturdays','lÃ¸rdager']).
 
 cwc(say,['say','si']).
-cwc(size,[size,størrelse]).
+cwc(size,[size,stÃ¸rrelse]).
 cwc(sorryno, ['Unfortunately, I can not show you any',
               'Jeg kan dessverre ikke vise noe']).
 
-cwc(spacename,[spacename, 'navn på område' ]). %% utgang/toalett/ etc 
+cwc(spacename,[spacename, 'navn pÃ¥ omrÃ¥de' ]). %% utgang/toalett/ etc 
 
 cwc(special_ticket,['special tickets','spesielle billetter']).
 
 cwc(specificdays,['routes on this date', 
-                  'ruter på denne datoen']). 
+                  'ruter pÃ¥ denne datoen']). 
 cwc(specify,['specify','oppgi']).
 
 
 %% except Easter holiday
 cwc(standnight,['The Nightbus goes only  night to Saturdays and  Sundays.',
-                'Nattbussen går  bare natt til lørdag og søndag. ']).
-                                              %% unntatt i påskehelgen
+                'Nattbussen gÃ¥r  bare natt til lÃ¸rdag og sÃ¸ndag. ']).
+                                              %% unntatt i pÃ¥skehelgen
 
 cwc(station,['station','holdeplass']). 
 cwc(stations,['stations','holdeplasser']).
 
 cwc(strikeison,['The bus drivers are now on strike', 
-                'Bussjåførene er for tiden i streik']). %%
+                'BussjÃ¥fÃ¸rene er for tiden i streik']). %%
 
-cwc(submarines,['submarines','ubåter']).
+cwc(submarines,['submarines','ubÃ¥ter']).
 cwc(such,['such','slike']).
 
 
-cwc(sunday,['Sunday','søndag']).
-cwc(sundays,['Sundays','søndager']). 
-cwc(swim,['swim','svømme']).
+cwc(sunday,['Sunday','sÃ¸ndag']).
+cwc(sundays,['Sundays','sÃ¸ndager']). 
+cwc(swim,['swim','svÃ¸mme']).
 
 cwc(takes,['takes','tar']).
 cwc(tao,[unkown,ukjent]). 
@@ -3326,7 +3322,7 @@ cwc(thatisimpossible,['That is not possible.','Det er ikke mulig.']).
 cwc(thatisunclear,['That is unclear.','Det er uklart.']). 
 cwc(thatmeans,['that means','det betyr at']).
 cwc(the,['the','den']).
-cwc(thereafter,[thereafter,'like etterpå']). 
+cwc(thereafter,[thereafter,'like etterpÃ¥']). 
 cwc(therearenodeparturesfor,['There are no departures for','Det er ingen avganger for']). 
 cwc(thebus,['the bus','bussen']). 
 cwc(thebuses,['the buses','bussene']).
@@ -3334,7 +3330,7 @@ cwc(thenightbus,['the nightbus','nattbussen']).
 cwc(thenightbuses,['the nightbuses','nattbussene']). 
 cwc(thecolour,['the colour','fargen']).
 cwc(thedate,['the date','datoen']).
-cwc(thefirst,['the first','første']).
+cwc(thefirst,['the first','fÃ¸rste']).
 cwc(thelast,['the last','siste']).
 cwc(thenext,['the next','neste']).
 cwc(theprice,['the price','prisen']).
@@ -3344,7 +3340,7 @@ cwc(thespeed,['the speed','hastigheten']).
 cwc(there,['there','det']).
 cwc(thestation,['the station','holdeplassen']).  
 cwc(thestations,['the stations ','holdeplassene ']). 
-cwc(theweather,['the weather','været']).
+cwc(theweather,['the weather','vÃ¦ret']).
 cwc(theplace,['The place','Stedet']). 
 cwc(thetime,['the time','klokka']).
 cwc(this,['this','dette']).
@@ -3352,7 +3348,7 @@ cwc(thisdate,['this date','denne dato']).
 cwc(thursday,['Thursday','torsdag']).
 cwc(thursdays,['Thursdays','torsdager']).
 cwc(timeout,['I could not find any connections in time',
-             'Jeg klarte ikke å finne noen forbindelser i tide']).
+             'Jeg klarte ikke Ã¥ finne noen forbindelser i tide']).
              
 cwc(to,['to','til']).
 cwc(tram,['tram','trikk']). 
@@ -3368,7 +3364,7 @@ cwc(yes,['Yes.','Ja.']).
 cwc(yesmark,['Yes,','Ja,']).
 cwc(you,['you','du']).
 cwc(you_acc,['you','deg']).
-cwc(you_are_welcome,['You are welcome.','Vær så god.']). 
+cwc(you_are_welcome,['You are welcome.','VÃ¦r sÃ¥ god.']). 
 cwc(youarenotified,['Notification at','Varsel kl']). 
 cwc(youknow,['you know','vet du']).
 
@@ -3376,7 +3372,7 @@ cwc(waddyathink,['I suppose so','Jeg antar det']).
 cwc(walking_distance,['walking distance','gangavstand']). 
 cwc(wednesday,['Wednesday','onsdag']).
 cwc(wednesdays,['Wednesdays','onsdager']).
-cwc(when,['when','når']).
+cwc(when,['when','nÃ¥r']).
 cwc(why,['Why  ?','Hvorfor ?']).   
 cwc(whynot,['Why not ?','Hvorfor ikke ?']). 
 cwc(with,['with','med']). 
@@ -3387,12 +3383,12 @@ cwc(would,['would','ville']).
 
 %% ? for Talsmann Prosody
 
-% EH-031015 RealSpeak tilpasninger er gjort nedenfor: "ønsker du" --> "vil du ha"
+% EH-031015 RealSpeak tilpasninger er gjort nedenfor: "Ã¸nsker du" --> "vil du ha"
 
-% cwc(askfor(when),['When do you wish to travel ?', 'Når ønsker du å dra ?']).  %%  Talsmann ...
-cwc(askfor(when),['When do you wish to travel ?', 'Når vil du dra?']).		%% EH-031014 RealSpeak...
-cwc(askfor((when)::departure),['What time of departure do you wish ?', 'Når vil du ha avgang?']).		%% EH-031014 RealSpeak...
-cwc(askfor((when)::arrival),['When do you wish to arrive ?', 'Når vil du ankomme ?']).
+% cwc(askfor(when),['When do you wish to travel ?', 'NÃ¥r Ã¸nsker du Ã¥ dra ?']).  %%  Talsmann ...
+cwc(askfor(when),['When do you wish to travel ?', 'NÃ¥r vil du dra?']).		%% EH-031014 RealSpeak...
+cwc(askfor((when)::departure),['What time of departure do you wish ?', 'NÃ¥r vil du ha avgang?']).		%% EH-031014 RealSpeak...
+cwc(askfor((when)::arrival),['When do you wish to arrive ?', 'NÃ¥r vil du ankomme ?']).
 cwc(askfor((when)::day),['Which day do you want to travel ?', 'Hvilken dag vil du dra ?']).
 cwc(askfor(where::direction), ['In what direction do you wish to travel ?', 
                                'I hvilken retning vil du dra ?']).
@@ -3410,30 +3406,30 @@ cwc(askfor(where::departure),['Where do you want to travel from ?',
 
 /* %% EH-030115
 
-cwc(askfor(when),['When do you wish to travel ?', 'Når ønsker du å dra ?']).
-cwc(askfor((when)::departure),['What time of departure do you wish ?', 'Når ønsker du avgangstid ?']).
-cwc(askfor((when)::arrival),['When do you wish to arrive ?', 'Når ønsker du å ankomme ?']).
-cwc(askfor((when)::day),['Which day do you want to travel ?', 'Hvilken dag ønsker du å dra ?']).
+cwc(askfor(when),['When do you wish to travel ?', 'NÃ¥r Ã¸nsker du Ã¥ dra ?']).
+cwc(askfor((when)::departure),['What time of departure do you wish ?', 'NÃ¥r Ã¸nsker du avgangstid ?']).
+cwc(askfor((when)::arrival),['When do you wish to arrive ?', 'NÃ¥r Ã¸nsker du Ã¥ ankomme ?']).
+cwc(askfor((when)::day),['Which day do you want to travel ?', 'Hvilken dag Ã¸nsker du Ã¥ dra ?']).
 cwc(askfor(where::direction), ['In what direction do you wish to travel ?', 
-                               'I hvilken retning ønsker du å dra ?']).
+                               'I hvilken retning Ã¸nsker du Ã¥ dra ?']).
 
 cwc(askfor(bus),['What bus do you want to take ?',
-             'Hvilken buss ønsker du å bruke ?']).
+             'Hvilken buss Ã¸nsker du Ã¥ bruke ?']).
 
 
 cwc(askfor(where),['Where do you want to travel ?',
-             'Hvor ønsker du å reise ?']).
+             'Hvor Ã¸nsker du Ã¥ reise ?']).
 cwc(askfor(where::arrival),['Where do you want to go to ?',
-             'Hvor ønsker du å reise til ?']).
+             'Hvor Ã¸nsker du Ã¥ reise til ?']).
 cwc(askfor(where::departure),['Where do you want to travel from ?',
-             'Hvor ønsker du å reise fra ?']).
+             'Hvor Ã¸nsker du Ã¥ reise fra ?']).
 */
 
 
 
 %% START TELEBUSTER
 
-cwc(norecordsfound, ['Could not find any matching records','Kan ikke finne noen som svarer til søket']).
+cwc(norecordsfound, ['Could not find any matching records','Kan ikke finne noen som svarer til sÃ¸ket']).
 
 
 
@@ -3445,9 +3441,9 @@ cwc(tellnumber(No), L) :-
 cwc(numrecords(10000), ['cannot find that number', 'kan ikke finne det antallet']):-!.
 cwc(numrecords(Count),[Eng, Nor]) :-
 	append_atomlist(['there are ', Count, ' records that matches the query'],Eng),
-	append_atomlist(['jeg finner ', Count, ' poster som svarer til søket'],Nor).
+	append_atomlist(['jeg finner ', Count, ' poster som svarer til sÃ¸ket'],Nor).
 
-cwc(tomanytolist, ['Cannot list so many records', 'Kan ikke liste så mange poster']).
+cwc(tomanytolist, ['Cannot list so many records', 'Kan ikke liste sÃ¥ mange poster']).
 
 cwc(telebuster,['Telebuster', 'Telebuster']).
 
@@ -3488,7 +3484,7 @@ cwc(field(unknown),['unknown field','ukjent felt']).
 
 
 
-cwc(unknownfield,['I don\'t have the answer to that question','Jeg har ikke svaret på det spørsmålet']).
+cwc(unknownfield,['I don\'t have the answer to that question','Jeg har ikke svaret pÃ¥ det spÃ¸rsmÃ¥let']).
 
 % alternative fieldnames
 cwc(field(pname),L) :- cwc(field(cn),L).
@@ -3506,7 +3502,7 @@ cwc(field(telephone),L) :- cwc(field(telephonenumber),L).
 cwc(the(attributes::Slot),L) :- cwc(the(Slot),L),!.
 
 
-cwc(the(spacename),['the space name','navnet på stedet']). %% toalettet
+cwc(the(spacename),['the space name','navnet pÃ¥ stedet']). %% toalettet
 
 cwc(the(cn),['the name','navnet']).
 cwc(the(sn),['the family name','etternavnet']).
@@ -3541,13 +3537,13 @@ cwc(searchingfor(Field),[Eng, Nor]) :-
 cwc(cantfind, ['can\'t find anyone with','finner ingen med']).
 cwc(butitis, ['but there is','men det er']).
 cwc(matchingrecords, ['records that matches','poster som svarer til']).
-cwc(ison, ['is on', 'er på']).
+cwc(ison, ['is on', 'er pÃ¥']).
 
 %% END TELEBUSTER
 
 
 cwc(dialogerror,['I don\'t understand',
-             'Jeg skjønner ikke']).
+             'Jeg skjÃ¸nner ikke']).
 
 cwc(which,['Which', 'Hvilken']).
 
@@ -3555,22 +3551,22 @@ cwc(tbs_welcomegreeting, ['Welcome to the Tabor-project bus route information.',
                           'Velkommen til Tabor-prosjektets ruteopplysning.']).
 cwc(tbs_welcomequestion,['Do you know how the system works?','Vet du hvordan systemet virker?']).
 cwc(tbs_userhelp, ['Please try to express yourself in simple sentences',
-                   'Forsøk å uttrykk deg så enkelt som mulig']).
+                   'ForsÃ¸k Ã¥ uttrykk deg sÃ¥ enkelt som mulig']).
 cwc(tbs_whentotravel, ['Please state a time.', 'Vennligst angi tidspunkt.']).
-cwc(tbs_deporarr, ['do you wish depature or arrival at', 'ønsker du avgang eller ankomst kl']).
+cwc(tbs_deporarr, ['do you wish depature or arrival at', 'Ã¸nsker du avgang eller ankomst kl']).
        	
-cwc(tbs_askref_from, ['do you wish to travel from', 'ønsker du å dra fra']).
-cwc(tbs_askref_to, ['do you wish to arrive at', 'ønsker du å ankomme']).
-cwc(tbs_askref_day, ['do you wish to travel on', 'ønsker du å dra på']).
-cwc(tbs_asknewtime, ['do you wish to state a new time', 'ønsker du å oppgi et nytt tidspunkt?']).
+cwc(tbs_askref_from, ['do you wish to travel from', 'Ã¸nsker du Ã¥ dra fra']).
+cwc(tbs_askref_to, ['do you wish to arrive at', 'Ã¸nsker du Ã¥ ankomme']).
+cwc(tbs_askref_day, ['do you wish to travel on', 'Ã¸nsker du Ã¥ dra pÃ¥']).
+cwc(tbs_asknewtime, ['do you wish to state a new time', 'Ã¸nsker du Ã¥ oppgi et nytt tidspunkt?']).
 cwc(tbs_asknewbusconnection, ['Do you wish more information about a new bus connections?', 
-                               'ønsker du opplysninger om en ny bussforbindelse?']).
+                               'Ã¸nsker du opplysninger om en ny bussforbindelse?']).
 cwc(tbs_endmsg, ['can I help you with something else?', 'kan jeg hjelpe deg med noe annet?']).
-cwc(tbs_whichday, ['Which day do you wish to travel?', 'Hvilken dag ønsker du å reise?']).
-cwc(tbs_wishtime, ['Do you want timeinformation?', 'Ønsker du opplysninger om tiden?']).
-cwc(tbs_askref_day, ['Do you wish to travel on', 'Ønsker du å dra på']).
-cwc(tbs_fromwhere, ['where do you wish to travel from?', 'hvor ønsker du å dra fra?']).
-cwc(tbs_towhere, ['where do you wish to travel to?', 'hvor ønsker du å dra til?']).
+cwc(tbs_whichday, ['Which day do you wish to travel?', 'Hvilken dag Ã¸nsker du Ã¥ reise?']).
+cwc(tbs_wishtime, ['Do you want timeinformation?', 'Ã˜nsker du opplysninger om tiden?']).
+cwc(tbs_askref_day, ['Do you wish to travel on', 'Ã˜nsker du Ã¥ dra pÃ¥']).
+cwc(tbs_fromwhere, ['where do you wish to travel from?', 'hvor Ã¸nsker du Ã¥ dra fra?']).
+cwc(tbs_towhere, ['where do you wish to travel to?', 'hvor Ã¸nsker du Ã¥ dra til?']).
 
 
 %% Last after explicit defs 
@@ -3815,7 +3811,7 @@ i_or_a_bus(B52,Bus,B52):-
     !.
 
 i_or_a_bus(Bus,_bus,Bus):- 
-    dmeq(vehicle,_bus),   %%  _bus ikke station  hpl på huseby 
+    dmeq(vehicle,_bus),   %%  _bus ikke station  hpl pÃ¥ huseby 
     user:unbound(Bus),
     !.
 
@@ -3871,7 +3867,7 @@ paraphrase(L):-
 
 paraphrase3(tele,Prog,_Frame) :- %% Search criteria, diff from Frame
     Prog= teleprocess(_,_,FL,_),
-    doubt('Search for record where','Søker etter post hvor'),  
+    doubt('Search for record where','SÃ¸ker etter post hvor'),  
     teleparaph1(FL),
     nl,nl.
 
@@ -3970,7 +3966,7 @@ paraph_list(data,L):-
     L=[]->true
 ;
     nl,
-    doubt('Search for ','Søker etter '), 
+    doubt('Search for ','SÃ¸ker etter '), 
     paraph_list1(L),
     out('.').
 
@@ -4054,14 +4050,14 @@ paraph1(frame_setvalue((when)::departure::after,T)):-
     morning_break(T0430), 
     T==T0430, % most probably a soft constraint
     !,
-    doubt(' with the first bus',' med første buss').
+    doubt(' with the first bus',' med fÃ¸rste buss').
 
 
 paraph1(frame_setvalue((when)::arrival::after,T)):-  
     morning_break(T0430),
    T==T0430, % most probably a soft constraint
    !,
-   doubt(' with the first bus',' med første buss'). 
+   doubt(' with the first bus',' med fÃ¸rste buss'). 
 
 
 
@@ -4081,7 +4077,7 @@ paraph1(frame_setvalue((when)::departure::before,T)):-
 
 paraph1(frame_setvalue((when)::departure::before,T)):- 
    !,
-   doubt(' before','  før klokken '),bwt(T).
+   doubt(' before','  fÃ¸r klokken '),bwt(T).
 
 % ARR  AFTER
 
@@ -4099,18 +4095,18 @@ paraph1(frame_setvalue((when)::arrival::before,T)):-
 
 paraph1(frame_setvalue((when)::arrival::before,T)):-
    !,
-   doubt(' before ',' før klokken '),bwt(T). %% Talsmann 
+   doubt(' before ',' fÃ¸r klokken '),bwt(T). %% Talsmann 
 
 
 %%%%%%%%
 
 paraph1(frame_setvalue(day,T)):- 
    !,
-   doubt(' on',' på '),bcp(T). 
+   doubt(' on',' pÃ¥ '),bcp(T). 
 
 paraph1(frame_setvalue((when)::day,T)):- % old, kept
    !,
-   doubt(' on ',' på '),bcp(T). 
+   doubt(' on ',' pÃ¥ '),bcp(T). 
 
 
 
@@ -4148,7 +4144,7 @@ teleparaph(F) :-
   %% seq pres
 	set_ops(A=B, (frame_getvalue_rec(F, attributes::A, B, _),\+B=dontknow,\+B=doknow), L),
 	\+ L = [],!,
-	doubt('Search for','Søker etter'),
+	doubt('Search for','SÃ¸ker etter'),
 	(frame_getvalue_rec(F, return, R, _) -> writefields(R); doubt('record','post')), 
 	doubt(' where',' hvor'),
 	teleparaph1(L),
@@ -4159,7 +4155,7 @@ teleparaph(F) :-
   %% seq pres
 	set_ops(A=B, (frame_getvalue_rec(F, attributes::A, B, _),\+B=dontknow,\+B=doknow), L),
 	L = [],!,
-		doubt('Search for','Søker etter'), 
+		doubt('Search for','SÃ¸ker etter'), 
 	(frame_getvalue_rec(F, return, R, _) -> writefields(R);doubt('record','post')), 
 	nl,nl.
 
@@ -4178,7 +4174,7 @@ teleparaph1([Field=Value|R]) :-
 %% dialog/parseres ???
 
 
-writefields(F):- var(F),!,write('¤ variable ¤').
+writefields(F):- var(F),!,write('Â¤ variable Â¤').
  
 
 writefields([F]):-   % telf
@@ -4309,7 +4305,7 @@ bwrsinglelist((Elem,List)) :-
 bwrsingleorlist([Elem]) :-
         bwr(Elem).
 bwrsingleorlist([Elem1,Elem2]) :-
-        bwr(Elem1), bcp(or), %% bcp(and), ØF-990908
+        bwr(Elem1), bcp(or), %% bcp(and), Ã˜F-990908
         bwr(Elem2).
 bwrsingleorlist([Elem|List]) :-
         bwr(Elem),comma,bwrsingleorlist(List).
@@ -4321,7 +4317,7 @@ bwrsingleorlist(Elem) :-
         !,
         bwr(Elem).
 bwrsingleorlist((Elem1,Elem2)) :- % Round lists...
-        atomic(Elem2),bwr(Elem1),  bcp(or), %% bcp(and), ØF-990908
+        atomic(Elem2),bwr(Elem1),  bcp(or), %% bcp(and), Ã˜F-990908
         bwr(Elem2).
 bwrsingleorlist((Elem,List)) :-
         bwr(Elem),comma,bwrsingleorlist(List).
@@ -4365,7 +4361,7 @@ xbusname0(One,Klaburuta):-
     !.%% -> busdat.pl
 xbusname0(One,One).
 
-%% exbusname(254,'Klæburuta'). %% -> busdat.pl
+%% exbusname(254,'KlÃ¦buruta'). %% -> busdat.pl
 
 
 
@@ -4394,8 +4390,8 @@ bwrbc(X)     :- bigcap(X,N),!,    out(N). %% Default
  
 
 
-% Øyvind Krøvel-Velle Standal.
-% Øyvind Krøvel velle -> Øyvind Krøvel Velle
+% Ã˜yvind KrÃ¸vel-Velle Standal.
+% Ã˜yvind KrÃ¸vel velle -> Ã˜yvind KrÃ¸vel Velle
   
 
 
@@ -4603,7 +4599,7 @@ bwr(X)     :- compound(X),!, write('***'),nl.
 % ',' for better Realspeak Prosody
 
 
-bwr(X)     :- X==so_on,!,getphrase0(X,N),write(N),space. %% Special:  så videre,  lowercase 
+bwr(X)     :- X==so_on,!,getphrase0(X,N),write(N),space. %% Special:  sÃ¥ videre,  lowercase 
 bwr(X)     :- xspecname(X,N),!,    write(N), space,realspeak_comma. %% Holdeplassnavn 
 bwr(X)     :- cname(X,N),!,        write(N), space,realspeak_comma.
 
@@ -4785,7 +4781,7 @@ bigcap(In,Out) :-
 bigcap(In,Out) :-
 	 atomic(In),            %% SAFEGUARD 
 	 name(In,[SC|R]),
-	 SC>223,SC<256,    % à-ÿ, some exceptions not covered, i guess
+	 SC>223,SC<256,    % Ã -Ã¿, some exceptions not covered, i guess
 	 !,
 	 BC is SC-32,
 	 name(Out,[BC|R]).

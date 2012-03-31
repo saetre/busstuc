@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE buslog.pl
 %% SYSTEM BUSSTUC
 %% AUTHOR  Jon S Bratseth
@@ -328,7 +329,7 @@ delay_margin(5). %% 5 minutes normally, 0 for  announced scheduled transfer
 */
 
 
-%% Compensate for late arrival 47 to city syd østre
+%% Compensate for late arrival 47 to city syd Ã¸stre
 
 compute_delay_margin(Bus1,Bus2,OffStation,_OnStation,Marg):-
     preferred_transfer(Bus1,Bus2,_Orig1,_Orig2,OffStation),
@@ -346,7 +347,7 @@ notaclock(NNNN) :-  \+ number(NNNN),!.
       
 notaclock(NNNN) :-  
      
-      %% NNNN <100,NNNN>=25; %% kl 26 %% TA-101029 %% Night BUS kvart på ett.
+      %% NNNN <100,NNNN>=25; %% kl 26 %% TA-101029 %% Night BUS kvart pÃ¥ ett.
       NNNN =< 0; % <- ?
       NNNN >= 2500;
 
@@ -517,7 +518,7 @@ stationsat(_,Station,Places1) :- %% Nardosenteret
     !,
     set_of(Place,(place_station(Place,Station) ,Place \==Station),Places),
     (    (Places == [], station(Station))  -> 
-             Places1=[] %%%  [Station] % GDMØ dont know 
+             Places1=[] %%%  [Station] % GDMÃ˜ dont know 
            ; Places1=Places). %% 
 
 
@@ -594,7 +595,7 @@ occurs_afterwards(depnode(_A1,D1,_,_,BegTime,Rid,Bus,SeqNo1,Stat1),EndDeps):-
 
 %%%%%%%%%%%%%%%     Y2 > 0, %% then never after (Bus 36 M4 -> Jakobsli -> M4) %% TA-110323
 
-     Stat1 \== Stat2, %% berg_studentby -> lerchendal_gård * //same time,reverse direction
+     Stat1 \== Stat2, %% berg_studentby -> lerchendal_gÃ¥rd * //same time,reverse direction
 
      SeqNo2 > SeqNo1,
   
@@ -761,7 +762,7 @@ pass_after(depnode(_,Time9,_,_,_,_,_,_,_),LimTime):-
 
 %%
 %%     Time9 \== 9999, %% non existing dep time 
-%%     1500:  buss 46 fra torvmyra til okstad ø .
+%%     1500:  buss 46 fra torvmyra til okstad Ã¸ .
 
     Time9 >= LimTime.
 
@@ -1328,7 +1329,7 @@ bus_place_station(_Bus,X,Y):-
 bus_place_station(Bus,X,Y):-                                                         
     unbound(Bus),  %%  fra solbakken
     \+ bus_depend_station(_,X,_), 
-    \+ underspecified_place(X), %%% NB til Byåsen %% TA-100422
+    \+ underspecified_place(X), %%% NB til ByÃ¥sen %% TA-100422
     !,
     place_station0(X,Y). %% studentersamfundet
 
@@ -1360,7 +1361,7 @@ place_station(user_location,user_location). %% TA-11048
 place_station(Place,Place) :-  %% TA-090401
      nonvar(Place),
      value(airbusflag,true), %% ad hoc
-     airbusstation(Place), %% Værnes
+     airbusstation(Place), %% VÃ¦rnes
      !.
 
 %% AtB
@@ -1370,7 +1371,7 @@ place_station(Place,Station2):- %% Fronted
     bound(Place),
     station(Place),            %% don't mess with stations
     \+ neighbourhood(Place),   %% e.g. nardosenteret %% TA-100204
-    !,                         %% Migosenteret, både st og neib
+    !,                         %% Migosenteret, bÃ¥de st og neib
     Station2=Place.               
                                 
                     
@@ -1444,7 +1445,7 @@ place_station(Station,Station2):- %% in case of period renaming %% TA-110804
 place_station0(Place,Place) :-  %% TA-090401
      nonvar(Place),
      value(airbusflag,true), %% ad hoc
-     airbusstation(Place), %% Værnes
+     airbusstation(Place), %% VÃ¦rnes
      !.
 
 
@@ -1898,10 +1899,10 @@ coupled2(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
 
      BothStartDeps \== [], %% There is a direct connection
 
-%%%%      value(smsflag,true), %% Når går bussen fra Fagerheim alle til iskremfabrikken? 
+%%%%      value(smsflag,true), %% NÃ¥r gÃ¥r bussen fra Fagerheim alle til iskremfabrikken? 
      \+ member(nextaftertime(_),Opts), %%  testmember disallows var
      \+ testmember(direct,Opts), 
-     \+ testmember(lastcorr,Opts), %% buss fra tonstadkrysset til klæbu.
+     \+ testmember(lastcorr,Opts), %% buss fra tonstadkrysset til klÃ¦bu.
 
 %%%%%  testmember(firstcorr,Opts), %% no option means next
 
@@ -1989,7 +1990,7 @@ coupled2(BothStartDeps,_,_,Day,_DaySeqNo,_Opts,BothStartDeps,MidDeps) :-
 % SMS
 % Ingen dag oppgitt
 % Intet tidspunkt oppgitt
-% finner første mulighet etter nå ("neste") if possible
+% finner fÃ¸rste mulighet etter nÃ¥ ("neste") if possible
 %%%   , otherwise FAIL (Dont announce bygone departures)
 
 coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
@@ -2017,7 +2018,7 @@ coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
 % Ingen busser passerer begge steder - finner beste overgang
 
 % Ingen tidspunkter oppgitt, dag = i dag: 
-% finner første mulighet etter nå ("neste") if possible, otherwise first
+% finner fÃ¸rste mulighet etter nÃ¥ ("neste") if possible, otherwise first
 
 coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
     \+ member(direct,Opts),  % Dont exclude indirect connections 
@@ -2029,7 +2030,7 @@ coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
 
  
  
-% Ingen tidspunkter oppgitt, ikke i dag, Første om morgen
+% Ingen tidspunkter oppgitt, ikke i dag, FÃ¸rste om morgen
 
 coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :- 
     \+ member(direct,Opts),  % Indirect solutions is not to be found
@@ -2217,10 +2218,10 @@ islastcorr2(Orig,Dest,DepList,Day,DaySeqNo,EndDep,Mid,Dep) :-
 %%             That gives short travel time
 
 %% EXPERIMENTAL %%%
-%%  N: buss 47 fra Hesttrø til Rostengrenda  etter kl. 21.40 . 
+%%  N: buss 47 fra HesttrÃ¸ til Rostengrenda  etter kl. 21.40 . 
 %%  OrigX0  OrigX1    OrigY0     Xstat     Dest  
-%%  Klæbu  Hesttrø    Sandmoen   CitySyd   Rostengrenda
-%%  depans(47,bus_47_94,2206,hesttrø,46,bus_46_231,2256,city_syd)                                                      
+%%  KlÃ¦bu  HesttrÃ¸    Sandmoen   CitySyd   Rostengrenda
+%%  depans(47,bus_47_94,2206,hesttrÃ¸,46,bus_46_231,2256,city_syd)                                                      
 
 firstcorr(Orig,Dest,StartDeps,EndDeps,Day,DaySeqNo,StartDep,EndDep,Mid):- 
     reverse(StartDeps,StartDepsRev),    
@@ -2294,12 +2295,12 @@ isfirstcorr2(Time0,EndDep,Orig,Dest,Day,DaySeqNo,DepList,StartDep,Mid) :-
     ridtobusnr(ENDRID,Bus2),  %% ENRID will arrive at Rostengrenda
 
     preferred_transfer(Bus1,Bus2,Orig1,Orig2,   _OffStation), 
-%%                     47   46   Klæbu Sandmoen CitySyd
+%%                     47   46   KlÃ¦bu Sandmoen CitySyd
     member(StartDep,DepList), %% last first
 
     ridof(StartDep, STARID), 
     startstation(ENDRID,Orig1),
-    ridtobus( STARID,Bus1), %% Find Rid that starts at KlæbuS
+    ridtobus( STARID,Bus1), %% Find Rid that starts at KlÃ¦buS
  
     arrtimeof(StartDep,S0),  %%  <---- ARR
     S0 =<  Time0,  % skip thru starts until  =< 
@@ -2409,7 +2410,7 @@ trytransbuslist(Bus1,Bus2,OffStation,OnStation):- %% TA-110322
 iscorr3(_Orig,_Dest,_Day,_DaySeqNo,StartDep,EndDep,Mid):- 
 
     StartDep = depnode(_,_,_,_,_,Rid,_,SeqNo1,_),  %% berg_studentby  seq 9
-    EndDep =   depnode(_,_,_,_,_,Rid,_,SeqNo2,_),    %% lerchendal_gård seq 8
+    EndDep =   depnode(_,_,_,_,_,Rid,_,SeqNo2,_),    %% lerchendal_gÃ¥rd seq 8
  
     SeqNo2 > SeqNo1, %% maybe same time but different seq
 
@@ -2581,7 +2582,7 @@ flag(_).  %% Panic Global flag that is not removed
 
 %timenow(1200).
 
-timenow(Tid) :-  % Tiden akkurat nå
+timenow(Tid) :-  % Tiden akkurat nÃ¥
 	 datetime(_,_,_,Hour,Min,_),
 	 Tid is Hour*100+Min.
 
@@ -2661,7 +2662,7 @@ listofbuses(A) :-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Kontrollpredikat som hjelper til å bygge reglene
+% Kontrollpredikat som hjelper til Ã¥ bygge reglene
 
 
 notification(_,_). %% Dummy

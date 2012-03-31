@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE timedat.pl
 %% SYSTEM BUSSTUC
 %% AUTHOR J.Bratseth
@@ -64,7 +65,7 @@ list_of_named_dates([
     christmas_day, %% TA-100122
 
     john_f_kennedy_day, 
-    oddvar_brå_day, 
+    oddvar_brÃ¥_day, 
     arvid_holme_day, 
     dooms_day]).
 
@@ -74,17 +75,17 @@ list_of_named_dates([
 
 
 orig_named_date(john_f_kennedy_day,   date(1963,11,22)).  
-orig_named_date(oddvar_brå_day,       date(1982,02,25)).  
+orig_named_date(oddvar_brÃ¥_day,       date(1982,02,25)).  
 orig_named_date(arvid_holme_day,      date(2011,01,17)).  
 orig_named_date(dooms_day,            date(2012,12,21)). %% :-) %% TA-100323|      date(10000,01,01)). 
 
 %% Named dates
 
-orig_named_date(new_years_eve,date(YYYY,12,31)) :- %% Nyttårsaften& januar  -> i fjor
+orig_named_date(new_years_eve,date(YYYY,12,31)) :- %% NyttÃ¥rsaften& januar  -> i fjor
      todaysdate(date(YYY1,01,_)),
      YYYY is YYY1 -1,
      !.
-orig_named_date(new_years_eve,date(YYYY,12,31)) :- %% Nyttårsaften i år
+orig_named_date(new_years_eve,date(YYYY,12,31)) :- %% NyttÃ¥rsaften i Ã¥r
      this_year(YYYY),
      !.
 
@@ -120,7 +121,7 @@ orig_named_date(palm_wednesday,   ND) :-
     easterdate(YYYY,ED),
     sub_days(ED,4, ND).
 
-orig_named_date(maundy_thursday,   ND) :- %% skjærT NOT monday  
+orig_named_date(maundy_thursday,   ND) :- %% skjÃ¦rT NOT monday  
     this_year(YYYY),
     easterdate(YYYY,ED),
     sub_days(ED,3, ND).
@@ -135,7 +136,7 @@ orig_named_date(eastereve,    ND) :-
     easterdate(YYYY,ED),
     sub_days(ED,1, ND).
 
-orig_named_date(easterday2,     ND) :- %% 2. påskedag 
+orig_named_date(easterday2,     ND) :- %% 2. pÃ¥skedag 
     this_year(YYYY),
     easterdate(YYYY,ED),
     add_days(ED,1, ND).
@@ -191,7 +192,7 @@ orig_named_date(may17,             date(YYYY,05,17)):- this_year(YYYY).
 %% Example   22.10 not clock if 22.10 is date of new route tables
 
 
-%% dedicated_date(date(YYYY,05,17)):- this_year(YYYY). %% Suspended ved gløshaugen før 17.05 
+%% dedicated_date(date(YYYY,05,17)):- this_year(YYYY). %% Suspended ved glÃ¸shaugen fÃ¸r 17.05 
 dedicated_date(date(YYYY,12,24)):- this_year(YYYY).
 
 %% dedicated_date(date(2006,06,19)). %% Check %% summer route
@@ -217,7 +218,7 @@ dedicated_date(date(YYYY,12,24)):- this_year(YYYY).
 %% These are special date_map_days that are declared explicitly each year !!!!!
 
    %% date_day_map(date(2008,05,02),    saturday).  % friday after may 17 2008(!)
-   %% date_day_map(Date,  sunday):-  named_date(palm_sunday,Date).     % Palmesøndag 
+   %% date_day_map(Date,  sunday):-  named_date(palm_sunday,Date).     % PalmesÃ¸ndag 
 
 %% Easter week will have a separate module, 
 %% Mon-Wed in easter are saturday routes + extra departures
@@ -227,7 +228,7 @@ dedicated_date(date(YYYY,12,24)):- this_year(YYYY).
 %%%  NOT valid 2009, own schedule
 %%
 %% date_day_map(Date,  sunday):-  
-%%     named_date(easterday2,Date).   %% 2 Påskedag Ad Hoc
+%%     named_date(easterday2,Date).   %% 2 PÃ¥skedag Ad Hoc
 
 %% date_day_map(Date,   saturday):-   %% ad hoc
 %%     named_date(palm_monday,Date).
@@ -258,7 +259,7 @@ date_day_map(Date,  sunday):-  named_date(whitsun_day2,Date).   %  2. pinsedag
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%¤¤¤¤¤¤
+%%%%%%%%%%%%%%%%%%%%%%%%Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 
@@ -330,7 +331,7 @@ after_morning(T):- number(T),morning_break(MB),T > MB.
 aroundmargin(20). %% 
 
 %  Bus around 2300  , don't miss 2240 if that is the last
-%  bussrute 49 rundt klokka 14 på søndag.Buss 49 passerer  Munkegt M2 kl. 1320
+%  bussrute 49 rundt klokka 14 pÃ¥ sÃ¸ndag.Buss 49 passerer  Munkegt M2 kl. 1320
 %  og   C Schjetnans vei kl. 1339. <-- missed that
 
 %% Minimum  minutes for bus transfer

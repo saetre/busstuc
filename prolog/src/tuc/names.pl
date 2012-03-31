@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE names.pl
 %% SYSTEM BUSSTUC
 %% CREATED TA-071026
@@ -19,7 +20,7 @@ generic_place(bensinstasjonen). %%
 generic_place(behandlingsenter).   
 generic_place(behandlingssenter). 
 generic_place(bibliotek).  
-generic_place(biblioteket). %%   Biblioteket på Moholt
+generic_place(biblioteket). %%   Biblioteket pÃ¥ Moholt
 generic_place(bohus).       %%  shop chain  
 generic_place(bomstasjon). 
 generic_place(bunnpris). 
@@ -34,13 +35,13 @@ generic_place(dyrepark).
 generic_place(dyreparken).  %% 
 generic_place(egon). 
 generic_place(esso).   %% TA-110426
-generic_place(elkjøp). 
+generic_place(elkjÃ¸p). 
 generic_place(familietjenesten). 
 generic_place(festivalen).  
 generic_place(fritidshus).   
 generic_place(fritidshuset). %% 
 generic_place(folkebibliotek). 
-generic_place(folkehøgskole).  
+generic_place(folkehÃ¸gskole).  
 generic_place('Folkets hus').  
 generic_place(fretex).  
 generic_place(frikirke). 
@@ -50,12 +51,12 @@ generic_place(gamlehjem). %% TA-110822
 generic_place(golfbane). 
 generic_place(golfsenter). 
 generic_place(grendehus). 
-generic_place(gård).  
+generic_place(gÃ¥rd).  
 generic_place(havn).  
 generic_place(helsehus). 
 generic_place(helsestasjon). 
 generic_place(hestesenter). 
-generic_place(høyskolesenteret). %% HIST?
+generic_place(hÃ¸yskolesenteret). %% HIST?
 generic_place(ica). 
 
 %% generic_place(idrettsanlegg). %% Hutaheiti idrettsanlegg -> noinfoabout idrettsanlegg
@@ -79,7 +80,7 @@ generic_place(markedet).
 generic_place(maxi). 
 generic_place(mega).   
 %% generic_place(midten).        %% TA-110121
-generic_place(mødrehjem).  
+generic_place(mÃ¸drehjem).  
 generic_place(nav).  
 generic_place(park).      
 generic_place(pensjonat).   %% TA-101018
@@ -92,17 +93,17 @@ generic_place(rica).
 generic_place(ridesenter). 
 generic_place(riksvei). 
 generic_place(rimi).    
-generic_place(rådhus).  
+generic_place(rÃ¥dhus).  
 generic_place(samfunnshus). 
 generic_place(sanitetsforening). 
 generic_place(skisenter).
 generic_place(skytebane).  
 generic_place(sas).  
 generic_place(shell).
-generic_place(snarkjøp). 
-%% generic_place(skysstasjon). %%Klæbu Ss  %% TA-101207
+generic_place(snarkjÃ¸p). 
+%% generic_place(skysstasjon). %%KlÃ¦bu Ss  %% TA-101207
 generic_place(statuen).  
-generic_place(strand). %% \+  Sætran       %% TA-101123
+generic_place(strand). %% \+  SÃ¦tran       %% TA-101123
 generic_place(stranden).%% underspec?      %% TA-101108
 generic_place(studentsamskipnaden). 
 generic_place(sykehjem).  
@@ -117,7 +118,7 @@ generic_place(velferdssenter).
 generic_place(verkstedhall).   %% TA-10206
     generic_place(verkstedhallen). %% ?
 %% generic_place(vestkanten). 
-%% generic_place(østkanten).   %% .. undersp
+%% generic_place(Ã¸stkanten).   %% .. undersp
 
 %% generic_place(sykehuset).   %% no info about Sykehuset* 
 generic_place(tannklinikk). 
@@ -135,11 +136,11 @@ city(trondheim).
 city(santa_barbara). 
 city(sarpsborg). 
 city(harstad).
-city(hønefoss).  %% TA-110120 etc
+city(hÃ¸nefoss).  %% TA-110120 etc
 city(new_delhi). %% TA-110603 prefer over abroad
 city(new_york).
 
-%%¤ COMPNAME
+%%Â¤ COMPNAME
 
 %% web adresses , see also -> facts.pl
 
@@ -228,13 +229,13 @@ compname(tore,[amble],tagore) :-
 
 
 compname(trafikanten,[midt,norge],tmn). 
-compname(trøndelag,[kollektivtrafikk],tkt). 
+compname(trÃ¸ndelag,[kollektivtrafikk],tkt). 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%%¤¤  SYNNAME 
+%%%%Â¤Â¤  SYNNAME 
 
 synname(regtopp,regtop). 
 
@@ -257,14 +258,14 @@ synname(gtate,gate).
 synname(gte,gate). 
 synname(gtn,gate).  
 synname(gtr,gate). 
-synname(gåte,gate). 
+synname(gÃ¥te,gate). 
 
-synname('va|re',være). %% TA-110103 E+N
+synname('va|re',vÃ¦re). %% TA-110103 E+N
 synname(v,vei).   
 synname(vag,vei).  
-synname(vaar,vår). % frues kirke %% TA-101210
+synname(vaar,vÃ¥r). % frues kirke %% TA-101210
 synname(vaien,vei). 
-synname(vayr,vår). % frues kirke %% TA-101210
+synname(vayr,vÃ¥r). % frues kirke %% TA-101210
 synname(vedi,vei).   
 synname(vegdn,vei).  
 synname(veeien,vei).
@@ -321,8 +322,8 @@ synname(vlls,viis).  % H. 7.
 synname(vn,vei).
 synname(vrg,vei). 
 synname(vweien,vei).
-synname(væg,vei). 
-synname(vægen,vei).   
+synname(vÃ¦g,vei). 
+synname(vÃ¦gen,vei).   
 
 synname(veg,vei). %% Ad Hoc (Brit Grytbakks vei) 
 synname(g,gate).  %% Experiment g streetsyn, but vollg hazard
@@ -332,21 +333,21 @@ synname(g,gate).  %% Experiment g streetsyn, but vollg hazard
 
 
 
-% Section klæburuten
+% Section klÃ¦buruten
 
 synname(kleburuten,klaburuten). 
 synname(klaeburuten,klaburuten). 
 
 
-synname(klaburuten,klæburuten).  
-synname(klæburata,klæburuten). 
-   synname(vassfjellbussen,klæburuten).
-                                             %% klæbu_sentrum in DB
+synname(klaburuten,klÃ¦buruten).  
+synname(klÃ¦burata,klÃ¦buruten). 
+   synname(vassfjellbussen,klÃ¦buruten).
+                                             %% klÃ¦bu_sentrum in DB
 
 %% Section Th
 
 
-synname(kjaøpesenter,kjøpesenter). %% TA-110325 %% kjÃ¸pesenter 
+synname(kjaÃ¸pesenter,kjÃ¸pesenter). %% TA-110325 %% kjÃƒÂ¸pesenter 
 
 %% synname   synomym names without spellcheck
 %% samename  like sameplace, with spelling
@@ -361,7 +362,7 @@ synname(tamberskjelves,tambarskjelves).
 %% SAMENAME  %% (partname) with spell
 
 
-samename(barfaøtts,berrføtts). %% TA-110317 
+samename(barfaÃ¸tts,berrfÃ¸tts). %% TA-110317 
 samename(gledish,gleditsch). 
 %    synname(gledish,gleditsch). 
 %    synname(gletish,gleditsch).
@@ -393,17 +394,17 @@ samename(tambarskjelve,tambarskjelves).
 
 samename(tiedemanns,tiedemands). 
 
-samename(øftis,øfstis). %%  Ã¸ftis = aøftis  %% TA-110324
+samename(Ã¸ftis,Ã¸fstis). %%  ÃƒÂ¸ftis = aÃ¸ftis  %% TA-110324
 
 %%%%%%%%%%%%%%%%%%%%
 
-%%%%¤¤  SYNNAME
+%%%%Â¤Â¤  SYNNAME
 
 synname(gode,godes). %% Magnus d g
 
 synname(googlemaps,google_maps).
 
-synname(gærd,gård).  
+synname(gÃ¦rd,gÃ¥rd).  
 
 %% synname(s,sentrum). %% NB avoid Trondheim S -> sentrum 
 
@@ -464,28 +465,28 @@ synname(akole,sk).
 %%% synname(atb,team). %% AtB new name for TKF buses %% TA-100824
 
 synname(aton,anton). %% TA-101101
-synname(bjørkhaugen,bjørkhaug). 
+synname(bjÃ¸rkhaugen,bjÃ¸rkhaug). 
 synname(bten,byen). 
 
-%% synname(byaas,byås). %% --> places 
+%% synname(byaas,byÃ¥s). %% --> places 
 
 synname(abel,abels).      %%  (Laura hangeraas syndrom)
 synname(abyen,byen).      %%  fr abyen ???
 
 synname(aas,aaes). 
 synname(aes,aaes). 
-synname(åeder,peder). 
-synname(åverås,øverås).  
-synname(ås,aaes). 
+synname(Ã¥eder,peder). 
+synname(Ã¥verÃ¥s,Ã¸verÃ¥s).  
+synname(Ã¥s,aaes). 
 synname(ajohan,johan).    %% caps lock 
-synname(ala,alle). %%  alÃ¨ allé %% TA-110105
-synname(ale,alle). %%       allé
+synname(ala,alle). %%  alÃƒÂ¨ allÃ© %% TA-110105
+synname(ale,alle). %%       allÃ©
 synname(alee,alle). 
 synname(aleksander,alexander). %% (tsx x -> ks)
 synname(alfr,alfred). 
 synname(alfred,hallfred). 
 synname(all,alle). 
-synname(allaø,alle).      %% fagerheim allÃ© 
+synname(allaÃ¸,alle).      %% fagerheim allÃƒÂ© 
 synname(almaas,almos).   
 synname(aolavs,olavs).
 
@@ -499,7 +500,7 @@ synname(ark,arkitekt).
 synname(arne,arnt).  %% common name -> rare  name %% NOT Dater
 
 synname(atudentby,studentby). 
-synname(aøstre,østre).  
+synname(aÃ¸stre,Ã¸stre).  
 
 synname(badestranden,badestranda). 
 synname(badetet,badet). 
@@ -508,37 +509,37 @@ synname(baldemar,waldemar).
 synname(balen,dalen).   %% ?
 synname(bang,bangs).
 synname(bard,baard).    %% iversens v 
-synname(bard,bård). 
+synname(bard,bÃ¥rd). 
 synname(barneskole,skole). 
 synname(barneskkole,skole). %%
 
-synname(barrfotts,berrføtts). %% TA-101022
-synname(barfotts,berrføtts).  %%
-synname(barrfots,berrføtts).  %%
-synname(barfots,berrføtts).   %%
+synname(barrfotts,berrfÃ¸tts). %% TA-101022
+synname(barfotts,berrfÃ¸tts).  %%
+synname(barrfots,berrfÃ¸tts).  %%
+synname(barfots,berrfÃ¸tts).   %%
 
 synname(beeg,berg). 
 synname(begs,bergs). 
-synname(bergårds,bergsgårds).
-synname(bergs, berg). %% laura hangerås syndromet
+synname(bergÃ¥rds,bergsgÃ¥rds).
+synname(bergs, berg). %% laura hangerÃ¥s syndromet
 synname(berg, bergs). 
 
-synname(berrfots,berrføtts).  
-synname(berrføttes,berrføtts). 
+synname(berrfots,berrfÃ¸tts).  
+synname(berrfÃ¸ttes,berrfÃ¸tts). 
 synname(bibloteket,biblioteket).  
 synname(bishop,biskop).   %% TA-110404
 synname(bishops,biskops). %% 
 synname(blinde,blindes). %% .. magnus  b g
 synname(boch,brochs). 
 synname(bocks,brochs). 
-synname(bodo,bodø). 
+synname(bodo,bodÃ¸). 
 synname(boks,brochs). 
 synname(bor,bro).      %%  ?
 synname(borcs,brochs).   
 synname(borck,brochs).  
 synname(borcks,brochs). 
-synname(bordson,bårdsøns).  
-synname(bordsons,bårdsøns).
+synname(bordson,bÃ¥rdsÃ¸ns).  
+synname(bordsons,bÃ¥rdsÃ¸ns).
 synname(borks,brochs).
 synname(botners,bothners). 
 synname(bovling,bowling). %% unnec ?
@@ -561,11 +562,11 @@ synname(broxs,brochs). %% TA-101228
 
 synname(bruksmester,brukseier). %%  olsen
 
-synname(bråkks,brochs). 
-synname(bråks,brochs).  
-synname(bråtens,braatens).  
+synname(brÃ¥kks,brochs). 
+synname(brÃ¥ks,brochs).  
+synname(brÃ¥tens,braatens).  
 
-%% synname(byåsen,byås). %% byåsen veien //spec. Trondheim -> places
+%% synname(byÃ¥sen,byÃ¥s). %% byÃ¥sen veien //spec. Trondheim -> places
 
 synname(bue,buens).  
 synname(bues,buens).  
@@ -582,7 +583,7 @@ synname(byena,byen).
 
 synname(byensentrum,sentrum). 
 
-synname(bøgda,bygda). 
+synname(bÃ¸gda,bygda). 
 
 synname(chlund,charlottenlund).
 synname(chr,christian). 
@@ -649,7 +650,7 @@ synname(dronignens,dronningens).
 synname(dronningems,dronningens). 
 synname(dronnings,dronning). %% mauds minne Contag
 synname(dronnings,dronningens). %% gt
-synname(drømmingens,dronningens).
+synname(drÃ¸mmingens,dronningens).
 synname(dtudentby,studentby). 
 
 synname(ebbels,ebbells).   
@@ -752,15 +753,15 @@ synname(fronningens,dronningens).
 synname(frue,frues). %%  nec ??
 synname(frues,frue). %% frue strete/ frues gate
 
-synname(fård,gård).  
+synname(fÃ¥rd,gÃ¥rd).  
 
 synname(gageby,hageby).  
 synname(gaheby,hageby).  
 synname(gakke,bakke).            %% neib k
-synname(gard,gård). 
+synname(gard,gÃ¥rd). 
 
-synname(garnison,leir). %% e.g. pesaune/ værnes 
-synname(garnison,militærleir).
+synname(garnison,leir). %% e.g. pesaune/ vÃ¦rnes 
+synname(garnison,militÃ¦rleir).
 
 synname(gata,gate). %% Prof,broch (#-> unnec)
 synname(gida,gina).  
@@ -772,24 +773,24 @@ synname(grevskott,grevskotts). %% NB grevskott new station
 
 synname(grefskotsvei,grevskottsveg). %% helps ? 
 
-synname(graønnland,       grønnland). %% avoid grønlia %% TA-101118
-synname(gråkallbane,      gråkallbanen). 
-synname(graakallbanen,    gråkallbanen). 
-synname(gråkalbanen,      gråkallbanen). 
-synname(gråkallenbanen,   gråkallbanen). 
-synname(grakallbanen,     gråkallbanen).
-synname(graakallbanen,    gråkallbanen).  
-synname(gråkolbanen,      gråkallbanen).
-synname(gråkollbanen,     gråkallbanen). 
-synname(gårkallbanen,     gråkallbanen). 
-%% synname(gårt,gård).    %% går/gått 
-%% synname(går,gård).     %% Too haz
-synname(gåed,gård).       %% own
-synname(gårs,gård). 
+synname(graÃ¸nnland,       grÃ¸nnland). %% avoid grÃ¸nlia %% TA-101118
+synname(grÃ¥kallbane,      grÃ¥kallbanen). 
+synname(graakallbanen,    grÃ¥kallbanen). 
+synname(grÃ¥kalbanen,      grÃ¥kallbanen). 
+synname(grÃ¥kallenbanen,   grÃ¥kallbanen). 
+synname(grakallbanen,     grÃ¥kallbanen).
+synname(graakallbanen,    grÃ¥kallbanen).  
+synname(grÃ¥kolbanen,      grÃ¥kallbanen).
+synname(grÃ¥kollbanen,     grÃ¥kallbanen). 
+synname(gÃ¥rkallbanen,     grÃ¥kallbanen). 
+%% synname(gÃ¥rt,gÃ¥rd).    %% gÃ¥r/gÃ¥tt 
+%% synname(gÃ¥r,gÃ¥rd).     %% Too haz
+synname(gÃ¥ed,gÃ¥rd).       %% own
+synname(gÃ¥rs,gÃ¥rd). 
 
 synname(hagebyen,hageby). 
 synname(habegy,hageby).   %% sperr
-synname(hagegård,hageby). %% Dalen h 
+synname(hagegÃ¥rd,hageby). %% Dalen h 
 synname(hageleir,hageby). 
 synname(hall,hallen).   
 synname(hallfr,hallfred). 
@@ -797,7 +798,7 @@ synname(hallfr,hallfred).
 synname(handlesenter,butikksenter). 
 synname(hansteensens,hansteens).
 synname(harry,harald). 
-synname( hayrfarges,hårfagres). %% TA-110415
+synname( hayrfarges,hÃ¥rfagres). %% TA-110415
 synname(hereds,innherreds).  
 synname(herreds,innherreds).  
 synname(hirke,kirke).  
@@ -814,9 +815,9 @@ synname(hospitalet,hospital).
 synname(hopitsl,hospital).  
 synname(hovedflyplass,flyplass). 
 synname(hovedflystasjon,flyplass).  
-synname(høgskole,høyskole).  
-synname(høgskoleparken,høyskoleparken).
-synname(hårfagre,hårfagres).  
+synname(hÃ¸gskole,hÃ¸yskole).  
+synname(hÃ¸gskoleparken,hÃ¸yskoleparken).
+synname(hÃ¥rfagre,hÃ¥rfagres).  
 
 synname(icea,ikea).
 synname(idretsbygg,idrettsbygg). 
@@ -880,7 +881,7 @@ synname(johnsen,jonssons).
 synname(johnsesn,jonssons).  %% etc 
 
 synname(johnsons,jonssons).
-synname(johnsåns,jonssons).
+synname(johnsÃ¥ns,jonssons).
 
 synname(jonsens,jonssons). %% etc 
 
@@ -899,8 +900,8 @@ synname(jonn,john).
 
 
 
-synname(jærnbane,jernbanen).  
-synname(jærnbanen,jernbanen). 
+synname(jÃ¦rnbane,jernbanen).  
+synname(jÃ¦rnbanen,jernbanen). 
 
 synname(kike,kirke).
 synname(kike,krk).   %% nec  %% Tempe krk 
@@ -917,7 +918,7 @@ synname(krk,kirke).
   synname(kirk,krk).  
   synname(kirk,kirke). 
   synname(kirka,kirke). 
-  synname(kirkegård,kirke).  
+  synname(kirkegÃ¥rd,kirke).  
   synname(kirge,krk).   %% strinfa_krk 
   synname(kirge,kirke).
   synname(kirken,kirke). 
@@ -934,7 +935,7 @@ synname(kirke,krk).  %% chl kirke
   synname(kire,krk). 
   synname(kirek,krk).  
   synname(kirka,krk). 
-  synname(kirkegård,krk).  
+  synname(kirkegÃ¥rd,krk).  
   synname(kirken,krk). 
   synname(kirkte,krk). %% \+ kirken
   synname(krike,krk). 
@@ -945,8 +946,8 @@ synname(kirke,krk).  %% chl kirke
 synname(krogh,krog). %% Pedere Krogh, Gina Krog 
 
 synname(knio,kino).
-synname(knudsons, knudssøns). %% etc
-synname(kuntsøns, knudssøns).
+synname(knudsons, knudssÃ¸ns). %% etc
+synname(kuntsÃ¸ns, knudssÃ¸ns).
 
 synname(knutepunkt,terminal). %% ? 
 
@@ -973,18 +974,18 @@ synname(markus,marcus).  %% Thrane %% nec?
 synname(markus,magnus).  %%?
 synname(mari,marie). 
 synname(matisens,mathiesens).
-synname(matsenter,kjøpesenter). 
+synname(matsenter,kjÃ¸pesenter). 
 synname(maud,mauds).   
 synname(maug,mauds).          %% ? 
-synname(mayr,mår).    %% TA-101221 -veien
-synname(militærleir,leir).    %% Persaunet o.a.
+synname(mayr,mÃ¥r).    %% TA-101221 -veien
+synname(militÃ¦rleir,leir).    %% Persaunet o.a.
 synname(monke,munke).  
 synname(museumet,museet).  
 synname(museumet,museum). 
-synname(møilands,møylas).  
-synname(møilans,møylas).    
-synname(møylands,møylas).  
-synname(møylands,møylas).   
+synname(mÃ¸ilands,mÃ¸ylas).  
+synname(mÃ¸ilans,mÃ¸ylas).    
+synname(mÃ¸ylands,mÃ¸ylas).  
+synname(mÃ¸ylands,mÃ¸ylas).   
 
 synname(naton,anton).  
 synname(nerg,berg).   
@@ -993,14 +994,14 @@ synname(nettbus,nettbuss).
 synname(nettbusser,nettbuss). 
 %% synname(nettbusskonsernet,nettbuss).
 %% synname(nina,gina).      %% grieg/   %% krog..
-synname(njols,njåls). 
+synname(njols,njÃ¥ls). 
 synname(njorders,njords). 
 synname(nor,nord).  
 synname(nsentrum,sentrum). 
 
 synname(ofstads,ofstad). %% I. O. vei 
-synname(oistein,øystein).   %% TA-110328
-synname(oisteins,øysteins). %%
+synname(oistein,Ã¸ystein).   %% TA-110328
+synname(oisteins,Ã¸ysteins). %%
 synname(oalv,olav). 
 %% synname(ola,ila). %% neib// Too Haz
 synname(olaf,olav). 
@@ -1022,9 +1023,9 @@ synname(orle,ole).
 synname(oscar,oskar). 
 synname(oskar,oscar). 
 synname(osle,oslo). %% \+ osen  Amble# 
-synname(ostmark,østmark). 
-synname(osvang,åsvang). 
-synname(overas,øverås). %% 1. letter+ø trøbbel
+synname(ostmark,Ã¸stmark). 
+synname(osvang,Ã¥svang). 
+synname(overas,Ã¸verÃ¥s). %% 1. letter+Ã¸ trÃ¸bbel
 synname(owens,owesens). 
 synname(owenes,owesens).
 
@@ -1113,25 +1114,25 @@ synname(sant,st).
 synname(santum,sentrum). 
 synname(sangt,st).  
 synname(satsing,stadsing).  
-synname(sbjørn,asbjørn).      %% ?
+synname(sbjÃ¸rn,asbjÃ¸rn).      %% ?
 synname(skjetlands,schjetnans). 
 
-synname(schiøts,schiøtz).  
-synname(schøts,schiøtz).   
-synname(schøits,schiøtz).   
-synname(schøitz,schiøtz).  
-synname(schøitze,schiøtz).
-synname(schøtz,schiøtz).    
-synname(sciøts,schiøtz). 
-synname(sciøtz,schiøtz). 
-synname(scøts,schiøtz). 
-synname(scøtz,schiøtz).
+synname(schiÃ¸ts,schiÃ¸tz).  
+synname(schÃ¸ts,schiÃ¸tz).   
+synname(schÃ¸its,schiÃ¸tz).   
+synname(schÃ¸itz,schiÃ¸tz).  
+synname(schÃ¸itze,schiÃ¸tz).
+synname(schÃ¸tz,schiÃ¸tz).    
+synname(sciÃ¸ts,schiÃ¸tz). 
+synname(sciÃ¸tz,schiÃ¸tz). 
+synname(scÃ¸ts,schiÃ¸tz). 
+synname(scÃ¸tz,schiÃ¸tz).
 
 synname(semtral,sentral).  
 synname(semtru,sentrum).  
 synname(semtrum,sentrum). 
 synname(semtrun,sentrum).   %% 
-%% synname(senter,sentrum).    %% bønes senter
+%% synname(senter,sentrum).    %% bÃ¸nes senter
 synname(sentere,senter).  
 synname(sentere,senteret). 
 synname(senteret,senter). 
@@ -1150,15 +1151,15 @@ synname(sentrumsentrum,sentrum).
 synname(senum,sentrum).  
 synname(setrm,sentrum).  
 
-synname(shiotz,schiøtz). 
-synname(shøts,schiøtz).   
-synname(shøtz,schiøtz).   
-synname(sjøts,schiøtz).   
-synname(sjøtts,schiøtz). 
-synname(sjøttz,schiøtz). 
-synname(sjøtz,schiøtz).  
-synname(skjøtts,schiøtz). 
-synname(skjøttz,schiøtz). 
+synname(shiotz,schiÃ¸tz). 
+synname(shÃ¸ts,schiÃ¸tz).   
+synname(shÃ¸tz,schiÃ¸tz).   
+synname(sjÃ¸ts,schiÃ¸tz).   
+synname(sjÃ¸tts,schiÃ¸tz). 
+synname(sjÃ¸ttz,schiÃ¸tz). 
+synname(sjÃ¸tz,schiÃ¸tz).  
+synname(skjÃ¸tts,schiÃ¸tz). 
+synname(skjÃ¸ttz,schiÃ¸tz). 
 
 synname(skol,sk).
 synname(skole,sk). 
@@ -1184,7 +1185,7 @@ synname(sntret,senter).
 synname(sntret,senteret).
 
 synname(shoppingsenter,butikksenter).
-synname(shoppingsenter,kjøpesenter). 
+synname(shoppingsenter,kjÃ¸pesenter). 
 
 
 synname(sid,syd). 
@@ -1213,7 +1214,7 @@ synname(sole,skole).         %% //  -> Skole
 
 synname(solem,solems).  %% avoid solem -> skole
 synname(soli,solli).    %% < 5 ch 
-synname(sor,sør). 
+synname(sor,sÃ¸r). 
 
 synname(srundentby,studentby). 
 synname(st,stasjon).
@@ -1224,19 +1225,19 @@ synname(stablers,stabells).
 synname(stad,stadion). %% amb sted %% TA-110309
 
 synname(stadium,stadion).   
-synname(stadsingenjør,stadsingeniør). 
-synname(stadsingengjør,stadsingeniør). 
+synname(stadsingenjÃ¸r,stadsingeniÃ¸r). 
+synname(stadsingengjÃ¸r,stadsingeniÃ¸r). 
 
 synname(stadjo,stadion). 
-synname(stadsinginør,stadsingeniør). 
-synname(stadtingeniør,stadsing).
+synname(stadsinginÃ¸r,stadsingeniÃ¸r). 
+synname(stadtingeniÃ¸r,stadsing).
 
 synname(stasj,stasjon). %% ? stasjonen / TS ? 
 
-synname(statingeniør,stadsingeniør). 
+synname(statingeniÃ¸r,stadsingeniÃ¸r). 
 synname(staton,stadion). %% TA-110406
-synname(statsingeniør,stadsingeniør). 
-synname(statsinginør,stadsingeniør).  
+synname(statsingeniÃ¸r,stadsingeniÃ¸r). 
+synname(statsinginÃ¸r,stadsingeniÃ¸r).  
 
 synname(statsion,stasjon). 
 synname(statsjon,stasjon). 
@@ -1247,7 +1248,7 @@ synname(stby,studentby).
 synname(stduntby,studentby). 
 synname(steentby,studentby).          %%  ?
 synname(steina,steinan).  
-synname(stre,østre). %%  Ø-trøbbel
+synname(stre,Ã¸stre). %%  Ã˜-trÃ¸bbel
 synname(strastasjon,stasjonen).   %%  // stasjon=noun
 synname(studeby,studentby).  
 synname(studneby,studentby). 
@@ -1275,15 +1276,15 @@ synname(syde,syd).
 synname(syn,syd). 
 synname(sykehjemm,sykehjem).
 synname(sykehus,hospital).  
-synname(sykehusområdet,sykehuset). 
+synname(sykehusomrÃ¥det,sykehuset). 
 synname(sys,syd).  
 synname(syt,syd).  
 synname(syvende,viis).  %% H7
 synname(syvendes,viis). %% TA-110203
-synname(sæntrum,sentrum). 
-synname(sæmtrum,sentrum).
+synname(sÃ¦ntrum,sentrum). 
+synname(sÃ¦mtrum,sentrum).
 
-synname(søre,søndre). 
+synname(sÃ¸re,sÃ¸ndre). 
 
 synname(tambars,tambarskjelves).  
 synname(tambarskjelds,tambarskjelves). 
@@ -1312,7 +1313,7 @@ synname(tamburskjelves,tambarskjelves).
 synname(tambarseters,tambarskjelves).
 synname(tamburseters,tambarskjelves). 
 
-synname(tarne,tårnet).
+synname(tarne,tÃ¥rnet).
 
 synname(teab,team). %%  ?
 %% synname(teams,team). %% confuse teams ruteopplysning %% ad hoc 
@@ -1322,7 +1323,7 @@ synname(teab,team). %%  ?
 
 %% synname(tempeveien,tempevegen). %% unnec
   %% Tempevegen 11 // station 
-  %% Tempeveien 11 // street  -- Valøyvegen
+  %% Tempeveien 11 // street  -- ValÃ¸yvegen
 
 
 synname(terase,terrasse).  
@@ -1334,8 +1335,8 @@ synname(thulauw,thaulow).
 
 synname(thallauw,thaulow). 
 synname(tauwlovt,thaulow).
-synname(thawløv,thaulow).
-synname(thawløv,thaulow).
+synname(thawlÃ¸v,thaulow).
+synname(thawlÃ¸v,thaulow).
 
 
 synname(theim,trondheim).  
@@ -1344,7 +1345,7 @@ synname(thoning,thonning).
 synname(thonnig,thonning).  
 synname(thonig,thonning). 
 synname(thonin,thonning). 
-synname(thærnes,thornæs). 
+synname(thÃ¦rnes,thornÃ¦s). 
 synname(threim,trondheim). 
 
 
@@ -1361,18 +1362,18 @@ synname(tonheim,trondheim).
 synname(tonstad,thonstad). 
 synname(tora,thora).  
 synname(tord,torg). %% neib %% TA-110527
-synname(torne,tårnet). 
+synname(torne,tÃ¥rnet). 
 synname(torp,torps).  %% TA-110701
 synname(torve,torget).        %% nec ???
 synname(traverbane,travbane).
 synname(trd,trondheim).  
 synname(treminal,terminal).  %% TA-110624
 synname(trheim,trondheim). 
-synname(trlg,trøndelag). 
+synname(trlg,trÃ¸ndelag). 
 synname(trnheim,trondheim). 
 synname(trodneheim,trondheim). 
 synname(trodnehim,trondheim).  
-synname(troendelag,trøndelag). 
+synname(troendelag,trÃ¸ndelag). 
 synname(trog,torg).    
 synname(tromheim,trondheim). 
 synname(tron,trondheim).  
@@ -1383,11 +1384,11 @@ synname(troning,thonning).
 synname(tronningens,dronningens).  
 synname(tronndheim,trondheim). 
 synname(trove,torget). 
-synname(trånheim,trondheim).
-synname(trånnhjæm,trondheim).  
+synname(trÃ¥nheim,trondheim).
+synname(trÃ¥nnhjÃ¦m,trondheim).  
 synname(tudentby,studentby). 
 synname(tune,tunet).  
-synname(tårn,tårnet).  
+synname(tÃ¥rn,tÃ¥rnet).  
 
 synname(ungdomskle,skole).  
 synname(ungdomskole,skole).  
@@ -1406,9 +1407,9 @@ synname(unnset,undsets).
 
 synname(us,skole). %% ungdomskole 
 
-synname(vdg, videregående). 
-synname(vdrg, videregående).
-synname(vderegåen,  videregående).
+synname(vdg, videregÃ¥ende). 
+synname(vdrg, videregÃ¥ende).
+synname(vderegÃ¥en,  videregÃ¥ende).
 
 synname(ventrum,sentrum).    %% ? SMS tab
 synname(verg,berg). %% ?
@@ -1417,20 +1418,20 @@ synname(vesr,vest).
 synname(victor,viktor).
 %  synname(victoria,viktoria).   
 
-synname(vid, videregående).   
-synname(vidregaende, videregående). 
-synname(vidregåenda, videregående). 
-synname(vidregåene, videregående). 
-synname(videreg, videregående).  
-synname(vidreående, videregående). 
-synname(vidregåendeskole, skole). 
-synname(videreående, videregående).
-synname(videregåene, videregående). 
-synname(vigeredående, videregående).
-synname(vidergåande, videregående).  
+synname(vid, videregÃ¥ende).   
+synname(vidregaende, videregÃ¥ende). 
+synname(vidregÃ¥enda, videregÃ¥ende). 
+synname(vidregÃ¥ene, videregÃ¥ende). 
+synname(videreg, videregÃ¥ende).  
+synname(vidreÃ¥ende, videregÃ¥ende). 
+synname(vidregÃ¥endeskole, skole). 
+synname(videreÃ¥ende, videregÃ¥ende).
+synname(videregÃ¥ene, videregÃ¥ende). 
+synname(vigeredÃ¥ende, videregÃ¥ende).
+synname(vidergÃ¥ande, videregÃ¥ende).  
 
 %%       synname(viktoria,victoria). %% bachke why nec
-synname(vgd, videregående). 
+synname(vgd, videregÃ¥ende). 
 
 synname(vdg,sk).   
 synname(vga,sk). 
@@ -1444,11 +1445,11 @@ synname(vgd,skole).
 synname(vgs,skole).    %% Tiller vgs 
 synname(vs,skole).     %% TA-110121
 
-%% synname(vgskole, skole). %% no, jfr  byåsen vgs \= byåsen skole
-%% synname(vidregåendeskole,skole). 
-%% synname(videregående,skole). %% heimdal videregående 
+%% synname(vgskole, skole). %% no, jfr  byÃ¥sen vgs \= byÃ¥sen skole
+%% synname(vidregÃ¥endeskole,skole). 
+%% synname(videregÃ¥ende,skole). %% heimdal videregÃ¥ende 
 
-synname(vidregåemde, videregående). 
+synname(vidregÃ¥emde, videregÃ¥ende). 
 synname(viktor,victor).
 synname(vru,bru). 
 synname(vskole,skole). 
@@ -1460,32 +1461,32 @@ synname(wm,vm). %% -anlegget
 synname(yd,syd).           %% TA-110318
 synname(ykehjem,sykehjem). 
 synname(yngvald,ingvald). 
-synname(yngvar,ingvald).   %% ystgård 
+synname(yngvar,ingvald).   %% ystgÃ¥rd 
 synname(yngvar,ingvar).    %%
 
 synname(zity,city).   
 synname(zyd,syd).
 
-synname(øfstiens,øfstis). 
-synname(ørre,østre).
-synname(ørre,øvtre).
-synname(øvr,øvre).  
-synname(øvre,østre). %% Hazard ?
+synname(Ã¸fstiens,Ã¸fstis). 
+synname(Ã¸rre,Ã¸stre).
+synname(Ã¸rre,Ã¸vtre).
+synname(Ã¸vr,Ã¸vre).  
+synname(Ã¸vre,Ã¸stre). %% Hazard ?
 
-synname(øste,østre).
-synname(østmarken,østmarka).
+synname(Ã¸ste,Ã¸stre).
+synname(Ã¸stmarken,Ã¸stmarka).
 
-synname(østre,øvre).
-synname(øtre,østre).
+synname(Ã¸stre,Ã¸vre).
+synname(Ã¸tre,Ã¸stre).
 
-synname(øysteins,øystein). 
-synname(øystein,øysteins).
+synname(Ã¸ysteins,Ã¸ystein). 
+synname(Ã¸ystein,Ã¸ysteins).
 
-synname(åes,aaes).  
-synname(åses,åsas).  
-synname(ålle,alle).     %%   àlle
-synname(åsta,aasta).  
-synname(åøysteins,øysteins).  %%  Ø-trøbbel Ã¸ysteins .
+synname(Ã¥es,aaes).  
+synname(Ã¥ses,Ã¥sas).  
+synname(Ã¥lle,alle).     %%   Ã lle
+synname(Ã¥sta,aasta).  
+synname(Ã¥Ã¸ysteins,Ã¸ysteins).  %%  Ã˜-trÃ¸bbel ÃƒÂ¸ysteins .
 
 
 synname(fegslet,fengselet). 
@@ -1524,22 +1525,22 @@ synname(flyplassen,flyplass).
 synname(flypassen,flyplass).  
 synname(folkebiblioteket,biblioteket).
 
-%% synname(folkehøgskole,skole).    %% folkeh.s. %% too special
-%% synname(folkehøgskule,skole).    %%  (if not defined)
-%% synname(folkehøyskole,skole).    %% folkeh.s.
+%% synname(folkehÃ¸gskole,skole).    %% folkeh.s. %% too special
+%% synname(folkehÃ¸gskule,skole).    %%  (if not defined)
+%% synname(folkehÃ¸yskole,skole).    %% folkeh.s.
 
 synname(fotballbane,idrettsplass). %% Ranheim 
 
 synname(folkemsuem,folkemuseum).
 
 synname(gammel,gamle). 
-synname(gård,gården). 
-synname(gården,gård). 
+synname(gÃ¥rd,gÃ¥rden). 
+synname(gÃ¥rden,gÃ¥rd). 
 
-synname(gård,herregård). 
+synname(gÃ¥rd,herregÃ¥rd). 
 
 synname(henr,henrik).  
-synname(herregård,gård).  
+synname(herregÃ¥rd,gÃ¥rd).  
 synname(hotel,hotell).   
 
 
@@ -1568,7 +1569,7 @@ synname(butikksenteret,senter).
 
 synname(buttiksenteret,butikksenter). 
 
-synname(bård,baard).       %%  B iversen
+synname(bÃ¥rd,baard).       %%  B iversen
 
 synname(karj,karl). %% .. joh...
 synname(karl,carl). %% johan     // OK 
@@ -1589,21 +1590,21 @@ synname(trh,trondheim).
 
 synname(aentrum,sentrum). 
 
-synname(asb,asbjørn).  
-synname(asbjørns,asbjørnsens). 
+synname(asb,asbjÃ¸rn).  
+synname(asbjÃ¸rns,asbjÃ¸rnsens). 
 synname(ass,aas).               %% Ingeborg Aas
 
 synname(asta,aasta).
 
 synname(astrom,astronom).
 
-synname(granasen,granåsen).     %% for partname 
-synname(granskogen,granåsen).   %% ???
+synname(granasen,granÃ¥sen).     %% for partname 
+synname(granskogen,granÃ¥sen).   %% ???
 
-synname(granåsenlia,granåslia). %% street
+synname(granÃ¥senlia,granÃ¥slia). %% street
 
 
-synname(istgårds,ystgaards).   
+synname(istgÃ¥rds,ystgaards).   
 synname(istgaards,ystgaards).  
 
 synname(ystergaards,ystgaards). 
@@ -1629,7 +1630,7 @@ synname(seteum,sentrum).
 synname(stajasion,stasjon). 
 synname(svngen,svingen). 
 
-synname(æstre,østre).  
+synname(Ã¦stre,Ã¸stre).  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1643,20 +1644,20 @@ unwanted_name(astor).  %% \+ astri %% TA-110609
 unwanted_name(baghera). 
 unwanted_name(baller). %%  \+ bagler-
 unwanted_name(balls).  %%  \+ Bulls 
-unwanted_name(banke).  %%  \+ slå 
+unwanted_name(banke).  %%  \+ slÃ¥ 
 unwanted_name(bedring). %% \+ Beddingen %% TA-101120
 unwanted_name(been).   %%  \+ byen Eng, confuse
 unwanted_name(begge).  
-%%  unwanted_name(bohus). %%  \+ båhus(gate)
+%%  unwanted_name(bohus). %%  \+ bÃ¥hus(gate)
 unwanted_name(brann).   %%  Buran 
-unwanted_name(brenner). %%  \+ Brænne 
+unwanted_name(brenner). %%  \+ BrÃ¦nne 
 unwanted_name(buksa).   %%  \+ bukta (station) 
-unwanted_name(bus).     %%  \+ Buås
-unwanted_name(busen).   %%  \+ Buås 
+unwanted_name(bus).     %%  \+ BuÃ¥s
+unwanted_name(busen).   %%  \+ BuÃ¥s 
 unwanted_name(bussen).   
 %% unwanted_name(bye).   %%  Good Bye  %%  E: destroys lang sel.
-unwanted_name(bærs).  %%  \+ berg   
-unwanted_name(bæsj).  %%  \+ byes ??? 
+unwanted_name(bÃ¦rs).  %%  \+ berg   
+unwanted_name(bÃ¦sj).  %%  \+ byes ??? 
 unwanted_name(car).   %%  \+ Carl
 
 unwanted_name(dens).
@@ -1671,7 +1672,7 @@ unwanted_name(ditt).
 unwanted_name(dollar). % dolpa 
 unwanted_name(dritt). %%  \+ dist 
 unwanted_name(dust). 
-unwanted_name(døden). %%  \+ doden -> domen
+unwanted_name(dÃ¸den). %%  \+ doden -> domen
 unwanted_name(door).  %%   \+ Dora
 unwanted_name(doors).
 unwanted_name(dvs). %% DV's (dragvoll)
@@ -1688,16 +1689,16 @@ unwanted_name(etter).  %% s etter = s enter = senter
 unwanted_name(every).  %%  E-verket 
 
 unwanted_name(fatass).  %% \+ Flatas 
-unwanted_name(forstå).  %% Forset 
-unwanted_name(forstås). %% Forset %% TA-101102
+unwanted_name(forstÃ¥).  %% Forset 
+unwanted_name(forstÃ¥s). %% Forset %% TA-101102
 
 unwanted_name(fylla).  %%  \+ Follo
 unwanted_name(fordi).  %%  \+ fjord
-unwanted_name(første). %%  \+ Forset
+unwanted_name(fÃ¸rste). %%  \+ Forset
 
 unwanted_name(gang).    %%   gang -> gan-g -> granveien
 unwanted_name(gidder). 
-%%  unwanted_name(går).   %%   -> unwanted_place??? English  går buss 5 til nardo? 
+%%  unwanted_name(gÃ¥r).   %%   -> unwanted_place??? English  gÃ¥r buss 5 til nardo? 
 
 unwanted_name(har). 
 
@@ -1736,8 +1737,8 @@ unwanted_name(hommsen).  %%
 unwanted_name(hore).    %%  \+ hoem 
 unwanted_name(hval).    %%  \+ hall 
 unwanted_name(hvem).    %%  \+ hoem | heim (Eng) 
-unwanted_name(høyst).   %%  \+ høiset 
-unwanted_name(håret).   %%  \+ hare,havre
+unwanted_name(hÃ¸yst).   %%  \+ hÃ¸iset 
+unwanted_name(hÃ¥ret).   %%  \+ hare,havre
 
 unwanted_name(informasjon). 
 unwanted_name(islam).  %% \+ Isdam- 
@@ -1751,7 +1752,7 @@ unwanted_name(kinon). %% cinema
 
 %%%% unwanted_name(kiosk).   %%  \+ kinos(enter) Amble#
 
-unwanted_name(kjønn).   %%  \+ kong  amble# ???
+unwanted_name(kjÃ¸nn).   %%  \+ kong  amble# ???
 unwanted_name(knull).   %%  \+ knut 
 unwanted_name(kommer).  %%  \+ komet 
 unwanted_name(kontor). 
@@ -1760,25 +1761,25 @@ unwanted_name(lagt).   %%   lian_street :-)
 unwanted_name(land).  
 unwanted_name(legger). %% \+ lege %% TA-110429
 unwanted_name(lenge).  %% \+ lege
-unwanted_name(lærer). 
+unwanted_name(lÃ¦rer). 
 unwanted_name(min).
 unwanted_name(mine).
 unwanted_name(mitt).
-unwanted_name(mårra).  %%  \+ marka
+unwanted_name(mÃ¥rra).  %%  \+ marka
 
 
 unwanted_name(langt).   %%  \+ lianveien (gt)
-unwanted_name(langø).   %%  \+ Langlo ( Fotograf)
+unwanted_name(langÃ¸).   %%  \+ Langlo ( Fotograf)
 unwanted_name(lasso).   %%  \+ lars
 unwanted_name(linda).   %%  \+ Lian  amblehash
-unwanted_name(låne).    %%  \+ lian/lade 
-%%  unwanted_name(mari).    %%  \+ Mars %%  Mari(e) Sørdal
+unwanted_name(lÃ¥ne).    %%  \+ lian/lade 
+%%  unwanted_name(mari).    %%  \+ Mars %%  Mari(e) SÃ¸rdal
 unwanted_name(married). %%  \+ marie
 unwanted_name(maur).    %%  \+ mars
 %% unwanted_name(maxi).    %%  \+ main %% < 5 letter 
 unwanted_name(mens).  
 unwanted_name(mensen).  %% 
-unwanted_name(moret).   %% \+ Møre 
+unwanted_name(moret).   %% \+ MÃ¸re 
 
 %% unwanted_name(norges).  %% experiment spellcheck *-> norge
 unwanted_name(node).    %%  \+ nord (knutepunkt) 
@@ -1788,10 +1789,10 @@ unwanted_name(person). %%  Persson?
 unwanted_name(please). %%  place... %%  amble#
 unwanted_name(pluss).  %% \+ plass
 unwanted_name(vre). 
-unwanted_name(værte).  %% \+ Være 
-unwanted_name(vøstre). %% confuse
-%% unwanted_name(vår). %% Vår Frue(s) gate/strete
-unwanted_name(våre). 
+unwanted_name(vÃ¦rte).  %% \+ VÃ¦re 
+unwanted_name(vÃ¸stre). %% confuse
+%% unwanted_name(vÃ¥r). %% VÃ¥r Frue(s) gate/strete
+unwanted_name(vÃ¥re). 
 unwanted_name(oss).     %%  \+ os 
 unwanted_name(osv).     %%  \+ osveien
 unwanted_name(ozon).    %%  \+ Osen 
@@ -1816,7 +1817,7 @@ unwanted_name(sendte).   %%  \+ Stene
 unwanted_name(senere).   %%  \+ senter
 unwanted_name(senest).   
 unwanted_name(setter).   %%  \+ senter 
-unwanted_name(shorts).   %%  \+ schiøtz (SIC) 
+unwanted_name(shorts).   %%  \+ schiÃ¸tz (SIC) 
 unwanted_name(spion).    %%  \+ simon,zion  
 unwanted_name(sjansen).  %%  \+ Skansen 
 unwanted_name(skit).     %%  \+ ski
@@ -1827,15 +1828,15 @@ unwanted_name(sluppet).  %%  \+ Sluppen
 unwanted_name(sprit).    %%  \+ sport
 unwanted_name(stemme).   %%  \+ Stene
 unwanted_name(stops).    %%  \+ STPS (S-T psyk syk) 
-unwanted_name(sterk).    %%  \+ sæter
+unwanted_name(sterk).    %%  \+ sÃ¦ter
 unwanted_name(stjerne).  %%  \+ Sjetne (amble#)
 %% unwanted_name(stratos).  %%  \+ staton ? %% TA-110406 unnec
 unwanted_name(strengt).  %%  \+ Stareveien ( Staregt) %% amble#
 unwanted_name(strh).     %%  \+ stor   ( strindheim ? ) no mess 
-unwanted_name(strøm).    %%  \+ storm
-unwanted_name(støtte).   %%  \+ sorte (amble#)
+unwanted_name(strÃ¸m).    %%  \+ storm
+unwanted_name(stÃ¸tte).   %%  \+ sorte (amble#)
 unwanted_name(sv).       %% streetsyn \+ Sve 
-unwanted_name(søtre).    %%  Ambiguous søndre/østre
+unwanted_name(sÃ¸tre).    %%  Ambiguous sÃ¸ndre/Ã¸stre
 unwanted_name(tater).    %%  \+ teater 
 unwanted_name(stjele).   %%  \+ selje
 unwanted_name(there).    %%  \+ tore (Eng.) 
@@ -1852,13 +1853,13 @@ unwanted_name(unik).
 unwanted_name(verdt).   %%  \+ vest
 unwanted_name(vinner).  %%  \+ vinter
 unwanted_name(which).   %%  \+ Vika Amblehash/TSX 
-unwanted_name(åberg).   %%  \+ åkerg(ata) 
+unwanted_name(Ã¥berg).   %%  \+ Ã¥kerg(ata) 
 
 %%  streetsyn ADDED to names.pl  
 
 %% NB The s-forms come first
 
-%% Granåsvegen -> Granåstreet  OK, even if this is incorrect in this case
+%% GranÃ¥svegen -> GranÃ¥street  OK, even if this is incorrect in this case
 %% ranheimsvegen = ranheimvegen ==> ranheimstreet
 
 %% These are user related synonyms of street suffix
@@ -1873,8 +1874,8 @@ streetsyn(bei).       %%
 streetsyn(begen). 
 streetsyn(beien). 
 streetsyn(bgate). 
-%% streetsyn(date).  %% skal vi dra på date? 
-streetsyn(eien).  %%  ?  Byåseien 
+%% streetsyn(date).  %% skal vi dra pÃ¥ date? 
+streetsyn(eien).  %%  ?  ByÃ¥seien 
 streetsyn(evg).  
 streetsyn(evi).    %%  ? nec?
 
@@ -1883,7 +1884,7 @@ streetsyn(ft).   %% TA-101221 %%gt ?
 %% 
 
 streetsyn(g). %% TA-110204 dronningens g 
-    %%  Kong (Inges ..) Stadsing. // Håkon Magnussons g 3//
+    %%  Kong (Inges ..) Stadsing. // HÃ¥kon Magnussons g 3//
     %%  Fjordg. 25  
     %% Rosenbor(g) OK
     %% EXPERIMENT                   %% string -> strindveien
@@ -1905,7 +1906,7 @@ streetsyn(gater).
 streetsyn(gates).
 streetsyn(gats). 
 streetsyn(gave).
-streetsyn(gayte). %% gÃ¥te 
+streetsyn(gayte). %% gÃƒÂ¥te 
 streetsyn(geven).
 streetsyn(gste).
 streetsyn(gt).
@@ -1914,12 +1915,12 @@ streetsyn(gtate).
 streetsyn(gte). 
 streetsyn(gtn).  
 streetsyn(gtr). 
-streetsyn(gåte). 
+streetsyn(gÃ¥te). 
 streetsyn(gy). %%  neib 
 
 %% streetsyn(sveien). %%  blocks osveien 
 
-%% streetsyn(u).   %%  ? Klabu -> Klæb v ***
+%% streetsyn(u).   %%  ? Klabu -> KlÃ¦b v ***
 
 streetsyn(uegen).
 streetsyn(v).      %% OOPS olav --> ola(street) ! Yggdrasilv
@@ -2013,8 +2014,8 @@ streetsyn(vrg).     %% neib
 streetsyn(vweien).  %% slip 
 streetsyn(vwgen). 
 streetsyn(vwien).   %% slip  
-streetsyn(væg). 
-streetsyn(vægen).  
+streetsyn(vÃ¦g). 
+streetsyn(vÃ¦gen).  
 
 
 
@@ -2167,7 +2168,7 @@ abroad(detroit).
 abroad(dover). 
 abroad(dubai). 
 abroad(dublin). 
-abroad(eiffeltårnet). 
+abroad(eiffeltÃ¥rnet). 
 abroad(eu).
 abroad(europa). 
 abroad(evigheten). 
@@ -2175,9 +2176,9 @@ abroad(frankfurt).
 abroad(fredrikshavn). 
 abroad(gibraltar). 
 abroad(glasgow). 
-abroad(grønland).     %% official
-%% abroad(grønnland). %%  (country)
-abroad(gøteborg). 
+abroad(grÃ¸nland).     %% official
+%% abroad(grÃ¸nnland). %%  (country)
+abroad(gÃ¸teborg). 
 abroad(haag).  %% den Haag
 abroad(hamburg). 
 abroad(heathrow). 
@@ -2200,10 +2201,10 @@ abroad(istanbul).
 abroad(jan_mayen). 
 abroad(johannesburg). 
 abroad(jupiter). 
-abroad(jønkøping). 
+abroad(jÃ¸nkÃ¸ping). 
 abroad(kabul). 
 abroad(kairo). 
-abroad(kanariøyene). 
+abroad(kanariÃ¸yene). 
 abroad(karlstad). 
 abroad(katmandu). 
 abroad(kaunas). 
@@ -2214,10 +2215,10 @@ abroad(kreml).
 abroad(kreta). 
 abroad(kronborg).  
 abroad(kualalumpur). 
-abroad(københavn). 
-abroad(kjøbenhavn). 
-abroad(køpenhavn). 
-abroad(køpenhamn). 
+abroad(kÃ¸benhavn). 
+abroad(kjÃ¸benhavn). 
+abroad(kÃ¸penhavn). 
+abroad(kÃ¸penhamn). 
 abroad(lahti). 
 abroad(leeds). 
 abroad(leipzig). 
@@ -2225,11 +2226,11 @@ abroad(liverpool).
 %% abroad(london). %% city London bridge %% TA-101129 
 abroad(longyearbyen). 
 abroad(los_angeles). 
-abroad(luleå). 
+abroad(luleÃ¥). 
 abroad(madrid). 
 abroad(malaga). 
 abroad(mallorca). 
-abroad(malmø). 
+abroad(malmÃ¸). 
 abroad(manchester). 
 abroad(mars). 
 abroad(maryland). %% TA-110326
@@ -2243,24 +2244,24 @@ abroad(moon).
 abroad(moskva). 
 abroad(mumbay).   %% TA-110603 ?
 abroad(murmansk). %% TA-110614
-%% abroad(månen). 
+%% abroad(mÃ¥nen). 
 abroad(nairobi). 
 abroad(napoli). %% TA-101025 (restaurant)
 abroad(nebraska). 
 abroad(new_york). %% city %% TA-110603
 abroad(nilen). 
 abroad(nordpolen). 
-abroad(norrtælje).  
-   abroad(sødertælje). %% 
+abroad(norrtÃ¦lje).  
+   abroad(sÃ¸dertÃ¦lje). %% 
 abroad(oklahoma).      %% TA-110328 ?
-abroad(orknøyene).
+abroad(orknÃ¸yene).
 abroad(osaka). 
 abroad(oxford). %% TA-101122
 abroad(paris). 
 abroad(peking). 
 abroad(pluto). 
 abroad(praha). 
-abroad(påskeøya). 
+abroad(pÃ¥skeÃ¸ya). 
 abroad(rhodos). 
 abroad(rio). 
 abroad(roma). 
@@ -2281,13 +2282,13 @@ abroad(springfield). %% :-) Homer?
 abroad(stanford). 
 abroad(stockholm). 
 abroad(strasbourg). 
-abroad(strømstad). 
+abroad(strÃ¸mstad). 
 abroad(sundsvall). 
 abroad(svalbard). 
 abroad(syden). 
 abroad(sydney). 
 abroad(sydpolen). 
-abroad(sørpolen). 
+abroad(sÃ¸rpolen). 
 abroad(tallinn). 
 abroad(texas). 
 abroad(tokyo). 
@@ -2299,7 +2300,7 @@ abroad(tsjernobyl).
 abroad(turku). 
 abroad(ucsb). 
 abroad(ulanbator). 
-abroad(umeå). 
+abroad(umeÃ¥). 
 abroad(uppsala). 
 abroad(uppsalla). 
 abroad(usa). 
@@ -2312,10 +2313,10 @@ abroad(venus).
 abroad(vladivostok). 
 abroad(washington). 
 abroad(wien).  %% TA-110501
-abroad(århus). abroad(aarhus). 
-abroad(ørebro).
-abroad(øresund). 
-abroad(østersund). 
+abroad(Ã¥rhus). abroad(aarhus). 
+abroad(Ã¸rebro).
+abroad(Ã¸resund). 
+abroad(Ã¸stersund). 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2327,26 +2328,26 @@ abroad(østersund).
 %% Norwegian communities (municipalities) and counties
 
 
-community(agdenes, sør_trøndelag).
+community(agdenes, sÃ¸r_trÃ¸ndelag).
 community(alstahaug, nordland).
 community(alta, finnmark).
 community(alvdal, hedmark).
 community(andebu, vestfold).
-community(andøy, nordland).
-community(aremark, østfold).
+community(andÃ¸y, nordland).
+community(aremark, Ã¸stfold).
 community(arendal, aust_agder).
 community(asker, akershus).
-community(askim, østfold).
+community(askim, Ã¸stfold).
 community(askvoll, sogn_og_fjordane).
-community(askøy, hordaland).
+community(askÃ¸y, hordaland).
 community(audnedal, vest_agder).
-community(aukra, møre_og_romsdal).
-community(aure, møre_og_romsdal).
+community(aukra, mÃ¸re_og_romsdal).
+community(aure, mÃ¸re_og_romsdal).
 community(aurland, sogn_og_fjordane).
-community(aurskog_høland, akershus).
+community(aurskog_hÃ¸land, akershus).
 community(austevoll, hordaland).
 community(austrheim, hordaland).
-community(averøy, møre_og_romsdal).
+community(averÃ¸y, mÃ¸re_og_romsdal).
 community(balestrand, sogn_og_fjordane).
 community(ballangen, nordland).
 community(balsfjord, troms).
@@ -2355,33 +2356,33 @@ community(bardu, troms).
 community(beiarn, nordland).
 community(berg, troms). %% also station
 community(bergen, hordaland).
-community(berlevåg, finnmark).
+community(berlevÃ¥g, finnmark).
 community(bindal, nordland).
 community(birkenes, aust_agder).
-community(bjarkøy, troms).
+community(bjarkÃ¸y, troms).
 community(bjerkreim, rogaland).
-community(bjugn, sør_trøndelag).
-community(bjørnøya, svalbard).
-community(bodø, nordland).
+community(bjugn, sÃ¸r_trÃ¸ndelag).
+community(bjÃ¸rnÃ¸ya, svalbard).
+community(bodÃ¸, nordland).
 community(bokn, rogaland).
 community(bremanger, sogn_og_fjordane).
-community(brønnøy, nordland).
+community(brÃ¸nnÃ¸y, nordland).
 community(bygland, aust_agder).
 community(bykle, aust_agder).
-community(båtsfjord, finnmark).
-community(bærum, akershus).
-community(bø, nordland).
-community(bø, telemark).
-community(bømlo, hordaland).
+community(bÃ¥tsfjord, finnmark).
+community(bÃ¦rum, akershus).
+community(bÃ¸, nordland).
+community(bÃ¸, telemark).
+community(bÃ¸mlo, hordaland).
 community(dovre, oppland).
 community(drammen, buskerud).
 community(drangedal, telemark).
-community(dyrøy, troms).
-community(dønna, nordland).
+community(dyrÃ¸y, troms).
+community(dÃ¸nna, nordland).
 community(eid, sogn_og_fjordane).
-community(eide, møre_og_romsdal).
+community(eide, mÃ¸re_og_romsdal).
 community(eidfjord, hordaland).
-community(eidsberg, østfold).
+community(eidsberg, Ã¸stfold).
 community(eidskog, hedmark).
 community(eidsvoll, akershus).
 community(eigersund, rogaland).
@@ -2396,39 +2397,39 @@ community(farsund, vest_agder).
 community(fauske, nordland).
 community(fedje, hordaland).
 community(fet, akershus).
-community(finnøy, rogaland).
+community(finnÃ¸y, rogaland).
 community(fitjar, hordaland).
 community(fjaler, sogn_og_fjordane).
 community(fjell, hordaland).
 community(flakstad, nordland).
-community(flatanger, nord_trøndelag).
+community(flatanger, nord_trÃ¸ndelag).
 community(flekkefjord, vest_agder).
 community(flesberg, buskerud).
 community(flora, sogn_og_fjordane).
-community(flå, buskerud).
+community(flÃ¥, buskerud).
 community(folldal, hedmark).
 community(forsand, rogaland).
-community(fosnes, nord_trøndelag).
-community(fredrikstad, østfold).
-community(frei, møre_og_romsdal).
+community(fosnes, nord_trÃ¸ndelag).
+community(fredrikstad, Ã¸stfold).
+community(frei, mÃ¸re_og_romsdal).
 community(frogn, akershus).
 community(froland, aust_agder).
-community(frosta, nord_trøndelag).
-community(fræna, møre_og_romsdal).
-community(frøya, sør_trøndelag).
+community(frosta, nord_trÃ¸ndelag).
+community(frÃ¦na, mÃ¸re_og_romsdal).
+community(frÃ¸ya, sÃ¸r_trÃ¸ndelag).
 community(fusa, hordaland).
 community(fyresdal, telemark).
-community(førde, sogn_og_fjordane).
+community(fÃ¸rde, sogn_og_fjordane).
 community(gamvik, finnmark).
 community(gaular, sogn_og_fjordane).
 community(gausdal, oppland).
-community(gildeskål, nordland).
-community(giske, møre_og_romsdal).
-community(gjemnes, møre_og_romsdal).
+community(gildeskÃ¥l, nordland).
+community(giske, mÃ¸re_og_romsdal).
+community(gjemnes, mÃ¸re_og_romsdal).
 community(gjerdrum, akershus).
 community(gjerstad, aust_agder).
 community(gjesdal, rogaland).
-community(gjøvik, oppland).
+community(gjÃ¸vik, oppland).
 community(gloppen, sogn_og_fjordane).
 community(gol, buskerud).
 community(gran, oppland).
@@ -2436,126 +2437,126 @@ community(grane, nordland).
 community(granvin, hordaland).
 community(gratangen, troms).
 community(grimstad, aust_agder).
-community(grong, nord_trøndelag).
+community(grong, nord_trÃ¸ndelag).
 community(grue, hedmark).
 community(gulen, sogn_og_fjordane).
 community(hadsel, nordland).
-community(halden, østfold).
-community(halsa, møre_og_romsdal).
+community(halden, Ã¸stfold).
+community(halsa, mÃ¸re_og_romsdal).
 community(hamar, hedmark).
-community(hamarøy, nordland).
+community(hamarÃ¸y, nordland).
 community(hammerfest, finnmark).
-community(haram, møre_og_romsdal).
-community(hareid, møre_og_romsdal).
+community(haram, mÃ¸re_og_romsdal).
+community(hareid, mÃ¸re_og_romsdal).
 community(harstad, troms).
 community(hasvik, finnmark).
 community(hattfjelldal, nordland).
 community(haugesund, rogaland).
-community(hemne, sør_trøndelag).
+community(hemne, sÃ¸r_trÃ¸ndelag).
 community(hemnes, nordland).
 community(hemsedal, buskerud).
-community(herøy, møre_og_romsdal).
-community(herøy, nordland).
-community(hitra, sør_trøndelag).
+community(herÃ¸y, mÃ¸re_og_romsdal).
+community(herÃ¸y, nordland).
+community(hitra, sÃ¸r_trÃ¸ndelag).
 community(hjartdal, telemark).
 community(hjelmeland, rogaland).
-community(hobøl, østfold).
+community(hobÃ¸l, Ã¸stfold).
 community(hof, vestfold).
 community(hol, buskerud).
 community(hole, buskerud).
 community(holmestrand, vestfold).
-community(holtålen, sør_trøndelag).
+community(holtÃ¥len, sÃ¸r_trÃ¸ndelag).
 community(hopen, svalbard).
 community(hornindal, sogn_og_fjordane).
 community(horten, vestfold).
 community(hurdal, akershus).
 community(hurum, buskerud).
-community(hvaler, østfold).
+community(hvaler, Ã¸stfold).
 community(hyllestad, sogn_og_fjordane).
-community(hå, rogaland).
-community(hægebostad, vest_agder).
-community(høyanger, sogn_og_fjordane).
-community(høylandet, nord_trøndelag).
+community(hÃ¥, rogaland).
+community(hÃ¦gebostad, vest_agder).
+community(hÃ¸yanger, sogn_og_fjordane).
+community(hÃ¸ylandet, nord_trÃ¸ndelag).
 community(ibestad, troms).
-community(inderøy, nord_trøndelag).
+community(inderÃ¸y, nord_trÃ¸ndelag).
 community(iveland, aust_agder).
 community(jevnaker, oppland).
 community(jondal, hordaland).
-community(jølster, sogn_og_fjordane).
+community(jÃ¸lster, sogn_og_fjordane).
 community(karasjok, finnmark).
-community(karlsøy, troms).
-community(karmøy, rogaland).
+community(karlsÃ¸y, troms).
+community(karmÃ¸y, rogaland).
 community(kautokeino, finnmark).
 community(klepp, rogaland).
-community(klæbu, sør_trøndelag).
+community(klÃ¦bu, sÃ¸r_trÃ¸ndelag).
 community(kongsberg, buskerud).
 community(kongsvinger, hedmark).
-community(kragerø, telemark).
+community(kragerÃ¸, telemark).
 community(kristiansand, vest_agder).
-community(kristiansund, møre_og_romsdal).
-community(krødsherad, buskerud).
+community(kristiansund, mÃ¸re_og_romsdal).
+community(krÃ¸dsherad, buskerud).
 community(kvalsund, finnmark).
 community(kvam, hordaland).
 community(kvinesdal, vest_agder).
 community(kvinnherad, hordaland).
 community(kviteseid, telemark).
-community(kvitsøy, rogaland).
-community(kvæfjord, troms).
-community(kvænangen, troms).
-community(kåfjord, troms).
+community(kvitsÃ¸y, rogaland).
+community(kvÃ¦fjord, troms).
+community(kvÃ¦nangen, troms).
+community(kÃ¥fjord, troms).
 community(lardal, vestfold).
 community(larvik, vestfold).
 community(lavangen, troms).
 community(lebesby, finnmark).
 community(leikanger, sogn_og_fjordane).
 community(leirfjord, nordland).
-community(leka, nord_trøndelag).
-community(leksvik, nord_trøndelag).
+community(leka, nord_trÃ¸ndelag).
+community(leksvik, nord_trÃ¸ndelag).
 community(lenvik, troms).
 community(lesja, oppland).
-community(levanger, nord_trøndelag).
+community(levanger, nord_trÃ¸ndelag).
 community(lier, buskerud).
-community(lierne, nord_trøndelag).
+community(lierne, nord_trÃ¸ndelag).
 community(lillehammer, oppland).
 community(lillesand, aust_agder).
 community(lindesnes, vest_agder).
-community(lindås, hordaland).
+community(lindÃ¥s, hordaland).
 community(lom, oppland).
 community(longyearbyen, svalbard).
 community(loppa, finnmark).
 community(lund, rogaland).
 community(lunner, oppland).
-community(lurøy, nordland).
+community(lurÃ¸y, nordland).
 community(luster, sogn_og_fjordane).
 community(lyngdal, vest_agder).
 community(lyngen, troms).
-community(lærdal, sogn_og_fjordane).
-community(lødingen, nordland).
-community(lørenskog, akershus).
-community(løten, hedmark).
-community(malvik, sør_trøndelag).
+community(lÃ¦rdal, sogn_og_fjordane).
+community(lÃ¸dingen, nordland).
+community(lÃ¸renskog, akershus).
+community(lÃ¸ten, hedmark).
+community(malvik, sÃ¸r_trÃ¸ndelag).
 community(mandal, vest_agder).
-community(marker, østfold).
+community(marker, Ã¸stfold).
 community(marnardal, vest_agder).
 community(masfjorden, hordaland).
 community(meland, hordaland).
-community(meldal, sør_trøndelag).
-community(melhus, sør_trøndelag).
-community(meløy, nordland).
-community(meråker, nord_trøndelag).
-community(midsund, møre_og_romsdal).
-community(midtre_gauldal, sør_trøndelag).
+community(meldal, sÃ¸r_trÃ¸ndelag).
+community(melhus, sÃ¸r_trÃ¸ndelag).
+community(melÃ¸y, nordland).
+community(merÃ¥ker, nord_trÃ¸ndelag).
+community(midsund, mÃ¸re_og_romsdal).
+community(midtre_gauldal, sÃ¸r_trÃ¸ndelag).
 community(modalen, hordaland).
 community(modum, buskerud).
-community(molde, møre_og_romsdal).
+community(molde, mÃ¸re_og_romsdal).
 community(moskenes, nordland).
-community(moss, østfold).
-community(mosvik, nord_trøndelag).
-community(målselv, troms).
-community(måsøy, finnmark).
-community(namdalseid, nord_trøndelag).
-community(namsos, nord_trøndelag).
-community(namsskogan, nord_trøndelag).
+community(moss, Ã¸stfold).
+community(mosvik, nord_trÃ¸ndelag).
+community(mÃ¥lselv, troms).
+community(mÃ¥sÃ¸y, finnmark).
+community(namdalseid, nord_trÃ¸ndelag).
+community(namsos, nord_trÃ¸ndelag).
+community(namsskogan, nord_trÃ¸ndelag).
 community(nannestad, akershus).
 community(narvik, nordland).
 community(naustdal, sogn_og_fjordane).
@@ -2565,90 +2566,90 @@ community(nes, buskerud).
 community(nesna, nordland).
 community(nesodden, akershus).
 community(nesseby, finnmark).
-community(nesset, møre_og_romsdal).
+community(nesset, mÃ¸re_og_romsdal).
 community(nissedal, telemark).
 community(nittedal, akershus).
 community(nome, telemark).
 community(nord_aurdal, oppland).
 community(nord_fron, oppland).
 community(nord_odal, hedmark).
-community(norddal, møre_og_romsdal).
+community(norddal, mÃ¸re_og_romsdal).
 community(nordkapp, finnmark).
 community(nordre_land, oppland).
 community(nordreisa, troms).
 community(nore_og_uvdal, buskerud).
 community(notodden, telemark).
-community(nærøy, nord_trøndelag).
-community(nøtterøy, vestfold).
+community(nÃ¦rÃ¸y, nord_trÃ¸ndelag).
+community(nÃ¸tterÃ¸y, vestfold).
 community(odda, hordaland).
-community(oppdal, sør_trøndelag).
-community(oppegård, akershus).
-community(orkdal, sør_trøndelag).
+community(oppdal, sÃ¸r_trÃ¸ndelag).
+community(oppegÃ¥rd, akershus).
+community(orkdal, sÃ¸r_trÃ¸ndelag).
 community(os, hedmark).
 community(os, hordaland).
-community(osen, sør_trøndelag).
+community(osen, sÃ¸r_trÃ¸ndelag).
 community(oslo, oslo).
-community(osterøy, hordaland).
-community(overhalla, nord_trøndelag).
+community(osterÃ¸y, hordaland).
+community(overhalla, nord_trÃ¸ndelag).
 community(porsanger, finnmark).
 community(porsgrunn, telemark).
     community(porsgrund, telemark). %% TA-101129 ?
-community(radøy, hordaland).
-community(rakkestad, østfold).
+community(radÃ¸y, hordaland).
+community(rakkestad, Ã¸stfold).
 community(rana, nordland).
 community(randaberg, rogaland).
-community(rauma, møre_og_romsdal).
+community(rauma, mÃ¸re_og_romsdal).
 community(re, vestfold).
 community(rendalen, hedmark).
-community(rennebu, sør_trøndelag).
-community(rennesøy, rogaland).
-community(rindal, møre_og_romsdal).
+community(rennebu, sÃ¸r_trÃ¸ndelag).
+community(rennesÃ¸y, rogaland).
+community(rindal, mÃ¸re_og_romsdal).
 community(ringebu, oppland).
 community(ringerike, buskerud).
 community(ringsaker, hedmark).
-community(rissa, sør_trøndelag).
-community(risør, aust_agder).
-community(roan, sør_trøndelag).
+community(rissa, sÃ¸r_trÃ¸ndelag).
+community(risÃ¸r, aust_agder).
+community(roan, sÃ¸r_trÃ¸ndelag).
 community(rollag, buskerud).
-community(rygge, østfold).
-community(råde, østfold).
-community(rælingen, akershus).
-community(rødøy, nordland).
-community(rømskog, østfold).
-community(røros, sør_trøndelag).
-community(røst, nordland).
-community(røyken, buskerud).
-community(røyrvik, nord_trøndelag).
+community(rygge, Ã¸stfold).
+community(rÃ¥de, Ã¸stfold).
+community(rÃ¦lingen, akershus).
+community(rÃ¸dÃ¸y, nordland).
+community(rÃ¸mskog, Ã¸stfold).
+community(rÃ¸ros, sÃ¸r_trÃ¸ndelag).
+community(rÃ¸st, nordland).
+community(rÃ¸yken, buskerud).
+community(rÃ¸yrvik, nord_trÃ¸ndelag).
 community(salangen, troms).
 community(saltdal, nordland).
 community(samnanger, hordaland).
-community(sande, møre_og_romsdal).
+community(sande, mÃ¸re_og_romsdal).
 community(sande, vestfold).
 community(sandefjord, vestfold).
 community(sandnes, rogaland).
-community(sandøy, møre_og_romsdal).
-community(sarpsborg, østfold).
+community(sandÃ¸y, mÃ¸re_og_romsdal).
+community(sarpsborg, Ã¸stfold).
 community(sauda, rogaland).
 community(sauherad, telemark).
 community(sel, oppland).
-community(selbu, sør_trøndelag).
+community(selbu, sÃ¸r_trÃ¸ndelag).
 community(selje, sogn_og_fjordane).
 community(seljord, telemark).
 community(sigdal, buskerud).
 community(siljan, telemark).
 community(sirdal, vest_agder).
-community(skaun, sør_trøndelag).
+community(skaun, sÃ¸r_trÃ¸ndelag).
 community(skedsmo, akershus).
 community(ski, akershus).
 community(skien, telemark).
-community(skiptvet, østfold).
-community(skjervøy, troms).
-community(skjåk, oppland).
-community(skodje, møre_og_romsdal).
-community(skånland, troms).
-community(smøla, møre_og_romsdal).
-community(snillfjord, sør_trøndelag).
-community(snåsa, nord_trøndelag).
+community(skiptvet, Ã¸stfold).
+community(skjervÃ¸y, troms).
+community(skjÃ¥k, oppland).
+community(skodje, mÃ¸re_og_romsdal).
+community(skÃ¥nland, troms).
+community(smÃ¸la, mÃ¸re_og_romsdal).
+community(snillfjord, sÃ¸r_trÃ¸ndelag).
+community(snÃ¥sa, nord_trÃ¸ndelag).
 community(sogndal, sogn_og_fjordane).
 community(sokndal, rogaland).
 community(sola, rogaland).
@@ -2656,112 +2657,112 @@ community(solund, sogn_og_fjordane).
 community(songdalen, vest_agder).
 community(sortland, nordland).
 community(spitsbergen, svalbard).
-community(spydeberg, østfold).
+community(spydeberg, Ã¸stfold).
 community(stange, hedmark).
 community(stavanger, rogaland).
 community(steigen, nordland).
-community(steinkjer, nord_trøndelag).
-community(stjørdal, nord_trøndelag).
+community(steinkjer, nord_trÃ¸ndelag).
+community(stjÃ¸rdal, nord_trÃ¸ndelag).
 community(stokke, vestfold).
 community(stor_elvdal, hedmark).
 community(stord, hordaland).
-community(stordal, møre_og_romsdal).
+community(stordal, mÃ¸re_og_romsdal).
 community(storfjord, troms).
 %% community(strand, rogaland).
-community(stranda, møre_og_romsdal).
+community(stranda, mÃ¸re_og_romsdal).
 community(stryn, sogn_og_fjordane).
-community(sula, møre_og_romsdal).
+community(sula, mÃ¸re_og_romsdal).
 community(suldal, rogaland).
 community(sund, hordaland).
-community(sunndal, møre_og_romsdal).
-community(surnadal, møre_og_romsdal).
+community(sunndal, mÃ¸re_og_romsdal).
+community(surnadal, mÃ¸re_og_romsdal).
 community(sveio, hordaland).
 community(svelvik, vestfold).
-community(sykkylven, møre_og_romsdal).
-community(søgne, vest_agder).
-community(sømna, nordland).
-community(søndre_land, oppland).
-community(sør_aurdal, oppland).
-community(sør_fron, oppland).
-community(sør_odal, hedmark).
-community(sør_varanger, finnmark).
-community(sørfold, nordland).
-community(sørreisa, troms).
-community(sørum, akershus).
+community(sykkylven, mÃ¸re_og_romsdal).
+community(sÃ¸gne, vest_agder).
+community(sÃ¸mna, nordland).
+community(sÃ¸ndre_land, oppland).
+community(sÃ¸r_aurdal, oppland).
+community(sÃ¸r_fron, oppland).
+community(sÃ¸r_odal, hedmark).
+community(sÃ¸r_varanger, finnmark).
+community(sÃ¸rfold, nordland).
+community(sÃ¸rreisa, troms).
+community(sÃ¸rum, akershus).
 community(tana, finnmark).
 community(time, rogaland).
-community(tingvoll, møre_og_romsdal).
+community(tingvoll, mÃ¸re_og_romsdal).
 community(tinn, telemark).
 community(tjeldsund, nordland).
-community(tjøme, vestfold).
+community(tjÃ¸me, vestfold).
 community(tokke, telemark).
 community(tolga, hedmark).
 community(torsken, troms).
-community(tranøy, troms).
-community(tromsø, troms).
-community(trondheim, sør_trøndelag).
+community(tranÃ¸y, troms).
+community(tromsÃ¸, troms).
+community(trondheim, sÃ¸r_trÃ¸ndelag).
 community(trysil, hedmark).
-community(træna, nordland).
-community(trøgstad, østfold).
+community(trÃ¦na, nordland).
+community(trÃ¸gstad, Ã¸stfold).
 community(tvedestrand, aust_agder).
-community(tydal, sør_trøndelag).
+community(tydal, sÃ¸r_trÃ¸ndelag).
 community(tynset, hedmark).
 community(tysfjord, nordland).
 community(tysnes, hordaland).
-community(tysvær, rogaland).
-community(tønsberg, vestfold).
+community(tysvÃ¦r, rogaland).
+community(tÃ¸nsberg, vestfold).
 community(ullensaker, akershus).
 community(ullensvang, hordaland).
-community(ulstein, møre_og_romsdal).
+community(ulstein, mÃ¸re_og_romsdal).
 community(ulvik, hordaland).
 community(utsira, rogaland).
-community(vadsø, finnmark).
+community(vadsÃ¸, finnmark).
 community(vaksdal, hordaland).
 community(valle, aust_agder).
 community(vang, oppland).
-community(vanylven, møre_og_romsdal).
-community(vardø, finnmark).
+community(vanylven, mÃ¸re_og_romsdal).
+community(vardÃ¸, finnmark).
 community(vefsn, nordland).
 community(vega, nordland).
-community(vegårshei, aust_agder).
+community(vegÃ¥rshei, aust_agder).
 community(vennesla, vest_agder).
-community(verdal, nord_trøndelag).
-community(verran, nord_trøndelag).
+community(verdal, nord_trÃ¸ndelag).
+community(verran, nord_trÃ¸ndelag).
 community(vestby, akershus).
-community(vestnes, møre_og_romsdal).
+community(vestnes, mÃ¸re_og_romsdal).
 community(vestre_slidre, oppland).
 community(vestre_toten, oppland).
-community(vestvågøy, nordland).
+community(vestvÃ¥gÃ¸y, nordland).
 community(vevelstad, nordland).
 community(vik, sogn_og_fjordane).
-community(vikna, nord_trøndelag).
+community(vikna, nord_trÃ¸ndelag).
 community(vindafjord, rogaland).
 community(vinje, telemark).
-community(volda, møre_og_romsdal).
+community(volda, mÃ¸re_og_romsdal).
 community(voss, hordaland).
-community(vågan, nordland).
-community(vågsøy, sogn_og_fjordane).
-community(vågå, oppland).
-community(våler, hedmark).
-community(våler, østfold).
-community(værøy, nordland).
-community(åfjord, sør_trøndelag).
-community(ål, buskerud).
-community(ålesund, møre_og_romsdal).
-community(åmli, aust_agder).
-community(åmot, hedmark).
-community(årdal, sogn_og_fjordane).
-community(ås, akershus).
-community(åseral, vest_agder).
-community(åsnes, hedmark).
-community(øksnes, nordland).
-community(ørland, sør_trøndelag).
-community(ørskog, møre_og_romsdal).
-community(ørsta, møre_og_romsdal).
-community(østre_toten, oppland).
-community(øvre_eiker, buskerud).
-community(øyer, oppland).
-community(øygarden, hordaland).
-community(øystre_slidre, oppland).
+community(vÃ¥gan, nordland).
+community(vÃ¥gsÃ¸y, sogn_og_fjordane).
+community(vÃ¥gÃ¥, oppland).
+community(vÃ¥ler, hedmark).
+community(vÃ¥ler, Ã¸stfold).
+community(vÃ¦rÃ¸y, nordland).
+community(Ã¥fjord, sÃ¸r_trÃ¸ndelag).
+community(Ã¥l, buskerud).
+community(Ã¥lesund, mÃ¸re_og_romsdal).
+community(Ã¥mli, aust_agder).
+community(Ã¥mot, hedmark).
+community(Ã¥rdal, sogn_og_fjordane).
+community(Ã¥s, akershus).
+community(Ã¥seral, vest_agder).
+community(Ã¥snes, hedmark).
+community(Ã¸ksnes, nordland).
+community(Ã¸rland, sÃ¸r_trÃ¸ndelag).
+community(Ã¸rskog, mÃ¸re_og_romsdal).
+community(Ã¸rsta, mÃ¸re_og_romsdal).
+community(Ã¸stre_toten, oppland).
+community(Ã¸vre_eiker, buskerud).
+community(Ã¸yer, oppland).
+community(Ã¸ygarden, hordaland).
+community(Ã¸ystre_slidre, oppland).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

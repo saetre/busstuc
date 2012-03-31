@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE tucastt.pl 
 %% SYSTEM TUC
 %% CREATED TA-010127
@@ -19,7 +20,7 @@
 
    (noparentflag := true),  %% Ignore content of parentheses
 
-   (tramflag := false),     %% They don't like A/S Gråkallen
+   (tramflag := false),     %% They don't like A/S GrÃ¥kallen
 
    (parsetime_limit := 10000).  %% 333 Mhz
 

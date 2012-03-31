@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE dict_e.pl
 %% SYSTEM TUC
 %% CREATED TA-930601
@@ -239,7 +240,7 @@ compword(in,[how,many,minutes],when).
 compword(in,[particular],[]).  
 compword(in,[general],[]).  
 compword(is,[the,one],is). 
-compword(klæbu,[coaches],klæburuta).
+compword(klÃ¦bu,[coaches],klÃ¦buruta).
 compword(on,[the,other,hand],[]).
 compword(pod,[bay],[]).              %%  :-) Hal
 compword(same,[as],equal).           %%
@@ -348,7 +349,7 @@ cw(be). cw(because). cw(been). cw(bigger). cw(biggest).
    cw(both). cw(bound). cw(bravo).  cw(but). cw(by). cw(bye). 
 
 cw(can). cw(cannot). cw(clock).  % cw('can''t'). 
-cw(coaches). %% ad hoc  Klæbu coaches
+cw(coaches). %% ad hoc  KlÃ¦bu coaches
 
 cw(day).
 
@@ -748,7 +749,7 @@ synword(hwat,          what). %%  own
 synword(hwta,          what). %%  actual 
 
 synword(id,            i). %%  Web:  (I'd ==> id)  like to go to By'n 
-%% synword(idiot,         fool). ¤¤ avoid to "idiot" (fool) 
+%% synword(idiot,         fool). Â¤Â¤ avoid to "idiot" (fool) 
 synword('i''d',        i). %%  Unix  (I'd ==> 'i'd') 
 
 synword(identical,     equal).
@@ -956,7 +957,7 @@ synword(thirtyeth,     thirtieth).
 synword(those,         these). 
 synword(thou,          you). 
 
-%% synword(til,           to).      %% ? ¤¤ TA-101230 (Norwagism)
+%% synword(til,           to).      %% ? Â¤Â¤ TA-101230 (Norwagism)
 
 %% synword(till,          to).  
    
@@ -1031,8 +1032,8 @@ synword(yourself,      tuc).
 
 noisew(BS):-user:backslash(BS).   
 
-noisew('«').
-noisew('»'). 
+noisew('Â«').
+noisew('Â»'). 
 
 noisew('=').
 noisew(' ').
@@ -1042,14 +1043,14 @@ noisew('''').
 noisew('-'). 
 %% noisew('+'). %% TA-100902 
 noisew('*'). 
-noisew('¨').
+noisew('Â¨').
 noisew('#'). 
 noisew('('). %%  :- \+ user:value(noparentflag,true). %%  Not nec
 noisew(')'). %%  :- \+ user:value(noparentflag,true). 
 noisew(',').
 noisew(';').
-noisew('¡'). 
-noisew('¯').
+noisew('Â¡'). 
+noisew('Â¯').
 
 
 noisew(actual). 

@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE  getphonedir.pl
 %% SYSTEM TeleTUC
 %% CREATED TA-020621
@@ -133,7 +134,7 @@ create_tags(L) :- % ,Tags):-  %% tags ... mostly for traceing
     update_compnames(Compnames).                            %% MTK 021018
 
 %% HitMark    X/Y    Exact hits/ All hits
-%% Det er fordi deltreff også inkluderer de eksakte.
+%% Det er fordi deltreff ogsÃ¥ inkluderer de eksakte.
 %% KUN deltreff = deltreff - eksakte
 
 
@@ -280,7 +281,7 @@ update_tags(K):-
 %
 %create_taggercall(L2,PAT):-
 %
-%    append_synnames(L2,L3), %% add synnames (torbjorn=torbjørn)
+%    append_synnames(L2,L3), %% add synnames (torbjorn=torbjÃ¸rn)
 %                            %%  BEFORE taggercall
 %    
 %    remove_hasardousnames(L3,L4), %% hvilken tittel har  per borgesen
@@ -339,7 +340,7 @@ hazardous_tagname(X):- %% TA-060213
 %ltoplus([],[]). 
 %
 %
-%plustoatom(A+B,AB):- !,%% jævla hack
+%plustoatom(A+B,AB):- !,%% jÃ¦vla hack
 %    plustoatom(A,A1),
 %    plustoatom(B,B1),
 %    append_atomlist([A1,'+',B1],AB).

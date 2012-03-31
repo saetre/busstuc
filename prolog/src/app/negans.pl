@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE negans.pl
 %% SYSTEM BUSSTUC/BUSTER
 %% CREATED  TA-990212
@@ -201,7 +202,7 @@ makenegative((new,_),Prog,Ans)  :-
 /* SUSPENDED   kople sammen reiser med tidspunkt
 makenegative((new,P),Q,Ans)  :-
    \+  sequence_member(message(_),Q),
-    sequence_member(srel/together/_/_/_,P), %% vi gjør noe sammen
+    sequence_member(srel/together/_/_/_,P), %% vi gjÃ¸r noe sammen
     Ans=(bcpbc(notpossible),nl),  
     progtrace(4,ne45together2),!.
 */
@@ -209,10 +210,10 @@ makenegative((new,P),Q,Ans)  :-
 
 makenegative((new,_),_,Ans)        :- 
     progtrace(4,ne23),!,      %%% Ans = (bcpbc(ok),period). 
-    Ans = ( bcpbc(ok),nl). %% NB negative ? Jeg er på dragvoll
+    Ans = ( bcpbc(ok),nl). %% NB negative ? Jeg er pÃ¥ dragvoll
 
 % 1 ?
-makenegative((which(A),P),Q,Ans)   :-   %% Hvilke busser må jeg ta
+makenegative((which(A),P),Q,Ans)   :-   %% Hvilke busser mÃ¥ jeg ta
     sequence_member(srel/(with)/frequency/A/_,P),
     getactualtime(Q,Date,Day,Clock),                               
     notthenanswer(Date,Day,Clock,Q,Ans), 
@@ -729,7 +730,7 @@ trytofool2(test,  _ isa turing_test, cannotanswermyself). %% TA-100914
 trytofool2(test,  doit/be1/'I'/_,cannotanswer).     %%   er jeg ...
 trytofool2(test,  dob/like/_/tuc/_,cannotanswer). %% liker jeg deg ?
 
-trytofool2(test,  dob/get/tuc/_/_,cannotanswer).   %%  har du fått... #1 
+trytofool2(test,  dob/get/tuc/_/_,cannotanswer).   %%  har du fÃ¥tt... #1 
 
 trytofool2(explain,  _ ,cannotanswer). %% hvorfor er du et system
 
@@ -830,7 +831,7 @@ trytofool(adj/_/female/tuc/_,    thatisimpossible).
 trytofool(adj/_/free/tuc/_,      thatisimpossible). %%  :-) 
 trytofool(adj/_/full/tuc/_,      thatisimpossible). %%  :-) // generic drunk
 trytofool(adj/_/funny/_/_,       cannotanswer). 
-%% trytofool(adj/_/good/tuc/_,    thanks).   % vil du være så snill !!!
+%% trytofool(adj/_/good/tuc/_,    thanks).   % vil du vÃ¦re sÃ¥ snill !!!
 trytofool(adj/_/happy/tuc/_,     thatisimpossible). 
 %% trytofool(adj/_/happy/'I'/_,     cannotanswer).  %% glad i// jeg er glad
 trytofool(adj/_/humoristic/_/_,  nosenseofhumour). %% TA-11025 \* ou
@@ -865,7 +866,7 @@ trytofool(adj/_/unknown/_/_,      cannotanswer).
 %   error message from spcific days
 
 trytofool(adj/_/tired/tuc/_,   thatisimpossible).  
-trytofool(adj/_/ugly/tuc/_,    thatisimpossible).   %% gå i stygt vær 
+trytofool(adj/_/ugly/tuc/_,    thatisimpossible).   %% gÃ¥ i stygt vÃ¦r 
 %% trytofool(adj/_/wrong/tore/_,  thatisimpossible). 
 
 trytofool(srel/on/language/english/_, noneedtoanswer). %% TA-110331
@@ -902,7 +903,7 @@ trytofool(has/agent/sister/tuc/_,thatisimpossible).
 
 trytofool(has/agent/life/tuc/_,thatisimpossible). 
 
-trytofool(has/agent/relative/tuc/_,thatisimpossible). %% søsken
+trytofool(has/agent/relative/tuc/_,thatisimpossible). %% sÃ¸sken
 
 trytofool(has/agent/vacation/tuc/_,thatisimpossible).   
 
@@ -1084,7 +1085,7 @@ trytofool(dob/do1/tuc/_/_,    howtuchelp).
 trytofool(dob/drive/tuc/_/_,     sorrycannot). 
 trytofool(doit/drive/tuc/_,       sorrycannot).
 
-trytofool(doit/end/'I'/_,         bye).   %% jeg slutter på jobb
+trytofool(doit/end/'I'/_,         bye).   %% jeg slutter pÃ¥ jobb
 
 %% trytofool(dob/get/tuc/_/_, thatisimpossible). 
 
@@ -1106,7 +1107,7 @@ trytofool(dob/meet/_/tuc/_,      thatisimpossible).
 trytofool(dob/believe/tuc/_/_,   thatisimpossible).
 
 trytofool(dob/mean/tuc/_/_,      thatisimpossible).  
-trytofool(doit/meet2/'I'/_,       thatisimpossible).           %% kan vi(jeg) møteS 
+trytofool(doit/meet2/'I'/_,       thatisimpossible).           %% kan vi(jeg) mÃ¸teS 
 %% trytofool(dob/modify/_/_/_,      cannotanswer).  %% -> no error report
 trytofool(dob/move/_/_/_,   cannotanswer).  %%  transitive move   
 
@@ -1152,7 +1153,7 @@ trytofool(doit/wait/tuc/_,        ok).
 trytofool(dob/want/tuc/_/_,        thatisimpossible). 
 trytofool(dob/use/_/tuc/_,howtuchelp). 
 %%% trytofool(doit/exist/tuc/_,  howtuchelp). %% hvorfor eksisterer du %% TA-110404 
-trytofool(doit/work/tuc/_,  howtuchelp).  %% hva driver du med  %%  virker du dårlig? 
+trytofool(doit/work/tuc/_,  howtuchelp).  %% hva driver du med  %%  virker du dÃ¥rlig? 
 trytofool(dob/use/tuc/_/_,sorrycannot). %% bruk en fullstendig setning  
                              
 %% trytofool(dob/be/tuc/_/_, thatisimpossible).   %% noaction ?%% tuc er oppe %% TA-101018

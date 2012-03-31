@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 :- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
 :- ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators
 
@@ -15,7 +16,7 @@ is	replace (timenow(X), keepafter(X, A, B))
 id	[]
 ip	timenow(Y).
 
-toplace rule                       %% ØF-990303
+toplace rule                       %% Ã˜F-990303
 is     present departure(_, Place, _, Dep), 
        present depset(to, DepList)
 id     not frame_setvalue(where::arrival, _),
@@ -23,7 +24,7 @@ id     not frame_setvalue(where::arrival, _),
 ip     varmember(Dep, DepList),
        \+ Place = free(_).
 
-fromplace rule                       %% ØF-990303
+fromplace rule                       %% Ã˜F-990303
 is     present departure(_, Place, _, Dep), 
        present depset(from, DepList)
 id     not frame_setvalue(where::departure, _),
@@ -32,21 +33,21 @@ ip     varmember(Dep, DepList),
        \+ Place = free(_).
 
 
-fromafter rule                       %% ØF-990303
+fromafter rule                       %% Ã˜F-990303
 is     present depset(from, DepList),
        present keepafter(Time, Dep, _)
 id     not frame_setvalue((when)::departure::after, _),
        add frame_setvalue((when)::departure::after, Time)
 ip     bound(Time), varmember(Dep, DepList).
 
-frombefore rule                       %% ØF-990303
+frombefore rule                       %% Ã˜F-990303
 is     present depset(from, DepList),
        present keepbefore(Time, Dep, _)
 id     not frame_setvalue((when)::departure::before, _),
        add frame_setvalue((when)::departure::before, Time)
 ip     bound(Time), varmember(Dep, DepList).
 
-frombefore1 rule                       %% ØF-990303
+frombefore1 rule                       %% Ã˜F-990303
 is     present depset(from, DepList),
        present keepbefore1(Time, Dep, _)
 id     not frame_setvalue((when)::departure::before, _),
@@ -62,21 +63,21 @@ id     not frame_setvalue((when)::departure::after, _),
        add frame_setvalue((when)::departure::before, HighTime)
 ip     bound(LowTime), bound(HighTime), varmember(Dep, DepList).
 
-toafter rule                       %% ØF-990303
+toafter rule                       %% Ã˜F-990303
 is     present depset(to, DepList),
        present keepafter(Time, Dep, _)
 id     not frame_setvalue((when)::arrival::after, _),
        add frame_setvalue((when)::arrival::after, Time)
 ip     bound(Time), varmember(Dep, DepList).
 
-tobefore rule                       %% ØF-990303
+tobefore rule                       %% Ã˜F-990303
 is     present depset(to, DepList),
        present keepbefore(Time, Dep, _)
 id     not frame_setvalue((when)::arrival::before, _),
        add frame_setvalue((when)::arrival::before, Time)
 ip     bound(Time), varmember(Dep, DepList).
 
-tobefore1 rule                       %% ØF-990303
+tobefore1 rule                       %% Ã˜F-990303
 is     present depset(to, DepList),
        present keepbefore1(Time, Dep, _)
 id     not frame_setvalue((when)::arrival::before, _),
@@ -92,7 +93,7 @@ id     not frame_setvalue((when)::arrival::after, _),
        add frame_setvalue((when)::arrival::before, HighTime)
 ip     bound(LowTime), bound(HighTime), varmember(Dep, DepList).
 
-tobus rule                       %% ØF-990303
+tobus rule                       %% Ã˜F-990303
 is     present departure(Bus, _, _, Dep), 
        present depset(to, DepList)
 id     not frame_setvalue(arrival::bus, _),
@@ -100,7 +101,7 @@ id     not frame_setvalue(arrival::bus, _),
 ip     varmember(Dep, DepList),
        \+ Bus = free(_).
 
-frombus rule                       %% ØF-990303
+frombus rule                       %% Ã˜F-990303
 is     present departure(Bus, _, _, Dep), 
        present depset(from, DepList)
 id     not frame_setvalue(bus, _),
@@ -108,7 +109,7 @@ id     not frame_setvalue(bus, _),
 ip     varmember(Dep, DepList),
        \+ Bus = free(_).
 
-atday rule                       %% ØF-990304
+atday rule                       %% Ã˜F-990304
 is     present atday(X),
        not present today(X)
 id     not frame_setvalue((when)::day, _),

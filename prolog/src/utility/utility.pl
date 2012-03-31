@@ -936,7 +936,6 @@ writelist(Z):-
 outputlist(Z):-   
   for(member(X,Z),output(X)).
 
-
 %%%%% THE END %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE makeframe2.pl
 %% SYSTEM TELEBUSTER
 %% CREATED TLF-030409 TA-081107
@@ -210,7 +211,7 @@ is	replace (timenow2(DD,X), keepafter(X, A, B)) %% TA-041006
 id	[]
 ip	timenow2(DD,Y).
 
-toplace rule                       %% ØF-990303
+toplace rule                       %% Ã˜F-990303
 is     present departure(_, Place, _, Dep), 
        present depset(to, DepList)
 id     not frame_setvalue(where::arrival, _),
@@ -218,7 +219,7 @@ id     not frame_setvalue(where::arrival, _),
 ip     varmember(Dep, DepList),
        \+ Place = free(_).
 
-fromplace rule                       %% ØF-990303
+fromplace rule                       %% Ã˜F-990303
 is     present departure(_, Place, _, Dep), 
        present depset(from, DepList)
 id     not frame_setvalue(where::departure, _),
@@ -241,21 +242,21 @@ ip     % varmember(Dep, DepList),
 
 
 
-fromafter rule                       %% ØF-990303
+fromafter rule                       %% Ã˜F-990303
 is     present depset(from, DepList),
        present keepafter(Time, Dep, _)
 id     not frame_setvalue((when)::departure::after, _),
        add frame_setvalue((when)::departure::after, Time)
 ip     bound(Time), varmember(Dep, DepList).
 
-frombefore rule                       %% ØF-990303
+frombefore rule                       %% Ã˜F-990303
 is     present depset(from, DepList),
        present keepbefore(Time, Dep, _)
 id     not frame_setvalue((when)::departure::before, _),
        add frame_setvalue((when)::departure::before, Time)
 ip     bound(Time), varmember(Dep, DepList).
 
-frombefore1 rule                       %% ØF-990303
+frombefore1 rule                       %% Ã˜F-990303
 is     present depset(from, DepList),
        present keepbefore1(Time, Dep, _)
 id     not frame_setvalue((when)::departure::before, _),
@@ -271,7 +272,7 @@ id     not frame_setvalue((when)::departure::after, _),
        add frame_setvalue((when)::departure::before, HighTime)
 ip     bound(LowTime), bound(HighTime), varmember(Dep, DepList).
 
-toafter rule                       %% ØF-990303
+toafter rule                       %% Ã˜F-990303
 is     present depset(to, DepList),
        present keepafter(Time, Dep, _)
 id     not frame_setvalue((when)::arrival::after, _),
@@ -330,14 +331,14 @@ id     present framevalue(where::arrival,_NTH_), % have a arrival
 ip     bound(Time), varmember(Dep, DepList).
 
 
-tobefore rule                       %% ØF-990303
+tobefore rule                       %% Ã˜F-990303
 is     present depset(to, DepList),
        present keepbefore(Time, Dep, _)
 id     not frame_setvalue((when)::arrival::before, _),
        add frame_setvalue((when)::arrival::before, Time)
 ip     bound(Time), varmember(Dep, DepList).
 
-tobefore1 rule                       %% ØF-990303
+tobefore1 rule                       %% Ã˜F-990303
 is     present depset(to, DepList),
        present keepbefore1(Time, Dep, _)
 id     not frame_setvalue((when)::arrival::before, _),
@@ -355,7 +356,7 @@ ip     bound(LowTime), bound(HighTime), varmember(Dep, DepList).
 
 
 
-nils rule     %% AD HOC Når går buss 5/ Dragvoll    %% TA-031110
+nils rule     %% AD HOC NÃ¥r gÃ¥r buss 5/ Dragvoll    %% TA-031110
 is     present departure(_, Dragvoll, _, Dep), 
        present depset(unknown,[Dep])   %% depset(unknown -> depset(to %% TA-031111
 
@@ -373,7 +374,7 @@ ip     \+ Dragvoll = free(_).
 
 
 
-tobus rule                       %% ØF-990303
+tobus rule                       %% Ã˜F-990303
 is     present departure(Bus, _, _, Dep), 
        present depset(to, DepList)
 id     not frame_setvalue(bus, _),   %% JFR frombus
@@ -385,7 +386,7 @@ id     not frame_setvalue(bus, _),   %% JFR frombus
 ip     varmember(Dep, DepList),
        \+ Bus = free(_). %%%%%% TA-021029 Panic // true
 
-frombus rule                       %% ØF-990303
+frombus rule                       %% Ã˜F-990303
 is     present departure(Bus, _, _, Dep), 
        present depset(from, DepList)
 id     not frame_setvalue(bus, _),
@@ -393,7 +394,7 @@ id     not frame_setvalue(bus, _),
 ip     varmember(Dep, DepList),
        \+ Bus = free(_).
 
-atday rule                       %% ØF-990304
+atday rule                       %% Ã˜F-990304
 is     present atday(X),
        not present today(X)
 id     not frame_setvalue(day, _), %% separated from when %% TA-051117

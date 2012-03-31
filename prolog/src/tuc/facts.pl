@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE facts.pl
 %% SYSTEM tuc
 %% CREATED  TA-921129
@@ -43,8 +44,8 @@
 
 jonas isa firstname.
 follesoe isa lastname. %% http://jonas.follesoe.no
-follesø isa lastname.  %% experiment / spammer
-%% no isa country.     %% TA-101129 nå
+follesÃ¸ isa lastname.  %% experiment / spammer
+%% no isa country.     %% TA-101129 nÃ¥
 
 appstore isa system. %% TA-110707
 api   isa system. %% ? %% TA-110120
@@ -120,7 +121,7 @@ dis isa department.    %% rough (section)
 
 may17  isa date. 
 
-førsteamanuensis isa title. %%  tele
+fÃ¸rsteamanuensis isa title. %%  tele
 
 pink isa colour. %% only noun, experiment
 
@@ -137,9 +138,9 @@ football isa game.
 %% harald  isa king. 
 
 
-anna isa robot. %% Anna på IKEA
+anna isa robot. %% Anna pÃ¥ IKEA
 ruth isa robot. %% Teams buss oracle
-sara isa robot. %% Sara på 1881 opplysningen
+sara isa robot. %% Sara pÃ¥ 1881 opplysningen
 
 hal     isa computer. %%  2001 :-)
 
@@ -174,8 +175,8 @@ X isa tram:-
 atb isa company. 
 fara isa company. %% TA-110303
 
-gråkallbanen    isa tram.  
-gråkallbanen    isa otherbus. 
+grÃ¥kallbanen    isa tram.  
+grÃ¥kallbanen    isa otherbus. 
 
 pondus  isa driver. %% :-) 
 
@@ -185,7 +186,7 @@ tbanen          isa underground.  %%  (non existent)
 visa  isa card.  
 mastercard isa card. %%
 %% gardermoen isa airport. %% yes, but foreign 
-værnes     isa airport.
+vÃ¦rnes     isa airport.
 
 the_hitchhikers_guide_to_the_galaxy isa book.  %%  :-)
 
@@ -194,7 +195,7 @@ ais  isa company. %%   Artificial Intelligence Solutions
 narvesen isa company. %% sell tickets %% TA-100122
 seven_eleven isa company. %% 
 
-sørtrøndelag  isa county.  
+sÃ¸rtrÃ¸ndelag  isa county.  
 lingit  isa company. 
 
 
@@ -209,10 +210,10 @@ nettbuss  isa company. % confuse otherbus ?? %% TA-100209
 %% nsb isa company.  %% problems ? // confuse TS %% TA-101215
 
 %% vinmonopolet isa company. %%  :-) %% -> undersp place
-stfk isa company.  %% Sør-Trøndelag fylkeskommune %% TA-100113
+stfk isa company.  %% SÃ¸r-TrÃ¸ndelag fylkeskommune %% TA-100113
 team isa company. 
-tkf isa company.   %% Trøndelag Kollektivtrafikk %% ?
-tkt isa company.   %% Trøndelag Kollektivtrafikk %% ?
+tkf isa company.   %% TrÃ¸ndelag Kollektivtrafikk %% ?
+tkt isa company.   %% TrÃ¸ndelag Kollektivtrafikk %% ?
 tt isa company.    %% Trondheim Trafikkselskap (old)
 tmn isa company.   %% Trafikanten MN 
 
@@ -229,15 +230,15 @@ helsebussen     isa otherbus.
 hemnebussen     isa otherbus. 
 hob             isa otherbus. %% company. 
 hobbuss         isa otherbus. %% same
-klæburuten     isa otherbus. %% company.      %%   klæburuten går lørdag ? 
+klÃ¦buruten     isa otherbus. %% company.      %%   klÃ¦buruten gÃ¥r lÃ¸rdag ? 
 lavprisekspressen isa otherbus. 
 regionalbusser isa otherbus.
 %% vassfjellbussen      isa otherbus. %% by synname 
 
 melkeruten     isa otherbus. %% :-) %% TA-100130
-møreekspressen isa otherbus. 
-mørelinja      isa otherbus. 
-mørelinjen     isa otherbus. 
+mÃ¸reekspressen isa otherbus. 
+mÃ¸relinja      isa otherbus. 
+mÃ¸relinjen     isa otherbus. 
 nettbuss       isa otherbus.
 nettbussen     isa otherbus.  
 nettbussene    isa otherbus. 
@@ -245,7 +246,7 @@ orkangerbussen isa otherbus.
 orkdalsbussene isa otherbus.
 sbmtd          isa otherbus. %%v Santa Barbara
 skibussen      isa otherbus. %% (skistua? 10?)
-sørlandsekspressen isa otherbus. %% TA-100130
+sÃ¸rlandsekspressen isa otherbus. %% TA-100130
 timekspressen  isa otherbus. 
 timeekspressen  isa otherbus. 
 timesekspressen  isa otherbus. 
@@ -254,13 +255,13 @@ timexpressen   isa otherbus.
 timeekspress   isa otherbus.   %% ETC 
 timeekspressbuss   isa otherbus. 
 trysilbussen   isa otherbus. 
-trønderbanen   isa otherbus. %%  ( special NSB)
-trønderbilene  isa otherbus. 
+trÃ¸nderbanen   isa otherbus. %%  ( special NSB)
+trÃ¸nderbilene  isa otherbus. 
 ventelo        isa otherbus. %% TA-100409
 veolia         isa otherbus. 
 
-østerdalsekspressen  isa  otherbus. 
-østerdalsbussen  isa  otherbus. 
+Ã¸sterdalsekspressen  isa  otherbus. 
+Ã¸sterdalsbussen  isa  otherbus. 
 
 microsoft isa company. %%  :-(
 
@@ -295,11 +296,11 @@ maundy_thursday isa date. %%  NB correct, not monday
 good_friday  isa date.  
 
 % langfredag   isa date. 
-% skjærtorsdag isa date. 
+% skjÃ¦rtorsdag isa date. 
 % kristi_himmelfartsdag isa date. %%  (ascension_day)
 
 john_f_kennedy_day  isa date. 
-oddvar_brå_day isa date.  
+oddvar_brÃ¥_day isa date.  
 arvid_holme_day isa date.
 dooms_day  isa date. 
 
@@ -346,7 +347,9 @@ sone3 isa zone.
 %% web   isa network. %% Technical:  web address 
 
 
-tore_amble isa man :- \+ value(teleflag,true). 
+tore_amble isa man :- \+ value(teleflag,true).
+
+trond_engell isa man :- \+ value(teleflag,true). %% TE-120215
 
 arvid_holme isa man :- \+ value(teleflag,true). 
 
@@ -424,10 +427,10 @@ vista   isa  system.
 X  isa city :- city(X). %%  busdat.pl 
 
 
-sør isa direction. 
+sÃ¸r isa direction. 
 nord isa direction.
 vest isa direction.
-øst isa direction.
+Ã¸st isa direction.
 
 
 
@@ -445,7 +448,7 @@ gresk     isa  language.
 mysql     isa  system.    %% (language?)
 norwegian isa  language.
 nynorsk   isa  language. % no translation :-) 
-bokmål    isa  language.
+bokmÃ¥l    isa  language.
 samisk    isa  language. % no translation
 spansk    isa  language.
 spanish   isa  language. 
@@ -644,8 +647,11 @@ X isa number :- %% Only generated if X is nonvar
 tore isa firstname.  %% Just to have a proper name
 amble isa lastname.  %%
 
+trond isa firstname. %% TE-120215
+engell isa lastname.
+
 ketil isa firstname.
-bø    isa lastname.
+bÃ¸    isa lastname.
 
 arvid isa firstname.
 holme isa lastname.
