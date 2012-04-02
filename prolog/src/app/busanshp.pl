@@ -2,7 +2,7 @@
 %% FILE busanshp.pl
 %% SYSTEM BUSTUC/BUSTER
 %% CREATED  JB-970220 
-%% REVISED  EH-031120 TA-110503 RS-111025
+%% REVISED  EH-031120 TA-110503 RS-111025 RS-120402
 
 %%%%%%%%% COMMON VERSION BUSTER/BUSTUC  %%%%%%%%%%%%%%%
 
@@ -27,6 +27,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Version Based On the principle that the GoogleMapInfo is printed out
+
+
+:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
 
 
 
@@ -191,11 +194,6 @@ xstation_trace(_Rid,_Gløshaugen_syd,_Nardosenteret,[]). %% error berg_studentby
 
 
 
-outdeplist00(Deps,_Day,_Opts,_DirPlace,true,_) :-   %% Pre caution
-    var(Deps),                                 
-    write('*** No departures ***'),nl,
-    !.
-
 selectmap(nil,[]):-!.      %% was var (not assigned)
 selectmap([Dep|_],Dep):-!. %% only first of the printed versions
 selectmap(X,X).  %% 
@@ -229,6 +227,11 @@ outfromtocorr(Opts,Dep,OutDep,Mid01,OutAns,MAP):- %% TA-110511
 
 %%%  OUTDEPLIST1
  
+%% RS-120402 Problematic BusApp: twonotrans <breaks here on "til lade"> twowithtrans 
+outdeplist00(Deps,_Day,_Opts,_DirPlace,true,_) :-   %% Pre caution
+    var(Deps),                                 
+    write('*** No departures ***'),nl,
+    !.
 
 outdeplist00(Deps,Day,Opts,DirPlace,Out,MAP) :-  
     sort_deps_deptime(Deps,Deps1),
@@ -1010,6 +1013,11 @@ printdatetimetoalarmstring:-
    !,
    printdatetimetoalarmstring2(Date,Time).
 
+printdatetimetoalarmstring:-
+   pay1,
+   printmess1(toolate). 
+
+
 printdatetimetoalarmstring2(Date,Time):-
    adjust2400(Date,Time,Date1,Time1), %% 20040830240000 -> 2004083100000 
 
@@ -1018,11 +1026,6 @@ printdatetimetoalarmstring2(Date,Time):-
    makedatetimetoalarmstring(Date1,Time1,WS),
    write(WS),nl.
    
-
-printdatetimetoalarmstring:-
-   pay1,
-   printmess1(toolate). 
-
 
 adjust2400(Date,Time,Date1,Time1):- %%  20040830240000 -> 2004083100000 
     Time=2400,
@@ -1375,15 +1378,17 @@ faenta(TDlist,Times,Durations,SetofStations):-
 
 create_smartdep_entry(_,_,_,_) :- \+  value(smartdepflag,true),!.
   
-create_smartdep_entry(Intstation1,TimesDurations,DirPlace,Create_smartdep_entry):- %% TA-110405
+create_smartdep_entry(Intstation1,TimesDurations, _DirPlace, Create_smartdep_entry):- %% TA-110405    %%RS-120402
     value(smartdepflag,true),
-    firstmem(TimesDurations,td(Time,RID,Duration,_Intstation2)),
+    %%firstmem(TimesDurations,td(Time,RID,Duration,_Intstation2)),
+    firstmem(TimesDurations,td(Time,RID,Duration, _Instation)),
 
     ridtobusnr(RID,BusNo),
     localstatno(RID,Intstation1,Fullstatname1,Localstatno1),
 
 
-    Create_smartdep_entry = smartdepentry(Fullstatname1,Localstatno1,BusNo,Time,Duration,DirPlace),
+%%    Create_smartdep_entry = smartdepentry(Fullstatname1,Localstatno1,BusNo,Time,Duration,DirPlace),
+    Create_smartdep_entry = smartdepentry(Fullstatname1,Localstatno1,BusNo,Time,Duration,_Instation2),
 
     !.
 
@@ -4732,7 +4737,7 @@ bwt1(T0)     :-
     (L==0,Aft>0 -> L12=12;L12=L), 
  
     write(L12),
-    write('.'),     %% RS-111025 Caused problems for AtB's Web-server script, which strips from colon...
+    write(':'),     %% RS-111025 Caused problems for AtB's Web-server script, which strips from colon... Fixed 120401
 
     (M < 10 ->  write('0');true),
     write(M),

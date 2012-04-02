@@ -10119,7 +10119,7 @@ alias_name(linje1,trikken).
 alias_name(team,tt). 
 alias_name(teamtrafikk,tt). 
 
-alias_station(lade_alle_80,lade). %% TA-100802 old station-> neib
+alias_station(lade_alle_80,lade). %% TA-100802 old station-> neibourhood
 
 alias_station(berg_østre,østre_berg). %% AtB
 

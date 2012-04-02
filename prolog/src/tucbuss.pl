@@ -22,6 +22,7 @@
 ?-  (gpsflag := true), %% NB TEST VERSION, NTNU Server
 
     (smsflag := false),  %%  NB NTNU server
+%%    (smsflag := true),  %%  NB NTNU server %% Testing missing neiborhood mapping for "til lade"
 
  %%  (internal_airbusflag := true), %% TA-101101 // No. Included pro forma
 
