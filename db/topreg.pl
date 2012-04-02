@@ -2,7 +2,7 @@
 %% FILE topreg.pl
 %% SYSTEM BussTUC DOMAIN TT
 %% CREATED TA-981231
-%% REVISED TA-110622
+%% REVISED TA-120402
 
 
 %% Contains the important information about route modules
@@ -93,7 +93,7 @@ period_message( r1630_111201,
 ['AtB Routes for Tram 2012',
  'AtB Ruter for Trikk 2012']).
 
-period_message( r1602_1204,
+period_message( r1602_120401,
 ['AtB Routes for Easter 2012',
  'AtB Ruter påska 2012']).
 
