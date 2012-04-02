@@ -12636,7 +12636,7 @@ noun_complex(sin,Mars:Planet,Mars isa Planet) --->  %% ruteperioden 'r1613_10032
 
 % airport nardo \= nardo isa neighbourhood
 
-noun_complex(sin,Mars:Place,Mars isa Planet) --->  %%  TA-110816planeten Mars 
+noun_complex(sin,Mars:Place,Mars isa Planet) --->  %%  TA-110816 Ambig: planeten Mars 
      w(noun(Planet,sin,_def,n)),  
      not_look_ahead([du]), %% = name tuc  
      w(name(Mars,n,Neib)),                  %% RUTETILBUDET skjærtorsdag:
