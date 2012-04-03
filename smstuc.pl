@@ -7,7 +7,7 @@
 
 ?-prolog_flag(unknown,_,fail).
 
-?- %% [sicstus4compatibility],
+?- %%[sicstus4compatibility],   %% Only used in drucke_baum
 
    ['tucsms.pl'],
    ['busroute.pl'].
@@ -18,6 +18,4 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 
