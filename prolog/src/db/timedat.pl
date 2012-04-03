@@ -225,21 +225,21 @@ dedicated_date(date(YYYY,12,24)):- this_year(YYYY).
 %% These are ad hoc definitions %% TA-100106
 
 
-%%%  NOT valid 2009, own schedule
+%%%  NOT valid 2011, own schedule
 %%
-%% date_day_map(Date,  sunday):-  
-%%     named_date(easterday2,Date).   %% 2 Påskedag Ad Hoc
-
-%% date_day_map(Date,   saturday):-   %% ad hoc
-%%     named_date(palm_monday,Date).
-%%
-
-%% date_day_map(Date,   saturday):-   %% ad hoc
-%%     named_date(palm_tuesday,Date).
-%%
-
-%% date_day_map(Date,   saturday):-   %% ad hoc
-%%     named_date(palm_wednesday,Date).
+% date_day_map(Date,  sunday):-  
+%     named_date(easterday2,Date).   %% 2 Påskedag Ad Hoc
+%
+% date_day_map(Date,   saturday):-   %% ad hoc
+%     named_date(palm_monday,Date).
+%
+%
+% date_day_map(Date,   saturday):-   %% ad hoc
+%     named_date(palm_tuesday,Date).
+%
+%
+% date_day_map(Date,   saturday):-   %% ad hoc
+%     named_date(palm_wednesday,Date).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -251,7 +251,7 @@ date_day_map(date(_20XX,05,01), sunday).   % 1.mai Fix, NOT separate route modul
 
 date_day_map(Date,  sunday):-     %  KrHf- %% NOT OWN route module
      named_date(ascension_day,Date),
-     \+ named_date(may17,Date).   
+     \+ named_date(may17,Date).
 
 date_day_map(Date,  sunday):-  named_date(whitsun_day,Date).    %  1. pinsedag 
   

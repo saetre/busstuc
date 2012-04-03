@@ -6,6 +6,7 @@
 %% Utility Routines that are not built in 
 
 :- ensure_loaded( '../sicstus4compatibility' ). %, [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+:- ensure_loaded( '../declare' ). %, [ := /2 etc. ] ).  %% RS-120403
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
