@@ -1326,7 +1326,7 @@ outsmalldeps0([ x3(TimesDuration,BusN,Station)|BusDeps],DirPlace, %% TimesDurati
 	 outsmalldeps2(duration,Station,TimesDuration,DirPlace,OutDeps2,Opts),  
 	 ensure_removed([BusN,Station,TimesDuration],BusDeps,BusDeps2),
          
-         ( BusDeps \== [] -> output(',') ; true ), %%Comma between list elements %%TE-120207
+         ( BusDeps \== [] -> out_comma(_) ; true ), %%Comma between list elements %%TE-120406
                  
 	 outsmalldeps0(BusDeps2,DirPlace,OutDeps,Opts).
 
@@ -1374,7 +1374,9 @@ faenta(TDlist,Times,Durations,SetofStations):-
 ) .
 
 
-
+out_comma(_) :- %% Printing comma if smartdepflag is set %% TE-120406
+    value(smartdepflag,true),
+    output(',').
 
 create_smartdep_entry(_,_,_,_) :- \+  value(smartdepflag,true),!.
   
@@ -1391,8 +1393,6 @@ create_smartdep_entry(Intstation1,TimesDurations, _DirPlace, Create_smartdep_ent
     Create_smartdep_entry = smartdepentry(Fullstatname1,Localstatno1,BusNo,Time,Duration,_Instation2),
 
     !.
-
-
 
 create_smartdep_entry2(_,_,_,_,_,_) :-
     \+ value(smartdepflag,true),
@@ -1802,8 +1802,7 @@ outfromtocorr1(_Opts,Dep,OutDep1,Mid01,(OutDep2,earliesttimes),corr(Dep,Mid01)):
                                             %% TA-110406
    print_smartdep_entry(Smartdep_entry1),
 
-
-   output(','), %% Comma between list elements %%TE-120208
+   out_comma(_), %% Comma between list elements %%TE-120406
    
    difftime( EndTime,OnTime,Duration2),
 
