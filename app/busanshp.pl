@@ -1375,8 +1375,8 @@ faenta(TDlist,Times,Durations,SetofStations):-
 
 
 out_comma(_) :- %% Printing comma if smartdepflag is set %% TE-120406
-    value(smartdepflag,true),
-    output(',').
+    value(smartdepflag,true) ->
+    output(',');true.
 
 create_smartdep_entry(_,_,_,_) :- \+  value(smartdepflag,true),!.
   
