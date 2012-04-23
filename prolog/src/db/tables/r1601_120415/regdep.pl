@@ -4509,9 +4509,9 @@ departureday( bus_0094_0001, 11055, 450, 5 ).
 departureday( bus_0094_0002, 11055, 450, 2 ).
 departureday( bus_0095_0001, 11125, 705, 5 ).
 departureday( bus_0095_0002, 11159, 1545, 5 ).
-departureday( bus_0096_0001, 11192, 707, 5 ).
-departureday( bus_0096_0002, 11239, 735, 5 ).
-departureday( bus_0096_0003, 11256, 1545, 5 ).
+%departureday( bus_0096_0001, 11192, 707, 5 ).        %% RS-120422
+%departureday( bus_0096_0002, 11239, 735, 5 ).
+%departureday( bus_0096_0003, 11256, 1545, 5 ).
 departureday( bus_0097_0001, 11304, 705, 5 ).
 departureday( bus_0098_0001, 11344, 555, 5 ).
 departureday( bus_0098_0002, 11383, 1510, 5 ).
