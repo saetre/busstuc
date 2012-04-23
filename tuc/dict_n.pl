@@ -6,7 +6,14 @@
 %% REVISED JB-970312  TA-110824
 %% TUC Dictionary for the language N
 
-:-module(dict_n,[]). 
+:-module(dict_n,[
+        compword/3,
+        rewording/2,
+        split/2, % splitword/2, %% Defined in user:module
+        unwanted_adjective/1, unwanted_interpretation/2, unwanted_number/1,
+        unwanted_verb/1,
+        xcompword/3
+                ]).
 
 %¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
 % sp     spell error (unintended) ,not inflectable
@@ -32,6 +39,10 @@
 % xcompword    List -> Word, drop alternatives
 % compword     List -> Word, keep alternatives
 % synword      Word -> Word, keep alternatives
+
+:-discontiguous(compword/3).
+:-discontiguous(xcompword/3).
+
 
 
 %%¤  REWORDING 

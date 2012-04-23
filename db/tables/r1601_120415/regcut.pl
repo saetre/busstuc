@@ -19986,9 +19986,9 @@ ex_departureday(bus_0094_0001,332,450,5).
 ex_departureday(bus_0094_0002,332,450,2).
 ex_departureday(bus_0095_0001,333,705,5).
 ex_departureday(bus_0095_0002,334,1545,5).
-ex_departureday(bus_0096_0001,335,707,5).
-ex_departureday(bus_0096_0002,336,735,5).
-ex_departureday(bus_0096_0003,337,1545,5).
+%ex_departureday(bus_0096_0001,335,707,5).      %% RS-120422
+%ex_departureday(bus_0096_0002,336,735,5).
+%ex_departureday(bus_0096_0003,337,1545,5).
 ex_departureday(bus_0097_0001,338,705,5).
 ex_departureday(bus_0098_0001,339,555,5).
 ex_departureday(bus_0098_0002,340,1510,5).
