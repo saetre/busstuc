@@ -78,19 +78,20 @@ default_message(tt,summer,['AtB summer routes are from Jun. 27 to  Aug. 21. 2012
 route_period( tmn, r1630_101201, date(2011,12,01),    date(2011,12,31) ).
 %route_period( tt, r1609_120120, date(2012,01,20),    date(2012,12,31) ).
 %route_period( tt, r1601_120201, date(2012,02,01),    date(2012,12,31) ).
-route_period( tt, r1602_120401, date(2012,04,01),    date(2012,04,08) ).
+%route_period( tt, r1602_120401, date(2012,04,01),    date(2012,04,08) ).
 %route_period( tt, r1603_120409, date(2012,04,09),    date(2012,05,12) ). %% Overwrote 120415
 route_period( tt, r1602_120517, date(2012,05,17),    date(2012,05,17) ).
-route_period( tt, r1601_120415, date(2012,04,15),    date(2012,06,24) ).
+%route_period( tt, r1601_120415, date(2012,04,15),    date(2012,06,24) ).
+route_period( tt, r1602_120425, date(2012,04,25),    date(2012,06,24) ).
 route_period( tt, r1611_110627, date(2012,06,27),    date(2012,08,14) ).
 route_period( tt, r1601_120101, date(2012,01,01),    date(2012,12,31) ).
 route_period( gb, r1630_111201, date(2011,12,01),    date(2012,12,31) ).
 
 
-%period_message( r1618_110517,                        
-%['AtB Routes for Constitution Day',             
-% 'AtB Ruter for 17. mai ']). 
-%
+period_message( r1602_120517,                        
+['AtB Routes for Constitution Day',             
+ 'AtB Ruter for 17. mai ']). 
+
 period_message( r1630_111201,                     
 ['AtB Routes for Tram 2012',
  'AtB Ruter for Trikk 2012']).
