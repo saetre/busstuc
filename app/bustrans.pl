@@ -453,7 +453,7 @@ is  context  srel/ION/time/A/C, {dmeq([in,on,nil],ION)}, %% nil
 id  []
 ip  newfree(B).
 
-modifier1b rule  %% buss på l�rdag morgen 
+modifier1b rule  %% buss på lørdag morgen 
 is  context  srel/ION/morning/A/C, {dmeq([in,on,nil],ION)},   %% nil
     not _ isa endstation, 
     not _ isa  tram,  
@@ -507,7 +507,7 @@ is  replaceall  (srel/nil/arrival/B/A,event/real/A,nrel/nil/arrival/place/B/Risv
 id  []
 ip  [].
 
-srelbeforeplace rule  % buss går f�r X2 %% TA-110624  = between HT and X2
+srelbeforeplace rule  % buss går før X2 %% TA-110624  = between HT and X2
 is  replaceall (srel/before/place/X2/E)
     with       (srel/from/place/hovedterminalen/E,srel/to/place/X2/E)
 id  []
@@ -935,7 +935,7 @@ id  []
 ip  [].
 
 
-beduring2time rule %% Skal være om 30 minutter = F�R 
+beduring2time rule %% Skal være om 30 minutter = FØR 
 is  context (I isa self,(do)/be1/I/E),
     replaceall (srel/during2/time/X/E,X isa Minute)
     with  (X isa Minute,srel/within/duration/X/E) 
@@ -1075,7 +1075,7 @@ ip number(T).
 intimeperiodto rule  %%  I tiden 8 til 9 // both numbers
 is  replaceall ( srel/in/time/T1/B, srel/to/clock/T2/B)
     with       ( srel/after/time/T1/B, srel/before/time/T2/B),
-    not        srel/nil/time/_/B %% når g�r rute 8 klokken 8 til kl 9  %% Panic
+    not        srel/nil/time/_/B %% når går rute 8 klokken 8 til kl 9  %% Panic
 id  []
 ip  bound(T1),bound(T2). 
 
@@ -1257,10 +1257,10 @@ is  not present dob/reach/_/_/_,  %% ad hoc
     not srel/in_order_to/_/_/_, % removed earlier ????
 
     not srel/so_that/_/_/_,  %% TA-110413   hvis jeg vil være i sentrum kl 20.10?
-                 %% TA-100920 +++  når er jeg p� heimdal dersom jeg ta buss nummer 9 
+                 %% TA-100920 +++  når er jeg på heimdal dersom jeg ta buss nummer 9 
 
     not srel/because_of/_/_/_,  % error in gramn
-%%%%%%%%%%%%%    not srel/on/place/_/E,  %% TA-100920  Bloody hack / skal til og VÆRE p� 
+%%%%%%%%%%%%%    not srel/on/place/_/E,  %% TA-100920  Bloody hack / skal til og VÆRE på 
     not srel/to/place/_/E, 
     replaceall (dob/take/I/B/E, srel/nil/time/T/E2) %% E2  hack
     with       (dob/take/I/B/E, srel/after/time/T/E2) 
@@ -1349,7 +1349,7 @@ id  []
 ip  [].
 
 
-answer0 rule   %% hve svarer på sp�rsm�l
+answer0 rule   %% hve svarer på spørsmål
 is  A isa agent,B isa question,answer1/A/C,srel/on/thing/B/C,event/real/C,
     clear
 id  add message(howtuchelp)
@@ -1554,8 +1554,8 @@ ip  [].
 
 
 
-%%% jeg er på risvollansenteret og har et m�te i dragvoll.
-% ***** => jeg er i dragvoll  og har et møte p� risvollansenteret
+%%% jeg er på risvollansenteret og har et møte i dragvoll.
+% ***** => jeg er i dragvoll  og har et møte på risvollansenteret
 
 %% fra  Kongsvegen på Heimdal til St. Olavs hospital? -->
 %% doubleshunt makes on heimdal on par with the other
@@ -1588,7 +1588,7 @@ ip  [].
 
 
 
-meeting01 rule  %% har møte p� = skal til
+meeting01 rule  %% har møte på = skal til
 is  A isa meeting,I isa self,
     replaceall (nrel/_/meeting/place/A/Place,has/agent/meeting/I/A, event/W/E)  
     with       ((do)/be1/I/E,srel/to/place/Place/E, event/W/E) 
@@ -1928,21 +1928,21 @@ id  add false
 ip  \+ (Tuc=Tagore).
 
 
-saturdayroute5 rule  %% lørdagsrute 5 = rute 5 p� l�rdag.
+saturdayroute5 rule  %% lørdagsrute 5 = rute 5 på lørdag.
 is  replaceall (B52 isa saturdayroute,(do)/go/B52/E)
     with       (B52 isa route,        (do)/go/B52/E,S isa saturday,srel/on/day/S/E)
 id  []
 ip  newfree(S).
 
 
-sundayroute5 rule  %% søndagsrute 5 = rute 5 p� l�rdag.
+sundayroute5 rule  %% søndagsrute 5 = rute 5 på lørdag.
 is  replaceall (B52 isa sundayroute,(do)/go/B52/E)
     with       (B52 isa route,        (do)/go/B52/E,S isa sunday,srel/on/day/S/E)
 id  []
 ip  newfree(S).
 
 
-workdayroute5 rule %%  hverdagsrute 5 = rute 5 på l�rdag.
+workdayroute5 rule %%  hverdagsrute 5 = rute 5 på lørdag.
 is  replaceall (B52 isa workdayroute,(do)/go/B52/E)
     with       (B52 isa route,        (do)/go/B52/E,S isa weekday,srel/on/day/S/E)
 id  []
@@ -1967,7 +1967,7 @@ id  []
 ip  newfree(E).
 
 
-daymorning rule %% søndag morgen -> s�ndag om morgenen 
+daymorning rule %% søndag morgen -> søndag om morgenen 
 is  replaceall (B isa morning,srel/nil/day/C/D,srel/nil/daypart/B/D)
     with (B isa morning,      srel/nil/day/C/D,srel/in/time/B/D,event/real/D)
 id  []
@@ -2012,7 +2012,7 @@ ip  unbound(X).     %% Are you good SIC
 
 
 
-runisrun rule %% noen  kjøre rutene = rutene kj�rer 
+runisrun rule %% noen  kjøre rutene = rutene kjører 
 is  replaceall (A isa route,B isa agent,dob/run/B/A/C,event/real/C)
     with       (A isa route,run/A/B,event/real/B)
 id  []
@@ -2087,7 +2087,7 @@ id  []
 ip  [].
 
 
-meetingbetween rule %%  Møte mellom 2 og 3 = m�te kl 2
+meetingbetween rule %%  Møte mellom 2 og 3 = møte kl 2
 is  replaceall (A isa meeting,T2 isa clock,(do)/be1/A/E,srel/between/time/(T1,T2)/E)
     with       (A isa meeting,(do)/be1/A/E,srel/at/time/T1/E)
 id  []
@@ -2705,13 +2705,13 @@ ip  dmeq(nato,OTAN),dmeq(place,Station),
 
 
                     
-beonbeforeeqto rule  %% buss er på  Gl�shaugen f�r 1900
+beonbeforeeqto rule  %% buss er på  Gløshaugen før 1900
 is  not present (do)/meetup/'I'/_, %% only about buss arrive 
     not present (do)/live/_/_, %% I live on Nidarvoll 
     not present (do)/stop/_/_, 
     present srel/Before/time/_1900/_B, 
               {dmeq([before,nil],Before)}, 
-                       %% jeg er på nidarvoll ... f�r kl 18 
+                       %% jeg er på nidarvoll ... før kl 18 
     replaceall ((do)/be1/B/E, srel/ION/place/NTH/E)
     with       ((do)/go/B/E,  srel/to/place/NTH/E),
           {dmeq([in,on],ION)} 
@@ -2731,8 +2731,8 @@ id  []
 ip  [].
 
 
-beon1 rule  %% I am on A ( but not  skal v�re p�!)
-is  context B isa self, %% Jeg er på Gl�shaugen
+beon1 rule  %% I am on A ( but not  skal være på!)
+is  context B isa self, %% Jeg er på Gløshaugen
     not present which(_), %% .. hvor er jeg 
     not present test,     %% .. er jeg på ... 
     replaceall ((do)/be1/B/E, srel/Prep/place/NTH/E)
@@ -2857,7 +2857,7 @@ is  present K isa clock,
     not present _ isa departure, %% then time is dep time 
     not present (_ isa minute), %% go to Torget 12 minutes 
     srel/To/place/_P/E and srel/nil/time/K/E, %% IN  INDIRECT SEQUENCE
-    { dmeq([to,on],To) }, %% skal være p� ... 
+    { dmeq([to,on],To) }, %% skal være på ... 
     replace srel/nil/time/K/E  with      srel/before/time/K/E  
 id  not flag(nightbusflag)   %% deptime is the important thing !! 
 ip  [].
@@ -2872,7 +2872,7 @@ is  srel/from/place/_/E and srel/TO/place/_/E , %% TA-110415  HACK
     
     not present _ isa departure, 
     not present srel/after/time/_/_,  %% NO! 
-    not present srel/on/place/_/E, %%%% (do)/be1/_/E, %% for å v�re p�
+    not present srel/on/place/_/E, %%%% (do)/be1/_/E, %% for å være på
     not present srel/in/place/_/E,
     replace srel/nil/time/K/E  with     srel/before/time/K/E  
 id  []
@@ -2883,7 +2883,7 @@ fromtoclocksequence  rule %% Fra eberg .. ved Brundalen kl 0930 = before
 is  srel/from/place/_/E and srel/TO/place/_/E and srel/nil/time/K/E, %% INDIRECT SEQUENCE 
     not present _ isa departure, 
     not present srel/after/time/_/_,  %% NO! 
-    not present srel/on/place/_/E, %%%% (do)/be1/_/E, %% for å v�re p�
+    not present srel/on/place/_/E, %%%% (do)/be1/_/E, %% for å være på
     not present srel/in/place/_/E,
     replace srel/nil/time/K/E  with     srel/before/time/K/E  
 id  []
@@ -2897,7 +2897,7 @@ is  srel/from/place/_P/E and srel/nil/time/K/E, %% IN INDIRECT SEQUENCE
     not present srel/in_order_to/_/_/_, % for å rekke en avtale
     not present _ isa coevent, 
     not present srel/before/time/_/_,   %% NO! 
-    not present srel/on/place/_/E, %%%% (do)/be1/_/E, %% for � v�re p�
+    not present srel/on/place/_/E, %%%% (do)/be1/_/E, %% for å være på
     not present srel/in/place/_/E,
     not present dob/reach/_/_/_, 
     replace srel/nil/time/K/E  with srel/after/time/K/E    
@@ -2961,7 +2961,7 @@ is present K isa clock,
      not present dob/reach/_/_/_, 
      not srel/in_order_to/thing/_/_, 
      not srel/because_of/thing/_/_,   %% error in gramn
-     not srel/in/time/_/_ ,%% ad hoc %% til S n�r jeg m� v�re i S kl 0610.
+     not srel/in/time/_/_ ,%% ad hoc %% til S når jeg må være i S kl 0610.
    replace srel/nil/time/K/E  with  srel/after/time/K/E 
 id  []
 ip  [].
@@ -3028,13 +3028,13 @@ id   []
 ip   newfree(C).
 
 
-youdo  rule %%  du gj�r --> gj�r!
+youdo  rule %%  du gjør --> gjør!
 is  replaceall (new,tuc isa savant,dob/LIST/tuc/X/E)
     with       ((do),tuc isa savant,dob/LIST/tuc/X/E) 
 id  []
 ip  dmeq([list,show,tell],LIST).
 
-canyoudo  rule %% kan du gj�re ?--> gj�r
+canyoudo  rule %% kan du gjøre ?--> gjør
 is  replaceall (test,tuc isa savant,dob/LIST/tuc/X/E)
     with       ((do),tuc isa savant,dob/LIST/tuc/X/E) 
 id  []
@@ -3213,7 +3213,7 @@ ip dmeq(to,Prep).
 
 
 stand1 rule 
-is  context B isa self, %% ikke buss st�r
+is  context B isa self, %% ikke buss står
     replaceall ((do)/stand/B/E, srel/Prep/place/NTH/E)
     with       ((do)/go/B/E, srel/from/place/NTH/E)
 id []
@@ -3229,7 +3229,7 @@ ip dmeq([in,on],ION).
 
 
 ontime1 rule
-is  replaceall (Ev isa Night,srel/on/time/Ev/S)  %% p� morgenen
+is  replaceall (Ev isa Night,srel/on/time/Ev/S)  %% på morgenen
     with       (Ev isa Night,srel/before/time/Ev/S) 
 id  []
 ip  dmeq(day,Night). %% NOT Minute !
@@ -3375,7 +3375,7 @@ id	 clear,
 ip  [].
 
 otherbus4 rule 
-is  Klaburuta isa bus, %% bussen Kl�buruta
+is  Klaburuta isa bus, %% bussen Klæburuta
     clear    
 id	 clear, 
     add message(noroutesfor(otherbus))
@@ -3397,7 +3397,7 @@ id  not flag(exit),
 ip  [].
 
 
-nostationairbus rule %% malvik v�rnes 
+nostationairbus rule %% malvik værnes 
 is  X isa Place, {bound(X),dmeq(place,Place), xforeign(X)} 
 id  flag(airbus),
     not flag(exit), 
@@ -3405,7 +3405,7 @@ id  flag(airbus),
     clear,    
     addfront message(foreign(X)), 
     add flag(exit)
-ip  xforeign(X).  %%  Kl�bu
+ip  xforeign(X).  %%  Klæbu
 
 
 nostation0 rule %% statsminister i norge %% moved after noinfoaboutnoun
@@ -3413,7 +3413,7 @@ is  X isa Place, {bound(X),dmeq(place,Place)},
     not _ isa airplane, 
     not _ isa boat, 
     not _ isa train,
-    not _ isa weather, %% v�ret p� Bekkestua 
+    not _ isa weather, %% været på Bekkestua 
     clear  %% trikk til bekkestua
 id  not flag(exit), 
     not message(foreign(_)),      %% addcon doesnt work, different X
@@ -3421,7 +3421,7 @@ id  not flag(exit),
     clear,                                 %% direction OK 
     addfront message(foreign(X)), 
     add flag(exit)
-ip  xforeign(X).  %%  Kl�bu
+ip  xforeign(X).  %%  Klæbu
 
 
 notarouteatall rule  % neither bus nor tram 
@@ -3431,7 +3431,7 @@ id	 not flag(exit), %% e.g. foreign
     add message(not(route,NotBus))  %% route
 ip	 not value(tramflag,true),
     NotBus \== it, %% internal anaphora :-)
-    not (NotBus  isa otherbus), %% Kl�buruta ?
+    not (NotBus  isa otherbus), %% Klæburuta ?
     not exbus(NotBus),
     not regbus(NotBus). %% tt/regbusall
 
@@ -3443,7 +3443,7 @@ id	 not flag(exit), %% e.g. foreign
     add message(not(bus,NotBus))  %% route
 ip	 not value(tramflag,true),
     NotBus \== it, %% internal anaphora :-)
-    not (NotBus  isa otherbus), %% Kl�buruta ?
+    not (NotBus  isa otherbus), %% Klæburuta ?
     not exbus(NotBus),
     not regbus(NotBus). %% tt/regbusall
 
@@ -3474,7 +3474,7 @@ is  _ isa tram,
     not present _ isa clock, %% ad hoc  den (klokka) er 1 
     clear
 id  addcon  message(noroutesfor(tram)),
-    addcon  message(answer(db_reply('Gr�kallbanen',webaddress,K)))
+    addcon  message(answer(db_reply('Gråkallbanen',webaddress,K)))
 ip  \+ user:value(tmnflag,true), 
     has_att_val(company,webaddress,tram,K).
 
@@ -3503,7 +3503,7 @@ ip	 atomic(NotTram),
       \+ (NotTram == it). 
 
 %% after nostation0 etc 
-totosameplace rule %% %% fra A til B som er p� B 
+totosameplace rule %% %% fra A til B som er på B 
 is  context srel/to/place/X/E, {bound(X)},
     remove  srel/on/place/X/E
 id  []
@@ -3657,7 +3657,7 @@ ip  [].
 
 
 
-inperiod rule       %% for � n� DV til kl 0830 
+inperiod rule       %% for å nå DV til kl 0830 
 is  replaceall  (srel/in/Time1/T1/E1,srel/to/time/T2/E2)
     with        (srel/after/Time1/T1/E1,srel/before/time/T2/E2) 
 id  []
@@ -3878,7 +3878,7 @@ ip bound(C).
 
 
 
-%�
+%%%%%
 
 innight0 rule % IF T before clock, T < 1200 => innight just eveningtime
 is  srel/in_night/time/nil/E, 
@@ -3900,9 +3900,9 @@ ip  dmeq([clock,time],Time). %%
 
 toplaceclockbefore rule %% clock with toplace = before clock %%  After tonightat
 is   not srel/from/place/_/_, 
-     not  srel/on/time/_F17/E,  %% etter l�rdag (nil) kl 8
+     not  srel/on/time/_F17/E,  %% etter lørdag (nil) kl 8
      not  adj/_/next/_/_, 
-     not (do)/meetup/'I'/E, %%  p� holdepl.
+     not (do)/meetup/'I'/E, %%  på holdepl.
      not present  srel/nil/place/_ABV/E, %% ABV 2203 til S 
 
      replaceall (srel/to/place/J/E,srel/nil/time/T/__E) 
@@ -4021,7 +4021,7 @@ id  not flag(latetime),
     add flag(latetime),
     not flag(nightbusflag) 
 ip  evening_time(Six,Eighteen). 
-clock0now rule % Hva er klokka n� ? (ad hoc) 
+clock0now rule % Hva er klokka nå ? (ad hoc) 
 is  exactly (which(A),A isa Timeq, 
     _ isa thing, event/real/B,srel/now/time/nil/B),
     {dmeq(timeclock,Timeq)} 
@@ -4060,7 +4060,7 @@ ip  unbound(Time),
     dmeq(timeclock,Timeq). %% not duration  
 
 
-clock3 rule % Hva er klokka n�?
+clock3 rule % Hva er klokka nå?
 is  exactly (which(A),B isa Timeq,(do)/be1/A/C,event/real/C,
              srel/nil/time/B/C,srel/now/time/nil/C)
 id	 add (timenow2(0,T),timeis(T))
@@ -4107,7 +4107,7 @@ id	 add (timenow2(0,T),timeis(T)),
 ip  [].
 
 
-clock8sicnow rule % Klokka er 10 n� (SIC) 
+clock8sicnow rule % Klokka er 10 nå (SIC) 
 is  exactly (new,dob/be/A/B/C,B isa _Number,A isa clock,event/real/C,srel/now/time/nil/_), 
     {number(B)}, {unbound(A)}
 id	 add (timenow2(0,T),timeis(T)),
@@ -4116,7 +4116,7 @@ ip  [].
 
 
 %% before assumeatmidnight
-ateveningimplicit  rule %%  1230:, jeg skal til byen f�r 0200 -> 1400>1230
+ateveningimplicit  rule %%  1230:, jeg skal til byen før 0200 -> 1400>1230
 is  context srel/Prep/time/Six/D,
           { (number(Six),morning_break(T0430),Six =< T0430)},  %% improbable 
         not present srel/early/time/nil/_,  
@@ -4155,7 +4155,7 @@ ip  set(nightbusflag,true). %%  // necessary
 
 %% before tomorrow rule %% TA-101025
 
-ateveningexplicit  rule %% 1230:   jeg skal til byen f�r 6 -> 1800
+ateveningexplicit  rule %% 1230:   jeg skal til byen før 6 -> 1800
 is  present  _ isa afternoon,
     not present srel/_prep2_/time/Fourteen/_ 
                  when { (number(Fourteen),Fourteen >=1200)},
@@ -4175,7 +4175,7 @@ id  not flag(earlytime),
     not flag(nightbusflag)  
 ip  number(Six), 
     dmeq(clock,Clock),evening_time(Six,Eighteen). 
-    %% man 2150   "f�r kl 6" -> 18 selv om for sent for det ogs�
+    %% man 2150   "før kl 6" -> 18 selv om for sent for det også
 
 
 
@@ -4279,7 +4279,7 @@ ip  today(TODAY),
     NOW > Six,
     evening_time0(Six,Eighteen), %% 1330 -> 1330
 
-%    maxtraveltime(MT),   %% 23:05      fra rosendal til gl�shaugen f�r klokken 10.
+%    maxtraveltime(MT),   %% 23:05      fra rosendal til gløshaugen før klokken 10.
      aroundmargin(MT),    %% more modest
      addtotime(Eighteen,MT,EighteenPlus), %% time many  min before now
      NOW > EighteenPlus, %% Far too late for that also 
@@ -4343,7 +4343,7 @@ ip  today(TODAY),
 %% TA-101025
 
 
-anight rule %%  buss g�r  mellom klokka 6 og 7 om kvelden
+anight rule %%  buss går  mellom klokka 6 og 7 om kvelden
 is  present _ isa night,
     not _B isa morning, 
     not srel/this_midnight/time/nil/_, 
@@ -4354,7 +4354,7 @@ ip  dmeq(clock,Clock),evening_time(Six,Eighteen).
 
 
 
-tonightat6 rule %%  buss g�r  mellom klokka 6 og 7 om kvelden
+tonightat6 rule %%  buss går  mellom klokka 6 og 7 om kvelden
 is  present srel/IE/time/nil/D, { dmeq(pm,IE)}, %% use it twice
     not _B isa morning, 
     not srel/this_midnight/time/nil/_, 
@@ -4387,7 +4387,7 @@ ip  dmeq([street],STREET). %% e.g. not meeting,station
 
 
 
-gotoheaven rule %% for � v�re p�
+gotoheaven rule %% for å være på
 is  srel/in_order_to/_/_/_,
     not srel/to/_/_/_   ,     %% NOT already a to place
     replaceall ( (do)/be1/I/E, I isa Self, srel/INON/Place/PS/E)
@@ -4399,7 +4399,7 @@ ip  dmeq([self,agent],Self),
 
 
 liveinhell rule %% means going from
-is  %% new, %%  context    (I isa self), %% n�r jeg bor i %% TA-110825
+is  %% new, %%  context    (I isa self), %% når jeg bor i %% TA-110825
     %% not srel/in_order_to/_/_/_,          %% related to be1
     not dob/want/_/that/_,
     replaceall (  (do)/live/I/E, srel/_On/place/PS/E)  %% E in/N on
@@ -4439,7 +4439,7 @@ ip  dmeq([plane,boat,train],Train),
     dmeq([city,neighbourhood],Neigh). %% oslo changed from neigh. to city 
 
 
-reachtrain rule % n� et tog %%  there are several train stations ?   %% (KME)
+reachtrain rule % nå et tog %%  there are several train stations ?   %% (KME)
 is  not present ts isa _,  %% already mentioned -> mess sameplace 
     replaceall  (C isa self,D isa train,dob/TAKE/C/D/E)
     with        (C isa self,ts isa neighbourhood, 
@@ -4449,7 +4449,7 @@ ip  dmeq(take,TAKE),
     railway_station(TS). %% AtB
 
 
-reachboatthatleaves rule  % n� en b�t som g�r/er 1215 fra PT
+reachboatthatleaves rule  % nå en båt som går/er 1215 fra PT
 is  replaceall  (C isa self,D isa boat,dob/TAKE/C/D/E,srel/Nil/time/HHMM/K,srel/from/place/PT/K, (do)/Go/D/K)
     with        (C isa self,(do)/go/C/E,srel/before/time/HHMM/E,srel/to/place/PT/E),
     {dmeq([go,be1],Go)},
@@ -4458,7 +4458,7 @@ id  []
 ip  dmeq(take,TAKE).
 
 
-reachbusthatleaves rule  % n� en buss   som g�r 1215 FRA PT 
+reachbusthatleaves rule  % nå en buss   som går 1215 FRA PT 
 is   replaceall  (C isa self,D isa bus,dob/reach/C/D/E,srel/Nil/time/HHMM/K,srel/from/place/PT/K,(do)/Go/D/K)
     with        (C isa self,(do)/go/C/E,srel/before/time/HHMM/E,srel/to/place/PT/E),
     {dmeq([go,be1],Go)},
@@ -4479,7 +4479,7 @@ id  clear,
 ip  \+ user:value(tmnflag,true).
 
 
-ankomme rule  %% NB after reachtrain  %% Norwagism %% ankomme (reach) = g� til 
+ankomme rule  %% NB after reachtrain  %% Norwagism %% ankomme (reach) = gå til 
 is  context    S isa Place,
     not        srel/to/place/_/_, 
     replaceall (dob/reach/B/S/E)
@@ -4607,7 +4607,7 @@ ip  dmeq([program,computer,oracle],Man).
 
 youarewhatyes1 rule 
 is  new,tuc isa savant,dob/be/tuc/A/B,A isa Man,event/real/B,
-    not adj/nil/bad/A/_  %% d�rlig :-( %% TA-101222
+    not adj/nil/bad/A/_  %% dårlig :-( %% TA-101222
 id  not message(onlyonesentence), 
     add true %% Yes is added 
 ip  dmeq([program,computer,oracle],Man).
@@ -4683,7 +4683,7 @@ ip  bound(Trondheim),Trondheim \== it, %%   Is this a joke :-)
 
 
 
-languageyes1 rule  %%  snakke p� 
+languageyes1 rule  %%  snakke på 
 is  not which(_), 
     L isa language, 
     speak/TUC/E, 
@@ -4817,13 +4817,13 @@ id	 addcon message(nocorresponse),
 ip  dmeq(busdeparr,BR). 
 onlyonebusreach rule 
 is  dob/reach / (_ ,_)/_ / _ ,
-    clear %%  N�r Rute 3 og 4 Ringve skole  %% Anomaly
+    clear %%  Når Rute 3 og 4 Ringve skole  %% Anomaly
 id  add message(answer(bcpbc(onlyonebus)))
 ip  [].
 
 onlyonebusgo rule 
 is  (do)/go/(X,_)/_,
-    present  X isa BUS %%  n�r g�r buss 5 og 66 t dragvoll. 
+    present  X isa BUS %%  når går buss 5 og 66 t dragvoll. 
 id  add message(answer(bcpbc(onlyonebus)))
 ip  dmeq(bus,BUS).
 
@@ -5163,7 +5163,7 @@ id  clear,
 ip  [].
 
 
-noinfoaboutgenerics rule %% sunndals�ra helsestasjon 
+noinfoaboutgenerics rule %% sunndalsøra helsestasjon 
 is  X isa place, {generic_place(X)},
     clear
 id  clear,
@@ -5201,7 +5201,7 @@ ip  [].
 
 winter2 rule  %% %% when is winter
 is  _ isa winter,clear  
-id   not flag(exit), %% sn� i vinter 
+id   not flag(exit), %% snø i vinter 
      clear,addfront(message(winterishere)) 
 ip  [].
 
@@ -5237,7 +5237,7 @@ id  add message(tagore)
 ip  dmeq([tuc,bustuc,it],Tuc).  
 
 
-made1 rule  %% n�r ble du/dette laget
+made1 rule  %% når ble du/dette laget
 is  which(T),T isa time, dob/make/_/Tuc/_ ,
     clear  %% not negans
 id  add message(idonotknow)  
@@ -5325,7 +5325,7 @@ ip  [].
 %%%%%END OF SMALLTALK%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-stationonneib0 rule %% fra holdeplassen p� Gl�shaugen %% TA-100910
+stationonneib0 rule %% fra holdeplassen på Gløshaugen %% TA-100910
 is  replaceall (srel/From/place/F2/F4,srel/on/neighbourhood/Gløshaugen/F4)
     with       (srel/From/place/Gløshaugen/F4),
         {unbound(F2)}
@@ -5333,7 +5333,7 @@ id  []
 ip  [].
 
 
-stationonneib rule %%  holdeplassen p� Risvollan=Risvollan
+stationonneib rule %%  holdeplassen på Risvollan=Risvollan
 is  present Risvollan isa neighbourhood ,
     replaceall (srel/Prep/place/B/E, nrel/ONAT/station/_Neib_/B/Risvollan)
     with        srel/Prep/place/Risvollan/E
@@ -5343,11 +5343,11 @@ ip  dmeq([on,at,near,in],ONAT).
 
 
 
-stationoneigh0 rule %%  til  Markaplassen ved Vik�sen (neib)
+stationoneigh0 rule %%  til  Markaplassen ved Vikåsen (neib)
 is  present srel/to/place/M/E,  %%  Haz ? not nil
     M isa station, 
     V isa neighbourhood,   
-    remove  srel/at/place/V/E %% university at gl�shaugen
+    remove  srel/at/place/V/E %% university at gløshaugen
 id  []
 ip  [].
 
@@ -5358,7 +5358,7 @@ id  []
 ip  [].
 
 
-stationonstat rule %% Markaplassen p� Vik�sen (stat) 
+stationonstat rule %% Markaplassen på Vikåsen (stat) 
 is  present srel/to/place/M/E,
     M isa station, 
     V isa station,
@@ -5398,7 +5398,7 @@ id  not flag(nightbusflag)
 ip  timenow(T2300), T2300 > 1800
 :-single. 
   
-omkvelden1 rule  %% Hva er busstidene p� kvelden
+omkvelden1 rule  %% Hva er busstidene på kvelden
 is  not TI isa clock when { bound(TI)}, %% kl 1955 om kvelden 
     replaceall (C isa night,srel/ON/Night/C/E)
     with       (1800 isa clock,srel/after/time/1800/E),
@@ -5409,7 +5409,7 @@ id  not flag(nightbusflag)
 ip  []
 :-single. 
   
-omkvelden2 rule  %% Hva er busstidene p� kvelden
+omkvelden2 rule  %% Hva er busstidene på kvelden
 is  not present adj/_/last/_/_,  
     not K isa clock when {bound(K)}, 
     replaceall (C isa night,srel/OM/daypart/C/E)
@@ -5654,7 +5654,7 @@ ip  dmeq([take,reach,get,receive,find],Take),
     dmeq(vehicle,BR). %% not meeting  reach meeting \= reach train 
 
 
-withouttaking1 rule %%  uten � ta buss 9 =  ta  buss  \=  buss 9 
+withouttaking1 rule %%  uten å ta buss 9 =  ta  buss  \=  buss 9 
 is  present B9 isa bus,{bound(B9)}, %% avoid reshuffeling B9 isa bus
     replaceall  (srel/(not)/coevent/_A/C, dob/Take/I/B9/C) %% C is abanded
     with        (dob/avoid/I/B9/C),
@@ -5667,7 +5667,7 @@ idotake rule %%   I take Bus -> Bus goes  %% Experiment
 is  replaceall (B isa self,  C isa BR, dob/Take/B/C/D) %% New Format
     with       (C isa BR, (do)/go/C/D) 
 id  [] 
-ip  dmeq([take,get,find,have],Take), %% NOT reach, NOT receive (= f� se) 
+ip  dmeq([take,get,find,have],Take), %% NOT reach, NOT receive (= få se) 
     dmeq(vehicle,BR). %% not meeting  reach meeting \= reach train
 
 
@@ -5722,7 +5722,7 @@ id []
 ip [].
 
 
-listinformation1 rule %% Kan jeg f� listet
+listinformation1 rule %% Kan jeg få listet
 is  replaceall  (test, B52 isa route,A isa self,dob/list/A/B52/B,event/real/B)
     with        ((do),   B52 isa route,tuc isa savant,dob/list/tuc/B52/B,event/real/B)
 id  []
@@ -5797,19 +5797,19 @@ is  context    (srel/from/place/Moholt/E1,event/real/E1),
     with       (srel/to/place/Sentrum/E2,srel/before/time/Time/E2)
 id  []
 ip  dmeq([at,in],AT), %% dmeq(attime,AT) 
-                  %% n�r er buss nr 9 som gikk fra sentrum 1745 i john aaes vei.
+                  %% når er buss nr 9 som gikk fra sentrum 1745 i john aaes vei.
     \+ (Moholt = Sentrum).
 
 
 %% to  place at clock MEANS to place before time  %% (before fromattime)
 
-thereattime rule %% jeg skal v�re der
+thereattime rule %% jeg skal være der
 is  context   Time isa clock,
     replaceall (srel/in/place/Sentrum/E2,srel/AT/time/Time/E2)
     with       (srel/to/place/Sentrum/E2,srel/before/time/Time/E2)
 id  []
 ip  dmeq([at,in],AT).
-                      %% n�r er buss nr 9 som gikk fra sentrum 1745 i john aaes vei.
+                      %% når er buss nr 9 som gikk fra sentrum 1745 i john aaes vei.
 
 
 toattime rule 
@@ -5872,7 +5872,7 @@ ip [].
 
 
 % jeg vil vite noe om  MEANS what is 
-% kan jeg f� opplysninger om  MEANS what is
+% kan jeg få opplysninger om  MEANS what is
 
 
 canigetinfo rule % the route of the route (bus) %% PANIC
@@ -5916,7 +5916,7 @@ ip  dmeq([bus,nightbus,route,route_plan,departure],X).
 
 
 
-%% Jeg  �nsker en l�rdagsrute ==> "Bussrute" ### 
+%% Jeg  ænsker en lørdagsrute ==> "Bussrute" ### 
 
 
 % I want  MEANS what is
@@ -6183,7 +6183,7 @@ ip  [].
 
 
 goearly rule %% go early means after 0430 unless ...
-is  not present _ isa clock,   %% skal v�re der kl 8 i morgen tidlig 
+is  not present _ isa clock,   %% skal være der kl 8 i morgen tidlig 
     srel/early/time/nil/E,
     add     (MornTime isa clock,srel/after/time/MornTime/E)
 id  []
@@ -6191,7 +6191,7 @@ ip  MornTime=0430. %% ad hoc
 
 
 goearlydefault rule 
-is  not present _ isa clock,   %% skal v�re der kl 8 i morgen tidlig 
+is  not present _ isa clock,   %% skal være der kl 8 i morgen tidlig 
     B isa morning,srel/in/time/B/E,
 %  + restrictions 
     add     (MornTime isa clock,srel/after/time/MornTime/E) 
@@ -6287,7 +6287,7 @@ id []
 ip [].
 
 
-iknowx rule %% Do I know  (" f� vite ")
+iknowx rule %% Do I know  (" få vite ")
 is replaceall ( I isa self ,dob/KNOW1/I/A/B ,event/real/B,test )
    with      which(A) 
    ,{dmeq([know,know1],KNOW1)}
@@ -6617,7 +6617,7 @@ ip  unbound(B).
 
 whbusesin rule % Which buses are in  Team/Oracle/etc 
 is  A isa route,(do)/be1/A/B,srel/in/_place/_/B,
-    not present _ isa neighbourhood, %% e.g. Kl�bu
+    not present _ isa neighbourhood, %% e.g. Klæbu
     not present _ isa station
 id	 add listofall(route,_)
 ip  unbound(A).   
@@ -6715,9 +6715,9 @@ id	 clear,
 ip  internal_airbus(false), %% busdat
     have_att_val(company,webaddress,flybussen,K).
 
-airport2 rule %%  airport v�rnes 
+airport2 rule %%  airport værnes 
 is  Værnes isa airport,
-    clear %% v�rnes, not gardermoen 
+    clear %% værnes, not gardermoen 
 id	 clear, 
     add (message(noinfoabout(airbus)), 
          message(answer(db_reply(flybussen,webaddress,Z)))) %% TA-101110
@@ -6790,7 +6790,7 @@ ip	 [].               %% NB   %%
 
 goddagmann rule 
 is  howmany(Bus),present Bus isa Frog,
-    clear % avoid GodDagMann�kseskaft answers (GDM�)
+    clear % avoid GodDagMannøkseskaft answers (GDMø)
 id  not message(_Already),
     clear, 
     addfront message(idonotknow) 
@@ -7119,7 +7119,7 @@ ip  dmeq(mtwtfss,Friday),
 setdatexdagnatt2 rule  %% Nightbus Friday night = Saturday
 is  srel/NILON/daypart/F239/E,srel/on/day/F240/E,
     assume(testmember(NILON,[nil,on])), 
-    F239 isa Midnight, %% nattbuss fredag kveld = nattbuss l�rdag
+    F239 isa Midnight, %% nattbuss fredag kveld = nattbuss lørdag
     F240 isa Friday,
      {dmeq([night,midnight],Midnight)},
     not (YMD isa date) when { bound(YMD)}, 
@@ -7150,7 +7150,7 @@ ip  dmeq([this_midnight,tonight],This_midnight),
     dayModSeqNo(DATE,DaySeqNo).
 
 
-setexnighttodate  rule  %% natt til/f�r 1. mai  
+setexnighttodate  rule  %% natt til/før 1. mai  
 is  DATE isa date,
     F18 isa midnight,
     srel/nil/daypart/F18/E,
@@ -7222,7 +7222,7 @@ ip  timenow2(0,T), T > 0430,
 
 
 
-setexeveningbefore  rule  %% kveld  f�r dato
+setexeveningbefore  rule  %% kveld  før dato
 is  F18 isa night, %% i.e. evening,
     srel/nil/daypart/F18/E,
     replace (DATE isa date) with (NEXTDATE isa date),
@@ -7233,7 +7233,7 @@ ip  dmeq([to,before],To),
     user:sub_days(DATE,1,NEXTDATE).
 
 
-setexoneveningbefore1  rule  %% p�/om kveld  f�r dato
+setexoneveningbefore1  rule  %% på/om kveld  før dato
 is  F18 isa night, %% i.e. evening,
     srel/On/night/F18/E, { dmeq([on,during2],On)}, 
     replace (DATE isa date) with (NEXTDATE isa date),
@@ -7245,7 +7245,7 @@ ip  dmeq([to,before],To),
 
 
 
-setexoneveningbefore2  rule  %% p�/om kveld  f�r dato 
+setexoneveningbefore2  rule  %% på/om kveld  før dato 
 is  srel/in_night/time/nil/E, 
     replace (DATE isa date) with (NEXTDATE isa date),
     replace (srel/To/_date/DATE/E) with (srel/on/_date/NEXTDATE/E) 
@@ -7255,7 +7255,7 @@ ip  dmeq([to,before],To),
     user:sub_days(DATE,1,NEXTDATE).
 
 
-nodatecalc  rule  %%  N dager  f�r dato % NIX
+nodatecalc  rule  %%  N dager  før dato % NIX
 is  _ isa day, not _ isa date,
     DATE isa date,
     srel/To/_date/DATE/_, { dmeq([to,before,after],To)},
@@ -7327,11 +7327,11 @@ id  flag(nightbusflag),
 ip  disallowed_night(DATE). 
 
 
-setexdate1 rule   %% Set date if another day //  p� mandag
+setexdate1 rule   %% Set date if another day //  på mandag
 is  not (YMD isa date) when { bound(YMD)},  %% another date overrules  
     context(U isa Monday),  {dmeq(mtwtfss, Monday)},
     not  comp/day/ne/_/U,            %% not excluded ! 
-    not present srel/today/_Day/nil/_ %% s�ndagsrute idag ...
+    not present srel/today/_Day/nil/_ %% søndagsrute idag ...
 id  not flag(exit), 
     not atdate2(_,_), 
     add atdate2(DaySeqNo,DATE),
@@ -7497,7 +7497,7 @@ id  not message(nodates), % no point if no routes
     add atday(Day),
     not message(completesentence), 
     add message(date_isa_day(DATE,Day)),
-    add message(otherperiod(DATE)) %% p� mandag hvis
+    add message(otherperiod(DATE)) %% på mandag hvis
 ip  weekday(DATE,Day),
     \+  ( date_day_map(DATE,Holiday), 
           special_day(Holiday)). 
@@ -7512,7 +7512,7 @@ id  not message(nodates), % no point if no routes
     add atday(Day),
     not message(completesentence), 
     add message(date_isa_day(DATE,Day)),
-    add message(otherperiod(DATE)) %% p� mandag hvis
+    add message(otherperiod(DATE)) %% på mandag hvis
 ip  weekday(X,Day),
     TODAY \== DD.
 
@@ -7587,7 +7587,7 @@ id	 not atday(_),                  %% e.g. i morgen torsdag
          atday(NextDay),
          atdate2(DaySeqNo,DATE)),
     add message(noroutesforthisdate), %%%%add message(mustknow(date)), %% Ad Hoc
-    add flag(exit)  %% fail? %% Avoid "umulig p� nyrsdag"
+    add flag(exit)  %% fail? %% Avoid "umulig på nyrsdag"
 ip	 today(Day),   %% Instantiate it
     daysucc(Day,NextDay),
     user:finddate(1,DATE),
@@ -7631,7 +7631,7 @@ ip	 today(Day),daysucc(PrevDay,Day),
     user:finddate(-1,Date),
     dayModSeqNo(Date,DaySeqNo).
 
-yester2 rule %   day_before_yesterday | forg�rs
+yester2 rule %   day_before_yesterday | forgårs
 is  srel/day_before_yesterday/day/nil/_ %% time => day
 id	 not atday(_), 
     add (today(Day),
@@ -7798,7 +7798,7 @@ ip   newfree(Bus),
      newfree(E). 
  
 
-hittegods rule %%  jeg har glemt noe p� bussen
+hittegods rule %%  jeg har glemt noe på bussen
 is  srel/on/bus/_/_, dob/Forget/_/_/_, {dmeq([forget,lose],Forget)}
 id  add ( message(answer(db_reply(tt,webaddress,K)))),  %% will be executed in order
     addfront(message(noinfoabout(luggage)))
@@ -8057,7 +8057,7 @@ ip   bound(N).
 
 
 nodates07 rule   %% except for the day today 
-is   %% not _ isa time, %% n�r er p�sken %% TA-101124
+is   %% not _ isa time, %% når er påsken %% TA-101124
      not _ isa date, 
      not _ isa holiday, 
      not srel/today/_day/nil/_,  
@@ -8092,7 +8092,7 @@ ip   [].
 
 nodates09 rule   %% month only
 is    A isa month, 
-      not which(A), %% sp�rre m�ned -> date %% TA-100828
+      not which(A), %% spørre måned -> date %% TA-100828
       not _ isa date,
      not srel/today/_/_/_ , 
 
@@ -8103,14 +8103,14 @@ id   not atday(_),
 ip   [].
 
 nodates10 rule   %% year only , not ask when 
-is    _ isa year, not which(_), %% sp�rre om n�r
+is    _ isa year, not which(_), %% spørre om når
      not _ isa price, 
      not _ isa date,
      not _ isa clock, 
      not _ isa money, 
-     not (do)/live/_/_, %% er 5 �r
+     not (do)/live/_/_, %% er 5 år
      not srel/today/_/_/_ , 
-     not present (_ isa child), %% under 8 �r
+     not present (_ isa child), %% under 8 år
      clear
 id   not atday(_),
      clear, 
@@ -8119,7 +8119,7 @@ ip   [].
 
 nodates11 rule   %% last year
 is    _ isa lastyear,
-     not (do)/live/_/_, %% er 5 �r 
+     not (do)/live/_/_, %% er 5 år 
      clear
 id   not atday(_),
      clear, 
@@ -8131,7 +8131,7 @@ unksetexweekday rule   %% after weeknumber# %% TA-110203
 is  _ isa Weekday, {dmeq([week,weekday,weekend],Weekday)}, 
     not (YMD isa date) when { bound(YMD)},  %% another date overrules  
     not  comp/day/ne/_/_,            %% not excluded ! 
-    not present srel/today/_day/nil/_ %% s�ndagsrute idag ...
+    not present srel/today/_day/nil/_ %% søndagsrute idag ...
 id  not atdate2(_,_), 
     not message(noroutesforthisdate), 
     add message(mustknow(day)),
@@ -8166,7 +8166,7 @@ ip	 dmeq([be1,exist],Be1),
 	 datetime(Year,Month,DayNr,_,_,_). 
 
 
-date3 rule %% hvilken ... er det n� 
+date3 rule %% hvilken ... er det nå 
 is  exactly (which(A),A isa DayDate,(do)/Be1/A/B,event/real/B) %% ,srel/now/_/nil/B)
 id	 add (atday(Day),
          message(date_isa_day(date(Year,Month,DayNr),Day)))
@@ -8175,7 +8175,7 @@ ip	 dmeq([be1,exist],Be1),
     datetime(Year,Month,DayNr,_,_,_). 
 
 
-date4 rule %% hvilket �r er det i �r
+date4 rule %% hvilket år er det i år
 is  exactly (which(A),A isa year,B isa year,(do)/Be1/A/C,event/real/C,srel/in/year/B/C)
 id	 not atday(_),
     add (atday(Day),
@@ -8237,7 +8237,7 @@ ip  unbound(Time),
     datetime(Year,Month,DayNr,_,_,_).  
 
 
-date9 rule % hvilket �r er det
+date9 rule % hvilket år er det
 is  exactly (which(A),A isa Year1,(do)/Be1/A/C,event/real/C)
 id	 not atday(_),
     add (atday(Day),
@@ -8259,7 +8259,7 @@ ip	 dmeq([be1,exist],Be1),
     today(Day),
     datetime(Year,Month,DayNr,_,_,_).
 
-date11 rule %% Hvilken dag er det i g�r/imorgen  ->  dagen idag 
+date11 rule %% Hvilken dag er det i går/imorgen  ->  dagen idag 
 is  exactly (which(A),A isa DayDate,(do)/Be1/A/B,event/real/B,srel/_day/_day/nil/B)
 id	    not atday(_),
        addfront message(todayis),  
@@ -8350,7 +8350,7 @@ ip   \+ (date_day_map(DATE,Holiday),
      \+ (Day == AtDay).
 
 
-whatkindofroute  rule%% er det l�rdagsrute i dag (merkedag)??? 
+whatkindofroute  rule%% er det lørdagsrute i dag (merkedag)??? 
 is   (_ isa saturdayroute or _ isa sundayroute)
 id   not flag(exit), 
      not flag(nightbusflag), 
@@ -8363,7 +8363,7 @@ ip   date_day_map(DATE,MapDay).
 
 
 
-isitroutetoday  rule %% er det l�rdagsrute i dag ? 
+isitroutetoday  rule %% er det lørdagsrute i dag ? 
 is  test,
      (_ isa saturdayroute or _ isa sundayroute or _ isa route_plan
      ), %%        or _ isa route ), %% NB ambig. sende ruter 
@@ -8382,7 +8382,7 @@ ip   today(Today).
  
  
 
-whatkindofroutetoday  rule %% er det l�rdagsrute i dag ? 
+whatkindofroutetoday  rule %% er det lørdagsrute i dag ? 
 is   which(A),( A isa route or A isa route_plan),
      {unbound(A)}, %% hva er 4*4 -> which(4),4 isa route, 
      not present _ isa station,     
@@ -8416,22 +8416,22 @@ ip  [].
 
 
 
-questionhelp1 rule % hvilke sp�rsm�l ... 
+questionhelp1 rule % hvilke spørsmål ... 
 is  which(A),A isa question
 id  addfront message(thatisagoodquestion)
 ip  [].
 
 
-questionhelp2 rule %% Stiller jeg deg et sp�rsm�l n�? 
+questionhelp2 rule %% Stiller jeg deg et spørsmål nå? 
 is  test,_ isa question, present dob/Make/_/_/_,
            {dmeq([make,set],Make)}
 id  addfront message(thatisagoodquestion)
 ip  [].
 
 
-canyouanswer rule %% Hva kan du svare p� 
+canyouanswer rule %% Hva kan du svare på 
 is (tuc isa savant,(do)/Ans/Tuc/B,event/real/B),
-    not present _ isa language,  %%  kan du noen spr�k
+    not present _ isa language,  %%  kan du noen språk
     not present (do)/go/_/_, %% then not general
     { dmeq([busstuc,bustuc,tuc],Tuc),
       dmeq([know,know1,answer1],Ans)}
@@ -8445,7 +8445,7 @@ whatdoyouknow rule %% What do you know  also tuchelp3
 is  tuc isa savant,dob/KNOW1/Tuc/_A/B,event/real/B,
       { dmeq([know1,answer1,know],KNOW1),dmeq([busstuc,bustuc,tuc],Tuc)},
         not present BB isa bus when {bound(BB)}, 
-        not present _ isa language,  %%  kan du noen spr�k
+        not present _ isa language,  %%  kan du noen språk
         not present (do)/go/_/_ %% then not general
   ,{dmeq([know,know1],KNOW1)},
     not present _ isa clock %% TA-101104
@@ -8539,7 +8539,7 @@ havestation2  rule
 is  X isa station,F isa station, dob/Have/F/X/_ 
 id  not message(foreign(_)), 
     not message(nearest_station(_ST,X,_)),
-    add message(nearest_station(_ST,' ',X)) %% ad hoc holdeplassen n�rmest er
+    add message(nearest_station(_ST,' ',X)) %% ad hoc holdeplassen nærmest er
 ip  bound(X),X \== it,
     dmeq([have,belong_to],Have), 
     station(X). 
@@ -8596,7 +8596,7 @@ ip  [].
 
 
 
-placestat2 rule %% n�rmeste holdeplass til risvollansenteret 
+placestat2 rule %% nærmeste holdeplass til risvollansenteret 
 is  context (X isa station) , 
     present srel/Near/place/X/E , 
         {dmeq([near,around],Near)},  %% \+ at %% TA-110502 holdeplassen til
@@ -8618,7 +8618,7 @@ id  not message(foreign(_)),        %% skulle av ved ...
 ip  bound(X),
     X \== it. % ?
 
-placestat3 rule %% n�rmeste holdeplass [til] risvollansenteret 
+placestat3 rule %% nærmeste holdeplass [til] risvollansenteret 
 is  context (X isa station) , dob/be/_/X/_,
           adj/_/nearest/X/real,{bound(X)}
 id  not message(foreign(_)), 
@@ -8666,7 +8666,7 @@ ip  bound(X),
 
 streetstatwrong rule %% street mapping is not updated, warning to staff
 is  X isa street  
-id  add message(unrecognized_street(X,Y)) %% e.g. B�rd Iversens ->  k_jonssons_vei/old
+id  add message(unrecognized_street(X,Y)) %% e.g. Bård Iversens ->  k_jonssons_vei/old
 ip  bound(X), 
      X \== it,
     street_station(X,Y), %%  unknown  or not station
@@ -8706,14 +8706,14 @@ ip  bus_place_station(Bus,Place,Stat),
     Stat \== unknown.
 
 
-howmanyq1  rule %  hvor mange sp�rsm�l har du (be)svart (p�)? 
+howmanyq1  rule %  hvor mange spørsmål har du (be)svart (på)? 
 is  howmany(A), %% TA-101215
     tuc isa savant,A isa question %%%% ,dob/Tell/tuc/A/B,event/real/B
 id  add message(webstatistics)
 ip  []. %% dmeq([tell,answer1,answer],Tell).
 
 
-howmanyq2  rule %  hvor mange sp�rsm�l har du (be)svart (p�)? 
+howmanyq2  rule %  hvor mange spørsmål har du (be)svart (på)? 
 is  howmany(A),tuc isa savant,A isa question,dob/Tell/tuc/A/B,event/real/B
 id  add message(webstatistics)
 ip  dmeq([tell,answer1,answer],Tell). 
@@ -8760,7 +8760,7 @@ ip  value(actual_domain,TT),
 
 %% PRICE SECTION
 
-costtorunbus rule %% hva koster det � kj�re buss
+costtorunbus rule %% hva koster det å kjøre buss
 is  which(A),(B isa coevent,C isa Agent,D isa bus,
         event/B/E,dob/run/C/D/E,dob/cost/B/A/F,event/real/F),
     {dmeq([agent,thing],Agent)} 
@@ -8768,14 +8768,14 @@ id  addcon  ticketprice2(bus,_)
 ip  [].
 
 
-costthatbusgo rule %% hvor mye koster det at bussen g�r 
-is  %% which(A), koster det 30 kroner � ta buss
+costthatbusgo rule %% hvor mye koster det at bussen går 
+is  %% which(A), koster det 30 kroner å ta buss
     C isa coevent,B isa bus,
     (do)/go/B/E,event/C/E,dob/cost/C/_A/F,event/real/F
 id  addcon  ticketprice2(bus,_) %
 ip  [].
 
-costtogocrazy rule %% hvor mye koster � ta buss %% Odd semantics
+costtogocrazy rule %% hvor mye koster å ta buss %% Odd semantics
 is  C isa coevent,
     (do)/go/_B/E,event/C/E,dob/cost/C/_A/F,event/real/F
 id  addcon  ticketprice2(bus,_) %
@@ -8783,8 +8783,8 @@ ip  [].
 
 
 
-costtotake rule %% hvor mye koster det � ta buss %% (nec?)
-is  %% which(A),  %% koster det 30 kroner � ta buss
+costtotake rule %% hvor mye koster det å ta buss %% (nec?)
+is  %% which(A),  %% koster det 30 kroner å ta buss
     (B isa coevent,C isa Agent,D isa bus,event/B/E,dob/take/C/D/E,dob/cost/B/_A/F,event/real/F),
     {dmeq([agent,thing],Agent)} 
 id  addcon  ticketprice2(bus,_)
@@ -8804,7 +8804,7 @@ id  not  message(noinfoabout(_)), %% dogs,prams etc.
 ip  [].
 
 
-costitairbus1 rule % koste p� flybussen 
+costitairbus1 rule % koste på flybussen 
 is  dob/cost/_/_NN/_, present _ isa airbus,
     clear                %% only SMS ?
 id  not  message(noinfoabout(_)), %% dogs,prams etc. 
@@ -8893,7 +8893,7 @@ ip  dmeq([ticket,trip,adult,child,thing],Ticket).
 
 costto rule %% cost to (go...)  
 is  dob/cost/_/_/F ,srel/in_order_to/thing/_/F,
-%%     present _ isa bus, ... � reise ...
+%%     present _ isa bus, ... å reise ...
     not present _ isa nightbus, 
     not present _ isa midnight,
     clear
@@ -8965,7 +8965,7 @@ id  not ticketprice2(_,_), %% TA-101124
 ip  [].
 
 
-expensiveto1 rule %% kj�re gratis %% TA-101108
+expensiveto1 rule %% kjøre gratis %% TA-101108
 is  not _ isa nightbus, 
     not _ isa beer,  %% :-) 
     srel/Expensive/(mode)/nil/_ , {dmeq([expensive,gratis,cheap],Expensive)} 
@@ -8984,13 +8984,13 @@ ip  [].
 
 gratis rule 
 is  not _ isa nightbus, 
-    srel/freely/(mode)/nil/B,event/real/B %% kj�re gratis
+    srel/freely/(mode)/nil/B,event/real/B %% kjøre gratis
 id  add (ticketprice2(bus,_))
 ip  [].
 
 
 begratis rule     %% T-100427  free-> gratis                          
-is  not _ isa nightbus, %% v�re gratis %% adj/_/gratis/_/real
+is  not _ isa nightbus, %% være gratis %% adj/_/gratis/_/real
     adj/_/gratis/A/_ ,A isa Bus ,{dmeq(vehicle,Bus)} 
 id  add (ticketprice2(Bus,_))
 ip  [].
@@ -8998,7 +8998,7 @@ ip  [].
 
 pay2 rule 
 is  not _ isa nightbus, 
-    dob/pay/_/_/_  %% er det lov � betale med 500 kroner 
+    dob/pay/_/_/_  %% er det lov å betale med 500 kroner 
 id  add (ticketprice2(bus,_))
 ip  [].
 
@@ -9128,7 +9128,7 @@ id  atdate2(_DaySeqNo,Date),
 ip  set(warningtime, notification(Date,CLOCK)).
 
 
-warnwhentimeis rule %% varsle n�r klokken er 1800  %% TA-110202
+warnwhentimeis rule %% varsle når klokken er 1800  %% TA-110202
 is  {value(smsflag,true)},
     tuc isa savant,
     dob/be/A/T1800/D,{bound(T1800)},
@@ -9175,7 +9175,7 @@ id  add (timenow2(0,T),timeis(T))
 ip  unbound(Clock1),Clock1==Clock2.          %% Alarm 
 
 
-whattimenow rule % Hva er klokka n� ? %  Fronted, Date irrelevant 
+whattimenow rule % Hva er klokka nå ? %  Fronted, Date irrelevant 
 is  exactly (which(A),B isa clock,srel/now/time/nil/C,event/real/C,dob/be/A/B/C)
 id  add (timenow2(0,T),timeis(T))
 ip  [].
@@ -9273,9 +9273,9 @@ id	 clear,
     addcon message(noroutesfor(tram)) 
 ip   \+ user:value(tmnflag,true).
 
-% S�rger for riktig retning i "buss fra/til sted passerer TOFROMBY" etc.
+% Sørger for riktig retning i "buss fra/til sted passerer TOFROMBY" etc.
 
-%%%%%%%%%%%%% Stasjoner en kommer fra eller g�r til %%%%%%%%%
+%%%%%%%%%%%%% Stasjoner en kommer fra eller går til %%%%%%%%%
 
 
 %%%%%%%%% STASJONER ..og passerer, etc. %%%%%%%%%%%%%
@@ -9283,7 +9283,7 @@ ip   \+ user:value(tmnflag,true).
 %%% BEGIN SECTION HOLDEPLASSER %%%
 
 
-wherebus11 rule % Hvor g�r buss Bus fra/til? 
+wherebus11 rule % Hvor går buss Bus fra/til? 
 is  exactly 
    (which(A),A isa place,Bus isa Route,    {dmeq(vehicle,Route)},
     (do)/go/Bus/B,event/real/B,srel/_from/place/A/B)
@@ -9293,7 +9293,7 @@ id	 atday(Day),
 ip	 exbus(Bus).
 
 
-wherebus12 rule % Hvor g�r buss Bus ? %% moved after fromp
+wherebus12 rule % Hvor går buss Bus ? %% moved after fromp
 is  which(Station),(do)/PASS/Bus/B, {dmeq(pass,PASS)}, 
     srel/_In/place/Station/B,
     not  Stat1 isa station  when {bound(Stat1)}, 
@@ -9312,7 +9312,7 @@ id	 not flag(exit),
 	 add (findstations(Bus,Day,Stl),passesstations(Bus,Day,Stl,_))
 ip	 unbound(Station),exbus(Bus). 
 
-wherebus13 rule % Hvor g�r stopper buss 5 n�r sentrum 
+wherebus13 rule % Hvor går stopper buss 5 nær sentrum 
 is  which(P),P isa Place,
        {dmeq([place,station,neighbourhood],Place)},
     (do)/PASS/Bus/B, {dmeq(pass,PASS)},  
@@ -9331,7 +9331,7 @@ ip	 exbus(Bus).
 
 
 
-wherebus14 rule % Hvor g�r trikk 1 ? 
+wherebus14 rule % Hvor går trikk 1 ? 
 is  which(Station),(do)/PASS/Tramno/B,srel/_In/place/Station/B, 
     not srel/_now/time/_/_ ,   
     not srel/nil/time/_/_ , 
@@ -9385,7 +9385,7 @@ ip  [].
 
 
 busonroutestoppingbetween  rule  %% TA-110510
- %% hvor stopper buss  .. mellom .. p� rute 52
+ %% hvor stopper buss  .. mellom .. på rute 52
 is  which(F22),   F22 isa place, {unbound(F22)},
     srel/Ni/place/F22/F23, {dmeq([in,nil],Ni)},
  
@@ -9527,7 +9527,7 @@ ip  dmeq([from,beyond,after],From), %% etter = from/beyond/after
     unbound(Place),exbus(Bus).
 
 
-statbeforeis rule  %% hva er  holdeplassene f�r B
+statbeforeis rule  %% hva er  holdeplassene før B
 is  which(F171),  Place isa station, 
     srel/before/place/_ToPlace/_,
     (do)/be1/Place/A, dob/be/Place/F171/A 
@@ -9535,7 +9535,7 @@ id  add message(mustknow(bus)),
     add message(mustknowanother(place))
 ip  [].
 
-statbeforeheter rule  %% hva er/heter  holdeplassene f�r B 
+statbeforeheter rule  %% hva er/heter  holdeplassene før B 
 is  which(F100),  Place isa station, { bound(Place)},
     Free isa station, { unbound(Free)},
     srel/before/place/Place/E,
@@ -9775,7 +9775,7 @@ ip  atomic(StartPlace), atomic(EndPlace),
 % Stasjonspasseringsdel. Her blir departure/passevent laget
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%% Stasjonspasseringsspesialregler som sikrer riktig rekkef�lge...
+%%%%%%%%%%%%% Stasjonspasseringsspesialregler som sikrer riktig rekkefølge...
 
 leavename rule %% Does a bus LEAVE a place? 
 is  dob/LEAVE/Bus/Place/A, present Bus isa Veh 
@@ -10371,7 +10371,7 @@ is  srel/FROM/place/Place/_ ,   %%  Too Restricted ?
                                             %% Jeg bor i sentrum og skal  fra heimdal 
                                             %% not in 
     present (do)/TRAVELFROM/Cat/B, { dmeq(travelfrom,TRAVELFROM)},
-    present Cat isa BVP, {dmeq(trafficant,BVP)} %% hvilke busser g�r forbi IKEA = to
+    present Cat isa BVP, {dmeq(trafficant,BVP)} %% hvilke busser går forbi IKEA = to
  
 id  not flag(exit),
     not findstations(_,_,_),  
@@ -10409,7 +10409,7 @@ ip  neverpasses(Cat,Place),
 
 befromplace rule % and ...  I am on NTH and ...
 is  (do)/be1/Agent/_,   
-    Agent isa Whatever, %% bussholdeplassen p� risvollansenteret
+    Agent isa Whatever, %% bussholdeplassen på risvollansenteret
     srel/on/place/Place/C,
     present (do)/go/Agent/C
 id  atday(Day),atdate2(DaySeqNo,_date),
@@ -10481,7 +10481,7 @@ is  replaceall (srel/there/place/nil/E,srel/On/place/D/E)
 id  []
 ip  [].
 
-fremme2 rule %% %% fremme p� dragvoll %% TA-101108
+fremme2 rule %% %% fremme på dragvoll %% TA-101108
 is  replaceall (adj/nil/(present)/I/E,srel/On/place/D/E)
     with       ((do)/go/I/E,srel/to/place/D/E),
     {dmeq([on,at,in],On)}
@@ -10489,14 +10489,14 @@ id  []
 ip  [].
 
 
-tohomeon rule %% til "hjem" p� Dalen hageby %% TA-110330
+tohomeon rule %% til "hjem" på Dalen hageby %% TA-110330
 is replaceall (srel/to/place/Free74/Free75,srel/on/place/Dalen_hageby/Free75,Free74 isa home)
    with       (srel/to/place/Dalen_hageby/Free75)
 id []
 ip [].
 
 
-toplace1 rule  %% Jeg er p� lade og skal til dragvoll ==> TO dragvoll
+toplace1 rule  %% Jeg er på lade og skal til dragvoll ==> TO dragvoll
 is  srel/TO/PC/Place/X,  
       {dmeq([to,at,for,near,outside,towards,dir,  on, along	],TO)}, %% TA-100930
 
@@ -10865,7 +10865,7 @@ id	 atday(Day),
 ip	 unbound(Place),exbus(Bus),dmeq(pass,PASS).
 
 
-findstation90 rule % Hviken ruteplan/rute  tar/f�lger buss 20
+findstation90 rule % Hviken ruteplan/rute  tar/følger buss 20
 is  which(A),A isa RP,Bus isa Veh,dob/Take/Bus/A/_
 id	 atday(Day),
 	 add (findstations(Bus,Day,Stl),
@@ -10921,7 +10921,7 @@ is  srel/BY/place/Place/C,   {dmeq(by,BY)},
     not present srel/dir/place/_/_,  
     not present srel/nil/place/_/_  
 id	 not flag(exit), 
-    not message(neverpasses(_,Place)),  %% %% n�r g�r buss nr 60 fra sentrum forbi berg 
+    not message(neverpasses(_,Place)),  %% %% når går buss nr 60 fra sentrum forbi berg 
     passevent(_,_,_,[from],_,_),
     passevent(_,_,_,[to],_,_),
     add message(toomanyplaces)
@@ -10930,7 +10930,7 @@ ip	 dmeq(bus,BR),dmeq(travelbe,TRAVELBE), %  ved = kommer til
 
 
 % Does a bus TRAVEL BY a place? Detect to option 
-%     hvis jeg skal v�re i hornebergveien kl 1500
+%     hvis jeg skal være i hornebergveien kl 1500
 
 travelbyto rule  %% past X from  Y
 is  srel/BY/place/Place/C,   {dmeq(by,BY)},
@@ -10940,7 +10940,7 @@ is  srel/BY/place/Place/C,   {dmeq(by,BY)},
     not present srel/dir/place/_/_  
    
 id	 not flag(exit),
-    not message(neverpasses(_,_Place)),  %% %% n�r g�r buss nr 60 fra sentrum forbi berg 
+    not message(neverpasses(_,_Place)),  %% %% når går buss nr 60 fra sentrum forbi berg 
     atday(Day),atdate2(DaySeqNo,_date),
 %%%	 passevent(_,_,_,Opts0,_,_),     %% TA-110119
     add (departure(Bus,Stat,DaySeqNo,Depset),
@@ -11030,7 +11030,7 @@ ip  busorfree(Bus),newfree(F),
     bus_place_station(Bus,Place,Stat).
 
 
-somepassbybus3 rule % P� hvilke ruter fins moholt
+somepassbybus3 rule % På hvilke ruter fins moholt
 is  which(A),A isa route,
     (do)/be1/Place/B,srel/on/route/A/B,event/real/B
 id	 not flag(exit), 
@@ -11114,7 +11114,7 @@ id  atday(Day),atdate2(DaySeqNo,_date),
     add (departure(Bus,Station,DaySeqNo,Depset), 
          passevent(Depset,Bus,Station,[from],Day,B)) %% NB from
 ip  dmeq(travel,TRAVEL),
-    dmeq([for,in,on,at],AT), %%  derived    g� i byen// arrive at
+    dmeq([for,in,on,at],AT), %%  derived    gå i byen// arrive at
     dmeq(trafficant,BVP),           %% Experiment  Not CAT
     place_station(Place,Station),newfree(Bus).
 
@@ -11407,7 +11407,7 @@ ip  bound(Bus),
     unbound(PlaceVar), 
     setopt(from,Opts,Opts1).
 
-%%%%%% Sp�rsm�l om trikk og flybuss og b�t  %%%%% 
+%%%%%% Spørsmål om trikk og flybuss og båt  %%%%% 
 
 
 numberonbus rule %   which number(?) are on the buses
@@ -11501,7 +11501,7 @@ ip  number(Minutes),
  
 aftersec rule % after 30 seconds
 is  Seconds  isa second, srel/AFTER/_/Seconds/_C,
-     {number(Seconds), Seconds =< 86400} %% 1 d�gn :-) %% TA-100903 
+     {number(Seconds), Seconds =< 86400} %% 1 døgn :-) %% TA-100903 
 id	 replace passevent(Deps,Bus,Place,Opts,Day,C) 
 	 with (timenow2(Minutes,TM), 
           keepafter(TM,Deps,NewDeps),
@@ -11642,7 +11642,7 @@ ip	 user:testmember(to,Opts),
 
 
 
-within3 rule  %%   bussen g�r () neste time 
+within3 rule  %%   bussen går () neste time 
 is  Minutes  isa minute,srel/nil/TM/Minutes/_C,
     present  adj/_/next/_/_ 
 id replace passevent(Deps,Bus,Place,Opts,Day,C) 
@@ -11722,7 +11722,7 @@ ip	 dmeq(attime,AT),number(Time). %% in time means around
 justearly rule
 is  EA isa earliness,srel/(with)/earliness/EA/_,
     not present srel/after/time/_/_ , %% fortest mulig etter tid 
-    not present srel/nil/time/_/_ ,  %% n� kl 1745 
+    not present srel/nil/time/_/_ ,  %% nå kl 1745 
     not present srel/before/time/_/_  %% "raskest"
 id	 replace passevent(Deps,Bus,Place,Opts,Day,A)
     with	   passevent(Deps,Bus,Place,Opts1,Day,A)
@@ -11732,7 +11732,7 @@ ip	 setopt(firstcorr,Opts,Opts1).
 justlate rule 
 is  EA isa lateness,srel/(with)/thing/EA/_, %% TA-100914
     not present srel/after/time/_/_ , %% fortest mulig etter tid 
-    not present srel/nil/time/_/_ ,  %% n� kl 1745 
+    not present srel/nil/time/_/_ ,  %% nå kl 1745 
     not present srel/before/time/_/_  %% "raskest"
 id	 replace passevent(Deps,Bus,Place,Opts,Day,A)
     with	   passevent(Deps,Bus,Place,Opts1,Day,A)
@@ -11996,7 +11996,7 @@ is   {\+ value(new_origin,true)}, %% NO GPS %% TA-110218
     not present srel/inwards/place/nil/_, 
     not present srel/from/___place/X/_  %% in case of error srel/from/text/c/free(32)
            when { (bound(X), \+ home_town(X))}, %% TA-101111
-    not present srel/on/place/_/_ ,      %%  hvis jeg er p� Samfundet
+    not present srel/on/place/_/_ ,      %%  hvis jeg er på Samfundet
     not _IDI isa Dep when {dmeq([department],Dep)} %% ad hoc might be placoid
 id  not flag(exit),              %% prefer (spurious) warning
     
@@ -12026,7 +12026,7 @@ ip  member(to,Opts),
 keeptobay rule %% = go to  center ?
 is  not present srel/outwards/place/nil/_, 
     not present srel/nil/place/NTH/_ when { bound(NTH)}, 
-    not present srel/near/place/NTH/_ when { bound(NTH)}, %% n(�rm)este buss ******
+    not present srel/near/place/NTH/_ when { bound(NTH)}, %% n(ærm)este buss ******
     not present srel/in/place/NTH/_ when { bound(NTH)},
     not present srel/at/place/NTH/_ when { bound(NTH)}, 
     not present srel/to/_place/NTH/_ when { bound(NTH)}, %% Lingit: agent %% TA-110401
@@ -12160,7 +12160,7 @@ is  present  Time isa clock, { number(Time)},
     not srel/after/time/F/_  when {bound(F)}   %% then not lastcorr
 id	 not flag(defaultdest), %% not given explicitly 
     not keepafter(_,_,_),
-    not keepbefore(_,_,_),  %% til risvollan kl 1500 f�r kl 1700.
+    not keepbefore(_,_,_),  %% til risvollan kl 1500 før kl 1700.
     not keepbefore1(_,_,_),
     replace passevent(Deps,Bus,Place,Opts,Day,A) 
     with (  keepbefore1(Time,Deps,NewDeps),  %% CLOSELY BEFORE !!! 
@@ -12188,7 +12188,7 @@ id  not flag(defaultdest), %% not given explicitly
 ip dmeq(within,BEFORE),dmeq(timeclock,CLO), %%  Not duration
    number(Time), 
     \+ member(from,Opts),  
-%% member(to,Opts),  %% Too strong ! %%% *** Bussen g�r forbi NTH f�r 0815
+%% member(to,Opts),  %% Too strong ! %%% *** Bussen går forbi NTH før 0815
    setopt(time,Opts,Opts1), 
    setopt(lastcorr,Opts1,TLCOPT).
 
@@ -12362,7 +12362,7 @@ id	 replace passevent(Deps,Bus,Place,Opts,Day,B)
           keepbefore(1200,NewDeps,NewDeps1), 
           passevent(NewDeps1,Bus,Place,Opts1,Day,B))
 ip	 dmeq(at,AT),
-    dmeq([time,daypart,morning],Time), %%  p� l�rdag formidag 
+    dmeq([time,daypart,morning],Time), %%  på lørdag formidag 
     setopt(time,Opts,Opts0),
     setopt(firstcorr,Opts0,Opts1). 
 
@@ -12397,7 +12397,7 @@ ip	 dmeq(morning,MORNING),
     setopt(time,Opts,Opts0),
     setopt(firstcorr,Opts0,Opts1). 
 
-%% midtp�dagen  rule % midt p� dagen 
+%% midtpådagen  rule % midt på dagen 
 eveningbeforenoon rule %% contradictory evening before noon
 is  srel/EVENING/time/nil/_ % see and ignore
 id  keepbefore1(F,_,_)      % before?  This is just an experiment
@@ -12560,7 +12560,7 @@ ip	 dmeq(at,AT),
 thisnightis18ormore rule % This night  (>=1800)
 is  A isa night,
     srel/AT/time/A/_, 
-       {dmeq([after,at,in,nil,on],AT)}, %% \+ f�r kvelden 
+       {dmeq([after,at,in,nil,on],AT)}, %% \+ før kvelden 
     not present _ isa clock   %% then evening is just for lateflag
 id	 not flag(nightbusflag),  
     today(Wday),atday(Wday), %% same day
@@ -12582,7 +12582,7 @@ id	 not flag(nightbusflag),
 	 replace passevent(Deps,Bus,Place,Opts,Day,B)
 	 with		(keepafter(DepTime,Deps,NewDeps),
 				 passevent(NewDeps,Bus,Place,Opts1,Day,B))
-ip  dmeq([at,in,nil,on],AT), %% f�r kvelden
+ip  dmeq([at,in,nil,on],AT), %% før kvelden
     DepTime is 1800, 
     setopts([time],Opts,Opts1). %% lastcorr neglected by NON sms
 
@@ -12650,7 +12650,7 @@ id	 replace passevent(Deps,Bus,Place,Opts,Day,A)
 ip	 number(Time1),number(Time2),setopt(time,Opts,Opts1).
 
 % ...around a time? (+/- 15 min)  
-% (skulle v�rt implementert mer komplisert, men...)
+% (skulle vært implementert mer komplisert, men...)
 aroundatime rule 
 is  srel/around/time/Time/A %% Same event A ! 
 id	 replace passevent(Deps,Bus,Place,Opts,Day,A)
@@ -12679,7 +12679,7 @@ id	 not passevent(_,Bus,_,_,_,_),
             passevent(NewDeps,Bus,Station,Opts,Day,A))
 ip	 testmember(from,Opts), %% only the departure bus is important
     dmeq([bus,nightbus,route,tram],BR),
-    dmeq([for,with,on,by,via,from],W),  %%  for %%  (missp f�r 19)?
+    dmeq([for,with,on,by,via,from],W),  %%  for %%  (missp før 19)?
     dmeq([vehicle,route,bus],V),
     bound(Bus), %% bus or tram exbus(Bus), 
     place_station(Place,Station).
@@ -12899,7 +12899,7 @@ is  srel/AT/CLO/Time/E, present (do)/go/Bus/E, present srel/from/place/Place/E,
 id  replace passevent(Deps,Bus,Place,Opts,Day,E)
     with   ( keepafter(Time,Deps,NewDeps),  
              passevent(NewDeps,Bus,Place,Opts1,Day,E)) 
-ip  dmeq([at],AT),dmeq(timeclock,CLO),number(Time), %% bussen g�r 20 // attime  %% minutter f�r midnatt
+ip  dmeq([at],AT),dmeq(timeclock,CLO),number(Time), %% bussen går 20 // attime  %% minutter før midnatt
     setopt(time,Opts,Opts1). 
 
 
@@ -13032,12 +13032,12 @@ busaftertime5 rule % ...after a clock?
 is  srel/after/Thing/Time/E, present Time isa clock,
     not present srel/around/time/_/_, %% confuse 
     
-%% not srel/in_order_to/_/_/_,    %% for � rekke en buss som g�r 09.30 fra byen? 
-                                   %% for � g� fra ?
+%% not srel/in_order_to/_/_/_,    %% for å rekke en buss som går 09.30 fra byen? 
+                                   %% for å gå fra ?
     present (do)/go/V/E, {dmeq(vehicle,V)}, %% same event
     not present adj/_/last/_/real, 
     not present (do)/arrive/_/_ 
-id	 not message(nocorresponse), %%  for � rekke en buss som g�r 09.30 fra byen? 
+id	 not message(nocorresponse), %%  for å rekke en buss som går 09.30 fra byen? 
     not  keepafter(_,_,_), 
     replace passevent(Deps,Bus,Place,Opts,Day,A)
 	 with (keepafter(Time,Deps,NewDeps),
@@ -13080,7 +13080,7 @@ is  srel/AFTER/CLO/Time/E,
         dmeq(timeclock,CLO), 
          number(Time)}, %% not duration
     not present srel/around/time/_/_, 
-    present (do)/Go/Bus/E, {dmeq([go,be1],Go)}, %%  ��� Expensive ���
+    present (do)/Go/Bus/E, {dmeq([go,be1],Go)}, %%  %%% Expensive %%%
     present srel/To/place/Place/E, { dmeq([to,nil],To)},    
     not srel/in_order_to/_/_/_,   % heuristic
     not dob/reach/_/_/_ ,             % heuristic
@@ -13130,7 +13130,7 @@ ip	 \+ member(to,Opts), %% in case two passevents, select the right
 afteratime rule % ...after a time?  
 is  srel/Hereafter/time/nil/_  ,
     not present srel/after/time/_/_ , %% fortest mulig etter tid 
-    not present srel/nil/time/_/_ ,  %% n� kl 1745 
+    not present srel/nil/time/_/_ ,  %% nå kl 1745 
     not present srel/before/time/_/_  %% "raskest"
 id	 atday(Day), 
     replace passevent(Deps,Bus,Place,Opts,Day,A)
@@ -13196,7 +13196,7 @@ is  {value(gpsflag,true)},
     not present srel/from/___place/X/_  
            when { (bound(X), \+ home_town(X))}, 
 
-    not present srel/on/place/_/_       %%  hvis jeg er p� Samfundet
+    not present srel/on/place/_/_       %%  hvis jeg er på Samfundet
  
 id  not flag(exit),   
     not flag(keepfrombay),  %%  Loop Stop
@@ -13228,7 +13228,7 @@ is  {value(gpsflag,true)},
     not present srel/from/___place/X/_  
            when { (bound(X), \+ home_town(X))}, 
 
-    not present srel/on/place/_/_       %%  hvis jeg er p� Samfundet
+    not present srel/on/place/_/_       %%  hvis jeg er på Samfundet
  
 id  not flag(exit),   
     not flag(keepfrombay),  %%  Loop Stop
@@ -13444,7 +13444,7 @@ id	 replace passevent(Deps,Bus,Place,Opts,Day,A)
 	 with 	passevent(Deps,Bus,Place,Opts1,Day,A)
 ip	 setopt(last(1),Opts,Opts1). 
 
-lastbus4 rule % buss slutter � g�
+lastbus4 rule % buss slutter å gå
 is  end/_/F80,srel/in_order_to/thing/_F79/F80  
 id	 replace passevent(Deps,Bus,Place,Opts,Day,A)
 	 with 	passevent(Deps,Bus,Place,Opts1,Day,A)
@@ -13664,7 +13664,7 @@ ip  underspecified_place(NTNU),
 
 underspecifiedstat rule %% underspecified station 
 is  Steinan isa station,  { bound(Steinan)}, 
-    present B isa Bus, { dmeq(vehicle,Bus)}, %% (neste=neste kj�ret�y)
+    present B isa Bus, { dmeq(vehicle,Bus)}, %% (neste=neste kjøretøy)
     clear
 id	 clear, 
     add message(underspecified_place(Steinan))
@@ -13674,7 +13674,7 @@ ip  underspecified_place(Steinan),
 
 underspecifiedneibus rule %% underspecified neighb, bus# 
 is  Søndre isa neighbourhood, { bound(Søndre)}, 
-    present B isa Bus, { dmeq(vehicle,Bus)}, %% (neste=neste kj�ret�y)
+    present B isa Bus, { dmeq(vehicle,Bus)}, %% (neste=neste kjøretøy)
     clear
 id	 clear, 
     add message(underspecified_place(Søndre))
@@ -13687,7 +13687,7 @@ ip  underspecified_place(Søndre),
 
 % Sjekker at det ikke er flere enn 2 stasjoner 
 
-toomanyplaces rule %% G�r buss 9 fra dragvoll via moltmyra til flat�sen senter .
+toomanyplaces rule %% Går buss 9 fra dragvoll via moltmyra til flatåsen senter .
 is  clear %% Doesn't work softly 
 id	 connections(_,_,_,_,_,_,_,_,_,_), %% 10 arg 
     remove passevent(_,_,_,_,_,_),
@@ -13795,7 +13795,7 @@ is  remove  srel/T/place/JV/_ , {
     \+ home_town(JV)  } 
 id  not  message(toomanyplaces), 
     add  message(toomanyplaces), 
-    not flag(nightbusflag),     %% rough // fra munkegt til val�yveien
+    not flag(nightbusflag),     %% rough // fra munkegt til valøyveien
     not message(neverpasses(_,_)), 
     not message(onlyoneplace),
     connections(_,_,_,A,B,_,_,_,_,_),
@@ -14154,7 +14154,7 @@ is  howmany(Bus),present Bus isa bus,
     not srel/in_order_to/thing/_/_ ,
     not present _ isa self, 
     not present  dob/take/_/_/_,
-    not present srel/because_of/_/_/_ %% avoid hvor mange busser m� jeg ta
+    not present srel/because_of/_/_/_ %% avoid hvor mange busser må jeg ta
 id  replace connections(X1,X2,X3,X4,X5,X6,SeqNo,Opts, Deps,X7)
     with    connections(X1,X2,X3,X4,X5,X6,SeqNo,Opts1,Deps,X7),
     add numberof(departures,Deps,_)
@@ -14175,7 +14175,7 @@ howmany3 rule % how many deparures, have connections
 is  howmany(Arrdep),present Arrdep isa ARRDEP,
     not present _ isa self, 
     not present  dob/take/_/_/_,
-    not present srel/because_of/_/_/_ %% avoid hvor mange busser m� jeg ta
+    not present srel/because_of/_/_/_ %% avoid hvor mange busser må jeg ta
 id  replace connections(X1,X2,X3,X4,X5,X6,SeqNo,Opts, Deps,X7)
     with    connections(X1,X2,X3,X4,X5,X6,SeqNo,Opts1,Deps,X7),
     add numberof(departures,Deps,_)
@@ -14184,7 +14184,7 @@ ip  dmeq(busdeparr,ARRDEP),
 
 
 
-%%%%% H�flighetsfraser og tull og sludder
+%%%%% Høflighetsfraser og tull og sludder
 
 tuchelp00 rule % Hva  kan busstuc brukes til 
 is  which(A), dob/use/_/bustuc/C, srel/to/thing/A/C
@@ -14237,7 +14237,7 @@ is  tuc isa savant, dob/Tell/tuc/A/B,
          {unbound(A)}, 
     event/real/B,
     not _ isa language, 
-    not _ isa question  %% ad hoc  Du m� oppgi
+    not _ isa question  %% ad hoc  Du må oppgi
 id	 not departure(_,_,_,_),  
      
     not message(_howtuchelp), %% TA-110215 not any message
@@ -14254,7 +14254,7 @@ tuchelpabout rule % kan du fortelle meg noe ?
 is  tuc isa savant, dob/Tell/tuc/A/E, srel/about/thing/A/E, 
            {dmeq([tell,know,know1],Tell)},
     event/real/E,
-    not _ isa question %% ad hoc  Du m� oppgi
+    not _ isa question %% ad hoc  Du må oppgi
 id	 not departure(_,_,_,_),  
     add message(howtuchelp)
 ip	 [].
@@ -14278,15 +14278,15 @@ id    not departure(_,_,_,_),
 ip  [].
 
 
-tuchelp8 rule   % Hvilke sp�rsm�l kan jeg stille
+tuchelp8 rule   % Hvilke spørsmål kan jeg stille
 is  which(_Q), %% Q isa question, HVA kan jeg ....
-    dob/ask/'I'/_/_ %%  jeg sp�rre
+    dob/ask/'I'/_/_ %%  jeg spørre
 id	 not departure(_,_,_,_), 
     add message(howtuchelp)
 ip	 [].
 
 
-tuchelp9 rule % Kan jeg/man sp�rre 
+tuchelp9 rule % Kan jeg/man spørre 
 is  test,  (do)/ask/I/_,
     I isa Agent  
 id	 not  message(howtuchelp), 
@@ -14294,7 +14294,7 @@ id	 not  message(howtuchelp),
     add message(howtuchelp)
 ip	 dmeq([self,agent],Agent).
 
-tuchelp10 rule % Kan jeg/man sp�rre om en ting 
+tuchelp10 rule % Kan jeg/man spørre om en ting 
 is  test,  (do)/ask/I/_/_, 
     I isa Agent  
 id	 not departure(_,_,_,_), 
@@ -14340,7 +14340,7 @@ id	 not departure(_,_,_,_),
     add message(howtuchelp)
 ip	 [].
 
-doyouknow rule %% kan du noen spr�k %% Moved back
+doyouknow rule %% kan du noen språk %% Moved back
 is  tuc isa savant,dob/KNOW1/Tuc/_A/B,event/real/B,
     not present (do)/go/_/_, %% then not general 
       { dmeq([busstuc,bustuc,tuc],Tuc),
@@ -14471,7 +14471,7 @@ ip  \+ user:value(teleflag,true),
 :-single.
 
 
-%%%��������������
+%%%%%%%%%%%
 
 
 %% DEFAULTS for Flybussen:::
@@ -14702,7 +14702,7 @@ ip  default_destination(Bus36,CHLK)
 :- single. 
 
 
-%%%�����������������
+%%%%%%%%%%%%%%%%%%%
 
 wakeup1 rule  %%  Just wakeup call notify/1
 is  present notify/_/_,
@@ -14778,7 +14778,7 @@ ip  user:set(warningtime, notification(DATE,TIME)).
 
 %% USE CONTEXT SECTION 1 %%%
 
-iwantalaterdeparture  rule %%  G�r det en senere buss/avgang
+iwantalaterdeparture  rule %%  Går det en senere buss/avgang
 is  adj/comp/late/BusDep/real,  { dmeq([bus,departure],BusDep)}, 
     has/agent/_Veh/_I/BusDep, 
     not srel/to/place/_/_,  
@@ -14831,7 +14831,7 @@ id	 not message(not(bus,_)),
 ip  []
  :- double.
 
-%%  G�r det en senere  buss/avgang
+%%  Går det en senere  buss/avgang
 
 iwantanearlierdeparture  rule 
 is  adj/comp/early/BusDep/real, { dmeq([bus,departure],BusDep)},
@@ -14903,7 +14903,7 @@ ip  dmeq(bepass,PASS),
  :- double.
 
 
-%%  G�r det en  tidligere  buss
+%%  Går det en  tidligere  buss
 
 askforearlierbus  rule  
 is  adj/comp/early/Bus/real, %%%  /// EARLIER
@@ -15059,7 +15059,7 @@ ip  dmeq(bepass,PASS),
  :- double.
 
 
-jaglanddepartnil rule    %%   %% jeg vil reise  kl 1500 ->  f�r kl 1500
+jaglanddepartnil rule    %%   %% jeg vil reise  kl 1500 ->  før kl 1500
 is  present  srel/NILAT/Clock/DepTime/_, 
              { number(DepTime),  
                dmeq([nil,at],NILAT),   
@@ -15090,7 +15090,7 @@ ip  dmeq(trafficant,BR)
 
 
 
-%% jeg vil reise f�r  kl 1500
+%% jeg vil reise før  kl 1500
 bongo rule %% askforwherearrtimeonly rule   
 is  present  srel/before/time/ArrTime/_,
      Bus isa BR,  
@@ -15116,7 +15116,7 @@ ip  dmeq(bepass,PASS),
  :- double.
 
 
-jaglandarrivenil rule    %% jeg vil ankomme kl 1500 -> f�r kl 1500
+jaglandarrivenil rule    %% jeg vil ankomme kl 1500 -> før kl 1500
 is  present  srel/NILAT/Clock/DepTime/_, 
              {number(DepTime),   
               dmeq([nil,at],NILAT),  
@@ -15277,7 +15277,7 @@ id  []
 ip  number(MM),  %% no spurious  after this time
     current_frame_getvalue(where::departure, NewPlace) 
 :-double.      
-% ����
+%%%%%
  
 ourdepearlier rule  
 is  present  adj/comp/early/_Bus/real, present _ isa departure,
@@ -15414,10 +15414,10 @@ ip  current_frame_getvalue(where::departure, NewPlace)
 %%%%%%%%%% Start MustKnow Section
 
 
-mustknowplace0  rule  %% G�r Buss 8 ?  
+mustknowplace0  rule  %% Går Buss 8 ?  
 is  Bus isa Veh, 
        %% {bound(Bus)} , %% TA-110118
-       %% Dropped for humoristic effect: kan jeg f� en suss
+       %% Dropped for humoristic effect: kan jeg få en suss
 
        {dmeq(busdeparrtime,Veh)},  %% select a known   bus
     present (do)/Go/Bus/_E, 
@@ -15438,11 +15438,11 @@ id	 not flag(exit),
     not message(summerishere),
     not message(winterishere),
     addcon message(mustknow(place))
-%%%    add flag(fail)     %%  "det er ikke mulig natt til s�ndag"
+%%%    add flag(fail)     %%  "det er ikke mulig natt til søndag"
 ip	 [].
 
 
-mustknowplace7 rule        %% Jeg er p� et sted
+mustknowplace7 rule        %% Jeg er på et sted
 is  (do)/be1/X/E ,
 
 %% X isa Mov,  {i_or_a_bus(X,Mov,_)}.  %% TA-110314    
@@ -15503,7 +15503,7 @@ is  not explain,
     not srel/_/place/_/_ ,  
     not present _ isa information,  %% Ad Hoc 
     not present ( _ isa week), %% TA-110203 %% hvilken uke er ...
-    not present srel/on/language/_/_,   %% TA-110331 ? :-) %% hva heter .. p� engelsk
+    not present srel/on/language/_/_,   %% TA-110331 ? :-) %% hva heter .. på engelsk
     
     %%     not present _ isa street      %%
     not present _ isa station,       %% TA-110510
@@ -15535,7 +15535,7 @@ is  (do),tuc isa savant,tell/tuc/_B/C,
 id  addcon message(mustknow(place)) 
 ip  [].
 
-mustknowplace13  rule %% kan du svare/fortelle om bussen g�r
+mustknowplace13  rule %% kan du svare/fortelle om bussen går
 is  test,tuc isa savant,A isa coevent,B isa bus,dob/Tell/tuc/A/_,(do)/go/B/_,
         {dmeq([tell,answer1],Tell)}
 id  addcon message(mustknow(place)) 
@@ -15552,11 +15552,11 @@ id  not flag(exit),
 ip  dmeq(vehicle,Z). 
 
 
-dobusrun rule %%  kj�rer busser
+dobusrun rule %%  kjører busser
 is  test,
     (do)/Go/_/D, {dmeq([stop,go,pass],Go)},
                      
-    not srel/well/(mode)/nil/D, %% g� bra :-)   %% TA-101228
+    not srel/well/(mode)/nil/D, %% gå bra :-)   %% TA-101228
     not _ isa company,  
     not _ isa person, %% etc                   %% TA-100828
     not _ isa cinema, %% TA-100902  
@@ -15570,7 +15570,7 @@ is  test,
     not  (do)/go/tuc/_, %% hvor skal du %% ? 
     not  (do)/live/_/_ 
 id  not flag(exit),  
-    not message(mustknow(place)), %% kan jeg f� en buss
+    not message(mustknow(place)), %% kan jeg få en buss
     not findstations(_,_,_), 
     not departure(_,_,_,_),  
     not message(summerishere),
@@ -15594,7 +15594,7 @@ is  which(A),
     not (X isa station) when { bound(X)}, 
     not (X isa neighbourhood) when  {bound(X)},
     not (present X isa street) when { bound(X)},
-%%%%     not  (do)/go/tuc/_, %% hvor skal du %% ?  hvor kj�rer du %% TA-110308
+%%%%     not  (do)/go/tuc/_, %% hvor skal du %% ?  hvor kjører du %% TA-110308
     not  (do)/live/_/_ 
 id  not flag(exit),  
     not findstations(_,_,_), 
@@ -15662,7 +15662,7 @@ id  not flag(exit),
 ip  user:set(warningflag,false).
 
 
-istand rule %% jeg st�r p� X -> jeg g�r fra X
+istand rule %% jeg står på X -> jeg går fra X
 is  context    (I isa self, event/real/A),
     replaceall (STAND/I/A, srel/on/place/P/A)
     with       ((do)/go/I/A, srel/from/place/P/A)
@@ -15709,7 +15709,7 @@ ip  [].
  
 mustknowbusnewgen rule %  the buses go  
 is  new, B isa Veh, {unbound(B)},  {dmeq([vehicle,bus,tram,program,route],Veh)}, 
-    event/_real/C,  (do)/GO/B/C, %% jeg tror at bussen g�r
+    event/_real/C,  (do)/GO/B/C, %% jeg tror at bussen går
          {dmeq([go,leave,stop,be1],GO)},
 %%%%     not  present X isa clock when { bound(X) },
     not  present T isa route when { bound(T) },   
@@ -15719,7 +15719,7 @@ is  new, B isa Veh, {unbound(B)},  {dmeq([vehicle,bus,tram,program,route],Veh)},
     not  present Z isa street  when { bound(Z) }
 id	 not flag(exit), %% TA-110401
     not  message(mustknow(place)), 
-    add	message(mustknow(route))  %% \+ kj�ret�y
+    add	message(mustknow(route))  %% \+ kjøretøy
 ip  [].
  
 
@@ -15742,7 +15742,7 @@ ip	 unbound(Place),
 
 %%%%%%%%%% End MustKnow Section %%%%%%%%%%%%%%%%%%
 
-turings  rule  %% :-) %% ville du best� Turings test ?
+turings  rule  %% :-) %% ville du bestå Turings test ?
 is  test,turing isa man,
     tuc isa savant,F55 isa test,
     dob/Manage/tuc/F55/F66, {dmeq([manage,pass],Manage)},
@@ -15757,17 +15757,17 @@ ip  [].
  
 gowhere rule  %% 
 is  not present srel/to/place/_/_,    %% (street)
-    not srel/from/place/_/_,  %% passerer maskinagentur p� vei fra torget.
-    not present  (do)/arrive/_/_. %% <--- derived skal v�re i
+    not srel/from/place/_/_,  %% passerer maskinagentur på vei fra torget.
+    not present  (do)/arrive/_/_. %% <--- derived skal være i
 %%%%    not present srel/on/place/_/_     %% assume direction is handled
     not has/vehicle/station/_/_, 
     not srel/beyond/place/_/_   %% ad hoc
-%%     not present _ isa person %% svensker p� risvollan :-) %% ???
+%%     not present _ isa person %% svensker på risvollan :-) %% ???
 id  not flag(exit), 
     not flag(nightbusflag),     
     not stationsat(_,_,_), 
     not message(unrecognized_street(_,_)),
-    not message(nearest_station(_ST,_,_)),  %% hva er n�rmeste stopp  hvis man skal til Kringsj�veien 16
+    not message(nearest_station(_ST,_,_)),  %% hva er nærmeste stopp  hvis man skal til Kringsjåveien 16
     not replyq(_), 
     not keepto(_,_,_),
     departure(_,_,_,_), 
@@ -15793,7 +15793,7 @@ is  %%%%%%%%%%%%%%%%%  not present new, %%%  ==> \+ jeg vet ikke %% TA-101015 du
     not present adj/_/ordinary/_/_, 
     not present srel/regularly/time/_/_
 id  not flag(exit), 
-    not message(_),  %% 22. mars (p�skeaften) missing negans
+    not message(_),  %% 22. mars (påskeaften) missing negans
     not reply(_), 
     not true, %% = Yes
     not ticketprice2(_,_),
@@ -15838,7 +15838,7 @@ id  not flag(exit),
     not message(howtuchelp), 
     not stationsat(_,_,_), 
 
-    removeif message(date_isa_day(_,_)), %% er det s�ndagsruter idag 
+    removeif message(date_isa_day(_,_)), %% er det søndagsruter idag 
     removeif message(otherperiod(_)),  
     removeif message(date_day_route(_,_)) 
 
@@ -15852,7 +15852,7 @@ missingconnection rule  %% insist on having a connection
 is  not present has/agent/information/tuc/_, %% -> NO
     not present adj/_/ordinary/_/_, 
     not present srel/regularly/time/_/_
-%%     not present _ isa person %% svensker p� risvollan ? % en passasjer tok sin   buss * til byen.
+%%     not present _ isa person %% svensker på risvollan ? % en passasjer tok sin   buss * til byen.
 id  departure(_,_,_,_),
 %%%%     not flag(nightbusflag), %% allow general message %% N:136. 
 
@@ -15872,7 +15872,7 @@ id  departure(_,_,_,_),
  
     not flag(exit),   %% NB used both as finished and as failure !!!!!!
     add flag(exit), 
-    %% add flag(fail), %% avoid  Det er ikke mulig  p� tirsdager. 
+    %% add flag(fail), %% avoid  Det er ikke mulig  på tirsdager. 
 
     not message(mustknowanother(place)), %% retention
 
