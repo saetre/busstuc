@@ -81,7 +81,7 @@ route_period( tmn, r1630_101201, date(2011,12,01),    date(2011,12,31) ).
 route_period( tt, r1602_120401, date(2012,04,01),    date(2012,04,08) ).
 %route_period( tt, r1603_120409, date(2012,04,09),    date(2012,05,12) ). %% Overwrote 120415
 route_period( tt, r1602_120517, date(2012,05,17),    date(2012,05,17) ).
-route_period( tt, r1601_120415, date(2012,04,12),    date(2012,06,24) ).
+route_period( tt, r1601_120415, date(2012,04,15),    date(2012,06,24) ).
 route_period( tt, r1611_110627, date(2012,06,27),    date(2012,08,14) ).
 route_period( tt, r1601_120101, date(2012,01,01),    date(2012,12,31) ).
 route_period( gb, r1630_111201, date(2011,12,01),    date(2012,12,31) ).
