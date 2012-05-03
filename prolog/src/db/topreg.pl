@@ -35,12 +35,12 @@ routedomain(tmn). %% Generic for TMN related routes
 
 %% Special list to be compiled
 
-compilerouteaux(tt,[ %% 'db/regbusall', %% Inclusive  set of buses 
-                    'db/regstr',    %% Streets  
+compilerouteaux(tt,[ %% 'db/regbusall', %% Inclusive  set of buses
+                    'db/regstr',    %% Streets
                     'db/regcompstr' %% Composite Street names
                    ]).
 
-%% DEFAULT ROUTE PERIODS 
+%% DEFAULT ROUTE PERIODS
 
 %default_period(tt,winter, r1601_110822).  %% 2011 Autumn
 default_period(tt,winter, r1601_120101).  %% 2012 Winter/Spring?
@@ -88,11 +88,11 @@ route_period( tt, r1601_120101, date(2012,01,01),    date(2012,12,31) ).
 route_period( gb, r1630_111201, date(2011,12,01),    date(2012,12,31) ).
 
 
-period_message( r1602_120517,                        
-['AtB Routes for Constitution Day',             
- 'AtB Ruter for 17. mai ']). 
+period_message( r1602_120517,
+['AtB Routes for Constitution Day',
+ 'AtB Ruter for 17. mai ']).
 
-period_message( r1630_111201,                     
+period_message( r1630_111201,
 ['AtB Routes for Tram 2012',
  'AtB Ruter for Trikk 2012']).
 
@@ -100,7 +100,7 @@ period_message( r1602_120401,
 ['AtB Routes for Easter 2012',
  'AtB Ruter påska 2012']).
 
-period_message( r1611_110627,                     
+period_message( r1611_110627,
 ['AtB Routes for summer 2011',
  'AtB Ruter sommeren 2011']).
 
