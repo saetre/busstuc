@@ -1,11 +1,11 @@
-%% FILE tucbuses.pl 
+%% FILE tucbuses.pl
 %% SYSTEM TUC
 %% CREATED TA-970726
 %% REVISED TA-110303
 
-:-use_module(library(system)). 
+:-use_module(library(system)).
 
-:- use_module( sicstus4compatibility, [ get0/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+:- ensure_loaded( sicstus4compatibility ). %, [ get0/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 :- use_module( 'db/busdat', [ clock_delay/3 ] ). %%, named_date/2 ]).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -14,21 +14,21 @@
 %                 tucbuss (norwegian)
 
 
-:-prolog_flag(discontiguous_warnings,_,off). 
+:-prolog_flag(discontiguous_warnings,_,off).
 
 
-backslash('\\'). 
+backslash('\\').
 style_check(_).
 
 %?-compile('declare.pl').
 ?-compile('utility/library.pl').
-?-compile('utility/utility.pl'). 
+?-compile('utility/utility.pl').
 
 ?-use_module('utility/drucke_baum'). %% TA-061030 %% RS-111218
 ?-use_module('ptbwrite').%% TA-061030
 
-?-compile('utility/datecalc.pl').  
-?-compile('utility/makeauxtables.pl'). 
+?-compile('utility/datecalc.pl').
+?-compile('utility/makeauxtables.pl').
 
 %%% ?-compile('utility/extractreg.pl'). %% SUSPENDED
 
@@ -38,16 +38,16 @@ style_check(_).
 :- (airbusflag := false). %% NEW FLAG %% TA-090331
 %% :- (tramflag := true).   %% Trams are included ( Route 1 )
 
-:- (busflag := true).     %% Full Bus Application 
-:- (queryflag := true).   %% Statements are implicit queries 
+:- (busflag := true).     %% Full Bus Application
+:- (queryflag := true).   %% Statements are implicit queries
 :- (semantest := false).  %% No distinction between syntactic/semantic error
 :- (spellcheck := 1).
 
-  %%  :- (single_sentence := true). 
+  %%  :- (single_sentence := true).
   %% DIS-Allow several sentences on a line
 
 
-%%%  ?-compile('sicstuc.pl'). 
+%%%  ?-compile('sicstuc.pl').
 
 
 
@@ -78,7 +78,7 @@ prompt(' '):-
 prompt(P):-
     language(L),
     prompt2(L,P),
-    !. 
+    !.
 
 prompt('?: '). % Undefined Prompt.
 
@@ -120,10 +120,10 @@ dcg_module(norsk,   dcg_n).
 
 
 script_file(english,facts_e).
-script_file(norsk,  facts_n). 
+script_file(norsk,  facts_n).
 
 readfile_extension(english, '.e').
-readfile_extension(norsk,   '.n'). 
+readfile_extension(norsk,   '.n').
 
 
 prompt2(english,'E: ').
@@ -131,9 +131,9 @@ prompt2(norsk,'N: ').
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Compile the TUC System         %% 
+% Compile the TUC System         %%
 
-                                              
+
 %% Moved up, Category dependent
 %% ?-
 %%   compile(version),           % Version and Date
@@ -146,32 +146,32 @@ prompt2(norsk,'N: ').
 %%%%  compile('tuc/proxytagger'),    % disambiguator        %% TA-101010
 %%%%  compile('tuc/proxytagrules'),   % disambiguate rules  %% -> lex/proxyclean
 
-  compile('tuc/translat.pl'),     % code generation 
+  compile('tuc/translat.pl'),     % code generation
   compile('tuc/evaluate.pl'),     % translate and evaluate
-%%%%   compile('tuc/inger.pl'),        % intelligent resolution 
-  compile('tuc/anaphors.pl'),     % anaphoric resolution  
-  compile('tuc/metacomp.pl'),     % compiles the grammar 
+%%%%   compile('tuc/inger.pl'),        % intelligent resolution
+  compile('tuc/anaphors.pl'),     % anaphoric resolution
+  compile('tuc/metacomp.pl'),     % compiles the grammar
   compile('tuc/fernando.pl'),     % semantic interface
 %%   compile('tuc/world0.pl'),       % empty world predicates %% TA-110301
 %%%   compile('tuc/slash.pl'),        % slash facts / %% Irrelevant
 
-  compile(dcg_e:'tuc/dagrun_e.pl'),      % split into English and 
-  compile(dcg_n:'tuc/dagrun_n.pl'),      % Norwegian clones 
+  compile(dcg_e:'tuc/dagrun_e.pl'),      % split into English and
+  compile(dcg_n:'tuc/dagrun_n.pl'),      % Norwegian clones
 
-  compile('tuc/semantic.pl'),     % the semantic net (moved from database)    
-  compile('tuc/names.pl'),        % general names and synonyms  (moved from database) 
-  compile('tuc/facts.pl').        % static facts (moved from database) 
+  compile('tuc/semantic.pl'),     % the semantic net (moved from database)
+  compile('tuc/names.pl'),        % general names and synonyms  (moved from database)
+  compile('tuc/facts.pl').        % static facts (moved from database)
 
 
-%% Moved from tucbuses.pl 
+%% Moved from tucbuses.pl
 
 %% Compile both languages  %% TA-000529
 
 compile_english :-
-    dict_file(english,L),compile(L),       % dictionary for E 
-    morph_file(english,M),compile(M),      % morphology for E 
+    dict_file(english,L),compile(L),       % dictionary for E
+    morph_file(english,M),compile(M),      % morphology for E
 
-    gram_file(english,G),compile(G),         % grammar for E 
+    gram_file(english,G),compile(G),         % grammar for E
     makegram(english).
 
 compile_norsk:-
@@ -179,7 +179,7 @@ compile_norsk:-
     morph_file(norsk,M),compile(M),        % morphology for N
 
     gram_file(norsk,G),compile(G),         % grammar for N
-  
+
     makegram(norsk).
 
 ?-compile_english.
@@ -190,7 +190,7 @@ compile_norsk:-
 
 
 
- 
+
 
 
 

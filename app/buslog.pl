@@ -19,7 +19,7 @@
 %% dMTWTFSS e.g.  d0000001 sunday
 
 
-%% day_in_set(DayX,DayCode) 
+%% day_in_set(DayX,DayCode)
 
 % Day is monday .. sunday,
 
@@ -27,7 +27,7 @@
 
 /*
 
-dkodate(081224, 3). // Means Routes are created wednesday 
+dkodate(081224, 3). // Means Routes are created wednesday
 
 */
 
@@ -40,9 +40,9 @@ dayModSeqNo(Date,DaySeqNo) :- %% TA-090618
 
     route_period(_, TTP,  Date1,_),   %% topreg.pl
 
-%%  1. day of route_period 
+%%  1. day of route_period
 %%  They must be equal to emitday anyhow
-    
+
 
     days_between(Date1,Date,DaySeqN),
     DaySeqNo is DaySeqN+1.
@@ -52,7 +52,7 @@ dayModSeqNo(Date,DaySeqNo) :- %% TA-090618
 %% MayBe                  100615   in 2010
 
 standardizeemit(D90615,date(Y2009,M06,D15)):-
-    Y2009 is D90615//10000 + 2000, 
+    Y2009 is D90615//10000 + 2000,
     MD0615  is mod(D90615,10000),
     M06 is   MD0615 //100,
     D15 is mod( MD0615,100).
@@ -68,7 +68,7 @@ seqno_day(TTP,K160,May1,XN) :- %% XN relative nr of FIRST Sday in Route Module %
     \+ value(nightbusflag,true), %% TA-100412
     route_period(_, TTP,  Date1,_),   %% topreg.pl
 
-%%  1. day of route_period 
+%%  1. day of route_period
 %%  They must be equal to emitday anyhow
 
     TTP:dkodate(_EmitDATE,EMITDAY),
@@ -77,28 +77,28 @@ seqno_day(TTP,K160,May1,XN) :- %% XN relative nr of FIRST Sday in Route Module %
     add_days(Date1,K159,May1),
     date_day_map(May1,SDay),
     dayxnumber(EMITDAY,SDay,XN). %% relative number of FIRST SDay in DayCode
- 
- 
-%% ONLY if MAP Date to day is applied, 
+
+
+%% ONLY if MAP Date to day is applied,
 mod_day_in_set(TTP,DayX,DayCode) :- %% example, May 1=sunday route
     number(DayX),                   %% not separate module
-    number(DayCode),   
-    seqno_day(TTP,DayX,_May1,XN),   
+    number(DayCode),
+    seqno_day(TTP,DayX,_May1,XN),
     !,                              %% SDay route !
-    TTP:dko(DayCode,_,_,_,_,_,_,MASK),   
+    TTP:dko(DayCode,_,_,_,_,_,_,MASK),
     atom(MASK), %% string '01' for whole period
     charno(XN,MASK,'1'). %% utility.pl
 
 
-mod_day_in_set(TTP,DayX,DayCode) :- % NEW regime 
+mod_day_in_set(TTP,DayX,DayCode) :- % NEW regime
     number(DayX),
-    number(DayCode),   
+    number(DayCode),
     !,
-    TTP:dko(DayCode,_,_,_,_,_,_,MASK),   
+    TTP:dko(DayCode,_,_,_,_,_,_,MASK),
     atom(MASK), %% string '01' for whole period
     charno(DayX,MASK,'1'). %% utility.pl
 
- 
+
 
 
 %% Day from query is coded as symbols
@@ -109,7 +109,7 @@ mod_day_in_set(TTP,DayX,DayCode) :- % NEW regime
 
 
 dayxnumber(EMITDAY,Monday,XN) :-
-    dayno(Monday,DN), %% datecalc.pl %% 
+    dayno(Monday,DN), %% datecalc.pl %%
     !,
     S is DN-EMITDAY+1,
 
@@ -137,7 +137,7 @@ veh_mod(TTP):-
 
 bus_mod(TTP):-
     value(actual_period,TTP),
-    !, TTP \== nil.  %% Dynamic ! 
+    !, TTP \== nil.  %% Dynamic !
 
 
 %% ///////////////////////////////
@@ -148,7 +148,7 @@ bus_mod(TTP):-
 
 
 regbus(X):- %% TA-110308
-   veh_mod(TTP),TTP:regbus(X), number(X),   
+   veh_mod(TTP),TTP:regbus(X), number(X),
    X  < 10000. %%   e.g. buss 777
 
 
@@ -156,36 +156,36 @@ regbus(X):- %% TA-110308
 %% PERIOD DEPENDENT
 
 
-bus(X):- 
-    veh_mod(TTP),TTP:regbus(X), number(X),   
+bus(X):-
+    veh_mod(TTP),TTP:regbus(X), number(X),
     X  < 10000. %%   e.g. buss 777
 
 xroute(X,Y,Z):-            %% TA-090331
     value(airbusflag,true),
     !,
     airbus_module(TTP), %% ad hoc if several airbus modules (change)
-    TTP:route(X,Y,Z).  
+    TTP:route(X,Y,Z).
 
 
 xroute(X,Y,Z):-
-    veh_mod(TTP), TTP:route(X,Y,Z).  
+    veh_mod(TTP), TTP:route(X,Y,Z).
 
 
 
-xdepartureday(Rid,A,B,Kay):- %% not redundant 
+xdepartureday(Rid,A,B,Kay):- %% not redundant
     veh_mod(TTP), TTP: ex_departureday(Rid,A,B,Kay). %% TA-090812
 
 
 
-departuredayMOD(TTP,Rid,A,B,Kay):-  
+departuredayMOD(TTP,Rid,A,B,Kay):-
     TTP: ex_departureday(Rid,A,B,Kay).  %% TA-090812
 
 
 xpasses4(Trace,STATNO,Station,Seq,DelArr,DelDep) :-
-    veh_mod(TTP), 
+    veh_mod(TTP),
     TTP:ex_passes4(Trace,STATNO,Station,Seq,DelArr,DelDep). %% TA-090812
 
-% Extends tour by cutloop extension 
+% Extends tour by cutloop extension
 % Assumes tours that corresponds are unique
 
 
@@ -206,10 +206,10 @@ xpasses5(TTP,_Rid1,Trace1,STATNO,Station,Seq,DelArr,DelDep) :- %% TA-090812
 
 
 
-before(X,Y) :- %% <-- bustrans 
+before(X,Y) :- %% <-- bustrans
     number(X),
-    number(Y), 
-    X < Y. 
+    number(Y),
+    X < Y.
 
 
 maxseqtour(Trace,N):-
@@ -233,8 +233,8 @@ r1618_110517:hpl(16010369,persaunevegen,persaunevegen,'Persaunevegen').
 
 
 station(X):- %% TA-110415
-    veh_mod(TTP), 
-    modstat(TTP,X).  
+    veh_mod(TTP),
+    modstat(TTP,X).
 
 
 
@@ -242,7 +242,7 @@ modstat(TTP,X):-  %% 1  X nonvar
     nonvar(TTP),
     nonvar(X),
     TTP: hpl(_,_,X,_), %% X appears 2 // what is nardosenteret
-    !.                
+    !.
 
 modstat(TTP,X):-  %% 2  X var
     nonvar(TTP),
@@ -264,13 +264,13 @@ cname(X,Y):-
 
 route(A,B,C):-         bus_mod(TTP),TTP:route(A,B,C).
 
-hpl(A,B,C):-           bus_mod(TTP),TTP:hpl(A,_,B,C). 
+hpl(A,B,C):-           bus_mod(TTP),TTP:hpl(A,_,B,C).
 
 composite_stat(A,B,C):-bus_mod(TTP),TTP:composite_stat(A,B,C).
 
 departureday(A,B,C,D):-bus_mod(TTP),TTP:ex_departureday(A,B,C,D).
 
-passes44(A,STATNO,B,C,D,E):-   bus_mod(TTP),TTP:ex_passes4(A,STATNO,B,C,D,E). 
+passes44(A,STATNO,B,C,D,E):-   bus_mod(TTP),TTP:ex_passes4(A,STATNO,B,C,D,E).
 
 
 
@@ -286,8 +286,8 @@ passes44(A,STATNO,B,C,D,E):-   bus_mod(TTP),TTP:ex_passes4(A,STATNO,B,C,D,E).
 % X = to   ( hovedterminalen to Station)
 % X = from ( to hovedterminalen from Station
 
-rid_to_direction(_RID,Nil,Station):- 
-    corresp0(Station,hovedterminalen), 
+rid_to_direction(_RID,Nil,Station):-
+    corresp0(Station,hovedterminalen),
     !,
     Nil=nil. %% classic trap
 
@@ -295,7 +295,7 @@ rid_to_direction(RID,Y,Station):-
 
     passeq(RID,_,Station,Seq1,_,_),
     passeq(RID,_,City,Seq2,_,_),
-    corresp0(City,hovedterminalen), 
+    corresp0(City,hovedterminalen),
 
     (Seq1 < Seq2  -> X = from;
      Seq2 < Seq1  -> X = to;
@@ -303,7 +303,7 @@ rid_to_direction(RID,Y,Station):-
      Y = X.
 
 %% NEW FORMAT %% TA-110323
- 
+
 % depnode(TimeArr,TimeDep,DelayArr,DelayDep,BegTime,Rid,Bus,SeqNo,Station)
 
 % depnode(TimeArr,TimeDep,DelayArr,DelayDep,BegTime,Rid,Station) //old
@@ -339,14 +339,14 @@ compute_delay_margin(Bus1,Bus2,OffStation,_OnStation,Marg):-
 
 
 compute_delay_margin(_,_,_,_,Marg) :-
-    delay_margin(Marg).    
+    delay_margin(Marg).
 
 
 
 notaclock(NNNN) :-  \+ number(NNNN),!.
-      
-notaclock(NNNN) :-  
-     
+
+notaclock(NNNN) :-
+
       %% NNNN <100,NNNN>=25; %% kl 26 %% TA-101029 %% Night BUS kvart på ett.
       NNNN =< 0; % <- ?
       NNNN >= 2500;
@@ -374,11 +374,11 @@ proper_end_station(RID,Station1):-
 
 
 
-properstation(X):- 
+properstation(X):-
     station(X),
-    \+ nostation(X), %% ad hoc when abandoned 
+    \+ nostation(X), %% ad hoc when abandoned
     X \== '',   %%  reghpl
-    \+ foreign(X).   
+    \+ foreign(X).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -388,51 +388,51 @@ station_trace(Rid,Station1,Station2,UtStats):- %% TA-100214
 
 
     passeq(Rid,_,Station1,FromSeq,_,_),
-    passeq(Rid,_,Station2,ToSeq,_,_),   
+    passeq(Rid,_,Station2,ToSeq,_,_),
 
     ToSeq > FromSeq, %%% <- NB   bus_63_1722, rosenborg_sk,jonsvannsveien,
-   
+
     xfindall(st(STATNO,UtStat),( passeq(Rid,STATNO,UtStat,Seq,_,_),Seq >= FromSeq,Seq =< ToSeq),UtStats).
 
 xfindall(El,Pred,List):-
    findall(El,Pred,List).
- 
+
 
 
 %% NB  MUST be stations here
 
 %% Find one RID, which is representative
 
-%% Bloody Pragmatic 
+%% Bloody Pragmatic
 keepbetweenstat(Bus,hovedterminalen,ToPlace,InnStats,UtStats) :-
     !,              %%%%%%%%%%%%%%%
-    xxxstateplace(ToStat,ToPlace), 
+    xxxstateplace(ToStat,ToPlace),
     passeq(Rid,_,ToStat,ToSeq,_,_),
     ridtobusnr(Rid,Bus),
-    xxxstateplace(FromStat,hovedterminalen), 
+    xxxstateplace(FromStat,hovedterminalen),
     passeq(Rid,_,FromStat,FromSeq,_,_),
-    !,  
+    !,
 	 keepbetweenstat2(Rid,FromSeq,ToSeq,InnStats,UtStats).
 
 
 
 keepbetweenstat(Bus,FromPlace,ToPlace,InnStats,UtStats) :-
-    xxxstateplace(FromStat,FromPlace), 
+    xxxstateplace(FromStat,FromPlace),
     passeq(Rid,_,FromStat,FromSeq,_,_),
-	 ridtobusnr(Rid,Bus), 
-    xxxstateplace(ToStat,ToPlace), 
+	 ridtobusnr(Rid,Bus),
+    xxxstateplace(ToStat,ToPlace),
     passeq(Rid,_,ToStat,ToSeq,_,_),
-    !,  
+    !,
 	 keepbetweenstat2(Rid,FromSeq,ToSeq,InnStats,UtStats).
 
 
-% in increasing sequence 
+% in increasing sequence
 keepbetweenstat2(Rid,FromSeq,ToSeq,_InnStats,UtStats) :-
 	 FromSeq =< ToSeq,  %% IN CASES SAME STATION
     !,
     findall(UtStat,( passeq(Rid,_,UtStat,Seq,_,_),Seq >= FromSeq,Seq =< ToSeq),UtStats).
 
-% in decreasing sequence 
+% in decreasing sequence
 keepbetweenstat2(Rid,FromSeq,ToSeq,_InnStats,UtStats) :-
 	 ToSeq<FromSeq,
     !,
@@ -448,7 +448,7 @@ keepbetweenstat2(Rid,FromSeq,ToSeq,_InnStats,UtStats) :-
 %% but it is also M0 (accidentally), but that is ignored.
 
 
-streetstation2(St_olavs_street,_,St_olavs_gt):- 
+streetstation2(St_olavs_street,_,St_olavs_gt):-
     value(tramflag,true), %% TA-100120
     thetramstreetstation(St_olavs_street,St_olavs_gt), %% SPEXIAL  busdat.pl
     !.
@@ -460,7 +460,13 @@ streetstation2(Ident,Num,Station2):- %% Station name in streetstat
                                        %% TA-110803
     number(Low),
     number(High),
-    Num =< High, Low =< Num, 
+    Num =< High, Low =< Num,
+    !.
+
+%% 2: There is a street, but no matching legal station
+
+streetstation2(Ident,_,unknown):-
+    streetstat(Ident,_,_,_,_),
     !.
 
 optional_alias2(Station,Station2):-     %% in case of period renameing
@@ -468,11 +474,6 @@ optional_alias2(Station,Station2):-     %% in case of period renameing
     !; Station=Station2.
 
 
-%% 2: There is a street, but no matching legal station
-
-streetstation2(Ident,_,unknown):- 
-    streetstat(Ident,_,_,_,_),
-    !.
 
 %% 3: % Not registered as street, not applicable.
 %%
@@ -482,7 +483,7 @@ streetstation2(Ident,_,unknown):-
 stationsat(IdentNum,Instation,Station):-
 	 nonvar(IdentNum),
     IdentNum=Ident-Num, %% vollabakken 1
-	 !, 
+	 !,
     unbound(Instation),
     streetstation2(Ident,Num,Station).
 
@@ -496,17 +497,17 @@ stationsat(Place,InStation,Stations) :-
 	 unbound(InStation),
 	 !,
     set_of(Station,  (place_station1(Place,Station); %% NB place_station1  Must be a station
-                      isat(Station,Place)), 
+                      isat(Station,Place)),
            IsatStations),
-    Stations=IsatStations. 
+    Stations=IsatStations.
 
 stationsat(_Place,Neigh,Stations) :- % Special case, Neigh is also a neighbourhood
 	 bound(Neigh),
     neighbourhood(Neigh), %% e.g  Migosenteret , \+  Nardosenteret
     !,
-	 set_of(Station,  bingbong(Neigh,Station), %% (place_station(Neigh,Station); isat(Station,Neigh)), 
+	 set_of(Station,  bingbong(Neigh,Station), %% (place_station(Neigh,Station); isat(Station,Neigh)),
            IsatStations),
-    Stations=IsatStations. 
+    Stations=IsatStations.
 
 %% something wrotten
 
@@ -517,25 +518,25 @@ stationsat(_,Station,Places1) :- %% Nardosenteret
 	 bound(Station),
     !,
     set_of(Place,(place_station(Place,Station) ,Place \==Station),Places),
-    (    (Places == [], station(Station))  -> 
-             Places1=[] %%%  [Station] % GDMØ dont know 
-           ; Places1=Places). %% 
+    (    (Places == [], station(Station))  ->
+             Places1=[] %%%  [Station] % GDMØ dont know
+           ; Places1=Places). %%
 
 
-stathelp(Ident,Instation,Station):-	
+stathelp(Ident,Instation,Station):-
 	 bound(Ident),
-	 unbound(Instation), 
+	 unbound(Instation),
 	 streetstat(Ident,_,_,_,Station).
 
 
-maybestation(Place,OutStations0,[Place]):- 
+maybestation(Place,OutStations0,[Place]):-
      OutStations0==[],
      station(Place),
-     !. 
+     !.
 
 maybestation(Place,OutStations0,[Place|OutStations0]):-   %% special case (City-Syd)
     station(Place),                                       %% both neighb and st
-    neighbourhood(Place), 
+    neighbourhood(Place),
     \+ member(Place,OutStations0),
     !.
 
@@ -576,29 +577,29 @@ corrstats([_|Stats1],Stats2,CorrStats) :- % Else
 
 
 % Avgangssett
-% keepcorr(StartDeps,EndDeps,BothStartDeps) 
+% keepcorr(StartDeps,EndDeps,BothStartDeps)
 
 % Copy all StartDeps that occur afterwards in EndDeps
 
-% keepcorr(StartDeps,EndDeps,BothStartDeps). 
+% keepcorr(StartDeps,EndDeps,BothStartDeps).
 
 
 keepcorr(StartDeps,EndDeps,BothStartDeps) :-
      set_filter(X, occurs_afterwards(X,EndDeps),StartDeps,BothStartDeps).
 
 
-occurs_afterwards(depnode(_A1,D1,_,_,BegTime,Rid,Bus,SeqNo1,Stat1),EndDeps):- 
+occurs_afterwards(depnode(_A1,D1,_,_,BegTime,Rid,Bus,SeqNo1,Stat1),EndDeps):-
 
-     D1 \== 9999, %% non existing departure time 
+     D1 \== 9999, %% non existing departure time
 
-     member( depnode(_A2,_D2,_X2,_Y2, BegTime,Rid,Bus,SeqNo2,Stat2), EndDeps), 
+     member( depnode(_A2,_D2,_X2,_Y2, BegTime,Rid,Bus,SeqNo2,Stat2), EndDeps),
 
 %%%%%%%%%%%%%%%     Y2 > 0, %% then never after (Bus 36 M4 -> Jakobsli -> M4) %% TA-110323
 
      Stat1 \== Stat2, %% berg_studentby -> lerchendal_gård * //same time,reverse direction
 
      SeqNo2 > SeqNo1,
-  
+
      !.
 
 
@@ -619,7 +620,7 @@ nextdep(Tid,Depnode,Deps):-
 %%% Constrain Set Predicates
 
 
-keepbetween(LowTime,HighTime,Deps1,Deps2):- 
+keepbetween(LowTime,HighTime,Deps1,Deps2):-
     nonvar(Deps1), %%% Fatal security guard
     set_filter(Dep,pass_between(Dep,LowTime,HighTime),Deps1,Deps2).
 
@@ -630,65 +631,65 @@ keepbetween(LowTime,HighTime,Deps1,Deps2):-
 
 
 
-keeparrbetween(LowTime,HighTime,Deps1,Deps2):-  
-    nonvar(Deps1), %%% 
+keeparrbetween(LowTime,HighTime,Deps1,Deps2):-
+    nonvar(Deps1), %%%
     set_filter(Dep,arr_between(Dep,LowTime,HighTime),Deps1,Deps2).
 
 
-keepdepbetween(LowTime,HighTime,Deps1,Deps2):- 
+keepdepbetween(LowTime,HighTime,Deps1,Deps2):-
     nonvar(Deps1),
     set_filter(Dep,dep_between(Dep,LowTime,HighTime),Deps1,Deps2).
 
 
-avoidarrbetween(LowTime,HighTime,Deps1,Deps2):-  
-    nonvar(Deps1), %%% 
+avoidarrbetween(LowTime,HighTime,Deps1,Deps2):-
+    nonvar(Deps1), %%%
     set_filter(Dep,not_arr_between(Dep,LowTime,HighTime),Deps1,Deps2).
 
 
-avoiddepbetween(LowTime,HighTime,Deps1,Deps2):- 
+avoiddepbetween(LowTime,HighTime,Deps1,Deps2):-
     nonvar(Deps1),
     set_filter(Dep,not_dep_between(Dep,LowTime,HighTime),Deps1,Deps2).
 
 
 
 
-%% Inclusive 
+%% Inclusive
 %                    0620     9999                  1810    1840 %% NO!
 %                    1553     9999                  1500    1600 %% YES!
 
 %                    9999     1500                  1440    1520 %% YES!
 
-pass_between(depnode(ArrTime,DepTime,_,_,_,_,_,_,_),LowTime,HighTime):- 
+pass_between(depnode(ArrTime,DepTime,_,_,_,_,_,_,_),LowTime,HighTime):-
 
     (ArrTime=9999 -> ArrTime1=DepTime;ArrTime1=ArrTime), %% TA-110531
 
-    ArrTime1 >= LowTime, 
-    ArrTime1 =< HighTime. 
+    ArrTime1 >= LowTime,
+    ArrTime1 =< HighTime.
 
 
-arr_between(depnode(Time0,_Time9,_,_,_,_,_,_,_),LowTime,HighTime):- 
+arr_between(depnode(Time0,_Time9,_,_,_,_,_,_,_),LowTime,HighTime):-
     LowTime =< Time0,
-    Time0 =< HighTime. 
+    Time0 =< HighTime.
 
-dep_between(depnode(_Time0,Time9,_,_,_,_,_,_,_),LowTime,HighTime):- 
+dep_between(depnode(_Time0,Time9,_,_,_,_,_,_,_),LowTime,HighTime):-
     LowTime =< Time9,
-    Time9 =< HighTime. 
+    Time9 =< HighTime.
 
 
 not_arr_between(depnode(Time0,_Time9,_,_,_,_,_,_,_),LowTime,HighTime):- %% TA-110322
     LowTime > Time0
     ;
-    Time0 > HighTime. 
+    Time0 > HighTime.
 
 not_dep_between(depnode(_Time0,Time9,_,_,_,_,_,_,_),LowTime,HighTime):- %% TA-110322
     LowTime > Time9
     ;
-    Time9 > HighTime. 
+    Time9 > HighTime.
 
 
 %%%  Keep before  : acceptability test: < 1 hour before
 
-keepbefore(X,Y,Z) :-keepbefore0(X,Y,Z).  %%  WITHOUT  arrival time acceptability 
+keepbefore(X,Y,Z) :-keepbefore0(X,Y,Z).  %%  WITHOUT  arrival time acceptability
 
 
 keepbefore0(LimTime,Deps1,Deps2):-       %% Without Arrival time constraint
@@ -699,24 +700,24 @@ keepbefore0(LimTime,Deps1,Deps2):-       %% Without Arrival time constraint
 
 keepbefore1(LimTime,Deps1,Deps2):-          %%  With   Arrival time constraint
     nonvar(Deps1), %%% %%% Fatal security guard
-    maxarrivalslack(DieTime), 
-    subfromtime(LimTime,DieTime,EarliestAcceptableTime), 
+    maxarrivalslack(DieTime),
+    subfromtime(LimTime,DieTime,EarliestAcceptableTime),
 
     set_filter(Dep,pass_between(Dep,EarliestAcceptableTime,LimTime),Deps1,Deps2).
 %% SEQUENCE PRESERVING
- 
+
 %%   set_of(Dep, (member(Dep,Deps1),
 %%                 pass_between(Dep,EarliestAcceptableTime,LimTime)),Deps2).
 
 %%%
 
-%% Pass before means ARRIVE before. NO!!! %% TA-110308 
+%% Pass before means ARRIVE before. NO!!! %% TA-110308
 
-pass_before(depnode(Time0,_,_,_,_,_,_,_,_),LimTime):- 
+pass_before(depnode(Time0,_,_,_,_,_,_,_,_),LimTime):-
 	 Time0 =< LimTime.
 
 
-% pass_before(depnode(_,Time9,_,_,_,_,_,_,_),LimTime):- 
+% pass_before(depnode(_,Time9,_,_,_,_,_,_,_),LimTime):-
 %	 Time9 =< LimTime.
 
 keepbeforerev(T,X,Z):- %% .. helps find last departure before ..
@@ -731,7 +732,7 @@ debug_prune(Deps,Deps).
 
 
 
-keepafter(LimTime,Deps1,Deps2):- 
+keepafter(LimTime,Deps1,Deps2):-
     nonvar(Deps1), %% Fatal security guard
 
     set_filter(Dep,arrdep_after(Dep,LimTime),Deps1,Deps2). %% Sequence Preserving
@@ -754,14 +755,14 @@ depbeforestationwalk(X):-
     NOW + Walking > DepTime. %% to late for departure (unless DELAY !!)
 
 
-   
+
 
 %% NB Sometimes, keepafter means arrival after (Buster).
 
-pass_after(depnode(_,Time9,_,_,_,_,_,_,_),LimTime):- 
+pass_after(depnode(_,Time9,_,_,_,_,_,_,_),LimTime):-
 
 %%
-%%     Time9 \== 9999, %% non existing dep time 
+%%     Time9 \== 9999, %% non existing dep time
 %%     1500:  buss 46 fra torvmyra til okstad ø .
 
     Time9 >= LimTime.
@@ -769,87 +770,87 @@ pass_after(depnode(_,Time9,_,_,_,_,_,_,_),LimTime):-
 
 keeparrafter(LimTime,Deps1,Deps2):-  %% Technical, internal
     nonvar(Deps1),
-    set_filter(Dep,arr_after(Dep,LimTime),Deps1,Deps2). 
+    set_filter(Dep,arr_after(Dep,LimTime),Deps1,Deps2).
 
-keepdepafter(LimTime,Deps1,Deps2):- 
-    nonvar(Deps1), 
+keepdepafter(LimTime,Deps1,Deps2):-
+    nonvar(Deps1),
     set_filter(Dep,dep_after(Dep,LimTime),Deps1,Deps2).
 
 
-arr_after(depnode(ArrTime,_,_,_,_,_,_,_,_),LimTime):- 
+arr_after(depnode(ArrTime,_,_,_,_,_,_,_,_),LimTime):-
     ArrTime  >= LimTime.
 
 
 
-dep_after(depnode(_,DepTime,_,_,_,_,_,_,_),LimTime):- 
+dep_after(depnode(_,DepTime,_,_,_,_,_,_,_),LimTime):-
     DepTime  >= LimTime.
 
 
 arrdep_before(depnode(ArrTime,DepTime,_,_,_,_,_,_,_),LimTime):-   %% TA-110308
    ( ArrTime = 9999 -> DT=DepTime;DT=ArrTime ),               %% ad hoc arrival before time,
-    DT  =< LimTime.                                  
+    DT  =< LimTime.
 
 
 
-arrdep_after(depnode(ArrTime,DepTime,_,_,_,_,_,_,_),LimTime):- 
+arrdep_after(depnode(ArrTime,DepTime,_,_,_,_,_,_,_),LimTime):-
    ( DepTime = 9999 -> DT=ArrTime;DT=DepTime ),               %% ad hoc arrival after time,
-    DT  >= LimTime.                                  
+    DT  >= LimTime.
 
 
 
 
-keepafterstrict(LimTime,Deps1,Deps2):- 
+keepafterstrict(LimTime,Deps1,Deps2):-
     nonvar(Deps1), %% Fatal security guard
     set_filter(Dep, pass_after_strict(Dep,LimTime),Deps1,Deps2).
 
 
-pass_after_strict(depnode(_,Time9,_,_,_,_,_,_,_),LimTime):- 
-    Time9 \== 9999, %% non existing dep time 
+pass_after_strict(depnode(_,Time9,_,_,_,_,_,_,_),LimTime):-
+    Time9 \== 9999, %% non existing dep time
 	 Time9 > LimTime.
 
 
 keepat(Time,Deps1,Deps2):-
     nonvar(Deps1), %% Fatal sec
-    set_filter(Dep,pass_at(Dep,Time),Deps1,Deps2). 
+    set_filter(Dep,pass_at(Dep,Time),Deps1,Deps2).
 
 %%    set_of(Dep, (member(Dep,Deps1),pass_at(Dep,Time)),Deps2).
 
-pass_at(depnode(Time,_,_,_,_,_,_,_,_),LimTime):- 
-    Time=LimTime.          
+pass_at(depnode(Time,_,_,_,_,_,_,_,_),LimTime):-
+    Time=LimTime.
 
 
 keepbus(Bus,Deps1,Deps2):-
-    nonvar(Deps1), 
+    nonvar(Deps1),
 
-    set_filter(Dep,pass_bus(Dep,Bus),Deps1,Deps2). 
+    set_filter(Dep,pass_bus(Dep,Bus),Deps1,Deps2).
 
 %    set_of(Dep, (member(Dep,Deps1),pass_bus(Dep,Bus)),Deps2).
 
-avoidbus(Bus,Deps1,Deps2):- 
-    set_filter(Dep, (pass_bus(Dep,Bus1),Bus1\==Bus),Deps1,Deps2). 
+avoidbus(Bus,Deps1,Deps2):-
+    set_filter(Dep, (pass_bus(Dep,Bus1),Bus1\==Bus),Deps1,Deps2).
 
 %     set_of(Dep, (member(Dep,Deps1),pass_bus(Dep,Bus1),Bus1\==Bus),Deps2).
 
 pass_bus(depnode(_,_,_,_,_,Rid,_,_,_),Bus):-
-	 ridtobusnr(Rid,Bus). 
+	 ridtobusnr(Rid,Bus).
 
 
 
-keeparound(Time,R,Rny):- 
+keeparound(Time,R,Rny):-
     aroundmargin(T14),
     subfromtime(Time,T14,LowTime),  %% 15 minutes may be the next departure
     addtotime(Time,T14,HighTime),
     keepbetween(LowTime,HighTime,R,Rny).
 
 
-keepwithin(Time,Mins,R,Rny):- 
-    addtotime(Time,Mins,NewTime), 
-    keepbetween(Time,NewTime,R,Rny).    
+keepwithin(Time,Mins,R,Rny):-
+    addtotime(Time,Mins,NewTime),
+    keepbetween(Time,NewTime,R,Rny).
 
 
 keepuntil(Time,Mins,R,Rny):-
-    subfromtime(Time,Mins,NewTime), 
-    keepbetween(NewTime,Time,R,Rny).    
+    subfromtime(Time,Mins,NewTime),
+    keepbetween(NewTime,Time,R,Rny).
 
 
 
@@ -858,15 +859,15 @@ keepuntil(Time,Mins,R,Rny):-
 
 listofall(route,[]):- %% TA-090210
     value(smsflag,true),
-    !.    
-listofall(route,Buses):- %% ad hoc 
-    allbuses(Buses).     %% trams/ferrys etc 
+    !.
+listofall(route,Buses):- %% ad hoc
+    allbuses(Buses).     %% trams/ferrys etc
 
 
 listofall(bus,[]):- %% TA-090210
     value(smsflag,true),
     !.
-listofall(bus,Buses):- %% 
+listofall(bus,Buses):- %%
     allbuses(Buses).
 
 
@@ -877,7 +878,7 @@ listofall(station,S):-
     \+ value(smsflag,true),
     allstations(S).
 
-listofall(station,S2):- 
+listofall(station,S2):-
     value(smsflag,true),
     allstations(S),
     members(5,S,S1),
@@ -899,37 +900,37 @@ endstations1(Stations):-
     set_of(S, (regbus(Bus), endstation(Bus,Z),member(S,Z)), Stations).
 
 
-endstations(Bus,Stations):- 
-    endstation(Bus,Stations1), 
+endstations(Bus,Stations):-
+    endstation(Bus,Stations1),
     set_of(S,endneighbourhood(Bus,S),Stations2), %% busdat
     append(Stations1,Stations2,Stations).
 
 
-% endstation(+Bus,-StationList). 
+% endstation(+Bus,-StationList).
 
-endstation(Bus,Stations) :- 
+endstation(Bus,Stations) :-
 	 set_of(Rid,bustorid(Bus,Rid),Rids),
 	 ridtoendhpl(Rids,RawStations),
 	 remove_duplicates(RawStations,Stations),
-    !. 
+    !.
 
 
 allbuses(Buses) :-
 	set_of(Bus,regbus(Bus),Buses1),   %% was exbus(Bus) %% TA-090608
-   bus_equivalents(Buses1,Buses). 
+   bus_equivalents(Buses1,Buses).
 
-allnightbuses(Buses) :- 
-	set_of(Bus,nightbus(Bus),Buses1),  
-   bus_equivalents(Buses1,Buses). 
+allnightbuses(Buses) :-
+	set_of(Bus,nightbus(Bus),Buses1),
+   bus_equivalents(Buses1,Buses).
 
-bus_equivalents(List1,List3):- 
+bus_equivalents(List1,List3):-
     set_of(Y, (member(X,List1),converttostandard(X,Y)),List2),
     remove_duplicates(List2,List3).
 
 converttostandard(IntX,ExtY):- %% TA-09819
     (exbusname(IntX,ExtY)
      -> true
-     ; ExtY=IntX).          
+     ; ExtY=IntX).
 
 
 
@@ -937,15 +938,15 @@ converttostandard(IntX,ExtY):- %% TA-09819
 
 
 allstations(Stations) :-
-	set_of(Station,properstation(Station),Stations). 
+	set_of(Station,properstation(Station),Stations).
 
 tramstations(Stations) :-
-	set_of(Station,tramstation(Station),Stations). 
+	set_of(Station,tramstation(Station),Stations).
 
 
 
-ridstobuses(Y,Z):-  %% called from busanshp.pl 
-    ridstobuses2(Y,Z). 
+ridstobuses(Y,Z):-  %% called from busanshp.pl
+    ridstobuses2(Y,Z).
 
 ridstobuses2([],[]).
 
@@ -972,39 +973,39 @@ tourtoend(Trace,EndStat):-
     maxseqtour(Trace,MaxSeq),
 
     (xpasses4(Trace,_,EndStat,1,_,_)
-     ;      
+     ;
      xpasses4(Trace,_,EndStat,MaxSeq,_,_)),
 
-    EndStat \== ''.  %% Empty-name 
+    EndStat \== ''.  %% Empty-name
 
 
-    
+
 
 % findstations(+,+,-)
 
 findstations(Bus,_Day,Stationslist) :- %% Only endstations if smsflag
-	value(smsflag,true),  
+	value(smsflag,true),
    \+ value(airbusflag,true), %% short list anyway %% TA-090401
    !,
-   endstations(Bus,Stationslist), 
+   endstations(Bus,Stationslist),
    Stationslist \== []. %% Better with an error message
 
 % A bit slower, bus preserves some station order
 findstations(Bus,_Day,Stationslist) :-
 	set_of(Rid,bustorid(Bus,Rid),Rids), %% TA-090626
 
-   set_of(Station,passrids(Rids,Station),Stationslist),  
-   
-   Stationslist \== []. %% Better with an error message 
+   set_of(Station,passrids(Rids,Station),Stationslist),
+
+   Stationslist \== []. %% Better with an error message
 
 
 passrids(Rids,Station) :-
 	member(Rid,Rids),
-	passeq(Rid,_,Station,_,_,_). 
+	passeq(Rid,_,Station,_,_,_).
 
 
 
-diffdep4(_,_,depans(_,_,Time1,_,_,_,Time2,_),Diff) :- 
+diffdep4(_,_,depans(_,_,Time1,_,_,_,Time2,_),Diff) :-
     !,
     difftime(Time2,Time1,Diff).
 
@@ -1016,23 +1017,23 @@ diffdep4(StartPlace,EndPlace,Deps,Diff):-
 
     softime(morning,MORN,_), %% busdat
 
-    Time1 >= MORN, %% keep odd night buses out 
+    Time1 >= MORN, %% keep odd night buses out
     xxxstateplace(Station1,StartPlace),
-	 passeq(Rid,_,Station2,_,Delay2,_),  %% Justification 
-    Delay2 < 999, %% TA-100827 real time 
-    xxxstateplace(Station2,EndPlace), 
+	 passeq(Rid,_,Station2,_,Delay2,_),  %% Justification
+    Delay2 < 999, %% TA-100827 real time
+    xxxstateplace(Station2,EndPlace),
 	 Station1 \== Station2,    %%  (nec., because close station  make diff
                                 %%            times unreliable)
     addtotime(BegTime,Delay2,Time2),
 
-	 Time2>=Time1,  
+	 Time2>=Time1,
 	 difftime(Time2,Time1,Diff),
-    !.   
+    !.
 
 diffdep4(_,_,_,-1). %% (in case of timeout) | catchall
 
 
-	 
+
 xxxstateplace(X,Y):- (corresp0(X,Y);isat2(X,Y)). %% ugly
 
 
@@ -1040,7 +1041,7 @@ xxxstateplace(X,Y):- (corresp0(X,Y);isat2(X,Y)). %% ugly
 
 
 numberof(departures,depans(_,_,_,_,_,_,_,_),-1):- %% Don't know, transfer
-    !.  
+    !.
 
 numberof(_,Set,Length) :-
 	 length(Set,Length).
@@ -1051,35 +1052,35 @@ numberof(_,Set,Length) :-
 
 
 departure(Bus,Place,Day,DepSet) :- % Alle dag bussavganger ved en stasjon
-	unbound(Bus),          
-   \+   value(nightbusflag,true),  % NOT Nightbus query 
+	unbound(Bus),
+   \+   value(nightbusflag,true),  % NOT Nightbus query
    \+   value(airbusflag,true),    %% TA-090331
-   !, 
-	veh_mod(TTP), 
+   !,
+	veh_mod(TTP),
    setdepMOD(TTP,Place,Day,DepSet1),      %%
    set_filter(X,day_route(X),DepSet1,DepSet).
 
 departure(Bus,Place,Day,DepSet) :- % Alle natt bussavganger ved en stasjon
 	unbound(Bus),
-   value(nightbusflag,true),      % Nightbus query 
+   value(nightbusflag,true),      % Nightbus query
   \+   value(airbusflag,true),     %% TA-090331
-   !, 
+   !,
 	veh_mod(TTP),
 
    setdepMOD(TTP,Place,Day,DepSet1),
 
    set_filter(X,night_route(X),DepSet1,DepSet2),
-   set_filter(X,not_extreme_hastus_time(X),DepSet2,DepSet3), 
+   set_filter(X,not_extreme_hastus_time(X),DepSet2,DepSet3),
    set_filter(Y, approvenightbustoplace(Place,Y)  ,DepSet3,DepSet).
-     
+
 
 departure(Bus,Place,Day,DepSet) :- % Alle flybussavganger ved en stasjon
 	unbound(Bus),
 
    value(airbusflag,true),     %% TA-090331
-   \+ value(nightbusflag,true),      % Nightbus query 
+   \+ value(nightbusflag,true),      % Nightbus query
 
-   !, 
+   !,
 
    airbus_module(TTP), %% ad hoc
 
@@ -1092,15 +1093,15 @@ departure(Bus,Place,Day,DepSet) :- % Alle flybussavganger ved en stasjon
 
 
 departure(Bus,Place,Day,DepSet) :- % Bussavgangene for en buss ved en stasjon
-	atomic(Bus), % 5 is a bus   
-   !,  
+	atomic(Bus), % 5 is a bus
+   !,
 	veh_mod(TTP),
    set_of(depnode(Time0,Time9,DelArr,DelDep,BegTime,Rid1,Bus,SEQNO,Station1),
 	      depbusMOD(TTP,Bus,Place,Day,Time0,Time9,DelArr,DelDep,BegTime,Rid1,SEQNO,Station1),
 	      DepSet).
 
 %% Double departures Hastus   Friday 2800 + Staurday 0400
-not_extreme_hastus_time(X):- 
+not_extreme_hastus_time(X):-
     X=depnode(_2820,_,_20,_,T2800,_bus_108_3049,_,_,_),
     T2800 < 1200.
 
@@ -1112,7 +1113,7 @@ avoidnightbustoplace(Place,Y) :-
     Y= depnode(_,_,_,_,_,Bus_57_nn,__,_),
     route(Bus_57_nn,_,B57),
     spurious_return(B57,Place), %% morten_erichsen_forbid(B57,Place),
-    !.  
+    !.
 
 
 setdepMOD(TTP,Place,Kay,DepSet):-
@@ -1124,7 +1125,7 @@ setdepMOD(TTP,Place,Kay,DepSet):-
 day_route(depnode(_Time0,_Time9,_DelArr,_DelDep,_BegTime,Rid1,NB,_SEQNO,_Station1)):-
     ridtobusnr(Rid1,NB),
     \+ nightbus(NB),
-    \+ exbusname(NB,skolebuss). 
+    \+ exbusname(NB,skolebuss).
 
 
 
@@ -1136,15 +1137,15 @@ night_route(depnode(_Time0,_Time9,_DelArr,_DelDep,_BegTime,Rid1,NB,_,_)):-
 
 airbus_route(depnode(_Time0,_Time9,_DelArr,_DelDep,_BegTime,Rid1,NB,_,_)):-
     ridtobusnr(Rid1,NB),
-    airbus(NB). 
+    airbus(NB).
 
 
 xdepartureMOD(TTP, Rid,Trace,BegTime,DaySeqNO):-          %% TA-100318
- 	
+
    TTP: ex_departureday(Rid,Trace,BegTime,DaySeqNO),
    BegTime < 2500. %% "Friday" at 2500 = "Saturday" at 0100
                    %% ignore, because 2500.. deps are duplicated
-      
+
 
 
 %% Bus is unknown, Day has been checked %% TA-110318
@@ -1154,15 +1155,15 @@ xdepartureMOD(TTP, Rid,Trace,BegTime,DaySeqNO):-          %% TA-100318
 
 %% Bus is unknown
 depMOD(TTP,Place,Day,Time0,Time9,DelArr,DelDep,BegTime,Rid,Bus,Seq,Station) :-
-   passeqMOD0(TTP,Rid,Place,_STATNO,Station,Seq,DelArr,DelDep),   
+   passeqMOD0(TTP,Rid,Place,_STATNO,Station,Seq,DelArr,DelDep),
    ridtobusnr(Rid,Bus),  TTP:regbus(Bus), %% dont generate removed buses  %% TA-110824
-   adjustarr999(DelArr,DelDep,RealDelArr),  
-   adjustdep999(DelArr,DelDep,RealDelDep), 
+   adjustarr999(DelArr,DelDep,RealDelArr),
+   adjustdep999(DelArr,DelDep,RealDelDep),
 
-	xdepartureMOD(TTP,Rid,_,BegTime,Kay),  
+	xdepartureMOD(TTP,Rid,_,BegTime,Kay),
 
-   mod_day_in_set(TTP,Day,Kay),   
-	addtotime(BegTime,RealDelArr,Time0),   
+   mod_day_in_set(TTP,Day,Kay),
+	addtotime(BegTime,RealDelArr,Time0),
    addtotime(BegTime,RealDelDep,Time9),
    true.
 
@@ -1171,25 +1172,25 @@ depMOD(TTP,Place,Day,Time0,Time9,DelArr,DelDep,BegTime,Rid,Bus,Seq,Station) :-
 depbusMOD(TTP,Bus,Place,Day,Time0,Time9,DelArr,DelDep,BegTime,Rid,Seq,Station) :-
 	passeqMOD0(TTP,Rid,Place,_STATNO,Station,Seq,DelArr,DelDep),
 
-   adjustarr999(DelArr,DelDep,RealDelArr), 
-   adjustdep999(DelArr,DelDep,RealDelDep), 
+   adjustarr999(DelArr,DelDep,RealDelArr),
+   adjustdep999(DelArr,DelDep,RealDelDep),
 
-	bustorid(Bus,Rid), 
+	bustorid(Bus,Rid),
 
    xdepartureMOD(TTP, Rid,_,BegTime,Kay), %% TA-100318
 
-   mod_day_in_set(TTP,Day,Kay), 
-	addtotime(BegTime,RealDelArr,Time0), 
-   addtotime(BegTime,RealDelDep,Time9). 
+   mod_day_in_set(TTP,Day,Kay),
+	addtotime(BegTime,RealDelArr,Time0),
+   addtotime(BegTime,RealDelDep,Time9).
 
 
 
 
 %%%%%%%% TA-110224 adjustarr999(999,DelDep,DelDep):-!.     %%  (reinterpret 999 in passes)
-adjustarr999(DelArr,_,DelArr).   
+adjustarr999(DelArr,_,DelArr).
 
 %%%%%%%% TA-110224 adjustdep999(DelArr,999,DelArr):-!.     %%  (reinterpret 999 in passes)
-adjustdep999(_,DelDep,DelDep).  
+adjustdep999(_,DelDep,DelDep).
 
 
 
@@ -1201,15 +1202,15 @@ adjustdep999(_,DelDep,DelDep).
 
 passeqMOD0(TTP,Rid,user_location,STATNO,Station,Seq,DelArr,DelDep):- %% TA-110418
     gps_origin(Station,_walk),
-    passeqMOD(TTP,Rid,STATNO,Station,Seq,DelArr,DelDep). 
+    passeqMOD(TTP,Rid,STATNO,Station,Seq,DelArr,DelDep).
 
 
 passeqMOD0(TTP,Rid,H,STATNO,Terminal,Seq,DelArr,DelDep):- %% TA-110318
     H== hovedterminalen,
     !,
-    passeqMOD(TTP,Rid,STATNO,Terminal,Seq,DelArr,DelDep), 
-    corresp0(Terminal,hovedterminalen). 
-        
+    passeqMOD(TTP,Rid,STATNO,Terminal,Seq,DelArr,DelDep),
+    corresp0(Terminal,hovedterminalen).
+
 
 passeqMOD0(TTP,Rid,Place,STATNO,Station,Seq,DelArr,DelDep) :-  %% TA-110318
     isat2(Station,Place),
@@ -1222,14 +1223,14 @@ passMOD(TTP,Rid,user_location,STATNO,Station,DelArr,DelDep) :- %% TA-110418
 	 passeqMOD(TTP,Rid,STATNO,Station,_Seq,DelArr,DelDep).
 
 
-passMOD(TTP,Rid,H,STATNO,Terminal,DelArr,DelDep):- 
+passMOD(TTP,Rid,H,STATNO,Terminal,DelArr,DelDep):-
     H== hovedterminalen,
     !,
-    passeqMOD(TTP,Rid,STATNO,Terminal,_Seq,DelArr,DelDep), 
-    corresp0(Terminal,hovedterminalen). %% (busdat.pl)  
-        
+    passeqMOD(TTP,Rid,STATNO,Terminal,_Seq,DelArr,DelDep),
+    corresp0(Terminal,hovedterminalen). %% (busdat.pl)
 
-passMOD(TTP,Rid,Place,STATNO,Station,DelArr,DelDep) :- 
+
+passMOD(TTP,Rid,Place,STATNO,Station,DelArr,DelDep) :-
     isat2(Station,Place),
 	 passeqMOD(TTP,Rid,STATNO,Station,_Seq,DelArr,DelDep).
 
@@ -1273,29 +1274,29 @@ samefplace(Place1,Place2) :-
     !.
 
 samefplace(Place1,Place2):-           % kinoene,prinsens_gate
-    isat2(Station1,Place1), 
-    isat2(Station2,Place2), 
+    isat2(Station1,Place1),
+    isat2(Station2,Place2),
     Station1=Station2,
     !.
 
 samefplace(Place1,Place2):-  %%   from m5 to m6
-    correspx0(Place1,hovedterminalen), %% corr00 ("confuse") 
+    correspx0(Place1,hovedterminalen), %% corr00 ("confuse")
     correspx0(Place2,hovedterminalen), %% TA-100318
     !.
 
-samefplace(Thomas_angells_street,Sentrum) :- 
+samefplace(Thomas_angells_street,Sentrum) :-
     street_station(Thomas_angells_street,M0),
     correspx0(Sentrum,M0).
 
 
-samefplace(Sentrum,Thomas_angells_street) :- 
+samefplace(Sentrum,Thomas_angells_street) :-
     street_station(Thomas_angells_street,M0),
     correspx0(Sentrum,M0).
 
 
 correspx0(Place,HT):-
     corresp0(Place,HT)
-    ;   
+    ;
     placestat(Place,HT).
 
 
@@ -1306,7 +1307,7 @@ correspx0(Place,HT):-
 
 bus_place_station(_Bus,X,Y):-  %% TA-090915
     value(airbusflag,true),
-    corr0(X,hovedterminalen), 
+    corr0(X,hovedterminalen),
     !,
     central_airbus_station(Y). %%  =torget.
 
@@ -1320,36 +1321,36 @@ bus_place_station(_Bus,X,Y):-  %% TA-100115
 
 
 
-bus_place_station(_Bus,X,Y):- 
-%%     unbound(_Bus),  
+bus_place_station(_Bus,X,Y):-
+%%     unbound(_Bus),
     corr0(X,hovedterminalen), %% Be liberal wrt M1,... D1,...(even if bus)
     !,
     Y=hovedterminalen.
 
-bus_place_station(Bus,X,Y):-                                                         
+bus_place_station(Bus,X,Y):-
     unbound(Bus),  %%  fra solbakken
-    \+ bus_depend_station(_,X,_), 
+    \+ bus_depend_station(_,X,_),
     \+ underspecified_place(X), %%% NB til Byåsen %% TA-100422
     !,
     place_station0(X,Y). %% studentersamfundet
 
 
-bus_place_station(Bus,X,Y):- 
+bus_place_station(Bus,X,Y):-
     bus_depend_station(Bus,X,Y), %% busdat.pl
     !,
-    station(Y).           %% RIT 17 mai syndrome 
+    station(Y).           %% RIT 17 mai syndrome
 
 
 
-bus_place_station(_Bus,X,Y):- 
-    \+ underspecified_place(X), %% cant harm  
-    place_station0(X,Y). %% studentersamfundet 
+bus_place_station(_Bus,X,Y):-
+    \+ underspecified_place(X), %% cant harm
+    place_station0(X,Y). %% studentersamfundet
 
 
 
 
 
- 
+
 
 % Place is known !
 
@@ -1367,14 +1368,14 @@ place_station(Place,Place) :-  %% TA-090401
 %% AtB
 
 
-place_station(Place,Station2):- %% Fronted 
+place_station(Place,Station2):- %% Fronted
     bound(Place),
     station(Place),            %% don't mess with stations
     \+ neighbourhood(Place),   %% e.g. nardosenteret %% TA-100204
     !,                         %% Migosenteret, både st og neib
-    Station2=Place.               
-                                
-                    
+    Station2=Place.
+
+
 place_station(IdentNum,Station):-
 	 nonvar(IdentNum),
     IdentNum = Ident-Num,
@@ -1384,8 +1385,8 @@ place_station(IdentNum,Station):-
 
 
 place_station(Place,Station) :-  %% Place is instantiated
-%      nonvar(Place),    
-	  bound(Place), 
+%      nonvar(Place),
+	  bound(Place),
 
      (placestat(Place,Station)-> true;
 
@@ -1398,7 +1399,7 @@ place_station(Place,Station) :-  %% Place is instantiated
 place_station(Ident,Station2):-	%% Name in streetstat
 	 bound(Ident),
 	 streetstat(Ident,_,_,_,Station),
-    Station \== unknown, %% there may be more, find first known 
+    Station \== unknown, %% there may be more, find first known
     Station \== '',      %% TA-110418
 
     optional_alias2(Station,Station2), %% TA-110803
@@ -1409,20 +1410,20 @@ place_station(Ident,U):-
 	 bound(Ident),
 	 streetstat(Ident,_,_,_,_),
     !,
-    U= unknown. 
+    U= unknown.
 
 
 place_station(Place,Station) :- %%  (If Place is free, get all)
 	 var(Place),
     !,
-	 (placestat(Place,Station); 
+	 (placestat(Place,Station);
      isat(Station,Place)).
 
 
 % New predicate
 % Place is instantiated, Station must be a station
 
-place_station1(Place,Station) :- 
+place_station1(Place,Station) :-
      nonvar(Place),
 	  placestat(Place,Station),
      station(Station),
@@ -1451,26 +1452,26 @@ place_station0(Place,Place) :-  %% TA-090401
 
 
 
-place_station0(Place,Station) :-  
+place_station0(Place,Station) :-
      nonvar(Place),
 	  placestat(Place,Station),
      station(Station), %% RIT 17. mai   Syndrome
      !.
 
 place_station0(Street,HT):- %% sandgt. 5 -> m0 -> unspec central street
-    street(Street),   
+    street(Street),
     place_station(Street,Station),
     Station=m0,
     !,
     HT=hovedterminalen.
 
 place_station0(Street,Station):- %%  P.Fjermstad vei, called from bus_place_station
-    street(Street), 
+    street(Street),
     !,
     place_station(Street,Station),
     !.
 
-place_station0(Place,Place) :- 
+place_station0(Place,Place) :-
      nonvar(Place),
      (station(Place),!;
       neighbourhood(Place)).
@@ -1480,25 +1481,25 @@ place_station0(Place,Place) :-
 % This gives a message, but the message should be informative
 % Not   The nearest station to Utleira is Utleira
 
-street_station(STOGSTREET- _N_,STOGST):- %% St. Olavs gt 1 \= HT 
+street_station(STOGSTREET- _N_,STOGST):- %% St. Olavs gt 1 \= HT
     value(tramflag,true), %% TA-100120
-    thetramstreetstation(STOGSTREET,STOGST), 
+    thetramstreetstation(STOGSTREET,STOGST),
     !.
 
-street_station(Street,Station):- 
-    street(Street), 
+street_station(Street,Station):-
+    street(Street),
     !,
-    place_station(Street,Station),!.%% NB in case of period renaming renaming 
+    place_station(Street,Station),!.%% NB in case of period renaming renaming
                                      %% TA-110803
 street_station(Street,Station):-
-    neighbourhood(Street), 
+    neighbourhood(Street),
     !,
     place_station(Street,Station),!.
 
 street_station(_Street,unknown):-!. % otherwise
 
-street(X):-nonvar(X), streetstat(X,_,_,_,_),!. 
-street(XN):-nonvar(XN),XN=X- _N,street(X). 
+street(X):-nonvar(X), streetstat(X,_,_,_,_),!.
+street(XN):-nonvar(XN),XN=X- _N,street(X).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1510,25 +1511,25 @@ street(XN):-nonvar(XN),XN=X- _N,street(X).
 
 connections(StartDeps,EndDeps,Bus,FromPlace,ToPlace,Day,DaySeqNo,Opts,Deps,Mid01):-
     !,
- 
-    starttime,   %% TA-110322 
 
-    nonvar(StartDeps), 
+    starttime,   %% TA-110322
+
+    nonvar(StartDeps),
     nonvar(EndDeps),
 
     debug_prune(StartDeps,StartDeps777),
 
-    remove_spurious_deps(StartDeps777,StartDeps0), 
-    
-    remove_roundtrip_deps(FromPlace,ToPlace,StartDeps0,StartDeps1), %% TA-110224
- 
-    debug_prune(EndDeps,EndDeps777),
-   
-    remove_spurious_arrs(EndDeps777,EndDeps1), 
-    
-    coupled(StartDeps1,EndDeps1,Bus,FromPlace,ToPlace,Day,DaySeqNo,Opts,Deps,Mid01), 
+    remove_spurious_deps(StartDeps777,StartDeps0),
 
-    trackprog(2,(nl,taketime,nl)). %% TA-110322 
+    remove_roundtrip_deps(FromPlace,ToPlace,StartDeps0,StartDeps1), %% TA-110224
+
+    debug_prune(EndDeps,EndDeps777),
+
+    remove_spurious_arrs(EndDeps777,EndDeps1),
+
+    coupled(StartDeps1,EndDeps1,Bus,FromPlace,ToPlace,Day,DaySeqNo,Opts,Deps,Mid01),
+
+    trackprog(2,(nl,taketime,nl)). %% TA-110322
 
 remove_roundtrip_deps(FromPlace,ToPlace,StartDeps0,StartDeps1):- %% TA-110224
     set_eliminate(X,looping(FromPlace,ToPlace,X),StartDeps0,StartDeps1).
@@ -1539,12 +1540,12 @@ looping(FromPlace,ToPlace,Bingo):- %% TA-110224
         Bingo =depnode(9999,T1520,_DelArr,_DelDep,_Time,RID,_BUS,_1,FromPlace),
 
      veh_mod(TTP),
-                  
-     xdepartureMOD(TTP,RID,Trace,_BegTime,_Daycode),  
+
+     xdepartureMOD(TTP,RID,Trace,_BegTime,_Daycode),
 
      xpasses5(TTP,RID,Trace,_,FromPlace,Seq1,_,DelDep1),   Seq1=1, %% nec? HS
 
-     addtotime(T1520,DelDep1,DepTime1),  
+     addtotime(T1520,DelDep1,DepTime1),
 
      xpasses5(TTP,RID,Trace,_,FromPlace,Seq2,_,DelDep2),   Seq2 > Seq1,   %%  HS
 
@@ -1553,7 +1554,7 @@ looping(FromPlace,ToPlace,Bingo):- %% TA-110224
      xpasses5(TTP,RID,Trace,_,ToPlace,Seq3,_,DelDep3),     Seq3 > Seq2,    %% KS
 
      addtotime(T1520,DelDep3,DepTime3), DepTime3 > DepTime2,
-    
+
 !.
 
 
@@ -1564,7 +1565,7 @@ remove_spurious_deps(Deps,Deps1):-
 remove_spurious_arrs(Deps,Deps1):-
     set_eliminate(X, (X=depnode(_,_,999,_,_,_,_,_,_)),Deps,Deps1).
 
- 
+
 
 
 %%% EXPERIMENTAL QUICK VERSION  %%%%%%%%%%%%%%%%%%%%%%%
@@ -1572,9 +1573,9 @@ remove_spurious_arrs(Deps,Deps1):-
 
 /*   SUSPENDED
 
-coupled(StartDeps,EndDeps,_Bus,FromStat,ToStat,Day,DaySeqNo,Opts,Dep01,Mid01) :- 
+coupled(StartDeps,EndDeps,_Bus,FromStat,ToStat,Day,DaySeqNo,Opts,Dep01,Mid01) :-
     value(quicktransfer,true),
-%%%%%%%%    kindofday(Day,Kay), 
+%%%%%%%%    kindofday(Day,Kay),
     station(FromStat),
     station(ToStat),
     StartDeps\==[],EndDeps\==[],     % Fail when no departures
@@ -1583,18 +1584,18 @@ coupled(StartDeps,EndDeps,_Bus,FromStat,ToStat,Day,DaySeqNo,Opts,Dep01,Mid01) :-
     !,
     firsttime(FT1,StartDeps),
     lasttime(LT2,EndDeps), % in case before time
-    findquicktransfers(Opts,FromStat,ToStat,FT1,LT2,Day,DaySeqNo,SetOfDepMid), 
-    trackprog(3,outputlist(SetOfDepMid)), 
+    findquicktransfers(Opts,FromStat,ToStat,FT1,LT2,Day,DaySeqNo,SetOfDepMid),
+    trackprog(3,outputlist(SetOfDepMid)),
     firstmem(SetOfDepMid,depX(_,Dep01,Mid01)). %%
 
 
-findquicktransfers(Opts,FromStat,ToStat,FT1,LT2,Day,DaySeqNo,SetOfDepMid):- 
+findquicktransfers(Opts,FromStat,ToStat,FT1,LT2,Day,DaySeqNo,SetOfDepMid):-
     \+testmember(lastcorr,Opts),
     \+member(last(_),Opts),  %% testmember syndrome
    transferXYZ(FromStat,ToStat,TransferStations),
     set_of(depX(ArrT,Dep01,Mid01),   % sort on final arrival time
       ( member(X,TransferStations),
-        findfirstquicktransfer(FromStat,ToStat,X,FT1,LT2,Day,DaySeqNo,Dep01,Mid01), 
+        findfirstquicktransfer(FromStat,ToStat,X,FT1,LT2,Day,DaySeqNo,Dep01,Mid01),
          Dep01= depans(_,_,_,_,_,_,ArrT,_)),
     SetOfDepMid).
 
@@ -1626,32 +1627,32 @@ findlastquicktransfer(FromStat,ToStat,X,FT1,LT2,Kay,Dep01,Mid01):-
 %%  First A-> X, First X -> B
 
 firstquicktransfer(FromStat,ToStat,X,FT1,LT2,DaySeqNo,Dep01,Mid01):-
-    veh_mod(TTP),    
-% First direct from FromStat to X 
-  
+    veh_mod(TTP),
+% First direct from FromStat to X
+
     passes4(Trace1,_STATNO,FromStat,Seq1,_,DelDep1),
-    passes44(Trace1,X,Y,       Seq2,DelArr1,_),            
+    passes44(Trace1,X,Y,       Seq2,DelArr1,_),
     Seq2 > Seq1,
 
-    departuredayMOD(TTP,Rid1,Trace1,BegTime1,DayCode),   
-    mod_day_in_set(TTP,DaySeqNo,DayCode), 
+    departuredayMOD(TTP,Rid1,Trace1,BegTime1,DayCode),
+    mod_day_in_set(TTP,DaySeqNo,DayCode),
     addtotime(BegTime1,DelDep1,DepTime1),
 
-    DepTime1 >= FT1, 
+    DepTime1 >= FT1,
 
     addtotime(BegTime1,DelArr1,ArrTime1),
 
 % First direct from X to ToStat
 
-    passes4(Trace2,STATNO,ToStat,  Seq4,DelArr2,_),  
+    passes4(Trace2,STATNO,ToStat,  Seq4,DelArr2,_),
     passes44(Trace2,X,Z,       Seq3,_,DelDep2),
 
     Seq4 > Seq3,
 
-    departuredayMOD(TTP,Rid2,Trace2,BegTime2,DayCode),  
+    departuredayMOD(TTP,Rid2,Trace2,BegTime2,DayCode),
     mod_day_in_set(TTP,DaySeqNo,DayCode),
-    addtotime(BegTime2,DelDep2, DepTime2),    
-    addtotime(BegTime2,DelArr2, ArrTime2),  
+    addtotime(BegTime2,DelDep2, DepTime2),
+    addtotime(BegTime2,DelArr2, ArrTime2),
     ArrTime2 =< LT2,
 
     withinslack(DepTime2,ArrTime1)   ,  %% [+ 2, + 60]
@@ -1659,43 +1660,43 @@ firstquicktransfer(FromStat,ToStat,X,FT1,LT2,DaySeqNo,Dep01,Mid01):-
     ridtobusnr(Rid1,BusN1),
     ridtobusnr(Rid2,BusN2),
 
-    Dep01 = depans(BusN1,Rid1,DepTime1,FromStat,BusN2,Rid2,ArrTime2,ToStat), 
+    Dep01 = depans(BusN1,Rid1,DepTime1,FromStat,BusN2,Rid2,ArrTime2,ToStat),
     Mid01 = midans(BusN1,ArrTime1,Y,BusN2,DepTime2,Z).
 
- 
+
 
 lastquicktransfer(FromStat,ToStat,X,FT1,LT2,DaySeqNo,Dep01,Mid01):-
     veh_mod(TTP),
 % Last direct from X to ToStat
 
-    passes4(Trace2,STATNO,ToStat,Seq4,DelArr2,_),  
+    passes4(Trace2,STATNO,ToStat,Seq4,DelArr2,_),
     passes4(Trace2,X, Z,  Seq3,_,      DelDep2),
 
     Seq4 > Seq3,
 
-    departuredayMOD(TTP,Rid2,Trace2,BegTime2,Kay),  
-    mod_day_in_set(TTP,DaySeqNo,Kay), 
-    addtotime(BegTime2,DelArr2, ArrTime2),  
-    
-    ArrTime2 =< LT2, 
+    departuredayMOD(TTP,Rid2,Trace2,BegTime2,Kay),
+    mod_day_in_set(TTP,DaySeqNo,Kay),
+    addtotime(BegTime2,DelArr2, ArrTime2),
 
-    Slack = 15, %% experiment 
+    ArrTime2 =< LT2,
+
+    Slack = 15, %% experiment
 
     subfromtime(LT2,Slack,RelTime), ArrTime2 >= RelTime,
 
-    addtotime(BegTime2,DelDep2, DepTime2),    
+    addtotime(BegTime2,DelDep2, DepTime2),
 
-% First direct from FromStat to X 
-  
+% First direct from FromStat to X
+
     passes4(Trace1,STATNO,FromStat,Seq1,_,     DelDep1),
     passes44(Trace1,X, Y,    Seq2,DelArr1,_),
     Seq2 > Seq1,
 
-    departuredayMOD(TTP,Rid1,Trace1,BegTime1,Kay),   
+    departuredayMOD(TTP,Rid1,Trace1,BegTime1,Kay),
     mod_day_in_set(TTP,DaySeqNo,Kay),
     addtotime(BegTime1,DelDep1,DepTime1),
 
-    DepTime1 >= FT1, 
+    DepTime1 >= FT1,
 
     addtotime(BegTime1,DelArr1,ArrTime1),
 
@@ -1704,9 +1705,9 @@ lastquicktransfer(FromStat,ToStat,X,FT1,LT2,DaySeqNo,Dep01,Mid01):-
     ridtobusnr(Rid1,BusN1),
     ridtobusnr(Rid2,BusN2),
 
-    Dep01 = depans(BusN1,Rid1,DepTime1,FromStat,BusN2,Rid2,ArrTime2,ToStat), 
+    Dep01 = depans(BusN1,Rid1,DepTime1,FromStat,BusN2,Rid2,ArrTime2,ToStat),
     Mid01 = midans(BusN1,ArrTime1,Y,BusN2,DepTime2,Z).
- 
+
 */
 
 
@@ -1717,13 +1718,13 @@ lastquicktransfer(FromStat,ToStat,X,FT1,LT2,DaySeqNo,Dep01,Mid01):-
 
 % Finner alle rids som passerer endestasjonen, AFTER NOW if SMS/notime
 
-coupled(StartDeps,EndDeps,_,_,_,Day,DaySeqNo,Opts,Deps,Mid01) :- 
+coupled(StartDeps,EndDeps,_,_,_,Day,DaySeqNo,Opts,Deps,Mid01) :-
 
 %%%%%%%%%%%%%%	value(smsflag,true), %% NB no bygone departs
 
    \+ member(nextaftertime(_),Opts),
 
-   sameday(Day), 
+   sameday(Day),
 
    timenow2(0,NOW),
 
@@ -1740,7 +1741,7 @@ coupled(StartDeps,EndDeps,_,_,_,Day,DaySeqNo,Opts,Deps,Mid01) :-
 
 
 % Finner alle rids som passerer endestasjonen
-coupled(StartDeps,EndDeps,_,_,_,Day,DaySeqNo,Opts,Deps,Mid01) :- 
+coupled(StartDeps,EndDeps,_,_,_,Day,DaySeqNo,Opts,Deps,Mid01) :-
 	StartDeps\==[],EndDeps\==[],     % Fail when no departures
 	keepcorr(StartDeps,EndDeps,BothStartDeps),
    !,
@@ -1753,34 +1754,34 @@ coupled(StartDeps,EndDeps,_,_,_,Day,DaySeqNo,Opts,Deps,Mid01) :-
 
 %% TO AVOID HANGING, THERE IS A TIMEOUT CLAUSE ON COUPLED
 
-coupled_time(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01):- 
+coupled_time(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01):-
 	 buslogtimeout(MAXTIME),
     timeout(            %%  calls time_out if not notimeoutflag
-      coupled1(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01), 
+      coupled1(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01),
         MAXTIME, %% 10 seconds
         Success),
 
-   ( Success =  success -> Deps \== [] %% true %% <--- Experiment FAIL if no connections 
+   ( Success =  success -> Deps \== [] %% true %% <--- Experiment FAIL if no connections
      ;
-     Deps = [],  
-     Mid01= [timeout]  
+     Deps = [],
+     Mid01= [timeout]
    ).
 
 %% purge deps deletes irrelevant passages from StartDeps and EndDeps
 %% even if there are direct connections, because these may later prove to be
 %% irrelevant (too late/ in the past)
-  
-coupled1(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01):- 
+
+coupled1(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01):-
 %%%%%%%%%%    (BothStartDeps == []),
 %%%%%%%%%%    !,
-    purge_deps(Opts,StartDeps,EndDeps,LeanStartDeps,LeanEndDeps), 
+    purge_deps(Opts,StartDeps,EndDeps,LeanStartDeps,LeanEndDeps),
 
-    coupled2(BothStartDeps,LeanStartDeps,LeanEndDeps,Day,DaySeqNo,Opts,Deps,Mid01). 
-
-
+    coupled2(BothStartDeps,LeanStartDeps,LeanEndDeps,Day,DaySeqNo,Opts,Deps,Mid01).
 
 
-/* 
+
+
+/*
 <>      StartDeps
 []      EndDeps
 
@@ -1806,24 +1807,24 @@ Die ( oooo > 60 min)
 
 purge_deps(_Opts,StartDeps,EndDeps,LeanStartDeps,LeanEndDeps):-
 
-    firstdeptime(FS,StartDeps), 
-    lastdeptime(LS,StartDeps), 
+    firstdeptime(FS,StartDeps),
+    lastdeptime(LS,StartDeps),
 
-    firstarrtime(FE,EndDeps),  
-    lastarrtime(LE,EndDeps), 
+    firstarrtime(FE,EndDeps),
+    lastarrtime(LE,EndDeps),
 
 %%% The Obvious cases ********************
- 
+
 % Skip the last StartDeps after last EndDeps
-    minval(LS,LE,LS1), 
+    minval(LS,LE,LS1),
 
 
 % Skip the first  StartDeps an hour before first EndDeps
 
-    maxtraveltime(MaxT),   
+    maxtraveltime(MaxT),
 
-    subfromtime(FE,MaxT,XXX), 
-    maxval(FS,XXX,FS2), 
+    subfromtime(FE,MaxT,XXX),
+    maxval(FS,XXX,FS2),
 
 
 % Skip the first EndDeps  before the first StartDeps
@@ -1831,7 +1832,7 @@ purge_deps(_Opts,StartDeps,EndDeps,LeanStartDeps,LeanEndDeps):-
 
 % Skip the last  EndDeps   an hour after the last StartDeps
     addtotime(LS,MaxT,YYY),
-    minval(LE,YYY,LE2),  
+    minval(LE,YYY,LE2),
 
 
 % Avoid deps between firstdep+120, lastdep -120
@@ -1840,7 +1841,7 @@ purge_deps(_Opts,StartDeps,EndDeps,LeanStartDeps,LeanEndDeps):-
     addtotime(LastActualDepTime,120,LateDepLow),
 
     subfromtime(LS,120, LateDepHigh),
-   
+
 
 % Avoid arrs between firstarr +120, lastarr -120
 
@@ -1858,25 +1859,25 @@ purge_deps(_Opts,StartDeps,EndDeps,LeanStartDeps,LeanEndDeps):-
 
     keeparrbetween(FE1,LE2,XEndDeps,LeanEndDeps).
 
-  
+
 
 
 
 sameday(_Day) :-     %% TA-091229  Dont backtrack
      value(samedayflag,true),!.
 sameday(Day) :-
-     (today(Day), 
+     (today(Day),
      \+ value(samedayflag,false)),
      !.
-   
-     
+
+
 
 
 
 %% Section coupled2
 
 %% PREFER INDIRECT FREAK
-%% IF NO DIRECT ROUTES START WITHIN 60 MINUTES AFTER FIRST DEPTIME, SWITCH TO INDIRECT. 
+%% IF NO DIRECT ROUTES START WITHIN 60 MINUTES AFTER FIRST DEPTIME, SWITCH TO INDIRECT.
 %% IF INDIRECT FINDS A LATE DIRECT ROUTE, IT IS TAKEN, BUT ONLY SINGLETON
 
 %% deleted
@@ -1894,14 +1895,14 @@ sameday(Day) :-
 
 
 coupled2(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
-     
-     fail, wrotten,   %% TA-110411 
+
+     fail, wrotten,   %% TA-110411
 
      BothStartDeps \== [], %% There is a direct connection
 
-%%%%      value(smsflag,true), %% Når går bussen fra Fagerheim alle til iskremfabrikken? 
+%%%%      value(smsflag,true), %% Når går bussen fra Fagerheim alle til iskremfabrikken?
      \+ member(nextaftertime(_),Opts), %%  testmember disallows var
-     \+ testmember(direct,Opts), 
+     \+ testmember(direct,Opts),
      \+ testmember(lastcorr,Opts), %% buss fra tonstadkrysset til klæbu.
 
 %%%%%  testmember(firstcorr,Opts), %% no option means next
@@ -1910,13 +1911,13 @@ coupled2(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
 
      sameday(Day),
 
-     timenow2(0,NOW), 
+     timenow2(0,NOW),
 
-     lastmem(BothStartDeps, LastDirect),  
-     deptimeof(LastDirect,LastDirectTime), 
+     lastmem(BothStartDeps, LastDirect),
+     deptimeof(LastDirect,LastDirectTime),
 
      LastDirectTime > NOW, %% ignore special treatment if last departure time in the past
-                    %% <--- 
+                    %% <---
 
      firstmem(BothStartDeps, BothFirstDirect),  %% TA-100207
      deptimeof(BothFirstDirect,BothFirstDirectTime),
@@ -1934,9 +1935,9 @@ coupled2(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
 
      !, %% ignore direct connection
 
-     progtrace(4,coup2),       
+     progtrace(4,coup2),
 
-     coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01). 
+     coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01).
 
 
 
@@ -1956,37 +1957,37 @@ coupled2(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
 
 %%%%%%%
 
-% SMS,  cut out bygone departures 
+% SMS,  cut out bygone departures
 
 % Putter ut listen over busser som passerer begge steder
 coupled2(BothStartDeps,_,_,Day,_DaySeqNo,_Opts,BothStartDeps1,MidDeps) :-
     BothStartDeps \== [],
-    sameday(Day), 
+    sameday(Day),
 %%%%%%%%%%%%%%%%%%%%%%% TA-110706    \+ testmember(lastcorr,Opts),
-    progtrace(4,coup6),   
+    progtrace(4,coup6),
     timenow2(0,NOW),
     keepafter(NOW,BothStartDeps,BothStartDeps1), %% NB direct line early in morning***
-    BothStartDeps1 \== [], %% TA-100828          %% 
+    BothStartDeps1 \== [], %% TA-100828          %%
     !,                     %%
     MidDeps=[].            %%
 
-    
+
 
 % Putter ut listen over busser som passerer begge steder, |even if in the past|.
-coupled2(BothStartDeps,_,_,Day,_DaySeqNo,_Opts,BothStartDeps,MidDeps) :- 
+coupled2(BothStartDeps,_,_,Day,_DaySeqNo,_Opts,BothStartDeps,MidDeps) :-
     BothStartDeps \== [],
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  %% TA-110705
    \+ sameday(Day),   %% time might give opportunity to take next day
     !,
-    progtrace(4,coup7), 
+    progtrace(4,coup7),
     MidDeps=[].
 
 
 
 
 %/////////////////////////
-% Ingen busser passerer begge steder 
+% Ingen busser passerer begge steder
 % SMS
 % Ingen dag oppgitt
 % Intet tidspunkt oppgitt
@@ -1995,58 +1996,58 @@ coupled2(BothStartDeps,_,_,Day,_DaySeqNo,_Opts,BothStartDeps,MidDeps) :-
 
 coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
 %%     value(smsflag,true), %%  Neste buss fra P.A. Munchs gt til Dragvoll
-    \+ member(direct,Opts),  
+    \+ member(direct,Opts),
 
-%% if no other time options than ...,  try next 
+%% if no other time options than ...,  try next
    (set_difference(Opts,[first,first(1),next,next(_)],Opts1),
      \+ time_options(Opts1) ),
 
-    sameday(Day), 
+    sameday(Day),
 	 !,
-    progtrace(4,coup8),  
-    timenow2(1,NOW),   %% Dont announce bygone departures   
-    keeparrafter(NOW,StartDeps,AfterStartDeps), 	
-    keeparrafter(NOW,EndDeps,AfterEndDeps), 	
+    progtrace(4,coup8),
+    timenow2(1,NOW),   %% Dont announce bygone departures
+    keeparrafter(NOW,StartDeps,AfterStartDeps),
+    keeparrafter(NOW,EndDeps,AfterEndDeps),
 
     coupledtry(AfterStartDeps,AfterEndDeps,Day,DaySeqNo,Opts,Deps,Mid01).
 
- 
-    
+
+
 
 %//////////////
 
 % Ingen busser passerer begge steder - finner beste overgang
 
-% Ingen tidspunkter oppgitt, dag = i dag: 
+% Ingen tidspunkter oppgitt, dag = i dag:
 % finner første mulighet etter nå ("neste") if possible, otherwise first
 
 coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
-    \+ member(direct,Opts),  % Dont exclude indirect connections 
+    \+ member(direct,Opts),  % Dont exclude indirect connections
 
     sameday(Day),
 	 !,
-	 progtrace(4,coup9),     
+	 progtrace(4,coup9),
     coupledtry(StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01).
 
- 
- 
+
+
 % Ingen tidspunkter oppgitt, ikke i dag, Første om morgen
 
-coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :- 
+coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
     \+ member(direct,Opts),  % Indirect solutions is not to be found
-    \+ time_options(Opts),   %%  busanshp.pl 
-    \+ sameday(Day), 
+    \+ time_options(Opts),   %%  busanshp.pl
+    \+ sameday(Day),
 	 !,
-	 progtrace(4,coup10),        
+	 progtrace(4,coup10),
 	 coupled3(StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01).
 
 
 % Tidspunkter oppgitt
 
-coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :- 
+coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
     \+ member(direct,Opts),  % Indirect solutions is not to be found
 	 !,
-	 progtrace(4,coup11),  
+	 progtrace(4,coup11),
 	 coupled3(StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01).
 
 
@@ -2069,9 +2070,9 @@ irrelevantdirect(_Opts,_FirstDirectTime,LastDirectTime,_FirstStartTime) :- %% in
 
 
 irrelevantdirect(_Opts,FirstDirectTime,LastDirectTime,FirstStartTime) :- %% too long after
-     \+ value(smsflag,true), 
+     \+ value(smsflag,true),
      !,
-     maxtraveltime(MaxT), 
+     maxtraveltime(MaxT),
      addtotime(FirstStartTime,MaxT,F60),
 
 (    FirstDirectTime > F60
@@ -2087,14 +2088,14 @@ firstactualdeparturetime(Day,_DaySeqNo,S,FAT) :-
      !,
      timenow2(0,NOW),
      firstdeparture(S,X),
-     deptimeof(X,FirstDirectTime),    
+     deptimeof(X,FirstDirectTime),
      maxval(NOW,FirstDirectTime,FAT).
 
 firstactualdeparturetime(_Day,_DaySeqNo,S,FAT) :-
      firstdeparture(S,X),
      deptimeof(X,FAT).
 
-firstdeparture(S,X):- 
+firstdeparture(S,X):-
     member(X,S),
     deptimeof(X,T),
     T \== 9999,
@@ -2107,46 +2108,46 @@ firstdeparture(S,X):-
 % Try finding a solution after now:
 coupledtry(StartDeps,EndDeps,Day,DaySeqNo,Opts,Dep01,Mid01) :-
 
-   \+ member(nextaftertime(_),Opts), 
+   \+ member(nextaftertime(_),Opts),
 
-   \+  time_options(Opts), 
+   \+  time_options(Opts),
 
-    sameday(Day), 
+    sameday(Day),
 
-    timenow2(1,NOW),   %% Dont announce bygone departures 
+    timenow2(1,NOW),   %% Dont announce bygone departures
 
-    keeparrafter(NOW,StartDeps,AfterStartDeps),  
-    keeparrafter(NOW,EndDeps,AfterEndDeps), 
+    keeparrafter(NOW,StartDeps,AfterStartDeps),
+    keeparrafter(NOW,EndDeps,AfterEndDeps),
 
-	 coupled3(AfterStartDeps,AfterEndDeps,Day,DaySeqNo,Opts,Dep01,Mid01), 
+	 coupled3(AfterStartDeps,AfterEndDeps,Day,DaySeqNo,Opts,Dep01,Mid01),
 	 Dep01 \== [],
-    !. 
+    !.
 
 
 % If no solution after now exist, find first one anyway:
 coupledtry(StartDeps,EndDeps,Day,DaySeqNo,Opts,Dep01,Mid01) :-
 	 coupled3(StartDeps,EndDeps,Day,DaySeqNo,Opts,Dep01,Mid01),
  	 !.  % If using the whole set fails, then there is no hope
-	
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-% Finner beste kobling mellom sett  
 
-coupled3(StartDeps,EndDeps,Day,DaySeqNo,Opts,Dep01,Mid01) :- 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Finner beste kobling mellom sett
+
+coupled3(StartDeps,EndDeps,Day,DaySeqNo,Opts,Dep01,Mid01) :-
 
 	bestcorr(StartDeps,EndDeps,Day,DaySeqNo,
 
 				depnode(_,Time1,_,_,_,Rid1,BusN1,SeqNo1,Station1), % Start
-				depnode(Time2,_,_,_,_,Rid2,BusN2,SeqNo2,Station2), % End 
+				depnode(Time2,_,_,_,_,Rid2,BusN2,SeqNo2,Station2), % End
 				[OffTime,OffStation,OnTime,OnStation],Opts), %% List
-	ridtobusname(Rid1,BusN1), 
-	ridtobusname(Rid2,BusN2), 
+	ridtobusname(Rid1,BusN1),
+	ridtobusname(Rid2,BusN2),
 
-      progtrace(5,depnode(_,Time1,_,_,_,Rid1,BusN1,SeqNo1,Station1)), 
-      progtrace(5,depnode(Time2,_,_,_,_,Rid2,BusN2,SeqNo2,Station2)), 
+      progtrace(5,depnode(_,Time1,_,_,_,Rid1,BusN1,SeqNo1,Station1)),
+      progtrace(5,depnode(Time2,_,_,_,_,Rid2,BusN2,SeqNo2,Station2)),
 
-	Dep01 = depans(BusN1,Rid1,Time1,Station1,BusN2,Rid2,Time2,Station2), 
+	Dep01 = depans(BusN1,Rid1,Time1,Station1,BusN2,Rid2,Time2,Station2),
    Mid01=  midans(BusN1,OffTime,OffStation,BusN2,OnTime,OnStation).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2164,35 +2165,35 @@ bestcorr(StartDeps,EndDeps,Day,DaySeqNo, StartDep,EndDep,Mid,Opts) :-
 bestcorr(StartDeps,EndDeps,Day,DaySeqNo, StartDep,EndDep,Mid,Opts) :-
 	 not(tofindlastcorr(Opts)),
 		StartDep  =		depnode(_,_,_,_,_,_,_,_,Orig),
-		EndDep    =		depnode(_,_,_,_,_,_,_,_,Dest),	 
+		EndDep    =		depnode(_,_,_,_,_,_,_,_,Dest),
     firstcorr(Orig,Dest,StartDeps,EndDeps,Day,DaySeqNo,StartDep,EndDep,Mid).
 
 tofindlastcorr(Opts) :- member(last(_),Opts).
 tofindlastcorr(Opts) :- member(lastcorr,Opts).
 
-%%% lastcorr(-Orig,-Dest,+StartDeps,+EndDeps,-StartDep,-EndDep,-Mid01) 
+%%% lastcorr(-Orig,-Dest,+StartDeps,+EndDeps,-StartDep,-EndDep,-Mid01)
 %%% Optimizes primary on late departure, secondary on short travel time
 
-lastcorr(Orig,Dest,StartDeps,EndDeps,Day,DaySeqNo,StartDep,EndDep,Mid) :- 
+lastcorr(Orig,Dest,StartDeps,EndDeps,Day,DaySeqNo,StartDep,EndDep,Mid) :-
 
 % Filter away deps in StartDeps after last Dep in EndDeps
 
-    lasttime(LT,EndDeps),  
+    lasttime(LT,EndDeps),
     keepbefore(LT,StartDeps,StartDeps1),    %% // Unnec
- 
+
 % Filter away deps in StartDeps that are earlier han 1 hour
 % before first EndDep
 
-    maxtraveltime(MaxT), 
+    maxtraveltime(MaxT),
 
-    firsttime(FT,EndDeps),  
-    subfromtime(FT,MaxT,FT1), 
-    keeparrafter(FT1,StartDeps1,StartDeps2), 
+    firsttime(FT,EndDeps),
+    subfromtime(FT,MaxT,FT1),
+    keeparrafter(FT1,StartDeps1,StartDeps2),
 
-    !,   
-	 member(StartDep,StartDeps2),  
+    !,
+	 member(StartDep,StartDeps2),
     islastcorr(StartDep,Orig,Dest,EndDeps,Day,DaySeqNo,EndDep,Mid).
-	 
+
 
 islastcorr(DEP,Orig,Dest,InDeps,Day,DaySeqNo, StartDep,Mid) :-
 
@@ -2208,23 +2209,23 @@ islastcorr2(Orig,Dest,DepList,Day,DaySeqNo,EndDep,Mid,Dep) :-
     iscorr3(Orig,Dest,Day,DaySeqNo,EndDep,Dep,Mid).
 
 
-%%% firstcorr(Orig,Dest,+StartDeps,+EndDeps,Day,DaySeqNo,-StartDep,-EndDep,-Mid01) 
+%%% firstcorr(Orig,Dest,+StartDeps,+EndDeps,Day,DaySeqNo,-StartDep,-EndDep,-Mid01)
 %%% Optimizes primary on early arrival, secondary on short travel time
 
 %%  EndDeps sorted on increasing time, earliest first
-%%  Find  the first  departure from a  Transfer  to  End 
+%%  Find  the first  departure from a  Transfer  to  End
 %%             That is  supposed to give early arrival time
 %%  Then find last departure from Start to Transfer
 %%             That gives short travel time
 
 %% EXPERIMENTAL %%%
-%%  N: buss 47 fra Hesttrø til Rostengrenda  etter kl. 21.40 . 
-%%  OrigX0  OrigX1    OrigY0     Xstat     Dest  
+%%  N: buss 47 fra Hesttrø til Rostengrenda  etter kl. 21.40 .
+%%  OrigX0  OrigX1    OrigY0     Xstat     Dest
 %%  Klæbu  Hesttrø    Sandmoen   CitySyd   Rostengrenda
-%%  depans(47,bus_47_94,2206,hesttrø,46,bus_46_231,2256,city_syd)                                                      
+%%  depans(47,bus_47_94,2206,hesttrø,46,bus_46_231,2256,city_syd)
 
-firstcorr(Orig,Dest,StartDeps,EndDeps,Day,DaySeqNo,StartDep,EndDep,Mid):- 
-    reverse(StartDeps,StartDepsRev),    
+firstcorr(Orig,Dest,StartDeps,EndDeps,Day,DaySeqNo,StartDep,EndDep,Mid):-
+    reverse(StartDeps,StartDepsRev),
     !,
     member(EndDep,EndDeps),
     isfirstcorr(EndDep,Orig,Dest,Day,DaySeqNo,StartDepsRev,StartDep,Mid),
@@ -2235,7 +2236,7 @@ firstcorr(Orig,Dest,StartDeps,EndDeps,Day,DaySeqNo,StartDep,EndDep,Mid):-
 
 
 
-arrtimeof(depnode(X,Time0,_,_,_,_,_,_,_),Time):-X=9999,!,Time=Time0. 
+arrtimeof(depnode(X,Time0,_,_,_,_,_,_,_),Time):-X=9999,!,Time=Time0.
 arrtimeof(depnode(Time0,_,_,_,_,_,_,_,_),Time0).
 
 deptimeof(depnode(_,Time0,_,_,_,_,_,_,_),Time0). %% (always?)
@@ -2271,11 +2272,11 @@ maxvaldeps(L,M) :-
     maximum(K,M).
 
 
-firsttime(Time,[depnode(X,Time0,_,_,_,_,_,_,_)|_]):-X=9999,!,Time=Time0. 
+firsttime(Time,[depnode(X,Time0,_,_,_,_,_,_,_)|_]):-X=9999,!,Time=Time0.
 firsttime(Time0,[depnode(Time0,_,_,_,_,_,_,_,_)|_]).
 
 
-lasttime(Time0,Z):-   %% last arrival ! 
+lasttime(Time0,Z):-   %% last arrival !
     reverse(Z,Z1),
     firsttime(Time0,Z1).
 
@@ -2286,27 +2287,27 @@ isfirstcorr( EndDep,Orig,Dest,Day,DaySeqNo,StartDepsRev,StartDep,Mid) :-
 
 %%%%% EXPERIMENTAL  %% TA-100901
 
-isfirstcorr2(Time0,EndDep,Orig,Dest,Day,DaySeqNo,DepList,StartDep,Mid) :- 
-    
+isfirstcorr2(Time0,EndDep,Orig,Dest,Day,DaySeqNo,DepList,StartDep,Mid) :-
+
 %% check if mandatory connection is decided
-  
+
     ridof(EndDep, ENDRID),
     startstation(ENDRID,Orig2),
     ridtobusnr(ENDRID,Bus2),  %% ENRID will arrive at Rostengrenda
 
-    preferred_transfer(Bus1,Bus2,Orig1,Orig2,   _OffStation), 
+    preferred_transfer(Bus1,Bus2,Orig1,Orig2,   _OffStation),
 %%                     47   46   Klæbu Sandmoen CitySyd
     member(StartDep,DepList), %% last first
 
-    ridof(StartDep, STARID), 
+    ridof(StartDep, STARID),
     startstation(ENDRID,Orig1),
     ridtobus( STARID,Bus1), %% Find Rid that starts at KlæbuS
- 
+
     arrtimeof(StartDep,S0),  %%  <---- ARR
-    S0 =<  Time0,  % skip thru starts until  =< 
+    S0 =<  Time0,  % skip thru starts until  =<
     iscorr3(Orig,Dest,Day,DaySeqNo,StartDep,EndDep,Mid),
     %% right StartDep is found, iscorr3 will find transfer station (CS)
-    !. % 
+    !. %
 
 
 
@@ -2323,11 +2324,11 @@ bugdep2(depnode(TimeArr1,TimeDep1,DelayArr1,DelayDep1,BegTime1,Rid1,Bus1,SeqNo1,
 
 bongo.
 
-isfirstcorr2(Time0,EndDep,Orig,Dest,Day,DaySeqNo,DepList,StartDep,Mid) :- 
+isfirstcorr2(Time0,EndDep,Orig,Dest,Day,DaySeqNo,DepList,StartDep,Mid) :-
 
 %%%     bugdep1(EndDep,bus_5_269),
 
- 
+
     member(StartDep,DepList),
     arrtimeof(StartDep,S0),  %%  <---- ARR
     S0 =<  Time0,  % skip thru starts until <  %% =< %%
@@ -2340,14 +2341,14 @@ isfirstcorr2(Time0,EndDep,Orig,Dest,Day,DaySeqNo,DepList,StartDep,Mid) :-
 %% Extended to capture cutloop stations
 
 %% Tries  to  preset offstation ,  backtracks and succeeds otherwise
-                                                     
+
 find_preferred_transfer(TTP,Rid1,Rid2,OffStation):-
- 
+
      once1(try_preferred_transfer(TTP,Rid1,Rid2,OffStation))
-     
+
 %% %     nonvar(OffStation) %%%%% <---
 
-     ; 
+     ;
      true. %% Leave uninstanstiated
 
 %% NEW REGIME %% TA-100830
@@ -2356,18 +2357,18 @@ try_preferred_transfer(TTP,Rid1,Rid2,OffStation) :-
     ridtobusname(Rid1,Bus1),
     ridtobusname(Rid2,Bus2),
     preferred_transfer(Bus1,Bus2,Orig1,Orig2,OffStation), %% busdat.pl
- 
+
     startstation(TTP,Rid1,Orig1), %% Extra check
 
 %%    TTP:ex_departureday(Rid1,Trace1,_,_),    %%
 %%    TTP:ex_passes4(Trace1,_,Orig1,1,_,_),    %%
- 
+
     startstation(TTP,Rid2,Orig2).
 
 %%    TTP:ex_departureday(Rid2,Trace2,_,_),    %%
-%%    TTP:ex_passes4(Trace2,_,Orig2,1,_,_).    %% 
+%%    TTP:ex_passes4(Trace2,_,Orig2,1,_,_).    %%
 
- 
+
 startstation(TTP,Rid,Orig) :-
      TTP:ex_departureday(Rid,Trace,_,_),    %%
      TTP:ex_passes4(Trace,_,Orig,1,_,_).
@@ -2377,7 +2378,7 @@ startstation(Rid,Orig) :-
      TTP:ex_departureday(Rid,Trace,_,_),    %%
      TTP:ex_passes4(Trace,_,Orig,1,_,_).
 
-  
+
 
 
 
@@ -2386,8 +2387,8 @@ startstation(Rid,Orig) :-
 %% TA-110318
 trytransbuslist(_Bus1,_Bus2,_OffStation,_OnStation):-
     \+ value(trytransbuslist,true),
-    !.    
- 
+    !.
+
 trytransbuslist(Bus1,Bus2,OffStation,OnStation):- %% TA-110322
 
     htrans(OffStation,HoffStat),
@@ -2395,7 +2396,7 @@ trytransbuslist(Bus1,Bus2,OffStation,OnStation):- %% TA-110322
 
     transbuslist3(Bus1,Bus2,TBL),
     testmember(HoffStat,TBL),
-    testmember(HonStat,TBL), 
+    testmember(HonStat,TBL),
 
     progtrace(3,trytransbuslist(Bus1,Bus2,OffStation,OnStation)).
 
@@ -2404,20 +2405,20 @@ trytransbuslist(Bus1,Bus2,OffStation,OnStation):- %% TA-110322
  htrans(X,X).
 
 
- 
+
 %% Is there a correspondence between Orig and Dest ?
 
-iscorr3(_Orig,_Dest,_Day,_DaySeqNo,StartDep,EndDep,Mid):- 
+iscorr3(_Orig,_Dest,_Day,_DaySeqNo,StartDep,EndDep,Mid):-
 
     StartDep = depnode(_,_,_,_,_,Rid,_,SeqNo1,_),  %% berg_studentby  seq 9
     EndDep =   depnode(_,_,_,_,_,Rid,_,SeqNo2,_),    %% lerchendal_gård seq 8
- 
+
     SeqNo2 > SeqNo1, %% maybe same time but different seq
 
     % You have despite expectations found a (late) direct transfer
     !,
     Mid = [0,nil,9999,nil].  %% Make a dummy transfer
- 
+
 
 %% Orig -> OffStation -> OnStation  -> Dest
 %  SeqNo1 -> SeqOFF     ->  SeqON     ->  SeqNo2
@@ -2429,21 +2430,21 @@ iscorr3(Orig,Dest,_Day,_DaySeqNo,StartDep,EndDep,Mid):- %% TA-110325
 
 %%%%     bugdep2( StartDep,  EndDep, bus_52_111, bus_5_269),
 
- \+ toolongtraveltime(OrigDepTime,DestArrTime), 
+ \+ toolongtraveltime(OrigDepTime,DestArrTime),
 
     Mid = [OffTime,OffStation,OnTime,OnStation],
     !,
     veh_mod(TTP),
 
-    find_preferred_transfer(TTP,Rid1,Rid2,OffStation), %% preset offstation 
+    find_preferred_transfer(TTP,Rid1,Rid2,OffStation), %% preset offstation
 
 % - 1. leg %% day is already checked
 
     passtimeMOD0(TTP,Rid1,_,Orig,      SeqNo1,_,      _), % vestlia
     passtimeMOD0(TTP,Rid1,_,OffStation,SeqOFF,OffTime,_), % M3
- 
+
     SeqOFF > SeqNo1,
- 
+
     corresponds(OffStation,OnStation),                              % M3 -> D3
 
 % - 2. leg
@@ -2453,41 +2454,41 @@ iscorr3(Orig,Dest,_Day,_DaySeqNo,StartDep,EndDep,Mid):- %% TA-110325
     SeqON < SeqNo2,
 
     compute_delay_margin(Bus1,Bus2,OffStation,OnStation,Marg),
- 
+
     addtotime(OffTime,Marg,OffTime5), %% 5 minutes (busdat1.pl)
 
     OffTime5 =< OnTime,
 
     passtimeMOD0(TTP,Rid2,_,Dest,SeqNo2,OffTimeX,_),        % Moholt
-   
+
     OffTimeX =< DestArrTime, %% = ?  nec ?
- 
-    \+ diedwaiting(OffTime,OnTime). 
+
+    \+ diedwaiting(OffTime,OnTime).
 
 
 
 passeq(RID,STATNO,Station,Seq,DelArr,DelDep):-   %% Pass with seq. no.
-    veh_mod(TTP),  
+    veh_mod(TTP),
 
-    xdepartureMOD(TTP,RID,Trace,_BegTime,_),  
- 
+    xdepartureMOD(TTP,RID,Trace,_BegTime,_),
+
     xpasses5( TTP,RID, Trace,STATNO,Station,Seq,DelArr,DelDep).
 
 passeqMOD(TTP,RID,STATNO,Station,Seq,DelArr,DelDep):-   %% Pass with seq. no.
- 
-     xdepartureMOD(TTP,RID,Trace,_BegTime,_), 
 
-     xpasses5(TTP,RID,Trace,STATNO,Station,Seq,DelArr,DelDep). 
+     xdepartureMOD(TTP,RID,Trace,_BegTime,_),
+
+     xpasses5(TTP,RID,Trace,STATNO,Station,Seq,DelArr,DelDep).
 
 
 
-passtimeMOD(TTP,Rid,STATNO,Station,Seq,ArrTime,DepTime,DaySeqNo):- 
+passtimeMOD(TTP,Rid,STATNO,Station,Seq,ArrTime,DepTime,DaySeqNo):-
 
-    xdepartureMOD(TTP,Rid,Trace,BegTime,Kay), 
+    xdepartureMOD(TTP,Rid,Trace,BegTime,Kay),
 
-    mod_day_in_set(TTP,DaySeqNo,Kay), 
-    xpasses5(TTP,Rid, Trace,STATNO,Station,Seq,DelArr,DelDep), 
-    \+ nostation(Station), %% Ad Hoc for abandoned stations 
+    mod_day_in_set(TTP,DaySeqNo,Kay),
+    xpasses5(TTP,Rid, Trace,STATNO,Station,Seq,DelArr,DelDep),
+    \+ nostation(Station), %% Ad Hoc for abandoned stations
     addtotime(BegTime,DelArr,ArrTime),
     addtotime(BegTime,DelDep,DepTime).
 
@@ -2495,29 +2496,29 @@ passtimeMOD(TTP,Rid,STATNO,Station,Seq,ArrTime,DepTime,DaySeqNo):-
 %% Day has already been is checked %% TA-110325
 
 passtimeMOD0(TTP,Rid,STATNO,Station,Seq,ArrTime,DepTime):-
-    xdepartureMOD(TTP,Rid,Trace,BegTime,_Kay), 
-    xpasses5(TTP,Rid, Trace,STATNO,Station,Seq,DelArr,DelDep), 
-    \+ nostation(Station), %% Ad Hoc for abandoned stations 
+    xdepartureMOD(TTP,Rid,Trace,BegTime,_Kay),
+    xpasses5(TTP,Rid, Trace,STATNO,Station,Seq,DelArr,DelDep),
+    \+ nostation(Station), %% Ad Hoc for abandoned stations
     addtotime(BegTime,DelArr,ArrTime),
     addtotime(BegTime,DelDep,DepTime).
-   
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-withinslack(Time,Time0):-  
+withinslack(Time,Time0):-
     addtotime(Time0,2,Time2),
     Time >= Time2,
-    maxarrivalslack(DieTime), 
-    addtotime(Time0,DieTime,DiedWaiting), 
+    maxarrivalslack(DieTime),
+    addtotime(Time0,DieTime,DiedWaiting),
     Time < DiedWaiting.
-  
-diedwaiting(OffTime,OnTime):- 
-    maxarrivalslack(DieTime), 
-    addtotime(OffTime,DieTime,DiedWaiting), 
-    OnTime > DiedWaiting . 
 
-toolongtraveltime(Time1,Time2):- 
+diedwaiting(OffTime,OnTime):-
+    maxarrivalslack(DieTime),
+    addtotime(OffTime,DieTime,DiedWaiting),
+    OnTime > DiedWaiting .
+
+toolongtraveltime(Time1,Time2):-
     maxtraveltime(N0),       %% eg 90
     addtotime(Time1,N0,Time),
     Time2 >= Time.
@@ -2527,8 +2528,8 @@ toolongtraveltime(Time1,Time2):-
 % Penger
 
 
-ticketprice2(BusType,List):- 
-    busfare2(BusType,List).    %% Busdat 
+ticketprice2(BusType,List):-
+    busfare2(BusType,List).    %% Busdat
 
 
 
@@ -2547,12 +2548,12 @@ ticketprice2(BusType,List):-
 
 today(Dag) :-
 	 datetime(_,_,Daynr,_,_,_),
-	 xlastday(Lastdaynr,Lastday), 
-	 (Lastdaynr \== Daynr -> 
-          findday(Daynr,Dag1) 
+	 xlastday(Lastdaynr,Lastday),
+	 (Lastdaynr \== Daynr ->
+          findday(Daynr,Dag1)
         ; Lastday=Dag1),
 	 !,
-    Dag=Dag1. %% may act as  a test 
+    Dag=Dag1. %% may act as  a test
 
 
 findday(Daynr,Dag) :-
@@ -2560,7 +2561,7 @@ findday(Daynr,Dag) :-
 
     lastdaynr := Daynr,
     lastday  := Dag.
- 
+
 
 xlastday(Lastdaynr,Lastday):-
     value(lastdaynr,Lastdaynr),
@@ -2568,11 +2569,11 @@ xlastday(Lastdaynr,Lastday):-
     !.
 
 xlastday(Lastdaynr,Lastday):- %% if missing
-    Lastdaynr = -1, 
+    Lastdaynr = -1,
     Lastday=noday.
-     
 
- 
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2587,19 +2588,19 @@ timenow(Tid) :-  % Tiden akkurat nå
 	 Tid is Hour*100+Min.
 
 
-timenow2(Delay,Tid1):- %% if negativ tid, tid=0 
+timenow2(Delay,Tid1):- %% if negativ tid, tid=0
     timenow(Tid),
     addtotime(Tid,Delay,Tid1).
 
 
-%%  Speeded up 
+%%  Speeded up
 
 addtotime(_Time,Add,ResultTime) :- %% regpas convention
     Add = 999,        %% minutes
     !,
     ResultTime=9999. %% time
 
-addtotime(Time,Add,ResultTime) :- 
+addtotime(Time,Add,ResultTime) :-
      H is Time//100,
      M is Time - H*100,
      MA is M + Add,
@@ -2607,8 +2608,8 @@ addtotime(Time,Add,ResultTime) :-
      AMin is MA -AHours*60,
      RTime is (H+AHours)*100 + AMin,
    ( RTime < 0 -> %% dont allow negative time
-          ResultTime is 0; 
-          ResultTime is RTime). 
+          ResultTime is 0;
+          ResultTime is RTime).
 
 
 subfromtime(Time,Add,ResultTime) :-
@@ -2629,14 +2630,14 @@ timetomin(Time,Min) :-
 	Small is Time-(Big*100),
 	Min is Big*60+Small.
 
-mintotime(Min,Time) :- 
+mintotime(Min,Time) :-
 	Big is (Min//60)*100,
 	Small is Min mod 60,
 	Time is Big+Small.
 
 % Fornuftig tolkning av tidspunktangivelser
 
-inttime(Time,MinTime) :- 
+inttime(Time,MinTime) :-
 	 Time<25,                % It is an hour
 	 MinTime is Time*100.
 
@@ -2647,9 +2648,9 @@ inttime(Time,Time) :-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 statorplace(X) :- station(X) ; X isa neighbourhood.
-busorfree(X) :- unbound(X) ; 
-                bus(X) ; 
-                internalkonst(X) ; 
+busorfree(X) :- unbound(X) ;
+                bus(X) ;
+                internalkonst(X) ;
                 listofbuses(X).
 
 
@@ -2668,41 +2669,41 @@ listofbuses(A) :-
 notification(_,_). %% Dummy
 
 atdate2(_,Date):- %% ad hoc %% TA-090618
-     
-    set_actualdate(Date), %% 
 
-    decide_period(Date,_). %%%%%% NEW, always executed 
- 
+    set_actualdate(Date), %%
 
-atdate(Date):- 
-     
-    set_actualdate(Date), %% 
+    decide_period(Date,_). %%%%%% NEW, always executed
 
-    decide_period(Date,_). %%%%%% NEW, always executed 
-                                    
+
+atdate(Date):-
+
+    set_actualdate(Date), %%
+
+    decide_period(Date,_). %%%%%% NEW, always executed
+
 
 set_actualdate(Date):-
      actualdate := Date.
 
 
- 
 
-passevent(Deps,_,_,_,_,_) :- Deps\==[]. %%  ==> Message   NO PASSES 
+
+passevent(Deps,_,_,_,_,_) :- Deps\==[]. %%  ==> Message   NO PASSES
 atday(_).
 
 timeis(_).
 dateis(_,_,_,_).
 message(_).
-replyq(_). 
-%  reply(_). 
+replyq(_).
+%  reply(_).
 takestime(_,_,_).
 passesstations(_,_,_,_).
-% busespass(_,_,_,_). 
+% busespass(_,_,_,_).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Hjelpepredikat
 
-unbound(X) :- var(X),!. 
+unbound(X) :- var(X),!.
 unbound(free(_)):-!.
 unbound(X) :- internalkonst(X).
 bound(X) :- \+ unbound(X).
@@ -2714,7 +2715,7 @@ members(N,[A|RA],[A|RB]) :-
 	 M is N-1,
 	 members(M,RA,RB).
 
-members(N,[],[]) :- 
+members(N,[],[]) :-
 	 N>0,
     !.
 
@@ -2727,19 +2728,19 @@ internalkonst(sk(_)).
 
 ensure_removed(X,[X|RA],RB):- !, %% used by busanshp (only)
     ensure_removed(X,RA,RB).
-ensure_removed(X,[A|RA],[A|RB]) :- 
+ensure_removed(X,[A|RA],[A|RB]) :-
     ensure_removed(X,RA,RB).
 ensure_removed(_,[],[]).
 
 
 islist(X):-nonvar(X),X=[_|_].
 
-%% occurs_before(Z,X1,X2)  X1 occurs before X2 in Z 
+%% occurs_before(Z,X1,X2)  X1 occurs before X2 in Z
 
 occurs_before([X1|Z],X1,X2):-
     !,
     member(X2,Z).
-  
+
 occurs_before([_|Z],X1,X2):-
     occurs_before(Z,X1,X2).
 
@@ -2749,15 +2750,15 @@ occurs_before([_|Z],X1,X2):-
 %% ridtobusnr(RID,BusNr).   %% RID is known, gets BusNr and repaired BusName
 
 ridtobusnr(RID,BusNr):-
-    xroute(RID,BusNr,_), 
+    xroute(RID,BusNr,_),
     !.
 
-%% ridtobusname(RID,BusName).   %% RID is known, gets busname 
+%% ridtobusname(RID,BusName).   %% RID is known, gets busname
 
 
 ridtobusname(RID,BusName):-
-     xroute(RID,_BusNr,BusN),  
-     BusName=BusN,  
+     xroute(RID,_BusNr,BusN),
+     BusName=BusN,
      !.
 
 
@@ -2767,21 +2768,21 @@ ridtobusname(RID,BusName):-
 
 
 bustorid(Bus,Rid) :-
-     xroute(Rid,_,Bus). 
+     xroute(Rid,_,Bus).
 
 
 
 %% bustorid3
 
-bustorid(Bus,DaySeqNo,Rid) :- 
+bustorid(Bus,DaySeqNo,Rid) :-
     veh_mod(TTP),
-    xroute(Rid,_,Bus), 
+    xroute(Rid,_,Bus),
 	 TTP:ex_departureday(Rid,_,_,Kay), %% TA-090812
     mod_day_in_set(TTP,DaySeqNo,Kay).
 
 
 %%%%%%%%%%%%%%% NEVER PASS TEST %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% neverpases   neverarrives neverdeparts        
+% neverpases   neverarrives neverdeparts
 
 % statbus/busstat are pertinent to the current module of the creation date !
 
@@ -2791,114 +2792,114 @@ neverpasses(Bus,_Place):- %% Bus is free => neverpasses fails
     !,
     fail.
 
-neverpasses(Bus,Place):- 
-    atomic(Bus),  
-    test(vehicletype(Bus,_)),     
+neverpasses(Bus,Place):-
+    atomic(Bus),
+    test(vehicletype(Bus,_)),
     \+ sometimepasses(Bus,Place). %% cuts unnec
 
 
-sometimepasses(Bus,Sentrum):- 
+sometimepasses(Bus,Sentrum):-
     atomic(Bus),
     samefplace(Sentrum,hovedterminalen),
-    corresp(X,hovedterminalen), 
-    route(Rid,Bus,_),     
-    passeq(Rid,_,X,_,_,_),  
+    corresp(X,hovedterminalen),
+    route(Rid,Bus,_),
+    passeq(Rid,_,X,_,_,_),
     !.
 
-sometimepasses(Bus,Station):-  
+sometimepasses(Bus,Station):-
     atomic(Bus),
-    route(Rid,Bus,_),     
-    passeq(Rid,_,Station,_,_,_),  
+    route(Rid,Bus,_),
+    passeq(Rid,_,Station,_,_,_),
     !.
 
 
-sometimepasses(Bus,Place):- 
+sometimepasses(Bus,Place):-
     atomic(Bus),
     atomic(Place),
     isat2(Station,Place),
-    route(Rid,Bus,_),     
-    passeq(Rid,_,Station,_,_,_),  
+    route(Rid,Bus,_),
+    passeq(Rid,_,Station,_,_,_),
     !.
 
 
 %&&&
-        
+
 neverarrives(Bus,_Place):- %% Bus is free => neverpasses fails
     unbound(Bus),
     !,
     fail.
 
-neverarrives(Bus,Place):-  
-    atomic(Bus),  
-    test(vehicletype(Bus,_)),     
+neverarrives(Bus,Place):-
+    atomic(Bus),
+    test(vehicletype(Bus,_)),
     \+ sometimearrives(Bus,Place). %% cuts unnec
 
 
-sometimearrives(Bus,Sentrum):- 
+sometimearrives(Bus,Sentrum):-
     atomic(Bus),
     samefplace(Sentrum,hovedterminalen),
-    corresp(X,hovedterminalen), 
-    route(Rid,Bus,_),     
-    passeq(Rid,_,X,Seq,_,_),  
+    corresp(X,hovedterminalen),
+    route(Rid,Bus,_),
+    passeq(Rid,_,X,Seq,_,_),
     Seq > 1, %% NB Seq=1 only means only depart
     !.
 
-sometimearrives(Bus,Station):-  
+sometimearrives(Bus,Station):-
     atomic(Bus),
-    route(Rid,Bus,_),     
-    passeq(Rid,_,Station,Seq,_,_),  
+    route(Rid,Bus,_),
+    passeq(Rid,_,Station,Seq,_,_),
     Seq > 1, %% NB Seq=1  means only depart
     !.
 
 
-sometimearrives(Bus,Place):- 
+sometimearrives(Bus,Place):-
     atomic(Bus),
     atomic(Place),
     isat2(Station,Place),
-    route(Rid,Bus,_),     
-    passeq(Rid,_,Station,Seq,_,_),  
+    route(Rid,Bus,_),
+    passeq(Rid,_,Station,Seq,_,_),
     Seq > 1, %% NB Seq=1 only means only depart
     !.
 
 %&&&
 
-        
-neverdeparts(Bus,_Place):- %% Bus is free => neverpasses fails 
+
+neverdeparts(Bus,_Place):- %% Bus is free => neverpasses fails
     unbound(Bus),
     !,
     fail.
 
-neverdeparts(Bus,Place):- 
-    atomic(Bus),  
-    test(vehicletype(Bus,_)),     
+neverdeparts(Bus,Place):-
+    atomic(Bus),
+    test(vehicletype(Bus,_)),
     \+ sometimedeparts(Bus,Place). %% cuts unnec
 
 
-sometimedeparts(Bus,Sentrum):- 
+sometimedeparts(Bus,Sentrum):-
     atomic(Bus),
     samefplace(Sentrum,hovedterminalen),
-    corresp(X,hovedterminalen), 
-    route(Rid,Bus,_),     
-    passeq(Rid,_,X,_Seq,_,_), 
+    corresp(X,hovedterminalen),
+    route(Rid,Bus,_),
+    passeq(Rid,_,X,_Seq,_,_),
  %%%%%%%%%%%%%%%%%%%%%%%%%% TA-110107   Seq = 1, %% NB Seq=1 only means only depart
     !. %% not if cutloop in sentrum
 
-sometimedeparts(Bus,Station):-  
+sometimedeparts(Bus,Station):-
     atomic(Bus),
-    route(Rid,Bus,_),     
-    passeq(Rid,_,Station,_Seq,_,_),  
-  %%%%%%%%%%%%%%%%%%%%%%%%%% TA-110107    Seq = 1, %% NB Seq=1 only means only depart 
+    route(Rid,Bus,_),
+    passeq(Rid,_,Station,_Seq,_,_),
+  %%%%%%%%%%%%%%%%%%%%%%%%%% TA-110107    Seq = 1, %% NB Seq=1 only means only depart
     !. %% not if cutloop in sentrum
 
 
-sometimedeparts(Bus,Place):- 
+sometimedeparts(Bus,Place):-
     atomic(Bus),
     atomic(Place),
     isat2(Station,Place),
-    route(Rid,Bus,_),     
-    passeq(Rid,_,Station,_Seq,_,_),  
+    route(Rid,Bus,_),
+    passeq(Rid,_,Station,_Seq,_,_),
  %%%%%%%%%%%%%%%%%%%%%%%%%% TA-110107     Seq = 1, %% NB Seq=1 only means only depart
-    !.%% not if cutloop in sentrum  
+    !.%% not if cutloop in sentrum
 
 
 % &&&&&&&&&&&&&&&&&&&&&&&
@@ -2906,7 +2907,7 @@ sometimedeparts(Bus,Place):-
 
 
 
-% General test predicate  
+% General test predicate
 
 testanswer(X,Y):-
     call(X),
@@ -2926,7 +2927,7 @@ pass_rid([_,_,_,Rid,_],Rid).
 % BusNo passes Station1 and then Station2
 
 direct_connection(Station1,Station2,BusNo) :-
-    busstat(BusNo,L1), 
+    busstat(BusNo,L1),
     memrest(Station1,L1,Lrest),
     memrest(Station2,Lrest,_),
     !.
@@ -2948,14 +2949,14 @@ memrest(X,[_|Z1],Z2):-
 depset(_,_).
 
 
-askfor([], _, _) :- false. 
+askfor([], _, _) :- false.
 
 askfor(Frame, Slot, _) :-
        frame_getvalue_rec(Frame, Slot, _, _).
 
-%% askfor(_, _, _) :- false.  
+%% askfor(_, _, _) :- false.
 %% If we are to ask for something, no need to compute  %% the rest.
-                       
+
 
 askref(_, _) :- false.     %% If we need to clarify references, we don't have to compute.
 
@@ -2965,10 +2966,10 @@ nocontext.
 
 addcontext.
 relax(_).
-	
 
 
-%%% NEW TRANSFER LOGIC 
+
+%%% NEW TRANSFER LOGIC
 
 % Compute set of possible transfer stations between stations
 
@@ -2978,11 +2979,11 @@ transferXYZ(GN,CS,XS):-
              member(B2,B),transbuslist3(B1,B2,Z), member(X,Z)),
            XS).
 
-transbuslist3(B1,B2,Z):- 
+transbuslist3(B1,B2,Z):-
     B2 @< B1 -> transbuslist(B2,B1,Z);
                 transbuslist(B1,B2,Z). %% TA-110318
 
 
-frame_remember(_,_):-!. %% Pro forma 
+frame_remember(_,_):-!. %% Pro forma
 
 %%%% 2971 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
