@@ -83,7 +83,9 @@ route_period( tmn, r1630_101201, date(2011,12,01),    date(2011,12,31) ).
 route_period( tt, r1602_120517, date(2012,05,17),    date(2012,05,17) ).
 route_period( tt, r1601_120415, date(2012,04,15),    date(2012,06,24) ).
 %route_period( tt, r1602_120425, date(2012,04,25),    date(2012,06,24) ).       %Mangler alle linjer over 79
-route_period( tt, r1611_110627, date(2012,06,27),    date(2012,08,14) ).
+
+route_period( tt, r1604_120625, date(2012,06,25),    date(2012,08,14) ).
+%route_period( tt, r1611_110627, date(2012,06,27),   date(2012,08,14) ).
 route_period( tt, r1601_120101, date(2012,01,01),    date(2012,12,31) ).
 route_period( gb, r1630_111201, date(2011,12,01),    date(2012,12,31) ).
 
@@ -100,9 +102,9 @@ period_message( r1602_120401,
 ['AtB Routes for Easter 2012',
  'AtB Ruter påska 2012']).
 
-period_message( r1611_110627,
-['AtB Routes for summer 2011',
- 'AtB Ruter sommeren 2011']).
+period_message( r1604_120625,
+['AtB Routes for summer 2012',
+ 'AtB Sommerruter  2012']).
 
 period_message( r1601_120101,
 ['AtB Winter routes',
