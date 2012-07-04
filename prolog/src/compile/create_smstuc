@@ -1,1 +1,1 @@
-echo 'compile(compile_smstuc).' | sicstus
+echo "compile('compile/compile_smstuc')." | sicstus
