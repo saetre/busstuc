@@ -10,6 +10,7 @@
 :- ensure_loaded('declare'). %% RS-111213 General (semantic) Operators
 
 :-use_module(library(timeout)). 
+:-use_module(library(process)).
 % ?-prolog_flag(gc_trace,_,verbose).
 
 %% Main program
@@ -435,6 +436,7 @@ testgram:-
 
 
 writepid :-
+%sicstus4      process_id(Pid),
          pid(Pid),
          open('.serverpid',write,Port),
          write(Port,Pid),
