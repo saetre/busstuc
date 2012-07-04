@@ -9045,7 +9045,7 @@ foreign(majorstuen).
 foreign(malm). 
 foreign(malmefjorden). 
 foreign(malmøya). 
-foreign(malvik). 
+%foreign(malvik). %% RS-120702 Malvik is provided by AtB, and happens to be where Marius Wollamo lives.
 foreign(mandal). 
 %% foreign(manger).  %% mange ? %% TA-110125
 foreign(manglerud).
