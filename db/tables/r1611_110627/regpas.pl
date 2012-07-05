@@ -2205,7 +2205,7 @@ passes4(1993,16011511,tors_veg,14,9,9).
 passes4(1993,16011320,nardokrysset,15,10,10).
 passes4(1993,16011131,fiolsvingen,16,11,11).
 passes4(1993,16011102,dybdahls_veg,17,12,12).
-passes4(1993,16011263,lerchendal_gård,18,13,13).
+passes4(1993,16011263,lerkendal_gård,18,13,13).
 passes4(1993,16011264,lerkendal_stadion,19,14,14).
 passes4(1993,16011376,prof_brochs_gate,20,15,15).
 passes4(1993,16011112,einar_tambarskjelves_gate,21,16,16).
@@ -2248,7 +2248,7 @@ passes4(2040,16011511,tors_veg,10,7,7).
 passes4(2040,16011320,nardokrysset,11,8,8).
 passes4(2040,16011131,fiolsvingen,12,9,9).
 passes4(2040,16011102,dybdahls_veg,13,10,10).
-passes4(2040,16011263,lerchendal_gård,14,11,11).
+passes4(2040,16011263,lerkendal_gård,14,11,11).
 passes4(2040,16011264,lerkendal_stadion,15,12,12).
 passes4(2040,16011376,prof_brochs_gate,16,13,13).
 passes4(2040,16011112,einar_tambarskjelves_gate,17,14,14).
@@ -2293,7 +2293,7 @@ passes4(1950,16011511,tors_veg,10,7,7).
 passes4(1950,16011320,nardokrysset,11,8,8).
 passes4(1950,16011131,fiolsvingen,12,9,9).
 passes4(1950,16011102,dybdahls_veg,13,10,10).
-passes4(1950,16011263,lerchendal_gård,14,11,11).
+passes4(1950,16011263,lerkendal_gård,14,11,11).
 passes4(1950,16011264,lerkendal_stadion,15,12,12).
 passes4(1950,16011376,prof_brochs_gate,16,13,13).
 passes4(1950,16011112,einar_tambarskjelves_gate,17,14,14).
@@ -2351,7 +2351,7 @@ passes4(2262,16010476,studentersamfundet,25,32,32).
 passes4(2262,16010112,einar_tambarskjelves_gate,26,33,33).
 passes4(2262,16010376,prof_brochs_gate,27,34,34).
 passes4(2262,16010264,lerkendal_stadion,28,35,35).
-passes4(2262,16010263,lerchendal_gård,29,36,36).
+passes4(2262,16010263,lerkendal_gård,29,36,36).
 passes4(2262,16010102,dybdahls_veg,30,36,36).
 passes4(2262,16010131,fiolsvingen,31,37,37).
 passes4(2262,16010320,nardokrysset,32,38,38).
@@ -2370,7 +2370,7 @@ passes4(2344,16010476,studentersamfundet,3,4,4).
 passes4(2344,16010112,einar_tambarskjelves_gate,4,5,5).
 passes4(2344,16010376,prof_brochs_gate,5,6,6).
 passes4(2344,16010264,lerkendal_stadion,6,7,7).
-passes4(2344,16010263,lerchendal_gård,7,8,8).
+passes4(2344,16010263,lerkendal_gård,7,8,8).
 passes4(2344,16010102,dybdahls_veg,8,8,8).
 passes4(2344,16010131,fiolsvingen,9,9,9).
 passes4(2344,16010320,nardokrysset,10,10,10).
@@ -2411,7 +2411,7 @@ passes4(2085,16010476,studentersamfundet,25,32,32).
 passes4(2085,16010112,einar_tambarskjelves_gate,26,33,33).
 passes4(2085,16010376,prof_brochs_gate,27,34,34).
 passes4(2085,16010264,lerkendal_stadion,28,35,35).
-passes4(2085,16010263,lerchendal_gård,29,36,36).
+passes4(2085,16010263,lerkendal_gård,29,36,36).
 passes4(2085,16010102,dybdahls_veg,30,36,36).
 passes4(2085,16010131,fiolsvingen,31,37,37).
 passes4(2085,16010320,nardokrysset,32,38,38).
@@ -2452,7 +2452,7 @@ passes4(2169,16010476,studentersamfundet,25,32,32).
 passes4(2169,16010112,einar_tambarskjelves_gate,26,33,33).
 passes4(2169,16010376,prof_brochs_gate,27,34,34).
 passes4(2169,16010264,lerkendal_stadion,28,35,35).
-passes4(2169,16010263,lerchendal_gård,29,36,36).
+passes4(2169,16010263,lerkendal_gård,29,36,36).
 passes4(2169,16010102,dybdahls_veg,30,36,36).
 passes4(2169,16010131,fiolsvingen,31,37,37).
 passes4(2169,16010320,nardokrysset,32,38,38).
@@ -2499,7 +2499,7 @@ passes4(2126,16010476,studentersamfundet,27,32,32).
 passes4(2126,16010112,einar_tambarskjelves_gate,28,33,33).
 passes4(2126,16010376,prof_brochs_gate,29,34,34).
 passes4(2126,16010264,lerkendal_stadion,30,35,35).
-passes4(2126,16010263,lerchendal_gård,31,36,36).
+passes4(2126,16010263,lerkendal_gård,31,36,36).
 passes4(2126,16010102,dybdahls_veg,32,36,36).
 passes4(2126,16010131,fiolsvingen,33,37,37).
 passes4(2126,16010320,nardokrysset,34,38,38).
@@ -2540,7 +2540,7 @@ passes4(2214,16010476,studentersamfundet,25,32,32).
 passes4(2214,16010112,einar_tambarskjelves_gate,26,33,33).
 passes4(2214,16010376,prof_brochs_gate,27,34,34).
 passes4(2214,16010264,lerkendal_stadion,28,35,35).
-passes4(2214,16010263,lerchendal_gård,29,36,36).
+passes4(2214,16010263,lerkendal_gård,29,36,36).
 passes4(2214,16010102,dybdahls_veg,30,36,36).
 passes4(2214,16010131,fiolsvingen,31,37,37).
 passes4(2214,16010320,nardokrysset,32,38,38).
@@ -4608,7 +4608,7 @@ passes4(4436,16011541,valentinlystvegen,4,2,2).
 passes4(4436,16011567,østre_berg,5,3,3).
 passes4(4436,16011075,bugges_veg,6,4,4).
 passes4(4436,16011366,berg_studentby,7,5,5).
-passes4(4436,16011263,lerchendal_gård,8,5,5).
+passes4(4436,16011263,lerkendal_gård,8,5,5).
 passes4(4436,16011264,lerkendal_stadion,9,6,6).
 passes4(4436,16011376,prof_brochs_gate,10,7,7).
 passes4(4436,16011112,einar_tambarskjelves_gate,11,8,8).
@@ -4656,7 +4656,7 @@ passes4(4479,16011301,moholt_studentby,9,6,6).
 passes4(4479,16011567,østre_berg,10,7,7).
 passes4(4479,16011075,bugges_veg,11,8,8).
 passes4(4479,16011366,berg_studentby,12,9,9).
-passes4(4479,16011263,lerchendal_gård,13,9,9).
+passes4(4479,16011263,lerkendal_gård,13,9,9).
 passes4(4479,16011264,lerkendal_stadion,14,10,10).
 passes4(4479,16011376,prof_brochs_gate,15,11,11).
 passes4(4479,16011112,einar_tambarskjelves_gate,16,12,12).
@@ -5821,7 +5821,7 @@ passes4(5650,16010476,studentersamfundet,3,4,4).
 passes4(5650,16010112,einar_tambarskjelves_gate,4,5,5).
 passes4(5650,16010376,prof_brochs_gate,5,6,6).
 passes4(5650,16010264,lerkendal_stadion,6,7,7).
-passes4(5650,16010263,lerchendal_gård,7,8,8).
+passes4(5650,16010263,lerkendal_gård,7,8,8).
 passes4(5650,16010371,prestegårdsjordet,8,9,9).
 passes4(5650,16010054,berg_prestegård,9,10,10).
 passes4(5650,16010166,harald_bothners_veg,10,11,11).
@@ -5899,7 +5899,7 @@ passes4(5727,16011013,kalvskinnet,4,4,4).
 passes4(5727,16011014,hospitalkirka,5,4,4).
 passes4(5727,16010020,dronningens_gate_19,6,7,999).
 passes4(5750,16010264,lerkendal_stadion,1,999,0).
-passes4(5750,16010263,lerchendal_gård,2,1,1).
+passes4(5750,16010263,lerkendal_gård,2,1,1).
 passes4(5750,16010366,berg_studentby,3,1,1).
 passes4(5750,16010567,østre_berg,4,2,2).
 passes4(5750,16010301,moholt_studentby,5,3,3).
@@ -5916,7 +5916,7 @@ passes4(5733,16010476,studentersamfundet,3,4,4).
 passes4(5733,16010112,einar_tambarskjelves_gate,4,5,5).
 passes4(5733,16010376,prof_brochs_gate,5,6,6).
 passes4(5733,16010264,lerkendal_stadion,6,7,7).
-passes4(5733,16010263,lerchendal_gård,7,8,8).
+passes4(5733,16010263,lerkendal_gård,7,8,8).
 passes4(5733,16010366,berg_studentby,8,8,8).
 passes4(5733,16010567,østre_berg,9,9,9).
 passes4(5733,16010301,moholt_studentby,10,10,10).
@@ -7336,7 +7336,7 @@ passes4(7159,16011511,tors_veg,37,31,31).
 passes4(7159,16011320,nardokrysset,38,32,32).
 passes4(7159,16011131,fiolsvingen,39,33,33).
 passes4(7159,16011102,dybdahls_veg,40,34,34).
-passes4(7159,16011263,lerchendal_gård,41,36,36).
+passes4(7159,16011263,lerkendal_gård,41,36,36).
 passes4(7159,16011264,lerkendal_stadion,42,37,37).
 passes4(7159,16011376,prof_brochs_gate,43,38,38).
 passes4(7159,16011112,einar_tambarskjelves_gate,44,39,39).
@@ -7354,7 +7354,7 @@ passes4(7212,16011242,st_olavs_hospital,2,0,0).
 passes4(7212,16010112,einar_tambarskjelves_gate,3,2,2).
 passes4(7212,16010376,prof_brochs_gate,4,3,3).
 passes4(7212,16010264,lerkendal_stadion,5,4,4).
-passes4(7212,16010263,lerchendal_gård,6,5,5).
+passes4(7212,16010263,lerkendal_gård,6,5,5).
 passes4(7212,16010102,dybdahls_veg,7,5,5).
 passes4(7212,16010131,fiolsvingen,8,6,6).
 passes4(7212,16010320,nardokrysset,9,7,7).
@@ -8290,7 +8290,7 @@ passes4(8145,16010476,studentersamfundet,5,6,6).
 passes4(8145,16010112,einar_tambarskjelves_gate,6,7,7).
 passes4(8145,16010376,prof_brochs_gate,7,8,8).
 passes4(8145,16010264,lerkendal_stadion,8,9,9).
-passes4(8145,16010263,lerchendal_gård,9,10,10).
+passes4(8145,16010263,lerkendal_gård,9,10,10).
 passes4(8145,16010102,dybdahls_veg,10,10,10).
 passes4(8145,16010131,fiolsvingen,11,11,11).
 passes4(8145,16010320,nardokrysset,12,12,12).

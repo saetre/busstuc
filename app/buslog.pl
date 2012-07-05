@@ -596,7 +596,7 @@ occurs_afterwards(depnode(_A1,D1,_,_,BegTime,Rid,Bus,SeqNo1,Stat1),EndDeps):-
 
 %%%%%%%%%%%%%%%     Y2 > 0, %% then never after (Bus 36 M4 -> Jakobsli -> M4) %% TA-110323
 
-     Stat1 \== Stat2, %% berg_studentby -> lerchendal_gård * //same time,reverse direction
+     Stat1 \== Stat2, %% berg_studentby -> lerkendal_gård * //same time,reverse direction
 
      SeqNo2 > SeqNo1,
 
@@ -2411,7 +2411,7 @@ trytransbuslist(Bus1,Bus2,OffStation,OnStation):- %% TA-110322
 iscorr3(_Orig,_Dest,_Day,_DaySeqNo,StartDep,EndDep,Mid):-
 
     StartDep = depnode(_,_,_,_,_,Rid,_,SeqNo1,_),  %% berg_studentby  seq 9
-    EndDep =   depnode(_,_,_,_,_,Rid,_,SeqNo2,_),    %% lerchendal_gård seq 8
+    EndDep =   depnode(_,_,_,_,_,Rid,_,SeqNo2,_),    %% lerkendal_gård seq 8
 
     SeqNo2 > SeqNo1, %% maybe same time but different seq
 

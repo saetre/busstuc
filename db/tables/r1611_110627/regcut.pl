@@ -2394,7 +2394,7 @@ ex_passes4(56,16011511,tors_veg,10,7,7).
 ex_passes4(56,16011320,nardokrysset,11,8,8).
 ex_passes4(56,16011131,fiolsvingen,12,9,9).
 ex_passes4(56,16011102,dybdahls_veg,13,10,10).
-ex_passes4(56,16011263,lerchendal_gård,14,11,11).
+ex_passes4(56,16011263,lerkendal_gård,14,11,11).
 ex_passes4(56,16011264,lerkendal_stadion,15,12,12).
 ex_passes4(56,16011376,prof_brochs_gate,16,13,13).
 ex_passes4(56,16011112,einar_tambarskjelves_gate,17,14,14).
@@ -2441,7 +2441,7 @@ ex_passes4(57,16011511,tors_veg,14,9,9).
 ex_passes4(57,16011320,nardokrysset,15,10,10).
 ex_passes4(57,16011131,fiolsvingen,16,11,11).
 ex_passes4(57,16011102,dybdahls_veg,17,12,12).
-ex_passes4(57,16011263,lerchendal_gård,18,13,13).
+ex_passes4(57,16011263,lerkendal_gård,18,13,13).
 ex_passes4(57,16011264,lerkendal_stadion,19,14,14).
 ex_passes4(57,16011376,prof_brochs_gate,20,15,15).
 ex_passes4(57,16011112,einar_tambarskjelves_gate,21,16,16).
@@ -2484,7 +2484,7 @@ ex_passes4(58,16011511,tors_veg,10,7,7).
 ex_passes4(58,16011320,nardokrysset,11,8,8).
 ex_passes4(58,16011131,fiolsvingen,12,9,9).
 ex_passes4(58,16011102,dybdahls_veg,13,10,10).
-ex_passes4(58,16011263,lerchendal_gård,14,11,11).
+ex_passes4(58,16011263,lerkendal_gård,14,11,11).
 ex_passes4(58,16011264,lerkendal_stadion,15,12,12).
 ex_passes4(58,16011376,prof_brochs_gate,16,13,13).
 ex_passes4(58,16011112,einar_tambarskjelves_gate,17,14,14).
@@ -2544,7 +2544,7 @@ ex_passes4(59,16010476,studentersamfundet,25,32,32).
 ex_passes4(59,16010112,einar_tambarskjelves_gate,26,33,33).
 ex_passes4(59,16010376,prof_brochs_gate,27,34,34).
 ex_passes4(59,16010264,lerkendal_stadion,28,35,35).
-ex_passes4(59,16010263,lerchendal_gård,29,36,36).
+ex_passes4(59,16010263,lerkendal_gård,29,36,36).
 ex_passes4(59,16010102,dybdahls_veg,30,36,36).
 ex_passes4(59,16010131,fiolsvingen,31,37,37).
 ex_passes4(59,16010320,nardokrysset,32,38,38).
@@ -2587,7 +2587,7 @@ ex_passes4(60,16010476,studentersamfundet,27,32,32).
 ex_passes4(60,16010112,einar_tambarskjelves_gate,28,33,33).
 ex_passes4(60,16010376,prof_brochs_gate,29,34,34).
 ex_passes4(60,16010264,lerkendal_stadion,30,35,35).
-ex_passes4(60,16010263,lerchendal_gård,31,36,36).
+ex_passes4(60,16010263,lerkendal_gård,31,36,36).
 ex_passes4(60,16010102,dybdahls_veg,32,36,36).
 ex_passes4(60,16010131,fiolsvingen,33,37,37).
 ex_passes4(60,16010320,nardokrysset,34,38,38).
@@ -2628,7 +2628,7 @@ ex_passes4(61,16010476,studentersamfundet,25,32,32).
 ex_passes4(61,16010112,einar_tambarskjelves_gate,26,33,33).
 ex_passes4(61,16010376,prof_brochs_gate,27,34,34).
 ex_passes4(61,16010264,lerkendal_stadion,28,35,35).
-ex_passes4(61,16010263,lerchendal_gård,29,36,36).
+ex_passes4(61,16010263,lerkendal_gård,29,36,36).
 ex_passes4(61,16010102,dybdahls_veg,30,36,36).
 ex_passes4(61,16010131,fiolsvingen,31,37,37).
 ex_passes4(61,16010320,nardokrysset,32,38,38).
@@ -2673,7 +2673,7 @@ ex_passes4(62,16010476,studentersamfundet,25,32,32).
 ex_passes4(62,16010112,einar_tambarskjelves_gate,26,33,33).
 ex_passes4(62,16010376,prof_brochs_gate,27,34,34).
 ex_passes4(62,16010264,lerkendal_stadion,28,35,35).
-ex_passes4(62,16010263,lerchendal_gård,29,36,36).
+ex_passes4(62,16010263,lerkendal_gård,29,36,36).
 ex_passes4(62,16010102,dybdahls_veg,30,36,36).
 ex_passes4(62,16010131,fiolsvingen,31,37,37).
 ex_passes4(62,16010320,nardokrysset,32,38,38).
@@ -2721,7 +2721,7 @@ ex_passes4(63,16010476,studentersamfundet,25,32,32).
 ex_passes4(63,16010112,einar_tambarskjelves_gate,26,33,33).
 ex_passes4(63,16010376,prof_brochs_gate,27,34,34).
 ex_passes4(63,16010264,lerkendal_stadion,28,35,35).
-ex_passes4(63,16010263,lerchendal_gård,29,36,36).
+ex_passes4(63,16010263,lerkendal_gård,29,36,36).
 ex_passes4(63,16010102,dybdahls_veg,30,36,36).
 ex_passes4(63,16010131,fiolsvingen,31,37,37).
 ex_passes4(63,16010320,nardokrysset,32,38,38).
@@ -2740,7 +2740,7 @@ ex_passes4(64,16010476,studentersamfundet,3,4,4).
 ex_passes4(64,16010112,einar_tambarskjelves_gate,4,5,5).
 ex_passes4(64,16010376,prof_brochs_gate,5,6,6).
 ex_passes4(64,16010264,lerkendal_stadion,6,7,7).
-ex_passes4(64,16010263,lerchendal_gård,7,8,8).
+ex_passes4(64,16010263,lerkendal_gård,7,8,8).
 ex_passes4(64,16010102,dybdahls_veg,8,8,8).
 ex_passes4(64,16010131,fiolsvingen,9,9,9).
 ex_passes4(64,16010320,nardokrysset,10,10,10).
@@ -4800,7 +4800,7 @@ ex_passes4(113,16011541,valentinlystvegen,18,21,21).
 ex_passes4(113,16011567,østre_berg,19,22,22).
 ex_passes4(113,16011075,bugges_veg,20,23,23).
 ex_passes4(113,16011366,berg_studentby,21,24,24).
-ex_passes4(113,16011263,lerchendal_gård,22,24,24).
+ex_passes4(113,16011263,lerkendal_gård,22,24,24).
 ex_passes4(113,16011264,lerkendal_stadion,23,25,25).
 ex_passes4(113,16011376,prof_brochs_gate,24,26,26).
 ex_passes4(113,16011112,einar_tambarskjelves_gate,25,27,27).
@@ -4814,7 +4814,7 @@ ex_passes4(114,16011541,valentinlystvegen,4,2,2).
 ex_passes4(114,16011567,østre_berg,5,3,3).
 ex_passes4(114,16011075,bugges_veg,6,4,4).
 ex_passes4(114,16011366,berg_studentby,7,5,5).
-ex_passes4(114,16011263,lerchendal_gård,8,5,5).
+ex_passes4(114,16011263,lerkendal_gård,8,5,5).
 ex_passes4(114,16011264,lerkendal_stadion,9,6,6).
 ex_passes4(114,16011376,prof_brochs_gate,10,7,7).
 ex_passes4(114,16011112,einar_tambarskjelves_gate,11,8,8).
@@ -4862,7 +4862,7 @@ ex_passes4(116,16011301,moholt_studentby,9,6,6).
 ex_passes4(116,16011567,østre_berg,10,7,7).
 ex_passes4(116,16011075,bugges_veg,11,8,8).
 ex_passes4(116,16011366,berg_studentby,12,9,9).
-ex_passes4(116,16011263,lerchendal_gård,13,9,9).
+ex_passes4(116,16011263,lerkendal_gård,13,9,9).
 ex_passes4(116,16011264,lerkendal_stadion,14,10,10).
 ex_passes4(116,16011376,prof_brochs_gate,15,11,11).
 ex_passes4(116,16011112,einar_tambarskjelves_gate,16,12,12).
@@ -6027,7 +6027,7 @@ ex_passes4(159,16010476,studentersamfundet,3,4,4).
 ex_passes4(159,16010112,einar_tambarskjelves_gate,4,5,5).
 ex_passes4(159,16010376,prof_brochs_gate,5,6,6).
 ex_passes4(159,16010264,lerkendal_stadion,6,7,7).
-ex_passes4(159,16010263,lerchendal_gård,7,8,8).
+ex_passes4(159,16010263,lerkendal_gård,7,8,8).
 ex_passes4(159,16010371,prestegårdsjordet,8,9,9).
 ex_passes4(159,16010054,berg_prestegård,9,10,10).
 ex_passes4(159,16010166,harald_bothners_veg,10,11,11).
@@ -6059,7 +6059,7 @@ ex_passes4(160,16010476,studentersamfundet,3,4,4).
 ex_passes4(160,16010112,einar_tambarskjelves_gate,4,5,5).
 ex_passes4(160,16010376,prof_brochs_gate,5,6,6).
 ex_passes4(160,16010264,lerkendal_stadion,6,7,7).
-ex_passes4(160,16010263,lerchendal_gård,7,8,8).
+ex_passes4(160,16010263,lerkendal_gård,7,8,8).
 ex_passes4(160,16010371,prestegårdsjordet,8,9,9).
 ex_passes4(160,16010054,berg_prestegård,9,10,10).
 ex_passes4(160,16010166,harald_bothners_veg,10,11,11).
@@ -6200,7 +6200,7 @@ ex_passes4(167,16010476,studentersamfundet,3,4,4).
 ex_passes4(167,16010112,einar_tambarskjelves_gate,4,5,5).
 ex_passes4(167,16010376,prof_brochs_gate,5,6,6).
 ex_passes4(167,16010264,lerkendal_stadion,6,7,7).
-ex_passes4(167,16010263,lerchendal_gård,7,8,8).
+ex_passes4(167,16010263,lerkendal_gård,7,8,8).
 ex_passes4(167,16010366,berg_studentby,8,8,8).
 ex_passes4(167,16010567,østre_berg,9,9,9).
 ex_passes4(167,16010301,moholt_studentby,10,10,10).
@@ -6212,7 +6212,7 @@ ex_passes4(167,16010182,høiset,15,14,14).
 ex_passes4(167,16010533,ntnu_dragvoll,16,15,15).
 ex_passes4(167,16010486,stokkhaugen,17,18,18).
 ex_passes4(168,16010264,lerkendal_stadion,1,999,0).
-ex_passes4(168,16010263,lerchendal_gård,2,1,1).
+ex_passes4(168,16010263,lerkendal_gård,2,1,1).
 ex_passes4(168,16010366,berg_studentby,3,1,1).
 ex_passes4(168,16010567,østre_berg,4,2,2).
 ex_passes4(168,16010301,moholt_studentby,5,3,3).
@@ -7632,7 +7632,7 @@ ex_passes4(210,16011511,tors_veg,37,31,31).
 ex_passes4(210,16011320,nardokrysset,38,32,32).
 ex_passes4(210,16011131,fiolsvingen,39,33,33).
 ex_passes4(210,16011102,dybdahls_veg,40,34,34).
-ex_passes4(210,16011263,lerchendal_gård,41,36,36).
+ex_passes4(210,16011263,lerkendal_gård,41,36,36).
 ex_passes4(210,16011264,lerkendal_stadion,42,37,37).
 ex_passes4(210,16011376,prof_brochs_gate,43,38,38).
 ex_passes4(210,16011112,einar_tambarskjelves_gate,44,39,39).
@@ -7650,7 +7650,7 @@ ex_passes4(211,16011242,st_olavs_hospital,2,0,0).
 ex_passes4(211,16010112,einar_tambarskjelves_gate,3,2,2).
 ex_passes4(211,16010376,prof_brochs_gate,4,3,3).
 ex_passes4(211,16010264,lerkendal_stadion,5,4,4).
-ex_passes4(211,16010263,lerchendal_gård,6,5,5).
+ex_passes4(211,16010263,lerkendal_gård,6,5,5).
 ex_passes4(211,16010102,dybdahls_veg,7,5,5).
 ex_passes4(211,16010131,fiolsvingen,8,6,6).
 ex_passes4(211,16010320,nardokrysset,9,7,7).
@@ -8586,7 +8586,7 @@ ex_passes4(233,16010476,studentersamfundet,5,6,6).
 ex_passes4(233,16010112,einar_tambarskjelves_gate,6,7,7).
 ex_passes4(233,16010376,prof_brochs_gate,7,8,8).
 ex_passes4(233,16010264,lerkendal_stadion,8,9,9).
-ex_passes4(233,16010263,lerchendal_gård,9,10,10).
+ex_passes4(233,16010263,lerkendal_gård,9,10,10).
 ex_passes4(233,16010102,dybdahls_veg,10,10,10).
 ex_passes4(233,16010131,fiolsvingen,11,11,11).
 ex_passes4(233,16010320,nardokrysset,12,12,12).

@@ -735,9 +735,9 @@ occurs_afterwards(depnode(_A1,D1,_,_,BegTime,Rid,Stat1),EndDeps):-
 
      Stat1 \== Stat2,
 
-%                      % berg_studentby -> lerchendal_gård **     
+%                      % berg_studentby -> lerkendal_gård **     
 
-     D1 <  A2,   %% berg_studentby -> lerchendal_gård **   %% EXPERIMENT   D1 =<  A2,     
+     D1 <  A2,   %% berg_studentby -> lerkendal_gård **   %% EXPERIMENT   D1 =<  A2,     
                  %% here, Stat2 will be found after Stat1
      !.          %% because of ordering, in case same time (min)
 

@@ -190,7 +190,7 @@ maptrace( corr(depans(_,Rid1,_,Prinsen_kinosenter,_,Rid2,_,Gløshaugen_nord),
 xstation_trace(Rid,Gløshaugen_syd,Nardosenteret,LIST):-
     station_trace(Rid,Gløshaugen_syd,Nardosenteret,LIST),!.
 
-xstation_trace(_Rid,_Gløshaugen_syd,_Nardosenteret,[]). %% error berg_studentby-> lerchendal_gård
+xstation_trace(_Rid,_Gløshaugen_syd,_Nardosenteret,[]). %% error berg_studentby-> lerkendal_gård
 
 
 
