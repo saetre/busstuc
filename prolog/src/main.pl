@@ -218,7 +218,7 @@ webrun_tele :-
     dialog   := 0,  
 
 	 writepid, 
-    nofileerrors,
+    set_prolog_flag(fileerrors,off),
 
     repeat,
        world := real, 
@@ -230,7 +230,7 @@ webrun_tele :-
 
 webrun :-      
 	 writepid, 
-    nofileerrors,
+    set_prolog_flag(fileerrors,off),
     busflag:= true,    %%  Bustuc Application Program
 	 queryflag := true, %% Statements are implicit queries
     create_named_dates, %% TA-110615

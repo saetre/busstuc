@@ -211,7 +211,7 @@ webrun_tele :-
     dialog   := 0,  
 
 	 writepid, 
-    nofileerrors,
+    set_prolog_flag(fileerrors,off),
 	 %%% TA-060426 %% remember(lastday(-1,noday)), 
 
     repeat,
@@ -228,7 +228,7 @@ webrun_dialog :-  --> d_main.pl %% TA-050722
 
 webrun :-      
 	 writepid, 
-    nofileerrors,
+    set_prolog_flag(fileerrors,off),
 	 %%% TA-060426 %% remember(lastday(-1,noday)), 
     busflag:= true,    %%  Bustuc Application Program
 	 queryflag := true, %% Statements are implicit queries
