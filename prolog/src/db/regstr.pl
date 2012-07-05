@@ -3,6 +3,7 @@
 %% SYSTEM Busstuc
 %% CREATED TA-050102 Automatic
 %% REVISED TA-110825 Manually
+%% REVISED RS-120705 Manually
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -612,9 +613,9 @@ streetstat(høili_plass,'Høili plass',1,10,unknown).
 streetstat(høili_street,'Høilivegen',2,9,asbjørnsens_gate).
 streetstat(høili_street,'Høilivegen',10,25,kvilhaugen).
 streetstat(hølbekken,'Hølbekken',1,62,koieflata).
-streetstat(hørløcks_street,'Hørløcks vei',4,4,unknown).
-streetstat(hørløcks_street,'Hørløcks vei',64,68,churchills_veg).
+%%streetstat(hørløcks_street,'Hørløcks vei',4,4,unknown).       %% RS-120705
 streetstat(hørløcks_street,'Hørløcks vei',1,17,kongleveien).
+streetstat(hørløcks_street,'Hørløcks vei',64,68,churchills_veg).
 streetstat(hørløcks_street,'Hørløcks vei',29,90,jakobslivegen_nedre).
 streetstat(håkon_herdebreis_street,'Håkon Herdebreis veg',2,12,valentinlyst).
 streetstat(håkon_håkonsons_street,'Håkon Håkonsons gate',7,21,tyholttårnet).
@@ -707,18 +708,18 @@ streetstat(jon_raudes_street,'Jon Raudes gate',6,10,buran).
 streetstat(jon_sivertsens_street,'Jon Sivertsens veg',1,6,byåsen_skole).
 streetstat(jon_skogstads_street,'Jon Skogstads veg',1,19,korsen).
 streetstat(jonas_lies_street,'Jonas Lies gate',1,5,festningsgata).
-streetstat(jonsvanns_street,'Jonsvannsveien',105,105,moholt_studentby).
-streetstat(jonsvanns_street,'Jonsvannsveien',36,38,berg_prestegård).
-streetstat(jonsvanns_street,'Jonsvannsveien',78,85,østre_berg).
+streetstat(jonsvanns_street,'Jonsvannsveien',1,25,jonsvannsveien).
 streetstat(jonsvanns_street,'Jonsvannsveien',26,35,gløshaugen_syd).
-streetstat(jonsvanns_street,'Jonsvannsveien',333,343,stokkhaugen).
+streetstat(jonsvanns_street,'Jonsvannsveien',36,38,berg_prestegård).
+streetstat(jonsvanns_street,'Jonsvannsveien',39,55,harald_bothners_veg).
+streetstat(jonsvanns_street,'Jonsvannsveien',78,85,østre_berg).
 streetstat(jonsvanns_street,'Jonsvannsveien',87,99,'').
-streetstat(jonsvanns_street,'Jonsvannsveien',39,55,unknown).
 streetstat(jonsvanns_street,'Jonsvannsveien',56,77,østre_berg).
 streetstat(jonsvanns_street,'Jonsvannsveien',170,191,høiset).
-streetstat(jonsvanns_street,'Jonsvannsveien',1,25,jonsvannsveien).
+streetstat(jonsvanns_street,'Jonsvannsveien',105,105,moholt_studentby).
 streetstat(jonsvanns_street,'Jonsvannsveien',115,160,moholt).
 streetstat(jonsvanns_street,'Jonsvannsveien',189,243,ntnu_dragvoll).
+streetstat(jonsvanns_street,'Jonsvannsveien',333,343,stokkhaugen).
 streetstat(jonsvanns_street,'Jonsvannsveien',345,439,jakobsli).
 streetstat(jotun_street,'Jotunvegen',3,14,nardokrysset).
 streetstat(jupiter_street,'Jupitervegen',1,10,risvollan_senter).
@@ -789,8 +790,8 @@ streetstat(kolstadflata,'Kolstadflata',51,65,bjørndalsbrua).
 streetstat(kolstadflata,'Kolstadflata',7,31,saupstadsenteret).
 streetstat(kolstadtunet,'Kolstadtunet',1,11,casper_lundes_veg).
 streetstat(kolsåsen,'Kolsåsen',1,52,kolstadhaugen).
-streetstat(komet_street,'Kometvegen',3,3,unknown).
-streetstat(komet_street,'Kometvegen',7,7,unknown).
+%%streetstat(komet_street,'Kometvegen',3,3,unknown).    %% RS-120705
+%%streetstat(komet_street,'Kometvegen',7,7,unknown).
 streetstat(komet_street,'Kometvegen',2,15,rognbudalen).
 streetstat(komet_street,'Kometvegen',1,28,risvollveien).
 streetstat(kong_inges_street,'Kong Inges gate',2,8,harald_bothners_veg).
@@ -1000,7 +1001,7 @@ streetstat(midelfarts_street,'Midelfarts veg',1,30,munkvoll_gård).
 streetstat(midteggen,'Midteggen',1,29,midteggen).
 streetstat(midtre_tunhøgda,'Midtre Tunhøgda',1,9,tunvegen).
 streetstat(mikkel_mærks_street,'Mikkel Mærks vei',1,7,nyborg).
-streetstat(mikkel_street,'Mikkelvegen',1,1,unknown).
+%%streetstat(mikkel_street,'Mikkelvegen',1,1,unknown).  %% RS-120705
 streetstat(mikkel_street,'Mikkelvegen',2,4,mikkelvegen).
 streetstat(mikkel_street,'Mikkelvegen',5,21,paul_skolemesters_veg).
 streetstat(mjølner_street,'Mjølnervegen',2,8,tors_veg).
