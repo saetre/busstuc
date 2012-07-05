@@ -178,7 +178,7 @@ isat(kvt,city_syd).             %%
 
 isat(lerkendal_stadion,lerkendal). 
 isat(lerchendal_gård,lerkendal).   %% ?
-isat(lerchendal_gård,lerkendal).   %% ?
+isat(lerkendal_gård,lerkendal).   %% ?
 
 isat(loholtbakken,loholt). 
 isat(lohove,loholt). 
@@ -1236,7 +1236,7 @@ sameplace(leirgårdbru,leirbrua_gård).
 sameplace(lerchendalsgård,lerkendal_gård).
 sameplace(lerchendalskrysset,lerkendalskrysset). 
 %% sameplace(lerkendal,lerkendal_stadion).  %% NB lerk //unnec,creates dbl entry
-sameplace(lerkendalgård,lerchendal_gård).
+sameplace(lerkendalgård,lerkendal_gård).
 sameplace(lerkendalstadion,lerkendal_stadion). 
 sameplace(leutehagen,leuthenhaven). 
 sameplace(leutehaven,leuthenhaven). 
@@ -1940,7 +1940,7 @@ specname(leangen_alle,'Leangen allé').
 specname(leira_sk,'Leira skole').
 specname(leirfossveien,'Leirfossveien'). 
 specname(leirøya,'Leirøya'). 
-specname(lerchendal_gård,'Lerchendal gård'). 
+specname(lerkendal_gård,'Lerchendal gård'). 
 specname(lingit,'LingIT'). 
 specname(loholt_alle,'Loholt allé'). 
 specname(los_angeles,'Los Angeles').  %% for American queries
@@ -3219,7 +3219,7 @@ synplace(lekerdal,lerkendal).
 synplace(lekrdal,lerkendal). 
 synplace(lekredal,lerkendal). 
 synplace(lekredal,lerkendal). 
-synplace(lerchendal,lerchendal_gård).  %% NB lerch, ikke same/cmpl
+synplace(lerchendal,lerkendal_gård).  %% NB lerch, ikke same/cmpl
 synplace(lerkdal,lerkendal). 
 synplace(lerkedalstudentby,prestegårdsjordet). 
 synplace(lerkedel,lerkendal). 
@@ -6574,13 +6574,13 @@ cmpl(leirnua,gård,leirbrua_gård).
 cmpl(leiv,[erikson,senter],pirbadet). 
 cmpl(leiv,[erikson,senteret],pirbadet).
 
-cmpl(lerchendal,gaard,lerchendal_gård). 
+cmpl(lerchendal,gaard,lerkendal_gård). 
 cmpl(lerchendal,stadion,lerkendal_stadion). 
 cmpl(lerken,[dal,stadion],lerkendal_stadion). 
 cmpl(lerken,dal,lerkendal_stadion). 
-cmpl(lerkendal,gaard,lerchendal_gård). 
-cmpl(lerkendal,går,lerchendal_gård). 
-cmpl(lerkendal,gård,lerchendal_gård). 
+cmpl(lerkendal,gaard,lerkendal_gård). 
+cmpl(lerkendal,går,lerkendal_gård). 
+cmpl(lerkendal,gård,lerkendal_gård). 
 cmpl(lerkendal,st,lerkendal_stadion). 
 cmpl(lerkendal,stadium,lerkendal_stadion). 
 cmpl(lerkendal,stasjon,lerkendal_stadion). 

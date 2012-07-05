@@ -213,7 +213,7 @@ hpl(16010259,leirfossvegen,leirfossvegen,'Leirfossvegen').
 hpl(16010260,leira_skole,leira_skole,'Leira skole').
 hpl(16010261,leirbrua_gård,leirbrua_gård,'Leirbrua gård').
 hpl(16010262,leirelva,leirelva,'Leirelva').
-hpl(16010263,lerchendal_gård,lerchendal_gård,'Lerchendal gård').
+hpl(16010263,lerkendal_gård,lerkendal_gård,'Lerchendal gård').
 hpl(16010264,lerkendal_stadion,lerkendal_stadion,'Lerkendal stadion').
 hpl(16010265,gløshaugen_syd,gløshaugen_syd,'Gløshaugen Syd').
 hpl(16010267,lohove,lohove,'Lohove').
@@ -754,7 +754,7 @@ hpl(16011259,leirfossvegen,leirfossvegen,'Leirfossvegen').
 hpl(16011260,leira_skole,leira_skole,'Leira skole').
 hpl(16011261,leirbrua_gård,leirbrua_gård,'Leirbrua gård').
 hpl(16011262,leirelva,leirelva,'Leirelva').
-hpl(16011263,lerchendal_gård,lerchendal_gård,'Lerchendal gård').
+hpl(16011263,lerkendal_gård,lerkendal_gård,'Lerchendal gård').
 hpl(16011264,lerkendal_stadion,lerkendal_stadion,'Lerkendal stadion').
 hpl(16011265,gløshaugen_syd,gløshaugen_syd,'Gløshaugen Syd').
 hpl(16011267,lohove,lohove,'Lohove').

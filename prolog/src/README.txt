@@ -1,6 +1,9 @@
 
 Copied from ~toreamb/tele/buster
 
+See Wiki entries on
+https://www.ntnu.no/wiki/display/FUIROS/
+
 #HOW TO COMPILE AND RUN (Norwegian mode)
 [satre@furu ~/BUSSTUC/buster]$ ./create_busstuc
 [satre@furu ~/BUSSTUC/buster]$ busestuc.sav

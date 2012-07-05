@@ -363,7 +363,7 @@ composite_stat(leirfos_street,[],leirfossvegen). % generated 4.2
 composite_stat(leira,[skole],leira_skole).
 composite_stat(leirbrua,[gård],leirbrua_gård).
 composite_stat(leirelva,[],leirelva).
-composite_stat(lerchendal,[gård],lerchendal_gård).
+composite_stat(lerchendal,[gård],lerkendal_gård).
 composite_stat(lerkendal,[stadion],lerkendal_stadion).
 composite_stat(gløshaugen,[syd],gløshaugen_syd).
 composite_stat(lohove,[],lohove).
@@ -1135,7 +1135,7 @@ composite_stat(leirfos_street,[],leirfossvegen). % generated 4.2
 composite_stat(leira,[skole],leira_skole).
 composite_stat(leirbrua,[gård],leirbrua_gård).
 composite_stat(leirelva,[],leirelva).
-composite_stat(lerchendal,[gård],lerchendal_gård).
+composite_stat(lerchendal,[gård],lerkendal_gård).
 composite_stat(lerkendal,[stadion],lerkendal_stadion).
 composite_stat(gløshaugen,[syd],gløshaugen_syd).
 composite_stat(lohove,[],lohove).

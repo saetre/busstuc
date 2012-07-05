@@ -899,7 +899,7 @@ streetstat(leistad_street,'Leistadvegen',1,10,tunga_kretsfengsel).
 streetstat(leiv_erikssons_street,'Leiv Erikssons vei',1,7,lade_kirke).
 streetstat(leiv_erikssons_street,'Leiv Erikssons vei',9,42,ringve_skole).
 streetstat(leksvik_street,'Leksvikgata',2,3,stiklestadveien).
-streetstat(lerkendal_gård,'Lerkendal gård',6,354,lerchendal_gård).
+streetstat(lerkendal_gård,'Lerkendal gård',6,354,lerkendal_gård).
 streetstat(lerkendals_street,'Lerkendalsveien',21,24,gløshaugen_syd).
 streetstat(lerkendals_street,'Lerkendalsveien',1,20,gudes_gate).
 streetstat(lerke_street,'Lerkeveien',1,22,vestre_rosten).
@@ -1356,7 +1356,7 @@ streetstat(rådmann_hammers_street,'Rådmann Hammers vei',1,35,hammersborg).
 streetstat(rådmanns_street,'Rådmannsvegen',1,14,migosenteret).
 streetstat(rådyr_street,'Rådyrvegen',1,72,kattemsenteret).
 streetstat(s_p_andersens_street,'S.P.Andersens veg',5,11,solvollvegen).
-streetstat(s_p_andersens_street,'S.P.Andersens veg',15,25,lerchendal_gård).
+streetstat(s_p_andersens_street,'S.P.Andersens veg',15,25,lerkendal_gård).
 streetstat(sandbakk_street,'Sandbakkvegen',55,73,kvenilds_veg).
 streetstat(sandbakk_street,'Sandbakkvegen',74,93,sandbakken).
 streetstat(sandbakk_street,'Sandbakkvegen',1,54,dist_lege_øverlids_vei).
