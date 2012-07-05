@@ -360,7 +360,7 @@ testgram:-
 
 
 writepid :-
-         pid(Pid),
+         process_id(Pid),
          open('.serverpid',write,Port),
          write(Port,Pid),
          close(Port).
