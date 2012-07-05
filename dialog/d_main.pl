@@ -51,7 +51,7 @@ webrun_dialog :- !,
    contextflag := true, %%% <--- Dialog context shown if Teknisk info
 
 	writepid, 
-	nofileerrors,
+	set_prolog_flag(fileerrors,off),
 	busflag:= true,    %% Bustuc Application Program
 	queryflag := true, %% Statements are implicit queries 
    dialog := 1,       
