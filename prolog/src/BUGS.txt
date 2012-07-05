@@ -1,6 +1,8 @@
-N: buss 94 til lade i morgen.
+Sjekk
+ https://www.ntnu.no/wiki/display/FUIROS/BUGS+-+PROBLEM+REPORTS
 
 
+1 N: buss 94 til lade i morgen.
 
 trans/Found rule:tqllist2
 trans/Found rule:doubleshunt
@@ -12,7 +14,18 @@ trans/Found rule:toplace1
 trans/Found rule:keepfrombaywithbus
 trans/Found rule:connectionexplicit
 
-*** Application program ***
+2 N: til lade i morgen.
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:morrow1
+trans/Found rule:nottoday1
+trans/Found rule:toplace1
+trans/Found rule:keepfrombay
+trans/Found rule:connectionexplicit
+
+
+1 *** Application program ***
 
 today(tuesday)
 atday(wednesday)
@@ -26,19 +39,7 @@ connections(B,A,bus,hovedterminalen,lade,wednesday,4,[to,from],C,D)
 flag(exit)
 
 
-N: til lade i morgen.
-
-
-
-trans/Found rule:tqllist2
-trans/Found rule:modifier2
-trans/Found rule:morrow1
-trans/Found rule:nottoday1
-trans/Found rule:toplace1
-trans/Found rule:keepfrombay
-trans/Found rule:connectionexplicit
-
-*** Application program ***
+2 *** Application program ***
 
 today(tuesday)
 atday(wednesday)
