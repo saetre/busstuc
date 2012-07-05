@@ -436,11 +436,11 @@ testgram:-
 
 
 writepid :-
-%sicstus4      process_id(Pid),
-         pid(Pid),
-         open('.serverpid',write,Port),
-         write(Port,Pid),
-         close(Port).
+        process_id(Pid), %sicstus4
+%sicstus4        pid(Pid),
+        open('.serverpid',write,Port),
+        write(Port,Pid),
+        close(Port).
 writepid.
 
 
