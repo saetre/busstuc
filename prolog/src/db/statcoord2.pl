@@ -49,49 +49,49 @@ statcoord2(15764910,4910,'Våg',0,0).
 statcoord2(15768901,8901,'Årvåg',0,0).
 statcoord2(15764901,4901,'Årvåg',0,0).
 statcoord2(15714958,4958,'Betna',0,0).
-statcoord2(15718958,8958,'Betna',nil,nil).
+statcoord2(15718958,8958,'Betna',0,0).
 statcoord2(15714931,4931,'Engdal, Halsa',0,0).
-statcoord2(15718931,8931,'Engdal, Halsa',nil,nil).
+statcoord2(15718931,8931,'Engdal, Halsa',0,0).
 statcoord2(15714940,4940,'Enge',0,0).
-statcoord2(15718940,8940,'Enge',nil,nil).
+statcoord2(15718940,8940,'Enge',0,0).
 statcoord2(15714937,4937,'Fjærli',0,0).
-statcoord2(15718937,8937,'Fjærli',nil,nil).
-statcoord2(15714960,4960,'Halsa',nil,nil).
-statcoord2(15718960,8960,'Halsa',nil,nil).
+statcoord2(15718937,8937,'Fjærli',0,0).
+statcoord2(15714960,4960,'Halsa',0,0).
+statcoord2(15718960,8960,'Halsa',0,0).
 statcoord2(15718620,8620,'Halsa f.kai',0,0).
-statcoord2(15714620,4620,'Halsa f.kai',nil,nil).
+statcoord2(15714620,4620,'Halsa f.kai',0,0).
 statcoord2(15714959,4959,'Halsa krk.',0,0).
-statcoord2(15718959,8959,'Halsa krk.',nil,nil).
+statcoord2(15718959,8959,'Halsa krk.',0,0).
 statcoord2(15714955,4955,'Henna',0,0).
-statcoord2(15718955,8955,'Henna',nil,nil).
+statcoord2(15718955,8955,'Henna',0,0).
 statcoord2(15714954,4954,'Hennset',0,0).
-statcoord2(15718954,8954,'Hennset',nil,nil).
+statcoord2(15718954,8954,'Hennset',0,0).
 statcoord2(15714942,4942,'Hestnes, Halsa',0,0).
-statcoord2(15718942,8942,'Hestnes, Halsa',nil,nil).
+statcoord2(15718942,8942,'Hestnes, Halsa',0,0).
 statcoord2(15714939,4939,'Hjellnes',0,0).
-statcoord2(15718939,8939,'Hjellnes',nil,nil).
+statcoord2(15718939,8939,'Hjellnes',0,0).
 statcoord2(15714935,4935,'Leirviklandet',0,0).
-statcoord2(15718935,8935,'Leirviklandet',nil,nil).
+statcoord2(15718935,8935,'Leirviklandet',0,0).
 statcoord2(15714957,4957,'Liabø',0,0).
-statcoord2(15718957,8957,'Liabø',nil,nil).
+statcoord2(15718957,8957,'Liabø',0,0).
 statcoord2(15714956,4956,'Lyngstad',0,0).
-statcoord2(15718956,8956,'Lyngstad',nil,nil).
+statcoord2(15718956,8956,'Lyngstad',0,0).
 statcoord2(15714953,4953,'Otnes',0,0).
-statcoord2(15718953,8953,'Otnes',nil,nil).
+statcoord2(15718953,8953,'Otnes',0,0).
 statcoord2(15714933,4933,'Renndal',0,0).
-statcoord2(15718933,8933,'Renndal',nil,nil).
+statcoord2(15718933,8933,'Renndal',0,0).
 statcoord2(15714932,4932,'Rodal handel',0,0).
-statcoord2(15718932,8932,'Rodal handel',nil,nil).
+statcoord2(15718932,8932,'Rodal handel',0,0).
 statcoord2(15714934,4934,'Stokketrøa',0,0).
-statcoord2(15718934,8934,'Stokketrøa',nil,nil).
+statcoord2(15718934,8934,'Stokketrøa',0,0).
 statcoord2(15714936,4936,'Storneset',0,0).
-statcoord2(15718936,8936,'Storneset',nil,nil).
+statcoord2(15718936,8936,'Storneset',0,0).
 statcoord2(15714951,4951,'Valsøya',0,0).
-statcoord2(15718951,8951,'Valsøya',nil,nil).
+statcoord2(15718951,8951,'Valsøya',0,0).
 statcoord2(15714938,4938,'Valsøybotn',0,0).
-statcoord2(15718938,8938,'Valsøybotn',nil,nil).
+statcoord2(15718938,8938,'Valsøybotn',0,0).
 statcoord2(15714941,4941,'Valsøyfjord sk.',0,0).
-statcoord2(15718941,8941,'Valsøyfjord sk.',nil,nil).
+statcoord2(15718941,8941,'Valsøyfjord sk.',0,0).
 statcoord2(15737010,7010,'Edøy h.båt',0,0).
 statcoord2(16011030,1030,'Adresseavisen',568083.058,7025387.493).
 statcoord2(16010030,30,'Adresseavisen',568063.37,7025304.68).
@@ -1304,8 +1304,8 @@ statcoord2(16128464,8464,'Berg',0,0).
 statcoord2(16124464,4464,'Berg',0,0).
 statcoord2(16128413,8413,'Bjerkan',0,0).
 statcoord2(16124413,4413,'Bjerkan',0,0).
-statcoord2(16124488,4488,'Bjerkneset snuplass',nil,nil).
-statcoord2(16128488,8488,'Bjerkneset snuplass',nil,nil).
+statcoord2(16124488,4488,'Bjerkneset snuplass',0,0).
+statcoord2(16128488,8488,'Bjerkneset snuplass',0,0).
 statcoord2(16128449,8449,'Bjørknes',0,0).
 statcoord2(16124449,4449,'Bjørknes',0,0).
 statcoord2(16128470,8470,'Bjørnsli',0,0).
@@ -1328,8 +1328,8 @@ statcoord2(16128465,8465,'Grøtvågen',0,0).
 statcoord2(16124465,4465,'Grøtvågen',0,0).
 statcoord2(16128422,8422,'Haugafossen',0,0).
 statcoord2(16124422,4422,'Haugafossen',0,0).
-statcoord2(16124476,4476,'Haugen',nil,nil).
-statcoord2(16128476,8476,'Haugen',nil,nil).
+statcoord2(16124476,4476,'Haugen',0,0).
+statcoord2(16128476,8476,'Haugen',0,0).
 statcoord2(16128444,8444,'Haukvika',0,0).
 statcoord2(16124444,4444,'Haukvika',0,0).
 statcoord2(16128432,8432,'Heim',0,0).
@@ -1352,8 +1352,8 @@ statcoord2(16128410,8410,'Hunnestrøan',0,0).
 statcoord2(16124410,4410,'Hunnestrøan',0,0).
 statcoord2(16128462,8462,'Kjønsvika',0,0).
 statcoord2(16124462,4462,'Kjønsvika',0,0).
-statcoord2(16124480,4480,'Kleiva, Hemne',nil,nil).
-statcoord2(16128480,8480,'Kleiva, Hemne',nil,nil).
+statcoord2(16124480,4480,'Kleiva, Hemne',0,0).
+statcoord2(16128480,8480,'Kleiva, Hemne',0,0).
 statcoord2(16128448,8448,'Kråka',0,0).
 statcoord2(16124448,4448,'Kråka',0,0).
 statcoord2(16128420,8420,'Kyrksæterøra',0,0).
@@ -1374,22 +1374,22 @@ statcoord2(16128454,8454,'Myra, Hemne',0,0).
 statcoord2(16124454,4454,'Myra, Hemne',0,0).
 statcoord2(16128427,8427,'Ness',0,0).
 statcoord2(16124427,4427,'Ness',0,0).
-statcoord2(16124482,4482,'Oddan',nil,nil).
-statcoord2(16128482,8482,'Oddan',nil,nil).
+statcoord2(16124482,4482,'Oddan',0,0).
+statcoord2(16128482,8482,'Oddan',0,0).
 statcoord2(16128429,8429,'Røstvoll',0,0).
 statcoord2(16124429,4429,'Røstvoll',0,0).
 statcoord2(16128437,8437,'Singsdalssaga',0,0).
 statcoord2(16124437,4437,'Singsdalssaga',0,0).
 statcoord2(16128466,8466,'Sinnes',0,0).
 statcoord2(16124466,4466,'Sinnes',0,0).
-statcoord2(16124484,4484,'Sinnes snuplass',nil,nil).
-statcoord2(16128484,8484,'Sinnes snuplass',nil,nil).
-statcoord2(16124477,4477,'Skogrand',nil,nil).
-statcoord2(16128477,8477,'Skogrand',nil,nil).
+statcoord2(16124484,4484,'Sinnes snuplass',0,0).
+statcoord2(16128484,8484,'Sinnes snuplass',0,0).
+statcoord2(16124477,4477,'Skogrand',0,0).
+statcoord2(16128477,8477,'Skogrand',0,0).
 statcoord2(16128401,8401,'Slupphaugen',0,0).
 statcoord2(16124401,4401,'Slupphaugen',0,0).
-statcoord2(16124474,4474,'Sodin sk.',nil,nil).
-statcoord2(16128474,8474,'Sodin sk.',nil,nil).
+statcoord2(16124474,4474,'Sodin sk.',0,0).
+statcoord2(16128474,8474,'Sodin sk.',0,0).
 statcoord2(16128453,8453,'Spjøtvoll',0,0).
 statcoord2(16124453,4453,'Spjøtvoll',0,0).
 statcoord2(16128451,8451,'Sporill',0,0).
@@ -1422,16 +1422,16 @@ statcoord2(16128472,8472,'Søvassdalen',0,0).
 statcoord2(16124472,4472,'Søvassdalen',0,0).
 statcoord2(16128440,8440,'Taftøysundet',0,0).
 statcoord2(16124440,4440,'Taftøysundet',0,0).
-statcoord2(16124486,4486,'Valåsen',nil,nil).
-statcoord2(16128486,8486,'Valåsen',nil,nil).
+statcoord2(16124486,4486,'Valåsen',0,0).
+statcoord2(16128486,8486,'Valåsen',0,0).
 statcoord2(16128403,8403,'Vasslia',0,0).
 statcoord2(16124403,4403,'Vasslia',0,0).
 statcoord2(16128441,8441,'Vinje krk.',0,0).
 statcoord2(16124441,4441,'Vinje krk.',0,0).
 statcoord2(16128442,8442,'Vinjeøra',0,0).
 statcoord2(16124442,4442,'Vinjeøra',0,0).
-statcoord2(16124475,4475,'Vinjeøra sk.',nil,nil).
-statcoord2(16128475,8475,'Vinjeøra sk.',nil,nil).
+statcoord2(16124475,4475,'Vinjeøra sk.',0,0).
+statcoord2(16128475,8475,'Vinjeøra sk.',0,0).
 statcoord2(16128424,8424,'Vægan',0,0).
 statcoord2(16124424,4424,'Vægan',0,0).
 statcoord2(16128436,8436,'Vågan, Hemne',0,0).
@@ -1454,8 +1454,8 @@ statcoord2(16138533,8533,'Hegstad',0,0).
 statcoord2(16134533,4533,'Hegstad',0,0).
 statcoord2(16138529,8529,'Hemnskjel',0,0).
 statcoord2(16134529,4529,'Hemnskjel',0,0).
-statcoord2(16134556,4556,'Hyllberget',nil,nil).
-statcoord2(16138556,8556,'Hyllberget',nil,nil).
+statcoord2(16134556,4556,'Hyllberget',0,0).
+statcoord2(16138556,8556,'Hyllberget',0,0).
 statcoord2(16138524,8524,'Kongensvoll',0,0).
 statcoord2(16134524,4524,'Kongensvoll',0,0).
 statcoord2(16138515,8515,'Krokstadøra',0,0).
@@ -1496,8 +1496,8 @@ statcoord2(16138522,8522,'Vaslag',0,0).
 statcoord2(16134522,4522,'Vaslag',0,0).
 statcoord2(16138525,8525,'Vaslagvågen',0,0).
 statcoord2(16134525,4525,'Vaslagvågen',0,0).
-statcoord2(16134554,4554,'Ven sk.',nil,nil).
-statcoord2(16138554,8554,'Ven sk.',nil,nil).
+statcoord2(16134554,4554,'Ven sk.',0,0).
+statcoord2(16138554,8554,'Ven sk.',0,0).
 statcoord2(16138523,8523,'Vingvågen',0,0).
 statcoord2(16134523,4523,'Vingvågen',0,0).
 statcoord2(16138503,8503,'Vuttudal',0,0).
@@ -1510,8 +1510,8 @@ statcoord2(16138502,8502,'Våvatnet',0,0).
 statcoord2(16134502,4502,'Våvatnet',0,0).
 statcoord2(16138506,8506,'Ytre Snillfjord',0,0).
 statcoord2(16134506,4506,'Ytre Snillfjord',0,0).
-statcoord2(16134555,4555,'Å sk.',nil,nil).
-statcoord2(16138555,8555,'Å sk.',nil,nil).
+statcoord2(16134555,4555,'Å sk.',0,0).
+statcoord2(16138555,8555,'Å sk.',0,0).
 statcoord2(16138517,8517,'Åsten',0,0).
 statcoord2(16134517,4517,'Åsten',0,0).
 statcoord2(16179905,9905,'Akset, Fjellværøya',0,0).
@@ -1782,7 +1782,7 @@ statcoord2(16209811,9811,'Dyrvik',0,0).
 statcoord2(16205811,5811,'Dyrvik',0,0).
 statcoord2(16209828,9828,'Dyrøy sk.',0,0).
 statcoord2(16205828,5828,'Dyrøy sk.',0,0).
-statcoord2(16207016,7016,'Dyrøy h.båt',nil,nil).
+statcoord2(16207016,7016,'Dyrøy h.båt',0,0).
 statcoord2(16209839,9839,'Elven',0,0).
 statcoord2(16205839,5839,'Elven',0,0).
 statcoord2(16209870,9870,'Engdal, Frøya',0,0).
@@ -2114,7 +2114,7 @@ statcoord2(16242185,2185,'Hermstad',0,0).
 statcoord2(16245185,5185,'Hermstad',0,0).
 statcoord2(16242158,2158,'Husby, Rissa',0,0).
 statcoord2(16245158,5158,'Husby, Rissa',0,0).
-statcoord2(16247003,7003,'Hysnes h.båt',nil,nil).
+statcoord2(16247003,7003,'Hysnes h.båt',0,0).
 statcoord2(16242149,2149,'Hårberg',0,0).
 statcoord2(16245149,5149,'Hårberg',0,0).
 statcoord2(16242109,2109,'Hårsaker',0,0).
@@ -2679,8 +2679,8 @@ statcoord2(16357321,7321,'Flå',0,0).
 statcoord2(16354321,4321,'Flå',0,0).
 statcoord2(16356346,6346,'Gamle kongevei, Rennebu',0,0).
 statcoord2(16353346,3346,'Gamle kongevei, Rennebu',0,0).
-statcoord2(16354399,4399,'Garasje Ulsberg',nil,nil).
-statcoord2(16357399,7399,'Garasje Ulsberg',nil,nil).
+statcoord2(16354399,4399,'Garasje Ulsberg',0,0).
+statcoord2(16357399,7399,'Garasje Ulsberg',0,0).
 statcoord2(16356313,6313,'Gisnadalen',0,0).
 statcoord2(16353313,3313,'Gisnadalen',0,0).
 statcoord2(16356342,6342,'Gisnås',0,0).
@@ -2697,20 +2697,20 @@ statcoord2(16357320,7320,'Gunnesveien',0,0).
 statcoord2(16354320,4320,'Gunnesveien',0,0).
 statcoord2(16356306,6306,'Halland camping',0,0).
 statcoord2(16353306,3306,'Halland camping',0,0).
-statcoord2(16354330,4330,'Hedmark fylkesgrense',nil,nil).
-statcoord2(16357330,7330,'Hedmark fylkesgrense',nil,nil).
+statcoord2(16354330,4330,'Hedmark fylkesgrense',0,0).
+statcoord2(16357330,7330,'Hedmark fylkesgrense',0,0).
 statcoord2(16357310,7310,'Herremsveien',0,0).
 statcoord2(16354310,4310,'Herremsveien',0,0).
-statcoord2(16354342,4342,'Hoel Mølle',nil,nil).
-statcoord2(16357342,7342,'Hoel Mølle',nil,nil).
+statcoord2(16354342,4342,'Hoel Mølle',0,0).
+statcoord2(16357342,7342,'Hoel Mølle',0,0).
 statcoord2(16357308,7308,'Holskrysset',0,0).
 statcoord2(16354308,4308,'Holskrysset',0,0).
 statcoord2(16357319,7319,'Holsmoen',0,0).
 statcoord2(16354319,4319,'Holsmoen',0,0).
 statcoord2(16357313,7313,'Hovengen',0,0).
 statcoord2(16354313,4313,'Hovengen',0,0).
-statcoord2(16354328,4328,'Hæverstølen',nil,nil).
-statcoord2(16357328,7328,'Hæverstølen',nil,nil).
+statcoord2(16354328,4328,'Hæverstølen',0,0).
+statcoord2(16357328,7328,'Hæverstølen',0,0).
 statcoord2(16356303,6303,'Idretsplassen Rv3',0,0).
 statcoord2(16353303,3303,'Idretsplassen Rv3',0,0).
 statcoord2(16356344,6344,'Innset sk.',0,0).
@@ -2739,31 +2739,31 @@ statcoord2(16357305,7305,'Nerskogveien',0,0).
 statcoord2(16354305,4305,'Nerskogveien',0,0).
 statcoord2(16356308,6308,'Nordskogen',0,0).
 statcoord2(16353308,3308,'Nordskogen',0,0).
-statcoord2(16354338,4338,'Næverdal',nil,nil).
-statcoord2(16357338,7338,'Næverdal',nil,nil).
+statcoord2(16354338,4338,'Næverdal',0,0).
+statcoord2(16357338,7338,'Næverdal',0,0).
 statcoord2(16356305,6305,'Plassen',0,0).
 statcoord2(16353305,3305,'Plassen',0,0).
-statcoord2(16354329,4329,'Pålsplass',nil,nil).
-statcoord2(16357329,7329,'Pålsplass',nil,nil).
+statcoord2(16354329,4329,'Pålsplass',0,0).
+statcoord2(16357329,7329,'Pålsplass',0,0).
 statcoord2(16356314,6314,'Rabben',0,0).
 statcoord2(16353314,3314,'Rabben',0,0).
-statcoord2(16354344,4344,'Ramstad, Rennebu',nil,nil).
-statcoord2(16357344,7344,'Ramstad, Rennebu',nil,nil).
+statcoord2(16354344,4344,'Ramstad, Rennebu',0,0).
+statcoord2(16357344,7344,'Ramstad, Rennebu',0,0).
 statcoord2(16357317,7317,'Refshus',0,0).
 statcoord2(16354317,4317,'Refshus',0,0).
 statcoord2(16357311,7311,'Rennebu Nedre',0,0).
 statcoord2(16354311,4311,'Rennebu Nedre',0,0).
 statcoord2(16356334,6334,'Rognøy',0,0).
 statcoord2(16353334,3334,'Rognøy',0,0).
-statcoord2(16354340,4340,'Rokones',nil,nil).
-statcoord2(16357340,7340,'Rokones',nil,nil).
-statcoord2(16354332,4332,'Sagbakken',nil,nil).
-statcoord2(16357332,7332,'Sagbakken',nil,nil).
+statcoord2(16354340,4340,'Rokones',0,0).
+statcoord2(16357340,7340,'Rokones',0,0).
+statcoord2(16354332,4332,'Sagbakken',0,0).
+statcoord2(16357332,7332,'Sagbakken',0,0).
 statcoord2(16357315,7315,'Sandbrekka',0,0).
 statcoord2(16354315,4315,'Sandbrekka',0,0).
 statcoord2(16356326,6326,'Skauma bru',0,0).
 statcoord2(16353326,3326,'Skauma bru',0,0).
-statcoord2(16356321,6321,'Skjephaug',0,nil).
+statcoord2(16356321,6321,'Skjephaug',0,0).
 statcoord2(16353321,3321,'Skjephaug',0,0).
 statcoord2(16357318,7318,'Skjervan',0,0).
 statcoord2(16354318,4318,'Skjervan',0,0).
@@ -2771,16 +2771,16 @@ statcoord2(16357316,7316,'Stamnan',0,0).
 statcoord2(16354316,4316,'Stamnan',0,0).
 statcoord2(16356328,6328,'Stavå bru',0,0).
 statcoord2(16353328,3328,'Stavå bru',0,0).
-statcoord2(16356339,6339,'Strand',0,nil).
+statcoord2(16356339,6339,'Strand',0,0).
 statcoord2(16353339,3339,'Strand',0,0).
 statcoord2(16356341,6341,'Stølen, Rennebu',0,0).
 statcoord2(16353341,3341,'Stølen, Rennebu',0,0).
-statcoord2(16354336,4336,'Stølsvang',nil,nil).
-statcoord2(16357336,7336,'Stølsvang',nil,nil).
+statcoord2(16354336,4336,'Stølsvang',0,0).
+statcoord2(16357336,7336,'Stølsvang',0,0).
 statcoord2(16356336,6336,'Stølsvangsveien',0,0).
 statcoord2(16353336,3336,'Stølsvangsveien',0,0).
-statcoord2(16353335,3335,'Tysksæter',nil,nil).
-statcoord2(16356335,6335,'Tysksæter',nil,nil).
+statcoord2(16353335,3335,'Tysksæter',0,0).
+statcoord2(16356335,6335,'Tysksæter',0,0).
 statcoord2(16356330,6330,'Ulsberg',0,0).
 statcoord2(16353330,3330,'Ulsberg',0,0).
 statcoord2(16356331,6331,'Ulsberg st.',0,0).
@@ -2883,46 +2883,46 @@ statcoord2(16367231,7231,'Mjøa',0,0).
 statcoord2(16364231,4231,'Mjøa',0,0).
 statcoord2(16367251,7251,'Moflata',0,0).
 statcoord2(16364251,4251,'Moflata',0,0).
-statcoord2(16367222,7222,'Muan',nil,nil).
-statcoord2(16364222,4222,'Muan',nil,nil).
-statcoord2(16367210,7210,'Myråsveien',nil,nil).
-statcoord2(16364210,4210,'Myråsveien',nil,nil).
+statcoord2(16367222,7222,'Muan',0,0).
+statcoord2(16364222,4222,'Muan',0,0).
+statcoord2(16367210,7210,'Myråsveien',0,0).
+statcoord2(16364210,4210,'Myråsveien',0,0).
 statcoord2(16367252,7252,'Re',0,0).
 statcoord2(16364252,4252,'Re',0,0).
 statcoord2(16367271,7271,'Ringen',0,0).
 statcoord2(16364271,4271,'Ringen',0,0).
-statcoord2(16367241,7241,'Skjulenget',nil,nil).
-statcoord2(16364241,4241,'Skjulenget',nil,nil).
-statcoord2(16367201,7201,'Skjøtskift',nil,nil).
-statcoord2(16364201,4201,'Skjøtskift',nil,nil).
-statcoord2(16367207,7207,'Skåveien',nil,nil).
-statcoord2(16364207,4207,'Skåveien',nil,nil).
-statcoord2(16367224,7224,'Snoen',nil,nil).
-statcoord2(16364224,4224,'Snoen',nil,nil).
-statcoord2(16367255,7255,'Stene, Meldal',nil,nil).
-statcoord2(16364255,4255,'Stene, Meldal',nil,nil).
-statcoord2(16367237,7237,'Storås',nil,nil).
-statcoord2(16364237,4237,'Storås',nil,nil).
-statcoord2(16364282,4282,'Storås sk.',nil,nil).
-statcoord2(16367282,7282,'Storås sk.',nil,nil).
-statcoord2(16367268,7268,'Svinsås',nil,nil).
-statcoord2(16364268,4268,'Svinsås',nil,nil).
-statcoord2(16367221,7221,'Sybrua',nil,nil).
-statcoord2(16364221,4221,'Sybrua',nil,nil).
-statcoord2(16367211,7211,'Trongbakken',nil,nil).
-statcoord2(16364211,4211,'Trongbakken',nil,nil).
-statcoord2(16367236,7236,'Tussan',nil,nil).
-statcoord2(16364236,4236,'Tussan',nil,nil).
-statcoord2(16367213,7213,'Ulebergsvingen',nil,nil).
-statcoord2(16364213,4213,'Ulebergsvingen',nil,nil).
-statcoord2(16367262,7262,'Vemyrtoppen',nil,nil).
-statcoord2(16364262,4262,'Vemyrtoppen',nil,nil).
-statcoord2(16367209,7209,'Yrkesskolen',nil,nil).
-statcoord2(16364209,4209,'Yrkesskolen',nil,nil).
-statcoord2(16367258,7258,'Å bru',nil,nil).
-statcoord2(16364258,4258,'Å bru',nil,nil).
-statcoord2(16367225,7225,'Å i Meldal',nil,nil).
-statcoord2(16364225,4225,'Å i Meldal',nil,nil).
+statcoord2(16367241,7241,'Skjulenget',0,0).
+statcoord2(16364241,4241,'Skjulenget',0,0).
+statcoord2(16367201,7201,'Skjøtskift',0,0).
+statcoord2(16364201,4201,'Skjøtskift',0,0).
+statcoord2(16367207,7207,'Skåveien',0,0).
+statcoord2(16364207,4207,'Skåveien',0,0).
+statcoord2(16367224,7224,'Snoen',0,0).
+statcoord2(16364224,4224,'Snoen',0,0).
+statcoord2(16367255,7255,'Stene, Meldal',0,0).
+statcoord2(16364255,4255,'Stene, Meldal',0,0).
+statcoord2(16367237,7237,'Storås',0,0).
+statcoord2(16364237,4237,'Storås',0,0).
+statcoord2(16364282,4282,'Storås sk.',0,0).
+statcoord2(16367282,7282,'Storås sk.',0,0).
+statcoord2(16367268,7268,'Svinsås',0,0).
+statcoord2(16364268,4268,'Svinsås',0,0).
+statcoord2(16367221,7221,'Sybrua',0,0).
+statcoord2(16364221,4221,'Sybrua',0,0).
+statcoord2(16367211,7211,'Trongbakken',0,0).
+statcoord2(16364211,4211,'Trongbakken',0,0).
+statcoord2(16367236,7236,'Tussan',0,0).
+statcoord2(16364236,4236,'Tussan',0,0).
+statcoord2(16367213,7213,'Ulebergsvingen',0,0).
+statcoord2(16364213,4213,'Ulebergsvingen',0,0).
+statcoord2(16367262,7262,'Vemyrtoppen',0,0).
+statcoord2(16364262,4262,'Vemyrtoppen',0,0).
+statcoord2(16367209,7209,'Yrkesskolen',0,0).
+statcoord2(16364209,4209,'Yrkesskolen',0,0).
+statcoord2(16367258,7258,'Å bru',0,0).
+statcoord2(16364258,4258,'Å bru',0,0).
+statcoord2(16367225,7225,'Å i Meldal',0,0).
+statcoord2(16364225,4225,'Å i Meldal',0,0).
 statcoord2(16388175,8175,'Almlia',0,0).
 statcoord2(16384175,4175,'Almlia',0,0).
 statcoord2(16388166,8166,'Annøl',0,0).
@@ -2959,14 +2959,14 @@ statcoord2(16388162,8162,'Ellingsgården',0,0).
 statcoord2(16384162,4162,'Ellingsgården',0,0).
 statcoord2(16388107,8107,'Evjen, Orkdal',0,0).
 statcoord2(16384107,4107,'Evjen, Orkdal',0,0).
-statcoord2(16388114,8114,'Fannrem st.',nil,nil).
-statcoord2(16384114,4114,'Fannrem st.',nil,nil).
+statcoord2(16388114,8114,'Fannrem st.',0,0).
+statcoord2(16384114,4114,'Fannrem st.',0,0).
 statcoord2(16388113,8113,'Fannremsflata',0,0).
 statcoord2(16384113,4113,'Fannremsflata',0,0).
-statcoord2(16388111,8111,'Fannremsmoen',nil,nil).
-statcoord2(16384111,4111,'Fannremsmoen',nil,nil).
-statcoord2(16384108,4108,'Follo',nil,nil).
-statcoord2(16388108,8108,'Follo',nil,nil).
+statcoord2(16388111,8111,'Fannremsmoen',0,0).
+statcoord2(16384111,4111,'Fannremsmoen',0,0).
+statcoord2(16384108,4108,'Follo',0,0).
+statcoord2(16388108,8108,'Follo',0,0).
 statcoord2(16388115,8115,'Forvebrua',0,0).
 statcoord2(16384115,4115,'Forvebrua',0,0).
 statcoord2(16388153,8153,'Fossan',0,0).
@@ -3019,8 +3019,8 @@ statcoord2(16388159,8159,'Høgkjølen',0,0).
 statcoord2(16384159,4159,'Høgkjølen',0,0).
 statcoord2(16388183,8183,'Kjøra',0,0).
 statcoord2(16384183,4183,'Kjøra',0,0).
-statcoord2(16384850,4850,'Kjøra snuplass',nil,nil).
-statcoord2(16388850,8850,'Kjøra snuplass',nil,nil).
+statcoord2(16384850,4850,'Kjøra snuplass',0,0).
+statcoord2(16388850,8850,'Kjøra snuplass',0,0).
 statcoord2(16388134,8134,'Klinga',0,0).
 statcoord2(16384134,4134,'Klinga',0,0).
 statcoord2(16388181,8181,'Klomstein',0,0).
@@ -3031,8 +3031,8 @@ statcoord2(16388811,8811,'Kvernmo',0,0).
 statcoord2(16384811,4811,'Kvernmo',0,0).
 statcoord2(16388119,8119,'Kvåle',0,0).
 statcoord2(16384119,4119,'Kvåle',0,0).
-statcoord2(16384848,4848,'Kvåle snuplass',nil,nil).
-statcoord2(16388848,8848,'Kvåle snuplass',nil,nil).
+statcoord2(16384848,4848,'Kvåle snuplass',0,0).
+statcoord2(16388848,8848,'Kvåle snuplass',0,0).
 statcoord2(16388121,8121,'Kvålskroken',0,0).
 statcoord2(16384121,4121,'Kvålskroken',0,0).
 statcoord2(16388125,8125,'Kårmo',0,0).
@@ -3047,8 +3047,8 @@ statcoord2(16388803,8803,'Meåsen',0,0).
 statcoord2(16384803,4803,'Meåsen',0,0).
 statcoord2(16388128,8128,'Moe krk.',0,0).
 statcoord2(16384128,4128,'Moe krk.',0,0).
-statcoord2(16388112,8112,'Mo-marked',nil,nil).
-statcoord2(16384112,4112,'Mo-marked',nil,nil).
+statcoord2(16388112,8112,'Mo-marked',0,0).
+statcoord2(16384112,4112,'Mo-marked',0,0).
 statcoord2(16388828,8828,'Monset',0,0).
 statcoord2(16384828,4828,'Monset',0,0).
 statcoord2(16388123,8123,'Nedre By',0,0).
@@ -3063,8 +3063,8 @@ statcoord2(16388703,8703,'Orkanger sk.',542617.036,7020030.161).
 statcoord2(16384103,4103,'Orkanger sk.',542629.429,7020071.625).
 statcoord2(16388705,8705,'Orkanger Skysstasjon',542495.434,7019113.308).
 statcoord2(16384105,4105,'Orkanger Skysstasjon',542495.434,7019113.308).
-statcoord2(16388106,8106,'Orkdal Sykehus',nil,nil).
-statcoord2(16384106,4106,'Orkdal Sykehus',nil,nil).
+statcoord2(16388106,8106,'Orkdal Sykehus',0,0).
+statcoord2(16384106,4106,'Orkdal Sykehus',0,0).
 statcoord2(16388167,8167,'Osbrua, Orkdal',0,0).
 statcoord2(16384167,4167,'Osbrua, Orkdal',0,0).
 statcoord2(16388163,8163,'OTI-senteret',0,0).
@@ -3101,8 +3101,8 @@ statcoord2(16388805,8805,'Songmoen',0,0).
 statcoord2(16384805,4805,'Songmoen',0,0).
 statcoord2(16388109,8109,'Sorenskrivergården',0,0).
 statcoord2(16384109,4109,'Sorenskrivergården',0,0).
-statcoord2(16384846,4846,'Steinbakken',nil,nil).
-statcoord2(16388846,8846,'Steinbakken',nil,nil).
+statcoord2(16384846,4846,'Steinbakken',0,0).
+statcoord2(16388846,8846,'Steinbakken',0,0).
 statcoord2(16388824,8824,'Steinshaugen',0,0).
 statcoord2(16384824,4824,'Steinshaugen',0,0).
 statcoord2(16388170,8170,'Stokkhaugen',0,0).
@@ -3129,8 +3129,8 @@ statcoord2(16388701,8701,'Thamshavn',0,0).
 statcoord2(16384101,4101,'Thamshavn',0,0).
 statcoord2(16388838,8838,'Togstadjåren',0,0).
 statcoord2(16384838,4838,'Togstadjåren',0,0).
-statcoord2(16387117,7117,'Torshus',nil,nil).
-statcoord2(16384117,4117,'Torshus',nil,nil).
+statcoord2(16387117,7117,'Torshus',0,0).
+statcoord2(16384117,4117,'Torshus',0,0).
 statcoord2(16388815,8815,'Ustan',0,0).
 statcoord2(16384815,4815,'Ustan',0,0).
 statcoord2(16388142,8142,'Valstad',0,0).
@@ -3161,876 +3161,876 @@ statcoord2(16388132,8132,'Årlivollveien',0,0).
 statcoord2(16384132,4132,'Årlivollveien',0,0).
 statcoord2(16388177,8177,'Åstan',0,0).
 statcoord2(16384177,4177,'Åstan',0,0).
-statcoord2(16403735,3735,'Autotomta',nil,nil).
-statcoord2(16406735,6735,'Autotomta',nil,nil).
-statcoord2(16406644,6644,'Bakken',nil,nil).
-statcoord2(16403644,3644,'Bakken',nil,nil).
-statcoord2(16406687,6687,'Bekkosen',nil,nil).
-statcoord2(16403687,3687,'Bekkosen',nil,nil).
-statcoord2(16406651,6651,'Bendiksvoll',nil,nil).
-statcoord2(16403651,3651,'Bendiksvoll',nil,nil).
-statcoord2(16403737,3737,'Bentvollen',nil,nil).
-statcoord2(16406566,6566,'Bergan',nil,nil).
-statcoord2(16403566,3566,'Bergan',nil,nil).
-statcoord2(16406603,6603,'Bergstaden hotel',nil,nil).
-statcoord2(16403620,3620,'Billehaugen',nil,nil).
-statcoord2(16406694,6694,'Blautmyrvegen',nil,nil).
-statcoord2(16403694,3694,'Blautmyrvegen',nil,nil).
-statcoord2(16406628,6628,'Botnlia',nil,nil).
-statcoord2(16403628,3628,'Botnlia',nil,nil).
-statcoord2(16406574,6574,'Brandegga',nil,nil).
-statcoord2(16403574,3574,'Brandegga',nil,nil).
-statcoord2(16406630,6630,'Brekken Kop',nil,nil).
-statcoord2(16403630,3630,'Brekken Kop',nil,nil).
-statcoord2(16406660,6660,'Brynhildsvoll',nil,nil).
-statcoord2(16403660,3660,'Brynhildsvoll',nil,nil).
-statcoord2(16406683,6683,'Bukkvollene',nil,nil).
-statcoord2(16403683,3683,'Bukkvollene',nil,nil).
-statcoord2(16406691,6691,'Engan, Røros',nil,nil).
-statcoord2(16403691,3691,'Engan, Røros',nil,nil).
-statcoord2(16406653,6653,'Engesvoll',nil,nil).
-statcoord2(16403653,3653,'Engesvoll',nil,nil).
-statcoord2(16403613,3613,'Engvik, Røros',nil,nil).
-statcoord2(16406573,6573,'Erlivegen',nil,nil).
-statcoord2(16403573,3573,'Erlivegen',nil,nil).
-statcoord2(16406656,6656,'Evavoll',nil,nil).
-statcoord2(16403656,3656,'Evavoll',nil,nil).
-statcoord2(16403740,3740,'Falkberget',nil,nil).
-statcoord2(16406636,6636,'Feragen',nil,nil).
-statcoord2(16403636,3636,'Feragen',nil,nil).
-statcoord2(16406696,6696,'Finnegården',nil,nil).
-statcoord2(16403696,3696,'Finnegården',nil,nil).
-statcoord2(16403734,3734,'Fjellheimen',nil,nil).
-statcoord2(16406734,6734,'Fjellheimen',nil,nil).
-statcoord2(16403728,3728,'Flekviken',nil,nil).
-statcoord2(16406695,6695,'Galåen bh.',nil,nil).
-statcoord2(16403695,3695,'Galåen bh.',nil,nil).
-statcoord2(16406692,6692,'Galåen boligfelt',nil,nil).
-statcoord2(16403692,3692,'Galåen boligfelt',nil,nil).
-statcoord2(16406693,6693,'Galåvollen boligfelt',nil,nil).
-statcoord2(16403693,3693,'Galåvollen boligfelt',nil,nil).
-statcoord2(16406601,6601,'Gauldal Billag A/S',nil,nil).
-statcoord2(16403601,3601,'Gauldal Billag A/S',nil,nil).
-statcoord2(16403736,3736,'Gjøsvik bru',nil,nil).
-statcoord2(16406736,6736,'Gjøsvik bru',nil,nil).
-statcoord2(16406570,6570,'Glåmos',nil,nil).
-statcoord2(16403570,3570,'Glåmos',nil,nil).
-statcoord2(16406646,6646,'Glåmos samfunnshus',nil,nil).
-statcoord2(16403646,3646,'Glåmos samfunnshus',nil,nil).
-statcoord2(16406571,6571,'Glåmos stadion',nil,nil).
-statcoord2(16403571,3571,'Glåmos stadion',nil,nil).
-statcoord2(16406568,6568,'Grunnkloppa',nil,nil).
-statcoord2(16403568,3568,'Grunnkloppa',nil,nil).
-statcoord2(16406619,6619,'Grunnsjømyra',nil,nil).
-statcoord2(16403741,3741,'Gullikstad Sør',nil,nil).
-statcoord2(16406629,6629,'Hagavika',nil,nil).
-statcoord2(16403629,3629,'Hagavika',nil,nil).
-statcoord2(16406565,6565,'Harborg',nil,nil).
-statcoord2(16403565,3565,'Harborg',nil,nil).
-statcoord2(16406662,6662,'Haugen, Røros',nil,nil).
-statcoord2(16403662,3662,'Haugen, Røros',nil,nil).
-statcoord2(16406703,6703,'Havsjøen',nil,nil).
-statcoord2(16403703,3703,'Havsjøen',nil,nil).
-statcoord2(16403733,3733,'Hjulmakerveien',nil,nil).
-statcoord2(16406702,6702,'Høsøien',nil,nil).
-statcoord2(16403702,3702,'Høsøien',nil,nil).
-statcoord2(16406697,6697,'Høsøien st.',nil,nil).
-statcoord2(16403697,3697,'Høsøien st.',nil,nil).
-statcoord2(16406699,6699,'Håneset indre',nil,nil).
-statcoord2(16403699,3699,'Håneset indre',nil,nil).
-statcoord2(16406701,6701,'Hånesvegen',nil,nil).
-statcoord2(16403701,3701,'Hånesvegen',nil,nil).
-statcoord2(16406700,6700,'Hånesåsen',nil,nil).
-statcoord2(16403700,3700,'Hånesåsen',nil,nil).
-statcoord2(16403742,3742,'Jamt ',nil,nil).
-statcoord2(16406658,6658,'Jamtvoll',nil,nil).
-statcoord2(16403658,3658,'Jamtvoll',nil,nil).
-statcoord2(16406621,6621,'Jensvolden',nil,nil).
-statcoord2(16403621,3621,'Jensvolden',nil,nil).
-statcoord2(16406624,6624,'Kjeldsvollen',nil,nil).
-statcoord2(16403624,3624,'Kjeldsvollen',nil,nil).
-statcoord2(16406654,6654,'Klasvold / Sommer',nil,nil).
-statcoord2(16403654,3654,'Klasvold / Sommer',nil,nil).
-statcoord2(16406680,6680,'Klemetvold',nil,nil).
-statcoord2(16403680,3680,'Klemetvold',nil,nil).
-statcoord2(16406625,6625,'Kojan',nil,nil).
-statcoord2(16403625,3625,'Kojan',nil,nil).
-statcoord2(16406659,6659,'Kokkvollen',nil,nil).
-statcoord2(16403659,3659,'Kokkvollen',nil,nil).
-statcoord2(16406567,6567,'Kroken v.kr. Rv 30',nil,nil).
-statcoord2(16403567,3567,'Kroken v.kr. Rv 30',nil,nil).
-statcoord2(16406626,6626,'Kryss Valset',nil,nil).
-statcoord2(16403626,3626,'Kryss Valset',nil,nil).
-statcoord2(16406647,6647,'Kuråsen',nil,nil).
-statcoord2(16403647,3647,'Kuråsen',nil,nil).
-statcoord2(16406643,6643,'Kvernengan',nil,nil).
-statcoord2(16403643,3643,'Kvernengan',nil,nil).
-statcoord2(16406718,6718,'Kvipsdalsveien',nil,nil).
-statcoord2(16403718,3718,'Kvipsdalsveien',nil,nil).
-statcoord2(16403739,3739,'Kåsa',nil,nil).
-statcoord2(16406623,6623,'Langen',nil,nil).
-statcoord2(16406722,6722,'Langen',nil,nil).
-statcoord2(16403623,3623,'Langen',nil,nil).
-statcoord2(16403722,3722,'Langen',nil,nil).
-statcoord2(16406578,6578,'Langset',nil,nil).
-statcoord2(16403578,3578,'Langset',nil,nil).
-statcoord2(16406713,6713,'Løkkja',nil,nil).
-statcoord2(16403713,3713,'Løkkja',nil,nil).
-statcoord2(16406664,6664,'Martavoll',nil,nil).
-statcoord2(16403664,3664,'Martavoll',nil,nil).
-statcoord2(16406616,6616,'Moan / Aasen',nil,nil).
-statcoord2(16403616,3616,'Moan / Aasen',nil,nil).
-statcoord2(16406661,6661,'Myrmoen',nil,nil).
-statcoord2(16403661,3661,'Myrmoen',nil,nil).
-statcoord2(16406667,6667,'Mæla, Røros',nil,nil).
-statcoord2(16403667,3667,'Mæla, Røros',nil,nil).
-statcoord2(16406649,6649,'Naustervoll',nil,nil).
-statcoord2(16403649,3649,'Naustervoll',nil,nil).
-statcoord2(16406666,6666,'Nesvall',nil,nil).
-statcoord2(16403666,3666,'Nesvall',nil,nil).
-statcoord2(16406615,6615,'Nicolaisen',nil,nil).
-statcoord2(16403615,3615,'Nicolaisen',nil,nil).
-statcoord2(16406575,6575,'Ol-Jensabakken',nil,nil).
-statcoord2(16403575,3575,'Ol-Jensabakken',nil,nil).
-statcoord2(16406645,6645,'Ormhaugen',nil,nil).
-statcoord2(16403645,3645,'Ormhaugen',nil,nil).
-statcoord2(16403729,3729,'Pliktfogdvollen',nil,nil).
-statcoord2(16406712,6712,'Rismoen',nil,nil).
-statcoord2(16403712,3712,'Rismoen',nil,nil).
-statcoord2(16406563,6563,'Rugeldalen st.',nil,nil).
-statcoord2(16403563,3563,'Rugeldalen st.',nil,nil).
-statcoord2(16406564,6564,'Rugelsjøen',nil,nil).
-statcoord2(16403564,3564,'Rugelsjøen',nil,nil).
-statcoord2(16406711,6711,'Rybrua',nil,nil).
-statcoord2(16403711,3711,'Rybrua',nil,nil).
-statcoord2(16406562,6562,'Ryen',nil,nil).
-statcoord2(16403562,3562,'Ryen',nil,nil).
-statcoord2(16406657,6657,'Ryttervoll',nil,nil).
-statcoord2(16403657,3657,'Ryttervoll',nil,nil).
-statcoord2(16406633,6633,'Ryvollen',nil,nil).
-statcoord2(16403633,3633,'Ryvollen',nil,nil).
-statcoord2(16403726,3726,'Røa',nil,nil).
-statcoord2(16406663,6663,'Røkbuvoll',nil,nil).
-statcoord2(16403663,3663,'Røkbuvoll',nil,nil).
-statcoord2(16406600,6600,'Røros',nil,nil).
-statcoord2(16403600,3600,'Røros',nil,nil).
-statcoord2(16406642,6642,'Rørosgård',nil,nil).
-statcoord2(16403642,3642,'Rørosgård',nil,nil).
-statcoord2(16406652,6652,'Sakrisvoll',nil,nil).
-statcoord2(16403652,3652,'Sakrisvoll',nil,nil).
-statcoord2(16406614,6614,'Schjølbergbrua',nil,nil).
-statcoord2(16403614,3614,'Schjølbergbrua',nil,nil).
-statcoord2(16406716,6716,'Setra, Røros',nil,nil).
-statcoord2(16403716,3716,'Setra, Røros',nil,nil).
-statcoord2(16403738,3738,'Sevatdalen  ',nil,nil).
-statcoord2(16406714,6714,'Sevatdalen v.kr.',nil,nil).
-statcoord2(16403714,3714,'Sevatdalen v.kr.',nil,nil).
-statcoord2(16406611,6611,'Sjøbakken',nil,nil).
-statcoord2(16403611,3611,'Sjøbakken',nil,nil).
-statcoord2(16403732,3732,'Sjøvollkrysset',nil,nil).
-statcoord2(16403710,3710,'Skistugguveien',nil,nil).
-statcoord2(16406632,6632,'Skottgården',nil,nil).
-statcoord2(16403632,3632,'Skottgården',nil,nil).
-statcoord2(16406617,6617,'Sommer / Valset',nil,nil).
-statcoord2(16403617,3617,'Sommer / Valset',nil,nil).
-statcoord2(16406655,6655,'Sommerlia',nil,nil).
-statcoord2(16403655,3655,'Sommerlia',nil,nil).
-statcoord2(16406698,6698,'Stamphuset',nil,nil).
-statcoord2(16403698,3698,'Stamphuset',nil,nil).
-statcoord2(16406627,6627,'Stensåsen',nil,nil).
-statcoord2(16403627,3627,'Stensåsen',nil,nil).
-statcoord2(16403731,3731,'Stenvold',nil,nil).
-statcoord2(16406618,6618,'Stigerslia',nil,nil).
-statcoord2(16403618,3618,'Stigerslia',nil,nil).
-statcoord2(16406719,6719,'Stolt',nil,nil).
-statcoord2(16403719,3719,'Stolt',nil,nil).
-statcoord2(16406665,6665,'Storbua',nil,nil).
-statcoord2(16403665,3665,'Storbua',nil,nil).
-statcoord2(16406721,6721,'Storhåsjømyra',nil,nil).
-statcoord2(16403721,3721,'Storhåsjømyra',nil,nil).
-statcoord2(16406612,6612,'Strømmevolden',nil,nil).
-statcoord2(16403612,3612,'Strømmevolden',nil,nil).
-statcoord2(16403650,3650,'Sulus',nil,nil).
-statcoord2(16406690,6690,'Sundbakken',nil,nil).
-statcoord2(16403690,3690,'Sundbakken',nil,nil).
-statcoord2(16406641,6641,'Sundet, Røros',nil,nil).
-statcoord2(16403641,3641,'Sundet, Røros',nil,nil).
-statcoord2(16406720,6720,'Sundt',nil,nil).
-statcoord2(16403720,3720,'Sundt',nil,nil).
-statcoord2(16406717,6717,'Svenskmyra',nil,nil).
-statcoord2(16403717,3717,'Svenskmyra',nil,nil).
-statcoord2(16406725,6725,'Synnervika',nil,nil).
-statcoord2(16403725,3725,'Synnervika',nil,nil).
-statcoord2(16403622,3622,'Tomtebo',nil,nil).
-statcoord2(16406640,6640,'Trøan',nil,nil).
-statcoord2(16403640,3640,'Trøan',nil,nil).
-statcoord2(16406682,6682,'Tyskvolden',nil,nil).
-statcoord2(16403682,3682,'Tyskvolden',nil,nil).
-statcoord2(16406715,6715,'Tørresdalen',nil,nil).
-statcoord2(16403715,3715,'Tørresdalen',nil,nil).
-statcoord2(16406634,6634,'Vauldalen',nil,nil).
-statcoord2(16403634,3634,'Vauldalen',nil,nil).
-statcoord2(16406685,6685,'Vestre Sandneset',nil,nil).
-statcoord2(16403685,3685,'Vestre Sandneset',nil,nil).
-statcoord2(16406648,6648,'Vikakrysset',nil,nil).
-statcoord2(16403648,3648,'Vikakrysset',nil,nil).
-statcoord2(16406681,6681,'Viken / Dalakrysset',nil,nil).
-statcoord2(16403681,3681,'Viken / Dalakrysset',nil,nil).
-statcoord2(16403730,3730,'Vikheim',nil,nil).
-statcoord2(16406572,6572,'Vintervollen',nil,nil).
-statcoord2(16403572,3572,'Vintervollen',nil,nil).
-statcoord2(16403727,3727,'Vollberget Øvre',nil,nil).
-statcoord2(16406686,6686,'Østre Sandneset',nil,nil).
-statcoord2(16403686,3686,'Østre Sandneset',nil,nil).
-statcoord2(16403743,3743,'Øybakken',nil,nil).
-statcoord2(16446770,6770,'Bendbrua',nil,nil).
-statcoord2(16443770,3770,'Bendbrua',nil,nil).
-statcoord2(16446792,6792,'Bjørgan',nil,nil).
-statcoord2(16443792,3792,'Bjørgan',nil,nil).
-statcoord2(16446537,6537,'Bollingmo',nil,nil).
-statcoord2(16443537,3537,'Bollingmo',nil,nil).
-statcoord2(16446785,6785,'Dragmyrhaug',nil,nil).
-statcoord2(16443785,3785,'Dragmyrhaug',nil,nil).
-statcoord2(16446549,6549,'Eidet bru',nil,nil).
-statcoord2(16443549,3549,'Eidet bru',nil,nil).
-statcoord2(16446550,6550,'Eidet, Holtålen',nil,nil).
-statcoord2(16443550,3550,'Eidet, Holtålen',nil,nil).
-statcoord2(16443732,3732,'Fætten',nil,nil).
-statcoord2(16446539,6539,'Gildset',nil,nil).
-statcoord2(16443539,3539,'Gildset',nil,nil).
-statcoord2(16446733,6733,'Gildset Gartneri',nil,nil).
-statcoord2(16446778,6778,'Gjersvold',nil,nil).
-statcoord2(16443778,3778,'Gjersvold',nil,nil).
-statcoord2(16446752,6752,'Graftås samfunnshus',nil,nil).
-statcoord2(16443752,3752,'Graftås samfunnshus',nil,nil).
-statcoord2(16446540,6540,'Gåregrenda',nil,nil).
-statcoord2(16443540,3540,'Gåregrenda',nil,nil).
-statcoord2(16446786,6786,'Hallguttubakken',nil,nil).
-statcoord2(16443786,3786,'Hallguttubakken',nil,nil).
-statcoord2(16446545,6545,'Haltdalen Kop',nil,nil).
-statcoord2(16443545,3545,'Haltdalen Kop',nil,nil).
-statcoord2(16446775,6775,'Heggset',nil,nil).
-statcoord2(16443775,3775,'Heggset',nil,nil).
-statcoord2(16446777,6777,'Hessdalen krk.',nil,nil).
-statcoord2(16443777,3777,'Hessdalen krk.',nil,nil).
-statcoord2(16446773,6773,'Hessdalskjølen',nil,nil).
-statcoord2(16443773,3773,'Hessdalskjølen',nil,nil).
-statcoord2(16446769,6769,'Hessdalskrysset',nil,nil).
-statcoord2(16443769,3769,'Hessdalskrysset',nil,nil).
-statcoord2(16443728,3728,'Holden',nil,nil).
-statcoord2(16443727,3727,'Holden Bil',nil,nil).
-statcoord2(16446559,6559,'Holden Nedre',nil,nil).
-statcoord2(16443559,3559,'Holden Nedre',nil,nil).
-statcoord2(16446560,6560,'Holden Øvre',nil,nil).
-statcoord2(16443560,3560,'Holden Øvre',nil,nil).
-statcoord2(16446554,6554,'Hov sk.',nil,nil).
-statcoord2(16443554,3554,'Hov sk.',nil,nil).
-statcoord2(16446780,6780,'Jenshaugen',nil,nil).
-statcoord2(16443780,3780,'Jenshaugen',nil,nil).
-statcoord2(16446557,6557,'Jordsli',nil,nil).
-statcoord2(16443557,3557,'Jordsli',nil,nil).
-statcoord2(16446779,6779,'Kjerrengvoll',nil,nil).
-statcoord2(16443779,3779,'Kjerrengvoll',nil,nil).
-statcoord2(16446791,6791,'Kroken, Holtålen',nil,nil).
-statcoord2(16443791,3791,'Kroken, Holtålen',nil,nil).
-statcoord2(16446538,6538,'Langlete',nil,nil).
-statcoord2(16443538,3538,'Langlete',nil,nil).
-statcoord2(16443730,3730,'Lia',nil,nil).
-statcoord2(16446730,6730,'Lia',nil,nil).
-statcoord2(16446793,6793,'Kjølsslåtta / Lia',nil,nil).
-statcoord2(16443793,3793,'Kjølsslåtta / Lia',nil,nil).
-statcoord2(16446794,6794,'Lian, Holtålen',nil,nil).
-statcoord2(16443794,3794,'Lian, Holtålen',nil,nil).
-statcoord2(16446772,6772,'Meismyren',nil,nil).
-statcoord2(16443772,3772,'Meismyren',nil,nil).
-statcoord2(16443729,3729,'Melien',nil,nil).
-statcoord2(16446797,6797,'Midtaune',nil,nil).
-statcoord2(16443797,3797,'Midtaune',nil,nil).
-statcoord2(16446553,6553,'Mo bru',nil,nil).
-statcoord2(16443553,3553,'Mo bru',nil,nil).
-statcoord2(16446552,6552,'Mosletta',nil,nil).
-statcoord2(16443552,3552,'Mosletta',nil,nil).
-statcoord2(16446551,6551,'Myrhaug',nil,nil).
-statcoord2(16443551,3551,'Myrhaug',nil,nil).
-statcoord2(16446561,6561,'Nesvold',nil,nil).
-statcoord2(16443561,3561,'Nesvold',nil,nil).
-statcoord2(16446795,6795,'Nordaune',nil,nil).
-statcoord2(16443795,3795,'Nordaune',nil,nil).
-statcoord2(16446542,6542,'Prestrønning',nil,nil).
-statcoord2(16443542,3542,'Prestrønning',nil,nil).
-statcoord2(16446790,6790,'Ranøyen',nil,nil).
-statcoord2(16443790,3790,'Ranøyen',nil,nil).
-statcoord2(16443734,3734,'Reitan stasjon',nil,nil).
-statcoord2(16446757,6757,'Reitlikrysset',nil,nil).
-statcoord2(16443757,3757,'Reitlikrysset',nil,nil).
-statcoord2(16446751,6751,'Renbrua',nil,nil).
-statcoord2(16443751,3751,'Renbrua',nil,nil).
-statcoord2(16446758,6758,'Rugelbrua',nil,nil).
-statcoord2(16443758,3758,'Rugelbrua',nil,nil).
-statcoord2(16446755,6755,'Råen',nil,nil).
-statcoord2(16443755,3755,'Råen',nil,nil).
-statcoord2(16446776,6776,'Skogås',nil,nil).
-statcoord2(16443776,3776,'Skogås',nil,nil).
-statcoord2(16446754,6754,'Skårdal',nil,nil).
-statcoord2(16443754,3754,'Skårdal',nil,nil).
-statcoord2(16443726,3726,'Spellan',nil,nil).
-statcoord2(16446782,6782,'Stensli  ',nil,nil).
-statcoord2(16443782,3782,'Stensli  ',nil,nil).
-statcoord2(16446750,6750,'Svarthåggån',nil,nil).
-statcoord2(16443750,3750,'Svarthåggån',nil,nil).
-statcoord2(16446798,6798,'Tronsaune',nil,nil).
-statcoord2(16443798,3798,'Tronsaune',nil,nil).
-statcoord2(16446796,6796,'Tveråvoll',nil,nil).
-statcoord2(16443796,3796,'Tveråvoll',nil,nil).
-statcoord2(16446558,6558,'Unsholte',nil,nil).
-statcoord2(16443558,3558,'Unsholte',nil,nil).
-statcoord2(16446771,6771,'Vollavegkrysset',nil,nil).
-statcoord2(16443771,3771,'Vollavegkrysset',nil,nil).
-statcoord2(16446756,6756,'Vongraven',nil,nil).
-statcoord2(16443756,3756,'Vongraven',nil,nil).
-statcoord2(16446774,6774,'Vårhus',nil,nil).
-statcoord2(16443774,3774,'Vårhus',nil,nil).
-statcoord2(16446541,6541,'Ysetmoen',nil,nil).
-statcoord2(16443541,3541,'Ysetmoen',nil,nil).
-statcoord2(16446548,6548,'Øyen',nil,nil).
-statcoord2(16443548,3548,'Øyen',nil,nil).
-statcoord2(16446555,6555,'Ålen sentrum',nil,nil).
-statcoord2(16443555,3555,'Ålen sentrum',nil,nil).
-statcoord2(16443753,3753,'Ålen Øvre',nil,nil).
-statcoord2(16446753,6753,'Ålen Øvre',nil,nil).
-statcoord2(16488532,8532,'Almås',nil,nil).
-statcoord2(16483532,3532,'Almås',nil,nil).
-statcoord2(16483735,3735,'Almåsgård',nil,nil).
-statcoord2(16488533,8533,'Almåsøy',nil,nil).
-statcoord2(16483533,3533,'Almåsøy',nil,nil).
-statcoord2(16488803,8803,'Amdal',nil,nil).
-statcoord2(16483803,3803,'Amdal',nil,nil).
-statcoord2(16488851,8851,'Anshus',nil,nil).
-statcoord2(16483851,3851,'Anshus',nil,nil).
-statcoord2(16488865,8865,'Asklund',nil,nil).
-statcoord2(16483865,3865,'Asklund',nil,nil).
-statcoord2(16488932,8932,'Aune 2, Midre Gauldal',nil,nil).
-statcoord2(16483932,3932,'Aune 2, Midre Gauldal',nil,nil).
-statcoord2(16488907,8907,'Aune, Midtre Gauldal',nil,nil).
-statcoord2(16483507,3507,'Aune, Midtre Gauldal',nil,nil).
-statcoord2(16488506,8506,'Aunøien',nil,nil).
-statcoord2(16483506,3506,'Aunøien',nil,nil).
-statcoord2(16488838,8838,'Bakkgjære',nil,nil).
-statcoord2(16483838,3838,'Bakkgjære',nil,nil).
-statcoord2(16488890,8890,'Berg, Midtre Gauldal',nil,nil).
-statcoord2(16483890,3890,'Berg, Midtre Gauldal',nil,nil).
-statcoord2(16488822,8822,'Bjerkli',nil,nil).
-statcoord2(16483822,3822,'Bjerkli',nil,nil).
-statcoord2(16488840,8840,'Bjerkset',nil,nil).
-statcoord2(16483840,3840,'Bjerkset',nil,nil).
-statcoord2(16483730,3730,'Bjørgen',nil,nil).
-statcoord2(16488244,8244,'Bjørset',nil,nil).
-statcoord2(16483244,3244,'Bjørset',nil,nil).
-statcoord2(16488513,8513,'Bogen',nil,nil).
-statcoord2(16483513,3513,'Bogen',nil,nil).
-statcoord2(16488511,8511,'Bones',nil,nil).
-statcoord2(16483511,3511,'Bones',nil,nil).
-statcoord2(16488930,8930,'Bratteggen',nil,nil).
-statcoord2(16483930,3930,'Bratteggen',nil,nil).
-statcoord2(16488880,8880,'Bruamoen',nil,nil).
-statcoord2(16483880,3880,'Bruamoen',nil,nil).
-statcoord2(16488888,8888,'Bræk',nil,nil).
-statcoord2(16483888,3888,'Bræk',nil,nil).
-statcoord2(16488825,8825,'Buset',nil,nil).
-statcoord2(16483825,3825,'Buset',nil,nil).
-statcoord2(16488826,8826,'Busetmarka',nil,nil).
-statcoord2(16483826,3826,'Busetmarka',nil,nil).
-statcoord2(16488536,8536,'Dybdalsbakk',nil,nil).
-statcoord2(16483536,3536,'Dybdalsbakk',nil,nil).
-statcoord2(16488814,8814,'Dyrvoll',nil,nil).
-statcoord2(16483814,3814,'Dyrvoll',nil,nil).
-statcoord2(16488847,8847,'Eggen, Midtre Gauldal',nil,nil).
-statcoord2(16483847,3847,'Eggen, Midtre Gauldal',nil,nil).
-statcoord2(16488886,8886,'Engan, Midtre Gauldal',nil,nil).
-statcoord2(16483886,3886,'Engan, Midtre Gauldal',nil,nil).
-statcoord2(16488821,8821,'Enlid',nil,nil).
-statcoord2(16483821,3821,'Enlid',nil,nil).
-statcoord2(16488819,8819,'Enmo',nil,nil).
-statcoord2(16483819,3819,'Enmo',nil,nil).
-statcoord2(16488815,8815,'Enodd',nil,nil).
-statcoord2(16483815,3815,'Enodd',nil,nil).
-statcoord2(16488849,8849,'Fagerbekk',nil,nil).
-statcoord2(16483849,3849,'Fagerbekk',nil,nil).
-statcoord2(16488521,8521,'Fjeset',nil,nil).
-statcoord2(16483521,3521,'Fjeset',nil,nil).
-statcoord2(16483736,3736,'Flatåsen',nil,nil).
-statcoord2(16488846,8846,'Fløttum, Midtre Gauldal',nil,nil).
-statcoord2(16483846,3846,'Fløttum, Midtre Gauldal',nil,nil).
-statcoord2(16488906,8906,'Folstad',nil,nil).
-statcoord2(16483906,3906,'Folstad',nil,nil).
-statcoord2(16488520,8520,'Forsetmoen',nil,nil).
-statcoord2(16483520,3520,'Forsetmoen',nil,nil).
-statcoord2(16488242,8242,'Fossestua',nil,nil).
-statcoord2(16483242,3242,'Fossestua',nil,nil).
-statcoord2(16488904,8904,'Frøsetfeltet',nil,nil).
-statcoord2(16483904,3904,'Frøsetfeltet',nil,nil).
-statcoord2(16488836,8836,'Frøseth',nil,nil).
-statcoord2(16483836,3836,'Frøseth',nil,nil).
-statcoord2(16488902,8902,'Frøsetveien',nil,nil).
-statcoord2(16483902,3902,'Frøsetveien',nil,nil).
-statcoord2(16488250,8250,'Garli',nil,nil).
-statcoord2(16483250,3250,'Garli',nil,nil).
-statcoord2(16483741,3741,'Garli gård',nil,nil).
-statcoord2(16483742,3742,'Garli Rasteplass',nil,nil).
-statcoord2(16483246,3246,'Gullvåg camping',nil,nil).
-statcoord2(16488246,8246,'Gullvåg camping',nil,nil).
-statcoord2(16483740,3740,'Gunhildsøy bru',nil,nil).
-statcoord2(16488889,8889,'Gynnild',nil,nil).
-statcoord2(16483889,3889,'Gynnild',nil,nil).
-statcoord2(16488807,8807,'Hage',nil,nil).
-statcoord2(16483807,3807,'Hage',nil,nil).
+statcoord2(16403735,3735,'Autotomta',0,0).
+statcoord2(16406735,6735,'Autotomta',0,0).
+statcoord2(16406644,6644,'Bakken',0,0).
+statcoord2(16403644,3644,'Bakken',0,0).
+statcoord2(16406687,6687,'Bekkosen',0,0).
+statcoord2(16403687,3687,'Bekkosen',0,0).
+statcoord2(16406651,6651,'Bendiksvoll',0,0).
+statcoord2(16403651,3651,'Bendiksvoll',0,0).
+statcoord2(16403737,3737,'Bentvollen',0,0).
+statcoord2(16406566,6566,'Bergan',0,0).
+statcoord2(16403566,3566,'Bergan',0,0).
+statcoord2(16406603,6603,'Bergstaden hotel',0,0).
+statcoord2(16403620,3620,'Billehaugen',0,0).
+statcoord2(16406694,6694,'Blautmyrvegen',0,0).
+statcoord2(16403694,3694,'Blautmyrvegen',0,0).
+statcoord2(16406628,6628,'Botnlia',0,0).
+statcoord2(16403628,3628,'Botnlia',0,0).
+statcoord2(16406574,6574,'Brandegga',0,0).
+statcoord2(16403574,3574,'Brandegga',0,0).
+statcoord2(16406630,6630,'Brekken Kop',0,0).
+statcoord2(16403630,3630,'Brekken Kop',0,0).
+statcoord2(16406660,6660,'Brynhildsvoll',0,0).
+statcoord2(16403660,3660,'Brynhildsvoll',0,0).
+statcoord2(16406683,6683,'Bukkvollene',0,0).
+statcoord2(16403683,3683,'Bukkvollene',0,0).
+statcoord2(16406691,6691,'Engan, Røros',0,0).
+statcoord2(16403691,3691,'Engan, Røros',0,0).
+statcoord2(16406653,6653,'Engesvoll',0,0).
+statcoord2(16403653,3653,'Engesvoll',0,0).
+statcoord2(16403613,3613,'Engvik, Røros',0,0).
+statcoord2(16406573,6573,'Erlivegen',0,0).
+statcoord2(16403573,3573,'Erlivegen',0,0).
+statcoord2(16406656,6656,'Evavoll',0,0).
+statcoord2(16403656,3656,'Evavoll',0,0).
+statcoord2(16403740,3740,'Falkberget',0,0).
+statcoord2(16406636,6636,'Feragen',0,0).
+statcoord2(16403636,3636,'Feragen',0,0).
+statcoord2(16406696,6696,'Finnegården',0,0).
+statcoord2(16403696,3696,'Finnegården',0,0).
+statcoord2(16403734,3734,'Fjellheimen',0,0).
+statcoord2(16406734,6734,'Fjellheimen',0,0).
+statcoord2(16403728,3728,'Flekviken',0,0).
+statcoord2(16406695,6695,'Galåen bh.',0,0).
+statcoord2(16403695,3695,'Galåen bh.',0,0).
+statcoord2(16406692,6692,'Galåen boligfelt',0,0).
+statcoord2(16403692,3692,'Galåen boligfelt',0,0).
+statcoord2(16406693,6693,'Galåvollen boligfelt',0,0).
+statcoord2(16403693,3693,'Galåvollen boligfelt',0,0).
+statcoord2(16406601,6601,'Gauldal Billag A/S',0,0).
+statcoord2(16403601,3601,'Gauldal Billag A/S',0,0).
+statcoord2(16403736,3736,'Gjøsvik bru',0,0).
+statcoord2(16406736,6736,'Gjøsvik bru',0,0).
+statcoord2(16406570,6570,'Glåmos',0,0).
+statcoord2(16403570,3570,'Glåmos',0,0).
+statcoord2(16406646,6646,'Glåmos samfunnshus',0,0).
+statcoord2(16403646,3646,'Glåmos samfunnshus',0,0).
+statcoord2(16406571,6571,'Glåmos stadion',0,0).
+statcoord2(16403571,3571,'Glåmos stadion',0,0).
+statcoord2(16406568,6568,'Grunnkloppa',0,0).
+statcoord2(16403568,3568,'Grunnkloppa',0,0).
+statcoord2(16406619,6619,'Grunnsjømyra',0,0).
+statcoord2(16403741,3741,'Gullikstad Sør',0,0).
+statcoord2(16406629,6629,'Hagavika',0,0).
+statcoord2(16403629,3629,'Hagavika',0,0).
+statcoord2(16406565,6565,'Harborg',0,0).
+statcoord2(16403565,3565,'Harborg',0,0).
+statcoord2(16406662,6662,'Haugen, Røros',0,0).
+statcoord2(16403662,3662,'Haugen, Røros',0,0).
+statcoord2(16406703,6703,'Havsjøen',0,0).
+statcoord2(16403703,3703,'Havsjøen',0,0).
+statcoord2(16403733,3733,'Hjulmakerveien',0,0).
+statcoord2(16406702,6702,'Høsøien',0,0).
+statcoord2(16403702,3702,'Høsøien',0,0).
+statcoord2(16406697,6697,'Høsøien st.',0,0).
+statcoord2(16403697,3697,'Høsøien st.',0,0).
+statcoord2(16406699,6699,'Håneset indre',0,0).
+statcoord2(16403699,3699,'Håneset indre',0,0).
+statcoord2(16406701,6701,'Hånesvegen',0,0).
+statcoord2(16403701,3701,'Hånesvegen',0,0).
+statcoord2(16406700,6700,'Hånesåsen',0,0).
+statcoord2(16403700,3700,'Hånesåsen',0,0).
+statcoord2(16403742,3742,'Jamt ',0,0).
+statcoord2(16406658,6658,'Jamtvoll',0,0).
+statcoord2(16403658,3658,'Jamtvoll',0,0).
+statcoord2(16406621,6621,'Jensvolden',0,0).
+statcoord2(16403621,3621,'Jensvolden',0,0).
+statcoord2(16406624,6624,'Kjeldsvollen',0,0).
+statcoord2(16403624,3624,'Kjeldsvollen',0,0).
+statcoord2(16406654,6654,'Klasvold / Sommer',0,0).
+statcoord2(16403654,3654,'Klasvold / Sommer',0,0).
+statcoord2(16406680,6680,'Klemetvold',0,0).
+statcoord2(16403680,3680,'Klemetvold',0,0).
+statcoord2(16406625,6625,'Kojan',0,0).
+statcoord2(16403625,3625,'Kojan',0,0).
+statcoord2(16406659,6659,'Kokkvollen',0,0).
+statcoord2(16403659,3659,'Kokkvollen',0,0).
+statcoord2(16406567,6567,'Kroken v.kr. Rv 30',0,0).
+statcoord2(16403567,3567,'Kroken v.kr. Rv 30',0,0).
+statcoord2(16406626,6626,'Kryss Valset',0,0).
+statcoord2(16403626,3626,'Kryss Valset',0,0).
+statcoord2(16406647,6647,'Kuråsen',0,0).
+statcoord2(16403647,3647,'Kuråsen',0,0).
+statcoord2(16406643,6643,'Kvernengan',0,0).
+statcoord2(16403643,3643,'Kvernengan',0,0).
+statcoord2(16406718,6718,'Kvipsdalsveien',0,0).
+statcoord2(16403718,3718,'Kvipsdalsveien',0,0).
+statcoord2(16403739,3739,'Kåsa',0,0).
+statcoord2(16406623,6623,'Langen',0,0).
+statcoord2(16406722,6722,'Langen',0,0).
+statcoord2(16403623,3623,'Langen',0,0).
+statcoord2(16403722,3722,'Langen',0,0).
+statcoord2(16406578,6578,'Langset',0,0).
+statcoord2(16403578,3578,'Langset',0,0).
+statcoord2(16406713,6713,'Løkkja',0,0).
+statcoord2(16403713,3713,'Løkkja',0,0).
+statcoord2(16406664,6664,'Martavoll',0,0).
+statcoord2(16403664,3664,'Martavoll',0,0).
+statcoord2(16406616,6616,'Moan / Aasen',0,0).
+statcoord2(16403616,3616,'Moan / Aasen',0,0).
+statcoord2(16406661,6661,'Myrmoen',0,0).
+statcoord2(16403661,3661,'Myrmoen',0,0).
+statcoord2(16406667,6667,'Mæla, Røros',0,0).
+statcoord2(16403667,3667,'Mæla, Røros',0,0).
+statcoord2(16406649,6649,'Naustervoll',0,0).
+statcoord2(16403649,3649,'Naustervoll',0,0).
+statcoord2(16406666,6666,'Nesvall',0,0).
+statcoord2(16403666,3666,'Nesvall',0,0).
+statcoord2(16406615,6615,'Nicolaisen',0,0).
+statcoord2(16403615,3615,'Nicolaisen',0,0).
+statcoord2(16406575,6575,'Ol-Jensabakken',0,0).
+statcoord2(16403575,3575,'Ol-Jensabakken',0,0).
+statcoord2(16406645,6645,'Ormhaugen',0,0).
+statcoord2(16403645,3645,'Ormhaugen',0,0).
+statcoord2(16403729,3729,'Pliktfogdvollen',0,0).
+statcoord2(16406712,6712,'Rismoen',0,0).
+statcoord2(16403712,3712,'Rismoen',0,0).
+statcoord2(16406563,6563,'Rugeldalen st.',0,0).
+statcoord2(16403563,3563,'Rugeldalen st.',0,0).
+statcoord2(16406564,6564,'Rugelsjøen',0,0).
+statcoord2(16403564,3564,'Rugelsjøen',0,0).
+statcoord2(16406711,6711,'Rybrua',0,0).
+statcoord2(16403711,3711,'Rybrua',0,0).
+statcoord2(16406562,6562,'Ryen',0,0).
+statcoord2(16403562,3562,'Ryen',0,0).
+statcoord2(16406657,6657,'Ryttervoll',0,0).
+statcoord2(16403657,3657,'Ryttervoll',0,0).
+statcoord2(16406633,6633,'Ryvollen',0,0).
+statcoord2(16403633,3633,'Ryvollen',0,0).
+statcoord2(16403726,3726,'Røa',0,0).
+statcoord2(16406663,6663,'Røkbuvoll',0,0).
+statcoord2(16403663,3663,'Røkbuvoll',0,0).
+statcoord2(16406600,6600,'Røros',0,0).
+statcoord2(16403600,3600,'Røros',0,0).
+statcoord2(16406642,6642,'Rørosgård',0,0).
+statcoord2(16403642,3642,'Rørosgård',0,0).
+statcoord2(16406652,6652,'Sakrisvoll',0,0).
+statcoord2(16403652,3652,'Sakrisvoll',0,0).
+statcoord2(16406614,6614,'Schjølbergbrua',0,0).
+statcoord2(16403614,3614,'Schjølbergbrua',0,0).
+statcoord2(16406716,6716,'Setra, Røros',0,0).
+statcoord2(16403716,3716,'Setra, Røros',0,0).
+statcoord2(16403738,3738,'Sevatdalen  ',0,0).
+statcoord2(16406714,6714,'Sevatdalen v.kr.',0,0).
+statcoord2(16403714,3714,'Sevatdalen v.kr.',0,0).
+statcoord2(16406611,6611,'Sjøbakken',0,0).
+statcoord2(16403611,3611,'Sjøbakken',0,0).
+statcoord2(16403732,3732,'Sjøvollkrysset',0,0).
+statcoord2(16403710,3710,'Skistugguveien',0,0).
+statcoord2(16406632,6632,'Skottgården',0,0).
+statcoord2(16403632,3632,'Skottgården',0,0).
+statcoord2(16406617,6617,'Sommer / Valset',0,0).
+statcoord2(16403617,3617,'Sommer / Valset',0,0).
+statcoord2(16406655,6655,'Sommerlia',0,0).
+statcoord2(16403655,3655,'Sommerlia',0,0).
+statcoord2(16406698,6698,'Stamphuset',0,0).
+statcoord2(16403698,3698,'Stamphuset',0,0).
+statcoord2(16406627,6627,'Stensåsen',0,0).
+statcoord2(16403627,3627,'Stensåsen',0,0).
+statcoord2(16403731,3731,'Stenvold',0,0).
+statcoord2(16406618,6618,'Stigerslia',0,0).
+statcoord2(16403618,3618,'Stigerslia',0,0).
+statcoord2(16406719,6719,'Stolt',0,0).
+statcoord2(16403719,3719,'Stolt',0,0).
+statcoord2(16406665,6665,'Storbua',0,0).
+statcoord2(16403665,3665,'Storbua',0,0).
+statcoord2(16406721,6721,'Storhåsjømyra',0,0).
+statcoord2(16403721,3721,'Storhåsjømyra',0,0).
+statcoord2(16406612,6612,'Strømmevolden',0,0).
+statcoord2(16403612,3612,'Strømmevolden',0,0).
+statcoord2(16403650,3650,'Sulus',0,0).
+statcoord2(16406690,6690,'Sundbakken',0,0).
+statcoord2(16403690,3690,'Sundbakken',0,0).
+statcoord2(16406641,6641,'Sundet, Røros',0,0).
+statcoord2(16403641,3641,'Sundet, Røros',0,0).
+statcoord2(16406720,6720,'Sundt',0,0).
+statcoord2(16403720,3720,'Sundt',0,0).
+statcoord2(16406717,6717,'Svenskmyra',0,0).
+statcoord2(16403717,3717,'Svenskmyra',0,0).
+statcoord2(16406725,6725,'Synnervika',0,0).
+statcoord2(16403725,3725,'Synnervika',0,0).
+statcoord2(16403622,3622,'Tomtebo',0,0).
+statcoord2(16406640,6640,'Trøan',0,0).
+statcoord2(16403640,3640,'Trøan',0,0).
+statcoord2(16406682,6682,'Tyskvolden',0,0).
+statcoord2(16403682,3682,'Tyskvolden',0,0).
+statcoord2(16406715,6715,'Tørresdalen',0,0).
+statcoord2(16403715,3715,'Tørresdalen',0,0).
+statcoord2(16406634,6634,'Vauldalen',0,0).
+statcoord2(16403634,3634,'Vauldalen',0,0).
+statcoord2(16406685,6685,'Vestre Sandneset',0,0).
+statcoord2(16403685,3685,'Vestre Sandneset',0,0).
+statcoord2(16406648,6648,'Vikakrysset',0,0).
+statcoord2(16403648,3648,'Vikakrysset',0,0).
+statcoord2(16406681,6681,'Viken / Dalakrysset',0,0).
+statcoord2(16403681,3681,'Viken / Dalakrysset',0,0).
+statcoord2(16403730,3730,'Vikheim',0,0).
+statcoord2(16406572,6572,'Vintervollen',0,0).
+statcoord2(16403572,3572,'Vintervollen',0,0).
+statcoord2(16403727,3727,'Vollberget Øvre',0,0).
+statcoord2(16406686,6686,'Østre Sandneset',0,0).
+statcoord2(16403686,3686,'Østre Sandneset',0,0).
+statcoord2(16403743,3743,'Øybakken',0,0).
+statcoord2(16446770,6770,'Bendbrua',0,0).
+statcoord2(16443770,3770,'Bendbrua',0,0).
+statcoord2(16446792,6792,'Bjørgan',0,0).
+statcoord2(16443792,3792,'Bjørgan',0,0).
+statcoord2(16446537,6537,'Bollingmo',0,0).
+statcoord2(16443537,3537,'Bollingmo',0,0).
+statcoord2(16446785,6785,'Dragmyrhaug',0,0).
+statcoord2(16443785,3785,'Dragmyrhaug',0,0).
+statcoord2(16446549,6549,'Eidet bru',0,0).
+statcoord2(16443549,3549,'Eidet bru',0,0).
+statcoord2(16446550,6550,'Eidet, Holtålen',0,0).
+statcoord2(16443550,3550,'Eidet, Holtålen',0,0).
+statcoord2(16443732,3732,'Fætten',0,0).
+statcoord2(16446539,6539,'Gildset',0,0).
+statcoord2(16443539,3539,'Gildset',0,0).
+statcoord2(16446733,6733,'Gildset Gartneri',0,0).
+statcoord2(16446778,6778,'Gjersvold',0,0).
+statcoord2(16443778,3778,'Gjersvold',0,0).
+statcoord2(16446752,6752,'Graftås samfunnshus',0,0).
+statcoord2(16443752,3752,'Graftås samfunnshus',0,0).
+statcoord2(16446540,6540,'Gåregrenda',0,0).
+statcoord2(16443540,3540,'Gåregrenda',0,0).
+statcoord2(16446786,6786,'Hallguttubakken',0,0).
+statcoord2(16443786,3786,'Hallguttubakken',0,0).
+statcoord2(16446545,6545,'Haltdalen Kop',0,0).
+statcoord2(16443545,3545,'Haltdalen Kop',0,0).
+statcoord2(16446775,6775,'Heggset',0,0).
+statcoord2(16443775,3775,'Heggset',0,0).
+statcoord2(16446777,6777,'Hessdalen krk.',0,0).
+statcoord2(16443777,3777,'Hessdalen krk.',0,0).
+statcoord2(16446773,6773,'Hessdalskjølen',0,0).
+statcoord2(16443773,3773,'Hessdalskjølen',0,0).
+statcoord2(16446769,6769,'Hessdalskrysset',0,0).
+statcoord2(16443769,3769,'Hessdalskrysset',0,0).
+statcoord2(16443728,3728,'Holden',0,0).
+statcoord2(16443727,3727,'Holden Bil',0,0).
+statcoord2(16446559,6559,'Holden Nedre',0,0).
+statcoord2(16443559,3559,'Holden Nedre',0,0).
+statcoord2(16446560,6560,'Holden Øvre',0,0).
+statcoord2(16443560,3560,'Holden Øvre',0,0).
+statcoord2(16446554,6554,'Hov sk.',0,0).
+statcoord2(16443554,3554,'Hov sk.',0,0).
+statcoord2(16446780,6780,'Jenshaugen',0,0).
+statcoord2(16443780,3780,'Jenshaugen',0,0).
+statcoord2(16446557,6557,'Jordsli',0,0).
+statcoord2(16443557,3557,'Jordsli',0,0).
+statcoord2(16446779,6779,'Kjerrengvoll',0,0).
+statcoord2(16443779,3779,'Kjerrengvoll',0,0).
+statcoord2(16446791,6791,'Kroken, Holtålen',0,0).
+statcoord2(16443791,3791,'Kroken, Holtålen',0,0).
+statcoord2(16446538,6538,'Langlete',0,0).
+statcoord2(16443538,3538,'Langlete',0,0).
+statcoord2(16443730,3730,'Lia',0,0).
+statcoord2(16446730,6730,'Lia',0,0).
+statcoord2(16446793,6793,'Kjølsslåtta / Lia',0,0).
+statcoord2(16443793,3793,'Kjølsslåtta / Lia',0,0).
+statcoord2(16446794,6794,'Lian, Holtålen',0,0).
+statcoord2(16443794,3794,'Lian, Holtålen',0,0).
+statcoord2(16446772,6772,'Meismyren',0,0).
+statcoord2(16443772,3772,'Meismyren',0,0).
+statcoord2(16443729,3729,'Melien',0,0).
+statcoord2(16446797,6797,'Midtaune',0,0).
+statcoord2(16443797,3797,'Midtaune',0,0).
+statcoord2(16446553,6553,'Mo bru',0,0).
+statcoord2(16443553,3553,'Mo bru',0,0).
+statcoord2(16446552,6552,'Mosletta',0,0).
+statcoord2(16443552,3552,'Mosletta',0,0).
+statcoord2(16446551,6551,'Myrhaug',0,0).
+statcoord2(16443551,3551,'Myrhaug',0,0).
+statcoord2(16446561,6561,'Nesvold',0,0).
+statcoord2(16443561,3561,'Nesvold',0,0).
+statcoord2(16446795,6795,'Nordaune',0,0).
+statcoord2(16443795,3795,'Nordaune',0,0).
+statcoord2(16446542,6542,'Prestrønning',0,0).
+statcoord2(16443542,3542,'Prestrønning',0,0).
+statcoord2(16446790,6790,'Ranøyen',0,0).
+statcoord2(16443790,3790,'Ranøyen',0,0).
+statcoord2(16443734,3734,'Reitan stasjon',0,0).
+statcoord2(16446757,6757,'Reitlikrysset',0,0).
+statcoord2(16443757,3757,'Reitlikrysset',0,0).
+statcoord2(16446751,6751,'Renbrua',0,0).
+statcoord2(16443751,3751,'Renbrua',0,0).
+statcoord2(16446758,6758,'Rugelbrua',0,0).
+statcoord2(16443758,3758,'Rugelbrua',0,0).
+statcoord2(16446755,6755,'Råen',0,0).
+statcoord2(16443755,3755,'Råen',0,0).
+statcoord2(16446776,6776,'Skogås',0,0).
+statcoord2(16443776,3776,'Skogås',0,0).
+statcoord2(16446754,6754,'Skårdal',0,0).
+statcoord2(16443754,3754,'Skårdal',0,0).
+statcoord2(16443726,3726,'Spellan',0,0).
+statcoord2(16446782,6782,'Stensli  ',0,0).
+statcoord2(16443782,3782,'Stensli  ',0,0).
+statcoord2(16446750,6750,'Svarthåggån',0,0).
+statcoord2(16443750,3750,'Svarthåggån',0,0).
+statcoord2(16446798,6798,'Tronsaune',0,0).
+statcoord2(16443798,3798,'Tronsaune',0,0).
+statcoord2(16446796,6796,'Tveråvoll',0,0).
+statcoord2(16443796,3796,'Tveråvoll',0,0).
+statcoord2(16446558,6558,'Unsholte',0,0).
+statcoord2(16443558,3558,'Unsholte',0,0).
+statcoord2(16446771,6771,'Vollavegkrysset',0,0).
+statcoord2(16443771,3771,'Vollavegkrysset',0,0).
+statcoord2(16446756,6756,'Vongraven',0,0).
+statcoord2(16443756,3756,'Vongraven',0,0).
+statcoord2(16446774,6774,'Vårhus',0,0).
+statcoord2(16443774,3774,'Vårhus',0,0).
+statcoord2(16446541,6541,'Ysetmoen',0,0).
+statcoord2(16443541,3541,'Ysetmoen',0,0).
+statcoord2(16446548,6548,'Øyen',0,0).
+statcoord2(16443548,3548,'Øyen',0,0).
+statcoord2(16446555,6555,'Ålen sentrum',0,0).
+statcoord2(16443555,3555,'Ålen sentrum',0,0).
+statcoord2(16443753,3753,'Ålen Øvre',0,0).
+statcoord2(16446753,6753,'Ålen Øvre',0,0).
+statcoord2(16488532,8532,'Almås',0,0).
+statcoord2(16483532,3532,'Almås',0,0).
+statcoord2(16483735,3735,'Almåsgård',0,0).
+statcoord2(16488533,8533,'Almåsøy',0,0).
+statcoord2(16483533,3533,'Almåsøy',0,0).
+statcoord2(16488803,8803,'Amdal',0,0).
+statcoord2(16483803,3803,'Amdal',0,0).
+statcoord2(16488851,8851,'Anshus',0,0).
+statcoord2(16483851,3851,'Anshus',0,0).
+statcoord2(16488865,8865,'Asklund',0,0).
+statcoord2(16483865,3865,'Asklund',0,0).
+statcoord2(16488932,8932,'Aune 2, Midre Gauldal',0,0).
+statcoord2(16483932,3932,'Aune 2, Midre Gauldal',0,0).
+statcoord2(16488907,8907,'Aune, Midtre Gauldal',0,0).
+statcoord2(16483507,3507,'Aune, Midtre Gauldal',0,0).
+statcoord2(16488506,8506,'Aunøien',0,0).
+statcoord2(16483506,3506,'Aunøien',0,0).
+statcoord2(16488838,8838,'Bakkgjære',0,0).
+statcoord2(16483838,3838,'Bakkgjære',0,0).
+statcoord2(16488890,8890,'Berg, Midtre Gauldal',0,0).
+statcoord2(16483890,3890,'Berg, Midtre Gauldal',0,0).
+statcoord2(16488822,8822,'Bjerkli',0,0).
+statcoord2(16483822,3822,'Bjerkli',0,0).
+statcoord2(16488840,8840,'Bjerkset',0,0).
+statcoord2(16483840,3840,'Bjerkset',0,0).
+statcoord2(16483730,3730,'Bjørgen',0,0).
+statcoord2(16488244,8244,'Bjørset',0,0).
+statcoord2(16483244,3244,'Bjørset',0,0).
+statcoord2(16488513,8513,'Bogen',0,0).
+statcoord2(16483513,3513,'Bogen',0,0).
+statcoord2(16488511,8511,'Bones',0,0).
+statcoord2(16483511,3511,'Bones',0,0).
+statcoord2(16488930,8930,'Bratteggen',0,0).
+statcoord2(16483930,3930,'Bratteggen',0,0).
+statcoord2(16488880,8880,'Bruamoen',0,0).
+statcoord2(16483880,3880,'Bruamoen',0,0).
+statcoord2(16488888,8888,'Bræk',0,0).
+statcoord2(16483888,3888,'Bræk',0,0).
+statcoord2(16488825,8825,'Buset',0,0).
+statcoord2(16483825,3825,'Buset',0,0).
+statcoord2(16488826,8826,'Busetmarka',0,0).
+statcoord2(16483826,3826,'Busetmarka',0,0).
+statcoord2(16488536,8536,'Dybdalsbakk',0,0).
+statcoord2(16483536,3536,'Dybdalsbakk',0,0).
+statcoord2(16488814,8814,'Dyrvoll',0,0).
+statcoord2(16483814,3814,'Dyrvoll',0,0).
+statcoord2(16488847,8847,'Eggen, Midtre Gauldal',0,0).
+statcoord2(16483847,3847,'Eggen, Midtre Gauldal',0,0).
+statcoord2(16488886,8886,'Engan, Midtre Gauldal',0,0).
+statcoord2(16483886,3886,'Engan, Midtre Gauldal',0,0).
+statcoord2(16488821,8821,'Enlid',0,0).
+statcoord2(16483821,3821,'Enlid',0,0).
+statcoord2(16488819,8819,'Enmo',0,0).
+statcoord2(16483819,3819,'Enmo',0,0).
+statcoord2(16488815,8815,'Enodd',0,0).
+statcoord2(16483815,3815,'Enodd',0,0).
+statcoord2(16488849,8849,'Fagerbekk',0,0).
+statcoord2(16483849,3849,'Fagerbekk',0,0).
+statcoord2(16488521,8521,'Fjeset',0,0).
+statcoord2(16483521,3521,'Fjeset',0,0).
+statcoord2(16483736,3736,'Flatåsen',0,0).
+statcoord2(16488846,8846,'Fløttum, Midtre Gauldal',0,0).
+statcoord2(16483846,3846,'Fløttum, Midtre Gauldal',0,0).
+statcoord2(16488906,8906,'Folstad',0,0).
+statcoord2(16483906,3906,'Folstad',0,0).
+statcoord2(16488520,8520,'Forsetmoen',0,0).
+statcoord2(16483520,3520,'Forsetmoen',0,0).
+statcoord2(16488242,8242,'Fossestua',0,0).
+statcoord2(16483242,3242,'Fossestua',0,0).
+statcoord2(16488904,8904,'Frøsetfeltet',0,0).
+statcoord2(16483904,3904,'Frøsetfeltet',0,0).
+statcoord2(16488836,8836,'Frøseth',0,0).
+statcoord2(16483836,3836,'Frøseth',0,0).
+statcoord2(16488902,8902,'Frøsetveien',0,0).
+statcoord2(16483902,3902,'Frøsetveien',0,0).
+statcoord2(16488250,8250,'Garli',0,0).
+statcoord2(16483250,3250,'Garli',0,0).
+statcoord2(16483741,3741,'Garli gård',0,0).
+statcoord2(16483742,3742,'Garli Rasteplass',0,0).
+statcoord2(16483246,3246,'Gullvåg camping',0,0).
+statcoord2(16488246,8246,'Gullvåg camping',0,0).
+statcoord2(16483740,3740,'Gunhildsøy bru',0,0).
+statcoord2(16488889,8889,'Gynnild',0,0).
+statcoord2(16483889,3889,'Gynnild',0,0).
+statcoord2(16488807,8807,'Hage',0,0).
+statcoord2(16483807,3807,'Hage',0,0).
 statcoord2(16488501,8501,'Hage bru',565063.259,6993660.695).
-statcoord2(16483201,3201,'Hage bru',nil,nil).
-statcoord2(16488839,8839,'Hagen, Midtre Gauldal',nil,nil).
-statcoord2(16483839,3839,'Hagen, Midtre Gauldal',nil,nil).
-statcoord2(16488872,8872,'Hallset',nil,nil).
-statcoord2(16483872,3872,'Hallset',nil,nil).
-statcoord2(16488830,8830,'Hanshus',nil,nil).
-statcoord2(16483830,3830,'Hanshus',nil,nil).
-statcoord2(16488845,8845,'Haugen, Midtre Gauldal',nil,nil).
-statcoord2(16483845,3845,'Haugen, Midtre Gauldal',nil,nil).
-statcoord2(16488874,8874,'Hauka sk.',nil,nil).
-statcoord2(16483874,3874,'Hauka sk.',nil,nil).
-statcoord2(16488802,8802,'Haukdal',nil,nil).
-statcoord2(16483802,3802,'Haukdal',nil,nil).
-statcoord2(16488801,8801,'Haukdal / Aas',nil,nil).
-statcoord2(16483801,3801,'Haukdal / Aas',nil,nil).
-statcoord2(16488233,8233,'Haukdalsbru',nil,nil).
-statcoord2(16483233,3233,'Haukdalsbru',nil,nil).
-statcoord2(16488878,8878,'Heggvoll',nil,nil).
-statcoord2(16483878,3878,'Heggvoll',nil,nil).
-statcoord2(16488827,8827,'Hetling',nil,nil).
-statcoord2(16483827,3827,'Hetling',nil,nil).
-statcoord2(16488529,8529,'Hindbjørgen',nil,nil).
-statcoord2(16483529,3529,'Hindbjørgen',nil,nil).
-statcoord2(16483726,3726,'Hindsverkrønning',nil,nil).
-statcoord2(16488848,8848,'Holm',nil,nil).
-statcoord2(16483848,3848,'Holm',nil,nil).
-statcoord2(16488833,8833,'Holtbrøtan',nil,nil).
-statcoord2(16483833,3833,'Holtbrøtan',nil,nil).
-statcoord2(16488844,8844,'Holte',nil,nil).
-statcoord2(16483844,3844,'Holte',nil,nil).
-statcoord2(16488859,8859,'Holtmoen',nil,nil).
-statcoord2(16483859,3859,'Holtmoen',nil,nil).
-statcoord2(16488804,8804,'Hongrø',nil,nil).
-statcoord2(16483804,3804,'Hongrø',nil,nil).
-statcoord2(16488518,8518,'Hovstad',nil,nil).
-statcoord2(16483518,3518,'Hovstad',nil,nil).
-statcoord2(16488834,8834,'Hugåsmyra',nil,nil).
-statcoord2(16483834,3834,'Hugåsmyra',nil,nil).
-statcoord2(16488530,8530,'Hulta',nil,nil).
-statcoord2(16483530,3530,'Hulta',nil,nil).
-statcoord2(16488808,8808,'Høgsteggen',nil,nil).
-statcoord2(16483808,3808,'Høgsteggen',nil,nil).
-statcoord2(16488832,8832,'Høkdølssvingen',nil,nil).
-statcoord2(16483832,3832,'Høkdølssvingen',nil,nil).
-statcoord2(16488858,8858,'Indset',nil,nil).
-statcoord2(16483858,3858,'Indset',nil,nil).
-statcoord2(16488912,8912,'Kjelden bru',nil,nil).
-statcoord2(16483512,3512,'Kjelden bru',nil,nil).
-statcoord2(16488867,8867,'Kjøtrød',nil,nil).
-statcoord2(16483867,3867,'Kjøtrød',nil,nil).
-statcoord2(16488855,8855,'Klokkerhaug',nil,nil).
-statcoord2(16483855,3855,'Klokkerhaug',nil,nil).
-statcoord2(16488523,8523,'Klokkerhaugen',nil,nil).
-statcoord2(16483523,3523,'Klokkerhaugen',nil,nil).
-statcoord2(16488931,8931,'Kosberggrind',nil,nil).
-statcoord2(16483931,3931,'Kosberggrind',nil,nil).
-statcoord2(16488515,8515,'Kotsøy',nil,nil).
-statcoord2(16483515,3515,'Kotsøy',nil,nil).
-statcoord2(16488535,8535,'Krokan',nil,nil).
-statcoord2(16483535,3535,'Krokan',nil,nil).
-statcoord2(16483743,3743,'Kviltbakken',nil,nil).
-statcoord2(16488868,8868,'Lien',nil,nil).
-statcoord2(16483868,3868,'Lien',nil,nil).
-statcoord2(16488818,8818,'Lillebudal',nil,nil).
-statcoord2(16483818,3818,'Lillebudal',nil,nil).
-statcoord2(16488222,8222,'Liøya',nil,nil).
-statcoord2(16483222,3222,'Liøya',nil,nil).
-statcoord2(16488843,8843,'Løkken',nil,nil).
-statcoord2(16483843,3843,'Løkken',nil,nil).
-statcoord2(16488548,8548,'Løkli',nil,nil).
-statcoord2(16483248,3248,'Løkli',nil,nil).
-statcoord2(16488934,8934,'Løvrød',nil,nil).
-statcoord2(16483934,3934,'Løvrød',nil,nil).
-statcoord2(16488820,8820,'Maureggen',nil,nil).
-statcoord2(16483820,3820,'Maureggen',nil,nil).
-statcoord2(16488526,8526,'Moabakken',nil,nil).
-statcoord2(16483526,3526,'Moabakken',nil,nil).
-statcoord2(16488817,8817,'Moaflata',nil,nil).
-statcoord2(16483817,3817,'Moaflata',nil,nil).
-statcoord2(16488805,8805,'Moan, Midtre Gauldal',nil,nil).
-statcoord2(16483805,3805,'Moan, Midtre Gauldal',nil,nil).
-statcoord2(16488860,8860,'Moen',nil,nil).
-statcoord2(16483860,3860,'Moen',nil,nil).
-statcoord2(16483729,3729,'Morsetkrysset',nil,nil).
-statcoord2(16488502,8502,'Mosand',nil,nil).
-statcoord2(16483502,3502,'Mosand',nil,nil).
-statcoord2(16488861,8861,'Moshaug',nil,nil).
-statcoord2(16483861,3861,'Moshaug',nil,nil).
-statcoord2(16488841,8841,'Myran, Midtre Gauldal',nil,nil).
-statcoord2(16483841,3841,'Myran, Midtre Gauldal',nil,nil).
-statcoord2(16488228,8228,'Nerøyen',nil,nil).
-statcoord2(16483228,3228,'Nerøyen',nil,nil).
-statcoord2(16488901,8901,'Nesset, Midtre Gauldal',nil,nil).
-statcoord2(16483501,3501,'Nesset, Midtre Gauldal',nil,nil).
-statcoord2(16488237,8237,'Nybrua',nil,nil).
-statcoord2(16483237,3237,'Nybrua',nil,nil).
-statcoord2(16488892,8892,'Nyhus, Midtre Gauldal',nil,nil).
-statcoord2(16483892,3892,'Nyhus, Midtre Gauldal',nil,nil).
-statcoord2(16488731,8731,'Osøy Bru',nil,nil).
-statcoord2(16488905,8905,'Plassbekken',nil,nil).
-statcoord2(16483505,3505,'Plassbekken',nil,nil).
-statcoord2(16483737,3737,'Raphaugen',nil,nil).
-statcoord2(16488510,8510,'Refset',nil,nil).
-statcoord2(16483510,3510,'Refset',nil,nil).
-statcoord2(16488531,8531,'Reistøa',nil,nil).
-statcoord2(16483531,3531,'Reistøa',nil,nil).
-statcoord2(16488875,8875,'Rimset',nil,nil).
-statcoord2(16483875,3875,'Rimset',nil,nil).
-statcoord2(16488876,8876,'Rise',nil,nil).
-statcoord2(16483876,3876,'Rise',nil,nil).
-statcoord2(16488508,8508,'Rognes',nil,nil).
-statcoord2(16483508,3508,'Rognes',nil,nil).
-statcoord2(16488509,8509,'Rognes bru',nil,nil).
-statcoord2(16483509,3509,'Rognes bru',nil,nil).
-statcoord2(16488504,8504,'Rogstad',nil,nil).
-statcoord2(16483504,3504,'Rogstad',nil,nil).
-statcoord2(16483733,3733,'Rogstadgjerdet',nil,nil).
-statcoord2(16488733,8733,'Rogstadgjerdet',nil,nil).
-statcoord2(16483734,3734,'Rogstadgrind',nil,nil).
-statcoord2(16488734,8734,'Rogstadgrind',nil,nil).
-statcoord2(16488503,8503,'Rogstadøyen',nil,nil).
-statcoord2(16483503,3503,'Rogstadøyen',nil,nil).
-statcoord2(16488824,8824,'Rønning',nil,nil).
-statcoord2(16483824,3824,'Rønning',nil,nil).
-statcoord2(16488869,8869,'Rønningen, Midtre Gauldal',nil,nil).
-statcoord2(16483869,3869,'Rønningen, Midtre Gauldal',nil,nil).
-statcoord2(16488933,8933,'Sandrød',nil,nil).
-statcoord2(16483933,3933,'Sandrød',nil,nil).
-statcoord2(16488727,8727,'Singsås Kop',nil,nil).
-statcoord2(16483728,3728,'Singsås skole',nil,nil).
-statcoord2(16488525,8525,'Singsås st.',nil,nil).
-statcoord2(16483525,3525,'Singsås st.',nil,nil).
-statcoord2(16488524,8524,'Singsåsbakken',nil,nil).
-statcoord2(16483524,3524,'Singsåsbakken',nil,nil).
-statcoord2(16488527,8527,'Singsåsmoen',nil,nil).
-statcoord2(16483527,3527,'Singsåsmoen',nil,nil).
-statcoord2(16488835,8835,'Skain',nil,nil).
-statcoord2(16483835,3835,'Skain',nil,nil).
-statcoord2(16488232,8232,'Skjerliløkken',nil,nil).
-statcoord2(16483232,3232,'Skjerliløkken',nil,nil).
-statcoord2(16488234,8234,'Snøan',nil,nil).
-statcoord2(16483234,3234,'Snøan',nil,nil).
-statcoord2(16488284,8284,'Snøan øvre',nil,nil).
-statcoord2(16483284,3284,'Snøan øvre',nil,nil).
-statcoord2(16488240,8240,'Soknedal',nil,nil).
-statcoord2(16483240,3240,'Soknedal',nil,nil).
-statcoord2(16488891,8891,'Soknedal st.',nil,nil).
-statcoord2(16483891,3891,'Soknedal st.',nil,nil).
-statcoord2(16488220,8220,'Soknes',nil,nil).
-statcoord2(16483220,3220,'Soknes',nil,nil).
-statcoord2(16488837,8837,'Solberg, Midtre Gauldal',nil,nil).
-statcoord2(16483837,3837,'Solberg, Midtre Gauldal',nil,nil).
-statcoord2(16488829,8829,'Solem, Midtre Gauldal',nil,nil).
-statcoord2(16483829,3829,'Solem, Midtre Gauldal',nil,nil).
-statcoord2(16488866,8866,'Solum',nil,nil).
-statcoord2(16483866,3866,'Solum',nil,nil).
-statcoord2(16488850,8850,'Sommervold',nil,nil).
-statcoord2(16483850,3850,'Sommervold',nil,nil).
-statcoord2(16488870,8870,'Staverløkk',nil,nil).
-statcoord2(16483870,3870,'Staverløkk',nil,nil).
-statcoord2(16488806,8806,'Stenbro',nil,nil).
-statcoord2(16483806,3806,'Stenbro',nil,nil).
-statcoord2(16483738,3738,'Storbekkrønning',nil,nil).
-statcoord2(16488224,8224,'Storløkken',nil,nil).
-statcoord2(16483224,3224,'Storløkken',nil,nil).
-statcoord2(16488528,8528,'Stornes',nil,nil).
-statcoord2(16483528,3528,'Stornes',nil,nil).
-statcoord2(16488828,8828,'Storrø',nil,nil).
-statcoord2(16483828,3828,'Storrø',nil,nil).
-statcoord2(16488812,8812,'Storrøsæter',nil,nil).
-statcoord2(16483812,3812,'Storrøsæter',nil,nil).
-statcoord2(16488236,8236,'Storøyen',nil,nil).
-statcoord2(16483236,3236,'Storøyen',nil,nil).
-statcoord2(16483885,3885,'Strinde parkering',nil,nil).
-statcoord2(16488885,8885,'Strinde parkering',nil,nil).
-statcoord2(16488900,8900,'Støren b.sk.',nil,nil).
-statcoord2(16483900,3900,'Støren b.sk.',nil,nil).
+statcoord2(16483201,3201,'Hage bru',0,0).
+statcoord2(16488839,8839,'Hagen, Midtre Gauldal',0,0).
+statcoord2(16483839,3839,'Hagen, Midtre Gauldal',0,0).
+statcoord2(16488872,8872,'Hallset',0,0).
+statcoord2(16483872,3872,'Hallset',0,0).
+statcoord2(16488830,8830,'Hanshus',0,0).
+statcoord2(16483830,3830,'Hanshus',0,0).
+statcoord2(16488845,8845,'Haugen, Midtre Gauldal',0,0).
+statcoord2(16483845,3845,'Haugen, Midtre Gauldal',0,0).
+statcoord2(16488874,8874,'Hauka sk.',0,0).
+statcoord2(16483874,3874,'Hauka sk.',0,0).
+statcoord2(16488802,8802,'Haukdal',0,0).
+statcoord2(16483802,3802,'Haukdal',0,0).
+statcoord2(16488801,8801,'Haukdal / Aas',0,0).
+statcoord2(16483801,3801,'Haukdal / Aas',0,0).
+statcoord2(16488233,8233,'Haukdalsbru',0,0).
+statcoord2(16483233,3233,'Haukdalsbru',0,0).
+statcoord2(16488878,8878,'Heggvoll',0,0).
+statcoord2(16483878,3878,'Heggvoll',0,0).
+statcoord2(16488827,8827,'Hetling',0,0).
+statcoord2(16483827,3827,'Hetling',0,0).
+statcoord2(16488529,8529,'Hindbjørgen',0,0).
+statcoord2(16483529,3529,'Hindbjørgen',0,0).
+statcoord2(16483726,3726,'Hindsverkrønning',0,0).
+statcoord2(16488848,8848,'Holm',0,0).
+statcoord2(16483848,3848,'Holm',0,0).
+statcoord2(16488833,8833,'Holtbrøtan',0,0).
+statcoord2(16483833,3833,'Holtbrøtan',0,0).
+statcoord2(16488844,8844,'Holte',0,0).
+statcoord2(16483844,3844,'Holte',0,0).
+statcoord2(16488859,8859,'Holtmoen',0,0).
+statcoord2(16483859,3859,'Holtmoen',0,0).
+statcoord2(16488804,8804,'Hongrø',0,0).
+statcoord2(16483804,3804,'Hongrø',0,0).
+statcoord2(16488518,8518,'Hovstad',0,0).
+statcoord2(16483518,3518,'Hovstad',0,0).
+statcoord2(16488834,8834,'Hugåsmyra',0,0).
+statcoord2(16483834,3834,'Hugåsmyra',0,0).
+statcoord2(16488530,8530,'Hulta',0,0).
+statcoord2(16483530,3530,'Hulta',0,0).
+statcoord2(16488808,8808,'Høgsteggen',0,0).
+statcoord2(16483808,3808,'Høgsteggen',0,0).
+statcoord2(16488832,8832,'Høkdølssvingen',0,0).
+statcoord2(16483832,3832,'Høkdølssvingen',0,0).
+statcoord2(16488858,8858,'Indset',0,0).
+statcoord2(16483858,3858,'Indset',0,0).
+statcoord2(16488912,8912,'Kjelden bru',0,0).
+statcoord2(16483512,3512,'Kjelden bru',0,0).
+statcoord2(16488867,8867,'Kjøtrød',0,0).
+statcoord2(16483867,3867,'Kjøtrød',0,0).
+statcoord2(16488855,8855,'Klokkerhaug',0,0).
+statcoord2(16483855,3855,'Klokkerhaug',0,0).
+statcoord2(16488523,8523,'Klokkerhaugen',0,0).
+statcoord2(16483523,3523,'Klokkerhaugen',0,0).
+statcoord2(16488931,8931,'Kosberggrind',0,0).
+statcoord2(16483931,3931,'Kosberggrind',0,0).
+statcoord2(16488515,8515,'Kotsøy',0,0).
+statcoord2(16483515,3515,'Kotsøy',0,0).
+statcoord2(16488535,8535,'Krokan',0,0).
+statcoord2(16483535,3535,'Krokan',0,0).
+statcoord2(16483743,3743,'Kviltbakken',0,0).
+statcoord2(16488868,8868,'Lien',0,0).
+statcoord2(16483868,3868,'Lien',0,0).
+statcoord2(16488818,8818,'Lillebudal',0,0).
+statcoord2(16483818,3818,'Lillebudal',0,0).
+statcoord2(16488222,8222,'Liøya',0,0).
+statcoord2(16483222,3222,'Liøya',0,0).
+statcoord2(16488843,8843,'Løkken',0,0).
+statcoord2(16483843,3843,'Løkken',0,0).
+statcoord2(16488548,8548,'Løkli',0,0).
+statcoord2(16483248,3248,'Løkli',0,0).
+statcoord2(16488934,8934,'Løvrød',0,0).
+statcoord2(16483934,3934,'Løvrød',0,0).
+statcoord2(16488820,8820,'Maureggen',0,0).
+statcoord2(16483820,3820,'Maureggen',0,0).
+statcoord2(16488526,8526,'Moabakken',0,0).
+statcoord2(16483526,3526,'Moabakken',0,0).
+statcoord2(16488817,8817,'Moaflata',0,0).
+statcoord2(16483817,3817,'Moaflata',0,0).
+statcoord2(16488805,8805,'Moan, Midtre Gauldal',0,0).
+statcoord2(16483805,3805,'Moan, Midtre Gauldal',0,0).
+statcoord2(16488860,8860,'Moen',0,0).
+statcoord2(16483860,3860,'Moen',0,0).
+statcoord2(16483729,3729,'Morsetkrysset',0,0).
+statcoord2(16488502,8502,'Mosand',0,0).
+statcoord2(16483502,3502,'Mosand',0,0).
+statcoord2(16488861,8861,'Moshaug',0,0).
+statcoord2(16483861,3861,'Moshaug',0,0).
+statcoord2(16488841,8841,'Myran, Midtre Gauldal',0,0).
+statcoord2(16483841,3841,'Myran, Midtre Gauldal',0,0).
+statcoord2(16488228,8228,'Nerøyen',0,0).
+statcoord2(16483228,3228,'Nerøyen',0,0).
+statcoord2(16488901,8901,'Nesset, Midtre Gauldal',0,0).
+statcoord2(16483501,3501,'Nesset, Midtre Gauldal',0,0).
+statcoord2(16488237,8237,'Nybrua',0,0).
+statcoord2(16483237,3237,'Nybrua',0,0).
+statcoord2(16488892,8892,'Nyhus, Midtre Gauldal',0,0).
+statcoord2(16483892,3892,'Nyhus, Midtre Gauldal',0,0).
+statcoord2(16488731,8731,'Osøy Bru',0,0).
+statcoord2(16488905,8905,'Plassbekken',0,0).
+statcoord2(16483505,3505,'Plassbekken',0,0).
+statcoord2(16483737,3737,'Raphaugen',0,0).
+statcoord2(16488510,8510,'Refset',0,0).
+statcoord2(16483510,3510,'Refset',0,0).
+statcoord2(16488531,8531,'Reistøa',0,0).
+statcoord2(16483531,3531,'Reistøa',0,0).
+statcoord2(16488875,8875,'Rimset',0,0).
+statcoord2(16483875,3875,'Rimset',0,0).
+statcoord2(16488876,8876,'Rise',0,0).
+statcoord2(16483876,3876,'Rise',0,0).
+statcoord2(16488508,8508,'Rognes',0,0).
+statcoord2(16483508,3508,'Rognes',0,0).
+statcoord2(16488509,8509,'Rognes bru',0,0).
+statcoord2(16483509,3509,'Rognes bru',0,0).
+statcoord2(16488504,8504,'Rogstad',0,0).
+statcoord2(16483504,3504,'Rogstad',0,0).
+statcoord2(16483733,3733,'Rogstadgjerdet',0,0).
+statcoord2(16488733,8733,'Rogstadgjerdet',0,0).
+statcoord2(16483734,3734,'Rogstadgrind',0,0).
+statcoord2(16488734,8734,'Rogstadgrind',0,0).
+statcoord2(16488503,8503,'Rogstadøyen',0,0).
+statcoord2(16483503,3503,'Rogstadøyen',0,0).
+statcoord2(16488824,8824,'Rønning',0,0).
+statcoord2(16483824,3824,'Rønning',0,0).
+statcoord2(16488869,8869,'Rønningen, Midtre Gauldal',0,0).
+statcoord2(16483869,3869,'Rønningen, Midtre Gauldal',0,0).
+statcoord2(16488933,8933,'Sandrød',0,0).
+statcoord2(16483933,3933,'Sandrød',0,0).
+statcoord2(16488727,8727,'Singsås Kop',0,0).
+statcoord2(16483728,3728,'Singsås skole',0,0).
+statcoord2(16488525,8525,'Singsås st.',0,0).
+statcoord2(16483525,3525,'Singsås st.',0,0).
+statcoord2(16488524,8524,'Singsåsbakken',0,0).
+statcoord2(16483524,3524,'Singsåsbakken',0,0).
+statcoord2(16488527,8527,'Singsåsmoen',0,0).
+statcoord2(16483527,3527,'Singsåsmoen',0,0).
+statcoord2(16488835,8835,'Skain',0,0).
+statcoord2(16483835,3835,'Skain',0,0).
+statcoord2(16488232,8232,'Skjerliløkken',0,0).
+statcoord2(16483232,3232,'Skjerliløkken',0,0).
+statcoord2(16488234,8234,'Snøan',0,0).
+statcoord2(16483234,3234,'Snøan',0,0).
+statcoord2(16488284,8284,'Snøan øvre',0,0).
+statcoord2(16483284,3284,'Snøan øvre',0,0).
+statcoord2(16488240,8240,'Soknedal',0,0).
+statcoord2(16483240,3240,'Soknedal',0,0).
+statcoord2(16488891,8891,'Soknedal st.',0,0).
+statcoord2(16483891,3891,'Soknedal st.',0,0).
+statcoord2(16488220,8220,'Soknes',0,0).
+statcoord2(16483220,3220,'Soknes',0,0).
+statcoord2(16488837,8837,'Solberg, Midtre Gauldal',0,0).
+statcoord2(16483837,3837,'Solberg, Midtre Gauldal',0,0).
+statcoord2(16488829,8829,'Solem, Midtre Gauldal',0,0).
+statcoord2(16483829,3829,'Solem, Midtre Gauldal',0,0).
+statcoord2(16488866,8866,'Solum',0,0).
+statcoord2(16483866,3866,'Solum',0,0).
+statcoord2(16488850,8850,'Sommervold',0,0).
+statcoord2(16483850,3850,'Sommervold',0,0).
+statcoord2(16488870,8870,'Staverløkk',0,0).
+statcoord2(16483870,3870,'Staverløkk',0,0).
+statcoord2(16488806,8806,'Stenbro',0,0).
+statcoord2(16483806,3806,'Stenbro',0,0).
+statcoord2(16483738,3738,'Storbekkrønning',0,0).
+statcoord2(16488224,8224,'Storløkken',0,0).
+statcoord2(16483224,3224,'Storløkken',0,0).
+statcoord2(16488528,8528,'Stornes',0,0).
+statcoord2(16483528,3528,'Stornes',0,0).
+statcoord2(16488828,8828,'Storrø',0,0).
+statcoord2(16483828,3828,'Storrø',0,0).
+statcoord2(16488812,8812,'Storrøsæter',0,0).
+statcoord2(16483812,3812,'Storrøsæter',0,0).
+statcoord2(16488236,8236,'Storøyen',0,0).
+statcoord2(16483236,3236,'Storøyen',0,0).
+statcoord2(16483885,3885,'Strinde parkering',0,0).
+statcoord2(16488885,8885,'Strinde parkering',0,0).
+statcoord2(16488900,8900,'Støren b.sk.',0,0).
+statcoord2(16483900,3900,'Støren b.sk.',0,0).
 statcoord2(16488512,8512,'Støren Rådhus, gamle E6',565030.476,6990562.496).
 statcoord2(16483212,3212,'Støren Rådhus, gamle E6',565043.361,6990566.565).
-statcoord2(16488211,8211,'Støren Rådhus, Rv 30',nil,nil).
-statcoord2(16483211,3211,'Støren Rådhus, Rv 30',nil,nil).
+statcoord2(16488211,8211,'Støren Rådhus, Rv 30',0,0).
+statcoord2(16483211,3211,'Støren Rådhus, Rv 30',0,0).
 statcoord2(16488507,8507,'Støren sentrum',564854.162,6991483.538).
 statcoord2(16483207,3207,'Støren sentrum',564857.2,6991559.018).
 statcoord2(16488505,8505,'Støren St.',564956.04,6991982.106).
 statcoord2(16483205,3205,'Støren St.',564956.04,6991982.106).
-statcoord2(16488215,8215,'Størenhallen Snuplass',nil,nil).
-statcoord2(16483215,3215,'Størenhallen Snuplass',nil,nil).
-statcoord2(16488831,8831,'Støver',nil,nil).
-statcoord2(16483831,3831,'Støver',nil,nil).
-statcoord2(16488877,8877,'Sundlisæter',nil,nil).
-statcoord2(16483877,3877,'Sundlisæter',nil,nil).
-statcoord2(16488873,8873,'Sundset',nil,nil).
-statcoord2(16483873,3873,'Sundset',nil,nil).
-statcoord2(16488813,8813,'Svardal',nil,nil).
-statcoord2(16483813,3813,'Svardal',nil,nil).
-statcoord2(16488887,8887,'Sveum',nil,nil).
-statcoord2(16483887,3887,'Sveum',nil,nil).
-statcoord2(16488811,8811,'Sæter',nil,nil).
-statcoord2(16483811,3811,'Sæter',nil,nil).
-statcoord2(16488871,8871,'Sørli',nil,nil).
-statcoord2(16483871,3871,'Sørli',nil,nil).
-statcoord2(16488823,8823,'Sørløkken',nil,nil).
-statcoord2(16483823,3823,'Sørløkken',nil,nil).
-statcoord2(16483732,3732,'Troøigjerget',nil,nil).
-statcoord2(16488857,8857,'Volden, Midtre Gauldal',nil,nil).
-statcoord2(16483857,3857,'Volden, Midtre Gauldal',nil,nil).
-statcoord2(16488816,8816,'Voll, Midtre Gauldal',nil,nil).
-statcoord2(16483816,3816,'Voll, Midtre Gauldal',nil,nil).
-statcoord2(16488522,8522,'Willmannsøyen',nil,nil).
-statcoord2(16483522,3522,'Willmannsøyen',nil,nil).
-statcoord2(16488517,8517,'Winsnes',nil,nil).
-statcoord2(16483517,3517,'Winsnes',nil,nil).
-statcoord2(16488935,8935,'Wolden',nil,nil).
-statcoord2(16483935,3935,'Wolden',nil,nil).
-statcoord2(16488809,8809,'Økdal',nil,nil).
-statcoord2(16483809,3809,'Økdal',nil,nil).
-statcoord2(16488230,8230,'Øverøyen',nil,nil).
-statcoord2(16483230,3230,'Øverøyen',nil,nil).
-statcoord2(16488516,8516,'Øyan, Midtre Gauldal',nil,nil).
-statcoord2(16483516,3516,'Øyan, Midtre Gauldal',nil,nil).
-statcoord2(16488810,8810,'Ålbu',nil,nil).
-statcoord2(16483810,3810,'Ålbu',nil,nil).
-statcoord2(16488856,8856,'Århaug',nil,nil).
-statcoord2(16483856,3856,'Århaug',nil,nil).
-statcoord2(16488842,8842,'Åsen, Midtre Gauldal',nil,nil).
-statcoord2(16483842,3842,'Åsen, Midtre Gauldal',nil,nil).
-statcoord2(16538096,8096,'Almåsgjæret',-,-).
-statcoord2(16533096,3096,'Almåsgjæret',-,-).
-statcoord2(16538146,8146,'Asb.vollen avkjøring',nil,nil).
-statcoord2(16533146,3146,'Asb.vollen avkjøring',nil,nil).
-statcoord2(16535062,5062,'Aundalen',nil,nil).
-statcoord2(16533062,3062,'Aundalen',nil,nil).
-statcoord2(16538181,8181,'Bakket, Simensbakken',nil,nil).
-statcoord2(16533181,3181,'Bakket, Simensbakken',nil,nil).
-statcoord2(16538128,8128,'Bellingmo',nil,nil).
-statcoord2(16533128,3128,'Bellingmo',nil,nil).
-statcoord2(16533248,3248,'Bjønnbakken',nil,nil).
-statcoord2(16538248,8248,'Bjønnbakken',nil,nil).
-statcoord2(16538115,8115,'Bjønnveien',nil,nil).
-statcoord2(16533115,3115,'Bjønnveien',nil,nil).
-statcoord2(16538086,8086,'Bjørsetveien',nil,nil).
-statcoord2(16533086,3086,'Bjørsetveien',nil,nil).
-statcoord2(16538171,8171,'Bollan',nil,nil).
-statcoord2(16533171,3171,'Bollan',nil,nil).
-statcoord2(16538116,8116,'Brekkåsen',nil,nil).
-statcoord2(16533116,3116,'Brekkåsen',nil,nil).
-statcoord2(16538503,8503,'Brobakk',nil,nil).
-statcoord2(16533003,3003,'Brobakk',nil,nil).
-statcoord2(16538180,8180,'Brodal',nil,nil).
-statcoord2(16533180,3180,'Brodal',-,-).
-statcoord2(16538160,8160,'Brokaløkka',nil,nil).
-statcoord2(16533160,3160,'Brokaløkka',nil,nil).
-statcoord2(16538106,8106,'Brubakken',nil,nil).
-statcoord2(16533106,3106,'Brubakken',nil,nil).
-statcoord2(16538091,8091,'Bøvra',nil,nil).
-statcoord2(16533091,3091,'Bøvra',nil,nil).
-statcoord2(16538148,8148,'Dalaberga',nil,nil).
-statcoord2(16533148,3148,'Dalaberga',nil,nil).
-statcoord2(16538104,8104,'Eggalykkja',nil,nil).
-statcoord2(16533104,3104,'Eggalykkja',nil,nil).
-statcoord2(16538089,8089,'Eid sk.',nil,nil).
-statcoord2(16533089,3089,'Eid sk.',nil,nil).
-statcoord2(16538136,8136,'Elverhøy sk.',-,-).
-statcoord2(16533136,3136,'Elverhøy sk.',-,-).
-statcoord2(16538042,8042,'Engan verksted',-,-).
-statcoord2(16533042,3042,'Engan verksted',-,-).
-statcoord2(16538144,8144,'Esphaugen',nil,nil).
-statcoord2(16533144,3144,'Esphaugen',nil,nil).
-statcoord2(16538139,8139,'Espåsen',nil,nil).
-statcoord2(16533139,3139,'Espåsen',nil,nil).
-statcoord2(16538045,8045,'Evjen, Melhus',nil,nil).
-statcoord2(16533045,3045,'Evjen, Melhus',nil,nil).
-statcoord2(16538041,8041,'Fallan v.kr.',nil,nil).
-statcoord2(16533041,3041,'Fallan v.kr.',nil,nil).
-statcoord2(16538193,8193,'Fergestad',nil,nil).
-statcoord2(16533193,3193,'Fergestad',nil,nil).
-statcoord2(16538176,8176,'Finnaunet',nil,nil).
-statcoord2(16533176,3176,'Finnaunet',nil,nil).
-statcoord2(16533250,3250,'Finnaunet snuplass',nil,nil).
-statcoord2(16538250,8250,'Finnaunet snuplass',nil,nil).
-statcoord2(16538090,8090,'Fløttum, Melhus',nil,nil).
-statcoord2(16533090,3090,'Fløttum, Melhus',nil,nil).
-statcoord2(16538169,8169,'Flå sk.',nil,nil).
-statcoord2(16533169,3169,'Flå sk.',nil,nil).
-statcoord2(16533032,3032,'Fossbakken',nil,nil).
-statcoord2(16538532,8532,'Fossbakken',nil,nil).
-statcoord2(16538533,8533,'Fosskrysset',nil,nil).
-statcoord2(16533033,3033,'Fosskrysset',nil,nil).
-statcoord2(16538531,8531,'Fossløkken',nil,nil).
-statcoord2(16533031,3031,'Fossløkken',nil,nil).
-statcoord2(16538173,8173,'Fremo',nil,nil).
-statcoord2(16533173,3173,'Fremo',nil,nil).
-statcoord2(16538175,8175,'Fremo leir',nil,nil).
-statcoord2(16533175,3175,'Fremo leir',nil,nil).
-statcoord2(16538172,8172,'Frødalen',nil,nil).
-statcoord2(16533172,3172,'Frødalen',nil,nil).
-statcoord2(16538767,8767,'Gafset',nil,nil).
-statcoord2(16533167,3167,'Gafset',nil,nil).
-statcoord2(16538149,8149,'Gaua boligfelt',nil,nil).
-statcoord2(16533149,3149,'Gaua boligfelt',nil,nil).
-statcoord2(16538093,8093,'Gaustad',nil,nil).
-statcoord2(16533093,3093,'Gaustad',-,-).
-statcoord2(16538094,8094,'Gaustadbakken',-,-).
-statcoord2(16533094,3094,'Gaustadbakken',-,-).
-statcoord2(16538058,8058,'Gimse gård',-,-).
-statcoord2(16533058,3058,'Gimse gård',-,-).
-statcoord2(16538190,8190,'Gimseflata',-,-).
-statcoord2(16533190,3190,'Gimseflata',-,-).
-statcoord2(16538101,8101,'Grennstuggu',nil,nil).
-statcoord2(16533101,3101,'Grennstuggu',nil,nil).
-statcoord2(16538174,8174,'Grevskott',nil,nil).
-statcoord2(16533174,3174,'Grevskott',-,-).
-statcoord2(16538044,8044,'Grinde',-,-).
-statcoord2(16533044,3044,'Grinde',-,-).
-statcoord2(16538153,8153,'Gustav Berg',nil,nil).
-statcoord2(16533153,3153,'Gustav Berg',nil,nil).
+statcoord2(16488215,8215,'Størenhallen Snuplass',0,0).
+statcoord2(16483215,3215,'Størenhallen Snuplass',0,0).
+statcoord2(16488831,8831,'Støver',0,0).
+statcoord2(16483831,3831,'Støver',0,0).
+statcoord2(16488877,8877,'Sundlisæter',0,0).
+statcoord2(16483877,3877,'Sundlisæter',0,0).
+statcoord2(16488873,8873,'Sundset',0,0).
+statcoord2(16483873,3873,'Sundset',0,0).
+statcoord2(16488813,8813,'Svardal',0,0).
+statcoord2(16483813,3813,'Svardal',0,0).
+statcoord2(16488887,8887,'Sveum',0,0).
+statcoord2(16483887,3887,'Sveum',0,0).
+statcoord2(16488811,8811,'Sæter',0,0).
+statcoord2(16483811,3811,'Sæter',0,0).
+statcoord2(16488871,8871,'Sørli',0,0).
+statcoord2(16483871,3871,'Sørli',0,0).
+statcoord2(16488823,8823,'Sørløkken',0,0).
+statcoord2(16483823,3823,'Sørløkken',0,0).
+statcoord2(16483732,3732,'Troøigjerget',0,0).
+statcoord2(16488857,8857,'Volden, Midtre Gauldal',0,0).
+statcoord2(16483857,3857,'Volden, Midtre Gauldal',0,0).
+statcoord2(16488816,8816,'Voll, Midtre Gauldal',0,0).
+statcoord2(16483816,3816,'Voll, Midtre Gauldal',0,0).
+statcoord2(16488522,8522,'Willmannsøyen',0,0).
+statcoord2(16483522,3522,'Willmannsøyen',0,0).
+statcoord2(16488517,8517,'Winsnes',0,0).
+statcoord2(16483517,3517,'Winsnes',0,0).
+statcoord2(16488935,8935,'Wolden',0,0).
+statcoord2(16483935,3935,'Wolden',0,0).
+statcoord2(16488809,8809,'Økdal',0,0).
+statcoord2(16483809,3809,'Økdal',0,0).
+statcoord2(16488230,8230,'Øverøyen',0,0).
+statcoord2(16483230,3230,'Øverøyen',0,0).
+statcoord2(16488516,8516,'Øyan, Midtre Gauldal',0,0).
+statcoord2(16483516,3516,'Øyan, Midtre Gauldal',0,0).
+statcoord2(16488810,8810,'Ålbu',0,0).
+statcoord2(16483810,3810,'Ålbu',0,0).
+statcoord2(16488856,8856,'Århaug',0,0).
+statcoord2(16483856,3856,'Århaug',0,0).
+statcoord2(16488842,8842,'Åsen, Midtre Gauldal',0,0).
+statcoord2(16483842,3842,'Åsen, Midtre Gauldal',0,0).
+statcoord2(16538096,8096,'Almåsgjæret',0,0).
+statcoord2(16533096,3096,'Almåsgjæret',0,0).
+statcoord2(16538146,8146,'Asb.vollen avkjøring',0,0).
+statcoord2(16533146,3146,'Asb.vollen avkjøring',0,0).
+statcoord2(16535062,5062,'Aundalen',0,0).
+statcoord2(16533062,3062,'Aundalen',0,0).
+statcoord2(16538181,8181,'Bakket, Simensbakken',0,0).
+statcoord2(16533181,3181,'Bakket, Simensbakken',0,0).
+statcoord2(16538128,8128,'Bellingmo',0,0).
+statcoord2(16533128,3128,'Bellingmo',0,0).
+statcoord2(16533248,3248,'Bjønnbakken',0,0).
+statcoord2(16538248,8248,'Bjønnbakken',0,0).
+statcoord2(16538115,8115,'Bjønnveien',0,0).
+statcoord2(16533115,3115,'Bjønnveien',0,0).
+statcoord2(16538086,8086,'Bjørsetveien',0,0).
+statcoord2(16533086,3086,'Bjørsetveien',0,0).
+statcoord2(16538171,8171,'Bollan',0,0).
+statcoord2(16533171,3171,'Bollan',0,0).
+statcoord2(16538116,8116,'Brekkåsen',0,0).
+statcoord2(16533116,3116,'Brekkåsen',0,0).
+statcoord2(16538503,8503,'Brobakk',0,0).
+statcoord2(16533003,3003,'Brobakk',0,0).
+statcoord2(16538180,8180,'Brodal',0,0).
+statcoord2(16533180,3180,'Brodal',0,0).
+statcoord2(16538160,8160,'Brokaløkka',0,0).
+statcoord2(16533160,3160,'Brokaløkka',0,0).
+statcoord2(16538106,8106,'Brubakken',0,0).
+statcoord2(16533106,3106,'Brubakken',0,0).
+statcoord2(16538091,8091,'Bøvra',0,0).
+statcoord2(16533091,3091,'Bøvra',0,0).
+statcoord2(16538148,8148,'Dalaberga',0,0).
+statcoord2(16533148,3148,'Dalaberga',0,0).
+statcoord2(16538104,8104,'Eggalykkja',0,0).
+statcoord2(16533104,3104,'Eggalykkja',0,0).
+statcoord2(16538089,8089,'Eid sk.',0,0).
+statcoord2(16533089,3089,'Eid sk.',0,0).
+statcoord2(16538136,8136,'Elverhøy sk.',0,0).
+statcoord2(16533136,3136,'Elverhøy sk.',0,0).
+statcoord2(16538042,8042,'Engan verksted',0,0).
+statcoord2(16533042,3042,'Engan verksted',0,0).
+statcoord2(16538144,8144,'Esphaugen',0,0).
+statcoord2(16533144,3144,'Esphaugen',0,0).
+statcoord2(16538139,8139,'Espåsen',0,0).
+statcoord2(16533139,3139,'Espåsen',0,0).
+statcoord2(16538045,8045,'Evjen, Melhus',0,0).
+statcoord2(16533045,3045,'Evjen, Melhus',0,0).
+statcoord2(16538041,8041,'Fallan v.kr.',0,0).
+statcoord2(16533041,3041,'Fallan v.kr.',0,0).
+statcoord2(16538193,8193,'Fergestad',0,0).
+statcoord2(16533193,3193,'Fergestad',0,0).
+statcoord2(16538176,8176,'Finnaunet',0,0).
+statcoord2(16533176,3176,'Finnaunet',0,0).
+statcoord2(16533250,3250,'Finnaunet snuplass',0,0).
+statcoord2(16538250,8250,'Finnaunet snuplass',0,0).
+statcoord2(16538090,8090,'Fløttum, Melhus',0,0).
+statcoord2(16533090,3090,'Fløttum, Melhus',0,0).
+statcoord2(16538169,8169,'Flå sk.',0,0).
+statcoord2(16533169,3169,'Flå sk.',0,0).
+statcoord2(16533032,3032,'Fossbakken',0,0).
+statcoord2(16538532,8532,'Fossbakken',0,0).
+statcoord2(16538533,8533,'Fosskrysset',0,0).
+statcoord2(16533033,3033,'Fosskrysset',0,0).
+statcoord2(16538531,8531,'Fossløkken',0,0).
+statcoord2(16533031,3031,'Fossløkken',0,0).
+statcoord2(16538173,8173,'Fremo',0,0).
+statcoord2(16533173,3173,'Fremo',0,0).
+statcoord2(16538175,8175,'Fremo leir',0,0).
+statcoord2(16533175,3175,'Fremo leir',0,0).
+statcoord2(16538172,8172,'Frødalen',0,0).
+statcoord2(16533172,3172,'Frødalen',0,0).
+statcoord2(16538767,8767,'Gafset',0,0).
+statcoord2(16533167,3167,'Gafset',0,0).
+statcoord2(16538149,8149,'Gaua boligfelt',0,0).
+statcoord2(16533149,3149,'Gaua boligfelt',0,0).
+statcoord2(16538093,8093,'Gaustad',0,0).
+statcoord2(16533093,3093,'Gaustad',0,0).
+statcoord2(16538094,8094,'Gaustadbakken',0,0).
+statcoord2(16533094,3094,'Gaustadbakken',0,0).
+statcoord2(16538058,8058,'Gimse gård',0,0).
+statcoord2(16533058,3058,'Gimse gård',0,0).
+statcoord2(16538190,8190,'Gimseflata',0,0).
+statcoord2(16533190,3190,'Gimseflata',0,0).
+statcoord2(16538101,8101,'Grennstuggu',0,0).
+statcoord2(16533101,3101,'Grennstuggu',0,0).
+statcoord2(16538174,8174,'Grevskott',0,0).
+statcoord2(16533174,3174,'Grevskott',0,0).
+statcoord2(16538044,8044,'Grinde',0,0).
+statcoord2(16533044,3044,'Grinde',0,0).
+statcoord2(16538153,8153,'Gustav Berg',0,0).
+statcoord2(16533153,3153,'Gustav Berg',0,0).
 statcoord2(16538536,8536,'Gylland',563101,6996268).
 statcoord2(16533036,3036,'Gylland',563106,6996215).
 statcoord2(16538537,8537,'Gylløyen',563409,6995376).
 statcoord2(16533037,3037,'Gylløyen',563425,6995314).
-statcoord2(16538103,8103,'Gåsbakken sk.',nil,nil).
-statcoord2(16533103,3103,'Gåsbakken sk.',nil,nil).
-statcoord2(16538111,8111,'Gåslandsveien',nil,nil).
-statcoord2(16533111,3111,'Gåslandsveien',nil,nil).
-statcoord2(16538164,8164,'H.A. Garasje',nil,nil).
-statcoord2(16533164,3164,'H.A. Garasje',nil,nil).
+statcoord2(16538103,8103,'Gåsbakken sk.',0,0).
+statcoord2(16533103,3103,'Gåsbakken sk.',0,0).
+statcoord2(16538111,8111,'Gåslandsveien',0,0).
+statcoord2(16533111,3111,'Gåslandsveien',0,0).
+statcoord2(16538164,8164,'H.A. Garasje',0,0).
+statcoord2(16533164,3164,'H.A. Garasje',0,0).
 statcoord2(16538538,8538,'Hage gartneri',563917,6994392).
 statcoord2(16533038,3038,'Hage gartneri',563942,6994323).
-statcoord2(16538143,8143,'Halguttu',nil,nil).
-statcoord2(16533143,3143,'Halguttu',nil,nil).
-statcoord2(16538049,8049,'Haugen gård',nil,nil).
-statcoord2(16533049,3049,'Haugen gård',nil,nil).
-statcoord2(16538124,8124,'Havdal, Melhus',nil,nil).
+statcoord2(16538143,8143,'Halguttu',0,0).
+statcoord2(16533143,3143,'Halguttu',0,0).
+statcoord2(16538049,8049,'Haugen gård',0,0).
+statcoord2(16533049,3049,'Haugen gård',0,0).
+statcoord2(16538124,8124,'Havdal, Melhus',0,0).
 statcoord2(16533124,3124,'Havdal, Melhus',567714,7020409).
-statcoord2(16538157,8157,'Hermanstad snupl.',nil,nil).
-statcoord2(16533157,3157,'Hermanstad snupl.',nil,nil).
+statcoord2(16538157,8157,'Hermanstad snupl.',0,0).
+statcoord2(16533157,3157,'Hermanstad snupl.',0,0).
 statcoord2(16538512,8512,'Hofstadsanden',564207,7014217).
 statcoord2(16533012,3012,'Hofstadsanden',564186,7014190).
-statcoord2(16538187,8187,'Hollum vegkryss',nil,nil).
-statcoord2(16533187,3187,'Hollum vegkryss',nil,nil).
+statcoord2(16538187,8187,'Hollum vegkryss',0,0).
+statcoord2(16533187,3187,'Hollum vegkryss',0,0).
 statcoord2(16538529,8529,'Horg krk.',563191,7001431).
 statcoord2(16533029,3029,'Horg krk.',563173,7001407).
 statcoord2(16538528,8528,'Horghaugen',563501,7002010).
 statcoord2(16533028,3028,'Horghaugen',563469,7001980).
 statcoord2(16538150,8150,'Hovin sk.',561852,6998018).
 statcoord2(16533150,3150,'Hovin sk.',561852,6998018).
-statcoord2(16538099,8099,'Hølonda krk.',-,-).
-statcoord2(16533099,3099,'Hølonda krk.',-,-).
-statcoord2(16538102,8102,'Hølonda S-lag',nil,nil).
-statcoord2(16533102,3102,'Hølonda S-lag',nil,nil).
-statcoord2(16538129,8129,'Høyeggen gård',nil,nil).
-statcoord2(16533129,3129,'Høyeggen gård',nil,nil).
-statcoord2(16538117,8117,'Høyeggen sk.',nil,nil).
+statcoord2(16538099,8099,'Hølonda krk.',0,0).
+statcoord2(16533099,3099,'Hølonda krk.',0,0).
+statcoord2(16538102,8102,'Hølonda S-lag',0,0).
+statcoord2(16533102,3102,'Hølonda S-lag',0,0).
+statcoord2(16538129,8129,'Høyeggen gård',0,0).
+statcoord2(16533129,3129,'Høyeggen gård',0,0).
+statcoord2(16538117,8117,'Høyeggen sk.',0,0).
 statcoord2(16533117,3117,'Høyeggen sk.',565060,7018112).
-statcoord2(16533249,3249,'Ila Jern Øysand',nil,nil).
-statcoord2(16538249,8249,'Ila Jern Øysand',nil,nil).
+statcoord2(16533249,3249,'Ila Jern Øysand',0,0).
+statcoord2(16538249,8249,'Ila Jern Øysand',0,0).
 statcoord2(16538502,8502,'Jaktøyen',564571,7020201).
 statcoord2(16533002,3002,'Jaktøyen',564546,7020158).
-statcoord2(16533251,3251,'Jernbetong, Melhus',nil,nil).
-statcoord2(16538251,8251,'Jernbetong, Melhus',nil,nil).
-statcoord2(16538161,8161,'Julkjønna',nil,nil).
-statcoord2(16533161,3161,'Julkjønna',nil,nil).
-statcoord2(16538138,8138,'Jønlandsmoen',nil,nil).
-statcoord2(16533138,3138,'Jønlandsmoen',nil,nil).
-statcoord2(16538105,8105,'Kalsenveien',nil,nil).
-statcoord2(16533105,3105,'Kalsenveien',nil,nil).
+statcoord2(16533251,3251,'Jernbetong, Melhus',0,0).
+statcoord2(16538251,8251,'Jernbetong, Melhus',0,0).
+statcoord2(16538161,8161,'Julkjønna',0,0).
+statcoord2(16533161,3161,'Julkjønna',0,0).
+statcoord2(16538138,8138,'Jønlandsmoen',0,0).
+statcoord2(16533138,3138,'Jønlandsmoen',0,0).
+statcoord2(16538105,8105,'Kalsenveien',0,0).
+statcoord2(16533105,3105,'Kalsenveien',0,0).
 statcoord2(16538523,8523,'Kjelstad',565716,7004447).
 statcoord2(16533023,3023,'Kjelstad',565670,7004413).
-statcoord2(16538092,8092,'Korsvegen',nil,nil).
-statcoord2(16533092,3092,'Korsvegen',nil,nil).
-statcoord2(16538067,8067,'Kottum filial',nil,nil).
-statcoord2(16533067,3067,'Kottum filial',nil,nil).
-statcoord2(16538066,8066,'Kottum gård',nil,nil).
-statcoord2(16533066,3066,'Kottum gård',nil,nil).
-statcoord2(16538055,8055,'Kregnesbakken',-,-).
-statcoord2(16533055,3055,'Kregnesbakken',-,-).
-statcoord2(16538185,8185,'Kregnesbakken snuplass',-,-).
-statcoord2(16533185,3185,'Kregnesbakken snuplass',-,-).
-statcoord2(16538186,8186,'Kregnesen',-,-).
-statcoord2(16533186,3186,'Kregnesen',-,-).
+statcoord2(16538092,8092,'Korsvegen',0,0).
+statcoord2(16533092,3092,'Korsvegen',0,0).
+statcoord2(16538067,8067,'Kottum filial',0,0).
+statcoord2(16533067,3067,'Kottum filial',0,0).
+statcoord2(16538066,8066,'Kottum gård',0,0).
+statcoord2(16533066,3066,'Kottum gård',0,0).
+statcoord2(16538055,8055,'Kregnesbakken',0,0).
+statcoord2(16533055,3055,'Kregnesbakken',0,0).
+statcoord2(16538185,8185,'Kregnesbakken snuplass',0,0).
+statcoord2(16533185,3185,'Kregnesbakken snuplass',0,0).
+statcoord2(16538186,8186,'Kregnesen',0,0).
+statcoord2(16533186,3186,'Kregnesen',0,0).
 statcoord2(16533019,3019,'Krekabakken',565839,7007490).
 statcoord2(16538519,8519,'Krekabakken',565853,7007485).
-statcoord2(16538147,8147,'Krysset Sletta',nil,nil).
-statcoord2(16533147,3147,'Krysset Sletta',nil,nil).
-statcoord2(16538087,8087,'Kursenteret',-,-).
-statcoord2(16533087,3087,'Kursenteret',-,-).
-statcoord2(16538122,8122,'Kvammenbakken',-,-).
-statcoord2(16533122,3122,'Kvammenbakken',-,-).
-statcoord2(16538123,8123,'Kvammenkrysset',nil,nil).
-statcoord2(16533123,3123,'Kvammenkrysset',nil,nil).
-statcoord2(16538145,8145,'Kvennabakken',nil,nil).
-statcoord2(16533145,3145,'Kvennabakken',nil,nil).
-statcoord2(16538100,8100,'Kvile',nil,nil).
-statcoord2(16533100,3100,'Kvile',nil,nil).
+statcoord2(16538147,8147,'Krysset Sletta',0,0).
+statcoord2(16533147,3147,'Krysset Sletta',0,0).
+statcoord2(16538087,8087,'Kursenteret',0,0).
+statcoord2(16533087,3087,'Kursenteret',0,0).
+statcoord2(16538122,8122,'Kvammenbakken',0,0).
+statcoord2(16533122,3122,'Kvammenbakken',0,0).
+statcoord2(16538123,8123,'Kvammenkrysset',0,0).
+statcoord2(16533123,3123,'Kvammenkrysset',0,0).
+statcoord2(16538145,8145,'Kvennabakken',0,0).
+statcoord2(16533145,3145,'Kvennabakken',0,0).
+statcoord2(16538100,8100,'Kvile',0,0).
+statcoord2(16533100,3100,'Kvile',0,0).
 statcoord2(16538504,8504,'Kvitland, Melhus',564276,7019094).
 statcoord2(16533004,3004,'Kvitland, Melhus',564211,7018996).
 statcoord2(16538515,8515,'Kvål',564399,7011903).
 statcoord2(16533015,3015,'Kvål',564415,7011872).
-statcoord2(16538155,8155,'Langdalsbakken',-,-).
-statcoord2(16533155,3155,'Langdalsbakken',-,-).
-statcoord2(16538156,8156,'Langdalsflata',-,-).
-statcoord2(16533156,3156,'Langdalsflata',-,-).
-statcoord2(16538154,8154,'Langdalskrysset',nil,nil).
-statcoord2(16533154,3154,'Langdalskrysset',nil,nil).
-statcoord2(16538098,8098,'Langåsen',nil,nil).
-statcoord2(16533098,3098,'Langåsen',nil,nil).
+statcoord2(16538155,8155,'Langdalsbakken',0,0).
+statcoord2(16533155,3155,'Langdalsbakken',0,0).
+statcoord2(16538156,8156,'Langdalsflata',0,0).
+statcoord2(16533156,3156,'Langdalsflata',0,0).
+statcoord2(16538154,8154,'Langdalskrysset',0,0).
+statcoord2(16533154,3154,'Langdalskrysset',0,0).
+statcoord2(16538098,8098,'Langåsen',0,0).
+statcoord2(16533098,3098,'Langåsen',0,0).
 statcoord2(16538530,8530,'Ler',565492,7008321).
 statcoord2(16533030,3030,'Ler',565492,7008257).
-statcoord2(16538127,8127,'Lerli',-,-).
-statcoord2(16533127,3127,'Lerli',-,-).
-statcoord2(16538133,8133,'Lete',nil,nil).
-statcoord2(16533133,3133,'Lete',nil,nil).
-statcoord2(16538158,8158,'Lilleberg Benna',nil,nil).
-statcoord2(16533158,3158,'Lilleberg Benna',-,-).
-statcoord2(16538151,8151,'Lilleberg forretn.',-,-).
-statcoord2(16533151,3151,'Lilleberg forretn.',-,-).
-statcoord2(16538179,8179,'Ljøkel',-,-).
-statcoord2(16533179,3179,'Ljøkel',-,-).
-statcoord2(16538118,8118,'Loddgårdsveien',nil,nil).
-statcoord2(16533118,3118,'Loddgårdsveien',nil,nil).
-statcoord2(16533192,3192,'Losen',nil,nil).
-statcoord2(16538192,8192,'Losen',nil,nil).
-statcoord2(16538109,8109,'Lufallsveien',nil,nil).
-statcoord2(16533109,3109,'Lufallsveien',nil,nil).
+statcoord2(16538127,8127,'Lerli',0,0).
+statcoord2(16533127,3127,'Lerli',0,0).
+statcoord2(16538133,8133,'Lete',0,0).
+statcoord2(16533133,3133,'Lete',0,0).
+statcoord2(16538158,8158,'Lilleberg Benna',0,0).
+statcoord2(16533158,3158,'Lilleberg Benna',0,0).
+statcoord2(16538151,8151,'Lilleberg forretn.',0,0).
+statcoord2(16533151,3151,'Lilleberg forretn.',0,0).
+statcoord2(16538179,8179,'Ljøkel',0,0).
+statcoord2(16533179,3179,'Ljøkel',0,0).
+statcoord2(16538118,8118,'Loddgårdsveien',0,0).
+statcoord2(16533118,3118,'Loddgårdsveien',0,0).
+statcoord2(16533192,3192,'Losen',0,0).
+statcoord2(16538192,8192,'Losen',0,0).
+statcoord2(16538109,8109,'Lufallsveien',0,0).
+statcoord2(16533109,3109,'Lufallsveien',0,0).
 statcoord2(16538524,8524,'Lund, Melhus',565337,7004027).
 statcoord2(16533024,3024,'Lund, Melhus',565337,7004049).
 statcoord2(16538526,8526,'Lundamo',564558,7003133).
 statcoord2(16533026,3026,'Lundamo',564513,7003118).
 statcoord2(16538525,8525,'Lundamo sk.',564980,7003292).
 statcoord2(16533025,3025,'Lundamo sk.',564842,7003217).
-statcoord2(16538050,8050,'Løberg avkjøring',-,-).
-statcoord2(16533050,3050,'Løberg avkjøring',-,-).
-statcoord2(16538051,8051,'Løberg snuplass',-,-).
-statcoord2(16533051,3051,'Løberg snuplass',-,-).
+statcoord2(16538050,8050,'Løberg avkjøring',0,0).
+statcoord2(16533050,3050,'Løberg avkjøring',0,0).
+statcoord2(16538051,8051,'Løberg snuplass',0,0).
+statcoord2(16533051,3051,'Løberg snuplass',0,0).
 statcoord2(16538522,8522,'Løhre',566129,7004967).
 statcoord2(16533022,3022,'Løhre',566095,7004909).
-statcoord2(16538064,8064,'Løkken boligfelt',nil,nil).
-statcoord2(16533064,3064,'Løkken boligfelt',nil,nil).
-statcoord2(16538063,8063,'Løkken gård',nil,nil).
-statcoord2(16533063,3063,'Løkken gård',nil,nil).
-statcoord2(16538121,8121,'Løvsethaugen',nil,nil).
-statcoord2(16533121,3121,'Løvsethaugen',-,-).
+statcoord2(16538064,8064,'Løkken boligfelt',0,0).
+statcoord2(16533064,3064,'Løkken boligfelt',0,0).
+statcoord2(16538063,8063,'Løkken gård',0,0).
+statcoord2(16533063,3063,'Løkken gård',0,0).
+statcoord2(16538121,8121,'Løvsethaugen',0,0).
+statcoord2(16533121,3121,'Løvsethaugen',0,0).
 statcoord2(16538507,8507,'Melhus bil',564205,7017930).
 statcoord2(16533007,3007,'Melhus bil',564232,7017876).
-statcoord2(16538191,8191,'Melhus Energi',nil,nil).
-statcoord2(16533191,3191,'Melhus Energi',nil,nil).
+statcoord2(16538191,8191,'Melhus Energi',0,0).
+statcoord2(16533191,3191,'Melhus Energi',0,0).
 statcoord2(16538509,8509,'Melhus krk.',564990,7016537).
 statcoord2(16533009,3009,'Melhus krk.',564978,7016446).
 statcoord2(16538505,8505,'Melhus sentrum',563953,7018257).
@@ -4041,136 +4041,136 @@ statcoord2(16538189,8189,'Melhusbrua',563376,7017537).
 statcoord2(16533189,3189,'Melhusbrua',563354,7017569).
 statcoord2(16538527,8527,'Misjonshuset',564063,7002797).
 statcoord2(16533027,3027,'Misjonshuset',563847,7002553).
-statcoord2(16538084,8084,'Myra, Melhus',nil,nil).
-statcoord2(16533084,3084,'Myra, Melhus',nil,nil).
-statcoord2(16538187,8187,'Myran, Hølonda',nil,nil).
-statcoord2(16533137,3137,'Myran, Hølonda',nil,nil).
-statcoord2(16538043,8043,'Myren, Melhus',nil,nil).
-statcoord2(16533043,3043,'Myren, Melhus',nil,nil).
-statcoord2(16538520,8520,'Møstad',nil,nil).
+statcoord2(16538084,8084,'Myra, Melhus',0,0).
+statcoord2(16533084,3084,'Myra, Melhus',0,0).
+statcoord2(16538187,8187,'Myran, Hølonda',0,0).
+statcoord2(16533137,3137,'Myran, Hølonda',0,0).
+statcoord2(16538043,8043,'Myren, Melhus',0,0).
+statcoord2(16533043,3043,'Myren, Melhus',0,0).
+statcoord2(16538520,8520,'Møstad',0,0).
 statcoord2(16533020,3020,'Møstad',566092,7006938).
-statcoord2(16538052,8052,'Nils Løberg',-,-).
-statcoord2(16533052,3052,'Nils Løberg',-,-).
-statcoord2(16538134,8134,'Nordgrenda',nil,nil).
-statcoord2(16533134,3134,'Nordgrenda',nil,nil).
-statcoord2(16538083,8083,'Norgjære',nil,nil).
-statcoord2(16533083,3083,'Norgjære',nil,nil).
+statcoord2(16538052,8052,'Nils Løberg',0,0).
+statcoord2(16533052,3052,'Nils Løberg',0,0).
+statcoord2(16538134,8134,'Nordgrenda',0,0).
+statcoord2(16533134,3134,'Nordgrenda',0,0).
+statcoord2(16538083,8083,'Norgjære',0,0).
+statcoord2(16533083,3083,'Norgjære',0,0).
 statcoord2(16538517,8517,'Nyhus, Melhus',565695,7010058).
 statcoord2(16533017,3017,'Nyhus, Melhus',565659,7009999).
-statcoord2(16538126,8126,'Nypan, Melhus',nil,nil).
-statcoord2(16533126,3126,'Nypan, Melhus',nil,nil).
-statcoord2(16538108,8108,'Olderøyen',nil,nil).
-statcoord2(16533108,3108,'Olderøyen',nil,nil).
+statcoord2(16538126,8126,'Nypan, Melhus',0,0).
+statcoord2(16533126,3126,'Nypan, Melhus',0,0).
+statcoord2(16538108,8108,'Olderøyen',0,0).
+statcoord2(16533108,3108,'Olderøyen',0,0).
 statcoord2(16538508,8508,'Psykiatrisk sykehjem',564726,7017238).
 statcoord2(16533008,3008,'Psykiatrisk sykehjem',564727,7017239).
-statcoord2(16538068,8068,'Rakbjørg gård',nil,nil).
-statcoord2(16533068,3068,'Rakbjørg gård',nil,nil).
-statcoord2(16538057,8057,'Rema 1000, Melhus',-,-).
-statcoord2(16533057,3057,'Rema 1000, Melhus',-,-).
-statcoord2(16538110,8110,'Restadveien',nil,nil).
-statcoord2(16533110,3110,'Restadveien',nil,nil).
-statcoord2(16538140,8140,'Retmoen',nil,nil).
-statcoord2(16533140,3140,'Retmoen',nil,nil).
-statcoord2(16538152,8152,'Rosmælen sk.',nil,nil).
-statcoord2(16533152,3152,'Rosmælen sk.',nil,nil).
-statcoord2(16538539,8539,'Rostad, Melhus',nil,nil).
-statcoord2(16533039,3039,'Rostad, Melhus',nil,nil).
-statcoord2(16538125,8125,'Rødde',nil,nil).
-statcoord2(16533125,3125,'Rødde',nil,nil).
-statcoord2(16538159,8159,'Røskaft Benna',nil,nil).
-statcoord2(16533159,3159,'Røskaft Benna',nil,nil).
-statcoord2(16533163,3163,'Røskaftløkken',nil,nil).
-statcoord2(16538163,8163,'Røskaftløkken',nil,nil).
-statcoord2(16538141,8141,'Seterdalsveien',nil,nil).
-statcoord2(16533141,3141,'Seterdalsveien',nil,nil).
-statcoord2(16538170,8170,'Simensbakken',nil,nil).
-statcoord2(16533170,3170,'Simensbakken',nil,nil).
-statcoord2(16538188,8188,'Sjetnemarka, Melhus',nil,nil).
-statcoord2(16533188,3188,'Sjetnemarka, Melhus',nil,nil).
-statcoord2(16538178,8178,'Skiltmaker',nil,nil).
-statcoord2(16533178,3178,'Skiltmaker',nil,nil).
+statcoord2(16538068,8068,'Rakbjørg gård',0,0).
+statcoord2(16533068,3068,'Rakbjørg gård',0,0).
+statcoord2(16538057,8057,'Rema 1000, Melhus',0,0).
+statcoord2(16533057,3057,'Rema 1000, Melhus',0,0).
+statcoord2(16538110,8110,'Restadveien',0,0).
+statcoord2(16533110,3110,'Restadveien',0,0).
+statcoord2(16538140,8140,'Retmoen',0,0).
+statcoord2(16533140,3140,'Retmoen',0,0).
+statcoord2(16538152,8152,'Rosmælen sk.',0,0).
+statcoord2(16533152,3152,'Rosmælen sk.',0,0).
+statcoord2(16538539,8539,'Rostad, Melhus',0,0).
+statcoord2(16533039,3039,'Rostad, Melhus',0,0).
+statcoord2(16538125,8125,'Rødde',0,0).
+statcoord2(16533125,3125,'Rødde',0,0).
+statcoord2(16538159,8159,'Røskaft Benna',0,0).
+statcoord2(16533159,3159,'Røskaft Benna',0,0).
+statcoord2(16533163,3163,'Røskaftløkken',0,0).
+statcoord2(16538163,8163,'Røskaftløkken',0,0).
+statcoord2(16538141,8141,'Seterdalsveien',0,0).
+statcoord2(16533141,3141,'Seterdalsveien',0,0).
+statcoord2(16538170,8170,'Simensbakken',0,0).
+statcoord2(16533170,3170,'Simensbakken',0,0).
+statcoord2(16538188,8188,'Sjetnemarka, Melhus',0,0).
+statcoord2(16533188,3188,'Sjetnemarka, Melhus',0,0).
+statcoord2(16538178,8178,'Skiltmaker',0,0).
+statcoord2(16533178,3178,'Skiltmaker',0,0).
 statcoord2(16538513,8513,'Skjerdingstad',564049,7013671).
 statcoord2(16533013,3013,'Skjerdingstad',564039,7013680).
 statcoord2(16538521,8521,'Skjetnemyrbakken',566295,7006041).
 statcoord2(16533021,3021,'Skjetnemyrbakken',566284,7006017).
 statcoord2(16538501,8501,'Skottvold',564715,7020694).
 statcoord2(16533001,3001,'Skottvold',564700,7020683).
-statcoord2(16538085,8085,'Solbu',nil,nil).
-statcoord2(16533085,3085,'Solbu',nil,nil).
-statcoord2(16538095,8095,'Stensetkrysset',nil,nil).
-statcoord2(16533095,3095,'Stensetkrysset',nil,nil).
-statcoord2(16538053,8053,'Stokke bru',nil,nil).
-statcoord2(16533053,3053,'Stokke bru',nil,nil).
+statcoord2(16538085,8085,'Solbu',0,0).
+statcoord2(16533085,3085,'Solbu',0,0).
+statcoord2(16538095,8095,'Stensetkrysset',0,0).
+statcoord2(16533095,3095,'Stensetkrysset',0,0).
+statcoord2(16538053,8053,'Stokke bru',0,0).
+statcoord2(16533053,3053,'Stokke bru',0,0).
 statcoord2(16538516,8516,'Storstein',565422,7010772).
 statcoord2(16533016,3016,'Storstein',565413,7010760).
-statcoord2(16538082,8082,'Stranda, Melhus',nil,nil).
-statcoord2(16533082,3082,'Stranda, Melhus',nil,nil).
-statcoord2(16538081,8081,'Strandamoen',nil,nil).
-statcoord2(16533081,3081,'Strandamoen',nil,nil).
-statcoord2(16538131,8131,'Strandv./Øyås avkjøring',nil,nil).
-statcoord2(16533131,3131,'Strandv./Øyås avkjøring',nil,nil).
-statcoord2(16538168,8168,'Strandveien, Melhus',nil,nil).
-statcoord2(16533168,3168,'Strandveien, Melhus',nil,nil).
-statcoord2(16538130,8130,'Strandveientunet',nil,nil).
-statcoord2(16533130,3130,'Strandveientunet',nil,nil).
-statcoord2(16538097,8097,'Sunsetveien',nil,nil).
-statcoord2(16533097,3097,'Sunsetveien',nil,nil).
+statcoord2(16538082,8082,'Stranda, Melhus',0,0).
+statcoord2(16533082,3082,'Stranda, Melhus',0,0).
+statcoord2(16538081,8081,'Strandamoen',0,0).
+statcoord2(16533081,3081,'Strandamoen',0,0).
+statcoord2(16538131,8131,'Strandv./Øyås avkjøring',0,0).
+statcoord2(16533131,3131,'Strandv./Øyås avkjøring',0,0).
+statcoord2(16538168,8168,'Strandveien, Melhus',0,0).
+statcoord2(16533168,3168,'Strandveien, Melhus',0,0).
+statcoord2(16538130,8130,'Strandveientunet',0,0).
+statcoord2(16533130,3130,'Strandveientunet',0,0).
+statcoord2(16538097,8097,'Sunsetveien',0,0).
+statcoord2(16533097,3097,'Sunsetveien',0,0).
 statcoord2(16538511,8511,'Søberg',564559,7015163).
 statcoord2(16533011,3011,'Søberg',564551,7015094).
 statcoord2(16538510,8510,'Søberg Sykehjem',564681,7015686).
 statcoord2(16533010,3010,'Søberg Sykehjem',564707,7015794).
-statcoord2(16538114,8114,'Trøndertun',nil,nil).
-statcoord2(16533114,3114,'Trøndertun',nil,nil).
-statcoord2(16538177,8177,'Tyttebærveien',-,-).
-statcoord2(16533177,3177,'Tyttebærveien',-,-).
-statcoord2(16538142,8142,'Tømmesdalen',-,-).
-statcoord2(16533142,3142,'Tømmesdalen',-,-).
+statcoord2(16538114,8114,'Trøndertun',0,0).
+statcoord2(16533114,3114,'Trøndertun',0,0).
+statcoord2(16538177,8177,'Tyttebærveien',0,0).
+statcoord2(16533177,3177,'Tyttebærveien',0,0).
+statcoord2(16538142,8142,'Tømmesdalen',0,0).
+statcoord2(16533142,3142,'Tømmesdalen',0,0).
 statcoord2(16533183,3183,'Udduvoll bru vest',563373,7022135).
 statcoord2(16538783,8783,'Udduvoll bru vest',563381,7022082).
-statcoord2(16538119,8119,'Ugleveien',nil,nil).
+statcoord2(16538119,8119,'Ugleveien',0,0).
 statcoord2(16533119,3119,'Ugleveien',566073,7018336).
-statcoord2(16538048,8048,'Valdum bru',-,-).
-statcoord2(16533048,3048,'Valdum bru',-,-).
-statcoord2(16538112,8112,'Varmbo garasje',-,-).
-statcoord2(16533112,3112,'Varmbo garasje',-,-).
+statcoord2(16538048,8048,'Valdum bru',0,0).
+statcoord2(16533048,3048,'Valdum bru',0,0).
+statcoord2(16538112,8112,'Varmbo garasje',0,0).
+statcoord2(16533112,3112,'Varmbo garasje',0,0).
 statcoord2(16538113,8113,'Varmbo snuplass',562665,7018698).
 statcoord2(16533113,3113,'Varmbo snuplass',562665,7018698).
-statcoord2(16538135,8135,'Varmbobakken',-,-).
-statcoord2(16533135,3135,'Varmbobakken',-,-).
-statcoord2(16538065,8065,'Veltet',nil,nil).
-statcoord2(16533065,3065,'Veltet',nil,nil).
-statcoord2(16538162,8162,'Vhen',nil,nil).
-statcoord2(16533162,3162,'Vhen',nil,nil).
-statcoord2(16538069,8069,'Vigdalsmo boligfelt',nil,nil).
-statcoord2(16533069,3069,'Vigdalsmo boligfelt',nil,nil).
+statcoord2(16538135,8135,'Varmbobakken',0,0).
+statcoord2(16533135,3135,'Varmbobakken',0,0).
+statcoord2(16538065,8065,'Veltet',0,0).
+statcoord2(16533065,3065,'Veltet',0,0).
+statcoord2(16538162,8162,'Vhen',0,0).
+statcoord2(16533162,3162,'Vhen',0,0).
+statcoord2(16538069,8069,'Vigdalsmo boligfelt',0,0).
+statcoord2(16533069,3069,'Vigdalsmo boligfelt',0,0).
 statcoord2(16538535,8535,'Vollagjerdet',562703,6996709).
 statcoord2(16533035,3035,'Vollagjerdet',562699,6996709).
 statcoord2(16538534,8534,'Vollan, Melhus',562696,6997269).
 statcoord2(16533034,3034,'Vollan, Melhus',562677,6997192).
 statcoord2(16535061,5061,'Vollhagen',561428,7017477).
 statcoord2(16533061,3061,'Vollhagen',561431,7017486).
-statcoord2(16538060,8060,'Vollmarka boligfelt',nil,nil).
-statcoord2(16533060,3060,'Vollmarka boligfelt',nil,nil).
-statcoord2(16538059,8059,'Vollmarka garasje',nil,nil).
-statcoord2(16533059,3059,'Vollmarka garasje',nil,nil).
-statcoord2(16538107,8107,'Vonheim',nil,nil).
-statcoord2(16533107,3107,'Vonheim',nil,nil).
+statcoord2(16538060,8060,'Vollmarka boligfelt',0,0).
+statcoord2(16533060,3060,'Vollmarka boligfelt',0,0).
+statcoord2(16538059,8059,'Vollmarka garasje',0,0).
+statcoord2(16533059,3059,'Vollmarka garasje',0,0).
+statcoord2(16538107,8107,'Vonheim',0,0).
+statcoord2(16533107,3107,'Vonheim',0,0).
 statcoord2(16533184,3184,'Øie sk.',562847,7022167).
 statcoord2(16538784,8784,'Øie sk.',562820,7022162).
-statcoord2(16538046,8046,'Økdal avkjøring',-,-).
-statcoord2(16533046,3046,'Økdal avkjøring',-,-).
-statcoord2(16538047,8047,'Økdal snuplass',-,-).
-statcoord2(16533047,3047,'Økdal snuplass',-,-).
-statcoord2(16538120,8120,'Ølstøren, Melhus',-,-).
-statcoord2(16533120,3120,'Ølstøren, Melhus',-,-).
+statcoord2(16538046,8046,'Økdal avkjøring',0,0).
+statcoord2(16533046,3046,'Økdal avkjøring',0,0).
+statcoord2(16538047,8047,'Økdal snuplass',0,0).
+statcoord2(16533047,3047,'Økdal snuplass',0,0).
+statcoord2(16538120,8120,'Ølstøren, Melhus',0,0).
+statcoord2(16533120,3120,'Ølstøren, Melhus',0,0).
 statcoord2(16538514,8514,'Øya gård',564165,7012556).
 statcoord2(16533014,3014,'Øya gård',564157,7012511).
 statcoord2(16538765,8765,'Øysandkrysset',560626,7022102).
 statcoord2(16533165,3165,'Øysandkrysset',560630,7022120).
-statcoord2(16538132,8132,'Øyås',-,-).
-statcoord2(16533132,3132,'Øyås',-,-).
-statcoord2(16538088,8088,'Åmot',nil,nil).
-statcoord2(16533088,3088,'Åmot',nil,nil).
+statcoord2(16538132,8132,'Øyås',0,0).
+statcoord2(16533132,3132,'Øyås',0,0).
+statcoord2(16538088,8088,'Åmot',0,0).
+statcoord2(16533088,3088,'Åmot',0,0).
 statcoord2(16578727,8727,'AKS',545083.304,7022334.128).
 statcoord2(16574027,4027,'AKS',545101.236,7022360.905).
 statcoord2(16578767,8767,'Belsåsen',0,0).
@@ -4276,7 +4276,7 @@ statcoord2(16574044,4044,'Råbygda',0,0).
 statcoord2(16578746,8746,'Råbygda sk., Jåren',0,0).
 statcoord2(16574046,4046,'Råbygda sk., Jåren',0,0).
 statcoord2(16578072,8072,'Sagberget',0,0).
-statcoord2(16573072,3072,'Sagberget',nil,nil).
+statcoord2(16573072,3072,'Sagberget',0,0).
 statcoord2(16578073,8073,'Sandvika',0,0).
 statcoord2(16573073,3073,'Sandvika',0,0).
 statcoord2(16578723,8723,'Sildværet',548916.464,7024677.267).
@@ -4348,7 +4348,7 @@ statcoord2(16623054,3054,'Eggan',574362,7018165).
 statcoord2(16626054,6054,'Eggan',574354,7018166).
 statcoord2(16623032,3032,'Forset',572007,7019860).
 statcoord2(16626032,6032,'Forset',572007,7019860).
-statcoord2(16016000,6000,'GK',nil,nil).
+statcoord2(16016000,6000,'GK',0,0).
 statcoord2(16623047,3047,'Grendstad',576386,7015545).
 statcoord2(16626047,6047,'Grendstad',576386,7015455).
 statcoord2(16623031,3031,'Hallansvingen',571904,7020503).
@@ -4389,7 +4389,7 @@ statcoord2(16623063,3063,'Målsjøen',571822,7013618).
 statcoord2(16626063,6063,'Målsjøen',571817,7013624).
 statcoord2(16623062,3062,'Målsjøåsen',572058,7014443).
 statcoord2(16626062,6062,'Målsjøåsen',572059,7014443).
-statcoord2(16623089,3089,'Nordset',nil,nil).
+statcoord2(16623089,3089,'Nordset',0,0).
 statcoord2(16623040,3040,'Nygården, Klæbu',572476,7016602).
 statcoord2(16626040,6040,'Nygården, Klæbu',572442,7016583).
 statcoord2(16623011,3011,'Nyhus, Klæbu',575048,7023073).
@@ -4404,7 +4404,7 @@ statcoord2(16623005,3005,'Rønningen, Klæbu',573525,7024293).
 statcoord2(16626005,6005,'Rønningen, Klæbu',573505,7024279).
 statcoord2(16623036,3036,'Sagmoen',571968,7018274).
 statcoord2(16626036,6036,'Sagmoen',571968,7018274).
-statcoord2(16626030,6030,'Sjøla',nil,nil).
+statcoord2(16626030,6030,'Sjøla',0,0).
 statcoord2(16623013,3013,'Solem bru',575543,7022372).
 statcoord2(16626013,6013,'Solem bru',575548,7022386).
 statcoord2(16623009,3009,'Storugla',574695,7023647).
@@ -4507,16 +4507,16 @@ statcoord2(16638354,8354,'Hønstad',0,0).
 statcoord2(16632054,2054,'Hønstad',0,0).
 statcoord2(16638371,8371,'Isdammen',0,0).
 statcoord2(16632071,2071,'Isdammen',0,0).
-statcoord2(16632099,2099,'K.grense Malvik - Selbu',nil,nil).
-statcoord2(16638399,8399,'K.grense Malvik - Selbu',nil,nil).
-statcoord2(16632098,2098,'K.grense Malvik - Stjørdal',nil,nil).
-statcoord2(16638398,8398,'K.grense Malvik - Stjørdal',nil,nil).
+statcoord2(16632099,2099,'K.grense Malvik - Selbu',0,0).
+statcoord2(16638399,8399,'K.grense Malvik - Selbu',0,0).
+statcoord2(16632098,2098,'K.grense Malvik - Stjørdal',0,0).
+statcoord2(16638398,8398,'K.grense Malvik - Stjørdal',0,0).
 statcoord2(16638380,8380,'Karlstad',0,0).
 statcoord2(16632080,2080,'Karlstad',0,0).
 statcoord2(16638358,8358,'Kleiva',0,0).
 statcoord2(16632058,2058,'Kleiva',0,0).
-statcoord2(16638347,8347,'Kvegjerdsplassen',nil,nil).
-statcoord2(16632047,2047,'Kvegjerdsplassen',nil,nil).
+statcoord2(16638347,8347,'Kvegjerdsplassen',0,0).
+statcoord2(16632047,2047,'Kvegjerdsplassen',0,0).
 statcoord2(16638331,8331,'Leistadkrysset',581363.671,7033731.206).
 statcoord2(16632031,2031,'Leistadkrysset',581383.447,7033672.136).
 statcoord2(16638338,8338,'Leistadmoen',0,0).
@@ -4585,8 +4585,8 @@ statcoord2(16638305,8305,'Vikhammer',581108.162,7035333.727).
 statcoord2(16632005,2005,'Vikhammer',581125.13,7035319.675).
 statcoord2(16638306,8306,'Vikhammerløkka',581582.059,7035586.947).
 statcoord2(16632006,2006,'Vikhammerløkka',581485.717,7035508.857).
-statcoord2(16632095,2095,'Vikhammermoveien',nil,nil).
-statcoord2(16638395,8395,'Vikhammermoveien',nil,nil).
+statcoord2(16632095,2095,'Vikhammermoveien',0,0).
+statcoord2(16638395,8395,'Vikhammermoveien',0,0).
 statcoord2(16638336,8336,'Vikhammeråsen',0,0).
 statcoord2(16632036,2036,'Vikhammeråsen',0,0).
 statcoord2(16638335,8335,'Vikhammeråsen rundkj.',0,0).
@@ -4601,8 +4601,8 @@ statcoord2(16647152,7152,'Alset',0,0).
 statcoord2(16642152,2152,'Alset',0,0).
 statcoord2(16647181,7181,'Amdalsveien',0,0).
 statcoord2(16642181,2181,'Amdalsveien',0,0).
-statcoord2(16643520,3520,'Avelsgård v.kr.',nil,nil).
-statcoord2(16646520,6520,'Avelsgård v.kr.',nil,nil).
+statcoord2(16643520,3520,'Avelsgård v.kr.',0,0).
+statcoord2(16646520,6520,'Avelsgård v.kr.',0,0).
 statcoord2(16647186,7186,'Balstad',0,0).
 statcoord2(16642186,2186,'Balstad',0,0).
 statcoord2(16647151,7151,'Bell sk.',0,0).
@@ -4621,8 +4621,8 @@ statcoord2(16647160,7160,'Dambekken',0,0).
 statcoord2(16642160,2160,'Dambekken',0,0).
 statcoord2(16647111,7111,'Eidemsvik',0,0).
 statcoord2(16642111,2111,'Eidemsvik',0,0).
-statcoord2(16643534,3534,'Espveien',nil,nil).
-statcoord2(16646534,6534,'Espveien',nil,nil).
+statcoord2(16643534,3534,'Espveien',0,0).
+statcoord2(16646534,6534,'Espveien',0,0).
 statcoord2(16647119,7119,'Evjegjerdet',0,0).
 statcoord2(16642119,2119,'Evjegjerdet',0,0).
 statcoord2(16647126,7126,'Flaknan',0,0).
@@ -4633,32 +4633,32 @@ statcoord2(16647110,7110,'Flønes',0,0).
 statcoord2(16642110,2110,'Flønes',0,0).
 statcoord2(16647183,7183,'Fuglem kryss',0,0).
 statcoord2(16642183,2183,'Fuglem kryss',0,0).
-statcoord2(16643530,3530,'Fuglem nordre',nil,nil).
-statcoord2(16646530,6530,'Fuglem nordre',nil,nil).
-statcoord2(16643532,3532,'Fuglem søndre',nil,nil).
-statcoord2(16646532,6532,'Fuglem søndre',nil,nil).
-statcoord2(16642199,2199,'Garasje Selbu',nil,nil).
-statcoord2(16647199,7199,'Garasje Selbu',nil,nil).
+statcoord2(16643530,3530,'Fuglem nordre',0,0).
+statcoord2(16646530,6530,'Fuglem nordre',0,0).
+statcoord2(16643532,3532,'Fuglem søndre',0,0).
+statcoord2(16646532,6532,'Fuglem søndre',0,0).
+statcoord2(16642199,2199,'Garasje Selbu',0,0).
+statcoord2(16647199,7199,'Garasje Selbu',0,0).
 statcoord2(16647106,7106,'Garberg bru',0,0).
 statcoord2(16642106,2106,'Garberg bru',0,0).
-statcoord2(16643526,3526,'Gjønland',nil,nil).
-statcoord2(16646526,6526,'Gjønland',nil,nil).
+statcoord2(16643526,3526,'Gjønland',0,0).
+statcoord2(16646526,6526,'Gjønland',0,0).
 statcoord2(16647105,7105,'Granby',0,0).
 statcoord2(16642105,2105,'Granby',0,0).
-statcoord2(16642178,2178,'Grøtte',nil,nil).
-statcoord2(16647178,7178,'Grøtte',nil,nil).
-statcoord2(16643522,3522,'Hammer',nil,nil).
-statcoord2(16643548,3548,'Hammer',nil,nil).
-statcoord2(16646522,6522,'Hammer',nil,nil).
-statcoord2(16646548,6548,'Hammer',nil,nil).
+statcoord2(16642178,2178,'Grøtte',0,0).
+statcoord2(16647178,7178,'Grøtte',0,0).
+statcoord2(16643522,3522,'Hammer',0,0).
+statcoord2(16643548,3548,'Hammer',0,0).
+statcoord2(16646522,6522,'Hammer',0,0).
+statcoord2(16646548,6548,'Hammer',0,0).
 statcoord2(16647187,7187,'Hegseth eft',0,0).
 statcoord2(16642187,2187,'Hegseth eft',0,0).
 statcoord2(16647121,7121,'Hyttbakken',0,0).
 statcoord2(16642121,2121,'Hyttbakken',0,0).
 statcoord2(16647185,7185,'Høiby trappefabrikk',0,0).
 statcoord2(16642185,2185,'Høiby trappefabrikk',0,0).
-statcoord2(16643564,3564,'Hårstadengen',nil,nil).
-statcoord2(16646564,6564,'Hårstadengen',nil,nil).
+statcoord2(16643564,3564,'Hårstadengen',0,0).
+statcoord2(16646564,6564,'Hårstadengen',0,0).
 statcoord2(16647161,7161,'Kallar',0,0).
 statcoord2(16642161,2161,'Kallar',0,0).
 statcoord2(16647107,7107,'Kjelstad',0,0).
@@ -4667,32 +4667,32 @@ statcoord2(16647167,7167,'Krogstad',0,0).
 statcoord2(16642167,2167,'Krogstad',0,0).
 statcoord2(16647154,7154,'Krysset Vikvarvet - Ausa',0,0).
 statcoord2(16642154,2154,'Krysset Vikvarvet - Ausa',0,0).
-statcoord2(16643558,3558,'Kullåsen',nil,nil).
-statcoord2(16646558,6558,'Kullåsen',nil,nil).
-statcoord2(16643572,3572,'Kulset bru snuplass',nil,nil).
-statcoord2(16646572,6572,'Kulset bru snuplass',nil,nil).
+statcoord2(16643558,3558,'Kullåsen',0,0).
+statcoord2(16646558,6558,'Kullåsen',0,0).
+statcoord2(16643572,3572,'Kulset bru snuplass',0,0).
+statcoord2(16646572,6572,'Kulset bru snuplass',0,0).
 statcoord2(16647172,7172,'Kulseth',0,0).
 statcoord2(16642172,2172,'Kulseth',0,0).
 statcoord2(16647116,7116,'Kulsetvegen',0,0).
 statcoord2(16642116,2116,'Kulsetvegen',0,0).
 statcoord2(16647171,7171,'Kulsetås',0,0).
 statcoord2(16642171,2171,'Kulsetås',0,0).
-statcoord2(16643550,3550,'Kulvik',nil,nil).
-statcoord2(16646550,6550,'Kulvik',nil,nil).
-statcoord2(16643536,3536,'Kvitmyr',nil,nil).
-statcoord2(16646536,6536,'Kvitmyr',nil,nil).
+statcoord2(16643550,3550,'Kulvik',0,0).
+statcoord2(16646550,6550,'Kulvik',0,0).
+statcoord2(16643536,3536,'Kvitmyr',0,0).
+statcoord2(16646536,6536,'Kvitmyr',0,0).
 statcoord2(16647157,7157,'Labbi',0,0).
 statcoord2(16642157,2157,'Labbi',0,0).
-statcoord2(16643528,3528,'Langset Østre',nil,nil).
-statcoord2(16646528,6528,'Langset Østre',nil,nil).
+statcoord2(16643528,3528,'Langset Østre',0,0).
+statcoord2(16646528,6528,'Langset Østre',0,0).
 statcoord2(16647158,7158,'Lerdalen',0,0).
 statcoord2(16642158,2158,'Lerdalen',0,0).
 statcoord2(16647120,7120,'Lilleevjen',0,0).
 statcoord2(16642120,2120,'Lilleevjen',0,0).
 statcoord2(16647113,7113,'Marienborg, Selbu',0,0).
 statcoord2(16642113,2113,'Marienborg, Selbu',0,0).
-statcoord2(16643568,3568,'Marstad',nil,nil).
-statcoord2(16646568,6568,'Marstad',nil,nil).
+statcoord2(16643568,3568,'Marstad',0,0).
+statcoord2(16646568,6568,'Marstad',0,0).
 statcoord2(16647175,7175,'Morset',0,0).
 statcoord2(16642175,2175,'Morset',0,0).
 statcoord2(16647166,7166,'Moslet bru',0,0).
@@ -4701,8 +4701,8 @@ statcoord2(16647168,7168,'Mosletta handel',0,0).
 statcoord2(16642168,2168,'Mosletta handel',0,0).
 statcoord2(16647191,7191,'Movegen',0,0).
 statcoord2(16642191,2191,'Movegen',0,0).
-statcoord2(16643556,3556,'Myran',nil,nil).
-statcoord2(16646556,6556,'Myran',nil,nil).
+statcoord2(16643556,3556,'Myran',0,0).
+statcoord2(16646556,6556,'Myran',0,0).
 statcoord2(16647182,7182,'Natohøgda',0,0).
 statcoord2(16642182,2182,'Natohøgda',0,0).
 statcoord2(16647164,7164,'Neatun',0,0).
@@ -4713,14 +4713,14 @@ statcoord2(16647129,7129,'Nekåmyrene',0,0).
 statcoord2(16642129,2129,'Nekåmyrene',0,0).
 statcoord2(16647174,7174,'Nervik',0,0).
 statcoord2(16642174,2174,'Nervik',0,0).
-statcoord2(16643562,3562,'Nordby',nil,nil).
-statcoord2(16646562,6562,'Nordby',nil,nil).
-statcoord2(16643544,3544,'Okstad',nil,nil).
-statcoord2(16646544,6544,'Okstad',nil,nil).
-statcoord2(16643546,3546,'Radiomuseet',nil,nil).
-statcoord2(16646546,6546,'Radiomuseet',nil,nil).
-statcoord2(16643542,3542,'Renå',nil,nil).
-statcoord2(16646542,6542,'Renå',nil,nil).
+statcoord2(16643562,3562,'Nordby',0,0).
+statcoord2(16646562,6562,'Nordby',0,0).
+statcoord2(16643544,3544,'Okstad',0,0).
+statcoord2(16646544,6544,'Okstad',0,0).
+statcoord2(16643546,3546,'Radiomuseet',0,0).
+statcoord2(16646546,6546,'Radiomuseet',0,0).
+statcoord2(16643542,3542,'Renå',0,0).
+statcoord2(16646542,6542,'Renå',0,0).
 statcoord2(16647123,7123,'Rolset',0,0).
 statcoord2(16642123,2123,'Rolset',0,0).
 statcoord2(16647124,7124,'Rotla bru',0,0).
@@ -4735,8 +4735,8 @@ statcoord2(16647188,7188,'Sandvik, Selbu',0,0).
 statcoord2(16642188,2188,'Sandvik, Selbu',0,0).
 statcoord2(16647115,7115,'Selbu skysstasjon',0,0).
 statcoord2(16642115,2115,'Selbu skysstasjon',0,0).
-statcoord2(16643554,3554,'Selbu travbane',nil,nil).
-statcoord2(16646554,6554,'Selbu travbane',nil,nil).
+statcoord2(16643554,3554,'Selbu travbane',0,0).
+statcoord2(16646554,6554,'Selbu travbane',0,0).
 statcoord2(16647184,7184,'Selbustrand krk.',0,0).
 statcoord2(16642184,2184,'Selbustrand krk.',0,0).
 statcoord2(16647189,7189,'Selbustrand sk.',0,0).
@@ -4745,12 +4745,12 @@ statcoord2(16647159,7159,'Sesseng',0,0).
 statcoord2(16642159,2159,'Sesseng',0,0).
 statcoord2(16647192,7192,'Setsås',0,0).
 statcoord2(16642192,2192,'Setsås',0,0).
-statcoord2(16643538,3538,'Sirum',nil,nil).
-statcoord2(16646538,6538,'Sirum',nil,nil).
+statcoord2(16643538,3538,'Sirum',0,0).
+statcoord2(16646538,6538,'Sirum',0,0).
 statcoord2(16647190,7190,'Stamnes',0,0).
 statcoord2(16642190,2190,'Stamnes',0,0).
-statcoord2(16643570,3570,'Stokke snuplass',nil,nil).
-statcoord2(16646570,6570,'Stokke snuplass',nil,nil).
+statcoord2(16643570,3570,'Stokke snuplass',0,0).
+statcoord2(16646570,6570,'Stokke snuplass',0,0).
 statcoord2(16647153,7153,'Stormyråsen',0,0).
 statcoord2(16642153,2153,'Stormyråsen',0,0).
 statcoord2(16647169,7169,'Tronset',0,0).
@@ -4761,14 +4761,14 @@ statcoord2(16647127,7127,'Tuset',0,0).
 statcoord2(16642127,2127,'Tuset',0,0).
 statcoord2(16647103,7103,'Tømra',0,0).
 statcoord2(16642103,2103,'Tømra',0,0).
-statcoord2(16643524,3524,'Ustgården',nil,nil).
-statcoord2(16646524,6524,'Ustgården',nil,nil).
+statcoord2(16643524,3524,'Ustgården',0,0).
+statcoord2(16646524,6524,'Ustgården',0,0).
 statcoord2(16647173,7173,'Uthus',0,0).
 statcoord2(16642173,2173,'Uthus',0,0).
 statcoord2(16647162,7162,'Velve',0,0).
 statcoord2(16642162,2162,'Velve',0,0).
-statcoord2(16642114,2114,'Vestre Eidem',nil,nil).
-statcoord2(16647114,7114,'Vestre Eidem',nil,nil).
+statcoord2(16642114,2114,'Vestre Eidem',0,0).
+statcoord2(16647114,7114,'Vestre Eidem',0,0).
 statcoord2(16647176,7176,'Vikaengene',0,0).
 statcoord2(16642176,2176,'Vikaengene',0,0).
 statcoord2(16647155,7155,'Vikvarvet S-lag',0,0).
@@ -4785,8 +4785,8 @@ statcoord2(16647163,7163,'Øverbygda snarkjøp',0,0).
 statcoord2(16642163,2163,'Øverbygda snarkjøp',0,0).
 statcoord2(16647104,7104,'Øverbø',0,0).
 statcoord2(16642104,2104,'Øverbø',0,0).
-statcoord2(16643540,3540,'Øyberget',nil,nil).
-statcoord2(16646540,6540,'Øyberget',nil,nil).
+statcoord2(16643540,3540,'Øyberget',0,0).
+statcoord2(16646540,6540,'Øyberget',0,0).
 statcoord2(16657217,7217,'Berggårdsmyra',0,0).
 statcoord2(16652217,2217,'Berggårdsmyra',0,0).
 statcoord2(16652299,2299,'Garasje Tydal',0,0).
