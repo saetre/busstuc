@@ -1,4 +1,10 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
+%% FILE statcoord2.pl
+%% CREATED TA-110317
+%% REVISED TA-110317
+
+%% Station coordinates with internal station numbers
+
 statcoord(15057011,'Kristiansund h.båt',0,0).
 statcoord(15057024,'Ringholmen h.båt',0,0).
 statcoord(15768911,'Aure',0,0).

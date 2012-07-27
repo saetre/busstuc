@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE busstuc.pl 
 %% SYSTEM TUC
 %% CREATED  TA-020125
