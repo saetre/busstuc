@@ -6,6 +6,8 @@
 
 %% Handle empty answer from buslog 
 
+:- ensure_loaded( '../declare' ).       %% RS-111212 :-op( 710,xfx, isa ).
+
 makenegative((head,_TF_),_,nl):- 
     progtrace(4,ne00),
     !.
@@ -164,8 +166,8 @@ makenegative((_When,_),Q,space0):- %%
 
 
 makenegative((_When,_),Q,Mess):- %% any statement type, also when 
-    getactualtime(Q,Date,Day,Clock), 
-    notthenanswer(Date,Day,Clock,Q,Mess), 
+    getactualtime(Q,Date,Day,Clock),
+    notthenanswer(Date,Day,Clock,Q,Mess),
     progtrace(4,ne18),!.
 
 
@@ -578,6 +580,13 @@ following_weekend_abnormal(Date):-
 attimeclock(9999,true):-!.  %%  call true
 attimeclock(Clock, (bcp(attime),bwt(Clock))).
 
+
+%% RS-120727 AD HOC! nothing to dragvoll, try ntnu_dragvoll
+dirans(Q,Answer):-
+    sequence_member(keepto(HT,_,_),Q) ->   Answer= ( bcp(indirectiontowards),bwr(HT),period);
+    sequence_member(keepfrom(HT,_,_),Q) -> Answer= ( bcp(indirectionfrom),bwr(HT),period);
+    sequence_member(departure(_,dragvoll,_,_),Q) -> Answer= ( comma, bcp(try),bwr(ntnu_dragvoll),bcp(instead),period);
+    Answer= period.   
 
 
 dirans(Q,Answer):-

@@ -1282,13 +1282,13 @@ firstarrive(Rid,Place,Station,   DelArr2,DelDep):-
 %%%%%%%%    !.  %% NB  Gløs -> D2 CUT D2 -> Buenget
                               %%
 
-outsmalldeps( [],_sentrum,_,_opts):- %% Empty ( <= error ?)
+outsmalldeps( [],_Sentrum,_,_Opts):- %% Empty ( <= error ?)
     !,
     nl,
     output('*** Jeg finner ingen forbindelser ***'). %% error alarm
 
 
-outsmalldeps( [   x3([],_,_)    ],_sentrum,_,_opts):- %% Empty ( <= error ?)%%
+outsmalldeps( [   x3([],_,_)    ],_Sentrum,_,_Opts):- %% Empty ( <= error ?)%%
     !,
     nl,
     output('***  Jeg finner ingen forbindelse ***'). %% error alarm
@@ -1380,17 +1380,16 @@ out_comma(_) :- %% Printing comma if smartdepflag is set %% TE-120406
 
 create_smartdep_entry(_,_,_,_) :- \+  value(smartdepflag,true),!.
 
-create_smartdep_entry(Intstation1,TimesDurations, _DirPlace, Create_smartdep_entry):- %% TA-110405    %%RS-120402
+create_smartdep_entry(Intstation1,TimesDurations, DirPlace, Create_smartdep_entry):- %% TA-110405 %%RS-120402 -120727
     value(smartdepflag,true),
-    %%firstmem(TimesDurations,td(Time,RID,Duration,_Intstation2)),
-    firstmem(TimesDurations,td(Time,RID,Duration, _Instation)),
+    %firstmem(TimesDurations,td(Time,RID,Duration,_Intstation2)),
+     firstmem(TimesDurations,td(Time,RID,Duration, _Instation)),
 
     ridtobusnr(RID,BusNo),
     localstatno(RID,Intstation1,Fullstatname1,Localstatno1),
 
-
-%%    Create_smartdep_entry = smartdepentry(Fullstatname1,Localstatno1,BusNo,Time,Duration,DirPlace),
-    Create_smartdep_entry = smartdepentry(Fullstatname1,Localstatno1,BusNo,Time,Duration,_Instation2),
+        Create_smartdep_entry = smartdepentry(Fullstatname1,Localstatno1,BusNo,Time,Duration,DirPlace),
+%%      Create_smartdep_entry = smartdepentry(Fullstatname1,Localstatno1,BusNo,Time,Duration,_Instation2),
 
     !.
 
@@ -1466,10 +1465,6 @@ print_smartdep_entry(smartdepentry(Fullstatname1,Localstatno1,BusNo,Time,Duratio
 
    !,
    out(ItemList).
-
-
-
-
 
 
 
@@ -2754,6 +2749,8 @@ ondays(Day):-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Mapping fra konsept til ord på hvert språk
 
+%% RS-120728
+%% Common Word Concept
 
 cwc(quote(S),[S,S]).
 
@@ -2829,26 +2826,6 @@ cwc(cannot,['can not','kan ikke']).
 cwc(change,['route changes','ruteendringer']).
 
 
-cwc(self,[self,selv]).
-
-cwc(smshelp,['Prefix question with RUTE , and send to 2027.', %% TA-100924
-             'Begynn meldingen med RUTE , og send til 2027.']).
-
-cwc(so_on,['...','...']).
-%% cwc(so_on,['so on','så videre']).
-
-
-
-cwc(sorrycannot,['I''m afraid I can''t do that.', %% HAL :-)
-                 'Jeg kan dessverre ikke gjøre det.']). %%   //Actions
-
-cwc(sorrynot,['No, I don''t. ',   %%  Non action (kjenne/like)
-              'Nei, desverre']).
-
-
-cwc(sorrydont,['No, I don''t. ',   %%  Non action (kjenne/like)
-               'Jeg  gjør dessverre ikke det.']).
-
 cwc(cannotanswer,['I can not answer that.','Jeg kan ikke svare på det.']).
 
 cwc(cannotanswermyself,['I can not answer that on my own.', %% self judgment
@@ -2887,11 +2864,6 @@ cwc(departuretime,['departure time','avgangstid']).
 cwc(direction,['direction','retning']).
 cwc(donotknow,['don''t know','vet ikke']).
 
-
-cwc(idonotknowanyplacesnear,['I do not know any places near',
-                            'Jeg kjenner ingen steder nær']).
-cwc(idonotknowanystationsnear,['I do not know any stops near',
-                              'Jeg kjenner ingen holdeplasser nær']).
 
 %% cwc(drink,['drink','drikk']).
 
@@ -2963,6 +2935,11 @@ cwc(idonotknow,['I don''t know.','Jeg vet ikke.']).
 %% cwc(idonotknow,['I am not able to answer that.',
 %%                'Jeg kan ikke svare på det.']).
 
+cwc(idonotknowanyplacesnear,['I do not know any places near',
+                            'Jeg kjenner ingen steder nær']).
+cwc(idonotknowanystationsnear,['I do not know any stops near',
+                              'Jeg kjenner ingen holdeplasser nær']).
+
 cwc(idonotunderstand,['I don''t understand that', %%  (  Avoid I want to die ==> OK)
                       'Jeg forstår ikke det']).
 
@@ -2981,52 +2958,13 @@ cwc(unknownfield,['uknknown field',
 cwc(unknowndate,['This  date is unknown.',
                  'Den datoen er ukjent.']).
 
+cwc(in,['in','i']).
+
 cwc(inconsistenttimes, ['This  time interval is not possible.',
                         'Dette tidsintervallet er ikke mulig.']).
 
 cwc(inconsistentduration, ['This duration  is too large.',
                            'Jeg kan ikke svare for så store tidsintervaller.']).
-
-cwc(may17,['Constitutional Day','Nasjonaldag']). %% TA-110518   %% RS-120503
-
-cwc(mustknowfood,['You must specify food in such questions',
-                  'Du må spesifisere mat i slike spørsmål']).
-
-cwc(new_years_eve,['New years eve','nyttårsaften']).
-cwc(new_years_day,['New years day','nyttårsdag']).
-
-cwc(nofoodonbus,
-     ['It is not allowed to  eat sausages, chips,  icecream  etc on the bus.',  %% :-)
-      'Det er ikke tillatt å spise pølser, chips, is  o.l. ombord i bussen.']).
-
-%  cwc(nofoodonbus, %% plakat i bussen
-%    ['Please don''t eat sausages, chips,  icecream etc on the bus.',
-%     'Vennligst ikke spis pølser, is, chips o.l. ombord i bussen.']).
-
-cwc(nodrinkonbus,
-    ['It is not allowed to drink alcoholic beverages in the bus.',
-     'Det er ikke tillatt å nyte alkoholholdige drikker på bussen.']).
-
-
-cwc(noneedtoanswer,['I don''t need to answer that.',
-                    'Jeg trenger ikke å svare på det.']).
-
-cwc(nosenseofhumour,   %% TA-110125
-     ['I have no sense of humour.',
-      'Jeg har ingen sans for humor.']).
-
-cwc(nosmokeonbus,
-    ['It is not allowed to smoke in the bus.',
-     'Røyking er forbudt i bussene.']).
-
-cwc(nonightbus,['I have no routes for the nightbus',
-                'Jeg har for tiden ingen ruter for nattbussen']).
-
-
-cwc(noroutesforthisdate,['I have no routes for this date yet.',
-                         'Jeg har ingen ruter for denne datoen enda.']).
-cwc(in,['in','i']).
-
 
 cwc(indirection,['in direction','i retning']):-
     value(smsflag,true),!.
@@ -3047,6 +2985,9 @@ cwc(indirectionfrom,['from', '  fra']):-
 
 cwc(indirectionfrom,['in direction from',
                         ' i retning fra']).
+
+cwc(instead,['instead','istedenfor']).
+
 cwc(inthisperiod,['in this route period','i denne ruteperioden']).
                                                 %% dont mix with time period
 cwc(invitemore,['If you want more information, you may ask now, or end the conversation.',
@@ -3094,7 +3035,47 @@ cwc(more,[more,flere]).
 
 cwc(must,['must','må']).
 
+cwc(may17,['Constitutional Day','Nasjonaldag']). %% TA-110518   %% RS-120503
+
+cwc(mustknowfood,['You must specify food in such questions',
+                  'Du må spesifisere mat i slike spørsmål']).
+
+cwc(new_years_eve,['New years eve','nyttårsaften']).
+cwc(new_years_day,['New years day','nyttårsdag']).
+
+cwc(nofoodonbus,
+     ['It is not allowed to  eat sausages, chips,  icecream  etc on the bus.',  %% :-)
+      'Det er ikke tillatt å spise pølser, chips, is  o.l. ombord i bussen.']).
+
+%  cwc(nofoodonbus, %% plakat i bussen
+%    ['Please don''t eat sausages, chips,  icecream etc on the bus.',
+%     'Vennligst ikke spis pølser, is, chips o.l. ombord i bussen.']).
+
+cwc(nodrinkonbus,
+    ['It is not allowed to drink alcoholic beverages in the bus.',
+     'Det er ikke tillatt å nyte alkoholholdige drikker på bussen.']).
+
+
+cwc(noneedtoanswer,['I don''t need to answer that.',
+                    'Jeg trenger ikke å svare på det.']).
+
+cwc(nosenseofhumour,   %% TA-110125
+     ['I have no sense of humour.',
+      'Jeg har ingen sans for humor.']).
+
+cwc(nosmokeonbus,
+    ['It is not allowed to smoke in the bus.',
+     'Røyking er forbudt i bussene.']).
+
+cwc(nonightbus,['I have no routes for the nightbus',
+                'Jeg har for tiden ingen ruter for nattbussen']).
+
+
 cwc(nopassages,['There are none passing then.','Det er ingen som passererer da.']).
+
+cwc(noroutesforthisdate,['I have no routes for this date yet.',
+                         'Jeg har ingen ruter for denne datoen enda.']).
+
 cwc(notthestation, ['This route does not pass the station.',
                     'Denne ruten passerer ikke stasjonen.']).
 
@@ -3244,19 +3225,6 @@ cwc(picture,[picture,bilde]).
 
 cwc(put,[placement,plassering]). %% T-100308 the verb as action
 
-cwc(the_routes_on,['The routes on ','Rutene ']).
-
-cwc(theneareststationto,['The station nearest to',
-                         'Holdeplassen nærmest']).
-
-cwc(todayis,['Todays day: ','Dagen idag: ']).
-
-cwc(toolate,['Time of notification has already passed.',
-             'Tidspunkt for varsling er allerede passert.']).
-
-cwc(toomanyplaces,['I can not handle so many places at a time !',
-                   'Jeg kan ikke svare for så mange steder av gangen !']).
-
 cwc(or,['or','eller']).
 
 cwc(otherbus, ['other route company. ',
@@ -3282,9 +3250,29 @@ cwc(saturday,['Saturday','lørdag']).
 cwc(saturdays,['Saturdays','lørdager']).
 
 cwc(say,['say','si']).
+cwc(self,[self,selv]).
+
 cwc(size,[size,størrelse]).
+cwc(smshelp,['Prefix question with RUTE , and send to 2027.', %% TA-100924
+             'Begynn meldingen med RUTE , og send til 2027.']).
+
+cwc(so_on,['...','...']).
+%% cwc(so_on,['so on','så videre']).
+
+
+
+cwc(sorrycannot,['I''m afraid I can''t do that.', %% HAL :-)
+                 'Jeg kan dessverre ikke gjøre det.']). %%   //Actions
+
 cwc(sorryno, ['Unfortunately, I can not show you any',
               'Jeg kan dessverre ikke vise noe']).
+
+cwc(sorrynot,['No, I don''t. ',   %%  Non action (kjenne/like)
+              'Nei, desverre']).
+
+
+cwc(sorrydont,['No, I don''t. ',   %%  Non action (kjenne/like)
+               'Jeg  gjør dessverre ikke det.']).
 
 cwc(spacename,[spacename, 'navn på område' ]). %% utgang/toalett/ etc
 
@@ -3330,6 +3318,11 @@ cwc(thereafter,[thereafter,'like etterpå']).
 cwc(therearenodeparturesfor,['There are no departures for','Det er ingen avganger for']).
 cwc(thebus,['the bus','bussen']).
 cwc(thebuses,['the buses','bussene']).
+cwc(the_routes_on,['The routes on ','Rutene ']).
+
+cwc(theneareststationto,['The station nearest to',
+                         'Holdeplassen nærmest']).
+
 cwc(thenightbus,['the nightbus','nattbussen']).
 cwc(thenightbuses,['the nightbuses','nattbussene']).
 cwc(thecolour,['the colour','fargen']).
@@ -3355,9 +3348,18 @@ cwc(timeout,['I could not find any connections in time',
              'Jeg klarte ikke å finne noen forbindelser i tide']).
 
 cwc(to,['to','til']).
+cwc(todayis,['Todays day: ','Dagen idag: ']).
+
+cwc(toolate,['Time of notification has already passed.',
+             'Tidspunkt for varsling er allerede passert.']).
+
+cwc(toomanyplaces,['I can not handle so many places at a time !',
+                   'Jeg kan ikke svare for så mange steder av gangen !']).
+
 cwc(tram,['tram','trikk']).
 cwc(trams,['trams','trikker']).
 cwc(tramstation,['tramstation',trikkestasjon]).
+cwc(try,['try','prøv']).
 cwc(tuesday,['Tuesday','tirsdag']).
 cwc(tuesdays,['Tuesdays','tirsdager']).
 cwc(unknown,['unknown','ukjent']).
@@ -4504,6 +4506,10 @@ bwrstreet(X)   :- bwr(X).
 
 %% BCP   Basic Common Words
 
+
+%% bcw: bcpbc = basic common phrase big cap
+%% RS-120728
+
 outcap(X):-
     bigcap(X,Y),
     write(' '),
@@ -4519,6 +4525,8 @@ bcpbc(Con) :-
 
 bcpbc(_) :-  write(' *** ').
 
+%% RS-120729
+%% BCP = Basic Common Phrase. INCLUDES cwc: Common Word Concept
 
 bcp(Con) :-
 	 (cwc(Con,Phrases);cwcerror(Con,Phrases)),
@@ -4532,7 +4540,8 @@ bcp(Con) :-
 bcp(_):- write(' ** ').
 
 
-
+%% RS-120728
+%% bwc: Basic Word Common? Concept?
 
 % New  List with Class, Big caps
 

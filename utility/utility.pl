@@ -78,6 +78,7 @@ startbatch :-
 
 stoptimebatch :-  %% TA-100111
    takebatch.
+
 takebatch :-
    statistics(runtime,[T2,_]),
    batchstart =: T1,
