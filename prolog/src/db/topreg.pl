@@ -44,7 +44,7 @@ compilerouteaux(tt,[ %% 'db/regbusall', %% Inclusive  set of buses
 
 %default_period(tt,winter, r1601_110822).  %% 2011 Autumn
 default_period(tt,winter, r1601_120101).  %% 2012 Winter/Spring?
-default_period(tt,summer, r1611_110627).  %% 2011 Summer
+default_period(tt,summer, r1604_120625).  %% 2012 Summer
 
 default_message(tt,winter,['AtB winter routes are from  Jan. 2, 2012  to Jun. 26, 2012.',
                            'AtB vinterruter gjelder fra 2. jan. 2012 til 26. jun. 2012']).
