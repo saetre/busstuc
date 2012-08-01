@@ -2,6 +2,35 @@ Sjekk
  https://www.ntnu.no/wiki/display/FUIROS/BUGS+-+PROBLEM+REPORTS
 
 
+TOUGH CASES
+N: buss fra ila til vikåsen på lørdag . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+]}
+
+4. Aug. 2012 er en  lørdag .
+Første buss , nummer 11 passerer  Ila kl. 0956 
+og  kommer til  Vikåsen kl. 1033 .
+Siste buss , nummer 11 passerer  Ila kl. 1641 
+og  kommer til  Vikåsen kl. 1723 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra berg studentby til lerkendal . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+
+
+
+
+
 1 N: buss 94 til lade i morgen.
 
 trans/Found rule:tqllist2
