@@ -29,7 +29,7 @@
 :- compile('db/places.pl').  
 :- compile('db/auxtables.pl').  
 :- consult('db/namehashtable.pl'). %% compile is too expensive  
-%% :- consult('db/statcoord.pl'). %% RS-120727 statcoord and statcoord2 are not used in plain BUSTUC?
+%% :- consult('db/statcoord2.pl'). %% RS-120727 statcoord and statcoord2 are not used in plain BUSTUC?
 
 :- compile('app/buslog.pl').  %% Compile LAST, undetected ERROR(?)
 

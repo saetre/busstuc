@@ -74,7 +74,7 @@
 %        unwanted_station/1
 %   ]).
 %:- use_module( '../db/regcompstr', [ composite_road/3 ] ).
-%:- use_module( '../db/regbusall', [ regbus/1 ] ). %% HEAVY DB!
+% %:- use_module( '../db/regbusall', [ regbus/1 ] ). %% HEAVY DB! %% RS-120803
 %:- use_module( '../db/regstr', [   streetstat/5 ] ). %% RS-111201 Remember to update source program, which is makeaux?
 %:- use_module( '../db/teledat2', [   lookupdb2/3 ] ).
 %:- use_module( '../db/timedat', [ named_date/2 ]).

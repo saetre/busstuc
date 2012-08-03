@@ -1,9 +1,10 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE statcoord2.pl
 %% CREATED TA-110317
-%% REVISED TA-110317
+%% REVISED TA-110317 RS-120803
 
-%% Station coordinates with internal station numbers
+%% Station coordinates with internal station numbers 
+%% RS-120803 Made obsolete by statcoord2.pl which has google-style world coordinates!
 
 statcoord(15057011,'Kristiansund h.båt',0,0).
 statcoord(15057024,'Ringholmen h.båt',0,0).
@@ -902,8 +903,10 @@ statcoord(16011372,'Presthusaunet',574628.221,7033223.151).
 statcoord(16010372,'Presthusaunet',574627.363,7033072.964).
 statcoord(16011011,'Prinsen Kinosenter',569554.316,7033835.013).
 statcoord(16010011,'Prinsen Kinosenter',569539.943,7033792.616).
-statcoord(16011015,'Prinsenkrysset',569470.949,7034386.136).
+
+statcoord(16011015,'Prinsenkrysset',569470.949,7034386.136). %% RS-120802 Moved (in summer)
 statcoord(16010015,'Prinsenkrysset',569458.723,7034370.812).
+
 statcoord(16011376,'Prof. Brochs gt.',569806.348,7032650.004).
 statcoord(16010376,'Prof. Brochs gt.',569813.756,7032512.226).
 statcoord(16011296,'Ragnhildsgate',569303,7033427).
@@ -1087,7 +1090,6 @@ statcoord(16010479,'Steintrøveien',572371.979,7031108.577).
 statcoord(16010466,'Steinåsen',572555.554,7031091.183).
 statcoord(16011736,'Stene, Trondheim',555739.607,7026412.668).
 statcoord(16010736,'Stene, Trondheim',555739.109,7026405.8).
-statcoord(1600003,-,2.1,-1).
 statcoord(16010468,'Stokkan',574075.315,7032230.182).
 statcoord(16011486,'Stokkanhaugen',573880.158,7032127.526).
 statcoord(16010486,'Stokkanhaugen',574001.033,7032133.466).

@@ -2,7 +2,7 @@
 %% FILE busstuc.pl 
 %% SYSTEM TUC
 %% CREATED  TA-020125
-%% REVISED  TA-110804
+%% REVISED  TA-110804 RS-120803
 
 %% Makefile for BussTUC  server NTNU , Norwegian
 

@@ -1430,6 +1430,9 @@ localstatno(RID,Intstation,Fullstatname,Localstatno):-
 fullstatname(_Localstatno,hovedterminalen,'Sentrumsterminalen'):-!. %% TA-110530
 %% detailed station name (M3) hard to find
 
+fullstatname(_Localstatno,prinsenkrysset,'Prinsenkrysset'):-!. %% RS-120803 AD-HOC!
+%% detailed station name (M3) hard to find
+
 fullstatname(Localstatno,Station,Fullstatname) :- %% official station name
     veh_mod(TTP),                     %% not Sentrumsterminalen but Munkegata - M3
     TTP:hpl(Localstatno,Station,_,Fullstatname).

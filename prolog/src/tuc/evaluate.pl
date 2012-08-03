@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE evaluate.pl.
 %% SYSTEM TUC
 %% CREATED TA-930528
