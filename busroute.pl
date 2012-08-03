@@ -22,7 +22,7 @@
 
 ?-compile('compileroute.pl').   %% Bootstrapping for compilation
     
-?-compile('db/statcoord.pl').   %% 
+?-compile('db/statcoord2.pl').  %% RS-120802 
 
 ?-compile('db/topreg.pl').      %% Main Table for Route Modules
     

@@ -91,7 +91,7 @@
 
 %:- ensure_loaded( [ regbusall, regcompstr, regstr, teledat2 ] ). %% HEAVY DB!
 %%%%%%
- :- ensure_loaded( regbusall ). %, [ nightbus/1 ] ). %% HEAVY DB!
+:- ensure_loaded( regbusall ). %, [ nightbus/1 ] ). %% HEAVY DB!    %% RS-120803 %% Use buslog.pl instead!
 %:- ensure_loaded( regbusall ). %% HEAVY DB!
 %:- use_module( regcompstr, [] ). %% HEAVY DB!
 %:- use_module( regstr, [] ). %% HEAVY DB!

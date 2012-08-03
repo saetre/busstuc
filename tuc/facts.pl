@@ -32,10 +32,9 @@
 
 %% RS-111205, UNIT: db/
 :- use_module( '../db/busdat', [ vehicletype/2, xforeign/1 ]).
-:- ensure_loaded( '../db/regbusall' ). %, [ nightbus/1, regbus/1 ] ). %% HEAVY DB!
+% %:- ensure_loaded( '../db/regbusall' ). %, [ nightbus/1, regbus/1 ] ). %% HEAVY DB? RS-120803
 %:- use_module( '../db/places', [
 %        isat/2, placestat/2, underspecified_place/1, unwanted_place/1 ]).
-%:- use_module( '../db/regbusall', [ nightbus/1, regbus/1 ] ). %% HEAVY DB!
 %:- use_module( '../db/teledat2', [ building/1, is_dom_val/5 ] ).
 %:- use_module( '../db/regcompstr', [ composite_road/3 ] ).
 %:- use_module( '../db/regstr', [   streetstat/5 ] ). %% RS-111201 Remember to update source program, which is makeaux?
@@ -721,3 +720,24 @@ precedent_firstname([First|Rest],Tor) :-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%  Moved from busdat 
+%%  Nightbuses
+
+nightbus(103). 
+nightbus(104).
+nightbus(105).
+nightbus(106).
+nightbus(107).
+nightbus(108).
+nightbus(109).
+nightbus(119). 
+nightbus(136).
+nightbus(146).
+nightbus(148).
+nightbus(149).
+nightbus(154).
+nightbus(155).
+nightbus(175). 
+nightbus(188). 
+
+%¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤

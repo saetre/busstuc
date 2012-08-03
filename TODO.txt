@@ -1,0 +1,16 @@
+
+Check out make_total_google!
+
+makeanswer(true,FlatCode,ProgIn,AnswerOut       ) :-
+    makeinitanswer(true,FlatCode,ProgIn,InitAnswer),
+    pragma_aux(ans,ProgIn,InitAnswer,AnswerOut),
+    !,
+    make_total_google(AnswerOut, _TOTAL). %% busanshp.pl
+
+LOG
+===
+RS-120803
+Moved db/regbusall to general regbus in buslog.pl
+
+This call failed because prinsenkrysset is not a hpl(X)! (Add a general "neighborhood as station" predicat?
+	connections(A,B,free(19),nyborg,prinsenkrysset,friday,40,[to,from],C,D)
