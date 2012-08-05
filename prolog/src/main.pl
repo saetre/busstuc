@@ -229,8 +229,8 @@ webrun_tele :-
 	 !.
 
 webrun :-
-	 writepid, 
-         write("Executing webrun"),
+	 writepid,
+         %%write("Executing webrun"),
     set_prolog_flag(fileerrors,off),
     busflag:= true,    %%  Bustuc Application Program
 	 queryflag := true, %% Statements are implicit queries

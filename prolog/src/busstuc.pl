@@ -40,8 +40,8 @@
 ?- [ %% sicstus4compatibility], loaded in drucke_baum
    'tucbuss.pl',
    'busroute.pl', %% Compiles database/
-   'db/discrepancies.pl'   
-   ]. %% Must be updated before winter
+   'db/discrepancies.pl'   %% Must be updated before winter %% TA -> RS-120805 Se e-post korrespondansen til Tore
+   ].
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

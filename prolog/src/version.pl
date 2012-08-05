@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE version.pl
 %% SYSTEM TUC
 %% CREATED TA-970913
