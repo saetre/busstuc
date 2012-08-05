@@ -37,13 +37,11 @@
 
 %% ?-prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates// Testing
 
-?- %% [sicstus4compatibility], loaded in drucke_baum
-
-   ['tucbuss.pl'],
-
-   ['busroute.pl'], %% Compiles database/
-
-   ['db/discrepancies.pl']. %% Must be updated before winter
+?- [ %% sicstus4compatibility], loaded in drucke_baum
+   'tucbuss.pl',
+   'busroute.pl', %% Compiles database/
+   'db/discrepancies.pl'   
+   ]. %% Must be updated before winter
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
