@@ -26594,6 +26594,7 @@ torehash(sjetnhaugan,sjetnhaugan).
 torehash(sjetnhaugn,sjetnhaugan).
 torehash(sjetnhugan,sjetnhaugan).
 torehash(sjtnhaugan,sjetnhaugan).
+torehash(skjetnahaugen,sjetnhaugan).
 torehash(nadosenteret,nardosenteret).
 torehash(nardoenteret,nardosenteret).
 torehash(nardoseneret,nardosenteret).
