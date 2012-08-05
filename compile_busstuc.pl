@@ -6,7 +6,7 @@
 % Compiles the BussTUC system for NTNU server.
 
 ?-compile('busstuc.pl'),
-  save_program('busestuc', 'webrun_norsk'), %% TA-110208
+  save_program('busestuc', 'webrun_norsk'), %% TA-110208 %% RS-120805
   halt.
 
 
