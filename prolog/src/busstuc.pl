@@ -42,6 +42,7 @@
    'busroute.pl', %% Compiles database/
    'db/discrepancies.pl'   %% Must be updated before winter %% TA -> RS-120805 Se e-post korrespondansen til Tore
    ].
+?- notrace.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

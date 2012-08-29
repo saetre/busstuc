@@ -30,7 +30,10 @@
 
 
 :- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
-
+:- ensure_loaded('../utility/utility'). %% RS-120816 sequence_member etc.
+:- ensure_loaded('../db/statcoord2'). %% RS-120816 statcoord
+:- ensure_loaded('../app/buslog'). %% RS-120816 veh_mod
+:- ensure_loaded('../db/regstr'). %% RS-120816 streetstat
 
 
 gootrace(B2) :-
@@ -66,7 +69,7 @@ make_total_google(AnswerOut,  TOTAL):-
     append([START1],BusTrace,SBANG),
     append(SBANG,[STOP1],TOTAL),
 
-    (value(mapflag,true) ->totaljsonprint(TOTAL,AnswerOut);true).
+    (value(mapflag,true) -> totaljsonprint(TOTAL,AnswerOut) ; true).
 
 totaljsonprint(TOTAL,AnswerOut):-
     write('{'),nl,
@@ -258,9 +261,9 @@ outdeplist01(Deps,Day,Opts,DirPlace,Out,MAP) :-
 
 
 outdeplist02(Deps,Day,Opts,DirPlace,Out,MAP) :-
-    print_smart_init([direct|Opts]), %% "departures" : [  %% Ad Hoc
+    print_smart_init([direct|Opts]), %% "departures" : [  %% Ad Hoc %% Trond, Tore, Magnus?
     outdeplist1(Deps,Day,Opts,DirPlace,Out,MAP),
-    print_smart_trail. %% ]}
+    print_smart_trail. %% ]} %% Ad Hoc
 
 
 print_smart_init(Opts) :-
@@ -627,9 +630,9 @@ outdeplist1([],Day,Opts,DirPlace,Out,MAP) :- %% not earliesttimes
     outdeplisttime([],Day,Opts,DirPlace,Out,MAP). %% whatever you get
 
 
-outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),DESTMAP) :- %% from A to B
+outdeplist1(Deps,_Day,Opts,DirPlace,((Out,earliesttimes)),DESTMAP) :- %% from A to B
     testmember(time,Opts),  %% then not afternow %% TA-100630
-    \+ anotherday(Day),
+%%    \+ anotherday(Day),     %% RS-120813 Maybe this should work for any day?
     \+ value(dialog,1),
     !,
     progtrace(4,case26na),
@@ -638,7 +641,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),DESTMAP) :- %% from A t
     justoutputthelistnotafternow(Deps,DirPlace,Out,Opts,DESTMAP). %% %% then not afternow
 
 
-outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP) :- %% from A to B
+outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP) :- %% from A to B (today, after now)
     \+ anotherday(Day),
     \+ value(dialog,1),
 
@@ -647,7 +650,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP) :- %% from A to B
     justoutputtheliststar(Deps,DirPlace,Out,Opts,MAP).
 
 
-outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)), MAP) :-
+outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)), MAP) :-       %% RS-120813 case27: Last resort?
     !,
     progtrace(4,case27),
     outdeplisttime(Deps,Day,Opts,DirPlace,Out,MAP). %% Next/Last
@@ -805,11 +808,11 @@ justoutputthelistnotafternow(Deps,DirPlace,Out,Opts,DESTMAP):-
     justoutputthelist(Deps5,DirPlace,Out,Opts,DESTMAP).
 
 
+
 %% justoutputtheliststar // filter all but first within 5 minutes or same RID
 
 % Purpose is to not let the second (of the originals) dep shadow for next after 5 minutes
 % However, same rid makes it complicated
-
 
 justoutputtheliststar(Deps,DirPlace,Out,Opts,MAP):-
     value(dialog,1),
@@ -873,7 +876,7 @@ justoutputthelist0(Deps,DirPlace,Out,Opts, dir(Dep1,Bingo)):-  %% no warning
 
  dest_station( X3LIST, RID,   DEST):-
      member(X3,X3LIST),
-     X3 = x3(TDLIST,_busno,_orig),
+     X3 = x3(TDLIST,_Busno,_Orig),
      member( td(_, RID , _,DEST),TDLIST),
      !.
 
@@ -1121,13 +1124,14 @@ computewarningtime(Date0,Time0,_PreMin,Date0,Time0). %% Ad Hoc
 
 
 %%%%% outdeplisttime  first/next/last (where adequate) %%%%%%%%%%%%
+%%%%% E.g. "next bus after now" is not applicable if not today?? %% RS-120813
 %%%%%                 ---------------                  %%%%%%%%%%%%
-
 outdeplisttime([],_Day,_Opts,_DirPlace,true,_MAP) :- !.
 
 outdeplisttime(Deps,Day,Opts,DirPlace,OutDep,MAP):-
-    firstdepnotices(Deps),
-    outdeplisttime1(Deps,Day,Opts,DirPlace,OutDep,MAP).
+    progtrace(3,Deps), %% trace , %% 3  Temp %% RS-120814   %% DEBUG %%
+    firstdepnotices(Deps),      %% Warn if first dep has already left!
+    outdeplisttime1(Deps,Day,Opts,DirPlace,OutDep,MAP).        %% MW-120829 %% Maybe good place to add JSON?
 
 
 
@@ -1156,13 +1160,13 @@ outdeplisttime1(Deps,_Day,Opts,DirPlace,(OutNext,OutLast), MAP) :-
 	 outdeplast(Deps,DirPlace,TimeL,OutLast).
 
 
-outdeplisttime1(Deps,_Day,_Opts,DirPlace,Out,MAP) :-
+outdeplisttime1(Deps,_Day,Opts,DirPlace,Out,MAP) :-
     value(nightbusflag,true),
     value(smsflag,true),     %% Next nightbus IRRELEVANT
     !,
     maxnumberofindividualdepartures(MNID), %% Extra check
     memberids(MNID,Deps,Deps4), %% there may be many if unrestricted
-    justoutputthelist0(Deps4,DirPlace,Out,MAP). %% Few anyway, dont miss any
+    justoutputthelist0(Deps4,DirPlace,Out,Opts,MAP). %% Few anyway, dont miss any
                                               %% 0  no warning
 
 outdeplisttime1(Deps,_Day,_Opts,DirPlace,(OutFirst,OutLast), MAP) :-
@@ -1185,10 +1189,22 @@ outdeplisttime1(Deps,Day,Opts,DirPlace,(OutFirst,OutNext,OutLast), MAP) :-
  \+ value(smsflag,true),
  \+ value(nightbusflag,true),
     outdepfirst(Deps,DirPlace,TimeF,OutFirst,MAP),
-	 outdeplast(Deps,DirPlace,TimeL,OutLast),
-	 (\+ anotherday(Day) -> %% Next departure is irrelevant if not today !!!
-          outdepnext(Deps,Opts,TimeF,TimeL,DirPlace,OutNext,_NAP); %%  -Day
+                                                                        %% MW-120829
+         outdeplast(Deps,DirPlace,TimeL,OutLast),
+                                                                        %% MW-120829
+         (\+ anotherday(Day) -> %% Next departure is irrelevant if not today !!! %%RS-120813
+          outdepnext(Deps,Opts,TimeF,TimeL,DirPlace,OutNext,_NAP)   ; %%  -Day
+                                                                        %% MW-120829
           OutNext=true).
+
+%outdeplisttime1(Deps,_Day,Opts,DirPlace,(OutFirst,OutNext,OutLast), MAP) :-
+% \+ value(smsflag,true),
+% \+ value(nightbusflag,true),
+%    outdepfirst(Deps,DirPlace,TimeF,OutFirst,MAP),
+%         outdeplast(Deps,DirPlace,TimeL,OutLast),
+% %%      (\+ anotherday(Day) -> %% Next departure is irrelevant if not today !!! %%RS-120813
+%          outdepnext(Deps,Opts,TimeF,TimeL,DirPlace,OutNext,_NAP)   .  %%  ; %%  -Day
+% %%         OutNext=true).
 
 
 
@@ -1210,7 +1226,7 @@ outdeponly(Dep,DirPlace,
 
     outandarrivesonly(Station,Time9,DirPlace,Rid,BegTime,DelDep,ARRIVALTIME,OutArr,FINAL),
 
-    Duration is ARRIVALTIME-Time9,
+    Duration is ARRIVALTIME-Time9, zip,
 
     create_smartdep_entry2(Station,Time9,Duration,Rid, DirPlace ,  Smartdep_entry), %% TA-110505
 
@@ -1308,13 +1324,13 @@ outsmalldeps(A,B,C,Opts):-
     outsmalldeps0(A,B,C,Opts).
 
 
-outsmalldeps0([],_,[],_Opts).
+outsmalldeps0([],_,[],_Opts). %% , [] ).%% RS-120829 %% empty Smartdep_entries, terminate Recursion
 
 outsmalldeps0([ x3(TimesDuration,BusN,Station)|BusDeps],DirPlace, %% TimesDuration FIRST!!!!
 				 (bwrbusbc(Bus,BusN),
              bcp(Passes),     bwr(Station),
 
-    OutDeps2,period,OutDeps),Opts) :-
+    OutDeps2,period,OutDeps),Opts) :- %% ADD: , [Smartdep_entry|Smartdep_entries] ) :- %% RS-120829 %%
 
      %%   write( 'BusDeps: '),
      %%   write(BusDeps),
@@ -1323,7 +1339,7 @@ outsmalldeps0([ x3(TimesDuration,BusN,Station)|BusDeps],DirPlace, %% TimesDurati
 
     code_passes(Opts,Passes),
 
-	 outsmalldeps2(duration,Station,TimesDuration,DirPlace,OutDeps2,Opts),
+	 outsmalldeps2(duration,Station,TimesDuration,DirPlace,OutDeps2,Opts), %% , Smartdep_entry ), %% RS-120829
 	 ensure_removed([BusN,Station,TimesDuration],BusDeps,BusDeps2),
 
          ( BusDeps \== [] -> out_comma(_) ; true ), %%Comma between list elements %%TE-120406
@@ -1336,7 +1352,7 @@ code_passes(Opts,goesfrom):- member(from,Opts),\+ member(to,Opts),!.
 code_passes(_,passes):-!.
 
 
-outsmalldeps2(arrivaltime,_Station,[TimesDuration],DirPlace, (bwt(Time),OutArr),_Opts ) :-
+outsmalldeps2(arrivaltime,_Station,[TimesDuration],DirPlace, (bwt(Time),OutArr),_Opts ) :-  %%, _Smartdep_entry )
 	 faenta([TimesDuration],Times,Duration,SetOfDest), % Duration =  Short - Long
     Times = [Time],  %% assumption: only one time
     addtotime(Time,Duration,Arrival),
@@ -1354,9 +1370,9 @@ outsmalldeps2(arrivaltime,_Station,[TimesDuration],DirPlace, (bwt(Time),OutArr),
    (SetOfDest=[M4] -> UT=M4;UT=DirPlace),
 	 outandarrives3(UT,arrival(Arrival),OutArr).
 
-outsmalldeps2(duration,Station,TimesDurations,DirPlace,(bwtimes2(Times),OutArr),_Opts ) :-
+outsmalldeps2(duration,Station,TimesDurations,DirPlace,(bwtimes2(Times),OutArr),_Opts) :- %%, Smartdep_entry ) :-      %% RS-120829 %% Avoid sideeffects like printing 
     create_smartdep_entry(Station,TimesDurations,   DirPlace,Smartdep_entry), %% TA-110405
-    print_smartdep_entry(Smartdep_entry),
+    print_smartdep_entry(Smartdep_entry), %% Move this to the right place, outside recursion. %% Remember to move out_comma as well.
 	 faenta(TimesDurations,Times,Duration,SetofStations),
     outandarrivesset(Station,DirPlace,SetofStations,duration(Duration),OutArr).
 
@@ -1506,6 +1522,9 @@ outdepfirst(Deps,DirPlace,Time9,
      addref(Cid, Time9, firstdeparturetime)
     ),
 	 outandarrives6(Time9,Station,DirPlace,Rid,BegTime,OutArr,Verb,FINAL).
+         
+         
+%%         create_and_print_smartdep_entry here!!!. %% RS-120816 TODO!!
 
 
 outdeplast(Deps,DirPlace,Time9,
@@ -2158,7 +2177,7 @@ printmess1(numberof(N,day)) :-
      out(N), doubt(days,dager),period.
 
 
-printmess1(route_period(_tt,_tt07,Date1,_Date2)):-
+printmess1(route_period(_TT,_TT07,Date1,_Date2)):-
      writedate(Date1),nl.
 
 
@@ -2234,7 +2253,7 @@ printmess1(dateis(Year,Month,DayNr,Day)):-
          period.
 
 
-printmess1(otherperiod(_date)):-
+printmess1(otherperiod(_Date)):-
     value(airbusflag,true),
     !,
     airbus_module(FB),
@@ -2246,7 +2265,7 @@ printmess1(otherperiod(Date)):-
     TT=tt,                          %% Default  Ad Hoc
     current_period(TT,CP,_,_),
     Period == CP,             %% Same period as today
-    default_period(TT,_s_w,CP),  %% and it is standard
+    default_period(TT,_Sum_win,CP),  %% and it is standard
     !.
 
 printmess1(otherperiod(Date)):- %% If not, print message
@@ -2392,7 +2411,7 @@ pmess(howtuchelp):- home_town(Trondheim),
 		    bwr(Trondheim),period0.
 
 
-pmess(irrelevant(colour(_bus))) :-
+pmess(irrelevant(colour(_Bus))) :-
     (bcpbc(thecolour),bcp(ofabus),bcp(is),bcp(irrelevant)).
 
 pmess(irrelevant(speed(bus))) :-
