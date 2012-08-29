@@ -510,8 +510,7 @@ stationsat(_Place,Neigh,Stations) :- % Special case, Neigh is also a neighbourho
     Stations=IsatStations.
 
 %% something wrotten
-
-bingbong(Neigh,Station) :- (place_station(Neigh,Station); isat(Station,Neigh)).
+bingbong(Neigh,Station) :- (place_station(Neigh,Station); isat(Station,Neigh)). %% RS-120816
 
 
 stationsat(_,Station,Places1) :- %% Nardosenteret

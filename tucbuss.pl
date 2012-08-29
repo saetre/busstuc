@@ -48,7 +48,7 @@
 
    (tmnflag := false),         %%
 
-   (mapflag  := false),         %% dont show MAP trace
+   (mapflag  := false),         %% (don't) show MAP trace
 
    (parsetime_limit := 10000).  %% slower server %%  benchmark
 
