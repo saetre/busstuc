@@ -1226,7 +1226,7 @@ outdeponly(Dep,DirPlace,
 
     outandarrivesonly(Station,Time9,DirPlace,Rid,BegTime,DelDep,ARRIVALTIME,OutArr,FINAL),
 
-    Duration is ARRIVALTIME-Time9, zip,
+    Duration is ARRIVALTIME-Time9, %%zip, %% MW-120906 first and last JSON format
 
     create_smartdep_entry2(Station,Time9,Duration,Rid, DirPlace ,  Smartdep_entry), %% TA-110505
 
@@ -1298,13 +1298,13 @@ firstarrive(Rid,Place,Station,   DelArr2,DelDep):-
 %%%%%%%%    !.  %% NB  Gløs -> D2 CUT D2 -> Buenget
                               %%
 
-outsmalldeps( [],_Sentrum,_,_Opts):- %% Empty ( <= error ?)
+outsmalldeps( [],_Sentrum,_,_Opts, []):- %% Empty ( <= error ?)
     !,
     nl,
     output('*** Jeg finner ingen forbindelser ***'). %% error alarm
 
 
-outsmalldeps( [   x3([],_,_)    ],_Sentrum,_,_Opts):- %% Empty ( <= error ?)%%
+outsmalldeps( [   x3([],_,_)    ],_Sentrum,_,_Opts, []):- %% Empty ( <= error ?)%%
     !,
     nl,
     output('***  Jeg finner ingen forbindelse ***'). %% error alarm
@@ -1314,23 +1314,24 @@ outsmalldeps( [   x3([],_,_)    ],_Sentrum,_,_Opts):- %% Empty ( <= error ?)%%
 outsmalldeps([   x3([TimesDuration],BusN,Station)   ],DirPlace, %% only 1
 				 (bwrbusbc(Bus,BusN),
               bcp(passes),bwr(Station),bcp(attime),
-				  OutDeps2,period),Opts) :-
+				  OutDeps2,period),Opts,Smartdep_entry) :-
 	 !,
     vehicletype(BusN,Bus),
-    outsmalldeps2(arrivaltime,Station,[TimesDuration],DirPlace,OutDeps2,Opts).
+    outsmalldeps2(arrivaltime,Station,[TimesDuration],DirPlace,OutDeps2,Opts,Smartdep_entry).
 
 
-outsmalldeps(A,B,C,Opts):-
-    outsmalldeps0(A,B,C,Opts).
+outsmalldeps(A,B,C,Opts,_D):- %% D-liste med smartdep_entry for JSON %% MW-120906
+    outsmalldeps0(A,B,C,Opts,D),
+    print_smartdep_entries(D).
 
 
-outsmalldeps0([],_,[],_Opts). %% , [] ).%% RS-120829 %% empty Smartdep_entries, terminate Recursion
+outsmalldeps0([],_,[],_Opts, []). %% , [] ).%% RS-120829 %% empty Smartdep_entries, terminate Recursion
 
 outsmalldeps0([ x3(TimesDuration,BusN,Station)|BusDeps],DirPlace, %% TimesDuration FIRST!!!!
 				 (bwrbusbc(Bus,BusN),
              bcp(Passes),     bwr(Station),
 
-    OutDeps2,period,OutDeps),Opts) :- %% ADD: , [Smartdep_entry|Smartdep_entries] ) :- %% RS-120829 %%
+    OutDeps2,period,OutDeps),Opts, [Smartdep_entry|Smartdep_entries]) :- %% RS-120829 %%
 
      %%   write( 'BusDeps: '),
      %%   write(BusDeps),
@@ -1339,12 +1340,9 @@ outsmalldeps0([ x3(TimesDuration,BusN,Station)|BusDeps],DirPlace, %% TimesDurati
 
     code_passes(Opts,Passes),
 
-	 outsmalldeps2(duration,Station,TimesDuration,DirPlace,OutDeps2,Opts), %% , Smartdep_entry ), %% RS-120829
+	 outsmalldeps2(duration,Station,TimesDuration,DirPlace,OutDeps2,Opts,Smartdep_entry), %% RS-120829
 	 ensure_removed([BusN,Station,TimesDuration],BusDeps,BusDeps2),
-
-         ( BusDeps \== [] -> out_comma(_) ; true ), %%Comma between list elements %%TE-120406
-
-	 outsmalldeps0(BusDeps2,DirPlace,OutDeps,Opts).
+	 outsmalldeps0(BusDeps2,DirPlace,OutDeps,Opts,Smartdep_entries). 
 
 
 code_passes(Opts,goesto):-   member(to,Opts),  \+ member(from,Opts),!.
@@ -1352,7 +1350,7 @@ code_passes(Opts,goesfrom):- member(from,Opts),\+ member(to,Opts),!.
 code_passes(_,passes):-!.
 
 
-outsmalldeps2(arrivaltime,_Station,[TimesDuration],DirPlace, (bwt(Time),OutArr),_Opts ) :-  %%, _Smartdep_entry )
+outsmalldeps2(arrivaltime,_Station,[TimesDuration],DirPlace, (bwt(Time),OutArr),_Opts,_Smartdep_entry ) :-  %% MW-120906
 	 faenta([TimesDuration],Times,Duration,SetOfDest), % Duration =  Short - Long
     Times = [Time],  %% assumption: only one time
     addtotime(Time,Duration,Arrival),
@@ -1370,9 +1368,8 @@ outsmalldeps2(arrivaltime,_Station,[TimesDuration],DirPlace, (bwt(Time),OutArr),
    (SetOfDest=[M4] -> UT=M4;UT=DirPlace),
 	 outandarrives3(UT,arrival(Arrival),OutArr).
 
-outsmalldeps2(duration,Station,TimesDurations,DirPlace,(bwtimes2(Times),OutArr),_Opts) :- %%, Smartdep_entry ) :-      %% RS-120829 %% Avoid sideeffects like printing 
+outsmalldeps2(duration,Station,TimesDurations,DirPlace,(bwtimes2(Times),OutArr),_Opts,Smartdep_entry) :- %% RS-120829 %% Avoid sideeffects like printing 
     create_smartdep_entry(Station,TimesDurations,   DirPlace,Smartdep_entry), %% TA-110405
-    print_smartdep_entry(Smartdep_entry), %% Move this to the right place, outside recursion. %% Remember to move out_comma as well.
 	 faenta(TimesDurations,Times,Duration,SetofStations),
     outandarrivesset(Station,DirPlace,SetofStations,duration(Duration),OutArr).
 
@@ -1486,6 +1483,15 @@ print_smartdep_entry(smartdepentry(Fullstatname1,Localstatno1,BusNo,Time,Duratio
    !,
    out(ItemList).
 
+
+%% MW-120906
+print_smartdep_entries([]).
+
+ print_smartdep_entries([Smartdep_entry|Smartdep_entries]):-
+         print_smartdep_entry(Smartdep_entry),
+          ( Smartdep_entries \== [] -> out_comma(_) ; true ), %%Comma between list elements %%TE-120406
+         print_smartdep_entries(Smartdep_entries).
+        
 
 
 
