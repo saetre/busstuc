@@ -864,7 +864,7 @@ justoutputthelist0(Deps,DirPlace,Out,Opts, dir(Dep1,Bingo)):-  %% no warning
       busleaveset(BusN1,Station1,Deps,DirPlace,Opts,   TimeDurations),
       BusDeps),
 
-    outsmalldeps(BusDeps,DirPlace,Out,Opts),
+    outsmalldeps(BusDeps,DirPlace,Out,Opts,_Smartdep),
 
     first_dep(Deps,Dep1),   ridof(Dep1, RID),
 
@@ -2561,10 +2561,15 @@ pmess(nearest_station(_STARTSTOP,Street,Station)):-
 
 %% nightbus 400 deps cancelled
 
-%% General Nightbus message ( following weekend is normal )
+%% General Nightbus message ( following weekend is normal )     %% RS-120914
 pmess(generalnightbusmessage):-
-    pen(['Nightbus goes from O.Tryggvasons gt. at  0100,0200,0300  am night to Saturday and Sunday.',
-         'Nattbuss går  fra O.Tryggvasons gt. kl 0100,0200 og 0300 natt til lørdag og søndag.']).
+    pen(['Nightbus goes every 30 min from O.Tryggvasons gt. at  0030,0100,0130,0200,0230,0300  am night to Saturday and Sunday.',
+         'Nattbuss går  hver halvtime fra O.Tryggvasons gt. kl 0030,0100,0130,0200,0230 og 0300 natt til lørdag og søndag.']).
+
+%%pmess(generalnightbusmessage):-
+%%    pen(['Nightbus goes from O.Tryggvasons gt. at  0100,0200,0300  am night to Saturday and Sunday.',
+%%         'Nattbuss går  fra O.Tryggvasons gt. kl 0100,0200 og 0300 natt til lørdag og søndag.']).
+
 
 %% 400 deps cancelled
 

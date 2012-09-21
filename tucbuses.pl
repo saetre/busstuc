@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE tucbuses.pl
 %% SYSTEM TUC
 %% CREATED TA-970726
@@ -139,28 +140,27 @@ prompt2(norsk,'N: ').
 %%   compile(version),           % Version and Date
 %%   compile(main),              % main program , starts
 
-?-
-  compile('tuc/readin.pl'),       % reads text to a list
-  compile('tuc/lex.pl'),          % lexical analysis
+?-  compile('tuc/readin.pl').       % reads text to a list
+?-  compile('tuc/lex.pl').          % lexical analysis
 
 %%%%  compile('tuc/proxytagger'),    % disambiguator        %% TA-101010
 %%%%  compile('tuc/proxytagrules'),   % disambiguate rules  %% -> lex/proxyclean
 
-  compile('tuc/translat.pl'),     % code generation
-  compile('tuc/evaluate.pl'),     % translate and evaluate
+?-  compile('tuc/translat.pl').     % code generation
+?-  compile('tuc/evaluate.pl').     % translate and evaluate
 %%%%   compile('tuc/inger.pl'),        % intelligent resolution
-  compile('tuc/anaphors.pl'),     % anaphoric resolution
-  compile('tuc/metacomp.pl'),     % compiles the grammar
-  compile('tuc/fernando.pl'),     % semantic interface
-%%   compile('tuc/world0.pl'),       % empty world predicates %% TA-110301
-%%%   compile('tuc/slash.pl'),        % slash facts / %% Irrelevant
+?-  compile('tuc/anaphors.pl').     % anaphoric resolution
+?-  compile('tuc/metacomp.pl').     % compiles the grammar
+?-  compile('tuc/fernando.pl').     % semantic interface
+%%   compile('tuc/world0.pl').       % empty world predicates %% TA-110301
+%%%   compile('tuc/slash.pl').        % slash facts / %% Irrelevant
 
-  compile(dcg_e:'tuc/dagrun_e.pl'),      % split into English and
-  compile(dcg_n:'tuc/dagrun_n.pl'),      % Norwegian clones
+?-  use_module(dcg_e:'tuc/dagrun_e.pl').      % split into English and
+?-  use_module(dcg_n:'tuc/dagrun_n.pl').      % Norwegian clones
 
-  compile('tuc/semantic.pl'),     % the semantic net (moved from database)
-  compile('tuc/names.pl'),        % general names and synonyms  (moved from database)
-  compile('tuc/facts.pl').        % static facts (moved from database)
+?-  compile('tuc/semantic.pl').     % the semantic net (moved from database)
+?-  compile('tuc/names.pl').        % general names and synonyms  (moved from database)
+?-  compile('tuc/facts.pl').        % static facts (moved from database)
 
 
 %% Moved from tucbuses.pl

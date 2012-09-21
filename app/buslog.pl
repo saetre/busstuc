@@ -2031,6 +2031,7 @@ coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
 
 
 % Ingen tidspunkter oppgitt, ikke i dag, Første om morgen
+%% RS-120916 Make exception when nightbus is specifically specified
 
 coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
     \+ member(direct,Opts),  % Indirect solutions is not to be found
