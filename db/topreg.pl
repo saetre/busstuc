@@ -88,7 +88,7 @@ route_period( tt, r1604_120625, date(2012,06,25),    date(2012,08,12) ).
 %route_period( tt, r1611_110627, date(2012,06,27),   date(2012,08,14) ).
 
 %route_period( tt, r1602_120813, date(2012,08,13),    date(2012,09,12) ).
-route_period( tt, r1617_120912, date(2012,09,12),    date(2012,12,23) ).        %% New nightbusses etc.
+route_period( tt, r1612_121001, date(2012,10,01),    date(2012,12,23) ).        %% New nightbusses etc. ver5 Høst 2012
 
 route_period( tt, r1601_120101, date(2012,01,01),    date(2012,12,31) ).
 route_period( gb, r1630_111201, date(2011,12,01),    date(2012,12,31) ).
