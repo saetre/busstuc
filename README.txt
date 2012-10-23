@@ -5,6 +5,7 @@ See Wiki entries on
 https://www.ntnu.no/wiki/display/FUIROS/
 
 #HOW TO COMPILE AND RUN (Norwegian mode)
+
 [satre@furu ~/BUSSTUC/buster]$ ./create_busstuc
 [satre@furu ~/BUSSTUC/buster]$ busestuc.sav
 | ?- run.
@@ -13,6 +14,13 @@ N: \set trace 1
 	% eller
 traceprog  := 1..6   % trace of pragmatic rule application
 traceans   := 1..6   % trace of bus answer rule  application
+
+N: Hva er din versjon?
+
+#RESTART SERVER AFTER NEW FILE IS COMPILED ABOVE
+cd ~tagore/public_html/cgi-bin/busstuc
+[tagore@furu ~/public_html/cgi-bin/busstuc] ./stopbuss
+[tagore@furu ~/public_html/cgi-bin/busstuc] ./startbuss
 
 
 Oppdater(es/t)
