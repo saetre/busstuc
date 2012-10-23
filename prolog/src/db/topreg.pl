@@ -93,6 +93,7 @@ route_period( tt, r1612_121001, date(2012,10,01),    date(2012,12,23) ).        
 route_period( tt, r1601_120101, date(2012,01,01),    date(2012,12,31) ).
 route_period( gb, r1630_111201, date(2011,12,01),    date(2012,12,31) ).
 
+route_period( tt, r1612_121024, date(2012,10,24),    date(2013,03,24) ).        %% ny veiløsning på Ranheim. ver6 Høst 2012
 
 period_message( r1602_120517,
 ['AtB Routes for Constitution Day',
@@ -110,7 +111,7 @@ period_message( r1604_120625,
 ['AtB Routes for summer 2012',
  'AtB Sommerruter  2012']).
 
-period_message( r1617_120912,
+period_message( r1612_121024,
 ['AtB Autumn routes',
  'AtB Høstruter']). %% \+ .   %% RS-120810
 
