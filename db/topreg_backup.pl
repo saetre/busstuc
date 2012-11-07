@@ -127,6 +127,3 @@ period_message( r1601_120101,
 
 %%%%%% END OF ACTUAL ROUTE PERIODS %%%%%%%%%
 
-
-
-
