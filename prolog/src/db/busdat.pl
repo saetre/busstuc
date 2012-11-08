@@ -1013,9 +1013,9 @@ moneyunit(nok).    %% Trondheim %% Local currency
 
 %% busfare(30,15). %% Adult/Child 
 
-busfare2(bus,[30,15]).  
+busfare2(bus,[40,20]).  
 busfare2(airbus,[90,45]). 
-busfare2(nightbus,[60]). 
+busfare2(nightbus,[70]). 
 
 %%  Ikke Klæbu/Melhus/Byneset (80) but that is foreign
 
