@@ -4,8 +4,6 @@
 %% CREATED TA-970726
 %% REVISED TA-110303
 
-:-use_module(library(system)).
-
 :- ensure_loaded( sicstus4compatibility ). %, [ get0/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 :- use_module( 'db/busdat', [ clock_delay/3 ] ). %%, named_date/2 ]).
 
@@ -49,7 +47,6 @@ style_check(_).
 
 
 %%%  ?-compile('sicstuc.pl').
-
 
 
 

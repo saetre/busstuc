@@ -1,0 +1,7 @@
+%% IDEAS for DEBUGGING
+
+%%
+
+1. Trace?
+2. Samlepredikat. 
+3. Output to screen, spot the error!

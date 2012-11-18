@@ -8,6 +8,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+:-use_module(library(system), [datime/1] ).       %% get the date (for metacomp headers, for example
+
+
 %% Rule:  A week must have at least has  4 days to count as a week
  
 %% Special rule (e.g. 2010), january  1,2,3 = Week 53 (SIC)

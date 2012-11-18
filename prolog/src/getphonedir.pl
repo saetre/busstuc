@@ -5,8 +5,11 @@
 %% REVISED TA-070612
 
 
-:- use_module(library(system)).
+%%:- use_module( library(system) ). %%, [exec/1,shell/1]).
+:- use_module( library(process), [exec/1,shell/1]).
 
+:- ensure_loaded('declare').
+:-op( 714,xfx, := ).   %% etc.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

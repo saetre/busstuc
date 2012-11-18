@@ -7,12 +7,29 @@
 %% TUC Dictionary for the language N
 
 :-module(dict_n,[
-        compword/3,
-        rewording/2,
-        split/2, % splitword/2, %% Defined in user:module
-        unwanted_adjective/1, unwanted_interpretation/2, unwanted_number/1,
-        unwanted_verb/1,
-        xcompword/3
+                   compword/3,
+                   cw/1,
+%%                 lexnsingirr/2,       %% Only English?? RS-121118
+%%                 lexnpluirr/2,        %% Only English?? RS-121118
+                   noisew/1,
+                   noun2/2,
+                   noun_form/5,
+                   ow/1,
+                   preposition/1,
+                   pronoun/1,
+%%                   rep_verb/1,        %% English / Norsk is selected in fernando.pl   %% RS-121118
+                   rewording/2,
+%%                   splitword/2, %% Defined in the user:module
+                   synsms/2,
+                   synwordx/2,
+                   unwanted_adjective/1,
+                   unwanted_noun/1,
+                   unwanted_verb/1,
+                   unwanted_interpretation/2,
+                   verb_form/4,
+                   verbroot2/2,
+                   xcompword/3,
+                   test_dict_n/0
                 ]).
 
 %¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
@@ -43,7 +60,28 @@
 :-discontiguous(compword/3).
 :-discontiguous(xcompword/3).
 
-
+test_dict_n :-
+                   compword(_,_,_),
+                   cw(_),
+                   noisew(_),
+                   noun2(_,_),
+                   noun_form(_,_,_,_,_),
+                   ow(_),
+                   preposition(_),
+                   pronoun(_),
+%%                   rep_verb(_),
+                   rewording(_,_),
+                   split(_,_),
+                   splitword(_,_),
+                   synsms(_,_),
+                   synwordx(_,_),
+                   unwanted_adjective(_),
+                   unwanted_noun(_),
+                   unwanted_verb(_),
+                   unwanted_interpretation(_,_),  %% Only English?? RS-121118
+                   verb_form(_,_,_,_),
+                   verbroot2(_,_),
+                   xcompword(_,_,_).
 
 %%¤  REWORDING 
  

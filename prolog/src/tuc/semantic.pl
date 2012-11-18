@@ -5,10 +5,18 @@
 %% REVISED TA-110825
 
 %  TUCs  Lexical Semantic Knowledge Base
-
 :- ensure_loaded('../declare').
 
-
+:-discontiguous( [
+                    (ako)/2,
+                    (has_a)/2,
+                    a_compl/4,
+                    adj_templ/2,
+                    iv_templ/2,
+                    rv_templ/2,
+                    tv_templ/3,
+                    v_compl/4
+                 ]).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -25,8 +33,11 @@ normalverb(V,T):- abnormalverb(V,U),\+ subclass0(T,U).
 
 abnormalverb(cost,_).  
 abnormalverb(be_named,_).  %%   EventLess
+        abnormalverb(describe,agent).
 %%%% abnormalverb(die,god).     %% just to have 1
 abnormalverb(have,_).      %% ha feil feil(aktig)
+
+    abnormalverb(use2,_).     %%  NB No inheritance   (abnormalverb(use2,bus) tc.
 
 %% NEW RELATION   jako (hyponym of adjectives) 
 
@@ -3511,7 +3522,7 @@ iv_templ(stop,departure).
 
 %% iv_templ(use,vehicle). %  bussen bruker tid    %% EXPERIMENT
 
-tv_templ(use2,agent,coevent). 
+tv_templ(use2,agent,coevent).    %% NB: abnormalverb/2
 
 %%% iv_templ(use2,thing). %%  dette svaret bruker (jeg).= dette svaret pleier
 
@@ -3520,7 +3531,6 @@ iv_templ(use2,vehicle).     %%   (Pleie  Norwagism)
 iv_templ(use2,agent).       %% pleie å gå = pleier for å gå.
 iv_templ(use2,delay).
 */
-    abnormalverb(use2,_).     %%  NB No inheritance   (abnormalverb(use2,bus) tc.
 
     v_compl(use2,thing,with,duration).          %% hvor lenge pleier ...
     v_compl(use2,thing,in_order_to,thing).
@@ -4878,7 +4888,7 @@ iv_templ(look,agent). %%  se ut = appear (qv) %% TA-101210 ...
     v_compl(look,agent,on,thing). %%  .. on TV
     v_compl(look,agent,to,thing). %% Norw (se frem til) 
 
-    tv_templ(look,thing,nil,mode). %% se slik ut (eg. appear thus)
+%%    dtv_templ(look,thing,nil,mode). %% se slik ut (eg. appear thus) %% RS-121118
 
 iv_templ(meet2,vehicle).
 iv_templ(meet2,agent). 
@@ -5488,6 +5498,7 @@ dtv_templ(give,thing,agent,thing).   %% kortet gir deg valg // avoid thing thing
 dtv_templ(fine,agent,agent,money).   %% Politiet ilegger meg en bot 
 
 dtv_templ(let,agent,agent,thing).    %% I let him (to) leave 
+dtv_templ(look,thing,nil,mode). %% se slik ut (eg. appear thus)
 dtv_templ(name,agent,thing,thing).   %% I named it  BussTUC
 dtv_templ(owe,agent,thing,thing).    %% I owe you 10 crowns
 dtv_templ(sell,agent,thing,thing).   %% I sold Team a program
@@ -5865,7 +5876,7 @@ tv_templ(deliver,agent,thing).
 
 tv_templ(derive,agent,thing). 
 
-tv_templ(describe,agent,thing).  abnormalverb(describe,agent).
+tv_templ(describe,agent,thing).         %% NB: abnormalverb/2
                                  %%  describe bus 5 at NTH 
 %% tv_templ(design,agent,thing). %% make
 
@@ -6237,7 +6248,7 @@ tv_templ(lay,agent,vehicle).      %% legge ned rute 10 // Technical
 tv_templ(lead,person,animate). 
 
 
-iv_templ(let,agent,thing).      %% NB intransitive
+tv_templ(let,agent,thing).      %% NB intransitive? RS-121118
 
 tv_templ(like,agent,thing). 
 
