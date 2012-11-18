@@ -24,7 +24,7 @@
 %:- use_module( names, [ abroad/1, city/1, country/1 ] ).
 %:- use_module( semantic, [  adj_templ/2, (ako)/2,  (has_a)/2,  iv_templ/2, tv_templ/3  ] ).
 %:- use_module( tuc:world0, [ area/2 ] ).
-%%:- ensure_loaded( tuc:world0 ).
+:-ensure_loaded( tuc:world0 ).
 %
 %%% RS-111205, UNIT: app/
 %:- use_module( '../app/busanshp', [ description/2 ] ).
@@ -37,6 +37,8 @@
 %        isat/2, placestat/2, underspecified_place/1, unwanted_place/1 ]).
 %:- use_module( '../db/teledat2', [ building/1, is_dom_val/5 ] ).
 %:- use_module( '../db/regcompstr', [ composite_road/3 ] ).
+:-ensure_loaded( '../db/regcompstr' ).
+
 %:- use_module( '../db/regstr', [   streetstat/5 ] ). %% RS-111201 Remember to update source program, which is makeaux?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -520,6 +522,96 @@ X isa neighbourhood :-
     neighbourhood(X). 
 
 
+X isa street:-
+%%%%     composite_road(_,_,X), %%  Beddingen
+    streetstat(X,_,_,_,_). %% Extra check (Mauritz Hansens gt)
+  
+
+X-Num isa street:-
+    atom(X),
+    composite_road(_,_,X),
+    number(Num),
+    streetstat(X,_,_,_,_). 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Testclass moved as a last option 
+
+X isa Y :-   
+    Y==time,!, % dont make any number a time  
+    number(X),
+    X < 2500. 
+
+X isa number :- %% Only generated if X is nonvar  
+    number(X).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%% Section for TELEPHONE DIRECTORY
+
+tore isa firstname.  %% Just to have a proper name
+amble isa lastname.  %%
+
+trond isa firstname. %% TE-120215
+engell isa lastname.
+
+ketil isa firstname.
+bø    isa lastname.
+
+arvid isa firstname.
+holme isa lastname.
+
+staupe isa lastname.
+
+agnar isa firstname.
+aamodt isa lastname.
+
+
+jon       isa firstname.
+bratseth  isa lastname. %% jon 
+
+
+
+Tor isa firstname :- %% jarle hermansen  // jarle both firstname and lastname
+    teleoption, %% value(teleflag,true),                %% prefer jarle as firstname first
+    is_dom_val(person,firstname,Tor,_,_).
+
+
+Amb isa lastname :- 
+    teleoption, 
+    is_dom_val(person,lastname,Amb,_,_).
+
+Gore isa middlename :- 
+    teleoption, 
+    is_dom_val(person,middlename,Gore,_,_).
+
+
+Ygg isa street :- 
+    teleoption, 
+    is_dom_val(person,street,Ygg,_,_).
+
+
+Trond isa city :- 
+    teleoption, 
+    is_dom_val(person,city,Trond,_,_).
+
+Hist isa department :-  
+    teleoption, 
+    is_dom_val(person,department,Hist,_,_).
+
+teleoption :- 
+   value(telebusterflag,true)
+   ;    
+   value(teleflag,true).  
+
+%% see teledat2.pl %% 
+
+
+
 neighbourhood(X):- 
     neibor(X);
     abroad(X); 
@@ -535,17 +627,6 @@ neibor(X):-
       underspecified_place(X)). 
       %% \+ unwanted_place(X).  %% unwanted_place means unwanted target
 
-
-X isa street:-
-%%%%     composite_road(_,_,X), %%  Beddingen
-    streetstat(X,_,_,_,_). %% Extra check (Mauritz Hansens gt)
-  
-
-X-Num isa street:-
-    atom(X),
-    composite_road(_,_,X),
-    number(Num),
-    streetstat(X,_,_,_,_). 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 
@@ -623,82 +704,6 @@ have(continent,country,X,Y):-
 
 */
 
-    
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% Testclass moved as a last option 
-
-X isa Y :-   
-    Y==time,!, % dont make any number a time  
-    number(X),
-    X < 2500. 
-
-X isa number :- %% Only generated if X is nonvar  
-    number(X).
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-%% Section for TELEPHONE DIRECTORY
-
-tore isa firstname.  %% Just to have a proper name
-amble isa lastname.  %%
-
-trond isa firstname. %% TE-120215
-engell isa lastname.
-
-ketil isa firstname.
-bø    isa lastname.
-
-arvid isa firstname.
-holme isa lastname.
-
-staupe isa lastname.
-
-agnar isa firstname.
-aamodt isa lastname.
-
-
-jon       isa firstname.
-bratseth  isa lastname. %% jon 
-
-
-teleoption :- 
-   value(telebusterflag,true)
-   ;    
-   value(teleflag,true).  
-
-%% see teledat2.pl %% 
-
-
-Tor isa firstname :- %% jarle hermansen  // jarle both firstname and lastname
-    teleoption, %% value(teleflag,true),                %% prefer jarle as firstname first
-    is_dom_val(person,firstname,Tor,_,_).
-
-
-Amb isa lastname :- 
-    teleoption, 
-    is_dom_val(person,lastname,Amb,_,_).
-
-Gore isa middlename :- 
-    teleoption, 
-    is_dom_val(person,middlename,Gore,_,_).
-
-
-Ygg isa street :- 
-    teleoption, 
-    is_dom_val(person,street,Ygg,_,_).
-
-
-Trond isa city :- 
-    teleoption, 
-    is_dom_val(person,city,Trond,_,_).
-
-Hist isa department :-  
-    teleoption, 
-    is_dom_val(person,department,Hist,_,_).
 
 
 %%% ETC    GENERALIZE!

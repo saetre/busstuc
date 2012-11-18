@@ -5,7 +5,8 @@
 %% REVISED  TA-090521
 
 :- ensure_loaded('../declare').
-:- ensure_loaded('../utility/makeauxtables').
+:- ensure_loaded('../utility/datecalc').        %% datetime/6
+:- ensure_loaded('../utility/makeauxtables').   %% makegram/1, e.g. makegram(norsk).
 
 
 %%% SMOKETEST    virtuals are added last
@@ -47,8 +48,13 @@ makegram:-
     language(Lang),
     makegram(Lang).
 
+
+%%DEBUG
+%%gram_module(norsk,   gram_n).
+%%dcg_file(norsk,   'dcg_n.pl'). %% MAIN -> tucbuses
+
 makegram(Lang):- 
-    retractall(virtf(_)),
+    retractall(virtf(_,_)),
     retractall(virtx(_)),
     retractall(optiprod(_)), 
 
@@ -57,9 +63,9 @@ makegram(Lang):-
         writeheading,
         write('%% Automatically created by tuc/metacomp.pl, based on dict and tuc/gram_...'),nl,nl,
         write(':- ensure_loaded(declare). %% RS-111213 General (semantic) Operators'),nl,nl,
-        write(':- :-prolog_flag(discontiguous_warnings,_,off).'),nl,nl,
- 
-        gram_module(Lang,G),   
+        write('%% :- prolog_flag(discontiguous_warnings,_,off).'),nl,nl,
+
+        gram_module(Lang,G),
         for((G: (X ---> Y)), genprod(X,Y)),
     told,
 
@@ -163,7 +169,7 @@ em1(A = B,P,X,Y,(
 %% em1( Symbol, Appearence, StackIn, StackOut, Code)
 
 em1(Symbol, Appearence, StackIn, StackOut, Code) :-
-    user:value(norsource,true),
+    value(norsource,true),
     !,
     em2(Symbol, Appearence, StackIn, StackOut, Code).
 
@@ -294,8 +300,6 @@ prist(Y):- var(Y),!,
     write(' *** Fatal error : variable right side ***'),nl,
     plink.
 
-plink:-plonk.
-
 prist((X,Y)) :-
     !,
     write('    '),writeq(X),write(','),nl,
@@ -307,6 +311,9 @@ prist(X):-
 
 % In a module system, runtime system is user.
 
+
+%% DEBUG prist
+plink :- trace.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

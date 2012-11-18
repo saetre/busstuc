@@ -80,26 +80,26 @@ makeauxtables:-
  
     reset_period,  %% get the right period 
 
-    write('%  Please wait 5 minutes ...'),nl,
+    write('%  Please wait 1 minute...'),nl,
 
     tell('db/auxtables.pl'),
 
     writeheading,
 
-    createstatbus,  % 3 min
+    createstatbus,  % 30 sec
 
-    createbusstat,  % 1 min
+    createbusstat,  % 10 sec
 
-    createunproperstations, % 1 min
+    createunproperstations, % 10 sec
 
-    createtransbuslist, % 2 min
+    createtransbuslist, % 20 sec
 
 /**** %% AD HOC  OMITTED 
 
-    createonlyfromstations, % 2 min
+    createonlyfromstations, % 20 sec
 
 
-    createonlytostations, % 2 min
+    createonlytostations, % 20 sec
 */
 
 
@@ -113,8 +113,14 @@ makeauxtables:-
 
 writeheading:-
     datetime(A,B,C,D,E,F),
+%%    write('/* -*- Mode:Prolog; coding:utf-8; -*- */'),        %% Make this work with open/4 and encoding %% RS-121118
+    write('/* -*- Mode:Prolog; coding:iso-8859-1; -*- */'),
+    nl,
     write('% Auxillary tables created '), 
-    write(datetime(A,B,C,D,E,F)),nl,nl.
+    write(datetime(A,B,C,D,E,F)),
+    nl,
+    write('%%from writeheading in utility/makeauxtables.pl'),
+    nl,nl.
 
 
 createstatbus:-
@@ -467,7 +473,7 @@ torehash(yggdrasi,yggdrasil).
 
 
 createhash :-
-    write(' Please Wait 5 minutes '),nl, %% TA-090317
+    write(' Please Wait 1 minute '),nl, %% TA-090317
 
 
     reset_period,  %% Use the current names (just for hashing)

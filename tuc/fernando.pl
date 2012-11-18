@@ -11,6 +11,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :- ensure_loaded('../declare').
+%%:- use_module('dict_e.pl').   %% This is causing trouble? RS-121118
 
 
 subject_object_test(_ ,_:Self ,_):-
@@ -928,6 +929,15 @@ adjname_template(Nil/TT,X:Bustype,_S,adj/Nil/TT/X/real):- %% TA-110103
      subtype0(Bustype,Bus),
      !.
 
+%% TT bus
+adjname_template(TT,X:VehType,_S,adj/nil/TT/X/real):- 
+    \+ number(TT), %%  2 ruter  \== 2-ruter
+    TT isa Company,
+    adjnoun_templ(Company,Veh), %% adjnoun/2  semantic
+    subtype0(VehType,Veh), %% tt vehicle, tt route but not tt object
+    !.
+
+
 
 adjnamecomp_template(T, X:Lymphocyte, X isa T_lymphocyte):-   
      adjnamecomp_templ(T,Lymphocyte,T_lymphocyte),     
@@ -937,15 +947,6 @@ adjname_template2(Icer, X:Isoform, X isa Isoform and adj/nil/Icer/X/real):-
      adjname_templ(Icer,Iso),    % /2   
      subclass0(Isoform,Iso), %% ?      
      !.
-
-%% TT bus
-adjname_template(TT,X:VehType,_S,adj/nil/TT/X/real):- 
-    \+ number(TT), %%  2 ruter  \== 2-ruter
-    TT isa Company,
-    adjnoun_templ(Company,Veh), %% adjnoun/2  semantic
-    subtype0(VehType,Veh), %% tt vehicle, tt route but not tt object
-    !.
-
 
 
 % adjnoun_template(Data,Base,CT,XDatabase). 
@@ -1024,13 +1025,13 @@ adv_compl(Go,Today,_:BT, _Daypart_ ,S,srel/Today/Day/nil/S):-
 %---------------------------------------------------------------------
 
 
-adj_compl( (Relevant,Comprehensible),For,_X:PT,Y:RT,S,srel/For/Ruler/Y/S):- 
+adj_compl( (Relevant,Comprehensible),For,_x:PT,Y:RT,S,srel/For/Ruler/Y/S):- 
     !,
     a_compl(Relevant,Person,For,Ruler), 
     subtype0(PT,Person),
     subtype0(RT,Ruler),
 
-    adj_compl(Comprehensible,For,_X:PT,Y:RT,S,_), %% NB recursive blue,read and yellow
+    adj_compl(Comprehensible,For,_x:PT,Y:RT,S,_), %% NB recursive blue,read and yellow
 
     !.
 
@@ -1060,7 +1061,7 @@ adj_compl(Loyal,To,_X:PT,Y:RT,S,srel/To/Ruler/Y/S):-
 
 %% jeg er syk desverre
 
-adj_compl(_nice,redundantly,_,Y:_,S,srel/redundantly/thing/Y/S):-!. %% TA-100424 nec?
+adj_compl(_Nice,redundantly,_,Y:_,S,srel/redundantly/thing/Y/S):-!. %% TA-100424 nec?
 
 adj_compl(Up,Now,_X:Bus,Y:Hour,S, srel/Now/Time/Y/S):- 
     particle(Now,Time,_),
@@ -1078,7 +1079,7 @@ adj_compl(Up,Now,_X:Bus,Y:Hour,S, srel/Now/Time/Y/S):-
     subclass0(Hour,Time).
 
 
-adj_compl(_loyal,To,_X:_PT,Y:RT,S,srel/To/Ruler/Y/S):- %%  Haz?
+adj_compl(_Loyal,To,_X:_PT,Y:RT,S,srel/To/Ruler/Y/S):- %%  Haz?
     stanprep(To,Ruler),
     subclass0(RT,Ruler), %% jeg er nysgjerrig på en ting\=date
     !.   
@@ -1100,10 +1101,10 @@ adj_compl(_loyal,To,_X:_PT,Y:RT,S,srel/To/Ruler/Y/S):- %%  Haz?
 verb_compl(look,A,_,nil:(mode),S,srel/A/(mode)/nil/S):- %% look old = be old
      !.
 
-verb_compl(_be1,how, W:Weather,nil,S,srel/how/Weather/W/S):-  %% Hack %% Hvordan er været ?
+verb_compl(_Be1,how, W:Weather,nil,S,srel/how/Weather/W/S):-  %% Hack %% Hvordan er været ?
    !.                                                         % Hvordan går bussen
 
-verb_compl(_go,than,_:_Tram,Y:Bus,S,srel/than/Bus/Y/S):- %% Hack 
+verb_compl(_Go,than,_:_Tram,Y:Bus,S,srel/than/Bus/Y/S):- %% Hack 
     !.
 
 
