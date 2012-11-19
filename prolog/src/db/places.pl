@@ -3391,6 +3391,7 @@ synplace(munkvokk,munkvoll).
 synplace(munkvollgård,munkvoll_gård). 
 synplace(murens,ourens). 
 synplace(murevik,muruvik). 
+synplace(muruvika,muruvik). %% MW-121119
 synplace(museet,museum). 
 synplace(musikmuseum,museum). 
 synplace(myen,byen). 
@@ -4400,6 +4401,14 @@ synplace(vidregående,videregående).
 synplace(vikaasen,vikåsen). 
 synplace(vikahammer,vikhammer). 
 synplace(vikahmmer,vikhammer). 
+synplace(vikhamar, vikhammer). %% MW-121119  
+synplace(vikhamaren, vikhammer). %% MW-121119   
+synplace(vikhamarn, vikhammer). %% MW-121119  
+synplace(vikhammar, vikhammer). %% MW-121119  
+synplace(vikhammaren, vikhammer). %% MW-121119  
+synplace(vikhammarn, vikhammer). %% MW-121119  
+synplace(vikhamer, vikhammer). %% MW-121119  
+synplace(vikhammeren, vikhammer). %% MW-121119 
 synplace(vikamer,vikhammer). 
 synplace(vikelv,vikelvveien).  %%Complicated
 synplace(vikhamaråsen,vikhammeråsen).
@@ -8214,7 +8223,7 @@ foreign(breivang).
 foreign(brekken). 
 foreign(brekkerød). 
 foreign(brekktrøa). 
-foreign(brekkåsen). 
+%% foreign(brekkåsen). %% MW-121119 bus301 
 foreign(brekstad). 
 foreign(bremanger).  
 foreign(bremsnes).
@@ -8491,7 +8500,7 @@ foreign(geithus).
 foreign(gibostad). 
 foreign(gimle).  %% ?
 foreign(gimlekollen). 
-foreign(gimse).  %% ? = Gimle(veien)
+%% foreign(gimse).  %% ? = Gimle(veien) %% bus301 %% MW-121119
 foreign(giæverbukta). 
 foreign(giske).   %% Ålesund
 foreign(gjelleråsen).  %% oslo
@@ -8645,7 +8654,7 @@ foreign(heistadmoen).
 foreign(helgeland).    
 foreign(helgelandsmoen). 
 foreign(helgeroa). 
-foreign(hell). 
+%% foreign(hell). %% bus301 %% MW-121119 
 foreign(hella). 
 foreign(hellandsjøen). 
 foreign(helleland).
@@ -8907,7 +8916,7 @@ foreign(kvina).
 foreign(kvinesdal). 
 foreign(kvinherad). 
 foreign(kvithamar). 
-foreign(kvitland). 
+%% foreign(kvitland). %% bus301 %% MW-121119 
 foreign(kvæfjord).  
 foreign(kværnerbyen).
 foreign(kvål).
@@ -9107,8 +9116,8 @@ foreign(mosvik).
 foreign(mosvika). 
 foreign(moum). 
 foreign(movik).  
-foreign(muruvik). 
-foreign(muruvika). 
+%% foreign(muruvik). bus301 %% MW-121119
+%% foreign(muruvika). bus301 %% MW-121119
 foreign(myre).   
 foreign(myrland).
 foreign(myrvåg). 
@@ -9362,7 +9371,7 @@ foreign(sagdalen).
 foreign(sagene). 
 foreign(sagstua).  
 foreign(sagvåg). 
-foreign(saksvik). 
+%% foreign(saksvik). malvik bus301 %% MW-121119 
 foreign(saksvikvollen). 
 foreign(salhus).  
 foreign(salten). 
@@ -9425,7 +9434,7 @@ foreign(sistranda).
 foreign(sjoa). 
 foreign(sjusjøen). 
 foreign(sjøholt). 
-foreign(sjølyst). 
+%% foreign(sjølyst). %% malvik bus301 %% MW-121119 
 foreign(sjølystveien).  %% (Oslo)
 foreign(sjørdal). 
 foreign(sjørdalen). 
@@ -9510,7 +9519,7 @@ foreign(smeby).
 foreign(smedstua).  
 foreign(smertu). 
 foreign(smestad).  %% oslo
-foreign(smiskaret).
+%% foreign(smiskaret). %% MW-121119
 foreign(smøla). 
 foreign(smørås).  
 foreign(snartemo). 
@@ -9565,7 +9574,7 @@ foreign(statthelle).
 foreign(statsbygd). 
 foreign(statsbygda). 
 foreign(staubø). 
-foreign(stav).  %% malvik/hommelvik
+%% foreign(stav).  %% malvik/hommelvik %% MW-121119
 % foreign(stavanger). 
 foreign(stavern). 
 foreign(stavsjø). %% TA-110502
@@ -9620,7 +9629,7 @@ foreign(stormyra).
 foreign(stornes).
 foreign(storo).   %%  Oslo 
 foreign(storoddan). 
-foreign(storsand). 
+%% foreign(storsand). %% MW-121119 bus 301
 foreign(storskogen).
 foreign(storslett). 
 foreign(storsteinnes). 
@@ -9771,7 +9780,7 @@ foreign(tomter).
 foreign(tonsenhagen). 
 foreign(tonsåsen).  %% TA-100519
 foreign(tornes).
-foreign(torp). 
+%% foreign(torp). %% MW-121119 bus301
 foreign(torshov).  %% Oslo
 foreign(torvastad). 
 foreign(torød).
@@ -9955,18 +9964,18 @@ foreign(vikedal).
 foreign(vikeland). 
 foreign(vikersund). foreign(vikersundbakken). foreign(vikersundsbakken). 
 
-foreign(vikhamar). 
-foreign(vikhamaren).  
-foreign(vikhamarn). 
-foreign(vikhammar). 
-foreign(vikhammaren). 
-foreign(vikhammarn). 
-foreign(vikhamer). 
-foreign(vikhammer).
-foreign(vikhammeren). 
+%% foreign(vikhamar). %% MW-121119 bus301
+%% foreign(vikhamaren).  
+%% foreign(vikhamarn). 
+%% foreign(vikhammar). 
+%% foreign(vikhammaren). 
+%% foreign(vikhammarn). 
+%% foreign(vikhamer). 
+%% foreign(vikhammer). 
+%% foreign(vikhammeren). 
 
-foreign(vikhammeråsen). 
-foreign(vikhov). 
+%% foreign(vikhammeråsen). 
+%% foreign(vikhov). %% MW-121119 bus301 
 foreign(vikvarvet). 
 foreign(vikran).  
 foreign(vilberg). 
