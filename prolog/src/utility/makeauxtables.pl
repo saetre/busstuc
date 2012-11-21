@@ -82,7 +82,9 @@ makeauxtables:-
 
     write('%  Please wait 1 minute...'),nl,
 
-    tell('db/auxtables.pl'),
+    %%tell('db/auxtables.pl'),    %% RS-121121
+    open( 'db/auxtables.pl', write, Stream, [encoding('UTF-8')] ),
+    set_output(Stream),
 
     writeheading,
 
@@ -113,8 +115,8 @@ makeauxtables:-
 
 writeheading:-
     datetime(A,B,C,D,E,F),
-%%    write('/* -*- Mode:Prolog; coding:utf-8; -*- */'),        %% Make this work with open/4 and encoding %% RS-121118
-    write('/* -*- Mode:Prolog; coding:iso-8859-1; -*- */'),
+    write('/* -*- Mode:Prolog; coding:utf-8; -*- */'),        %% Make this work with open/4 and encoding %% RS-121118
+    %%write('/* -*- Mode:Prolog; coding:iso-8859-1; -*- */'),   %% For other prologs than sicstus, utf-8 compatible
     nl,
     write('% Auxillary tables created '), 
     write(datetime(A,B,C,D,E,F)),
@@ -485,7 +487,9 @@ createhash :-
     for(toretarget(X),
         generatehash(X)),
    !,
-   tell('db/namehashtable.pl'), 
+   %%tell('db/namehashtable.pl'),    %% RS-121121
+    open( 'db/namehashtable.pl', write, Stream, [encoding('UTF-8')] ),
+    set_output(Stream), 
     writeheading,
 
    dumppredas(toredef0(X,Y,Z),toredef(X,Y,Z)),

@@ -18,7 +18,9 @@ maketransbuslist:-
 
     makeinteriors,
 
-    tell('transbuslist.pl'),
+    %%tell('transbuslist.pl'),    %% RS-121121
+    open( 'transbuslist.pl', write, Stream, [encoding('UTF-8')] ),
+    set_output(Stream),
 
     writepred3(transbuslist(X,Y,Z),transbuslist1(X,Y,Z))
 

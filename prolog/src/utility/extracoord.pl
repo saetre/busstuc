@@ -43,7 +43,9 @@ extract(Coord):-
 
     see(File1),
 
-    tell(File2),
+    %%tell(File2),    %% RS-121121
+    open( File2, write, Stream, [encoding('UTF-8')] ),
+    set_output(Stream),
 
     repeat,
 
