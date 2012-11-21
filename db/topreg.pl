@@ -6,7 +6,7 @@
 
 %% Ny linje
 %% Ny linje
-
+:-ensure_loaded(routes).        
 %% Contains the important information about route modules
 :-ensure_loaded(routes).
 
@@ -62,15 +62,7 @@ default_message(tt,summer,['AtB summer routes are from Jun. 27 to  Aug. 21. 2012
 
 
 %% ACTUAL ROUTE PERIODS  SORTED ON --- END DATE ----
-
-
-% Xmas routes before winter routes
-% Easter routes before winter routes
-
-%% Route module 'nil' in route_period means that the route module is not implemented yet
-%% Important to have dummy route modules to give message of no routes for this date
-
-
+%%see routes.pl
 
 
 
