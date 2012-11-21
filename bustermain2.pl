@@ -457,7 +457,9 @@ splitlang(L,Netto):- %%   If not prefix nor,eng assume no prefix
 
 
 trytellans :- 
-	 tell('.ans').
+        %%tell('.ans')   %% RS-121121
+        open( '.ans', write, Stream, [encoding('UTF-8')] ),
+        set_output(Stream).
 
 trytellans :-
     sleep(1),
@@ -749,7 +751,9 @@ startteleerror :-
     value(teleflag,true),
     !,
     teledbrowfile(TDBR),
-    tell(TDBR).
+    %%tell(TDBR)   %% RS-121121
+    open( TDBR, write, Stream, [encoding('UTF-8')] ),
+    set_output(Stream).
 
 startteleerror :-!.
 

@@ -85,7 +85,9 @@ seemodule(Module,File):- %% TA-110315
 
 tellmodule(Module,File):- %% TA-110315
     append_atomlist([db,'/',tables,'/',Module,'/',File],ModuleFile),
-    tell(ModuleFile).
+    %%tell(ModuleFile).    %% RS-121121
+    open( ModuleFile, write, Stream, [encoding('UTF-8')] ),
+    set_output(Stream).
 
 
 

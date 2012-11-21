@@ -358,14 +358,16 @@ aggregate(number,L,X):-
 
 
 appendfiles(A,B,C):-
-    tell(C),
+    %%tell(C),  %% For other prologs than UTF-8 compatible Sicstus       %% RS-121121
+    open( C, write, Stream, [encoding('UTF-8')] ),
+    set_output(Stream),
     see(A),
     proclaim,
     seen,
     see(B),
     proclaim,
     seen,
-    told.
+    told.       %% RS-121121
 
 
 proclaim:-
@@ -841,8 +843,10 @@ doubt(A,B):-
 
 % Lexical Parse of a String
 
-psl(S,L):-    
-    tell('tore_amble.e'),
+psl(S,L):-
+    %%tell('tore_amble.e'),    %% RS-121121
+    open( 'tore_amble.e', write, Stream, [encoding('UTF-8')] ),
+    set_output(Stream),
     write(S),
     nl,
     write('.'),nl,

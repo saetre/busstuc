@@ -58,7 +58,10 @@ makegram(Lang):-
     retractall(virtx(_)),
     retractall(optiprod(_)), 
 
-    tell('dcg.pl'),
+    %% In other prologs than Sicstus:  %% RS-121121
+    %% tell('dcg.pl'),
+    open( 'dcg.pl', write, DcgStream, [encoding('UTF-8')] ),
+        set_output(DcgStream),
         %% write('%% '),write(dadatetimenl,
         writeheading,
         write('%% Automatically created by tuc/metacomp.pl, based on dict and tuc/gram_...'),nl,nl,
@@ -68,8 +71,12 @@ makegram(Lang):-
         gram_module(Lang,G),
         for((G: (X ---> Y)), genprod(X,Y)),
     told,
+    %%close(DcgStream),     %% RS-121121
 
-    tell('virtuals.pl'),
+    %% In other prologs than Sicstus:  %% RS-121121
+    %%tell('virtuals.pl'),
+    open( 'virtuals.pl', write, VirtualStream, [encoding('UTF-8')] ),
+    set_output(VirtualStream),
         writeheading,
         write('%% Automatically created by metacomp.pl, based on dict and tuc/gram_...'),nl,nl,
         write(':- ensure_loaded(declare). %% RS-111213 General (semantic) Operators'),nl,nl,
@@ -79,6 +86,7 @@ makegram(Lang):-
         prite((optional(_,[],X,X) -->[])), 
         for(virtx(B),    genvirt(B)),
     told,
+    %% close(DcgStream),     %% RS-121121
     
     dcg_file(Lang,DCG), 
 

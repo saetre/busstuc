@@ -263,7 +263,9 @@ jettyrun(S)  :- %% This was gone so I reimplemented it. %% TE-120207
         reset_period, %% ---> topreg.pl
         psl(S,L),
         L = [File|L1],
-        tell(File),
+        %%tell(File),   %% RS-121121
+        open(File,write,Stream,[encoding('UTF-8')]),
+        set_output(Stream),
         
         splitlang(L1,L2),
         (process(L2);true), % Process always fails...
@@ -538,7 +540,9 @@ splitlang(L,Netto):- %%   If not prefix nor,eng assume no prefix
 
 
 trytellans :- 
-	 tell('.ans').
+        %%tell('.ans')   %% RS-121121
+        open( '.ans', write, Stream, [encoding('UTF-8')] ),
+        set_output(Stream).
 
 trytellans :-
     sleep(1),
@@ -824,7 +828,9 @@ startteleerror :-
     value(teleflag,true), \+ value(busflag,true), 
     !,
     teledbrowfile(TDBR),
-    tell(TDBR).
+    %%tell(TDBR)   %% RS-121121
+    open( TDBR, write, Stream, [encoding('UTF-8')] ),
+    set_output(Stream).
 
 startteleerror :-!.
 
