@@ -6,9 +6,8 @@
 
 %% Ny linje
 %% Ny linje
-:-ensure_loaded(routes).        
+:-ensure_loaded(routePeriod).        
 %% Contains the important information about route modules
-:-ensure_loaded(routes).
 
 :-volatile  thisdate_period_module/3 .       %% RS-120915
 :-dynamic   thisdate_period_module/3 .
