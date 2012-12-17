@@ -7,7 +7,7 @@
 3. Output to screen, spot the error!
 
 
-tell(File), told(File) vs. Stream examples
+%% tell(File), told(File) vs. Stream examples
 11.3.38 close/[1,2] [ISO]
 Synopsis
 close(+Stream)

@@ -3,10 +3,11 @@
 %% SYSTEM BussTUC DOMAIN TT
 %% CREATED TA-981231
 %% REVISED TA-120402
+%% REVISED RS-121024
 
 %% Ny linje
 %% Ny linje
-:-ensure_loaded(routePeriod).        
+:-ensure_loaded(route_period).        
 %% Contains the important information about route modules
 
 :-volatile  thisdate_period_module/3 .       %% RS-120915
@@ -62,10 +63,6 @@ default_message(tt,summer,['AtB summer routes are from Jun. 27 to  Aug. 21. 2012
 
 %% ACTUAL ROUTE PERIODS  SORTED ON --- END DATE ----
 %%see routes.pl
-
-
-
-
 
 
 period_message( r1602_120517,

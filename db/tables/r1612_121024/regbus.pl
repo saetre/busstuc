@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 regbus(0003).
 regbus(0004).
 regbus(0005).
