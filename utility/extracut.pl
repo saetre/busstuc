@@ -62,7 +62,7 @@ reset_dynamic_predicates :- %% TA-110317
 
 create_regcut(Module):- 
 
-   nl,output('Please wait 2 minutes'),nl, 
+   nl,output('Please wait 10 seconds'),nl, 
 
    reset_dynamic_predicates, %% TA-110317
 
