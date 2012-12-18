@@ -263,9 +263,9 @@ jettyrun(S)  :- %% This was gone so I reimplemented it. %% TE-120207
         reset_period, %% ---> topreg.pl
         psl(S,L),
         L = [File|L1],
-        %%tell(File),   %% RS-121121
-        open(File,write,Stream,[encoding('UTF-8')]),
-        set_output(Stream),
+        tell(File),   %% RS-121121
+        %%open(File,write,Stream,[encoding('UTF-8')]),
+        %%set_output(Stream),
         
         splitlang(L1,L2),
         (process(L2);true), % Process always fails...
