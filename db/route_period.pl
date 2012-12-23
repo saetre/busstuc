@@ -20,7 +20,7 @@ route_period(   tmn,r1630_101201, date(2011,12,01),   date(2011,12,31) ).
 route_period(   tt, r1602_120401, date(2012,04,01),   date(2012,04,08) ).
 route_period(   tt, r1602_120517, date(2012,05,17),   date(2012,05,17) ).
 route_period(   tt, r1604_120625, date(2012,06,25),   date(2012,08,12) ).
-route_period(   tt, r1612_121001, date(2012,10,01),   date(2012,11,30) ).  %% New nightbusses etc. ver5 Høst 2012
+%%route_period(   tt, r1612_121001, date(2012,10,01),   date(2012,11,30) ).  %% New nightbusses etc. ver5 Høst 2012
 
 route_period(   tt, r1612_121224, date(2012,12,24),   date(2012,12,24) ).  %% Julaften      2012.12.24
 route_period(   tt, r1614_121227, date(2012,12,27),   date(2012,12,27) ).  %% Mellomjula27  2012.12.27

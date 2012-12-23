@@ -85,9 +85,12 @@
 %:- ensure_loaded( '../declare' ).
 :- ensure_loaded( user:'../utility/utility' ).       %% RS-120402       %% for(X,Y)
 :- ensure_loaded( user:'../utility/datecalc' ).      %% RS-120402       %% add_days/3, sub_days/3, easterdate/2, this_year/1, todaysdate/1 
+
 %:- use_module( '../interfaceroute', [ domain_module/2 ] ). %% HEAVY DB!
+:- user:ensure_loaded( '../interfaceroute' ). %% [ domain_module/2 ]    %% HEAVY DB!
 %
 %:- use_module( 'places', [ corr/2, foreign/1, isat/2, placestat/2 ] ).
+:- user:ensure_loaded( 'places' ). %% [ corr/2, foreign/1, isat/2, placestat/2 ] ).
 
 %:- ensure_loaded( [ regbusall, regcompstr, regstr, teledat2 ] ). %% HEAVY DB!
 %%%%%%
@@ -98,20 +101,25 @@
 %:- use_module( teledat2, [] ). %% HEAVY DB!
 %%%%
 %:- use_module( '../app/buslog', [ bound/1, bus/1, station/1 ] ).
+:- user:ensure_loaded( '../app/buslog' ) . %% [ bound/1, bus/1, station/1 ] ).
 %
 %:- use_module( '../tuc/names', [ abroad/1, community/2, country/1 ] ).
+:- user:ensure_loaded( '../tuc/names' ). %% [ abroad/1, community/2, country/1 ] ).
 %
 %:- use_module( '../utility/utility', [ testmember/2 ] ).
 %
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+:-volatile named_date/2. %% Created Initially 
 :-dynamic named_date/2. %% Created Initially 
 
 tram_module( r1630_111201 ).
 
-station(X) :-
-        user:station(X).
+%:-volatile user:station/1. %% RS-121223 
+%:-dynamic user:station/1. %% RS-121223 
+%station(X) :-
+%        user:station(X).
 
 create_named_dates :-
     list_of_named_dates(L), 
@@ -464,9 +472,9 @@ date_day_map(Date,  sunday):-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-date_day_map(date(_20XX,05,01), sunday).   % 1.mai Fix, NOT separate route module
+date_day_map(date(_Y20XX,05,01), sunday).   % 1.mai Fix, NOT separate route module
 
-date_day_map(date(_20XX,05,17),   may17).  %% OWN route module %% TA-110518
+date_day_map(date(_Y20XX,05,17),   may17).  %% OWN route module %% TA-110518
 
 date_day_map(Date,  sunday):-     %  KrHf- %% NOT OWN route module
      named_date(ascension_day,Date),
@@ -626,7 +634,9 @@ thetramstreetstation(st_olavs_street,st_olavs_gt).
 
 central_airbus_station(torget). %% hovedterminalen// sentrum 
 
-nightbusstation(olav_tryggvasons_gate). %% AtB \== Team %% TA-101202
+:- volatile nightbusstation/1. %%RS-121223
+:- dynamic nightbusstation/1. %%RS-121223
+%%nightbusstation(olav_tryggvasons_gate). %% AtB \== Team %% TA-101202
 
 /*  %% compiled into user // regstr.pl %% TA-110406
 streetstat(A,B,C,D,E):-  
@@ -651,7 +661,7 @@ thetramstation(STOGT):-
 
 nostationfor(X) :- %% Heimdal  is unproper, BUT place (with) station 
     nostationfor1(X),
-    \+  placestat(X,_). 
+    \+  user:placestat(X,_). 
 
 
 % Places in trondheim with no stations
