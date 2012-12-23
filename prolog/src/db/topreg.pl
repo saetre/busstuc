@@ -92,19 +92,23 @@ period_message( r1601_120101,
 
 period_message( r1611_121201,
 ['AtB Winter routes',
- 'AtB Vinterruter']). %% \+ .   %% RS-121220
+ 'AtB Vinterruter']). %% \+ .   %% RS-121223
 
 period_message( r1612_121224,
 ['Routes for Christmas Eve',
- 'Ruter for Julaften']). %% \+ .   %% RS-121220
+ 'Ruter for Julaften']). %% \+ .   %% RS-121223
 
 period_message( r1613_121225,
 ['AtB Christmas routes',
- 'AtB Ruter for mellomjulen']). %% \+ .   %% RS-121220
+ 'AtB Ruter for mellomjulen']). %% \+ .   %% RS-121223
 
-period_message( r1614_121224,
+period_message( r1614_121227,
+['AtB Christmas routes for 27th',
+ 'Ruter for tredjedagen']). %% \+ .   %% RS-121223
+
+period_message( r1615_121224,
 ['Routes for New Years Eve',
- 'Ruter for Nyttårsaften']). %% \+ .   %% RS-121220
+ 'Ruter for Nyttårsaften']). %% \+ .   %% RS-121223
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
