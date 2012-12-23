@@ -213,6 +213,7 @@ frame_isempty(Slot) :-
 	getframe(Cid, Frame),
 	frame_isempty_rec(Frame, Slot).
 
+
 frame_isempty_rec(Frame, Super::_) :-
 	!, 
 	member([Super, ?, subframe(_), _], Frame).
@@ -234,26 +235,7 @@ frame_isempty_rec(Frame, Slot) :-
 frame_isempty_rec(Frame, Slot) :-
 	member([Slot, ?, class(_), _], Frame).
     	
-frame_isempty_rec2([ [_, ?, subframe(_), _] | Rest]) :-
-	!,
-	frame_isempty_rec2(Rest). 
-frame_isempty_rec2([ [_, SubFrame, subframe(_), _] | Rest]) :-
-	!,
-	frame_isempty_rec2(SubFrame),
-	frame_isempty_rec2(Rest). 
 
-frame_isempty_rec2([ [_, ?, class(_), _] | Rest]) :-
-	!, 
-	frame_isempty_rec2(Rest). 
-
-frame_isempty_rec2([]).
-
-
-
-frame_isempty(Slot) :-
-	getcurrent(Cid),
-	getframe(Cid, Frame),
-	frame_isempty_rec(Frame, Slot).
 
 frame_isempty_rec(Frame, Super::Rest) :-
 	!, 
@@ -275,6 +257,22 @@ frame_isempty_rec([ [_, ?, class(_), _] | Rest], Slot) :-
 	frame_isempty_rec(Rest, Slot). 
 
 frame_isempty_rec([], _).
+
+
+frame_isempty_rec2([ [_, ?, subframe(_), _] | Rest]) :-
+        !,
+        frame_isempty_rec2(Rest). 
+frame_isempty_rec2([ [_, SubFrame, subframe(_), _] | Rest]) :-
+        !,
+        frame_isempty_rec2(SubFrame),
+        frame_isempty_rec2(Rest). 
+
+frame_isempty_rec2([ [_, ?, class(_), _] | Rest]) :-
+        !, 
+        frame_isempty_rec2(Rest). 
+
+frame_isempty_rec2([]).
+
 
 frame_iscomplete(Miss) :-
 	getcurrent(Cid),

@@ -7,6 +7,8 @@
 
 :- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
 
+:- ensure_loaded( '../dialog/frames' ). %% RS-121223
+
 
 %%%%%%%%%%%%%%%% ALL ROUTE INTERFACE PREDICATES %%%%%%%%%%%%%%%%%%
 
@@ -125,6 +127,8 @@ dayxnumber(EMITDAY,Monday,XN) :-
 
 %% Period Module section
 
+:- volatile airbus_module/1.    %% RS-121223 No airbusmodules currently implemented
+:- dynamic airbus_module/1.
 
 veh_mod(TTP):-
      value(airbusflag,true),
@@ -510,7 +514,7 @@ stationsat(_Place,Neigh,Stations) :- % Special case, Neigh is also a neighbourho
     Stations=IsatStations.
 
 %% something wrotten
-bingbong(Neigh,Station) :- (place_station(Neigh,Station); isat(Station,Neigh)). %% RS-120816
+%% bingbong(Neigh,Station) :- (place_station(Neigh,Station); isat(Station,Neigh)). %% RS-120816
 
 
 stationsat(_,Station,Places1) :- %% Nardosenteret
@@ -1101,7 +1105,7 @@ departure(Bus,Place,Day,DepSet) :- % Bussavgangene for en buss ved en stasjon
 
 %% Double departures Hastus   Friday 2800 + Staurday 0400
 not_extreme_hastus_time(X):-
-    X=depnode(_2820,_,_20,_,T2800,_bus_108_3049,_,_,_),
+    X=depnode(_2820,_,_20,_,T2800,_Bus_108_3049,_,_,_),
     T2800 < 1200.
 
 approvenightbustoplace(Place,Y) :-
@@ -1200,7 +1204,7 @@ adjustdep999(_,DelDep,DelDep).
 %-
 
 passeqMOD0(TTP,Rid,user_location,STATNO,Station,Seq,DelArr,DelDep):- %% TA-110418
-    gps_origin(Station,_walk),
+    gps_origin(Station,_Walk),
     passeqMOD(TTP,Rid,STATNO,Station,Seq,DelArr,DelDep).
 
 
@@ -1218,7 +1222,7 @@ passeqMOD0(TTP,Rid,Place,STATNO,Station,Seq,DelArr,DelDep) :-  %% TA-110318
 %-
 
 passMOD(TTP,Rid,user_location,STATNO,Station,DelArr,DelDep) :- %% TA-110418
-    gps_origin(Station,_walk),
+    gps_origin(Station,_Walk),
 	 passeqMOD(TTP,Rid,STATNO,Station,_Seq,DelArr,DelDep).
 
 
@@ -1419,19 +1423,6 @@ place_station(Place,Station) :- %%  (If Place is free, get all)
      isat(Station,Place)).
 
 
-% New predicate
-% Place is instantiated, Station must be a station
-
-place_station1(Place,Station) :-
-     nonvar(Place),
-	  placestat(Place,Station),
-     station(Station),
-     !.
-place_station1(Place,Place) :-
-     nonvar(Place),
-     station(Place).
-
-
 place_station(Station,Station2):- %% in case of period renaming %% TA-110804
 	 bound(Station),
     optional_alias2(Station,Station2), %% TA-110803
@@ -1439,6 +1430,19 @@ place_station(Station,Station2):- %% in case of period renaming %% TA-110804
 
 % New predicate
 % Place is instantiated, Station may be a neighbourhood
+% New predicate
+% Place is instantiated, Station must be a station
+
+place_station1(Place,Station) :-
+     nonvar(Place),
+          placestat(Place,Station),
+     station(Station),
+     !.
+place_station1(Place,Place) :-
+     nonvar(Place),
+     station(Place).
+
+
 
 
 
@@ -2301,7 +2305,7 @@ isfirstcorr2(Time0,EndDep,Orig,Dest,Day,DaySeqNo,DepList,StartDep,Mid) :-
 
     ridof(StartDep, STARID),
     startstation(ENDRID,Orig1),
-    ridtobus( STARID,Bus1), %% Find Rid that starts at KlæbuS
+    ridtobusnr( STARID,Bus1), %% Find Rid that starts at KlæbuS
 
     arrtimeof(StartDep,S0),  %%  <---- ARR
     S0 =<  Time0,  % skip thru starts until  =<
@@ -2309,6 +2313,17 @@ isfirstcorr2(Time0,EndDep,Orig,Dest,Day,DaySeqNo,DepList,StartDep,Mid) :-
     %% right StartDep is found, iscorr3 will find transfer station (CS)
     !. %
 
+
+isfirstcorr2(Time0,EndDep,Orig,Dest,Day,DaySeqNo,DepList,StartDep,Mid) :-
+
+%%%     bugdep1(EndDep,bus_5_269),
+
+
+    member(StartDep,DepList),
+    arrtimeof(StartDep,S0),  %%  <---- ARR
+    S0 =<  Time0,  % skip thru starts until <  %% =< %%
+    iscorr3(Orig,Dest,Day,DaySeqNo,StartDep,EndDep,Mid),
+    !. % <-----------------
 
 
 bugdep1(depnode(TimeArr,TimeDep,DelayArr,DelayDep,BegTime,Rid,Bus,SeqNo,Station),Rid):-
@@ -2324,16 +2339,7 @@ bugdep2(depnode(TimeArr1,TimeDep1,DelayArr1,DelayDep1,BegTime1,Rid1,Bus1,SeqNo1,
 
 bongo.
 
-isfirstcorr2(Time0,EndDep,Orig,Dest,Day,DaySeqNo,DepList,StartDep,Mid) :-
 
-%%%     bugdep1(EndDep,bus_5_269),
-
-
-    member(StartDep,DepList),
-    arrtimeof(StartDep,S0),  %%  <---- ARR
-    S0 =<  Time0,  % skip thru starts until <  %% =< %%
-    iscorr3(Orig,Dest,Day,DaySeqNo,StartDep,EndDep,Mid),
-    !. % <-----------------
 
 
 %% This is the main connection predicate between two depnodes

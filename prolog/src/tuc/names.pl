@@ -359,46 +359,14 @@ synname(tamberskjels,tambarskjelves).
 synname(tamberskjelves,tambarskjelves). 
 
 
-%% SAMENAME  %% (partname) with spell
+%%%%%%%%%%%%%%%%%%%%
 
-
-samename(barfaøtts,berrføtts). %% TA-110317 
-samename(gledish,gleditsch). 
-%    synname(gledish,gleditsch). 
-%    synname(gletish,gleditsch).
-
-samename(halfred,hallfred). %% TA-101018
-
-samename(sandfundet,samfundet). %% TA-110314
-
-samename(svinestien,vollabakken). %% Experiment 
-
-samename(tambardkjelvsgate,tambarskjelvesgate). %% NEC %% TA-101004
-
-samename(tambaskjelvs,tambarskjelves). 
-
-samename(tambarselve,tambarskjelves).   
-
-%    synname(tambarselve,tambarskjelves).  
-%    synname(tambasjelvs,tambarskjelves). 
-%    synname(tamberbergsjelves,tambarskjelves).
-%    synname(tamberbergskjelves,tambarskjelves).
-
-samename(tambarskjelve,tambarskjelves).  
-%    synname(tambarkjeves,tambarskjelves).  
+%%%%¤¤  SYNNAME
 
     synname(tambarkjelves,tambarskjelves).
     synname(tambarsjelvas,tambarskjelves). 
 %    synname(tambarskjelve,tambarskjelves).  
 %    synname(tambarsjkelvs,tambarskjelves).
-
-samename(tiedemanns,tiedemands). 
-
-samename(øftis,øfstis). %%  Ã¸ftis = aøftis  %% TA-110324
-
-%%%%%%%%%%%%%%%%%%%%
-
-%%%%¤¤  SYNNAME
 
 synname(gode,godes). %% Magnus d g
 
@@ -543,7 +511,7 @@ synname(bordsons,bårdsøns).
 synname(borks,brochs).
 synname(botners,bothners). 
 synname(bovling,bowling). %% unnec ?
-					  
+                                          
 synname(brg,berg).  
 synname(bri,bru). 
 synname(brannst,brannstasjon).  
@@ -1631,6 +1599,40 @@ synname(stajasion,stasjon).
 synname(svngen,svingen). 
 
 synname(æstre,østre).  
+
+
+
+%% SAMENAME  %% (partname) with spell
+
+
+samename(barfaøtts,berrføtts). %% TA-110317 
+samename(gledish,gleditsch). 
+%    synname(gledish,gleditsch). 
+%    synname(gletish,gleditsch).
+
+samename(halfred,hallfred). %% TA-101018
+
+samename(sandfundet,samfundet). %% TA-110314
+
+samename(svinestien,vollabakken). %% Experiment 
+
+samename(tambardkjelvsgate,tambarskjelvesgate). %% NEC %% TA-101004
+
+samename(tambaskjelvs,tambarskjelves). 
+
+samename(tambarselve,tambarskjelves).   
+
+%    synname(tambarselve,tambarskjelves).  
+%    synname(tambasjelvs,tambarskjelves). 
+%    synname(tamberbergsjelves,tambarskjelves).
+%    synname(tamberbergskjelves,tambarskjelves).
+
+samename(tambarskjelve,tambarskjelves).  
+%    synname(tambarkjeves,tambarskjelves).  
+
+samename(tiedemanns,tiedemands). 
+
+samename(øftis,øfstis). %%  Ã¸ftis = aøftis  %% TA-110324
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
