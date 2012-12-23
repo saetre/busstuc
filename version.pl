@@ -3,6 +3,7 @@
 %% FILE version.pl
 %% SYSTEM TUC
 %% CREATED TA-970913
-/* REVISED : RS- */  version_date('AtB-I  Date 121212'). 
+/* REVISED : RS- */  version_date('AtB-I  Date 121223'). 
 
+%% Buss 96 er Fjernet i forrige set (til 24/6-12) pga. bug i bus-planleggingen
 %% Nyttårsaften
