@@ -95,7 +95,8 @@
 %:- ensure_loaded( [ regbusall, regcompstr, regstr, teledat2 ] ). %% HEAVY DB!
 %%%%%%
 :- ensure_loaded( regbusall ). %, [ nightbus/1 ] ). %% HEAVY DB!    %% RS-120803 %% Use buslog.pl instead!
-%:- ensure_loaded( regbusall ). %% HEAVY DB!
+%%This used to be done from topreg? (Should be done from topreg::makeauxtable?)
+
 %:- use_module( regcompstr, [] ). %% HEAVY DB!
 %:- use_module( regstr, [] ). %% HEAVY DB!
 %:- use_module( teledat2, [] ). %% HEAVY DB!
@@ -636,7 +637,7 @@ central_airbus_station(torget). %% hovedterminalen// sentrum
 
 :- volatile nightbusstation/1. %%RS-121223
 :- dynamic nightbusstation/1. %%RS-121223
-%%nightbusstation(olav_tryggvasons_gate). %% AtB \== Team %% TA-101202
+%%nightbusstation(olav_tryggvasons_gate). %% AtB \== Team %% TA-101202 %%RS-121223
 
 /*  %% compiled into user // regstr.pl %% TA-110406
 streetstat(A,B,C,D,E):-  
