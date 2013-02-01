@@ -5,4 +5,4 @@
 %% CREATED TA-970913
 /* REVISED : RS- */  version_date('AtB-I  Date 130201').
 
-%% Vår2013
+%% vinter-vaar
