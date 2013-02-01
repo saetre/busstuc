@@ -17,49 +17,27 @@
 :-volatile
           
   toredef0/3,  
-
   torehash0/2,
-
   nextstat0/2,  
-
   interior0/1,  
-
   transbuslist0/3, 
-
   statbus0/2,  
-    
   busstat0/2,    
-
   unproperstation0/1,  
-
   fromstationonly0/1,
- 
   tostationonly0/1.
-
 
 :-dynamic  
-
   toredef0/3,  
-
   torehash0/2,  
-
   nextstat0/2,  
-
   interior0/1,  
-
   transbuslist0/3, 
-
   statbus0/2,  
-    
   busstat0/2,    
-
   unproperstation0/1,  
-
   fromstationonly0/1,
- 
   tostationonly0/1.
-
-
 
 /*
 
