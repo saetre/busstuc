@@ -597,8 +597,8 @@ streetstat(hospitalsløkkan,'Hospitalsløkkan',1,14,hospitalkirka).
 streetstat(hospitalsløkkan,'Hospitalsløkkan',12,41,kalvskinnet).
 streetstat(hugins_street,'Hugins veg',1,13,nygård).
 streetstat(hulder_street,'Huldervegen',1,16,askeladdvegen).
-streetstat(humlehaug_street,'Humlehaugvegen',28,41,vikelvveien).
-streetstat(humlehaug_street,'Humlehaugvegen',1,29,ranheim_skole).
+streetstat(humlehaug_street,'Humlehaugvegen',30,41,vikelvveien).
+streetstat(humlehaug_street,'Humlehaugvegen',1,29,nedre_humlehaugen_vest).
 streetstat(husebyhøgda,'Husebyhøgda',1,10,husebytunet).
 streetstat(huseby_street,'Husebyvegen',1,70,husebytunet).
 streetstat(hvedingsveita,'Hvedingsveita',1,8,torget).
@@ -1482,7 +1482,7 @@ streetstat(sorgenfri_street,'Sorgenfrivegen',1,14,valøyvegen).
 streetstat(sorgenfri_street,'Sorgenfrivegen',9,18,bratsbergvegen).
 streetstat(spove_street,'Spovevegen',1,13,stabells_veg).
 streetstat(st_jørgensveita,'St. Jørgensveita',1,9,hovedterminalen).
-streetstat(st_olavs_street,'St. Olavs gate',1,15,torget). %% TA-100112
+streetstat(st_olavs_street,'St. Olavs gate',1,15,torget). %% TA-100112 %% RS-120915
 streetstat(stabells_street,'Stabells veg',1,34,stabells_veg).
 streetstat(stadsing_dahls_street,'Stadsing. Dahls gate',42,55,rosendal).
 streetstat(stadsing_dahls_street,'Stadsing. Dahls gate',56,70,buran).

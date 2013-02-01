@@ -14,6 +14,29 @@
 %% NB they are compiled again as a separate file
 %% The dynamic predicates (xxx0) corresponds to (some of) the filed predicates xxx
 
+:-volatile
+          
+  toredef0/3,  
+
+  torehash0/2,
+
+  nextstat0/2,  
+
+  interior0/1,  
+
+  transbuslist0/3, 
+
+  statbus0/2,  
+    
+  busstat0/2,    
+
+  unproperstation0/1,  
+
+  fromstationonly0/1,
+ 
+  tostationonly0/1.
+
+
 :-dynamic  
 
   toredef0/3,  
@@ -43,7 +66,7 @@
 Run in Main directory
 
 
-%% 0.  Take backup
+%% 0.  Take backup (or use svn)
 
 % cp db/auxtables.pl  db/backup.auxtables.pl
 % cp db/namehashtable.pl  db/backup.namehashtable.pl
@@ -118,10 +141,10 @@ writeheading:-
     write('/* -*- Mode:Prolog; coding:utf-8; -*- */'),        %% Make this work with open/4 and encoding %% RS-121118
     %%write('/* -*- Mode:Prolog; coding:iso-8859-1; -*- */'),   %% For other prologs than sicstus, utf-8 compatible
     nl,
-    write('% Auxillary tables created '), 
-    write(datetime(A,B,C,D,E,F)),
+    write('% Auxillary tables created '),
     nl,
     write('%%from writeheading in utility/makeauxtables.pl'),
+    nl, write('%% '), write(datetime(A,B,C,D,E,F)),
     nl,nl.
 
 

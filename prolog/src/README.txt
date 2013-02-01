@@ -21,6 +21,8 @@ N: Hva er din versjon?
 cd ~tagore/public_html/cgi-bin/busstuc
 [tagore@furu ~/public_html/cgi-bin/busstuc] ./stopbuss
 [tagore@furu ~/public_html/cgi-bin/busstuc] ./startbuss
+...REPLACED BY: See Wiki entries on
+https://www.ntnu.no/wiki/display/FUIROS/
 
 
 Oppdater(es/t)

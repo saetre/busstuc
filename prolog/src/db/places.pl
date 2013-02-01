@@ -17,7 +17,6 @@
 
 % See also names.pl for general synonyms
 
-
 /*
 
   alias_name/2,            % (NAME,NAME)
@@ -126,6 +125,8 @@ isat(munkegata_m3,sentrum).
 isat(munkegata_m4,sentrum). 
 isat(munkegata_m5,sentrum). 
 
+isat(olav_tryggvasons_gate,sentrum).    %% RS-121223
+
 isat(bratsberg_kirke,bratsberg). %% TA-110325
 
 %% isat(britannia_hotell,sentrum). %%  FB? %% not AtB
@@ -168,7 +169,8 @@ isat(hovedterminalen,dronningens_gate).  %% Where is sentrumsterminalen
 isat(hovedterminalen,munkegata).  %%
 isat(hovedterminalen,sentrum).  %% Experiment Trikk St. Olavs. gt og så sentrum
 
-isat(ikea,leangen). %%  (?)
+isat(travbanen,ikea). %%  (?)
+isat(gartnerhallen,ikea). %%  (?)
 
 isat(klæbu_sentrum,klæbu).  %% AtB
 
@@ -520,8 +522,8 @@ placestat(kanalen,solsiden).
 placestat(karinelund,strinda_kirke). 
 placestat(katedralen,prinsen_kinosenter). 
 placestat(katedralskolen,prinsen_kinosenter). 
-placestat(kbs,strindheim). 
-placestat(kbs_senteret,strindheim). 
+placestat(kbs,strindheim).
+placestat(kbs_senteret,strindheim).
 placestat(kinosenteret,prinsen_kinosenter). 
 placestat(kirka,prinsen_kinosenter).  %%Uncertain
 placestat(klefstad,klefstadhaugen). 
@@ -610,7 +612,9 @@ placestat(nardoskole,nardokrysset).
 placestat(nardosletta,nardosenteret).  %% Names should not disappear
 placestat(nardovegen,dybdahls_veg). 
 
-placestat(nattbussterminalen,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB %% TA-100715
+%%placestat(nattbussterminalen,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB %% TA-100715
+%%placestat(nattbussterminalen,hovedterminalen). %% CORREC %% TA-101203 %% AtB %% TA-100715
+placestat(olav_tryggvasons_gate,sentrum). %% CORREC %% TA-101203 %% AtB %% TA-100715 %% RS-121223
 
 placestat(nedre_elvehavn,solsiden).  %%(?)
 placestat(nedre_møllenberg,bakkegata). 
@@ -734,6 +738,7 @@ placestat(schrøder,fossegrenda).
 placestat(servicekontoret,dronningens_gate_d2).
 placestat(singsaker,asbjørnsens_gate). 
 placestat(singsaker_studenthjem,jonsvannsveien). 
+placestat(sirkus_shopping,strindheim).
 placestat(sjetne,carl_schjetnans_veg). 
 
 placestat(sjetnmarka,carl_schjetnans_veg). %% not nightbus (103) Sjetnmarka
@@ -1141,6 +1146,7 @@ sameplace(hosptialskirka,hospitalkirka).  %%
 
 sameplace(hosptalsløkka,hospitallløkka). %% +  hosptalslokka 
 
+sameplace(humlehaugen,nedre_humlehaugen_vest). %%RS-121024 3 nye på Ranheim fra 24.10.2012
 sameplace(hundhameren,hundhammeren). 
 sameplace(hundhammarn,hundhammeren). 
 sameplace(husbytun,husebytunet). 
@@ -1193,7 +1199,7 @@ sameplace(karljohnsonsveg,karl_jonssons_veg). %%  KalJohnsons veg
 sameplace(kattemsenteter,kattemsenteret). 
 sameplace(kattemsenteteret,kattemsenteret). 
 sameplace(kattskinnet,kalvskinnet). 
-sameplace(kattskjinnet,kalvskinnet). 
+sameplace(kattskjinnet,kalvskinnet).
 sameplace(kbssenter,kbs_senteret). 
 sameplace(kbssenteret,kbs_senteret). 
 sameplace(kinosenter,prinsen_kinosenter). 
@@ -1295,8 +1301,13 @@ sameplace(møller,møller_bil).
 sameplace(nardocenteret,nardosenteret). 
 sameplace(nardocenter,nardosenteret). 
 sameplace(nardosenter,nardosenteret). 
-sameplace(nardosentre,nardosenteret). 
+sameplace(nardosentre,nardosenteret).
+
+%%sameplace(nattbussterminalen,hovedterminalen).  %% RS-120915
+
 sameplace(nedreelvehavn,nedre_elvehavn). 
+sameplace(nedrehumlehaugen,nedre_humlehaugen_vest). %%RS-121024 3 nye på Ranheim fra 24.10.2012
+
 sameplace(nidaroshallen,trondheim_spektrum). 
 sameplace(nidarrødhallen,trondheim_spektrum). 
 sameplace(nidarvollskole,nidarvoll_skole). 
@@ -1465,7 +1476,11 @@ sameplace(siemenskrysset,siemens).  %%(Ambiguous,butspecial)
 sameplace(sigurdjorsalfarsvei,sigurd_jorsalfars_street). 
 sameplace(sildredråpeveien,sildråpeveien). 
 sameplace(sildropveien,sildråpeveien). 
-sameplace(simenskrysset,siemens). 
+sameplace(simenskrysset,siemens).
+sameplace(sirkus,sirkus_shopping).
+sameplace(sirkussenter,sirkus_shopping).
+sameplace(sirkussenteret,sirkus_shopping).
+sameplace(sirkusshopping,sirkus_shopping).
 sameplace(sjetnamrka,sjetnmarka). 
 sameplace(sjetnemarka,sjetnmarka).     %% /sjetemarka 
 sameplace(skavlandsv,skavlans_veg).   
@@ -2062,6 +2077,7 @@ specname(sentrum,sentrum).
 %% specname(sig_berg_alle,'Sigurd Bergs allé').   
                                                
 specname(singsaker_studenthjem,'Singsaker studenthjem'). 
+specname(sirkus_shopping,'Sirkus Shopping').
 specname(sivert_thonstadsv,'Sivert Thonstads vei'). 	 %% EH-030616
 specname(sk,skole). %% nohelp?
 specname(skavlans_vei,'Skavlands vei'). 
@@ -2346,7 +2362,7 @@ synplace(bjørnebru,bjørndalsbrua).
 synplace(bjørnebrua,bjørndalsbrua). 
 synplace(bjørnsdalsbura,bjørndalsbrua). 
 synplace(bjørnstadbrua,bjørndalsbrua). 
-synplace(bks,kbs).  
+synplace(bks,kbs).
 %% synplace(blaklia,blakli). %% \+ baklia 
 synplace(blodbank,blodbanken). 
 synplace(blussevoll,blussuvoll). 
@@ -2482,7 +2498,7 @@ synplace(casperlundesgate,casper_lundes_veg).
 synplace(casperlundesv,casper_lundes_veg). 
 synplace(casperlundesv,casper_lundes_veg). 
 synplace(casperlundesveg,casper_lundes_veg). 
-synplace(casperlundesvei,casper_lundes_veg). 
+synplace(casperlundesvei,casper_lundes_veg).
 synplace(cbs,kbs). 
 synplace(cbssenteret,kbs_senteret).  %%
 synplace(center,hovedterminalen). 
@@ -2508,6 +2524,9 @@ synplace(chl,charlottenlund).
 
 synplace(cicilienborg,cecilienborg). 
 synplace(cicillienborg,cecilienborg). 
+synplace(cirkus,sirkus_shopping).
+synplace(cirkussenteret,sirkus_shopping).
+synplace(cirkusshopping,sirkus_shopping).
 synplace(cisilienborg,cecilienborg). 
 synplace(citi,city).  %% not nec syd (Eng)
 %% synplace(cityn,city_syd). %%  confuse
@@ -3413,6 +3432,7 @@ synplace(naskinagentur,maskinagentur).
 synplace(nedrebakklandet,bakkegata). 
 synplace(nedreelvehanv,nedre_elvehavn). 
 synplace(nedreflatåsen,søndre_flatåsen). 
+%synplace(nedrehumlehaugen,nedre_humlehaugen_vest). %%RS-121024 3 nye på Ranheim fra 24.10.2012
 synplace(nedrejakobsliveg,jakobsliveien_nedre). 
 synplace(nedrejakobslivei,jakobsliveien_nedre). 
 synplace(nedreleirfoss,nedre_leirfoss).  %% (automatic*)
@@ -4968,7 +4988,7 @@ unwanted_place(sex).    %%  \+ Sem
 %% unwanted_place(shell).  %%  \+ spell mix with Hell 
 unwanted_place(simen).  %% \+ Siemens .. er simen stygg? 
 unwanted_place(sion).   %%  \+ simon
-unwanted_place(sirkus). %%  \+ sirius
+%unwanted_place(sirkus). %%  \+ sirius  %% RS-130120 Sirkus Shopping
 unwanted_place(sist).   %%  \+ Wist
 unwanted_place(sjansen).%%  \+ Skansen 
 unwanted_place(sko).    %% 
@@ -5509,6 +5529,8 @@ cmpl(churchills,vei,churchills_veg).
 cmpl(churchillsvei,[],churchills_veg). 
 cmpl(churtshill,gate,churchills_veg). 
 
+
+cmpl(cirkus,shopping,sirkus_shopping). %% RS-130120 Spellcheck?
 
 cmpl(city,syd,city_syd). %% TA-110627 %% NB city syd no longer aut. generated
 cmpl(citi,syd,city_syd). 
@@ -6439,7 +6461,7 @@ cmpl(kattem,senter,kattemsenteret).
 cmpl(kattem,senteret,kattemsenteret). 
 cmpl(kattem,skogen,kattemskogen).
 cmpl(kattem,skole,kattemsenteret).  %%Uståsen6
-cmpl(kbs,[kjøpe,senter],kbs_senteret). 
+cmpl(kbs,[kjøpe,senter],kbs_senteret).
 cmpl(kbs,[leangen],kbs_senteret). 
 cmpl(kbs,[på,leangen],kbs_senteret). 
 cmpl(kbs,kjøpesenter,kbs_senteret). 
@@ -6577,7 +6599,10 @@ cmpl(leangen,travbane,travbanen).
 cmpl(leangen,travbanen,travbanen). 
 cmpl(leif,[erickson,senter],pirbadet). 
 cmpl(leif,[erikson,senter],pirbadet).
-cmpl(leiftronstads,vei,leif_tronstads_street). 
+cmpl(leiftronstads,vei,leif_tronstads_street).
+cmpl(nedre,[humle,haug],nedre_humlehaugen_vest).
+cmpl(nedre,[humlehaugen],nedre_humlehaugen_vest).
+cmpl(n,[humlehaugen],nedre_humlehaugen_vest).
 cmpl(nedre,[leir,foss],nedre_leirfoss). 
 cmpl(leira,fengsel,leira_skole).  %% Bratsbergveien 189
 cmpl(leira,gartneri,leira_skole). 
@@ -7382,6 +7407,15 @@ cmpl(singsaker,sommerhotell,singsaker_studenthjem).
 cmpl(singsaker,studenterhjem,singsaker_studenthjem). 
 cmpl(singsaker,studenthjem,singsaker_studenthjem). 
 cmpl(singsaker,studenthotell,singsaker_studenthjem). 
+cmpl(sirkus,[kjøpe,senter],sirkus_shopping).
+cmpl(sirkus,[kjøpesenter],sirkus_shopping).
+cmpl(sirkus,[leangen],sirkus_shopping).
+cmpl(sirkus,[på,leangen],sirkus_shopping).
+cmpl(sirkus,[senter],sirkus_shopping).
+cmpl(sirkus,[senteret],sirkus_shopping).
+cmpl(sirkus,[sentret],sirkus_shopping).
+cmpl(sirkus,[shopping],sirkus_shopping).
+cmpl(sirkus,[shopping,senter],sirkus_shopping).
 cmpl(sit,[i,cyd],city_syd).  %%?
 cmpl(sit,[i,syd],city_syd).  %%
 cmpl(sivert,[thonstads,v],sivert_thonstads_vei). 
@@ -7573,8 +7607,10 @@ cmpl(strinda,videregående,valentinlystveien).
 cmpl(strinda,vgs,valentinlystveien). 
 
 cmpl(strindheim,[hage,by],strindheim_hageby). 
-cmpl(strindheim,[kbs],strindheim). 
-cmpl(strindheim,[kbss,enteret],strindheim). 
+cmpl(strindheim,[kbs],strindheim).
+cmpl(strindheim,[kbss,enteret],strindheim).
+cmpl(strindheim,[sirkus],strindheim).
+cmpl(strindheim,[sirkus,enteret],strindheim).
 cmpl(strindheim,kirke,valentinlyst).  %%  ?
 cmpl(strindheim,bil,jørgen_b_lysholms_vei).  %% lade alle 67a.  
 cmpl(stud,[samf,1],studentersamfundet_1). 
@@ -8707,11 +8743,11 @@ foreign(holum).
 foreign(holvik). 
 foreign(holvika). 
 foreign(homborsund). 
-foreign(homelvik). 
-foreign(homelvika).  
-foreign(hommelvik). 
-foreign(hommelvika). 
-foreign(hommelviken). 
+%%foreign(homelvik). 
+%%foreign(homelvika).  
+%%foreign(hommelvik). 
+%%foreign(hommelvika). 
+%%foreign(hommelviken). 
 foreign(hommersåk). 
 foreign(honningsvåg). 
 foreign(hordaland). 
@@ -8733,8 +8769,8 @@ foreign(hovjordet).
 foreign(hovseter). 
 foreign(huk).  %% Oslo 
 foreign(humelvik). 
-foreign(hummelvik). 
-foreign(hummelvika).
+%%foreign(hummelvik). 
+%%foreign(hummelvika).
 foreign(hunderfossen). %% TA-110228
 foreign(hundhameren). 
 foreign(hundhammer). 
