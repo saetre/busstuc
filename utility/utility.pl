@@ -993,6 +993,7 @@ sniplast(L,L1):-
 splitlast(ABC,AB,C):-append(AB,[C],ABC).
 
 
+%%testmember(Member, Group/List) %%RS-130210
 
 testmember(_,V):-var(V),!,fail. 
 testmember(X,Z) :-

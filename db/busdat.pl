@@ -101,14 +101,18 @@
 %:- use_module( regstr, [] ). %% HEAVY DB!
 %:- use_module( teledat2, [] ). %% HEAVY DB!
 %%%%
-%:- use_module( '../app/buslog', [ bound/1, bus/1, station/1 ] ).
-:- user:ensure_loaded( '../app/buslog' ) . %% [ bound/1, bus/1, station/1 ] ).
-%
+%:- use_module( '../app/buslog', [ bound/1, bus/1, station/1 ] ).               %% RS-130210
+:- user:ensure_loaded( '../app/buslog' ) . %% [ bound/1, bus/1, station/1 ] ).  %% keep user: until modules are fixed
+
 %:- use_module( '../tuc/names', [ abroad/1, community/2, country/1 ] ).
 :- user:ensure_loaded( '../tuc/names' ). %% [ abroad/1, community/2, country/1 ] ).
-%
+
 %:- use_module( '../utility/utility', [ testmember/2 ] ).
-%
+:- user:ensure_loaded( '../utility/utility' ). %% [ testmember/2 ] ).
+%%testmember(Member, Group/List) %%RS-130210
+testmember(Member, List) :-
+        user:testmember(Member, List).
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -119,8 +123,8 @@ tram_module( r1630_111201 ).
 
 %:-volatile user:station/1. %% RS-121223 
 %:-dynamic user:station/1. %% RS-121223 
-%station(X) :-
-%        user:station(X).
+station(X) :-
+        user:station(X). %% RS-130210 --> '../app/buslog'
 
 create_named_dates :-
     list_of_named_dates(L), 
@@ -714,7 +718,7 @@ xforeign(fb,C):- user:foreign(C), %% værnes malvik %%
 xforeign(tt,C):- user:community(C,County), %% tt malvik foreign to fb
                 County \== sør_trøndelag,
          %% e.g. Klæbu //=> \+ trondheim   isa neighbourhood
-                \+ station(C). %% e.g. berg
+                \+ station(C). %% e.g. berg     %% RS-130210 TODO:FIX BUG
 
 nightbusdestination(X):-
     user:value(nightbusflag,true), 
@@ -1467,7 +1471,7 @@ synbus('9e', 9).
 
 xisat(X,Y) :-  %% Last isat Predicate
     user:corr(X,hovedterminalen),
-    isat(hovedterminalen,Y).
+    user:isat(hovedterminalen,Y).       %% RS-130210 --> places.pl
 
 
 %% Special predicates for nightbuses 
