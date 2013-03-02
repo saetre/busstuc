@@ -108,6 +108,14 @@ corr(lerkendal_stadion,tempe_kirke).
 
 
 
+%¤ ISAT   (STATION, PLACE)
+%Examples:
+%
+%isat(lerkendal_stadion,lerkendal).
+%isat(lerchendal_gård,lerkendal). 
+%isat(gløshaugen_syd,gløshaugen).
+%
+%STATION is (one among several/not preferred) stations that belong to the neighbourhood of PLACE
 
 %% ISAT    Station Neighbourhood
 
@@ -195,6 +203,8 @@ isat(markaplassen_skole,vikåsen).
 isat(moholt,lingit). %% Ad HOC, best conn from NTH
 isat(moholt_storsenter,lingit).
 
+isat(nedre_humlehaugen_øst,ranheim_kirke).  %% RS-130302 Ranheim Kirke Replaced by Nedre Humlehaugen Øst except morning ride 
+
 isat(nordre_flatåsen,flatåsen). %7
 %% isat(nordre_hoem,hoem). %% not AtB
 isat(nova_kinosenter,royal_garden). 
@@ -207,8 +217,9 @@ isat(omkjøringsveien_nardo,omkjøringsveien).
 isat(paul_skolemesters_veg,sjetnmarka). 
 isat(prof_brochs_gate,hesthagen). 
 isat(ranheim_fabrikker,ranheim). 
-isat(ranheim_stasjon,ranheim). 
 isat(ranheim_idrettsplass,ranheim). %% TA-110426
+isat(ranheim_kirke,ranheim_kirke).  %% RS-130302 Ranheim Kirke Replaced by Nedre Humlehaugen Øst except morning ride 
+isat(ranheim_stasjon,ranheim). 
 isat(ringve_museum,ringve). 
 isat(ringve_museum,ringve). 
 isat(ringve_skole,ringve). 
@@ -256,7 +267,15 @@ isat(østre_rosten,city_syd).    %% Ø R must be station
 isat(øvre_flatåsveg,flatåsen). % 9,17 
 
 
-%%% PLACESTAT  neighbourhood station
+%%% PLACESTAT  station neighbourhood
+%¤ PLACESTAT  (PLACE,STATION)
+%Examples;
+%placestat(arbeidsmarkedsinstituttet,lade_alle_80).
+%placestat('Hotell Augustin',torget).
+%
+%STATION is the preferred /recommended nearest station to the
+%neighbourhood of PLACE
+%
 
 %% placestat(atb,torget). %% TA-101108 
 
@@ -685,6 +704,7 @@ placestat(prøven,kroppan).
 placestat(prøvenbil,kroppan). 
 placestat(radmannbygget,gildheim). %%  Ranheimsvegen 10
 placestat(ramstadkrysset,ramstad). 
+%%placestat(ranheim_kirke,nedre_humlehaugen_øst). %% RS-130302 Overrides isat(ranheim_kirke,ranheim_kirke).  
 placestat(ravnkloa,hovedterminalen).  %%(Hazard?)
 
 %% placestat(realfagbygget,gløshaugen_syd). %% --- Telebuster house
@@ -2050,7 +2070,7 @@ specname(prestegårdsjordet,'Prestegårdsjordet').  %% (error)
 specname(prinsen_kinosenter,'Prinsen kinosenter').  
 specname(prinsens_gate,'Prinsens gate'). 
 specname(r_i_t_hovedporten,'St Olavs hospital'). 
-specname(ranheim_kirke,'Ranheim kirke').  %% k 
+specname(ranheim_kirke,'Ranheim kirke').  %% RS-130302 Replaced by Nedre Humlehaugen Øst 
 specname(reppe_endehlp,'Reppe endeholdeplass'). 
 specname(ringve_skole,'Ringve skole'). 
 specname(risvollan_senter,'Risvollan senter').
