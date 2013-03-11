@@ -184,6 +184,8 @@ isat(klæbu_sentrum,klæbu).  %% AtB
 
 
 isat(john_aaes_veg,city_syd).   %%
+
+isat(kroppanmarka,kroppanmarka_snuplass). %%RS-120305
 isat(kvt,city_syd).             %%
 
 %%¤¤¤ %% ulykke AtB %% TA-100715

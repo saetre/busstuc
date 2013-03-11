@@ -388,7 +388,8 @@ streetstat(fortunalia,'Fortunalia',1,108,karlsheim).
 streetstat(fosenkaia,'Fosenkaia',1,10,ts).
 streetstat(fossbakken,'Fossbakken',1,8,olderdalen).
 streetstat(fossegrenda,'Fossegrenda',1,44,fossegrenda).
-streetstat(fossestu_street,'Fossestuvegen',62,62,kroppanmarka_snuplass).
+%streetstat(fossestu_street,'Fossestuvegen',62,62,kroppanmarka_snuplass).
+streetstat(fossestu_street,'Fossestuvegen',62,62,kroppanmarka).
 streetstat(fotveita,'Fotveita',1,6,hospitalkirka).
 streetstat(fram_street,'Framveien',1,28,åsveien_skole).
 streetstat(fredrik_b_wallems_street,'Fredrik B. Wallems veg',1,33,charlottenlund_nedre).
@@ -832,7 +833,8 @@ streetstat(krogness_street,'Krogness gate',6,10,unknown).
 streetstat(krokstien,'Krokstien',1,20,dalsaunevegen).
 streetstat(kronprins_olavs_alle,'Kronprins Olavs allé',9,23,unknown).
 streetstat(kroppanmarka,'Kroppanmarka',49,56,nedre_leirfoss).
-streetstat(kroppanmarka,'Kroppanmarka',1,34,kroppanmarka_snuplass).
+%streetstat(kroppanmarka,'Kroppanmarka',1,34,kroppanmarka_snuplass). %% RS-130305
+streetstat(kroppanmarka,'Kroppanmarka',1,34,kroppanmarka).
 streetstat(kroppanmarka,'Kroppanmarka',11,209,kroppanmarka).
 streetstat(kroppan_street,'Kroppanvegen',1,81,leirfossvegen).
 streetstat(krutthusbakken,'Krutthusbakken',1,3,krutthusbakken).
@@ -1131,7 +1133,8 @@ streetstat(ola_setroms_street,'Ola Setroms veg',1,33,ola_setroms_veg).
 
 streetstat(ole_aasveds_street,'Ole Aasveds veg',1,99,gryta). %% -99? 
 
-streetstat(okstad_street,'Okstadvegen',1,6,kroppanmarka_snuplass).
+%%streetstat(okstad_street,'Okstadvegen',1,6,kroppanmarka_snuplass). %% RS-130305
+streetstat(okstad_street,'Okstadvegen',1,6,kroppanmarka).
 streetstat(olaf_bulls_street,'Olaf Bulls veg',1,44,arnt_smistads_veg).
 streetstat(olaf_grilstads_street,'Olaf Grilstads veg',1,6,skavlans_veg).
 streetstat(olaf_nordhagens_street,'Olaf Nordhagens vei',1,22,byåsen_butikksenter).
