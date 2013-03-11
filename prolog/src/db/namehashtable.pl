@@ -4731,7 +4731,7 @@ toredef(tillers,street,johan_tillers_street).
 toredef(hårfagresgate,nil,hårfagresgate).
 toredef(ridesenter,nil,ridesenter).
 toredef(flatåsveg,nil,flatåsveg).
-toredef(snuplass,nil,snuplass).
+toredef(snuplass,nil,snuplass). %% RS-130311 Ny ruter for lohove snuplass
 toredef(grind,nil,grind).
 toredef(ness,nil,ness).
 toredef(ness,street,bjarne_ness_street).
@@ -36497,6 +36497,8 @@ torehash(flatåsvg,flatåsveg).
 torehash(flatåveg,flatåsveg).
 torehash(flaåsveg,flatåsveg).
 torehash(fltåsveg,flatåsveg).
+
+%% RS-130311 Trøbbel? Nye ruter med Lohove Snuplass
 torehash(snplass,snuplass).
 torehash(snulass,snuplass).
 torehash(snupass,snuplass).
@@ -36504,6 +36506,8 @@ torehash(snupla,snuplass).
 torehash(snuplas,snuplass).
 torehash(snuplss,snuplass).
 torehash(suplass,snuplass).
+%% RS-130311 Trøbbel?
+
 torehash(gind,grind).
 torehash(grid,grind).
 torehash(grin,grind).

@@ -1147,7 +1147,7 @@ synname(sneturm,sentrum).
 
 synname(snpl,endehpl).  
 synname(snpl,endeholdeplass). 
-synname(snpl,snuplass). 
+synname(snpl,snuplass). %% RS-130311 
 
 synname(sntret,senter).  
 synname(sntret,senteret).
@@ -1172,8 +1172,8 @@ synname(skol,skole).
 
 synname(snton,anton).  
 
-synname(snuholdeplass,snuplass). 
-synname(snuholderplass,snuplass). 
+synname(snuholdeplass,snuplass). %% RS-130311 Trøbbel? 
+synname(snuholderplass,snuplass).%% RS-130311 Trøbbel?
 
 synname(snuplass,endehlp). %% etc 
 synname(snuplass,endehpl).
