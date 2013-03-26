@@ -1,2 +1,3 @@
 echo 'compile(compile_busstuc4).' | sicstus
+
 chmod u+x busestuc4.sav
