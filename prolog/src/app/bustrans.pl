@@ -7542,15 +7542,16 @@ is   []
 id   not flag(fail),
      not flag(exit),
      not flag(nightbusflag),
-     atday(Day),
+     atday(_Day),
      atdate2(_DaySeqNo,DATE),
      not message(nodates),
      not message(mustknow(place)),
      not message(mustknowanother(place)),
-     not message(date_day_route(date(_YYYY,_MM,_DD),Day)),
+     not message(date_day_route(date(_YYYY,_MM,_DD),_AnyDay)),
 %%      not  timeis(_),                 %% spurte om klokka <--
      add message(date_day_route(DATE,MapDay)),
      remove atday(_),
+%%     add atday(MapDay)        %% RS-130327 Not needed when "Real routes are provided"?
      add atday(MapDay)
 ip   user:todaysdate(DATE),
      date_day_map(DATE,MapDay),
@@ -7572,6 +7573,7 @@ id   not flag(fail),
      not message(otherperiod(date(YYYY,MM,DD),_)),
      add message(date_day_route(DATE,MapDay)),
      remove atday(_),
+%%     add atday(MapDay),        %% RS-130327 Not needed when "Real routes are provided"?
      add atday(MapDay)
 ip   date_day_map(DATE,MapDay),
      \+  special_day(MapDay).

@@ -834,7 +834,7 @@ trytofool(adj/_/depressed/_/_,   thatisimpossible).
 %% trytofool(adj/_/drunk/tuc/_,     thatisimpossible).  %% :-)  
 %% trytofool(adj/_/drunk/'I'/_,     thatisnotgood). 
 trytofool(adj/_/drunk/_/_,       nodrinkonbus). 
-trytoffol(adj/_/embarrassed/tuc/_,   thatisimpossible). 
+trytofool(adj/_/embarrassed/tuc/_,   thatisimpossible). 
 trytofool(adj/_/false/_/_,       thatisimpossible). %% rough ?
 trytofool(adj/_/female/tuc/_,    thatisimpossible). 
 trytofool(adj/_/free/tuc/_,      thatisimpossible). %%  :-) 
@@ -856,8 +856,8 @@ trytofool(adj/_/lucky/tuc/_,      thatisimpossible).
 trytofool(adj/_/male/tuc/_,       thatisimpossible). 
 trytofool(adj/_/married/tuc/_,    thatisimpossible). 
 trytofool(adj/_/married/'I'/_,    cannotanswer).  
-trytofool(adj/_/stupid/_tuc/_,    thatisimpossible). 
-trytofool(adj/_/tedious/_tuc/_,   thatisimpossible).  
+trytofool(adj/_/stupid/_Tuc/_,    thatisimpossible). 
+trytofool(adj/_/tedious/_Tuc/_,   thatisimpossible).  
 
 trytofool(adj/_/wrong/tuc/_,     thatisimpossible).   %% ( er du/jeg gal)
 trytofool(adj/_/wrong/'I'/_,     thatisimpossible). 
@@ -1050,10 +1050,10 @@ trytofool(dob/hate/_/_/_,        thatisimpossible).
 trytofool(dob/hear/tuc/_/_,        thatisimpossible). %% strictly 
 
 trytofool(dob/know1/tuc/tagore/_,     thatisimpossible). %%  :-) %% Ad Hoc
-trytofool(dob/know1/tuc/(_tore,_amble)/_, thatisimpossible). 
+trytofool(dob/know1/tuc/(_Tore,_Amble)/_, thatisimpossible). 
 
 trytofool(dob/know/tuc/tagore/_,     thatisimpossible). %%  :-)
-trytofool(dob/know/tuc/(_tore,_amble)/_, thatisimpossible). 
+trytofool(dob/know/tuc/(_Tore,_Amble)/_, thatisimpossible). 
 
 
 trytofool(dob/lay/tuc/tuc/_,     thatisimpossible). 

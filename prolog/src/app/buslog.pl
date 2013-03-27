@@ -86,7 +86,7 @@ mod_day_in_set(TTP,DayX,DayCode) :- %% example, May 1=sunday route
     number(DayX),                   %% not separate module
     number(DayCode),
     seqno_day(TTP,DayX,_May1,XN),
-    !,                              %% SDay route !
+%%    !,                              %% SDay route !   %%RS-130327, Try new (backup) Regime below?
     TTP:dko(DayCode,_,_,_,_,_,_,MASK),
     atom(MASK), %% string '01' for whole period
     charno(XN,MASK,'1'). %% utility.pl
@@ -1054,7 +1054,7 @@ numberof(_,Set,Length) :-
 
 
 
-departure(Bus,Place,Day,DepSet) :- % Alle dag bussavganger ved en stasjon
+departure(Bus,Place,Day,DepSet) :- % Alle dag-bussavganger ved en stasjon
 	unbound(Bus),
    \+   value(nightbusflag,true),  % NOT Nightbus query
    \+   value(airbusflag,true),    %% TA-090331
@@ -1063,7 +1063,7 @@ departure(Bus,Place,Day,DepSet) :- % Alle dag bussavganger ved en stasjon
    setdepMOD(TTP,Place,Day,DepSet1),      %%
    set_filter(X,day_route(X),DepSet1,DepSet).
 
-departure(Bus,Place,Day,DepSet) :- % Alle natt bussavganger ved en stasjon
+departure(Bus,Place,Day,DepSet) :- % Alle natt-bussavganger ved en stasjon
 	unbound(Bus),
    value(nightbusflag,true),      % Nightbus query
   \+   value(airbusflag,true),     %% TA-090331

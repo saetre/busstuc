@@ -3,7 +3,7 @@
 %% SYSTEM BUSSTUC
 %% AUTHOR J.Bratseth
 %% CREATED JB-970312
-%% REVISED EH-031121 TA-110824
+%% REVISED EH-031121 TA-110824 RS-130327
 
 %% Bussrute database tilpasning PLACES in TRONDHEIM
 
@@ -33,16 +33,16 @@
         create_named_dates/0,      % RS-120402
         cutloop_station/2,
 
-        date_day_map/2,            % RS-120402
-        dedicated_date/1,          % RS-120402
-        disallowed_night/1,        % (DATE)
+%        date_day_map/2,            % RS-120402         Moved to timedat
+%        dedicated_date/1,          % RS-120402         Moved to timedat
+%        disallowed_night/1,        % (DATE)            Moved to timedat???
         default_destination/2,     % (ROUTE,STATION)
 
         endneighbourhood/2,        % (ROUTE,PLACE)
         exbus/1,                   % (ROUTE)
         exbusname/2,               % (ROUTE,ROUTE)
         explicit_part_name/1,      % (NAME)
-        extraallowed_night/2,      % RS-120402
+%        extraallowed_night/2,      % RS-120402 %% Moved to timedat?
 
         fromstationonly/1,         % (STATION)
         home_town/1,               % (PLACE)
@@ -60,7 +60,7 @@
         nostationfor/1,            % (PLACE)
         nostationfor1/1,           % (PLACE)
         
-        orig_named_date/2,         % RS-120402
+%        orig_named_date/2,         % RS-120402
 
         preferred_transfer/5,
         railway_station/1,
@@ -82,18 +82,10 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%:- ensure_loaded( '../declare' ).
-:- ensure_loaded( user:'../utility/utility' ).       %% RS-120402       %% for(X,Y)
-:- ensure_loaded( user:'../utility/datecalc' ).      %% RS-120402       %% add_days/3, sub_days/3, easterdate/2, this_year/1, todaysdate/1 
-
-%:- use_module( '../interfaceroute', [ domain_module/2 ] ). %% HEAVY DB!
-:- user:ensure_loaded( '../interfaceroute' ). %% [ domain_module/2 ]    %% HEAVY DB!
-%
 %:- use_module( 'places', [ corr/2, foreign/1, isat/2, placestat/2 ] ).
 :- user:ensure_loaded( 'places' ). %% [ corr/2, foreign/1, isat/2, placestat/2 ] ).
 
 %:- ensure_loaded( [ regbusall, regcompstr, regstr, teledat2 ] ). %% HEAVY DB!
-%%%%%%
 :- ensure_loaded( regbusall ). %, [ nightbus/1 ] ). %% HEAVY DB!    %% RS-120803 %% Use buslog.pl instead!
 %%This used to be done from topreg? (Should be done from topreg::makeauxtable?)
 
@@ -104,11 +96,22 @@
 %:- use_module( '../app/buslog', [ bound/1, bus/1, station/1 ] ).               %% RS-130210
 :- user:ensure_loaded( '../app/buslog' ) . %% [ bound/1, bus/1, station/1 ] ).  %% keep user: until modules are fixed
 
+:- user:ensure_loaded( '../db/timedat' ) . %% [ bound/1, bus/1, station/1 ] ).  %% keep user: until modules are fixed
+
+%:- use_module( '../interfaceroute', [ domain_module/2 ] ). %% HEAVY DB!
+:- user:ensure_loaded( '../interfaceroute' ). %% [ domain_module/2 ]    %% HEAVY DB!
+
+%
 %:- use_module( '../tuc/names', [ abroad/1, community/2, country/1 ] ).
 :- user:ensure_loaded( '../tuc/names' ). %% [ abroad/1, community/2, country/1 ] ).
 
+
+:- ensure_loaded( user:'../utility/utility' ).       %% RS-120402       %% for(X,Y)
+:- ensure_loaded( user:'../utility/datecalc' ).      %% RS-120402       %% add_days/3, sub_days/3, easterdate/2, this_year/1, todaysdate/1 
+
 %:- use_module( '../utility/utility', [ testmember/2 ] ).
 :- user:ensure_loaded( '../utility/utility' ). %% [ testmember/2 ] ).
+
 %%testmember(Member, Group/List) %%RS-130210
 testmember(Member, List) :-
         user:testmember(Member, List).
@@ -116,8 +119,8 @@ testmember(Member, List) :-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:-volatile named_date/2. %% Created Initially 
-:-dynamic named_date/2. %% Created Initially 
+%:-volatile named_date/2. %% Created Initially 
+%:-dynamic named_date/2. %% Created Initially 
 
 tram_module( r1630_111201 ).
 
@@ -127,7 +130,7 @@ station(X) :-
         user:station(X). %% RS-130210 --> '../app/buslog'
 
 create_named_dates :-
-    list_of_named_dates(L), 
+    user:list_of_named_dates(L), 
     user:for((member(A,L),orig_named_date(A,B)),
          remember(named_date(A,B))). %% To be     refined
 
@@ -198,301 +201,6 @@ cutloop_station(66,stokkhaugen). %% TA-110824 charlottenlund_krk).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%  TIME  SECTION %%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% BEGIN  CRITICAL SECTION 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% DATES THAT MUST BE CHECKED ON EACH NEW ROUTE PLAN
-
-
-% orig_named_date is defined here, and later recreated as named_date
-
-list_of_named_dates([
-    new_years_eve,
-    new_years_day,
-    palm_sunday,
-    palm_monday,
-    palm_tuesday,
-    palm_wednesday,
-    maundy_thursday,
-    good_friday,
-    eastereve,
-    easterday,
-    easterday2,
-    ascension_day,
-    whitsun_eve,
-    whitsun_day, 
-    whitsun_day2, 
-
-    may1,    
-    may17,      
-
-%   vernal_equinox, 
-%   autumnal_equinox, 
-%   summer_solstice,
-%   winter_solstice,
-
-    midsummer_eve, 
-    midsummer_day, 
-
-    little_christmas_eve,
-    christmas_eve,           
-
-    christmas_day, 
-
-    john_f_kennedy_day, 
-    oddvar_brå_day, 
-    arvid_holme_day, 
-    dooms_day]).
-
-
-
-%%% DATES NAMED BY EVENTS  :-)
-
-
-orig_named_date(john_f_kennedy_day,   date(1963,11,22)).  
-orig_named_date(oddvar_brå_day,       date(1982,02,25)).  
-orig_named_date(arvid_holme_day,      date(2011,01,17)).  
-orig_named_date(dooms_day,            date(2012,12,21)). %% :-) %% TA-100323|      date(10000,01,01)). 
-
-%% Named dates
-
-orig_named_date(new_years_eve,date(YYYY,12,31)) :- %% Nyttårsaften& januar  -> i fjor
-     user:todaysdate(date(YYY1,01,_)),
-     YYYY is YYY1 -1,
-     !.
-orig_named_date(new_years_eve,date(YYYY,12,31)) :- %% Nyttårsaften i år
-     user:this_year(YYYY),
-     !.
-
-orig_named_date(new_years_day,date(YYYY,01,01)):- %% january -> this year
-    user:todaysdate(date(YYYY,01,_)),
-    !.
-orig_named_date(new_years_day,date(YYY1,01,01)):- %% all other todays date 
-     user:this_year(YYYY),
-     YYY1 is YYYY+1,
-     !.
-
-orig_named_date(easterday,         ED):- %% datecalc
-    user:this_year(YYYY),
-    user:easterdate(YYYY,ED).
-
-orig_named_date(palm_sunday, ND ) :- 
-    user:this_year(YYYY),
-    user:easterdate(YYYY,ED),
-    user:sub_days(ED,7, ND).
-
-orig_named_date(palm_monday,   ND) :- %% Pro forma
-    user:this_year(YYYY),
-    user:easterdate(YYYY,ED),
-    user:sub_days(ED,6, ND).
-
-orig_named_date(palm_tuesday,  ND) :- %% Pro forma
-    user:this_year(YYYY),
-    user:easterdate(YYYY,ED),
-    user:sub_days(ED,5, ND).
-
-orig_named_date(palm_wednesday,   ND) :- 
-    user:this_year(YYYY),
-    user:easterdate(YYYY,ED),
-    user:sub_days(ED,4, ND).
-
-orig_named_date(maundy_thursday,   ND) :- %% skjærT NOT monday  
-    user:this_year(YYYY),
-    user:easterdate(YYYY,ED),
-    user:sub_days(ED,3, ND).
-
-orig_named_date(good_friday,    ND) :-
-    user:this_year(YYYY),
-    user:easterdate(YYYY,ED),
-    user:sub_days(ED,2, ND).
-
-orig_named_date(eastereve,    ND) :-    
-    user:this_year(YYYY),
-    user:easterdate(YYYY,ED),
-    user:sub_days(ED,1, ND).
-
-orig_named_date(easterday2,     ND) :- %% 2. påskedag 
-    user:this_year(YYYY),
-    user:easterdate(YYYY,ED),
-    user:add_days(ED,1, ND).
-
-orig_named_date(ascension_day,   ND) :- %% Krhf 
-    user:this_year(YYYY),
-    user:easterdate(YYYY,ED),
-    user:add_days(ED,39,ND).
-
-
-orig_named_date(whitsun_eve, ND):-    %% pinseaften
-    user:this_year(YYYY),
-    user:easterdate(YYYY,ED),
-    user:add_days(ED,48,ND).
-
-orig_named_date(whitsun_day,   ND):-   %% pinsedag
-    user:this_year(YYYY),
-    user:easterdate(YYYY,ED),
-    user:add_days(ED,49,ND).
-
-
-orig_named_date(whitsun_day2,  ND):-       %% 2. pinsedag
-    user:this_year(YYYY),
-    user:easterdate(YYYY,ED),
-    user:add_days(ED,50,ND).
-
-
-orig_named_date(little_christmas_eve,date(YYYY,12,23)):- 
-      user:this_year(YYYY).
-
-orig_named_date(christmas_eve,     date(YYYY,12,24)):- user:this_year(YYYY).
-orig_named_date(christmas_day,     date(YYYY,12,25)):- user:this_year(YYYY).
-
-%% orig_named_date(vernal_equinox,    date(YYYY,03,21)):- user:this_year(YYYY). 
-%% orig_named_date(autumnal_equinox,  date(YYYY,09,21)):- user:this_year(YYYY).
-
-orig_named_date(midsummer_eve,     date(YYYY,06,23)):- user:this_year(YYYY). 
-orig_named_date(midsummer_day,     date(YYYY,06,24)):- user:this_year(YYYY). 
-
-orig_named_date(may1,              date(YYYY,05,01)):- user:this_year(YYYY). 
-
-orig_named_date(may17,             date(YYYY,05,17)):- user:this_year(YYYY). 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% END OF CRITICAL SECTION 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
-%% SPECIAL DATES FOR NIGHTBUS
-
-%% SEE busanshp.pl for correct default messages !!!
-
-
-
-%% extraallowed_night(DATE,DAY). 
-%% NIGHTBUS GOES extra, even if not sat-sun, following routes of DAY (pro forma)
-extraallowed_night(date(9999,12,31),saturday). %% Just at least1
-extraallowed_night(date(2009,04,12),saturday).  %%  Påskedag om morgenen 
-
-
-%% if DAY=nil, it means NO nightbus routes at all in module,
-
-%% disallowed_night(DATE)  
-%% NIGHTBUS does not go even if sat-sun
-
-%  JUST standard answer (misfjord rule: NB May vary)
-
-%% ADJUSTMENT NIGHTBUS Holidays
-
-%% disallowed_night(date(9999,12,31)).    %% Just at least 1
-
-disallowed_night(date(2011,04,23)).  %% natt til påskeaften %% TA-110426
-
-%% CHRISTMAS
-
-%% Extrallowed
-
-%% none in 2008 ( "extra night to 3. X day is actually Saturday)
-
-
-%% Disallowed    Days  sat-sun  without nightbus
-
-%% none 
-
-
-%% EASTER 
-
-disallowed_night(date(2009,04,13)).  %%  Påskeaften om morgenen 
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-%% Dedicated Date
-%% Example   22.10 not clock if 22.10 is date of new route tables
-
-
-%% dedicated_date(date(YYYY,05,17)):- user:this_year(YYYY). %% Suspended ved gløshaugen før 17.05 
-dedicated_date(date(YYYY,12,24)):- user:this_year(YYYY).
-
-%% dedicated_date(date(2006,06,19)). %% Check %% summer route
-
-
-
-%% Special dates that run a specific day route
-%% holiday means special route
-
-
-%% VARIABLE DATES
-
-
-%% DATE_DAY_MAP    
-
-%% Maps dates to day, when this is different from the actual day
-%% and not covered by route module (as. f.ex.  christmas  2010)
-%% 
-%% e.g sunday route, BUT only sunday route OF the same route module
-%% e.g. 2. juledag 2010 was coverd by a separate datamodule but also declared sunday route,
-%% However, there was no sunday day code in THAT module.
-
-
-%% Easter week may have a separate module, NOT 2011!
-%% Mon-Wed in easter are saturday routes (+ extra departures?)
-%% These are ad hoc definitions 
-
-
-%%%  Easter (2011), no own schedule
-
-date_day_map(Date,   saturday):-       %% stille uke
-     named_date(palm_monday,Date).     %% palmemandag
-
-date_day_map(Date,   saturday):-       %% stille uke
-     named_date(palm_tuesday,Date).    %% palmetirsdag
-
-date_day_map(Date,   saturday):-       %% stille uke
-     named_date(palm_wednesday,Date).  %% palmeonsdag
-
-date_day_map(Date,   sunday):-        
-     named_date(maundy_thursday,Date). %% skjærtorsdag
-
-date_day_map(Date,   sunday):-  
-     named_date(good_friday,Date).     %% langfredag
-
-date_day_map(Date,  sunday):-         
-     named_date(eastereve,Date).       %% påskeaften
-
-date_day_map(Date,  sunday):-          
-     named_date(easterday,Date).       %% 1. påskedag
-
-date_day_map(Date,  sunday):-  
-     named_date(easterday2,Date).      %% 2 Påskedag 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-date_day_map(date(_Y20XX,05,01), sunday).   % 1.mai Fix, NOT separate route module
-
-date_day_map(date(_Y20XX,05,17),   may17).  %% OWN route module %% TA-110518
-
-date_day_map(Date,  sunday):-     %  KrHf- %% NOT OWN route module
-     named_date(ascension_day,Date),
-     \+ named_date(may17,Date).   
-
-date_day_map(Date,  sunday):-  named_date(whitsun_day,Date).    %  1. pinsedag 
-  
-date_day_map(Date,  sunday):-  named_date(whitsun_day2,Date).   %  2. pinsedag
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 
 

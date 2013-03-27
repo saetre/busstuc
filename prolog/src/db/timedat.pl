@@ -3,7 +3,7 @@
 %% SYSTEM BUSSTUC
 %% AUTHOR J.Bratseth
 %% CREATED TA-110207
-%% REVISED TA-110207
+%% REVISED TA-110207    RS-130325
 
 %% Time data for bus routes in general
 
@@ -12,6 +12,7 @@
 
 %* List of predicates
 
+:-volatile named_date/2. %% Created Initially, redefined with remember(day_map) below
 :-dynamic named_date/2. %% Created Initially 
 
 create_named_dates :-
@@ -191,7 +192,6 @@ orig_named_date(may17,             date(YYYY,05,17)):- this_year(YYYY).
 %% Dedicated Date
 %% Example   22.10 not clock if 22.10 is date of new route tables
 
-
 %% dedicated_date(date(YYYY,05,17)):- this_year(YYYY). %% Suspended ved gløshaugen før 17.05 
 dedicated_date(date(YYYY,12,24)):- this_year(YYYY).
 
@@ -201,6 +201,52 @@ dedicated_date(date(YYYY,12,24)):- this_year(YYYY).
 
 %% Special dates that run a specific day route
 %% holiday means special route
+
+% ¤ EXTRAALLOWEDNIGHT   (DATE, KINDOFDAY)
+%% Nightbus goes after midnight on this date despite rule.
+%% The route plan is the same as on KINDOFDAY.
+% Example:
+% busdat:extraallowed_night(date(2009,04,12),saturday). 
+:- volatile busdat:extraallowed_night/2.
+:- dynamic busdat:extraallowed_night/2.
+
+
+%% SPECIAL DATES FOR NIGHTBUS
+
+%% SEE busanshp.pl for correct default messages !!!
+
+%% extraallowed_night(DATE,DAY). 
+%% NIGHTBUS GOES extra, even if not sat-sun, following routes of DAY (pro forma)
+%% if DAY=nil, it means NO nightbus routes at all in module,
+
+%% ADJUSTMENT NIGHTBUS Holidays
+%%extraallowed_night(date(9999,12,31),saturday). %% Just at least1
+extraallowed_night(date(2009,04,12),saturday).  %%  Påskedag om morgenen 
+
+% ¤ DISALLOWED_NIGHT (DATE)
+%% Nightbus does not go  (after midnight) on this date despite rules.
+%% NIGHTBUS does not go even if sat-sun
+% Example: 
+% disallowed_night (date(2009,04,13))
+%:- volatile disallowed_night/1.
+%:- dynamic disallowed_night/1.
+
+%  JUST standard answer (misfjord rule: NB May vary)
+%% disallowed_night(date(9999,12,31)).    %% Just at least 1
+
+%% EASTER 
+disallowed_night(date(2009,04,13)).  %%  Påskeaften om morgenen 
+disallowed_night(date(2011,04,23)).  %% natt til påskeaften %% TA-110426
+
+%% CHRISTMAS
+%% Extrallowed
+
+%% none in 2008 ( "extra night to 3. X day is actually Saturday)
+
+%% Disallowed    Days  sat-sun  without nightbus
+%% none 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %% VARIABLE DATES
@@ -225,27 +271,24 @@ dedicated_date(date(YYYY,12,24)):- this_year(YYYY).
 %% These are ad hoc definitions %% TA-100106
 
 
-%%%  NOT valid 2011, own schedule
+%%%  NOT valid 2011-20xx, own schedules for easter
 %%
-% date_day_map(Date,  sunday):-  
-%     named_date(easterday2,Date).   %% 2 Påskedag Ad Hoc
-%
-% date_day_map(Date,   saturday):-   %% ad hoc
-%     named_date(palm_monday,Date).
-%
-%
-% date_day_map(Date,   saturday):-   %% ad hoc
-%     named_date(palm_tuesday,Date).
-%
-%
-% date_day_map(Date,   saturday):-   %% ad hoc
-%     named_date(palm_wednesday,Date).
+ date_day_map(Date,  sunday):-  
+     named_date(easterday2,Date).   %% 2 Påskedag Ad Hoc
+
+ date_day_map(Date,   saturday):-   %% ad hoc
+     named_date(palm_monday,Date).
+
+
+ date_day_map(Date,   saturday):-   %% ad hoc
+     named_date(palm_tuesday,Date).
+
+
+ date_day_map(Date,   saturday):-   %% ad hoc
+     named_date(palm_wednesday,Date).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
-
-date_day_map(date(_20XX,05,01), sunday).   % 1.mai Fix, NOT separate route module
+date_day_map(date(_Y20XX,05,01), sunday).   % 1.mai Fix, NOT separate route module
 
    %% date_day_map(date(_20XX,05,17),   holiday).  %% OWN route module
 
@@ -373,7 +416,7 @@ kindofday(easterhol,easterhol).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-clock_delay(00,00,00). %%  FOR CLOCK ADJUSTMENT
+clock_delay(00,00,00). %%  FOR CLOCK ADJUSTMENT, e.g. Santa Barbara? %% RS-130325
 
 
 hours_delay(0).    %% Time in Trondheim is 0 hours more than server clock

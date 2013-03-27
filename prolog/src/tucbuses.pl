@@ -5,7 +5,8 @@
 %% REVISED TA-110303
 
 :- ensure_loaded( sicstus4compatibility ). %, [ get0/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
-:- use_module( 'db/busdat', [ clock_delay/3 ] ). %%, named_date/2 ]).
+%% :- use_module( 'db/busdat', [ clock_delay/3 ], named_date/2 ]). %% moved to timedat.pl 
+                                                                      %%  EASTER DATES AND OTHERS %% RS-130325
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
