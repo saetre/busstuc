@@ -363,10 +363,10 @@ appendfiles(A,B,C):-
     set_output(Stream),
     see(A),
     proclaim,
-    seen,
+    (seen),
     see(B),
     proclaim,
-    seen,
+    (seen),
     told.       %% RS-121121
 
 
@@ -853,7 +853,7 @@ psl(S,L):-
     told,
     see('tore_amble.e'),
     read_in(L),
-    seen.
+    (seen).
 
 
 remember(F):-F,!;assert(F).
