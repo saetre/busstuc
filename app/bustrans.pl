@@ -11,6 +11,8 @@
                 ]) .
 
 :- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
+%%:- ensure_loaded('../db/timedat'). %% RS-111213 General (semantic) Operators Moved (back) to busdat
+
 
 % Transformation rules for the bus domain
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

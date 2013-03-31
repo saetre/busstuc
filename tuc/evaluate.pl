@@ -264,19 +264,10 @@ included(X,Z):-
 included(X,X). % Outside in
 
 %%
-winstant(_,X,T):-     
-     var(X), 
-     testclass(T),
-     !.  %% X= ' not listable '. 
-
 instant(X,T):-     
      var(X), 
      testclass(T),
      !.  %% X= ' not listable '. 
-
-%%
-winstant(W,X,C):-  
-    fact((isa)/W/C/X).
 
 instant(X,C):-  
     fact(X isa C).
@@ -286,6 +277,15 @@ instant(X,Z) :- % bottom up
     (Y ako Z), 
     instant(X,Y).
  
+
+%%
+winstant(_,X,T):-     
+     var(X), 
+     testclass(T),
+     !.  %% X= ' not listable '. 
+
+winstant(W,X,C):-  
+    fact((isa)/W/C/X).
 
 winstant(W,X,Z) :- 
      nonvar(Z),     %% TA-040309

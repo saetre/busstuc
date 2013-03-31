@@ -7,13 +7,22 @@
 
 %% Main program for BussTUC
 
-:- ensure_loaded('declare'). %% RS-111213 General (semantic) Operators
+:- ensure_loaded('declare'). %% RS-111213  General (semantic) Operators
+:- ensure_loaded('tucbuses'). %% RS-130329 Make sure modules are available: dcg_module, 
 
 :-use_module(library(timeout)). 
 :-use_module(library(process)).
 % ?-prolog_flag(gc_trace,_,verbose).
 
 %% Main program
+
+:-volatile webstat/3,  % webstat(date(2009,04,21),#sms,#tot).
+
+          txt/3,      % elementary words
+          ctxt/3,     % composite words 
+          maxl/1,     % number  of words
+
+          gps_origin/2 . %% TA-110127
 
 :-dynamic webstat/3.  % webstat(date(2009,04,21),#sms,#tot).
 
@@ -263,13 +272,14 @@ jettyrun(S)  :- %% This was gone so I reimplemented it. %% TE-120207
         reset_period, %% ---> topreg.pl
         psl(S,L),
         L = [File|L1],
-        tell(File),   %% RS-121121
-        %%open(File,write,Stream,[encoding('UTF-8')]),
-        %%set_output(Stream),
+        %%tell(File),   %% RS-121121
+        open(File,write,Stream,[encoding('UTF-8')]),   %% RS-121121
+        set_output(Stream),
         
         splitlang(L1,L2),
         (process(L2);true), % Process always fails...
-        !.
+        !,
+        told.
 
 
 dialog :-  

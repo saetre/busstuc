@@ -66,7 +66,7 @@ makegram(Lang):-
         writeheading,
         write('%% Automatically created by tuc/metacomp.pl, based on dict and tuc/gram_...'),nl,nl,
         write(':- ensure_loaded(declare). %% RS-111213 General (semantic) Operators'),nl,nl,
-        write('%% :- prolog_flag(discontiguous_warnings,_,off).'),nl,nl,
+        write(':- prolog_flag(discontiguous_warnings,_,off).'),nl,nl,
 
         gram_module(Lang,G),
         for((G: (X ---> Y)), genprod(X,Y)),
@@ -80,7 +80,7 @@ makegram(Lang):-
         writeheading,
         write('%% Automatically created by metacomp.pl, based on dict and tuc/gram_...'),nl,nl,
         write(':- ensure_loaded(declare). %% RS-111213 General (semantic) Operators'),nl,nl,
-
+        write(':-prolog_flag(discontiguous_warnings,_,off). %% RS-130331 Shoganai, kana?'),nl,nl,
         for(optiprod(MP), genprod(optional(MP),(MP,!))),
 
         prite((optional(_,[],X,X) -->[])), 

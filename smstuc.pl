@@ -9,10 +9,10 @@
 
 ?-nodebug.      %% RS-120416, To speed up things
 
-?- %%[sicstus4compatibility],   %% Only used in drucke_baum
+%% ?-[sicstus4compatibility],   %% Only used in drucke_baum
 
-   ['tucsms.pl'],
-   ['busroute.pl'].
+?-   ['tucsms.pl'].
+?-   ['busroute.pl'].
  
 
 

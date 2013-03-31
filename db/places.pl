@@ -167,6 +167,9 @@ isat(haakon_vii_gate_29,haakon_vii_gate).
 isat(haakon_vii_gate_29,haakon_vii_gate). 
 isat(haakon_vii_gate_9,haakon_vii_gate). 
 isat(haakon_vii_gate_9,haakon_vii_gate). 
+
+isat(haukåsen,haukåsen).  %% RS-130330, hva skjer her?
+
 isat(heggstadmoen_2,heggstadmoen). 
 isat(heggstadmoen_4,heggstadmoen). 
 isat(heimdal_sentrum,heimdal). 
@@ -252,6 +255,8 @@ isat(trollahaugen_46,trollahaugen).  %% 11->trollahaugen 64,75->trolla
 isat(trondheim_s_10,ts). %% SUMMER %% TA-110627
 isat(trondheim_s_11,ts). %%
 isat(trondheim_s_13,ts). %%
+
+isat(tvetestien,cecilienborg).  %% RS-130330, Cecilienborg finnes ikke lenger?
 
 isat(tyholt,tyholt).  %% Hvilke holdeplasserer på tyholt?
 
@@ -393,7 +398,7 @@ placestat(bytorget,torget).  %%avoidhplnærtorgetertorget
 placestat(byåsen_videregående_skole,migosenteret). %% byåsen_videregående_skole neibourhood
 
 placestat(cathedral,prinsen_kinosenter). 
-placestat(ceciliebrua,cecilienborg). 
+placestat(ceciliebrua,tvetestien). 
 placestat(charlottenlund_skole,churchills_veg).  %% Ungdomsskole/Videregående?
 placestat(charlottenlund_videregående,brundalen_skole). 
 %% placestat(charlottenlundbanen,churchills_veg).
@@ -401,7 +406,7 @@ placestat(charlottenlundhallen,churchills_veg).
 placestat(charlottenlundhallen,tunvegen).  %% Tunveien18B,Jakobsli
 placestat(chr_eggens_veg,bjarne_ness_veg). 
 placestat(church,prinsen_kinosenter). 
-placestat(cicilliebrua,cecilienborg). 
+placestat(cicilliebrua,tvetestien). 
 placestat(city_hall,prinsen_kinosenter). 
 placestat(dalen,dalen_hageby). 
 placestat(dalenhageby,dalen_hageby). 
@@ -493,11 +498,11 @@ placestat(heimdalsentrum,heimdal_sentrum).
 placestat(hoeggen,hoeggen_skole). 
 placestat(holtermannsveien,valøyvegen). 
 placestat(horneberg,hornebergvegen). 
-placestat(hospitalløkka,hospitalkirka). 
-placestat(hospitalløkkan,hospitalkirka). 
-placestat(hospitalløkken,hospitalkirka). 
-placestat(hospitalsløkkan,hospitalkirka). 
-placestat(hospitalsløkka,hospitalkirka). %% hospitalslokka 
+placestat(hospitalløkka,hospitalskirka). 
+placestat(hospitalløkkan,hospitalskirka). 
+placestat(hospitalløkken,hospitalskirka). 
+placestat(hospitalsløkkan,hospitalskirka). 
+placestat(hospitalsløkka,hospitalskirka). %% hospitalslokka 
 
 %% placestat(hostel,sig_berg_alle). %% * P-hotels %% TA-101202
 placestat(hurtigbåten,pirbadet). 
@@ -600,7 +605,7 @@ placestat(lundhøgda,lundåsen_n).
 placestat(lærerhøgskole,rotvoll_nedre). 
 placestat(lærerhøgskolen,rotvoll_nedre). 
 placestat(mamoz,fiolsvingen). %% nardo_street-16). 
-placestat(marineborgstasjon,marienborg). 
+placestat(marineborgstasjon,marienborg_stasjon).       %% RS-130330. Marienborg er utgått 
 placestat(marinen,prinsen_kinosenter). 
 placestat(mediahuset,maskinagentur). 
 
@@ -749,7 +754,7 @@ placestat(rotvollfjæra,rotvoll).  %%?
 placestat(rønning,rønningsbakken). 
 placestat(rådhuset,torget). 
 
-placestat(sandgata,hospitalkirka). 
+placestat(sandgata,hospitalskirka). 
 placestat(sandmoencamping,sandmoen). 
 placestat(saupstad,saupstadsenteret). 
 placestat(saupstadkrysset,saupstadsenteret).  %%?
@@ -798,12 +803,12 @@ placestat(stavnebro,stavnebrua).
 
 placestat(steinandalsvegen,steindalsvegen). 
 placestat(steinanstudentby,vestlia). 
-placestat(steinanv,hegdalen). 
-placestat(steinanvegen,hegdalen). 
-placestat(steinanveien,hegdalen). 
+placestat(steinanv,heggdalen). 
+placestat(steinanvegen,heggdalen). 
+placestat(steinanveien,heggdalen). 
 placestat(steinberget,møllebakken). 
 placestat(steindal,steindalsvegen).  %%<--???
-placestat(steindalen,hegdalen). 
+placestat(steindalen,heggdalen). 
 placestat(stiftsgården,hovedterminalen). 
 
 placestat(stokkanhaugen,stokkhaugen).  %% SUMMER  %% TA-110627
@@ -814,7 +819,7 @@ placestat(sunnland,karl_jonssons_veg).  %%sunnlandskole
 placestat(sunnlandskole,karl_jonssons_veg). 
 placestat(svartlamon,strandveien).  %% NB veien
 placestat(sverresborg,trøndelag_folkemuseum). 
-placestat(sykehusbrua,cecilienborg). 
+placestat(sykehusbrua,tvetestien). 
 %% placestat(sykehuset,st_olavs_hospital).  %% causes trouble sykehuset st olav
 placestat(sykepleierhøgskolen,st_olavs_hospital). 
 placestat(sykepleierhøyskolen,st_olavs_hospital). 
@@ -870,7 +875,7 @@ placestat(veitrafikktilsynet,e_verket).
 placestat(verdensteatret,prinsen_kinosenter). 
 placestat(vestoppfarten,møllebakken). 
 placestat(vikåsenhallen,markaplassen_skole). 
-placestat(vitenskapsmuseet,hospitalkirka).  %%  \+s
+placestat(vitenskapsmuseet,hospitalskirka).  %%  \+s
  %% placestat(voldsminde,mellomv_5).  
  %% placestat(voldsmindet,mellomv_5). 
 placestat(voll,voll_studentby). 
@@ -1136,17 +1141,17 @@ sameplace(havstadsetnret,havstadsenteret).
 sameplace(havsteinsenter,havstadsenteret). 
 sameplace(havsteinsenteret,havstadsenteret). 
 sameplace(hegdalringen,heggdalsringen). 
-sameplace(heggdal,hegdalen). 
-sameplace(heggdalen,hegdalen). 
-sameplace(heggelia,hegdalen). 
-sameplace(heggelien,hegdalen). 
-sameplace(hegglia,hegdalen). 
+sameplace(heggdal,heggdalen). 
+sameplace(hegdalen,heggdalen). 
+sameplace(heggelia,heggdalen). 
+sameplace(heggelien,heggdalen). 
+sameplace(hegglia,heggdalen). 
 sameplace(heggstadmo,heggstadmoen). 
 
 sameplace(heggstamyra,heggstadmyra). %%hegstamyra heggstmyra 
 
-sameplace(heglia,hegdalen). 
-sameplace(heglidalen,hegdalen). 
+sameplace(heglia,heggdalen). 
+sameplace(heglidalen,heggdalen). 
 sameplace(hegmoen,heggstadmoen). 
 sameplace(hegstamoen,heggstadmoen). 
 sameplace(hekstadmoen,heggstadmoen).
@@ -1158,13 +1163,13 @@ sameplace(holtermannsveg,holtermannsveien).
 sameplace(holtermannsvei,holtermannsveien). 
 sameplace(holtermanveg,holtermannsveien).  %%Nofunk
 sameplace(hoppbakken,granåsen_vm_anlegget). 
-sameplace(hopsitalskirka,hospitalkirka). 
-sameplace(hopstilkirka,hospitalkirka). 
+sameplace(hopsitalskirka,hospitalskirka). 
+sameplace(hopstilkirka,hospitalskirka). 
 sameplace(hospitalet,st_olavs_hospital). 
-sameplace(hospitalkirken,hospitalkirka). 
-sameplace(hospitalskirka,hospitalkirka). 
-sameplace(hospitalskirka,hospitalkirka).  %%NB
-sameplace(hosptialskirka,hospitalkirka).  %%
+sameplace(hospitalkirken,hospitalskirka). 
+sameplace(hospitalskirka,hospitalskirka). 
+sameplace(hospitalkirka,hospitalskirka).  %%NB
+sameplace(hosptialskirka,hospitalskirka).  %%
 
 sameplace(hosptalsløkka,hospitallløkka). %% +  hosptalslokka 
 
@@ -1935,7 +1940,7 @@ specname(heimdal_sentrum,'Heimdal sentrum'). %%  week 33/34?
 %% specname(henrik_ourens_vei,'Henrik Ourens vei').  %% (extra dot in reghpl) EH-030616
 specname(hist,'HIST').  %% (IKKE Hist!)
 specname(hjalmar_johansens_vei,'Hjalmar Johansens vei'). 
-specname(hospitalkirka,'Hospitalskirka').  %%(Rutehefte)
+specname(hospitalskirka,'Hospitalskirka').  %%(Rutehefte)
 specname(hotel,'Hotel'). 
 specname(hotell,'Hotell'). 
 specname(hovedterminalen,'Sentrumsterminalen').  %% // Political decision
@@ -2955,7 +2960,7 @@ synplace(hornebyveien,hornebergveien).  %% ?
 synplace(hornæs,thornæs). 
 synplace(hosp,hospital). 
 %% synplace(hospital,regionsykehuset).  %% (anglicism) 
-synplace(hospitalskyrkan,hospitalkirka). 
+synplace(hospitalskyrkan,hospitalskirka). 
 synplace(hospitalsløkkan,hospitalløkkan). 
 synplace(hostipalløkka,hospitalløkkan). 
 synplace(hostipalsløkka,hospitalløkkan). 
@@ -6239,12 +6244,12 @@ cmpl(hoeggen,kirke,sollia).
 cmpl(holtermanns,gate,holtermannsveien). 
 cmpl(holtermanns,veg,holtermannsveien). 
 cmpl(holtermanns,vei,holtermannsveien). 
-cmpl(hospital,kirka,hospitalkirka).  %% NB hospital<> i rutedb 
-cmpl(hospital,kirken,hospitalkirka). 
-cmpl(hospitals,kirka,hospitalkirka). 
-cmpl(hospitals,kirken,hospitalkirka). 
+cmpl(hospital,kirka,hospitalskirka).  %% NB hospital<> i rutedb 
+cmpl(hospital,kirken,hospitalskirka). 
+cmpl(hospitals,kirka,hospitalskirka). 
+cmpl(hospitals,kirken,hospitalskirka). 
 cmpl(hospitals,løkkan,hospitalsløkkan). 
-cmpl(hospitalsløkkan,kirke,hospitalkirka).
+cmpl(hospitalsløkkan,kirke,hospitalskirka).
 
 cmpl(royal,[garden,hotell],royal_garden).   %% Flybuss 
   cmpl(hotell,[royal,garden],royal_garden). 
@@ -7587,14 +7592,14 @@ cmpl(stavset,senteret,stavset_senter).
 
 cmpl(steinan,[stud,by],vestlia). 
 cmpl(steinan,[student,by],vestlia). 
-cmpl(steinan,[veien,14],hegdalen). 
+cmpl(steinan,[veien,14],heggdalen). 
 
 cmpl(steinan,[student,village],'Steinan studentby'). 
 
 cmpl(steinan,studentby,'Steinan studentby'). 
 %% cmpl(steinan,studentbyen,vestlia). %% destroys 'Steinan studentby'
 cmpl(steinan,vestlia,vestlia). 
-cmpl(steinanv,14,hegdalen). 
+cmpl(steinanv,14,heggdalen). 
 cmpl(steinanveien,14,steinanveien). 
 cmpl(steindal,skole,hoeggen_skole). 
 cmpl(steindalskole,[],hoeggen_skole).  %% TA-110121

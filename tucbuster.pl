@@ -8,11 +8,12 @@
 
 %% Compiles all  the necessary files.
 
-%% Based on  database/busroute.pl is compiled
+%% Based on:  database/busroute.pl is compiled
 
 %%%%%% ?-prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates %% TA-031106
 
 
+:-volatile lastday/2 . %% RS-130331
 :-dynamic lastday/2 . %% TA-050723
 
 

@@ -14,7 +14,7 @@
 %                 tucbuss (norwegian)
 
 
-:-prolog_flag(discontiguous_warnings,_,off).
+%% :-prolog_flag(discontiguous_warnings,_,off).  %%   RS-130330, or dcg_e.pl gets noisy!
 
 
 backslash('\\').
@@ -29,11 +29,12 @@ style_check(_).
 
 ?-compile('utility/datecalc.pl').
 ?-compile('utility/makeauxtables.pl').
-
+%% :-makeauxtables.     %% RS-130330    Saves a minute
+%% :-createhash.        %% RS-130330    Saves another minute
 %%% ?-compile('utility/extractreg.pl'). %% SUSPENDED
 
-
 ?-compile('utility/extracut.pl').  %% TA-080201
+
 
 :- (airbusflag := false). %% NEW FLAG %% TA-090331
 %% :- (tramflag := true).   %% Trams are included ( Route 1 )

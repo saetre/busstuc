@@ -3,7 +3,7 @@
 %% SYSTEM TUC
 %% AUTHOR T.Amble
 %% CREATED TA-931217
-%% REVISED TA-110803  RS-130330
+%% REVISED TA-110803
 
 %% Transforms each word into a list of alternatives.
 
