@@ -33,13 +33,14 @@
 :-dynamic gps_origin/2 . %% TA-110127
 
 
-
 ?-op(1150,fx,spyg). %% spy grammar rule
 ?-op(1150,fx,spyr). %% spy pragma rule
 ?-op(1150,fx,sp).   %% spy X,X
 ?-op(1150,fx,c).    %% consult file  %% TA-110106 
 
+
 gorg :-listing(gps_origin). %% debug %% TA-110128
+
 
 break(_). %% dummy for breakpoints
 
@@ -253,8 +254,6 @@ webrun :-
 	    getfromport(L),
 	    processorwait(L),
 
-   
-
        fail,
 	 !.
 
@@ -265,21 +264,6 @@ norsource_prefix :- %% TA-110207
 norsource_postfix :- %% TA-110207
     value(norsource,true) ->
     (output('</bustuc>'),nl);true.
-
-
-jettyrun(S)  :- %% This was gone so I reimplemented it. %% TE-120207
-        world := real,
-        reset_period, %% ---> topreg.pl
-        psl(S,L),
-        L = [File|L1],
-        %%tell(File),   %% RS-121121
-        open(File,write,Stream,[encoding('UTF-8')]),   %% RS-121121
-        set_output(Stream),
-        
-        splitlang(L1,L2),
-        (process(L2);true), % Process always fails...
-        !,
-        told.
 
 
 dialog :-  
@@ -345,8 +329,9 @@ mtrprocess(S) :-
         reset_period,    
         origlanguage =: Lang, 
         language := Lang,
-        words(L, S, []),
-        process(L).
+%        words(L, S, []),        %%      RS-130331
+%        process(L).             %% NB: process ALWAYS FAILS!
+        process(S).
 
 mtrprocessweb(S) :- 
         smsflag := false,  
@@ -357,8 +342,37 @@ mtrprocessweb(S) :-
         reset_period,    
         origlanguage =: Lang, 
         language := Lang,
-        words(L, S, []),
+        words(L, S, []),  %% RS-130331    String to tokens, straight
         process(L).
+
+
+jettyrun(S)  :- %% This was gone so I reimplemented it. %% TE-120207
+        psl(S,L),         %% RS-130331    String to tokens, via file
+%%	Or Tokens to Words?
+%%        words(L, S, []),  %% RS-130331    String to tokens, straight?
+        L = [File|L1],  %% RS-130331    Get Filename
+        open(File,write,Stream,[encoding('UTF-8')]),   %% RS-121121
+        set_output(Stream),
+        splitlang(L1,L2),
+        (mtrprocess(L2);true), % Process always fails...
+        told.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Added by MTR 2004-08-04.  This predicate is called (repeatedly) from
+% the TUC Transfer Protocol Daemon (TTPD).
+%mtrprocess(S) :-
+%        smsflag := true,  
+%        permanence := 0, 
+%        create_named_dates, %% TA-110408 ad hoc 
+%        restoreworld,
+%        closereadfile,  
+%        reset_period,    
+%        origlanguage =: Lang, 
+%        language := Lang,
+%        words(L, S, []),
+%        !,
+%        process(L).     %% NB: process ALWAYS FAILS!
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -586,7 +600,7 @@ norsource(F) :- %% TA-110207
 
 closereadfile :-   % if interrupted 
     (readfile =: OLD -> closefile(OLD);true),
-    (seen). 
+    (seen).
 
 closefile(F):-
     absolute_file_name(F,FS),

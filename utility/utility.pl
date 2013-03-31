@@ -841,7 +841,7 @@ doubt(A,B):-
 
 
 
-% Lexical Parse of a String
+% Lexical Parse of a String (String to Token)
 
 psl(S,L):-
     %%tell('tore_amble.e'),    %% RS-121121
@@ -849,7 +849,7 @@ psl(S,L):-
     set_output(Stream),
     write(S),
     nl,
-    write('.'),nl,
+%%    write('.'),nl,
     told,
     see('tore_amble.e'),
     read_in(L),
