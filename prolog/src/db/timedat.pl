@@ -3,7 +3,7 @@
 %% SYSTEM BUSSTUC
 %% AUTHOR J.Bratseth
 %% CREATED TA-110207
-%% REVISED TA-110207    RS-130325
+%% REVISED TA-110207    RS-130327
 
 %% Time data for bus routes in general
 
@@ -199,110 +199,6 @@ dedicated_date(date(YYYY,12,24)):- this_year(YYYY).
 
 
 
-%% Special dates that run a specific day route
-%% holiday means special route
-
-% ¤ EXTRAALLOWEDNIGHT   (DATE, KINDOFDAY)
-%% Nightbus goes after midnight on this date despite rule.
-%% The route plan is the same as on KINDOFDAY.
-% Example:
-% busdat:extraallowed_night(date(2009,04,12),saturday). 
-:- volatile busdat:extraallowed_night/2.
-:- dynamic busdat:extraallowed_night/2.
-
-
-%% SPECIAL DATES FOR NIGHTBUS
-
-%% SEE busanshp.pl for correct default messages !!!
-
-%% extraallowed_night(DATE,DAY). 
-%% NIGHTBUS GOES extra, even if not sat-sun, following routes of DAY (pro forma)
-%% if DAY=nil, it means NO nightbus routes at all in module,
-
-%% ADJUSTMENT NIGHTBUS Holidays
-%%extraallowed_night(date(9999,12,31),saturday). %% Just at least1
-extraallowed_night(date(2009,04,12),saturday).  %%  Påskedag om morgenen 
-
-% ¤ DISALLOWED_NIGHT (DATE)
-%% Nightbus does not go  (after midnight) on this date despite rules.
-%% NIGHTBUS does not go even if sat-sun
-% Example: 
-% disallowed_night (date(2009,04,13))
-%:- volatile disallowed_night/1.
-%:- dynamic disallowed_night/1.
-
-%  JUST standard answer (misfjord rule: NB May vary)
-%% disallowed_night(date(9999,12,31)).    %% Just at least 1
-
-%% EASTER 
-disallowed_night(date(2009,04,13)).  %%  Påskeaften om morgenen 
-disallowed_night(date(2011,04,23)).  %% natt til påskeaften %% TA-110426
-
-%% CHRISTMAS
-%% Extrallowed
-
-%% none in 2008 ( "extra night to 3. X day is actually Saturday)
-
-%% Disallowed    Days  sat-sun  without nightbus
-%% none 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%% VARIABLE DATES
-
-
-%% DATE_DAY_MAP    
-
-%% Maps dates to day, when this is different from the actual day
-%% and not covered by route module (as. f.ex.  christmas  2010)
-%% 
-%% e.g sunday route, BUT only sunday route OF the same route module
-%% e.g. 2. juledag 2010 was coverd by a separate datamodule but also declared sunday route,
-%% However, there was no sunday day code in THAT module.
-
-%% These are special date_map_days that are declared explicitly each year !!!!!
-
-   %% date_day_map(date(2008,05,02),    saturday).  % friday after may 17 2008(!)
-   %% date_day_map(Date,  sunday):-  named_date(palm_sunday,Date).     % Palmesøndag 
-
-%% Easter week will have a separate module, 
-%% Mon-Wed in easter are saturday routes + extra departures
-%% These are ad hoc definitions %% TA-100106
-
-
-%%%  NOT valid 2011-20xx, own schedules for easter
-%%
- date_day_map(Date,  sunday):-  
-     named_date(easterday2,Date).   %% 2 Påskedag Ad Hoc
-
- date_day_map(Date,   saturday):-   %% ad hoc
-     named_date(palm_monday,Date).
-
-
- date_day_map(Date,   saturday):-   %% ad hoc
-     named_date(palm_tuesday,Date).
-
-
- date_day_map(Date,   saturday):-   %% ad hoc
-     named_date(palm_wednesday,Date).
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-date_day_map(date(_Y20XX,05,01), sunday).   % 1.mai Fix, NOT separate route module
-
-   %% date_day_map(date(_20XX,05,17),   holiday).  %% OWN route module
-
-date_day_map(Date,  sunday):-     %  KrHf- %% NOT OWN route module
-     named_date(ascension_day,Date),
-     \+ named_date(may17,Date).
-
-date_day_map(Date,  sunday):-  named_date(whitsun_day,Date).    %  1. pinsedag 
-  
-date_day_map(Date,  sunday):-  named_date(whitsun_day2,Date).   %  2. pinsedag
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%¤¤¤¤¤¤
 
 
 
@@ -316,23 +212,6 @@ softime(afternoon,1200,1800).
 softime(evening,1800,2400).
 softime(night,1800,2400).
 softime(midnight,2400,2500).
-
-
-%% RESPONSE PARAMETERS
-
-
-maxnumberofindividualdepartures(2):-
-    value(smsflag,true),
-    \+ value(nightbusflag,true),
-    !. 
-
-maxnumberofindividualdepartures(3):- %% not ridiculously many sequence
-    value(smsflag,true),
-    value(nightbusflag,true),
-    !. 
-
-maxnumberofindividualdepartures(3). 
-
 
 
 %% TIME PARAMETERS 
@@ -416,13 +295,12 @@ kindofday(easterhol,easterhol).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-clock_delay(00,00,00). %%  FOR CLOCK ADJUSTMENT, e.g. Santa Barbara? %% RS-130325
 
-
-hours_delay(0).    %% Time in Trondheim is 0 hours more than server clock
-
+%hours_delay(0).    %% Time in Trondheim is 0 hours more than server clock. Moved to busdat (local) module
 % hours_delay(-9). %% Time in Santa Barbara  is 9 hours EARLIER than server clock
-% hours_delay(10). %% Time in  Tokyo (?)
+% hours_delay(7). %% Time in  Tokyo (Sommer?)
+% hours_delay(8). %% Time in  Tokyo (Vinter?)
+% hours_delay(10). %% Time in  Australia (?)
 
 
 %%% END TIME SECTION

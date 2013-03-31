@@ -3649,7 +3649,7 @@ compword(må,[jeg,va],går).    %% Når må jeg va bussen
 
 compword(må,[jeg,for,å,komme],går). 
 
-    xcompword(må,[jeg,fra],forlater).%%  hvilken buss mÃ¥ jeg fra hegdalen for Ã¥ 
+    xcompword(må,[jeg,fra],forlater).%%  hvilken buss må jeg fra hegdalen for å 
 %% compword(må,[jeg,fra],fra). 
 
 compword(må,[jeg,hvis,jeg,skal],går). %% hvilken buss [ må jeg hvis jeg skal] til s

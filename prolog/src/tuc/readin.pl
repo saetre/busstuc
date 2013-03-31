@@ -521,7 +521,6 @@ blank(95):-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
 %% lc(original,official)   translates upper case to lower case
 %                          in addition, some ad hoc normalisations
 
@@ -539,54 +538,10 @@ lc(X,Y):-
    Y=X.
 
 
-
-%% In tele-modus (teleflag), some foreign characters 
-%% shall not be translated to Norwegian characters,
-%% but just to their lower case counterparts.
-/*
-
-ÂÄÀÁ -> âäàá
-
-ÊËÈÉ -> êëèé
-
-ÔÖÒÓ -> ôöòó
-
-ÛÜÙÚ -> ûüùú
-
-Ñ -> ñ
-
-*/
-
 lc(152,248). %% ø Ãstre %% TA-101124 ???
 
 lc(133,121). %% Ãsheim  %% TA-101129 ???
 
-lc1(194,226).  % ÂÄÀÁ -> âäàá
-lc1(196,230).  % Ä -> æ
-lc1(192,224).
-lc1(193,225). 
-
-lc1(202,234).  % ÊËÈÉ -> êëèé
-lc1(203,235).
-lc1(200,232).
-lc1(201,233). 
-
-lc1(206,238). % ÎÏÌÍ -> îïìí
-lc1(207,239).
-lc1(204,236).
-lc1(205,237).
-
-lc1(212,244). % ÔÖÒÓ -> ôöòóÔ
-lc1(214,246).
-lc1(210,242).
-lc1(211,243).
-
-lc1(219,251). % ÛÜÙÚ -> ûüùú
-lc1(220,252).
-lc1(217,249).
-lc1(218,250).
-
-lc1(241,209). % Ñ -> ñ
 
 /*
 
@@ -736,6 +691,52 @@ lc(K,K1) :- K>192,K<224,!,K1 is K+32. % Upper case -> Lower case
 
 lc(K,K1) :- K>64,K<91,!,K1 is K\/32 . %% 8'40.
 lc(K,K)  :- K>96,K<123. %% 126.  %% exclude {|} etc 
+
+
+%% In tele-modus (teleflag), some foreign characters 
+%% shall not be translated to Norwegian characters,
+%% but just to their lower case counterparts.
+/*
+
+ÂÄÀÁ -> âäàá
+
+ÊËÈÉ -> êëèé
+
+ÔÖÒÓ -> ôöòó
+
+ÛÜÙÚ -> ûüùú
+
+Ñ -> ñ
+
+*/
+
+
+lc1(194,226).  % ÂÄÀÁ -> âäàá
+lc1(196,230).  % Ä -> æ
+lc1(192,224).
+lc1(193,225). 
+
+lc1(202,234).  % ÊËÈÉ -> êëèé
+lc1(203,235).
+lc1(200,232).
+lc1(201,233). 
+
+lc1(206,238). % ÎÏÌÍ -> îïìí
+lc1(207,239).
+lc1(204,236).
+lc1(205,237).
+
+lc1(212,244). % ÔÖÒÓ -> ôöòóÔ
+lc1(214,246).
+lc1(210,242).
+lc1(211,243).
+
+lc1(219,251). % ÛÜÙÚ -> ûüùú
+lc1(220,252).
+lc1(217,249).
+lc1(218,250).
+
+lc1(241,209). % Ñ -> ñ
 
 
 % w01(CL,V,U):-var(V),!,name(U,CL). 

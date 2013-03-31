@@ -6,8 +6,6 @@
 %% Declarations used by TUC
 
 %% Some Prologs don't like lists of operators
-
-
 :-op(1150,xfx, ---> ). 
 % :-op( 997, fx, rule ). %% proxy , NOW a pragma operator
 

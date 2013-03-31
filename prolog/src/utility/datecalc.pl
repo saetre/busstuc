@@ -7,9 +7,10 @@
 % Contains the utility predicates that has to do with dates
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
 :-use_module(library(system), [datime/1] ).       %% get the date (for metacomp headers, for example
 
+%% :- ensure_loaded( '../db/timedat' ). %, [ clock_delay/3 ] ). %% RS-120803 %% Use buslog.pl instead!
+:-use_module( '../db/busdat', [clock_delay/3] ).       %% get the date (for metacomp headers, for example
 
 %% Rule:  A week must have at least has  4 days to count as a week
  
@@ -310,7 +311,7 @@ convert_zone(YYY, M, D, H,Min,Sec,   YYY,M,D,H,Min,Sec):- %% TA-080407
 
 convert_zone(YYY, M, D, H,Min,Sec,
              YYYY,MM,DD,HH,Min,Sec):-
-    clock_delay(0,0,0), %% <--- %% New %% TA-080407
+    busdat:clock_delay(0,0,0), %% <--- %% New %% TA-080407
     !,
     YYY=YYYY, %% classic trap ! %% TA-060101
     M=MM,

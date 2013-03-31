@@ -25,24 +25,24 @@
         central_airbus_station/1,  % (STATION) 
         central_fromstation/1,     % (STATION) avoid default to ST
         cmbus/3,
-        clock_delay/3,
+        clock_delay/3,        %% Moved to timedat.pl
         corr0/2,
         corresp/2,                 % (PLACE,PLACE)
         corresp0/2,                % (PLACE,PLACE)
         corresponds/2,             % (STATION,STATION)
-        create_named_dates/0,      % RS-120402
+%%        create_named_dates/0,      % RS-120402
         cutloop_station/2,
 
-%        date_day_map/2,            % RS-120402         Moved to timedat
-%        dedicated_date/1,          % RS-120402         Moved to timedat
-%        disallowed_night/1,        % (DATE)            Moved to timedat???
+        date_day_map/2,            % RS-120402         Moved to timedat
+%%        dedicated_date/1,          % RS-120402         Moved to timedat
+        disallowed_night/1,        % (DATE)            Moved to timedat???
         default_destination/2,     % (ROUTE,STATION)
 
         endneighbourhood/2,        % (ROUTE,PLACE)
         exbus/1,                   % (ROUTE)
         exbusname/2,               % (ROUTE,ROUTE)
         explicit_part_name/1,      % (NAME)
-%        extraallowed_night/2,      % RS-120402 %% Moved to timedat?
+        extraallowed_night/2,      % RS-120402 %% Moved to timedat?
 
         fromstationonly/1,         % (STATION)
         home_town/1,               % (PLACE)
@@ -60,7 +60,7 @@
         nostationfor/1,            % (PLACE)
         nostationfor1/1,           % (PLACE)
         
-%        orig_named_date/2,         % RS-120402
+%%        orig_named_date/2,         % RS-120402
 
         preferred_transfer/5,
         railway_station/1,
@@ -119,8 +119,8 @@ testmember(Member, List) :-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%:-volatile named_date/2. %% Created Initially 
-%:-dynamic named_date/2. %% Created Initially 
+%:-volatile user:named_date/2. %% Created Initially 
+%:-dynamic user:named_date/2. %% Created Initially 
 
 tram_module( r1630_111201 ).
 
@@ -128,11 +128,6 @@ tram_module( r1630_111201 ).
 %:-dynamic user:station/1. %% RS-121223 
 station(X) :-
         user:station(X). %% RS-130210 --> '../app/buslog'
-
-create_named_dates :-
-    user:list_of_named_dates(L), 
-    user:for((member(A,L),orig_named_date(A,B)),
-         remember(named_date(A,B))). %% To be     refined
 
 
 railway_station(ts). %% NB not STATION ! %% TA-110724
@@ -202,7 +197,126 @@ cutloop_station(66,stokkhaugen). %% TA-110824 charlottenlund_krk).
 
 %%%%%%%  TIME  SECTION %%%%%%%%%%%%%%%%%
 
+clock_delay(00,00,00). %%  FOR ABNORMAL SERVER TIME ERROR, CLOCK ADJUSTMENT
 
+                            
+                      
+% Santa Barbara
+% internal_airbus(true). %% The airport is covered
+
+hours_delay(0).    %% Time in Trondheim is 0 hours more than server clock
+% hours_delay(-9). %% Time in Santa Barbara  is 9 hours EARLIER than server clock
+% hours_delay(7). %% Time in  Tokyo (7 or 8, depends on Daylight Savings Time, Sommertid)
+
+
+
+
+home_town(trondheim).
+
+%% home_town(santa_barbara). %% Test
+
+
+%% Special dates that run a specific day route
+%% holiday means special route
+
+% ¤ EXTRAALLOWEDNIGHT   (DATE, KINDOFDAY)
+%% Nightbus goes after midnight on this date despite rule.
+%% The route plan is the same as on KINDOFDAY.
+% Example:
+% busdat:extraallowed_night(date(2009,04,12),saturday). 
+
+
+%% SPECIAL DATES FOR NIGHTBUS
+
+%% SEE busanshp.pl for correct default messages !!!
+
+%% extraallowed_night(DATE,DAY). 
+%% NIGHTBUS GOES extra, even if not sat-sun, following routes of DAY (pro forma)
+%% if DAY=nil, it means NO nightbus routes at all in module,
+
+%% ADJUSTMENT NIGHTBUS Holidays
+%%extraallowed_night(date(9999,12,31),saturday). %% Just at least1
+extraallowed_night(date(2009,04,12),saturday).  %%  Påskedag om morgenen 
+
+% ¤ DISALLOWED_NIGHT (DATE)
+%% Nightbus does not go  (after midnight) on this date despite rules.
+%% NIGHTBUS does not go even if sat-sun
+% Example: 
+% disallowed_night (date(2009,04,13))
+%:- volatile disallowed_night/1.
+%:- dynamic disallowed_night/1.
+
+%  JUST standard answer (misfjord rule: NB May vary)
+%% disallowed_night(date(9999,12,31)).    %% Just at least 1
+
+%% EASTER 
+disallowed_night(date(2009,04,13)).  %%  Påskeaften om morgenen 
+disallowed_night(date(2011,04,23)).  %% natt til påskeaften %% TA-110426
+
+%% CHRISTMAS
+%% Extrallowed
+
+%% none in 2008 ( "extra night to 3. X day is actually Saturday)
+
+%% Disallowed    Days  sat-sun  without nightbus
+%% none 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% VARIABLE DATES
+
+
+%% DATE_DAY_MAP    
+
+%% Maps dates to day, when this is different from the actual day
+%% and not covered by route module (as. f.ex.  christmas  2010)
+%% 
+%% e.g sunday route, BUT only sunday route OF the same route module
+%% e.g. 2. juledag 2010 was coverd by a separate datamodule but also declared sunday route,
+%% However, there was no sunday day code in THAT module.
+
+%% These are special date_map_days that are declared explicitly each year !!!!!
+
+   %% date_day_map(date(2008,05,02),    saturday).  % friday after may 17 2008(!)
+   %% date_day_map(Date,  sunday):-  user:named_date(palm_sunday,Date).     % Palmesøndag 
+
+%% Easter week will have a separate module, 
+%% Mon-Wed in easter are saturday routes + extra departures
+%% These are ad hoc definitions %% TA-100106
+
+
+%%%  NOT valid 2011-20xx, own schedules for easter
+%%
+ date_day_map(Date,  sunday):-  
+     user:named_date(easterday2,Date).   %% 2 Påskedag Ad Hoc
+
+ date_day_map(Date,   saturday):-   %% ad hoc
+     user:named_date(palm_monday,Date).
+
+
+ date_day_map(Date,   saturday):-   %% ad hoc
+     user:named_date(palm_tuesday,Date).
+
+
+ date_day_map(Date,   saturday):-   %% ad hoc
+     user:named_date(palm_wednesday,Date).
+
+
+date_day_map(date(_Y20XX,05,01), sunday).   % 1.mai Fix, NOT separate route module
+
+   %% date_day_map(date(_20XX,05,17),   holiday).  %% OWN route module
+
+date_day_map(Date,  sunday):-     %  KrHf- %% NOT OWN route module
+     user:named_date(ascension_day,Date),
+     \+ user:named_date(may17,Date).
+
+date_day_map(Date,  sunday):-  user:named_date(whitsun_day,Date).    %  1. pinsedag 
+  
+date_day_map(Date,  sunday):-  user:named_date(whitsun_day2,Date).   %  2. pinsedag
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%¤¤¤¤¤¤
 
 %% RESPONSE PARAMETERS
 
@@ -698,28 +812,6 @@ internal_airbus(IAB):-
         IAB=true
       ; 
         IAB=false.
-     
-                            
-                      
-% Santa Barbara
-% internal_airbus(true). %% The airport is covered
-
-
-
-clock_delay(00,00,00). %%  FOR CLOCK ADJUSTMENT
-
-
-hours_delay(0).    %% Time in Trondheim is 0 hours more than server clock
-
-% hours_delay(-9). %% Time in Santa Barbara  is 9 hours EARLIER than server clock
-% hours_delay(10). %% Time in  Tokyo (?)
-
-
-
-
-home_town(trondheim).
-
-%% home_town(santa_barbara). %% Test
 
 
 

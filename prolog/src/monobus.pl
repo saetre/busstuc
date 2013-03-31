@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE monobus.pl
 %% SYSTEM TUC
 %% CREATED TA-031114
@@ -16,7 +17,8 @@
 
 :- compile('app/pragma.pl').
 :- compile('app/interapp.pl').
-:- compile('app/bustrans.pl').    %% 
+%%:- compile('app/bustrans.pl').    %% 
+:- use_module('app/bustrans.pl').    %% 
 :- compile('app/dmeq.pl').        %% 
 :- compile('app/busans.pl').      %%
 :- compile('app/negans.pl').      %%
@@ -24,7 +26,8 @@
 
 :- compile('db/timedat.pl').  %% TA-110407
 :- compile('db/teledat2.pl'). %% Mandatory
-:- compile('db/busdat.pl').   %% split, Trondheim
+%%:- compile('db/busdat.pl').   %% split, Trondheim
+:- use_module('db/busdat.pl').   %% split, Trondheim bus details
 
 :- compile('db/places.pl').  
 :- compile('db/auxtables.pl').  
