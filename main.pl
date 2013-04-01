@@ -346,8 +346,8 @@ mtrprocessweb(S) :-
 
 
 jettyrun(S)  :- %% This was gone so I reimplemented it. %% TE-120207
-%%        psl(S,L),         %% RS-130331    String to tokens, via file
-%%	Or Tokens to Words?
+%%      psl(S,L),         %% RS-130331    String to tokens, via file, calls words.
+%%	OR "String" to Words directly
         words(L, S, []),  %% RS-130331    String to tokens, straight?
         L = [File|L1],  %% RS-130331    Get (optional) Filename
         open(File,write,Stream,[encoding('UTF-8')]),   %% RS-121121
