@@ -329,9 +329,8 @@ mtrprocess(S) :-
         reset_period,    
         origlanguage =: Lang, 
         language := Lang,
-%        words(L, S, []),        %%      RS-130331
-%        process(L).             %% NB: process ALWAYS FAILS!
-        process(S).
+        words(L, S, []),        %%      RS-130331
+        process(L).             %% NB: process ALWAYS FAILS!
 
 mtrprocessweb(S) :- 
         smsflag := false,  
@@ -342,20 +341,33 @@ mtrprocessweb(S) :-
         reset_period,    
         origlanguage =: Lang, 
         language := Lang,
-        words(L, S, []),  %% RS-130331    String to tokens, straight
+        words(L, S, []),  %% RS-130331    "String" to tokens, straight
         process(L).
 
 
 jettyrun(S)  :- %% This was gone so I reimplemented it. %% TE-120207
-        psl(S,L),         %% RS-130331    String to tokens, via file
+%%        psl(S,L),         %% RS-130331    String to tokens, via file
 %%	Or Tokens to Words?
-%%        words(L, S, []),  %% RS-130331    String to tokens, straight?
-        L = [File|L1],  %% RS-130331    Get Filename
+        words(L, S, []),  %% RS-130331    String to tokens, straight?
+        L = [File|L1],  %% RS-130331    Get (optional) Filename
         open(File,write,Stream,[encoding('UTF-8')]),   %% RS-121121
         set_output(Stream),
+
+        permanence := 0, 
+        restoreworld,
+        create_named_dates, %% TA-110408  ad hoc
+        closereadfile,  
+        reset_period,    
+        origlanguage =: Lang, 
+        language := Lang,
+        words(L, S, []),  %% RS-130331    "String" to tokens, straight
+
+        %% smsflag := false, %% RS-130401, set in next line!
         splitlang(L1,L2),
-        (mtrprocess(L2);true), % Process always fails...
+        (process(L2);true), % Process always fails...
+        %% flush_output,        %% RS-130401 Called from the client-side! TTPD
         told.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

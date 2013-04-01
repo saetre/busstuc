@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE smstuc.pl 
 %% SYSTEM TUC
 %% CREATED  TA-020125
