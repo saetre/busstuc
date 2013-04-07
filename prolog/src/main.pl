@@ -362,7 +362,7 @@ jettyrun(S)  :- %% This was gone so I reimplemented it. %% TE-120207
         language := Lang,
         words(L, S, []),  %% RS-130331    "String" to tokens, straight
 
-        %% smsflag := false, %% RS-130401, set in next line!
+        smsflag := false, %% RS-130401, possibly re-set in the next line!
         splitlang(L1,L2),
         (process(L2);true), % Process always fails...
         %% flush_output,        %% RS-130401 Called from the client-side! TTPD
