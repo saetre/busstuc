@@ -5,7 +5,7 @@
 
 % Compiles the BussTUC system for NTNU server.
 
-?-compile(busstuc).
-?-save_program(busestuc4).
+?-compile('../busstuc').
+?-save_program('../busestuc4').
 ?-halt.
 
