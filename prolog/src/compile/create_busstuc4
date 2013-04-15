@@ -1,2 +1,2 @@
-echo "compile('compile/compile_smstuc')." | sicstus
+echo "compile('compile/compile_busstuc4')." | sicstus
 chmod u+x busestuc4.sav
