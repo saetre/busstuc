@@ -17,7 +17,7 @@ traceans   := 1..6   % trace of bus answer rule  application
 
 N: Hva er din versjon?
 
-#RESTART SERVER AFTER NEW FILE IS COMPILED ABOVE
+#OLD ! RESTART SERVER AFTER NEW FILE IS COMPILED ABOVE ! OLD#
 cd ~tagore/public_html/cgi-bin/busstuc
 [tagore@furu ~/public_html/cgi-bin/busstuc] ./stopbuss
 [tagore@furu ~/public_html/cgi-bin/busstuc] ./startbuss
