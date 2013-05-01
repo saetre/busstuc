@@ -236,8 +236,8 @@ home_town(trondheim).
 
 %% ADJUSTMENT NIGHTBUS Holidays
 extraallowed_night(date(9999,12,31),saturday). %% Just at least1
-%%extraallowed_night(date(2009,04,12),saturday).  %%  Påskedag om morgenen 
-extraallowed_night(date(2013,05,17),fredag).  %%  natt til 17mai. 
+% extraallowed_night(date(2009,04,12),saturday).  %%  Påskedag om morgenen 
+% extraallowed_night(date(2013,05,17),fredag).  %%  natt til 17mai. %%Handled by separate route module for may17th.
 
 % ¤ DISALLOWED_NIGHT (DATE)
 %% Nightbus does not go  (after midnight) on this date despite rules.
