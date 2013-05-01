@@ -2587,8 +2587,8 @@ pmess(nearest_station(_STARTSTOP,Street,Station)):-
 
 %% General Nightbus message ( following weekend is normal )
 pmess(generalnightbusmessage):-
-    pen(['Nightbus goes from O.Tryggvasons gt. at  0100,0200,0300  am night to Saturday and Sunday.',
-         'Nattbuss går  fra O.Tryggvasons gt. kl 0100,0200 og 0300 natt til lørdag og søndag.']).
+    pen(['Nightbus goes every 30 min from O.Tryggvasons gt. at 0030,0100,0130,0200,0230,0300 am night to Saturday and Sunday.',
+         'Nattbuss går hver halvtime fra  O.Tryggvasons gt. kl 0030,0100,0130,0200,0230 og 0300 natt til lørdag og søndag.']).
 
 %% 400 deps cancelled
 
