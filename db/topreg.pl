@@ -65,7 +65,7 @@ default_message(tt,summer,['AtB summer routes are from Jun. 27 to  Aug. 21. 2012
 %%see routes.pl
 
 
-period_message( r1602_120517,
+period_message( r1613_130429,
 ['AtB Routes for Constitution Day',
  'AtB Ruter for 17. mai ']).
 

@@ -13,7 +13,7 @@
 %%route_period( tt, r1611_100823, date(2010,08,23),   date(2011,06,26) ).
 route_period(   tmn,r1630_101201, date(2011,12,01),   date(2011,12,31) ).
 %%route_period( tt, r1603_120409, date(2012,04,09),   date(2012,05,12) ). %% Overwrote 120415
-route_period(   tt, r1602_120517, date(2012,05,17),   date(2012,05,17) ).
+%%route_period(   tt, r1602_120517, date(2012,05,17),   date(2012,05,17) ).
 %%route_period( tt, r1601_120415, date(2012,04,15),   date(2012,06,24) ).
 %%route_period( tt, r1602_120425, date(2012,04,25),   date(2012,06,24) ). %% Mangler alle linjer over 79
 %%route_period( tt, r1611_110627, date(2012,06,27),   date(2012,08,14) ).     
@@ -31,11 +31,15 @@ route_period(   tt, r1613_121225, date(2012,12,25),   date(2013,01,01) ).  %% Me
 route_period(   tt, r1602_130326, date(2013,03,26),   date(2013,04,01) ).	%% vaar2013
 route_period(   tt, r1603_130402, date(2013,04,02),   date(2013,04,14) ).	%% vaar2013
 route_period(   tt, r1601_130306, date(2013,03,06),   date(2013,04,14) ).	%% vaar2013
-route_period(   tt, r1612_130429, date(2013,05,01),   date(2013,05,01) ).	%% MaiHelligdager
-route_period(   tt, r1612_130429, date(2013,05,09),   date(2013,05,09) ).	%% MaiHelligdager
-route_period(   tt, r1613_130429, date(2013,05,17),   date(2013,05,17) ).	%% 17mai
-route_period(   tt, r1612_130429, date(2013,05,20),   date(2013,05,20) ).	%% MaiHelligdager
-route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,06,23) ).	%% Vår2013
+route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,04,30) ).       %% Vår2013
+route_period(   tt, r1612_130429, date(2013,04,29),   date(2013,05,01) ).	%% MaiHelligdager
+route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,05,08) ).       %% Vår2013
+route_period(   tt, r1612_130429, date(2013,04,29),   date(2013,05,09) ).	%% MaiHelligdager
+route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,05,16) ).       %% Vår2013
+route_period(   tt, r1613_130429, date(2013,04,29),   date(2013,05,17) ).	%% 17mai
+route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,05,19) ).       %% Vår2013
+route_period(   tt, r1612_130429, date(2013,04,29),   date(2013,05,20) ).	%% MaiHelligdager
+route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,06,23) ).       %% Vår2013
 %%route_period(   tt, r1610_130415, date(2013,04,15),   date(2013,06,23) ).	%% Vaar2013
 %%route_period(   tt, r1601_130131, date(2013,01,31),   date(2014,02,26) ).	%% Vaar2013
 route_period(   tt, r1611_130429, date(2013,04,29),   date(2014,05,23) ).	%% Vår 2013
