@@ -350,8 +350,8 @@ jettyrun(S)  :- %% This was gone so I reimplemented it. %% TE-120207
 %%	OR "String" to Words directly
         words(L, S, []),  %% RS-130331    String to tokens, straight?
         L = [File|L1],  %% RS-130331    Get (optional) Filename
-%%        open(File,write,Stream,[encoding('UTF-8')]),   %% RS-121121
-        open(File,write,Stream,[encoding('ISO-8859-1')]),   %% RS-121121
+        open(File,write,Stream,[encoding('UTF-8')]),   %% RS-130504
+%%        open(File,write,Stream,[encoding('ISO-8859-1')]),   %% RS-121121
         set_output(Stream),
 
         permanence := 0, 
@@ -364,7 +364,7 @@ jettyrun(S)  :- %% This was gone so I reimplemented it. %% TE-120207
         %%words(L, S, []),  %% RS-130331    "String" to tokens, straight
 
         smsflag := false, %% RS-130401, possibly re-set in the next line!
-        splitlang(L1,L2),
+        splitlang(L1,L2),       %% RS-130504, handle nor eng sms
         (process(L2);true), % Process always fails...
         %% flush_output,        %% RS-130401 Called from the client-side! TTPD
         told.
