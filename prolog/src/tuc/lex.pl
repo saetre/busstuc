@@ -1553,7 +1553,7 @@ remove_streetsurp:- % Remove streetname (single) if also station/neighbourhood e
      for( (txt(M,w(A,name(_A1,_,street)),N),txt(M,w(A,name(A2,_,K)),N), K \== street, \+unproperstation1(A2)),
            retract(txt(M,w(A,name(_A1,_,street)),N))).
 
-%% suspended  :   error marking comes meaningless (too early) 
+%% suspended  :   error marking becomes meaningless (too early) 
 % når må jeg ta bussen * til heimdal sentral banestarsjon før kl 13 . 10 fra kystad ? 
 % når må jeg ta bussen til heimdal sentral * banestarsjon før kl 13 . 10 fra kystad ? 
 
