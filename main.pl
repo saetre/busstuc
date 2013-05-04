@@ -45,7 +45,7 @@ gorg :-listing(gps_origin). %% debug %% TA-110128
 break(_). %% dummy for breakpoints
 
 
-c(File) :- consult(File). %% TA-110106 
+% c(File) :- consult(File). %% TA-110106 %% Moved down 
 
 
 crash :- tore_amble_is_a_genious.  %% test on undefined predicate
@@ -572,7 +572,7 @@ splitlang(L,Netto):- %%   If not prefix nor,eng assume no prefix
  
    L= [sms|Netto] -> (language :=norsk,   smsflag := true);
  
-  ( Netto=L,          language := norsk,  smsflag := true). 
+  ( Netto=L,          language := norsk,  smsflag := false). 
 
 
 
@@ -816,6 +816,8 @@ analyse2(L1,TQL):-
 
     !.
 
+analyse2(_,error).
+
 
 print_tql(TQL):- %% TA-110207
    value(norsource,true),
@@ -829,8 +831,6 @@ print_tql(TQL):-
 
 
 
-
-analyse2(_,error).
 
 
 layout2(L,TQL):- 
