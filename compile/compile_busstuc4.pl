@@ -7,5 +7,5 @@
 
 ?-compile('../busstuc').
 ?-save_program('../busestuc4').
-?-halt.
+%%?-halt.
 
