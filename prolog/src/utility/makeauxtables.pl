@@ -117,7 +117,7 @@ makeauxtables:-
 writeheading:-
     datetime(A,B,C,D,E,F),
     write('/* -*- Mode:Prolog; coding:utf-8; -*- */'),        %% Make this work with open/4 and encoding %% RS-121118
-    %%write('/* -*- Mode:Prolog; coding:iso-8859-1; -*- */'),   %% For other prologs than sicstus, utf-8 compatible
+    %%write('/* -*- Mode:Prolog; coding:utf-8; -*- */'),   %% For other prologs than sicstus, utf-8 compatible
     nl,
     write('% Auxillary tables created '),
     nl,
