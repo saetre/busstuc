@@ -12,21 +12,21 @@
 
 %RS-120503
 
-:- compile('app/pragma.pl').
-:- compile('app/interapp.pl').
-:- compile('app/buslog').      %% TA-000529
-:- compile('app/bustrans').    %%
-:- compile('app/busans').      %%
-:- compile('app/negans').      %%
-:- compile('app/busanshp').    %%
+:- compile('../app/pragma.pl').
+:- compile('../app/interapp.pl').
+:- compile('../app/buslog').      %% TA-000529
+:- compile('../app/bustrans').    %%
+:- compile('../app/busans').      %%
+:- compile('../app/negans').      %%
+:- compile('../app/busanshp').    %%
 
-:- compile('database/busdat.pl').
+:- compile('../db/busdat.pl').
 
-:- compile('database/auxtables.pl').
+:- compile('../db/auxtables.pl').
 
 % :- createhash.  ( run  separately because of mix)
 
-:- consult('database/namehashtable.pl'). %% compile is too expensive
+:- consult('../db/namehashtable.pl'). %% compile is too expensive
 
 %RS-120503
 
