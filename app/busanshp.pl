@@ -52,7 +52,7 @@ outstreetconn(_STARTSTOP,_INTSTREET,_INTSTAT). %% Just marker in busans code
 make_total_google(AnswerOut,  TOTAL):-
 
     extractbing(outstreetconn(start,Y9,_ND),AnswerOut, Y9,START),   %% street coord unk
-
+     
     extractbing(outstreetconn(stop,STAD,_RSK),AnswerOut,STAD,STOP), %% street coord unk
 
     extractbing(google(U),AnswerOut,U,Bang), %% google is just an executable mark in busans
@@ -62,9 +62,9 @@ make_total_google(AnswerOut,  TOTAL):-
     convert_int_street(START,EY9),
     convert_int_street(STOP,ESTAD),
 
-    makelement('"streetaddress"','"start"',st(0,EY9),START1),
+    makestreetelement('"streetaddress"','"start"',st(0,EY9),START1),
 
-    makelement('"streetaddress"','"stop"',st(0,ESTAD),STOP1),
+    makestreetelement('"streetaddress"','"stop"',st(0,ESTAD),STOP1),
 
     append([START1],BusTrace,SBANG),
     append(SBANG,[STOP1],TOTAL),
@@ -134,8 +134,13 @@ enterexit1([X|Rest],[B1|Bingrest]):-
 
 enterexit1([],[]):-!. %% abnormal
 
+makestreetelement(Type,Role,st(_STATNO,Intname),{'"name"':NIntname2,'"type"':Type,'"role"':Role}):-
+     nullify(Intname,NIntname),
+          !,
+    fnuttify2(NIntname,NIntname2).
 
-makelement(Type,Role,st(STATNO,Intname),{'"name"':NExtname2,'"type"':Type,'"role"':Role,'"xcoord"':NXcoord,'"ycoord"':NYcoord}):-
+
+makelement(Type,Role,st(STATNO,Intname),{'"name"':NExtname2,'"type"':Type,'"nr"':STATNO,'"role"':Role,'"xcoord"':NXcoord,'"ycoord"':NYcoord}):-
 
     xstatcoord(STATNO, Intname,Extname, Xcoord,Ycoord),
 
