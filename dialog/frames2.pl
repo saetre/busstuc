@@ -15,6 +15,8 @@
 
 :- assert(framecounter(1)).
 
+:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
+
 
 %% Frame Declarations
 

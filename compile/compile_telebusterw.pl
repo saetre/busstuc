@@ -6,9 +6,9 @@
 % Compiles the BusstUC system and creates a save-state telebuster.sav
 
 ?-
-  compile('telebusterw.pl'),
+  compile('../telebusterw.pl'),
 
-  compile('busroute.pl'),
+  compile('../busroute.pl'),
   save_program(telebuster),
   halt. 
 

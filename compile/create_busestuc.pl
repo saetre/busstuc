@@ -5,8 +5,8 @@
 
 % Compiles the BusstUC system and creates a save-state busestuc
 
-?-compile('database/busroute'),
-  compile(tucbuss),
+?-compile('../busroute'),
+  compile('../tucbuss'),
   save_program(busestuc),
   halt.
 

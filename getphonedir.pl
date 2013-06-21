@@ -5,8 +5,20 @@
 %% REVISED TA-070612
 
 
-%%:- use_module( library(system) ). %%, [exec/1,shell/1]).
-:- use_module( library(process), [exec/1,shell/1]).
+:- use_module( library(system) ). %% , [exec/1,shell/1]).
+%% Replaced by 
+%Run ls on a home directory in a subshell under UNIX:
+%
+%     | ?- absolute_file_name('$SHELL', Shell),
+%          absolute_file_name('~/', Dir),
+%          process_create(Shell, ['-c', [ ls, ' ', file(Dir) ]]).
+%
+%Run notepad.exe on a file C:/foo.txt under Windows:
+%
+%     | ?- absolute_file_name('$SYSTEMROOT/notepad.exe', Prog),
+%          process_create(Prog, [file('C:/foo.txt')]).
+
+%%:- use_module( library(process), [exec/1,shell/1]).
 
 :- ensure_loaded('declare').
 :-op( 714,xfx, := ).   %% etc.
