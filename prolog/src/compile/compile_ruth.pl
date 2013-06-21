@@ -7,8 +7,8 @@
 % same program as Buster
 
 ?-
-   compile('tucbuster.pl'),  %%
-   ['busroute.pl'], %% TA-070811
+   compile('../tucbuster.pl'),  %%
+   ['../busroute.pl'], %% TA-070811
 
    save_program(ruth),
    halt.

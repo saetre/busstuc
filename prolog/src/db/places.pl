@@ -5121,7 +5121,7 @@ nostation(frøset).
 
 
 nostation(herlofsonsløypa) :- \+value(tmnflag,true). 
-%% nostation(heggsnipen). %% fins ikke i rdata(barei hefte). %%fikset 5.307
+%% nostation(heggsnipen). %% fins ikke i rdata(barei hefte). %%fikset 5.3.07
 nostation(lian):-      \+value(tmnflag,true).  
 nostation(nordre_hoem) :- \+value(tmnflag,true). 
 nostation(rognheim) :- \+value(tmnflag,true). 

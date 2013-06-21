@@ -4,8 +4,9 @@
 %% REVISED JB-970114 TA-001119
 
 
+:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
 
-?-compile(tucbuses). 
+?-compile('../tucbuses'). 
 
 
 /* moved to tucbuses.pl  %% TA-000529

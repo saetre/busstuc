@@ -19,7 +19,7 @@
 
 :- dynamic        
           border/2,
-          city/3,
+%          city/3,
           contain/2,
           containsX/4,
           contains4/4,
