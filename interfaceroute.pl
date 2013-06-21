@@ -21,7 +21,7 @@ domain_module(D,M):-
     route_period(D,M,_,_).
 
 reset_period :- %% called from main.pl
-    value(gbflag,true),  
+    value(tramflag,true),  
     set(actual_domain,gb), 
     set_period_module(gb),  
     current_period(gb,CP,_,_),
