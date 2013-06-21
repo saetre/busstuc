@@ -56,8 +56,8 @@ default_period(tt,summer, r1604_120625).  %% 2012 Summer
 default_message(tt,winter,['AtB winter routes are from  Aug. 13 to Dec 23.  2012.',
                            'AtB vinterruter gjelder fra 13. aug. til 23. des. 2012']).
 
-default_message(tt,summer,['AtB summer routes are from Jun. 27 to  Aug. 21. 2012',
-                           'AtB sommerruter gjelder fra 27. juni til 21. aug. 2012.']).
+default_message(tt,summer,['AtB summer routes are from Jun. 24 to  Aug. 11. 2013',
+                           'AtB sommerruter gjelder fra 24. juni til 11. aug. 2013.']).
 
 
 

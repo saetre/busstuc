@@ -8,6 +8,8 @@
 
 %% User input terminals
 
+:- ensure_loaded('../declare').
+%% :-op( 714,xfx, := ).   %% etc.
 
 
 %% NB  checkteleitem   and checkitem  are mingled %% TA-051106%%%%%%%%%%%%%
@@ -252,7 +254,6 @@ checkitem(TELETRANS,uatg, focus(OldFrame, OldRefer, slot(Slot)), focus(NewFrame,
 
 %% sant
 
-sysout_item(sant).
 
 checkitem(_,sant, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, [Tql, Prog])) :-
     getcurrent(Cid),
@@ -267,8 +268,6 @@ checkitem(_,sant, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, [T
     writetelebusteranswer4(sant,Tql,nil,Frame). %% TA-060905 
 
 
-
-remtp(tele,(teleprocess(_,_,_,_),B),B):-!.
 
 
 %% ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
@@ -312,7 +311,6 @@ checkitem(trans,sat, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, OldRefer,
     invitemore. 
 
 
-sysout_item(sat).
 
 checkitem(tele,sat, focus(Frame, OldRefer, [Tql, Prog]), focus(NewFrame, NewRefer, [Tql, Prog])) :-
 	\+ frame_getvalue_rec(Frame, return, [unknown|_],_),
@@ -371,8 +369,6 @@ checkitem(trans,sat, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer,
 
 %% saf
 
-sysout_item(saf).
-
 
 checkitem(TB,saf, focus(Frame, OldRefer, A), focus(Frame, NewRefer, A)) :-
 	 A=[Tql,Prog],  %% TA-061214
@@ -415,9 +411,6 @@ checkitem(_,saf, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, [Tq
 
 %% sqt
 
-sysout_item(sqt).
-
-remove_messages(Prog,Prog). %% e.g. howtuchelp %% TA-051214
 
 
 checkitem(TELETRANS,sqt, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, slot(NewSlot))) :-
@@ -449,33 +442,11 @@ checkitem(TELETRANS,sqt, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRe
     commitref(Cid, OldRefer, NewRefer).
 
 
-youhaveaskedformissingslot(NewProg,MissingSlots):- %%%<--- %% TA-070201
-
-    NewProg=teleprocess(DepSlot,_katnavn,_John_Krogstie,_1114),
-    DepSlot=[Department],
-    MissingSlots = [attributes::Department],
-    !.
-
-%%%%%% testifyouhaveaskedformissingslot(NewProg,MissingSlots).
-
-
-
-find_askfor2(tele,Frame, Slot, NewSlot):-
-	\+ frame_getvalue_rec(Frame, return, [unknown|_],_),
-	(Slot = knows(SlotTmp) -> NewSlot = SlotTmp; NewSlot=Slot).
-
-find_askfor2(trans,Frame, Slot, NewSlot):-
-    find_askfor(Frame, Slot, NewSlot). %% frames.pl
-
-%% ¤¤¤¤¤¤¤¤¤¤
-
 
 %% sal
 
 
 %% Sys-out-items specified for telebuster  TLF-030505
-
-sysout_item(sal).
 
 checkitem(tele,sal, focus(Frame, OldRefer, A), focus(Frame, NewRefer, A)) :-
 	frame_getvalue_rec(Frame, itemsfound::itemcount, Count, _),
@@ -498,8 +469,6 @@ checkitem(tele,sal, focus(Frame, OldRefer, A), focus(Frame, NewRefer, A)) :-
 
 %% sqd
 
-
-sysout_item(sqd).
 
 checkitem(_,sqd, focus(Frame, Refer, [Tql, Prog]), focus(Frame, Refer, [Tql, Prog])) :-
     roundmember(askref(_Type, _List), Prog),
@@ -556,7 +525,6 @@ checkitem(_,yes, Focus, Focus) :-
 
 %% reset_context
 
-sysout_item(reset_context).
 checkitem(_,reset_context, X,X):- %% TA-030108
     printmessage(quit),  
     reset_context.
@@ -589,7 +557,6 @@ checkitem(_,uadm, focus(OldFrame, OldRefer, [Tql, _Prog]), focus(NewFrame, NewRe
 
 %% say
 
-sysout_item(say(_)).    
 checkitem(_,say(Output), Focus, Focus) :-
     waves, %% TA-050809
     writeanswer(bcpbc(Output)), nl.
@@ -599,7 +566,6 @@ checkitem(_,say(Output), Focus, Focus) :-
 
 %% sayq
 	
-sysout_item(sayq(_)).
 checkitem(_,sayq(Output), Focus, Focus) :- 
     waves, %% TA-050809
     writeanswer(bcpbc(Output)), nl.
@@ -607,6 +573,21 @@ checkitem(_,sayq(Output), Focus, Focus) :-
 %% ¤¤¤¤¤¤¤¤¤¤¤¤¤
 
 
+remove_messages(Prog,Prog). %% e.g. howtuchelp %% TA-051214
+
+remtp(tele,(teleprocess(_,_,_,_),B),B):-!.
+
+
+sysout_item(sant).
+sysout_item(sat).
+sysout_item(saf).
+sysout_item(sqt).
+sysout_item(sal).
+sysout_item(sqd).
+sysout_item(say(_)).    
+sysout_item(sayq(_)).
+
+sysout_item(reset_context).
 
 
 
@@ -696,6 +677,26 @@ trapvarframe(V):-var(V),
     trackprog(2,write('**** Empty Focus  ***')),
     !;true.
 
+
+youhaveaskedformissingslot(NewProg,MissingSlots):- %%%<--- %% TA-070201
+
+    NewProg=teleprocess(DepSlot,_katnavn,_John_Krogstie,_1114),
+    DepSlot=[Department],
+    MissingSlots = [attributes::Department],
+    !.
+
+%%%%%% testifyouhaveaskedformissingslot(NewProg,MissingSlots).
+
+
+
+find_askfor2(tele,Frame, Slot, NewSlot):-
+        \+ frame_getvalue_rec(Frame, return, [unknown|_],_),
+        (Slot = knows(SlotTmp) -> NewSlot = SlotTmp; NewSlot=Slot).
+
+find_askfor2(trans,Frame, Slot, NewSlot):-
+    find_askfor(Frame, Slot, NewSlot). %% frames.pl
+
+%% ¤¤¤¤¤¤¤¤¤¤
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
