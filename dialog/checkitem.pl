@@ -100,7 +100,6 @@ checkitem(uatg, focus(OldFrame, OldRefer, slot(Slot)), focus(NewFrame, NewRefer,
 
 %% System output terminals
 
-sysout_item(sant).
 checkitem(sant, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, [Tql, Prog])) :-
     getcurrent(Cid),
     roundmember(XFrog, Tql),      %% TA-980525
@@ -123,7 +122,6 @@ checkitem(sant, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, [Tql
     writeanswer(Panswer), 
     commitref(Cid, OldRefer, NewRefer).
 
-sysout_item(sat).
 checkitem(sat, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, [Tql, NewProg])) :-
     saturate(Frame, Prog, NewProg),
     (roundmember(nocontext, NewProg) ; frame_iscomplete(Frame, []) ),
@@ -137,7 +135,6 @@ checkitem(sat, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, [Tql,
     writeanswer(AnswerOut),
     commitref(Cid, OldRefer, NewRefer). 
 
-sysout_item(saf).
 checkitem(saf, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, [Tql, NewProg])) :-
     saturate(Frame, Prog, NewProg),
     getcurrent(Cid),
@@ -160,7 +157,6 @@ checkitem(saf, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, [Tql,
     !, 
     commitref(Cid, OldRefer, NewRefer).
 
-sysout_item(sqt).
 checkitem(sqt, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, slot(NewSlot))) :-
     saturate(Frame, Prog, NewProg),
     getcurrent(Cid),
@@ -187,7 +183,6 @@ checkitem(sqt, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, slot(
     !, 
     commitref(Cid, OldRefer, NewRefer).
 
-sysout_item(sqd).
 checkitem(sqd, focus(Frame, Refer, [Tql, Prog]), focus(Frame, Refer, [Tql, Prog])) :-
 %%    getcurrent(Cid),
     roundmember(askref(_Type, _List), Prog),  
@@ -290,7 +285,6 @@ checkitem(tbu_notaday, focus(OldFrame, Refer, X), focus(NewFrame, Refer, X)) :-
 		
 				
 	
-sysout_item(sayq(_)).
 checkitem(sayq(Output), Focus, Focus) :- 
     checkitem(say(Output), Focus, Focus).
     
@@ -298,8 +292,7 @@ checkitem(say(Output), Focus, Focus) :-
     write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'),
     write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'), nl,
     writeanswer(bcpbc(Output)), nl.
-    
-sysout_item(tbs_fromwhere).
+
 checkitem(tbs_fromwhere, focus(Frame, Refer, _), focus(Frame, Refer, slot(where::departure))) :-
     frame_getvalue_rec(Frame, where::departure, Place, _Type),
     write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'),
@@ -311,7 +304,7 @@ checkitem(tbs_fromwhere, focus(Frame, Refer, _), focus(Frame, Refer, slot(where:
     write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'), nl,
     writeanswer(bcpbc(tbs_fromwhere)), nl.
 
-sysout_item(tbs_towhere).
+    
 checkitem(tbs_towhere, focus(Frame, Refer, _), focus(Frame, Refer, slot(where::arrival))) :-
     frame_getvalue_rec(Frame, where::arrival, Place, _Type),
     write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'),
@@ -323,7 +316,6 @@ checkitem(tbs_towhere, focus(Frame, Refer, _), focus(Frame, Refer, slot(where::a
     write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'), nl,
     writeanswer(bcpbc(tbs_towhere)), nl.
 
-sysout_item(tbs_whichday).
 checkitem(tbs_whichday, focus(Frame, Refer, _), focus(Frame, Refer, slot(where::departure))) :-
     frame_getvalue_rec(Frame, when::day, Day, _Type),
     write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'),
@@ -335,7 +327,6 @@ checkitem(tbs_whichday, focus(Frame, Refer, _), focus(Frame, Refer, slot(where::
     write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'), nl,
     writeanswer(bcpbc(askfor(when::day))), nl.
 
-sysout_item(tbs_dep).
 checkitem(tbs_dep, focus(Frame, Refer, clock(Time)), focus(Frame, Refer, clock(Time))) :-
     write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'),
     write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'), nl,
@@ -370,3 +361,13 @@ checkanswer(TQL, _, when::day, OldFrame, NewFrame) :-
     today(Today), 
     frame_setvalue_rec(OldFrame, when::day, Today, NewFrame).
 
+sysout_item(sant).
+sysout_item(sat).
+sysout_item(saf).
+sysout_item(sqt).
+sysout_item(sqd).
+sysout_item(sayq(_)).
+sysout_item(tbs_fromwhere).
+sysout_item(tbs_towhere).
+sysout_item(tbs_whichday).
+sysout_item(tbs_dep).

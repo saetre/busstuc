@@ -8886,7 +8886,7 @@ synword(kjæmm,         kommer).  %%  Dial
 synword(kjøerer,       kjører).
 synword(kjøm,          kommer).  %%  Dial
 synword(kjøme,         kommer).  %% Dial 
-sunword(kjøpeseter,    kjøpesenter).
+synword(kjøpeseter,    kjøpesenter).
 synword(kjøpre,        kjøpe). 
 synword(kjør,          kjører). %% Dial Haz? 
 synword(kjørere,       kjører). 
@@ -11991,7 +11991,9 @@ synword(tålvte,  tolvte).
 
 %% synword('*',ganger). 
 synword('0g',og). %% 
-synx1word(-,til).                        %% EXPERIMENT
+
+%% synx1word(-,til).                        %% EXPERIMENT
+
 synword(&,og).    
 %% synword(+,og).     %% Hva er 2+2
 %% synword(pluss,og). 
@@ -12679,7 +12681,7 @@ adv2(selvstendig, redundantly).  %% TA-110128
 adv2(senest,last).               %%  (= latest)
 adv2(sikkert,redundantly). 
 
-adj2(spennende,well). %% rough høres spennende %% TA-110724
+% adj2(spennende,well). %% rough høres spennende %% TA-110724
 
 adv2(tydelig,redundantly).       %% TA-110103 Also ADJ !!!  
 adv2(sist,last). 
@@ -12773,6 +12775,9 @@ adj3(tidligere,comp,early).
 
 
 %% Ordinary adjectives
+
+adj2(spennende,well). %% rough høres spennende %% TA-110724
+
 
 adj2(aktiv,active). 
 adj2(aktuell,real).  %% topical/of interest/"actual" %% rough
