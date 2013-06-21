@@ -37,21 +37,8 @@ ieval(TQL0) :- value(teleflag,true),
 	  
     waves.  
 
-waves :-  value(norsource,true), %% TA-110207
-    !.
-
-waves :-  value(traceprog,0), %% TA-110207
-          !.
-
-waves :-  value(dialog,1),
-          !.
-
-waves :-	
-         write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'), % 80 chars
-	      write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'),nl.
-
 ieval(TQL0) :-
-	 copy_term(TQL0,TQL),
+         copy_term(TQL0,TQL),
 
     be_prepared(TQL,FQL), 
 
@@ -81,9 +68,9 @@ ieval(TQL0) :-
 
 %................
 
-	 pragma(trans,FQL,P),      % Builds program // may set samedayflag
-	 !,                        % Looks only at first try
-	 writeprog(P),
+         pragma(trans,FQL,P),      % Builds program // may set samedayflag
+         !,                        % Looks only at first try
+         writeprog(P),
 
     printdots,  %% TA-110204 .. main   ends visible web respons 
 
@@ -91,14 +78,28 @@ ieval(TQL0) :-
 
     first_meat(FQL,FQL1),     % react to first FQL if negative message
 
-	 irun(TQL,FQL,FQL1,P),     % Evaluates program, makes answer if success 
+         irun(TQL,FQL,FQL1,P),     % Evaluates program, makes answer if success 
                               % TQL is only for tuc proper
-	 !,                        % Only one program run
+         !,                        % Only one program run
                               % // May use  samedayflag
 
     update_webstat, %% --- 
 
     waves. 
+
+
+waves :-  value(norsource,true), %% TA-110207
+    !.
+
+waves :-  value(traceprog,0), %% TA-110207
+          !.
+
+waves :-  value(dialog,1),
+          !.
+
+waves :-	
+         write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'), % 80 chars
+	      write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'),nl.
 
 determine_query_period :-
      

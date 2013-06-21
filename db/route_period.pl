@@ -25,9 +25,6 @@ route_period(   tt, r1611_121201, date(2012,12,01),   date(2012,12,30) ).  %% Vi
 %%route_period( tt, r1601_120101, date(2012,01,01),   date(2012,12,31) ).
 route_period(   tt, r1615_121224, date(2012,12,24),   date(2012,12,31) ).  %% Nyttaarsaften  2012.12.31
 route_period(   tt, r1613_121225, date(2012,12,25),   date(2013,01,01) ).  %% Mellomjula   (2012.12.25-26 og 28) og 1/1
-route_period(   tt, r1612_130617, date(2013,06,17),   date(2013,08,11) ).	%% sommer13
-%%route_period(   tt, r1602_120517, date(2012,05,17),   date(2012,05,17) ).
-%%route_period( tt, r1612_121024, date(2012,10,24),   date(2013,03,24) ).  %% ver 6. Hoest 2012
 route_period(   tt, r1602_130326, date(2013,03,26),   date(2013,04,01) ).	%% vaar2013
 route_period(   tt, r1603_130402, date(2013,04,02),   date(2013,04,14) ).	%% vaar2013
 route_period(   tt, r1601_130306, date(2013,03,06),   date(2013,04,14) ).	%% vaar2013
@@ -42,5 +39,8 @@ route_period(   tt, r1612_130429, date(2013,04,29),   date(2013,05,20) ).	%% Mai
 route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,06,23) ).       %% Vå2013
 %%route_period(   tt, r1610_130415, date(2013,04,15),   date(2013,06,23) ).	%% Vaar2013
 %%route_period(   tt, r1601_130131, date(2013,01,31),   date(2014,02,26) ).	%% Vaar2013
+
+route_period(   tt, r1612_130617, date(2013,06,17),   date(2013,08,11) ).       %% sommer13
 route_period(   tt, r1611_130429, date(2013,04,29),   date(2014,05,23) ).	%% Vår 2013
+
 route_period(   gb, r1630_111201, date(2012,12,01),   date(2014,12,31) ).  %% Graakallbanen
