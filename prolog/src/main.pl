@@ -350,8 +350,8 @@ jettyrun(S)  :- %% This was gone so I reimplemented it. %% TE-120207
 %%	OR "String" to Words directly
         words(L, S, []),  %% RS-130331    String to tokens, straight?
         L = [File|L1],  %% RS-130331    Get (optional) Filename
-        open(File,write,Stream,[encoding('UTF-8')]),   %% RS-130504
-%%        open(File,write,Stream,[encoding('ISO-8859-1')]),   %% RS-121121
+%%        open(File,write,Stream,[encoding('UTF-8')]),   %% RS-130504
+        open(File,write,Stream,[encoding('ISO-8859-1')]),   %% RS-121121        %%RS-130621 Dame ja'n!
         set_output(Stream),
 
         permanence := 0, 
