@@ -346,27 +346,6 @@ frame_isempty_rec(Frame, Slot) :-
 frame_isempty_rec(Frame, Slot) :-
     member([Slot, ?, class(_), _], Frame).
 
-frame_isempty_rec2([ [_, ?, subframe(_), _] | Rest]) :-
-    !,
-    frame_isempty_rec2(Rest).
-frame_isempty_rec2([ [_, SubFrame, subframe(_), _] | Rest]) :-
-    !,
-    frame_isempty_rec2(SubFrame),
-    frame_isempty_rec2(Rest).
-
-frame_isempty_rec2([ [_, ?, class(_), _] | Rest]) :-
-    !,
-    frame_isempty_rec2(Rest).
-
-frame_isempty_rec2([]).
-
-
-
-frame_isempty(Slot) :-
-    getcurrent(Cid),
-    getframe(Cid, Frame),
-    frame_isempty_rec(Frame, Slot).
-
 frame_isempty_rec(Frame, Super::Rest) :-
     !,
     member([Super, SubFrame, subframe(_), _], Frame),
@@ -388,6 +367,22 @@ frame_isempty_rec([ [_, ?, class(_), _] | Rest], Slot) :-
 
 frame_isempty_rec([], _).
 
+frame_isempty_rec2([ [_, ?, subframe(_), _] | Rest]) :-
+    !,
+    frame_isempty_rec2(Rest).
+frame_isempty_rec2([ [_, SubFrame, subframe(_), _] | Rest]) :-
+    !,
+    frame_isempty_rec2(SubFrame),
+    frame_isempty_rec2(Rest).
+
+frame_isempty_rec2([ [_, ?, class(_), _] | Rest]) :-
+    !,
+    frame_isempty_rec2(Rest).
+
+frame_isempty_rec2([]).
+
+
+
 frame_iscomplete(Miss) :-
     getcurrent(Cid),
     getframe(Cid, Frame),
@@ -404,6 +399,10 @@ frame_iscomplete(Frame, Miss) :-    %% TLF 030403
         frame_iscomplete_telerec(Frame, Miss)
     ).
 
+frame_iscomplete(Frame, Miss) :-
+    completeframe(List),
+    frame_iscomplete_rec(Frame, List, missing(999, []), missing(_, Miss)).
+
 frame_isconsistent_tele(Frame) :-
 	frame_getvalue_rec(Frame, return, [count|_], _). %% Asked for NO. of. records
 
@@ -414,10 +413,6 @@ frame_isconsistent_tele(Frame) :-                                   %% TLF 03040
     frame_getvalue_rec(Frame, itemsfound::items, Recs, _Type),
     frame_getvalue_rec(Frame, return, [Field|_], _),
     field_is_equal(Recs, Field, _Val). %% -> parseres.pl // all equal (?)
-
-frame_iscomplete(Frame, Miss) :-
-    completeframe(List),
-    frame_iscomplete_rec(Frame, List, missing(999, []), missing(_, Miss)).
 
 frame_iscomplete_rec(Frame, [First | Rest], Old, New) :-
     frame_iscomplete_rec2(Frame, First, missing(0, []), This),

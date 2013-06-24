@@ -1401,7 +1401,7 @@ sostatem(S,ST) --->  %% egentlig kan dette gjøres
 sostatem(S,ST) --->  %% hvis trikken står (så) er det bra 
  
     not_look_ahead([så]), 
-    w(verb(Be,PP,fin)), {PP \== inf}, %% AD HACK % ... kommer  det en buss
+    w(verb(Be,PP,fin)), {PP \== inf}, %% AD-HACK-ING % ... kommer  det en buss
     [det],                            %% (jeg vil vente med å) legge det inn
     !,                               
     state(S, ST) -   w(verb(Be,pres,fin)),

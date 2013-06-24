@@ -5,7 +5,7 @@
 
 % Compiles the BussTUC system for NTNU server.
 
-?-compile('../smstuc.pl'), % incudes busroute
-  save_program('../busestuc'),
-  halt.
+?-compile('../smstuc.pl'). % incudes busroute
+?- save_program('../busestuc').
+?- halt.
 

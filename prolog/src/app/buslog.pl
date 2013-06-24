@@ -7,7 +7,7 @@
 
 :- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
 
-:- ensure_loaded( '../dialog/frames' ). %% RS-121223
+:- ensure_loaded( '../dialog/frames2' ). %% RS-121223   %% Why?
 
 
 %%%%%%%%%%%%%%%% ALL ROUTE INTERFACE PREDICATES %%%%%%%%%%%%%%%%%%

@@ -7,6 +7,7 @@
 %% Printing the result from database query 
 
 
+:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
 
 
 parseresultfile(File, Results) :-
@@ -552,6 +553,10 @@ writetelebusteranswerfields(Frame) :- %% TA-060306
 
    tahasattval(Recs,RList).
 
+writetelebusteranswerfields(Frame) :- %% TA-060306
+
+     output(Frame). %%%%%%%% Panic Dump %%%%%%
+
 tahasattval(I,RList):-   
 
     writefieldvalue(I,cn),
@@ -561,10 +566,6 @@ tahasattval(I,RList):-
     nl.
 
 
-
-writetelebusteranswerfields(Frame) :- %% TA-060306
-
-     output(Frame). %%%%%%%% Panic Dump %%%%%%
 
 
 %%%%%%%%%

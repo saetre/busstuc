@@ -5,12 +5,10 @@
 
 % Compiles the BusstUC system and creates a save-state telebuster.sav
 
-?- 
+?- compile('../dater.pl').
 
-  compile('../dater.pl'),
+?- compile('../busroute.pl'). %% TA-080818
 
-  compile('../busroute.pl'), %% TA-080818
-
-  save_program(dater),
-  halt.
+?- save_program(dater).
+?- halt.
 
