@@ -226,12 +226,12 @@ dumpframe([], _).
 dumprefer(List) :-
 	dumprefer(List, 0).
 
+dumprefer([]).
+
 dumprefer([Head | Rest], Depth) :-
 	write_indent(Depth),
 	write(Head), nl, 
 	dumprefer(Rest, Depth).
-
-dumprefer([]).
 
 write_indent(Depth) :-
 	Depth > 0,

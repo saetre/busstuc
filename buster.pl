@@ -29,10 +29,9 @@ The unique files of BUSTER are
 */
 
 
-?-
-  [tucbuster], %% TA-071026
+?-[tucbuster]. %% TA-071026
  
-  [busroute].
+?-[busroute].
 
 
 

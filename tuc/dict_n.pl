@@ -12553,6 +12553,7 @@ synword(TLF, telefonnummer):-      %% nr 6 -> telefonnummeret 6 // Bare tele
     tlf(TLF).  
 
 
+synword(søndaksrute,søndagsrute). 
 
 %---------------------------------------------------------
 
@@ -15799,7 +15800,7 @@ noun2(kortleser,card_reader). %% t-kort
 noun2(lager,storage). %% Haz ?
 
 noun2(land,country). 
-    naun2(nasjon, country).
+    noun2(nasjon, country).
     noun2(rike,   country). 
 
 noun2(landområde,territory). %%  (technical) 
@@ -16234,7 +16235,6 @@ noun2(vestside,westside).
 noun2(standard,standard).
 noun2(stavefeil,spellingerror).   
 
-synword(søndaksrute,søndagsrute). 
 
 
 noun2(søndagsrute,sundayroute). 
@@ -17657,7 +17657,7 @@ noun2(varighet,duration).
      noun2(mellomrom,duration). 
      noun2(mellomrum,duration). 
      noun2(stund,duration).  
-     nounq(tid,duration). %% Hazardous  EXPERIMENT
+%     noun2(tid,duration). %% Hazardous  EXPERIMENT
      noun2(tidsforbruk,duration).
      noun2(overgangstid,duration).   %% rough 
      noun2(regulering,duration).     %% ad hoc, rough %
@@ -17776,7 +17776,7 @@ noun2(vær,weather).
     noun2(bris,weather).  
     noun2(styggvær,weather). 
     noun2(temperatur,weather).  
-    nounw(uvær,weather).         %% sic 
+    noun2(uvær,weather).         %% sic 
     noun2(vejr,weather).         %% DK ? 
     noun2(ver,weather).          %% Nynorsk
     noun2(vind,weather).

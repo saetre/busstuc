@@ -173,19 +173,6 @@ i({X},Rinn,Rinn)    :- !,call(X). %% alternative formulation
 
 i(X or  Y,Rinn,Rinn)  :-  ipragmaor(X,Y,Rinn).
 
-ipragmaor(X,Y,Rinn):- 
-    test(
-
-     (roundmember(X,Rinn)
-      ;
-      ipragmaor0(Y,Rinn))
-).
-
-ipragmaor0(Y or Z,Rinn):- !,
-   ipragmaor(Y,Z,Rinn),
-   !.
-ipragmaor0(Y ,Rinn):- roundmember(Y,Rinn),!.
-
 
 i(X seq Y,Rinn,Rinn)  
     :- follow_sequence(X,Y,Rinn). %% directly follows
@@ -198,14 +185,6 @@ i(X seq Y,Rinn,Rinn)
 i(X and Y,Rinn,Rut) :- 
     iandrec(X and Y,Rinn,Rut).
 
-iandrec(X and Y and Z,Rinn,Rut):- !, %% slightly haz if   Y,Z,X,Y
-    follow_after(X,Y,Rinn),
-    iandrec(Y and Z,Rinn,Rut).
-
-iandrec(X and Y ,Rinn,Rinn):- !,
-    follow_after(X,Y,Rinn). %% indirectly
-
-                                                         
 
 i(context X,Rinn,Rinn)        :- allroundmember(X,Rinn). 
 
@@ -244,7 +223,28 @@ i(clear,_,[]).
 
 i(X,     Rinn,Rut)            :- i2(X,Rinn,Rut).
 
+ipragmaor(X,Y,Rinn):- 
+    test(
 
+     (roundmember(X,Rinn)
+      ;
+      ipragmaor0(Y,Rinn))
+).
+
+ipragmaor0(Y or Z,Rinn):- !,
+   ipragmaor(Y,Z,Rinn),
+   !.
+ipragmaor0(Y ,Rinn):- roundmember(Y,Rinn),!.
+
+
+iandrec(X and Y and Z,Rinn,Rut):- !, %% slightly haz if   Y,Z,X,Y
+    follow_after(X,Y,Rinn),
+    iandrec(Y and Z,Rinn,Rut).
+
+iandrec(X and Y ,Rinn,Rinn):- !,
+    follow_after(X,Y,Rinn). %% indirectly
+
+                                                         
 
 varalarm(X):-var(X),%% write(alarm),nl,
            !,fail.

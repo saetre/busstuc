@@ -12,6 +12,12 @@
 :- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
 :- ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+tracevalue(L) :- user:value(traceprog,L).  % Trace level 1-6
+
+
 %% Rule format
 
 %   ruleID rule
@@ -453,10 +459,6 @@ ip  has_att_val(person,telephone,Tore_amble,_N),
     append(L,[person=Tore_amble],LA).
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-tracevalue(L) :- user:value(traceprog,L).  % Trace level 1-6
 
 
 
