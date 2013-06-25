@@ -2,7 +2,7 @@
 cutloop_connected_rib(Rid1,Station,Rid2):-
     cutloop_station(Bus,Station),
 
-    passes3(Tour1,Station,Seq,Arr1,Dep1),
+    passes3(Tour1,Station,Seq,Arr1,_Dep1),
 
     Seq > 1, % at least not the first
 
@@ -10,7 +10,7 @@ cutloop_connected_rib(Rid1,Station,Rid2):-
 
     route(Rid1,Bus,_),
 
-    passes3(Tour2,Station,1,Arr2,Dep2),
+    passes3(Tour2,Station,1,_Arr2,_Dep2),
 
 
     addtotime(Time1,Arr1,TimeX),

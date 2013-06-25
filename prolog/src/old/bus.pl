@@ -15,12 +15,15 @@
 :- compile('../app/pragma.pl').
 :- compile('../app/interapp.pl').
 :- compile('../app/buslog').      %% TA-000529
-:- compile('../app/bustrans').    %%
-:- compile('../app/busans').      %%
+%%:- compile('../app/bustrans').    %%
+:- use_module('../app/bustrans').    %%
+%%:- compile('../app/busans').      %%
+:- use_module('../app/busans').      %% RS-130624
 :- compile('../app/negans').      %%
 :- compile('../app/busanshp').    %%
 
-:- compile('../db/busdat.pl').
+%%:- compile('../db/busdat.pl').
+:- use_module('../db/busdat.pl').
 
 :- compile('../db/auxtables.pl').
 

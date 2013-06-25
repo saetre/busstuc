@@ -742,6 +742,12 @@ ver_movedate :-    %% Added check for May17 %% TA-100106
 %% e.g. r1611_100823 (previous winter-routes) and   
 %%      r1611-110627 (current summer-routes)
 
+%% example :- verify_consistency(r1611_130429, r1613_130622).
+%% Discrepancies r1611_130429 r1613_130622 
+%% alias_station2(16011196,bergheim_snuplass,bergheim_snpl).
+%% alias_station2(16626030,sjøla,skjøla).
+%% alias_station2(16627030,sjøla,skjøla).
+
 verify_consistency(Mod1,Mod2):-
  
      out('%% Discrepancies'),   out(Mod1),out(Mod2),nl,

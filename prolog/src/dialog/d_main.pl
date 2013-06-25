@@ -5,7 +5,7 @@
 
 %% REMOVED DEPENDENCIES ON JAVA INTERFACE
 
-%:- ensure_loaded('../declare').
+:- ensure_loaded('../declare').
 
 
 %% This file is extras needed to run the dialogue system. 

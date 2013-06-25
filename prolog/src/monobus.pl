@@ -20,7 +20,8 @@
 %%:- compile('app/bustrans.pl').    %% 
 :- use_module('app/bustrans.pl').    %% 
 :- compile('app/dmeq.pl').        %% 
-:- compile('app/busans.pl').      %%
+%%:- compile('app/busans.pl').      %%
+:- use_module('app/busans.pl').      %%
 :- compile('app/negans.pl').      %%
 :- compile('app/busanshp.pl').    %%
 

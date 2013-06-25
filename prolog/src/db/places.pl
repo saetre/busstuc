@@ -146,12 +146,19 @@ isat(brøsetvegen_168,brøsetvegen).
 isat(charlottenlund_kirke,charlottenlund). 
 isat(charlottenlund_nedre,charlottenlund). 
 
+isat(city_lade,lade).   %% RS-130625 %% Sommerrute-løsning
+
 isat(city_syd_østre,city_syd).  %% TA-100901
 isat(city_syd_vestre,city_syd). %% TA-110627
+
+isat(dalen_hageby,persaunetveien). %% RS-130625 AD-HOC. persaunvegen burde egentlig inkludere alle stoppene i den "vegen",
+                                   %%ikke bare svare "kan ikke finne flere ruter..." (til "peraunvegen isa station")
 
 isat(fagerliveien,fagerliv). %% Panic %% AtB TA-101010
 isat(flatåstoppen,flatåsen). % 7,17
 isat(framveien,byåsen). 
+
+isat(gartnerhallen,ikea). %%  (?)
 
 isat(gløshaugen_nord,gløshaugen). 
 isat(gløshaugen_nord,nth). 
@@ -180,9 +187,6 @@ isat(hovedterminalen,dronningens_gate).  %% Where is sentrumsterminalen
 isat(hovedterminalen,munkegata).  %%
 isat(hovedterminalen,sentrum).  %% Experiment Trikk St. Olavs. gt og så sentrum
 
-isat(travbanen,ikea). %%  (?)
-isat(gartnerhallen,ikea). %%  (?)
-
 isat(klæbu_sentrum,klæbu).  %% AtB
 
 
@@ -192,9 +196,9 @@ isat(kroppanmarka,kroppanmarka_snuplass). %%RS-120305
 isat(kvt,city_syd).             %%
 
 %%¤¤¤ %% ulykke AtB %% TA-100715
-isat(lade_alle_80,lade).
 %%%%%%placestat(lade,lade_alle_80).  %% ( lade-alle_80 more passages)
 %%¤¤¤
+isat(lade_alle_80,lade).
 
 isat(lerkendal_stadion,lerkendal). 
 isat(lerchendal_gård,lerkendal).   %% ?
@@ -218,6 +222,8 @@ isat(omkjøringsveien_moholt,omkjøringsveien).
 isat(omkjøringsveien_moholt,omkjøringsveien). 
 isat(omkjøringsveien_nardo,omkjøringsveien). 
 isat(omkjøringsveien_nardo,omkjøringsveien). 
+
+isat(persaunvegen,persaunetveien). 
 
 isat(paul_skolemesters_veg,sjetnmarka). 
 isat(prof_brochs_gate,hesthagen). 
@@ -246,6 +252,8 @@ isat(søndre_gate_23,royal_garden).
 isat(tempe_kirke,tempe).  %%NB
 isat(tempevegen_11,tempe). %% AtB
 isat(tonstadkrysset,tonstadkrysset).  %%4
+
+isat(travbanen,ikea). %%  (?)
 
 isat(trollahaugen_10,trollahaugen). 
 isat(trollahaugen_2,trollahaugen). 
@@ -573,6 +581,9 @@ placestat(kyvannet,skavlans_veg).
 placestat(kyvatnet,skavlans_veg). 
 %% placestat(køff,leangenveien). %% TA-110822
 
+%%¤¤¤ %% ulykke AtB %% TA-100715
+%%%%%%placestat(lade,lade_alle_80).  %% ( lade-alle_80 more passages)
+%%¤¤¤
 placestat(lade_alle,lade_alle_80).  %%
 
 placestat(ladehammerveien,ladehammeren).  %%(manystations,
@@ -1370,9 +1381,9 @@ sameplace(ourensveg,henrik_ourens_veg).  %%etc
 sameplace(pederkroghsvei,peder_kroghs_v). 
 sameplace(peirterminal,pirbadet).  
 sameplace(persauneleir,persaunet_leir). 
-sameplace(persaunetveien,persauneveien). %% TA-110415 
-sameplace(persaunveien,persauneveien). %% TA-110415 
-sameplace(persaunvn,persauneveien). %% TA-110415 
+sameplace(persaunetveien,persaunetveien). %% TA-110415 
+sameplace(persaunveien,persaunetveien). %% TA-110415 
+sameplace(persaunvn,persaunetveien). %% TA-110415 
 sameplace(piersenteret,pirsenteret). 
 sameplace(pierterminal,pirbadet).  
 sameplace(pirsenter,pirsenteret). 
@@ -3601,7 +3612,7 @@ synplace(pedermorsetsv,peder_morsets_vei).
 synplace(pedermorsetsvei,peder_morsets_vei).
 synplace(peppe,reppe). 
 synplace(peraunetveien,persaun_street).  %%aun(Help?)
-synplace(peraunetveien,persauneveien). %% TA-110415 
+synplace(peraunetveien,persaunetveien). %% TA-110415 
 synplace(peribadet,pirbadet). 
 
 synplace(persaun,persaune). 
@@ -3610,10 +3621,10 @@ synplace(persaunetleir,persaunet_leir).
 synplace(persaunetlier,persaunet_leir). 
 synplace(persaunetv,persaun_street). 
 
-synplace(persaunetvegen,persauneveien). %% TA-110415
-synplace(persaunetveien,persauneveien). %% TA-110415
-synplace(persaunevegen,persauneveien).  %% TA-110415  
-synplace(persauneveien,persauneveien).  %% TA-110415
+synplace(persaunetvegen,persaunetveien). %% TA-110415
+synplace(persaunetveien,persaunetveien). %% TA-110415
+synplace(persaunevegen,persaunetveien).  %% TA-110415  
+synplace(persauneveien,persaunetveien).  %% TA-110415
 
 synplace(persautunet,persaunet). 
 synplace(persetunet,persaunet). 
@@ -7116,7 +7127,7 @@ cmpl(pederkroghs,vei,peder_kroghs_v).
 cmpl(pedermorsets,v,peder_morsets_veg). 
 cmpl(pedermorsets,vei,peder_morsets_veg). 
 cmpl(pers,aunetleir,persaunet_leir). 
-cmpl(persaune,veien,persauneveien).   %% TA-110415
+cmpl(persaune,veien,persaunetveien).   %% TA-110415
 cmpl(persaunet,leier,persaunet_leir). %% TA-110615
 cmpl(persaunet,leir,persaunet_leir).  %% SIC(errorinreghpl)
 cmpl(persaunet,sykehjem,gina_krogs_veg).  %% persaunvn54->

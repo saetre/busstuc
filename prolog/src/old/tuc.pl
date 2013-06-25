@@ -114,28 +114,29 @@
 
                                               
 
-?-
-  compile('../version'),           % Version and Date
-  compile('../main'),              % main program , starts
+?-compile('../version').           % Version and Date
+?-compile('../main').              % main program , starts
 
-  compile('../tuc/readin'),       % reads text to a list
-  compile('../tuc/lex'),          % lexical analysis
-  compile('../tuc/translat'),     % code generation 
-  compile('../tuc/evaluate'),     % translate and evaluate
-  compile('../tuc/inger'),        % intelligent resolution
-  compile('../tuc/anaphors'),     % anaphoric resolution  
-  compile('../tuc/metacomp.pl'),  % compiles the grammar %% TA-000529
-  compile('../tuc/fernando'),     % semantic interface
-  compile('../tuc/world0'),       % empty world predicates 
-  compile('../tuc/slash'),        % slash facts /
+?-compile('../tuc/readin').       % reads text to a list
+?-compile('../tuc/lex').          % lexical analysis
+?-compile('../tuc/translat').     % code generation 
+?-compile('../tuc/evaluate').     % translate and evaluate
+?-compile('../tuc/inger').        % intelligent resolution
+?-compile('../tuc/anaphors').     % anaphoric resolution  
+?-compile('../tuc/metacomp.pl').  % compiles the grammar %% TA-000529
+?-compile('../tuc/fernando').     % semantic interface
+?-compile('../tuc/world0').       % empty world predicates 
+?-compile('../tuc/slash').        % slash facts /
 
-  compile(dcg_e:'../tuc/dagrun_e'),      % split into English and %% TA-000117
-  compile(dcg_n:'../tuc/dagrun_n'),      % Norwegian clones       %% TA-000117
+%%?-compile(dcg_e:'../tuc/dagrun_e').      % split into English and %% TA-000117
+%%?-compile(dcg_n:'../tuc/dagrun_n').      % Norwegian clones       %% TA-000117
+?-use_module(dcg_e:'../tuc/dagrun_e').      % split into English and %% TA-000117
+?-use_module(dcg_n:'../tuc/dagrun_n').      % Norwegian clones       %% TA-000117
 
-  compile('../tuc/semantic.pl'),     % the semantic net
-  compile('../tuc/facts.pl').        % static facts  /   compile(nofacts)
+?-compile('../tuc/semantic.pl').     % the semantic net
+?-compile('../tuc/facts.pl').        % static facts  / ?-compile(nofacts)
 
-%%%   compile(turbo),          % environment DOS/UNIX %% old 
+%%% ?-compile(turbo).          % environment DOS/UNIX %% old 
 
 
 

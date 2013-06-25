@@ -81,7 +81,7 @@ search_period_module(TT,_Date,DO):-  %% BUSTER assumes default winter route
     !,
     default_period(TT,winter,DO).   %% AD HOC   TT WINTER ROUTE
 
-search_period_module(_TT,_Date,_noperiod):- 
+search_period_module(_TT,_Date,_Noperiod):- 
     !,
     fail.
 

@@ -9,7 +9,7 @@
 :- ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators
 
 
-:- module(makeframe,[]). %% - maketeleframe
+:- module(makeframe,[]). %% - maketeleframe  %% RS-130624 Experiment from 2012?
 
 
 tracevalue(X):- user:value(traceprog,X),!; X=1.

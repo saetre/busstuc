@@ -33,10 +33,10 @@
 :-compile(parseres).
 
 :-compile(update2).    %% COMMON VERSION
-:-compile(makeframe2). %% COMMON VERSION
+:-use_module(makeframe2). %% COMMON VERSION     %% RS-130624 use_module (many files all contains    rule    predicates )
 
 
-:-compile(usestate2).
+:-use_module(usestate2).
 
 
 %%%%%%%% =

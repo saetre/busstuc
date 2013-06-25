@@ -2,6 +2,9 @@ lche :- load_files('dialog/checkitem.pl').
 
 :- ensure_loaded('../declare').
 
+:- volatile current_frame/1.
+:- dynamic current_frame/1.
+
 
 %% User input terminals
 

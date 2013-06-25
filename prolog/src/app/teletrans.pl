@@ -739,7 +739,7 @@ ip [].
 
 %  Internet
 internet rule %% TA-990428
-is  _internet isa network ,
+is  _Internet isa network ,
     clear     %% no use in ask for specifications when that is the problem
 id	 add message(noinfoabout(network))
 ip	 [].

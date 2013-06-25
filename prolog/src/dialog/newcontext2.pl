@@ -8,6 +8,13 @@
 :- use_module(library(lists)).
 
 
+:- volatile
+           current_context/1,
+           saved_context/3.
+:- dynamic 
+           current_context/1,
+           saved_context/3.
+
 %% current is the id of the current context
 
 setcurrent(Cid) :-

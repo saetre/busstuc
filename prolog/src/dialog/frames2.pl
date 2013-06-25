@@ -17,6 +17,10 @@
 
 :- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
 
+:-volatile
+           framecounter/1.
+:-dynamic
+           framecounter/1.
 
 %% Frame Declarations
 

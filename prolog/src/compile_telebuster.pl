@@ -7,8 +7,8 @@
 
 %%%  compile('database/busroute'). %% -> telebuster.pl %% TA-060126
 
-?- compile('telebuster.pl').
-?- save_program('telebuster.sav').
-?- halt.
+?-compile('telebuster.pl').
+?-save_program('telebuster.sav').
+?-halt.
 
 

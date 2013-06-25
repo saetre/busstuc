@@ -2015,10 +2015,10 @@ outcorr(false,midans(_StrBusN,OffTime,OffStation,_EndBusN,OnTime,OnStation),
 outcorr(false,midans(StrBusN,OffTime,OffStation,EndBusN,OnTime,OnStation),
 
           (bcp(you),bcp(can),bcp(change),
-       bcp(from),  bcp(_Bust1),
+       bcp(from),  bcp(_bust1),
        bwr(StrBusN),bcp(atstation),bwr(OffStation),bcp(attime),bwt(OffTime),
        nl,
-       bcp(to), bcp(_Bust2),
+       bcp(to), bcp(_bust2),
        bwr(EndBusN),bcp(atstation),bwr(OnStation),bcp(attime),bwt(OnTime),
        period)
 
@@ -2028,8 +2028,8 @@ outcorr(false,midans(StrBusN,OffTime,OffStation,EndBusN,OnTime,OnStation),
     \+ value(smsflag,true),
     !,
 
-    vehicletype(StrBusN,_Bust1),
-    vehicletype(EndBusN,_Bust2).
+    vehicletype(StrBusN,_bust1),
+    vehicletype(EndBusN,_bust2).
 
 
 
@@ -2099,14 +2099,14 @@ writename(TA):-bwrbc(TA).
 %
 
 
-print_paraphrase_message(nearest_station(_STARTSTOP,A,B)):- % e.g. Holdeplassen nærmest A er B
+print_paraphrase_message(nearest_station(_sTARTSTOP,A,B)):- % e.g. Holdeplassen nærmest A er B
     !,
-    printmessageunconditionally(nearest_station(_STARTSTOP,A,B)).
+    printmessageunconditionally(nearest_station(_sTARTSTOP,A,B)).
 
 
-print_paraphrase_message(nearest_station(_STARTSTOP,A,B)):- % e.g. Holdeplassen nærmest A er B
+print_paraphrase_message(nearest_station(_sTARTSTOP,A,B)):- % e.g. Holdeplassen nærmest A er B
     !,
-    printmessageunconditionally(nearest_station(_STARTSTOP,A,B)).
+    printmessageunconditionally(nearest_station(_sTARTSTOP,A,B)).
 
 print_paraphrase_message(X):- % e.g. NOT 27. Aug. 2005 er en  lørdag.
    printmessage(X).
@@ -4389,7 +4389,7 @@ bwrsingleorlist((Elem,List)) :-
 
 
 
-bwrbus(_bus_,One):-
+bwrbus(_Bus_,One):-
      exbusname(One,Klaburuta),
      !,
      bwr(Klaburuta).
@@ -4404,7 +4404,7 @@ bwrbus(Bus,One):-
     bwrbusno(One).
 
 
-bwrbusbc(_bus_,One):-
+bwrbusbc(_Bus_,One):-
      exbusname(One,Klaburuta),
      !,
      bwr(Klaburuta).

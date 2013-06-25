@@ -9,7 +9,7 @@
 
 
  
-?-  ['tucbuss.pl'],
-     save_program(busestuc),
-     halt.
+?- ['tucbuss.pl'].
+?-  save_program(busestuc).
+?-  halt.
 

@@ -5353,7 +5353,7 @@ is  present srel/to/place/M/E,  %%  Haz ? not nil
 id  []
 ip  [].
 
-stationoneigh2 rule %% station on neighbourhood is a special case ( touchy)
+stationoneigh2 rule %% station on neighbourhood is a special case ( touchy)     %% RS-130625 Disable for summer routes?
 is  replaceall ( srel/on/neighbourhood/lade/B )
     with       ( srel/near/place/lade/B )
 id  []
