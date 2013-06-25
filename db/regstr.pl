@@ -1230,11 +1230,12 @@ streetstat(per_halvorsens_street,'Per Halvorsens vei',1,4,breidablikk_skole).
 streetstat(per_kvists_street,'Per Kvists veg',1,14,idrettsplassen).
 streetstat(per_lykkes_street,'Per Lykkes veg',1,15,stabells_veg).
 streetstat(per_sivles_street,'Per Sivles veg',1,51,ugla).
-streetstat(persaun_street,'Persaunvegen',60,63,tyholt).
+%%streetstat(persaun_street,'Persaunvegen',1,1,dalen_hageby). %% Default to this when asked about persaunvegen
 streetstat(persaun_street,'Persaunvegen',1,9,dalen_hageby).
-streetstat(persaun_street,'Persaunvegen',52,61, gina_krogs_veg).
 streetstat(persaun_street,'Persaunvegen',11,27,persaunevegen).
 streetstat(persaun_street,'Persaunvegen',6,57,persaunet_leir).
+streetstat(persaun_street,'Persaunvegen',52,61, gina_krogs_veg).
+streetstat(persaun_street,'Persaunvegen',60,63,tyholt).
 streetstat(persberg_street,'Persbergvegen',1,7,ranheim_kirke).
 streetstat(perslia,'Perslia',1,56,klokkstein).
 streetstat(persløkk_street,'Persløkkvegen',1,48,leirbrua_gård).
@@ -1596,7 +1597,7 @@ streetstat(tessems_street,'Tessems veg',10,21,strindheim).
 streetstat(thaulowbakken,'Thaulowbakken',1,15,thaulowbakken).
 streetstat(theodor_petersens_street,'Theodor Petersens veg',1,26,lohove).
 streetstat(thomas_angells_street,'Thomas Angells gate',1,26,hovedterminalen).
-streetstat(thomas_hirschs<_street,'Thomas Hirschs gate',1,23,rønningsbakken).
+streetstat(thomas_hirschs_street,'Thomas Hirschs gate',1,23,rønningsbakken).
 streetstat(thomas_von_westens_street,'Thomas Von Westens gate',1,28,rønningsbakken).
 streetstat(thonning_owesens_street,'Thonning Owesens gate',36,39,gildheim).
 streetstat(thonning_owesens_street,'Thonning Owesens gate',20,35,strindheim).

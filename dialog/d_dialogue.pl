@@ -7,9 +7,17 @@
 :- assert(linecounter(1)).
 :- assert(confused(noone)). %-)
 
+:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators, also := and =:
 
 %% Dialogue manager.
 
+:- volatile
+           confused/1,
+           linecounter/1. %, last_answer/2. 
+
+:- dynamic
+           confused/1,
+           linecounter/1. %, last_answer/2. 
 
 
 %dialog :- 

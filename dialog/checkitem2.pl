@@ -11,6 +11,10 @@
 :- ensure_loaded('../declare').
 %% :-op( 714,xfx, := ).   %% etc.
 
+:- volatile current_frame/1, last_answer/2.
+:-  dynamic current_frame/1, last_answer/2.
+
+
 
 %% NB  checkteleitem   and checkitem  are mingled %% TA-051106%%%%%%%%%%%%%
 %%     checkitem(tele,     checkitem(trans,
@@ -67,20 +71,20 @@ checkitem(trans,uati, focus(OldFrame, OldRefer, slot(Slot)), focus(NewFrame, New
 %% uatc 
 %% Both tele and bus %% TA-060321
 
-checkitem(_tele,uatc, focus(OldFrame, OldRefer, slot(Slot)), focus(NewFrame, NewRefer, [])) :-
+checkitem(_Tele,uatc, focus(OldFrame, OldRefer, slot(Slot)), focus(NewFrame, NewRefer, [])) :-
 	getcurrent(Cid),
 	getcontext(Cid, context((confirm,false), _, _, _)),
 	frame_setvalue_rec(OldFrame, Slot, dontknow, NewFrame),
 	commitref(Cid, OldRefer, NewRefer).
 
 
-checkitem(_tele,uatc, focus(OldFrame, OldRefer, slot(Slot)), focus(NewFrame, NewRefer, [])) :-
+checkitem(_Tele,uatc, focus(OldFrame, OldRefer, slot(Slot)), focus(NewFrame, NewRefer, [])) :-
 	getcurrent(Cid),
 	getcontext(Cid, context((confirm,true), _, _, _)),
 	frame_setvalue_rec(OldFrame, Slot, doknow, NewFrame),
 	commitref(Cid, OldRefer, NewRefer).
 
-checkitem(_tele,uatc, focus(OldFrame, OldRefer, slot(Slot)), focus(NewFrame, NewRefer, [])) :-
+checkitem(_Tele,uatc, focus(OldFrame, OldRefer, slot(Slot)), focus(NewFrame, NewRefer, [])) :-
 	getcurrent(Cid),
 	getcontext(Cid, context((new, not (A isa _B,know1/A,event/real/A)), _, _, _)), %% TA-080929
 	frame_setvalue_rec(OldFrame, Slot, dontknow, NewFrame),
@@ -680,7 +684,7 @@ trapvarframe(V):-var(V),
 
 youhaveaskedformissingslot(NewProg,MissingSlots):- %%%<--- %% TA-070201
 
-    NewProg=teleprocess(DepSlot,_katnavn,_John_Krogstie,_1114),
+    NewProg=teleprocess(DepSlot,_Katnavn,_John_Krogstie,_1114),
     DepSlot=[Department],
     MissingSlots = [attributes::Department],
     !.

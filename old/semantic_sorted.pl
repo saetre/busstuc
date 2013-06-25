@@ -12,7 +12,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- use_module( main:'../declare.pl' ).
+:- ensure_loaded( main:'../declare.pl' ).
 
 %:- ['fernando'].
 

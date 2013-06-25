@@ -8,3 +8,7 @@ alias_station2(16010536,tonstadkrysset,tonstadkrysset_3).
 alias_station2(16010537,tonstadkrysset,tonstadkrysset_4).
 alias_station2(16011246,kroppan_bru,kroppanbrua).
 alias_station2(16011496,tegleverkskrysset,teglverkskrysset).
+%% RS-130625
+alias_station2(16011196,bergheim_snuplass,bergheim_snpl).
+alias_station2(16626030,sjøla,skjøla).
+alias_station2(16627030,sjøla,skjøla).

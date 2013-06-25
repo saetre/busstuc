@@ -1140,7 +1140,7 @@ night_route(depnode(_Time0,_Time9,_DelArr,_DelDep,_BegTime,Rid1,NB,_,_)):-
 
 airbus_route(depnode(_Time0,_Time9,_DelArr,_DelDep,_BegTime,Rid1,NB,_,_)):-
     ridtobusnr(Rid1,NB),
-    airbus(NB).
+    busdat:airbus(NB).
 
 
 xdepartureMOD(TTP, Rid,Trace,BegTime,DaySeqNO):-          %% TA-100318
@@ -1249,7 +1249,7 @@ isat2(Station,Place):- %% studentersamfundet syndrom
      bound(Place),
     (
     (station(Place),Station=Place);
-    (airbusstation(Place),Station=Place); %% TA-090401
+    (busdat:airbusstation(Place),Station=Place); %% TA-090401
      placestat(Place,Station);
      alias_stationx(Station,Place); %% AtB
      isat(Station,Place)
@@ -1332,7 +1332,7 @@ bus_place_station(_Bus,X,Y):-
 
 bus_place_station(Bus,X,Y):-
     unbound(Bus),  %%  fra solbakken
-    \+ bus_depend_station(_,X,_),
+    \+ busdat:bus_depend_station(_,X,_),
     \+ underspecified_place(X), %%% NB til Byåsen %% TA-100422
     !,
     place_station0(X,Y). %% studentersamfundet
@@ -1365,7 +1365,7 @@ place_station(user_location,user_location). %% TA-11048
 place_station(Place,Place) :-  %% TA-090401
      nonvar(Place),
      value(airbusflag,true), %% ad hoc
-     airbusstation(Place), %% Værnes
+     busdat:airbusstation(Place), %% Værnes
      !.
 
 %% AtB
@@ -1449,7 +1449,7 @@ place_station1(Place,Place) :-
 place_station0(Place,Place) :-  %% TA-090401
      nonvar(Place),
      value(airbusflag,true), %% ad hoc
-     airbusstation(Place), %% Værnes
+     busdat:airbusstation(Place), %% Værnes
      !.
 
 

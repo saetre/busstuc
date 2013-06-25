@@ -3,6 +3,12 @@
 
 :- ensure_loaded('../declare').
 
+:- volatile dbContent/2.
+:- dynamic  dbContent/2.
+
+%:- volatile dbId/1.
+:- dynamic  dbIb/1.
+
 %%
 %% This file contains implementation of the dialogue context database.
 %% List implementation of database. 
@@ -97,7 +103,7 @@ setattribute(Key, Value ) :-                        %% AM-980311
 
 %% Application independent database implementation
 
-%dbContent( nil, [] ). 
+dbContent( nil, [] ). 
 %dbId( [] ). 
 
 dbInit(DB) :-  %% AM-980303

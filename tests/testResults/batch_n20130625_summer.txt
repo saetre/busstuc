@@ -1,0 +1,3857 @@
+N: \r tests/batch
+........................................................................
+
+
+
+N: \ nodebug 
+
+% The debugger is switched off
+
+N: \ set queryflag true 
+
+
+N: \ set smsflag false 
+
+
+N: \ starttimebatch 
+
+
+N: hva er din versjon ? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:be2awh
+trans/Found rule:isversion0
+
+*** Application program ***
+
+message(answer(db_reply(tuc,version,AtB-I  Date 130624)))
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+TUC har versjon    AtB-I Date 130624 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: ( gløshaugen nord + 2 , gløshaugen syd + 3 , høgskoleringen + 4 , e . tambarskjelves
+gt . + 4 , prof . brochsgt . + 4 , gudes gt . + 5 ) til nardo . 
+
+
+
+gps_origin(gløshaugen_nord, 2).
+gps_origin(gløshaugen_syd, 3).
+gps_origin(høgskoleringen, 4).
+gps_origin(einar_tambarskjelves_gate, 4).
+gps_origin(prof_brochs_gate, 4).
+gps_origin(gudes_gate, 5).
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:placestat1
+trans/Found rule:toplace1
+trans/Found rule:keepfromgpslocation
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(nil,nardo,nardosenteret))
+departure(free(525),nardosenteret,4,A)
+flag(keepfrombay)
+departure(free(525),user_location,4,B)
+keepafterwalking(B,C)
+connections(C,A,free(525),user_location,nardosenteret,tuesday,4,[to,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+297 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Høgskoleringen","busstopnumber":16010197,"busnumber":22,"time":1236,"duration":12,"destination":"Nardosenteret"} ,
+{"busstopname":"Gløshaugen Nord","busstopnumber":16010333,"busnumber":22,"time":1238,"duration":10,"destination":"Nardosenteret"} ,
+{"busstopname":"Gløshaugen Syd","busstopnumber":16010265,"busnumber":22,"time":1238,"duration":10,"destination":"Nardosenteret"} ,
+{"busstopname":"Einar Tambarskjelves gate","busstopnumber":16010112,"busnumber":8,"time":1245,"duration":7,"destination":"Nardosenteret"} ,
+{"busstopname":"Prof. Brochs gate","busstopnumber":16010376,"busnumber":8,"time":1246,"duration":6,"destination":"Nardosenteret"} ]}
+
+Holdeplassen nærmest Nardo er  Nardosenteret .
+Buss 22 passerer  Høgskoleringen kl. 1236  og  kl. 1306 
+og  kommer til  Nardosenteret ,  12 minutter senere .
+Buss 22 passerer  Gløshaugen Nord kl. 1238 
+og  kommer til  Nardosenteret ,  10 minutter senere .
+Buss 22 passerer  Gløshaugen Syd kl. 1238 
+og  kommer til  Nardosenteret ,  10 minutter senere .
+Buss 8 passerer  Einar Tambarskjelves gate kl. 1245 
+og  kommer til  Nardosenteret ,  7 minutter senere .
+Buss 8 passerer  Prof. Brochs gate kl. 1246 
+og  kommer til  Nardosenteret ,  6 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: ( gløshaugen syd + 3 , gløshaugen nord + 4 , dybendals gate + 20 ) til nardo
+før 1730 . 
+
+
+
+gps_origin(gløshaugen_syd, 3).
+gps_origin(gløshaugen_nord, 4).
+gps_origin(dybdahls_veg, 20).
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:placestat1
+trans/Found rule:toplace1
+trans/Found rule:busarrjustbeforetime
+trans/Found rule:keepfromgpslocation
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(nil,nardo,nardosenteret))
+departure(free(532),nardosenteret,4,A)
+keepbefore1(1730,A,B)
+flag(keepfrombay)
+departure(free(532),user_location,4,C)
+keepafterwalking(C,D)
+connections(D,B,free(532),user_location,nardosenteret,tuesday,4,[lastcorr,time,to,from],E,F)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+16 ms
+
+[depnode(1719,1719,34,34,1645,bus_0008_0147,8,30,dybdahls_veg)]
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Dybdahls veg","busstopnumber":16010102,"busnumber":8,"time":1719,"duration":3,"destination":"Nardosenteret"} ]}
+
+Holdeplassen nærmest Nardo er  Nardosenteret .
+Buss 8 passerer  Dybdahls veg kl. 1719 
+og  kommer til  Nardosenteret kl. 1722 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: ( dybendals gate + 10 , gløshaugen syd + 3 , gløshaugen nord + 4 ) til nardo
+etter 1700 . 
+
+
+
+gps_origin(dybdahls_veg, 10).
+gps_origin(gløshaugen_syd, 3).
+gps_origin(gløshaugen_nord, 4).
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:placestat1
+trans/Found rule:toplace1
+trans/Found rule:busdepaftertimegps
+trans/Found rule:keepfromgpslocation
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(nil,nardo,nardosenteret))
+departure(free(539),nardosenteret,4,A)
+keepafter(1700,A,B)
+flag(keepfrombay)
+departure(free(539),user_location,4,C)
+keepafterwalking(C,D)
+connections(D,B,free(539),user_location,nardosenteret,tuesday,4,[time,nextaftertime(0),to,from],E,F)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+31 ms
+
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Dybdahls veg","busstopnumber":16010102,"busnumber":8,"time":1704,"duration":3,"destination":"Nardosenteret"} ,
+{"busstopname":"Gløshaugen Nord","busstopnumber":16010333,"busnumber":22,"time":1708,"duration":10,"destination":"Nardosenteret"} ,
+{"busstopname":"Gløshaugen Syd","busstopnumber":16010265,"busnumber":22,"time":1708,"duration":10,"destination":"Nardosenteret"} ]}
+
+Holdeplassen nærmest Nardo er  Nardosenteret .
+Buss 8 passerer  Dybdahls veg kl. 1704 
+og  kommer til  Nardosenteret ,  3 minutter senere .
+Buss 22 passerer  Gløshaugen Nord kl. 1708 
+og  kommer til  Nardosenteret ,  10 minutter senere .
+Buss 22 passerer  Gløshaugen Syd kl. 1708 
+og  kommer til  Nardosenteret ,  10 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: ( gløshaugen syd + 3 ) solsiden . 
+
+
+
+gps_origin(gløshaugen_syd, 3).
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:nilplaceeqto
+trans/Found rule:keepfromgpslocation
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(543),solsiden,4,A)
+flag(keepfrombay)
+departure(free(543),user_location,4,B)
+keepafterwalking(B,C)
+connections(C,A,free(543),user_location,solsiden,tuesday,4,[to,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+16 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Gløshaugen Syd","busstopnumber":16011265,"busnumber":22,"time":1241,"duration":18,"destination":"Solsiden"} ]}
+
+Buss 22 passerer  Gløshaugen Syd kl. 1241 , kl. 1311 , kl. 1341 , kl. 1411 , kl. 1441  og  kl. 1511 
+og  kommer til  Solsiden ,  18 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: første buss fra blakli til ringve skole etter kl 730 . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:tomorrow
+trans/Found rule:bego
+trans/Found rule:nottoday1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busdepaftertime3
+trans/Found rule:firstbus1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+atdate2(5,date(2013,6,26))
+atday(wednesday)
+message(assumetomorrow)
+message(date_isa_day(date(2013,6,26),wednesday))
+message(otherperiod(date(2013,6,26)))
+departure(free(545),blakli,5,A)
+keepafter(730,A,B)
+departure(free(549),ringve_skole,5,C)
+connections(B,C,free(545),blakli,ringve_skole,wednesday,5,[to,first(1),time,nextaftertime(0),from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+15 ms
+
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Blakli","busstopnumber":16011061,"busnumber":8,"time":752,"duration":12,"destination":"Lerkendal stadion"} ,
+{"busstopname":"Tempe kirke","busstopnumber":16010649,"busnumber":3,"time":811,"duration":25,"destination":"Ringve skole"} ]}
+
+Jeg antar du ønsker ruter for i morgen.
+26. Jun. 2013 er en  onsdag .
+Buss 8 går fra Blakli kl. 0752 til Lerkendal stadion kl. 0804 
+og  buss 3 går fra Tempe kirke kl. 0811 til Ringve skole kl. 0836 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra olav nygårds veg til prinsen kinosenter . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(552),olav_nygards_veg,4,A)
+departure(free(554),prinsen_kinosenter,4,B)
+connections(A,B,free(552),olav_nygards_veg,prinsen_kinosenter,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+47 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Olav Nygards veg","busstopnumber":16011348,"busnumber":19,"time":1239,"duration":15,"destination":"Prinsen Kinosenter"} ]}
+
+Buss 19 passerer  Olav Nygards veg kl. 1239 , kl. 1309 , kl. 1339 , kl. 1409 , kl. 1439  og  kl. 1509 
+og  kommer til  Prinsen kinosenter ,  15 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: til alf godagers vei 3 . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:tostreetstatknown
+trans/Found rule:toplace1
+trans/Found rule:keepfrombay
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(stop,alf_godagers_street-3,paul_skolemesters_veg))
+departure(free(559),paul_skolemesters_veg,4,A)
+flag(keepfrombay)
+departure(free(559),hovedterminalen,4,B)
+connections(B,A,free(559),hovedterminalen,paul_skolemesters_veg,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+359 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Munkegata - M2","busstopnumber":16010002,"busnumber":3,"time":1253,"duration":20,"destination":"Paul Skolemesters veg"} ,
+{"busstopname":"Torget","busstopnumber":16010012,"busnumber":3,"time":1254,"duration":19,"destination":"Paul Skolemesters veg"} ]}
+
+Holdeplassen nærmest Alf Godagers veg 3 er  Paul skolemesters veg .
+Buss 3 passerer  Munkegata M2 kl. 1253 , kl. 1338  og  kl. 1408 
+og  kommer til  Paul skolemesters veg ,  20 minutter senere .
+Buss 3 passerer  Torget kl. 1254 , kl. 1339  og  kl. 1409 
+og  kommer til  Paul skolemesters veg ,  19 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss fra ila til vikåsen på lørdag . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:setexdate1
+trans/Found rule:nottoday1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+atdate2(8,date(2013,6,29))
+atday(saturday)
+message(date_isa_day(date(2013,6,29),saturday))
+message(otherperiod(date(2013,6,29)))
+departure(free(561),ila,8,A)
+departure(free(567),vikåsen,8,B)
+connections(A,B,free(561),ila,vikåsen,saturday,8,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+16 ms
+
+[depnode(627,627,9,9,618,bus_0018_0116,18,9,ila),depnode(727,727,9,9,718,bus_0018_0117,18,9,ila),depnode(827,827,9,9,818,bus_0018_0118,18,9,ila),depnode(927,927,9,9,918,bus_0018_0119,18,9,ila),depnode(957,957,9,9,948,bus_0018_0120,18,9,ila),depnode(1027,1027,9,9,1018,bus_0018_0121,18,9,ila),depnode(1057,1057,9,9,1048,bus_0018_0122,18,9,ila),depnode(1127,1127,9,9,1118,bus_0018_0123,18,9,ila),depnode(1157,1157,9,9,1148,bus_0018_0124,18,9,ila),depnode(1227,1227,9,9,1218,bus_0018_0125,18,9,ila),depnode(1257,1257,9,9,1248,bus_0018_0126,18,9,ila),depnode(1327,1327,9,9,1318,bus_0018_0127,18,9,ila),depnode(1357,1357,9,9,1348,bus_0018_0128,18,9,ila),depnode(1427,1427,9,9,1418,bus_0018_0129,18,9,ila),depnode(1457,1457,9,9,1448,bus_0018_0130,18,9,ila),depnode(1527,1527,9,9,1518,bus_0018_0131,18,9,ila),depnode(1557,1557,9,9,1548,bus_0018_0132,18,9,ila),depnode(1627,1627,9,9,1618,bus_0018_0133,18,9,ila),depnode(1657,1657,9,9,1648,bus_0018_0134,18,9,ila),depnode(1757,1757,9,9,1748,bus_0018_0135,18,9,ila),depnode(1857,1857,9,9,1848,bus_0018_0136,18,9,ila),depnode(1957,1957,9,9,1948,bus_0018_0137,18,9,ila),depnode(2057,2057,9,9,2048,bus_0018_0138,18,9,ila),depnode(2157,2157,9,9,2148,bus_0018_0139,18,9,ila),depnode(2257,2257,9,9,2248,bus_0018_0140,18,9,ila),depnode(2357,2357,9,9,2348,bus_0018_0141,18,9,ila)]
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Ila","busstopnumber":16011192,"busnumber":18,"time":627,"duration":34,"destination":"vikåsen"} ,
+{"busstopname":"Ila","busstopnumber":16011192,"busnumber":18,"time":2357,"duration":34,"destination":"vikåsen"} ]}
+
+29. Jun. 2013 er en  lørdag .
+Første buss , nummer 18 passerer  Ila kl. 0627 
+og  kommer til  Vikåsen kl. 0701 .
+Siste buss , nummer 18 passerer  Ila kl. 2357 
+og  kommer til  Vikåsen kl. 0031 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra berg studentby til lerkendal . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(570),berg_studentby,4,A)
+departure(free(573),lerkendal,4,B)
+connections(A,B,free(570),berg_studentby,lerkendal,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+16 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Berg studentby","busstopnumber":16011366,"busnumber":60,"time":1233,"duration":0,"destination":"lerkendal"} ,
+{"busstopname":"Berg studentby","busstopnumber":16011366,"busnumber":36,"time":1254,"duration":0,"destination":"lerkendal"} ]}
+
+Buss 60 passerer  Berg studentby kl. 1233 , kl. 1303  og  kl. 1333 
+og  kommer til  Lerkendal ,  0-1 minutter senere .
+Buss 36 passerer  Berg studentby kl. 1254 , kl. 1324  og  kl. 1354 
+og  kommer til  Lerkendal ,  0-1 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 36 fra lerkendal til berg studentby . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(36,lerkendal,4,A)
+departure(free(576),berg_studentby,4,B)
+connections(A,B,36,lerkendal,berg_studentby,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+16 ms
+
+{"transfer":"true" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Lerkendal stadion","busstopnumber":16011264,"busnumber":36,"time":1255,"duration":1,"destination":"Prof. Brochs gate"} ,
+{"busstopname":"Prof. Brochs gate","busstopnumber":16010376,"busnumber":66,"time":1306,"duration":2,"destination":"Berg studentby"} ]}
+
+Buss 36 går fra Lerkendal stadion kl. 1255 til Prof. Brochs gate kl. 1256 
+og  buss 66 går fra Prof. Brochs gate kl. 1306 til Berg studentby kl. 1308 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: jeg ser frem til videre samarbeide i 2009 og jeg må si jeg er stolt av å få
+være til hjelp med å drifte bussorakelet , som jeg personlig anser for å være
+norges beste system innen publikumsopplysning for kollektivtransport . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:flatter3
+
+*** Application program ***
+
+message(thanks)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Takk.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: rute 36 fra være østre til sentrum . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:neverpassfromessage
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(594),være_østre,4,A)
+message(neverpasses(36,være_østre))
+departure(free(595),hovedterminalen,4,B)
+connections(A,B,free(594),være_østre,hovedterminalen,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+218 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Være Østre","busstopnumber":16011781,"busnumber":6,"time":1252,"duration":26,"destination":"Sentrumsterminalen"} ]}
+
+Buss 36 passerer aldri  Være Østre .
+Buss 6 passerer  Være Østre kl. 1252 , kl. 1322 , kl. 1352 , kl. 1422 , kl. 1452  og  kl. 1522 
+og  kommer til  Sentrumsterminalen ,  25-29 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: nattbuss til nardo etter kvart på ett . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:nightbusquery3
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:nightbusmeanstomorrow
+trans/Found rule:nottoday1
+trans/Found rule:placestat1
+trans/Found rule:toplace1
+trans/Found rule:keepfrombay
+trans/Found rule:busdepaftertimegps
+trans/Found rule:connectionexplicit
+trans/Found rule:setnightbusoption
+
+*** Application program ***
+
+flag(nightbusflag)
+atday(wednesday)
+atdate2(5,date(2013,6,26))
+message(date_isa_day(date(2013,6,26),wednesday))
+message(otherperiod(date(2013,6,26)))
+message(nearest_station(nil,nardo,nardosenteret))
+departure(free(602),nardosenteret,5,A)
+keepafter(45,A,B)
+flag(keepfrombay)
+departure(free(602),hovedterminalen,5,C)
+connections(C,B,free(602),hovedterminalen,nardosenteret,wednesday,5,[nightbus,time,nextaftertime(0),to,from],D,E)
+flag(exit)
+flag(nightbusoption)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+26. Jun. 2013 er en  onsdag .
+Holdeplassen nærmest Nardo er  Nardosenteret .
+Jeg kan ikke finne flere ruteforbindelser natt til onsdag kl. 0045 .
+Nattbussen går bare natt til lørdag og søndag.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: neste rute 36 fra dagvoll ? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:keeptobay
+trans/Found rule:nextbus0
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(36,ntnu_dragvoll,4,A)
+keepafter(1225,A,B)
+flag(keeptobay)
+departure(free(606),hovedterminalen,4,C)
+connections(B,C,36,ntnu_dragvoll,hovedterminalen,tuesday,4,[to,next(0),from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+218 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"NTNU Dragvoll","busstopnumber":16011533,"busnumber":36,"time":1246,"duration":14,"destination":"Sentrumsterminalen"} ]}
+
+Buss 36 passerer  NTNU Dragvoll kl. 1246 , kl. 1316 , kl. 1346 , kl. 1416 , kl. 1446  og  kl. 1516 
+og  kommer til  Sentrumsterminalen ,  14-16 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra klæbu til munkegata etter kl . 21 . 40 . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:placestat1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busdepaftertime3
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(nil,munkegata,hovedterminalen))
+departure(free(609),klæbu,4,A)
+keepafter(2140,A,B)
+departure(free(612),hovedterminalen,4,C)
+connections(B,C,free(609),klæbu,hovedterminalen,tuesday,4,[to,time,nextaftertime(0),from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+281 ms
+
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Klæbu sentrum","busstopnumber":16627018,"busnumber":47,"time":2205,"duration":22,"destination":"City Syd Østre"} ,
+{"busstopname":"City Syd Østre","busstopnumber":16011088,"busnumber":46,"time":2230,"duration":12,"destination":"Torget"} ]}
+
+Holdeplassen nærmest Munkegata er  Sentrumsterminalen .
+Buss 47 går fra Klæbu sentrum kl. 2205 til City Syd Østre kl. 2227 
+og  buss 46 går fra City Syd Østre kl. 2230 til Torget kl. 2242 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: neste sentrum nardo . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:nilnilsequence
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:placestat1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:nextbus0
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(nil,nardo,nardosenteret))
+departure(free(616),hovedterminalen,4,A)
+keepafter(1225,A,B)
+departure(free(619),nardosenteret,4,C)
+connections(B,C,free(616),hovedterminalen,nardosenteret,tuesday,4,[to,next(0),from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+187 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Munkegata - M2","busstopnumber":16010002,"busnumber":22,"time":1230,"duration":18,"destination":"Nardosenteret"} ,
+{"busstopname":"Torget","busstopnumber":16010012,"busnumber":22,"time":1231,"duration":17,"destination":"Nardosenteret"} ,
+{"busstopname":"Dronningens gate - D3","busstopnumber":16010008,"busnumber":8,"time":1240,"duration":12,"destination":"Nardosenteret"} ,
+{"busstopname":"Torget","busstopnumber":16010012,"busnumber":8,"time":1241,"duration":11,"destination":"Nardosenteret"} ]}
+
+Holdeplassen nærmest Nardo er  Nardosenteret .
+Buss 22 passerer  Munkegata M2 kl. 1230  og  kl. 1300 
+og  kommer til  Nardosenteret ,  18 minutter senere .
+Buss 22 passerer  Torget kl. 1231  og  kl. 1301 
+og  kommer til  Nardosenteret ,  17 minutter senere .
+Buss 8 passerer  Dronningens gate D3 kl. 1240 
+og  kommer til  Nardosenteret ,  12 minutter senere .
+Buss 8 passerer  Torget kl. 1241 
+og  kommer til  Nardosenteret ,  11 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss fra sentrum til klæbu på søndag etter 1610 . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:setexdate1
+trans/Found rule:nottoday1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busdepaftertime3
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+atdate2(9,date(2013,6,30))
+atday(sunday)
+message(date_isa_day(date(2013,6,30),sunday))
+message(otherperiod(date(2013,6,30)))
+departure(free(620),hovedterminalen,9,A)
+keepafter(1610,A,B)
+departure(free(626),klæbu,9,C)
+connections(B,C,free(620),hovedterminalen,klæbu,sunday,9,[to,time,nextaftertime(0),from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+62 ms
+
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Torget","busstopnumber":16010012,"busnumber":46,"time":2241,"duration":13,"destination":"City Syd Vestre"} ,
+{"busstopname":"City Syd Vestre","busstopnumber":16010088,"busnumber":47,"time":2328,"duration":21,"destination":"Klæbu sentrum"} ]}
+
+30. Jun. 2013 er en  søndag .
+Buss 46 går fra Torget kl. 2241 til City Syd Vestre kl. 2254 
+og  buss 47 går fra City Syd Vestre kl. 2328 til Klæbu sentrum kl. 2349 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 5 til dragvoll . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:toplace1
+trans/Found rule:keepfrombaywithbus
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(628),dragvoll,4,A)
+flag(keepfrombay)
+departure(5,hovedterminalen,4,B)
+connections(B,A,bus,hovedterminalen,dragvoll,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+15 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Dronningens gate - D3","busstopnumber":16010008,"busnumber":5,"time":1235,"duration":17,"destination":"Dragvoll"} ,
+{"busstopname":"Torget","busstopnumber":16010012,"busnumber":5,"time":1236,"duration":16,"destination":"Dragvoll"} ]}
+
+Buss 5 passerer  Dronningens gate D3 kl. 1235 , kl. 1250  og  kl. 1305 
+og  kommer til  Dragvoll ,  17 minutter senere .
+Buss 5 passerer  Torget kl. 1236 , kl. 1251  og  kl. 1306 
+og  kommer til  Dragvoll ,  16 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går buss 3 til ts på lørdag ? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:setexdate1
+trans/Found rule:nottoday1
+trans/Found rule:toplace1
+trans/Found rule:keepfrombaywithbus
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+atdate2(8,date(2013,6,29))
+atday(saturday)
+message(date_isa_day(date(2013,6,29),saturday))
+message(otherperiod(date(2013,6,29)))
+departure(free(633),ts,8,A)
+flag(keepfrombay)
+departure(3,hovedterminalen,8,B)
+connections(B,A,bus,hovedterminalen,ts,saturday,8,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+[depnode(646,646,23,23,623,bus_0003_0104,3,26,torget),depnode(648,655,25,32,623,bus_0003_0104,3,27,munkegata_m5),depnode(746,746,23,23,723,bus_0003_0105,3,26,torget),depnode(748,755,25,32,723,bus_0003_0105,3,27,munkegata_m5),depnode(846,846,23,23,823,bus_0003_0106,3,26,torget),depnode(848,855,25,32,823,bus_0003_0106,3,27,munkegata_m5),depnode(946,946,23,23,923,bus_0003_0107,3,26,torget),depnode(948,955,25,32,923,bus_0003_0107,3,27,munkegata_m5),depnode(1016,1016,23,23,953,bus_0003_0108,3,26,torget),depnode(1018,1025,25,32,953,bus_0003_0108,3,27,munkegata_m5),depnode(1046,1046,23,23,1023,bus_0003_0109,3,26,torget),depnode(1048,1055,25,32,1023,bus_0003_0109,3,27,munkegata_m5),depnode(1116,1116,23,23,1053,bus_0003_0110,3,26,torget),depnode(1118,1125,25,32,1053,bus_0003_0110,3,27,munkegata_m5),depnode(1146,1146,23,23,1123,bus_0003_0111,3,26,torget),depnode(1148,1155,25,32,1123,bus_0003_0111,3,27,munkegata_m5),depnode(1216,1216,23,23,1153,bus_0003_0112,3,26,torget),depnode(1218,1225,25,32,1153,bus_0003_0112,3,27,munkegata_m5),depnode(1246,1246,23,23,1223,bus_0003_0113,3,26,torget),depnode(1248,1255,25,32,1223,bus_0003_0113,3,27,munkegata_m5),depnode(1316,1316,23,23,1253,bus_0003_0114,3,26,torget),depnode(1318,1325,25,32,1253,bus_0003_0114,3,27,munkegata_m5),depnode(1346,1346,23,23,1323,bus_0003_0115,3,26,torget),depnode(1348,1355,25,32,1323,bus_0003_0115,3,27,munkegata_m5),depnode(1431,1431,23,23,1408,bus_0003_0116,3,26,torget),depnode(1433,1440,25,32,1408,bus_0003_0116,3,27,munkegata_m5),depnode(1501,1501,23,23,1438,bus_0003_0117,3,26,torget),depnode(1503,1510,25,32,1438,bus_0003_0117,3,27,munkegata_m5),depnode(1531,1531,23,23,1508,bus_0003_0118,3,26,torget),depnode(1533,1540,25,32,1508,bus_0003_0118,3,27,munkegata_m5),depnode(1601,1601,23,23,1538,bus_0003_0119,3,26,torget),depnode(1603,1610,25,32,1538,bus_0003_0119,3,27,munkegata_m5),depnode(1631,1631,23,23,1608,bus_0003_0120,3,26,torget),depnode(1633,1640,25,32,1608,bus_0003_0120,3,27,munkegata_m5),depnode(1705,1705,27,27,1638,bus_0003_0121,3,30,torget),depnode(1707,1710,29,32,1638,bus_0003_0121,3,31,munkegata_m5),depnode(1805,1805,27,27,1738,bus_0003_0122,3,30,torget),depnode(1807,1810,29,32,1738,bus_0003_0122,3,31,munkegata_m5),depnode(1905,1905,27,27,1838,bus_0003_0123,3,30,torget),depnode(1907,1910,29,32,1838,bus_0003_0123,3,31,munkegata_m5),depnode(2005,2005,27,27,1938,bus_0003_0124,3,30,torget),depnode(2007,2010,29,32,1938,bus_0003_0124,3,31,munkegata_m5),depnode(2105,2105,27,27,2038,bus_0003_0125,3,30,torget),depnode(2107,2110,29,32,2038,bus_0003_0125,3,31,munkegata_m5),depnode(2205,2205,27,27,2138,bus_0003_0126,3,30,torget),depnode(2207,2210,29,32,2138,bus_0003_0126,3,31,munkegata_m5),depnode(2305,2305,27,27,2238,bus_0003_0127,3,30,torget),depnode(2307,2310,29,32,2238,bus_0003_0127,3,31,munkegata_m5),depnode(2405,2405,27,27,2338,bus_0003_0128,3,30,torget),depnode(2407,2410,29,32,2338,bus_0003_0128,3,31,munkegata_m5)]
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Torget","busstopnumber":16011012,"busnumber":3,"time":646,"duration":12,"destination":"ts"} ,
+{"busstopname":"Munkegata - M5","busstopnumber":16010005,"busnumber":3,"time":2410,"duration":3,"destination":"ts"} ]}
+
+29. Jun. 2013 er en  lørdag .
+Første buss , nummer 3 passerer  Torget kl. 0646 
+og  kommer til  Trondheim S 13 kl. 0658 .
+Siste buss , nummer 3 passerer  Munkegata M5 kl. 0010 
+og  kommer til  Trondheim S 13 kl. 0013 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går neste 2 busser til dragvoll ? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:toplace1
+trans/Found rule:keepfrombay
+trans/Found rule:nextnbuses
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(639),dragvoll,4,A)
+timenow2(0,B)
+keepafter(B,A,C)
+flag(keepfrombay)
+departure(free(639),hovedterminalen,4,D)
+connections(D,C,free(639),hovedterminalen,dragvoll,tuesday,4,[next(2),to,from],E,F)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+343 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Dronningens gate - D3","busstopnumber":16010008,"busnumber":5,"time":1235,"duration":17,"destination":"Dragvoll"} ,
+{"busstopname":"Torget","busstopnumber":16010012,"busnumber":5,"time":1236,"duration":16,"destination":"Dragvoll"} ,
+{"busstopname":"Torget","busstopnumber":16011012,"busnumber":9,"time":1240,"duration":35,"destination":"Dragvoll"} ,
+{"busstopname":"Munkegata - M5","busstopnumber":16010005,"busnumber":9,"time":1253,"duration":22,"destination":"Dragvoll"} ]}
+
+Buss 5 passerer  Dronningens gate D3 kl. 1235  og  kl. 1250 
+og  kommer til  Dragvoll ,  17 minutter senere .
+Buss 5 passerer  Torget kl. 1236  og  kl. 1251 
+og  kommer til  Dragvoll ,  16 minutter senere .
+Buss 9 passerer  Torget kl. 1240 
+og  kommer til  Dragvoll ,  35 minutter senere .
+Buss 9 passerer  Munkegata M5 kl. 1253 
+og  kommer til  Dragvoll ,  22 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går neste buss 5 til sentrum fra dragvoll ? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:placestatdepend
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:nextbus0
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(A,sentrum,hovedterminalen))
+departure(5,dragvoll,4,B)
+keepafter(1225,B,C)
+departure(free(644),hovedterminalen,4,D)
+connections(C,D,5,dragvoll,hovedterminalen,tuesday,4,[to,next(0),from],E,F)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+219 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Dragvoll","busstopnumber":16010103,"busnumber":5,"time":1237,"duration":15,"destination":"Sentrumsterminalen"} ]}
+
+Holdeplassen nærmest sentrum er  Sentrumsterminalen .
+Buss 5 passerer  Dragvoll kl. 1237 , kl. 1252 , kl. 1307 , kl. 1322 , kl. 1337  og  kl. 1352 
+og  kommer til  Sentrumsterminalen ,  15-17 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går neste buss til dragvoll fra sentrum ? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:nextbus0
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(645),hovedterminalen,4,A)
+keepafter(1225,A,B)
+departure(free(650),dragvoll,4,C)
+connections(B,C,free(645),hovedterminalen,dragvoll,tuesday,4,[to,next(0),from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+187 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Dronningens gate - D3","busstopnumber":16010008,"busnumber":5,"time":1235,"duration":17,"destination":"Dragvoll"} ,
+{"busstopname":"Torget","busstopnumber":16010012,"busnumber":5,"time":1236,"duration":16,"destination":"Dragvoll"} ,
+{"busstopname":"Torget","busstopnumber":16011012,"busnumber":9,"time":1240,"duration":35,"destination":"Dragvoll"} ,
+{"busstopname":"Munkegata - M5","busstopnumber":16010005,"busnumber":9,"time":1253,"duration":22,"destination":"Dragvoll"} ]}
+
+Buss 5 passerer  Dronningens gate D3 kl. 1235  og  kl. 1250 
+og  kommer til  Dragvoll ,  17 minutter senere .
+Buss 5 passerer  Torget kl. 1236  og  kl. 1251 
+og  kommer til  Dragvoll ,  16 minutter senere .
+Buss 9 passerer  Torget kl. 1240 
+og  kommer til  Dragvoll ,  35 minutter senere .
+Buss 9 passerer  Munkegata M5 kl. 1253 
+og  kommer til  Dragvoll ,  22 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: rute 9 fra lundåsen kl 645 på hverdager . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:standardclock
+trans/Found rule:doubleshuntbe1
+trans/Found rule:fromclocksequence
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:unksetexweekday
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+message(mustknow(day))
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Du må oppgi en dag i slike spørsmål .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 5 fra buenget til sentrum . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:placestatdepend
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(A,sentrum,hovedterminalen))
+departure(5,buenget,4,B)
+departure(free(655),hovedterminalen,4,C)
+connections(B,C,5,buenget,hovedterminalen,tuesday,4,[to,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+218 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Buenget","busstopnumber":16010074,"busnumber":5,"time":1225,"duration":19,"destination":"Sentrumsterminalen"} ]}
+
+Holdeplassen nærmest sentrum er  Sentrumsterminalen .
+Buss 5 passerer  Buenget kl. 1225 , kl. 1240 , kl. 1255 , kl. 1310 , kl. 1325  og  kl. 1340 
+og  kommer til  Sentrumsterminalen ,  19-26 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: neste 3 busser fra glos til sentrum etter 2004 . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:placestat1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:nextnbusaftertime
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(nil,gløshaugen,gløshaugen_syd))
+departure(free(656),gløshaugen_syd,4,A)
+keepafter(2004,A,B)
+departure(free(661),hovedterminalen,4,C)
+connections(B,C,free(656),gløshaugen_syd,hovedterminalen,tuesday,4,[to,nextaftertime(3),time,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+280 ms
+
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Gløshaugen Syd","busstopnumber":16011265,"busnumber":22,"time":2011,"duration":7,"destination":"Sentrumsterminalen"} ,
+{"busstopname":"Gløshaugen Syd","busstopnumber":16011265,"busnumber":5,"time":2031,"duration":6,"destination":"Sentrumsterminalen"} ]}
+
+Holdeplassen nærmest Gløshaugen er  Gløshaugen Syd .
+Buss 22 passerer  Gløshaugen Syd kl. 2011 
+og  kommer til  Sentrumsterminalen ,  7-9 minutter senere .
+Buss 5 passerer  Gløshaugen Syd kl. 2031  og  kl. 2101 
+og  kommer til  Sentrumsterminalen ,  6-8 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: hvor stopper flybussen . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:airport1
+
+*** Application program ***
+
+message(noinfoabout(airbus))
+message(answer(db_reply(flybussen,webaddress,[http://www.flybussen.no/trondheim/,http://www.vaernesekspressen.no/])))
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Jeg har ingen informasjon om flybuss .
+Flybussen har nettadresse 
+  http://www.flybussen.no/trondheim/, http://www.vaernesekspressen.no/
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: jernbanetorget til værnes . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:airport2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:norouteinfo
+
+*** Application program ***
+
+message(noinfoabout(airbus))
+message(answer(db_reply(flybussen,webaddress,[http://www.flybussen.no/trondheim/,http://www.vaernesekspressen.no/])))
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Jeg har ingen informasjon om flybuss .
+Flybussen har nettadresse 
+  http://www.flybussen.no/trondheim/, http://www.vaernesekspressen.no/
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når må jeg ta bussen fra torget for å være på gammel - lina 1245 ? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:standardclock
+trans/Found rule:doubleshunt
+trans/Found rule:fromplaceattoplaceatt
+trans/Found rule:idotake
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busarrjustbeforetime
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(669),hovedterminalen,4,A)
+departure(free(674),gammel_lina,4,B)
+keepbefore1(1245,B,C)
+connections(A,C,free(669),hovedterminalen,gammel_lina,tuesday,4,[lastcorr,time,to,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Jeg finner ingen ruteforbindelser på tirsdag før 1245 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: stadsing . dahlsgt . 5 . til jonsvannsveien . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:streetstatknown
+trans/Found rule:nilplaceeqfromreplace
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(nil,stadsing_dahls_street-5,rosenborg_skole))
+departure(free(677),rosenborg_skole,4,A)
+departure(free(680),jonsvannsveien,4,B)
+connections(A,B,free(677),rosenborg_skole,jonsvannsveien,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Rosenborg skole","busstopnumber":16010403,"busnumber":63,"time":1229,"duration":3,"destination":"Jonsvannsveien"} ]}
+
+Holdeplassen nærmest Stadsing. Dahls gate 5 er  Rosenborg skole .
+Buss 63 passerer  Rosenborg skole kl. 1229 , kl. 1319 , kl. 1409 , kl. 1459 , kl. 1529  og  kl. 1559 
+og  kommer til  Jonsvannsveien ,  3 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: går det en nr . 36 i halv åtte tiden ? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:tomorrow
+trans/Found rule:bego
+trans/Found rule:nottoday1
+trans/Found rule:mustknowplace0
+
+*** Application program ***
+
+atdate2(5,date(2013,6,26))
+atday(wednesday)
+message(assumetomorrow)
+message(date_isa_day(date(2013,6,26),wednesday))
+message(otherperiod(date(2013,6,26)))
+message(mustknow(place))
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Jeg antar du ønsker ruter for i morgen.
+26. Jun. 2013 er en  onsdag .
+Du må oppgi et sted i slike spørsmål .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss fra dragvoll til jakobsli . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(682),dragvoll,4,A)
+departure(free(686),jakobsli,4,B)
+connections(A,B,free(682),dragvoll,jakobsli,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+16 ms
+
+{"transfer":"true" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Dragvoll","busstopnumber":16010103,"busnumber":9,"time":1245,"duration":11,"destination":"Strindheim Hageby"} ,
+{"busstopname":"Strindheim Hageby","busstopnumber":16010475,"busnumber":18,"time":1316,"duration":7,"destination":"Jakobsli"} ]}
+
+Buss 9 går fra Dragvoll kl. 1245 til Strindheim Hageby kl. 1256 
+og  buss 18 går fra Strindheim Hageby kl. 1316 til Jakobsli kl. 1323 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går de neste bussene fra høgskoleringen til sentrum ? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:nextbus0
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(687),høgskoleringen,4,A)
+keepafter(1225,A,B)
+departure(free(693),hovedterminalen,4,C)
+connections(B,C,free(687),høgskoleringen,hovedterminalen,tuesday,4,[to,next(0),from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+218 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Høgskoleringen","busstopnumber":16011197,"busnumber":5,"time":1233,"duration":4,"destination":"Sentrumsterminalen"} ,
+{"busstopname":"Høgskoleringen","busstopnumber":16010197,"busnumber":63,"time":1234,"duration":3,"destination":"Sentrumsterminalen"} ,
+{"busstopname":"Høgskoleringen","busstopnumber":16011197,"busnumber":22,"time":1243,"duration":5,"destination":"Sentrumsterminalen"} ]}
+
+Buss 5 passerer  Høgskoleringen kl. 1233 , kl. 1248  og  kl. 1303 
+og  kommer til  Sentrumsterminalen ,  4-6 minutter senere .
+Buss 63 passerer  Høgskoleringen kl. 1234  og  kl. 1310 
+og  kommer til  Sentrumsterminalen ,  3-18 minutter senere .
+Buss 22 passerer  Høgskoleringen kl. 1243 
+og  kommer til  Sentrumsterminalen ,  5-7 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss fra gløshaugen til rosenborg . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:placestat1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(nil,gløshaugen,gløshaugen_syd))
+departure(free(694),gløshaugen_syd,4,A)
+departure(free(699),rosenborg,4,B)
+connections(A,B,free(694),gløshaugen_syd,rosenborg,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+{"transfer":"true" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Gløshaugen Syd","busstopnumber":16011265,"busnumber":5,"time":1301,"duration":2,"destination":"Høgskoleringen"} ,
+{"busstopname":"Høgskoleringen","busstopnumber":16010197,"busnumber":63,"time":1310,"duration":9,"destination":"Rosenborg skole"} ]}
+
+Holdeplassen nærmest Gløshaugen er  Gløshaugen Syd .
+Buss 5 går fra Gløshaugen Syd kl. 1301 til Høgskoleringen kl. 1303 
+og  buss 63 går fra Høgskoleringen kl. 1310 til Rosenborg skole kl. 1319 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 10 fra sentrum kl 950 til skistua på lørdag . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:standardclock
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:fromclocksequence
+trans/Found rule:bego
+trans/Found rule:setexdate1
+trans/Found rule:nottoday1
+trans/Found rule:placestatdepend
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busdepaftertime3
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+atdate2(8,date(2013,6,29))
+atday(saturday)
+message(date_isa_day(date(2013,6,29),saturday))
+message(otherperiod(date(2013,6,29)))
+message(nearest_station(A,sentrum,hovedterminalen))
+departure(10,hovedterminalen,8,B)
+keepafter(950,B,C)
+departure(free(703),skistua,8,D)
+connections(C,D,10,hovedterminalen,skistua,saturday,8,[to,time,nextaftertime(0),from],E,F)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Dronningens gate - D1","busstopnumber":16010006,"busnumber":10,"time":1005,"duration":18,"destination":"Skistua"} ]}
+
+29. Jun. 2013 er en  lørdag .
+Holdeplassen nærmest sentrum er  Sentrumsterminalen .
+Buss 10 passerer  Dronningens gate D1 kl. 1005  og  kl. 1350 
+og  kommer til  Skistua ,  18 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går buss nr 60 fra sentrum forbi berg . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:placestatdepend
+trans/Found rule:fromplace1
+trans/Found rule:neverpasstostationmessage
+trans/Found rule:underspecstatresolve
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:norouteinfo
+
+*** Application program ***
+
+message(place_resolve(berg,[berg_prestegård,berg_studentby,østre_berg]))
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Stedet Berg er flertydig .
+Vennligst bruk et mer presist navn. 
+Mulige alternativer er: Berg Prestegård , Berg studentby , Østre Berg  .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 66 fra strindheim til saupstadsenteret etter 1646 . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:neverpasstostationmessage
+trans/Found rule:busdepaftertime3
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(66,strindheim,4,A)
+keepafter(1646,A,B)
+departure(free(710),saupstadsenteret,4,C)
+message(neverpasses(66,saupstadsenteret))
+connections(B,C,66,strindheim,saupstadsenteret,tuesday,4,[to,time,nextaftertime(0),from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+16 ms
+
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Strindheim","busstopnumber":16011472,"busnumber":66,"time":1709,"duration":4,"destination":"Strandveien"} ,
+{"busstopname":"Strandveien","busstopnumber":16010470,"busnumber":4,"time":1725,"duration":34,"destination":"Saupstadsenteret"} ]}
+
+Buss 66 passerer aldri  Saupstadsenteret .
+Buss 66 går fra Strindheim kl. 1709 til Strandveien kl. 1713 
+og  buss 4 går fra Strandveien kl. 1725 til Saupstadsenteret kl. 1759 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra kbs til saupstadsenteret før kl 1708 . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:standardclock
+trans/Found rule:fromtoclocksequence
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:placestat1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busarrjustbeforetime
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(nil,kbs,strindheim))
+departure(free(713),strindheim,4,A)
+departure(free(715),saupstadsenteret,4,B)
+keepbefore1(1708,B,C)
+connections(A,C,free(713),strindheim,saupstadsenteret,tuesday,4,[lastcorr,time,to,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+31 ms
+
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Strindheim","busstopnumber":16011472,"busnumber":7,"time":1628,"duration":11,"destination":"Munkegata - M2"} ,
+{"busstopname":"Torget","busstopnumber":16010012,"busnumber":4,"time":1644,"duration":15,"destination":"Saupstadsenteret"} ]}
+
+Holdeplassen nærmest KBS er  Strindheim .
+Buss 7 går fra Strindheim kl. 1628 til Munkegata M2 kl. 1639 
+og  buss 4 går fra Torget kl. 1644 til Saupstadsenteret kl. 1659 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra kbs til saupstadsenteret etter kl 1646 . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:placestat1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busdepaftertime3
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(nil,kbs,strindheim))
+departure(free(718),strindheim,4,A)
+keepafter(1646,A,B)
+departure(free(720),saupstadsenteret,4,C)
+connections(B,C,free(718),strindheim,saupstadsenteret,tuesday,4,[to,time,nextaftertime(0),from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+32 ms
+
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Strindheim","busstopnumber":16011472,"busnumber":9,"time":1657,"duration":11,"destination":"Munkegata - M2"} ,
+{"busstopname":"Torget","busstopnumber":16010012,"busnumber":4,"time":1714,"duration":15,"destination":"Saupstadsenteret"} ]}
+
+Holdeplassen nærmest KBS er  Strindheim .
+Buss 9 går fra Strindheim kl. 1657 til Munkegata M2 kl. 1708 
+og  buss 4 går fra Torget kl. 1714 til Saupstadsenteret kl. 1729 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 9 fra sentrum til cecilienborg . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:placestatdepend
+trans/Found rule:fromplace1
+trans/Found rule:neverpasstostationmessage
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(A,sentrum,hovedterminalen))
+departure(9,hovedterminalen,4,B)
+departure(free(724),cecilienborg,4,C)
+message(neverpasses(9,cecilienborg))
+connections(B,C,9,hovedterminalen,cecilienborg,tuesday,4,[to,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+16 ms
+
+{"transfer":"true" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Torget","busstopnumber":16010012,"busnumber":9,"time":1246,"duration":2,"destination":"Prinsen Kinosenter"} ,
+{"busstopname":"Prinsen Kinosenter","busstopnumber":16010011,"busnumber":6,"time":1253,"duration":3,"destination":"cecilienborg"} ]}
+
+Holdeplassen nærmest sentrum er  Sentrumsterminalen .
+Buss 9 passerer aldri  Cecilienborg .
+Buss 9 går fra Torget kl. 1246 til Prinsen kinosenter kl. 1248 
+og  buss 6 går fra Prinsen kinosenter kl. 1253 til Cecilienborg kl. 1256 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: osloveien . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:streetstatknown
+trans/Found rule:nilplaceeqto
+trans/Found rule:keepfrombay
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(nil,oslo_street,tvetestien))
+departure(free(727),tvetestien,4,A)
+flag(keepfrombay)
+departure(free(727),hovedterminalen,4,B)
+connections(B,A,free(727),hovedterminalen,tvetestien,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+375 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Dronningens gate D2","busstopnumber":16010007,"busnumber":5,"time":1230,"duration":5,"destination":"Tvetestien"} ,
+{"busstopname":"Torget","busstopnumber":16011012,"busnumber":5,"time":1237,"duration":13,"destination":"Tvetestien"} ,
+{"busstopname":"Torget","busstopnumber":16011012,"busnumber":8,"time":1240,"duration":10,"destination":"Tvetestien"} ,
+{"busstopname":"Dronningens gate - D1","busstopnumber":16010006,"busnumber":8,"time":1245,"duration":5,"destination":"Tvetestien"} ]}
+
+Holdeplassen nærmest Osloveien er  Tvetestien .
+Buss 5 passerer  Dronningens gate D2 kl. 1230  og  kl. 1245 
+og  kommer til  Tvetestien ,  5 minutter senere .
+Buss 5 passerer  Torget kl. 1237  og  kl. 1252 
+og  kommer til  Tvetestien ,  13 minutter senere .
+Buss 8 passerer  Torget kl. 1240 
+og  kommer til  Tvetestien ,  10 minutter senere .
+Buss 8 passerer  Dronningens gate D1 kl. 1245 
+og  kommer til  Tvetestien ,  5 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss fra tonstadkrysset til klæbu . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(729),tonstadkrysset,4,A)
+departure(free(734),klæbu,4,B)
+connections(A,B,free(729),tonstadkrysset,klæbu,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+{"transfer":"true" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"tonstadkrysset","busstopnumber":16010507,"busnumber":19,"time":1355,"duration":28,"destination":"Studentersamfundet"} ,
+{"busstopname":"Studentersamfundet","busstopnumber":16010476,"busnumber":47,"time":1444,"duration":32,"destination":"Klæbu sentrum"} ]}
+
+Buss 19 går fra Tonstadkrysset kl. 1355 til Studentersamfundet kl. 1423 
+og  buss 47 går fra Studentersamfundet kl. 1444 til Klæbu sentrum kl. 1516 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra klæbu til sentrum etter kl 1100 på mandag . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:setexdate1
+trans/Found rule:nottoday1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busdepaftertime3
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+atdate2(10,date(2013,7,1))
+atday(monday)
+message(date_isa_day(date(2013,7,1),monday))
+message(otherperiod(date(2013,7,1)))
+departure(free(738),klæbu,10,A)
+keepafter(1100,A,B)
+departure(free(741),hovedterminalen,10,C)
+connections(B,C,free(738),klæbu,hovedterminalen,monday,10,[to,time,nextaftertime(0),from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+203 ms
+
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Klæbu sentrum","busstopnumber":16626018,"busnumber":254,"time":1115,"duration":30,"destination":"Sentrumsterminalen"} ,
+{"busstopname":"Klæbu sentrum","busstopnumber":16627018,"busnumber":47,"time":1525,"duration":35,"destination":"Sentrumsterminalen"} ]}
+
+1. Jul. 2013 er en  mandag .
+Klæburuten passerer  Klæbu sentrum kl. 1115 
+og  kommer til  Sentrumsterminalen ,  30 minutter senere .
+Buss 47 passerer  Klæbu sentrum kl. 1525  og  kl. 1610 
+og  kommer til  Sentrumsterminalen ,  35-37 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 46 fra sentrum til klæbu . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:placestatdepend
+trans/Found rule:fromplace1
+trans/Found rule:neverpasstostreet
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(A,sentrum,hovedterminalen))
+departure(46,hovedterminalen,4,B)
+departure(free(745),klæbu,4,C)
+message(neverpasses(46,klæbu))
+connections(B,C,46,hovedterminalen,klæbu,tuesday,4,[to,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+{"transfer":"true" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Torget","busstopnumber":16010012,"busnumber":46,"time":1311,"duration":13,"destination":"City Syd Vestre"} ,
+{"busstopname":"City Syd Vestre","busstopnumber":16010088,"busnumber":47,"time":1345,"duration":21,"destination":"Klæbu sentrum"} ]}
+
+Holdeplassen nærmest sentrum er  Sentrumsterminalen .
+Buss 46 passerer aldri  Klæbu .
+Buss 46 går fra Torget kl. 1311 til City Syd Vestre kl. 1324 
+og  buss 47 går fra City Syd Vestre kl. 1345 til Klæbu sentrum kl. 1406 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: \ set smsflag true 
+
+
+N: varsle meg når klokken er 2215 . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:warningflag4
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:warnwhentimeis
+
+*** Application program ***
+
+flag(warningflag)
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+timeis(2215)
+warningtime(date(2013,6,25),2215)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+! 20130625221500
+Klokka er nå 2215 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra sentrum til klæbu etter kl 1100 på mandag . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:setexdate1
+trans/Found rule:nottoday1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busdepaftertime3
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+atdate2(10,date(2013,7,1))
+atday(monday)
+message(date_isa_day(date(2013,7,1),monday))
+message(otherperiod(date(2013,7,1)))
+departure(free(753),hovedterminalen,10,A)
+keepafter(1100,A,B)
+departure(free(756),klæbu,10,C)
+connections(B,C,free(753),hovedterminalen,klæbu,monday,10,[to,time,nextaftertime(0),from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+156 ms
+
++ 
+Buss 47 passerer  Munkegt M1 kl. 1440 
+og   Klæbu sentrum ,  36 min. senere .
+Buss 47 passerer  Torget kl. 1441 
+og   Klæbu sentrum ,  35 min. senere .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 47 fra klæbu til sentrum etter kl 1100 på mandag . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:setexdate1
+trans/Found rule:nottoday1
+trans/Found rule:placestatdepend
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busdepaftertime3
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+atdate2(10,date(2013,7,1))
+atday(monday)
+message(date_isa_day(date(2013,7,1),monday))
+message(otherperiod(date(2013,7,1)))
+message(nearest_station(A,sentrum,hovedterminalen))
+departure(47,klæbu,10,B)
+keepafter(1100,B,C)
+departure(free(760),hovedterminalen,10,D)
+connections(C,D,47,klæbu,hovedterminalen,monday,10,[to,time,nextaftertime(0),from],E,F)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+203 ms
+
++ 
+Buss 47 passerer  Klæbu sentrum kl. 1525  og  kl. 1610 
+og   Sentrumsterminalen ,  35-37 min. senere .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: neste buss fra sentrum til klæbu . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:nextbus0
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(761),hovedterminalen,4,A)
+keepafter(1226,A,B)
+departure(free(766),klæbu,4,C)
+connections(B,C,free(761),hovedterminalen,klæbu,tuesday,4,[to,next(0),from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+171 ms
+
++ 
+Buss 47 passerer  Munkegt M1 kl. 1440 , kl. 1510  og  kl. 1540 
+og   Klæbu sentrum ,  36 min. senere .
+Buss 47 passerer  Torget kl. 1441 , kl. 1511  og  kl. 1541 
+og   Klæbu sentrum ,  35 min. senere .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss fra elgesetergate for å være på dragvoll senest 10 . 23 på søndag . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:bego
+trans/Found rule:setexdate1
+trans/Found rule:nottoday1
+trans/Found rule:placestat1
+trans/Found rule:nilplaceeqto
+trans/Found rule:fromplace1
+trans/Found rule:busarrjustbeforetime
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+atdate2(9,date(2013,6,30))
+atday(sunday)
+message(date_isa_day(date(2013,6,30),sunday))
+message(otherperiod(date(2013,6,30)))
+message(nearest_station(nil,elgeseter,prof_brochs_gate))
+departure(free(767),dragvoll,9,A)
+keepbefore1(1023,A,B)
+departure(free(767),prof_brochs_gate,9,C)
+connections(C,B,free(767),prof_brochs_gate,dragvoll,sunday,9,[lastcorr,time,to,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+31 ms
+
++ 
+Buss 66 går fra Prof. Brochs gt kl. 0951 til Berg studentby kl. 0953 
+og  buss 5 går fra Berg studentby kl. 1014 til Dragvoll kl. 1022 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går buss 36 forbi samfunnet og til byen etter kl 1522 . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:placestatdepend
+trans/Found rule:pastplaceeqfromreplace
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busdepaftertime3
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(A,sentrum,hovedterminalen))
+departure(36,studentersamfundet,4,B)
+keepafter(1522,B,C)
+departure(free(774),hovedterminalen,4,D)
+connections(C,D,36,studentersamfundet,hovedterminalen,tuesday,4,[to,time,nextaftertime(0),from],E,F)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+249 ms
+
++ 
+Buss 36 passerer  Studentersamfundet kl. 1528  og  kl. 1558 
+og   Sentrumsterminalen ,  2-4 min. senere .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går buss 36 forbi samfunnet og til byen etter kl 1523 . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:placestatdepend
+trans/Found rule:pastplaceeqfromreplace
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busdepaftertime3
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(A,sentrum,hovedterminalen))
+departure(36,studentersamfundet,4,B)
+keepafter(1523,B,C)
+departure(free(777),hovedterminalen,4,D)
+connections(C,D,36,studentersamfundet,hovedterminalen,tuesday,4,[to,time,nextaftertime(0),from],E,F)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+250 ms
+
++ 
+Buss 36 passerer  Studentersamfundet kl. 1528  og  kl. 1558 
+og   Sentrumsterminalen ,  2-4 min. senere .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går neste buss fra p . a munch gate til dragvoll ? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromstreetstatknown
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:nextbus0
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(start,p_a_munchs_street,prof_brochs_gate))
+departure(free(778),prof_brochs_gate,4,A)
+keepafter(1226,A,B)
+departure(free(783),dragvoll,4,C)
+connections(B,C,free(778),prof_brochs_gate,dragvoll,tuesday,4,[to,next(0),from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+16 ms
+
++ 
+Buss 9 passerer  Prof. Brochs gt kl. 1237 , kl. 1307 , kl. 1337 , kl. 1407 , kl. 1437  og  kl. 1517 
+og   Dragvoll ,  38 min. senere .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss fra torvmyra til okstad ø . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(784),torvmyra,4,A)
+departure(free(788),okstad_østre,4,B)
+connections(A,B,free(784),torvmyra,okstad_østre,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
++ 
+Buss 46 går fra Torvmyra kl. 1318 til Østre Rosten kl. 1319 
+og  buss 43 går fra Østre Rosten kl. 1336 til Okstad Østre kl. 1350 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: varsle 15 min før jeg må ta b f moholt studentby for å være på samfundet kl
+19 . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:standardclock
+trans/Found rule:doubleshunt
+trans/Found rule:warningflag4
+trans/Found rule:prewarning1before
+trans/Found rule:idotake
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:nilplaceeqto
+trans/Found rule:fromplace1
+trans/Found rule:busarrjustbeforetime
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+flag(warningflag)
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(790),studentersamfundet,4,A)
+keepbefore1(1900,A,B)
+departure(free(790),moholt_studentby,4,C)
+connections(C,B,free(790),moholt_studentby,studentersamfundet,tuesday,4,[lastcorr,time,to,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+[depnode(1849,1849,34,34,1815,bus_0036_0025,36,37,moholt_studentby)]
+! 20130625183400
+Buss 36 passerer  Moholt stud. by kl. 1849 
+og   Studentersamfundet kl. 1856 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: kan du varsle meg 15 minutter før siste nattbuss går til stavset ? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:nightbusquery3
+trans/Found rule:warningflag4
+trans/Found rule:prewarning1before
+trans/Found rule:nightbusmeanstomorrow
+trans/Found rule:nottoday1
+trans/Found rule:toplace1
+trans/Found rule:keepfrombay
+trans/Found rule:connectionexplicit
+trans/Found rule:setnightbusoption
+
+*** Application program ***
+
+flag(nightbusflag)
+flag(warningflag)
+atday(wednesday)
+atdate2(5,date(2013,6,26))
+message(date_isa_day(date(2013,6,26),wednesday))
+message(otherperiod(date(2013,6,26)))
+departure(free(802),stavset,5,A)
+flag(keepfrombay)
+departure(free(802),hovedterminalen,5,B)
+connections(B,A,free(802),hovedterminalen,stavset,wednesday,5,[nightbus,to,from],C,D)
+flag(exit)
+flag(nightbusoption)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- 
+26. Jun. 2013 er en  onsdag .
+Det er ikke mulig natt til onsdag .
+Nattbussen går bare natt til lørdag og søndag.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: kan jeg bli varslet 10 minutter før siste buss fra nth til nardo før 1730
+. 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:warningflag4
+trans/Found rule:prewarning1before
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:placestat1
+trans/Found rule:placestat1
+trans/Found rule:befrom
+trans/Found rule:toplace1
+trans/Found rule:busarrjustbeforetime
+trans/Found rule:lastbus1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+flag(warningflag)
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(nil,nth,gløshaugen_syd))
+message(nearest_station(nil,nardo,nardosenteret))
+departure(free(805),gløshaugen_syd,4,A)
+departure(free(808),nardosenteret,4,B)
+keepbefore1(1730,B,C)
+connections(A,C,free(805),gløshaugen_syd,nardosenteret,tuesday,4,[lastcorr,time,to,last(1),from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+! 20130625165800
+Buss 22 passerer  Gløshaugen Syd kl. 1708 
+og   Nardosenteret kl. 1718 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går neste buss fra ntnu dragvoll til jakobsli . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:nextbus0
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(809),ntnu_dragvoll,4,A)
+keepafter(1226,A,B)
+departure(free(814),jakobsli,4,C)
+connections(B,C,free(809),ntnu_dragvoll,jakobsli,tuesday,4,[to,next(0),from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+15 ms
+
++ 
+Buss 66 går fra NTNU Dragvoll kl. 1245 til Jakobsliveien øvre kl. 1253 
+og  buss 36 går fra Jakobsliveien øvre kl. 1307 til Jakobsli like etterpå .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: til nova før 21 . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:toplace1
+trans/Found rule:keepfrombay
+trans/Found rule:busarrjustbeforetime
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(819),nova_kinosenter,4,A)
+keepbefore1(2100,A,B)
+flag(keepfrombay)
+departure(free(819),hovedterminalen,4,C)
+connections(C,B,free(819),hovedterminalen,nova_kinosenter,tuesday,4,[lastcorr,time,to,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+389 ms
+
+[depnode(9999,2015,999,0,2015,bus_0036_0027,36,1,munkegata_m4)]
++ 
+Buss 36 passerer  Munkegt M4 kl. 2015 
+og   Nova kinosenter kl. 2017 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 36 fra brundalen skole til charlottenlund før 830 i morgen . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:begofore1
+trans/Found rule:morrow1
+trans/Found rule:nottoday1
+trans/Found rule:placestatdepend
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busarrjustbeforetime
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(wednesday)
+atdate2(5,date(2013,6,26))
+message(date_isa_day(date(2013,6,26),wednesday))
+message(otherperiod(date(2013,6,26)))
+message(nearest_station(A,charlottenlund,charlottenlund_kirke))
+departure(36,brundalen_skole,5,B)
+departure(free(823),charlottenlund_kirke,5,C)
+keepbefore1(830,C,D)
+connections(B,D,36,brundalen_skole,charlottenlund_kirke,wednesday,5,[lastcorr,time,to,from],E,F)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+[depnode(818,818,18,18,800,bus_0036_0006,36,22,brundalen_skole)]
++ 
+Buss 36 passerer  Brundalen skole kl. 0818 
+og   Charlottenlund kirke kl. 0820 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går bussen fra chl kirke til studsamf etter kl 820 i morgen . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:morrow1
+trans/Found rule:nottoday1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busdepaftertime3
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(wednesday)
+atdate2(5,date(2013,6,26))
+message(date_isa_day(date(2013,6,26),wednesday))
+message(otherperiod(date(2013,6,26)))
+departure(free(824),charlottenlund_kirke,5,A)
+keepafter(820,A,B)
+departure(free(829),studentersamfundet,5,C)
+connections(B,C,free(824),charlottenlund_kirke,studentersamfundet,wednesday,5,[to,time,nextaftertime(0),from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+31 ms
+
++ 
+Buss 36 passerer  Charlottenlund kirke kl. 0820  og  kl. 0850 
+og   Studentersamfundet ,  23 min. senere .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går det busser fra bugges veg til gryta etter 1730 ? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busdepaftertime3
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(830),bugges_veg,4,A)
+keepafter(1730,A,B)
+departure(free(835),gryta,4,C)
+connections(B,C,free(830),bugges_veg,gryta,tuesday,4,[to,time,nextaftertime(0),from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+16 ms
+
++ 
+Buss 60 går fra Bugges veg kl. 1732 til Torget kl. 1739 
+og  buss 9 går fra Munkegt M5 kl. 1753 til Gryta kl. 1811 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra lade alle 20 til lade alle 80 . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromstreetstatknown
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(start,lade_alle-20,strandveikaia))
+departure(free(838),strandveikaia,4,A)
+departure(free(840),lade_alle_80,4,B)
+connections(A,B,free(838),strandveikaia,lade_alle_80,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+Holdeplassen nærmest Lade allé 20 er  Strandveikaia .
+Jeg kan ikke finne flere ruteforbindelser på tirsdag .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 7 fra sentrum til vikåsen etter 2340 . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:placestatdepend
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busdepaftertime3
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(A,sentrum,hovedterminalen))
+departure(7,hovedterminalen,4,B)
+keepafter(2340,B,C)
+departure(free(843),vikåsen,4,D)
+connections(C,D,7,hovedterminalen,vikåsen,tuesday,4,[to,time,nextaftertime(0),from],E,F)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
++ 
+Buss 7 passerer  Munkegt M5 kl. 2340 
+og   Vikåsen ,  26-29 min. senere .
+Buss 7 passerer  Torget kl. 0006 
+og   Vikåsen ,  30-33 min. senere .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går første buss fra ila til sentrum 1 . påskedag . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:normalizedate
+trans/Found rule:setexdate3day
+trans/Found rule:nottoday1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:firstbus1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+atdate2(6,date(2013,3,31))
+atday(sunday)
+message(date_isa_day(date(2013,3,31),sunday))
+message(otherperiod(date(2013,3,31)))
+departure(free(844),ila,6,A)
+departure(free(850),hovedterminalen,6,B)
+connections(A,B,free(844),ila,hovedterminalen,sunday,6,[to,first(1),from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+62 ms
+
++ 
+Buss 89 passerer  Ila kl. 0636 
+og   Dronn. gt D3 kl. 0640 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: \ set smsflag false 
+
+
+N: når går buss 36 fra rosendal til jakobsli på skjærtorsdag ? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:normalizedate
+trans/Found rule:setexdate3day
+trans/Found rule:nottoday1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+atdate2(3,date(2013,3,28))
+atday(thursday)
+message(date_isa_day(date(2013,3,28),thursday))
+message(otherperiod(date(2013,3,28)))
+departure(36,rosendal,3,A)
+departure(free(854),jakobsli,3,B)
+connections(A,B,36,rosendal,jakobsli,thursday,3,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+[depnode(1622,1622,7,7,1615,bus_0036_0028,36,7,rosendal),depnode(1722,1722,7,7,1715,bus_0036_0029,36,7,rosendal),depnode(1822,1822,7,7,1815,bus_0036_0030,36,7,rosendal),depnode(1922,1922,7,7,1915,bus_0036_0031,36,7,rosendal),depnode(2022,2022,7,7,2015,bus_0036_0032,36,7,rosendal),depnode(2122,2122,7,7,2115,bus_0036_0033,36,7,rosendal),depnode(2222,2222,7,7,2215,bus_0036_0034,36,7,rosendal),depnode(2322,2322,7,7,2315,bus_0036_0035,36,7,rosendal),depnode(2422,2422,7,7,2415,bus_0036_0036,36,7,rosendal)]
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Rosendal","busstopnumber":16010406,"busnumber":36,"time":1622,"duration":15,"destination":"Jakobsli"} ,
+{"busstopname":"Rosendal","busstopnumber":16010406,"busnumber":36,"time":2422,"duration":15,"destination":"Jakobsli"} ]}
+
+28. Mar. 2013 er en  torsdag .
+Første buss , nummer 36 passerer  Rosendal kl. 1622 
+og  kommer til  Jakobsli kl. 1637 .
+Siste buss , nummer 36 passerer  Rosendal kl. 0022 
+og  kommer til  Jakobsli kl. 0037 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss fra tonstadkrysset til klæbu . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(855),tonstadkrysset,4,A)
+departure(free(860),klæbu,4,B)
+connections(A,B,free(855),tonstadkrysset,klæbu,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+16 ms
+
+{"transfer":"true" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"tonstadkrysset","busstopnumber":16010507,"busnumber":19,"time":1355,"duration":28,"destination":"Studentersamfundet"} ,
+{"busstopname":"Studentersamfundet","busstopnumber":16010476,"busnumber":47,"time":1444,"duration":32,"destination":"Klæbu sentrum"} ]}
+
+Buss 19 går fra Tonstadkrysset kl. 1355 til Studentersamfundet kl. 1423 
+og  buss 47 går fra Studentersamfundet kl. 1444 til Klæbu sentrum kl. 1516 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 6 fra romolslia til jarleveien i morgen . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:morrow1
+trans/Found rule:nottoday1
+trans/Found rule:tostreetstatknown
+trans/Found rule:fromplace1
+trans/Found rule:neverpasstostreet
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(wednesday)
+atdate2(5,date(2013,6,26))
+message(date_isa_day(date(2013,6,26),wednesday))
+message(otherperiod(date(2013,6,26)))
+message(nearest_station(stop,jarle_street,lade_kirke))
+departure(6,romolslia_øvre,5,A)
+departure(free(864),lade_kirke,5,B)
+message(neverpasses(6,lade_kirke))
+connections(A,B,6,romolslia_øvre,lade_kirke,wednesday,5,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+{"transfer":"true" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Romolslia Øvre","busstopnumber":16010402,"busnumber":6,"time":605,"duration":15,"destination":"Studentersamfundet"} ,
+{"busstopname":"Studentersamfundet","busstopnumber":16010476,"busnumber":3,"time":644,"duration":21,"destination":"Lade kirke"} ]}
+
+26. Jun. 2013 er en  onsdag .
+Holdeplassen nærmest Jarleveien er  Lade kirke .
+Buss 6 passerer aldri  Lade kirke .
+Buss 6 går fra Romolslia Øvre kl. 0605 til Studentersamfundet kl. 0620 
+og  buss 3 går fra Studentersamfundet kl. 0644 til Lade kirke kl. 0705 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 43 fra romolslia til jarleveien i morgen . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:morrow1
+trans/Found rule:nottoday1
+trans/Found rule:tostreetstatknown
+trans/Found rule:neverpassfromessage
+trans/Found rule:neverpasstostreet
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(wednesday)
+atdate2(5,date(2013,6,26))
+message(date_isa_day(date(2013,6,26),wednesday))
+message(otherperiod(date(2013,6,26)))
+message(nearest_station(stop,jarle_street,lade_kirke))
+departure(free(867),romolslia,5,A)
+message(neverpasses(43,romolslia))
+departure(free(869),lade_kirke,5,B)
+message(neverpasses(43,lade_kirke))
+connections(A,B,free(867),romolslia,lade_kirke,wednesday,5,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+26. Jun. 2013 er en  onsdag .
+Holdeplassen nærmest Jarleveien er  Lade kirke .
+Buss 43 passerer aldri  Romolslia .
+Buss 43 passerer aldri  Lade kirke .
+Det er ikke mulig på denne datoen .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra dragvoll til jakobsli . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(872),dragvoll,4,A)
+departure(free(874),jakobsli,4,B)
+connections(A,B,free(872),dragvoll,jakobsli,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+16 ms
+
+{"transfer":"true" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Dragvoll","busstopnumber":16010103,"busnumber":9,"time":1245,"duration":11,"destination":"Strindheim Hageby"} ,
+{"busstopname":"Strindheim Hageby","busstopnumber":16010475,"busnumber":18,"time":1316,"duration":7,"destination":"Jakobsli"} ]}
+
+Buss 9 går fra Dragvoll kl. 1245 til Strindheim Hageby kl. 1256 
+og  buss 18 går fra Strindheim Hageby kl. 1316 til Jakobsli kl. 1323 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når må jeg reise fra munkvoll gård for å være på tempe senest kl 638 på mandag
+. 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:standardclock
+trans/Found rule:fromplaceattoplaceatt
+trans/Found rule:setexdate1
+trans/Found rule:nottoday1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busarrjustbeforetime
+trans/Found rule:lastbus3
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+atdate2(10,date(2013,7,1))
+atday(monday)
+message(date_isa_day(date(2013,7,1),monday))
+message(otherperiod(date(2013,7,1)))
+departure(free(880),munkvoll_gård,10,A)
+departure(free(882),tempe,10,B)
+keepbefore1(638,B,C)
+connections(A,C,free(880),munkvoll_gård,tempe,monday,10,[lastcorr,time,to,last(1),from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+31 ms
+
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Munkvoll gård","busstopnumber":16011308,"busnumber":5,"time":553,"duration":11,"destination":"Dronningens gate - D3"} ,
+{"busstopname":"Torget","busstopnumber":16010012,"busnumber":4,"time":613,"duration":6,"destination":"Valøyvegen"} ]}
+
+1. Jul. 2013 er en  mandag .
+Buss 5 går fra Munkvoll gård kl. 0553 til Dronningens gate D3 kl. 0604 
+og  buss 4 går fra Torget kl. 0613 til Valøyvegen kl. 0619 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går bussen fra johan bojers vei 18 til hareveien . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromstreetstatknown
+trans/Found rule:tostreetstatknown
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(start,johan_bojers_street-18,johan_falkbergets_vei))
+message(nearest_station(stop,hare_street,havstadsenteret))
+departure(free(883),johan_falkbergets_vei,4,A)
+departure(free(888),havstadsenteret,4,B)
+connections(A,B,free(883),johan_falkbergets_vei,havstadsenteret,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+16 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Johan Falkbergets vei","busstopnumber":16010205,"busnumber":19,"time":1236,"duration":1,"destination":"Havstadsenteret"} ,
+{"busstopname":"Johan Falkbergets vei","busstopnumber":16010205,"busnumber":5,"time":1237,"duration":1,"destination":"Havstadsenteret"} ]}
+
+Holdeplassen nærmest Johan Bojers vei 18 er  Johan Falkbergets veg .
+Holdeplassen nærmest Harevegen er  Havstadsenteret .
+Buss 19 passerer  Johan Falkbergets veg kl. 1236  og  kl. 1306 
+og  kommer til  Havstadsenteret ,  1 minutter senere .
+Buss 5 passerer  Johan Falkbergets veg kl. 1237 , kl. 1252 , kl. 1307  og  kl. 1322 
+og  kommer til  Havstadsenteret ,  1 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: hei , jeg bor på nidarvoll og i kveld må jeg nå et tog til oslo klokka seks
+. 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:standardclock
+trans/Found rule:toclocksequence1
+trans/Found rule:tonightis18ugly
+trans/Found rule:liveinhell
+trans/Found rule:nobustohell2
+trans/Found rule:reachtrain
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busarrjustbeforetime
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+flag(latetime)
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(893),nidarvoll_skole,4,A)
+departure(free(895),ts,4,B)
+keepbefore1(1800,B,C)
+connections(A,C,free(893),nidarvoll_skole,ts,tuesday,4,[lastcorr,time,to,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+[depnode(1724,1724,16,16,1708,bus_0003_0095,3,17,nidarvoll_skole)]
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Nidarvoll skole","busstopnumber":16011321,"busnumber":3,"time":1724,"duration":19,"destination":"ts"} ]}
+
+Buss 3 passerer  Nidarvoll skole kl. 1724 
+og  kommer til  Trondheim S 13 kl. 1743 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går bussen fra ntnu på lade til byen mellom klokken 10 og 11 i morgen
+? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:shuntbetweentime
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:betweentime
+trans/Found rule:morrow1
+trans/Found rule:nottoday1
+trans/Found rule:placestat1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:betweentimes
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(wednesday)
+atdate2(5,date(2013,6,26))
+message(date_isa_day(date(2013,6,26),wednesday))
+message(otherperiod(date(2013,6,26)))
+message(nearest_station(nil,ntnu_lade,harald_hårfagres_gate))
+departure(free(896),harald_hårfagres_gate,5,A)
+keepafter(1000,A,B)
+keepbefore(1100,B,C)
+departure(free(903),hovedterminalen,5,D)
+connections(C,D,free(896),harald_hårfagres_gate,hovedterminalen,wednesday,5,[to,time,from],E,F)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+188 ms
+
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Harald Hårfagres gate","busstopnumber":16011534,"busnumber":4,"time":1021,"duration":11,"destination":"Sentrumsterminalen"} ,
+{"busstopname":"Harald Hårfagres gate","busstopnumber":16010534,"busnumber":67,"time":1025,"duration":17,"destination":"Sentrumsterminalen"} ]}
+
+26. Jun. 2013 er en  onsdag .
+Holdeplassen nærmest NTNU Lade er  Harald Hårfagres gate .
+Buss 4 passerer  Harald Hårfagres gate kl. 1021  og  kl. 1051 
+og  kommer til  Sentrumsterminalen ,  11-23 minutter senere .
+Buss 67 passerer  Harald Hårfagres gate kl. 1025 
+og  kommer til  Dronningens gate D1 ,  17 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: hvilken buss må jeg ta fra vestlia for å rekke en avtale på moholt klokken
+1230 ? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:meeting2
+trans/Found rule:reachat2
+trans/Found rule:idotake
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busarrjustbeforetime
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(904),vestlia,4,A)
+departure(free(910),moholt,4,B)
+keepbefore1(1230,B,C)
+connections(A,C,free(904),vestlia,moholt,tuesday,4,[lastcorr,time,to,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Vestlia endeholdeplass","busstopnumber":16010632,"busnumber":22,"time":1130,"duration":11,"destination":"Gløshaugen Syd"} ,
+{"busstopname":"Gløshaugen Syd","busstopnumber":16010265,"busnumber":5,"time":1158,"duration":5,"destination":"Moholt"} ]}
+
+Buss 22 går fra Vestlia endeholdeplass kl. 1130 til Gløshaugen Syd kl. 1141 
+og  buss 5 går fra Gløshaugen Syd kl. 1158 til Moholt kl. 1203 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: hvilken bussavgang skal jeg velge når jeg skal reise fra lade og være på munkvold
+innen klokka atten ? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:wannabeon1
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busarrjustbeforetime
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(915),lade,4,A)
+departure(free(917),munkvoll,4,B)
+keepbefore1(1800,B,C)
+connections(A,C,free(915),lade,munkvoll,tuesday,4,[lastcorr,time,to,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Lade alle 80","busstopnumber":16011041,"busnumber":4,"time":1715,"duration":17,"destination":"Munkegata - M2"} ,
+{"busstopname":"Torget","busstopnumber":16010012,"busnumber":5,"time":1737,"duration":21,"destination":"Munkvoll"} ]}
+
+Buss 4 går fra Lade allé 80 kl. 1715 til Munkegata M2 kl. 1732 
+og  buss 5 går fra Torget kl. 1737 til Munkvoll kl. 1758 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: hvordan kommer jeg meg fra singsaker til moholt så fort som mulig etter 16
+. 50 den 16 . sept ? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:setexdate3day
+trans/Found rule:nottoday1
+trans/Found rule:placestat1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busdepaftertime
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+atdate2(141,date(2013,9,16))
+atday(monday)
+message(date_isa_day(date(2013,9,16),monday))
+message(otherperiod(date(2013,9,16)))
+message(nearest_station(nil,singsaker,asbjørnsens_gate))
+departure(free(919),asbjørnsens_gate,141,A)
+keepafter(1650,A,B)
+departure(free(921),moholt,141,C)
+connections(B,C,free(919),asbjørnsens_gate,moholt,monday,141,[to,nextaftertime(1),time,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+16. Sep. 2013 er en  mandag .
+Holdeplassen nærmest Singsaker er  Asbjørnsens gate .
+Jeg kan ikke finne flere ruteforbindelser på mandag kl. 1650 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 8 fra nardokrysset til tors veg . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(8,nardokrysset,4,A)
+departure(free(924),tors_veg,4,B)
+connections(A,B,8,nardokrysset,tors_veg,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+{"transfer":"true" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Nardokrysset","busstopnumber":16010320,"busnumber":8,"time":1251,"duration":1,"destination":"Nardosenteret"} ,
+{"busstopname":"Nardosenteret","busstopnumber":16010341,"busnumber":8,"time":1258,"duration":1,"destination":"Tors veg"} ]}
+
+Buss 8 går fra Nardokrysset kl. 1251 til Nardosenteret kl. 1252 
+og  buss 8 går fra Nardosenteret kl. 1258 til Tors veg kl. 1259 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 8 fra tors veg til nardokrysset . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(8,tors_veg,4,A)
+departure(free(927),nardokrysset,4,B)
+connections(A,B,8,tors_veg,nardokrysset,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+16 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Tors veg","busstopnumber":16011511,"busnumber":8,"time":1229,"duration":1,"destination":"Nardokrysset"} ]}
+
+Buss 8 passerer  Tors veg kl. 1229 , kl. 1259 , kl. 1329 , kl. 1359 , kl. 1414  og  kl. 1429 
+og  kommer til  Nardokrysset ,  1 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 63 fra vollabakken til rosenborg . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(63,vollabakken,4,A)
+departure(free(930),rosenborg,4,B)
+connections(A,B,63,vollabakken,rosenborg,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Vollabakken","busstopnumber":16010550,"busnumber":63,"time":1310,"duration":9,"destination":"rosenborg"} ]}
+
+Buss 63 passerer  Vollabakken kl. 1310 , kl. 1400 , kl. 1450 , kl. 1520 , kl. 1550  og  kl. 1620 
+og  kommer til  Rosenborg skole ,  9 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: jeg vil hjem fra nth til ygdrasilvn 9 så fort som mulig . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:tostreetstatknown
+trans/Found rule:placestat1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:nowwhat
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(stop,yggdrasil_street-9,nardosenteret))
+message(nearest_station(nil,nth,gløshaugen_syd))
+departure(free(932),gløshaugen_syd,4,A)
+timenow2(0,B)
+keepafter(B,A,C)
+departure(free(934),nardosenteret,4,D)
+connections(C,D,free(932),gløshaugen_syd,nardosenteret,tuesday,4,[to,time,firstcorr,from],E,F)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+[depnode(1238,1238,28,28,1210,bus_0022_0085,22,26,gløshaugen_syd)]
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Gløshaugen Syd","busstopnumber":16010265,"busnumber":22,"time":1238,"duration":10,"destination":"Nardosenteret"} ]}
+
+Holdeplassen nærmest Yggdrasilvegen 9 er  Nardosenteret .
+Holdeplassen nærmest NTH er  Gløshaugen Syd .
+Buss 22 passerer  Gløshaugen Syd kl. 1238 
+og  kommer til  Nardosenteret kl. 1248 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: \ english 
+
+
+E: when do i have to travel from reppe arriving lade by 6 pm . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:nilplaceeqto
+trans/Found rule:fromplace1
+trans/Found rule:busarrjustbeforetime
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(938),lade,4,A)
+keepbefore1(1800,A,B)
+departure(free(939),reppe,4,C)
+connections(C,B,free(939),reppe,lade,tuesday,4,[lastcorr,time,to,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+I cannot find any connections on Tuesday before  6:00 pm .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: when does the bus go from johan bojers vei 18 to hareveien . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromstreetstatknown
+trans/Found rule:tostreetstatknown
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(start,johan_bojers_street-18,johan_falkbergets_vei))
+message(nearest_station(stop,hare_street,havstadsenteret))
+departure(free(940),johan_falkbergets_vei,4,A)
+departure(free(944),havstadsenteret,4,B)
+connections(A,B,free(940),johan_falkbergets_vei,havstadsenteret,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Johan Falkbergets vei","busstopnumber":16010205,"busnumber":19,"time":1236,"duration":1,"destination":"Havstadsenteret"} ,
+{"busstopname":"Johan Falkbergets vei","busstopnumber":16010205,"busnumber":5,"time":1237,"duration":1,"destination":"Havstadsenteret"} ]}
+
+The station nearest to Johan Bojers vei 18 is  Johan Falkbergets veg .
+The station nearest to Harevegen is  Havstadsenteret .
+Bus 19 passes by  Johan Falkbergets veg at  12:36 pm  and  at  1:06 pm 
+and  arrives at  Havstadsenteret ,  1 minutes later .
+Bus 5 passes by  Johan Falkbergets veg at  12:37 pm , at  12:52 pm , at  1:07 pm  and  at  1:22 pm 
+and  arrives at  Havstadsenteret ,  1 minutes later .
+
+The hours indicate the earliest passing times. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: hi , i live in nidarvoll and tonight i must reach a train to oslo at 6 o clock
+. 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:reachat1
+trans/Found rule:tonightis18ugly
+trans/Found rule:liveinhell
+trans/Found rule:nobustohell2
+trans/Found rule:reachtrain
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busarrjustbeforetime
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+flag(latetime)
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(948),nidarvoll_skole,4,A)
+departure(free(950),ts,4,B)
+keepbefore1(1800,B,C)
+connections(A,C,free(948),nidarvoll_skole,ts,tuesday,4,[lastcorr,time,to,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+[depnode(1724,1724,16,16,1708,bus_0003_0095,3,17,nidarvoll_skole)]
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Nidarvoll skole","busstopnumber":16011321,"busnumber":3,"time":1724,"duration":19,"destination":"ts"} ]}
+
+Bus 3 passes by  Nidarvoll skole at  5:24 pm 
+and  arrives at  Trondheim S 13 at  5:43 pm .
+
+The hours indicate the earliest passing times. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: when does the bus go from ntnu at lade to the city between 10 and 11 tomorrow
+? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:betweentime
+trans/Found rule:morrow1
+trans/Found rule:nottoday1
+trans/Found rule:placestat1
+trans/Found rule:fromplace1
+trans/Found rule:keeptobay
+trans/Found rule:betweentimes
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(wednesday)
+atdate2(5,date(2013,6,26))
+message(date_isa_day(date(2013,6,26),wednesday))
+message(otherperiod(date(2013,6,26)))
+message(nearest_station(nil,ntnu_lade,harald_hårfagres_gate))
+departure(free(951),harald_hårfagres_gate,5,A)
+keepafter(1000,A,B)
+keepbefore(1100,B,C)
+flag(keeptobay)
+departure(free(957),hovedterminalen,5,D)
+connections(C,D,free(951),harald_hårfagres_gate,hovedterminalen,wednesday,5,[to,time,from],E,F)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+188 ms
+
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Harald Hårfagres gate","busstopnumber":16011534,"busnumber":4,"time":1021,"duration":11,"destination":"Sentrumsterminalen"} ,
+{"busstopname":"Harald Hårfagres gate","busstopnumber":16010534,"busnumber":67,"time":1025,"duration":17,"destination":"Sentrumsterminalen"} ]}
+
+Jun. 26, 2013 is a  Wednesday .
+The station nearest to NTNU Lade is  Harald Hårfagres gate .
+Bus 4 passes by  Harald Hårfagres gate at  10:21 am  and  at  10:51 am 
+and  arrives at  Sentrumsterminalen ,  11-23 minutes later .
+Bus 67 passes by  Harald Hårfagres gate at  10:25 am 
+and  arrives at  Dronningens gate D1 ,  17 minutes later .
+
+The hours indicate the earliest passing times. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: which bus must i take from vestlia to reach an appointment on moholt at 1230
+? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:meetingaftertime
+trans/Found rule:idotake
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busarrjustbeforetime
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(958),vestlia,4,A)
+departure(free(964),moholt,4,B)
+keepbefore1(1230,B,C)
+connections(A,C,free(958),vestlia,moholt,tuesday,4,[lastcorr,time,to,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+16 ms
+
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Vestlia endeholdeplass","busstopnumber":16010632,"busnumber":22,"time":1130,"duration":11,"destination":"Gløshaugen Syd"} ,
+{"busstopname":"Gløshaugen Syd","busstopnumber":16010265,"busnumber":5,"time":1158,"duration":5,"destination":"Moholt"} ]}
+
+Bus 22 goes from Vestlia endeholdeplass at  11:30 am to Gløshaugen Syd at  11:41 am 
+and  bus 5 goes from Gløshaugen Syd at  11:58 am to Moholt at  12:03 pm .
+
+The hours indicate the earliest passing times. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: which bus departure shall i choose when i shall go from lade and be on munkvold
+before 6 pm . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:standardclock
+trans/Found rule:beonbeforeeqto
+trans/Found rule:toattime
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busarrjustbeforetime
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(free(969),lade,4,A)
+departure(free(971),munkvoll,4,B)
+keepbefore1(1800,B,C)
+connections(A,C,free(969),lade,munkvoll,tuesday,4,[lastcorr,time,to,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Lade alle 80","busstopnumber":16011041,"busnumber":4,"time":1715,"duration":17,"destination":"Munkegata - M2"} ,
+{"busstopname":"Torget","busstopnumber":16010012,"busnumber":5,"time":1737,"duration":21,"destination":"Munkvoll"} ]}
+
+Bus 4 goes from Lade allé 80 at  5:15 pm to Munkegata M2 at  5:32 pm 
+and  bus 5 goes from Torget at  5:37 pm to Munkvoll at  5:58 pm .
+
+The hours indicate the earliest passing times. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: how do i get from singsaker to moholt as fast as possible after 16 : 50 on
+sept 16 . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:setexdate3day
+trans/Found rule:nottoday1
+trans/Found rule:placestat1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:busdepaftertimehereafter
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+atdate2(141,date(2013,9,16))
+atday(monday)
+message(date_isa_day(date(2013,9,16),monday))
+message(otherperiod(date(2013,9,16)))
+message(nearest_station(nil,singsaker,asbjørnsens_gate))
+departure(free(973),asbjørnsens_gate,141,A)
+keepafter(1650,A,B)
+departure(free(975),moholt,141,C)
+connections(B,C,free(973),asbjørnsens_gate,moholt,monday,141,[to,time,firstcorr,from],D,E)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sep. 16, 2013 is a  Monday .
+The station nearest to Singsaker is  Asbjørnsens gate .
+I cannot find any more connections on Monday at  4:50 pm .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: bus 8 from nardokrysset to tors veg . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier1
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(8,nardokrysset,4,A)
+departure(free(978),tors_veg,4,B)
+connections(A,B,8,nardokrysset,tors_veg,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+16 ms
+
+{"transfer":"true" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Nardokrysset","busstopnumber":16010320,"busnumber":8,"time":1251,"duration":1,"destination":"Nardosenteret"} ,
+{"busstopname":"Nardosenteret","busstopnumber":16010341,"busnumber":8,"time":1258,"duration":1,"destination":"Tors veg"} ]}
+
+Bus 8 goes from Nardokrysset at  12:51 pm to Nardosenteret at  12:52 pm 
+and  bus 8 goes from Nardosenteret at  12:58 pm to Tors veg at  12:59 pm .
+
+The hours indicate the earliest passing times. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: bus 8 from tors veg to nardokrysset . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier1
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(8,tors_veg,4,A)
+departure(free(981),nardokrysset,4,B)
+connections(A,B,8,tors_veg,nardokrysset,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Tors veg","busstopnumber":16011511,"busnumber":8,"time":1229,"duration":1,"destination":"Nardokrysset"} ]}
+
+Bus 8 passes by  Tors veg at  12:29 pm , at  12:59 pm , at  1:29 pm , at  1:59 pm , at  2:14 pm  and  at  2:29 pm 
+and  arrives at  Nardokrysset ,  1 minutes later .
+
+The hours indicate the earliest passing times. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: bus 63 from vollabakken to rosenborg . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier1
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+departure(63,vollabakken,4,A)
+departure(free(984),rosenborg,4,B)
+connections(A,B,63,vollabakken,rosenborg,tuesday,4,[to,from],C,D)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Vollabakken","busstopnumber":16010550,"busnumber":63,"time":1310,"duration":9,"destination":"rosenborg"} ]}
+
+Bus 63 passes by  Vollabakken at  1:10 pm , at  2:00 pm , at  2:50 pm , at  3:20 pm , at  3:50 pm  and  at  4:20 pm 
+and  arrives at  Rosenborg skole ,  9 minutes later .
+
+The hours indicate the earliest passing times. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: i want to go home from nth to ygdrasilvn 9 as soon as possible . 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:tostreetstatknown
+trans/Found rule:placestat1
+trans/Found rule:fromplace1
+trans/Found rule:toplace1
+trans/Found rule:afteratime
+trans/Found rule:connectionexplicit
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(nearest_station(stop,yggdrasil_street-9,nardosenteret))
+message(nearest_station(nil,nth,gløshaugen_syd))
+departure(free(988),gløshaugen_syd,4,A)
+timenow2(1,B)
+keepafter(B,A,C)
+departure(free(990),nardosenteret,4,D)
+connections(C,D,free(988),gløshaugen_syd,nardosenteret,tuesday,4,[to,next(1),time,from],E,F)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+0 ms
+
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Gløshaugen Syd","busstopnumber":16010265,"busnumber":22,"time":1238,"duration":10,"destination":"Nardosenteret"} ]}
+
+The station nearest to Yggdrasilvegen 9 is  Nardosenteret .
+The station nearest to NTH is  Gløshaugen Syd .
+Bus 22 passes by  Gløshaugen Syd at  12:38 pm , at  1:08 pm , at  1:38 pm , at  2:08 pm , at  2:38 pm  and  at  3:08 pm 
+and  arrives at  Nardosenteret ,  10 minutes later .
+
+The hours indicate the earliest passing times. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: \ norsk 
+
+
+N: \ stoptimebatch 
+
+Total:  36863 ms
+
+N: \ set smsflag false 
+
+
+N: hvor mange spørsmål har du besvart ? 
+
+
+
+trans/Found rule:tqllist2
+trans/Found rule:todaydate
+trans/Found rule:atdate
+trans/Found rule:howmanyq1
+trans/Found rule:norouteinfo
+
+*** Application program ***
+
+today(tuesday)
+atday(tuesday)
+atdate2(4,date(2013,6,25))
+message(webstatistics)
+flag(exit)
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+DATE            SMS  TOTAL
+
+2013-1-1       0    1 
+2013-4-1       0    1 
+2013-6-1       0    1 
+2013-6-23       0    1 
+2013-6-24       20    99 
+2013-6-25       20    92 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: \ end 
+
+
+
+N: 

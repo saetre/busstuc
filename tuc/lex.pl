@@ -1550,8 +1550,8 @@ remove_partnames :- %% remove now redundant  part names
 
 
 remove_streetsurp:- % Remove streetname (single) if also station/neighbourhood etc.
-     for( (txt(M,w(A,name(_A1,_,street)),N),txt(M,w(A,name(A2,_,K)),N), K \== street, \+unproperstation1(A2)),
-           retract(txt(M,w(A,name(_A1,_,street)),N))).
+     for( (txt(M,w(A,name(_a1,_,street)),N),txt(M,w(A,name(A2,_,K)),N), K \== street, \+unproperstation1(A2)),
+           retract(txt(M,w(A,name(_a1,_,street)),N))).
 
 %% suspended  :   error marking becomes meaningless (too early) 
 % når må jeg ta bussen * til heimdal sentral banestarsjon før kl 13 . 10 fra kystad ? 
@@ -1764,12 +1764,12 @@ matchcomp2(N0):-  %% Tore Ambles -> ToreAmbles
     N1 is N0+1,
     N2 is N1+1,
     txt(N0,w(_Tor,    name(Tor,n,firstname)),N1),
-    txt(N1,w(_Ambles,name(Ambl,gen,lastname)),N2),
+    txt(N1,w(_ambles,name(Ambl,gen,lastname)),N2),
     lookupdb2(Tor,Ambl,ToreAmble),
     moshe_class(ToreAmble,_,Class),
     assert( ctxt(N0, w(ToreAmble,name(ToreAmble,gen,Class)), N2)),
     retract( txt(N0,w(Tor,_),N1)), 
-    retract( txt(N1,w(_Ambles,name(Ambl,gen,lastname)),N2)).    %%
+    retract( txt(N1,w(_ambles,name(Ambl,gen,lastname)),N2)).    %%
 
  
 matchcomp2(N0):- %% Tore Amble
@@ -1844,7 +1844,8 @@ matchreststreet5(_,N2,[Street],_,_):- %% skip vei allowed if not "vei" follows
 (    
      VVV=w(V,_),streetsyn(V)  ;
  
-     V=[alle]),       %% olav engelbrektssons alle 5
+%%     V=[alle]),       %% olav engelbrektssons alle 5
+     VVV=[alle]),       %% olav engelbrektssons alle 5  %% RS-130624
 
     !,fail.            %% no skip
 
@@ -1854,11 +1855,11 @@ matchreststreet5(N0,N2,[Street],N2,true):- %% skip vei allowed if not "vei" foll
     (Street==street;streetsyn(Street);Street=alle), 
   
  \+ txt(N2, w(_,[plass]),_),    %% Aleksander Kiellands plass 
- \+ (txt(N0,w(O,_),_N2), unwanted_place(O)), %% o -> osveien 
+ \+ (txt(N0,w(O,_),_n2), unwanted_place(O)), %% o -> osveien 
  \+ txt(N0,w(Vold,name(Voll,n,station)),N2), %%  vold -> voll, NOT vollgt
  \+ txt(N0,w(Vold,name(Voll,n,neighbourhood)),N2),
- \+ txt(N0,w(Reppe,name(Reppe,n,station)),_N2), %% not Reppevegen if Reppe is station
- \+ txt(N0,w(Reppe,name(Reppe,n,neighbourhood)),_N2).
+ \+ txt(N0,w(Reppe,name(Reppe,n,station)),_n2), %% not Reppevegen if Reppe is station
+ \+ txt(N0,w(Reppe,name(Reppe,n,neighbourhood)),_n2).
 
 
 
@@ -1934,7 +1935,7 @@ assertstreetxt(N,Ident,N2):-  %% priority Station before STREET
 
 monthnamenext(N):-      %%  Vikåsen 17 mai
     skip_dot(N,N1), 
-    txt(N1,w(_mai,name(_may,n,month)),_),
+    txt(N1,w(_Mai,name(_May,n,month)),_),
     !.
 
 monthnumbernext(N):-   %%  Vikåsen 17.5 
@@ -1967,7 +1968,7 @@ numbernext(N):-  %% tonstadgrenda 8 13
 parsestreetnumber(N1,Num,N4) :-  %%  yggdrasilvn .  nr. 9
     skip_superf_street(N1,N11), %% TA-100114  garmannsvei vei 3 .
     skip_nr(N11,N2),
-    txt(N2,w(_N,nb(Num,_num)),N3), %% 9a -> nb(9,alf) 
+    txt(N2,w(_N,nb(Num,_Num)),N3), %% 9a -> nb(9,alf) 
     Num < 500,  %%  Pragmatic test for street numbers/ not clock 
     skip_letter(N3,N4).
 
@@ -2083,7 +2084,7 @@ cmplacebus(X,Y,Z) :-
 
 syntxt1(N,Vei,Veg,N1):- % strict
     txt(N,Word,N1),     
-    (Word = w(Vei,name(Veg,_n_,_));  %% havstads gen ok
+    (Word = w(Vei,name(Veg,_N_,_));  %% havstads gen ok
      Word = w(Vei,[Veg])).
 
 
@@ -2490,7 +2491,7 @@ unprotected_verb :-
  \+ txt(X,w(_,[e]),          Y), % e = er %% du e dum  
                                  % til e verket*                   
    (  
-    (VVV=verb(_F,_Pastpres,_fin)) %% bildet finnes verb(show,pres,pass)
+    (VVV=verb(_F,_Pastpres,_Fin)) %% bildet finnes verb(show,pres,pass)
    ;
    (VVV=[Vil], %% hjelpeverb
         testmember(Vil,[kan,vil,må,bør,skal, %% kan også verb! 

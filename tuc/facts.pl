@@ -619,7 +619,7 @@ neighbourhood(X):-
 
 neibor(X):-   
      (isat(_,X);                     
-      nostation(X) ;  
+      busdat:nostation(X) ;  
       unproperstation1(X) ; %% recognised as neighbourhood (feature)  
       %% maybe empty
 

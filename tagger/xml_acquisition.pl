@@ -89,7 +89,8 @@ layouts( [], Context, _Plus, _Minus, Terms, [], WF ) :-
 	close_context( Context, Terms, WF ).
 layouts( [Char|Chars], Context, Plus, Minus, Terms, Residue, WF ) :-
 	( Char =:= "<" ->
-		Chars1 = [],
+%%                Chars1 = [],
+                Chars = [],     %% RS-130624    %% Not quite sure about this...
 		xml_markup_structure( Chars, Context, Terms, Residue, WF )
 	; Char =:= "&" ->
 		entity_reference( Chars, Context, Terms, Residue, WF )

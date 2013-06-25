@@ -5,6 +5,13 @@
 :- ensure_loaded('../declare').
 
 
+:-volatile
+           framecounter/1.
+:-dynamic
+           framecounter/1.
+
+
+
 :- use_module(library(system)).
 
 :- assert(framecounter(1)).

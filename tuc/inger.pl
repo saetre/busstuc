@@ -24,9 +24,20 @@
 :-op(600,xfy, knows).
 
 
+:-volatile
+          (::)/0,
+          factum/1,
+          fat/1,
+          lemma/1,
+          problem/1,
+          rawproblem/1.
 :-dynamic
-           rawproblem/1,
-           factum/1.
+          (::)/0,
+          factum/1,
+          fat/1,
+          lemma/1,
+          problem/1,
+          rawproblem/1.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
