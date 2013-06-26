@@ -8,7 +8,7 @@
 
 
 
-%%:- module(relax,[]).  %% RS-130624    2012 Experiment?
+:- module(relax,[]).  %% RS-130624    2012 Experiment?
 
 tracevalue(L) :- user:value(traceprog,L).  % Trace level 1-4
 

@@ -8,6 +8,7 @@
 ?- prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates
 
 ?-['busroute'].
+
 ?-[tucteam].
 
 

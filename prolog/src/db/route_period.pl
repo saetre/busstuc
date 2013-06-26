@@ -38,6 +38,7 @@ route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,05,19) ).       
 route_period(   tt, r1612_130429, date(2013,04,29),   date(2013,05,20) ).	%% MaiHelligdager
 
 route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,06,23) ).       %% Vå2013
+
 route_period(   tt, r1613_130622, date(2013,06,22),   date(2013,08,11) ).	%% sommer2013
 %Feil route_period(   tt, r1612_130617, date(2013,06,17),   date(2013,08,11) ).       %% sommer13
 route_period(   tt, r1611_130429, date(2013,04,29),   date(2014,05,23) ).	%% Vår 2013
