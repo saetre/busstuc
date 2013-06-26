@@ -16,7 +16,7 @@
 
 %% Main program
 
-:-volatile webstat/3,  % webstat(date(2009,04,21),#sms,#tot).
+:-volatile %webstat/3,  % webstat(date(2009,04,21),#sms,#tot).
 
           txt/3,      % elementary words
           ctxt/3,     % composite words 
@@ -24,13 +24,13 @@
 
           gps_origin/2 . %% TA-110127
 
-:-dynamic webstat/3.  % webstat(date(2009,04,21),#sms,#tot).
+:-dynamic %webstat/3.  % webstat(date(2009,04,21),#sms,#tot).
 
-:-dynamic txt/3,      % elementary words
-          ctxt/3,     % composite words 
-          maxl/1.     % number  of words
+      txt/3,      % elementary words
+      ctxt/3,     % composite words 
+      maxl/1,     % number  of words
 
-:-dynamic gps_origin/2 . %% TA-110127
+      gps_origin/2 . %% TA-110127
 
 
 ?-op(1150,fx,spyg). %% spy grammar rule
@@ -350,8 +350,9 @@ jettyrun(S)  :- %% This was gone so I reimplemented it. %% TE-120207
 %%	OR "String" to Words directly
         words(L, S, []),  %% RS-130331    String to tokens, straight?
         L = [File|L1],  %% RS-130331    Get (optional) Filename
-%%        open(File,write,Stream,[encoding('UTF-8')]),   %% RS-130504
-        open(File,write,Stream,[encoding('ISO-8859-1')]),   %% RS-121121        %%RS-130621 Dame ja'n!
+        open(File,write,Stream,[encoding('UTF-8')]),   %% RS-130504
+%%        open(File,write,Stream,[encoding('ISO-8859-1')]),   %% RS-121121
+%%RS-130621 Make a separate isorun for this, to avoid conflicts between atb and busstuc.idi
         set_output(Stream),
 
         permanence := 0, 
@@ -364,7 +365,7 @@ jettyrun(S)  :- %% This was gone so I reimplemented it. %% TE-120207
         %%words(L, S, []),  %% RS-130331    "String" to tokens, straight
 
         smsflag := false, %% RS-130401, possibly re-set in the next line!
-        splitlang(L1,L2),       %% RS-130504, handle nor eng sms
+        splitlang(L1,L2),       %% RS-130504, handle " nor / eng " (followed by) " sms "
         (process(L2);true), % Process always fails...
         %% flush_output,        %% RS-130401 Called from the client-side! TTPD
         told.
@@ -564,15 +565,25 @@ redirectfromans:-
 %  Perl script will always add a language prefix
 %  SMSFLAG is set dynamically !
 
-splitlang(L,Netto):- %%   If not prefix nor,eng assume no prefix
+splitlang(L,Netto2):- %%   If not prefix nor,eng assume no prefix
  
-   L= [eng|Netto] -> (language :=english, smsflag := false); 
+    ( L= [eng|Netto] -> (  language := english); 
  
-   L= [nor|Netto] -> (language :=norsk,   smsflag := false);
+        L= [nor|Netto] -> (language := norsk);
  
-   L= [sms|Netto] -> (language :=norsk,   smsflag := true);
+            ( Netto=L,     language := norsk )
+    ),
+    splitsms(Netto, Netto2) . 
+
+%%RS-130627 Separate LANG and SMS codes! Inclusive OR
+%%( ENG -> english ; 
+        %% OR NOR -> norwegian
+                %% OR just norwegian (default)
+%% Same check for SMS -> sms OR default NO sms
+
+splitsms(S,Netto):- %%   If not prefix sms assume no sms
  
-  ( Netto=L,          language := norsk,  smsflag := false). 
+   S= [sms|Netto] -> ( smsflag := true ) ; ( Netto=S , smsflag := false ). 
 
 
 
