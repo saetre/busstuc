@@ -183,6 +183,11 @@ isat(heimdal_sentrum,heimdal).
 isat(heimdal_sentrum,heimdal). 
 isat(heimdal_stasjon,heimdal). 
 isat(heimdal_stasjon,heimdal). 
+
+isat(hommelvik_skole,hommelvik).        %% RS-130627 %% Different bus route from hommelvik_stasjon
+isat(hommelvik_stasjon,hommelvik).
+%% isat(hommelvikhøgda,hommelvik). %% RS-130627 %% Outside? Same departing busses...
+
 isat(hovedterminalen,dronningens_gate).  %% Where is sentrumsterminalen
 isat(hovedterminalen,munkegata).  %%
 isat(hovedterminalen,sentrum).  %% Experiment Trikk St. Olavs. gt og så sentrum
