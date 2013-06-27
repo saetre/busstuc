@@ -7,24 +7,29 @@
 %% TUC Dictionary for the language N
 
 :-module(dict_n,[
+                adjective3/3,
+                adv2/2,
                    compword/3,
                    cw/1,
+                   kw/1,
 %%                 lexnsingirr/2,       %% Only English?? RS-121118
 %%                 lexnpluirr/2,        %% Only English?? RS-121118
                    noisew/1,
                    noun2/2,
+                   noun3/3,
                    noun_form/5,
-                   ow/1,
+%                   ow/1,       %% See k(ey)w(ord)
                    preposition/1,
                    pronoun/1,
-%%                   rep_verb/1,        %% English / Norsk is selected in fernando.pl   %% RS-121118
+%                   rep_verb/1,        %% English / Norsk is selected in fernando.pl   %% RS-121118 Already in user (from fernando.pl). Don't export!
                    rewording/2,
 %%                   splitword/2, %% Defined in the user:module
                    synsms/2,
                    synwordx/2,
                    unwanted_adjective/1,
                    unwanted_noun/1,
-                   unwanted_verb/1,
+                unwanted_number/1,
+                unwanted_verb/1,
                    unwanted_interpretation/2,
                    verb_form/4,
                    verbroot2/2,

@@ -9,10 +9,11 @@
 %%:- ensure_loaded('semantic').%  TUCs  Lexical Semantic Knowledge Base
 
 :-module(dict_e,[
+%                   allroundmember/2,
 %                   compword/3,
 %                   cw/1,
-%                   lexnsingirr/2,
-%                   lexnpluirr/2,
+                   lexnsingirr/2,
+                   lexnpluirr/2,
 %                   noisew/1,
 %                   noun2/2,
 %                   noun_form/5,

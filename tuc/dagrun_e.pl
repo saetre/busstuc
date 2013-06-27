@@ -9,7 +9,8 @@
 
 % English  clone of runtime routines in gram_n.pl
 
- :-module(dcg_e,[]).
+ :-module(dcg_e,[cc/5, check_stop/5, end_of_line/5, end_of_line0/5, lock/5, look_ahead/6, not_look_ahead/6, 
+                 pushstack/7, pushstack1/4, skip_rest/5, unlock/4, w/6, word/5]).
 
  
 
