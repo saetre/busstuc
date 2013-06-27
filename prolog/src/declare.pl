@@ -36,6 +36,14 @@
 :-op( 500,xfy,-...). %% same as \
 :-op( 500,xfy,-.).   %% same as -
 
+:-volatile (=>)/2,
+          dynoatt/2,
+          dynotype/2,
+          fact0/1,     %% Semi permanent 
+%          fact1/2,     %% Dynamic  
+          difact/2,     %% Dynamic,  context dependent  %% TA-980301
+          value/2.
+
 :-dynamic (=>)/2,
           dynoatt/2,
           dynotype/2,
