@@ -25,7 +25,7 @@
           gps_origin/2 . %% TA-110127
 
 :-dynamic %webstat/3.  % webstat(date(2009,04,21),#sms,#tot).
-
+        (=>)/2,
       txt/3,      % elementary words
       ctxt/3,     % composite words 
       maxl/1,     % number  of words
