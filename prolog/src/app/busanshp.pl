@@ -2590,6 +2590,11 @@ pmess(nearest_station(_STARTSTOP,Street,Station)):-
 
 %% nightbus 400 deps cancelled
 
+%% General Nightbus message ( following weekend is normal )     %% RS-130630 Only for summer routes!!! Update this in August 2013
+pmess(generalnightbusmessage):-
+    pen(['Nightbus goes every hour from O.Tryggvasons gt. in the summer at 0100,0200,0300 am night to Saturday and Sunday.',
+         'Nattbuss går hver time fra O.Tryggvasons gt. om sommeren kl 0100,0200 og 0300 natt til lørdag og søndag.']).
+
 %% General Nightbus message ( following weekend is normal )
 pmess(generalnightbusmessage):-
     pen(['Nightbus goes every 30 min from O.Tryggvasons gt. at 0030,0100,0130,0200,0230,0300 am night to Saturday and Sunday.',

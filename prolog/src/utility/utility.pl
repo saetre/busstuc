@@ -10,6 +10,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%:-volatile
+%          value/2.      %% RS-130630. Big Danger!!! This has to be stored in the compiled save_program!!!
+
+:-dynamic
+          value/2.      %% RS-130630. Danger?
 
 %% panic(_H). %% just for comment-predication
 

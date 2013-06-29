@@ -5,6 +5,18 @@
 %% REVISED TA-090925
 
 :- ensure_loaded('../declare').
+:- ensure_loaded('../main.pl'). %% RS-130630 With all value(X,Y) (or X := Y ), e.g. lang:=norsk.
+
+:- volatile
+%%           value/2,   %% RS-130630 this causes BIG TROUBLE!
+        difact/2,    %% Dynamic,  context dependent  %% TA-980301
+        fact0/1.     %% Semi permanent, in evaluate.pl
+          
+:- dynamic
+%%           value/2, %% get from main.pl?
+        difact/2,    %% Dynamic,  context dependent  %% TA-980301
+        fact0/1.     %% Semi permanent , in evaluate.pl
+%        fact1/2,     %% Dynamic  
 
 evaluateq2(nil):-!. 
 

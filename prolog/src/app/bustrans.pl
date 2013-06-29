@@ -10,8 +10,11 @@
         tracevalue/1
                 ]) .
 
-:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
 %%:- ensure_loaded('../db/timedat'). %% RS-111213 General (semantic) Operators Moved (back) to busdat
+
+:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators. %% RS-130630 Will cause problems if imported as volatile predicates!!!
+
+%:-volatile value/2.  %% RS-130630 This caused BIG TROUBLE!
 
 
 % Transformation rules for the bus domain
