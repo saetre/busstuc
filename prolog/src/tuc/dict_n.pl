@@ -18,7 +18,7 @@
                    noun2/2,
                    noun3/3,
                    noun_form/5,
-%                   ow/1,       %% See k(ey)w(ord)
+                   ow/1,       %% See k(ey)w(ord)
                    preposition/1,
                    pronoun/1,
 %                   rep_verb/1,        %% English / Norsk is selected in fernando.pl   %% RS-121118 Already in user (from fernando.pl). Don't export!
