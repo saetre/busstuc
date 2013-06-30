@@ -4,6 +4,7 @@
 %% CREATED TA-930531
 %% REVISED TA-090617
 
+:- ensure_loaded('declare.pl').
 
 %% COMMON CO-VERSION BUSS TELE
 

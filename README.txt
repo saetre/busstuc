@@ -10,7 +10,7 @@ satre@vm-6114:/home/busstuc/busstuc/db/tables/r1612_130617$ sudo chmod g+w *
 satre@vm-6114:/home/busstuc/busstuc/db/tables/r1612_130617$ sudo chmod g+w .
 
 ---------------------
-Don't remove to many / or . from the query!
+Don't remove to many / . , from the query!
 lade søndag 30/6
 lade søndag 30.6
 
