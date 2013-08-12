@@ -9,7 +9,7 @@
 
 :- ensure_loaded( '../dialog/frames2' ). %% RS-121223   %% Why?
 
-:- use_module('../db/busdat'). %% RS-111213 General (semantic) Operators
+%% :- use_module('../db/busdat'). %% RS-111213 General (semantic) Operators  %% PROBLEMATIC RS-130812
 
 %%%%%%%%%%%%%%%% ALL ROUTE INTERFACE PREDICATES %%%%%%%%%%%%%%%%%%
 
