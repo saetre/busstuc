@@ -6,12 +6,9 @@
 %% REVISED RS-121024
 
 %% Ny linje
-%% Ny linje
 :-ensure_loaded(route_period).        
-%% Contains the important information about route modules
 
-:-volatile  thisdate_period_module/3 .       %% RS-120915
-:-dynamic   thisdate_period_module/3 .
+%% Contains the important information about route modules
 
 % See compileroute.pl for compilation
 

@@ -14,6 +14,9 @@
 
 
 % thisdate_period_module(TT,_,Period) contains the actual period Dynamic
+:-volatile  thisdate_period_module/3 .       %% RS-120915
+:-dynamic   thisdate_period_module/3 .
+
 
 
 domain_module(D,M):- 
