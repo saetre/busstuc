@@ -75,6 +75,7 @@ Run in Main directory
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:-ensure_loaded('../interfaceroute').
 
 
 makeauxtables:-
@@ -202,8 +203,7 @@ createonlytostations:-
 
 createtransbuslist:-
 
-    thisdate_period_module(tt,_Todate,TTP), %% TT-period of current date
-                                            %% set by reset_period
+    thisdate_period_module(tt,_Todate,TTP), %% TT-period of current date  %% set by reset_period
     makenext(TTP),
 
     makeinteriors,

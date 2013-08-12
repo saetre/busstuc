@@ -207,7 +207,7 @@ isat(hommelvik_stasjon,hommelvik).
 %% isat(hommelvikhøgda,hommelvik). %% RS-130627 %% Outside? Same departing busses...
 
 isat(hovedterminalen,dronningens_gate).  %% Where is sentrumsterminalen
-isat(hovedterminalen,kongens_gate).  %% Where is sentrumsterminalen
+%%isat(hovedterminalen,kongens_gate).  %% RS-130812 Where is sentrumsterminalen, men unngå: Holdeplassen nærmest Kongens_gate er Sentrumsterminalen ??
 isat(hovedterminalen,munkegata).  %%
 isat(hovedterminalen,sentrum).  %% Experiment Trikk St. Olavs. gt og så sentrum
 
@@ -2008,8 +2008,9 @@ specname(klæbu_skysstasjon,'Klæbu skysstasjon').
 specname(kong_øysteins_veg,'Kong Øysteins veg'). 
 
 %% RS-130812
-specname(kongens_gate_k1,'kongens gate K1').  
-specname(kongens_gate_k2,'kongens gate K2'). 
+specname(kongens_gate,'Kongens gate').
+specname(kongens_gate_k1,'Kongens gate K1').  
+specname(kongens_gate_k2,'Kongens gate K2'). 
 specname(k1,'Kongens gate K1').  %% RS-130812
 specname(k2,'kongens gate K2').  %% 
 
@@ -6613,10 +6614,7 @@ cmpl(kong,ingesgate,kong_inges_street).
 
 cmpl(kong,[gt,k1],kongens_gate_k1).  %% Because it is your abbrev. %% RS-130812 ??
 cmpl(kong,[gt,k2],kongens_gate_k2). 
-cmpl(kong,gt,kongens_gate).  %%Asyouspeak,
-
-
-cmpl(kong,gt,kongens_gate). 
+cmpl(kong,[gt],kongens_gate).  %%Asyouspeak,
 cmpl(kong,[s,gate],kongens_gate).
 
 cmpl(kongens,[gate,holdeplass,k,1],kongens_gate_k1). 
