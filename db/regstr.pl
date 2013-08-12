@@ -802,9 +802,9 @@ streetstat(kong_inges_street,'Kong Inges gate',20,41,magnus_blindes_veg).
 streetstat(kong_øysteins_street,'Kong  Øysteins veg',43,43,valentinlyst).
 streetstat(kong_øysteins_street,'Kong  Øysteins veg',4,4,strindheim_hageby).
 streetstat(kong_øysteins_street,'Kong  Øysteins veg',15,31,cecilie_thoresens_veg).
-streetstat(kongens_street,'Kongens gate',51,85,hospitalkirka).
-streetstat(kongens_street,'Kongens gate',1,49,torget).
-streetstat(kongens_street,'Kongens gate',9,112,kalvskinnet).
+%streetstat(kongens_street,'Kongens gate',51,85,hospitalkirka).
+%streetstat(kongens_street,'Kongens gate',1,49,torget).
+%streetstat(kongens_street,'Kongens gate',9,112,kalvskinnet).
 streetstat(kongle_street,'Konglevegen',1,5,kongleveien).
 streetstat(kongle_street,'Konglevegen',6,13,charlottenlund_kirke).
 streetstat(kongle_street,'Konglevegen',14,21,presthusaunet).

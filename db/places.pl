@@ -6,6 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % d1 --> dronningens_gate_d1  etc 
+% k1 --> kongens_gate_k1  etc 
 % m1 --> munkegata_m1 etc
 
 %  Det heter Værestrøa ***
@@ -64,6 +65,14 @@ corr(dronningens_gate_46,hovedterminalen). %% TA-110627
 corr(dronningens_gate_50,hovedterminalen). %% TA-110627
 
 
+corr(kongens_gate_k1,hovedterminalen). %% Atb
+corr(kongens_gate_k2,hovedterminalen). 
+
+%corr(kongens_gate_19,hovedterminalen). %% TA-110627
+%corr(kongens_gate_46,hovedterminalen). %% TA-110627
+%corr(kongens_gate_50,hovedterminalen). %% TA-110627
+
+
 
 %% corr(munkegata_m0,sentrum).  %% ad hoc sverresgt-> m0->sentrum
 
@@ -90,7 +99,13 @@ corr(d1,hovedterminalen).
 corr(d2,hovedterminalen). 
 corr(d3,hovedterminalen). 
 corr(d4,hovedterminalen). 
+
+%kongens gate (hovedterminalen fra 2013.08.12   %% RS-130812
+corr(k1,hovedterminalen). 
+corr(k2,hovedterminalen). 
+
 corr(lerkendal_stadion,tempe_kirke). 
+
 corr(m0,hovedterminalen).  %% Generic central place
 corr(m0,sentrum).  %% ad hoc sverresgt-> m0->sentrum
 corr(m1,hovedterminalen). 
@@ -126,6 +141,9 @@ isat(dronningens_gate_d1,sentrum). %% AtB
 isat(dronningens_gate_d2,sentrum). 
 isat(dronningens_gate_d3,sentrum). 
 isat(dronningens_gate_d4,sentrum). 
+
+isat(kongens_gate_k1,sentrum). %% AtB
+isat(kongens_gate_k2,sentrum). 
 
 isat(munkegata_m1,sentrum). 
 isat(munkegata_m2,sentrum). 
@@ -189,6 +207,7 @@ isat(hommelvik_stasjon,hommelvik).
 %% isat(hommelvikhøgda,hommelvik). %% RS-130627 %% Outside? Same departing busses...
 
 isat(hovedterminalen,dronningens_gate).  %% Where is sentrumsterminalen
+isat(hovedterminalen,kongens_gate).  %% Where is sentrumsterminalen
 isat(hovedterminalen,munkegata).  %%
 isat(hovedterminalen,sentrum).  %% Experiment Trikk St. Olavs. gt og så sentrum
 
@@ -575,6 +594,7 @@ placestat(kolstadsenteret,torplassen).  %%?
 placestat(kolsås,flatåstoppen).  %% også Bærum
 placestat(kolsåsen,flatåstoppen). 
 placestat(kolsåstoppen,flatåstoppen). 
+placestat(kongens_gate,hovedterminalen).  %% jeg skal til kongens gate. 
 placestat(kongsvegen,granåsen_vm_anlegget). 
 placestat(korsvika,lade_kirke). 
 placestat(kotenghallen,vestre_rosten). %%  private?
@@ -778,7 +798,7 @@ placestat(saupstadskole,midteggen).
 placestat(saupstadvegen,heimdal_stasjon). 
 placestat(saxenborg,saxenborg_alle). 
 placestat(schrøder,fossegrenda). 
-placestat(servicekontoret,dronningens_gate_d2).
+%placestat(servicekontoret,dronningens_gate_d2).        %% RS-130812 Gammelt TT-kontor!
 placestat(singsaker,asbjørnsens_gate). 
 placestat(singsaker_studenthjem,jonsvannsveien). 
 placestat(sirkus_shopping,strindheim).
@@ -1728,7 +1748,7 @@ sameplace(østmarkneset,østmarkveien).  %%nesset
 sameplace(øvreromolslia,romolslia_øvre). 
 sameplace(kattemsentret,kattemsenteret). 
 
-short_specame(ranheim_stasjon,'Ranheim st. '). 
+
 short_specname(d1,'Dronn. gt D1'). 
 short_specname(d2,'Dronn. gt D2'). 
 short_specname(d3,'Dronn. gt D3'). 
@@ -1737,12 +1757,6 @@ short_specname(d4,'Dronn. gt D4').
 short_specname(dronningens_gate,'Dronn. gt').
  
 short_specname(dronningens_gate_d1,'Dronn. gt D1'). %% AtB
-short_specname(dronningens_gate_d2,'Dronn. gt D2'). 
-short_specname(dronningens_gate_d3,'Dronn. gt D3'). 
-short_specname(dronningens_gate_d4,'Dronn. gt D4'). 
-
-short_specname(dronningens_gate,'Dronn. gt'). 
-short_specname(dronningens_gate_d1,'Dronn. gt D1'). 
 short_specname(dronningens_gate_d2,'Dronn. gt D2'). 
 short_specname(dronningens_gate_d3,'Dronn. gt D3'). 
 short_specname(dronningens_gate_d4,'Dronn. gt D4'). 
@@ -1764,6 +1778,17 @@ short_specname(johan_falkbergets_vei,'J Falkbergets v').
 short_specname(jørgen_b_lysholms_vei,'J. B. Lysholmsv'). 
 %% short_specname(lerkendal_stadion,'Lerkendal st. ').  %% %% Extra sp
 
+
+short_specname(k1,'Kongens gt K1'). %% RS-130812
+short_specname(k2,'Kongens gt K2'). 
+
+short_specname(kongens_gate,'Kong. gt').
+short_specname(kongens_gate_k1,'Kongens gt K1'). %% AtB
+short_specname(kongens_gate_k2,'Kongens gt K2'). 
+
+short_specname(kongensgate_k1,'Kongens gt K1'). 
+short_specname(kongensgate_k2,'Kongens gt K2'). 
+ 
 short_specname(munkegata_m1,'Munkegt M1'). %% AtB
 short_specname(munkegata_m2,'Munkegt M2'). 
 short_specname(munkegata_m3,'Munkegt M3'). 
@@ -1782,6 +1807,7 @@ short_specname(moholt_studentby,'Moholt stud. by').
 short_specname(munkegata,'Munkegt'). 
 short_specname(prinsen_kinosenter,'Prinsen kinos. '). 
 short_specname(prof_brochs_gate,'Prof. Brochs gt'). 
+short_specname(ranheim_stasjon,'Ranheim st. '). 
 short_specname(studentersamfundet_1,'Stud. samf. 1'). 
 short_specname(studentersamfundet_2,'Stud. samf. 2'). 
 short_specname(ts,'Trondheim S'). 
@@ -1980,6 +2006,13 @@ specname(kino,'"kino"').
 specname(klett_møbel,'Klett Møbel'). 
 specname(klæbu_skysstasjon,'Klæbu skysstasjon'). 
 specname(kong_øysteins_veg,'Kong Øysteins veg'). 
+
+%% RS-130812
+specname(kongens_gate_k1,'kongens gate K1').  
+specname(kongens_gate_k2,'kongens gate K2'). 
+specname(k1,'Kongens gate K1').  %% RS-130812
+specname(k2,'kongens gate K2').  %% 
+
 specname(kronprins_olavs_alle,'Kronprins Olavs allé'). 
 %% specname(kroppanmarka_endehpl,'Kroppanmarka endeholdeplass'). 
 specname(kuset_gård,'Kuset gård'). 
@@ -3152,6 +3185,9 @@ synplace(jonsvansveikrysset,jonsvannsveikrysset).   %% unnec
 synplace(jonsvatnveien,jonsvannsveien).  %% (etc)
 
 synplace(jskobli,jakobsli). 
+
+synplace(k1,kongens_gate_k1). %% RS-130812
+synplace(k2,kongens_gate_k2).
 synplace(k_johnssonsveg,karl_jonssons_veg).  %% RS-120805 Space? 
 synplace(kade,lade). 
 synplace(kadehammeren,ladehammeren).  %%?
@@ -3201,6 +3237,26 @@ synplace(koieflaten,koieflata).
 synplace(kolstadtoppen,kolstadhaugen). 
 synplace(komunesenter,kommunesenter). 
 synplace(komunesenteret,kommunesenter). 
+
+synplace(knggate,kongens_gate). 
+synplace(knggt,kongens_gate). 
+synplace(kong,kongens).  %%//WYWIWYR Whatyouwriteiswhatyou(haveto)read
+synplace(kongata,kongens_gate). 
+synplace(kongen,kongens). 
+synplace(konggata,kongens_gate). 
+synplace(kongsgata,kongens_gate). 
+synplace(konn,kongens). 
+synplace(konngt,kongens_gate).  %%
+synplace(kongensgate,kongens_gate). 
+synplace(kongensgt,kongens_gate). 
+synplace(konnges,kongens). 
+synplace(kongsgate,kongens_gate). 
+synplace(konngsgate,kongens_street).  %%dronningsgate40?"
+synplace(konngsgaten,kongens_gate). 
+synplace(konngt,kongens_gate). 
+synplace(konnsgsgate,kongens_gate). 
+synplace(kångensgate,kongens_gate).  
+
 synplace(kongevegen,kongsvegen). 
 synplace(kongleien,kongleveien).  
 synplace(koppan,kroppan). 
@@ -5672,6 +5728,7 @@ cmpl(dragvoll,høyskole,dragvoll).  %%. . . AVH. . .
 cmpl(dragvoll,idrettssenter,dragvoll).  %%?
 cmpl(dragvoll,ntnu,dragvoll). 
 cmpl(dragvoll,universitet,dragvoll).  %% universitetet_dragvoll???
+
 cmpl(dronn,[gt,d1],dronningens_gate_d1).  %% Because it is your abbrev. 
 cmpl(dronn,[gt,d2],dronningens_gate_d2). 
 cmpl(dronn,[gt,d3],dronningens_gate_d3). 
@@ -6469,6 +6526,15 @@ cmpl(jørgen,[lysholms,v],jørgen_b_lysholms_vei).
 cmpl(jørgen,[lysholms,veg],jørgen_b_lysholms_street).  %%
 cmpl(jørgen,[lysholms,vei],jørgen_b_lysholms_vei). 
 cmpl(jørgen,[lysholms_vei],jørgen_b_lysholms_street).  %% Problem
+
+
+cmpl(k,[1],kongens_gate_k1). %%RS-130812
+cmpl(k,[2],kongens_gate_k2). 
+cmpl(kong,[gt,k1],kongens_gate_k1).  %% Because it is your abbrev. 
+cmpl(kong,[gt,k2],kongens_gate_k2). 
+cmpl(kong,gt,kongens_gate).  %%Asyouspeak,
+
+
 cmpl(k,[jonsons,veg],karl_jonssons_veg). 
 cmpl(k,[o,thornæs,veg],k_o_thornæs_vei). 
 cmpl(k,[o,thornæs_vei],k_o_thornæs_vei). 
@@ -6542,6 +6608,55 @@ cmpl(kong,[haakon,7,gt],haakon_vii_gt).  %%a. s. o. . . .
 cmpl(kong,[inge,s,gate],kong_inges_street). 
 cmpl(kong,[inges,gate],kong_inges_street). 
 cmpl(kong,ingesgate,kong_inges_street).  
+
+
+
+cmpl(kong,[gt,k1],kongens_gate_k1).  %% Because it is your abbrev. %% RS-130812 ??
+cmpl(kong,[gt,k2],kongens_gate_k2). 
+cmpl(kong,gt,kongens_gate).  %%Asyouspeak,
+
+
+cmpl(kong,gt,kongens_gate). 
+cmpl(kong,[s,gate],kongens_gate).
+
+cmpl(kongens,[gate,holdeplass,k,1],kongens_gate_k1). 
+cmpl(kongens,[gate,holdeplass,k,2],kongens_gate_k2). 
+
+cmpl(kongens,[gate,holdeplass,k1],kongens_gate_k1). %% d 1 -> d1 is prelexed
+cmpl(kongens,[gate,holdeplass,k2],kongens_gate_k2). %% ugly ?
+
+cmpl(kongens,[gate,k,1],kongens_gate_k1). 
+cmpl(kongens,[gate,k,2],kongens_gate_k2). 
+
+cmpl(kongens,[gate,k,1],kongens_gate_k1). 
+cmpl(kongens,[gate,k,2],kongens_gate_k2). 
+
+cmpl(kongens,[gate,k1],kongens_gate_k1). %% if not split
+cmpl(kongens,[gate,k2],kongens_gate_k2). 
+
+cmpl(kongens,[gt,k,1],kongens_gate_k1). 
+cmpl(kongens,[gt,k,2],kongens_gate_k2). 
+
+cmpl(kongens,[gt,k1],kongens_gate_k1). 
+cmpl(kongens,[gt,k2],kongens_gate_k2).  
+
+cmpl(kongens,gata,kongens_gate). 
+cmpl(kongens,gate,kongens_gate). 
+cmpl(kongens,gate,hovedterminalen). 
+cmpl(kongens,gt,kongens_gate). 
+
+cmpl(kongensgate,[k,1],kongens_gate_k1). %% TA-101026
+cmpl(kongensgate,[k,2],kongens_gate_k2). 
+
+cmpl(kongensgate,[holdeplass,k,1],kongens_gate_k1). 
+cmpl(kongensgate,[holdeplass,k,2],kongens_gate_k2). 
+
+cmpl(kongensgate,[k1],kongens_gate_k1). %% if not split
+cmpl(kongensgate,[k2],kongens_gate_k2). 
+
+cmpl(kongensgate,[holdeplass,k1],kongens_gate_k1). 
+cmpl(kongensgate,[holdeplass,k2],kongens_gate_k2). 
+%% RS-130812
 
 cmpl(kong,[sverres,gate],sverres_street). 
 cmpl(kong,[øisteins,gt],kong_øysteins_veg). 
