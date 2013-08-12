@@ -27,19 +27,17 @@ route_period(   tt, r1613_121225, date(2012,12,25),   date(2013,01,01) ).  %% Me
 route_period(   tt, r1602_130326, date(2013,03,26),   date(2013,04,01) ).	%% vaar2013
 route_period(   tt, r1603_130402, date(2013,04,02),   date(2013,04,14) ).	%% vaar2013
 route_period(   tt, r1601_130306, date(2013,03,06),   date(2013,04,14) ).	%% vaar2013
-route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,04,30) ).       %% V������������������������������������������������������r2013
+route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,04,30) ).       %% Vår2013
 route_period(   tt, r1612_130429, date(2013,04,29),   date(2013,05,01) ).	%% MaiHelligdager
-route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,05,08) ).       %% V������������������������������������������������������r2013
+route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,05,08) ).       %% Vår2013
 route_period(   tt, r1612_130429, date(2013,04,29),   date(2013,05,09) ).	%% MaiHelligdager
-route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,05,16) ).       %% V������������������������������������������������������r2013
+route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,05,16) ).       %% Vår2013
 route_period(   tt, r1613_130429, date(2013,04,29),   date(2013,05,17) ).	%% 17mai
-route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,05,19) ).       %% V������������������������������������������������������r2013
+route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,05,19) ).       %% Vår2013
 route_period(   tt, r1612_130429, date(2013,04,29),   date(2013,05,20) ).	%% MaiHelligdager
-route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,06,23) ).       %% V������������������2013
+route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,06,23) ).       %% Vår2013
 route_period(   tt, r1613_130622, date(2013,06,22),   date(2013,08,11) ).	%% sommer2013
-route_period(   tt, r1611_130429, date(2013,04,29),   date(2014,05,23) ).	%% V������������������r 2013
-route_period(   tt, r1613_130812, date(2013,08,12),   date(2014,06,22) ).	%% Test2
 route_period(   tt, r1613_130812, date(2013,08,12),   date(2014,06,22) ).	%% Vinter13_14
-route_period(   tt, r1613_130812, date(2013,08,12),   date(2014,06,22) ).	%% Vinter13_14
+
 route_period(   tmn,r1630_101201, date(2012,12,01),   date(2014,12,31) ).
 route_period(   gb, r1630_111201, date(2012,12,01),   date(2014,12,31) ).  %% Graakallbanen
