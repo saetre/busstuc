@@ -34,6 +34,9 @@
 
 %% ?-prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates// Testing
 
+%% Ny linje
+:-ensure_loaded('db/route_period').        
+
 ?- [ %% sicstus4compatibility], loaded in drucke_baum
    'tucbuss.pl',
    'busroute.pl', %% Compiles database/

@@ -84,8 +84,8 @@ makeauxtables:-
 
     write('%  Please wait 1 minute...'),nl,
 
-    %%tell('db/auxtables.pl'),    %% RS-121121
-    open( 'db/auxtables.pl', write, Stream, [encoding('UTF-8')] ),
+    %%tell('../db/auxtables.pl'),    %% RS-121121
+    open( '../db/auxtables.pl', write, Stream, [encoding('UTF-8')] ),
     set_output(Stream),
 
     writeheading,
