@@ -17,25 +17,25 @@
 %%route_period( tt, r1611_110627, date(2012,06,27),   date(2012,08,14) ).     
 %%route_period( tt, r1602_120813, date(2012,08,13),   date(2012,09,12) ).
 %%route_period( tt, r1612_121001, date(2012,10,01),   date(2012,11,30) ).  %% New nightbusses etc. ver5 Hoest 2012
-route_period(   tt, r1612_121224, date(2012,12,24),   date(2012,12,24) ).  %% Julaften      2012.12.24
-route_period(   tt, r1614_121227, date(2012,12,27),   date(2012,12,27) ).  %% Mellomjula27  2012.12.27
-route_period(   tt, r1613_121225, date(2012,12,25),   date(2012,12,28) ).  %% Mellomjula    2012.12.25-26 og 28 (og 1/1)
-route_period(   tt, r1611_121201, date(2012,12,01),   date(2012,12,30) ).  %% Vinter 2012   2012.12.29-30 (og fra 2/1)
+%route_period(   tt, r1612_121224, date(2012,12,24),   date(2012,12,24) ).  %% Julaften      2012.12.24
+%route_period(   tt, r1614_121227, date(2012,12,27),   date(2012,12,27) ).  %% Mellomjula27  2012.12.27
+%route_period(   tt, r1613_121225, date(2012,12,25),   date(2012,12,28) ).  %% Mellomjula    2012.12.25-26 og 28 (og 1/1)
+%route_period(   tt, r1611_121201, date(2012,12,01),   date(2012,12,30) ).  %% Vinter 2012   2012.12.29-30 (og fra 2/1)
 %%route_period( tt, r1601_120101, date(2012,01,01),   date(2012,12,31) ).
-route_period(   tt, r1615_121224, date(2012,12,24),   date(2012,12,31) ).  %% Nyttaarsaften  2012.12.31
-route_period(   tt, r1613_121225, date(2012,12,25),   date(2013,01,01) ).  %% Mellomjula   (2012.12.25-26 og 28) og 1/1
-route_period(   tt, r1602_130326, date(2013,03,26),   date(2013,04,01) ).	%% vaar2013
-route_period(   tt, r1603_130402, date(2013,04,02),   date(2013,04,14) ).	%% vaar2013
-route_period(   tt, r1601_130306, date(2013,03,06),   date(2013,04,14) ).	%% vaar2013
-route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,04,30) ).       %% Vår2013
-route_period(   tt, r1612_130429, date(2013,04,29),   date(2013,05,01) ).	%% MaiHelligdager
-route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,05,08) ).       %% Vår2013
-route_period(   tt, r1612_130429, date(2013,04,29),   date(2013,05,09) ).	%% MaiHelligdager
-route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,05,16) ).       %% Vår2013
-route_period(   tt, r1613_130429, date(2013,04,29),   date(2013,05,17) ).	%% 17mai
-route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,05,19) ).       %% Vår2013
-route_period(   tt, r1612_130429, date(2013,04,29),   date(2013,05,20) ).	%% MaiHelligdager
-route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,06,23) ).       %% Vår2013
+%route_period(   tt, r1615_121224, date(2012,12,24),   date(2012,12,31) ).  %% Nyttaarsaften  2012.12.31
+%route_period(   tt, r1613_121225, date(2012,12,25),   date(2013,01,01) ).  %% Mellomjula   (2012.12.25-26 og 28) og 1/1
+%route_period(   tt, r1602_130326, date(2013,03,26),   date(2013,04,01) ).	%% vaar2013
+%route_period(   tt, r1603_130402, date(2013,04,02),   date(2013,04,14) ).	%% vaar2013
+%route_period(   tt, r1601_130306, date(2013,03,06),   date(2013,04,14) ).	%% vaar2013
+%route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,04,30) ).       %% Vår2013
+%route_period(   tt, r1612_130429, date(2013,04,29),   date(2013,05,01) ).	%% MaiHelligdager
+%route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,05,08) ).       %% Vår2013
+%route_period(   tt, r1612_130429, date(2013,04,29),   date(2013,05,09) ).	%% MaiHelligdager
+%route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,05,16) ).       %% Vår2013
+%route_period(   tt, r1613_130429, date(2013,04,29),   date(2013,05,17) ).	%% 17mai
+%route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,05,19) ).       %% Vår2013
+%route_period(   tt, r1612_130429, date(2013,04,29),   date(2013,05,20) ).	%% MaiHelligdager
+%route_period(   tt, r1611_130429, date(2013,04,29),   date(2013,06,23) ).       %% Vår2013
 route_period(   tt, r1613_130622, date(2013,06,22),   date(2013,08,11) ).	%% sommer2013
 route_period(   tt, r1613_130812, date(2013,08,12),   date(2014,06,22) ).	%% Vinter13_14
 

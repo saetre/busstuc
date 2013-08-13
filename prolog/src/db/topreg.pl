@@ -5,9 +5,6 @@
 %% REVISED TA-120402
 %% REVISED RS-121024
 
-%% Ny linje
-:-ensure_loaded(route_period).        
-
 %% Contains the important information about route modules
 
 % See compileroute.pl for compilation

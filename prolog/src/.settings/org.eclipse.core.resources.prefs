@@ -1,12 +1,4 @@
 eclipse.preferences.version=1
-encoding//db/tables/r1602_120813/regcut.pl=ISO-8859-1
-encoding//db/tables/r1617_120912=ISO-8859-1
-encoding//db/tables/r1617_120912/regbus.pl=ISO-8859-1
-encoding//db/tables/r1617_120912/regcomp.pl=ISO-8859-1
-encoding//db/tables/r1617_120912/regcut.pl=ISO-8859-1
-encoding//db/tables/r1617_120912/regdep.pl=ISO-8859-1
-encoding//db/tables/r1617_120912/reghpl.pl=ISO-8859-1
-encoding//db/tables/r1617_120912/regpas.pl=ISO-8859-1
 encoding//tests/batch.n=ISO-8859-1
 encoding//tests/resjon.n=ISO-8859-1
 encoding//tests/status_20120729.txt=ISO-8859-1
