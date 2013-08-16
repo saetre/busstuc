@@ -45,7 +45,7 @@
 %%%%%%%%%   REFERENCE TO STATION SECTION %% TA-110705
 
 
-corr(torget,hovedterminalen).         %% SUMMER %% TA-110628
+%% corr(torget,hovedterminalen).         %% SUMMER %% TA-110628 %% RS-130816 REMOVED before WINTER...
 
 %% corr(prinsenkrysset,hovedterminalen). %% ???  SUMMER %% TA-110701
   %% sorry, gir destinasjon munkehate = Prinsenkrysset  %%
@@ -1671,7 +1671,7 @@ sameplace(torgsenteret,torget).
 sameplace(torplas,torplassen). 
 sameplace(torpsplass,torplassen).  %%?
 sameplace(torpveien,ingemann_torps_vei). %ingemann_torps_street).  %%station
-sameplace(torvet,torget).  %% catch sperr
+sameplace(torvet,torget).  %% catch spell-error?
 sameplace(torvplassen,torget). 
 sameplace(travbanestasjonen,travbanen). 
 sameplace(travparken,travbanen). 
@@ -2122,7 +2122,7 @@ specname(paul_skolemesters_veg,'Paul skolemesters veg').%% TA-110803
 specname(peder_kroghs_v,'Peder Kroghs vei'). 
 specname(peder_morsets_vei,'Peder Morsets vei'). 	
 specname(persaunet_leir,'Persaunet leir'). 
-specname(persaunev,'Persauneveien'). %% outdated?
+specname(persaunev,'Persaunevegen'). %% outdated?
 specname(prestegårdsjordet,'Prestegårdsjordet').  %% (error)
 specname(prinsen_kinosenter,'Prinsen kinosenter').  
 specname(prinsens_gate,'Prinsens gate'). 
