@@ -44,6 +44,10 @@
    ].
 ?- notrace.
 
+%% MakeAuxTables relies on busroute
+ :-makeauxtables.     %% RS-130330    Takes a minute?
+ :-createhash.        %% RS-130330    Takes another minute?
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

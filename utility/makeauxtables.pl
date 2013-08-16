@@ -84,8 +84,8 @@ makeauxtables:-
 
     write('%  Please wait 1 minute...'),nl,
 
-    %%tell('../db/auxtables.pl'),    %% RS-121121
-    open( '../db/auxtables.pl', write, Stream, [encoding('UTF-8')] ),
+    %%tell('db/auxtables.pl'),    %% RS-121121
+    open( 'db/auxtables.pl', write, Stream, [encoding('UTF-8')] ),
     set_output(Stream),
 
     writeheading,
@@ -476,7 +476,7 @@ torehash(yggdrasi,yggdrasil).
 
 
 createhash :-
-    write(' Please Wait 1 minute '),nl, %% TA-090317
+    write(' Please Wait another minute... '),nl, %% TA-090317
 
 
     reset_period,  %% Use the current names (just for hashing)

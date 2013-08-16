@@ -883,8 +883,8 @@ statcoord(16011367,'Peder Morsets v.',568147.667,7026033.822).
 statcoord(16010367,'Peder Morsets v.',568139.583,7026028.126).
 statcoord(16011368,'Persaunet leir',571960.042,7034485.858).
 statcoord(16010368,'Persaunet leir',571931.677,7034477.327).
-statcoord(16011369,'Persauneveien',572211.753,7034618.085).
-statcoord(16010369,'Persauneveien',572195.611,7034652.774).
+statcoord(16011369,'Persaunevegen',572211.753,7034618.085).
+statcoord(16010369,'Persaunevegen',572195.611,7034652.774).
 statcoord(16011743,'Perstu',559662.688,7026537.038).
 statcoord(16010743,'Perstu',559648.776,7026628.076).
 statcoord(16010644,'Pir 1',0,0).
