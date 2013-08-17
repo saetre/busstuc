@@ -1,7 +1,7 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
 % Auxillary tables created 
 %%from writeheading in utility/makeauxtables.pl
-%% datetime(2013,8,13,15,35,12)
+%% datetime(2013,8,17,9,54,20)
 
 
 %%% 
