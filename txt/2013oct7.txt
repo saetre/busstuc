@@ -1,0 +1,1262 @@
+PROBLEMS 2013 Oct 7
+====================
+Undefined station identifiers 
+
+asbjørnsens_gate
+haakon_vii_gate_29
+heggstadmoen
+hommelvik_skole
+hovedterminalen
+john_aaes_veg
+lerchendal_gård
+olav_nygårds_veg
+prinsens_gate_p4
+rotvoll_nedre
+sentrum
+statoil_rotvoll
+stavnebrua
+
+-------------
+
+Undefined street to station references 
+
+chr_monsens_gate
+dist_lege_øverlids_vei
+haakon_vii_gate_29
+hospitalkirka
+kongleveien
+olav_nygårds_veg
+persaunevegen
+tollbua
+ts
+unknown
+valentinlystvegen
+
+N: \r tests/batch
+........................................................................
+
+
+
+N: \ nodebug 
+
+% The debugger is switched off
+
+N: \ set queryflag true 
+
+
+N: \ set smsflag false 
+
+
+N: \ starttimebatch 
+
+
+N: hva er din versjon ? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+TUC har versjon    AtB-I Date 130812 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: ( gløshaugen nord + 2 , gløshaugen syd + 3 , høgskoleringen + 4 , e . tambarskjelves
+gt . + 4 , prof . brochsgt . + 4 , gudes gt . + 5 ) til nardo . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Høgskoleringen","busstopnumber":16010197,"busnumber":22,"time":1740,"duration":12,"destination":"Nardosenteret"} ,
+{"busstopname":"Gløshaugen Nord","busstopnumber":16010333,"busnumber":22,"time":1742,"duration":10,"destination":"Nardosenteret"} ,
+{"busstopname":"Gløshaugen Syd","busstopnumber":16010265,"busnumber":22,"time":1742,"duration":10,"destination":"Nardosenteret"} ,
+{"busstopname":"Einar Tambarskjelves gate","busstopnumber":16010112,"busnumber":8,"time":1744,"duration":7,"destination":"Nardosenteret"} ,
+{"busstopname":"Prof. Brochs gate","busstopnumber":16010376,"busnumber":8,"time":1745,"duration":6,"destination":"Nardosenteret"} ]}
+
+Holdeplassen nærmest Nardo er  Nardosenteret .
+Buss 22 passerer  Høgskoleringen kl. 1740 
+og  kommer til  Nardosenteret ,  12 minutter senere .
+Buss 22 passerer  Gløshaugen Nord kl. 1742 
+og  kommer til  Nardosenteret ,  10 minutter senere .
+Buss 22 passerer  Gløshaugen Syd kl. 1742 
+og  kommer til  Nardosenteret ,  10 minutter senere .
+Buss 8 passerer  Einar Tambarskjelves gate kl. 1744  og  kl. 1759 
+og  kommer til  Nardosenteret ,  7 minutter senere .
+Buss 8 passerer  Prof. Brochs gate kl. 1745 
+og  kommer til  Nardosenteret ,  6 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: ( gløshaugen syd + 3 , gløshaugen nord + 4 , dybendals gate + 20 ) til nardo
+før 1730 . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Dybdahls veg","busstopnumber":16010102,"busnumber":8,"time":1723,"duration":3,"destination":"Nardosenteret"} ]}
+
+Jeg antar du ønsker ruter for i morgen.
+8. Okt. 2013 er en  tirsdag .
+Holdeplassen nærmest Nardo er  Nardosenteret .
+Buss 8 passerer  Dybdahls veg kl. 1723 
+og  kommer til  Nardosenteret kl. 1726 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: ( dybendals gate + 10 , gløshaugen syd + 3 , gløshaugen nord + 4 ) til nardo
+etter 1700 . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Gløshaugen Nord","busstopnumber":16010333,"busnumber":22,"time":1657,"duration":10,"destination":"Nardosenteret"} ,
+{"busstopname":"Gløshaugen Syd","busstopnumber":16010265,"busnumber":22,"time":1657,"duration":10,"destination":"Nardosenteret"} ,
+{"busstopname":"Dybdahls veg","busstopnumber":16010102,"busnumber":22,"time":1659,"duration":8,"destination":"Nardosenteret"} ]}
+
+Jeg antar du ønsker ruter for i morgen.
+8. Okt. 2013 er en  tirsdag .
+Holdeplassen nærmest Nardo er  Nardosenteret .
+Buss 22 passerer  Gløshaugen Nord kl. 1657 
+og  kommer til  Nardosenteret ,  10 minutter senere .
+Buss 22 passerer  Gløshaugen Syd kl. 1657 
+og  kommer til  Nardosenteret ,  10 minutter senere .
+Buss 22 passerer  Dybdahls veg kl. 1659 
+og  kommer til  Nardosenteret ,  8 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: ( gløshaugen syd + 3 ) solsiden . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Gløshaugen Syd","busstopnumber":16011265,"busnumber":22,"time":1731,"duration":20,"destination":"Solsiden"} ]}
+
+Buss 22 passerer  Gløshaugen Syd kl. 1731 , kl. 1746 , kl. 1816 , kl. 1846 , kl. 1916  og  kl. 1946 
+og  kommer til  Solsiden ,  20 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: første buss fra blakli til ringve skole etter kl 730 . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Blakli","busstopnumber":16011061,"busnumber":8,"time":734,"duration":18,"destination":"Kongens gate - K1"} ,
+{"busstopname":"Munkegata - M5","busstopnumber":16010005,"busnumber":3,"time":800,"duration":12,"destination":"Ringve skole"} ]}
+
+Jeg antar du ønsker ruter for i morgen.
+8. Okt. 2013 er en  tirsdag .
+Buss 8 går fra Blakli kl. 0734 til Kongens gate K1 kl. 0752 
+og  buss 3 går fra Munkegata M5 kl. 0800 til Ringve skole kl. 0812 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra olav nygårds veg til prinsen kinosenter . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Olav Nygards veg","busstopnumber":16011348,"busnumber":19,"time":1737,"duration":18,"destination":"Prinsen Kinosenter"} ]}
+
+Buss 19 passerer  Olav Nygards veg kl. 1737 , kl. 1807 , kl. 1838 , kl. 1908 , kl. 1938  og  kl. 2008 
+og  kommer til  Prinsen kinosenter ,  14-18 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: til alf godagers vei 3 . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Munkegata - M2","busstopnumber":16010002,"busnumber":3,"time":1743,"duration":20,"destination":"Paul Skolemesters veg"} ]}
+
+Holdeplassen nærmest Alf Godagers veg 3 er  Paul skolemesters veg .
+Buss 3 passerer  Munkegata M2 kl. 1743 , kl. 1808 , kl. 1838 , kl. 1908 , kl. 1938  og  kl. 2008 
+og  kommer til  Paul skolemesters veg ,  20-24 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss fra ila til vikåsen på lørdag . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Ila","busstopnumber":16011192,"busnumber":18,"time":657,"duration":36,"destination":"vikåsen"} ,
+{"busstopname":"Ila","busstopnumber":16011192,"busnumber":18,"time":2357,"duration":36,"destination":"vikåsen"} ]}
+
+12. Okt. 2013 er en  lørdag .
+Første buss , nummer 18 passerer  Ila kl. 0657 
+og  kommer til  Vikåsen kl. 0733 .
+Siste buss , nummer 18 passerer  Ila kl. 2357 
+og  kommer til  Vikåsen kl. 0033 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra berg studentby til lerkendal . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Berg studentby","busstopnumber":16011366,"busnumber":60,"time":1733,"duration":0,"destination":"lerkendal"} ,
+{"busstopname":"Berg studentby","busstopnumber":16011366,"busnumber":36,"time":1744,"duration":0,"destination":"lerkendal"} ]}
+
+Buss 60 passerer  Berg studentby kl. 1733 , kl. 1758  og  kl. 1828 
+og  kommer til  Lerkendal ,  0-1 minutter senere .
+Buss 36 passerer  Berg studentby kl. 1744 , kl. 1804  og  kl. 1819 
+og  kommer til  Lerkendal ,  0-1 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 36 fra lerkendal til berg studentby . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"true" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Lerkendal stadion","busstopnumber":16011264,"busnumber":36,"time":1745,"duration":1,"destination":"Prof. Brochs gate"} ,
+{"busstopname":"Prof. Brochs gate","busstopnumber":16010376,"busnumber":66,"time":1756,"duration":3,"destination":"Berg studentby"} ]}
+
+Buss 36 går fra Lerkendal stadion kl. 1745 til Prof. Brochs gate kl. 1746 
+og  buss 66 går fra Prof. Brochs gate kl. 1756 til Berg studentby kl. 1759 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: jeg ser frem til videre samarbeide i 2009 og jeg må si jeg er stolt av å få
+være til hjelp med å drifte bussorakelet , som jeg personlig anser for å være
+norges beste system innen publikumsopplysning for kollektivtransport . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Takk.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: rute 36 fra være østre til sentrum . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Være Østre","busstopnumber":16011781,"busnumber":6,"time":1752,"duration":26,"destination":"Sentrumsterminalen"} ]}
+
+Buss 36 passerer aldri  Være Østre .
+Buss 6 passerer  Være Østre kl. 1752 , kl. 1822 , kl. 1852 , kl. 1922 , kl. 1952  og  kl. 2022 
+og  kommer til  Munkegata M2 ,  26 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: nattbuss til nardo etter kvart på ett . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+8. Okt. 2013 er en  tirsdag .
+Holdeplassen nærmest Nardo er  Nardosenteret .
+Jeg kan ikke finne flere ruteforbindelser natt til tirsdag kl. 0045 .
+Nattbussen går bare natt til lørdag og søndag.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: neste rute 36 fra dagvoll ? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"NTNU Dragvoll","busstopnumber":16011533,"busnumber":36,"time":1736,"duration":18,"destination":"Sentrumsterminalen"} ]}
+
+Buss 36 passerer  NTNU Dragvoll kl. 1736 , kl. 1756 , kl. 1811 , kl. 1826 , kl. 1846  og  kl. 1914 
+og  kommer til  Munkegata M4 ,  18 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra klæbu til munkegata etter kl . 21 . 40 . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Klæbu sentrum","busstopnumber":16627018,"busnumber":47,"time":2200,"duration":22,"destination":"City Syd Østre"} ,
+{"busstopname":"City Syd Østre","busstopnumber":16011088,"busnumber":46,"time":2227,"duration":15,"destination":"Munkegata - M4"} ]}
+
+Holdeplassen nærmest Munkegata er  Sentrumsterminalen .
+Buss 47 går fra Klæbu sentrum kl. 2200 til City Syd Østre kl. 2222 
+og  buss 46 går fra City Syd Østre kl. 2227 til Munkegata M4 kl. 2242 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: neste sentrum nardo . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Munkegata - M2","busstopnumber":16010002,"busnumber":22,"time":1735,"duration":17,"destination":"Nardosenteret"} ,
+{"busstopname":"Kongens gate - K2","busstopnumber":16010907,"busnumber":8,"time":1740,"duration":11,"destination":"Nardosenteret"} ]}
+
+Holdeplassen nærmest Nardo er  Nardosenteret .
+Buss 22 passerer  Munkegata M2 kl. 1735  og  kl. 1805 
+og  kommer til  Nardosenteret ,  17 minutter senere .
+Buss 8 passerer  Kongens gate K2 kl. 1740 , kl. 1755 , kl. 1810  og  kl. 1825 
+og  kommer til  Nardosenteret ,  11 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss fra sentrum til klæbu på søndag etter 1610 . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Munkegata - M1","busstopnumber":16010001,"busnumber":46,"time":1637,"duration":15,"destination":"City Syd Vestre"} ,
+{"busstopname":"City Syd Vestre","busstopnumber":16010088,"busnumber":47,"time":1725,"duration":21,"destination":"Klæbu sentrum"} ]}
+
+13. Okt. 2013 er en  søndag .
+Buss 46 går fra Munkegata M1 kl. 1637 til City Syd Vestre kl. 1652 
+og  buss 47 går fra City Syd Vestre kl. 1725 til Klæbu sentrum kl. 1746 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 5 til dragvoll . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Kongens gate - K2","busstopnumber":16010907,"busnumber":5,"time":1740,"duration":21,"destination":"Dragvoll"} ]}
+
+Buss 5 passerer  Kongens gate K2 kl. 1740 , kl. 1750 , kl. 1800 , kl. 1810 , kl. 1820  og  kl. 1830 
+og  kommer til  Dragvoll ,  21 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går buss 3 til ts på lørdag ? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Munkegata - M5","busstopnumber":16010005,"busnumber":3,"time":640,"duration":3,"destination":"ts"} ,
+{"busstopname":"Munkegata - M5","busstopnumber":16010005,"busnumber":3,"time":2345,"duration":3,"destination":"ts"} ]}
+
+12. Okt. 2013 er en  lørdag .
+Første buss , nummer 3 passerer  Munkegata M5 kl. 0640 
+og  kommer til  Trondheim S 13 kl. 0643 .
+Siste buss , nummer 3 passerer  Munkegata M5 kl. 2345 
+og  kommer til  Trondheim S 13 kl. 2348 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går neste 2 busser til dragvoll ? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Kongens gate - K2","busstopnumber":16010907,"busnumber":5,"time":1740,"duration":21,"destination":"Dragvoll"} ,
+{"busstopname":"Munkegata - M5","busstopnumber":16010005,"busnumber":9,"time":1743,"duration":21,"destination":"Dragvoll"} ]}
+
+Buss 5 passerer  Kongens gate K2 kl. 1740 , kl. 1750 , kl. 1800  og  kl. 1810 
+og  kommer til  Dragvoll ,  21 minutter senere .
+Buss 9 passerer  Munkegata M5 kl. 1743  og  kl. 1758 
+og  kommer til  Dragvoll ,  21 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går neste buss 5 til sentrum fra dragvoll ? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Dragvoll","busstopnumber":16010103,"busnumber":5,"time":1740,"duration":15,"destination":"Sentrumsterminalen"} ]}
+
+Holdeplassen nærmest sentrum er  Sentrumsterminalen .
+Buss 5 passerer  Dragvoll kl. 1740 , kl. 1750 , kl. 1800 , kl. 1810 , kl. 1820  og  kl. 1830 
+og  kommer til  Kongens gate K1 ,  15 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går neste buss til dragvoll fra sentrum ? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Kongens gate - K2","busstopnumber":16010907,"busnumber":5,"time":1740,"duration":21,"destination":"Dragvoll"} ,
+{"busstopname":"Munkegata - M5","busstopnumber":16010005,"busnumber":9,"time":1743,"duration":21,"destination":"Dragvoll"} ]}
+
+Buss 5 passerer  Kongens gate K2 kl. 1740 , kl. 1750 , kl. 1800  og  kl. 1810 
+og  kommer til  Dragvoll ,  21 minutter senere .
+Buss 9 passerer  Munkegata M5 kl. 1743  og  kl. 1758 
+og  kommer til  Dragvoll ,  21 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: rute 9 fra lundåsen kl 645 på hverdager . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Du må oppgi en dag i slike spørsmål .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 5 fra buenget til sentrum . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Buenget","busstopnumber":16010074,"busnumber":5,"time":1738,"duration":19,"destination":"Sentrumsterminalen"} ]}
+
+Holdeplassen nærmest sentrum er  Sentrumsterminalen .
+Buss 5 passerer  Buenget kl. 1738 , kl. 1748 , kl. 1758 , kl. 1808 , kl. 1823  og  kl. 1838 
+og  kommer til  Kongens gate K2 ,  19 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: neste 3 busser fra glos til sentrum etter 2004 . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Gløshaugen Syd","busstopnumber":16011265,"busnumber":5,"time":2014,"duration":6,"destination":"Sentrumsterminalen"} ,
+{"busstopname":"Gløshaugen Syd","busstopnumber":16011265,"busnumber":22,"time":2016,"duration":11,"destination":"Sentrumsterminalen"} ]}
+
+Holdeplassen nærmest Gløshaugen er  Gløshaugen Syd .
+Buss 5 passerer  Gløshaugen Syd kl. 2014  og  kl. 2034 
+og  kommer til  Kongens gate K1 ,  6 minutter senere .
+Buss 22 passerer  Gløshaugen Syd kl. 2016 
+og  kommer til  Munkegata M5 ,  11 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: hvor stopper flybussen . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Jeg har ingen informasjon om flybuss .
+Flybussen har nettadresse 
+  http://www.flybussen.no/trondheim/, http://www.vaernesekspressen.no/
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: jernbanetorget til værnes . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Jeg har ingen informasjon om flybuss .
+Flybussen har nettadresse 
+  http://www.flybussen.no/trondheim/, http://www.vaernesekspressen.no/
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når må jeg ta bussen fra torget for å være på gammel - lina 1245 ? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Torget","busstopnumber":16010012,"busnumber":7,"time":1221,"duration":13,"destination":"Gammel-lina"} ]}
+
+Jeg antar du ønsker ruter for i morgen.
+8. Okt. 2013 er en  tirsdag .
+Buss 7 passerer  Torget kl. 1221 
+og  kommer til  Gammel-Lina kl. 1234 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: stadsing . dahlsgt . 5 . til jonsvannsveien . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Gyldenløves gate","busstopnumber":16011403,"busnumber":63,"time":1757,"duration":3,"destination":"Jonsvannsveien"} ]}
+
+Holdeplassen nærmest Stadsing. Dahls gate 5 er  Gyldenløves gate .
+Buss 63 passerer  Gyldenløves gate kl. 1757 , kl. 1827 , kl. 1857 , kl. 1927 , kl. 2027  og  kl. 2127 
+og  kommer til  Jonsvannsveien ,  3 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: går det en nr . 36 i halv åtte tiden ? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Jeg antar du ønsker ruter for i morgen.
+8. Okt. 2013 er en  tirsdag .
+Du må oppgi et sted i slike spørsmål .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss fra dragvoll til jakobsli . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"true" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Dragvoll","busstopnumber":16011103,"busnumber":9,"time":1745,"duration":13,"destination":"Strindheim"} ,
+{"busstopname":"Strindheim","busstopnumber":16010472,"busnumber":36,"time":1804,"duration":13,"destination":"Jakobsli"} ]}
+
+Buss 9 går fra Dragvoll kl. 1745 til Strindheim kl. 1758 
+og  buss 36 går fra Strindheim kl. 1804 til Jakobsli kl. 1817 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går de neste bussene fra høgskoleringen til sentrum ? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Høgskoleringen","busstopnumber":16011197,"busnumber":5,"time":1731,"duration":4,"destination":"Sentrumsterminalen"} ,
+{"busstopname":"Høgskoleringen","busstopnumber":16011197,"busnumber":22,"time":1748,"duration":9,"destination":"Sentrumsterminalen"} ,
+{"busstopname":"Høgskoleringen","busstopnumber":16011197,"busnumber":63,"time":1802,"duration":4,"destination":"Sentrumsterminalen"} ]}
+
+Buss 5 passerer  Høgskoleringen kl. 1731 , kl. 1741 , kl. 1751  og  kl. 1801 
+og  kommer til  Kongens gate K1 ,  4 minutter senere .
+Buss 22 passerer  Høgskoleringen kl. 1748 
+og  kommer til  Munkegata M5 ,  9 minutter senere .
+Buss 63 passerer  Høgskoleringen kl. 1802 
+og  kommer til  Kongens gate K1 ,  4 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss fra gløshaugen til rosenborg . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"true" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Gløshaugen Syd","busstopnumber":16011265,"busnumber":5,"time":1749,"duration":2,"destination":"Høgskoleringen"} ,
+{"busstopname":"Høgskoleringen","busstopnumber":16010197,"busnumber":63,"time":1759,"duration":3,"destination":"Gyldenløves gate"} ]}
+
+Holdeplassen nærmest Gløshaugen er  Gløshaugen Syd .
+Buss 5 går fra Gløshaugen Syd kl. 1749 til Høgskoleringen kl. 1751 
+og  buss 63 går fra Høgskoleringen kl. 1759 til Gyldenløves gate kl. 1802 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 10 fra sentrum kl 950 til skistua på lørdag . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Kongens gate - K1","busstopnumber":16010905,"busnumber":10,"time":950,"duration":17,"destination":"Skistua"} ]}
+
+12. Okt. 2013 er en  lørdag .
+Holdeplassen nærmest sentrum er  Sentrumsterminalen .
+Buss 10 passerer  Kongens gate K1 kl. 0950 , kl. 1020  og  kl. 1050 
+og  kommer til  Skistua ,  17 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går buss nr 60 fra sentrum forbi berg . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Stedet Berg er flertydig .
+Vennligst bruk et mer presist navn. 
+Mulige alternativer er: Berg Prestegård , Berg studentby , Østre Berg  .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 66 fra strindheim til saupstadsenteret etter 1646 . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Strindheim","busstopnumber":16011472,"busnumber":66,"time":1646,"duration":7,"destination":"Bakkegata"} ,
+{"busstopname":"Bakkegata","busstopnumber":16010050,"busnumber":4,"time":1658,"duration":26,"destination":"Saupstadsenteret"} ]}
+
+Jeg antar du ønsker ruter for i morgen.
+8. Okt. 2013 er en  tirsdag .
+Buss 66 passerer aldri  Saupstadsenteret .
+Buss 66 går fra Strindheim kl. 1646 til Bakkegate kl. 1653 
+og  buss 4 går fra Bakkegate kl. 1658 til Saupstadsenteret kl. 1724 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra kbs til saupstadsenteret før kl 1708 . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Strindheim","busstopnumber":16010472,"busnumber":9,"time":1637,"duration":1,"destination":"Strindheim skole"} ,
+{"busstopname":"Strindheim skole","busstopnumber":16010052,"busnumber":90,"time":1646,"duration":21,"destination":"Saupstadsenteret"} ]}
+
+Jeg antar du ønsker ruter for i morgen.
+8. Okt. 2013 er en  tirsdag .
+Holdeplassen nærmest KBS er  Strindheim .
+Buss 9 går fra Strindheim kl. 1637 til Strindheim skole kl. 1638 
+og  buss 90 går fra Strindheim skole kl. 1646 til Saupstadsenteret kl. 1707 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra kbs til saupstadsenteret etter kl 1646 . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Strindheim","busstopnumber":16011472,"busnumber":63,"time":1654,"duration":10,"destination":"Prinsen Kinosenter"} ,
+{"busstopname":"Prinsen Kinosenter","busstopnumber":16010011,"busnumber":4,"time":1710,"duration":14,"destination":"Saupstadsenteret"} ]}
+
+Jeg antar du ønsker ruter for i morgen.
+8. Okt. 2013 er en  tirsdag .
+Holdeplassen nærmest KBS er  Strindheim .
+Buss 63 går fra Strindheim kl. 1654 til Prinsen kinosenter kl. 1704 
+og  buss 4 går fra Prinsen kinosenter kl. 1710 til Saupstadsenteret kl. 1724 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 9 fra sentrum til cecilienborg . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"true" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Munkegata - M2","busstopnumber":16010002,"busnumber":9,"time":1742,"duration":3,"destination":"Prinsen Kinosenter"} ,
+{"busstopname":"Prinsen Kinosenter","busstopnumber":16010011,"busnumber":5,"time":1753,"duration":12,"destination":"Tvetestien"} ]}
+
+Holdeplassen nærmest sentrum er  Sentrumsterminalen .
+Buss 9 passerer aldri  Cecilienborg .
+Buss 9 går fra Munkegata M2 kl. 1742 til Prinsen kinosenter kl. 1745 
+og  buss 5 går fra Prinsen kinosenter kl. 1753 til Tvetestien kl. 1805 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: osloveien . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Kongens gate - K1","busstopnumber":16010905,"busnumber":8,"time":1735,"duration":5,"destination":"Tvetestien"} ,
+{"busstopname":"Kongens gate - K1","busstopnumber":16010905,"busnumber":5,"time":1740,"duration":5,"destination":"Tvetestien"} ]}
+
+Holdeplassen nærmest Osloveien er  Tvetestien .
+Buss 8 passerer  Kongens gate K1 kl. 1735 , kl. 1750  og  kl. 1805 
+og  kommer til  Tvetestien ,  5 minutter senere .
+Buss 5 passerer  Kongens gate K1 kl. 1740 , kl. 1750  og  kl. 1800 
+og  kommer til  Tvetestien ,  5 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss fra tonstadkrysset til klæbu . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Jeg kan ikke finne flere ruteforbindelser på mandag .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra klæbu til sentrum etter kl 1100 på mandag . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Klæbu sentrum","busstopnumber":16626018,"busnumber":48,"time":1800,"duration":37,"destination":"Sentrumsterminalen"} ]}
+
+Buss 48 passerer  Klæbu sentrum kl. 1800  og  kl. 1900 
+og  kommer til  Munkegata M4 ,  37 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 46 fra sentrum til klæbu . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"true" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Munkegata - M1","busstopnumber":16010001,"busnumber":46,"time":1742,"duration":1,"destination":"Torget"} ,
+{"busstopname":"Torget","busstopnumber":16010012,"busnumber":48,"time":1755,"duration":30,"destination":"Klæbu sentrum"} ]}
+
+Holdeplassen nærmest sentrum er  Sentrumsterminalen .
+Buss 46 passerer aldri  Klæbu .
+Buss 46 går fra Munkegata M1 kl. 1742 til Torget kl. 1743 
+og  buss 48 går fra Torget kl. 1755 til Klæbu sentrum kl. 1825 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: \ set smsflag true 
+
+
+N: varsle meg når klokken er 2215 . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+! 20131007221500
+Klokka er nå 2215 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra sentrum til klæbu etter kl 1100 på mandag . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+Buss 47 passerer  Munkegt M1 kl. 1745 
+og   Klæbu sentrum ,  36 min. senere .
+Buss 48 passerer  Munkegt M1 kl. 1754 
+og   Klæbu sentrum ,  31 min. senere .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 47 fra klæbu til sentrum etter kl 1100 på mandag . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+Jeg kan ikke finne flere ruteforbindelser på mandag kl. 1100 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: neste buss fra sentrum til klæbu . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+Buss 47 passerer  Munkegt M1 kl. 1745 
+og   Klæbu sentrum ,  36 min. senere .
+Buss 48 passerer  Munkegt M1 kl. 1754 
+og   Klæbu sentrum ,  31 min. senere .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss fra elgesetergate for å være på dragvoll senest 10 . 23 på søndag . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+Buss 9 passerer  Prof. Brochs gt kl. 0937 
+og   Dragvoll kl. 1011 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går buss 36 forbi samfunnet og til byen etter kl 1522 . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+Buss 36 passerer  Studentersamfundet kl. 1528  og  kl. 1543 
+og   Munkegt M4 ,  6 min. senere .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går buss 36 forbi samfunnet og til byen etter kl 1523 . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+Buss 36 passerer  Studentersamfundet kl. 1528  og  kl. 1543 
+og   Munkegt M4 ,  6 min. senere .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går neste buss fra p . a munch gate til dragvoll ? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+Buss 9 passerer  Prof. Brochs gt kl. 1742 , kl. 1757 , kl. 1812 , kl. 1827 , kl. 1842  og  kl. 1907 
+og   Dragvoll ,  34-37 min. senere .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss fra torvmyra til okstad ø . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+Buss 46 går fra Torvmyra kl. 1834 til Østre Rosten kl. 1835 
+og  buss 43 går fra Østre Rosten kl. 1843 til Okstad Østre kl. 1857 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: varsle 15 min før jeg må ta b f moholt studentby for å være på samfundet kl
+19 . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+! 20131007183600
+Buss 36 passerer  Moholt stud. by kl. 1851 
+og   Studentersamfundet kl. 1858 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: kan du varsle meg 15 minutter før siste nattbuss går til stavset ? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- 
+8. Okt. 2013 er en  tirsdag .
+Det er ikke mulig natt til tirsdag .
+Nattbussen går bare natt til lørdag og søndag.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: kan jeg bli varslet 10 minutter før siste buss fra nth til nardo før 1730
+. 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+! 20131008170200
+Buss 22 passerer  Gløshaugen Syd kl. 1712 
+og   Nardosenteret kl. 1722 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går neste buss fra ntnu dragvoll til jakobsli . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+Buss 66 går fra NTNU Dragvoll kl. 1747 til Jakobsliveien øvre kl. 1756 
+og  buss 36 går fra Jakobsliveien øvre kl. 1802 til Jakobsli like etterpå .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: til nova før 21 . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+Buss 66 passerer  Munkegt M3 kl. 2015 
+og   Nova kinosenter kl. 2059 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 36 fra brundalen skole til charlottenlund før 830 i morgen . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+Buss 36 passerer  Brundalen skole kl. 0818 
+og   Charlottenlund kirke kl. 0820 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går bussen fra chl kirke til studsamf etter kl 820 i morgen . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+Buss 36 passerer  Charlottenlund kirke kl. 0820  og  kl. 0835 
+og   Studentersamfundet ,  23 min. senere .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går det busser fra bugges veg til gryta etter 1730 ? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+Buss 5 går fra Bugges veg kl. 1736 til Kongens gt K1 kl. 1745 
+og  buss 9 går fra Munkegt M5 kl. 1758 til Gryta kl. 1815 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra lade alle 20 til lade alle 80 . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+Holdeplassen nærmest Lade allé 20 er  Strandveikaia .
+Jeg kan ikke finne flere ruteforbindelser på mandag .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 7 fra sentrum til vikåsen etter 2340 . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+Buss 7 passerer  Munkegt M5 kl. 0005 
+og   Vikåsen ,  26-29 min. senere .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går første buss fra ila til sentrum 1 . påskedag . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+Jeg har ingen ruter for denne datoen enda.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: \ set smsflag false 
+
+
+N: når går buss 36 fra rosendal til jakobsli på skjærtorsdag ? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+28. Mar. 2013 er en  torsdag .
+Jeg har ingen ruter for denne datoen enda.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss fra tonstadkrysset til klæbu . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Jeg kan ikke finne flere ruteforbindelser på mandag .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 6 fra romolslia til jarleveien i morgen . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+8. Okt. 2013 er en  tirsdag .
+Holdeplassen nærmest Jarleveien er  Lade kirke .
+Buss 6 passerer aldri  Romolslia .
+Buss 6 passerer aldri  Lade kirke .
+Det er ikke mulig på denne datoen .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 43 fra romolslia til jarleveien i morgen . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+8. Okt. 2013 er en  tirsdag .
+Holdeplassen nærmest Jarleveien er  Lade kirke .
+Buss 43 passerer aldri  Romolslia .
+Buss 43 passerer aldri  Lade kirke .
+Det er ikke mulig på denne datoen .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra dragvoll til jakobsli . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"true" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Dragvoll","busstopnumber":16011103,"busnumber":9,"time":1745,"duration":13,"destination":"Strindheim"} ,
+{"busstopname":"Strindheim","busstopnumber":16010472,"busnumber":36,"time":1804,"duration":13,"destination":"Jakobsli"} ]}
+
+Buss 9 går fra Dragvoll kl. 1745 til Strindheim kl. 1758 
+og  buss 36 går fra Strindheim kl. 1804 til Jakobsli kl. 1817 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når må jeg reise fra munkvoll gård for å være på tempe senest kl 638 på mandag
+. 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Jeg finner ingen ruteforbindelser på mandag før 0638 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går bussen fra johan bojers vei 18 til hareveien . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Johan Falkbergets vei","busstopnumber":16010205,"busnumber":15,"time":1731,"duration":1,"destination":"Havstadsenteret"} ,
+{"busstopname":"Johan Falkbergets vei","busstopnumber":16010205,"busnumber":5,"time":1737,"duration":1,"destination":"Havstadsenteret"} ,
+{"busstopname":"Johan Falkbergets vei","busstopnumber":16010205,"busnumber":19,"time":1749,"duration":1,"destination":"Havstadsenteret"} ]}
+
+Holdeplassen nærmest Johan Bojers vei 18 er  Johan Falkbergets veg .
+Holdeplassen nærmest Harevegen er  Havstadsenteret .
+Buss 15 passerer  Johan Falkbergets veg kl. 1731 
+og  kommer til  Havstadsenteret ,  1 minutter senere .
+Buss 5 passerer  Johan Falkbergets veg kl. 1737 , kl. 1747 , kl. 1757  og  kl. 1807 
+og  kommer til  Havstadsenteret ,  1 minutter senere .
+Buss 19 passerer  Johan Falkbergets veg kl. 1749 
+og  kommer til  Havstadsenteret ,  1 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: hei , jeg bor på nidarvoll og i kveld må jeg nå et tog til oslo klokka seks
+. 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Jeg finner ingen ruteforbindelser på mandag før 1800 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: når går bussen fra ntnu på lade til byen mellom klokken 10 og 11 i morgen
+? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Harald Hårfagres gate","busstopnumber":16011534,"busnumber":4,"time":1011,"duration":11,"destination":"Sentrumsterminalen"} ,
+{"busstopname":"Harald Hårfagres gate","busstopnumber":16010534,"busnumber":67,"time":1025,"duration":17,"destination":"Sentrumsterminalen"} ]}
+
+8. Okt. 2013 er en  tirsdag .
+Holdeplassen nærmest NTNU Lade er  Harald Hårfagres gate .
+Buss 4 passerer  Harald Hårfagres gate kl. 1011  og  kl. 1026 
+og  kommer til  Munkegata M2 ,  11 minutter senere .
+Buss 67 passerer  Harald Hårfagres gate kl. 1025 
+og  kommer til  Dronningens gate 19 ,  17 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: hvilken buss må jeg ta fra vestlia for å rekke en avtale på moholt klokken
+1230 ? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Vestlia endeholdeplass","busstopnumber":16010632,"busnumber":22,"time":1135,"duration":11,"destination":"Gløshaugen Syd"} ,
+{"busstopname":"Gløshaugen Syd","busstopnumber":16010265,"busnumber":5,"time":1157,"duration":5,"destination":"Moholt"} ]}
+
+Jeg antar du ønsker ruter for i morgen.
+8. Okt. 2013 er en  tirsdag .
+Buss 22 går fra Vestlia endeholdeplass kl. 1135 til Gløshaugen Syd kl. 1146 
+og  buss 5 går fra Gløshaugen Syd kl. 1157 til Moholt kl. 1202 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: hvilken bussavgang skal jeg velge når jeg skal reise fra lade og være på munkvold
+innen klokka atten ? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Jeg finner ingen ruteforbindelser på mandag før 1800 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: hvordan kommer jeg meg fra singsaker til moholt så fort som mulig etter 16
+. 50 den 16 . sept ? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+16. Sep. 2013 er en  mandag .
+Jeg kan ikke finne flere ruteforbindelser på mandag kl. 1650 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 8 fra nardokrysset til tors veg . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"true" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Nardokrysset","busstopnumber":16010320,"busnumber":8,"time":1735,"duration":1,"destination":"Nardosenteret"} ,
+{"busstopname":"Nardosenteret","busstopnumber":16010341,"busnumber":8,"time":1750,"duration":1,"destination":"Tors veg"} ]}
+
+Buss 8 går fra Nardokrysset kl. 1735 til Nardosenteret kl. 1736 
+og  buss 8 går fra Nardosenteret kl. 1750 til Tors veg kl. 1751 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 8 fra tors veg til nardokrysset . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Tors veg","busstopnumber":16011511,"busnumber":8,"time":1736,"duration":1,"destination":"Nardokrysset"} ]}
+
+Buss 8 passerer  Tors veg kl. 1736 , kl. 1751 , kl. 1806 , kl. 1821 , kl. 1836  og  kl. 1851 
+og  kommer til  Nardokrysset ,  1 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: buss 63 fra vollabakken til rosenborg . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Vollabakken","busstopnumber":16010550,"busnumber":63,"time":1744,"duration":3,"destination":"rosenborg"} ]}
+
+Buss 63 passerer  Vollabakken kl. 1744 , kl. 1759 , kl. 1829 , kl. 1859 , kl. 1959  og  kl. 2059 
+og  kommer til  Gyldenløves gate ,  3 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: jeg vil hjem fra nth til ygdrasilvn 9 så fort som mulig . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Gløshaugen Syd","busstopnumber":16010265,"busnumber":22,"time":1742,"duration":10,"destination":"Nardosenteret"} ]}
+
+Holdeplassen nærmest Yggdrasilvegen 9 er  Nardosenteret .
+Holdeplassen nærmest NTH er  Gløshaugen Syd .
+Buss 22 passerer  Gløshaugen Syd kl. 1742 
+og  kommer til  Nardosenteret kl. 1752 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: \ english 
+
+
+E: when do i have to travel from reppe arriving lade by 6 pm . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+I cannot find any connections on Monday before  6:00 pm .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: when does the bus go from johan bojers vei 18 to hareveien . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Johan Falkbergets vei","busstopnumber":16010205,"busnumber":15,"time":1731,"duration":1,"destination":"Havstadsenteret"} ,
+{"busstopname":"Johan Falkbergets vei","busstopnumber":16010205,"busnumber":5,"time":1737,"duration":1,"destination":"Havstadsenteret"} ,
+{"busstopname":"Johan Falkbergets vei","busstopnumber":16010205,"busnumber":19,"time":1749,"duration":1,"destination":"Havstadsenteret"} ]}
+
+The station nearest to Johan Bojers vei 18 is  Johan Falkbergets veg .
+The station nearest to Harevegen is  Havstadsenteret .
+Bus 15 passes by  Johan Falkbergets veg at  5:31 pm 
+and  arrives at  Havstadsenteret ,  1 minutes later .
+Bus 5 passes by  Johan Falkbergets veg at  5:37 pm , at  5:47 pm , at  5:57 pm  and  at  6:07 pm 
+and  arrives at  Havstadsenteret ,  1 minutes later .
+Bus 19 passes by  Johan Falkbergets veg at  5:49 pm 
+and  arrives at  Havstadsenteret ,  1 minutes later .
+
+The hours indicate the earliest passing times. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: hi , i live in nidarvoll and tonight i must reach a train to oslo at 6 o clock
+. 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+I cannot find any connections on Monday before  6:00 pm .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: when does the bus go from ntnu at lade to the city between 10 and 11 tomorrow
+? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Harald Hårfagres gate","busstopnumber":16011534,"busnumber":4,"time":1011,"duration":11,"destination":"Sentrumsterminalen"} ,
+{"busstopname":"Harald Hårfagres gate","busstopnumber":16010534,"busnumber":67,"time":1025,"duration":17,"destination":"Sentrumsterminalen"} ]}
+
+Oct. 8, 2013 is a  Tuesday .
+The station nearest to NTNU Lade is  Harald Hårfagres gate .
+Bus 4 passes by  Harald Hårfagres gate at  10:11 am  and  at  10:26 am 
+and  arrives at  Munkegata M2 ,  11 minutes later .
+Bus 67 passes by  Harald Hårfagres gate at  10:25 am 
+and  arrives at  Dronningens gate 19 ,  17 minutes later .
+
+The hours indicate the earliest passing times. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: which bus must i take from vestlia to reach an appointment on moholt at 1230
+? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Vestlia endeholdeplass","busstopnumber":16010632,"busnumber":22,"time":1135,"duration":11,"destination":"Gløshaugen Syd"} ,
+{"busstopname":"Gløshaugen Syd","busstopnumber":16010265,"busnumber":5,"time":1157,"duration":5,"destination":"Moholt"} ]}
+
+I assume you want routes for tomorrow.
+Oct. 8, 2013 is a  Tuesday .
+Bus 22 goes from Vestlia endeholdeplass at  11:35 am to Gløshaugen Syd at  11:46 am 
+and  bus 5 goes from Gløshaugen Syd at  11:57 am to Moholt at  12:02 pm .
+
+The hours indicate the earliest passing times. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: which bus departure shall i choose when i shall go from lade and be on munkvold
+before 6 pm . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+I cannot find any connections on Monday before  6:00 pm .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: how do i get from singsaker to moholt as fast as possible after 16 : 50 on
+sept 16 . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Sep. 16, 2013 is a  Monday .
+I cannot find any more connections on Monday at  4:50 pm .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: bus 8 from nardokrysset to tors veg . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"true" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Nardokrysset","busstopnumber":16010320,"busnumber":8,"time":1735,"duration":1,"destination":"Nardosenteret"} ,
+{"busstopname":"Nardosenteret","busstopnumber":16010341,"busnumber":8,"time":1750,"duration":1,"destination":"Tors veg"} ]}
+
+Bus 8 goes from Nardokrysset at  5:35 pm to Nardosenteret at  5:36 pm 
+and  bus 8 goes from Nardosenteret at  5:50 pm to Tors veg at  5:51 pm .
+
+The hours indicate the earliest passing times. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: bus 8 from tors veg to nardokrysset . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Tors veg","busstopnumber":16011511,"busnumber":8,"time":1736,"duration":1,"destination":"Nardokrysset"} ]}
+
+Bus 8 passes by  Tors veg at  5:36 pm , at  5:51 pm , at  6:06 pm , at  6:21 pm , at  6:36 pm  and  at  6:51 pm 
+and  arrives at  Nardokrysset ,  1 minutes later .
+
+The hours indicate the earliest passing times. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: bus 63 from vollabakken to rosenborg . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+{"busstopname":"Vollabakken","busstopnumber":16010550,"busnumber":63,"time":1744,"duration":3,"destination":"rosenborg"} ]}
+
+Bus 63 passes by  Vollabakken at  5:44 pm , at  5:59 pm , at  6:29 pm , at  6:59 pm , at  7:59 pm  and  at  8:59 pm 
+and  arrives at  Gyldenløves gate ,  3 minutes later .
+
+The hours indicate the earliest passing times. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: i want to go home from nth to ygdrasilvn 9 as soon as possible . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Gløshaugen Syd","busstopnumber":16010265,"busnumber":22,"time":1742,"duration":10,"destination":"Nardosenteret"} ]}
+
+The station nearest to Yggdrasilvegen 9 is  Nardosenteret .
+The station nearest to NTH is  Gløshaugen Syd .
+Bus 22 passes by  Gløshaugen Syd at  5:42 pm , at  6:12 pm , at  6:42 pm , at  7:12 pm , at  7:42 pm  and  at  8:12 pm 
+and  arrives at  Nardosenteret ,  10 minutes later .
+
+The hours indicate the earliest passing times. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+E: \ norsk 
+
+
+N: \ stoptimebatch 
+
+Total:  35069 ms
+
+N: \ set smsflag false 
+
+
+N: hvor mange spørsmål har du besvart ? 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+DATE            SMS  TOTAL
+
+2013-10-7       20    91 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: \ end 
+
+
+
+N: 
