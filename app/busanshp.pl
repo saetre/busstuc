@@ -2592,8 +2592,8 @@ pmess(nearest_station(_STARTSTOP,Street,Station)):-
 
 %% General Nightbus message ( following weekend is normal )     %% RS-130630 Only for summer routes!!! Update this in June 2014
 %pmess(generalnightbusmessage):-
-%    pen(['Nightbus goes every hour from O.Tryggvasons gt. in the summer at 0100,0200,0300 am night to Saturday and Sunday.',
-%         'Nattbuss går hver time fra O.Tryggvasons gt. om sommeren kl 0100,0200 og 0300 natt til lørdag og søndag.']).
+%    pen(['Nightbus goes every hour in the summer from O.Tryggvasons gt. at 0100,0200,0300 am night to Saturday and Sunday.',
+%         'Nattbuss går hver time om sommeren fra O.Tryggvasons gt. kl 0100,0200 og 0300 natt til lørdag og søndag.']).
 
 %% General Nightbus message ( following weekend is normal )
 pmess(generalnightbusmessage):-

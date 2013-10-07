@@ -173,7 +173,9 @@ cutloop_station(9,heimdal_stasjon).
 
 cutloop_station(20,valentinlyst). 
 cutloop_station(36,stokkhaugen). %% TA-110824 charlottenlund_krk). 
-                   %stokkhaugen?%  %% Aternating official names! %% TA-101228
+                   %stokkhaugen?%  %% Alternating official names! %% TA-101228
+
+cutloop_station(47,torgaardssletta). %% RS-130818
 
 cutloop_station(49,carl_schjetnans_vei). %% TA-100913
 
