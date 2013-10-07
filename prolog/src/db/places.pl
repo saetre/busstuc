@@ -56,8 +56,8 @@ corr(munke_street,hovedterminalen).
 %%% corr(brannstasjon_øst,strindheim).  %% TA-110822
 
 corr(dronningens_gate_d1,hovedterminalen). %% Atb
-corr(dronningens_gate_d2,hovedterminalen). 
-corr(dronningens_gate_d3,hovedterminalen). 
+%corr(dronningens_gate_d2,hovedterminalen). %% RS-130818
+%corr(dronningens_gate_d3,hovedterminalen). 
 corr(dronningens_gate_d4,hovedterminalen). 
 
 corr(dronningens_gate_19,hovedterminalen). %% TA-110627
@@ -96,8 +96,8 @@ corr(munkegata_m5,hovedterminalen).
 
 
 corr(d1,hovedterminalen). 
-corr(d2,hovedterminalen). 
-corr(d3,hovedterminalen). 
+%corr(d2,hovedterminalen). 
+%corr(d3,hovedterminalen). 
 corr(d4,hovedterminalen). 
 
 %kongens gate (hovedterminalen fra 2013.08.12   %% RS-130812
@@ -138,8 +138,8 @@ isat(prinsens_gate_p1,prinsenkrysset). %% TA-110822
 isat(prinsens_gate_p4,prinsenkrysset). %%
 
 isat(dronningens_gate_d1,sentrum). %% AtB
-isat(dronningens_gate_d2,sentrum). 
-isat(dronningens_gate_d3,sentrum). 
+%isat(dronningens_gate_d2,sentrum). 
+%isat(dronningens_gate_d3,sentrum). 
 isat(dronningens_gate_d4,sentrum). 
 
 isat(kongens_gate_k1,sentrum). %% AtB
@@ -166,8 +166,9 @@ isat(charlottenlund_nedre,charlottenlund).
 
 isat(city_lade,lade).   %% RS-130625 %% Sommerrute-løsning
 
-isat(city_syd_østre,city_syd).  %% TA-100901
+isat(city_syd_e6,city_syd). %% RS-130818
 isat(city_syd_vestre,city_syd). %% TA-110627
+isat(city_syd_østre,city_syd).  %% TA-100901
 
 isat(dalen_hageby,persaunetveien). %% RS-130625 AD-HOC. persaunvegen burde egentlig inkludere alle stoppene i den "vegen",
                                    %%ikke bare svare "kan ikke finne flere ruter..." (til "peraunvegen isa station")
@@ -1750,20 +1751,20 @@ sameplace(kattemsentret,kattemsenteret).
 
 
 short_specname(d1,'Dronn. gt D1'). 
-short_specname(d2,'Dronn. gt D2'). 
-short_specname(d3,'Dronn. gt D3'). 
+%short_specname(d2,'Dronn. gt D2'). 
+%short_specname(d3,'Dronn. gt D3'). 
 short_specname(d4,'Dronn. gt D4'). 
 
 short_specname(dronningens_gate,'Dronn. gt').
  
 short_specname(dronningens_gate_d1,'Dronn. gt D1'). %% AtB
-short_specname(dronningens_gate_d2,'Dronn. gt D2'). 
-short_specname(dronningens_gate_d3,'Dronn. gt D3'). 
+%short_specname(dronningens_gate_d2,'Dronn. gt D2'). 
+%short_specname(dronningens_gate_d3,'Dronn. gt D3'). 
 short_specname(dronningens_gate_d4,'Dronn. gt D4'). 
 
 short_specname(dronningensgate_d1,'Dronn. gt D1'). 
-short_specname(dronningensgate_d2,'Dronn. gt D2'). 
-short_specname(dronningensgate_d3,'Dronn. gt D3'). 
+%short_specname(dronningensgate_d2,'Dronn. gt D2'). 
+%short_specname(dronningensgate_d3,'Dronn. gt D3'). 
 short_specname(dronningensgate_d4,'Dronn. gt D4'). 
 
 
@@ -1924,13 +1925,13 @@ specname(dmmh,'DMMH'). %% TA-110323
 %% drop holdeplass %% TA-110531
 
 specname(dronningens_gate_d1,'Dronningens gate D1').  
-specname(dronningens_gate_d2,'Dronningens gate D2'). 
-specname(dronningens_gate_d3,'Dronningens gate D3'). 
+%specname(dronningens_gate_d2,'Dronningens gate D2'). 
+%specname(dronningens_gate_d3,'Dronningens gate D3'). 
 specname(dronningens_gate_d4,'Dronningens gate D4'). 
 
 specname(d1,'Dronningens gate D1').  %% EH-031120
-specname(d2,'Dronningens gate D2').  %% 
-specname(d3,'Dronningens gate D3').  %%
+%specname(d2,'Dronningens gate D2').  %% 
+%specname(d3,'Dronningens gate D3').  %%
 specname(d4,'Dronningens gate D4').  %%
 
 
@@ -2614,8 +2615,8 @@ synplace(cytisyd,city_syd).
 
 
 synplace(d1,dronningens_gate_d1). 
-synplace(d2,dronningens_gate_d2).
-synplace(d3,dronningens_gate_d3).
+%synplace(d2,dronningens_gate_d2).
+%synplace(d3,dronningens_gate_d3).
 synplace(d4,dronningens_gate_d4).
 
 
@@ -5668,8 +5669,8 @@ cmpl(cruise,port,pirbadet).
 cmpl(curtshill,gate,churchills_veg). 
 cmpl(cyti,syd,city_syd). 
 cmpl(d,[1],dronningens_gate_d1). 
-cmpl(d,[2],dronningens_gate_d2). 
-cmpl(d,[3],dronningens_gate_d3). 
+%cmpl(d,[2],dronningens_gate_d2). 
+%cmpl(d,[3],dronningens_gate_d3). 
 cmpl(d,[4],dronningens_gate_d4). 
 cmpl(d,[l,øverlidsv],distriktslege_øverlids_vei). 
 cmpl(d,[l,øvrelidsv],distriktslege_øverlids_vei). 
@@ -5731,8 +5732,8 @@ cmpl(dragvoll,ntnu,dragvoll).
 cmpl(dragvoll,universitet,dragvoll).  %% universitetet_dragvoll???
 
 cmpl(dronn,[gt,d1],dronningens_gate_d1).  %% Because it is your abbrev. 
-cmpl(dronn,[gt,d2],dronningens_gate_d2). 
-cmpl(dronn,[gt,d3],dronningens_gate_d3). 
+%cmpl(dronn,[gt,d2],dronningens_gate_d2). 
+%cmpl(dronn,[gt,d3],dronningens_gate_d3). 
 cmpl(dronn,[gt,d4],dronningens_gate_d4). 
 cmpl(dronn,gt,dronningens_gate).  %%Asyouspeak,
 
@@ -5750,39 +5751,39 @@ cmpl(dronning,[s,gate],dronningens_gate).
 
 
 cmpl(dronningens,[gate,holdeplass,d,1],dronningens_gate_d1). 
-cmpl(dronningens,[gate,holdeplass,d,2],dronningens_gate_d2). 
-cmpl(dronningens,[gate,holdeplass,d,3],dronningens_gate_d3). 
+%cmpl(dronningens,[gate,holdeplass,d,2],dronningens_gate_d2). 
+%cmpl(dronningens,[gate,holdeplass,d,3],dronningens_gate_d3). 
 cmpl(dronningens,[gate,holdeplass,d,4],dronningens_gate_d4). 
 
 cmpl(dronningens,[gate,holdeplass,d1],dronningens_gate_d1). %% d 1 -> d1 is prelexed
-cmpl(dronningens,[gate,holdeplass,d2],dronningens_gate_d2). %% ugly ?
-cmpl(dronningens,[gate,holdeplass,d3],dronningens_gate_d3).
+%cmpl(dronningens,[gate,holdeplass,d2],dronningens_gate_d2). %% ugly ?
+%cmpl(dronningens,[gate,holdeplass,d3],dronningens_gate_d3).
 cmpl(dronningens,[gate,holdeplass,d4],dronningens_gate_d4). 
 
 
 cmpl(dronningens,[gate,d,1],dronningens_gate_d1). 
-cmpl(dronningens,[gate,d,2],dronningens_gate_d2). 
-cmpl(dronningens,[gate,d,3],dronningens_gate_d3). 
+%cmpl(dronningens,[gate,d,2],dronningens_gate_d2). 
+%cmpl(dronningens,[gate,d,3],dronningens_gate_d3). 
 cmpl(dronningens,[gate,d,4],dronningens_gate_d4). 
 
 cmpl(dronningens,[gate,d,1],dronningens_gate_d1). 
-cmpl(dronningens,[gate,d,2],dronningens_gate_d2). 
-cmpl(dronningens,[gate,d,3],dronningens_gate_d3). 
+%cmpl(dronningens,[gate,d,2],dronningens_gate_d2). 
+%cmpl(dronningens,[gate,d,3],dronningens_gate_d3). 
 cmpl(dronningens,[gate,d,4],dronningens_gate_d4). 
 
-cmpl(dronningens,[gate,d1],dronningens_gate_d1). %% if not split
-cmpl(dronningens,[gate,d2],dronningens_gate_d2). 
-cmpl(dronningens,[gate,d3],dronningens_gate_d3). 
+%cmpl(dronningens,[gate,d1],dronningens_gate_d1). %% if not split
+%cmpl(dronningens,[gate,d2],dronningens_gate_d2). 
+%cmpl(dronningens,[gate,d3],dronningens_gate_d3). 
 cmpl(dronningens,[gate,d4],dronningens_gate_d4). 
 
 cmpl(dronningens,[gt,d,1],dronningens_gate_d1). 
-cmpl(dronningens,[gt,d,2],dronningens_gate_d2). 
-cmpl(dronningens,[gt,d,3],dronningens_gate_d3). 
+%cmpl(dronningens,[gt,d,2],dronningens_gate_d2). 
+%cmpl(dronningens,[gt,d,3],dronningens_gate_d3). 
 cmpl(dronningens,[gt,d,4],dronningens_gate_d4). 
 
 cmpl(dronningens,[gt,d1],dronningens_gate_d1). 
-cmpl(dronningens,[gt,d2],dronningens_gate_d2).  
-cmpl(dronningens,[gt,d3],dronningens_gate_d3). 
+%cmpl(dronningens,[gt,d2],dronningens_gate_d2).  
+%cmpl(dronningens,[gt,d3],dronningens_gate_d3). 
 cmpl(dronningens,[gt,d4],dronningens_gate_d4). 
 
 cmpl(dronningens,gata,dronningens_gate). 
@@ -5791,8 +5792,8 @@ cmpl(dronningens,gate,hovedterminalen).
 cmpl(dronningens,gt,dronningens_gate). 
 
 cmpl(dronningensgate,[d,1],dronningens_gate_d1). %% TA-101026
-cmpl(dronningensgate,[d,2],dronningens_gate_d2). 
-cmpl(dronningensgate,[d,3],dronningens_gate_d3). 
+%cmpl(dronningensgate,[d,2],dronningens_gate_d2). 
+%cmpl(dronningensgate,[d,3],dronningens_gate_d3). 
 cmpl(dronningensgate,[d,4],dronningens_gate_d4). 
 
 cmpl(dronningensgate,[holdeplass,d,1],dronningens_gate_d1). 
@@ -5801,13 +5802,13 @@ cmpl(dronningensgate,[holdeplass,d,3],dronningens_gate_d3).
 cmpl(dronningensgate,[holdeplass,d,4],dronningens_gate_d4). 
 
 cmpl(dronningensgate,[d1],dronningens_gate_d1). %% if not split
-cmpl(dronningensgate,[d2],dronningens_gate_d2). 
-cmpl(dronningensgate,[d3],dronningens_gate_d3). 
+%cmpl(dronningensgate,[d2],dronningens_gate_d2). 
+%cmpl(dronningensgate,[d3],dronningens_gate_d3). 
 cmpl(dronningensgate,[d4],dronningens_gate_d4). 
 
 cmpl(dronningensgate,[holdeplass,d1],dronningens_gate_d1). 
-cmpl(dronningensgate,[holdeplass,d2],dronningens_gate_d2). 
-cmpl(dronningensgate,[holdeplass,d3],dronningens_gate_d3). 
+%cmpl(dronningensgate,[holdeplass,d2],dronningens_gate_d2). 
+%cmpl(dronningensgate,[holdeplass,d3],dronningens_gate_d3). 
 cmpl(dronningensgate,[holdeplass,d4],dronningens_gate_d4). 
 
 cmpl(dronningmauds,[minne,høyskole],dalen_hageby). 
