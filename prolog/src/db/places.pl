@@ -6,7 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % d1 --> dronningens_gate_d1  etc 
-% k1 --> kongens_gate_k1  etc 
+% k1 --> kongens_gt_k1  etc 
 % m1 --> munkegata_m1 etc
 
 %  Det heter Værestrøa ***
@@ -65,8 +65,8 @@ corr(dronningens_gate_46,hovedterminalen). %% TA-110627
 corr(dronningens_gate_50,hovedterminalen). %% TA-110627
 
 
-corr(kongens_gate_k1,hovedterminalen). %% Atb
-corr(kongens_gate_k2,hovedterminalen). 
+corr(kongens_gt_k1,hovedterminalen). %% Atb
+corr(kongens_gt_k2,hovedterminalen). 
 
 %corr(kongens_gate_19,hovedterminalen). %% TA-110627
 %corr(kongens_gate_46,hovedterminalen). %% TA-110627
@@ -135,15 +135,15 @@ corr(lerkendal_stadion,tempe_kirke).
 %% ISAT    Station Neighbourhood
 
 isat(prinsens_gate_p1,prinsenkrysset). %% TA-110822
-isat(prinsens_gate_p4,prinsenkrysset). %%
+isat(prinsens_gate_p2,prinsenkrysset). %% RS-131007
 
 isat(dronningens_gate_d1,sentrum). %% AtB
 %isat(dronningens_gate_d2,sentrum). 
 %isat(dronningens_gate_d3,sentrum). 
 isat(dronningens_gate_d4,sentrum). 
 
-isat(kongens_gate_k1,sentrum). %% AtB
-isat(kongens_gate_k2,sentrum). 
+isat(kongens_gt_k1,sentrum). %% AtB
+isat(kongens_gt_k2,sentrum). 
 
 isat(munkegata_m1,sentrum). 
 isat(munkegata_m2,sentrum). 
@@ -1784,8 +1784,8 @@ short_specname(k1,'Kongens gt K1'). %% RS-130812
 short_specname(k2,'Kongens gt K2'). 
 
 short_specname(kongens_gate,'Kong. gt').
-short_specname(kongens_gate_k1,'Kongens gt K1'). %% AtB
-short_specname(kongens_gate_k2,'Kongens gt K2'). 
+short_specname(kongens_gt_k1,'Kongens gt K1'). %% AtB
+short_specname(kongens_gt_k2,'Kongens gt K2'). 
 
 short_specname(kongensgate_k1,'Kongens gt K1'). 
 short_specname(kongensgate_k2,'Kongens gt K2'). 
@@ -2010,8 +2010,8 @@ specname(kong_øysteins_veg,'Kong Øysteins veg').
 
 %% RS-130812
 specname(kongens_gate,'Kongens gate').
-specname(kongens_gate_k1,'Kongens gate K1').  
-specname(kongens_gate_k2,'Kongens gate K2'). 
+specname(kongens_gt_k1,'Kongens gate K1').  
+specname(kongens_gt_k2,'Kongens gate K2'). 
 specname(k1,'Kongens gate K1').  %% RS-130812
 specname(k2,'kongens gate K2').  %% 
 
@@ -3188,8 +3188,8 @@ synplace(jonsvatnveien,jonsvannsveien).  %% (etc)
 
 synplace(jskobli,jakobsli). 
 
-synplace(k1,kongens_gate_k1). %% RS-130812
-synplace(k2,kongens_gate_k2).
+synplace(k1,kongens_gt_k1). %% RS-130812
+synplace(k2,kongens_gt_k2).
 synplace(k_johnssonsveg,karl_jonssons_veg).  %% RS-120805 Space? 
 synplace(kade,lade). 
 synplace(kadehammeren,ladehammeren).  %%?
@@ -6530,10 +6530,10 @@ cmpl(jørgen,[lysholms,vei],jørgen_b_lysholms_vei).
 cmpl(jørgen,[lysholms_vei],jørgen_b_lysholms_street).  %% Problem
 
 
-cmpl(k,[1],kongens_gate_k1). %%RS-130812
-cmpl(k,[2],kongens_gate_k2). 
-cmpl(kong,[gt,k1],kongens_gate_k1).  %% Because it is your abbrev. 
-cmpl(kong,[gt,k2],kongens_gate_k2). 
+cmpl(k,[1],kongens_gt_k1). %%RS-130812
+cmpl(k,[2],kongens_gt_k2). 
+cmpl(kong,[gt,k1],kongens_gt_k1).  %% Because it is your abbrev. 
+cmpl(kong,[gt,k2],kongens_gt_k2). 
 cmpl(kong,gt,kongens_gate).  %%Asyouspeak,
 
 
@@ -6613,48 +6613,48 @@ cmpl(kong,ingesgate,kong_inges_street).
 
 
 
-cmpl(kong,[gt,k1],kongens_gate_k1).  %% Because it is your abbrev. %% RS-130812 ??
-cmpl(kong,[gt,k2],kongens_gate_k2). 
+cmpl(kong,[gt,k1],kongens_gt_k1).  %% Because it is your abbrev. %% RS-130812 ??
+cmpl(kong,[gt,k2],kongens_gt_k2). 
 cmpl(kong,[gt],kongens_gate).  %%Asyouspeak,
 cmpl(kong,[s,gate],kongens_gate).
 
-cmpl(kongens,[gate,holdeplass,k,1],kongens_gate_k1). 
-cmpl(kongens,[gate,holdeplass,k,2],kongens_gate_k2). 
+cmpl(kongens,[gate,holdeplass,k,1],kongens_gt_k1). 
+cmpl(kongens,[gate,holdeplass,k,2],kongens_gt_k2). 
 
-cmpl(kongens,[gate,holdeplass,k1],kongens_gate_k1). %% d 1 -> d1 is prelexed
-cmpl(kongens,[gate,holdeplass,k2],kongens_gate_k2). %% ugly ?
+cmpl(kongens,[gate,holdeplass,k1],kongens_gt_k1). %% d 1 -> d1 is prelexed
+cmpl(kongens,[gate,holdeplass,k2],kongens_gt_k2). %% ugly ?
 
-cmpl(kongens,[gate,k,1],kongens_gate_k1). 
-cmpl(kongens,[gate,k,2],kongens_gate_k2). 
+cmpl(kongens,[gate,k,1],kongens_gt_k1). 
+cmpl(kongens,[gate,k,2],kongens_gt_k2). 
 
-cmpl(kongens,[gate,k,1],kongens_gate_k1). 
-cmpl(kongens,[gate,k,2],kongens_gate_k2). 
+cmpl(kongens,[gate,k,1],kongens_gt_k1). 
+cmpl(kongens,[gate,k,2],kongens_gt_k2). 
 
-cmpl(kongens,[gate,k1],kongens_gate_k1). %% if not split
-cmpl(kongens,[gate,k2],kongens_gate_k2). 
+cmpl(kongens,[gate,k1],kongens_gt_k1). %% if not split
+cmpl(kongens,[gate,k2],kongens_gt_k2). 
 
-cmpl(kongens,[gt,k,1],kongens_gate_k1). 
-cmpl(kongens,[gt,k,2],kongens_gate_k2). 
+cmpl(kongens,[gt,k,1],kongens_gt_k1). 
+cmpl(kongens,[gt,k,2],kongens_gt_k2). 
 
-cmpl(kongens,[gt,k1],kongens_gate_k1). 
-cmpl(kongens,[gt,k2],kongens_gate_k2).  
+cmpl(kongens,[gt,k1],kongens_gt_k1). 
+cmpl(kongens,[gt,k2],kongens_gt_k2).  
 
 cmpl(kongens,gata,kongens_gate). 
 cmpl(kongens,gate,kongens_gate). 
 cmpl(kongens,gate,hovedterminalen). 
 cmpl(kongens,gt,kongens_gate). 
 
-cmpl(kongensgate,[k,1],kongens_gate_k1). %% TA-101026
-cmpl(kongensgate,[k,2],kongens_gate_k2). 
+cmpl(kongensgate,[k,1],kongens_gt_k1). %% TA-101026
+cmpl(kongensgate,[k,2],kongens_gt_k2). 
 
-cmpl(kongensgate,[holdeplass,k,1],kongens_gate_k1). 
-cmpl(kongensgate,[holdeplass,k,2],kongens_gate_k2). 
+cmpl(kongensgate,[holdeplass,k,1],kongens_gt_k1). 
+cmpl(kongensgate,[holdeplass,k,2],kongens_gt_k2). 
 
-cmpl(kongensgate,[k1],kongens_gate_k1). %% if not split
-cmpl(kongensgate,[k2],kongens_gate_k2). 
+cmpl(kongensgate,[k1],kongens_gt_k1). %% if not split
+cmpl(kongensgate,[k2],kongens_gt_k2). 
 
-cmpl(kongensgate,[holdeplass,k1],kongens_gate_k1). 
-cmpl(kongensgate,[holdeplass,k2],kongens_gate_k2). 
+cmpl(kongensgate,[holdeplass,k1],kongens_gt_k1). 
+cmpl(kongensgate,[holdeplass,k2],kongens_gt_k2). 
 %% RS-130812
 
 cmpl(kong,[sverres,gate],sverres_street). 

@@ -20,7 +20,7 @@
 %  Department of Computer and Information Science     %
 %  The Norwegian University of Science and Technology %
 %                                                     %
-%  toreamb@idi.ntnu.no                                %
+%  satre@idi.ntnu.no                                  %
 %                                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
