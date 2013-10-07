@@ -5,4 +5,4 @@
 %% CREATED TA-970913
 /* REVISED : RS- */  version_date('AtB-I  Date 131007').
 
-%% H??st2013oktober
+%% Høst2013oktober
