@@ -29,6 +29,7 @@ style_check(_).
 
 ?-compile('utility/datecalc.pl').
 ?-compile('utility/makeauxtables.pl').
+
 %%% ?-compile('utility/extractreg.pl'). %% SUSPENDED
 
 ?-compile('utility/extracut.pl').  %% TA-080201
