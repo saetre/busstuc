@@ -186,13 +186,13 @@ cutloop_station(49,carl_schjetnans_vei). %% TA-100913
 cutloop_station(60,valentinlyst). 
 
 
-cutloop_station(63,asbjørnsens_gate). %% TA-110315 NB
+%% cutloop_station(63,asbjørnsens_gate). %% TA-110315 NB %% RS-131027 Station no longer exists!
 
 %% cutloop_station(63,dronningens_gate_d1). %% TA-110315 wrong
 %% cutloop_station(63,munkegata_m3).        %% TA-110315 wrong
 
 cutloop_station(66,stokkhaugen). %% TA-110824 charlottenlund_krk). 
-                   %stokkhaugen?%  %% Aternating official names! %% TA-101228
+                   %stokkhaugen?%  %% Alternating official names! %% TA-101228
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
