@@ -122,6 +122,39 @@ corr(studentersamfundet_1,studentersamfundet_2).
 corr(lerkendal_stadion,tempe_kirke). 
 
 
+%% ALIAS_NAME
+
+alias_name('44a',44). 
+alias_name('4a',4).
+alias_name('5e',5). 
+alias_name('6e',6). 
+alias_name('7a',7). 
+alias_name(dv,dragvoll). 
+alias_name(klæburuta,klæburuten). 
+alias_name(linje1,trikken). 
+alias_name(team,tt). 
+alias_name(teamtrafikk,tt). 
+
+
+
+%¤ alias_station/2,         % (STATION,STATION)
+%Examples:
+%
+%STATION is very close to other STATIONs, and walking is faster than waiting. So practially identical options.
+
+alias_station(berg_østre,østre_berg). %% AtB
+
+alias_station(dv,dragvoll).
+
+%%alias_station(gudes_gate,høgskoleringen).       %% RS-131027 Not needed according to heuristics
+%%alias_station(høgskoleringen,gudes_gate).
+
+alias_station(lade_alle_80,lade). %% TA-100802 old station-> neibourhood
+
+alias_station(ntnu_dragvoll,dragvoll). 
+
+
+
 
 %¤ ISAT   (STATION, PLACE)
 %Examples:
@@ -10305,25 +10338,7 @@ foreign(åstad).
 foreign(åstun).
 foreign(åstveit). 
 
-%% ALIAS_NAME
 
-alias_name('44a',44). 
-alias_name('4a',4).
-alias_name('5e',5). 
-alias_name('6e',6). 
-alias_name('7a',7). 
-alias_name(dv,dragvoll). 
-alias_name(klæburuta,klæburuten). 
-alias_name(linje1,trikken). 
-alias_name(team,tt). 
-alias_name(teamtrafikk,tt). 
-
-alias_station(lade_alle_80,lade). %% TA-100802 old station-> neibourhood
-
-alias_station(berg_østre,østre_berg). %% AtB
-
-
-alias_station(dv,dragvoll). 
 
 %%% PLACE_RESOLVE
 
