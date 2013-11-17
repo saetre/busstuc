@@ -1,6 +1,7 @@
-lche :- load_files('dialog/checkitem.pl').
+%% lche :- load_files('dialog/checkitem.pl').
 
-:- ensure_loaded('../declare').
+:- ensure_loaded('../utility/utility'). %% [roundmember/2 etc.]
+%% :- ensure_loaded('../declare').
 
 :- volatile current_frame/1.
 :- dynamic current_frame/1.

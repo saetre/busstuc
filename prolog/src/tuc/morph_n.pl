@@ -10,7 +10,10 @@
 
 %% Morphological Analyser for the language N.
 
-:-module(morph_n,[]).
+:-module(morph_n,[
+%% USE ENGLISH AS DEFAULT?!
+%%                 lexb/2 
+                  ]).
 
 
 ends_with(X,Y,Z):-user:ends_with(X,Y,Z).

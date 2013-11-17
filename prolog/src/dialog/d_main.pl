@@ -5,14 +5,17 @@
 
 %% REMOVED DEPENDENCIES ON JAVA INTERFACE
 
-:- ensure_loaded('../declare').
+:- ensure_loaded('../utility/utility'). % [ := ] etc. %% RS-131117 %% Includes declare.pl, 
+:- ensure_loaded('../bustermain2').
 
+:- ensure_loaded('../tuc/readin').
+
+:- ensure_loaded('d_dialogue').
 
 %% This file is extras needed to run the dialogue system. 
 %% The predicates here are similar to those in main.pl.
 
 /*
-
 :-  use_module(library(sockets)).
 */
 

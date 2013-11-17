@@ -8,8 +8,11 @@
 
 %% User input terminals
 
-:- ensure_loaded('../declare').
+:- ensure_loaded('../utility/utility'). %% Includes declare, and GRUF (fernando)
+%%:- ensure_loaded('../declare').
 %% :-op( 714,xfx, := ).   %% etc.
+
+:- ensure_loaded('newcontext2').
 
 :- volatile current_frame/1, last_answer/2.
 :-  dynamic current_frame/1, last_answer/2.

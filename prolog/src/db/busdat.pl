@@ -591,7 +591,6 @@ bus_depend_station(_Bus,RGH,RGH) :- %% // busdependent ??????
 
 %% Berg   Berg is an obscure station on route 75,  76 (not in rutehefte)
 
-
 bus_depend_station(60,berg,berg_prestegård). 
 bus_depend_station(94,berg,berg_østre).
 
@@ -611,7 +610,6 @@ bus_depend_station(3,buran, mellomv_5).
 bus_depend_station(4,    buran,          mellomv_5).
 bus_depend_station(4,    mellomstreet,   mellomv_5).      %%  Mellomveien
 % Oops:   Holdeplassen nærmest  Mellomveien er  Buran ---> mellomv_5 allikevel
-
 
 
 

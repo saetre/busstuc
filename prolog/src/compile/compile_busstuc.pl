@@ -25,9 +25,9 @@
                tucbuses.pl
 
                    declare.pl
-                   utility/...pl
+                   utility/ *.pl
                                     (sicstuc.pl)
-                   tuc/....pl
+                   tuc/ *.pl
                    tuc/gram_n.pl
                    tuc/gram_e.pl
                       ?-compile_english.                  

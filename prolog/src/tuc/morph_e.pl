@@ -7,8 +7,10 @@
 
 %% Morphological Analyser for the language E.
 
-
-:-module(morph_e,[]).
+:-module( morph_e, [ 
+%%                    lcode2/2,       %% This breaks the lcode2/2 in user: (from lex.pl). All words end up "unknown"
+                      lexb/2
+                   ]).
 
 ends_with(X,Y,Z):-user:ends_with(X,Y,Z).
 
@@ -191,7 +193,7 @@ lexv(X,X).
 
 lexb(X,Y):-
     lexv(X,Y),
-    lexb1(Y).     % dict.pl
+    dict:lexb1(Y).     % dict.pl
 
 /* %% TA-020918  %% OBSOLETE
 lexn(X,Y,sin,u,n):- 

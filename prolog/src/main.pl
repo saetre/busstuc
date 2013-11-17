@@ -8,7 +8,7 @@
 %% Main program for BussTUC
 
 :- ensure_loaded('declare'). %% RS-111213  General (semantic) Operators
-:- ensure_loaded('tucbuses'). %% RS-130329 Make sure modules are available: dcg_module, 
+:- ensure_loaded('tucbuses'). %% RS-130329 Make sure (gram/lang) modules are available: dcg_module, 
 
 :-use_module(library(timeout)). 
 :-use_module(library(process)).

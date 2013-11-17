@@ -134,6 +134,22 @@ rewprunerest([X|Y],[XX|YY]):-
 %% FILE drucke_baum_list
 %% SYSTEM TUC
 %% CREATED Christoph Lehner 1992
+/*
+NAMES   Dr. Christoph Lehner    mailto:chris@cl.uni-hildesheim.de
+PHONES  +5121 88 33 77 ´ +89 260 37 54
+WEB-ADR http://www.uni-hildesheim.de/~chlehn
+*****************************************************************
+All programs are freeware, but please be honest enough to
+give clear references to where they came from.
+*****************************************************************
+
+© Christoph Lehner
+
+*/
+/* Program is taken from Prolog text book
+Christoph Lehner: Prolog und Linguistik. Oldenbourg, München 1992, 2. Auflage.
+Out of print, now */
+%% REVISED TA-061022    For Rune og Håvard?
 %% REVISED TA-100922
 
 %% :- ensure_loaded( 'sicstus4compatibility' ). %, [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.

@@ -13,11 +13,13 @@
 
 :- volatile
            confused/1,
-           linecounter/1. %, last_answer/2. 
+           linecounter/1,
+           last_answer/2.  %% last_answer is problematic ???
 
 :- dynamic
            confused/1,
-           linecounter/1. %, last_answer/2. 
+           linecounter/1,
+           last_answer/2.  %% last_answer is problematic ???
 
 
 %dialog :- 

@@ -24,8 +24,7 @@ style_check(_).
 ?-compile('utility/library.pl').
 ?-compile('utility/utility.pl').
 
-?-use_module('utility/drucke_baum'). %% TA-061030 %% RS-111218
-?-use_module('ptbwrite').%% TA-061030
+?-use_module('ptbwrite'). %% TA-061030 %% 'utility/drucke_baum' Is included in PennTreeBankWriter %% RS-111218
 
 ?-compile('utility/datecalc.pl').
 ?-compile('utility/makeauxtables.pl').
@@ -85,6 +84,7 @@ prompt('?: '). % Undefined Prompt.
 readfile_extension(X):-
     language(L),
     readfile_extension(L,X).
+
 
 %%% THESE ARE NOW CALLED FROM MAIN DIRECTORY
 
@@ -153,8 +153,10 @@ prompt2(norsk,'N: ').
 %%   compile('tuc/world0.pl').       % empty world predicates %% TA-110301
 %%%   compile('tuc/slash.pl').        % slash facts / %% Irrelevant
 
-?-  use_module(dcg_e:'tuc/dagrun_e.pl').      % split into English and
-?-  use_module(dcg_n:'tuc/dagrun_n.pl').      % Norwegian clones
+%?-  use_module(dcg_e:'tuc/dagrun_e.pl').      % split into English and
+%?-  use_module(dcg_n:'tuc/dagrun_n.pl').      % Norwegian clones
+?-  ensure_loaded(dcg_e:'tuc/dagrun_e.pl').      % split into English and
+?-  ensure_loaded(dcg_n:'tuc/dagrun_n.pl').      % Norwegian clones
 
 ?-  compile('tuc/semantic.pl').     % the semantic net (moved from database)
 ?-  compile('tuc/names.pl').        % general names and synonyms  (moved from database)
@@ -179,6 +181,8 @@ compile_norsk:-
     gram_file(norsk,G),compile(G),         % grammar for N
 
     makegram(norsk).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ?-compile_english.
 

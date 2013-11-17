@@ -5,6 +5,7 @@
 %% REVISED  TA-110725
 
 :- ensure_loaded('../declare').
+:- ensure_loaded('../utility/library').
 
 
 %% NB 0015 \-> 2415
@@ -57,9 +58,9 @@ write_prompt(E):-
 write_from_user(P):-
     value(talk,1), 
     !,
-    opentalk(question),
-        doing(P,0), %% out to \nat\scratch
-    closetalk(question).
+%    opentalk(question),
+        doing(P,0). %% out to \nat\scratch
+%    closetalk(question).
 
 write_from_user(_):-!.
 

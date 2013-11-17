@@ -7,12 +7,14 @@
 
 :- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
 :- ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators
+:- ensure_loaded('../utility/utility'). %% RS-131117 dynamic (but NOT volatile) value/2 etc.
 
 
-:- module(makeframe,[]). %% - maketeleframe  %% RS-130624 Experiment from 2012?
+:- module(makeframe,[ rule/2 ]). %% - maketeleframe  %% RS-130624 Experiment from 2012?
 
 
-tracevalue(X):- user:value(traceprog,X),!; X=1.
+
+%% tracevalue(X):- user:value(traceprog,X),!; X=1.
 
 returnfields rule %% TA-051030
 is  present teleprocess([A,B|C],_,_,_) %% at least one (hope they are valid)
