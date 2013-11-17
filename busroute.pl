@@ -6,7 +6,7 @@
 %% The main file for the route database
 
 
-:-prolog_flag(discontiguous_warnings,_,off). 
+%% :-prolog_flag(discontiguous_warnings,_,off). 
 
 :- ensure_loaded( compileroute ).
 %From Compileroute %% RS-111224
