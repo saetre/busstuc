@@ -860,11 +860,11 @@ whereq(P) --->  %%  where is you from
 
 whereq(which(Y):::P) --->  %% where did john go (to)
     where,     
-    (do), 
+    do,
     adverbial1(nil,Y,Subj,P3) =  (the(Y),w(noun(place,_,_,n))),    
     !,
     question0(P) -      
-         ((do),adverbial1(in,Y,Subj,P3)), 
+         ([do],adverbial1(in,Y,Subj,P3)), 
     optional(w(prep(_))).
  
 
@@ -1444,7 +1444,7 @@ qverb_phrase(Y,S,N,ComP2) --->
     noun_phrase(X,P,P1),          
     hasto0, 
     verb_phrase(X,S,N,ComP2)  - 
-         ( (do) , noun_phrase1(Y,P,P1)).  %% noun_phrase 
+         ( [do] , noun_phrase1(Y,P,P1)).  %% noun_phrase 
 
 qverb_phrase(Y,S,N,ComP2) ---> 
     be,

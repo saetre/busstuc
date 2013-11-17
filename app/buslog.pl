@@ -78,7 +78,7 @@ seqno_day(TTP,K160,May1,XN) :- %% XN relative nr of FIRST Sday in Route Module %
 
     K159 is K160-1,
     add_days(Date1,K159,May1),
-    date_day_map(May1,SDay),
+    busdat:date_day_map(May1,SDay),
     dayxnumber(EMITDAY,SDay,XN). %% relative number of FIRST SDay in DayCode
 
 
@@ -292,7 +292,7 @@ passes44(A,STATNO,B,C,D,E):-   bus_mod(TTP),TTP:ex_passes4(A,STATNO,B,C,D,E).
 % X = from ( to hovedterminalen from Station
 
 rid_to_direction(_RID,Nil,Station):-
-    corresp0(Station,hovedterminalen),
+    busdat:corresp0(Station,hovedterminalen),
     !,
     Nil=nil. %% classic trap
 
@@ -300,7 +300,7 @@ rid_to_direction(RID,Y,Station):-
 
     passeq(RID,_,Station,Seq1,_,_),
     passeq(RID,_,City,Seq2,_,_),
-    corresp0(City,hovedterminalen),
+    busdat:corresp0(City,hovedterminalen),
 
     (Seq1 < Seq2  -> X = from;
      Seq2 < Seq1  -> X = to;
@@ -337,7 +337,7 @@ delay_margin(5). %% 5 minutes normally, 0 for  announced scheduled transfer
 %% Compensate for late arrival 47 to city syd østre
 
 compute_delay_margin(Bus1,Bus2,OffStation,_OnStation,Marg):-
-    preferred_transfer(Bus1,Bus2,_Orig1,_Orig2,OffStation),
+    busdat:preferred_transfer(Bus1,Bus2,_Orig1,_Orig2,OffStation),
     !,
     Marg= - 2. %%  (O. Misfjord  100830 ) NB Negative, error in Bus Tables
 
@@ -455,7 +455,7 @@ keepbetweenstat2(Rid,FromSeq,ToSeq,_InnStats,UtStats) :-
 
 streetstation2(St_olavs_street,_,St_olavs_gt):-
     value(tramflag,true), %% TA-100120
-    thetramstreetstation(St_olavs_street,St_olavs_gt), %% SPEXIAL  busdat.pl
+    busdat:thetramstreetstation(St_olavs_street,St_olavs_gt), %% SPECIAL  busdat.pl
     !.
 
 streetstation2(Ident,Num,Station2):- %% Station name in streetstat
@@ -551,7 +551,7 @@ maybestation(_,OutStations,OutStations).
 isnear(Place1,Place2) :-
 	 ((station(Place1),Station1=Place1);isat(Station1,Place1)),
 	 ((station(Place2),Station2=Place2);isat(Station2,Place2)),
-	 corresponds(Station1,Station2),
+	 busdat:corresponds(Station1,Station2),
 	 Station1\==Station2.
 
 isnear(Place1,Place2) :-
@@ -570,7 +570,7 @@ isnear(Place1,Place2):-
 
 corrstats([],_,[]).
 corrstats([Stat1|Stats1],Stats2,[Stat1|CorrStats]) :-
-	 corresponds(Stat1,Stat2),
+	 busdat:corresponds(Stat1,Stat2),
 	 delete(Stat2,Stats2,NewStats2),
 	 !,
 	 corrstats(Stats1,NewStats2,CorrStats).
@@ -932,7 +932,7 @@ bus_equivalents(List1,List3):-
     remove_duplicates(List2,List3).
 
 converttostandard(IntX,ExtY):- %% TA-09819
-    (exbusname(IntX,ExtY)
+    (busdat:exbusname(IntX,ExtY)
      -> true
      ; ExtY=IntX).
 
@@ -1038,7 +1038,7 @@ diffdep4(_,_,_,-1). %% (in case of timeout) | catchall
 
 
 
-xxxstateplace(X,Y):- (corresp0(X,Y);isat2(X,Y)). %% ugly
+xxxstateplace(X,Y):- (busdat:corresp0(X,Y);isat2(X,Y)). %% ugly
 
 
 %% Bustrans specific predicate
@@ -1116,7 +1116,7 @@ approvenightbustoplace(Place,Y) :-
 avoidnightbustoplace(Place,Y) :-
     Y= depnode(_,_,_,_,_,Bus_57_nn,__,_),
     route(Bus_57_nn,_,B57),
-    spurious_return(B57,Place), %% morten_erichsen_forbid(B57,Place),
+    busdat:spurious_return(B57,Place), %% morten_erichsen_forbid(B57,Place),
     !.
 
 
@@ -1129,7 +1129,7 @@ setdepMOD(TTP,Place,Kay,DepSet):-
 day_route(depnode(_Time0,_Time9,_DelArr,_DelDep,_BegTime,Rid1,NB,_SEQNO,_Station1)):-
     ridtobusnr(Rid1,NB),
     \+ nightbus(NB),
-    \+ exbusname(NB,skolebuss).
+    \+ busdat:exbusname(NB,skolebuss).
 
 
 
@@ -1213,7 +1213,7 @@ passeqMOD0(TTP,Rid,H,STATNO,Terminal,Seq,DelArr,DelDep):- %% TA-110318
     H== hovedterminalen,
     !,
     passeqMOD(TTP,Rid,STATNO,Terminal,Seq,DelArr,DelDep),
-    corresp0(Terminal,hovedterminalen).
+    busdat:corresp0(Terminal,hovedterminalen).
 
 
 passeqMOD0(TTP,Rid,Place,STATNO,Station,Seq,DelArr,DelDep) :-  %% TA-110318
@@ -1231,7 +1231,7 @@ passMOD(TTP,Rid,H,STATNO,Terminal,DelArr,DelDep):-
     H== hovedterminalen,
     !,
     passeqMOD(TTP,Rid,STATNO,Terminal,_Seq,DelArr,DelDep),
-    corresp0(Terminal,hovedterminalen). %% (busdat.pl)
+    busdat:corresp0(Terminal,hovedterminalen). %% (busdat.pl)
 
 
 passMOD(TTP,Rid,Place,STATNO,Station,DelArr,DelDep) :-
@@ -1243,7 +1243,7 @@ passMOD(TTP,Rid,Place,STATNO,Station,DelArr,DelDep) :-
 
 isat2(Station,sentrum):- %% TA-090915
     value(airbusflag,true),
-    central_airbus_station(Station).
+    busdat:central_airbus_station(Station).
 
 
 isat2(Station,Place):- %% studentersamfundet syndrom
@@ -1299,7 +1299,7 @@ samefplace(Sentrum,Thomas_angells_street) :-
 
 
 correspx0(Place,HT):-
-    corresp0(Place,HT)
+    busdat:corresp0(Place,HT)
     ;
     placestat(Place,HT).
 
@@ -1311,9 +1311,9 @@ correspx0(Place,HT):-
 
 bus_place_station(_Bus,X,Y):-  %% TA-090915
     value(airbusflag,true),
-    corr0(X,hovedterminalen),
+    busdat:corr0(X,hovedterminalen),
     !,
-    central_airbus_station(Y). %%  =torget.
+    busdat:central_airbus_station(Y). %%  =torget.
 
 
 
@@ -1321,13 +1321,13 @@ bus_place_station(_Bus,X,Y):-  %% TA-100115
     value(nightbusflag,true),
     X= hovedterminalen, %% corr0(X,hovedterminalen), \+ munke_street
     !,
-    nightbusstation(Y). %% olav_tryggvasons_gate.
+    busdat:nightbusstation(Y). %% olav_tryggvasons_gate.
 
 
 
 bus_place_station(_Bus,X,Y):-
 %%     unbound(_Bus),
-    corr0(X,hovedterminalen), %% Be liberal wrt M1,... D1,...(even if bus)
+    busdat:corr0(X,hovedterminalen), %% Be liberal wrt M1,... D1,...(even if bus)
     !,
     Y=hovedterminalen.
 
@@ -1340,7 +1340,7 @@ bus_place_station(Bus,X,Y):-
 
 
 bus_place_station(Bus,X,Y):-
-    bus_depend_station(Bus,X,Y), %% busdat.pl
+    busdat:bus_depend_station(Bus,X,Y), %% busdat.pl
     !,
     station(Y).           %% RIT 17 mai syndrome
 
@@ -1487,7 +1487,7 @@ place_station0(Place,Place) :-
 
 street_station(STOGSTREET- _N_,STOGST):- %% St. Olavs gt 1 \= HT
     value(tramflag,true), %% TA-100120
-    thetramstreetstation(STOGSTREET,STOGST),
+    busdat:thetramstreetstation(STOGSTREET,STOGST),
     !.
 
 street_station(Street,Station):-
@@ -2300,7 +2300,7 @@ isfirstcorr2(Time0,EndDep,Orig,Dest,Day,DaySeqNo,DepList,StartDep,Mid) :-
     startstation(ENDRID,Orig2),
     ridtobusnr(ENDRID,Bus2),  %% ENRID will arrive at Rostengrenda
 
-    preferred_transfer(Bus1,Bus2,Orig1,Orig2,   _OffStation),
+    busdat:preferred_transfer(Bus1,Bus2,Orig1,Orig2,   _OffStation),
 %%                     47   46   Klæbu Sandmoen CitySyd
     member(StartDep,DepList), %% last first
 
@@ -2363,7 +2363,7 @@ find_preferred_transfer(TTP,Rid1,Rid2,OffStation):-
 try_preferred_transfer(TTP,Rid1,Rid2,OffStation) :-
     ridtobusname(Rid1,Bus1),
     ridtobusname(Rid2,Bus2),
-    preferred_transfer(Bus1,Bus2,Orig1,Orig2,OffStation), %% busdat.pl
+    busdat:preferred_transfer(Bus1,Bus2,Orig1,Orig2,OffStation), %% busdat.pl
 
     startstation(TTP,Rid1,Orig1), %% Extra check
 
@@ -2452,7 +2452,7 @@ iscorr3(Orig,Dest,_Day,_DaySeqNo,StartDep,EndDep,Mid):- %% TA-110325
 
     SeqOFF > SeqNo1,
 
-    corresponds(OffStation,OnStation),                              % M3 -> D3
+    busdat:corresponds(OffStation,OnStation),                              % M3 -> D3
 
 % - 2. leg
 
@@ -2536,7 +2536,7 @@ toolongtraveltime(Time1,Time2):-
 
 
 ticketprice2(BusType,List):-
-    busfare2(BusType,List).    %% Busdat
+    busdat:busfare2(BusType,List).    %% Busdat
 
 
 
@@ -2808,7 +2808,7 @@ neverpasses(Bus,Place):-
 sometimepasses(Bus,Sentrum):-
     atomic(Bus),
     samefplace(Sentrum,hovedterminalen),
-    corresp(X,hovedterminalen),
+    busdat:corresp(X,hovedterminalen),
     route(Rid,Bus,_),
     passeq(Rid,_,X,_,_,_),
     !.
@@ -2845,7 +2845,7 @@ neverarrives(Bus,Place):-
 sometimearrives(Bus,Sentrum):-
     atomic(Bus),
     samefplace(Sentrum,hovedterminalen),
-    corresp(X,hovedterminalen),
+    busdat:corresp(X,hovedterminalen),
     route(Rid,Bus,_),
     passeq(Rid,_,X,Seq,_,_),
     Seq > 1, %% NB Seq=1 only means only depart
@@ -2885,7 +2885,7 @@ neverdeparts(Bus,Place):-
 sometimedeparts(Bus,Sentrum):-
     atomic(Bus),
     samefplace(Sentrum,hovedterminalen),
-    corresp(X,hovedterminalen),
+    busdat:corresp(X,hovedterminalen),
     route(Rid,Bus,_),
     passeq(Rid,_,X,_Seq,_,_),
  %%%%%%%%%%%%%%%%%%%%%%%%%% TA-110107   Seq = 1, %% NB Seq=1 only means only depart

@@ -10,6 +10,16 @@
 
 :-use_module(library(timeout)). 
 
+:- volatile
+        ( => )/2,
+        difact/2,    %% Dynamic,  context dependent  %% TA-980301
+        fact0/1.     %% Semi permanent, in evaluate.pl
+          
+:- dynamic
+        ( => )/2,
+        difact/2,    %% Dynamic,  context dependent  %% TA-980301
+        fact0/1.     %% Semi permanent, in evaluate.pl
+
 %% timeout WITHOUT _
 
 progtrace(N,P):-

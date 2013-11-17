@@ -5,6 +5,7 @@
 %% REVISED TA-110629
 
 %% Grammar Utility File  GRUF
+%% This is always included through utility/utility.pl
 
 
 %% Named after the great Computational Linguist  Fernando Pereira

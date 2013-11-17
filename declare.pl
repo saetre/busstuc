@@ -4,6 +4,9 @@
 %% REVISED TA-090514
 
 %% Declarations used by TUC
+%% USAGE:
+%% :- ensure_loaded( '../declare' ). %, [ := /2 etc. ] ).  %% RS-120403
+
 
 %% Some Prologs don't like lists of operators
 :-op(1150,xfx, ---> ). 
@@ -22,7 +25,7 @@
 :-op( 720,xfy, & ).
 :-op( 719,yfx, butnot ).
 :-op( 715, fy, not ).
-:-op( 714,xfx, := ).   
+:-op( 714,xfx, := ).
 :-op( 713,xfx, =: ). 
 :-op( 710,xfx, ako ).
 :-op( 710,xfx, apo ).  

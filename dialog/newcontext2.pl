@@ -4,6 +4,12 @@
 %% CREATED ØF-000101
 %% REVISED TA-080110
 
+:- ensure_loaded( '../utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
+%:- ensure_loaded( '../declare' ). %, [ := /2 etc. ] ).  %% RS-120403
+
+:- ensure_loaded( 'frames2' ). %, [ frametemplate etc. ] ).  %% RS-131117
+
+
 :- use_module(library(system)).
 :- use_module(library(lists)).
 
