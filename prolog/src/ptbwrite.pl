@@ -7,8 +7,12 @@
 
 % Make a slender syntax tree comparable to Penn Tree Bank tagging
 
-%%:-module(ptbwrite,[ ptbwrite/1, drucke_baum_list/1 ] ). %% RS-111204
-:-module(ptbwrite,[ ptbwrite/1 ] ). %% RS-111218
+:-module(ptbwrite,[
+                     alle_args/2,
+                     ptbwrite/1,
+                     drucke_baum_list/1
+                  ] ). %% RS-111204
+%%:-module(ptbwrite,[ ptbwrite/1 ] ). %% RS-111218
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -132,7 +136,17 @@ rewprunerest([X|Y],[XX|YY]):-
 %% CREATED Christoph Lehner 1992
 %% REVISED TA-100922
 
-:- ensure_loaded( 'sicstus4compatibility' ). %, [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+%% :- ensure_loaded( 'sicstus4compatibility' ). %, [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+%% RS-131117: Write the needed predicates here (only) instead of in sicstus4compatibility.pl
+tab(N):- write_blanks(N). %% ad hoc
+write_blanks(N):-
+     N > 0,
+     !,
+     write(' '),
+     N1 is N-1,
+     write_blanks(N1).
+write_blanks(_).
+%%%
 
 tabx(X) :- %% Sictus Doesn take tab(-1) 
     ( X <0 -> true ; tab(X) ). %% Sicstus 4
@@ -436,7 +450,7 @@ member_x(X,L):- x_member(X,L), !.
 
 
 
-numeric(X):- number(X).
+numeric(X):- user:number(X).
 
 
 /*    instanziieren noch freier   variablen     */
@@ -472,8 +486,9 @@ nextvar('U',4).
 nextvar('V',5).
 nextvar('W',6).
 nextvar(X,N):- N > 6,
-               number(N,L),
-               x_append("X",L,Y),
+%%               number(N,L),
+%%               x_append("X",L,Y),
+               x_append("X",N,Y),
                name(X,Y).
 
 atomic_length(X,5):- var(X), !.
