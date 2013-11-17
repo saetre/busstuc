@@ -191,7 +191,7 @@ isat(bratsberg_kirke,bratsberg). %% TA-110325
 %% isat(britannia_hotell,sentrum). %%  FB? %% not AtB
 isat(bromstadsvingen,bromstad).
 isat(bromstadvegen,bromstad). 
-isat(byåsen_butikksenter,byåsen).
+%%isat(byåsen_butikksenter,byåsen). %% RS-131117
 isat(brøsetvegen_168,brøsetvegen). 
 
 isat(charlottenlund_kirke,charlottenlund). 
@@ -339,4874 +339,6 @@ isat(østre_berg,berg_østre). %% AtB  tricky
 isat(østre_rosten,city_syd).    %% Ø R must be station
 isat(øvre_flatåsveg,flatåsen). % 9,17 
 
-
-%%% PLACESTAT  station neighbourhood
-%¤ PLACESTAT  (PLACE,STATION)
-%Examples;
-%placestat(arbeidsmarkedsinstituttet,lade_alle_80).
-%placestat('Hotell Augustin',torget).
-%
-%STATION is the preferred /recommended nearest station to the
-%neighbourhood of PLACE
-%
-
-%% placestat(atb,torget). %% TA-101108 
-
-placestat(studentersamfundet_1,studentersamfundet).  %% AtB %% NB \+ isat
-placestat(studentersamfundet_2,studentersamfundet).  %% TA-100922
-
-placestat('ALT/Statoil',rotvoll_nedre).%% hist/ALT %% extra dep Bus 6 
-placestat('Adolf Øiens skole',prinsen_kinosenter).  %%
-placestat('Bakke kirke',bakkegata).  %% Syndrome Hvor er bakke kirke
-placestat('Berg arbeidskirke',kvilhaugen). 
-%% placestat('Brøset sykehus',brøsetvegen_119). 
-placestat('Comfort Hotel Park',prinsen_kinosenter). 
-placestat('Dalgård skole',dalgård).  %%
-placestat('Din bil',nidarvoll_skole).  %% Bratsbergveien 11
-placestat('Eberg skole',teglverkskrysset).
-placestat('Heimdal politistasjon',heimdal_stasjon).  %%
-placestat('Hotell Augustin',torget).  %% Brage 
-placestat('Motor Trade',fiolsvingen). %% Bilverksted
-placestat('Lilleby skole',stiklestadveien).  %% Ladeveien 1 
-placestat('Ni muser',prinsen_kinosenter). 
-placestat('Steinan studentby',vestlia).
-placestat('Tiller kirke',moltmyra_øst).  
-placestat('Torbjørn Bratts veg',fiolsvingen). 
-
-
-placestat(adm_rit,st_olavs_hospital). 
-placestat(adresseavisa,adresseavisen). 
-placestat(alfheim,alfheimsvingen). 
-placestat(alfheimsv,alfheimsvingen).  %% Forkortelse (alfheimsv i rutehefte)
-
-placestat(amo_senteret,henrik_ourens_veg). 
-placestat(angelltrøa,angelltrøvegen). 
-placestat(angeltrøa,angelltrøvegen). 
-placestat(arbeidsmarkedsinstituttet,lade_alle_80). 
-placestat(arnebyen,ugla). 
-
-
-
-placestat(atmel,maskinagentur). 
-
-placestat(autronica,haakon_vii_gate_25). %% TA-110818
-
-placestat(multiconsult,postterminalen). %% sluppenvegen 23 %% TA-110415
-
- 
-%% placestat(lingit,moholt_storsenter). %% //confuse Lingit company
-
-placestat(lingit,moholt). %% TA-110401
-
-placestat(idi,gløshaugen_syd). %% TA-110401
-
-placestat(dis,gløshaugen_syd). %% TA-110401
-
-
-placestat(badeland,pirbadet). 
-placestat(bakkaunet,rosendal). 
-placestat(bakkebru,bakkegata). 
-placestat(balders_street,tors_veg).  %% street
-%% placestat(barneklinikken,st_olavs_hospital_vest).  %% ????????
-placestat(bassengbakken,solsiden). 
-placestat(beddingen,solsiden). 
-placestat(befalsskolen,festningsgata). 
-
-%% placestat(berg,østre_berg). 
-%% also station on obscure route 73 (not in busrutehefte)
-
-placestat(bergstudentby,bugges_veg). 
-placestat(bergsvingen,harald_bothners_veg).  %% øvre/nedre
-placestat(bi,pirbadet). %%  BI
-placestat(bi,østre_rosten). 
-placestat(bilcentrum,leangen_alle). %%  Garage
-placestat(bilsakkyndige,e_verket). 
-placestat(bilsakskyndig,e_verket). 
-placestat(biltema,rostengrenda).  %% Østre rosten 22 (not garage)
-placestat(biltilsyn,e_verket). 
-placestat(biltilsynet,e_verket). 
-placestat(bispegata,prinsen_kinosenter). 
-placestat(bispegården,prinsen_kinosenter). 
-placestat(bispehaugenskole,bakkegata). 
-placestat(bjørndal,bjørndalsbrua). 
-%% placestat(blaklia,blakli).
-placestat(blaklihøgda,blakli). 
-placestat(blindeforbundet,churchills_veg). 
-placestat(blindeskolen,churchills_veg). 
-placestat(blomsterbyen,fiolsvingen). 
-placestat(blåklokkevegen,fiolsvingen). 
-%% placestat(bohus,brøsetvegen_186). 
-%% placestat(brannstasjonen,brannstasjon_øst). %% TA-110822
-%% placestat(bratsberg,bratsberg_vestre). 
-
-%% placestat(brattøra,pirbadet). 
-
-placestat(brattørkaia,brattøra). 
-placestat(brattørkaien,brattøra). 
-placestat(bratørkaia,brattøra). 
-placestat(bratørkaien,brattøra). 
-
-
-%%% placestat(brit_grytbakks_street,gryta). 
-
-placestat(britannia,hovedterminalen).  %% (Britania by spch)%% airbus
-placestat(britannia_hotell,hovedterminalen). 
-
-placestat(bromstadkrysset,bromstadsvingen). 
-placestat(brøset,brøsetflata). 
-placestat(brøsetsvingen,bromstadsvingen). 
-placestat(bussgarasjen,sorgenfri). 
-placestat(byavisa,nardokrysset).  %%?
-placestat(bymarka,skistua).  %%
-placestat(byneset,trolla). 
-placestat(bytorget,torget).  %%avoidhplnærtorgetertorget
-%% placestat(byåsen_butikksenter,byåsen_butikksenter). %% TA-110627
-placestat(byåsen_videregående_skole,migosenteret). %% byåsen_videregående_skole neibourhood
-
-placestat(cathedral,prinsen_kinosenter). 
-placestat(ceciliebrua,tvetestien). 
-placestat(charlottenlund_skole,churchills_veg).  %% Ungdomsskole/Videregående?
-placestat(charlottenlund_videregående,brundalen_skole). 
-%% placestat(charlottenlundbanen,churchills_veg).
-placestat(charlottenlundhallen,churchills_veg). 
-placestat(charlottenlundhallen,tunvegen).  %% Tunveien18B,Jakobsli
-placestat(chr_eggens_veg,bjarne_ness_veg). 
-placestat(church,prinsen_kinosenter). 
-placestat(cicilliebrua,tvetestien). 
-placestat(city_hall,prinsen_kinosenter). 
-placestat(dalen,dalen_hageby). 
-placestat(dalenhageby,dalen_hageby). 
-placestat(dalsaune,dalsaunevegen). 
-placestat(dalseng,prof_brochs_gate). 
-placestat(dalsenget,prof_brochs_gate). 
-
-placestat(devlegård,olav_engelbrektssons_alle).
-
-placestat(bilbyen,nidarvoll_skole). %%  bratsbergveien 17. // garage
-placestat(dinbil,nidarvoll_skole).  %%  bratsbergveien 11. // garage
-
-placestat(dmmh,dalen_hageby). %% TA-110301
-
-placestat(dokkparken,solsiden). %%  // Changed name !
-
-placestat(dokkhuset,solsiden).
-placestat(dokksiden,solsiden). 
-placestat(dokkterminalen,solsiden).  %% ? 
-placestat(domen,prinsen_kinosenter). 
-placestat(domkirka,prinsen_kinosenter). 
-placestat(domkirken,prinsen_kinosenter). 
-
-%% placestat(dora,dora_1).  
-placestat(dorahallen,dora). 
-
-placestat(dronningens_gate,hovedterminalen).  %% jeg skal til dronningens gate. 
-placestat(dronningens_street,hovedterminalen).  %% Technical
-placestat(døveskolen,skyttervegen).  %%
-placestat(ekle,eklesbakken). 
-placestat(elgeseter,prof_brochs_gate). 
-placestat(elgsetergata,prof_brochs_gate).  %% \+ sæterbakken
-placestat(erkebispegården,prinsen_kinosenter). 
-
-%% placestat(esso_motorhotell,brøsetvegen_186). %% Old name ! 
-
-placestat(estenstad,estenstadvegen). 
-placestat(estenstadmarka,estenstadvegen). 
-placestat(fagerheim,fagerheim_alle). 
-placestat(fagerlia,fagerliveien). 
-placestat(fagerlien,fagerliveien). 
-placestat(falkenborg,dalen_hageby). 
-placestat(felleskjøpet,gartnerhallen). 
-placestat(fengsel,tunga_kretsfengsel). 
-placestat(fengselet,tunga_kretsfengsel). 
-placestat(festningen,ankers_gate). 
-placestat(festningsparken,ankers_gate).  %% ?
-placestat(filmteatret,prinsen_kinosenter). 
-placestat(fischebygget,studentersamfundet). 
-placestat(flatåsen,flatåstoppen). %Nightbus
-placestat(flatåsensenteret,flatåsen_senter). 
-placestat(flatåsenskole,flatåsen_senter). 
-placestat(flatåsvegen,øvre_flatåsveg). 
-placestat(fokushallen,vestre_rosten). 
-placestat(fosenferja,pirbadet).
-placestat(fosenterminalen,pirbadet). 
-placestat(fossesenteret,fossegrenda). %% Leirfossvegen 45
-%%cmpl(fossesenteret,[],fossesenteret). %% RS-120805      How? Necessary? 
-
-placestat(gartnerhagen,gartnerhallen). 
-placestat(gilde,gartnerhallen). 
-placestat(gildheimsveien,gildheim). 
-placestat(gløshaugen,gløshaugen_syd).  %% Avoid GS/N messages
-placestat(godsterminalen,terminalen). 
-placestat(granåsen,granåsen_vm_anlegget). 
-placestat(grillstad,grilstadkleiva). 
-placestat(grilstad,grilstadkleiva). 
-placestat(grilstadfjæra,grilstadkleiva). 
-
-placestat(hallset,søndre_halset).  %% nordre søndre 
-placestat(halset,søndre_halset).   %% nordre søndre
-placestat(hallsetvangen,søndre_halset). 
-placestat(hanger,hangeråsen). 
-placestat(hangersletta,hangeråsen).  %% aasen UN properstation
-placestat(hangerås,hangeråsen).  %% necessary because laura hangerås veg
-placestat(hansbakkfjæra,ranheim_skole).  %% map 
-placestat(harbour,pirbadet).  %% English the harbour
-placestat(haukvatnet,haukåsen). 
-placestat(havna,pirbadet).
-placestat(havna,pirbadet).  %%?
-placestat(havnen,pirbadet).
-placestat(havstad,havstadsenteret). 
-placestat(havstadflata,havstadsenteret). 
-placestat(havstein,havstadsenteret). 
-placestat(havsteinekra,stabells_veg). %%% ?? helse og velferdssenter
-placestat(havsteinflata,havstadsenteret). 
-placestat(havsteinflaten,havstadsenteret). 
-placestat(heimdalsentrum,heimdal_sentrum). 
-placestat(hoeggen,hoeggen_skole). 
-placestat(holtermannsveien,valøyvegen). 
-placestat(horneberg,hornebergvegen). 
-placestat(hospitalløkka,hospitalskirka). 
-placestat(hospitalløkkan,hospitalskirka). 
-placestat(hospitalløkken,hospitalskirka). 
-placestat(hospitalsløkkan,hospitalskirka). 
-placestat(hospitalsløkka,hospitalskirka). %% hospitalslokka 
-
-%% placestat(hostel,weidemannsveien). %% * P-hotels %% TA-101202
-placestat(hurtigbåten,pirbadet). 
-placestat(hurtigbåtkaia,pirbadet). 
-placestat(hurtigbåtkaia,pirbadet). 
-placestat(hurtigbåtkaien,pirbadet). 
-placestat(hurtigbåtterminalen,pirbadet). 
-
-%% placestat(hurtigruta,pirbadet). %% Haz, boat
- 
-placestat(hurtigrutekaia,pirbadet).
-placestat(hurtigrutekaien,pirbadet). 
-placestat(hurtigruten,pirbadet). 
-placestat(hurtigruteterminalen,pirbadet). %% ?
-placestat(huseby,husebytunet).  %% \+ synplace
-placestat(husebybadet,saupstadsenteret). 
-placestat(husebyhallen,saupstadsenteret). 
-placestat(husebysenteret,saupstadsenteret). 
-placestat(hårstad,martin_kregnes_veg). 
-placestat(hårstadmarka,martin_kregnes_veg). 
-placestat(hårstadmyra,martin_kregnes_veg). 
-placestat(idrettsbygget,høgskoleringen). 
-
-placestat(ilabekken,ila). 
-placestat(iladalen,ila).
-placestat(ilakirke,ila). 
-placestat(ilaparken,ila). 
-placestat(ilevolden,ila). 
-placestat(ilevollen,ila). 
-placestat(ilevollene,ila). 
-
-%% placestat(ilsvika,ila). %% station
-placestat(ilsvikøra,ilsvika). 
-
-placestat(industribygget,solsiden). 
-placestat(innherredsveien,solsiden). 
-%% placestat(ishallen,bromstadsvingen). %% TA-101124 Station!
-placestat(jonsvannet,solbakken_bru). 
-placestat(jonsvannsveikrysset,jonsvannsveien). 
-placestat(jonsvannet,solbakken_bru). %% TA-110202
-placestat(kaia,pirbadet). 
-placestat(kanalen,solsiden). 
-placestat(karinelund,strinda_kirke). 
-placestat(katedralen,prinsen_kinosenter). 
-placestat(katedralskolen,prinsen_kinosenter). 
-placestat(kbs,strindheim).
-placestat(kbs_senteret,strindheim).
-placestat(kinosenteret,prinsen_kinosenter). 
-placestat(kirka,prinsen_kinosenter).  %%Uncertain
-placestat(klefstad,klefstadhaugen). 
-placestat(klostergata,studentersamfundet).  %% (Øya?)_2
-placestat(klæbu_skysstasjon,klæbu_sentrum).  %% klæbu_skysstasjon rutehefte/
-placestat(kolstad,torplassen). 
-placestat(kolstadflata,torplassen). 
-placestat(kolstadsenter,torplassen). 
-placestat(kolstadsenteret,torplassen).  %%?
-placestat(kolsås,flatåstoppen).  %% også Bærum
-placestat(kolsåsen,flatåstoppen). 
-placestat(kolsåstoppen,flatåstoppen). 
-placestat(kongens_gate,hovedterminalen).  %% jeg skal til kongens gate. 
-placestat(kongsvegen,granåsen_vm_anlegget). 
-placestat(korsvika,lade_kirke). 
-placestat(kotenghallen,vestre_rosten). %%  private?
-placestat(kretsfengselet,tunga_kretsfengsel). 
-placestat(kristiansten,ankers_gate). 
-placestat(kristianstenfestning,ankers_gate). 
-placestat(kuhaugen,gina_krogs_veg). 
-placestat(kyvannet,skavlans_veg). 
-placestat(kyvatnet,skavlans_veg). 
-%% placestat(køff,leangenveien). %% TA-110822
-
-%%¤¤¤ %% ulykke AtB %% TA-100715
-%%%%%%placestat(lade,lade_alle_80).  %% ( lade-alle_80 more passages)
-%%¤¤¤
-placestat(lade_alle,lade_alle_80).  %%
-
-placestat(ladehammerveien,ladehammeren).  %%(manystations,
-placestat(lademoen,rønningsbakken). 
-placestat(lademoen_kirke,rosendal). 
- %% placestat(lademoen_skole,mellomv_5). 
-placestat(lademoparken,buran). 
-placestat(ladeparken,buran). 
-placestat(ladeskolen,lade_kirke). 
-placestat(ladetorget,østmarkveien). 
-placestat(lamoparken,buran). 
-placestat(langlohaugen,langlo). 
-placestat(larsbyen,olav_nygårds_veg). 
-placestat(leangen,travbanen). 
-placestat(leangenhallen,bromstadsvingen). 
-placestat(legard,legårdsbakken). 
-placestat(legevakta,st_olavs_hospital). 
-placestat(legevakten,st_olavs_hospital). 
-placestat(leinstrand,leinstrand_samfunnshus). 
-placestat(leira,leira_skole). 
-placestat(leirbrua,leirbrua_gård). 
-placestat(lerkendalskrysset,lerkendal_stadion). 
-placestat(lerkendalsvegen,gløshaugen_syd). 
-placestat(leuthenhaven,torget). 
-%% placestat(lianvannet,lian). %% not AtB
-placestat(loholt_alle,lohove). 
-%% placestat(louisenlyst,leangenveien).  %% Leangenveien3 %% TA-110822
-placestat(luftkrigsskolen,persaunet_leir). 
-placestat(lundhøgda,lundåsen_n). 
-placestat(lærerhøgskole,rotvoll_nedre). 
-placestat(lærerhøgskolen,rotvoll_nedre). 
-placestat(mamoz,fiolsvingen). %% nardo_street-16). 
-placestat(marineborgstasjon,marienborg_stasjon).       %% RS-130330. Marienborg er utgått 
-placestat(marinen,prinsen_kinosenter). 
-placestat(mediahuset,maskinagentur). 
-
-placestat(norske_meierier,heggstadmoen). %% NB %% TA-110705
-
-%% placestat(melkekartongen,city_syd). 
-
-
-% placestat(migosenter,migosenteret). 
-% placestat(migosenteret,migosenteret).  %% halset internal name
-
-placestat(misjonskirken,prinsen_kinosenter).  %% Arkitekt Christies gt
-placestat(moholtkrysset,omkjøringsveien_moholt). 
-placestat(moholtområdet,moholt). 
-placestat(moholtsenteret,moholt_storsenter).  
-placestat(moholtterasse,moholt).  %% ???
-placestat(moholttun,moholt). 
-placestat(mts,magnus_berrføtts_veg).  %% Lazy complex
-placestat(munkegata,hovedterminalen). 
-placestat(møllenberg,solsiden). 
-
-placestat(møller_bil,hallfred_høyems_veg). 
-
-placestat(n_g_u,ringve_skole). 
-placestat(naf,e_verket).  %% (?) SIC
-placestat(nafsenteret,e_verket).  %%( ?) SIC
-placestat(nardo,nardosenteret). 
-placestat(nardobanen,fiolsvingen). 
-placestat(nardoskole,nardokrysset). 
-placestat(nardosletta,nardosenteret).  %% Names should not disappear
-placestat(nardovegen,dybdahls_veg). 
-
-%%placestat(nattbussterminalen,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB %% TA-100715
-%%placestat(nattbussterminalen,hovedterminalen). %% CORREC %% TA-101203 %% AtB %% TA-100715
-placestat(olav_tryggvasons_gate,sentrum). %% CORREC %% TA-101203 %% AtB %% TA-100715 %% RS-121223
-
-placestat(nedre_elvehavn,solsiden).  %%(?)
-placestat(nedre_møllenberg,bakkegata). 
-placestat(neptunveien,risvollan_senter). 
-placestat(nidar,strindheim). 
-placestat(nidarbergene,strindheim). 
-placestat(nidarfabrikken,strindheim). 
-placestat(nidaros,hovedterminalen).  %% New name for midtbyn 
-placestat(nidarosdomen,prinsen_kinosenter). 
-placestat(nidarvoll,nidarvoll_skole). 
-placestat(nidarvollsykehjem,nygård). 
-placestat(nidarø,trondheim_spektrum). %% not sum08
-placestat(nidelvbrua,nidelv_bru). 
-placestat(nidelvhallen,valøyvegen).  %% ?
-placestat(nilsbyen,stavset_senter). 
-placestat(nissekollen,fiolsvingen). 
-
-%% placestat(nordre,nordre_gate).  %% nordre general//HAZARD
-
-placestat(nordre_halset,migosenteret). %% renamed
-
-
-placestat(nrk,tyholttårnet). 
-placestat(nth,gløshaugen_syd).  %%
-placestat(ntnu_lade,harald_hårfagres_gate).  %% Changed Name %<---
-placestat(ntnui,høgskoleringen).  
-placestat(nyhavna,nidelv_bru).  %%(?)
-placestat(nyveilia,bjørndalsbrua). 
-placestat(næringssenteret,buran).
-placestat(okstadbrinken,kroppanmarka). 
-placestat(okstadtunet,okstad). 
-placestat(olavshallen,nova_kinosenter). 
-placestat(olavskvartalet,nova_kinosenter). 
-placestat(olavskvarteret,nova_kinosenter). 
-placestat(olavsstatuen,torget). 
-placestat(olavsgården,strindheim). %% Thonning Owesens gate 20 
-
-%% placestat(ole_aasveds_street,gryta). 
-
-
-placestat(palmehaven,hovedterminalen). 
-placestat(perleporten,gløshaugen_syd). 
-placestat(persaune,persaunet_leir). %neitherisspellch
-placestat(persaunet,persaunet_leir). %neitherisspellch
-placestat(pir,pirbadet). 
-%% placestat(pirbadet,pirbadet). 
-placestat(piren,pirbadet).
-placestat(pirkaia,pirbadet). 
-placestat(pirsenteret,pirbadet). 
-
-placestat(pirterminalen,pirbadet). 
-
-placestat(plantasjen,strindheim_hageby).  %% baldershage 18
-
-%% placestat(politihuset,ts).   %% TA-100927
-%% placestat(politistasjon,ts).    %% politihuset). %% Must be station
-%% placestat(politi,ts).           %% politi i uniform %% amb 
-%% placestat(politistasjonen,ts).  %% ?
-
- %% placestat(posthuset,postterminalen).  %%(\=p. h. isentrum)
-
-placestat(prinsen,prinsen_kinosenter). 
-placestat(prinsen,prinsen_kinosenter).  %%NBPRINSENisalsoafictitiousstation
-placestat(prinsenkino,prinsen_kinosenter). 
-placestat(prinsens,prinsen_kinosenter).  %%(pgaavertering)
-placestat(prinsens_gate,prinsen_kinosenter). 
-placestat(prøven,kroppan). 
-placestat(prøvenbil,kroppan). 
-placestat(radmannbygget,gildheim). %%  Ranheimsvegen 10
-placestat(ramstadkrysset,ramstad). 
-%%placestat(ranheim_kirke,nedre_humlehaugen_øst). %% RS-130302 Overrides isat(ranheim_kirke,ranheim_kirke).  
-placestat(ravnkloa,hovedterminalen).  %%(Hazard?)
-
-%% placestat(realfagbygget,gløshaugen_syd). %% --- Telebuster house
-placestat(regionssykehuset,st_olavs_hospital).  %%r_i_t_hovedporten). 
-placestat(regionsykehuset,st_olavs_hospital).  %%r_i_t_hovedporten). 
-placestat(reina,høgreina).  %%betterthanRena
-%% placestat(reitgjerdet,brøsetvegen_119). 
-
-placestat(reppevegen,vikelvveien). %% imcomprehensible route 777
-placestat(reppeveien,vikelvveien). %% street reppeveien = osveien 
-                                   %% reppevegn not in routes
-
-placestat(reppemoen,reppe).        
-
-placestat(rikshospitalet,st_olavs_hospital).  %%-> mess
-placestat(ringvebukta,ringve_museum). 
-placestat(rishaughallen,haakon_vii_gate_25).  %% (håkon 7 gate 23. )
-placestat(risvollan,risvollan_senter). 
-placestat(risvolltun,søndre_risvolltun). 
-placestat(rit,st_olavs_hospital).  %% r_i_t_hovedporten). 
-placestat(rockheim,pirbadet). %% Brattørkaia 14 %% TA-100927
-placestat(rognbu,rognbudalen). 
-placestat(rognbuveien,rognbudalen).  %%?
-placestat(rogndalen,rognbudalen). 
-
-placestat(rosenborghallen,gyldenløves_gate). %% TA-101025
-
-%% placestat(rosenborg,gyldenløves_gate). %% isat (AtB/Team)
-%% placestat(rosenborghallen,gyldenløves_gate). 
-
-%% placestat(rosta,rostengrenda).  %% Rosten is station #43
-%% placestat(rosten,rostengrenda).
-%% placestat(rosten,rostengrenda). 
-
-
-
-placestat(rostenhallen,kvt). 
-placestat(rostenkrysset,østre_rosten). 
-placestat(rotvollfjæra,rotvoll).  %%?
-placestat(rønning,rønningsbakken). 
-placestat(rådhuset,torget). 
-
-placestat(sandgata,hospitalskirka). 
-placestat(sandmoencamping,sandmoen). 
-placestat(saupstad,saupstadsenteret). 
-placestat(saupstadkrysset,saupstadsenteret).  %%?
-placestat(saupstadskole,midteggen). 
-placestat(saupstadvegen,heimdal_stasjon). 
-placestat(saxenborg,saxenborg_alle). 
-placestat(schrøder,fossegrenda). 
-%placestat(servicekontoret,dronningens_gate_d2).        %% RS-130812 Gammelt TT-kontor!
-placestat(singsaker,asbjørnsens_gate). 
-placestat(singsaker_studenthjem,jonsvannsveien). 
-placestat(sirkus_shopping,strindheim).
-placestat(sjetne,carl_schjetnans_veg). 
-
-placestat(sjetnmarka,carl_schjetnans_veg). %% not nightbus (103) Sjetnmarka
- %% bus_depend_station(103,sjetnmarka,paul_skolemesters_veg). %% nightbus anomaly
-
-placestat(sjokoladefabrikken,strindheim). 
-placestat(skippy,fossegrenda).  %% schrøder). 
-placestat(skippysenteret,fossegrenda).  %%schrøder). 
-placestat(skipsmodelltanken,magnus_berrføtts_veg). 
-placestat(smistadgrenda,arnt_smistads_veg).  
-placestat(smistadkrysset,arnt_smistads_veg). 
-%% placestat(solbakkenbrua,osbrua). 
-%% placestat(solsiden,solsiden). %% station %% TA-101130
-
-%% placestat(sorgenfriveien,sorgenfri) :- \+ value(airbusflag,true).  %% (on the map)
-%% krøll med airbus 
-
-placestat(sosialhøgskolen,gildheim).  %% ???
-
-placestat(spilleplassen,spillebakken). %% TA-110815
-
-placestat(spongdalskole,spongdal). 
-
-%% placestat(st_olavs_gate,torget). %%  \+ tramflag not AtB
-
-placestat(stabbursmoenskole,ditlev_bloms_veg). 
-placestat(statens_hus,prinsen_kinosenter). 
-
-placestat(statoil,statoil_rotvoll). %% TA-110627 ? isat?
-
-placestat(stavne,stavnebrua).  %% confuse hvor langt er det fra stavne bro til breidablikk
-placestat(stavnebro,stavnebrua). 
-
-%%%                       placestat(steinan,vestlia).  %% NOT nattbussen
-
-placestat(steinandalsvegen,steindalsvegen). 
-placestat(steinanstudentby,vestlia). 
-placestat(steinanv,heggdalen). 
-placestat(steinanvegen,heggdalen). 
-placestat(steinanveien,heggdalen). 
-placestat(steinberget,møllebakken). 
-placestat(steindal,steindalsvegen).  %%<--???
-placestat(steindalen,heggdalen). 
-placestat(stiftsgården,hovedterminalen). 
-
-placestat(stokkanhaugen,stokkhaugen).  %% SUMMER  %% TA-110627
-
-placestat(stubban,venusvegen). 
-placestat(studenterhytta,skistua). 
-placestat(sunnland,karl_jonssons_veg).  %%sunnlandskole
-placestat(sunnlandskole,karl_jonssons_veg). 
-placestat(svartlamon,strandveien).  %% NB veien
-placestat(sverresborg,trøndelag_folkemuseum). 
-placestat(sykehusbrua,tvetestien). 
-%% placestat(sykehuset,st_olavs_hospital).  %% causes trouble sykehuset st olav
-placestat(sykepleierhøgskolen,st_olavs_hospital). 
-placestat(sykepleierhøyskolen,st_olavs_hospital). 
-placestat(sykepleierskolen,st_olavs_hospital). 
-placestat(tavern,trøndelag_folkemuseum). 
-placestat(tavernaen,trøndelag_folkemuseum). 
-placestat(teateret,prinsen_kinosenter).       %% 
-placestat(teatret,prinsen_kinosenter).
-
-placestat(tegleverksveien, teglverkskrysset).
-placestat(teglgården,fossegrenda). 
-placestat(teglverket,teglverkskrysset).  %%(tegle)
-
-placestat(teknobyen,prof_brochs_gate).  %%(?)
-placestat(teknostallen,prof_brochs_gate). 
-placestat(telenorbygget,magnus_berrføtts_veg). 
-placestat(tf,magnus_berrføtts_veg). 
-placestat(tiller,torvtaket). 
-%% placestat(tiller,moltmyra).  %% moltmyra_øst//bare en retning
-placestat(tillerbruvegen,tiller_bru). 
-placestat(tillerbyen,tonstadgrenda).  %%?koieflata). 
-
-%% placestat(tillertorget,city_syd).  %% Ivar Lykkes veg 3 
-
-placestat(tmv,solsiden).   %% TA-101214
-placestat(tomasskolen,bakkegata). 
-placestat(tonstad,tonstadkrysset). 
-placestat(transitten,brøset_hageby).  %% (nb transittgata->strandveien)
-placestat(trikkehallen,prof_brochs_gate). 
-placestat(trikkestallen,prof_brochs_gate). 
-placestat(trondheim_torg,torget). 
-placestat(trondheimstorget,torget). 
-placestat(trondsletten,brøset_hageby). %% beh. senter
-placestat(trønderenergi,tunga_kretsfengsel). 
-placestat(tunga,tunga_kretsfengsel).  %%(tunga=tungata=tunv#)
-placestat(tunhøgda,tunvegen).  %%midte,vestreøstre
-placestat(tvetesvingen,tvetestien). 
-placestat(tyholtområdet,tyholt). 
-placestat(tøh,østre_berg). 
-placestat(uglaskole,ugla). 
-placestat(uranusveien,risvollan_senter). 
-%%% placestat(utleira,utleirmark).  %% NBNB utleira SYNDROME %% TA-100921
-placestat(utleirveien,nardosenteret). 
-placestat(valentinlystsenter,valentinlyst). 
-placestat(valentinlystsenteret,valentinlyst). 
-placestat(valgrind,valgrindvegen). 
-placestat(valgrinda,valgrindvegen). 
-placestat(valøya,valøyvegen). 
-placestat(valøygrenda,valøyvegen). 
-placestat(vegvesen,postterminalen). 
-placestat(vegvesenet,postterminalen). 
-placestat(veitrafikktilsynet,e_verket). 
-placestat(verdensteatret,prinsen_kinosenter). 
-placestat(vestoppfarten,møllebakken). 
-placestat(vikåsenhallen,markaplassen_skole). 
-placestat(vitenskapsmuseet,hospitalskirka).  %%  \+s
- %% placestat(voldsminde,mellomv_5).  
- %% placestat(voldsmindet,mellomv_5). 
-placestat(voll,voll_studentby). 
-placestat(væresbukta,være). 
-placestat(væresholmen,være). 
-placestat(witro,fossegrenda). 
-placestat(åsheim,åsheim_skole). 
-placestat(åsheimhallen,åsheim_skole). 
-placestat(åsvang,åsvang_skole). 
-placestat(åsveien,åsveien_skole). 
-placestat(østmarkasykehus,østmarkveien). 
-placestat(øya_helsehus,studentersamfundet). % RS-110926 
-
-
-placestat(wullumsgayrden,byåsen_butikksenter). %% TA-101230
-placestat(wollumsgarden,byåsen_butikksenter).  %% TA-110114 wollumsgarden 
-
-placestat(østmarka,østmarkveien). %% TA-110623
-
-
-
-%%% END REFERENCE TO STATION SECTION
-
-
-%% only plausible names
-%% intended for intended alternative writing (not spell error)
-
-sameplace(samdundet,studentersamfundet). %% AtB
-sameplace(aasveien,åsveien). 
-sameplace(adolføyen,adolf_øien). 
-sameplace(adolføyens,adolf_øien). 
-sameplace(alfgodagersvei,alf_godagers_veg). 
-sameplace(amosenteret,amo_senteret). 
-sameplace(angeltrøen,angelltrøa). 
-%% sameplace(angeltøveien,angelltrøveien).  %%veg
-%% sameplace(anrdosentret,nardosenteret).
-sameplace(antongrevskotsv,anton_grevskotts_veg). 
-sameplace(antongrevskotsveg,anton_grevskotts_veg). 
-sameplace(antongrevskotsvei,anton_grevskotts_veg). 
-sameplace(arbeidsmarkedsinst,arbeidsmarkedsinstituttet).  %%etc
-sameplace(bakkegata,bakkegata). 
-sameplace(bakkegaten,bakkegata). 
-sameplace(bakkegt,bakkegata). 
-sameplace(bakklandet,bakkegata). 
-sameplace(barneavdelingen,barneklinikken).  %%+baarneavdelingen
-%% sameplace(bay,pirsenteret). 
-sameplace(bergheimterasse,bergheim).  %% terr
-sameplace(bergprestegård,berg_prestegård). 
-sameplace(bjoerkmyra,bjørkmyr). 
-
-sameplace(bjorndalstoppen,bjørndalstoppen).  %% bjorndalstopprn 
-sameplace(bjørnedahlstoppen,bjørndalstoppen). 
-sameplace(bjørnstadstoppen,bjørndalstoppen). 
-
-sameplace(blusevol,blussuvold). 
-sameplace(blusevold,blussuvold). 
-sameplace(blusevoll,blussuvold). 
-sameplace(blussevol,blussuvold). 
-sameplace(blussevold,blussuvold). 
-sameplace(blussevoll,blussuvold). 
-sameplace(blussevollsbakken,blusuvollsbakken).  %% street
-sameplace(blussuvol,blussuvold). 
-sameplace(blussuvoll,blussuvold). 
-sameplace(blussvollbakken,blusuvollsbakken). 
-sameplace(blusuvol,blussuvold). 
-sameplace(blusuvold,blussuvold). 
-sameplace(blusuvoll,blussuvold). 
-sameplace(bratsberveien,bratsbergveien). 
-sameplace(brattsbergveien,bratsbergveien). 
-sameplace(bredablikk,breidablikk). 
-sameplace(breidablik,breidablikk). 
-sameplace(brochsgt,prof_brochs_gate). 
-sameplace(brocksgt,prof_brochs_gate). 
-
-sameplace(broset,brøset). %%  brodet hageby
-
-sameplace(brosmadsvingen,bromstadsvingen). 
-sameplace(bromstadssvingen,bromstadsvingen). %% ss brumstadssvingen. 
-
-%% sameplace(bryggen,pirbadet). %% Aker brygge  
-sameplace(brøsetflaten,brøsetflata). 
-sameplace(brøsethageby,brøset_hageby). 
-sameplace(bussentralen,hovedterminalen).  %% mot sentrumsterminalen
-sameplace(busstasjonen,hovedterminalen). 
-sameplace(bussterminalen,hovedterminalen). 
-sameplace(busstreminalen,hovedterminalen). 
-
-%%%  sameplace(byen,sentrum). %% TEST %% TA-110120  %%. . . blocks spellcheck to byen!!!
-
-sameplace(bygrensa,bygrensen). 
-
-sameplace(bystasjon,hovedterminalen).    %% sentrum
-sameplace(bystasjonen,hovedterminalen).  %%
-
-% sameplace(bystasjon,sentrumsterminalen).    %% sentrum
-% sameplace(bystasjonen,sentrumsterminalen).  %%
-
-sameplace(byåsenbutikksenter,byåsen_butikksenter). 
-sameplace(byåsensenteret,byåsen_butikksenter). 
-sameplace(byåsenskole,byåsen_skole).
-sameplace(byåsenskolen,byåsen_skole).
-
-sameplace(byåsenvei,byås_street). %% problem
-sameplace(byåsenveien,byås_street). 
-
-sameplace(centralstasjon,ts). %% AtB. 
-sameplace(centralstasjonen,ts). %% AtB. 
-sameplace(centralstation,ts). %% AtB. 
-sameplace(centralstationen,ts). %% AtB. 
-sameplace(cesileborg,cecilienborg). 
-sameplace(challotenlund,charlottenlund). 
-sameplace(charlotelund,charlottenlund).  
-sameplace(charlottelunden,charlottenlund). 
-%% sameplace(charlottenberg,charlottenlund). %%  //place 
-sameplace(charlottenlundkirke,charlottenlund_kirke).
-%% sameplace(churshillvei,churchills_veg). 
-sameplace(citisyd,city_syd). 
-sameplace(citysyd,city_syd). 
-
-sameplace(dalgårdvegen,dalgårdstien). 
-
-sameplace(dalgard,dalgård). %%  dlgar
-
-sameplace(dalhaug,dalhaug_street). 
-sameplace(dalheim,dalheim_street). 
-sameplace(dalsaunevegen,dalsauneveien). %allow1spell
-sameplace(dokken,solsiden). 
-sameplace(dokkhavna,solsiden). 
-sameplace(dokkporten,solsiden). 
-sameplace(dolpen,dolpa). %% dolpen på kart 
-sameplace(domkjerka,domkirken). 
-sameplace(doningensgate,dronningens_gate). 
-sameplace(downtown,hovedterminalen). 
-
-sameplace(dragevold,dragvoll).  %% syn dragovold
-sameplace(dragvol,dragvoll).
-sameplace(dragvollan,dragvoll). 
-sameplace(dragvål,dragvoll).  
-sameplace(drogvol,dragvoll). 
-
-sameplace(drongensgate,dronningens_gate). 
-sameplace(drongensgt,dronningens_gate). 
-sameplace(droningegata,dronningens_gate). 
-sameplace(droningensgt,dronningens_gate). 
-sameplace(droninggt,dronningens_gate). 
-sameplace(droningsgt,dronningens_gate). 
-sameplace(dronngt,dronningens_gate). 
-sameplace(dronningegate,dronningens_gate). 
-sameplace(dronningens,dronningens_gate). 
-sameplace(dronningensgata,dronningens_gate). 
-sameplace(dronningensgate,dronningens_gate). 
-sameplace(dronningensgaten,dronningens_gate). 
-sameplace(dronningensgt,dronningens_gate). 
-sameplace(dronningsgata,dronningens_gate). 
-sameplace(dronningsgate,dronningens_gate). 
-sameplace(dronningsgt,dronningens_gate). 
-sameplace(dronningsgt,dronningens_gate). 
-
-sameplace(dybendahls,dybdahls). %% ? %% TA-110131
-
-sameplace(dybdahlsv,dybdahls_veg). 
-sameplace(dybdahlsveg,dybdahls_veg). 
-sameplace(dybdahlsvegen,dybdahls_veg). 
-sameplace(dybdahlsvei,dybdahls_veg). 
-sameplace(dybdahlsveien,dybdahls_veg). 
-sameplace(dybdahlv,dybdahls_veg).  %%(rutehefte)
-sameplace(dybdalsveg,dybdahls_veg). 
-sameplace(dybdalsvegen,dybdahls_veg). 
-sameplace(dybdalsvei,dybdahls_veg). 
-sameplace(dybdalsveien,dybdahls_veg). 
-sameplace(dybendahlsv,dybdahls_veg). 
-sameplace(dybendahlsvegen,dybdahls_veg). 
-sameplace(dybendahlsveien,dybdahls_veg). 
-sameplace(dybendalsvegen,dybdahls_veg). 
-sameplace(dybendalsvei,dybdahls_veg). 
-sameplace(dybendalsveien,dybdahls_veg). 
-
-sameplace(eberg,østre_berg). 
-sameplace(einartambarskjelvesgate,einar_tambarskjelves_gate). 
-sameplace(elgeseterbrua,studentersamfundet). 
-sameplace(elgesetergata,elgeseter).  %%-sæterbakken?
-sameplace(elgesetergate,elgeseter). 
-sameplace(elgesetergaten,elgeseter).  %%Necessary,elgesetergt1=sæterbakken(SIC)
-sameplace(elgesetergt,elgeseter). 
-sameplace(elgesætergate,elgeseter). 
-sameplace(elgesæther,elgeseter). 
-sameplace(elgseter,elgeseter). 
-sameplace(elgseterbro,studentersamfundet). 
-sameplace(elgseterbru,studentersamfundet). 
-sameplace(elgsetergate,elgeseter). 
-sameplace(elgsether,elgeseter). 
-sameplace(elgsæter,elgeseter). 
-sameplace(elgsætergate,elgeseter). 
-sameplace(elvehavn,nedre_elvehavn). 
-sameplace(elvehavna,nedre_elvehavn). 
-sameplace(elvehavnen,nedre_elvehavn). 
-sameplace(elverk,e_verket). 
-sameplace(elverket,e_verket). 
-sameplace(energiverket,e_verket). 
-sameplace(engebretsons,engelbrektssons).  %%spconpartnames
-sameplace(etambarskjelvesgate,einar_tambarskjelves_gate). 
-sameplace(etambarskjelvgt,einar_tambarskjelves_gate). 
-sameplace(europaveg6,e6). 
-sameplace(everk,e_verket). 
-sameplace(everket,e_verket). 
-sameplace(falkberget,johan_falkbergets_vei).  %%confuse
-sameplace(falkbergetsv,johan_falkbergets_vei). 
-sameplace(fergeterminalen,pirbadet). 
-sameplace(festningsgata,festningsgata). 
-sameplace(festningsveien,festningsgata). 
-sameplace(fiolsving,fiolsvingen). 
-sameplace(fiolvegen,fiolsvingen). %inclfiolveg
-sameplace(fjernstads,fjermstads). 
-sameplace(flatåsne,flatåsen). %% flatåsnne 
-sameplace(flataasen,flatåsen). 
-sameplace(flatayen,flatåsen). %% TA-110116 flatÃ¥en  
-sameplace(flatåsensenter,flatåsen_senter). 
-sameplace(flatåsensenteret,flatåsen_senter). 
-sameplace(flatåsentoppen,flatåstoppen). 
-sameplace(flatåssenteret,flatåsen_senter). 
-sameplace(flystasjonen,værnes). 
-sameplace(folkemuseet,trøndelag_folkemuseum). 
-sameplace(folkemuseum,trøndelag_folkemuseum). 
-sameplace(folkemuseumet,trøndelag_folkemuseum). 
-sameplace(fosenkaia,ts). %% AtB.  %%tsisnot station
-sameplace(fossagranda,fossegrenda). 
-sameplace(fossegrande,fossegrenda).  %%(Amblehash:just neib switch)
-sameplace(fotballstadion,lerkendal_stadion). 
-sameplace(froderinnansveg,frode_rinnans_street). 
-sameplace(gammellina,gammel_lina).  %%(_should be dropped). 
-sameplace(gildevangen,søndregate).  %%(NB no message)
-sameplace(ginakroghsgt,gina_krogs_veg). 
-sameplace(gløahugen,gløshaugen). 
-sameplace(gløshaug,gløshaugen). 
-sameplace(gløshøgen,gløshaugen).  %%høgem 
-sameplace(godst,terminalen). 
-sameplace(graaenmølna,graaemølna). 
-sameplace(graaermølla,graaemølna). 
-sameplace(graaermølna,graaemølna). 
-sameplace(graamølna,graaemølna). 
-sameplace(graemølla,graaemølna). 
-sameplace(graemøllen,graaemølna). 
-sameplace(granhaugan,granhaugen).  %% incl ganhaugen
-sameplace(granåsbakken,granåsen_vm_anlegget). 
-sameplace(granåsenvegen,granåsveien). 
-
-sameplace(grevskott,grevskotts). %% gfevskott 
-sameplace(grevskots,grevskotts). %% grevsots 
-
-sameplace(gråemølla,graaemølna). 
-sameplace(gråenmølla,graaemølna). 
-sameplace(gråmølna,graaemølna). 
-sameplace(gråmørna,graaemølna). 
-sameplace(gågate,sentrum). 
-sameplace(gågaten,sentrum). 
-
-sameplace(hallsetvei,nordre_hallset_street). %% etc 
-sameplace(hallsteingård,halstein_gård). 
-sameplace(hallsteingården,halstein_gård). 
-sameplace(haugnesveien,haugnessvingen). 
-sameplace(haukvante,haukvatnet). 
-sameplace(havstadsetnret,havstadsenteret). 
-sameplace(havsteinsenter,havstadsenteret). 
-sameplace(havsteinsenteret,havstadsenteret). 
-sameplace(hegdalringen,heggdalsringen). 
-sameplace(heggdal,heggdalen). 
-sameplace(hegdalen,heggdalen). 
-sameplace(heggelia,heggdalen). 
-sameplace(heggelien,heggdalen). 
-sameplace(hegglia,heggdalen). 
-sameplace(heggstadmo,heggstadmoen). 
-
-sameplace(heggstamyra,heggstadmyra). %%hegstamyra heggstmyra 
-
-sameplace(heglia,heggdalen). 
-sameplace(heglidalen,heggdalen). 
-sameplace(hegmoen,heggstadmoen). 
-sameplace(hegstamoen,heggstadmoen). 
-sameplace(hekstadmoen,heggstadmoen).
-sameplace(heimdalstasjon,heimdal_stasjon). 
-sameplace(herlofsonløypa,herlofsonsløypa).  %%2sp
-sameplace(hestehagen,prof_brochs_gate). 
-sameplace(hogskoleringen,høgskoleringen). 
-sameplace(holtermannsveg,holtermannsveien). 
-sameplace(holtermannsvei,holtermannsveien). 
-sameplace(holtermanveg,holtermannsveien).  %%Nofunk
-sameplace(hoppbakken,granåsen_vm_anlegget). 
-sameplace(hopsitalskirka,hospitalskirka). 
-sameplace(hopstilkirka,hospitalskirka). 
-sameplace(hospitalet,st_olavs_hospital). 
-sameplace(hospitalkirken,hospitalskirka). 
-sameplace(hospitalskirka,hospitalskirka). 
-sameplace(hospitalkirka,hospitalskirka).  %%NB
-sameplace(hosptialskirka,hospitalskirka).  %%
-
-sameplace(hosptalsløkka,hospitallløkka). %% +  hosptalslokka 
-
-sameplace(humlehaugen,nedre_humlehaugen_vest). %%RS-121024 3 nye på Ranheim fra 24.10.2012
-sameplace(hundhameren,hundhammeren). 
-sameplace(hundhammarn,hundhammeren). 
-sameplace(husbytun,husebytunet). 
-sameplace(høggrenda,høgreina). 
-sameplace(høgseth,høiset). 
-sameplace(høyskole,høgskole).   %% TA-110221
-sameplace(høyskolen,høgskolen). %%
-
-%% sameplace(høgskoleringen,høgskoleringen). 
-sameplace(høiseth,høiset). %% < høisteh 
-sameplace(høyset,høiset). 
-sameplace(idrettshuset,idrettsbygget). 
-sameplace(ilakrysset,ila).  
-sameplace(inheradsveien,innherredsveien). 
-sameplace(inheredsveien,innherredsveien). 
-sameplace(inheresdveien,innherredsveien). 
-sameplace(inherradsveien,innherredsveien). 
-sameplace(inherresdveien,innherredsveien). 
-sameplace(inneherredsvegen,innherreds_street).  
-sameplace(inneherredsveien,innherredsveien). 
-sameplace(innerhedsveien,innherredsveien). 
-sameplace(innheradsveien,innherredsveien). 
-sameplace(innherdevn,innherredsveien). 
-sameplace(innherdsveien,innherredsveien). 
-sameplace(innheredsvegen,innherredsveien). 
-sameplace(innheredsveien,innherredsveien). 
-sameplace(innheresdveien,innherredsveien). 
-sameplace(innherresdveien,innherredsveien). 
-sameplace(isfabrikken,iskremfabrikken). 
-sameplace(jacobsli,jakobsli). 
-sameplace(jakobsgrenda,jakobsli).  %%+jakobsgreda
-sameplace(jakobslia,jakobsli). 
-sameplace(jern,ts). %% AtB. 
-sameplace(jernbane,ts). %% AtB. 
-sameplace(jernbanen,ts). %% AtB. 
-sameplace(jernbanestasjon,ts). %% AtB. 
-sameplace(jernbanestasjonen,ts). %% AtB. 
-sameplace(jernbanestationenen,ts). %% AtB. 
-sameplace(jernbaneterminal,ts). %% AtB. 
-sameplace(jernbaneterminalen,ts). %% AtB. 
-sameplace(jernbanetorget,ts). %% AtB. 
-sameplace(jernbaneverket,ts). %% AtB. 
-sameplace(jonnsvansveien,jonsvannsveien). 
-sameplace(kaia,pirbadet).
-%% sameplace(kaien,pirbadet). %%  \+ kaken
-sameplace(kaiene,pirbadet).
-sameplace(kalvskine,kalvskinnet). 
-sameplace(karljonssensveien,karl_jonssons_veg). 
-sameplace(karljohnsonsveg,karl_jonssons_veg). %%  KalJohnsons veg
-sameplace(kattemsenteter,kattemsenteret). 
-sameplace(kattemsenteteret,kattemsenteret). 
-sameplace(kattskinnet,kalvskinnet). 
-sameplace(kattskjinnet,kalvskinnet).
-sameplace(kbssenter,kbs_senteret). 
-sameplace(kbssenteret,kbs_senteret). 
-sameplace(kinosenter,prinsen_kinosenter). 
-sameplace(kirkesæterøra,kyrkseterøra). 
-sameplace(kirksæterøra,kyrkseterøra). 
-sameplace(klabu,klæbu). 
-sameplace(klebu,klæbu).  %% ikke spell på foreign ?
-sameplace(koieflate,koieflata). 
-sameplace(kolstadsenter,torplassen). 
-sameplace(kojflata,koieflata). 
-sameplace(kongøysteinsv,kong_øysteins_veg).  %%alas
-sameplace(kongøysteinsvei,kong_øysteins_veg). 
-sameplace(krooppanbrua,kroppan_bru). 
-sameplace(kropamarka,kroppanmarka). 
-sameplace(kropenmarka,kroppanmarka). 
-sameplace(kroppamarke,kroppanmarka). 
-sameplace(kroppanbru,kroppan_bru). 
-sameplace(kroppanbrua,kroppan_bru). 
-sameplace(kroppanbruen,kroppan_bru). 
-sameplace(kroppangmarken,kroppanmarka). 
-sameplace(kroppansbru,kroppan_bru). 
-sameplace(kvenilmyra,kvenildsmyra). %% S 
-sameplace(kvilhaug,kvilhaugen). 
-sameplace(kyrksæterørå,kyrkseterøra). 
-sameplace(kyrksæterøya,kyrkseterøra). 
-sameplace(kyrksøterøya,kyrkseterøra).  %%act
-sameplace(ladegård,lade_gård). 
-sameplace(ladegården,lade_gård). 
-sameplace(ladehammern,ladehammeren).  %%gammern
-sameplace(ladejarlen,ladejarlen_v_g_s).
-sameplace(ladejarlen,ladejarlen_v_g_s). 
-sameplace(lademoenkirke,lademoen_kirke). 
-sameplace(ladesletta,haakon_vii_gate).  %%neib
-sameplace(ladeuniversitet,ntnu_lade). 
-sameplace(larkedal,lerkendal). %% eng 
-sameplace(leangentravbane,travbanen). 
-%% sameplace(leangveien,leangenveien). %% TA-110822
-sameplace(leirbruagård,leirbrua_gård). 
-sameplace(leirbrugård,leirbrua_gård). 
-sameplace(leirfoss,nedre_leirfoss). 
-sameplace(leirfossen,nedre_leirfoss). 
-sameplace(leirgårdbru,leirbrua_gård). 
-sameplace(lerchendalsgård,lerkendal_gård).
-sameplace(lerchendalskrysset,lerkendalskrysset). 
-%% sameplace(lerkendal,lerkendal_stadion).  %% NB lerk //unnec,creates dbl entry
-sameplace(lerkendalgård,lerkendal_gård).
-sameplace(lerkendalstadion,lerkendal_stadion). 
-sameplace(leutehagen,leuthenhaven). 
-sameplace(leutehaven,leuthenhaven). 
-sameplace(leutehavn,leuthenhaven). 
-sameplace(leutenhagen,leuthenhaven). 
-sameplace(leutenhaven,leuthenhaven). 
-sameplace(leutenhaven,leuthenhaven). 
-sameplace(leutenhaven,leuthenhaven). 
-sameplace(leuthenhagen,leuthenhaven).  %%nospell(>1alt)
-sameplace(leytenhaven,leuthenhaven). 
-sameplace(lianvatnet,lian).  %%(aslolianvattnet)
-sameplace(læreskole,lærerskolen).  %%læresskole
-sameplace(løitenhaven,leuthenhaven). 
-sameplace(marcusthranesvei,marcus_thranes_vei). 
-sameplace(marka,bymarka). 
-sameplace(markapl,markaplassen). 
-sameplace(markaplass,markaplassen). 
-sameplace(maskinagent,maskinagentur). 
-sameplace(maskinagenturet,maskinagentur). 
-sameplace(maskinkompaniet,maskinagentur).  %%?
-sameplace(medtbyn,sentrum).  %%dial
-sameplace(meierier,norske_meierier). 
-sameplace(meieriet,norske_meierier). 
-
-sameplace(midby,sentrum). 
-sameplace(midtby,sentrum). 
-sameplace(midtbyen,sentrum). 
-sameplace(midten,sentrum). %% TA-110121
-sameplace(midtbyn,sentrum). 
-sameplace(midtbysonen,sentrum). 
-
-sameplace(midtbyterminalen,hovedterminalen). 
-                          %% not sentrumsterminalen whic itsel is a samename
-sameplace(moholtalle,moholt).  %%
-sameplace(moholtkirka,strinda_kirke).
-sameplace(moholtkirke,strinda_kirke). 
-sameplace(moholtkirken,strinda_kirke). 
-sameplace(moholtsentret,moholtsenteret).  %% maybe unnec after rehash
-sameplace(moholtstudentby,moholt_studentby). 
-sameplace(moholttunet,moholttun). 
-sameplace(mollenberg,møllenberg).
-sameplace(moltemyra,moltmyra).  %% captures p
-sameplace(munkvold,munkvoll).   %% munkvild
-sameplace(munkvoldgård,munkvoll_gård). 
-sameplace(musikkmuseum,ringve_museum). 
-sameplace(musikmuseum,ringve_museum). 
-sameplace(måhålt,moholt). 
-sameplace(mølebaken,møllebakken). 
-sameplace(møllenberg,nedre_møllenberg). 
-sameplace(møllenberggate,nedre_møllenberg_street).  %% \+ stat. 
-sameplace(møller,møller_bil). 
-
-sameplace(nardocenteret,nardosenteret). 
-sameplace(nardocenter,nardosenteret). 
-sameplace(nardosenter,nardosenteret). 
-sameplace(nardosentre,nardosenteret).
-
-%%sameplace(nattbussterminalen,hovedterminalen).  %% RS-120915
-
-sameplace(nedreelvehavn,nedre_elvehavn). 
-sameplace(nedrehumlehaugen,nedre_humlehaugen_vest). %%RS-121024 3 nye på Ranheim fra 24.10.2012
-
-sameplace(nidaroshallen,trondheim_spektrum). 
-sameplace(nidarrødhallen,trondheim_spektrum). 
-sameplace(nidarvollskole,nidarvoll_skole). 
-sameplace(nidarøhallen,trondheim_spektrum). 
-sameplace(nidarøhallene,trondheim_spektrum). 
-sameplace(nordslett,nordslettveien_snuplass). %%  \+ nordset
-sameplace(nordslettveiensnuplass,nordslettveien_snuplass). %% vegen 
-sameplace(nova,nova_kinosenter). 
-sameplace(novakino,nova_kinosenter). 
-sameplace(ntnulade,ntnu_lade). 
-sameplace(nygaard,nygård).
-sameplace(nyvegbakken,nyveibakken). 
-sameplace(nyvegsbakken,nyveibakken). 
-sameplace(nyveib,nyveibakken). 
-sameplace(nyveisbakken,nyveibakken). 
-sameplace(obslade,city_lade). 
-%%sameplace(odenseveien,odensev). 
-sameplace(ofstis,øfstis). %% 1. letter sp is not aut 
-sameplace(okstadbakken,okstad). 
-%% sameplace(okstadhaugen,okstadøy).  %%???
-sameplace(olavsgate,st_olavs_gate). 
-sameplace(olavshospital,st_olavs_hospital). 
-sameplace(olavshospitalet,st_olavs_hospital). 
-sameplace(olavtryggvasonsgate,olav_tryggvasons_gate). 
-sameplace(olavtrygvasonsgt,olav_tryggvasons_gate). 
-sameplace(ostmarkveien,østmarkveien).
-sameplace(othelianborg,othilienborg). 
-sameplace(othileborg,othilienborg). 
-sameplace(othilenberg,othilienborg). 
-sameplace(otillenborg,othilienborg). 
-
-sameplace(ourensveg,henrik_ourens_veg).  %%etc
-sameplace(pederkroghsvei,peder_kroghs_v). 
-sameplace(peirterminal,pirbadet).  
-sameplace(persauneleir,persaunet_leir). 
-sameplace(persaunetveien,persaunetveien). %% TA-110415 
-sameplace(persaunveien,persaunetveien). %% TA-110415 
-sameplace(persaunvn,persaunetveien). %% TA-110415 
-sameplace(piersenteret,pirsenteret). 
-sameplace(pierterminal,pirbadet).  
-sameplace(pirsenter,pirsenteret). 
-sameplace(pirsentralen,pirsenteret). 
-sameplace(pirstasjon,pirbadet).  
-sameplace(pirterminalalen,pirbadet).   %%
-sameplace(pirtersenteret,pirbadet).   %%
-
-%% sameplace(politiet,ts).    %% AtB.  %% politihuset).  %% //problem spot
-%% sameplace(politi,ts).      %% AtB. 
-%% sameplace(politihuset,ts). %% AtB.                 %% 
-
-
-
-sameplace(postsentralen,postterminalen). %% RS-120805
-sameplace(postterminal,postterminalen). %% posttermunal %% TA-110221
-
-sameplace(presteaunet,persaunet). 
-sameplace(prestegayrdjordet,prestegårdsjordet).   %% TA-101123
-sameplace(prestgayrdsjordet,prestegårdsjordet).   %% 
-sameplace(prestgårdsjordet,prestegårdsjordet).    %% TA-101122
-sameplace(prestegaardsjordet,prestegårdsjordet). 
-sameplace(prestegårdsalleen,prestegårdsjordet). 
-sameplace(prestegårdsjordet,prestegårdsjordet).  
-sameplace(prestegårdsjordet,prestegårdsjordet).  %% allow presetegårdsjordet. 
-sameplace(prestegårdsjoret,prestegårdsjordet). 
-sameplace(prestegårdstunet,prestegårdsjordet). 
-sameplace(prestegårdsvegen,prestegårdsjordet).  %% spurious but actual
-sameplace(prestegårjorde,prestegårdsjordet). 
-sameplace(prestegårsjorde,prestegårdsjordet). 
-sameplace(prestegåsdsjordet,prestegårdsjordet). 
-sameplace(prestejordet,prestegårdsjordet).  
-sameplace(prestgårdsjordet,prestegårdsjordet). 
-
-sameplace(prinsegata,prinsens_gate). 
-sameplace(prinsegaten,prinsens_gate). 
-sameplace(prinsengt,prinsens_gate).  %%(actual)
-sameplace(prinsenkinosenter,prinsen_kinosenter). 
-sameplace(prinsenkinosenteret,prinsen_kinosenter). 
-sameplace(prinsensgatekinoene,prinsen_kinosenter). 
-sameplace(priterminalen,pirbadet).  
-
-sameplace(professorbrochsgate,prof_brochs_gate). 
-sameplace(professorbrochs,prof_brochs_gate). 
-
-sameplace(ragnhildsgt,ragnhlds_gate). 
-sameplace(rambech,f_rambech).  %% F Rambech 
-sameplace(regionsykehus,regionsykehuset). 
-
-sameplace(ringvemuseum,ringve_museum).  %% RS-120805 Sorting
-
-sameplace(risvollansenter,risvollan_senter). 
-sameplace(risvollansenteret,risvollan_senter). 
-
-sameplace(romolia,romolslia). 
-sameplace(romulslia,romolslia).  %% romulslia street, prefer station
-
-sameplace(ronningbakken,rønningsbakken). 
-sameplace(rosenborgskole,gyldenløves_gate).  
-sameplace(rosendalområdet,rosendal). 
-sameplace(rotvollan,rotvoll). 
-sameplace(rotvollen,rotvoll). 
-sameplace(rotvollene,rotvoll). 
-sameplace(rovoll,rotvoll). %rovol
-sameplace(rønningensbakken,rønningsbakken). %% e.g. rønningensabakken
-sameplace(samf,studentersamfundet). 
-sameplace(samfonnje,studentersamfundet). 
-sameplace(samfudnet,studentersamfundet).    
-
-sameplace(stundentersamfundet,studentersamfundet).
-sameplace(stundentsamfunnet,studentersamfundet). 
-sameplace(samfund,studentersamfundet). 
-sameplace(samfundet,studentersamfundet). 
-sameplace(samfunnet,studentersamfundet). 
-sameplace(sammfundet,studentersamfundet). 
-sameplace(sammfunetet,studentersamfundet). 
-sameplace(sammfunnet,studentersamfundet). 
-%% sameplace(sanbaken,sandbakken).  %%inkl sandbaken,sanbakken
-sameplace(saupstadsenter,saupstadsenteret). 
-sameplace(saupstadveien,søbstad_street).  %%street
-sameplace(saupstapsentret,saupstadsenteret). 
-sameplace(scandichotel,esso_motorhotell). 
-sameplace(schjetnansveg,carl_schjetnans_veg). 
-sameplace(schjetnansvei,carl_schjetnans_veg). 
-
-sameplace(sentalstasjoene,ts). %% AtB.  %%coverscases
-sameplace(sentralbanen,ts). %% AtB. 
-sameplace(sentralbanestasjon,ts). %% AtB. 
-sameplace(sentralbanestasjonen,ts). %% AtB. 
-sameplace(sentralbanestasjonen,ts). %% AtB. 
-sameplace(sentralbanestasjonen,ts). %% AtB. 
-sameplace(sentralbanestrasjon,ts). %% AtB.  %%actual
-sameplace(sentralbanststasjonen,ts). %% AtB.  %%spec
-sameplace(sentralen,hovedterminalen). 
-sameplace(sentraljernbanen,ts). %% AtB. 
-sameplace(sentraljernbanestasjon,ts). %% AtB. 
-sameplace(sentraljernbanestasjonen,ts). %% AtB. 
-sameplace(sentralsajonen,ts). %% AtB. 
-sameplace(sentralstarjonem,ts). %% AtB. 
-sameplace(sentralstasjon,ts). %% AtB. 
-sameplace(sentralstasjone,ts). %% AtB. 
-sameplace(sentralstasjonen,ts). %% AtB.  %%sentralstatsjonen13. 25->ts13
-sameplace(sentralstasjonenen,ts). %% AtB. 
-sameplace(sentralstation,ts). %% AtB. 
-sameplace(sentralstationen,ts). %% AtB. 
-sameplace(sentralstationen,ts). %% AtB. 
-sameplace(sentralstationen,ts). %% AtB. 
-sameplace(sentralststationen,ts). %% AtB. 
-sameplace(sentralsykehuset,st_olavs_hospital). 
-sameplace(sentralterminalen,hovedterminalen). 
-sameplace(sentraltogstasjonen,ts). %% AtB. 
-sameplace(sentrumsholdeplassen,hovedterminalen). 
-sameplace(sentrumskvartalet,sentrum). 
-sameplace(sentrumsstasjonen,hovedterminalen). 
-
-sameplace(sentrumsterminal,hovedterminalen). 
-sameplace(sentrumsterminalen,hovedterminalen). 
-sameplace(sentrumssentralen,hovedterminalen). 
-
-
-
-
-
-sameplace(shieldropsvei,e_b_schieldrops_vei). %Gateetternavn
-sameplace(siemensbygget,siemens). 
-sameplace(siemensfabrikken,siemens). 
-sameplace(siemenskrysset,siemens).  %%(Ambiguous,butspecial)
-sameplace(sigurdjorsalfarsvei,sigurd_jorsalfars_street). 
-sameplace(sildredråpeveien,sildråpeveien). 
-sameplace(sildropveien,sildråpeveien). 
-sameplace(simenskrysset,siemens).
-sameplace(sirkus,sirkus_shopping).
-sameplace(sirkussenter,sirkus_shopping).
-sameplace(sirkussenteret,sirkus_shopping).
-sameplace(sirkusshopping,sirkus_shopping).
-sameplace(sjetnamrka,sjetnmarka). 
-sameplace(sjetnemarka,sjetnmarka).     %% /sjetemarka 
-sameplace(skavlandsv,skavlans_veg).   
-sameplace(skavlandsveg,skavlans_veg). 
-sameplace(skavlandsvei,skavlans_veg). 
-sameplace(skavlansvei,skavlans_veg).  
-sameplace(skihytta,skistua). 
-sameplace(skihytten,skistua). 
-sameplace(skovgard,skovgård). %%  + skavgard
-%% sameplace(skjetlein,leinstrand).  %%?leinstrandnot st 
-sameplace(skytterveien,skyttevegen).  %%discrepancy>1
-sameplace(slakterhuset,slakthuset).  %%+slakteri. . 
-sameplace(slakteriet,slakthuset).  %%NBslakt|
-sameplace(sluppenbrua,sluppen_bru). 
-sameplace(spektrum,trondheim_spektrum).  %%not station
-sameplace(spogndal,spongdal).  %%\+sogndal
-sameplace(stabelsv,stabells_veg).  %%  stbelsv
-sameplace(stabelsvei,stabells_veg). 
-sameplace(stadion,lerkendal_stadion). 
-sameplace(strandkaiveien,strandveikaia).  
-sameplace(stasjonen,ts). %% AtB. 
-sameplace(statoilbygget,statoil_rotvoll). 
-sameplace(statsetsentere,stavset_senter).  %%contag
-sameplace(stavsetsenter,stavset_senter). 
-sameplace(stavsetsenteret,stavset_senter). 
-sameplace(stavsetsentrum,stavset_senter). 
-sameplace(stdentersamfunnet,studentersamfundet). 
-sameplace(steinanbakken,steinanveien). 
-sameplace(steinkjær,steinkjer).   %% (steinskjær)
-sameplace(steinskjer,steinkjer).  %%
-sameplace(steinveien,steinanveien). 
-sameplace(stindhiem,strindheim). 
-sameplace(stokkanhaugane,stokkanhaugen).
-sameplace(stokkanhaugene,stokkanhaugen).
-sameplace(stokkhaugane,stokkanhaugen).
-sameplace(stokkhaugen,stokkanhaugen).
-sameplace(stolavshospital,st_olavs_hospital).  %% stolafshospital
-sameplace(storrosta,stor_rosta). 
-sameplace(storrosten,stor_rosta). 
-sameplace(strandveikaien,strandveikaia). 
-sameplace(stridnehim,strindheim). 
-sameplace(strindakirke,strinda_kirke). 
-sameplace(strinheim,strindheim).  %%striheim
-sameplace(studentersamfunnet,studentersamfundet). 
-sameplace(studentersammfunnet,studentersamfundet). 
-sameplace(studenthuset,studentersamfundet). 
-sameplace(studenthytta,studenterhytta). 
-sameplace(studentsamfundet,studentersamfundet). 
-sameplace(studentsamfunnet,studentersamfundet). 
-sameplace(stundersamfundet,studentersamfundet). 
-sameplace(sverresborgfolkemuseum,trøndelag_folkemuseum). 
-sameplace(sverresli,sverresborg).  %%?lia
-sameplace(sykehyset,sykehuset). 
-sameplace(søbstad,saupstad). 
-sameplace(søbstadmyra,saupstad). 
-
-
-sameplace(tambarskjelvarsgt,einar_tambarskjelves_gate). 
-
-%% makes tambarskjelves + gate  coerce into  einar_tambarskjelves_street
-
-  %% sameplace(tambarskjelves,einar_tambarskjelves_gate). %% TA-110110
-  %% sameplace(tambarskjelve,einar_tambarskjelves_gate). 
-  %% sameplace(tambarselve,einar_tambarskjelves_gate). 
-
-
-sameplace(tambarskjelvesgate,einar_tambarskjelves_gate). 
-sameplace(tambarskjelvesgt,einar_tambarskjelves_gate). 
-sameplace(tambarskjelvsgate,einar_tambarskjelves_gate).  
-
-%% e t
-
-
-sameplace(taulobakken,thaulowbakken). 
-sameplace(taulovbakken,thaulowbakken). 
-sameplace(tawlobakken,thaulowbakken). 
-
-sameplace(teglevegskrysset,teglverkskrysset).
-sameplace(tegelstensvegen,teglverkskrysset). 
-sameplace(teggelverkskrysset,teglverkskrysset). 
-sameplace(teglekrysset,teglverkskrysset). 
-sameplace(teglesteinsverket,teglverket). 
-sameplace(teglverk,teglverkskrysset).  
-sameplace(teglverkkrysset,teglverkskrysset). 
-sameplace(teglverkrysset,teglverkskrysset). 
-sameplace(teglverkskrysset,teglverkskrysset). 
-sameplace(teglverkskrysst,teglverkskrysset). 
-sameplace(teglverkskysset,teglverkskrysset). 
-sameplace(tekleverkstunet,teglverkskrysset).  %% contagation
-
-sameplace(tempehallen,nidelvhallen). 
-sameplace(tempekirke,tempe_kirke). 
-%% sameplace(tempevegen11,tempevegen_11). %% unnec %% TA-101118
-sameplace(tev,e_verket).  %% OBS generates te-veien
-sameplace(thaulow,thaulowbakken). 
-sameplace(thaulowbakk,thaulowbakken). 
-sameplace(thauluaw,thaulowbakken). 
-sameplace(thoulawbakken,thaulowbakken). 
-sameplace(thouwlovbakken,thaulowbakken). 
-sameplace(thowlauwbakken,thaulowbakken). 
-sameplace(thyholdt,tyholt). 
-sameplace(tillerbrua,tiller_bru).  %%(?EndofMap)
-sameplace(tilleråsen,martin_kregnes_veg). 
-sameplace(tine,norske_meierier). 
-sameplace(tjønnåsen,tjønnlia).  %%(?)
-sameplace(togbanestasjonen,ts). %% AtB. %% incl. togbanestasjoenen 
-sameplace(togstasj,ts). %% AtB. 
-sameplace(togstasjon,ts). %% AtB. 
-sameplace(togstasjonen,ts). %% AtB. 
-sameplace(togstasjonene,ts). %% AtB. 
-sameplace(togstation,ts). %% AtB. 
-sameplace(togterminalen,ts). %% AtB. 
-sameplace(tollboden,tollbua). 
-sameplace(tollvesenet,tollbua). 
-sameplace(tonstakrysset,tonstad). %%  tonstakrusset  
-sameplace(tonsdadkrysse,tonstadkrysset).  %% 2 ch dif
-sameplace(tonsdadskrysset,tonstadkrysset). %% tonstadskrysset
-sameplace(tonsdakryset,tonstadkrysset). 
-sameplace(tonstadsvei,sivert_thonstads_vei).  %%etc
-sameplace(tonstakrysse,tonstadkrysset).  %% 2 ch dif
-sameplace(torgardsletta,torgardssletta). 
-sameplace(torgkvartalet,torget). 
-%% sameplace(torgplassen,torget). %% ? torplassen 
-sameplace(torgsenteret,torget).  
-sameplace(torplas,torplassen). 
-sameplace(torpsplass,torplassen).  %%?
-sameplace(torpveien,ingemann_torps_vei). %ingemann_torps_street).  %%station
-sameplace(torvet,torget).  %% catch spell-error?
-sameplace(torvplassen,torget). 
-sameplace(travbanestasjonen,travbanen). 
-sameplace(travparken,travbanen). 
-sameplace(trhsentralstasjon,ts). %% AtB. 
-sameplace(trondheimsentral,ts). %% AtB. 
-sameplace(trondheimsentralstasjon,ts). %% AtB. 
-sameplace(trondheimstasjon,ts). %% AtB. %% inc  tronheimstasjon
-sameplace(trondheimtorg,torget).  %% tronheimtårg
-sameplace(trondhjem,trondheim). 
-sameplace(tronheimfengsel,tunga_kretsfengsel). 
-sameplace(tryggvassonsgate, olav_tryggvasons_gate). %%  AtB %% TA-100515
-sameplace(tryggvassonsgt,olav_tryggvasons_gate).    %% AtB  %% TA-100515
-sameplace(trøndermeieriet,norske_meierier). 
-sameplace(tungstadkrysset,tonstadkrysset). 
-sameplace(tvereggen,tverregga).  %% Confusion
-sameplace(tverreggen,tverregga). 
-
-sameplace(tyholtstårnet,tyholttårnet). %% tyholtstarnet 
-sameplace(tyholtornet,tyholttårnet).   %% NB 1 t in route db
-sameplace(tyholtårnet,tyholttårnet).   %% allow tyholtårent 
-                                       %% changed to tyholttårnet Xmas 08
-sameplace(tåget,ts). %% AtB. 
-sameplace(tågstasjonen,ts). %% AtB. 
-sameplace(ulinvegen,ullins_street). 
-sameplace(ulinvegen,ullins_street). 
-sameplace(universitetssenteret,universitetet). 
-sameplace(utsikten,utsikten_alle). 
-%% sameplace(vaern,værnes). // valerveien -> va(l)er(n) -> værnes 
-sameplace(vaernes,værnes). 
-sameplace(vaerness,værnes). 
-sameplace(valdgrindsvegen,valgrindveien). 
-sameplace(valentilystsenteret,valentinlyst). 
-sameplace(valentilystsentret,valentinlyst). 
-sameplace(valentinlystvegen,valentinlystveien). 
-sameplace(valøy,valøyvegen). 
-sameplace(valøyvegen,valøyvegen). 
-sameplace(vandrerhjemmet,weidemannsveien).  %%+vandrehjemmet
-sameplace(varnes,værnes). 
-sameplace(varness,værnes). 
-sameplace(velgrindvegen,valgrindveien). 
-sameplace(vernes,værnes). 
-sameplace(vernæs,værnes). 
-sameplace(vestrerosten,vestre_rosten).  %%vestreostren
-sameplace(vikelva,vikelvveien). 
-sameplace(vikhamarløkka,vikhammeråsen). 
-sameplace(volabake,vollabakken).  %% vollabake,volabakke
-sameplace(vollgård,voll_gård). 
-sameplace(vollstudby,voll_studentby). 
-sameplace(vollstudby,voll_studentby). 
-sameplace(vollstudentby,voll_studentby). 
-sameplace(vådanvn,vådanv_5). 
-sameplace(våddanveien,vådanv_5). 
-sameplace(væretrøa,værestrøa). %% new official name  e.g. væretræa. 
-sameplace(værness,værnes).  %%(not genitive!)
-
-sameplace(vullumsgården,byåsen_butikksenter). %% vyllumsgården.
-sameplace(wullumsgaard,byåsen_butikksenter). 
-sameplace(wullumsgaaren,byåsen_butikksenter). 
-sameplace(wullumsgaren,byåsen_butikksenter). 
-
-
-
-sameplace(wullumsgård,byåsen_butikksenter). 
-
-
-sameplace(åsheimskole,åsheim_skole). 
-sameplace(åsv,åsveien_skole).  %%Troublespot
-sameplace(åsveienskole,åsveien_skole).  %%åsveieskole
-
-
-sameplace(østreberg,østre_berg). %% østeberg 
-
-sameplace(østmarkneset,østmarkveien).  %%nesset
-sameplace(øvreromolslia,romolslia_øvre). 
-sameplace(kattemsentret,kattemsenteret). 
-
-
-short_specname(d1,'Dronn. gt D1'). 
-%short_specname(d2,'Dronn. gt D2'). 
-%short_specname(d3,'Dronn. gt D3'). 
-short_specname(d4,'Dronn. gt D4'). 
-
-short_specname(dronningens_gate,'Dronn. gt').
- 
-short_specname(dronningens_gate_d1,'Dronn. gt D1'). %% AtB
-%short_specname(dronningens_gate_d2,'Dronn. gt D2'). 
-%short_specname(dronningens_gate_d3,'Dronn. gt D3'). 
-short_specname(dronningens_gate_d4,'Dronn. gt D4'). 
-
-short_specname(dronningensgate_d1,'Dronn. gt D1'). 
-%short_specname(dronningensgate_d2,'Dronn. gt D2'). 
-%short_specname(dronningensgate_d3,'Dronn. gt D3'). 
-short_specname(dronningensgate_d4,'Dronn. gt D4'). 
-
-
-short_specname(einar_tambarskjelves_gt,'Einar Tambarskj. gt'). 
-short_specname(haakon_vii_gate_17,'Haakon7. gate 17'). 
-short_specname(haakon_vii_gate_25,'Haakon7. gate 25'). 
-short_specname(haakon_vii_gate_29,'Haakon7. gate 29'). 
-short_specname(haakon_vii_gate_9,'Haakon7. gate 9'). 
-short_specname(heimdal_stasjon,'Heimdal st. ').  %% Extra sp
-short_specname(hovedterminalen,'Sentrumsterminalen'). 
-short_specname(johan_falkbergets_vei,'J Falkbergets v'). 
-short_specname(jørgen_b_lysholms_vei,'J. B. Lysholmsv'). 
-%% short_specname(lerkendal_stadion,'Lerkendal st. ').  %% %% Extra sp
-
-
-short_specname(k1,'Kongens gt K1'). %% RS-130812
-short_specname(k2,'Kongens gt K2'). 
-
-short_specname(kongens_gate,'Kong. gt').
-short_specname(kongens_gt_k1,'Kongens gt K1'). %% AtB
-short_specname(kongens_gt_k2,'Kongens gt K2'). 
-
-short_specname(kongensgate_k1,'Kongens gt K1'). 
-short_specname(kongensgate_k2,'Kongens gt K2'). 
- 
-short_specname(munkegata_m1,'Munkegt M1'). %% AtB
-short_specname(munkegata_m2,'Munkegt M2'). 
-short_specname(munkegata_m3,'Munkegt M3'). 
-short_specname(munkegata_m4,'Munkegt M4'). 
-short_specname(m41,'Munkegt M41'). 
-short_specname(munkegata_m5,'Munkegt M5'). 
-
-short_specname(m1,'Munkegt M1'). 
-short_specname(m2,'Munkegt M2'). 
-short_specname(m3,'Munkegt M3'). 
-short_specname(m4,'Munkegt M4'). 
-short_specname(m41,'Munkegt M41'). 
-short_specname(m5,'Munkegt M5'). 
-
-short_specname(moholt_studentby,'Moholt stud. by'). 
-short_specname(munkegata,'Munkegt'). 
-short_specname(prinsen_kinosenter,'Prinsen kinos. '). 
-short_specname(prof_brochs_gate,'Prof. Brochs gt'). 
-short_specname(ranheim_stasjon,'Ranheim st. '). 
-short_specname(studentersamfundet_1,'Stud. samf. 1'). 
-short_specname(studentersamfundet_2,'Stud. samf. 2'). 
-short_specname(ts,'Trondheim S'). 
-
-short_specname(ts_10,'Trondheim S 10').  %% old names
-short_specname(ts_11,'Trondheim S 11').  %% (avoid list of identical names)
-short_specname(ts_13,'Trondheim S 13').  %%
-
-short_specname(ts10,'Trondheim S 10'). 
-short_specname(ts11,'Trondheim S 11').  %% (avoid list of identical names)
-short_specname(ts13,'Trondheim S 13').  %%
-
-short_specname(universitetet_lade,'Univ. Lade'). 
-
-specname('10c','10C'). 
-specname('24a','24A'). 
-specname('24c','24C'). 
-specname('43e','43E'). 
-specname('44a','44A'). 
-specname('4a','4A'). 
-specname('52a','52A'). 
-specname('54c','54C'). 
-specname('5a','5A'). 
-specname('5c','5C'). 
-specname('5c-e','5C-E'). 
-specname('5e','5E'). 
-specname('6a','6A'). 
-specname('6c','6C'). 
-specname('6e','6E'). 
-specname('7a','7A'). 
-specname('7c','7C'). 
-specname('8a','8A'). 
-specname('8c','8C'). 
-specname('9e','9E'). 
-
-specname(a_m_o_senteret,'AMOsenteret'). 
-specname(adolf_øien,'Adolf Øien').  %%school/street
-specname(alf_godagers_vei,'Alf Godagers vei'). 
-specname(amo_senteret,'AMO senteret'). 
-specname(anders_buens_gate,'Anders Buensgate').  %% EH-031017
-specname(angelltrøveien,'Angelltrøveien'). 
-specname(ankers_gt,'Ankersgate').  %% EH-030616
-specname(arilds_gt,'Arildsgate').  %% EH-030616
-specname(arnt_smistads_vei,'Arnt Smistads vei').  %%\+smistad(correction)
-specname(asbjørn_overås_veg,'Asbjørn Øverås veg'). 
-
-specname(asbjørnsens_gate,'Asbjørnsens gate'). %% old ?
-specname(asbjørnsensgt,'Asbjørnsens gate').  %% EH-030616
-
-specname(asbjørnsens_gt,'Asbjørnsens gate'). 
-specname(atb,'AtB').  %% TA-101108
-
-specname(bakkegata,'Bakkegate').  %% EH-030616
-specname(bakkebru,'Bakkebru'). 
-specname(balders_street,'Balders veg').  %%Syndrome/not regstr
-specname(bekkasinv,'Bekkasinvegen').  %% EH-031017
-specname(bergstudentby,'Berg studentby'). 
-specname(bi,'BI'). 
-specname(biskop_sigurdsgt,'Biskop Sigurds gate').  %% EH-031017
-specname(bjarne_ness_veg,'Bjarne ness vei'). 
-%% specname(bjøra,'Bjøra'). 
-specname(bjørkmyr,'Bjørkmyr'). 
-specname(blusuvoll_alle,'Blusuvoll allé'). 
-specname(brannstasjon_øst,'Brannstasjon øst'). 
-specname(brattørbrua,'Brattørbrua'). 
-specname(breidablikk_sk,'Breidablikk skole'). 
-specname(britannia_hotell,'Britannia hotell').               %% airbus
-specname(brukseier_olsens_vei_1,'Brukseier Olsensvei 1').    %% EH-030616
-specname(brukseier_olsens_vei_40,'Brukseier Olsensvei 40').  %% EH-030616
-specname(brukseier_olsens_vei_50,'Brukseier Olsensvei 50').  %% EH-030616
-specname(brukseier_olsens_vei_l75_76,'Brukseier Olsensvei 75-76').  %% EH-030616
-specname(brukseier_olsensv,'Brukseier Olsens vei'). 
-specname(brukseier_olsens_vei_1,'Brukseier Olsens vei 1'). 
-specname(brukseier_olsensv_40,'Brukseier Olsensvei 40'). 
-specname(brukseier_olsensv_50,'Brukseier Olsensvei 50').  %% EH-031002
-specname(brundalen_sk,'Brundalen skole'). 
-specname(brundalen_skole,'Brundalen skole'). %% old
-specname(brundalen_sykehj,'Brundalen sykehjem'). 
-specname(brundalen_sykehjem,'Brundalen sykehjem'). 
-specname(brøset_hageby,'Brøset hageby'). 
-specname(brøsetflata,'Brøsetflata'). 
-specname(brøsetv,'Brøsetvegen'). 
-specname(brøsetvegen_168,'Brøsetvegen 168').  %% vei-> veg for konsistens EH-031017
-specname(brøsetvegen_186,'Brøsetvegen 186').  %% NB. vei->veg EH-031017
-specname(brøsetvegen,'Brøsetvegen'). 
-specname(brøsetvegen_119,'Brøsetvegen 119'). 
-specname(busstuc,'BussTUC'). 
-specname(bybro,'Gamle bybro').
-specname(byen,byen). 
-specname(byåsen_butikksenter,'Byåsen butikksenter'). 
-specname(byåsen_sk,'Byåsen skole'). 
-specname(byåsen_videregående_skole,'Byåsen videregående skole'). 
-
-%% specname(bøckmansveien,'Bøckmans veg'). %% Nix %% TA-110314
-
-%% specname(c_j_hambros_vei,'C J Hambros vei').  %% unnec TA-101111
-
-specname(carl_schjetnans_vei,'Carl Schjetnans vei'). %% TA-110322
-%% specname(c_schjetnans_v,'C Schjetnansvei').       %% 
-
-specname(charlottenlund_kirke,'Charlottenlund kirke'). %% unnec
-specname(charlottenlund_kirke,'Charlottenlund kirke'). 
-
-specname(charlottenlund_skole,'Charlottenlund skole'). 
-specname(charlottenlund_vderegåen,'Charlottenlund videregående'). 
-specname(charlottenlund_videregående,'Charlottenlund videregående'). 
-specname(chr_eggens_veg,'Christian Eggens veg').  %% EH-030616
-specname(chr_monsensgt,'Christian Monsens gate').  %% EH-031017
-specname(christian_jelstrups_v,'Christian Jelstrups vei').  %% EH-030616
-specname(churchills_v,'Churchills vei').  %% EH-030616
-
-specname(dmmh,'DMMH'). %% TA-110323
-
-%% drop holdeplass %% TA-110531
-
-specname(dronningens_gate_d1,'Dronningens gate D1').  
-%specname(dronningens_gate_d2,'Dronningens gate D2'). 
-%specname(dronningens_gate_d3,'Dronningens gate D3'). 
-specname(dronningens_gate_d4,'Dronningens gate D4'). 
-
-specname(d1,'Dronningens gate D1').  %% EH-031120
-%specname(d2,'Dronningens gate D2').  %% 
-%specname(d3,'Dronningens gate D3').  %%
-specname(d4,'Dronningens gate D4').  %%
-
-
-specname(den,'den'). %% M .. den godes gate ... 
-specname(devle_gård,'Devlegård'). 
-specname(dist_lege_øvrelids_v,'Distriktslege Øvrelid svei').    %% EH-030616
-specname(distriktslege_øverlidsv,'Distriktlege Øvrelids vei').  %% EH-030616
-specname(dps,'DPS'). 
-specname(dragvoll_alle,'Dragvoll allé'). 
-specname(dronningens_gate,'Dronningens gate'). 
-specname(dv,'Dragvoll').  %% Small letters/not Endstation
-%% specname(dybdals_veg,'Dybdals veg'). %% TA-100830 unnec
-specname(e_a_smith,'E A Smith').  %% EH-031017 
-specname(e_b_schieldropsv,'E B Schieldropsvei').  %% EH-030616
-specname(einar_tambarskjelves_gt,'Einar Tambarskjelves gate').  %% EH-030616
-specname(einar_øfstis_veg,'Einar Øfstis veg'). 
-specname(engelsås_endeholdeplass,'Engelsås endeholdeplass'). 
-specname(f_rambech,'F Rambech').  %% EH-031017
-specname(fagerheim_all,'Fagerheim allé'). 
-specname(fagerheim_alle,'Fagerheim allé').  %% EH-030616
-specname(fagerliv,'Fagerliveien').  %% EH-031017
-specname(festningsgt,'Festningsgata'). 			 %% EH-031002 gaten->gata
- %% specname(festningsgt,'Festningsgaten'). 
-specname(fjøslia,'Fjøslia'). 
-specname(fjøsvollan,'Fjøsvollan'). 
-specname(forsøket,'Forsøket'). 
-specname(gløshaugen_nord,'Gløshaugen Nord'). 
-specname(gløshaugen_syd,'Gløshaugen Syd'). 
-specname(godsterminalen_nsb,'Godsterminalen NSB').  %%(dontprintwhatisnot accepted)EH-030616
-specname(granåsen_gård,'Granåsen gård'). 
-specname(granåsen_vm_anlegget,'Granåsen VM-anlegget'). 
-specname(gudes_gt,'Gudes gate'). 			 %% EH-030616
-specname(gudruns_gate,'Gudruns gate'). 			 %% EH-030616
-specname(haakon_vii_gt,'Haakon VII gate'). 
-specname(haakon_vii_gate_17,'Haakon den sjuendes gate 17'). 
-specname(haakon_vii_gate_25,'Haakon den sjuendes gate 25'). 
-specname(haakon_vii_gate_29,'Haakon den sjuendes gate 29'). 
-specname(haakon_vii_gate_9,'Haakon den sjuendes gate 9'). 
-specname(hallfred_høyems_vei,'Hallfred Høyems vei'). 
-specname(halstein_gård,'Halstein gård'). 
-specname(harald_bothnersv,'Harald Bothners vei'). 	 %% EH-030616
-specname(harald_hårfagres_gt,'Harald Hårfagres gate'). 
-specname(heggstadmoen_4,'Heggstadmoen 4').  %% slight error in busroute
-%%%  specname(heimdal_st,'Heimdal stasjon').  
-specname(heimdalsveien,'Heimdalsvegen').  %% (not . ) EH-030616. vei-> veg EH-031017
-%% specname(heimdalsv,'Heimdalsveien').  %% (not . ) EH-030616
-specname(heimdal_sentrum,'Heimdal sentrum'). %%  week 33/34?
-
-%% specname(henrik_ourens_vei,'Henrik Ourens vei').  %% (extra dot in reghpl) EH-030616
-specname(hist,'HIST').  %% (IKKE Hist!)
-specname(hjalmar_johansens_vei,'Hjalmar Johansens vei'). 
-specname(hospitalskirka,'Hospitalskirka').  %%(Rutehefte)
-specname(hotel,'Hotel'). 
-specname(hotell,'Hotell'). 
-specname(hovedterminalen,'Sentrumsterminalen').  %% // Political decision
-specname(høgreina_øvre,'Høgreina øvre'). 
-specname(høyset,'Høyset'). 
-specname(idi,'IDI').  %% TA-110401
-specname(ingeborg_ofstadsv,'Ingeborg Ofstads veg').  %% EH-031017
-specname(jakobslivegen_øvre,'Jakobsliveien øvre').  %%jakobsliv
-specname(jakobsliveien_nedre,'Jakobsliveien nedre').  %%jakobslivn!!
-specname(johan_falkbergets_vei,'Johan Falkbergets veg').  %%Talsmann
-specname(johan_p_kroglundsv,'Johan P Kroglunds vei'). 
-specname(johan_tillers_vei,'Johan Tillers vei').  %% EH-031017
-specname(johannes_minsaas_veg,'Johannes Minsaas veg'). 
-specname(john_aaes_veg,'John Aaes veg').  %% (avoid, Aae`s in return)
-specname(jørgen_b_lysholms_vei,'Jørgen B Lysholms vei'). 
-specname(k_jonssons_veg,'Karl Jonssons vei'). 
-specname(k_o_thornæs_vei,'K O Thornæs vei').  %% EH-030616
-specname(kbs,'KBS').
-specname(kbs_senteret,'KBS-senteret'). 
-specname(kino,'"kino"'). 
-specname(klett_møbel,'Klett Møbel'). 
-specname(klæbu_skysstasjon,'Klæbu skysstasjon'). 
-specname(kong_øysteins_veg,'Kong Øysteins veg'). 
-
-%% RS-130812
-specname(kongens_gate,'Kongens gate').
-specname(kongens_gt_k1,'Kongens gate K1').  
-specname(kongens_gt_k2,'Kongens gate K2'). 
-specname(k1,'Kongens gate K1').  %% RS-130812
-specname(k2,'kongens gate K2').  %% 
-
-specname(kronprins_olavs_alle,'Kronprins Olavs allé'). 
-%% specname(kroppanmarka_endehpl,'Kroppanmarka endeholdeplass'). 
-specname(kuset_gård,'Kuset gård'). 
-specname(kvt,'KVT'). 
-specname(kystad_alle,'Kystad allé'). 
-specname(køff,'KØFF'). 
-
-
-specname(lade_all,'Lade allé'). %% 'Lade allé').  AtB
-specname(lade_alle_80,'Lade allé 80'). 
-
-
-specname(lade_alle,'Lade allé'). %% 'Lade allé').  AtB
-specname(lade_alle_80,'Lade allé 80'). 
-
-
-specname(lade_kirke,'Lade kirke'). 
-specname(ladejarlen_v_g_s,'Ladejarlen skole'). %% realspeak 
-specname(lademoen_kirke,'Lademoen kirke'). 
-specname(lademoen_skole,'Lademoen skole'). 
-specname(leangen_all,'Leangen allé'). 
-specname(leangen_alle,'Leangen allé'). 
-specname(leira_sk,'Leira skole').
-specname(leirfossveien,'Leirfossveien'). 
-specname(leirøya,'Leirøya'). 
-specname(lerkendal_gård,'Lerchendal gård'). 
-specname(lingit,'LingIT'). 
-specname(loholt_alle,'Loholt allé'). 
-specname(los_angeles,'Los Angeles').  %% for American queries
-specname(lundåsen_n,'Lundåsen nedre').  %% Talsmann
-%% specname(løvaasveien,'Løvaasveien').  %% TA-110530  unnec
-
-
-specname(munkegata_m0, 'Munkegata M0').  
-specname(munkegata_m1, 'Munkegata M1'). 
-specname(munkegata_m2, 'Munkegata M2'). 
-specname(munkegata_m3, 'Munkegata M3'). 
-specname(munkegata_m4, 'Munkegata M4'). 
-specname(munkegata_m5, 'Munkegata M5'). 
-specname(munkegata_m41, 'Munkegata M41').%% TA-110107
-specname(m41, 'Munkegata M41'). %% SIC (in route data) %% TA-110107
-
-specname(m0, 'Munkegata M0').  %% keep old names also 
-specname(m1, 'Munkegata M1').  %%
-specname(m2, 'Munkegata M2').  %%
-specname(m3, 'Munkegata M3').  %%
-specname(m4, 'Munkegata M4').  %%
-specname(m5, 'Munkegata M5').  %%
-
-specname(magnus_berføttsvei,'Magnus Berføtts vei').  %% EH-031017
-specname(magnus_blindesv,'Magnus Blindes vei'). 	  %% EH-030616
-specname(marcus_thranesv,'Marcus Thranes vei'). 	  %% EH-030616
-specname(margretes_gt,'Margretes gate'). 
-specname(marie_sørdals_veg,'Marie Sørdals veg'). 
-specname(markaplassen_vest,'Markaplassen Vest'). 
-specname(markaplassen_øst,'Markaplassen Øst'). 
-specname(markaplassen_skole,'Markaplassen skole').   
-specname(mauritz_hansens_gt,'Mauritz Hansens gate'). 	%% EH-030616
- %% specname(mellomv_5,'Mellomveien 5'). 	
-specname(mentz_skjetnes_v,'Mentz Skjetnes vei'). 	   %% EH-030616
-specname(moltmyra_øst,'Moltmyra øst'). 
-
-
-specname(munkvoll_gård,'Munkvoll gård'). 
-specname(møllebakken,'Møllebakken'). 
-specname(møller_bil,'Møller bil'). 
-specname(n_g_u,'NGU'). 
-specname(n_t_h,'NTH'). 
-specname(naf,'NAF'). 
-specname(nedre_alle,'Nedre allé'). 
-specname(nedre_alle,'Nedre allé'). 
-specname(nedre_elvehavn,'Nedre elvehavn'). 
-specname(nedre_møllenberg,'Nedre Møllenberg'). 
-specname(nidarvoll_sk,'Nidarvoll skole'). 
-specname(nidarvoll_skole,'Nidarvoll skole'). %% old
-specname(nkl,'NKL'). 
-specname(nordre_halset,'Nordre Hallset'). 
-specname(nordre_hoem,'Nordre Hoem'). 
-specname(nordslettveien_snuplass,'Nordslettveien snuplass'). 
-specname(norske_meierier,'Norske meierier'). 
-specname(nova_kinosenter,'Nova kinosenter').  %%k
-specname(nrk,'NRK'). 
-specname(nth,'NTH'). 
-specname(ntnu,'NTNU'). 
-specname(ntnu_lade,'NTNU Lade').  %%Outdated
-specname(obs,'OBS'). %not offic. 
-specname(city_syd,'City Syd').    %% NEC, CS no longer station %% TA-110624
-specname(city_lade,'City Lade').  %%Changedname,not inRouteData
-%% specname(odensev,'Odenseveien').  %% EH-031017
-specname(okstadøy,'Okstadøy'). 
-specname(ola_setroms_vei,'Ola Setroms vei'). 
-specname(olaf_bulls_vei,'Olaf Bulls vei'). 	
-specname(olav_engelbrektssons_all,'Olav Engelbrektssons allé').   %% AtB %% TA-101018
-specname(olav_engelbrektssons_alle,'Olav Engelbrektssons allé').  %% EH-031017
-specname(olav_nygårdsv,'Olav Nygårds vei'). 
-specname(olav_trygvassons_gt,'Olav Tryggvasons gate').  %% AtB MISSPELLEDINDATABASE
-specname(olav_tryggvasons_gt,'Olav Tryggvasons gate').  %%Default
-
-specname(omkjøringsv_klæbuvveien,'Omkjøringsveien Klæbuveien').  %% EH-031121
-specname(omkjøringsveien_moholt,'Omkjøringsveien Moholt'). 
-specname(omkjøringsveien_nardo,'Omkjøringsveien Nardo'). 
-specname(oscar_wistingsv,'Oscar Wistings vei').  %% EH-031017
-specname(otto_nielsens_veg,'Otto Nielsens vei'). 
-specname(paul_skolemesters_veg,'Paul skolemesters veg').%% TA-110803
-
-specname(peder_kroghs_v,'Peder Kroghs vei'). 
-specname(peder_morsets_vei,'Peder Morsets vei'). 	
-specname(persaunet_leir,'Persaunet leir'). 
-specname(persaunev,'Persaunevegen'). %% outdated?
-specname(prestegårdsjordet,'Prestegårdsjordet').  %% (error)
-specname(prinsen_kinosenter,'Prinsen kinosenter').  
-specname(prinsens_gate,'Prinsens gate'). 
-specname(r_i_t_hovedporten,'St Olavs hospital'). 
-specname(ranheim_kirke,'Ranheim kirke').  %% RS-130302 Replaced by Nedre Humlehaugen Øst 
-specname(reppe_endehlp,'Reppe endeholdeplass'). 
-specname(ringve_skole,'Ringve skole'). 
-specname(risvollan_senter,'Risvollan senter').
-specname(rit,'RIT'). 
-specname(roial_garden,'Royal Garden').  %% Nattbuss Spell
-specname(rormyra,'Rørmyra'). 
-specname(rosenborg_gt,'Rosenborg gate'). 	
-specname(rosenborg_sk,'Rosenborg skole'). 
-
-specname(rosenborg_skole,'Rosenborg skole'). %% AtB
-
-specname(rotvoll_all,'Rotvoll allé'). 
-specname(royal_garden,'Royal Garden'). 
-specname(royal_garden_hotell,'Royal Garden hotell'). %% airbus
-
-specname(rye_skole,'Rye skole').
-specname(santa_barbara,'Santa Barbara'). 
-specname(sas,'SAS'). 
-specname(saxenborg_all,'Saxenborg allé'). 
-specname(esso_motorhotell,'Esso Motorhotell').  %% ??? (Old station name)
-specname(senter,senter). 
-specname(sentrum,sentrum). 
-
-%% specname(sig_berg_alle,'Sigurd Bergs allé').   
-                                               
-specname(singsaker_studenthjem,'Singsaker studenthjem'). 
-specname(sirkus_shopping,'Sirkus Shopping').
-specname(sivert_thonstadsv,'Sivert Thonstads vei'). 	 %% EH-030616
-specname(sk,skole). %% nohelp?
-specname(skavlans_vei,'Skavlands vei'). 
-specname(smstuc,'SMSTUC'). 
-specname(solbakken_skole,'Solbakken skole'). 
-specname(solberg_mek_verksted,'Solbergmekaniskeverksted'). 	 %% EH-030616
-specname(sondre_hoem_sporvogn,'Søndre Hoems porvogn'). 
-specname(st_olavs_hospital_vest,'St Olavs hospital vest'). 
-specname(st_olavs_hospital_øst,'St Olavs hospital øst'). 
-
-%%% specname(st_olavs_hospital,'St Olavs hospital hovedporten').
-%% TA-100827
-specname(st_olavs_street,'St Olavs     gate'). 
-specname(st_olavs_gate,'St Olavs gate'). 
-specname(st_olavs_hospital,'St Olavs hospital'). 
-specname(statens_hus,'Statens hus'). 
-specname(stavset_senter_2,'Stavset senter 2').  %%, holdeplass 2'). 
-specname(steinanstudentby,'Steinan studentby'). 
-specname(strinda_kirke,'Strinda kirke'). 
-specname(strindheim_sk,'Strindheim skole'). 
-specname(studentersamfundet_1,'Studentersamfundet 1'). 
-specname(studentersamfundet_2,'Studentersamfundet 2'). 
-specname(støren_st,'Støren stasjon'). 
-specname(sverresborg_alle,'Sverresborg allé'). 
-specname(sverresborg_folkemuseum,'Sverresborg folkemuseum'). 
-specname(sæterbakken_bratsberg,'Sæterbakken Bratsberg'). 
-specname(søndre_gate_22,'Søndre gate 22'). 
-specname(søndre_gate_23,'Søndre gate 23'). 
-specname(søndre_hoem,'Søndre Hoem'). 
-specname(søndregate,'Søndre gate').  %% The neighbourhood (22/23)
-
-specname(tagore,'Tagore'). 
-
-specname(tbane,'T-bane'). 
-specname(tempevegen_11,'Tempevegen 11'). 
-specname(tempe_kirke,'Tempe kirke').   
-specname(tempe_kirke,'Tempe kirke').  %% Airbus name
-specname(tf,'Telenor Forskningssenter'). 
-specname(thora_storms_vei,'Thora Storms vei'). 
-specname(tilleringen_130,'Tillerringen 130').  %% (erri)
-specname(tmn,'Trafikanten Midtnorge'). 
-specname(tordenskiolds_gt,'Tordenskjolds gate').  %% NB iold
-specname(tordenskjolds_gt,'Tordenskjolds gate'). 
-specname((tore,amble),'Tore Amble').		%RS-110929
-specname(tranev,'Traneveien').  
-
-specname(trollahaugen_10,'Trollahaugen 10'). 
-specname(trollahaugen_2,'Trollahaugen 2'). 
-specname(trollahaugen_46,'Trollahaugen 46'). 
-specname(trollahaugen_64,'TROLLAHAUGEN 64'). 
-
-specname(trondheim_torg,'Trondheim Torg'). 
-
-specname(trondheim_sentralstasjon,'Trondheim Sentralstasjon'). %% TA-110628
-specname(ts,'Trondheim Sentralstasjon'). 
-
-specname(ts10,'Trondheim Sentralstasjon ') :-value(airbusflag,true),!. 
-specname(ts11,'Trondheim Sentralstasjon ' ):-value(airbusflag,true),!.  
-specname(ts13,'Trondheim Sentralstasjon')  :-value(airbusflag,true),!. 
-
-specname(ts10,'Trondheim Sentralstasjon holdeplass 10'). 
-specname(ts11,'Trondheim Sentralstasjon holdeplass 11').  %% EH-031017
-specname(ts13,'Trondheim Sentralstasjon holdeplass 13'). 
-
-
-specname(ts_10,'Trondheim Sentralstasjon holdeplass 10'). %% old names
-specname(ts_11,'Trondheim Sentralstasjon holdeplass 11'). 
-specname(ts_13,'Trondheim Sentralstasjon holdeplass 13'). 
-
-specname(tt,'AtB'). 
-specname(tuc,'TUC'). 
-specname(tulluan_sk,'Tulluan skole'). 
-specname(tunga_kretsfengsel,'Tunga kretsfengsel'). 
-specname(tverrforb_1,'Tverrforbindelsen 1'). 
-specname(tyholt_alle,'Tyholt allé'). 
-specname(tyholtv,'Tyholtvegen').  %%Talsmann
-specname(tyholtv,'Tyholtveien').  %% EH-031017
-specname(tøh,'TØH'). 
-specname(ullins_vei,'Ullins vei'). 
-specname(universitetet_lade,'Universitetet Lade'). 
-specname(utsikten_alle,'Utsikten allé'). 
-specname(valentinlystv,'Valentinlystvegen'). 
-specname(valset_gård,'Valset gård').  %% outdated 
-specname(valøyvegen,'Valøyvegen'). 
-specname(valøyvegen,'Valøyvegen').  %% EH-031017 vei->veg. Korrekt/entydig skrivemåte
-specname(veisletten_alle,'Veisletten allé'). 
-specname(vestlia_endeholdeplass,'Vestlia endeholdeplass'). 
-specname(vikåsen_skole,'Vikåsen skole'). 
-specname(vollgt,'VOLLGATEN'). 
-specname(vådanv_5,'Vådanveien 5'). 
-specname(være_østre,'Være Østre'). 
-specname(væretroa,'Værestrøa'). 
-specname(værestroa,'Værestrøa'). 
-specname(værestrøa,'Værestrøa'). %% Off name  
-specname(øvre_alle,'Øvre allé'). 
-specname(øvre_flatåsv,'Øvre Flatåsveg'). 
-specname(øya_helsehus,'Øya Helsehus').		%RS-110926
-
-
-%% Trapez -> Hastus synplaces 
-
-%%%%%%%%% synplace(tveregga,tvereggen).
-%%%%%%%%% synplace(tverregga,tvereggen).
-
-synplace(rosa,ross). %% ? %% TA-110415 Ole Ross veg
-synplace(rosta,rosten). %% / 
-synplace(ostmarka,østmarka). 
-%% synplace(ola,ila). %% Haz? %% TA-110328
-
-synplace(olavtrygvasonsgate,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB
-
-synplace(berf,berg). %% ?
-synplace(bert,berg). %% ?
-
-synplace(berføttsvei,berrføttsveg).   
-synplace(berrføttsvei,magnus_berrføttsveg). 
-
-synplace(easmith,e_a_smith). 
-
-synplace(mobilt,moholt). %% ???
-
-%%%% synplace(engelbrektssons,engelbrektsons).
-%%%% synplace(morsets,morsetts).
-%%%% synplace(morset,morsett).
-
-synplace(morseths,morsets). %% NEC
-
-synplace(staøren,støren). %% TA-101221
-
-%% synplace(steinåsen,seinåsen). 
-
-%% synplace(stiklestadveien,stiklastadveien). %% fixed 
-synplace(stiklesveien,stiklestadveien). %% ?
-
-synplace(polishuset,ts). %% AtB. %%  ts is neib). 
-
-synplace(reppekrysset,reppevegen). %%  reppevegen is not in the routes
-
-
-synplace('va|retraøa',værestrøa).
-synplace(val,valentinlyst).
-synplace(valgrindveien,valgrindsveien). 
-synplace(væretrøa,værestrøa). %% NB væres
-synplace(væretøa,værestrøa).   %%
-synplace(skjåness,sjåness).
-synplace(toming,thonning). 
-synplace(tornes,thornæs). %% TA-110203
-synplace(torpsvei,torps_vei).
-synplace(oppland,opland).
-synplace(prestegårsjordet,prestegårdsjordet).
-synplace(endeholdepl,endehpl).
-synplace(tyholtårnet,tyholttårnet).   %% NB 1 t
-
-synplace('by''n',sentrum).  %%By'n==>'by''n'
-synplace('la''moen',lademoen). 
-synplace(aaer,aaes). 
-synplace(aamfundet,samfundet).  %%?
-synplace(aasheim,åsheim). 
-synplace(aasn,aaes). 
-synplace(aasveienskole,åsveien_skole). 
-synplace(adgenes,agdenes). 
-synplace(adressa,adresseavisen). 
-synplace(aentralstasjonen,ts). %% AtB. 
-synplace(aila,ila).  %% ?
-synplace(akobsli,jakobsli). 
-synplace(alcatraz,munkholmen). %% :-)
-synplace(alentinlyst,valentinlyst).  %% ?
-synplace(alesund,ålesund). 
-synplace(alfheimsvegen,alfheimsvingen). 
-synplace(alfheimsvei,alfheimsvingen). 
-synplace(alfheimsvei,alfheimsvingen). 
-synplace(alfheimsveien,alfheimsvingen). 
-synplace(alfheimsvingen,alfheimsvingen). 
-
-synplace(alvheimveien,alfheimsvingen). %% etc 
-
-synplace(alpintbussen,alpinbussen). 
-synplace(alvheimsvegen,alfheimsvingen). 
-synplace(alvheimsvei,alfheimsvingen). 
-synplace(alvheimsvei,alfheimsvingen). 
-synplace(alvheimsveien,alfheimsvingen). 
-synplace(ambjørnsensgate,asbjørnsens_gate).  %%(nospellc)
-synplace(amfundet,samfundet).  %%neib
-synplace(amfunnet,samfundet).  %%
-synplace(amigosenteret,migosenteret). %% TA-100519
-synplace(amunkegata,munkegata). 
-synplace(andersbuensgate,anders_buens_gate). 
-synplace(andersbuesgate,anders_buens_gate). 
-synplace(angelltrøvegen,angelltrøveien). 
-synplace(ankererveien,ankerveien). 
-synplace(anlegg,anlegget). 
-synplace(anleggene,anlegget). 
-synplace(anrdo,nardo).  %% ? 
-synplace(antongrevskottsgate,anton_grevskotts_vei). 
-synplace(antongrevskottsgt,anton_grevskotts_vei). 
-synplace(antongrevskottsvei,anton_grevskotts_vei).
-synplace(ardo,nardo).  %%?
-synplace(arneberggårdsv,arne_bergsgårds_vei). 
-synplace(arneberggårdsvei,arne_bergsgårds_vei). 
-synplace(arnebergsgårdsvei,arne_bergsgårds_street).  %%(systemat?)
-synplace(arnebergsgårdsvei,arne_bergsgårds_vei).  
-synplace(arntsmistadsv,arnt_smistads_vei).  
-synplace(asbjørnsgate,asbjørnsens_gate). 
-synplace(asbjørnsveien,asbjørnsens_gate). 
-synplace(asbjørnøveråsveg,asbjørn_øverås_street). 
-synplace(asentrum,sentrum). 
-synplace(askeladenveien,askeladdvegen). 
-synplace(astronautveien,astronom_street). 
-synplace(astt,tt). 
-synplace(astudentersamfundet,studentersamfundet). 
-synplace(asveien,åsveien). 
-synplace(atrindheim,strindheim). 
-synplace(atudentersamfundet,studentersamfundet). 
-synplace(auran,buran).  %% ?
-synplace(austmarka,østmarka). 
-synplace(avdelingskontoret,servicekontoret).  
-synplace(bachs,brochs). 
-synplace(bake,bakke). 
-synplace(bakgate,bakkegata).  %% ?
-synplace(bakkbro,bakkebru). 
-synplace(bakkbroen,bakkebru). 
-synplace(bakkbru,bakkebru). 
-synplace(bakkbruen,bakkebru). 
-synplace(bakkebro,bakkebru). 
-synplace(bakkebroen,bakkebru). 
-synplace(bakkebru,bakkebru). 
-synplace(bakkebruen,bakkebru). 
-synplace(bakkebybro,bakkebru).  %% ?
-synplace(bakkekirke,bakkegata). 
-synplace(bakkeland,bakklandet). 
-synplace(bakklainne,bakklandet). 
-synplace(bakkland,bakklandet). 
-synplace(bakklanne,bakklandet). 
-synplace(baklane,bakklandet). 
-synplace(baklanee,bakklandet). 
-synplace(balentinlyst,valentinlyst).  %% ?
-synplace(balgård,dalgårdd). 
-synplace(banegården,jernbanestasjonen). 
-synplace(banestasjon,jernbanestasjonen). 
-synplace(banestasjonen,jernbanestasjonen). 
-synplace(bardo,nardo). 
-synplace(barfots,berrføtts). 
-synplace(barneavd,barneklinikken).  %%synname
-synplace(barneskole,skole). 
-synplace(barneskole,skole). 
-%% synplace(barnhage,barnehage). 
-synplace(bartlamoen,svartlamon). 
-synplace(bartlamon,svartlamon). 
-synplace(bbyen,byen). 
-synplace(bbyn,byen).
-synplace(beg,berg).  %% nohash<4
-synplace(beldevere,belvedere). 
-synplace(belverede,belvedere). 
-synplace(berfoettsvei,berføttsvei). 
-synplace(berg,bergs).  %%nohashbecausenot unknown
-synplace(bergkirke,berg_prestegård). 
-synplace(bergårdsvei,bergsgårdsvei). 
-synplace(bestlia,vestlia). 
-synplace(beunge,buenget). 
-synplace(bharlottenlund,charlottenlund).  %%?
-synplace(bidtbyen,sentrum). 
-synplace(bikåsen,vikåsen). 
-synplace(bilioteket,biblioteket). 
-synplace(billettkontoret,servicekontoret). 
-synplace(birbadet,pirbadet). 
-synplace(birchs,brochs). 
-synplace(biskopsigurdsgate,biskop_sigurds_gate). 
-synplace(bispegaten,bispegata). 
-synplace(biyosen,byåsen). 
-synplace(bjørdalsrua,bjørndalsbrua). 
-synplace(bjørndalbru,bjørndalsbrua).  
-synplace(bjørndalbua,bjørndalsbrua). 
-synplace(bjørndalen,bjørndalsbrua). 
-synplace(bjørndalsbroen,bjørndalsbrua). 
-synplace(bjørndalsbroen,bjørndalsbrua). 
-synplace(bjørndalsbruen,bjørndalsbrua). 
-synplace(bjørndalsbua,bjørndalsbrua). 
-synplace(bjørndalstopnne,bjørndalstoppen). 
-%% synplace(bjørndas,bjørndals). %%  (nec?)
-
-synplace(bjørnebru,bjørndalsbrua). 
-synplace(bjørnebrua,bjørndalsbrua). 
-synplace(bjørnsdalsbura,bjørndalsbrua). 
-synplace(bjørnstadbrua,bjørndalsbrua). 
-synplace(bks,kbs).
-%% synplace(blaklia,blakli). %% \+ baklia 
-synplace(blodbank,blodbanken). 
-synplace(blussevoll,blussuvoll). 
-synplace(boll,voll).  
-synplace(bollabakken,vollabakken).
-synplace(borcghrevinkvei,borchgrevinks_street). 
-synplace(borch,brochs). 
-synplace(borchs,brochs). 
-synplace(borgchrevinkvei,borchgrevinks_street). 
-synplace(borsa,børsa). %% Trlag
-
-synplace(bowling,bowling_1). 
-synplace(bowlingen,bowling_1). 
-% synplace(bran,buran). %% confus? 
-synplace(brannstasjon,brannstasjonen). 
-synplace(bratbegsvegen,bratsbergveien). 
-synplace(bratsbeg,bratsberg).  %% \+brattsveg 
-synplace(bratsbergkirke,bratsberg_kirke). 
-synplace(brattbergsveien,bratsbergveien). 
-synplace(brattoera,brattøra). 
-synplace(brattørtveita,brattørveita). %%  SIC brattø/err in regstr
-synplace(brattsbergeveien,brattsbergveien). 
-synplace(brattsbergsveien,bratsbergveien). 
-synplace(brattsbergvegen,bratsbergveien). 
-synplace(brattsperg,bratsberg). 
-synplace(bredablikkskole,breidablikk_skole). 
-synplace(bredablitt,breidablikk).  %%Dbl
-synplace(breidablikk,breidablik).  %%breidablikkveien->breidablikveien
-synplace(breidablikkskole,breidablikk_skole). 
-synplace(broch,brochs).  %% \+ spc because known
-synplace(brochs,prof_brochs_gate).  %%?
-synplace(brochsgate,prof_brochs_gate). 
-synplace(brochsvei,prof_brochs_gate).
-synplace(brogs,brochs). 
-synplace(bromsdat,bromstad). 
-synplace(bromsetsvingen,bromstadsvingen). 
-synplace(brundal,brundalen). 
-synplace(brundalenskole,brundalen_skole).   
-synplace(brundalensykehjem,brundalen_sykehjem).
-synplace(brundarn,brundalen). 
-synplace(brygen,bryggen). 
-synplace(brygga,pirbadet).  
-synplace(brødsettveien,brøsetv).  %%v. ! %%  \tsx brødsettveien brotsetv
-synplace(brøsetflatata,brøsetflata). %?
-synplace(brøseth,brøset). 
-synplace(brøsethvegen,brøsetv).  %%
-synplace(brøsethveien,brøsetv).  %% station is preferred %%  Touchy
-synplace(brøsetvegen168,brøsetvegen_168). 
-%% synplace(brøsetvegen186,brøsetvegen_186). 
-synplace(brøsetvn168,brøsetvegen_168). 
-%% synplace(brøsetvn186,brøsetvegen_186). 
-synplace(brøsterveien,brøsetvegen). 
-synplace(buan,buran). 
-synplace(buen,buens). %% nec anders b 
-synplace(buen,byen).  %%  Haz Anders B?
-synplace(bueng,buenget).  %% beunsgt ? buengvegen
-synplace(buengenet,buenget). 
-synplace(buensgate,anders_buens_gate). 
-synplace(buenteg,buenget). 
-synplace(bukkvoll,bukkvollan).  %% street
-synplace(bunkegata,munkegata). 
-synplace(bura,buran). 
-synplace(bura,buran). 
-synplace(burn,buran). 
-synplace(buråk,brurok).  %% \+ buran
-synplace(busskontoret,servicekontoret). 
-synplace(busstermialen,hovedterminalen). 
-synplace(bussterminal,hovedterminalen). 
-synplace(busstermin,hovedterminalen). 
-synplace(busterminal,hovedterminalen). 
-synplace(butan,buran). %% TA-110214
-synplace(buterminalen,hovedterminalen). 
-synplace(buyn,byen).
-synplace(bya,sentrum). 
-synplace(bye,sentrum).  %% (unless unwanted_place)
-
-synplace(byen,sentrum).  %% TA-110120 * byen Hønefoss 
-
-synplace(byasveien,byås_street).  %% problem
-synplace(byasvei,byås_street).    %%  TSX <--- byÃ¥sveien //nohelp
-synplace(byaysveien,byås_street). 
-synplace(byaysveien,byås_street).
-
-synplace(byaas,byås). %% nec for byås_street (< 5 chars)
-synplace(byaasen,byåsen). 
-synplace(byaysen,byåsen).  %%byÃ¥sen
-synplace(bybdahls,dybdahls). 
-synplace(byem,byen). 
-synplace(byenk,byen). 
-synplace(bygensen,bygrensen). 
-synplace(bygransen,bygrensen). 
-synplace(bykjerna,sentrum). 
-synplace(bykjernen,sentrum). 
-synplace(byn,sentrum).  %% By'n==>byn WEB
-synplace(byne,byen). 
-synplace(bynes,byneset). %% TA-110331 
-  %% w(bynes,[name(bynes,n,0),name(bryns,n,0),name(byens,n,0),name(byes,n,0)])
-synplace(bysenet,byneset). 
-synplace(bysentralen,hovedterminalen). 
-%%  synplace(bysn).  byen | byåsen ?
-synplace(byterminalen,hovedterminalen). 
-synplace(byterminal,hovedterminalen).  
-synplace(bytårnet,tyholttårnet).  
-synplace(byås,byåsen). 
-synplace(byåse,byåsen). 
-synplace(byåsenhallen,byåsen_skole).   
-synplace(byåsensenter,byåsen_butikksenter).
-synplace(byåsenvgs, byåsen_skole). %% migosenteret). %%  byåsen_skole). 
-synplace(byåskole,byåsen_skole).        
-synplace(byåsskole,byåsen_skole).       %% . . . 
-synplace(bæretrøa,værestrøa). %% off name 
-synplace(bærføtsvei,berføttsvei).  %% Doesn'thelp
-synplace(bærrføtsvei,berføttsvei). 
-synplace(bøchmannsvn,bøckmans_street). 
-synplace(bøchmannsvn,bøckmansveien). 
-synplace(bøckmannsveg,bøckmans_street). 
-synplace(bøckmannsveg,bøckmansveien). 
-synplace(bøckmannsvegen,bøckmans_street). 
-synplace(bøckmannsvegen,bøckmansveien). 
-synplace(bøckmannsvei,bøckmans_street).  %% (discr>1). . . 
-synplace(bøckmannsvei,bøckmansveien).  %% (discr>1). . . 
-synplace(bøckmannsveien,bøckmans_street). 
-synplace(bøckmannsveien,bøckmansveien). 
-synplace(bøckmansvei,bøckmans_street). 
-synplace(bøckmansvei,bøckmansveien). 
-synplace(børdsåns,bårdsøns).  %% actual
-
-synplace(carljohnssonsvei,karl_jonssons_veg). 
-synplace(carljonssonsvei,karl_jonssons_veg). 
-
-synplace(carlottenlundkirke,charlottenlund_kirke).   
-synplace(casperlundesgate,casper_lundes_veg). 
-synplace(casperlundesv,casper_lundes_veg). 
-synplace(casperlundesv,casper_lundes_veg). 
-synplace(casperlundesveg,casper_lundes_veg). 
-synplace(casperlundesvei,casper_lundes_veg).
-synplace(cbs,kbs). 
-synplace(cbssenteret,kbs_senteret).  %%
-synplace(center,hovedterminalen). 
-synplace(centere,hovedterminalen). 
-synplace(centre,hovedterminalen). 
-synplace(centrum,hovedterminalen).  %% Necessary, centrum is partname
-
-synplace(charlottenberg,charlottenlund). 
-synplace(chalottenlud,charlottenlund). 
-synplace(chrlottelud,charlottenlund).   
-synplace(chrlottenlun,charlottenlund).  
-
-synplace(char,charlottenlund). 
-synplace(charlotenlumd,charlottenlund). 
-synplace(charlotnlund,charlottenlund). 
-synplace(charlotten,charlottenlund). 
-synplace(charlottend,charlottenlund). 
-synplace(charlottenli,charlottenlund). 
-synplace(charlottenlid,charlottenlund). 
-synplace(charlottenlundungdomskole,charlottenlund_skole).  
-synplace(charottelund,charlottenlund). 
-synplace(chl,charlottenlund). 
-
-synplace(cicilienborg,cecilienborg). 
-synplace(cicillienborg,cecilienborg). 
-synplace(cirkus,sirkus_shopping).
-synplace(cirkussenteret,sirkus_shopping).
-synplace(cirkusshopping,sirkus_shopping).
-synplace(cisilienborg,cecilienborg). 
-synplace(citi,city).  %% not nec syd (Eng)
-%% synplace(cityn,city_syd). %%  confuse
-synplace(citilade,city_lade). 
-%% synplace(city,hovedterminalen). %% confuse city syd %% TA-110627
-synplace(citylade,city_lade). 
-synplace(cytisyd,city_syd). 
-
-
-synplace(d1,dronningens_gate_d1). 
-%synplace(d2,dronningens_gate_d2).
-%synplace(d3,dronningens_gate_d3).
-synplace(d4,dronningens_gate_d4).
-
-
-synplace(dagevoll,dragvoll). 
-synplace(dalenhage,dalen_hageby). 
-synplace(dalgaard,dalgård). 
-synplace(dalgården,dalgård). 
-
-
-synplace(dalsethveien,dalsetveien). 
-synplace(dargvold,dragvoll). 
-synplace(darvoll,dragvoll). 
-synplace(degavoll,dragvoll). 
-
-synplace(devle,devlesvingen). 
-synplace(devlesveien,devlesvingen). 
-
-
-synplace(dgarvoll,dragvoll). 
-synplace(diplomis,iskremfabrikken). 
-synplace(diplomisfabrikken,iskremfabrikken). 
-synplace(distriktspsykiatriske,dps). %%  Tiller
-synplace(dlane,dalen). 
-%% synplace(dmmh,dalen_hageby). 
-
-
-synplace(doggparken,solsiden). 
-synplace(dokkaia,solsiden). 
-synplace(dokkanparken,solsiden). 
-synplace(dokkbakken,solsiden). 
-synplace(dokkerparken,solsiden).  
-synplace(dokkpark,solsiden). 
-synplace(dokkplassen,solsiden). 
-synplace(dors,dora). 
-synplace(drag,dragvoll). 
-synplace(drag,dragvoll).  %% -dragv,dora,etc. 
-synplace(dragol,dragvoll). 
-synplace(dragold,dragvoll).  
-synplace(dragv,dragvoll). 
-synplace(dragvild,dragvoll). 
-synplace(dragvo,dragvoll). 
-synplace(dragvod,dragvoll). 
-synplace(dragvokk,dragvoll). 
-synplace(dragvoldt,dragvoll). 
-synplace(dragvollen,dragvoll). 
-synplace(dragvoo,dragvoll). 
-synplace(dragwall,dragvoll). 
-synplace(dravold,dragvoll). 
-synplace(drettsanlegget,idrettsplass).  %%?
-synplace(drgate,dronningens_gate). 
-synplace(drgt,dronningens_gate). 
-synplace(dron,dronningens).  %%//WYWIWYR Whatyouwriteiswhatyou(haveto)read
-synplace(droningata,dronningens_gate). 
-synplace(droningen,dronningens). 
-synplace(droninggata,dronningens_gate). 
-synplace(droningsgata,dronningens_gate). 
-synplace(dronn,dronningens). 
-synplace(dronninegt,dronningens_gate).  %%
-synplace(dronningensgate,dronningens_gate). 
-synplace(dronningensgt,dronningens_gate). 
-synplace(dronninges,dronningens). 
-synplace(dronningsgate,dronningens_gate). 
-synplace(dronningsgate,dronningens_street).  %%dronningsgate40?"
-synplace(dronningsgaten,dronningens_gate). 
-synplace(dronningt,dronningens_gate). 
-synplace(dronnsingsgate,dronningens_gate). 
-synplace(dråningensgate,dronningens_gate).  
-synplace(dubedalsveien,dybdahls_veg). 
-synplace(dvalentinlyst,valentinlyst). 
-synplace(dvoll,dragvoll). 
-
-synplace(dybdahls,dybdals).  %%allow station to domninate
-synplace(dybdalsv,dybdahls_veg).  %%
-synplace(dybdalvegen,dybdahls_street).  %%
-synplace(dybdalveien,dybdahls_street).  %% <----h
-synplace(dybdalveien,dybdahls_veg). 
-synplace(dybdedalsvei,dybdahls_veg). 
-synplace(dybedalsveien,dybdahls_veg). 
-synplace(dybendal,dybdals). 
-synplace(dybendals,dybdals). 
-synplace(dybendalsgate,dybdahls_veg). 
-synplace(dybvika,djupvika). 
-synplace(dypedalsveien,dybdahls_veg). 
-synplace(dypvika,djupvika). 
-synplace(dødensdal,høgskoleringen).  
-synplace(ebergskole,'Eberg skole'). 
-synplace(ebrochs,brochs). 
-synplace(ehimdal,heimdal). 
-synplace(einar_tambarsjelves_gt,einar_tambarskjelves_gate). 
-
-synplace(einartambarsjelves,einar_tambarskjelves_gate). %% <-- ?? 
-synplace(einartambarskjelvensgate,einar_tambarskjelves_gate).
-synplace(einartambarskjelvesgate,einar_tambarskjelves_gate). 
-synplace(einartambarskjelvesgt,einar_tambarskjelves_gate). 
-synplace(einartambarskjelvsgate,einar_tambarskjelves_gate). 
-synplace(einartamberskjelvs,einar_tambarskjelves_gate). 
-synplace(einartamerskjelvs,einar_tambarskjelves_gate). 
-
-synplace(ekraftverket,e_verket). 
-synplace(ekspedisjonen,servicekontoret). 
-synplace(elgeset,elgeseter). 
-synplace(elgseretgate,elgesetergate). 
-synplace(elgsetergate,elgeseter_street). 
-synplace(elset,elgeseter).  %%?
-synplace(elseter,elgeseter). 
-synplace(engebrektsons,engelbrektssons). 
-synplace(engelbektson,engelbrektssons). 
-synplace(engelbr,engelbrektssons). 
-synplace(engelbregtson,engelbrektssons). 
-synplace(engelbregtsons,engelbrektssons). 
-synplace(engelbrekson,engelbrektssons). 
-synplace(engelbrektsons,engelbrektssons). 
-synplace(engelbretsons,engelbrektssons).  %%ssons
-synplace(engelbrikstons,engelbrektssons). 
-synplace(engelsåsen,engelsås_street). 
-synplace(enrumveien,enerom_street). 
-synplace(erlinghøviksvei,erling_høviks_street). 
-synplace(esp,esp_meieri). 
-synplace(estnestadveien,estenstadveien).  %%NOT synplaceandspellcor
-synplace(fagerheimalle,fagerheim_alle).  %%automatic %%
-synplace(fagerheimallee,fagerheim_alle). 
-synplace(fagerli,fagerliveien).  %%redundant
-synplace(fagerlibakken,fagerliveien).  %%?
-synplace(falgård,dalgård). 
-synplace(falkbergsvei,johan_falkbergets_vei). %
-%% synplace(fengsel,tunga_kretsfengsel). %% YA-080526
-synplace(ferstads_street,nedre_ferstad_street).  
-synplace(ferstadsvei,nedre_ferstad_street). 
-synplace(festning,festningen). 
-synplace(festningata,festningsgata). 
-synplace(festningensgaten,festningsgata). 
-synplace(festningensgt,festningsgata). 
-synplace(fiolinbuen,fiolsvingen). 
-synplace(fiolinsvingen,fiolsvingen). 
-synplace(fiolkrysset,fiolsvingen).  
-synplace(fiolsv,fiolsvingen). 
-synplace(fiolvei,fiolsvingen). 
-synplace(fiolveien,fiolsvingen). 
-synplace(firterminalen,pirbadet).  
-synplace(fjellheim,bergheim).  %%?
-synplace(fjellseter,fjellsæter). 
-synplace(fjordsvingen,fiolsvingen).  %%fjol
-
-synplace(fjosli,fjøslia). 
-
-synplace(flak,flakk). 
-
-synplace(flatssentere,flatåsen_senter). 
-synplace(flatås,flatåsen). 
-synplace(flatåsensentrum,flatåsen_senter). 
-synplace(flatåsenter,flatåsen_senter). 
-synplace(flatåsentere,flatåsen_senter). 
-synplace(flatåssenter,flatåsen_senter). 
-synplace(flatåssentre,flatåsen_senter). 
-synplace(flatåssentrum,flatåsen_senter). 
-synplace(flybussholdeplass,flybussterminalen). 
-synplace(flybussholdeplassen,flybussterminalen). 
-synplace(flybussstasjon,flybussterminalen). 
-synplace(flybusstasjon,flybussterminalen). 
-synplace(flybusstermial,flybussterminalen). 
-synplace(flybussterminal,flybussterminalen). 
-synplace(flybusstopp,flybussterminalen). 
-synplace(flåtasen,flatåsen). 
-synplace(flåtasveg,øvre_flatåsveg). 
-synplace(fløshaugen,gløshaugen). 
-synplace(folketmuseet,folkemuseum). 
-synplace(fossestua,fossestu_street).  %%
-synplace(fossestua,fossestuv). 
-synplace(fossestuen,fossestuv). 
-synplace(fragvoll,dragvoll). 
-synplace(fremstad,fjermstads). 
-synplace(fremstads,fjermstads). 
-
-synplace(frostadveien,frosta_street). %% \+ ferstadveien
-
-synplace(fønningsbakken,rønningsbakken). 
-synplace(gadenwist,stjørdals_street).  %%!stjørdals_streetNOT station!
-synplace(gamlekongevei,gamle_konge_street). 
-synplace(gamleåsvei,gamle_ås_street). 
-synplace(gamleåsveien,gamle_ås_street). 
-synplace(gardermoens,gardemoens). 
-synplace(gartneriet,gartnerhallen). 
-
-synplace(generalvibesvei,general_wibes_street). 
-
-synplace(gerg,berg). 
-synplace(ghaugen,gløshaugen). 
-synplace(ghøs,gløshaugen).  %%slip
-synplace(gildheimen,gildheim). 
-synplace(gjaøshaugen,gløshaugen).  
-synplace(gjernbanestasjon,jernbanestasjon). 
-synplace(gjernbanestasjonen,jernbanestasjonen). 
-
-synplace(gjødselhaugen,gløshaugen).  %% :-)
-synplace(gjøs,gløshaugen). 
-synplace(gkls,gløshaugen).  %% dbl neib
-synplace(gkøs,gløshaugen). 
-synplace(glas,gløshaugen).  %% :-) 
-synplace(glis,gløshaugen).  %% :-) 
-synplace(gløa,gløshaugen). 
-synplace('gla|s',gløshaugen).  %% glÃ¦s  %% =<5  
-synplace('gla¦s',gløshaugen).  %% 
-
-synplace(glashagen,gløshaugen). 
-synplace(glashogan,gløshaugen).
-synplace(glashogen,gløshaugen).
-synplace(glashogenan,gløshaugen).
-synplace(glashougen,gløshaugen). 
-synplace(glashuagen,gløshaugen).
-synplace(glashuange,gløshaugen).
-synplace(glashøgen,gløshaugen). 
-
-synplace(glauhogen,gløshaugen). 
-synplace(glauhogene,gløshaugen). 
-synplace(glaushagen,gløshaugen). 
-synplace(glaushaugen,gløshaugen). 
-synplace(glaushogen,gløshaugen). 
-synplace(glaushøgen,gløshaugen). 
-synplace(glaøs,gløshaugen).       %% glÃ¸s  Ø-trøbbel
-synplace(glaøsgaugen,gløshaugen).
-synplace(glaøshaugne,gløshaugen). %% glÃ¸shaugne 
-synplace(glhaugen,gløshaugen).  
-synplace(glodhaugen,gløshaugen). 
-synplace(gloes,gløshaugen). 
-synplace(gloeshaugen,gløshaugen). 
-synplace(glohaugen,gløshaugen). %% langlohaugen?
-synplace(glohogen,gløshaugen). 
-synplace(glos,gløshaugen). 
-synplace(glosaugen,gløshaugen).  
-synplace(glosh,gløshaugen). 
-synplace(gloshagen,gløshaugen).  
-synplace(gloshauegn,gløshaugen). 
-synplace(gloshaug,gløshaugen). 
-synplace(gloshaugen,gløshaugen). 
-synplace(gloshauen,gløshaugen). 
-synplace(gloshogen,gløshaugen). 
-synplace(gloshougen,gløshaugen). 
-synplace(gloshugen,gløshaugen). 
-synplace(gloushagen,gløshaugen).
-%% synplace(gls,gløshaugen).  %% limit 
-synplace(glsø,gløshaugen). 
-synplace(glsøaughne,gløshaugen).
-synplace(glæs,gløshaugen). 
-
-synplace(glød,gløshaugen). 
-synplace(gløeshaugen,gløshaugen). 
-synplace(gløos,gløshaugen). 
-synplace(gløs,gløshaugen). % \+ glis/gls/
-synplace(gløsh,gløshaugen). 
-synplace(gløsha,gløshaugen).
-synplace(gløshagen,gløshaugen). 
-
-synplace(gløshaugane,gløshaugen). 
-synplace(gløshaugennord,gløshaugen_nord). 
-synplace(gløshaugensyd,gløshaugen_syd). 
-synplace(gløshaugensør,gløshaugen_syd). 
-synplace(gløshaun,gløshaugen). 
-synplace(gløshogen,gløshaugen). 
-synplace(gløshuagne,gløshaugen). 
-synplace(gløshævven,gløshaugen). 
-synplace(gløshgen,gløshaugen).
-synplace(gløshøyen,gløshaugen). 
-synplace(gløsnord,gløshaugen_nord). 
-synplace(gløss,gløshaugen). 
-synplace(gløsshaggen,gløshaugen). 
-synplace(gløst,gløshaugen). 
-synplace(glåøs,gløshaugen).  %% GlÃ¸s
-synplace(glås,gløshaugen).  
-    synplace(løshaugen,gløshaugen).
-
-synplace(godsnsb,terminalen). 
-synplace(graaemølla,graaemølna).  
-synplace(graakaillbanen,gråkallbanen). 
-synplace(graakalbanen,gråkallbanen). 
-synplace(graakallen,gråkallen). 
-synplace(graakollen,gråkallen). 
-synplace(graemølne,graaemølna). 
-synplace(gragvoll,dragvoll). 
-synplace(granaasen,granåsen). 
-synplace(granasen,granåsen).  %% doesnt help for partnames 
-synplace(granåsenanlegget,granåsen_vm_anlegget). 
-synplace(granåsengård,granåsen_gård). 
-synplace(granåsens,granåsen). %% granÃ¥sens skole?  *sivilforsvarets skole, granåsen
-             
-synplace(grevkott,grevskotts).  
-synplace(grevsgott,grevskotts).
-synplace(grevsk,grevskotts). 
-synplace(grevskot,grevskott). 
-synplace(grevskot,grevskotts).  
-synplace(grevskots,grevskotts). 
-synplace(grevskottsvei,anton_grevskotts_vei).  
-synplace(grevstokk,grevskott). 
-synplace(grevstokks,grevskotts). 
-synplace(grevstokksvei,grevskotts_vei). 
-
-synplace(grilstadheia,grilstadkleiva).  %% ? 
-synplace(grushaugen,gløshaugen).  %%  :-)
-
-synplace(graønnlnd,grønnland). %% avoid grønlia %% TA-101118
-
-synplace(grønnlien,grønnlia). %% \+ granlia %% amble#
-synplace(gråkaillbanen,gråkallbanen). %% not stat/neib
-synplace(gråkalen,gråkallen). 
-synplace(gråkall,gråkallen). 
-synplace(gråkolen,gråkallen). 
-synplace(gråmølla,graaemølna). 
-synplace(gråmøllen,graaemølna). 
-synplace(grånemølna,graaemølna). 
-synplace(guenget,buenget). 
-synplace(gulashogan,gløshaugen). 
-synplace(gyda,gina). % krog 
-synplace(gøls,gløshaugen). 
-synplace(gølshaguen,gløshaugen). 
-synplace(gøs,gløshaugen). 
-
-synplace(haakon,håkon).  %%OK,norecursion
-synplace(haakon7gt,haakon_vii_gate_25). 
-synplace(haakonviigt,haakon_vii_gate_25). 
-synplace(haarfagres,hårfagres). 
-synplace(hagnesvingen,haugnessvingen). %% naer miss
-
-synplace(hakobsli,jakobsli). 
-synplace(hallfredhøyemsvei,hallfred_høyems_vei). 
-synplace(halseth,halset). 
-
-synplace(hansfinnesgt,hans_finnes_street). 
-synplace(hanskebakken,hanskemakerbakken). 
-synplace(hanskemakerveien,hanskemakerbakken). 
-synplace(hansmakerbakken,hanskemakerbakken). 
-synplace(haraldbothnersvei,harald_bothners_veg). 
-synplace(haraldhårfagresgate,harald_hårfagres_street).  
-synplace(haraldhårfagresgt,harald_hårfagres_street).  
-synplace(haraldhårfagresvei,harald_hårfagres_street).  
-synplace(hasselvika,hasselbakken). 
-synplace(haugnessveien,haugnessvingen). 
-synplace(haugnesveien,haugnessvingen). 
-synplace(haukås,haukåsen). 
-synplace(haulowbakken,thaulowbakken). 
-synplace(havnegata,pirbadet).   %%???(case)
-synplace(havstads,havstadsenteret).  %%destroyshavstadsenteret?
-synplace(havstadsenter,havstadsenteret). 
-synplace(havstadtunet,havstadsenteret). 
-synplace(havstasenter,havstadsenteret). 
-synplace(haøgskoleparken,høyskoleparken). %%  hÃ¸gskoleparken? 
-
-synplace(hofstads,ofstads). %%  ingeborg nohelp
-synplace(hogskoleparken,høyskoleparken). 
-
-synplace(haøyskoleparken,høyskoleparken). %%   Nec 
-
-synplace(heimdalsbyen,heimdal_sentrum). 
-synplace(heimdalsentralstasjon,heimdal_stasjon). 
-synplace(heimdalst,heimdal_stasjon). 
-synplace(helhus,melhus). 
-synplace(hembres,hambros). %% TA-101111
-synplace(hemidla,heimdal). 
-synplace(hemnskjell,hemnskjel). 
-synplace(henry,henrik). 
-
-synplace(herløfs,herlofsons) . %% ? 
-
-synplace(herlofsenløypa,herlofsonsløypa). 
-synplace(hestehaven,prof_brochs_gate). 
-synplace(hesthaven,prof_brochs_gate). 
-%% synplace(himmelen,værnes).  %% -> airplane 
-synplace(himmelportalen,perleporten). 
-synplace(hjelstrupsvei,christian_jelstrups_v).  %%
-synplace(hjernbanen,ts). %% AtB. 
-synplace(hjernbanestasjon,ts). %% AtB. 
-synplace(hjørtlerveien,gjørtler_street). 
-synplace(hoegga,hoeggen). 
-synplace(hoeggenskole,hoeggen_skole). 
-synplace(hogskolering,høgskoleringen). 
-synplace(hogskøleringen,høyskoleringen). 
-synplace(hogskølringen,høyskoleringen). 
-synplace(hoholt,moholt). %parasitictypo
-synplace(hoieflata,koieflata).  
-synplace(holocks,hørløcks). 
-synplace(holtemansv,holtermanns_street). 
-synplace(holtemansveien,holtermansveien). 
-synplace(holtermanveg,holtermanns_street).  %%HMV17
-synplace(horlocks,hørløcks). 
-synplace(hornbergvegen,hornebergveien).  %%
-synplace(hornbergvegen,hornebergveien).  %%Thestreet
-synplace(hornbergveien,hornebergveien).  %%
-synplace(hornbergveien,hornebergveien).  %%Thestation
-synplace(hornberveien,hornbergveien). 
-synplace(hornebergvegen,hornebergveien).  %%
-synplace(hornebergveien,hornebergveien).  %%
-synplace(hornebyvegen,hornebergveien).  %%
-synplace(hornebyveien,hornebergveien).  %% ?
-synplace(hornæs,thornæs). 
-synplace(hosp,hospital). 
-%% synplace(hospital,regionsykehuset).  %% (anglicism) 
-synplace(hospitalskyrkan,hospitalskirka). 
-synplace(hospitalsløkkan,hospitalløkkan). 
-synplace(hostipalløkka,hospitalløkkan). 
-synplace(hostipalsløkka,hospitalløkkan). 
-synplace(hotrelmannsvei,holtermanns_street). 
-synplace(hovebergveien,hornbergveien). 
-synplace(hovedbanestasjonen,ts). %% AtB.  
-synplace(hovedjernbanestasjon,ts). %% AtB. 
-synplace(hovedpostterimalen,postterminalen).  %% ?
-synplace(hovedstasjon,ts). %% AtB. 
-synplace(hsopitalløkkan,hospitalløkkan). 
-synplace(hsopitalløkkan,hospitalløkkan). 
-synplace(ht,hovedterminalen).  %%hovedterminalen?
-synplace(hurloks,hørløcks). 
-synplace(humlehaugen,humlehaug_street).  
-synplace(hundhamaren,hundhammeren). 
-synplace(hunnhammern,hunhammeren). 
-
-synplace(husdaytunet,husebytunet).  %%  dbl sms feil %%?
-%% synplace(huseby,husebytunet). 
-synplace(husebyhalle,husebyhallen). 
-synplace(husebytun,husebytunet). 
-
-synplace(hvaløyv,valøyvegen). 
-synplace(hvaløyveien,valøyvegen). 
-synplace(hvilhaugen,kvilhaugen). 
-synplace(håkon,haakon).  %% OK, no recursion
-synplace(hårstadreina,hårstad). 
-synplace(hægstadmoen,heggstadmoen). 
-synplace(høglieveien,høili_street).  
-synplace(høgskolebakken,høyskoleringen). 
-synplace(høgskolering,høgskoleringen). 
-synplace(høgskolring,høyskoleringen). 
-synplace(høgskoleringens,høyskoleringens). %% allow høgskoleringens adresse 
-                                         
-synplace(haørlocksvei,hørløcks_street). %% TA-101123
-synplace(høili,høili_street).  %%
-synplace(høiskole,høgskole). 
-synplace(høiskolen,høgskolen). 
-synplace(hølock,hørløcks). 
-synplace(hørlocs,hørløcks). 
-synplace(hørløc,hørløcks). 
-
-synplace(høyskolring,høyskoleringen). 
-synplace(høysteh,høiset). 
-synplace(ia,ila). 
-synplace(iade,lade). 
-synplace(iademoen,lademoen). 
-synplace(iansensvei,lanssens_street).  %%<--helps
-synplace(ianssens,janssens). 
-synplace(iddretsanlegg,idrettsanlegg). 
-synplace(idr,idrettsplass). 
-synplace(idrattsenter,idrettsbygg). 
-synplace(idretsanlegg,idrettsanlegg). 
-synplace(idretsplas,idrettsplass).  %%Ranheim
-synplace(idrettbygg,idrettsbygg). 
-synplace(idrettsanleg,idrettsbygg). 
-synplace(idrettsanlegg,idrettsbygg). 
-synplace(idrettsanlegg,idrettsplass). 
-synplace(idrettsanlegget,idrettsplassen). 
-synplace(idrettsbanen,idrettsbygget). 
-synplace(idrettsbygg,idrettssenter). 
-synplace(idrettsbygningen,idrettsbygget). 
-synplace(idrettsenter,idrettssenter). 
-synplace(idrettsp,idrettsplassen). 
-synplace(idrettspark,idrettplass). 
-synplace(idrettspl,idrettsplassen).  %%
-synplace(idrettssenter,idrettsbygg). 
-synplace(idrettssenter,idrettsbygg). 
-synplace(idrettssenteret,idrettsbygget). 
-synplace(idrettssentret,idrettsbygget). 
-synplace(ihla,ila). 
-%% synplace(ika,ikea). 
-%% synplace(ike,ikea).    %% ikke
- synplace(ikae,ikea).  %%
-synplace(ilakirka,ila). 
-synplace(ilakrysset,ila). 
-synplace(ilas,ila). 
-synplace(ile,ila). 
-synplace(ilen,ila). 
-synplace(illa,ila). 
-synplace(iloa,ila). 
-synplace(ils,ila).   
-synplace(ilsøra,ila). 
-synplace(ilta,ila). 
-synplace(indusrvegen,industri_street).  
-synplace(indæretsveien,innherredsveien). 
-synplace(ing,ingemann). 
-synplace(ingeborgofstadsvei,ingeborg_ofstads_vei). 
-synplace(ingenmanns,ingeman). %% torpsv  
-synplace(ingenmannstorpsvei,ingemann_torps_vei). 
-synplace(ingrid,ingeborg).  %% ofstad (or just use I.)
-synplace(ingv,ingvald). 
-synplace(ingvars,ingvar). 
-synplace(inherraveien,inherredsveien). 
-synplace(inherred,innherredsveien).  %%
-synplace(inneherredsvegen,innherredsveien). 
-
-synplace(innherdsveien,innherredsveien). 
-synplace(innherdsveien,innherreds_street).   %% Touchy
-synplace(innheredsveien,innherreds_street).  %% Touchy
-
-synplace(innherred,innherredsveien).  %% ?
-synplace(iskremfab,iskremfabrikken). 
-synplace(iskremfabr,iskremfabrikken). 
-synplace(istgårds,ystgård). 
-synplace(it_bygget,itbygget).  %% if applicable
-synplace(iugla,ugla). 
-synplace(jacbsli,jakobsli). 
-synplace(jacoblsli,jakobsli). 
-synplace(jacobsgrend,jakobsli).  %%
-synplace(jacobsligrend,jakobsli). 
-synplace(jacobsligrenda,jakobsli). 
-synplace(jacokbsli,jakobsli). 
-synplace(jacoksli,jakobsli).
-synplace(jaconsli,jakobsli). 
-synplace(jacosli,jakobsli). 
-synplace(jade,lade).    
-synplace(jadejarlen,ladejarlen).
-synplace(jakobli,jakobsli).  
-synplace(jakobslien,jakobsli).    %% (NB jakobslien syndrom)
-synplace(jakobsligrend,jakobsli). 
-synplace(jakobsligrenda,jakobsli). 
-synplace(jakobsliidrettsplassen,idrettsplassen). 
-
-synplace(jakobsliveiennedre,jakobsliveien_nedre). %% vn 
-
-synplace(jakobslivegen,jakobsliveien). %% nec diff names station/street
-synplace(jakobsliveien,jakobslivegen).
-synplace(jalsteingård,halstein_gård). 
-synplace(jaobsli,jakobsli).  %%
-synplace(jarlsveien,jarleveien).  %% Collides Håkon Jarls gate
-synplace(jarnebanen,jernbanen). 
-synplace(jebes,jeve).  %% jebes gate -> jebeveien %% <4
-synplace(jeimdal,heimdal). 
-synplace(jeldsrup,jelstrup). 
-synplace(jerbanest,ts). %% AtB. 
-synplace(jernbabanen,jernbanestasjonen). %% sp 
-synplace(jernbanen,jernbanestasjonen). 
-synplace(jernbanest,ts). %% AtB. 
-synplace(jernbanestasj,jernbanestasjonen).
-synplace(jernbanestasjon,jernbanestasjonen). 
-synplace(jernbastasjonen,ts). %% AtB. 
-synplace(jnyborg,nyborg).  %% ?
-synplace(joakosbli,jakobsli). 
-synplace(jobsli,jakobsli). 
-synplace(jocobsli,jakobsli). 
-synplace(joh,john).  %%Joh Skaarvoldsv
-synplace(johanfalkbergetsveg,johan_falkbergets_vei). 
-synplace(johanfalkbergetsvei,johan_falkbergets_vei). 
-synplace(johanfalkebergetsveg,johan_falkbergets_vei). %% ? 
-synplace(johansen,johnsen). 
-synplace(johanvannsveien,jonsvannsveien). 
-synplace(john,johan). 
-synplace(johnssons,jonssons). 
-synplace(johnssonsvei,karl_jonssons_veg).
-
-%% synplace(johnsvannet,jonsvatnet).  %% TA-110202
-synplace(johnsvatnet,   jonsvannet).  %%
-synplace(johnsvattenet, jonsvannet).  %%
-synplace(jonnsvatnet,   jonsvannet).  %%
-synplace(jonsvann,      jonsvannet).  %%
-synplace(jonsvatn,      jonsvannet).  %%
-
-synplace(joieflata,koieflata). 
-synplace(jokabsli,jakobsli). 
-
-synplace(jonnsvansveikrysset,jonsvannsveikrysset).  %% unnec
-
-synplace(jonsdalsveien,jonsvannsveien). 
-
-synplace(jonsvansveikrysset,jonsvannsveikrysset).   %% unnec
-
-synplace(jonsvatnveien,jonsvannsveien).  %% (etc)
-
-synplace(jskobli,jakobsli). 
-
-synplace(k1,kongens_gt_k1). %% RS-130812
-synplace(k2,kongens_gt_k2).
-synplace(k_johnssonsveg,karl_jonssons_veg).  %% RS-120805 Space? 
-synplace(kade,lade). 
-synplace(kadehammeren,ladehammeren).  %%?
-synplace(kaien,pirbadet).
-synplace(kakobsli,jakobsli). 
-synplace(kapell,kirke). 
-synplace(kasperlundesgate,casper_lundes_veg). 
-synplace(kasperlundesv,casper_lundes_veg). 
-synplace(kasperlundesv,casper_lundes_veg). 
-synplace(kasperlundesvei,casper_lundes_veg). 
-synplace(katemsenter,kattemsenteret). 
-synplace(katta,katedralskolen). 
-synplace(kattemsenter,kattemsenteret).  %%
-synplace(kattemsentre,kattemsenteret). 
-synplace(katten,kattem).  %% (shadowed by "cat" )
-synplace(kattæmsentret,kattemsenteret). 
-synplace(kb,kbs). %% ?
-%% synplace(kinoen,kino).  %%subtle, u n d e r specified
-%% synplace(kinoene,kino). %% cinema 
-synplace(kinos,kinosenter). 
-synplace(kjerka,kirken). 
-synplace(kjøpesenter,senter). 
-synplace(klabu,klæbu).  %%-kabul
-synplace(klaebu,klæbu). 
-synplace(klaeburuta,klæburuten). 
-synplace(klaebuveien,klæbu_street). 
-synplace(klaebuveien,klæbuveien). 
-synplace(kleet,klett). 
-synplace(klet,klett).  
-synplace(klefstadhaug,klefstadhaugen). 
-synplace(kleisgate,kleists_street). 
-synplace(klestaghaugen,klefstadhaugen). 
-synplace(klettkrysset,klett). 
-synplace(klivhaugen,kvilhaugen).  %% only neib key swap
-synplace(klokkergården,klokkerplassen). 
-synplace(klokkerpl,klokkerplassen). 
-synplace(klostergt,klostergata). 
-synplace(klæburute,klæburuten). 
-synplace(klæburuten,klæburuten). 
-synplace(klæbuveien,klæbuvveien).  %%Databaseerror
-synplace(klæfstahaugen,klefstadhaugen). 
-synplace(klæt,klett). 
-synplace(klætt,klett).
-synplace(knudzonsgt,knudssøns_street). 
-synplace(koeflat,koieflata). 
-synplace(koieflaten,koieflata). 
-synplace(kolstadtoppen,kolstadhaugen). 
-synplace(komunesenter,kommunesenter). 
-synplace(komunesenteret,kommunesenter). 
-
-synplace(knggate,kongens_gate). 
-synplace(knggt,kongens_gate). 
-synplace(kong,kongens).  %%//WYWIWYR Whatyouwriteiswhatyou(haveto)read
-synplace(kongata,kongens_gate). 
-synplace(kongen,kongens). 
-synplace(konggata,kongens_gate). 
-synplace(kongsgata,kongens_gate). 
-synplace(konn,kongens). 
-synplace(konngt,kongens_gate).  %%
-synplace(kongensgate,kongens_gate). 
-synplace(kongensgt,kongens_gate). 
-synplace(konnges,kongens). 
-synplace(kongsgate,kongens_gate). 
-synplace(konngsgate,kongens_street).  %%dronningsgate40?"
-synplace(konngsgaten,kongens_gate). 
-synplace(konngt,kongens_gate). 
-synplace(konnsgsgate,kongens_gate). 
-synplace(kångensgate,kongens_gate).  
-
-synplace(kongevegen,kongsvegen). 
-synplace(kongleien,kongleveien).  
-synplace(koppan,kroppan). 
-synplace(kopparmarka,kroppanmarka). 
-synplace(koppermarka,kroppanmarka). 
-synplace(korppamarka,kroppanmarka). 
-synplace(korppanmrka,kroppanmarka). 
-synplace(kps,kbs). 
-synplace(kretsfengsel,tunga_kretsfengsel). 
-synplace(krigshøyskolen,luftkrigsskolen). 
-synplace(krigsskolen,luftkrigsskolen). 
-synplace(kristian,christian).  %%Didithelp???
-synplace(krmarka,kroppanmarka). 
-synplace(krogruds,kroglunds). 
-synplace(krogs,kroghs).  %%//Doesn'thelp
-synplace(kroksti,krokstien). 
-synplace(kropanmarke,kroppanmarka). 
-
-synplace(kroppanm,kroppanmarka). 
-synplace(kroppama,kroppanmarka).  %%otherwise kropanm partname
-%% synplace(kroppanm,kroppanmarka_snuplass). 
-
-synplace(kroppanma,kroppanmarka). 
-synplace(kroppanmarke,kroppanmarka). 
-synplace(kroppanmarken,kroppanmarka). 
-synplace(ksb,kbs). 
-synplace(ktv,kvt). 
-synplace(kulsaas,kolsås). 
-synplace(kullsås,kolsås). 
-synplace(kundåsen,lundåsen_n). 
-synplace(kvamshaug,kvamshaugen). 
-synplace(kvannhaugen,kvamshaugen). 
-synplace(kvannshaugen,kvamshaugen). 
-synplace(kvilhagne,kvilhaugen). 
-synplace(kvilhaugengård,kvilhaugen). 
-synplace(kvilhøgden,kvilhaugen). 
-synplace(kysstasjon,skysstasjon). 
-synplace(kyststad,kystad). 
-synplace(kyvann,kyvatnet). 
-synplace(kyvannet,kyvatnet).  %% (No help really,see comment)
-synplace(kyvatn,kyvatnet). 
-synplace(kågleveien,kongleveien). 
-synplace(kålsta,kolstad). 
-synplace(kålstad,kolstad). 
-synplace(kæbu,klæbu). 
-synplace(køpmansgata,kjøpmanns_street). 
-synplace(lad,lade). 
-synplace(lada,lade). 
-synplace(ladd,lade).  
-synplace(ladealle,lade_alle_80). 
-synplace(ladecity,city_lade). 
-synplace(ladehalvøya,lade). 
-synplace(ladejarlen,ladejarlen_v_g_s).
-synplace(ladejarlenvgs,ladejarlen_v_g_s). 
-synplace(ladejarlenvideregående,ladejarlen_v_g_s). 
-synplace(ladekirka,lade_kirke). 
-synplace(ladekirke,lade_kirke). 
-synplace(lademoens,lademoen).  %%kirkealle
-synplace(laden,lade).
-synplace(ladeområdet,lade). 
-synplace(ladf,lade). 
-synplace(ladr,lade). 
-synplace(laed,lade). 
-synplace(lafe,lade). 
-synplace(ladw,lade). 
-synplace(lalentinlyst,valentinlyst).  %%Contag
-synplace(lamoen,lademoen). 
-synplace(lamon,lademoen). 
-synplace(lande,lade). %% ?
-synplace(langrennstadion,langrennsstadion). 
-synplace(lase,lade).
-synplace(lattem,kattem). %% 1. 
-synplace(lautenhavnen,leuthenhaven). 
-synplace(lde,lade). 
-synplace(lderdalen,olderdalen). 
-synplace(leangenbanen,leangen). 
-synplace(lede,lade). 
-synplace(leitagrenda,leistadgrenda). 
-synplace(leiv,leif). 
-
-synplace(lekerdal,lerkendal). 
-synplace(lekrdal,lerkendal). 
-synplace(lekredal,lerkendal). 
-synplace(lekredal,lerkendal). 
-synplace(lerchendal,lerkendal_gård).  %% NB lerch, ikke same/cmpl
-synplace(lerkdal,lerkendal). 
-synplace(lerkedalstudentby,prestegårdsjordet). 
-synplace(lerkedel,lerkendal). 
-synplace(lerkend,lerkendal). 
-synplace(lerkendalområdet,lerkendal). 
-synplace(lerkendalsområdet,lerkendal). 
-synplace(lerkendalst,lerkendal_stadion). 
-synplace(lerkendalstadium,lerkendal_stadion). 
-synplace(lerkendalstudentby,prestegårdsjordet). 
-synplace(lerkendalsveien,lerkendalsvegen). 
-synplace(lerkenstad,lerkendal). 
-
-synplace(leuthenhaven,leuthenhaven). 
-% synplace(levang,levanger). %% another place ? 
-synplace(levange,levanger).  %%not Leangen(Levangesyndrom)
-synplace(leythenhaven,leuthenhaven). 
-synplace(liam,lian). 
-synplace(lide,lade).  %%?
-synplace(lien,lian). 
-synplace(lila,ila).  %% ? til_lila
-synplace(lillebyen,lilleby). 
-synplace(lilleryrydningen,lillerydningen). 
-synplace(lla,ila). 
-synplace(loavs,olavs). %% own sp
-synplace(loltbakken,loholtbakken). 
-synplace(lovhovet,lohove).
-synplace(lroppanmarka,kroppanmarka). 
-synplace(lsdamveien,isdamveien). 
-%% synplace(lsentrum,sentrum).  %% fra moltmyra ti lsentrum? \+ Moltmyra 10 
-synplace(lufthavnværnes,værnes). 
-synplace(luftkrigenskole,luftkrigsskolen). 
-synplace(lund,lundes). 
-
-synplace(lundaasen,lundåsen_n). 
-
-synplace(lunderåsen,lundåsen_n). % NB også foreign 
-
-synplace(lundemobk,lundemobakken). 
-synplace(lundåawn,lundåsen_n).  %%dblneib
-synplace(luthenhaven,leuthenhaven). 
-synplace(lykkensportal,bybro). 
-synplace(lykkesv,ivar_lykkes_street).  %%Lastnameoption
-synplace(lysholmsv,jørgen_b_lysholms_vei). 
-synplace(lysholms_vei,jørgen_b_lysholms_vei). 
-synplace(lythenhaven,leuthenhaven). 
-synplace(lærekendal,lerkendal). 
-synplace(løvaasen,løvaasveien). 
-synplace(løvaasvegen,løvaasveien). 
-synplace(løvaasveien,løvaasveien). 
-synplace(løvåsen,løvaasveien). 
-synplace(løvåsvegen,løvaasveien). 
-synplace(løvåsveien,løvaasveien).  %% Prefer station
-synplace(løytenhaven,leuthenhaven). 
-synplace(løytnanthagen,leuthenhaven). 
-
-synplace(m0,hovedterminalen). 
-synplace(m1,munkegata_m1).  %%
-synplace(m2,munkegata_m2).  %%
-synplace(m3,munkegata_m3).  %%
-synplace(m4,munkegata_m4).  %%
-synplace(m5,munkegata_m5).  %%
-
-synplace(m0,hovedterminalen). 
-synplace(m1,munkegata_m1).  %%
-synplace(m2,munkegata_m2).  %%
-synplace(m3,munkegata_m3).  %%
-synplace(m4,munkegata_m4).  %%
-synplace(m5,munkegata_m5).  %%
-
-synplace(magnusblindes,magnusblindes). 
-synplace(malhus,melhus). 
-synplace(malkvik,malvik). 
-synplace(mardo,nardo). 
-synplace(mardo,nardo). 
-synplace(mardosenter,nardosenteret). 
-synplace(mardosenteret,nardosenteret). 
-synplace(marienberg,marienborg).  %% ? (\+marienbergveien)
-synplace(marienenborg,marienborg). %% amble# doesnt make it 
-synplace(marienlyst,marienborg).  %% ?Oslo?
-synplace(mariesørdalsv,marie_sørdals_veg). 
-synplace(mariesørdalsvei,marie_sørdals_veg). 
-synplace(maskinistborgen,maskinistboligene). 
-synplace(maskinboligene,maskinistboligene). 
-synplace(maskiniststoppet,maskinistboligene). 
-synplace(mattem,kattem).  %%  sic
-synplace(mautirz,mauritz). 
-synplace(mburan,buran). 
-synplace(mdbyen,sentrum). 
-synplace(meieri,meierier). 
-synplace(meieriene,norske_meierier). 
-synplace(meldalen,meldal). 
-synplace(melhu,melhus). 
-synplace(melhussentrum,melhus). 
-synplace(mellhus,melhus). 
-synplace(mellolima,mellomila). %% swap not neibs 
-synplace(mellomlina,mellomila). 
-
-synplace(mehus,melhus). 
-synplace(meluhs,melhus). 
-synplace(melus,melhus). 
-synplace(meraker,meråker). 
-synplace(mgata,munkegata). 
-synplace(mgt,munkegata). 
-synplace(michael,michel). 
-synplace(midarvoll,nidarvoll). %% ? 
-synplace(midtgen,midteggen). 
-synplace(midtsandan,midtsanden). 
-synplace(migo,migosenteret).   %% TA-100519
-synplace(migosenter,migosenteret). 
-synplace(migosentre,migosenteret). %% TA-101004
-synplace(mikael,michel).  %% grendahlsvei Nøddef
-synplace(minkegaten,munkegata). %% nec 
-synplace(minsås,minsaas). 
-synplace(mkgt,munkegata). 
-synplace(moeggen,hoeggen). % ?
-%% synplace(moh,moholt).   % ? 
-synplace(moho,moholt).
-synplace(mohoholt,moholt). %%  ?
-synplace(moholstudentby,moholt_studentby). 
-synplace(moholtalee,moholt). 
-synplace(moholtallee,moholt). 
-synplace(moholtstudent,moholt_studentby). 
-synplace(mohotle,moholt). 
-synplace(moirana,mo_i_rana). 
-synplace(mokegata,munkegata). 
-synplace(mokegate,munkegata). 
-synplace(molholt,moholt).  %% Actually nec
-synplace(molot,moholt). 
-synplace(molt,moholt). 
-synplace(moltmyraøst,moltmyra_øst). 
-synplace(monkgata,munkegata). 
-synplace(monkholmen,munkholmen). 
-synplace(munkeholmen,munkholmen). 
-synplace(monkvold,munkvoll). 
-synplace(motolh,moholt). 
-synplace(msolsiden,solsiden). 
-synplace(muhult,moholt).  %%eng
-synplace(mukegt,munkegata).  %% avoid munkegt + M2
-synplace(mukgata,munkegata).  
-synplace(mumlegata,munkegata).  %% doubl neib
-synplace(mumlegaten,munkegata). 
-synplace(mumlegava,munkegata).  %% ?-) 
-synplace(mumlegt,munkegata).  %% Dbl neib sms
-synplace(munchegata,munkegata). 
-synplace(mungata,munkegata).  %% ikke sigurd munns v
-synplace(mungegata,munkegata). 
-synplace(mungejata,munkegata). 
-synplace(mungekata,munkegata). 
-synplace(mungt,munkegata). 
-synplace(munk,munkegata). 
-synplace(munkata,munkegata). 
-synplace(munke,munkegata). 
-synplace(munkeg,munkegata). 
-synplace(munkega,munkegata). 
-synplace(munkegat,munkegata). 
-synplace(munkegate,munkegata). 
-synplace(munkegaten,munkegata). 
-synplace(munkege,munkegata). 
-synplace(munkegsts,munkegata). 
-synplace(munkegt,munkegata).  %% ( munkegtm1 )
-synplace(munkegtr,munkegata). 
-synplace(munkgt,munkegata). 
-synplace(munkholmgata,munkegata). 
-synplace(munkvokk,munkvoll). 
-synplace(munkvollgård,munkvoll_gård). 
-synplace(murens,ourens). 
-synplace(murevik,muruvik). 
-synplace(muruvika,muruvik). %% MW-121119
-synplace(museet,museum). 
-synplace(musikmuseum,museum). 
-synplace(myen,byen). 
-synplace(mølleballen,møllebakken). 
-synplace(møllergate,møllebakken).  %% (?)
-synplace(nado,nardo). 
-synplace(nadrocentere,nardosenteret). 
-synplace(nadrocentret,nardosenteret). 
-synplace(nard,nardo). 
-synplace(nardobrua,nardokrysset). 
-synplace(nardokr,nardokrysset). 
-synplace(nardoområdet,nardo). 
-synplace(nardos,nardosenteret). 
-synplace(nardosent,nardosenteret). 
-synplace(nardosentereret,nardosenteret). 
-synplace(nardøhallen,trondheim_spektrum). 
-synplace(naro,nardo).  %%own
-synplace(naskinagentur,maskinagentur). 
-synplace(nedrebakklandet,bakkegata). 
-synplace(nedreelvehanv,nedre_elvehavn). 
-synplace(nedreflatåsen,søndre_flatåsen). 
-%synplace(nedrehumlehaugen,nedre_humlehaugen_vest). %%RS-121024 3 nye på Ranheim fra 24.10.2012
-synplace(nedrejakobsliveg,jakobsliveien_nedre). 
-synplace(nedrejakobslivei,jakobsliveien_nedre). 
-synplace(nedreleirfoss,nedre_leirfoss).  %% (automatic*)
-synplace(nergårdsvei,nordgaardsvei). 
-synplace(ngu,n_g_u). 
-synplace(niarøhallen,trondheim_spektrum). 
-synplace(nidarhalen,trondheim_spektrum). 
-synplace(nidarhallen,trondheim_spektrum). 
-synplace(nidrehallen,trondheim_spektrum). 
-synplace(nilsens,nielsens).  %% Otto nilsens vei/Aksel nilsens vei
-synplace(nnherredsveien,innherredsveien). 
-synplace(noa,nova). 
-synplace(noholdttun,moholttun). 
-synplace(noholt,moholt). synplace(omholt,moholt). 
-synplace(noll,voll). 
-synplace(nordgårds,nordgaards). 
-synplace(nordo,nardo). 
-synplace(nordgårdsvei,nordgaardsvei). 
-synplace(nordrehallset,nordre_halset). %% migosenteret). 
-synplace(nordrehalset,nordre_halset). %% migosenteret). 
-
-
-
-synplace(noreg,norge). 
-synplace(norgårds,nordgaards). 
-synplace(novakinosenter,nova_kinosenter). 
-synplace(nove,nova_kinosenter). 
-synplace(npva,nova_kinosenter). 
-synplace(nrdo,nardo). 
-synplace(nsb,ts). %% AtB.  %%(=tog?)
-synplace(ntnt,ntnu). %%  sperr
-synplace(ntnudragvoll,ntnu_dragvoll). 
-synplace(nunkegata,munkegata). 
-synplace(nunkvoll,munkvoll).  %% <
-synplace(nuseum,museum).  %%OWNsp
-synplace(nybakkeveien,nybakkveien). 
-synplace(nybakkveien,nyveibakken). 
-synplace(nybårdsveien,nygård_street). 
-synplace(nydal,nydalen). 
-synplace(nyenget,buenget).  %%Neib?
-synplace(nygaardsvei,nygårds_vei). 
-synplace(nygaardsvei,olav_nygårds_vei). 
-synplace(nygården,nygård). 
-
-%%%%%%%%%%%%%%%%  different names in/out synplace(nygårds,nygards).  %%street/station/misspellconfusion
-%% TA-110803
-
-synplace(nygårdsvei,nygårds_vei).  %%nec,alas
-synplace(nygårdsvei,olav_nygårds_vei). 
-synplace(nygårdsvolds,nygaardsvolds). 
-synplace(nygårdsvoll,nygaardsvolds). 
-synplace(nynu,ntnu).  
-synplace(nyorg,nyborg). 
-synplace(nyveibk,nyveibakken). 
-synplace(nyåsen,byåsen). 
-synplace(nåva,nova_kinosenter). 
-synplace(oeveraas,øverås). 
-synplace(ofstisv,øfstis_vei).  %%einarofstisv. 
-synplace(okanger,orkanger). 
-synplace(oksda,okstad). 
-synplace(ola,olaf). 
-synplace(ola,olav). 
-synplace(ola,ole). 
-synplace(olaf,ola). 
-synplace(olaf,olav). 
-synplace(olaf,ole). 
-synplace(olav,ola). 
-synplace(olav,olaf). 
-synplace(olav,olavs). 
-synplace(olav,ole). 
-synplace(olavnigardsvei,olav_nygårds_vei).   
-synplace(olavnygaardsvei,olav_nygårds_vei). 
-synplace(olavnygårdsvei,olav_nygårds_vei). 
-synplace(olavnygårdsvei,olav_nygårds_vei). 
-synplace(olavnygrdsvei,olav_nygårds_vei).  
-
-synplace(olavs,olav). 
-synplace(olavtryggvasonsgt,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB
-synplace(olavtrygvasonsgate,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB
-synplace(olderdal,olderdalen). 
-synplace(oldredal,olderdalen). 
-synplace(ole,ola). 
-synplace(ole,olaf). 
-synplace(ole,olav). 
-synplace(olovhospital,st_olavs_hospital). 
-synplace(omholt,moholt). 
-synplace(omkjøringsv,omkjøringsveien). 
-synplace(omkjøringsveg,omkjøringsveien). %% generic TSX 
-synplace(omkjøringsvei,omkjøringsveien). 
-synplace(omkjaøringsvegen,omkjøringsveien). %% ø-trøbbel
-
-
-synplace(oops,city_lade). 
-synplace(opland,oppland).  %%bus 10 skistua down
-synplace(oppland,opland).  %%bus1 0 up skistua
-synplace(ops,city_lade). 
-synplace(orkander,orkanger). 
-synplace(orkangar,orkanger). 
-synplace(osb,city_lade).  %% (not spell # < 4)
-synplace(ostersund,østersund). 
-synplace(ostmarkveien,østmark_street). %% no spell 1. letter 
-synplace(ostre,østre). 
-synplace(otb,othilienborg). 
-synplace(otelieborg,othilienborg). 
-synplace(otelienborg,othilienborg). 
-synplace(othb,othilienborg). 
-synplace(othborg,othilienborg). 
-synplace(othelieborg,othilienborg). 
-synplace(othilb,othilienborg). 
-synplace(othilienlenborg,othilienborg). 
-synplace(othilielinborg,othilienborg).
-synplace(otelieborg,othilienborg). 
-synplace(othelieborg,othilienborg). 
-synplace(otilinborg,othilienborg). 
-
-synplace(othilenbor,othilienborg). 
-synplace(othilenborg,othilienborg). 
-synplace(othili,othilienborg). 
-synplace(othilie,othilienborg). 
-synplace(othilien,othilienborg). 
-synplace(othilienb,othilienborg). 
-synplace(othilienbo,othilienborg). 
-synplace(othilienborg,othilienborg).  
-synplace(othillenborg,othilienborg). 
-synplace(othillhenborg,othilienborg). 
-synplace(othillienborg,othilienborg). 
-synplace(othillingborg,othilienborg). 
-synplace(otilenburg,otilenburg). 
-synplace(otillenborgveien,othilienborg_street). 
-synplace(otillingborg,othilienborg). 
-synplace(otlienborg,othilienborg). 
-synplace(otliengborg,othilienborg). 
-synplace(otthillienborg,othilienborg). 
-synplace(ottilenburg,othilienborg). 
-synplace(ottonielsensvei,otto_nielsens_veg). 
-synplace(oya,øya). 
-synplace(owesensgate,thonning_owesens_street).  %% $Generic
-synplace(pedermorsetsv,peder_morsets_vei). 
-synplace(pedermorsetsvei,peder_morsets_vei).
-synplace(peppe,reppe). 
-synplace(peraunetveien,persaun_street).  %%aun(Help?)
-synplace(peraunetveien,persaunetveien). %% TA-110415 
-synplace(peribadet,pirbadet). 
-
-synplace(persaun,persaune). 
-synplace(persaun,persaunet). %% Persaun leir %% TA-110519
-synplace(persaunetleir,persaunet_leir). 
-synplace(persaunetlier,persaunet_leir). 
-synplace(persaunetv,persaun_street). 
-
-synplace(persaunetvegen,persaunetveien). %% TA-110415
-synplace(persaunetveien,persaunetveien). %% TA-110415
-synplace(persaunevegen,persaunetveien).  %% TA-110415  
-synplace(persauneveien,persaunetveien).  %% TA-110415
-
-synplace(persautunet,persaunet). 
-synplace(persetunet,persaunet). 
-synplace(persuanevegen,persaun_street). 
-synplace(persunet,persaunet). 
-synplace(pier,pirbadet).  
-synplace(pierbadet,pirbadet). 
-synplace(pierbadet,pirbadet). 
-synplace(pinsen,prinsen).  %%confusewhitsun
-synplace(pir1,pirbadet).  
-synplace(pir2,pirbadet).  
-synplace(pirbad,pirbadet). 
-synplace(pirbade,pirbadet). 
-synplace(pirbated,pirbadet). 
-synplace(pirbsdet,pirbadet). 
-synplace(pirebadet,pirbadet). 
-synplace(pirenbadet,pirbadet). 
-synplace(piretbadet,pirbadet). 
-synplace(pirhuset,pirbadet).  
-synplace(pirii,pir_ii).  %%
-synplace(pirkaia,pirbadet). 
-synplace(pirn,pirsenteret). 
-synplace(pirsent,pirsenteret). 
-synplace(pirsenteteret,pirsenteret).
-synplace(pirteminal,pirbadet). 
-synplace(pirterimanlen,pirbadet).  
-synplace(pirterm,pirbadet).  
-synplace(pirtermenaln,pirbadet).  
-synplace(pirtermianelen,pirbadet).  
-synplace(pirtermianeltn,pirbadet).  
-synplace(pirtermilane,pirbadet).  
-synplace(pirtermin,pirbadet).  
-synplace(pirterminal,pirbadet).  
-synplace(piteminalen,pirbadet).   %%2spc
-synplace(plantagen,plantasjen). 
-synplace(plderdalen,olderdalen).  %% ?
-synplace(pnsen,prinsen). 
-synplace(politidistrikt,politihuset). 
-synplace(politihus,politihuset).  
-synplace(posten,postterminalen). 
-synplace(postenterminalen,postterminalen). 
-synplace(postterimalen,postterminalen). 
-synplace(postterm,postterminalen). 
-
-synplace(prbade,pirbadet). 
-synplace(prbadet,pirbadet). 
-synplace(prestegårdsbakken,prestegårdsjordet).  %%  ?
-synplace(prestegårdsgjerdet,prestegårdsjordet). %%  ?
-synplace(prestegårdsj,prestegårdsjordet). 
-synplace(prestejordjordet,prestegårdsjordet). %% \+ dsj
-synplace(presthuset,presthus_street). 
-synplace(presthushagen,presthus_street).  
-synplace(pribadet,pirbadet). 
-synplace(prinsegate,prinsens_gate). 
-synplace(prinsengata,prinsens_gate).  %% (actual)
-synplace(prinsengate,prinsens_gate). 
-synplace(prinsenkryss,prinsenkrysset). 
-synplace(prinsgade,prinsens_gate).  %% (actual)
-synplace(prisentret,pirsenteret).  
-%% synplace(prisenteret,pirsenteret).  %% unnec
-synplace(prochs,brochs). 
-synplace(profbroch,prof_brochs_gate). 
-
-synplace(profbrochsgt,prof_brochs_gate). 
-synplace(prov,prof).
-synplace(psentrum,sentrum). 
-synplace(qurens,ourens). %% ? 
-synplace(rabheim,ranheim). 
-synplace(ragvold,dragvoll). 
-synplace(ragvoll,dragvoll). 
-synplace(railway,ts). %% AtB. 
-synplace(ranheimidrettsplass,ranheim_idrettsplass). 
-synplace(ranheimidrettsplassen,ranheim_idrettsplass). 
-synplace(ranheimkirka,ranheim_kirke). 
-synplace(ranheimkirke,ranheim_kirke). 
-synplace(ranheimsidrettsplass,ranheim_idrettsplass). 
-synplace(ranheimsidrettsplassen,ranheim_idrettsplass). 
-synplace(ranheimskole,ranheim_skole). %% Hastus
-synplace(ranheom,ranheim). 
-synplace(rare,rate).     %% ?
-synplace(rat,rate). %% ?
-synplace(ratefeltet,rate).  
-synplace(ratet,rate). 
-synplace(ravbaneveien,travbaneveien). 
-synplace(realfagbygg,realfagbygget). 
-synplace(realfagsbygget,realfagbygget). 
-synplace(regionalsykehuset,st_olavs_hospital). 
-synplace(repe,reppe).  
-synplace(repp,reppe). 
-synplace(reppr,reppe). 
-synplace(reppeendeholdeplass,reppe).  
-synplace(reppekrysset,reppevegen). 
-synplace(reppevegkryss,reppevegen). 
-synplace(reppeveikryss,reppevegen). 
-synplace(reppeveikrysset,reppevegen). 
-synplace(reppevikåsen,reppevegen). 
-synplace(ridevoldsgate,riddervolds_street). 
-synplace(ringe,ringve). 
-synplace(ringsaker,singsaker). 
-synplace(ringv,ringve).  %%?
-synplace(ringvaal,ringvål). 
-synplace(ringvedskole,ringved_skole). 
-synplace(ringvemuseet,ringve_museum). 
-
-synplace(ringveskole,ringve_skole). 
-synplace(ringveskolen,ringve_skole). 
-synplace(ringvevidregåendeskole,ringve_skole). 
-synplace(ringvold,ringvål). 
-synplace(ringvoll,ringvål). 
-synplace(ringvollgrind,ringvål_grind). 
-synplace(ringvålgrind,ringvål_grind). 
-synplace(rinveskole,ringve_skole). 
-synplace(rinvoll,ringvål). 
-synplace(rirterminalen,pirterminalem). 
-synplace(rissvoll,risvollan). 
-synplace(rissvollen,risvollan). 
-synplace(risv,risvollan). 
-
-synplace(ristunet,risvolltun). %% ? 
-synplace(risvol,risvollan).
-synplace(risvoll,risvollan). 
-synplace(risvolltunet,risvolltun). %% 
-
-synplace(risvollansentret,risvollan_senter). 
-synplace(risvollanv,risvollveien). 
-synplace(risvollanveien,risvollveien).  
-synplace(risvollene,risvollan). 
-synplace(risvollsenter,risvollan_senter). 
-synplace(risvollsenteret,risvollan_senter). 
-synplace(risvålan,risvollan). 
-synplace(risvållan,risvollan). 
-synplace(rlgeseter,elgeseter). 
-synplace(robuslia,romolslia). 
-synplace(roenningsbakken,rønningsbakken). 
-synplace(roeros,røros). 
-synplace(rogbudal,rogbudalen). 
-synplace(rognbudal,rognbudalen). 
-synplace(rognbuedalen,rognbudalen). 
-synplace(rognbuendalen,rognbudalen). 
-synplace(rogneim,rognheim). 
-synplace(romaslia,romolslia). 
-synplace(romerslia,romolslia). 
-synplace(romeslia,romolslia). 
-synplace(romislia,romolslia). 
-synplace(rommeslia,romolslia). 
-synplace(romondslia,romolslia). 
-synplace(romosli,romolslia). 
-synplace(romoslia,romolslia). 
-synplace(romoslien,romolslia). 
-synplace(romouslia,romolslia). 
-synplace(romslia,romolslia). 
-synplace(romsolia,romolslia). 
-synplace(romulslia,romolslia). 
-synplace(romulslien,romolslia). 
-synplace(romundslia,romolslia). 
-synplace(romurslia,romolslia). 
-synplace(romusli,romolslia). 
-synplace(romuslia,romolslia). 
-synplace(romuslis,romolslia). 
-synplace(romuslisa,romolslia). 
-synplace(romåslia,romolslia). 
-synplace(roros,røros). 
-synplace(rosedal,rosendal).  %%IKKE Romsdal (wrong preference)
-synplace(rosenborgpark,gyldenløves_gate).  
-synplace(rosenborgparken,gyldenløves_gate).   
-synplace(rosenborgs,rosenborg). 
-synplace(rosenborgskolen,gyldenløves_gate).   
-synplace(rosenbårr,rosenborg). 
-synplace(rosendela,rosendal). 
-synplace(rostagrenda,rostengrenda).  %%
-synplace(rostgrenda,rostengrenda). 
-synplace(rosvolan,risvollan). 
-synplace(rotvollen,rotvoll). 
-synplace(rravbaneveien,travbaneveien). 
-synplace(rutebilselskap,trafikkselskap). 
-
-%% synplace(ruteinformasjonen,tmn). %% TA-110202
-%% synplace(ruteopplysningen,tmn).  %%
-%% synplace(rutetelefonen,tmn).     %%
-
-synplace(ruttebilstasjonen,rutebilstasjonen). 
-synplace(rya,rye). 
-synplace(råmølla,graaemølna). 
-
-synplace(rønnebakken,rønningsbakken).
-
-%% synplace(rønningensbakke,rønningsbakken). %% sameplace 
-%% synplace(rønningensbakken,rønningsbakken).%% 
-
-synplace(rønningsbakk,rønningsbakken). 
-synplace(rønningsbakkenst,rønningsbakken). 
-synplace(rønningsgabkken,rønningsbakken). 
-
-synplace(rørås,røros). 
-synplace(røvik,rørvik). 
-synplace(sakseborgveien,saxenborg_alle). 
-synplace(sakseborgvn,saxenborg_alle). 
-synplace(saksenborg,saxenborg). 
-synplace(saksevigs,saksviks). 
-synplace(saksvig,saksviks). 
-synplace(saksvigs,saksviks). 
-
-synplace(saksevik,saksvik). %% foreign
-
-synplace(saland,sælands). 
-synplace(salgskontore,servicekontoret). 
-synplace(salgskontorene,servicekontoret). 
-synplace(salgskontoret,servicekontoret). 
-synplace(samf1,studentersamfundet_1). 
-synplace(samf2,studentersamfundet_2). 
-synplace(samfun,samfund). %% studne samfun 
-synplace(samfun,studentersamfundet). 
-synplace(samfunft,samfundet). 
-synplace(samfunn,samfundet). 
-synplace(samholdet,samfundet). %% TA-110118
-synplace(samoen,sandmoen). 
-synplace(sandermoen,sandmoen). 
-synplace(sandmo,sandmoen).  %% sandmom -> sandmoveien -> sandmoen
-%% synplace(sand,sands). %% Dr Sands veg %% <-> sandveien
-synplace(sanktolavssykehus,st_olavs_hospital). 
-synplace(saubsta,saupstad). 
-synplace(saubstasentre,saupstadsenteret). 
-synplace(saupsdaringen,saupstadringen_109).  
-synplace(saupstadringen,saupstadringen_109). 
-synplace(saupstadringen,saupstadringen_109). 
-synplace(saupstads,saupstadsenteret). 
-synplace(saupstadsentrum,saupstadsenteret).  
-synplace(saupstakrysset,saupstadsenteret). 
-synplace(saupstasenteret,saupstadsentret). 
-synplace(saupstasentre,saupstadsenteret). 
-synplace(saupstasentret,saupstadsenteret). 
-synplace(saupstseneret,saupstadsenteret). 
-synplace(saustadsentret,saupstadsentret). 
-synplace(saustaringen,saupstadringen_109). 
-synplace(saxeborgveien,saxenborg_alle). 
-synplace(saxeborgvn,saxenborg_alle). 
-synplace(saxenborgale,saxenborg_alle). 
-synplace(saxenborgen,saxenborg). 
-synplace(saøndre,søndre). %% sÃ¸ndre halset? %% //u n d e r s p_place
-synplace(saørborgen,sørborgen). %% NB \+ sørberg %% TA-101108
-synplace(scharlottenlund,charlottenlund). 
-
-synplace(scheldups,schieldrops). 
-synplace(sceldrup,schieldrop). 
-synplace(schjeldrup,schieldrop). 
-synplace(schedropsvei,schedropsvei). 
-synplace(scheldrupsvei,e_b_schieldrops_vei). 
-synplace(schentnas,schjetnans). 
-synplace(schieldropsv,e_b_schieldrops_vei). 
-synplace(schieldropsveg,e_b_schieldrops_vei). 
-synplace(schieldropsvegen,e_b_schieldrops_vei). 
-synplace(schieldropsvei,e_b_schieldrops_vei). 
-synplace(schieldrupsvegen,e_b_schieldrops_vei). 
-synplace(schieldrupsvei,e_b_schieldrops_vei). 
-
-synplace(sciotz,schiøtz).  %% TA-101214
-synplace(schiots,schiøtz). 
-synplace(scøyts,schiøtz).  
-synplace(shøts,schiøtz). 
-synplace(schiøtsvwj,schiøtz_vei). 
-
-synplace(schjethmans,schjetnans).  
-synplace(schjetnemarka,sjetnmarka). 
-synplace(schjetnes,schjetnans). 
-synplace(schøtsvei,schiøtz_vei). 
-synplace(sdressavisa,adresseavisa). 
-synplace(sdresseavisa,adresseavisa). 
-synplace(seland,sælands).  
-synplace(selands,sælands). 
-synplace(selsbakflaten,selsbakkflata). 
-synplace(selsbakkflaten,selsbakkflata). 
-synplace(selsbakklia,selsbakkflata). 
-synplace(selsbaksflaten,selsbakkflata). 
-synplace(senralstasonen,ts). %% AtB. 
-synplace(senter,hovedterminalen). %% TA-101228 ?
-synplace(senteret,hovedterminalen). 
-synplace(sentralbane,sentralstasjon).  %%Ths. . 
-synplace(sentralbanest,ts). %% AtB. 
-synplace(sentralbansesatsjon,sentralbaneestasjon). 
-synplace(sentralbusstasjonen,ts). %% AtB. 
-synplace(sentrals,ts). %% AtB. 
-synplace(sentralsjatsjon,ts). %% AtB.  %%?
-synplace(sentralst,ts). %% AtB. 
-synplace(sentralstasj,ts). %% AtB. 
-synplace(sentralstj,ts). %% AtB. 
-synplace(sentralstojsonen,ts). %% AtB. 
-synplace(sentralststasjon,ts). %% AtB. 
-synplace(sentrasjonen,sentralstasjonen). 
-synplace(sentreun,sentrum). 
-synplace(sentrumcity,sentrum). 
-synplace(sentrumen,sentrum). 
-synplace(sentrumet,sentrum). 
-synplace(sentrumsentralen,hovedterminalen). 
-synplace(sentrumsområdet,sentrum). 
-synplace(sentrumstasj,hovedterminalen).  %%NB
-synplace(sentrumsterm,sentrum).  
-synplace(sentrumstermianel,hovedterminalen). 
-synplace(sentrumstreminalen,sentrum). 
-synplace(sentsj,ts). %% AtB.   
-synplace(serum,sentrum). 
-synplace(setrun,sentrum). 
-synplace(setun,sentrum). 
-synplace(sharlottenlund,charlottenlund). 
-synplace(shettlein,sjetlein). 
-synplace(shieldrops,schieldrops). 
-synplace(shieldrups,schieldrops). 
-synplace(shiledrops,schieldrops). 
-synplace(shoppingcenter,senter). 
-synplace(shøitzsvei,schiøtz_vei). 
-synplace(sigurdbergsalle,gyldenløves_gate). 
-synplace(silddråvegen,silddråvegen). 
-%% synplace(simen,siemens).  
-synplace(singsakerkrysset,jonsvannsveien). 
-synplace(singsakerstudentby,singsaker_studenthjem). 
-synplace(sitti,city). 
-synplace(sittisyd,city_syd). 
-synplace(sitty,city). 
-synplace(sittysyd,city_syd). 
-synplace(sity,city). 
-synplace(sitycid,city_syd). 
-synplace(sitycyd,city_syd). 
-synplace(sitysyd,city_syd). 
-synplace(sivertthonstadsv,sivert_thonstads_street). 
-synplace(sjalottenlund,charlottenlund). 
-%% synplace(sjansen,skansen). %% for at ...
-synplace(sjarlottenlund,charlottenlund). 
-synplace(sjarlottenlund,charlottenlund). 
-synplace(sjetlandsvei,carl_schjetnans_vei). 
-synplace(sjetnanhaugan,sjetnhaugan). 
-synplace(sjetmarka,sjetnmarka). 
-synplace(sjetnan,schjetnans). 
-synplace(sjetnans,schjetnans). 
-synplace(sjetnansveg,carl_schjetnans_vei). 
-synplace(sjetnansvei,carl_schjetnans_vei). 
-synplace(sjetnegrenda,sjetnmarka). 
-synplace(sjetnemarka,sjetnmarka). 
-synplace(sjødalen,stjørdal). 
-synplace(skandik,scandic). 
-synplace(skippersenteret,fossegrenda). 
-synplace(skiskistua,skistua). 
-synplace(skistadion,granåsen_vm_anlegget).  
-synplace(skistova,skistua). 
-synplace(skiststua,skistua). 
-synplace(skistuen,skistua). 
-synplace(skjetemarka,sjetnmarka). 
-synplace(skjetlien,sjetlein). 
-synplace(skjetnan,schjetnans). 
-synplace(skjetne,sjetnmarka). 
-synplace(skjetnemarka,sjetnmarka). 
-synplace(skjettnemarka,sjetnmarka). 
-synplace(skoleringen,høyskoleringen).  %% ?
-synplace(skovgaard,skovgård). 
-synplace(skovgors,skovgård). 
-synplace(skovgårde,skovgård). 
-synplace(skule,skole). 
-
-synplace(skyssstasjon,klæbu_skysstasjon).  
-synplace(skysstasjonen,klæbu_skysstasjon). 
-
-synplace(skysta,kystad). 
-synplace(skystad,kystad). 
-synplace(skyttrerveien,skytterveien). 
-synplace(skågård,skovgård). 
-synplace(skårvolds,skaarvolds). 
-synplace(skårvoldsvei,skaarvolds_street). 
-synplace(skåvgår,skovgård). 
-synplace(slubben,sluppen). 
-synplace(sluppenbrt,sluppen_bru). 
-synplace(smestadsvei,arnt_smistads_vei). 
-synplace(smfndet,studentersamfundet). 
-synplace(smfnt,samfundet).  %% ?
-synplace(smistadsvei,arnt_smistads_vei). 
-synplace(smith,e_a_smith). 
-synplace(sniplas,snuplass).
-synplace(sntrm,sentrum).  %% ?
-synplace(soh,st_olavs_hospital).  %% ?
-synplace(sokkparken,solsiden). 
-synplace(solbakkenskole,solbakken_skole). 
-synplace(solien,sollia). 
-synplace(sollien,sollia).
-synplace(solsida,solsiden). 
-synplace(solsidensenteret,solsiden).  %%
-synplace(solsidesenteret,solsiden).  %%
-synplace(solvollveien,solvolvegen).  %%discrepancy>1
-synplace(sondemoen,sandmoen).  %%contag
-synplace(songdal,sogndal). 
-synplace(sorgen,sorgenfri).  %% TA-101102 \+ skogen
-synplace(sorgfri,sorgenfri). %% TA-110704
-synplace(spektrum,trondheim_spektrum).  %% to get message no.
-
-synplace(spogndalen,spongdal). 
-synplace(spongdalen,spongdal). 
-synplace(sragvoll,dragvoll). 
-synplace(stadingeniør,stadsing).  %%(forstreet)
-synplace(stadingeniør,stadsingeniør).  %%(forstreet)
-synplace(stadionen,stadion). 
-synplace(stadsing,stadsingeniør). 
-synplace(stadsingeniør,stadsing). 
-synplace(stasion,stasjon). 
-synplace(stasion,station). 
-synplace(stasjon,ts). %% AtB. 
- 
-synplace(staten,stadsing_dahls_street). %% AH-080401
-
-synplace(station,stasjon). %% ang sel ?
-
-synplace(statoilhydro,statoil_rotvoll). %% Obs. %% TA-110624
-
-synplace(stationen,ts). %% AtB. 
-synplace(statsing,stadsing). 
-synplace(statsingeniør,stadsingeniør). 
-synplace(statsingeniørs,stadsingeniør). 
-synplace(stavet,stavset).  %%-stavne
-synplace(stavnegård,stavnebrua). 
-synplace(stavnrbroa,stavnebrua). 
-synplace(std,student). 
-synplace(steinen,steinan).  
-synplace(steinaasen,steinåsen). 
-synplace(steinanhaugen,steinhaugen). 
-synplace(steinanåsen,steinåsen). 
-synplace(steinberg,steinberget). 
-synplace(steinsbakken,ny_steinsbakken). 
-synplace(steintrøa,steintrøveien). 
-synplace(stensbakken,ny_steinsbakken). 
-synplace(stiftsgårn,stiftsgården). 
-synplace(stikkelstad,stiklestad).  %%
-synplace(stikkelstadveien,stiklestadveien). 
-synplace(stikklestadvegen,stiklestadveien). 
-synplace(stjørdaln,stjørdalen). 
-synplace(stjørdarn,stjørdalen). 
-synplace(stmarka,østmarka). %% ø trøbbel 
-synplace(stokkes,stokkens).  %% Martin
-synplace(stolav,st_olavs_hospital). 
-synplace(stolavs,st_olavs_hospital). 
-synplace(stolavsgata,st_olavs_gate). 
-synplace(stolavsgate,st_olavs_gate). 
-synplace(stolavsgaten,st_olavs_gate). 
-synplace(stolavsgt,st_olavs_gate). 
-synplace(stolavssykehus,st_olavs_hospital). 
-synplace(storlin,storlien). 
-synplace(storen,støren). 
-synplace(storsenter,senter). 
-synplace(stortorget,torget). 
-synplace(strandkaia,strandveikaia). %
-synplace(strandkaien,strandveikaia). 
-synplace(strandkaivegen,strandveikaia). 
-synplace(strandkaiveien,strandveikaia). 
-synplace(strandveik,strandveikaia). 
-synplace(strandveikaien,strandveikaia). 
-synplace(strind,strinda). 
-synplace(strinden,strinda). 
-synplace(strindh,strindheim). 
-synplace(strindheimhageby,strindheim_hageby). 
-synplace(strindheimhageby,strindheim_hageby). 
-synplace(strindheimskole,strindheim_skole). 
-synplace(strindheimskolen,strindheim_skole). 
-synplace(strjoerdal,stjørdalen). 
-synplace(stud,studentby). 
-synplace(studendentersamfundet,studentersamfundet).  %%
-synplace(studentboligene,studentbyen). 
-synplace(studentby,studenthjem). 
-synplace(studenteerby,studentby). 
-synplace(studenterby,studentby). 
-synplace(studenterby,studentby). 
-synplace(studenterhytten,studenterhytta). 
-synplace(studentersam,studentersamfundet). 
-synplace(studentersambunnet,studentersamfundet). 
-synplace(studentersamf,studentersamfundet).  %% (komb. 1/2)
-synplace(studentersamfun,studentersamfundet). 
-synplace(studentersamfund,studentersamfundet).  
-synplace(studentersamfunn,studentersamfundet).  
-synplace(studentersamrundet,studentersamfundet).  
-synplace(studentersamrunet,studentersamfundet).  %% ?
-synplace(studentesamfund,studentersamfundet). 
-synplace(studentesamfunnet,studentersamfundet).  %% (komb. 1/2)
-synplace(studentheim,studentby).  
-synplace(studenthjem,studentby). 
-synplace(studentsamf,studentersamfundet). 
-synplace(studentsamfun,studentersamfundet). 
-synplace(studentsamfunn,studentersamfundet). 
-synplace(studentsammfun,studentersamfundet). 
-synplace(studentsammfunn,studentersamfundet). 
-synplace(studerntersmafundet,studentersamfundet). 
-synplace(studesamf,studentersamfundet).            %%  own
-synplace(studneby,studentby). 
-synplace(studsamf,studentersamfundet). 
-synplace(studsamfund,studentersamfundet). 
-synplace(stundertersamfunnet,studentersamfundet). 
-synplace(supsta,saupstad). 
-synplace(svaresborg,sverresborg). 
-synplace(svartlademoen,svartlamon). 
-synplace(svartlamoen,svartlamon). 
-synplace(sverige,sweden). %nec?
-synplace(sverresgård,sverresborg). 
-synplace(sykeheim,sykehjem). 
-synplace(sykehj,sykehjem). 
-synplace(sykehjem,sykeheim). 
-%% synplace(sykehuset,st_olavs_hospital).  %% sykehuset Brøset
-synplace(søbeg,søberg). 
-synplace(søbstadringen,saupstadringen_109). 
-synplace(søbstadsenteret,saupstadsenteret). 
-synplace(søndemoen,sandmoen).  %%contag
-
-
-synplace(søndregate,søndre_street). %% Nec %% TA-110526
-synplace(søndregate_22,søndre_gate_22). 
-synplace(søndregate_23,søndre_gate_23). 
-synplace(søndregt,søndregate).  %%NBsynSyndrome
-
-
-
-synplace(søndrehoem,søndre_hoem). %% ? Tram st
-synplace(sønningsbakken,rønningsbakken).  %% ? sms
-synplace(søpstadsenteret,saupstadsenteret). 
-synplace(søtmarka,østmarka). 
-synplace(søupstamyra,saupstadmyra). 
-synplace(tabarsjelve,tambarskjelve). 
-synplace(talentinlyst,valentinlyst).  %%sms
-
-synplace(tamb,tambarskjelves). 
-synplace(tambardskjelves,tambarskjelves). 
-synplace(tambarselve,tambarskjelve). 
-synplace(tambarsjelvarsgt,tambarskjelvesgate). 
-synplace(tambarsjelve,tambarskjelve). 
-synplace(tambarsjelves,tambarskjelves).  %%Repair,ERRORinregcomsptr
-synplace(tambarskjellgt,tambarskjelvesgate). 
-synplace(tambarskjelv,tambarskjelves). 
-synplace(tambarskjelvars,tamberskjelves). 
-synplace(tambarskjelvarsgate,tambarskjelvesgate). 
-synplace(tambarskjelvarsgt,tambarskjelvesgate). 
-synplace(tambarskjelvgt,einar_tambarskjelves_gate). 
-synplace(tambarskjelvsgate,einar_tambarskjelves_gate).  %%
-synplace(tambarskjgt,einar_tambarskjelves_gate). 
-synplace(tambarskjoldsgate,tambarskjelvesgate). 
-synplace(tambartjelvesgate,einar_tambarskjelves_gate). 
-synplace(tambasjelvsgate,einar_tambarskjelves_gate).  %%
-synplace(tambergsjelvsgt,einar_tambarskjelves_gate). 
-synplace(tambergskjeldsgate,einar_tambarskjelves_gate). 
-synplace(tambergskjellsgate,tambarskjelvesgate). 
-synplace(tambersk,einar_tambarskjelves_gate).  %%
-synplace(tamberskjeldsgt,einar_tambarskjelves_gate). 
-synplace(tamberskjelds,tambarskjelves).   
-synplace(tamberskjellsgt,einar_tambarskjelves_gate). 
-synplace(tamberskjelves,tambarskjelves). 
-synplace(tamberskjevs,tambarskjelves). 
-synplace(tamberskjolds,tambarskjelves). 
-synplace(tambesjelvesgate,einar_tambarskjelves_gate). 
-
-
-
-synplace(tanbergsjedesgate,einar_tambarskjelves_gate). 
-
-synplace(taøh,tøh). %% TA-110411   %% tÃ¸h 
-
-synplace(tanemskrysset,tanemskrysset_1). 
-synplace(teamkontoret,servicekontoret). 
-synplace(technoport,trondheim_spektrum). 
-
-synplace(tegelsteinsveien,teglverkskrysset). 
-synplace(tegelvegstunet,teglverkstunet). 
-synplace(tegelverk,teglverk). 
-synplace(tegelverketskrysset,teglverkskrysset). 
-synplace(tegelverketstunet,teglverkstunet). 
-synplace(tegelverkstunet,teglverkstunet).  %% street
-synplace(teggelsverkskrysset,teglverkskrysset). 
-synplace(teggelverkskrysset,teglverkskrysset). 
-synplace(teglegården,teglgården). 
-synplace(teglekrysset,teglverkskrysset). 
-synplace(tegleverkkrysset,teglverkskrysset). 
-synplace(tegleverkrysset,teglverkskrysset). 
-synplace(teglkrysset,teglverkskrysset). 
-synplace(teglsteinskrysset,teglverkskrysset). 
-synplace(teglsteinsveien,teglverkskrysset). 
-synplace(teglsteinverket,teglverket). 
-synplace(teglstenskrysset,teglverkskrysset).  %%
-synplace(teglstensvegen,teglverkskrysset).    %%
-synplace(teglstensveien,teglverkskrysset). 
-synplace(teglvegstunet,teglverkstunet). 
-synplace(teglveiskrysset,teglverkskrysset). 
-synplace(teglveiskrysset,teglveiskrysset). 
-synplace(teglveistunet,teglverkstunet). 
-synplace(teglverkkysset,teglverkskrysset). 
-synplace(teglverksbakken,teglverkskrysset).  %%
-synplace(teglverkskr,teglverkskrysset). 
-synplace(teglverksveien,teglverkskrysset).   %% ?
-synplace(tegleverksveien,teglverkskrysset).  %% ? 
-synplace(tegverkkysset,teglverkskrysset). 
-synplace(teilverksbakken,teglverkskrysset).  %%
-synplace(teisendamen,theisendammen). 
-synplace(televerkskrysset,teglverkskrysset). 
-synplace(telverkskrysset,teglverkskrysset).  %%
-
-synplace(temp,tempe). 
-
-synplace(tempeveien,tempevegen). %% nofunk tempeveien 11
-        % street    station
-
-%%  Tempevegen 11 // station
-%%  Tempeveien 11 street -> valøyvegen
-
-% synplace(terase,terrasse). 
-% synplace(terasse,terrasse). 
-synplace(thamberskj,tambarskjelves). 
-
-synplace(thalouwveien,thaulowbakken). 
-synplace(thaulaubakken,thaulowbakken).
-synplace(thaulauwbakken,thaulowbakken). 
-synplace(thaulauwbakken,thaulowbakken). 
-synplace(thaulowsgate,thaulowbakken). 
-synplace(thaulwlobakken,thaulowbakken). 
-
-synplace(theisendamen,theisendammen). 
-synplace(thoming,thonning). %% Owesen
-synplace(thonstad,tonstad). 
-synplace(thorsplassen,torplassen).  %%
-synplace(thouwlowbakken,thauwlowbakken). 
-synplace(thrheim,trondheim). 
-synplace(thonheim,trondheim). 
-synplace(tikker,tiller). 
-synplace(tillerbruen,tiller_bru). 
-synplace(tilleringen,tiller_ringen). 
-synplace(tillerkirka,'Tiller kirke'). 
-synplace(tillerkirke,'Tiller kirke').
-synplace(tillerområdet,tiller). 
-synplace(tillerringen,tiller_ringen).  %% street
-synplace(tisvollan,risvollan). 
-synplace(tjyvatnet,kyvatnet). 
-synplace(tlh,lærerhøgskolen). 
-synplace(tnga,tunga). 
-synplace(togbanestasjon,ts). %% AtB.
-% synplace(toget,ts). %% AtB // no torget ? %% 
-synplace(togsentral,ts). %% AtB. 
-synplace(togsentralen,ts). %% AtB. 
-synplace(toholdttårnet,tyholttårnet). 
-synplace(tonstad,thonstad). 
-synplace(tonstad,thonstad).  %%Nec???
-synplace(tonstadbrinken,tonstad). 
-
-synplace(tonstads,thonstads). 
-synplace(tonstadsvei,thonstadsvei). 
-synplace(tonstagrena,tonstadgrenda). 
-synplace(tonstagrenna,tonstadgrenda). 
-synplace(toorvplassen,torget). 
-synplace(tordenskjol,tordenskiolds). 
-synplace(tordenskjoldsgate,tordenskiolds_gate).  %%Problems
-synplace(tordenskjoldsgt,tordenskiolds_gate). %inregtrikketc. 
-synplace(tordenskjols,tordenskiolds).  %%NBio
-synplace(torg,torget). 
-synplace(torge,torget).  %%nospellbecausetorg|torget
-synplace(torndheimtorg,torget). 
-synplace(torne,thornæs). 
-synplace(tornesvei,k_o_thornæs_vei). 
-synplace(torsplass,torplassen).  %%
-synplace(torsvei,tors_veg). 
-synplace(torsvn,tors_veg). 
-synplace(torv,torg). 
-synplace(torvet,torget). 
-synplace(torvet,torget). 
-synplace(torvoll,rotvoll). 
-synplace(torvtakeket,torvtaket). 
-synplace(tovet,torget). 
-synplace(tprvet,torget). 
-synplace(trafikksentralen,ts). %% AtB. 
-synplace(trafikkterminalen,hovedterminalen). 
-synplace(trafikkterminal,hovedterminalen). %% ? Moa traf.
-synplace(trafikkterminialen,sentrumsterminalen). 
-synplace(trafikselskap,trafikkselskap). 
-synplace(tragvoll,dragvoll).
-synplace(trainstation,ts). %% AtB. 
-synplace(transportselskap,trafikkselskap). 
-synplace(travbane,travbanen).  %% Not spellcheck on part names if they are fullnames
-synplace(travbanebeien,travbaneveien). 
-synplace(travpark,travbane). 
-synplace(travpark,travbanen). 
-synplace(trdhiem,trondheim). 
-synplace(trheim,trondheim). 
-%% synplace(trikk1,1).  %%? 
-synplace(troendelag,trøndelag). 
-synplace(trola,trolla). 
-synplace(trollahaugen46,trollahaugen_46). 
-synplace(trollahaugen64,trollahaugen_64). 
-synplace(trollhugen,trollahaugen). 
-synplace(trond,thrond).  %% thronneergaardsvei? %%
-%% synplace(trond,trondheim). %% silly answers %% TA-100829 
-synplace(trondein,trondeinm). 
-synplace(trondh,trondheim). 
-synplace(trondhe,trondheim). 
-synplace(trondheimheim,trondheim).  %% ?
-synplace(trondheimsdistriktet,trondheim). 
-synplace(trondheimsentralbanestasjon,ts). %% AtB. 
-synplace(trondheimsentrum,sentrum). 
-synplace(trondheimsentrumsstasjon,hovedterminalen). 
-synplace(trondheimspektrum,trondheim_spektrum). 
-synplace(trondheimst,ts). %% AtB. 
-%% synplace(trondheimstasjon,ts). %% AtB.  %% sameplace 
-synplace(trondheimsterminal,ts). %% AtB. 
-synplace(trondheimsterminalen,ts). %% AtB. 
-synplace(trondheimterminalen,ts). %% AtB.  %% ?
-synplace(trondheimterminalstasjon,ts). %% AtB.  %% used that way
-synplace(trondheimtrafikkstasjon,ts). %% AtB. 
-synplace(trondheitorg,torget). 
-synplace(trondhjemsdistriktet,trondheim). 
-synplace(trondsentrum,hovedterminalen). 
-synplace(tronheim,trondheim). 
-synplace(tronhem,trondheim). 
-synplace(tronheom,trondheim). 
-synplace(tronjæm,trondheim). 
-synplace(trovet,torget).  %% trofet-vegen ?
-synplace(trtorg,torget). 
-synplace(trudvengveien,trudevang_street).  %% dev. . 
-synplace(tryggvassons,trygvassons).  %% local misspell
-synplace(trygvason,tryggvason). 
-synplace(trygvason,tryggvasons). 
-synplace(trygvasonsgt,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB
-synplace(tråjæm,trondheim). 
-synplace(trødheim,trondheim). 
-synplace(tsrindheim,strindheim). 
-synplace(tuga,tunga).  
-synplace(tungafengsel,tunga_kretsfengsel). 
-synplace(tungafengslet,tunga_kretsfengsel). 
-synplace(tungafengselet,tunga_kretsfengsel). 
-synplace(tungakretsfengsel,tunga_kretsfengsel). 
-synplace(tungakrysset,iskremfabrikken).  %% (?)
-synplace(tunge,tunga). 
-synplace(turge,torget). 
-synplace(tvestien,tvetestien). %% TA100107
-synplace(tvedesiten,tvetestien). 
-synplace(tveitanstien,tvetestien). 
-synplace(tydalen,tydal).  %% (ikke Nydalen)
-synplace(tyhikt,tyholt).  %% dbl neib
-synplace(tyholttaarnet,tyholttårnet). 
-synplace(tyholttårn,tyholttårnet). 
-synplace(tyholtårndt,tyholttårnet). 
-synplace(tårnet,tyholttårnet). %% <- 
-synplace(tæglegården,teglgården). 
-synplace(tæretrøa,værestrøa). %% off name  %% ?
-synplace(uantinlyst,valentinlyst).  %% ?
-synplace(udbergs,udbyes). %% gt
-synplace(uglaholdplass,ugla).  %% ?
-synplace(uglastasjon,ugla). 
-synplace(uglastien,uglahaugstien). 
-synplace(ugle,ugla).  %%nospellif=<4ch
-synplace(ugls,ugla). 
-synplace(uikåsen,vikåsen). 
-synplace(uka,studentersamfundet). 
-synplace(ulga,ugla).
-synplace(ullstadløkka,ulstadløkkveien). % sameplace doesn'twork
-synplace(ullumsgården,byåsen_butikksenter).   %% ? 
-synplace(ulstadløkka,ulstadløkkveien).  %%(?)Road
-synplace(ungdomsskole,skole). 
-synplace(unherredsvei,inherredsveien). 
-synplace(unit,ntnu). 
-synplace(universitetssenter,universitet). 
-synplace(unkegata,munkegata). 
-synplace(urtigruta,hurtigruta). % ?
-synplace(utla,ugla). 
-synplace(utleiramarka,utleirmark). 
-synplace(utsikt,utsikten_alle). 
-synplace(uæretrøa,værestrøa). %% off name %%  ? (sms)
-synplace(vaadan,vådanv_5).    % ?
-synplace(vaerestroa,værestrøa). %% TA100110
-synplace(vaeretroa,værestrøa). %% off name 
-synplace(vaeretroea,værestrøa). %% off name
-synplace(valdntynlyst,valentinlyst). 
-synplace(valenlyst,valentinlyst). 
-synplace(valentdenlyst,valentinlyst).  
-synplace(valentenenlyst,valentinlyst). 
-synplace(valententinlyst,valentinlyst). 
-synplace(valentin,valentinlyst). 
-synplace(valentine,valentinlyst). 
-synplace(valentinenlyst,valentinlyst). 
-synplace(valentinenlystvegen,valentinlystvegen). % already a spellerr
-synplace(valentinerlyst,valentinlyst). 
-synplace(valentinersenteret,valentinlyst). 
-synplace(valentines,valentinlyst).  
-synplace(valentininlyst,valentinlyst). 
-synplace(valentinl,valentinlyst). 
-synplace(valentinsenteret,valentinlyst). 
-synplace(valentinsentret,valentinlyst).  
-synplace(valentintinlyst,valentinlyst). 
-synplace(valentlyst,valentinlyst). 
-synplace(valentylist,valentinlyst). 
-synplace(valentynlist,valentinlyst). 
-synplace(valervegen,valøyvegen). 
-synplace(valerveien,valøyvegen). %% ?
-synplace(valerøyveien,valøyvegen). 
-synplace(valetinenlyst,valentinlyst). 
-synplace(valetinerlyst,valentinlyst). 
-synplace(valin,valentinlyst). 
-synplace(valinlyst,valentinlyst). 
-synplace(valkbergets,falkbergets). 
-synplace(vallentin,valentinlyst). 
-synplace(valtenlyst,valentinlyst). 
-synplace(valtinlyst,valentinlyst). 
-synplace(valtninlyst,valentinlyst). 
-synplace(valøiveien,valøyvegen). 
-synplace(valøyvegen,valøy_street). 
-synplace(vaneltynlyst,valentinlyst). 
-synplace(vanetelyst,valentinlyst). 
-synplace(vanetinlyst,valentinlyst). 
-synplace(vanlentynlyst,valentinlyst). 
-synplace(vantelyst,valentinlyst). 
-synplace(vantinlyst,valentinlyst). 
-synplace(varetroa,værestrøa). %% off name
-synplace(varetroea,værestrøa). %% off name 
-synplace(vassfjell,vassfjellet). 
-synplace(vassfjelt,vassfjellet).
-
-synplace(vblakli,blakli). 
-synplace(vearnas,værnes). 
-synplace(velntinlyst,valentinlyst).
-synplace(veratrøa,værestrøa). %% off name 
-synplace(verdaln,verdalen). 
-synplace(vertrøa,værestrøa). %% off name 
-synplace(vesterlia,vestlia). 
-synplace(vestli,vestlia). 
-synplace(vestliaendeholdeplass,vestlia_endeholdeplass). 
-synplace(vestlias,vestlia). 
-synplace(vestlien,vestlia). 
-synplace(vey,veg). 
-synplace(vey,vei). 
-synplace(vg,skole).  %% collides with veg???
-%% synplace(vgs,skole). %% no jfr byåsen skole \= byåsen vgs 
-synplace(vharlottenlund,charlottenlund).  %%
-synplace(videregående,skole). 
-synplace(videregåendeskole,skole).  %%etc
-synplace(vidergående,videregående). 
-synplace(vidergåendeskole,skole). 
-synplace(vidreg,videregående). 
-synplace(vidregående,skole). 
-synplace(vidregående,videregående). 
-synplace(vikaasen,vikåsen). 
-synplace(vikahammer,vikhammer). 
-synplace(vikahmmer,vikhammer). 
-synplace(vikhamar, vikhammer). %% MW-121119  
-synplace(vikhamaren, vikhammer). %% MW-121119   
-synplace(vikhamarn, vikhammer). %% MW-121119  
-synplace(vikhammar, vikhammer). %% MW-121119  
-synplace(vikhammaren, vikhammer). %% MW-121119  
-synplace(vikhammarn, vikhammer). %% MW-121119  
-synplace(vikhamer, vikhammer). %% MW-121119  
-synplace(vikhammeren, vikhammer). %% MW-121119 
-synplace(vikamer,vikhammer). 
-synplace(vikelv,vikelvveien).  %%Complicated
-synplace(vikhamaråsen,vikhammeråsen).
-synplace(vikhameråsen,vikhammeråsen). 
-synplace(vikhmmer,vikhammer). 
-synplace(vikås,vikåsen). 
-synplace(vikåshallen,vikåsenhallen). 
-
-synplace(vill,voll). %% haz? 
-
-synplace(violsvingen,fiolsvingen). 
-synplace(vity,city). %% ?
-synplace(vlanetinlyst,valentinlyst). 
-synplace(voill,voll).  %% ikke voll(gt)
-synplace(vol,voll). 
-synplace(vold,voll).  %% Necessary(?) vold\=volda %% (Syndrome)
-synplace(voldsminne,voldsminde). 
-synplace(vollababakken,vollabakken). 
-synplace(vollaballen,vollabakken).  %%contag
-synplace(vollabkenn,vollabakken). 
-synplace(vollumsgården,byåsen_butikksenter). 
-synplace(vstla,vestlia). 
-synplace(vull,voll). 
-synplace(vullumsgården,byåsen_butikksenter). 
-synplace(vådan,vådanv_5).  %%?
-synplace(våll,voll). 
-synplace(værestrøya,værestrøa).
-synplace(væretrøen,værestrøa). 
-synplace(væretrøene,værestrøa).
-synplace(værnesflyplass,værnes). 
-synplace(værøtra,værestrøa). 
-synplace(vætertrøa,værestrøa). 
-synplace(wist,stjørdals_street).  %% \+ placestat
-synplace(woll,voll). 
-synplace(ygla,ugla). 
-synplace(yiller,tiller). %?
-synplace(ystergaardsvei,ystgaardsvei). 
-synplace(ystergårdsvei,ystgaardsvei). 
-synplace(ystgaardsvei,ingvald_ystgaards_street).  %% //Confus? Notanymore 
-synplace(ystgårds,ystgaards). 
-synplace(ystgårdsvei,ystgaardsvei). 
-synplace(yåsen,byåsen). 
-synplace(zentral,sentral). 
-synplace(ælgesætergt,elgeseter). 
-synplace(æsheim,åsheim). 
-synplace(æsvang,åsvang). 
-synplace(æsveien,åsveien). 
-
-synplace(øeangen,leangen).  %%1. 
-synplace(øerkendal,lerkendal).
-synplace(øst,østre). 
-synplace(østerberg,østre_berg). 
-synplace(østgårds,ystgaards). 
-
-
-synplace(østrerosten,østre_rosten). 
-synplace(øver,øvre). 
-synplace(øveraas,øverås). 
-synplace(øvreflatåsvegen,øvre_flatås_street).  %% problem
-synplace(øvreflatåsvegen,øvre_flatåsveg).  
-synplace(øvrejakobsli,jakobslivegen_øvre).  
-synplace(øvreromulslia,romolslia_øvre).  %% (SICromol)//redundant eventually
-synplace(øvretvereggen,øvre_tvereggen).  %% street?
-synplace(åaveienskole,åsveien_skole). 
-synplace(åirbadet,pirbadet). 
-synplace(åiren,pirbadet).   %%?
-synplace(åirterminalen,pirbadet).  
-synplace(ålderdalen,olderdalen). 
-synplace(åpirterminalen,pirbadet).   %%1. letter
-synplace(årinsen,prinsen). 
-synplace(åsns,aaes).  %%strangename
-synplace(åsvangskole,åsvang_skole). 
-synplace(åsvei,åsveien). 
-synplace(åsveienskolen,åsveien_skole). 
-synplace(åsveiskolen,åsveien_skole). 
-synplace(åveienskole,åsveien_skole). 
-synplace(åøstmarka,østmarka). 
-
-%%% synplace(atb,kongens_street-34). %%  %% <----- AtB Funk // hva er atb %% RS-120805 Sorting
-synplace(ts,ts).   %% <----- AtB
-synplace(ts10,ts). %% 
-synplace(ts11,ts). %%
-
-
-underspecified_place(adolf_øien).  %%
-underspecified_place(alpinanlegget). 
-underspecified_place(alpinbakken). 
-underspecified_place(badestranda). 
-underspecified_place(bakke). 
-%% underspecified_place(bakli). 
-%% underspecified_place(barnehage). %% --> noinfo
-%% underspecified_place(barnehave).
-underspecified_place(berg). 
-%% underspecified_place(bibliotek). %% TA-101116 generic
-%% underspecified_place(biblioteket).  Biblioteket på Moholt
-underspecified_place(blussuvold). 
-underspecified_place(bomringen). 
-%% underspecified_place(bratsberg). %% TA-110325
-%    hpl(16010046,bratsberg_østre,bratsberg_østre,'Bratsberg østre').
-%    hpl(16010609,bratsbergflata,bratsbergflata,'Bratsbergflata').
-%    hpl(16010763,bratsberg_kirke,bratsberg_kirke,'Bratsberg kirke
-
-underspecified_place(brygge).  
-underspecified_place(butikken).
-underspecified_place(butikksenteret).  
-underspecified_place(bygda). 
-underspecified_place(bygden).  
-
-underspecified_place(byåsen). 
-
-underspecified_place(båthavna). 
-underspecified_place(charlottenlund). 
-underspecified_place(drosjesentralen). 
-underspecified_place(e6). 
-underspecified_place(europaveg). 
-underspecified_place(europavegen). 
-underspecified_place(europavei).
-underspecified_place(europaveien).
-
-underspecified_place(fabrikken). 
-underspecified_place(fjellet). 
-underspecified_place(forskningsparken).  
-underspecified_place(forskningssenteret). 
-underspecified_place(flybussterminalen). 
-underspecified_place(fokus).  %% -hallen?
-%% underspecified_place(fotballbane).  %% ? 
-underspecified_place(fotballbanen). 
-%% underspecified_place(golfbane). %% generic, 
-underspecified_place(golfbanen). % ?
-underspecified_place(grensa). 
-underspecified_place(grensen). 
-
-%%   underspecified_place(gård). %% Stavne gård is not U
-
-underspecified_place(gården). 
-underspecified_place(haakon_vii_gate).  %% Despair 
-underspecified_place(hageby). 
-underspecified_place(hageby). 
-underspecified_place(hist). 
-underspecified_place(hotell). 
-underspecified_place(hotellet).  %%
-underspecified_place(hovedinngangen). %% ( slightly odd) hovedinngangen til st.olavshospital?
-underspecified_place(hovedstasjonen).  %% TS|ST ?
-underspecified_place(huseby).     %% Husebyst//Husebysentret 
-underspecified_place(høgskolen).  %% HIST or NTH?
-underspecified_place(høyskolesenteret). 
-%% underspecified_place(idrettsbygg).  -> generic_place 
-underspecified_place(idrettsparken). 
-%% underspecified_place(idrettsplassen).  %% TA-100828  ipl jakobsli
-underspecified_place(ingeniørhøgskolen). 
-underspecified_place(innlandet). 
-underspecified_place(jakobslivegen).  %% nedre/øvre vegen official road name
-underspecified_place(jordet). 
-%% underspecified_place(kafe).  %% generic
-underspecified_place(kafeen). 
-underspecified_place(kino). 
-underspecified_place(kirka). 
-%% underspecified_place(kirke). %% "nardo kirke" 
-underspecified_place(kirken). 
-underspecified_place(kirkegården).
-%% underspecified_place(kjøpesenter). %% unk
-underspecified_place(kjøpesenteret). 
-underspecified_place(kjøpesentra). 
-underspecified_place(kjøpesentret). 
-%% underspecified_place(klinikk).  
-%% underspecified_place(klinikken). %% noinfoaboutnoun
-underspecified_place(kommunehuset). 
-underspecified_place(kommunesenteret). 
-underspecified_place(kroghsvei).  %%peder/gina
-underspecified_place(lilleby).  %% (? whereisit)
-underspecified_place(lærerskolen). 
-underspecified_place(malvikmarka). 
-underspecified_place(mellomveien).  %% Mellomveien 5 st. ,nearestBuran
-underspecified_place(markedet). %% torget ? 
-underspecified_place(mo).  %% Mo i Rana?
-underspecified_place(motorveien). 
-underspecified_place(museum). 
-underspecified_place(myra).  
-underspecified_place(møllenbergveien).  %% Øvre/Nedre M. gt
-underspecified_place(nidaros). %% Th, sjokol domen, 
-underspecified_place(nidelva). 
-underspecified_place(nidelven). 
-underspecified_place(nordre). %% TA-110418
-underspecified_place(ntnu).   %%
-underspecified_place(oasen).  %% \+ Osen 
-underspecified_place(obs).    %% Obs Lade,Heimdal,City Syd
-underspecified_place(omkjøringsveg).  %% something missing
-underspecified_place(omkjøringsvei).  
-underspecified_place(omkjøringsveien). 
-%% underspecified_place(omkjøringsvegen).  %% something missing
-%% underspecified_place(omkjøringsveien). 
-underspecified_place(parken). 
-underspecified_place(prestegården). 
-underspecified_place(rutebilstasjonen).  %% Sentralstasjonen,
-underspecified_place(samfunnshuset).  %% %% slightly misplaced error message
-underspecified_place(sanatoriet).  
-underspecified_place(scandic_hotel).
-%%  underspecified_place(senter). %% Try without %% TA-101228
-underspecified_place(sintef). 
-underspecified_place(sjøen). 
-underspecified_place(skauen).  
-underspecified_place(skibakken). 
-underspecified_place(skogen). 
-%% underspecified_place(skole).  %% ? destroys byåsen videregående
-underspecified_place(skolen). %% nidarvoll skolen \+ flertydig %% TA-100903
-underspecified_place(skytebanen). 
-underspecified_place(solbakken). 
-underspecified_place(sorgendal). 
-underspecified_place(storsenteret). %% TA-110125
-underspecified_place(stranden).  %% TA-101108
-underspecified_place(strinda). 
-underspecified_place(strindamarka). 
-underspecified_place(studentby). 
-underspecified_place(studentbyen). 
-underspecified_place(sykehuset). 
-underspecified_place(svingen).  
-underspecified_place(svømmehallen). 
-underspecified_place(svømmehaller). 
-%% underspecified_place(sykehus). %% -> noinfoabout %%  Brøset sykehus= more precise *
-underspecified_place(søndre).  %% confusing
-underspecified_place(taxisentralen). 
-underspecified_place(telenor). 
-underspecified_place(televerket). 
-
-underspecified_place(terminal). %% TA-110624
-%% underspecified_place(terminalen). %% = godsterminalen_nsb
-
-underspecified_place(togstasjon). %% \+ en 
-underspecified_place(toyota).     %% verksted %% TA-100823
-underspecified_place(trafikkstasjon).  %% TS or ST
-underspecified_place(trafikkstasjonen). 
-underspecified_place(tunnelen). %% TA-110114
-underspecified_place(tunnellen). 
-underspecified_place(tunellen). 
-
-underspecified_place(trøndelag).       %% // not foreign (spchk)
-underspecified_place(universitetet). 
-underspecified_place(university). 
-underspecified_place(utleira). %% TA-100921
-underspecified_place(utkanten). 
-underspecified_place(vann). 
-underspecified_place(vannet). 
-underspecified_place(vatn). 
-underspecified_place(vatnet). 
-underspecified_place(vegmesterveien). 
-underspecified_place(veita).  
-underspecified_place(veiten). 
-underspecified_place(vestbyen).
-underspecified_place(vestkanten).
-underspecified_place(vinmonopol). 
-underspecified_place(vinmonopolet). 
-underspecified_place(vinmonopolet). 
-underspecified_place(voldsminde).  %% mellomv_5|ØvreMøllenberggt 40->Bakkegate
-underspecified_place(vollan). 
-
-underspecified_place(ødemarka). 
-underspecified_place(ødemarken).  %%
-underspecified_place(øra). 
-underspecified_place(østbyen). 
-underspecified_place(østkanten). 
-underspecified_place(øya).  %% or nobuses ?
-underspecified_place(åsen). 
-
-
-unwanted_station(politihuset). % station, never used , but valid neighbourhood  
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%  Unwanted place names (Domain dependent)
-
-unwanted_place('3t').  %% Ambiguousname(Sluppen,Rosten,Heimdal)
-unwanted_place(alke). 
-unwanted_place(alt).   %%  \+ alta destroys lang sel. 
-unwanted_place(amok).  %%  \+ AMO
-unwanted_place(anal).  %%  \+ asal street
-unwanted_place(arbeidsbuss). %% pro forma station (SIC) 
-unwanted_place(are).   %% Disturbs N/E
-unwanted_place(arve).  %% aure/aare
-unwanted_place(ass). 
-unwanted_place(astma).  %%  \+ Aasta amble # overgen
-unwanted_place(atle). 
-unwanted_place(bake).   %%  \+ bakke
-unwanted_place(bakenden). %% \+ bakken
-unwanted_place(banan).  %%  \+  bane(Dialect banene?)
-unwanted_place(banne).  %%  \+ banen
-unwanted_place(behn).   %%  \+ byen
-unwanted_place(bekken). %% bukken/bakken
-unwanted_place(berget).  %% ???
-unwanted_place(bist).   %% German(not Wist)
-unwanted_place(bjørn).  %% \+  Bjøra
-unwanted_place(bjaørn).  %% \+  Bjøra  ..BjÃ¸rn 
-unwanted_place(blakk).  %% \+  Flakk
-unwanted_place(blinker).  %%  \+ bleiker
-%%  unwanted_place(bombingen).  %%  \+ bomringen // Experiment
-unwanted_place(brage).   %% name, \+ berge 
-unwanted_place(brenne).  %%  \+ Brænne
-unwanted_place(brus).  %% \+  bru
-unwanted_place(brå).  %%  Hvor var du da Brå brakk staven
-unwanted_place(bush). 
-%% unwanted_place(bye).  %%  \+ byen -  eng good bye 
-unwanted_place(byåse).  %% Byåsen/Byåsv(eien)
-unwanted_place(cars).  %%  \+ carl,lang. selection
-unwanted_place(club).  %%  \+ Cuba
-%%   unwanted_place(cola).  %%  ( \+ Sola)
-unwanted_place(dachs).  %%  \+ dahls
-unwanted_place(das).  %%  \+ SAS
-unwanted_place(dekk).  %%  \+ dokk
-unwanted_place(dikt).  %% norDist. . . lege
-unwanted_place(dn).  %% DireforN. . . -D1
-unwanted_place(does).  %%  \+ Dons %% destroys lang selection
-unwanted_place(dommen). %% \+ Domen
-unwanted_place(dong).  %%  \+ Dons
-unwanted_place(door).  %%  \+ Dora(amble#)//theotherway?
-unwanted_place(downs).  %%  \+ dons
-unwanted_place(drit).  %% \+  RIT(forthisreason,badwordsarerepelled)
-unwanted_place(drite).  %%  \+ Ditle
-unwanted_place(dt).  %% (det?)not D0
-unwanted_place(dust).  %% ikkedist
-unwanted_place(døden).  %% (mendødensdalOK)
-unwanted_place(egget).  %%  \+ Eggen
-%% unwanted_place(einar_tambarsjelves_gate). %%% ??????????????
-unwanted_place(elgen).  %%  \+ Eggen
-unwanted_place(en). 
-%% unwanted_place(enter).  %% einerv.
-unwanted_place(eple). 
-unwanted_place(er).  %% especiallyinenglish
-unwanted_place(erichsen).  %% \+  erichsens
-unwanted_place(et). 
-unwanted_place(eu).  %% \+  e6
-unwanted_place(evner).  %% einer/everk
-unwanted_place(faan).  %%  \+ Fana
-unwanted_place(faen).  %%  \+ Fana
-unwanted_place(faller).  %% \+  Fallet
-unwanted_place(fan).  %%  \+ Fana
-unwanted_place(feit).  %%  \+ Frei
-unwanted_place(fest).  %% \+  vest
-unwanted_place(finnses). %% \+ Finnsnes ?
-unwanted_place(fjærta). 
-unwanted_place(fjerta). %%
-unwanted_place(flåtten). %% \+ Flaten
-unwanted_place(foo).     %%  \+ Foto
-unwanted_place(forget).  %% \+ Forset 
-unwanted_place(fra).  %% \+  Fram
-unwanted_place(fram).  %% \+  framveien
-unwanted_place(fre).  %% \+  frue
-unwanted_place(fresk).  %%  \+ frues
-unwanted_place(from).  %% \+  fram
-unwanted_place(fy).  %% \+  by
-unwanted_place(fylla).  %% \+  folla
-unwanted_place(føre).  %% (not Møre)
-unwanted_place(førte).  %% (not Førde)
-unwanted_place(g).  %% Mysterious internal station,\+ gå
-unwanted_place(gang).  %%  gang-> gan-g-> grabvegen 
-unwanted_place(gave).  %%  \+ gate
-unwanted_place(gay).  %% (not May).  %% NBnot actuallyplace
-unwanted_place(ger).  %% \+  Ler,probablygår
-unwanted_place(gjøk).  %% \+  Gjøa
-unwanted_place(glede). %% \+ Gilde
-unwanted_place(goes).  %%  \+ godes,destroyslanguagedetection
-unwanted_place(gp).  %% probablygo,butbecomesgt
-unwanted_place(grade). %% \+ graae
-unwanted_place(graaemølla).  %% ?
-unwanted_place(gral).  %% gran?
-unwanted_place(grille).  %%  \+ Gilles
-unwanted_place(gro).  %% \+  bro
-unwanted_place(guide).  %% \+Gudesgt
-unwanted_place(guten).  %% \+gaten
-unwanted_place(går).  %% NBMunkvoldgår
-unwanted_place(gåt).  %% probablygår,butbecomesgt
-unwanted_place(habla).  %% \+  Halsa(Spansk
-unwanted_place(haik).  %% \+  Hank(Sport)
-unwanted_place(half).  %%  \+ hall
-unwanted_place(hallo).  %%  \+ hall(Eng,destroys lang. selction)
-unwanted_place(halvto). 
-unwanted_place(happens).  %% hagen(amble#)
-unwanted_place(hasj). 
-unwanted_place(havren).  %% \+  havnen
-unwanted_place(heder).  %% \+  peder
-unwanted_place(hege).  %% \+  hage
-unwanted_place(hello).  %% \+  Hell
-unwanted_place(help).  %% \+  Hell
-unwanted_place(hem).  %% hjem,not hoem
-unwanted_place(hembres). %% \+ Hambros %% TA-101111
-unwanted_place(heng).  %% \+hegg
-unwanted_place(henge).  %% \+hemne
-unwanted_place(henger). %% \+ Hanger(åsen) 
-unwanted_place(henne).  %% \+ Hemne 
-unwanted_place(hermer).  %% helmer??OK?
-unwanted_place(hoel).  %% hotel/hoem
-unwanted_place(home).  %% \+  Hoem
-unwanted_place(homo).  %% \+  Hoem
-unwanted_place(homse).  %% \+  Holms
-unwanted_place(hor).  %% \+Horg
-unwanted_place(hora).  %%  \+ Horg
-unwanted_place(hore).  %% \+  hare
-unwanted_place(horegata).  %%  \+ Hareveien
-unwanted_place(horegaten).  %% 
-unwanted_place(horen).  %%  \+ Horten
-unwanted_place(horene).  %%  \+ Horten %% 
-%% unwanted_place(huseby).  %% Husby/Husebysenteret huseby skole?? 
-unwanted_place(hv).  %% \+  av,dv(prob. hva?)
-unwanted_place(hval).  %% \+  Hal
-unwanted_place(hve).  %% \+  eve
-unwanted_place(hvor).  %% \+  horg(probleminEnglish)Syndrome
-unwanted_place(høns).  %% \+  Hans
-unwanted_place(i).  %% \+  is(gen)
-unwanted_place(ida).  %% (not ila)
-unwanted_place(is).  %% \+  ii
-
-%% unwanted_place(ishall).  %% \+ishallen
-
-unwanted_place(jeb).  %%  \+ jeg
-unwanted_place(jev).  %%  \+ jeg
-%% unwanted_place(kampen).  %%  \+ Kammen no longer
-unwanted_place(kapre).  %% \+  karse. 
-unwanted_place(karsk).  %% \+  karse. . 
-unwanted_place(king).   %% (Burger)King--->Kina
-unwanted_place(kinoen). %% -> noun cinema 
-unwanted_place(kjærest).  %%  \+ kjærems
-unwanted_place(kjønn). 
-unwanted_place(kl).  %% 
-unwanted_place(knudsen).  %%  \+ Knausen
-unwanted_place(knuse).  %%  \+ kuset
-unwanted_place(knutsen).  %%  \+ Knausen
-unwanted_place(kolla).  %% \+  Folla
-unwanted_place(komen). 
-unwanted_place(kor).  %%  -kors(EngSyndrome)
-unwanted_place(kors).  %%  \+  kors/gata
-unwanted_place(kos).  %%  \+  kors
-unwanted_place(kose).  %%  \+  kors
-unwanted_place(kråke). 
-unwanted_place(ku).  %%  \+ KO. . . . 
-unwanted_place(kuk).  %%  (not krk)(badwordsshallberepelled)
-unwanted_place(kunst).  %%  \+ kuset
-unwanted_place(kyr).  %%  \+  kor(korsvegen???)
-unwanted_place(kåt).  %%  (Not KVT)
-unwanted_place(laden).  %%  -lade//OsamaBinLaden
-unwanted_place(laks). 
-unwanted_place(lande).  %% lade
-unwanted_place(langt).  %% \+Liangata###(Eng)
-unwanted_place(lego).  %%  \+ Lege
-unwanted_place(lei). 
-unwanted_place(leke).  %% (ikkeLege)
-unwanted_place(lene).  %% ikkeLege
-unwanted_place(lerk).  %% (not Ler)
-unwanted_place(lisa).  %%  \+ Lia
-unwanted_place(lisp).  %% liaslies
-unwanted_place(litn).  %% \+Lian
-unwanted_place(lives).  %% ikkeLies//DestroysLangSelection
-unwanted_place(lla).  %% IlaorLia?
-unwanted_place(lua).  %% \+  lia
-unwanted_place(luka).  %%  \+ Luna
-unwanted_place(lykke).  %% Løkke
-unwanted_place(lære).  %% (not Være)
-unwanted_place(løgn).  %%  \+ Lønn(vei)
-unwanted_place(mad).  %% \+  May <----not place,but ok
-unwanted_place(mads). 
-unwanted_place(mai).  %% not main %% should be taken by lex
-unwanted_place(mail). 
-unwanted_place(mandag).  %% \+  Mandal Eng. 
-unwanted_place(mari).  
-unwanted_place(maria). %% \+ marka 
-
-%%%% unwanted_place(martin). %% \+ marinen %% kregness 
-
-%% not allowed as destination, allowed as (part) name 
-
-unwanted_place(martine).
-unwanted_place(masa). 
-unwanted_place(maur).  %% mars DOESNT HELP unwanted_name
-unwanted_place(meg). 
-unwanted_place(melllom). 
-unwanted_place(mens). 
-unwanted_place(mensen).  %% 
-unwanted_place(meny).    %% moen#
-unwanted_place(mogen).   %% (morgen?,not Moen)
-unwanted_place(moms). 
-unwanted_place(mona).  %%  \+ Moen
-unwanted_place(mongolid).  %% mongolioid/mongolia
-unwanted_place(mons).  %%  \+ Moen
-unwanted_place(morten).  %% \+  Horten
-unwanted_place(mp3).  %% \+  m3(filformat)
-unwanted_place(mr). 
-unwanted_place(må).  %% mo,m1
-unwanted_place(mår).  %% \+  vår(fruekirke)
-unwanted_place(møkka).  %%  \+ mekka
-unwanted_place(møllen).  %% Møllrnberg/Møller
-unwanted_place(narko).  %% \+nardo(?)
-unwanted_place(nek).  %% \+  nrk
-unwanted_place(ner).  %% \+  Ler,probablynår
-unwanted_place(nerd).  %% (not nord)
-%% unwanted_place(nissen).  %%  \+ Nissens. . . %% TA-110328
-unwanted_place(nr). 
-unwanted_place(nr1).  %% (not nrk)
-unwanted_place(nrå). 
-%%  unwanted_place(ntnui).  %% idrettsbygget? \+ ntnu?
-unwanted_place(nuss).  %% buss/Næss
-unwanted_place(nåre).  %% \+  Åre
-unwanted_place(nåt).  %% (not nt)
-unwanted_place(nør).  %% \+  sør,probablynår. 
-
-%%% unwanted_place(o).  %% \+osveien(SIC) %% st o hospital 
-
-%% unwanted_place(oasen). %% \+ Osen (station) 
-unwanted_place(og).  %% \+  og,vg,ono(s)veien|g(aten)
-unwanted_place(okse).  %% \+osen
-unwanted_place(ondes).  %% \+  Osnes
-unwanted_place(ost).  %% \+  Os
-unwanted_place(osv).  %% \+Osv(eien)
-
-%%% unwanted_place(oth).  %% \+  NTH, not short name for Othilienborg? 
-
-unwanted_place(pakk). 
-unwanted_place(palm).  %% \+  paul
-unwanted_place(pi).  %% (not på,pir,ii etc)
-unwanted_place(pinsen). 
-unwanted_place(plage).  %% \+  place
-unwanted_place(prins).  %%  \+ paris###
-unwanted_place(pul).  %% \+  Paul%NB all dirty words shall be repelled
-unwanted_place(pule).  %% \+  Paul
-unwanted_place(pult).  %% \+  Paul
-unwanted_place(pål).  %% avoid pål=på,give message
-unwanted_place(radmann).  %%  \+ rådmann
-unwanted_place(ran).   %% \+  Roan
-%% unwanted_place(rema).  %% "REMA" is not Rena %%-> generic
-unwanted_place(rian).  %% \+  Roan
-unwanted_place(rik).   %% \+  RIT
-unwanted_place(ril).   %% \+  RIT(//til)
-unwanted_place(rio).   %% \+  RIT
-unwanted_place(ris).   %% \+  RIT
-unwanted_place(rita).  %% RIT/Rota(RitaOttervik)
-unwanted_place(road).  %%  \+ roan
-unwanted_place(roar).  %%  \+ roan
-unwanted_place(roger).  %%  \+ rognergate
-unwanted_place(rompa).  %%  \+ Roma %% all expletives
-unwanted_place(rompe).  %%  \+ Rome %% shall be framed
-unwanted_place(ronke). 
-unwanted_place(ronker).  %% \+Rogner-veien
-unwanted_place(ronket).  %% 
-unwanted_place(rope).   %%  \+ rype
-unwanted_place(rot).    %%  \+ rota
-unwanted_place(roten).  %%  \+ Rosten
-unwanted_place(runke).  %% 
-unwanted_place(runker). %% 
-unwanted_place(runket). %% 
-unwanted_place(rute). 
-unwanted_place(ryte).   %% rute?, \+ rye  \+ rate
-unwanted_place(salg).   %% \+sag
-unwanted_place(salme).  %% svale(v)amble#
-unwanted_place(samlev). %% old station, \+ svaleveien
-%% unwanted_place(sands).  %%  TA-not sande,not Dr. sandsvei 
-unwanted_place(satan).  %%  \+ santa(barbara)
-unwanted_place(saus).   %%  \+ SAS
-unwanted_place(seile).  %%  \+ Selje
-unwanted_place(selve).  %%  \+ Selje
-unwanted_place(sex).    %%  \+ Sem
-%% unwanted_place(shell).  %%  \+ spell mix with Hell 
-unwanted_place(simen).  %% \+ Siemens .. er simen stygg? 
-unwanted_place(sion).   %%  \+ simon
-%unwanted_place(sirkus). %%  \+ sirius  %% RS-130120 Sirkus Shopping
-unwanted_place(sist).   %%  \+ Wist
-unwanted_place(sjansen).%%  \+ Skansen 
-unwanted_place(sko).    %% 
-unwanted_place(skrue).  %% \+
-unwanted_place(skumle). %% \+skule
-unwanted_place(skyttrerveien). 
-%%  unwanted_place(sola).  %% \+sollia,solia  
-unwanted_place(solen).     %% \+  Polen
-unwanted_place(spank).     %% \+spania
-unwanted_place(spare).     %% \+stare
-unwanted_place(sprit).     %% \+  sport
-unwanted_place(spurt).     %% \+  (Hank)Sport
-unwanted_place(stand).   %% \+Sande
-unwanted_place(staven).  %% \+Stavne
-unwanted_place(stien).   %% \+Skien
-unwanted_place(stiller). %% \+ Tiller
-unwanted_place(stine).   %% \+ Stene %% TA-110228
-unwanted_place(stop).    %% \+ stor-
-%% unwanted_place(stranda). %%  \+ strinda 
-unwanted_place(street).  %% Lang Ambig
-unwanted_place(strøm).   %% \+storm
-unwanted_place(stut).    %% \+ stud
-unwanted_place(stående). %% \+ Stene 
-unwanted_place(sug).     %% \+ Sig. 
-unwanted_place(sum). 
-unwanted_place(suppen).  %%  \+ sluppen
-unwanted_place(syklen).  %%  \+ skolen
-unwanted_place(sæ).      %%  \+ st
-%% unwanted_place(sætre).   %% \+ sætres/stare %% foreign 
-unwanted_place(søren).   %% \+ støren
-unwanted_place(søt).     %% \+  sør
-unwanted_place(søvn). 
-unwanted_place(ta).     %% \+ tt,ts
-unwanted_place(tank).   %% \+ thanks 
-unwanted_place(tanke).  %%  \+ tanem
-unwanted_place(tell).   %% dialect,not Hell
-unwanted_place(th).     %% Trondh? \+ TT
-unwanted_place(the).    %% don'tspellchecktothe
-unwanted_place(thor).   %%  \+ Torp
-unwanted_place(thr).    %% the, \+ chr,tr,etc. 
-unwanted_place(tid). 
-unwanted_place(tier).   %% ikke tiur
-unwanted_place(tim).    %% \+ Sim
-unwanted_place(time).   %% \+ Time kommune 
-unwanted_place(ting). 
-unwanted_place(tio).    %% \+ to
-unwanted_place(tl).     %% \+ TT,probably til
-unwanted_place(tnt).    %% \+ TT
-unwanted_place(tom).    %% \+ Lom,tog
-unwanted_place(torsk).  %% \+ Tors'vei
-unwanted_place(torvet). %% name of station going inwards
-unwanted_place(tosk).   %% (ikke tysk)
-unwanted_place(tp).     %% \+ TT,probably to
-unwanted_place(tra).    %%  \+ fra/-trøa
-%% unwanted_place(trade).  %%  \+ trane 
-unwanted_place(tram).   %%  \+ Trøa (SIC)
-unwanted_place(transe).  %%  \+ tranev
-unwanted_place(trynet).  %%  \+ Tynset(SIC)
-unwanted_place(trøng).  %%  \+ trøa-vegen(trø(n)a-g) %% amble#
-%% unwanted_place(tuller).  %%  \+ Tiller %% nein 
-unwanted_place(ture).   %% \+ Tiur-vegen
-unwanted_place(tviler).%%  \+ Tiller
-unwanted_place(twin).  %%  \+ Tine
-unwanted_place(tåsk).  %%  \+ tysk
-unwanted_place(tøff).  %%  \+ KØFF
-unwanted_place(urdu).  %%  \+ Urds vei
-unwanted_place('va|ret').  %% \+ Være  
-unwanted_place('va¦ret').  %%
-unwanted_place(valg).  %%  \+ vang
-unwanted_place(veien). %%  \+ viken
-unwanted_place(verb). 
-unwanted_place(verdt).  %%  \+ verft
-unwanted_place(vere).  
-unwanted_place(verst). 
-unwanted_place(verste). %%  \+ vestre
-unwanted_place(vestlig).%%  \+ vestlia 
-unwanted_place(vet).    %%  \+ vest(E:)
-unwanted_place(vinkel). %%  \+ vikelv
-unwanted_place(vodka).  %%  \+ volda
-unwanted_place(volvo).  %%  \+ volve-
-unwanted_place(vre).    %%  \+ Være
-unwanted_place(world).  %%  \+ wolds
-unwanted_place(yrke).   %%  \+ York
-unwanted_place(øre).    %%  \+ øvre
 
 
 
@@ -5565,7 +697,7 @@ cmpl(byåsen,ungdomsskole,  byåsen_skole).
 
 cmpl(byåsen,vgs,       byåsen_videregående_skole). 
 
-cmpl(byåsen,[v,g,skole], byåsen_videregående_skole).     %% TA-110610  byÃ¥sen v.g skole 
+cmpl(byåsen,[v,g,skole], byåsen_videregående_skole).     %% TA-110610  byåsen v.g skole 
 cmpl(byåsen,[v,'.',g,skole], byåsen_videregående_skole). %% nec ? 
 
 
@@ -5580,7 +712,8 @@ cmpl(byåsen,ugla,ugla).
 cmpl(byåsen,vei,byåsveien). %% ?
 cmpl(byåsen,veien,byås_street).  %%
 cmpl(byåsenbutikk,senter,byåsen_butikksenter). 
-cmpl(byåsenvideregående,skole,byåsen_skole). %% migosenteret). %% 
+%% cmpl(byåsenvideregående,skole,byåsen_skole). %% migosenteret). %% RS-131117
+cmpl(byåsenvideregående,skole,byåsen_videregående_skole). %% migosenteret). %% RS-131117
 
 cmpl(boechmans,vei,bøckmansveien). % n
 cmpl(bøckmannsv,[],bøckmansveien). %% TA-110314
@@ -10340,7 +5473,16 @@ foreign(åstveit).
 
 
 
-%%% PLACE_RESOLVE
+%%% PLACE_RESOLVE (PLACE,STATION).
+% STATION is one of several determinations for PLACE
+% Examples:
+% place_resolve(charlottenlund,charlottenlund_krk).
+% place_resolve(charlottenlund,charlottenlund_nedre).
+% place_resolve(charlottenlund,charlottenlund_skole).
+% In answer:
+% Stedet Berg er flertydig .
+% Mulige alternativer er: Berg Prestegård , Berg studentby , Østre Berg  .
+%%%
 
 place_resolve(badestranda,korsvika). 
 place_resolve(badestranda,øysand). 
@@ -10351,6 +5493,12 @@ place_resolve(badestranda,øysand).
 place_resolve(berg,berg_prestegård).
 place_resolve(berg,berg_studentby).
 place_resolve(berg,østre_berg).
+
+
+place_resolve(byåsen,byåsen_butikksenter). %% RS-131117
+place_resolve(byåsen,byåsen_skole). %% RS-131117
+place_resolve(byåsen,byåsenvgs). %% RS-131117
+
 
 place_resolve(charlottenlund,charlottenlund_kirke). 
 place_resolve(charlottenlund,charlottenlund_nedre). 
@@ -10409,3 +5557,4875 @@ place_resolve(vegmesterveien,veimester_kroghs_street).
 
 
 %%
+
+
+%%% PLACESTAT  station neighbourhood
+%¤ PLACESTAT  (PLACE,STATION)
+%Examples;
+%placestat(arbeidsmarkedsinstituttet,lade_alle_80).
+%placestat('Hotell Augustin',torget).
+%
+%STATION is the preferred /recommended nearest station to the
+%neighbourhood of PLACE
+%
+
+%% placestat(atb,torget). %% TA-101108 
+
+placestat(studentersamfundet_1,studentersamfundet).  %% AtB %% NB \+ isat
+placestat(studentersamfundet_2,studentersamfundet).  %% TA-100922
+
+placestat('ALT/Statoil',rotvoll_nedre).%% hist/ALT %% extra dep Bus 6 
+placestat('Adolf Øiens skole',prinsen_kinosenter).  %%
+placestat('Bakke kirke',bakkegata).  %% Syndrome Hvor er bakke kirke
+placestat('Berg arbeidskirke',kvilhaugen). 
+%% placestat('Brøset sykehus',brøsetvegen_119). 
+placestat('Comfort Hotel Park',prinsen_kinosenter). 
+placestat('Dalgård skole',dalgård).  %%
+placestat('Din bil',nidarvoll_skole).  %% Bratsbergveien 11
+placestat('Eberg skole',teglverkskrysset).
+placestat('Heimdal politistasjon',heimdal_stasjon).  %%
+placestat('Hotell Augustin',torget).  %% Brage 
+placestat('Motor Trade',fiolsvingen). %% Bilverksted
+placestat('Lilleby skole',stiklestadveien).  %% Ladeveien 1 
+placestat('Ni muser',prinsen_kinosenter). 
+placestat('Steinan studentby',vestlia).
+placestat('Tiller kirke',moltmyra_øst).  
+placestat('Torbjørn Bratts veg',fiolsvingen). 
+
+
+placestat(adm_rit,st_olavs_hospital). 
+placestat(adresseavisa,adresseavisen). 
+placestat(alfheim,alfheimsvingen). 
+placestat(alfheimsv,alfheimsvingen).  %% Forkortelse (alfheimsv i rutehefte)
+
+placestat(amo_senteret,henrik_ourens_veg). 
+placestat(angelltrøa,angelltrøvegen). 
+placestat(angeltrøa,angelltrøvegen). 
+placestat(arbeidsmarkedsinstituttet,lade_alle_80). 
+placestat(arnebyen,ugla). 
+
+
+
+placestat(atmel,maskinagentur). 
+
+placestat(autronica,haakon_vii_gate_25). %% TA-110818
+
+placestat(multiconsult,postterminalen). %% sluppenvegen 23 %% TA-110415
+
+ 
+%% placestat(lingit,moholt_storsenter). %% //confuse Lingit company
+
+placestat(lingit,moholt). %% TA-110401
+
+placestat(idi,gløshaugen_syd). %% TA-110401
+
+placestat(dis,gløshaugen_syd). %% TA-110401
+
+
+placestat(badeland,pirbadet). 
+placestat(bakkaunet,rosendal). 
+placestat(bakkebru,bakkegata). 
+placestat(balders_street,tors_veg).  %% street
+%% placestat(barneklinikken,st_olavs_hospital_vest).  %% ????????
+placestat(bassengbakken,solsiden). 
+placestat(beddingen,solsiden). 
+placestat(befalsskolen,festningsgata). 
+
+%% placestat(berg,østre_berg). 
+%% also station on obscure route 73 (not in busrutehefte)
+
+placestat(bergstudentby,bugges_veg). 
+placestat(bergsvingen,harald_bothners_veg).  %% øvre/nedre
+placestat(bi,pirbadet). %%  BI
+placestat(bi,østre_rosten). 
+placestat(bilcentrum,leangen_alle). %%  Garage
+placestat(bilsakkyndige,e_verket). 
+placestat(bilsakskyndig,e_verket). 
+placestat(biltema,rostengrenda).  %% Østre rosten 22 (not garage)
+placestat(biltilsyn,e_verket). 
+placestat(biltilsynet,e_verket). 
+placestat(bispegata,prinsen_kinosenter). 
+placestat(bispegården,prinsen_kinosenter). 
+placestat(bispehaugenskole,bakkegata). 
+placestat(bjørndal,bjørndalsbrua). 
+%% placestat(blaklia,blakli).
+placestat(blaklihøgda,blakli). 
+placestat(blindeforbundet,churchills_veg). 
+placestat(blindeskolen,churchills_veg). 
+placestat(blomsterbyen,fiolsvingen). 
+placestat(blåklokkevegen,fiolsvingen). 
+%% placestat(bohus,brøsetvegen_186). 
+%% placestat(brannstasjonen,brannstasjon_øst). %% TA-110822
+%% placestat(bratsberg,bratsberg_vestre). 
+
+%% placestat(brattøra,pirbadet). 
+
+placestat(brattørkaia,brattøra). 
+placestat(brattørkaien,brattøra). 
+placestat(bratørkaia,brattøra). 
+placestat(bratørkaien,brattøra). 
+
+
+%%% placestat(brit_grytbakks_street,gryta). 
+
+placestat(britannia,hovedterminalen).  %% (Britania by spch)%% airbus
+placestat(britannia_hotell,hovedterminalen). 
+
+placestat(bromstadkrysset,bromstadsvingen). 
+placestat(brøset,brøsetflata). 
+placestat(brøsetsvingen,bromstadsvingen). 
+placestat(bussgarasjen,sorgenfri). 
+placestat(byavisa,nardokrysset).  %%?
+placestat(bymarka,skistua).  %%
+placestat(byneset,trolla). 
+placestat(bytorget,torget).  %%avoidhplnærtorgetertorget
+%% placestat(byåsen_butikksenter,byåsen_butikksenter). %% TA-110627
+placestat(byåsen_videregående_skole,migosenteret). %% byåsen_videregående_skole neibourhood
+
+placestat(cathedral,prinsen_kinosenter). 
+placestat(ceciliebrua,tvetestien). 
+placestat(charlottenlund_skole,churchills_veg).  %% Ungdomsskole/Videregående?
+placestat(charlottenlund_videregående,brundalen_skole). 
+%% placestat(charlottenlundbanen,churchills_veg).
+placestat(charlottenlundhallen,churchills_veg). 
+placestat(charlottenlundhallen,tunvegen).  %% Tunveien18B,Jakobsli
+placestat(chr_eggens_veg,bjarne_ness_veg). 
+placestat(church,prinsen_kinosenter). 
+placestat(cicilliebrua,tvetestien). 
+placestat(city_hall,prinsen_kinosenter). 
+placestat(dalen,dalen_hageby). 
+placestat(dalenhageby,dalen_hageby). 
+placestat(dalsaune,dalsaunevegen). 
+placestat(dalseng,prof_brochs_gate). 
+placestat(dalsenget,prof_brochs_gate). 
+
+placestat(devlegård,olav_engelbrektssons_alle).
+
+placestat(bilbyen,nidarvoll_skole). %%  bratsbergveien 17. // garage
+placestat(dinbil,nidarvoll_skole).  %%  bratsbergveien 11. // garage
+
+placestat(dmmh,dalen_hageby). %% TA-110301
+
+placestat(dokkparken,solsiden). %%  // Changed name !
+
+placestat(dokkhuset,solsiden).
+placestat(dokksiden,solsiden). 
+placestat(dokkterminalen,solsiden).  %% ? 
+placestat(domen,prinsen_kinosenter). 
+placestat(domkirka,prinsen_kinosenter). 
+placestat(domkirken,prinsen_kinosenter). 
+
+%% placestat(dora,dora_1).  
+placestat(dorahallen,dora). 
+
+placestat(dronningens_gate,hovedterminalen).  %% jeg skal til dronningens gate. 
+placestat(dronningens_street,hovedterminalen).  %% Technical
+placestat(døveskolen,skyttervegen).  %%
+placestat(ekle,eklesbakken). 
+placestat(elgeseter,prof_brochs_gate). 
+placestat(elgsetergata,prof_brochs_gate).  %% \+ sæterbakken
+placestat(erkebispegården,prinsen_kinosenter). 
+
+%% placestat(esso_motorhotell,brøsetvegen_186). %% Old name ! 
+
+placestat(estenstad,estenstadvegen). 
+placestat(estenstadmarka,estenstadvegen). 
+placestat(fagerheim,fagerheim_alle). 
+placestat(fagerlia,fagerliveien). 
+placestat(fagerlien,fagerliveien). 
+placestat(falkenborg,dalen_hageby). 
+placestat(felleskjøpet,gartnerhallen). 
+placestat(fengsel,tunga_kretsfengsel). 
+placestat(fengselet,tunga_kretsfengsel). 
+placestat(festningen,ankers_gate). 
+placestat(festningsparken,ankers_gate).  %% ?
+placestat(filmteatret,prinsen_kinosenter). 
+placestat(fischebygget,studentersamfundet). 
+placestat(flatåsen,flatåstoppen). %Nightbus
+placestat(flatåsensenteret,flatåsen_senter). 
+placestat(flatåsenskole,flatåsen_senter). 
+placestat(flatåsvegen,øvre_flatåsveg). 
+placestat(fokushallen,vestre_rosten). 
+placestat(fosenferja,pirbadet).
+placestat(fosenterminalen,pirbadet). 
+placestat(fossesenteret,fossegrenda). %% Leirfossvegen 45
+%%cmpl(fossesenteret,[],fossesenteret). %% RS-120805      How? Necessary? 
+
+placestat(gartnerhagen,gartnerhallen). 
+placestat(gilde,gartnerhallen). 
+placestat(gildheimsveien,gildheim). 
+placestat(gløshaugen,gløshaugen_syd).  %% Avoid GS/N messages
+placestat(godsterminalen,terminalen). 
+placestat(granåsen,granåsen_vm_anlegget). 
+placestat(grillstad,grilstadkleiva). 
+placestat(grilstad,grilstadkleiva). 
+placestat(grilstadfjæra,grilstadkleiva). 
+
+placestat(hallset,søndre_halset).  %% nordre søndre 
+placestat(halset,søndre_halset).   %% nordre søndre
+placestat(hallsetvangen,søndre_halset). 
+placestat(hanger,hangeråsen). 
+placestat(hangersletta,hangeråsen).  %% aasen UN properstation
+placestat(hangerås,hangeråsen).  %% necessary because laura hangerås veg
+placestat(hansbakkfjæra,ranheim_skole).  %% map 
+placestat(harbour,pirbadet).  %% English the harbour
+placestat(haukvatnet,haukåsen). 
+placestat(havna,pirbadet).
+placestat(havna,pirbadet).  %%?
+placestat(havnen,pirbadet).
+placestat(havstad,havstadsenteret). 
+placestat(havstadflata,havstadsenteret). 
+placestat(havstein,havstadsenteret). 
+placestat(havsteinekra,stabells_veg). %%% ?? helse og velferdssenter
+placestat(havsteinflata,havstadsenteret). 
+placestat(havsteinflaten,havstadsenteret). 
+placestat(heimdalsentrum,heimdal_sentrum). 
+placestat(hoeggen,hoeggen_skole). 
+placestat(holtermannsveien,valøyvegen). 
+placestat(horneberg,hornebergvegen). 
+placestat(hospitalløkka,hospitalskirka). 
+placestat(hospitalløkkan,hospitalskirka). 
+placestat(hospitalløkken,hospitalskirka). 
+placestat(hospitalsløkkan,hospitalskirka). 
+placestat(hospitalsløkka,hospitalskirka). %% hospitalslokka 
+
+%% placestat(hostel,weidemannsveien). %% * P-hotels %% TA-101202
+placestat(hurtigbåten,pirbadet). 
+placestat(hurtigbåtkaia,pirbadet). 
+placestat(hurtigbåtkaia,pirbadet). 
+placestat(hurtigbåtkaien,pirbadet). 
+placestat(hurtigbåtterminalen,pirbadet). 
+
+%% placestat(hurtigruta,pirbadet). %% Haz, boat
+ 
+placestat(hurtigrutekaia,pirbadet).
+placestat(hurtigrutekaien,pirbadet). 
+placestat(hurtigruten,pirbadet). 
+placestat(hurtigruteterminalen,pirbadet). %% ?
+placestat(huseby,husebytunet).  %% \+ synplace
+placestat(husebybadet,saupstadsenteret). 
+placestat(husebyhallen,saupstadsenteret). 
+placestat(husebysenteret,saupstadsenteret). 
+placestat(hårstad,martin_kregnes_veg). 
+placestat(hårstadmarka,martin_kregnes_veg). 
+placestat(hårstadmyra,martin_kregnes_veg). 
+placestat(idrettsbygget,høgskoleringen). 
+
+placestat(ilabekken,ila). 
+placestat(iladalen,ila).
+placestat(ilakirke,ila). 
+placestat(ilaparken,ila). 
+placestat(ilevolden,ila). 
+placestat(ilevollen,ila). 
+placestat(ilevollene,ila). 
+
+%% placestat(ilsvika,ila). %% station
+placestat(ilsvikøra,ilsvika). 
+
+placestat(industribygget,solsiden). 
+placestat(innherredsveien,solsiden). 
+%% placestat(ishallen,bromstadsvingen). %% TA-101124 Station!
+placestat(jonsvannet,solbakken_bru). 
+placestat(jonsvannsveikrysset,jonsvannsveien). 
+placestat(jonsvannet,solbakken_bru). %% TA-110202
+placestat(kaia,pirbadet). 
+placestat(kanalen,solsiden). 
+placestat(karinelund,strinda_kirke). 
+placestat(katedralen,prinsen_kinosenter). 
+placestat(katedralskolen,prinsen_kinosenter). 
+placestat(kbs,strindheim).
+placestat(kbs_senteret,strindheim).
+placestat(kinosenteret,prinsen_kinosenter). 
+placestat(kirka,prinsen_kinosenter).  %%Uncertain
+placestat(klefstad,klefstadhaugen). 
+placestat(klostergata,studentersamfundet).  %% (Øya?)_2
+placestat(klæbu_skysstasjon,klæbu_sentrum).  %% klæbu_skysstasjon rutehefte/
+placestat(kolstad,torplassen). 
+placestat(kolstadflata,torplassen). 
+placestat(kolstadsenter,torplassen). 
+placestat(kolstadsenteret,torplassen).  %%?
+placestat(kolsås,flatåstoppen).  %% også Bærum
+placestat(kolsåsen,flatåstoppen). 
+placestat(kolsåstoppen,flatåstoppen). 
+placestat(kongens_gate,hovedterminalen).  %% jeg skal til kongens gate. 
+placestat(kongsvegen,granåsen_vm_anlegget). 
+placestat(korsvika,lade_kirke). 
+placestat(kotenghallen,vestre_rosten). %%  private?
+placestat(kretsfengselet,tunga_kretsfengsel). 
+placestat(kristiansten,ankers_gate). 
+placestat(kristianstenfestning,ankers_gate). 
+placestat(kuhaugen,gina_krogs_veg). 
+placestat(kyvannet,skavlans_veg). 
+placestat(kyvatnet,skavlans_veg). 
+%% placestat(køff,leangenveien). %% TA-110822
+
+%%¤¤¤ %% ulykke AtB %% TA-100715
+%%%%%%placestat(lade,lade_alle_80).  %% ( lade-alle_80 more passages)
+%%¤¤¤
+placestat(lade_alle,lade_alle_80).  %%
+
+placestat(ladehammerveien,ladehammeren).  %%(manystations,
+placestat(lademoen,rønningsbakken). 
+placestat(lademoen_kirke,rosendal). 
+ %% placestat(lademoen_skole,mellomv_5). 
+placestat(lademoparken,buran). 
+placestat(ladeparken,buran). 
+placestat(ladeskolen,lade_kirke). 
+placestat(ladetorget,østmarkveien). 
+placestat(lamoparken,buran). 
+placestat(langlohaugen,langlo). 
+placestat(larsbyen,olav_nygårds_veg). 
+placestat(leangen,travbanen). 
+placestat(leangenhallen,bromstadsvingen). 
+placestat(legard,legårdsbakken). 
+placestat(legevakta,st_olavs_hospital). 
+placestat(legevakten,st_olavs_hospital). 
+placestat(leinstrand,leinstrand_samfunnshus). 
+placestat(leira,leira_skole). 
+placestat(leirbrua,leirbrua_gård). 
+placestat(lerkendalskrysset,lerkendal_stadion). 
+placestat(lerkendalsvegen,gløshaugen_syd). 
+placestat(leuthenhaven,torget). 
+%% placestat(lianvannet,lian). %% not AtB
+placestat(loholt_alle,lohove). 
+%% placestat(louisenlyst,leangenveien).  %% Leangenveien3 %% TA-110822
+placestat(luftkrigsskolen,persaunet_leir). 
+placestat(lundhøgda,lundåsen_n). 
+placestat(lærerhøgskole,rotvoll_nedre). 
+placestat(lærerhøgskolen,rotvoll_nedre). 
+placestat(mamoz,fiolsvingen). %% nardo_street-16). 
+placestat(marineborgstasjon,marienborg_stasjon).       %% RS-130330. Marienborg er utgått 
+placestat(marinen,prinsen_kinosenter). 
+placestat(mediahuset,maskinagentur). 
+
+placestat(norske_meierier,heggstadmoen). %% NB %% TA-110705
+
+%% placestat(melkekartongen,city_syd). 
+
+
+% placestat(migosenter,migosenteret). 
+% placestat(migosenteret,migosenteret).  %% halset internal name
+
+placestat(misjonskirken,prinsen_kinosenter).  %% Arkitekt Christies gt
+placestat(moholtkrysset,omkjøringsveien_moholt). 
+placestat(moholtområdet,moholt). 
+placestat(moholtsenteret,moholt_storsenter).  
+placestat(moholtterasse,moholt).  %% ???
+placestat(moholttun,moholt). 
+placestat(mts,magnus_berrføtts_veg).  %% Lazy complex
+placestat(munkegata,hovedterminalen). 
+placestat(møllenberg,solsiden). 
+
+placestat(møller_bil,hallfred_høyems_veg). 
+
+placestat(n_g_u,ringve_skole). 
+placestat(naf,e_verket).  %% (?) SIC
+placestat(nafsenteret,e_verket).  %%( ?) SIC
+placestat(nardo,nardosenteret). 
+placestat(nardobanen,fiolsvingen). 
+placestat(nardoskole,nardokrysset). 
+placestat(nardosletta,nardosenteret).  %% Names should not disappear
+placestat(nardovegen,dybdahls_veg). 
+
+%%placestat(nattbussterminalen,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB %% TA-100715
+%%placestat(nattbussterminalen,hovedterminalen). %% CORREC %% TA-101203 %% AtB %% TA-100715
+placestat(olav_tryggvasons_gate,sentrum). %% CORREC %% TA-101203 %% AtB %% TA-100715 %% RS-121223
+
+placestat(nedre_elvehavn,solsiden).  %%(?)
+placestat(nedre_møllenberg,bakkegata). 
+placestat(neptunveien,risvollan_senter). 
+placestat(nidar,strindheim). 
+placestat(nidarbergene,strindheim). 
+placestat(nidarfabrikken,strindheim). 
+placestat(nidaros,hovedterminalen).  %% New name for midtbyn 
+placestat(nidarosdomen,prinsen_kinosenter). 
+placestat(nidarvoll,nidarvoll_skole). 
+placestat(nidarvollsykehjem,nygård). 
+placestat(nidarø,trondheim_spektrum). %% not sum08
+placestat(nidelvbrua,nidelv_bru). 
+placestat(nidelvhallen,valøyvegen).  %% ?
+placestat(nilsbyen,stavset_senter). 
+placestat(nissekollen,fiolsvingen). 
+
+%% placestat(nordre,nordre_gate).  %% nordre general//HAZARD
+
+placestat(nordre_halset,migosenteret). %% renamed
+
+
+placestat(nrk,tyholttårnet). 
+placestat(nth,gløshaugen_syd).  %%
+placestat(ntnu_lade,harald_hårfagres_gate).  %% Changed Name %<---
+placestat(ntnui,høgskoleringen).  
+placestat(nyhavna,nidelv_bru).  %%(?)
+placestat(nyveilia,bjørndalsbrua). 
+placestat(næringssenteret,buran).
+placestat(okstadbrinken,kroppanmarka). 
+placestat(okstadtunet,okstad). 
+placestat(olavshallen,nova_kinosenter). 
+placestat(olavskvartalet,nova_kinosenter). 
+placestat(olavskvarteret,nova_kinosenter). 
+placestat(olavsstatuen,torget). 
+placestat(olavsgården,strindheim). %% Thonning Owesens gate 20 
+
+%% placestat(ole_aasveds_street,gryta). 
+
+
+placestat(palmehaven,hovedterminalen). 
+placestat(perleporten,gløshaugen_syd). 
+placestat(persaune,persaunet_leir). %neitherisspellch
+placestat(persaunet,persaunet_leir). %neitherisspellch
+placestat(pir,pirbadet). 
+%% placestat(pirbadet,pirbadet). 
+placestat(piren,pirbadet).
+placestat(pirkaia,pirbadet). 
+placestat(pirsenteret,pirbadet). 
+
+placestat(pirterminalen,pirbadet). 
+
+placestat(plantasjen,strindheim_hageby).  %% baldershage 18
+
+%% placestat(politihuset,ts).   %% TA-100927
+%% placestat(politistasjon,ts).    %% politihuset). %% Must be station
+%% placestat(politi,ts).           %% politi i uniform %% amb 
+%% placestat(politistasjonen,ts).  %% ?
+
+ %% placestat(posthuset,postterminalen).  %%(\=p. h. isentrum)
+
+placestat(prinsen,prinsen_kinosenter). 
+placestat(prinsen,prinsen_kinosenter).  %%NBPRINSENisalsoafictitiousstation
+placestat(prinsenkino,prinsen_kinosenter). 
+placestat(prinsens,prinsen_kinosenter).  %%(pgaavertering)
+placestat(prinsens_gate,prinsen_kinosenter). 
+placestat(prøven,kroppan). 
+placestat(prøvenbil,kroppan). 
+placestat(radmannbygget,gildheim). %%  Ranheimsvegen 10
+placestat(ramstadkrysset,ramstad). 
+%%placestat(ranheim_kirke,nedre_humlehaugen_øst). %% RS-130302 Overrides isat(ranheim_kirke,ranheim_kirke).  
+placestat(ravnkloa,hovedterminalen).  %%(Hazard?)
+
+%% placestat(realfagbygget,gløshaugen_syd). %% --- Telebuster house
+placestat(regionssykehuset,st_olavs_hospital).  %%r_i_t_hovedporten). 
+placestat(regionsykehuset,st_olavs_hospital).  %%r_i_t_hovedporten). 
+placestat(reina,høgreina).  %%betterthanRena
+%% placestat(reitgjerdet,brøsetvegen_119). 
+
+placestat(reppevegen,vikelvveien). %% imcomprehensible route 777
+placestat(reppeveien,vikelvveien). %% street reppeveien = osveien 
+                                   %% reppevegn not in routes
+
+placestat(reppemoen,reppe).        
+
+placestat(rikshospitalet,st_olavs_hospital).  %%-> mess
+placestat(ringvebukta,ringve_museum). 
+placestat(rishaughallen,haakon_vii_gate_25).  %% (håkon 7 gate 23. )
+placestat(risvollan,risvollan_senter). 
+placestat(risvolltun,søndre_risvolltun). 
+placestat(rit,st_olavs_hospital).  %% r_i_t_hovedporten). 
+placestat(rockheim,pirbadet). %% Brattørkaia 14 %% TA-100927
+placestat(rognbu,rognbudalen). 
+placestat(rognbuveien,rognbudalen).  %%?
+placestat(rogndalen,rognbudalen). 
+
+placestat(rosenborghallen,gyldenløves_gate). %% TA-101025
+
+%% placestat(rosenborg,gyldenløves_gate). %% isat (AtB/Team)
+%% placestat(rosenborghallen,gyldenløves_gate). 
+
+%% placestat(rosta,rostengrenda).  %% Rosten is station #43
+%% placestat(rosten,rostengrenda).
+%% placestat(rosten,rostengrenda). 
+
+
+
+placestat(rostenhallen,kvt). 
+placestat(rostenkrysset,østre_rosten). 
+placestat(rotvollfjæra,rotvoll).  %%?
+placestat(rønning,rønningsbakken). 
+placestat(rådhuset,torget). 
+
+placestat(sandgata,hospitalskirka). 
+placestat(sandmoencamping,sandmoen). 
+placestat(saupstad,saupstadsenteret). 
+placestat(saupstadkrysset,saupstadsenteret).  %%?
+placestat(saupstadskole,midteggen). 
+placestat(saupstadvegen,heimdal_stasjon). 
+placestat(saxenborg,saxenborg_alle). 
+placestat(schrøder,fossegrenda). 
+%placestat(servicekontoret,dronningens_gate_d2).        %% RS-130812 Gammelt TT-kontor!
+placestat(singsaker,asbjørnsens_gate). 
+placestat(singsaker_studenthjem,jonsvannsveien). 
+placestat(sirkus_shopping,strindheim).
+placestat(sjetne,carl_schjetnans_veg). 
+
+placestat(sjetnmarka,carl_schjetnans_veg). %% not nightbus (103) Sjetnmarka
+ %% bus_depend_station(103,sjetnmarka,paul_skolemesters_veg). %% nightbus anomaly
+
+placestat(sjokoladefabrikken,strindheim). 
+placestat(skippy,fossegrenda).  %% schrøder). 
+placestat(skippysenteret,fossegrenda).  %%schrøder). 
+placestat(skipsmodelltanken,magnus_berrføtts_veg). 
+placestat(smistadgrenda,arnt_smistads_veg).  
+placestat(smistadkrysset,arnt_smistads_veg). 
+%% placestat(solbakkenbrua,osbrua). 
+%% placestat(solsiden,solsiden). %% station %% TA-101130
+
+%% placestat(sorgenfriveien,sorgenfri) :- \+ value(airbusflag,true).  %% (on the map)
+%% krøll med airbus 
+
+placestat(sosialhøgskolen,gildheim).  %% ???
+
+placestat(spilleplassen,spillebakken). %% TA-110815
+
+placestat(spongdalskole,spongdal). 
+
+%% placestat(st_olavs_gate,torget). %%  \+ tramflag not AtB
+
+placestat(stabbursmoenskole,ditlev_bloms_veg). 
+placestat(statens_hus,prinsen_kinosenter). 
+
+placestat(statoil,statoil_rotvoll). %% TA-110627 ? isat?
+
+placestat(stavne,stavnebrua).  %% confuse hvor langt er det fra stavne bro til breidablikk
+placestat(stavnebro,stavnebrua). 
+
+%%%                       placestat(steinan,vestlia).  %% NOT nattbussen
+
+placestat(steinandalsvegen,steindalsvegen). 
+placestat(steinanstudentby,vestlia). 
+placestat(steinanv,heggdalen). 
+placestat(steinanvegen,heggdalen). 
+placestat(steinanveien,heggdalen). 
+placestat(steinberget,møllebakken). 
+placestat(steindal,steindalsvegen).  %%<--???
+placestat(steindalen,heggdalen). 
+placestat(stiftsgården,hovedterminalen). 
+
+placestat(stokkanhaugen,stokkhaugen).  %% SUMMER  %% TA-110627
+
+placestat(stubban,venusvegen). 
+placestat(studenterhytta,skistua). 
+placestat(sunnland,karl_jonssons_veg).  %%sunnlandskole
+placestat(sunnlandskole,karl_jonssons_veg). 
+placestat(svartlamon,strandveien).  %% NB veien
+placestat(sverresborg,trøndelag_folkemuseum). 
+placestat(sykehusbrua,tvetestien). 
+%% placestat(sykehuset,st_olavs_hospital).  %% causes trouble sykehuset st olav
+placestat(sykepleierhøgskolen,st_olavs_hospital). 
+placestat(sykepleierhøyskolen,st_olavs_hospital). 
+placestat(sykepleierskolen,st_olavs_hospital). 
+placestat(tavern,trøndelag_folkemuseum). 
+placestat(tavernaen,trøndelag_folkemuseum). 
+placestat(teateret,prinsen_kinosenter).       %% 
+placestat(teatret,prinsen_kinosenter).
+
+placestat(tegleverksveien, teglverkskrysset).
+placestat(teglgården,fossegrenda). 
+placestat(teglverket,teglverkskrysset).  %%(tegle)
+
+placestat(teknobyen,prof_brochs_gate).  %%(?)
+placestat(teknostallen,prof_brochs_gate). 
+placestat(telenorbygget,magnus_berrføtts_veg). 
+placestat(tf,magnus_berrføtts_veg). 
+placestat(tiller,torvtaket). 
+%% placestat(tiller,moltmyra).  %% moltmyra_øst//bare en retning
+placestat(tillerbruvegen,tiller_bru). 
+placestat(tillerbyen,tonstadgrenda).  %%?koieflata). 
+
+%% placestat(tillertorget,city_syd).  %% Ivar Lykkes veg 3 
+
+placestat(tmv,solsiden).   %% TA-101214
+placestat(tomasskolen,bakkegata). 
+placestat(tonstad,tonstadkrysset). 
+placestat(transitten,brøset_hageby).  %% (nb transittgata->strandveien)
+placestat(trikkehallen,prof_brochs_gate). 
+placestat(trikkestallen,prof_brochs_gate). 
+placestat(trondheim_torg,torget). 
+placestat(trondheimstorget,torget). 
+placestat(trondsletten,brøset_hageby). %% beh. senter
+placestat(trønderenergi,tunga_kretsfengsel). 
+placestat(tunga,tunga_kretsfengsel).  %%(tunga=tungata=tunv#)
+placestat(tunhøgda,tunvegen).  %%midte,vestreøstre
+placestat(tvetesvingen,tvetestien). 
+placestat(tyholtområdet,tyholt). 
+placestat(tøh,østre_berg). 
+placestat(uglaskole,ugla). 
+placestat(uranusveien,risvollan_senter). 
+%%% placestat(utleira,utleirmark).  %% NBNB utleira SYNDROME %% TA-100921
+placestat(utleirveien,nardosenteret). 
+placestat(valentinlystsenter,valentinlyst). 
+placestat(valentinlystsenteret,valentinlyst). 
+placestat(valgrind,valgrindvegen). 
+placestat(valgrinda,valgrindvegen). 
+placestat(valøya,valøyvegen). 
+placestat(valøygrenda,valøyvegen). 
+placestat(vegvesen,postterminalen). 
+placestat(vegvesenet,postterminalen). 
+placestat(veitrafikktilsynet,e_verket). 
+placestat(verdensteatret,prinsen_kinosenter). 
+placestat(vestoppfarten,møllebakken). 
+placestat(vikåsenhallen,markaplassen_skole). 
+placestat(vitenskapsmuseet,hospitalskirka).  %%  \+s
+ %% placestat(voldsminde,mellomv_5).  
+ %% placestat(voldsmindet,mellomv_5). 
+placestat(voll,voll_studentby). 
+placestat(væresbukta,være). 
+placestat(væresholmen,være). 
+placestat(witro,fossegrenda). 
+placestat(åsheim,åsheim_skole). 
+placestat(åsheimhallen,åsheim_skole). 
+placestat(åsvang,åsvang_skole). 
+placestat(åsveien,åsveien_skole). 
+placestat(østmarkasykehus,østmarkveien). 
+placestat(øya_helsehus,studentersamfundet). % RS-110926 
+
+
+placestat(wullumsgayrden,byåsen_butikksenter). %% TA-101230
+placestat(wollumsgarden,byåsen_butikksenter).  %% TA-110114 wollumsgarden 
+
+placestat(østmarka,østmarkveien). %% TA-110623
+
+
+
+%%% END REFERENCE TO STATION SECTION
+
+
+%% only plausible names
+%% intended for intended alternative writing (not spell error)
+
+sameplace(samdundet,studentersamfundet). %% AtB
+sameplace(aasveien,åsveien). 
+sameplace(adolføyen,adolf_øien). 
+sameplace(adolføyens,adolf_øien). 
+sameplace(alfgodagersvei,alf_godagers_veg). 
+sameplace(amosenteret,amo_senteret). 
+sameplace(angeltrøen,angelltrøa). 
+%% sameplace(angeltøveien,angelltrøveien).  %%veg
+%% sameplace(anrdosentret,nardosenteret).
+sameplace(antongrevskotsv,anton_grevskotts_veg). 
+sameplace(antongrevskotsveg,anton_grevskotts_veg). 
+sameplace(antongrevskotsvei,anton_grevskotts_veg). 
+sameplace(arbeidsmarkedsinst,arbeidsmarkedsinstituttet).  %%etc
+sameplace(bakkegata,bakkegata). 
+sameplace(bakkegaten,bakkegata). 
+sameplace(bakkegt,bakkegata). 
+sameplace(bakklandet,bakkegata). 
+sameplace(barneavdelingen,barneklinikken).  %%+baarneavdelingen
+%% sameplace(bay,pirsenteret). 
+sameplace(bergheimterasse,bergheim).  %% terr
+sameplace(bergprestegård,berg_prestegård). 
+sameplace(bjoerkmyra,bjørkmyr). 
+
+sameplace(bjorndalstoppen,bjørndalstoppen).  %% bjorndalstopprn 
+sameplace(bjørnedahlstoppen,bjørndalstoppen). 
+sameplace(bjørnstadstoppen,bjørndalstoppen). 
+
+sameplace(blusevol,blussuvold). 
+sameplace(blusevold,blussuvold). 
+sameplace(blusevoll,blussuvold). 
+sameplace(blussevol,blussuvold). 
+sameplace(blussevold,blussuvold). 
+sameplace(blussevoll,blussuvold). 
+sameplace(blussevollsbakken,blusuvollsbakken).  %% street
+sameplace(blussuvol,blussuvold). 
+sameplace(blussuvoll,blussuvold). 
+sameplace(blussvollbakken,blusuvollsbakken). 
+sameplace(blusuvol,blussuvold). 
+sameplace(blusuvold,blussuvold). 
+sameplace(blusuvoll,blussuvold). 
+sameplace(bratsberveien,bratsbergveien). 
+sameplace(brattsbergveien,bratsbergveien). 
+sameplace(bredablikk,breidablikk). 
+sameplace(breidablik,breidablikk). 
+sameplace(brochsgt,prof_brochs_gate). 
+sameplace(brocksgt,prof_brochs_gate). 
+
+sameplace(broset,brøset). %%  brodet hageby
+
+sameplace(brosmadsvingen,bromstadsvingen). 
+sameplace(bromstadssvingen,bromstadsvingen). %% ss brumstadssvingen. 
+
+%% sameplace(bryggen,pirbadet). %% Aker brygge  
+sameplace(brøsetflaten,brøsetflata). 
+sameplace(brøsethageby,brøset_hageby). 
+sameplace(bussentralen,hovedterminalen).  %% mot sentrumsterminalen
+sameplace(busstasjonen,hovedterminalen). 
+sameplace(bussterminalen,hovedterminalen). 
+sameplace(busstreminalen,hovedterminalen). 
+
+%%%  sameplace(byen,sentrum). %% TEST %% TA-110120  %%. . . blocks spellcheck to byen!!!
+
+sameplace(bygrensa,bygrensen). 
+
+sameplace(bystasjon,hovedterminalen).    %% sentrum
+sameplace(bystasjonen,hovedterminalen).  %%
+
+% sameplace(bystasjon,sentrumsterminalen).    %% sentrum
+% sameplace(bystasjonen,sentrumsterminalen).  %%
+
+sameplace(byåsenbutikksenter,byåsen_butikksenter). 
+sameplace(byåsensenteret,byåsen_butikksenter). 
+sameplace(byåsenskole,byåsen_skole).
+sameplace(byåsenskolen,byåsen_skole).
+
+sameplace(byåsenvei,byås_street). %% problem
+sameplace(byåsenveien,byås_street). 
+
+sameplace(centralstasjon,ts). %% AtB. 
+sameplace(centralstasjonen,ts). %% AtB. 
+sameplace(centralstation,ts). %% AtB. 
+sameplace(centralstationen,ts). %% AtB. 
+sameplace(cesileborg,cecilienborg). 
+sameplace(challotenlund,charlottenlund). 
+sameplace(charlotelund,charlottenlund).  
+sameplace(charlottelunden,charlottenlund). 
+%% sameplace(charlottenberg,charlottenlund). %%  //place 
+sameplace(charlottenlundkirke,charlottenlund_kirke).
+%% sameplace(churshillvei,churchills_veg). 
+sameplace(citisyd,city_syd). 
+sameplace(citysyd,city_syd). 
+
+sameplace(dalgårdvegen,dalgårdstien). 
+
+sameplace(dalgard,dalgård). %%  dlgar
+
+sameplace(dalhaug,dalhaug_street). 
+sameplace(dalheim,dalheim_street). 
+sameplace(dalsaunevegen,dalsauneveien). %allow1spell
+sameplace(dokken,solsiden). 
+sameplace(dokkhavna,solsiden). 
+sameplace(dokkporten,solsiden). 
+sameplace(dolpen,dolpa). %% dolpen på kart 
+sameplace(domkjerka,domkirken). 
+sameplace(doningensgate,dronningens_gate). 
+sameplace(downtown,hovedterminalen). 
+
+sameplace(dragevold,dragvoll).  %% syn dragovold
+sameplace(dragvol,dragvoll).
+sameplace(dragvollan,dragvoll). 
+sameplace(dragvål,dragvoll).  
+sameplace(drogvol,dragvoll). 
+
+sameplace(drongensgate,dronningens_gate). 
+sameplace(drongensgt,dronningens_gate). 
+sameplace(droningegata,dronningens_gate). 
+sameplace(droningensgt,dronningens_gate). 
+sameplace(droninggt,dronningens_gate). 
+sameplace(droningsgt,dronningens_gate). 
+sameplace(dronngt,dronningens_gate). 
+sameplace(dronningegate,dronningens_gate). 
+sameplace(dronningens,dronningens_gate). 
+sameplace(dronningensgata,dronningens_gate). 
+sameplace(dronningensgate,dronningens_gate). 
+sameplace(dronningensgaten,dronningens_gate). 
+sameplace(dronningensgt,dronningens_gate). 
+sameplace(dronningsgata,dronningens_gate). 
+sameplace(dronningsgate,dronningens_gate). 
+sameplace(dronningsgt,dronningens_gate). 
+sameplace(dronningsgt,dronningens_gate). 
+
+sameplace(dybendahls,dybdahls). %% ? %% TA-110131
+
+sameplace(dybdahlsv,dybdahls_veg). 
+sameplace(dybdahlsveg,dybdahls_veg). 
+sameplace(dybdahlsvegen,dybdahls_veg). 
+sameplace(dybdahlsvei,dybdahls_veg). 
+sameplace(dybdahlsveien,dybdahls_veg). 
+sameplace(dybdahlv,dybdahls_veg).  %%(rutehefte)
+sameplace(dybdalsveg,dybdahls_veg). 
+sameplace(dybdalsvegen,dybdahls_veg). 
+sameplace(dybdalsvei,dybdahls_veg). 
+sameplace(dybdalsveien,dybdahls_veg). 
+sameplace(dybendahlsv,dybdahls_veg). 
+sameplace(dybendahlsvegen,dybdahls_veg). 
+sameplace(dybendahlsveien,dybdahls_veg). 
+sameplace(dybendalsvegen,dybdahls_veg). 
+sameplace(dybendalsvei,dybdahls_veg). 
+sameplace(dybendalsveien,dybdahls_veg). 
+
+sameplace(eberg,østre_berg). 
+sameplace(einartambarskjelvesgate,einar_tambarskjelves_gate). 
+sameplace(elgeseterbrua,studentersamfundet). 
+sameplace(elgesetergata,elgeseter).  %%-sæterbakken?
+sameplace(elgesetergate,elgeseter). 
+sameplace(elgesetergaten,elgeseter).  %%Necessary,elgesetergt1=sæterbakken(SIC)
+sameplace(elgesetergt,elgeseter). 
+sameplace(elgesætergate,elgeseter). 
+sameplace(elgesæther,elgeseter). 
+sameplace(elgseter,elgeseter). 
+sameplace(elgseterbro,studentersamfundet). 
+sameplace(elgseterbru,studentersamfundet). 
+sameplace(elgsetergate,elgeseter). 
+sameplace(elgsether,elgeseter). 
+sameplace(elgsæter,elgeseter). 
+sameplace(elgsætergate,elgeseter). 
+sameplace(elvehavn,nedre_elvehavn). 
+sameplace(elvehavna,nedre_elvehavn). 
+sameplace(elvehavnen,nedre_elvehavn). 
+sameplace(elverk,e_verket). 
+sameplace(elverket,e_verket). 
+sameplace(energiverket,e_verket). 
+sameplace(engebretsons,engelbrektssons).  %%spconpartnames
+sameplace(etambarskjelvesgate,einar_tambarskjelves_gate). 
+sameplace(etambarskjelvgt,einar_tambarskjelves_gate). 
+sameplace(europaveg6,e6). 
+sameplace(everk,e_verket). 
+sameplace(everket,e_verket). 
+sameplace(falkberget,johan_falkbergets_vei).  %%confuse
+sameplace(falkbergetsv,johan_falkbergets_vei). 
+sameplace(fergeterminalen,pirbadet). 
+sameplace(festningsgata,festningsgata). 
+sameplace(festningsveien,festningsgata). 
+sameplace(fiolsving,fiolsvingen). 
+sameplace(fiolvegen,fiolsvingen). %inclfiolveg
+sameplace(fjernstads,fjermstads). 
+sameplace(flatåsne,flatåsen). %% flatåsnne 
+sameplace(flataasen,flatåsen). 
+sameplace(flatayen,flatåsen). %% TA-110116 flatÃ¥en  
+sameplace(flatåsensenter,flatåsen_senter). 
+sameplace(flatåsensenteret,flatåsen_senter). 
+sameplace(flatåsentoppen,flatåstoppen). 
+sameplace(flatåssenteret,flatåsen_senter). 
+sameplace(flystasjonen,værnes). 
+sameplace(folkemuseet,trøndelag_folkemuseum). 
+sameplace(folkemuseum,trøndelag_folkemuseum). 
+sameplace(folkemuseumet,trøndelag_folkemuseum). 
+sameplace(fosenkaia,ts). %% AtB.  %%tsisnot station
+sameplace(fossagranda,fossegrenda). 
+sameplace(fossegrande,fossegrenda).  %%(Amblehash:just neib switch)
+sameplace(fotballstadion,lerkendal_stadion). 
+sameplace(froderinnansveg,frode_rinnans_street). 
+sameplace(gammellina,gammel_lina).  %%(_should be dropped). 
+sameplace(gildevangen,søndregate).  %%(NB no message)
+sameplace(ginakroghsgt,gina_krogs_veg). 
+sameplace(gløahugen,gløshaugen). 
+sameplace(gløshaug,gløshaugen). 
+sameplace(gløshøgen,gløshaugen).  %%høgem 
+sameplace(godst,terminalen). 
+sameplace(graaenmølna,graaemølna). 
+sameplace(graaermølla,graaemølna). 
+sameplace(graaermølna,graaemølna). 
+sameplace(graamølna,graaemølna). 
+sameplace(graemølla,graaemølna). 
+sameplace(graemøllen,graaemølna). 
+sameplace(granhaugan,granhaugen).  %% incl ganhaugen
+sameplace(granåsbakken,granåsen_vm_anlegget). 
+sameplace(granåsenvegen,granåsveien). 
+
+sameplace(grevskott,grevskotts). %% gfevskott 
+sameplace(grevskots,grevskotts). %% grevsots 
+
+sameplace(gråemølla,graaemølna). 
+sameplace(gråenmølla,graaemølna). 
+sameplace(gråmølna,graaemølna). 
+sameplace(gråmørna,graaemølna). 
+sameplace(gågate,sentrum). 
+sameplace(gågaten,sentrum). 
+
+sameplace(hallsetvei,nordre_hallset_street). %% etc 
+sameplace(hallsteingård,halstein_gård). 
+sameplace(hallsteingården,halstein_gård). 
+sameplace(haugnesveien,haugnessvingen). 
+sameplace(haukvante,haukvatnet). 
+sameplace(havstadsetnret,havstadsenteret). 
+sameplace(havsteinsenter,havstadsenteret). 
+sameplace(havsteinsenteret,havstadsenteret). 
+sameplace(hegdalringen,heggdalsringen). 
+sameplace(heggdal,heggdalen). 
+sameplace(hegdalen,heggdalen). 
+sameplace(heggelia,heggdalen). 
+sameplace(heggelien,heggdalen). 
+sameplace(hegglia,heggdalen). 
+sameplace(heggstadmo,heggstadmoen). 
+
+sameplace(heggstamyra,heggstadmyra). %%hegstamyra heggstmyra 
+
+sameplace(heglia,heggdalen). 
+sameplace(heglidalen,heggdalen). 
+sameplace(hegmoen,heggstadmoen). 
+sameplace(hegstamoen,heggstadmoen). 
+sameplace(hekstadmoen,heggstadmoen).
+sameplace(heimdalstasjon,heimdal_stasjon). 
+sameplace(herlofsonløypa,herlofsonsløypa).  %%2sp
+sameplace(hestehagen,prof_brochs_gate). 
+sameplace(hogskoleringen,høgskoleringen). 
+sameplace(holtermannsveg,holtermannsveien). 
+sameplace(holtermannsvei,holtermannsveien). 
+sameplace(holtermanveg,holtermannsveien).  %%Nofunk
+sameplace(hoppbakken,granåsen_vm_anlegget). 
+sameplace(hopsitalskirka,hospitalskirka). 
+sameplace(hopstilkirka,hospitalskirka). 
+sameplace(hospitalet,st_olavs_hospital). 
+sameplace(hospitalkirken,hospitalskirka). 
+sameplace(hospitalskirka,hospitalskirka). 
+sameplace(hospitalkirka,hospitalskirka).  %%NB
+sameplace(hosptialskirka,hospitalskirka).  %%
+
+sameplace(hosptalsløkka,hospitallløkka). %% +  hosptalslokka 
+
+sameplace(humlehaugen,nedre_humlehaugen_vest). %%RS-121024 3 nye på Ranheim fra 24.10.2012
+sameplace(hundhameren,hundhammeren). 
+sameplace(hundhammarn,hundhammeren). 
+sameplace(husbytun,husebytunet). 
+sameplace(høggrenda,høgreina). 
+sameplace(høgseth,høiset). 
+sameplace(høyskole,høgskole).   %% TA-110221
+sameplace(høyskolen,høgskolen). %%
+
+%% sameplace(høgskoleringen,høgskoleringen). 
+sameplace(høiseth,høiset). %% < høisteh 
+sameplace(høyset,høiset). 
+sameplace(idrettshuset,idrettsbygget). 
+sameplace(ilakrysset,ila).  
+sameplace(inheradsveien,innherredsveien). 
+sameplace(inheredsveien,innherredsveien). 
+sameplace(inheresdveien,innherredsveien). 
+sameplace(inherradsveien,innherredsveien). 
+sameplace(inherresdveien,innherredsveien). 
+sameplace(inneherredsvegen,innherreds_street).  
+sameplace(inneherredsveien,innherredsveien). 
+sameplace(innerhedsveien,innherredsveien). 
+sameplace(innheradsveien,innherredsveien). 
+sameplace(innherdevn,innherredsveien). 
+sameplace(innherdsveien,innherredsveien). 
+sameplace(innheredsvegen,innherredsveien). 
+sameplace(innheredsveien,innherredsveien). 
+sameplace(innheresdveien,innherredsveien). 
+sameplace(innherresdveien,innherredsveien). 
+sameplace(isfabrikken,iskremfabrikken). 
+sameplace(jacobsli,jakobsli). 
+sameplace(jakobsgrenda,jakobsli).  %%+jakobsgreda
+sameplace(jakobslia,jakobsli). 
+sameplace(jern,ts). %% AtB. 
+sameplace(jernbane,ts). %% AtB. 
+sameplace(jernbanen,ts). %% AtB. 
+sameplace(jernbanestasjon,ts). %% AtB. 
+sameplace(jernbanestasjonen,ts). %% AtB. 
+sameplace(jernbanestationenen,ts). %% AtB. 
+sameplace(jernbaneterminal,ts). %% AtB. 
+sameplace(jernbaneterminalen,ts). %% AtB. 
+sameplace(jernbanetorget,ts). %% AtB. 
+sameplace(jernbaneverket,ts). %% AtB. 
+sameplace(jonnsvansveien,jonsvannsveien). 
+sameplace(kaia,pirbadet).
+%% sameplace(kaien,pirbadet). %%  \+ kaken
+sameplace(kaiene,pirbadet).
+sameplace(kalvskine,kalvskinnet). 
+sameplace(karljonssensveien,karl_jonssons_veg). 
+sameplace(karljohnsonsveg,karl_jonssons_veg). %%  KalJohnsons veg
+sameplace(kattemsenteter,kattemsenteret). 
+sameplace(kattemsenteteret,kattemsenteret). 
+sameplace(kattskinnet,kalvskinnet). 
+sameplace(kattskjinnet,kalvskinnet).
+sameplace(kbssenter,kbs_senteret). 
+sameplace(kbssenteret,kbs_senteret). 
+sameplace(kinosenter,prinsen_kinosenter). 
+sameplace(kirkesæterøra,kyrkseterøra). 
+sameplace(kirksæterøra,kyrkseterøra). 
+sameplace(klabu,klæbu). 
+sameplace(klebu,klæbu).  %% ikke spell på foreign ?
+sameplace(koieflate,koieflata). 
+sameplace(kolstadsenter,torplassen). 
+sameplace(kojflata,koieflata). 
+sameplace(kongøysteinsv,kong_øysteins_veg).  %%alas
+sameplace(kongøysteinsvei,kong_øysteins_veg). 
+sameplace(krooppanbrua,kroppan_bru). 
+sameplace(kropamarka,kroppanmarka). 
+sameplace(kropenmarka,kroppanmarka). 
+sameplace(kroppamarke,kroppanmarka). 
+sameplace(kroppanbru,kroppan_bru). 
+sameplace(kroppanbrua,kroppan_bru). 
+sameplace(kroppanbruen,kroppan_bru). 
+sameplace(kroppangmarken,kroppanmarka). 
+sameplace(kroppansbru,kroppan_bru). 
+sameplace(kvenilmyra,kvenildsmyra). %% S 
+sameplace(kvilhaug,kvilhaugen). 
+sameplace(kyrksæterørå,kyrkseterøra). 
+sameplace(kyrksæterøya,kyrkseterøra). 
+sameplace(kyrksøterøya,kyrkseterøra).  %%act
+sameplace(ladegård,lade_gård). 
+sameplace(ladegården,lade_gård). 
+sameplace(ladehammern,ladehammeren).  %%gammern
+sameplace(ladejarlen,ladejarlen_v_g_s).
+sameplace(ladejarlen,ladejarlen_v_g_s). 
+sameplace(lademoenkirke,lademoen_kirke). 
+sameplace(ladesletta,haakon_vii_gate).  %%neib
+sameplace(ladeuniversitet,ntnu_lade). 
+sameplace(larkedal,lerkendal). %% eng 
+sameplace(leangentravbane,travbanen). 
+%% sameplace(leangveien,leangenveien). %% TA-110822
+sameplace(leirbruagård,leirbrua_gård). 
+sameplace(leirbrugård,leirbrua_gård). 
+sameplace(leirfoss,nedre_leirfoss). 
+sameplace(leirfossen,nedre_leirfoss). 
+sameplace(leirgårdbru,leirbrua_gård). 
+sameplace(lerchendalsgård,lerkendal_gård).
+sameplace(lerchendalskrysset,lerkendalskrysset). 
+%% sameplace(lerkendal,lerkendal_stadion).  %% NB lerk //unnec,creates dbl entry
+sameplace(lerkendalgård,lerkendal_gård).
+sameplace(lerkendalstadion,lerkendal_stadion). 
+sameplace(leutehagen,leuthenhaven). 
+sameplace(leutehaven,leuthenhaven). 
+sameplace(leutehavn,leuthenhaven). 
+sameplace(leutenhagen,leuthenhaven). 
+sameplace(leutenhaven,leuthenhaven). 
+sameplace(leutenhaven,leuthenhaven). 
+sameplace(leutenhaven,leuthenhaven). 
+sameplace(leuthenhagen,leuthenhaven).  %%nospell(>1alt)
+sameplace(leytenhaven,leuthenhaven). 
+sameplace(lianvatnet,lian).  %%(aslolianvattnet)
+sameplace(læreskole,lærerskolen).  %%læresskole
+sameplace(løitenhaven,leuthenhaven). 
+sameplace(marcusthranesvei,marcus_thranes_vei). 
+sameplace(marka,bymarka). 
+sameplace(markapl,markaplassen). 
+sameplace(markaplass,markaplassen). 
+sameplace(maskinagent,maskinagentur). 
+sameplace(maskinagenturet,maskinagentur). 
+sameplace(maskinkompaniet,maskinagentur).  %%?
+sameplace(medtbyn,sentrum).  %%dial
+sameplace(meierier,norske_meierier). 
+sameplace(meieriet,norske_meierier). 
+
+sameplace(midby,sentrum). 
+sameplace(midtby,sentrum). 
+sameplace(midtbyen,sentrum). 
+sameplace(midten,sentrum). %% TA-110121
+sameplace(midtbyn,sentrum). 
+sameplace(midtbysonen,sentrum). 
+
+sameplace(midtbyterminalen,hovedterminalen). 
+                          %% not sentrumsterminalen whic itsel is a samename
+sameplace(moholtalle,moholt).  %%
+sameplace(moholtkirka,strinda_kirke).
+sameplace(moholtkirke,strinda_kirke). 
+sameplace(moholtkirken,strinda_kirke). 
+sameplace(moholtsentret,moholtsenteret).  %% maybe unnec after rehash
+sameplace(moholtstudentby,moholt_studentby). 
+sameplace(moholttunet,moholttun). 
+sameplace(mollenberg,møllenberg).
+sameplace(moltemyra,moltmyra).  %% captures p
+sameplace(munkvold,munkvoll).   %% munkvild
+sameplace(munkvoldgård,munkvoll_gård). 
+sameplace(musikkmuseum,ringve_museum). 
+sameplace(musikmuseum,ringve_museum). 
+sameplace(måhålt,moholt). 
+sameplace(mølebaken,møllebakken). 
+sameplace(møllenberg,nedre_møllenberg). 
+sameplace(møllenberggate,nedre_møllenberg_street).  %% \+ stat. 
+sameplace(møller,møller_bil). 
+
+sameplace(nardocenteret,nardosenteret). 
+sameplace(nardocenter,nardosenteret). 
+sameplace(nardosenter,nardosenteret). 
+sameplace(nardosentre,nardosenteret).
+
+%%sameplace(nattbussterminalen,hovedterminalen).  %% RS-120915
+
+sameplace(nedreelvehavn,nedre_elvehavn). 
+sameplace(nedrehumlehaugen,nedre_humlehaugen_vest). %%RS-121024 3 nye på Ranheim fra 24.10.2012
+
+sameplace(nidaroshallen,trondheim_spektrum). 
+sameplace(nidarrødhallen,trondheim_spektrum). 
+sameplace(nidarvollskole,nidarvoll_skole). 
+sameplace(nidarøhallen,trondheim_spektrum). 
+sameplace(nidarøhallene,trondheim_spektrum). 
+sameplace(nordslett,nordslettveien_snuplass). %%  \+ nordset
+sameplace(nordslettveiensnuplass,nordslettveien_snuplass). %% vegen 
+sameplace(nova,nova_kinosenter). 
+sameplace(novakino,nova_kinosenter). 
+sameplace(ntnulade,ntnu_lade). 
+sameplace(nygaard,nygård).
+sameplace(nyvegbakken,nyveibakken). 
+sameplace(nyvegsbakken,nyveibakken). 
+sameplace(nyveib,nyveibakken). 
+sameplace(nyveisbakken,nyveibakken). 
+sameplace(obslade,city_lade). 
+%%sameplace(odenseveien,odensev). 
+sameplace(ofstis,øfstis). %% 1. letter sp is not aut 
+sameplace(okstadbakken,okstad). 
+%% sameplace(okstadhaugen,okstadøy).  %%???
+sameplace(olavsgate,st_olavs_gate). 
+sameplace(olavshospital,st_olavs_hospital). 
+sameplace(olavshospitalet,st_olavs_hospital). 
+sameplace(olavtryggvasonsgate,olav_tryggvasons_gate). 
+sameplace(olavtrygvasonsgt,olav_tryggvasons_gate). 
+sameplace(ostmarkveien,østmarkveien).
+sameplace(othelianborg,othilienborg). 
+sameplace(othileborg,othilienborg). 
+sameplace(othilenberg,othilienborg). 
+sameplace(otillenborg,othilienborg). 
+
+sameplace(ourensveg,henrik_ourens_veg).  %%etc
+sameplace(pederkroghsvei,peder_kroghs_v). 
+sameplace(peirterminal,pirbadet).  
+sameplace(persauneleir,persaunet_leir). 
+sameplace(persaunetveien,persaunetveien). %% TA-110415 
+sameplace(persaunveien,persaunetveien). %% TA-110415 
+sameplace(persaunvn,persaunetveien). %% TA-110415 
+sameplace(piersenteret,pirsenteret). 
+sameplace(pierterminal,pirbadet).  
+sameplace(pirsenter,pirsenteret). 
+sameplace(pirsentralen,pirsenteret). 
+sameplace(pirstasjon,pirbadet).  
+sameplace(pirterminalalen,pirbadet).   %%
+sameplace(pirtersenteret,pirbadet).   %%
+
+%% sameplace(politiet,ts).    %% AtB.  %% politihuset).  %% //problem spot
+%% sameplace(politi,ts).      %% AtB. 
+%% sameplace(politihuset,ts). %% AtB.                 %% 
+
+
+
+sameplace(postsentralen,postterminalen). %% RS-120805
+sameplace(postterminal,postterminalen). %% posttermunal %% TA-110221
+
+sameplace(presteaunet,persaunet). 
+sameplace(prestegayrdjordet,prestegårdsjordet).   %% TA-101123
+sameplace(prestgayrdsjordet,prestegårdsjordet).   %% 
+sameplace(prestgårdsjordet,prestegårdsjordet).    %% TA-101122
+sameplace(prestegaardsjordet,prestegårdsjordet). 
+sameplace(prestegårdsalleen,prestegårdsjordet). 
+sameplace(prestegårdsjordet,prestegårdsjordet).  
+sameplace(prestegårdsjordet,prestegårdsjordet).  %% allow presetegårdsjordet. 
+sameplace(prestegårdsjoret,prestegårdsjordet). 
+sameplace(prestegårdstunet,prestegårdsjordet). 
+sameplace(prestegårdsvegen,prestegårdsjordet).  %% spurious but actual
+sameplace(prestegårjorde,prestegårdsjordet). 
+sameplace(prestegårsjorde,prestegårdsjordet). 
+sameplace(prestegåsdsjordet,prestegårdsjordet). 
+sameplace(prestejordet,prestegårdsjordet).  
+sameplace(prestgårdsjordet,prestegårdsjordet). 
+
+sameplace(prinsegata,prinsens_gate). 
+sameplace(prinsegaten,prinsens_gate). 
+sameplace(prinsengt,prinsens_gate).  %%(actual)
+sameplace(prinsenkinosenter,prinsen_kinosenter). 
+sameplace(prinsenkinosenteret,prinsen_kinosenter). 
+sameplace(prinsensgatekinoene,prinsen_kinosenter). 
+sameplace(priterminalen,pirbadet).  
+
+sameplace(professorbrochsgate,prof_brochs_gate). 
+sameplace(professorbrochs,prof_brochs_gate). 
+
+sameplace(ragnhildsgt,ragnhlds_gate). 
+sameplace(rambech,f_rambech).  %% F Rambech 
+sameplace(regionsykehus,regionsykehuset). 
+
+sameplace(ringvemuseum,ringve_museum).  %% RS-120805 Sorting
+
+sameplace(risvollansenter,risvollan_senter). 
+sameplace(risvollansenteret,risvollan_senter). 
+
+sameplace(romolia,romolslia). 
+sameplace(romulslia,romolslia).  %% romulslia street, prefer station
+
+sameplace(ronningbakken,rønningsbakken). 
+sameplace(rosenborgskole,gyldenløves_gate).  
+sameplace(rosendalområdet,rosendal). 
+sameplace(rotvollan,rotvoll). 
+sameplace(rotvollen,rotvoll). 
+sameplace(rotvollene,rotvoll). 
+sameplace(rovoll,rotvoll). %rovol
+sameplace(rønningensbakken,rønningsbakken). %% e.g. rønningensabakken
+sameplace(samf,studentersamfundet). 
+sameplace(samfonnje,studentersamfundet). 
+sameplace(samfudnet,studentersamfundet).    
+
+sameplace(stundentersamfundet,studentersamfundet).
+sameplace(stundentsamfunnet,studentersamfundet). 
+sameplace(samfund,studentersamfundet). 
+sameplace(samfundet,studentersamfundet). 
+sameplace(samfunnet,studentersamfundet). 
+sameplace(sammfundet,studentersamfundet). 
+sameplace(sammfunetet,studentersamfundet). 
+sameplace(sammfunnet,studentersamfundet). 
+%% sameplace(sanbaken,sandbakken).  %%inkl sandbaken,sanbakken
+sameplace(saupstadsenter,saupstadsenteret). 
+sameplace(saupstadveien,søbstad_street).  %%street
+sameplace(saupstapsentret,saupstadsenteret). 
+sameplace(scandichotel,esso_motorhotell). 
+sameplace(schjetnansveg,carl_schjetnans_veg). 
+sameplace(schjetnansvei,carl_schjetnans_veg). 
+
+sameplace(sentalstasjoene,ts). %% AtB.  %%coverscases
+sameplace(sentralbanen,ts). %% AtB. 
+sameplace(sentralbanestasjon,ts). %% AtB. 
+sameplace(sentralbanestasjonen,ts). %% AtB. 
+sameplace(sentralbanestasjonen,ts). %% AtB. 
+sameplace(sentralbanestasjonen,ts). %% AtB. 
+sameplace(sentralbanestrasjon,ts). %% AtB.  %%actual
+sameplace(sentralbanststasjonen,ts). %% AtB.  %%spec
+sameplace(sentralen,hovedterminalen). 
+sameplace(sentraljernbanen,ts). %% AtB. 
+sameplace(sentraljernbanestasjon,ts). %% AtB. 
+sameplace(sentraljernbanestasjonen,ts). %% AtB. 
+sameplace(sentralsajonen,ts). %% AtB. 
+sameplace(sentralstarjonem,ts). %% AtB. 
+sameplace(sentralstasjon,ts). %% AtB. 
+sameplace(sentralstasjone,ts). %% AtB. 
+sameplace(sentralstasjonen,ts). %% AtB.  %%sentralstatsjonen13. 25->ts13
+sameplace(sentralstasjonenen,ts). %% AtB. 
+sameplace(sentralstation,ts). %% AtB. 
+sameplace(sentralstationen,ts). %% AtB. 
+sameplace(sentralstationen,ts). %% AtB. 
+sameplace(sentralstationen,ts). %% AtB. 
+sameplace(sentralststationen,ts). %% AtB. 
+sameplace(sentralsykehuset,st_olavs_hospital). 
+sameplace(sentralterminalen,hovedterminalen). 
+sameplace(sentraltogstasjonen,ts). %% AtB. 
+sameplace(sentrumsholdeplassen,hovedterminalen). 
+sameplace(sentrumskvartalet,sentrum). 
+sameplace(sentrumsstasjonen,hovedterminalen). 
+
+sameplace(sentrumsterminal,hovedterminalen). 
+sameplace(sentrumsterminalen,hovedterminalen). 
+sameplace(sentrumssentralen,hovedterminalen). 
+
+
+
+
+
+sameplace(shieldropsvei,e_b_schieldrops_vei). %Gateetternavn
+sameplace(siemensbygget,siemens). 
+sameplace(siemensfabrikken,siemens). 
+sameplace(siemenskrysset,siemens).  %%(Ambiguous,butspecial)
+sameplace(sigurdjorsalfarsvei,sigurd_jorsalfars_street). 
+sameplace(sildredråpeveien,sildråpeveien). 
+sameplace(sildropveien,sildråpeveien). 
+sameplace(simenskrysset,siemens).
+sameplace(sirkus,sirkus_shopping).
+sameplace(sirkussenter,sirkus_shopping).
+sameplace(sirkussenteret,sirkus_shopping).
+sameplace(sirkusshopping,sirkus_shopping).
+sameplace(sjetnamrka,sjetnmarka). 
+sameplace(sjetnemarka,sjetnmarka).     %% /sjetemarka 
+sameplace(skavlandsv,skavlans_veg).   
+sameplace(skavlandsveg,skavlans_veg). 
+sameplace(skavlandsvei,skavlans_veg). 
+sameplace(skavlansvei,skavlans_veg).  
+sameplace(skihytta,skistua). 
+sameplace(skihytten,skistua). 
+sameplace(skovgard,skovgård). %%  + skavgard
+%% sameplace(skjetlein,leinstrand).  %%?leinstrandnot st 
+sameplace(skytterveien,skyttevegen).  %%discrepancy>1
+sameplace(slakterhuset,slakthuset).  %%+slakteri. . 
+sameplace(slakteriet,slakthuset).  %%NBslakt|
+sameplace(sluppenbrua,sluppen_bru). 
+sameplace(spektrum,trondheim_spektrum).  %%not station
+sameplace(spogndal,spongdal).  %%\+sogndal
+sameplace(stabelsv,stabells_veg).  %%  stbelsv
+sameplace(stabelsvei,stabells_veg). 
+sameplace(stadion,lerkendal_stadion). 
+sameplace(strandkaiveien,strandveikaia).  
+sameplace(stasjonen,ts). %% AtB. 
+sameplace(statoilbygget,statoil_rotvoll). 
+sameplace(statsetsentere,stavset_senter).  %%contag
+sameplace(stavsetsenter,stavset_senter). 
+sameplace(stavsetsenteret,stavset_senter). 
+sameplace(stavsetsentrum,stavset_senter). 
+sameplace(stdentersamfunnet,studentersamfundet). 
+sameplace(steinanbakken,steinanveien). 
+sameplace(steinkjær,steinkjer).   %% (steinskjær)
+sameplace(steinskjer,steinkjer).  %%
+sameplace(steinveien,steinanveien). 
+sameplace(stindhiem,strindheim). 
+sameplace(stokkanhaugane,stokkanhaugen).
+sameplace(stokkanhaugene,stokkanhaugen).
+sameplace(stokkhaugane,stokkanhaugen).
+sameplace(stokkhaugen,stokkanhaugen).
+sameplace(stolavshospital,st_olavs_hospital).  %% stolafshospital
+sameplace(storrosta,stor_rosta). 
+sameplace(storrosten,stor_rosta). 
+sameplace(strandveikaien,strandveikaia). 
+sameplace(stridnehim,strindheim). 
+sameplace(strindakirke,strinda_kirke). 
+sameplace(strinheim,strindheim).  %%striheim
+sameplace(studentersamfunnet,studentersamfundet). 
+sameplace(studentersammfunnet,studentersamfundet). 
+sameplace(studenthuset,studentersamfundet). 
+sameplace(studenthytta,studenterhytta). 
+sameplace(studentsamfundet,studentersamfundet). 
+sameplace(studentsamfunnet,studentersamfundet). 
+sameplace(stundersamfundet,studentersamfundet). 
+sameplace(sverresborgfolkemuseum,trøndelag_folkemuseum). 
+sameplace(sverresli,sverresborg).  %%?lia
+sameplace(sykehyset,sykehuset). 
+sameplace(søbstad,saupstad). 
+sameplace(søbstadmyra,saupstad). 
+
+
+sameplace(tambarskjelvarsgt,einar_tambarskjelves_gate). 
+
+%% makes tambarskjelves + gate  coerce into  einar_tambarskjelves_street
+
+  %% sameplace(tambarskjelves,einar_tambarskjelves_gate). %% TA-110110
+  %% sameplace(tambarskjelve,einar_tambarskjelves_gate). 
+  %% sameplace(tambarselve,einar_tambarskjelves_gate). 
+
+
+sameplace(tambarskjelvesgate,einar_tambarskjelves_gate). 
+sameplace(tambarskjelvesgt,einar_tambarskjelves_gate). 
+sameplace(tambarskjelvsgate,einar_tambarskjelves_gate).  
+
+%% e t
+
+
+sameplace(taulobakken,thaulowbakken). 
+sameplace(taulovbakken,thaulowbakken). 
+sameplace(tawlobakken,thaulowbakken). 
+
+sameplace(teglevegskrysset,teglverkskrysset).
+sameplace(tegelstensvegen,teglverkskrysset). 
+sameplace(teggelverkskrysset,teglverkskrysset). 
+sameplace(teglekrysset,teglverkskrysset). 
+sameplace(teglesteinsverket,teglverket). 
+sameplace(teglverk,teglverkskrysset).  
+sameplace(teglverkkrysset,teglverkskrysset). 
+sameplace(teglverkrysset,teglverkskrysset). 
+sameplace(teglverkskrysset,teglverkskrysset). 
+sameplace(teglverkskrysst,teglverkskrysset). 
+sameplace(teglverkskysset,teglverkskrysset). 
+sameplace(tekleverkstunet,teglverkskrysset).  %% contagation
+
+sameplace(tempehallen,nidelvhallen). 
+sameplace(tempekirke,tempe_kirke). 
+%% sameplace(tempevegen11,tempevegen_11). %% unnec %% TA-101118
+sameplace(tev,e_verket).  %% OBS generates te-veien
+sameplace(thaulow,thaulowbakken). 
+sameplace(thaulowbakk,thaulowbakken). 
+sameplace(thauluaw,thaulowbakken). 
+sameplace(thoulawbakken,thaulowbakken). 
+sameplace(thouwlovbakken,thaulowbakken). 
+sameplace(thowlauwbakken,thaulowbakken). 
+sameplace(thyholdt,tyholt). 
+sameplace(tillerbrua,tiller_bru).  %%(?EndofMap)
+sameplace(tilleråsen,martin_kregnes_veg). 
+sameplace(tine,norske_meierier). 
+sameplace(tjønnåsen,tjønnlia).  %%(?)
+sameplace(togbanestasjonen,ts). %% AtB. %% incl. togbanestasjoenen 
+sameplace(togstasj,ts). %% AtB. 
+sameplace(togstasjon,ts). %% AtB. 
+sameplace(togstasjonen,ts). %% AtB. 
+sameplace(togstasjonene,ts). %% AtB. 
+sameplace(togstation,ts). %% AtB. 
+sameplace(togterminalen,ts). %% AtB. 
+sameplace(tollboden,tollbua). 
+sameplace(tollvesenet,tollbua). 
+sameplace(tonstakrysset,tonstad). %%  tonstakrusset  
+sameplace(tonsdadkrysse,tonstadkrysset).  %% 2 ch dif
+sameplace(tonsdadskrysset,tonstadkrysset). %% tonstadskrysset
+sameplace(tonsdakryset,tonstadkrysset). 
+sameplace(tonstadsvei,sivert_thonstads_vei).  %%etc
+sameplace(tonstakrysse,tonstadkrysset).  %% 2 ch dif
+sameplace(torgardsletta,torgardssletta). 
+sameplace(torgkvartalet,torget). 
+%% sameplace(torgplassen,torget). %% ? torplassen 
+sameplace(torgsenteret,torget).  
+sameplace(torplas,torplassen). 
+sameplace(torpsplass,torplassen).  %%?
+sameplace(torpveien,ingemann_torps_vei). %ingemann_torps_street).  %%station
+sameplace(torvet,torget).  %% catch spell-error?
+sameplace(torvplassen,torget). 
+sameplace(travbanestasjonen,travbanen). 
+sameplace(travparken,travbanen). 
+sameplace(trhsentralstasjon,ts). %% AtB. 
+sameplace(trondheimsentral,ts). %% AtB. 
+sameplace(trondheimsentralstasjon,ts). %% AtB. 
+sameplace(trondheimstasjon,ts). %% AtB. %% inc  tronheimstasjon
+sameplace(trondheimtorg,torget).  %% tronheimtårg
+sameplace(trondhjem,trondheim). 
+sameplace(tronheimfengsel,tunga_kretsfengsel). 
+sameplace(tryggvassonsgate, olav_tryggvasons_gate). %%  AtB %% TA-100515
+sameplace(tryggvassonsgt,olav_tryggvasons_gate).    %% AtB  %% TA-100515
+sameplace(trøndermeieriet,norske_meierier). 
+sameplace(tungstadkrysset,tonstadkrysset). 
+sameplace(tvereggen,tverregga).  %% Confusion
+sameplace(tverreggen,tverregga). 
+
+sameplace(tyholtstårnet,tyholttårnet). %% tyholtstarnet 
+sameplace(tyholtornet,tyholttårnet).   %% NB 1 t in route db
+sameplace(tyholtårnet,tyholttårnet).   %% allow tyholtårent 
+                                       %% changed to tyholttårnet Xmas 08
+sameplace(tåget,ts). %% AtB. 
+sameplace(tågstasjonen,ts). %% AtB. 
+sameplace(ulinvegen,ullins_street). 
+sameplace(ulinvegen,ullins_street). 
+sameplace(universitetssenteret,universitetet). 
+sameplace(utsikten,utsikten_alle). 
+%% sameplace(vaern,værnes). // valerveien -> va(l)er(n) -> værnes 
+sameplace(vaernes,værnes). 
+sameplace(vaerness,værnes). 
+sameplace(valdgrindsvegen,valgrindveien). 
+sameplace(valentilystsenteret,valentinlyst). 
+sameplace(valentilystsentret,valentinlyst). 
+sameplace(valentinlystvegen,valentinlystveien). 
+sameplace(valøy,valøyvegen). 
+sameplace(valøyvegen,valøyvegen). 
+sameplace(vandrerhjemmet,weidemannsveien).  %%+vandrehjemmet
+sameplace(varnes,værnes). 
+sameplace(varness,værnes). 
+sameplace(velgrindvegen,valgrindveien). 
+sameplace(vernes,værnes). 
+sameplace(vernæs,værnes). 
+sameplace(vestrerosten,vestre_rosten).  %%vestreostren
+sameplace(vikelva,vikelvveien). 
+sameplace(vikhamarløkka,vikhammeråsen). 
+sameplace(volabake,vollabakken).  %% vollabake,volabakke
+sameplace(vollgård,voll_gård). 
+sameplace(vollstudby,voll_studentby). 
+sameplace(vollstudby,voll_studentby). 
+sameplace(vollstudentby,voll_studentby). 
+sameplace(vådanvn,vådanv_5). 
+sameplace(våddanveien,vådanv_5). 
+sameplace(væretrøa,værestrøa). %% new official name  e.g. væretræa. 
+sameplace(værness,værnes).  %%(not genitive!)
+
+sameplace(vullumsgården,byåsen_butikksenter). %% vyllumsgården.
+sameplace(wullumsgaard,byåsen_butikksenter). 
+sameplace(wullumsgaaren,byåsen_butikksenter). 
+sameplace(wullumsgaren,byåsen_butikksenter). 
+
+
+
+sameplace(wullumsgård,byåsen_butikksenter). 
+
+
+sameplace(åsheimskole,åsheim_skole). 
+sameplace(åsv,åsveien_skole).  %%Troublespot
+sameplace(åsveienskole,åsveien_skole).  %%åsveieskole
+
+
+sameplace(østreberg,østre_berg). %% østeberg 
+
+sameplace(østmarkneset,østmarkveien).  %%nesset
+sameplace(øvreromolslia,romolslia_øvre). 
+sameplace(kattemsentret,kattemsenteret). 
+
+
+short_specname(d1,'Dronn. gt D1'). 
+%short_specname(d2,'Dronn. gt D2'). 
+%short_specname(d3,'Dronn. gt D3'). 
+short_specname(d4,'Dronn. gt D4'). 
+
+short_specname(dronningens_gate,'Dronn. gt').
+ 
+short_specname(dronningens_gate_d1,'Dronn. gt D1'). %% AtB
+%short_specname(dronningens_gate_d2,'Dronn. gt D2'). 
+%short_specname(dronningens_gate_d3,'Dronn. gt D3'). 
+short_specname(dronningens_gate_d4,'Dronn. gt D4'). 
+
+short_specname(dronningensgate_d1,'Dronn. gt D1'). 
+%short_specname(dronningensgate_d2,'Dronn. gt D2'). 
+%short_specname(dronningensgate_d3,'Dronn. gt D3'). 
+short_specname(dronningensgate_d4,'Dronn. gt D4'). 
+
+
+short_specname(einar_tambarskjelves_gt,'Einar Tambarskj. gt'). 
+short_specname(haakon_vii_gate_17,'Haakon7. gate 17'). 
+short_specname(haakon_vii_gate_25,'Haakon7. gate 25'). 
+short_specname(haakon_vii_gate_29,'Haakon7. gate 29'). 
+short_specname(haakon_vii_gate_9,'Haakon7. gate 9'). 
+short_specname(heimdal_stasjon,'Heimdal st. ').  %% Extra sp
+short_specname(hovedterminalen,'Sentrumsterminalen'). 
+short_specname(johan_falkbergets_vei,'J Falkbergets v'). 
+short_specname(jørgen_b_lysholms_vei,'J. B. Lysholmsv'). 
+%% short_specname(lerkendal_stadion,'Lerkendal st. ').  %% %% Extra sp
+
+
+short_specname(k1,'Kongens gt K1'). %% RS-130812
+short_specname(k2,'Kongens gt K2'). 
+
+short_specname(kongens_gate,'Kong. gt').
+short_specname(kongens_gt_k1,'Kongens gt K1'). %% AtB
+short_specname(kongens_gt_k2,'Kongens gt K2'). 
+
+short_specname(kongensgate_k1,'Kongens gt K1'). 
+short_specname(kongensgate_k2,'Kongens gt K2'). 
+ 
+short_specname(munkegata_m1,'Munkegt M1'). %% AtB
+short_specname(munkegata_m2,'Munkegt M2'). 
+short_specname(munkegata_m3,'Munkegt M3'). 
+short_specname(munkegata_m4,'Munkegt M4'). 
+short_specname(m41,'Munkegt M41'). 
+short_specname(munkegata_m5,'Munkegt M5'). 
+
+short_specname(m1,'Munkegt M1'). 
+short_specname(m2,'Munkegt M2'). 
+short_specname(m3,'Munkegt M3'). 
+short_specname(m4,'Munkegt M4'). 
+short_specname(m41,'Munkegt M41'). 
+short_specname(m5,'Munkegt M5'). 
+
+short_specname(moholt_studentby,'Moholt stud. by'). 
+short_specname(munkegata,'Munkegt'). 
+short_specname(prinsen_kinosenter,'Prinsen kinos. '). 
+short_specname(prof_brochs_gate,'Prof. Brochs gt'). 
+short_specname(ranheim_stasjon,'Ranheim st. '). 
+short_specname(studentersamfundet_1,'Stud. samf. 1'). 
+short_specname(studentersamfundet_2,'Stud. samf. 2'). 
+short_specname(ts,'Trondheim S'). 
+
+short_specname(ts_10,'Trondheim S 10').  %% old names
+short_specname(ts_11,'Trondheim S 11').  %% (avoid list of identical names)
+short_specname(ts_13,'Trondheim S 13').  %%
+
+short_specname(ts10,'Trondheim S 10'). 
+short_specname(ts11,'Trondheim S 11').  %% (avoid list of identical names)
+short_specname(ts13,'Trondheim S 13').  %%
+
+short_specname(universitetet_lade,'Univ. Lade'). 
+
+specname('10c','10C'). 
+specname('24a','24A'). 
+specname('24c','24C'). 
+specname('43e','43E'). 
+specname('44a','44A'). 
+specname('4a','4A'). 
+specname('52a','52A'). 
+specname('54c','54C'). 
+specname('5a','5A'). 
+specname('5c','5C'). 
+specname('5c-e','5C-E'). 
+specname('5e','5E'). 
+specname('6a','6A'). 
+specname('6c','6C'). 
+specname('6e','6E'). 
+specname('7a','7A'). 
+specname('7c','7C'). 
+specname('8a','8A'). 
+specname('8c','8C'). 
+specname('9e','9E'). 
+
+specname(a_m_o_senteret,'AMOsenteret'). 
+specname(adolf_øien,'Adolf Øien').  %%school/street
+specname(alf_godagers_vei,'Alf Godagers vei'). 
+specname(amo_senteret,'AMO senteret'). 
+specname(anders_buens_gate,'Anders Buensgate').  %% EH-031017
+specname(angelltrøveien,'Angelltrøveien'). 
+specname(ankers_gt,'Ankersgate').  %% EH-030616
+specname(arilds_gt,'Arildsgate').  %% EH-030616
+specname(arnt_smistads_vei,'Arnt Smistads vei').  %%\+smistad(correction)
+specname(asbjørn_overås_veg,'Asbjørn Øverås veg'). 
+
+specname(asbjørnsens_gate,'Asbjørnsens gate'). %% old ?
+specname(asbjørnsensgt,'Asbjørnsens gate').  %% EH-030616
+
+specname(asbjørnsens_gt,'Asbjørnsens gate'). 
+specname(atb,'AtB').  %% TA-101108
+
+specname(bakkegata,'Bakkegate').  %% EH-030616
+specname(bakkebru,'Bakkebru'). 
+specname(balders_street,'Balders veg').  %%Syndrome/not regstr
+specname(bekkasinv,'Bekkasinvegen').  %% EH-031017
+specname(bergstudentby,'Berg studentby'). 
+specname(bi,'BI'). 
+specname(biskop_sigurdsgt,'Biskop Sigurds gate').  %% EH-031017
+specname(bjarne_ness_veg,'Bjarne ness vei'). 
+%% specname(bjøra,'Bjøra'). 
+specname(bjørkmyr,'Bjørkmyr'). 
+specname(blusuvoll_alle,'Blusuvoll allé'). 
+specname(brannstasjon_øst,'Brannstasjon øst'). 
+specname(brattørbrua,'Brattørbrua'). 
+specname(breidablikk_sk,'Breidablikk skole'). 
+specname(britannia_hotell,'Britannia hotell').               %% airbus
+specname(brukseier_olsens_vei_1,'Brukseier Olsensvei 1').    %% EH-030616
+specname(brukseier_olsens_vei_40,'Brukseier Olsensvei 40').  %% EH-030616
+specname(brukseier_olsens_vei_50,'Brukseier Olsensvei 50').  %% EH-030616
+specname(brukseier_olsens_vei_l75_76,'Brukseier Olsensvei 75-76').  %% EH-030616
+specname(brukseier_olsensv,'Brukseier Olsens vei'). 
+specname(brukseier_olsens_vei_1,'Brukseier Olsens vei 1'). 
+specname(brukseier_olsensv_40,'Brukseier Olsensvei 40'). 
+specname(brukseier_olsensv_50,'Brukseier Olsensvei 50').  %% EH-031002
+specname(brundalen_sk,'Brundalen skole'). 
+specname(brundalen_skole,'Brundalen skole'). %% old
+specname(brundalen_sykehj,'Brundalen sykehjem'). 
+specname(brundalen_sykehjem,'Brundalen sykehjem'). 
+specname(brøset_hageby,'Brøset hageby'). 
+specname(brøsetflata,'Brøsetflata'). 
+specname(brøsetv,'Brøsetvegen'). 
+specname(brøsetvegen_168,'Brøsetvegen 168').  %% vei-> veg for konsistens EH-031017
+specname(brøsetvegen_186,'Brøsetvegen 186').  %% NB. vei->veg EH-031017
+specname(brøsetvegen,'Brøsetvegen'). 
+specname(brøsetvegen_119,'Brøsetvegen 119'). 
+specname(busstuc,'BussTUC'). 
+specname(bybro,'Gamle bybro').
+specname(byen,byen). 
+specname(byåsen_butikksenter,'Byåsen butikksenter'). 
+specname(byåsen_skole,'Byåsen skole'). 
+specname(byåsen_videregående_skole,'Byåsen videregående skole'). 
+
+%% specname(bøckmansveien,'Bøckmans veg'). %% Nix %% TA-110314
+
+%% specname(c_j_hambros_vei,'C J Hambros vei').  %% unnec TA-101111
+
+specname(carl_schjetnans_vei,'Carl Schjetnans vei'). %% TA-110322
+%% specname(c_schjetnans_v,'C Schjetnansvei').       %% 
+
+specname(charlottenlund_kirke,'Charlottenlund kirke'). %% unnec
+specname(charlottenlund_kirke,'Charlottenlund kirke'). 
+
+specname(charlottenlund_skole,'Charlottenlund skole'). 
+specname(charlottenlund_vderegåen,'Charlottenlund videregående'). 
+specname(charlottenlund_videregående,'Charlottenlund videregående'). 
+specname(chr_eggens_veg,'Christian Eggens veg').  %% EH-030616
+specname(chr_monsensgt,'Christian Monsens gate').  %% EH-031017
+specname(christian_jelstrups_v,'Christian Jelstrups vei').  %% EH-030616
+specname(churchills_v,'Churchills vei').  %% EH-030616
+
+specname(dmmh,'DMMH'). %% TA-110323
+
+%% drop holdeplass %% TA-110531
+
+specname(dronningens_gate_d1,'Dronningens gate D1').  
+%specname(dronningens_gate_d2,'Dronningens gate D2'). 
+%specname(dronningens_gate_d3,'Dronningens gate D3'). 
+specname(dronningens_gate_d4,'Dronningens gate D4'). 
+
+specname(d1,'Dronningens gate D1').  %% EH-031120
+%specname(d2,'Dronningens gate D2').  %% 
+%specname(d3,'Dronningens gate D3').  %%
+specname(d4,'Dronningens gate D4').  %%
+
+
+specname(den,'den'). %% M .. den godes gate ... 
+specname(devle_gård,'Devlegård'). 
+specname(dist_lege_øvrelids_v,'Distriktslege Øvrelid svei').    %% EH-030616
+specname(distriktslege_øverlidsv,'Distriktlege Øvrelids vei').  %% EH-030616
+specname(dps,'DPS'). 
+specname(dragvoll_alle,'Dragvoll allé'). 
+specname(dronningens_gate,'Dronningens gate'). 
+specname(dv,'Dragvoll').  %% Small letters/not Endstation
+%% specname(dybdals_veg,'Dybdals veg'). %% TA-100830 unnec
+specname(e_a_smith,'E A Smith').  %% EH-031017 
+specname(e_b_schieldropsv,'E B Schieldropsvei').  %% EH-030616
+specname(einar_tambarskjelves_gt,'Einar Tambarskjelves gate').  %% EH-030616
+specname(einar_øfstis_veg,'Einar Øfstis veg'). 
+specname(engelsås_endeholdeplass,'Engelsås endeholdeplass'). 
+specname(f_rambech,'F Rambech').  %% EH-031017
+specname(fagerheim_all,'Fagerheim allé'). 
+specname(fagerheim_alle,'Fagerheim allé').  %% EH-030616
+specname(fagerliv,'Fagerliveien').  %% EH-031017
+specname(festningsgt,'Festningsgata'). 			 %% EH-031002 gaten->gata
+ %% specname(festningsgt,'Festningsgaten'). 
+specname(fjøslia,'Fjøslia'). 
+specname(fjøsvollan,'Fjøsvollan'). 
+specname(forsøket,'Forsøket'). 
+specname(gløshaugen_nord,'Gløshaugen Nord'). 
+specname(gløshaugen_syd,'Gløshaugen Syd'). 
+specname(godsterminalen_nsb,'Godsterminalen NSB').  %%(dontprintwhatisnot accepted)EH-030616
+specname(granåsen_gård,'Granåsen gård'). 
+specname(granåsen_vm_anlegget,'Granåsen VM-anlegget'). 
+specname(gudes_gt,'Gudes gate'). 			 %% EH-030616
+specname(gudruns_gate,'Gudruns gate'). 			 %% EH-030616
+specname(haakon_vii_gt,'Haakon VII gate'). 
+specname(haakon_vii_gate_17,'Haakon den sjuendes gate 17'). 
+specname(haakon_vii_gate_25,'Haakon den sjuendes gate 25'). 
+specname(haakon_vii_gate_29,'Haakon den sjuendes gate 29'). 
+specname(haakon_vii_gate_9,'Haakon den sjuendes gate 9'). 
+specname(hallfred_høyems_vei,'Hallfred Høyems vei'). 
+specname(halstein_gård,'Halstein gård'). 
+specname(harald_bothnersv,'Harald Bothners vei'). 	 %% EH-030616
+specname(harald_hårfagres_gt,'Harald Hårfagres gate'). 
+specname(heggstadmoen_4,'Heggstadmoen 4').  %% slight error in busroute
+%%%  specname(heimdal_st,'Heimdal stasjon').  
+specname(heimdalsveien,'Heimdalsvegen').  %% (not . ) EH-030616. vei-> veg EH-031017
+%% specname(heimdalsv,'Heimdalsveien').  %% (not . ) EH-030616
+specname(heimdal_sentrum,'Heimdal sentrum'). %%  week 33/34?
+
+%% specname(henrik_ourens_vei,'Henrik Ourens vei').  %% (extra dot in reghpl) EH-030616
+specname(hist,'HIST').  %% (IKKE Hist!)
+specname(hjalmar_johansens_vei,'Hjalmar Johansens vei'). 
+specname(hospitalskirka,'Hospitalskirka').  %%(Rutehefte)
+specname(hotel,'Hotel'). 
+specname(hotell,'Hotell'). 
+specname(hovedterminalen,'Sentrumsterminalen').  %% // Political decision
+specname(høgreina_øvre,'Høgreina øvre'). 
+specname(høyset,'Høyset'). 
+specname(idi,'IDI').  %% TA-110401
+specname(ingeborg_ofstadsv,'Ingeborg Ofstads veg').  %% EH-031017
+specname(jakobslivegen_øvre,'Jakobsliveien øvre').  %%jakobsliv
+specname(jakobsliveien_nedre,'Jakobsliveien nedre').  %%jakobslivn!!
+specname(johan_falkbergets_vei,'Johan Falkbergets veg').  %%Talsmann
+specname(johan_p_kroglundsv,'Johan P Kroglunds vei'). 
+specname(johan_tillers_vei,'Johan Tillers vei').  %% EH-031017
+specname(johannes_minsaas_veg,'Johannes Minsaas veg'). 
+specname(john_aaes_veg,'John Aaes veg').  %% (avoid, Aae`s in return)
+specname(jørgen_b_lysholms_vei,'Jørgen B Lysholms vei'). 
+specname(k_jonssons_veg,'Karl Jonssons vei'). 
+specname(k_o_thornæs_vei,'K O Thornæs vei').  %% EH-030616
+specname(kbs,'KBS').
+specname(kbs_senteret,'KBS-senteret'). 
+specname(kino,'"kino"'). 
+specname(klett_møbel,'Klett Møbel'). 
+specname(klæbu_skysstasjon,'Klæbu skysstasjon'). 
+specname(kong_øysteins_veg,'Kong Øysteins veg'). 
+
+%% RS-130812
+specname(kongens_gate,'Kongens gate').
+specname(kongens_gt_k1,'Kongens gate K1').  
+specname(kongens_gt_k2,'Kongens gate K2'). 
+specname(k1,'Kongens gate K1').  %% RS-130812
+specname(k2,'kongens gate K2').  %% 
+
+specname(kronprins_olavs_alle,'Kronprins Olavs allé'). 
+%% specname(kroppanmarka_endehpl,'Kroppanmarka endeholdeplass'). 
+specname(kuset_gård,'Kuset gård'). 
+specname(kvt,'KVT'). 
+specname(kystad_alle,'Kystad allé'). 
+specname(køff,'KØFF'). 
+
+
+specname(lade_all,'Lade allé'). %% 'Lade allé').  AtB
+specname(lade_alle_80,'Lade allé 80'). 
+
+
+specname(lade_alle,'Lade allé'). %% 'Lade allé').  AtB
+specname(lade_alle_80,'Lade allé 80'). 
+
+
+specname(lade_kirke,'Lade kirke'). 
+specname(ladejarlen_v_g_s,'Ladejarlen skole'). %% realspeak 
+specname(lademoen_kirke,'Lademoen kirke'). 
+specname(lademoen_skole,'Lademoen skole'). 
+specname(leangen_all,'Leangen allé'). 
+specname(leangen_alle,'Leangen allé'). 
+specname(leira_sk,'Leira skole').
+specname(leirfossveien,'Leirfossveien'). 
+specname(leirøya,'Leirøya'). 
+specname(lerkendal_gård,'Lerchendal gård'). 
+specname(lingit,'LingIT'). 
+specname(loholt_alle,'Loholt allé'). 
+specname(los_angeles,'Los Angeles').  %% for American queries
+specname(lundåsen_n,'Lundåsen nedre').  %% Talsmann
+%% specname(løvaasveien,'Løvaasveien').  %% TA-110530  unnec
+
+
+specname(munkegata_m0, 'Munkegata M0').  
+specname(munkegata_m1, 'Munkegata M1'). 
+specname(munkegata_m2, 'Munkegata M2'). 
+specname(munkegata_m3, 'Munkegata M3'). 
+specname(munkegata_m4, 'Munkegata M4'). 
+specname(munkegata_m5, 'Munkegata M5'). 
+specname(munkegata_m41, 'Munkegata M41').%% TA-110107
+specname(m41, 'Munkegata M41'). %% SIC (in route data) %% TA-110107
+
+specname(m0, 'Munkegata M0').  %% keep old names also 
+specname(m1, 'Munkegata M1').  %%
+specname(m2, 'Munkegata M2').  %%
+specname(m3, 'Munkegata M3').  %%
+specname(m4, 'Munkegata M4').  %%
+specname(m5, 'Munkegata M5').  %%
+
+specname(magnus_berføttsvei,'Magnus Berføtts vei').  %% EH-031017
+specname(magnus_blindesv,'Magnus Blindes vei'). 	  %% EH-030616
+specname(marcus_thranesv,'Marcus Thranes vei'). 	  %% EH-030616
+specname(margretes_gt,'Margretes gate'). 
+specname(marie_sørdals_veg,'Marie Sørdals veg'). 
+specname(markaplassen_vest,'Markaplassen Vest'). 
+specname(markaplassen_øst,'Markaplassen Øst'). 
+specname(markaplassen_skole,'Markaplassen skole').   
+specname(mauritz_hansens_gt,'Mauritz Hansens gate'). 	%% EH-030616
+ %% specname(mellomv_5,'Mellomveien 5'). 	
+specname(mentz_skjetnes_v,'Mentz Skjetnes vei'). 	   %% EH-030616
+specname(moltmyra_øst,'Moltmyra øst'). 
+
+
+specname(munkvoll_gård,'Munkvoll gård'). 
+specname(møllebakken,'Møllebakken'). 
+specname(møller_bil,'Møller bil'). 
+specname(n_g_u,'NGU'). 
+specname(n_t_h,'NTH'). 
+specname(naf,'NAF'). 
+specname(nedre_alle,'Nedre allé'). 
+specname(nedre_alle,'Nedre allé'). 
+specname(nedre_elvehavn,'Nedre elvehavn'). 
+specname(nedre_møllenberg,'Nedre Møllenberg'). 
+specname(nidarvoll_sk,'Nidarvoll skole'). 
+specname(nidarvoll_skole,'Nidarvoll skole'). %% old
+specname(nkl,'NKL'). 
+specname(nordre_halset,'Nordre Hallset'). 
+specname(nordre_hoem,'Nordre Hoem'). 
+specname(nordslettveien_snuplass,'Nordslettveien snuplass'). 
+specname(norske_meierier,'Norske meierier'). 
+specname(nova_kinosenter,'Nova kinosenter').  %%k
+specname(nrk,'NRK'). 
+specname(nth,'NTH'). 
+specname(ntnu,'NTNU'). 
+specname(ntnu_lade,'NTNU Lade').  %%Outdated
+specname(obs,'OBS'). %not offic. 
+specname(city_syd,'City Syd').    %% NEC, CS no longer station %% TA-110624
+specname(city_lade,'City Lade').  %%Changedname,not inRouteData
+%% specname(odensev,'Odenseveien').  %% EH-031017
+specname(okstadøy,'Okstadøy'). 
+specname(ola_setroms_vei,'Ola Setroms vei'). 
+specname(olaf_bulls_vei,'Olaf Bulls vei'). 	
+specname(olav_engelbrektssons_all,'Olav Engelbrektssons allé').   %% AtB %% TA-101018
+specname(olav_engelbrektssons_alle,'Olav Engelbrektssons allé').  %% EH-031017
+specname(olav_nygårdsv,'Olav Nygårds vei'). 
+specname(olav_trygvassons_gt,'Olav Tryggvasons gate').  %% AtB MISSPELLEDINDATABASE
+specname(olav_tryggvasons_gt,'Olav Tryggvasons gate').  %%Default
+
+specname(omkjøringsv_klæbuvveien,'Omkjøringsveien Klæbuveien').  %% EH-031121
+specname(omkjøringsveien_moholt,'Omkjøringsveien Moholt'). 
+specname(omkjøringsveien_nardo,'Omkjøringsveien Nardo'). 
+specname(oscar_wistingsv,'Oscar Wistings vei').  %% EH-031017
+specname(otto_nielsens_veg,'Otto Nielsens vei'). 
+specname(paul_skolemesters_veg,'Paul skolemesters veg').%% TA-110803
+
+specname(peder_kroghs_v,'Peder Kroghs vei'). 
+specname(peder_morsets_vei,'Peder Morsets vei'). 	
+specname(persaunet_leir,'Persaunet leir'). 
+specname(persaunev,'Persaunevegen'). %% outdated?
+specname(prestegårdsjordet,'Prestegårdsjordet').  %% (error)
+specname(prinsen_kinosenter,'Prinsen kinosenter').  
+specname(prinsens_gate,'Prinsens gate'). 
+specname(r_i_t_hovedporten,'St Olavs hospital'). 
+specname(ranheim_kirke,'Ranheim kirke').  %% RS-130302 Replaced by Nedre Humlehaugen Øst 
+specname(reppe_endehlp,'Reppe endeholdeplass'). 
+specname(ringve_skole,'Ringve skole'). 
+specname(risvollan_senter,'Risvollan senter').
+specname(rit,'RIT'). 
+specname(roial_garden,'Royal Garden').  %% Nattbuss Spell
+specname(rormyra,'Rørmyra'). 
+specname(rosenborg_gt,'Rosenborg gate'). 	
+specname(rosenborg_sk,'Rosenborg skole'). 
+
+specname(rosenborg_skole,'Rosenborg skole'). %% AtB
+
+specname(rotvoll_all,'Rotvoll allé'). 
+specname(royal_garden,'Royal Garden'). 
+specname(royal_garden_hotell,'Royal Garden hotell'). %% airbus
+
+specname(rye_skole,'Rye skole').
+specname(santa_barbara,'Santa Barbara'). 
+specname(sas,'SAS'). 
+specname(saxenborg_all,'Saxenborg allé'). 
+specname(esso_motorhotell,'Esso Motorhotell').  %% ??? (Old station name)
+specname(senter,senter). 
+specname(sentrum,sentrum). 
+
+%% specname(sig_berg_alle,'Sigurd Bergs allé').   
+                                               
+specname(singsaker_studenthjem,'Singsaker studenthjem'). 
+specname(sirkus_shopping,'Sirkus Shopping').
+specname(sivert_thonstadsv,'Sivert Thonstads vei'). 	 %% EH-030616
+specname(sk,skole). %% nohelp?
+specname(skavlans_vei,'Skavlands vei'). 
+specname(smstuc,'SMSTUC'). 
+specname(solbakken_skole,'Solbakken skole'). 
+specname(solberg_mek_verksted,'Solbergmekaniskeverksted'). 	 %% EH-030616
+specname(sondre_hoem_sporvogn,'Søndre Hoems porvogn'). 
+specname(st_olavs_hospital_vest,'St Olavs hospital vest'). 
+specname(st_olavs_hospital_øst,'St Olavs hospital øst'). 
+
+%%% specname(st_olavs_hospital,'St Olavs hospital hovedporten').
+%% TA-100827
+specname(st_olavs_street,'St Olavs     gate'). 
+specname(st_olavs_gate,'St Olavs gate'). 
+specname(st_olavs_hospital,'St Olavs hospital'). 
+specname(statens_hus,'Statens hus'). 
+specname(stavset_senter_2,'Stavset senter 2').  %%, holdeplass 2'). 
+specname(steinanstudentby,'Steinan studentby'). 
+specname(strinda_kirke,'Strinda kirke'). 
+specname(strindheim_sk,'Strindheim skole'). 
+specname(studentersamfundet_1,'Studentersamfundet 1'). 
+specname(studentersamfundet_2,'Studentersamfundet 2'). 
+specname(støren_st,'Støren stasjon'). 
+specname(sverresborg_alle,'Sverresborg allé'). 
+specname(sverresborg_folkemuseum,'Sverresborg folkemuseum'). 
+specname(sæterbakken_bratsberg,'Sæterbakken Bratsberg'). 
+specname(søndre_gate_22,'Søndre gate 22'). 
+specname(søndre_gate_23,'Søndre gate 23'). 
+specname(søndre_hoem,'Søndre Hoem'). 
+specname(søndregate,'Søndre gate').  %% The neighbourhood (22/23)
+
+specname(tagore,'Tagore'). 
+
+specname(tbane,'T-bane'). 
+specname(tempevegen_11,'Tempevegen 11'). 
+specname(tempe_kirke,'Tempe kirke').   
+specname(tempe_kirke,'Tempe kirke').  %% Airbus name
+specname(tf,'Telenor Forskningssenter'). 
+specname(thora_storms_vei,'Thora Storms vei'). 
+specname(tilleringen_130,'Tillerringen 130').  %% (erri)
+specname(tmn,'Trafikanten Midtnorge'). 
+specname(tordenskiolds_gt,'Tordenskjolds gate').  %% NB iold
+specname(tordenskjolds_gt,'Tordenskjolds gate'). 
+specname((tore,amble),'Tore Amble').		%RS-110929
+specname(tranev,'Traneveien').  
+
+specname(trollahaugen_10,'Trollahaugen 10'). 
+specname(trollahaugen_2,'Trollahaugen 2'). 
+specname(trollahaugen_46,'Trollahaugen 46'). 
+specname(trollahaugen_64,'TROLLAHAUGEN 64'). 
+
+specname(trondheim_torg,'Trondheim Torg'). 
+
+specname(trondheim_sentralstasjon,'Trondheim Sentralstasjon'). %% TA-110628
+specname(ts,'Trondheim Sentralstasjon'). 
+
+specname(ts10,'Trondheim Sentralstasjon ') :-value(airbusflag,true),!. 
+specname(ts11,'Trondheim Sentralstasjon ' ):-value(airbusflag,true),!.  
+specname(ts13,'Trondheim Sentralstasjon')  :-value(airbusflag,true),!. 
+
+specname(ts10,'Trondheim Sentralstasjon holdeplass 10'). 
+specname(ts11,'Trondheim Sentralstasjon holdeplass 11').  %% EH-031017
+specname(ts13,'Trondheim Sentralstasjon holdeplass 13'). 
+
+
+specname(ts_10,'Trondheim Sentralstasjon holdeplass 10'). %% old names
+specname(ts_11,'Trondheim Sentralstasjon holdeplass 11'). 
+specname(ts_13,'Trondheim Sentralstasjon holdeplass 13'). 
+
+specname(tt,'AtB'). 
+specname(tuc,'TUC'). 
+specname(tulluan_sk,'Tulluan skole'). 
+specname(tunga_kretsfengsel,'Tunga kretsfengsel'). 
+specname(tverrforb_1,'Tverrforbindelsen 1'). 
+specname(tyholt_alle,'Tyholt allé'). 
+specname(tyholtv,'Tyholtvegen').  %%Talsmann
+specname(tyholtv,'Tyholtveien').  %% EH-031017
+specname(tøh,'TØH'). 
+specname(ullins_vei,'Ullins vei'). 
+specname(universitetet_lade,'Universitetet Lade'). 
+specname(utsikten_alle,'Utsikten allé'). 
+specname(valentinlystv,'Valentinlystvegen'). 
+specname(valset_gård,'Valset gård').  %% outdated 
+specname(valøyvegen,'Valøyvegen'). 
+specname(valøyvegen,'Valøyvegen').  %% EH-031017 vei->veg. Korrekt/entydig skrivemåte
+specname(veisletten_alle,'Veisletten allé'). 
+specname(vestlia_endeholdeplass,'Vestlia endeholdeplass'). 
+specname(vikåsen_skole,'Vikåsen skole'). 
+specname(vollgt,'VOLLGATEN'). 
+specname(vådanv_5,'Vådanveien 5'). 
+specname(være_østre,'Være Østre'). 
+specname(væretroa,'Værestrøa'). 
+specname(værestroa,'Værestrøa'). 
+specname(værestrøa,'Værestrøa'). %% Off name  
+specname(øvre_alle,'Øvre allé'). 
+specname(øvre_flatåsv,'Øvre Flatåsveg'). 
+specname(øya_helsehus,'Øya Helsehus').		%RS-110926
+
+
+%% Trapez -> Hastus synplaces 
+
+%%%%%%%%% synplace(tveregga,tvereggen).
+%%%%%%%%% synplace(tverregga,tvereggen).
+
+synplace(rosa,ross). %% ? %% TA-110415 Ole Ross veg
+synplace(rosta,rosten). %% / 
+synplace(ostmarka,østmarka). 
+%% synplace(ola,ila). %% Haz? %% TA-110328
+
+synplace(olavtrygvasonsgate,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB
+
+synplace(berf,berg). %% ?
+synplace(bert,berg). %% ?
+
+synplace(berføttsvei,berrføttsveg).   
+synplace(berrføttsvei,magnus_berrføttsveg). 
+
+synplace(easmith,e_a_smith). 
+
+synplace(mobilt,moholt). %% ???
+
+%%%% synplace(engelbrektssons,engelbrektsons).
+%%%% synplace(morsets,morsetts).
+%%%% synplace(morset,morsett).
+
+synplace(morseths,morsets). %% NEC
+
+synplace(staøren,støren). %% TA-101221
+
+%% synplace(steinåsen,seinåsen). 
+
+%% synplace(stiklestadveien,stiklastadveien). %% fixed 
+synplace(stiklesveien,stiklestadveien). %% ?
+
+synplace(polishuset,ts). %% AtB. %%  ts is neib). 
+
+synplace(reppekrysset,reppevegen). %%  reppevegen is not in the routes
+
+
+synplace('va|retraøa',værestrøa).
+synplace(val,valentinlyst).
+synplace(valgrindveien,valgrindsveien). 
+synplace(væretrøa,værestrøa). %% NB væres
+synplace(væretøa,værestrøa).   %%
+synplace(skjåness,sjåness).
+synplace(toming,thonning). 
+synplace(tornes,thornæs). %% TA-110203
+synplace(torpsvei,torps_vei).
+synplace(oppland,opland).
+synplace(prestegårsjordet,prestegårdsjordet).
+synplace(endeholdepl,endehpl).
+synplace(tyholtårnet,tyholttårnet).   %% NB 1 t
+
+synplace('by''n',sentrum).  %%By'n==>'by''n'
+synplace('la''moen',lademoen). 
+synplace(aaer,aaes). 
+synplace(aamfundet,samfundet).  %%?
+synplace(aasheim,åsheim). 
+synplace(aasn,aaes). 
+synplace(aasveienskole,åsveien_skole). 
+synplace(adgenes,agdenes). 
+synplace(adressa,adresseavisen). 
+synplace(aentralstasjonen,ts). %% AtB. 
+synplace(aila,ila).  %% ?
+synplace(akobsli,jakobsli). 
+synplace(alcatraz,munkholmen). %% :-)
+synplace(alentinlyst,valentinlyst).  %% ?
+synplace(alesund,ålesund). 
+synplace(alfheimsvegen,alfheimsvingen). 
+synplace(alfheimsvei,alfheimsvingen). 
+synplace(alfheimsvei,alfheimsvingen). 
+synplace(alfheimsveien,alfheimsvingen). 
+synplace(alfheimsvingen,alfheimsvingen). 
+
+synplace(alvheimveien,alfheimsvingen). %% etc 
+
+synplace(alpintbussen,alpinbussen). 
+synplace(alvheimsvegen,alfheimsvingen). 
+synplace(alvheimsvei,alfheimsvingen). 
+synplace(alvheimsvei,alfheimsvingen). 
+synplace(alvheimsveien,alfheimsvingen). 
+synplace(ambjørnsensgate,asbjørnsens_gate).  %%(nospellc)
+synplace(amfundet,samfundet).  %%neib
+synplace(amfunnet,samfundet).  %%
+synplace(amigosenteret,migosenteret). %% TA-100519
+synplace(amunkegata,munkegata). 
+synplace(andersbuensgate,anders_buens_gate). 
+synplace(andersbuesgate,anders_buens_gate). 
+synplace(angelltrøvegen,angelltrøveien). 
+synplace(ankererveien,ankerveien). 
+synplace(anlegg,anlegget). 
+synplace(anleggene,anlegget). 
+synplace(anrdo,nardo).  %% ? 
+synplace(antongrevskottsgate,anton_grevskotts_vei). 
+synplace(antongrevskottsgt,anton_grevskotts_vei). 
+synplace(antongrevskottsvei,anton_grevskotts_vei).
+synplace(ardo,nardo).  %%?
+synplace(arneberggårdsv,arne_bergsgårds_vei). 
+synplace(arneberggårdsvei,arne_bergsgårds_vei). 
+synplace(arnebergsgårdsvei,arne_bergsgårds_street).  %%(systemat?)
+synplace(arnebergsgårdsvei,arne_bergsgårds_vei).  
+synplace(arntsmistadsv,arnt_smistads_vei).  
+synplace(asbjørnsgate,asbjørnsens_gate). 
+synplace(asbjørnsveien,asbjørnsens_gate). 
+synplace(asbjørnøveråsveg,asbjørn_øverås_street). 
+synplace(asentrum,sentrum). 
+synplace(askeladenveien,askeladdvegen). 
+synplace(astronautveien,astronom_street). 
+synplace(astt,tt). 
+synplace(astudentersamfundet,studentersamfundet). 
+synplace(asveien,åsveien). 
+synplace(atrindheim,strindheim). 
+synplace(atudentersamfundet,studentersamfundet). 
+synplace(auran,buran).  %% ?
+synplace(austmarka,østmarka). 
+synplace(avdelingskontoret,servicekontoret).  
+synplace(bachs,brochs). 
+synplace(bake,bakke). 
+synplace(bakgate,bakkegata).  %% ?
+synplace(bakkbro,bakkebru). 
+synplace(bakkbroen,bakkebru). 
+synplace(bakkbru,bakkebru). 
+synplace(bakkbruen,bakkebru). 
+synplace(bakkebro,bakkebru). 
+synplace(bakkebroen,bakkebru). 
+synplace(bakkebru,bakkebru). 
+synplace(bakkebruen,bakkebru). 
+synplace(bakkebybro,bakkebru).  %% ?
+synplace(bakkekirke,bakkegata). 
+synplace(bakkeland,bakklandet). 
+synplace(bakklainne,bakklandet). 
+synplace(bakkland,bakklandet). 
+synplace(bakklanne,bakklandet). 
+synplace(baklane,bakklandet). 
+synplace(baklanee,bakklandet). 
+synplace(balentinlyst,valentinlyst).  %% ?
+synplace(balgård,dalgårdd). 
+synplace(banegården,jernbanestasjonen). 
+synplace(banestasjon,jernbanestasjonen). 
+synplace(banestasjonen,jernbanestasjonen). 
+synplace(bardo,nardo). 
+synplace(barfots,berrføtts). 
+synplace(barneavd,barneklinikken).  %%synname
+synplace(barneskole,skole). 
+synplace(barneskole,skole). 
+%% synplace(barnhage,barnehage). 
+synplace(bartlamoen,svartlamon). 
+synplace(bartlamon,svartlamon). 
+synplace(bbyen,byen). 
+synplace(bbyn,byen).
+synplace(beg,berg).  %% nohash<4
+synplace(beldevere,belvedere). 
+synplace(belverede,belvedere). 
+synplace(berfoettsvei,berføttsvei). 
+synplace(berg,bergs).  %%nohashbecausenot unknown
+synplace(bergkirke,berg_prestegård). 
+synplace(bergårdsvei,bergsgårdsvei). 
+synplace(bestlia,vestlia). 
+synplace(beunge,buenget). 
+synplace(bharlottenlund,charlottenlund).  %%?
+synplace(bidtbyen,sentrum). 
+synplace(bikåsen,vikåsen). 
+synplace(bilioteket,biblioteket). 
+synplace(billettkontoret,servicekontoret). 
+synplace(birbadet,pirbadet). 
+synplace(birchs,brochs). 
+synplace(biskopsigurdsgate,biskop_sigurds_gate). 
+synplace(bispegaten,bispegata). 
+synplace(biyosen,byåsen). 
+synplace(bjørdalsrua,bjørndalsbrua). 
+synplace(bjørndalbru,bjørndalsbrua).  
+synplace(bjørndalbua,bjørndalsbrua). 
+synplace(bjørndalen,bjørndalsbrua). 
+synplace(bjørndalsbroen,bjørndalsbrua). 
+synplace(bjørndalsbroen,bjørndalsbrua). 
+synplace(bjørndalsbruen,bjørndalsbrua). 
+synplace(bjørndalsbua,bjørndalsbrua). 
+synplace(bjørndalstopnne,bjørndalstoppen). 
+%% synplace(bjørndas,bjørndals). %%  (nec?)
+
+synplace(bjørnebru,bjørndalsbrua). 
+synplace(bjørnebrua,bjørndalsbrua). 
+synplace(bjørnsdalsbura,bjørndalsbrua). 
+synplace(bjørnstadbrua,bjørndalsbrua). 
+synplace(bks,kbs).
+%% synplace(blaklia,blakli). %% \+ baklia 
+synplace(blodbank,blodbanken). 
+synplace(blussevoll,blussuvoll). 
+synplace(boll,voll).  
+synplace(bollabakken,vollabakken).
+synplace(borcghrevinkvei,borchgrevinks_street). 
+synplace(borch,brochs). 
+synplace(borchs,brochs). 
+synplace(borgchrevinkvei,borchgrevinks_street). 
+synplace(borsa,børsa). %% Trlag
+
+synplace(bowling,bowling_1). 
+synplace(bowlingen,bowling_1). 
+% synplace(bran,buran). %% confus? 
+synplace(brannstasjon,brannstasjonen). 
+synplace(bratbegsvegen,bratsbergveien). 
+synplace(bratsbeg,bratsberg).  %% \+brattsveg 
+synplace(bratsbergkirke,bratsberg_kirke). 
+synplace(brattbergsveien,bratsbergveien). 
+synplace(brattoera,brattøra). 
+synplace(brattørtveita,brattørveita). %%  SIC brattø/err in regstr
+synplace(brattsbergeveien,brattsbergveien). 
+synplace(brattsbergsveien,bratsbergveien). 
+synplace(brattsbergvegen,bratsbergveien). 
+synplace(brattsperg,bratsberg). 
+synplace(bredablikkskole,breidablikk_skole). 
+synplace(bredablitt,breidablikk).  %%Dbl
+synplace(breidablikk,breidablik).  %%breidablikkveien->breidablikveien
+synplace(breidablikkskole,breidablikk_skole). 
+synplace(broch,brochs).  %% \+ spc because known
+synplace(brochs,prof_brochs_gate).  %%?
+synplace(brochsgate,prof_brochs_gate). 
+synplace(brochsvei,prof_brochs_gate).
+synplace(brogs,brochs). 
+synplace(bromsdat,bromstad). 
+synplace(bromsetsvingen,bromstadsvingen). 
+synplace(brundal,brundalen). 
+synplace(brundalenskole,brundalen_skole).   
+synplace(brundalensykehjem,brundalen_sykehjem).
+synplace(brundarn,brundalen). 
+synplace(brygen,bryggen). 
+synplace(brygga,pirbadet).  
+synplace(brødsettveien,brøsetv).  %%v. ! %%  \tsx brødsettveien brotsetv
+synplace(brøsetflatata,brøsetflata). %?
+synplace(brøseth,brøset). 
+synplace(brøsethvegen,brøsetv).  %%
+synplace(brøsethveien,brøsetv).  %% station is preferred %%  Touchy
+synplace(brøsetvegen168,brøsetvegen_168). 
+%% synplace(brøsetvegen186,brøsetvegen_186). 
+synplace(brøsetvn168,brøsetvegen_168). 
+%% synplace(brøsetvn186,brøsetvegen_186). 
+synplace(brøsterveien,brøsetvegen). 
+synplace(buan,buran). 
+synplace(buen,buens). %% nec anders b 
+synplace(buen,byen).  %%  Haz Anders B?
+synplace(bueng,buenget).  %% beunsgt ? buengvegen
+synplace(buengenet,buenget). 
+synplace(buensgate,anders_buens_gate). 
+synplace(buenteg,buenget). 
+synplace(bukkvoll,bukkvollan).  %% street
+synplace(bunkegata,munkegata). 
+synplace(bura,buran). 
+synplace(bura,buran). 
+synplace(burn,buran). 
+synplace(buråk,brurok).  %% \+ buran
+synplace(busskontoret,servicekontoret). 
+synplace(busstermialen,hovedterminalen). 
+synplace(bussterminal,hovedterminalen). 
+synplace(busstermin,hovedterminalen). 
+synplace(busterminal,hovedterminalen). 
+synplace(butan,buran). %% TA-110214
+synplace(buterminalen,hovedterminalen). 
+synplace(buyn,byen).
+synplace(bya,sentrum). 
+synplace(bye,sentrum).  %% (unless unwanted_place)
+
+synplace(byen,sentrum).  %% TA-110120 * byen Hønefoss 
+
+synplace(byasveien,byås_street).  %% problem
+synplace(byasvei,byås_street).    %%  TSX <--- byÃ¥sveien //nohelp
+synplace(byaysveien,byås_street). 
+synplace(byaysveien,byås_street).
+
+synplace(byaas,byås). %% nec for byås_street (< 5 chars)
+synplace(byaasen,byåsen). 
+synplace(byaysen,byåsen).  %%byÃ¥sen
+synplace(bybdahls,dybdahls). 
+synplace(byem,byen). 
+synplace(byenk,byen). 
+synplace(bygensen,bygrensen). 
+synplace(bygransen,bygrensen). 
+synplace(bykjerna,sentrum). 
+synplace(bykjernen,sentrum). 
+synplace(byn,sentrum).  %% By'n==>byn WEB
+synplace(byne,byen). 
+synplace(bynes,byneset). %% TA-110331 
+  %% w(bynes,[name(bynes,n,0),name(bryns,n,0),name(byens,n,0),name(byes,n,0)])
+synplace(bysenet,byneset). 
+synplace(bysentralen,hovedterminalen). 
+%%  synplace(bysn).  byen | byåsen ?
+synplace(byterminalen,hovedterminalen). 
+synplace(byterminal,hovedterminalen).  
+synplace(bytårnet,tyholttårnet).  
+synplace(byås,byåsen). 
+synplace(byåse,byåsen). 
+synplace(byåsenhallen,byåsen_videregående_skole).   
+synplace(byåsensenter,byåsen_butikksenter).
+synplace(byåsenvgs, byåsen_videregående_skole). %% migosenteret). %%  byåsen_skole). 
+synplace(byåskole,byåsen_skole).        
+synplace(byåsskole,byåsen_skole).       %% . . . 
+synplace(bæretrøa,værestrøa). %% off name 
+synplace(bærføtsvei,berføttsvei).  %% Doesn'thelp
+synplace(bærrføtsvei,berføttsvei). 
+synplace(bøchmannsvn,bøckmans_street). 
+synplace(bøchmannsvn,bøckmansveien). 
+synplace(bøckmannsveg,bøckmans_street). 
+synplace(bøckmannsveg,bøckmansveien). 
+synplace(bøckmannsvegen,bøckmans_street). 
+synplace(bøckmannsvegen,bøckmansveien). 
+synplace(bøckmannsvei,bøckmans_street).  %% (discr>1). . . 
+synplace(bøckmannsvei,bøckmansveien).  %% (discr>1). . . 
+synplace(bøckmannsveien,bøckmans_street). 
+synplace(bøckmannsveien,bøckmansveien). 
+synplace(bøckmansvei,bøckmans_street). 
+synplace(bøckmansvei,bøckmansveien). 
+synplace(børdsåns,bårdsøns).  %% actual
+
+synplace(carljohnssonsvei,karl_jonssons_veg). 
+synplace(carljonssonsvei,karl_jonssons_veg). 
+
+synplace(carlottenlundkirke,charlottenlund_kirke).   
+synplace(casperlundesgate,casper_lundes_veg). 
+synplace(casperlundesv,casper_lundes_veg). 
+synplace(casperlundesv,casper_lundes_veg). 
+synplace(casperlundesveg,casper_lundes_veg). 
+synplace(casperlundesvei,casper_lundes_veg).
+synplace(cbs,kbs). 
+synplace(cbssenteret,kbs_senteret).  %%
+synplace(center,hovedterminalen). 
+synplace(centere,hovedterminalen). 
+synplace(centre,hovedterminalen). 
+synplace(centrum,hovedterminalen).  %% Necessary, centrum is partname
+
+synplace(charlottenberg,charlottenlund). 
+synplace(chalottenlud,charlottenlund). 
+synplace(chrlottelud,charlottenlund).   
+synplace(chrlottenlun,charlottenlund).  
+
+synplace(char,charlottenlund). 
+synplace(charlotenlumd,charlottenlund). 
+synplace(charlotnlund,charlottenlund). 
+synplace(charlotten,charlottenlund). 
+synplace(charlottend,charlottenlund). 
+synplace(charlottenli,charlottenlund). 
+synplace(charlottenlid,charlottenlund). 
+synplace(charlottenlundungdomskole,charlottenlund_skole).  
+synplace(charottelund,charlottenlund). 
+synplace(chl,charlottenlund). 
+
+synplace(cicilienborg,cecilienborg). 
+synplace(cicillienborg,cecilienborg). 
+synplace(cirkus,sirkus_shopping).
+synplace(cirkussenteret,sirkus_shopping).
+synplace(cirkusshopping,sirkus_shopping).
+synplace(cisilienborg,cecilienborg). 
+synplace(citi,city).  %% not nec syd (Eng)
+%% synplace(cityn,city_syd). %%  confuse
+synplace(citilade,city_lade). 
+%% synplace(city,hovedterminalen). %% confuse city syd %% TA-110627
+synplace(citylade,city_lade). 
+synplace(cytisyd,city_syd). 
+
+
+synplace(d1,dronningens_gate_d1). 
+%synplace(d2,dronningens_gate_d2).
+%synplace(d3,dronningens_gate_d3).
+synplace(d4,dronningens_gate_d4).
+
+
+synplace(dagevoll,dragvoll). 
+synplace(dalenhage,dalen_hageby). 
+synplace(dalgaard,dalgård). 
+synplace(dalgården,dalgård). 
+
+
+synplace(dalsethveien,dalsetveien). 
+synplace(dargvold,dragvoll). 
+synplace(darvoll,dragvoll). 
+synplace(degavoll,dragvoll). 
+
+synplace(devle,devlesvingen). 
+synplace(devlesveien,devlesvingen). 
+
+
+synplace(dgarvoll,dragvoll). 
+synplace(diplomis,iskremfabrikken). 
+synplace(diplomisfabrikken,iskremfabrikken). 
+synplace(distriktspsykiatriske,dps). %%  Tiller
+synplace(dlane,dalen). 
+%% synplace(dmmh,dalen_hageby). 
+
+
+synplace(doggparken,solsiden). 
+synplace(dokkaia,solsiden). 
+synplace(dokkanparken,solsiden). 
+synplace(dokkbakken,solsiden). 
+synplace(dokkerparken,solsiden).  
+synplace(dokkpark,solsiden). 
+synplace(dokkplassen,solsiden). 
+synplace(dors,dora). 
+synplace(drag,dragvoll). 
+synplace(drag,dragvoll).  %% -dragv,dora,etc. 
+synplace(dragol,dragvoll). 
+synplace(dragold,dragvoll).  
+synplace(dragv,dragvoll). 
+synplace(dragvild,dragvoll). 
+synplace(dragvo,dragvoll). 
+synplace(dragvod,dragvoll). 
+synplace(dragvokk,dragvoll). 
+synplace(dragvoldt,dragvoll). 
+synplace(dragvollen,dragvoll). 
+synplace(dragvoo,dragvoll). 
+synplace(dragwall,dragvoll). 
+synplace(dravold,dragvoll). 
+synplace(drettsanlegget,idrettsplass).  %%?
+synplace(drgate,dronningens_gate). 
+synplace(drgt,dronningens_gate). 
+synplace(dron,dronningens).  %%//WYWIWYR Whatyouwriteiswhatyou(haveto)read
+synplace(droningata,dronningens_gate). 
+synplace(droningen,dronningens). 
+synplace(droninggata,dronningens_gate). 
+synplace(droningsgata,dronningens_gate). 
+synplace(dronn,dronningens). 
+synplace(dronninegt,dronningens_gate).  %%
+synplace(dronningensgate,dronningens_gate). 
+synplace(dronningensgt,dronningens_gate). 
+synplace(dronninges,dronningens). 
+synplace(dronningsgate,dronningens_gate). 
+synplace(dronningsgate,dronningens_street).  %%dronningsgate40?"
+synplace(dronningsgaten,dronningens_gate). 
+synplace(dronningt,dronningens_gate). 
+synplace(dronnsingsgate,dronningens_gate). 
+synplace(dråningensgate,dronningens_gate).  
+synplace(dubedalsveien,dybdahls_veg). 
+synplace(dvalentinlyst,valentinlyst). 
+synplace(dvoll,dragvoll). 
+
+synplace(dybdahls,dybdals).  %%allow station to domninate
+synplace(dybdalsv,dybdahls_veg).  %%
+synplace(dybdalvegen,dybdahls_street).  %%
+synplace(dybdalveien,dybdahls_street).  %% <----h
+synplace(dybdalveien,dybdahls_veg). 
+synplace(dybdedalsvei,dybdahls_veg). 
+synplace(dybedalsveien,dybdahls_veg). 
+synplace(dybendal,dybdals). 
+synplace(dybendals,dybdals). 
+synplace(dybendalsgate,dybdahls_veg). 
+synplace(dybvika,djupvika). 
+synplace(dypedalsveien,dybdahls_veg). 
+synplace(dypvika,djupvika). 
+synplace(dødensdal,høgskoleringen).  
+synplace(ebergskole,'Eberg skole'). 
+synplace(ebrochs,brochs). 
+synplace(ehimdal,heimdal). 
+synplace(einar_tambarsjelves_gt,einar_tambarskjelves_gate). 
+
+synplace(einartambarsjelves,einar_tambarskjelves_gate). %% <-- ?? 
+synplace(einartambarskjelvensgate,einar_tambarskjelves_gate).
+synplace(einartambarskjelvesgate,einar_tambarskjelves_gate). 
+synplace(einartambarskjelvesgt,einar_tambarskjelves_gate). 
+synplace(einartambarskjelvsgate,einar_tambarskjelves_gate). 
+synplace(einartamberskjelvs,einar_tambarskjelves_gate). 
+synplace(einartamerskjelvs,einar_tambarskjelves_gate). 
+
+synplace(ekraftverket,e_verket). 
+synplace(ekspedisjonen,servicekontoret). 
+synplace(elgeset,elgeseter). 
+synplace(elgseretgate,elgesetergate). 
+synplace(elgsetergate,elgeseter_street). 
+synplace(elset,elgeseter).  %%?
+synplace(elseter,elgeseter). 
+synplace(engebrektsons,engelbrektssons). 
+synplace(engelbektson,engelbrektssons). 
+synplace(engelbr,engelbrektssons). 
+synplace(engelbregtson,engelbrektssons). 
+synplace(engelbregtsons,engelbrektssons). 
+synplace(engelbrekson,engelbrektssons). 
+synplace(engelbrektsons,engelbrektssons). 
+synplace(engelbretsons,engelbrektssons).  %%ssons
+synplace(engelbrikstons,engelbrektssons). 
+synplace(engelsåsen,engelsås_street). 
+synplace(enrumveien,enerom_street). 
+synplace(erlinghøviksvei,erling_høviks_street). 
+synplace(esp,esp_meieri). 
+synplace(estnestadveien,estenstadveien).  %%NOT synplaceandspellcor
+synplace(fagerheimalle,fagerheim_alle).  %%automatic %%
+synplace(fagerheimallee,fagerheim_alle). 
+synplace(fagerli,fagerliveien).  %%redundant
+synplace(fagerlibakken,fagerliveien).  %%?
+synplace(falgård,dalgård). 
+synplace(falkbergsvei,johan_falkbergets_vei). %
+%% synplace(fengsel,tunga_kretsfengsel). %% YA-080526
+synplace(ferstads_street,nedre_ferstad_street).  
+synplace(ferstadsvei,nedre_ferstad_street). 
+synplace(festning,festningen). 
+synplace(festningata,festningsgata). 
+synplace(festningensgaten,festningsgata). 
+synplace(festningensgt,festningsgata). 
+synplace(fiolinbuen,fiolsvingen). 
+synplace(fiolinsvingen,fiolsvingen). 
+synplace(fiolkrysset,fiolsvingen).  
+synplace(fiolsv,fiolsvingen). 
+synplace(fiolvei,fiolsvingen). 
+synplace(fiolveien,fiolsvingen). 
+synplace(firterminalen,pirbadet).  
+synplace(fjellheim,bergheim).  %%?
+synplace(fjellseter,fjellsæter). 
+synplace(fjordsvingen,fiolsvingen).  %%fjol
+
+synplace(fjosli,fjøslia). 
+
+synplace(flak,flakk). 
+
+synplace(flatssentere,flatåsen_senter). 
+synplace(flatås,flatåsen). 
+synplace(flatåsensentrum,flatåsen_senter). 
+synplace(flatåsenter,flatåsen_senter). 
+synplace(flatåsentere,flatåsen_senter). 
+synplace(flatåssenter,flatåsen_senter). 
+synplace(flatåssentre,flatåsen_senter). 
+synplace(flatåssentrum,flatåsen_senter). 
+synplace(flybussholdeplass,flybussterminalen). 
+synplace(flybussholdeplassen,flybussterminalen). 
+synplace(flybussstasjon,flybussterminalen). 
+synplace(flybusstasjon,flybussterminalen). 
+synplace(flybusstermial,flybussterminalen). 
+synplace(flybussterminal,flybussterminalen). 
+synplace(flybusstopp,flybussterminalen). 
+synplace(flåtasen,flatåsen). 
+synplace(flåtasveg,øvre_flatåsveg). 
+synplace(fløshaugen,gløshaugen). 
+synplace(folketmuseet,folkemuseum). 
+synplace(fossestua,fossestu_street).  %%
+synplace(fossestua,fossestuv). 
+synplace(fossestuen,fossestuv). 
+synplace(fragvoll,dragvoll). 
+synplace(fremstad,fjermstads). 
+synplace(fremstads,fjermstads). 
+
+synplace(frostadveien,frosta_street). %% \+ ferstadveien
+
+synplace(fønningsbakken,rønningsbakken). 
+synplace(gadenwist,stjørdals_street).  %%!stjørdals_streetNOT station!
+synplace(gamlekongevei,gamle_konge_street). 
+synplace(gamleåsvei,gamle_ås_street). 
+synplace(gamleåsveien,gamle_ås_street). 
+synplace(gardermoens,gardemoens). 
+synplace(gartneriet,gartnerhallen). 
+
+synplace(generalvibesvei,general_wibes_street). 
+
+synplace(gerg,berg). 
+synplace(ghaugen,gløshaugen). 
+synplace(ghøs,gløshaugen).  %%slip
+synplace(gildheimen,gildheim). 
+synplace(gjaøshaugen,gløshaugen).  
+synplace(gjernbanestasjon,jernbanestasjon). 
+synplace(gjernbanestasjonen,jernbanestasjonen). 
+
+synplace(gjødselhaugen,gløshaugen).  %% :-)
+synplace(gjøs,gløshaugen). 
+synplace(gkls,gløshaugen).  %% dbl neib
+synplace(gkøs,gløshaugen). 
+synplace(glas,gløshaugen).  %% :-) 
+synplace(glis,gløshaugen).  %% :-) 
+synplace(gløa,gløshaugen). 
+synplace('gla|s',gløshaugen).  %% glÃ¦s  %% =<5  
+synplace('gla¦s',gløshaugen).  %% 
+
+synplace(glashagen,gløshaugen). 
+synplace(glashogan,gløshaugen).
+synplace(glashogen,gløshaugen).
+synplace(glashogenan,gløshaugen).
+synplace(glashougen,gløshaugen). 
+synplace(glashuagen,gløshaugen).
+synplace(glashuange,gløshaugen).
+synplace(glashøgen,gløshaugen). 
+
+synplace(glauhogen,gløshaugen). 
+synplace(glauhogene,gløshaugen). 
+synplace(glaushagen,gløshaugen). 
+synplace(glaushaugen,gløshaugen). 
+synplace(glaushogen,gløshaugen). 
+synplace(glaushøgen,gløshaugen). 
+synplace(glaøs,gløshaugen).       %% glÃ¸s  Ø-trøbbel
+synplace(glaøsgaugen,gløshaugen).
+synplace(glaøshaugne,gløshaugen). %% glÃ¸shaugne 
+synplace(glhaugen,gløshaugen).  
+synplace(glodhaugen,gløshaugen). 
+synplace(gloes,gløshaugen). 
+synplace(gloeshaugen,gløshaugen). 
+synplace(glohaugen,gløshaugen). %% langlohaugen?
+synplace(glohogen,gløshaugen). 
+synplace(glos,gløshaugen). 
+synplace(glosaugen,gløshaugen).  
+synplace(glosh,gløshaugen). 
+synplace(gloshagen,gløshaugen).  
+synplace(gloshauegn,gløshaugen). 
+synplace(gloshaug,gløshaugen). 
+synplace(gloshaugen,gløshaugen). 
+synplace(gloshauen,gløshaugen). 
+synplace(gloshogen,gløshaugen). 
+synplace(gloshougen,gløshaugen). 
+synplace(gloshugen,gløshaugen). 
+synplace(gloushagen,gløshaugen).
+%% synplace(gls,gløshaugen).  %% limit 
+synplace(glsø,gløshaugen). 
+synplace(glsøaughne,gløshaugen).
+synplace(glæs,gløshaugen). 
+
+synplace(glød,gløshaugen). 
+synplace(gløeshaugen,gløshaugen). 
+synplace(gløos,gløshaugen). 
+synplace(gløs,gløshaugen). % \+ glis/gls/
+synplace(gløsh,gløshaugen). 
+synplace(gløsha,gløshaugen).
+synplace(gløshagen,gløshaugen). 
+
+synplace(gløshaugane,gløshaugen). 
+synplace(gløshaugennord,gløshaugen_nord). 
+synplace(gløshaugensyd,gløshaugen_syd). 
+synplace(gløshaugensør,gløshaugen_syd). 
+synplace(gløshaun,gløshaugen). 
+synplace(gløshogen,gløshaugen). 
+synplace(gløshuagne,gløshaugen). 
+synplace(gløshævven,gløshaugen). 
+synplace(gløshgen,gløshaugen).
+synplace(gløshøyen,gløshaugen). 
+synplace(gløsnord,gløshaugen_nord). 
+synplace(gløss,gløshaugen). 
+synplace(gløsshaggen,gløshaugen). 
+synplace(gløst,gløshaugen). 
+synplace(glåøs,gløshaugen).  %% GlÃ¸s
+synplace(glås,gløshaugen).  
+    synplace(løshaugen,gløshaugen).
+
+synplace(godsnsb,terminalen). 
+synplace(graaemølla,graaemølna).  
+synplace(graakaillbanen,gråkallbanen). 
+synplace(graakalbanen,gråkallbanen). 
+synplace(graakallen,gråkallen). 
+synplace(graakollen,gråkallen). 
+synplace(graemølne,graaemølna). 
+synplace(gragvoll,dragvoll). 
+synplace(granaasen,granåsen). 
+synplace(granasen,granåsen).  %% doesnt help for partnames 
+synplace(granåsenanlegget,granåsen_vm_anlegget). 
+synplace(granåsengård,granåsen_gård). 
+synplace(granåsens,granåsen). %% granÃ¥sens skole?  *sivilforsvarets skole, granåsen
+             
+synplace(grevkott,grevskotts).  
+synplace(grevsgott,grevskotts).
+synplace(grevsk,grevskotts). 
+synplace(grevskot,grevskott). 
+synplace(grevskot,grevskotts).  
+synplace(grevskots,grevskotts). 
+synplace(grevskottsvei,anton_grevskotts_vei).  
+synplace(grevstokk,grevskott). 
+synplace(grevstokks,grevskotts). 
+synplace(grevstokksvei,grevskotts_vei). 
+
+synplace(grilstadheia,grilstadkleiva).  %% ? 
+synplace(grushaugen,gløshaugen).  %%  :-)
+
+synplace(graønnlnd,grønnland). %% avoid grønlia %% TA-101118
+
+synplace(grønnlien,grønnlia). %% \+ granlia %% amble#
+synplace(gråkaillbanen,gråkallbanen). %% not stat/neib
+synplace(gråkalen,gråkallen). 
+synplace(gråkall,gråkallen). 
+synplace(gråkolen,gråkallen). 
+synplace(gråmølla,graaemølna). 
+synplace(gråmøllen,graaemølna). 
+synplace(grånemølna,graaemølna). 
+synplace(guenget,buenget). 
+synplace(gulashogan,gløshaugen). 
+synplace(gyda,gina). % krog 
+synplace(gøls,gløshaugen). 
+synplace(gølshaguen,gløshaugen). 
+synplace(gøs,gløshaugen). 
+
+synplace(haakon,håkon).  %%OK,norecursion
+synplace(haakon7gt,haakon_vii_gate_25). 
+synplace(haakonviigt,haakon_vii_gate_25). 
+synplace(haarfagres,hårfagres). 
+synplace(hagnesvingen,haugnessvingen). %% naer miss
+
+synplace(hakobsli,jakobsli). 
+synplace(hallfredhøyemsvei,hallfred_høyems_vei). 
+synplace(halseth,halset). 
+
+synplace(hansfinnesgt,hans_finnes_street). 
+synplace(hanskebakken,hanskemakerbakken). 
+synplace(hanskemakerveien,hanskemakerbakken). 
+synplace(hansmakerbakken,hanskemakerbakken). 
+synplace(haraldbothnersvei,harald_bothners_veg). 
+synplace(haraldhårfagresgate,harald_hårfagres_street).  
+synplace(haraldhårfagresgt,harald_hårfagres_street).  
+synplace(haraldhårfagresvei,harald_hårfagres_street).  
+synplace(hasselvika,hasselbakken). 
+synplace(haugnessveien,haugnessvingen). 
+synplace(haugnesveien,haugnessvingen). 
+synplace(haukås,haukåsen). 
+synplace(haulowbakken,thaulowbakken). 
+synplace(havnegata,pirbadet).   %%???(case)
+synplace(havstads,havstadsenteret).  %%destroyshavstadsenteret?
+synplace(havstadsenter,havstadsenteret). 
+synplace(havstadtunet,havstadsenteret). 
+synplace(havstasenter,havstadsenteret). 
+synplace(haøgskoleparken,høyskoleparken). %%  hÃ¸gskoleparken? 
+
+synplace(hofstads,ofstads). %%  ingeborg nohelp
+synplace(hogskoleparken,høyskoleparken). 
+
+synplace(haøyskoleparken,høyskoleparken). %%   Nec 
+
+synplace(heimdalsbyen,heimdal_sentrum). 
+synplace(heimdalsentralstasjon,heimdal_stasjon). 
+synplace(heimdalst,heimdal_stasjon). 
+synplace(helhus,melhus). 
+synplace(hembres,hambros). %% TA-101111
+synplace(hemidla,heimdal). 
+synplace(hemnskjell,hemnskjel). 
+synplace(henry,henrik). 
+
+synplace(herløfs,herlofsons) . %% ? 
+
+synplace(herlofsenløypa,herlofsonsløypa). 
+synplace(hestehaven,prof_brochs_gate). 
+synplace(hesthaven,prof_brochs_gate). 
+%% synplace(himmelen,værnes).  %% -> airplane 
+synplace(himmelportalen,perleporten). 
+synplace(hjelstrupsvei,christian_jelstrups_v).  %%
+synplace(hjernbanen,ts). %% AtB. 
+synplace(hjernbanestasjon,ts). %% AtB. 
+synplace(hjørtlerveien,gjørtler_street). 
+synplace(hoegga,hoeggen). 
+synplace(hoeggenskole,hoeggen_skole). 
+synplace(hogskolering,høgskoleringen). 
+synplace(hogskøleringen,høyskoleringen). 
+synplace(hogskølringen,høyskoleringen). 
+synplace(hoholt,moholt). %parasitictypo
+synplace(hoieflata,koieflata).  
+synplace(holocks,hørløcks). 
+synplace(holtemansv,holtermanns_street). 
+synplace(holtemansveien,holtermansveien). 
+synplace(holtermanveg,holtermanns_street).  %%HMV17
+synplace(horlocks,hørløcks). 
+synplace(hornbergvegen,hornebergveien).  %%
+synplace(hornbergvegen,hornebergveien).  %%Thestreet
+synplace(hornbergveien,hornebergveien).  %%
+synplace(hornbergveien,hornebergveien).  %%Thestation
+synplace(hornberveien,hornbergveien). 
+synplace(hornebergvegen,hornebergveien).  %%
+synplace(hornebergveien,hornebergveien).  %%
+synplace(hornebyvegen,hornebergveien).  %%
+synplace(hornebyveien,hornebergveien).  %% ?
+synplace(hornæs,thornæs). 
+synplace(hosp,hospital). 
+%% synplace(hospital,regionsykehuset).  %% (anglicism) 
+synplace(hospitalskyrkan,hospitalskirka). 
+synplace(hospitalsløkkan,hospitalløkkan). 
+synplace(hostipalløkka,hospitalløkkan). 
+synplace(hostipalsløkka,hospitalløkkan). 
+synplace(hotrelmannsvei,holtermanns_street). 
+synplace(hovebergveien,hornbergveien). 
+synplace(hovedbanestasjonen,ts). %% AtB.  
+synplace(hovedjernbanestasjon,ts). %% AtB. 
+synplace(hovedpostterimalen,postterminalen).  %% ?
+synplace(hovedstasjon,ts). %% AtB. 
+synplace(hsopitalløkkan,hospitalløkkan). 
+synplace(hsopitalløkkan,hospitalløkkan). 
+synplace(ht,hovedterminalen).  %%hovedterminalen?
+synplace(hurloks,hørløcks). 
+synplace(humlehaugen,humlehaug_street).  
+synplace(hundhamaren,hundhammeren). 
+synplace(hunnhammern,hunhammeren). 
+
+synplace(husdaytunet,husebytunet).  %%  dbl sms feil %%?
+%% synplace(huseby,husebytunet). 
+synplace(husebyhalle,husebyhallen). 
+synplace(husebytun,husebytunet). 
+
+synplace(hvaløyv,valøyvegen). 
+synplace(hvaløyveien,valøyvegen). 
+synplace(hvilhaugen,kvilhaugen). 
+synplace(håkon,haakon).  %% OK, no recursion
+synplace(hårstadreina,hårstad). 
+synplace(hægstadmoen,heggstadmoen). 
+synplace(høglieveien,høili_street).  
+synplace(høgskolebakken,høyskoleringen). 
+synplace(høgskolering,høgskoleringen). 
+synplace(høgskolring,høyskoleringen). 
+synplace(høgskoleringens,høyskoleringens). %% allow høgskoleringens adresse 
+                                         
+synplace(haørlocksvei,hørløcks_street). %% TA-101123
+synplace(høili,høili_street).  %%
+synplace(høiskole,høgskole). 
+synplace(høiskolen,høgskolen). 
+synplace(hølock,hørløcks). 
+synplace(hørlocs,hørløcks). 
+synplace(hørløc,hørløcks). 
+
+synplace(høyskolring,høyskoleringen). 
+synplace(høysteh,høiset). 
+synplace(ia,ila). 
+synplace(iade,lade). 
+synplace(iademoen,lademoen). 
+synplace(iansensvei,lanssens_street).  %%<--helps
+synplace(ianssens,janssens). 
+synplace(iddretsanlegg,idrettsanlegg). 
+synplace(idr,idrettsplass). 
+synplace(idrattsenter,idrettsbygg). 
+synplace(idretsanlegg,idrettsanlegg). 
+synplace(idretsplas,idrettsplass).  %%Ranheim
+synplace(idrettbygg,idrettsbygg). 
+synplace(idrettsanleg,idrettsbygg). 
+synplace(idrettsanlegg,idrettsbygg). 
+synplace(idrettsanlegg,idrettsplass). 
+synplace(idrettsanlegget,idrettsplassen). 
+synplace(idrettsbanen,idrettsbygget). 
+synplace(idrettsbygg,idrettssenter). 
+synplace(idrettsbygningen,idrettsbygget). 
+synplace(idrettsenter,idrettssenter). 
+synplace(idrettsp,idrettsplassen). 
+synplace(idrettspark,idrettplass). 
+synplace(idrettspl,idrettsplassen).  %%
+synplace(idrettssenter,idrettsbygg). 
+synplace(idrettssenter,idrettsbygg). 
+synplace(idrettssenteret,idrettsbygget). 
+synplace(idrettssentret,idrettsbygget). 
+synplace(ihla,ila). 
+%% synplace(ika,ikea). 
+%% synplace(ike,ikea).    %% ikke
+ synplace(ikae,ikea).  %%
+synplace(ilakirka,ila). 
+synplace(ilakrysset,ila). 
+synplace(ilas,ila). 
+synplace(ile,ila). 
+synplace(ilen,ila). 
+synplace(illa,ila). 
+synplace(iloa,ila). 
+synplace(ils,ila).   
+synplace(ilsøra,ila). 
+synplace(ilta,ila). 
+synplace(indusrvegen,industri_street).  
+synplace(indæretsveien,innherredsveien). 
+synplace(ing,ingemann). 
+synplace(ingeborgofstadsvei,ingeborg_ofstads_vei). 
+synplace(ingenmanns,ingeman). %% torpsv  
+synplace(ingenmannstorpsvei,ingemann_torps_vei). 
+synplace(ingrid,ingeborg).  %% ofstad (or just use I.)
+synplace(ingv,ingvald). 
+synplace(ingvars,ingvar). 
+synplace(inherraveien,inherredsveien). 
+synplace(inherred,innherredsveien).  %%
+synplace(inneherredsvegen,innherredsveien). 
+
+synplace(innherdsveien,innherredsveien). 
+synplace(innherdsveien,innherreds_street).   %% Touchy
+synplace(innheredsveien,innherreds_street).  %% Touchy
+
+synplace(innherred,innherredsveien).  %% ?
+synplace(iskremfab,iskremfabrikken). 
+synplace(iskremfabr,iskremfabrikken). 
+synplace(istgårds,ystgård). 
+synplace(it_bygget,itbygget).  %% if applicable
+synplace(iugla,ugla). 
+synplace(jacbsli,jakobsli). 
+synplace(jacoblsli,jakobsli). 
+synplace(jacobsgrend,jakobsli).  %%
+synplace(jacobsligrend,jakobsli). 
+synplace(jacobsligrenda,jakobsli). 
+synplace(jacokbsli,jakobsli). 
+synplace(jacoksli,jakobsli).
+synplace(jaconsli,jakobsli). 
+synplace(jacosli,jakobsli). 
+synplace(jade,lade).    
+synplace(jadejarlen,ladejarlen).
+synplace(jakobli,jakobsli).  
+synplace(jakobslien,jakobsli).    %% (NB jakobslien syndrom)
+synplace(jakobsligrend,jakobsli). 
+synplace(jakobsligrenda,jakobsli). 
+synplace(jakobsliidrettsplassen,idrettsplassen). 
+
+synplace(jakobsliveiennedre,jakobsliveien_nedre). %% vn 
+
+synplace(jakobslivegen,jakobsliveien). %% nec diff names station/street
+synplace(jakobsliveien,jakobslivegen).
+synplace(jalsteingård,halstein_gård). 
+synplace(jaobsli,jakobsli).  %%
+synplace(jarlsveien,jarleveien).  %% Collides Håkon Jarls gate
+synplace(jarnebanen,jernbanen). 
+synplace(jebes,jeve).  %% jebes gate -> jebeveien %% <4
+synplace(jeimdal,heimdal). 
+synplace(jeldsrup,jelstrup). 
+synplace(jerbanest,ts). %% AtB. 
+synplace(jernbabanen,jernbanestasjonen). %% sp 
+synplace(jernbanen,jernbanestasjonen). 
+synplace(jernbanest,ts). %% AtB. 
+synplace(jernbanestasj,jernbanestasjonen).
+synplace(jernbanestasjon,jernbanestasjonen). 
+synplace(jernbastasjonen,ts). %% AtB. 
+synplace(jnyborg,nyborg).  %% ?
+synplace(joakosbli,jakobsli). 
+synplace(jobsli,jakobsli). 
+synplace(jocobsli,jakobsli). 
+synplace(joh,john).  %%Joh Skaarvoldsv
+synplace(johanfalkbergetsveg,johan_falkbergets_vei). 
+synplace(johanfalkbergetsvei,johan_falkbergets_vei). 
+synplace(johanfalkebergetsveg,johan_falkbergets_vei). %% ? 
+synplace(johansen,johnsen). 
+synplace(johanvannsveien,jonsvannsveien). 
+synplace(john,johan). 
+synplace(johnssons,jonssons). 
+synplace(johnssonsvei,karl_jonssons_veg).
+
+%% synplace(johnsvannet,jonsvatnet).  %% TA-110202
+synplace(johnsvatnet,   jonsvannet).  %%
+synplace(johnsvattenet, jonsvannet).  %%
+synplace(jonnsvatnet,   jonsvannet).  %%
+synplace(jonsvann,      jonsvannet).  %%
+synplace(jonsvatn,      jonsvannet).  %%
+
+synplace(joieflata,koieflata). 
+synplace(jokabsli,jakobsli). 
+
+synplace(jonnsvansveikrysset,jonsvannsveikrysset).  %% unnec
+
+synplace(jonsdalsveien,jonsvannsveien). 
+
+synplace(jonsvansveikrysset,jonsvannsveikrysset).   %% unnec
+
+synplace(jonsvatnveien,jonsvannsveien).  %% (etc)
+
+synplace(jskobli,jakobsli). 
+
+synplace(k1,kongens_gt_k1). %% RS-130812
+synplace(k2,kongens_gt_k2).
+synplace(k_johnssonsveg,karl_jonssons_veg).  %% RS-120805 Space? 
+synplace(kade,lade). 
+synplace(kadehammeren,ladehammeren).  %%?
+synplace(kaien,pirbadet).
+synplace(kakobsli,jakobsli). 
+synplace(kapell,kirke). 
+synplace(kasperlundesgate,casper_lundes_veg). 
+synplace(kasperlundesv,casper_lundes_veg). 
+synplace(kasperlundesv,casper_lundes_veg). 
+synplace(kasperlundesvei,casper_lundes_veg). 
+synplace(katemsenter,kattemsenteret). 
+synplace(katta,katedralskolen). 
+synplace(kattemsenter,kattemsenteret).  %%
+synplace(kattemsentre,kattemsenteret). 
+synplace(katten,kattem).  %% (shadowed by "cat" )
+synplace(kattæmsentret,kattemsenteret). 
+synplace(kb,kbs). %% ?
+%% synplace(kinoen,kino).  %%subtle, u n d e r specified
+%% synplace(kinoene,kino). %% cinema 
+synplace(kinos,kinosenter). 
+synplace(kjerka,kirken). 
+synplace(kjøpesenter,senter). 
+synplace(klabu,klæbu).  %%-kabul
+synplace(klaebu,klæbu). 
+synplace(klaeburuta,klæburuten). 
+synplace(klaebuveien,klæbu_street). 
+synplace(klaebuveien,klæbuveien). 
+synplace(kleet,klett). 
+synplace(klet,klett).  
+synplace(klefstadhaug,klefstadhaugen). 
+synplace(kleisgate,kleists_street). 
+synplace(klestaghaugen,klefstadhaugen). 
+synplace(klettkrysset,klett). 
+synplace(klivhaugen,kvilhaugen).  %% only neib key swap
+synplace(klokkergården,klokkerplassen). 
+synplace(klokkerpl,klokkerplassen). 
+synplace(klostergt,klostergata). 
+synplace(klæburute,klæburuten). 
+synplace(klæburuten,klæburuten). 
+synplace(klæbuveien,klæbuvveien).  %%Databaseerror
+synplace(klæfstahaugen,klefstadhaugen). 
+synplace(klæt,klett). 
+synplace(klætt,klett).
+synplace(knudzonsgt,knudssøns_street). 
+synplace(koeflat,koieflata). 
+synplace(koieflaten,koieflata). 
+synplace(kolstadtoppen,kolstadhaugen). 
+synplace(komunesenter,kommunesenter). 
+synplace(komunesenteret,kommunesenter). 
+
+synplace(knggate,kongens_gate). 
+synplace(knggt,kongens_gate). 
+synplace(kong,kongens).  %%//WYWIWYR Whatyouwriteiswhatyou(haveto)read
+synplace(kongata,kongens_gate). 
+synplace(kongen,kongens). 
+synplace(konggata,kongens_gate). 
+synplace(kongsgata,kongens_gate). 
+synplace(konn,kongens). 
+synplace(konngt,kongens_gate).  %%
+synplace(kongensgate,kongens_gate). 
+synplace(kongensgt,kongens_gate). 
+synplace(konnges,kongens). 
+synplace(kongsgate,kongens_gate). 
+synplace(konngsgate,kongens_street).  %%dronningsgate40?"
+synplace(konngsgaten,kongens_gate). 
+synplace(konngt,kongens_gate). 
+synplace(konnsgsgate,kongens_gate). 
+synplace(kångensgate,kongens_gate).  
+
+synplace(kongevegen,kongsvegen). 
+synplace(kongleien,kongleveien).  
+synplace(koppan,kroppan). 
+synplace(kopparmarka,kroppanmarka). 
+synplace(koppermarka,kroppanmarka). 
+synplace(korppamarka,kroppanmarka). 
+synplace(korppanmrka,kroppanmarka). 
+synplace(kps,kbs). 
+synplace(kretsfengsel,tunga_kretsfengsel). 
+synplace(krigshøyskolen,luftkrigsskolen). 
+synplace(krigsskolen,luftkrigsskolen). 
+synplace(kristian,christian).  %%Didithelp???
+synplace(krmarka,kroppanmarka). 
+synplace(krogruds,kroglunds). 
+synplace(krogs,kroghs).  %%//Doesn'thelp
+synplace(kroksti,krokstien). 
+synplace(kropanmarke,kroppanmarka). 
+
+synplace(kroppanm,kroppanmarka). 
+synplace(kroppama,kroppanmarka).  %%otherwise kropanm partname
+%% synplace(kroppanm,kroppanmarka_snuplass). 
+
+synplace(kroppanma,kroppanmarka). 
+synplace(kroppanmarke,kroppanmarka). 
+synplace(kroppanmarken,kroppanmarka). 
+synplace(ksb,kbs). 
+synplace(ktv,kvt). 
+synplace(kulsaas,kolsås). 
+synplace(kullsås,kolsås). 
+synplace(kundåsen,lundåsen_n). 
+synplace(kvamshaug,kvamshaugen). 
+synplace(kvannhaugen,kvamshaugen). 
+synplace(kvannshaugen,kvamshaugen). 
+synplace(kvilhagne,kvilhaugen). 
+synplace(kvilhaugengård,kvilhaugen). 
+synplace(kvilhøgden,kvilhaugen). 
+synplace(kysstasjon,skysstasjon). 
+synplace(kyststad,kystad). 
+synplace(kyvann,kyvatnet). 
+synplace(kyvannet,kyvatnet).  %% (No help really,see comment)
+synplace(kyvatn,kyvatnet). 
+synplace(kågleveien,kongleveien). 
+synplace(kålsta,kolstad). 
+synplace(kålstad,kolstad). 
+synplace(kæbu,klæbu). 
+synplace(køpmansgata,kjøpmanns_street). 
+synplace(lad,lade). 
+synplace(lada,lade). 
+synplace(ladd,lade).  
+synplace(ladealle,lade_alle_80). 
+synplace(ladecity,city_lade). 
+synplace(ladehalvøya,lade). 
+synplace(ladejarlen,ladejarlen_v_g_s).
+synplace(ladejarlenvgs,ladejarlen_v_g_s). 
+synplace(ladejarlenvideregående,ladejarlen_v_g_s). 
+synplace(ladekirka,lade_kirke). 
+synplace(ladekirke,lade_kirke). 
+synplace(lademoens,lademoen).  %%kirkealle
+synplace(laden,lade).
+synplace(ladeområdet,lade). 
+synplace(ladf,lade). 
+synplace(ladr,lade). 
+synplace(laed,lade). 
+synplace(lafe,lade). 
+synplace(ladw,lade). 
+synplace(lalentinlyst,valentinlyst).  %%Contag
+synplace(lamoen,lademoen). 
+synplace(lamon,lademoen). 
+synplace(lande,lade). %% ?
+synplace(langrennstadion,langrennsstadion). 
+synplace(lase,lade).
+synplace(lattem,kattem). %% 1. 
+synplace(lautenhavnen,leuthenhaven). 
+synplace(lde,lade). 
+synplace(lderdalen,olderdalen). 
+synplace(leangenbanen,leangen). 
+synplace(lede,lade). 
+synplace(leitagrenda,leistadgrenda). 
+synplace(leiv,leif). 
+
+synplace(lekerdal,lerkendal). 
+synplace(lekrdal,lerkendal). 
+synplace(lekredal,lerkendal). 
+synplace(lekredal,lerkendal). 
+synplace(lerchendal,lerkendal_gård).  %% NB lerch, ikke same/cmpl
+synplace(lerkdal,lerkendal). 
+synplace(lerkedalstudentby,prestegårdsjordet). 
+synplace(lerkedel,lerkendal). 
+synplace(lerkend,lerkendal). 
+synplace(lerkendalområdet,lerkendal). 
+synplace(lerkendalsområdet,lerkendal). 
+synplace(lerkendalst,lerkendal_stadion). 
+synplace(lerkendalstadium,lerkendal_stadion). 
+synplace(lerkendalstudentby,prestegårdsjordet). 
+synplace(lerkendalsveien,lerkendalsvegen). 
+synplace(lerkenstad,lerkendal). 
+
+synplace(leuthenhaven,leuthenhaven). 
+% synplace(levang,levanger). %% another place ? 
+synplace(levange,levanger).  %%not Leangen(Levangesyndrom)
+synplace(leythenhaven,leuthenhaven). 
+synplace(liam,lian). 
+synplace(lide,lade).  %%?
+synplace(lien,lian). 
+synplace(lila,ila).  %% ? til_lila
+synplace(lillebyen,lilleby). 
+synplace(lilleryrydningen,lillerydningen). 
+synplace(lla,ila). 
+synplace(loavs,olavs). %% own sp
+synplace(loltbakken,loholtbakken). 
+synplace(lovhovet,lohove).
+synplace(lroppanmarka,kroppanmarka). 
+synplace(lsdamveien,isdamveien). 
+%% synplace(lsentrum,sentrum).  %% fra moltmyra ti lsentrum? \+ Moltmyra 10 
+synplace(lufthavnværnes,værnes). 
+synplace(luftkrigenskole,luftkrigsskolen). 
+synplace(lund,lundes). 
+
+synplace(lundaasen,lundåsen_n). 
+
+synplace(lunderåsen,lundåsen_n). % NB også foreign 
+
+synplace(lundemobk,lundemobakken). 
+synplace(lundåawn,lundåsen_n).  %%dblneib
+synplace(luthenhaven,leuthenhaven). 
+synplace(lykkensportal,bybro). 
+synplace(lykkesv,ivar_lykkes_street).  %%Lastnameoption
+synplace(lysholmsv,jørgen_b_lysholms_vei). 
+synplace(lysholms_vei,jørgen_b_lysholms_vei). 
+synplace(lythenhaven,leuthenhaven). 
+synplace(lærekendal,lerkendal). 
+synplace(løvaasen,løvaasveien). 
+synplace(løvaasvegen,løvaasveien). 
+synplace(løvaasveien,løvaasveien). 
+synplace(løvåsen,løvaasveien). 
+synplace(løvåsvegen,løvaasveien). 
+synplace(løvåsveien,løvaasveien).  %% Prefer station
+synplace(løytenhaven,leuthenhaven). 
+synplace(løytnanthagen,leuthenhaven). 
+
+synplace(m0,hovedterminalen). 
+synplace(m1,munkegata_m1).  %%
+synplace(m2,munkegata_m2).  %%
+synplace(m3,munkegata_m3).  %%
+synplace(m4,munkegata_m4).  %%
+synplace(m5,munkegata_m5).  %%
+
+synplace(m0,hovedterminalen). 
+synplace(m1,munkegata_m1).  %%
+synplace(m2,munkegata_m2).  %%
+synplace(m3,munkegata_m3).  %%
+synplace(m4,munkegata_m4).  %%
+synplace(m5,munkegata_m5).  %%
+
+synplace(magnusblindes,magnusblindes). 
+synplace(malhus,melhus). 
+synplace(malkvik,malvik). 
+synplace(mardo,nardo). 
+synplace(mardo,nardo). 
+synplace(mardosenter,nardosenteret). 
+synplace(mardosenteret,nardosenteret). 
+synplace(marienberg,marienborg).  %% ? (\+marienbergveien)
+synplace(marienenborg,marienborg). %% amble# doesnt make it 
+synplace(marienlyst,marienborg).  %% ?Oslo?
+synplace(mariesørdalsv,marie_sørdals_veg). 
+synplace(mariesørdalsvei,marie_sørdals_veg). 
+synplace(maskinistborgen,maskinistboligene). 
+synplace(maskinboligene,maskinistboligene). 
+synplace(maskiniststoppet,maskinistboligene). 
+synplace(mattem,kattem).  %%  sic
+synplace(mautirz,mauritz). 
+synplace(mburan,buran). 
+synplace(mdbyen,sentrum). 
+synplace(meieri,meierier). 
+synplace(meieriene,norske_meierier). 
+synplace(meldalen,meldal). 
+synplace(melhu,melhus). 
+synplace(melhussentrum,melhus). 
+synplace(mellhus,melhus). 
+synplace(mellolima,mellomila). %% swap not neibs 
+synplace(mellomlina,mellomila). 
+
+synplace(mehus,melhus). 
+synplace(meluhs,melhus). 
+synplace(melus,melhus). 
+synplace(meraker,meråker). 
+synplace(mgata,munkegata). 
+synplace(mgt,munkegata). 
+synplace(michael,michel). 
+synplace(midarvoll,nidarvoll). %% ? 
+synplace(midtgen,midteggen). 
+synplace(midtsandan,midtsanden). 
+synplace(migo,migosenteret).   %% TA-100519
+synplace(migosenter,migosenteret). 
+synplace(migosentre,migosenteret). %% TA-101004
+synplace(mikael,michel).  %% grendahlsvei Nøddef
+synplace(minkegaten,munkegata). %% nec 
+synplace(minsås,minsaas). 
+synplace(mkgt,munkegata). 
+synplace(moeggen,hoeggen). % ?
+%% synplace(moh,moholt).   % ? 
+synplace(moho,moholt).
+synplace(mohoholt,moholt). %%  ?
+synplace(moholstudentby,moholt_studentby). 
+synplace(moholtalee,moholt). 
+synplace(moholtallee,moholt). 
+synplace(moholtstudent,moholt_studentby). 
+synplace(mohotle,moholt). 
+synplace(moirana,mo_i_rana). 
+synplace(mokegata,munkegata). 
+synplace(mokegate,munkegata). 
+synplace(molholt,moholt).  %% Actually nec
+synplace(molot,moholt). 
+synplace(molt,moholt). 
+synplace(moltmyraøst,moltmyra_øst). 
+synplace(monkgata,munkegata). 
+synplace(monkholmen,munkholmen). 
+synplace(munkeholmen,munkholmen). 
+synplace(monkvold,munkvoll). 
+synplace(motolh,moholt). 
+synplace(msolsiden,solsiden). 
+synplace(muhult,moholt).  %%eng
+synplace(mukegt,munkegata).  %% avoid munkegt + M2
+synplace(mukgata,munkegata).  
+synplace(mumlegata,munkegata).  %% doubl neib
+synplace(mumlegaten,munkegata). 
+synplace(mumlegava,munkegata).  %% ?-) 
+synplace(mumlegt,munkegata).  %% Dbl neib sms
+synplace(munchegata,munkegata). 
+synplace(mungata,munkegata).  %% ikke sigurd munns v
+synplace(mungegata,munkegata). 
+synplace(mungejata,munkegata). 
+synplace(mungekata,munkegata). 
+synplace(mungt,munkegata). 
+synplace(munk,munkegata). 
+synplace(munkata,munkegata). 
+synplace(munke,munkegata). 
+synplace(munkeg,munkegata). 
+synplace(munkega,munkegata). 
+synplace(munkegat,munkegata). 
+synplace(munkegate,munkegata). 
+synplace(munkegaten,munkegata). 
+synplace(munkege,munkegata). 
+synplace(munkegsts,munkegata). 
+synplace(munkegt,munkegata).  %% ( munkegtm1 )
+synplace(munkegtr,munkegata). 
+synplace(munkgt,munkegata). 
+synplace(munkholmgata,munkegata). 
+synplace(munkvokk,munkvoll). 
+synplace(munkvollgård,munkvoll_gård). 
+synplace(murens,ourens). 
+synplace(murevik,muruvik). 
+synplace(muruvika,muruvik). %% MW-121119
+synplace(museet,museum). 
+synplace(musikmuseum,museum). 
+synplace(myen,byen). 
+synplace(mølleballen,møllebakken). 
+synplace(møllergate,møllebakken).  %% (?)
+synplace(nado,nardo). 
+synplace(nadrocentere,nardosenteret). 
+synplace(nadrocentret,nardosenteret). 
+synplace(nard,nardo). 
+synplace(nardobrua,nardokrysset). 
+synplace(nardokr,nardokrysset). 
+synplace(nardoområdet,nardo). 
+synplace(nardos,nardosenteret). 
+synplace(nardosent,nardosenteret). 
+synplace(nardosentereret,nardosenteret). 
+synplace(nardøhallen,trondheim_spektrum). 
+synplace(naro,nardo).  %%own
+synplace(naskinagentur,maskinagentur). 
+synplace(nedrebakklandet,bakkegata). 
+synplace(nedreelvehanv,nedre_elvehavn). 
+synplace(nedreflatåsen,søndre_flatåsen). 
+%synplace(nedrehumlehaugen,nedre_humlehaugen_vest). %%RS-121024 3 nye på Ranheim fra 24.10.2012
+synplace(nedrejakobsliveg,jakobsliveien_nedre). 
+synplace(nedrejakobslivei,jakobsliveien_nedre). 
+synplace(nedreleirfoss,nedre_leirfoss).  %% (automatic*)
+synplace(nergårdsvei,nordgaardsvei). 
+synplace(ngu,n_g_u). 
+synplace(niarøhallen,trondheim_spektrum). 
+synplace(nidarhalen,trondheim_spektrum). 
+synplace(nidarhallen,trondheim_spektrum). 
+synplace(nidrehallen,trondheim_spektrum). 
+synplace(nilsens,nielsens).  %% Otto nilsens vei/Aksel nilsens vei
+synplace(nnherredsveien,innherredsveien). 
+synplace(noa,nova). 
+synplace(noholdttun,moholttun). 
+synplace(noholt,moholt). synplace(omholt,moholt). 
+synplace(noll,voll). 
+synplace(nordgårds,nordgaards). 
+synplace(nordo,nardo). 
+synplace(nordgårdsvei,nordgaardsvei). 
+synplace(nordrehallset,nordre_halset). %% migosenteret). 
+synplace(nordrehalset,nordre_halset). %% migosenteret). 
+
+
+
+synplace(noreg,norge). 
+synplace(norgårds,nordgaards). 
+synplace(novakinosenter,nova_kinosenter). 
+synplace(nove,nova_kinosenter). 
+synplace(npva,nova_kinosenter). 
+synplace(nrdo,nardo). 
+synplace(nsb,ts). %% AtB.  %%(=tog?)
+synplace(ntnt,ntnu). %%  sperr
+synplace(ntnudragvoll,ntnu_dragvoll). 
+synplace(nunkegata,munkegata). 
+synplace(nunkvoll,munkvoll).  %% <
+synplace(nuseum,museum).  %%OWNsp
+synplace(nybakkeveien,nybakkveien). 
+synplace(nybakkveien,nyveibakken). 
+synplace(nybårdsveien,nygård_street). 
+synplace(nydal,nydalen). 
+synplace(nyenget,buenget).  %%Neib?
+synplace(nygaardsvei,nygårds_vei). 
+synplace(nygaardsvei,olav_nygårds_vei). 
+synplace(nygården,nygård). 
+
+%%%%%%%%%%%%%%%%  different names in/out synplace(nygårds,nygards).  %%street/station/misspellconfusion
+%% TA-110803
+
+synplace(nygårdsvei,nygårds_vei).  %%nec,alas
+synplace(nygårdsvei,olav_nygårds_vei). 
+synplace(nygårdsvolds,nygaardsvolds). 
+synplace(nygårdsvoll,nygaardsvolds). 
+synplace(nynu,ntnu).  
+synplace(nyorg,nyborg). 
+synplace(nyveibk,nyveibakken). 
+synplace(nyåsen,byåsen). 
+synplace(nåva,nova_kinosenter). 
+synplace(oeveraas,øverås). 
+synplace(ofstisv,øfstis_vei).  %%einarofstisv. 
+synplace(okanger,orkanger). 
+synplace(oksda,okstad). 
+synplace(ola,olaf). 
+synplace(ola,olav). 
+synplace(ola,ole). 
+synplace(olaf,ola). 
+synplace(olaf,olav). 
+synplace(olaf,ole). 
+synplace(olav,ola). 
+synplace(olav,olaf). 
+synplace(olav,olavs). 
+synplace(olav,ole). 
+synplace(olavnigardsvei,olav_nygårds_vei).   
+synplace(olavnygaardsvei,olav_nygårds_vei). 
+synplace(olavnygårdsvei,olav_nygårds_vei). 
+synplace(olavnygårdsvei,olav_nygårds_vei). 
+synplace(olavnygrdsvei,olav_nygårds_vei).  
+
+synplace(olavs,olav). 
+synplace(olavtryggvasonsgt,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB
+synplace(olavtrygvasonsgate,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB
+synplace(olderdal,olderdalen). 
+synplace(oldredal,olderdalen). 
+synplace(ole,ola). 
+synplace(ole,olaf). 
+synplace(ole,olav). 
+synplace(olovhospital,st_olavs_hospital). 
+synplace(omholt,moholt). 
+synplace(omkjøringsv,omkjøringsveien). 
+synplace(omkjøringsveg,omkjøringsveien). %% generic TSX 
+synplace(omkjøringsvei,omkjøringsveien). 
+synplace(omkjaøringsvegen,omkjøringsveien). %% ø-trøbbel
+
+
+synplace(oops,city_lade). 
+synplace(opland,oppland).  %%bus 10 skistua down
+synplace(oppland,opland).  %%bus1 0 up skistua
+synplace(ops,city_lade). 
+synplace(orkander,orkanger). 
+synplace(orkangar,orkanger). 
+synplace(osb,city_lade).  %% (not spell # < 4)
+synplace(ostersund,østersund). 
+synplace(ostmarkveien,østmark_street). %% no spell 1. letter 
+synplace(ostre,østre). 
+synplace(otb,othilienborg). 
+synplace(otelieborg,othilienborg). 
+synplace(otelienborg,othilienborg). 
+synplace(othb,othilienborg). 
+synplace(othborg,othilienborg). 
+synplace(othelieborg,othilienborg). 
+synplace(othilb,othilienborg). 
+synplace(othilienlenborg,othilienborg). 
+synplace(othilielinborg,othilienborg).
+synplace(otelieborg,othilienborg). 
+synplace(othelieborg,othilienborg). 
+synplace(otilinborg,othilienborg). 
+
+synplace(othilenbor,othilienborg). 
+synplace(othilenborg,othilienborg). 
+synplace(othili,othilienborg). 
+synplace(othilie,othilienborg). 
+synplace(othilien,othilienborg). 
+synplace(othilienb,othilienborg). 
+synplace(othilienbo,othilienborg). 
+synplace(othilienborg,othilienborg).  
+synplace(othillenborg,othilienborg). 
+synplace(othillhenborg,othilienborg). 
+synplace(othillienborg,othilienborg). 
+synplace(othillingborg,othilienborg). 
+synplace(otilenburg,otilenburg). 
+synplace(otillenborgveien,othilienborg_street). 
+synplace(otillingborg,othilienborg). 
+synplace(otlienborg,othilienborg). 
+synplace(otliengborg,othilienborg). 
+synplace(otthillienborg,othilienborg). 
+synplace(ottilenburg,othilienborg). 
+synplace(ottonielsensvei,otto_nielsens_veg). 
+synplace(oya,øya). 
+synplace(owesensgate,thonning_owesens_street).  %% $Generic
+synplace(pedermorsetsv,peder_morsets_vei). 
+synplace(pedermorsetsvei,peder_morsets_vei).
+synplace(peppe,reppe). 
+synplace(peraunetveien,persaun_street).  %%aun(Help?)
+synplace(peraunetveien,persaunetveien). %% TA-110415 
+synplace(peribadet,pirbadet). 
+
+synplace(persaun,persaune). 
+synplace(persaun,persaunet). %% Persaun leir %% TA-110519
+synplace(persaunetleir,persaunet_leir). 
+synplace(persaunetlier,persaunet_leir). 
+synplace(persaunetv,persaun_street). 
+
+synplace(persaunetvegen,persaunetveien). %% TA-110415
+synplace(persaunetveien,persaunetveien). %% TA-110415
+synplace(persaunevegen,persaunetveien).  %% TA-110415  
+synplace(persauneveien,persaunetveien).  %% TA-110415
+
+synplace(persautunet,persaunet). 
+synplace(persetunet,persaunet). 
+synplace(persuanevegen,persaun_street). 
+synplace(persunet,persaunet). 
+synplace(pier,pirbadet).  
+synplace(pierbadet,pirbadet). 
+synplace(pierbadet,pirbadet). 
+synplace(pinsen,prinsen).  %%confusewhitsun
+synplace(pir1,pirbadet).  
+synplace(pir2,pirbadet).  
+synplace(pirbad,pirbadet). 
+synplace(pirbade,pirbadet). 
+synplace(pirbated,pirbadet). 
+synplace(pirbsdet,pirbadet). 
+synplace(pirebadet,pirbadet). 
+synplace(pirenbadet,pirbadet). 
+synplace(piretbadet,pirbadet). 
+synplace(pirhuset,pirbadet).  
+synplace(pirii,pir_ii).  %%
+synplace(pirkaia,pirbadet). 
+synplace(pirn,pirsenteret). 
+synplace(pirsent,pirsenteret). 
+synplace(pirsenteteret,pirsenteret).
+synplace(pirteminal,pirbadet). 
+synplace(pirterimanlen,pirbadet).  
+synplace(pirterm,pirbadet).  
+synplace(pirtermenaln,pirbadet).  
+synplace(pirtermianelen,pirbadet).  
+synplace(pirtermianeltn,pirbadet).  
+synplace(pirtermilane,pirbadet).  
+synplace(pirtermin,pirbadet).  
+synplace(pirterminal,pirbadet).  
+synplace(piteminalen,pirbadet).   %%2spc
+synplace(plantagen,plantasjen). 
+synplace(plderdalen,olderdalen).  %% ?
+synplace(pnsen,prinsen). 
+synplace(politidistrikt,politihuset). 
+synplace(politihus,politihuset).  
+synplace(posten,postterminalen). 
+synplace(postenterminalen,postterminalen). 
+synplace(postterimalen,postterminalen). 
+synplace(postterm,postterminalen). 
+
+synplace(prbade,pirbadet). 
+synplace(prbadet,pirbadet). 
+synplace(prestegårdsbakken,prestegårdsjordet).  %%  ?
+synplace(prestegårdsgjerdet,prestegårdsjordet). %%  ?
+synplace(prestegårdsj,prestegårdsjordet). 
+synplace(prestejordjordet,prestegårdsjordet). %% \+ dsj
+synplace(presthuset,presthus_street). 
+synplace(presthushagen,presthus_street).  
+synplace(pribadet,pirbadet). 
+synplace(prinsegate,prinsens_gate). 
+synplace(prinsengata,prinsens_gate).  %% (actual)
+synplace(prinsengate,prinsens_gate). 
+synplace(prinsenkryss,prinsenkrysset). 
+synplace(prinsgade,prinsens_gate).  %% (actual)
+synplace(prisentret,pirsenteret).  
+%% synplace(prisenteret,pirsenteret).  %% unnec
+synplace(prochs,brochs). 
+synplace(profbroch,prof_brochs_gate). 
+
+synplace(profbrochsgt,prof_brochs_gate). 
+synplace(prov,prof).
+synplace(psentrum,sentrum). 
+synplace(qurens,ourens). %% ? 
+synplace(rabheim,ranheim). 
+synplace(ragvold,dragvoll). 
+synplace(ragvoll,dragvoll). 
+synplace(railway,ts). %% AtB. 
+synplace(ranheimidrettsplass,ranheim_idrettsplass). 
+synplace(ranheimidrettsplassen,ranheim_idrettsplass). 
+synplace(ranheimkirka,ranheim_kirke). 
+synplace(ranheimkirke,ranheim_kirke). 
+synplace(ranheimsidrettsplass,ranheim_idrettsplass). 
+synplace(ranheimsidrettsplassen,ranheim_idrettsplass). 
+synplace(ranheimskole,ranheim_skole). %% Hastus
+synplace(ranheom,ranheim). 
+synplace(rare,rate).     %% ?
+synplace(rat,rate). %% ?
+synplace(ratefeltet,rate).  
+synplace(ratet,rate). 
+synplace(ravbaneveien,travbaneveien). 
+synplace(realfagbygg,realfagbygget). 
+synplace(realfagsbygget,realfagbygget). 
+synplace(regionalsykehuset,st_olavs_hospital). 
+synplace(repe,reppe).  
+synplace(repp,reppe). 
+synplace(reppr,reppe). 
+synplace(reppeendeholdeplass,reppe).  
+synplace(reppekrysset,reppevegen). 
+synplace(reppevegkryss,reppevegen). 
+synplace(reppeveikryss,reppevegen). 
+synplace(reppeveikrysset,reppevegen). 
+synplace(reppevikåsen,reppevegen). 
+synplace(ridevoldsgate,riddervolds_street). 
+synplace(ringe,ringve). 
+synplace(ringsaker,singsaker). 
+synplace(ringv,ringve).  %%?
+synplace(ringvaal,ringvål). 
+synplace(ringvedskole,ringved_skole). 
+synplace(ringvemuseet,ringve_museum). 
+
+synplace(ringveskole,ringve_skole). 
+synplace(ringveskolen,ringve_skole). 
+synplace(ringvevidregåendeskole,ringve_skole). 
+synplace(ringvold,ringvål). 
+synplace(ringvoll,ringvål). 
+synplace(ringvollgrind,ringvål_grind). 
+synplace(ringvålgrind,ringvål_grind). 
+synplace(rinveskole,ringve_skole). 
+synplace(rinvoll,ringvål). 
+synplace(rirterminalen,pirterminalem). 
+synplace(rissvoll,risvollan). 
+synplace(rissvollen,risvollan). 
+synplace(risv,risvollan). 
+
+synplace(ristunet,risvolltun). %% ? 
+synplace(risvol,risvollan).
+synplace(risvoll,risvollan). 
+synplace(risvolltunet,risvolltun). %% 
+
+synplace(risvollansentret,risvollan_senter). 
+synplace(risvollanv,risvollveien). 
+synplace(risvollanveien,risvollveien).  
+synplace(risvollene,risvollan). 
+synplace(risvollsenter,risvollan_senter). 
+synplace(risvollsenteret,risvollan_senter). 
+synplace(risvålan,risvollan). 
+synplace(risvållan,risvollan). 
+synplace(rlgeseter,elgeseter). 
+synplace(robuslia,romolslia). 
+synplace(roenningsbakken,rønningsbakken). 
+synplace(roeros,røros). 
+synplace(rogbudal,rogbudalen). 
+synplace(rognbudal,rognbudalen). 
+synplace(rognbuedalen,rognbudalen). 
+synplace(rognbuendalen,rognbudalen). 
+synplace(rogneim,rognheim). 
+synplace(romaslia,romolslia). 
+synplace(romerslia,romolslia). 
+synplace(romeslia,romolslia). 
+synplace(romislia,romolslia). 
+synplace(rommeslia,romolslia). 
+synplace(romondslia,romolslia). 
+synplace(romosli,romolslia). 
+synplace(romoslia,romolslia). 
+synplace(romoslien,romolslia). 
+synplace(romouslia,romolslia). 
+synplace(romslia,romolslia). 
+synplace(romsolia,romolslia). 
+synplace(romulslia,romolslia). 
+synplace(romulslien,romolslia). 
+synplace(romundslia,romolslia). 
+synplace(romurslia,romolslia). 
+synplace(romusli,romolslia). 
+synplace(romuslia,romolslia). 
+synplace(romuslis,romolslia). 
+synplace(romuslisa,romolslia). 
+synplace(romåslia,romolslia). 
+synplace(roros,røros). 
+synplace(rosedal,rosendal).  %%IKKE Romsdal (wrong preference)
+synplace(rosenborgpark,gyldenløves_gate).  
+synplace(rosenborgparken,gyldenløves_gate).   
+synplace(rosenborgs,rosenborg). 
+synplace(rosenborgskolen,gyldenløves_gate).   
+synplace(rosenbårr,rosenborg). 
+synplace(rosendela,rosendal). 
+synplace(rostagrenda,rostengrenda).  %%
+synplace(rostgrenda,rostengrenda). 
+synplace(rosvolan,risvollan). 
+synplace(rotvollen,rotvoll). 
+synplace(rravbaneveien,travbaneveien). 
+synplace(rutebilselskap,trafikkselskap). 
+
+%% synplace(ruteinformasjonen,tmn). %% TA-110202
+%% synplace(ruteopplysningen,tmn).  %%
+%% synplace(rutetelefonen,tmn).     %%
+
+synplace(ruttebilstasjonen,rutebilstasjonen). 
+synplace(rya,rye). 
+synplace(råmølla,graaemølna). 
+
+synplace(rønnebakken,rønningsbakken).
+
+%% synplace(rønningensbakke,rønningsbakken). %% sameplace 
+%% synplace(rønningensbakken,rønningsbakken).%% 
+
+synplace(rønningsbakk,rønningsbakken). 
+synplace(rønningsbakkenst,rønningsbakken). 
+synplace(rønningsgabkken,rønningsbakken). 
+
+synplace(rørås,røros). 
+synplace(røvik,rørvik). 
+synplace(sakseborgveien,saxenborg_alle). 
+synplace(sakseborgvn,saxenborg_alle). 
+synplace(saksenborg,saxenborg). 
+synplace(saksevigs,saksviks). 
+synplace(saksvig,saksviks). 
+synplace(saksvigs,saksviks). 
+
+synplace(saksevik,saksvik). %% foreign
+
+synplace(saland,sælands). 
+synplace(salgskontore,servicekontoret). 
+synplace(salgskontorene,servicekontoret). 
+synplace(salgskontoret,servicekontoret). 
+synplace(samf1,studentersamfundet_1). 
+synplace(samf2,studentersamfundet_2). 
+synplace(samfun,samfund). %% studne samfun 
+synplace(samfun,studentersamfundet). 
+synplace(samfunft,samfundet). 
+synplace(samfunn,samfundet). 
+synplace(samholdet,samfundet). %% TA-110118
+synplace(samoen,sandmoen). 
+synplace(sandermoen,sandmoen). 
+synplace(sandmo,sandmoen).  %% sandmom -> sandmoveien -> sandmoen
+%% synplace(sand,sands). %% Dr Sands veg %% <-> sandveien
+synplace(sanktolavssykehus,st_olavs_hospital). 
+synplace(saubsta,saupstad). 
+synplace(saubstasentre,saupstadsenteret). 
+synplace(saupsdaringen,saupstadringen_109).  
+synplace(saupstadringen,saupstadringen_109). 
+synplace(saupstadringen,saupstadringen_109). 
+synplace(saupstads,saupstadsenteret). 
+synplace(saupstadsentrum,saupstadsenteret).  
+synplace(saupstakrysset,saupstadsenteret). 
+synplace(saupstasenteret,saupstadsentret). 
+synplace(saupstasentre,saupstadsenteret). 
+synplace(saupstasentret,saupstadsenteret). 
+synplace(saupstseneret,saupstadsenteret). 
+synplace(saustadsentret,saupstadsentret). 
+synplace(saustaringen,saupstadringen_109). 
+synplace(saxeborgveien,saxenborg_alle). 
+synplace(saxeborgvn,saxenborg_alle). 
+synplace(saxenborgale,saxenborg_alle). 
+synplace(saxenborgen,saxenborg). 
+synplace(saøndre,søndre). %% sÃ¸ndre halset? %% //u n d e r s p_place
+synplace(saørborgen,sørborgen). %% NB \+ sørberg %% TA-101108
+synplace(scharlottenlund,charlottenlund). 
+
+synplace(scheldups,schieldrops). 
+synplace(sceldrup,schieldrop). 
+synplace(schjeldrup,schieldrop). 
+synplace(schedropsvei,schedropsvei). 
+synplace(scheldrupsvei,e_b_schieldrops_vei). 
+synplace(schentnas,schjetnans). 
+synplace(schieldropsv,e_b_schieldrops_vei). 
+synplace(schieldropsveg,e_b_schieldrops_vei). 
+synplace(schieldropsvegen,e_b_schieldrops_vei). 
+synplace(schieldropsvei,e_b_schieldrops_vei). 
+synplace(schieldrupsvegen,e_b_schieldrops_vei). 
+synplace(schieldrupsvei,e_b_schieldrops_vei). 
+
+synplace(sciotz,schiøtz).  %% TA-101214
+synplace(schiots,schiøtz). 
+synplace(scøyts,schiøtz).  
+synplace(shøts,schiøtz). 
+synplace(schiøtsvwj,schiøtz_vei). 
+
+synplace(schjethmans,schjetnans).  
+synplace(schjetnemarka,sjetnmarka). 
+synplace(schjetnes,schjetnans). 
+synplace(schøtsvei,schiøtz_vei). 
+synplace(sdressavisa,adresseavisa). 
+synplace(sdresseavisa,adresseavisa). 
+synplace(seland,sælands).  
+synplace(selands,sælands). 
+synplace(selsbakflaten,selsbakkflata). 
+synplace(selsbakkflaten,selsbakkflata). 
+synplace(selsbakklia,selsbakkflata). 
+synplace(selsbaksflaten,selsbakkflata). 
+synplace(senralstasonen,ts). %% AtB. 
+synplace(senter,hovedterminalen). %% TA-101228 ?
+synplace(senteret,hovedterminalen). 
+synplace(sentralbane,sentralstasjon).  %%Ths. . 
+synplace(sentralbanest,ts). %% AtB. 
+synplace(sentralbansesatsjon,sentralbaneestasjon). 
+synplace(sentralbusstasjonen,ts). %% AtB. 
+synplace(sentrals,ts). %% AtB. 
+synplace(sentralsjatsjon,ts). %% AtB.  %%?
+synplace(sentralst,ts). %% AtB. 
+synplace(sentralstasj,ts). %% AtB. 
+synplace(sentralstj,ts). %% AtB. 
+synplace(sentralstojsonen,ts). %% AtB. 
+synplace(sentralststasjon,ts). %% AtB. 
+synplace(sentrasjonen,sentralstasjonen). 
+synplace(sentreun,sentrum). 
+synplace(sentrumcity,sentrum). 
+synplace(sentrumen,sentrum). 
+synplace(sentrumet,sentrum). 
+synplace(sentrumsentralen,hovedterminalen). 
+synplace(sentrumsområdet,sentrum). 
+synplace(sentrumstasj,hovedterminalen).  %%NB
+synplace(sentrumsterm,sentrum).  
+synplace(sentrumstermianel,hovedterminalen). 
+synplace(sentrumstreminalen,sentrum). 
+synplace(sentsj,ts). %% AtB.   
+synplace(serum,sentrum). 
+synplace(setrun,sentrum). 
+synplace(setun,sentrum). 
+synplace(sharlottenlund,charlottenlund). 
+synplace(shettlein,sjetlein). 
+synplace(shieldrops,schieldrops). 
+synplace(shieldrups,schieldrops). 
+synplace(shiledrops,schieldrops). 
+synplace(shoppingcenter,senter). 
+synplace(shøitzsvei,schiøtz_vei). 
+synplace(sigurdbergsalle,gyldenløves_gate). 
+synplace(silddråvegen,silddråvegen). 
+%% synplace(simen,siemens).  
+synplace(singsakerkrysset,jonsvannsveien). 
+synplace(singsakerstudentby,singsaker_studenthjem). 
+synplace(sitti,city). 
+synplace(sittisyd,city_syd). 
+synplace(sitty,city). 
+synplace(sittysyd,city_syd). 
+synplace(sity,city). 
+synplace(sitycid,city_syd). 
+synplace(sitycyd,city_syd). 
+synplace(sitysyd,city_syd). 
+synplace(sivertthonstadsv,sivert_thonstads_street). 
+synplace(sjalottenlund,charlottenlund). 
+%% synplace(sjansen,skansen). %% for at ...
+synplace(sjarlottenlund,charlottenlund). 
+synplace(sjarlottenlund,charlottenlund). 
+synplace(sjetlandsvei,carl_schjetnans_vei). 
+synplace(sjetnanhaugan,sjetnhaugan). 
+synplace(sjetmarka,sjetnmarka). 
+synplace(sjetnan,schjetnans). 
+synplace(sjetnans,schjetnans). 
+synplace(sjetnansveg,carl_schjetnans_vei). 
+synplace(sjetnansvei,carl_schjetnans_vei). 
+synplace(sjetnegrenda,sjetnmarka). 
+synplace(sjetnemarka,sjetnmarka). 
+synplace(sjødalen,stjørdal). 
+synplace(skandik,scandic). 
+synplace(skippersenteret,fossegrenda). 
+synplace(skiskistua,skistua). 
+synplace(skistadion,granåsen_vm_anlegget).  
+synplace(skistova,skistua). 
+synplace(skiststua,skistua). 
+synplace(skistuen,skistua). 
+synplace(skjetemarka,sjetnmarka). 
+synplace(skjetlien,sjetlein). 
+synplace(skjetnan,schjetnans). 
+synplace(skjetne,sjetnmarka). 
+synplace(skjetnemarka,sjetnmarka). 
+synplace(skjettnemarka,sjetnmarka). 
+synplace(skoleringen,høyskoleringen).  %% ?
+synplace(skovgaard,skovgård). 
+synplace(skovgors,skovgård). 
+synplace(skovgårde,skovgård). 
+synplace(skule,skole). 
+
+synplace(skyssstasjon,klæbu_skysstasjon).  
+synplace(skysstasjonen,klæbu_skysstasjon). 
+
+synplace(skysta,kystad). 
+synplace(skystad,kystad). 
+synplace(skyttrerveien,skytterveien). 
+synplace(skågård,skovgård). 
+synplace(skårvolds,skaarvolds). 
+synplace(skårvoldsvei,skaarvolds_street). 
+synplace(skåvgår,skovgård). 
+synplace(slubben,sluppen). 
+synplace(sluppenbrt,sluppen_bru). 
+synplace(smestadsvei,arnt_smistads_vei). 
+synplace(smfndet,studentersamfundet). 
+synplace(smfnt,samfundet).  %% ?
+synplace(smistadsvei,arnt_smistads_vei). 
+synplace(smith,e_a_smith). 
+synplace(sniplas,snuplass).
+synplace(sntrm,sentrum).  %% ?
+synplace(soh,st_olavs_hospital).  %% ?
+synplace(sokkparken,solsiden). 
+synplace(solbakkenskole,solbakken_skole). 
+synplace(solien,sollia). 
+synplace(sollien,sollia).
+synplace(solsida,solsiden). 
+synplace(solsidensenteret,solsiden).  %%
+synplace(solsidesenteret,solsiden).  %%
+synplace(solvollveien,solvolvegen).  %%discrepancy>1
+synplace(sondemoen,sandmoen).  %%contag
+synplace(songdal,sogndal). 
+synplace(sorgen,sorgenfri).  %% TA-101102 \+ skogen
+synplace(sorgfri,sorgenfri). %% TA-110704
+synplace(spektrum,trondheim_spektrum).  %% to get message no.
+
+synplace(spogndalen,spongdal). 
+synplace(spongdalen,spongdal). 
+synplace(sragvoll,dragvoll). 
+synplace(stadingeniør,stadsing).  %%(forstreet)
+synplace(stadingeniør,stadsingeniør).  %%(forstreet)
+synplace(stadionen,stadion). 
+synplace(stadsing,stadsingeniør). 
+synplace(stadsingeniør,stadsing). 
+synplace(stasion,stasjon). 
+synplace(stasion,station). 
+synplace(stasjon,ts). %% AtB. 
+ 
+synplace(staten,stadsing_dahls_street). %% AH-080401
+
+synplace(station,stasjon). %% ang sel ?
+
+synplace(statoilhydro,statoil_rotvoll). %% Obs. %% TA-110624
+
+synplace(stationen,ts). %% AtB. 
+synplace(statsing,stadsing). 
+synplace(statsingeniør,stadsingeniør). 
+synplace(statsingeniørs,stadsingeniør). 
+synplace(stavet,stavset).  %%-stavne
+synplace(stavnegård,stavnebrua). 
+synplace(stavnrbroa,stavnebrua). 
+synplace(std,student). 
+synplace(steinen,steinan).  
+synplace(steinaasen,steinåsen). 
+synplace(steinanhaugen,steinhaugen). 
+synplace(steinanåsen,steinåsen). 
+synplace(steinberg,steinberget). 
+synplace(steinsbakken,ny_steinsbakken). 
+synplace(steintrøa,steintrøveien). 
+synplace(stensbakken,ny_steinsbakken). 
+synplace(stiftsgårn,stiftsgården). 
+synplace(stikkelstad,stiklestad).  %%
+synplace(stikkelstadveien,stiklestadveien). 
+synplace(stikklestadvegen,stiklestadveien). 
+synplace(stjørdaln,stjørdalen). 
+synplace(stjørdarn,stjørdalen). 
+synplace(stmarka,østmarka). %% ø trøbbel 
+synplace(stokkes,stokkens).  %% Martin
+synplace(stolav,st_olavs_hospital). 
+synplace(stolavs,st_olavs_hospital). 
+synplace(stolavsgata,st_olavs_gate). 
+synplace(stolavsgate,st_olavs_gate). 
+synplace(stolavsgaten,st_olavs_gate). 
+synplace(stolavsgt,st_olavs_gate). 
+synplace(stolavssykehus,st_olavs_hospital). 
+synplace(storlin,storlien). 
+synplace(storen,støren). 
+synplace(storsenter,senter). 
+synplace(stortorget,torget). 
+synplace(strandkaia,strandveikaia). %
+synplace(strandkaien,strandveikaia). 
+synplace(strandkaivegen,strandveikaia). 
+synplace(strandkaiveien,strandveikaia). 
+synplace(strandveik,strandveikaia). 
+synplace(strandveikaien,strandveikaia). 
+synplace(strind,strinda). 
+synplace(strinden,strinda). 
+synplace(strindh,strindheim). 
+synplace(strindheimhageby,strindheim_hageby). 
+synplace(strindheimhageby,strindheim_hageby). 
+synplace(strindheimskole,strindheim_skole). 
+synplace(strindheimskolen,strindheim_skole). 
+synplace(strjoerdal,stjørdalen). 
+synplace(stud,studentby). 
+synplace(studendentersamfundet,studentersamfundet).  %%
+synplace(studentboligene,studentbyen). 
+synplace(studentby,studenthjem). 
+synplace(studenteerby,studentby). 
+synplace(studenterby,studentby). 
+synplace(studenterby,studentby). 
+synplace(studenterhytten,studenterhytta). 
+synplace(studentersam,studentersamfundet). 
+synplace(studentersambunnet,studentersamfundet). 
+synplace(studentersamf,studentersamfundet).  %% (komb. 1/2)
+synplace(studentersamfun,studentersamfundet). 
+synplace(studentersamfund,studentersamfundet).  
+synplace(studentersamfunn,studentersamfundet).  
+synplace(studentersamrundet,studentersamfundet).  
+synplace(studentersamrunet,studentersamfundet).  %% ?
+synplace(studentesamfund,studentersamfundet). 
+synplace(studentesamfunnet,studentersamfundet).  %% (komb. 1/2)
+synplace(studentheim,studentby).  
+synplace(studenthjem,studentby). 
+synplace(studentsamf,studentersamfundet). 
+synplace(studentsamfun,studentersamfundet). 
+synplace(studentsamfunn,studentersamfundet). 
+synplace(studentsammfun,studentersamfundet). 
+synplace(studentsammfunn,studentersamfundet). 
+synplace(studerntersmafundet,studentersamfundet). 
+synplace(studesamf,studentersamfundet).            %%  own
+synplace(studneby,studentby). 
+synplace(studsamf,studentersamfundet). 
+synplace(studsamfund,studentersamfundet). 
+synplace(stundertersamfunnet,studentersamfundet). 
+synplace(supsta,saupstad). 
+synplace(svaresborg,sverresborg). 
+synplace(svartlademoen,svartlamon). 
+synplace(svartlamoen,svartlamon). 
+synplace(sverige,sweden). %nec?
+synplace(sverresgård,sverresborg). 
+synplace(sykeheim,sykehjem). 
+synplace(sykehj,sykehjem). 
+synplace(sykehjem,sykeheim). 
+%% synplace(sykehuset,st_olavs_hospital).  %% sykehuset Brøset
+synplace(søbeg,søberg). 
+synplace(søbstadringen,saupstadringen_109). 
+synplace(søbstadsenteret,saupstadsenteret). 
+synplace(søndemoen,sandmoen).  %%contag
+
+
+synplace(søndregate,søndre_street). %% Nec %% TA-110526
+synplace(søndregate_22,søndre_gate_22). 
+synplace(søndregate_23,søndre_gate_23). 
+synplace(søndregt,søndregate).  %%NBsynSyndrome
+
+
+
+synplace(søndrehoem,søndre_hoem). %% ? Tram st
+synplace(sønningsbakken,rønningsbakken).  %% ? sms
+synplace(søpstadsenteret,saupstadsenteret). 
+synplace(søtmarka,østmarka). 
+synplace(søupstamyra,saupstadmyra). 
+synplace(tabarsjelve,tambarskjelve). 
+synplace(talentinlyst,valentinlyst).  %%sms
+
+synplace(tamb,tambarskjelves). 
+synplace(tambardskjelves,tambarskjelves). 
+synplace(tambarselve,tambarskjelve). 
+synplace(tambarsjelvarsgt,tambarskjelvesgate). 
+synplace(tambarsjelve,tambarskjelve). 
+synplace(tambarsjelves,tambarskjelves).  %%Repair,ERRORinregcomsptr
+synplace(tambarskjellgt,tambarskjelvesgate). 
+synplace(tambarskjelv,tambarskjelves). 
+synplace(tambarskjelvars,tamberskjelves). 
+synplace(tambarskjelvarsgate,tambarskjelvesgate). 
+synplace(tambarskjelvarsgt,tambarskjelvesgate). 
+synplace(tambarskjelvgt,einar_tambarskjelves_gate). 
+synplace(tambarskjelvsgate,einar_tambarskjelves_gate).  %%
+synplace(tambarskjgt,einar_tambarskjelves_gate). 
+synplace(tambarskjoldsgate,tambarskjelvesgate). 
+synplace(tambartjelvesgate,einar_tambarskjelves_gate). 
+synplace(tambasjelvsgate,einar_tambarskjelves_gate).  %%
+synplace(tambergsjelvsgt,einar_tambarskjelves_gate). 
+synplace(tambergskjeldsgate,einar_tambarskjelves_gate). 
+synplace(tambergskjellsgate,tambarskjelvesgate). 
+synplace(tambersk,einar_tambarskjelves_gate).  %%
+synplace(tamberskjeldsgt,einar_tambarskjelves_gate). 
+synplace(tamberskjelds,tambarskjelves).   
+synplace(tamberskjellsgt,einar_tambarskjelves_gate). 
+synplace(tamberskjelves,tambarskjelves). 
+synplace(tamberskjevs,tambarskjelves). 
+synplace(tamberskjolds,tambarskjelves). 
+synplace(tambesjelvesgate,einar_tambarskjelves_gate). 
+
+
+
+synplace(tanbergsjedesgate,einar_tambarskjelves_gate). 
+
+synplace(taøh,tøh). %% TA-110411   %% tÃ¸h 
+
+synplace(tanemskrysset,tanemskrysset_1). 
+synplace(teamkontoret,servicekontoret). 
+synplace(technoport,trondheim_spektrum). 
+
+synplace(tegelsteinsveien,teglverkskrysset). 
+synplace(tegelvegstunet,teglverkstunet). 
+synplace(tegelverk,teglverk). 
+synplace(tegelverketskrysset,teglverkskrysset). 
+synplace(tegelverketstunet,teglverkstunet). 
+synplace(tegelverkstunet,teglverkstunet).  %% street
+synplace(teggelsverkskrysset,teglverkskrysset). 
+synplace(teggelverkskrysset,teglverkskrysset). 
+synplace(teglegården,teglgården). 
+synplace(teglekrysset,teglverkskrysset). 
+synplace(tegleverkkrysset,teglverkskrysset). 
+synplace(tegleverkrysset,teglverkskrysset). 
+synplace(teglkrysset,teglverkskrysset). 
+synplace(teglsteinskrysset,teglverkskrysset). 
+synplace(teglsteinsveien,teglverkskrysset). 
+synplace(teglsteinverket,teglverket). 
+synplace(teglstenskrysset,teglverkskrysset).  %%
+synplace(teglstensvegen,teglverkskrysset).    %%
+synplace(teglstensveien,teglverkskrysset). 
+synplace(teglvegstunet,teglverkstunet). 
+synplace(teglveiskrysset,teglverkskrysset). 
+synplace(teglveiskrysset,teglveiskrysset). 
+synplace(teglveistunet,teglverkstunet). 
+synplace(teglverkkysset,teglverkskrysset). 
+synplace(teglverksbakken,teglverkskrysset).  %%
+synplace(teglverkskr,teglverkskrysset). 
+synplace(teglverksveien,teglverkskrysset).   %% ?
+synplace(tegleverksveien,teglverkskrysset).  %% ? 
+synplace(tegverkkysset,teglverkskrysset). 
+synplace(teilverksbakken,teglverkskrysset).  %%
+synplace(teisendamen,theisendammen). 
+synplace(televerkskrysset,teglverkskrysset). 
+synplace(telverkskrysset,teglverkskrysset).  %%
+
+synplace(temp,tempe). 
+
+synplace(tempeveien,tempevegen). %% nofunk tempeveien 11
+        % street    station
+
+%%  Tempevegen 11 // station
+%%  Tempeveien 11 street -> valøyvegen
+
+% synplace(terase,terrasse). 
+% synplace(terasse,terrasse). 
+synplace(thamberskj,tambarskjelves). 
+
+synplace(thalouwveien,thaulowbakken). 
+synplace(thaulaubakken,thaulowbakken).
+synplace(thaulauwbakken,thaulowbakken). 
+synplace(thaulauwbakken,thaulowbakken). 
+synplace(thaulowsgate,thaulowbakken). 
+synplace(thaulwlobakken,thaulowbakken). 
+
+synplace(theisendamen,theisendammen). 
+synplace(thoming,thonning). %% Owesen
+synplace(thonstad,tonstad). 
+synplace(thorsplassen,torplassen).  %%
+synplace(thouwlowbakken,thauwlowbakken). 
+synplace(thrheim,trondheim). 
+synplace(thonheim,trondheim). 
+synplace(tikker,tiller). 
+synplace(tillerbruen,tiller_bru). 
+synplace(tilleringen,tiller_ringen). 
+synplace(tillerkirka,'Tiller kirke'). 
+synplace(tillerkirke,'Tiller kirke').
+synplace(tillerområdet,tiller). 
+synplace(tillerringen,tiller_ringen).  %% street
+synplace(tisvollan,risvollan). 
+synplace(tjyvatnet,kyvatnet). 
+synplace(tlh,lærerhøgskolen). 
+synplace(tnga,tunga). 
+synplace(togbanestasjon,ts). %% AtB.
+% synplace(toget,ts). %% AtB // no torget ? %% 
+synplace(togsentral,ts). %% AtB. 
+synplace(togsentralen,ts). %% AtB. 
+synplace(toholdttårnet,tyholttårnet). 
+synplace(tonstad,thonstad). 
+synplace(tonstad,thonstad).  %%Nec???
+synplace(tonstadbrinken,tonstad). 
+
+synplace(tonstads,thonstads). 
+synplace(tonstadsvei,thonstadsvei). 
+synplace(tonstagrena,tonstadgrenda). 
+synplace(tonstagrenna,tonstadgrenda). 
+synplace(toorvplassen,torget). 
+synplace(tordenskjol,tordenskiolds). 
+synplace(tordenskjoldsgate,tordenskiolds_gate).  %%Problems
+synplace(tordenskjoldsgt,tordenskiolds_gate). %inregtrikketc. 
+synplace(tordenskjols,tordenskiolds).  %%NBio
+synplace(torg,torget). 
+synplace(torge,torget).  %%nospellbecausetorg|torget
+synplace(torndheimtorg,torget). 
+synplace(torne,thornæs). 
+synplace(tornesvei,k_o_thornæs_vei). 
+synplace(torsplass,torplassen).  %%
+synplace(torsvei,tors_veg). 
+synplace(torsvn,tors_veg). 
+synplace(torv,torg). 
+synplace(torvet,torget). 
+synplace(torvet,torget). 
+synplace(torvoll,rotvoll). 
+synplace(torvtakeket,torvtaket). 
+synplace(tovet,torget). 
+synplace(tprvet,torget). 
+synplace(trafikksentralen,ts). %% AtB. 
+synplace(trafikkterminalen,hovedterminalen). 
+synplace(trafikkterminal,hovedterminalen). %% ? Moa traf.
+synplace(trafikkterminialen,sentrumsterminalen). 
+synplace(trafikselskap,trafikkselskap). 
+synplace(tragvoll,dragvoll).
+synplace(trainstation,ts). %% AtB. 
+synplace(transportselskap,trafikkselskap). 
+synplace(travbane,travbanen).  %% Not spellcheck on part names if they are fullnames
+synplace(travbanebeien,travbaneveien). 
+synplace(travpark,travbane). 
+synplace(travpark,travbanen). 
+synplace(trdhiem,trondheim). 
+synplace(trheim,trondheim). 
+%% synplace(trikk1,1).  %%? 
+synplace(troendelag,trøndelag). 
+synplace(trola,trolla). 
+synplace(trollahaugen46,trollahaugen_46). 
+synplace(trollahaugen64,trollahaugen_64). 
+synplace(trollhugen,trollahaugen). 
+synplace(trond,thrond).  %% thronneergaardsvei? %%
+%% synplace(trond,trondheim). %% silly answers %% TA-100829 
+synplace(trondein,trondeinm). 
+synplace(trondh,trondheim). 
+synplace(trondhe,trondheim). 
+synplace(trondheimheim,trondheim).  %% ?
+synplace(trondheimsdistriktet,trondheim). 
+synplace(trondheimsentralbanestasjon,ts). %% AtB. 
+synplace(trondheimsentrum,sentrum). 
+synplace(trondheimsentrumsstasjon,hovedterminalen). 
+synplace(trondheimspektrum,trondheim_spektrum). 
+synplace(trondheimst,ts). %% AtB. 
+%% synplace(trondheimstasjon,ts). %% AtB.  %% sameplace 
+synplace(trondheimsterminal,ts). %% AtB. 
+synplace(trondheimsterminalen,ts). %% AtB. 
+synplace(trondheimterminalen,ts). %% AtB.  %% ?
+synplace(trondheimterminalstasjon,ts). %% AtB.  %% used that way
+synplace(trondheimtrafikkstasjon,ts). %% AtB. 
+synplace(trondheitorg,torget). 
+synplace(trondhjemsdistriktet,trondheim). 
+synplace(trondsentrum,hovedterminalen). 
+synplace(tronheim,trondheim). 
+synplace(tronhem,trondheim). 
+synplace(tronheom,trondheim). 
+synplace(tronjæm,trondheim). 
+synplace(trovet,torget).  %% trofet-vegen ?
+synplace(trtorg,torget). 
+synplace(trudvengveien,trudevang_street).  %% dev. . 
+synplace(tryggvassons,trygvassons).  %% local misspell
+synplace(trygvason,tryggvason). 
+synplace(trygvason,tryggvasons). 
+synplace(trygvasonsgt,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB
+synplace(tråjæm,trondheim). 
+synplace(trødheim,trondheim). 
+synplace(tsrindheim,strindheim). 
+synplace(tuga,tunga).  
+synplace(tungafengsel,tunga_kretsfengsel). 
+synplace(tungafengslet,tunga_kretsfengsel). 
+synplace(tungafengselet,tunga_kretsfengsel). 
+synplace(tungakretsfengsel,tunga_kretsfengsel). 
+synplace(tungakrysset,iskremfabrikken).  %% (?)
+synplace(tunge,tunga). 
+synplace(turge,torget). 
+synplace(tvestien,tvetestien). %% TA100107
+synplace(tvedesiten,tvetestien). 
+synplace(tveitanstien,tvetestien). 
+synplace(tydalen,tydal).  %% (ikke Nydalen)
+synplace(tyhikt,tyholt).  %% dbl neib
+synplace(tyholttaarnet,tyholttårnet). 
+synplace(tyholttårn,tyholttårnet). 
+synplace(tyholtårndt,tyholttårnet). 
+synplace(tårnet,tyholttårnet). %% <- 
+synplace(tæglegården,teglgården). 
+synplace(tæretrøa,værestrøa). %% off name  %% ?
+synplace(uantinlyst,valentinlyst).  %% ?
+synplace(udbergs,udbyes). %% gt
+synplace(uglaholdplass,ugla).  %% ?
+synplace(uglastasjon,ugla). 
+synplace(uglastien,uglahaugstien). 
+synplace(ugle,ugla).  %%nospellif=<4ch
+synplace(ugls,ugla). 
+synplace(uikåsen,vikåsen). 
+synplace(uka,studentersamfundet). 
+synplace(ulga,ugla).
+synplace(ullstadløkka,ulstadløkkveien). % sameplace doesn'twork
+synplace(ullumsgården,byåsen_butikksenter).   %% ? 
+synplace(ulstadløkka,ulstadløkkveien).  %%(?)Road
+synplace(ungdomsskole,skole). 
+synplace(unherredsvei,inherredsveien). 
+synplace(unit,ntnu). 
+synplace(universitetssenter,universitet). 
+synplace(unkegata,munkegata). 
+synplace(urtigruta,hurtigruta). % ?
+synplace(utla,ugla). 
+synplace(utleiramarka,utleirmark). 
+synplace(utsikt,utsikten_alle). 
+synplace(uæretrøa,værestrøa). %% off name %%  ? (sms)
+synplace(vaadan,vådanv_5).    % ?
+synplace(vaerestroa,værestrøa). %% TA100110
+synplace(vaeretroa,værestrøa). %% off name 
+synplace(vaeretroea,værestrøa). %% off name
+synplace(valdntynlyst,valentinlyst). 
+synplace(valenlyst,valentinlyst). 
+synplace(valentdenlyst,valentinlyst).  
+synplace(valentenenlyst,valentinlyst). 
+synplace(valententinlyst,valentinlyst). 
+synplace(valentin,valentinlyst). 
+synplace(valentine,valentinlyst). 
+synplace(valentinenlyst,valentinlyst). 
+synplace(valentinenlystvegen,valentinlystvegen). % already a spellerr
+synplace(valentinerlyst,valentinlyst). 
+synplace(valentinersenteret,valentinlyst). 
+synplace(valentines,valentinlyst).  
+synplace(valentininlyst,valentinlyst). 
+synplace(valentinl,valentinlyst). 
+synplace(valentinsenteret,valentinlyst). 
+synplace(valentinsentret,valentinlyst).  
+synplace(valentintinlyst,valentinlyst). 
+synplace(valentlyst,valentinlyst). 
+synplace(valentylist,valentinlyst). 
+synplace(valentynlist,valentinlyst). 
+synplace(valervegen,valøyvegen). 
+synplace(valerveien,valøyvegen). %% ?
+synplace(valerøyveien,valøyvegen). 
+synplace(valetinenlyst,valentinlyst). 
+synplace(valetinerlyst,valentinlyst). 
+synplace(valin,valentinlyst). 
+synplace(valinlyst,valentinlyst). 
+synplace(valkbergets,falkbergets). 
+synplace(vallentin,valentinlyst). 
+synplace(valtenlyst,valentinlyst). 
+synplace(valtinlyst,valentinlyst). 
+synplace(valtninlyst,valentinlyst). 
+synplace(valøiveien,valøyvegen). 
+synplace(valøyvegen,valøy_street). 
+synplace(vaneltynlyst,valentinlyst). 
+synplace(vanetelyst,valentinlyst). 
+synplace(vanetinlyst,valentinlyst). 
+synplace(vanlentynlyst,valentinlyst). 
+synplace(vantelyst,valentinlyst). 
+synplace(vantinlyst,valentinlyst). 
+synplace(varetroa,værestrøa). %% off name
+synplace(varetroea,værestrøa). %% off name 
+synplace(vassfjell,vassfjellet). 
+synplace(vassfjelt,vassfjellet).
+
+synplace(vblakli,blakli). 
+synplace(vearnas,værnes). 
+synplace(velntinlyst,valentinlyst).
+synplace(veratrøa,værestrøa). %% off name 
+synplace(verdaln,verdalen). 
+synplace(vertrøa,værestrøa). %% off name 
+synplace(vesterlia,vestlia). 
+synplace(vestli,vestlia). 
+synplace(vestliaendeholdeplass,vestlia_endeholdeplass). 
+synplace(vestlias,vestlia). 
+synplace(vestlien,vestlia). 
+synplace(vey,veg). 
+synplace(vey,vei). 
+synplace(vg,skole).  %% collides with veg???
+%% synplace(vgs,skole). %% no jfr byåsen skole \= byåsen vgs 
+synplace(vharlottenlund,charlottenlund).  %%
+synplace(videregående,skole). 
+synplace(videregåendeskole,skole).  %%etc
+synplace(vidergående,videregående). 
+synplace(vidergåendeskole,skole). 
+synplace(vidreg,videregående). 
+synplace(vidregående,skole). 
+synplace(vidregående,videregående). 
+synplace(vikaasen,vikåsen). 
+synplace(vikahammer,vikhammer). 
+synplace(vikahmmer,vikhammer). 
+synplace(vikhamar, vikhammer). %% MW-121119  
+synplace(vikhamaren, vikhammer). %% MW-121119   
+synplace(vikhamarn, vikhammer). %% MW-121119  
+synplace(vikhammar, vikhammer). %% MW-121119  
+synplace(vikhammaren, vikhammer). %% MW-121119  
+synplace(vikhammarn, vikhammer). %% MW-121119  
+synplace(vikhamer, vikhammer). %% MW-121119  
+synplace(vikhammeren, vikhammer). %% MW-121119 
+synplace(vikamer,vikhammer). 
+synplace(vikelv,vikelvveien).  %%Complicated
+synplace(vikhamaråsen,vikhammeråsen).
+synplace(vikhameråsen,vikhammeråsen). 
+synplace(vikhmmer,vikhammer). 
+synplace(vikås,vikåsen). 
+synplace(vikåshallen,vikåsenhallen). 
+
+synplace(vill,voll). %% haz? 
+
+synplace(violsvingen,fiolsvingen). 
+synplace(vity,city). %% ?
+synplace(vlanetinlyst,valentinlyst). 
+synplace(voill,voll).  %% ikke voll(gt)
+synplace(vol,voll). 
+synplace(vold,voll).  %% Necessary(?) vold\=volda %% (Syndrome)
+synplace(voldsminne,voldsminde). 
+synplace(vollababakken,vollabakken). 
+synplace(vollaballen,vollabakken).  %%contag
+synplace(vollabkenn,vollabakken). 
+synplace(vollumsgården,byåsen_butikksenter). 
+synplace(vstla,vestlia). 
+synplace(vull,voll). 
+synplace(vullumsgården,byåsen_butikksenter). 
+synplace(vådan,vådanv_5).  %%?
+synplace(våll,voll). 
+synplace(værestrøya,værestrøa).
+synplace(væretrøen,værestrøa). 
+synplace(væretrøene,værestrøa).
+synplace(værnesflyplass,værnes). 
+synplace(værøtra,værestrøa). 
+synplace(vætertrøa,værestrøa). 
+synplace(wist,stjørdals_street).  %% \+ placestat
+synplace(woll,voll). 
+synplace(ygla,ugla). 
+synplace(yiller,tiller). %?
+synplace(ystergaardsvei,ystgaardsvei). 
+synplace(ystergårdsvei,ystgaardsvei). 
+synplace(ystgaardsvei,ingvald_ystgaards_street).  %% //Confus? Notanymore 
+synplace(ystgårds,ystgaards). 
+synplace(ystgårdsvei,ystgaardsvei). 
+synplace(yåsen,byåsen). 
+synplace(zentral,sentral). 
+synplace(ælgesætergt,elgeseter). 
+synplace(æsheim,åsheim). 
+synplace(æsvang,åsvang). 
+synplace(æsveien,åsveien). 
+
+synplace(øeangen,leangen).  %%1. 
+synplace(øerkendal,lerkendal).
+synplace(øst,østre). 
+synplace(østerberg,østre_berg). 
+synplace(østgårds,ystgaards). 
+
+
+synplace(østrerosten,østre_rosten). 
+synplace(øver,øvre). 
+synplace(øveraas,øverås). 
+synplace(øvreflatåsvegen,øvre_flatås_street).  %% problem
+synplace(øvreflatåsvegen,øvre_flatåsveg).  
+synplace(øvrejakobsli,jakobslivegen_øvre).  
+synplace(øvreromulslia,romolslia_øvre).  %% (SICromol)//redundant eventually
+synplace(øvretvereggen,øvre_tvereggen).  %% street?
+synplace(åaveienskole,åsveien_skole). 
+synplace(åirbadet,pirbadet). 
+synplace(åiren,pirbadet).   %%?
+synplace(åirterminalen,pirbadet).  
+synplace(ålderdalen,olderdalen). 
+synplace(åpirterminalen,pirbadet).   %%1. letter
+synplace(årinsen,prinsen). 
+synplace(åsns,aaes).  %%strangename
+synplace(åsvangskole,åsvang_skole). 
+synplace(åsvei,åsveien). 
+synplace(åsveienskolen,åsveien_skole). 
+synplace(åsveiskolen,åsveien_skole). 
+synplace(åveienskole,åsveien_skole). 
+synplace(åøstmarka,østmarka). 
+
+%%% synplace(atb,kongens_street-34). %%  %% <----- AtB Funk // hva er atb %% RS-120805 Sorting
+synplace(ts,ts).   %% <----- AtB
+synplace(ts10,ts). %% 
+synplace(ts11,ts). %%
+
+
+%%% UNDERSPECIFIED_PLACE (PLACE)
+
+underspecified_place(adolf_øien).  %% See ¤ PLACE_RESOLVE (PLACE,STATION).
+underspecified_place(alpinanlegget). 
+underspecified_place(alpinbakken). 
+underspecified_place(badestranda). 
+underspecified_place(bakke). 
+%% underspecified_place(bakli). 
+%% underspecified_place(barnehage). %% --> noinfo
+%% underspecified_place(barnehave).
+underspecified_place(berg). 
+%% underspecified_place(bibliotek). %% TA-101116 generic
+%% underspecified_place(biblioteket).  Biblioteket på Moholt
+underspecified_place(blussuvold). 
+underspecified_place(bomringen). 
+%% underspecified_place(bratsberg). %% TA-110325
+%    hpl(16010046,bratsberg_østre,bratsberg_østre,'Bratsberg østre').
+%    hpl(16010609,bratsbergflata,bratsbergflata,'Bratsbergflata').
+%    hpl(16010763,bratsberg_kirke,bratsberg_kirke,'Bratsberg kirke
+
+underspecified_place(brygge).  
+underspecified_place(butikken).
+underspecified_place(butikksenteret).  
+underspecified_place(bygda). 
+underspecified_place(bygden).  
+
+underspecified_place(byåsen). 
+
+underspecified_place(båthavna). 
+underspecified_place(charlottenlund). 
+underspecified_place(drosjesentralen). 
+underspecified_place(e6). 
+underspecified_place(europaveg). 
+underspecified_place(europavegen). 
+underspecified_place(europavei).
+underspecified_place(europaveien).
+
+underspecified_place(fabrikken). 
+underspecified_place(fjellet). 
+underspecified_place(forskningsparken).  
+underspecified_place(forskningssenteret). 
+underspecified_place(flybussterminalen). 
+underspecified_place(fokus).  %% -hallen?
+%% underspecified_place(fotballbane).  %% ? 
+underspecified_place(fotballbanen). 
+%% underspecified_place(golfbane). %% generic, 
+underspecified_place(golfbanen). % ?
+underspecified_place(grensa). 
+underspecified_place(grensen). 
+
+%%   underspecified_place(gård). %% Stavne gård is not U
+
+underspecified_place(gården). 
+underspecified_place(haakon_vii_gate).  %% Despair 
+underspecified_place(hageby). 
+underspecified_place(hageby). 
+underspecified_place(hist). 
+underspecified_place(hotell). 
+underspecified_place(hotellet).  %%
+underspecified_place(hovedinngangen). %% ( slightly odd) hovedinngangen til st.olavshospital?
+underspecified_place(hovedstasjonen).  %% TS|ST ?
+underspecified_place(huseby).     %% Husebyst//Husebysentret 
+underspecified_place(høgskolen).  %% HIST or NTH?
+underspecified_place(høyskolesenteret). 
+%% underspecified_place(idrettsbygg).  -> generic_place 
+underspecified_place(idrettsparken). 
+%% underspecified_place(idrettsplassen).  %% TA-100828  ipl jakobsli
+underspecified_place(ingeniørhøgskolen). 
+underspecified_place(innlandet). 
+underspecified_place(jakobslivegen).  %% nedre/øvre vegen official road name
+underspecified_place(jordet). 
+%% underspecified_place(kafe).  %% generic
+underspecified_place(kafeen). 
+underspecified_place(kino). 
+underspecified_place(kirka). 
+%% underspecified_place(kirke). %% "nardo kirke" 
+underspecified_place(kirken). 
+underspecified_place(kirkegården).
+%% underspecified_place(kjøpesenter). %% unk
+underspecified_place(kjøpesenteret). 
+underspecified_place(kjøpesentra). 
+underspecified_place(kjøpesentret). 
+%% underspecified_place(klinikk).  
+%% underspecified_place(klinikken). %% noinfoaboutnoun
+underspecified_place(kommunehuset). 
+underspecified_place(kommunesenteret). 
+underspecified_place(kroghsvei).  %%peder/gina
+underspecified_place(lilleby).  %% (? whereisit)
+underspecified_place(lærerskolen). 
+underspecified_place(malvikmarka). 
+underspecified_place(mellomveien).  %% Mellomveien 5 st. ,nearestBuran
+underspecified_place(markedet). %% torget ? 
+underspecified_place(mo).  %% Mo i Rana?
+underspecified_place(motorveien). 
+underspecified_place(museum). 
+underspecified_place(myra).  
+underspecified_place(møllenbergveien).  %% Øvre/Nedre M. gt
+underspecified_place(nidaros). %% Th, sjokol domen, 
+underspecified_place(nidelva). 
+underspecified_place(nidelven). 
+underspecified_place(nordre). %% TA-110418
+underspecified_place(ntnu).   %%
+underspecified_place(oasen).  %% \+ Osen 
+underspecified_place(obs).    %% Obs Lade,Heimdal,City Syd
+underspecified_place(omkjøringsveg).  %% something missing
+underspecified_place(omkjøringsvei).  
+underspecified_place(omkjøringsveien). 
+%% underspecified_place(omkjøringsvegen).  %% something missing
+%% underspecified_place(omkjøringsveien). 
+underspecified_place(parken). 
+underspecified_place(prestegården). 
+underspecified_place(rutebilstasjonen).  %% Sentralstasjonen,
+underspecified_place(samfunnshuset).  %% %% slightly misplaced error message
+underspecified_place(sanatoriet).  
+underspecified_place(scandic_hotel).
+%%  underspecified_place(senter). %% Try without %% TA-101228
+underspecified_place(sintef). 
+underspecified_place(sjøen). 
+underspecified_place(skauen).  
+underspecified_place(skibakken). 
+underspecified_place(skogen). 
+%% underspecified_place(skole).  %% ? destroys byåsen videregående
+underspecified_place(skolen). %% nidarvoll skolen \+ flertydig %% TA-100903
+underspecified_place(skytebanen). 
+underspecified_place(solbakken). 
+underspecified_place(sorgendal). 
+underspecified_place(storsenteret). %% TA-110125
+underspecified_place(stranden).  %% TA-101108
+underspecified_place(strinda). 
+underspecified_place(strindamarka). 
+underspecified_place(studentby). 
+underspecified_place(studentbyen). 
+underspecified_place(sykehuset). 
+underspecified_place(svingen).  
+underspecified_place(svømmehallen). 
+underspecified_place(svømmehaller). 
+%% underspecified_place(sykehus). %% -> noinfoabout %%  Brøset sykehus= more precise *
+underspecified_place(søndre).  %% confusing
+underspecified_place(taxisentralen). 
+underspecified_place(telenor). 
+underspecified_place(televerket). 
+
+underspecified_place(terminal). %% TA-110624
+%% underspecified_place(terminalen). %% = godsterminalen_nsb
+
+underspecified_place(togstasjon). %% \+ en 
+underspecified_place(toyota).     %% verksted %% TA-100823
+underspecified_place(trafikkstasjon).  %% TS or ST
+underspecified_place(trafikkstasjonen). 
+underspecified_place(tunnelen). %% TA-110114
+underspecified_place(tunnellen). 
+underspecified_place(tunellen). 
+
+underspecified_place(trøndelag).       %% // not foreign (spchk)
+underspecified_place(universitetet). 
+underspecified_place(university). 
+underspecified_place(utleira). %% TA-100921
+underspecified_place(utkanten). 
+underspecified_place(vann). 
+underspecified_place(vannet). 
+underspecified_place(vatn). 
+underspecified_place(vatnet). 
+underspecified_place(vegmesterveien). 
+underspecified_place(veita).  
+underspecified_place(veiten). 
+underspecified_place(vestbyen).
+underspecified_place(vestkanten).
+underspecified_place(vinmonopol). 
+underspecified_place(vinmonopolet). 
+underspecified_place(vinmonopolet). 
+underspecified_place(voldsminde).  %% mellomv_5|ØvreMøllenberggt 40->Bakkegate
+underspecified_place(vollan). 
+
+underspecified_place(ødemarka). 
+underspecified_place(ødemarken).  %%
+underspecified_place(øra). 
+underspecified_place(østbyen). 
+underspecified_place(østkanten). 
+underspecified_place(øya).  %% or nobuses ?
+underspecified_place(åsen). 
+
+
+unwanted_station(politihuset). % station, never used , but valid neighbourhood  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%  Unwanted place names (Domain dependent)
+
+unwanted_place('3t').  %% Ambiguousname(Sluppen,Rosten,Heimdal)
+unwanted_place(alke). 
+unwanted_place(alt).   %%  \+ alta destroys lang sel. 
+unwanted_place(amok).  %%  \+ AMO
+unwanted_place(anal).  %%  \+ asal street
+unwanted_place(arbeidsbuss). %% pro forma station (SIC) 
+unwanted_place(are).   %% Disturbs N/E
+unwanted_place(arve).  %% aure/aare
+unwanted_place(ass). 
+unwanted_place(astma).  %%  \+ Aasta amble # overgen
+unwanted_place(atle). 
+unwanted_place(bake).   %%  \+ bakke
+unwanted_place(bakenden). %% \+ bakken
+unwanted_place(banan).  %%  \+  bane(Dialect banene?)
+unwanted_place(banne).  %%  \+ banen
+unwanted_place(behn).   %%  \+ byen
+unwanted_place(bekken). %% bukken/bakken
+unwanted_place(berget).  %% ???
+unwanted_place(bist).   %% German(not Wist)
+unwanted_place(bjørn).  %% \+  Bjøra
+unwanted_place(bjaørn).  %% \+  Bjøra  ..BjÃ¸rn 
+unwanted_place(blakk).  %% \+  Flakk
+unwanted_place(blinker).  %%  \+ bleiker
+%%  unwanted_place(bombingen).  %%  \+ bomringen // Experiment
+unwanted_place(brage).   %% name, \+ berge 
+unwanted_place(brenne).  %%  \+ Brænne
+unwanted_place(brus).  %% \+  bru
+unwanted_place(brå).  %%  Hvor var du da Brå brakk staven
+unwanted_place(bush). 
+%% unwanted_place(bye).  %%  \+ byen -  eng good bye 
+unwanted_place(byåse).  %% Byåsen/Byåsv(eien)
+unwanted_place(cars).  %%  \+ carl,lang. selection
+unwanted_place(club).  %%  \+ Cuba
+%%   unwanted_place(cola).  %%  ( \+ Sola)
+unwanted_place(dachs).  %%  \+ dahls
+unwanted_place(das).  %%  \+ SAS
+unwanted_place(dekk).  %%  \+ dokk
+unwanted_place(dikt).  %% norDist. . . lege
+unwanted_place(dn).  %% DireforN. . . -D1
+unwanted_place(does).  %%  \+ Dons %% destroys lang selection
+unwanted_place(dommen). %% \+ Domen
+unwanted_place(dong).  %%  \+ Dons
+unwanted_place(door).  %%  \+ Dora(amble#)//theotherway?
+unwanted_place(downs).  %%  \+ dons
+unwanted_place(drit).  %% \+  RIT(forthisreason,badwordsarerepelled)
+unwanted_place(drite).  %%  \+ Ditle
+unwanted_place(dt).  %% (det?)not D0
+unwanted_place(dust).  %% ikkedist
+unwanted_place(døden).  %% (mendødensdalOK)
+unwanted_place(egget).  %%  \+ Eggen
+%% unwanted_place(einar_tambarsjelves_gate). %%% ??????????????
+unwanted_place(elgen).  %%  \+ Eggen
+unwanted_place(en). 
+%% unwanted_place(enter).  %% einerv.
+unwanted_place(eple). 
+unwanted_place(er).  %% especiallyinenglish
+unwanted_place(erichsen).  %% \+  erichsens
+unwanted_place(et). 
+unwanted_place(eu).  %% \+  e6
+unwanted_place(evner).  %% einer/everk
+unwanted_place(faan).  %%  \+ Fana
+unwanted_place(faen).  %%  \+ Fana
+unwanted_place(faller).  %% \+  Fallet
+unwanted_place(fan).  %%  \+ Fana
+unwanted_place(feit).  %%  \+ Frei
+unwanted_place(fest).  %% \+  vest
+unwanted_place(finnses). %% \+ Finnsnes ?
+unwanted_place(fjærta). 
+unwanted_place(fjerta). %%
+unwanted_place(flåtten). %% \+ Flaten
+unwanted_place(foo).     %%  \+ Foto
+unwanted_place(forget).  %% \+ Forset 
+unwanted_place(fra).  %% \+  Fram
+unwanted_place(fram).  %% \+  framveien
+unwanted_place(fre).  %% \+  frue
+unwanted_place(fresk).  %%  \+ frues
+unwanted_place(from).  %% \+  fram
+unwanted_place(fy).  %% \+  by
+unwanted_place(fylla).  %% \+  folla
+unwanted_place(føre).  %% (not Møre)
+unwanted_place(førte).  %% (not Førde)
+unwanted_place(g).  %% Mysterious internal station,\+ gå
+unwanted_place(gang).  %%  gang-> gan-g-> grabvegen 
+unwanted_place(gave).  %%  \+ gate
+unwanted_place(gay).  %% (not May).  %% NBnot actuallyplace
+unwanted_place(ger).  %% \+  Ler,probablygår
+unwanted_place(gjøk).  %% \+  Gjøa
+unwanted_place(glede). %% \+ Gilde
+unwanted_place(goes).  %%  \+ godes,destroyslanguagedetection
+unwanted_place(gp).  %% probablygo,butbecomesgt
+unwanted_place(grade). %% \+ graae
+unwanted_place(graaemølla).  %% ?
+unwanted_place(gral).  %% gran?
+unwanted_place(grille).  %%  \+ Gilles
+unwanted_place(gro).  %% \+  bro
+unwanted_place(guide).  %% \+Gudesgt
+unwanted_place(guten).  %% \+gaten
+unwanted_place(går).  %% NBMunkvoldgår
+unwanted_place(gåt).  %% probablygår,butbecomesgt
+unwanted_place(habla).  %% \+  Halsa(Spansk
+unwanted_place(haik).  %% \+  Hank(Sport)
+unwanted_place(half).  %%  \+ hall
+unwanted_place(hallo).  %%  \+ hall(Eng,destroys lang. selction)
+unwanted_place(halvto). 
+unwanted_place(happens).  %% hagen(amble#)
+unwanted_place(hasj). 
+unwanted_place(havren).  %% \+  havnen
+unwanted_place(heder).  %% \+  peder
+unwanted_place(hege).  %% \+  hage
+unwanted_place(hello).  %% \+  Hell
+unwanted_place(help).  %% \+  Hell
+unwanted_place(hem).  %% hjem,not hoem
+unwanted_place(hembres). %% \+ Hambros %% TA-101111
+unwanted_place(heng).  %% \+hegg
+unwanted_place(henge).  %% \+hemne
+unwanted_place(henger). %% \+ Hanger(åsen) 
+unwanted_place(henne).  %% \+ Hemne 
+unwanted_place(hermer).  %% helmer??OK?
+unwanted_place(hoel).  %% hotel/hoem
+unwanted_place(home).  %% \+  Hoem
+unwanted_place(homo).  %% \+  Hoem
+unwanted_place(homse).  %% \+  Holms
+unwanted_place(hor).  %% \+Horg
+unwanted_place(hora).  %%  \+ Horg
+unwanted_place(hore).  %% \+  hare
+unwanted_place(horegata).  %%  \+ Hareveien
+unwanted_place(horegaten).  %% 
+unwanted_place(horen).  %%  \+ Horten
+unwanted_place(horene).  %%  \+ Horten %% 
+%% unwanted_place(huseby).  %% Husby/Husebysenteret huseby skole?? 
+unwanted_place(hv).  %% \+  av,dv(prob. hva?)
+unwanted_place(hval).  %% \+  Hal
+unwanted_place(hve).  %% \+  eve
+unwanted_place(hvor).  %% \+  horg(probleminEnglish)Syndrome
+unwanted_place(høns).  %% \+  Hans
+unwanted_place(i).  %% \+  is(gen)
+unwanted_place(ida).  %% (not ila)
+unwanted_place(is).  %% \+  ii
+
+%% unwanted_place(ishall).  %% \+ishallen
+
+unwanted_place(jeb).  %%  \+ jeg
+unwanted_place(jev).  %%  \+ jeg
+%% unwanted_place(kampen).  %%  \+ Kammen no longer
+unwanted_place(kapre).  %% \+  karse. 
+unwanted_place(karsk).  %% \+  karse. . 
+unwanted_place(king).   %% (Burger)King--->Kina
+unwanted_place(kinoen). %% -> noun cinema 
+unwanted_place(kjærest).  %%  \+ kjærems
+unwanted_place(kjønn). 
+unwanted_place(kl).  %% 
+unwanted_place(knudsen).  %%  \+ Knausen
+unwanted_place(knuse).  %%  \+ kuset
+unwanted_place(knutsen).  %%  \+ Knausen
+unwanted_place(kolla).  %% \+  Folla
+unwanted_place(komen). 
+unwanted_place(kor).  %%  -kors(EngSyndrome)
+unwanted_place(kors).  %%  \+  kors/gata
+unwanted_place(kos).  %%  \+  kors
+unwanted_place(kose).  %%  \+  kors
+unwanted_place(kråke). 
+unwanted_place(ku).  %%  \+ KO. . . . 
+unwanted_place(kuk).  %%  (not krk)(badwordsshallberepelled)
+unwanted_place(kunst).  %%  \+ kuset
+unwanted_place(kyr).  %%  \+  kor(korsvegen???)
+unwanted_place(kåt).  %%  (Not KVT)
+unwanted_place(laden).  %%  -lade//OsamaBinLaden
+unwanted_place(laks). 
+unwanted_place(lande).  %% lade
+unwanted_place(langt).  %% \+Liangata###(Eng)
+unwanted_place(lego).  %%  \+ Lege
+unwanted_place(lei). 
+unwanted_place(leke).  %% (ikkeLege)
+unwanted_place(lene).  %% ikkeLege
+unwanted_place(lerk).  %% (not Ler)
+unwanted_place(lisa).  %%  \+ Lia
+unwanted_place(lisp).  %% liaslies
+unwanted_place(litn).  %% \+Lian
+unwanted_place(lives).  %% ikkeLies//DestroysLangSelection
+unwanted_place(lla).  %% IlaorLia?
+unwanted_place(lua).  %% \+  lia
+unwanted_place(luka).  %%  \+ Luna
+unwanted_place(lykke).  %% Løkke
+unwanted_place(lære).  %% (not Være)
+unwanted_place(løgn).  %%  \+ Lønn(vei)
+unwanted_place(mad).  %% \+  May <----not place,but ok
+unwanted_place(mads). 
+unwanted_place(mai).  %% not main %% should be taken by lex
+unwanted_place(mail). 
+unwanted_place(mandag).  %% \+  Mandal Eng. 
+unwanted_place(mari).  
+unwanted_place(maria). %% \+ marka 
+
+%%%% unwanted_place(martin). %% \+ marinen %% kregness 
+
+%% not allowed as destination, allowed as (part) name 
+
+unwanted_place(martine).
+unwanted_place(masa). 
+unwanted_place(maur).  %% mars DOESNT HELP unwanted_name
+unwanted_place(meg). 
+unwanted_place(melllom). 
+unwanted_place(mens). 
+unwanted_place(mensen).  %% 
+unwanted_place(meny).    %% moen#
+unwanted_place(mogen).   %% (morgen?,not Moen)
+unwanted_place(moms). 
+unwanted_place(mona).  %%  \+ Moen
+unwanted_place(mongolid).  %% mongolioid/mongolia
+unwanted_place(mons).  %%  \+ Moen
+unwanted_place(morten).  %% \+  Horten
+unwanted_place(mp3).  %% \+  m3(filformat)
+unwanted_place(mr). 
+unwanted_place(må).  %% mo,m1
+unwanted_place(mår).  %% \+  vår(fruekirke)
+unwanted_place(møkka).  %%  \+ mekka
+unwanted_place(møllen).  %% Møllrnberg/Møller
+unwanted_place(narko).  %% \+nardo(?)
+unwanted_place(nek).  %% \+  nrk
+unwanted_place(ner).  %% \+  Ler,probablynår
+unwanted_place(nerd).  %% (not nord)
+%% unwanted_place(nissen).  %%  \+ Nissens. . . %% TA-110328
+unwanted_place(nr). 
+unwanted_place(nr1).  %% (not nrk)
+unwanted_place(nrå). 
+%%  unwanted_place(ntnui).  %% idrettsbygget? \+ ntnu?
+unwanted_place(nuss).  %% buss/Næss
+unwanted_place(nåre).  %% \+  Åre
+unwanted_place(nåt).  %% (not nt)
+unwanted_place(nør).  %% \+  sør,probablynår. 
+
+%%% unwanted_place(o).  %% \+osveien(SIC) %% st o hospital 
+
+%% unwanted_place(oasen). %% \+ Osen (station) 
+unwanted_place(og).  %% \+  og,vg,ono(s)veien|g(aten)
+unwanted_place(okse).  %% \+osen
+unwanted_place(ondes).  %% \+  Osnes
+unwanted_place(ost).  %% \+  Os
+unwanted_place(osv).  %% \+Osv(eien)
+
+%%% unwanted_place(oth).  %% \+  NTH, not short name for Othilienborg? 
+
+unwanted_place(pakk). 
+unwanted_place(palm).  %% \+  paul
+unwanted_place(pi).  %% (not på,pir,ii etc)
+unwanted_place(pinsen). 
+unwanted_place(plage).  %% \+  place
+unwanted_place(prins).  %%  \+ paris###
+unwanted_place(pul).  %% \+  Paul%NB all dirty words shall be repelled
+unwanted_place(pule).  %% \+  Paul
+unwanted_place(pult).  %% \+  Paul
+unwanted_place(pål).  %% avoid pål=på,give message
+unwanted_place(radmann).  %%  \+ rådmann
+unwanted_place(ran).   %% \+  Roan
+%% unwanted_place(rema).  %% "REMA" is not Rena %%-> generic
+unwanted_place(rian).  %% \+  Roan
+unwanted_place(rik).   %% \+  RIT
+unwanted_place(ril).   %% \+  RIT(//til)
+unwanted_place(rio).   %% \+  RIT
+unwanted_place(ris).   %% \+  RIT
+unwanted_place(rita).  %% RIT/Rota(RitaOttervik)
+unwanted_place(road).  %%  \+ roan
+unwanted_place(roar).  %%  \+ roan
+unwanted_place(roger).  %%  \+ rognergate
+unwanted_place(rompa).  %%  \+ Roma %% all expletives
+unwanted_place(rompe).  %%  \+ Rome %% shall be framed
+unwanted_place(ronke). 
+unwanted_place(ronker).  %% \+Rogner-veien
+unwanted_place(ronket).  %% 
+unwanted_place(rope).   %%  \+ rype
+unwanted_place(rot).    %%  \+ rota
+unwanted_place(roten).  %%  \+ Rosten
+unwanted_place(runke).  %% 
+unwanted_place(runker). %% 
+unwanted_place(runket). %% 
+unwanted_place(rute). 
+unwanted_place(ryte).   %% rute?, \+ rye  \+ rate
+unwanted_place(salg).   %% \+sag
+unwanted_place(salme).  %% svale(v)amble#
+unwanted_place(samlev). %% old station, \+ svaleveien
+%% unwanted_place(sands).  %%  TA-not sande,not Dr. sandsvei 
+unwanted_place(satan).  %%  \+ santa(barbara)
+unwanted_place(saus).   %%  \+ SAS
+unwanted_place(seile).  %%  \+ Selje
+unwanted_place(selve).  %%  \+ Selje
+unwanted_place(sex).    %%  \+ Sem
+%% unwanted_place(shell).  %%  \+ spell mix with Hell 
+unwanted_place(simen).  %% \+ Siemens .. er simen stygg? 
+unwanted_place(sion).   %%  \+ simon
+%unwanted_place(sirkus). %%  \+ sirius  %% RS-130120 Sirkus Shopping
+unwanted_place(sist).   %%  \+ Wist
+unwanted_place(sjansen).%%  \+ Skansen 
+unwanted_place(sko).    %% 
+unwanted_place(skrue).  %% \+
+unwanted_place(skumle). %% \+skule
+unwanted_place(skyttrerveien). 
+%%  unwanted_place(sola).  %% \+sollia,solia  
+unwanted_place(solen).     %% \+  Polen
+unwanted_place(spank).     %% \+spania
+unwanted_place(spare).     %% \+stare
+unwanted_place(sprit).     %% \+  sport
+unwanted_place(spurt).     %% \+  (Hank)Sport
+unwanted_place(stand).   %% \+Sande
+unwanted_place(staven).  %% \+Stavne
+unwanted_place(stien).   %% \+Skien
+unwanted_place(stiller). %% \+ Tiller
+unwanted_place(stine).   %% \+ Stene %% TA-110228
+unwanted_place(stop).    %% \+ stor-
+%% unwanted_place(stranda). %%  \+ strinda 
+unwanted_place(street).  %% Lang Ambig
+unwanted_place(strøm).   %% \+storm
+unwanted_place(stut).    %% \+ stud
+unwanted_place(stående). %% \+ Stene 
+unwanted_place(sug).     %% \+ Sig. 
+unwanted_place(sum). 
+unwanted_place(suppen).  %%  \+ sluppen
+unwanted_place(syklen).  %%  \+ skolen
+unwanted_place(sæ).      %%  \+ st
+%% unwanted_place(sætre).   %% \+ sætres/stare %% foreign 
+unwanted_place(søren).   %% \+ støren
+unwanted_place(søt).     %% \+  sør
+unwanted_place(søvn). 
+unwanted_place(ta).     %% \+ tt,ts
+unwanted_place(tank).   %% \+ thanks 
+unwanted_place(tanke).  %%  \+ tanem
+unwanted_place(tell).   %% dialect,not Hell
+unwanted_place(th).     %% Trondh? \+ TT
+unwanted_place(the).    %% don'tspellchecktothe
+unwanted_place(thor).   %%  \+ Torp
+unwanted_place(thr).    %% the, \+ chr,tr,etc. 
+unwanted_place(tid). 
+unwanted_place(tier).   %% ikke tiur
+unwanted_place(tim).    %% \+ Sim
+unwanted_place(time).   %% \+ Time kommune 
+unwanted_place(ting). 
+unwanted_place(tio).    %% \+ to
+unwanted_place(tl).     %% \+ TT,probably til
+unwanted_place(tnt).    %% \+ TT
+unwanted_place(tom).    %% \+ Lom,tog
+unwanted_place(torsk).  %% \+ Tors'vei
+unwanted_place(torvet). %% name of station going inwards
+unwanted_place(tosk).   %% (ikke tysk)
+unwanted_place(tp).     %% \+ TT,probably to
+unwanted_place(tra).    %%  \+ fra/-trøa
+%% unwanted_place(trade).  %%  \+ trane 
+unwanted_place(tram).   %%  \+ Trøa (SIC)
+unwanted_place(transe).  %%  \+ tranev
+unwanted_place(trynet).  %%  \+ Tynset(SIC)
+unwanted_place(trøng).  %%  \+ trøa-vegen(trø(n)a-g) %% amble#
+%% unwanted_place(tuller).  %%  \+ Tiller %% nein 
+unwanted_place(ture).   %% \+ Tiur-vegen
+unwanted_place(tviler).%%  \+ Tiller
+unwanted_place(twin).  %%  \+ Tine
+unwanted_place(tåsk).  %%  \+ tysk
+unwanted_place(tøff).  %%  \+ KØFF
+unwanted_place(urdu).  %%  \+ Urds vei
+unwanted_place('va|ret').  %% \+ Være  
+unwanted_place('va¦ret').  %%
+unwanted_place(valg).  %%  \+ vang
+unwanted_place(veien). %%  \+ viken
+unwanted_place(verb). 
+unwanted_place(verdt).  %%  \+ verft
+unwanted_place(vere).  
+unwanted_place(verst). 
+unwanted_place(verste). %%  \+ vestre
+unwanted_place(vestlig).%%  \+ vestlia 
+unwanted_place(vet).    %%  \+ vest(E:)
+unwanted_place(vinkel). %%  \+ vikelv
+unwanted_place(vodka).  %%  \+ volda
+unwanted_place(volvo).  %%  \+ volve-
+unwanted_place(vre).    %%  \+ Være
+unwanted_place(world).  %%  \+ wolds
+unwanted_place(yrke).   %%  \+ York
+unwanted_place(øre).    %%  \+ øvre
+
