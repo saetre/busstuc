@@ -117,7 +117,7 @@ statcoord(16011043,'Arnt Smistads vei',567713.524,7030524.907).
 statcoord(16010043,'Arnt Smistads vei',567600.594,7030443.466).
 statcoord(16011037,'Asbjørn Øverås veg',571173.452,7030421.859).
 statcoord(16010037,'Asbjørn Øverås veg',571246.452,7030447.726).
-statcoord(16010038,'Asbjørnsensgt.',571007.583,7033976.3).
+%%statcoord(16010038,'Asbjørnsensgt.',571007.583,7033976.3). %% RS-131218. Moved towards Rosenborg Skole?
 statcoord(16011039,'Askeladdveien',575257.781,7033946.032).
 statcoord(16010039,'Askeladdveien',575256.391,7033932.978).
 statcoord(16011040,'Astronomveien',570455.307,7030199.842).
@@ -507,7 +507,7 @@ statcoord(16010497,'Haakon VII gt. 17',572562.566,7035673.055).
 statcoord(16011311,'Haakon VII gt. 25',572829.456,7035496.861).
 statcoord(16010311,'Haakon VII gt. 25',572857.812,7035464.11).
 statcoord(16011323,'Haakon VII gt. 29',573137.925,7035283.097).
-statcoord(16010323,'Haakon VII gt. 29',573117.328,7035283.355).
+%%statcoord(16010323,'Haakon VII gt. 29',573117.328,7035283.355).
 statcoord(16011324,'Haakon VII gt. 9',572277.714,7035887.482).
 statcoord(16010324,'Haakon VII gt. 9',572306.673,7035854.043).
 statcoord(16011190,'Idrettsplassen Jakobsli',574571.408,7032748.103).

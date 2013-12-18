@@ -23,7 +23,7 @@ hpl(16010033,angelltrøvegen,angelltrøvegen,'Angelltrøvegen').
 hpl(16010034,ankers_gate,ankers_gate,'Ankers gate').
 hpl(16010035,anton_grevskotts_veg,anton_grevskotts_veg,'Anton Grevskotts veg').
 hpl(16010037,asbjørn_øverås_veg,asbjørn_øverås_veg,'Asbjørn Øverås veg').
-hpl(16010038,asbjørnsens_gate,asbjørnsens_gate,'Asbjørnsens gate').
+%%hpl(16010038,asbjørnsens_gate,asbjørnsens_gate,'Asbjørnsens gate').  %% RS-131218. Moved towards Rosenborg Skole?
 hpl(16010039,askeladdvegen,askeladdvegen,'Askeladdvegen').
 hpl(16010040,astronomvegen,astronomvegen,'Astronomvegen').
 hpl(16010042,chr_monsens_gate,chr_monsens_gate,'Chr. Monsens gate').

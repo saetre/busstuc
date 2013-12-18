@@ -491,14 +491,14 @@ streetstat(gustav_byes_street,'Gustav Byes vei',1,16,hammersborg).
 streetstat(guttorms_street,'Guttorms gate',1,14,unknown).
 streetstat(gyldenløves_street,'Gyldenløves gate',1,10,solsiden).
 streetstat(gyldenløves_street,'Gyldenløves gate',10,31,gyldenløves_gate).
-streetstat(haakon_viis_street,'Haakon VII\'s gate',14,14,lade_alle_80). %% ? lade_alle_80
 streetstat(haakon_viis_street,'Haakon VII\'s gate',1,3,østmarkveien).
-streetstat(haakon_viis_street,'Haakon VII\'s gate',27,29,haakon_vii_gate_29).
-streetstat(haakon_viis_street,'Haakon VII\'s gate',5,7,city_lade).
-streetstat(haakon_viis_street,'Haakon VII\'s gate',43,45,lade_alle_80). %% AtB
+streetstat(haakon_viis_street,'Haakon VII\'s gate',4,23,haakon_vii_gate_17).
 streetstat(haakon_viis_street,'Haakon VII\'s gate',9,13,haakon_vii_gate_9).
 streetstat(haakon_viis_street,'Haakon VII\'s gate',10,25,haakon_vii_gate_25).
-streetstat(haakon_viis_street,'Haakon VII\'s gate',4,23,haakon_vii_gate_17).
+streetstat(haakon_viis_street,'Haakon VII\'s gate',5,7,city_lade).
+streetstat(haakon_viis_street,'Haakon VII\'s gate',14,14,lade_alle_80). %% ? lade_alle_80
+streetstat(haakon_viis_street,'Haakon VII\'s gate',25,29,lade_alle_80). %% RS-131218 Haakon VII's gt 29 removed!
+streetstat(haakon_viis_street,'Haakon VII\'s gate',43,45,lade_alle_80). %% AtB
 streetstat(haldens_street,'Haldens gate',1,29,gyldenløves_gate).
 streetstat(haldor_flatens_street,'Haldor Flatens veg',1,9,carl_schjetnans_veg).
 streetstat(haldor_flatens_street,'Haldor Flatens veg',11,30,hagen).

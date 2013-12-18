@@ -222,8 +222,8 @@ isat(haakon_vii_gate_17,haakon_vii_gate).
 isat(haakon_vii_gate_17,haakon_vii_gate). 
 isat(haakon_vii_gate_25,haakon_vii_gate). 
 isat(haakon_vii_gate_25,haakon_vii_gate). 
-isat(haakon_vii_gate_29,haakon_vii_gate). 
-isat(haakon_vii_gate_29,haakon_vii_gate). 
+%%isat(haakon_vii_gate_29,lade_alle_80).
+%%isat(haakon_vii_gate_29,lade_alle_80).
 isat(haakon_vii_gate_9,haakon_vii_gate). 
 isat(haakon_vii_gate_9,haakon_vii_gate). 
 
@@ -6052,7 +6052,7 @@ placestat(saupstadvegen,heimdal_stasjon).
 placestat(saxenborg,saxenborg_alle). 
 placestat(schrøder,fossegrenda). 
 %placestat(servicekontoret,dronningens_gate_d2).        %% RS-130812 Gammelt TT-kontor!
-placestat(singsaker,asbjørnsens_gate). 
+%%placestat(singsaker,asbjørnsens_gate). %% RS-131218. Moved towards Rosenborg Skole? 
 placestat(singsaker_studenthjem,jonsvannsveien). 
 placestat(sirkus_shopping,strindheim).
 placestat(sjetne,carl_schjetnans_veg). 
@@ -7023,7 +7023,7 @@ short_specname(dronningensgate_d4,'Dronn. gt D4').
 short_specname(einar_tambarskjelves_gt,'Einar Tambarskj. gt'). 
 short_specname(haakon_vii_gate_17,'Haakon7. gate 17'). 
 short_specname(haakon_vii_gate_25,'Haakon7. gate 25'). 
-short_specname(haakon_vii_gate_29,'Haakon7. gate 29'). 
+%%short_specname(haakon_vii_gate_29,'Haakon7. gate 29'). 
 short_specname(haakon_vii_gate_9,'Haakon7. gate 9'). 
 short_specname(heimdal_stasjon,'Heimdal st. ').  %% Extra sp
 short_specname(hovedterminalen,'Sentrumsterminalen'). 
@@ -7220,7 +7220,7 @@ specname(gudruns_gate,'Gudruns gate'). 			 %% EH-030616
 specname(haakon_vii_gt,'Haakon VII gate'). 
 specname(haakon_vii_gate_17,'Haakon den sjuendes gate 17'). 
 specname(haakon_vii_gate_25,'Haakon den sjuendes gate 25'). 
-specname(haakon_vii_gate_29,'Haakon den sjuendes gate 29'). 
+%%specname(haakon_vii_gate_29,'Haakon den sjuendes gate 29'). 
 specname(haakon_vii_gate_9,'Haakon den sjuendes gate 9'). 
 specname(hallfred_høyems_vei,'Hallfred Høyems vei'). 
 specname(halstein_gård,'Halstein gård'). 
