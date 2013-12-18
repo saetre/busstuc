@@ -25,7 +25,7 @@ hpl(16010034,ankers_gate,ankers_gate,'Ankers gate').
 hpl(16010035,anton_grevskotts_veg,anton_grevskotts_veg,'Anton Grevskotts veg').
 hpl(16010036,arilds_gate,arilds_gate,'Arilds gate').
 hpl(16010037,asbjørn_øverås_veg,asbjørn_øverås_veg,'Asbjørn Øverås veg').
-hpl(16010038,asbjørnsens_gate,asbjørnsens_gate,'Asbjørnsens gate').
+%%hpl(16010038,asbjørnsens_gate,asbjørnsens_gate,'Asbjørnsens gate'). %% RS-131218. Moved towards Rosenborg Skole?
 hpl(16010039,askeladdvegen,askeladdvegen,'Askeladdvegen').
 hpl(16010040,astronomvegen,astronomvegen,'Astronomvegen').
 hpl(16010041,lade_alle_80,lade_alle_80,'Lade alle 80').
@@ -252,7 +252,7 @@ hpl(16010319,nedre_leirfoss,nedre_leirfoss,'Nedre Leirfoss').
 hpl(16010320,nardokrysset,nardokrysset,'Nardokrysset').
 hpl(16010321,nidarvoll_skole,nidarvoll_skole,'Nidarvoll skole').
 hpl(16010322,trondheim_spektrum,trondheim_spektrum,'Trondheim Spektrum').
-hpl(16010323,haakon_vii_gate_29,haakon_vii_gate_29,'Haakon VII gate 29').
+%%hpl(16010323,haakon_vii_gate_29,haakon_vii_gate_29,'Haakon VII gate 29').
 hpl(16010324,haakon_vii_gate_9,haakon_vii_gate_9,'Haakon VII gate 9').
 hpl(16010326,nordre_flatåsen,nordre_flatåsen,'Nordre Flatåsen').
 hpl(16010327,migosenteret,migosenteret,'Migosenteret').
@@ -806,7 +806,7 @@ hpl(16011318,myrsund,myrsund,'Myrsund').
 hpl(16011319,nedre_leirfoss,nedre_leirfoss,'Nedre Leirfoss').
 hpl(16011320,nardokrysset,nardokrysset,'Nardokrysset').
 hpl(16011321,nidarvoll_skole,nidarvoll_skole,'Nidarvoll skole').
-hpl(16011323,haakon_vii_gate_29,haakon_vii_gate_29,'Haakon VII gate 29').
+%%hpl(16011323,haakon_vii_gate_29,haakon_vii_gate_29,'Haakon VII gate 29').
 hpl(16011324,haakon_vii_gate_9,haakon_vii_gate_9,'Haakon VII gate 9').
 hpl(16011326,nordre_flatåsen,nordre_flatåsen,'Nordre Flatåsen').
 hpl(16011327,migosenteret,migosenteret,'Migosenteret').

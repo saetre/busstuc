@@ -53,8 +53,6 @@ default_message(tt,winter,['AtB winter routes are from  Aug. 13 to Dec 23.  2012
 default_message(tt,summer,['AtB summer routes are from Jun. 24 to  Aug. 11. 2013',
                            'AtB sommerruter gjelder fra 24. juni til 11. aug. 2013.']).
 
-
-
 %% ACTUAL ROUTE PERIODS  SORTED ON --- END DATE ----
 %%see routes.pl
 
@@ -84,25 +82,36 @@ period_message( r1601_120101,
  'AtB Vinterruter']). %% \+ .   %% RS-111220
 
 
-period_message( r1611_121201,
+period_message( r1611_131201,
 ['AtB Winter routes',
  'AtB Vinterruter']). %% \+ .   %% RS-121223
 
-period_message( r1612_121224,
+
+period_message( r1612_131216,
 ['Routes for Christmas Eve',
- 'Ruter for Julaften']). %% \+ .   %% RS-121223
+ 'Ruter for Julaften']). %% \+ .   %% RS-131223
 
-period_message( r1613_121225,
+%%%% 1-2.juledag, 6.juledag, nyttårsdag
+period_message( r1613_131216,
 ['AtB Christmas routes',
- 'AtB Ruter for julen']). %% \+ .   %% RS-121223
+ 'AtB Ruter for jule- og nyttårsdagene']). %% \+ .   %% RS-131223
 
-period_message( r1614_121227,
+period_message( r1614_131216,
 ['AtB Christmas routes for 27th',
- 'Spesialruter for 27/12']). %% \+ .   %% RS-121223
+ 'Spesialruter for 27/12']). %% \+ .   %% RS-131223
 
-period_message( r1615_121224,
+%%%% 4.5.juledag
+period_message( r1615_131216,
+['AtB Middle Christmas routes',
+ 'AtB Ruter for romjulen']). %% \+ .   %% RS-131223
+
+period_message( r1616_131216,
 ['Routes for New Years Eve',
- 'Ruter for Nyttårsaften']). %% \+ .   %% RS-121223
+ 'Ruter for Nyttårsaften']). %% \+ .   %% RS-131223
+
+period_message( r1613_131216,
+['Routes for New Years Day',
+ 'Ruter for Nyttårsdagen']). %% \+ .   %% RS-131223
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
