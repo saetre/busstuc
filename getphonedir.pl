@@ -246,7 +246,7 @@ x_receive_tags(_,_,_):-  %%
 
 
 
-idiotpoint. %%
+%%idiotpoint. %% RS ??
 
 send_taggercall(Taggercall):-  %% CRITICAL
      write_taggercall(Taggercall).

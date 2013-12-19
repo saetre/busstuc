@@ -5,6 +5,8 @@
 
 %% The main file for the route database
 
+%% Ny linje
+:-ensure_loaded('db/route_period').        
 
 %% :-prolog_flag(discontiguous_warnings,_,off). 
 
@@ -29,4 +31,3 @@
 
 %%% COMPILE ALL THE BUS ROUTES NOW %%% RS-111224
 :- consultbase(tt). %% <-------------- %% TA-110302
-

@@ -94,11 +94,11 @@ period_message( r1612_131216,
 %%%% 1-2.juledag, 6.juledag, nyttårsdag
 period_message( r1613_131216,
 ['AtB Christmas routes',
- 'AtB Ruter for jule- og nyttårsdagene']). %% \+ .   %% RS-131223
+ 'AtB Juleruter']). %% \+ .   %% RS-131223
 
 period_message( r1614_131216,
-['AtB Christmas routes for 27th',
- 'Spesialruter for 27/12']). %% \+ .   %% RS-131223
+['AtB Christmas (Saturday) routes for 27th',
+ 'Spesial/lørdags-ruter for 27/12']). %% \+ .   %% RS-131223
 
 %%%% 4.5.juledag
 period_message( r1615_131216,
