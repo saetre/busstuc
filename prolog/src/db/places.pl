@@ -3396,7 +3396,7 @@ cmpl(ø,jakobsliv,jakobslivegen_øvre).
 cmpl(ø,rosten,østre_rosten). 
 cmpl(østmarka,[psykiatriske,sykehus],østmarkveien). 
 cmpl(østmarka,psykiatriske,østmarkveien). 
-cmpl(østmarka,sykehus,østmarkveien). % (Østmarkveien15). Avoid u ndersp "sykehus"
+cmpl(østmarka,sykehus,østmarkveien). % (Østmarkveien15). Avoid underspecified "sykehus"
 cmpl(østre,eberg,østre_berg). 
 cmpl(østre,ber,østre_berg). 
 cmpl(østre,berg,østre_berg). %% AtB 

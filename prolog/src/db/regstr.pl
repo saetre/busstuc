@@ -1770,7 +1770,7 @@ streetstat(østerli_street,'Østerlivegen',1,10,tyholt).
 streetstat(østersunds_street,'Østersunds gate',2,6,strandveien).
 streetstat(østersunds_street,'Østersunds gate',1,24,buran).
 streetstat(østkoll_street,'Østkollvegen',1,11,breidablikkveien).
-streetstat(østmark_street,'Østmarkveien',26,26,østre_berg).
+%%streetstat(østmark_street,'Østmarkveien',26,26,østre_berg). %% RS-131219 This can NOT be right!
 streetstat(østmark_street,'Østmarkveien',1,36,østmarkveien).
 streetstat(østmo_street,'Østmovegen',1,19,presthus).
 streetstat(østre_berg,'Østre Berg',1,36,østre_berg).

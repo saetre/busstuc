@@ -5,6 +5,7 @@
 %% REVISED TA-090617
 
 :- ensure_loaded('declare.pl').
+:- ensure_loaded('utility/utility'). %% RS-120816 sequence_member, ( := ), ( =: ),  etc.
 
 %% COMMON CO-VERSION BUSS TELE
 

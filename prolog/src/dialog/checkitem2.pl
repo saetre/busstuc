@@ -14,8 +14,8 @@
 
 :- ensure_loaded('newcontext2').
 
-:- volatile current_frame/1, last_answer/2.
-:-  dynamic current_frame/1, last_answer/2.
+%% :- volatile current_frame/1, last_answer/2. %% RS-131218
+%% :-  dynamic current_frame/1, last_answer/2. %% RS-131218 Trouble with multiple Modules?
 
 
 
