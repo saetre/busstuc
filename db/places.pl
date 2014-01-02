@@ -8,6 +8,7 @@
 % d1 --> dronningens_gate_d1  etc 
 % k1 --> kongens_gt_k1  etc 
 % m1 --> munkegata_m1 etc
+% p1 --> prinsens_gate_p1 etc
 
 %  Det heter Værestrøa ***
 
@@ -45,6 +46,8 @@
 %%%%%%%%%   REFERENCE TO STATION SECTION %% TA-110705
 
 
+%% HOVEDTERMINALEN == "Sentrum" %%
+
 %% corr(torget,hovedterminalen).         %% SUMMER %% TA-110628 %% RS-130816 REMOVED before WINTER...
 
 %% corr(prinsenkrysset,hovedterminalen). %% ???  SUMMER %% TA-110701
@@ -72,8 +75,6 @@ corr(kongens_gt_k2,hovedterminalen).
 %corr(kongens_gate_46,hovedterminalen). %% TA-110627
 %corr(kongens_gate_50,hovedterminalen). %% TA-110627
 
-
-
 %% corr(munkegata_m0,sentrum).  %% ad hoc sverresgt-> m0->sentrum
 
 %%%%%% corr(munkegata_m0,hovedterminalen).  %% Atb
@@ -93,7 +94,8 @@ corr(munkegata_m4,hovedterminalen).
 corr(munkegata_m41,hovedterminalen).  %% SIC
 corr(munkegata_m5,hovedterminalen). 
 
-
+corr(prinsen_gate_p1,hovedterminalen). %% Atb
+corr(prinsen_gate_p2,hovedterminalen). %% RS-140102
 
 corr(d1,hovedterminalen). 
 %corr(d2,hovedterminalen). 
@@ -115,6 +117,8 @@ corr(m4,hovedterminalen).
 corr(m41,hovedterminalen).  %% SIC
 corr(m5,hovedterminalen). 
 
+%corr(p1,hovedterminalen).  %% RS-140102 Difficulties with hovedterminalen != sentrum? Ambiguous p1 == prinsen == prinsens gate == ...
+%corr(p2,hovedterminalen).
 
 corr(stavset_senter,stavset_senter). 
 corr(studentersamfundet_1,studentersamfundet_2). 
@@ -165,10 +169,7 @@ alias_station(ntnu_dragvoll,dragvoll).
 %
 %STATION is (one among several/not preferred) stations that belong to the neighbourhood of PLACE
 
-%% ISAT    Station Neighbourhood
-
-isat(prinsens_gate_p1,prinsenkrysset). %% TA-110822
-isat(prinsens_gate_p2,prinsenkrysset). %% RS-131007
+%% ISAT    ( Station , Neighbourhood )
 
 isat(dronningens_gate_d1,sentrum). %% AtB
 %isat(dronningens_gate_d2,sentrum). 
@@ -185,6 +186,13 @@ isat(munkegata_m4,sentrum).
 isat(munkegata_m5,sentrum). 
 
 isat(olav_tryggvasons_gate,sentrum).    %% RS-121223
+
+%% RS-140102    TODO: hovedterminalen  vs.  sentrum ??
+
+isat(prinsens_gate_p1,prinsens_street). %% RS-131007 - 140102
+isat(prinsens_gate_p2,prinsens_street). %% RS-140102 See db/regstr.pl
+%isat(prinsens_gate_p2,prinsenkrysset). %% TA-110822  %% RS-131007 Didn't really work, obsolete?, see tegstr.pl
+
 
 isat(bratsberg_kirke,bratsberg). %% TA-110325
 
@@ -2384,6 +2392,8 @@ cmpl(ottonilsens,vei,otto_nielsens_veg).
 cmpl(ourens,vei,henrik_ourens_veg). 
 cmpl(ovre,flataasveien,øvre_flatåsveg). 
 cmpl(owesens,gate,thonning_owesens_street).  %% $Generic
+cmpl(p,[1],prinsens_gate_p1).
+cmpl(p,[2],prinsens_gate_p2).
 cmpl(p,kroghsv,peder_kroghs_v). 
 cmpl(p,[morsets,vei],peder_morsets_veg). %% peder_morsetts_v %% (SIC) HASTUS 
 cmpl(p,morsetsv,peder_morsets_veg). 
@@ -5992,10 +6002,13 @@ placestat(plantasjen,strindheim_hageby).  %% baldershage 18
  %% placestat(posthuset,postterminalen).  %%(\=p. h. isentrum)
 
 placestat(prinsen,prinsen_kinosenter). 
-placestat(prinsen,prinsen_kinosenter).  %%NBPRINSENisalsoafictitiousstation
+placestat(prinsen,prinsen_kinosenter).  %%NB PRINSEN is also a fictitious station
 placestat(prinsenkino,prinsen_kinosenter). 
-placestat(prinsens,prinsen_kinosenter).  %%(pgaavertering)
-placestat(prinsens_gate,prinsen_kinosenter). 
+%placestat(prinsens,prinsen_kinosenter).  %%(pga avertering) %% RS-140102 Veldig tvetydig: "prinsens gt p1" == To stopp og en gate?!
+%placestat(prinsens_gate,prinsen_kinosenter). RS-140101. prinsens_gate_p1 (og _p2) er nye offisielle navn på sentrumstasjonen! 
+%placestat(prinsens_gate,prinsens_gate_p1).     %% Doesn't work... Just one is the prefferred one. Use isat(X, prinsenkrysset)?
+%placestat(prinsens_gate,prinsens_gate_p2).
+%placestat(prinsens_gate,prinsenkrysset).
 placestat(prøven,kroppan). 
 placestat(prøvenbil,kroppan). 
 placestat(radmannbygget,gildheim). %%  Ranheimsvegen 10
@@ -7058,6 +7071,18 @@ short_specname(m5,'Munkegt M5').
 
 short_specname(moholt_studentby,'Moholt stud. by'). 
 short_specname(munkegata,'Munkegt'). 
+
+short_specname(p1,'Prins. gt P1').
+short_specname(p4,'Prins. gt P4').
+
+short_specname(prinsens_gate,'Prins. gt').
+ 
+short_specname(prinsens_gate_p1,'Prins. gt P1'). %% AtB
+short_specname(prinsens_gate_p4,'Prins. gt P4'). %% AtB
+
+short_specname(prinsens_gt_p1,'Prins. gt P1'). %% AtB
+short_specname(prinsens_gt_p4,'Prins. gt P4'). %% AtB
+
 short_specname(prinsen_kinosenter,'Prinsen kinos. '). 
 short_specname(prof_brochs_gate,'Prof. Brochs gt'). 
 short_specname(ranheim_stasjon,'Ranheim st. '). 
@@ -7379,6 +7404,13 @@ specname(persaunev,'Persaunevegen'). %% outdated?
 specname(prestegårdsjordet,'Prestegårdsjordet').  %% (error)
 specname(prinsen_kinosenter,'Prinsen kinosenter').  
 specname(prinsens_gate,'Prinsens gate'). 
+
+specname(prinsens_gate_p1,'Prinsens gate P1'). %% RS-140102
+specname(prinsens_gate_p2,'Prinsens gate P2').
+
+specname(p1,'Prinsens gate P1').  %% RS-140102
+specname(p2,'Prinsens gate P2').  %% RS-140102
+
 specname(r_i_t_hovedporten,'St Olavs hospital'). 
 specname(ranheim_kirke,'Ranheim kirke').  %% RS-130302 Replaced by Nedre Humlehaugen Øst 
 specname(reppe_endehlp,'Reppe endeholdeplass'). 
@@ -8923,6 +8955,10 @@ synplace(ottilenburg,othilienborg).
 synplace(ottonielsensvei,otto_nielsens_veg). 
 synplace(oya,øya). 
 synplace(owesensgate,thonning_owesens_street).  %% $Generic
+
+%synplace(p1,prinsens_gate_p1). %% RS-140102
+%synplace(p2,prinsens_gate_p2). 
+
 synplace(pedermorsetsv,peder_morsets_vei). 
 synplace(pedermorsetsvei,peder_morsets_vei).
 synplace(peppe,reppe). 

@@ -31,7 +31,7 @@
 :- use_module('db/busdat.pl').   %% split, Trondheim bus details
 
 :- compile('db/places.pl').  
-:- compile('db/auxtables.pl').  
+:- compile('db/auxtables.pl').
 :- consult('db/namehashtable.pl'). %% compile is too expensive  
 %% :- consult('db/statcoord2.pl'). %% RS-120727 statcoord and statcoord2 are not used in plain BUSTUC?
 
