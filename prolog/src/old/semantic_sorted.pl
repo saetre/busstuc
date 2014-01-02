@@ -6670,7 +6670,7 @@ particle(in_morning,time,pre).
 particle(in_night,time,pre).
 particle(in_midnight,time,pre).
 
-particle(Day,day,pre) :- user:(Day isa day).  
+particle(Day,day,pre) :- (Day isa day).  
 
 %% can not be prefix
 
