@@ -1265,7 +1265,7 @@ streetstat(presthus_street,'Presthusvegen',1,5,ranheim_idrettsplass).
 streetstat(presthus_street,'Presthusvegen',47,84,jakobslivegen_øvre).
 streetstat(presthus_street,'Presthusvegen',2,46,presthus).
 streetstat(prestmo_street,'Prestmovegen',1,17,presthus).
-streetstat(prinsens_street,'Prinsens gate',1,67,hovedterminalen).
+streetstat(prinsens_street,'Prinsens gate',1,67,prinsenkrysset).        %% RS-140102 Not quite 'hovedterminalen' !
 streetstat(prinsesse_street,'Prinsessevegen',1,6,askeladdvegen).
 streetstat(prof_brochs_street,'Prof Brochs gate',1,12,prof_brochs_gate).
 streetstat(prof_j_h_l_vogts_street,'Prof J.H.L. Vogts veg',1,7,tyholt).
