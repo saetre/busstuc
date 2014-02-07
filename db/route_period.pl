@@ -18,18 +18,18 @@
 %%route_period( tt, r1602_120813, date(2012,08,13),   date(2012,09,12) ).
 %%route_period( tt, r1612_121001, date(2012,10,01),   date(2012,11,30) ).  %% New nightbusses etc. ver5 Hoest 2012
 %%route_period( tt, r1601_120101, date(2012,01,01),   date(2012,12,31) ).
-route_period(   tt, r1613_130622, date(2013,06,22),   date(2013,08,11) ).	%% sommer2013
-route_period(   tt, r1611_131201, date(2013,12,01),   date(2013,12,23) ).	%% NyttPrinsenkryss, vinter2013-2014?
+%%route_period(   tt, r1613_130622, date(2013,06,22),   date(2013,08,11) ).     %% sommer2013
+route_period(   tt, r1611_131201, date(2013,12,01),   date(2013,12,23) ).       %% NyttPrinsenkryss, vinter2013-2014?
 route_period(   tt, r1612_131216, date(2013,12,16),   date(2013,12,24) ).       %% Julaften
 route_period(   tt, r1613_131216, date(2013,12,16),   date(2013,12,26) ).       %% 1-2.juledag, 6.juledag, nytt������rsdag
 route_period(   tt, r1614_131216, date(2013,12,16),   date(2013,12,27) ).       %% 3.juledag
 route_period(   tt, r1615_131216, date(2013,12,16),   date(2013,12,29) ).       %% 4.5.juledag
 route_period(   tt, r1613_131216, date(2013,12,16),   date(2013,12,30) ).       %% 1-2.juledag, 6.juledag, nytt������rsdag
-route_period(   tt, r1616_131216, date(2013,12,16),   date(2013,12,31) ).       %% Nytt���������������������������r
-route_period(   tt, r1613_131216, date(2013,12,16),   date(2014,01,01) ).       %% 1-2.juledag, 6.juledag, nytt������rsdag
-route_period(   tt, r1611_140203, date(2014,02,03),   date(2014,04,14) ).	%% mars 2014
+route_period(   tt, r1616_131216, date(2013,12,16),   date(2013,12,31) ).       %% Nyttår
+route_period(   tt, r1613_131216, date(2013,12,16),   date(2014,01,01) ).       %% 1-2.juledag, 6.juledag, nyttårsdag
+route_period(   tt, r1611_140203, date(2014,02,03),   date(2014,04,14) ).       %% mars 2014
 route_period(   tmn,r1630_101201, date(2012,12,01),   date(2014,12,31) ).
 route_period(   gb, r1630_111201, date(2012,12,01),   date(2014,12,31) ).  %% Graakallbanen
-route_period(   tt, r1605_140102, date(2014,01,02),   date(2015,01,01) ).	%% 2014v1, %% NyttPrinsenkryss, vinter2013-2014
-%%route_period(   tt, r1601_130930, date(2013,09,30),   date(2014,07,22) ).       %% H������������������������������������st2013oktober
+route_period(   tt, r1605_140102, date(2014,01,02),   date(2015,01,01) ).       %% 2014v1, %% NyttPrinsenkryss, vinter2013-2014
+%%route_period(   tt, r1601_130930, date(2013,09,30),   date(2014,07,22) ).       %% Høst2013oktober
 %%route_period(   tt, r1613_130812, date(2013,08,12),   date(2014,06,22) ).     %% Vinter13_14
