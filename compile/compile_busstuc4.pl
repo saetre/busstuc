@@ -3,7 +3,7 @@
 %% CREATED TA-040615
 %% REVISED TA-040617
 
-% Compiles the BussTUC system for NTNU server.
+% Compiles the BussTUC system for NTNU server and AtB.
 
 ?-compile('../busstuc').
 ?-save_program('../busestuc4').
