@@ -1,4 +1,5 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
+%% RS-130625    %% RS-131229 Compiled by monobus.pl
 %% Discrepancies r1611_110627 r1601_110822 
 alias_station2(16010246,kroppan_bru,kroppanbrua).
 alias_station2(16010348,olav_nygards_veg,olav_nygårds_veg).

@@ -19,24 +19,31 @@
 
 % See also names.pl for general synonyms
 
-/*
-
-  alias_name/2,            % (NAME,NAME)
-  alias_station/2,         % (STATION,STATION)
+:-module( places, [ alias_name/2, alias_station/2, aliasteamatb/3, % (NAME,NAME) % (STATION,STATION) % (STATNUMBER,STATION_TEAM,STATION_ATB)  %%%%%% Conversion TA-100822
   cmpl/3,                  % (NAME,NAME*,LIST)
   corr/2,                  % (PLACE,PLACE)
+  foreign/1,               % (PLACE), e.g. aalesund, orkanger(?).   %%% FOREIGN (to Trondheim) places
   isat/2,                  % (STATION,PLACE)
+  nostation/1,             % (PLACE)
   place_resolve/2,         % (PLACE,STATION).
   placestat/2,             % (PLACE,STATION)
   sameplace/2,             % (PLACE,PLACE)
-  short_specname/1,        % (NAME,STRING)
+  short_specname/2,        % (NAME,STRING)     %% RS-131225 For consice SMS-messages
   specname/2,              % (NAME,STRING)
   synplace/2,              % (NAME,PLACE)
   underspecified_place/1,  % (PLACE)
   unwanted_place/1,        % (PLACE)
-  unwanted_station/1,      % (PLACE)
+  unwanted_station/1       % (PLACE)
+] ).
 
-*/
+%%RS-131225     %% UNIT: /
+:- ensure_loaded( user:'../declare' ). %, [ := /2 etc. ] ).      %RS-131225  Get dynamic definition for user:value/2
+%%MISERY! user:?
+:- use_module( '../tucbuses.pl' ). %%,[  backslash/1  ]).
+
+%%RS-131225     %% UNIT: utility/
+%:-ensure_loaded( user:'../utility/utility.pl' ).  %% value/2 etc.
+:- use_module( '../utility/utility', [ ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
 
 
 
@@ -359,20 +366,20 @@ isat(øvre_flatåsveg,flatåsen). % 9,17
 
 nostation(arbeidsbuss). %% SIC  endstation bus 100 
 
-nostation(bygrensen):- \+value(tmnflag,true).    
+nostation(bygrensen):- \+user:value(tmnflag,true).    
 
-nostation(ferstad):-   \+value(tmnflag,true). %% Ferstads vei
+nostation(ferstad):-   \+user:value(tmnflag,true). %% Ferstads vei
 
 nostation(frøset). 
 
 
 
-nostation(herlofsonsløypa) :- \+value(tmnflag,true). 
+nostation(herlofsonsløypa) :- \+user:value(tmnflag,true). 
 %% nostation(heggsnipen). %% fins ikke i rdata(barei hefte). %%fikset 5.3.07
-nostation(lian):-      \+value(tmnflag,true).  
-nostation(nordre_hoem) :- \+value(tmnflag,true). 
-nostation(rognheim) :- \+value(tmnflag,true). 
-nostation(søndre_hoem):- \+value(tmnflag,true). 
+nostation(lian):-      \+user:value(tmnflag,true).  
+nostation(nordre_hoem) :- \+user:value(tmnflag,true). 
+nostation(rognheim) :- \+user:value(tmnflag,true). 
+nostation(søndre_hoem):- \+user:value(tmnflag,true). 
 
 
 %%%%%% Nostation  no bus to place ever
@@ -470,7 +477,10 @@ nostation(sunnlandsskrenten).      %%  (no spellc)
 nostation(sundlandsveien). 
     nostation(sundlandsvn). %% NO SPELLCORR to NOSTATION 
  nostation(sundlandsskrenten). 
+
 %  nostation(st_olavs_gate). 
+nostation(st_olavs_gt):- \+ user:value(tmnflag,true).        %% RS-131223    From busdat.pl
+
 
 nostation(teisendammen).  
 nostation(theisendammen). 
@@ -2371,6 +2381,7 @@ cmpl(omkjøringsveien,nardokrysset,omkjøringsveien_nardo).
 cmpl(oops,lade,city_lade).  %%
 cmpl(ops,lade,city_lade).  %%nec?
 cmpl(orkdalsbussen,[],hob). 
+cmpl(orkanger,[skole], orkanger_skole). %%RS-131222 Flere stasjoner takk!      
 cmpl(oskar,bråtensvei,oskar_braatens_street). 
 cmpl(oslo,bussterminal,oslo). 
 cmpl(oslo,s,oslo). 
@@ -3138,6 +3149,8 @@ cmpl(torbjørn,[brath,veg],'Torbjørn Bratts veg').
 cmpl(torbjørn,[braths,veg],'Torbjørn Bratts veg'). 
 cmpl(torbjørn,[bratts,veg],'Torbjørn Bratts veg'). 
 cmpl(torbjørn,[brattsvei],'Torbjørn Bratts veg'). 
+cmpl(torget,[orkanger], torget_orkanger). %%RS-131222 Flere stasjoner takk!      
+
 cmpl(torp,holdeplass,torplassen).  %% misu nderstanding?
 cmpl(tors,plass,torplassen). 
 cmpl(torv,myra,torvmyra). 
@@ -4604,7 +4617,7 @@ foreign(oppsal).
 foreign(opstad).   %%  \+ okstad
 foreign(opsund).   
 foreign(oredalen).
-foreign(orkanger). 
+%% foreign(orkanger).  %% RS-131222    Try to include more! 
    foreign(organger). 
    foreign(orkager). 
 foreign(orkdal). 
@@ -5531,6 +5544,9 @@ place_resolve(kino,prinsen_kinosenter).
 place_resolve(kino,rosendal). 
 place_resolve(ntnu,dragvoll). 
 place_resolve(ntnu,gløshaugen).  %% try without GløsS
+
+place_resolve(orkanger,orkanger_skole). %% RS-131222
+
 place_resolve(prestegården,berg_prestegård). 
 place_resolve(prestegården,prestegårsjordet).  %%gårdj
 place_resolve(rutebilstasjonen,hovedterminalen). 
@@ -6662,6 +6678,7 @@ sameplace(olavshospital,st_olavs_hospital).
 sameplace(olavshospitalet,st_olavs_hospital). 
 sameplace(olavtryggvasonsgate,olav_tryggvasons_gate). 
 sameplace(olavtrygvasonsgt,olav_tryggvasons_gate). 
+sameplace(orkangerskole,orkanger_skole).
 sameplace(ostmarkveien,østmarkveien).
 sameplace(othelianborg,othilienborg). 
 sameplace(othileborg,othilienborg). 
@@ -7392,7 +7409,10 @@ specname(olav_tryggvasons_gt,'Olav Tryggvasons gate').  %%Default
 
 specname(omkjøringsv_klæbuvveien,'Omkjøringsveien Klæbuveien').  %% EH-031121
 specname(omkjøringsveien_moholt,'Omkjøringsveien Moholt'). 
-specname(omkjøringsveien_nardo,'Omkjøringsveien Nardo'). 
+specname(omkjøringsveien_nardo,'Omkjøringsveien Nardo').
+
+specname(orkanger_skole,'Orkanger skole'). %% RS-131222. Flere!
+
 specname(oscar_wistingsv,'Oscar Wistings vei').  %% EH-031017
 specname(otto_nielsens_veg,'Otto Nielsens vei'). 
 specname(paul_skolemesters_veg,'Paul skolemesters veg').%% TA-110803
@@ -7496,9 +7516,9 @@ specname(trondheim_torg,'Trondheim Torg').
 specname(trondheim_sentralstasjon,'Trondheim Sentralstasjon'). %% TA-110628
 specname(ts,'Trondheim Sentralstasjon'). 
 
-specname(ts10,'Trondheim Sentralstasjon ') :-value(airbusflag,true),!. 
-specname(ts11,'Trondheim Sentralstasjon ' ):-value(airbusflag,true),!.  
-specname(ts13,'Trondheim Sentralstasjon')  :-value(airbusflag,true),!. 
+specname(ts10,'Trondheim Sentralstasjon ') :-user:value(airbusflag,true),!. 
+specname(ts11,'Trondheim Sentralstasjon ' ):-user:value(airbusflag,true),!.  
+specname(ts13,'Trondheim Sentralstasjon')  :-user:value(airbusflag,true),!. 
 
 specname(ts10,'Trondheim Sentralstasjon holdeplass 10'). 
 specname(ts11,'Trondheim Sentralstasjon holdeplass 11').  %% EH-031017
@@ -8876,7 +8896,7 @@ synplace(nyåsen,byåsen).
 synplace(nåva,nova_kinosenter). 
 synplace(oeveraas,øverås). 
 synplace(ofstisv,øfstis_vei).  %%einarofstisv. 
-synplace(okanger,orkanger). 
+synplace(okanger,orkanger).
 synplace(oksda,okstad). 
 synplace(ola,olaf). 
 synplace(ola,olav). 
@@ -8914,8 +8934,10 @@ synplace(oops,city_lade).
 synplace(opland,oppland).  %%bus 10 skistua down
 synplace(oppland,opland).  %%bus1 0 up skistua
 synplace(ops,city_lade). 
-synplace(orkander,orkanger). 
+synplace(orkander,orkanger).
 synplace(orkangar,orkanger). 
+synplace(orkanger,orkanger_skole).
+synplace(orkanger_torg,torget_orkanger).
 synplace(osb,city_lade).  %% (not spell # < 4)
 synplace(ostersund,østersund). 
 synplace(ostmarkveien,østmark_street). %% no spell 1. letter 

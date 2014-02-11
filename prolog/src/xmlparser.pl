@@ -1,7 +1,12 @@
 %% FILE xmlparser.pl
-%% SYSTEM TELETUC
+%% SYSTEM TELETUC ("Buster")
 %% CREATED  TA-020617
 %% REVISED  TA-020624
+
+:-module( xmlparser, [
+        xmlrowparse/2,
+        xmltaggerparse/2
+] ).
 
 xmltaggerparse(F,Struct):-
 
@@ -109,14 +114,5 @@ skiprestlist --> [].
 
 xmltag(Result)   --> ['<',Result,'>'].
 xmluntag(Result) --> ['<','/',Result,'>'].
-
-
-
-
-
-
-
-
-
 
 

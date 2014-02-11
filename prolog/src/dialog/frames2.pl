@@ -3,27 +3,35 @@
 %% CREATED TA-051016
 %% REVISED TA-060419
 
-
-
-
 %% Common version for frames and teleframes 
 
-%frameval(Type, Value, Filled, Confirmed, Experience)
-%subframe(Template, Id,)
-
-:- use_module(library(system)).
-
-:- assert(framecounter(1)).
-
-:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
+:-module( frames2, [ find_askfor/3, find_parentslot/3, frame_getcount/2, frame_getsubslots/2, frame_gettype/2, frame_getvalue_rec/4,
+        frame_iscomplete/1,     frame_isempty/1,        frame_isfull/1,         frame_setexperience/4,  frametemplate/2,
+        is_subframe/2,          %% RS-140101    External?
+        resetframe/0,           xframe_getvalue/2,      xframe_setvalue/2
+]).
 
 :-volatile
            framecounter/1.
 :-dynamic
            framecounter/1.
 
-%% Frame Declarations
+:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
 
+%% RS-140101 UNIT: EXTERNAL
+:- use_module(library(system)).
+
+%% RS-131225    UNIT: dialog/
+%:- ensure_loaded( '../dialog/newcontext2' ). %%, [ getcurrent/1 ] ). %% RS-131223 etc? getcurrent/1, sequence_member/2
+%:- use_module('../dialog/newcontext2', [ getcurrent/1 ] ). %% RS-131223 etc? getcurrent/1, sequence_member/2
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:- assert(framecounter(1)).
+
+%% Frame Declarations
+%frameval(Type, Value, Filled, Confirmed, Experience)
+%subframe(Template, Id,)
 
 frametemplate(telebuster,               %% NEW, UNION OF tele and bustuc
     [   [where, ?, subframe(where), 1],
@@ -101,7 +109,7 @@ frametemplate(itemsfound,
     ]).
 
 
-%% Don't be dogmatic and ask  when::departure or when::arrival          '
+%% Don't be dogmatic and ask  when::departure or when::arrival
 
 completeframe(
     [
@@ -138,7 +146,7 @@ completeteleframe( %%  hva er adressen til AITEL ?
 
 
 resetframe :-    % unnec                           %% TLF-030402
-    value(teleflag, true),!,
+    user:value(teleflag, true),!,
     getcurrent(Cid),
     frametemplate(telebuster, NewFrame),    %% TA-051018
     setframe(Cid, NewFrame).
@@ -184,13 +192,13 @@ frame_getexperience_rec(Frame, Slot, Value, Type) :-
 %%%%%%%%%%%
 
 xframe_setvalue(Slot, Value) :-  %% TA-060328
-    value(dialog,1),
+    user:value(dialog,1),
     !,
     frame_setvalue(Slot, Value).
 xframe_setvalue(_Slot, _Value).
 
 xframe_getvalue(Slot, Value) :-  %% TA-060328
-     value(dialog,1),
+     user:value(dialog,1),
      frame_getvalue(Slot, Value,_Type).
 xframe_getvalue(_Slot, nil). %% NB nil not []
 
@@ -221,7 +229,7 @@ frame_setvalue_rec(Frame, Slot, Value, NewFrame) :-
     substitute([Slot, OldVal, class(Type), XCount], Frame, [Slot, Value, class(Type), Count], NewFrame).
 
 frame_getsubslots(StartSlot, Slot) :-           %% TLF 030402
-    value(teleflag, true),!,
+    user:value(teleflag, true),!,
     frametemplate(telebuster, Frame),           %% TA-051018
     frame_getsubslots(Frame, StartSlot, Slot).
 
@@ -393,7 +401,7 @@ frame_iscomplete(Miss) :-
     frame_iscomplete(Frame, Miss).
 
 frame_iscomplete(Frame, Miss) :-    %% TLF 030403
-    value(teleflag, true),
+    user:value(teleflag, true),
     !,
     (
         frame_isconsistent_tele(Frame),!,

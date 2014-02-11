@@ -5,7 +5,7 @@
 
 %% Dialog Grammar execution 
 
-
+:-use_module( '../bustermain2.pl', [ dialog/0, trackprog/2 ] ).       %% RS-140210
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

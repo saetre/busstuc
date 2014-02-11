@@ -9,15 +9,17 @@
 
 
 
-?-prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates
+%%?-prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates
 
-?-compile('tucbuses.pl'). 
+%:-compile('tucbuses.pl'). 
+:- use_module( tucbuses ). %% RS-131227 Avoid loop?
 
 ?-compile('version.pl').
 
 ?-compile('monobus.pl').
 
-?-compile('main.pl').  
+%?-compile('main.pl').  
+:- use_module( main, [  ] ). %% RS-131227 Avoid loop?
 
 
 ?- (internal_aitbusflag  := false), %% NB May change <--- ???

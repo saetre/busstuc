@@ -3,7 +3,7 @@
 %% CREATED   TA-051007
 %% REVISED   TA-060208
 
-:- ensure_loaded('declare'). %% RS-111213 General (semantic) Operators
+:- ensure_loaded( user:'declare' ). %% RS-111213 General (semantic) Operators
 
 %% UNIX Version
 
@@ -12,9 +12,10 @@
 
 
 
-?-prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates
+%%?-prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates
 
-g:-['tucbuster.pl'].   %% :-[tuctele]. %%% // Tele things %% TA-051018
+%:-['tucbuster.pl'].   %% :-[tuctele]. %%% // Tele things %% TA-051018
+:- use_module( 'tucbuster.pl', [ ] ).   %% :-[tuctele]. %%% // Tele things %% TA-051018
 
 :- (duallangflag :=true). %% telebuster is not  speech based
 

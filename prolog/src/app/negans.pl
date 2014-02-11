@@ -6,10 +6,32 @@
 
 %% Handle empty answer from buslog 
 
-:- ensure_loaded( '../declare' ).       %% RS-111212 :-op( 710,xfx, isa ).
+%UNIT: /app/
+:- module( negans, [ cannot/1, cannotanswer/1, makenegative/3, trytofool/3 ] ).
+
+
+:- ensure_loaded( user:'../declare' ).       %% RS-111212 :-op( 710,xfx, isa ).
+
+:- use_module( '../main', [ traceprog/2 ] ).  %% RS-140209
+
+:- use_module( '../app/buslog', [ bus/1, neverpasses/2, place_station/2, station/1 ] ).       %% RS-111212 :-op( 710,xfx, isa ).
+:- use_module( '../app/telelog', [ bound/1 ] ).    %% RS-131225
+
+:- use_module( '../db/busdat', [ disallowed_night/1, vehicletype/2 ]). %, xforeign/1, nightbus/1 ]).
+
+%UNIT: /tuc/
+:- use_module( '../tuc/facts', [ isa/2 ] ).       %% RS-131225    Necessary?
+
+:- use_module( '../utility/datecalc', [ days_between/3, daysucc/2, today/1  ]).
+:- use_module( '../utility/utility', [ sequence_member/2, testmember/2 ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+progtrace(X,Y) :- traceprog(X,Y).  %% from main.pl
+
 
 makenegative((head,_TF_),_,nl):- 
-    progtrace(4,ne00),
+    progtrace(4,ne00),     %% from main.pl
     !.
 
 makenegative((confirm,_TF_),_,(bcpbc(ok),period)):-
@@ -190,7 +212,7 @@ makenegative((new,_),P,Ans)        :-
            bcp(notpossible),nl). 
 
 makenegative((new,_),Prog,Ans)  :- 
-      value(dialog,1),
+      user:value(dialog,1),
       sequence_member(message(M),Prog),    %%
       progtrace(4,ne21),!, 
       Ans = (printmessage(M)) .
@@ -283,7 +305,7 @@ makenegative((modifier(_),_),Q,Ans)   :-
 
 
 makenegative(_,Prog,Ans):- 
-    value(smsflag,true),
+    user:value(smsflag,true),
     sequence_member(message(answer(db_reply(_,_,_))),Prog),
      progtrace(4,ne33),!,
     Ans =  space0. %%% ??? 
@@ -416,14 +438,14 @@ makenegative(_,_,true) :- %% no extra nl
  %% not standard nightbus message if following weekend is abnormal
 notthenanswer(Date,_Wed,_,_Q,
            (bcpbc(generalnightbuseaster),period)) 
-    :-value(nightbusflag,true), 
+    :-user:value(nightbusflag,true), 
     following_weekend_abnormal(Date),
     !,                         %%
     progtrace(4,nt0). 
 
 notthenanswer(_Date,easterhol,_,_Q,
            (bcpbc(cannotfindanyroutes),period,bcpbc(generalnightbuseaster),period))
-    :-value(nightbusflag,true),
+    :-user:value(nightbusflag,true),
     !,  
     progtrace(4,nt1).
 
@@ -443,7 +465,7 @@ notthenanswer(_Date,Day,_,Q, (bcpbc(cannotfindanyroutes),nibcp(Day),DirAns,stand
 
 
 notthenanswer(_Date,Day,Clock,Q, (bcpbc(noroutes),nibcp(Day),bcp(before),bwt(Clock),DirAns) ):-
-    \+ value(nightbusflag,true), 
+    \+ user:value(nightbusflag,true), 
     Clock \== 9999,  
     sequence_member(keepbefore1(Clock,_,_),Q),
     \+ sequence_member(keepbetween(_,_,_,_),Q), %% avoid not 1100 (morning ?) when 
@@ -452,7 +474,7 @@ notthenanswer(_Date,Day,Clock,Q, (bcpbc(noroutes),nibcp(Day),bcp(before),bwt(Clo
     dirans(Q,DirAns).
 
 notthenanswer(_Date,Day,Clock,Q, (bcpbc(noroutes),nibcp(Day),bcp(attime),bwt(Clock),DirAns) ):-
-    \+ value(nightbusflag,true), 
+    \+ user:value(nightbusflag,true), 
     Clock \== 9999,  
     \+ sequence_member(keepbetween(_,_,_,_),Q), %% avoid not 1100 (morning ?) when 
     !,                                       %% keepbetween was the restriction
@@ -472,7 +494,7 @@ notthenanswer(_Date,Day,Clock,Q, (bcpbc(noroutes),nibcp(Day),bcp(attime),bwt(Clo
 notthenanswer(_Date,Day,_,Q,(bcpbc(nolonger),  DirAns,standnight(Day))):- 
     sequence_member(connections(_,_,_,_,_,_,_,Options,_,_),Q), %% not test
 
-(  %%%%%%   value(smsflag,true);  %% Will "always" try solutions after now 
+(  %%%%%%   user:value(smsflag,true);  %% Will "always" try solutions after now 
      member(next,Options);
      member(next(_),Options);
      member(nextaftertime(_),Options)
@@ -488,7 +510,7 @@ notthenanswer(_Date,Day,_,Q,(bcpbc(nolonger),  DirAns,standnight(Day))):-
 %% if route day mapped to same day    
 notthenanswer(_Date,Day,_,Q,(       bcpbc(nolonger),nibcp(Day),DirAns,standnight(Day))):- 
      sequence_member(connections(_,_,_,_,_,_,_,Options,_,_),Q),  %% not test 
-(    value(smsflag,true);  %% dubious, excludes nolonger message if smsflag false
+(    user:value(smsflag,true);  %% dubious, excludes nolonger message if smsflag false
      member(next,Options);
      member(next(_),Options)),
 
@@ -535,7 +557,7 @@ notthenanswer(_Date,Day,_,Q,(bcpbc(nolonger),nibcp(Day),DirAns,standnight(Day)))
 
 notthenanswer(_Date,Day,_,Q, 
     (bcpbc(notpossible),nibcp(Day),DirAns,standnight(Day))):- 
-    value(nightbusflag,true),
+    user:value(nightbusflag,true),
     !,
     progtrace(4,nt10night),  
     dirans(Q,DirAns).
@@ -615,7 +637,7 @@ getactualday(P,Day) :-
        !,
 
 %% This is stupid, but we have to recompute the actual day
-%% because  total program backtracks
+%% because   total program backtracks
 
   
 
@@ -1042,7 +1064,7 @@ trytofool(dob/forgive/_/tuc/_,    thanks).           %%
 
 trytofool(dob/greet/'I'/_/_,     thanks). 
 
-trytofool(doit/go/UNIX/_,        thatisimpossible):- UNIX isa system.
+trytofool(doit/go/UNIX/_,        thatisimpossible) :- UNIX isa system.
 trytofool(doit/greet/tuc/_,      sorrycannot). 
 trytofool(dob/greet/tuc/_/_,      sorrycannot). 
 

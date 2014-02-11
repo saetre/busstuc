@@ -12,9 +12,8 @@
 
 %% ?-[sicstus4compatibility],   %% Only used in drucke_baum
 
-?-   ['tucsms.pl'].
-?-   ['busroute.pl'].
- 
+?- ['tucsms.pl'].
+%?- ['busroute.pl'].
+?-use_module('busroute.pl').    %% RS-140102. Import all predicates from this module!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-

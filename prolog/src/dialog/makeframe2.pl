@@ -5,16 +5,20 @@
 
 %% REVISED                  COMMON VERSION
 
-:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
-:- ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators
-:- ensure_loaded('../utility/utility'). %% RS-131117 dynamic (but NOT volatile) value/2 etc.
+:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
+
+%:-ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators
+:- use_module( '../app/pragma', [] ). %% RS-140207 Pragmatic (rule) Operators
+
+%:-ensure_loaded( user:'../utility/utility' ). %% RS-131117 dynamic (but NOT volatile) value/2 etc.
+:- use_module( '../utility/utility', [] ). %% RS-140207 Pragmatic (rule) Operators
 
 
 :- module(makeframe,[ rule/2 ]). %% - maketeleframe  %% RS-130624 Experiment from 2012?
 
 
 
-%% tracevalue(X):- user:value(traceprog,X),!; X=1.
+%% tracevalue(X):- value(traceprog,X),!; X=1.
 
 returnfields rule %% TA-051030
 is  present teleprocess([A,B|C],_,_,_) %% at least one (hope they are valid)

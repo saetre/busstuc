@@ -4,33 +4,102 @@
 %% CREATED TA-930531
 %% REVISED TA-110207
 
-
 %% Main program for BussTUC
 
-:- ensure_loaded('declare'). %% RS-111213  General (semantic) Operators
-:- ensure_loaded('tucbuses'). %% RS-130329 Make sure (gram/lang) modules are available: dcg_module, 
+%%% RS-131225, UNIT: /
+%% USAGE:  :- ensure_loaded( user:'main' ). %, [ xxx ] ).  %% RS-131117
+%%MISERY?::- use_module(  '../main' , [ traceprint/2, track/2 ] ). %%RS-140209
 
-:-use_module(library(timeout)). 
-:-use_module(library(process)).
+% c = compile % (::)/2 is used in inger! How does it work? %% RS-140208 %Extra? crash/0 is used a a test of SPIDER etc.
+:-module( main, [ gps_origin/2, abortword/1, begin/0, break/1, c/1, check/0, create_taggercall/2, dialog/0, english/0, gorg/0, haltword/1,  idiotpoint/0,  listxt/0, logrun/0, norsk/0, ns/1,
+        %RUN-predicates, with (very slow!) and without debug.
+        hei/0, hi/0, ho/0, norsource_prefix/0, run/0, traceprint/2, trace/2, track/2, jettyrun/1, mtrprocess/1, %Extra! Remove! mtrprocessweb/1,
+        printdots/0, printparse/1, progtrace/2, r/1, readday/0, readscript/0, restart/0, run/1, reset/0, scanfile/2, ( sp )/1, spyg/1, spyr/1, statistics/1, status/0, testgram/0,
+        traceprog/2, trackprog/2,  tuc/0, value/1, verify_empty_origins/0, webrun_english/0, webrun_norsk/0, webrun_tele/0, write_taggercall/1
+]).
+
+%% local copy of META-PREDICATES from utility.pl
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+for(P,Q):-
+  P,Q,
+  false;true.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% myflags/2 EXPERIMENT, %% set/2, %% RS-131226 Moved to utility.pl!
+%From BusterMain2, evaluate-modules (Use them instead?)
+%% COMMON CO-VERSION: BUSS & TELE
+%        difact/2,       %% Dynamic,  context dependent  %% TA-980301
+%        fact0/1,        %% Semi permanent, in evaluate.pl
+%        quit/0,%        receive_tags/1,%        send_taggercall/1,     %% From getphonedir!
+        %Compilation and PRINT predicates?
+
+%% UNIT: EXTERNAL LIBRARIES
+:-use_module( library(process) ).
+:-use_module( library(system) ).
+:-use_module( library(timeout) ). %% RS-140210. Includes time_out/3!
 % ?-prolog_flag(gc_trace,_,verbose).
 
+%% RS-131227    UNIT: / & utility base
+:- ensure_loaded( user:'declare' ). %% RS-111213  General (semantic) Operators, := /2, =: /2, set/2, value/2, ...
+
+%% RS-131225, UNIT: utility/
+:- use_module( 'utility/library', [ reverse/2, shell/1 ] ).%% RS-131225
+:- use_module( 'utility/utility' ). %% RS-140210. SAFER to include EVERYTHING, since starttimebatch/0 is called from \r tests/batch.n for example
+%:- use_module( 'utility/utility', [ append_atomlist/2, append_atoms/3, doubt/2, makestring/2, out/1, output/1, prettyprint/1, psl/2, purge/3,
+%       shell_copyfile/2, starttime/0, starttimebatch/0, writelist/1 ] ). %% RS-131225, reverse/2
+%:- ensure_loaded( user:'utility/utility' ). %%, [ (:=)/2,  append_atoms/3,  out/1,  output/1,  value/2 ]). %%RS-131224
+
+%% RS-131227    UNIT: /
+:- ensure_loaded( user:version ).       %% RS-131227    With version_date/1
+:-use_module( getphonedir, [ create_tags/1 ]).        %% RS-131227    send_taggercall/1, etc.
+:-use_module( ptbwrite ). %%, [ drucke_baum_list/1, ptbwrite/1 ] ).
+:-use_module( sicstus4compatibility, [ tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+
+% Common File for tucbus  (english) and  tucbuss (norwegian)
+%:- ensure_loaded( user:tucbuses ).  %% RS-130329 Make sure (gram/lang) modules are available: dcg_module, 
+:- use_module(tucbuses,[ dcg_module/1, language/1, legal_language/1, readfile_extension/1, script_file/1 ]). %%backslash/1, 
+
+% Interface procedures for handling interface to route modules
+%:-compile(interfaceroute). %%, [  reset_period/0  ]).
+:-use_module( interfaceroute, [  reset_period/0 ] ).
+%:-use_module( xmlparser, [ xmltaggerparse/2 ] ). %% RS-140102  For getphonedir.pl etc...
+
+
+%% RS-131227    UNIT: db/
+%% File containing TELEDAT %% co-existing with BUSDAT
+:- use_module( 'db/teledat2', [ teledbrowfile/1 ] ). %% RS-131231 , teledbtagfile/1
+%% Time data for bus routes in general
+:- use_module( 'db/timedat', [ create_named_dates/0 ]).
+
+%% RS-131227    UNIT: dialog/
+:- ensure_loaded( user:'dialog/d_dialogue' ).  %% RS-130329 dialogrun0/0 
+
+%% RS-131227    UNIT: tuc/
+:- use_module( 'tuc/anaphors' , [ resolve/2 ] ).       %% RS-131227
+:- use_module( 'tuc/evaluate', [ evaluateq/1, evaluateq2/1 ] ). %% RS-131224      fact0/1 etc. is DANGEROUS?
+        %% Moved to lex? ctxt/3, txt/3, maxl/1 %% RS-131225
+        %% Semi-tagger (quasi multitagger)
+:-use_module( 'tuc/lex', [ decide_domain/0, lexproc3/3, maxl/1, mix/2, no_unprotected_verb/0, spread/1, unknown_words/2 ] ).
+:-use_module( 'tuc/readin' ). %%, [  ask_file/1, ask_user/1, read_in/1, words/3  ]). %%  Read a sentence into a list of symbols
+:-use_module( 'tuc/translat', [    clausifystm/1,     clausifyq/2  ] ).        %% RS-131227    UNIT: tuc/
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Main program
 
 :-volatile %webstat/3,  % webstat(date(2009,04,21),#sms,#tot).
-
-          txt/3,      % elementary words
-          ctxt/3,     % composite words 
-          maxl/1,     % number  of words
-
-          gps_origin/2 . %% TA-110127
+%        (::)/2,         %% RS-131228 For inger.pl 
+%        txt/3,      % elementary words %% RS-131225    MOVED to tuc/lex.pl
+%        ctxt/3,     % composite words 
+%        maxl/1,     % number  of words
+        gps_origin/2 . %% TA-110127   %% Set by user input: Station +minutes
 
 :-dynamic %webstat/3.  % webstat(date(2009,04,21),#sms,#tot).
-        (=>)/2,
-      txt/3,      % elementary words
-      ctxt/3,     % composite words 
-      maxl/1,     % number  of words
-
-      gps_origin/2 . %% TA-110127
+%        (::)/2,        %% RS-131228 For inger.pl , How does it work?
+%        txt/3,      % elementary words %% RS-131225    MOVED to tuc/lex.pl ??
+%        ctxt/3,     % composite words 
+%        maxl/1,     % number  of words
+        gps_origin/2 . %% TA-110127
 
 
 ?-op(1150,fx,spyg). %% spy grammar rule
@@ -38,6 +107,17 @@
 ?-op(1150,fx,sp).   %% spy X,X
 ?-op(1150,fx,c).    %% consult file  %% TA-110106 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Utility-functions
+X := Y :-
+        user:( X := Y ).
+X =: Y :-
+        user:( X =: Y ).
+value(X,Y) :-
+        user:value(X,Y).
+set(X,Y) :-
+        user:set(X,Y).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 gorg :-listing(gps_origin). %% debug %% TA-110128
 
@@ -48,7 +128,7 @@ break(_). %% dummy for breakpoints
 % c(File) :- consult(File). %% TA-110106 %% Moved down 
 
 
-crash :- tore_amble_is_a_genious.  %% test on undefined predicate
+%crash :- tore_amble_is_a_genious.  %% test on undefined predicate
 
 spyg X :- dcg_module(L), 
           parsetime_limit := 100000, %%  ONLY FOR DEBUGGING
@@ -58,18 +138,6 @@ spyr X :- debugrule := X,
           spy spy_me.
 
 sp X :- functor(X,F,_),spy F,X.  %% call X with spy on X 
-
-
-%% timeout WITHOUT _
-
-timeout(     S, _L, success):-  %% If timeout doesn't work
-    value(notimeoutflag,true), 
-    !,
-    call(S).
-
-
-timeout(     S, L, Success):- 
-    time_out(     S, L, Success).
 
 statistics(G) :- 
                statistics(G,K),
@@ -108,7 +176,7 @@ readscript1(X):-
 
 % Default settings. May be redefined
 
-initiate :-   %% called at compiletime !  
+initiate :-   %% called at compiletime !  RS-131227
     trace:=1,      
     maxdepth:=3,   
     error_phase:=0,
@@ -133,7 +201,7 @@ restart:-
     run.
 
 erase:-
-    retractall(fact0(_)),  % Semipermanent facts
+    retractall( user:fact0(_) ),  % Semipermanent facts
     skolemax := 0,  
     skolocon := 0, 
     reset.
@@ -164,11 +232,11 @@ begin :-
 reset:-  
     dialog := 0, % moved up
 %    textflag := false, 
-    retractall(difact(_,_)),   %% Only Dynamic Facts 
-    retractall((_ => _)),
+    retractall( user:difact(_,_) ),   %% Only Dynamic Facts 
+    retractall( user:(_ => _) ),
     lemmas_proved := 0,  %%
     interp := 0,         %%
-    (skolemax =: SZ -> skolocon := SZ; skolocon := 0), 
+    user:(skolemax =: SZ -> skolocon := SZ; skolocon := 0), 
     const := 0. 
 
 
@@ -273,7 +341,7 @@ dialog :-
 	 dialog := 1,   
 %    queryflag := true,       %% (Statements are implicit queries)
     closereadfile,   
-    dialogrun0.   
+    user:dialogrun0.         % dialog/d_dialogue.pl   
 
 
 
@@ -285,7 +353,8 @@ hi :-% language := english,
 
 hei:-% language:= norsk, 
      create_named_dates, 
-    debug,
+     debug,
+%     trace,
     go.
 
 
@@ -332,17 +401,17 @@ mtrprocess(S) :-
         words(L, S, []),        %%      RS-130331
         process(L).             %% NB: process ALWAYS FAILS!
 
-mtrprocessweb(S) :- 
-        smsflag := false,  
-        permanence := 0, 
-        restoreworld,
-        create_named_dates, %% TA-110408  ad hoc
-        closereadfile,  
-        reset_period,    
-        origlanguage =: Lang, 
-        language := Lang,
-        words(L, S, []),  %% RS-130331    "String" to tokens, straight
-        process(L).
+%mtrprocessweb(S) :- 
+%        smsflag := false,  
+%        permanence := 0, 
+%        restoreworld,
+%        create_named_dates, %% TA-110408  ad hoc
+%        closereadfile,  
+%        reset_period,    
+%        origlanguage =: Lang, 
+%        language := Lang,
+%        words(L, S, []),  %% RS-130331    "String" to tokens, straight
+%        process(L).
 
 
 jettyrun(S)  :- %% This was gone so I reimplemented it. %% TE-120207
@@ -430,7 +499,7 @@ end :-
 bad_language :- 
     \+ language(_),
     !,
-    nl,out(' *** No definied  language  '),output(' ***').
+    nl,out(' *** No definied  language , compile(busstuc).'),output(' ***').
 
 bad_language :-
     language(L),
@@ -441,10 +510,8 @@ bad_language :-
 
 %%%%%%%%%%%%%%%%% Other Commands
 
-
-
-tuc_version:-   
-    version_date(V),     %% version.pl
+tuc_version:-
+    user:version_date(V),     %% version.pl
     nl,nl,               %%
     output(V).        
 
@@ -454,7 +521,7 @@ check:- % Check consistency
 status:- 
  
    nl,output('Rules:'),nl,
-   for( A => B ,   prettyprint( A => B)),
+   for( A => B ,   prettyprint( A => B) ),
    nl,output('Facts:'),nl,
    for( fact0(X),   prettyprint(X)), 
    for( difact(UID,X),   prettyprint(UID:X)),   
@@ -805,6 +872,7 @@ analyse2(L1,TQL):-
 
     !.
 
+
 analyse2(L1,TQL):-      
 
     value(teleflag,true), \+ value(busflag,true),
@@ -1005,7 +1073,7 @@ parse_sentence(P,N,Success):-  %% Parse With TimeLimit
     dcg_module(G),
     value(parsetime_limit,Limit),   
 
-    timeout(  
+    time_out(   %%  library(timeout) contains time_out/3. RS-140210 
 
         G:sentence(P,Parse,[],[],0,N), 
         Limit,
@@ -1026,7 +1094,7 @@ print_parse_tree(Parse1):- %% TA-110207
 print_parse_tree(Parse1):- %% TA-110207
    track(3,printparse(Parse1)), %%  print proper parsetree
    track(2, output('*** Simplified parse tree ***')),
-   track(1, ptbwrite(Parse1)), %% -> ptbwrite.pl
+   track(1, ptbwrite(Parse1) ), %% -> ptbwrite.pl
    track(2, (output('*****************************'),nl)).
 
 no_verb(_L) :-!, no_unprotected_verb. %% TA-090529
@@ -1131,7 +1199,7 @@ indentprint(N,[H|T]):-
     !,
     tab(N),write(H),nl,
     M is N+2, 
-    for(member(X,T),indentprint(M,X)).
+    for( member(X,T), indentprint(M,X) ).
 
 indentprint(N,Y):-
      tab(N),write(Y),nl.
@@ -1149,8 +1217,8 @@ transfix([gpsflag:::Orgy | Rest],U) :-!,
     %%( Orgy \== [] -> smartdepflag := true ; smartdepflag := true ), %% if gps, special output
     smartdepflag := true, %% Quickfix to allow json output to all queries. %% TE-120206   
 
-    for(member(gps_origin(X,Y),Orgy), 
-           remember(gps_origin(X,Y))),
+    for( member(gps_origin(X,Y), Orgy ), 
+           user:remember( main:gps_origin(X,Y) ) ),
        transfix(Rest,U).
 
 
@@ -1219,15 +1287,15 @@ exetuc1(TQL):-
 
 
 stopcommand([BS],stop):- 
-     backslash(BS),
+     user:backslash(BS),
      !.
 
 stopcommand([BS,end|_],end):- 
-    backslash(BS).         %% \ , prolog Dependent 
+    user:backslash(BS).         %% \ , prolog Dependent 
 
 
 othercommand([BS|R],Rosenborg):- 
-    backslash(BS),
+    user:backslash(BS),
     !,
     anaslash(R,Rosenborg).        %% utility.pl
 
@@ -1307,26 +1375,26 @@ appfilename(Dir,P,DirP):-
 
 idiotpoint. %% 
  
-send_taggercall(Taggercall):-  %% CRITICAL
-     write_taggercall(Taggercall).
+%send_taggercall(Taggercall):-  %% CRITICAL
+%     write_taggercall(Taggercall).
 
-receive_tags(Struct):- 
-
-    teledbtagfile(Tagsample),    
-
-    xmltaggerparse(Tagsample,Struct),
-
-
-    nl,nl,
-    output(Struct).
+%receive_tags(Struct):- 
+%
+%    teledbtagfile(Tagsample),    
+%
+%    xmltaggerparse(Tagsample,Struct),
+%
+%
+%    nl,nl,
+%    output(Struct).
 
 
    
 
 
-update_tags(K):-  
-
-   tags := K.
+%update_tags(K):-  
+%
+%   tags := K.
 
 
 create_taggercall(L2,PAT):-
@@ -1372,5 +1440,5 @@ plustoatom(X,X).
 %%%%%%%%%%%  THE END %%%%%%%%%%%%%%%%%%%%%%
 
 
-  :- initiate. 
+:- initiate.
 

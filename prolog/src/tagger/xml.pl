@@ -1,3 +1,5 @@
+:- module( xml,	[ xml_parse/2, xml_parse/3, xml_subterm/2, xml_pp/1 ] ).   %Extra?:         nmtokens/3
+
 /* xml.pl : Contains xml_parse/[2,3] a bi-directional XML parser written in
  * Prolog.
  *
@@ -36,13 +38,6 @@
  *
  *
  */
-:- module( xml,
-	[
-	xml_parse/2,
-	xml_parse/3,
-	xml_subterm/2,
-	xml_pp/1
-	] ).
 
 /* xml_parse( {+Controls}, +?Chars, ?+Document ) parses Chars to/from a data
  * structure of the form xml(<atts>, <content>). <atts> is a list of

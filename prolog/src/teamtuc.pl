@@ -5,9 +5,10 @@
 
 %% Makefile for BussTUC  server Team , Whole
 
-?- prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates
+%%?- prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates
 
-?-['busroute'].
+%?-['busroute'].
+:- use_module( busroute, [  ] ). %% RS-131227 Avoid loop?
 
 ?-[tucteam].
 

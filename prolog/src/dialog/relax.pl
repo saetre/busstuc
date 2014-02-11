@@ -3,14 +3,15 @@
 %% CREATED TO-970319
 %% REVISED TO-970421 TA-041217
 
-:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
-:- ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators
+:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
+%:- ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators
+:- use_module( '../app/pragma', [] ). %% RS-140207 Pragmatic (rule) Operators
 
 
 
 :- module(relax,[]).  %% RS-130624    2012 Experiment?
 
-tracevalue(L) :- user:value(traceprog,L).  % Trace level 1-4
+tracevalue(L) :- value(traceprog,L).  % Trace level 1-4
 
 selectroute rule
 is	replace selectroute(_, A, B)
@@ -107,6 +108,6 @@ ip  varmember(A, List),
     frame_getcount((when)::arrival::before, X), 
     linecounter(Y), 
     \+ X = Y,
-    user: deleteall(lastcorr,Options,NoLastOptions).
+     deleteall(lastcorr,Options,NoLastOptions).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

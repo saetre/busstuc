@@ -5,11 +5,17 @@
 %% REVISED TA-120402
 %% REVISED RS-121024
 
-%% Contains the important information about route modules
+%% Contains the important information about route modules. Loaded from interfaceroutes.pl module
+%% RS-131223    Included in / Exported throug   busroute.pl
+:-module('topreg', [ compilerouteaux/2, default_message/3, default_period/3, period_message/2, routedomain/1, route_period/4 ] ).
 
 % See compileroute.pl for compilation
 
 % See busdat.pl for specialday to day mapping
+
+%% Ny linje
+:-ensure_loaded('route_period').        
+
 
 
 %%%%%%%%%% THIS TABLE IS CRUCIAL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -33,10 +39,11 @@ routedomain(tmn). %% Generic for TMN related routes
 
 %% Special list to be compiled
 
-compilerouteaux(tt,[ %% 'db/regbusall', %% Inclusive  set of buses
-                    'db/regstr',    %% Streets
-                    'db/regcompstr' %% Composite Street names
-                   ]).
+compilerouteaux(tt,[
+%%      'db/regbusall', %% Inclusive  set of buses      %% RS-131226 Removed?
+        'db/regstr',    %% Streets
+        'db/regcompstr' %% Composite Street names
+]).
 
 %% DEFAULT ROUTE PERIODS
 

@@ -7,7 +7,11 @@
 :- assert(linecounter(1)).
 :- assert(confused(noone)). %-)
 
-:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators, also := and =:
+%% RS-131227    UNIT: /
+:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators, also := and =:
+:- use_module( '../getphonedir', [  reset_ldapcon/0  ]).%% RS-131227    For ...main.pl, extra: create_tags/1,  
+
+%% [ quit_dialog/0, dialogrun0/0, etc. ] ).
 
 %% Dialogue manager.
 
@@ -22,16 +26,17 @@
            last_answer/2.  %% last_answer is problematic ???
 
 
-%dialog :- 
-%   dialog := 1, 
-%   reset_period,
-%   reset_context,
-%   dialog2.
-%
-%run:-dialog.  
-%
+%dialog :-      %% RS-131228  
+dialogrun0 :-  
+   dialog := 1, 
+   reset_period,
+   reset_context,
+   dialog2.
+
+%run :-          %% RS-131228   Moved to /bustermain2.pl
+%    dialog.  
 %hi:-debug, run. 
-%
+
 processinput(Q) :-                     %%AM-980301
 	
    dialog := 1,

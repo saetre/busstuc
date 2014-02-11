@@ -4,30 +4,65 @@
 %% CREATED TA-930528
 %% REVISED TA-090925
 
-:- ensure_loaded('../declare').
-:- ensure_loaded('../main.pl'). %% RS-130630 With all value(X,Y) (or X := Y ), e.g. lang:=norsk.
+%%% RS-111205, UNIT: tuc/    USAGE:
+%:- use_module( evaluate, [ fact/1 ] ).          %% RS-140210
+:-module( evaluate, [ difact/1, disqev/1, evaluateq/1, evaluateq2/1,  %% RS-131227 %main.pl %translat.pl,  % difact/2, %main.pl % fact0/1,
+        fact/1,     fakt/1,   %ieval/1,        %% RS-131228    Exported through tuc/evaluate.pl from app/interapp.pl!
+        included/2,     instant/2,        leveltest/2,        new_focus/2,        qev/1,        qdev/2,        valof/2
+                  %unskolemize/2,        %% OLD, from turbo.pl
+] ).
 
-:- volatile
-%%           value/2,   %% RS-130630 this causes BIG TROUBLE!
-        difact/2,    %% Dynamic,  context dependent  %% TA-980301
-        fact0/1.     %% Semi permanent, in evaluate.pl
-          
-:- dynamic
-%%           value/2, %% get from main.pl?
-        difact/2,    %% Dynamic,  context dependent  %% TA-980301
-        fact0/1.     %% Semi permanent , in evaluate.pl
-%        fact1/2,     %% Dynamic  
+%% META PREDICATES : for/2, foralltest/2, once1/1, set_of/3, set_ops/3, test/1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:-meta_predicate  doall(:).     %doall/1: (P, then succeed)
+doall( P ):-  % P, then succeed 
+    P,
+    false ;
+    true.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Prologs setof is baroque %% 
+set_of(X,Y,Z):-           %%
+    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
+    Z=[].                 %% What is wrong with empty sets ?
+%% Sequence preserving set_of/2, ( first occurrence stays first)
+%set_ops(X,Y,Z):-
+%    findall(X,Y,Z1),
+%    remove_duplicates(Z1,Z). %% order-preserving
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% RS-131231, UNIT: /  %%% RS-111205, UNIT: utility/
+:- ensure_loaded( user:'../declare' ).  %% RS-140208    difact/2, fact/2
+%:- ensure_loaded( user:'../utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
+:-use_module( '../utility/utility', [ aggregate/3, doubt/2, out/1, output/1, writelist/1 ]).     %% Keep local: ,  set_of/3
+
+%:- ensure_loaded( '../main.pl' ). %%, [ (=>)/2, reset/0, traceprint/2 ] ).
+:- use_module( '../main.pl', [ reset/0, traceprint/2 ] ). %% RS-140209 hei/0,   run/0, norsource_prefix/0 
+:- use_module( '../tucbuses', [ language/1 ]).  %RS-140101 % Common File for tucbus  (english) and  tucbuss (norwegian)
+
+%%% RS-111205, UNIT: tuc/
+:- use_module( facts, [ have/4, isa/2 ]). %% RS-131225
+:- use_module( '../tuc/fernando', [ subclass0/2 ] ).
+:- use_module( semantic , [ ako/2, testclass/1 ] ). %% RS-131228
+:- use_module( slash, [ def/1 ] ). %% RS-131228
+%% RS-131227    UNIT: tuc/
+:- use_module( translat, [ testquant/3 ] ).  %% RS-131231
+
+%%% RS-111205, UNIT: app/
+:- use_module('../app/interapp', [ ieval/1 ]). %% RS-131231
+%:- ensure_loaded('../app/pragma').      %%RS-131228     pragma/3 etc. loaded in interapp!
+
 
 evaluateq2(nil):-!. 
 
 
 evaluateq2(R):- 
-    value(busflag,true), %% Set by Bustuc Application Program
+    user:value(busflag,true), %% Set by Bustuc Application Program
 	 !,
     ieval(R).            %%  interapp.pl 
 
 evaluateq2(R):- 
-    value(teleflag,true), %% TA-020605
+    user:value(teleflag,true), %% TA-020605
 	 !,
     ieval(R).            %%  interapp.pl 
 
@@ -47,14 +82,14 @@ evaluateq(doit:::hello):- !,
 
 evaluateq(doit:::P):-
     !,
-    doall(qev(P)), %% succeed in the end
+    doall( qev(P) ), %% succeed in the end   % utility.pl
     nl,nl.
 
 
 evaluateq(which(X):::P):-
      findq(X,P,Z),   
      !,
-     writelist(Z),
+     writelist(Z),                         % utility.pl
      nl,
      update_focus(Z).
 
@@ -62,7 +97,7 @@ evaluateq(which(X):::P):-
 evaluateq(test:::P):-
 
    ( qev(P),
-     doubt('Yes','Ja'),!;
+     doubt('Yes','Ja'),!;  %% utility.pl ?
      doubt('No','Nei')),
      nl.
 
@@ -71,7 +106,6 @@ evaluateq(explain:::P):-
       
 %    evaluateq(test::: P),  %%%% TA-020502
  
-
     (
      qev(P)->
        doubt('That is possible','Det er mulig');
@@ -85,7 +119,7 @@ evaluateq(howmany(X):::P):-
      !,
      findq(X,P,Z), 
      length(Z,N),
-     out(N),nl,
+     out(N),nl,    %% utility.pl
      nl. 
 
 evaluateq(new:::_). %% Actually a miss 
@@ -95,12 +129,12 @@ evaluateq(nil).  %% In case queryflag =: true, only nil is produced as TQL.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-difact(F):-  
-    value(context_id,UID),
-    difact(UID,F).
+difact(F):-     %difact/1 (based on temporary difact/2 values)
+    user:value(context_id,UID),
+    user:difact(UID,F).
 
 update_focus(_):- %% TA-020228
-    value(queryflag,true),
+    user:value(queryflag,true),
     !.
 
 
@@ -117,25 +151,25 @@ update_focus([X]):-
 
 update_focus(_).
 
-new_focus(X,M):-      %  Focus is allowed in permament store
+new_focus(X,M) :-      %  Focus is allowed in permament store
 
-    value(context_id,UID),  
-    retractall(difact(UID,_ is_the M)),
-    retractall(fact0(_ is_the M)),
-    (permanence =: 1 -> 
-       asserta(fact0(X is_the M));  
-       asserta(difact(UID,X is_the M))). %%   % Last Qualified Reference
+    user:value(context_id,UID),  
+    retractall( user:difact(UID,_ is_the M) ),
+    retractall( user:fact0(_ is_the M) ),
+    ( user:(permanence =: 1) ->         %% utility.pl
+       asserta( user:fact0(X is_the M) );  
+       asserta( user:difact( UID, X is_the M) ) ). %%   % Last Qualified Reference
 
 
 
 findq(X,P,Z):- 
-    set_of(Y,(qev(P),qdev(X,Y)),Z).
+    set_of(Y,(qev(P),qdev(X,Y)),Z).        %% utilty.pl
 
 
 qdev(X,Too_general):-  
     var(X),
     !,
-    (language(english) -> 
+    (language(english) ->          %% main.pl? 
         Too_general='Too general';
         Too_general='For generelt').
 
@@ -144,14 +178,15 @@ qdev(X,Y):-
     unskolemize(X,Y),
     !. 
 
-*/
-
-qdev(X,X).
-
 unskolemize(sk(J),AMan):- 
     !,
     fact(sk(J) isa Man), 
     klassing(Man,AMan).       %% turbo.pl
+
+*/
+
+%Equalilty check...
+qdev(X,X).
 
 
 disqev(P) :-  
@@ -184,7 +219,7 @@ qev(N,aggregate(MAX,X,Y,P,ML)):-!,
 qev(_,quant(CR/M,X):::P):- !,  
      findq(X,P,Z),  
      length(Z,M1),
-     testquant(CR,M1,M).
+     testquant(CR,M1,M).           
 
 
 qev(N,dob/be/AB/CD/_) :- 
@@ -215,7 +250,7 @@ gfact(N,X) :- vfact(N,X),!. % ONCE !
 
 vfact(nil,X isa Y):- !,     % for dialog query
     dialog_referent(X,C),   % X must be a dialog referent
-    subclass0(C,Y).         %   and an instance %% TA-010913 
+    subclass0(C,Y).         %   and an instance %% TA-010913    fernando.pl 
 
 vfact(nil,X):- !,difact(X). 
 
@@ -241,20 +276,20 @@ dialog_referent(X,C) :-
 
 rule(N,Y):- 
    leveltest(N,N1),
-   ( X => Y), 
+   user:( X => Y), 
    qev(N1,X).
 
 %% Hierarchy of facts 
  
 fact(X):-               %  Predefined interpretations 
-    value(deflag,true), % AD HOC FLAG  %% DEF IS  FOR COMMANDS
+    user:value(deflag,true), % AD HOC FLAG  %% DEF IS  FOR COMMANDS
     nonvar(X),                         %% John shows a car \= command
     X=Y/_,
     nonvar(Y),
  
     def X .   
 
-fact(X):- fact0(X).     %  Semi permanent
+fact(X):- user:fact0(X).     %  Semi permanent
 
 fact(X):- difact(X).    %  Dynamic Discourse facts 
 
@@ -263,7 +298,7 @@ fact(X isa Y):- !,      %  Default type definitions
 
 
 fact(event/real/now):-              %% TA-010913
-    \+ fact0(event/_/_).                    %% To allow 
+    \+ user:fact0(event/_/_).                    %% To allow 
                                     %% Is john a man ?
                                     %% before any event has taken place
 
@@ -314,13 +349,13 @@ valof(X,Y):-
 
 
 leveltest(M,N):-
-    value(maxdepth,K), %% maxlevel(K),
+    user:value(maxdepth,K), %% maxlevel(K),
     M < K,
     N is M + 1.
 
 fakt(X):-
          difact(X); %% dynamic
-         fact0(X). %% static
+         user:fact0(X). %% static
 
 %%%%%%%%%%%%%%%  THE END %%%%%%%%%%%%%%%
 

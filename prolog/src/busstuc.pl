@@ -1,8 +1,8 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE busstuc.pl 
 %% SYSTEM TUC
-%% CREATED  TA-020125
-%% REVISED  TA-110804 RS-120803
+%% CREATED  TA-020125   %% REVISED  TA-110804 RS-120803
+%% REVISED  RS-140101 modularized
 
 %% Makefile for BussTUC  server NTNU , Norwegian
 
@@ -25,30 +25,33 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                     %
 % Documentation: TUC_manual Version   Version   21.4  %
 %                                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% ?-prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates// Testing
+%% ?-prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates// Testing
 
-%% Ny linje
-:-ensure_loaded('db/route_period').        
+:-ensure_loaded( user:'declare.pl' ). %%, [  ( := )/2,  meta_predicates, ( set_ops/3 ), etc.  ]).
 
-?- [ %% sicstus4compatibility], loaded in drucke_baum
-   'tucbuss.pl',
-   'busroute.pl', %% Compiles database/
-   'db/discrepancies.pl'   %% Must be updated before winter %% TA -> RS-120805 Se e-post korrespondansen til Tore
-   ].
-?- notrace.
+:- compile('tucbuss'). %%, [ hei/0, run/0, etc. ] ). RS-130329 Make sure (gram/lang) modules are available: dcg_module, 
+%:-use_module( 'tucbuss.pl', [ hei/0, run/0 ] ).   %% Compiles tucbuses (norsk and english)
 
-%% MakeAuxTables relies on busroute
- :-makeauxtables.     %% RS-130330    Takes a minute?
- :-createhash.        %% RS-130330    Takes another minute?
+%:-use_module('busroute.pl').   %% Compiles database/* %   'busroute.pl', %% Compiles database/
+%:-compile('busroute.pl').       %% Compiles database/* %   'busroute.pl', %% Compiles database/
 
+:- load_files('busroute.pl', [load_type(source),compilation_mode(compile)]).
+
+:-use_module( 'makeauxtables.pl', [ createhash/0, makeauxtables/0 ] ). 
+:-told.            %% RS-140208 Reset all output-streams first...
+:-notrace.      %% RS-131225   == nodebug, ...because it is SLOW (1 minute!)
+
+:-write('%busstuc.pl~50  (Skipping?) creation of db/ auxtable(s) and (name-)hashtable, etc...'),nl.
+%:-makeauxtables.     %% RS-130330    Takes a minute...         %%Skip for now...
+%:-createhash.        %% RS-130330    Takes another minute...    %% Produce the db/namehashtable
+
+%% Already compiled by tucbuss -> monobuss! %?- [ 'db/discrepancies.pl' ].  %% Must be updated before winter %% TA -> RS-120805 Se e-post korrespondansen til Tore
+%:- load_files('busroute.pl', [load_type(source),compilation_mode(compile)]).    %% RS-140210    Bootstrapping for fast compilation!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-

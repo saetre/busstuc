@@ -6,62 +6,69 @@
 
 
 
-%% Compiles all  the necessary files.
+%% Compiles all  the necessary files for
+
+%% BUSTER Dialog Versjon
+:-module( tucbuster, [ dialog/0 ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Based on:  database/busroute.pl is compiled
 
-%%%%%% ?-prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates %% TA-031106
+%%% ?-prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates %% TA-031106
 
 
-:-volatile lastday/2 . %% RS-130331
-:-dynamic lastday/2 . %% TA-050723
+%:-volatile lastday/2 . %% RS-130331
+%:-dynamic lastday/2 . %% TA-050723
 
-
-?-compile('tucbuses.pl'). 
+%:-compile('tucbuses.pl'). 
+:- use_module( tucbuses, [  ] ). %% RS-131227 Avoid loop?
 
 ?-compile('busterversion.pl'). 
 
 ?-compile('diabus.pl'). 
 
-?-compile('bustermain2.pl'). %% NEW, TELE COMPATIBLE  
+%?-compile('bustermain2.pl'). %% NEW, TELE COMPATIBLE  
+:- use_module( bustermain2, [  ] ). %% RS-131227 Avoid loop?
 
 ?-compile('tele2.pl'). %% specific tele programs %% TA-051116
 
-:-compile('dialog/d_call.pl').
+:-compile('dialog/d_call.pl'). %% diolog/0, etc.?
+%:-ensure_loaded( 'dialog/d_call.pl' ). %% create_splitacts/x, etc.?
 
 
 
-?- ( smspermanentflag := true), 
+?- user:( smspermanentflag := true), 
 
-   ( smsflag := true),
+   user:( smsflag := true),
 
-   ( unix_language := eng),     %% Standard for IDI/NTNU UNIX Solaris )
+   user:( unix_language := eng),     %% Standard for IDI/NTNU UNIX Solaris )
        
-   ( language := norsk),        %% Initial default user language  
+   user:( language := norsk),        %% Initial default user language  
 
-%%    ( duallangflag := false),    %% // NOT DEVELOPED YET// Also try English if unknown words
+%%    user:( duallangflag := false),    %% // NOT DEVELOPED YET// Also try English if unknown words
 %%                                 %% defined in resp. compile file
 
-   (duallangflag := true), %% speech based, 
+   user:(duallangflag := true), %% speech based, 
                           %% but SR will never(?) produce english words.
 
 
-   ( noparentflag := true),     %% Ignore content of parentheses
+   user:( noparentflag := true),     %% Ignore content of parentheses
 
-   ( single_sentence := false), %%  Multiple sentences, 
+   user:( single_sentence := false), %%  Multiple sentences, 
 
 %%%%    ( nodotflag := true),       %%  Interm. dots are  removed. %% TA-080928
 
-   ( tramflag := false),        %% A/S Gråkallen not OK at TEAM
+   user:( tramflag := false),        %% A/S Gråkallen not OK at TEAM
 
-   ( parsetime_limit := 7000), %% TA-041218
+   user:( parsetime_limit := 7000), %% TA-041218
 
-   ( movieflag := false ),     %% TA-030406
+   user:( movieflag := false ),     %% TA-030406
 
-   ( wozflag := true),         %% Not into TABUSS modus
+   user:( wozflag := true),         %% Not into TABUSS modus
 
-   ( notimeoutflag := false),  %% OK Sicstus 3.10
+   user:( notimeoutflag := false),  %% OK Sicstus 3.10
 
-   ( useexternal := true).     %% for the combine  %% TA-051017
+   user:( useexternal := true).     %% for the combine  %% TA-051017
 
-%%%    ( disablenightbus := true).  %% TA-061129  %% AD HOC
+%%%    user:( disablenightbus := true).  %% TA-061129  %% AD HOC

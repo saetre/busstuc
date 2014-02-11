@@ -10,6 +10,8 @@
 %%  updateframe(teleprocess([],_,[],_),_,_) :- !, fail. %% TLF 030611 - bad solution, but stops some stupid behaviour
 %%  Revoked %% TA-051030  e.g. %% N: Kan du gjenta ?
 
+%% UNIT: /app/
+:-use_module( '../app/busanshp', [ paraphrase_tele/2, paraphrase/1, paraphrase3/3 ] ). %% extra: paraph2/1, paraphrase_changes1/1, 
 
 updateframe(teleprocess(Fields,Table,[],X), OldFrame, NewFrame) :-   %% TLF 030204
 	!,

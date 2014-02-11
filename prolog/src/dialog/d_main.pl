@@ -5,12 +5,14 @@
 
 %% REMOVED DEPENDENCIES ON JAVA INTERFACE
 
-:- ensure_loaded('../utility/utility'). % [ := ] etc. %% RS-131117 %% Includes declare.pl, 
-:- ensure_loaded('../bustermain2').
+%:- ensure_loaded( user:'../utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
+:- use_module( '../utility/utility' ). % [ := ] etc. %% RS-131117 %% Includes user:declare.pl, 
+%:- ensure_loaded( user:'../bustermain2' ).
+:- use_module( '../bustermain2', [ ] ).
 
-:- ensure_loaded('../tuc/readin').
+%:- use_module('../tuc/readin').
 
-:- ensure_loaded('d_dialogue').
+:- ensure_loaded( 'd_dialogue' ).
 
 %% This file is extras needed to run the dialogue system. 
 %% The predicates here are similar to those in main.pl.
@@ -62,11 +64,10 @@ webrun_dialog :- !,
    warningflag := false, %% if applicable 
 
   repeat,              %% TA-050723
-       resetsmsflag, 
-       reset_period,       %%   ---> topreg.pl
-	    getfromport(L),
-	    processorwait_d(L),
-
+%%%     resetsmsflag,  %% TA-081218
+        reset_period,       %%   ---> topreg.pl (Now, interfaceroute)
+	getfromport(L),
+	processorwait_d(L),
   fail.
 
 

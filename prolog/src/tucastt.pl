@@ -6,10 +6,11 @@
 
 %% Makefile for BussTUC/ASTT file
 
-?-prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates
+%%?-prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates
 
 
-?-compile(tucbuses). 
+%?-compile(tucbuses). 
+:- use_module( tucbuses, [  ] ). %% RS-131227 Avoid loop?
 
 
 ?- (unix_language := eng),  %% Standard for IDI/NTNU UNIX Solaris )

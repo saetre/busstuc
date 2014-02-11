@@ -1,4 +1,6 @@
-%% This is the main connection predicate
+%% This is just a TEMPFILE for
+
+%% the main connection predicate
 %% between two depnodes
 %% Extended to capture cutloop stations
 

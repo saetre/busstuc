@@ -1,5 +1,5 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
-%:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
+%:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
 
 % [new:::(hovedterminalen isa station,være isa station,A isa nightbus,doit/go/A/B,event/real/B,nrel/from/vehicle/place/A/hovedterminalen,nrel/to/vehicle/place/A/være)]
 %%OK!!

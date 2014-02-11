@@ -7,9 +7,27 @@
 
 %% File containing TELEDAT 
 %% co-existing with BUSDAT
+% UNIT: /db/ % USAGE:
+% :-use_module( 'db/teledat2', [ has_att_val/4, teledbtagfile/1, etc. ] ). %% RS-140101
+:-module(teledat2, [ building/1, bustopic1/1, expandkey/2, has_att_valx/6, has_att_val/4, have_att_val/4, hazard_tagname/1, is_dom_val/5, ldaptotucplace/2,
+        legal_tagname/1,        lookupdb2/3,            possible_dom/2,       printdbresult/1,          setoftags/2,   %perform_querycall/2, %% Missing select/4
+        tablename/1,            teledbrowfile/1,        teledbtagfile/1,      teleprocessdirect/4,      teletopic1/1,           unwanted_dbname/1
+] ).
 
-:- ensure_loaded('../declare'). %% Import has_a operator        %% RS-130624
+%% RS-111205, UNIT: utility
+:- ensure_loaded( user:'../declare' ). %% Import has_a operator        %% RS-130624
+:- use_module( '../utility/utility', [ append_atomlist/2, absorb/3, doubt/2, matchinitchars/3, output/1 ] ).
+:- use_module( '../utility/library', [ remove_duplicates/2 ]). %% TEMPORARY non-FIX!
 
+:- ensure_loaded( user:'../version' ). %% Import has_a operator        %% RS-130624
+
+:-use_module( '../getphonedir.pl', [  getdbrowsdirect/2 ] ). %% Get LDAP phone info from NTNU
+
+%% UNIT: /tuc/
+:- use_module( '../tuc/names', [  unwanted_name/1  ] ).
+:- use_module( '../tuc/semantic', [  ( has_a )/2 ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% General predicate to expand (or not) a key
 %% fetched from database/telekeys.pl
@@ -221,11 +239,16 @@ hazard_tagname(with).      %% With navn
 unwanted_dbname(gløshaugen). %% <--- Ad Hoc
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%% Sequence preserving setof, ( first occurrence stays first)
+:- meta_predicate   set_ops(+,:,+) . %% RS-140211      % set_ops/3 
+set_ops(X,Y,Z):-
+    findall(X,Y,Z1),
+    remove_duplicates(Z1,Z). %% order-preserving
 %%%%%%%%%%%%%%%%%%%%%%
 
 %% TA-101110
 have_att_val(_SubjectClass,Attribute,SubjectId,Values) :-
-    set_ops(X,has_att_val(_,Attribute,SubjectId,X),Values).
+    set_ops( X, has_att_val( _, Attribute, SubjectId, X ), Values).        %% utility.pl?
 
 
 
@@ -309,9 +332,9 @@ has_att_val(_Agent,webaddress,atb,'http://www.atb.no'). %% %% agent? %% TA-10100
 
 has_att_val(program,programmer,tuc,tagore).  %%  (pseudonym of course :-)
 
-has_att_val(system,version,tuc,    X):- version_date(X).
-has_att_val(system,version,busstuc,X):- version_date(X).
-has_att_val(system,version,bustuc, X):- version_date(X).
+has_att_val(system,version,tuc,    X):- user:version_date(X).   %% RS-131231 version.pl?
+has_att_val(system,version,busstuc,X):- user:version_date(X).
+has_att_val(system,version,bustuc, X):- user:version_date(X).
 
 
 has_att_val(sms,price,tt,1).
@@ -335,7 +358,7 @@ has_att_val(sms,price,tt,1).
 % Address
 
 has_att_val(person,address,X,(Street,Num,Char)):-
-   value(teleflag,true), 
+   user:value(teleflag,true), 
    has_att_val(person,street,X,Street),
    has_att_val(person,streetnumber,X,Num),
    has_att_val(person,streetcharacter,X,Char).
@@ -345,22 +368,28 @@ has_att_val(person,address,X,(Street,Num,Char)):-
 % has_att_valx(person,lastname,telephone,amble,tore_amble,999)
 
 has_att_valx(Person,Lastname,Telephone,Amb,ToreAmble,N):-
-    value(teleflag,true),
+    user:value(teleflag,true),
     is_dom_val(Person,Lastname,Amb,_Amble,ToreAmble),
     has_att_val(Person,Telephone,ToreAmble,N).
 
 %%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% Prologs setof is baroque %% 
+set_of(X,Y,Z):-           %%
+    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
+    Z=[].                 %% What is wrong with empty sets ?
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 is_tagged(Word,Concept):-
-    value(tags,Tags),
+    user:value(tags,Tags),
     member([Word,Concept],Tags),
 
     \+ unwanted_name(Word). %% hans \= Hans  (ad hoc) 
 
 
 setoftags(Tore,Taglist):-
-    value(tags,Tags),
+    user:value(tags,Tags),
 
     set_of(Tag,
          (member([result=WT],Tags),
@@ -446,7 +475,7 @@ teleprocessdirect(AddSelect,Table,Wherelist,Results):-
 
     standardselect(Stan),
 
-    absorb(Stan,AddSelect,Select1), %% seq. preserv. union
+    absorb(Stan,AddSelect,Select1), %% seq. preserv. union %% utility.pl
 
     make_querycall(Select1,Table,Wherelist,InternalQuery),
 
@@ -458,14 +487,14 @@ teleprocessdirect(AddSelect,Table,Wherelist,Results):-
 
 
 perform_querycall2(InternalQuery,Result):-
-    value(useexternal,true),                          %% TLF 030408
+    user:value(useexternal,true),                          %% TLF 030408
     !,
     create_dbquery(InternalQuery,Query),
 
     getdbrowsdirect(Query,Result). %% Result is now in TQA (rowsample0)
 
 perform_querycall2(_InternalQuery,_Result):-               %% TLF 030408
-    \+ value(useexternal,true),
+    \+ user:value(useexternal,true),
     !,
     output('flag useexternal false ---> no db lookup').
 
@@ -495,18 +524,24 @@ plingelement(A=V,AV):-
 
 make_querycall(Select1,Person,Wherelist,select(Select1,Person,Wherelist,_Z_)).
 
-perform_querycall(select(Select1,Person,Wherelist,Z),Z):-
-   select(Select1,Person,Wherelist,Z).
+%perform_querycall(select(Select1,Person,Wherelist,Z),Z):-
+%   select(Select1,Person,Wherelist,Z).
 
 
 write_querycall(ExternalQuery):-
-     value(traceprog,M), number(M), M >= 3,
+     user:value(traceprog,M), number(M), M >= 3,
      nl,
      write('QUERY:  '),
      output(ExternalQuery),nl. 
 
 write_querycall(_).
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+for( P, Q ) :- %% For all P, do Q (with part of P)
+  P, Q,
+  false;true.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 printdbresult(Z):-
     for(member(L,Z),pront(L)),

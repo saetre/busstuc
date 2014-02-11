@@ -5,12 +5,11 @@
 
 % Initiation file for BusstUC on Linux 
 
-?-compile(tucbuses). % Both languages are compiled
+:-use_module( tucbuses ). % Both languages are compiled
 
+:-  (unix_language := nor).    %% Installation language for  unix
 
-	 :-  (unix_language := nor).    %% Installation language for  unix
-
-    :-  (language := norsk).       %% Initial default user language  
+:-  (language := norsk).       %% Initial default user language  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

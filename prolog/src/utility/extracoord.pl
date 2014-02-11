@@ -9,7 +9,7 @@
 
 % assume all files are separated correctly with a Tab (ASCII 9)
 
-:- ensure_loaded( '../sicstus4compatibility' ). %, [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+%:- use_module( '../sicstus4compatibility', [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 
 

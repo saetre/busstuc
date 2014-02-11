@@ -3,8 +3,27 @@
 %% CREATED TA-921106
 %% REVISED TA-081110
 
-:- ensure_loaded('../declare').
+%Defines (through translat.pl):
+%            ( def )/1,
 
+:-module(slash, [
+        def/1
+]).
+
+%%% RS-111205, UNIT: /
+:- ensure_loaded( user:'../declare' ).
+
+%%% RS-111205, UNIT: app/
+:- use_module( '../app/busanshp', [ description/2 ] ).          %% RS-131225
+
+%%% RS-111205, UNIT: /tuc/
+:- use_module( facts, [ have/4 ]). %% RS-131225
+:- use_module( semantic, [ iv_templ/2, tv_templ/3 ]).    %  TUCs  Lexical Semantic Knowledge Base
+:- use_module( evaluate, [ fact/1, fakt/1, valof/2 ] ).          %% RS-131225
+:- use_module( world0, [ borders/2, containsX/4 ] ).          %% RS-131225
+
+%% RS-131225    UNIT: utility/
+%:- ensure_loaded( '../utility/utility' ). %%, [ out/1 ]). %%RS-131224
 
 %% Definition of facts / 
 %% Not removed by reset
@@ -51,7 +70,7 @@ def srel/in/place/X/Y :-  %% TA-980619
     fakt(srel/P/place/X/Y),
     member(P,[in,at,on]).
 
-def write/tuc/A/_ :- out(A).  %% TA-971218
+def write/tuc/A/_ :- user:out(A).  %% TA-971218         From xxx.pl?
 %%%%%% Prototypical external connection %%%%%%
 
 def flow/R/flows(R). 
@@ -66,8 +85,8 @@ def srel/before/C/Year2/S :-
     fact(srel/in/C/Year1/S),
     def number/lt/Year1/Year2.
 
-def srel/from/_/C/flows(R):- 
-    flows_outfrom(R,C).    %% rivers.pl  
+%def srel/from/_/C/flows(R):- 
+%    flows_outfrom(R,C).    %% rivers.pl  
 
 def srel/in/place/E/be1(B) :- %%  UGLY AND AD HOC
     def nrel/in/country/continent/B/E .
@@ -86,25 +105,25 @@ def nrel/in/Country/Continent/Norway/Europe :-
 
 %% All slash facts preceded by def 
 
-
-def african/X/_ :-
-    african(X).
-
-def american/X/_ :- 
-    american(X).
-
-def asian/X/_ :-
-    asian(X).
-
-def australian/X/_ :-
-    australian(X).
+%Based on world0.pl Database (missing!)
+%def african/X/_ :-
+%    african(X).
+%
+%def american/X/_ :- 
+%    american(X).
+%
+%def asian/X/_ :-
+%    asian(X).
+%
+%def australian/X/_ :-
+%    australian(X).
+%
+%def european/X/_ :-
+%    european(X).
 
 def describe/tuc/X/_ :- 
     description(X,Y),    %% turbo.pl
-    out(Y).
-
-def european/X/_ :-
-    european(X).
+    user:out(Y).
 
 def exceed/X/Y/_ :-
     valof(X,X1),    %% evaluate.pl
@@ -128,9 +147,9 @@ def intransitive/V/_:-
 def knowthing/John/K/S :-                                  
     fact(know/id/that/John/K/S).  
 
-def list/tuc/X/_ :- out(X).
-def give/tuc/X/_ :- out(X).
-def show/tuc/X/_ :- out(X).
+def list/tuc/X/_ :- user:out(X).
+def give/tuc/X/_ :- user:out(X).
+def show/tuc/X/_ :- user:out(X).
 
 %% def srel/to/person/ I /_  :- !. %% TA-081110 
                          

@@ -34,6 +34,8 @@
  *
  */
 
+:-use_module('../sicstus4compatibility', [  put/1  ] ).                %% RS-131227    From sicstus4compatibility
+
 % Entity and Namespace map operations: these maps are usually quite small, so a
 % linear list lookup is okay. They could be substituted by a logarithmic data
 % structure - in extremis.
@@ -156,10 +158,10 @@ pp_string( Chars ) :-
 
 pp_string1( [] ).
 pp_string1( [Char|Chars] ) :-
-	( Char =:= """"  -> put_quote
+	( Char == """"  -> put_quote
 	; true
 	),
-	put( Char ),
+        put( Char ),
 	pp_string1( Chars ).
 
 put_quote :-

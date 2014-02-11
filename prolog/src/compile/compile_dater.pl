@@ -7,7 +7,8 @@
 
 ?- compile('../dater.pl').
 
-?- compile('../busroute.pl'). %% TA-080818
+%?- compile('../busroute.pl'). %% TA-080818
+?- use_module( '../busroute.pl', [] ). %% TA-080818
 
 ?- save_program(dater).
 ?- halt.

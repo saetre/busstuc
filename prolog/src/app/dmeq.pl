@@ -5,7 +5,11 @@
 %% REVISED TA-100829
 
 %% Domain Equivalents common  tele and bus
+:-module( dmeq, [ dmeq/2 ] ).
 
+%% UNIT: utility/
+:- use_module( '../utility/utility', [ testmember/2 ] ).%:- ensure_loaded( user:'../utility/utility' ).       %% RS-131231
+:- use_module( '../tuc/fernando', [ subclass0/2 ] ).
 
 %%%%%%%% dmeq(A,B) betyr at ordet til høyre
 %%%%%%%% betyr det samme som ordet til venstre i dette domenet
@@ -15,7 +19,7 @@
 dmeq(List,U):-   %% traps var
     \+ atom(List),
     !,      
-    user:testmember(U,List).
+    testmember(U,List).    %% utility.pl
 
 
 
@@ -246,7 +250,7 @@ dmeq(notbus,airbus).
 dmeq(notbus,boat). 
 dmeq(notbus,boat_route_plan).
 dmeq(notbus,helicopter).
-dmeq(notbus,nightbus) :- \+ user: value(nightbusflag,true). 
+dmeq(notbus,nightbus) :- \+  user:value(nightbusflag,true). 
 dmeq(notbus,airplane). 
 dmeq(notbus,plane).     %% 
 dmeq(notbus,schoolbus). 
@@ -371,7 +375,7 @@ dmeq(stand,stand).
 dmeq(stand,be).  
 dmeq(stand,be1). 
 
-dmeq(teacher,T) :-subclass0(T,teacher). %% tele
+dmeq(teacher,T) :- subclass0(T,teacher). %% tele, fernando.pl
 
 dmeq(ticket,activity). %%  SIC (techn)
 dmeq(ticket,adult). 
@@ -449,7 +453,7 @@ dmeq(trafficant,vehicle).
 dmeq(trafficant,way). %% muligheter Rough 
 
 dmeq(trafficant,Person):- 
-    user:subclass0(Person,agent). %% kan man ta
+    subclass0(Person,agent). %% kan man ta
 
 dmeq(tram,tram_route_plan). 
 dmeq(tram,tram). 

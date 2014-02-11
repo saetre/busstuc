@@ -34,8 +34,11 @@
  *
  */
 
-:- use_module(library(lists)).
+%% UNIT: /tagger/
 
+%% UNIT: /utility/.     %% USAGE:
+%:-use_module( '../utility/library', [ exec/3, shell/1 ]). %% TEMPORARY non-FIX!
+%:-use_module( library(lists) ). %% delete/3, reverst/2, etc? is also loaded from utility/library.pl !!
 :- ensure_loaded( xml_utilities ).
 
 /* xml_to_document( +Controls, +XML, ?Document ) translates the list of
@@ -71,9 +74,9 @@ xml_declaration( Attributes ) -->
 xml_to_document( [], Context, Terms, [], WF ) :-
 	close_context( Context, Terms, WF ).
 xml_to_document( [Char|Chars], Context, Terms, Residue, WF ) :-
-	( Char =:= "<" ->
+	( Char == "<" ->
 		xml_markup_structure( Chars, Context, Terms, Residue, WF )
-	; Char =:= "&" ->
+	; Char == "&" ->
 		entity_reference( Chars, Context, Terms, Residue, WF )
 	; Char =< " ",
 	  \+ space_preserve( Context ) ->		
@@ -88,11 +91,11 @@ xml_to_document( [Char|Chars], Context, Terms, Residue, WF ) :-
 layouts( [], Context, _Plus, _Minus, Terms, [], WF ) :-
 	close_context( Context, Terms, WF ).
 layouts( [Char|Chars], Context, Plus, Minus, Terms, Residue, WF ) :-
-	( Char =:= "<" ->
+	( Char == "<" ->
 %%                Chars1 = [],
                 Chars = [],     %% RS-130624    %% Not quite sure about this...
 		xml_markup_structure( Chars, Context, Terms, Residue, WF )
-	; Char =:= "&" ->
+	; Char == "&" ->
 		entity_reference( Chars, Context, Terms, Residue, WF )
 	; Char =< " " ->
 		Minus = [Char|Minus1],
@@ -109,10 +112,10 @@ layouts( [Char|Chars], Context, Plus, Minus, Terms, Residue, WF ) :-
 acquire_pcdata( [], Context, [], Terms, [], WF ) :-
 	close_context( Context, Terms, WF ).
 acquire_pcdata( [Char|Chars], Context, Chars1, Terms, Residue, WF ) :-
-	( Char =:= "<" ->
+	( Char == "<" ->
 		Chars1 = [],
 		xml_markup_structure( Chars, Context, Terms, Residue, WF )
-	; Char =:= "&" ->
+	; Char == "&" ->
 		reference_in_pcdata( Chars, Context, Chars1, Terms, Residue, WF )
 	; otherwise ->
 		Chars1 = [Char|Chars2],
@@ -123,11 +126,11 @@ xml_markup_structure( [], Context, Terms, Residue, WF ) :-
 	unparsed( "<", Context, Terms, Residue, WF ).
 xml_markup_structure( Chars, Context, Terms, Residue, WF ) :-
 	Chars = [Char|Chars1],
-	( Char =:= "/" ->
+	( Char == "/" ->
 		closing_tag( Context, Chars1, Terms, Residue, WF )
-	; Char =:= "?" ->
+	; Char == "?" ->
 		pi_acquisition( Chars1, Context, Terms, Residue, WF )
-	; Char =:= "!" ->
+	; Char == "!" ->
 		declaration_acquisition( Chars1, Context, Terms, Residue, WF )
 	; open_tag(Tag,Context,Attributes,Type, Chars, Chars2 ) ->
 		push_tag( Tag, Chars2, Context, Attributes, Type, Terms, Residue, WF )
@@ -377,7 +380,7 @@ entity_value( Quote, Namespaces, String, [Char|Plus], Minus ) :-
 	( Char == Quote ->
 		String = [],
 		Minus = Plus
-	; Char =:= "&" ->
+	; Char == "&" ->
 		reference_in_entity( Namespaces, Quote, String, Plus, Minus )
 	; otherwise ->
 		String = [Char|String1],
@@ -393,7 +396,7 @@ attribute_leading_layouts( Quote, Namespaces, String, [Char|Plus], Minus ) :-
 	( Char == Quote ->
 		String = [],
 		Minus = Plus
-	; Char =:= "&" ->
+	; Char == "&" ->
 		reference_in_layout( Namespaces, Quote, String, Plus, Minus )
 	; Char > 32, Char \== 160 ->
 		String = [Char|String1],
@@ -407,7 +410,7 @@ attribute_layouts( Quote, Namespaces, Layout, String, [Char|Plus], Minus ) :-
 	( Char == Quote ->
 		String = [],
 		Minus = Plus
-	; Char =:= "&" ->
+	; Char == "&" ->
 		reference_in_value( Namespaces, Quote, Layout, String, Plus, Minus )
 	; Char > 32, Char \== 160 ->
 		( Layout == true ->

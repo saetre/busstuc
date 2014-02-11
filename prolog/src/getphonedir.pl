@@ -1,12 +1,56 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE  getphonedir.pl
 %% SYSTEM TeleTUC
-%% CREATED TA-020621
-%% REVISED TA-070612
+%% CREATED  TA-020621
+%% REVISED  TA-070612
+%% REVISED  RS-140101 modularized
 
+%% RS-131227    UNIT: / USAGE:
+%:-use_module( 'getphonedir.pl', [  get_db_rows_direct/2, etc. ] ). %% Get LDAP phone info from NTNU
+:-module( getphonedir, [  create_tags/1,   emptyrow/0,   emptytag/0,   getdbrowsdirect/2,   hazardous_tagname/1,
+        receive_tags/1,   reset_ldapcon/0, reset_tags/0, send_taggercall/1,     %streamnoisopen/,1      %% Used by ...main?
+        x_receive_tags/3,       x_getdbtags/2,       y_receive_tags/3
+]).
 
-:- use_module( library(system) ). %% , [exec/1,shell/1]).
-%% Replaced by 
+%% META-PREDICATES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Prologs setof is baroque %% 
+%set_of(X,Y,Z):-           %%
+%    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
+%    Z=[].                 %% What is wrong with empty sets ?
+%% Sequence preserving setof, ( first occurrence stays first)
+set_ops(X,Y,Z):-
+    findall(X,Y,Z1),
+    remove_duplicates(Z1,Z). %% order-preserving
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% RS-131227    UNIT: / and /utility/
+:- ensure_loaded( user:'declare' ).    %% :-op( 714,xfx, := ).   %% etc.
+%:- use_module( 'utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
+%:- use_module( 'utility/utility', [ := /2 , user:value/2 ,  etc. ] ).  %% RS-140209
+:- use_module( 'utility/utility', [ delete1/3, output/1, set_eliminate/4 ] ). %keep local: foralltest/2, 
+:- use_module( 'utility/library', [ exec/3, remove_duplicates/2, shell/1 ]). %% TEMPORARY non-FIX!
+
+:- use_module( 'tucbuses', [ dict_module/2 ] ).
+:- use_module( main, [ create_taggercall/2, track/2, trackprog/2, write_taggercall/1 ] ).
+
+:-use_module( xmlparser ). %%, [ xmltaggerparse/2 ] ). %% RS-140102 Moved from main.pl
+
+:-ensure_loaded( user:'tele2.pl' ).
+%:- ensure_loaded( user:'tucbuses' ).  %% RS-130329 Make sure (gram/lang) modules are available: dcg_module, MISERY? [ dict_module/2  ] ).
+%:- ensure_loaded( user:main ). %, [ track/2 ] ).  %% RS-131231
+
+%EXTERNAL
+%%:- use_module( library(system) , [exec/1, shell/1]). %% OLD? %% Replaced by 
+%:- use_module( library(process) ). %% , [exec/1, shell/1]). %% NEW!?
+
+%% RS-131227    UNIT: /dialog/  
+:-use_module( 'dialog/parseres.pl', [  get_chars_t/1 ] ). %% Printing the result from database query
+
+%% RS-140102    UNIT: /tagger/
+:-use_module( 'tagger/xml', [ xml_subterm/2, xml_parse/2 ] ). %% RS-140102 Moved from main.pl
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %Run ls on a home directory in a subshell under UNIX:
 %
 %     | ?- absolute_file_name('$SHELL', Shell),
@@ -18,15 +62,9 @@
 %     | ?- absolute_file_name('$SYSTEMROOT/notepad.exe', Prog),
 %          process_create(Prog, [file('C:/foo.txt')]).
 
-%%:- use_module( library(process), [exec/1,shell/1]).
-
-:- ensure_loaded('declare').
-:-op( 714,xfx, := ).   %% etc.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-texec(A,B,C):-  
+texec(A,B,C):-         %% Use process, not utility.pl!
     exec(A,B,C).
 
 tshell(A):-  
@@ -38,7 +76,7 @@ getdbtagsdirect(TagSum, Result) :-
    %append_atomlist(['javaw ldapconnection.LDAPSearcher tag ', TagSum], Expression),
 
 
-  (value(windowsflag,true) ->  
+  (user:value(windowsflag,true) ->  
         Expression = 'javaw ldapconnection.LDAPSearcher'
         ; 
         Expression = 'java ldapconnection.LDAPSearcher'
@@ -52,7 +90,7 @@ getdbtagsdirect(TagSum, Result) :-
   close(Stream),
 
 
-track(1, (write('*** Tag: '),out(Expression), write('tag '), write(TagSum), nl)),
+  track(1, (write('*** Tag: '),out(Expression), write('tag '), write(TagSum), nl)),
 
    texec(Expression, [pipe(Instream), pipe(Outstream), std], _Pid),
 
@@ -62,8 +100,8 @@ track(1, (write('*** Tag: '),out(Expression), write('tag '), write(TagSum), nl))
    Outstream = '$stream'(OutputstreamNo),
 
    % store the streams for later use
-   outstream := InputstreamNo,
-   instream  := OutputstreamNo,
+   user:( outstream := InputstreamNo ),
+   user:( instream  := OutputstreamNo ),
 
    get_chars_t(Result),
    set_input(OldInput).
@@ -76,7 +114,7 @@ getdbrowsdirect(Query, Result) :-
    %append_atomlist(['javaw ldapconnection.LDAPSearcher srch "', Query, '"'], Expression),
 
 
-  (value(windowsflag,true) ->  
+  (user:value(windowsflag,true) ->  
         Expression = 'javaw ldapconnection.LDAPSearcher'
         ; 
         Expression = 'java ldapconnection.LDAPSearcher'
@@ -123,14 +161,14 @@ streamnoisopen(StreamNo) :-
 
 reset_ldapcon :-
 	%% Find and close old stream
-	value(outstream, OutstreamNo),
+	user:value(outstream, OutstreamNo),
 	streamnoisopen(OutstreamNo),
 	current_output(OldOutput),
 	set_output('$stream'(OutstreamNo)),
 	nl,		%% send empty line to java-prog to terminate it
 	set_output(OldOutput),
-	outstream := 0,
-	instream := 0.
+	user:(outstream := 0),
+	user:(instream := 0).
 
 
 
@@ -138,15 +176,15 @@ reset_ldapcon :-
 
 create_tags(L) :- % ,Tags):-  %% tags ... mostly for traceing
     %teledbtagfile(File),
-    idiotpoint, %% idle spypoint
-    create_taggercall(L,PAT),
+%    idiotpoint, %% idle spypoint
+    create_taggercall(L,PAT),      %% bustermain2.pl
     x_getdbtags(PAT,Tags,Compnames) ,
 
     prune_tags(Tags,Tags0),
 
     update_tags(Tags0),      %% Will cause lex to include these tags
 
-    update_compnames(Compnames).                            %% MTK 021018
+    update_compnames(Compnames).   %moved to bustermain2.pl   %% MTK 021018
 
 %% HitMark    X/Y    Exact hits/ All hits
 %% Det er fordi deltreff også inkluderer de eksakte.
@@ -213,7 +251,7 @@ remove_hitmarks(L2,L3):-
 
 
 x_getdbtags(PAT,Tags,Compnames) :- %% TLF-030408
-    value(useexternal,true),
+    user:value(useexternal,true),
     !,
     getdbtagsdirect(PAT,Input),
     xml_parse(Input,XML),
@@ -230,18 +268,18 @@ x_getdbtags(PAT,Tags,Compnames) :- %% TLF-030408
 
 
 x_getdbtags(_,_) :- 
-    \+ value(useexternal,true),
+    \+ user:value(useexternal,true),
     !,
     output('useexternal flag is false -> no tagging performed').
 
 
 x_receive_tags(Tags,Compnames,File) :-           %%
-    value(useexternal,true),
+    user:value(useexternal,true),
     !,
     y_receive_tags(Tags,Compnames,File).            %% MTK 021018/TLF
 
 x_receive_tags(_,_,_):-  %%
-    \+value(useexternal,true).
+    \+user:value(useexternal,true).
 
 
 
@@ -277,12 +315,12 @@ y_receive_tags(Tags,Compnames,File) :-          %% MTK 021018/TLF
 
 reset_tags :- %% TA-061009
 
-   tags := [].
+   user:( tags := [] ).
 
 
 update_tags(K):-
 
-   tags := K.
+   user:( tags := K ).
 
 %update_compnames(Compnames) :-                  %% MTK 021018
 %    remove_dummycomps(Compnames,Compnames2),
@@ -305,8 +343,8 @@ update_tags(K):-
 %    plustoatom1(P2,PAT).
 %
 %append_synnames(L2,L3):- 
-%    value(busflag,true), %% TA-060613
-%    \+ value(teleflag,true), %% TA-080407 (not bor -> bro(
+%    user:value(busflag,true), %% TA-060613
+%    \+ user:value(teleflag,true), %% TA-080407 (not bor -> bro(
 %    !,
 %    set_ops(Y,(member(X,L2),synname(X,Y)),Z), %% seq. pres 
 %    append(L2,Z,L3).
@@ -324,7 +362,7 @@ hazardous_tagname(X):- %% TA-060213
  (   
     number(X);         %% TA-060214
 
-    value(language,N),dict_module(N,L),L:cw(X);             %% tuc/dict_ %% TA-070612
+    user:value(language,N),dict_module(N,L),L:cw(X);             %% tuc/dict_ %% TA-070612
 
     hazard_tagname(X) %%  db/teledat2
  ).

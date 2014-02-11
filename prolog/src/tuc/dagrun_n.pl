@@ -4,16 +4,23 @@
 %% CREATED TA-950728
 %% REVISED TA-110127
 
+%% NO; PART OF dcg_e or dcg_n, loaded from tucbuses.pl
+%:-module( dcg_n, [ cc/5, check_stop/5, check_stop_locations/5, %check_stop_locations ---> check_stop,!. %% ad hoc %% TA-101215
 
+:-module( dagrun_n, [ cc/5, check_stop/5, check_stop_locations/5, %check_stop_locations ---> check_stop,!. %% ad hoc %% TA-101215 RS-140210
+        compute_gap_item/2,  end_of_line/5, end_of_line0/5,  lock/5,   look_ahead/6,   not_look_ahead/6,
+        pushstack/7,     skip_rest/5,       unlock/4,        virtual/6,   w/6,        word/5  ] ). %% RS-140209
 
-
+%% RS-131227  dcg_e and dcg_n both CONTAINS dcg.pl. They are all auto-generated from metacomp.pl!
 
 % Norwegian  clone of runtime routines 
-
+% - Loaded in module dcg_n later...
 %:-module(dcg_n,[cc/5, check_stop/5, end_of_line/5, end_of_line0/5, lock/5, look_ahead/6, not_look_ahead/6, 
 %                 pushstack/7, pushstack1/4, skip_rest/5, unlock/4, w/6, word/5]).
 
- 
+%% RS-131227    UNIT: tuc/
+%:-ensure_loaded( user:lex ). %%, [ maxl/1, txt/3  ]).                %% RS-131227    From lex.pl
+:-use_module( '../tuc/lex.pl', [ maxl/1, txt/3 ] ). %% RS-140207, extra?  maxl/1,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -33,12 +40,12 @@ cc(U,UW,W,X,Y):-
 
 cc(U,X,X,UW,W):- 
    \+ frontgap(X),
-    user:txt(UW,w(_,[U]),W),
+    txt(UW,w(_,[U]),W),
     upcur(W).             % UPDATE *  
 
 
 word(U,X,X,UW,W):-        %% Reads the word as is
-   user:txt(UW,w(U,_),W), 
+   txt(UW,w(U,_),W), 
    upcur(W).
 
 % CODED WORDS
@@ -53,7 +60,7 @@ w(U,T,UW,W,X,Y):-
 
 w(U,U,X,X,UW,W):- 
    \+ frontgap(X), %%%%% \+ nogap(X),      %% TA-040809 
-    user:txt(UW,w(_,U),W),    % Experiment (Dont advance pointer if fail)
+    txt(UW,w(_,U),W),    % Experiment (Dont advance pointer if fail)
     upcur(W).            % UPDATE * 
                          % An error message can never come too early
 
@@ -107,21 +114,23 @@ unlock([gap(lock,_)|GS],GS,X,X).
 %% Added argument for parse_tree
 
 end_of_line(nil,[],[],Z,Z):-  %% Absolute end of line 
-    user:maxl(Z).             %% empty stack
+    maxl(Z).             %% empty stack
 
 end_of_line0(nil,K,K,Z,Z):-  %% End of line, no empty-check
-    user:maxl(Z).            %% TA-110127
+    maxl(Z).            %% TA-110127
 
 skip_rest(nil,_,[],_,Z):-
-    user:maxl(Z).  
+    maxl(Z).  
 
 check_stop(nil,[],[],X,X).  %% True if nothing left on stack 
+%check_stop(nil,[],[],X,X) :-  %% True if nothing left on stack 
+        check_stop_locations(nil,[],[],X,X).  %% True if nothing left on stack  %% RS-131228 AD-HOC! for dcg_n.pl 
 
 %%  LOOK AHEAD WITHOUT READING
 
 look_ahead(w(F),nil,X,X,Y,Y):- 
     \+ frontgap(X),      %% (text blocked also for look_ahead)
-    user:txt(Y,w(_,F),_). 
+    txt(Y,w(_,F),_). 
 
 
 look_ahead(w(F),nil,X,X,Y,Y):- 
@@ -131,7 +140,7 @@ look_ahead(w(F),nil,X,X,Y,Y):-
 
 look_ahead([F],nil,X,X,Y,Y):- 
     \+ frontgap(X),      %% (text blocked also for look_ahead)
-    user:txt(Y,w(_,[F]),_). 
+    txt(Y,w(_,[F]),_). 
 
 
 look_ahead([F],nil,X,X,Y,Y):- 
@@ -148,7 +157,7 @@ not_look_ahead(A,B,C,D,E,F) :- %% TA-081229
 
 not_look_ahead(w(F),nil,X,X,Y,Y):- 
     \+ frontgap(X), 
-    user:txt(Y,w(_,F),_),
+    txt(Y,w(_,F),_),
     !,fail.
 
 
@@ -164,12 +173,12 @@ not_look_ahead([F],nil,X,X,Y,Y):-  %% TA-081229
 
 not_look_ahead([F],nil,X,X,Y,Y):- 
     \+ frontgap(X), 
-    user:txt(Y,w(_,[F]),_),
+    txt(Y,w(_,[F]),_),
     !,fail.
 
 %%  unnec or wrong %% TA-081229
 %% not_look_ahead([F],nil,X,X,Y,Y):- 
-%%     user:txt(Y,w(_,[F]),_),
+%%     txt(Y,w(_,[F]),_),
 %%     !,fail.
 %% 
 

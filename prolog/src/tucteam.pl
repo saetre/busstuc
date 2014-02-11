@@ -7,15 +7,17 @@
 %% %% Makefile for TEAMTUC   server, Incrementally
 
 
-?-prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates
+%%?-prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates
 
-?-compile('tucbuses.pl'). 
+%:-compile('tucbuses.pl'). 
+:- use_module( tucbuses ). %% RS-131227 Avoid loop?
 
 ?-compile('version.pl'). %% TA-031117
 
 ?-compile('monobus.pl'). %% TA-031115
 
-?-compile('main.pl').    %% TA-031115
+%?-compile('main.pl').    %% TA-031115
+:- use_module( main, [  ] ). %% RS-131227 Avoid loop?
 
 
 

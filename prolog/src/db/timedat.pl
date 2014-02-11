@@ -6,19 +6,39 @@
 %% REVISED TA-110207    RS-130327
 
 %% Time data for bus routes in general
+:-module(timedat, [ after_morning/1, aroundmargin/1, before_morning/1, buslogtimeout/1, create_named_dates/0, dedicated_date/1, 
+                    %% Dedicated Date Example 22.10 not clock if 22.10 is date of new route tables
+        defaultprewarningtime/1, delay_margin/1, kindofday/2, maxarrivalslack/1,      % unacceptably long  exchange waitingtime
+        maxtraveltime/1,        %% 100 MINUTES in Trondheim %% fra Vestlia til Jonsvatnet kl. 14.30? %%  1258 ->  1430
+        morning_break/1,        %% When does morning start?
+        named_date/2,        orig_named_date/2,      softime/3               %% These times are implicit and shall not be VERIFIED in answers
+]).
 
 % Domains:   BOOLEAN ROUTETYPE STATION PLACE MINUTES
 %            DATE DAY DOMAIN CLOCK
 
-%* List of predicates
+:- ensure_loaded( user:'../declare' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
+%:-use_module( '../utility/utility', [ for/2 ] ).  %% , remember/1  used in for-loop.
+:- use_module( '../utility/datecalc.pl', [ add_days/3, easterdate/2, sub_days/3, this_year/1, todaysdate/1 ]).  %% RS-121325 Contains the utility predicates that has to do with dates
 
-:-volatile named_date/2. %% Created Initially, redefined with remember(day_map) below
-:-dynamic named_date/2. %% Created Initially 
+%% :-use_module( '../utility/library.pl' ).        %% for: uses orig_named_date %% KISS %% RS-131230
+
+%% List of predicates
+:-volatile named_date/2. %% Created Initially, not stored in save_program
+:-dynamic named_date/2. %% Created Initially,  redefined with remember(day_map) below
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate for(:,:).
+
+for(P,Q):-
+  P,Q,
+  false;true.
 
 create_named_dates :-
     list_of_named_dates(L), 
-    for((member(A,L),orig_named_date(A,B)),
-         remember(named_date(A,B))). %% To be     refined
+    for( ( member(A,L), orig_named_date(A,B) ),
+         user:remember( named_date(A,B) )
+       ). %% To be     refined
 
 
 %%%%%%%  TIME  SECTION %%%%%%%%%%%%%%%%%
@@ -32,7 +52,7 @@ create_named_dates :-
 
 % orig_named_date is defined here, and later recreated as named_date
 
-list_of_named_dates([
+list_of_named_dates( [
     new_years_eve,
     new_years_day,
     palm_sunday,

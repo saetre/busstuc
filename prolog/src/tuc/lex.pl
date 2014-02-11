@@ -4,11 +4,24 @@
 %% AUTHOR T.Amble
 %% CREATED TA-931217
 %% REVISED TA-110803  RS-130330
+%% REVISED  RS-140101 modularized
 
 %% Transforms each word into a list of alternatives.
-
 %% Semi-tagger (quasi multitagger)
 
+:-module( lex, [ assertnewtxt/3, avoid_spurious_street/1,      believed_name/5,        blockmark/1,            %% RS-131225 for utility for-loop?
+        classify/2,
+        clean1/0,              completely_unknown/3,           ctxt/3,                 decide_domain/0,        decide_topic/0, %% RS-131227    For buster (Dialog)
+        exmatchcompword/2,     extract_inter_pares/3,          known_name/1,           lcode1/2,               lexcandsearch/3,%% RS-131225    For utility.pl for-loop
+        lexproc3/3,            maxl/1,                         matchcomp3/3,           matchcompword/2,        %% For utility for-loop
+        mix/2,                 numbernext/1,                   no_unprotected_verb/0,  %% RS-131225 % mix used by main.pl (write a * in the list)
+        occurs_in_txt/1,       only_part_name/1,               part_name/1,            %% RS-131225    For main.pl
+        part_word/1,           removeunconnected/0,            repl1/3,                spread/1,       %% RS-131225 for main.pl, morph_e.pl, etc?
+        street_part_name/1,    substreet/2,                    substreet0/2,           syntxt1/4,      %% RS-131225 for utility.pl for-loop?
+        target_name/1,         termchar/1,                     tsx/0,                  txt/3,          %% RS-131227 for dagrun_n.pl %% RS-131225  %term_char: . AND ? only as last character
+        unconnectedtxt/2,      unknown/1,                      unknown_words/2,        unproperstation1/1,     %% RS-131225 for facts.pl
+        unprotected_verb/0,    tucsoundex/2            %% RS-131225  %% TUCsoundex // Replace in sequence recursively
+]).
 % % % % % % % % % % % % % % % % % % % % % % % % % % 
 
 %%%%%% The coding conventions %%%%%%%%%%%%%%%%%%%%%
@@ -29,73 +42,96 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% RS-111205, UNIT: /
-:- ensure_loaded( '../declare' ).  % :- use_module( userNOTME:'../declare.pl').
+%% META PREDICATES : for/2, foralltest/2, once1/1, set_of/3, set_ops/3, test/1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%doall(P): (P, then succeed)
+:-meta_predicate  doall(:).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:-meta_predicate  foralltest(:,:).
+foralltest(P,Q):- \+ ( P, \+ Q). 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:-meta_predicate  once1(:).
+once1(P):-P,!. %% same as once, but version independent
+               %% try once, otherwise FAIL
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Prologs setof is baroque %% 
+set_of(X,Y,Z):-           %%
+    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
+    Z=[].                 %% What is wrong with empty sets ?
+%% Sequence preserving setof, ( first occurrence stays first)
+set_ops(X,Y,Z):-
+    findall(X,Y,Z1),
+    remove_duplicates(Z1,Z). %% order-preserving
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:-meta_predicate  test(:).
+test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)) among other things, so: import nostation/1  Move to pragma.pl ?
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%% RS-131225, UNIT: / and utility
+:- ensure_loaded( user:'../declare' ).
+%:- ensure_loaded( user:'../utility/utility' ).  %% RS-131117 includes declare.pl?
+:- use_module( '../utility/utility', [ append_atoms/3, begins_with/3, delete1/3, ends_with/3, flatten/2 ] ). %keep local: foralltest/2, 
+:- use_module( '../utility/utility', [ iso_atom_chars/2, out/1, output/1, remove_duplicates/2, set_union/3 ] ). %% Keep it local: once1/1, set_of/3, set_ops/3, 
+:- use_module( '../utility/utility', [ testmember/2, textlength/2 ] ). % Keep them local: track/2, test/1, 
+%%:- use_module( '../utility/library', [ ] ).      %% RS-131229 Make this internal! (Decoupling modules!)
 
-%:- use_module( '../interfaceroute', [ domain_module/2 ] ). %% HEAVY DB!
-%:- use_module(    '../main', [ (:=)/2, (=:)/2, myflags/2,  set/2,  traceprint/2, track/2 ] ).
-%:- use_module(    '../tucbuses', [  dict_module/1, dict_module/2, morph_module/1  ] ).
-%
-%%% RS-111205, UNIT: tuc
-%:-use_module( dict_n, [
-%        compword/3,   kw/1, %% TA-100902 %%%%%%%%%  All the words appearing as [ ] constants in grammar
-%        noisew/1,     rewording/2,   synwordx/2,  xcompword/3
-%    ] ).
-%:- use_module( evaluate, [ fact/1, instant/2 ] ).
-%:- use_module( facts, [ neighbourhood/1, (isa)/2  ] ).  %% RS-111204    isa/2 from facts.pl
-%:- use_module( names, [
-%        compname/3,  generic_place/1,  samename/2,  streetsyn/1, synname/2,  unwanted_name/1
-%  ] ).
-%
-%%% RS-111205, UNIT: app
-%:- use_module( '../app/buslog', [  bus/1, composite_stat/3, station/1 ] ).
+:- use_module( '../interfaceroute', [ domain_module/2 ] ). %% HEAVY DB! Obsolete?
+%:- use_module( '../busroute', [ ] ). %% HEAVY DB! Obsolete?
 
-%% RS-111205, UNIT: db/
-:- use_module( '../db/busdat', [ 
-        cmbus/3,
-        explicit_part_name/1,      % (NAME)
-        synbus/2,                  % (NAME,ROUTE)
-        tramstation/1,             % (STATION)
-        xforeign/1,                % (PLACE)
-        xsynplace/2
-  ] ).
-%:- use_module( '../db/namehashtable' ).
-%:- use_module( '../db/places', [
-%        underspecified_place/1, unwanted_place/1,
-%        alias_name/2,            % (NAME,NAME)
-%        cmpl/3,                  % (NAME,NAME*,LIST)
-%        sameplace/2,             % (PLACE,PLACE)
-%        synplace/2,              % (NAME,PLACE)
-%        underspecified_place/1,  % (PLACE)
-%        unwanted_station/1
-%   ]).
-%:- use_module( '../db/regcompstr', [ composite_road/3 ] ).
-% %:- use_module( '../db/regbusall', [ regbus/1 ] ). %% HEAVY DB! %% RS-120803
-%:- use_module( '../db/regstr', [   streetstat/5 ] ). %% RS-111201 Remember to update source program, which is makeaux?
-%:- use_module( '../db/teledat2', [   lookupdb2/3 ] ).
-%:- use_module( '../db/timedat', [ named_date/2 ]).
-%:- use_module( '../db/topreg', [     routedomain/1,        route_period/4    ] ).
-%
+%%MISERY?:
+:- use_module( '../main' , [ traceprint/2, track/2 ] ). %%RS-131224  ctxt/3 is dynamicly used below
+%:- ensure_loaded(  user:'../main' ). %%, [ traceprint/2, track/2 ] ). %%RS-131224  ctxt/3 is dynamicly used below
+
+%:- ensure_loaded( user:'../tucbuses' ). %%, [  user:dict_module/1, user:dict_module/2, user:morph_module/1  ] ).
+:- use_module( '../tucbuses', [ dict_module/1, dict_module/2, morph_module/1 ] ).
+
+%%% RS-131225, UNIT: app,
+:- use_module( '../app/buslog', [  bus/1, composite_stat/3, regbus/1, station/1 ] ).
+
+%% RS-111205, UNIT: db/                        % (NAME)      % (NAME,ROUTE)  % (STATION) % (PLACE)
+:- use_module( '../db/busdat', [ cmbus/3, explicit_part_name/1, synbus/2, tramstation/1, xforeign/1, xsynplace/2 ] ).
+:- use_module( '../db/namehashtable', [ toredef/3, torehash/2 ] ). %% compile is too expensive? Use ':-createhash.'
+:- use_module( '../db/places', [ alias_name/2, % (NAME,NAME)
+        cmpl/3,                  % (NAME,NAME*,LIST)   % nostation/1, % is USED! in dont_spell_check_test(Strandveien,L) :- test( nostation(Strandveien) )
+        sameplace/2,             % (PLACE,PLACE)
+        synplace/2,              % (NAME,PLACE)
+        underspecified_place/1,  % (PLACE)
+        unwanted_place/1,        unwanted_station/1
+] ).
+:- use_module( '../db/regcompstr', [ composite_road/3 ] ).
+%:- use_module( '../db/regbusall', [ regbus/1 ] ). %% HEAVY DB! %% RS-120803 RS-131225 regbus/1 MOVED to app/buslog.pl
+:- use_module( '../db/regstr', [   streetstat/5 ] ). %% RS-111201 Remember to update source program, which is makeaux?
+:- use_module( '../db/teledat2', [   lookupdb2/3 ] ).
+:- use_module( '../db/timedat', [ named_date/2 ]).
+%:- ensure_loaded( '../db/topreg' ). %%, [     routedomain/1,        route_period/4    ] ).
+:- use_module( '../db/topreg', [     routedomain/1,        route_period/4    ] ).
+
 %
 %%% RS-111205, UNIT: dialog/
-%
-%:- use_module( '../dialog/frames2', [  xframe_getvalue/2 ] ).
+:- use_module( '../dialog/frames2', [  xframe_getvalue/2 ] ).
 %:- ensure_loaded( '../dialog/frames2' ). %% , [  xframe_getvalue/2 ] ).
 
-%%% RS-111205, UNIT: utility
-%:- use_module( '../utility/utility', [
-%        append_atoms/3, begins_with/3, delete1/3, doall/1,  % P, then succeed
-%        ends_with/3,    flatten/2, for/2, foralltest/2, iso_atom_chars/2,
-%        once1/1,        out/1,    output/1,  set_of/3,   set_ops/3,    set_union/3,  test/1,
-%        testmember/2,       textlength/2
-%   ] ).
+%%% RS-111205, UNIT: tuc
+:- use_module( dict_n, [ kw/1 ] ). %% TA-100902 %%%%%%%%%  All the words appearing as [ ] constants in grammar %% RS-131225
+:- use_module( evaluate, [ fact/1, instant/2 ] ). %% RS-111204    isa/2 from facts.pl
+:- use_module( facts, [ (isa)/2,  neighbourhood/1  ] ).  %% RS-111204    isa/2 from facts.pl
+:- use_module( names, [  compname/3,  generic_place/1,  samename/2,  streetsyn/1, synname/2,  unwanted_name/1  ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:-volatile blockmark/1. %% used for bookkeeping of xcompword matching
-:-dynamic blockmark/1. %% used for bookkeeping of xcompword matching
+:-volatile 
+          blockmark/1, %% used for bookkeeping of xcompword matching
+          
+          txt/3,      % elementary words
+          ctxt/3,     % composite words 
+          maxl/1.
+
+:-dynamic 
+          blockmark/1, %% used for bookkeeping of xcompword matching
+
+          txt/3,      % elementary words
+          ctxt/3,     % composite words 
+          maxl/1.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -107,15 +143,15 @@
 
 lexproc3(L1,AssumedLanguage,L3):-
 
-    language  =: AssumedLanguage, %% AssumedLanguage := value$(language)
+    user:( language  =: AssumedLanguage ), %% AssumedLanguage := value$(language)
 
-    \+ value(duallangflag,true),  %% without duallangflag, only 1 language
+    \+ user:value(duallangflag,true),  %% without duallangflag, only 1 language
     !,                  
     lexproc2(L1,L3,_Nunks).
 
 
 lexproc3(L1,AssumedLanguage,L3):- 
-    language  =: OldLanguage,
+    user:( language  =: OldLanguage ),
     lexproc2(L1,L2Old,NunksOld),
     !,
     track(4,nl), 
@@ -128,11 +164,11 @@ lexproc3(L1,AssumedLanguage,L3):-
 
 (   
     the_other_language(OldLanguage,NewLanguage),
-    language := NewLanguage,
+    user:( language := NewLanguage ),
     lexproc2(L1,L2New,NunksNew),
     !,
     track(4,nl),  
-    language := OldLanguage, % ad hoc, for safety
+    user:( language := OldLanguage ), % ad hoc, for safety
 
     decide_language(NunksOld,NunksNew,OldLanguage,NewLanguage,AssumedLanguage),
 
@@ -194,7 +230,7 @@ splitwordx(X, YZ):-
 
 
 splitword(X,KL):-
-    value(language,N),
+    user:value(language,N),
     dict_module(N, Dict),
     Dict:splitword(X,KL).
 
@@ -206,7 +242,7 @@ rewordreplace(XL,ZL,Max):-
     rewordrepl1(XL,YL,Suc),
     Suc==1, %% 1 changed   
     !,
-    traceprint(4, (XL -> YL)), 
+    traceprint(4, (XL -> YL)),
     rewordreplace(YL,ZL,Max1).
    
 rewordreplace(XL,XL,Max):-  
@@ -242,7 +278,7 @@ mdlistrest(X,[A|B],[A|BX]):-
   
 
 reword1(X,KL):-
-    value(language,N),
+    user:value(language,N),
     dict_module(N, Dict),
     Dict:rewording(X,KL).
 
@@ -260,10 +296,10 @@ lexps([X|Y],[XL|YL]):-
 lcodes(N,w(N,S2)):-
 
 %% TRY SEQUENCE PRESERVING / prioritize table items
-    set_ops(N1,lcode1(N,N1),S), 
-    handle_unknown(N,S,S1),
-    traceprint(4,handle_unknown(N,S,S1)), %% trace >= 4 -> write unknown list 
-    squirtsurplus(N,S1,S2).
+    set_ops( N1, lex:lcode1(N,N1), S ), 
+    handle_unknown( N, S, S1 ),
+    traceprint( 4, handle_unknown( N, S, S1 ) ), %% trace >= 4 -> write unknown list 
+    squirtsurplus( N, S1, S2 ).
 
   
 %% Levange = leangen/levanger Different names ==> just unknown
@@ -291,11 +327,11 @@ squirtsurplus(_,S,S). % No unknowns
 handle_unknown(_Forresten,[n_w],[n_w]):-!. %% \+ Forset
 
 handle_unknown(_Name,List,List):- 
-    \+ value(spellcheck,1),
+    \+ user:value(spellcheck,1),
     !. 
 
 handle_unknown(_Name,List,List):- %% Hazard ???
-    value(teleflag,true),
+    user:value(teleflag,true),
     !. %% dynamic, spell only for places anyway
                             
 handle_unknown(Strandveien,L,L1):-
@@ -306,7 +342,7 @@ handle_unknown(Strandveien,L,L1):-
 
 handle_unknown(N,Taglist,Names):-  %% Only called if NO Tags (feature)
 
-     set_ops(name(X,Gen,Class),    %% Sequence Preserve
+     set_ops( name(X,Gen,Class),    %% Sequence Preserve
            believed_name(N,X,Gen,Class,_U), 
            BelNames),
      set_union(Taglist,BelNames,Names). %% sequence preserving, originals first
@@ -319,15 +355,15 @@ handle_unknown(N,Taglist,Names):-  %% Only called if NO Tags (feature)
 
 dont_spell_check_test(Strandveien,L):-  
 
-(    test(station(Strandveien)) %% eg Blakli -> * Baklia 
+(    test( buslog:station(Strandveien)) %% eg Blakli -> * Baklia 
      ;
-%%%%     test(synname(Strandveien,_))    %% already a synname   **solem veien -> skole veien**
+%%%%     test( synname(Strandveien,_))    %% already a synname   **solem veien -> skole veien**
 %%%%     ;                               %% bishops -> biskops %% TA-110411
-     test(member(noun(_Weather,_,_,_),L)) %% Ad Hoc været \-> Være  
+     test( member(noun(_Weather,_,_,_),L)) %% Ad Hoc været \-> Være  
      ;
-     test(nostation(Strandveien))   
+     test( places:nostation(Strandveien))
      ;
-     test(member(adj2(_,_),L))   %%  fremme -> Fremo *
+     test( member(adj2(_,_),L))   %%  fremme -> Fremo *
 ).
 
 
@@ -336,8 +372,8 @@ dont_spell_check_test(Strandveien,L):-
 
 
 believed_name(Brosetveien,Brøsetv,n,Class,1):-    %% Brosetveien %% Special
-    value(spellcheck,1),  
-    \+ value(textflag,true),  
+    user:value(spellcheck,1),  
+    \+ user:value(textflag,true),  
     \+ unwanted_name(Brosetveien), 
     \+ unwanted_place(Brosetveien),  
 
@@ -356,7 +392,7 @@ believed_name(Brosetveien,Brøsetv,n,Class,1):-    %% Brosetveien %% Special
 
   
 believed_name(N,X,n,Class,1):-    %% 1 = spellcheck
-    \+ value(textflag,true),  
+    \+ user:value(textflag,true),  
     \+ unwanted_name(N), 
 
     \+ unwanted_place(N),  %% ONLY post check ???  Martin -> Marinen %% TA-100104
@@ -366,7 +402,7 @@ believed_name(N,X,n,Class,1):-    %% 1 = spellcheck
 %% Oasen ->  osen %%  /No  
 %% Charolttenlund -> Charlottenlund / Yes 
 
-    value(spellcheck,1), 
+    user:value(spellcheck,1), 
     lextoresearch(N,Z),  %% [haldens-street,hallen-nil]) \+-> haldens=Haldens gate
 
 %%     avoid_spurious_street(Z), %% // issamveien -> isdamveien
@@ -461,7 +497,6 @@ unproperstation1(_X):-
 %%                                                       %
 %%   All '.','!','?' except the last is removed as noise %
 
-
 termchar('.'). 
 termchar('?').
 termchar('!'). 
@@ -476,14 +511,14 @@ lextermchar('!').
 
 /***
 remove_noise([   w('(',_)   |Y],V):-  
-   value(gpsflag,true), 
+   user:value(gpsflag,true), 
    extract_inter_pares(Y,U,  W), %% TA-10114 (U parenthesis content list)
    remove_noise(W,V),
 
    extract_origins(U). %% neib stations
 
  extract_origins(U):- %% Not implemented
-    ¤¤¤ for(member(quote(O),_pluss,T),remember(gps_origin(O,T))).
+    ¤¤¤ for(member(quote(O),_pluss,T),user:remember(gps_origin(O,T))).
 ***/
 
 
@@ -518,14 +553,14 @@ remove_noise([w(PP1,_),w(PP2,K)|R],R1):-   %% Always remove duplicate term chars
 
 remove_noise([WN,w(PP,L)|R],[WN,w('.',L)|R1]):- %% KEEP 3. juledag
     lextermchar(PP), 
-    \+ value(nodotflag,true), 
+    \+ user:value(nodotflag,true), 
     WN=w(N,_), number(N),                        %% KEEP 10.12 
     !,
     remove_noise(R,R1).
 
 remove_noise([w(PP,_),L|R],R1):-   %% DONT KEEP apr. 2001 
     lextermchar(PP),               %% DONT REMOVE LAST !!! 
-    value(nodotflag,true),                           
+    user:value(nodotflag,true),                           
     !,
     remove_noise([L|R],R1).
 
@@ -557,8 +592,8 @@ noisy(w(_,[n_w])).
 
 noisy(w(LTC,_)):- 
     lextermchar(LTC), 
-    (\+ value(textflag,true),
-        value(nodotflag,true)),!. 
+    (\+ user:value(textflag,true),
+        user:value(nodotflag,true)),!. 
 
 
 
@@ -573,7 +608,7 @@ synname0(X,X) . %%.%%
 synw0(X,Y):-synword(X,Y).
 synw0(X,Y):- X=Y. 
 
-synword(X,Y):-dict_module(L),L:synwordx(X,Y). 
+synword(X,Y) :- dict_module(L), L:synwordx(X,Y). 
 
 
 %%% synword(X,Y):-synname(X,Y). %% Name synonymes, area independent %% busdat.pl
@@ -589,8 +624,8 @@ synword(X,Y):-dict_module(L),L:synwordx(X,Y).
 
 
 %% NB   lcode is done before removenoise
-lcode1('(',['(']):-value(noparentflag,true),!. 
-lcode1(')',[')']):-value(noparentflag,true),!. 
+lcode1('(',['(']):-user:value(noparentflag,true),!. 
+lcode1(')',[')']):-user:value(noparentflag,true),!. 
 
 
 %% lcode1(quote(X),   Y  ):-  %% Du sier 'ok'.
@@ -609,7 +644,7 @@ lcode1(quote(X),   quote(X)):-!. %% TA-100209   by\'n . -> quote('n .')
 
 
 lcode1(TenA,nb(Ten,Num)):-   %% T   9a -> 9,alf (not clock)
-    value(spellcheck,1),
+    user:value(spellcheck,1),
     \+ unwanted_name(TenA),  %% e.g. osv  
     \+ xunwanted_place(TenA), %% e.g. 3T 
     numberalfa(TenA,Ten),  %% Only 1 letter is allowed ("5bussen")
@@ -622,7 +657,6 @@ lcode1(N1,N2):-
 
 
 %%¤  LCODE2
-
 
 lcode2(X,Y):-
     synw0(X,X1),
@@ -654,7 +688,6 @@ lcode2(X,name(X1,n,station)):-    %% street is also station
     streetstation2(X,X1). %% 
 
 
-
 lcode2(BUSSTUCS,name(BUSTUC,gen,Class)):-  %% Busstucs = bustuc's
     \+ unwanted_name(BUSSTUCS), 
     ends_with(BUSSTUCS,BUSSTUC,s), 
@@ -670,7 +703,6 @@ lcode2(JOHNS,name(JOHN,gen,Class)):-
     JOHN \== '', 
     plausible_name(JOHN,Class). 
 
-
 %%%   test-alias_name er ikke TEST %% 
 
 lcode2(X,name(Y,n,Class)):-    % Known name or partname //moved last 
@@ -682,27 +714,25 @@ lcode2(X,name(Y,n,Class)):-    % Known name or partname //moved last
     Class \== number.  %% 5 is name of route, 5 is of class number  not qua name   
 
 
-
-
-
 lcode2(X,[]):- %% e.g. noe 
     synword(X,[]).
 
 
+
 xunwanted_place(X):- %% "Roger (Midtstraum) "
-   \+ value(teleflag,true),
+   \+ user:value(teleflag,true),
     unwanted_place(X).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-test_known_name(X,X):- %% munkegata -> neighbourhood
-    once1(plausible_name(X)). %% = once, but Prolog version independent
+%test_known_name(X,X):- %% munkegata -> neighbourhood
+%    once1(plausible_name(X)). %% = once, but Prolog version independent
 
 
  
 try_alias_name(X,X):- 
-    value(textflag,true),!.
+    user:value(textflag,true),!.
 
 try_alias_name(X,Official):-  
     try_alias_station(X,Official). %% bekasinvegen -> station! bekkasinv
@@ -808,7 +838,7 @@ known_name(X):-
      cmpl(X,[],_). % Only if not spelled 
 
 known_name(X):-        %% low priority
-    value(tramflag,true), 
+    user:value(tramflag,true), 
     tramstation(X).   %% Ad Hoc, tramstation is not a class !!!
 
 known_name(X) :-   
@@ -825,7 +855,7 @@ part_name(X):-
 
 part_name(X):-  
     nonvar(X), 
-    \+ value(tmnflag,true), 
+    \+ user:value(tmnflag,true), 
     composite_stat(_First,Rest,_), 
     member(X,Rest). 
 
@@ -925,13 +955,13 @@ plausible_name(X,C):-
     plausible_name(Y,C).
 
 plausible_name(N,Class):-
-    value(error_phase,0),
+    user:value(error_phase,0),
     fact(N isa Class),
     atomic(N),
      \+ member(Class,[word,number,time]). 
 
 plausible_name(N,Class):-
-    value(error_phase,1),   %% first line 
+    user:value(error_phase,1),   %% first line 
     plausible_atom(N),      
     \+ instant(N,word),     
     fact(N isa Class).
@@ -968,8 +998,8 @@ only_part_name(Jakobsli):-
     \+ neighbourhood(Jakobsli). 
 
 %%%% UNUSED
-full_name(X):- 
-     \+ only_part_name(X). 
+%full_name(X):- 
+%     \+ only_part_name(X). 
 
 %%%%%%%%%%%%%%%  LAYOUT %%%%%%%%%%%%%%%%%%
 
@@ -977,7 +1007,7 @@ spread(L):-
     retractall(txt(_,_,_)),
     retractall(ctxt(_,_,_)),
     retractall(maxl(_)),
-    cursor := 0,
+    user:( cursor := 0 ),
     sprea(0,L),
     composal.
 
@@ -993,7 +1023,11 @@ sprea(N,[]):-
 spreall(M,w(X,Z),N):- 
     for(member(U,Z),assert(txt(M,w(X,U),N))).
 
-
+%%%%%%%%%%%%%%%%%%
+for(P,Q):-     %% RS-131229 Ok to use utility/library.pl for-predicate when lex is NOT a module ;-)
+  P,Q,
+  false;true.
+%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%  Write a * at position in list
 
@@ -1022,8 +1056,6 @@ outwx(w(H,_)):-out(H).
 %%% txt is initally only elementary steps
 %   ctxt is temporarily the new texts
 %   finally they are merged
-
-
 
 composal :- 
     
@@ -1060,14 +1092,14 @@ composal :-
 
 
 decide_topic:- 
-    value(busflag,true),
-%%%%%    value(teleflag,true), %% dynamic
+    user:value(busflag,true),
+%%%%%    user:value(teleflag,true), %% dynamic
     !,
     teletopics(T),
     bustopics(B),
 
     decide_top(T,B, BT),
-    set(topic,BT),
+    user:set(topic,BT),
     
     track(1,  (out('* Topic: '),out(BT),nl,nl)). 
 
@@ -1156,7 +1188,7 @@ decide_domain :- true. %% no change
 
 /* %% TA-110208 FARA
 decide_domain :- 
-    \+ value(tmnflag,true),
+    \+ user:value(tmnflag,true),
     G = tt, % Ad hoc
 
     actual_domain := G.
@@ -1166,7 +1198,7 @@ decide_domain :-
 
 decide_domain :- 
  
-    value(tmnflag,true),
+    user:value(tmnflag,true),
     !,
  
     set_of_stations_advanced(ZD), 
@@ -1181,7 +1213,7 @@ decide_domain :-
        ZD=[]  -> G=tt ;
                  G=nil),
 
-     actual_domain := G,
+     user:( actual_domain := G ),
 
     remove_confusing_stations(G).
    
@@ -1224,12 +1256,12 @@ set_of_names_with_alts(ZZ):-
 
  
 make_an_intelligent_decision(_ZZ,[tt]):-
-    \+ value(tmnflag,true),
+    \+ user:value(tmnflag,true),
     !.
 
 
 make_an_intelligent_decision(ZZ,TT):- % Probably subsumed by next rule
-    value(tmnflag,true),
+    user:value(tmnflag,true),
     routedomain(G), %% tt first
     uniqueinset(G,ZZ),
     memberinall(G,ZZ),
@@ -1237,7 +1269,7 @@ make_an_intelligent_decision(ZZ,TT):- % Probably subsumed by next rule
     TT=[G].
 
 make_an_intelligent_decision(ZZ,TT):-
-    value(tmnflag,true),
+    user:value(tmnflag,true),
     routedomain(G), %% tt first
     memberinall(G,ZZ),
     !,
@@ -1245,18 +1277,18 @@ make_an_intelligent_decision(ZZ,TT):-
 
 
 make_an_intelligent_decision(_,gb):-
-    value(tmnflag,true),
-    value(tramflag,true),  %% TRAM is mentioned
+    user:value(tmnflag,true),
+    user:value(tramflag,true),  %% TRAM is mentioned
     !.
 
 
 make_an_intelligent_decision(_,[]):-
-    value(tmnflag,true).
+    user:value(tmnflag,true).
 
 
 
 make_an_intelligent_decision(_,tt):-
-    \+ value(tmnflag,true).
+    \+ user:value(tmnflag,true).
 
 
 
@@ -1309,9 +1341,9 @@ matchcompword(N1,Lap):-
 
 make_exclusive_compwords :- %% Try every word 
 
-    retractall(blockmark(_)), 
+    retractall(lex:blockmark(_)), 
 
-    for(   (txt(N1,w(Lap,_TAG),_),\+ blockmark(N1)), 
+    for(   (txt(N1,w(Lap,_TAG),_),\+ lex:blockmark(N1)), 
    
         exmatchcompword(N1,Lap)). 
 
@@ -1331,7 +1363,7 @@ exmatchcompword(N1,Lap):- %% delete substituents afterwards
          (Alpha >= N1,Omega =< N3)), 
           
           (retractall(txt(Alpha,W,Omega)), %% all presences
-           remember(blockmark(Alpha)))),         %% not to be reintroduced
+           user:remember(lex:blockmark(Alpha)))),         %% not to be reintroduced
 
     lcodew(Computer,WNoun),
     assertnewa(txt(N1,w(Computer,WNoun),N3)).
@@ -1403,8 +1435,14 @@ cleantxt :-
 %% dronningens gate
 
 proxyclean :- %% TA-101027
-     doall(clean1). %% failure driven loop (utility)
+     doall( clean1 ). %% failure driven loop (utility)
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+doall(P):-  % P, then succeed 
+    P,
+    false ;
+    true.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 clean1 :-  %% hans finnes gate %% TA-110114 fronted
     txt(N0,w(hans,_),N1),
@@ -1603,7 +1641,7 @@ removeblanks :- %% txt(0, w(noe,[]), 1). %% NB Destructive
 
 %% strandv. 30 --->  strandveien   < strandveien 30 
 
-removedots :- \+ value(nodotflag,true),!. %% Multiple sentences , keep dot
+removedots :- \+ user:value(nodotflag,true),!. %% Multiple sentences , keep dot
 
 %% Jeg skal til S. Sælands vei      
 
@@ -1692,7 +1730,7 @@ matchcomp3(N0,Prof,N1):-
     %% ! %% < multiple solutions > St Olavs gt
 
 matchcomp3(N0,_,_):- 
-    value(teleflag,true),
+    user:value(teleflag,true),
     matchcomp2(N0).
 
 
@@ -1783,7 +1821,7 @@ matchcomp2(N0):- %% Tore Amble
 %%%¤¤  MATCHRESTASSERT  
 
 matchrestassert(N0,N1,[],Ident):- 
-    value(tmnflag,true),          %% No streets as such
+    user:value(tmnflag,true),          %% No streets as such
     !,
     moshe_class(Ident,_,Class),
     assertnewa(ctxt(N0,w(Ident,name(Ident,n,Class)),N1)).  %%  suspect
@@ -2017,7 +2055,7 @@ skip_dotx(L,N1,N2):-  %% dont skip if '-' in matchlist
 skip_dotx(_,N1,N2):-
    skip_dot(N1,N2).
 
-skip_dot(N2,N2):- value(textflag,true),!.    %% !!! 
+skip_dot(N2,N2):- user:value(textflag,true),!.    %% !!! 
 
 skip_dot(N2,N3):-txt(N2, w('!',['!']), N3), \+ maxl(N3),!.  %% TA-110116 dora ! kl. 18:15 
 skip_dot(N2,N3):-txt(N2, w(':',[':']), N3), \+ maxl(N3),!.  %% St:Olav:  %% TA-100208
@@ -2031,7 +2069,7 @@ skip_dot(N2,N2).
 
 xcomposite(First,_Restlist,_Key) :- 
     var(First),
-%%     value(teleflag,true), %% ???
+%%     user:value(teleflag,true), %% ???
     !,
     fail.
  
@@ -2048,7 +2086,7 @@ xcomposite(First,Rest,Key) :-
 
 
 xcomposite(A,B,D):- 
-    value(tmnflag,true),
+    user:value(tmnflag,true),
     domain_module(_,Tram),
     Tram \== nil, 
     Tram:composite_stat(A,B,C),
@@ -2287,7 +2325,7 @@ single_letter(X):- %% TA-101117
 
 %% FILE tucsoundex.pl
 %% CREATED TA-041020
-%% REXVISED TA-100205
+%% REVISED TA-100205
 
 %% TUCsoundex // Replace in sequence recursively
 
@@ -2418,6 +2456,7 @@ tsx(X):-
    output(Y).
 
 
+%% TUCsoundex // Replace in sequence recursively
 %% Max 20 iterations  to avoid LOOOP
 tucsoundex(X,Y):-
     var(Y),             %% Precaution
@@ -2468,8 +2507,7 @@ tsxmatches([X|Y],[X|Z],U):-
 
 %%% no_unprotected_verb :-!,fail. %% Turn Off EXPERIMENT
 
-no_unprotected_verb :- 
-    \+ unprotected_verb.
+no_unprotected_verb :- \+ unprotected_verb.     %% RS-140102
 
 
   
@@ -2509,3 +2547,12 @@ unprotected_verb :-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%% Extra utility.pl info
+%:- use_module( '../utility/utility', [  append_atoms/3, begins_with/3, delete1/3, ...]  % P, then succeed
+%        ends_with/3,    flatten/2,      foralltest/2, iso_atom_chars/2,
+%        once1/1,        out/1,          output/1,
+%        set/2,          set_of/3,       set_ops/3,    set_union/3,
+%        test/1,       %% Bad?
+%        testmember/2,   textlength/2,
+%        value/2,        (:=)/2,         (=:)/2 
+%   ] ).

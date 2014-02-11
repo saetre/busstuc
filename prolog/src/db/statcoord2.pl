@@ -5,6 +5,9 @@
 %% REVISED TA-110317
 
 %% Station coordinates with internal station numbers
+:-module( statcoord2, [
+        statcoord/4
+]).
 
 statcoord(15057011,'Kristiansund h.båt', 0, 0).
 statcoord(15057024,'Ringholmen h.båt', 0, 0).
@@ -4581,6 +4584,8 @@ statcoord(16638392,'Sveberg sk.', 0, 0).
 statcoord(16632092,'Sveberg sk.', 0, 0).
 statcoord(16638332,'Svebergkrysset', 63.419799351265276, 10.75565352140409).
 statcoord(16632032,'Svebergkrysset', 63.41907962345571, 10.757324123174733).
+statcoord(16386217,'Torget Orkanger', 63.304693, 9.849038). %% RS-131222. 
+statcoord(16389217,'Torget Orkanger', 63.304693, 9.849038). %% RS-131222. 
 statcoord(16638312,'Torp', 63.43384300601428, 10.693409572443281).
 statcoord(16632012,'Torp', 63.43403183006753, 10.690791726008205).
 statcoord(16638352,'Vasseljen', 0, 0).

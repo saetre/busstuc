@@ -9,7 +9,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- ensure_loaded('../declare').
+:- ensure_loaded( user:'../declare' ).
 
 %% :- use_module( '../db/busdat', [ clock_delay/3 ] ). %%, named_date/2 ]). %% Moved to timedat.pl
 
@@ -70,7 +70,7 @@ wx(adj2(NIL,GOOD)) ---> w(adj2(GOOD,NIL)). %% Ad Hoc
 %% New Option: Read from Text 
 
 sentence([S]) ---> 
-   {value(textflag,true)},  
+   {user:value(textflag,true)},  
    !,
    sentence1(S), 
    terminator.
@@ -80,7 +80,7 @@ sentence([S]) --->
 
 
 sentence([new:::P]) --->  
-    {value(queryflag,false)}, %%  Only in multi dialog system ( dialog,1)
+    {user:value(queryflag,false)}, %%  Only in multi dialog system ( dialog,1)
     declaration(P),
     terminatore, 
     !,accept.
@@ -243,7 +243,7 @@ statement(P) --->
 
 
 statemen(NewHere,P) ---> 
-    {value(queryflag,false)},
+    {user:value(queryflag,false)},
     ifstatement(NewHere,P).
 
 
@@ -280,7 +280,7 @@ statemen1(R,P) ---> % simple version, with world
 
 
 statemes(S,Com,exists(S:Event):: (Com and Q)) --->
-    {value(queryflag,false)},
+    {user:value(queryflag,false)},
     {type(event,Event)}, 
     {type(event,Event)},
     ifstatement(S,Q).
@@ -318,7 +318,7 @@ statem(S,Com,Q) --->
     lexv(iv,Rain,pres,fin)).
 
 statem(S,Com,P) ---> % to work on holidays is fun 
-     {value(textflag,true)},
+     {user:value(textflag,true)},
      infinitive,
      {constrainit(IT,agent)}, 
      verb_phrase1(IT,S,id,CVP),
@@ -330,7 +330,7 @@ statem(S,Com,P) ---> % to work on holidays is fun
 
 
 statem(S,Com,Q) --->  %% it is said  that the bus goes 
-    {value(textflag,true)},
+    {user:value(textflag,true)},
     thereit,
     be,
     w(verb(say,past,part)),
@@ -340,7 +340,7 @@ statem(S,Com,Q) --->  %% it is said  that the bus goes
 
 
 statem(S,Com,P) ---> % it is good to work // fronted temporarily
-    {value(textflag,true)},
+    {user:value(textflag,true)},
     thereit,        
     be,
     {constrainit(IT,agent)}, 
@@ -368,7 +368,7 @@ statem(S,Com,Q) --->
 
 
 statem(S,Com,P) ---> 
-   {value(textflag,true)},
+   {user:value(textflag,true)},
    adverbial3(Prep,Y,SC,P3),
    state(S,Com,P)  -  adverbial3(Prep,Y,SC,P3).    
 
@@ -536,9 +536,9 @@ implicitq(_) ---> %%  where
 
 implicitq(modifier(S)::: Com12 and P3) ---> %% now to Dalen Hageby
     [now],
-    {\+ value(teleflag,true)},
-    {\+ value(textflag,true)},
-    {no_unprotected_verb}, %% NEW AUXILLARY    tuc/lex.pl
+    {\+ user:value(teleflag,true)},
+    {\+ user:value(textflag,true)},
+    {lex:no_unprotected_verb}, %% NEW AUXILLARY    tuc/lex.pl
     not_look_ahead(w(adj2(_,_))), %% raskeste 
     not_look_ahead(w(noun(_,_,_,_))), %% buss etc
     {setvartype(XB,vehicle)}, 
@@ -564,7 +564,7 @@ implicitq(modifier(S)::: Com12 and P3) ---> %%   buss 5 i morgen
 
 implicitq(_) --->  
     w(adj2(N,nil)),       %% good morning
-    {\+ user:testmember(N,[direct,first,second,nearest,last,next,third,early,last,late,previous,central])}, 
+    {\+ testmember(N,[direct,first,second,nearest,last,next,third,early,last,late,previous,central])}, 
     !,reject.   
 
 
@@ -580,7 +580,7 @@ implicitq(modifier(S)::: Com12 and P3) --->
 implicitq(new:::P ) --->     %% bus 5  \+ bus 5'o clock
     {\+ user:value(dialog,1)},   
     not_look_ahead(w(prep(_))),
-    {no_unprotected_verb},   
+    {lex:no_unprotected_verb},   
     np0(X,P1,P),    
     {\+ vartypeid(X,time)}, 
     {\+ vartypeid(X,clock)}, 
@@ -718,7 +718,7 @@ whatq(WhichX:::P) --->
 
 
 whatq(which(X):::Man ako X) --->   %% What is a man
-     {\+ value(dialog,1)},  
+     {\+ user:value(dialog,1)},  
      whatbe(1),
      a0,
      w(noun(Man,sin,u,n)),  % what is a bus
@@ -1110,7 +1110,7 @@ do_phrase(X,S,N, Com3P3 ) --->    % Complement Combination % swapped Com3/Com1
 %%%
 
 vp_kernel(Give,X,S,id,  Com3:(P1 and Q1)) --->
-%%     {value(textflag,true)},    %% not nec for buses ?
+%%     {user:value(textflag,true)},    %% not nec for buses ?
     lexv(dtv,Give,_Tense,fin), 
     noun_phrase1(Y, E1,P1),     
     noun_phrase1(Z,E1,Q1),     
@@ -1174,7 +1174,7 @@ event00(S,P,Q,exists(S:Event)::(P and Q)) --->
 %%%¤ CLAUSAL_PHRASE  
 
 clausal_phrase(X,S,Com1:KA) ---> 
-    {value(textflag,true)},
+    {user:value(textflag,true)},
     rep_vp(W,TW,X,S,Com2,P2,NewS),   %% told
     {testmember(W,[tell,ask,propose])},
     noun_phrase(AA,BB,CC),           %% John
@@ -1307,7 +1307,7 @@ ap(A,X,S,COM,exists(S:event)::P and COM) --->
 
 
 passive(Z,S,Com, P) --->           %%  (was)
-    {value(textflag,true)},    
+    {user:value(textflag,true)},    
     lexv(rv,V,past,part),          %%  told
     whodidit(_,_,X,B,C),           %%  by someone   
     infinitive,                    %%  to
@@ -1317,7 +1317,7 @@ passive(Z,S,Com, P) --->           %%  (was)
 
 
 passive(Z,S,Com, Pli and Q) --->   %%  was 
-    {value(textflag,true)},    
+    {user:value(textflag,true)},    
     lexv(dtv,V,past,part),         %%  given
     np1(Y,true,Q),                 %%  a kiss
     whodidit(_,_,X,B,C),   
@@ -1512,7 +1512,7 @@ verb_modifier4(Take,X,Y,SC, (exists(Y):: SC and P))  --->
 
 % NB %% there  = to this place 
 verb_modifier(V,X,S,(Com1 and (  findexternal(Y:place)::(Y isa place and STO))):Subj,  Com1:Subj ) ---> 
-    {value(dialog,1)},
+    {user:value(dialog,1)},
     thisplace(To),   
     {verb_compl(V,To,X,Y:place,S,STO)}.
 
@@ -1683,7 +1683,7 @@ look_ahead_lit(List) ---> [E],{testmember(E,List)}.
 %% in order to
 
 subordinatex(Prep,Reason,X,T:_,P and srel/Prep/Reason/T/S) --->  
-    {value(textflag,true)},  
+    {user:value(textflag,true)},  
     verb_phrase(X,S,N,ComP2),
     !,
     st0(P) 
@@ -1860,7 +1860,7 @@ rel_clause(X,P1,P1 and P2) --->
 %%    a way  to die ==> a way in which someone  die
 
 rel_clause(X,P1,P1 and P2) --->  
-    {value(textflag,true)},  %% a bus from vestlia to reach SENTRUM !
+    {user:value(textflag,true)},  %% a bus from vestlia to reach SENTRUM !
     infinitive,   %% to,
     w(verb(Die,pres,fin)),
     verb_modifier1(Prep,Y,SC,P3) \ 
@@ -1920,7 +1920,7 @@ rel_clause(Y,P1,P1 and P2) --->
 
                                 
 rel_clause(Y:T,P1,P1 and P2) ---> %% a method for killing john exists
-    {value(textflag,true)},
+    {user:value(textflag,true)},
     prep1(for),
     w(verb(Kill,pres,part)),      %% 
     { tv_templ(Kill,_,_)},
@@ -1937,7 +1937,7 @@ rel_clause(Y:T,P1,P1 and P2) ---> %% a method for killing john exists
                                 
                                 
 rel_clause(Y:T,P1,P1 and P2) ---> %% (there is a) way to kiss mary
-    {value(textflag,true)},
+    {user:value(textflag,true)},
     infinitive, 
     w(verb(Kiss,_Inf,fin)),     %% 
     { tv_templ(Kiss,_,_)},
@@ -1954,7 +1954,7 @@ rel_clause(Y:T,P1,P1 and P2) ---> %% (there is a) way to kiss mary
 
                                 
 rel_clause(Y,P1,P1 and P2) ---> %% (mary is a) woman to kiss
-    {value(textflag,true)},
+    {user:value(textflag,true)},
     infinitive, 
     w(verb(Kiss,_Inf,fin)),
     % Rough test  Y can be object of kiss
@@ -2259,7 +2259,7 @@ aname_phrase(_IND,_,_,_) --->
 
 aname_phrase(_,_,_,_) ---> %% the station (nearest kolstad)
     wx(adj2(nil,Nearest)), 
-    {user:member(Nearest,[nearest])},
+    {member(Nearest,[nearest])},
     w(name(Kolstad,_,_)),
     {\+ number(Kolstad)}, 
     !,
@@ -2316,7 +2316,7 @@ npa(X,VP,P) --->  %% Does it work ?
 %%%¤ NAME_PHRASE  (name,X,P,P and Q)  
 
 name_phrase(name,X,P,P and Q) ---> 
-%%%     {value(teleflag,true)}, %%  (OK if few names)
+%%%     {user:value(teleflag,true)}, %%  (OK if few names)
     person_name(X,Q).
 
 name_phrase(Ind,X,P,Q and P) ---> %% keep order/isa first 
@@ -2947,7 +2947,7 @@ nameq1(X,P) ---> %%  ( Buss går 09.12 => clock)
 nameq1(N:Type,N isa Class) ---> 
   
     w(name(N,_n,Class)), {_n \== gen},
-    {  Class == unkn -> value(unknownflag,true);true}, 
+    {  Class == unkn -> user:value(unknownflag,true);true}, 
 
     {type(Class,Type)}.      
 
@@ -2972,7 +2972,7 @@ nameq1(X,P) --->
 % Only full dates allowed, try first
 
 nameq1(Rønning:lastname,Rønning isa lastname) ---> %% Ståle Rønning
-    {value(teleflag,true)},
+    {user:value(teleflag,true)},
     look_ahead(w(name(Rønning,n,firstname))), 
     w(name(Rønning,n,lastname)), 
     not_look_ahead(w(name(_Lund,n,lastname))),
@@ -2980,7 +2980,7 @@ nameq1(Rønning:lastname,Rønning isa lastname) ---> %% Ståle Rønning
 
 
 nameq1(Rønning:firstname,Rønning isa firstname) ---> %% Ståle Rønning
-    {value(teleflag,true)},
+    {user:value(teleflag,true)},
     look_ahead(w(name(Rønning,n,lastname))), 
     w(name(Rønning,n,firstname)), 
     look_ahead(w(name(_Lund,n,lastame))),
@@ -3883,7 +3883,7 @@ point0 ---> point,!,accept. %%   Always Optional
 point0 ---> [].
 
 pointNO ---> point,!,accept. %% Optional in case point is  removed 
-pointNO ---> {value(nodotflag,true)}. 
+pointNO ---> {user:value(nodotflag,true)}. 
 
 point ---> ['.'].
 
@@ -3938,7 +3938,7 @@ reflexiv(notify) ---> [i],!,accept.
 reflexiv(show) ---> [i],!,accept. %% show me   etc....  
 reflexiv(tell) ---> [i],!,accept. %% tell me   etc....  
 
-reflexiv(_)   ---> {\+ value(dialog,1)},[there]. 
+reflexiv(_)   ---> {\+ user:value(dialog,1)},[there]. 
 
 quant_pron(every,person) ---> [all],number(_). 
 quant_pron(every,person) ---> [each]. 
@@ -3961,7 +3961,7 @@ quant_pron(no,person)    ---> [noone].
 quant_pron(no,thing)     ---> [nothing]. % none ?
 
 quant_pron(some,vehicle)  ---> [it], 
-    {value(busflag,true)}.  
+    {user:value(busflag,true)}.  
 
 quant0(+ 1) ---> [].
 quant0(+ N) ---> num(N). 
@@ -4083,7 +4083,7 @@ thereit ---> [there]. % preliminary subject
 thereit ---> [it].
 
 
-this1 ---> {value(textflag,true)},[the]. 
+this1 ---> {user:value(textflag,true)},[the]. 
 this1 ---> that.  
 this1 ---> [these]. % Anaphoric
 this1 ---> [this],
