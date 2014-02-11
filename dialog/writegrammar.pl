@@ -3,6 +3,15 @@
 %% CREATED TA-070101
 %% REVISED TA-081113
 
+%%% RS-131228, UNIT: utility/
+:- ensure_loaded( user:'../declare' ).  %% META: user:for/2, foralltest/2, set_of/3, user:set_ops/3, test/1
+:- use_module( '../utility/utility', [ out/1,   output/1,  set_of/3  ]).     %% RS-140102 
+
+%%% RS-111205, UNIT: app/
+:-use_module( '../app/busanshp', [  bigcap/2  ]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 write_dialogue_grammar :-
 	set_of(A:B,(gram(A,B,_),dontstartwith(A,'tb_')),L),
 	write_dialogue_grammar(L),nl.

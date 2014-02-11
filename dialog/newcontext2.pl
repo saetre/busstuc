@@ -2,17 +2,12 @@
 %% FILE newcontext2.pl
 %% SYSTEM BUSTER
 %% CREATED ØF-000101
-%% REVISED TA-080110
+%% REVISED TA-080110    %% RS-140101
 
-:- ensure_loaded( '../utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
-%:- ensure_loaded( '../declare' ). %, [ := /2 etc. ] ).  %% RS-120403
+%% FOR busanshp.pl AND checkitem2.pl 
 
-:- ensure_loaded( 'frames2' ). %, [ frametemplate etc. ] ).  %% RS-131117
-
-
-:- use_module(library(system)).
-:- use_module(library(lists)).
-
+:-module( newcontext2, [ addref/3, clearold/0, commitref/1, commitref/3, current_frame_getvalue/2, dialog_resolve/2, getcontext/2, getcurrent/1,
+        getframe/2, getquery/2, reset_context/0, setcurrent/1, setframe/2, setquery/2, topic_subclass/3 ] ). %% RS-140101
 
 :- volatile
            current_context/1,
@@ -21,8 +16,26 @@
            current_context/1,
            saved_context/3.
 
-%% current is the id of the current context
+%% UNIT: EXTERNAL
+:- use_module( library(system) ).
+%:- use_module( library(lists) ). %% delete/3 is also loaded from utility/library.pl !!
 
+%% UNIT: / and /utility/
+:- ensure_loaded( user:'../declare' ). %% RS-111213 General Operators, Meta_Predicates: set_of/3
+:- use_module( '../utility/utility', [ roundmember/2, set_difference/3 ] ).       %% RS-131223 includes declare.pl
+:- use_module( '../utility/library', [ delete/3 ] ).%% RS-131225 , reverse/2 for busanshp?
+
+%% RS-140101. UNIT: /dialog/
+%MISERY LOOP:
+:- use_module( frames2, [ frame_getvalue_rec/4, frametemplate/2 ] ).  %% RS-131117   frames2->newcontext2.pl is loaded from frames2 !!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Prologs setof is baroque %% 
+set_of(X,Y,Z):-           %%
+    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
+    Z=[].                 %% What is wrong with empty sets ?
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% current is the id of the current context
 setcurrent(Cid) :-
 	saved_context(Cid, _, _), !, 
 	retractall(current_context(_)),
@@ -55,8 +68,8 @@ getcontext(Cid, X) :-
 
 
 newcontext(Cid):-		%% TLF 030402 %% unnec
-	value(teleflag, true), !,
-	frametemplate(telebuster, NewFrame), %% TA-051018
+	user:value(teleflag, true), !,
+	frametemplate(telebuster, NewFrame), %% TA-051018      % frames2.pl
 	setcontext(Cid,
                    context([], [], [],
                            [node(dialog, _ ,
@@ -68,7 +81,7 @@ newcontext(Cid):-		%% TLF 030402 %% unnec
                   ).
 
 newcontext(Cid) :-
-	frametemplate(telebuster, NewFrame),  %% TA-051018
+	frametemplate(telebuster, NewFrame),  %% TA-051018     % frames2.pl
 	setcontext(Cid, 
                    context([], [], [], 
                            [node(dialog,  _  , 

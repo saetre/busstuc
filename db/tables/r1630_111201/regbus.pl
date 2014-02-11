@@ -1,3 +1,6 @@
+% Contains the important information about the tram module
+%:-module( r1630_111201, [ regbus/1, route/3 ] ).           %% RS-131223    Included in / Exported throug   busroute.pl
+
 regbus(0001).
 
 

@@ -1,12 +1,15 @@
+:- module( r1630_111201,  [ %% RS-140106    Automate this during regcut creation...
+        ex_departureday/4, ex_ntourstops/2, ex_passes4/6,
+        hpl/4, regbus/1, route/3, xi/2
+]).    
 
-%%% 
+:- ensure_loaded( regbus ). %%,  [ route/3 ] ).    %% RS-140106    Automate this
+:- ensure_loaded( reghpl ). %%,  [ hpl/4 ] ).    %% RS-140106    Automate this
+:- ensure_loaded( regpas ). %%,  [ passes4/6 ] ).    %% RS-140106    Automate this
 
-
-
-
-%%% 
-
-
+% :- module( r1630_111201,  [ hpl/4 ] ).    %% RS-140106    Automate this
+%:- module( r1630_111201,  [ passes4/6 ] ).    %% RS-140106    From regpas.pl
+%:-module( r1630_111201, [ route/3 ] ).           %% RS-131223    Included in / Exported throug   busroute.pl
 
 %%% 
 

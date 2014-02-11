@@ -2,24 +2,48 @@
 %% FILE morph_n.pl
 %% SYSTEM TUC
 %% AUTHOR T.Amble
-%% CREATED TA-961014
-%% REVISED TA-110511
+%% CREATED  TA-961014
+%% REVISED  TA-110511
+%% REVISED  RS-140101 modularized
+
 %% Extended with tallmorph  Norwegian textual numbers.
 
-:- ensure_loaded('../declare').
-
+%% RS-111205, UNIT: tuc
 %% Morphological Analyser for the language N.
 
-:-module(morph_n,[
-%% USE ENGLISH AS DEFAULT?!
-%%                 lexb/2 
-                  ]).
+%% Sort out English/Norwegian import-conflict in tucbuses! %% USE ENGLISH AS DEFAULT?! %% RS-131225  lexn/5, lexbv/2?  %% RS-140102  Include? 
+:-module( morph_n,[ adjflex/3, adjective/1, lcode2/2, lexv/4, noun/1, tall/2, verbroot/1 ] ). %% RS-131225
 
+:- ensure_loaded( user:'../declare' ).
 
-ends_with(X,Y,Z):-user:ends_with(X,Y,Z).
+%% META-PREDICATE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate once1(:).
+once1(P):-P,!. %% same as once, but version independent
+               %% try once, otherwise FAIL
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-verb_form(X,Y,Z,U):-
-    dict_n:verb_form(X,Y,Z,U).
+%% RS-121118  %% English / Norsk Already in user (from fernando.pl). Don't export rep_verb/1!
+
+%% RS-111205, UNIT: tuc
+:-use_module( dict_n, [ adjective3/3, adv2/2, cw/1, noun2/2, noun3/3, % noun_form/5, %% rep_verb/1, 
+        unwanted_adjective/1,    unwanted_noun/1,       unwanted_number/1, % unwanted_verb/1, %% Sort out English/Norwegian import-conflict in tucbuses!
+        unwanted_interpretation/2,          verb_form/4,             verbroot2/2
+]).
+
+%:-use_module( morph_e, [  ]).          %% RS-131225    Only /2 ? There is another one with /4 lexv/2
+%:-use_module( lex, [ part_word/1 ] ). %% RS-140209.
+:-use_module( semantic, [ adj_templ/2, ako/2, dtv_templ/4, iv_templ/2, pvi_templ/2, tv_templ/3 ]).
+
+%% RS-131225, UNIT: /   %% RS-131225, UNIT: utility/
+:- ensure_loaded( user:'../declare.pl' ). %% RS-131228 "new syntax" defs, META-preds: for/2, remember/1, value/2, :=/2, =;/2
+:- use_module( '../utility/utility', [ ends_with/3 ] ). %% RS-140209, Keep local: , once1/1
+
+%% ends_with(X,Y,Z):-           %% RS-131225    Try to use modules instead!
+%%      ends_with(X,Y,Z).     
+
+%verb_form(X,Y,Z,U):-           %% RS-131225    Try to use modules instead!
+%    dict_n:verb_form(X,Y,Z,U).
 
 noun_form(X,Y,Sin,Def,N):- 
     dict_n:noun_form(X,Y,Sin,Def,N).
@@ -54,6 +78,8 @@ noun_form(X,Y,Sin,Def,N):-
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%% ends_with(Ord,Stamme,Ending):-user:ends_with(Ord,Stamme,Ending).      %% RS-131231    "Import from utility.pl"
+
 
 lcode2(ADVN,adv(ADVE)):-   
     dict_n:adv2(ADVN,ADVE).      
@@ -85,7 +111,6 @@ lcode2(MN,prep(ME)):-
 
 
 %% ADJECTIVE SECTION
-
 
 lcode2(FLEKSIBLE,adj2(GOOD,nil)):- %% ekkle
      \+  dict_n:unwanted_adjective(FLEKSIBLE), %% TA-110812
@@ -172,7 +197,8 @@ lcode2(X,[X]):-           % Test on actual word
 
                          
 lcode2(X,[X]):-           %%   not name(X,n,0) as before
-    user:once1(user:part_word(X)).   
+%%    once1(part_word(X)).    %% RS-131225   
+    once1( lex:part_word(X) ).      %% RS-131225
 
 verbroot(W):- 
     be_verb(W);
@@ -183,24 +209,26 @@ verbroot(W):-
     pvimodal_verb(W). % cost
 
 pvimodal_verb(W):-
-    user:pvi_templ(W,_).
+%%    pvi_templ(W,_).      %% RS-131225
+    pvi_templ(W,_).
 
 be_verb(be).
 
 ditrans_verb(X):-
-    user:dtv_templ(X,_,_,_). %% btv -> dtv
+%%    dtv_templ(X,_,_,_). %% btv -> dtv
+    dtv_templ(X,_,_,_). %% btv -> dtv
 
 trans_verb(have). %% 
 trans_verb(X):-
-   user:tv_templ(X,_,_),
+   tv_templ(X,_,_),
    !. %% >1 
 
 intrans_verb(X):-
-   user:iv_templ(X,_),
+   iv_templ(X,_),
    !. %% >1 
 
 adjective(X):-
-    user:adj_templ(X,_),
+    adj_templ(X,_),
     !. %% >1 
  
 
@@ -272,7 +300,7 @@ lexv(ELSKET,ELSKE,past,fin):-      %% NB, viktig at Inf.formen opptrer (ELSKE)
     \+  dict_n:unwanted_verb(ELSKET), %% oppdatert
 
     ends_with(ELSKET,ELSKE,t),
-    \+ user:testmember(ELSKE,[komme]),
+    \+ utility:testmember(ELSKE,[komme]),
     ends_with(ELSKE,_,e).     %% not gå --> gåt 
 
 
@@ -296,7 +324,7 @@ lexv(GODKJENT,GODKJENNE,past,part) :-
 
 lexv(MISTA,MISTE,past,part):- 
       ends_with(MISTA,MIST,a),
-      \+ user:testmember(MIST,[s,l]), %% se|le \= sa|la
+      \+ utility:testmember(MIST,[s,l]), %% se|le \= sa|la
       MIST \== l, %% LE=L+E, LA=L+A    %% TA-110330
       ends_with(MISTE,MIST,e).  
 
@@ -329,8 +357,8 @@ lexv(X,X,inf,fin). %% NB was pres fin
 
 lexv(GI,GI,imp,fin):-  %% vil IKKE imp !!!
    GI \== nå, %% ikke nå!   %% AD Hoc 
-   user:last_character(GI,Vok), %% New utility predicate
-   user:member(Vok,[a,i,o,u,y,æ,ø,å]). %% e is dropped as a rule
+   utility:last_character(GI,Vok), %% New utility predicate
+   member(Vok,[a,i,o,u,y,æ,ø,å]). %% e is dropped as a rule
                                        %% Reintroduced when necessary
                                   %%  Trykksterk e (kle,bre,gre,le,re,te)
 
@@ -344,9 +372,9 @@ lexv(STEMTE,STEMME,past,fin):-  %% TA-110114
    ends_with(STEMME,STE,mme).   %% \+ lite = lime
 
 
-lexb(X,Y):-
-    lexv(X,Y),
-    lexb1(Y).     % dict.pl
+%lexb(X,Y):-
+%    lexv(X,Y),
+%    lexb1(Y).     % dict.pl
 
 
 
@@ -533,8 +561,8 @@ adjflex(SULTENT,SULTEN,nil):-
 
 adjflex(FRITT,FRI,nil):- 
     ends_with(FRITT,FRI,tt), 
-    user:last_character(FRI,Vok), 
-    user:member(Vok,[i]). %% other ?
+    utility:last_character(FRI,Vok), 
+    member(Vok,[i]). %% other ?
 
 
 adjflex(GODE,GOD,nil):-

@@ -9,13 +9,14 @@
 :- module(tele,[]).
 
 
-:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
-:- ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators
+:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
+%:- ensure_loaded( user:'../app/pragma' ). %% RS-111213 Pragmatic (rule) Operators
+:- use_module( '../app/pragma', [] ). %% RS-140207 Pragmatic (rule) Operators
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-tracevalue(L) :- user:value(traceprog,L).  % Trace level 1-6
+tracevalue(L) :- value(traceprog,L).  % Trace level 1-6
 
 
 %% Rule format
@@ -36,33 +37,33 @@ tracevalue(L) :- user:value(traceprog,L).  % Trace level 1-6
 listoftql0 rule
 is  [(confirm,_)]
 id  add message(answer(bcpbc(ok)))
-ip  \+ user: value(dialog,1). 
+ip  \+  value(dialog,1). 
 
 listoftql1 rule
 is  replaceall [(confirm,_)|Y]
     with Y
 id  []
-ip  \+ user: value(dialog,1).
+ip  \+  value(dialog,1).
 
 
 listoftql2 rule
 is  replaceall [X]
     with X
 id  []
-ip  \+ user: value(dialog,1).
+ip  \+  value(dialog,1).
 
 listoftql3 rule
 is  replaceall [(doit,replyq(X))|Rest]
     with Rest
 id  addfront reply(X)          %% syndrome  Hei ! Jeg heter Tore
                       %% Jeg heter tore -> OK and failure -> negans on do
-ip  \+ user: value(dialog,1).
+ip  \+  value(dialog,1).
 
 listoftql4 rule
 is  replaceall [X|_]
     with X
 id  addfront message(onlyonesentence)
-ip  \+ user: value(dialog,1).
+ip  \+  value(dialog,1).
 
 error rule
 is  error
@@ -476,8 +477,8 @@ id  not atdate(date(_,_,_)),
     addcon atday(Monday)  %% <---------- %% TA-050808
 ip  today(Thursday),
     Thursday \== Monday,
-    user:number_of_days_between(Thursday,Monday,N),  
-    user:finddate(N,date(X,Y,Z)).
+    number_of_days_between(Thursday,Monday,N),  
+    finddate(N,date(X,Y,Z)).
 
 
 
@@ -831,7 +832,7 @@ ip  [].
 /* %% dmeq is already supposed to be in module user
 
 dmeq(A,B):-         %% TA-051011 Separated out from teletrans
-    user:dmeq(A,B). %% File dmeq.pl
+    dmeq(A,B). %% File dmeq.pl
 
 */
 

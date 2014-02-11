@@ -5,9 +5,22 @@
 %% REVISED TA-070413
 
 %% Printing the result from database query 
+:-module( parseres, [
+        get_chars_t/1,
+        ldaptotuc/2
+] ).
 
 
-:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
+%:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
+%:- ensure_loaded( user:'../utility/utility.pl' ). %RS-131223
+
+%%RS-131225     %% UNIT: /
+:- ensure_loaded( user:'../declare' ). %, [ := /2 etc. ] ).      %RS-131225  Get dynamic definition for user:value/2
+
+%%RS-131225     %% UNIT: utility/
+%:- ensure_loaded( user:'../utility/utility' ). %%, [ testmember/2, user:value/2  ]).   %% RS-131117 includes declare.pl
+:- use_module( '../utility/utility', [ ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
+
 
 
 parseresultfile(File, Results) :-

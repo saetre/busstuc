@@ -3,11 +3,39 @@
 %% CREATED TA-940218
 %% REVISED TA-110624
 
-:- ensure_loaded('../declare').
+%% RS-140210    UNIT: tuc/
+%% A => B is both volatile (not saved) and dynamic (asserted)
+:-module( translat, [ (=>)/2, clausifystm/1, clausifyq/2, condq/2, hazardrule/1, makedisjunct/2, optand/3, optor/3, protectrule/2, redundant/1,
+        testimpossible/1, testquant/3, unforgettable/2, plunder/3
+] ).
 
+:-volatile (=>)/2.
+:-dynamic (=>)/2.
+
+%% RS-131227    UNIT: /
+:- ensure_loaded( user:'../declare' ).%, [ := /2, for/2 (from library.pl) etc. ] ). %% RS-140208
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:- ensure_loaded('slash').      %% RS-131228    Includes def/1
+:- use_module( slash, [ def/1 ] ).     %% RS-131228
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%MISERY?! :-use_module( '../main' ).
+:- use_module( '../main.pl', [ track/2 ] ). %% RS-140209 hei/0,   run/0 
 
+%% RS-131227    UNIT: /utility/
+%:- ensure_loaded( user:'../utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl  %%,  unsquare/2 RS-131227
+:- use_module( '../utility/utility', [ error/2,  occ/2,  do_count/1, flatlist/2, freshcopy/2, ident_member/2, match/2, numbervars/1, subcase/2, 
+                                     subsumes/2 ] ). %local: test/1 
+
+:- use_module( '../utility/library', [ reverse/2 ] ).  %%    %% RS-131225
+%for(P,Q):-
+%  P,Q,
+%  false;true.
+
+%UNIT: /tuc/
+:- use_module( evaluate, [ difact/1, new_focus/2 ] ).   %% Semi-permanent? declare.pl (dynamic), asserted in evaluate.pl & translat.pl
+:- use_module( fernando, [ subclass/2 ] ).
+:- use_module( semantic, [ testclass/1 ] ).
 
 %%  Skolemization of FOL expressions
 
@@ -17,7 +45,7 @@ clausifystm( JLM ):-
     clausify(X,Y,[],JLM,CLAUSELIST),
     number(Y),
     writeconjuncts(CLAUSELIST,true),
-    skolocon := Y. 
+    user:(skolocon := Y). 
                    
 
 clausify(X,Y,L,P,R):- 
@@ -142,8 +170,8 @@ skolem(X,Z,CH,(P => Q) ,N1 or Q1):-!,
     skolem(Y,Z,CH,Q,Q1).
 
 skolem(X,X,_,Y isa C, (isa)/World/C/Y):- %% Brave New World
-    value(textflag,true),
-    value(world,World),
+    user:value(textflag,true),
+    user:value(world,World),
     World \== real,
     !.
 skolem(X,X,_,P,P).
@@ -357,10 +385,10 @@ plunder(SX,[Y|Z],R):-
     plunder((SX/Y),Z,R).
 
 writeconjuncts(CL,TF):-
-    for(member(C,CL),
+    user:for(member(C,CL),
         writeconjunct(C,TF)),
 
-    track(2,(nl,
+    user:track(2,(nl,
                 for((Y is_the K),
                     output(Y is_the K)))).
 
@@ -373,17 +401,22 @@ writeconjunct(P,TF):-!,
 
 
 wrclause(_,_):-
-    value(queryflag,true), 
+    user:value(queryflag,true), 
     !.
 
 wrclause(P,TF):-
- \+ value(queryflag,true), 
+ \+ user:value(queryflag,true), 
     skupdate(P,TF).
 
 
 skupdate(_,false):-!.
 skupdate(P,true):-
     skup(P).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:- meta_predicate  test(+) . %% RS-140211
+test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 skup(true):-!.
 skup(inconsistent):-!.
@@ -421,7 +454,7 @@ skup1(P):-
 
 
 premfakt(P):- 
-    \+ fact0(P), 
+    \+ user:fact0(P), 
     \+ difact(P), 
     \+ (P = (_ isa Y),testclass(Y)), 
     !,
@@ -432,31 +465,31 @@ premfakt(_).
 
  
 assertfact(P):-
-    permanence =: 0,
-    value(context_id,UID),  
+    user:( permanence =: 0 ),
+    user:value(context_id,UID),  
     !, 
-    retractall(difact(UID,P)), 
-    asserta(difact(UID,P)).       %% reverse order
+    retractall( user:difact(UID,P) ), 
+    asserta( user:difact(UID,P) ).       %% reverse order
 
 assertfact(P):-
-    permanence =:1,
+    user:( permanence =:1 ),
     !,
-    value(context_id,UID), 
-    retractall(fact0(P)),
-    retractall(difact(UID,P)), 
-    assert(fact0(P)).            % straight order
+    user:value(context_id,UID), 
+    retractall( user:fact0(P) ),
+    retractall( user:difact(UID,P) ), 
+    assert( user:fact0(P) ).            % straight order
 
 
 testimpossible(P):-
     explain(false),
     !, 
-    value(context_id,UID),     
-    retract(difact(UID,P)). 
+    user:value( context_id, UID ),     
+    retract( user:difact(UID,P) ). 
 
 testimpossible(_).
 
 
-redundant(equal/X/X/_):-!. %% Somewhat Ad Hoc
+redundant( equal/X/X/_ ):-!. %% Somewhat Ad Hoc
     
 redundant(P):-
     tautology(P).
@@ -555,7 +588,7 @@ condq(true and  P,Q):-!,
 condq(P  and  Q,P1Q1):-!,
     condq1(P,P1),
     condq(Q,Q1),
-    flatround((P1, Q1),P1Q1). 
+    user:flatround((P1, Q1),P1Q1).      %% utility.pl
 
 condq(not (A => B),Z):-!,
     condq(A  and  (not B),Z).
@@ -625,14 +658,14 @@ condq1(not PQ, (not PQ1)):-
 % Update focus also in questions 
 
 condq1(X isa C, (isa)/World/C/X):- 
-    value(textflag,true),
-    value(world,World),
+    user:value(textflag,true),
+    user:value(world,World),
     World \== real,
     !.
 
 condq1(X isa C,X isa C):- 
     nonvar(X),
- \+ value(queryflag,true), 
+ \+ user:value(queryflag,true), 
     !,
     new_focus(X,C).
 
@@ -666,7 +699,7 @@ testquant(CR,A,B):-
 optimize(A,B):-
     removesfluous(A,A2),
     sortcond(A2,A3), 
-    unsquare(A3,B).
+    user:unsquare(A3,B).        %% utility.pl
 
 % remove conditions that are superfluous in conjunction
 
@@ -758,7 +791,7 @@ superbeat(X,Z):-      member(X,Z), \+  (X = (not _Y)).
 
 newskolem(Y):-  
     do_count(skolocon), % skolocon := skolocon + 1
-    skolocon =: Y.
+    user:( skolocon =: Y ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

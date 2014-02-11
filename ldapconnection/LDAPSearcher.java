@@ -67,15 +67,15 @@ class LDAPSearcher {
      * Containts regular asking words.
      */
     public final static String strStopwords =
-            " nei hva til hvor hvem på hvordan for som ved hei takk vet ikke the det tlf kan jeg meg how can han hun det den har med ";
+            " nei hva til hvor hvem pÃ¥ hvordan for som ved hei takk vet ikke the det tlf kan jeg meg how can han hun det den har med ";
 
 	// Names shorter than 3 letters that should be tagged ok.
-	public final static String strOknames  = " jo bø ";
+	public final static String strOknames  = " jo bÃ¸ ";
 
 	// Words that shall not be tagged as departments
 	public final static String strStopdeps = " andre ";
     /**
-                output skal være unicode verdier.
+                output skal vÃ¦re unicode verdier.
                 Adresserer problem hos sintef
      */
     private void konvUt(String iStr) {
@@ -98,7 +98,7 @@ class LDAPSearcher {
 
     /**
                 snatch paramater from shell commando i sicstus
-                Kan benytter til debugging, mens man kjører telebuster.
+                Kan benytter til debugging, mens man kjÃ¸rer telebuster.
                 Adresserer problem hos sintef
      */
 
@@ -187,7 +187,7 @@ class LDAPSearcher {
     private void srch()  throws IllegalArgumentException {
         errTrace("Searching for the string \"" + m_strSearch + "\"", 4);
 
-        String[][] rChars = { {"æ", "ø", "å", "ä", "ö", "ü"}, {"Æ", "Ø", "Å", "Ä", "Ö", "Ü"} };
+        String[][] rChars = { {"Ã¦", "Ã¸", "Ã¥", "Ã¤", "Ã¶", "Ã¼"}, {"Ã†", "Ã˜", "Ã…", "Ã„", "Ã–", "Ãœ"} };
         for (int k=0; k<rChars[0].length; k++){
 			m_strSearch = m_strSearch.replaceAll("\\b"+rChars[0][k], rChars[1][k]); // capitalize first character
 	    }
@@ -340,7 +340,7 @@ class LDAPSearcher {
 							sr = performeSearch(strSrch, ", 0", countLimit, strFields);
 							iResCount += sr.m_iCountRes;
 							depRes = sr.m_iCountRes;
-							errTrace("søk på : "+strSrch+", treff: "+iResCount,1);
+							errTrace("sÃ¸k pÃ¥ : "+strSrch+", treff: "+iResCount,1);
 						}
 					}
 				}
@@ -358,7 +358,7 @@ class LDAPSearcher {
 							SearchRes sr = performeSearch(strSrch, "," + iii, countLimit, strFields);
 							strXML += sr.m_strXml;
 							iResCount += sr.m_iCountRes;
-							errTrace("søk på : "+strSrch+", treff: "+iResCount,1);
+							errTrace("sÃ¸k pÃ¥ : "+strSrch+", treff: "+iResCount,1);
 						}
 					}
 				} else{
@@ -372,13 +372,13 @@ class LDAPSearcher {
 							SearchRes sr = performeSearch(strSrch, itdep, countLimit, strFields);
 							strXML += sr.m_strXml;
 							iResCount += sr.m_iCountRes;
-							errTrace("søk på(2)["+itdep+"] : "+strSrch+", treff: "+iResCount,1);
+							errTrace("sÃ¸k pÃ¥(2)["+itdep+"] : "+strSrch+", treff: "+iResCount,1);
 						}
 					}
 
 				}
 				if (iResCount==0){
-					String newStrSrch = replaceSpecial(strSrch); // ex. Murat Öztürk
+					String newStrSrch = replaceSpecial(strSrch); // ex. Murat Ã–ztÃ¼rk
 					if(newStrSrch.equals(strSrch)) i++; // do not search again
 					else strSrch = newStrSrch;
 				}
@@ -427,7 +427,7 @@ class LDAPSearcher {
 
     private String replaceSpecial(String input){
 		  String output = input;
-		  String[][] rChars = { {"æ", "ø", "y", "Æ", "Ø", "Y"}, {"ä", "ö", "ü", "Ä", "Ö", "Ü"} };
+		  String[][] rChars = { {"Ã¦", "Ã¸", "y", "Ã†", "Ã˜", "Y"}, {"Ã¤", "Ã¶", "Ã¼", "Ã„", "Ã–", "Ãœ"} };
 		  for (int k=0; k<rChars[0].length; k++){
 			  output = output.replaceAll(rChars[0][k], rChars[1][k]);
 			  if ((k+3)<rChars[1].length) output = output.replaceAll("\\b"+rChars[1][k], rChars[1][k+3]); // capitalize first character
@@ -590,7 +590,7 @@ class LDAPSearcher {
 							added = true;
 							//NamingEnumeration ats = sr.getAttributes().getAll();
 
-							str = XMLTagger.strTag("ou","REPLACEDEP");  // strOu0 .. endre her så det kommer frem rett NTNU/HIST etc.
+							str = XMLTagger.strTag("ou","REPLACEDEP");  // strOu0 .. endre her sÃ¥ det kommer frem rett NTNU/HIST etc.
 
 							//Divider d = new Divider(strDN);
 							//while (d.hasMore()) {
@@ -945,4 +945,3 @@ class LDAPSearcher {
     }
 
 }
-

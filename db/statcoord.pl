@@ -4572,6 +4572,8 @@ statcoord(16638392,'Sveberg sk.',0,0).
 statcoord(16632092,'Sveberg sk.',0,0).
 statcoord(16638332,'Svebergkrysset',587640.688,7033565.019).
 statcoord(16632032,'Svebergkrysset',587726.267,7033487.136).
+statcoord(16386217,'Torget Orkanger', 63.304693, 9.849038). %% RS-131222. BAD! 
+statcoord(16389217,'Torget Orkanger', 63.304693, 9.849038). %% RS-131222. BAD! (Ikke UTM!)
 statcoord(16638312,'Torp',584492.715,7035045.673).
 statcoord(16632012,'Torp',584361.565,7035063.253).
 statcoord(16638352,'Vasseljen',0,0).

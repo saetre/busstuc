@@ -7,6 +7,7 @@
 
 ?-compile('../telebusterw.pl').
 
-?-compile('../busroute.pl').
+%?-compile('../busroute.pl').
+?-use_module( '../busroute.pl', [] ). %% RS-140207
 ?-save_program(telebuster).
 ?-halt. 

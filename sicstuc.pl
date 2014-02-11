@@ -4,7 +4,7 @@
 %% CREATED TA-940819
 %% REVISED TA-980115
 
-:- ensure_loaded('declare'). %% RS-111213 General (semantic) Operators
+:- ensure_loaded( user:'declare' ). %% RS-111213 General (semantic) Operators
 
 %% Generic SICSTUS  version of TUC 
 

@@ -7,15 +7,12 @@
 
 %% Morphological Analyser for the language E.
 
-:-module( morph_e, [ 
-%%                    lcode2/2,       %% This breaks the lcode2/2 in user: (from lex.pl). All words end up "unknown"
-                      lexb/2
-                   ]).
+:-module( morph_e, [ lcode2/2, %% This breaks the lcode2/2 in user: (from lex.pl). All words end up "unknown"
+        lexv/2,      verbroot/1 ] ).  %% RS-131225    Only /2 ? There is another lexv with /4
 
-ends_with(X,Y,Z):-user:ends_with(X,Y,Z).
-
-verb_form(X,Y,Z,U):-
-    dict_e:verb_form(X,Y,Z,U).
+%% ends_with(X,Y,Z):-ends_with(X,Y,Z).     %% RS-131225    Try to use dict_e & modules instead!
+%%verb_form(X,Y,Z,U):-
+%%    dict_e:verb_form(X,Y,Z,U).
 
 %% (See Also morph_n.pl).
 
@@ -25,8 +22,19 @@ verb_form(X,Y,Z,U):-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %% Tranforms each word into a list of alternatives.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% RS-111205, UNIT: tuc
+:-use_module( dict_e, [ verb_form/4 ] ). %% Sometimes caused duplicates? %% RS-131228
+:-use_module( lex,[  part_word/1 ] ). %% RS-140209.
+:-use_module( semantic, [        %  TUCs  Lexical Semantic Knowledge Base        %% RS-131227
+            dtv_templ/4,            iv_templ/2,            pvi_templ/2,            tv_templ/3 ]).
+
+%% RS-111205, UNIT: utility
+%:- ensure_loaded( user:'../utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
+:- use_module( '../utility/utility', [ ends_with/3 ] ).
 
 
 %%%%%% The coding conventions %%%%%%%%%%%%%%%%%%%%%
@@ -51,9 +59,6 @@ verb_form(X,Y,Z,U):-
 %       dont care   in the grammar
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
 
 lcode2(V,verb(W,X,Y)):-  
     \+ dict_e:unwanted_verb(V),  % e.g. meaning
@@ -82,7 +87,7 @@ lcode2(X,[X]):-           % Test on actual word
 
                          
 lcode2(X,[X]):-           %% TA-071108  not name(X,n,0) as before
-    user:part_word(X).    %% lex.   
+    part_word(X).    %% lex.   
 
 %% 
 
@@ -95,23 +100,27 @@ verbroot(W):-
     pvimodal_verb(W). % cost 
 
 pvimodal_verb(W):- 
-    user:pvi_templ(W,_).
+    pvi_templ(W,_).
 
 be_verb(be).
 
 ditrans_verb(X):-
-    user:dtv_templ(X,_,_,_).  %% btv -> dtv
+    dtv_templ(X,_,_,_).  %% btv -> dtv
 
 trans_verb(have). %% 
 trans_verb(X):-
-   user:tv_templ(X,_,_),
+   tv_templ(X,_,_),
    !. %% >1 
 
 intrans_verb(X):-
-   user:iv_templ(X,_),
+   iv_templ(X,_),
    !. %% >1 
 
 
+%% "Import" from utility: %% RS-131230
+%ends_with(X,Y,Z):-user:ends_with(X,Y,Z).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                       
 lexv(X,be,Y,Z):- 
     verb_form(X,be,Y,Z),
     !.
@@ -146,20 +155,20 @@ lexv(KILLED,KILL,past,part):-
 lexv(TRAVELLED,TRAVEL,past,X):-  
     ends_with(TRAVELLED,TRAVE,lled),
     ends_with(TRAVEL,TRAVE,l),
-    user:member(X,[part,fin]). 
+    member(X,[part,fin]). 
 
 lexv(LOVED,LOVE,past,X):-      
     ends_with(LOVED,LOVE,d),
     ends_with(LOVE,_,e),    
-    user:member(X,[part,fin]).
+    member(X,[part,fin]).
 
 lexv(LOGGED,LOG,past,X):- 
     ends_with(LOGGED,LOG,ged), 
-    user:member(X,[part,fin]). 
+    member(X,[part,fin]). 
 
 lexv(SLAMMED,SLAM,past,X):-    
     ends_with(SLAMMED,SLAM,med), 
-    user:member(X,[part,fin]). 
+    member(X,[part,fin]). 
 
 
 
@@ -191,9 +200,9 @@ lexv(APPLIES,APPLY,pres,fin):-
 
 lexv(X,X).            
 
-lexb(X,Y):-
-    lexv(X,Y),
-    dict:lexb1(Y).     % dict.pl
+%lexb(X,Y):-
+%    lexv(X,Y),
+%    dict:lexb1(Y).     % dict.pl       %% RS-131225    Obsolete?!
 
 /* %% TA-020918  %% OBSOLETE
 lexn(X,Y,sin,u,n):- 

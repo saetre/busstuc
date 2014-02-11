@@ -3,9 +3,33 @@
 %% CREATED TA-930805
 %% REVISED TA-100201
 
-:- ensure_loaded('../declare').
-
+%% RS-131227    UNIT: tuc/
 %% Anaphoric resolution
+:- module( anaphors, [ externalresolveit/2, inventresolveit/2, matchresol0/2, nabi/3, resolve/2 ] ).
+
+%% UNIT: / and /utility
+:- ensure_loaded( user:'../declare' ).
+%% RS-131225, UNIT: utility/
+:- use_module( '../utility/library', [ reverse/2 ] ).%% RS-131225
+:- use_module( '../utility/utility', [ match/2, nth/3 ] ). %local: test/1
+
+%% RS-111205, UNIT: / 
+:- use_module( '../main.pl', [ track/2 ] ). %% RS-140209 hei/0,   run/0
+
+%% RS-140210. UNIT: /tuc/
+:- use_module( evaluate, [ disqev/1, fakt/1 ] ).          %% RS-140210
+:- use_module( facts, [ isa/2 ] ).       %% RS-131225    Necessary?
+:- use_module( fernando,[ subclass0/2, subtype0/2, type/2 ] ).
+:-use_module( 'translat.pl', [ condq/2 ] ).       %% RS-140210
+
+%% RS-140210. UNIT: /dialog/
+:-use_module( '../dialog/newcontext2.pl', [ dialog_resolve/2 ] ).       %% RS-140210
+
+%% META-PREDICATES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 resolve(P,Q):- % Only 1 external
     resolves(P,Q).
@@ -85,7 +109,7 @@ resolv(findalt(_,_,_)::P,Q,L):-
 
 
 resolv(findpron(X)::P,Q,L):-     % Internal resolution
-    %% value(textflag,true),  
+    %% user:value(textflag,true),  
     %% \+ user:value(busflag,true), %% <-- Hazard ? 
     internalresolve(X,L),  
     !,
@@ -115,9 +139,9 @@ resolv(findpron(X:T)::P, exists(X:T)::  Q,L):- % External resolution of pronoun
 
 
 resolv(find(X)::P,Q,L):-     % 1.  Internal resolution  first
-%%%     value(textflag,true),    %% only for texts  
+%%%     user:value(textflag,true),    %% only for texts  
                              %% from nth to this palce \= nth
-    \+ value(dialog,1), 
+    \+ user:value(dialog,1), 
     internalresolve(X,L),  
     !,
     resolv(P,Q,L).    
@@ -318,7 +342,7 @@ externalresolve(X,P):-   % Dynamically query the qualia  X:_
 externalresolveit(X:_T,_):- nonvar(X),X=(_,_),!,fail. 
 
 externalresolveit(X:MT):-   % reference must not be
-    value(textflag,true),  
+    user:value(textflag,true),  
     is_the(X,K),            % more specific than referent
     type(K,KT),
     nogender(KT),
@@ -365,6 +389,8 @@ resolist(P,DL,UL):-       %% Finds list of referents
 
 %--------------------------------------
 
+error_in_anaphors:-
+        write( 'error_in_anaphors' ).   %% RS-140210
 
 res2(V,    _,_,_,_):-var(V),!,error_in_anaphors. 
 

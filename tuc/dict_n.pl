@@ -6,36 +6,40 @@
 %% REVISED JB-970312  TA-110824
 %% TUC Dictionary for the language N
 
-:-module(dict_n,[
-                adjective3/3,
-                adv2/2,
-                   compword/3,
-                   cw/1,
-                   kw/1,
-%%                 lexnsingirr/2,       %% Only English?? RS-121118
-%%                 lexnpluirr/2,        %% Only English?? RS-121118
-                   noisew/1,
-                   noun2/2,
-                   noun3/3,
-                   noun_form/5,
-                   ow/1,       %% See k(ey)w(ord)
-                   preposition/1,
-                   pronoun/1,
-%                   rep_verb/1,        %% English / Norsk is selected in fernando.pl   %% RS-121118 Already in user (from fernando.pl). Don't export!
-                   rewording/2,
+:-module( dict_n, [
+        adjective3/3,           adv2/2,
+        compword/3,             cw/1,                   kw/1,
+%%                 lexnsingirr/2,        %% Only English?? RS-121118
+%%                 lexnpluirr/2,         %% Only English?? RS-121118
+        noisew/1,                noun2/2,               noun3/3,
+%%                noun_form/5,
+        ow/1,       %% See k(ey)w(ord)
+        preposition/1,
+        pronoun/1,
+        rep_verb/1,   %% RS-121118   %% English / Norsk (from fernando.pl, Don't import there!)
+        rewording/2,
 %%                   splitword/2, %% Defined in the user:module
-                   synsms/2,
-                   synwordx/2,
-                   unwanted_adjective/1,
-                   unwanted_noun/1,
-                unwanted_number/1,
-                unwanted_verb/1,
-                   unwanted_interpretation/2,
-                   verb_form/4,
-                   verbroot2/2,
-                   xcompword/3,
-                   test_dict_n/0
-                ]).
+        synsms/2,                synwordx/2,
+        unwanted_adjective/1,    unwanted_noun/1,       unwanted_number/1,
+%%                unwanted_verb/1,
+        unwanted_interpretation/2,
+        verb_form/4,             verbroot2/2,           xcompword/3,
+        test_dict_n/0
+]).
+
+%%RS-131225     %% UNIT: /
+:- ensure_loaded( user:'../declare' ). %, [ := /2 etc. ] ).      %RS-131225  Get dynamic definition for user:value/2
+%%MISERY! user:?
+%:- ensure_loaded( user:'../tucbuses.pl' ). %%,[  backslash/1  ]).
+:- use_module( '../tucbuses.pl', [ ] ). %%, backslash/1 ] ).
+
+%%RS-131225     %% UNIT: utility/
+%:- ensure_loaded( user:'../utility/utility' ). %%, [ testmember/2, user:value/2  ]).   %% RS-131117 includes declare.pl
+:- use_module( '../utility/utility', [ ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
+
+%%RS-131225     %% UNIT: tuc/
+:- use_module( evaluate, [ instant/2 ] ).       %% RS-131225
+:- use_module( 'semantic', [ gradv_templ/2, rv_templ/2 ] ).%  TUCs  Lexical Semantic Knowledge Base
 
 %¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
 % sp     spell error (unintended) ,not inflectable
@@ -4030,7 +4034,7 @@ compword(når,[gård],[]).
 
 % har = går (sms ordliste), men når har siste 9 => siste buss ha rute 9 
 
-compword(når,[har],går):- user:value(smsflag,true). %% ad hoc, ordliste  //nofunc
+compword(når,[har],går):- user:value(smsflag,true). %% ad hoc, ordliste  //nofunc %% RS-131223  FROM utility.pl !!
     xcompword(når,[har,neste],neste).
 
 
@@ -5655,11 +5659,12 @@ kw(X):-cw(X). % Closed Word Class   => uncoded
 ow(nb(_)).
 ow(quote(_)).
 
-ow(X) :- user:instant(X,word),!.
+ow(X) :- instant(X,word),!. %% RS-131223  FROM utility.pl !!
 
 ow(X) :- numerid(X,_,_).
 ow(X) :- adjective2(X,_). 
-ow(X) :- user:gradv_templ(X,_). 
+ow(X) :- gradv_templ(X,_). %% RS-131223  FROM utility.pl or :- use_module( evaluate, [ fact/1, instant/2 ] ) or semantic.pl?.
+
 
 
 %%%%%%%%%  All the words that may appear as literal constants in grammar.
@@ -5681,7 +5686,7 @@ cw('¤').   %% Headline
 
 cw(';'). %% Sentence delimiter
 
-cw(',') :- user:value(teleflag,true).  
+cw(',') :- user:value(teleflag,true). %% RS-131223  FROM utility.pl !!  
 cw('.'). 
 cw('?').
 cw('!').
@@ -5884,8 +5889,8 @@ cw(å).
 % Norsk til Norsk
 
 
-synwordx(X,Y):-user:value(smsflag,true),synsms(X,Y). 
-synwordx(X,Y):-synword(X,Y).
+synwordx(X,Y) :- user:value(smsflag,true),synsms(X,Y). %% RS-131223  FROM utility.pl !!  %:- use_module( evaluate, [ fact/1, instant/2 ] ).
+synwordx(X,Y) :- synword(X,Y).
 
 % SMS synonyms  
 
@@ -12552,9 +12557,9 @@ synword(TLF, telefonnummer):-   %% nr 6 -> telefonnummeret 6 // Bare tele
     tlf(TLF).  
 
 
-synword(TLF, telefonnummer):-      %% nr 6 -> telefonnummeret 6 // Bare tele
+synword( TLF, telefonnummer ):-      %% nr 6 -> telefonnummeret 6 // Bare tele
     \+ user:value(teleflag,true),  %% ret -> r
-    \+ user:testmember(TLF,[nr,nummer,nummeret]), %% ad hoc (BUS no) 
+    \+ user:testmember(TLF,[nr,nummer,nummeret]), %% ad hoc (BUS no)
     tlf(TLF).  
 
 
@@ -12731,7 +12736,7 @@ adjective2(Skrevet,be/Write):-
     morph_n:lexv(Skrevet,Skrive,past,part),
     verbroot2(Skrive,Write),
     \+ adj2(Skrevet,_), %% e.g. svart
-    user:tv_templ(Write,_,_).
+    tv_templ(Write,_,_).
 
 */
 
@@ -16663,13 +16668,13 @@ noun2(professor,professor):-  %%  tele ...
 noun2(førsteamanuensis,associate_professor):-
     user:value(teleflag,true).
 noun2(amanuensis,assistant_professor):-
-    user: value(teleflag,true).
+    user:value(teleflag,true).
 noun2(universitetslektor,lecturer):-
-    user: value(teleflag,true).
+    user:value(teleflag,true).
 noun2(sekretær,secretary):-    
-    user: value(teleflag,true).
+    user:value(teleflag,true).
 noun2(forsker,researcher):-   
-     user: value(teleflag,true). 
+     user:value(teleflag,true). 
 
 noun2(semantikk,semantics). 
 noun2(semester,semester). 
@@ -19618,8 +19623,8 @@ verb_form(åpne,  åpne,imp,fin).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-rep_verb(Tell):-  
-    user:rv_templ(Tell,_). %% Semantic  
+rep_verb(Tell):-        %% Depending on Language(X)!
+    rv_templ(Tell,_). %% Semantic %% RS-131225    Obsolete? No! Used from fernando.pl
 
 
 preposition(X):-preposition2(X,_).  
@@ -20042,7 +20047,7 @@ pronoun(deg,savant).  %%
 % compword []. Example  compword(vel,[],[]).
 
 
-noisew(BS):-user:backslash(BS).   
+noisew(BS):-user:backslash(BS). %% RS-131230 Defined in tucbuses.
 
 noisew('&'). %% TA-110225
 

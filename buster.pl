@@ -29,9 +29,10 @@ The unique files of BUSTER are
 */
 
 
-?-[tucbuster]. %% TA-071026
- 
-?-[busroute].
+%?-[tucbuster]. %% TA-071026
+ :- use_module( 'tucbuster.pl', [ ] ).   %% :-[tuctele]. %%% // Tele things %% TA-051018
+
+?-use_module('busroute.pl').    %% RS-140102. Import all predicates from this module!
 
 
 

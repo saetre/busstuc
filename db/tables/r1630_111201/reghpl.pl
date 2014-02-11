@@ -1,3 +1,5 @@
+%% :- module( r1630_111201,  [ hpl/4 ] ).    %% RS-140106    Automate this, as part of regcut.pl
+
 hpl(16010700,lian_trondheim,lian_trondheim,'Lian, Trondheim').
 hpl(16010701,herlofsenløypa,herlofsenløypa,'Herlofsenløypa').
 hpl(16010702,vestmarka,vestmarka,'Vestmarka').

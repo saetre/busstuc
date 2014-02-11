@@ -1,16 +1,14 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE readin.pl
 %% SYSTEM TUC
-%% CREATED  TA-910531
-%% REVISED  TA-110725
-
-:- ensure_loaded('../declare').
-:- ensure_loaded('../utility/library').
-
-
-%% NB 0015 \-> 2415
+%% CREATED  TA-910531   %% REVISED  TA-110725
+%% REVISED  RS-140101 modularized
 
 %%  Read a sentence into a list of symbols
+:-module( readin, [ alpha/3, ask_file/1, ask_user/1, read_in/1, readoneline/1, words/3,
+        alphanum/2, alphanums/3, digits/3, readrestquote/3
+] ).  %% RS-131227 For ...main.pl
+
 
 %%  A sentence must be ended by a terminator ?.!  
 %%    followed by a CR 
@@ -20,12 +18,26 @@
 %% comma (',') is neglected 
 %% content of parentheses is neglected (nam)
 
+%% RS-131225, UNIT: /   and /utility/
+:- ensure_loaded( user:'../declare' ).  %% RS-140102 (:=)/2, user:value/2 
+:- use_module( '../utility/utility', [ output/1, splitlast/3 ] ).  %% RS-131225 etc?
+:- use_module( '../utility/library', [ ] ).    %% RS-131225 etc?
+
+:- use_module( '../sicstus4compatibility', [ get0/1, ttyflush/0 ] ).  %% Compatible with sicstus4, get0/1 etc.
+
+%:- ensure_loaded( user:'../main' ). %%, [ norsource_prefix/0 ] ).  %% RS-131229
+:- use_module( '../main.pl', [ norsource_prefix/0 ] ). %% RS-140209 hei/0,   run/0 
+:- use_module( '../tucbuses', [ prompt/1 ] ).            %% RS-131229
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% NB 0015 \-> 2415
+
 %% 
 %%  
 %% "Text"  =>  quote(Text)    %% she said " who is the responsible ?" .  ASCII 34
 %% 'Text'  =>  literal(Text)  %% 'between' is a preposition .            ASCII 39
 %%
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -47,7 +59,7 @@ ask_file(P) :-
    nl.
 
 write_prompt(_E):- %% TA-110207
-    value(norsource,true),
+    user:value(norsource,true),
     !.
 write_prompt(E):-
      write(E).
@@ -56,7 +68,7 @@ write_prompt(E):-
 %%% Miscellaneous for File Reading
 
 write_from_user(P):-
-    value(talk,1), 
+    user:value(talk,1), 
     !,
 %    opentalk(question),
         doing(P,0). %% out to \nat\scratch
@@ -66,7 +78,7 @@ write_from_user(_):-!.
 
 
 write_from_file(P):- %% TA-110207
-   value(norsource,true),
+   user:value(norsource,true),
    !,
 
    norsource_prefix,nl, %% bloody hack %% TA-110207
@@ -129,9 +141,10 @@ initread(U):-
 
    (  member(K1,[37, 92])  % '%' '\'   %% '¤'=164
 
-   -> commandflag := true 
+   -> user:( commandflag := true ) 
            ;
-      commandflag := false),
+      user:( commandflag := false) 
+   ),
            
      readrest0(K1,U).
 
@@ -157,15 +170,15 @@ readrest0(T,Comline):-
 
 
 readrest(T,[]) :- T== -1, %%   EOF
-    end_of_file := true,
+    user:( end_of_file := true ),
 
     seen.  
 
 
 readrest(T,L):- %% (...) = ' ' 
     T=40,     %% ( 
-    value(noparentflag,true), %% ignore content
-    \+  value(gpsflag,true),  %% TA-110114
+    user:value(noparentflag,true), %% ignore content
+    \+  user:value(gpsflag,true),  %% TA-110114
     !,
     skipuntil(41),  %% ) including CR
     readrest(32,L). 
@@ -173,7 +186,7 @@ readrest(T,L):- %% (...) = ' '
 
 readrest(T,Rest):- 
     term_char(T),       %% termchar '.','!'.'?'
-    value(textflag,true),
+    user:value(textflag,true),
     !,
     get0129(Z),  %% next character (blank or not)
     !,
@@ -230,7 +243,7 @@ readrestquote(A,K1,[K1|U]):-
 
 
 to_nl:- 
-     value(textflag,true),!.
+     user:value(textflag,true),!.
 
 to_nl :-
    repeat,
@@ -374,8 +387,8 @@ idchar(A, alpha,  [A| C], C) :-
 
 
 idchar(A, alpha, [A| C], C) :- %%    buss5 -> BUSS 5 
-     (value(dialog,1);       %% especially context id 
-     value(commandflag,true)),  %% except for commands
+     (user:value(dialog,1);       %% especially context id 
+     user:value(commandflag,true)),  %% except for commands
      digit(A).
 
 
@@ -483,7 +496,7 @@ alphanum(K,K):-digit(K).
 alphanum(K,K):-underscore(K). 
 
 underscore(95) :- %% _  
-     value(commandflag,true). 
+     user:value(commandflag,true). 
 
 digsign(X):-digit(X).
 digsign(X):-sign(X).
@@ -507,7 +520,7 @@ blank_char(B):- %% NOT CR !!!!
     B==160.
 
 blank_char(95):- 
-    \+ value(commandflag,true).
+    \+ user:value(commandflag,true).
 
 
 blank(K) :- K =< 32; %% Including CR !
@@ -517,7 +530,7 @@ blank(K) :- K =< 32; %% Including CR !
             K=160. %% (Invisible chracter)
 
 blank(95):- 
-    \+ value(commandflag,true).
+    \+ user:value(commandflag,true).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -529,12 +542,12 @@ blank(95):-
 
 lc(X,Y):-  
    lc1(X,Y),
-   value(teleflag,true),
+   user:value(teleflag,true),
    !.
 
 lc(X,Y):- 
    lc1(_,X),
-   value(teleflag,true),
+   user:value(teleflag,true),
    !,
    Y=X.
 

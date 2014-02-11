@@ -1,3 +1,9 @@
+HOW TO CHANGE THE CURRENT WORKING DIRECTORY, aka cd, pwd, change folder, etc.
+=============================================================================
+
+| ?- use_module(library(system)). current_directory(D,'..').
+
+
 REMAINING BUGS
 ===============
 regtopp-automaten:

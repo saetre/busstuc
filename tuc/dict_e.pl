@@ -3,12 +3,9 @@
 %% SYSTEM TUC
 %% CREATED TA-930601
 %% REVISED TA-110825
+
 %% TUC Dictionary for the language E
-
-:- ensure_loaded('../declare').
-%%:- ensure_loaded('semantic').%  TUCs  Lexical Semantic Knowledge Base
-
-:-module(dict_e,[
+:-module( dict_e, [
 %                   allroundmember/2,
 %                   compword/3,
 %                   cw/1,
@@ -18,7 +15,7 @@
 %                   noun2/2,
 %                   noun_form/5,
 %                   ow/1,
-%                   preposition/1,
+%                   preposition/1,       %% RS-131227. For autocompiled dcg_n / dcg_e
 %                   pronoun/1,
 %                   rep_verb/1,
 %                   rewording/2,
@@ -27,13 +24,32 @@
 %                   synwordx/2,
 %                   unwanted_adjective/1,
 %                   unwanted_noun/1,
-%                   unwanted_verb/1,
+                   unwanted_verb/1,
 %                   unwanted_interpretation/2,
-%                   verb_form/4,
+                   verb_form/4,         %% RS-131227    For morph_e.pl
 %                   verbroot2/2,
 %                   xcompword/3,
                    test_dict_e/0
                 ]).
+
+%% RS-131225    UNIT: /
+:- ensure_loaded( user:'../declare' ).
+
+%% MISERY! %% RS-131229
+%:- ensure_loaded( user:'../tucbuses' ).  %% RS-130329 Make sure (gram/lang) modules are available: dcg_module,
+:- use_module( '../tucbuses.pl', [ ] ). %%, backslash/1 ] ).
+
+%% RS-131225    UNIT: tuc/
+:- use_module( evaluate, [ instant/2 ] ).       %% RS-131225
+:- use_module( morph_e,[ verbroot/1 ] ).        %% RS-131225
+:- use_module( 'semantic', [    %  TUCs  Lexical Semantic Knowledge Base
+        adj_templ/2, ako/2, gradv_templ/2,
+        particle/3, rv_templ/2 
+] ).
+
+%% RS-131225    UNIT: utility/
+%:- ensure_loaded( user:'../utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
+%:- use_module('../utility/utility', [ value/2  ]).       %RS-131225  Get dynamic definition for value/2
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -388,8 +404,8 @@ cw('!').
 cw(':'). 
 cw('/').
 
-cw(X) :- user:particle(X,_,_).
-cw(X) :- user:gradv_templ(X,_). 
+cw(X) :- particle(X,_,_).
+cw(X) :- gradv_templ(X,_). 
 cw(X) :- pronoun(X,_). 
 
 cw(a). cw(b). cw(c). cw(d). cw(e). cw(f). cw(g). cw(h). %% street letters
@@ -1091,7 +1107,7 @@ synword(youre,         tucs).
 synword(yourself,      tuc). 
 
 
-noisew(BS):-user:backslash(BS).   
+noisew(BS):-user:backslash(BS).
 
 noisew('«').
 noisew('»'). 
@@ -1106,8 +1122,8 @@ noisew('-').
 noisew('*'). 
 noisew('¨').
 noisew('#'). 
-noisew('('). %%  :- \+ user:value(noparentflag,true). %%  Not nec
-noisew(')'). %%  :- \+ user:value(noparentflag,true). 
+noisew('('). %%  :- \+ value(noparentflag,true). %%  Not nec
+noisew(')'). %%  :- \+ value(noparentflag,true). 
 noisew(',').
 noisew(';').
 noisew('¡'). 
@@ -1174,7 +1190,7 @@ noun2(M,N):-nounsyn(M,N).
 noun2(N,N):-noun(N).
 
 noun(thing).
-noun(X) :- user:(X ako _ ),
+noun(X) :- (X ako _ ),
     \+ unwanted_noun(X). %% second %% TA-100909
 
 %% Replaces synonyms with inflections (Root synonyms)
@@ -1457,7 +1473,7 @@ verb_form(wrote,write,past,fin).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
 
 rep_verb(Tell):- 
-    user:rv_templ(Tell,_). %% Semantic 
+    rv_templ(Tell,_). %% Semantic 
 
 preposition(by).
 
@@ -1572,7 +1588,7 @@ noun_form(women,woman,plu,u,n).
 
 
 adjective2(X,X):- 
-    user:adj_templ(X,_),
+    adj_templ(X,_),
     !. %% >1 
 
 adjective2(X,Y):- 

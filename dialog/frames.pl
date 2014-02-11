@@ -2,7 +2,7 @@
 %frameval(Type, Value, Filled, Confirmed, Experience)
 %subframe(Template, Id,)
 
-:- ensure_loaded('../declare').
+:- ensure_loaded( user:'../declare' ).
 
 
 :-volatile

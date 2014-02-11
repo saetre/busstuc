@@ -6,6 +6,9 @@
 %% REVISED RS-120705 Manually
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:-module(regstr, [
+        streetstat/5
+]).
 
 %% isat(kongens_street-34,atb). %%  funk ??? %% TA-101116
 
@@ -1175,6 +1178,7 @@ streetstat(ole_øisangs_street,'Ole Øisangs vei',1,10,peder_morsets_veg).
 streetstat(oline_hårstads_street,'Oline Hårstads veg',1,17,sandbakken).
 streetstat(oppsynsmann_eggens_street,'Oppsynsmann Eggens veg',1,29,kvenilds_veg).
 streetstat(orion_street,'Orionvegen',1,44,nygård).
+streetstat(orkdal_street,'Orkdalsvegen',1,99,torget_orkanger).
 streetstat(ormen_langes_street,'Ormen Langes vei',1,29,strandveikaia).
 streetstat(orre_street,'Orrevegen',2,8,saupstadmyra).
 streetstat(orre_street,'Orrevegen',1,25,skyttervegen).

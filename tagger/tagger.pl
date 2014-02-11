@@ -2,6 +2,10 @@
 %% SYSTEM	StudTUC
 %% CREATED	MTK-14-Oct-2002
 
+%% MISERY!
+:- use_module( xml, [ ] ).
+:- use_module( library(lists), [ ] ).
+
 hent_chars(C,I,L) :- at_end_of_stream, append(I,[C],L).
 hent_chars(C,I,O) :- \+ at_end_of_stream, append(I,[C],L), get_code(T), hent_chars(T,L,O).
 
@@ -89,5 +93,3 @@ test :-
 	write('compnames = '),write(Compnames),nl.
 
 */
-:- use_module(xml).
-:- use_module(library(lists)).

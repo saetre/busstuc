@@ -9,13 +9,17 @@
 %% This is completely domain-independent
 
 %% Data taken from topreg.pl
+%%:-use_module('busroute.pl', [] ).     %%RS-140207
 
-%%:-prolog_flag(discontiguous_warnings,_,off). 
+%%:-prolog_flag( discontiguous_warnings,_,off ). 
 
 
 %%% Local Bootstrap predicates %%%
 %%% Must come first            %%%
 
+%% RS-140210 meta_predicates    : means use source module       + means use this( compileroute ) module  (used for module-expansion)
+:- meta_predicate
+           ta_for(+,+) . %% ta_for/2
 
 ta_for(X,Y):-
     X,Y,fail;
@@ -47,21 +51,21 @@ ta_append([X|Y],U,[X|V]) :-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-consult_route_set_list([Module|Modules]):-
+consult_route_set_list( [Module|Modules] ) :-
     !,
     compile_route_set(Module),
 
     consult_route_set_list(Modules).
      
-consult_route_set_list([]).
+consult_route_set_list( [] ).
 
 
-compile_route_set(Module):-
+compile_route_set( Module ) :-
      make_mod_file_list(Module,MF),
      consult(Module:MF).   %% RS-111220 , create_regcut(Module).
 
 
-make_mod_file_list(Module,MF):-
+make_mod_file_list( Module, MF ) :-
 
     ta_append_atomlist(['db/tables/',Module,'/',regcomp],Regcomp),
     ta_append_atomlist(['db/tables/',Module,'/',regbus], Regbus),
@@ -75,26 +79,26 @@ make_mod_file_list(Module,MF):-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-periodset(TT,PZ):- setof(P, rp(TT,P) ,PZ). %% set_of/3  undefined yet
+periodset( TT, PZ ) :- setof(P, rp(TT,P) ,PZ). %% set_of/3  undefined yet
 
 
-rp(TT,P):- route_period(TT,P,_X,_Y),P \== nil. 
+rp( TT, P ) :- route_period(TT,P,_X,_Y),P \== nil. 
 
 
-consult_periodset(TT):-
+consult_periodset(TT) :-
      periodset(TT,PZ), 
      consult_route_set_list(PZ).
 
 
 
 
-consultbase(TT):- %% TA-110301
+consultbase(TT) :- %% TA-110301
 
-   ta_for(compilerouteaux(TT,Z), 
-          compile(Z)), %% TA-110302
+   ta_for( compilerouteaux(TT,Z), 
+          compile(Z) ), %% TA-110302
 
-   ta_for(routedomain(X), 
-          consult_periodset(X)).
+   ta_for( routedomain(X), 
+          consult_periodset(X) ).
 
 
 

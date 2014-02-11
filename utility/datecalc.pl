@@ -4,13 +4,34 @@
 %% CREATED TA-010919
 %% REVISED TA-110408
 
+%% UNIT: /utility/
+%% USAGE:
+%%:-use_module('utility/datecalc', [ off_valid_period/3,  on_valid_period/3,   todaysdate/1, weekday/2  ]).
+
 % Contains the utility predicates that has to do with dates
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:-module( datecalc, [   add_days/3,     addtotime/3,    before_date1/2, %% RS-131225 for makeauxtables, busanshp.pl (and others?)
+        datetime/6,     dayname/2,      dayno/2,        datestring/1,   timestring/1,   %% RS-131225    For app/buslog?
+        days_between/3, daysucc/2,      difftime/3,     finddate/2,     findfirstcomingdate/2,          getdaynew/1,        month_name/2,
+        easterdate/2,   isday/1,        inttime/2,      off_valid_period/3,             on_valid_period/3, %% How to use this?
+        sub_days/3,     subfromtime/3,  this_year/1,    timenow/1,      timenow2/2,     %% RS-131225    For makeauxtables (and others?)
+        today/1, todaysdate/1,   valid_date/1,   weeknumber/2,         xweekday/2
+] ).
+ %% RS-140210 For app/buslog, app/pragma (, etc? )
 
-:-use_module(library(system), [datime/1] ).       %% get the date (for metacomp headers, for example
+:-use_module( utility ). %RS-131223 Includes ?-compile( user:'declare.pl' ).
 
-%% :- ensure_loaded( '../db/timedat' ). %, [ clock_delay/3 ] ). %% RS-120803 %% Use buslog.pl instead!
-:-use_module( '../db/busdat', [clock_delay/3] ).       %% get the date (for metacomp headers, for example
+%UNIT: External
+:-use_module( library(system), [ datime/1 ] ).       %% get the date (for metacomp headers, for example
+
+%UNIT: /app/
+%:-use_module( '../app/buslog', [ today/1] ).       %% get the date (for metacomp headers, for example
+
+%UNIT: /db/
+:-use_module( '../db/busdat', [ clock_delay/3 ] ).       %% get the date (for metacomp headers, for example
+%%:- ensure_loaded( '../db/timedat' ). %, [ clock_delay/3 ] ). %% RS-120803 %% Use buslog.pl instead!
+:-use_module( '../db/timedat', [ named_date/2 ]).       %%  EASTER DATES AND OTHERS %% RS-131225
+
 
 %% Rule:  A week must have at least has  4 days to count as a week
  
@@ -215,6 +236,23 @@ xweekday(Date,HDay):-
 
 
 
+timestring(Z):- %% creates a string of time-point YYYYMMDDHHMMSS
+    datetime(X1,X2,X3,X4,X5,X6),
+    coerce2d([X1,X2,X3,X4,X5,X6],[D1,D2,D3,D4,D5,D6]),     %% RS-131230 From utility.pl
+    concat_atomlist([D1,D2,D3,D4,D5,D6],Z),
+    !.
+timestring('00000000000000').
+%           YYYYMMDDHHMMSS
+
+
+datestring(Z):- %% creates a string of date  YYYYMMDD
+    datetime(X1,X2,X3,_X4,_X5,_X6),
+    coerce2d([X1,X2,X3],[D1,D2,D3]),            %% RS-131230 From utility.pl
+    concat_atomlist([D1,D2,D3],Z),
+    !.
+datestring('00000000').
+%           YYYYMMDD
+
 
 
 todaysdate(date(Y,M,D)):- 
@@ -306,7 +344,7 @@ this_year(YYYY):-
 % Prolog is really awkard here
 
 convert_zone(YYY, M, D, H,Min,Sec,   YYY,M,D,H,Min,Sec):- %% TA-080407
-    \+ value(busflag,true),
+    \+ user:value(busflag,true),
     !.
 
 convert_zone(YYY, M, D, H,Min,Sec,
@@ -552,7 +590,8 @@ monthlength(12,31).
 
 
 /*
-
+From: weekday.pl
+   
 The following code is used to figure out the day of week
 for any date.
 
@@ -747,5 +786,112 @@ mem(X,[U|V]):-X==U;mem(X,V).
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%From /app/buslog.pl   %% RS-131230
+%% Dialog date-time handling...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%      Dialog initiated with assert(lastday(-1,noday)),
+%% If that is missing, simulate it
+
+
+today(Dag) :-
+         datetime(_,_,Daynr,_,_,_),
+         xlastday(Lastdaynr,Lastday),
+         (Lastdaynr \== Daynr ->
+          findday(Daynr,Dag1)
+        ; Lastday=Dag1),
+         !,
+    Dag=Dag1. %% may act as  a test
+
+
+findday(Daynr,Dag) :-
+    getdaynew(Dag),           %%  utility/ computes day from todate
+
+    user:(lastdaynr := Daynr),
+    user:(lastday  := Dag).
+
+
+xlastday(Lastdaynr,Lastday):-
+    user:value(lastdaynr,Lastdaynr),
+    user:value(lastday,Lastday),
+    !.
+
+xlastday(Lastdaynr,Lastday):- %% if missing
+    Lastdaynr = -1,
+    Lastday=noday.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Tid
+
+%timenow(1200).
+
+timenow(Tid) :-  % Tiden akkurat nå
+         datetime(_,_,_,Hour,Min,_),
+         Tid is Hour*100+Min.
+
+
+timenow2(Delay,Tid1):- %% if negativ tid, tid=0
+    timenow(Tid),
+    addtotime(Tid,Delay,Tid1).
+
+
+%%  Speeded up
+
+addtotime(_Time,Add,ResultTime) :- %% regpas convention
+    Add = 999,        %% minutes
+    !,
+    ResultTime=9999. %% time
+
+addtotime(Time,Add,ResultTime) :-
+     H is Time//100,
+     M is Time - H*100,
+     MA is M + Add,
+     AHours is MA // 60,
+     AMin is MA -AHours*60,
+     RTime is (H+AHours)*100 + AMin,
+   ( RTime < 0 -> %% dont allow negative time
+          ResultTime is 0;
+          ResultTime is RTime).
+
+
+subfromtime(Time,Add,ResultTime) :-
+  timetomin(Time,MinTime),
+  ResultMin is MinTime-Add,
+  mintotime(ResultMin,ResultTime).
+
+
+
+
+difftime(Time2,Time1,Diff) :-
+  timetomin(Time1,MinTime1),
+  timetomin(Time2,MinTime2),
+  Diff is MinTime2-MinTime1.
+
+timetomin(Time,Min) :-
+   Big is Time//100,
+        Small is Time-(Big*100),
+        Min is Big*60+Small.
+
+mintotime(Min,Time) :-
+        Big is (Min//60)*100,
+        Small is Min mod 60,
+        Time is Big+Small.
+
+% Fornuftig tolkning av tidspunktangivelser
+
+inttime(Time,MinTime) :-
+         Time<25,                % It is an hour
+         MinTime is Time*100.
+
+inttime(Time,Time) :-
+         Time>24.               % Not an hour, probably MMTT format
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

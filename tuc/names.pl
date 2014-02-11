@@ -5,8 +5,21 @@
 %% REVISED TA-110825
 
 %% Contains Domain independent names and synonyms
+%% UNIT: /tuc/  USAGE:
+%:- use_module( names, [  compname/3,  generic_place/1,  samename/2,  streetsyn/1, synname/2,  unwanted_name/1  ] ).
 
+:- module(names,[ abroad/1, city/1, community/2, country/1, compname/3, %% e.g. (app,[store],appstore). %% TA-110707   %% web adresses , see also -> facts.pl
+        generic_place/1,        samename/2,     %% e.g. (barfaøtts,berrføtts). %% TA-110317    %% SAMENAME  %% (partname) with spell
+        synname/2,              streetsyn/1,    %% e.g. (alle). %%  lade alle \== lade()veien  %% These are user related synonyms of street suffix
+                                        %% The synonyms for processing route tables are more stringent (only actual)
+        unwanted_name/1 %% e.g. (anette). %%  \+ Aunet %% RS-131225    %%  Unwanted names regardless of domain (guide spellcheck!)
+] ).
 
+%% RS-131225, UNIT: utility/
+%:- ensure_loaded( user:'../utility/utility' ). %% RS-131225 user:value/2, etc?
+:- use_module( '../utility/utility', [ ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
+
+:- ensure_loaded( user:'../declare' ). %% RS-140208  General (semantic) Operators, value/2, := /2, =: /2, ...
 
 %% Names that occur several places as general appendages
 %% It is not a rule that the generic lies at the named place
@@ -225,7 +238,7 @@ compname(st,[hans,aften], midsummer_eve).     %%
 compname(the,[understanding,computer],tuc). 
 
 compname(tore,[amble],tagore) :- 
-         \+value(teleflag,true).   
+         \+user:value(teleflag,true).   
 
 
 compname(trafikanten,[midt,norge],tmn). 
@@ -235,7 +248,7 @@ compname(trøndelag,[kollektivtrafikk],tkt).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%%¤¤  SYNNAME 
+%%%%%%  SYNNAME
 
 synname(regtopp,regtop). 
 
@@ -1634,10 +1647,10 @@ samename(tiedemanns,tiedemands).
 
 samename(øftis,øfstis). %%  Ã¸ftis = aøftis  %% TA-110324
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%  Unwanted names regardless of domain
-
 
 unwanted_name(anette). %%  \+ Aunet 
 unwanted_name(antok).  %% \+ Anton (nec???) 
@@ -1856,6 +1869,7 @@ unwanted_name(verdt).   %%  \+ vest
 unwanted_name(vinner).  %%  \+ vinter
 unwanted_name(which).   %%  \+ Vika Amblehash/TSX 
 unwanted_name(åberg).   %%  \+ åkerg(ata) 
+
 
 %%  streetsyn ADDED to names.pl  
 
@@ -2587,6 +2601,7 @@ community(odda, hordaland).
 community(oppdal, sør_trøndelag).
 community(oppegård, akershus).
 community(orkdal, sør_trøndelag).
+community(orkanger, sør_trøndelag).
 community(os, hedmark).
 community(os, hordaland).
 community(osen, sør_trøndelag).

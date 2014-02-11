@@ -4,22 +4,179 @@
 %% REVISED TA-100225
 
 %% Utility Routines that are not built in 
-%% USAGE:
-%% :- ensure_loaded( 'utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
 
-:- ensure_loaded( '../sicstus4compatibility' ). %, [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
-:- ensure_loaded( '../tuc/fernando' ). % GRUF == Grammar Utility File %% RS-131117 includes declare.pl
-%%:- ensure_loaded( '../declare' ). %, [ := /2 etc. ] ).  %% RS-120403
+%% USAGE: 
+%:- use_module( '../utility/utility', [ ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
+
+%%% RS-131225, UNIT: utility
+:-module( utility, [       appendfiles/3,       variant/2,      %% FOR metacomp, makeauxtables.pl
+        append_atomlist/2, append_atoms/3,      begins_with/3,  charno/3,       %% FOR busanshp.pl
+        absorb/3,          aggregate/3,         all/1,ans/1,    breakpoint/2,   compar/3,
+        code_chars/2,      coerce2d/2,          concat_atomlist/2,                        
+        debug/2,           default/2,           divmod/4,       equal/2,
+        delete1/3,         deleteall/3,         do_count/1,     doubt/2,
+        ends_with/3,       error/2,             flatten/2,      firstmem/2,     fnuttify2/2,
+        featurematch/4,    featurematchlist/2,  follow_after/3,
+        flatlist/2,        flatround/2,         follow_sequence/3, fnuttify1/2,         freshcopy/2,         
+        ident_member/2,    identical/2,    %% for interapp.pl %% RS-131226
+        iso_atom_chars/2,  last_character/2,    lastmem/2,      lastmems/3,     listlength/2,           makestring/2,   %% RS-131227 for ...main.pl
+        match/2,           matchinitchars/2,    matchinitchars/3,  measurecall/2,    mergeavlists/3,    naive/0,        %%listlength/2,      builtin?!
+        ( listall )/1,     outputlist/1,        pront/1,        writelist/1,    %% RS-131228 % for/2 is used by these!
+        maximum/2,         maxval/3,            minimum/2,      minval/3,       number_to_string/2,     occ/2,
+        newconst/1,        nth/3,               numbervars/1,   pling/1,        (replace)/4,    %% numbervrs/1 for interapp/pragma!
+        out/1,             output/1,            prettyprint/1,  psl/2,          purge/3,        %% RS-131227 for ...main.pl
+        remove_duplicates/2,    replacelist/4,  roundrecmember/2,    sequence_append/3,         sequence_flatten/2,     sequence_reverse/2,
+        roundappend/3,     roundmember/2,       roundreverse/2, roundwrite/1,   sequence_member/2,
+        set_filter/4,      set_union/3,         split/4,        splitlast/3,    starttime/0,            testmember/2,
+        sequence_write/1,  set_difference/3,    set_eliminate/4,        shell_copyfile/2,       snipfirst/2,  sniplast/2,
+        spyoncondition/2,  startbatch/0,        starttimebatch/0,       stoptimebatch/0,        subcase/2,      subsum1/2, subsumes/2,  %% For translat.pl
+        taketime/0,        union/3,             textlength/2,      unsquare/2,  writenumber2/2, writepred/1,       writeZ/1,
+
+        %% RS-140101 Moved to declare for early compiling!
+        %(:=)/2, %% RS-131225 Set user:value         %(=:)/2 %% RS-131225 Get user:value  %set/2,      user:value/2,
+                   
+        %META-PREDICATES!
+        %% RS-140101 meta_predicates    : means use source module       + means use this(utility) module  for expansion
+        %:- meta_predicate   for(:,:), once 1(:), set_ops(+,:,+), test(:) . %% RS-131231 Moved to declare (above) % doall(:) moved to evaluate.pl?
+        do/1, foralltest/2, number_of/3, once1/1, set_of/3, set_ops/3, tryonce/1  , implies/2 %extra? remember/1 moved to user:declare. test/1 moved to pragma, ...? for/2, 
+]).
+
+:- ensure_loaded( user:'../declare' ). %% RS-111213  General (semantic) Operators
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LIST OF ALL META_PREDICATES: (do)/1, for/2, foralltest/2, implies/2,  number_of/3, once1/1, set_of/3, set_ops/3, , test/1, tryonce/1, ...?
+%% META_PREDICATES SECTION, %% RS-140101 meta_predicates    : means use source module       + means use this (utility) module  for expansion
+:-meta_predicate  do(:),      for(:,+), foralltest(:,+),  implies(:,:),  number_of(:,:,+),  once1(:),  %number_of => set_ops
+                  set_of(+,:,+), set_ops(+,+,+),  tryonce(:) , %% RS-131231 %From utility.pl
+                  test(+).  % will NOT STAY inside pragma.pl! Moved to pragma... %% RS-140102
+%:-meta_predicate  backslash(+).   %% RS-131230 No meaning!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+do(P):- \+ ( \+ P). 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+for( P, Q ) :- %% For all P, do Q (with part of P)
+  P, Q,
+  false;true.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+foralltest(P,Q):- \+ ( P, \+ Q). 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+number_of(X,Y,N):- 
+    set_of(X,Y,Z),
+    length(Z,N).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+once1(P):-P,!. %% same as once, but version independent
+               %% try once, otherwise FAIL
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:- meta_predicate   set_ops(+,:,+) . %% RS-140211      % set_ops/3 
+% Prologs setof is baroque %% 
+set_of(X,Y,Z):-           %%
+    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
+    Z=[].                 %% What is wrong with empty sets ?
+%:- meta_predicate   for(:,:), once 1(:), set_ops(+,:,+), test(:) . %% RS-140211
+%set_ops/3, tryonce/1  , implies/2 % remember/1 moved to user:declare. test/1 moved to pragma, ...? for/2, 
+%% Sequence preserving setof, ( first occurrence stays first)
+set_ops(X,Y,Z):-
+    findall(X,Y,Z1),
+    remove_duplicates(Z1,Z). %% order-preserving
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:- meta_predicate  test(+) . %% RS-140211
+test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+tryonce(P):-P,!. %% try once, otherwise SUCCESS
+tryonce(_).     %% SUCCESS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%:- use_module( '../utility/library', [ remove_duplicates/2 ] ).%% RS-131225 %% What's this for?
+%%%%%%%%%%%%%%%%%%RS-131228      Compile-order Matters!
+%%
+%DEPENDENCIES: library.pl (remove_duplicates/2)
+
+%
+%% RS-131227, UNIT: EXTERNAL LIBRARY
+:- use_module( library(process) ). %% , [exec/1,shell/1]). %% RS-131227 Investigate this ;-)
+
+%% RS-131225, UNIT: utility/
+:- use_module( '../utility/library', [ remove_duplicates/2, reverse/2, shell/1 ] ).%% RS-131225
+
+
+%, don't for/2 here!? , writelist/1 ?
+%:-use_module( '../utility/datecalc', [ datetime/6 ]).%% RS-131225    For app/buslog, telelog, etc?
+
+%% RS-131225, UNIT: /
+%:- use_module( 'makeauxtables' ). %% , [ %% Loops back here in the for-predicates etc. toretarget/1,  stallbuss/1
+                                         %% RS-131224  calls the for-predicate  %% Used in FOR from makeauxtables
+:- use_module( '../sicstus4compatibility', [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+
+%MISERY!! %:- use_module( '../main' ). %% , [ %% Loops back here in the for-predicates etc. e.g. for (A => B)
+
+%% RS-130329 Make sure (gram/lang) modules are available before this point (e.g. dcg_modules),
+
+%% RS-111205, UNIT: /
+:- use_module( '../tucbuses', [ language/1 ]).  %RS-140210 % Common File for tucbus  (english) and  tucbuss (norwegian). load in user: module
+
+%% RS-111205, UNIT: app/
+:- use_module( '../app/buslog' ). % , [ station/1 ] ).  %% RS-130210, 140210 called in for-predicate (bound/1, bus/1,...), set_filter/3, set_ops/4, etc... Maybe move them to buslog instead?
+:- use_module( '../app/busanshp.pl', [ memberids/3  ] ).  %% RS-130210 called in for-predicate     bound/1, bus/1,
+
+%% RS-111205, UNIT: db/
+%:- use_module( '../db/places' ). %% [ corr/2, foreign/1, isat/2, nostation/1, placestat/2 ] ). %% RS-140101 Moved (back) to lex.pl
+%:- use_module( '../db/regstr', [ streetstat/5 ] ).      %% RS-131224 Obsolete?
+:- use_module( '../db/teledat2' ). %%, [ has_att_val/4, teledbtagfile/1 ] ). %% RS-140101 Better get EVERYTHING, since you never know!
+%:-use_module( '../db/timedat' ). %% , [ orig_named_date/2 ]). Called from main!       %% Time data for bus routes in general 
+
+%% RS-131225, UNIT: tuc/
+%:- use_module( '../tuc/evaluate' ). %%, [ qev/1 ] ).     % GRUF == Grammar Utility File %% RS-131117
+%:- use_module( '../tuc/fernando' ).     % GRUF == Grammar Utility File %% RS-131117
+%:- use_module( '../tuc/lex' ).          % lcode1/2  is called in the for-predicate (etc.) %% RS-131225
+%:- use_module( '../tuc/metacomp' ).     % genprod is called in the set_ops(?) -predicate (etc?) %% RS-131228
+%%  Read a sentence into a list of symbols
+
+%% RS-140101, Compile danger?
+:- use_module( '../tuc/readin', [ read_in/1 ]). %% ask_user/1, in user: prompt!
+
+%%ensure_loaded( '../tuc/torehash' ).   % RS-131224 OBSOLETE! Moved to utility/makeauxtables!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%:-volatile
-%          value/2.      %% RS-130630. Big Danger!!! This has to be stored in the compiled save_program!!!
-
-:-dynamic
-          value/2.      %% RS-130630. Danger?
-
 %% panic(_H). %% just for comment-predication
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% FOR SECTION
+% RS-131228      Compile-order Matters!
+% "for" needs access to all the predicates it's called with
+%
+%% RS-111205, UNIT: db/
+%:-use_module( '../db/timedat' ). %% , [ orig_named_date/2 ]). "for" Called from timedat!   %% Time data for bus routes (in general)
+%:-use_module('../tuc/lex', [ blockmark/1, ctxt/3, exmatchcompword/2, matchcompword/2, txt/3 ] ). %% for-loops?
+%% for lex.pl, used in for-predicate from there!        assertnewtxt/3, 
+%% metacomp:makegram -> library:for -> metacomp:genprod -> ??
+%:- use_module( '../tuc/metacomp' ).     % [ genprod/2 ] (etc.?) is called in the for-predicate (etc.) %% RS-131117
+                %% Used for calling      genprod(wx(adj2(_123,_124)),w(adj2(_124,_123))) (From gram_e or gram_n)!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% problematic for-loops?
+
+listall(P):- for(P,output(P)). 
+
+pront(L):-
+    nl,
+    for(member(X,L),output(X)),
+    nl.
+
+writelist(Z):-
+    for(member(X,Z),out(X)).
+
+outputlist(Z):-   
+  for(member(X,Z),output(X)).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Find nth element                           %% TA-030922
+nth(N,Set,Nth) :- 
+         nth_aux(N,Set,Nth,1).
+
+nth_aux(N,[Nth|_],Nth,N).
+nth_aux(N,[_|R],Nth,C) :-
+         CN is C+1,
+         nth_aux(N,R,Nth,CN).
 
 %% Character no Index in string String
 charno(Index,String,Char) :- %% TA-090618
@@ -60,7 +217,7 @@ number_to_string(X,XS):- %% (no preceding blanks)
 %
 spyon(_).
 
-spyoncondition(Cond,Mess):-
+spyoncondition( Cond, Mess ):-
     call(Cond),
     spy spyon,
     spyon(Mess). 
@@ -78,18 +235,18 @@ numbervars(F):-
 
 starttimebatch :- %% TA-100111
     statistics(runtime,[T,_]),
-    batchstart := T.
+    user:( batchstart := T ).
 
 startbatch :- 
     statistics(runtime,[T,_]),
-    batchstart := T.
+    user:( batchstart := T ).
 
 stoptimebatch :-  %% TA-100111
    takebatch.
 
 takebatch :-
    statistics(runtime,[T2,_]),
-   batchstart =: T1,
+   user:( batchstart =: T1 ),
    Elapse is (T2-T1),
    out('Total: '),out(Elapse),output(ms). %% TA-980115
 
@@ -101,23 +258,6 @@ taketime :-
    out(T),output(ms).
 
 
-
-timestring(Z):- %% creates a string of time-point YYYYMMDDHHMMSS
-    datetime(X1,X2,X3,X4,X5,X6),
-    coerce2d([X1,X2,X3,X4,X5,X6],[D1,D2,D3,D4,D5,D6]),
-    concat_atomlist([D1,D2,D3,D4,D5,D6],Z),
-    !.
-timestring('00000000000000').
-%           YYYYMMDDHHMMSS
-
-
-datestring(Z):- %% creates a string of date  YYYYMMDD
-    datetime(X1,X2,X3,_X4,_X5,_X6),
-    coerce2d([X1,X2,X3],[D1,D2,D3]),
-    concat_atomlist([D1,D2,D3],Z),
-    !.
-datestring('00000000').
-%           YYYYMMDD
 
 
 
@@ -209,8 +349,6 @@ shell_copyfile(S,D):-
      append_atomlist(['cp ',S,' ',D],CMD),
 
      shell(CMD). 
-
-
 
 sequence_write(X):-roundwrite(X). %% New name, more standard
 
@@ -312,14 +450,6 @@ set_union(List1,List2,List3) :-
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-X := Y :- 
-    set(X,Y).
-
-X =: Y :-  
-    value(X,Y). 
-
-
-
 
 all(X):- 
     output(X),
@@ -353,7 +483,7 @@ aggregate(sum,L,X):-
 
 aggregate(avg,L,X):-  
     sumcount(L,S,N),
-    (N =:= 0 -> X is 0.0; 
+    (N == 0 -> X is 0.0; 
               X is S/N).
 
 aggregate(number,L,X):- 
@@ -494,22 +624,14 @@ purge(Dels,[U|Y],[U|Z]):-
     purge(Dels,Y,Z).
 
 
-do(P):- \+ ( \+ P). 
-
-doall(P):-  % P, then succeed 
-    P,
-    false;
-    true.
-
-
 do_count(F):- 
-    F =: M,
+    user:( F =: M ),
     !,
     N is M+1,
-    F := N.
+    user:( F := N ).
 
 do_count(F):- 
-    F := 1 . 
+    user:( F := 1 ). 
 
 begins_with(AS,A,S):- 
     atom(AS),
@@ -622,16 +744,6 @@ flatround((X,Y),(X,Z)):-
 flatround(X,X).
 
 
-
-for(P,Q):-
-  P,Q,
-  false;true.
-
-foralltest(P,Q):- \+ ( P, \+ Q). 
-
-forget(X):- 
-    retractall(X).
-
 error(T,X):- 
     nl,
     write('*** '),write(T),write(' '),write(X),
@@ -645,8 +757,6 @@ ident_member(X,Z):-member(Y,Z),X==Y .
 
 %% New Predicate 
 
-implies(X,Y):- \+ ((X , \+ Y)). 
-
 %% ident_member(X,[Y|_]):- 
 %%    X==Y ,!.  
 %% ident_member(X,[_|Y]):-
@@ -659,23 +769,8 @@ identical(A,B):-
 
 newconst(Y):- 
     do_count(const), % const := const+1
-    const =: Y.
+    user:( const =: Y ).
 
-
-
-
-remove_duplicates1(X,Y):-   % preserves order of first occurrence
-    rem_dups(X,[],Y).
-
-
-rem_dups([],_,[]):-!.
-
-rem_dups([X|Y],Keep,[X|Z]):-
-     \+ member(X,Keep),
-    !,
-    rem_dups(Y,[X|Keep],Z).
-rem_dups([_|Y],Keep,Z):-
-    rem_dups(Y,Keep,Z).
 
 
 firstmem([X|_],X). 
@@ -697,8 +792,6 @@ lastmems(N,List,NLast):-
 
 
 
-
-listall(P):- for(P,output(P)). 
 
 match(X,Y):- % unidirected unification
     nonvar(X),
@@ -763,11 +856,6 @@ nthval(N,L,X):-
 
 %% nth(N,Set,Nth) %% -> Library (Standard) 
 	
-
-number_of(X,Y,N):- 
-    set_of(X,Y,Z),
-    length(Z,N).
-
 
 sequence_member(X,Y):-
    occ(X,Y). %%
@@ -843,8 +931,8 @@ prettyprint(P):-
 
 
 doubt(A,B):-  
-    language(english) -> out(A);
-    language(norsk) -> out(B);
+    language( english ) -> out( A );
+    language( norsk ) -> out( B );
     out(A).
 
 
@@ -863,30 +951,6 @@ psl(S,L):-
     read_in(L),
     (seen).
 
-
-remember(F):-F,!;assert(F).
-
-%% remove_duplicates  Standard  -> library
-
-
-set(Counter,Value):- 
-    retractall(value(Counter,_)),
-    assert(value(Counter,Value)).
-
-
-% Prologs setof is baroque %% 
-
-set_of(X,Y,Z):-           %% 
-    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
-    Z=[].                 %% What is wrong with empty sets ?
-
-
-%% Sequence preserving setof, ( first occurrence stays)
-
-
-set_ops(X,Y,Z):-
-    findall(X,Y,Z1),
-    remove_duplicates1(Z1,Z). %% order-preserving
 
 
 
@@ -924,31 +988,10 @@ subcase(Y,X):-
     subsumes(X,Y),  %% no variable is instantiated
     X=Y.            %% to a structure
 
-test(X):- \+ ( \+ ( X)).
-
-
-once1(P):-P,!. %% same as once, but version independent
-               %% try once, otherwise FAIL
-
-tryonce(P):-P,!. %% try once, otherwise SUCCESS
-tryonce(_). 
-
-
 unsquare([P],P):-!.
 unsquare([P,Q|R],(P,QR)):-
     unsquare([Q|R],QR).
 unsquare([],true).  
-
-pront(L):-
-    nl,
-    for(member(X,L),output(X)),
-    nl.
-
-writelist(Z):-
-    for(member(X,Z),out(X)).
-
-outputlist(Z):-   
-  for(member(X,Z),output(X)).
 
 %%%%% THE END %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1002,10 +1045,10 @@ splitlast(ABC,AB,C):-append(AB,[C],ABC).
 
 
 %%testmember(Member, Group/List) %%RS-130210
-
 testmember(_,V):-var(V),!,fail. 
-testmember(X,Z) :-
-     test(member(X,Z)).
+testmember(Member, List) :-
+     test( member(Member, List) ).        %testmember(X,Z) :-  test(member(X,Z)).
+
 
 
 
@@ -1027,7 +1070,7 @@ split(0,List,[],List).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 debug(Prop,Text):- 
-    value(trace,4) ->
+    user:value(trace,4) ->
     (call(Prop) -> output(Text);true)
     ;
     true.
@@ -1038,7 +1081,7 @@ pling(I):-output(pling(I)). %%  Debug
 %% NEW PREDICATE
 
 breakpoint(Pred,Prop):- %% New Predicate Delayed Dynamic set spypoint
-    value(panic,true)->
+    user:value(panic,true)->
     (call(Prop) -> spy Pred;true);
     true.
 

@@ -5,17 +5,21 @@
 %% REVISED TA-060707
 
 %% Synthesis of old checkitem.pl and checkitemtele.pl
+:-module( checkitem2, [ ] ).
 
 %% User input terminals
 
-:- ensure_loaded('../utility/utility'). %% Includes declare, and GRUF (fernando)
-%%:- ensure_loaded('../declare').
-%% :-op( 714,xfx, := ).   %% etc.
+%:- ensure_loaded( user:'../utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
+:- use_module( '../utility/utility', [ ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
 
-:- ensure_loaded('newcontext2').
+:- use_module( '../app/busanshp', [ bcp/1, bcpbc/1, paraphrase/1, paraphrase3/3, period/0, printmessage/1 ] ).        %% RS-131231
 
-%% :- volatile current_frame/1, last_answer/2. %% RS-131218
-%% :-  dynamic current_frame/1, last_answer/2. %% RS-131218 Trouble with multiple Modules?
+%:- use_module( 'newcontext2', [ addref/3, getcontext/2, getcurrent/1 ] ).        %% FOR busanshp.pl AND checkitem2.pl
+
+
+:- volatile current_frame/1.    %%, last_answer/2. %% RS-131218
+
+:-  dynamic current_frame/1.    %%, last_answer/2. %% RS-131218 Trouble with multiple Modules?
 
 
 
@@ -653,7 +657,7 @@ store_last_answer(Cid,AnswerOut):-
 
 get_last_answer(Cid,AnswerOut):-
     clause(last_answer(Cid,AnswerOut),true).
-%% no Existence error in user:last_answer/0
+%% no Existence error in last_answer/0
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

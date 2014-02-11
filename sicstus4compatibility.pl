@@ -3,12 +3,28 @@
 %% CREATED TA-071026
 %% REVISED TA-080506
 
+:-module(sicstus4compatibility, [ get0/1, get/1, put/1, remove_duplicates1/2, tab/1, ttyflush/0 ] ). %% RS-131227
 
 %% Sicstus 4 compatibility
 
 %% append/3  %% built in Sicstus 4 (library.pl)
 
 %% member/2  %% built in Sicstus 4 (library.pl)   
+
+%%built in Sicstus 4 (library.pl), but doesn't really work in sicstusProlog!!
+%% remove_duplicates  Standard  -> library
+remove_duplicates1(X,Y):-   % preserves order of first occurrence
+    rem_dups(X,[],Y).
+
+rem_dups([],_,[]):-!.
+
+rem_dups([X|Y],Keep,[X|Z]):-
+     \+ member(X,Keep),
+    !,
+    rem_dups(Y,[X|Keep],Z).
+rem_dups([_|Y],Keep,Z):-
+    rem_dups(Y,Keep,Z).
+
 
 get(G) :- get_code(F),
           F = 10 -> get(G) %% CR

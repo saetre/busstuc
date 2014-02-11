@@ -15,31 +15,47 @@
 %  Common to all applications
 %  Facts are deliberately kept separate from semantics
 
-:- ensure_loaded( '../declare' ).       %% RS-111212 :-op( 710,xfx, isa ).
-%:- use_module( '../main', [ myflags/2 ] ).
-%
+% UNIT: /tuc/ % USAGE:
+%:-use_module( facts, [ have/4, isa/2 ]). %% RS-131225
+:-module(facts, [
+        have/4,
+        isa/2,
+        neighbourhood/1,
+        precedent_firstname/1
+]).
+
+:- ensure_loaded( user:'../declare' ).       %% RS-111212 :-op( 710,xfx, isa ).
+%% RS-131225, UNIT: utility/
+:- use_module( user:'../utility/utility' ). %% RS-131225 value/2, etc?
+
+%MISERY? :- use_module( '../main', [ myflags/2 ] ).
+
 %%% RS-111205, UNIT: tuc/
-%:- use_module( evaluate, [ fact/1 ] ).
-%:- use_module( lex, [ unproperstation1/1  ] ).
-%:- use_module( names, [ abroad/1, city/1, country/1 ] ).
-%:- use_module( semantic, [  adj_templ/2, (ako)/2,  (has_a)/2,  iv_templ/2, tv_templ/3  ] ).
+:- use_module( evaluate, [ fact/1 ] ).          %% RS-131225
+:- use_module( lex, [ unproperstation1/1  ] ).  %% user: ???
+:- use_module( names, [ abroad/1, city/1, country/1 ] ).
+:- use_module( semantic, [  adj_templ/2, (ako)/2,  (has_a)/2,  iv_templ/2, tv_templ/3  ] ).
 %:- use_module( tuc:world0, [ area/2 ] ).
-:-ensure_loaded( tuc:world0 ).
+%:-ensure_loaded( tuc:world0 ).
+%:-ensure_loaded( world0 ).      %% RS-131225     [ area/2 ] 
 %
 %%% RS-111205, UNIT: app/
-%:- use_module( '../app/busanshp', [ description/2 ] ).
-%:- use_module( '../app/buslog', [ station/1 ] ).
+:- use_module( '../app/busanshp', [ description/2 ] ).          %% RS-131225
+%:- ensure_loaded( '../app/busanshp' ). %%, [ description/2 ] ).        %% RS-131225
+:- use_module( '../app/buslog', [ regbus/1, station/1 ] ).
+
+%:- use_module( '../db/regbusall', [ nightbus/1 ] ). %% HEAVY DB? RS-120803
 
 %% RS-111205, UNIT: db/
-:- use_module( '../db/busdat', [ vehicletype/2, xforeign/1 ]).
-% %:- ensure_loaded( '../db/regbusall' ). %, [ nightbus/1, regbus/1 ] ). %% HEAVY DB? RS-120803
-%:- use_module( '../db/places', [
-%        isat/2, placestat/2, underspecified_place/1, unwanted_place/1 ]).
-%:- use_module( '../db/teledat2', [ building/1, is_dom_val/5 ] ).
-%:- use_module( '../db/regcompstr', [ composite_road/3 ] ).
-:-ensure_loaded( '../db/regcompstr' ).
+%:- ensure_loaded( '../db/regbusall' ). %%, [ nightbus/1 ] ). %% RS-131225 regbus is loaded in busdat
+:- use_module( '../db/busdat', [ vehicletype/2, xforeign/1, nightbus/1 ]).
+:- use_module( '../db/places' ). %% , [isat/2, placestat/2, underspecified_place/1, unwanted_place/1 ]). %% RS-131225
+:- use_module( '../db/teledat2', [ building/1, is_dom_val/5 ] ). %% RS-131225
+%:- ensure_loaded( '../db/teledat2' ). %% , [ building/1, is_dom_val/5 ] ).      %% RS-131225
+:- use_module( '../db/regcompstr', [ composite_road/3 ] ).
+%:-ensure_loaded( '../db/regcompstr' ).
 
-%:- use_module( '../db/regstr', [   streetstat/5 ] ). %% RS-111201 Remember to update source program, which is makeaux?
+:- use_module( '../db/regstr', [   streetstat/5 ] ). %% RS-111201 Remember to update source program, which is makeaux?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -243,7 +259,7 @@ mørelinjen     isa otherbus.
 nettbuss       isa otherbus.
 nettbussen     isa otherbus.  
 nettbussene    isa otherbus. 
-orkangerbussen isa otherbus.  
+%% orkangerbussen isa otherbus. %% RS-131222    Try to include more!  
 orkdalsbussene isa otherbus.
 sbmtd          isa otherbus. %%v Santa Barbara
 skibussen      isa otherbus. %% (skistua? 10?)
@@ -347,27 +363,26 @@ sone3 isa zone.
 
 %% web   isa network. %% Technical:  web address 
 
+tore_amble isa man :- \+ user:value(teleflag,true). %% RS-131230 from declare
 
-tore_amble isa man :- \+ value(teleflag,true).
+trond_engell isa man :- \+ user:value(teleflag,true). %% TE-120215
 
-trond_engell isa man :- \+ value(teleflag,true). %% TE-120215
+arvid_holme isa man :- \+ user:value(teleflag,true). 
 
-arvid_holme isa man :- \+ value(teleflag,true). 
+john    isa man :- \+ user:value(teleflag,true).    % belongs to every world :-)   -> Johan etc
 
-john    isa man :- \+ value(teleflag,true).    % belongs to every world :-)   -> Johan etc
+mary    isa woman :- \+ user:value(teleflag,true).  % needs some persons for testing
 
-mary    isa woman :- \+ value(teleflag,true).  % needs some persons for testing
-
-dave    isa man :-  \+  value(teleflag,true).  % 2001  :-)
+dave    isa man :-  \+  user:value(teleflag,true).  % 2001  :-)
   
 
 %% bob     isa man.     % (Jurafsky)
 
 
 (tore,amble) isa programmer :- %% Experiment
-    \+  value(teleflag,true). 
+    \+  user:value(teleflag,true). 
 
-(douglas,adams) isa author :-  \+  value(teleflag,true). 
+(douglas,adams) isa author :-  \+  user:value(teleflag,true). 
 
 
 bill_gates isa programmer.  %% (  :-) 
@@ -382,7 +397,7 @@ tagore isa programmer.
 
 Y isa year :- 
     number(Y),
-    \+ value(busflag,true),
+    \+ user:value(busflag,true),
     Y >0, Y =< 9999.
 
 
@@ -482,21 +497,21 @@ X isa nightbus :-
     nightbus(X).   %% busdat 
 
 X isa route :- 
-    regbus(X). %% tt/regbusall (bus thoug maybe no deparures now) 
+    regbus(X). %% tt/regbusall (bus though maybe no departures now/in this route_period)
 %%%       exbus(X).   %% External busname 
 
 
 X isa route :- 
-    value(tmnflag,true), 
+    user:value(tmnflag,true), 
     X isa tram.
 
 
 X isa station :-
-	 value(busflag,true), %% \+ dater
+	 user:value(busflag,true), %% \+ dater
     station(X),                %%  Semantically, not actual
     \+ xforeign(X),             %%   ( adjust database error)  
     \+ unwanted_place(X),       %%   ( adjust database error) 
-    \+ unproperstation1(X).     %%   ( stations with no passings)
+    \+ lex:unproperstation1(X).     %%   ( stations with no passings)  %% RS-131230 See lex.pl unproperstation1/1
                                  %% maybe empty 
 
 %%  \+ tramstation(X).         %% NO ILA is both
@@ -518,7 +533,7 @@ X isa tramstation :-
 
 
 X isa neighbourhood :-  
-    value(busflag,true), %% \+ dater 
+    user:value(busflag,true), %% \+ dater 
     neighbourhood(X). 
 
 
@@ -604,9 +619,9 @@ Hist isa department :-
     is_dom_val(person,department,Hist,_,_).
 
 teleoption :- 
-   value(telebusterflag,true)
+   user:value(telebusterflag,true)
    ;    
-   value(teleflag,true).  
+   user:value(teleflag,true).  
 
 %% see teledat2.pl %% 
 
@@ -619,8 +634,8 @@ neighbourhood(X):-
 
 neibor(X):-   
      (isat(_,X);                     
-      busdat:nostation(X) ;  
-      unproperstation1(X) ; %% recognised as neighbourhood (feature)  
+      nostation(X) ;  
+      unproperstation1(X) ; %% recognised as neighbourhood (feature)       %% From tuc/lex.pl  
       %% maybe empty
 
       placestat(X,_) ;
@@ -638,8 +653,8 @@ have(thing,class,X,Y):-
 have(_,description,X,Y):-
     description(X,Y). 
 
-have(_,area,X,Y):-
-    area(X,Y).
+%have(_,area,X,Y):-     %% RS-131225    From world0.pl?
+%    area(X,Y).
 
 have(_,attribute,X,Y):-  X has_a Y .
 
@@ -713,7 +728,7 @@ have(continent,country,X,Y):-
 
 
 precedent_firstname(Tor) :-
-	value(tags,Tags),
+	user:value(tags,Tags),
 	precedent_firstname(Tags,Tor).
 
 precedent_firstname([[Tor,firstname]|_],Tor).
@@ -727,24 +742,23 @@ precedent_firstname([First|Rest],Tor) :-
 
 %%  Moved from busdat 
 %%  Nightbuses
-
-nightbus(103). 
-nightbus(104).
-nightbus(105).
-nightbus(106).
-nightbus(107).
-nightbus(108).
-nightbus(109).
-nightbus(119). 
-nightbus(136).
-nightbus(146).
-nightbus(148).
-nightbus(149).
-nightbus(154).
-nightbus(155).
-nightbus(175). 
-nightbus(188).
-nightbus(1301).
+%nightbus(103). 
+%nightbus(104).
+%nightbus(105).
+%nightbus(106).
+%nightbus(107).
+%nightbus(108).
+%nightbus(109).
+%nightbus(119). 
+%nightbus(136).
+%nightbus(146).
+%nightbus(148).
+%nightbus(149).
+%nightbus(154).
+%nightbus(155).
+%nightbus(175). 
+%nightbus(188).
+%nightbus(1301).
 
 
 %¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤

@@ -3,16 +3,19 @@
 %% SYSTEM BUSTUC
 %% CREATED JB-970220
 %% REVISED TA-100908 added MAP parameter
-
-:- module(ans, [ rule/2, tracevalue/1 ]).
-
+%% REVISED RS-140101 modularized
 
 % Lager svarene til BussTUC - 
 % Produksjonesregler, predikater som lager fraser og 
 % relasjoner mellom konsepter og ord på hvert språk
-%
 
-:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
+%UNIT: app/
+:- module( busans, [
+        rule/2,
+        tracevalue/1
+]).  
+
+:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
 %% Rule format
 
 %   RuleID rule
@@ -38,7 +41,6 @@ tracevalue(L) :- user:value(traceans,L).  % Trace level 1-4
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 
 wakeup rule %%  Varsle meg kl 7 i morgen  
@@ -215,7 +217,7 @@ is  takestime(Diff,Station1,Station2)
 id	 add (bcpbc(thatmeans),bcp(going),bcp(from),bwr(Station1),bcp(to),
 			bwr(Station2),bcp(cantake),bwr(Diff), 
 			bcp(minutes),period)
-ip	 \+ user:value(smsflag,true). 
+ip	 \+ value(smsflag,true). 
 
 keepfrom rule 
 is  keepfrom(Place,_,_),passevent(Deps,_,_,Opts,Day,_)
@@ -272,7 +274,7 @@ is  listofall(Dom,List),
     not present numberof(_,_,_) 
 id  add (write(Doms),space,bcp(are),nl,bcw(Dom,List), 
        period) 
-ip  user:theplural(Dom,Doms).    
+ip  theplural(Dom,Doms).    
 
 
 

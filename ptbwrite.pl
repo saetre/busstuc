@@ -7,25 +7,20 @@
 
 % Make a slender syntax tree comparable to Penn Tree Bank tagging
 
-:-module(ptbwrite,[
-                     alle_args/2,
-                     ptbwrite/1,
-                     drucke_baum_list/1
-                  ] ). %% RS-111204
-%%:-module(ptbwrite,[ ptbwrite/1 ] ). %% RS-111218
+%%UNIT: / %% RS-111218, USAGE :-use_module( ptbwrite,[ ptbwrite/1 ] ).
+:- module( ptbwrite, [ alle_args/2, ptbwrite/1, drucke_baum_list/1 ] ). %% RS-111204
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% RS-111205, UNIT: /
-%:- use_module( main, [  track/2  ] ). %% RS-111204
+%% RS-111205, UNIT: / 
+%:- ensure_loaded( user:main ). %%, [  track/2  ] ). %% RS-111204
+:- use_module( 'main.pl', [ track/2 ] ). %% RS-140209 hei/0,   run/0 
 
 %% RS-111205, UNIT: utility/
 %:- use_module( 'utility/utility', [ output/1, prettyprint/1 ] ).  %% Module util
 
-
 /*
 En tom produksjon er rekursivt
-
    []
    {}
    !
@@ -34,12 +29,8 @@ En tom produksjon er rekursivt
 
    [<token>,  <empty production>]
 
-
-En videreføring er å eliminere topp-noden i alle
-subtrær som bare har en produksjon (unnatt POS).
-
+En videreføring er å eliminere topp-noden i alle subtrær som bare har en produksjon (unnatt POS).
 */
-
 
 shrink_tree(K,M):- %% TA-110207
     rewfat(K,L),
@@ -54,9 +45,9 @@ ptbwrite(K):- %% TA-110207
 %%  rewfat(K,L),
 %%  rewprune(L,M),
 
-  user:track(2,( nl,write(M),nl,nl)),     %% TA-061027
+  track(2,( nl,write(M),nl,nl)),     %% TA-061027
 
-  user:track(1,( nl,nl,drucke_baum_list(M), output('    '),nl)). %% TA-061027 
+  track(1,( nl,nl,drucke_baum_list(M), output('    '),nl)). %% TA-061027 
  
   
 
@@ -466,7 +457,7 @@ member_x(X,L):- x_member(X,L), !.
 
 
 
-numeric(X):- user:number(X).
+numeric(X):- number(X).
 
 
 /*    instanziieren noch freier   variablen     */

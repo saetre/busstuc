@@ -1,13 +1,13 @@
 %% FILE: d_contextDB.pl
 %% Created AM-980303 
 
-:- ensure_loaded('../declare').
+:- ensure_loaded( user:'../declare' ).
 
 :- volatile dbContent/2.
 :- dynamic  dbContent/2.
 
-%:- volatile dbId/1.
-:- dynamic  dbIb/1.
+:- volatile dbId/1.     %% RS-131223    TROUBLE WHEN NOT STORED TO FILE!?
+:- dynamic  dbId/1.
 
 %%
 %% This file contains implementation of the dialogue context database.

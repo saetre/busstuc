@@ -7,14 +7,59 @@
 
 % Tolker for Pragma-regler
 
+:-module( pragma, [ pragma/3, pragma_aux/4, i2oddcond/3, i2oddprescond/3, ip2addto/4, %% i/0, iandrec/0, ip/0,
+        ipragmaor/3, ipragmaor0/2, varalarm/1, pragma_complete/5 ] ).        %% RS-140102, ipragmaor0/0, set/2
+
+
+%%meta_predicates: p0/1, test/1 ?       RS-140208 moved from utility.pl
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate  p0(:)  .  %% RS-140101    Declared in interapp.pl ? or p0(+) ? RS-140208
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:-meta_predicate  test(:).
+%test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)) among other things, so: import nostation/1  Move to pragma.pl ?
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% set( Flag, Value ) :- user:set( Flag, Value ). %% Called from bustrans -> interapp -> pragma...
+
+%% RS-140101 Denne filen lastes inn i interapp-modulen!
+% Predicates: pragma_aux/4, ...
+
 %% Removed / to .. append ../   TA-080612
-%
 % pragma(RuleModule,Source,Dest) bygger Dest fra Source vha reglene i RuleModule
 
+%UNIT: /        %UNIT: /utility/
+:- ensure_loaded( user:'../declare' ). %% RS-131213 General Operators, Meta_Predicates: test/1
+:- use_module( '../utility/utility' ). %%, [ follow_after/3, follow_sequence/3, match/2, out/1, roundappend/3,  roundmember/2,  roundrecmember/2, roundreverse/2, testmember/2 ] ). %% RS-131231 USED! in interapp
+:- use_module( '../utility/datecalc' ).%%, [ add_days/3, addtotime/3, before_date1/2, difftime/3, sub_days/3, subfromtime/3, timenow/1, timenow2/2, today/1, todaysdate/1 ] ).
+%% Already imported by telelog? % Contains the utility predicates that has to do with dates, call-ed below!
+
+:- use_module( '../interfaceroute' ). %%, [ user:decide_period/2 ]). % Interface procedures for handling interface to route modules
+
+%%% RS-111205, UNIT: /app/
+:- use_module( busans, [  tracevalue/1  ]).
+:- use_module( busanshp ). %%, [  tracevalue/1  ]).     %% RS-140102 Dangerous to get all?
+:- use_module( buslog ). %%, [ airbus_module/1, bus/1, composite_stat/3, dayModSeqNo/2, departure/4, (not)/1, %% RS-140210   
+:- use_module( dmeq ). %%, [  dmeq/2  ]). %% RS-140102, Really Used, in several  pragma.pl->interapp->bustrans rules
+:- use_module( interapp ). %%, [ newfree/1, prettypr/2  ]).      %% RS-131230, Don't confuse with prettyprint/1 in utility.pl 
+%:- use_module( negans, [ trytofool/3 ] ).
+%:- ensure_loaded( user:negans ). %%, [ trytofool/3 ].
+:- use_module( telelog ). %%, [  bound/1,  unbound/1 ]). %% Do this from tucbuses, before monobuss->compile(pragma!)
+
+%UNIT: /db/
+:- use_module( '../db/busdat' ). %% ,[ internal_airbus/1 ].
+:- use_module( '../db/places' ). %% ,[ place_resolve/2 ]. % (PLACE,STATION).
+:- use_module( '../db/teledat2' ). %%, [ has_att_val/4, teledbtagfile/1 ] ). %% RS-140101 Better get EVERYTHING, since you never know!
+:- use_module( '../db/timedat' ). %%, [ morning_break/1 ] ). %% RS-140101 Better get EVERYTHING, since you never know!
+
+%UNIT: /tuc/
+:- use_module( '../tuc/facts' ). %%, [ isa/2 ] ).       %% RS-131225  isa/2 IS used by p0(X) :- call(X). %% X == isa/2, etc.
+:- use_module( '../tuc/names' ). %%, [  compname/3,  generic_place/1,  samename/2,  streetsyn/1, synname/2,  unwanted_name/1  ] ).
+:- use_module( '../tuc/semantic' ). %%, [ ordinal/2 ] ).       %% RS-140210  etc...
+%% See: interapp:ieval( FQL ). First? Query Language?   %% RS-140210
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % Operatorer for Pragma-regler
-
-:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
-
 % is operator prefixed with rule RuleID
 
 :- op(1150,xfy,rule).  
@@ -26,6 +71,10 @@
 :- op( 715, fy,context).    %% similar to present, but doesnt mark as seen 
 :- op( 715, fy,addfront).   %% (for messages etc) 
 :- op( 725, fy,addcon).     %% add if not already present 
+
+:-op( 725,xfy, or ).    %% From ../declare.pl   OPERATORS
+:-op( 720,xfy, and ).
+:-op( 715, fy, not ).   %% :- op( 715, fy,not).  % Already defined in TUC
 :- op( 715, fy,removeall).  %% remove all of a list
 :- op( 715, fy,removeif).   %% remove all if any , always succeed 
 :- op( 715, fy,replaceall). %% replace iteratively all elements 
@@ -41,8 +90,6 @@
 :- op( 715, fy,remove).
 :- op( 715, fy,present).
 :- op( 715, fy,assume). 
-
-%% :- op( 715, fy,not).  % Already defined in TUC
 
 :- op( 714,xfy,seq).     %% directly sequence 
 :- op( 714,xfy,cond).    %% new   not X isa place cond bound(X)
@@ -84,19 +131,19 @@ itr(RuleModule,Source,NewSource,Dest,NewDest) :-
     wait_to_trace(RuleID), 
 	 i0(InSource,Source,SourceMiddle),
 	 d0(InDest,Dest,DestMiddle), 
-	 p0(Cond),
+	 p0(Cond),     %% RS-140101 existence error in user:mixopt/3 ([to], [from], X), place_station, place_station
 	 writefoundrule(RuleID,RuleModule,InSource,InDest,Cond), 
 	 flatroundre(DestMiddle,NewDest),
 	 flatroundre(SourceMiddle,NewSource),
 	 writenewdest(RuleModule,NewDest).
 
 wait_to_trace(RuleID):- 
-    trans:tracevalue(L),L >=7,
-    !,
-    out(RuleID). %% panic
+        tracevalue(L),L >=7,    %%  trans:  bustrans: ??
+        !,
+        out(RuleID). %% panic
 
 wait_to_trace(RuleID):- 
-    value(debugrule,RuleID),
+    user:value(debugrule,RuleID),
     !,
     spy_me(RuleID).
 wait_to_trace(_).
@@ -137,7 +184,8 @@ writefoundrule(_,_,_,_,_). % Else
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-p0(X):-call(X).  %% Just for trace 
+%% :- meta_predicate  p0(:)  .  %% RS-140101    (see interapp.pl, bustrans) not needed as long as pragma is in user: ?
+p0(X) :- call(X).  %% Just for trace
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% i(Inn,Out,Modifier)  (marks matched with seen )

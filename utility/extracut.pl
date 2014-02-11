@@ -1,38 +1,37 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE extracut.pl
 %% SYSTEM BussTUC
-%% CREATED TA-981221
-%% REVISED TA-110317   NEW db-organisation
+%% CREATED  TA-981221    %% REVISED TA-110317   NEW db-organisation
+%% REVISED  RS-140101 modularized
 
 %% Create regcut files for modules
 
 /*
-
 cutloop_trace(Station,Trace1,Trace2)),
 
 cutloop_rid(Station,Rid1,Trace1,Rid2,Trace2,Delta,W)).
-
-
 
 Assumes module is generated already, and all files are compiled.
 
 Module name is a parameter.
 
-
-Program is run in same directory as busestuc.
+Program is run in same directory as busestuc (or in the utility folder below?)
 
 % busestuc.sav
 ?-create_regcut(<Module>).
 
-
-
 */
 
-:-ensure_loaded('utility').
-:-ensure_loaded('makeauxtables'). %% dumppredas
-%% :-ensure_loaded('../db/busdat'). %% cutloop_station
-:-use_module('../db/busdat', [cutloop_station/2]). %% cutloop_station
-:-ensure_loaded('../app/buslog'). %% addtotime
+%% UNIT: / and /utility/*
+%:-ensure_loaded( user:utility).
+:-use_module( '../utility/utility.pl', [ append_atomlist/2 ] ). %RS-131223
+:-use_module( '../utility/datecalc', [ addtotime/3 ] ).
+
+:- use_module( '../makeauxtables', [ dumppredas/2 ] ). %RS-131223
+
+%% UNIT: /db/*
+:- use_module('../db/busdat', [cutloop_station/2]). %% cutloop_station
+%:-use_module( '../app/buslog', [ bus/1 ] ).               %% RS-130210
 
 
 :-dynamic ex_cutloop_rid/7,
@@ -90,7 +89,12 @@ tellmodule(Module,File):- %% TA-110315
     set_output(Stream).
 
 
-
+%% RS-140211 META-PREDICATE from utility.pl
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+for( P, Q ) :- %% For all P, do Q (with part of P)
+  P, Q,
+  false;true.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %% NB W is difference between arrival time for Trace1 and departure time for Trace2
@@ -233,6 +237,17 @@ whattoget(Module,T,Trace1,Trace2,M,W,ex_passes4(Mindex4,STATNO,Station,SeqM,DelA
           ; ( SeqM is Seq+M-1,
               DelArrW is DelArr + W) ).
                           %%%%%%%%%%%%%%%%  DelDepW is DelDep + W
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Prologs setof is baroque %% 
+set_of(X,Y,Z):-           %%
+    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
+    Z=[].                 %% What is wrong with empty sets ?
+%% Sequence preserving setof, ( first occurrence stays first)
+%set_ops(X,Y,Z):-
+%    findall(X,Y,Z1),
+%    remove_duplicates(Z1,Z). %% order-preserving
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% I am not proud of this
 

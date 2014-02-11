@@ -4,12 +4,12 @@
 %% CREATED TA-020101
 %% REVISED TA-110824    RS-120803 
 
-%% regbus is NOT Used after buslog.pl:regbusall was implemented?  %% RS-120803
-
 
 %% Inclusive set of bus routes
 
 %% NB NB Has the same name as the <module>:regbus
+
+%% regbus is NOT Used after buslog.pl:regbusall was implemented?  %% RS-120803
 
 %% regbus(1). %% Tram/trikk     %% RS-120803 regbus is generalized in buslog.pl!
 
@@ -82,7 +82,6 @@
 
 %%  Moved from busdat 
 %%  Nightbuses
-
 nightbus(103). 
 nightbus(104).
 nightbus(105).
@@ -99,5 +98,6 @@ nightbus(154).
 nightbus(155).
 nightbus(175). 
 nightbus(188). 
+%nightbus(1301).        %% RS-131225    Check this!
 
 %¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
