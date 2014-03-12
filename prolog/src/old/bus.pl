@@ -12,24 +12,27 @@
 
 %RS-120503
 
-:- compile('../app/pragma.pl').
-:- compile('../app/interapp.pl').
-:- compile('../app/buslog').      %% TA-000529
-%%:- compile('../app/bustrans').    %%
-:- use_module('../app/bustrans').    %%
-%%:- compile('../app/busans').      %%
-:- use_module('../app/busans').      %% RS-130624
-:- compile('../app/negans').      %%
-:- compile('../app/busanshp').    %%
+%:- compile('../app/pragma.pl').
+%:- compile('../app/interapp.pl').
+%:- compile('../app/buslog').      %% TA-000529
+
+%%:- compile( '../app/bustrans').    %%
+:- use_module( '../app/bustrans').    %%
+%%:- compile( '../app/busans').      %%
+:- use_module( '../app/busans').      %% RS-130624
+:- use_module( '../app/negans', [ makenegative/3, trytofool/3 ] ).       %% RS-140208
+
+%:- compile('../app/busanshp').    %%
 
 %%:- compile('../db/busdat.pl').
 :- use_module('../db/busdat.pl').
 
-:- compile('../db/auxtables.pl').
+%:- compile('../db/auxtables.pl').
+:- use_module('../db/auxtables.pl').
 
 % :- createhash.  ( run  separately because of mix)
 
-:- consult('../db/namehashtable.pl'). %% compile is too expensive
+%:- consult('../db/namehashtable.pl'). %% compile is too expensive
 
 %RS-120503
 

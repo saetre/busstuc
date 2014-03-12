@@ -4,8 +4,9 @@
 %% CREATED TO-970319
 %% REVISED TO-970421  TA-100521
 
-:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
-:- ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators
+:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
+%:- ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators
+:- use_module( '../app/pragma', [] ). %% RS-140207 Pragmatic (rule) Operators
 
 
 
@@ -20,7 +21,7 @@
 
 :- module(usestate,[]).
 
-tracevalue(L) :- user:value(traceprog,L).  % Trace level 1-4
+tracevalue(L) :- value(traceprog,L).  % Trace level 1-4
 
 
 askfor rule
