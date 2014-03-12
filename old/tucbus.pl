@@ -4,9 +4,9 @@
 %% REVISED JB-970114 TA-001119
 
 
-:- ensure_loaded('../declare'). %% RS-111213 General (semantic) Operators
+:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
 
-?-compile('../tucbuses'). 
+:-use_module( '../tucbuses', [ makegram/0 ] ). 
 
 
 /* moved to tucbuses.pl  %% TA-000529

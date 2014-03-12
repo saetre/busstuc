@@ -117,28 +117,28 @@
 ?-compile('../version').           % Version and Date
 
 %?-compile('../main').              % main program , starts
-:- use_module('../main.pl'). %% RS-130630 With all value(X,Y) (or X := Y ), e.g. lang:=norsk.
+%:- use_module('../main.pl'). %% RS-130630 With all value(X,Y) (or X := Y ), e.g. lang:=norsk.
 
 :-use_module('../tuc/readin').     % reads text to a list
 %:-compile('../tuc/readin').       % reads text to a list
 %?-compile('../tuc/lex').          % lexical analysis
 :-use_module('../tuc/lex').          % lexical analysis        %% RS-131223
-?-compile('../tuc/translat').     % code generation 
+:-use_module('../tuc/translat').     % code generation 
 %?-compile('../tuc/evaluate').     % translate and evaluate
 :-use_module( '../tuc/evaluate' ). %   , [ instant/2 ] ).       %%%
 ?-compile('../tuc/inger').        % intelligent resolution
-?-compile('../tuc/anaphors').     % anaphoric resolution
+?-use_module('../tuc/anaphors').     % anaphoric resolution
   
 ?-use_module('../tuc/facts.pl').        % static facts  / ?-compile(nofacts)     %% RS-131223
 ?-use_module('../tuc/fernando').     % semantic interface        %% RS-131223
 ?-use_module('../tuc/metacomp.pl').  % compiles the grammar %% TA-000529        %% RS-131223
-?-compile('../tuc/slash').        % slash facts /
+?-use_module('../tuc/slash').        % slash facts /
 %?-compile('../tuc/world0').       % empty world predicates     %% RS-131225    OLD! 
 
-?-compile(dcg_e:'../tuc/dagrun_e').      % split into English and %% TA-000117
-?-compile(dcg_n:'../tuc/dagrun_n').      % Norwegian clones       %% TA-000117
-%%?-use_module(dcg_e:'../tuc/dagrun_e').      % split into English and %% TA-000117
-%%?-use_module(dcg_n:'../tuc/dagrun_n').      % Norwegian clones       %% TA-000117
+%?-compile(dcg_e:'../tuc/dagrun_e').      % split into English and %% TA-000117
+%?-compile(dcg_n:'../tuc/dagrun_n').      % Norwegian clones       %% TA-000117
+?-use_module(dcg_e:'../tuc/dagrun_e').      % split into English and %% TA-000117
+?-use_module(dcg_n:'../tuc/dagrun_n').      % Norwegian clones       %% TA-000117
 
 %?-compile('../tuc/semantic.pl').     % the semantic net
 :-use_module( '../tuc/semantic.pl', [ ] ).     % the semantic net

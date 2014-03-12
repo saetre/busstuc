@@ -86,7 +86,7 @@
 %
 %%%% RS-111205, UNIT: utility
 %%:- use_module( '../utility/utility', [
-%%        append_atoms/3, begins_with/3, delete1/3, doall/1,  % P, then succeed
+%%        append_atoms/3, begins_with/3, delete1/3, doal l/1,  % P, then succeed
 %%        ends_with/3,    flatten/2, for/2, foralltest/2, iso_atom_chars/2,
 %%        once1/1,        out/1,    output/1,  set_of/3,   set_ops/3,    set_union/3,  test/1,
 %%        testmember/2,       textlength/2
@@ -1403,7 +1403,7 @@
 %%% dronningens gate
 %
 %proxyclean :- %% TA-101027
-%     doall(clean1). %% failure driven loop (utility)
+%     doal l(clean1). %% failure driven loop (utility)
 %
 %
 %clean1 :-  %% hans finnes gate %% TA-110114 fronted
