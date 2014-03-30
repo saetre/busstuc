@@ -7,9 +7,9 @@
 %% NO; PART OF dcg_e or dcg_n, loaded from tucbuses.pl
 %:-module( dcg_n, [ cc/5, check_stop/5, check_stop_locations/5, %check_stop_locations ---> check_stop,!. %% ad hoc %% TA-101215
 
-:-module( dagrun_n, [ cc/5, check_stop/5, check_stop_locations/5, %check_stop_locations ---> check_stop,!. %% ad hoc %% TA-101215 RS-140210
-        compute_gap_item/2,  end_of_line/5, end_of_line0/5,  lock/5,   look_ahead/6,   not_look_ahead/6,
-        pushstack/7,     skip_rest/5,       unlock/4,        virtual/6,   w/6,        word/5  ] ). %% RS-140209
+:-module( dagrun_n, [ cc/5,     check_stop/5,   compute_gap_item/2,     end_of_line/5,  end_of_line0/5, lock/5,
+        look_ahead/6,           not_look_ahead/6,
+        pushstack/7,            skip_rest/5,    unlock/4,               virtual/6,      w/6,            word/5  ] ). %% RS-140209
 
 %% RS-131227  dcg_e and dcg_n both CONTAINS dcg.pl. They are all auto-generated from metacomp.pl!
 
@@ -17,6 +17,8 @@
 % - Loaded in module dcg_n later...
 %:-module(dcg_n,[cc/5, check_stop/5, end_of_line/5, end_of_line0/5, lock/5, look_ahead/6, not_look_ahead/6, 
 %                 pushstack/7, pushstack1/4, skip_rest/5, unlock/4, w/6, word/5]).
+
+:-ensure_loaded( dcg_n:'../dcg_n.pl' ). %%, [ check_stop_locations/5 ] ). %% RS-140207, extra?  maxl/1,
 
 %% RS-131227    UNIT: tuc/
 %:-ensure_loaded( user:lex ). %%, [ maxl/1, txt/3  ]).                %% RS-131227    From lex.pl
@@ -123,8 +125,8 @@ skip_rest(nil,_,[],_,Z):-
     maxl(Z).  
 
 check_stop(nil,[],[],X,X).  %% True if nothing left on stack 
-%check_stop(nil,[],[],X,X) :-  %% True if nothing left on stack 
-        check_stop_locations(nil,[],[],X,X).  %% True if nothing left on stack  %% RS-131228 AD-HOC! for dcg_n.pl 
+check_stop(nil,[],[],X,X) :-  %% True if nothing left on stack 
+        dcg_n:check_stop_locations(nil,[],[],X,X).  %% True if nothing left on stack  %% RS-131228 AD-HOC! for dcg_n.pl 
 
 %%  LOOK AHEAD WITHOUT READING
 
