@@ -124,9 +124,10 @@ end_of_line0(nil,K,K,Z,Z):-  %% End of line, no empty-check
 skip_rest(nil,_,[],_,Z):-
     maxl(Z).  
 
-check_stop(nil,[],[],X,X).  %% True if nothing left on stack 
 check_stop(nil,[],[],X,X) :-  %% True if nothing left on stack 
-        dcg_n:check_stop_locations(nil,[],[],X,X).  %% True if nothing left on stack  %% RS-131228 AD-HOC! for dcg_n.pl 
+        dcg_n:check_stop_locations( nil, [], [], X, X ).  %% True if nothing left on stack  %% RS-131228 AD-HOC! for dcg_n.pl 
+check_stop(nil,[],[],X,X).                               %% True if nothing left on stack  %% RS-131228 AD-HOC! for dcg_n.pl 
+
 
 %%  LOOK AHEAD WITHOUT READING
 
