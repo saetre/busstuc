@@ -1,7 +1,8 @@
 :- module( r1630_111201,  [ %% RS-140106    Automate this during regcut creation...
-        ex_departureday/4, ex_ntourstops/2, ex_passes4/6,
-        hpl/4, regbus/1, route/3, xi/2
-]).    
+        ex_departureday/4, ex_ntourstops/2, ex_passes4/6, hpl/4,
+        ntourstops/2, passes4/6,    %% RS-140106    Automate this, from regpas.pl
+        regbus/1, route/3, xi/2
+]).
 
 :- ensure_loaded( regbus ). %%,  [ route/3 ] ).    %% RS-140106    Automate this
 :- ensure_loaded( reghpl ). %%,  [ hpl/4 ] ).    %% RS-140106    Automate this
