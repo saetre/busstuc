@@ -26,7 +26,7 @@ route_period(   tt, r1615_131216, date(2013,12,16),   date(2013,12,29) ).       
 route_period(   tt, r1613_131216, date(2013,12,16),   date(2013,12,30) ).       %% 1-2.juledag, 6.juledag, nyttårsdag
 route_period(   tt, r1616_131216, date(2013,12,16),   date(2013,12,31) ).       %% Nyttår
 route_period(   tt, r1613_131216, date(2013,12,16),   date(2014,01,01) ).       %% 1-2.juledag, 6.juledag, nyttårsdag
-route_period(   tt, r1611_140203, date(2014,02,03),   date(2014,04,14) ).       %% mars 2014
+route_period(   tt, r1611_140203, date(2014,02,03),   date(2014,03,30) ).       %% mars 2014
 route_period(   tt, r1611_140331, date(2014,03,31),   date(2014,06,22) ).	%% Før og etter påske 2014
 route_period(   tmn,r1630_101201, date(2012,12,01),   date(2014,12,31) ).
 route_period(   gb, r1630_111201, date(2012,12,01),   date(2014,12,31) ).  %% Graakallbanen
