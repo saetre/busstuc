@@ -55,7 +55,7 @@ Run in /db/ directory
 
 %% RS-140102. UNIT: /  and  /utility/  %% RS-140101 Moved to user:declare for common and early compilation!
 :- ensure_loaded( user:'declare.pl' ). %, [ := /2 etc. ] ). for/2, test/1, 
-:- use_module( 'utility/utility.pl' ). %%, [  delete1/3, ends_with/3, out/1, output/1, textlength/2, writepred/1 ] ). % writepred/1 is USED! set_of/3, 
+:- use_module( 'utility/utility.pl', [  delete1/3, ends_with/3, out/1, output/1, textlength/2 ] ). %%, writepred/1 ] ). % writepred/1 is USED! set_of/3, 
 :- use_module( 'utility/datecalc.pl', [ add_days/3, datetime/6, easterdate/2, sub_days/3, this_year/1 ]).  %% RS-121325
 
 ?-compile( busroute:'compileroute.pl' ).   %% Bootstrapping for compilation, faster than "ensure loaded"?!
@@ -106,6 +106,10 @@ Run in /db/ directory
 for( P, Q ) :- %% For all P, do Q (with part of P)
   P, Q,
   false;true.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+set_of(X,Y,Z):-           %%
+    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
+    Z=[].                 %% What is wrong with empty sets ?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
