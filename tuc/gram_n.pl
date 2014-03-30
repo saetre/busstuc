@@ -7,9 +7,9 @@
 
 :-op( 1150, xfx, ----> ). 
 
-:-module(gram_n,[ ( ----> )/2 ] ).
+:-module( gram_n, [ ( ----> )/2 ] ).
 
-%           T H E     J U L E K A L E N D E R, Trøngelsk! English/Norwegian mix
+%  T H E     J U L E K A L E N D E R, Trøngelsk! English/Norwegian mix
 %  Consensical Grammar for Norwegian
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -68,7 +68,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% Avoid error messages
+%% Avoid error messages (because of spaces?)
 A ----> B :-
         A--->B.
 
