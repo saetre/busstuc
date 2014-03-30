@@ -6,7 +6,7 @@
 % Compiles the BussTUC system for NTNU server.
 
 ?-compile('../busstuc.pl').
-:-user:use_module( '../main', [ jettyrun/1, webrun_norsk/0 ] ).
+:-user:use_module( '../main', [ webrun_norsk/0 ] ).
 ?-save_program('busestuc', 'webrun_norsk'). %% TA-110208 %% RS-120805   %% Autostart webrun-predicate on load
 ?-halt.
 
