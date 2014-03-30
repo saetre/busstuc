@@ -4,8 +4,8 @@
 %% CREATED AM-980218
 %% REVISED TA-060706
 
-:- assert(linecounter(1)).
-:- assert(confused(noone)). %-)
+:- assert( linecounter(1) ).
+:- assert( confused(noone) ). %-)
 
 %% RS-131227    UNIT: /
 :- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators, also := and =:
