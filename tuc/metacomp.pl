@@ -460,7 +460,7 @@ writeheading:-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% RS-131229    When to do this?        HAS TO BE DONE FROM TUCBUSES!
+%% RS-131229    When to do this?        HAS TO BE DONE FROM TUCBUSES!?
 %?-tucbuses:compile_english.
 %?-tucbuses:compile_norsk.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

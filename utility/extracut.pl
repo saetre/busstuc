@@ -6,6 +6,12 @@
 
 %% Create regcut files for modules
 
+%% For main.pl, dict_e, dict_n, ...? moved to declare.pl
+:-module( extracut, [  %% RS-130411 For compilation of new routes (extract reg-Cuts...)  %% RS-131225 For ....pl
+       create_regcut/1, ex_cutloop_rid/7, ex_cutloop_trace/3, ex_departureday/4, ex_ntourstops/2, ex_passes4/6, 
+       mod_cut_rid/8, pax/4, whattoget/7
+] ).
+
 /*
 cutloop_trace(Station,Trace1,Trace2)),
 
@@ -22,12 +28,16 @@ Program is run in same directory as busestuc (or in the utility folder below?)
 
 */
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% RS-140411    UNIT: / (FIRST!)
+%%:- ensure_loaded( user:'../declare' ). %% RS-111213  General (semantic) Operators
+:- ensure_loaded( '../declare' ). %% RS-111213  General (semantic) Operators AND  remember/1, etc.
+
 %% UNIT: / and /utility/*
 %:-ensure_loaded( user:utility).
-:-use_module( '../utility/utility.pl', [ append_atomlist/2 ] ). %RS-131223
-:-use_module( '../utility/datecalc', [ addtotime/3 ] ).
+:-use_module( '../utility/utility.pl', [ append_atomlist/2, output/1 ] ). %RS-131223
+:-use_module( '../utility/datecalc', [ addtotime/3, difftime/3 ] ).
 
-:- use_module( '../makeauxtables', [ dumppredas/2 ] ). %RS-131223
 
 %% UNIT: /db/*
 :- use_module('../db/busdat', [cutloop_station/2]). %% cutloop_station
@@ -57,6 +67,15 @@ reset_dynamic_predicates :- %% TA-110317
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
 
+
+%% :- use_module( '../makeauxtables', [ dumppredas/2 ] ). %RS-131223 Problems with meta-predicate modules
+dumppredas( T0, T ):-
+    nl,
+    write('%%% ' ),nl,nl, 
+    for( T0, utility:writepred(T) ),
+    nl.
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % 
 
 
 create_regcut(Module):- 
