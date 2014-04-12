@@ -9,7 +9,7 @@
 %% This is completely domain-independent
 
 %% Data taken from topreg.pl
-%%:-use_module('busroute.pl', [] ).     %%RS-140207
+%%:-use_module('busroute.pl', [] ).     %%RS-140207 NO, This file is imported INTO busroute.p-module
 
 %%:-prolog_flag( discontiguous_warnings,_,off ). 
 

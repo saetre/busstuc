@@ -52,7 +52,8 @@ foralltest(P,Q):- \+ ( P, \+ Q).
 
 %%% RS-131225, UNIT: utility/
 :- use_module( '../utility/datecalc' ). %%, [ timenow2/2, todaysdate/1 ] ).  %% RS-131231, SPIDER-bug. timenow2/2 IS used!!
-
+:- use_module( '../utility/utility', [ output/1 ] ). %% RS-140412   %% RS-131231, False Warning, SPIDER-bug. output/1 IS used!!
+% Debug Exit: :(interapp,writeanswer(,(startmark,,(printmessage(date_isa_day(date(2014,4,13),sunday)),,(endline,,(printmessage(otherperiod(date(2014,4,13))),,(endline,,(google(dir(depnode(32,32,2,2,30,bus_0108_0007,108,2,dronningens_gate_d1),stavset)),,(bwrbusbc(nightbus,108),,(bcp(passes),,(bwr(dronningens_gate_d1),,(bcp(attime),,(bwt(32),,(nl,,(bcp(and),,(bcp(arrivesat),,(bwr(stavset),,(bcp(attime),,(bwt(54),,(period,,(output(...),,(bwrbusbc(nightbus,119),,(bcp(passes),,(bwr(munkegata_m1),,(bcp(attime),,(bwt(302),,(nl,,(bcp(and),,(bcp(arrivesat),,(bwr(stavset_senter),,(bcp(attime),,(bwt(325),,(period,earliesttimes))))))))))))))))))))))))))))))))) ?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -137,7 +138,7 @@ waves :-  user:value(dialog,1),
 
 waves :-	
          write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'), % 77 chars
-	      write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'),nl.
+	 write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'),nl.
 
 determine_query_period :-
      

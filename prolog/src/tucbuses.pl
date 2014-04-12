@@ -32,27 +32,27 @@ backslash('\\').        %% For main.pl, dict_n.pl (noiseword?) RS-131230 Moved t
 %% RS-131227    UNIT: / (FIRST!)
 :- ensure_loaded( user:'declare' ). %% RS-111213  General (semantic) Operators
 
-:- user:(airbusflag := false). %% NEW FLAG %% TA-090331
+:- user:( airbusflag := false ). %% NEW FLAG %% TA-090331
 
-:- user:(tramflag := false).   %% Trams are NOT included ( Route 1 )
-%:- user:(tramflag := true).   %% Trams are included ( Route 1 )      %% RS-131228
+:- user:( tramflag := false ).   %% Trams are NOT included ( Route 1 )
+%:- user:( tramflag := true ).   %% Trams are included ( Route 1 )      %% RS-131228
 
-:- user:(busflag := true).     %% Full Bus Application
-:- user:(queryflag := true).   %% Statements are implicit queries
-:- user:(semantest := false).  %% No distinction between syntactic/semantic error
-:- user:(spellcheck := 1).
+:- user:( busflag := true ).     %% Full Bus Application
+:- user:( queryflag := true ).   %% Statements are implicit queries
+:- user:( semantest := false ).  %% No distinction between syntactic/semantic error
+:- user:( spellcheck := 1 ).
 
 %%  :- (single_sentence := true).
 %% DIS-Allow several sentences on a line
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%UNIT: utility   %% RS-111213  General (semantic) Operators
-:-use_module( 'utility/utility', [ output/1 ] ). %% ,  value/2  ]).       %RS-131223 Value == TROUBLE!   (And for(X,Y) is trouble too!)
+%UNIT: utility   %% RS-111213
+%% :-use_module( 'utility/utility', [ value/2  ]).       %RS-131223 Value == TROUBLE!   (And for(X,Y) is trouble too!)
 :-use_module( 'utility/library.pl' ). %%,  [ ] ).   %RS-131225  [ for/2 ] ). %% ,  value/2  ]). %RS-131223 And for(X,Y) is trouble too!)
 :-use_module( 'utility/datecalc.pl' ). %%, [ ] ).    %?-compile('utility/datecalc.pl').
 
-:-compile( 'utility/extracut.pl' ).  %% TA-080201 %%% ?-compile('utility/extractreg.pl'). %% SUSPENDED
+%% :-use_module( 'utility/extracut.pl', [ create_regcut/1 ] ).  %% TA-080201 %%% ?-compile('utility/extractreg.pl'). %% SUSPENDED %% RS-140411
 :-use_module( 'makeauxtables.pl' ). %%, [ ] ).
 
 %%%  ?-compile('sicstuc.pl').

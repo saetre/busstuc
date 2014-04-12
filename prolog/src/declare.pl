@@ -72,11 +72,13 @@
 %% "MEMORY" SECTION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 forget(X) :- retractall(X).
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :-meta_predicate
           remember(:) .
-remember(F) :- F, ! ; assert(F).        %% Moved before use_module(metacomp)!
+
+remember(F) :- F, ! ; assert(F).        %% Move before use_module(metacomp)?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 set(Counter,Value) :- 
     retractall( value(Counter,_) ),
     assert( value(Counter,Value) ).

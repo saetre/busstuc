@@ -57,6 +57,8 @@ Run in /db/ directory
 :- ensure_loaded( user:'declare.pl' ). %, [ := /2 etc. ] ). for/2, test/1, 
 :- use_module( 'utility/utility.pl', [  delete1/3, ends_with/3, out/1, output/1, textlength/2 ] ). %%, writepred/1 ] ). % writepred/1 is USED! set_of/3, 
 :- use_module( 'utility/datecalc.pl', [ add_days/3, datetime/6, easterdate/2, sub_days/3, this_year/1 ]).  %% RS-121325
+%%RS-140411, For extracut.pl : create_regcut( r1613_140415 ) .... modules
+%% :- use_module( 'utility/extracut.pl', [ create_regcut/1 ]).  %% RS-140411, create_regcut/1 IS USED in importing new routes (for-loop)
 
 ?-compile( busroute:'compileroute.pl' ).   %% Bootstrapping for compilation, faster than "ensure loaded"?!
 %:-ensure_loaded( user:'interfaceroute' ).
@@ -102,6 +104,9 @@ Run in /db/ directory
         tostationonly0/1.
 
 %% META-PREDICATES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:- meta_predicate 
+%dumppredas(+,:).       %% Copied to extracut
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 for( P, Q ) :- %% For all P, do Q (with part of P)
   P, Q,
@@ -678,7 +683,7 @@ splitgenroad(X,  X,nil,X).
 
 
 
-dumppredas(T0,T):-
+dumppredas( T0, T ):-
     nl,
     write('%%% ' ),nl,nl, 
     for( T0, utility:writepred(T) ),

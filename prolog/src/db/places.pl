@@ -4818,8 +4818,8 @@ foreign(sjusjøen).
 foreign(sjøholt). 
 %% foreign(sjølyst). %% malvik bus301 %% MW-121119 
 foreign(sjølystveien).  %% (Oslo)
-foreign(sjørdal). 
-foreign(sjørdalen). 
+%foreign(sjørdal). 
+%foreign(sjørdalen). 
 foreign(sjøvold).  %% ?
 foreign(sjøvoll). 
 %% foreign(sjøvåg).  
@@ -6746,8 +6746,8 @@ sameplace(ringvemuseum,ringve_museum).  %% RS-120805 Sorting
 sameplace(risvollansenter,risvollan_senter). 
 sameplace(risvollansenteret,risvollan_senter). 
 
-sameplace(romolia,romolslia). 
-sameplace(romulslia,romolslia).  %% romulslia street, prefer station
+sameplace(romolia,romolslia_øvre). 
+sameplace(romulslia,romolslia_øvre).  %% romulslia street, prefer station
 
 sameplace(ronningbakken,rønningsbakken). 
 sameplace(rosenborgskole,gyldenløves_gate).  
@@ -7028,7 +7028,7 @@ sameplace(åsveienskole,åsveien_skole).  %%åsveieskole
 sameplace(østreberg,østre_berg). %% østeberg 
 
 sameplace(østmarkneset,østmarkveien).  %%nesset
-sameplace(øvreromolslia,romolslia_øvre). 
+sameplace(øvreromolslia,romolslia_øvre).
 sameplace(kattemsentret,kattemsenteret). 
 
 

@@ -19,6 +19,7 @@
 %%route_period( tt, r1612_121001, date(2012,10,01),   date(2012,11,30) ).  %% New nightbusses etc. ver5 Hoest 2012
 %%route_period( tt, r1601_120101, date(2012,01,01),   date(2012,12,31) ).
 %%route_period( tt, r1613_130622, date(2013,06,22),   date(2013,08,11) ).     %% sommer2013
+
 route_period(   tt, r1611_131201, date(2013,12,01),   date(2013,12,23) ).       %% NyttPrinsenkryss, vinter2013-2014?
 route_period(   tt, r1612_131216, date(2013,12,16),   date(2013,12,24) ).       %% Julaften
 route_period(   tt, r1613_131216, date(2013,12,16),   date(2013,12,26) ).       %% 1-2.juledag, 6.juledag, nyttårsdag
@@ -27,7 +28,9 @@ route_period(   tt, r1615_131216, date(2013,12,16),   date(2013,12,29) ).       
 route_period(   tt, r1613_131216, date(2013,12,16),   date(2013,12,30) ).       %% 1-2.juledag, 6.juledag, nyttårsdag
 route_period(   tt, r1616_131216, date(2013,12,16),   date(2013,12,31) ).       %% Nyttår
 route_period(   tt, r1613_131216, date(2013,12,16),   date(2014,01,01) ).       %% 1-2.juledag, 6.juledag, nyttårsdag
+
 route_period(   tt, r1611_140203, date(2014,02,03),   date(2014,03,30) ).       %% mars 2014
+route_period(   tt, r1613_140415, date(2014,04,15),   date(2014,04,15) ).       %% 15og21april
 route_period(   tt, r1614_140415, date(2014,04,15),   date(2014,04,16) ).	%% 16april
 route_period(   tt, r1615_140415, date(2014,04,15),   date(2014,04,20) ).	%% 17til20april
 route_period(   tt, r1613_140415, date(2014,04,15),   date(2014,04,21) ).	%% 15og21april
