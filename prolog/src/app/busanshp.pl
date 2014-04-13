@@ -3263,8 +3263,8 @@ cwc(noinformation,
 cwc(nolonger,['I cannot find any more connections',
               'Jeg kan ikke finne flere ruteforbindelser']). %% .. på tirsdag.
 
-cwc(nolongerperiod,['I cannot find any more connections.',
-                    'Jeg kan ikke finne flere ruteforbindelser.']). %% .
+cwc(nolongerperiod,['I cannot find any more connections',
+                    'Jeg kan ikke finne flere ruteforbindelser']). %% .
 
 
 cwc(nomark,['No,','Nei,']).
@@ -4955,6 +4955,7 @@ nopay :- user:value(smsflag,true),
       \+ user:value(dialog,1),
          !,
          write('- '),nl.
+
 nopay.
 
 
