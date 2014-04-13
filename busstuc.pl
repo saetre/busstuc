@@ -41,7 +41,7 @@
 %:-use_module('busroute.pl').   %% Compiles database/* %   'busroute.pl', %% Compiles database/
 %:-compile('busroute.pl').       %% Compiles database/* %   'busroute.pl', %% Compiles database/
 
-:- load_files('busroute.pl', [load_type(source),compilation_mode(compile)]).
+:- load_files('busroute.pl', [ load_type(source), compilation_mode(compile) ]).
 
 :-use_module( 'makeauxtables.pl', [ createhash/0, makeauxtables/0 ] ). 
 :-told.            %% RS-140208 Reset all output-streams first...

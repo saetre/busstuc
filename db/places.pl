@@ -55,7 +55,7 @@
 
 %% HOVEDTERMINALEN == "Sentrum" %%
 
-%% corr(torget,hovedterminalen).         %% SUMMER %% TA-110628 %% RS-130816 REMOVED before WINTER...
+corr(torget,hovedterminalen).         %% SUMMER %% TA-110628 %% RS-130816 REMOVED before WINTER...
 
 %% corr(prinsenkrysset,hovedterminalen). %% ???  SUMMER %% TA-110701
   %% sorry, gir destinasjon munkehate = Prinsenkrysset  %%

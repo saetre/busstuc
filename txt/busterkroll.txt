@@ -1007,7 +1007,7 @@ N:
 
 Feilmeldingen  skyldes at påskeruter ikke er lagt inn, og at det
 heller ikke var lagt inn feilmeldinger (Jeg har inge ruter for den
-datoen) for denne tide.
+datoen) for denne i tide.
 
 Den skulle uansatt aldri blitt skrvet ut
 

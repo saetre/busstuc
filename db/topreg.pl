@@ -48,17 +48,17 @@ compilerouteaux(tt,[
 %% DEFAULT ROUTE PERIODS
 
 %default_period(tt,winter, r1601_110822).  %% 2011 Autumn
-default_period(tt,winter, r1602_120813).  %% 2012 Winter/Spring?
-default_period(tt,summer, r1604_120625).  %% 2012 Summer
+default_period(tt,winter, r1611_140331).  %% 2014 Winter/Spring?
+default_period(tt,summer, r1604_120625).  %% 2013 Summer
 
 %default_message(tt,winter,['AtB winter routes are from  Jan. 2, 2012  to Jun. 26, 2012.',
 %                           'AtB vinterruter gjelder fra 2. jan. 2012 til 26. jun. 2012']).
 %
-default_message(tt,winter,['AtB winter routes are from  Aug. 13 to Dec 23.  2012.',
-                           'AtB vinterruter gjelder fra 13. aug. til 23. des. 2012']).
+default_message(tt,winter,['AtB winter routes are from  Aug. 13 to Dec 23.  2014.',
+                           'AtB vinterruter gjelder fra 13. aug. til 23. des. 2014']).
 
-default_message(tt,summer,['AtB summer routes are from Jun. 24 to  Aug. 11. 2013',
-                           'AtB sommerruter gjelder fra 24. juni til 11. aug. 2013.']).
+default_message(tt,summer,['AtB summer routes are from Jun. 24 to  Aug. 11. 2014',
+                           'AtB sommerruter gjelder fra 24. juni til 11. aug. 2014.']).
 
 %% ACTUAL ROUTE PERIODS  SORTED ON --- END DATE ----
 %%see routes.pl
@@ -72,13 +72,21 @@ period_message( r1630_111201,
 ['AtB Routes for Tram 2012',
  'AtB Ruter for Trikk 2012']).
 
-period_message( r1602_120401,
-['AtB Routes for Easter 2012',
- 'AtB Ruter påska 2012']).
+period_message( r1613_140415,
+['AtB Routes for Easter 2014',
+ 'AtB Ruter påska 2014']).
+
+period_message( r1614_140415,
+['AtB Routes for Easter 2014',
+ 'AtB Ruter påska 2014']).
+
+period_message( r1615_140415,
+['AtB Routes for Easter 2014',
+ 'AtB Ruter påska 2014']).
 
 period_message( r1604_120625,
-['AtB Routes for summer 2012',
- 'AtB Sommerruter  2012']).
+['AtB Routes for summer 2014',
+ 'AtB Sommerruter  2014']).
 
 period_message( r1612_121024,
 ['AtB Autumn routes',
@@ -124,7 +132,4 @@ period_message( r1613_131216,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%% END OF ACTUAL ROUTE PERIODS %%%%%%%%%
-
-
-
 
