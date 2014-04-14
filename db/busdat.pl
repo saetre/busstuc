@@ -34,7 +34,7 @@
 %%        create_named_dates/0,      % RS-120402        %% Moved to timedat.pl
         cutloop_station/2,
 
-        date_day_map/2,            % RS-120402         Moved to timedat
+        date_day_map/2,            % RS-120402         Move to timedat?
 %%        dedicated_date/1,          % RS-120402         Moved to timedat
         disallowed_night/1,        % (DATE)            Moved to timedat???
         default_destination/2,     % (ROUTE,STATION)
@@ -65,6 +65,7 @@
 
         preferred_transfer/5,
         railway_station/1,
+        regbus/1,                  % From regbusall, %% RS-140413, experiment
         spurious_return/2,
         synbus/2,                  % (NAME,ROUTE)
         thetram/1,
@@ -91,7 +92,7 @@
 %:- ensure_loaded( 'places' ). %% [ corr/2, foreign/1, isat/2, placestat/2 ] ).
 
 %:- ensure_loaded( [ regbusall, regcompstr, regstr, teledat2 ] ). %% HEAVY DB!
-:- ensure_loaded( regbusall ). %, [ nightbus/1 ] ). %% HEAVY DB!    %% RS-120803 %% Use buslog.pl instead? Imported
+:- ensure_loaded( regbusall ). %, [ nightbus/1 ] ). %% RS-120803 %% Use buslog.pl instead? Imported
 %%This used to be done from topreg? (Should be done from topreg::makeauxtable?)
 
 %:- use_module( regcompstr, [] ). %% HEAVY DB!
@@ -298,9 +299,8 @@ disallowed_night(date(2011,04,23)).  %% natt til påskeaften %% TA-110426
  date_day_map(Date,  sunday):-  
      named_date(easterday2,Date).   %% 2 Påskedag Ad Hoc
 
- date_day_map(Date,   saturday):-   %% ad hoc
+ date_day_map(Date,   monday):-   %% ad hoc
      named_date(palm_monday,Date).
-
 
  date_day_map(Date,   saturday):-   %% ad hoc
      named_date(palm_tuesday,Date).
