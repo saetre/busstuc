@@ -32,7 +32,8 @@
         pass_bus/2,             pass_rid/2,             passes44/6,             passesstations/4,
         passevent/6,            passMOD/7,              passrids/2,             passtimeMOD/8,
         place_station1/2,       place_station/2,        popframe/0,             proper_end_station/2,   pushframe/0,    relax/1,    replyq/1,  %% For negans.pl
-        regbus/1,               ridtobusname/2,         ridtobusnr/2,           route/3,        %%  %% RS-131231 for utility/makeauxtables
+        %%      regbus/1,
+        ridtobusname/2,         ridtobusnr/2,           route/3,        %%  %% RS-131231 for utility/makeauxtables
         rid_to_direction/3,     ridstobuses/2,          ridtotour/2,            selectroute/3,
         samefplace/2,           standardizeemit/2,      station/1,      %% RS-131225 %% RS-140101 For pragma.pl, Necessary?
         station_trace/4,        stathelp/3,             stationsat/3,           statorplace/1,          street_station/2, takestime/3,
@@ -256,10 +257,11 @@ bus_mod(TTP):-
 
 
 %% PERIOD INDEPENDENT
+%% regbuss from regbussall. %% RS-140413, Experiment.
 
-regbus(X):- %% TA-110308
-   veh_mod(TTP),TTP:regbus(X), number(X),
-   X  < 10000. %%   e.g. buss 777
+%regbus(X):- %% TA-110308
+%   veh_mod(TTP),TTP:regbus(X), number(X),
+%   X  < 10000. %%   e.g. buss 777
 
 
 
@@ -1003,7 +1005,7 @@ listofall(tramstation,S):-
 
 
 endstations1(Stations):-
-    set_of(S, (regbus(Bus), endstation(Bus,Z),member(S,Z)), Stations).
+    set_of(S, (busdat:regbus(Bus), endstation(Bus,Z),member(S,Z)), Stations).
 
 
 endstations(Bus,Stations):-
@@ -1022,7 +1024,7 @@ endstation(Bus,Stations) :-
 
 
 allbuses(Buses) :-
-	set_of(Bus,regbus(Bus),Buses1),   %% was exbus(Bus) %% TA-090608
+	set_of(Bus,busdat:regbus(Bus),Buses1),   %% was exbus(Bus) %% TA-090608
    bus_equivalents(Buses1,Buses).
 
 allnightbuses(Buses) :-
