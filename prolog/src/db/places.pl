@@ -124,8 +124,8 @@ corr(m4,hovedterminalen).
 corr(m41,hovedterminalen).  %% SIC
 corr(m5,hovedterminalen). 
 
-%corr(p1,hovedterminalen).  %% RS-140102 Difficulties with hovedterminalen != sentrum? Ambiguous p1 == prinsen == prinsens gate == ...
-%corr(p2,hovedterminalen).
+corr(p1,hovedterminalen).  %% RS-140102 Difficulties with hovedterminalen != sentrum? Ambiguous p1 == prinsen == prinsens gate == ...
+corr(p2,hovedterminalen).
 
 corr(stavset_senter,stavset_senter). 
 corr(studentersamfundet_1,studentersamfundet_2). 
@@ -181,7 +181,7 @@ alias_station(ntnu_dragvoll,dragvoll).
 isat(dronningens_gate_d1,sentrum). %% AtB
 %isat(dronningens_gate_d2,sentrum). 
 %isat(dronningens_gate_d3,sentrum). 
-isat(dronningens_gate_d4,sentrum). 
+%isat(dronningens_gate_d4,sentrum). 
 
 isat(kongens_gt_k1,sentrum). %% AtB
 isat(kongens_gt_k2,sentrum). 
@@ -196,8 +196,10 @@ isat(olav_tryggvasons_gate,sentrum).    %% RS-121223
 
 %% RS-140102    TODO: hovedterminalen  vs.  sentrum ??
 
-isat(prinsens_gate_p1,prinsens_street). %% RS-131007 - 140102
-isat(prinsens_gate_p2,prinsens_street). %% RS-140102 See db/regstr.pl
+%isat(prinsens_gate_p1,prinsens_street). %% RS-131007 - 140102
+%isat(prinsens_gate_p2,prinsens_street). %% RS-140102 See db/regstr.pl
+isat(prinsens_gate_p1,sentrum). %% RS-140428
+isat(prinsens_gate_p2,sentrum). %% RS-140428... But  See db/regstr.pl
 %isat(prinsens_gate_p2,prinsenkrysset). %% TA-110822  %% RS-131007 Didn't really work, obsolete?, see tegstr.pl
 
 
@@ -242,10 +244,10 @@ isat(haakon_vii_gate_25,haakon_vii_gate).
 isat(haakon_vii_gate_9,haakon_vii_gate). 
 isat(haakon_vii_gate_9,haakon_vii_gate). 
 
-isat(haukåsen,haukåsen).  %% RS-130330, hva skjer her?
+% isat(haukåsen,haukåsen).  %% RS-130330, hva skjer her? %% RS-140502. Haukåsen station removed from AtB's routes 140102
+%isat(heggstadmoen,heggstadmoen_4).
+%isat(heggstadmoen,heggstadmoen_2).
 
-isat(heggstadmoen_2,heggstadmoen). 
-isat(heggstadmoen_4,heggstadmoen). 
 isat(heimdal_sentrum,heimdal). 
 isat(heimdal_sentrum,heimdal). 
 isat(heimdal_stasjon,heimdal). 
@@ -1456,13 +1458,14 @@ cmpl(harald,[hardrådes,plass],harald_hardrådes_street). %% ?
 cmpl(harald,[hårdrådes,plass],harald_hardrådes_street). %%
 
 cmpl(haugnes,[svingen],haugnessvingen).
-cmpl(haukåsen,[psykiatriske,sykehus],haukåsen). 
-cmpl(haukåsen,sykehus,haukåsen). 
+cmpl(haukåsen,[psykiatriske,sykehus],haukåsen).
+cmpl(haukåsen,sykehus,haukåsen).
 cmpl(havstad,senter,havstadsenteret). %% TA-110316
 cmpl(havstad,senteret,havstadsenteret).
 cmpl(havstein,[i,byåsen],havstein). 
 cmpl(havstein,kirke,havstadsenteret).  %% better than "u nderspecified kirke"
-cmpl(heggstadmoen,[14],heggstadmoen_4).  %%(actual)
+cmpl(heggstadmoen,[2],heggstadmoen_2).  %%(actual: 14 or 4 ?)
+cmpl(heggstadmoen,[4],heggstadmoen_4).  %%(actual: 14 or 4 ?)
 cmpl(heim,[dal],heimdal). 
 cmpl(heimdal,['/',kolstad],kolstad).
 cmpl(heimdal,[v,g,skole],saupstadsenteret). 
@@ -5795,7 +5798,9 @@ placestat(hangersletta,hangeråsen).  %% aasen UN properstation
 placestat(hangerås,hangeråsen).  %% necessary because laura hangerås veg
 placestat(hansbakkfjæra,ranheim_skole).  %% map 
 placestat(harbour,pirbadet).  %% English the harbour
-placestat(haukvatnet,haukåsen). 
+%placestat(haukvatnet,haukåsen).        %% RS-140502. Haukåden was removed from AtB's routes 140102 
+placestat(haukvatnet,dalgård).          %  placestat(haukvatnet,lian).
+
 placestat(havna,pirbadet).
 placestat(havna,pirbadet).  %%?
 placestat(havnen,pirbadet).
@@ -5924,7 +5929,7 @@ placestat(marineborgstasjon,marienborg_stasjon).       %% RS-130330. Marienborg 
 placestat(marinen,prinsen_kinosenter). 
 placestat(mediahuset,maskinagentur). 
 
-placestat(norske_meierier,heggstadmoen). %% NB %% TA-110705
+placestat(norske_meierier,heggstadmoen_2). %% NB %% TA-110705
 
 %% placestat(melkekartongen,city_syd). 
 
@@ -7268,6 +7273,7 @@ specname(hallfred_høyems_vei,'Hallfred Høyems vei').
 specname(halstein_gård,'Halstein gård'). 
 specname(harald_bothnersv,'Harald Bothners vei'). 	 %% EH-030616
 specname(harald_hårfagres_gt,'Harald Hårfagres gate'). 
+specname(heggstadmoen_2,'Heggstadmoen 2').  %% slight error in busroute
 specname(heggstadmoen_4,'Heggstadmoen 4').  %% slight error in busroute
 %%%  specname(heimdal_st,'Heimdal stasjon').  
 specname(heimdalsveien,'Heimdalsvegen').  %% (not . ) EH-030616. vei-> veg EH-031017
