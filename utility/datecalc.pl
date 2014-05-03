@@ -10,11 +10,12 @@
 
 % Contains the utility predicates that has to do with dates
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:-module( datecalc, [   add_days/3,     addtotime/3,    before_date1/2, %% RS-131225 for makeauxtables, busanshp.pl (and others?)
+%% RS-131225 for makeauxtables, busanshp.pl (and others?)
+:-module( datecalc, [   add_days/3,     addtotime/3,    before_date1/2, 
         datetime/6,     dayname/2,      dayno/2,        datestring/1,   timestring/1,   %% RS-131225    For app/buslog?
         days_between/3, daysucc/2,      difftime/3,     finddate/2,     findfirstcomingdate/2,          getdaynew/1,        month_name/2,
         easterdate/2,   isday/1,        inttime/2,      off_valid_period/3,             on_valid_period/3, %% How to use this?
-        sub_days/3,     subfromtime/3,  this_year/1,    timenow/1,      timenow2/2,     %% RS-131225    For makeauxtables (and others?)
+        sub_days/3,     subfromtime/3,  this_year/1,    timenow/1,      timenow2/2,     
         today/1, todaysdate/1,   valid_date/1,   weeknumber/2,         xweekday/2
 ] ).
  %% RS-140210 For app/buslog, app/pragma (, etc? )
@@ -700,7 +701,7 @@ isofloor(X,Y) :- %% NB floor() SICS gives float (SIC)
 %%    X is Y//1.   %%    floor() ISO  gives integer
     X is floor(Y).   %%    floor() ISO  gives integer
 
-easterdate(Y,date(Year,Month,Day)):-
+easterdate( Y, date( Year,Month,Day )) :-
 
     A is Y mod 19,
     B isofloor (Y/100),

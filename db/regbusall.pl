@@ -2,14 +2,14 @@
 %% FILE regbusall.pl
 %% SYSTEM BUSSTUC DOMAIN TT
 %% CREATED TA-020101
-%% REVISED TA-110824    RS-120803 
+%% REVISED TA-110824    RS-120803
+%% REVISED RS-140416    Keep using this? % No regbus after buslog.pl:regbusall was implemented?  %% RS-120803
 
 
 %% Inclusive set of bus routes
 
 %% NB NB Has the same name as the <module>:regbus
 
-%% regbus is NOT Used after buslog.pl:regbusall was implemented?  %% RS-120803
 
 regbus(1). %% Tram/trikk     %% RS-120803 regbus is generalized in buslog.pl!
 

@@ -68,7 +68,6 @@ reset_dynamic_predicates :- %% TA-110317
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
 
 
-%% :- use_module( '../makeauxtables', [ dumppredas/2 ] ). %RS-131223 Problems with meta-predicate modules
 dumppredas( T0, T ):-
     nl,
     write('%%% ' ),nl,nl, 

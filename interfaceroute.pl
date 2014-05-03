@@ -13,9 +13,7 @@
 
 :- use_module( 'utility/utility', [  output/1 ] ).
 
-:-use_module('db/topreg', [ default_period/3, routedomain/1, route_period/4  ]). %% default_message/3, period_message/2,  is not used?, Really?!
-%:-ensure_loaded( user:'db/topreg.pl' ). %% , [ default_message/3,   default_period/3,   route_period/4,    routedomain/1 ]).
-%:-ensure_loaded( 'db/topreg.pl' ). %% , [ default_message/3,   default_period/3,   route_period/4,    routedomain/1 ]).
+:- use_module( 'db/topreg', [ default_period/3, routedomain/1, route_period/4  ]). %% default_message/3, period_message/2,  is not used?, Really?!
 
 :- use_module( 'utility/datecalc', [ off_valid_period/3,  on_valid_period/3,   todaysdate/1  ] ).
 

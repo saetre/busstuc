@@ -12,8 +12,8 @@
 %% Morphological Analyser for the language N.
 
 %% Sort out English/Norwegian import-conflict in tucbuses! %% USE ENGLISH AS DEFAULT?! %% RS-131225  lexn/5, lexbv/2?  %% RS-140102  Include? 
-:-module( morph_n,[ adjflex/3, adjective/1, lcode2/2, lexv/4, noun/1, tall/2, verbroot/1 ] ). %% RS-131225
-
+%:-module( morph_n,[ adjflex/3, adjective/1, lcode2/2, lexv/4, noun/1, tall/2, verbroot/1 ] ). %% RS-131225
+:-module( morph_n,[ adjflex/3, adjective/1, lexv/4, noun/1, tall/2, verbroot/1 ] ). %% RS-140428 %lcode2/2, 
 :- ensure_loaded( user:'../declare' ).
 
 %% META-PREDICATE
@@ -31,7 +31,7 @@ once1(P):-P,!. %% same as once, but version independent
         unwanted_interpretation/2,          verb_form/4,             verbroot2/2
 ]).
 
-%:-use_module( morph_e, [  ]).          %% RS-131225    Only /2 ? There is another one with /4 lexv/2
+%:-use_module( morph_e, [ lexv/2 ]).          %% RS-131225    Only /2 ? There is another one with /4
 %:-use_module( lex, [ part_word/1 ] ). %% RS-140209.
 :-use_module( semantic, [ adj_templ/2, ako/2, dtv_templ/4, iv_templ/2, pvi_templ/2, tv_templ/3 ]).
 
@@ -81,7 +81,7 @@ noun_form(X,Y,Sin,Def,N):-
 %% ends_with(Ord,Stamme,Ending):-user:ends_with(Ord,Stamme,Ending).      %% RS-131231    "Import from utility.pl"
 
 
-lcode2(ADVN,adv(ADVE)):-   
+lcode2( ADVN, adv(ADVE) ):-   
     dict_n:adv2(ADVN,ADVE).      
 
 
