@@ -53,7 +53,8 @@ backslash('\\').        %% For main.pl, dict_n.pl (noiseword?) RS-131230 Moved t
 :-use_module( 'utility/datecalc.pl' ). %%, [ ] ).    %?-compile('utility/datecalc.pl').
 
 %% :-use_module( 'utility/extracut.pl', [ create_regcut/1 ] ).  %% TA-080201 %%% ?-compile('utility/extractreg.pl'). %% SUSPENDED %% RS-140411
-:-use_module( 'makeauxtables.pl' ). %%, [ ] ).
+%% :-use_module( 'makeauxtables.pl' ). %%, [ ] ).
+
 
 %%%  ?-compile('sicstuc.pl').
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -68,7 +69,7 @@ backslash('\\').        %% For main.pl, dict_n.pl (noiseword?) RS-131230 Moved t
 %?- ensure_loaded('tuc/readin.pl').       % reads text to a list
 % MISERY! :- use_module('tuc/readin.pl').       % reads text to a list
 %?- compile('tuc/lex.pl').          % lexical analysis        %%RS-131223
-:-  use_module('tuc/lex.pl').          % lexical analysis        %%RS-131223
+:-  use_module( 'tuc/lex.pl', [ ] ).          % lexical analysis        %%RS-131223
 
 %%%%  compile('tuc/proxytagger'),    % disambiguator        %% TA-101010
 %%%%  compile('tuc/proxytagrules'),   % disambiguate rules  %% -> lex/proxyclean
