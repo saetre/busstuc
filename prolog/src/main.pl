@@ -3,6 +3,7 @@
 %% SYSTEM TUC
 %% CREATED TA-930531
 %% REVISED TA-110207
+%% REVISED RS-131225    Modularized
 
 %% Main program for BussTUC
 
@@ -135,7 +136,7 @@ spyg X :- dcg_module(L),
           spy L:X. %% utility
 
 spyr X :- debugrule := X,
-          spy spy_me.
+          spy pramga:spy_me.
 
 sp X :- functor(X,F,_),spy F,X.  %% call X with spy on X 
 

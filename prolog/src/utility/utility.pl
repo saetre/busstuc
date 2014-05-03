@@ -9,7 +9,8 @@
 %:- use_module( '../utility/utility', [ ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
 
 %%% RS-131225, UNIT: utility
-:-module( utility, [       appendfiles/3,       variant/2,      %% FOR metacomp, makeauxtables.pl
+%% FOR metacomp, makeauxtables.pl
+:-module( utility, [       appendfiles/3,       variant/2,
         append_atomlist/2, append_atoms/3,      begins_with/3,  charno/3,       %% FOR busanshp.pl
         absorb/3,          aggregate/3,         all/1,ans/1,    breakpoint/2,   compar/3,
         code_chars/2,      coerce2d/2,          concat_atomlist/2,                        
@@ -102,8 +103,6 @@ tryonce(_).     %% SUCCESS
 %:-use_module( '../utility/datecalc', [ datetime/6 ]).%% RS-131225    For app/buslog, telelog, etc?
 
 %% RS-131225, UNIT: /
-%:- use_module( 'makeauxtables' ). %% , [ %% Loops back here in the for-predicates etc. toretarget/1,  stallbuss/1
-                                         %% RS-131224  calls the for-predicate  %% Used in FOR from makeauxtables
 :- use_module( '../sicstus4compatibility', [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 %MISERY!! %:- use_module( '../main' ). %% , [ %% Loops back here in the for-predicates etc. e.g. for (A => B)
@@ -133,7 +132,6 @@ tryonce(_).     %% SUCCESS
 %% RS-140101, Compile danger?
 :- use_module( '../tuc/readin', [ read_in/1 ]). %% ask_user/1, in user: prompt!
 
-%%ensure_loaded( '../tuc/torehash' ).   % RS-131224 OBSOLETE! Moved to utility/makeauxtables!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -86,7 +86,7 @@ test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)) among other things, 
 :- use_module( '../tucbuses', [ dict_module/1, dict_module/2, morph_module/1 ] ).
 
 %%% RS-131225, UNIT: app,
-:- use_module( '../app/buslog', [  bus/1, composite_stat/3, regbus/1, station/1 ] ).
+:- use_module( '../app/buslog', [  bus/1, composite_stat/3, station/1 ] ). % regbus/1, %% RS-140416, moved to busdat?
 
 %% RS-111205, UNIT: db/                        % (NAME)      % (NAME,ROUTE)  % (STATION) % (PLACE)
 :- use_module( '../db/busdat', [ cmbus/3, explicit_part_name/1, synbus/2, tramstation/1, xforeign/1, xsynplace/2 ] ).
@@ -99,7 +99,7 @@ test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)) among other things, 
         unwanted_place/1,        unwanted_station/1
 ] ).
 :- use_module( '../db/regcompstr', [ composite_road/3 ] ).
-%:- use_module( '../db/regbusall', [ regbus/1 ] ). %% HEAVY DB! %% RS-120803 RS-131225 regbus/1 MOVED to app/buslog.pl
+:- use_module( '../db/regbusall', [ regbus/1 ] ). %% HEAVY DB! %% RS-120803 RS-131225 regbus/1 MOVED to app/buslog.pl
 :- use_module( '../db/regstr', [   streetstat/5 ] ). %% RS-111201 Remember to update source program, which is makeaux?
 :- use_module( '../db/teledat2', [   lookupdb2/3 ] ).
 :- use_module( '../db/timedat', [ named_date/2 ]).
@@ -116,6 +116,10 @@ test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)) among other things, 
 :- use_module( evaluate, [ fact/1, instant/2 ] ). %% RS-111204    isa/2 from facts.pl
 :- use_module( facts, [ (isa)/2,  neighbourhood/1  ] ).  %% RS-111204    isa/2 from facts.pl
 :- use_module( names, [  compname/3,  generic_place/1,  samename/2,  streetsyn/1, synname/2,  unwanted_name/1  ] ).
+
+%%
+%:- morph_n:ensure_loaded( morph_n ). %%  lcode2/2 %% RS-140421  , lexv/4, noun/1, tall/2, verbroot/1 USED in morph:lcode2(X,Y)
+:- use_module( morph_n ). %%  lcode2/2 %% RS-140421  , lexv/4, noun/1, tall/2, verbroot/1 USED in morph:lcode2(X,Y)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -658,7 +662,7 @@ lcode1(N1,N2):-
 
 %%¤  LCODE2
 
-lcode2(X,Y):-
+lcode2(X,Y) :-
     synw0(X,X1),
     morph_module(L),L:lcode2(X1,Y).  %% 1
 

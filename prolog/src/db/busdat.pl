@@ -92,7 +92,8 @@
 %:- ensure_loaded( 'places' ). %% [ corr/2, foreign/1, isat/2, placestat/2 ] ).
 
 %:- ensure_loaded( [ regbusall, regcompstr, regstr, teledat2 ] ). %% HEAVY DB!
-:- ensure_loaded( regbusall ). %, [ nightbus/1 ] ). %% RS-120803 %% Use buslog.pl instead? Imported
+:- ensure_loaded( regbusall ). %, [ nightbus/1, regbus/1 ] ). %% RS-120803
+%% RS-140416 Two different regbus (Period-independent, and many modules with regbus too.
 %%This used to be done from topreg? (Should be done from topreg::makeauxtable?)
 
 %:- use_module( regcompstr, [] ). %% HEAVY DB!
@@ -126,7 +127,9 @@
 %:-volatile named_date/2. %% Moved to timedat.pl
 %:-dynamic named_date/2. %% Moved to timedat.pl
 
+
 tram_module( r1630_111201 ).
+
 
 %:-volatile station/1. %% RS-121223 
 %:-dynamic station/1. %% RS-121223 
@@ -137,7 +140,9 @@ tram_module( r1630_111201 ).
 
 railway_station(ts). %% NB not STATION ! %% TA-110724
 
+
 %% railway_station(trondheim_s_10).      %% TA-110706
+
 
 %% CUTLOOP SECTION 
 
@@ -152,7 +157,7 @@ cutloop_station(pling,plong). %%
 
 %%%  cutloop_station(3,carl_schjetnans_vei). %% TA-110331 NB creates double loop
 
-%%% fra lade gÃ¥rd  anders buens gt carl_schjetnans_vei -> hagen anders_buens_gate
+%%% fra lade gård  anders buens gt carl_schjetnans_vei -> hagen anders_buens_gate
                                        
 
 %% cutloop_station(3,munkegata_m2). %% Lade - M2 - (Sjetnmarka)

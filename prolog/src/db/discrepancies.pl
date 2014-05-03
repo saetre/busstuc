@@ -23,3 +23,25 @@ alias_station2(16011752,leinstrand_samfunnshus,leinstrand_samf_hus).
 alias_station2(16533040,brekkåsen_snuplass,brekkåsen_snpl).
 alias_station2(16638335,vikhammeråsen_rundkjøring,vikhammeråsen).
 alias_station2(17142510,stjørdal_stasjon,stjørdal_st).
+
+%% Discrepancies r1611_140331 r1613_130622 
+alias_station2(16010157,a_jenssens_veg,anton_jenssens_veg).
+alias_station2(16010272,lundåsen_nordre,lundåsen_n).
+alias_station2(16010403,gyldenløves_gate,rosenborg_skole).
+alias_station2(16010546,edgar_b_schieldrops_veg,vestlia).
+alias_station2(16010752,leinstrand_samf_hus,leinstrand_samfunnshus).
+alias_station2(16011157,a_jenssens_veg,anton_jenssens_veg).
+alias_station2(16011309,j_minsaa_s_veg,johannes_minsaas_veg).
+alias_station2(16011347,olav_tryggvasons_gate,olav_trygvassons_gate).
+alias_station2(16011752,leinstrand_samf_hus,leinstrand_samfunnshus).
+alias_station2(16533203,gimsan,gimse).
+alias_station2(16538203,gimsan,gimse).
+alias_station2(16626030,sjøla,skjøla).
+alias_station2(16627030,sjøla,skjøla).
+alias_station2(16632013,storsand_1,storsand).
+alias_station2(16632014,storsand_2,storsand).
+alias_station2(16632028,hommelvik_høgda,hommelvikhøgda).
+alias_station2(16638313,storsand_1,storsand).
+alias_station2(16638314,storsand_2,storsand).
+alias_station2(16638328,hommelvik_høgda,hommelvikhøgda).
+alias_station2(16638335,vikhammeråsen_snuplass,vikhammeråsen_rundkjøring).

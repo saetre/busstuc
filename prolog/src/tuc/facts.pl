@@ -42,13 +42,13 @@
 %%% RS-111205, UNIT: app/
 :- use_module( '../app/busanshp', [ description/2 ] ).          %% RS-131225
 %:- ensure_loaded( '../app/busanshp' ). %%, [ description/2 ] ).        %% RS-131225
-:- use_module( '../app/buslog', [ regbus/1, station/1 ] ).
+:- use_module( '../app/buslog', [ station/1 ] ). %% RS-140416   regbus/1 moved to busdat (Period independent - Merge? )
 
-%:- use_module( '../db/regbusall', [ nightbus/1 ] ). %% HEAVY DB? RS-120803
 
 %% RS-111205, UNIT: db/
+%:- use_module( '../db/regbusall', [ nightbus/1, regbus/1 ] ). %% RS-140416   % regbus/1 moved to busdat (Period independent - Merge? )
 %:- ensure_loaded( '../db/regbusall' ). %%, [ nightbus/1 ] ). %% RS-131225 regbus is loaded in busdat
-:- use_module( '../db/busdat', [ vehicletype/2, xforeign/1, nightbus/1 ]).
+:- use_module( '../db/busdat', [ regbus/1, nightbus/1, vehicletype/2, xforeign/1 ]).
 :- use_module( '../db/places' ). %% , [isat/2, placestat/2, underspecified_place/1, unwanted_place/1 ]). %% RS-131225
 :- use_module( '../db/teledat2', [ building/1, is_dom_val/5 ] ). %% RS-131225
 %:- ensure_loaded( '../db/teledat2' ). %% , [ building/1, is_dom_val/5 ] ).      %% RS-131225

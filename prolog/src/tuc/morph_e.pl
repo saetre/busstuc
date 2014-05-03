@@ -7,9 +7,9 @@
 
 %% Morphological Analyser for the language E.
 
-:-module( morph_e, [ lcode2/2, %% This breaks the lcode2/2 in user: (from lex.pl). All words end up "unknown"
-        lexv/2,      verbroot/1 ] ).  %% RS-131225    Only /2 ? There is another lexv with /4
-
+:-module( morph_e, [ %% lcode2/2, %% RS-140428 This breaks the lcode2/2 in user: (from lex.pl). All words end up "unknown"
+        lexv/2,    %% RS-131225    Only /2 ? There is another lexv with /4
+        verbroot/1 ] ).
 %% ends_with(X,Y,Z):-ends_with(X,Y,Z).     %% RS-131225    Try to use dict_e & modules instead!
 %%verb_form(X,Y,Z,U):-
 %%    dict_e:verb_form(X,Y,Z,U).
@@ -28,7 +28,7 @@
 
 %% RS-111205, UNIT: tuc
 :-use_module( dict_e, [ verb_form/4 ] ). %% Sometimes caused duplicates? %% RS-131228
-:-use_module( lex,[  part_word/1 ] ). %% RS-140209.
+:-use_module( lex, [ part_word/1 ] ). %% RS-140209.
 :-use_module( semantic, [        %  TUCs  Lexical Semantic Knowledge Base        %% RS-131227
             dtv_templ/4,            iv_templ/2,            pvi_templ/2,            tv_templ/3 ]).
 

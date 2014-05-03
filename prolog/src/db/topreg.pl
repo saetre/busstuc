@@ -49,7 +49,8 @@ compilerouteaux(tt,[
 
 %default_period(tt,winter, r1601_110822).  %% 2011 Autumn
 default_period(tt,winter, r1611_140331).  %% 2014 Winter/Spring?
-default_period(tt,summer, r1604_120625).  %% 2013 Summer
+default_period(tt,summer, r1613_130622).  %% 2013 Summer
+
 
 %default_message(tt,winter,['AtB winter routes are from  Jan. 2, 2012  to Jun. 26, 2012.',
 %                           'AtB vinterruter gjelder fra 2. jan. 2012 til 26. jun. 2012']).

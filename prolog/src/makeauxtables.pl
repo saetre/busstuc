@@ -3,6 +3,7 @@
 %% SYSTEM BUSSTUC
 %% CREATED TA-971121    %% REVISED TA-100315
 %% REVISED  RS-140101 modularized
+%% REVISED  RS-140101 discrepancies.pl (verify_consistency)
 
 %%%%%%%% Section to create Auxillary Bus Tables           %%%%%%%
 
@@ -33,6 +34,7 @@ Run in /db/ directory
 %% 0.  Take backup (or use svn)
 % cp auxtables.pl  backup.auxtables.pl
 % cp namehashtable.pl  backup.namehashtable.pl
+% cp discrepancies.pl  backup.discrepancies.pl
 
 %%  1. Create Tables 
 % busestuc.sav
@@ -40,6 +42,9 @@ Run in /db/ directory
 
 %% 2. Create namehashtable
 ?- createhash.
+
+%% 2.5 Create discrepancies
+?- verify_consistency.
 
 %% 3. Finish
 ?-halt.
@@ -55,7 +60,7 @@ Run in /db/ directory
 
 %% RS-140102. UNIT: /  and  /utility/  %% RS-140101 Moved to user:declare for common and early compilation!
 :- ensure_loaded( user:'declare.pl' ). %, [ := /2 etc. ] ). for/2, test/1, 
-:- use_module( 'utility/utility.pl', [  delete1/3, ends_with/3, out/1, output/1, textlength/2 ] ). %%, writepred/1 ] ). % writepred/1 is USED! set_of/3, 
+:- use_module( 'utility/utility.pl', [  delete1/3, ends_with/3, out/1, output/1, textlength/2, writepred/1 ] ). % writepred/1 is USED! in for/3 or set_of/3, 
 :- use_module( 'utility/datecalc.pl', [ add_days/3, datetime/6, easterdate/2, sub_days/3, this_year/1 ]).  %% RS-121325
 %%RS-140411, For extracut.pl : create_regcut( r1613_140415 ) .... modules
 %% :- use_module( 'utility/extracut.pl', [ create_regcut/1 ]).  %% RS-140411, create_regcut/1 IS USED in importing new routes (for-loop)
@@ -72,7 +77,8 @@ Run in /db/ directory
 :- use_module( 'db/regcompstr.pl', [ composite_road/3 ] ).
 :- use_module( 'db/places.pl' , [ corr/2, isat/2, placestat/2 ] ).
 :- use_module( 'db/regstr' ). %%, [ streetstat/5 ] ). %% RS-131225  makeauxtables USES a for-loop WITH streetstat in it!!
-:- use_module( 'db/timedat.pl', [ named_date/2 ]).       %%  EASTER DATES AND OTHERS %% RS-131225
+:- use_module( 'db/timedat.pl', [ named_date/2 ] ).       %%  EASTER DATES AND OTHERS %% RS-131225
+:- use_module( 'db/topreg', [ default_period/3  ] ).
 %:- use_module( 'db/busdat.pl', [ nightbus/1, vehicletype/2, xforeign/1 ]).
 
 %%% RS-131225, UNIT: tuc
@@ -121,10 +127,10 @@ test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), am
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-makeauxtables:-
+makeauxtables :-
     told,       %% Close all potentially open output-streams first!
-    user:( tramflagg := false ), %% RS-140106 Trenger ikke auxtables for tram??
-    user:( tmnflagg := false ), %% RS-140106 Trenger ikke auxtables for tram??
+%    user:( tramflagg := false ), %% RS-140106 Trenger ikke auxtables for tram??
+%    user:( tmnflagg := false ), %% RS-140106 Trenger ikke auxtables for tram??
     reset_period,  %% get the right period 
 
     write('%  Please wait 1 minute...'),nl,
@@ -293,7 +299,7 @@ tostation1(A):-
 
 xproperstation(A):-
     properstation(A),
-    test(stationD(A,tt)).   %%% Very Ad Hoc, only TT    %% TODO: RS-140210
+    test( stationD(A,tt) ).   %%% Very Ad Hoc, only TT    %% TODO: RS-140210
   
 
 corr_ht(A):- corr(A,hovedterminalen). 
@@ -782,7 +788,21 @@ ver_movedate :-    %% Added check for May17 %% TA-100106
 %% alias_station2(16626030,sjøla,skjøla).
 %% alias_station2(16627030,sjøla,skjøla).
 
-verify_consistency(Mod1,Mod2):-
+%% RS-140420 Default consistency check to be used at every re-compilation
+verify_consistency :-
+        default_period( tt, winter, Winter ) ,
+        default_period( tt, summer, Summer) ,
+
+        utility:append_atoms( 'db/tables/', Winter, WinterFile ),
+        utility:append_atoms( WinterFile, '/reghpl.pl', WinterFileExtension ),
+        utility:append_atoms( 'db/tables/', Summer, SummerFile ),
+        utility:append_atoms( SummerFile, '/reghpl.pl', SummerFileExtension ),
+
+        ensure_loaded( Winter:WinterFileExtension ),
+        ensure_loaded( Summer:SummerFileExtension ),
+        verify_consistency( Winter, Summer ) .
+
+verify_consistency( Mod1, Mod2 ) :-
  
      out('%% Discrepancies'),   out(Mod1),out(Mod2),nl,
    
@@ -802,3 +822,10 @@ for(
 %:-trace.      %% Debugging this takes more than a minute, against only 10 secs in compile-mode! == :-notrace.
 %:-makeauxtables.
 %%% Moved to Where? RS-140210
+
+%%RS-140421
+%:- verify_consistency.
+
+%% From utility.pl
+%:- use_module( 'makeauxtables' ). %% , [ %% Loops back here in the for-predicates etc. toretarget/1,  stallbuss/1 %% RS-131224 %% Used in FOR from makeauxtables
+%%ensure_loaded( '../tuc/torehash' ).   % RS-131224 OBSOLETE! Moved to utility/makeauxtables!

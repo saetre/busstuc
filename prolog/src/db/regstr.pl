@@ -156,7 +156,7 @@ streetstat(blusuvollsbakken,'Blusuvollsbakken',1,20,ankers_gate).
 streetstat(blåklokke_street,'Blåklokkeveien',1,29,fiolsvingen).
 streetstat(blåklokke_street,'Blåklokkeveien',31,60,bugges_veg).
 streetstat(borchgrevinks_street,'Borchgrevinks veg',1,10,hammersborg).
-streetstat(borghild_rottems_street,'Borghild Rottems veg',3,21,haukåsen).
+streetstat(borghild_rottems_street,'Borghild Rottems veg',3,21,lian).      %% RS-140502. haukåsen was removed from AtB's routes 140102
 streetstat(bostad_street,'Bostadvegen',3,11,valøyvegen).
 streetstat(brage_street,'Bragevegen',1,6,nardokrysset).
 streetstat(brage_street,'Bragevegen',5,12,tors_veg).

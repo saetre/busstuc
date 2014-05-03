@@ -80,7 +80,7 @@ remember(F) :- F, ! ; assert(F).        %% Move before use_module(metacomp)?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 set(Counter,Value) :- 
-    retractall( value(Counter,_) ),
+    retractall( value( Counter, _ ) ),
     assert( value(Counter,Value) ).
 
 X := Y :-       %% RS-131228    :=/2

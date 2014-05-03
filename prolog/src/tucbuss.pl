@@ -63,7 +63,7 @@
 %:-ensure_loaded( version ).       %% RS-131227    With version_date/1, used in monobus -> teledat2.pl
 :- ensure_loaded( user:version ).       %% RS-131227    With version_date/1, used in monobus -> teledat2.pl
 
-:- use_module('main.pl', [  hei/0,   run/0 ] ). %% RS-140209    %?-compile('main.pl').  
+:- use_module('main.pl', [  hei/0,   hi/0,      run/0 ] ). %% RS-140209    %?-compile('main.pl').  
 :-user:use_module( main, [ jettyrun/1 ] ).      %% RS-140331    % Import into user: ("main") module.
 
 ?-compile('monobus.pl'). %% // after main.pl  Unknown error 
