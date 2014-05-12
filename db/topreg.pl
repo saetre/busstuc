@@ -39,7 +39,7 @@ routedomain(tmn). %% Generic for TMN related routes
 
 %% Special list to be compiled
 
-compilerouteaux(tt,[
+compilerouteaux( tt, [
 %%      'db/regbusall', %% Inclusive  set of buses      %% RS-131226 Removed?
         'db/regstr',    %% Streets
         'db/regcompstr' %% Composite Street names
@@ -65,9 +65,10 @@ default_message(tt,summer,['AtB summer routes are from Jun. 24 to  Aug. 11. 2014
 %%see routes.pl
 
 
-period_message( r1613_130429,
-['AtB Routes for Constitution Day',
- 'AtB Ruter for 17. mai ']).
+%Lørdagsruter med første avgang fra kl 08.30 med tilleggsturer.
+period_message( r1611_140517,
+[ 'AtB Routes for Constitution Day are as Saturday, starting from 8.30 o´clock',
+  'AtB Lørdagsruter for 17. mai, med første avgang fra kl 08.30 og noen tilleggsturer']).
 
 period_message( r1630_111201,
 ['AtB Routes for Tram 2012',
