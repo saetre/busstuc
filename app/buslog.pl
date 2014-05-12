@@ -78,7 +78,6 @@ test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)) among other things, 
 :-use_module( '../utility/library', [ delete/3, remove_duplicates/2, reverse/2 ] ). %% RS-131225  For app/buslog, telelog, etc?
 
 %%% RS-140101, UNIT: /
-%%:- use_module('../busroute', [  route_period/4  ]). %% RS-131226 Moved to db/topreg!
 :- use_module('../interfaceroute' , [ decide_period/2 ]). % Interface procedures for handling interface to route modules, with topreg
 
 %%% RS-140210, UNIT: app/
@@ -91,7 +90,6 @@ test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)) among other things, 
 :- use_module( '../dialog/frames2', [ frame_getvalue_rec/4 ] ). %% RS-131223 etc? getcurrent/1, sequence_member/2
 
 %% RS-111205, UNIT: db/
-%:- ensure_loaded( user:'../db/topreg' ). %%, [  route_period/4  ]).
 :- use_module( '../db/topreg', [  route_period/4  ]).
 :- use_module( '../db/busdat').
 :- ensure_loaded('../db/discrepancies.pl' ). %% RS-131230 alias_station2/3, etc.
