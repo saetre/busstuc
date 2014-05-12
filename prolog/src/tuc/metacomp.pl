@@ -408,7 +408,7 @@ findvirtual(A):-
     functor(A,F,N),
     user:remember( metacomp:virtf(F,N) ).  %% RS-131230 From declare.pl
 
-remembervirtx(A):-
+remembervirtx(A) :-
     virtx(B),
     utility:variant(A,B),               %% RS-131230 from utility.pl
     !;

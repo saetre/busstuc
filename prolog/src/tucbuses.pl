@@ -75,18 +75,13 @@ backslash('\\').        %% For main.pl, dict_n.pl (noiseword?) RS-131230 Moved t
 %%%%  compile('tuc/proxytagrules'),   % disambiguate rules  %% -> lex/proxyclean
 
 ?- use_module('tuc/translat.pl').     % code generation
-%?-  compile('tuc/evaluate.pl').     % translate and evaluate
 :- use_module( 'tuc/evaluate' ). %   , [ instant/2 ] ).       %%% Evaluate was formerly inger?
 %%%%   compile('tuc/inger.pl'),        % intelligent resolution
 ?- use_module('tuc/anaphors.pl').     % anaphoric resolution
 
 :- use_module('tuc/facts.pl').     % static facts (moved from database)
-%%?-  compile('tuc/fernando.pl').     % semantic interface        %%RS-131223
-:-  use_module('tuc/fernando.pl').     % semantic interface       %%RS-131223
-
-%%?-compile('tuc/names.pl').        % general names and synonyms  (moved from database)
+:- use_module('tuc/fernando.pl').     % semantic interface       %%RS-131223
 :- use_module('tuc/names.pl').     % general names and synonyms  (moved from database) %% RS-131223
-
 %% :-  use_module( 'tuc/semantic.pl', [ ako/2 ] ).     % the semantic net (moved from database)    %RS-131225
 
 %%   compile('tuc/world0.pl').       % empty world predicates %% TA-110301
@@ -99,11 +94,8 @@ backslash('\\').        %% For main.pl, dict_n.pl (noiseword?) RS-131230 Moved t
 %%?-  compile('tuc/metacomp.pl').     % compiles the grammar %%RS-131223
 :- use_module('tuc/metacomp.pl', [ makegram/5 ] ).    %%RS-131223
 %
-
 ?-  use_module( dcg_e:'tuc/dagrun_e.pl' ).      % module dcg_e. split into English and
 ?-  use_module( dcg_n:'tuc/dagrun_n.pl' ).      % module dcg_n.  Norwegian clones
-%?-  ensure_loaded( dcg_e:'tuc/dagrun_e.pl' ).      % split into English and
-%?-  ensure_loaded( dcg_n:'tuc/dagrun_n.pl' ).      % Norwegian clones
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -194,27 +186,8 @@ prompt2(english,'E: ').
 prompt2(norsk,'N: ').
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% RS-131230    Empty [ ] avoids colliding predicates from N and E.
 
-%compile_english :-
-%    dict_file(english,DICTFILE),        compile(DICTFILE),      % dictionary for E
-%    morph_file(english,MORPHFILE),      compile(MORPHFILE),     % morphology for E
-%    gram_file(english,GRAMFILE),        compile(GRAMFILE),      % grammar for E
-%    gram_module(english,GRAMMODULE),                            % 'dcg_e'
-%
-%    dagrun_file(english,DAGFILE),   %% RS-131228 Moved up to customize the dcg.pl as either norsk or english!
-%    dcg_file(english,DCGFILE),  dcg_module(english,DCGMODULE),
-%    makegram(DAGFILE, DICTFILE, DCGFILE, DCGMODULE, GRAMMODULE).
-%
-%compile_norsk:-        %    makegram(norsk).
-%    dict_file(norsk,DICTFILE),  compile(DICTFILE),      % dictionary for N
-%    morph_file(norsk,MORPHFILE),compile(MORPHFILE),   % morphology for N
-%    gram_file(norsk,GRAMFILE),  compile(GRAMFILE),      % grammar for N
-%    gram_module(norsk,GRAMMODULE),
-%
-%    dagrun_file(norsk,DAGFILE),   %% RS-131228 Moved up to customize the dcg.pl as either norsk or english!
-%    dcg_file(norsk,DCGFILE),  dcg_module(norsk,DCGMODULE),
-%    makegram(DAGFILE, DICTFILE, DCGFILE, DCGMODULE, GRAMMODULE).
-%% RS-131230
 compile_english :-
     dict_file(english,DICTFILE),        use_module(DICTFILE, [ ] ),      % dictionary for E
     morph_file(english,MORPHFILE),      use_module(MORPHFILE, [ ] ),     % morphology for E

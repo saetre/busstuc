@@ -76,6 +76,8 @@ dumppredas( T0, T ):-
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
 
+%Refresh:
+% compile_route_set( M ), use_module( 'utility/extracut.pl', [ create_regcut/1 ] ), create_regcut( M ), halt." | busstuc
 
 create_regcut(Module):- 
 
@@ -110,8 +112,8 @@ tellmodule(Module,File):- %% TA-110315
 %% RS-140211 META-PREDICATE from utility.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 for( P, Q ) :- %% For all P, do Q (with part of P)
-  P, Q,
-  false;true.
+  P, Q,  false ;
+  true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
