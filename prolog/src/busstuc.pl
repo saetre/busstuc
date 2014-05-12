@@ -40,8 +40,10 @@
 
 %:-use_module('busroute.pl').   %% Compiles database/* %   'busroute.pl', %% Compiles database/
 %:-compile('busroute.pl').       %% Compiles database/* %   'busroute.pl', %% Compiles database/
-
 :- load_files('busroute.pl', [ load_type(source), compilation_mode(compile) ]).
+
+%Utility
+:- use_module( 'utility/extracut.pl', [ create_regcut/1 ] ).     %%RS-140511 This file is imported INTO THE busroute.pl-module
 
 :-use_module( 'makeauxtables.pl', [ createhash/0, makeauxtables/0 ] ). 
 :-told.            %% RS-140208 Reset all output-streams first...
@@ -49,9 +51,9 @@
 
 :- write('%busstuc.pl~50  (Skipping?) creation of db/ auxtable(s) and (name-)hashtable, etc...'),nl.
 
-:- makeauxtables:verify_consistency.    %% RS-140420       
-:- makeauxtables.     %% RS-130330       Takes a minute...         %%Skip for now...
-:- createhash.        %% RS-130330       Takes another minute...   %% Produce the db/namehashtable
+%:- makeauxtables:verify_consistency.    %% RS-140420       
+%:- makeauxtables:makeauxtables.     %% RS-130330       Takes a minute...         %%Skip for now...
+%:- makeauxtables:createhash.        %% RS-130330       Takes another minute...   %% Produce the db/namehashtable
 
 %% Already compiled by tucbuss -> monobuss! %?- [ 'db/discrepancies.pl' ].  %% Must be updated before winter %% TA -> RS-120805 Se e-post korrespondansen til Tore
 %:- load_files('busroute.pl', [load_type(source),compilation_mode(compile)]).    %% RS-140210    Bootstrapping for fast compilation!
