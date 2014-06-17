@@ -35,9 +35,16 @@
         printmessage/1, print_paraphrase_message/1,     punkt/0,        printmessageunconditionally/1,   %% REMOVES EVERYTHINBG! printmessageunconditionally/1,
         question/0,     relevant_message/1,             reply/1,        ridof/2,
         select/2,       sentenceend/1,  setopt/3,       setopts/3,      smart_time_options/1,           sorttimes/4,
-        space0/0,       special_day/1,  specname0/2,    standnight/1,   startmark/0,                    stationlistorand/3,
+        space/0,       space0/0,       special_day/1,  specname0/2,    standnight/1,   startmark/0,    stationlistorand/3,
         theplural/2,    time_options/1, warningtime/2,  writetimes/2
 ] ).
+
+%% META-PREDICATES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:- meta_predicate make_total_google( 0, ? ) .   %% RS-140617
+:- meta_predicate totaljsonprint( +, 0 ) .      %% RS-140617
+:- meta_predicate extractbing( +, 0, ?, ? ) .   %% RS-140617
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Version Based On the principle that the GoogleMapInfo is printed out
 
@@ -90,9 +97,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% "locale" META-PREDICATES (copied from utility.pl)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate  test(0).
 test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate  for(+,+).  
+:- meta_predicate  for(0,0).  
 for( P, Q ) :- %% For all P, do Q (with part of P)
   P, Q,
   false;true.
@@ -111,13 +119,13 @@ outstreetconn(_STARTSTOP,_INTSTREET,_INTSTAT). %% Just marker in busans code
 
 
 
-make_total_google(AnswerOut,  TOTAL):-
+make_total_google( AnswerOut,  TOTAL ):-
 
-    extractbing(outstreetconn(start,Y9,_ND),AnswerOut, Y9,START),   %% street coord unk
+    extractbing( outstreetconn(start,Y9,_ND),AnswerOut, Y9,START ),   %% street coord unk
      
-    extractbing(outstreetconn(stop,STAD,_RSK),AnswerOut,STAD,STOP), %% street coord unk
+    extractbing( outstreetconn(stop,STAD,_RSK),AnswerOut,STAD,STOP ), %% street coord unk
 
-    extractbing(google(U),AnswerOut,U,Bang), %% google is just an executable mark in busans
+    extractbing( google(U),AnswerOut,U,Bang ), %% google is just an executable mark in busans
 
     googlemaptrace( Bang,  BusTrace),
 
@@ -131,16 +139,16 @@ make_total_google(AnswerOut,  TOTAL):-
     append([START1],BusTrace,SBANG),
     append(SBANG,[STOP1],TOTAL),
 
-    (user:value(mapflag,true) -> totaljsonprint(TOTAL,AnswerOut) ; true).
+    (user:value(mapflag,true) -> totaljsonprint( TOTAL,AnswerOut ) ; true).
 
-totaljsonprint(TOTAL,AnswerOut):-
+totaljsonprint( TOTAL, AnswerOut ):-
     write('{'),nl,
     write('"route" :'),nl,
-    prettyjsonprint(TOTAL),
+    prettyjsonprint( TOTAL ),
     write(','),nl,
     write('"busstuc" :'),nl,
     write('"'),
-    call(AnswerOut),
+    call( AnswerOut ),
       write('"'),
     nl,
     write('}'),nl.
@@ -3195,8 +3203,8 @@ cwc(nonightbus,['I have no routes for the nightbus',
 
 cwc(nopassages,['There are none passing then.','Det er ingen som passererer da.']).
 
-cwc(noroutesforthisdate,['I have no routes for this date yet.',
-                         'Jeg har ingen ruter for denne datoen enda.']).
+cwc(noroutesforthisdate,['I have no routes for this date.', %% RS-140616  yet? Maybe long, long time ago...
+                         'Jeg har ingen ruter for denne datoen.']). %%  enda? Kanskje fortid?
 
 cwc(notthestation, ['This route does not pass the station.',
                     'Denne ruten passerer ikke stasjonen.']).
@@ -3808,7 +3816,7 @@ xspecname(TMN_S,S):-
 specname0(S0,S):- specname(S0,S),!.
 specname0(S0,S):- bigcap(S0,S).
 
-ordinal2(X,Y,Z):-dict_module(D),D:ordinal2(X,Y,Z).
+ordinal2( X, Y, Z ) :- dict_module(D), D:ordinal2(X,Y,Z) .
 
 
 description(thing,tao):-!.

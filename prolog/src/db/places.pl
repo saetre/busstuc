@@ -28,7 +28,7 @@
   place_resolve/2,         % (PLACE,STATION).
   placestat/2,             % (PLACE,STATION)
   sameplace/2,             % (PLACE,PLACE)
-  short_specname/2,        % (NAME,STRING)     %% RS-131225 For consice SMS-messages
+  short_specname/2,        % (NAME,STRING)     %% RS-131225 For concise SMS-messages
   specname/2,              % (NAME,STRING)
   synplace/2,              % (NAME,PLACE)
   underspecified_place/1,  % (PLACE)
@@ -167,14 +167,14 @@ alias_station(ntnu_dragvoll,dragvoll).
 
 
 
-%¤ ISAT   (STATION, PLACE)
+% ISAT   (STATION, PLACE)
 %Examples:
 %
 %isat(lerkendal_stadion,lerkendal).
 %isat(lerchendal_gård,lerkendal). 
 %isat(gløshaugen_syd,gløshaugen).
 %
-%STATION is (one among several/not preferred) stations that belong to the neighbourhood of PLACE
+%STATION is (one, but NOT preferred, among several) stations that belong to the neighbourhood of PLACE
 
 %% ISAT    ( Station , Neighbourhood )
 
@@ -253,7 +253,9 @@ isat(heimdal_sentrum,heimdal).
 isat(heimdal_stasjon,heimdal). 
 isat(heimdal_stasjon,heimdal). 
 
-isat(hommelvik_skole,hommelvik).        %% RS-130627 %% Different bus route from hommelvik_stasjon
+%isat (STATION, PLACE).
+%% isat(hommelvik_skole,hommelvik).  %% RS-140614 not since 2013? No longer auto-generated
+isat(hommelvik_stasjon,hommelvik_skole).     %% RS-130627 %% Different route from hommelvik_stasjon
 isat(hommelvik_stasjon,hommelvik).
 %% isat(hommelvikhøgda,hommelvik). %% RS-130627 %% Outside? Same departing busses...
 
@@ -265,13 +267,13 @@ isat(hovedterminalen,sentrum).  %% Experiment Trikk St. Olavs. gt og så sentrum
 isat(klæbu_sentrum,klæbu).  %% AtB
 
 
-isat(john_aaes_veg,city_syd).   %%
+isat(john_aae_s_veg,city_syd).   %%
 
 isat(kroppanmarka,kroppanmarka_snuplass). %%RS-120305
 isat(kvt,city_syd).             %%
 
 %%¤¤¤ %% ulykke AtB %% TA-100715
-%%%%%%placestat(lade,lade_alle_80).  %% ( lade-alle_80 more passages)
+%%%%%%placestat(lade,lade_alle_80).  %% ( lade-alle_80 more passages => PREFERRED!)
 %%¤¤¤
 isat(lade_alle_80,lade).
 
@@ -292,6 +294,8 @@ isat(nedre_humlehaugen_øst,ranheim_kirke).  %% RS-130302 Ranheim Kirke Replaced
 isat(nordre_flatåsen,flatåsen). %7
 %% isat(nordre_hoem,hoem). %% not AtB
 isat(nova_kinosenter,royal_garden). 
+
+isat(okstad_østre,kroppanmarka).        %% RS-140614
 
 isat(omkjøringsveien_moholt,omkjøringsveien). 
 isat(omkjøringsveien_moholt,omkjøringsveien). 
@@ -1595,10 +1599,10 @@ cmpl(it,bygget,itbygget).
 cmpl(ivar,[lykkes,vei,1],melkekartongen). 
 cmpl(ivar,[lykkesvei,1],melkekartongen). 
 
-cmpl(j,[aaesvei],john_aaes_veg). 
-cmpl(j,[aaes,gate],john_aaes_veg). 
-cmpl(j,[aaes,v],john_aaes_veg). 
-cmpl(j,[aaes,vei],john_aaes_veg). 
+cmpl(j,[aaesvei],john_aae_s_veg). 
+cmpl(j,[aaes,gate],john_aae_s_veg). 
+cmpl(j,[aaes,v],john_aae_s_veg). 
+cmpl(j,[aaes,vei],john_aae_s_veg). 
 cmpl(j,[b,lysholmersv],jørgen_b_lysholms_vei). 
 cmpl(j,[b,lysholms,vei],jørgen_b_lysholms_vei). 
 cmpl(j,[b,lysholmsv],jørgen_b_lysholms_vei). 
@@ -1665,7 +1669,7 @@ cmpl(jernbanestasjonen,[holdeplass,10],ts).
 cmpl(jo,[aalmos,gate],o_j_aalmos_street).  %% jo noisew
 cmpl(jo,[aalmos,veg],o_j_aalmos_street).  %%
 cmpl(jo,[aalmos,vei],o_j_aalmos_street).  %%
-cmpl(johan,[aaes,v],john_aaes_veg). 
+cmpl(johan,[aaes,v],john_aae_s_veg). 
 cmpl(johan,[falkberges,vei],johan_falkbergets_veg). 
 cmpl(johan,[falkbergets,veg],johan_falkbergets_veg).  %%preferthestationforthestreet
 cmpl(johan,[kroglunds,vei], johan_p_kroglunds_veg). 
@@ -1679,28 +1683,28 @@ cmpl(johan,falkbergsveien,johan_falkbergets_veg).
 cmpl(johanfalkbergets,veg,johan_falkbergets_veg). 
 cmpl(johanfalkbergets,vei,johan_falkbergets_veg). 
 cmpl(johannes,[minsaa,s,veg],johannes_minsaas_veg).  %%'JohannesMinsaa`sveg'
-cmpl(john,[aae,s,veg],john_aaes_veg). 
-cmpl(john,[aae,s,veg],john_aaes_veg). 
-cmpl(john,[aae,s,vei],john_aaes_veg).  %%(mapindex)
-cmpl(john,[aaes,veg],john_aaes_veg). 
-cmpl(john,[aaesv],john_aaes_veg).  %%(map)
-cmpl(john,[aaesvei],john_aaes_veg). 
-cmpl(john,[aas,v],john_aaes_veg). 
-cmpl(john,[aas,veg],john_aaes_veg). 
-cmpl(john,[aas,vei],john_aaes_veg). 
-cmpl(john,[aasv],john_aaes_veg). 
-cmpl(john,[aasveg],john_aaes_veg). 
-cmpl(john,[aasvei],john_aaes_veg).  %%(mapindex)
+cmpl(john,[aae,s,veg],john_aae_s_veg). 
+cmpl(john,[aae,s,veg],john_aae_s_veg). 
+cmpl(john,[aae,s,vei],john_aae_s_veg).  %%(mapindex)
+cmpl(john,[aaes,veg],john_aae_s_veg). 
+cmpl(john,[aaesv],john_aae_s_veg).  %%(map)
+cmpl(john,[aaesvei],john_aae_s_veg). 
+cmpl(john,[aas,v],john_aae_s_veg). 
+cmpl(john,[aas,veg],john_aae_s_veg). 
+cmpl(john,[aas,vei],john_aae_s_veg). 
+cmpl(john,[aasv],john_aae_s_veg). 
+cmpl(john,[aasveg],john_aae_s_veg). 
+cmpl(john,[aasvei],john_aae_s_veg).  %%(mapindex)
 cmpl(john,[p,kroglunds,veg], johan_p_kroglunds_veg). 
 cmpl(john,[p,kroglundsvei], johan_p_kroglunds_veg). 
-cmpl(john,[åes,vei],john_aaes_veg). 
-cmpl(john,[åsvei],john_aaes_veg). 
-cmpl(john,aasensvei,john_aaes_veg). 
+cmpl(john,[åes,vei],john_aae_s_veg). 
+cmpl(john,[åsvei],john_aae_s_veg). 
+cmpl(john,aasensvei,john_aae_s_veg). 
 cmpl(johnssons,vei,karl_jonssons_veg). %% k_jonssons_vei -> karl_jonssons_vei 
-cmpl(jon,[aaens,vei],john_aaes_veg). 
-cmpl(jon,[aaes,vei],john_aaes_veg). 
-cmpl(jon,[aaesgt],john_aaes_veg). 
-cmpl(jon,[aas,vei],john_aaes_veg). 
+cmpl(jon,[aaens,vei],john_aae_s_veg). 
+cmpl(jon,[aaes,vei],john_aae_s_veg). 
+cmpl(jon,[aaesgt],john_aae_s_veg). 
+cmpl(jon,[aas,vei],john_aae_s_veg). 
 cmpl(jonssons,vei,karl_jonssons_veg). 
 cmpl(jonsvann,vei,jonsvanns_street).  %%problem
 cmpl(jonsvanns,vei,jonsvanns_street). 
@@ -2311,7 +2315,7 @@ cmpl(okstad,plassen,okstadplassen).  %% street
 cmpl(okstad,skole,okstad).  %% Okstadvegen 6 = Okstad
 cmpl(okstad,østre,okstad_østre). 
 
-cmpl(okstad,ø,okstad_østre).  %% TA-110125 NB
+cmpl(okstad,ø,okstad_østre).  %% TA-110125 NB, %% RS-140614 Ikke OkstadØy!
 
 cmpl(ola,[seterums,vei],ola_setroms_vei). 
 cmpl(ola,[setroms,veg],ola_setroms_vei). 
@@ -5598,7 +5602,7 @@ place_resolve(vegmesterveien,veimester_kroghs_street).
 %neighbourhood of PLACE
 %
 
-%% placestat(atb,torget). %% TA-101108 
+placestat(atb,prinsenkrysset). %% TA-101108 
 
 placestat(studentersamfundet_1,studentersamfundet).  %% AtB %% NB \+ isat
 placestat(studentersamfundet_2,studentersamfundet).  %% TA-100922
@@ -5911,7 +5915,7 @@ placestat(leangenhallen,bromstadsvingen).
 placestat(legard,legårdsbakken). 
 placestat(legevakta,st_olavs_hospital). 
 placestat(legevakten,st_olavs_hospital). 
-placestat(leinstrand,leinstrand_samfunnshus). 
+placestat(leinstrand,leinstrand_samf_hus). %% RS-140616 leinstrand_samfunnshus?
 placestat(leira,leira_skole). 
 placestat(leirbrua,leirbrua_gård). 
 placestat(lerkendalskrysset,lerkendal_stadion). 
@@ -5921,7 +5925,7 @@ placestat(leuthenhaven,torget).
 placestat(loholt_alle,lohove). 
 %% placestat(louisenlyst,leangenveien).  %% Leangenveien3 %% TA-110822
 placestat(luftkrigsskolen,persaunet_leir). 
-placestat(lundhøgda,lundåsen_n). 
+placestat(lundhøgda,lundåsen_nordre).        %% RS-140616 lundåsen_n ?
 placestat(lærerhøgskole,rotvoll_nedre). 
 placestat(lærerhøgskolen,rotvoll_nedre). 
 placestat(mamoz,fiolsvingen). %% nardo_street-16). 
@@ -6226,7 +6230,6 @@ placestat(østmarka,østmarkveien). %% TA-110623
 %% only plausible names
 %% intended for intended alternative writing (not spell error)
 
-sameplace(samdundet,studentersamfundet). %% AtB
 sameplace(aasveien,åsveien). 
 sameplace(adolføyen,adolf_øien). 
 sameplace(adolføyens,adolf_øien). 
@@ -6769,6 +6772,7 @@ sameplace(samfudnet,studentersamfundet).
 sameplace(stundentersamfundet,studentersamfundet).
 sameplace(stundentsamfunnet,studentersamfundet). 
 sameplace(samfund,studentersamfundet). 
+sameplace(samdundet,studentersamfundet). %% AtB
 sameplace(samfundet,studentersamfundet). 
 sameplace(samfunnet,studentersamfundet). 
 sameplace(sammfundet,studentersamfundet). 
@@ -7283,6 +7287,7 @@ specname(heimdal_sentrum,'Heimdal sentrum'). %%  week 33/34?
 %% specname(henrik_ourens_vei,'Henrik Ourens vei').  %% (extra dot in reghpl) EH-030616
 specname(hist,'HIST').  %% (IKKE Hist!)
 specname(hjalmar_johansens_vei,'Hjalmar Johansens vei'). 
+specname(hommelvik_skole,'Hommelvik skole').  %% RS-140614 not since 2013? No longer auto-generated
 specname(hospitalskirka,'Hospitalskirka').  %%(Rutehefte)
 specname(hotel,'Hotel'). 
 specname(hotell,'Hotell'). 
@@ -7297,7 +7302,7 @@ specname(johan_falkbergets_vei,'Johan Falkbergets veg').  %%Talsmann
 specname(johan_p_kroglundsv,'Johan P Kroglunds vei'). 
 specname(johan_tillers_vei,'Johan Tillers vei').  %% EH-031017
 specname(johannes_minsaas_veg,'Johannes Minsaas veg'). 
-specname(john_aaes_veg,'John Aaes veg').  %% (avoid, Aae`s in return)
+specname(john_aae_s_veg,'John Aaes veg').  %% (avoid, Aae`s in return)
 specname(jørgen_b_lysholms_vei,'Jørgen B Lysholms vei'). 
 specname(k_jonssons_veg,'Karl Jonssons vei'). 
 specname(k_o_thornæs_vei,'K O Thornæs vei').  %% EH-030616
@@ -8393,7 +8398,7 @@ synplace(idrettssenter,idrettsbygg).
 synplace(idrettssenteret,idrettsbygget). 
 synplace(idrettssentret,idrettsbygget). 
 synplace(ihla,ila). 
-%% synplace(ika,ikea). 
+%% synplace(ika,ikea).    %% ica?
 %% synplace(ike,ikea).    %% ikke
  synplace(ikae,ikea).  %%
 synplace(ilakirka,ila). 

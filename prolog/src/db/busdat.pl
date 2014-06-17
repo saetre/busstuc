@@ -1268,7 +1268,6 @@ synbus('7c', 7).
 synbus('8a', 8).
 synbus('8c', 8).
 synbus('9e', 9).
-
 */
 
 %% synbus(gråkallbanen,1). %% Buss til gråkallbanen (SIC) =1 o'clock

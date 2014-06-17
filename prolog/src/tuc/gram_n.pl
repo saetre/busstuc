@@ -11229,7 +11229,7 @@ object1(X,NP) ---> %% simple object without mods
 
 %%%¤ OBJECT   
 
-/* unnec (lex) %% TA-101110
+/* unneccesary (moved to lex) %% TA-101110 %% RS-140616
 object(X, NP) ---> %% Ad Hack 
     look_ahead([j]),  %% j aaes veg, også [jeg]
     w(name(JAV,NG,CL)), %% j aaes veg, j= jeg, dont select the j=jeg interpretation

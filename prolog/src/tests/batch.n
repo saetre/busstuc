@@ -9,7 +9,7 @@
 
 Hva er din versjon ?
 
- (Gløshaugen nord+2,Gløshaugen syd+3,Høgskoleringen+4,E. Tambarskjelves gt.+4,Prof. Brochsgt.+4,Gudes gt.+5) til nardo.
+(Gløshaugen nord+2,Gløshaugen syd+3,Høgskoleringen+4,E. Tambarskjelves gt.+4,Prof. Brochsgt.+4,Gudes gt.+5) til nardo.
 
 (Gløshaugen syd+3,Gløshaugen nord+4,Dybendals gate +20) til nardo før 1730.
 
@@ -17,7 +17,7 @@ Hva er din versjon ?
 
 (Gløshaugen syd+3) Solsiden.
 
-p2 til prinsen.
+fra p2 til nova.
 
 første buss fra blakli til ringve skole etter kl 730.
 

@@ -38,6 +38,10 @@
 %   id ID
 %   ip IP.
 
+% RS-140617
+% Some rules are marked as :- single  or  :- double  if the apply only to the web- or only the dialog-system
+% Rules are sorted on priority, so the first rule is always checked before the second rule, and so on.
+
 %:- ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators / CONFLICT:monobus.pl
 :- op(1150,xfy,rule).  %% Why was this not imported from pragma?? RS-111218
 
@@ -3847,7 +3851,7 @@ ip  description(Savant,System).
 
 
 describe0 rule %% describe X  MEANS what is the class/superclass
-is which(A),(ako)/Man/A,
+is (which(A),Man ako A),
    clear
 id clear, add message(answer((bcpbc(Adult)))),
    add flag(exit)
@@ -8647,20 +8651,6 @@ id  not message(foreign(_)),
     add message(nearest_station(_st,X,X)) %% NB to itself
 ip  [].
 
-
-isatnth rule % NTH. isat(Y,NTH)  Select one, avoid Donotknow message
-is  not present srel/_/time/_/_ ,
-    context (NTH isa neighbourhood),
-    replace (srel/nil/_Neighbourhood/NTH/E)
-    with    (srel/past/place/NTH/E)
-id  not message(foreign(_)),
-    not message(nearest_station(_ST,_,_)),
-    not stationsat(_,_,_),
-    add stationsat(NTH,_,_)
-ip  bound(NTH),
-    NTH \== it,
-    NTH \== sentrum, %% etc
-    isat(_,NTH).
 
 isatnth rule % NTH. isat(Y,NTH)  Select one, avoid Donotknow message
 is  not present srel/_/time/_/_ ,

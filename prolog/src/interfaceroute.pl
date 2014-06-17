@@ -23,8 +23,8 @@
 %% Question Date is the date occurring in the question
 
 
-% thisdate_period_module(TT,_,Period) contains the actual period Dynamic
-:-volatile  thisdate_period_module/3 .       %% RS-120915
+% thisdate_period_module(TT,_,Period) contains the actual period... Dynamicly updated by reset_period/0
+:-volatile  thisdate_period_module/3 .       %% RS-120915 Not stored in the save_program
 :-dynamic   thisdate_period_module/3 .
 
 
@@ -39,7 +39,8 @@ reset_period :- %% called from main.pl
     set_period_module(gb),  
     current_period(gb,CP,_,_),
     user:set(actual_period,CP), 
-    !. %% /////////
+
+    !. %% ///////// %% RS-140616 Tram ONLY? Use ONLY the FIRST MATCH for a given domain.
 
 reset_period :- %% main.pl
     user:( value(tmnflag,true) ),
@@ -47,9 +48,8 @@ reset_period :- %% main.pl
     set_period_module(tmn),  
     current_period(tmn,CP,_,_),
     user:set(actual_period,CP), 
-    !. %% /////////
 
-
+    !. %% ///////// %% RS-140616 Trafikanten MidtNorge ONLY? Use ONLY the FIRST MATCH for a GIVEN domain?
 
 reset_period :- %% NB TT
     user:set(actual_domain,tt), %% TA-110208
@@ -59,9 +59,10 @@ reset_period :- %% NB TT
 
 %%%  verify_movedates, %% check consistency  ---> main.pl
 
-    !. %% /////////
+    !. %% ///////// %% RS-140616 Don't re-reset period? Use ONLY the FIRST MATCH for a given domain.
 
 reset_period :- output('Reset Period failed'),abort. 
+
 
 set_period_module(TT) :-       %% Date is the days date, not the date that is asked !
     todaysdate(Date),  %% May change overnight // utility/datecalc.pl

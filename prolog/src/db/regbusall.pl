@@ -3,9 +3,9 @@
 %% SYSTEM BUSSTUC DOMAIN TT
 %% CREATED TA-020101
 %% REVISED TA-110824    RS-120803
-%% REVISED RS-140416    Keep using this? % No regbus after buslog.pl:regbusall was implemented?  %% RS-120803
+%% REVISED RS-140416    Keep using this! % No regbus after buslog.pl:regbusall was implemented?  %% RS-120803
 
-
+:- module( regbusall, [ nightbus/1, regbus/1 ] ). %% HEAVY DB! %% RS-120803 RS-131225 regbus/1 MOVED to app/buslog.pl
 %% Inclusive set of bus routes
 
 %% NB NB Has the same name as the <module>:regbus
