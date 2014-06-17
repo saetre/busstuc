@@ -108,7 +108,8 @@ makegram( DAGFILE, DICTFILE, DCGFILE, DCGMODULE, GRAMMODULE ):-
         write(':- ensure_loaded( user:declare ). %% RS-111213 General (semantic) Operators, ...'), nl,
         write(':- use_module( \'utility/utility\', [ testmember/2 ] ).  %% RS-131228'),nl, nl,
         write('%:- ensure_loaded( '), write(DCGMODULE),write(':\''),write(DAGFILE),write('\' ). %%, [ cc/5, w6 ] ). %% RS-140209 What is DAG?'), nl,
-        write(':- use_module( \''),write( DAGFILE ),write('\', [  ] ). %% cc/5, w6, RS-111213 What is DAG? '),nl,
+        write(':- use_module( \''),write( DAGFILE ),write('\', [ cc/5,  check_stop/5, end_of_line/5, lock/5, look_ahead/6, not_look_ahead/6 ] ). '),nl,
+        write(':- use_module( \''),write( DAGFILE ),write('\', [ pushstack/7, skip_rest/5, unlock/4, virtual/6, w/6  ] ). %% , RS-111213 What is DAG? '),nl,
         write(':- prolog_flag(discontiguous_warnings,_,off).'),nl,nl,
         
         write(':- use_module( \'utility/datecalc\', [ add_days/3, addtotime/3, datetime/6, days_between/3, easterdate/2, subfromtime/3, this_year/1, timenow/1, today/1, todaysdate/1 ] ).  %% RS-131228'),nl,

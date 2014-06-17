@@ -1,8 +1,7 @@
 HOW TO CHANGE THE CURRENT WORKING DIRECTORY, aka cd, pwd, change folder, etc.
 =============================================================================
 
-| ?- use_module(library(system)). current_directory(D,'..').
-
+| ?- use_module(library(file_systems)), current_directory(OldDir,'..').
 
 REMAINING BUGS
 ===============

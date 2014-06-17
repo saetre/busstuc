@@ -14,7 +14,8 @@
         invisible_mess/1, newfree/1, notbothfree/2, prettypr/2, webstat/3 ] ).
 
 %% META-PREDICATES
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 for(P,Q):-
   P,Q,
   false;true.
@@ -39,7 +40,7 @@ foralltest(P,Q):- \+ ( P, \+ Q).
 
 %%% RS-131225, UNIT: app/
 :- use_module( busanshp ). %%, [ empty_sms_message/1, make_total_google/2, pay/0, printmessage/1, startmark/0, og mange flere ] ).
-%% Importer ALT i fra busanswerHovedProgram? bustrans calls
+%% Importer ALT i fra busanswerHovedProgram? bustrans calls ... space/0, ...
 %%  :- interapp:use_module( busanshp, buslog, ...? ). %%, [ empty_sms_message/1, make_total_google/2, pay/0, printmessage/1, startmark/0, og mange flere ] ).
 %:- use_module( busanshp, [  veh_mod/1 ] ).     %% RS-131230
 :- use_module( buslog ). %%, [ veh_mod/1 ] ). %% message/1 used in call-back from xxx!??? xxx = busanshp?
@@ -398,8 +399,8 @@ writeanswer2(FQL,Program,Panswer):-
     printallmessagesanswer(FQL,Panswer,false). %% without departures
 
 
-writeanswer2(_,_,Panswer):- 
-    writeanswer(Panswer).
+writeanswer2( _, _, Panswer ) :- 
+    writeanswer( Panswer ).
 
 printallmessagesanswer(_FQL,Answer,false):- %% no deps, print even sms-invis
     sequence_member(printmessage(_),Answer),    %%
@@ -432,7 +433,7 @@ standardemptysmsanswer(false,_,               bcpbc(cannotanswer)).
 
 
 writeanswer(Panswer) :- 
-    traceanswer(Panswer),
+    traceanswer( Panswer ),
     Panswer,
     !. 
 
@@ -443,9 +444,10 @@ blankanswer(Panswer):-
                   interapp:invisible_mess(X)).
 
 invisible_mess(Mess):- 
-    member(Mess,[startmark,endline,space,pay,nopay]). 
+    member( Mess, [ startmark, endline, space, pay, nopay ] ). 
+
 invisible_mess(printmessage(Mess)):-    
-    empty_sms_message(Mess). %% busanshp.pl
+    empty_sms_message( Mess ). %% busanshp.pl
  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -480,8 +482,8 @@ makeanswer(true,_,ProgIn,(bcpbc(nopassages),nl)     ) :-
     sequence_member(departure(_,_,_,[]),ProgIn), %% after execution
     !.
 
-makeanswer(true,FlatCode,ProgIn,AnswerOut       ) :-
-    makeinitanswer(true,FlatCode,ProgIn,InitAnswer),
+makeanswer( true, FlatCode, ProgIn, AnswerOut       ) :-
+    makeinitanswer( true, FlatCode, ProgIn, InitAnswer ),
     pragma_aux( busans, ProgIn,InitAnswer,AnswerOut),   % pragma.pl pragma_aux/4
     !,
     make_total_google(AnswerOut, _TOTAL). %% busanshp.pl

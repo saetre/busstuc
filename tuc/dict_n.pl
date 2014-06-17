@@ -1025,6 +1025,8 @@ compword(en,[av],[]). %% Haz ?
     xcompword(om,[bord],ombord). %% TA-100909
     xcompword(om,[f,'.',eks,'.'],om). %% etc 
 
+%%    xcompword(p,[2],p2).        %% RS-140615 prinsen_p2 (IKKE "på [buss] 2")
+
 %%     xcompword(st,[':'],st). %%  ':' as skipdot//  unnec
 
     xcompword(sy,['.'],st). %% Olvs.. 

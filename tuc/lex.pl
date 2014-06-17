@@ -45,25 +45,27 @@
 %% META PREDICATES : for/2, foralltest/2, once1/1, set_of/3, set_ops/3, test/1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %doall(P): (P, then succeed)
-:-meta_predicate  doall(:).
+:-meta_predicate  doall(0).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:-meta_predicate  foralltest(:,:).
+:-meta_predicate  foralltest(0,0).
 foralltest(P,Q):- \+ ( P, \+ Q). 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:-meta_predicate  once1(:).
+:-meta_predicate  once1(0).
 once1(P):-P,!. %% same as once, but version independent
                %% try once, otherwise FAIL
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Prologs setof is baroque %% 
+:-meta_predicate  set_of(+,0,-).
 set_of(X,Y,Z):-           %%
     setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
     Z=[].                 %% What is wrong with empty sets ?
 %% Sequence preserving setof, ( first occurrence stays first)
+:-meta_predicate  set_ops(+,0,-).
 set_ops(X,Y,Z):-
     findall(X,Y,Z1),
     remove_duplicates(Z1,Z). %% order-preserving
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:-meta_predicate  test(:).
+:-meta_predicate  test(0).
 test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)) among other things, so: import nostation/1  Move to pragma.pl ?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -101,7 +103,7 @@ test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)) among other things, 
 :- use_module( '../db/regcompstr', [ composite_road/3 ] ).
 :- use_module( '../db/regbusall', [ regbus/1 ] ). %% HEAVY DB! %% RS-120803 RS-131225 regbus/1 MOVED to app/buslog.pl
 :- use_module( '../db/regstr', [   streetstat/5 ] ). %% RS-111201 Remember to update source program, which is makeaux?
-:- use_module( '../db/teledat2', [   lookupdb2/3 ] ).
+:- use_module( '../db/teledat2', [  bustopic1/1, lookupdb2/3, teletopic1/1 ] ).
 :- use_module( '../db/timedat', [ named_date/2 ]).
 %:- ensure_loaded( '../db/topreg' ). %%, [     routedomain/1,        route_period/4    ] ).
 :- use_module( '../db/topreg', [     routedomain/1,        route_period/4    ] ).
@@ -145,7 +147,7 @@ test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)) among other things, 
 %  analyse the input for selection of most probable language,
 %  then answer in the same language
 
-lexproc3(L1,AssumedLanguage,L3):-
+lexproc3(L1,AssumedLanguage,L3) :-
 
     user:( language  =: AssumedLanguage ), %% AssumedLanguage := value$(language)
 
@@ -186,14 +188,14 @@ the_other_language(norsk,english).
 
 
 
-decide_language(NuOld,NuNew,_Old,New,New):- 
+decide_language(NuOld,NuNew,_Old,New,New) :- 
     NuNew < NuOld,  % there are fewer unknowns in the new language 
     !.
 
 decide_language(_NuOld,_NuNew,Old,_New,Old).
 
 
-lexproc2(L1,L3,Nunks):-
+lexproc2(L1,L3,Nunks) :-
     lexproc(L1,L3),
     unknown_words(strict,L3,Unknowns), %% To decide language, 
                                        %% neglect misspelled part_names
@@ -660,7 +662,7 @@ lcode1(N1,N2):-
     lcode2(N1,N2).
 
 
-%%¤  LCODE2
+%%¤  LCODE2             % if N0 unwanted name, dont apply lcode/name
 
 lcode2(X,Y) :-
     synw0(X,X1),
@@ -988,12 +990,16 @@ unknown_words(Strict,L,Z):-
              completely_unknown(Strict,X,L), %% AD HOC
             Z).        
 
-% Write an unknown word warning unless the name is a misspelled fullname. 
+% Write an unknown word warning unless the name is a misspelled fullname... (Already removed by clean1/0).
 
 
-completely_unknown(_Strict,Nuss,L):- 
-     member(w(Nuss,NameSet),L), 
-     member(name(Nuss,unknown,_),NameSet). 
+completely_unknown( _Strict, Nuss, L ) :- 
+     member( w( Nuss, NameSet ), L ),
+     member( name(Nuss,unknown,_ ), NameSet ).
+%     txt( _N1, w(Nuss, name(Nuss,unknown,unk) ), _N2)  ; true .
+                                                 %% RS-140616. Check if the unknown name has been removed already
+%Bad Experiment: Suddenly no english!            %% because of beeing a part of something known ( see clean1/0 ).
+     %% write( Nuss ), nl, write( 'lex.pl~1001' ). %% RS-140616 Debugging unknown 
 
 
 only_part_name(Jakobsli):-  
@@ -1023,15 +1029,16 @@ sprea(M,[X|Y]):-
 sprea(N,[]):- 
     assert(maxl(N)).
 
-
-spreall(M,w(X,Z),N):- 
-    for(member(U,Z),assert(txt(M,w(X,U),N))).
-
-%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate for(0,0).     %% RS-140616    For ALL possible P, do ALL possible Q, finally true.
 for(P,Q):-     %% RS-131229 Ok to use utility/library.pl for-predicate when lex is NOT a module ;-)
   P,Q,
   false;true.
 %%%%%%%%%%%%%%%%%%
+
+spreall(M,w(X,Z),N):- 
+    for(member(U,Z),assert(txt(M,w(X,U),N))).
+
 
 %%%%%%%%%%  Write a * at position in list
 
@@ -1119,12 +1126,12 @@ teletopics(T):- %% ad hoc
 %%   set_of(X,(member(X,[address,firstname,lastname,mailaddress,office,telephone,work,hans,hennes,
 %                        his,her,my,it]), 
 
-    set_of(X,(teletopic1(X), %% teledat2
+    set_of( X, (teletopic1(X), %% teledat2
 
     occurs_in_txt(X)),T).
 
 bustopics(T):- %% ad hoc 
-     set_of(X,(bustopic1(X),  %% teledat2
+     set_of( X, (bustopic1(X),  %% teledat2
                occurs_in_txt(X)),T).
 
 occurs_in_txt(D):- 
@@ -1324,16 +1331,20 @@ thedomainofthestation(X,D):-
 
 makecompnames :-  
 
-     set_ops((N,W,X,NEXT),syntxt1(N,W,X,NEXT),SYNTSET),     %% sequence preserving tagore programmer/man
-     for(member((N,W,X,NEXT),SYNTSET),    matchcomp3(N,X,NEXT)  ),  
+     set_ops( (N,W,X,NEXT), syntxt1(N,W,X,NEXT), SYNTSET ),     %% sequence preserving tagore programmer/man
+     for( member( (N,W,X,NEXT), SYNTSET),    matchcomp3(N,X,NEXT)  ),   %% RS-140616 For "John Aae`s vei" etc.
   
-     for(ctxt(M1,WWW,N1),  assertnewtxt(M1,WWW,N1)).
+     for( ctxt(M1,WWW,N1), assertnewtxt(M1,WWW,N1) ).   %% RS-140616 For dialog context?
 
 
 
 makecompwords :- %% Try every word
     for( txt(N1,w(Lap,_TAG),_), 
          matchcompword(N1,Lap)).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate assertnewa(0) .     %% RS-140616  assertnewa/1 Goal_0 metapredicate.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 matchcompword(N1,Lap):-
     lcompword(Lap,TopComputer,Computer),
@@ -1356,7 +1367,7 @@ make_exclusive_compwords :- %% Try every word
 %%  but 'de' 'vil' are still on the list, and will be reintroduced
 
 
-exmatchcompword(N1,Lap):- %% delete substituents afterwards 
+exmatchcompword(N1,Lap) :- %% delete substituents afterwards 
     txt(N1,w(Lap,_),N2),  %% word is not removed earlier
 
     xlcompword(Lap,TopComputer,Computer), 
@@ -1438,21 +1449,30 @@ cleantxt :-
 %% dronningens -> out
 %% dronningens gate
 
-proxyclean :- %% TA-101027
-     doall( clean1 ). %% failure driven loop (utility)
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:- meta_predicate doall(0) .   doall/1 (Goal_0) . Zero input arguments for Goal_0
 doall(P):-  % P, then succeed 
     P,
     false ;
     true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+proxyclean :- %% TA-101027
+     doall( clean1 ). %% failure driven loop (utility)
+
 clean1 :-  %% hans finnes gate %% TA-110114 fronted
     txt(N0,w(hans,_),N1),
+%   txt(N0, w(john_aae_s_veg,name(john_aae_s_veg,_,_)),N2), %% RS-140616   OOps, bad case of search and replace!
     txt(N0, w(John_aaes_veg,name(John_aaes_veg,_,_)),N2), 
         N2 > N1, 
         txtretract(txt(N0,w(hans,_),N1)). 
+
+clean1 :-  %% john_aae_s_veg (station) %% RS-140616 fronted "Remove unknown parts of a known name!" :-)
+    txt(N1, w(Aaes,name(Aaes,unknown,unk)),N2),
+%   txt(N1, w(john_aae_s_veg,name(john_aae_s_veg,_,_)),N3), %% RS-140616   OOps, bad case of search and replace!
+    txt(N0, w(John_aaes_veg,name(John_aaes_veg,_,_)),N3),   %% This name (N0-N3) spans the problematic word at N1-N2
+        N0 < N1  ,  N2 < N3 , 
+        txtretract( txt(N1,w(aaes,name(aaes,unknown,unk)),N2) ).
 
 
 clean1 :- %% Odd husbys veg \+ wrong husbys veg %% TA-110105
@@ -1468,10 +1488,11 @@ clean1 :- %% sig (dk) = seg | Sig berg alle %% TA-101215
 
 
  % % % single letter
-clean1 :-  %% j aaes veg \= jeg ...  p morsets veg \+ på
+clean1 :-  %% "j aaes veg":  j \= jeg ...  "p morsets veg":  p \+ på ...
     txt(N0,w(J,_),N1), 
     single_letter(J), %% TA-101111
-    txt(N0, w(John_aaes_veg,name(John_aaes_veg,_,_)),N2),
+%   txt(N0, w(john_aae_s_veg,name(john_aae_s_veg,_,_)),N2), %% RS-140616   OOps, bad case of search and replace!
+    txt(N0, w(John_aaes_veg,name(John_aaes_veg,_,_)),N2), 
         N2 > N1, %% NB >  c.j.hambros vei
         txtretract(txt(N0,w(J,_),N1)). 
 
@@ -1905,6 +1926,10 @@ matchreststreet5(N0,N2,[Street],N2,true):- %% skip vei allowed if not "vei" foll
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate assertnewz(:) .     %% RS-140616  assertnewa/1 Goal_0 metapredicate.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % %
 
 anystreetnumberassert(N1,Ident,N2) :- 
@@ -1928,7 +1953,7 @@ anystreetnumberassert(N0,Ident,N1) :-
 
    !,  
 
-	assertnewz(txt(N0,w(Ident-Num,name(Ident-Num,n,street)),N2)). %% TA-110509
+	assertnewz( txt(N0,w(Ident-Num,name(Ident-Num,n,street)),N2) ). %% TA-110509
 
 %%       a!   Johan Bojers vei = Johan (Bojer)
 %%       z!  hareveien < havreveien 
@@ -2153,11 +2178,10 @@ assertnewtxt(M1,WWW,N1):-
         assertnewz( txt(M1,WWW ,N1)). %% TA-110520
      %% assertnewa NB  latecomers are spell corrected
 
-
 assertnewa(P):-P,!;
     asserta(P).
 
-assertnewz(P):-P,!; %% last, dont shadow stations
+assertnewz(P):-P,!; %% last (actually undefined!), dont shadow stations. %% RS-140616 (hopefully!)
     assert(P).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

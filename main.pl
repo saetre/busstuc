@@ -120,7 +120,7 @@ set(X,Y) :-
         user:set(X,Y).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-gorg :-listing(gps_origin). %% debug %% TA-110128
+gorg :- listing( gps_origin ). %% debug %% TA-110128
 
 
 break(_). %% dummy for breakpoints
@@ -793,9 +793,9 @@ process(L):-           %% Process is under a repeat loop
     translate2(L,TQL),
     nl,
 
-    (value(textflag,true) -> 
+    ( value( textflag, true ) -> 
 
-        copy_term(TQL,TQLNV), %% dont bind variables
+        copy_term( TQL, TQLNV ), %% dont bind variables
         ptbwrite:drucke_baum(TQLNV)
           
                ; true),
@@ -939,7 +939,7 @@ layout2(L,TQL):-
     transfix(FOL,TQL).
 
 
-listxt :- listing(txt). 
+listxt :- listing( lex:txt ). %% RS-140615 Modularized (not in main, but in lex(?) )
 
 startteleerror :-
     value(teleflag,true), \+ value(busflag,true), 
@@ -959,7 +959,7 @@ stopteleerror :-
 
 stopteleerror :-!.
 
-grammar2(L,error):-     
+grammar2(L,error) :-     
     value(notimeoutflag,true),
     length(L,M),M > 21, %% Temporary Emergency 
     !,
@@ -1278,7 +1278,7 @@ exetuc1(_TQL):-
     value(noevalflag,true),!. %% New Flag  : No TUC-evaluation
 
 exetuc1(TQL):- 
-    trackprog(2,gorg), %% gps_origin %% TA-110130
+    trackprog(2,gorg), %% gps_origin stasjon+1, stasjon+4 etc. %% TA-110130 %% RS-140615
     evaluateq2(TQL). %% evaluate.pl
 
 

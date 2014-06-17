@@ -854,9 +854,9 @@ nthval(N,L,X):-
 
 %% nth(N,Set,Nth) %% -> Library (Standard) 
 	
-
-sequence_member(X,Y):-
-   occ(X,Y). %%
+%%RS-140617
+sequence_member( X, Y ):-
+   occ( X, Y ). %%
 
 roundmember(X,Y):-
     occ(X,Y).

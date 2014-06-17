@@ -13,7 +13,8 @@
         transbuslist1/3,        writeheading/1,        %   Also predicates for analysis and verification of routes    %%
         createonlyfromstations/0,       createonlytostations/0, fromstation1/1, % It is impossible to go FROM  hovedterminalen to A  (in this order)
         nopassanyway/2,                 passanyway/2,           tostation1/1,   % It is impossible to go from A to hovedterminalen (in this order)
-        verify_consistency/2,           verify_movedates/0,     %% Verify that all movable holidays are included, and internally consistent        
+       %verify_consistency/2,
+        verify_consistency/0,           verify_movedates/0,     %% Verify that all movable holidays are included, and internally consistent        
         % Helper predicates for makeauxtables (->createstatbus)
         fromstationonly0/1,             nextstat0/2,            tostationonly0/1,       transbuslist0/3,        unproperstation0/1,
         % Helper predicates for createhash
@@ -60,12 +61,10 @@ Run in /db/ directory
 
 %% RS-140102. UNIT: /  and  /utility/  %% RS-140101 Moved to user:declare for common and early compilation!
 :- ensure_loaded( user:'declare.pl' ). %, [ := /2 etc. ] ). for/2, test/1, 
-:- use_module( 'utility/utility.pl', [  delete1/3, ends_with/3, out/1, output/1, textlength/2, writepred/1 ] ). % writepred/1 is USED! in for/3 or set_of/3, 
+:- use_module( 'utility/utility.pl', [  delete1/3, ends_with/3, out/1, output/1, textlength/2 ] ). %, writepred/1  writepred/1 is USED! in for/3 or set_of/3, 
 :- use_module( 'utility/datecalc.pl', [ add_days/3, datetime/6, easterdate/2, sub_days/3, this_year/1 ]).  %% RS-121325
-%%RS-140411, For extracut.pl : create_regcut( r1613_140415 ) .... modules
-%% :- use_module( 'utility/extracut.pl', [ create_regcut/1 ]).  %% RS-140411, create_regcut/1 IS USED in importing new routes (for-loop)
 
-?-compile( busroute:'compileroute.pl' ).   %% Bootstrapping for compilation, faster than "ensure loaded"?!
+%?-compile( busroute:'compileroute.pl' ).   %% Bootstrapping for compilation, faster than "ensure loaded"?!
 %:-ensure_loaded( user:'interfaceroute' ).
 :- use_module( 'interfaceroute', [ domain_module/2, thisdate_period_module/3, reset_period/0 ] ).
 
@@ -111,19 +110,22 @@ Run in /db/ directory
 
 %% META-PREDICATES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%:- meta_predicate 
-%dumppredas(+,:).       %% Copied to extracut
+:- meta_predicate dumppredas(0,?).       %% Moved to extracut... ??
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate for(0,0) . 
 for( P, Q ) :- %% For all P, do Q (with part of P)
   P, Q,
   false;true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-set_of(X,Y,Z):-           %%
+:- meta_predicate set_of(?,0,?) .       %% RS-140615 Fix all meta_predicates like this? No arguments (suppressed or not?)
+set_of( X, Y, Z ):-           %%
     setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
     Z=[].                 %% What is wrong with empty sets ?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate test(0) .
 test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -133,7 +135,7 @@ makeauxtables :-
 %    user:( tmnflagg := false ), %% RS-140106 Trenger ikke auxtables for tram??
     reset_period,  %% get the right period 
 
-    write('%  Please wait 1 minute...'),nl,
+    write( '%  Please wait 1 minute while creating (db/auxtables) regstr/2' ),nl,
 
     %%tell('db/auxtables.pl'),    %% RS-121121
     open( 'db/auxtables.pl', write, Stream, [encoding('UTF-8')] ), %% RS-140102, Run from monobuss folder !!
@@ -233,19 +235,19 @@ createunproperstations:-
 %% It will always be correct after two "passes"
 
 createonlyfromstations:-   
-     for(fromstation1(A),assert(fromstationonly0(A))),
+     for( fromstation1(A), assert( fromstationonly0(A) ) ),
 
-     dumppredas(fromstationonly0(X),fromstationonly(X)).
+     dumppredas( fromstationonly0(X), fromstationonly(X) ).
 
 
 createonlytostations:- 
-      for(tostation1(A),assert(tostationonly0(A))),
+      for( tostation1(A), assert( tostationonly0(A) ) ),
 
-      dumppredas(tostationonly0(X),tostationonly(X)).
+      dumppredas( tostationonly0(X),tostationonly(X) ).
 
 createtransbuslist:-
 
-    thisdate_period_module(tt,_Todate,TTP), %% TT-period of current date  %% set by reset_period
+    thisdate_period_module(tt,_Todate,TTP), %% TT-period covering current date  %% set by reset_period
     makenext(TTP),
 
     makeinteriors,
@@ -270,12 +272,20 @@ passanyway(D,S):-
 
 
 
+:- meta_predicate tafind(?,0,0), taexists(?,0,0), taforall(?,0,0) .
+tafind(_X,Y,Z):- Y,Z.
+taexists(_X,Y,Z):-Y,Z,!.
+taforall(_X,Y,Z):- \+ (Y, \+ Z),!.
+
+xproperstation(A):-
+    properstation(A),
+    test( stationD(A,tt) ).   %%% Very Ad Hoc, only TT    %% TODO: RS-140210
 
 % It is impossible to go FROM  hovedterminalen to A  (in this order)
 
 fromstation1(A):-
   
-    tafind(A,(xproperstation(A), \+ corr_ht(A)), 
+    tafind( A, ( xproperstation(A), \+ corr_ht(A) ), 
 
                taforall(Rid,buslog:passeq(Rid,_Statno,A,_,_,D1), 
     
@@ -297,23 +307,12 @@ tostation1(A):-
                                         D1 > D2))).
 
 
-xproperstation(A):-
-    properstation(A),
-    test( stationD(A,tt) ).   %%% Very Ad Hoc, only TT    %% TODO: RS-140210
-  
-
 corr_ht(A):- corr(A,hovedterminalen). 
 %%              corrx(A,hovedterminalen). %% Tram
 
 passes_ht(Rid,Delay):-
     buslog:passeq(Rid,_Statno,MD,_,_,Delay), 
     corr_ht(MD). 
-
-
-tafind(_X,Y,Z):- Y,Z.
-taexists(_X,Y,Z):-Y,Z,!.
-taforall(_X,Y,Z):- \+ (Y, \+ Z),!.
-
 
 %-------------------------------------------------------------
 
@@ -353,7 +352,7 @@ crerr:-
 
 crerr1 :-
 
-  write('Undefined - identifiers '),nl,nl,
+  write('Undefined - identifiers... (db/places) placestat/2'),nl,nl,
 
   set_of(X, (station_reference(X), \+ buslog:hpl(_,X,_Off)),
 
@@ -366,7 +365,7 @@ crerr1 :-
 
 crerr2 :-
   nl,
-  write('Undefined street to station references '),nl,
+  write( 'Undefined street to station references (streetstat/5)' ),nl,
     
   set_of(D,(regstr:streetstat(_A,_B,_C1,_C2,D), \+ buslog:station(D)),Z),
 
@@ -411,6 +410,8 @@ makeinteriors :-
 
 interiors(Z):- set_of(X,interior(X),Z).
 
+:- meta_predicate complies(0,0) .
+complies(P,Q) :- \+ (P, \+ Q).
 
 interior(Y):-  %% all neigbours have the same buslist
     statbus0(Y,H),
@@ -443,9 +444,6 @@ connive(X,Z1,Z2):-
    member(U,Z1),corr_ht(U),member(V,Z2),corr_ht(V), 
    X=hovedterminalen.
 
-
-
-complies(P,Q) :- \+ (P, \+ Q).
 
 propertransfer(P):-
     buslog:station(P), 
@@ -519,7 +517,7 @@ torehash(yggdrasi,yggdrasil).
 
 createhash :-
     told,
-    write(' Please Wait another minute... '),nl, %% TA-090317
+    write(' Please Wait another minute for namehash-table'),nl, %% TA-090317
 
     reset_period,  %% Use the current names (just for hashing)
 
@@ -687,8 +685,6 @@ splitgenroad(X,  X,nil,X).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
-
 dumppredas( T0, T ):-
     nl,
     write('%%% ' ),nl,nl, 
@@ -790,17 +786,20 @@ ver_movedate :-    %% Added check for May17 %% TA-100106
 
 %% RS-140420 Default consistency check to be used at every re-compilation
 verify_consistency :-
-        default_period( tt, winter, Winter ) ,
-        default_period( tt, summer, Summer) ,
+        default_period( tt, winter, First ) ,
+%        default_period( tt, summer, First) ,
+%        default_period( tt, previous, First) ,
+        reset_period ,
+        thisdate_period_module(tt,_,Second) , % contains the actual period... Dynamicly updated by reset_period/0
 
-        utility:append_atoms( 'db/tables/', Winter, WinterFile ),
+        utility:append_atoms( 'db/tables/', Second, WinterFile ),
         utility:append_atoms( WinterFile, '/reghpl.pl', WinterFileExtension ),
-        utility:append_atoms( 'db/tables/', Summer, SummerFile ),
+        utility:append_atoms( 'db/tables/', First, SummerFile ),
         utility:append_atoms( SummerFile, '/reghpl.pl', SummerFileExtension ),
 
-        ensure_loaded( Winter:WinterFileExtension ),
-        ensure_loaded( Summer:SummerFileExtension ),
-        verify_consistency( Winter, Summer ) .
+        ensure_loaded( Second:WinterFileExtension ),
+        ensure_loaded( First:SummerFileExtension ),
+        verify_consistency( Second, First ) .
 
 verify_consistency( Mod1, Mod2 ) :-
  
@@ -813,7 +812,7 @@ for(
 
      Name1 \== Name2),
 
-     writepred(alias_station2(Nr,Name1,Name2))).
+     utility:writepred(alias_station2(Nr,Name1,Name2))).
 
 %:-told.            %% RS-140208 Reset all output-streams first...
 %:-nl,write( 'makeauxtables.pl~line790 is making auxtables now...' ),nl.
