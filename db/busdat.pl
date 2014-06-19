@@ -92,7 +92,8 @@
 %:- ensure_loaded( 'places' ). %% [ corr/2, foreign/1, isat/2, placestat/2 ] ).
 
 %:- ensure_loaded( [ regbusall, regcompstr, regstr, teledat2 ] ). %% HEAVY DB!
-:- ensure_loaded( regbusall ). %, [ nightbus/1, regbus/1 ] ). %% RS-120803
+%:- ensure_loaded( regbusall ). %, [ nightbus/1, regbus/1 ] ). %% RS-120803
+:- use_module( regbusall, [ nightbus/1, regbus/1 ] ). %, [ nightbus/1, regbus/1 ] ). %% RS-140619
 %% RS-140416 Two different regbus (Period-independent, and many modules with regbus too.
 %%This used to be done from topreg? (Should be done from topreg::makeauxtable?)
 

@@ -405,9 +405,9 @@ measurecall(P,N):-
    nl,
    out('Avg = '),out(Avg),output(' ms.').
 
-measurecall1(P,N):-N >0,call(P),fail.
-measurecall1(P,N):-N >0, M is N-1,measurecall1(P,M).
-measurecall1(_,0):-!.
+measurecall1( P, N ) :- N >0, call( P ), fail.
+measurecall1( P, N ) :- N >0, M is N-1, measurecall1( P, M ).
+measurecall1( _, 0 ) :- ! .
 
 
 
