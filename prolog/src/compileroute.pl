@@ -11,7 +11,9 @@
 
 %% Data taken from topreg.pl
 %%:-use_module('busroute.pl', [] ).     %%RS-140207 NO, This file is imported INto the busroute.pl-module
-:- use_module( 'utility/extracut.pl', [ create_regcut/1 ] ).     %%RS-140511 This file is imported INTO THE busroute.pl-module
+
+%Experiment: Try to create regcut on the fly, only if missing/needed: findOrCreateRegcut/2 (module, file)
+%:- use_module( 'utility/extracut.pl', [ create_regcut/1 ] ).     %%RS-140511 This file is imported INTO THE busroute.pl-module
 
 %% Unit: DB
 %% Main Table for Route Modules %% RS-140210 Loaded from  interfaceroutes / busroute / compileroute
@@ -22,7 +24,7 @@
 
 %% RS-140210 meta_predicates    : means use source module       + means use this( compileroute ) module  (used for module-expansion)
 :- meta_predicate
-           ta_for(:,:) . %% ta_for/2
+           ta_for(0,0) . %% ta_for/2
 
 %%:-prolog_flag( discontiguous_warnings,_,off ). 
 
@@ -80,14 +82,15 @@ make_mod_file_list( Module, MF ) :-
     MF = [Regdko,Regbus,Reghpl,Regcomp,Regcut]. % , % .
 
 %,    findOrCreateRegcut( Module, Regcut )%Check if regcut exists, and create_regcut if not... %% RS-140510
-% Check whether the regcut file exists with the extensions `.pl' (or `.prolog'), and is readable, else create 1
-findOrCreateRegcut( _Module, RegcutFile ) :-
-        absolute_file_name( RegcutFile, _AbsFile,
-                            [ extensions( ['.pl','.prolog'] ), access( [read] ), file_errors( fail ) ] ) .
+% Check whether the regcut file exists with the extensions `.pl' (or `.prolog'), and is readable, else create it
+%findOrCreateRegcut( _Module, RegcutFile ) :-
+%        absolute_file_name( RegcutFile, _AbsFile,
+%                            [ extensions( ['.pl','.prolog'] ), access( [read] ), file_errors( fail ) ] ) .
+%
+%findOrCreateRegcut( Module, _RegcutFile ) :-
+%        !,      %% Only create max 1 new regcut without total re-compilation.
+%        create_regcut( Module ).
 
-findOrCreateRegcut( Module, _RegcutFile ) :-
-        !,      %% Only create max 1 new regcut without total re-compilation.
-        create_regcut( Module ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

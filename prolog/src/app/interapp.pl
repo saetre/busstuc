@@ -15,11 +15,12 @@
 
 %% META-PREDICATES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+:- meta_predicate     for(0,0).  %% for/2. Stay inside interapp? %% RS-140619
 for(P,Q):-
   P,Q,
   false;true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate     foralltest(0,0).  %% for/2. Stay inside interapp? %% RS-140619
 foralltest(P,Q):- \+ ( P, \+ Q). 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -53,9 +54,15 @@ foralltest(P,Q):- \+ ( P, \+ Q).
 
 %%% RS-131225, UNIT: utility/
 :- use_module( '../utility/datecalc' ). %%, [ timenow2/2, todaysdate/1 ] ).  %% RS-131231, SPIDER-bug. timenow2/2 IS used!!
-:- use_module( '../utility/utility', [ output/1 ] ). %% RS-140412   %% RS-131231, False Warning, SPIDER-bug. output/1 IS used!!
+:- use_module( '../utility/utility', [ output/1 ] ). %% RS-140412   %% RS-131231, False Warning, SPIDER-bug. output/1 IS used !! when called from... trans?
 % Debug Exit: :(interapp,writeanswer(,(startmark,,(printmessage(date_isa_day(date(2014,4,13),sunday)),,(endline,,(printmessage(otherperiod(date(2014,4,13))),,(endline,,(google(dir(depnode(32,32,2,2,30,bus_0108_0007,108,2,dronningens_gate_d1),stavset)),,(bwrbusbc(nightbus,108),,(bcp(passes),,(bwr(dronningens_gate_d1),,(bcp(attime),,(bwt(32),,(nl,,(bcp(and),,(bcp(arrivesat),,(bwr(stavset),,(bcp(attime),,(bwt(54),,(period,,(output(...),,(bwrbusbc(nightbus,119),,(bcp(passes),,(bwr(munkegata_m1),,(bcp(attime),,(bwt(302),,(nl,,(bcp(and),,(bcp(arrivesat),,(bwr(stavset_senter),,(bcp(attime),,(bwt(325),,(period,earliesttimes))))))))))))))))))))))))))))))))) ?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+:- meta_predicate      irun(+, ?, ?, +).   %% irun/4. : means Stay inside interapp? Should the program be iinterpreted inside interapp? %% RS-140619
+:- meta_predicate      irun0(+, ?, ?, +).  %% irun0/4. Stay inside interapp? %% RS-140619
+:- meta_predicate      irun1(+, ?, ?, +).  %% irun1/4. Stay inside interapp? %% RS-140619
+
+:- meta_predicate      isuccess(?).  %% Stay inside interapp? %% RS-140210
 
 
 ieval(TQL0) :- user:value(teleflag,true),    %% RS-131228    Exported through tuc/evaluate.pl!
@@ -152,8 +159,8 @@ determine_query_period :-
 
 determine_application_period([_:::TQL]):-
     veh_mod(H),
-    ( sequence_member(date(A,B,C) isa date,TQL) -> %% date occurs
-        search_period_module(tt,date(A,B,C),_J);   %% utility.pl? or topreg?
+    ( sequence_member( date(A,B,C) isa date, TQL ) -> %% date occurs
+        search_period_module(tt, date(A,B,C), _J );   %% utility.pl? or topreg?
         _J=H),
      !,
     (H=r1617_100621 -> user:( application_period := team );
@@ -250,7 +257,6 @@ traceanswer(_). %% Otherwise
 
 %  IRUN
 
-
 irun(_A,_B,_C,_D):-    %% not interested in answer
     user:value(norsource,true),%% TA-110207
     !.
@@ -275,10 +281,10 @@ irun(A,B,C,D):-
 
 irun0(TQL,_FQL,_,PROG):- 
     \+ user:value(busflag,true),  %%  Drop TRY TUC  if busflag 
-    \+ isuccess(PROG),
-    \+ explain_query(TQL),
+    \+ isuccess( PROG ),
+    \+ explain_query( TQL ),
     !,    
-    trytuc(TQL).   
+    trytuc( TQL ).
 
 
 avoidfool(FQL1) :- %% moved into bustrans %% TA-101014
@@ -298,12 +304,11 @@ find_tag(_,nil).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+:- meta_predicate      execute_program(0).  %% Stay inside interapp? %% RS-140619
+:- meta_predicate      makeanswertele(0).  %% Stay inside interapp? %% RS-140619
+
 
 % Successful program.  
-
-
-:- meta_predicate
-           execute_program(+).  %% Stay inside interapp? %% RS-140210
 
 
 irun1( _, _FlatCode, _FC1, Program ) :-
@@ -360,14 +365,14 @@ payornotpay(_ProgIn,pay).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-makeanswertele(teleprocess(_,_,_,P)):-
+makeanswertele( teleprocess(_,_,_,P) ) :- %% RS-140619. For debugging teleprocess
     nl,
     nl,
     write(P), %% DUMMY, JUST A FILE NAME
     nl,
     nl.
 
-execute_program2(Program,true):- 
+execute_program2( Program, true ):- 
     call(Program),
     !.
 execute_program2(_Program,false). 
@@ -638,7 +643,7 @@ isc(timeis(_)).                       % klokka
 isc(tramstations(_)).                 % navnet på trikkestasjonene
 isc(true).                            % Answer Yes
 
-isc(teleprocess(_,_,_,_)) :- user:value(teleflag,true). 
+isc(teleprocess(_,_,_,_)) :- user:value( teleflag,true ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
