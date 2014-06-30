@@ -611,10 +611,10 @@ sysout_item(reset_context).
 
 writeconstlist1st([]).
 
-writeconstlist1st([Field=Val|Rest]) :-
+writeconstlist1st( [ Field=Val | Rest ] ) :-
 	\+ Val = dontknow,
 	\+ Val = doknow,
-	bcp(field(Field)),space,bwrbc(Val), %% write(Val), %% TA-061208
+	bcp( field(Field) ), space, bwrbc(Val), %% write(Val), %% TA-061208
 	writeconstlist(Rest).
 
 writeconstlist1st([_=Val|Rest]) :-
@@ -651,8 +651,8 @@ invitemore.
 
 %% These are  not declared as dynamic
 
-store_last_answer(Cid,AnswerOut):-
-   retractall(last_answer(Cid,_)),
+store_last_answer(Cid,AnswerOut) :-
+   retractall( last_answer(Cid,_) ),
    assert(last_answer(Cid,AnswerOut)).
 
 get_last_answer(Cid,AnswerOut):-

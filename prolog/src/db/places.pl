@@ -9323,6 +9323,8 @@ synplace(silddråvegen,silddråvegen).
 %% synplace(simen,siemens).  
 synplace(singsakerkrysset,jonsvannsveien). 
 synplace(singsakerstudentby,singsaker_studenthjem). 
+synplace(singsaker,singsaker_studenthjem).
+synplace(sinsaker,singsaker_studenthjem).
 synplace(sitti,city). 
 synplace(sittisyd,city_syd). 
 synplace(sitty,city). 

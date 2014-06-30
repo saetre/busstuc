@@ -786,9 +786,9 @@ ver_movedate :-    %% Added check for May17 %% TA-100106
 
 %% RS-140420 Default consistency check to be used at every re-compilation
 verify_consistency :-
-        default_period( tt, winter, First ) ,
+%        default_period( tt, winter, First ) ,
 %        default_period( tt, summer, First) ,
-%        default_period( tt, previous, First) ,
+        default_period( tt, previous, First) ,
         reset_period ,
         thisdate_period_module(tt,_,Second) , % contains the actual period... Dynamicly updated by reset_period/0
 
