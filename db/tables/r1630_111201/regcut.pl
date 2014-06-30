@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 :- module( r1630_111201,  [ %% RS-140106    Automate this during regcut creation...
         ex_departureday/4, ex_ntourstops/2, ex_passes4/6, hpl/4,
         ntourstops/2, passes4/6,    %% RS-140106    Automate this, from regpas.pl
@@ -32,24 +33,24 @@ ex_passes4(1,16010711,bygrensen,9,7,7).
 ex_passes4(1,16010740,belvedere,10,8,8).
 ex_passes4(1,16019999,breidablikk,11,9,9).
 ex_passes4(1,16010709,nordre_hoem,12,10,10).
-ex_passes4(1,16010708,søndre_hoem,13,11,11).
+ex_passes4(1,16010708,sÃ¸ndre_hoem,13,11,11).
 ex_passes4(1,16010707,rognheim,14,13,13).
 ex_passes4(1,16010706,munkvoll_trikk,15,15,15).
 ex_passes4(1,16010705,ferstad,16,16,16).
 ex_passes4(1,16010704,ugla_trondheim,17,17,17).
 ex_passes4(1,16010703,kyvannet,18,18,18).
 ex_passes4(1,16010702,vestmarka,19,19,19).
-ex_passes4(1,16010701,herlofsenløypa,20,20,20).
+ex_passes4(1,16010701,herlofsenlÃ¸ypa,20,20,20).
 ex_passes4(1,16010700,lian_trondheim,21,21,999).
 ex_passes4(2,16010700,lian_trondheim,1,999,0).
-ex_passes4(2,16010701,herlofsenløypa,2,1,1).
+ex_passes4(2,16010701,herlofsenlÃ¸ypa,2,1,1).
 ex_passes4(2,16011702,vestmarka,3,2,2).
 ex_passes4(2,16010703,kyvannet,4,4,4).
 ex_passes4(2,16011704,ugla_trondheim,5,5,5).
 ex_passes4(2,16010705,ferstad,6,6,6).
 ex_passes4(2,16010706,munkvoll_trikk,7,8,8).
 ex_passes4(2,16010707,rognheim,8,9,9).
-ex_passes4(2,16011708,søndre_hoem,9,10,10).
+ex_passes4(2,16011708,sÃ¸ndre_hoem,9,10,10).
 ex_passes4(2,16010709,nordre_hoem,10,11,11).
 ex_passes4(2,16019999,breidablikk,11,13,13).
 ex_passes4(2,16010740,belvedere,12,14,14).
