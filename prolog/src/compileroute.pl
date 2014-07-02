@@ -5,7 +5,7 @@
 %% REVISED RS-111220
 
 % Compiles the Busroute tables
-:- module( compileroute, [  consultbase/1, consult_periodset/1  ] ).   %% RS-131227    From compileroute
+:- module( compileroute, [  compile_route_set/1, consultbase/1, consult_periodset/1  ] ).   %% RS-131227    From compileroute
 
 %% This is completely domain-independent
 

@@ -1256,7 +1256,7 @@ hpl(17142502,hell,hell,'Hell').
 hpl(17142505,hellsenteret,hellsenteret,'Hellsenteret').
 hpl(17142510,stjørdal_stasjon,stjørdal_stasjon,'Stjørdal stasjon').
 hpl(17142586,værnesbranden,værnesbranden,'Værnesbranden').
-hpl(17142707,torvet_stjørdal,torvet_stjørdal,'Torvet Stjørdal').
+hpl(17142707,torvet,torvet,'Torvet').
 hpl(17148501,gjevingåsen,gjevingåsen,'Gjevingåsen').
 hpl(17148502,hell,hell,'Hell').
 hpl(17148505,hellsenteret,hellsenteret,'Hellsenteret').
