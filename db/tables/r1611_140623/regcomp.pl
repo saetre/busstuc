@@ -1754,7 +1754,7 @@ composite_stat(hell,[],hell).
 composite_stat(hellsenteret,[],hellsenteret).
 composite_stat(stjørdal,[stasjon],stjørdal_stasjon).
 composite_stat(værnesbranden,[],værnesbranden).
-composite_stat(torvet,[stjørdal],torvet_stjørdal).
+composite_stat(torvet,[],torvet).
 composite_stat(gjevingåsen,[],gjevingåsen).
 composite_stat(hell,[],hell).
 composite_stat(hellsenteret,[],hellsenteret).
