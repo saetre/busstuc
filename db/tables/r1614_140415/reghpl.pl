@@ -552,8 +552,8 @@ hpl(16010787,kambru,kambru,'Kambru').
 hpl(16010790,væresholmen,væresholmen,'Væresholmen').
 hpl(16010791,være,være,'Være').
 hpl(16010796,weidemannsveien,weidemannsveien,'Weidemannsveien').
-hpl(16010905,kongens_gt_k1,kongens_gt_k1,'Kongens gt - K1').
-hpl(16010907,kongens_gt_k2,kongens_gt_k2,'Kongens gt - K2').
+hpl(16010905,kongens_gate_k1,kongens_gate_k1,'Kongens gt - K1').
+hpl(16010907,kongens_gate_k2,kongens_gate_k2,'Kongens gt - K2').
 hpl(16010928,prinsens_gate_p2,prinsens_gate_p2,'Prinsens gate P2').
 hpl(16010996,skjetlein,skjetlein,'Skjetlein').
 hpl(16011000,breidablikk,breidablikk,'Breidablikk').
