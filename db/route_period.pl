@@ -42,7 +42,6 @@ route_period(   tt, r1611_140623, date(2014,06,23),   date(2014,08,17) ).	%% Som
 route_period(   tt, r1611_140623, date(2014,06,23),   date(2014,08,17) ).	%% Sommerrute AtB 2014
 route_period(   tt, r1611_140623, date(2014,06,23),   date(2014,08,17) ).	%% Sommerruter
 route_period(   tt, r1611_140818, date(2014,08,18),   date(2014,10,05) ).	%% Høst
-route_period(   tt, r1611_140818, date(2014,08,18),   date(2014,10,05) ).	%% Høst
 route_period(   tmn,r1630_101201, date(2012,12,01),   date(2014,12,31) ).
 route_period(   gb, r1630_111201, date(2012,12,01),   date(2014,12,31) ).  %% Graakallbanen
 route_period(   tt, r1611_140331, date(2014,03,31),   date(2015,01,01) ).       %% Før og etter påske 2014

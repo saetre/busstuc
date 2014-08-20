@@ -91,7 +91,7 @@ period_message( r1611_140623,
 ['AtB Routes for summer 2014',
  'AtB Sommerruter  2014']).
 
-period_message( r1612_121024,
+period_message( r1611_140818,
 ['AtB Autumn routes',
  'AtB Høstruter']). %% \+ .   %% RS-120810
 
