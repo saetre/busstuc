@@ -581,7 +581,7 @@ passes4(554,16011197,høgskoleringen,16,13,13).
 passes4(554,16011550,vollabakken,17,13,13).
 passes4(554,16011477,stud_samfundet,18,14,14).
 passes4(554,16011011,prinsen_kino,19,15,15).
-passes4(554,16010905,kongens_gt_k1,20,17,22).
+passes4(554,16010905,kongens_gate_k1,20,17,22).
 passes4(554,16010014,hospitalskirka,21,23,23).
 passes4(554,16010013,kalvskinnet,22,23,23).
 passes4(554,16010442,skansen,23,24,24).
@@ -603,7 +603,7 @@ passes4(554,16010132,fjøslia,38,39,39).
 passes4(554,16010413,rydningen,39,40,40).
 passes4(554,16010287,lillerydningen,40,40,40).
 passes4(554,16010074,buenget,41,41,41).
-passes4(595,16010905,kongens_gt_k1,1,999,0).
+passes4(595,16010905,kongens_gate_k1,1,999,0).
 passes4(595,16010014,hospitalskirka,2,1,1).
 passes4(595,16010013,kalvskinnet,3,1,1).
 passes4(595,16010442,skansen,4,2,2).
@@ -644,7 +644,7 @@ passes4(617,16011197,høgskoleringen,16,13,13).
 passes4(617,16011550,vollabakken,17,13,13).
 passes4(617,16011477,stud_samfundet,18,14,14).
 passes4(617,16011011,prinsen_kino,19,15,15).
-passes4(617,16010905,kongens_gt_k1,20,17,17).
+passes4(617,16010905,kongens_gate_k1,20,17,17).
 passes4(637,16010074,buenget,1,999,0).
 passes4(637,16011287,lillerydningen,2,1,1).
 passes4(637,16011413,rydningen,3,1,1).
@@ -666,7 +666,7 @@ passes4(637,16011192,ila,18,15,15).
 passes4(637,16011442,skansen,19,16,16).
 passes4(637,16011013,kalvskinnet,20,17,17).
 passes4(637,16011014,hospitalskirka,21,17,17).
-passes4(637,16010907,kongens_gt_k2,22,19,22).
+passes4(637,16010907,kongens_gate_k2,22,19,22).
 passes4(637,16010011,prinsen_kino,23,24,24).
 passes4(637,16010477,stud_samfundet,24,25,25).
 passes4(637,16010550,vollabakken,25,26,26).
@@ -704,7 +704,7 @@ passes4(675,16011192,ila,18,14,14).
 passes4(675,16011442,skansen,19,15,15).
 passes4(675,16011013,kalvskinnet,20,16,16).
 passes4(675,16011014,hospitalskirka,21,16,16).
-passes4(675,16010907,kongens_gt_k2,22,17,17).
+passes4(675,16010907,kongens_gate_k2,22,17,17).
 passes4(697,16010784,værestrøa,1,999,0).
 passes4(697,16011782,væresbakken,2,1,1).
 passes4(697,16011781,være_østre,3,2,2).
@@ -1147,7 +1147,7 @@ passes4(1116,16011376,prof_brochs_gt,20,15,15).
 passes4(1116,16011112,e_tamb_skj_gt,21,16,16).
 passes4(1116,16011476,stud_samfundet,22,17,17).
 passes4(1116,16011011,prinsen_kino,23,18,18).
-passes4(1116,16010905,kongens_gt_k1,24,20,23).
+passes4(1116,16010905,kongens_gate_k1,24,20,23).
 passes4(1116,16010014,hospitalskirka,25,23,23).
 passes4(1116,16010013,kalvskinnet,26,24,24).
 passes4(1116,16010442,skansen,27,25,25).
@@ -1191,7 +1191,7 @@ passes4(1184,16011192,ila,18,16,16).
 passes4(1184,16011442,skansen,19,17,17).
 passes4(1184,16011013,kalvskinnet,20,18,18).
 passes4(1184,16011014,hospitalskirka,21,19,19).
-passes4(1184,16010907,kongens_gt_k2,22,20,25).
+passes4(1184,16010907,kongens_gate_k2,22,20,25).
 passes4(1184,16010011,prinsen_kino,23,27,27).
 passes4(1184,16010476,stud_samfundet,24,28,28).
 passes4(1184,16010112,e_tamb_skj_gt,25,29,29).
@@ -1236,7 +1236,7 @@ passes4(1162,16011192,ila,18,16,16).
 passes4(1162,16011442,skansen,19,17,17).
 passes4(1162,16011013,kalvskinnet,20,18,18).
 passes4(1162,16011014,hospitalskirka,21,19,19).
-passes4(1162,16010907,kongens_gt_k2,22,20,20).
+passes4(1162,16010907,kongens_gate_k2,22,20,20).
 passes4(1303,16011103,dragvoll,1,999,0).
 passes4(1303,16011120,estenstadvegen,2,1,1).
 passes4(1303,16011268,loholtbakken,3,2,2).
@@ -1625,7 +1625,7 @@ passes4(1538,16011476,stud_samfundet,20,19,19).
 passes4(1538,16011011,prinsen_kino,21,20,20).
 passes4(1538,16010928,prinsens_gt_p2,22,21,21).
 passes4(1538,16010005,munkegata_m5,23,22,999).
-passes4(1617,16010905,kongens_gt_k1,1,999,0).
+passes4(1617,16010905,kongens_gate_k1,1,999,0).
 passes4(1617,16010014,hospitalskirka,2,1,1).
 passes4(1617,16010013,kalvskinnet,3,1,1).
 passes4(1617,16010442,skansen,4,2,2).
@@ -1658,11 +1658,11 @@ passes4(1634,16011192,ila,13,13,13).
 passes4(1634,16011442,skansen,14,14,14).
 passes4(1634,16011013,kalvskinnet,15,15,15).
 passes4(1634,16011014,hospitalskirka,16,16,16).
-passes4(1634,16010907,kongens_gt_k2,17,18,18).
+passes4(1634,16010907,kongens_gate_k2,17,18,18).
 passes4(1651,16010204,trondheim_s,1,999,0).
 passes4(1651,16010018,søndre_gate_22,2,1,1).
 passes4(1651,16010001,munkegata_m1,3,4,4).
-passes4(1651,16010905,kongens_gt_k1,4,4,4).
+passes4(1651,16010905,kongens_gate_k1,4,4,4).
 passes4(1651,16010014,hospitalskirka,5,5,5).
 passes4(1651,16010013,kalvskinnet,6,5,5).
 passes4(1651,16010442,skansen,7,6,6).
@@ -1833,7 +1833,7 @@ passes4(1756,16011404,solsiden,31,23,23).
 passes4(1756,16011050,bakkegata,32,25,25).
 passes4(1756,16011022,nova_kinosenter,33,26,26).
 passes4(1756,16010001,munkegata_m1,34,29,33).
-passes4(1756,16010905,kongens_gt_k1,35,34,34).
+passes4(1756,16010905,kongens_gate_k1,35,34,34).
 passes4(1756,16010014,hospitalskirka,36,35,35).
 passes4(1756,16010013,kalvskinnet,37,35,35).
 passes4(1756,16010442,skansen,38,36,36).
@@ -1886,7 +1886,7 @@ passes4(1873,16011404,solsiden,36,28,28).
 passes4(1873,16011050,bakkegata,37,30,30).
 passes4(1873,16011022,nova_kinosenter,38,31,31).
 passes4(1873,16010001,munkegata_m1,39,34,38).
-passes4(1873,16010905,kongens_gt_k1,40,39,39).
+passes4(1873,16010905,kongens_gate_k1,40,39,39).
 passes4(1873,16010014,hospitalskirka,41,39,39).
 passes4(1873,16010013,kalvskinnet,42,40,40).
 passes4(1873,16010442,skansen,43,41,41).
@@ -3514,7 +3514,7 @@ passes4(3491,16011197,høgskoleringen,12,9,9).
 passes4(3491,16011550,vollabakken,13,9,9).
 passes4(3491,16011477,stud_samfundet,14,10,10).
 passes4(3491,16011011,prinsen_kino,15,11,11).
-passes4(3491,16010905,kongens_gt_k1,16,13,14).
+passes4(3491,16010905,kongens_gate_k1,16,13,14).
 passes4(3491,16010014,hospitalskirka,17,15,15).
 passes4(3491,16010013,kalvskinnet,18,16,16).
 passes4(3491,16010442,skansen,19,16,16).
@@ -3525,7 +3525,7 @@ passes4(3512,16011192,ila,2,2,2).
 passes4(3512,16011442,skansen,3,3,3).
 passes4(3512,16011013,kalvskinnet,4,4,4).
 passes4(3512,16011014,hospitalskirka,5,4,4).
-passes4(3512,16010907,kongens_gt_k2,6,5,7).
+passes4(3512,16010907,kongens_gate_k2,6,5,7).
 passes4(3512,16010011,prinsen_kino,7,9,9).
 passes4(3512,16010477,stud_samfundet,8,10,10).
 passes4(3512,16010550,vollabakken,9,11,11).
@@ -3658,7 +3658,7 @@ passes4(3656,16011170,kolstad_heimdal,17,20,20).
 passes4(3673,16010488,trondheim_s,1,999,0).
 passes4(3673,16010018,søndre_gate_22,2,1,1).
 passes4(3673,16010001,munkegata_m1,3,4,4).
-passes4(3673,16010905,kongens_gt_k1,4,5,5).
+passes4(3673,16010905,kongens_gate_k1,4,5,5).
 passes4(3673,16010014,hospitalskirka,5,6,6).
 passes4(3673,16010013,kalvskinnet,6,6,6).
 passes4(3673,16010442,skansen,7,7,7).
@@ -3858,7 +3858,7 @@ passes4(3834,16011192,ila,39,37,37).
 passes4(3834,16011442,skansen,40,38,38).
 passes4(3834,16011013,kalvskinnet,41,39,39).
 passes4(3834,16011014,hospitalskirka,42,40,40).
-passes4(3834,16010907,kongens_gt_k2,43,42,42).
+passes4(3834,16010907,kongens_gate_k2,43,42,42).
 passes4(3834,16010011,prinsen_kino,44,44,44).
 passes4(3834,16010476,stud_samfundet,45,45,45).
 passes4(3834,16010112,e_tamb_skj_gt,46,46,46).
@@ -4123,7 +4123,7 @@ passes4(4119,16010449,skyttervegen,19,22,22).
 passes4(4119,16010274,lyngvegen,20,23,23).
 passes4(4139,16011347,o_tryggvasons,1,999,0).
 passes4(4139,16010006,dronningens_gt,2,2,2).
-passes4(4139,16010905,kongens_gt_k1,3,2,2).
+passes4(4139,16010905,kongens_gate_k1,3,2,2).
 passes4(4139,16010014,hospitalskirka,4,3,3).
 passes4(4139,16010013,kalvskinnet,5,3,3).
 passes4(4139,16010442,skansen,6,4,4).
@@ -4217,7 +4217,7 @@ passes4(4196,16011216,karlsheim,36,36,36).
 passes4(4196,16011200,jakobsli,37,37,37).
 passes4(4233,16011347,o_tryggvasons,1,999,0).
 passes4(4233,16010006,dronningens_gt,2,2,2).
-passes4(4233,16010905,kongens_gt_k1,3,2,2).
+passes4(4233,16010905,kongens_gate_k1,3,2,2).
 passes4(4233,16010014,hospitalskirka,4,3,3).
 passes4(4233,16010013,kalvskinnet,5,3,3).
 passes4(4233,16010442,skansen,6,4,4).
@@ -4668,7 +4668,7 @@ passes4(4662,16011475,str_heim_hageby,21,18,18).
 passes4(4662,16011052,str_heim_skole,22,19,19).
 passes4(4662,16011472,strindheim,23,19,19).
 passes4(4685,16010001,munkegata_m1,1,999,0).
-passes4(4685,16010905,kongens_gt_k1,2,1,1).
+passes4(4685,16010905,kongens_gate_k1,2,1,1).
 passes4(4685,16010014,hospitalskirka,3,1,1).
 passes4(4685,16010013,kalvskinnet,4,1,1).
 passes4(4685,16010442,skansen,5,2,2).

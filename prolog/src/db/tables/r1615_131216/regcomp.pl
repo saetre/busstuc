@@ -875,8 +875,8 @@ composite_stat(weidemann,[street],weidemannsveien). % generated 4.1
 composite_stat(weidemann_street,[],weidemannsveien). % generated 4.2
 composite_stat(trondheim,[s, 3],trondheim_s_3).
 composite_stat(trondheim,[s, 6],trondheim_s_6).
-composite_stat(kongens,[gt, k1],kongens_gt_k1).
-composite_stat(kongens,[gt, k2],kongens_gt_k2).
+composite_stat(kongens,[gt, k1],kongens_gate_k1).
+composite_stat(kongens,[gt, k2],kongens_gate_k2).
 composite_stat(prinsens,[gt, p2],prinsens_gt_p2).
 composite_stat(skjetlein,[],skjetlein).
 composite_stat(breidablikk,[],breidablikk).

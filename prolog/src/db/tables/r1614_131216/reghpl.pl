@@ -607,8 +607,8 @@ hpl(16010795,flakk_fergeleie,flakk_fergeleie,'Flakk fergeleie').
 hpl(16010796,weidemannsveien,weidemannsveien,'Weidemannsveien').
 hpl(16010813,trondheim_s_3,trondheim_s_3,'Trondheim S 3').
 hpl(16010816,trondheim_s_6,trondheim_s_6,'Trondheim S 6').
-hpl(16010905,kongens_gt_k1,kongens_gt_k1,'Kongens gt - K1').
-hpl(16010907,kongens_gt_k2,kongens_gt_k2,'Kongens gt - K2').
+hpl(16010905,kongens_gate_k1,kongens_gate_k1,'Kongens gt - K1').
+hpl(16010907,kongens_gate_k2,kongens_gate_k2,'Kongens gt - K2').
 hpl(16010928,prinsens_gt_p2,prinsens_gt_p2,'Prinsens gt. P2').
 hpl(16010996,skjetlein,skjetlein,'Skjetlein').
 hpl(16011000,breidablikk,breidablikk,'Breidablikk').
