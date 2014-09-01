@@ -12,7 +12,7 @@
 %:- ensure_loaded( user:'../utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
 :- use_module( '../utility/utility', [ ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
 
-:- use_module( '../app/busanshp', [ bcp/1, bcpbc/1, paraphrase/1, paraphrase3/3, period/0, printmessage/1 ] ).        %% RS-131231
+:- use_module( '../app/busanshp', [ bcp/1, bcpbc/1, paraphrase/1, paraphrase3/3, period/0, printmessage/1, space/0 ] ).        %% RS-131231
 
 %:- use_module( 'newcontext2', [ addref/3, getcontext/2, getcurrent/1 ] ).        %% FOR busanshp.pl AND checkitem2.pl
 
