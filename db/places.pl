@@ -128,7 +128,8 @@ corr(p1,hovedterminalen).  %% RS-140102 Difficulties with hovedterminalen != sen
 corr(p2,hovedterminalen).
 
 corr(stavset_senter,stavset_senter). 
-corr(studentersamfundet_1,studentersamfundet_2). 
+corr(studentersamfundet,studentersamfundet_2).   %% RS-140901 Ser ikke ut som om _1 finnes lenger?
+corr(studentersamfundet_1,studentersamfundet_2). %% RS-140901 Ser ikke ut som om _1 finnes lenger?
 
 corr(lerkendal_stadion,tempe_kirke). 
 
@@ -5604,15 +5605,15 @@ place_resolve(vegmesterveien,veimester_kroghs_street).
 
 placestat(atb,prinsenkrysset). %% TA-101108 
 
-placestat(studentersamfundet_1,studentersamfundet).  %% AtB %% NB \+ isat
-placestat(studentersamfundet_2,studentersamfundet).  %% TA-100922
+placestat(studentersamfundet,studentersamfundet_1).  %% AtB %% NB \+ isat
+placestat(studentersamfundet,studentersamfundet_2).  %% TA-100922  %% RS-140901 %% Reverserte disse
 
 placestat('ALT/Statoil',rotvoll_nedre).%% hist/ALT %% extra dep Bus 6 
 placestat('Adolf Øiens skole',prinsen_kinosenter).  %%
 placestat('Bakke kirke',bakkegata).  %% Syndrome Hvor er bakke kirke
 placestat('Berg arbeidskirke',kvilhaugen). 
-%% placestat('Brøset sykehus',brøsetvegen_119). 
-placestat('Comfort Hotel Park',prinsen_kinosenter). 
+%% placestat('Brøset sykehus',brøsetvegen_119).
+placestat('Comfort Hotel Park',prinsen_kinosenter).
 placestat('Dalgård skole',dalgård).  %%
 placestat('Din bil',nidarvoll_skole).  %% Bratsbergveien 11
 placestat('Eberg skole',teglverkskrysset).
