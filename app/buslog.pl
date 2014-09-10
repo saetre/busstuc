@@ -16,7 +16,7 @@
         converttostandard/2,    corrstats/3,            coupled1/8,             dateis/4,       dayModSeqNo/2,  departure/4, %% RS-131225    Necessary?
         day_route/1,            dep_after/2,            dep_between/3,          departureday/4,
         departuredayMOD/5,      depbusMOD/12,           depMOD/12,      %% OBSOLETE when RealTime: depbeforestationwalk/1, 
-        depset/2,               diffdep4/4,             direct_connection/3,    endstations1/1,         findstations/3,
+        depset/2,               diffdep4/4,             direct_connection/3,    endstations1/1, endstations/2, findstations/3,
         ensure_removed/3,       hpl/3,          internalkonst/1,        %% RS-131225    For telelog.pl 'sk(_).'
         firstactualdeparturetime/4,                     frame_remember/2,       irrelevantdirect/4,
         islist/1,               isnear/2,               keepafterstrict/3,      keepafterwalking/2,
