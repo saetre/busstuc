@@ -22,11 +22,15 @@
 :- use_module( dmeq ). %%, [  dmeq/2  ]). %% RS-140102, Really Used, in several bustrans.pl-rules !!
 :- use_module( interapp ). %%, [  newfree/1 ] ).
 :- use_module( telelog ). %%, [  bound/1,  unbound/1 ]).
-:- use_module( '../db/busdat' ). %% ,[ internal_airbus/1 ].
 :- use_module( buslog ). %%, [ atday/1, atdate/1, timeis/1, dateis/4, message/1, takestime/3, passesstations/4 ] ). % bound/1, unbound/1, 
 
 %UNIT: /db/
+:- use_module( '../db/busdat' ). %% ,[ internal_airbus/1 ].
 %uses /db/places:placestat/2 !!
+
+%UNIT: /tuc/
+%:- use_module( '../tuc/fernando', [ subclass0/2 ] ). %% REALLY USED! See below!
+
 
 % Transformation rules for the bus domain
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1905,7 +1909,7 @@ id  clear,
     add flag(exit)
 ip  unbound(A),   %% i.e. general
       %% dmeq([oracle,computer,agent],Agent). %% etc %% special case
-      subclass0(savant,Agent). %%  er du et system ?
+      fernando:subclass0(savant,Agent). %%  er du et system ?
 
 be2tucno rule %% is tuc a class ?
 is  exactly (test,dob/be/Tuc/A/B,tuc isa savant,A isa Agent,event/real/B),
@@ -1926,7 +1930,7 @@ id  clear,
 ip  unbound(A),   %% i.e. general
     dmeq([tuc,bustuc],Tagore),
     \+ dmeq([self],Programmer), %% er jeg en jente
-    \+ subclass0(Programmer,Agent).
+    \+ fernando:subclass0(Programmer,Agent).
 
 
 %%    Integrasjon er en løsning *NEI
@@ -5057,7 +5061,7 @@ ip  \+ user:value(teleflag,true),
 
 whoareyou0 rule %% hvem er du
 is  which(A),(dob/be/tuc/A/B,tuc isa savant,A isa Agent,event/real/B),
-    {subclass0(Agent,agent)}, %% TA-110615
+    {fernando:subclass0(Agent,agent)}, %% TA-110615
     clear
 id  clear,
     add(message(answer((bcpbc(bustuc))))),
@@ -5298,7 +5302,7 @@ is  test,
     not srel/on/_/_/_ , %% etc
     not srel/_/day/nil/_
 id  add message(tagore)
-ip  subclass0(Agent,agent),
+ip  fernando:subclass0(Agent,agent),
     dmeq([program,oracle,service,savant],Oracle).
 
 
