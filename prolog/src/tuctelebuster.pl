@@ -14,8 +14,8 @@
 
 %%?-prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates
 
-%:-['tucbuster.pl'].   %% :-[tuctele]. %%% // Tele things %% TA-051018
-:- use_module( 'tucbuster.pl', [ ] ).   %% :-[tuctele]. %%% // Tele things %% TA-051018
+:- compile( 'tucbuster.pl' ).   %% :-[tuctele]. %%% // Tele things %% TA-051018
+%:- use_module( 'tucbuster.pl', [ ] ).   %% :-[tuctele]. %%% // Tele things %% TA-051018
 
 :- (duallangflag :=true). %% telebuster is not  speech based
 

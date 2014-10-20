@@ -11,11 +11,7 @@
 %% ?-prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates// Testing
 
 %% RS-131227    UNIT: /
-:- ensure_loaded( user:'declare' ). %% RS-111213  General (semantic) Operators
-%:-ensure_loaded(user:declare). %%, [ remember/1 ] ). %% for gram_n??, [ output/1, sequence_member/2, value/2  ]).
-%% sequence_member/2 is used in tucbuss -> monobuss -> negans.pl
-%% RS-131223 Value means TROUBLE! (And for(X,Y) is troublesome too!)
-
+:- ensure_loaded( user:'declare' ). %% RS-111213  Operators % AND sequence_member/2 is used in tucbuss -> monobuss -> negans.pl
 
 ?-  (gpsflag := true), %% NB TEST VERSION, NTNU Server
 
@@ -57,14 +53,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%:-compile('tucbuses.pl'). %% Sicstus 4 requires *.pl extension
-:-use_module('tucbuses.pl', [ makegram/0 ] ). %% Sicstus 4 requires extension
+:-compile('tucbuses.pl'). %% Sicstus 4 requires *.pl extension  %:-use_module('tucbuses.pl', [ makegram/0 ] ).
 
-%:-ensure_loaded( version ).       %% RS-131227    With version_date/1, used in monobus -> teledat2.pl
-:- ensure_loaded( user:version ).       %% RS-131227    With version_date/1, used in monobus -> teledat2.pl
+:-use_module( main, [ dialog/0, hei/0, hi/0, jettyrun/1, r/1, run/0, spyr/1, status/0 ] ). %% RS-140209    %?-compile('main.pl').
 
-:- use_module('main.pl', [  hei/0,   hi/0,      run/0 ] ). %% RS-140209    %?-compile('main.pl').  
-:-user:use_module( main, [ jettyrun/1 ] ).      %% RS-140331    % Import into user: ("main") module.
+:-ensure_loaded( user:version ).       %% RS-131227    With version_date/1, used in monobus -> teledat2.pl
 
 ?-compile('monobus.pl'). %% // after main.pl  Unknown error 
 
@@ -72,6 +65,7 @@
  create_busstuc  (Unix command)
      compile_busstuc.pl
         busstuc.pl
+           utility/utility.pl
            tucbuss.pl
                tucbuses.pl
                    user:declare.pl      (in module user:)

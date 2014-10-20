@@ -4,23 +4,54 @@
 %% CREATED TA-050927
 %% REVISED TA-060707
 
-%% Synthesis of old checkitem.pl and checkitemtele.pl
-:-module( checkitem2, [ ] ).
+%% Synthesis of old checkitem.pl and checkitemtele.pl    %:-module( checkitem, [] ) IS OBSOLETE!   %% RS-140914
+
+%% UNIT /dialog/
+:-module( checkitem2, [ checkitem/3, current_frame/1, remove_messages/2,  remtp/3, sysout_item/1, writeconstlist/1, writeconstlist1st/1 ] ).
 
 %% User input terminals
 
-%:- ensure_loaded( user:'../utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
-:- use_module( '../utility/utility', [ ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
+%% UNIT / AND /utiltity/
+:- ensure_loaded( user:'../declare' ).       %% RS-111212  traceprog/2, trackprog/2
 
-:- use_module( '../app/busanshp', [ bcp/1, bcpbc/1, paraphrase/1, paraphrase3/3, period/0, printmessage/1, space/0 ] ).        %% RS-131231
+:- use_module( '../utility/utility', [ ] ). %roundmember/2 ] ). %% RS-140208. := /2, listall/1, Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
+:- use_module( '../app/interapp', [ execute_program/1, isuccess/1, makeanswer/4, waves/0, writeanswer/1, writeprog/1 ] ). %% LOOP!! writeanswer/1, 
 
-%:- use_module( 'newcontext2', [ addref/3, getcontext/2, getcurrent/1 ] ).        %% FOR busanshp.pl AND checkitem2.pl
+%%% RS-131225, UNIT: /
+%:- use_module( '../main', [  ] ).
+
+%%% RS-140914, UNIT: /app/
+:- use_module( '../app/busanshp', [ bcp/1, bcpbc/1, bwrbc/1, colon/0, paraphrase/1, paraphrase2/2, paraphrase3/3, period/0, prent0/1, printmessage/1, space/0 ] ).
+:- use_module( '../app/negans', [ makenegative/3, trytofool/2 ] ).
+
+%% RS-140914    UNIT: /dialog/
+
+:- use_module( d_dialogue, [ last_answer/2, subst_tql/4 ] ).
+%:- ensure_loaded( user:d_dialogue ). % , [ last_answer/2, subst_tql/4 ] ).
+
+:- use_module( frames2, [ find_askfor/3, find_parentslot/3, frame_getsubslots/2, frame_getvalue_rec/4, frame_gettype_rec/3, frame_iscomplete/2,
+                          frame_setexperience/4, frame_setvalue_rec/4 ] ).
+%:-use_module( 'newcontext2', [ addref/3, getcontext/2, getcurrent/1 ] ).        %% FOR busanshp.pl AND checkitem2.pl
+:- use_module( newcontext2, [ addref/3, commitref/3, getcontext/2, getcurrent/1, reset_context/0, setcontext/2 ] ). %% RS-140101
+:- use_module( parseres, [ busanswer_sat/3, listall/1, listrequirements/1, teleanswer_sat/2,
+        writetelebusteranswer_rep/1, writetelebusteranswer_saf/2, writetelebusteranswer_sqt/3, writetelebusteranswer4/4 ] ). %% Printing the result from database query 
+:- use_module( update2, [ dorelax/3, getuserrefer/2, issubclass/2, istype/2, saturate/3, updateframe/3, updateframe_checkanswer/4, updateitems/2 ] ).
+
+%% UNIT: /utility/,     RS-140914
+:- use_module( '../utility/datecalc', [ daysucc/2, isday/1, today/1 ] ).
+:- use_module( '../utility/writeout', [ doubt/2 ] ).%% RS-140912
+
+
+
+:- use_module( '../app/pragma', [ flatroundre/2, pragma/3, roundmember/2 ] ). %% roundmember must be declared meta_predicate early on!
 
 
 :- volatile current_frame/1.    %%, last_answer/2. %% RS-131218
 
-:-  dynamic current_frame/1.    %%, last_answer/2. %% RS-131218 Trouble with multiple Modules?
+:- dynamic current_frame/1.    %%, last_answer/2. %% RS-131218 Trouble with multiple Modules?
 
+
+trackprog(X, Y) :- user:trackprog(X, Y).
 
 
 %% NB  checkteleitem   and checkitem  are mingled %% TA-051106%%%%%%%%%%%%%
@@ -30,12 +61,12 @@
 
 
 checkitem(Type, OldFocus, NewFocus) :-
-	value(teleflag,true),
+	user:( value(teleflag,true) ),
 	!,	
 	checkitem(tele,Type,OldFocus,NewFocus). %% name of module
 
 checkitem(Type, OldFocus, NewFocus) :-
-  \+ 	value(teleflag,true),
+  \+ 	user:( value(teleflag,true) ),
   checkitem(trans, Type,OldFocus, NewFocus).   %% name of module
 
 
@@ -47,7 +78,7 @@ checkitem(_,nil, X,X).
 
 checkitem(tele,uati, focus(OldFrame, OldRefer, slot(Slot)), focus(NewFrame, NewRefer, [])) :-
     getcurrent(Cid),
-    getcontex(Cid, context((item, Item isa _), _, _, _)),
+    getcontext(Cid, context((item, Item isa _), _, _, _)),
     frame_getsubslots(Slot, SubSlot),
     frame_gettype_rec(OldFrame, SubSlot, Type),
     istype(Item, Type),
@@ -102,16 +133,16 @@ checkitem(_Tele,uatc, focus(OldFrame, OldRefer, slot(Slot)), focus(NewFrame, New
 %% uadi
 
 
-checkitem(TELETRANS,uadi, focus(OldFrame, OldRefer, [Tql, _Prog]), focus(NewFrame, NewRefer, [NewTql, NewProg])) :-
+checkitem(teletrans,uadi, focus(OldFrame, OldRefer, [Tql, _Prog]), focus(NewFrame, NewRefer, [NewTql, NewProg])) :-
     getcurrent(Cid),
     getcontext(Cid, context((item, Item isa ItemType), _, _, _)),
-    roundmember(whichref(RefType, _) isa _, Tql),
-    issubclass(ItemType, RefType),
-    (addref(Cid, Item, ItemType) ; true),
-    commitref(Cid, OldRefer, NewRefer),
-    subst_tql(whichref(RefType, _), Item, Tql, NewTql),
+    roundmember( whichref(RefType, _) isa _, Tql),
+    issubclass( ItemType, RefType),
+    (addref( Cid, Item, ItemType) ; true),
+    commitref( Cid, OldRefer, NewRefer),
+    subst_tql( whichref(RefType, _), Item, Tql, NewTql),
     assert(current_frame(OldFrame)),
-    pragma(TELETRANS, NewTql, NewProg),
+    pragma(teletrans, NewTql, NewProg),
     retractall(current_frame(_)),
     updateframe(NewProg, OldFrame, NewFrame).
 
@@ -122,7 +153,7 @@ checkitem(TELETRANS,uadi, focus(OldFrame, OldRefer, [Tql, _Prog]), focus(NewFram
 
 %% uin
 
-checkitem(TELETRANS,uin, focus(OldFrame, OldRefer, _Query), focus(NewFrame, NewRefer, [(new, Rest), Program])) :-
+checkitem(teletrans,uin, focus(OldFrame, OldRefer, _Query), focus(NewFrame, NewRefer, [(new, Rest), Program])) :-
     trapvarframe(OldFrame),  %% TA-030108
     getcurrent(Cid),
     getcontext(Cid, context((New, Rest), _, TempRefer, NodeStack)),
@@ -137,7 +168,7 @@ checkitem(TELETRANS,uin, focus(OldFrame, OldRefer, _Query), focus(NewFrame, NewR
 
 
     assert(current_frame(OldFrame)),
-    pragma(TELETRANS, (New, Rest), Program),
+    pragma(teletrans, (New, Rest), Program),
 
     retractall(current_frame(_)),
     setcontext(Cid, context((New, Rest), Program, TempRefer, NodeStack)), %%
@@ -158,7 +189,7 @@ checkitem(TELETRANS,uin, focus(OldFrame, OldRefer, _Query), focus(NewFrame, NewR
 %% uim
 
 
-checkitem(TELETRANS,uim, focus(OldFrame, OldRefer, [Tql, _OldProg]), focus(NewFrame, NewRefer, [Tql, NewProg])) :-
+checkitem(teletrans,uim, focus(OldFrame, OldRefer, [Tql, _OldProg]), focus(NewFrame, NewRefer, [Tql, NewProg])) :-
 
 %%    \+ roundmember(nocontext,OldProg), %% Do not Modify nocontext 
 
@@ -168,7 +199,7 @@ checkitem(TELETRANS,uim, focus(OldFrame, OldRefer, [Tql, _OldProg]), focus(NewFr
     getcurrent(Cid),
     getcontext(Cid, context((modifier(X), Rest), _, _TempRefer, _NodeStack)),
     assert(current_frame(OldFrame)),
-    pragma(TELETRANS, (modifier(X), Rest), ModProgram),
+    pragma(teletrans, (modifier(X), Rest), ModProgram),
     retractall(current_frame(_)),
     updateframe(ModProgram, OldFrame, NewFrame),
 
@@ -231,12 +262,12 @@ checkitem(trans,uatm, focus(OldFrame, OldRefer, slot(Slot)), focus(NewFrame, New
 %% uiq
 
 
-checkitem(TELETRANS,uiq, focus(OldFrame, OldRefer, _), focus(NewFrame, NewRefer, [(Type, Rest), Program])) :-
+checkitem(teletrans,uiq, focus(OldFrame, OldRefer, _), focus(NewFrame, NewRefer, [(Type, Rest), Program])) :-
     getcurrent(Cid),
     getcontext(Cid, context((Type, Rest), _, _TempRefer, _NodeStack)),
     \+ member(Type, [new, modifier(_), item,confirm]), %%  do = test // (kan du) gjenta
     assert(current_frame(OldFrame)),        %% TA-051116
-    pragma(TELETRANS, (Type, Rest), Program),
+    pragma(teletrans, (Type, Rest), Program),
     retractall(current_frame(_)),
     updateframe(Program, OldFrame, NewFrame),
 
@@ -249,10 +280,10 @@ checkitem(TELETRANS,uiq, focus(OldFrame, OldRefer, _), focus(NewFrame, NewRefer,
 %% uatg
 
 
-checkitem(TELETRANS,uatg, focus(OldFrame, OldRefer, slot(Slot)), focus(NewFrame, NewRefer, [])) :-
+checkitem(teletrans,uatg, focus(OldFrame, OldRefer, slot(Slot)), focus(NewFrame, NewRefer, [])) :-
     getcurrent(Cid),
     getcontext(Cid, context(Tql, _, _, _)),
-    pragma(TELETRANS, Tql, Program),
+    pragma(teletrans, Tql, Program),
     frame_getsubslots(Slot, SubSlot),
     checkanswer(Tql, Program, SubSlot, OldFrame, NewFrame),
     !,
@@ -424,7 +455,7 @@ checkitem(_,saf, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, [Tq
 
 
 
-checkitem(TELETRANS,sqt, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, slot(NewSlot))) :-
+checkitem(teletrans,sqt, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, slot(NewSlot))) :-
 
     saturate(Frame, Prog, NewProg), %%%%    Eggen, Fra NT til nardo // use Eggen program?
 %                   %??% 
@@ -442,7 +473,7 @@ checkitem(TELETRANS,sqt, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRe
 
 ),
 
-    find_askfor2(TELETRANS,Frame, Slot, NewSlot),
+    find_askfor2(teletrans,Frame, Slot, NewSlot),
     getcurrent(Cid),
     makenegative(Tql, askfor(X, NewSlot, Y), AnswerOut),
     waves, %% TA-050809
@@ -466,8 +497,7 @@ checkitem(tele,sal, focus(Frame, OldRefer, A), focus(Frame, NewRefer, A)) :-
 	getcurrent(Cid),
 	waves,
 	paraphrase(Frame),
-    writeanswer((bcpbc(tellnumber(Count)),  
-    colon,nl,nl)),!, %% was period) %% TA-050921
+    writeanswer( ( bcpbc( tellnumber(Count) ),  colon,nl,nl) ),!, %% was period) %% TA-050921
     (Count =< 3 ->   %% TA-060614
 
     listall(Frame); 
@@ -642,8 +672,8 @@ writeconstlist([_=Val|Rest]) :-
 %%
 
 invitemore :- 
-    \+ value(directflag,true),      %% TA-060127
-    \+ value(telebusterflag,true),  %% TA-060216
+    \+ user:value(directflag,true),      %% TA-060127
+    \+ user:value(telebusterflag,true),  %% TA-060216
     nl,                             %% TA-051221
     prent0(invitemore),nl. 
 invitemore.
@@ -710,6 +740,7 @@ find_askfor2(trans,Frame, Slot, NewSlot):-
 %% ¤¤¤¤¤¤¤¤¤¤
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% MOVED TO interapp.pl
 
 %execute_program(Prog) :-
 %

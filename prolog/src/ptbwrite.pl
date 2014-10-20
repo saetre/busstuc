@@ -1,23 +1,24 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE ptbwrite.pl
 %% SYSTEM TUC
-%% CREATED TA-061030
+%% CREATED  TA-061030
 %% REVISED  TA-061127
+%% REVISED  RS-140914
 
 
 % Make a slender syntax tree comparable to Penn Tree Bank tagging
 
 %%UNIT: / %% RS-111218, USAGE :-use_module( ptbwrite,[ ptbwrite/1 ] ).
-:- module( ptbwrite, [ alle_args/2, ptbwrite/1, drucke_baum_list/1 ] ). %% RS-111204
+:- module( ptbwrite, [ alle_args/2, drucke_baum/1, drucke_baum_list/1, ptbwrite/1, shrink_tree/2, tab/1 ] ). %% RS-140914
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% RS-111205, UNIT: / 
-%:- ensure_loaded( user:main ). %%, [  track/2  ] ). %% RS-111204
-:- use_module( 'main.pl', [ track/2 ] ). %% RS-140209 hei/0,   run/0 
-
-%% RS-111205, UNIT: utility/
+%% RS-131227    UNIT: / and /utility/
+:- ensure_loaded( user:'declare' ).    %% :-op( 714,xfx, := ).  etc... , track/2, trackprog/2
 %:- use_module( 'utility/utility', [ output/1, prettyprint/1 ] ).  %% Module util
+:- use_module( 'utility/writeout', [ output/1 ] ).  %% Module util  , prettyprint/1
+
+%:- use_module( main, [ track/2 ] ). %% RS-140928 Moved (back) to declare.pl hei/0,   run/0 %track(X, Y) :- user:track(X, Y) .
 
 /*
 En tom produksjon er rekursivt
@@ -45,9 +46,9 @@ ptbwrite(K):- %% TA-110207
 %%  rewfat(K,L),
 %%  rewprune(L,M),
 
-  track(2,( nl,write(M),nl,nl)),     %% TA-061027
+  user:track(2, ( nl,write(M),nl,nl)),     %% TA-061027
 
-  track(1,( nl,nl,drucke_baum_list(M), output('    '),nl)). %% TA-061027 
+  user:track(1, ( nl,nl,ptbwrite:drucke_baum_list(M), writeout:output('    '),nl)). %% TA-061027 
  
   
 
@@ -175,8 +176,9 @@ x_member(X,[_|R]):-
 x_append([],L,L).
 x_append([K|R],L,[K|R1]):-
         x_append(R,L,R1).
-islist([]).
-islist([_|_]).
+
+islist( [] ).
+islist( [_|_] ).
 
 
 %%  P(a,b) -> [P,a]

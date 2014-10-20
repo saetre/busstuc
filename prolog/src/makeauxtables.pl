@@ -8,75 +8,44 @@
 %%%%%%%% Section to create Auxillary Bus Tables           %%%%%%%
 
 %% RS-131225    From torehash.pl (010101)  %% dynamic
-:-module( makeauxtables, [ busstall/1, busstat0/2, connive/3, createhash/0, dumppredas/2, generatehash/1, interior/1, 
-        makeauxtables/0,        splitgenroad/4,        stallbuss/1,            statbus0/2,     station_reference/1,    toretarget/1,
-        transbuslist1/3,        writeheading/1,        %   Also predicates for analysis and verification of routes    %%
-        createonlyfromstations/0,       createonlytostations/0, fromstation1/1, % It is impossible to go FROM  hovedterminalen to A  (in this order)
-        nopassanyway/2,                 passanyway/2,           tostation1/1,   % It is impossible to go from A to hovedterminalen (in this order)
-       %verify_consistency/2,
-        verify_consistency/0,           verify_movedates/0,     %% Verify that all movable holidays are included, and internally consistent        
-        % Helper predicates for makeauxtables (->createstatbus)
-        fromstationonly0/1,             nextstat0/2,            tostationonly0/1,       transbuslist0/3,        unproperstation0/1,
-        % Helper predicates for createhash
-        devcand/2,      remembertorehash/2,                     toredef0/3,             torehash0/2,
-        % Helper predicates for to/from-station1/1 etc.    %% RS-131225For fromstation1/1
-        passes_ht/2,    taexists/3,             taforall/3,     xproperstation/1
-] ).
+:-module( makeauxtables, [ createhash/0, taexists/3, verify_consistency/0, % verify_movedates/0 RS-140928 moved to db/timedat.pl
+                           createonlyfromstations/0, createonlytostations/0, makeauxtables/0, nopassanyway/2 ] ).
 
-% Create a file of auxillary bustables (auxtables.pl)
+% Create files with auxillary bustables (auxtables.pl)
  
 %% NB they are compiled again as a separate file
 %% The dynamic predicates (xxx0) corresponds to (some of) the filed predicates xxx
 
-/*
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Run in /db/ directory
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% USAGE: See bottom of the file!                                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% 0.  Take backup (or use svn)
-% cp auxtables.pl  backup.auxtables.pl
-% cp namehashtable.pl  backup.namehashtable.pl
-% cp discrepancies.pl  backup.discrepancies.pl
-
-%%  1. Create Tables 
-% busestuc.sav
-?- makeauxtables.
-
-%% 2. Create namehashtable
-?- createhash.
-
-%% 2.5 Create discrepancies
-?- verify_consistency.
-
-%% 3. Finish
-?-halt.
-
-%%  4.  Recompile BusstUC
-% busbase.sav
-?-[busstuc]. %% or other
-?-save_program(busestuc).
-?-halt.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-*/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% META SECTION
+:- meta_predicate tafind(?,0,0), taexists(?,0,0), taforall(?,0,0) .
+tafind(_X,Y,Z):- Y,Z.
+taexists(_X,Y,Z):-Y,Z,!.
+taforall(_X,Y,Z):- \+ (Y, \+ Z),!.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% RS-140102. UNIT: /  and  /utility/  %% RS-140101 Moved to user:declare for common and early compilation!
-:- ensure_loaded( user:'declare.pl' ). %, [ := /2 etc. ] ). for/2, test/1, 
-:- use_module( 'utility/utility.pl', [  delete1/3, ends_with/3, out/1, output/1, textlength/2 ] ). %, writepred/1  writepred/1 is USED! in for/3 or set_of/3, 
-:- use_module( 'utility/datecalc.pl', [ add_days/3, datetime/6, easterdate/2, sub_days/3, this_year/1 ]).  %% RS-121325
+:- ensure_loaded( user:'declare.pl' ). %, [ := /2 etc. ] ). test/1 
+:- use_module( 'utility/datecalc.pl', [ datetime/6 ] ). % add_days/3, easterdate/2, sub_days/3, this_year/1 ]).%% RS-121325-140928 to timedat.pl
+:- use_module( 'utility/utility.pl', [  delete1/3, ends_with/3, remember/1, textlength/2 ] ).
+:- use_module( 'utility/writeout', [  out/1, output/1, writepred/1 ] ). %writepred/1 is USED! in for/3 or set_of/3,
 
 %?-compile( busroute:'compileroute.pl' ).   %% Bootstrapping for compilation, faster than "ensure loaded"?!
-%:-ensure_loaded( user:'interfaceroute' ).
 :- use_module( 'interfaceroute', [ domain_module/2, thisdate_period_module/3, reset_period/0 ] ).
 
 %% RS-111205, UNIT: /app/
-:- use_module('app/buslog', [ composite_stat/3, passeq/6, properstation/1, station/1 ] ). %% RS-131223   route/3,  etc.
+:- use_module('app/buslog', [ composite_stat/3, properstation/1, stationD/2 ] ). %, passeq/6, station/1 ] ). %% RS-131223   route/3,  etc.
 
 %% RS-111205, UNIT: db/
 :- use_module( 'db/places.pl', [ cmpl/3,        isat/2,         placestat/2,    sameplace/2 ] ). % (NAME,NAME*,LIST) % (STATION,PLACE)  % (PLACE,STATION)  % (PLACE,PLACE).
 :- use_module( 'db/regcompstr.pl', [ composite_road/3 ] ).
 :- use_module( 'db/places.pl' , [ corr/2, isat/2, placestat/2 ] ).
-:- use_module( 'db/regstr' ). %%, [ streetstat/5 ] ). %% RS-131225  makeauxtables USES a for-loop WITH streetstat in it!!
-:- use_module( 'db/timedat.pl', [ named_date/2 ] ).       %%  EASTER DATES AND OTHERS %% RS-131225
+:- use_module( 'db/regstr', [ streetstat/5 ] ). %% RS-131225  makeauxtables USES a for-loop WITH streetstat in it!!
+%:- use_module( 'db/timedat.pl', [ named_date/2 ] ).       %%  EASTER DATES AND OTHERS %% RS-131225
 :- use_module( 'db/topreg', [ default_period/3  ] ).
 %:- use_module( 'db/busdat.pl', [ nightbus/1, vehicletype/2, xforeign/1 ]).
 
@@ -113,7 +82,7 @@ Run in /db/ directory
 :- meta_predicate dumppredas(0,?).       %% Moved to extracut... ??
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :- meta_predicate for(0,0) . 
-for( P, Q ) :- %% For all P, do Q (with part of P)
+for( P, Q ) :- %% For all P, do Q (with part of P). Finally true! forall/2 is sometimes false?
   P, Q,
   false;true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -122,27 +91,32 @@ set_of( X, Y, Z ):-           %%
     setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
     Z=[].                 %% What is wrong with empty sets ?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate test(0) .
-test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
+%:- meta_predicate test(0) .
+%test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+verify_files_exist( Filename ) :-
+        output( Filename ),
+        output('...makeauxtables.pl~111: auxtables-file already exists!!!'), nl,
+        true .
+
 makeauxtables :-
+        verify_files_exist( 'db/auxtables.pl' ) ; 
     told,       %% Close all potentially open output-streams first!
-%    user:( tramflagg := false ), %% RS-140106 Trenger ikke auxtables for tram??
-%    user:( tmnflagg := false ), %% RS-140106 Trenger ikke auxtables for tram??
+%    user:( tramflagg := false ), %% RS-140106 Trenger ikke auxtables for tram?!?
+%    user:( tmnflagg := false ), %% RS-140106 Trenger ikke auxtables for trafikanten midtnorge?!?
     reset_period,  %% get the right period 
 
-    write( '%  Please wait 1 minute while creating (db/auxtables) regstr/2' ),nl,
+    write( '... makeauxtables~109: Please wait 1 minute while creating (db/auxtables) regstr/2' ),nl,
 
-    %%tell('db/auxtables.pl'),    %% RS-121121
     open( 'db/auxtables.pl', write, Stream, [encoding('UTF-8')] ), %% RS-140102, Run from monobuss folder !!
     %open( 'auxtables.pl', write, Stream, [encoding('UTF-8')] ), %% RS-140102, Run from the /db/ folder !!
     set_output(Stream),
 
-    writeheading( 'auxtables, [ busstat/2, statbus/2, transbuslist/3 ]' ),
+    writeheading( 'auxtables, [ busstat/2, unproperstation/1, statbus/2, transbuslist/3 ]' ),
 
     createstatbus,  % 30 sec
     createbusstat,  % 10 sec
@@ -215,17 +189,15 @@ busstall(Bus):-
    assert(busstat0(Bus,Z)).
 
 
-createunproperstations:-  
-        
-    assert(unproperstation0(heaven)). %% dummy (needs 1)
+createunproperstations :-
+    assert( unproperstation0(heaven) ), %% dummy (needs 1) %% RS-140927TODO: Try to fix this again?. 
 
-/* SUSPENDED NOFUNK %% TA-090609
-
+/* SUSPENDED NOFUNK %% TA-090609 */
     set_of(stationD(S,D),stationD(S,D),Z), %% make it unique //StationD buslog
     for((member(stationD(S,D),Z),nopassanyway(D,S)),
     assert(unproperstation0(S))), %% PANIC
     dumppredas(unproperstation0(X),unproperstation(X)).
-*/
+/* SUSPENDED NOFUNK %% TA-090609 */
 
 
 
@@ -272,14 +244,8 @@ passanyway(D,S):-
 
 
 
-:- meta_predicate tafind(?,0,0), taexists(?,0,0), taforall(?,0,0) .
-tafind(_X,Y,Z):- Y,Z.
-taexists(_X,Y,Z):-Y,Z,!.
-taforall(_X,Y,Z):- \+ (Y, \+ Z),!.
-
 xproperstation(A):-
-    properstation(A),
-    test( stationD(A,tt) ).   %%% Very Ad Hoc, only TT    %% TODO: RS-140210
+    properstation(A). %% , test( stationD(A,tt) ).   %%% Very Ad Hoc, only TT    %% TODO: RS-140210 RS-140914
 
 % It is impossible to go FROM  hovedterminalen to A  (in this order)
 
@@ -352,7 +318,7 @@ crerr:-
 
 crerr1 :-
 
-  write('Undefined - identifiers... (db/places) placestat/2'),nl,nl,
+  write('... Undefined - identifiers... (db/places) placestat/2'),nl,nl,
 
   set_of(X, (station_reference(X), \+ buslog:hpl(_,X,_Off)),
 
@@ -455,8 +421,6 @@ propertransfer(P):-
 
 
 
-
-    
 %% FILE amblehash.pl
 %% SYSTEM  BUSSTUC
 %% CREATED TA-010430
@@ -516,23 +480,21 @@ torehash(yggdrasi,yggdrasil).
 
 
 createhash :-
+        verify_files_exist( 'db/namehashtable.pl' ) ;
     told,
-    write(' Please Wait another minute for namehash-table'),nl, %% TA-090317
+    write('... makeauxtables~488: Please Wait another minute for namehash-table'),nl, %% TA-090317
 
     reset_period,  %% Use the current names (just for hashing)
 
     retractall(toredef0(_,_,_)),   %% NOT abolish
     retractall(torehash0(_,_)),  
 
-    for(toretarget(X),
-        generatehash(X)),
+    for( toretarget(X),
+        generatehash(X) ),      % Generate all toredef0 to write as toredef in namehashtable.pl
    !,
-   %%tell('db/namehashtable.pl'),    %% RS-121121
-    open( 'db/namehashtable.pl', write, Stream, [encoding('UTF-8')] ),     %% Call from monobuss.pl
-    %open( 'namehashtable.pl', write, Stream, [encoding('UTF-8')] ),     %% Call before monobuss.pl
+    open( 'db/namehashtable.pl', write, Stream, [encoding('UTF-8')] ),     %% Call from monobuss.pl (store in db...)
     set_output(Stream), 
-    writeheading( 'namehashtable, [ toredef/3, torehash/2 ]' ),
-    %%write(':-module(namehashtable, [ toredef/3, torehash/2 ]).'),nl,
+    writeheading( 'namehashtable, [ toredef/3, torehash/2 ]' ),   %%write(':-module(namehashtable, [ toredef/3, torehash/2 ]).'),nl,
 
    dumppredas(toredef0(X,Y,Z),toredef(X,Y,Z)),
    dumppredas(torehash0(X,Y),torehash(X,Y)),
@@ -592,7 +554,7 @@ generatehash(X):-
 
     for(member((Y,Tag,Off),ZS),
 
-      (user:remember(toredef0(Y,Tag,Off) ),  
+      (remember( toredef0(Y,Tag,Off) ), % remember( makeauxtables:toredef0/3 )
 
        set_of(YMiss,devcand(Y,YMiss),D1), 
   
@@ -621,9 +583,9 @@ remembertorehash(U,Y):-
 
     \+ spurious_street_hash(U,Y),%% kroglunds -\-> kroglundsv
 
-    user:remember(torehash0(U,Y)). 
+    remember(makeauxtables:torehash0(U,Y)). 
 
-
+%https://sicstus.sics.se/spider/determinacy_analyzer.html How to hide "fake" non-success warnings? RS-140928
 spurious_street_hash(Kroglunds,Kroglundsv) :- 
     composite_stat(Johan,[P,Kroglunds,street],Johan_p_kroglundsv),
     ends_with_vg(Johan_p_kroglundsv),
@@ -688,7 +650,7 @@ splitgenroad(X,  X,nil,X).
 dumppredas( T0, T ):-
     nl,
     write('%%% ' ),nl,nl, 
-    for( T0, utility:writepred(T) ),
+    for( T0, writepred(T) ),
     nl.
 
 %OBSOLETE from maketransbuslist.pl
@@ -708,68 +670,6 @@ dumppredas( T0, T ):-
 %writepredlist(Z):- for(member(X,Z),writepred(X)).
 
 %% writepred(P):- write(P),write('.'),nl. // utility
-
-
-
-%% FILE consistent_dates.pl
-%% SYSTEM BUSSTUC
-%% CREATED TA-050504
-%% REVISED TA-050504
-
-%% Verify that all movable holidays are included, and internally consistent
-
-
-verify_movedates :-
-   ver_movedate,
-   !;
-   (nl,output('***** The moving holidays are inconsistent *****'),nl).
-
-
- 
-ver_movedate :-    %% Added check for May17 %% TA-100106
-
-   this_year(YYYY),
-
-   easterdate(YYYY, Easterday ),
-   named_date(easterday, Easterday ),
-
-   sub_days( Easterday,1,Eastereve),
-   named_date(eastereve,Eastereve),
-
-
-   sub_days( Easterday,2,Good_friday),
-   named_date(good_friday,Good_friday),
-
-   sub_days( Easterday,3,Maundy_thursday),
-   named_date(maundy_thursday,Maundy_thursday),
-
-
-   sub_days( Easterday,7,Palm_sunday),  
-   named_date(palm_sunday,  Palm_sunday),
-
-
-   add_days( Easterday,1,Easterday2), 
-
-   named_date(easterday2,Easterday2),
-
-   add_days(Easterday,39,Ascension_day), %% TA-080107 % Bibl. 40th
-
-   named_date(ascension_day,Ascension_day),
-
-% If Ascension day falls on May1, then daycode is sunday anyway %% TA-080108
-% If Ascension day falls on May17, then daycode is not Sunday
-
-    named_date(may17,May17),   
-
-(  Ascension_day = May17 -> _Sunday=holiday ; _Sunday=sunday),
-
-
-   add_days(Easterday,48,      Whitsun_eve), %% TA-080108
-   named_date(whitsun_eve,Whitsun_eve),
-
-   add_days(Easterday,49,Whitsun_day), %% Bibl 50, Pentecost
-   named_date(whitsun_day,Whitsun_day).
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -812,19 +712,56 @@ for(
 
      Name1 \== Name2),
 
-     utility:writepred(alias_station2(Nr,Name1,Name2))).
+     writepred( alias_station2(Nr,Name1,Name2)) ).
 
 %:-told.            %% RS-140208 Reset all output-streams first...
 %:-nl,write( 'makeauxtables.pl~line790 is making auxtables now...' ),nl.
 %:-nodebug.      %% Debugging this takes more than a minute, against only 10 secs in compile-mode! == :-notrace.
 %:-debug.      %% Debugging this takes more than a minute, against only 10 secs in compile-mode! == :-notrace.
 %:-trace.      %% Debugging this takes more than a minute, against only 10 secs in compile-mode! == :-notrace.
-%:-makeauxtables.
-%%% Moved to Where? RS-140210
 
-%%RS-140421
-%:- verify_consistency.
+% REMOVED SOME OBSOLETE PREDICATES      RS-140928
+%        busstall/1, busstat0/2, connive/3, dumppredas/2, fromstation1/1, generatehash/1, interior/1, 
+%        makeauxtables/0,        splitgenroad/4,         stallbuss/1,    statbus0/2,     station_reference/1,    toretarget/1,
+%        transbuslist1/3,        writeheading/1,   %   Also predicates for analysis and verification of routes    %%
+%        passanyway/2,            tostation1/1, % It is impossible to go from A to hovedterminalen (in this order)   %verify_consistency/2,
+%        verify_consistency/0,   fromstationonly0/1,     nextstat0/2,             tostationonly0/1, transbuslist0/3, unproperstation0/1,  % Helper predicates for makeauxtables (->createstatbus)
+%        devcand/2,              remembertorehash/2,     toredef0/3,     torehash0/2,        % Helper predicates for createhash
+%        passes_ht/2,            taforall/3,     xproperstation/1        % Helper predicates for to/from-station1/1 etc.    %% RS-131225For fromstation1/1
+%] ).
 
 %% From utility.pl
-%:- use_module( 'makeauxtables' ). %% , [ %% Loops back here in the for-predicates etc. toretarget/1,  stallbuss/1 %% RS-131224 %% Used in FOR from makeauxtables
-%%ensure_loaded( '../tuc/torehash' ).   % RS-131224 OBSOLETE! Moved to utility/makeauxtables!
+% :- use_module( 'makeauxtables', [ toretarget/1,  stallbuss/1 % Loops back here in the for-predicates etc. %% RS-131224 %% Used in FOR from makeauxtables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% USAGE
+% Run in the /db/ directory...
+
+%%RS-140421
+%:- makeauxtables.        %%% Move to busstuc.pl? RS-140927   :- vs ?- ???
+%:- verify_consistency.
+
+%% 0.  Take backup (or use svn)
+% cp auxtables.pl  backup.auxtables.pl
+% cp namehashtable.pl  backup.namehashtable.pl
+% cp discrepancies.pl  backup.discrepancies.pl
+
+%%  1. Create Tables 
+% busestuc.sav
+?- makeauxtables.
+
+%% 2. Create namehashtable
+?- createhash.
+
+%% 2.5 Create discrepancies
+?- verify_consistency.
+
+%% 3. Finish
+%?-halt.
+
+%%  4.  Recompile BusstUC
+% busbase.sav
+%?-[busstuc]. %% or other
+%?-save_program(busestuc).
+%?-halt.
+

@@ -8,52 +8,58 @@
 %%%%%%%%%%%%%%%% ALL ROUTE INTERFACE PREDICATES %%%%%%%%%%%%%%%%%%
 
 %%% RS-111205, UNIT: /app/
-%% RS-131225 for makeauxtables, etc...
 % Some predicates (like addcontext/0) are only to preserve information, no filtering..
-:-module( buslog, [ addcontext/0, airbus_module/1, askfor/3,  askref/2, airbus_route/1, approvenightbustoplace/2, arr_after/2, arr_between/3, arrdep_after/2, arrdep_before/2,
-        atdate/1,               atdate2/2,              atday/1,                avoidbus/3,     before/2,       boundstreet/1,          bugdep1/2,      bugdep2/4,
-        bus/1,                  bus_place_station/3,    busorfree/1,            bustorid/3,     cname/2,        composite_stat/3,       connections/10,
-        converttostandard/2,    corrstats/3,            coupled1/8,             dateis/4,       dayModSeqNo/2,  departure/4, %% RS-131225    Necessary?
-        day_route/1,            dep_after/2,            dep_between/3,          departureday/4,
-        departuredayMOD/5,      depbusMOD/12,           depMOD/12,      %% OBSOLETE when RealTime: depbeforestationwalk/1, 
-        depset/2,               diffdep4/4,             direct_connection/3,    endstations1/1, endstations/2, findstations/3,
-        ensure_removed/3,       hpl/3,          internalkonst/1,        %% RS-131225    For telelog.pl 'sk(_).'
-        firstactualdeparturetime/4,                     frame_remember/2,       irrelevantdirect/4,
-        islist/1,               isnear/2,               keepafterstrict/3,      keepafterwalking/2,
-        keeparound/3,           keepat/3,               keepbefore/3,           keepbefore1/3,          keepbeforerev/3,
-        keepbetweenstat/5,      keepbus/3,              keepdepafter/3,         keepuntil/4,
-        keepwithin/4,           listofall/2,            looping/3,              maybestation/3,
-        keepafter/3,            members/3,              passeq/6,               properstation/1, %% RS-131225 For busanshp,makeauxtables.pl
-        message/1,              neverarrives/2,         neverdeparts/2,         neverpasses/2,          %% For negans.pl
-        new_cutloop_extend/4,   new_cutset_test/8,      nextdep/3,              night_route/1,
-        nocontext/0,            (not)/1,                not_arr_between/3,      not_dep_between/3,      not_extreme_hastus_time/1,        notaclock/1,
-        notification/2,         numberof/3,             occurs_afterwards/2,    occurs_before/3,        pass_after_strict/2,
-        pass_after/2,           pass_at/2,              pass_before/2,          pass_between/3,
-        pass_bus/2,             pass_rid/2,             passes44/6,             passesstations/4,
-        passevent/6,            passMOD/7,              passrids/2,             passtimeMOD/8,
-        place_station1/2,       place_station/2,        popframe/0,             proper_end_station/2,   pushframe/0,    relax/1,    replyq/1,  %% For negans.pl
-        %%      regbus/1,
-        ridtobusname/2,         ridtobusnr/2,           route/3,        %%  %% RS-131231 for utility/makeauxtables
-        rid_to_direction/3,     ridstobuses/2,          ridtotour/2,            selectroute/3,
-        samefplace/2,           standardizeemit/2,      station/1,      %% RS-131225 %% RS-140101 For pragma.pl, Necessary?
-        station_trace/4,        stathelp/3,             stationsat/3,           statorplace/1,          street_station/2, takestime/3,
-        testanswer/2,           ticketprice2/2,         timeis/1,               timeout/3,              tourtoend/2,
-        transferXYZ/3,          try_preferred_transfer/4,                       trytransbuslist/4,      veh_mod/1,        withinslack/2
-] ).              % Extra RS-131226
+:-module( buslog, [ addcontext/0, askref/2, atdate/1, atdate2/2, atday/1, avoidbus/3, before/2, boundstreet/1, bugdep1/2, bugdep2/4, bus_place_station/3
+   ,     busorfree/1, bustorid/3, cname/2, composite_stat/3, connections/10, corrstats/3, dateis/4, dayModSeqNo/2, departure/4, departureday/4, departuredayMOD/5, depset/2
+   ,     diffdep4/4, direct_connection/3, endstations1/1, ensure_removed/3, findstations/3, firstactualdeparturetime/4,
+         flag/1,        %% For using flag( X ) from program (from busanshp for example)
+         frame_remember/2, hpl/3, irrelevantdirect/4
+   ,     islist/1, isnear/2, keepafterstrict/3, keepafterwalking/2, keeparound/3, keepat/3, keepbefore1/3, keepbeforerev/3, keepbetweenstat/5, keepbus/3
+   ,     keepdepafter/3, keepuntil/4, keepwithin/4, listofall/2, maybestation/3, message/1, neverarrives/2, neverdeparts/2, neverpasses/2 %% For negans.pl
+   ,    new_cutloop_extend/4, new_cutset_test/8, nextdep/3, nocontext/0, notaclock/1, notification/2, numberof/3, occurs_before/3, pass_after/2, pass_before/2, passes44/6
+   ,    passesstations/4, passevent/6, passMOD/7, passtimeMOD/8, popframe/0, proper_end_station/2, pushframe/0, relax/1, replyq/1  %% For negans.pl
+   ,    rid_to_direction/3, ridstobuses/2, samefplace/2 %% RS-140929 for bustrans.pl rules 
+   ,    selectroute/3, standardizeemit/2, station_trace/4, stationsat/3, statorplace/1, takestime/3, testanswer/2
+   ,    ticketprice2/2, timeis/1, transferXYZ/3, trytransbuslist/4, withinslack/2,
+
+        airbus_module/1, keepafter/3, passeq/6, ridtobusname/2, ridtobusnr/2, veh_mod/1, %% RS-140927 For busanshp.pl, moved to utility.pl: internalkonst/1, 
+        stationD/2, properstation/1,    %% RS-131225 for makeauxtables
+        station/1,  street_station/2,   %% RS-140927 For facts.pl     %% RS-131225 %% RS-140101 For pragma.pl, Necessary in bustrans etc.
+        bus/1, place_station/2          %% RS-140927 For negans.pl
+] ).
+
+%% META-PREDICATES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate  once1(0) .    %% RS-140615  %% once1/1 meta-predicate
+:- meta_predicate  set_of(+,0,-) .
+:- meta_predicate  set_ops(+,0,-).
+:- meta_predicate  set_eliminate(+,0,-,-).
+:- meta_predicate  set_filter(+,0,-,-).
+:- meta_predicate  test(0) .  %% RS-140615  %% test/1 is a meta-predicate ( just passing on the incoming X-predicate )
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%      airbus_route/1,         approvenightbustoplace/2, arr_after/2, arr_between/3, arrdep_after/2, arrdep_before/2,
+%       converttostandard/2,    coupled1/8,     %% RS-131225    Necessary?
+%       day_route/1,            dep_after/2,            dep_between/3,          depbusMOD/12,           depMOD/12,      %% OBSOLETE when RealTime: depbeforestationwalk/1, 
+%       endstations/2,          %% RS-131225    For telelog.pl 'sk(_).'
+%       keepbefore/3,           looping/3,              %% RS-131225 For busanshp,makeauxtables.pl
+%       night_route/1,          (not)/1,                not_arr_between/3,      not_dep_between/3,      not_extreme_hastus_time/1,
+%       occurs_afterwards/2,    pass_after_strict/2,    pass_at/2,              pass_between/3,         pass_bus/2,            pass_rid/2,
+%       passrids/2,             place_station1/2,       place_station/2,        regbus/1,
+%       ridtobusname/2,         route/3,        %%  %% RS-131231 for utility/makeauxtables
+%       ridtotour/2,            samefplace/2,           stathelp/3,             tourtoend/2,
+%       try_preferred_transfer/4        RS-131226     % Extra?
+
 %extra?
 %find_askfor/3,          find_parentslot/3,      resetframe/0,           %% from dialog/frames2
 %frame_getcount/2,       frame_getsubslots/2,    frame_gettype/2,        frame_iscomplete/1,        frame_isempty/1,
 %frame_isfull/1,         frame_setexperience/4,        frame_setexperience_rec/4
 %xframe_getvalue/2,      xframe_setvalue/2      % From dialog/frames2
 
-%% META-PREDICATES
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate once1(0) .    %% RS-140615  %% once1/1 meta-predicate
 once1(P):-P,!. %% same as once, but version independent
                %% try once, otherwise FAIL
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Prologs set_of is baroque %% RS-140614  130sec runtime vs. 28sec runtime for \r tests/batch !
-:- meta_predicate set_of(+,0,-) .
 set_of(X,Y,Z):-           %%
     setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
     Z=[].                 %% What is wrong with empty sets ?
@@ -62,63 +68,62 @@ set_of(X,Y,Z):-           %%
 %    findall(X,Y,Z1),
 %    remove_duplicates(Z1,Z). %% order-preserving
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate test(0) .  %% RS-140615  %% test/1 is a meta-predicate (just passing on the incoming X-predicate
-test(X):- \+ ( \+ ( X ) ).        %% Calls test(nostation(Y)) among other things, so: import nostation/1  Move to pragma.pl ?
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- ensure_loaded( user:'../declare' ). %% RS-111213 ,  value/2, user:once1/1, user:test/1, 
-:- use_module( '../main', [ gps_origin/2, progtrace/2, traceprog/2, trackprog/2 ] ).  %% RS-140209
-
-:-use_module( library(timeout) ). %% RS-140210. Includes time_out/3!
+:- ensure_loaded( user:'../declare' ). %% RS-111213 ,  value/2, traceprog/2, trackprog/2
 
 %%% RS-140101, UNIT: /  and  /utility/
-%:- ensure_loaded( user:'../utility/utility' ). %, [ := /2, user:once1/1,  etc. ] ).  %% RS-131117 includes declare.pl
-:-use_module( '../utility/utility', [ charno/3, firstmem/2, lastmem/2, maximum/2, maxval/3, minimum/2, minval/3 ]).
-:-use_module( '../utility/utility', [ output/1, testmember/2 ]). %% locale meta-predicates: once1/1, test/1,   
-:-use_module( '../utility/utility', [ set_difference/3, set_eliminate/4, set_filter/4, starttime/0 ]). %testmember/2 
+:-use_module( '../utility/utility', [ bound/1, charno/3, firstmem/2, lastmem/2, maximum/2, maxval/3, members/3, minimum/2, minval/3,
+        testmember/2, set_difference/3, starttime/0, timeout/3, unbound/1 ] ). %test/1, testmember/2 %  ]). %% Made loca: set_eliminate/4, set_filter/4, 
+%% locale meta-predicates: once1/1, test/1,  %% RS-131117 includes declare.pl
 
 :-use_module( '../utility/datecalc', [ add_days/3, days_between/3, addtotime/3, dayno/2, difftime/3, subfromtime/3, timenow2/2, today/1 ] ). %%, datetime/6, getdaynew/1, timenow/1, 
 :-use_module( '../utility/library', [ delete/3, remove_duplicates/2, reverse/2 ] ). %% RS-131225  For app/buslog, telelog, etc?
+:- use_module( '../utility/writeout', [ output/1 ] ).%% RS-140912
 
 %%% RS-140101, UNIT: /
-:- use_module('../interfaceroute' , [ decide_period/2 ]). % Interface procedures for handling interface to route modules, with topreg
+:- use_module( '../main', [ gps_origin/2, progtrace/2 ] ).  %% RS-140209
+:- use_module('../interfaceroute' , [ decide_period/2, domain_module/2 ]). % Interface procedures for handling interface to route modules, with topreg
 
 %%% RS-140210, UNIT: app/
-:- use_module( '../app/busanshp.pl' ). %%, [ ridof/2, time_options/1 ] ).  %% RS-130210 called in for-predicate     bound/1, bus/1,
-:- use_module( '../app/telelog.pl' , [  bound/1,  unbound/1 ]).
+:- use_module( '../app/busanshp.pl', [ ridof/2, time_options/1  ] ).  %% RS-130210 called in for-predicate     bound/1, bus/1,  , warningtime/2
+%:- use_module( '../app/telelog.pl' , [  bound/1,  unbound/1 ]). %% To utility.pl
 %:- ensure_loaded( x ). %% RS-121223   %% Why?
 
 %%% RS-111205, UNIT: dialog/
 %:- ensure_loaded( '../dialog/frames2' ). %%, [ frame_getvalue_rec/4 ] ). %% RS-131223 etc? getcurrent/1, sequence_member/2
-:- use_module( '../dialog/frames2', [ frame_getvalue_rec/4 ] ). %% RS-131223 etc? getcurrent/1, sequence_member/2
+%:- use_module( '../dialog/frames2', [ frame_getvalue_rec/4 ] ). %% RS-131223 etc? getcurrent/1, sequence_member/2  %% LOOPS? RECURSION? COMPILE-PROBLEM? %% RS-140927
 
 %% RS-111205, UNIT: db/
-:- use_module( '../db/topreg', [  route_period/4  ]).
-:- use_module( '../db/busdat').
+:- use_module( '../db/topreg', [ route_period/4 ]).
+:- use_module( '../db/busdat', [ endneighbourhood/2, tramstation/1, vehicletype/2 ] ).
 :- ensure_loaded('../db/discrepancies.pl' ). %% RS-131230 alias_station2/3, etc.
 :- use_module( '../db/places', [ alias_station/2, corr/2, foreign/1, isat/2, nostation/1, placestat/2, underspecified_place/1 ] ). % (PLACE) -> places.pl
+:- use_module( '../db/regbusall', [ nightbus/1, regbus/1 ] ).  %% RS-140619
 :- use_module( '../db/regstr', [ streetstat/5 ] ).      %% RS-131224 Obsolete?
 :- use_module( '../db/timedat', [ aroundmargin/1, buslogtimeout/1, delay_margin/1, maxarrivalslack/1, maxtraveltime/1, softime/3 ] ).
 
 %%% RS-111205, UNIT: tuc/
-:- use_module( '../tuc/facts', [ (isa)/2,  neighbourhood/1  ] ).  %% RS-111204    isa/2 from facts.pl
+:- use_module( '../tuc/facts', [ isa/2,  neighbourhood/1  ] ).  %% RS-111204    isa/2 from facts.pl
 
-%% RS-140210.   LAST IMPORT! MUST BE MADE FIRST! %% Should be called AFTER makeauxtables in db!
-%:- use_module( '../db/auxtables.pl', [ busstat/2 ] ). %%, statbus/2 ] ).  %% RS-140210. Autogenerated from monobuss -> makeauxtables.
+%% RS-140210.   LAST IMPORT! MUST BE GENERATED FIRST! %% Should be called AFTER makeauxtables in db!
+%% RS-140210. Autogenerated from monobuss -> makeauxtables.
 :- use_module( '../db/auxtables.pl', [ busstat/2, statbus/2, transbuslist/3 ] ). %% Should be called AFTER makeauxtables in db! statbus/2, 
 
-%%%%%%%%%%%%%%%% ALL ROUTE INTERFACE PREDICATES %%%%%%%%%%%%%%%%%%
-%% timeout WITHOUT _
-:- meta_predicate
-        timeout( 0, +, ? ).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Sequence preserving setof, ( first occurrence stays first)
+set_ops(X,Y,Z):-
+    findall(X,Y,Z1),
+    remove_duplicates(Z1,Z). %% order-preserving
 
-timeout(     S, _L, success):-  %% If timeout doesn't work
-    user:value(notimeoutflag,true), 
-    !,
-    call(S).
+set_eliminate(X,Predicate,List1,List2):- 
+    set_ops( X, ( member(X,List1), \+ Predicate ), List2 ).
 
-timeout(     S, L, Success):- 
-    time_out(     S, L, Success).
+set_filter(X,Predicate,List1,List2):-
+    set_ops( X, ( member(X,List1), Predicate ), List2 ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+test(X):- \+ ( \+ ( X ) ).        %% Calls test(nostation(Y)) among other things, so: import nostation/1  Move to pragma.pl ?
 
 %%%%%%%%%%%%%%%% ALL ROUTE INTERFACE PREDICATES %%%%%%%%%%%%%%%%%%
 
@@ -273,15 +278,20 @@ bus(X):-
     veh_mod(TTP),TTP:regbus(X), number(X),
     X  < 10000. %%   e.g. buss 777
 
-xroute(X,Y,Z):-            %% TA-090331
-    user:value(airbusflag,true),
+xroute( X, Y, Z ) :-            %% TA-090331
+    user:value( airbusflag, true ),
     !,
-    airbus_module(TTP), %% ad hoc if several airbus modules (change)
+    airbus_module( TTP ), %% ad hoc if several airbus modules (change)
     TTP:route(X,Y,Z).
 
 
-xroute(X,Y,Z):-
+xroute( X, Y, Z ) :-
     veh_mod(TTP), TTP:route(X,Y,Z).
+
+%BACKUP %% RS-141018
+%xroute( _X, _Y, _Z ) :-
+    %    output('Airbus not activated (yet?)') .%,
+    %airbus:route(X,Y,Z).
 
 
 
@@ -335,19 +345,43 @@ maxseqtour(Trace,N):-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-station(hovedterminalen).  %% Proforma station
+station( hovedterminalen ).  %% Proforma station
 %% station(m0).   %% (default streetstat) %% TA-100120
+
+station(X):- %% TA-110415
+    veh_mod(TTP),
+    modstat(TTP,X).
 
 /*
  %% NB  station names may vary between route periods
 r1611_100823:hpl(16010369,persauneveien,persauneveien,'Persauneveien')
 r1618_110517:hpl(16010369,persaunevegen,persaunevegen,'Persaunevegen').
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+SOME OLD STUFF... STILL USEFUL? RS-140927
+station(X):- %% additonal airbus stations %% Ad Hoc !
+    value(airbusflag,true),
+    user:airbusstation(X). %% busdat
+
+station(X):-
+    \+ value(tmnflag,true),
+    current_period(tt,TTP,_,_),  
+    modstat(TTP,X).   
+
+station(X):-
+    value(tmnflag,true), 
+    domain_module(_D,TTP),
+    TTP \== nil, 
+    modstat(TTP,X).    
+
+stationD(X,D):- 
+   domain_module(D,TTP),
+   TTP \== nil,
+   modstat(TTP,X).
 */
-
-
-station(X):- %% TA-110415
-    veh_mod(TTP),
-    modstat(TTP,X).
+stationD(X,D):- 
+   domain_module(D,TTP),
+   TTP \== nil,
+   modstat(TTP,X).
 
 
 
@@ -379,11 +413,11 @@ route(A,B,C):-         bus_mod(TTP),TTP:route(A,B,C).
 
 hpl(A,B,C):-           bus_mod(TTP),TTP:hpl(A,_,B,C).
 
-composite_stat(A,B,C):-bus_mod(TTP),TTP:composite_stat(A,B,C).
+composite_stat(A,B,C) :- bus_mod(TTP), TTP:composite_stat(A,B,C).
 
-departureday(A,B,C,D):-bus_mod(TTP),TTP:ex_departureday(A,B,C,D).
+departureday(A,B,C,D) :- bus_mod(TTP),TTP:ex_departureday(A,B,C,D).
 
-passes44(A,STATNO,B,C,D,E):-   bus_mod(TTP),TTP:ex_passes4(A,STATNO,B,C,D,E).
+passes44(A,STATNO,B,C,D,E) :-   bus_mod(TTP),TTP:ex_passes4(A,STATNO,B,C,D,E).
 
 
 
@@ -942,8 +976,8 @@ avoidbus(Bus,Deps1,Deps2):-
 
 %     set_of(Dep, (member(Dep,Deps1),pass_bus(Dep,Bus1),Bus1\==Bus),Deps2).
 
-pass_bus(depnode(_,_,_,_,_,Rid,_,_,_),Bus):-
-	 ridtobusnr(Rid,Bus).
+pass_bus( depnode(_,_,_,_,_,Rid,_,_,_), Bus ) :-
+    ridtobusnr(Rid,Bus).
 
 
 
@@ -1220,7 +1254,7 @@ approvenightbustoplace(Place,Y) :-
 
 avoidnightbustoplace(Place,Y) :-
     Y= depnode(_,_,_,_,_,Bus_57_nn,__,_),
-    route(Bus_57_nn,_,B57),
+    route( Bus_57_nn, _, B57 ),
     busdat:spurious_return(B57,Place), %% morten_erichsen_forbid(B57,Place),
     !.
 
@@ -1244,7 +1278,7 @@ night_route(depnode(_Time0,_Time9,_DelArr,_DelDep,_BegTime,Rid1,NB,_,_)):-
     nightbus(NB).
 
 
-airbus_route(depnode(_Time0,_Time9,_DelArr,_DelDep,_BegTime,Rid1,NB,_,_)):-
+airbus_route( depnode(_Time0,_Time9,_DelArr,_DelDep,_BegTime,Rid1,NB,_,_) ) :-
     ridtobusnr(Rid1,NB),
     busdat:airbus(NB).
 
@@ -1638,7 +1672,7 @@ connections(StartDeps,EndDeps,Bus,FromPlace,ToPlace,Day,DaySeqNo,Opts,Deps,Mid01
 
     coupled(StartDeps1,EndDeps1,Bus,FromPlace,ToPlace,Day,DaySeqNo,Opts,Deps,Mid01),
 
-    trackprog(2,(nl,taketime,nl)). %% TA-110322
+    user:trackprog(2,(nl,utility:taketime,nl)). %% TA-110322
 
 remove_roundtrip_deps(FromPlace,ToPlace,StartDeps0,StartDeps1):- %% TA-110224
     set_eliminate(X,looping(FromPlace,ToPlace,X),StartDeps0,StartDeps1).
@@ -1864,7 +1898,7 @@ coupled(StartDeps,EndDeps,_,_,_,Day,DaySeqNo,Opts,Deps,Mid01) :-
 %% TO AVOID HANGING, THERE IS A timeout CLAUSE ON COUPLED
 
 coupled_time(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01):-
-	 timedat:buslogtimeout(MAXTIME),
+    buslogtimeout(MAXTIME),     %% timedat: RS-141015
     timeout(            %%  calls time_out if not notimeoutflag
       coupled1(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01),
         MAXTIME, %% 10 seconds
@@ -2345,7 +2379,7 @@ firstcorr(Orig,Dest,StartDeps,EndDeps,Day,DaySeqNo,StartDep,EndDep,Mid):-
     member(EndDep,EndDeps),
     isfirstcorr(EndDep,Orig,Dest,Day,DaySeqNo,StartDepsRev,StartDep,Mid),
 
-    traceprog(4,'*foundcorr').
+    user:traceprog(4,'*foundcorr').
 
 
 
@@ -2696,7 +2730,10 @@ set_actualdate(Date):-
      user:( actualdate := Date ).
 
 
-%%%%%%%%%%%%%%% This was almost identical with telelog!! %% RS-140101
+%%%%%%%%%%%%%%% This was almost identical with telelog!! %% RS-140101 (Re-move telelog?)
+% These predicates are only to preserve information?, no filtering...
+
+flag(_).  %% Panic : Global flag that is sometimes not removed by bustrans
 
 passevent(Deps,_,_,_,_,_) :- Deps\==[]. %%  ==> Message   NO PASSES
 atday(_).
@@ -2711,24 +2748,12 @@ takestime(_,_,_).
 passesstations(_,_,_,_).
 % busespass(_,_,_,_).
 
+
 % from telelog
-%atday(_).%atdate(_).%timeis(_).%dateis(_,_,_,_).%message(_).%%takestime(_,_,_).%passesstations(_,_,_,_).
+%atday(_). %atdate(_). %timeis(_). %dateis(_,_,_,_). %message(_). %%takestime(_,_,_). %passesstations(_,_,_,_).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% if N exceeds length, take what you have   (Pragmatix)
-
-members(N,[A|RA],[A|RB]) :-
-	 N>0,
-	 M is N-1,
-	 members(M,RA,RB).
-
-members(N,[],[]) :-
-	 N>0,
-    !.
-
-members(0,_,[]).
-
-internalkonst(sk(_)).
+internalkonst( sk(_) ).
 
 
 %% ensure_removed(X,[X|R],R). %% removes only first
@@ -2740,7 +2765,7 @@ ensure_removed(X,[A|RA],[A|RB]) :-
 ensure_removed(_,[],[]).
 
 
-islist(X):-nonvar(X),X=[_|_].
+islist(X) :- nonvar(X), X = [_|_] .
 
 %% occurs_before(Z,X1,X2)  X1 occurs before X2 in Z
 
@@ -2763,7 +2788,7 @@ ridtobusnr(RID,BusNr):-
 %% ridtobusname(RID,BusName).   %% RID is known, gets busname
 
 
-ridtobusname(RID,BusName):-
+ridtobusname( RID, BusName ) :-
      xroute(RID,_BusNr,BusN),
      BusName=BusN,
      !.
@@ -2944,10 +2969,6 @@ memrest(X,[_|Z1],Z2):-
     memrest(X,Z1,Z2).
 
 
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -2955,14 +2976,6 @@ memrest(X,[_|Z1],Z2):-
 
 depset(_,_).
 
-
-askfor([], _, _) :- false.
-
-askfor(Frame, Slot, _) :-
-       frame_getvalue_rec(Frame, Slot, _, _).
-
-%% askfor(_, _, _) :- false.
-%% If we are to ask for something, no need to compute  %% the rest.
 
 
 askref(_, _) :- false.     %% If we need to clarify references, we don't have to compute.
@@ -2998,3 +3011,4 @@ frame_remember(_,_):-!. %% Pro forma
 
 wrotten :-
         write('Something very wrotten...').
+

@@ -3,15 +3,15 @@
 %% CREATED TO-970319
 %% REVISED TO-970421 TA-041217
 
+:- module( relax, [ rule/2 ] ).  %% RS-130624    2012 Experiment?
+
 :- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
 %:- ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators
 :- use_module( '../app/pragma', [] ). %% RS-140207 Pragmatic (rule) Operators
 
 
 
-:- module(relax,[]).  %% RS-130624    2012 Experiment?
-
-tracevalue(L) :- value(traceprog,L).  % Trace level 1-4
+% tracevalue(L) :- value(traceprog,L).  % Trace level 1-4
 
 selectroute rule
 is	replace selectroute(_, A, B)

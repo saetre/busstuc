@@ -15,108 +15,44 @@
 
 %* List of predicates
 
-:-module( busdat,[
-        airbus/1,                  % (BUS?)
-        airbusstation/1,           % (STATION)
-        bus_depend_station/3,      % (ROUTE,PLACE,STATION)
-        bus_dependent_station/3,
-        busfare2/2,                % (ROUTETYPE,NUMBER*)
-
-        central_airbus_station/1,  % (STATION) 
-        central_fromstation/1,     % (STATION) avoid default to ST
-        cmbus/3,
-        clock_delay/3,        %% Moved to timedat.pl
-        corr0/2,
-%        corr/2,                    % use places.pl (AtB Domain)
-        corresp/2,                 % (PLACE,PLACE)
-        corresp0/2,                % (PLACE,PLACE)
-        corresponds/2,             % (STATION,STATION)
-%%        create_named_dates/0,      % RS-120402        %% Moved to timedat.pl
-        cutloop_station/2,
-
-        date_day_map/2,            % RS-120402         Move to timedat?
-%%        dedicated_date/1,          % RS-120402         Moved to timedat
-        disallowed_night/1,        % (DATE)            Moved to timedat???
-        default_destination/2,     % (ROUTE,STATION)
-
-        endneighbourhood/2,        % (ROUTE,PLACE)
-        exbus/1,                   % (ROUTE)
-        exbusname/2,               % (ROUTE,ROUTE)
-        explicit_part_name/1,      % (NAME)
-        extraallowed_night/2,      % RS-120402 %% Moved to timedat?
-
-        fromstationonly/1,         % (STATION)
-        home_town/1,               % (PLACE)
-        hours_delay/1,             % RS-120402  Was missing
-
-        intbusname/2,              % (ROUTE,ROUTE)
-        intbusnr/2,                % (ROUTE,ROUTE)
-        internal_airbus/1,         % (BOOLEAN)
-
-        maxnumberofindividualdepartures/1, % RS-120402
-        moneyunit/1,               % (NAME)
-        nightbus/1,                % from db/regbusall.pl
-        nightbusstation/1,         % (STATION) 
-        nightbusdestination/1,     % (STATION)
-        nostationfor/1,            % (PLACE)
-        nostationfor1/1,           % (PLACE)
-        
-%%        orig_named_date/2,         % RS-120402
-
-        preferred_transfer/5,
-        railway_station/1,
-        regbus/1,                  % From regbusall, %% RS-140413, experiment
-        spurious_return/2,
-        synbus/2,                  % (NAME,ROUTE)
-        thetram/1,
-        thetramno/1,
-        tramstation/1,             % (STATION)
-        thetramstation/1,          % (STATION)
-        thetramstreetstation/2,
-        tostationonly/1,           % (STATION) %% TA-110228
-        unique_vehicle/2,
-        vehicletype/2,
-        xisat/2,
-        xforeign/1,                % (PLACE)
-        xplacestat/2,
-        xsynplace/2
-]). 
-
+:- module( busdat, [ airbus/1, airbusstation/1, bus_depend_station/3, bus_dependent_station/3, busfare2/2, central_airbus_station/1, central_fromstation/1, cmbus/3, corr0/2, % corr/2,
+                      % (BUS?) % (STATION)% (ROUTE,PLACE,STATION) % (ROUTETYPE,NUMBER*)                      % (STATION)                % (STATION) avoid default to ST % use places.pl (AtB Domain)
+                     corresp/2, corresp0/2, corresponds/2, cutloop_station/2, date_day_map/2, disallowed_night/1, default_destination/2, endneighbourhood/2,       
+                      % (PLACE,PLACE) % (PLACE,PLACE)                       % (STATION,STATION)  % (DATE)           % (ROUTE,STATION)  % (ROUTE,PLACE)
+                     exbus/1,      exbusname/2, explicit_part_name/1, extraallowed_night/2, fromstationonly/1, home_town/1, hours_delay/1,
+                     % (ROUTE) % (ROUTE,ROUTE) % (NAME)                                         % (STATION)        % (PLACE)       % RS-120402  Was missing
+                     intbusname/2, intbusnr/2, internal_airbus/1,     maxnumberofindividualdepartures/1, moneyunit/1,
+                     % (ROUTE,ROUTE) % (ROUTE,ROUTE) % (BOOLEAN)                                         % (NAME) % from db/regbusall.pl nightbus/1, 
+                     nightbusstation/1, nightbusdestination/1, nostationfor/1, nostationfor1/1, preferred_transfer/5, railway_station/1, regbus/1, % From regbusall, %% RS-140413, experiment
+                     % (STATION) % (STATION) % (PLACE) % (PLACE) 
+                     spurious_return/2, synbus/2,         thetram/1, thetramno/1, tramstation/1,        thetramstation/1, thetramstreetstation/2, tostationonly/1,    
+                                        % (NAME,ROUTE)                              % (STATION),          % (STATION)                             % (STATION) %% TA-110228
+                     unique_vehicle/2,  vehicletype/2,  xisat/2,  xforeign/1, xplacestat/2, xsynplace/2 ] ). 
+                                                                  % (PLACE)
+                     %% RS-120402 %% Moved to timedat.pl  %% create_named_dates/0, % dedicated_date/1, orig_named_date/2,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :- ensure_loaded( user:'../declare' ).       %% RS-120402       %% for(X,Y)
-:- use_module( '../utility/utility', [ testmember/2 ] ).
+:- use_module( '../utility/utility', [ bound/1, testmember/2 ] ).
 
+%% UNIT: /db/
+:- use_module( places, [ corr/2, foreign/1, isat/2, nostation/1, placestat/2 ] ). %% RS-131225
+:- use_module( regbusall, [ nightbus/1, regbus/1 ] ).  %% RS-140619
+:- use_module( timedat, [ named_date/2 ] ).  %% keep  until modules are fixed bound/1, bus/1, station/1
 
-:- use_module( 'places', [ corr/2, foreign/1, isat/2, nostation/1, placestat/2 ] ). %% RS-131225
-%:- ensure_loaded( 'places' ). %% [ corr/2, foreign/1, isat/2, placestat/2 ] ).
+%% RS-140416 Two different regbus (Period-independent, and many modules with regbus too. %%This used to be done from topreg? (Should be done from topreg::makeauxtable?)
+%:- use_module( regcompstr, [] ). %% HEAVY DB! %:- use_module( regstr, [] ). %% HEAVY DB! %:- use_module( teledat2, [] ). %% HEAVY DB!
 
-%:- ensure_loaded( [ regbusall, regcompstr, regstr, teledat2 ] ). %% HEAVY DB!
-%:- ensure_loaded( regbusall ). %, [ nightbus/1, regbus/1 ] ). %% RS-120803
-:- use_module( regbusall, [ nightbus/1, regbus/1 ] ). %, [ nightbus/1, regbus/1 ] ). %% RS-140619
-%% RS-140416 Two different regbus (Period-independent, and many modules with regbus too.
-%%This used to be done from topreg? (Should be done from topreg::makeauxtable?)
+%% UNIT: /
+:- use_module( '../interfaceroute', [ domain_module/2 ] ).    %% HEAVY DB! %:- ensure_loaded( user:'../interfaceroute' ). %% [ domain_module/2 ]    %% HEAVY DB!
 
-%:- use_module( regcompstr, [] ). %% HEAVY DB!
-%:- use_module( regstr, [] ). %% HEAVY DB!
-%:- use_module( teledat2, [] ). %% HEAVY DB!
-%%%%
+%% UNIT: /app/
+:- use_module( '../app/buslog', [ bus/1, station/1 ] ).%% RS-130210 %% RS-131225  %% keep  until modules are fixed % 
+%:- use_module( '../app/telelog', [ bound/1 ] ).    %% RS-131225 %% To utility.pl
 
-:- use_module( '../app/buslog', [ bus/1, station/1  ] ).%% RS-130210 %% RS-131225
-%:- ensure_loaded( '../app/buslog' ) . %% [ bound/1, bus/1, station/1 ] ).  %% keep  until modules are fixed
-:- use_module( '../app/telelog', [ bound/1 ] ).    %% RS-131225
+%% UNIT: /tuc/
+:- use_module( '../tuc/names', [ abroad/1, community/2, country/1 ] ). %:- ensure_loaded( '../tuc/names' ). %% [ abroad/1, community/2, country/1 ] ).
 
-%:- ensure_loaded( '../db/timedat' ) . %% [ bound/1, bus/1, station/1 ] ).  %% keep  until modules are fixed
-%:- ensure_loaded( '../db/timedat' ) . %% [ bound/1, bus/1, station/1 ] ).  %% keep  until modules are fixed
-:- use_module( '../db/timedat' ) . %% [ bound/1, bus/1, station/1 ] ).  %% keep  until modules are fixed
-
-%:- use_module( '../interfaceroute', [ domain_module/2 ] ). %% HEAVY DB!
-%:- ensure_loaded( user:'../interfaceroute' ). %% [ domain_module/2 ]    %% HEAVY DB!
-:- use_module( '../interfaceroute', [ domain_module/2 ] ).    %% HEAVY DB!
-
-%
-:- use_module( '../tuc/names', [ abroad/1, community/2, country/1 ] ).
-%:- ensure_loaded( '../tuc/names' ). %% [ abroad/1, community/2, country/1 ] ).
 
 %%testmember(Member, Group/List) %%RS-130210 --> utility.pl
 %testmember(Member, List) :-
@@ -129,7 +65,7 @@
 %:-dynamic named_date/2. %% Moved to timedat.pl
 
 
-tram_module( r1630_111201 ).
+tram_module( r1630_111201 ). %% RS-140922       Update this please!
 
 
 %:-volatile station/1. %% RS-121223 
@@ -210,9 +146,6 @@ cutloop_station(66,stokkhaugen). %% TA-110824 charlottenlund_krk).
 
 %%%%%%%  TIME  SECTION %%%%%%%%%%%%%%%%%
 
-clock_delay(00,00,00). %%  FOR ABNORMAL SERVER TIME ERROR, CLOCK ADJUSTMENT
-
-                            
                       
 % Santa Barbara
 % internal_airbus(true). %% The airport is covered

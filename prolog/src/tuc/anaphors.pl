@@ -5,28 +5,32 @@
 
 %% RS-131227    UNIT: tuc/
 %% Anaphoric resolution
-:- module( anaphors, [ externalresolveit/2, inventresolveit/2, matchresol0/2, nabi/3, resolve/2 ] ).
+:- module( anaphors, [ matchresol0/2, nabi/3, resolve/2 ] ). % externalresolveit/2, inventresolveit/2, 
 
 %% UNIT: / and /utility
-:- ensure_loaded( user:'../declare' ).
+:- ensure_loaded( user:'../declare' ).  %% RS-140915 , track/2
+track(X, Y) :- user:track(X, Y) .
+
 %% RS-131225, UNIT: utility/
+:- use_module( '../utility/utility', [ match/2, nth/3 ] ). %local: , test/1
 :- use_module( '../utility/library', [ reverse/2 ] ).%% RS-131225
-:- use_module( '../utility/utility', [ match/2, nth/3 ] ). %local: test/1
 
 %% RS-111205, UNIT: / 
-:- use_module( '../main.pl', [ track/2 ] ). %% RS-140209 hei/0,   run/0
+%:- use_module( '../main.pl', [  ] ). %% RS-140209 hei/0,   run/0
 
 %% RS-140210. UNIT: /tuc/
 :- use_module( evaluate, [ disqev/1, fakt/1 ] ).          %% RS-140210
 :- use_module( facts, [ isa/2 ] ).       %% RS-131225    Necessary?
-:- use_module( fernando,[ subclass0/2, subtype0/2, type/2 ] ).
-:-use_module( 'translat.pl', [ condq/2 ] ).       %% RS-140210
+:- use_module( fernando,[ subtype0/2, type/2 ] ).
+:- use_module( semantic,[ subclass0/2 ] ).
+:- use_module( translat, [ condq/2 ] ).       %% RS-140210
 
 %% RS-140210. UNIT: /dialog/
 :-use_module( '../dialog/newcontext2.pl', [ dialog_resolve/2 ] ).       %% RS-140210
 
 %% META-PREDICATES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate test(0) .  %% RS-140615  %% test/1 is a meta-predicate ( just passing on the incoming X-predicate
 test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -173,13 +177,13 @@ resolv(findit(X)::P,Q,L):- % Internal resolution
     !,
     resolv(P,Q,L).    
 
-resolv(findit(X)::P,Q,L):- % External resolution
-    externalresolveit(X),      
+resolv( findit(X)::P, Q, L ) :- % External resolution
+    externalresolveit( X ),      
     !,
-    resolv(P,Q,L).        
+    resolv( P, Q, L ).
 
-resolv(findit(X:T)::P,exists(X:T)::Q,L):- 
-    inventresolveit(X:T,P,Q,L).
+resolv( findit(X:T)::P, exists(X:T)::Q, L ) :-
+    inventresolveit( X:T, P, Q, L ).
 
 
 resolv(aggregate(A,X,Y,P,R),    
@@ -224,9 +228,9 @@ resolv(X,X,_):-
     \+ X = (findexternal(_)::_). 
 
 
-inventresolveit(X:_T,_):- nonvar(X),X=(_,_),!,fail. 
+%inventresolveit( X:_T, _ ) :- nonvar(X), X=(_,_), ! , fail.    %% RS-141018  OLD?
 
-inventresolveit(X:Y,P,X isa Y and Q,L):- 
+inventresolveit( X:Y, P, X isa Y and Q, L ) :-
     !,
     track(2,(write('Unresolved reference:  '),
              write(Y),nl,nl)),        
@@ -339,19 +343,19 @@ externalresolve(X,P):-   % Dynamically query the qualia  X:_
 
 %% externalresolveit % % % 
 
-externalresolveit(X:_T,_):- nonvar(X),X=(_,_),!,fail. 
+externalresolveit( X:_T ) :- nonvar(X), X=(_,_), ! , fail.
 
-externalresolveit(X:MT):-   % reference must not be
-    user:value(textflag,true),  
-    is_the(X,K),            % more specific than referent
-    type(K,KT),
-    nogender(KT),
-    subclass0(KT,MT). 
+externalresolveit( X:MT ) :-   % reference must not be
+    user:value( textflag, true ),
+    is_the( X, K ),            % more specific than referent
+    type( K, KT ),
+    nogender( KT ),
+    subclass0( KT, MT ).
 
 
-externalresolveit(tuc:thing). %% this thing ==> tuc " it is good"
+externalresolveit( tuc:thing ). %% this thing ==> tuc " it is good"
 
-externalresolveit(it:T):- %% Var = this thing ==> tuc " it is good" 
+externalresolveit( it:T ) :- %% Var = this thing ==> tuc " it is good" 
     var(T),
     !.
 
@@ -481,9 +485,9 @@ discnth(N,Z,X):-
     reverse(Z,Z1),  %% discourse elements are stored in 
     nth(N,Z1,X).    %% reverse order.
 
-mege(1,X/N isa C,L,M):- 
-    member(Y isa C,L),
-    match(Y,X/N),
+mege( 1, X/N isa C, L, M ) :-
+    member( Y isa C, L ),
+    match( Y, X/N ),
     !,
     L=M.
 

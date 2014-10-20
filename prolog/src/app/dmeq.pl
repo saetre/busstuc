@@ -9,7 +9,7 @@
 
 %% UNIT: utility/
 :- use_module( '../utility/utility', [ testmember/2 ] ).%:- ensure_loaded( user:'../utility/utility' ).       %% RS-131231
-:- use_module( '../tuc/fernando', [ subclass0/2 ] ).
+:- use_module( '../tuc/semantic', [ subclass0/2 ] ).
 
 %%%%%%%% dmeq(A,B) betyr at ordet til høyre
 %%%%%%%% betyr det samme som ordet til venstre i dette domenet

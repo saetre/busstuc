@@ -4,7 +4,7 @@
 %% REVISED TA-071026
 
 
-
+%:- module( buster,  [ run/0 ] ).
 %% Creates the whole Buster system from scratch
 
 
@@ -24,14 +24,15 @@ The unique files of BUSTER are
 
              diabus.pl
 
-             dialog/               Whole  catalog
+             dialog/ *               Whole  catalog
 
 */
 
 
-%?-[tucbuster]. %% TA-071026
- :- use_module( 'tucbuster.pl', [ ] ).   %% :-[tuctele]. %%% // Tele things %% TA-051018
+?-compile( tucbuster ). %% TA-071026
+%:- use_module( 'tucbuster.pl', [ ] ). % run/0 ] ).   %% :-[tuctele]. %%% // Tele things %% TA-051018
 
+%?-use_module('busroute.pl').    %% RS-140102. Import all predicates from this module!
 ?-use_module('busroute.pl').    %% RS-140102. Import all predicates from this module!
 
 

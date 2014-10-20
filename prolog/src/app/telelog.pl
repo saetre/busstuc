@@ -7,19 +7,19 @@
 
 
 % Hjelpepredikater for tele, USAGE: (Probably not needed, as long as utility/* are there...?
-:- module( telelog, [ bound/1, unbound/1 ] ). %% RS-131231
+:- module( telelog, [ ] ). %% bound/1, unbound/1 ] ). %% RS-131231
 
-:- use_module( buslog, [  internalkonst/1   ]).     %% RS-131225    For telelog.pl 'sk(_).'
+% :- use_module( buslog, [  internalkonst/1   ]).     %% RS-131225    For telelog.pl 'sk(_).'
 
 % These predicates are only to preserve information, no filtering: atday/1, atdate/1, timeis/1, dateis/4, message/1, takestime/3, passesstations/4
 %%:-module(telelog, [ bound/1, unbound/1, atday/1, atdate/1, timeis/1, dateis/4, message/1, takestime/3, passesstations/4 ] ).
 
 % Hjelpepredikat
-bound(X) :- \+ unbound(X).
-
-unbound(X) :- var(X),!.
-unbound(free(_)):-!.
-unbound(X) :- internalkonst(X).
+%bound(X) :- \+ unbound(X).
+%
+%unbound(X) :- var(X),!.
+%unbound(free(_)):-!.
+%unbound(X) :- internalkonst(X).
 
 
 % These predicates are only to preserve information, no filtering..

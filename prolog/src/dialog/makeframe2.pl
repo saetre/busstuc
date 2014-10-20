@@ -5,6 +5,8 @@
 
 %% REVISED                  COMMON VERSION
 
+:- module( makeframe2, [ rule/2 ]). %% - maketeleframe  %% RS-130624 Experiment from 2012?
+
 :- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
 
 %:-ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators
@@ -13,8 +15,6 @@
 %:-ensure_loaded( user:'../utility/utility' ). %% RS-131117 dynamic (but NOT volatile) value/2 etc.
 :- use_module( '../utility/utility', [] ). %% RS-140207 Pragmatic (rule) Operators
 
-
-:- module(makeframe,[ rule/2 ]). %% - maketeleframe  %% RS-130624 Experiment from 2012?
 
 
 

@@ -5,12 +5,30 @@
 
 %% All sorts of portraying the context information
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% UNIT: /dialog/
+:-module( portraycontext, [ dumpcontext/0, dumpstack/1, dumptopframe/0, lcon/0, pcon/0, pcontext/0, printcontext/0, printdialogtreenode/1, printslot/2 ] ).
 
+%% RS-140101. UNIT: /utility
+:- use_module( '../utility/writeout', [ out/1, output/1 ] ). %% RS-140101 for/2 ?!
+
+%% RS-140101. UNIT: Prolog Library
+:-use_module( library(aggregate), [ forall/2 ] ).
+:-use_module( library(lists), [ reverse/2 ] ).
+
+%%% RS-131225, UNIT: /
+:- use_module( '../main', [ indentprint/2 ] ).
+:- use_module( '../ptbwrite', [ tab/1 ] ). %% RS-140914
+
+%% RS-140101. UNIT: /dialog/
+:- use_module( newcontext2, [ current_context/1, getcontext/2, getcurrent/1, saved_context/3 ] ). %% RS-140101
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 lcon :- listing(saved_context).       %% ad hoc utility 
 
 
-pcon :- saved_context(_Cid,_Cur,X),   %% ad hoc utility %% TA-041007
+pcon :- saved_context( _Cid, _Cur, X),   %% ad hoc utility %% TA-041007
         portraycontext(X).
 
 pcon0 :- saved_context(Cid,_Cur,X),  %% ad hoc utility %% TA-041215
@@ -18,7 +36,7 @@ pcon0 :- saved_context(Cid,_Cur,X),  %% ad hoc utility %% TA-041215
  
 
 printcontext :-               %% TA-060126
-    value(contextflag,true),
+    user:value(contextflag,true),
     !,
     printcontext1
 ;
@@ -102,7 +120,7 @@ portraynode(node(GramHead,Curacit,focus(NewFrame,Flist2,Flist3), GramBody)) :-
 
 outconst(Curacit):-var(Curacit),!;out(Curacit).
 
-outputp([TQL,BUSLOG]):-
+outputp( [TQL,BUSLOG] ):-
     !,
     nl,
     write('           '),output(TQL),nl,
@@ -117,7 +135,8 @@ outputslots(_N,List):- %% TA-050914
     output('* [] *').
 
 outputslots(N,List):-
-    for(member(X,List),printslot(N,X)).
+%    for(member(X,List),printslot(N,X)).
+    forall( member(X,List), printslot(N,X) ). %% RS-140914
 
 
 printslot(N,X):-
@@ -125,7 +144,7 @@ printslot(N,X):-
     !,
     indentprint(N,Slotname),
     N1 is N+4,
-    for(member(K,[U|V]),printslot(N1,K)).
+    forall(member(K,[U|V]),printslot(N1,K)).
 
 printslot(N,X):-
     X = [Slotname,Q,_,_], % if slotvalue a list, indent
@@ -141,7 +160,7 @@ printslot(N,X):-
 %% TA-041215
 
 pcontext :-
-    value(contextflag,true),
+    user:value(contextflag,true),
     !,
     pcon0,
     !
@@ -150,12 +169,12 @@ pcontext :-
 
 	
 printdialogtree(L):-
-    value(traceprog,N),N > 1, %% TA-051005
+    user:value(traceprog,N),N > 1, %% TA-051005
     !,
     nl,
     output('*** Dialog tree *** '),nl,
     reverse(L,L1),
-    for(member(X,L1), printdialogtreenode(X) ).
+    forall(member(X,L1), printdialogtreenode(X) ).
 
 printdialogtree(_):- nl.
 

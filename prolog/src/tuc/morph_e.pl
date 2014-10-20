@@ -7,7 +7,8 @@
 
 %% Morphological Analyser for the language E.
 
-:-module( morph_e, [ %% lcode2/2, %% RS-140428 This breaks the lcode2/2 in user: (from lex.pl). All words end up "unknown"
+%:-module( morph_e, [ %% lcode2/2, %% RS-140428 This breaks the lcode2/2 in user: (from lex.pl). All words end up "unknown"
+:-module( morph_e, [ lcode2/2, %% RS-140428 This breaks the lcode2/2 in user: (from lex.pl). All words end up "unknown"
         lexv/2,    %% RS-131225    Only /2 ? There is another lexv with /4
         verbroot/1 ] ).
 %% ends_with(X,Y,Z):-ends_with(X,Y,Z).     %% RS-131225    Try to use dict_e & modules instead!

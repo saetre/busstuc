@@ -3,10 +3,30 @@
 %% CREATED TA-050906
 %% REVISED TA-050906
 
+%% UNIT: /dialog/
 %% Dialog Grammar execution 
+:-module( exegram, [  g_execute/3  ] ).  %% RS-140914 Modularized
 
-:-use_module( '../bustermain2.pl', [ dialog/0, trackprog/2 ] ).       %% RS-140210
+:-meta_predicate  g_execute( ?, ?, 0).
+:-meta_predicate  g_execute2( ?, ?, ?, 0).
+:-meta_predicate  g_select2( ?, ?, ?, 0).
 
+:-meta_predicate  trackprog(+,0).
+
+%% UNIT / AND /utiltity/
+:- ensure_loaded( user:'../declare' ).       %% RS-111212  traceprog/2, trackprog/2
+trackprog(X, Y) :- user:trackprog(X, Y).
+
+:- use_module( checkitem2, [ checkitem/3, sysout_item/1 ] ).       %% RS-140210
+
+%% UNIT: /
+:- use_module( '../main.pl', [ dialog/0 ] ).       %% RS-140210
+
+%% UNIT: /dialog/
+:- use_module( diagram, [ gram/3 ] ).   %% Common Dialog Grammar for bus and tele
+
+%% UNIT: /utility/
+:- use_module( '../utility/writeout', [ out/1, output/1 ] ).   %% Common Dialog Grammar for bus and tele
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

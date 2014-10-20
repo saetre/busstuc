@@ -1,3 +1,22 @@
+%% FILE  frames2.pl
+%% SYSTEM BUSTER
+%% CREATED TA-051016
+%% REVISED TA-060419
+
+%% Common version for frames and teleframes 
+
+%% RS-140914    UNIT: /dialog/
+:-module( grammar, [ g_execute/3, gram/3, lgra/0 ] ).
+
+:-meta_predicate  g_execute( ?, ?, 0 ).
+:-meta_predicate  g_select( ?, ?, 0 ).
+
+
+%% UNIT /dialog/
+:-use_module( checkitem2, [ checkitem/3, sysout_item/1 ] ).
+%% Move to user: ? current_frame/1, remove_messages/2,  remtp/3, writeconstlist/1, writeconstlist1st/1, %% RS-141019
+
+
 lgra:- load_files('dialog/grammar.pl'). 
 
 % Dialog := UserQs
@@ -288,10 +307,10 @@ gram(tb_answer2, [
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% main :-
-%%     retractall(myinput(_)),
-%%     run([node(dialog, [], [[sub(userQs)]]) ], X),
-%%     myinput([]).
+% main :-
+%     retractall(myinput(_)),
+%     run([node(dialog, [], [[sub(userQs)]]) ], X),
+%     myinput([]).
 
 g_select([node(Type, Focus, [ First | _]) | RestStack ], NewStack, Multi) :-
     g_execute([node(Type, Focus, First) | RestStack ], NewStack, Multi), !.
@@ -301,16 +320,14 @@ g_select([node(Type, Focus, [ _ | Rest]) | RestStack ], NewStack, Multi) :-
 
 
 
-g_execute([node(Type, Focus, [sub(SubType) | RestAct]) | RestStack ], 
-    NewStack, Multi) :-
+g_execute( [node(Type, Focus, [sub(SubType) | RestAct]) | RestStack ], NewStack, Multi) :-
     gram(SubType, Actions, Options), 
     copydown(Options, Focus, SubFocus),
     g_select([node(SubType, SubFocus, Actions), node(Type, Focus, RestAct) | RestStack], 
 	NewStack, Multi).
 
-    
-g_execute([node(Type, OldFocus, [item(ItemType) | RestAct]) | RestStack ], 
-    NewStack, Multi) :-
+   
+g_execute( [ node(Type, OldFocus, [item(ItemType) | RestAct] ) | RestStack ], NewStack, Multi ) :-
     checkitem(ItemType, OldFocus, NewFocus),
     gram(Type, _, Options),
     copyright(Options, NewFocus, NextFocus),

@@ -4,6 +4,7 @@
 %% SYSTEM BUSSTUC/BUSTER
 %% CREATED TA-961017
 %% REVISED TA-110825
+%% REVISED RS-140921
 
 :-op( 1150, xfx, ----> ). 
 
@@ -14,7 +15,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- ensure_loaded( user:'../declare' ).
+:- ensure_loaded( user:'../declare' ).  %:-op( 710,xfx, isa ).  % Move to tuc/facts?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -269,23 +270,22 @@ endofline1 --->  ['!'].
 
 check_stop_locations ---> check_stop,!. %% ad hoc %% TA-101215
 
-/** 
+/**  check_stop_locations ---> */
 check_stop_locations --->
      w(end_of_query), 
-     assemble_stop_locations(Statlist),
+     assemble_stop_locations( Statlist ),
      !,
-     {assert_default_origins(Statlist)}.
-*/
-
+     { assert_default_origins( Statlist ) }.
 %% Ad Hoc
-
 % Assemble locations
 
-assemble_stop_locations( [Stat1+Min|Rest] ) ---> 
+assemble_stop_locations( [ Stat1+Min | Rest ] ) --->
     w( name( Stat1, n, _Station ) ), ['+'], w( nb( Min, num ) ),
     !,
-    check_stop_locations(Rest). 
-assemble_stop_locations([]) ---> end_of_line.
+    %check_stop_locations( [ Rest ] ).
+    check_stop_locations(  Rest ).
+
+assemble_stop_locations( [] ) ---> end_of_line.
 
 
 %%%%  INITIAL SENTENCES ONLY %%%%
@@ -13783,9 +13783,10 @@ not_one_of_lit(_List) ---> [].
 
 %% noe godt svar OK 
 
-not_look_ahead_number ---> [ett],!.             %% TA-110617
-not_look_ahead_number ---> w(nb(_,_)),!,fail.   %%
-not_look_ahead_number ---> [].                  %% TA-110620
+not_look_ahead_number ---> [ett],!.                   %% TA-110617
+%not_look_ahead_number ---> w(nb(_,_)),!,fail.          %% TA-111111
+not_look_ahead_number ---> w(nb(_,_)),!, { fail }.      %% RS-140921 To ensure retry?
+not_look_ahead_number ---> [].                        %% TA-110620
 
 %%¤ LOOK_AHEAD_NP 
 
@@ -14698,8 +14699,7 @@ clock_kernel(N100:clock,N100 isa clock) ---> %% WILL BE DETECTED ELSEWHERE
         not_look_ahead(w(noun(minute,_,_,_))), 
         not_look_ahead(['/']), %% -> date 1/12 
         {N > 0, N < 25 -> N100 is N*100
-        ;
-        fail}.   %% avoid 0.613  
+          ;  fail }.   %% avoid 0.613 
 
 
 

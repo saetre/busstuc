@@ -16,10 +16,8 @@
 ] ).
 
 %% RS-131225, UNIT: utility/
-%:- ensure_loaded( user:'../utility/utility' ). %% RS-131225 user:value/2, etc?
-:- use_module( '../utility/utility', [ ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
-
 :- ensure_loaded( user:'../declare' ). %% RS-140208  General (semantic) Operators, value/2, := /2, =: /2, ...
+%:- use_module( '../utility/utility', [ ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
 
 %% Names that occur several places as general appendages
 %% It is not a rule that the generic lies at the named place

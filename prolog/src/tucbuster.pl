@@ -5,11 +5,10 @@
 %% REVISED TA-090828
 
 
-
 %% Compiles all  the necessary files for
 
 %% BUSTER Dialog Versjon
-:-module( tucbuster, [ dialog/0 ] ).
+% NOT :-module( tucbuster, [ ] ). % run/0 ] ). %% Not module! Compile in "user:" module
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -21,21 +20,22 @@
 %:-volatile lastday/2 . %% RS-130331
 %:-dynamic lastday/2 . %% TA-050723
 
-%:-compile('tucbuses.pl'). 
-:- use_module( tucbuses, [  ] ). %% RS-131227 Avoid loop?
+:-compile( 'tucbuses.pl' ). %% OR compile ( 'dialog/d_call' ). ?? RS-141002
+%:- use_module( tucbuses, [  ] ). %% RS-131227 Avoid loop?
 
-?-compile('busterversion.pl'). 
+%?-compile('busterversion.pl'). 
+?-use_module( 'busterversion.pl', [ ] ).
 
-?-compile('diabus.pl'). 
+?-compile( 'diabus.pl' ). 
 
 %?-compile('bustermain2.pl'). %% NEW, TELE COMPATIBLE  
-:- use_module( bustermain2, [  ] ). %% RS-131227 Avoid loop?
+:- use_module( main, [  ] ). %% RS-131227 Avoid loop?
 
-?-compile('tele2.pl'). %% specific tele programs %% TA-051116
+%?-compile('tele2.pl'). %% specific tele programs %% TA-051116
+?-use_module( 'tele2.pl', [ ] ). %% specific tele programs %% TA-051116
 
-:-compile('dialog/d_call.pl'). %% diolog/0, etc.?
+:-compile( 'dialog/d_call.pl' ). %% diolog/0, etc.?
 %:-ensure_loaded( 'dialog/d_call.pl' ). %% create_splitacts/x, etc.?
-
 
 
 ?- user:( smspermanentflag := true), 

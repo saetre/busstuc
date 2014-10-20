@@ -6,11 +6,14 @@
 
 %% Makefile for BussTUC/ASTT file
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% RS-131227    UNIT: / (FIRST!)
+:- ensure_loaded( user:'declare' ). %% RS-111213  General (semantic) Operators
+
 %%?-prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates
 
-
 %?-compile(tucbuses). 
-:- use_module( tucbuses, [  ] ). %% RS-131227 Avoid loop?
+%:- use_module( tucbuses, [  ] ). %% RS-131227 Avoid loop?
 
 
 ?- (unix_language := eng),  %% Standard for IDI/NTNU UNIX Solaris )

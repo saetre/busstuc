@@ -1,44 +1,74 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE metacomp.pl  EXPERIMENTAL
 %% SYSTEM TUC
-%% CREATED  TA-940128   %% REVISED  TA-090521
-%% REVISED  RS-140101 modularized
+%% CREATED TA-940128   %% REVISED  TA-090521
+%% REVISED RS-140921  re-modularized
 
-%% metacomp.pl (english and norsk)
+%% metacomp.pl (english and norsk). Compile all the necessary grammar files...
+%  (What about dict/lex-files?) %% RS-140920 Moved to tuc/lex.pl: moved to  lex.pl: dict_module/1, dict_module/2, morph_module/1,   
 
 %% SYSTEM TUC
-:-module( metacomp, [ genprod/2, genvirt/1, makegram/5, optiprod/1, virtf/2, virtx/1, make_predname_argscount/2, write_protected_preds/1 ] ).
-%% OLD: makegram/1, e.g. makegram(norsk). %% RS-131223
-%% for utility.pl! (During makegram)       makegram/0,    makegram/1, segram/0,     regram/0,
+:-module( metacomp, [ dcg_module/1,  %  compile_english/0,  compile_norsk/0,  genvirt/1, optiprod/1, %
+        dict_file/2,    gram_file/2,    gram_module/1,  gram_module/2,  makegram/0, %% RS-140921
+        morph_file/2,   segram/0,       regram/0,   virtf/2,        virtx/1 ] ).     %% RS-140920. segram and regram are "bloody hacks?"
 
-%%?-prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates        %% RS-131227
+%% RS-140920 Keep it local? makegram/4,
+%% OLD: makegram/1, e.g. makegram(norsk). %% RS-131223 for utility.pl! for-loop? (During makegram) makegram/0,    makegram/1, segram/0,     regram/0,
+%% RS-131225 Experiment, failed, removed: make_predname_argscount/2, write_protected_preds/1,
 
-%% Make META-PREDICATES internal in this file!
+%% ?-prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates        %% RS-131227 Removed?
+
+%% RS-131223   % UNIT: /
+:- ensure_loaded( user:'../declare' ). %% RS-131228 "new syntax" defs, META-preds: remember/1, value/2, :=/2, =;/2
+
+%% RS-131223   % UNIT: /utility/     Get dynamic definition for value/2
+:- use_module( '../utility/utility', [ remember/1 ] ). %, variant/2 ] ). %% , for/2, ( := )/2 %% RS-131117 includes user:declare.pl appendfiles/3, 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate  for(:, + ). %% RS-140101 from utility ( : means this module, + means source module )?
+:- meta_predicate test(0) . %% RS-140211
+test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% RS-131227, UNIT: EXTERNAL LIBRARY
+:- use_module( library(varnumbers), [ numbervars/1 ] ). %% RS-140210.
 
+
+variant(X,Y):-   
+    subsumes(X,Y),
+    subsumes(Y,X).
+
+subsumes(X,Y):-   % X at least as general
+     test( subsum1(X,Y) ).
+
+subsum1(X,Y):-
+     numbervars(Y),
+     X=Y.
+
+
+%% RS-140920 Keep all the META-PREDICATES internal in this file?!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%OLD :- meta_predicate  for(:, + ). %% RS-140101 from utility ( : means this module, + means source module )?
+
+:- meta_predicate  for( 0, 0 ). %% RS-140920 from utility ( : means this module, + means source module, 0 means this module? with no extra arguments? )
 for( P, Q ) :- %% For all P, do Q (with part of P)
   P, Q,
   false;true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% RS-131223   % UNIT: /
-:- ensure_loaded( user:'../declare' ). %% RS-131228 "new syntax" defs, META-preds: for/2, remember/1, value/2, :=/2, =;/2
-%:- use_module( '../sicstus4compatibility', [ remove_duplicates/2 ] ).
-
-%% RS-131223   % UNIT: EXTERNAL  %:- use_module( library(lists3), [remove_duplicates/2] ).
-
-%% RS-131223   % UNIT: /utility/     Get dynamic definition for value/2
-:- use_module( '../utility/utility', [ appendfiles/3, variant/2 ] ). %%, ( := )/2 %% RS-131117 includes user:declare.pl
-:- use_module( '../utility/datecalc', [ datetime/6 ] ).
+%% RS-131223   % UNIT: EXTERNAL  %:- use_module( library(lists3), [ remove_duplicates/2 ] ).
 
 %% Moved from tucbuses.pl
 %% RS-131227 compile_english and compile_norsk are used IN tucbuses!  %% Avoid circles!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%:-ensure_lodaed( user:'../tucbuses' ). %% RS-131223  makegram/2, language/1 %% RS-131227 Avoid loop!!
-%:- use_module( tucbuses:'../tucbuses', [  dagrun_file/2,  dcg_file/2, dcg_module/2,  dict_file/2, morph_file/2,
-%        gram_file/2, gram_module/2,     style_check/1  ] ). %% RS-131227 Avoid loop?   language/1, 
 
+%:- use_module( tucbuses:'../tucbuses', [  dagrun_file/2,  dcg_file/2, dcg_module/2,  dict_file/2, morph_file/2,
+%        gram_file/2, gram_module/2,     style_check/1  ] ). %% RS-131227 Avoid loop?!!   language/1,
+
+:-use_module( '../utility/writeout', [ language/1 ] ). %% RS-140920  %% RS-131227 Avoid loops?
+
+%% RS-131223   % UNIT: /utility/*.pl
+:- use_module( '../utility/datecalc', [ datetime/6 ] ). %% RS-140921 For the file headings
+
+%:-ensure_lodaed( user:'../tucbuses' ). %% RS-131223  makegram/2, language/1 %% RS-131227 Avoid loop!!
 
 %%% SMOKETEST    virtuals are added last
 
@@ -47,7 +77,7 @@ for( P, Q ) :- %% For all P, do Q (with part of P)
 %%  dcg_x.pl = virtuals.pl + dcg.pl
 
 :- volatile
-           virtf/2, virtx/1, optiprod/1. %%, predheads/1.
+           virtf/2, virtx/1, optiprod/1. %%, predheads/1. %% RS-140914
 
 :- dynamic virtf/2,     %% the virtual functor
            virtx/1,     %% the virtual expression
@@ -66,31 +96,156 @@ for( P, Q ) :- %% For all P, do Q (with part of P)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% RS-131228
-%segram:- %% short %% norsource facilities %% TA-100207
-%    nodebug, 
-%    norsource := true,
-%    consult(gramn),
-%    makegram.
+segram:- %% short %% norsource facilities %% TA-100207
+    nodebug, 
+    user:( norsource := true ),
+    consult(gramn),
+    makegram.
 
-%regram:- %% short 
-%    nodebug, 
-%    consult(gramn),
-%    makegram.
+regram:- %% short 
+    nodebug, 
+    consult(gramn),
+    makegram.
 
 
+
+%%% THESE ARE NOW CALLED FROM MAIN DIRECTORY
+
+%dagrun_file(english,   'tuc/dagrun_e.pl').
+%dagrun_file(norsk,     'tuc/dagrun_n.pl').
+dagrun_file( english,   dagrun_e ).
+dagrun_file( norsk,     dagrun_n ).
+
+%dict_file(english,   'tuc/dict_e.pl').
+%dict_file(norsk,     'tuc/dict_n.pl').
+dict_file( english,   dict_e ).
+dict_file( norsk,     dict_n ).
+
+
+%gram_file(english, 'tuc/gram_e.pl'). %% TA-000118
+%gram_file(norsk,   'tuc/gram_n.pl'). %% TA-000118
+gram_file( english, gram_e ). %% TA-000118
+gram_file( norsk,   gram_n ). %% TA-000118
+
+gram_module( english, gram_e ).
+gram_module( norsk,   gram_n ).
+
+
+%morph_file(english, 'tuc/morph_e.pl').
+%morph_file(norsk,   'tuc/morph_n.pl').
+morph_file( english, morph_e ).
+morph_file( norsk,   morph_n ).
+
+gram_module(D) :- language(L),gram_module(L,D).
+
+dcg_module(U) :- language(L),dcg_module(L,U).
+
+% dcg_file(U) :-language(L),dcg_file(L,U).      %% RS-140920 Unused?
+
+dcg_file(english, 'dcg_e.pl'). %% MAIN
+dcg_file(norsk,   'dcg_n.pl'). %% MAIN
+
+dcg_module(english, dcg_e).
+dcg_module(norsk,   dcg_n).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%DEBUG
 %%gram_module(norsk,   gram_n).
 %%dcg_file(norsk,   'dcg_n.pl'). %% MAIN -> tucbuses
 
-%% RS-131227 makegram/0 /1 /5 is used IN tucbuses!  %% Avoid circles!   % makegram :- ...
+%% RS-131227 makegram/0 /1 /5 is used IN tucbuses!  %% Avoid circles!?   % makegram :- ...
 %makegram :-
 %    nodebug, %% TA-001027      %% RS-131227 Verify that this work, and TURN OFF AGAIN!
 %    language(Lang), %% RS-131228 NOT working when compiling just metacomp.pl (with makegram.)!
 %    % (language(Lang) -> true ; Lang==norsk),
 %    makegram(Lang).
 
-makegram( DAGFILE, DICTFILE, DCGFILE, DCGMODULE, GRAMMODULE ):-
+%% RS-131227 Makegram is used IN tucbuses!  %% Avoid circles!?
+makegram :-
+        compile_english,
+        compile_norsk.
+
+writeheading( DAGFILE, DCGFILE, DCGMODULE, DICTFILE, 'gram_e' ) :- 
+        write('%% FILE '),write(DCGFILE),nl,
+        write('%% Automatically created by tuc/metacomp.pl, based on dict and tuc/gram_...'),nl, nl,
+        write(':-module( '),write(DCGMODULE),write(', '),write( [ sentence/6, anorder/7, as0/5, atom/6, atomlist/6, be_modal/6, begin/5, bus_number/6, clock_number/6, colon0/5,
+                descend00/9, each/5, either0/5, end/5, from/5, in0/5, kl0/5, latest/5, nameq3/7, nounp/7, nounp1/8, npy/8, nr0/5,
+                ones/5, or1/5, others/5, pointNO/5, prep0/6, qtrailer/5, road_number/6, statemenreal/6, statics/6, streetno/5,
+                superlative/7, that_verb/11, that0/5, that0/6, this1/7, trans_verbs/10, very/5, year0/6  ] ),write(' ).'),nl,nl,
+
+        write(':- ensure_loaded( user:''../declare.pl'' ). %% RS-111213 General (semantic) Operators, ...'), nl,
+        write(':- use_module( ''../utility/utility\', [ testmember/2 ] ).  %% test/1, RS-140914'),nl, nl,
+
+        write('%:- ensure_loaded( '), write(DCGMODULE),write(':\''),write(DAGFILE),write('\' ). %%, [ cc/5, w6 ] ). %% RS-140209 What is DAG?'), nl,
+        write(':- use_module( '''),write( DAGFILE ),write(''', '),write( [ cc/5,  check_stop/5, end_of_line/5, lock/5, look_ahead/6, not_look_ahead/6,
+                pushstack/7, skip_rest/5, unlock/4, virtual/6, w/6 ] ),write(' ). %% RS-111213 What is DAG? '),nl,
+
+        write(':- use_module( '''),write( DICTFILE ),write(''', '),write( [ noun/1, preposition/1, pronoun/2 ] ), write('). %% RS-111213 What is DAG? '),nl,
+        write(':- prolog_flag(discontiguous_warnings,_,off).'),nl,nl,
+        
+        write(':- use_module( ''../utility/datecalc'', [ addtotime/3, this_year/1, todaysdate/1 ] ).  %% RS-131228, add_days/3, datetime/6, days_between/3, easterdate/2, subfromtime/3, timenow/1, today/1, '),nl,
+        write(':- use_module( ''../db/timedat'', [ named_date/2 ] ). %% dedicated_date/1, RS-131228' ),nl,
+        %write(':- use_module( '''), write(DICTFILE), write(''' , [] ). %%, [ preposition/1 ] ). %% RS-111213 Dictionary lookups'),nl,
+
+        write(':- use_module( fernando, [ adjnamecomp_template/3, adjnoun_template/4, adjname_template/4, adjust_year/3,' ), nl,
+        write('         adj_template/5, adv_compl/6, align/5, align_measure/5, align_noun_name/5, atom_templ/2, bealign/5,' ), nl,
+        write('         compare/5,      compatvar/2, compoundtest/4, constrain/2, constrainit/2, dayname/1, dtv_template/6,' ), nl,
+        write('         has_template/3, it_template/1, iv_template/4, latin/4, monthnumber/2, negate/3, noun_adverb/4, noun_compl/4, pluralis/2, preadjs_template/4,' ), nl,
+        write('         rv_template/7, setvartype/2, tv_template/5, type/2, vartypeid/2, verb_compl/6, verbtype/2 ] ). %% RS-140921 value_world/1, vartype/3, which_thing/2, whodunnit/2' ),nl,
+
+        write(':- use_module( semantic, [ a_compl/4, gradv_templ/2, measureclass/1, particle/3, post_adjective/1, pvi_templ/2, stanprep/2, subclass0/2, tv_templ/3, v_compl/4 ] ). %% RS-131227' ),nl,
+        write(':- use_module( ''../main'', [ traceprint/2 ] ). %%RS-140209 '),nl,
+        write(':- use_module( lex, [ no_unprotected_verb/0 ] ). %% txt/3, unprotected_verb/0, maxl/1, RS-140209' ),nl,nl.
+
+writeheading( DAGFILE, DCGFILE, DCGMODULE, DICTFILE, 'gram_n' ) :- 
+        write('%% FILE '),write(DCGFILE),nl,
+        write('%% Automatically created by tuc/metacomp.pl, based on dict and tuc/gram_...'),nl, nl,
+        write(':-module( '),write(DCGMODULE),write(', '),write( [ sentence/6, (\)/7, addressat0/5, adj_conjunction0/5, altsogå/5, andor0/6, andwhere0/5, anorder/7, areyou/5, as0/5, assemble_stop_locations/6, at0/5, atom/6, atomlist/6, aux0/7, auxs/5,
+                be_modal/6, be_there_modal/6, be_truefalse_that/6, be0/5, begin/5, both0/5, bus_number/6, check_stop_locations/5, clock_number/6, clock_time/6, colon0/5, commas0/5, complement1_accept/8,
+                denbussen/5, dendet0/5, detå/5, do/6, each/5, either0/5, end/5, endofline1/5, erdetdet/5, everything/5,
+                faa0/5, faaverb/6, fast/5, flnpproper/6, fordent0/6, forto0/5, from/5, førnår/5, gadd/5, grums/5, halfhour/5, has0/5, hashad0/5, herefrom/5, 
+                ifra/5, iman/5, imp_phrase/6, in_order_to/7, it/5, itrailer/5, iyou/6, kan/5,
+                latest/5, let/5, longadj/5, look_ahead_conjuction/5, look_ahead_endofline/5, look_ahead_pron/5, look_ahead_timeclause/5, menbare/5, mineyour0/5, minutes0/5, 
+                name_compound/8, namenb/6, nearest/5, next0/5, no_phrase/7, not_adjective_only/5, not_look_ahead_day/5, not_look_ahead_noun/5, not_look_ahead_pron/5, not_look_ahead_time/5, not_look_ahead_vehicle/5,
+                not_one_of_lit/6, notify/5, notrel/5, notwithstanding/5, np_question/6, number0/5, nr0/5,
+                object2hnn/8, om0/5, ompa/5, or1/5, others/5, out0/5, overat/5, paadeg/5, panic/6, pointNO/5, prep0/6, qtrailer/5, quant00/6, 
+                redundantsx0/5, relneg/6, relwhat/6, rep_modifiers0/10, road_number/6, same/5, sentence01/6, setlist/5, smallhours/6, some/5, someonex/5, soredundant0/5, 
+                statics/6, streetno/5, subjectverb/8, superlative/7, team/5, termchar0/5, terminatore0/5, thatto0/8, that0/5, 
+                themost/5, then0/5, theonly0/5, there_be_modal/6, thereitN/5, this/6, thousand0/5, tilsiden/5, timenexp/6, today0/5,
+                trafikk/5, trans_verbs/10, verb0/6, when0/5, when10/5, where1/5, whose_noun/7, year0/6 ] ),write(' ).'),nl,nl,
+
+        write(':- ensure_loaded( user:''../declare.pl'' ). %% RS-111213 General (semantic) Operators, ...'), nl,
+        write(':- use_module( ''../utility/utility\', [ test/1, testmember/2 ] ).  %% RS-140914'),nl, nl,
+        write(':- use_module( ''../utility/datecalc'', [ add_days/3, datetime/6, easterdate/2, subfromtime/3, this_year/1, timenow/1, today/1, todaysdate/1  ] ).  %% RS-131228, addtotime/3, days_between/3, '),nl,
+
+        write(':- use_module( '''),write( DAGFILE ),write(''', '),write( [ cc/5,  check_stop/5, end_of_line/5, end_of_line0/5, lock/5, look_ahead/6, not_look_ahead/6,
+                pushstack/7, skip_rest/5, unlock/4, virtual/6, w/6 ] ), write('). %% RS-111213 What is DAG? '),nl,
+        write(':- use_module( '''),write( DICTFILE ),write(''', '),write( [  ] ), write('). %% RS-111213 What is DAG? '),nl,
+        write(':- prolog_flag(discontiguous_warnings,_,off). %% RS-140921 Does this actually work?'),nl,nl,
+        
+        write(':- use_module( ''../db/timedat'', [ dedicated_date/1, named_date/2 ] ). %% RS-131228' ),nl,
+        %write(':- use_module( '''), write(DICTFILE), write(''' , [] ). %%, [ preposition/1 ] ). %% RS-111213 Dictionary lookups'),nl,
+
+        write(':- use_module( fernando, [ adj_compl/6, adjnamecomp_template/3, adjnoun_template/4, adjustprep/3, adjust_year/3, % ] ).  %% adjname_template2/3, adjname_template/4, ' ), nl,
+        write('         adj_template/5, adjustprepv/3, adv_compl/6, align_measure/5, align_noun_name/5, atom_templ/2, alignable/2, atv_template/6, bealign/5, bigno/3, %  cat_templ/5, align/5, ' ), nl,
+        write('         compare/5, clock_test/1, co_template/6, comparad/5, compatvar/2, compliancetest2/3, %% compliancetest/2,  ' ), nl,
+        write('         compoundtest/4, constrain/2, constrainit/2,     %%  constrain0/2, constrain2/3,  ctype/2,' ), nl,
+        write('         dayname/1, decide_adjective/3, decide_quantifier/4, dtv_template/6, % defact/3, event/4,' ), nl,
+        write('         has_template/3, it_template/1, iv_template/4, % hour_test/1, idvarx/3, isfaktor/1, issiffer/1, issifre/1,' ), nl,
+        write('         joinclass/3,  joinclasses/2, latin/4, monthnumber/2, negate/3, % meetclass/3,' ), nl,
+        write('         norpart/3, numberdate/2,  noun_adverb/4, noun_compl/4, plausible_busno/1, plausibleclocktest/3, % nil_noun_compl/1, ' ), nl,
+        write('         preadjs_template/4, % rep_verb/1, pluralis/2, ' ), nl, 
+        write('         setvartype/2, subject_object_test/3, subtype0/2, testconstraint/2, thenwhat/3, tv_template/5, type/2, % subclass/2, subclass0/2, screenmeasure/2, rv_template/7, ' ), nl,
+        write('         vartype/3, vartypeid/2, verb_compl/6, verbtype/2, which_thing/2 ] ). %% RS-140921 value_world/1, whodunnit/2' ),nl, %% fernando and dcg_n overlaps!
+        write(':- use_module( lex, [ no_unprotected_verb/0, unprotected_verb/0 ] ). %% txt/3, maxl/1, RS-140209' ),nl,
+        write(':- use_module( semantic, [ a_compl/4, abnormalverb/2, adjname_templ/2, ako/2, measureclass/1, % ] ). %% RS-140921 adj_templ/2, adjnamecomp_templ/3, adjnoun_templ/2, adjnouncomp_templ/3, (has_a)/2, iv_templ/2, jako/2, align1/2, aligen2/2,' ),nl,
+        write('         particle/3, post_adjective/1, pvi_templ/2, subclass/2, subclass0/2, tv_templ/3, v_compl/4, %  coher_class/3, dtv_templ/4, gradv_templ/2, stanprep/2,'),nl,
+        write('         rv_templ/2 ] ). % RS-131227 measureclass/1, particle/3, post_adjective/1, pvi_templ/2, stanprep/2, tv_templ/3, v_compl/4, vako/2, testclass/1, n_compl/3, pai_templ/2,'),nl,
+        write(':- use_module( ''../main'', [ traceprint/2 ] ). %%RS-140209 '),nl,nl.
+
+makegram( DAGFILE, DCGFILE, DICTFILE, DCGMODULE, GRAMMODULE ) :- % DICTFILE, 
     retractall( virtf(_,_) ),
     retractall( virtx(_) ),
     retractall( optiprod(_) ), 
@@ -100,129 +255,52 @@ makegram( DAGFILE, DICTFILE, DCGFILE, DCGMODULE, GRAMMODULE ):-
     write('%    .....metacomp.pl~100: making file.....: '), write(DCGFILE),nl,
 
     %% In other prologs than Sicstus: open is the same as  tell('dcg.pl'), plus UTF-8 encoding  %% RS-121121
-    open( 'dcg.pl', write, DcgStream, [encoding('UTF-8')] ),
+    open( DCGFILE, write, DcgStream, [encoding('UTF-8')] ),
+%   open('dcg.pl', write, DcgStream, [encoding('UTF-8')] ),
     set_output(DcgStream),
-        writeheading,           %% write('%% '),write(dadatetimenl,
-        write('%% FILE '),write(DCGFILE),nl,
-        write('%% Automatically created by tuc/metacomp.pl, based on dict and tuc/gram_...'),nl, nl,
-        write(':- ensure_loaded( user:declare ). %% RS-111213 General (semantic) Operators, ...'), nl,
-        write(':- use_module( \'utility/utility\', [ testmember/2 ] ).  %% RS-131228'),nl, nl,
-        write('%:- ensure_loaded( '), write(DCGMODULE),write(':\''),write(DAGFILE),write('\' ). %%, [ cc/5, w6 ] ). %% RS-140209 What is DAG?'), nl,
-        write(':- use_module( \''),write( DAGFILE ),write('\', [ cc/5,  check_stop/5, end_of_line/5, lock/5, look_ahead/6, not_look_ahead/6 ] ). '),nl,
-        write(':- use_module( \''),write( DAGFILE ),write('\', [ pushstack/7, skip_rest/5, unlock/4, virtual/6, w/6  ] ). %% , RS-111213 What is DAG? '),nl,
-        write(':- prolog_flag(discontiguous_warnings,_,off).'),nl,nl,
-        
-        write(':- use_module( \'utility/datecalc\', [ add_days/3, addtotime/3, datetime/6, days_between/3, easterdate/2, subfromtime/3, this_year/1, timenow/1, today/1, todaysdate/1 ] ).  %% RS-131228'),nl,
-        write(':- use_module( \'db/timedat\', [ dedicated_date/1, named_date/2 ] ). %% RS-131228' ),nl,
-        write(':- use_module( \''), write(DICTFILE), write('\' , [] ). %%, [ preposition/1 ] ). %% RS-111213 Dictionary lookups'),nl,
-        write(':- use_module( \'tuc/fernando\' ). %%, [ adj_compl/6, adjname_template2/3, adjnamecomp_template/3, adjnoun_template/4, adjustprep/3, adjust_year/3, adjustprepv/3, %% and many more...' ), nl,
-%        write('         adj_template/5, adv_compl/6,  align_measure/5, align_noun_name/5,  alignable/2, atom_templ/2,  atv_template/6,  bealign/5, bigno/3, cat_templ/5,' ), nl,
-%        write('         clock_test/1,   co_template/6, comparad/5,     compare/5,      compatvar/2,            compliancetest/2,       compliancetest2/3, %%' ), nl,
-%        write('         compoundtest/4, constrain/2,    constrain0/2,  constrain2/3,   constrainit/2,  ctype/2,' ), nl,
-%        write('         dayname/1,      decide_adjective/3,            decide_quantifier/4,    defact/3,       dtv_template/6, event/4,' ), nl,
-%        write('         has_template/3, hour_test/1,    idvarx/3,      isfaktor/1,             issiffer/1,             issifre/1,     it_template/1,   iv_template/4,' ), nl,
-%        write('         joinclass/3,  joinclasses/2,    latin/4,       meetclass/3,   monthnumber/2,  negate/3,' ), nl,
-%        write('         nil_noun_compl/1,               norpart/3,     noun_adverb/4,          noun_compl/4,   numberdate/2,  plausible_busno/1,' ), nl,
-%        write('         plausibleclocktest/3,           pluralis/2,    preadjs_template/4, rep_verb/1,' ), nl,
-%        write('         rv_template/7,  screenmeasure/2,               setvartype/2,           subclass0/2,' ), nl,
-%        write('         subject_object_test/3,  subtype0/2,    subclass/2,     teen/1,         testconstraint/2,       thenwhat/3,     tidvarp/3, tv_template/5, type/2,' ), nl,
-%        write('         value_world/1,  vartype/3,      vartypeid/2,    verb_compl/6, verbtype/2,   which_thing/2, whodunnit/2 ] ). %% RS-140209' ),nl, %% fernando and dcg_n overlaps!
-        write(':- use_module( \'tuc/semantic\', [ a_compl/4, abnormalverb/2, adj_templ/2, adjname_templ/2, adjnamecomp_templ/3, adjnoun_templ/2, adjnouncomp_templ/3 ] ). %% RS-131227' ),nl,
-        write(':- use_module( \'tuc/semantic\', [ ako/2, aligen2/2, align1/2, coher_class/3, dtv_templ/4, gradv_templ/2, ( has_a )/2, iv_templ/2, jako/2 ] ). %% RS-131227' ),nl,
-        write(':- use_module( \'tuc/semantic\', [ measureclass/1, n_compl/3, pai_templ/2, particle/3, post_adjective/1, pvi_templ/2, rv_templ/2, stanprep/2 ] ). %% RS-131227' ),nl,
-        write(':- use_module( \'tuc/semantic\', [ testclass/1, tv_templ/3, v_compl/4, vako/2 ] ). %% RS-131227' ),nl,nl,
-
-        write(':- use_module( \'main\', [ traceprint/2 ] ). %%RS-140209 '),nl,
-        write(':- use_module( \'tuc/lex\', [ maxl/1, no_unprotected_verb/0, txt/3, unprotected_verb/0 ] ).    %% RS-140209' ),nl,nl,
-
-        write('%% META-PREDICATES'), nl,
-        write('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'), nl,
-        write('test(X):- \\+ ( \\+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl'), nl,
-        write('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'), nl,
-
+        writeheading,
+        writeheading( DAGFILE, DCGFILE, DCGMODULE, DICTFILE, GRAMMODULE ),
         for( ( GRAMMODULE: (X ---> Y) ), genprod(X,Y) ),       %% RS-140101 meta_predicate for/2
-    told,
-    %%close(DcgStream),     %% RS-121121
+        write('%%% optionals'), nl,
 
-    %%tell('virtuals.pl'),      %% In other prologs than Sicstus:  %% RS-121121
-    open( 'virtuals.pl', write, VirtualStream, [encoding('UTF-8')] ),
-    set_output(VirtualStream),
-        writeheading, %% Ends up in the middle of the dcg_e/n-file!
-        write(':- ensure_loaded( user:declare ). %% RS-131228 "new syntax" definitions'),nl,nl,
-        %% write('%% Automatically created by metacomp.pl, based on dict and tuc/gram_...'),nl,nl,
-        for( metacomp:optiprod(MP), metacomp:genprod(optional(MP),(MP,!)) ),
+%    open( 'virtuals.pl', write, VirtualStream, [encoding('UTF-8')] ),  set_output(VirtualStream),
+        %% RS-131228 Moved up to customize the virtuals.pl as either norsk or english!
+        for( metacomp:optiprod(MP), metacomp:genprod(optional(MP),(MP,!)) ), %% RS-140921 Should not be any optiprod (because it aborts before assert)?
         prite((optional(_,[],X,X) -->[])), 
+        write('%%% virtuals'), nl,
         for( metacomp:virtx(B),    metacomp:genvirt(B) ),
-    told,
-    %% close(VirtualStream),     %% RS-121121
+    told,  % vs. close(VirtualStream), ?   %% RS-121121
 
-       %%  appendfiles('virtuals.pl','dcg.pl',DCG), %%% <--- NO! %%SEQUENCE MATTERS! below...
-     appendfiles('dcg.pl','virtuals.pl',DCGFILE),  %% RS-131230 From utility.pl 
+%     appendfiles('dcg.pl','virtuals.pl',DCGFILE),  %% RS-140921   appendfiles('virtuals.pl','dcg.pl',DCG), %%% <--- NO! %%SEQUENCE MATTERS! below...
 
      compile(DCGMODULE:DCGFILE),
 
-%    open( 'virtualheaders.pl', write, HeaderStream, [encoding('UTF-8')] ),
-%      set_output(HeaderStream),
-%        writeheading,           %% write('%% '),write(dadatetimenl,
-%        write('%% Automatically created by tuc/metacomp.pl, based on dict and tuc/gram_...'),nl,
-%        write('%% FILE '),write(DCGFILE),nl,
-%        write(':- ensure_loaded( user:declare ). %% RS-111213 General (semantic) Operators'),nl,
-%        write(':-module( \''),write(DCGMODULE),write('\', [ '),nl,    %   write(' \'\\\\\'/7, '), write('  sentence/6 '),
-%        for( DCGMODULE:(X --> Y), (make_predname_argscount(X, Pred),write_protected_pred(Pred) ) ),
-%
-%            %remove_duplicates1(List, Preds),
-%            %for(member(I,List),assert(predheads(I))),
-%
-%            %write_protected_preds(Preds), %% DIFFICULT: \ do (etc.)
-%            write(' sentence/6 ] ). %% RS-131229'),nl,nl,
-%            %%
-%    told,
-%    appendfiles('virtualheaders.pl','dcg.pl', DCGFILE), %% THE SEQUENCE MATTERS!
-
     style_check(+singleton). %% SWI only  
-
-%        for((gram_n: (X ---> Y)), write_pred_argcount(X,Y)),
-        %    findall(Pred, ( GRAMMODULE: (X ---> Y), make_predname_argscount(X, Pred) ), List),
-        %    findall(Pred, ( DCGMODULE: (X --> Y), make_predname_argscount(X, Pred) ), List),
-        %    for( DCGMODULE:(X --> Y), make_predname_argscount(X, Pred) ), List),
 
 %%%%%%%%%%%%%%%%%%%%%
 style_check(_).         %% Cheat for Sicstus Prolog (only used for SWI Prolog)
 %%%%%%%%%%%%%%%%%%%%%
 
+%% RS-131227 Copied from makeauxtables!
+writeheading:-
+    datetime(A,B,C,D,E,F),
+    write('/* -*- Mode:Prolog; coding:utf-8; -*- */'),        %% Make this work with open/4 and encoding %% RS-121118
+    nl,
+    write('% Grammar files transformed to dcg_e.pl or dcg_n.pl '),
+    nl,
+    write('%%from writeheading in tuc/metacomp.pl'),
+    nl, write('%% '), write(datetime(A,B,C,D,E,F)),
+    nl,nl.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END makegram(Lang) %%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% MODULE CONSTRUCTION OF HEADERS %%
-make_predname_argscount(X, Pred) :-
-        phrase_head_body(X,H,_Body),
-        %phrase_head_body(Y,_,Rest),
-%        listlength(Body,Length),       %% utility?
-%        write(H),write('/'),write(Length),nl,
-        Pred = (H)/x. %%Length.
-
-% This is clever: =.. is called the 'univ' predicate, to translate between list and predicate notation.
-phrase_head_body(P,H,B) :-
-        P =.. [H|B].
-
-%listlength([], 0).     %% BuiltIn!!
-%listlength([_ | Tail], Length) :-
-%    listlength(Tail, TailLength),
-%    Length is TailLength + 1.
-
-write_protected_preds([Head|Tail]) :-
-        write_protected_pred(Head),write(', '),nl,
-        write_protected_preds(Tail).
-write_protected_preds([Head]) :-
-        write_protected_pred( Head ),nl.
-
-write_protected_pred(Pred) :-
-        Pred == (','/3) ->
-                write(' \',\'/3')
-                       ;
-                write(Pred).
-
-
-
+%% MODULE CONSTRUCTION OF HEADERS %% RS-130101 Experiment, abandoned, reprogrammed as separete _e and _n procedures
+%make_predname_argscount(X, Pred) :-
+%        phrase_head_body(X,H,_Body),
+%        Pred = (H)/x. %%Length.
+%
+%% This is clever: =.. is called the 'univ' predicate, to translate between list and predicate notation.
+%phrase_head_body(P,H,B) :-
+%        P =.. [H|B].
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 genprod(X,Y):-
@@ -249,22 +327,27 @@ expandlist(Y,[H],A,Z,MAX):-
 
 %% See http://www.cse.unsw.edu.au/~billw/prologdict.html#univ
 
-expandmetahead(X,T,A,Z,MAX):-
+expandmetahead( X, T, A, Z, MAX ) :-
     X =..[H|LIST],
     Parse=[H|T],
     append([H|LIST],[Parse,A,Z],YLIST),
     MAX =.. YLIST.
 
 
+%% META-SECTION
+%% em1( Symbol, Appearence, StackIn, StackOut, Code)
+:- meta_predicate  em1( ?, ?, ?, -, ? ) .
+:- meta_predicate  em0( ?, ?, ?, -, ? ) .
+:- meta_predicate  em2( ?, ?, ?, -, ? ) . %% not implemented yet
 
 
-expandmeta(X,P,Y,Z,MAX):-
-    findmetavirts(X),
-    em1(X,P,Y,Z,MAX).
+expandmeta( X, P, Y, Z, MAX ) :-
+    findmetavirts( X ),
+    em1( X, P, Y, Z, MAX ).
 
 
 
-em1(A-B,P,X,Y,(pushstack(free ,B,nil,X,BX),MAX)):-  
+em1( A-B, P, X, Y, (pushstack(free ,B,nil,X,BX),MAX)) :-  
    !,
    expandmeta(A,P,BX,Y,MAX).
 
@@ -292,8 +375,6 @@ em1(A = B,P,X,Y,(
    expandmeta(A,P,X2,X3,MAX).
 
 
-
-
 %% em1( Symbol, Appearence, StackIn, StackOut, Code)
 
 em1(Symbol, Appearence, StackIn, StackOut, Code) :-
@@ -304,6 +385,7 @@ em1(Symbol, Appearence, StackIn, StackOut, Code) :-
 em1(Symbol, Appearence, StackIn, StackOut, Code) :-
 
     em0(Symbol, Appearence, StackIn, StackOut, Code).
+
 
 em0(!,!,X,X,!):-!.  %% Standard rendering
 em0([],[],X,X,[]):-!.
@@ -366,11 +448,11 @@ foundmeta(X):-  %% TA-100114
     write('¤¤¤ CATASTROPHIC ERROR ¤¤¤'),nl,
     write('*** Attempt to make a Variable Meta Production ***'),nl,
 
-    told,
-    abort. %% would cut the error message before printing
+    told,       %% RS-140920 don't cut the error message before printing
+    abort.      %% would (have) cut the error message before printing?
 
 foundmeta(X):-
-    assert(optiprod(X)).
+    assert( optiprod(X) ).
   
 %--
 
@@ -404,14 +486,17 @@ findvirtual(X):-
     X=w(_)),
     !.
 
-findvirtual(A):- 
-    remembervirtx(A), %% Must not get variable binding !!!!!
-    functor(A,F,N),
-    user:remember( metacomp:virtf(F,N) ).  %% RS-131230 From declare.pl
+findvirtual( A ) :- 
+    remembervirtx( A ), %% Must not get variable binding !!!!!
+    functor( A, F, N),
+%   remember( metacomp:virtf(F,N) ) % RS-140928
+    remember( virtf(F,N) ).  %% RS-131230  virtual functors stored as  X --> virtual/6 later? 
+    %remember( metacomp:virtf(F,N) ).  %% RS-131230 From declare.pl
 
 remembervirtx(A) :-
     virtx(B),
-    utility:variant(A,B),               %% RS-131230 from utility.pl
+    %utility:variant(A,B),      %% RS-131230 from utility.pl
+    variant(A,B),               %% RS-140914 from utility.pl
     !;
     assert(virtx(A)).
     
@@ -442,26 +527,35 @@ prist(X):-
 %% DEBUG prist
 plink :- trace.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%for(P,Q):-
-%  P,Q,
-%  false;true.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% RS-131227 Copied from makeauxtables!
-writeheading:-
-    datetime(A,B,C,D,E,F),
-    write('/* -*- Mode:Prolog; coding:utf-8; -*- */'),        %% Make this work with open/4 and encoding %% RS-121118
-    nl,
-    write('% Grammar files transformed to dcg.pl '),
-    nl,
-    write('%%from writeheading in utility/metacomp.pl'),
-    nl, write('%% '), write(datetime(A,B,C,D,E,F)),
-    nl,nl.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% RS-131230    Empty [ ] avoids colliding predicates from N and E.
+
+compile_english :- %Prefix
+    dict_file( english, DICTFILE ),     use_module( DICTFILE, [ ] ),      % COMPILE dictionary for E
+%    morph_file(english, MORPHFILE), %  use_module( MORPHFILE, [ ] ),     % morphology for E
+    gram_file(english, GRAMFILE),       use_module( GRAMFILE, [ ] ),      % COMPILE grammar for E
+    gram_module( english, GRAMMODULE ),                            % 'dcg_e'
+
+    dagrun_file( english, DAGFILE ),   %% RS-131228 Moved up to customize the dcg.pl as either norsk or english!
+    dcg_file( english, DCGFILE),  dcg_module( english, DCGMODULE ),
+    makegram( DAGFILE, DCGFILE, DICTFILE, DCGMODULE, GRAMMODULE ).
+
+compile_norsk:-        %    makegram(norsk).
+    dict_file( norsk, DICTFILE ),      use_module( DICTFILE, [ ] ),      % dictionary for N
+%    morph_file( norsk, MORPHFILE ),    use_module( MORPHFILE, [ ] ),   % morphology for N
+    gram_file( norsk, GRAMFILE ),      use_module( GRAMFILE, [ ] ),      % grammar for N
+    gram_module( norsk, GRAMMODULE ),
+
+    dagrun_file( norsk, DAGFILE ),   %% RS-131228 Moved up to customize the dcg.pl as either norsk or english!
+    dcg_file( norsk, DCGFILE ),    dcg_module( norsk, DCGMODULE ),
+    makegram( DAGFILE, DCGFILE, DICTFILE, DCGMODULE, GRAMMODULE ). % DICTFILE, 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RS-131229    When to do this?        HAS TO BE DONE FROM TUCBUSES!?
-%?-tucbuses:compile_english.
-%?-tucbuses:compile_norsk.
+% :-use_module(library(file_systems)).    :-current_directory(_OldDir,'..').
+:- makegram.    %% RS-140921    %?-compile_english.     %?-compile_norsk.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

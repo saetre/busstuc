@@ -59,7 +59,7 @@ N: \ set queryflag true
 N: \ set smsflag false 
 
 
-N: \ starttimebatch 
+N: \ utility:starttimebatch 
 
 
 N: hva er din versjon ? 

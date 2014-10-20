@@ -13,7 +13,8 @@
 
 %% Sort out English/Norwegian import-conflict in tucbuses! %% USE ENGLISH AS DEFAULT?! %% RS-131225  lexn/5, lexbv/2?  %% RS-140102  Include? 
 %:-module( morph_n,[ adjflex/3, adjective/1, lcode2/2, lexv/4, noun/1, tall/2, verbroot/1 ] ). %% RS-131225
-:-module( morph_n,[ adjflex/3, adjective/1, lexv/4, noun/1, tall/2, verbroot/1 ] ). %% RS-140428 %lcode2/2, 
+:-module( morph_n,[ adjflex/3, adjective/1, lcode2/2, lexv/4, noun/1, tall/2, verbroot/1 ] ). %% RS-140428 %lcode2/2, Breaks user:lcode2/2 (from lex.pl) 
+
 :- ensure_loaded( user:'../declare' ).
 
 %% META-PREDICATE

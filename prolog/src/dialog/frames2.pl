@@ -5,11 +5,11 @@
 
 %% Common version for frames and teleframes 
 
-:-module( frames2, [ find_askfor/3, find_parentslot/3, frame_getcount/2, frame_getsubslots/2, frame_gettype/2, frame_getvalue_rec/4,
-        frame_iscomplete/1,     frame_isempty/1,        frame_isfull/1,         frame_setexperience/4,  frametemplate/2,
-        is_subframe/2,          %% RS-140101    External?
-        resetframe/0,           xframe_getvalue/2,      xframe_setvalue/2
-]).
+%% RS-140914    UNIT: /dialog/
+:-module( frames2, [ find_askfor/3, find_parentslot/3, frame_getcount/2, frame_getsubslots/2, frame_gettype/2, frame_gettype_rec/3,
+                     frame_getvalue/3, frame_getvalue_rec/4, frame_iscomplete/1, frame_iscomplete/2, frame_isempty/1, frame_isfull/1,
+                     frame_setvalue_rec/4, frame_setexperience/4, frametemplate/2, is_subframe/2,  resetframe/0,
+                     xframe_getvalue/2,  xframe_setvalue/2, askfor/3  ] ). /*extra? askfor/3?*/
 
 :-volatile
            framecounter/1.
@@ -18,22 +18,13 @@
 
 :- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
 
-%% RS-140101 UNIT: EXTERNAL
-:- use_module(library(system)).
-
-%% RS-131225    UNIT: dialog/
-%:- ensure_loaded( '../dialog/newcontext2' ). %%, [ getcurrent/1 ] ). %% RS-131223 etc? getcurrent/1, sequence_member/2
-%:- use_module('../dialog/newcontext2', [ getcurrent/1 ] ). %% RS-131223 etc? getcurrent/1, sequence_member/2
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 :- assert(framecounter(1)).
 
 %% Frame Declarations
 %frameval(Type, Value, Filled, Confirmed, Experience)
 %subframe(Template, Id,)
 
-frametemplate(telebuster,               %% NEW, UNION OF tele and bustuc
+frametemplate( telebuster,               %% NEW, UNION OF tele and bustuc
     [   [where, ?, subframe(where), 1],
         [when, ?, subframe(when), 1],
         [day, ?, class(day), 0],    %% explicit, incomplete for when questions %% TA-051117
@@ -52,7 +43,7 @@ frametemplate(telebuster,               %% NEW, UNION OF tele and bustuc
 
 
 
-frametemplate(bustuc,
+frametemplate( bustuc,
     [   [where, ?, subframe(where), 1],
         [when, ?, subframe(when), 1],
         [day, ?, class(day), 0],  %% explicit, incomplete for when questions %% TA-051117
@@ -60,39 +51,39 @@ frametemplate(bustuc,
         [bus, ?, class(bus), 0]
     ]).
 
-frametemplate(where,   % where do you want to go: nardo = to NARDO %% TA-030515
-    [	[arrival, ?, class(place), 0],  %% more relevant for where questions
+frametemplate( where,   % where do you want to go: nardo = to NARDO %% TA-030515
+    [   [arrival, ?, class(place), 0],  %% more relevant for where questions
       [departure, ?, class(place), 0],
-    	[direction, ?, class(direction), 0] 
+        [direction, ?, class(direction), 0] 
     ]).
 
 
-frametemplate(when,
+frametemplate( when,
     [   [departure, ?, subframe(time), 1],
         [arrival, ?, subframe(time), 1]
 %%%          [day, ?, class(day), 0]    %% TA-051117incomplete if only day
     ]).
 
-frametemplate(time,
+frametemplate( time,
     [   [after, ?, class(number), 0],
           [before, ?, class(number), 0]
     ]).
 
-frametemplate(time2,
+frametemplate( time2,
     [   [before, ?, class(number), 0],
           [after, ?, class(number), 0]
     ]).
 
 %% Frames for the tele domain   TLF-030331
 
-frametemplate(teletuc,
+frametemplate( teletuc,
     [   [attributes,  ?, subframe(attributes),    1],
         [itemsfound, ?, subframe(itemsfound),   1],
         [return, ?, class(attribute), 0]
     ]).
 
 
-frametemplate(attributes,                         %% TA-060419
+frametemplate( attributes,                         %% TA-060419
     [   [spacename,       ?, class(spacename),0], %% non person room name name
         [givenname,       ?, class(firstname), 0],
         [sn,              ?, class(lastname), 0],
@@ -103,10 +94,29 @@ frametemplate(attributes,                         %% TA-060419
 
     ]).
 
-frametemplate(itemsfound,
+frametemplate( itemsfound,
     [   [items,     ?, class(items), 0],
         [itemcount, ?, class(int),   0]
     ]).
+
+
+%% RS-140101 UNIT: EXTERNAL
+:- use_module( library(system) ).
+:- use_module( library(lists3), [ substitute/4 ]  ).
+
+%% RS-140101. UNIT: /dialog/
+:- use_module( '../dialog/newcontext2', [ getcurrent/1, getframe/2, setframe/2 ] ). %% RS-131223 etc? sequence_member/2, addref/3, getcurrent/1 ] ).
+ %% RS-140101 LOOP !!! INCLUDED IN FRAMES2!!
+
+%:- compile(user:d_dialogue).        %% RS-141002 Changed to modules!
+:- use_module( d_dialogue, [ linecounter/1 ] ). %% RS-140101 LOOP !?!
+
+
+%:- use_module( '../dialog/d_dialogue' ). %%, [ addref/3, getcurrent/1 ] ). %% RS-131223 INCLUDED IN FRAMES2!!
+:- use_module( parseres, [ field_is_equal/3 ] ). %% Printing the result from database query
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %% Don't be dogmatic and ask  when::departure or when::arrival
@@ -524,6 +534,14 @@ smallest_missing_set(missing(X1, L1), missing(X2, _), missing(X1, L1)) :-
 smallest_missing_set(missing(X1, _), missing(X2, L2), missing(X2, L2)) :-
     X1 > X2.
 
+
+askfor([], _, _) :- false.
+
+askfor(Frame, Slot, _) :-
+       frame_getvalue_rec(Frame, Slot, _, _).
+
+%% askfor(_, _, _) :- false.
+%% If we are to ask for something, no need to compute %% the rest.
 
 
 find_askfor(Frame, PSlot::_, PSlot) :-

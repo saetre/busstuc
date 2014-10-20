@@ -38,13 +38,9 @@
 
 %%RS-131225     %% UNIT: /
 :- ensure_loaded( user:'../declare' ). %, [ := /2 etc. ] ).      %RS-131225  Get dynamic definition for user:value/2
-%%MISERY! user:?
-:- use_module( '../tucbuses.pl' ). %%,[  backslash/1  ]).
 
 %%RS-131225     %% UNIT: utility/
-%:-ensure_loaded( user:'../utility/utility.pl' ).  %% value/2 etc.
 :- use_module( '../utility/utility', [ ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
-
 
 
 %% hovedterminalen is technically a station as required in some

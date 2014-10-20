@@ -5,7 +5,8 @@
 
 %%% RS-131228, UNIT: utility/
 :- ensure_loaded( user:'../declare' ).  %% META: user:for/2, foralltest/2, set_of/3, user:set_ops/3, test/1
-:- use_module( '../utility/utility', [ out/1,   output/1,  set_of/3  ]).     %% RS-140102 
+:- use_module( '../utility/utility', [ set_of/3  ]).     %% RS-140102 
+:- use_module( '../utility/writeout', [ doubt/2, language/1, out/1, output/1, prettyprint/1 ] ).%% RS-140912
 
 %%% RS-111205, UNIT: app/
 :-use_module( '../app/busanshp', [  bigcap/2  ]).

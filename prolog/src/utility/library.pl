@@ -24,8 +24,8 @@ exec(CMD,X,Y) :-
 
 /* MOVED TO sicstus4compatibility.pl %% TA-071026
 %% Sicstus 4 compatibility
-%% append/3  %% built in Sicstus 4 (library.pl)
-%% member/2  %% built in Sicstus 4 (library.pl)   
+%% append/3  %% built-in Sicstus 4 (library.pl)
+%% member/2  %% built-in Sicstus 4 (library.pl)  
 
 get0(G) :-get_code(G). %% TA-070809
 put(G) :- put_code(G). %%

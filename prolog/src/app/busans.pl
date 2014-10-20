@@ -9,13 +9,14 @@
 % Produksjonesregler, predikater som lager fraser og 
 % relasjoner mellom konsepter og ord på hvert språk
 
+%% RS-140927. rule/2 is "executed" by pragma.pl:itr/5 (but so is TELETRANS:rule, bustrans:rule, tele:rule or teletrans:rule, frames:rule, etc...
+
 %UNIT: app/
-:- module( busans, [
-        rule/2,
-        tracevalue/1
-]).  
+:- module( busans, [ rule/2, tracevalue/1 ] ). %%  Different for busans and bustrans 
 
 :- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
+tracevalue(L) :- user:value(traceans,L).  % Trace level 1-4
+
 %% Rule format
 
 %   RuleID rule
@@ -37,11 +38,36 @@
 
 :- op( 712, fy,seen). % Lower than "not", higher than "isa"
 
-tracevalue(L) :- user:value(traceans,L).  % Trace level 1-4
+%:- meta_predicate rule( +, 0 ) .   %% How can we get SPIDER to help us check that all predicates are imported correctly?
+%:- meta_predicate is( 0 ) .   %% How can we get SPIDER to help us check that all predicates are imported correctly?
+%:- meta_predicate id( +, 0 ) .   %% How can we get SPIDER to help us check that all predicates are imported correctly?
+%:- meta_predicate ip( ?, ? ) .   %% How can we get SPIDER to help us check that all predicates are imported correctly?
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% USE_MODULE DEPENDENCIES       %% RS-141019
+
+module_dependencies :-
+        dep_module( Module, PredList ),
+        use_module( Module, PredList ),
+        fail ; true .   %% Get all use_modules, then succeed...
+
+%UNIT: /utility/  and  /
+%dep_module( '../utility/utility', [ bound/1, testmember/2, unbound/1 ] ). %% RS-131225    %:-volatile value/2.  %% RS-130630 This caused BIG TROUBLE!  value/2 
+%dep_module( '../utility/datecalc', [ add_days/3, addtotime/3, before_date1/2, daysucc/2, difftime/3, isday/1, sub_days/3, subfromtime/3, timenow/1, timenow2/2, today/1, todaysdate/1, weekday/2 ] ).
+
+dep_module( '../interfaceroute', [ decide_period/2 ] ). %% RS-141015 
+
+%UNIT: /app/
+%%% RS-131225, UNIT: app/
+dep_module( busanshp, [ outdeplist/6, outfromtocorr/6 ]).     %% RS-140102 Dangerous to get all? tracevalue/1
+
+:- module_dependencies.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%:-meta_predicate  rule(+,:).
+%:-meta_predicate  is(0). %% RS-140929 Wouldn't it be nice if this worked?! I guess we need to build a debug-predicate to test all rules instead...
 
 wakeup rule %%  Varsle meg kl 7 i morgen  
 is  notification(date(YYYY,MM,DD),HHMM),   %% NEW BUSLOG Predicate
@@ -244,7 +270,7 @@ is  passesstations(Buses,_,Stations,_)
 id	 add (bcp(both),bwr(Buses),bcp(passes),
 			bcp(thestations),nl, 
          bwr(Stations),period)
-ip	 islist(Buses).
+ip	 buslog:islist(Buses).
 
 neutral rule 
 is  passesstations(Bus,_,Stations,_)
@@ -518,18 +544,18 @@ ip  isday(Day),language(norsk).
 periodB rule 
 is  [] 
 id	 replace (Sentenceend,bcp(A)) with (Sentenceend,bcpbc(A))
-ip	 sentenceend(Sentenceend).
+ip	 busanshp:sentenceend(Sentenceend).
 
 % Tar bort evt. punktum etc. i starten av en setning
 nopoint rule 
 is  []
 id	 replace (startmark,Sentenceend) with startmark
-ip	 sentenceend(Sentenceend).
+ip	 busanshp:sentenceend(Sentenceend).
 
 % Lager stor bokstav først i svaret
 bigstart rule 
 is  []
-id  replace (startmark,bcp(A)) with (startmark,bcpbc(A))
+id  replace (startmark,bcp(A)) with (startmark,bcpbc(A))      % Beginning of Common Phrase (Big Caps)
 ip	 [].
 
 nobusmystery rule 

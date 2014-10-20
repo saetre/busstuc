@@ -6,8 +6,8 @@
 % Compiles the RUTH system for NTNU server.
 % same program as Buster
 
-%?-compile('../tucbuster.pl').  %%
-:- use_module( '../tucbuster.pl', [ ] ).   %% :-[tuctele]. %%% // Tele things %% TA-051018
+?-compile( '../tucbuster.pl' ).  %%
+%:- use_module( '../tucbuster.pl', [ ] ).   %% :-[tuctele]. %%% // Tele things %% TA-051018
 
 %?-['../busroute.pl']. %% TA-070811
 ?-use_module( '../busroute.pl', [] ). %% RS-140207

@@ -1,55 +1,25 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE dict_e.pl
 %% SYSTEM TUC
-%% CREATED TA-930601
-%% REVISED TA-110825
+%% CREATED TA-930601    %% REVISED TA-110825
+%% REVISED RS-140921    re-modularized
 
 %% TUC Dictionary for the language E
-:-module( dict_e, [
-%                   allroundmember/2,
-%                   compword/3,
-%                   cw/1,
-                   lexnsingirr/2,
-                   lexnpluirr/2,
-%                   noisew/1,
-%                   noun2/2,
-%                   noun_form/5,
-%                   ow/1,
-%                   preposition/1,       %% RS-131227. For autocompiled dcg_n / dcg_e
-%                   pronoun/1,
-%                   rep_verb/1,
-%                   rewording/2,
-%                   splitword/2,
-%                   synsms/2,
-%                   synwordx/2,
-%                   unwanted_adjective/1,
-%                   unwanted_noun/1,
-                   unwanted_verb/1,
-%                   unwanted_interpretation/2,
-                   verb_form/4,         %% RS-131227    For morph_e.pl
-%                   verbroot2/2,
-%                   xcompword/3,
-                   test_dict_e/0
-                ]).
+:-module( dict_e, [ lexnsingirr/2, lexnpluirr/2, noun/1, preposition/1, pronoun/2, unwanted_verb/1, verb_form/4, test_dict_e/0 ] ). %% RS-131227    For morph_e.pl
+        % allroundmember/2, compword/3, cw/1, noisew/1, noun2/2, noun_form/5, ow/1, %% RS-131227. For autocompiled dcg_n / dcg_e
+        % pronoun/1, rep_verb/1, rewording/2, splitword/2, synsms/2, synwordx/2, unwanted_adjective/1, unwanted_noun/1, unwanted_interpretation/2, verbroot2/2, xcompword/3,
 
 %% RS-131225    UNIT: /
 :- ensure_loaded( user:'../declare' ).
 
 %% MISERY! %% RS-131229
 %:- ensure_loaded( user:'../tucbuses' ).  %% RS-130329 Make sure (gram/lang) modules are available: dcg_module,
-:- use_module( '../tucbuses.pl', [ ] ). %%, backslash/1 ] ).
+%:- use_module( '../tucbuses.pl', [ ] ). %%, backslash/1 ] ).
 
 %% RS-131225    UNIT: tuc/
 :- use_module( evaluate, [ instant/2 ] ).       %% RS-131225
 :- use_module( morph_e,[ verbroot/1 ] ).        %% RS-131225
-:- use_module( 'semantic', [    %  TUCs  Lexical Semantic Knowledge Base
-        adj_templ/2, ako/2, gradv_templ/2,
-        particle/3, rv_templ/2 
-] ).
-
-%% RS-131225    UNIT: utility/
-%:- ensure_loaded( user:'../utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
-%:- use_module('../utility/utility', [ value/2  ]).       %RS-131225  Get dynamic definition for value/2
+:- use_module( semantic, [ adj_templ/2, ako/2, gradv_templ/2, particle/3, rv_templ/2 ] ). %  TUCs  Lexical Semantic Knowledge Base
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

@@ -6,16 +6,48 @@
 
 %%% Predicates for updating and using the context frames
 
-
 %%  updateframe(teleprocess([],_,[],_),_,_) :- !, fail. %% TLF 030611 - bad solution, but stops some stupid behaviour
 %%  Revoked %% TA-051030  e.g. %% N: Kan du gjenta ?
 
-%% UNIT: /app/
-:-use_module( '../app/busanshp', [ paraphrase_tele/2 ] ). %% extra: paraph2/1, paraphrase/1, paraphrase3/3, paraphrase_changes1/1,
+%% UNIT: /dialog/
+:-module( update2, [ dorelax/3, fixnameproblem/5, framevalue/2, getuserrefer/2, issubclass/2, istype/2, knowFlag/1, remove_fields/3, remove_knowflags/2,
+                     saturate/3, saturatemod/3, telerelax/3, updateframe/3, updateframe_checkanswer/4, updateitems/2 ] ).
+
+:- meta_predicate  trackprog(+,0).  %% Stay inside the calling module (for the second argument)!  %% RS-140922
+
+%% RS-131225    UNIT: / and /utility/
+:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators, e.g.  :: , trackprog/2        %Helper
+
+:- use_module( '../utility/utility', [ set_of/3 ] ). %% LOOP?
+:- use_module( '../utility/writeout', [ output/1 ] ). %% Contains declare?
+%:- use_module( '../main', [  ] ).
+
+%% RS-140914    UNIT: /app/
+:-use_module( '../app/busanshp', [ paraphrase2/2, paraphrase_tele/2 ] ). %% extra: paraph2/1, paraphrase/1, paraphrase3/3, paraphrase_changes1/1,
+:-use_module( '../app/pragma', [ pragma/3, pragma_aux/3, pragma_complete/5, roundmember/2 ] ). % (old:4), %% RS-140102, ipragmaor0/0, set/2
+:-use_module( '../app/interapp', [ execute_program/1, writeprog/1 ] ).
+
+%% RS-140914    UNIT: /db/
+:-use_module( '../db/teledat2', [ teleprocessdirect/4 ] ).
+
+%% RS-140914    UNIT: /dialog/
+:- use_module( frames2, [ frame_getvalue_rec/4, frame_setvalue_rec/4,   frametemplate/2, is_subframe/2 ] ).
+:- use_module( newcontext2, [ addref/3 ] ). %% RS-140101
+:- use_module( parseres, [ parseresultdata/2, parseresultdatacount/2, recordcount/2, removefromlist/3, tuctoldap/2 ] ).
+
+% UNIT: /tuc/
+:- use_module( '../tuc/facts', [ isa/2 ] ).
+%:- use_module( '../tuc/fernando', [ ] ).
+:- use_module( '../tuc/semantic', [ subclass0/2 ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+trackprog(X, Y) :- user:trackprog(X, Y) .
 
 updateframe(teleprocess(Fields,Table,[],X), OldFrame, NewFrame) :-   %% TLF 030204
 	!,
-    trackprog(3, (output('Updateframe: Before '), writeprog(OldFrame))),
+%%  trackprog(3, ( output('Updateframe: Before '), interapp:writeprog(OldFrame)) ),
+    trackprog(3, ( output('Updateframe: Before '), writeprog(OldFrame) ) ),
 	(	%% make sure frame is initilalized
 		var(OldFrame)->
 		frametemplate(telebuster,EmptyFrame), %% Unnec ?
@@ -25,7 +57,7 @@ updateframe(teleprocess(Fields,Table,[],X), OldFrame, NewFrame) :-   %% TLF 0302
 	),
 
     frametolist(OldFrame,  FrameList),
-    pragma_aux(makeframe, teleprocess(Fields,Table,[],X), FrameList, Changes),
+    pragma_aux( makeframe: teleprocess(Fields,Table,[],X), FrameList, Changes),
 
     exec_changes(Changes, OldFrame, TmpFrame),
 
@@ -34,7 +66,8 @@ updateframe(teleprocess(Fields,Table,[],X), OldFrame, NewFrame) :-   %% TLF 0302
     (frame_getvalue_rec(TmpFrame, itemsfound::itemcount,_,_) -> NewFrame=TmpFrame;
     	frame_setvalue_rec(TmpFrame,itemsfound::itemcount, 10000, NewFrame)
     ),
-    trackprog(3, (output('Updateframe: After '),writeprog(NewFrame))).
+%    user:trackprog(3, (output('Updateframe: After '),interapp:writeprog(NewFrame))).
+    trackprog(3, (output('Updateframe: After '), writeprog(NewFrame) )).
 
 
 
@@ -52,7 +85,7 @@ updateframe(teleprocess(Fields,Table,WhereList,X), OldFrame, NewFrame) :-   %% T
 	),
 
     frametolist(OldFrame,  FrameList),
-    pragma_aux(makeframe, teleprocess(Fields,Table,WhereList,X), FrameList, Changes),
+    pragma_aux( makeframe: teleprocess(Fields,Table,WhereList,X), FrameList, Changes),
 
     exec_changes(Changes, OldFrame, TmpFrame),
 
@@ -93,13 +126,13 @@ updateframe(Program, OldFrame, NewFrame) :-
     trackprog(3, (output('Updateframe: Before '),writeprog(OldFrame))),   %% TA-021201
 
     frametolist(OldFrame, FrameList),
-    pragma_aux(makeframe, Program, FrameList, Changes),
+    pragma_aux( makeframe: Program, FrameList, Changes),
 
     exec_changes(Changes, OldFrame, NewFrame),
 
    !, %% TA-030110
 
-   (value(directflag,true) ->
+   (user:value(directflag,true) ->
         trackprog(2,output('*** ANSWER ***')); true),  %% TA-060825
 
    paraphrase2(Program,Changes), %% TA-051109 (Both Important messages and Para)
@@ -116,11 +149,11 @@ updateframe_checkanswer(Program, Slot, OldFrame, NewFrame) :- %% moved up %% TA-
 
    trackprog(4, (output('Slot:'),write(Slot),nl, output('Changes: '),write(Changes))), %% TA-030219
 
-    roundmember(frame_setvalue(SubSlot, _), Changes),
+    roundmember(frames2:frame_setvalue(SubSlot, _), Changes),
 
     is_subframe(SubSlot, Slot),
 
-   (value(directflag,true) -> %% TA-060607
+   (user:value(directflag,true) -> %% TA-060607
         output('*** ANSWER ***'); true),
 
 
@@ -196,7 +229,7 @@ saturate(Frame, Program, NewProgram) :-
    trackprog(4,writeprog(Program)), 
 
    frametolist(Frame, FrameList),
-   pragma_aux(usestate, (frame(Frame), FrameList), Program, NewProgram),
+   pragma_aux( usestate: (frame(Frame), FrameList), Program, NewProgram),
 
    trackprog(3,output('Saturate query: After ')),
    trackprog(4,writeprog(NewProgram)). %% TA-061009
@@ -208,7 +241,7 @@ saturatemod(Frame, Program, NewProgram) :-
    trackprog(4,(output('Saturatemod: Before '),writeprog(Program))), %% TA-030219
 
     frametolist(Frame, FrameList),
-    pragma_aux(usestate,(modify, FrameList), Program, NewProgram),
+    pragma_aux( usestate: (modify, FrameList), Program, NewProgram),
 
    trackprog(4,(output('Saturatemod: After '),writeprog(Program))).   %% TA-030219
 
