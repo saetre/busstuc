@@ -10,17 +10,17 @@
 %% COMMON CO-VERSION: BUSS & TELE
 %        difact/2,       %% Dynamic,  context dependent  %% TA-980301
 %        fact0/1,        %% Semi permanent, in evaluate.pl
-        %Compilation predicates?
+%        %Compilation predicates?
 :-module( bustermain2, [ begin/0,        break/1,       c/1,            check/0,       crash/0,        create_taggercall/2,
         dialog/0,      dialogrun0/0,   english/0,      hei/0,         ho/0,      %% hi/0,         See d_dialogue
         indentprintlist/2,     listxt/0,      logrun/0,        norsk/0,        plustoatom/2,  printparse/1,   %%        progtrace/2,
-        quit/0,        r/1,           readday/0,      readscript/0,   restart/0,      run/1,
+        quit/0,        r/1,           readday/0,      restart/0,      run/1,  %%% readscript/0,   
         scanfile/2,    (sp)/1,         spyg/1,         spyr/1,         statistics/1,   status/0,
         testgram/0,    trackprog/2,    tuc/0,        update_compnames/1, %, user:value/1, (from declare.pl)
         webrun_english/0,      webrun_norsk/0, webrun_tele/0,  write_taggercall/1
 ] ).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %:- volatile
 %        ( => )/2,    %% See declare.pl (dynamic) & translat.pl (assert)
@@ -37,7 +37,9 @@
 :- ensure_loaded( user:'declare.pl' ). %% RS-131228 "new syntax" defs, META-preds: for/2, remember/1, value/2, :=/2, =;/2
 :- use_module('utility/utility'). %% RS-120816 sequence_member, etc.
 
-:- use_module(library(timeout)). 
+:- use_module( library(system), [ sleep/1 ] ). 
+:- use_module( library(timeout) ). 
+
 :- use_module( 'utility/library' ).  %% RS-131225
 %:-use_module( 'utility/datecalc', [ datetime/6 ]).%% RS-131225    For app/buslog, telelog, etc?
 
@@ -53,39 +55,41 @@
 :- use_module(tucbuses,[ backslash/1, dcg_module/1, language/1, legal_language/1, readfile_extension/1, script_file/1 ]). %% RS-140211
 :-use_module( interfaceroute, [  reset_period/0 ] ).
 
-%% RS-111205, UNIT: app/
+% RS-111205, UNIT: app/
 :- use_module( 'app/buslog' ). % , [ station/1 ] ).  %% RS-130210 called in for-predicate     bound/1, bus/1,
 
-%% RS-111205, UNIT: db/
+% RS-111205, UNIT: db/
 :- use_module( 'db/places' ). %% [ corr/2, foreign/1, isat/2, placestat/2 ] ).
-:- use_module( 'db/regstr' ). %% , [   streetstat/5 ] ). %% RS-131225  makeauxtables uses a for-loop with streetstat in it!!
-:- use_module( 'db/teledat2', [  teledbrowfile/1  ]). %% File containing TELEDAT %% co-existing with BUSDAT
-:-use_module( 'db/timedat' ). %% , [ orig_named_date/2 ]). Called from main!       %% Time data for bus routes in general 
+:- use_module( 'db/regstr', [ streetstat/5 ] ). %% RS-131225  makeauxtables uses a for-loop with streetstat in it!!
+:- use_module( 'db/teledat2', [ teledbrowfile/1  ]). %% File containing TELEDAT %% co-existing with BUSDAT
+:- use_module( 'db/timedat' ). %% , [ orig_named_date/2 ]). Called from main!       %% Time data for bus routes in general 
 
-%% RS-111205, UNIT: dialog/
+% RS-111205, UNIT: dialog/
 :- ensure_loaded( 'dialog/d_dialogue.pl' ). %% [ quit_dialog/0, dialogrun0, etc. ] ).
 :- ensure_loaded( 'dialog/portraycontext.pl' ). %% [ corr/2, foreign/1, isat/2, placestat/2 ] ).
-               
-%% RS-131227    UNIT: tuc/
+:- use_module( 'dialog/d_dialogue.pl' ). %% [ quit_dialog/0, dialogrun0, etc. ] ).
+:- use_module( 'dialog/portraycontext.pl' ). %% [ corr/2, foreign/1, isat/2, placestat/2 ] ).
+
+% RS-131227    UNIT: tuc/
 :- use_module( 'tuc/anaphors' , [  resolve/2 ] ).       %% RS-131227
 :- use_module( 'tuc/evaluate' ). %%, [ evaluateq/1 ] ). %% RS-131224      fact0/1 etc. is DANGEROUS?
 :- use_module( 'tuc/fernando' ).     % GRUF == Grammar Utility File %% RS-131117
-%:- use_module( 'tuc/lex' ).          % lcode1/2  is called in the for-predicate (etc.) %% RS-131225
+:- use_module( 'tuc/lex' ).          % lcode1/2  is called in the for-predicate (etc.) %% RS-131225
 :- use_module( 'tuc/lex', [ decide_topic/0, lexproc3/3, maxl/1, mix/2, spread/1, unknown_words/2 ] ).
 :- use_module( 'tuc/metacomp' ).     % genprod is called in the for-predicate (etc.) %% RS-131117
-%%  Read a sentence into a list of symbols
+%  Read a sentence into a list of symbols
 :- use_module( 'tuc/readin', [  ask_file/1, ask_user/1, read_in/1 ]). %%  Read a sentence into a list of symbols
-%%ensure_loaded( 'tuc/torehash' ).   % RS-131224 OBSOLETE! Moved to utility/makeauxtables!
+% ensure_loaded( 'tuc/torehash' ).   % RS-131224 OBSOLETE! Moved to utility/makeauxtables!
 :- use_module( 'tuc/translat', [ clausifystm/1, clausifyq/2  ] ).        %% RS-131227    UNIT: tuc/
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% local copy of META-PREDICATES from utility.pl
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% local copy of META-PREDICATES from utility.pl
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %for(P,Q):-
 %  P,Q,
 %  false;true.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
    
 % ?-prolog_flag(gc_trace,_,verbose).
@@ -93,13 +97,13 @@
 break(_). %% dummy for breakpoints
 
 
-%% Main program
+% Main program
 
 
 %:-dynamic txt/3,      % elementary words       %% RS-131225    Moved to lex?
 %          ctxt/3,     % composite words 
 %          maxl/1.
-
+%
 
 ?-op(1150,fx,spyg). %% spy grammar rule
 ?-op(1150,fx,spyr). %% spy pragma rule
@@ -123,7 +127,7 @@ statistics(G) :-
                output(K).
 
 
-%% Strategy for switching language
+% Strategy for switching language
 
 % Presume there is an assumed language from the start
 % e.g. the WEB  server is for a specific language (bustuc/busstuc)
@@ -134,9 +138,9 @@ statistics(G) :-
 %  select this language TEMPORARILY (for this question)
 
 
-%% SYSTEM COMMANDS
+% SYSTEM COMMANDS
 
-%% Menagerie of Start commands in decreasing order of severity
+% Menagerie of Start commands in decreasing order of severity
 
 readscript:-
     script_file(X) -> 
@@ -197,8 +201,8 @@ clear1 :-
     user:( trace := 0 ),  %% Dialog
     user:( traceprog := 1 ), 
     user:( traceans := 1 ),
-%%    queryflag := true, 
-%%    textflag := false,
+    queryflag := true, 
+    textflag := false,
     user:( spellcheck := 1 ),   %% restored after debug 
     closereadfile,       
     reset.
@@ -241,11 +245,11 @@ run(L):-
    user:( language := L ),
    run.
 
-%run :-         %% RS-131228    Normal mode
-%    nl,
-%    (seen),              %% evt. read-files
-%    dialog:=0, 
-%    go.
+run :-         %% RS-131228    Normal mode
+    nl,
+    (seen),              %% evt. read-files
+    dialog:=0, 
+    go.
 
 run :-
     dialog.    %% RS-131228    Dialog mode?
@@ -317,16 +321,16 @@ dialog :-      %% RS-131228
 	 (seen),
 	 user:( permanence := 0 ), 
 	 user:( dialog := 1 ),   
-%    queryflag := true,       %% (Statements are implicit queries)
+    queryflag := true,       %% (Statements are implicit queries)
     closereadfile,   
     %%% TA-060426 %% remember(lastday(-1,noday)), 
     dialogrun0.   
 
 
 
-%hi :-% language := english,    %% RS-131228    See dialog/d_dialogue 
-%    debug,
-%    go.
+hi :-% language := english,    %% RS-131228    See dialog/d_dialogue 
+    debug,
+    go.
 
 
 hei:-% language:= norsk, 
@@ -384,7 +388,7 @@ bad_language :-
     nl,out(' *** Undefinied  language:  '),out(L),output(' ***').
 
 
-%%%%%%%%%%%%%%%%% Other Commands
+%%%%%%%%%%%%%%% Other Commands
 
 
 %:-ensure_loaded( version ).       %% RS-131227    With version_date/1, used in monobus -> teledat2.pl
@@ -420,7 +424,7 @@ testgram:-
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 writepid :-
@@ -450,7 +454,7 @@ writets1([Token|Rest],Stream) :-
 writeiofail :-
 	 write('Warning: Could not write to logfile tuclog.txt'),nl.
 
-%  
+  
 
 getfromport(L) :-
 	 open('.port',read,Port),
@@ -504,7 +508,7 @@ redirectfromans:-
  
   
 
-%% From Web
+% From Web
 
 %  Perl script will always add a language prefix 
  
@@ -543,7 +547,7 @@ readday:-
    user:( today := Today ).
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 c(F):-consult(F). 
 r(F):-readfrom(F).
@@ -578,10 +582,10 @@ readfrom(F):-
             process(L),     
             !,
     (seen),
-    user:( permanence := 0 ).
+    user:( permanence := 0 ),
 
-%%    textflag := false,       %  Read from text, don't skip to new Line 
-%%    queryflag :=   Oldqueryflag. % destroys setting in startupfile
+    user:(textflag := false),       %  Read from text, don't skip to new Line 
+    queryflag :=   Oldqueryflag. % destroys setting in startupfile
 
 
 
@@ -622,7 +626,7 @@ process(L):-           %% Process is under a repeat loop
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % translate2
 
       %% Produces a TQL expression from a List
@@ -725,7 +729,7 @@ analyse2(L1,TQL):-
 
     writeTQL(TQL),   %% TA-051104
 
-%%     present(1,TQL),
+     present(1,TQL),
 
     !.
 
@@ -780,7 +784,7 @@ layout2(L,TQL):-
     transfix(FOL,TQL).
 
 
-%% AD HOC
+% AD HOC
 manipulate_teleflag :-
     user:value(telebusterflag,true),
     !,
@@ -936,14 +940,14 @@ grammar2(L,error):-                  % Failed also with type check
      stopteleerror.
 
 
-% % % % % % % 
+ % % % % % % 
 
 
 parse_sentence(P,N,Success):-  %% Parse With TimeLimit
     dcg_module(G),
     user:value(parsetime_limit,Limit),   
 
-%%%% output('trace1'),
+%% output('trace1'),
 
 
     timeout(
@@ -952,19 +956,19 @@ parse_sentence(P,N,Success):-  %% Parse With TimeLimit
         Limit,
         Success),
     
-%%%% output('trace2'),
+%% output('trace2'),
 
     ( Success == success -> Parse1=Parse;Parse1=time_out),
 
      track(3,printparse(Parse1)), %%  print proper parsetree
 
-%% TA-090617
+% TA-090617
 
      track(2, output('*** Simplified parse tree ***')), %% TA-060906
      track(2, ptbwrite(Parse1)),
      track(2, (output('*****************************'),nl)).
 
-%%  TA-090617
+%  TA-090617
 
 
 
@@ -1058,10 +1062,10 @@ indentprintlist(N,O):-
     
 
 
-%% Control Section
+% Control Section
 
 
-%% Several statements 
+% Several statements 
 
 transfix(nil,nil):- user:value(dialog,1),!. 
 
@@ -1100,7 +1104,7 @@ transfix1(QX:::P,R):-
      clausifyq(QX:::P,R). %% translat.pl
 
 
-%%  Execute command
+%  Execute command
 
 exetuc(error):-!.   % executed as side effect
 exetuc(stop):-!.    % executed by loop exit
@@ -1119,9 +1123,9 @@ exetuc(TQL):- evaluateq2(TQL). %% evaluate.pl
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%% stopcommand(['.'|_],stop). 
+%% stopcommand(['.'|_],stop). 
 
 stopcommand([BS],stop):- 
      backslash(BS),
@@ -1189,7 +1193,7 @@ appfilename(Dir,P,DirP):-
     append_atoms(Dir,'/',Dir1),
     append_atoms(Dir1,P,DirP).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
@@ -1250,7 +1254,7 @@ plustoatom1(A+B,AB):- !,%% uses spaces instead of plus %% TLF-030218
 plustoatom1(X,X).
 
 
-%%%%%%%%%%%  THE END %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%  THE END %%%%%%%%%%%%%%%%%%%%%%
 
 
   :- initiate.

@@ -33,6 +33,8 @@ Program is run in same directory as busestuc (or in the utility folder below?)
 
 %% UNIT: / and /utility/*
 :- use_module( '../utility/utility.pl', [ append_atomlist/2, for/2, remember/1 ] ). %RS-131223 ensures_loaded( user:'../declare' )
+:- use_module( '../utility/writeout', [ output/1, writepred/1 ] ).%% RS-140912
+:- use_module( '../utility/utility.pl', [ append_atomlist/2, for/2, remember/1 ] ). %RS-131223 ensures_loaded( user:'../declare' )
 :- use_module( '../utility/datecalc', [ addtotime/3, difftime/3 ] ).
 :- use_module( '../utility/writeout', [ output/1 ] ).%% RS-140912
 
