@@ -10,6 +10,7 @@
  % RS-130411 For compilation of new routes (extract reg-Cuts...)  %% RS-131225 For ....pl
 :-module( extracut, [ create_regcut/1, ex_cutloop_rid/7, ex_cutloop_trace/3, ex_departureday/4, ex_ntourstops/2, ex_passes4/6, mod_cut_rid/8, pax/4, whattoget/7 ] ).
 
+:-meta_predicate  dumppredas(0,?).
 /*
 cutloop_trace(Station,Trace1,Trace2)),
 
@@ -28,14 +29,19 @@ Program is run in same directory as busestuc (or in the utility folder below?)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RS-140411    UNIT: / (FIRST!)
-:- ensure_loaded( user:'../declare' ). %% RS-111213  General (semantic) Operators, %% RS-140914 AND  remember/1, etc. Included in utility
-%remember(X) :- user:remember(X).
+:- ensure_loaded( user:'../declare' ). %% RS-111213  General (semantic) Operators, %% RS-140914 AND  remember/1 (-> utility.pl)
 
 %% UNIT: / and /utility/*
-:- use_module( '../utility/utility.pl', [ append_atomlist/2, for/2 ] ). %RS-131223 ensures_loaded( user:'../declare' )
+:- use_module( '../utility/utility.pl', [ append_atomlist/2, for/2, remember/1 ] ). %RS-131223 ensures_loaded( user:'../declare' )
+:- use_module( '../utility/datecalc', [ addtotime/3, difftime/3 ] ).
 :- use_module( '../utility/writeout', [ output/1 ] ).%% RS-140912
 
-:-use_module( '../utility/datecalc', [ addtotime/3, difftime/3 ] ).
+%% UNIT: /db/*
+:- use_module('../db/busdat', [cutloop_station/2]). %% cutloop_station
+%:-use_module( '../app/buslog', [ bus/1 ] ).               %% RS-130210
+
+%% RS-140411    UNIT: / (FIRST!)
+
 
 
 %% UNIT: /db/*
@@ -80,7 +86,7 @@ reset_dynamic_predicates :- %% TA-110317
 dumppredas( T0, T ):-
     nl,
     write('%%% ' ),nl,nl, 
-    for( T0, utility:writepred(T) ),
+    for( T0, writeout:writepred(T) ),
     nl.
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % 

@@ -3,6 +3,6 @@
 %% FILE version.pl
 %% SYSTEM TUC
 %% CREATED TA-970913
-/* REVISED : RS- */  version_date('AtB-I  Date 141020  Høst v3').
+/* REVISED : RS- */  version_date('AtB-I  Date 141020  Høst v3 Kongensgt - Sandgata').
 
 %% Høst v3
