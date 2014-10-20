@@ -53,7 +53,7 @@
 
 corr(torget,hovedterminalen).         %% SUMMER %% TA-110628 %% RS-130816 REMOVED before WINTER...
 
-%% corr(prinsenkrysset,hovedterminalen). %% ???  SUMMER %% TA-110701
+% corr(prinsenkrysset,hovedterminalen). %% ???  SUMMER %% TA-110701
   %% sorry, gir destinasjon munkehate = Prinsenkrysset  %%
 
 corr(sentrum,hovedterminalen).  
@@ -125,7 +125,7 @@ corr(p2,hovedterminalen).
 
 corr(stavset_senter,stavset_senter). 
 corr(studentersamfundet,studentersamfundet_2).   %% RS-140901 Ser ikke ut som om _1 finnes lenger?
-corr(studentersamfundet_1,studentersamfundet_2). %% RS-140901 Ser ikke ut som om _1 finnes lenger?
+%corr(studentersamfundet_1,studentersamfundet_2). %% RS-140901 Ser ikke ut som om _1 finnes lenger?
 
 corr(lerkendal_stadion,tempe_kirke). 
 
@@ -257,7 +257,8 @@ isat(hommelvik_stasjon,hommelvik).
 %% isat(hommelvikhøgda,hommelvik). %% RS-130627 %% Outside? Same departing busses...
 
 isat(hovedterminalen,dronningens_gate).  %% Where is sentrumsterminalen
-%%isat(hovedterminalen,kongens_gate).  %% RS-130812 Where is sentrumsterminalen, men unngå: Holdeplassen nærmest Kongens_gate er Sentrumsterminalen ??
+%%isat(hovedterminalen,kongens_gate).  %% RS-130812 Where is sentrumsterminalen, men unngå:
+                                        %%      Holdeplassen nærmest Kongens_gate er Sentrumsterminalen ??
 isat(hovedterminalen,munkegata).  %%
 isat(hovedterminalen,sentrum).  %% Experiment Trikk St. Olavs. gt og så sentrum
 
@@ -1828,8 +1829,8 @@ cmpl(kongens,[gt,k1],kongens_gate_k1).
 cmpl(kongens,[gt,k2],kongens_gate_k2).  
 
 cmpl(kongens,gata,kongens_gate). 
-cmpl(kongens,gate,kongens_gate). 
-cmpl(kongens,gate,hovedterminalen). 
+cmpl(kongens,gate,kongens_gate).
+cmpl(kongens,gate,hovedterminalen).
 cmpl(kongens,gt,kongens_gate). 
 
 cmpl(kongensgate,[k,1],kongens_gate_k1). %% TA-101026
@@ -5601,7 +5602,7 @@ place_resolve(vegmesterveien,veimester_kroghs_street).
 
 placestat(atb,prinsenkrysset). %% TA-101108 
 
-placestat(studentersamfundet,studentersamfundet_1).  %% AtB %% NB \+ isat
+%placestat(studentersamfundet,studentersamfundet_1).  %% AtB %% NB \+ isat
 placestat(studentersamfundet,studentersamfundet_2).  %% TA-100922  %% RS-140901 %% Reverserte disse
 
 placestat('ALT/Statoil',rotvoll_nedre).%% hist/ALT %% extra dep Bus 6 

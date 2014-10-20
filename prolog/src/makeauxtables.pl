@@ -34,7 +34,10 @@ taforall(_X,Y,Z):- \+ (Y, \+ Z),!.
 :- use_module( 'utility/utility.pl', [  delete1/3, ends_with/3, remember/1, textlength/2 ] ).
 :- use_module( 'utility/writeout', [  out/1, output/1, writepred/1 ] ). %writepred/1 is USED! in for/3 or set_of/3,
 
-%?-compile( busroute:'compileroute.pl' ).   %% Bootstrapping for compilation, faster than "ensure loaded"?!
+%:- compile( busroute:'compileroute.pl' ).   %% Bootstrapping for compilation, faster than "ensure loaded"?!
+:- use_module( 'compileroute.pl', [ consultbase/1 ] ). %% Interface modules
+:- consultbase(tt).   %% Bootstrapping for compilation, faster than "ensure loaded"?!
+
 :- use_module( 'interfaceroute', [ domain_module/2, thisdate_period_module/3, reset_period/0 ] ).
 
 %% RS-111205, UNIT: /app/
@@ -100,23 +103,24 @@ set_of( X, Y, Z ):-           %%
 
 verify_files_exist( Filename ) :-
         output( Filename ),
-        output('...makeauxtables.pl~111: auxtables-file already exists!!!'), nl,
+        output('...makeauxtables.pl~103: auxtables-file already exists!!!'), nl,
         true .
+%        false . % FORCE REGENARATION OF THE DB-files
 
 makeauxtables :-
-        verify_files_exist( 'db/auxtables.pl' ) ; 
+    %    verify_files_exist( 'db/auxtables.pl' ) ; 
     told,       %% Close all potentially open output-streams first!
 %    user:( tramflagg := false ), %% RS-140106 Trenger ikke auxtables for tram?!?
 %    user:( tmnflagg := false ), %% RS-140106 Trenger ikke auxtables for trafikanten midtnorge?!?
     reset_period,  %% get the right period 
 
-    write( '... makeauxtables~109: Please wait 1 minute while creating (db/auxtables) regstr/2' ),nl,
+    write( '... makeauxtables~114: Please wait 1 minute while creating (db/auxtables) regstr/2' ),nl,
 
     open( 'db/auxtables.pl', write, Stream, [encoding('UTF-8')] ), %% RS-140102, Run from monobuss folder !!
     %open( 'auxtables.pl', write, Stream, [encoding('UTF-8')] ), %% RS-140102, Run from the /db/ folder !!
     set_output(Stream),
 
-    writeheading( 'auxtables, [ busstat/2, unproperstation/1, statbus/2, transbuslist/3 ]' ),
+    writeheading( 'auxtables, [ busstat/2, statbus/2, transbuslist/3, unproperstation/1 ]' ),  %% Didn't work?
 
     createstatbus,  % 30 sec
     createbusstat,  % 10 sec
@@ -245,7 +249,8 @@ passanyway(D,S):-
 
 
 xproperstation(A):-
-    properstation(A). %% , test( stationD(A,tt) ).   %%% Very Ad Hoc, only TT    %% TODO: RS-140210 RS-140914
+    properstation(A). %% , test( stationD(A,tt) ).   %%% Very Ad Hoc, only TT    %% TODO: RS-140210 
+        %% RS-140914 What about unproperstation(X) ??
 
 % It is impossible to go FROM  hovedterminalen to A  (in this order)
 
@@ -318,7 +323,7 @@ crerr:-
 
 crerr1 :-
 
-  write('... Undefined - identifiers... (db/places) placestat/2'),nl,nl,
+  nl, write('Undefined - identifiers... (db/places) placestat/2'),nl,nl,
 
   set_of(X, (station_reference(X), \+ buslog:hpl(_,X,_Off)),
 
@@ -480,7 +485,7 @@ torehash(yggdrasi,yggdrasil).
 
 
 createhash :-
-        verify_files_exist( 'db/namehashtable.pl' ) ;
+    %    verify_files_exist( 'db/namehashtable.pl' ) ;
     told,
     write('... makeauxtables~488: Please Wait another minute for namehash-table'),nl, %% TA-090317
 
@@ -742,19 +747,19 @@ for(
 %:- verify_consistency.
 
 %% 0.  Take backup (or use svn)
-% cp auxtables.pl  backup.auxtables.pl
-% cp namehashtable.pl  backup.namehashtable.pl
-% cp discrepancies.pl  backup.discrepancies.pl
+% mv db/auxtables.pl  old/auxtables.pl
+% mv db/namehashtable.pl  old/namehashtable.pl
+% cp db/discrepancies.pl  old/discrepancies.pl
 
 %%  1. Create Tables 
 % busestuc.sav
-?- makeauxtables.
+%?- makeauxtables.
 
 %% 2. Create namehashtable
-?- createhash.
+%?- createhash.
 
 %% 2.5 Create discrepancies
-?- verify_consistency.
+%?- verify_consistency.
 
 %% 3. Finish
 %?-halt.

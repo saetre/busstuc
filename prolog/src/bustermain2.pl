@@ -82,9 +82,9 @@
 
 %% local copy of META-PREDICATES from utility.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-for(P,Q):-
-  P,Q,
-  false;true.
+%for(P,Q):-
+%  P,Q,
+%  false;true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
    
@@ -388,7 +388,7 @@ bad_language :-
 
 
 %:-ensure_loaded( version ).       %% RS-131227    With version_date/1, used in monobus -> teledat2.pl
-:- ensure_loaded( user:busterversion ).       %% RS-131227    With version_date/1, used in monobus -> teledat2.pl
+:- use_module( busterversion ).       %% RS-131227    With version_date/1, used in monobus -> teledat2.pl
 
 tuc_version:-   
     %version_date(V),     %% version.pl

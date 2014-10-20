@@ -439,7 +439,7 @@ checkitem(_,saf, focus(Frame, OldRefer, A), focus(Frame, NewRefer, A)) :-
 checkitem(_,saf, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, [Tql, NewProg])) :-
     saturate(Frame, Prog, NewProg),
     getcurrent(Cid),
-    makenegative(Tql, NewProg, AnswerOut),
+    makenegative(Tql, NewProg, busanshp:AnswerOut),
     waves,
     paraphrase2(Prog,Frame), %% <--- suspect for tele ??? %% TA-060705
     writeanswer(AnswerOut),
