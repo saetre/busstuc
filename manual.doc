@@ -5,7 +5,7 @@
 %        USER  MANUAL                                 %
 %                                                     %
 %    Version   11.2   Date 001119                     %
-%                                                     %
+%     Modified RS-140927                              %
 %                                                     %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -26,7 +26,7 @@ COPYRIGHT NOTICE
  it is not used in commercial applications and that
  the copyright notice remains unchanged.
 
-COPYRIGHT (C) 2000                                   
+COPYRIGHT (C) 2000 - 2011                            
                                                        
     Tore Amble                                           
     Knowledge Systems Group                              
@@ -34,9 +34,17 @@ COPYRIGHT (C) 2000
     University of Trondheim (NTNU)
     N-7491 Norway
 
+COPYRIGHT (C) 2011 - 2014
+
+    Rune Sætre                                
+    Knowledge Systems Group                              
+    Department of Computer and Information Science
+    University of Trondheim (NTNU)
+    N-7491 Norway
+
 E-MAIL:
                       
-    amble@idi.ntnu.no                                    
+    tagore@idi.ntnu.no                                    
 
 SOFTWARE DISCLAIMER
 
@@ -76,11 +84,11 @@ and Traffic Information Systems.
 There is at the moment two versions, one for English
 and one for Norwegian. We will let the English version
 be used for a generic description. (A suffix _e distinguishes the
-English version from the Norwegian verison _n).
+English version from the Norwegian version _n).
 
 A feature of the system  is to detect which language
 is actually typed, and then process and answer the query
-in this langaue.
+in this language.
 
 The interface modules are not included in this package.
 
@@ -115,14 +123,14 @@ The files will be stored in a directory
 
    /pub/amble/tuc
 
-which contains 3 files, totalling about 5000 KB:
+which contains 3 files, totaling about 5000 KB:
 
 README            containing detailed instructions
                   for the file transfer .
 
 TUC_manual        containing this manual
 
-TUC_system.tar.Z  containing the programs files in 
+TUC_system.tgz    containing the programs files in 
                   compressed tar format, ( including
                   README and TUC_manual) .
                   
@@ -130,7 +138,7 @@ The files can be anonymously ftp-ed in a standard way .
 The actual details is found in the file README.
 
 After a successful transmission, the TUC_system.tar.Z
-is uncompressed and un-tarred . A new directory tuc/
+is uncompressed and untar-ed . A new directory tuc/
 will be created containing all the files. 
 
 
@@ -272,7 +280,7 @@ chosen will at least be semantically plausible (with the current semantic
 definitions).
 
 
-TUC tranlates English to First Order Logic (FOL), and then 
+TUC translates English to First Order Logic (FOL), and then 
 to a Skolemized form called TQL. Slash (/) is used as a
 general predicate generating operator, which is 
 left-associative. The last argument is usually
@@ -377,8 +385,8 @@ System Commands in Prolog mode:
 
  ?- value(P)      Prints the current value of the parameter P.
 
- ?- readscript.   Reads a file for permament store.
-                  Indexical definitions are also defined by default ("the harbour" )
+ ?- readscript.   Reads a file for permanent store.
+                  Indexical definitions are also defined by default ("the harbor" )
 
  ?- norsk.        Change language to Norwegian.
 
@@ -397,7 +405,7 @@ Parameters:
                     N=1  generated TQL code (default)
                     N=2  FOL from parsing 
                          Lexical analysis output
-                    N=3  FOL from parsing ( with anaphor resolution)
+                    N=3  FOL from parsing ( with anaphora resolution)
                          Lexical analysis output (more)
   maxdepth := N
                  Max depth of theorem prover
@@ -503,7 +511,7 @@ Among all its restrictions, note the following:
  - A line may be split into several lines until the line
    ends with one of these marks . 
 
- - No attention is payed to the morphological form, eg.
+ - No attention is payed to the morphological form, e.g.
    singular or plural or tense. 
 
  - All names not put in 'quotes'  must be known by the 
@@ -515,7 +523,7 @@ Among all its restrictions, note the following:
 
      E: anne is a girl .
 
- - Genitive is written by a single 's' without appostrophe as in
+ - Genitive is written by a single 's' without apostrophe as in
 
      E: who is johns mother ? 
 

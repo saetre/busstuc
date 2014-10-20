@@ -12,33 +12,47 @@
 :-volatile (=>)/2.
 :-dynamic (=>)/2.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate  test(0) . %% RS-140211 RS-140915 0 instead of : ?
+test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%local: test/1 % RS-131117 includes declare.pl  %%,  unsquare/2 RS-131227
+
 %% RS-131227    UNIT: /
 :- ensure_loaded( user:'../declare' ).%, [ := /2, for/2 (from library.pl) etc. ] ). %% RS-140208
+track(X, Y) :- user:track(X, Y) .
+
+:- use_module( library(aggregate) , [ forall/2 ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%:- ensure_loaded('slash').      %% RS-131228    Includes def/1
 :- use_module( slash, [ def/1 ] ).     %% RS-131228
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%MISERY?! :-use_module( '../main' ).
-:- use_module( '../main.pl', [ track/2 ] ). %% RS-140209 hei/0,   run/0 
+
+%:- use_module( '../main.pl', [ track/2 ] ). %% RS-140209 hei/0,   run/0 %MISERY?! :-use_module( '../main' ).
 
 %% RS-131227    UNIT: /utility/
-%:- ensure_loaded( user:'../utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl  %%,  unsquare/2 RS-131227
-:- use_module( '../utility/utility', [ error/2,  occ/2,  do_count/1, flatlist/2, freshcopy/2, ident_member/2, match/2, numbervars/1, subcase/2, 
-                                     subsumes/2 ] ). %local: test/1 
-
 :- use_module( '../utility/library', [ reverse/2 ] ).  %%    %% RS-131225
-%for(P,Q):-
-%  P,Q,
-%  false;true.
+:- use_module( '../utility/utility', [ error/2, do_count/1, flatlist/2, flatround/2, freshcopy/2, ident_member/2, match/2, occ/2, subcase/2, subsumes/2 ] ).
+
+:- use_module( library(varnumbers), [ numbervars/1 ] ). %% RS-140210.
+
+% for(P,Q) :- P,Q,  false;true. %% RS-140929 What about variable binding? Compare to library(aggregate):forall/2
+
+%UNIT: /app/
+% :- use_module( '../app/interapp', [  ] ).   %% RS-140915 140921
 
 %UNIT: /tuc/
-:- use_module( evaluate, [ difact/1, new_focus/2 ] ).   %% Semi-permanent? declare.pl (dynamic), asserted in evaluate.pl & translat.pl
-:- use_module( fernando, [ subclass/2 ] ).
-:- use_module( semantic, [ testclass/1 ] ).
+:- use_module( evaluate, [ new_focus/2 ] ).   %% Semi-permanent? declare.pl (dynamic), asserted in evaluate.pl & translat.pl
+:- use_module( facts, [ difact/1 ] ).   %% Semi-permanent? declare.pl (dynamic), asserted in evaluate.pl & translat.pl
+%:- use_module( fernando, [  ] ).  
+:- use_module( semantic, [ subclass/2, testclass/1 ] ).
+
+%:- use_module( '../app/pragma', [ occ/2 ] ).   
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%  Skolemization of FOL expressions
-
 
 clausifystm( JLM ):- 
     newskolem(X),
@@ -385,10 +399,11 @@ plunder(SX,[Y|Z],R):-
     plunder((SX/Y),Z,R).
 
 writeconjuncts(CL,TF):-
-    user:for(member(C,CL),
+    %for(member(C,CL),
+    forall(member(C,CL),
         writeconjunct(C,TF)),
 
-    user:track(2,(nl,
+    track(2,(nl,
                 for((Y is_the K),
                     output(Y is_the K)))).
 
@@ -412,11 +427,6 @@ wrclause(P,TF):-
 skupdate(_,false):-!.
 skupdate(P,true):-
     skup(P).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%:- meta_predicate  test(+) . %% RS-140211
-test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 skup(true):-!.
 skup(inconsistent):-!.
@@ -481,7 +491,8 @@ assertfact(P):-
 
 
 testimpossible(P):-
-    explain(false),
+    %explain(false),                    %% RS-140915    Typo?
+    %interapp:explain_query(false),      %% RS-140915    Typo? Moved to ??
     !, 
     user:value( context_id, UID ),     
     retract( user:difact(UID,P) ). 
@@ -518,29 +529,29 @@ tauthead(_ isa C):-testclass(C).
 %  No Skolemization
 
 
-clausifyq(which(XT):::Y ,which(X):::Z):-
+clausifyq( which(XT):::Y ,which(X):::Z):-
     nonvar(XT), XT= (X:_T),
     !, 
     condiq(Y, Z ).
 
-clausifyq(howmany(XT):::Y ,howmany(X):::Z):-
+clausifyq( howmany(XT):::Y ,howmany(X):::Z):-
     nonvar(XT), XT= (X:_T),
     !, 
     condiq(Y, Z ).
 
 
-clausifyq(QX:::Y ,QX:::Z):-!, 
+clausifyq( QX:::Y ,QX:::Z):-!, 
     condiq(Y, Z ).
 
-clausifyq(not (exists(X)::Q) , Z):-!,
+clausifyq( not (exists(X)::Q) , Z):-!,
     condiq(forall(X)::not Q , Z ).
 
-clausifyq((P => Q) , (Z12 => Q) ):- %  clausify query
+clausifyq( (P => Q) , (Z12 => Q) ):- %  clausify query
    condiq(P,Z12),
    !,
    writeconjunct((Z12 => Q),false).  %  no update
 
-clausifyq((P or Q) , Z12 ):- %  clausify query
+clausifyq( (P or Q) , Z12 ):- %  clausify query
    condiq((P or Q),Z12),
    !,
    writeconjunct(P or Q,false).  %  no update
@@ -588,7 +599,7 @@ condq(true and  P,Q):-!,
 condq(P  and  Q,P1Q1):-!,
     condq1(P,P1),
     condq(Q,Q1),
-    user:flatround((P1, Q1),P1Q1).      %% utility.pl
+    flatround((P1, Q1),P1Q1).      %% utility.pl
 
 condq(not (A => B),Z):-!,
     condq(A  and  (not B),Z).
@@ -699,7 +710,7 @@ testquant(CR,A,B):-
 optimize(A,B):-
     removesfluous(A,A2),
     sortcond(A2,A3), 
-    user:unsquare(A3,B).        %% utility.pl
+    utility:unsquare(A3,B).        %% utility.pl
 
 % remove conditions that are superfluous in conjunction
 

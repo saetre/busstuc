@@ -6,17 +6,10 @@
 %% REVISED JB-970312  TA-110824
 %% TUC Dictionary for the language N
 
-:-module( dict_n, [
-        adjective3/3,           adv2/2,
-        compword/3,             cw/1,                   kw/1,
-%%                 lexnsingirr/2,        %% Only English?? RS-121118
-%%                 lexnpluirr/2,         %% Only English?? RS-121118
-        noisew/1,                noun2/2,               noun3/3,
-%%                noun_form/5,
-        ow/1,       %% See k(ey)w(ord)
-        preposition/1,
-        pronoun/1,
-        rep_verb/1,   %% RS-121118   %% English / Norsk (from fernando.pl, Don't import there!)
+:-module( dict_n, [ adjective3/3, adv2/2, compword/3, cw/1, kw/1, % %% See k(ey)w(ord) % lexnsingirr/2, lexnpluirr/2 %% Only English?? RS-121118 %% Only English?? RS-121118
+        noisew/1, noun2/2, noun3/3, %% noun_form/5,
+        ow/1,   preposition/1,
+        pronoun/1,      rep_verb/1,   %% RS-121118   %% English / Norsk (from fernando.pl, Don't import there!)
         rewording/2,
 %%                   splitword/2, %% Defined in the user:module
         synsms/2,                synwordx/2,
@@ -31,11 +24,11 @@
 :- ensure_loaded( user:'../declare' ). %, [ := /2 etc. ] ).      %RS-131225  Get dynamic definition for user:value/2
 %%MISERY! user:?
 %:- ensure_loaded( user:'../tucbuses.pl' ). %%,[  backslash/1  ]).
-:- use_module( '../tucbuses.pl', [ ] ). %%, backslash/1 ] ).
+%:- use_module( '../tucbuses.pl', [ ] ). %%, backslash/1 ] ).
 
 %%RS-131225     %% UNIT: utility/
 %:- ensure_loaded( user:'../utility/utility' ). %%, [ testmember/2, user:value/2  ]).   %% RS-131117 includes declare.pl
-:- use_module( '../utility/utility', [ ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
+:- use_module( '../utility/utility', [ testmember/2 ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
 
 %%RS-131225     %% UNIT: tuc/
 :- use_module( evaluate, [ instant/2 ] ).       %% RS-131225
@@ -78,7 +71,7 @@ test_dict_n :-
                    ow(_),
                    preposition(_),
                    pronoun(_),
-%%                   rep_verb(_),
+                   rep_verb(_),
                    rewording(_,_),
                    split(_,_),
                    splitword(_,_),
@@ -12561,7 +12554,7 @@ synword(TLF, telefonnummer):-   %% nr 6 -> telefonnummeret 6 // Bare tele
 
 synword( TLF, telefonnummer ):-      %% nr 6 -> telefonnummeret 6 // Bare tele
     \+ user:value(teleflag,true),  %% ret -> r
-    \+ user:testmember(TLF,[nr,nummer,nummeret]), %% ad hoc (BUS no)
+    \+ testmember(TLF,[nr,nummer,nummeret]), %% ad hoc (BUS no)
     tlf(TLF).  
 
 

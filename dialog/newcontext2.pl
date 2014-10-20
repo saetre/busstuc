@@ -6,9 +6,12 @@
 
 %% FOR busanshp.pl AND checkitem2.pl 
 
-:-module( newcontext2, [ addref/3, clearold/0, commitref/1, commitref/3, current_frame_getvalue/2, dialog_resolve/2, getcontext/2, getcurrent/1,
-        getframe/2, getquery/2, reset_context/0, setcurrent/1, setframe/2, setquery/2, topic_subclass/3 ] ). %% RS-140101
+%% RS-140101. UNIT: /dialog/
+:-module( newcontext2, [ addref/3, clearold/0, commitref/1, commitref/3, current_context/1, current_frame_getvalue/2, dialog_resolve/2, getcontext/2,
+        getcurrent/1, getframe/2, getquery/2, newcontext/1, reset_context/0, saved_context/3, setcontext/2, setcurrent/1, setframe/2, setquery/2,
+        topic_subclass/3, rc/0 ] ). %% RS-140901
 
+%% Move to frames2 ?!? RS-140914
 :- volatile
            current_context/1,
            saved_context/3.
@@ -17,24 +20,39 @@
            saved_context/3.
 
 %% UNIT: EXTERNAL
-:- use_module( library(system) ).
+:- use_module( library(system), [ datime/1 ] ).
 %:- use_module( library(lists) ). %% delete/3 is also loaded from utility/library.pl !!
 
 %% UNIT: / and /utility/
 :- ensure_loaded( user:'../declare' ). %% RS-111213 General Operators, Meta_Predicates: set_of/3
-:- use_module( '../utility/utility', [ roundmember/2, set_difference/3 ] ).       %% RS-131223 includes declare.pl
+:- use_module( '../utility/utility', [ set_difference/3 ] ).       %% RS-131223 includes declare.pl
+
 :- use_module( '../utility/library', [ delete/3 ] ).%% RS-131225 , reverse/2 for busanshp?
 
+%% RS-140101. UNIT: /app/
+:- use_module( '../app/pragma', [ roundmember/2 ] ).
+
 %% RS-140101. UNIT: /dialog/
-%MISERY LOOP:
+%MISERY LOOP?
 :- use_module( frames2, [ frame_getvalue_rec/4, frametemplate/2 ] ).  %% RS-131117   frames2->newcontext2.pl is loaded from frames2 !!
+%% UNIT /dialog/
+:- use_module( checkitem2, [ current_frame/1 ] ).
+
+ 
+
+%UNIT: /tuc/
+%:- use_module( '../tuc/fernando', [ subclass0/2 ] ).
+:- use_module( '../tuc/semantic', [ subclass0/2 ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Prologs setof is baroque %% 
+:- meta_predicate set_of(+,0,-) .
+
 set_of(X,Y,Z):-           %%
     setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
     Z=[].                 %% What is wrong with empty sets ?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %% current is the id of the current context
 setcurrent(Cid) :-
 	saved_context(Cid, _, _), !, 
@@ -199,7 +217,7 @@ getref(Cid, X, Type) :-
 %% Topic is not yet in the frame
 
 gettopic(Topic) :- 
-    value(topic,Hopic) -> 
+    user:value(topic,Hopic) -> 
          Topic=Hopic
        ; Topic = nil.
 
@@ -278,5 +296,5 @@ rc :-
 	newcontext(id),
 	assert(current_context(id)).
 
-:- rc.
+:- rc. %% RS-140914   When to do this? When you set up the first dialog context!
 

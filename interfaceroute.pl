@@ -6,14 +6,14 @@
 
 % Interface procedures for handling interface to route modules
 
-:-module( interfaceroute, [ current_period/4, decide_period/2, domain_module/2,
-                            thisdate_period_module/3, reset_period/0, search_period_module/3, valid_period/2 ] ).
+:-module( interfaceroute, [ current_period/4, decide_period/2, domain_module/2, thisdate_period_module/3, reset_period/0, search_period_module/3, valid_period/2 ] ).
 
 :- ensure_loaded( user:'declare.pl' ). %, [ := /2 etc. ] ). META:  set/2,   value/2
 
-:- use_module( 'utility/utility', [  output/1 ] ).
+:- use_module( 'utility/writeout', [ output/1 ] ).
 
-:- use_module( 'db/topreg', [ default_period/3, routedomain/1, route_period/4  ]). %% default_message/3, period_message/2,  is not used?, Really?!
+:- use_module( 'db/topreg', [ default_period/3, routedomain/1  ]). %% default_message/3, period_message/2,  is not used?, Really?!
+:- use_module( 'db/route_period', [ route_period/4  ]). %% default_message/3, period_message/2,  is not used?, Really?!
 
 :- use_module( 'utility/datecalc', [ off_valid_period/3,  on_valid_period/3,   todaysdate/1  ] ).
 
@@ -57,7 +57,7 @@ reset_period :- %% NB TT
     current_period(tt,CP,_,_),
     user:set(actual_period,CP), 
 
-%%%  verify_movedates, %% check consistency  ---> main.pl
+%%%  verify_movedates, %% check consistency  ---> main.pl ---> timedat.pl moved to create_named_dates
 
     !. %% ///////// %% RS-140616 Don't re-reset period? Use ONLY the FIRST MATCH for a given domain.
 

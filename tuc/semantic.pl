@@ -8,25 +8,18 @@
 :-module( semantic, [ a_compl/4, abnormalverb/2, adj_templ/2, adjname_templ/2, adjnamecomp_templ/3, adjnoun_templ/2, adjnouncomp_templ/3,
         ako/2, aligen2/2, align1/2, coher_class/3, dtv_templ/4, gradv_templ/2, ( has_a )/2, %% == has_a/2 RS-131228  For fernando.pl
         iv_templ/2, jako/2,  measureclass/1, n_compl/3, ordinal/2, pai_templ/2,  particle/3, post_adjective/1,       %% RS-131225    Down Town etc.
-        pvi_templ/2, rv_templ/2, stanprep/2,             %% RS-131228    For fernando.pl
+        pvi_templ/2, rv_templ/2, stanprep/2, subclass/2, subclass0/2, superclass0/2,     %% RS-140921    From fernando.pl
         testclass/1, tv_templ/3, v_compl/4,  vako/2      %% RS-131225    Necessary?
 ] ).
 
 :- ensure_loaded( user:'../declare' ).
-%UNIT: /tuc/
-:- use_module( facts, [ isa/2 ] ).       %% RS-131225    Necessary?
-:- use_module( fernando,[ subclass0/2 ] ).
 
-:-discontiguous( [
-        (ako)/2,
-        (has_a)/2,
-        a_compl/4,
-        adj_templ/2,
-        iv_templ/2,
-        rv_templ/2,
-        tv_templ/3,
-        v_compl/4
-]).
+%UNIT: /tuc/
+% :- use_module( facts, [ isa/2 ] ).       %% RS-131225    Necessary?
+
+%:- use_module( fernando,[ subclass0/2 ] ).
+
+:-discontiguous( [ (ako)/2, (has_a)/2, a_compl/4, adj_templ/2, iv_templ/2, rv_templ/2, tv_templ/3, v_compl/4 ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -35,6 +28,30 @@
 
 %%  Verbs are normal unless they are abnormal
 
+% % % % % % % % % % % % % % % % 
+
+
+superclass0(X,X).
+superclass0(X,Z):-
+    X ako Y,
+    superclass0(Y,Z).
+
+
+subclass0(X,Y):- 
+    X=Y;
+    subclass(X,Y).
+
+subclass(X,Z):- % go upwards (preferred)
+    nonvar(X), % var(Z),
+    X ako Y,
+    subclass0(Y,Z).
+
+subclass(X,Z):-
+    var(X),nonvar(Z),
+    Y ako Z,
+    subclass0(X,Y).
+
+% % % % % % % % % % % % % % % % % % % % % % %
 
 normalverb(V,_):- \+ abnormalverb(V,_),!.  % normal if not abnormal at all
 normalverb(V,T):- abnormalverb(V,U),\+ subclass0(T,U).
@@ -10281,7 +10298,8 @@ particle(in_morning,time,pre).
 particle(in_night,time,pre).
 particle(in_midnight,time,pre).
 
-particle(Day,day,pre) :- (Day isa day).
+%       particle(Day,day,pre) :- (Day isa day).            %% RS-140921
+%particle(Day,day,pre) :- isa( Day, day ).
 
 %% can not be prefix
 

@@ -4,16 +4,42 @@
 %% CREATED AM-980218
 %% REVISED TA-060706
 
-:- assert( linecounter(1) ).
-:- assert( confused(noone) ). %-)
-
-%% RS-131227    UNIT: /
-:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators, also := and =:
-:- use_module( '../getphonedir', [  reset_ldapcon/0  ]).%% RS-131227    For ...main.pl, extra: create_tags/1,  
-
-%% [ quit_dialog/0, dialogrun0/0, etc. ] ).
-
+%% RS-140914,   UNIT: /dialog/
 %% Dialogue manager.
+
+%% RS-140910   Make a module here... It should keep track of it's own linecounter variables etc.  !!! See newcontext2 and frames2 !!!
+:- module( d_dialogue, [ dialogrun0/0, evalline_multi/2, last_answer/2, linecounter/1, processinput/1, quit_dialog/0, reset_conns/0, subst_tql/4, varmember/2 ] ). %hi/0, run/0, 
+
+%% META-PREDICATES
+:-meta_predicate  g_execute1( ?, ?, 0).
+
+
+%% RS-140914  UNIT: / and   UNIT: /utility/
+:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators, e.g.  :: , trackprog/2        %Helper
+
+:- use_module( '../utility/utility', [ flatround/2, timeout/3 ] ).         %% RS-140102 AVOID LOOPS PLEASE!! %trackprog(X, Y) :- user:trackprog(X, Y) .
+
+:- use_module( '../utility/writeout', [ output/1 ] ).%% RS-131225
+
+:- use_module( '../main', [ exetuc/1, translate2/2 ] ). % dialog/0, 
+
+:- use_module( '../getphonedir', [  reset_ldapcon/0  ]).%% RS-131227    For ...main.pl, extra: create_tags/1,  
+:- use_module( '../interfaceroute', [  reset_period/0 ] ).
+
+%%% RS-140914, UNIT: /app/
+:- use_module( '../app/pragma', [ pragma/3 ] ).        %% RS-140102, ipragmaor0/0, set/2
+:- use_module( '../app/interapp', [ konstantify/1, makeanswer/4, nocols/2, waves/0, writeanswer/1 ] ).
+%:- use_module( '../app/buslog', [ timeout/3 ] ).
+
+%% RS-140914,   UNIT: /dialog/
+%% Dialogue manager.
+:- use_module( d_main, [  dialog2/0  ] ). %% [ quit_dialog/0, dialogrun0/0, etc. ] ).
+:- use_module( exegram, [  g_execute/3  ] ).  %% RS-140914 Modularized %% Dialog Grammar execution 
+:- use_module( newcontext2, [ clearold/0, getcontext/2, getcurrent/1, newcontext/1, reset_context/0, setcontext/2, setcurrent/1 ] ).
+                %%, setframe/2, setquery/2, topic_subclass/3 ] ). %% RS-140101
+:- use_module( frames2, [ xframe_setvalue/2 ] ).
+:- use_module( parseres, [ xwriteanswer/2 ] ).
+:- use_module( portraycontext, [ printcontext/0 ] ).
 
 :- volatile
            confused/1,
@@ -25,34 +51,39 @@
            linecounter/1,
            last_answer/2.  %% last_answer is problematic ???
 
+:- assert( linecounter(1) ).
+:- assert( confused(noone) ). %-)
+
+
 
 %dialog :-      %% RS-131228  
 dialogrun0 :-  
-   dialog := 1, 
+   user:( dialog := 1 ), 
    reset_period,
    reset_context,
    dialog2.
 
-%run :-          %% RS-131228   Moved to /bustermain2.pl
+% run :-          %% RS-131228   Moved to /bustermain2.pl
 %    dialog.  
-%hi:-debug, run. 
+%
+% hi:-debug, run. 
 
 processinput(Q) :-                     %%AM-980301
 	
-   dialog := 1,
-	error_phase := 0,
-   nightbusflag := false,   %% ad hoc, must be reset %% TA-060706
+   user:( dialog := 1 ),
+	user:( error_phase := 0 ),
+   user:( nightbusflag := false ),   %% ad hoc, must be reset %% TA-060706
 	translate2(Q,TQL),
 	nl,
 
-   value(contextid,Cid),
+   user:value(contextid,Cid),
    setcurrent(Cid),
 
-  (value(topic,BT) -> 
+  ( user:value(topic,BT) -> 
       xframe_setvalue(topic,BT) % put topic into the context frame  %% TA-060426
       ;true),
 
-  (value(language,Lan) -> 
+  (user:value(language,Lan) -> 
       xframe_setvalue(language,Lan) % put language into the context frame  %% TA-060426
       ;true),
 
@@ -84,17 +115,17 @@ dialogline(stop) :-             %%AM-980311
     false.
 
 
-dialogline(command(C)) :-     %%AM-980311
-	exetuc(command(C)),!.
+dialogline( command(C) ) :-     %%AM-980311
+	exetuc( command(C) ),!.
 
 
 dialogline([TQL]) :- %% Single question
         copy_term(TQL,TQL1),
-        nocols(TQL1,TQL2),
+        interapp:nocols(TQL1,TQL2),
         flatround(TQL2,FQL),
-        konstantify(FQL),       
+        interapp:konstantify(FQL),       
 	!,                        % look only at first try
-	trackprog(3, (write(FQL), nl)), 
+	user:trackprog(3, ( write(FQL), nl) ), 
 	timeout( 
 		evalline(TQL1, FQL),
 		15000,       %% 15 sec   timeout %%  TA-070419 (Slow server)
@@ -109,11 +140,11 @@ dialogline([TQL]) :- %% TA-970523
 
 dialogline([TQL | Rest]) :- %% Multiple questions
         copy_term(TQL,TQL1),
-        nocols(TQL1,TQL2),
+        interapp:nocols(TQL1,TQL2),
         flatround(TQL2,FQL),
-        konstantify(FQL),       
+        interapp:konstantify(FQL),       
 	!,                        % look only at first try
-	trackprog(3,(write(FQL), nl)), 
+	user:trackprog(3,(write(FQL), nl)), 
 	timeout( 
 		evalline_multi(TQL1, FQL),
 		25000,       %% 25 sec timeout %% TA-070419 (Slow server)
@@ -128,7 +159,7 @@ reset_dialog(Reason):- %%  // bye/error
    getcurrent(Cid),   
 	newcontext(Cid),
    Fql=((do),quit(Reason)),
-	pragma(trans,Fql,Program),
+	pragma( trans, Fql, Program),
         
    makeanswer(true,Fql, Program ,AnswerOut), 
    waves, 
@@ -159,7 +190,7 @@ quit_dialog:- %% TA-030630
 
 
 reset_conns :-				%% TLF-030523
-	value(teleflag,true),
+	user:value(teleflag,true),
 	reset_ldapcon.
 
 reset_conns.		%% TLF-030523 Should never fail!!
@@ -218,7 +249,7 @@ evalline(error, _) :- %% TA-070201
 
 
 evalline(error, _) :-
-	\+ value(teleflag,true),
+	\+ user:value(teleflag,true),
         getcontext(Cid, context(Tql, Prog, TempRefer, [node(TopName,_, TopFocus, TopRem) | NodeStack])),
 
 	ExtraStack = [node(tb_start2,_, TopFocus, 
@@ -237,7 +268,7 @@ evalline(error, _) :-
 	false.
 
 evalline(_, Tql) :-
-   trackprog(3, output(' *evalline 1* ')), %% TA-030108
+   user:trackprog(3, writeout:output(' *evalline 1* ')), %% TA-030108
 	retractall(confused(Cid)),
 	getcurrent(Cid),
 	getcontext(Cid, context(_Tql, _Prog, TempRefer, NodeStack)),
@@ -250,9 +281,9 @@ evalline(_, Tql) :-
 	setcontext(Cid, context(NewTql, NewProg, NewTempRefer, NewNodeStack)).
 
 evalline(_, Tql) :- 
-	\+ value(teleflag,true),
-   trackprog(3, output(' *evalline 2*  ')), %% TA-030108
-   \+ value(wozflag,true),                     %% TA-031017
+	\+ user:value(teleflag,true),
+   user:trackprog(3, writeout:output(' *evalline 2*  ')), %% TA-030108
+   \+ user:value(wozflag,true),                     %% TA-031017
 	getcurrent(Cid),
 	getcontext(Cid, context(_Tql, _Prog, TempRefer, [node(TopName,  _  , TopFocus, TopRem) | NodeStack])),
 	ExtraStack = [node(tb_start2,  _  , TopFocus, [item(say(tbs_userhelp)), sub(tb_from)]) | [node(TopName,  _  , TopFocus, TopRem) | NodeStack]],
@@ -266,7 +297,7 @@ evalline(_, Tql) :-
 evalline(_, _) :-
         waves, %% TA-050809
 
-        writeanswer((startmark,bcpbc(dialogerror),period)).
+        writeanswer( busanshp:(startmark,bcpbc(dialogerror),period) ).     % use busanshp: module
 
 %% Handle one TQL that appears in a sequence
 
@@ -285,8 +316,8 @@ evalline_multi(_, Tql) :-
 	getcontext(Cid, context(NewTql, NewProg, NewTempRefer, _)),
 	setcontext(Cid, context(NewTql, NewProg, NewTempRefer, NewNodeStack)).
 	
-g_execute1(A,B,C):- %% avoid recursion through files
-   g_execute(A,B,C).
+g_execute1( A, B, Multi ):- %% avoid recursion through files
+   g_execute( A, B, Multi ).
 
 
 varmember(X, [Y | _]) :-
@@ -296,6 +327,7 @@ varmember(X, [_ | Rest]) :-
 	varmember(X, Rest).
 
 
+% Used in checkitem[2] RS-140913
 subst_tql(_, _, Item, Item) :-
 	var(Item), !.
 

@@ -4,23 +4,19 @@
 %% CREATED TA-930528
 %% REVISED TA-090925
 
-%%% RS-111205, UNIT: tuc/    USAGE:
-%:- use_module( evaluate, [ fact/1 ] ).          %% RS-140210
-:-module( evaluate, [ difact/1, disqev/1, evaluateq/1, evaluateq2/1,  %% RS-131227 %main.pl %translat.pl,  % difact/2, %main.pl % fact0/1,
-        fact/1,     fakt/1,   %ieval/1,        %% RS-131228    Exported through tuc/evaluate.pl from app/interapp.pl!
-        included/2,     instant/2,        leveltest/2,        new_focus/2,        qev/1,        qdev/2,        valof/2
-                  %unskolemize/2,        %% OLD, from turbo.pl
-] ).
+%%% RS-111205, UNIT: tuc/
+:-module( evaluate, [ disqev/1, evaluateq/1, evaluateq2/1, fakt/1, included/2, instant/2, leveltest/2, new_focus/2, qev/1, qdev/2, valof/2 ] ).  %unskolemize/2,        %% OLD, from turbo.pl
 
 %% META PREDICATES : for/2, foralltest/2, once1/1, set_of/3, set_ops/3, test/1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:-meta_predicate  doall(:).     %doall/1: (P, then succeed)
+:- meta_predicate doall(0) .  % doall/1 (Goal_0) . Zero input arguments for Goal_0 % doall(P): (P, then succeed)
 doall( P ):-  % P, then succeed 
     P,
     false ;
     true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Prologs setof is baroque %% 
+% Prologs setof is baroque %%
+:- meta_predicate set_of(+,0,-) .
 set_of(X,Y,Z):-           %%
     setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
     Z=[].                 %% What is wrong with empty sets ?
@@ -33,24 +29,23 @@ set_of(X,Y,Z):-           %%
 
 %%% RS-131231, UNIT: /  %%% RS-111205, UNIT: utility/
 :- ensure_loaded( user:'../declare' ).  %% RS-140208    difact/2, fact/2
-%:- ensure_loaded( user:'../utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
-:-use_module( '../utility/utility', [ aggregate/3, doubt/2, out/1, output/1, writelist/1 ]).     %% Keep local: ,  set_of/3
 
-%:- ensure_loaded( '../main.pl' ). %%, [ (=>)/2, reset/0, traceprint/2 ] ).
-:- use_module( '../main.pl', [ reset/0, traceprint/2 ] ). %% RS-140209 hei/0,   run/0, norsource_prefix/0 
-:- use_module( '../tucbuses', [ language/1 ]).  %RS-140101 % Common File for tucbus  (english) and  tucbuss (norwegian)
+:- use_module( '../utility/utility', [ aggregate/3, writelist/1 ]).  %% RS-131117 includes declare.pl language/1,
+:- use_module( '../utility/writeout', [ doubt/2, language/1, out/1, output/1 ] ).%% RS-140912
 
-%%% RS-111205, UNIT: tuc/
-:- use_module( facts, [ have/4, isa/2 ]). %% RS-131225
-:- use_module( '../tuc/fernando', [ subclass0/2 ] ).
-:- use_module( semantic , [ ako/2, testclass/1 ] ). %% RS-131228
-:- use_module( slash, [ def/1 ] ). %% RS-131228
+:- use_module( '../main.pl', [ reset/0, traceprint/2 ] ). %% RS-140209 [ (=>)/2, reset/0, traceprint/2 ] Why is => in translat.pl ?! RS-140927
+%:-use_module( '../tucbuses', [ ] ).  %RS-140101 % Common File for tucbus  (english) and  tucbuss (norwegian), language/1
+
 %% RS-131227    UNIT: tuc/
+%:- use_module( lex, [ ] ).          % lcode1/2  is called in the for-predicate (etc.) %% RS-131225
+:- use_module( facts, [ fact/1, difact/1, have/4, isa/2 ]). % , isa/2  %% RS-140210
+%:- use_module( fernando, [ ] ).
+:- use_module( semantic , [ ako/2, subclass0/2, testclass/1 ] ). %% RS-131228
 :- use_module( translat, [ testquant/3 ] ).  %% RS-131231
 
 %%% RS-111205, UNIT: app/
+%:-use_module('../app/pragma', [ ] ).      %%RS-131228     pragma/3 etc. loaded in interapp!
 :- use_module('../app/interapp', [ ieval/1 ]). %% RS-131231
-%:- ensure_loaded('../app/pragma').      %%RS-131228     pragma/3 etc. loaded in interapp!
 
 
 evaluateq2(nil):-!. 
@@ -128,10 +123,6 @@ evaluateq(nil).  %% In case queryflag =: true, only nil is produced as TQL.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-difact(F):-     %difact/1 (based on temporary difact/2 values)
-    user:value(context_id,UID),
-    user:difact(UID,F).
 
 update_focus(_):- %% TA-020228
     user:value(queryflag,true),
@@ -274,33 +265,10 @@ dialog_referent(X,C) :-
     difact(X isa C). 
 
 
-rule(N,Y):- 
+rule(N,Y) :- 
    leveltest(N,N1),
    user:( X => Y), 
    qev(N1,X).
-
-%% Hierarchy of facts 
- 
-fact(X):-               %  Predefined interpretations 
-    user:value(deflag,true), % AD HOC FLAG  %% DEF IS  FOR COMMANDS
-    nonvar(X),                         %% John shows a car \= command
-    X=Y/_,
-    nonvar(Y),
- 
-    def X .   
-
-fact(X):- user:fact0(X).     %  Semi permanent
-
-fact(X):- difact(X).    %  Dynamic Discourse facts 
-
-fact(X isa Y):- !,      %  Default type definitions
-     X isa Y .   
-
-
-fact(event/real/now):-              %% TA-010913
-    \+ user:fact0(event/_/_).                    %% To allow 
-                                    %% Is john a man ?
-                                    %% before any event has taken place
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

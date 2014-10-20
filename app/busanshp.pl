@@ -1,7 +1,7 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE busanshp.pl     hovedprogram?
 %% SYSTEM BUSTUC/BUSTER
-%% CREATED  JB-970220   REVISED  EH-031120 TA-110503 RS-111025 RS-120402 RS-131224
+%% CREATED  JB-970220   REVISED  EH-031120 TA-110503 RS-111025 RS-120402 RS-131224 RS-140928
 %% REVISED  RS-140101 modularized
 
 %%%%%%%%% COMMON VERSION BUSTER/BUSTUC  %%%%%%%%%%%%%%%
@@ -19,32 +19,33 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% UNIT: /app/
 :-module( busanshp, [   bcp/1,          bcw/2,          bcpbc/1,        %% bcw: bcpbc = basic common phrase big cap     
-        bwr/1,          bwt/1,          %% For bustrans->interapp->pragma "x-WRiters"
-        bigcap/2,       busleave/9,     busleaveset/6,  busman/2,
+        bwr/1,          bwt/1,          bigcap/2,       busleave/9,     busleaveset/6,  busman/2, %% For bustrans->interapp->pragma "x-WRiters"
         bw1/1,          bwc/2,          bwq/1,          bwr2bc/1,       bwrbus/2,    bwrbusbc/2,     bwrprices/1,
         bwstat2/2,      bwt2/1,         bwtimes2/1,     comma/0,        comptimeflag/2, comptimeflag/3, convifpossible/2,       corresporder/3,
-        db_reply/3,     doublyprinted/1,                description/2,  empty_sms_message/1,            endline/0,
-        evening_time/2, evening_time0/2,                evening_time24/3,            earliesttimes/0,
-        find_last_departure/2,          findsetoftimes/2,               firstRID/2,  getlastarrival/3,
-        gootrace/1,     google/1,       i_or_a_bus/3,   make_total_google/2,         mixopt/3,       memberids/3, %% For utility.pl
+        db_reply/3,     doublyprinted/1, empty_sms_message/1,           endline/0,      %% RS-140922 description/2,
+        evening_time/2, evening_time0/2, evening_time24/3,              earliesttimes/0,
+        find_last_departure/2,          findsetoftimes/2,               firstRID/2,     getlastarrival/3,
+        gootrace/1,     google/1,       i_or_a_bus/3,   mixopt/3,       memberids/3, %% For utility.pl
         nibcp/1,        nopay/0,        nopay1/0,       notatnight/2,   numberofnextbuses/1,            numberofnextbuses2/2,
-        ondate/1,       ondays/1,       ordinal2/3,     outandarrives2/2,        outdeplist/6,       outdummy/2,        outfromtocorr/6,
-        outstreetconn/3,                paraph2/1,      paraphrase_changes1/1,       paraphrase_tele/2,
-        paraphrase/1,        paraphrase3/3,             pay/0,          pen0/1,      period/0,
-        plural/3,        primeoutput/1,        
-        printmessage/1, print_paraphrase_message/1,     punkt/0,        printmessageunconditionally/1,   %% REMOVES EVERYTHINBG! printmessageunconditionally/1,
+        ondate/1,       ondays/1,       ordinal2/3,     outandarrives2/2, outdeplist/6, outdummy/2,     outfromtocorr/6,
+        outstreetconn/3,                paraph2/1,      paraphrase_changes1/1,          paraphrase_tele/2,
+        paraphrase/1,   paraphrase2/2,  paraphrase3/3,  pay/0,          pen0/1,         period/0,       plural/3, prent0/1, primeoutput/1,
+        printmessage/1, print_paraphrase_message/1,     punkt/0,        printmessageunconditionally/1,   %% pmu/1 REMOVED EVERYTHING! RS-xxxxxx
         question/0,     relevant_message/1,             reply/1,        ridof/2,
         select/2,       sentenceend/1,  setopt/3,       setopts/3,      smart_time_options/1,           sorttimes/4,
         space/0,       space0/0,       special_day/1,  specname0/2,    standnight/1,   startmark/0,    stationlistorand/3,
-        theplural/2,    time_options/1, warningtime/2,  writetimes/2
-] ).
+        theplural/2,    time_options/1, warningtime/2,  writetimes/2,
+
+        %FOR DIALOG
+        addrefdialog/2, bwrbc/1, colon/0, writefield1/1, writename/1  ] ). % , writevaluelist2/2 in parseres.pl  %% RS-140927
 
 %% META-PREDICATES
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%:- meta_predicate make_total_google( 0, ? ) .   %% RS-140617
-:- meta_predicate totaljsonprint( +, 0 ) .      %% RS-140617
-:- meta_predicate extractbing( +, 0, ?, ? ) .   %% RS-140617
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% "local" META-PREDICATES (copied from utility.pl)
+%:- meta_predicate  test(0).
+%test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 %% Version Based On the principle that the GoogleMapInfo is printed out
 
@@ -52,224 +53,64 @@
 %% RS-131225    UNIT: / and /utility/
 :- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
 
-:- use_module( '../utility/utility' ). %%, [ ] ). %, [ := /2, for/2,  nth/3, etc. ] ).
-%:- use_module('../utility/utility'). %% RS-131223 sequence_member etc. [ append_atomlist/2, append_atoms/3,...]
+:- use_module( library( aggregate ), [ forall/2 ] ) .
+
+%:- use_module( telelog , [  bound/1,  unbound/1 ]). --> utility.pl
+:- use_module( '../utility/utility', [ append_atomlist/2, bound/1, delete1/3, deleteall/3, firstmem/2, fnuttify2/2, internalkonst/1, lastmem/2, lastmems/3,  % for/2, language/1, 
+        maximum/2, maxval/3, members/3, minimum/2, minval/3, nth/3, number_to_string/2, occ/2, % doubt/2, out/1, output/1, roundwrite/1, % writeout 
+        set_filter/4, set_of/3, set_ops/3, set_union/3, split/4, test/1, testmember/2, unbound/1 ] ). %%, [ ] ). %, [ := /2, for/2,  nth/3, etc. ] ). %% RS-140914 test/1, & set_of set_ops/3(LOOP?),
+                        % follow_sequence/3, once1/1, roundmember/2, occ/2, sequence_member/2,
 :-use_module( '../utility/datecalc', [ add_days/3, addtotime/3, before_date1/2, difftime/3, sub_days/3, subfromtime/3, timenow/1, timenow2/2, today/1, todaysdate/1 ] ).
 :-use_module( '../utility/library', [ reverse/2 ] ).         %% RS-131225 nth/3 moved to utility
+:-use_module( '../utility/writeout', [ doubt/2, language/1, out/1, output/1, roundwrite/1 ] ).
+%% RS-140921 To split utility.pl into managable modules: , prettyprint/1, sequence_write/1, writepred/1
+%% occ/2, once1/1, sequence_member/2,  moved to interapp --> With append_atoms/3, station_trace/4, 
+
 %%UNIT: /
-:-use_module( '../main', [ progtrace/2 ] ).  %% RS-140209
-:- use_module( '../tucbuses', [ dict_module/1, language/1 ] ).
+:- use_module( '../main', [ progtrace/2 ] ).  %% RS-140209
+%:- use_module( '../tucbuses', [ dict_module/1 ] ). % , language/1
 
     %% RS-131225    UNIT: /app/
-:- use_module( buslog, [ airbus_module/1, busorfree/1, cname/2, ensure_removed/3, internalkonst/1, islist/1, keepafter/3, members/3 ] ).
-:- use_module( buslog, [ nextdep/3, passeq/6, passMOD/7, rid_to_direction/3, ridtobusname/2, ridtobusnr/2, station_trace/4, veh_mod/1 ] ).
+:- use_module( buslog, [ airbus_module/1, busorfree/1, cname/2, ensure_removed/3, islist/1, keepafter/3,
+                         nextdep/3, passeq/6, passMOD/7, rid_to_direction/3, ridtobusname/2, ridtobusnr/2, veh_mod/1 ] ).
 :- use_module( dmeq, [  dmeq/2 ]). %% RS-131231
+:- use_module( pragma, [  roundmember/2 ] ).
 :- use_module( interapp, [  newfree/1 ] ).
-:- use_module( telelog , [  bound/1,  unbound/1 ]).
-
 
 %% RS-131225    UNIT: / and /db/               %% RS-120816 statcoord? corr/2, ?
 :- use_module( '../interfaceroute', [ current_period/4, decide_period/2 ] ). %% RS-140210 from topreg.pl
 
 :- use_module( '../db/busdat', [ cutloop_station/2, exbusname/2, home_town/1, maxnumberofindividualdepartures/1, moneyunit/1, vehicletype/2 ] ).
 :- use_module( '../db/places',  [ corr/2, short_specname/2, specname/2 ] ). %% RS-131231
-:- use_module( '../db/regstr' ). %% RS-131224 streetstat/5 %% Why must this happen in user: module?
-:- use_module( '../db/statcoord2' ). %% RS-120816 statcoord
-:- use_module( '../db/timedat'). %% RS-131226    morning_break etc.
+:- use_module( '../db/regstr', [ streetstat/5 ] ). %% RS-131224 streetstat/5 %% Why must this happen in user: module?
+:- use_module( '../db/timedat', [ defaultprewarningtime/1, kindofday/2, morning_break/1 ] ). %% RS-131226-140928
 :- use_module( '../db/topreg', [ default_message/3, default_period/3, period_message/2 ] ). %% RS-131226 
+
+%% RS-131225    UNIT: tuc/
+%:- use_module( '../tuc/dict_n', [ ] ).         %% RS-131223 sequence_member etc.?
+%:- use_module( '../tuc/evaluate', [ ] ).          %% RS-131225
+:- use_module( '../tuc/facts', [ isa/2, neighbourhood/1 ]). %% RS-131225 fact/1, 
+%:- use_module( '../tuc/fernando', [  ] ). % subclass0/2
+:- use_module( '../tuc/lex', [ dict_module/1, known_name/1 ] ).  %  TUCs  Lexical Knowledge Base. To writeout.pl:  language/1
+:- use_module( '../tuc/semantic', [ subclass0/2 ] ).  %  TUCs  Lexical Semantic Knowledge Base
 
 %% RS-131225    UNIT: dialog/
 :- use_module( '../dialog/frames2', [ frame_getvalue_rec/4 ] ). %% RS-131223 etc? getcurrent/1, sequence_member/2
-%:- ensure_loaded( '../dialog/frames2' ). %%, [ frame_getvalue_rec/4 ] ). %% RS-131223 etc? getcurrent/1, sequence_member/2
-:- use_module( '../dialog/newcontext2' ). %%, [ addref/3, getcurrent/1 ] ). %% RS-131223 INCLUDED IN FRAMES2!!
-%:- ensure_loaded( '../dialog/newcontext2' ). %%, [ addref/3, getcurrent/1 ] ). %% RS-131223 INCLUDED IN FRAMES2!!
-:- use_module( '../dialog/parseres').    %% RS-131223  ldaptotuc/2
-
-%% RS-131225    UNIT: tuc/
-:- use_module('../tuc/dict_n').         %% RS-131223 sequence_member etc.?
-:- use_module( '../tuc/evaluate', [ fact/1 ] ).          %% RS-131225
-:- use_module( '../tuc/facts', [ isa/2, neighbourhood/1 ]). %% RS-131225
-:- use_module( '../tuc/fernando', [ subclass0/2 ] ).
-:- use_module( '../tuc/lex', [ known_name/1  ] ).  %  TUCs  Lexical Knowledge Base
-:- use_module( '../tuc/semantic', [ ako/2  ] ).  %  TUCs  Lexical Semantic Knowledge Base
+:- use_module( '../dialog/newcontext2', [ addref/3, getcurrent/1 ] ). %% RS-131223 INCLUDED IN FRAMES2!!
+:- use_module( '../dialog/parseres', [ ldaptotuc/2 ] ).    %% RS-131223  ldaptotuc/2
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% "locale" META-PREDICATES (copied from utility.pl)
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate  test(0).
-test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate  for(0,0).  
-for( P, Q ) :- %% For all P, do Q (with part of P)
-  P, Q,
-  false;true.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 gootrace(B2) :-
     (user:value(mapflag,true) -> output(B2);true). %% RS-131230 Fra utility.pl
 
 
-
 %
-google(_B):-true. %% Just executable mark in busans
+google(_B) :- true. %% Just executable mark in busans
 
 outstreetconn(_STARTSTOP,_INTSTREET,_INTSTAT). %% Just marker in busans code
 %
-
-
-
-make_total_google( AnswerOut,  TOTAL ):-
-
-    extractbing( outstreetconn(start,Y9,_ND),AnswerOut, Y9,START ),   %% street coord unk
-     
-    extractbing( outstreetconn(stop,STAD,_RSK),AnswerOut,STAD,STOP ), %% street coord unk
-
-    extractbing( google(U),AnswerOut,U,Bang ), %% google is just an executable mark in busans
-
-    googlemaptrace( Bang,  BusTrace),
-
-    convert_int_street(START,EY9),
-    convert_int_street(STOP,ESTAD),
-
-    makestreetelement('"streetaddress"','"start"',st(0,EY9),START1),
-
-    makestreetelement('"streetaddress"','"stop"',st(0,ESTAD),STOP1),
-
-    append([START1],BusTrace,SBANG),
-    append(SBANG,[STOP1],TOTAL),
-
-    (user:value(mapflag,true) -> totaljsonprint( TOTAL,AnswerOut ) ; true).
-
-totaljsonprint( TOTAL, AnswerOut ):-
-    write('{'),nl,
-    write('"route" :'),nl,
-    prettyjsonprint( TOTAL ),
-    write(','),nl,
-    write('"busstuc" :'),nl,
-    write('"'),
-    call( AnswerOut ),
-      write('"'),
-    nl,
-    write('}'),nl.
-
-
-googlemaptrace(nil,[]):-!. %% no route
-
-
-googlemaptrace(W,Bingo):-
-     maptrace(W,dual(List1,List2)),
-     enterexit(List1,Bing1),
-     enterexit(List2,Bing2),
-
-     append(Bing1,Bing2,Bingo),
-     !.
-
-
-
-
-
-extractbing(U,V,X,W) :- sequence_member(U,V),!,W=X.     %% sequence_member is from utility.pl
-extractbing(_U,_V, nil,nil).
-
-
-prettyjsonprint(Bingo):-
-    write('['),nl,
-    jsonbody(Bingo),
-    write(']'),nl.
-
-
-jsonbody([X]):- !,write(X),nl. %% last
-jsonbody([X|Y]):- !,write(X),write(','),nl, %% last
-    jsonbody(Y).
-
-
-
-enterexit([],[]):-!. %% direct
-
-enterexit([X|Rest],[B1|Brest]):-!,
-    makelement('"busstop"','"enter"',X,B1),
-    enterexit1(Rest,Brest).
-
-
- enterexit1([X],[B1]):-
-    !,
-    makelement('"busstop"','"exit"',X,B1).
-
-
-enterexit1([X|Rest],[B1|Bingrest]):-
-    !,
-    makelement('"busstop"','"pass"',X,B1),
-    enterexit1(Rest,Bingrest).
-
-enterexit1([],[]):-!. %% abnormal
-
-makestreetelement(Type,Role,st(_STATNO,Intname),{'"name"':NIntname2,'"type"':Type,'"role"':Role}):-
-     nullify(Intname,NIntname),
-          !,
-    fnuttify2(NIntname,NIntname2).      %% from utility.pl
-
-
-makelement(Type,Role,st(STATNO,Intname),{'"name"':NExtname2,'"type"':Type,'"nr"':STATNO,'"role"':Role,'"xcoord"':NXcoord,'"ycoord"':NYcoord}):-
-
-    xstatcoord(STATNO, Intname,Extname, Xcoord,Ycoord),
-
-
-    nullify(Extname,NExtname),
-    nullify(Xcoord,NXcoord),
-    nullify(Ycoord,NYcoord),
-
-    !,
-    fnuttify2(NExtname,NExtname2). %% utility
-
-nullify(0,'"null"'):-!.
-nullify(nil,null):-!. %% will be fnuttified
-nullify(X,X):-!.
-
-
-
-
-xstatcoord(STATNO, _Intname,Extname, Xcoord,Ycoord):-
-    statcoord(STATNO,Extname, Xcoord,Ycoord),
-    !.
-
-
-xstatcoord(_STATNO, Intname,Extname, Xcoord,Ycoord):- %% NB Missing station in direction,
-    veh_mod(CurrMod),                            %% try other side of street
-    CurrMod:hpl(STATNO,Intname,_,Extname),        %% e.g Bjarne Næss veg
-    statcoord(STATNO,_Extname, Xcoord,Ycoord),
-    !.
-
-
-xstatcoord(_Num0, Intname,Intname, 0,0). %% NB Missing station in direction,
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-maptrace( dir(depnode(_,_,_,_,_,Rid,_,_,Gløshaugen_syd),Nardosenteret),dual(LIST,[])):-
-    !,
-    xstation_trace(Rid,Gløshaugen_syd,Nardosenteret,LIST).
-
-
-maptrace( corr(depans(_,Rid1,_,Prinsen_kinosenter,_,_Rid2,_,Gløshaugen_nord), %% Special, dummy corr-> direct
-               nil),dual(List1,[])):-
-    !,
-    xstation_trace(Rid1,Prinsen_kinosenter,Gløshaugen_nord,List1). %% TA-110323
-
-
-maptrace( corr(depans(_,Rid1,_,Prinsen_kinosenter,_,Rid2,_,Gløshaugen_nord),
-               midans(_,_,Studentersamfundet_1,_,_,Studentersamfundet_2)),dual(List1,List2)):-
-
-    xstation_trace(Rid1,Prinsen_kinosenter,   Studentersamfundet_1, List1), %% TA-110323
-    xstation_trace(Rid2,Studentersamfundet_2, Gløshaugen_nord,      List2). %%
-
-
-xstation_trace(Rid,Gløshaugen_syd,Nardosenteret,LIST):-
-    station_trace(Rid,Gløshaugen_syd,Nardosenteret,LIST),!.
-
-xstation_trace(_Rid,_Gløshaugen_syd,_Nardosenteret,[]). %% error berg_studentby-> lerkendal_gård
-
 
 
 selectmap(nil,[]):-!.      %% was var (not assigned)
@@ -306,8 +147,7 @@ outfromtocorr(Opts,Dep,OutDep,Mid01,OutAns,MAP):- %% TA-110511
 % % % %
 
 
-
-%%%  OUTDEPLIST1
+%%%  OUTDEPLIST1 mm.
 
 %% RS-120402 Problematic BusApp: twonotrans <breaks here on "til lade"> twowithtrans
 outdeplist00(Deps,_Day,_Opts,_DirPlace,true,_,_SmartDeps) :-   %% Pre caution
@@ -324,8 +164,6 @@ outdeplist00(Deps,Day,Opts,DirPlace,Out,MAP,SmartDeps) :-
                                   %% maybe irrelevant because connections failed
                                   %% -> negans
 
-
-
 outdeplist01(Deps,Day,Opts,DirPlace,Out,MAP,SmartDeps) :-   % neste =< N avganger etter tidspunkt
          delete1(nextaftertime(N),Opts,Opts1),   %% nextaftertime(1) is default (unspecified), sms-dependent
          !,
@@ -339,87 +177,133 @@ outdeplist01(Deps,Day,Opts,DirPlace,Out,MAP,SmartDeps) :-
     outdeplist02(Deps,Day,Opts,DirPlace,Out,MAP,SmartDeps).
 
 
-outdeplist02(Deps,Day,Opts,DirPlace,Out,MAP,SmartDeps) :-
-    outdeplist1(Deps,Day,Opts,DirPlace,Out,MAP,SmartDeps).
-
-
-print_smart_init(Opts) :-
-    user:value(smartdepflag,true),
-    !,
-    comptimeflag(Opts,Trans,TF),
-
-    write('{"transfer":'),out(Trans),output(','),       % out/1 is from utility.pl
-    write('"timeset":'),out(TF),output(','),
-
-    output('"departures" : [').
-
-print_smart_init(_Opts).
-
-
-comptimeflag(Opts,Trans,Timeset):-
-
-    bollepling(member(transfer,Opts),Trans),
-    bollepling(smart_time_options(Opts),Timeset).
-
-comptimeflag(_Opts,'"false"').
-
-
-bollepling(Test,Trans) :-
-    call(Test),
-    !,
-    Trans='"true"'.
-
-bollepling(_Test,'"false"').
-
-
-smart_time_options(Opts):-
-    member(Opt,Opts),
-    smart_time_option(Opt),
-    !.
-
-smart_time_option(timeset).
-smart_time_option(time).  %% Means that a time has been set, avoid default after now
-smart_time_option(last(_)).
-smart_time_option(prev(_)).
-smart_time_option(lastcorr).
-smart_time_option(nextaftertime(_)).
-
-smart_time_option(nth(N)) :-N >1. %% første = nth(1) innocent   %% nth/1 is from utility.pl
-
-%%  smart_time_option(first(_)).
-%%  smart_time_option(next(_)).
-%%  smart_time_option(first).
-
-
-
-print_smart_trail:- user:value(smartdepflag,true) ->  output(']}');true.
-
-
-
-
-decide_actual_noid3(N,Opts,NActual) :- %% ad hoc %% TA-101022
-     member(nth(M),Opts),  %% in nth (M)>N, may need M
-     !,
-     maxval(M,N,K),        % utility.pl
-     decide_actual_noid(K,NActual).
-
-decide_actual_noid3(N,_Opts,NActual) :- %% TA-101022
-    decide_actual_noid(N,NActual).
-
-
-
-sort_deps_deptime(L,L1):-
-     set_of(  pair(DEP,depnode(ARR,DEP,DA,DD,STT,RID,BUS,SEQNO,STA)),
-            member(    depnode(ARR,DEP,DA,DD,STT,RID,BUS,SEQNO,STA), L),
-            Z),
-     transdeplist(Z,L1).
-
-transdeplist([pair(_,E)|L],[E|L1]):-
-    transdeplist(L,L1).
-transdeplist([],[]).
-
-
 %%% OUTDEPLIST1 %%%%%%%
+:- meta_predicate  outdeplist1( ?, ?, ?, ?, ?, -, ? ) .         %% RS-140927
+
+
+%%%%% outdeplisttime  first/next/last (where adequate) %%%%%%%%%%%%
+%%%%% E.g. "next bus after now" is not applicable if not today?? %% RS-120813
+%%%%%                 ---------------                  %%%%%%%%%%%%
+
+%%% OUTDEPLISTTIME %% TIME %%%%%
+:- meta_predicate  outdeplisttime(  ?, ?, ?, ?, ?, -, ? ) .         %% RS-140927
+:- meta_predicate  outdeplisttime1( ?, ?, ?, ?, ?, -, ? ) .         %% RS-140927
+
+outdeplisttime( [], _Day, _Opts, _DirPlace, true, _MAP, [] ) :- !.
+
+outdeplisttime(Deps,Day,Opts,DirPlace,OutDep,MAP,SmartDeps):-
+    progtrace(3,Deps), %% trace , %% 3  Temp %% RS-120814   %% DEBUG %%
+    firstdepnotices(Deps),      %% Warn if first dep has already left!
+    outdeplisttime1(Deps,Day,Opts,DirPlace,OutDep,MAP,SmartDeps).        %% MW-120829 %% Maybe good place to add JSON?
+
+
+
+outdeponly(Dep,DirPlace,
+                                (bwrbusbc(Bus,BusN),bcp(passes),
+                                 bwr(Station),bcp(attime),bwt(Time9),OutArr,period),dir(Dep,FINAL),Smartdep_entry) :-
+
+         Dep = depnode(_Time0,Time9,_DelArr,DelDep,BegTime,Rid,BusN,_,Station),
+         ridtobusname(Rid,BusN),   %% 
+    vehicletype(BusN,Bus),
+         (\+ user:value(dialog, 1),!
+          ;
+          getcurrent(Cid),
+          addref(Cid, Rid,lastrid)
+    ),
+
+    outandarrivesonly(Station,Time9,DirPlace,Rid,BegTime,DelDep,ARRIVALTIME,OutArr,FINAL),
+
+    %% Duration is ARRIVALTIME-Time9, %%zip, %% MW-120906 first and last JSON format
+    difftime(ARRIVALTIME, Time9, Duration), %% MW-121003 %% Correct duration time
+    create_smartdep_entry2(Station,Time9,Duration,Rid, DirPlace ,  Smartdep_entry). %% TA-110505
+
+    %% print_smartdep_entry(Smartdep_entry). %% MW-120917 %% print out in outdeplist02, avoid side effects
+
+
+outdeplisttime1( [Dep], _Day, _, DirPlace, OutDep, MAP, [SmartDeps] ) :-
+         !,
+    nonvar(Dep), %% Security Check, serious error
+    outdeponly(Dep,DirPlace,OutDep,MAP,SmartDeps).
+
+
+outdeplisttime1(Deps,_Day,Opts,DirPlace,(OutFirst,OutNext,OutLast), MAP,SmartDeps) :-
+    user:value(nightbusflag,true),
+    !,
+         outdepfirst(Deps,DirPlace,TimeF,OutFirst, MAP,Smartdep_entry_first),
+
+         outdeplast(Deps,DirPlace,TimeL,OutLast,Smartdep_entry_last),
+    outdepnext(Deps,Opts,TimeF,TimeL,DirPlace,OutNext, _NAP,Smartdep_entry_next), %%  - Day
+    (Smartdep_entry_next \== [] -> SmartDeps = [Smartdep_entry_first,Smartdep_entry_next,Smartdep_entry_last];
+    true),
+    SmartDeps = [Smartdep_entry_first,Smartdep_entry_last]. 
+
+
+outdeplisttime1(Deps,_Day,Opts,DirPlace,(OutNext,OutLast), MAP,_SmartDeps) :-
+    user:value(nightbusflag,true),
+    user:value(smsflag,true),
+    timenow(MN), MN < 400,   %% Next nightbus RELEVANT
+    !,
+    outdepnext(Deps,Opts,_TimeF,TimeL,DirPlace,OutNext, MAP,_Smartdep_entry_next),  %% .. no first?
+
+         outdeplast(Deps,DirPlace,TimeL,OutLast,_Smartdep_entry_last).
+
+
+outdeplisttime1(Deps,_Day,Opts,DirPlace,Out,MAP,_SmartDeps) :-
+    user:value(nightbusflag,true),
+    user:value(smsflag,true),     %% Next nightbus IRRELEVANT
+    !,
+    maxnumberofindividualdepartures(MNID), %% Extra check
+    memberids(MNID,Deps,Deps4), %% there may be many if unrestricted
+    justoutputthelist0(Deps4,DirPlace,Out,Opts,MAP,_Smartdeps).
+    %%print_smartdep_entries(SmartDeps)
+    %% Few anyway, dont miss any
+                                              %% 0  no warning
+
+outdeplisttime1(Deps,_Day,_Opts,DirPlace,(OutFirst,OutLast), MAP,_SmartDeps) :-
+    user:value(smsflag,true),
+ \+ user:value(nightbusflag,true),
+         outdepfirst(Deps,DirPlace,_TimeF,OutFirst,MAP,_Smartdep_entry_first),
+         outdeplast(Deps,DirPlace,_TimeL,OutLast,_Smartdep_entry_last).
+
+%% Only TWO deps (Past departures ignored)
+outdeplisttime1(Deps,Day,Opts,DirPlace,(OutNext,OutLast),MAP,SmartDeps) :-
+ \+ user:value(smsflag,true),
+ \+ user:value(nightbusflag,true),
+ \+ anotherday(Day),
+    !,
+    outdepnext(Deps,Opts,_,TimeL,DirPlace,OutNext,MAP,Smartdep_entry_next), %% <--- NEI, ikke 9999
+         outdeplast(Deps,DirPlace,TimeL,OutLast,Smartdep_entry_last),
+         SmartDeps = [Smartdep_entry_next,Smartdep_entry_last].
+
+
+outdeplisttime1(Deps,Day,Opts,DirPlace,(OutFirst,OutNext,OutLast), MAP,SmartDeps) :-
+ \+ user:value(smsflag,true),
+ \+ user:value(nightbusflag,true),
+    outdepfirst(Deps,DirPlace,TimeF,OutFirst,MAP,Smartdep_entry_first),      %% MW-120917    %% Insert SmartDeps
+                                                                        %% MW-120829
+         outdeplast(Deps,DirPlace,TimeL,OutLast,Smartdep_entry_last),
+         SmartDeps = [Smartdep_entry_first,Smartdep_entry_last],
+         (\+ anotherday(Day) -> %% Next departure is irrelevant if not today !!! %%RS-120813
+          outdepnext(Deps,Opts,TimeF,TimeL,DirPlace,OutNext,_NAP,Smartdep_entry_next),    %%  -Day
+          SmartDeps = [Smartdep_entry_first,Smartdep_entry_next,Smartdep_entry_last];      %% MW-121003
+          OutNext=true).
+
+%outdeplisttime1(Deps,_Day,Opts,DirPlace,(OutFirst,OutNext,OutLast), MAP) :-
+% \+ user:value(smsflag,true),
+% \+ user:value(nightbusflag,true),
+%    outdepfirst(Deps,DirPlace,TimeF,OutFirst,MAP),
+%         outdeplast(Deps,DirPlace,TimeL,OutLast),
+% %%      (\+ anotherday(Day) -> %% Next departure is irrelevant if not today !!! %%RS-120813
+%          outdepnext(Deps,Opts,TimeF,TimeL,DirPlace,OutNext,_NAP)   .  %%  ; %%  -Day
+% %%         OutNext=true).
+
+
+
+%%
+
+
+outdeplist02( Deps, Day, Opts, DirPlace, Out, MAP, SmartDeps ) :-
+    outdeplist1(Deps,Day,Opts, DirPlace, Out, MAP, SmartDeps ).
 
 
 outdeplist1(Deps,Day,Opts,DirPlace,Out,MAP,SmartDeps) :-
@@ -444,7 +328,7 @@ outdeplist1(Deps,_Day,Opts,_Place,Out1Out2,  [Dep1,Dep2],_SmartDeps) :-
 
 
 
-outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :-   % Nte siste avgang
+outdeplist1( Deps, Day, Opts, DirPlace, ( ( Out, earliesttimes ) ), MAP, SmartDeps ) :-   % Nte siste avgang
          member(nth(N),Opts),
          member(last(1),Opts),
     !,
@@ -549,7 +433,7 @@ outdeplist1(Deps0,Day,Opts,DirPlace,(OutFirst), MAP,_SmartDeps) :- % første/nes
     morning_break(T0430),
     keepafter(T0430,Deps0,Deps)), %% Night routes are excluded !!!
          firstdepnotices(Deps),
-         memberids(1,Deps,FirstDeps1),
+         memberids( 1, Deps, FirstDeps1 ),
 
     outdepfirst(FirstDeps1,DirPlace,_TimeF,OutFirst, MAP,_Smartdep_entry_first).
 
@@ -600,14 +484,13 @@ outdeplist1(Deps0,Day,Opts,DirPlace,(OutFirst,OutNext,earliesttimes), MAP,_Smart
 
     outdepnext(NextDeps,Opts,TimeF,_TimeL,DirPlace,OutNext, _NAP,_Smartdep_entry_next). %% NB calls timenow again!
 
-
-outdeplist1(Deps,Day,Opts,DirPlace,Out,MAP,SmartDeps) :-   % første N avganger
-         delete1(first(N),Opts,Opts1),
+outdeplist1( Deps, Day, Opts, DirPlace, Out, MAP, SmartDeps ) :-   % første N avganger
+         delete1( first(N), Opts, Opts1 ),
     !,
     progtrace(4,case16),
-    deleteall(first,Opts1,Opts2),           % just a flag
-         memberids0(N,Deps,FirstDeps),
-    outdeplist1(FirstDeps,Day,[time|Opts2],DirPlace,Out,MAP,SmartDeps).
+    deleteall( first, Opts1, Opts2 ),           % just a flag
+         memberids0( N, Deps, FirstDeps ),
+    outdeplist1( FirstDeps, Day, [time|Opts2], DirPlace, Out, MAP, SmartDeps).
 
 
 outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :-   % n'te avgang
@@ -742,6 +625,84 @@ first_dep([D|_],D):-!.
 first_dep(_,[]).
 
 %% END OUTDEPLIST1  %%%%%
+
+
+
+print_smart_init(Opts) :-
+    user:value(smartdepflag,true),
+    !,
+    comptimeflag(Opts,Trans,TF),
+
+    write('{"transfer":'),out(Trans),output(','),       % out/1 is from utility.pl
+    write('"timeset":'),out(TF),output(','),
+
+    output('"departures" : [').
+
+print_smart_init(_Opts).
+
+
+:- meta_predicate  bollepling( 0, ? ) .         %% RS-140927
+
+comptimeflag(Opts,Trans,Timeset):-
+
+    bollepling( member(transfer,Opts), Trans ),
+    bollepling( smart_time_options(Opts), Timeset ).
+
+comptimeflag(_Opts,'"false"').
+
+bollepling( Test, Trans ) :-
+    call( Test ),
+    !,
+    Trans='"true"'.
+
+bollepling(_Test,'"false"').
+
+
+smart_time_options(Opts):-
+    member(Opt,Opts),
+    smart_time_option(Opt),
+    !.
+
+smart_time_option(timeset).
+smart_time_option(time).  %% Means that a time has been set, avoid default after now
+smart_time_option(last(_)).
+smart_time_option(prev(_)).
+smart_time_option(lastcorr).
+smart_time_option(nextaftertime(_)).
+
+smart_time_option(nth(N)) :-N >1. %% første = nth(1) innocent   %% nth/1 is from utility.pl
+
+%%  smart_time_option(first(_)).
+%%  smart_time_option(next(_)).
+%%  smart_time_option(first).
+
+
+
+print_smart_trail:- user:value(smartdepflag,true) ->  output(']}');true.
+
+
+
+
+decide_actual_noid3(N,Opts,NActual) :- %% ad hoc %% TA-101022
+     member(nth(M),Opts),  %% in nth (M)>N, may need M
+     !,
+     maxval(M,N,K),        % utility.pl
+     decide_actual_noid(K,NActual).
+
+decide_actual_noid3(N,_Opts,NActual) :- %% TA-101022
+    decide_actual_noid(N,NActual).
+
+
+
+sort_deps_deptime(L,L1):-
+     set_of(  pair(DEP,depnode(ARR,DEP,DA,DD,STT,RID,BUS,SEQNO,STA)),
+            member(    depnode(ARR,DEP,DA,DD,STT,RID,BUS,SEQNO,STA), L),
+            Z),
+     transdeplist(Z,L1).
+
+transdeplist([pair(_,E)|L],[E|L1]):-
+    transdeplist(L,L1).
+transdeplist([],[]).
 
 
 
@@ -1014,12 +975,11 @@ memberids0(N,Deps1,Deps1):-
     N=<0,
     !.
 
-memberids0(N,Deps1,Deps2):-
-    members(N,Deps1,Deps2).
+memberids0( N, Deps1, Deps2 ) :-
+    members( N, Deps1, Deps2 ).
 
-memberids(N,Deps1,Deps2):-
-    members(N,Deps1,Deps2).
-
+memberids( N, Deps1, Deps2 ) :-
+    members( N, Deps1, Deps2 ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1200,126 +1160,13 @@ computewarningtime(Date0,Time0,_PreMin,Date0,Time0). %% Ad Hoc
 
 
 
-
-%%%%% outdeplisttime  first/next/last (where adequate) %%%%%%%%%%%%
-%%%%% E.g. "next bus after now" is not applicable if not today?? %% RS-120813
-%%%%%                 ---------------                  %%%%%%%%%%%%
-outdeplisttime([],_Day,_Opts,_DirPlace,true,_MAP,[]) :- !.
-
-outdeplisttime(Deps,Day,Opts,DirPlace,OutDep,MAP,SmartDeps):-
-    progtrace(3,Deps), %% trace , %% 3  Temp %% RS-120814   %% DEBUG %%
-    firstdepnotices(Deps),      %% Warn if first dep has already left!
-    outdeplisttime1(Deps,Day,Opts,DirPlace,OutDep,MAP,SmartDeps).        %% MW-120829 %% Maybe good place to add JSON?
-
-
-
-outdeplisttime1([Dep],_Day,_,DirPlace,OutDep,MAP,[SmartDeps]):-
-         !,
-    nonvar(Dep), %% Security Check, serious error
-    outdeponly(Dep,DirPlace,OutDep,MAP,SmartDeps).
-
-
-outdeplisttime1(Deps,_Day,Opts,DirPlace,(OutFirst,OutNext,OutLast), MAP,SmartDeps) :-
-    user:value(nightbusflag,true),
-    !,
-         outdepfirst(Deps,DirPlace,TimeF,OutFirst, MAP,Smartdep_entry_first),
-
-         outdeplast(Deps,DirPlace,TimeL,OutLast,Smartdep_entry_last),
-    outdepnext(Deps,Opts,TimeF,TimeL,DirPlace,OutNext, _NAP,Smartdep_entry_next), %%  - Day
-    (Smartdep_entry_next \== [] -> SmartDeps = [Smartdep_entry_first,Smartdep_entry_next,Smartdep_entry_last];
-    true),
-    SmartDeps = [Smartdep_entry_first,Smartdep_entry_last]. 
-
-
-outdeplisttime1(Deps,_Day,Opts,DirPlace,(OutNext,OutLast), MAP,_SmartDeps) :-
-    user:value(nightbusflag,true),
-    user:value(smsflag,true),
-    timenow(MN), MN < 400,   %% Next nightbus RELEVANT
-    !,
-    outdepnext(Deps,Opts,_TimeF,TimeL,DirPlace,OutNext, MAP,_Smartdep_entry_next),  %% .. no first?
-
-         outdeplast(Deps,DirPlace,TimeL,OutLast,_Smartdep_entry_last).
-
-
-outdeplisttime1(Deps,_Day,Opts,DirPlace,Out,MAP,_SmartDeps) :-
-    user:value(nightbusflag,true),
-    user:value(smsflag,true),     %% Next nightbus IRRELEVANT
-    !,
-    maxnumberofindividualdepartures(MNID), %% Extra check
-    memberids(MNID,Deps,Deps4), %% there may be many if unrestricted
-    justoutputthelist0(Deps4,DirPlace,Out,Opts,MAP,_Smartdeps).
-    %%print_smartdep_entries(SmartDeps)
-    %% Few anyway, dont miss any
-                                              %% 0  no warning
-
-outdeplisttime1(Deps,_Day,_Opts,DirPlace,(OutFirst,OutLast), MAP,_SmartDeps) :-
-    user:value(smsflag,true),
- \+ user:value(nightbusflag,true),
-         outdepfirst(Deps,DirPlace,_TimeF,OutFirst,MAP,_Smartdep_entry_first),
-         outdeplast(Deps,DirPlace,_TimeL,OutLast,_Smartdep_entry_last).
-
-%% Only TWO deps (Past departures ignored)
-outdeplisttime1(Deps,Day,Opts,DirPlace,(OutNext,OutLast),MAP,SmartDeps) :-
- \+ user:value(smsflag,true),
- \+ user:value(nightbusflag,true),
- \+ anotherday(Day),
-    !,
-    outdepnext(Deps,Opts,_,TimeL,DirPlace,OutNext,MAP,Smartdep_entry_next), %% <--- NEI, ikke 9999
-         outdeplast(Deps,DirPlace,TimeL,OutLast,Smartdep_entry_last),
-         SmartDeps = [Smartdep_entry_next,Smartdep_entry_last].
-
-
-outdeplisttime1(Deps,Day,Opts,DirPlace,(OutFirst,OutNext,OutLast), MAP,SmartDeps) :-
- \+ user:value(smsflag,true),
- \+ user:value(nightbusflag,true),
-    outdepfirst(Deps,DirPlace,TimeF,OutFirst,MAP,Smartdep_entry_first),      %% MW-120917    %% Insert SmartDeps
-                                                                        %% MW-120829
-         outdeplast(Deps,DirPlace,TimeL,OutLast,Smartdep_entry_last),
-         SmartDeps = [Smartdep_entry_first,Smartdep_entry_last],
-         (\+ anotherday(Day) -> %% Next departure is irrelevant if not today !!! %%RS-120813
-          outdepnext(Deps,Opts,TimeF,TimeL,DirPlace,OutNext,_NAP,Smartdep_entry_next),    %%  -Day
-          SmartDeps = [Smartdep_entry_first,Smartdep_entry_next,Smartdep_entry_last];      %% MW-121003
-          OutNext=true).
-
-%outdeplisttime1(Deps,_Day,Opts,DirPlace,(OutFirst,OutNext,OutLast), MAP) :-
-% \+ user:value(smsflag,true),
-% \+ user:value(nightbusflag,true),
-%    outdepfirst(Deps,DirPlace,TimeF,OutFirst,MAP),
-%         outdeplast(Deps,DirPlace,TimeL,OutLast),
-% %%      (\+ anotherday(Day) -> %% Next departure is irrelevant if not today !!! %%RS-120813
-%          outdepnext(Deps,Opts,TimeF,TimeL,DirPlace,OutNext,_NAP)   .  %%  ; %%  -Day
-% %%         OutNext=true).
-
-
-
-%%
-
-
-outdeponly(Dep,DirPlace,
-                                (bwrbusbc(Bus,BusN),bcp(passes),
-                                 bwr(Station),bcp(attime),bwt(Time9),OutArr,period),dir(Dep,FINAL),Smartdep_entry) :-
-
-         Dep = depnode(_Time0,Time9,_DelArr,DelDep,BegTime,Rid,BusN,_,Station),
-         ridtobusname(Rid,BusN),   %% 
-    vehicletype(BusN,Bus),
-         (\+ user:value(dialog, 1),!
-          ;
-          getcurrent(Cid),
-          addref(Cid, Rid,lastrid)
-    ),
-
-    outandarrivesonly(Station,Time9,DirPlace,Rid,BegTime,DelDep,ARRIVALTIME,OutArr,FINAL),
-
-    %% Duration is ARRIVALTIME-Time9, %%zip, %% MW-120906 first and last JSON format
-    difftime(ARRIVALTIME, Time9, Duration), %% MW-121003 %% Correct duration time
-    create_smartdep_entry2(Station,Time9,Duration,Rid, DirPlace ,  Smartdep_entry). %% TA-110505
-
-    %% print_smartdep_entry(Smartdep_entry). %% MW-120917 %% print out in outdeplist02, avoid side effects
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% bingo(G) :- nl,out('<'),output(G),call(G),out(G),output('>').
+
+%% TA-110801
+:-meta_predicate  setoffirst( ?, 0, ? ) .  %% Only the first in the setof... %% RS-140927
+setoffirst( X, P, Z ) :- !, setof( X, P, Z ).  %%  63 Skansen DG-19 Asbjgt DG-50
 
 
 %% If to but not from in Options , means arrival time
@@ -1337,10 +1184,6 @@ busleaveset(BusN1,Station1,Deps,DirPlace,Opts,   TimeDurations) :-
 
 %% Default
 
-%% TA-110801
-
-setoffirst(X,P,Z):-!,setof(X,P,Z).  %%  63 Skansen DG-19 Asbjgt DG-50
-
 %%                                                                 added late arrival
 /* Cuts all after 1.
 
@@ -1356,9 +1199,9 @@ setoffirst(X,P,[Z1]) :- setof(X,P,Z),  firstmem(Z,Z1).
 */
 
 
-busleave(Xopt,Time09, Rid1, BusN1,Station1,Duration,Deps,DirPlace,ToStation) :-
+busleave( Xopt, Time09, Rid1, BusN1, Station1, Duration, Deps, DirPlace, ToStation ) :-
 
-        member(depnode(Time0,Time9,_DelArr1,DelDep1,_,Rid1,BusN1,_,Station1),Deps),
+        member( depnode(Time0,Time9,_DelArr1,DelDep1,_,Rid1,BusN1,_,Station1), Deps ),
 
    (Xopt == to -> Time09=Time0; Time09=Time9),
 
@@ -2268,14 +2111,14 @@ printmess1(webstatistics) :-
 
     output('DATE            SMS  TOTAL'),
     nl,
-    for( interapp:webstat( date(Year,Month,Day),SMS,TOT ),     %% RS-131230 See utility.pl for/2
+    forall( interapp:webstat( date(Year,Month,Day),SMS,TOT ),     %% RS-131230 See utility.pl for/2
        ( write(Year),write('-'),write(Month),write('-'),write(Day),out('      '),out(SMS),out('  '),out(TOT),nl ) ),
     nl.
 
 
 
 
-printmess1(numberof(N,day)) :-
+printmess1( numberof(N,day) ) :-
      out(N), doubt(days,dager),period.             %% RS-131230 See utility.pl doubt/2
 
 
@@ -2355,8 +2198,8 @@ printmess1(dateis(Year,Month,DayNr,Day)):-
          period.
 
 
-printmess1(otherperiod(_Date)):-
-    user:value(airbusflag,true),
+printmess1( otherperiod(_Date) ) :-
+    user:value( airbusflag, true ),
     !,
     airbus_module(FB),
     write_mess_off(FB).
@@ -3816,22 +3659,7 @@ xspecname(TMN_S,S):-
 specname0(S0,S):- specname(S0,S),!.
 specname0(S0,S):- bigcap(S0,S).
 
-ordinal2( X, Y, Z ) :- dict_module(D), D:ordinal2(X,Y,Z) .
-
-
-description(thing,tao):-!.
-
-description(date(_,_,_),date):-!.
-
-description(X,Z):-
-    X ako Z,
-    !.
-
-description(X,Z):-
-    fact(X isa Z),
-    !.
-
-description(_,unknown).
+ordinal2( X, Y, Z ) :- dict_module( D ), D:ordinal2( X, Y, Z ) .
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -4053,10 +3881,10 @@ paraphrase_tele(_Prog,_L):-    %% Pro forma, open dir outout file
 
 
 
-write_relevant_messages(Prog):-
-    for(
-        roundmember(message(X),Prog),
-       (relevant_message(X) -> printmessageunconditionally(X)
+write_relevant_messages( Prog ):-
+    forall(
+        roundmember( message(X), Prog ),
+       ( relevant_message(X) -> printmessageunconditionally(X)
                              ; true)).
 
 relevant_message(nearest_station(_,_,_)). %% this before .. You will go
@@ -4075,7 +3903,7 @@ relevant_message(noroutesto(_)).
 paraphrase_changes([]):-!.
 
 paraphrase_changes(X):-
-    \+ roundmember(frame_setvalue(_,_),X),         %% utility.pl?
+    \+ roundmember(frames2:frame_setvalue(_,_),X),         %% utility.pl?
     !.
 
 
@@ -4125,7 +3953,7 @@ paraph_list1([X]):-
 
 paraph_list1([X|L]):-
     paraph1(X),
-    for( member(Y,L),paraph2(Y)).
+    forall( member(Y,L),paraph2(Y)).
 
 
 
@@ -4603,29 +4431,6 @@ uppercase(229,197).
 
 %%% bwrstreet(yggdrasil_street-9) ?   -> Yggdrasilvegen 9
 
-convert_int_street(Y-N,EY9) :-
-
-    once1(streetstat(Y,YY,_,_,_)),
-    !,
-    append_atoms(YY,' ',YYB), %% NB   append_atoms ' ' + 9 = 9
-    append_atoms(YYB,N,EY9).    %% from utility.pl
-
-
-convert_int_street(Y-N,EY9):- %% Unknown
-    !,
-    append_atoms(Y,' ',YYB),
-    append_atoms(YYB,N,EY9).    
-
-convert_int_street(Y,YY):- %% No Number
-    once1(streetstat(Y,YY,_,_,_)),
-    !.
-
-
-convert_int_street(_,nil):- %% Missing/Unknown
-    !.
-
-
-
 
 bwrstreet(X-N) :- bwr(X),write(N),space,!.
 bwrstreet(X)   :- bwr(X).
@@ -4898,7 +4703,7 @@ portionlist(List):-
     bwr(Z).
 
 ramses(List):-
-   for(member(E,List),(bwr(E),write(', '))).
+   forall(member(E,List),(bwr(E),write(', '))).
 
 
 
@@ -4984,10 +4789,9 @@ startmark :- nl.
 %                    maximum/2,         maxval/3,
 %                    minimum/2,         minval/3,
 %                    number_to_string/2,
-%                    user:once1/1,           out/1,                  output/1,
+%                    user:once1/1,      out/1,                  output/1,
 %                    roundmember/2,     roundwrite/1,
-%                    sequence_member/2, set/2,                  set_of/3,       (set_ops)/3,
-%                    set_filter/4,      set_union/3,            split/4,
+%                    sequence_member/2, set/2,                  set_of/3,       (set_ops)/3,  set_filter/4,  set_union/3,  split/4,
 %                    test/1,            testmember/2,           user:value/2,        (:=)/2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% where?            addref/1,          for/3,

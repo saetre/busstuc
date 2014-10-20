@@ -6,24 +6,38 @@
 %Defines (through translat.pl):
 %            ( def )/1,
 
-:-module(slash, [
-        def/1
-]).
+:-module( slash, [ def/1, description/2 ] ).    %% RS-140922    Moved from busanshp
 
 %%% RS-111205, UNIT: /
 :- ensure_loaded( user:'../declare' ).
 
+%% RS-131225    UNIT: utility/
+:- use_module( '../utility/writeout', [ out/1 ]). %%RS-131224 %% RS-140915
+
 %%% RS-111205, UNIT: app/
-:- use_module( '../app/busanshp', [ description/2 ] ).          %% RS-131225
+%:- use_module( '../app/busanshp', [  ] ).          %% RS-131225 description/2
 
 %%% RS-111205, UNIT: /tuc/
-:- use_module( facts, [ have/4 ]). %% RS-131225
-:- use_module( semantic, [ iv_templ/2, tv_templ/3 ]).    %  TUCs  Lexical Semantic Knowledge Base
-:- use_module( evaluate, [ fact/1, fakt/1, valof/2 ] ).          %% RS-131225
-:- use_module( world0, [ borders/2, containsX/4 ] ).          %% RS-131225
+:- use_module( evaluate, [ fakt/1, valof/2 ] ).         %% RS-131225
+:- use_module( facts, [ fact/1, have/4 ]).              %% RS-140921
+:- use_module( semantic, [ ako/2, iv_templ/2, tv_templ/3 ]).   %  TUCs  Lexical Semantic Knowledge Base
+:- use_module( world0, [ borders/2, containsX/4 ] ).    %% RS-131225
 
-%% RS-131225    UNIT: utility/
-%:- ensure_loaded( '../utility/utility' ). %%, [ out/1 ]). %%RS-131224
+description(thing,tao):-!.
+
+description(date(_,_,_),date):-!.
+
+description(X,Z):-
+    X ako Z,
+    !.
+
+description(X,Z):-
+    fact(X isa Z),
+    !.
+
+description(_,unknown).
+
+
 
 %% Definition of facts / 
 %% Not removed by reset
@@ -70,7 +84,7 @@ def srel/in/place/X/Y :-  %% TA-980619
     fakt(srel/P/place/X/Y),
     member(P,[in,at,on]).
 
-def write/tuc/A/_ :- user:out(A).  %% TA-971218         From xxx.pl?
+def write/tuc/A/_ :- out(A).  %% TA-971218         From xxx.pl?
 %%%%%% Prototypical external connection %%%%%%
 
 def flow/R/flows(R). 
@@ -123,7 +137,7 @@ def nrel/in/Country/Continent/Norway/Europe :-
 
 def describe/tuc/X/_ :- 
     description(X,Y),    %% turbo.pl
-    user:out(Y).
+    out(Y).
 
 def exceed/X/Y/_ :-
     valof(X,X1),    %% evaluate.pl
@@ -147,9 +161,9 @@ def intransitive/V/_:-
 def knowthing/John/K/S :-                                  
     fact(know/id/that/John/K/S).  
 
-def list/tuc/X/_ :- user:out(X).
-def give/tuc/X/_ :- user:out(X).
-def show/tuc/X/_ :- user:out(X).
+def list/tuc/X/_ :- out(X).
+def give/tuc/X/_ :- out(X).
+def show/tuc/X/_ :- out(X).
 
 %% def srel/to/person/ I /_  :- !. %% TA-081110 
                          

@@ -6,17 +6,28 @@
 
 % Transregler for teledomenet
 
-:- module(tele,[]).
+:- module( teletrans, [ rule/2, tracevalue/1 ] ).
 
 
 :- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
 %:- ensure_loaded( user:'../app/pragma' ). %% RS-111213 Pragmatic (rule) Operators
 :- use_module( '../app/pragma', [] ). %% RS-140207 Pragmatic (rule) Operators
 
+:- op( 725, fy,addcon).     %% add if not already present 
+
+:- op( 715, fy,add).
+:- op( 715, fy,addfront).   %% (for messages etc) 
+:- op( 715, fy,exactly). 
+:- op( 715, fy,present).
+:- op( 715, fy,replaceall). %% replace iteratively all elements 
+:- op( 715,xfy,with).
+:- op( 715, fy,remove).
+
+:- op( 714,xfy,cond).    %% new   not X isa place cond bound(X)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-tracevalue(L) :- value(traceprog,L).  % Trace level 1-6
+tracevalue(L) :- user:value(traceprog,L).  % Trace level 1-6
 
 
 %% Rule format

@@ -5,9 +5,8 @@
 %% REVISED  RS-140101 modularized
 
 %%  Read a sentence into a list of symbols
-:-module( readin, [ alpha/3, ask_file/1, ask_user/1, read_in/1, readoneline/1, words/3,
-        alphanum/2, alphanums/3, digits/3, readrestquote/3
-] ).  %% RS-131227 For ...main.pl
+:-module( readin, [ alpha/3, alphanum/2, alphanums/3, ask_file/1, ask_user/1, digits/3, norsource_postfix/0, norsource_prefix/0, 
+                    read_in/1, readoneline/1, words/3, readrestquote/3 ] ).  %% RS-131227 For ...main.pl
 
 
 %%  A sentence must be ended by a terminator ?.!  
@@ -16,18 +15,19 @@
 %% SCANDINAVIAN LETTERS [\] {|} NO LONGER
 
 %% comma (',') is neglected 
-%% content of parentheses is neglected (nam)
+%% content of parentheses is neglected (name) ?
 
 %% RS-131225, UNIT: /   and /utility/
-:- ensure_loaded( user:'../declare' ).  %% RS-140102 (:=)/2, user:value/2 
-:- use_module( '../utility/utility', [ output/1, splitlast/3 ] ).  %% RS-131225 etc?
+:- ensure_loaded( user:'../declare' ).  %% RS-140102 (:=)/2, user:value/2
+:- ensure_loaded( user:'../tucbuses' ). % , [ prompt/1 ] ). %% RS-131229-140928 NOT A MODULE (any more, after all...)
+
 :- use_module( '../utility/library', [ ] ).    %% RS-131225 etc?
+:- use_module( '../utility/utility', [ splitlast/3 ] ).  %% RS-131225 etc?
+:- use_module( '../utility/writeout', [ output/1 ] ).  %% RS-140921
 
 :- use_module( '../sicstus4compatibility', [ get0/1, ttyflush/0 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
-%:- ensure_loaded( user:'../main' ). %%, [ norsource_prefix/0 ] ).  %% RS-131229
-:- use_module( '../main.pl', [ norsource_prefix/0 ] ). %% RS-140209 hei/0,   run/0 
-:- use_module( '../tucbuses', [ prompt/1 ] ).            %% RS-131229
+%:- use_module( '../main.pl', [ norsource_prefix/0 ] ). %% RS-140209 hei/0,   run/0     %% RS-141002 DON'T !! (LOOP!) 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -44,14 +44,14 @@
 ask_user(P) :- !, 
    ttyflush,
    nl,
-   prompt(E), %% Defined in Makefile  
+   user:prompt(E), %% Defined in Makefile  
    write_prompt(E), %% TA-110207
    read_in(P),
    write_from_user(P).
 
 ask_file(P) :-      
    nl,
-   prompt(E), %% Defined in Makefile  
+   user:prompt(E), %% Defined in Makefile  
 
    write_prompt(E), %% TA-110207
    read_in(P),
@@ -76,8 +76,16 @@ write_from_user(P):-
 
 write_from_user(_):-!.
 
+norsource_prefix :- %% TA-110207
+    user:value( norsource, true ) ->
+    output( '<bustuc>' ) ; true.
 
-write_from_file(P):- %% TA-110207
+norsource_postfix :- %% TA-110207
+    user:value(norsource,true) ->
+    (output('</bustuc>'),nl);true.
+
+
+write_from_file( P ) :- %% TA-110207
    user:value(norsource,true),
    !,
 

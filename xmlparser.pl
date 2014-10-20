@@ -3,13 +3,13 @@
 %% CREATED  TA-020617
 %% REVISED  TA-020624
 
-:-module( xmlparser, [
-        xmlrowparse/2,
-        xmltaggerparse/2
-] ).
+:-module( xmlparser, [ xmlrowparse/2, xmltaggerparse/2 ] ).
+
+:-use_module( 'utility/writeout', [ output/1 ] ).
+
+:-use_module( main, [ scanfile/2 ] ).
 
 xmltaggerparse(F,Struct):-
-
                             output('scan'),output(F),
     
     scanfile(F,List),

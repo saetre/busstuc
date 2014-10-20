@@ -4,23 +4,19 @@
 %% CREATED TA-010919
 %% REVISED TA-110408
 
-%% UNIT: /utility/
-%% USAGE:
-%%:-use_module('utility/datecalc', [ off_valid_period/3,  on_valid_period/3,   todaysdate/1, weekday/2  ]).
-
 % Contains the utility predicates that has to do with dates
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% RS-131225 for makeauxtables, busanshp.pl (and others?)
+%% UNIT: /utility/,     RS-140914
 :-module( datecalc, [   add_days/3,     addtotime/3,    before_date1/2, 
         datetime/6,     dayname/2,      dayno/2,        datestring/1,   timestring/1,   %% RS-131225    For app/buslog?
         days_between/3, daysucc/2,      difftime/3,     finddate/2,     findfirstcomingdate/2,          getdaynew/1,        month_name/2,
         easterdate/2,   isday/1,        inttime/2,      number_of_days_between/3,               off_valid_period/3,         on_valid_period/3, %% How to use this?
         sub_days/3,     subfromtime/3,  this_year/1,    timenow/1,      timenow2/2,     
-        today/1, todaysdate/1,   valid_date/1,   weeknumber/2,         xweekday/2
+        today/1,        todaysdate/1,   valid_date/1,   weekday/2,      weeknumber/2,         xweekday/2
 ] ).
- %% RS-140210 For app/buslog, app/pragma (, etc? )
 
-:-use_module( utility ). %RS-131223 Includes ?-compile( user:'declare.pl' ).
+%% UNIT: /utility/
+%:-use_module( utility, [ coerce2d/2, concat_atomlist/2 ] ). %RS-131223 Includes ?-compile( user:'declare.pl' ).
 
 %UNIT: External
 :-use_module( library(system), [ datime/1 ] ).       %% get the date (for metacomp headers, for example
@@ -29,9 +25,8 @@
 %:-use_module( '../app/buslog', [ today/1] ).       %% get the date (for metacomp headers, for example
 
 %UNIT: /db/
-:-use_module( '../db/busdat', [ clock_delay/3 ] ).       %% get the date (for metacomp headers, for example
-%%:- ensure_loaded( '../db/timedat' ). %, [ clock_delay/3 ] ). %% RS-120803 %% Use buslog.pl instead!
-:-use_module( '../db/timedat', [ named_date/2 ]).       %%  EASTER DATES AND OTHERS %% RS-131225
+%:-use_module( '../db/busdat', [ clock_delay/3 ] ).       %% get the date (for metacomp headers, for example
+:-use_module( '../db/timedat', [ clock_delay/3, named_date/2 ]).       %%  EASTER DATES AND OTHERS %% RS-131225
 
 
 %% Rule:  A week must have at least has  4 days to count as a week
@@ -221,7 +216,7 @@ valid_date(date(YYYY,MM,DD)):-
    
    
 
-%% New Predicate, relies on busdat.pl
+%% New Predicate, relies on busdat.pl ?
 
 /**
 xweekday(Date,HDay):- 
@@ -320,6 +315,49 @@ dayno(sunday,7).
 
 %% End of  Import
 
+coerce2d([X|Y],[X1|Z]):-
+    coerc2d(X,X1),  
+    coerce2d(Y,Z).
+coerce2d([],[]).
+
+%% Prolog is really stupid here
+
+%% number to fixed length character sequence
+
+coerc2d(D,DD)  :- 
+    number(D),
+    !,
+    name(D,KLIST),
+    code_chars2(KLIST,Clist),
+    concat_atomlist(Clist,DD).
+
+code_chars2(KLIST,Clist):-
+   code_chars(KLIST,DD),
+   (
+   DD=[D1] -> Clist= ['0',D1];
+              Clist=DD
+   ).
+
+code_chars([X|Y],[X1|Y1]):- %% ad hoc   8 -> 08, ellers likt
+    char_code(X1,X), %% nb
+    code_chars(Y,Y1).     
+
+code_chars([],[]).
+
+
+
+concat_atomlist([X1|Y],Z):-
+    concat_atomlist(Y,Y1),
+    atom_concat(X1,Y1,Z).
+concat_atomlist([],'').
+
+concat_atomlist([A],A):-!. 
+concat_atomlist([A,B],C):-!,
+    atom_concat(A,B,C).
+concat_atomlist([A|B],C):-
+    concat_atomlist(B,B1),
+    atom_concat(A,B1,C).
+
 
 
 
@@ -332,15 +370,15 @@ getdaynew(DayOfWeek):- %%   // Get rid of exec call
      weekday(date(Year,Month,Day), DayOfWeek). %% weekday.pl
 
 
+this_year(YYYY):-
+    datetime(YYYY,_B,_C,_D,_E,_F).
+
+
 datetime(YYYY,MM,DD,HH,MIN,SEC):- 
     datime(datime(YYY,M,D,H,Min,Sec)), %% built_in %% Min Sec  stay the same
 
     convert_zone(YYY, M, D, H, Min,Sec, %% TA-080407
                  YYYY,MM,DD,HH, MIN,SEC).
-
-this_year(YYYY):-
-    datetime(YYYY,_B,_C,_D,_E,_F).
-
 
 % Prolog is really awkard here
 
@@ -350,7 +388,7 @@ convert_zone(YYY, M, D, H,Min,Sec,   YYY,M,D,H,Min,Sec):- %% TA-080407
 
 convert_zone(YYY, M, D, H,Min,Sec,
              YYYY,MM,DD,HH,Min,Sec):-
-    busdat:clock_delay(0,0,0), %% <--- %% New %% TA-080407
+    clock_delay(0,0,0), %% <--- %% New %% TA-080407
     !,
     YYY=YYYY, %% classic trap ! %% TA-060101
     M=MM,

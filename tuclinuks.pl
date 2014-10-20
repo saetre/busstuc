@@ -5,6 +5,10 @@
 
 % Initiation file for BusstUC on Linux 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% RS-131227    UNIT: / (FIRST!)
+:- ensure_loaded( user:'declare' ). %% RS-111213  General (semantic) Operators
+
 :-use_module( tucbuses ). % Both languages are compiled
 
 :-  (unix_language := nor).    %% Installation language for  unix

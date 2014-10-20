@@ -345,7 +345,7 @@ set_of(X,Y,Z):-           %%
 
 
 initread(U):-
-     get0(K1), 
+     get_code(K1), 
 	  (K1 == -1 -> % 
       U= end_of_file;
       readrestline(K1,U)).
@@ -355,7 +355,7 @@ readrestline(T,[]):-
     !.
 	
 readrestline(K,[K|U]):-
-    get0(K1), % blanks, comments (evt returns CR)
+    get_code(K1), % blanks, comments (evt returns CR)
     readrestline(K1,U).
 
 firstlist(N,[K|Y],[K|Z],Rest):-

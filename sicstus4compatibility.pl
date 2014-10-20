@@ -7,9 +7,9 @@
 
 %% Sicstus 4 compatibility
 
-%% append/3  %% built in Sicstus 4 (library.pl)
+%% append/3  %% built-in Sicstus 4 (library.pl)
 
-%% member/2  %% built in Sicstus 4 (library.pl)   
+%% member/2  %% built-in Sicstus 4 (library.pl)   
 
 %%built in Sicstus 4 (library.pl), but doesn't really work in sicstusProlog!!
 %% remove_duplicates  Standard  -> library
@@ -31,7 +31,7 @@ get(G) :- get_code(F),
           ;
           G=10.
 
-get0(G) :-get_code(G). %% TA-070809
+get0(G) :- get_code(G). %% TA-070809
 
 put(G) :- put_code(G). %%
 

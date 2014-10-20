@@ -7,10 +7,8 @@
 %% Create regcut files for modules
 
 %% For main.pl, dict_e, dict_n, ...? moved to declare.pl
-:-module( extracut, [  %% RS-130411 For compilation of new routes (extract reg-Cuts...)  %% RS-131225 For ....pl
-       create_regcut/1, ex_cutloop_rid/7, ex_cutloop_trace/3, ex_departureday/4, ex_ntourstops/2, ex_passes4/6, 
-       mod_cut_rid/8, pax/4, whattoget/7
-] ).
+ % RS-130411 For compilation of new routes (extract reg-Cuts...)  %% RS-131225 For ....pl
+:-module( extracut, [ create_regcut/1, ex_cutloop_rid/7, ex_cutloop_trace/3, ex_departureday/4, ex_ntourstops/2, ex_passes4/6, mod_cut_rid/8, pax/4, whattoget/7 ] ).
 
 /*
 cutloop_trace(Station,Trace1,Trace2)),
@@ -30,12 +28,13 @@ Program is run in same directory as busestuc (or in the utility folder below?)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RS-140411    UNIT: / (FIRST!)
-%%:- ensure_loaded( user:'../declare' ). %% RS-111213  General (semantic) Operators
-:- ensure_loaded( '../declare' ). %% RS-111213  General (semantic) Operators AND  remember/1, etc.
+:- ensure_loaded( user:'../declare' ). %% RS-111213  General (semantic) Operators, %% RS-140914 AND  remember/1, etc. Included in utility
+%remember(X) :- user:remember(X).
 
 %% UNIT: / and /utility/*
-%:-ensure_loaded( user:utility).
-:-use_module( '../utility/utility.pl', [ append_atomlist/2, output/1 ] ). %RS-131223
+:- use_module( '../utility/utility.pl', [ append_atomlist/2, for/2 ] ). %RS-131223 ensures_loaded( user:'../declare' )
+:- use_module( '../utility/writeout', [ output/1 ] ).%% RS-140912
+
 :-use_module( '../utility/datecalc', [ addtotime/3, difftime/3 ] ).
 
 
@@ -43,6 +42,16 @@ Program is run in same directory as busestuc (or in the utility folder below?)
 :- use_module('../db/busdat', [cutloop_station/2]). %% cutloop_station
 %:-use_module( '../app/buslog', [ bus/1 ] ).               %% RS-130210
 
+
+:-volatile ex_cutloop_rid/7,    %% RS-140914 Is it safe to make these volatile (not written to disk? with save_program?)
+          ex_cutloop_trace/3,
+
+          ex_departureday/4,
+          ex_ntourstops/2,
+          ex_passes4/6,
+
+          pax/4,
+          xi/2.
 
 :-dynamic ex_cutloop_rid/7,
           ex_cutloop_trace/3,
@@ -111,9 +120,9 @@ tellmodule(Module,File):- %% TA-110315
 
 %% RS-140211 META-PREDICATE from utility.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-for( P, Q ) :- %% For all P, do Q (with part of P)
-  P, Q,  false ;
-  true.
+%for( P, Q ) :- %% For all P, do Q (with part of P)
+%  P, Q,  false ;
+%  true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

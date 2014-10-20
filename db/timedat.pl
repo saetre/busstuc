@@ -6,42 +6,40 @@
 %% REVISED TA-110207    RS-130327
 
 %% Time data for bus routes in general
-:-module(timedat, [ after_morning/1, aroundmargin/1, before_morning/1, buslogtimeout/1, create_named_dates/0, dedicated_date/1, 
+:-module( timedat, [ after_morning/1, aroundmargin/1, before_morning/1, buslogtimeout/1, clock_delay/3, create_named_dates/0, dedicated_date/1, 
                     %% Dedicated Date Example 22.10 not clock if 22.10 is date of new route tables
         defaultprewarningtime/1, delay_margin/1, kindofday/2, maxarrivalslack/1,      % unacceptably long  exchange waitingtime
         maxtraveltime/1,        %% 100 MINUTES in Trondheim %% fra Vestlia til Jonsvatnet kl. 14.30? %%  1258 ->  1430
-        morning_break/1,        %% When does morning start?
-        named_date/2,        orig_named_date/2,      softime/3               %% These times are implicit and shall not be VERIFIED in answers
-]).
+        morning_break/1,        named_date/2,        orig_named_date/2,      softime/3               %% These times are implicit and shall not be VERIFIED in answers
+        %% When does morning start?
+] ).
 
 % Domains:   BOOLEAN ROUTETYPE STATION PLACE MINUTES
 %            DATE DAY DOMAIN CLOCK
 
 :- ensure_loaded( user:'../declare' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
-%:-use_module( '../utility/utility', [ for/2 ] ).  %% , remember/1  used in for-loop.
+:- use_module( '../utility/utility', [ remember/1 ] ).  %%  used in forall instead of utility:for/2. % Moved to declare.pl
 :- use_module( '../utility/datecalc.pl', [ add_days/3, easterdate/2, sub_days/3, this_year/1, todaysdate/1 ]).  %% RS-121325 Contains the utility predicates that has to do with dates
+:- use_module( '../utility/writeout.pl', [ output/1 ] ).
 
 %% :-use_module( '../utility/library.pl' ).        %% for: uses orig_named_date %% KISS %% RS-131230
+:-use_module( library(aggregate), [ forall/2 ] ).        %% for: uses orig_named_date %% KISS %% RS-140914
 
 %% List of predicates
 :-volatile named_date/2. %% Created Initially, not stored in save_program
 :-dynamic named_date/2. %% Created Initially,  redefined with remember(day_map) below
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate for(:,:).
-
-for(P,Q):-
-  P,Q,
-  false;true.
-
 create_named_dates :-
     list_of_named_dates(L), 
-    for( ( member(A,L), orig_named_date(A,B) ),
-         user:remember( named_date(A,B) )
-       ). %% To be     refined
+    forall( ( member(A,L), orig_named_date(A,B) ),
+          remember( named_date(A,B) )          % remember( timedat:named_date(A,B) )
+       ), %% To be     refined
+    verify_movedates. % verify_dates (that change every year)
 
 
 %%%%%%%  TIME  SECTION %%%%%%%%%%%%%%%%%
+
+clock_delay(00,00,00). %%  FOR ABNORMAL SERVER TIME ERROR, CLOCK ADJUSTMENT
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % BEGIN  CRITICAL SECTION 
@@ -49,6 +47,7 @@ create_named_dates :-
 
 % DATES THAT MUST BE CHECKED ON EACH NEW ROUTE PLAN
 
+                            
 
 % orig_named_date is defined here, and later recreated as named_date
 
@@ -312,6 +311,66 @@ kindofday(easterhol,easterhol).
 %%%%%%%%% END OF TIME  SECTION %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+%% FILE consistent_dates.pl
+%% SYSTEM BUSSTUC
+%% CREATED TA-050504
+%% REVISED TA-050504
+
+%% Verify that all movable holidays are included, and internally consistent
+verify_movedates :-
+   ver_movedate,
+   !;
+   (nl,output('***** The moving holidays are inconsistent *****'),nl).
+
+
+%VERIFY
+ver_movedate :-    %% Added check for May17 %% TA-100106
+
+   this_year(YYYY),
+
+   easterdate(YYYY, Easterday ),
+   named_date(easterday, Easterday ),
+
+   sub_days( Easterday,1,Eastereve),
+   named_date(eastereve,Eastereve),
+
+
+   sub_days( Easterday,2,Good_friday),
+   named_date(good_friday,Good_friday),
+
+   sub_days( Easterday,3,Maundy_thursday),
+   named_date(maundy_thursday,Maundy_thursday),
+
+
+   sub_days( Easterday,7,Palm_sunday),  
+   named_date(palm_sunday,  Palm_sunday),
+
+
+   add_days( Easterday,1,Easterday2), 
+
+   named_date(easterday2,Easterday2),
+
+   add_days(Easterday,39,Ascension_day), %% TA-080107 % Bibl. 40th
+
+   named_date(ascension_day,Ascension_day),
+
+% If Ascension day falls on May1, then daycode is sunday anyway %% TA-080108
+% If Ascension day falls on May17, then daycode is not Sunday
+
+    named_date(may17,May17),   
+
+(  Ascension_day = May17 -> _Sunday=holiday ; _Sunday=sunday),
+
+
+   add_days(Easterday,48,      Whitsun_eve), %% TA-080108
+   named_date(whitsun_eve,Whitsun_eve),
+
+   add_days(Easterday,49,Whitsun_day), %% Bibl 50, Pentecost
+   named_date(whitsun_day,Whitsun_day).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% END OF consistent_dates.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

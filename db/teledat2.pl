@@ -5,19 +5,18 @@
 %% REVISED TA-110825
 
 
-%% File containing TELEDAT 
-%% co-existing with BUSDAT
-% UNIT: /db/ % USAGE:
-% :-use_module( 'db/teledat2', [ has_att_val/4, teledbtagfile/1, etc. ] ). %% RS-140101
-:-module(teledat2, [ building/1, bustopic1/1, expandkey/2, has_att_valx/6, has_att_val/4, have_att_val/4, hazard_tagname/1, is_dom_val/5, ldaptotucplace/2,
+%% File containing TELEDAT ,    %% co-existing with BUSDAT
+% UNIT: /db/
+:-module( teledat2, [ building/1, bustopic1/1, expandkey/2, has_att_valx/6, has_att_val/4, have_att_val/4, hazard_tagname/1, is_dom_val/5, ldaptotucplace/2,
         legal_tagname/1,        lookupdb2/3,            possible_dom/2,       printdbresult/1,          setoftags/2,   %perform_querycall/2, %% Missing select/4
         tablename/1,            teledbrowfile/1,        teledbtagfile/1,      teleprocessdirect/4,      teletopic1/1,           unwanted_dbname/1
 ] ).
 
 %% RS-111205, UNIT: utility
 :- ensure_loaded( user:'../declare' ). %% Import has_a operator        %% RS-130624
-:- use_module( '../utility/utility', [ append_atomlist/2, absorb/3, doubt/2, matchinitchars/3, output/1 ] ).
 :- use_module( '../utility/library', [ remove_duplicates/2 ]). %% TEMPORARY non-FIX!
+:- use_module( '../utility/utility', [ append_atomlist/2, absorb/3, matchinitchars/3 ] ).
+:- use_module( '../utility/writeout', [ doubt/2, output/1 ] ).%% RS-140912
 
 :- ensure_loaded( user:'../version' ). %% Import has_a operator        %% RS-130624
 
@@ -471,7 +470,7 @@ standardselect([*]).
 
 
 
-teleprocessdirect(AddSelect,Table,Wherelist,Results):-
+teleprocessdirect( AddSelect,Table,Wherelist,Results ) :-
 
     standardselect(Stan),
 

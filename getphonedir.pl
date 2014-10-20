@@ -9,8 +9,7 @@
 %:-use_module( 'getphonedir.pl', [  get_db_rows_direct/2, etc. ] ). %% Get LDAP phone info from NTNU
 :-module( getphonedir, [  create_tags/1,   emptyrow/0,   emptytag/0,   getdbrowsdirect/2,   hazardous_tagname/1,
         receive_tags/1,   reset_ldapcon/0, reset_tags/0, send_taggercall/1,     %streamnoisopen/,1      %% Used by ...main?
-        x_receive_tags/3,       x_getdbtags/2,       y_receive_tags/3
-]).
+        x_receive_tags/3,       x_getdbtags/2,       y_receive_tags/3 ] ).
 
 %% META-PREDICATES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -25,18 +24,20 @@ set_ops(X,Y,Z):-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% RS-131227    UNIT: / and /utility/
-:- ensure_loaded( user:'declare' ).    %% :-op( 714,xfx, := ).   %% etc.
-%:- use_module( 'utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
-%:- use_module( 'utility/utility', [ := /2 , user:value/2 ,  etc. ] ).  %% RS-140209
-:- use_module( 'utility/utility', [ delete1/3, output/1, set_eliminate/4 ] ). %keep local: foralltest/2, 
-:- use_module( 'utility/library', [ exec/3, remove_duplicates/2, shell/1 ]). %% TEMPORARY non-FIX!
+:- ensure_loaded( user:'declare' ).    %% :-op( 714,xfx, := ).  etc... , track/2, trackprog/2
+track(X, Y) :- user:track(X, Y) .
+trackprog(X, Y) :- user:trackprog(X, Y) .
 
-:- use_module( 'tucbuses', [ dict_module/2 ] ).
-:- use_module( main, [ create_taggercall/2, track/2, trackprog/2, write_taggercall/1 ] ).
+%:- use_module( 'utility/utility', [ := /2 , user:value/2 ,  etc. ] ).  %% RS-140209 %% RS-131117 includes declare.pl
+:- use_module( 'utility/library', [ exec/3, remove_duplicates/2, shell/1 ]). %% TEMPORARY non-FIX!
+:- use_module( 'utility/utility', [ delete1/3, set_eliminate/4 ] ). %keep local: foralltest/2, 
+:- use_module( 'utility/writeout', [ output/1 ] ).%% RS-140912
+
+:- use_module( main, [ create_taggercall/2, update_compnames/1, write_taggercall/1 ] ).
 
 :-use_module( xmlparser ). %%, [ xmltaggerparse/2 ] ). %% RS-140102 Moved from main.pl
 
-:-ensure_loaded( user:'tele2.pl' ).
+:-use_module( 'tele2.pl', [ ] ).
 %:- ensure_loaded( user:'tucbuses' ).  %% RS-130329 Make sure (gram/lang) modules are available: dcg_module, MISERY? [ dict_module/2  ] ).
 %:- ensure_loaded( user:main ). %, [ track/2 ] ).  %% RS-131231
 
@@ -44,11 +45,17 @@ set_ops(X,Y,Z):-
 %%:- use_module( library(system) , [exec/1, shell/1]). %% OLD? %% Replaced by 
 %:- use_module( library(process) ). %% , [exec/1, shell/1]). %% NEW!?
 
+% UNIT: /db/
+:-use_module( 'db/teledat2', [ hazard_tagname/1, legal_tagname/1,  teledbtagfile/1 ] ).
+
 %% RS-131227    UNIT: /dialog/  
 :-use_module( 'dialog/parseres.pl', [  get_chars_t/1 ] ). %% Printing the result from database query
 
 %% RS-140102    UNIT: /tagger/
+:-use_module( 'tagger/tagger', [ get_chars/1, parse_tags/3 ] ).
 :-use_module( 'tagger/xml', [ xml_subterm/2, xml_parse/2 ] ). %% RS-140102 Moved from main.pl
+
+:- use_module( 'tuc/lex', [ dict_module/2 ] ).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Run ls on a home directory in a subshell under UNIX:

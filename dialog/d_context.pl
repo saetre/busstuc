@@ -41,7 +41,7 @@ context( Id ) :-                                    %% AM-980311
 	\+ dbIskey(state, Id),
 	!,
 	context_id := Id,
-	newframe(Id::frame, bustuc),
+%	newframe(Id::frame, bustuc),          %% RS-140915 Gone?
 	dbAdditem( state, 
 	           Id, 
                    [[frame,Id::frame],

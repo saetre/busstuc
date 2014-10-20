@@ -2,8 +2,11 @@
 %% SYSTEM	StudTUC
 %% CREATED	MTK-14-Oct-2002
 
-%% MISERY!
-:- use_module( xml, [ ] ).
+:-module( tagger, [ get_chars/1, parse_tags/3 ] ).
+
+
+%% MISERY!?
+:- use_module( xml, [ xml_subterm/2 ] ).
 :- use_module( library(lists), [ ] ).
 
 hent_chars(C,I,L) :- at_end_of_stream, append(I,[C],L).

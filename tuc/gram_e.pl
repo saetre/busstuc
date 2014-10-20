@@ -3,7 +3,7 @@
 %% SYSTEM TUC
 %% CREATED TA-930310
 %% REVISED TA-110823
-:-module(gram_e,[(--->)/2]).    %% RS-130330    Export consensical grammar rules to dcg_e.pl
+:-module( gram_e ,[ (--->)/2 ] ).    %% RS-130330    Export consensical grammar rules to dcg_e.pl, via /tuc/metacomp.pl
 
 %  Consensical Grammar for English
 
@@ -16,7 +16,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 wx(adj2(NIL,GOOD)) ---> w(adj2(GOOD,NIL)). %% Ad Hoc
-
 
 
 %% Consensical Grammar   (Context Sensitive Categorial Attribute Logic Grammar)
@@ -544,7 +543,7 @@ implicitq(modifier(S)::: Com12 and P3) ---> %% now to Dalen Hageby
     {setvartype(XB,vehicle)}, 
     worldcom(S,P3,ERS),  
     verb_modifiers(go,XB,S, Com12 :true, ERS) - [now],  %% TA-110105
-    traceprint(4,iq10),
+    {traceprint(4,iq10)},
     !,accept. %%   ( don t waste time )
 
 
@@ -1742,7 +1741,8 @@ adverbx0 ---> [].
 
 properadverb(X,Y,Z) ---> 
     adverb(X,Y,Z),
-    {\+ dict_e:preposition(X)}. %% ad hoc
+    {\+ preposition(X)}. %% ad hoc %% RS-140921 From dict_e.pl
+%   {\+ dict_e:preposition(X)}. %% ad hoc %% TA-111111
 
 
 
@@ -2350,7 +2350,8 @@ properlastname(Rønning,RønningP) --->
 time_phrase(X,P,Q and P) ---> %% When clock is expected, number is a time
     timeq12(X,Q).             %%       bus goes  5 o clock
 
-npy(X,P,Q) ---> name_phrase(X,P,Q).
+%npy(X,P,Q) ---> name_phrase(X,P,Q).    %% TA-111111
+npy(X,P,Q) ---> namep(X,P,Q).           %% RS-140921
 npy(X,P,Q) ---> np2(X,P,Q).
 
 
@@ -2457,7 +2458,8 @@ name_complex(X,P) --->
     name_compound(X,P).
 
 this1(X,find(X))     --->  this1.
-this1(X,findpron(X)) --->  thisx.
+% thisx is artificial? RS-140921
+% this1(X,findpron(X)) --->  thisx.
 
 
 
@@ -3222,7 +3224,8 @@ preadjs0(true)---> [].
 preadj1(Nil/A) ---> 
    adverb0(_Medium), 
    wx(adj2(Nil,A)),
-   {\+ dict_e:noun(A)},    %%  user is sort of adjective 
+%   {\+ dict_e:noun(A)},    %%  user is sort of adjective 
+   {\+ noun(A) },    %%  user is sort of adjective %% RS-140921 From dict_e.pl
    {\+ post_adjective(A)}, %% down (adj) town
    !.          %% 
 
@@ -3927,7 +3930,8 @@ umpover ---> [up].
 umpover ---> [down].
 
 pronoun(Man) ---> [He], 
-    {dict_e:pronoun(He,Man)}. 
+    { pronoun(He,Man) }.        %% RS-140921 From dict_e.pl
+%    {dict_e:pronoun(He,Man)}. 
 
 reflexiv0(V) ---> reflexiv(V),!.
 reflexiv0(_) ---> [].

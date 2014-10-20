@@ -1,4 +1,6 @@
-:- module( xml,	[ xml_parse/2, xml_parse/3, xml_subterm/2, xml_pp/1 ] ).   %Extra?:         nmtokens/3
+%% UNIT: /tagger/
+
+:- module( xml,	[ nmtokens/3, xml_parse/2, xml_parse/3, xml_subterm/2, xml_pp/1 ] ).   %Extra?:         nmtokens/3 from xml_aqcquisition
 
 /* xml.pl : Contains xml_parse/[2,3] a bi-directional XML parser written in
  * Prolog.

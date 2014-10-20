@@ -1,5 +1,7 @@
 
 
+:-use_module( '../utility/utility', [ maximum/2, minimum/2,set_of/3 ] ).
+
 
 minvalarrs(L,M) :-
     set_of(TimeArr,member(depnode(TimeArr,_TimeDep,_,_,_,_,_),L),K),

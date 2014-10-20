@@ -38,6 +38,8 @@
  */
 
 
+:-use_module( library(lists), [ is_list/1 ] ).
+
 /* xml_fault( +Term, +Indentation, ?SubTerm, ?Path, ?Message ) identifies SubTerm
  * as a sub-term of Term which cannot be serialized after Indentation.
  * Message is an atom naming the type of error; Path is a string encoding a

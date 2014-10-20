@@ -9,12 +9,6 @@
 %UNIT: /app/
 :- module( negans, [ cannot/1, cannotanswer/1, makenegative/3, trytofool/2, trytofool/3 ] ).
 
-%:-meta_predicate  makenegative( ?, 0, 0 ).
-:-meta_predicate  makenegative( ?, +, 0 ).
-:-meta_predicate  notthenanswer( ?, ?, ?, ?, 0 ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 :- ensure_loaded( user:'../declare' ).       %% RS-111212 :-op( 710,xfx, isa ). traceprog/2
 :- use_module( '../utility/utility', [ bound/1, sequence_member/2, testmember/2 ] ). %% RS-141012
 
@@ -31,13 +25,15 @@
 
 :- use_module( '../utility/datecalc', [ days_between/3, daysucc/2, today/1  ]).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% from declare.pl
-progtrace(X,Y) :- user:traceprog(X,Y).
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%makenegative( FlatCode, ProgIn, busanshp:AnswerOut ) :-
-makenegative( (head,_TF_), _, busanshp:nl ) :-
+%:-meta_predicate  makenegative( ?, ?, 0 ).
+%:-meta_predicate  notthenanswer( ?, ?, ?, ?, 0 ).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+progtrace(X,Y) :- user:traceprog(X,Y).  %% from declare.pl
+
+
+makenegative((head,_TF_),_, busanshp:nl):- 
     progtrace(4,ne00),     %% from main.pl
     !.
 
@@ -52,12 +48,12 @@ makenegative(nil,_, busanshp:(bcpbc(ok),nl)):-
 makenegative( (item,_), _ , busanshp:(space0) ) :-
     progtrace(4,ne03),!. 
 
-makenegative( _, Q, busanshp:(bcpbc(no),nl) ) :-
-    sequence_member( false, Q ),
+makenegative(_,Q, busanshp:(bcpbc(no),nl)):- 
+    sequence_member(false,Q),
     progtrace(4,ne04),!.
 
 makenegative(_,Q, busanshp:(space0) ):- %% drop idontknow message
-    sequence_member( message(cannotanswer), Q ), %% = roundmember
+    sequence_member(message(cannotanswer),Q), %% = roundmember
      progtrace(4,ne05),!.
 
 makenegative((new,not _),_, busanshp:(bcpbc(ok),nl) ) :-
@@ -194,10 +190,10 @@ makenegative((_When,_), Q, (busanshp:space0) ) :- %%
     !. 
 
 
-makenegative( (_When,_), Q, Mess ) :- %% any statement type, also when
-    getactualtime( Q, Date, Day, Clock ),
-    notthenanswer( Date, Day, Clock, Q, Mess ),
-    progtrace( 4, ne18 ), !.
+makenegative((_When,_),Q, Mess):- %% any statement type, also when 
+    getactualtime(Q,Date,Day,Clock),
+    notthenanswer(Date,Day,Clock,Q,Mess),
+    progtrace(4,ne18),!.
 
 
 /* %% TA-101029 -> trytofool
@@ -268,7 +264,7 @@ makenegative((DN,P),Q,Ans) :-
     progtrace(4,ne26),!,
     Ans = (busanshp:( bcpbc(idonotknow),nl)). 
 
-makenegative( (which(A),P), Q, Ans )   :-  % awkard way of getting the actual day
+makenegative((which(A),P),Q,Ans)   :-  % awkard way of getting the actual day
     sequence_member(srel/in/place/A/_,P), 
  \+ sequence_member(stationsat(_,_,_),Q), %% Dirty  %% Time independent 
     getactualtime(Q,Date,Day,Clock),
@@ -412,29 +408,28 @@ makenegative((doit,quit(_)),_,Ans)  :-
 makenegative((doit,_),Q,Ans)  :- 
   \+  sequence_member(message(_),Q),
       progtrace(4,ne49),!, 
-   Ans = ( busanshp:( bcpbc(sorrycannot),nl ) ).
+   Ans = (busanshp:((bcpbc(sorrycannot),nl))).
 
 
-makenegative( (new,_), _, Ans )  :- 
+makenegative((new,_),_,Ans)  :- 
     progtrace(4,ne50),!,
     Ans = (busanshp:((%%% bcpbc(it),space,bcp(is), 
          bcp(notpossible),period))).  
 
-makenegative( P, _, Ans )  :- 
+makenegative(P,_,Ans)  :- 
      sequence_member(replyq(X),P),
      Ans = (busanshp:((write(X),nl),
      progtrace(4,ne51),!)). 
 
 
 
-makenegative( _P, Q, Ans )  :-  %% never for new, do
+makenegative(_P,Q,Ans)  :-  %% never for new, do
      \+  sequence_member(message(_),Q),
      Ans = (busanshp:((bcpbc(cannotanswer),nl), %% TA-100915  hotell til IKEA 
      progtrace(4,ne52),!)).
 
 
-makenegative( _, _, _:true ) :- %% no extra nl
-%makenegative( _, _, (busanshp:(true) ) ) :- %% no extra nl
+makenegative(_,_,(busanshp:(true) ) ) :- %% no extra nl
      progtrace(4,ne53),!.  %% Catch all
                          %% NB is executed
 

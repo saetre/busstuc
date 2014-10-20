@@ -6,9 +6,7 @@
 %% REVISED RS-120705 Manually
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:-module(regstr, [
-        streetstat/5
-]).
+:-module(regstr, [ streetstat/5 ] ).
 
 %% isat(kongens_street-34,atb). %%  funk ??? %% TA-101116
 

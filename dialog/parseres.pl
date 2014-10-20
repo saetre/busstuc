@@ -5,23 +5,43 @@
 %% REVISED TA-070413
 
 %% Printing the result from database query 
-:-module( parseres, [
-        get_chars_t/1,
-        ldaptotuc/2
+
+%% RS-140914    UNIT: /dialog/
+:-module( parseres, [ busanswer_sat/3, get_chars_t/1, ldaptotuc/2, listall/1,listrequirements/1, onelist/1, otherfields/1, parseresultdata/2,
+        parseresultdatacount/2, parseresultfile/2, teleanswer_sat/2, teleconstraintlist/1, tuctoldap/2,
+        writetelebusteranswer_rep/1, writetelebusteranswer_saf/2, writetelebusteranswer_sqt/3, writetelebusteranswer4/4, writetelebusteranswerfields/1, xwriteanswer/2,
+      
+        field_is_equal/3, listfields/2, outputrecordlist/1, recordcount/2, removefromlist/3, writevaluelist2/2    %% RS-140914 For dialog
 ] ).
 
+:-meta_predicate listall( + ) .
 
-%:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
-%:- ensure_loaded( user:'../utility/utility.pl' ). %RS-131223
+%% RS-140208. %% UNIT: / and utility/ [ testmember/2, user:value/2  ]).   %% RS-131117 includes declare.pl ?
+:- ensure_loaded( user:'../declare' ).       %% RS-111212 traceprog/2, trackprog/2
 
-%%RS-131225     %% UNIT: /
-:- ensure_loaded( user:'../declare' ). %, [ := /2 etc. ] ).      %RS-131225  Get dynamic definition for user:value/2
+:- use_module( '../utility/utility', [ append_atomlist/2, append_atoms/3, listlength/2, set_ops/3 ] ). % RS-140929 Made local: listall/1, LOOP? set_ops/3
+:- use_module( '../utility/writeout', [ doubt/2, out/1, output/1, prettyprint/1 ] ).%% RS-140912
 
-%%RS-131225     %% UNIT: utility/
-%:- ensure_loaded( user:'../utility/utility' ). %%, [ testmember/2, user:value/2  ]).   %% RS-131117 includes declare.pl
-:- use_module( '../utility/utility', [ ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
+:-use_module( library(aggregate), [ forall/2 ] ).        %% for: uses orig_named_date %% KISS %% RS-140914
 
+%:- use_module( '../main', [  ] ).
 
+%% RS-140914    UNIT: /app/
+:- use_module( '../app/busanshp', [ addrefdialog/2, bcp/1, bcpbc/1, colon/0, comma/0, space/0, writefield1/1, writename/1 ] ).
+:- use_module( '../app/interapp', [ writeanswer/1 ] ).
+
+%% RS-140914    UNIT: /db/
+:- use_module( '../db/teledat2', [ ldaptotucplace/2 ] ).
+
+%% RS-140914    UNIT: /dialog/
+:- use_module( frames2, [ frame_getvalue_rec/4, frame_setvalue_rec/4 ] ).
+
+%% UNIT: /tagger/
+:- use_module( '../tagger/xml', [ xml_parse/2, xml_subterm/2 ] ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+trackprog(X, Y) :- user:trackprog(X, Y).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 parseresultfile(File, Results) :-
     getresults(File,Input),
@@ -158,9 +178,10 @@ wrfs([]):-!,write([]).
 
 wrfs([X]) :- !,wrf1(X).
 
+
 wrfs([Val|List]):-
     wrf1(Val), 
-    for(member(X, List), (write(', '),wrf1(X))).
+    forall(member(X, List), (write(', '),wrf1(X))).
 
 
 wrf1(X):-
@@ -318,7 +339,7 @@ writefieldvalue(Rec, roomnumber) :- %% adds street to the output
 writefieldvalue(Rec, ou) :-
 	set_ops(Value, recordfieldvalue(Rec, ou, Value),Values),
 
-   writevaluelist(Values).  
+   writevaluelist(_,Values).  %% RS-140914, where is writevaluelist/1 gone ?! 
 
 
 writefieldvalue(Rec, Field) :-
@@ -381,9 +402,9 @@ atomlistreplace1(H, [], H).
 
 %% QUIT %% TA-070419
 xwriteanswer(Fql,AnswerOut):-
-    value(directflag,true),
+    user:value(directflag,true),
     !,
-    value(directoutputfile,Newans), 
+    user:value(directoutputfile,Newans), 
     tell(Newans), 
        nl,
 
@@ -399,13 +420,13 @@ xwriteanswer(Fql,AnswerOut):-
 
 
 xwriteanswer(_Fql,AnswerOut):- %% TA-070608
-   writeanswer(AnswerOut).
+   writeanswer( AnswerOut ).
 
 
 %% WRITE TELEBUSTER ANSWER ...
 
 writetelebusteranswer4(sant,TQL,_AnswerOut,_Frame):-%% TA-060905 
-    value(directflag,true),
+    user:value(directflag,true),
     !,
     nl,
     output('*** TQL  ***'),nl,
@@ -422,9 +443,9 @@ writetelebusteranswer_rep(Frame) :- %% TA-060224
 %% sqt
 
 writetelebusteranswer_sqt(TQL,_AnswerOut,_Frame) :-   %% TA-060224
-    value(directflag,true),
+    user:value(directflag,true),
     !,
-%%     value(directoutputfile,Newans), %% TA-060825
+%%     user:value(directoutputfile,Newans), %% TA-060825
 %%     tell(Newans), %% ALREADY OPEN BY PARAPHRASE2
 
         nl,
@@ -443,9 +464,9 @@ writetelebusteranswer_sqt(_TQL,_,_Frame) :-  %% TA-060825
 %% sat
 
 teleanswer_sat(TQL,Frame) :-  %% TA-060224
-    value(directflag,true),
+    user:value(directflag,true),
     !,
-%%    value(directoutputfile,Newans), %% TA-060825
+%%    user:value(directoutputfile,Newans), %% TA-060825
 %%    tell(Newans), %% ALREADY OPEN BY PARAPHRASE2
 
         nl,
@@ -460,9 +481,9 @@ teleanswer_sat(_,Frame) :-
 
 
 busanswer_sat(TQL,AnswerOut,_Frame) :-  %% TA-060224
-    value(directflag,true),
+    user:value(directflag,true),
     !,
-%%    value(directoutputfile,Newans), %% TA-060825
+%%    user:value(directoutputfile,Newans), %% TA-060825
 %%     tell(Newans), %% Already open by PARAPHRASE2
 
         output('*** TQL  ***'),nl,
@@ -486,9 +507,9 @@ busanswer_sat(_Tql,AnswerOut,_Frame):-  %% TA-060428
 
 
 writetelebusteranswer_saf(TQL,Frame) :-  %% TA-060420
-    value(directflag,true),
+    user:value(directflag,true),
     !,
-%%  value(directoutputfile,Newans),  %% TA-060825
+%%  user:value(directoutputfile,Newans),  %% TA-060825
 %%     tell(Newans),  %% Already OPEN by paraphrase2
 
         output('*** TQL  ***'),nl,
@@ -504,6 +525,10 @@ writetelebusteranswer_saf(TQL,Frame) :-  %% TA-060420
 writetelebusteranswer_saf(_,_Frame) :- %% TA-060420
     !. %% writetelebusteranswer1(_Frame). 
 
+
+
+%:-meta_predicate listall( + ) .
+listall( P ) :- forall( P, output(P) ) ; true.  %% RS-141015 Always succeed even when no output?
 
 
 %%
@@ -522,7 +547,7 @@ writetelebusteranswer1(Frame) :-
 
 
 writetelebusteranswer1(Frame) :-		%% return not set,show standard (Marvin):
-    value(telebusterflag,true),     %% Telebuster,  address is important
+    user:value(telebusterflag,true),     %% Telebuster,  address is important
     \+ frame_getvalue_rec(Frame, return, _A,_B), %% TA-0605116
 
     frame_setvalue_rec(Frame,return,[roomnumber,address],Frame1),
@@ -534,7 +559,7 @@ writetelebusteranswer1(Frame) :-		%% return not set,show standard (Marvin):
 
 
 writetelebusteranswer1(Frame) :-		%% return not set,show standard (Marvin):
-    value(teleflag,true),        %% DAter, telephone is important
+    user:value(teleflag,true),        %% DAter, telephone is important
     \+ frame_getvalue_rec(Frame, return,_A,_), %% TA-0605116
     !,
     frame_setvalue_rec(Frame,return,[telephonenumber],Frame1),
@@ -546,7 +571,7 @@ writetelebusteranswer1(Frame) :-		%% return not set,show standard (Marvin):
 
 
 writetelebusteranswer1(Frame) :-		%% 
-    value(teleflag,true),      
+    user:value(teleflag,true),      
     frame_getvalue_rec(Frame, return,_A,_), 
     !,
     listall(Frame).
@@ -630,7 +655,7 @@ listrequirements2([_Field=doknow|Rest]) :-
 	listrequirements2(Rest).
 
 listrequirements2([Field=Value|Rest]) :-
-    value(traceprog,N), N >=2,
+    user:value(traceprog,N), N >=2,
     !,
     listreq2([Field=Value|Rest]).
 
