@@ -436,7 +436,7 @@ makenegative( _P, Q, Ans )  :-  %% never for new, do
 makenegative( _, _, _:true ) :- %% no extra nl
 %makenegative( _, _, (busanshp:(true) ) ) :- %% no extra nl
      progtrace(4,ne53),!.  %% Catch all
-                         %% NB is executed
+                         %% NB is executed -> "Jeg kan ikke svare på det"
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%

@@ -6079,7 +6079,8 @@ placestat(rotvollfjæra,rotvoll).  %%?
 placestat(rønning,rønningsbakken). 
 placestat(rådhuset,torget). 
 
-placestat(sandgata,hospitalskirka). 
+%placestat(sandgata,hospitalskirka).    %% RS-141021 Sandgata er en ny (midlertidig) stasjon ifm veiarbeid i Kongensgt.
+ 
 placestat(sandmoencamping,sandmoen). 
 placestat(saupstad,saupstadsenteret). 
 placestat(saupstadkrysset,saupstadsenteret).  %%?
