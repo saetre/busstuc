@@ -5602,7 +5602,8 @@ place_resolve(vegmesterveien,veimester_kroghs_street).
 
 placestat(atb,prinsenkrysset). %% TA-101108 
 
-%placestat(studentersamfundet,studentersamfundet_1).  %% AtB %% NB \+ isat
+%placestat(studentersamfundet,studentersamfundet_1).  %% AtB %% NB \+ isat      %% RS-141020, changed name from s-samfundet_1 to s-samfundet
+placestat(studentersamfundet,studentersamfundet).  %% AtB %% NB \+ isat         %% RS-141020    Feedback from Norvald Ryeng
 placestat(studentersamfundet,studentersamfundet_2).  %% TA-100922  %% RS-140901 %% Reverserte disse
 
 placestat('ALT/Statoil',rotvoll_nedre).%% hist/ALT %% extra dep Bus 6 
@@ -6772,7 +6773,7 @@ sameplace(stundentersamfundet,studentersamfundet).
 sameplace(stundentsamfunnet,studentersamfundet). 
 sameplace(samfund,studentersamfundet). 
 sameplace(samdundet,studentersamfundet). %% AtB
-sameplace(samfundet,studentersamfundet). 
+sameplace(samfundet,studentersamfundet).
 sameplace(samfunnet,studentersamfundet). 
 sameplace(sammfundet,studentersamfundet). 
 sameplace(sammfunetet,studentersamfundet). 
