@@ -53,8 +53,8 @@
 :- write('%busstuc.pl~50  (Turn of DEBUG and Skipping?) consistency check and creation of db/ auxtable(s) and (name-)hashtable, etc...'),nl.
 
 :- makeauxtables:verify_consistency. %% RS-140420  Between current and previous period?     
-%:- makeauxtables:makeauxtables.      %% RS-130330       Takes a minute...         %%Skip for now...
-%:- makeauxtables:createhash.        %% RS-130330       Takes another minute...   %% Produce the db/namehashtable
+:- makeauxtables:makeauxtables.      %% RS-130330       Takes a minute...         %%Skip for now...
+:- makeauxtables:createhash.        %% RS-130330       Takes another minute...   %% Produce the db/namehashtable
 
 %% Already compiled by tucbuss -> monobuss! %?- [ 'db/discrepancies.pl' ].  %% Must be updated before winter %% TA -> RS-120805 Se e-post korrespondansen til Tore
 %:- load_files('busroute.pl', [load_type(source),compilation_mode(compile)]).    %% RS-140210    Bootstrapping for fast compilation!
