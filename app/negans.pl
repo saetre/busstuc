@@ -10,7 +10,7 @@
 :- module( negans, [ cannot/1, cannotanswer/1, makenegative/3, trytofool/2, trytofool/3 ] ).
 
 %:-meta_predicate  makenegative( ?, 0, 0 ).
-:-meta_predicate  makenegative( ?, +, 0 ).
+:-meta_predicate  makenegative( ?, +, ? ).
 :-meta_predicate  notthenanswer( ?, ?, ?, ?, 0 ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
