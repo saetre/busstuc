@@ -1378,10 +1378,8 @@ streetstat(sagberget,'Sagberget',1,4,klefstadhaugen).
 streetstat(sagplass_street,'Sagplassvegen',1,74,vikåsen_skole).
 streetstat(sag_street,'Sagvegen',1,18,haugnessvingen).
 streetstat(sandborgs_street,'Sandborgs veg',1,3,munkvoll_gård).
-
 %streetstat(sand_street,'Sandgata',30,48,hospitalskirka).        %% RS-140615 hospital(s?)kirka
 streetstat(sand_street,'Sandgata',30,48,sandgata).        %% RS-141021 TEMPORARY, because of road-work in Kongensgt.
-
 streetstat(sand_street,'Sandgata',50,75,kalvskinnet).
 streetstat(sand_street,'Sandgata',1,29,hovedterminalen).
 streetstat(sandmo_street,'Sandmovegen',1,149,sandmoen).
