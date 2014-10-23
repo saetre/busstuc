@@ -126,7 +126,7 @@ track(X, Y) :- user:track(X, Y) .
 %%% RS-111205, UNIT: tuc
 :- use_module( dict_n, [ kw/1 ] ). %% TA-100902 %%%%%%%%%  All the words appearing as [ ] constants in grammar %% RS-131225
 :- use_module( evaluate, [ instant/2 ] ). %% RS-111204    isa/2 from facts.pl
-:- use_module( facts, [ fact/1, isa/2,  neighbourhood/1, unproperstation1/1  ] ).  %% RS-111204    isa/2 from facts.pl
+:- use_module( facts, [ fact/1, isa/2,  neighbourhood/1  ] ).  %% RS-111204    isa/2 from facts.pl, , unproperstation1/1
 :- use_module( names, [  compname/3,  generic_place/1,  samename/2,  streetsyn/1, synname/2,  unwanted_name/1  ] ).
 
 %%
@@ -501,7 +501,7 @@ target_name(X):-            % Candidate for auxillary table
 irrelevant_name(X):-     %% DONT spellcheck towards these names !
     bus(X);
 
-   unproperstation1(X); %% DONT spellcheck to spurious names ! 
+%   unproperstation1(X); %% DONT spellcheck to spurious names ! 
 %%  maybe empty 
 
     unwanted_name(X); 
@@ -1621,7 +1621,7 @@ remove_partnames :- %% remove now redundant  part names
 
 
 remove_streetsurp:- % Remove streetname (single) if also station/neighbourhood etc.
-     for( (txt(M,w(A,name(_a1,_,street)),N),txt(M,w(A,name(A2,_,K)),N), K \== street, \+unproperstation1(A2)),
+     for( (txt(M,w(A,name(_a1,_,street)),N),txt(M,w(A,name(A2,_,K)),N), K \== street ), % \+unproperstation1(A2)  ),
            retract(txt(M,w(A,name(_a1,_,street)),N))).
 
 %% suspended  :   error marking becomes meaningless (too early) 
