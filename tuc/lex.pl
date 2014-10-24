@@ -55,9 +55,8 @@
 :-meta_predicate  set_ops(+,0,-).
 :-meta_predicate  test(0).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate assertnewa(0) .     %% RS-140616  assertnewa/1 Goal_0 metapredicate.
-
-:- meta_predicate assertnewz(:) .     %% RS-140616  assertnewa/1 Goal_0 metapredicate.
+%:- meta_predicate assertnewa(0) .     %% RS-140616  %% RS-141024  assertnewa/1 Goal_0 metapredicate.
+%:- meta_predicate assertnewz(:) .     %% RS-140616  assertnewa/1 Goal_0 metapredicate.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 foralltest(P,Q):- \+ ( P, \+ Q). 
@@ -89,17 +88,14 @@ track(X, Y) :- user:track(X, Y) .
 :- use_module( '../utility/utility', [ append_atoms/3, begins_with/3, delete1/3, ends_with/3, flatten/2, for/2, iso_atom_chars/2, remember/1,  
                                        remove_duplicates/2, set_union/3, testmember/2, textlength/2 ] ).
 % Keep them local? : foralltest/2, once1/1, set_of/3, set_ops/3, track/2, test/1,
-
 %:-use_module( '../utility/library', [ ] ).      %% RS-131229 Make this internal! (Decoupling modules!)
 :- use_module( '../utility/writeout', [ language/1, out/1, output/1 ]).       %RS-131223 Value == TROUBLE! value/2    (And for(X,Y) is trouble too!)
 
+
 :- use_module( '../interfaceroute', [ domain_module/2 ] ).      %% RS-140921
 %:- use_module( '../busroute', [ ] ). %% HEAVY DB! Obsolete?
-
 %%MISERY?:
 :- use_module( '../main' , [ traceprint/2 ] ). %%RS-131224  ctxt/3 is dynamicly used below
-%:- ensure_loaded(  user:'../main' ). %%, [ traceprint/2, track/2 ] ). %%RS-131224  ctxt/3 is dynamicly used below
-
 %:- use_module( '../tucbuses', [ morph_module/1 ] ). %% RS-140920 Made local to lex?: dict_module/1, dict_module/2,  
 
 %%% RS-131225, UNIT: /app/,
@@ -126,7 +122,7 @@ track(X, Y) :- user:track(X, Y) .
 %%% RS-111205, UNIT: tuc
 :- use_module( dict_n, [ kw/1 ] ). %% TA-100902 %%%%%%%%%  All the words appearing as [ ] constants in grammar %% RS-131225
 :- use_module( evaluate, [ instant/2 ] ). %% RS-111204    isa/2 from facts.pl
-:- use_module( facts, [ fact/1, isa/2,  neighbourhood/1  ] ).  %% RS-111204    isa/2 from facts.pl, , unproperstation1/1
+:- use_module( facts, [ fact/1, isa/2,  neighbourhood/1, unproperstation1/1 ] ).  %% RS-111204    isa/2 from facts.pl
 :- use_module( names, [  compname/3,  generic_place/1,  samename/2,  streetsyn/1, synname/2,  unwanted_name/1  ] ).
 
 %%
@@ -1358,7 +1354,7 @@ matchcompword(N1,Lap):-
     N2 is N1+1,
     matchcompwrest(N2,TopComputer,N3),
     lcodew(Computer,WNoun),
-    assertnewa(txt(N1,w(Computer,WNoun),N3)). %% first, but only new 
+    assertnewa( txt(N1,w(Computer,WNoun), N3) ). %% first, but only new
 
 
 make_exclusive_compwords :- %% Try every word 
@@ -1390,7 +1386,7 @@ exmatchcompword(N1,Lap) :- %% delete substituents afterwards
           ) ; true ),          %% all presences  %% not to be reintroduced
 
     lcodew(Computer,WNoun),
-    assertnewa(txt(N1,w(Computer,WNoun),N3)).
+    assertnewa( txt(N1,w(Computer,WNoun), N3) ).
  
 
 matchcompwrest(N1,[Top|Computer],N3):-
@@ -1621,7 +1617,7 @@ remove_partnames :- %% remove now redundant  part names
 
 
 remove_streetsurp:- % Remove streetname (single) if also station/neighbourhood etc.
-     for( (txt(M,w(A,name(_a1,_,street)),N),txt(M,w(A,name(A2,_,K)),N), K \== street ), % \+unproperstation1(A2)  ),
+     for( (txt(M,w(A,name(_a1,_,street)),N),txt(M,w(A,name(A2,_,K)),N), K \== street , \+unproperstation1(A2)  ),
            retract(txt(M,w(A,name(_a1,_,street)),N))).
 
 %% suspended  :   error marking becomes meaningless (too early) 
@@ -1772,7 +1768,7 @@ matchcomp3(N,Proff,N1):-
     skip_dot(N1,N2),  
     moshe_class(Prof,_,Class),
 
-    assertnewa(ctxt(N,w(Prof,name(Prof,n,Class)),N2)). %% TA-110520
+    assertnewa( ctxt(N,w(Prof,name(Prof,n,Class)), N2) ). %% TA-110520
      %% a => bynesveien -> bryns vei ?
 
            %% depends/if street hareveien 10 -> hare_street-10/ havre_street-10
@@ -1857,7 +1853,7 @@ matchrestassert(N0,N1,[],Ident):-
     user:value(tmnflag,true),          %% No streets as such
     !,
     moshe_class(Ident,_,Class),
-    assertnewa(ctxt(N0,w(Ident,name(Ident,n,Class)),N1)).  %%  suspect
+    assertnewa( ctxt(N0,w(Ident,name(Ident,n,Class)), N1) ).  %%  suspect
 
 
 matchrestassert(N0,N1,Brochsgate,Ident):-
@@ -2183,11 +2179,11 @@ assertnewtxt(M1,WWW,N1):-
         assertnewz( txt(M1,WWW ,N1)). %% TA-110520
      %% assertnewa NB  latecomers are spell corrected
 
-assertnewa(P):-P,!;
-    asserta(P).
+assertnewa( P ) :- lex:P, ! ;   %% RS-141024 Exists ; or assert (in lex-module, temporary)
+    asserta( P ).
 
-assertnewz(P):-P,!; %% last (actually undefined!), dont shadow stations. %% RS-140616 (hopefully!)
-    assert(P).
+assertnewz( P ) :- lex:P, !; %% last (actually undefined!), dont shadow stations. %% RS-140616 (hopefully!)
+    assert( P ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%

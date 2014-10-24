@@ -95,6 +95,7 @@ once1(P):-P,!. %% same as once, but version independent % try once, otherwise FA
 % Debug Exit: :(interapp,writeanswer(,(startmark,,(printmessage(date_isa_day(date(2014,4,13),sunday)),,(endline,,(printmessage(otherperiod(date(2014,4,13))),,(endline,,(google(dir(depnode(32,32,2,2,30,bus_0108_0007,108,2,dronningens_gate_d1),stavset)),,(bwrbusbc(nightbus,108),,(bcp(passes),,(bwr(dronningens_gate_d1),,(bcp(attime),,(bwt(32),,(nl,,(bcp(and),,(bcp(arrivesat),,(bwr(stavset),,(bcp(attime),,(bwt(54),,(period,,(output(...),,(bwrbusbc(nightbus,119),,(bcp(passes),,(bwr(munkegata_m1),,(bcp(attime),,(bwt(302),,(nl,,(bcp(and),,(bcp(arrivesat),,(bwr(stavset_senter),,(bcp(attime),,(bwt(325),,(period,earliesttimes))))))))))))))))))))))))))))))))) ?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%For tele!
 ieval(TQL0) :- user:value(teleflag,true),    %% RS-131228    Exported through tuc/evaluate.pl!
     !,
 	 copy_term(TQL0,TQL),
@@ -117,7 +118,7 @@ ieval(TQL0) :- user:value(teleflag,true),    %% RS-131228    Exported through tu
 	  
     waves.  
 
-
+%For others
 ieval(TQL0) :-
     copy_term(TQL0,TQL),
 

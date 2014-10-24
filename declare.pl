@@ -89,10 +89,10 @@ set( Counter, Value ) :-
     retractall( value( Counter, _ ) ),
     assert( value( Counter, Value ) ).
 
-X := Y :-       %% RS-131228    :=/2
-    set(X,Y).
-X =: Y :-  
-    value(X,Y). 
+X := Y  :-      %% RS-131228    :=/2    X set to Y's value
+    user:set(X,Y).
+X =: Y  :-      %% RS-141024    =:/2    Y is set to X's value
+    user:value(X,Y).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

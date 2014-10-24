@@ -5,9 +5,10 @@
 %% REVISED  RS-140101 modularized
 
 %% Create regcut files for modules
+%
+% USAGE: create_regcut(r1612_141020).
 
-%% For main.pl, dict_e, dict_n, ...? moved to declare.pl
- % RS-130411 For compilation of new routes (extract reg-Cuts...)  %% RS-131225 For ....pl
+% RS-130411 For compilation of new routes (extract reg-Cuts...)  %% RS-131225 For ....pl
 :-module( extracut, [ create_regcut/1, ex_cutloop_rid/7, ex_cutloop_trace/3, ex_departureday/4, ex_ntourstops/2, ex_passes4/6, mod_cut_rid/8, pax/4, whattoget/7 ] ).
 
 :-meta_predicate  dumppredas(0,?).
