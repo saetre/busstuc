@@ -9,9 +9,10 @@
 %:- use_module( '../utility/utility', [ ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
 
 %%% RS-131225, UNIT: utility, %% FOR metacomp, makeauxtables.pl
-:-module( utility, [ (:=)/2, (=:)/2, absorb/3, aggregate/3, all/1, ans/1, appendfiles/3, begins_with/3, bound/1, breakpoint/2, charno/3, %% FOR busanshp.pl
+:-module( utility, [ (:=)/2, (=:)/2, absorb/3, aggregate/3, all/1, ans/1, appendfiles/3, append_atomlist/2, append_atoms/3,
+        begins_with/3, bound/1, breakpoint/2, charno/3, %% FOR busanshp.pl
         compar/3, debug/2, default/2, deleteall/3, divmod/4, (do)/1, ends_with/3, equal/2, error/2, firstmem/2, flatlist/2, fnuttify1/2, fnuttify2/2, for/2,     
-        append_atomlist/2, append_atoms/3,   forget/1, remember/1, % moved here from declare.pl
+        forget/1, remember/1, % moved here from declare.pl
         delete1/3, featurematch/4, featurematchlist/2, flatten/2, maximum/2, mergeavlists/3, minimum/2,  
         do_count/1, freshcopy/2, subsumes/2,     %% RS-140927 For translat.pl
         foralltest/2, ident_member/2, implies/2, internalkonst/1, iso_atom_chars/2, last_character/2, lastmems/3, listlength/2, makestring/2, matchinitchars/2,
@@ -31,7 +32,12 @@
 %       numbervrs/1 (interapp/pragma), subsum1/2, test/1, trace/2, traceprog/2, track/2, trackprog/2, writeZ/1,
 %%RS-131228 for/2 is used by these: (Moved to writeout.pl) out/1, output/1, prettyprint/1, identical/2, sequence_write/1, roundwrite/1, writepred/1, %RS-140921 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %META-PREDICATES!
+%% LIST OF ALL META_PREDICATES: (do)/1, for/2, foralltest/2, implies/2,  number_of/3, once1/1, set_of/3, set_ops/3, , test/1, tryonce/1, ...?
+%% META_PREDICATES SECTION, %% RS-140101 meta_predicates    : means use source module       + means use this (utility) module  for expansion %% RS-131231 %From utility.pl
+%% RS-140101 meta_predicates expansion    : source module       + this(utility) module          0 source (zero supressed arguments)     ? in/out?
+
 :- meta_predicate  breakpoint(+,0).   %% RS-100101 ?  %% NEW PREDICATE
 :- meta_predicate  debug(0,+).   %% RS-100101 ?  %% NEW PREDICATE
 :- meta_predicate  do(0) .
@@ -55,12 +61,8 @@
 %:- meta_predicate  sequence_member(?,0) .      %% RS-140617 -140927 -141018
 %:- meta_predicate  occ(?,0) .      %% RS-140617 -140927 -141018
 
-%% RS-140101 meta_predicates expansion    : source module       + this(utility) module          0 source (zero supressed arguments)     ? in/out?
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% LIST OF ALL META_PREDICATES: (do)/1, for/2, foralltest/2, implies/2,  number_of/3, once1/1, set_of/3, set_ops/3, , test/1, tryonce/1, ...?
-%% META_PREDICATES SECTION, %% RS-140101 meta_predicates    : means use source module       + means use this (utility) module  for expansion %% RS-131231 %From utility.pl
 % test(+).  Moved to pragma... %% RS-140102 ??
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% RS-111205, UNIT: /
 
@@ -137,7 +139,7 @@ occ( B, B ) :- \+ ( B = (_,_) ) .
 %occ( B, Module:(_,D) ) :- occ( B, Module:D ).
 %occ( B, _:B ) :- \+ ( B = (_,_) ).
 %
-sequence_member( X, Y ):-
+sequence_member( X, Y ) :-
    occ( X, Y ). %%
 
 %% "MEMORY" SECTION

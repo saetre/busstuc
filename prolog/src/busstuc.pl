@@ -40,21 +40,26 @@
 :- compile('tucbuss'). %%, [ hei/0, run/0, etc. ] ). RS-130329 Make sure (gram/lang) modules are available: dcg_module, 
 %:-use_module( 'tucbuss.pl', [ hei/0, run/0 ] ).   %% Compiles tucbuses (norsk and english)
 
-%:-use_module('busroute.pl').   %% Compiles database/* %   'busroute.pl', %% Compiles database/
-:- load_files('busroute.pl', [ load_type(source), compilation_mode(compile) ]). %:-compile('busroute.pl'). %% Compiles database/* % 
+%Busroute is already compiled from  monobus -> makeauxtables -> busroute?
+%:-use_module('busroute.pl', [] ).   %% Compiles database/* %   'busroute.pl', %% Compiles database/
+%:- load_files('busroute.pl', [ load_type(source), compilation_mode(compile) ]). %:-compile('busroute.pl'). %% Compiles database/* % 
 
 %Utility
 :- use_module( 'utility/extracut.pl', [ create_regcut/1 ] ).     %%RS-140511 This file is imported INTO THE busroute.pl-module
 
-:-use_module( 'makeauxtables.pl', [ createhash/0, makeauxtables/0 ] ). 
+:-use_module( 'makeauxtables.pl', [ createhash/0, makeauxtables/0 ] ).  %% Runs makeauxtables/0 !!
 :-told.            %% RS-140208 Reset all output-streams first...
 
 :-notrace.      %% RS-131225   == nodebug, ...because it is SLOW (1 minute!)
-:- write('%busstuc.pl~50  (Turn of DEBUG and Skipping?) consistency check and creation of db/ auxtable(s) and (name-)hashtable, etc...'),nl.
+:- write('%busstuc.pl~53  (Turn of DEBUG and Skipping?) consistency check and creation of db/ auxtable(s) and (name-)hashtable, etc...'),nl.
 
 :- makeauxtables:verify_consistency. %% RS-140420  Between current and previous period?     
-:- makeauxtables:makeauxtables.      %% RS-130330       Takes a minute...         %%Skip for now...
-:- makeauxtables:createhash.        %% RS-130330       Takes another minute...   %% Produce the db/namehashtable
+
+
+%:- makeauxtables:makeauxtables.      %% RS-130330       Takes a minute...         %%Skip for now...
+%:- makeauxtables:createhash.        %% RS-130330       Takes another minute...   %% Produce the db/namehashtable
+
+
 
 %% Already compiled by tucbuss -> monobuss! %?- [ 'db/discrepancies.pl' ].  %% Must be updated before winter %% TA -> RS-120805 Se e-post korrespondansen til Tore
 %:- load_files('busroute.pl', [load_type(source),compilation_mode(compile)]).    %% RS-140210    Bootstrapping for fast compilation!

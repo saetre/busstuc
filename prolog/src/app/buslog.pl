@@ -31,7 +31,7 @@
 %% META-PREDICATES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :- meta_predicate  once1(0) .    %% RS-140615  %% once1/1 meta-predicate
-:- meta_predicate  set_of(+,0,-) .
+%:- meta_predicate  set_of(+,0,-) . %% 141024. Moved BACK to utility.pl?
 :- meta_predicate  set_ops(+,0,-).
 :- meta_predicate  set_eliminate(+,0,-,-).
 :- meta_predicate  set_filter(+,0,-,-).
@@ -60,9 +60,11 @@ once1(P):-P,!. %% same as once, but version independent
                %% try once, otherwise FAIL
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Prologs set_of is baroque %% RS-140614  130sec runtime vs. 28sec runtime for \r tests/batch !
-set_of(X,Y,Z):-           %%
-    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
-    Z=[].                 %% What is wrong with empty sets ?
+%:- meta_predicate  set_of(+,0,-) . %% 141024. Moved BACK to utility.pl?
+%set_of(X,Y,Z):-           %%
+%    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
+%    Z=[].                 %% What is wrong with empty sets ?
+
 %% Sequence preserving set_of, ( first occurrence stays first)
 %set_ops(X,Y,Z):-
 %    findall(X,Y,Z1),
@@ -71,9 +73,11 @@ set_of(X,Y,Z):-           %%
 
 :- ensure_loaded( user:'../declare' ). %% RS-111213 ,  value/2, traceprog/2, trackprog/2
 
+:- ensure_loaded('../db/discrepancies.pl' ). %% RS-131230 alias_station2/3, etc.
+
 %%% RS-140101, UNIT: /  and  /utility/
 :-use_module( '../utility/utility', [ bound/1, charno/3, firstmem/2, lastmem/2, maximum/2, maxval/3, members/3, minimum/2, minval/3,
-        testmember/2, set_difference/3, starttime/0, timeout/3, unbound/1 ] ). %test/1, testmember/2 %  ]). %% Made loca: set_eliminate/4, set_filter/4, 
+        testmember/2, set_difference/3, set_of/3, starttime/0, timeout/3, unbound/1 ] ). %test/1, testmember/2 %  ]). %% Made loca: set_eliminate/4, set_filter/4, 
 %% locale meta-predicates: once1/1, test/1,  %% RS-131117 includes declare.pl
 
 :-use_module( '../utility/datecalc', [ add_days/3, days_between/3, addtotime/3, dayno/2, difftime/3, subfromtime/3, timenow2/2, today/1 ] ). %%, datetime/6, getdaynew/1, timenow/1, 
@@ -95,10 +99,9 @@ set_of(X,Y,Z):-           %%
 
 %% RS-111205, UNIT: db/
 :- use_module( '../db/topreg', [ route_period/4 ]).
-:- use_module( '../db/busdat', [ endneighbourhood/2, tramstation/1, vehicletype/2 ] ).
-:- ensure_loaded('../db/discrepancies.pl' ). %% RS-131230 alias_station2/3, etc.
+:- use_module( '../db/busdat', [ vehicletype/2, endneighbourhood/2, tramstation/1 ] ). % NOT USED!?!   
 :- use_module( '../db/places', [ alias_station/2, corr/2, foreign/1, isat/2, nostation/1, placestat/2, underspecified_place/1 ] ). % (PLACE) -> places.pl
-:- use_module( '../db/regbusall', [ nightbus/1, regbus/1 ] ).  %% RS-140619
+:- use_module( '../db/regbusall', [ nightbus/1 ] ).  %% RS-141024 % NOT USED!?!   , regbus/1
 :- use_module( '../db/regstr', [ streetstat/5 ] ).      %% RS-131224 Obsolete?
 :- use_module( '../db/timedat', [ aroundmargin/1, buslogtimeout/1, delay_margin/1, maxarrivalslack/1, maxtraveltime/1, softime/3 ] ).
 
@@ -2294,14 +2297,6 @@ coupled3(StartDeps,EndDeps,Day,DaySeqNo,Opts,Dep01,Mid01) :-
 	Dep01 = depans(BusN1,Rid1,Time1,Station1,BusN2,Rid2,Time2,Station2),
    Mid01=  midans(BusN1,OffTime,OffStation,BusN2,OnTime,OnStation).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% is not/1 operator or predicate!? It's both!   (not)/1 is the predicate, not is the prefix operator
-:- meta_predicate not(0).     % not/1,
-not X :- \+ X.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 % Find last possibillity
 bestcorr(StartDeps,EndDeps,Day,DaySeqNo, StartDep,EndDep,Mid,Opts) :-
 	 tofindlastcorr(Opts),
@@ -2310,9 +2305,17 @@ bestcorr(StartDeps,EndDeps,Day,DaySeqNo, StartDep,EndDep,Mid,Opts) :-
 	 reverse(StartDeps,RevDeps),
 	 lastcorr(Orig,Dest,RevDeps,EndDeps,Day,DaySeqNo,StartDep,EndDep,Mid).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%% (not)/1 is a predicate, and not can be written (also) a prefix operator (see operator-list in declare.pl)
+%:- meta_predicate not(0).     % not/1,
+%not X :- \+ X.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % Find first possibillity
 bestcorr(StartDeps,EndDeps,Day,DaySeqNo, StartDep,EndDep,Mid,Opts) :-
-	 not(tofindlastcorr(Opts)),
+	 \+ ( tofindlastcorr(Opts) ),
 		StartDep  =		depnode(_,_,_,_,_,_,_,_,Orig),
 		EndDep    =		depnode(_,_,_,_,_,_,_,_,Dest),
     firstcorr(Orig,Dest,StartDeps,EndDeps,Day,DaySeqNo,StartDep,EndDep,Mid).
@@ -2940,7 +2943,7 @@ sometimedeparts(Bus,Place):-
 
 
 % General test predicate
-:-meta_predicate testanswer(0,?) .
+:- meta_predicate testanswer(0,?) .
 testanswer(X,Y):-
     call(X),
     !,

@@ -11,21 +11,16 @@
 %        difact/2,       %% Dynamic,  context dependent  %% TA-980301
 %        fact0/1,        %% Semi permanent, in evaluate.pl
 %        %Compilation predicates?
-:-module( bustermain2, [ begin/0,        break/1,       c/1,            check/0,       crash/0,        create_taggercall/2,
-        dialog/0,      dialogrun0/0,   english/0,      hei/0,         ho/0,      %% hi/0,         See d_dialogue
+:-module( bustermain2, [ begin/0,        break/1,       c/1,            check/0,        create_taggercall/2,    % crash/0,        test on undefined predicate
+        dialog/0,      dialogrun0/0,   english/0,      hei/0,           hi/0,           ho/0,      %% See d_dialogue
         indentprintlist/2,     listxt/0,      logrun/0,        norsk/0,        plustoatom/2,  printparse/1,   %%        progtrace/2,
-        quit/0,        r/1,           readday/0,      restart/0,      run/1,  %%% readscript/0,   
+        quit/0,        r/1,           readday/0,        readscript/0,   restart/0,      run/1,  %%% readscript/0,   
         scanfile/2,    (sp)/1,         spyg/1,         spyr/1,         statistics/1,   status/0,
         testgram/0,    trackprog/2,    tuc/0,        update_compnames/1, %, user:value/1, (from declare.pl)
         webrun_english/0,      webrun_norsk/0, webrun_tele/0,  write_taggercall/1
 ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%:- volatile
-%        ( => )/2,    %% See declare.pl (dynamic) & translat.pl (assert)
-%        difact/2,    %% Dynamic,  context dependent  %% TA-980301
-%        fact0/1.     %% Semi permanent, in evaluate.pl
 
 %:- dynamic
 %        ( => )/2,    %% See translat.pl
@@ -35,52 +30,57 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RS-131225, UNIT: /   %% RS-131225, UNIT: utility/
 :- ensure_loaded( user:'declare.pl' ). %% RS-131228 "new syntax" defs, META-preds: for/2, remember/1, value/2, :=/2, =;/2
-:- use_module('utility/utility'). %% RS-120816 sequence_member, etc.
+ backslash( B ) :- user:backslash( B ). % RS-141024 "Imported" from declare.pl
 
+%% RS-131227, UNIT: EXTERNAL LIBRARIES
 :- use_module( library(system), [ sleep/1 ] ). 
-:- use_module( library(timeout) ). 
+:- use_module( library(timeout), [ ] ). 
+:- use_module( library(process), [ process_id/1 ] ).    %% RS-141024
 
-:- use_module( 'utility/library' ).  %% RS-131225
+%% RS-131225, UNIT: /utility/
+:- use_module('utility/utility', [ (:=)/2, (=:)/2, append_atomlist/2, append_atoms/3, for/2,
+                                   makestring/2, psl/2, purge/3, set_ops/3, shell_copyfile/2, starttime/0, timeout/3 ] ). %% RS-120816 sequence_member, etc.
+:- use_module( 'utility/library', [ reverse/2, shell/1 ] ).  %% RS-131225 exec/1 ] ). % RS-131227 Investigate this ;-)
 %:-use_module( 'utility/datecalc', [ datetime/6 ]).%% RS-131225    For app/buslog, telelog, etc?
+:-use_module( 'utility/writeout', [ doubt/2, language/1, out/1, output/1, prettyprint/1 ]).%% RS-141024
 
-%% RS-131227, UNIT: EXTERNAL LIBRARY
-:- use_module( library(process) ). %% , [exec/1,shell/1]). RS-131227 Investigate this ;-)
 
 %% RS-131224  calls the for-predicate  %% Used in FOR from makeauxtables
-:- use_module( getphonedir, [ create_tags/1 ]).        %% RS-131227    send_taggercall/1, etc.
-%:- use_module( interfaceroute, [  reset_period/0  ]).     % Interface procedures for handling interface to route modules
+:- use_module( getphonedir, [ create_tags/1, hazardous_tagname/1 ]).        %% RS-131227    send_taggercall/1, hazardous_tagname/1
+:- use_module( interfaceroute, [  reset_period/0  ]).     % Interface procedures for handling interface to route modules
 :- use_module( sicstus4compatibility ). %, [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 %% RS-130329 Make sure (gram/lang) modules are available: dcg_module, 
-:- use_module(tucbuses,[ backslash/1, dcg_module/1, language/1, legal_language/1, readfile_extension/1, script_file/1 ]). %% RS-140211
+%:-ensure_loaded( tucbuses ). % ,[ backslash/1, dcg_module/1, language/1, legal_language/1, readfile_extension/1, script_file/1 ]). %% RS-140211
+:-use_module( tucbuses, [ legal_language/1, readfile_extension/1, script_file/1 ]). %% RS-140211   backslash/1, dcg_module/1, 
+
 :-use_module( interfaceroute, [  reset_period/0 ] ).
 
 % RS-111205, UNIT: app/
 :- use_module( 'app/buslog' ). % , [ station/1 ] ).  %% RS-130210 called in for-predicate     bound/1, bus/1,
 
 % RS-111205, UNIT: db/
-:- use_module( 'db/places' ). %% [ corr/2, foreign/1, isat/2, placestat/2 ] ).
-:- use_module( 'db/regstr', [ streetstat/5 ] ). %% RS-131225  makeauxtables uses a for-loop with streetstat in it!!
+%:- use_module( 'db/places', [ corr/2, foreign/1, isat/2, placestat/2 ] ).
+%:- use_module( 'db/regstr', [ streetstat/5 ] ). %% RS-131225  makeauxtables uses a for-loop with streetstat in it!!
 :- use_module( 'db/teledat2', [ teledbrowfile/1  ]). %% File containing TELEDAT %% co-existing with BUSDAT
-:- use_module( 'db/timedat' ). %% , [ orig_named_date/2 ]). Called from main!       %% Time data for bus routes in general 
+%:- use_module( 'db/timedat', [ orig_named_date/2 ]). % Called from main!       %% Time data for bus routes in general 
 
 % RS-111205, UNIT: dialog/
-:- ensure_loaded( 'dialog/d_dialogue.pl' ). %% [ quit_dialog/0, dialogrun0, etc. ] ).
-:- ensure_loaded( 'dialog/portraycontext.pl' ). %% [ corr/2, foreign/1, isat/2, placestat/2 ] ).
-:- use_module( 'dialog/d_dialogue.pl' ). %% [ quit_dialog/0, dialogrun0, etc. ] ).
-:- use_module( 'dialog/portraycontext.pl' ). %% [ corr/2, foreign/1, isat/2, placestat/2 ] ).
+:- use_module( 'dialog/d_dialogue.pl', [ quit_dialog/0, dialogrun0/0 ] ). % etc.
+:- use_module( 'dialog/portraycontext.pl', [ pcontext/0 ] ).    % RS-141024     corr/2, foreign/1, isat/2, placestat/2
 
 % RS-131227    UNIT: tuc/
 :- use_module( 'tuc/anaphors' , [  resolve/2 ] ).       %% RS-131227
-:- use_module( 'tuc/evaluate' ). %%, [ evaluateq/1 ] ). %% RS-131224      fact0/1 etc. is DANGEROUS?
-:- use_module( 'tuc/fernando' ).     % GRUF == Grammar Utility File %% RS-131117
-:- use_module( 'tuc/lex' ).          % lcode1/2  is called in the for-predicate (etc.) %% RS-131225
+:- use_module( 'tuc/evaluate', [ evaluateq/1, evaluateq2/1 ] ). %% RS-131224      fact0/1 etc. is DANGEROUS?
+:- use_module( 'tuc/fernando', [ ] ).     % GRUF == Grammar Utility File %% RS-131117
+:- use_module( 'tuc/lex', [ ] ).          % lcode1/2  is called in the for-predicate (etc.) %% RS-131225
 :- use_module( 'tuc/lex', [ decide_topic/0, lexproc3/3, maxl/1, mix/2, spread/1, unknown_words/2 ] ).
-:- use_module( 'tuc/metacomp' ).     % genprod is called in the for-predicate (etc.) %% RS-131117
+:- use_module( 'tuc/metacomp', [ dcg_module/1 ] ).     % genprod is called in the for-predicate (etc.) %% RS-131117
+:- use_module( 'tuc/names', [ synname/2 ] ).     % genprod is called in the for-predicate (etc.) %% RS-131117
 %  Read a sentence into a list of symbols
 :- use_module( 'tuc/readin', [  ask_file/1, ask_user/1, read_in/1 ]). %%  Read a sentence into a list of symbols
 % ensure_loaded( 'tuc/torehash' ).   % RS-131224 OBSOLETE! Moved to utility/makeauxtables!
-:- use_module( 'tuc/translat', [ clausifystm/1, clausifyq/2  ] ).        %% RS-131227    UNIT: tuc/
+:- use_module( 'tuc/translat', [ (=>)/2, clausifystm/1, clausifyq/2  ] ).        %% RS-131227    UNIT: tuc/
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -111,7 +111,7 @@ break(_). %% dummy for breakpoints
 
 
 %% ?-prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates
-crash :- tore_amble_is_a_genious.  %% test on undefined predicate
+%crash :- tore_amble_is_a_genious.  %% test on undefined predicate
 
 spyg X :- dcg_module(L), 
           user:( parsetime_limit := 100000 ), %%  ONLY FOR DEBUGGING
@@ -408,8 +408,8 @@ status:-
    nl,output('Rules:'),nl,
    for( A => B ,   prettyprint( A => B)),
    nl,output('Facts:'),nl,
-   for( fact0(X),   prettyprint(X)), 
-   for( difact(UID,X),   prettyprint(UID:X)),   
+   for( user:fact0(X),   prettyprint(X)), 
+   for( user:difact(UID,X),   prettyprint(UID:X)),   
    track(2,(nl,output('Flags:'),listing(user:value/2))).  
 
 testgram:- 
@@ -571,8 +571,8 @@ readfrom(F):-
 
 %     textflag := true,        %  Read from text, don't skip to new Line
 %                              %  destroys  kl. 1720 in batch queries
-%    queryflag =: Oldqueryflag,%  destroys setting in startupfile
-%    queryflag := false,       %  Statements are not implicit queries 
+    queryflag =: Oldqueryflag,%  destroys setting in startupfile
+    queryflag := false,       %  Statements are not implicit queries 
 
     user:( readfile := FE ),   
     see(FE),

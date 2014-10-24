@@ -53,7 +53,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:-compile('tucbuses.pl'). %% Sicstus 4 requires *.pl extension  %:-use_module('tucbuses.pl', [ makegram/0 ] ).
+%:-compile('tucbuses.pl'). %% Sicstus 4 requires *.pl extension  %:-use_module('tucbuses.pl', [ makegram/0 ] ).
+:-use_module( 'tucbuses.pl', [] ). %% Sicstus 4 requires *.pl extension  %:-use_module('tucbuses.pl', [ makegram/0 ] ). %% RS-141024
 
 :-use_module( main, [ dialog/0, hei/0, hi/0, jettyrun/1, r/1, run/0, spyr/1, status/0 ] ). %% RS-140209    %?-compile('main.pl').
 

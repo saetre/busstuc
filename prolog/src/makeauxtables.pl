@@ -21,22 +21,45 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% META SECTION
+%% META-PREDICATES SECTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate complies(0,0) .
+:- meta_predicate dumppredas(0,?).       %% Moved to extracut... ??
+
 :- meta_predicate tafind(?,0,0), taexists(?,0,0), taforall(?,0,0) .
 tafind(_X,Y,Z):- Y,Z.
 taexists(_X,Y,Z):-Y,Z,!.
 taforall(_X,Y,Z):- \+ (Y, \+ Z),!.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% MOVED BACK TO UTILITY
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:- meta_predicate for(0,0) .   
+%for( P, Q ) :- %% For all P, do Q (with part of P). Finally true! forall/2 is sometimes false?
+%  P, Q,
+%  false;true.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:- meta_predicate set_of(?,0,?) .       %% RS-140615 Fix all meta_predicates like this? No arguments (suppressed or not?)
+%set_of( X, Y, Z ):-           %%
+%    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
+%    Z=[].                 %% What is wrong with empty sets ?
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:- meta_predicate test(0) .
+%test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 %% RS-140102. UNIT: /  and  /utility/  %% RS-140101 Moved to user:declare for common and early compilation!
 :- ensure_loaded( user:'declare.pl' ). %, [ := /2 etc. ] ). test/1 
+
+:- use_module( 'utility/utility.pl', [  delete1/3, ends_with/3, for/2, remember/1, set_of/3, textlength/2 ] ).
 :- use_module( 'utility/datecalc.pl', [ datetime/6 ] ). % add_days/3, easterdate/2, sub_days/3, this_year/1 ]).%% RS-121325-140928 to timedat.pl
-:- use_module( 'utility/utility.pl', [  delete1/3, ends_with/3, remember/1, textlength/2 ] ).
 :- use_module( 'utility/writeout', [  out/1, output/1, writepred/1 ] ). %writepred/1 is USED! in for/3 or set_of/3,
 
 %:- compile( busroute:'compileroute.pl' ).   %% Bootstrapping for compilation, faster than "ensure loaded"?!
 :- use_module( 'compileroute.pl', [ consultbase/1 ] ). %% Interface modules
-:- consultbase(tt).   %% Bootstrapping for compilation, faster than "ensure loaded"?!
+%COMPILE THE ENTIRE BUSROUTE
+:- consultbase(tt).   %% Bootstrapping for compilation
 
 :- use_module( 'interfaceroute', [ domain_module/2, thisdate_period_module/3, reset_period/0 ] ).
 
@@ -79,24 +102,6 @@ taforall(_X,Y,Z):- \+ (Y, \+ Z),!.
         unproperstation0/1,  
         fromstationonly0/1,
         tostationonly0/1.
-
-%% META-PREDICATES
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate dumppredas(0,?).       %% Moved to extracut... ??
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate for(0,0) . 
-for( P, Q ) :- %% For all P, do Q (with part of P). Finally true! forall/2 is sometimes false?
-  P, Q,
-  false;true.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate set_of(?,0,?) .       %% RS-140615 Fix all meta_predicates like this? No arguments (suppressed or not?)
-set_of( X, Y, Z ):-           %%
-    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
-    Z=[].                 %% What is wrong with empty sets ?
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%:- meta_predicate test(0) .
-%test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -210,7 +215,7 @@ createunproperstations :-
 
 %% It will always be correct after two "passes"
 
-createonlyfromstations:-   
+createonlyfromstations :-   
      for( fromstation1(A), assert( fromstationonly0(A) ) ),
 
      dumppredas( fromstationonly0(X), fromstationonly(X) ).
@@ -381,7 +386,6 @@ makeinteriors :-
 
 interiors(Z):- set_of(X,interior(X),Z).
 
-:- meta_predicate complies(0,0) .
 complies(P,Q) :- \+ (P, \+ Q).
 
 interior(Y):-  %% all neigbours have the same buslist

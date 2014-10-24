@@ -158,7 +158,7 @@ sentences([new:::P]) --->
     !,accept.
 
 sentences([P]) ---> 
-    {user:value(queryflag,true)}, 
+    {\+ user:value(queryflag,false)},
 %%     optional(grums),
     greetings0,   %% haz ? 
     implicitq(P), %% only one on the outer level.
