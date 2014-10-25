@@ -112,8 +112,8 @@ track(X, Y) :- user:track(X, Y) .
 :- use_module( '../db/regstr', [   streetstat/5 ] ). %% RS-111201 Remember to update source program, which is makeaux?
 :- use_module( '../db/teledat2', [  bustopic1/1, lookupdb2/3, teletopic1/1 ] ).
 :- use_module( '../db/timedat', [ named_date/2 ]).
-%:- ensure_loaded( '../db/topreg' ). %%, [     routedomain/1,        route_period/4    ] ).
-:- use_module( '../db/topreg', [     routedomain/1,        route_period/4    ] ).
+:- use_module( '../db/route_period', [ route_period/4 ] ).
+:- use_module( '../db/topreg', [ routedomain/1 ] ).
 
 %
 %%% RS-111205, UNIT: dialog/

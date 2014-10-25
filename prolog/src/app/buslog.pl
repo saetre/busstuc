@@ -98,7 +98,7 @@ once1(P):-P,!. %% same as once, but version independent
 %:- use_module( '../dialog/frames2', [ frame_getvalue_rec/4 ] ). %% RS-131223 etc? getcurrent/1, sequence_member/2  %% LOOPS? RECURSION? COMPILE-PROBLEM? %% RS-140927
 
 %% RS-111205, UNIT: db/
-:- use_module( '../db/topreg', [ route_period/4 ]).
+:- use_module( '../db/route_period', [ route_period/4 ]).
 :- use_module( '../db/busdat', [ vehicletype/2, endneighbourhood/2, tramstation/1 ] ). % NOT USED!?!   
 :- use_module( '../db/places', [ alias_station/2, corr/2, foreign/1, isat/2, nostation/1, placestat/2, underspecified_place/1 ] ). % (PLACE) -> places.pl
 :- use_module( '../db/regbusall', [ nightbus/1 ] ).  %% RS-141024 % NOT USED!?!   , regbus/1
