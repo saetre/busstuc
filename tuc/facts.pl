@@ -78,9 +78,9 @@ difact(F):-     %difact/1 (based on temporary difact/2 values)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 unproperstation1( X ) :-
-%    fail.
-    unproperstation(X), %% no bus passes %%  maybe empty
-    \+ neighbourhood(X).
+    fail.
+%    unproperstation(X), %% no bus passes %%  maybe empty
+%    \+ neighbourhood(X).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

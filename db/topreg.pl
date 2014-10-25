@@ -14,7 +14,7 @@
 % See busdat.pl for specialday to day mapping
 
 %% Ny linje
-:-use_module( 'route_period', [] ).
+%:-use_module( 'route_period', [ route_period/4 ] ).
 
 
 

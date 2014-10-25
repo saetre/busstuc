@@ -5613,7 +5613,7 @@ ip  user:set(nightbusflag,true) ).
 inattbuss2 rule bustrans:(
 is  srel/this_midnight/time/nil/_
 id  addcon flag(nightbusflag)
-ip  set(nightbusflag,true) ).   
+ip  user:set(nightbusflag,true) ).   
 
 
 inatt rule bustrans:( %% catch
