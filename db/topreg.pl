@@ -7,14 +7,14 @@
 
 %% Contains the important information about route modules. Loaded from interfaceroutes.pl module
 %% RS-131223    Included in / Exported throug   busroute.pl
-:-module('topreg', [ compilerouteaux/2, default_message/3, default_period/3, period_message/2, routedomain/1, route_period/4 ] ).
+:-module('topreg', [ compilerouteaux/2, default_message/3, default_period/3, period_message/2, routedomain/1 ] ). % , route_period/4
 
 % See compileroute.pl for compilation
 
 % See busdat.pl for specialday to day mapping
 
 %% Ny linje
-:-ensure_loaded('route_period').        
+:-use_module( 'route_period', [] ).
 
 
 
@@ -94,6 +94,11 @@ period_message( r1611_140623,
 period_message( r1611_140818,
 ['AtB Autumn routes',
  'AtB Høstruter']). %% \+ .   %% RS-120810
+
+period_message( r1612_141020,
+['End of Daylight Saving Time!',
+ 'Husk Vintertid!']). %% \+ .   %% RS-120810
+
 
 period_message( r1601_120101,
 ['AtB Winter routes',

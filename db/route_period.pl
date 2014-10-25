@@ -7,6 +7,7 @@
 
 %% Route module 'nil' in route_period means that the route module is not implemented yet
 %% Important to have dummy route modules to give message of no routes for this date
+%% START-DATES and END-DATES ARE INCLUSIVE (of the following nightbus too!?)
 
 %%%% ACTUAL  ROUTES              START-DATE           END-DATE (sorted!)
 
@@ -29,8 +30,8 @@ route_period(   tt, r1611_140331, date(2014,03,31),   date(2014,06,22) ).       
 route_period(   tt, r1611_140623, date(2014,06,23),   date(2014,08,17) ).	%% Sommer 2014
 route_period(   tt, r1611_140818, date(2014,08,18),   date(2014,10,06) ).	%% Høst
 route_period(   tt, r1611_141006, date(2014,10,06),   date(2014,10,19) ).	%% Høst_v2
-route_period(   tt, r1611_141020, date(2014,10,20),   date(2014,12,24) ).       %% Høst v4
-route_period(   tt, r1612_141020, date(2014,10,20),   date(2014,10,25) ).	%% VintertidsHelgen
+route_period(   tt, r1611_141020, date(2014,10,20),   date(2014,10,24) ).       %% Høst v4
+route_period(   tt, r1612_141020, date(2014,10,20),   date(2014,10,26) ).	%% VintertidsHelgen 25-26
 route_period(   tt, r1611_141020, date(2014,10,20),   date(2014,12,31) ).	%% Høst v4
 route_period(   tt, r1611_141020, date(2014,10,20),   date(2014,12,31) ).	%% Høst v3
 route_period(   tmn,r1630_101201, date(2012,12,01),   date(2014,12,31) ).
