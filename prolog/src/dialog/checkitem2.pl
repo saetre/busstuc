@@ -7,21 +7,31 @@
 %% Synthesis of old checkitem.pl and checkitemtele.pl    %:-module( checkitem, [] ) IS OBSOLETE!   %% RS-140914
 
 %% UNIT /dialog/
-:-module( checkitem2, [ checkitem/3, current_frame/1, remove_messages/2,  remtp/3, sysout_item/1, writeconstlist/1, writeconstlist1st/1 ] ).
+:-module( checkitem2, [ checkitem/3, current_frame/1, execute_program/1, remove_messages/2,  remtp/3, sysout_item/1, trackprog/2, writeanswer/1, writeconstlist/1, writeconstlist1st/1 ] ).
+
+:- meta_predicate  execute_program( 0 ).  %% Stay inside interapp? %% RS-140619
+:- meta_predicate  trackprog(+,0) .
+:- meta_predicate  writeanswer(0).
+%:- meta_predicate  writeanswer2(+,0,+). %% RS-141026  writeanswer2 is in interapp...
+
+:- volatile
+           current_frame/1.    %%, last_answer/2. %% RS-131218
+:- dynamic
+           current_frame/1.    %%, last_answer/2. %% RS-131218 Trouble with multiple Modules?
 
 %% User input terminals
 
-%% UNIT / AND /utiltity/
-:- ensure_loaded( user:'../declare' ).       %% RS-111212  traceprog/2, trackprog/2
+%%% RS-141026, UNIT: /
+:- use_module( '../main', [ value/2 ] ).
+%:- ensure_loaded( '../declare' ).       %% RS-111212  traceprog/2, trackprog/2
 
+%% UNIT /utiltity/
 :- use_module( '../utility/utility', [ ] ). %roundmember/2 ] ). %% RS-140208. := /2, listall/1, Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
-:- use_module( '../app/interapp', [ execute_program/1, isuccess/1, makeanswer/4, waves/0, writeanswer/1, writeprog/1 ] ). %% LOOP!! writeanswer/1, 
 
-%%% RS-131225, UNIT: /
-%:- use_module( '../main', [  ] ).
 
 %%% RS-140914, UNIT: /app/
 :- use_module( '../app/busanshp', [ bcp/1, bcpbc/1, bwrbc/1, colon/0, paraphrase/1, paraphrase2/2, paraphrase3/3, period/0, prent0/1, printmessage/1, space/0 ] ).
+:- use_module( '../app/interapp', [ isuccess/1, makeanswer/4, traceanswer/1, waves/0, writeprog/1 ] ). %% LOOP!! execute_program/1, writeanswer/1, is used in interapp 
 :- use_module( '../app/negans', [ makenegative/3, trytofool/2 ] ).
 
 %% RS-140914    UNIT: /dialog/
@@ -39,19 +49,18 @@
 
 %% UNIT: /utility/,     RS-140914
 :- use_module( '../utility/datecalc', [ daysucc/2, isday/1, today/1 ] ).
-:- use_module( '../utility/writeout', [ doubt/2 ] ).%% RS-140912
-
-
-
+:- use_module( '../utility/writeout', [ doubt/2, output/1 ] ).%% RS-140912
 :- use_module( '../app/pragma', [ flatroundre/2, pragma/3, roundmember/2 ] ). %% roundmember must be declared meta_predicate early on!
 
 
-:- volatile current_frame/1.    %%, last_answer/2. %% RS-131218
+%:- meta_predicate  trackprog(+,0) .
+trackprog( N, P ) :-
+    value( traceprog, M ), number(M), M >= N,
+    !,
+    ( nl, call(P) )    %% TA-110130
+        ;
+    true. %% Finally, succeed anyway
 
-:- dynamic current_frame/1.    %%, last_answer/2. %% RS-131218 Trouble with multiple Modules?
-
-
-trackprog(X, Y) :- user:trackprog(X, Y).
 
 
 %% NB  checkteleitem   and checkitem  are mingled %% TA-051106%%%%%%%%%%%%%
@@ -61,12 +70,12 @@ trackprog(X, Y) :- user:trackprog(X, Y).
 
 
 checkitem(Type, OldFocus, NewFocus) :-
-	user:( value(teleflag,true) ),
+	( value(teleflag,true) ),
 	!,	
 	checkitem(tele,Type,OldFocus,NewFocus). %% name of module
 
 checkitem(Type, OldFocus, NewFocus) :-
-  \+ 	user:( value(teleflag,true) ),
+  \+ 	( value(teleflag,true) ),
   checkitem(trans, Type,OldFocus, NewFocus).   %% name of module
 
 
@@ -291,9 +300,6 @@ checkitem(teletrans,uatg, focus(OldFrame, OldRefer, slot(Slot)), focus(NewFrame,
     commitref(Cid, OldRefer, NewRefer).
 
 
-
-%% ¤¤¤¤¤¤¤¤¤¤¤¤
-
 %% sant
 
 
@@ -440,9 +446,10 @@ checkitem(_,saf, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, [Tq
     saturate(Frame, Prog, NewProg),
     getcurrent(Cid),
     makenegative(Tql, NewProg, busanshp:AnswerOut),
+%    makenegative(Tql, NewProg, AnswerOut),
     waves,
     paraphrase2(Prog,Frame), %% <--- suspect for tele ??? %% TA-060705
-    writeanswer(AnswerOut),
+    writeanswer( busanshp:AnswerOut ),
     !,
     commitref(Cid, OldRefer, NewRefer).
 
@@ -638,6 +645,14 @@ sysout_item(reset_context).
 
 
 
+%% ¤¤¤¤¤¤¤¤¤¤¤¤
+%:- meta_predicate  writeanswer(0).
+writeanswer( Panswer ) :- 
+    traceanswer( Panswer ),
+    Panswer,
+    !. 
+
+
 
 writeconstlist1st([]).
 
@@ -672,8 +687,8 @@ writeconstlist([_=Val|Rest]) :-
 %%
 
 invitemore :- 
-    \+ user:value(directflag,true),      %% TA-060127
-    \+ user:value(telebusterflag,true),  %% TA-060216
+    \+ value(directflag,true),      %% TA-060127
+    \+ value(telebusterflag,true),  %% TA-060216
     nl,                             %% TA-051221
     prent0(invitemore),nl. 
 invitemore.
@@ -740,15 +755,14 @@ find_askfor2(trans,Frame, Slot, NewSlot):-
 %% ¤¤¤¤¤¤¤¤¤¤
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% MOVED TO interapp.pl
+%% MOVED BACK FROM  interapp.pl. Localized in checkitem2, interapp and update2, to avoid meta_predicate ordering conflicts. %% RS-141026
+%:- meta_predicate  execute_program( 0 ).  %% Stay inside interapp? %% RS-140619
+execute_program( Prog ) :-
 
-%execute_program(Prog) :-
-%
-%    trackprog(2, output('BEGIN  program')), 
-%(   call(Prog) ->   
-%           trackprog(2, output('END  program'));
-%           trackprog(2, output('FAIL  program')),
-%           fail).
-%  
-
+    trackprog(2, output('BEGIN  program')), 
+(   call( Prog ) ->
+           trackprog(2, output('END  program'));
+           trackprog(2, output('FAIL  program')),
+           fail ).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

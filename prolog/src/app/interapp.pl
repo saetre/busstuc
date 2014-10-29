@@ -9,22 +9,35 @@
 % Bruker pragma til å bygge buslog-program fra TQL (bustrans.pl),
 %       og senere til å bygge svar-program fra buslog-program (busans.pl)
 
+%:- meta_predicate  % This area (before :-module ) belongs to pragma!! Why? Last import?
+
 %% UNIT: /app/
-:-module( interapp, [ avoidfool/1, decidewday/2, determine_application_period/1, determine_query_period/0, execute_program/1, execute_program2/2,
-                       ieval/1, invisible_mess/1, isuccess/1, konstantify/1, makeanswer/4, newfree/1, notbothfree/2, nocols/2, prettypr/2,
-                      waves/0, webstat/3, writeanswer/1, writeprog/1 ] ).  % occ/2 and roundmember/2, % needed in pragma.pl?
+:-module( interapp, [ avoidfool/1, decidewday/2, determine_application_period/1, determine_query_period/0, execute_program2/2, % To checkitem2.pl execute_program/1, 
+                      ieval/1, invisible_mess/1, isuccess/1, konstantify/1, makeanswer/4, newfree/1, notbothfree/2, nocols/2, prettypr/2,
+                      traceanswer/1, waves/0, webstat/3, writeprog/1 ] ).  % occ/2 and roundmember/2, % needed in pragma.pl?
+
+:-op( 731,xfy, ::: ).    %% sentence tag  %% TA-090514 For main, tuc/ [ translat, gram_x, evaluate, dcg_x, anaphors ], dialog/d_dialogue, app/interapp
+:-op( 730,xfy, :: ).     %% lambda infix  %% RS-141026 For      tuc/ [ translat gram_x fernando  dcg_x anaphors ], app/interapp, dialog/ [checkitem/2 d_context d_dialogue frames/2 makeframe/2 parseres virtuals relax update2 usesstate2]
 
 %% META-PREDICATES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate  writeanswer(0).
 
 %:- meta_predicate  irun(+, ?, ?, 0).   %% irun/4. : means Stay inside interapp? Should the program be interpreted inside interapp? %% RS-140619
 %:- meta_predicate  irun0(+, ?, ?, 0).  %% irun0/4. Stay inside interapp? %% RS-140619
 %:- meta_predicate  irun1(+, ?, ?, 0).  %% irun1/4. Stay inside interapp? %% RS-140619
 %:- meta_predicate  isuccess(0).  %% Stay inside interapp? %% RS-140210
 
-%:- meta_predicate  execute_program( 0 ).  %% Don't stay inside interapp? %% RS-140619 %% RS-141012
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate  execute_program( 0 ).  %% Stay inside interapp? %% RS-140619
 :- meta_predicate  execute_program2( 0, + ).  %% Stay inside interapp? %% RS-140619
+:- meta_predicate  extractbing( +, 0, ?, ? ) .   %% RS-140617
+
+:- meta_predicate  foralltest(0,0).  %% for/2. Stay inside interapp? %% RS-140619
+:- meta_predicate  make_total_google( 0, ? ) .   %% RS-140927 Move up? Before busanshp?
+:- meta_predicate  once1(0) .    %% RS-140615  %% once1/1 meta-predicate
+:- meta_predicate  traceanswer(0).
+:- meta_predicate  totaljsonprint( +, 0 ) .      %% RS-140927
+:- meta_predicate  writeanswer(0).
 
 %:- meta_predicate  avoidfool( 0 ).  %% RS-141018
 %:- meta_predicate  find_tag( 0, - ). %% RS-141018
@@ -34,39 +47,28 @@
 %:- meta_predicate  makeanswertele(0).  %% Stay inside interapp? %% RS-140619
 %:- meta_predicate  printallmessagesprogram(0).   %% RS-141018
 %:- meta_predicate  printpaytag(0).
-%:- meta_predicate  writeanswer2(+,0,+).
-
-:- meta_predicate  foralltest(0,0).  %% for/2. Stay inside interapp? %% RS-140619
-:- meta_predicate  once1(0) .    %% RS-140615  %% once1/1 meta-predicate
-:- meta_predicate  traceanswer(0).
-
-:- meta_predicate make_total_google( 0, ? ) .   %% RS-140927 Move up? Before busanshp?
-:- meta_predicate totaljsonprint( +, 0 ) .      %% RS-140927
-:- meta_predicate extractbing( +, 0, ?, ? ) .   %% RS-140617
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-%%% RS-131225, UNIT: / and utility/
-:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
-
-%%% RS-131225, UNIT: /utility/
-:- use_module( '../utility/utility', [ append_atoms/3, flatround/2, newconst/1, sequence_member/2, fnuttify2/2, forget/1 ] ). 
-        % Made local:  occ/2, once1/1, %% RS-140928 %% RS-140412 output/1  %% RS-131231, False Warning, SPIDER-bug. output/1 IS used !! when called from... bustrans?
-
-foralltest(P,Q):- \+ ( P, \+ Q). 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-once1(P):-P,!. %% same as once, but version independent % try once, otherwise FAIL
-
-% 
 :- volatile
            webstat/3.
 :- dynamic 
            webstat/3.
 
+% 
+
+%% RS-141026    UNIT: /
+:- use_module( '../main.pl', [ ( := )/2, set/2, value/2 ] ). %MISERY?!
+%%% RS-131225, UNIT: / and utility/
+%:- ensure_loaded( '../declare' ). %% RS-111213 General (semantic) Operators
+
+%%% RS-131225, UNIT: /utility/
+:- use_module( '../utility/utility', [ append_atoms/3, flatround/2, newconst/1, fnuttify2/2, for/2, forget/1, sequence_member/2 ] ). 
+        % Made local:  occ/2, once1/1, %% RS-140928 %% RS-140412 output/1  %% RS-131231, False Warning, SPIDER-bug. output/1 IS used !! when called from... bustrans?
+:- use_module( '../utility/writeout', [ output/1 ] ). 
+
 %%% RS-140921, EXTERNAL LIBRARIES
 :- use_module( library( varnumbers ), [ numbervars/1 ] ). %% RS-140210.
-:- use_module( library( aggregate ), [ forall/2 ] ). %% RS-140210.
+%:- use_module( library( aggregate ), [ foral/2 ] ). %% RS-140210.   %% RS-141029  for-all Does NOT work like utility:for/2
 
 %%% RS-131225, UNIT: /
 :- use_module( '../main.pl', [ printdots/0 ] ). %% RS-111213 printdots/0
@@ -75,7 +77,7 @@ once1(P):-P,!. %% same as once, but version independent % try once, otherwise FA
 %%% RS-131225, UNIT: app/
 :- use_module( busanshp, [ empty_sms_message/1, pay/0, printmessage/1, printmessageunconditionally/1 ] ).
                 % make_total_google/2, startmark/0 %, og mange flere ] ). % bustrans calls ... space/0, ...
-:- use_module( buslog, [ station_trace/4, veh_mod/1 ] ). %% message/1 used in call-back from xxx!??? xxx = busanshp?
+:- use_module( buslog, [ station_trace/4, trackprog/2, veh_mod/1 ] ). %% message/1 used in call-back from xxx!??? xxx = busanshp?
 :- use_module( negans, [ makenegative/3, trytofool/3 ] ).       %% RS-140208
 :- use_module( pragma, [ pragma/3, pragma_aux/3 ] ). % , sequence_member/2.   %%RS-131228  pragma/3 etc. Is using "user:" here the way to go? %% RS-140927
 
@@ -86,17 +88,27 @@ once1(P):-P,!. %% same as once, but version independent % try once, otherwise FA
 :- use_module( '../db/statcoord2', [ statcoord/4 ] ). %% RS-120816 statcoord/4
 :- use_module( '../db/regstr', [ streetstat/5 ] ). %% RS-140928
 
+%% RS-141026, UNIT; /dialog/
+%:- use_module( '../dialog/checkitem2', [ execute_program/1 ] ).  %% RS-131117 includes declare.pl , writeanswer/1 localized
+
 %%% RS-131225, UNIT: /tuc/
 :- use_module( '../tuc/evaluate', [ evaluateq/1 ] ).  %% RS-131117 includes declare.pl
 
 %%% RS-131225, UNIT: utility/
 :- use_module( '../utility/datecalc' ). %%, [ timenow2/2, todaysdate/1 ] ).  %% RS-131231, SPIDER-bug. timenow2/2 IS used!!
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+foralltest(P,Q):- \+ ( P, \+ Q). 
+
+once1(P):-P,!. %% same as once, but version independent % try once, otherwise FAIL
+
 % Debug Exit: :(interapp,writeanswer(,(startmark,,(printmessage(date_isa_day(date(2014,4,13),sunday)),,(endline,,(printmessage(otherperiod(date(2014,4,13))),,(endline,,(google(dir(depnode(32,32,2,2,30,bus_0108_0007,108,2,dronningens_gate_d1),stavset)),,(bwrbusbc(nightbus,108),,(bcp(passes),,(bwr(dronningens_gate_d1),,(bcp(attime),,(bwt(32),,(nl,,(bcp(and),,(bcp(arrivesat),,(bwr(stavset),,(bcp(attime),,(bwt(54),,(period,,(output(...),,(bwrbusbc(nightbus,119),,(bcp(passes),,(bwr(munkegata_m1),,(bcp(attime),,(bwt(302),,(nl,,(bcp(and),,(bcp(arrivesat),,(bwr(stavset_senter),,(bcp(attime),,(bwt(325),,(period,earliesttimes))))))))))))))))))))))))))))))))) ?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %For tele!
-ieval(TQL0) :- user:value(teleflag,true),    %% RS-131228    Exported through tuc/evaluate.pl!
+ieval(TQL0) :- value(teleflag,true),    %% RS-131228    Exported through tuc/evaluate.pl!
     !,
 	 copy_term(TQL0,TQL),
 
@@ -124,17 +136,17 @@ ieval(TQL0) :-
 
     be_prepared(TQL,FQL), 
 %........               %%%%%%%%%    set(actual_domain,tt),   %% default %% TA-090827
-    user:set(airbusflag,false),   %% set dynamically if airbus request   %% TA-090331 set is from declare.pl
-    user:set(nightbusflag,false),  
-    user:set(warning_sentence,false),  
-    user:set(warningflag,false),
+    set(airbusflag,false),   %% set dynamically if airbus request   %% TA-090331 set is from declare.pl
+    set(nightbusflag,false),  
+    set(warning_sentence,false),  
+    set(warningflag,false),
 
 %%    determine_query_period, %% OUTDATED %% TA-110302
 %%    determine_application_period(TQL), %% OUTDATED %% TA-110302
 
-    forget( user:value(warningtime,_) ),  %% RS-131230-140928 forget is moved to utility
-    forget( user:value(prewarningtime,_) ), %% (all values are relevant)
-    forget( user:value(samedayflag,_) ), %% i.e. unknown 
+    forget( value(warningtime,_) ),  %% RS-131230-140928 forget is moved to utility
+    forget( value(prewarningtime,_) ), %% (all values are relevant)
+    forget( value(samedayflag,_) ), %% i.e. unknown 
 
 %................
 
@@ -159,13 +171,13 @@ ieval(TQL0) :-
     waves. 
 
 
-waves :-  user:value(norsource,true), %% TA-110207
+waves :-  value(norsource,true), %% TA-110207
     !.
 
-waves :-  user:value(traceprog,0), %% TA-110207
+waves :-  value(traceprog,0), %% TA-110207
           !.
 
-waves :-  user:value(dialog,1),
+waves :-  value(dialog,1),
           !.
 
 waves :-	
@@ -176,24 +188,24 @@ determine_query_period :-
      
     veh_mod(H),
 
-    (H=r1617_100621 -> user:( query_period := team );
-     H=r1611_100823 -> user:( query_period := atb );
-     user:( query_period := nil )
+    (H=r1617_100621 -> ( query_period := team );
+     H=r1611_100823 -> ( query_period := atb );
+     ( query_period := nil )
     ).
 
-determine_application_period([_:::TQL]):-
+determine_application_period( [ _ ::: TQL ] ) :-
     veh_mod(H),
     ( sequence_member( date(A,B,C) isa date, TQL ) -> %% date occurs
         search_period_module(tt, date(A,B,C), _J );   %% utility.pl? or topreg?
         _J=H),
      !,
-    (H=r1617_100621 -> user:( application_period := team );
-     H=r1611_100823 -> user:( application_period := atb );
-     user:( application_period := nil )
+    (H=r1617_100621 -> ( application_period := team );
+     H=r1611_100823 -> ( application_period := atb );
+     ( application_period := nil )
     ).
 
 determine_application_period(_):-
-    user:( application_period := nil ).
+    ( application_period := nil ).
 
 %¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
 
@@ -205,7 +217,7 @@ update_webstat :-  %% TA-090430
     retract(webstat(TODAY,SMS,TOT)), %% dynamic/ declare
     !,
 
-   (user:value(smsflag,true)
+   (value(smsflag,true)
            -> (SMS1 is SMS+1,TOT1 is TOT + 1)%% 
             ; (SMS1 is SMS,  TOT1 is TOT+1)),
     assert(webstat(TODAY,SMS1,TOT1)),
@@ -216,7 +228,7 @@ update_webstat :-  %% TA-090430
   
     SMS=0, TOT=0,
 
-   (user:value(smsflag,true)
+   (value(smsflag,true)
            -> (SMS1 is SMS+1,TOT1 is TOT + 1)%% 
             ; (SMS1 is SMS,  TOT1 is TOT+1)),
     assert(webstat(TODAY,SMS1,TOT1)),
@@ -251,8 +263,27 @@ be_prep1(TQL,FQL):-
 	 flatround(TQL2,FQL), 
 	 konstantify(FQL).         % Flat TQL
 
+
+%% ¤¤¤¤¤¤¤¤¤¤¤¤
+traceanswer( _:Panswer ) :- 
+	 value(traceans,L),
+	 L>1,
+    !,
+	 copy_term( Panswer, Pwr ),
+	 numbervars(Pwr),         % utility.pl?
+	 prettypr('Application answer program',Pwr),nl. 
+traceanswer(_). %% Otherwise
+
+
+writeanswer( Panswer ) :- 
+    traceanswer( Panswer ),
+    Panswer,
+    !. 
+
+%% sant
+
 writeprog(P) :-
-	 user:value(traceprog,L),
+	 value(traceprog,L),
 	 L>1,
 	 !,
     copy_term(P,Pwr),
@@ -264,15 +295,7 @@ writeprog(P) :-
 
 writeprog(_). % Otherwise
 
-traceanswer( _:Panswer ) :- 
-	 user:value(traceans,L),
-	 L>1,
-    !,
-	 copy_term( Panswer, Pwr ),
-	 numbervars(Pwr),         % utility.pl?
-	 prettypr('Application answer program',Pwr),nl. 
-traceanswer(_). %% Otherwise
-
+%% ¤¤¤¤¤¤¤¤¤¤¤¤
 
 % Check if TQL still contains elements that it does not know anything about
 % Before Try TUC
@@ -282,16 +305,16 @@ traceanswer(_). %% Otherwise
 
 
 irun( _A, _B, _C, _D ) :-    %% not interested in answer
-    user:value(norsource,true),%% TA-110207
+    value(norsource,true),%% TA-110207
     !.
 
 irun( _A, _B, _C, _D ) :-    %% not interested in answer
-    user:value(traceprog,0),%% TA-110207
+    value(traceprog,0),%% TA-110207
     !.
 
 
 irun( A, B, C, D ) :-
-    \+ user:value( busflag, true ), %% TA-110502 \+  !!!
+    \+ value( busflag, true ), %% TA-110502 \+  !!!
     irun0( A, B, C, D ),      %% Test for dummy answers
     !.
 
@@ -305,7 +328,7 @@ irun( A, B, C, D ) :-
 % Not proper program.   May be something for standard tuc instead 
 
 irun0( TQL, _FQL, _, PROG ) :-
-    \+ user:value(busflag,true),  %%  Drop TRY TUC  if busflag 
+    \+ value(busflag,true),  %%  Drop TRY TUC  if busflag 
     \+ isuccess( PROG ),
     \+ explain_query( TQL ),
     !,    
@@ -334,10 +357,10 @@ find_tag( _, nil ).
 % Successful program.  
 
 irun1( _, _FlatCode, _FC1, Program ) :-
-    user:value( teleflag, true ),
+    value( teleflag, true ),
     !,
     isuccess( Program ),
-    execute_program( Program ),         %% Just for debugging? %% RS-141012
+    execute_program( buslog:Program ),         %% Just for debugging? %% RS-141012 Moved to checkitem2.pl
          !, 
     makeanswertele( Program ).
 
@@ -349,8 +372,7 @@ irun1( _, FlatCode, _FC1, Program ) :-
     !,
     makeanswer( true, FlatCode, Program, Panswer ),
 	 !, 
-    ( user:value( mapflag, true ) -> true;
-       ( printpaytag(Program), writeanswer2( FlatCode, Program, Panswer ) ) ).
+    ( value( mapflag, true ) -> true ;  ( printpaytag(Program), writeanswer2( FlatCode, Program, Panswer ) ) ).
 
  
 % Unsuccessful program	
@@ -363,13 +385,13 @@ irun1( _, _FC, (item,_), Program ) :-   %% TA-110125    %% No messages
 
 
 irun1( _, _, FlatCode1, Program ) :-
-     makeanswer( false, FlatCode1, Program, busanshp:Panswer),
+     makeanswer( false, FlatCode1, Program, Panswer),
 	  !, 
      printpaytag( Program ),
     
      printallmessagesprogram( Program ), %% TA-110511 avoid 2Xneverpasses
      
-     writeanswer( busanshp:Panswer ).             %%
+     writeanswer( Panswer ).             %%
 
                                      % Must check pay comes first
 printpaytag( ProgIn ) :-
@@ -399,15 +421,27 @@ execute_program2( Program, true ) :-
 execute_program2(_Program,false). 
         
 
-execute_program( Module:Program ) :- %% For trace      %% RS-141012
-    call( Module:Program ). %% Someone else MUST have used the correct use_modules in user: (message/1 etc.)
-%   call( buslog:Program ). %% Someone else MUST have used the correct use_modules in user: (message/1 etc.)
+% MOVED TO CHECKITEM2.pl
+%execute_program( Module:Program ) :- %% For trace      %% RS-141012
+%    call( Module:Program ). %% Someone else MUST have used the correct use_modules in user: (message/1 etc.)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% MOVED BACK FROM  interapp.pl. Localized in checkitem2, interapp and update2, to avoid meta_predicate ordering conflicts. %% RS-141026
+%:- meta_predicate  execute_program( 0 ).  %% Stay inside interapp? %% RS-140619
+execute_program( Prog ) :-
+
+    trackprog(2, output('BEGIN  program')), 
+(   call( Prog ) ->
+           trackprog(2, output('END  program'));
+           trackprog(2, output('FAIL  program')),
+           fail ).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 printallmessagesprogram( Program ) :-
-    forall( sequence_member( message(T), Program ),   %% Print all messages in program
+    for( sequence_member( message(T), Program ),   %% Print all messages in program
         ( printmessageunconditionally(T) ) ).                  %% Unconditional print 
 
 %---------------------------------
+
 
 %% Problem:  if smsflag, the answer may accidentally be blank
 %% Test this and print messages anyhow, otherwise some standard
@@ -434,7 +468,7 @@ printallmessagesanswer( _FQL, _:Answer, false ) :- %% no deps, print even sms-in
     !,
 %%    call(pay),       %% <--- Check %% TA-071214 Nec?
     %   for(sequence_member(printmessage(T),Answer),   %% Print all printmessages in answer
-    forall( sequence_member(printmessage(T),Answer),   %% Print all printmessages in answer
+    for( sequence_member(printmessage(T),Answer),   %% Print all printmessages in answer
         ( printmessageunconditionally(T) ) ).
 
 
@@ -460,14 +494,8 @@ standardemptysmsanswer( false, (modifier(_),_), busanshp:bcpbc(cannotanswer) ).
 standardemptysmsanswer( false, _,               busanshp:bcpbc(cannotanswer) ).
 
 
-writeanswer( Panswer ) :- 
-    traceanswer( Panswer ),
-    Panswer,
-    !. 
-
-
 blankanswer( _:Panswer ) :-
-%%    user:value(smsflag,true),  %% <--- Hva skjer = [ ] (smsflag=false)
+%%    value(smsflag,true),  %% <--- Hva skjer = [ ] (smsflag=false)
    foralltest( sequence_member( X, Panswer ),  interapp:invisible_mess(X) ). % utility
 
 invisible_mess(Mess):- 
@@ -560,7 +588,7 @@ make_total_google( AnswerOut,  TOTAL ):-
     append([START1],BusTrace,SBANG),
     append(SBANG,[STOP1],TOTAL),
 
-    (user:value(mapflag,true) -> totaljsonprint( TOTAL, AnswerOut ) ; true).
+    (value(mapflag,true) -> totaljsonprint( TOTAL, AnswerOut ) ; true).
 
 
 googlemaptrace(nil,[]):-!. %% no route
@@ -853,7 +881,7 @@ isc(timeis(_)).                       % klokka
 isc(tramstations(_)).                 % navnet på trikkestasjonene
 isc(true).                            % Answer Yes
 
-isc( teleprocess(_,_,_,_) ) :- user:value( teleflag,true ).
+isc( teleprocess(_,_,_,_) ) :- value( teleflag,true ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

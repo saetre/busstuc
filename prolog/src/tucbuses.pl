@@ -17,15 +17,21 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %:-meta_predicate        prompt(+).     %% RS-140208    What's this for?
+%prompt( ' ' ) :- value(norsource,true). %% TA-110207
+%prompt('?: '). % Undefined Prompt.
+%prompt2( english, 'E: ' ).
+%prompt2( norsk, 'N: ' ).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% For main.pl, dict_e, dict_n, ...? moved to declare.pl
-%:-module( tucbuses, [ legal_language/1, % backslash/1, %% makegram/0,  compile_english/0, compile_norsk/0,   %% RS-140920 Moved back to metacomp
-%                      %dagrun_file/2,  dcg_file/2,     dcg_module/1, dcg_module/2, %% RS-131223 For metacomp.pl % UNUSED?: dcg_file/1,     
-%                      %dict_file/2,    dict_module/1,  dict_module/2, gram_file/2,     gram_module/1,  gram_module/2,   %% RS-131225 For lex.pl
-%                        %morph_file/2,   morph_module/1, %% RS-140920 For lex.pl?
-%                      prompt/1,       readfile_extension/1,           script_file/1 %% For readin.pl language/1,
-%] ).
+:-module( tucbuses, [ legal_language/1, % backslash/1, %% makegram/0,  compile_english/0, compile_norsk/0,   %% RS-140920 Moved back to metacomp
+                      %dagrun_file/2,  dcg_file/2,     dcg_module/1, dcg_module/2, %% RS-131223 For metacomp.pl % UNUSED?: dcg_file/1,     
+                      %dict_file/2,    dict_module/1,  dict_module/2, gram_file/2,     gram_module/1,  gram_module/2,   %% RS-131225 For lex.pl
+                        %morph_file/2,   morph_module/1, %% RS-140920 For lex.pl?
+                      prompt/1,       readfile_extension/1,           script_file/1 %% For readin.pl language/1,
+] ).
+
+:- use_module( 'main.pl', [ (:=)/2, value/2 ] ).
 
 %% :-prolog_flag(discontiguous_warnings,_,off).  %%   RS-130330, or dcg_e.pl gets noisy!
 

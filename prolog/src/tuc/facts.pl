@@ -19,10 +19,11 @@
 :-module( facts, [ difact/1, fact/1, have/4, isa/2, neighbourhood/1, precedent_firstname/1, unproperstation1/1 ] ). % Unknown stations (unproperstations) could be neibhorhoods at least!
 
 %% RS-131225, UNIT: / and utility/
-:- ensure_loaded( user:'../declare' ).       %% RS-111212 :-op( 710,xfx, isa ).
+:- ensure_loaded( '../declare' ).       %% RS-111212 :-op( 710,xfx, isa ).
 %:- use_module( '../utility/utility', [ ] ). %% RS-131225 value/2, etc?
 
-%MISERY? :- use_module( '../main', [ myflags/2 ] ).
+%MISERY? 
+:- use_module( '../main', [ difact/2, fact0/1, value/2 ] ).
 
 %%% RS-111205, UNIT: tuc/
 %:- use_module( evaluate, [  ] ).   % fact/1    %% RS-140921
@@ -50,14 +51,14 @@
 %% Hierarchy of facts 
  
 fact(X):-               %  Predefined interpretations 
-    user:value(deflag,true), % AD HOC FLAG  %% DEF IS  FOR COMMANDS
+    value(deflag,true), % AD HOC FLAG  %% DEF IS  FOR COMMANDS
     nonvar(X),                         %% John shows a car \= command
     X=Y/_,
     nonvar(Y),
  
     def X .   
 
-fact(X):- user:fact0(X).     %  Semi permanent
+fact(X):- fact0(X).     %  Semi permanent
 
 fact(X):- difact(X).    %  Dynamic Discourse facts 
 
@@ -68,19 +69,18 @@ fact( X isa Y ) :- !,      %  Default type definitions
 
 
 fact(event/real/now):-              %% TA-010913
-    \+ user:fact0(event/_/_).                    %% To allow 
+    \+ fact0(event/_/_).                    %% To allow 
                                     %% Is john a man ?
                                     %% before any event has taken place
 
 difact(F):-     %difact/1 (based on temporary difact/2 values)
-    user:value(context_id,UID),
-    user:difact(UID,F).
+    value( context_id, UID ),
+    difact(UID,F).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 unproperstation1( X ) :-
-    fail.
-%    unproperstation(X), %% no bus passes %%  maybe empty
-%    \+ neighbourhood(X).
+    unproperstation(X), %% no bus passes %%  maybe empty
+    \+ neighbourhood(X).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -388,26 +388,26 @@ sone3 isa zone.
 
 %% web   isa network. %% Technical:  web address 
 
-tore_amble isa man :- \+ user:value(teleflag,true). %% RS-131230 from declare
+tore_amble isa man :- \+ value(teleflag,true). %% RS-131230 from declare
 
-trond_engell isa man :- \+ user:value(teleflag,true). %% TE-120215
+trond_engell isa man :- \+ value(teleflag,true). %% TE-120215
 
-arvid_holme isa man :- \+ user:value(teleflag,true). 
+arvid_holme isa man :- \+ value(teleflag,true). 
 
-john    isa man :- \+ user:value(teleflag,true).    % belongs to every world :-)   -> Johan etc
+john    isa man :- \+ value(teleflag,true).    % belongs to every world :-)   -> Johan etc
 
-mary    isa woman :- \+ user:value(teleflag,true).  % needs some persons for testing
+mary    isa woman :- \+ value(teleflag,true).  % needs some persons for testing
 
-dave    isa man :-  \+  user:value(teleflag,true).  % 2001  :-)
+dave    isa man :-  \+  value(teleflag,true).  % 2001  :-)
   
 
 %% bob     isa man.     % (Jurafsky)
 
 
 (tore,amble) isa programmer :- %% Experiment
-    \+  user:value(teleflag,true). 
+    \+  value(teleflag,true). 
 
-(douglas,adams) isa author :-  \+  user:value(teleflag,true). 
+(douglas,adams) isa author :-  \+  value(teleflag,true). 
 
 
 bill_gates isa programmer.  %% (  :-) 
@@ -422,7 +422,7 @@ tagore isa programmer.
 
 Y isa year :- 
     number(Y),
-    \+ user:value(busflag,true),
+    \+ value(busflag,true),
     Y >0, Y =< 9999.
 
 
@@ -524,12 +524,12 @@ X isa route :-
 
 
 X isa route :- 
-    user:value(tmnflag,true), 
+    value(tmnflag,true), 
     X isa tram.
 
 
 X isa station :-
-         user:value(busflag,true), %% \+ dater
+         value(busflag,true), %% \+ dater
     station(X),                %%  Semantically, not actual
     \+ xforeign(X),             %%   ( adjust database error)  
     \+ unwanted_place(X),       %%   ( adjust database error)
@@ -555,7 +555,7 @@ X isa tramstation :-
 
 
 X isa neighbourhood :-  
-    user:value(busflag,true), %% \+ dater 
+    value(busflag,true), %% \+ dater 
     neighbourhood(X). 
 
 
@@ -645,9 +645,9 @@ bratseth  isa lastname. %% jon
 
 
 teleoption :- 
-   user:value(telebusterflag,true)
+   value(telebusterflag,true)
    ;    
-   user:value(teleflag,true).  
+   value(teleflag,true).  
 
 %% see teledat2.pl %% 
 
@@ -754,7 +754,7 @@ have(continent,country,X,Y):-
 
 
 precedent_firstname(Tor) :-
-        user:value(tags,Tags),
+        value(tags,Tags),
         precedent_firstname(Tags,Tor).
 
 precedent_firstname([[Tor,firstname]|_],Tor).

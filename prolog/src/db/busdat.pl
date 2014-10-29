@@ -35,12 +35,14 @@
 :- ensure_loaded( user:'../declare' ).       %% RS-120402       %% for(X,Y)
 :- use_module( '../utility/utility', [ bound/1, testmember/2 ] ).
 
+:- use_module( '../main', [ value/2 ] ).
+
 %% UNIT: /db/
 :- use_module( places, [ corr/2, foreign/1, isat/2, nostation/1, placestat/2 ] ). %% RS-131225
 :- use_module( regbusall, [ nightbus/1, regbus/1 ] ).  %% RS-140619
 :- use_module( timedat, [ named_date/2 ] ).  %% keep  until modules are fixed bound/1, bus/1, station/1
 
-%% RS-140416 Two different regbus (Period-independent, and many modules with regbus too. %%This used to be done from topreg? (Should be done from topreg::makeauxtable?)
+%% RS-140416 Two different regbus (Period-independent, and many modules with regbus too. %%This used to be done from topreg? (Should be done from topreg:makeauxtable?)
 %:- use_module( regcompstr, [] ). %% HEAVY DB! %:- use_module( regstr, [] ). %% HEAVY DB! %:- use_module( teledat2, [] ). %% HEAVY DB!
 
 %% UNIT: /
@@ -268,13 +270,13 @@ date_day_map(Date,  sunday):-  named_date(whitsun_day2,Date).   %  2. pinsedag
 
 
 maxnumberofindividualdepartures(2):-
-    user:value(smsflag,true),
-    \+ user:value(nightbusflag,true),   %% RS-131230 From declare.pl
+    value(smsflag,true),
+    \+ value(nightbusflag,true),   %% RS-131230 From declare.pl
     !. 
 
 maxnumberofindividualdepartures(3):- %% not ridiculously many sequence
-    user:value(smsflag,true),           
-    user:value(nightbusflag,true),           %% RS-131230 user:value is from declare.pl
+    value(smsflag,true),           
+    value(nightbusflag,true),           %% RS-131230 value is from declare.pl
     !. 
 
 maxnumberofindividualdepartures(3). 
@@ -328,16 +330,16 @@ exbusname(9924,skolebuss).
 
 
 xplacestat(trondheim,tmn_trondheim):- 
-    user:value(tmnflag,true).   %% RS-131230 from declare.pl  
+    value(tmnflag,true).   %% RS-131230 from declare.pl  
 
 
 xplacestat(town,hovedterminalen). 
 xplacestat(trondheim,hovedterminalen) :- 
-    \+user:value(dialog,1).     %% RS-131230 From declare.pl
+    \+value(dialog,1).     %% RS-131230 From declare.pl
 
 
 xplacestat(klæbu,klæbu_sentrum):- %% Not possible mess in daytime
-    user:value(nightbusflag,true). %%   NATTBUSSEN      %% RS-131230 From declare.pl
+    value(nightbusflag,true). %%   NATTBUSSEN      %% RS-131230 From declare.pl
 
 
 
@@ -347,7 +349,7 @@ xplacestat(klæbu,klæbu_sentrum):- %% Not possible mess in daytime
 
 
 xsynplace(X,Y):-
-    user:value(tmnflag,true),   %% RS-131230 From declare.pl
+    value(tmnflag,true),   %% RS-131230 From declare.pl
     !,
     domain_module(_,TMN),  %% RS-131230 From topreg.pl
     TMN \== nil, 
@@ -355,7 +357,7 @@ xsynplace(X,Y):-
 
 
 xsynplace(X,Y):-
-    \+ user:value(tmnflag,true),        %% RS-131230 From declare.pl
+    \+ value(tmnflag,true),        %% RS-131230 From declare.pl
     !,
     domain_module(tt,TMN),  %% RS-131230 From topreg.pl
     TMN \== nil, 
@@ -366,11 +368,11 @@ xsynplace(X,Y):-
 %% PLACE INTERFACE SECTION
 
 xsynplace(sentrum,gb_st_olavs_gt):- %% Generalize
-    user:value(tmnflag,true).   %% RS-131230 From declare.pl 
+    value(tmnflag,true).   %% RS-131230 From declare.pl 
 
                        
 xsynplace(toget,ts) :-  %% presumes stasjonen is not noun def
-   \+ user:value(tmnflag,true). %% RS-131230 From declare.pl
+   \+ value(tmnflag,true). %% RS-131230 From declare.pl
 
                         %%  jeg når toget til oslo
                         %%  jeg bor på (lade og toget) går
@@ -420,12 +422,12 @@ streetstat(A,B,C,D,E):-
 
 
 thetramno(One):-
-    user:value(tmnflag,true),   %% RS-131230 From declare.pl  
+    value(tmnflag,true),   %% RS-131230 From declare.pl  
     unique_vehicle(tram,true),
     thetram(One).
 
 thetramstation(STOGT):-
-    user:value(tmnflag,true),   %% RS-131230 From declare.pl 
+    value(tmnflag,true),   %% RS-131230 From declare.pl 
     tramstation(STOGT).
  
 
@@ -443,7 +445,7 @@ nostationfor1(X):-nostation(X).     %%  Places with no close bus station
 
 
 nostationfor1(X):-
-    \+ user:value(tmnflag,true),        %% RS-131230 From declare.pl 
+    \+ value(tmnflag,true),        %% RS-131230 From declare.pl 
     tramstation(X),
     \+ station(X).
 
@@ -458,7 +460,7 @@ tramstation(st_olavs_street). %% for street reference
 %% tram_station(st_olavs_gt). %% Wrong, kep for security %% TA-100317
 
 tramstation(X):-
-    user:value(tramflag,true),  %% RS-131230 From declare.pl  
+    value(tramflag,true),  %% RS-131230 From declare.pl  
     tram_module(Tram),   %%  tram_mod(Tram), %% succeeds also if tramflag=false
     Tram \== nil, %% precaution 
     Tram:hpl(_,_,X,_).   %%
@@ -469,7 +471,7 @@ tramstation(X):-
 
 
 xforeign(X):-
-    user:value(actual_domain,TT),       %% RS-131230 From declare.pl
+    value(actual_domain,TT),       %% RS-131230 From declare.pl
     xforeign(TT,X), %% NB relative to Team !
     \+ nightbusdestination(X).
 
@@ -489,7 +491,7 @@ xforeign(tt,C):- community(C,County), %% tt malvik foreign to fb
                 \+ station(C). %% e.g. berg     %% RS-130210 TODO:FIX BUG
 
 nightbusdestination(X):-
-    user:value(nightbusflag,true),      %% RS-131230 From declare.pl 
+    value(nightbusflag,true),      %% RS-131230 From declare.pl 
     member(X,[klæbu]). %% Ad Hoc
 
 
@@ -507,11 +509,11 @@ bus_dependent_station(Bus,Said,Meant):-
     bus_depend_station(Bus,Said,Meant),
     !.
 bus_dependent_station(_Bus,Said,Meant):- 
-    \+ user:value(airbusflag,true),     %% RS-131230 From declare.pl  
+    \+ value(airbusflag,true),     %% RS-131230 From declare.pl  
     Meant=Said.
 
 bus_dependent_station(_Bus,_Said,Meant):- 
-    user:value(airbusflag,true),        %% RS-131230 From declare.pl       
+    value(airbusflag,true),        %% RS-131230 From declare.pl       
     default_origin(_,Lerkendal),
     !,
     Meant=Lerkendal. %% Default (but not central!) 
@@ -525,7 +527,7 @@ bus_dependent_station(_Bus,_Said,Meant):-
 % bus_depend_station(<bus no>,<place said>,<station "meant">).
 
 bus_depend_station(_Bus,RGH,RGH) :- %% // busdependent ??????
-    user:value(airbusflag,true),        %% RS-131230 From declare.pl  
+    value(airbusflag,true),        %% RS-131230 From declare.pl  
     testmember(RGH,[royal_garden_hotell,britannia_hotell]),        %% RS-131230 From utility.pl
     !. %%% AD HOC 
 
@@ -668,13 +670,13 @@ corresp0(X,Y):-
 
 corresp(X,Y):-
 
-   user:value(actual_domain,T), %% RS-131230 From declare.pl
+   value(actual_domain,T), %% RS-131230 From declare.pl
   (corrx(T,X,Y)
    ;
    corrx(T,Y,X)).
 
 corresp(X,Y):-                    %% 
-   user:value(actual_domain,T), %% RS-131230 From declare.pl
+   value(actual_domain,T), %% RS-131230 From declare.pl
    (corrx(T,X,hovedterminalen)
    , %%%%%%% <----------- ; sic
    corrx(T,Y,hovedterminalen)).
@@ -750,7 +752,7 @@ airbusstation(royal_garden).
                                  
 
 internal_airbus(IAB):-  
-    user:value(internal_airbusflag,true) ->     %% RS-131230 From declare.pl 
+    value(internal_airbusflag,true) ->     %% RS-131230 From declare.pl 
         IAB=true
       ; 
         IAB=false.
@@ -820,12 +822,12 @@ preferred_transfer(46,47,pirbadet,munkegate_m4,city_syd).
 %% Airbus Section
 
 default_origin(_,sorgenfriveien) :- %% AD HOC 
-    user:value(airbusflag,true),        %% RS-131230 From declare.pl
+    value(airbusflag,true),        %% RS-131230 From declare.pl
     !.
 
 
 default_destination(_,værnes) :- %% AD HOC 
-    user:value(airbusflag,true),        %% RS-131230 From declare.pl
+    value(airbusflag,true),        %% RS-131230 From declare.pl
     !.
 
 

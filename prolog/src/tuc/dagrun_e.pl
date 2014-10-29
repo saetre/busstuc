@@ -19,12 +19,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% RS-131227    UNIT: utility/
-:-ensure_loaded( user:'../declare' ). %%, [ set/2, user:value/2 ] ).
-%?-user:use_module( '../declare', [ set/2, value/2 ] ). %% RS-140207
+:- ensure_loaded( '../declare' ). %% RS-141025
+:- use_module( '../main', [ set/2, value/2 ] ). %% RS-140207
 
 %% RS-131227    UNIT: tuc/
 %:-ensure_loaded( user:lex ). %%, [ maxl/1, txt/3 ] ).
-:-use_module( '../tuc/lex.pl', [ maxl/1, txt/3 ] ). %% RS-140207
+:- use_module( '../tuc/lex.pl', [ maxl/1, txt/3 ] ). %% RS-140207
 
 %% Consensical Grammar Runtime Predicates
 
@@ -67,9 +67,9 @@ w(U,U,X,X,UW,W):-
                          % An error message can never come too early
 
 upcur(N):-
-        (user:value(cursor,M),
+        (value(cursor,M),
          N > M  ->
-         user:set(cursor,N);  
+         set(cursor,N);  
          true).
 
 

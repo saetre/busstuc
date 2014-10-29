@@ -33,12 +33,13 @@
 
 %% ?-prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates// Testing
 
-:-ensure_loaded( user:'declare.pl' ). %%, [  ( := )/2,  meta_predicates, ( set_ops/3 ), etc.  ]).
+:- use_module( main, [ (:=)/2, dialog/0, hei/0, hi/0, jettyrun/1, r/1, run/0, spyr/1, status/0 ] ). %% RS-140209    %?-compile('main.pl').
 %Utility
-:- use_module( 'utility/utility.pl', [  ] ).     %%RS-141015    Make sure all the  :-meta_predicates  are declared
+%:- use_module( 'utility/utility.pl', [  ] ).     %%RS-141015    Make sure all the  :-meta_predicates  are declared
 
-:- compile('tucbuss'). %%, [ hei/0, run/0, etc. ] ). RS-130329 Make sure (gram/lang) modules are available: dcg_module, 
 %:-use_module( 'tucbuss.pl', [ hei/0, run/0 ] ).   %% Compiles tucbuses (norsk and english)
+:- compile('tucbuss'). %%, [ hei/0, run/0, etc. ] ). RS-130329 Make sure (gram/lang) modules are available: dcg_module, 
+
 
 %Busroute is already compiled from  monobus -> makeauxtables -> busroute?
 %:-use_module('busroute.pl', [] ).   %% Compiles database/* %   'busroute.pl', %% Compiles database/

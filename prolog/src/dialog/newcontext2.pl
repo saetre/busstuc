@@ -24,9 +24,10 @@
 %:- use_module( library(lists) ). %% delete/3 is also loaded from utility/library.pl !!
 
 %% UNIT: / and /utility/
-:- ensure_loaded( user:'../declare' ). %% RS-111213 General Operators, Meta_Predicates: set_of/3
-:- use_module( '../utility/utility', [ set_difference/3 ] ).       %% RS-131223 includes declare.pl
+:- ensure_loaded( '../declare' ). %% RS-111213 General Operators, Meta_Predicates: set_of/3
+:- use_module( '../main', [ value/2 ] ). %% RS-141015        Set variable-values,  in the user:module !
 
+:- use_module( '../utility/utility', [ set_difference/3 ] ).       %% RS-131223 includes declare.pl
 :- use_module( '../utility/library', [ delete/3 ] ).%% RS-131225 , reverse/2 for busanshp?
 
 %% RS-140101. UNIT: /app/
@@ -86,7 +87,7 @@ getcontext(Cid, X) :-
 
 
 newcontext(Cid):-		%% TLF 030402 %% unnec
-	user:value(teleflag, true), !,
+	value(teleflag, true), !,
 	frametemplate(telebuster, NewFrame), %% TA-051018      % frames2.pl
 	setcontext(Cid,
                    context([], [], [],
@@ -217,7 +218,7 @@ getref(Cid, X, Type) :-
 %% Topic is not yet in the frame
 
 gettopic(Topic) :- 
-    user:value(topic,Hopic) -> 
+    value(topic,Hopic) -> 
          Topic=Hopic
        ; Topic = nil.
 

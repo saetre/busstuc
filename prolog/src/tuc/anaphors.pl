@@ -5,18 +5,17 @@
 
 %% RS-131227    UNIT: tuc/
 %% Anaphoric resolution
-:- module( anaphors, [ matchresol0/2, nabi/3, resolve/2 ] ). % externalresolveit/2, inventresolveit/2, 
+:- module( anaphors, [ is_the/2, matchresol0/2, nabi/3, resolve/2 ] ). % externalresolveit/2, inventresolveit/2, 
 
 %% UNIT: / and /utility
-:- ensure_loaded( user:'../declare' ).  %% RS-140915 , track/2
-track(X, Y) :- user:track(X, Y) .
+%:- ensure_loaded( '../declare' ).  %% RS-140915 , track/2
 
 %% RS-131225, UNIT: utility/
-:- use_module( '../utility/utility', [ match/2, nth/3 ] ). %local: , test/1
+:- use_module( '../utility/utility', [ match/2, nth/3, test/1 ] ). %local: , test/1
 :- use_module( '../utility/library', [ reverse/2 ] ).%% RS-131225
 
 %% RS-111205, UNIT: / 
-%:- use_module( '../main.pl', [  ] ). %% RS-140209 hei/0,   run/0
+:- use_module( '../main.pl', [ value/2 ] ). %% RS-140209 hei/0,   run/0,  track/2 localized to avoid MISERY!
 
 %% RS-140210. UNIT: /tuc/
 :- use_module( evaluate, [ disqev/1, fakt/1 ] ).          %% RS-140210
@@ -28,10 +27,12 @@ track(X, Y) :- user:track(X, Y) .
 %% RS-140210. UNIT: /dialog/
 :-use_module( '../dialog/newcontext2.pl', [ dialog_resolve/2 ] ).       %% RS-140210
 
-%% META-PREDICATES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate test(0) .  %% RS-140615  %% test/1 is a meta-predicate ( just passing on the incoming X-predicate
-test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
+%% META-PREDICATES
+:- meta_predicate  track(+,0) .
+
+%:- meta_predicate test(0) .  %% RS-140615  %% test/1 is a meta-predicate ( just passing on the incoming X-predicate
+%test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -113,8 +114,8 @@ resolv(findalt(_,_,_)::P,Q,L):-
 
 
 resolv(findpron(X)::P,Q,L):-     % Internal resolution
-    %% user:value(textflag,true),  
-    %% \+ user:value(busflag,true), %% <-- Hazard ? 
+    %% value(textflag,true),  
+    %% \+ value(busflag,true), %% <-- Hazard ? 
     internalresolve(X,L),  
     !,
     resolv(P,Q,L).    
@@ -143,9 +144,9 @@ resolv(findpron(X:T)::P, exists(X:T)::  Q,L):- % External resolution of pronoun
 
 
 resolv(find(X)::P,Q,L):-     % 1.  Internal resolution  first
-%%%     user:value(textflag,true),    %% only for texts  
+%%%     value(textflag,true),    %% only for texts  
                              %% from nth to this palce \= nth
-    \+ user:value(dialog,1), 
+    \+ value(dialog,1), 
     internalresolve(X,L),  
     !,
     resolv(P,Q,L).    
@@ -232,14 +233,12 @@ resolv(X,X,_):-
 
 inventresolveit( X:Y, P, X isa Y and Q, L ) :-
     !,
-    track(2,(write('Unresolved reference:  '),
-             write(Y),nl,nl)),        
+    track( 2, ( write('Unresolved reference:  '),   write(Y),nl,nl) ),        
     resolv(P,Q,L).
 
 inventresolveit(X:Y,P,X isa Y and Q,L):- 
     !,
-    track(2,(write('Unresolved reference:  '),
-             write(Y),nl,nl)),        
+    track( 2, ( write('Unresolved reference:  '),   write(Y),nl,nl) ),        
     resolv(P,Q,L).
 
 
@@ -327,14 +326,14 @@ externalresolve(tuc,tuc isa savant):- %% this system = TUC
 
 
 externalresolve(X,P):-   %   Resolve references using the dialog manager
-     user:value(dialog,1), 
+     value(dialog,1), 
      !, 
      condq(P,Q),
      dialog_resolve(X,Q),  % dialog/newcontext2.pl
      !.
 
 externalresolve(X,P):-   % Dynamically query the qualia  X:_
-     \+ user:value(busflag,true), %% Not allowed for several users !!! 
+     \+ value(busflag,true), %% Not allowed for several users !!! 
      condq(P,Q),
      disqev(Q),          % query the DB using only discourse elements
      nonvar(X),          % testclass returns variables
@@ -346,7 +345,7 @@ externalresolve(X,P):-   % Dynamically query the qualia  X:_
 externalresolveit( X:_T ) :- nonvar(X), X=(_,_), ! , fail.
 
 externalresolveit( X:MT ) :-   % reference must not be
-    user:value( textflag, true ),
+    value( textflag, true ),
     is_the( X, K ),            % more specific than referent
     type( K, KT ),
     nogender( KT ),
@@ -499,3 +498,11 @@ mege0(X/N isa C,L,[X/N isa C|L]).
 
 
 %%%%%%%%%%%%%%%%%%%%%THE END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+track( N, P ) :- 
+    value( trace, M ),  number(M), M >= N, 
+    !,
+    call(P)   %% TA-110130
+;
+    true.
+

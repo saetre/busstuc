@@ -10,7 +10,9 @@
         % pronoun/1, rep_verb/1, rewording/2, splitword/2, synsms/2, synwordx/2, unwanted_adjective/1, unwanted_noun/1, unwanted_interpretation/2, verbroot2/2, xcompword/3,
 
 %% RS-131225    UNIT: /
-:- ensure_loaded( user:'../declare' ).
+:- ensure_loaded( '../declare' ).
+
+:- use_module( '../main.pl', [ backslash/1, value/2 ] ).
 
 %% MISERY! %% RS-131229
 %:- ensure_loaded( user:'../tucbuses' ).  %% RS-130329 Make sure (gram/lang) modules are available: dcg_module,
@@ -487,7 +489,7 @@ cw(yes). cw(you). cw(younger). cw(your). cw(yours).
 
 % synword names -> synplace  (busdat) 
 
-synwordx(X,Y):-user:value(smsflag,true),synsms(X,Y). 
+synwordx(X,Y):-value(smsflag,true),synsms(X,Y). 
 synwordx(X,Y):-synword(X,Y).
 
 
@@ -1077,7 +1079,7 @@ synword(youre,         tucs).
 synword(yourself,      tuc). 
 
 
-noisew(BS):-user:backslash(BS).
+noisew(BS):-backslash(BS).
 
 noisew('«').
 noisew('»'). 

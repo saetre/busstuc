@@ -48,14 +48,21 @@
 % adjname_template2/3, adjnamecomp_template/3, adjnoun_template/4, atv_template/6, co_template/6, decide_quantifier/4, dtv_template/6, event/4, thenwhat/3, tidvarp/3,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:- meta_predicate test(0) . %% RS-140211
 %test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)) among other things, so: import nostation/1  Move to pragma.pl ?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% RS-131228, UNIT: /  and  % UNIT: utility/    %% MISERY?
-:- ensure_loaded( user:'../declare' ).  %% RS-131223        Get dynamic definition for user:value/2
+%:- ensure_loaded( '../declare' ).  %% RS-131223        Get dynamic definition for user:value/2
 
+%% UNIT: /
+:- use_module( '../main', [ value/2 ] ).
 %:- use_module( '../utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
-:- use_module( '../utility/utility', [ divmod/4, subcase/2, testmember/2 ] ).       %% RS-131117 make local: test/1, 
+
+:- use_module( '../utility/utility', [ divmod/4, subcase/2, test/1, testmember/2 ] ).       %% RS-131117 make local: test/1, 
 :- use_module( '../utility/datecalc', [ datetime/6, this_year/1 ] ). %% test/1, 
 
 %:- ensure_loaded( user:'../tucbuses' ).  %% RS-130329 Make sure (gram/lang) modules are available: dcg_module, 
@@ -71,10 +78,6 @@
         adjnouncomp_templ/3, aligen2/2, align1/2, coher_class/3, dtv_templ/4, ( has_a )/2, iv_templ/2,  % RS-140921 Moved to semantic? ako/2,
         jako/2, measureclass/1, n_compl/3, particle/3, rv_templ/2, stanprep/2, subclass/2, subclass0/2, superclass0/2, tv_templ/3, v_compl/4, vako/2 ] ).  %% RS-131225    Necessary?
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate test(0) . %% RS-140211
-test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 subject_object_test(_ ,_:Self ,_):-
      subclass0(Self,agent),!. %% RS-140921 Moved to semantic? ako/2,
@@ -94,7 +97,7 @@ plausibleclocktest(H,M,HM) :- %%   10.10 -> clock / 10.11 -> date,
       HM is 100*H+M.
 
 
-value_world(W):- user:value(world,W),!;W=real. 
+value_world(W):- value(world,W),!;W=real. 
 
 
 decide_adjective(nil,_BusNo,true):-!.
@@ -424,7 +427,7 @@ isfaktor(100000).
 
 
 rep_verb(X):-  
-    dict_module(D),D:rep_verb(X).  %% RS-131231 "Imported" from tucbuses (norsk or english)
+    dict_module(D), D:rep_verb(X).  %% RS-131231 "Imported" from tucbuses (norsk or english)
 
 which_thing(X:Thing,which(X:Thing)):- 
      type(thing,Thing).
@@ -545,7 +548,7 @@ bealign(X:Savant,Y:Year,S,P,P and dob/be/X/Y/S):-
 
 
 bealign(X,Y,S, P, Q):- %% Explicitly  X is Noun // not Noun X
-    \+ user:value(textflag,true),
+    \+ value(textflag,true),
     !,
     align(X,Y,S, P, Q).
 
@@ -859,7 +862,7 @@ dtv_template(Give,X:MT, Y:WT,  Z:ZT, S, dob/Give/X/Z/S and srel/ind/Woman/Y/S) :
 % Attribute classes are always bottom %
 
 has_template(_,_,_):- 
-    user:value(error_phase,1),
+    value(error_phase,1),
     !.
 
  
@@ -940,7 +943,7 @@ preadj_template(NIL/A1,XT,W,P1):- %% TA-100326 NB
    adj_template(NIL,A1,XT,W,P1). 
 
 worldvalue(W):- 
-    user:value(world,W),!;W=real. 
+    value(world,W),!;W=real. 
 
 %% Pre Adjectives are situation invariant (no situation variable)
 %% Post Adjectives are situation dependent (situation parameters)
@@ -1211,7 +1214,7 @@ verb_compl(Sing,Prep,XY:T,U,S,Singing):-
 
 
 verb_compl(_,_,_,_,_,srel/nil/thing/nil/nil):- 
-    user:value(error_phase,1),
+    value(error_phase,1),
     !.
 
 
@@ -1222,7 +1225,7 @@ verb_compl(_,_,_,_,_,srel/nil/thing/nil/nil):-
 
 
 verb_compl(See,With,_X:PT,Y:TST,S,srel/With/thing/Y/S):-
-    user:value(unknownflag,true),
+    value(unknownflag,true),
     bottom(TST,thing),
     subclass0(PT,Person), %% NB Person superclass
     v_compl(See,Person,With,_Telescope), % takes whatever
@@ -1430,11 +1433,11 @@ negate(often,X, X).
 
 
 type(ID,ID):-
-    user:value(error_phase,0),      % initilly, full typecheck
+    value(error_phase,0),      % initilly, full typecheck
     !.
 
 type(_ID_,thing):-
-    user:value(error_phase,1),      % if no meaning, 
+    value(error_phase,1),      % if no meaning, 
     !.                           % has a type
                              % try without typecheck
 ctype(X,X). %% NEW REGIME    %% just for safety
@@ -1598,7 +1601,7 @@ latin(and,_:_,VARE:_,_):-    %% og være   %% EXTREMELY AD HOC (NORWAGISM)
 
 
 latin(and,_X:T1,_Y:T2,_):-  %% special for ambiguous names !!!
-    user:value(teleflag,true),
+    value(teleflag,true),
     T1==lastname,
     T2==lastname,
     !,

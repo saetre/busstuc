@@ -9,8 +9,8 @@
 
 %:- compile(d_main).            %% RS-141002 Changed to modules!
 :- use_module( d_main, [ ] ). % Import ALL?  %% RS-140914
-:- compile(d_dialogue).        %% RS-141002 Changed to modules!
-%:- use_module( d_dialogue, [ ] ). % Import ALL?
+%:- compile(d_dialogue).        %% RS-141002 Changed to modules!
+:- use_module( d_dialogue, [ ] ). % Import ALL?
 
 % :-compile(frames2). %% Common version %% TA-051017 %% :-compile(frames). %% OLD
 :- use_module( frames2, [ ] ). %% Common version %% TA-051017

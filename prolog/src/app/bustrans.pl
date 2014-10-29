@@ -23,10 +23,10 @@
 %   id ID
 %   ip IP.
 
-:- op( 1150, xfy, rule ). %% Moved to declare.pl   :- op( 1120,  fy, is ).  :- op( 1110, xfy, id ).  :- op( 1110, xfy, ip ).  % RS-140617
-:- op(1120,  fy, is ).
-:- op(1110, xfy, id ).
-:- op(1110, xfy, ip ).
+:- op( 1150, xfy, rule ). %% Moved to declare.pl ?  % RS-140617
+:- op( 1120,  fy, is ).
+:- op( 1110, xfy, id ).
+:- op( 1110, xfy, ip ).
 
 :- meta_predicate rule( +, 0 ) .   %% How can we get SPIDER to help us check that all predicates are imported correctly?
 %:- meta_predicate is( 0 ) .   %% How can we get SPIDER to help us check that all predicates are imported correctly?
@@ -99,8 +99,9 @@ nightbus
 */
 
 %UNIT: / and utility/
-:- ensure_loaded( user:'../declare' ). % includes NOT-volatile user:value/2.  %% RS-130630 This caused BIG TROUBLE!  value/2
-value(Key,Val) :- user:value(Key,Val).  %% RS-130630 value must NOT be volatile predicate!!! This caused BIG TROUBLE!
+:- ensure_loaded( '../declare' ). % includes NOT-volatile value/2.  %% RS-130630 This caused BIG TROUBLE!  value/2
+:- use_module( '../main', [ value/2 ] ).
+%value(Key,Val) :- value(Key,Val).  %% RS-130630 value must NOT be volatile predicate!!! This caused BIG TROUBLE!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -122,13 +123,13 @@ module_dependencies :-
         fail ; true .   %% Get all use_modules, then succeed...
 
 %UNIT: /utility/  and  /
-dep_module( '../utility/utility', [ bound/1, implies/2, set_of/3, testmember/2, unbound/1 ] ). %% RS-131225  set/2, user:set(X,Y) from declare.pl
+dep_module( '../utility/utility', [ bound/1, implies/2,  set_of/3, testmember/2, unbound/1 ] ). %% RS-131225 set(X,Y) from declare.pl
 dep_module( '../utility/datecalc', [ add_days/3, addtotime/3, before_date1/2, days_between/3, daysucc/2, difftime/3, finddate/2, findfirstcomingdate/2, isday/1,
                                      sub_days/3, subfromtime/3, timenow/1, timenow2/2, today/1, todaysdate/1, valid_date/1, weekday/2,
                                      xweekday/2 ] ).
 %UNIT: /
 dep_module( '../interfaceroute', [ decide_period/2 ] ). %% RS-141015 
-%dep_module( '../main', [ ] ). %% RS-141015        Set variable-values,  in the user:module !
+dep_module( '../main', [ set/2 ] ). %% RS-141015        Set variable-values,  in the module !
 
 %UNIT: /app/
 %%% RS-131225, UNIT: app/
@@ -194,7 +195,7 @@ tracevalue(L) :- value(traceprog,L).  % Trace level 1-7      %% RS-131225    Def
 %% ONLY FOR TESTING (Rune)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%TESTING RS-140929 %% RS-140101 AVOID existence error for all predicates used in the rules.
-%:- use_module( pragma, [ pragma/3, i0/3, d0/3, p0/1 ] ). % , sequence_member/2.   %%RS-131228  pragma/3 etc. Is using "user:" here the way to go? %% RS-140927
+%:- use_module( pragma, [ pragma/3, i0/3, d0/3, p0/1 ] ). % , sequence_member/2.   %%RS-131228  pragma/3 etc. Is using "" here the way to go? %% RS-140927
 %test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
 %safe :- 
 %        %pragma( bustrans, [(doit,reply('Hei'))], _X ),
@@ -203,7 +204,7 @@ tracevalue(L) :- value(traceprog,L).  % Trace level 1-7      %% RS-131225    Def
 %         i0( RuleModule:InSource, Source, SourceMiddle ),      %% For *:rule/2 -> is (in source)
 %         d0( RuleModule:InDest, SourceMiddle, DestMiddle ),            %% For *:rule/2 -> id (in destination)
 %         writeout:output( DestMiddle ),nl,
-%         p0( RuleModule:Cond )     %% RS-140101 existence error in user:mixopt/3 ([to], [from], X), place_station, place_station         %% For *:rule/2 -> ip (in prolog)
+%         p0( RuleModule:Cond )     %% RS-140101 existence error in mixopt/3 ([to], [from], X), place_station, place_station         %% For *:rule/2 -> ip (in prolog)
 %       .
 %%  test( InSource ),
 %%  test( InDest ), 
@@ -284,7 +285,7 @@ tqllist3 rule bustrans:( %  varsel  buss går til nth
 is  [(flag,Flagname),replyq(_)]
 id  add message(mustknow(time)),
     add flag(exit) % no mire action
-ip  user:set(Flagname,true))
+ip  set(Flagname,true))
     :-single.
 
 
@@ -292,7 +293,7 @@ tqllist4 rule bustrans:( %  varsel  buss går til nth
 is  replaceall [(flag,Flagname),Rest]
     with Rest
 id  []
-ip  user:set(Flagname,true))
+ip  set(Flagname,true))
     :-single.
 
 
@@ -449,8 +450,8 @@ id  not flag(airbus),
 ip  internal_airbus(true),
     bound(X),
     airbus(X),
-    user:set(airbusflag,true),  %% must be reset initially
-    user:set(actual_domain,fb)).  %% reset in interapp
+    set(airbusflag,true),  %% must be reset initially
+    set(actual_domain,fb)).  %% reset in interapp
 
 airbusquery2 rule bustrans:(
 is  context X isa route  %% not class airbus
@@ -458,8 +459,8 @@ id  not flag(airbus),
     add flag(airbus)             %% Somewhat dirty
 ip  internal_airbus(true),bound(X),
     airbus(X),
-    user:set(airbusflag,true),  %% must be reset initially
-    user:set(actual_domain,fb)).  %% reset in interapp
+    set(airbusflag,true),  %% must be reset initially
+    set(actual_domain,fb)).  %% reset in interapp
 
 
 airbusquery3 rule bustrans:(
@@ -467,8 +468,8 @@ is  context _X isa airbus
 id  not flag(airbus),
     add flag(airbus)             %% Somewhat dirty
 ip  internal_airbus(true),
-    user:set(airbusflag,true),  %% must be reset initially
-    user:set(actual_domain,fb)).
+    set(airbusflag,true),  %% must be reset initially
+    set(actual_domain,fb)).
 
 
 airbusquery4 rule bustrans:(
@@ -476,8 +477,8 @@ is  context _Værnes isa airport
 id  not flag(airbus),
     add flag(airbus)
 ip  internal_airbus(true),
-    user:set(actual_domain,fb),
-    user:set(airbusflag,true)).
+    set(actual_domain,fb),
+    set(airbusflag,true)).
 
 
 %%% subtle, swaps sequence of sentrum flyplass -> værnes sentrum
@@ -489,8 +490,8 @@ is  replaceall (  srel/TO/place/free(X)/E , free(X) isa airport) %#%
 id  []
 ip  internal_airbus(true),
     default_destination(fb,Værnes),
-    user:set(airbusflag,true),
-    user:set(actual_domain,fb)).
+    set(airbusflag,true),
+    set(actual_domain,fb)).
 
 
 
@@ -503,7 +504,7 @@ id  not flag(nightbusflag),
     add flag(nightbusflag)
 ip  bound(X),
     nightbus(X),
-    user:set(nightbusflag,true)).  %% must be reset initially
+    set(nightbusflag,true)).  %% must be reset initially
 
 nightbusquery2 rule bustrans:(
 is  context X isa route  %% not class nightbus
@@ -511,13 +512,13 @@ id  not flag(nightbusflag),
     add flag(nightbusflag)             %% Somewhat dirty
 ip  bound(X),
     nightbus(X),
-    user:set(nightbusflag,true)).  %% must be reset initially
+    set(nightbusflag,true)).  %% must be reset initially
 
 nightbusquery3 rule bustrans:(
 is  context _X isa nightbus
 id  not flag(nightbusflag),
     add flag(nightbusflag)             %% Somewhat dirty
-ip  user:set(nightbusflag,true) ).  %% must be reset initially
+ip  set(nightbusflag,true) ).  %% must be reset initially
 
 nightbusquery4 rule bustrans:(   %% move this after shunt ?
 is  context _x isa midnight,
@@ -528,7 +529,7 @@ is  context _x isa midnight,
     not nrel/around/_/time/_/_ %%
 id  not flag(nightbusflag),
     add flag(nightbusflag)             %% Somewhat dirty
-ip  user:set(nightbusflag,true)).  %% must be reset initially
+ip  set(nightbusflag,true)).  %% must be reset initially
 
 
 donot rule bustrans:( %% dont do that
@@ -2299,7 +2300,7 @@ is  []
 id  addcon flag(warningflag)
 ip  value(warning_sentence,true), %%  reset by process
  \+ value(warningflag,true),
-    user:set(warningflag,true)).
+    set(warningflag,true)).
 
 warning_sentence_nosms  rule bustrans:( %% warning + sentence,nosms -> cannot
 is  []
@@ -2313,28 +2314,28 @@ warningflag1 rule bustrans:( %%  a warning => set warningflag
 is   _ isa notification
 id  addcon flag(warningflag)
 ip  \+ value(warningflag,true),
-      user:set(warningflag,true)).
+      set(warningflag,true)).
 
 
 warningflag2 rule bustrans:( %% varsler meg at /om/når
 is  dob/notify/_/A/_, A isa coevent       %% do notify coevent <--
 id  addcon flag(warningflag)
 ip  \+ value(warningflag,true),
-      user:set(warningflag,true)).
+      set(warningflag,true)).
 
 
 warningflag3 rule bustrans:( %% notify   du varsler []
 is  context (do)/notify/_/_     %% do notify duration
 id  addcon flag(warningflag)
 ip  \+ value(warningflag,true),
-      user:set(warningflag,true)).
+      set(warningflag,true)).
 
 
 warningflag4 rule bustrans:( %% set warningflag
 is  context dob/notify/_/_/_
 id  addcon flag(warningflag)
 ip  \+ value(warningflag,true),
-      user:set(warningflag,true)).
+      set(warningflag,true)).
 
 
 
@@ -2354,7 +2355,7 @@ is  send/tuc/N/E, present N isa notification,
     srel/before/vehicle/_/E
 id  []
 ip  value(warningflag,true),
-    user:set(prewarningtime,Ten)).
+    set(prewarningtime,Ten)).
 
 
 %%%% NN  prewarning rule bustrans:(s   with intransitive notify !!!!!
@@ -2367,7 +2368,7 @@ is  (do)/notify/tuc/E, srel/nil/duration/Ten/E,
     event/real/E
 id  []
 ip  value(warningflag,true),
-    user:set(prewarningtime,Ten)).
+    set(prewarningtime,Ten)).
 
 
 
@@ -2380,7 +2381,7 @@ is  present dob/notify/_Tuc/_/E,
     srel/before/_Coveh/_/E %% vehicle/coevent %% TA-110201
 id  []
 ip  value(warningflag,true),
-    user:set(prewarningtime,Ten)).
+    set(prewarningtime,Ten)).
 
 
 prewarning1after  rule bustrans:( %% warning time after first departure
@@ -2391,7 +2392,7 @@ is  present dob/notify/_Tuc/_/E,
 id  []
 ip  Tenafter is - Ten,
     value(warningflag,true),
-    user:set(prewarningtime,Tenafter)).
+    set(prewarningtime,Tenafter)).
 
 
 prewarning2before  rule bustrans:( %% warning time before first departure
@@ -2399,7 +2400,7 @@ is  present dob/notify/_Tuc/Ten/_, %% TUC or agent(passive)
     Ten isa minute
 id  []
 ip  value(warningflag,true),
-    user:set(prewarningtime,Ten)).
+    set(prewarningtime,Ten)).
 
 prewarning2after  rule bustrans:( %% warning time after first departure
 is  present dob/notify/_Tuc/Ten/_, %% TUC or agenet(passive)
@@ -2407,7 +2408,7 @@ is  present dob/notify/_Tuc/Ten/_, %% TUC or agenet(passive)
 id  []
 ip  Tenafter is - Ten,
     value(warningflag,true),
-    user:set(prewarningtime,Tenafter)).
+    set(prewarningtime,Tenafter)).
 
 
 prewarning3before  rule bustrans:( %% warning time before first departure
@@ -2415,7 +2416,7 @@ is  replaceall (Ten isa minute, B isa time,srel/nil/duration/Ten/C, srel/before/
     with       (B isa time)
 id  []
 ip  value(warningflag,true),
-    user:set(prewarningtime,Ten)).
+    set(prewarningtime,Ten)).
 
 prewarning3after  rule bustrans:( %% warning time after first departure
 is  replaceall (Ten isa minute, B isa time,srel/nil/duration/Ten/C, srel/after/time/B/C)
@@ -2423,7 +2424,7 @@ is  replaceall (Ten isa minute, B isa time,srel/nil/duration/Ten/C, srel/after/t
 id  []
 ip  Tenafter is - Ten,
     value(warningflag,true),
-    user:set(prewarningtime,Tenafter)).
+    set(prewarningtime,Tenafter)).
 
 
 prewarning4before  rule bustrans:( %% warning time before first departure
@@ -2431,7 +2432,7 @@ is  replaceall (F66 isa departure, Ten isa minute, (do)/be1/Ten/F69,srel/before/
     with       (F66 isa departure)
 id  []
 ip  value(warningflag,true),
-    user:set(prewarningtime,Ten)).
+    set(prewarningtime,Ten)).
 
 
 prewarning4after  rule bustrans:( %% warning time after first departure
@@ -2440,7 +2441,7 @@ is  replaceall (F66 isa departure, Ten isa minute, (do)/be1/Ten/F69,srel/after/d
 id  []
 ip  Tenafter is - Ten,
     value(warningflag,true),
-    user:set(prewarningtime,Tenafter)).
+    set(prewarningtime,Tenafter)).
 
 
 
@@ -2515,7 +2516,7 @@ itemrulesingle rule bustrans:( % an item %% Fronted
 is  item, _C isa _Class , clear% discard Class
 id  clear,
     add   message(completesentence)
-ip  []).  %% \+ testmember(Class,[nightbus,tram])
+ip  [])  %% \+ testmember(Class,[nightbus,tram])
  :-single.
 
 
@@ -4263,7 +4264,7 @@ id  not flag(airbus),
     not flag(nightbusflag),
     add flag(nightbusflag)
 
-ip  user:set(nightbusflag,true) ). %%  // necessary
+ip  set(nightbusflag,true) ). %%  // necessary
 
 %%%% before tomorrow rule bustrans:( %% TA-101025
 
@@ -5608,7 +5609,7 @@ ip  before(6,Twelve),before(Twelve,1300),
 inattbuss1 rule bustrans:(
 is  srel/in_midnight/time/nil/_
 id  addcon flag(nightbusflag)
-ip  user:set(nightbusflag,true) ).
+ip  set(nightbusflag,true) ).
 
 inattbuss2 rule bustrans:(
 is  srel/this_midnight/time/nil/_
@@ -7503,7 +7504,7 @@ id  addcon atday(XDAY),
     add message(noroutesforthisdate),
     add flag(exit)
 ip  xweekday(DATE,XDAY),
-    decide_period(DATE,TTP), %  user:set(actual_period, ThePeriod)
+    decide_period(DATE,TTP), %  set(actual_period, ThePeriod)
     TTP == nil ). %% <---- %% allow 21.4 2012
 
 %%%%     N isa day, srel/during2/time/N/B, %% om N dager
@@ -7516,10 +7517,10 @@ id  not flag(nightbusflag),
     add atdate2(DaySeqNo,DATE),
     addcon atday(XDAY)
 ip  xweekday(DATE,XDAY),
-    decide_period(DATE,TTP), %  user:set(actual_period, ThePeriod)
+    decide_period(DATE,TTP), %  set(actual_period, ThePeriod)
     TTP \== nil, %% <----
     dayModSeqNo(DATE,DaySeqNo),
-    user:set(samedayflag,false) ). %% Avoid time after now
+    set(samedayflag,false) ). %% Avoid time after now
 
 %% End setexdate section
 
@@ -7562,7 +7563,7 @@ id  not message(nodates), % no point if no routes
 ip  date_day_map(DATE,Holiday),
     special_day(Holiday),
     todaysdate(DATE),
-    user:set(samedayflag,true) ).
+    set(samedayflag,true) ).
 
 
 holywood2 rule bustrans:( %% Holiday , but another day
@@ -7668,7 +7669,7 @@ id   not flag(fail),
 ip   todaysdate(DATE),
      date_day_map(DATE,MapDay),
      \+  special_day(MapDay),
-    user:set(samedayflag,true) ). %% AD HOC, global
+    set(samedayflag,true) ). %% AD HOC, global
 
 
 
@@ -9219,14 +9220,14 @@ ip  [] ).
 %%% Warn at  time and date %%%%%%%%%%%%%%%%%%%
 
 warnattime rule bustrans:( %% varsle kl 1015  %% TA-110201
-is  { user:value(smsflag,true) }, %% TA-110202
+is  { value(smsflag,true) }, %% TA-110202
     tuc isa savant,CLOCK isa clock,
         dob/notify/tuc/_/A,srel/_After/time/CLOCK/A
 id  atdate2(_DaySeqNo,Date),
     flag(warningflag),
     add timeis(CLOCK),
     add busanshp:warningtime(Date,CLOCK)
-ip  user:set(warningtime, notification(Date,CLOCK)) ).
+ip  set(warningtime, notification(Date,CLOCK)) ).
 
 
 warnwhentimeis rule bustrans:( %% varsle når klokken er 1800  %% TA-110202
@@ -9245,7 +9246,7 @@ id  atdate2(_DaySeqNo,Date),
     flag(warningflag),
     add timeis(T1800),
     add busanshp:warningtime(Date,T1800)
-ip  user:set(warningtime, notification(Date,T1800)) ).
+ip  set(warningtime, notification(Date,T1800)) ).
 
 %%% What time and date %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -10416,7 +10417,7 @@ is  srel/nil/Plass/Place/_,  %% NOT coevent
     not present _ isa departure,
     not present _ isa arrival,  %% ankomst flybuss lerkendal
     not present srel/to/place/_/_,       %% "to time"
-    not present srel/to/_/_/_,  %% til D %% NSB qua company %% TA-101215
+%    not present srel/to/_/_/_,  %% til D %% NSB qua company %% TA-101215 %RS-141024 nth natt til søndag
     not present srel/towards/place/_/_,  %%
     not present srel/in/place/_/_,       %%  bussen nth for å være i nardo.
 
@@ -14824,7 +14825,7 @@ id  not flag(exit), %% Refraction
     add flag(exit),
     atdate2(_DaySeqNo,DATE),
     addfront notification(DATE,TIME)
-ip  user:set(warningtime, notification(DATE,TIME)) ).
+ip  set(warningtime, notification(DATE,TIME)) ).
 
 
 
@@ -14839,7 +14840,7 @@ id  not flag(exit), %% Refraction
     add flag(exit),
     atdate2(_DaySeqNo,DATE),
     addfront notification(DATE,TIME)
-ip  user:set(warningtime, notification(DATE,TIME)) ).
+ip  set(warningtime, notification(DATE,TIME)) ).
 
 wakeup2sick rule bustrans:(  %%  sick    %% You notify (me) 1245
 is  present dob/notify/_/TIME/_,
@@ -14851,7 +14852,7 @@ id  not flag(exit), %% Refraction
     add flag(exit),
     atdate2(_DaySeqNo,DATE),
     addfront notification(DATE,TIME)
-ip  user:set(warningtime, notification(DATE,TIME)) ).
+ip  set(warningtime, notification(DATE,TIME)) ).
 
 
 wakeup2 rule bustrans:(  %%  Just wakeup send notification
@@ -14866,7 +14867,7 @@ id  not flag(exit), %% Refraction
     add flag(exit),
     atdate2(_DaySeqNo,DATE),
     addfront notification(DATE,TIME)
-ip  user:set(warningtime, notification(DATE,TIME)) ).
+ip  set(warningtime, notification(DATE,TIME)) ).
 
 
 wakeup3 rule bustrans:(  %% Just wakeup send notification
@@ -14881,7 +14882,7 @@ id  not flag(exit), %% Refraction
     add flag(exit),
     atdate2(_DaySeqNo,DATE),
     addfront notification(DATE,TIME)
-ip  user:set(warningtime, notification(DATE,TIME)) ).
+ip  set(warningtime, notification(DATE,TIME)) ).
 
 
 
@@ -15759,7 +15760,7 @@ id  not flag(exit),
     not message(mustknow(place)),
     add message(mustknow(place)),
     add flag(exit)
-ip  [] ). %% user:set(warningflag,false).
+ip  [] ). %% set(warningflag,false).
         %% -> comes up again by :warningflag3
 
 
@@ -15773,7 +15774,7 @@ id  not flag(exit),
     not message(mustknow(place)),
     add message(mustknow(place)),
     add flag(exit)
-ip  user:set(warningflag,false) ).
+ip  set(warningflag,false) ).
 
 
 istand rule bustrans:( %% jeg står på X -> jeg går fra X

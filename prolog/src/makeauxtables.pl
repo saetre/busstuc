@@ -8,8 +8,9 @@
 %%%%%%%% Section to create Auxillary Bus Tables           %%%%%%%
 
 %% RS-131225    From torehash.pl (010101)  %% dynamic
-:-module( makeauxtables, [ createhash/0, taexists/3, verify_consistency/0, % verify_movedates/0 RS-140928 moved to db/timedat.pl
-                           createonlyfromstations/0, createonlytostations/0, makeauxtables/0, nopassanyway/2 ] ).
+:-module( makeauxtables, [ createhash/0, createonlyfromstations/0, createonlytostations/0, makeauxtables/0, nopassanyway/2, 
+                           taexists/3, verify_consistency/0, verify_files_exist/1 %, verify_movedates/0 %% RS-140928 moved to db/timedat.pl
+                         ] ).
 
 % Create files with auxillary bustables (auxtables.pl)
  
@@ -50,7 +51,7 @@ taforall(_X,Y,Z):- \+ (Y, \+ Z),!.
 
 
 %% RS-140102. UNIT: /  and  /utility/  %% RS-140101 Moved to user:declare for common and early compilation!
-:- ensure_loaded( user:'declare.pl' ). %, [ := /2 etc. ] ). test/1 
+:- ensure_loaded( 'declare.pl' ). %, [ := /2 etc. ] ). test/1 
 
 :- use_module( 'utility/utility.pl', [  delete1/3, ends_with/3, for/2, remember/1, set_of/3, textlength/2 ] ).
 :- use_module( 'utility/datecalc.pl', [ datetime/6 ] ). % add_days/3, easterdate/2, sub_days/3, this_year/1 ]).%% RS-121325-140928 to timedat.pl

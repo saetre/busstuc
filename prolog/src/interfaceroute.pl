@@ -8,7 +8,13 @@
 
 :-module( interfaceroute, [ current_period/4, decide_period/2, domain_module/2, thisdate_period_module/3, reset_period/0, search_period_module/3, valid_period/2 ] ).
 
-:- ensure_loaded( user:'declare.pl' ). %, [ := /2 etc. ] ). META:  set/2,   value/2
+% thisdate_period_module(TT,_,Period) contains the actual period... Dynamicly updated by reset_period/0
+:-volatile  thisdate_period_module/3 .       %% RS-120915 Not stored in the save_program
+:-dynamic   thisdate_period_module/3 .
+
+:- ensure_loaded( 'declare.pl' ). %, [ := /2 etc. ] ). META:  set/2,   value/2
+
+:- use_module( 'main.pl', [ set/2, value/2 ] ).
 
 :- use_module( 'utility/writeout', [ output/1 ] ).
 
@@ -23,39 +29,35 @@
 %% Question Date is the date occurring in the question
 
 
-% thisdate_period_module(TT,_,Period) contains the actual period... Dynamicly updated by reset_period/0
-:-volatile  thisdate_period_module/3 .       %% RS-120915 Not stored in the save_program
-:-dynamic   thisdate_period_module/3 .
-
 
 
 domain_module(D,M):- 
     routedomain(D), % unique solutions
-    route_period(D,M,_,_).
+    route_period( D, M, _, _ ).
 
 reset_period :- %% called from main.pl
-    user:( value(tramflag,true) ),  
-    user:set(actual_domain,gb), 
+    value(tramflag,true),
+    set(actual_domain,gb),
     set_period_module(gb),  
     current_period(gb,CP,_,_),
-    user:set(actual_period,CP), 
+    set(actual_period,CP),
 
     !. %% ///////// %% RS-140616 Tram ONLY? Use ONLY the FIRST MATCH for a given domain.
 
 reset_period :- %% main.pl
-    user:( value(tmnflag,true) ),
-    user:set(actual_domain,tmn),
+    value(tmnflag,true),
+    set(actual_domain,tmn),
     set_period_module(tmn),  
     current_period(tmn,CP,_,_),
-    user:set(actual_period,CP), 
+    set(actual_period,CP), 
 
     !. %% ///////// %% RS-140616 Trafikanten MidtNorge ONLY? Use ONLY the FIRST MATCH for a GIVEN domain?
 
 reset_period :- %% NB TT
-    user:set(actual_domain,tt), %% TA-110208
+    set(actual_domain,tt), %% TA-110208
     set_period_module(tt),  %% Default
     current_period(tt,CP,_,_),
-    user:set(actual_period,CP), 
+    set(actual_period,CP), 
 
 %%%  verify_movedates, %% check consistency  ---> main.pl ---> timedat.pl moved to create_named_dates
 
@@ -86,12 +88,12 @@ set_period_module(TT) :-
 
 
 search_period_module(TT,Date,Period):-
-    route_period(TT,Period,FromDate,Todate), % first 
-    on_valid_period(Date,FromDate,Todate),   % that matches
+    route_period( TT, Period, FromDate, Todate ), % first 
+    on_valid_period( Date, FromDate, Todate ),   % that matches
     !.
      
 search_period_module(TT,_Date,DO):-  %% BUSTER assumes default winter route
-    user:( value(dialog,1) ),  
+    value(dialog,1),  
     !,
     default_period(TT,winter,DO).   %% AD HOC   TT WINTER ROUTE
 
@@ -101,7 +103,7 @@ search_period_module(_TT,_Date,_Noperiod):-
 
 current_period(T,CurrentPeriod,Date1,Date2):-
     thisdate_period_module(T,_,CurrentPeriod),      
-    route_period(T,CurrentPeriod,Date1,Date2),
+    route_period( T, CurrentPeriod, Date1, Date2 ),
     !.
 
 
@@ -112,37 +114,37 @@ valid_period(X,Y):-current_period(_,_,X,Y).
 
 
 decide_period(DateInQuestion,ThePeriod):- 
-    user:( value(actual_domain,TT) ), 
+    value(actual_domain,TT), 
     search_period_module(TT,DateInQuestion,ThePeriod),
     !,
-    user:set(actual_period, ThePeriod). % actual_period := ThePeriod
+    set(actual_period, ThePeriod). % actual_period := ThePeriod
 
 decide_period(DateInQuestion,CurrentPeriod):- %% Same date => Period = current period
-    user:( value(actual_domain,TT) ), 
+    value(actual_domain,TT), 
     todaysdate(DateInQuestion), 
     !,
     thisdate_period_module(TT,_,CurrentPeriod),         
-    user:set(actual_period, CurrentPeriod). % actual_period := CurrentPeriod. 
+    set(actual_period, CurrentPeriod). % actual_period := CurrentPeriod. 
 
 decide_period(DateInQuestion,ActualPeriod):- 
-    user:( value(actual_domain,TT) ),
+    value(actual_domain,TT),
     current_period(TT,ActualPeriod,Date1,Date2),            %% Extra Check
     on_valid_period(DateInQuestion,Date1,Date2),    %% utility/datecalc
     !,
-    user:set(actual_period, ActualPeriod). %   actual_period := ActualPeriod.    %% This is the Period in the Question
+    set(actual_period, ActualPeriod). %   actual_period := ActualPeriod.    %% This is the Period in the Question
 
 decide_period(DateInQuestion,NextPeriod):- 
-    user:( value(actual_domain,TT) ),  
+    value(actual_domain,TT),  
     current_period(TT,_NOW,Date1,Date2),             %% Extra Check
     off_valid_period(DateInQuestion,Date1,Date2),    %% utility/datecalc
     search_period_module(TT,DateInQuestion,NextPeriod),
     !,
-    user:set(actual_period, NextPeriod). % actual_period := NextPeriod. %% This is the Period in Question
+    set(actual_period, NextPeriod). % actual_period := NextPeriod. %% This is the Period in Question
 
 decide_period(_,Nil):-
     !,
     Nil= nil, %% Bloody Trap %% TA-060101
-    user:set(actual_period,nil).  %% actual_period := nil.   
+    set(actual_period,nil).  %% actual_period := nil.   
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

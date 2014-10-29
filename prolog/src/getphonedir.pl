@@ -18,20 +18,26 @@
 %    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
 %    Z=[].                 %% What is wrong with empty sets ?
 %% Sequence preserving setof, ( first occurrence stays first)
-set_ops(X,Y,Z):-
-    findall(X,Y,Z1),
-    remove_duplicates(Z1,Z). %% order-preserving
+%set_ops(X,Y,Z):-
+%    findall(X,Y,Z1),
+%    remove_duplicates(Z1,Z). %% order-preserving
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:- meta_predicate  track(+,0) .
+
+%%% RS-141026, UNIT: /
+:- use_module( 'main', [ ( := )/2, value/2 ] ).
+%:- use_module( 'utility/utility', [ := /2 , user:value/2 ,  etc. ] ).  %% RS-140209 %% RS-131117 includes declare.pl
+%:- ensure_loaded( '../declare' ).       %% RS-111212  
 
 %% RS-131227    UNIT: / and /utility/
-:- ensure_loaded( user:'declare' ).    %% :-op( 714,xfx, := ).  etc... , track/2, trackprog/2
-track(X, Y) :- user:track(X, Y) .
-trackprog(X, Y) :- user:trackprog(X, Y) .
+%:- ensure_loaded( 'declare' ).    %% :-op( 714,xfx, := ).  etc... , track/2, trackprog/2
+%track(X, Y) :- user:track(X, Y) .
 
-%:- use_module( 'utility/utility', [ := /2 , user:value/2 ,  etc. ] ).  %% RS-140209 %% RS-131117 includes declare.pl
+:- use_module( 'dialog/checkitem2', [ trackprog/2 ] ). %% MOVED TO DIALOG      LOOP !!! parseres, 
+
+:- use_module( 'utility/utility', [ delete1/3, set_eliminate/4, set_ops/3 ] ). %keep local: foralltest/2, 
 :- use_module( 'utility/library', [ exec/3, remove_duplicates/2, shell/1 ]). %% TEMPORARY non-FIX!
-:- use_module( 'utility/utility', [ delete1/3, set_eliminate/4 ] ). %keep local: foralltest/2, 
-:- use_module( 'utility/writeout', [ output/1 ] ).%% RS-140912
+:- use_module( 'utility/writeout', [ out/1, output/1, track/2 ] ).%% RS-140912
 
 :- use_module( main, [ create_taggercall/2, update_compnames/1, write_taggercall/1 ] ).
 
@@ -83,7 +89,7 @@ getdbtagsdirect(TagSum, Result) :-
    %append_atomlist(['javaw ldapconnection.LDAPSearcher tag ', TagSum], Expression),
 
 
-  (user:value(windowsflag,true) ->  
+  (value(windowsflag,true) ->  
         Expression = 'javaw ldapconnection.LDAPSearcher'
         ; 
         Expression = 'java ldapconnection.LDAPSearcher'
@@ -107,8 +113,8 @@ getdbtagsdirect(TagSum, Result) :-
    Outstream = '$stream'(OutputstreamNo),
 
    % store the streams for later use
-   user:( outstream := InputstreamNo ),
-   user:( instream  := OutputstreamNo ),
+   ( outstream := InputstreamNo ),
+   ( instream  := OutputstreamNo ),
 
    get_chars_t(Result),
    set_input(OldInput).
@@ -121,7 +127,7 @@ getdbrowsdirect(Query, Result) :-
    %append_atomlist(['javaw ldapconnection.LDAPSearcher srch "', Query, '"'], Expression),
 
 
-  (user:value(windowsflag,true) ->  
+  (value(windowsflag,true) ->  
         Expression = 'javaw ldapconnection.LDAPSearcher'
         ; 
         Expression = 'java ldapconnection.LDAPSearcher'
@@ -168,14 +174,14 @@ streamnoisopen(StreamNo) :-
 
 reset_ldapcon :-
 	%% Find and close old stream
-	user:value(outstream, OutstreamNo),
+	value(outstream, OutstreamNo),
 	streamnoisopen(OutstreamNo),
 	current_output(OldOutput),
 	set_output('$stream'(OutstreamNo)),
 	nl,		%% send empty line to java-prog to terminate it
 	set_output(OldOutput),
-	user:(outstream := 0),
-	user:(instream := 0).
+	(outstream := 0),
+	(instream := 0).
 
 
 
@@ -258,7 +264,7 @@ remove_hitmarks(L2,L3):-
 
 
 x_getdbtags(PAT,Tags,Compnames) :- %% TLF-030408
-    user:value(useexternal,true),
+    value(useexternal,true),
     !,
     getdbtagsdirect(PAT,Input),
     xml_parse(Input,XML),
@@ -275,18 +281,18 @@ x_getdbtags(PAT,Tags,Compnames) :- %% TLF-030408
 
 
 x_getdbtags(_,_) :- 
-    \+ user:value(useexternal,true),
+    \+ value(useexternal,true),
     !,
     output('useexternal flag is false -> no tagging performed').
 
 
 x_receive_tags(Tags,Compnames,File) :-           %%
-    user:value(useexternal,true),
+    value(useexternal,true),
     !,
     y_receive_tags(Tags,Compnames,File).            %% MTK 021018/TLF
 
 x_receive_tags(_,_,_):-  %%
-    \+user:value(useexternal,true).
+    \+value(useexternal,true).
 
 
 
@@ -322,12 +328,21 @@ y_receive_tags(Tags,Compnames,File) :-          %% MTK 021018/TLF
 
 reset_tags :- %% TA-061009
 
-   user:( tags := [] ).
+   ( tags := [] ).
 
 
 update_tags(K):-
 
-   user:( tags := K ).
+   ( tags := K ).
+
+
+%track( N, P ) :- 
+%    value( trace, M ),  number(M), M >= N, 
+%    !,
+%    call(P)   %% TA-110130
+%;
+%    true.
+
 
 %update_compnames(Compnames) :-                  %% MTK 021018
 %    remove_dummycomps(Compnames,Compnames2),
@@ -350,8 +365,8 @@ update_tags(K):-
 %    plustoatom1(P2,PAT).
 %
 %append_synnames(L2,L3):- 
-%    user:value(busflag,true), %% TA-060613
-%    \+ user:value(teleflag,true), %% TA-080407 (not bor -> bro(
+%    value(busflag,true), %% TA-060613
+%    \+ value(teleflag,true), %% TA-080407 (not bor -> bro(
 %    !,
 %    set_ops(Y,(member(X,L2),synname(X,Y)),Z), %% seq. pres 
 %    append(L2,Z,L3).
@@ -369,7 +384,7 @@ hazardous_tagname(X):- %% TA-060213
  (   
     number(X);         %% TA-060214
 
-    user:value(language,N),dict_module(N,L),L:cw(X);             %% tuc/dict_ %% TA-070612
+    value(language,N),dict_module(N,L),L:cw(X);             %% tuc/dict_ %% TA-070612
 
     hazard_tagname(X) %%  db/teledat2
  ).

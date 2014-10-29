@@ -12,10 +12,7 @@
 %% Morphological Analyser for the language N.
 
 %% Sort out English/Norwegian import-conflict in tucbuses! %% USE ENGLISH AS DEFAULT?! %% RS-131225  lexn/5, lexbv/2?  %% RS-140102  Include? 
-%:-module( morph_n,[ adjflex/3, adjective/1, lcode2/2, lexv/4, noun/1, tall/2, verbroot/1 ] ). %% RS-131225
 :-module( morph_n,[ adjflex/3, adjective/1, lcode2/2, lexv/4, noun/1, tall/2, verbroot/1 ] ). %% RS-140428 %lcode2/2, Breaks user:lcode2/2 (from lex.pl) 
-
-:- ensure_loaded( user:'../declare' ).
 
 %% META-PREDICATE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -33,11 +30,11 @@ once1(P):-P,!. %% same as once, but version independent
 ]).
 
 %:-use_module( morph_e, [ lexv/2 ]).          %% RS-131225    Only /2 ? There is another one with /4
-%:-use_module( lex, [ part_word/1 ] ). %% RS-140209.
+:-use_module( lex, [ ] ). % lcode2/2 ] ). %% RS-141026.       % part_word/1
 :-use_module( semantic, [ adj_templ/2, ako/2, dtv_templ/4, iv_templ/2, pvi_templ/2, tv_templ/3 ]).
 
 %% RS-131225, UNIT: /   %% RS-131225, UNIT: utility/
-:- ensure_loaded( user:'../declare.pl' ). %% RS-131228 "new syntax" defs, META-preds: for/2, remember/1, value/2, :=/2, =;/2
+:- ensure_loaded( '../declare.pl' ). %% RS-131228 "new syntax" defs, META-preds: for/2, remember/1, value/2, :=/2, =;/2
 :- use_module( '../utility/utility', [ ends_with/3 ] ). %% RS-140209, Keep local: , once1/1
 
 %% ends_with(X,Y,Z):-           %% RS-131225    Try to use modules instead!
@@ -78,8 +75,6 @@ noun_form(X,Y,Sin,Def,N):-
 %       dont care   in the grammar
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% ends_with(Ord,Stamme,Ending):-user:ends_with(Ord,Stamme,Ending).      %% RS-131231    "Import from utility.pl"
 
 
 lcode2( ADVN, adv(ADVE) ):-   

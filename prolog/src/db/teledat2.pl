@@ -12,13 +12,22 @@
         tablename/1,            teledbrowfile/1,        teledbtagfile/1,      teleprocessdirect/4,      teletopic1/1,           unwanted_dbname/1
 ] ).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
+for( P, Q ) :- %% For all P, do Q (with part of P). Finally succeed
+  P, Q, false ; true.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%:- ensure_loaded( user:'../declare' ). %% Import has_a operator        %% RS-130624
+%% RS-141026    UNIT: /
+:- use_module( '../main.pl', [ value/2 ] ). %MISERY?!
+
 %% RS-111205, UNIT: utility
-:- ensure_loaded( user:'../declare' ). %% Import has_a operator        %% RS-130624
+:- use_module( '../utility/utility', [ append_atomlist/2, absorb/3, matchinitchars/3, pront/1 ] ).  %% RS-141029 for/2, 
 :- use_module( '../utility/library', [ remove_duplicates/2 ]). %% TEMPORARY non-FIX!
-:- use_module( '../utility/utility', [ append_atomlist/2, absorb/3, matchinitchars/3 ] ).
 :- use_module( '../utility/writeout', [ doubt/2, output/1 ] ).%% RS-140912
 
-:- ensure_loaded( user:'../version' ). %% Import has_a operator        %% RS-130624
+:- ensure_loaded( '../version' ). %% RS-130624
 
 :-use_module( '../getphonedir.pl', [  getdbrowsdirect/2 ] ). %% Get LDAP phone info from NTNU
 
@@ -331,9 +340,9 @@ has_att_val(_Agent,webaddress,atb,'http://www.atb.no'). %% %% agent? %% TA-10100
 
 has_att_val(program,programmer,tuc,tagore).  %%  (pseudonym of course :-)
 
-has_att_val(system,version,tuc,    X):- user:version_date(X).   %% RS-131231 version.pl?
-has_att_val(system,version,busstuc,X):- user:version_date(X).
-has_att_val(system,version,bustuc, X):- user:version_date(X).
+has_att_val(system,version,tuc,    X):- version_date(X).   %% RS-131231 version.pl?
+has_att_val(system,version,busstuc,X):- version_date(X).
+has_att_val(system,version,bustuc, X):- version_date(X).
 
 
 has_att_val(sms,price,tt,1).
@@ -357,7 +366,7 @@ has_att_val(sms,price,tt,1).
 % Address
 
 has_att_val(person,address,X,(Street,Num,Char)):-
-   user:value(teleflag,true), 
+   value(teleflag,true), 
    has_att_val(person,street,X,Street),
    has_att_val(person,streetnumber,X,Num),
    has_att_val(person,streetcharacter,X,Char).
@@ -367,7 +376,7 @@ has_att_val(person,address,X,(Street,Num,Char)):-
 % has_att_valx(person,lastname,telephone,amble,tore_amble,999)
 
 has_att_valx(Person,Lastname,Telephone,Amb,ToreAmble,N):-
-    user:value(teleflag,true),
+    value(teleflag,true),
     is_dom_val(Person,Lastname,Amb,_Amble,ToreAmble),
     has_att_val(Person,Telephone,ToreAmble,N).
 
@@ -381,14 +390,14 @@ set_of(X,Y,Z):-           %%
 
 
 is_tagged(Word,Concept):-
-    user:value(tags,Tags),
+    value(tags,Tags),
     member([Word,Concept],Tags),
 
     \+ unwanted_name(Word). %% hans \= Hans  (ad hoc) 
 
 
 setoftags(Tore,Taglist):-
-    user:value(tags,Tags),
+    value(tags,Tags),
 
     set_of(Tag,
          (member([result=WT],Tags),
@@ -486,14 +495,14 @@ teleprocessdirect( AddSelect,Table,Wherelist,Results ) :-
 
 
 perform_querycall2(InternalQuery,Result):-
-    user:value(useexternal,true),                          %% TLF 030408
+    value(useexternal,true),                          %% TLF 030408
     !,
     create_dbquery(InternalQuery,Query),
 
     getdbrowsdirect(Query,Result). %% Result is now in TQA (rowsample0)
 
 perform_querycall2(_InternalQuery,_Result):-               %% TLF 030408
-    \+ user:value(useexternal,true),
+    \+ value(useexternal,true),
     !,
     output('flag useexternal false ---> no db lookup').
 
@@ -528,7 +537,7 @@ make_querycall(Select1,Person,Wherelist,select(Select1,Person,Wherelist,_Z_)).
 
 
 write_querycall(ExternalQuery):-
-     user:value(traceprog,M), number(M), M >= 3,
+     value(traceprog,M), number(M), M >= 3,
      nl,
      write('QUERY:  '),
      output(ExternalQuery),nl. 
@@ -537,13 +546,13 @@ write_querycall(_).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-for( P, Q ) :- %% For all P, do Q (with part of P)
-  P, Q,
-  false;true.
+%for( P, Q ) :- %% For all P, do Q (with part of P)
+%  P, Q,
+%  false;true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 printdbresult(Z):-
-    for(member(L,Z),pront(L)),
+    for( member(L,Z),pront(L) ),
 
     nl,
 

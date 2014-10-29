@@ -15,6 +15,9 @@
         today/1,        todaysdate/1,   valid_date/1,   weekday/2,      weeknumber/2,         xweekday/2
 ] ).
 
+%% UNIT: /
+:- use_module( '../main', [ ( := )/2, value/2 ] ).
+
 %% UNIT: /utility/
 %:-use_module( utility, [ coerce2d/2, concat_atomlist/2 ] ). %RS-131223 Includes ?-compile( user:'declare.pl' ).
 
@@ -383,7 +386,7 @@ datetime(YYYY,MM,DD,HH,MIN,SEC):-
 % Prolog is really awkard here
 
 convert_zone(YYY, M, D, H,Min,Sec,   YYY,M,D,H,Min,Sec):- %% TA-080407
-    \+ user:value(busflag,true),
+    \+ value(busflag,true),
     !.
 
 convert_zone(YYY, M, D, H,Min,Sec,
@@ -478,10 +481,10 @@ monthdays(_,12,31).
 
 %%%%  DATE CALCULATIONS  
 
-on_valid_period(X,Y,Z) :- % X in [Y -- Z] inclusive %% TA-110411
-   X=date(_,_,_), %% NOT free( ) 
-   before_date0(Y,X),
-   before_date0(X,Z).
+on_valid_period( X, Y, Z ) :- % X in [Y -- Z] inclusive %% TA-110411
+   X=date( _, _, _ ), %% NOT free( ) 
+   before_date0( Y, X ),
+   before_date0( X, Z ).
 
 
 /* %% TA-110411
@@ -848,13 +851,13 @@ today(Dag) :-
 findday(Daynr,Dag) :-
     getdaynew(Dag),           %%  utility/ computes day from todate
 
-    user:(lastdaynr := Daynr),
-    user:(lastday  := Dag).
+    (lastdaynr := Daynr),
+    (lastday  := Dag).
 
 
 xlastday(Lastdaynr,Lastday):-
-    user:value(lastdaynr,Lastdaynr),
-    user:value(lastday,Lastday),
+    value(lastdaynr,Lastdaynr),
+    value(lastday,Lastday),
     !.
 
 xlastday(Lastdaynr,Lastday):- %% if missing

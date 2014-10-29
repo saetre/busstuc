@@ -16,7 +16,12 @@
 :-dynamic
            framecounter/1.
 
-:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
+%:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
+:-op( 730,xfy, :: ).     %% lambda infix  %% RS-141026 For      tuc/ [ translat gram_x fernando  dcg_x anaphors ], app/interapp, dialog/ [checkitem/2 d_context d_dialogue frames/2 makeframe/2 parseres virtuals relax update2 usesstate2]
+
+%% UNIT: /
+:- use_module( '../main', [ value/2 ] ).
+
 
 :- assert(framecounter(1)).
 
@@ -156,7 +161,7 @@ completeteleframe( %%  hva er adressen til AITEL ?
 
 
 resetframe :-    % unnec                           %% TLF-030402
-    user:value(teleflag, true),!,
+    value(teleflag, true),!,
     getcurrent(Cid),
     frametemplate(telebuster, NewFrame),    %% TA-051018
     setframe(Cid, NewFrame).
@@ -202,13 +207,13 @@ frame_getexperience_rec(Frame, Slot, Value, Type) :-
 %%%%%%%%%%%
 
 xframe_setvalue(Slot, Value) :-  %% TA-060328
-    user:value(dialog,1),
+    value(dialog,1),
     !,
     frame_setvalue(Slot, Value).
 xframe_setvalue(_Slot, _Value).
 
 xframe_getvalue(Slot, Value) :-  %% TA-060328
-     user:value(dialog,1),
+     value(dialog,1),
      frame_getvalue(Slot, Value,_Type).
 xframe_getvalue(_Slot, nil). %% NB nil not []
 
@@ -239,7 +244,7 @@ frame_setvalue_rec(Frame, Slot, Value, NewFrame) :-
     substitute([Slot, OldVal, class(Type), XCount], Frame, [Slot, Value, class(Type), Count], NewFrame).
 
 frame_getsubslots(StartSlot, Slot) :-           %% TLF 030402
-    user:value(teleflag, true),!,
+    value(teleflag, true),!,
     frametemplate(telebuster, Frame),           %% TA-051018
     frame_getsubslots(Frame, StartSlot, Slot).
 
@@ -411,7 +416,7 @@ frame_iscomplete(Miss) :-
     frame_iscomplete(Frame, Miss).
 
 frame_iscomplete(Frame, Miss) :-    %% TLF 030403
-    user:value(teleflag, true),
+    value(teleflag, true),
     !,
     (
         frame_isconsistent_tele(Frame),!,

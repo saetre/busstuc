@@ -36,8 +36,10 @@
   unwanted_station/1       % (PLACE)
 ] ).
 
+%% RS-141026    UNIT: /
+:- use_module( '../main.pl', [ value/2 ] ). %MISERY?!
 %%RS-131225     %% UNIT: /
-:- ensure_loaded( user:'../declare' ). %, [ := /2 etc. ] ).      %RS-131225  Get dynamic definition for user:value/2
+%:- ensure_loaded( user:'../declare' ). %, [ := /2 etc. ] ).      %RS-131225  Get dynamic definition for user:value/2
 
 %%RS-131225     %% UNIT: utility/
 :- use_module( '../utility/utility', [ ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
@@ -370,20 +372,20 @@ isat(øvre_flatåsveg,flatåsen). % 9,17
 
 nostation(arbeidsbuss). %% SIC  endstation bus 100 
 
-nostation(bygrensen):- \+user:value(tmnflag,true).    
+nostation(bygrensen):- \+value(tmnflag,true).    
 
-nostation(ferstad):-   \+user:value(tmnflag,true). %% Ferstads vei
+nostation(ferstad):-   \+value(tmnflag,true). %% Ferstads vei
 
 nostation(frøset). 
 
 
 
-nostation(herlofsonsløypa) :- \+user:value(tmnflag,true). 
+nostation(herlofsonsløypa) :- \+value(tmnflag,true). 
 %% nostation(heggsnipen). %% fins ikke i rdata(barei hefte). %%fikset 5.3.07
-nostation(lian):-      \+user:value(tmnflag,true).  
-nostation(nordre_hoem) :- \+user:value(tmnflag,true). 
-nostation(rognheim) :- \+user:value(tmnflag,true). 
-nostation(søndre_hoem):- \+user:value(tmnflag,true). 
+nostation(lian):-      \+value(tmnflag,true).  
+nostation(nordre_hoem) :- \+value(tmnflag,true). 
+nostation(rognheim) :- \+value(tmnflag,true). 
+nostation(søndre_hoem):- \+value(tmnflag,true). 
 
 
 %%%%%% Nostation  no bus to place ever
@@ -483,7 +485,7 @@ nostation(sundlandsveien).
  nostation(sundlandsskrenten). 
 
 %  nostation(st_olavs_gate). 
-nostation(st_olavs_gt):- \+ user:value(tmnflag,true).        %% RS-131223    From busdat.pl
+nostation(st_olavs_gt):- \+ value(tmnflag,true).        %% RS-131223    From busdat.pl
 
 
 nostation(teisendammen).  
@@ -7528,9 +7530,9 @@ specname(trondheim_torg,'Trondheim Torg').
 specname(trondheim_sentralstasjon,'Trondheim Sentralstasjon'). %% TA-110628
 specname(ts,'Trondheim Sentralstasjon'). 
 
-specname(ts10,'Trondheim Sentralstasjon ') :-user:value(airbusflag,true),!. 
-specname(ts11,'Trondheim Sentralstasjon ' ):-user:value(airbusflag,true),!.  
-specname(ts13,'Trondheim Sentralstasjon')  :-user:value(airbusflag,true),!. 
+specname(ts10,'Trondheim Sentralstasjon ') :-value(airbusflag,true),!. 
+specname(ts11,'Trondheim Sentralstasjon ' ):-value(airbusflag,true),!.  
+specname(ts13,'Trondheim Sentralstasjon')  :-value(airbusflag,true),!. 
 
 specname(ts10,'Trondheim Sentralstasjon holdeplass 10'). 
 specname(ts11,'Trondheim Sentralstasjon holdeplass 11').  %% EH-031017

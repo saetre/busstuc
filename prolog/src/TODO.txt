@@ -1,4 +1,15 @@
 FIX THIS!!!
+
+fra klæbu til munkegata etter kl . 21 . 40 . 
+SMS:
+N: fra lade alle 20 til lade alle 80 . 
+
+ Når går bussen fra lade arena til sentrum
+ 
+ from prinsen to krokstien
+
+hva betyr korrespondanse. ( hva betyr korespondanse. )
+
 unproperstation /1
 
 nth natt til søndag. (HELT BLANK?!)
@@ -37,7 +48,7 @@ Index: tuc/facts.pl
 
  jonas isa firstname.
 @@ -536,8 +536,8 @@
-          user:value(busflag,true), %% \+ dater
+          value(busflag,true), %% \+ dater
      station(X),                %%  Semantically, not actual
      \+ xforeign(X),             %%   ( adjust database error)
 -    \+ unwanted_place(X),       %%   ( adjust database error)

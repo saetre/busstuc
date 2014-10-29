@@ -11,7 +11,9 @@
 %% ?-prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates// Testing
 
 %% RS-131227    UNIT: /
-:- ensure_loaded( user:'declare' ). %% RS-111213  Operators % AND sequence_member/2 is used in tucbuss -> monobuss -> negans.pl
+:- ensure_loaded( 'declare' ). %% RS-111213  Operators % AND sequence_member/2 is used in tucbuss -> monobuss -> negans.pl
+
+:- use_module( main, [ (:=)/2, dialog/0, hei/0, hi/0, jettyrun/1, r/1, run/0, spyr/1, status/0 ] ). %% RS-140209    %?-compile('main.pl').
 
 ?-  (gpsflag := true), %% NB TEST VERSION, NTNU Server
 
@@ -55,8 +57,6 @@
 
 %:-compile('tucbuses.pl'). %% Sicstus 4 requires *.pl extension  %:-use_module('tucbuses.pl', [ makegram/0 ] ).
 :-use_module( 'tucbuses.pl', [] ). %% Sicstus 4 requires *.pl extension  %:-use_module('tucbuses.pl', [ makegram/0 ] ). %% RS-141024
-
-:-use_module( main, [ dialog/0, hei/0, hi/0, jettyrun/1, r/1, run/0, spyr/1, status/0 ] ). %% RS-140209    %?-compile('main.pl').
 
 :-ensure_loaded( user:version ).       %% RS-131227    With version_date/1, used in monobus -> teledat2.pl
 

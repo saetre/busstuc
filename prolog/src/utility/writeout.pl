@@ -6,18 +6,29 @@
 
 %%%% OUTPUT     %% RS-140921 To split utility.pl into managable modules
 
-:-module( writeout, [ doubt/2, language/1, out/1, output/1, prettyprint/1, roundwrite/1, sequence_write/1, writepred/1 ] ).
+:-module( writeout, [ doubt/2, language/1, out/1, output/1, prettyprint/1, roundwrite/1, sequence_write/1, track/2, writepred/1 ] ).
 
+%% RS-141026    UNIT: /
+:- use_module( '../main.pl', [ value/2 ] ). %MISERY?!
 %% RS-131225, UNIT: /   and /utility/
-:- ensure_loaded( user:'../declare' ).  %% RS-140102 (:=)/2, user:value/2 
+%:- ensure_loaded( user:'../declare' ).  %% RS-140102 (:=)/2, user:value/2 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% META_PREDICATES SECTION, %% RS-140927 meta_predicates    : means use source module       + means use this (utility) module  for expansion %% RS-131231 %From utility.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-out(P) :- write(P), tab(1).
 :-meta_predicate  output( + ).   %% RS-100101 ?  %% NEW PREDICATE
 %:-meta_predicate  output( 0 ).   %% RS-140928 ?  %% NOT META PREDICATE: write/1
+:- meta_predicate  track(+,0) .
+
+out(P) :- write(P), tab(1).
 output(P) :- write(P), nl.
+
+track( N, P ) :- 
+    value( trace, M ),  number(M), M >= N, 
+    !,
+    call(P)   %% TA-110130
+;
+    true.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -31,7 +42,7 @@ doubt(A,B) :-
     language( norsk ) -> out( B );
     out(A).
 
-language(L) :- user:value( language, L ). %% value(language,X) should have been set dynamically by now! In tucbuses
+language(L) :- value( language, L ). %% value(language,X) should have been set dynamically by now! In tucbuses
 
 %numbervars(F) :-
 %    numbervars( F, 0, _ ).

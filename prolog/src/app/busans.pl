@@ -15,7 +15,8 @@
 :- module( busans, [ rule/2, tracevalue/1 ] ). %%  Different for busans and bustrans 
 
 :- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
-tracevalue(L) :- user:value(traceans,L).  % Trace level 1-4
+:- use_module( '../main', [ value/2 ] ).
+tracevalue(L) :- value(traceans,L).  % Trace level 1-4
 
 %% Rule format
 

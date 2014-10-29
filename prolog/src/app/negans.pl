@@ -9,13 +9,16 @@
 %UNIT: /app/
 :- module( negans, [ cannot/1, cannotanswer/1, makenegative/3, trytofool/2, trytofool/3 ] ).
 
-%:-meta_predicate  makenegative( ?, 0, 0 ).
+%:-meta_predicate  makenegative( ?, +, 0 ).      %% RS-1401025 To match notthenanswer 
 :-meta_predicate  makenegative( ?, +, ? ).
+
 :-meta_predicate  notthenanswer( ?, ?, ?, ?, 0 ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- ensure_loaded( user:'../declare' ).       %% RS-111212 :-op( 710,xfx, isa ). traceprog/2
+%% RS-141026    UNIT: /
+:- use_module( '../main.pl', [ progtrace/2, value/2 ] ). %MISERY?!
+%:- ensure_loaded( user:'../declare' ).       %% RS-111212 :-op( 710,xfx, isa ). traceprog/2
 :- use_module( '../utility/utility', [ bound/1, sequence_member/2, testmember/2 ] ). %% RS-141012
 
 % :- use_module( '../utility/utility', [  ] ).  %% RS-140209
@@ -31,12 +34,7 @@
 
 :- use_module( '../utility/datecalc', [ days_between/3, daysucc/2, today/1  ]).
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% from declare.pl
-progtrace(X,Y) :- user:traceprog(X,Y).
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%makenegative( FlatCode, ProgIn, busanshp:AnswerOut ) :-
+%%makenegative( FlatCode, ProgIn, busanshp:AnswerOut ) :-
 makenegative( (head,_TF_), _, busanshp:nl ) :-
     progtrace(4,ne00),     %% from main.pl
     !.
@@ -68,26 +66,26 @@ makenegative((new,not _),_, busanshp:(bcpbc(ok),nl) ) :-
 %% From telebuster/app/negans.pl
 
 makenegative(_,Q,  busanshp:(bcpbc(please_state),bcp(the(Slot)),exclamation) ) :-
-	 user:value(teleflag,true),
-	 user:value(dialog,1),
+	 value(teleflag,true),
+	 value(dialog,1),
 	 sequence_member(askfor(_, knows(Slot), _), Q),
 	  progtrace(4,ne07),!.
 
 makenegative(_,Q, busanshp:(bcpbc(doyouknow),bcp(the(Slot)),question) ) :-
-	 user:value(teleflag,true),
-	 user:value(dialog,1),
+	 value(teleflag,true),
+	 value(dialog,1),
 	 sequence_member(askfor(_, Slot, _), Q),
 	 progtrace(4,ne07),!.
 
 %% 
 
 makenegative(_,Q, busanshp:(bcpbc(askfor(Slot)),nl) ) :-  
-    user:value(dialog, 1),
+    value(dialog, 1),
     sequence_member(askfor(_, Slot, _), Q),
     progtrace(4,ne08),!.
 
 makenegative(_,Q, busanshp:(bcpbc(which), bcp(Type), comma, bwr(or(List)), question)) :- 
-    user:value(dialog, 1),
+    value(dialog, 1),
     sequence_member(askref(Type, List), Q),
     progtrace(4,ne09),!.
 
@@ -194,7 +192,7 @@ makenegative((_When,_), Q, (busanshp:space0) ) :- %%
     !. 
 
 
-makenegative( (_When,_), Q, Mess ) :- %% any statement type, also when
+makenegative( (_When,_), Q, busanshp:Mess ) :- %% any statement type, also when
     getactualtime( Q, Date, Day, Clock ),
     notthenanswer( Date, Day, Clock, Q, Mess ),
     progtrace( 4, ne18 ), !.
@@ -219,7 +217,7 @@ makenegative((new,_),P,Ans)        :-
            bcp(notpossible),nl)). 
 
 makenegative((new,_),Prog,Ans)  :- 
-      user:value(dialog,1),
+      value(dialog,1),
       sequence_member(message(M),Prog),    %%
       progtrace(4,ne21),!, 
       Ans = (busanshp:(printmessage(M))) .
@@ -312,7 +310,7 @@ makenegative((modifier(_),_),Q,Ans)   :-
 
 
 makenegative(_,Prog,Ans):- 
-    user:value(smsflag,true),
+    value(smsflag,true),
     sequence_member(message(answer(db_reply(_,_,_))),Prog),
      progtrace(4,ne33),!,
     Ans = (busanshp:(space0)). %%% ??? 
@@ -446,14 +444,14 @@ makenegative( _, _, _:true ) :- %% no extra nl
  %% not standard nightbus message if following weekend is abnormal
 notthenanswer(Date,_Wed,_,_Q,
            (busanshp:((bcpbc(generalnightbuseaster),period))) ) :-
-    user:value(nightbusflag,true),
+    value(nightbusflag,true),
     following_weekend_abnormal(Date),
     !,                         %%
     progtrace(4,nt0). 
 
 notthenanswer(_Date,easterhol,_,_Q,
            busanshp:( (bcpbc(cannotfindanyroutes),period,bcpbc(generalnightbuseaster),period)) ) :-
-    user:value(nightbusflag,true),
+    value(nightbusflag,true),
     !,  
     progtrace(4,nt1).
 
@@ -473,7 +471,7 @@ notthenanswer(_Date,Day,_,Q, busanshp:(bcpbc(cannotfindanyroutes),nibcp(Day),Dir
 
 
 notthenanswer(_Date,Day,Clock,Q, busanshp:(bcpbc(noroutes),nibcp(Day),bcp(before),bwt(Clock),DirAns) ) :-
-    \+ user:value(nightbusflag,true), 
+    \+ value(nightbusflag,true), 
     Clock \== 9999,  
     sequence_member(keepbefore1(Clock,_,_),Q),
     \+ sequence_member(keepbetween(_,_,_,_),Q), %% avoid not 1100 (morning ?) when 
@@ -482,7 +480,7 @@ notthenanswer(_Date,Day,Clock,Q, busanshp:(bcpbc(noroutes),nibcp(Day),bcp(before
     dirans(Q,DirAns).
 
 notthenanswer(_Date,Day,Clock,Q, busanshp:(bcpbc(noroutes),nibcp(Day),bcp(attime),bwt(Clock),DirAns) ) :-
-    \+ user:value(nightbusflag,true), 
+    \+ value(nightbusflag,true), 
     Clock \== 9999,  
     \+ sequence_member(keepbetween(_,_,_,_),Q), %% avoid not 1100 (morning ?) when 
     !,                                       %% keepbetween was the restriction
@@ -502,7 +500,7 @@ notthenanswer(_Date,Day,Clock,Q, busanshp:(bcpbc(noroutes),nibcp(Day),bcp(attime
 notthenanswer(_Date,Day,_,Q, busanshp:(bcpbc(nolonger),  DirAns,standnight(Day)) ) :- 
     sequence_member(connections(_,_,_,_,_,_,_,Options,_,_),Q), %% not test
 
-(  %%%%%%   user:value(smsflag,true);  %% Will "always" try solutions after now 
+(  %%%%%%   value(smsflag,true);  %% Will "always" try solutions after now 
      member(next,Options);
      member(next(_),Options);
      member(nextaftertime(_),Options)
@@ -518,7 +516,7 @@ notthenanswer(_Date,Day,_,Q, busanshp:(bcpbc(nolonger),  DirAns,standnight(Day))
 %% if route day mapped to same day    
 notthenanswer(_Date,Day,_,Q, busanshp:(       bcpbc(nolonger),nibcp(Day),DirAns,standnight(Day)) ) :- 
      sequence_member(connections(_,_,_,_,_,_,_,Options,_,_),Q),  %% not test 
-(    user:value(smsflag,true);  %% dubious, excludes nolonger message if smsflag false
+(    value(smsflag,true);  %% dubious, excludes nolonger message if smsflag false
      member(next,Options);
      member(next(_),Options)),
 
@@ -564,7 +562,7 @@ notthenanswer(_Date,Day,_,Q, busanshp:(bcpbc(nolonger),nibcp(Day),DirAns,standni
 
 
 notthenanswer(_Date,Day,_,Q, busanshp:(bcpbc(notpossible),nibcp(Day),DirAns,standnight(Day)) ) :- 
-    user:value(nightbusflag,true),
+    value(nightbusflag,true),
     !,
     progtrace(4,nt10night),  
     dirans(Q,DirAns).
