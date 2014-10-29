@@ -15,12 +15,16 @@
         dialog/0,      dialogrun0/0,   english/0,      hei/0,           hi/0,           ho/0,      %% See d_dialogue
         indentprintlist/2,     listxt/0,      logrun/0,        norsk/0,        plustoatom/2,  printparse/1,   %%        progtrace/2,
         quit/0,        r/1,           readday/0,        readscript/0,   restart/0,      run/1,  %%% readscript/0,   
-        scanfile/2,    (sp)/1,         spyg/1,         spyr/1,         statistics/1,   status/0,
-        testgram/0,    trackprog/2,    tuc/0,        update_compnames/1, %, user:value/1, (from declare.pl)
+        scanfile/2,    spyg/1,         spyr/1,         statistics/1,   status/0,  %% (sp)/1,         %% RS-141026 Use main.pl instead!!!
+        testgram/0,    tuc/0,        update_compnames/1, %, value/1, (from declare.pl) trackprog/2,    
         webrun_english/0,      webrun_norsk/0, webrun_tele/0,  write_taggercall/1
 ] ).
 
+:- meta_predicate  track(+,0) .
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%MISERY? 
+:- use_module( 'main', [ difact/2, fact0/1, set/2, value/2 ] ).
 
 %:- dynamic
 %        ( => )/2,    %% See translat.pl
@@ -29,17 +33,23 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RS-131225, UNIT: /   %% RS-131225, UNIT: utility/
-:- ensure_loaded( user:'declare.pl' ). %% RS-131228 "new syntax" defs, META-preds: for/2, remember/1, value/2, :=/2, =;/2
- backslash( B ) :- user:backslash( B ). % RS-141024 "Imported" from declare.pl
+:- ensure_loaded( 'declare.pl' ). %% RS-131228 "new syntax" defs, META-preds: for/2, remember/1, value/2, :=/2, =;/2
+% backslash( B ) :- user:backslash( B ). % RS-141024 "Imported" from declare.pl
+
+:- use_module( 'main', [ value/2 ] ).
 
 %% RS-131227, UNIT: EXTERNAL LIBRARIES
 :- use_module( library(system), [ sleep/1 ] ). 
 :- use_module( library(timeout), [ ] ). 
 :- use_module( library(process), [ process_id/1 ] ).    %% RS-141024
 
+:- use_module( 'main', [ (:=)/2, (=:)/2, backslash/1 ] ).
+
+:- use_module( ptbwrite, [ ptbwrite/1 ] ). %% RS-140914
+
 %% RS-131225, UNIT: /utility/
-:- use_module('utility/utility', [ (:=)/2, (=:)/2, append_atomlist/2, append_atoms/3, for/2,
-                                   makestring/2, psl/2, purge/3, set_ops/3, shell_copyfile/2, starttime/0, timeout/3 ] ). %% RS-120816 sequence_member, etc.
+:- use_module('utility/utility', [ append_atomlist/2, append_atoms/3, for/2, makestring/2, 
+                                   pront/1, psl/2, purge/3, set_ops/3, shell_copyfile/2, starttime/0, taketime/0, timeout/3 ] ). %% RS-120816 sequence_member, etc.
 :- use_module( 'utility/library', [ reverse/2, shell/1 ] ).  %% RS-131225 exec/1 ] ). % RS-131227 Investigate this ;-)
 %:-use_module( 'utility/datecalc', [ datetime/6 ]).%% RS-131225    For app/buslog, telelog, etc?
 :-use_module( 'utility/writeout', [ doubt/2, language/1, out/1, output/1, prettyprint/1 ]).%% RS-141024
@@ -53,8 +63,6 @@
 %% RS-130329 Make sure (gram/lang) modules are available: dcg_module, 
 %:-ensure_loaded( tucbuses ). % ,[ backslash/1, dcg_module/1, language/1, legal_language/1, readfile_extension/1, script_file/1 ]). %% RS-140211
 :-use_module( tucbuses, [ legal_language/1, readfile_extension/1, script_file/1 ]). %% RS-140211   backslash/1, dcg_module/1, 
-
-:-use_module( interfaceroute, [  reset_period/0 ] ).
 
 % RS-111205, UNIT: app/
 :- use_module( 'app/buslog' ). % , [ station/1 ] ).  %% RS-130210 called in for-predicate     bound/1, bus/1,
@@ -80,7 +88,7 @@
 %  Read a sentence into a list of symbols
 :- use_module( 'tuc/readin', [  ask_file/1, ask_user/1, read_in/1 ]). %%  Read a sentence into a list of symbols
 % ensure_loaded( 'tuc/torehash' ).   % RS-131224 OBSOLETE! Moved to utility/makeauxtables!
-:- use_module( 'tuc/translat', [ (=>)/2, clausifystm/1, clausifyq/2  ] ).        %% RS-131227    UNIT: tuc/
+:- use_module( 'tuc/translat', [ (=>)/2, transfix1/2 ] ).        %% RS-131227    UNIT: tuc/ clausifystm/1, clausifyq/2 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -114,13 +122,13 @@ break(_). %% dummy for breakpoints
 %crash :- tore_amble_is_a_genious.  %% test on undefined predicate
 
 spyg X :- dcg_module(L), 
-          user:( parsetime_limit := 100000 ), %%  ONLY FOR DEBUGGING
+          ( parsetime_limit := 100000 ), %%  ONLY FOR DEBUGGING
           spy L:X. %% utility
 
-spyr X :- user:( debugrule := X ),
+spyr X :- ( debugrule := X ),
           spy spy_me.
 
-sp X :- functor(X,F,_),spy F,X.  %% call X with spy on X 
+% sp X :- functor( X, F, _ ), spy F, X.  %% call X with spy on X  %% Use main instead!!!
 
 statistics(G) :- 
                statistics(G,K),
@@ -149,25 +157,25 @@ readscript:-
 
 readscript1(X):- 
 
-    user:( trace:=0 ),
+    ( trace:=0 ),
     erase,  
 
     readfrom(X),
 
-    user:( skolocon  =: SM ), user:( skolemax :=  SM ),   
+    ( skolocon  =: SM ), ( skolemax :=  SM ),   
 
-    user:( trace := 1 ).
+    ( trace := 1 ).
 
 
 % Default settings. May be redefined
 
 initiate :-   %% called at compiletime !  
-    user:( trace := 0 ),   %% Dialog 
-    user:( maxdepth:=3 ),   
-    user:( error_phase:=0 ),
-    user:( context_id := 1 ),
+    ( trace := 0 ),   %% Dialog 
+    ( maxdepth:=3 ),   
+    ( error_phase:=0 ),
+    ( context_id := 1 ),
 
-    user:( parsetime_limit := 10000 ). %% TA-071026
+    ( parsetime_limit := 10000 ). %% TA-071026
 
 
 tuc:-        
@@ -186,8 +194,8 @@ restart:-
     run.
 
 erase:-
-    retractall( user:fact0(_) ),  % Semipermanent facts
-    user:( skolemax := 0 ),  
+    retractall( main:fact0(_) ),  % Semipermanent facts
+    ( skolemax := 0 ),  
     reset.
 
 clear:- 
@@ -196,53 +204,53 @@ clear:-
     clear1.
 
 clear1 :-
-    user:( dialog := 0 ), 
+    ( dialog := 0 ), 
  %% Only complete queries, with defaults ( should be true/false ?)
-    user:( trace := 0 ),  %% Dialog
-    user:( traceprog := 1 ), 
-    user:( traceans := 1 ),
+    ( trace := 0 ),  %% Dialog
+    ( traceprog := 1 ), 
+    ( traceans := 1 ),
     queryflag := true, 
     textflag := false,
-    user:( spellcheck := 1 ),   %% restored after debug 
+    ( spellcheck := 1 ),   %% restored after debug 
     closereadfile,       
     reset.
 
 begin :-
     reset,
-    user:( permanence := 1 ),
+    ( permanence := 1 ),
     nl.
 
 quit:- 
-    user:value(dialog,1),
+    value(dialog,1),
     !,
-    retractall( user:difact(_,_) ),   %% Only Dynamic Facts 
-    retractall( user:( _ => _ ) ),
-    user:( lemmas_proved := 0 ),  %%
-    user:( interp := 0 ),         %%
-    ( user:(skolemax =: SZ) -> user:(skolocon := SZ ) ; user:(skolocon := 0) ), 
-    user:( const := 0 ),
+    retractall( main:difact(_,_) ),   %% Only Dynamic Facts 
+    retractall( main:( _ => _ ) ),
+    ( lemmas_proved := 0 ),  %%
+    ( interp := 0 ),         %%
+    ( (skolemax =: SZ) -> (skolocon := SZ ) ; (skolocon := 0) ), 
+    ( const := 0 ),
     quit_dialog. %% <----  without reply
 
 reset:-  
-    retractall( user:difact(_,_) ),   %% Only Dynamic Facts 
-    retractall( user:(_ => _) ),
-    user:( lemmas_proved := 0 ),  %%
-    user:( interp := 0 ),         %%
-    ( user:(skolemax =: SZ) -> user:(skolocon := SZ ) ; user:(skolocon := 0) ), 
-    user:( const := 0 ). 
+    retractall( main:difact(_,_) ),   %% Only Dynamic Facts 
+    retractall( main:(_ => _) ),
+    ( lemmas_proved := 0 ),  %%
+    ( interp := 0 ),         %%
+    ( (skolemax =: SZ) -> (skolocon := SZ ) ; (skolocon := 0) ), 
+    ( const := 0 ). 
 
 
 norsk   :- 
-    user:( origlanguage := norsk ), % permanently 
-    user:( language := norsk ). 
+    ( origlanguage := norsk ), % permanently 
+    ( language := norsk ). 
 
 
 english :- 
-    user:( origlanguage := english ), % permanently 
-    user:( language := english ).  
+    ( origlanguage := english ), % permanently 
+    ( language := english ).  
  
 run(L):- 
-   user:( language := L ),
+   ( language := L ),
    run.
 
 run :-         %% RS-131228    Normal mode
@@ -261,30 +269,30 @@ logrun :-
     golog.
 
 webrun_english :-
-    user:( language:= english ),
-    user:( dialog := 0 ), 
+    ( language:= english ),
+    ( dialog := 0 ), 
     webrun.
 
 
 webrun_norsk :-
-    user:( language :=norsk ),
-    user:( dialog   := 0 ),  
+    ( language :=norsk ),
+    ( dialog   := 0 ),  
     webrun.
 
 webrun_tele :-
-    user:( language :=norsk ),
-    user:( dialog   := 0 ),  
+    ( language :=norsk ),
+    ( dialog   := 0 ),  
 
 	 writepid, 
     set_prolog_flag(fileerrors,off),
 	 %%% TA-060426 %% remember(lastday(-1,noday)), 
 
     repeat,
-       user:( world := real ), 
+       ( world := real ), 
 	    getfromport(L),
 	    processorwait(L),
 	    fail,
-	 !.
+	 ! ; true.  %% RS-141026      Should never get here because of the repeat, ..., fail, !
 
 /***
 webrun_dialog :-  --> d_main.pl %% TA-050722
@@ -295,22 +303,22 @@ webrun :-
 	 writepid, 
     set_prolog_flag(fileerrors,off),
 	 %%% TA-060426 %% remember(lastday(-1,noday)), 
-    user:( busflag:= true ),    %%  Bustuc Application Program
-	 user:( queryflag := true ), %% Statements are implicit queries
-    user:( warningflag := false ), %% if applicable
+    ( busflag:= true ),    %%  Bustuc Application Program
+	 ( queryflag := true ), %% Statements are implicit queries
+    ( warningflag := false ), %% if applicable
     repeat,
-       user:( world := real ), 
+       ( world := real ), 
       %%%   resetsmsflag,  %% TA-081218
        reset_period,       %%   ---> topreg.pl
 	    getfromport(L),
 	    processorwait(L),
 	    fail,
-	 !.
+	 ! ;  true . %% RS-141026      Should never get here because of the repeat, ..., fail, !
 
 /* %% TA-081218
 
 resetsmsflag :- 
-   (user:value(smspermanentflag,true) -> 
+   (value(smspermanentflag,true) -> 
         smsflag := true;
         smsflag := false).
 */
@@ -319,8 +327,8 @@ resetsmsflag :-
 dialog :-      %% RS-131228  
 	 nl,
 	 (seen),
-	 user:( permanence := 0 ), 
-	 user:( dialog := 1 ),   
+	 ( permanence := 0 ), 
+	 ( dialog := 1 ),   
     queryflag := true,       %% (Statements are implicit queries)
     closereadfile,   
     %%% TA-060426 %% remember(lastday(-1,noday)), 
@@ -347,7 +355,7 @@ go :-
     !.
 
 go:-
-    user:( permanence := 0 ), 
+    ( permanence := 0 ), 
     restoreworld, 
 	 closereadfile,  
     %%% TA-060426 %% remember(lastday(-1,noday)), 
@@ -358,8 +366,8 @@ go:-
     process(L).
 
 restoreworld :- 
-    user:( world =: _W_ ) -> true;
-    user:( world := real ).
+    ( world =: _W_ ) -> true;
+    ( world := real ).
 
 golog:-
 	 closereadfile,  
@@ -373,19 +381,19 @@ golog:-
 
 end :-  
     (seen),
-    user:( permanence:=0 ),
-    user:( world := real ).
+    ( permanence:=0 ),
+    ( world := real ).
 
 bad_language :- 
     \+ language(_),
     !,
-    nl,out(' *** No definied  language  compile(buster).'),output(' ***').
+    nl,out(' *** No defined  language! Remember:  compile(buster).'),output(' ***').
 
 bad_language :-
     language(L),
     \+ legal_language(L),
     !,
-    nl,out(' *** Undefinied  language:  '),out(L),output(' ***').
+    nl,out(' *** Undefined  language:  '),out(L),output(' ***').
 
 
 %%%%%%%%%%%%%%% Other Commands
@@ -408,9 +416,9 @@ status:-
    nl,output('Rules:'),nl,
    for( A => B ,   prettyprint( A => B)),
    nl,output('Facts:'),nl,
-   for( user:fact0(X),   prettyprint(X)), 
-   for( user:difact(UID,X),   prettyprint(UID:X)),   
-   track(2,(nl,output('Flags:'),listing(user:value/2))).  
+   for( fact0(X),   prettyprint(X)), 
+   for( difact(UID,X),   prettyprint(UID:X)),   
+   track(2,(nl,output('Flags:'),listing(value/2))).  
 
 testgram:- 
     dcg_module(DCG),
@@ -418,9 +426,9 @@ testgram:-
     spy(DCG:st/9),        
     spy(DCG:do_phrase/9),
     spy(qev/1),       
-    user:( trace := 3 ),
-    user:( spellcheck :=0 ), %% debug makes it slow 
-    user:( parsetime_limit := 100000 ).  %% ONLY DEBUGGING
+    ( trace := 3 ),
+    ( spellcheck :=0 ), %% debug makes it slow 
+    ( parsetime_limit := 100000 ).  %% ONLY DEBUGGING
 
 
 
@@ -486,7 +494,7 @@ processorwait(S) :-
 
 
 redirecttoans:- 
-    user:value(teleflag,true),
+    value(teleflag,true),
     !. %% Not Yet
 
 redirecttoans:- 
@@ -494,7 +502,7 @@ redirecttoans:-
 
 
 redirectfromans:-
-   user:value(teleflag,true),
+   value(teleflag,true),
    !,
 
    teledbrowfile(Rowsample0), 
@@ -514,13 +522,13 @@ redirectfromans:-
  
 splitlang(L,Netto):- %%   If not prefix nor,eng assume no prefix
  
-   L= [eng|Netto] -> user:( language :=english ); 
+   L= [eng|Netto] -> ( language :=english ); 
  
-   L= [nor|Netto] -> user:( language :=norsk );
+   L= [nor|Netto] -> ( language :=norsk );
  
-   L= [sms|Netto] -> user:( language :=norsk ); 
+   L= [sms|Netto] -> ( language :=norsk ); 
  
-  ( Netto=L, user:( language := norsk ) ).
+  ( Netto=L, ( language := norsk ) ).
 
 
 
@@ -544,7 +552,7 @@ clearport :-
 readday:-  
    write('weekday ='),nl,
    read(Today),
-   user:( today := Today ).
+   ( today := Today ).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -553,7 +561,7 @@ c(F):-consult(F).
 r(F):-readfrom(F).
 
 closereadfile :-   % if interrupted 
-    ( user:( readfile =: OLD ) -> closefile(OLD);true),
+    ( ( readfile =: OLD ) -> closefile(OLD);true),
     (seen). 
 
 closefile(F):-
@@ -564,17 +572,17 @@ closefile(F):-
 
 readfrom(F):- 
     closereadfile, 
-    user:( end_of_file := false ), 
+    ( end_of_file := false ), 
     readfile_extension(X),
     append_atoms(F,X,FE), 
-    user:( permanence := 1 ),
+    ( permanence := 1 ),
 
 %     textflag := true,        %  Read from text, don't skip to new Line
 %                              %  destroys  kl. 1720 in batch queries
     queryflag =: Oldqueryflag,%  destroys setting in startupfile
     queryflag := false,       %  Statements are not implicit queries 
 
-    user:( readfile := FE ),   
+    ( readfile := FE ),   
     see(FE),
         repeat,
             reset_period,  
@@ -582,9 +590,9 @@ readfrom(F):-
             process(L),     
             !,
     (seen),
-    user:( permanence := 0 ),
+    ( permanence := 0 ),
 
-    user:(textflag := false),       %  Read from text, don't skip to new Line 
+    (textflag := false),       %  Read from text, don't skip to new Line 
     queryflag :=   Oldqueryflag. % destroys setting in startupfile
 
 
@@ -598,7 +606,7 @@ scanfile(F,L):-
 
  
 doask_user(L):-
-   user:( interp := 0 ),  
+   ( interp := 0 ),  
     
    pcontext,  
 
@@ -610,15 +618,15 @@ process(_):-
     !.
 
 process(L):-           %% Process is under a repeat loop
-    user:( error_phase := 0 ),
-    user:( language     =: O1 ), 
-    user:( origlanguage := O1 ),
+    ( error_phase := 0 ),
+    ( language     =: O1 ), 
+    ( origlanguage := O1 ),
 
     translate2(L,TQL),
     nl,
     exetuc(TQL),       %% Always succeed (command may change origlanguage)
-    user:( origlanguage =: O2 ),
-    user:( language :=     O2 ), % 
+    ( origlanguage =: O2 ),
+    ( language :=     O2 ), % 
 
     (TQL=end;  
      TQL=stop).        %% Succeeds and  exit when stop command.
@@ -650,7 +658,7 @@ translate2(L,TQL):-
     track(2,taketime). 
 
 
-dotline(''):-user:value(smsflag,true),!.
+dotline(''):-value(smsflag,true),!.
 dotline('........................................................................').
    
 
@@ -667,21 +675,21 @@ analyse2(L,command(Rosenborg)):-
 
 analyse2(L1,TQL):-      
 
-    user:value(telebusterflag,true),
+    value(telebusterflag,true),
     !,
-    user:set(busflag,true),  %% Dynamic
-    user:set(teleflag,true), %%  TA-060208
+    set(busflag,true),  %% Dynamic
+    set(teleflag,true), %%  TA-060208
 
     create_tags(L1), %% , _TAGS) , %% TA-060613
     !,   
 
     lexproc3(L1,AssumedLanguage,L2),
 
-    user:( language := AssumedLanguage ),
+    ( language := AssumedLanguage ),
 
     track(3,pront(L2)),  %% TA-060420     
 
-    user:( error_phase:= 0 ), 
+    ( error_phase:= 0 ), 
     starttime,    
 
     layout2(L2,TQL), 
@@ -691,17 +699,17 @@ analyse2(L1,TQL):-
 
 
 analyse2(L1,TQL):-      
-    user:value(teleflag,true),
-    user:value(busflag,true),
+    value(teleflag,true),
+    value(busflag,true),
     !,
     create_tags(L1), %%%  , _TAGS) , %% TA-060613
     !,   
     lexproc3(L1,AssumedLanguage,L2),
-    user:( language := AssumedLanguage ),
+    ( language := AssumedLanguage ),
 
     track(3,pront(L2)),  %% TA-060420
 
-    user:( error_phase:= 0 ), 
+    ( error_phase:= 0 ), 
     starttime,    
     layout2(L2,TQL), 
     present(1,TQL),
@@ -712,17 +720,17 @@ analyse2(L1,TQL):-
 
 
 analyse2(L1,TQL):-      
-    user:value(busflag,true),
-    \+ user:value(teleflag,true),
+    value(busflag,true),
+    \+ value(teleflag,true),
     !,
 
     lexproc3(L1,AssumedLanguage,L2),
 
-    user:( language := AssumedLanguage ),
+    ( language := AssumedLanguage ),
 
     track(3,pront(L2)),  
 
-    user:( error_phase:= 0 ), 
+    ( error_phase:= 0 ), 
     starttime,    
 
     layout2(L2,TQL), 
@@ -736,8 +744,8 @@ analyse2(L1,TQL):-
 
 analyse2(L1,TQL):-      
 
-    user:value(teleflag,true),
-    \+ user:value(busflag,true), %% TA-060107
+    value(teleflag,true),
+    \+ value(busflag,true), %% TA-060107
     !,
 
 
@@ -747,9 +755,9 @@ analyse2(L1,TQL):-
 
     lexproc3(L1,AssumedLanguage,L2),
 
-    user:( language := AssumedLanguage ),
+    ( language := AssumedLanguage ),
      
-    user:( error_phase:= 0 ), 
+    ( error_phase:= 0 ), 
     starttime,    
 
     layout2(L2,TQL), 
@@ -779,28 +787,28 @@ layout2(L,TQL):-
 
     track(2,listing(txt)),
     track(2,nl),  
-    user:( cursor := 0 ),
+    ( cursor := 0 ),
     grammar2(L,FOL), %% let teleflag be on %% TA-060208
     transfix(FOL,TQL).
 
 
 % AD HOC
 manipulate_teleflag :-
-    user:value(telebusterflag,true),
+    value(telebusterflag,true),
     !,
     (
-    user:value(topic,bus) -> 
-        (user:set(busflag,true), %% TA-061107
-         user:set(teleflag,false));
+    value(topic,bus) -> 
+        (set(busflag,true), %% TA-061107
+         set(teleflag,false));
      
 
-    user:value(topic,tele)-> 
-        (user:set(teleflag,true),
-         user:set(busflag,false));  %% TA-061107
+    value(topic,tele)-> 
+        (set(teleflag,true),
+         set(busflag,false));  %% TA-061107
 
-    user:value(topic,nil) -> 
-       (user:set(busflag,false),    %% TA-061107
-        user:set(teleflag,false)),  %% <--- or teleflag=true default?
+    value(topic,nil) -> 
+       (set(busflag,false),    %% TA-061107
+        set(teleflag,false)),  %% <--- or teleflag=true default?
 
     true).
 
@@ -816,7 +824,7 @@ listxt :- listing(txt). %% TA-051101
 
 
 startteleerror :-
-    user:value(teleflag,true),
+    value(teleflag,true),
     !,
     teledbrowfile(TDBR),
     %%tell(TDBR)   %% RS-121121
@@ -827,14 +835,14 @@ startteleerror :-!.
 
 
 stopteleerror :-
-     user:value(teleflag,true),
+     value(teleflag,true),
      !,
      told.
 
 stopteleerror :-!.
 
 grammar2(L,error):-     
-    user:value(notimeoutflag,true),
+    value(notimeoutflag,true),
     length(L,M),M > 21, 
     !,
     startteleerror,
@@ -847,7 +855,7 @@ grammar2(L,error):-
 
 
 grammar2(L,error):-                % Failed with type check,
-    \+ user:value(teleflag,true),  %% TA-051116 ?
+    \+ value(teleflag,true),  %% TA-051116 ?
     unknown_words(L,Z), 
     \+ (Z == []),  
     !,                             % => Incomprehensible (therefore)
@@ -865,7 +873,7 @@ grammar2(L,error):-                % Failed with type check,
 
 
 grammar2(_,FOL):-   
-    user:( cursor := 0 ),
+    ( cursor := 0 ),
     maxl(N),
 
     parse_sentence(P,N,Success), 
@@ -895,11 +903,11 @@ grammar2(_,FOL):-
 
 
 grammar2(L,error):-
-    user:value(semantest,true), 
-    user:( error_phase := 1 ),                % Reset Type check
-    user:value(cursor,Attempt1),
+    value(semantest,true), 
+    ( error_phase := 1 ),                % Reset Type check
+    value(cursor,Attempt1),
     maxl(N),
-    user:( cursor := 0 ),                     % Failed with type check, but
+    ( cursor := 0 ),                     % Failed with type check, but
     parse_sentence(_,N,success),
     !,                               % => Meaningless (semantically)
 
@@ -914,7 +922,7 @@ grammar2(L,error):-
 
 
 grammar2(L,error):-                  % Incomplete sentence 
-    \+ user:value(teleflag,true),            % not actual for tele
+    \+ value(teleflag,true),            % not actual for tele
     no_verb(L),                      % no verbs
     !,
 
@@ -928,7 +936,7 @@ grammar2(L,error):-                  % Incomplete sentence
     stopteleerror.
 
 grammar2(L,error):-                  % Failed also with type check
-    user:value(cursor,Attempt2),          % =>  Ungrammatical (according to gram),
+    value(cursor,Attempt2),          % =>  Ungrammatical (according to gram),
     nl,                              
 
     startteleerror,
@@ -945,7 +953,7 @@ grammar2(L,error):-                  % Failed also with type check
 
 parse_sentence(P,N,Success):-  %% Parse With TimeLimit
     dcg_module(G),
-    user:value(parsetime_limit,Limit),   
+    value(parsetime_limit,Limit),   
 
 %% output('trace1'),
 
@@ -1002,29 +1010,29 @@ present(N,P):-
 
 
 traceprint(N,P):- 
-    user:value(trace,M), number(M), M >= N, 
+    value(trace,M), number(M), M >= N, 
     !,
     write(P),nl
 ;
     true.
 
-track(N,P):- 
-    user:value(trace,M),  number(M), M >= N, 
+track( N, P ) :-
+    value(trace,M),  number(M), M >= N, 
     !,
     P
 ;
     true.
  
-trackprog(N,P):- 
-    user:value(traceprog,M), number(M), M >= N, 
-    !,
-    (nl,P)
-;
-    true.
+%trackprog(N,P):- 
+%    value(traceprog,M), number(M), M >= N, 
+%    !,
+%    (nl,P)
+%;
+%    true.
 
-user:value(X):-
-    user:value(X,Y),
-    out(X),out('='),output(Y),nl.
+%value(X):-
+%    value(X,Y),
+%    out(X),out('='),output(Y),nl.
 
 
 printparse(X):- 
@@ -1067,7 +1075,7 @@ indentprintlist(N,O):-
 
 % Several statements 
 
-transfix(nil,nil):- user:value(dialog,1),!. 
+transfix(nil,nil):- value(dialog,1),!. 
 
 transfix([[]],[replyq('?')]):-!.  %% Avoid empty answers (by synonym)
 
@@ -1079,29 +1087,30 @@ transfix([],[]):-!.
 
 transfix(P,Q):-transfix1(P,Q). %% PANIC
 
-transfix1(error,error):-!. 
-
-transfix1(new:::P,nil):-   %%  ==> causes an extra [nil]
-   
- user:value(textflag,true), %%%%%%% <--- %% TA-070122
-
-  \+ user:value(teleflag,true),
-  \+ user:value(busflag,true)
-
-, %% Set by Bustuc Application Program
-
-    !,
-    clausifystm(P),   %% translat.pl
-    !. 
-
-transfix1(new:::P,nil):-
-	 user:value(queryflag,false), 
-	 !,           
-    clausifystm(P).   %% translat.pl
-
-
-transfix1(QX:::P,R):- 
-     clausifyq(QX:::P,R). %% translat.pl
+%% Moved to translat with other ::: and :: statements...
+%transfix1(error,error):-!. 
+%
+%transfix1(new:::P,nil):-   %%  ==> causes an extra [nil]
+%   
+% value(textflag,true), %%%%%%% <--- %% TA-070122
+%
+%  \+ value(teleflag,true),
+%  \+ value(busflag,true)
+%
+%, %% Set by Bustuc Application Program
+%
+%    !,
+%    clausifystm(P),   %% translat.pl
+%    !. 
+%
+%transfix1(new:::P,nil):-
+%	 value(queryflag,false), 
+%	 !,           
+%    clausifystm(P).   %% translat.pl
+%
+%
+%transfix1(QX:::P,R):- 
+%     clausifyq(QX:::P,R). %% translat.pl
 
 
 %  Execute command
@@ -1116,7 +1125,7 @@ exetuc(command(P)):-
     anash(P).
 
 exetuc(_TQL):-
-    user:value(noevalflag,true),!. %% New Flag  : No TUC-evaluation
+    value(noevalflag,true),!. %% New Flag  : No TUC-evaluation
 
 exetuc(TQL):- evaluateq2(TQL). %% evaluate.pl
 
@@ -1198,7 +1207,7 @@ appfilename(Dir,P,DirP):-
 
 
 update_compnames(Compnames) :-                  %% MTK 021018
-    user:( compnames := Compnames ).
+    ( compnames := Compnames ).
 
 
 create_taggercall(L2,PAT):-
@@ -1257,5 +1266,5 @@ plustoatom1(X,X).
 %%%%%%%%%  THE END %%%%%%%%%%%%%%%%%%%%%%
 
 
-  :- initiate.
+%:- initiate.
 

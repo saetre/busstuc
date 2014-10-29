@@ -5,44 +5,46 @@
 
 %% RS-140210    UNIT: tuc/
 %% A => B is both volatile (not saved) and dynamic (asserted)
-:-module( translat, [ (=>)/2, clausifystm/1, clausifyq/2, condq/2, hazardrule/1, makedisjunct/2, optand/3, optor/3, protectrule/2, redundant/1,
-        testimpossible/1, testquant/3, unforgettable/2, plunder/3
+:-module( translat, [ (=>)/2, condq/2, hazardrule/1, makedisjunct/2, optand/3, optor/3, protectrule/2, redundant/1,
+        testimpossible/1, testquant/3, transfix1/2, unforgettable/2, plunder/3 % clausifystm/1, clausifyq/2, %% RS-141026 for transfix1
 ] ).
 
 :-volatile (=>)/2.
 :-dynamic (=>)/2.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
 :- meta_predicate  test(0) . %% RS-140211 RS-140915 0 instead of : ?
+:- meta_predicate  track(+,0) .
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
+% for(P,Q) :- P,Q,  false;true. %% RS-140929 What about variable binding? Compare to library(aggregate):forall/2. CAREFUL: there is a "homemade" forall in BusTUC!
+for( P, Q ) :- %% For all P, do Q (with part of P). Finally succeed
+  P, Q, false ; true.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %local: test/1 % RS-131117 includes declare.pl  %%,  unsquare/2 RS-131227
 
-%% RS-131227    UNIT: /
-:- ensure_loaded( user:'../declare' ).%, [ := /2, for/2 (from library.pl) etc. ] ). %% RS-140208
-track(X, Y) :- user:track(X, Y) .
-
-:- use_module( library(aggregate) , [ forall/2 ] ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- use_module( slash, [ def/1 ] ).     %% RS-131228
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%:- use_module( '../main.pl', [ track/2 ] ). %% RS-140209 hei/0,   run/0 %MISERY?! :-use_module( '../main' ).
-
 %% RS-131227    UNIT: /utility/
+:- use_module( '../utility/utility', [ error/2, do_count/1, flatlist/2, flatround/2, freshcopy/2, ident_member/2, match/2, occ/2, subcase/2, subsumes/2 ] ). %% RS-141029  LOOPS! for/2, test/1
 :- use_module( '../utility/library', [ reverse/2 ] ).  %%    %% RS-131225
-:- use_module( '../utility/utility', [ error/2, do_count/1, flatlist/2, flatround/2, freshcopy/2, ident_member/2, match/2, occ/2, subcase/2, subsumes/2 ] ).
+:- use_module( '../utility/writeout', [ output/1, prettyprint/1 ] ).
 
 :- use_module( library(varnumbers), [ numbervars/1 ] ). %% RS-140210.
 
-% for(P,Q) :- P,Q,  false;true. %% RS-140929 What about variable binding? Compare to library(aggregate):forall/2
+%% RS-141026    UNIT: /
+%:- ensure_loaded( '../declare' ).%, [ := /2, for/2 (from library.pl) etc. ] ). %% RS-140208
+:- use_module( '../main.pl', [ ( := )/2, ( =: )/2, difact/2, fact0/1, value/2 ] ). %MISERY? track/2
+
+% UNIT: tuc/
+:- use_module( slash, [ def/1 ] ).     %% RS-131228
 
 %UNIT: /app/
 % :- use_module( '../app/interapp', [  ] ).   %% RS-140915 140921
 
 %UNIT: /tuc/
+:- use_module( anaphors, [ is_the/2 ] ).   %% Semi-permanent? declare.pl (dynamic), asserted in evaluate.pl & translat.pl
 :- use_module( evaluate, [ new_focus/2 ] ).   %% Semi-permanent? declare.pl (dynamic), asserted in evaluate.pl & translat.pl
 :- use_module( facts, [ difact/1 ] ).   %% Semi-permanent? declare.pl (dynamic), asserted in evaluate.pl & translat.pl
 %:- use_module( fernando, [  ] ).  
@@ -59,7 +61,7 @@ clausifystm( JLM ):-
     clausify(X,Y,[],JLM,CLAUSELIST),
     number(Y),
     writeconjuncts(CLAUSELIST,true),
-    user:(skolocon := Y). 
+    (skolocon := Y). 
                    
 
 clausify(X,Y,L,P,R):- 
@@ -184,8 +186,8 @@ skolem(X,Z,CH,(P => Q) ,N1 or Q1):-!,
     skolem(Y,Z,CH,Q,Q1).
 
 skolem(X,X,_,Y isa C, (isa)/World/C/Y):- %% Brave New World
-    user:value(textflag,true),
-    user:value(world,World),
+    value(textflag,true),
+    value(world,World),
     World \== real,
     !.
 skolem(X,X,_,P,P).
@@ -399,13 +401,10 @@ plunder(SX,[Y|Z],R):-
     plunder((SX/Y),Z,R).
 
 writeconjuncts(CL,TF):-
-    %for(member(C,CL),
-    forall(member(C,CL),
-        writeconjunct(C,TF)),
+    for( member(C,CL),        writeconjunct(C,TF) ),
 
     track(2,(nl,
-                for((Y is_the K),
-                    output(Y is_the K)))).
+                for( (Y is_the K),          output(Y is_the K))) ).
 
 
 writeconjunct(( P => Q) ,TF):-!,
@@ -416,11 +415,11 @@ writeconjunct(P,TF):-!,
 
 
 wrclause(_,_):-
-    user:value(queryflag,true), 
+    value(queryflag,true), 
     !.
 
 wrclause(P,TF):-
- \+ user:value(queryflag,true), 
+ \+ value(queryflag,true), 
     skupdate(P,TF).
 
 
@@ -464,7 +463,7 @@ skup1(P):-
 
 
 premfakt(P):- 
-    \+ user:fact0(P), 
+    \+ fact0(P), 
     \+ difact(P), 
     \+ (P = (_ isa Y),testclass(Y)), 
     !,
@@ -475,27 +474,27 @@ premfakt(_).
 
  
 assertfact(P):-
-    user:( permanence =: 0 ),
-    user:value(context_id,UID),  
+    ( permanence =: 0 ),
+    value(context_id,UID),  
     !, 
-    retractall( user:difact(UID,P) ), 
-    asserta( user:difact(UID,P) ).       %% reverse order
+    retractall( difact(UID,P) ), 
+    asserta( difact(UID,P) ).       %% reverse order
 
 assertfact(P):-
-    user:( permanence =:1 ),
+    ( permanence =:1 ),
     !,
-    user:value(context_id,UID), 
-    retractall( user:fact0(P) ),
-    retractall( user:difact(UID,P) ), 
-    assert( user:fact0(P) ).            % straight order
+    value(context_id,UID), 
+    retractall( fact0(P) ),
+    retractall( difact(UID,P) ), 
+    assert( fact0(P) ).            % straight order
 
 
 testimpossible(P):-
     %explain(false),                    %% RS-140915    Typo?
     %interapp:explain_query(false),      %% RS-140915    Typo? Moved to ??
     !, 
-    user:value( context_id, UID ),     
-    retract( user:difact(UID,P) ). 
+    value( context_id, UID ),     
+    retract( difact(UID,P) ). 
 
 testimpossible(_).
 
@@ -523,6 +522,34 @@ tautol( (A => C) ):- %% Assumes Protectable Rules are already handled
 tauthead(true).  
 tauthead(X isa _):- ground(X),!.
 tauthead(_ isa C):-testclass(C). 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+track( N, P ) :- 
+    value( trace, M ),  number(M), M >= N, 
+    !,
+    call(P)   %% TA-110130
+;
+    true.
+
+transfix1(error,error):-!. 
+
+transfix1(new:::P,nil):-   %%  ==> causes an extra [nil]
+    \+ value(busflag,true), %% Set by Bustuc Application Program
+    !,
+    clausifystm(P),   %% translat.pl
+    !. 
+
+transfix1(new:::P,nil):-
+         ( value(queryflag,false) ), 
+         !,           
+    clausifystm(P).   %% translat.pl
+
+
+transfix1( QX:::P, R ) :- 
+     clausifyq( QX:::P, R ). %% translat.pl
+
+
 
 %%%%% Clausify Query %%%%%%%%%%%
 
@@ -669,14 +696,14 @@ condq1(not PQ, (not PQ1)):-
 % Update focus also in questions 
 
 condq1(X isa C, (isa)/World/C/X):- 
-    user:value(textflag,true),
-    user:value(world,World),
+    value(textflag,true),
+    value(world,World),
     World \== real,
     !.
 
 condq1(X isa C,X isa C):- 
     nonvar(X),
- \+ user:value(queryflag,true), 
+ \+ value(queryflag,true), 
     !,
     new_focus(X,C).
 
@@ -802,7 +829,7 @@ superbeat(X,Z):-      member(X,Z), \+  (X = (not _Y)).
 
 newskolem(Y):-  
     do_count(skolocon), % skolocon := skolocon + 1
-    user:( skolocon =: Y ).
+    ( skolocon =: Y ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

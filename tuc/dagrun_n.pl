@@ -16,6 +16,7 @@
 %% RS-131227    UNIT: tuc/
 %:-ensure_loaded( user:lex ). %%, [ maxl/1, txt/3  ]).                %% RS-131227    From lex.pl
 :-use_module( '../tuc/lex.pl', [ maxl/1, txt/3 ] ). %% RS-140207, extra?  maxl/1,
+:-use_module( '../main.pl', [ set/2, value/2 ] ). %% RS-140207, extra?  maxl/1,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -59,11 +60,11 @@ w(U,U,X,X,UW,W):-
     upcur(W).            % UPDATE * 
                          % An error message can never come too early
 
-upcur(N):-
-        (user:value(cursor,M),
+upcur(N) :-
+        value( cursor, M ),
          N > M  ->
-         user:set(cursor,N);  
-         true).
+         set(cursor,N);  
+         true.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

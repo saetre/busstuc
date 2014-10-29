@@ -6,16 +6,20 @@
 %% REVISED TA-110825
 %% REVISED RS-140921
 
-:-op( 1150, xfx, ----> ). 
 
-:-module( gram_n, [ ( ----> )/2 ] ).
+:-module( gram_n, [ ( ---> )/2 ] ).  % , sentence/3 ] ).
 
 %  T H E     J U L E K A L E N D E R, Trøngelsk! English/Norwegian mix
 %  Consensical Grammar for Norwegian
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- ensure_loaded( user:'../declare' ).  %:-op( 710,xfx, isa ).  % Move to tuc/facts?
+:- ensure_loaded( '../declare' ).  %:-op( 710,xfx, isa ).  % Move to tuc/facts?
+:-op( 1150, xfx, ---> ). 
+:- op( 731,xfy, ::: ).          %% sentence tag  %% TA-090514 
+:- op( 730,xfy, :: ).           %% lambda infix      %% RS-131229 For dialog/frames2 and /virtuals (autofile)
+:- op( 710,xfx, isa ).          % Move to tuc/facts
+%...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -69,30 +73,38 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% Avoid error messages (because of spaces?)
-A ----> B :-
-        A--->B.
+%% Avoid error messages (because of spaces? No 4----> vs. 3--->   OR  same ---> in gram_e !)
+%(A --> B) :-
+%        ( A ---> B ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%:- ensure_loaded( user:'../utility/utility' ). %% testmember/2 Make it local instead (in dcg_?.pl
+%:- ensure_loaded( '../utility/utility' ). %% testmember/2 Make it local instead (in dcg_?.pl
 % UNIT:db
 %:- use_module( '../db/busdat', [ clock_delay/3 ] ). %%, named_date/2 ] ).
 % UNIT:tuc
 %:- use_module( '../tuc/semantic', [ tv_templ/3 ] ).
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:- use_module( '../main.pl', [ ( := )/2, value/2 ] ). 
+%:- use_module( '../utility/utility', [ test/1, testmember/2 ] ).  %% RS-140914
+%
+%:- use_module( '../utility/datecalc', [ add_days/3, datetime/6, easterdate/2, subfromtime/3, this_year/1, timenow/1, today/1, todaysdate/1  ] ).  %% RS-131228, addtotime/3, days_between/3, 
+%:- use_module( 'dagrun_n', [ ]). %% RS-111213 What is DAG? 
+%:- use_module( 'dict_n', [ ]). %% RS-111213 What is DAG? 
+%:- prolog_flag(discontiguous_warnings,_,off). %% RS-140921 Does this actually work?
+%
+%:- use_module( '../db/timedat', [ dedicated_date/1, named_date/2 ] ). %% RS-131228
 
 %% GPS SECTION
 
-sentence([gpsflag:::Originlist|S]) --->
-    {user:value(gpsflag,true)},
+sentence( [gpsflag ::: Originlist|S] ) --->
+    {value(gpsflag,true)},
     origin_phrase(Originlist),
     !,
     sentences(S).
 
 sentence(S) --->
-    {\+ user:value(gpsflag,true)},
+    {\+ value(gpsflag,true)},
     sentences(S).
 
 
@@ -102,7 +114,7 @@ origin_phrase([X|Z])   --->
     origin_element(X),
 
 %   {user:set(new_origin, true) }, %% ugly.  actual origin detected %% TA-110206
-    {user:( new_origin := true )},  %% ugly reset explicit  new_origin flag %% RS-140210
+    {( new_origin := true )},  %% ugly reset explicit  new_origin flag %% RS-140210
 
     origin_phrase0n(Z).
 
@@ -125,7 +137,7 @@ origin_element(gps_origin(A,T)) --->
 
 gps_origin(SBA) --->  name_phrase(name,SBA:_Station,_Pred),!.
 
-gps_time(T) ---> w(nb(T,num)).
+gps_time(T) ---> w( nb(T,num) ).
 
 
 
@@ -152,13 +164,13 @@ sentence01(S) ---> sentence1(S).
 %%¤ SENTENCES  
 
 sentences([new:::P]) ---> 
-    {user:value(queryflag,false)}, %%  Only in multi dialog system 
+    {value(queryflag,false)}, %%  Only in multi dialog system 
     declaration(P),
     terminatore,  
     !,accept.
 
 sentences([P]) ---> 
-    {\+ user:value(queryflag,false)},
+    {\+ value(queryflag,false)},
 %%     optional(grums),
     greetings0,   %% haz ? 
     implicitq(P), %% only one on the outer level.
@@ -258,7 +270,7 @@ endofline0 ---> end_of_line0. %% NEW Runtime predicate
 endofline ---> terminator,endofline,!,accept. 
 endofline ---> [':'],end_of_line,!. 
               
-endofline ---> ['+'],{user:value(busflag,true)},
+endofline ---> ['+'],{value(busflag,true)},
                endofline,!,accept.        %% '+' = lower case '?' 
 endofline ---> end_of_line.  %% checks empty stack
 
@@ -268,22 +280,23 @@ endofline1 --->  ['!'].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-check_stop_locations ---> check_stop,!. %% ad hoc %% TA-101215
+check_stop_locations ---> check_stop,!. %% ad hoc %% TA-101215 Just the first one?
 
-/**  check_stop_locations ---> */
+% check_stop_locations --->
 check_stop_locations --->
-     w(end_of_query), 
+     w( end_of_query ), 
      assemble_stop_locations( Statlist ),
      !,
      { assert_default_origins( Statlist ) }.
+
 %% Ad Hoc
 % Assemble locations
 
-assemble_stop_locations( [ Stat1+Min | Rest ] ) --->
+assemble_stop_locations( [ Stat1+Min | _Rest ] ) --->
     w( name( Stat1, n, _Station ) ), ['+'], w( nb( Min, num ) ),
     !,
-    %check_stop_locations( [ Rest ] ).
-    check_stop_locations(  Rest ).
+   % check_stop_locations( [ Rest ] ).
+   check_stop_locations.
 
 assemble_stop_locations( [] ) ---> end_of_line.
 
@@ -591,7 +604,7 @@ sentence1(P) --->
 %% Panic-rule %% item virker ikke i Dialog
 
 sentence1(modifier(A):::(C isa clock and srel/nil/time/C/A and event/real/A)) ---> 
-    {user:value(dialog,1)}, 
+    {value(dialog,1)}, 
     item(P),
     endofline, 
     {P = (C isa clock)},
@@ -599,14 +612,14 @@ sentence1(modifier(A):::(C isa clock and srel/nil/time/C/A and event/real/A)) --
 
 
 sentence1(item:::P) ---> 
-    {user:value(dialog,1)}, 
+    {value(dialog,1)}, 
     item(P),
     endofline, %%%  3 buss 5 nr . går //terminator1, 
     !,accept.
 
  
 sentence1(item::: Now isa clock) ---> 
-    {user:value(dialog,1)},
+    {value(dialog,1)},
     [nå],                             %% now is also a time
     terminator1, 
     !,accept,
@@ -615,13 +628,13 @@ sentence1(item::: Now isa clock) --->
 
 sentence1(item:::P)  --->   %% nr . ( 52 går)
     noun(_Man,_,_u,n,it:_,P),   %%  menn 
-   {user:value(dialog,1)},
+   {value(dialog,1)},
     endofline, 
     !,accept.
 
  
 sentence1(item::: it isa Day) ---> 
-    {user:value(dialog,1)},
+    {value(dialog,1)},
     today, %% i dag etc
     terminator1, 
     !,accept,
@@ -637,7 +650,7 @@ sentence1(new:::P) ---> %%  ble  kanskje feil ...%% <-> ynq isq
 
 
 
-sentence1(new:::P) --->    %% er på Kuset --> jeg er på kuset
+sentence1(new:::P) --->    %% er på Kuset ---> jeg er på kuset
     w(verb(be,_,_)), %% er på/ (skulle ha) vært på / var på
     now0,   
     w(prep(Ion)), 
@@ -686,14 +699,14 @@ sentence1(item:::P) ---> %% team. jeg vil ta buss after statement
 
 
 item(N isa clock) ---> 
-    {user:value(dialog,1)},
+    {value(dialog,1)},
     time12(N),
     {N \== now},
     endofline. 
 
 
 item(Nisadate) ---> 
-    {user:value(dialog,1)},
+    {value(dialog,1)},
     obviousdate1(_,Nisadate),
     endofline.  %% nec ?
 
@@ -751,7 +764,7 @@ tilat ---> [til],[at],!.
 tilat ---> [som],[om],!.
 tilat ---> [som].
 
-command(new:::P) ---> %%  See you in hell  --> VERB -> Jeg VERB .
+command(new:::P) ---> %%  See you in hell  ---> VERB -> Jeg VERB .
     w(verb(See,pres,fin)), %% avoid så="sedde" 
     not_look_ahead([du]), %% ad hoc
     gmem(See,[expect,miss,need,get,receive,see,understand]),
@@ -1177,7 +1190,8 @@ statemen1(R,P) --->  %% så er det bra (INITIALLY)
 %%%%  STM above are INITIAL PHRASES
 
 stateme1(R,Q) --->  %% TA-101115 <--- only initial
-    statem(S,event/R/S::Q).
+    statem(S,event/R/S::Q).  %% RS-141029  Hvor går flybussen? Try this:
+%       substatem1(S,event/R/S::Q).  %% RS-141029  Hvor går flybussen? Try this:
 
 
 %%%%¤  SUBSTATEME1 (R, P).
@@ -1279,7 +1293,7 @@ substatem1(S,EQ) --->  %%  Experiment
 
 substatem1(S,STM) ---> substate(S,STM).
 
-%%%%%%%%  substatem1(S,STM) ---> statem(S,STM).  %% <--> %% ? %% TA-101115
+%%%%%%%%  substatem1(S,STM) ---> statem(S,STM).  %% <---> %% ? %% TA-101115
 
 hvisaa0 ---> [så],!.
 hvisaa0 ---> look_ahead_lit([ble]),!. %% siden bussoraklet  foreslår direkte ruter (så) ble det foreslått ringruter
@@ -2077,7 +2091,7 @@ statem(S,SEM) --->
 
 
 statem(S,Com::Q) ---> % i morgen kveld går bussen 
-    {user:value(dialog,1)}, %% expensive 
+    {value(dialog,1)}, %% expensive 
     preadverbial1(Prep1,Y1, SC1::P31), 
     preadverbial1(Prep2,Y2, SC2::P32), 
     lexv(Vcat,V,T,fin), 
@@ -2292,7 +2306,7 @@ itstatem(S,SEM) ---> %% Det er en løsning at  Bingo%% TA-110809
     be,
     np0_accept(XS,NPS),
     [at], 
-    traceprint(4,it00),
+    {traceprint(4,it00)},
     !,
     clausal_object1(OX,ONP),
     state(S,SEM) \
@@ -2305,7 +2319,7 @@ itstatem(S,SEM) ---> %% Det er en buss %% TA-110809
     be,
     not_look_ahead(w(adj2(_,_))), %% rart %% TA-110819
     look_ahead_np,  
-    traceprint(4,it01),
+    {traceprint(4,it01)},
     !,
     state(S,SEM) -
         w(verb(exist,pres,fin)).
@@ -2315,7 +2329,7 @@ itstatem(S,SEM) ---> %% Det er en buss %% TA-110809
 itstatem(S,SEM) ---> %% Det er|går en buss  %% TA-110809
     w(verb(Help,Tens,fin)), {Help \== be},
     look_ahead_np,  
-    traceprint(4,it02),
+    {traceprint(4,it02)},
     !,
     state(S,SEM) -
         w(verb(Help,Tens,fin)).
@@ -2330,7 +2344,7 @@ itstatem(S,SEM) ---> %% Det hjelper   -> Dette hjelper           #2%% TA-110426
       {bigno(N1,N2,N)},  
         gmem(Help,[help,give,make,create]),
       
-      traceprint(4,it0),
+      {traceprint(4,it0)},
     !,
     state(S,SEM)\
         ([dette], w(verb(Help,Tens,fin)), negation(N)).
@@ -2342,7 +2356,7 @@ itstatem(S,ISEM) --->     %% det har jeg // dette
             gmem(V,[have]),
     subject(X,XNP),
 
-    traceprint(4,it1),
+    {traceprint(4,it1)},
     state(S, ISEM) \ 
         (xnp(X,XNP),w(verb(V,Pres,fin)),[dette]).
 
@@ -2353,7 +2367,7 @@ itstatem(S,ISEM) --->     %% TA-110112   det(=dette) betyr at
     lexvaccept(rv,V,Pres,fin,N),   
     [at],
     look_ahead_np,    
-    traceprint(4,it2),
+    {traceprint(4,it2)},
     !,             
     state(S, ISEM) \ 
         ([dette],w(verb(V,Pres,fin)),negation(N)). 
@@ -2372,7 +2386,7 @@ itstatem(S,SEM) ---> %% Det er ikke kartet som er feil//
               
     [som],
      w(verb(Be,Pres,fin)),   %% TA-101207
-     traceprint(4,it3),
+     {traceprint(4,it3)},
       !,  
     state(S, SEM) \  
         ( xnp(A,SU), 
@@ -2392,7 +2406,7 @@ itstatem(S,ST) ---> %% det er jeg ikke sikker på %% TA-101025
                                     %% TA-110527
     w(adj2(Certain,nil)),
     w(prep(On)),
-    traceprint(4,it4),
+    {traceprint(4,it4)},
     !,
     state(S, ST) \ 
         (xnp(X,NP),
@@ -2410,7 +2424,7 @@ itstatem(S,ST) ---> %% det vil jeg gjøre %% TA-100914
     subject(X,NP),
     negation0(N), 
     w(verb(See,_,fin)), 
-    traceprint(4,it5),
+    {traceprint(4,it5)},
     !,
     state(S, ST) \ 
         (xnp(X,NP),
@@ -2423,7 +2437,7 @@ itstatem(S,Com::Q) ---> %% Fronted %% TA-110122
 
     be_truefalse_that(N), %% slik at
     statem(S,Com::P), %% ... det går en buss %% Recursion
-     traceprint(4,it6),
+     {traceprint(4,it6)},
     !,
     {negate(N,P,Q)}.
 */
@@ -2436,7 +2450,7 @@ itstatem(S,EQ) ---> %% TA-100912 det er rart å ta bussen
     gradverb0(_Very),  
     w(adj2(Inc,NIL)), %% sant/feil ? veldig interessant 
     [å],
-    traceprint(4,it7),
+    {traceprint(4,it7)},
     !,
     clausal_object1(X,XNP)\([jeg],[vil]),  
        
@@ -2455,7 +2469,7 @@ itstatem(S,EQ) ---> %% FRONTEST det er nødvendig med opplæring
  
     %%  w(prep(with)),
     %% np1_accept(X,NP),
-    traceprint(4,it8),
+    {traceprint(4,it8)},
     !, 
     state(S,EQ)\
          (xnp(Y,NP),
@@ -2468,7 +2482,7 @@ itstatem(S,EQ) ---> %% det er rart at bussen går
     gradverb0(_Very),  
     w(adj2(Inc,NIL)), %% adj1(ABig,AV,AS,ABIGX), %% veldig interessant 
     [at],
-    traceprint(4,it9),
+    {traceprint(4,it9)},
     !,
     clausal_object1(X,XNP),
        
@@ -2487,7 +2501,7 @@ itstatem(S,EQ) ---> %%  det er veldig lett for meg å ta buss
     object(Z,ZNP),
   
     [å],
-      traceprint(4,it10),
+      {traceprint(4,it10)},
     !,accept,
 
     clausal_object1(X,XNP)\(xnp(Z,ZNP),[vil]), %% ta buss
@@ -2504,7 +2518,7 @@ itstatem(S,EQ) ---> %%  det er veldig lett for noen å ta buss %% NEC ???
     w(adj2(Easy,Nil)),
     pp(PP,Z,PPS),  %% for meg        (with care)
     [å],
-      traceprint(4,it11),
+      {traceprint(4,it11)},
     !,accept,
 
     clausal_object1(X,XNP)\[noen],
@@ -2524,7 +2538,7 @@ itstatem(S,EQ) ---> %%  det er lett å ta buss
     [å],
     w(verb(Take,inf,fin)), %% lexv(tv,Take,inf,fin), %% se=see (\+look)  
     reflexiv0(Take), %% seg 
-      traceprint(4,it12),
+      {traceprint(4,it12)},
     !,
     clausal_object1(X,XNP)\
         ([noen],
@@ -2543,7 +2557,7 @@ itstatem(S,EQ) ---> %%  det er nødvendig = dette er nødvendig
     adj1(ABig,AP,AS,ABIGX), 
     not_look_ahead_np, %% det er fin vær
     %% endofline, %% requires empty stack ????
-      traceprint(4,it13),
+      {traceprint(4,it13)},
     !,
     state(S,EQ)\
          ([dette],
@@ -2553,7 +2567,7 @@ itstatem(S,EQ) ---> %%  det er nødvendig = dette er nødvendig
 
 
 
-itstatem(S,Com::P) ---> %% be --> exist ?  // FRONTED // dubious
+itstatem(S,Com::P) ---> %% be ---> exist ?  // FRONTED // dubious
                         %% det er ikke kartet som er feil//
     be,                 %% -> *** kartet som er feil eksisterer ikke
     preadverbials0,  %% TA-110527
@@ -2567,7 +2581,7 @@ itstatem(S,Com::P) ---> %% be --> exist ?  // FRONTED // dubious
 
     [som], %%% ?????  det er en del feil \= det er en del (som) er feil
 
-      traceprint(4,it14a),
+      {traceprint(4,it14a)},
    % !,  
     state(S, Com::P) \  
         (xnp(X,NP),w(verb(be,pres,fin)),negation(N)),  %% *exists 
@@ -2579,7 +2593,7 @@ itstatem(S,ISEM) --->  %% TA-110122 after be_true_false_that
     be,
     negation0(N),
     not_look_ahead_np,    
-      traceprint(4,it14b),
+      {traceprint(4,it14b)},
     !,             
     state(S, ISEM) \ 
         ([dette],w(verb(be,pres,fin)),negation(N)). 
@@ -2590,7 +2604,7 @@ itstatem(S,SEM) ---> %% Det hjalp med restart
     w(verb(Cost,Tense,fin)), gmem(Cost,[help,function]),
     [med],
     np0_accept(M,K),
-      traceprint(4,it15),
+      {traceprint(4,it15)},
     !,
     state(S, SEM) \
         (xnp(M,K),w(verb(Cost,Tense,fin))).
@@ -2602,7 +2616,7 @@ itstatem(S,SEM) ---> %% Det koster 30 kroner å ta buss %% preliminary clausal S
     w(verb(Cost,Tense,fin)), gmem(Cost,[cost,take]),
     np0_accept(M,K),
     [å],
-      traceprint(4,it16),
+      {traceprint(4,it16)},
     !,
     clausal_object1(XCO,COSEM)\([noen],[vil]), %% noen tar buss = dette
     state(S, SEM) \(xnp(XCO,COSEM),
@@ -2617,7 +2631,7 @@ itstatem(S,Com::P1) ---> %% Det går an å ta buss #1 %% TA-110426
     negation0(N),    
     ann0,  %% [an],  hazard?
     infinitive,
-      traceprint(4,it17),
+      {traceprint(4,it17)},
     state(S,Com::P) \ someone,
     {negate(N,P,P1)}.
 
@@ -2627,7 +2641,7 @@ itstatem(S,ISEM) --->  %% det går (ikke)(an) = er (ikke) mulig
     {bigno(N1,N2,N)},    
     optional([an]),
     not_look_ahead_np, %% oops tog
-       traceprint(4,it17b),
+       {traceprint(4,it17b)},
     !,             
     state(S, ISEM) \ 
         ([dette],w(verb(be,T,fin)),negation(N),w(adj2(possible,nil))). 
@@ -2644,7 +2658,7 @@ itstatem(S,ISEM) --->  %% det skjedde ikke noe som jeg likte    #2
    {\+ testmember(V,[cost,take])}, %% be ??  %% TA-110808 Haz ?
    preadverbials0,   %% TA-110527            %% da vil  løsningen være at det blir en bus   
    look_ahead_np,    
-      traceprint(4,it18),
+      {traceprint(4,it18)},
     !,             
     subject(X,SNP),
     state(S, ISEM) \ 
@@ -2656,7 +2670,7 @@ itstatem(S,ISEM) --->  %% det skjedde ikke noe som jeg likte    #2
 itstatem(S,SEM) ---> %% Det hjelper å ta buss %% preliminary clausal SUBJECT
     w(verb(Help,Tense,fin)),
     [å],
-      traceprint(4,it19),
+      {traceprint(4,it19)},
     !,
     clausal_object1(XCO,COSEM)\([noen],[vil]), %% noen tar buss = dette
     state(S, SEM) \
@@ -2670,7 +2684,7 @@ itstatem(S,STM) ---> %%  det ble sagt at bussen sto
     negation0(N), 
     w(verb(Arr,past,part)),
     [at],
-      traceprint(4,it20),
+      {traceprint(4,it20)},
     !,accept,
     state(S,STM)\
         ([noen],
@@ -2689,7 +2703,7 @@ itstatem(S,STM) --->   %% det er/ble arrangert et møte
     negation0(N), 
     w(verb(Arr,past,part)),
     object(Y,NPY),
-      traceprint(4,it21),
+      {traceprint(4,it21)},
     !,accept,
     state(S,STM)\
         (xnp(Y,NPY),
@@ -2705,7 +2719,7 @@ itstatem(S,SEM) ---> %% Det kjøres ruter = Noen kjører ruter
 
     w(verb(Run,Tense,pass)),
     negation0(N),
-      traceprint(4,it23),
+      {traceprint(4,it23)},
     !,
     state(S,SEM)\
         ([noen], w(verb(Run,Tense,fin)), negation(N)).
@@ -2717,7 +2731,7 @@ itstatem(S,EQ) ---> %% Det er sikkert at bussen går
     redundant0, %% likevel  
     w(adj2(Easy,nil)), {testmember(Easy,[certain,uncertain,good,bad])},
     atom,            %% usikkert -> om
-    traceprint(4,it24),
+    {traceprint(4,it24)},
     !,
     clausal_object1(X,XNP)\
    
@@ -2739,7 +2753,7 @@ itstatem(S,EQ) ---> %%  (Object) Det er lett å lage = Dette
     w(verb(Make,inf,fin)),
     reflexiv0(Make), %% seg 
     not_look_ahead_np,
-      traceprint(4,it25),
+      {traceprint(4,it25)},
     !,
     clausal_object1(X,XNP)\
         ([noen],
@@ -2760,7 +2774,7 @@ itstatem(S,EQ) --->
     w(verb(be,Pres,fin)),
     negation0(N),
     w(prep(In)),
-      traceprint(4,it26),
+      {traceprint(4,it26)},
     !,
     state(S,EQ)\
        ([dette],    
@@ -2780,7 +2794,7 @@ itstatem(S,EQ) --->  %%  det er lett å komme til Lian
      w(adj2(Easy,nil)),
      [å], 
      w(verb(V,inf,fin)),
-       traceprint(4,it27),
+       {traceprint(4,it27)},
      !,
      clausal_object1(Y, CONP)\
          ([jeg], w(verb(V,pres,fin))),
@@ -2793,7 +2807,7 @@ itstatem(S,ST) ---> %% det forstår jeg (IT er object)
 
     w(verb(See,_,fin)), {verbtype(See,rv)},
     subject(X,NP),
-    traceprint(4,it28),
+    {traceprint(4,it28)},
     !,
     state(S, ST) \ 
         (xnp(X,NP),
@@ -2811,7 +2825,7 @@ itstatem(S,STM) --->  %%  Det har jeg (vel strengt tatt) ikke sagt noe om
     {testmember(Say,[tell])}, %% etc
     [noe],
     [om],
-      traceprint(4,it29),
+      {traceprint(4,it29)},
     state(S,STM) \ 
       ( xnp(X,SNP),
         w(verb(Say,past,fin)),
@@ -2825,7 +2839,7 @@ itstatem(S,ST) ---> %% det gjelder systemet
 
     w(verb(Go,_,fin)),
    {testmember(Go,[concern])},  %% etc gjelder
-      traceprint(4,it30),
+      {traceprint(4,it30)},
     !,
     state(S, ST) \ 
        (w(noun(thing,sin,u,n)), %% something ?
@@ -2839,7 +2853,7 @@ itstatem(S,ST) ---> %% det går  bra i morgen %% -> ting går bra
    {testmember(Go,[go,look,see,function])}, %% etc  
     w(adv(Good)),%% bra 
     optional([ut]), %% for look 
-      traceprint(4,it31),
+      {traceprint(4,it31)},
     !,
     state(S, ST) \ 
        (w(noun(thing,sin,u,n)), %% something ?
@@ -2850,7 +2864,7 @@ itstatem(S,ST) ---> %% det går  bra i morgen %% -> ting går bra
 itstatem(S,Com::Q) ---> 
     w(verb(Rain,_,fin)),
     {testmember(Rain,[rain,snow,look,be_urgent])}, %% det ser ut
-      traceprint(4,it32),
+      {traceprint(4,it32)},
     !,
     state(S, Com::Q) \ 
 (   something,
@@ -2860,7 +2874,7 @@ itstatem(S,Com::P) ---> %% Experiment
             
     pvimodal(Cost,_Money),    %% costs , takes, lasts
     {constrainit(IT,thing)}, %% ad hoc              %    {constrainit(IT,Money)},
-      traceprint(4,it32),
+      {traceprint(4,it32)},
     verb_phrase1(Cost,IT,id, S,Com::P) \ 
         w(verb(Cost,pres,fin)).  %   koster penger aa ta buss
                                  % = koster penger for å ta buss
@@ -2870,7 +2884,7 @@ itstatem(S,Com::P1) ---> %% Det begynner å gå en buss
      
     beginverb(Go,N), 
     np1(A, NP1),
-      traceprint(4,it33),
+      {traceprint(4,it33)},
     state(S,Com::P) \  (np1(A, NP1), w(verb(Go,pres,fin))),
     {negate(N,P,P1)}.
 
@@ -2881,7 +2895,7 @@ itstatem(S,Com::P) --->
     be,
     adverbial(Prep,Y, SC::P3),  %% - i kveld at
     that,
-      traceprint(4,it34),
+      {traceprint(4,it34)},
     state(S, Com::P)  /  adverbial(Prep,Y, SC::P3).
 
 
@@ -2893,7 +2907,7 @@ itstatem(S,Com::P) ---> %% Det er godt at jeg lever
     not_look_ahead(w(verb(_Verify,past,part))), 
     w(adj2(_Good,nil)),
     one_of_lit([at,om]), %% that, 
-      traceprint(4,it35),
+      {traceprint(4,it35)},
     !,accept,           
     statem(S,Com::P). %% i.e.was substatem  IGNORE the adjective %% bussen ikke går
 
@@ -2906,7 +2920,7 @@ itstatem(S,Com::P) ---> %% Det er godt jeg lever
    {testmember(Good,[good])},  %%  Er det edru sjåfører
 
     not_look_ahead(w(noun(_,_,_,_))), %% det er gode svar ****
-    traceprint(4,it36),
+    {traceprint(4,it36)},
 
     statem(S,Com::P).           %% Recursion
 
@@ -2923,7 +2937,7 @@ itstatem(S,Com::Q) --->
          mild,hot,cold,wet,dark,bright,cloudy,
          sad,stupid,tedious  ])},  
     %% late is also adverb
-      traceprint(4,it37),
+      {traceprint(4,it37)},
     be_complements(IT,S, Com::P ) \ w(adj2(Good,nil)), % Det er mørkt i kveld. 
     {negate(N,P,Q)}.
  
@@ -2934,7 +2948,7 @@ itstatem(S,Com::P) --->
     {\+ testmember(V,be)}, 
     negation0(N),
     adverb(X,Y,_),   %%  (snart)  late is both adjective and adverb
-      traceprint(4,it38),
+      {traceprint(4,it38)},
     !,
     state(S, Com::P) -  
         (lexv(iv,V,T,fin),negation(N),xadverb(X,Y)).
@@ -2944,7 +2958,7 @@ itstatem(S,ST) --->  %% det er = det fins %% Last
 
     be(N),
     subject(Su,SNP), 
-      traceprint(4,it39),
+      {traceprint(4,it39)},
     !,
     state(S, ST) \
      ( xnp(Su,SNP),  w(verb(exist,pres,fin)), negation(N)),
@@ -3133,7 +3147,7 @@ implicitq(new:::P ) --->     %%  fra sollia som ankommer samfundet 1730 .
              w(prep(From)),
              w(name(Sollia,n,Station))),        
               
-    traceprint(4,iq00),
+    {traceprint(4,iq00)},
     !,accept,    
     verb_phrase1(_V,X,id, S,event/real/S::P1),
   
@@ -3144,11 +3158,11 @@ implicitq(new:::P ) --->     %%  fra sollia som ankommer samfundet 1730 .
 implicitq(modifier(S)::: Com12 and P3) ---> %% Når går (neste) Nidarosdomen
      not_look_ahead([nr]), 
      [når],
-     {\+ user:value(dialog,1)},  
+     {\+ value(dialog,1)},  
      w(verb(go,_,fin)),
      optional([neste]),
      w(name(ND,n,Nei)), {testmember(Nei,[station,neighbourhood])},
-     traceprint(4,iq01),
+     {traceprint(4,iq01)},
      !,
     {setvartype(XB,vehicle)}, 
      realcomp(S, ERS,P3),  
@@ -3160,34 +3174,34 @@ implicitq(modifier(S)::: Com12 and P3) ---> %% Når går (neste) Nidarosdomen
 implicitq(WI) ---> %% når + //no verb// + station ->  %% når trollahaugen 
      not_look_ahead([nr]),
      [når],
-     {\+ user:value(dialog,1)},  
+     {\+ value(dialog,1)},  
      {no_unprotected_verb}, %
      look_ahead(w(name(_Th,_,P))), 
      {subclass0(P,place)},
      !,accept,
-     traceprint(4,iq2), 
+     {traceprint(4,iq2)}, 
      implicitq(WI)  \  w(prep(to)). %% Hazardous ????  
 
 
 implicitq(test:::WI) ---> %% når nr 
-     {\+ user:value(dialog,1)},  
+     {\+ value(dialog,1)},  
      not_look_ahead([nr]), 
      [når],
      [nr],
      {no_unprotected_verb}, %
      !,accept,
-     traceprint(4,iq3), 
+     {traceprint(4,iq3)}, 
      ynq(WI)\ w(verb(go,pres,fin)).
 
 
 implicitq(test:::WI) ---> %% når + //no verb// -> skip når
      not_look_ahead([nr]), 
      [når],
-     {\+ user:value(dialog,1)},  
+     {\+ value(dialog,1)},  
      {no_unprotected_verb}, %
      optional([det]), %%
      !,accept,
-     traceprint(4,iq4), 
+     {traceprint(4,iq4)}, 
      ynq(WI)\ w(verb(go,pres,fin)).
 
 
@@ -3211,7 +3225,7 @@ implicitq(new:::P ) --->     %% buss .. som ankommer.. // with care.
     not_look_ahead([om]),  %% om morgenen,... %% ad hoc 
     point0, 
     !,accept,                
-    traceprint(4,iq4b),
+    {traceprint(4,iq4b)},
     verb_phrase1(go,X,id, S,event/real/S::P1) \ w(verb(go,pres,fin)),
                  %% \+ _ 
     optional(itrailer),  %% buss 8 fra byen    når ?
@@ -3224,34 +3238,34 @@ implicitq(new:::P ) --->     %% buss .. som ankommer.. // with care.
 %% avdeling erik harborg // special
 
 implicitq(which(X):::Q) --->   %% teleflag avdeling erik harborg
-    {user:value(teleflag,true)},
+    {value(teleflag,true)},
     w(noun(Dep,_,_,n)), 
     not_look_ahead(w(prep(_))),
     person_name(EH:person,PP,_),
     endofline, %% s.p.andersens veg = sentrum. ... 
     !,
-    traceprint(4,iq5), 
+    {traceprint(4,iq5)}, 
     no_phrases(X,Q)= 
         (w(noun(Dep,sin,u,n)),w(prep(to)),  nameq1(EH:person,PP)),
     !,accept. 
 
 
 implicitq(which(X):::P) ---> %% teleflag  Nardo
-    {user:value(teleflag,true)},
+    {value(teleflag,true)},
     no_phrases(X,P), 
     endofline, %% s.p.andersens veg = sentrum. 
-    traceprint(4,iq7),
+    {traceprint(4,iq7)},
     !,accept.
 
 
 implicitq(new:::P ) --->     %% tider fra dragvoll %% Ad Hoc Problem
-    {\+ user:value(dialog,1)},   %% // buss til nth
+    {\+ value(dialog,1)},   %% // buss til nth
     not_look_ahead(w(prep(_))),
     {no_unprotected_verb}, %% NEW AUXILLARY    tuc/lex.pl   
     w(noun(time,_,_,N)),
     look_ahead(w(prep(_))), 
     np0(X, P1::P)\  w(noun(departure,sin,u,N)),    %% ad hoc 
-    traceprint(4,iq8), 
+    {traceprint(4,iq8)}, 
     !,accept,  
     verb_phrase1(_V,X,id, S,event/real/S::P1) \ w(verb(go,pres,fin)),
     endofline, 
@@ -3284,7 +3298,7 @@ implicitq(new:::P ) --->     %% buss 5 Dragvoll
                                
     point0, 
     !,accept,                
-    traceprint(4,iq9),
+    {traceprint(4,iq9)},
     verb_phrase1(_V,X,id, S,event/real/S::P1) \ w(verb(go,pres,fin)),
     optional(itrailer),  %% buss 8 fra byen    når ?
     endofline,           %%  s.p. andersens veg = sentrum . ...
@@ -3294,7 +3308,7 @@ implicitq(new:::P ) --->     %% buss 5 Dragvoll
 
 
 implicitq(modifier(S)::: Com12 and P3) ---> %% kl 1234 ...
-      {user:value(dialog,1)}, 
+      {value(dialog,1)}, 
       not_look_ahead([nå]), %% not intended
     time1(NI),  
 %%    {number(NI)},
@@ -3307,13 +3321,13 @@ implicitq(modifier(S)::: Com12 and P3) ---> %% kl 1234 ...
     deter0,   
     verb_modifiers(go,XB,S, Com12 ::true, ERS)\
             obviousclock1(NI:clock,NI isa clock), %% ad hoc
-       traceprint(4,iq10), 
+       {traceprint(4,iq10)}, 
        !,accept, %%   ( don t waste time )
        qtrailer0.  %% takk 
 
 
 implicitq(new:::P ) --->     %% buss 5 Dragvoll ///  NOT neste buss
-    {user:value(dialog,1)},      %%  buss til nth
+    {value(dialog,1)},      %%  buss til nth
     not_look_ahead(w(prep(_))),
     not_look_ahead_flnp,
     {no_unprotected_verb},  %% NEW AUXILLARY    tuc/lex.pl   
@@ -3324,7 +3338,7 @@ implicitq(new:::P ) --->     %% buss 5 Dragvoll ///  NOT neste buss
     not_look_ahead([om]), %% morgenen %% ad hoc
     not_look_ahead([som]), 
     !,accept,  
-    traceprint(4,iq11), 
+    {traceprint(4,iq11)}, 
     verb_phrase1(_V,X,id, S,event/real/S::P1) \ w(verb(go,pres,fin)),
     endofline,          %% s.p. andersens veg = sentrum . ...
     !,accept.           %%% skummel %%%
@@ -3336,7 +3350,7 @@ implicitq(P) --->  % 4 neste til ... // Neste 4 = neste buss 4!
     flnp(Next),
     w(prep(To)),  
     !,accept,
-    traceprint(4,iq12),
+    {traceprint(4,iq12)},
     implicitq(P) \ %% illegal recursion!
        ( w(nb(Number,num)),
          w(adj2(Next,nil)),
@@ -3353,7 +3367,7 @@ implicitq(modifier(S)::: Com12 and P3) ---> %%  neste til // ikke
     therightprep(From),  %% fra -> from  , not after %% Hack
 
     !,accept,
-    traceprint(4,iq13),
+    {traceprint(4,iq13)},
     realcomp(S, ERS,P3), 
     verb_modifiers(go,X:vehicle,S, Com12  ::X isa vehicle and adj/nil/Next/X/S, ERS) \ 
         w(prep(From)),
@@ -3362,26 +3376,26 @@ implicitq(modifier(S)::: Com12 and P3) ---> %%  neste til // ikke
 
 
 implicitq(WI) --->  %% holdeplasser på risvollan
-    {\+ user:value(dialog,1)}, %% siste buss -> modifier ! 
+    {\+ value(dialog,1)}, %% siste buss -> modifier ! 
     w(noun(Station,X,Y,Z)), 
     not_look_ahead(w(name(_D3,_,_))), %% holdeplass D3 -> "Holdeplass" (SIC)
     {testmember(Station,[station])}, %% TA-110816
     look_ahead(w(prep(_))), %%  \+ endoffile // "station"    
     {no_unprotected_verb}, 
     !,accept,
-    traceprint(4,iq14),
+    {traceprint(4,iq14)},
     whatq(WI) \ ( whatbe,w(noun(Station,X,Y,Z))).
 
 
 
 implicitq(WI) ---> %% nærmeste holdeplass ...
-    {\+ user:value(dialog,1)}, %% siste buss -> modifier ! 
+    {\+ value(dialog,1)}, %% siste buss -> modifier ! 
     w(adj2(nearest,nil)), %%  special
     look_ahead(w(noun(Station,_,_,_))), 
     {testmember(Station,[station])},
     {no_unprotected_verb}, 
     !,accept,
-    traceprint(4,iq14b),
+    {traceprint(4,iq14b)},
     whatq(WI) \ ( whatbe ,w(adj2(nearest,nil))).
 
 
@@ -3393,8 +3407,8 @@ implicitq(WI) ---> %% nærmeste holdeplass ...
 
 implicitq(modifier(S)::: Com12 and P3) ---> %% nå Dalen Hageby -> TIL Hageby
     [nå],
-    {\+ user:value(teleflag,true)},
-    {\+ user:value(textflag,true)},
+    {\+ value(teleflag,true)},
+    {\+ value(textflag,true)},
     {no_unprotected_verb}, %% NEW AUXILLARY    tuc/lex.pl
     not_look_ahead(w(adj2(_,nil))), %% raskeste 
     not_look_ahead(w(noun(_,_,_,_))), %% buss etc
@@ -3404,13 +3418,13 @@ implicitq(modifier(S)::: Com12 and P3) ---> %% nå Dalen Hageby -> TIL Hageby
     {setvartype(XB,vehicle)}, 
     realcomp(S,  ERS,P3),  
     verb_modifiers(go,XB,S, Com12 ::true, ERS) - [nå],  
-    traceprint(4,iq15),
+    {traceprint(4,iq15)},
     !,accept. %%   ( don t waste time )
 
 
 implicitq(modifier(S)::: Com12 and P3) ---> %% klokken 17 fra nth til risvollan 
-    {\+ user:value(teleflag,true)},
-    {\+ user:value(textflag,true)},
+    {\+ value(teleflag,true)},
+    {\+ value(textflag,true)},
     {no_unprotected_verb}, %% NEW AUXILLARY    tuc/lex.pl
 
     not_look_ahead(w(nb(_,_))), %% 151 til rykkinn \+ clock %% TA-100923
@@ -3423,13 +3437,13 @@ implicitq(modifier(S)::: Com12 and P3) ---> %% klokken 17 fra nth til risvollan
            (w(prep(after)), %% <--- default
             obviousclock1(X,Colock)),
     !,accept, %%  don t waste time
-    traceprint(4,iq17), 
+    {traceprint(4,iq17)}, 
     qtrailer0.  %% takk 
 
 
 
 implicitq(modifier(S)::: Com12 and P3) ---> %%   (buss) 5 i morgen
-    {\+ user:value(dialog,1)},
+    {\+ value(dialog,1)},
     {no_unprotected_verb}, %% NEW AUXILLARY    tuc/lex.pl
     namep(_,X,P),
 
@@ -3445,7 +3459,7 @@ implicitq(modifier(S)::: Com12 and P3) ---> %%   (buss) 5 i morgen
                               
     realcomp(S,ERS,P3), 
     verb_modifiers(go,X,S, Com12  ::P, ERS), %% At least one (Feature)
-    traceprint(4,iq18),
+    {traceprint(4,iq18)},
     !,accept. 
 
 
@@ -3459,7 +3473,7 @@ implicitq(modifier(S)::: Com12 and P3) ---> %% ad hoc Tors(dag) veg
     realcomp(S,ERS,P3), 
     verb_modifiers(go,XB,S, Com12 ::true, ERS)\
          (w(prep(on)), w(noun(Day,sin,u,n))), 
-    traceprint(4,iq19),
+    {traceprint(4,iq19)},
     !,accept. 
 
 
@@ -3482,7 +3496,7 @@ implicitq(new:::P ) --->     %% buss 5 til Dragvoll
                                
     constrainvehdep(X), 
     !,accept,  
-    traceprint(4,iq20), 
+    {traceprint(4,iq20)}, 
     verb_phrase1(_V,X,id, S,event/real/S::P1) \ w(verb(go,pres,fin)),
     endofline,          %% s.p. andersens veg = sentrum . ...
     !,accept.           %%% skummel %%%
@@ -3496,7 +3510,7 @@ implicitq(new:::P ) --->  %% når bussen = går bussen
     !,accept,   
     constrainvehdep(X),                    %% only vehicle
     !,                                    
-    traceprint(4,iq21), 
+    {traceprint(4,iq21)}, 
     np1(X, P1::P) \ np_kernel(0,X, R1R2), 
     verb_phrase1(_V,X,id, S,event/real/S::P1) \ w(verb(go,pres,fin)).
 
@@ -3508,7 +3522,7 @@ implicitq(modifier(S)::: Com12 and P3) ---> %%  neste  Nth til Risvollan
     not_look_ahead(w(name(_,_,route))), %%
     look_ahead(w(name(_,_,_))),      %%  NB place!
     !,accept,
-    traceprint(4,iq22), 
+    {traceprint(4,iq22)}, 
     realcomp(S,ERS,P3), 
     verb_modifiers(go,X:vehicle,S, Com12  ::X isa vehicle and adj/nil/Next/X/S, ERS),
     !,accept. 
@@ -3518,7 +3532,7 @@ implicitq(modifier(S)::: Com12 and P3) ---> %%  neste  Nth til Risvollan
 
 
 implicitq(WI) ---> %% bilett til
-        { \+ user:value(dialog,1)},  
+        { \+ value(dialog,1)},  
         not_look_ahead(w(noun(clock,_,_,_))),
         not_look_ahead(w(noun(thing,_,_,_))), %% etc
         not_look_ahead(w(noun(answer,_,_,_))),
@@ -3528,25 +3542,25 @@ implicitq(WI) ---> %% bilett til
        {testmember(Ticket,[ticket,price])}, %% etc etc
     np1_accept(A, NP),
         !,accept,
-        traceprint(4,iq23),
+        {traceprint(4,iq23)},
     whatq(WI) \ ( whatbe,  xnp(A,NP)).
 
 
 
 implicitq(WI) --->  %% klokka -> hva er klokka
-    { \+ user:value(dialog,1)},  
+    { \+ value(dialog,1)},  
     w(noun(Clock,_,_,_)),
     {testmember(Clock,[clock,date])},
     not_look_ahead(w(nb(_,_))), %%
     !,accept,
-    traceprint(4,iq24), 
+    {traceprint(4,iq24)}, 
     whatq(WI) \ ( whatbe,   w(noun(Clock,_,_,_))) .
 
 
 
 implicitq(modifier(S)::: Com12 and P3) ---> %% NTH Risvollan
-        {\+ user:value(teleflag,true)},
-        {\+ user:value(textflag,true)},
+        {\+ value(teleflag,true)},
+        {\+ value(textflag,true)},
         {no_unprotected_verb}, 
 
         w(name(NTH,n,P1)),   {subclass0(P1,place)},
@@ -3556,7 +3570,7 @@ implicitq(modifier(S)::: Com12 and P3) ---> %% NTH Risvollan
         realcomp(S, ERS,P3),  
         
         not_look_ahead(w(nb(_,_))), %% 100 -> 01:00 -> go 01:100 ...
-        traceprint(4,iq25),
+        {traceprint(4,iq25)},
 
     verb_modifiers(go,XB,S, Com12 ::true, ERS)\  %% At least one (Feature)
 
@@ -3570,8 +3584,8 @@ implicitq(modifier(S)::: Com12 and P3) ---> %% NTH Risvollan
 
 implicitq(modifier(S)::: Com12 and P3) ---> %% Dalen Hageby -> TIL Hageby
 
-        {\+ user:value(teleflag,true)},
-        {\+ user:value(textflag,true)},
+        {\+ value(teleflag,true)},
+        {\+ value(textflag,true)},
         {no_unprotected_verb}, 
         no_harmful_adj,  
         no_harmful_noun, 
@@ -3582,7 +3596,7 @@ implicitq(modifier(S)::: Com12 and P3) ---> %% Dalen Hageby -> TIL Hageby
         not_look_ahead(w(nb(_,_))), %% 100 -> 01:00 -> go 01:100 ...
         no_harmful_adj, %%%% Gamle oslovei
         redundants0, %% SIC selv. %% TA-110215
-        traceprint(4,iq26),
+        {traceprint(4,iq26)},
      verb_modifiers(go,XB,S, Com12 ::true, ERS),  %% only1 ? ( ooo) %% TA-110106
         !,accept, %%   ( don t waste time )
         qtrailer0.  %% takk 
@@ -3692,10 +3706,10 @@ reject_implicitq --->
 reject_implicitq ---> 
     [nei].         
 
-%% Complex passover // det --> [det], de --> [det], de OK, det ikke OK
+%% Complex passover // det ---> [det], de ---> [det], de OK, det ikke OK
 
 reject_implicitq ---> %% after the0 ...
-    {user:value(notimeoutflag,true)},
+    {value(notimeoutflag,true)},
     [det].  %% Prag.
 
 reject_implicitq ---> %% after the0 ...
@@ -3722,7 +3736,7 @@ reject_implicitq --->   %%   "avganger"
    w(noun(NB,_,_,_)), 
    {\+ testmember(NB,[nightbus,airplane,airbus])}, %% give message 
    endofline,
-   {user:value(notimeoutflag,true)}, %% Hazard
+   {value(notimeoutflag,true)}, %% Hazard
    !,reject.
 
 
@@ -4359,7 +4373,7 @@ ynq(P) --->  %% snakker du engelsk /jobber det kvinner
 %%  NB Fails on  ... har buss 6 gått ..., but ok
 
 ynq(P) --->  %% har buss 5 til dragvoll = går (SMS feiltasting)
-    {user:value(smsflag,true)},       %% very irregular 
+    {value(smsflag,true)},       %% very irregular 
     w(verb(have,pres,fin)),      %% har
     look_ahead_bus, 
 
@@ -4488,7 +4502,7 @@ whichq(WhichX:::P) --->
 
 
 whx_phrase(X,WhichX, VP::P) ---> %% hvilke () går
-    {user:value(busflag,true)}, 
+    {value(busflag,true)}, 
     whichf(X,WhichX), 
     look_ahead(w(verb(Go,_,fin))), %% 
     {testmember(Go,[go,pass,leave,depart,arrive])}, 
@@ -4581,7 +4595,7 @@ whatq(WhichZQ) ---> %% hva bruker vi TVen til %% TA-101004
 
 
 whatq(which(X)::: Man ako X) --->   %%  Hva er en mann -> meaning
-     {\+ user:value(dialog,1)}, 
+     {\+ value(dialog,1)}, 
      whatbemean, 
      art1,          %% * hva er bilettpriser
      w(noun(Man,_,u,n)), %% \+ hva er mannen (...  sterk...)
@@ -4589,7 +4603,7 @@ whatq(which(X)::: Man ako X) --->   %%  Hva er en mann -> meaning
      !.
 
 whatq(which(X):::Man ako X) --->   %% hva er buss -> buss liste
-     {\+ user:value(dialog,1)}, 
+     {\+ value(dialog,1)}, 
      whatbemean, 
           %% hva er bilettpriser
      w(noun(Man,_,u,n)), 
@@ -4599,7 +4613,7 @@ whatq(which(X):::Man ako X) --->   %% hva er buss -> buss liste
 
 
 whatq(D) ---> 
-    {\+ user:value(dialog,1)}, 
+    {\+ value(dialog,1)}, 
      whatbemean,  %%  hva er/betyr  
      look_ahead(w(name(_Tuc,_,_))),
      redundant0, %% hva er du da 
@@ -4610,7 +4624,7 @@ whatq(D) --->
 
 /**
 whatq(D) --->
-    {\+ user:value(dialog,1)}, 
+    {\+ value(dialog,1)}, 
      whatbemean,  %%  hva er/betyr  
      specific_phrase(A, NP),     
      redundant0, %% hva er du da 
@@ -5272,7 +5286,7 @@ verb0(be1) ---> [].
 %%% *** hvor stopper buss 6 mellom samfundet og vestre rosten. 
         %% hvor henter du informasjonen (fra) %% TA-110121
 whereq(which(Z):::P) ---> %% hvor tar jeg  bussen (fra) . * 
-    {\+ user:value(dialog,1)},
+    {\+ value(dialog,1)},
     where_adverbial(_nil,Z,WAdv), %% hvor
  
     subjectverb(S,SNP,Take),  gmem(Take,[take,fetch]),
@@ -5315,15 +5329,14 @@ whereq(which(Z):::P) ---> % prepositional complement  //NB NOMINAL WH
 
     substatement1(P) \ 
 
-      (xnp(X,NP),
-       w(verb(Find,Pres,fin))),
+      ( xnp(X,NP),    w(verb(Find,Pres,fin)) ),
  
     !,accept.
 
 
 
 whereq(which(Y):::P) ---> %% hvor går bussen // fra 
-    {\+ user:value(dialog,1)},
+    {\+ value(dialog,1)},
     where,
     w(verb(go,_,fin)), 
     !,
@@ -6162,8 +6175,8 @@ vp(X,N,  S,ComP)  --->
 verb_phrase(X,N,  S,Com::P1) --->  %% før siste buss [går]
     look_ahead_endofline, %% TA-101006
 %%%%%%%%%%%%%%    missingo,
-    {user:value(busflag,true)},
-    {\+ user:value(dialog,1)},   %% (Probably ellipsis)
+    {value(busflag,true)},
+    {\+ value(dialog,1)},   %% (Probably ellipsis)
     constrainvehdep(X),
     !,accept,
     verb_phrase1(exist,X,N, S,Com::P1)\w(verb(exist,pres,fin)), %% exist more     neutral
@@ -6177,8 +6190,8 @@ verb_phrase(X, N, S,VP) --->      %% jeg vil vite om haugesund ("eksisterer")
     endofline, %%% look_ahead_endofline,  %% dont eat '.' %% TA-101007
                %%% dos not work when phrase is stacked   når går bussen .             
 
-    {user:value(busflag,true)},
-    {\+ user:value(dialog,1)},       %% (Probably ellipsis)
+    {value(busflag,true)},
+    {\+ value(dialog,1)},       %% (Probably ellipsis)
     {vartypeid(X,H)},
 
     {testmember(H,   
@@ -6222,7 +6235,7 @@ verb_phrase(X,N, S,Com::P12) --->  %% ønsker og sykle ***
 %% jeg er på dragvoll og skal til nth
 
 %% jeg bruker global tid og ikke lokal tid
-%% -->
+%% --->
 %% jeg bruker global tid og (bruker) ikke lokal tid
 
 
@@ -6597,7 +6610,7 @@ do_phrase(V,X,id,S,SC::(EXS and KA)) --->          % (jeg ber) deg om å ta buss
 
 
 %% omaa0
-%%omaa0 --> omaa,!.     %% Bug?? RS-121118
+%%omaa0 ---> omaa,!.     %% Bug?? RS-121118
 omaa0 ---> omaa,!.
 omaa0 ---> [].
 
@@ -7149,7 +7162,7 @@ rvpk(V,X,N, S,Com1::( P3  and  P1)) ---> %% TA-
 %% SLIPPE (å) vente
 
 
-%%rvpk(V,X,id, S,Com1::( P3  and  P1)) -->      %% Bug?? RS-121118
+%%rvpk(V,X,id, S,Com1::( P3  and  P1)) --->      %% Bug?? RS-121118
 rvpk(V,X,id, S,Com1::( P3  and  P1)) --->
         {testmember(V,
            [avoid,manage,promise,recommend,remember,seem,
@@ -8101,7 +8114,7 @@ qverb_phrase(Y,N, S, QNP) ---> % hvilken tid tar det å kjøre buss
 
     clausal_object1(X,SNP)\[noen], %% i.e. clausal_subject
 
-    traceprint(4,qv0a), 
+    {traceprint(4,qv0a)}, 
     !,
     verb_phrase(X,N, S, QNP) 
          \  ( lexv(tv,V,Tense,fin), xnp(Y,SNP)). 
@@ -8121,7 +8134,7 @@ qverb_phrase(Z,N, S, QNP) ---> % hvilken holdeplass tar jeg buss 52 til
        {subject_object_test(V,X,Y)}, %% TA-100905
     w(prep(TO)), 
     not_look_ahead_np,   
-    traceprint(4,qv0b), 
+    {traceprint(4,qv0b)}, 
     !,
     state(S,QNP) \              
        ( xnp(X, SNP),  
@@ -8140,7 +8153,7 @@ qverb_phrase(Z,N, S, QNP) --->   %% (Hvilken buss) kjører du med
     w(prep(With)), 
  %%%        gmem(With,[to,from,with,past,as]), %% \+ for Å %% TA-110401
     not_look_ahead_np, %% fra sentrum ...   %% TA-101124
-    traceprint(4,qv1), 
+    {traceprint(4,qv1)}, 
     !,accept,                 
     {adjustprepv(V,With,OM)}, %% talk past ---> about %% NEW %% TA-110401
     state(S,QNP) \              
@@ -8156,7 +8169,7 @@ qverb_phrase(Y,N, S, QNP ) ---> % Hvilke ting tenker du å gjøre
     infinitive,         % å
     w(verb(do,inf,fin)),
     []- xnp(Y,SNP), 
-    traceprint(4,qv2), 
+    {traceprint(4,qv2)}, 
     !,
     verb_phrase(X,N, S, QNP )
          \  ( w(verb(Think,pres,fin)),[å], w(verb(do,inf,fin))).
@@ -8168,7 +8181,7 @@ qverb_phrase(Y,N, S, QNP) --->  %% HV OBJECT VERB SUBJECT INDOBJECT
     subject(X ,SNP),             %% sjåføren
     ind_object(U,UNP),               %% deg
     omaa,                        %% (om)  å
-    traceprint(4,qv3),                %% ... besøke
+    {traceprint(4,qv3)},                %% ... besøke
     !,
     []- xnp(Y,SNP),              %% ... hvilken dame
     verb_phrase(X,N, S, QNP) 
@@ -8189,7 +8202,7 @@ qverb_phrase(Y,N, S, QNP) ---> % hvilken buss tar jeg til dragvoll
 
     {subject_object_test(V,X,Y)}, %% TA-100905
 
-    traceprint(4,qv4), 
+    {traceprint(4,qv4)}, 
     !,
     verb_phrase(X,N, S, QNP) 
          \  ( lexv(tv,W,Tense,fin), xnp(Y,SNP)). 
@@ -8203,7 +8216,7 @@ qverb_phrase(Y,N, S, QNP) ---> % hvilken buss vil jeg ta
     not_look_ahead([om]), %% AD HOC %% TA-110401 snakke iv|tv
     {V \== have}, %% ad hoc  har du besvart 
        {test(tv_template(V,X,Y,S,_))}, %% \+ hvilken buss passerer  holdeplass 
-    traceprint(4,qv5),   %% take place ***-> cause fail
+    {traceprint(4,qv5)},   %% take place ***-> cause fail
     !,                     %% find place -> accept
     verb_phrase(X,N1, S, QNP) 
          \  ( lexv(tv,V,pres,fin), xnp(Y,SNP)),
@@ -8217,7 +8230,7 @@ qverb_phrase(Y,N, S, QNP) ---> % hvilken kvinne vil jeg bli gift med
     w(verb(be,inf,fin)), %% bli/være
     w(adj2(A,G)),
     w(prep(W)),
-    traceprint(4,qv6), 
+    {traceprint(4,qv6)}, 
     !,
     verb_phrase(X,N, S, QNP) 
          \  (w(verb(be,pres,fin)), w(adj2(A,G)),w(prep(W)),xnp(Y ,SNP)).
@@ -8229,7 +8242,7 @@ qverb_phrase(Y,N, S, QVP ) --->   %% hvilken pris har du på bussen ?
                               %*** hvem har bussruter i Ålesund
     negation0(N),        
     prepnom(Om),                   %% om (past) -> regarding
-    traceprint(4,qv7), 
+    {traceprint(4,qv7)}, 
     !,
     state(S, QVP ) \ 
         ([du],w(verb(have,pres,fin)), npgap(Y),  w(prep(Om))).
@@ -8240,7 +8253,7 @@ qverb_phrase(Y,N, S,ComP2 ) --->    %% % Hvilken buss har du informasjon om ?
     np1_accept(X, P::P1), %% du  
     w(noun(Info,_,_,n)),
     prepnom(Om),                   %% om (past) -> regarding
-    traceprint(4,qv8), 
+    {traceprint(4,qv8)}, 
     !,
     do_phrase(have,X,N, S,ComP2 ) - 
         (w(verb(have,pres,fin)),  w(noun(Info,sin,u,n)),  w(prep(Om)),  noun_phrase1(Y,P::P1)).
@@ -8253,7 +8266,7 @@ qverb_phrase(Y,N, S,QVP) --->  %% hvor lenge har bussen gått
     negation0(N),
     w(verb(Go,Tense,part)), {testmember(Go,[go])}, %% etc 
     defaultprep(Go,Y,With), 
-    traceprint(4,qv9), 
+    {traceprint(4,qv9)}, 
     !,
     state(S,QVP) \   
        ( xnp(X, NP1),    
@@ -8267,7 +8280,7 @@ qverb_phrase(Y,N, S, QVP) --->  % (hvilke busser) har du kjørt ?
     subject(X,NP),
     negation0(N),
     w(verb(Run,past,part)), 
-    traceprint(4,qv10), 
+    {traceprint(4,qv10)}, 
     !,
     state(S,QVP) \   
        ( xnp(X,NP),    
@@ -8280,7 +8293,7 @@ qverb_phrase(X,N, S, QVP) --->  % (hvor lenge) har bussen gått
     np1_accept(Y,NP),
     negation0(N),
     w(verb(Go,Past,part)), 
-    traceprint(4,qv11), 
+    {traceprint(4,qv11)}, 
     !,
     verb_phrase(X,id, S,QVP) \  (xnp(Y,NP),w(verb(Go,Past,fin))).
 
@@ -8290,7 +8303,7 @@ qverb_phrase(Y,N, S, QVP)--->  %% Hvilke språk kan du
     subject(X, NP),             % du
     negation2(id,N),            % ikke 
     not_look_ahead(w(verb(_,_,_))),
-    traceprint(4,qv12), 
+    {traceprint(4,qv12)}, 
     !,
     do_phrase(_Do,  X,id, S,QVP)/  % 
         (w(verb(know1,pres,fin)),xnp(Y, NP)). 
@@ -8301,7 +8314,7 @@ qverb_phrase(Y,N, S, QVP)---> %% Hvilken ting  snakker du om (AD HOC)
     subject(X, NP),             % du
     negation0(N),            % ikke 
     look_ahead(w(prep(_))),
-    traceprint(4,qv13a), 
+    {traceprint(4,qv13a)}, 
     !,
     do_phrase(_Do,  X,id, S,QVP)/  % svare på
         ( xnp(Y, NP),w(verb(Talk,Pres,fin)),negation(N)).
@@ -8312,7 +8325,7 @@ qverb_phrase(Y,id, S,ComP2) ---> % Hvilken person  vil du være ? %% TA-110615
     subject(X, NPX),
     w(verb(be,_,fin)),
 
-    traceprint(4,qv15c), 
+    {traceprint(4,qv15c)}, 
     !,
     state(S,ComP2) \   
        (xnp(X,NPX), w(verb(be,pres,fin)), npgap(Y)). 
@@ -8323,7 +8336,7 @@ qverb_phrase(Y,N, S, QVP)---> %% Hvilke språk kan du snakke
     docan,                      % kan   
     subject(X, NP),             % du
     negation2(id,N),            % ikke 
-    traceprint(4,qv13b), 
+    {traceprint(4,qv13b)}, 
     !,
     do_phrase(_Do,  X,id, S,QVP)/  % svare på
         xnp(Y, NP). 
@@ -8335,7 +8348,7 @@ qverb_phrase(Y,N, S, ComP2 ) ---> %% hvilke hpl må jeg av (på)
     np1_accept(X, P::P1), % jeg
     negation0(N),
     [av],
-    traceprint(4,qv14),  
+    {traceprint(4,qv14)},  
     !,
     state(S,ComP2) \   
        ( noun_phrase1(X, P::P1),    
@@ -8351,7 +8364,7 @@ qverb_phrase(Y,N, S, ComP2 ) ---> % Hvilket programmeringsspråk er du skrevet i
     negation0(N),
     w(verb(Skrive,Te,part)),
     prep(In),
-    traceprint(4,qv15), 
+    {traceprint(4,qv15)}, 
     !,
     state(S,ComP2) \   
       (someone,  w(verb(Skrive,Te,fin)),
@@ -8368,7 +8381,7 @@ qverb_phrase(Y,id, S,ComP2) ---> % Hvem er du sammen med? %% TA-110221
 
     w(prep(With)),
 
-    traceprint(4,qv15a), 
+    {traceprint(4,qv15a)}, 
     !,
     state(S,ComP2) \   
        (xnp(X,NPX), w(verb(be,pres,fin)), w(adj2(Together,nil)), w(prep(With)), npgap(Y)). 
@@ -8379,7 +8392,7 @@ qverb_phrase(Y,id, S,ComP2) ---> % Hvem er du ?
  
     subject(X, NPX),
  
-    traceprint(4,qv15b), 
+    {traceprint(4,qv15b)}, 
     !,
     state(S,ComP2) \   
        (xnp(X,NPX), w(verb(be,pres,fin)), npgap(Y)). 
@@ -8394,7 +8407,7 @@ qverb_phrase(Y,N, S,ComP2) ---> % Hvilket holdeplass er bussen ved ?
     prep(In),
     not_look_ahead_np, %% hva er klokka i Th %% TA-101104
     { In \== towards}, %% = i retning %% Ad Hoc
-    traceprint(4,qv16), 
+    {traceprint(4,qv16)}, 
     !,
     state(S,ComP2) \   
        (xnp(Du,NP), w(verb(be1,pres,fin)), 
@@ -8412,7 +8425,7 @@ qverb_phrase(Y,N, S,ComP2) ---> %% Hva  bruker jeg  busstuc til
     np1_accept(Y, Q::Q1), 
     prep1(With),
     endofline,   
-    traceprint(4,qv17), 
+    {traceprint(4,qv17)}, 
     !,
     {\+ testmember(With,[off,of])},       %%  (not AV)
     {test(verb_compl(Use,With,X,Y,_,_))}, 
@@ -8440,7 +8453,7 @@ qverb_phrase(Y,N, S, ComP2 ) --->  %% hvilken hp kjører buss til
     {\+ testmember(With,[off,of])}, %% in? (not AV) %% fins det i Th 
     {test(verb_compl(Go,With,X,Y,_,_))},
     qtrailer0, 
-    traceprint(4,qv18), 
+    {traceprint(4,qv18)}, 
     !,
     state(S,  ComP2 )\         
        ( noun_phrase1(X, P::P1),    
@@ -8458,7 +8471,7 @@ qverb_phrase(Y,N, S,ComP2) ---> %% hvilke steder går bussen til
     np1_accept(X, P::P1),       % buss 5
     negation0(N), 
     defaultprep(Go,Y,To),
-    traceprint(4,qv19), 
+    {traceprint(4,qv19)}, 
     !,
     state(S,ComP2) \         
        ( noun_phrase1(X, P:P1),    
@@ -8475,7 +8488,7 @@ qverb_phrase(Y,N, S,ComP2) --->
     {constrain(X,vehicle)},   
     prep1(To), 
    {testmember(To,[to,from,past,by,on])}, %% not before (1230)
-    traceprint(4,qv20), 
+    {traceprint(4,qv20)}, 
     !,
     state(S,ComP2) \         
        ( noun_phrase1(X, P::P1),    
@@ -8487,7 +8500,7 @@ qverb_phrase(Y,N, S,ComP2) ---> %% hva vil du vite
     (do),
     noun_phrase1(X, P::P1),
     lexv(Vcat,know1,Tense,fin),
-    traceprint(4,qv21), 
+    {traceprint(4,qv21)}, 
     !,  
     verb_phrase(X,N, S,ComP2)
          \  ( lexv(Vcat,know1,Tense,fin), np(Y,P::P1)). 
@@ -8497,7 +8510,7 @@ qverb_phrase(Y,N, S, Com::P2 ) --->  %%   bruker subjekt X (på Y)
     use,
     noun_phrase1(X, P3::P2),
     in_order_to,
-    traceprint(4,qv22), 
+    {traceprint(4,qv22)}, 
     !, 
     verb_phrase(X,N, S, (Com::P3) )- (prep(with),npgap(Y)).
 
@@ -8510,7 +8523,7 @@ qverb_phrase(X,N, S, ComP2 )--->  %% er det ?
 
     not_look_ahead(w(noun(_,_,u,_))), %% ... plass til // siden <----
                                       %% ##¤¤ 
-    traceprint(4,qv23), 
+    {traceprint(4,qv23)}, 
     !,
     verb_phrase1(exist,X,N, S, ComP2 )  \  
         w(verb(exist,pres,fin)).  %% exist does not need a complement
@@ -8521,7 +8534,7 @@ qverb_phrase(Z,id, S, SNP ) ---> % hvilken rute går buss  (nil complement)
     {constrain(Z,route)}, %% ad hoc
     lexv(iv,V,Tense,fin), {testmember(V,[go])}, %% ad hoc
     subject(X ,NP1),  {constrain(X,vehicle)}, %% ad hoc
-    traceprint(4,qv24), 
+    {traceprint(4,qv24)}, 
     !,
     state( S, SNP ) 
          / (xnp(X,NP1), w(verb(V,Tense,fin)),npgap(Z)).
@@ -8534,7 +8547,7 @@ qverb_phrase(Y,N, S, QNP) ---> % hvilken holdeplass passerer buss
     {subject_object_test(V,X,Y)}, %% TA-100905
  
     not_look_ahead(w(prep(_))), %% kjører bussen til //not here 
-    traceprint(4,qv25), 
+    {traceprint(4,qv25)}, 
     !,
     verb_phrase(X,N, S, QNP) 
          \  ( lexv(tv,V,Tense,fin), xnp(Y,SNP)). 
@@ -8542,7 +8555,7 @@ qverb_phrase(Y,N, S, QNP) ---> % hvilken holdeplass passerer buss
 
 qverb_phrase(X,N, S, ComP2 ) --->  % hvilket subjekt verb objekt
     look_ahead(w(verb(be,_,fin))),         % hva er rødt
-    traceprint(4,qv26),   
+    {traceprint(4,qv26)},   
     !,
     verb_phrase(X,N, S, ComP2 ).   % including be1  
 
@@ -8551,7 +8564,7 @@ qverb_phrase(X,N, S, QVP) --->  % hvilken ting (hva) skjer
     not_look_ahead(w(verb(be,_,fin))),
     {vartypeid(X,thing)},      
     look_ahead(w(verb(_Happens,_,fin))),
-    traceprint(4,qv27),  
+    {traceprint(4,qv27)},  
     !,
     verb_phrase(X,N, S, QVP).   % including be1  
 
@@ -8563,7 +8576,7 @@ qverb_phrase(Y,N, S, ComP2 )---> % tror du at jeg kan ta -> tar jeg
     noun_phrase1(X, NP1), 
     negation2(id,N),  
     [kan],
-    traceprint(4,qv28), 
+    {traceprint(4,qv28)}, 
     !,
     do_phrase(believe,X,id,S,ComP2) - 
         xnp(Y, NP1). 
@@ -8574,7 +8587,7 @@ qverb_phrase(Y,N, S, ComP2 )--->
     noun_phrase1(X, NP1),       % du
     negation2(id,N),            % ikke 
     redundant0x, %% så allowed here 
-    traceprint(4,qv29), 
+    {traceprint(4,qv29)}, 
     !,
     do_phrase(__Do, X,id, S, ComP2 )/  % svare på
         xnp(Y, NP1). 
@@ -8587,7 +8600,7 @@ qverb_phrase(Y,N, S, ComP2 ) ---> %% spurte jeg nettopp om
     noun_phrase1(X, NP1),
     adverbx0,                     %% spurte jeg nettopp om
     prep0(Prep),                  %% Hvilke dager går det busser (på) ??? prep0
-    traceprint(4,qv30), 
+    {traceprint(4,qv30)}, 
     !,
     verb_phrase(X,N, S,ComP2)
          \  ( lexv(iv,V,Tense,fin),prep(Prep),xnp(Y,NP1)).  
@@ -8601,7 +8614,7 @@ qverb_phrase(Y,N, S, ComP2 ) --->
     lexv(rv,_Thought,past,part),     % tenkt
     infinitive,                      % å
     lexv(tv,Take,inf,fin),  
-    traceprint(4,qv31), 
+    {traceprint(4,qv31)}, 
     !,
     verb_phrase(X,N, S, ComP2 )
          \  ( lexv(tv,Take,pres,fin),np(Y,P::P1)). 
@@ -8612,7 +8625,7 @@ qverb_phrase(Y,N, S, ComP2 ) --->
     has,
     np1_accept(X, P::P1),  % du
     lexv(tv,V,past,part),         % mottatt
-    traceprint(4,qv32), 
+    {traceprint(4,qv32)}, 
     !,
     verb_phrase(X,N, S, ComP2 )
          \  ( lexv(tv,V,past,fin),np(Y,P::P1)). 
@@ -8624,7 +8637,7 @@ qverb_phrase(Y,N, S, ComP2  ) --->    %% Hvilken alder
     has,                           %% har
     np1_accept(X, NP1),   %% person
     {has_template(X,Y,_)},    
-    traceprint(4,qv33), 
+    {traceprint(4,qv33)}, 
     !,
     do_phrase(have,X,N,S, ComP2  ) - 
         (w(verb(have,pres,fin)),noun_phrase1(Y, NP1)). 
@@ -8637,7 +8650,7 @@ qverb_phrase(Y,N, S, ComP2 ) --->
     lexv(tv,V,past,part),         % skrevet
     noun_phrase1(Z, Q::Q1),         % deg   
     prep(In), 
-    traceprint(4,qv34), 
+    {traceprint(4,qv34)}, 
     !,
     verb_phrase(X,N, S, ComP2 )
          \  ( lexv(tv,V,past,fin), np(Z,Q::Q1),prep(In),np(Y,P::P1)). 
@@ -8645,7 +8658,7 @@ qverb_phrase(Y,N, S, ComP2 ) --->
 qverb_phrase(X,N, S, ComP2 ) --->  % hvilket subjekt verb objekt
     not_look_ahead(w(verb(be,_,fin))),
     {\+ vartypeid(X,thing)},         %  hva sier katten 
-    traceprint(4,qv35), 
+    {traceprint(4,qv35)}, 
     !,
     verb_phrase(X,N, S, ComP2 ).   % including be1  
 
@@ -8654,7 +8667,7 @@ qverb_phrase(X,N, S, QVP ) --->  % hvilket subjekt verb det ...
     {\+ vartypeid(X,thing)},         %  hva sier katten 
     w(verb(Fins,Pres,fin)),
     thereit0,
-    traceprint(4,qv36), 
+    {traceprint(4,qv36)}, 
     !,
     verb_phrase(X,N, S, QVP ) \w(verb(Fins,Pres,fin)).   % including be1  
 
@@ -8662,7 +8675,7 @@ qverb_phrase(Y,N, S, ComP2 ) ---> % (hvilken tid) %
     lexv(Vcat,V,Tense,fin),     % tar
     thereit,
     npa(X, NP1)=this,
-    traceprint(4,qv37), 
+    {traceprint(4,qv37)}, 
     !,
     verb_phrase(X,N, S, ComP2 )
          \  ( lexv(Vcat,V,Tense,fin), xnp(Y, NP1)). 
@@ -8674,7 +8687,7 @@ qverb_phrase(Y,N, S, ComP2 ) --->   % går jeg på bussen ved
     np1_accept(X, NP),  % jeg 
     negation0(N),
     adverbial1(On,Z, SC::P3),       % på bussen
-    traceprint(4,qv38), 
+    {traceprint(4,qv38)}, 
     !,accept,                 
     defaultprep(V,Y,At),          % ved (default)
     state(S,ComP2) \              
@@ -10764,7 +10777,7 @@ obviousdate1(_,_) --->
     !,reject.
 
 obviousdate1(YDate:date, YDate isa date) ---> 
-    {user:value(busflag,true)}, 
+    {value(busflag,true)}, 
     num_na(DD),
     slashpoint0,
     num_na(MM),
@@ -11442,7 +11455,7 @@ noun_phrases(YZ, VP::P1 and P2 and P3) --->          % strekningen A B
 
 noun_phrases(Z, VP::P2) --->         % 1...more
     noun_phrase1(X, VP::P1),         %% not _accept
-    noun_phrases0(X,Z,true::P1,P2), % 0...more // true <--> VP
+    noun_phrases0(X,Z,true::P1,P2), % 0...more // true <---> VP
     !,accept.  %% DONT backtrach to noun_phrase1 !!! %% TA-110429
 
 
@@ -11525,7 +11538,7 @@ noun_phrases20(X,X,_,P1,P1) ---> [].
 %% NO_PHRASES 
 
 no_phrases(X,P) ---> %% Pure Noun_phrase 
-    {user:value(teleflag,true)},
+    {value(teleflag,true)},
     !,
     np(X,true::P). %%  \ the0.
 
@@ -11914,7 +11927,7 @@ np1(X, NP) ---> %  hvilke N som fins %% NOT INITIALLY
     noun_modifiers0(Ind,X, NPK,NP).  % |  du skriver
 
 np1(X, NP1) --->  %%  de 5 neste fra %% Ad Hoc Hazardous
-   {user:value(busflag,true)},
+   {value(busflag,true)},
    [de],  w(nb(N,num)),flnp(Next),   
    not_look_ahead(w(noun(_,_,_,_))), 
    w(prep(From)),
@@ -11933,7 +11946,7 @@ np1(X, VP::P) ---> %   rutetide gjelder for 2 mai. %% EXPENSIVE ?
 
 
 np1(X, NP1) ---> % en 52  %% Ad Hoc Hazardous
-   {user:value(busflag,true)},
+   {value(busflag,true)},
    [en],  %% art,  \+ de (2 neste ...)
     w(nb(N,num)),
    {plausible_busno(N)},
@@ -12032,7 +12045,7 @@ np_kernel(Ind,XT, VP::Q) ---> %  # 2
 
 
 np_head1(Cind, XT,   VP::P) ---> %% navn, telf og avd til tore amble  
-    {user:value(teleflag,true)},     %% msn adresse 
+    {value(teleflag,true)},     %% msn adresse 
     determiner0(_Num,Cind,XT,  P0 , VP::P),   
     preadjs0(Alist),   
     noun_list2(_,XT,Q0), 
@@ -12045,7 +12058,7 @@ np_head1(Cind, XT,   VP::P) ---> %% navn, telf og avd til tore amble
 %% art  Quant  Next bussE NR Busno  // with subsets and permutations
 
 np_head1(0, BusNo: BnounC,  VP::Bingo ) ---> 
-    {user:value(busflag,true)},  
+    {value(busflag,true)},  
     optional([denne]), %%   denne 46 avgangen
     bus_head(_Def1,Number,FLNP,BnounC,_BnameC,BusNo),
     not_look_ahead_lit([sin,sitt,sine]),
@@ -12056,7 +12069,7 @@ np_head1(0, BusNo: BnounC,  VP::Bingo ) --->
 
 
 np_head1(0, XT,  VP::P) ---> %% neste [som] 
-    {user:value(busflag,true)},
+    {value(busflag,true)},
     [den],
     w(adj2(FILANEPR,nil)), 
     {testmember(FILANEPR,[first,last,next,previous])},
@@ -12091,105 +12104,105 @@ np_head1(0, XT,   VP::(exists(XT):: P0 and Q0 and VP)) --->
 
 % de to neste 11 
 bus_head(Def1,Number,FLNP,BnameC,BnameC,BusNo)  ---> 
-    traceprint(5,bx01),
+    {traceprint(5,bx01)},
     art0(Def1,_SINPLU1),         % (de) (5 \ neste) (nr) 3 busser
     quantnext(Number,FLNP),
          {FLNP \== nil}, %% avoid 5 2 = 5 route 2 
    { Number =< 5}, 
     busnumber(BusNo,BnameC),
-    traceprint(4,bh01).
+    {traceprint(4,bh01)}.
 
 
 bus_head(Def1,Number,FLNP,BnounC,BnameC,BusNo)  ---> 
-    traceprint(5,bx02),
+    {traceprint(5,bx02)},
     art0(Def1,_SINPLU1),         % (de) (5 \ neste) (nr) 3 busser
     quantnext(Number,FLNP),
    { Number =< 5}, %% pragmatic 
     busseno(BusNo,BnounC,BnameC),
-    traceprint(4,bh02).
+    {traceprint(4,bh02)}.
 
 
 bus_head(Def1,Number,FLNP,BnameC,BnameC,BusNo)  ---> 
-    traceprint(5,bx03),
+    {traceprint(5,bx03)},
     art0(Def1,_SINPLU1),         % (de) (5 \ neste) (nr) 3 
     quantnext(Number,FLNP),
    { Number =< 5}, %% maxnumberofindividualdepartures(4).
     not_look_ahead(w(nb(_,_))), %% not 4 6 = 4 X 6 
     nr0,  
     busnumber(BusNo,BnameC),
-    traceprint(4,bh03).
+    {traceprint(4,bh03)}.
 
 
 bus_head(Def1,Number,FLNP,BnameC,BnameC,BusNo)  ---> 
-    traceprint(5,bx04),
+    {traceprint(5,bx04)},
     art0(Def1,_SINPLU1),         % (de) (5 \ neste) <> til
     quantnext(Number,FLNP),
    { Number =< 5}, 
     look_ahead(w(prep(_))),
     busnumber(BusNo,BnameC) = w(noun(bus,plu,def,n)),
-    traceprint(4,bh04),
+    {traceprint(4,bh04)},
     !.
 
 
 bus_head(Def1,1,FLNP,BnounC,BnameC,BusNo)  ---> % en neste nr 5 buss
-    traceprint(5,bx05),
+    {traceprint(5,bx05)},
     art0(Def1,_SINPLU1),   % (de) 5 nr 3 (busser)
     flnp(FLNP),   
     nr1,
     busnumber(BusNo,BnameC), 
     busse0(BnameC,BnounC,_,_),    %% Optional
-    traceprint(4,bh05).
+    {traceprint(4,bh05)}.
 
 
 bus_head(Def1,Number,nil,BnounC,BnameC,BusNo)  ---> 
-    traceprint(5,bx06),
+    {traceprint(5,bx06)},
     art0(Def1,_SINPLU1),   % (de) 5 nr 3 (busser)
     quant(Number),
     nr1,
     busnumber(BusNo,BnameC), 
     busse0(BnameC,BnounC,_,_),  %% Optional
-    traceprint(4,bh06).    
+    {traceprint(4,bh06)}.    
 
 
 bus_head(Def1,Number,nil,BnounC,BnameC,BusNo)  ---> 
-    traceprint(5,bx07),
+    {traceprint(5,bx07)},
     art0(Def1,_SINPLU1),  % (de) 5 busser (nr) 3
     quant(Number),
     busnoun(BnounC,_,_),    
     nr0,
     busnumber(BusNo,BnameC), 
-    traceprint(4,bh07). 
+    {traceprint(4,bh07)}. 
 
 
 bus_head(Def1,Number,nil,BnounC,BnameC,BusNo)  ---> 
-    traceprint(5,bx08),
+    {traceprint(5,bx08)},
     art0(Def1,_SINPLU1),  % (de) 5 3 busser
     quant(Number),
     busnumber(BusNo,BnameC), 
     busnoun(BnounC,_,_), 
-    traceprint(4,bh08).    
+    {traceprint(4,bh08)}.    
 
 
 bus_head(Def1,1,FLNP,BnounC,BnameC,BusNo)  ---> 
-    traceprint(5,bx09),
+    {traceprint(5,bx09)},
     art0(Def1,_SINPLU1),  % (de) neste nr 3 busser
     filanepr(FLNP),
     nr1, 
     busnumber(BusNo,BnameC), 
     busnoun(BnounC,_,_), 
-    traceprint(4,bh09).    
+    {traceprint(4,bh09)}.    
 
 
 bus_head(Def1,1,FLNP,route,BnameC,BusNo)  ---> %% nr 7 -> route 7
-    traceprint(5,bx10),
+    {traceprint(5,bx10)},
     art0(Def1,SN), {SN \== plu},  % den neste (nr) 3 buss
     filanepr(FLNP),
     nr1,
     busnumber(BusNo,BnameC), 
-    traceprint(4,bh10). 
+    {traceprint(4,bh10)}. 
 
 bus_head(Def1,1,FLNP,BnounC,BnameC,BusNo)  ---> 
-    traceprint(5,bx11),
+    {traceprint(5,bx11)},
     art0(Def1,SN), {SN \== plu},  % den neste (nr) 3 buss
     filanepr(FLNP),
     busnoun(BnounC,_U_,    _Sin),   %% bussen 5 \= bussen kl 5 %% ruter 9 ok?
@@ -12197,87 +12210,87 @@ bus_head(Def1,1,FLNP,BnounC,BnameC,BusNo)  --->
     colon0, 
     busnumber(BusNo,BnameC), 
     not_look_ahead(w(noun(minute,_,_,_))), %% tar  bussen 10 minutter før %%  unnec?
-    traceprint(4,bh11). %% allow bus 331 
+    {traceprint(4,bh11)}. %% allow bus 331 
 
 bus_head(Def1,Number,FLNP,BnounC,BnameC,BusNo)  ---> 
-    traceprint(5,bx12),
+    {traceprint(5,bx12)},
     art0(Def1,_),   % (de) neste 3 buss 5
     quantnext(Number,FLNP),
     { Number < 10},  %% ridiculous?  %%  solves ti neste 
     busnoun(BnounC,_,plu),    
     busnumber(BusNo,BnameC), 
-    traceprint(4,bh12). 
+    {traceprint(4,bh12)}. 
 
 
 bus_head(Def1,Number,FLNP,BnounC,nil,_BusNo)  ---> %%  BusNO Free
-    traceprint(5,bx13),
+    {traceprint(5,bx13)},
     art0(Def1,plu),   % de neste 3 busser  -> Count
     quantnext(Number,FLNP), 
       { Number < 100},  %% ridiculous?  
     busnoun(BnounC,_,_Plu), 
-    traceprint(4,bh13).  %%  de fem neste buss //ok 
+    {traceprint(4,bh13)}.  %%  de fem neste buss //ok 
 
 
 bus_head(Def1,Number,FLNP,BnounC,nil,_BusNo)  ---> %%  BusNO Free
-    traceprint(5,bx14),
+    {traceprint(5,bx14)},
     art0(Def1,_),   %  neste 3 busser  -> Count
     quantnext(Number,FLNP),
     { Number =< 5}, %%  maxnumberofindividualdepartures(4)
     busnoun(BnounC,_,plu), 
-    traceprint(4,bh14).    
+    {traceprint(4,bh14)}.    
 
 
 
 bus_head(Def1,1,FLNP,BnounC,BnameC,BusNo)  ---> 
-    traceprint(5,bx15),
+    {traceprint(5,bx15)},
     art0(Def1,_),   %  neste 52 busser  -> BusNo
     filanepr(FLNP),
     busnumber(BusNo,BnameC), 
     {number(BusNo), BusNo > 5}, 
     busnoun(BnounC,_,_), 
-    traceprint(4,bh15).    
+    {traceprint(4,bh15)}.    
 
 
 bus_head(Def1,1,FLNP,BnounC,BnameC,BusNo)  ---> 
-    traceprint(5,bx16),
+    {traceprint(5,bx16)},
     art0(Def1,_),   %  (neste) 52 busser  -> BusNo
     filanepr(FLNP),
     busnumber(BusNo,BnameC), {BusNo \== 1}, %% 1 buss\=trikk
     busnoun(BnounC,_,sin), %% TA-101124
-    traceprint(4,bh16).    
+    {traceprint(4,bh16)}.    
 
 
 %%  Vil 17 (SIC) bussen gå -> no such bus // EXPERIMENT
 bus_head(u,1,nil,bus,number,BusNo)  --->  
-    traceprint(5,bx17),
+    {traceprint(5,bx17)},
     not_look_ahead(w(name(_,n,route))), %% 17 not a route 
     w(nb(BusNo,num)), 
     {number(BusNo), BusNo > 5, BusNo =< 9999}, %% bus 9914 
     busnoun(bus,def,sin),     %% bussen 
-    traceprint(4,bh17). 
+    {traceprint(4,bh17)}. 
 
 %% de neste 2 | de 2 neste 
 bus_head(def,Number,FLNP,route,nil,_BusNo)  ---> %%  BusNO Free
-    traceprint(5,bx18),
+    {traceprint(5,bx18)},
     [de],
     quantnext(Number,FLNP),
     { Number =< 5}, 
     not_look_ahead_np, 
-    traceprint(4,bh18).
+    {traceprint(4,bh18)}.
 
 
 bus_head(Def1,Number,FLNP,route,nil,_)  ---> %% 3 neste ()
-    traceprint(5,bx19),
+    {traceprint(5,bx19)},
     art0(Def1,_),   
     quantnext(Number,FLNP),
     {FLNP \== nil}, %%  en ting er 4. ** 4 neste busser
     { Number > 0,Number =< 5}, %%  neste 0 = ingen 
     not_look_ahead_np, 
-    traceprint(4,bh19),
+    {traceprint(4,bh19)},
     !.
 
 bus_head(Def1,1,FLNP,BnounC,BnameC,BusNo)  ---> %% de neste buss 5 (SIC) 
-    traceprint(5,bx20),
+    {traceprint(5,bx20)},
     art0(Def1,_), %% de/den
     filanepr(FLNP),
     busnoun(BnounC,_U_,    sin),   
@@ -12285,7 +12298,7 @@ bus_head(Def1,1,FLNP,BnounC,BnameC,BusNo)  ---> %% de neste buss 5 (SIC)
     colon0, %% buss: 4
     busnumber(BusNo,BnameC), 
     not_look_ahead(w(noun(minute,_,_,_))), %% tar  bussen 10 minutter før ...
-    traceprint(4,bh20). %% allow bus 331 
+    {traceprint(4,bh20)}. %% allow bus 331 
 
 
 
@@ -12857,7 +12870,7 @@ npa(X, VP::P) ---> %%  når går (den/det) neste til TS
 
 
 npa(X, IT) ---> %%  når går DEN  = it 
-    {user:value(busflag,true)}, 
+    {value(busflag,true)}, 
     [den],
     not_look_ahead(w(adj2(_,nil))),
     not_look_ahead(w(noun(_,_,_,_))), 
@@ -13439,7 +13452,7 @@ noun_mods(0,Y,P1,P1 and P2) ---> %% // should be def adressen Possesive 'til'
 
 
 noun_mods(0,Y,P1,P1 and P2) ---> %% email tore amble
-    {user:value(teleflag,true)},
+    {value(teleflag,true)},
     not_look_ahead(w(prep(_))),
     {vartypeid(Y,EM)},  
     {\+ vartypeid(EM,[])}, %% ad hoc
@@ -13487,13 +13500,13 @@ noun_mods(name, X, P, Q) --->  % fra munkegata som går
 */
 
 noun_mods(name,X,P,R) --->     %% last dominates first
-   {user:value(textflag,true);
-     user:value(teleflag,true)}, 
+   {value(textflag,true);
+     value(teleflag,true)}, 
    noun_mod(X,P,Q),     
    noun_mods(name,X,Q,R). 
 
 noun_mods(name,X,P,P and Q) --->  %%  Tore Amble Oslo
-    {user:value(teleflag,true)},  
+    {value(teleflag,true)},  
     {constrain(X,person)},
     w(name(Oslo,n,Place)),
     {subclass0(Place,place)},
@@ -13885,7 +13898,7 @@ determiner0(plu,0, X,P1,  P2:: ( quant(eq/N,X)::(P1 and P2))) --->
 
 
 determiner0(sin,0, X,P1, P2::P) --->    % try the file = this  file 
-    {user:value(dialog,1)},       %% creates problems if not in dialog mode 
+    {value(dialog,1)},       %% creates problems if not in dialog mode 
     the,                               % provided 0 of- complements 
     determiner(X,P1, P2::P) \  this.
 
@@ -13929,7 +13942,7 @@ determiner0(sin,0, X,P1,  P2:: (quant(eq/1,X)::(P1 and P2))) ---> %% last
 
                                     
 determiner0(sin,0, X,P1, P2::P) --->    % try the file = this  file 
-    {user:value(dialog,1)},       %% creates problems if not in dialog mode 
+    {value(dialog,1)},       %% creates problems if not in dialog mode 
     the,                               % provided 0 of- complements 
     determiner(X,P1, P2::P) \  this.
 
@@ -14144,7 +14157,7 @@ namep(Ind,X,QP) --->   %% teams ruteopplysning
 
                                             
 namep(name,Y:thing,Y isa unkn) --->   %% compound name list %% was name_compound 
-    {user:value(unknownflag,true)},        %% unknown names allowed
+    {value(unknownflag,true)},        %% unknown names allowed
      unplausible_name(X),
      morenames(X,Y).
 
@@ -14335,7 +14348,7 @@ nameq(C,Q) ---> nameq2(C,Q),not_look_ahead(w(nb(_,_))). %% hva er 2 2
 %% Tina    Rønning Lund  Fornavn Fornavn Etternavn
 
 name1g(Rønning:lastname,Rønning isa lastname,GN) ---> %% (Ståle)  Rønnings
-    {user:value(teleflag,true)},
+    {value(teleflag,true)},
     look_ahead(w(name(Rønning,_,firstname))), 
     w(name(Rønning,GN,lastname)), 
     not_look_ahead(w(name(_Lund,_,lastname))),
@@ -14343,7 +14356,7 @@ name1g(Rønning:lastname,Rønning isa lastname,GN) ---> %% (Ståle)  Rønnings
 
 
 name1g(Ståle:firstname,Ståle isa firstname,n) ---> %%  Ståle (Rønning)
-    {user:value(teleflag,true)},
+    {value(teleflag,true)},
     look_ahead(w(name(Ståle,_,lastname))), 
     w(name(Ståle,n,firstname)), 
     look_ahead(w(name(_Lund,_,lastname))),
@@ -14351,7 +14364,7 @@ name1g(Ståle:firstname,Ståle isa firstname,n) ---> %%  Ståle (Rønning)
 
 
 name1g(Rønning:lastname,Rønning isa lastname,GN) ---> %% Ståle Rønnings
-    {user:value(teleflag,true)},
+    {value(teleflag,true)},
         look_ahead(w(name(Rønning,_,firstname))), 
     w(name(Rønning,GN,lastname)), 
         not_look_ahead(w(name(_Lund,n,lastname))),
@@ -14359,7 +14372,7 @@ name1g(Rønning:lastname,Rønning isa lastname,GN) ---> %% Ståle Rønnings
 
 
 name1g(Rønning:firstname,Rønning isa firstname,n) ---> %% (Tina) Rønning Lund 
-    {user:value(teleflag,true)},
+    {value(teleflag,true)},
     look_ahead(w(name(Rønning,_,lastname))), 
     w(name(Rønning,n,firstname)), 
     look_ahead(w(name(_Lund,n,lastname))),
@@ -14380,7 +14393,7 @@ wnameg(X:F,n,F)   --->  w(name(X,n,F)).
 
 
 nameq1(Rønning:lastname,Rønning isa lastname) ---> %% Ståle Rønning
-    {user:value(teleflag,true)},
+    {value(teleflag,true)},
     look_ahead(w(name(Rønning,n,firstname))), 
     w(name(Rønning,n,lastname)), 
     not_look_ahead(w(name(_Lund,n,lastname))),
@@ -14388,7 +14401,7 @@ nameq1(Rønning:lastname,Rønning isa lastname) ---> %% Ståle Rønning
 
 
 nameq1(Rønning:firstname,Rønning isa firstname) ---> %% Ståle Rønning
-    {user:value(teleflag,true)},
+    {value(teleflag,true)},
     look_ahead(w(name(Rønning,n,lastname))), 
     w(name(Rønning,n,firstname)), 
     look_ahead(w(name(_Lund,n,lastname))),
@@ -14466,7 +14479,7 @@ nameq1(N:Type,N isa Class) --->  %% done = Dons,0 | Done unkn
  
     w(name(N,_n,Class)), %% non numeric names  %% passes trough without unk Word message
         { N \== 1},  %% 1 (alone) is not tram 
-        { Class == unkn -> user:value(unknownflag,true);true}, %%  Syndrome  
+        { Class == unkn -> value(unknownflag,true);true}, %%  Syndrome  
         {_n \== gen},        %%  too late if double
                              %% norges=norge(spell)|norge gen
         {type(Class,Type)}.  %% 
@@ -14477,7 +14490,7 @@ nameq1(N:Type,N isa Class) --->  %% Try number as name as  Last Resort
     w(name(N,n,Class)),
     point0, 
      not_look_ahead(w(name(_Christmas_day,_,date))), %% 1. juledag \== tram 
-    { Class == unkn -> user:value(unknownflag,true)},
+    { Class == unkn -> value(unknownflag,true)},
     {number(N)},                 %% Number as name Last
     {type(Class,Type)}. 
 
@@ -14647,7 +14660,7 @@ clock_kernel(_,_) --->
     reject.
  
 clock_kernel(N:clock,N isa clock) --->  %%  kl 8 17 mai
-    {user:value(busflag,true)},
+    {value(busflag,true)},
     hours(_),
     colemin0(_), 
     w(name(_May,_N,month)), 
@@ -14655,7 +14668,7 @@ clock_kernel(N:clock,N isa clock) --->  %%  kl 8 17 mai
     reject.
  
 clock_kernel(N:clock,N isa clock) --->   
-    {user:value(busflag,true)},
+    {value(busflag,true)},
     hours(N1),
     colemin0(N2), 
     {dedicated_date(date(_,N1,N2))}, %% 12.11 is a DATE
@@ -14775,7 +14788,7 @@ aar0 ---> point0.
 
 
 year(N) --->  
-    {user:value(busflag,true)},
+    {value(busflag,true)},
 %%%%%%%    !, %% 26.6.  05
     number(N:_),
     { N >= 2000, N =< 9999},
@@ -15596,7 +15609,7 @@ hlexv(RTV,U,P,Q,Neg) ---> %% understand something  %% Tricky
 
 
 hlexv(rv,Verb,Time,Mode,Neg) ---> %% jeg vet ikke hva klokken er
-    {user:value(textflag,true)},
+    {value(textflag,true)},
     lexv(rv,Verb,Time,Mode),
     negation0(Neg),  %% dont ignore negation 
     not_look_ahead([det]),
@@ -16138,7 +16151,7 @@ prep(_) ---> [m],w(nb(_,_)), !,reject. %% M1 = m 1 = med 1 = with 1 = with tram
 
 
 prep(from) ---> [dra], %% dra = fra SMS
-    {user:value(smsflag,true)},
+    {value(smsflag,true)},
     look_ahead(w(name(_,n,_))).
 
 
@@ -16464,7 +16477,7 @@ art ---> [de].   %% why was this out ???
 art ---> [all].   %%  Roughly
 art ---> not_look_ahead(w(name(_,_,_))), [alt].   %% ALT/Statoil
 art ---> every,
-         {\+ user:value(textflag,true)}. 
+         {\+ value(textflag,true)}. 
 
  
 art1 ---> [en].
@@ -16564,7 +16577,7 @@ andor0(A) --->
     andor(A). 
 
 andor0(and) ---> 
-    {user:value(textflag,true)}.
+    {value(textflag,true)}.
 
 %%%¤ ANDOR
 
@@ -16575,11 +16588,11 @@ andor(and) ---> and1,
 andor(or)---> [eller],not_look_ahead(w(verb(_,_,_))). %% tar buss eller kjører trikk
 
 andor(and) ---> %% er tore amble en lærer ?
-    {user:value(teleflag,true)}, 
+    {value(teleflag,true)}, 
     art,
     !,reject.
 
-andor(and) --->  {user:value(teleflag,true)}.
+andor(and) --->  {value(teleflag,true)}.
 
 % andor(nil) ---> [].   %%  EXPENSIVE ???
 
@@ -17673,7 +17686,7 @@ when10 ---> [].
 
 when1 ---> [da]. %% confus? bussen gikk da du syklet 
 when1 ---> [når].
-when1 ---> [n], {user:value(smsflag,true)},!. %% AVOID REACH
+when1 ---> [n], {value(smsflag,true)},!. %% AVOID REACH
 when1 ---> [tid],look_ahead([går]). %% TA-110128
 
 %%% when1 ---> [nær]. %% Swedish  synword(nær,når) gives nær = reach 
@@ -18129,7 +18142,7 @@ point0 ---> [].
 pointNO ---> point,!,accept. 
 %%%% pointNO ---> ['/'],!,accept. %% DATE ! 
 pointNO ---> %% Optional in case point is  removed 
-    {user:value(nodotflag,true)}. 
+    {value(nodotflag,true)}. 
 
 point ---> ['.'].
 
@@ -18210,7 +18223,7 @@ ctrailer ---> [din],optional(w(adj2(_,nil))),w(noun(_,sin,_,_)). %% din dust
 %% trailer after dcl
 
 dtrailer0 ---> 
-    {\+ user:value(dialog,1)},
+    {\+ value(dialog,1)},
     %% termchar0, %% bussen står. jeg går %% TA-110105
     dtrailer,
     !. 
@@ -18494,12 +18507,12 @@ pronoun(self) ---> [meg].
 
 pronoun(vehicle) ---> [den],  %% Ad Hoc, Elliptic no anaphor 
     not_look_ahead_np, %% TA-110105
-    {user:value(busflag,true)}.
+    {value(busflag,true)}.
 
 
 pronoun(thing) ---> [de],     %% de som tar buss 
     not_look_ahead_np, %% TA-110105
-    {user:value(busflag,true)}.   
+    {value(busflag,true)}.   
 
 
 pronoun(thing) --->  %% dangerous
@@ -18857,7 +18870,7 @@ the0 --->  the,der0,!,accept.
 % the0 --->  which,!,accept. %% jeg vet hvilken buss som går. %% Infernal Bloody Mess
 %%% hvilke ruter dekker tyholt ***********
 
-the0 ---> {user:value(textflag,true)},art. %%  A sweet Liebfraumilch
+the0 ---> {value(textflag,true)},art. %%  A sweet Liebfraumilch
 
 the0 --->  [].
 
@@ -19216,7 +19229,7 @@ greetings ---> [Ja],
     {testmember(Ja,[ja,jo,joda,nei,neida])}. 
 
 /* %% TA-110215
-greetings --->   {user:value(smsflag,true)},
+greetings --->   {nvalue(smsflag,true)},
      trafikk,
      !,accept. %% Team Trafikk ...
 */
@@ -19269,7 +19282,7 @@ trafikk ---> [t].          %% (if applicable)
 grums0 ---> [].
 
 
-grums ---> [rute], {user:value(smsflag,true)}. %% TA-110303
+grums ---> [rute], {value(smsflag,true)}. %% TA-110303
 
 %% grums ---> hello. %% hei busstuc
 %% hei Tore , når går bussen. %% TA-110215
@@ -19719,7 +19732,7 @@ gmem(X,L) ---> {testmember(X,L)}. %% TA-110309 (memb
 
 panic(H) ---> {write(H)}.  
 
-traceprint(N,P) ---> {traceprint(N,P)}. 
+%traceprint(N,P) ---> {user:traceprint(N,P)}.  OLD?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

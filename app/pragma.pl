@@ -65,8 +65,10 @@
 :- meta_predicate  writepragmastep(+,+,?).
 
 
+%% RS-141026    UNIT: /
+:- use_module( '../main.pl', [ value/2 ] ). %MISERY?!
 %% UNIT: /
-:- ensure_loaded( user:'../declare' ).  %% RS-140928 or? and? not? %% Including...
+%:- ensure_loaded( user:'../declare' ).  %% RS-140928 or? and? not? %% Including...
 %:- op( 715, fy, assume). %operator in pragma, but looks like assume(predicate) in bustrans... ? meta_predicate setting?
 
 
@@ -206,7 +208,7 @@ wait_to_trace( RuleModule, RuleID ) :-
         out( RuleID ). %% panic
 
 wait_to_trace( _, RuleID ) :-
-    user:value( debugrule, RuleID ),
+    value( debugrule, RuleID ),
     !,
     spy_me(RuleID).
 
@@ -218,7 +220,7 @@ spy_me(_).
 
 writepragmastep( RuleModule, Source, _DestIn ) :-
     RuleModule:tracevalue(L),  %% RS-140929
-%    user:value(traceprog,L),    %% RS-140929 Use same trace-level for ALL rule-bases?
+%    value(traceprog,L),    %% RS-140929 Use same trace-level for ALL rule-bases?
     L >= 6, 
     !,   
 	 nl,

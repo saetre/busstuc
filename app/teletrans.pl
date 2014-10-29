@@ -9,10 +9,12 @@
 :- module( teletrans, [ rule/2, tracevalue/1 ] ).
 
 
-:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
+%% RS-141026    UNIT: /
+:- use_module( '../main.pl', [ value/2 ] ). %MISERY?!
 %:- ensure_loaded( user:'../app/pragma' ). %% RS-111213 Pragmatic (rule) Operators
-:- use_module( '../app/pragma', [] ). %% RS-140207 Pragmatic (rule) Operators
+%:- use_module( '../app/pragma', [] ). %% RS-140207 Pragmatic (rule) Operators
 
+:- ensure_loaded( '../declare' ). %% RS-111213 General (semantic) Operators
 :- op( 725, fy,addcon).     %% add if not already present 
 
 :- op( 715, fy,add).
@@ -27,7 +29,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-tracevalue(L) :- user:value(traceprog,L).  % Trace level 1-6
+tracevalue(L) :- value(traceprog,L).  % Trace level 1-6
 
 
 %% Rule format

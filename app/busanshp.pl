@@ -51,12 +51,12 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RS-131225    UNIT: / and /utility/
-:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
+:- ensure_loaded( '../declare' ). %% RS-111213 General (semantic) Operators
 
-:- use_module( library( aggregate ), [ forall/2 ] ) .
+%:- use_module( library( aggregate ), [ foral/2 ] ) .  %% RS-141029  for-all Does NOT work like utility:for/2
 
 %:- use_module( telelog , [  bound/1,  unbound/1 ]). --> utility.pl
-:- use_module( '../utility/utility', [ append_atomlist/2, bound/1, delete1/3, deleteall/3, firstmem/2, fnuttify2/2, internalkonst/1, lastmem/2, lastmems/3,  % for/2, language/1, 
+:- use_module( '../utility/utility', [ append_atomlist/2, bound/1, delete1/3, deleteall/3, firstmem/2, fnuttify2/2, for/2, internalkonst/1, lastmem/2, lastmems/3,  % language/1, 
         maximum/2, maxval/3, members/3, minimum/2, minval/3, nth/3, number_to_string/2, occ/2, % doubt/2, out/1, output/1, roundwrite/1, % writeout 
         set_filter/4, set_of/3, set_ops/3, set_union/3, split/4, test/1, testmember/2, unbound/1 ] ). %%, [ ] ). %, [ := /2, for/2,  nth/3, etc. ] ). %% RS-140914 test/1, & set_of set_ops/3(LOOP?),
                         % follow_sequence/3, once1/1, roundmember/2, occ/2, sequence_member/2,
@@ -67,7 +67,7 @@
 %% occ/2, once1/1, sequence_member/2,  moved to interapp --> With append_atoms/3, station_trace/4, 
 
 %%UNIT: /
-:- use_module( '../main', [ progtrace/2 ] ).  %% RS-140209
+:- use_module( '../main', [ (:=)/2, progtrace/2, set/2, value/2 ] ).  %% RS-141026 backslash/1, 
 %:- use_module( '../tucbuses', [ dict_module/1 ] ). % , language/1
 
     %% RS-131225    UNIT: /app/
@@ -103,7 +103,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 gootrace(B2) :-
-    (user:value(mapflag,true) -> output(B2);true). %% RS-131230 Fra utility.pl
+    (value(mapflag,true) -> output(B2);true). %% RS-131230 Fra utility.pl
 
 
 %
@@ -129,7 +129,7 @@ select(dir(A,B),dir(A,B)):-!.
 
 outdeplist(Deps,Day,Opts,DirPlace,TF,MAP):-
     outdeplist00(Deps,Day,Opts,DirPlace,TF,MAP0,SmartDeps),
-   (user:value(smsflag,false) -> Transfer = direct,
+   (value(smsflag,false) -> Transfer = direct,
                             print_smartdeps(SmartDeps,Opts,Transfer);true),  %% MW-121008 
     selectmap(MAP0,MAP).
 
@@ -139,7 +139,7 @@ outdeplist(Deps,Day,Opts,DirPlace,TF,MAP):-
 
 outfromtocorr(Opts,Dep,OutDep,Mid01,OutAns,MAP):- %% TA-110511
    outfromtocorr0(Opts,Dep,OutDep,Mid01,OutAns,MAP0,SmartDeps),
-   (user:value(smsflag,false) -> Transfer = transfer,
+   (value(smsflag,false) -> Transfer = transfer,
                             print_smartdeps(SmartDeps,Opts,Transfer);true), %% MW-121008
    selectmap(MAP0,MAP).
 
@@ -205,7 +205,7 @@ outdeponly(Dep,DirPlace,
          Dep = depnode(_Time0,Time9,_DelArr,DelDep,BegTime,Rid,BusN,_,Station),
          ridtobusname(Rid,BusN),   %% 
     vehicletype(BusN,Bus),
-         (\+ user:value(dialog, 1),!
+         (\+ value(dialog, 1),!
           ;
           getcurrent(Cid),
           addref(Cid, Rid,lastrid)
@@ -227,7 +227,7 @@ outdeplisttime1( [Dep], _Day, _, DirPlace, OutDep, MAP, [SmartDeps] ) :-
 
 
 outdeplisttime1(Deps,_Day,Opts,DirPlace,(OutFirst,OutNext,OutLast), MAP,SmartDeps) :-
-    user:value(nightbusflag,true),
+    value(nightbusflag,true),
     !,
          outdepfirst(Deps,DirPlace,TimeF,OutFirst, MAP,Smartdep_entry_first),
 
@@ -239,8 +239,8 @@ outdeplisttime1(Deps,_Day,Opts,DirPlace,(OutFirst,OutNext,OutLast), MAP,SmartDep
 
 
 outdeplisttime1(Deps,_Day,Opts,DirPlace,(OutNext,OutLast), MAP,_SmartDeps) :-
-    user:value(nightbusflag,true),
-    user:value(smsflag,true),
+    value(nightbusflag,true),
+    value(smsflag,true),
     timenow(MN), MN < 400,   %% Next nightbus RELEVANT
     !,
     outdepnext(Deps,Opts,_TimeF,TimeL,DirPlace,OutNext, MAP,_Smartdep_entry_next),  %% .. no first?
@@ -249,8 +249,8 @@ outdeplisttime1(Deps,_Day,Opts,DirPlace,(OutNext,OutLast), MAP,_SmartDeps) :-
 
 
 outdeplisttime1(Deps,_Day,Opts,DirPlace,Out,MAP,_SmartDeps) :-
-    user:value(nightbusflag,true),
-    user:value(smsflag,true),     %% Next nightbus IRRELEVANT
+    value(nightbusflag,true),
+    value(smsflag,true),     %% Next nightbus IRRELEVANT
     !,
     maxnumberofindividualdepartures(MNID), %% Extra check
     memberids(MNID,Deps,Deps4), %% there may be many if unrestricted
@@ -260,15 +260,15 @@ outdeplisttime1(Deps,_Day,Opts,DirPlace,Out,MAP,_SmartDeps) :-
                                               %% 0  no warning
 
 outdeplisttime1(Deps,_Day,_Opts,DirPlace,(OutFirst,OutLast), MAP,_SmartDeps) :-
-    user:value(smsflag,true),
- \+ user:value(nightbusflag,true),
+    value(smsflag,true),
+ \+ value(nightbusflag,true),
          outdepfirst(Deps,DirPlace,_TimeF,OutFirst,MAP,_Smartdep_entry_first),
          outdeplast(Deps,DirPlace,_TimeL,OutLast,_Smartdep_entry_last).
 
 %% Only TWO deps (Past departures ignored)
 outdeplisttime1(Deps,Day,Opts,DirPlace,(OutNext,OutLast),MAP,SmartDeps) :-
- \+ user:value(smsflag,true),
- \+ user:value(nightbusflag,true),
+ \+ value(smsflag,true),
+ \+ value(nightbusflag,true),
  \+ anotherday(Day),
     !,
     outdepnext(Deps,Opts,_,TimeL,DirPlace,OutNext,MAP,Smartdep_entry_next), %% <--- NEI, ikke 9999
@@ -277,8 +277,8 @@ outdeplisttime1(Deps,Day,Opts,DirPlace,(OutNext,OutLast),MAP,SmartDeps) :-
 
 
 outdeplisttime1(Deps,Day,Opts,DirPlace,(OutFirst,OutNext,OutLast), MAP,SmartDeps) :-
- \+ user:value(smsflag,true),
- \+ user:value(nightbusflag,true),
+ \+ value(smsflag,true),
+ \+ value(nightbusflag,true),
     outdepfirst(Deps,DirPlace,TimeF,OutFirst,MAP,Smartdep_entry_first),      %% MW-120917    %% Insert SmartDeps
                                                                         %% MW-120829
          outdeplast(Deps,DirPlace,TimeL,OutLast,Smartdep_entry_last),
@@ -289,8 +289,8 @@ outdeplisttime1(Deps,Day,Opts,DirPlace,(OutFirst,OutNext,OutLast), MAP,SmartDeps
           OutNext=true).
 
 %outdeplisttime1(Deps,_Day,Opts,DirPlace,(OutFirst,OutNext,OutLast), MAP) :-
-% \+ user:value(smsflag,true),
-% \+ user:value(nightbusflag,true),
+% \+ value(smsflag,true),
+% \+ value(nightbusflag,true),
 %    outdepfirst(Deps,DirPlace,TimeF,OutFirst,MAP),
 %         outdeplast(Deps,DirPlace,TimeL,OutLast),
 % %%      (\+ anotherday(Day) -> %% Next departure is irrelevant if not today !!! %%RS-120813
@@ -314,7 +314,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,Out,MAP,SmartDeps) :-
 
 %% NO Direction nor time
 outdeplist1(Deps,_Day,Opts,_Place,Out1Out2,  [Dep1,Dep2],_SmartDeps) :-
-    user:value(smsflag,true),
+    value(smsflag,true),
     Opts = [],    % no direction
     !,
     progtrace(4,case1),
@@ -418,7 +418,7 @@ outdeplist1(Deps,_Day,Opts,DirPlace,(Out,earliesttimes),MAP,SmartDeps) :-   % ne
 
 %% SMS Check if first / first(1) is really EARLY (ANOTHER DAY)
 outdeplist1(Deps0,Day,Opts,DirPlace,(OutFirst), MAP,_SmartDeps) :- % første/neste avgang
-    user:value(smsflag,true),
+    value(smsflag,true),
      anotherday(Day),
         test(
      (member(firstcorr,Opts);
@@ -440,7 +440,7 @@ outdeplist1(Deps0,Day,Opts,DirPlace,(OutFirst), MAP,_SmartDeps) :- % første/nes
 
             %% SMS first means only next
 outdeplist1(Deps,Day,Opts,DirPlace,(OutNext,earliesttimes),MAP,SmartDeps) :- % første/neste avgang
-    user:value(smsflag,true),
+    value(smsflag,true),
     \+ member(firstcorr,Opts),
     \+ member(time,Opts),      % time means a clock has been set
          (member(first,Opts);       % unspecified first
@@ -461,7 +461,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,(OutNext,earliesttimes),MAP,SmartDeps) :- % f
 %% Avoid Night to saturday if saturday is just daycode !!!
 
 outdeplist1(Deps0,Day,Opts,DirPlace,(OutFirst,OutNext,earliesttimes), MAP,_SmartDeps) :- % første/neste avgang
-   \+ user:value(smsflag,true), %% NONSMS -> FIRST/LAST
+   \+ value(smsflag,true), %% NONSMS -> FIRST/LAST
    \+ member(firstcorr,Opts),
    \+ member(time,Opts),       % time means a clock has been set
         (  member(first,Opts);       % unspecified first
@@ -567,8 +567,8 @@ outdeplist1(Deps,_,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :-
 
 outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :-
 
-    user:value(smsflag,true),
- \+ user:value(nightbusflag,true),
+    value(smsflag,true),
+ \+ value(nightbusflag,true),
  \+ time_options(Opts),
  \+ member(timeset,Opts),
  \+ anotherday(Day),
@@ -595,7 +595,7 @@ outdeplist1([],Day,Opts,DirPlace,Out,MAP,SmartDeps) :- %% not earliesttimes
 outdeplist1(Deps,_Day,Opts,DirPlace,((Out,earliesttimes)),DESTMAP,SmartDeps) :- %% from A to B
     testmember(time,Opts),  %% then not afternow %% TA-100630
 %%    \+ anotherday(Day),     %% RS-120813 Maybe this should work for any day?
-    \+ user:value(dialog,1),
+    \+ value(dialog,1),
     !,
     progtrace(4,case26na),
 
@@ -606,7 +606,7 @@ outdeplist1(Deps,_Day,Opts,DirPlace,((Out,earliesttimes)),DESTMAP,SmartDeps) :- 
 
 outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :- %% from A to B (today, after now)
     \+ anotherday(Day),
-    \+ user:value(dialog,1),
+    \+ value(dialog,1),
 
     !,
     progtrace(4,case26),
@@ -629,7 +629,7 @@ first_dep(_,[]).
 
 
 print_smart_init(Opts) :-
-    user:value(smartdepflag,true),
+    value(smartdepflag,true),
     !,
     comptimeflag(Opts,Trans,TF),
 
@@ -678,7 +678,7 @@ smart_time_option(nth(N)) :-N >1. %% første = nth(1) innocent   %% nth/1 is fro
 
 
 
-print_smart_trail:- user:value(smartdepflag,true) ->  output(']}');true.
+print_smart_trail:- value(smartdepflag,true) ->  output(']}');true.
 
 
 
@@ -771,14 +771,14 @@ find_last_departure(Deps,DepL1):-
 
 
 decide_actual_noid(_N,NActual):-  %% TA-110502
-    user:value(smartdepflag,true),
+    value(smartdepflag,true),
     !,
     NActual = 6.  %% <---- ????????????????????
 
 
 
 decide_actual_noid(N,NActual):-
-    user:value(smsflag,true), %% not for web %% TA-101117
+    value(smsflag,true), %% not for web %% TA-101117
     N =< 1, % unspecified,
     !,
     NActual = 1.
@@ -806,7 +806,7 @@ decide_actual_noid(N,NActual):-
 
 
 decide_actual_noid7(_Opts,NActual):-
-    user:value(smartdepflag,true),!,NActual= 6. %%% <---- ??????
+    value(smartdepflag,true),!,NActual= 6. %%% <---- ??????
 
 decide_actual_noid7(Opts,MAX):-
     maxnumberofindividualdepartures(MNID),
@@ -816,8 +816,8 @@ decide_actual_noid7(Opts,MAX):-
 
 
 earliesttimes :-
-    \+ user:value(smsflag,true),
-    \+ user:value(dialog,1),
+    \+ value(smsflag,true),
+    \+ value(dialog,1),
     !,
     printmess1(earliesttimes).
 earliesttimes.
@@ -854,7 +854,7 @@ justoutputthelistnotafternow(Deps,DirPlace,Out,Opts,DESTMAP,SmartDeps):-
 % However, same rid makes it complicated
 
 justoutputtheliststar(Deps,DirPlace,Out,Opts,MAP,SmartDeps):-
-    user:value(dialog,1),
+    value(dialog,1),
     !,
     split(1,Deps,[Dep1],_Deps1),        % split/4 is from utility.pl
     justoutputthelist([Dep1],DirPlace,Out,Opts,MAP,SmartDeps).
@@ -892,7 +892,7 @@ justoutputthelist(Deps,DirPlace,Out,Opts,DESTMAP,SmartDeps):-
 
     getdeptime(Dep,Firstdeparturetime),
     addrefdialog(firstdeparturetime,Firstdeparturetime),
-    user:( firstdeparturetime := Firstdeparturetime ), %% Moved to firstdepnotice
+    ( firstdeparturetime := Firstdeparturetime ), %% Moved to firstdepnotice
 
     justoutputthelist0(Deps,DirPlace,Out,Opts,DESTMAP,SmartDeps). %% no warning
 
@@ -934,12 +934,12 @@ stationof(depnode(_,_,_,_,_,_,_,_,STA),STA).
 firstRID(RIDN1,[depnode(_,_,_,_,_,RIDN1,_,_,_)|_]).
 
 avoidsamerid2(_Dep,Deps1,Deps1):- %% DUMMY TEST
-    user:value(smartdepflag,true),
+    value(smartdepflag,true),
     !.
 
 
 avoidsamerid2(Dep,Deps1,Deps2):- %% REMOVE all (succeeding) deps with same RID and Station
-    user:value(smartdepflag,true),    %% TA-110503
+    value(smartdepflag,true),    %% TA-110503
     !,
     ridof(Dep,RID),
     stationof(Dep,STAT),
@@ -957,7 +957,7 @@ avoidsamerid2(Dep,Deps1,Deps2):- %% maybe relax = station ? %% TA-110503
 
 
 /* obsolete %% TA-110503
-avoidsamerid(_,L,L):-user:value(smartdepflag,true),!.  %% Acually,test both RID and Station !!!!
+avoidsamerid(_,L,L):-value(smartdepflag,true),!.  %% Acually,test both RID and Station !!!!
                                              %% TA-110502
 avoidsamerid(RID,L1,L2):-
     set_filter(X,(ridof(X,R),R \== RID),L1,L2).
@@ -1019,12 +1019,12 @@ firstdepnotice(Dep):-
 
     getdeptime(Dep,Firstdeparturetime),
     addrefdialog(firstdeparturetime,Firstdeparturetime),
-    user:( firstdeparturetime := Firstdeparturetime ),
+    ( firstdeparturetime := Firstdeparturetime ),
 
-    ((user:value(warningflag,true),user:value(smsflag,true)) ->
+    ((value(warningflag,true),value(smsflag,true)) ->
         (deptimeofwarning(Dep,Date,Time),
 
-   user:set(warningtime , notification(Date,Time)),     %% declare.pl
+   set(warningtime , notification(Date,Time)),     %% declare.pl
 
    printdatetimetoalarmstring)
      ;
@@ -1049,7 +1049,7 @@ futuretime(Date2,Time2):-
 
 
 printdatetimetoalarmstring:-
-   user:value(warningtime, notification(Date,Time)),
+   value(warningtime, notification(Date,Time)),
    futuretime(Date,Time),
    !,
    printdatetimetoalarmstring2(Date,Time).
@@ -1104,7 +1104,7 @@ getlastarrival(X,Date,Time):-
 
 
 getdepdate(Date):-
-    user:value(actualdate,Date).
+    value(actualdate,Date).
 
 getdeptime(depnode(_,Time,_,_,_,_,_,_,_),Time).
 getdeptime(depans(_,_,Time,_,_,_,_,_,_,_),Time). %% /8
@@ -1112,7 +1112,7 @@ getdeptime(td(Time,_RID_,_Dur_,_,_,_), Time).
 
 
 getprewarning(PreMin):- %% may be negative, i.e. warning after
-    user:value(prewarningtime,PreMin), %% specified by user
+    value(prewarningtime,PreMin), %% specified by user
     number(PreMin), %% Precaution
     !.
 
@@ -1281,10 +1281,10 @@ outsmalldeps2(arrivaltime,Station,[TimesDuration],DirPlace, (bwt(Time),OutArr),_
          faenta([TimesDuration],Times,Duration,SetOfDest), % Duration =  Short - Long
     Times = [Time],  %% assumption: only one time
     addtotime(Time,Duration,Arrival),
-    user:set(firstdeparturetime,Time),  %% for reference
-    user:set(lastarrivaltime,Arrival),  %% OBSOLETE
+    set(firstdeparturetime,Time),  %% for reference
+    set(lastarrivaltime,Arrival),  %% OBSOLETE
 
-         (\+  user:value(dialog, 1),!
+         (\+  value(dialog, 1),!
       ;
     getcurrent(Cid),
       addref(Cid,Time,firstdeparturetime),
@@ -1315,13 +1315,13 @@ faenta(TDlist,Times,Durations,SetofStations):-
 
 
 out_comma(_) :- %% Printing comma if smartdepflag is set %% TE-120406
-    user:value(smartdepflag,true) ->
+    value(smartdepflag,true) ->
     output(',');true.
 
-create_smartdep_entry(_,_,_,_) :- \+  user:value(smartdepflag,true),!.
+create_smartdep_entry(_,_,_,_) :- \+  value(smartdepflag,true),!.
 
 create_smartdep_entry(Intstation1,TimesDurations, DirPlace, Create_smartdep_entry):- %% TA-110405 %%RS-120402 -120727
-    user:value(smartdepflag,true),
+    value(smartdepflag,true),
     %firstmem(TimesDurations,td(Time,RID,Duration,_Intstation2)),
      firstmem(TimesDurations,td(Time,RID,Duration, _Instation)),
 
@@ -1334,12 +1334,12 @@ create_smartdep_entry(Intstation1,TimesDurations, DirPlace, Create_smartdep_entr
     !.
 
 create_smartdep_entry2(_,_,_,_,_,_) :-
-    \+ user:value(smartdepflag,true),
+    \+ value(smartdepflag,true),
     !.
 
 
 create_smartdep_entry2(Station,Time,Duration,Rid, DirPlace, Smartdep_entry) :-
-    user:value(smartdepflag,true),
+    value(smartdepflag,true),
     !,
     ridtobusnr(Rid,BusNo),
     localstatno(Rid,Station,Fullstatname1,Localstatno1),
@@ -1347,11 +1347,11 @@ create_smartdep_entry2(Station,Time,Duration,Rid, DirPlace, Smartdep_entry) :-
 
 
 create_smartdep_entry3(_Station,_Time,_Duration,_BusNo, _DirPlace, _Smartdep_entry) :-
-    \+user:value(smartdepflag,true),
+    \+value(smartdepflag,true),
     !.
 
 create_smartdep_entry3(Station,Time,Duration,BusNo, DirPlace, Smartdep_entry) :-
-    user:value(smartdepflag,true),
+    value(smartdepflag,true),
     !,
     fullstatname(Localstatno1,Station,Fullstatname), %% TA-110530
 
@@ -1387,11 +1387,11 @@ print_smartdeps(SmartDeps, Opts,Transfer):-
 
 print_smartdep_entry(_):-
 
-     \+ user:value(smartdepflag,true),
+     \+ value(smartdepflag,true),
      !.
 
 print_smartdep_entry(smartdepentry(Fullstatname1,Localstatno1,BusNo,Time,Duration,DirPlace)):-
-     user:value(smartdepflag,true),
+     value(smartdepflag,true),
      !,
 
 %%     Frame={'"departures"' : [ ItemList]}, %% Printed beforehand
@@ -1430,7 +1430,7 @@ outdepfirst(Deps,DirPlace,Time9,
 
                                  bcp(Verb), % passes/arrives/departs
                                  bwr(Station),bcp(attime),bwt(Time9),OutArr,period),dir(Dep1,FINAL),_SmartDeps) :-
-    user:value(smsflag,true),
+    value(smsflag,true),
     !,
     member(depnode(_Time0,Time9,_DelArr1,_DelDep1,BegTime,Rid,BusN,_,Station),Deps),
          ridtobusname(Rid,BusN),
@@ -1451,7 +1451,7 @@ outdepfirst(Deps,DirPlace,Time9,
          ridtobusname(Rid,BusN),
     vehicletype(BusN,Bus),
 
-         (\+  user:value(dialog, 1),!
+         (\+  value(dialog, 1),!
       ;
     getcurrent(Cid),
 
@@ -1471,14 +1471,14 @@ outdeplast(Deps,DirPlace,Time9,
             bwrbusbc(Bus,BusN),
                                 bcp(Verb), % passes/arrives/departs
                                 bwr(Station),bcp(attime),bwt(Time9),OutArr,period),_SmartDeps) :-
-    user:value(smsflag,true),
+    value(smsflag,true),
     !,
 
          lastmem(Deps,Dep1), Dep1=depnode(_,Time9,_DelArr1,_DelDep1,BegTime,Rid,BusN,_,Station),
          ridtobusname(Rid,BusN),
     vehicletype(BusN,Bus),
 
-         (\+  user:value(dialog, 1),!
+         (\+  value(dialog, 1),!
       ;
     getcurrent(Cid),
 
@@ -1497,7 +1497,7 @@ outdeplast(Deps,DirPlace,Time9,
          ridtobusname(Rid,BusN),
     vehicletype(BusN,Bus),
 
-         (\+  user:value(dialog, 1),!
+         (\+  value(dialog, 1),!
       ;
     getcurrent(Cid),
 
@@ -1519,7 +1519,7 @@ outdepnext(Deps,Opts,TimeF,TimeL,DirPlace,Out, MAP,Smartdep_entry) :- %% - Day
     Dep1=depnode(_,Time9,DelArr1,_DelDep1,BegTime,Rid,BusN,_,Station),
     nextdep(Tid, Dep1,Deps),
          ridtobusname(Rid,BusN),
-         (\+  user:value(dialog, 1),!
+         (\+  value(dialog, 1),!
       ;
     getcurrent(Cid),
     addref(Cid, Rid, lastrid)
@@ -1661,10 +1661,10 @@ outandarrivesonly(FromPlace,FromTime,DirPlace,Rid,BegTime,DelDep1,ArrivalTime,Ou
 
     !,
 
-    user:set(firstdeparturetime,FromTime),
-    user:set(lastarrivaltime,ArrivalTime),  %% OBSOLETE
+    set(firstdeparturetime,FromTime),
+    set(lastarrivaltime,ArrivalTime),  %% OBSOLETE
 
-         (\+  user:value(dialog, 1),!
+         (\+  value(dialog, 1),!
       ;
     getcurrent(Cid),
       addref(Cid,FromTime,firstdeparturetime),
@@ -1687,7 +1687,7 @@ adjust999(X,Y,Z) :- Y=999,!,Z=X.
 adjust999(X,_,X).
 
 addrefdialog(SLOT,VALUE):-
-         (\+  user:value(dialog, 1),!
+         (\+  value(dialog, 1),!
       ;
     getcurrent(Cid),
       addref(Cid,VALUE,SLOT)
@@ -1755,8 +1755,8 @@ outfromtocorr1(_Opts,Dep,OutDep1,Mid01,(OutDep2,earliesttimes),corr(Dep,Mid01),S
     vehicletype(StartBusN,Bust1),
     vehicletype(EndBusN,Bust2),
 
-   user:( firstdeparturetime := StartTime ), %% AD HOC
-   user:( lastarrivaltime := EndTime ),
+   ( firstdeparturetime := StartTime ), %% AD HOC
+   ( lastarrivaltime := EndTime ),
 
    difftime( OffTime,StartTime,Duration1),
 
@@ -1774,7 +1774,7 @@ outfromtocorr1(_Opts,Dep,OutDep1,Mid01,(OutDep2,earliesttimes),corr(Dep,Mid01),S
   %% print_smartdep_entry(Smartdep_entry2),
    SmartDeps = [Smartdep_entry1,Smartdep_entry2], %% MW-121008
 
-         (\+  user:value(dialog, 1),!
+         (\+  value(dialog, 1),!
       ;
     getcurrent(Cid),
       addref(Cid,StartTime,firstdeparturetime),
@@ -1903,7 +1903,7 @@ outcorr(false,midans(_StrBusN,OffTime,OffStation,_EndBusN,OnTime,OnStation),
 
 ):-
 
-    user:value(smsflag,true),
+    value(smsflag,true),
     OffStation == OnStation,
     !.
 
@@ -1917,7 +1917,7 @@ outcorr(false,midans(_StrBusN,OffTime,OffStation,_EndBusN,OnTime,OnStation),
 
 ):-
 
-    user:value(smsflag,true),
+    value(smsflag,true),
     !.
 
 
@@ -1935,7 +1935,7 @@ outcorr(false,midans(StrBusN,OffTime,OffStation,EndBusN,OnTime,OnStation),
 
 ):-
 
-    \+ user:value(smsflag,true),
+    \+ value(smsflag,true),
     !,
 
     vehicletype(StrBusN,_bust1),
@@ -2062,7 +2062,7 @@ printmessage(X):-
 %-
 
 printmess(Message):-
-   user:value(smsflag,true),
+   value(smsflag,true),
    empty_sms_message(Message),
    !,
    emptymessage.
@@ -2072,13 +2072,13 @@ printmess(Message):-
    printmess1(Message).
 
 %% empty_sms_message(sameplace(_,_)).
-empty_sms_message(howtuchelp):-user:value(dialog,1). %% <----
+empty_sms_message(howtuchelp):-value(dialog,1). %% <----
 
 empty_sms_message(date_isa_day(_,_)). %% TA-110411
 
 empty_sms_message(nearest_station(_STARTSTOP,_,_)).
 
-%%    user:value(dialog,1). %%  avoid ('+') %% TA-110411
+%%    value(dialog,1). %%  avoid ('+') %% TA-110411
 %% omit if dialog since this information is already printed
 %% omit if proper sms message (too long)
 
@@ -2102,7 +2102,7 @@ printmess1(time(Then,T1556)) :- %%  then/now
 
 
 printmess1(webstatistics) :-
-    user:value(smsflag,true),
+    value(smsflag,true),
     !.
 
 printmess1(webstatistics) :-
@@ -2111,7 +2111,7 @@ printmess1(webstatistics) :-
 
     output('DATE            SMS  TOTAL'),
     nl,
-    forall( interapp:webstat( date(Year,Month,Day),SMS,TOT ),     %% RS-131230 See utility.pl for/2
+    for( interapp:webstat( date(Year,Month,Day),SMS,TOT ),     %% RS-131230 See utility.pl for/2
        ( write(Year),write('-'),write(Month),write('-'),write(Day),out('      '),out(SMS),out('  '),out(TOT),nl ) ),
     nl.
 
@@ -2135,7 +2135,7 @@ printmess1(neverpasses(Nine,Lade1)):-
 printmess1(notification(Date,Time)):-
     !,
 
- ( (user:value(warningflag,true),user:value(smsflag,true)) ->
+ ( (value(warningflag,true),value(smsflag,true)) ->
 
    (printdatetimetoalarmstring,
     bcpbc(youarenotified), bwt(Time), bcp(ondate), writedate(Date),
@@ -2177,7 +2177,7 @@ printmess1(toolate):-
 
 %% too long text
 printmess1(nearest_station(_STARTSTOP,X,_)):-
-    user:value(smsflag,true),
+    value(smsflag,true),
     obvious_station(X),
     !,
     emptymessage.
@@ -2199,7 +2199,7 @@ printmess1(dateis(Year,Month,DayNr,Day)):-
 
 
 printmess1( otherperiod(_Date) ) :-
-    user:value( airbusflag, true ),
+    value( airbusflag, true ),
     !,
     airbus_module(FB),
     write_mess_off(FB).
@@ -2650,7 +2650,7 @@ pen0([A,B]):- %% write the /N alternative of a list
 
 
 nibcp(Day):-
-    user:value(nightbusflag,true),!,
+    value(nightbusflag,true),!,
     pen(['night to ','natt til ']), %% night to ..day
     bcp(Day). %%  For nightbus, day is special (on holidays)
 
@@ -2661,7 +2661,7 @@ nibcp(Day):- bcp(on), bcp(Day).
 %% Standard Nightbus Information Message
 
 standnight(easterhol):- %% Standnight  påsken
-    user:value(nightbusflag,true),
+    value(nightbusflag,true),
     pmess(generalnightbuseaster),nl.
 
 
@@ -2669,10 +2669,10 @@ standnight(easterhol):- %% Standnight  påsken
 
 /*   %% Stand night   Christmas
 standnight(D):-
-    user:value(nightbusflag,true),
+    value(nightbusflag,true),
     kindofday(D,workday),
 
-(    user:value(language,norsk)->
+(    value(language,norsk)->
 (
     output('Nattbussen går ikke mellomjula,unntatt natt til tredje juledag.'),
 
@@ -2688,10 +2688,10 @@ standnight(D):-
 
 
 standnight(D):-
-    user:value(nightbusflag,true),
+    value(nightbusflag,true),
     kindofday(D,workday),
 
-(    user:value(language,norsk)->
+(    value(language,norsk)->
 
 (
                                                         %% unntatt i påskehelgen'
@@ -2742,7 +2742,7 @@ cwc(atime,['a time','et tidspunkt']).
 cwc(are,['are','er']).
 cwc(are_the_same_as,['are the same as on','er de samme som på']).
 cwc(aroute,['a route','en rute']).
-cwc(arrivesat,['','']):- user:value(smsflag,true),!.
+cwc(arrivesat,['','']):- value(smsflag,true),!.
 cwc(arrivesat,['arrives at ','kommer til ']).
 cwc(arrival,['arrival', 'ankomst']).
 cwc(arrivaltime,['arrival time', 'ankomsttid']).
@@ -2772,7 +2772,7 @@ cwc(at,['at','ved']).
 cwc(atday,['at','på']).
 cwc(atstation,['at ','ved ']). %% 'på'  ved mer nøytralt  ( "Hovedterminalen er på Trondheim")
 
-cwc(attime,['at','klokken']):- user:value(dialog,1),!.
+cwc(attime,['at','klokken']):- value(dialog,1),!.
 cwc(attime,['at','kl.']).  % otherwise
 
 cwc(athing,['a thing','en ting']). %% hva koster det
@@ -2940,20 +2940,20 @@ cwc(inconsistentduration, ['This duration  is too large.',
                            'Jeg kan ikke svare for så store tidsintervaller.']).
 
 cwc(indirection,['in direction','i retning']):-
-    user:value(smsflag,true),!.
+    value(smsflag,true),!.
 
 cwc(indirection,['in direction','i retning']).
 
 
 cwc(indirectiontowards,['towards',  'mot']):-
-    user:value(smsflag,true),
+    value(smsflag,true),
     !.
 
 cwc(indirectiontowards,['in direction towards',  'i retning mot']).
 
 
 cwc(indirectionfrom,['from', '  fra']):-
-   user:value(smsflag,true),
+   value(smsflag,true),
    !.
 
 cwc(indirectionfrom,['in direction from',
@@ -2997,8 +2997,8 @@ cwc(meta,[text,tekst]). %% Technical
 cwc(minute,['minute','minutt']).
 
 cwc(minutes,['min.','min.']):-
-    user:value(smsflag,true),
- \+ user:value(dialog,1),!.  %% Talsmann
+    value(smsflag,true),
+ \+ value(dialog,1),!.  %% Talsmann
 cwc(minutes,['minutes','minutter']).
 
 cwc(monday,['Monday','mandag']).
@@ -3155,7 +3155,7 @@ cwc(now,['now','nå']).
 cwc(nowhere,['nowhere','ingen steder']).
 cwc(nth(N),[Ord,Ord]) :- ordinal2(Ord,_,N).
 
-cwc(number,['number','nr.']):- user:value(smsflag,true),!. %% // avoid No.
+cwc(number,['number','nr.']):- value(smsflag,true),!. %% // avoid No.
 cwc(number,['number','nummer']).
 
 cwc(of,['of','i']).
@@ -3559,7 +3559,7 @@ cwc(G,[G,N]):-
 
 
 cwc(N,[N,N]) :- number(N).
-cwc(M,[N,N]) :- known_name(M),specname(M,N).       %% lex.pl
+cwc(M,[N,N]) :- known_name(M), specname(M,N).       %% lex.pl
 
 
 
@@ -3627,14 +3627,14 @@ monthshort(12,'Dec.', 'Des.').
 streetspecname(X,N) :- regstr:streetstat(X,N,_,_,_),!.  %% NB NOT FIRST ORDER NORMAL FORM
 
 xspecname(XXXX,XX):-
-    user:value(dialog,1),
+    value(dialog,1),
     specname(XXXX,XX).
 
 
 
 xspecname(XXXX,XX):-  %% NB ??????????
-    \+ user:value(dialog,1),
-    user:value(smsflag,true),
+    \+ value(dialog,1),
+    value(smsflag,true),
     short_specname(XXXX,XX).
 
 
@@ -3646,7 +3646,7 @@ xspecname(TMN_S,S):-
 xspecname(TMN_S,S):-
 %%    routedomain(D),
 
-   user:value(actual_period, M),
+   value(actual_period, M),
 
 %%    route_period(D,M,_,_), %% NO, current route domain!!!!
 
@@ -3659,7 +3659,7 @@ xspecname(TMN_S,S):-
 specname0(S0,S):- specname(S0,S),!.
 specname0(S0,S):- bigcap(S0,S).
 
-ordinal2( X, Y, Z ) :- dict_module( D ), D:ordinal2( X, Y, Z ) .
+ordinal2( X, Y, Z ) :- dict_module( D ), D:ordinal2( X, Y, Z ) .    %% RS-141026 true to Remove warnings because of Dict-modules not visible
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -3679,12 +3679,12 @@ special_day(may17).
 
 
 numberofnextbuses2(_,2):-    %% neste -> neste 2 SMS
-     user:value(smsflag,true),!.
+     value(smsflag,true),!.
 numberofnextbuses2(Default,Default).
 
 
 %% obsol
-numberofnextbuses(2):- user:value(smsflag,true),!.
+numberofnextbuses(2):- value(smsflag,true),!.
 numberofnextbuses(1).
 
 
@@ -3712,34 +3712,34 @@ corresporder(previous,N,previous(N)).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 evening_time0(X,Y):-  %% Inclusive
-    \+ user:value(nightbusflag,true),
+    \+ value(nightbusflag,true),
     number(X),
  (  X <  0100 -> Y is X + 1200;   %% halv ett -> 1230
     X =< 1200 -> Y is X + 1200; %% NO default here
                  Y is X).
 
 evening_time0(X,Y):-
-    user:value(nightbusflag,true),    %% Inclusive
+    value(nightbusflag,true),    %% Inclusive
     number(X),
  (  X <  0100 -> Y is X + 2400;  %% night at 1
     X =< 1200 -> Y is X + 1200; %% NO default here
                  Y is X).
 
 evening_time(X,Y):-
-    \+ user:value(nightbusflag,true), %% Exclusive (fail if evening)
+    \+ value(nightbusflag,true), %% Exclusive (fail if evening)
     number(X),
  (  X <  0100 -> Y is X + 1200;   %% halv ett -> 1230
     X =< 1200 -> Y is X + 1200). %% NO default here
 
 evening_time(X,Y):-
-    user:value(nightbusflag,true),    %%  Exclusive (fail if evening)
+    value(nightbusflag,true),    %%  Exclusive (fail if evening)
     number(X),
  (  X <  0100 -> Y is X + 2400;  %% night at 1
     X =< 1200 -> Y is X + 1200). %% NO default here
 
 
 evening_time24(NOW,X,Y):-
-    \+ user:value(nightbusflag,true), %% Exclusive (fail if evening)
+    \+ value(nightbusflag,true), %% Exclusive (fail if evening)
     number(X),
  (  NOW =< 1200, X > 0, X <60 -> Y is X + 1200; %% 0900: halv ett (0030) -> 1230
     X <  0100 -> Y is X + 2400;   %% halv ett -> 2430
@@ -3804,12 +3804,12 @@ mixopt(Opts1,Opts2,Opts):- %% union
 anotherday(Day):-
     today(X),
     X \== Day,
-    \+ user:value(samedayflag,true),
+    \+ value(samedayflag,true),
     !.
 
 anotherday(_Day):-
     todaysdate(D0), %% datecalc
-    user:value(actualdate,D1),
+    value(actualdate,D1),
     \+ (D0=D1),
     !.
 
@@ -3822,7 +3822,7 @@ anotherday(_Day):-
 
 
 paraphrase(L):-
-        user:value(teleflag,true),
+        value(teleflag,true),
    !,
         teleparaph(L).
 
@@ -3842,15 +3842,15 @@ paraphrase3(trans,Prog,Frame) :-
 
 
 paraphrase2(Prog,L):-         %%  Both Important messages and Paraphrase
-   \+ user:value(directflag,true),
+   \+ value(directflag,true),
    write_relevant_messages(Prog),
    paraphrase_changes(L),
    nl.
 
 paraphrase2(Prog,L):-      %% Both Important messages and Paraphrase
-   user:value(directflag,true),
+   value(directflag,true),
    !,
-   user:value(directoutputfile,Newans),
+   value(directoutputfile,Newans),
    tell(Newans),
    output('*** Paraphrase ***'), %%%%%%%%%%% <-
    nl,
@@ -3863,14 +3863,14 @@ paraphrase2(Prog,L):-      %% Both Important messages and Paraphrase
 
 
 paraphrase_tele(_Prog,_L):-
-   \+ user:value(directflag,true),
+   \+ value(directflag,true),
    !,
    true.        %% Pro forma
 
 paraphrase_tele(_Prog,_L):-    %% Pro forma, open dir outout file
-   user:value(directflag,true),
+   value(directflag,true),
    !,
-   user:value(directoutputfile,Newans),
+   value(directoutputfile,Newans),
    tell(Newans),
    output('*** Paraphrase ***'), %%%%%%%%%%% <-
    nl.
@@ -3882,10 +3882,10 @@ paraphrase_tele(_Prog,_L):-    %% Pro forma, open dir outout file
 
 
 write_relevant_messages( Prog ):-
-    forall(
+    for(
         roundmember( message(X), Prog ),
-       ( relevant_message(X) -> printmessageunconditionally(X)
-                             ; true)).
+       ( relevant_message(X) -> printmessageunconditionally(X) ; true )
+    ).
 
 relevant_message(nearest_station(_,_,_)). %% this before .. You will go
 
@@ -3953,7 +3953,7 @@ paraph_list1([X]):-
 
 paraph_list1([X|L]):-
     paraph1(X),
-    forall( member(Y,L),paraph2(Y)).
+    for( member(Y,L), paraph2(Y) ).
 
 
 
@@ -4213,7 +4213,7 @@ bwrprices(Price):-  bwr(or(Price)).
 % Square lists  % a,  b, c and d
 
 bwrsinglelist([Elem1,Elem2|List]) :- %% Max 12 with SMS
-     user:value(smsflag,true),
+     value(smsflag,true),
      length(List,Leng),Leng > 10,
      !,
      bwr(Elem1),comma,
@@ -4383,7 +4383,7 @@ bwr2(List,_):- bwrsinglelist(List),space.
 %% ...................
 
 
-realspeak_comma:- user:value(dialog,1),write(', '). %% For better prosody/ pause
+realspeak_comma:- value(dialog,1),write(', '). %% For better prosody/ pause
 realspeak_comma.
 
 
@@ -4490,7 +4490,7 @@ bcw(bus,List):-!,portionlist(List),space.
 bcw(route,List):-!,portionlist(List),space.
 bcw(station,List):-!,portionlist(List),space.
 
-bcw(_,List):- \+ user:value(smsflag,true),!,portionlist(List),space.
+bcw(_,List):- \+ value(smsflag,true),!,portionlist(List),space.
 bcw(_,List):- bwrsinglelist(List),space.
 
 
@@ -4516,7 +4516,7 @@ bwr(unknown) :-!,bcp(unknown).
 
 
 %% Update reference for all relevant items that are printed
-bwr(X) :- user:value(dialog, 1),
+bwr(X) :- value(dialog, 1),
           atomic(X),
           X isa Type,
           \+  Type=number, %% uninteresting as reference
@@ -4564,7 +4564,7 @@ bwr(X)     :- %% space,
 bwq(X) :- write(X). %% no space
 
 
-bw1(X-Y) :- user:value(dialog,1),write(X),bcp(to),space,write(Y). %% RealSpeak
+bw1(X-Y) :- value(dialog,1),write(X),bcp(to),space,write(Y). %% RealSpeak
 
 bw1(X)     :- space,write(X),space.  %% NEW Predicate No add ref
 
@@ -4638,7 +4638,7 @@ bwt00(NN):-  %% write a number with exactly 2 digits
 
 bwt1(T0) :-
     language(norsk),
-    user:value(dialog,1), %% 14:00 format for speech synthesis
+    value(dialog,1), %% 14:00 format for speech synthesis
     !,
 %%%%%%%%%%%%    space,  kl.  1530 %% TA-101110
 
@@ -4703,7 +4703,7 @@ portionlist(List):-
     bwr(Z).
 
 ramses(List):-
-   forall(member(E,List),(bwr(E),write(', '))).
+   for( member(E,List), (bwr(E),write(', ')) ).
 
 
 
@@ -4748,32 +4748,32 @@ endline.                       %% marker, nl
 pay1   :-  write('+ '),nl.
 nopay1 :-  write('- '),nl.
 
-pay :-  user:value(smsflag,true),
-      \+ user:value(dialog,1),
-      \+ user:value(warningflag,true),
+pay :-  value(smsflag,true),
+      \+ value(dialog,1),
+      \+ value(warningflag,true),
       !,
       write('+ '),nl.
 
-pay :-  user:value(smsflag,true),
-      \+ user:value(dialog,1),
-      user:value(warningflag,true),
-      \+ user:value(warningtime,_),
+pay :-  value(smsflag,true),
+      \+ value(dialog,1),
+      value(warningflag,true),
+      \+ value(warningtime,_),
       !,
       write('- '),nl. %% warning but no time
 
 pay.
 
-nopay :- user:value(smsflag,true),
-%%%%% \+ user:value(warningflag,true), %% always
-      \+ user:value(dialog,1),
+nopay :- value(smsflag,true),
+%%%%% \+ value(warningflag,true), %% always
+      \+ value(dialog,1),
          !,
          write('- '),nl.
 
 nopay.
 
 
-startmark :- user:value(smsflag,true),
-             \+ user:value(dialog,1),
+startmark :- value(smsflag,true),
+             \+ value(dialog,1),
              !.
 
 startmark :- nl.
@@ -4789,9 +4789,9 @@ startmark :- nl.
 %                    maximum/2,         maxval/3,
 %                    minimum/2,         minval/3,
 %                    number_to_string/2,
-%                    user:once1/1,      out/1,                  output/1,
+%                    once1/1,      out/1,                  output/1,
 %                    roundmember/2,     roundwrite/1,
 %                    sequence_member/2, set/2,                  set_of/3,       (set_ops)/3,  set_filter/4,  set_union/3,  split/4,
-%                    test/1,            testmember/2,           user:value/2,        (:=)/2
+%                    test/1,            testmember/2,           value/2,        (:=)/2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% where?            addref/1,          for/3,

@@ -14,11 +14,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% RS-131227    UNIT: / and /utility/
-:- ensure_loaded( user:'declare' ).    %% :-op( 714,xfx, := ).  etc... , track/2, trackprog/2
-%:- use_module( 'utility/utility', [ output/1, prettyprint/1 ] ).  %% Module util
-:- use_module( 'utility/writeout', [ output/1 ] ).  %% Module util  , prettyprint/1
-
+%:- ensure_loaded( 'declare' ).    %% :-op( 714,xfx, := ).  etc... , track/2, trackprog/2
 %:- use_module( main, [ track/2 ] ). %% RS-140928 Moved (back) to declare.pl hei/0,   run/0 %track(X, Y) :- user:track(X, Y) .
+
+%:- use_module( 'utility/utility', [ output/1, prettyprint/1 ] ).  %% Module util
+:- use_module( 'utility/writeout', [ output/1, track/2 ] ).  %% Module util  , prettyprint/1
+
 
 /*
 En tom produksjon er rekursivt
@@ -46,9 +47,9 @@ ptbwrite(K):- %% TA-110207
 %%  rewfat(K,L),
 %%  rewprune(L,M),
 
-  user:track(2, ( nl,write(M),nl,nl)),     %% TA-061027
+  track(2, ( nl,write(M),nl,nl)),     %% TA-061027
 
-  user:track(1, ( nl,nl,ptbwrite:drucke_baum_list(M), writeout:output('    '),nl)). %% TA-061027 
+  track(1, ( nl,nl,ptbwrite:drucke_baum_list(M), writeout:output('    '),nl)). %% TA-061027 
  
   
 

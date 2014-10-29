@@ -15,7 +15,7 @@
 
 %% UNIT / AND /utiltity/
 :- ensure_loaded( user:'../declare' ).       %% RS-111212  traceprog/2, trackprog/2
-trackprog(X, Y) :- user:trackprog(X, Y).
+%trackprog(X, Y) :- user:trackprog(X, Y).
 
 :- use_module( checkitem2, [ checkitem/3, sysout_item/1 ] ).       %% RS-140210
 

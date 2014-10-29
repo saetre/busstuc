@@ -15,8 +15,10 @@
         unwanted_name/1 %% e.g. (anette). %%  \+ Aunet %% RS-131225    %%  Unwanted names regardless of domain (guide spellcheck!)
 ] ).
 
+%% RS-141026    UNIT: /
+:- use_module( '../main.pl', [ value/2 ] ). %MISERY?!
 %% RS-131225, UNIT: utility/
-:- ensure_loaded( user:'../declare' ). %% RS-140208  General (semantic) Operators, value/2, := /2, =: /2, ...
+%:- ensure_loaded( user:'../declare' ). %% RS-140208  General (semantic) Operators, value/2, := /2, =: /2, ...
 %:- use_module( '../utility/utility', [ ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
 
 %% Names that occur several places as general appendages
@@ -236,7 +238,7 @@ compname(st,[hans,aften], midsummer_eve).     %%
 compname(the,[understanding,computer],tuc). 
 
 compname(tore,[amble],tagore) :- 
-         \+user:value(teleflag,true).   
+         \+value(teleflag,true).   
 
 
 compname(trafikanten,[midt,norge],tmn). 

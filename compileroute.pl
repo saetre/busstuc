@@ -99,8 +99,8 @@ periodset( TT, PZ ) :- setof(P, rp(TT,P) ,PZ). %% set_of/3  undefined yet
 
 
 % /2 and   routedomain/1  IS USED(!) in ta_for in consultbase
-:- use_module( 'db/route_period.pl', [ route_period/4 ] ).
-:- use_module( 'db/topreg.pl', [ compilerouteaux/2,  routedomain/1 ]). %% default_message/3,  default_period/3,  %% RS-140511 route_period/4,  
+:- use_module( 'db/route_period.pl', [ route_period/4 ]). %% RS-140511
+:- use_module( 'db/topreg.pl', [ compilerouteaux/2,  routedomain/1 ]). %% default_message/3,  default_period/3,  %% RS-140511
 
 rp( TT, P ) :- route_period(TT,P,_X,_Y),P \== nil. 
 

@@ -8,9 +8,9 @@
 %  (What about dict/lex-files?) %% RS-140920 Moved to tuc/lex.pl: moved to  lex.pl: dict_module/1, dict_module/2, morph_module/1,   
 
 %% SYSTEM TUC
-:-module( metacomp, [ dcg_module/1,  %  compile_english/0,  compile_norsk/0,  genvirt/1, optiprod/1, %
-        dict_file/2,    gram_file/2,    gram_module/1,  gram_module/2,  makegram/0, %% RS-140921
-        morph_file/2,   segram/0,       regram/0,   virtf/2,        virtx/1 ] ).     %% RS-140920. segram and regram are "bloody hacks?"
+:-module( metacomp, [ dcg_module/1, dict_file/2, gram_file/2,    gram_module/1,  gram_module/2,  makegram/0, %% RS-140921
+        morph_file/2,   segram/0,   regram/0,    virtf/2,        virtx/1 ] ).     %% RS-140920. segram and regram are "bloody hacks?"
+%  compile_english/0,  compile_norsk/0,  genvirt/1, optiprod/1, %
 
 %% RS-140920 Keep it local? makegram/4,
 %% OLD: makegram/1, e.g. makegram(norsk). %% RS-131223 for utility.pl! for-loop? (During makegram) makegram/0,    makegram/1, segram/0,     regram/0,
@@ -18,15 +18,19 @@
 
 %% ?-prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates        %% RS-131227 Removed?
 
-%% RS-131223   % UNIT: /
-:- ensure_loaded( user:'../declare' ). %% RS-131228 "new syntax" defs, META-preds: remember/1, value/2, :=/2, =;/2
+:- use_module( library(file_systems) ).
+
+   %% RS-131223   % UNIT: /
+%:- ensure_loaded( '../declare' ). %% RS-131228 "new syntax" defs, META-preds: remember/1, value/2, :=/2, =;/2
+
+:- use_module( '../main', [ (:=)/2, value/2 ] ). %% RS-140209    %?-compile('main.pl'). ( := )/2 
 
 %% RS-131223   % UNIT: /utility/     Get dynamic definition for value/2
-:- use_module( '../utility/utility', [ remember/1 ] ). %, variant/2 ] ). %% , for/2, ( := )/2 %% RS-131117 includes user:declare.pl appendfiles/3, 
+:- use_module( '../utility/utility', [ for/2, remember/1, test/1 ] ). %, variant/2 ] ). %% , for/2, %% RS-131117 includes user:declare.pl appendfiles/3, 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate test(0) . %% RS-140211
-test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
+%:- meta_predicate test(0) . %% RS-140211
+%test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RS-131227, UNIT: EXTERNAL LIBRARY
 :- use_module( library(varnumbers), [ numbervars/1 ] ). %% RS-140210.
@@ -48,10 +52,10 @@ subsum1(X,Y):-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %OLD :- meta_predicate  for(:, + ). %% RS-140101 from utility ( : means this module, + means source module )?
 
-:- meta_predicate  for( 0, 0 ). %% RS-140920 from utility ( : means this module, + means source module, 0 means this module? with no extra arguments? )
-for( P, Q ) :- %% For all P, do Q (with part of P)
-  P, Q,
-  false;true.
+%:- meta_predicate  for( 0, 0 ). %% RS-140920 from utility ( : means this module, + means source module, 0 means this module? with no extra arguments? )
+%for( P, Q ) :- %% For all P, do Q (with part of P)
+%  P, Q,
+%  false;true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% RS-131223   % UNIT: EXTERNAL  %:- use_module( library(lists3), [ remove_duplicates/2 ] ).
@@ -68,7 +72,6 @@ for( P, Q ) :- %% For all P, do Q (with part of P)
 %% RS-131223   % UNIT: /utility/*.pl
 :- use_module( '../utility/datecalc', [ datetime/6 ] ). %% RS-140921 For the file headings
 
-%:-ensure_lodaed( user:'../tucbuses' ). %% RS-131223  makegram/2, language/1 %% RS-131227 Avoid loop!!
 
 %%% SMOKETEST    virtuals are added last
 
@@ -98,7 +101,7 @@ for( P, Q ) :- %% For all P, do Q (with part of P)
 %% RS-131228
 segram:- %% short %% norsource facilities %% TA-100207
     nodebug, 
-    user:( norsource := true ),
+    ( norsource := true ),
     consult(gramn),
     makegram.
 
@@ -108,28 +111,26 @@ regram:- %% short
     makegram.
 
 
+%%% THESE ARE NOW CALLED FROM TUC (MAIN) DIRECTORY
 
-%%% THESE ARE NOW CALLED FROM MAIN DIRECTORY
-
-%dagrun_file(english,   'tuc/dagrun_e.pl').
-%dagrun_file(norsk,     'tuc/dagrun_n.pl').
+%dagrun_file(english,   '../tuc/dagrun_e.pl').
+%dagrun_file(norsk,     '../tuc/dagrun_n.pl').
 dagrun_file( english,   dagrun_e ).
 dagrun_file( norsk,     dagrun_n ).
 
-%dict_file(english,   'tuc/dict_e.pl').
-%dict_file(norsk,     'tuc/dict_n.pl').
+%dict_file(english,   '../tuc/dict_e.pl').
+%dict_file(norsk,     '../tuc/dict_n.pl').
 dict_file( english,   dict_e ).
 dict_file( norsk,     dict_n ).
 
 
-%gram_file(english, 'tuc/gram_e.pl'). %% TA-000118
-%gram_file(norsk,   'tuc/gram_n.pl'). %% TA-000118
+%gram_file(english, '../tuc/gram_e.pl'). %% TA-000118
+%gram_file(norsk,   '../tuc/gram_n.pl'). %% TA-000118
 gram_file( english, gram_e ). %% TA-000118
 gram_file( norsk,   gram_n ). %% TA-000118
 
 gram_module( english, gram_e ).
 gram_module( norsk,   gram_n ).
-
 
 %morph_file(english, 'tuc/morph_e.pl').
 %morph_file(norsk,   'tuc/morph_n.pl').
@@ -164,8 +165,10 @@ dcg_module(norsk,   dcg_n).
 
 %% RS-131227 Makegram is used IN tucbuses!  %% Avoid circles!?
 makegram :-
+        current_directory( OldDir, '/eclipse/workspace/busstuc/tuc' ),
         compile_english,
-        compile_norsk.
+        compile_norsk,
+        current_directory( _, OldDir ).
 
 writeheading( DAGFILE, DCGFILE, DCGMODULE, DICTFILE, 'gram_e' ) :- 
         write('%% FILE '),write(DCGFILE),nl,
@@ -175,7 +178,8 @@ writeheading( DAGFILE, DCGFILE, DCGMODULE, DICTFILE, 'gram_e' ) :-
                 ones/5, or1/5, others/5, pointNO/5, prep0/6, qtrailer/5, road_number/6, statemenreal/6, statics/6, streetno/5,
                 superlative/7, that_verb/11, that0/5, that0/6, this1/7, trans_verbs/10, very/5, year0/6  ] ),write(' ).'),nl,nl,
 
-        write(':- ensure_loaded( user:''../declare.pl'' ). %% RS-111213 General (semantic) Operators, ...'), nl,
+%       write(':- ensure_loaded( ''../declare.pl'' ). %% RS-111213 General (semantic) Operators, ...'), nl,
+        write(':- use_module( ''../main'', [ value/2, traceprint/2 ] ). %%RS-140209 '),nl,
         write(':- use_module( ''../utility/utility\', [ testmember/2 ] ).  %% test/1, RS-140914'),nl, nl,
 
         write('%:- ensure_loaded( '), write(DCGMODULE),write(':\''),write(DAGFILE),write('\' ). %%, [ cc/5, w6 ] ). %% RS-140209 What is DAG?'), nl,
@@ -196,7 +200,6 @@ writeheading( DAGFILE, DCGFILE, DCGMODULE, DICTFILE, 'gram_e' ) :-
         write('         rv_template/7, setvartype/2, tv_template/5, type/2, vartypeid/2, verb_compl/6, verbtype/2 ] ). %% RS-140921 value_world/1, vartype/3, which_thing/2, whodunnit/2' ),nl,
 
         write(':- use_module( semantic, [ a_compl/4, gradv_templ/2, measureclass/1, particle/3, post_adjective/1, pvi_templ/2, stanprep/2, subclass0/2, tv_templ/3, v_compl/4 ] ). %% RS-131227' ),nl,
-        write(':- use_module( ''../main'', [ traceprint/2 ] ). %%RS-140209 '),nl,
         write(':- use_module( lex, [ no_unprotected_verb/0 ] ). %% txt/3, unprotected_verb/0, maxl/1, RS-140209' ),nl,nl.
 
 writeheading( DAGFILE, DCGFILE, DCGMODULE, DICTFILE, 'gram_n' ) :- 
@@ -216,7 +219,8 @@ writeheading( DAGFILE, DCGFILE, DCGMODULE, DICTFILE, 'gram_n' ) :-
                 themost/5, then0/5, theonly0/5, there_be_modal/6, thereitN/5, this/6, thousand0/5, tilsiden/5, timenexp/6, today0/5,
                 trafikk/5, trans_verbs/10, verb0/6, when0/5, when10/5, where1/5, whose_noun/7, year0/6 ] ),write(' ).'),nl,nl,
 
-        write(':- ensure_loaded( user:''../declare.pl'' ). %% RS-111213 General (semantic) Operators, ...'), nl,
+%       write(':- ensure_loaded( ''../declare.pl'' ). %% RS-111213 General (semantic) Operators, ...'), nl,
+        write(':- use_module( ''../main'', [ ( := )/2, assert_default_origins/1, traceprint/2, value/2  ] ). %%RS-140209 '),nl,
         write(':- use_module( ''../utility/utility\', [ test/1, testmember/2 ] ).  %% RS-140914'),nl, nl,
         write(':- use_module( ''../utility/datecalc'', [ add_days/3, datetime/6, easterdate/2, subfromtime/3, this_year/1, timenow/1, today/1, todaysdate/1  ] ).  %% RS-131228, addtotime/3, days_between/3, '),nl,
 
@@ -243,7 +247,7 @@ writeheading( DAGFILE, DCGFILE, DCGMODULE, DICTFILE, 'gram_n' ) :-
         write(':- use_module( semantic, [ a_compl/4, abnormalverb/2, adjname_templ/2, ako/2, measureclass/1, % ] ). %% RS-140921 adj_templ/2, adjnamecomp_templ/3, adjnoun_templ/2, adjnouncomp_templ/3, (has_a)/2, iv_templ/2, jako/2, align1/2, aligen2/2,' ),nl,
         write('         particle/3, post_adjective/1, pvi_templ/2, subclass/2, subclass0/2, tv_templ/3, v_compl/4, %  coher_class/3, dtv_templ/4, gradv_templ/2, stanprep/2,'),nl,
         write('         rv_templ/2 ] ). % RS-131227 measureclass/1, particle/3, post_adjective/1, pvi_templ/2, stanprep/2, tv_templ/3, v_compl/4, vako/2, testclass/1, n_compl/3, pai_templ/2,'),nl,
-        write(':- use_module( ''../main'', [ traceprint/2 ] ). %%RS-140209 '),nl,nl.
+        nl.
 
 makegram( DAGFILE, DCGFILE, DICTFILE, DCGMODULE, GRAMMODULE ) :- % DICTFILE, 
     retractall( virtf(_,_) ),
@@ -378,7 +382,7 @@ em1(A = B,P,X,Y,(
 %% em1( Symbol, Appearence, StackIn, StackOut, Code)
 
 em1(Symbol, Appearence, StackIn, StackOut, Code) :-
-    user:value(norsource,true),
+    value(norsource,true),
     !,
     em2(Symbol, Appearence, StackIn, StackOut, Code).
 
@@ -556,6 +560,5 @@ compile_norsk:-        %    makegram(norsk).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RS-131229    When to do this?        HAS TO BE DONE FROM TUCBUSES!?
-% :-use_module(library(file_systems)).    :-current_directory(_OldDir,'..').
 :- makegram.    %% RS-140921    %?-compile_english.     %?-compile_norsk.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

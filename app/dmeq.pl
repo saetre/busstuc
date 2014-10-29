@@ -7,6 +7,9 @@
 %% Domain Equivalents common  tele and bus
 :-module( dmeq, [ dmeq/2 ] ).
 
+%% UNIT: /
+:- use_module( '../main', [ value/2 ] ).
+
 %% UNIT: utility/
 :- use_module( '../utility/utility', [ testmember/2 ] ).%:- ensure_loaded( user:'../utility/utility' ).       %% RS-131231
 :- use_module( '../tuc/semantic', [ subclass0/2 ] ).
@@ -250,7 +253,7 @@ dmeq(notbus,airbus).
 dmeq(notbus,boat). 
 dmeq(notbus,boat_route_plan).
 dmeq(notbus,helicopter).
-dmeq(notbus,nightbus) :- \+  user:value(nightbusflag,true). 
+dmeq(notbus,nightbus) :- \+  value(nightbusflag,true). 
 dmeq(notbus,airplane). 
 dmeq(notbus,plane).     %% 
 dmeq(notbus,schoolbus). 

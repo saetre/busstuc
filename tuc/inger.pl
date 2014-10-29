@@ -16,44 +16,47 @@
 %% RS-131225, UNIT: / & utility/
 :- ensure_loaded( user:'../declare' ).
 
+:- use_module( '../main.pl', [ ( := )/2, ( =: )/2, value/2 ] ). %% , reset/0, traceprint/2, (::)/2
+
 %:- ensure_loaded( user:'../utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
 %:-use_module('../utility/utility', [ foralltest/2, iso_atom_chars/2, last_character/2, lastmem/2, lastmems/3, maximum/2, maxval/3, minimum/2, minval/3,
 %       number_to_string/2, once 1/1,out/1,output/1,roundmember/2,roundwrite/1,sequence_member/2,set/2,set_of/3,(set_ops)/3,set_filter/4,set_union/3,split/4,splitlast/3,starttime/0, %% test/1,
 %        testmember/2,value/2, (:=)/2, (=:)/2, textlength/2 ] ).
 
-:- use_module( '../utility/utility', [ append_atoms/3, begins_with/3, delete1/3, ends_with/3, flatten/2 ] ). %% keep local: for/2, 
+:- use_module( '../utility/utility', [ append_atoms/3, begins_with/3, delete1/3, ends_with/3, flatten/2, for/2 ] ). %% keep local: 
 :- use_module( '../utility/writeout', [ doubt/2, language/1, out/1, output/1, prettyprint/1 ] ).%% RS-140912
 
 %% RS-131225, UNIT: /
 :- use_module( '../sicstus4compatibility', [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
-%:- use_module( '../main.pl', [ (=>)/2, (::)/2 ] ). %% , reset/0, traceprint/2
+%:- use_module( '../main.pl', [ (=>)/2 ] ). %% , reset/0, traceprint/2, (::)/2
 
 %% RS-131225, UNIT: /tuc/
 :-use_module( evaluate, [ leveltest/2 ] ). %% RS-131225, UNIT: /tuc/
+:-use_module( translat, [ ( => )/2 ] ). %% RS-131225, UNIT: /tuc/
 
 %%RS-140210 :-use_module('../utility/library', [ for/2 ] ). %% Better keep for-loops LOCAL to their files!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-for( P, Q ) :- %% For all P, do Q (with part of P)
-  P, Q,
-  false;true.
+%for( P, Q ) :- %% For all P, do Q (with part of P)
+%  P, Q,
+%  false;true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-:-op(970,fx,  [lkb]).
-:-op(950,fy,  [lemma,fat]). 
-:-op(950,xfy, [implies]).
-:-op(600,xfy, knows).
+:-op( 970, fx,  [lkb] ).
+:-op( 950, fy,  [lemma,fat] ).
+:-op( 950, xfy, [implies] ).
+:-op( 600, xfy, knows ).
 
 
 :-volatile
-          (::)/0,
+          (::)/2,
           factum/1,
           fat/1,
           lemma/1,
           problem/1,
           rawproblem/1.
 :-dynamic
-          (::)/0,
+          (::)/2,
           factum/1,
           fat/1,
           lemma/1,
@@ -77,7 +80,7 @@ inger:-
     nl,nl,
     output('*** INGER THEOREM PROVER ***'),
     nl,
-    out(' Max Depth = '),value(maxdepth,N),output(N),
+    out(' Max Depth = '), value(maxdepth,N), output(N),
     nl,
     lemmas,
     theproblem(M),
@@ -89,7 +92,7 @@ lkb(P):-
     retractall( problem(_) ),
     retractall( lemma _ ),
     retractall( fat _ ),
-    retractall( :: ),   % RS-140209(::)/0
+    retractall( _ :: _ ),   % RS-140209 (::)/0
     compile(P).
 
 %% lemmas need only be proved once.
@@ -208,7 +211,7 @@ solvenot3(X,proof(RN,X,PrZ1-Z2,N),N):-
     attempt(Z,PrZ1,Z2,N1),
     solvenot2(Z2,N1).
 
-rule(Name,A,B) :- Name::(A if B).
+rule(Name,A,B) :- ( Name::(A if B) ).
 rule(rule,A,B) :- B => A.   
 
 attempt(Z,PrZ1,Z2,N1):-

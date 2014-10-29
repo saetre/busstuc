@@ -17,9 +17,12 @@
 %% comma (',') is neglected 
 %% content of parentheses is neglected (name) ?
 
+%% RS-141026    UNIT: /
+:- use_module( '../main.pl', [ ( := )/2, value/2 ] ). %MISERY?!
 %% RS-131225, UNIT: /   and /utility/
-:- ensure_loaded( user:'../declare' ).  %% RS-140102 (:=)/2, user:value/2
-:- ensure_loaded( user:'../tucbuses' ). % , [ prompt/1 ] ). %% RS-131229-140928 NOT A MODULE (any more, after all...)
+%:- ensure_loaded( '../declare' ).  %% RS-140102 (:=)/2, user:value/2
+%:- ensure_loaded( '../tucbuses' ). % , [ prompt/1 ] ). %% RS-131229-140928 NOT A MODULE (any more, after all...)
+:- use_module( '../tucbuses', [ prompt/1 ] ). %% RS-131229-140928 NOT A MODULE (any more, after all...)
 
 :- use_module( '../utility/library', [ ] ).    %% RS-131225 etc?
 :- use_module( '../utility/utility', [ splitlast/3 ] ).  %% RS-131225 etc?
@@ -44,14 +47,14 @@
 ask_user(P) :- !, 
    ttyflush,
    nl,
-   user:prompt(E), %% Defined in Makefile  
+   prompt(E), %% Defined in Makefile  
    write_prompt(E), %% TA-110207
    read_in(P),
    write_from_user(P).
 
 ask_file(P) :-      
    nl,
-   user:prompt(E), %% Defined in Makefile  
+   prompt(E), %% Defined in Makefile  
 
    write_prompt(E), %% TA-110207
    read_in(P),
@@ -59,7 +62,7 @@ ask_file(P) :-
    nl.
 
 write_prompt(_E):- %% TA-110207
-    user:value(norsource,true),
+    value(norsource,true),
     !.
 write_prompt(E):-
      write(E).
@@ -68,7 +71,7 @@ write_prompt(E):-
 %%% Miscellaneous for File Reading
 
 write_from_user(P):-
-    user:value(talk,1), 
+    value(talk,1), 
     !,
 %    opentalk(question),
         doing(P,0). %% out to \nat\scratch
@@ -77,16 +80,16 @@ write_from_user(P):-
 write_from_user(_):-!.
 
 norsource_prefix :- %% TA-110207
-    user:value( norsource, true ) ->
+    value( norsource, true ) ->
     output( '<bustuc>' ) ; true.
 
 norsource_postfix :- %% TA-110207
-    user:value(norsource,true) ->
+    value(norsource,true) ->
     (output('</bustuc>'),nl);true.
 
 
 write_from_file( P ) :- %% TA-110207
-   user:value(norsource,true),
+   value(norsource,true),
    !,
 
    norsource_prefix,nl, %% bloody hack %% TA-110207
@@ -149,9 +152,9 @@ initread(U):-
 
    (  member(K1,[37, 92])  % '%' '\'   %% '¤'=164
 
-   -> user:( commandflag := true ) 
+   -> ( commandflag := true ) 
            ;
-      user:( commandflag := false) 
+      ( commandflag := false) 
    ),
            
      readrest0(K1,U).
@@ -178,15 +181,15 @@ readrest0(T,Comline):-
 
 
 readrest(T,[]) :- T== -1, %%   EOF
-    user:( end_of_file := true ),
+    ( end_of_file := true ),
 
     seen.  
 
 
 readrest(T,L):- %% (...) = ' ' 
     T=40,     %% ( 
-    user:value(noparentflag,true), %% ignore content
-    \+  user:value(gpsflag,true),  %% TA-110114
+    value(noparentflag,true), %% ignore content
+    \+  value(gpsflag,true),  %% TA-110114
     !,
     skipuntil(41),  %% ) including CR
     readrest(32,L). 
@@ -194,7 +197,7 @@ readrest(T,L):- %% (...) = ' '
 
 readrest(T,Rest):- 
     term_char(T),       %% termchar '.','!'.'?'
-    user:value(textflag,true),
+    value(textflag,true),
     !,
     get0129(Z),  %% next character (blank or not)
     !,
@@ -251,7 +254,7 @@ readrestquote(A,K1,[K1|U]):-
 
 
 to_nl:- 
-     user:value(textflag,true),!.
+     value(textflag,true),!.
 
 to_nl :-
    repeat,
@@ -395,8 +398,8 @@ idchar(A, alpha,  [A| C], C) :-
 
 
 idchar(A, alpha, [A| C], C) :- %%    buss5 -> BUSS 5 
-     (user:value(dialog,1);       %% especially context id 
-     user:value(commandflag,true)),  %% except for commands
+     (value(dialog,1);       %% especially context id 
+     value(commandflag,true)),  %% except for commands
      digit(A).
 
 
@@ -504,7 +507,7 @@ alphanum(K,K):-digit(K).
 alphanum(K,K):-underscore(K). 
 
 underscore(95) :- %% _  
-     user:value(commandflag,true). 
+     value(commandflag,true). 
 
 digsign(X):-digit(X).
 digsign(X):-sign(X).
@@ -528,7 +531,7 @@ blank_char(B):- %% NOT CR !!!!
     B==160.
 
 blank_char(95):- 
-    \+ user:value(commandflag,true).
+    \+ value(commandflag,true).
 
 
 blank(K) :- K =< 32; %% Including CR !
@@ -538,7 +541,7 @@ blank(K) :- K =< 32; %% Including CR !
             K=160. %% (Invisible chracter)
 
 blank(95):- 
-    \+ user:value(commandflag,true).
+    \+ value(commandflag,true).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -550,12 +553,12 @@ blank(95):-
 
 lc(X,Y):-  
    lc1(X,Y),
-   user:value(teleflag,true),
+   value(teleflag,true),
    !.
 
 lc(X,Y):- 
    lc1(_,X),
-   user:value(teleflag,true),
+   value(teleflag,true),
    !,
    Y=X.
 
