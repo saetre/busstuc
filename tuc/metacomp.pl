@@ -165,10 +165,9 @@ dcg_module(norsk,   dcg_n).
 
 %% RS-131227 Makegram is used IN tucbuses!  %% Avoid circles!?
 makegram :-
-        current_directory( OldDir, '/eclipse/workspace/busstuc/tuc' ),
+%        current_directory( OldDir, '/eclipse/workspace/busstuc/tuc' ),
         compile_english,
-        compile_norsk,
-        current_directory( _, OldDir ).
+        compile_norsk. % , current_directory( _, OldDir ).
 
 writeheading( DAGFILE, DCGFILE, DCGMODULE, DICTFILE, 'gram_e' ) :- 
         write('%% FILE '),write(DCGFILE),nl,
