@@ -14,6 +14,8 @@
         field_is_equal/3, listfields/2, outputrecordlist/1, recordcount/2, removefromlist/3, writevaluelist2/2    %% RS-140914 For dialog
 ] ).
 
+:- op( 730,xfy, :: ).     %% lambda infix  %% RS-141026 For      tuc/ [ translat gram_x fernando  dcg_x anaphors ], app/interapp, dialog/ [checkitem/2 d_context d_dialogue frames/2 makeframe/2 parseres virtuals relax update2 usesstate2]
+
 :- meta_predicate  listall( + ) .
 :- meta_predicate  writeanswer(0).
 :- meta_predicate  trackprog(+,0) .

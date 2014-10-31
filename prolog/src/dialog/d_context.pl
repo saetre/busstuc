@@ -2,12 +2,7 @@
 %% Created AM-980303 
 
 :- ensure_loaded( user:'../declare' ).
-
-:- volatile dbContent/2.
-:- dynamic  dbContent/2.
-
-:- volatile dbId/1.     %% RS-131223    TROUBLE WHEN NOT STORED TO FILE!?
-:- dynamic  dbId/1.
+:-op( 730,xfy, :: ).     %% lambda infix  %% RS-141026 For      tuc/ [ translat gram_x fernando  dcg_x anaphors ], app/interapp, dialog/ [checkitem/2 d_context d_dialogue frames/2 makeframe/2 parseres virtuals relax update2 usesstate2]
 
 %%
 %% This file contains implementation of the dialogue context database.
@@ -20,14 +15,19 @@
 %%             [query,Query],
 %%             [lastaxiom, Lastaxiom]]
 
-%:- module(db,[
-%        context/1,
-%	getstate/1,setstate/1,
-%	getmode/1,setmode/1,
-%	getquery/1, setquery/1,
-%	getlastaxiom/1, setlastaxiom/1]).
+:- module( d_context, [ context/1, dbDump/1, dropdb/1, dropident/0, getframe/1, getmode/1, getquery/1, getlastaxiom/1,
+        setframe/1, setmode/1, setquery/1, setlastaxiom/1 ] ).
+%	getstate/1, setstate/1,
 
-:-use_module(library(lists)).
+:- volatile dbContent/2.
+:- dynamic  dbContent/2.
+
+:- volatile dbId/1.     %% RS-131223    TROUBLE WHEN NOT STORED TO FILE!?
+:- dynamic  dbId/1.
+
+:- use_module( library(lists) ).
+:- use_module( '../utility/writeout', [ track/2 ] ). %% RS-131227 Avoid loop?
+:- use_module( '../main', [ ( := )/2 ] ). %% RS-131227 Avoid loop?
 
 context( Id ) :-                                    %% AM-980311
 	dbIskey( state, Id ),
@@ -142,11 +142,11 @@ dbDump(DB)  :-%% AM-980303
 
 
 %% List manipulation
-lsRemove( _, [], []).                  
-lsRemove( A, [A|T], T ) :- !.
-lsRemove( A, [B|T], Nt) :-
-	lsRemove(A,T,Tr),
-	append([B],Tr,Nt).
+%lsRemove( _, [], []).                  
+%lsRemove( A, [A|T], T ) :- !.
+%lsRemove( A, [B|T], Nt) :-
+%	lsRemove(A,T,Tr),
+%	append([B],Tr,Nt).
 
 lsUpdate(_,_,[],[]).
 lsUpdate(Old,New, [Old|T], [New|T]) :- !.

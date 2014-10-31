@@ -11,7 +11,7 @@
 
 %% UNIT: /dialog/
 :-module( update2, [ dorelax/3, fixnameproblem/5, framevalue/2, getuserrefer/2, issubclass/2, istype/2, knowFlag/1, remove_fields/3, remove_knowflags/2,
-                     saturate/3, saturatemod/3, telerelax/3, updateframe/3, updateframe_checkanswer/4, updateitems/2 ] ).
+                     saturate/3, saturatemod/3, telerelax/3, trackprog/2, updateframe/3, updateframe_checkanswer/4, updateitems/2 ] ).
 
 
 :- meta_predicate  execute_program( 0 ).  %% Stay inside interapp? %% RS-140619
