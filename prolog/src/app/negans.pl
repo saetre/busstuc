@@ -194,7 +194,7 @@ makenegative((_When,_), Q, (busanshp:space0) ) :- %%
 
 makenegative( (_When,_), Q, busanshp:Mess ) :- %% any statement type, also when
     getactualtime( Q, Date, Day, Clock ),
-    notthenanswer( Date, Day, Clock, Q, Mess ),
+    notthenanswer( Date, Day, Clock, Q, busanshp:Mess ),
     progtrace( 4, ne18 ), !.
 
 

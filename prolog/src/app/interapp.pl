@@ -369,7 +369,7 @@ irun1( _, _FlatCode, _FC1, Program ) :-
 irun1( _, FlatCode, _FC1, Program ) :-
     isuccess( Program ),
 %   execute_program( user:Program ),
-    execute_program( buslog:Program ),         %% Just for debugging? %% RS-141012
+    execute_program( buslog:Program ),         %% Make answer just for successful application program? %% RS-141030
     !,
     makeanswer( true, FlatCode, Program, Panswer ),
 	 !, 
@@ -430,10 +430,10 @@ execute_program2(_Program,false).
 %:- meta_predicate  execute_program( 0 ).  %% Stay inside interapp? %% RS-140619
 execute_program( Prog ) :-
 
-    trackprog(2, output('BEGIN  program')), 
+    trackprog(3, output('interapp BEGIN  program') ), 
 (   call( Prog ) ->
-           trackprog(2, output('END  program'));
-           trackprog(2, output('FAIL  program')),
+           trackprog(3, output('END  program') );
+           trackprog(3, output('FAIL  program') ),
            fail ).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
