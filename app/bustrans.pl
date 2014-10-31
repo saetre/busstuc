@@ -138,12 +138,10 @@ dep_module( '../main', [ set/2 ] ). %% RS-141015        Set variable-values,  in
 %dep_module( busanshp, [ evening_time/2, i_or_a_bus/3, mixopt/3, setopt/3, setopts/3, warningtime/2 ]).     %% RS-140102 get all? tracevalue/1 is unique for each rule module! (traceans, traceprog, ...)
 %                         empty_sms_message/1, make_total_google/2, pay/0, printmessage/1, startmark/0 ] ). %%Extra?
 :-use_module( busanshp ).
-
 %dep_module( buslog, [ airbus_module/1, before/2, bus/1, bus_place_station/3, busorfree/1, composite_stat/3, dayModSeqNo/2, departure/4, message/1,
 %                      neverarrives/2, neverdeparts/2, neverpasses/2, notaclock/1, passesstations/4, place_station/2, samefplace/2, station/1,
 %                      stationsat/3, street_station/2 ] ). 
 :-use_module( buslog ).
-
 dep_module( dmeq, [ dmeq/2 ] ). %% RS-140102, Really Used, in several  pragma.pl->interapp->bustrans rules 
 dep_module( interapp, [ newfree/1 ] ).
 %dep_module( pragma, [  ]). %% RS-140102-141002 These modules are highly connected: interapp, pragma, bustrans!
@@ -169,6 +167,7 @@ dep_module( '../dialog/frames2', [ frame_getvalue/3 ] ).
 dep_module( '../tuc/facts', [ isa/2 ] ).       %% RS-131225  isa/2 IS used by p0(X) :- call(X). %% X == isa/2, etc.
 dep_module( '../tuc/names', [ generic_place/1 ] ).       %% RS-141019
 dep_module( '../tuc/semantic', [ ordinal/2 ] ). %% REALLY USED! See below!
+dep_module( '../tuc/slash', [ description/2 ] ).       %% RS-141030
 
 
 :- module_dependencies. %% RS-141019 Import all predicates used in the rules below, from the correct modules.
