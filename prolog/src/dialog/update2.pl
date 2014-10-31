@@ -15,11 +15,20 @@
 
 
 :- meta_predicate  execute_program( 0 ).  %% Stay inside interapp? %% RS-140619
-%:- meta_predicate  trackprog(+,0).  %% Stay inside the calling module (for the second argument)!  %% RS-140922
+:- meta_predicate  trackprog(+,0).  %% Stay inside the calling module (for the second argument)!  %% RS-140922
+%///
+trackprog( N, P ) :-
+    value( traceprog, M ), number(M), M >= N,
+    !,
+    ( nl, call(P) )    %% TA-110130
+        ;
+    true. %% Finally, succeed anyway
+
+%///
 
 %% UNIT: /
 %:- ensure_loaded( '../declare' ). %% RS-111213 General (semantic) Operators, e.g.  :: , trackprog/2        %Helper
-:- use_module( '../main', [ trackprog/2, value/2 ] ).
+:- use_module( '../main', [ value/2 ] ). % trackprog/2, 
 
 %% RS-131225    UNIT: / and /utility/
 :- use_module( '../utility/utility', [ set_of/3 ] ). %% LOOP?

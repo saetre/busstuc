@@ -27,6 +27,7 @@
 :- op( 1120,  fy, is ).
 :- op( 1110, xfy, id ).
 :- op( 1110, xfy, ip ).
+:- op( 730,xfy, :: ).     %% lambda infix  %% RS-141026 For      tuc/ [ translat gram_x fernando  dcg_x anaphors ], app/interapp, dialog/ [checkitem/2 d_context d_dialogue frames/2 makeframe/2 parseres virtuals relax update2 usesstate2]
 
 :- meta_predicate rule( +, 0 ) .   %% How can we get SPIDER to help us check that all predicates are imported correctly?
 %:- meta_predicate is( 0 ) .   %% How can we get SPIDER to help us check that all predicates are imported correctly?
@@ -10282,7 +10283,7 @@ ip  dmeq(travelbe,TRAVELBE),
     dmeq(trafficant,BVP),
     place_station(Place,Station), Station \== unknown,
     i_or_a_bus(Cat,BVP,Bus),
-    \+ frame_getvalue(where::arrival,_,_) %% <-- NB
+    {\+ frame_getvalue(where::arrival,_,_)} %% <-- NB
 )
 :-double.
 
