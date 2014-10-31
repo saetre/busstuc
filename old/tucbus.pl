@@ -25,6 +25,7 @@
   makegram(english).
 */
 
+:- use_module( '../main', [ ( := )/2 ] ). %% RS-131227 Avoid loop?
 
 ?- (unix_language := eng),  %% Standard for IDI/NTNU UNIX Solaris )
        

@@ -5,6 +5,11 @@
 
 %% Make transbuslist 
 
+:-module( maketransbuslist, [ maketransbuslist/0 ] ).
+
+:-meta_predicate  complies( 0, 0 ).
+:-meta_predicate  writepred3( ?, 0 ).
+
 %:-volatile nextstat/2, interior/1.
 %:-dynamic nextstat/2, interior/1.
 :-volatile nextstat/2, interior1/1.     %% RS-140915 Typo?
@@ -31,14 +36,14 @@ maketransbuslist:-
     open( 'transbuslist.pl', write, Stream, [encoding('UTF-8')] ),
     set_output(Stream),
 
-    writepred3(transbuslist(X,Y,Z),transbuslist1(X,Y,Z))
+    writepred3( transbuslist(X,Y,Z), transbuslist1(X,Y,Z) )
 
     , told
     .
 
 makenext :-
-  utility:set_of(next(X,Y),(station(X),passes3(Tour,X,S1,_,_),S2 is S1+1,passes3(Tour,Y,S2,_,_)),Z),
-  utility:for(member(next(A,B),Z),assert(nextstat(A,B))).
+  set_of( next(X,Y),( station(X), passes3(Tour,X,S1,_,_), S2 is S1+1, passes3(Tour,Y,S2,_,_) ),Z ),
+  for( member( next(A,B), Z ), assert(nextstat(A,B)) ).
 
 
 makeinteriors :-

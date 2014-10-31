@@ -17,7 +17,7 @@
 ?-compile('monobus.pl'). %% TA-031115
 
 %?-compile('main.pl').    %% TA-031115
-:- use_module( main, [  ] ). %% RS-131227 Avoid loop?
+:- use_module( main, [ ( := )/2 ] ). %% RS-131227 Avoid loop?
 
 
 

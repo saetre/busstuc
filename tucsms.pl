@@ -19,7 +19,7 @@
 ?-compile('monobus.pl').
 
 %?-compile('main.pl').  
-:- use_module( main, [  ] ). %% RS-131227 Avoid loop?
+:- use_module( main, [ ( := )/2 ] ). %% RS-131227 Avoid loop?
 
 
 ?- (internal_aitbusflag  := false), %% NB May change <--- ???

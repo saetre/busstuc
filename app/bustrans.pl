@@ -125,7 +125,8 @@ module_dependencies :-
 
 %UNIT: /utility/  and  /
 dep_module( '../utility/utility', [ bound/1, implies/2,  set_of/3, testmember/2, unbound/1 ] ). %% RS-131225 set(X,Y) from declare.pl
-dep_module( '../utility/datecalc', [ add_days/3, addtotime/3, before_date1/2, days_between/3, daysucc/2, difftime/3, finddate/2, findfirstcomingdate/2, isday/1,
+dep_module( '../utility/datecalc', [ add_days/3, addtotime/3, before_date1/2, days_between/3, daysucc/2, difftime/3,
+                                     finddate/2, findfirstcomingdate/2, isday/1, number_of_days_between/3,
                                      sub_days/3, subfromtime/3, timenow/1, timenow2/2, today/1, todaysdate/1, valid_date/1, weekday/2,
                                      xweekday/2 ] ).
 %UNIT: /

@@ -56,8 +56,6 @@
 
 % 
 
-%% RS-141026    UNIT: /
-:- use_module( '../main.pl', [ ( := )/2, set/2, value/2 ] ). %MISERY?!
 %%% RS-131225, UNIT: / and utility/
 %:- ensure_loaded( '../declare' ). %% RS-111213 General (semantic) Operators
 
@@ -71,13 +69,15 @@
 %:- use_module( library( aggregate ), [ foral/2 ] ). %% RS-140210.   %% RS-141029  for-all Does NOT work like utility:for/2
 
 %%% RS-131225, UNIT: /
-:- use_module( '../main.pl', [ printdots/0 ] ). %% RS-111213 printdots/0
+%% RS-141026    UNIT: /
+:- use_module( '../main.pl', [ ( := )/2, printdots/0, set/2, value/2 ] ). %MISERY: trackprog/2, 
+%:- use_module( '../main.pl', [ ] ). %% RS-111213 printdots/0, trackprog/2, 
 :- use_module( '../interfaceroute', [ search_period_module/3 ] ). %%, 
 
 %%% RS-131225, UNIT: app/
 :- use_module( busanshp, [ empty_sms_message/1, pay/0, printmessage/1, printmessageunconditionally/1 ] ).
                 % make_total_google/2, startmark/0 %, og mange flere ] ). % bustrans calls ... space/0, ...
-:- use_module( buslog, [ station_trace/4, trackprog/2, veh_mod/1 ] ). %% message/1 used in call-back from xxx!??? xxx = busanshp?
+:- use_module( buslog, [ station_trace/4, veh_mod/1 ] ). %% message/1 used in call-back from xxx!??? xxx = busanshp?  trackprog/2, 
 :- use_module( negans, [ makenegative/3, trytofool/3 ] ).       %% RS-140208
 :- use_module( pragma, [ pragma/3, pragma_aux/3 ] ). % , sequence_member/2.   %%RS-131228  pragma/3 etc. Is using "user:" here the way to go? %% RS-140927
 
@@ -89,7 +89,8 @@
 :- use_module( '../db/regstr', [ streetstat/5 ] ). %% RS-140928
 
 %% RS-141026, UNIT; /dialog/
-%:- use_module( '../dialog/checkitem2', [ execute_program/1 ] ).  %% RS-131117 includes declare.pl , writeanswer/1 localized
+%:- use_module( '../dialog/checkitem2', [ trackprog/2 ] ).  %% RS-131117 includes declare.pl , writeanswer/1 localized
+:- use_module( '../dialog/update2', [ trackprog/2 ] ).  %% RS-141031
 
 %%% RS-131225, UNIT: /tuc/
 :- use_module( '../tuc/evaluate', [ evaluateq/1 ] ).  %% RS-131117 includes declare.pl
