@@ -57,8 +57,8 @@
 :- makeauxtables:verify_consistency. %% RS-140420  Between current and previous period?     
 
 
-%:- makeauxtables:makeauxtables.      %% RS-130330       Takes a minute...         %%Skip for now...
-%:- makeauxtables:createhash.        %% RS-130330       Takes another minute...   %% Produce the db/namehashtable
+%:- makeauxtables:makeauxtables. %% RS-130330       Takes a minute...         %%Skip for now...
+%:- makeauxtables:createhash.    %% RS-130330       Takes another minute...   %% Produce the db/namehashtable
 
 
 

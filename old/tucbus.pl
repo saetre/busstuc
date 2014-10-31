@@ -6,7 +6,8 @@
 
 :- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
 
-:-use_module( '../tucbuses', [ makegram/0 ] ). 
+%:-use_module( '../tucbuses', [ makegram/0 ] ). 
+:-use_module( '../tuc/metacomp', [ makegram/0 ] ). 
 
 
 /* moved to tucbuses.pl  %% TA-000529
