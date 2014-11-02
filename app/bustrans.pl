@@ -100,7 +100,7 @@ nightbus
 */
 
 %UNIT: / and utility/
-:- ensure_loaded( '../declare' ). % includes NOT-volatile value/2.  %% RS-130630 This caused BIG TROUBLE!  value/2
+:- ensure_loaded( '../declare' ). % includes NON-volatile value/2.  %% RS-130630 This caused BIG TROUBLE!  value/2
 :- use_module( '../main', [ value/2 ] ).
 %value(Key,Val) :- value(Key,Val).  %% RS-130630 value must NOT be volatile predicate!!! This caused BIG TROUBLE!
 
@@ -139,7 +139,7 @@ dep_module( '../main', [ set/2 ] ). %% RS-141015        Set variable-values,  in
 %                         empty_sms_message/1, make_total_google/2, pay/0, printmessage/1, startmark/0 ] ). %%Extra?
 :-use_module( busanshp ).
 %dep_module( buslog, [ airbus_module/1, before/2, bus/1, bus_place_station/3, busorfree/1, composite_stat/3, dayModSeqNo/2, departure/4, message/1,
-%                      neverarrives/2, neverdeparts/2, neverpasses/2, notaclock/1, passesstations/4, place_station/2, samefplace/2, station/1,
+%                      neverarrives/2, neverdeparts/2, neverpasses/2, not/1, notaclock/1, passesstations/4, place_station/2, samefplace/2, station/1,
 %                      stationsat/3, street_station/2 ] ). 
 :-use_module( buslog ).
 dep_module( dmeq, [ dmeq/2 ] ). %% RS-140102, Really Used, in several  pragma.pl->interapp->bustrans rules 
@@ -154,7 +154,7 @@ dep_module( interapp, [ newfree/1 ] ).
 %                              railway_station/1, thetramno/1, tostationonly/1, vehicletype/2, xforeign/1 ] ).
 :-use_module( '../db/busdat' ).
 
-dep_module( '../db/places', [ place_resolve/2, placestat/2, underspecified_place/1 ] ). %% RS-131225  %uses /db/placestat/2 !! corr/2, foreign/1, isat/2, nostation/1, 
+dep_module( '../db/places', [ corr/2, foreign/1, isat/2, nostation/1, place_resolve/2, placestat/2, underspecified_place/1 ] ). %% RS-131225  %uses /db/placestat/2 !! corr/2, foreign/1, isat/2, nostation/1, 
 dep_module( '../db/regbusall', [ nightbus/1 ] ). %% RS-111213 General (semantic) Operators Moved (back) to busdat
 dep_module( '../db/teledat2', [ has_att_val/4, have_att_val/4 ] ). %% RS-111213 General (semantic) Operators Moved (back) to busdat
 dep_module( '../db/timedat', [  aroundmargin/1, maxtraveltime/1, morning_break/1, named_date/2 ] ). %% RS-111213 General (semantic) Operators Moved (back) to busdat
@@ -3584,10 +3584,10 @@ ip  vehicletype(X,tram),
 
 noroutesfortram1 rule bustrans:( %%  trikk til nth
 is  _ isa tram,
-    not X isa neighbourhood when { foreign(X)},
+    not X isa neighbourhood when { foreign(X) },
     not present _ isa clock, %% ad hoc  den (klokka) er 1
     clear
-id  addcon  message(noroutesfor(tram)),
+id  addcon  message( noroutesfor(tram) ),
     addcon  message(answer(db_reply('Gråkallbanen',webaddress,K)))
 ip  \+ value(tmnflag,true),
     has_att_val(company,webaddress,tram,K) ).

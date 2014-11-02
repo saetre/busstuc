@@ -64,7 +64,7 @@ set( Counter, Value ) :-
 X := Y  :-      %% RS-131228    :=/2    X set to Y's value
     main:set(X,Y).
 X =: Y  :-      %% RS-141024    =:/2    Y is set to X's value
-    main:value(X,Y).
+    main:value(X,Y). % ; ( out(X), output(' not set!'), fail ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -847,8 +847,8 @@ process(L):-           %% Process is under a repeat loop
      TQL=stop).        %% Succeeds and  exit when stop command.
 
 
-abortword(georgewarrenbush). %% <- Top Secret
-haltword(johnforbeskerry).   %% <- Top Secret
+abortword( georgewarrenbush ). %% <- Top Secret
+haltword( johnforbeskerry ).   %% <- Top Secret
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1094,7 +1094,7 @@ print_parse_tree(Parse1):- %% TA-110207
 
    
 print_parse_tree(Parse1):- %% TA-110207
-   track(3, printparse(Parse1) ), %%  print proper parsetree
+   track(4, printparse(Parse1) ), %%  print proper parsetree
    track(2, writeout:output('*** Simplified parse tree ***') ),
    track(1, ptbwrite:ptbwrite(Parse1) ), %% -> ptbwrite.pl
    track(2, (writeout:output('*****************************'),nl) ).
@@ -1134,7 +1134,7 @@ value(X):-
     out(X),out('='),writeout:output(Y),nl.
 
 
-printparse(X):- 
+printparse(X) :- 
     write('*** Parse Tree ***'),nl,nl,
     indentprint(0,X),nl,
     write('******************'),nl,nl.
@@ -1290,9 +1290,15 @@ anash( [ns,Dir, '/' ,P] ) :- !,  %% TA-110207
     appfilename(Dir,P,Q),
     norsource(Q).
 
+
 anash( [spy,Module,:,Plist] ) :-
     %Callp =.. Plist,
-    !, call( spy Module:Plist ). % ! to Avoid crash on "catch-all anash" below.
+    !, call( spy Module:Plist ). % ! to Avoid crash on "catch-all anash" at the bottom below.
+
+anash( [spy,Plist] ) :-
+    %Callp =.. Plist,
+    !, call( spy _:Plist ). % ! to spy on the given Predicate list in ANY module?!
+
 
 anash( [listing,Module,:,Plist] ) :-
     %Callp =.. Plist,

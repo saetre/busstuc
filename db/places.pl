@@ -122,8 +122,8 @@ corr(m4,hovedterminalen).
 corr(m41,hovedterminalen).  %% SIC
 corr(m5,hovedterminalen). 
 
-corr(p1,hovedterminalen).  %% RS-140102 Difficulties with hovedterminalen != sentrum? Ambiguous p1 == prinsen == prinsens gate == ...
-corr(p2,hovedterminalen).
+%corr(p1,hovedterminalen).  %% RS-140102 Difficulties with hovedterminalen != sentrum? Ambiguous p1 == prinsen == prinsens gate == ...
+%corr(p2,hovedterminalen).
 
 corr(stavset_senter,stavset_senter). 
 corr(studentersamfundet,studentersamfundet_2).   %% RS-140901 Ser ikke ut som om _1 finnes lenger?
@@ -5592,13 +5592,17 @@ place_resolve(vegmesterveien,veimester_kroghs_street).
 %%
 
 
-%%% PLACESTAT  station neighbourhood
+
+
+
+
+%%% PLACESTAT  neighbourhood station
 %¤ PLACESTAT  (PLACE,STATION)
 %Examples;
 %placestat(arbeidsmarkedsinstituttet,lade_alle_80).
 %placestat('Hotell Augustin',torget).
 %
-%STATION is the preferred /recommended nearest station to the
+%STATION is (one of?) the preferred /recommended nearest station to the
 %neighbourhood of PLACE
 %
 
@@ -5875,7 +5879,8 @@ placestat(kinosenteret,prinsen_kinosenter).
 placestat(kirka,prinsen_kinosenter).  %%Uncertain
 placestat(klefstad,klefstadhaugen). 
 placestat(klostergata,studentersamfundet).  %% (Øya?)_2
-placestat(klæbu_skysstasjon,klæbu_sentrum).  %% klæbu_skysstasjon rutehefte/
+%placestat(klæbu,klæbu_sentrum).  %% klæbu_skysstasjon rutehefte/
+%placestat(klæbu_skysstasjon,klæbu_sentrum).  %% klæbu_skysstasjon rutehefte/ %% RS-141101 Old
 placestat(kolstad,torplassen). 
 placestat(kolstadflata,torplassen). 
 placestat(kolstadsenter,torplassen). 
@@ -9370,8 +9375,8 @@ synplace(skovgors,skovgård).
 synplace(skovgårde,skovgård). 
 synplace(skule,skole). 
 
-synplace(skyssstasjon,klæbu_skysstasjon).  
-synplace(skysstasjonen,klæbu_skysstasjon). 
+%synplace(skyssstasjon,klæbu_skysstasjon).  
+%synplace(skysstasjonen,klæbu_skysstasjon). 
 
 synplace(skysta,kystad). 
 synplace(skystad,kystad). 
