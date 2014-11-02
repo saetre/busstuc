@@ -9,27 +9,29 @@
 
 %%% RS-111205, UNIT: /app/
 % Some predicates (like addcontext/0) are only to preserve information, no filtering..
-:-module( buslog, [ addcontext/0, askref/2, atdate/1, atdate2/2, atday/1, avoidbus/3, before/2, boundstreet/1, bugdep1/2, bugdep2/4, bus_place_station/3
-   ,     busorfree/1, bustorid/3, cname/2, composite_stat/3, connections/10, corrstats/3, dateis/4, dayModSeqNo/2, departure/4, departureday/4, departuredayMOD/5, depset/2
-   ,     diffdep4/4, direct_connection/3, endstations1/1, ensure_removed/3, findstations/3, firstactualdeparturetime/4,
-         flag/1,        %% For using flag( X ) from program (from busanshp for example)
-         frame_remember/2, hpl/3, irrelevantdirect/4
-   ,     islist/1, isnear/2, keepafterstrict/3, keepafterwalking/2, keeparound/3, keepat/3, keepbefore1/3, keepbeforerev/3, keepbetweenstat/5, keepbus/3
-   ,     keepdepafter/3, keepuntil/4, keepwithin/4, listofall/2, maybestation/3, message/1, neverarrives/2, neverdeparts/2, neverpasses/2 %% For negans.pl
-   ,    new_cutloop_extend/4, new_cutset_test/8, nextdep/3, nocontext/0, notaclock/1, notification/2, numberof/3, occurs_before/3, pass_after/2, pass_before/2, passes44/6
-   ,    passesstations/4, passevent/6, passMOD/7, passtimeMOD/8, popframe/0, proper_end_station/2, pushframe/0, relax/1, replyq/1  %% For negans.pl
-   ,    rid_to_direction/3, ridstobuses/2, samefplace/2 %% RS-140929 for bustrans.pl rules 
-   ,    selectroute/3, standardizeemit/2, station_trace/4, stationsat/3, statorplace/1, takestime/3, testanswer/2
-   ,    ticketprice2/2, timeis/1, trackprog/2, transferXYZ/3, trytransbuslist/4, withinslack/2,
+:-module( buslog, [ addcontext/0, askref/2, atdate/1, atdate2/2, atday/1, avoidbus/3, before/2, boundstreet/1, bugdep1/2, bugdep2/4, bus_place_station/3,
+   busorfree/1, bustorid/3, cname/2, composite_stat/3, connections/10, corrstats/3, dateis/4, dayModSeqNo/2, departure/4, departureday/4,
+   departuredayMOD/5, depset/2,     diffdep4/4, direct_connection/3, endstations1/1, ensure_removed/3, findstations/3, firstactualdeparturetime/4,
+   flag/1,        %% For using flag( X ) from program (from busanshp for example)
+   frame_remember/2, hpl/3, irrelevantdirect/4, islist/1, isnear/2, keepafterstrict/3, keepafterwalking/2, keeparound/3, keepat/3, keepbefore1/3, keepbeforerev/3,
+   keepbetweenstat/5, keepbus/3, keepdepafter/3, keepuntil/4, keepwithin/4, listofall/2, maybestation/3, message/1, neverarrives/2, neverdeparts/2, neverpasses/2, %% For negans.pl
+   new_cutloop_extend/4, new_cutset_test/8, nextdep/3, nocontext/0, not/1, notaclock/1, notification/2, numberof/3, occurs_before/3, pass_after/2, pass_before/2,
+   passes44/6,    passesstations/4, passevent/6, passMOD/7, passtimeMOD/8, popframe/0, proper_end_station/2, pushframe/0, relax/1, replyq/1,  %% For negans.pl
+   rid_to_direction/3, ridstobuses/2, samefplace/2, %% RS-140929 for bustrans.pl rules 
+   selectroute/3, standardizeemit/2, station_trace/4, stationsat/3, statorplace/1, takestime/3, testanswer/2,
+   ticketprice2/2, timeis/1, trackprog/2, transferXYZ/3, trytransbuslist/4, withinslack/2,
 
-        airbus_module/1, keepafter/3, passeq/6, ridtobusname/2, ridtobusnr/2, veh_mod/1, %% RS-140927 For busanshp.pl, moved to utility.pl: internalkonst/1, 
-        stationD/2, properstation/1,    %% RS-131225 for makeauxtables
-        station/1,  street_station/2,   %% RS-140927 For facts.pl     %% RS-131225 %% RS-140101 For pragma.pl, Necessary in bustrans etc.
-        bus/1, place_station/2          %% RS-140927 For negans.pl
+   airbus_module/1, keepafter/3, passeq/6, ridtobusname/2, ridtobusnr/2, veh_mod/1, %% RS-140927 For busanshp.pl, moved to utility.pl: internalkonst/1, 
+   stationD/2, properstation/1,    %% RS-131225 for makeauxtables
+   station/1,  street_station/2,   %% RS-140927 For facts.pl     %% RS-131225 %% RS-140101 For pragma.pl, Necessary in bustrans etc.
+   bus/1, place_station/2          %% RS-140927 For negans.pl
 ] ).
+
+:-op( 715, fy, not ).   %% :- op( 715, fy,not).  % Already defined in TUC
 
 %% META-PREDICATES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate not(0).     % not/1,
 :- meta_predicate  once1(0) .    %% RS-140615  %% once1/1 meta-predicate
 %:- meta_predicate  set_of(+,0,-) . %% 141024. Moved BACK to utility.pl?
 :- meta_predicate  set_ops(+,0,-).
@@ -38,6 +40,12 @@
 :- meta_predicate  test(0) .  %% RS-140615  %% test/1 is a meta-predicate ( just passing on the incoming X-predicate )
 :- meta_predicate  trackprog(+,0) .
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%% not/1 or (not)/1 is a predicate, and not can be written (also) a prefix operator (see operator-list in declare.pl)
+not X :- \+ X.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 %%      airbus_route/1,         approvenightbustoplace/2, arr_after/2, arr_between/3, arrdep_after/2, arrdep_before/2,
 %       converttostandard/2,    coupled1/8,     %% RS-131225    Necessary?
@@ -2313,14 +2321,6 @@ bestcorr(StartDeps,EndDeps,Day,DaySeqNo, StartDep,EndDep,Mid,Opts) :-
                 EndDep    =             depnode(_,_,_,_,_,_,_,_,Dest),
          reverse(StartDeps,RevDeps),
          lastcorr(Orig,Dest,RevDeps,EndDeps,Day,DaySeqNo,StartDep,EndDep,Mid).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%% (not)/1 is a predicate, and not can be written (also) a prefix operator (see operator-list in declare.pl)
-%:- meta_predicate not(0).     % not/1,
-%not X :- \+ X.
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Find first possibillity
 bestcorr(StartDeps,EndDeps,Day,DaySeqNo, StartDep,EndDep,Mid,Opts) :-
