@@ -432,9 +432,9 @@ execute_program( Prog ) :-
 
     trackprog(3, output('interapp BEGIN  program') ), 
 (   call( Prog ) ->
-           trackprog(3, output('END  program') );
-           trackprog(3, output('FAIL  program') ),
-           fail ).
+           trackprog(3, output('END  program') ) ;
+           trackprog(3, output('FAIL  program') ), fail 
+).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 printallmessagesprogram( Program ) :-
