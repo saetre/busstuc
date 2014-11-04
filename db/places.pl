@@ -51,17 +51,25 @@
 %%%%%%%%%   REFERENCE TO STATION SECTION %% TA-110705
 
 
+
+
 %% HOVEDTERMINALEN == "Sentrum" %%
 
-corr(torget,hovedterminalen).         %% SUMMER %% TA-110628 %% RS-130816 REMOVED before WINTER...
 
 % corr(prinsenkrysset,hovedterminalen). %% ???  SUMMER %% TA-110701
-  %% sorry, gir destinasjon munkehate = Prinsenkrysset  %%
+  %% sorry, gir destinasjon munkegate = Prinsenkrysset  %%
 
 corr(sentrum,hovedterminalen).  
 
+corr(torget,hovedterminalen).         %% SUMMER %% TA-110628 %% RS-130816 REMOVED before WINTER...
+
 corr(munke_street,hovedterminalen). 
-%%% corr(brannstasjon_øst,strindheim).  %% TA-110822
+
+
+corr(d1,hovedterminalen). 
+%corr(d2,hovedterminalen). 
+%corr(d3,hovedterminalen). 
+corr(d4,hovedterminalen). 
 
 corr(dronningens_gate_d1,hovedterminalen). %% Atb
 %corr(dronningens_gate_d2,hovedterminalen). %% RS-130818
@@ -73,6 +81,10 @@ corr(dronningens_gate_46,hovedterminalen). %% TA-110627
 corr(dronningens_gate_50,hovedterminalen). %% TA-110627
 
 
+%kongens gate (hovedterminalen fra 2013.08.12   %% RS-130812
+corr(k1,hovedterminalen). 
+corr(k2,hovedterminalen). 
+
 corr(kongens_gate_k1,hovedterminalen). %% Atb
 corr(kongens_gate_k2,hovedterminalen). 
 
@@ -81,6 +93,14 @@ corr(kongens_gate_k2,hovedterminalen).
 %corr(kongens_gate_50,hovedterminalen). %% TA-110627
 
 %% corr(munkegata_m0,sentrum).  %% ad hoc sverresgt-> m0->sentrum
+corr(m0,hovedterminalen).  %% Generic central place
+corr(m0,sentrum).  %% ad hoc sverresgt-> m0->sentrum
+corr(m1,hovedterminalen). 
+corr(m2,hovedterminalen). 
+corr(m3,hovedterminalen). 
+corr(m4,hovedterminalen). 
+corr(m41,hovedterminalen).  %% SIC
+corr(m5,hovedterminalen). 
 
 %%%%%% corr(munkegata_m0,hovedterminalen).  %% Atb
 corr(munkegata_m1,hovedterminalen). 
@@ -99,37 +119,23 @@ corr(munkegata_m0,hovedterminalen).  %% Generic central place
 %corr(munkegata_m41,hovedterminalen).  %% SIC
 %corr(munkegata_m5,hovedterminalen). 
 
-corr(prinsen_gate_p1,hovedterminalen). %% Atb
-corr(prinsen_gate_p2,hovedterminalen). %% RS-140102
-
-corr(d1,hovedterminalen). 
-%corr(d2,hovedterminalen). 
-%corr(d3,hovedterminalen). 
-corr(d4,hovedterminalen). 
-
-%kongens gate (hovedterminalen fra 2013.08.12   %% RS-130812
-corr(k1,hovedterminalen). 
-corr(k2,hovedterminalen). 
-
-corr(lerkendal_stadion,tempe_kirke). 
-
-corr(m0,hovedterminalen).  %% Generic central place
-corr(m0,sentrum).  %% ad hoc sverresgt-> m0->sentrum
-corr(m1,hovedterminalen). 
-corr(m2,hovedterminalen). 
-corr(m3,hovedterminalen). 
-corr(m4,hovedterminalen). 
-corr(m41,hovedterminalen).  %% SIC
-corr(m5,hovedterminalen). 
 
 %corr(p1,hovedterminalen).  %% RS-140102 Difficulties with hovedterminalen != sentrum? Ambiguous p1 == prinsen == prinsens gate == ...
 %corr(p2,hovedterminalen).
+corr(prinsens_gate_p1,hovedterminalen). %% Atb
+corr(prinsens_gate_p2,hovedterminalen). %% RS-140102
+
+
+%% END HOVEDTERMINALEN == "Sentrum" %%
+
+
+
+%%% corr(brannstasjon_øst,strindheim).  %% TA-110822
+corr(lerkendal_stadion,tempe_kirke). 
 
 corr(stavset_senter,stavset_senter). 
 corr(studentersamfundet,studentersamfundet_2).   %% RS-140901 Ser ikke ut som om _1 finnes lenger?
 %corr(studentersamfundet_1,studentersamfundet_2). %% RS-140901 Ser ikke ut som om _1 finnes lenger?
-
-corr(lerkendal_stadion,tempe_kirke). 
 
 
 %% ALIAS_NAME

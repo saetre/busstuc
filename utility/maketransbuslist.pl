@@ -18,7 +18,7 @@
 :-use_module( '../utility/utility', [ for/2, set_of/3 ] ).    % RS-140915, transbuslist/3
 
 %%% RS-111205, UNIT: /app/
-:-use_module( '../app/buslog', [ station/1 ] ) .
+:-use_module( '../app/buslog', [ bus_mod/1, station/1 ] ) .
 
 :-use_module( '../db/auxtables', [ busstat/2, statbus/2 ] ).    % RS-140915, transbuslist/3
 
@@ -41,8 +41,10 @@ maketransbuslist:-
     , told
     .
 
+passes3( Tour, STATNO, B, C, D, E) :-   bus_mod(TTP),TTP:ex_passes4( Tour, STATNO, B, C, D, E ). %% RS-141102 Resurrect needed?
+
 makenext :-
-  set_of( next(X,Y),( station(X), passes3(Tour,X,S1,_,_), S2 is S1+1, passes3(Tour,Y,S2,_,_) ),Z ),
+  set_of( next(X,Y),( station(X), passes3(Tour,X,S1,_,_,_), S2 is S1+1, passes3(Tour,Y,S2,_,_,_) ),Z ),
   for( member( next(A,B), Z ), assert(nextstat(A,B)) ).
 
 

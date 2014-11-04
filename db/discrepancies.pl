@@ -20,7 +20,6 @@ alias_station2(16011724,hospitalskirka_trikk,hospitalskirka).
 %% Discrepancies r1611_140331 r1613_130622 
 alias_station2(16010157,a_jenssens_veg,anton_jenssens_veg).
 alias_station2(16010272,lundåsen_nordre,lundåsen_n).
-alias_station2(16010403,gyldenløves_gate,rosenborg_skole).
 alias_station2(16010546,edgar_b_schieldrops_veg,vestlia).
 alias_station2(16010752,leinstrand_samf_hus,leinstrand_samfunnshus).
 alias_station2(16011157,a_jenssens_veg,anton_jenssens_veg).
