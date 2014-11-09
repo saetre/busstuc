@@ -16,7 +16,9 @@
 ] ).
 
 %% UNIT: /
-:- use_module( '../main', [ ( := )/2, value/2 ] ).
+%:- ensure_loaded( user:'../declare' ).%, [ := /2, for/2 (from library.pl) etc. ] ). %% RS-140208
+:- use_module( '../declare', [ (:=)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+%:- use_module( '../main', [ ( := )/2, value/2 ] ).
 
 %% UNIT: /utility/
 %:-use_module( utility, [ coerce2d/2, concat_atomlist/2 ] ). %RS-131223 Includes ?-compile( user:'declare.pl' ).
@@ -385,7 +387,7 @@ datetime(YYYY,MM,DD,HH,MIN,SEC):-
 
 % Prolog is really awkard here
 
-convert_zone(YYY, M, D, H,Min,Sec,   YYY,M,D,H,Min,Sec):- %% TA-080407
+convert_zone(YYY, M, D, H,Min,Sec,   YYY,M,D,H,Min,Sec) :- %% TA-080407
     \+ value(busflag,true),
     !.
 
@@ -410,7 +412,7 @@ convert_zone(YYY, M, D, H,Min,Sec,
 
 
  
-conzoneH(YYYY, MM, DD, HH, YYYY,MM,DD,HH):-  
+conzoneH(YYYY, MM, DD, HH, YYYY,MM,DD,HH) :-  
     ( HH >= 0, HH =< 24 ),
     !.
 conzoneH(YYY, M, D, H, YYYY,MM,DD,HH):-  

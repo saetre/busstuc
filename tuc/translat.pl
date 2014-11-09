@@ -12,30 +12,32 @@
 :-volatile (=>)/2.
 :-dynamic (=>)/2.
 
-:- meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
-:- meta_predicate  test(0) . %% RS-140211 RS-140915 0 instead of : ?
-:- meta_predicate  track(+,0) .
-
+:- meta_predicate  beats( ?, ?, -).
+:- meta_predicate  normsplit( ?, ?, -).
+:- meta_predicate  skolem( ?, ?, ?, ?, - ).
+%:- meta_predicate  test(0) . %% RS-140211 RS-140915 0 instead of : ?
+%:- meta_predicate  track(+,0) .
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
 % for(P,Q) :- P,Q,  false;true. %% RS-140929 What about variable binding? Compare to library(aggregate):forall/2. CAREFUL: there is a "homemade" forall in BusTUC!
-for( P, Q ) :- %% For all P, do Q (with part of P). Finally succeed
-  P, Q, false ; true.
+%for( P, Q ) :- %% For all P, do Q (with part of P). Finally succeed
+%  P, Q, false ; true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
+%test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %local: test/1 % RS-131117 includes declare.pl  %%,  unsquare/2 RS-131227
 
 %% RS-131227    UNIT: /utility/
-:- use_module( '../utility/utility', [ error/2, do_count/1, flatlist/2, flatround/2, freshcopy/2, ident_member/2, match/2, occ/2, subcase/2, subsumes/2 ] ). %% RS-141029  LOOPS! for/2, test/1
+:- use_module( '../utility/utility', [ error/2, do_count/1, flatlist/2, flatround/2, for/2, freshcopy/2, ident_member/2, match/2, occ/2, subcase/2, subsumes/2 ] ). %% RS-141029  LOOPS! for/2, test/1
 :- use_module( '../utility/library', [ reverse/2 ] ).  %%    %% RS-131225
-:- use_module( '../utility/writeout', [ output/1, prettyprint/1 ] ).
+:- use_module( '../utility/writeout', [ output/1, prettyprint/1, track/2 ] ).  %% Module util  , prettyprint/1, output/1, 
 
 :- use_module( library(varnumbers), [ numbervars/1 ] ). %% RS-140210.
 
 %% RS-141026    UNIT: /
 %:- ensure_loaded( '../declare' ).%, [ := /2, for/2 (from library.pl) etc. ] ). %% RS-140208
-:- use_module( '../main.pl', [ ( := )/2, ( =: )/2, difact/2, fact0/1, value/2 ] ). %MISERY? track/2
+:- use_module( '../declare', [ (:=)/2, (=:)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../main.pl', [ difact/2, fact0/1 ] ). %MISERY? track/2
 
 % UNIT: tuc/
 :- use_module( slash, [ def/1 ] ).     %% RS-131228
@@ -72,7 +74,6 @@ clausify(X,Y,L,P,R):-
 
 %%% Reduce scope of Negation and Skolemize 
 
-
 %% skolem( SkolemVariableNoBefore, Variable after, Scope Chain, Source, Destination)
 
 skolem(_,_,_,variable,_):- 
@@ -104,37 +105,37 @@ skolem(X,Y,CH,(forall(A:_)::JLM),RES):-!,
 
 %%%% Quantified Expressions with Defaults
 
-skolem(X,X,_,(quant(lt/0,_)::_),false):-!.
+skolem( X, X, _, (quant(lt/0,_)::_), false ) :- !.
 
-skolem(X,X,_,(quant(ge/0,_)::_),true):-!.
+skolem( X, X, _, (quant(ge/0,_)::_), true ) :- !.
 
-skolem(X,Y,CH,(quant(le/0,A)::P),RES):-
+skolem( X, Y, CH, (quant(le/0,A)::P), RES ) :-
     !,
-    skolem(X,Y,CH,(quant(eq/0,A)::P),RES).
+    skolem( X, Y, CH, (quant(eq/0,A)::P), RES ).
 
-skolem(X,Y,CH,(quant(lt/1,Z)::P),RES):-
+skolem( X, Y, CH, (quant(lt/1,Z)::P), RES ) :-
     !, 
-    skolem(X,Y,CH,not (exists(Z):: P),RES).
+    skolem( X, Y, CH, not (exists(Z)::P), RES ).
 
-skolem(X,Y,CH,(quant(gt/0,A)::P),RES):-
+skolem( X, Y, CH, (quant(gt/0,A)::P), RES ) :-
     !, 
-    skolem(X,Y,CH, (exists(A):: P),RES).
+    skolem( X, Y, CH, (exists(A)::P), RES ).
 
-skolem(X,Z,CH,(quant(eq/1,Y)::P),RES):-
+skolem( X, Z, CH, (quant(eq/1,Y)::P), RES ) :-
     !,
-    skolem(X,Z,CH,exists(Y)::P,RES). % APPROX
+    skolem( X, Z, CH, exists(Y)::P, RES ). % APPROX
 
 
-skolem(X,Y,CH,(quant(ge/1,A)::Z),RES):-
+skolem( X, Y, CH, (quant(ge/1,A)::Z), RES ) :-
     !,
-    skolem(X,Y,CH,(exists(A)::Z),RES).
+    skolem( X, Y, CH, (exists(A)::Z), RES ).
 
 
 %% Quantified expressions without Defaults
     
-skolem(X,Y,CH,(quant(eq/N,U:T)::P),RES):-  
+skolem( X, Y, CH, (quant(eq/N,U:T)::P), RES ) :-  
     !,
-    skolem(X,Y,CH,
+    skolem( X, Y, CH,
          exists(S:set)::S isa set and 
                     has/set/cardinality/S/N and 
        (forall(U:T):: has/set/member/S/U => P),RES). 
@@ -310,17 +311,16 @@ optcl(P,false,P):-!.
 optcl(P,Q,P or Q).
 
 
+normsplit( (P or Q) or R , A, B ) :- !,
+    normsplit(P or (Q or R), A, B ).
 
-normsplit((P or Q) or R , A,B):-!,
-    normsplit(P or (Q or R),A,B).
-
-normsplit((not P) or Q , Posl, [P|Negl]):-!,
+normsplit( (not P) or Q , Posl, [P|Negl] ) :- !,
     normsplit(Q, Posl , Negl).
 
-normsplit(P or Q , [P|Posl], Negl):-!,
+normsplit( P or Q , [P|Posl], Negl ) :- !,
     normsplit(Q, Posl , Negl).
 
-normsplit(not P , [], [P]):-!.
+normsplit( not P , [], [P] ) :- !.
 normsplit(Q, [Q], []).
 
 %% do_something   [positives]  [negatives] Result
@@ -438,8 +438,9 @@ skup(X isa _):-
     nl,
     abort. 
 
-skup(R):-
-    test(redundant(R)),
+%test(X) :- \+ ( \+ ( X)).  
+skup(R) :- %test
+        \+ ( \+ ( redundant(R) ) ),
     ! . 
 
 skup(P):-
@@ -525,12 +526,12 @@ tauthead(_ isa C):-testclass(C).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-track( N, P ) :- 
-    value( trace, M ),  number(M), M >= N, 
-    !,
-    call(P)   %% TA-110130
-;
-    true.
+%track( N, P ) :- 
+%    value( trace, M ),  number(M), M >= N, 
+%    !,
+%    call(P)   %% TA-110130
+%;
+%    true.
 
 transfix1(error,error):-!. 
 
@@ -802,13 +803,13 @@ sortcond(Z1,[A|Z2]):-
     sortcond(REST,Z2).
 sortcond(Z,Z).
 
-% beats(L,X,Y)   X is not worse than any condition in Y
+% beats( L, X, Y )   X is not worse than any condition in Y
 
-beats([X],X,[]):-!.
+beats( [X], X, [] ) :- !.
 
-beats(Z,ISA,L):-
-    superbeat(ISA,Z), % try them in this sequence
-    deleteq(ISA,Z,L).
+beats( Z, ISA, L ) :-
+    superbeat( ISA, Z ), % try them in this sequence
+    deleteq( ISA, Z, L ).
     % OOOPS delete1( ila isa station, [ X isa station, .. ila isa_station] 
     % Dont remove ( and instantiate) X isa station
 

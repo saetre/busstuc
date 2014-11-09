@@ -4,19 +4,15 @@
 %% REVISED TA-060306
 
 %% REMOVED DEPENDENCIES ON JAVA INTERFACE
-:- module( d_main,
-[
-   dialog2/0,
-   direct_run/2,
-   webrun_dialog/0
-] ).
+:- module( d_main,  [ dialog2/0, direct_run/2, webrun_dialog/0  ] ).
 
+:- use_module( '../declare', [ (:=)/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 %:- ensure_loaded( '../utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
 :- use_module( '../utility/utility' ). % [ := ] etc. %% RS-131117 %% Includes user:declare.pl, 
 
 %:- ensure_loaded( user:'../bustermain2' ).
 %:- use_module( '../bustermain2', [ ] ). % Unused? RS-140913 Use just main.pl instead!
-:- use_module( '../main', [ ( := )/2, closefile/1, getfromport/1,  processorwait/1, reset_period/0, writepid/0 ] ). % Unused? RS-140913 Use just main.pl instead!
+:- use_module( '../main', [ closefile/1, getfromport/1,  processorwait/1, reset_period/0, writepid/0 ] ). % Unused? RS-140913 Use just main.pl instead!
 
 :- use_module( '../tuc/readin' ). %%, [  ask_file/1, ask_user/1, read_in/1, words/3  ]). %%  Read a sentence into a list of symbols
 
@@ -74,12 +70,12 @@ webrun_dialog :- !,
    ( world  := real ),   
    ( warningflag := false ), %% if applicable 
 
-  repeat,              %% TA-050723
+(  repeat,              %% TA-050723
 %%%     resetsmsflag,  %% TA-081218
         reset_period,       %%   ---> topreg.pl (Now, interfaceroute)
 	getfromport(L),
 	processorwait(L),
-  fail.  %, ! ; true    %% RS-141026  Should never get to true because of the repeat, ... , fail  LOOP.
+  fail , ! ; true ).   %% RS-141026  Should never get to true because of the repeat, ... , fail  LOOP.
 
 
 	

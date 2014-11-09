@@ -13,18 +13,19 @@
 ] ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
-for( P, Q ) :- %% For all P, do Q (with part of P). Finally succeed
-  P, Q, false ; true.
+%:- meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
+%for( P, Q ) :- %% For all P, do Q (with part of P). Finally succeed
+%  P, Q, false ; true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%:- ensure_loaded( user:'../declare' ). %% Import has_a operator        %% RS-130624
 %% RS-141026    UNIT: /
-:- use_module( '../main.pl', [ value/2 ] ). %MISERY?!
+%:- ensure_loaded( user:'../declare' ). %% Import has_a operator        %% RS-130624
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+%:- use_module( '../main.pl', [ value/2 ] ). %MISERY?!
 
 %% RS-111205, UNIT: utility
-:- use_module( '../utility/utility', [ append_atomlist/2, absorb/3, matchinitchars/3, pront/1 ] ).  %% RS-141029 for/2, 
-:- use_module( '../utility/library', [ remove_duplicates/2 ]). %% TEMPORARY non-FIX!
+:- use_module( '../utility/utility', [ append_atomlist/2, absorb/3, for/2, matchinitchars/3, pront/1, set_of/3, set_ops/3 ] ).  %% RS-141029 for/2, 
+%:- use_module( '../utility/library', [ remove_duplicates/2 ]). %% TEMPORARY non-FIX!
 :- use_module( '../utility/writeout', [ doubt/2, output/1 ] ).%% RS-140912
 
 :- ensure_loaded( '../version' ). %% RS-130624
@@ -248,10 +249,10 @@ unwanted_dbname(gløshaugen). %% <--- Ad Hoc
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%% Sequence preserving setof, ( first occurrence stays first)
-:- meta_predicate   set_ops(+,:,+) . %% RS-140211      % set_ops/3 
-set_ops(X,Y,Z):-
-    findall(X,Y,Z1),
-    remove_duplicates(Z1,Z). %% order-preserving
+%:- meta_predicate   set_ops(+,:,+) . %% RS-140211      % set_ops/3 
+%set_ops(X,Y,Z):-
+%    findall(X,Y,Z1),
+%    remove_duplicates(Z1,Z). %% order-preserving
 %%%%%%%%%%%%%%%%%%%%%%
 
 %% TA-101110
@@ -383,9 +384,9 @@ has_att_valx(Person,Lastname,Telephone,Amb,ToreAmble,N):-
 %%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% Prologs setof is baroque %% 
-set_of(X,Y,Z):-           %%
-    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
-    Z=[].                 %% What is wrong with empty sets ?
+%set_of(X,Y,Z):-           %%
+%    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
+%    Z=[].                 %% What is wrong with empty sets ?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

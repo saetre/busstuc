@@ -19,8 +19,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% RS-131227    UNIT: utility/
-:- ensure_loaded( '../declare' ). %% RS-141025
-:- use_module( '../main', [ set/2, value/2 ] ). %% RS-140207
+%:- ensure_loaded( '../declare' ). %% RS-141025
+:- use_module( '../declare', [ set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+%:- use_module( '../main', [ set/2, value/2 ] ). %% RS-140207
 
 %% RS-131227    UNIT: tuc/
 %:-ensure_loaded( user:lex ). %%, [ maxl/1, txt/3 ] ).

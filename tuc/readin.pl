@@ -18,9 +18,10 @@
 %% content of parentheses is neglected (name) ?
 
 %% RS-141026    UNIT: /
-:- use_module( '../main.pl', [ ( := )/2, value/2 ] ). %MISERY?!
-%% RS-131225, UNIT: /   and /utility/
 %:- ensure_loaded( '../declare' ).  %% RS-140102 (:=)/2, user:value/2
+:- use_module( '../declare', [ (:=)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+%:- use_module( '../main.pl', [ ( := )/2, value/2 ] ). %MISERY?!
+%% RS-131225, UNIT: /   and /utility/
 %:- ensure_loaded( '../tucbuses' ). % , [ prompt/1 ] ). %% RS-131229-140928 NOT A MODULE (any more, after all...)
 :- use_module( '../tucbuses', [ prompt/1 ] ). %% RS-131229-140928 NOT A MODULE (any more, after all...)
 

@@ -18,7 +18,7 @@
 %:- use_module( main, [ track/2 ] ). %% RS-140928 Moved (back) to declare.pl hei/0,   run/0 %track(X, Y) :- user:track(X, Y) .
 
 %:- use_module( 'utility/utility', [ output/1, prettyprint/1 ] ).  %% Module util
-:- use_module( 'utility/writeout', [ output/1, track/2 ] ).  %% Module util  , prettyprint/1
+:- use_module( writeout, [ output/1, track/2 ] ).  %% Module util  , prettyprint/1
 
 
 /*

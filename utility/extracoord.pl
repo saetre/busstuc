@@ -12,6 +12,9 @@
 %:- use_module( '../sicstus4compatibility', [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 
+:-volatile val/1, val2/1, val3/1.
+:-dynamic val/1, val2/1, val3/1.
+
 
 
 extracoord :- 
@@ -135,7 +138,7 @@ tablett(W,[Field1|FRest]):-
 
 scanfield([],[],[]).
 
-scanfield([A1|Z],[A1|U],Krest) :-
+scanfield( [A1|Z], [A1|U], Krest ) :-
 
     A1 \==9, % Tab
     A1 \==13, % Tab %% - name(G,[13]).  G = '\r' ? 
@@ -330,16 +333,16 @@ mini(X,_,X).
 %   
 
 
-for(P,Q):-
-  P,Q,
-  false;true.
-
-
-% Prologs setof is baroque %% 
-
-set_of(X,Y,Z):-           %% 
-    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
-    Z=[].                 %% What is wrong with empty sets ?
+%for(P,Q):-
+%  P,Q,
+%  false;true.
+%
+%
+%% Prologs setof is baroque %% 
+%
+%set_of(X,Y,Z):-           %% 
+%    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
+%    Z=[].                 %% What is wrong with empty sets ?
 
 
 
@@ -366,9 +369,6 @@ firstlist(N,[K|Y],[K|Z],Rest):-
 
 firstlist(_,L,[],L).
 
-:-volatile val/1, val2/1, val3/1.
-:-dynamic val/1, val2/1, val3/1.
-
 resetcount :- retractall(val(_)),
               assert(val(0)),
 		  retractall(val2(_)),
@@ -393,7 +393,7 @@ rev1([X|Y],L,Z):-
     rev1(Y,[X|L],Z).
 
 
-listall(P):-P,write(P),nl,fail;true.
+%listall( P ) :- P, write(P), nl, fail;true.
 
 output(X):-write(X),nl.
 

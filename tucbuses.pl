@@ -24,20 +24,25 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% For main.pl, dict_e, dict_n, ...? moved to declare.pl
-:-module( tucbuses, [ legal_language/1, % backslash/1, %% makegram/0,  compile_english/0, compile_norsk/0,   %% RS-140920 Moved back to metacomp
-                      %dagrun_file/2,  dcg_file/2,     dcg_module/1, dcg_module/2, %% RS-131223 For metacomp.pl % UNUSED?: dcg_file/1,     
-                      %dict_file/2,    dict_module/1,  dict_module/2, gram_file/2,     gram_module/1,  gram_module/2,   %% RS-131225 For lex.pl
-                        %morph_file/2,   morph_module/1, %% RS-140920 For lex.pl?
-                      prompt/1,       readfile_extension/1,           script_file/1 %% For readin.pl language/1,
-] ).
+:-module( tucbuses, [ legal_language/1, prompt/1, readfile_extension/1, script_file/1 ] ).
+                    %% For readin.pl language/1,
 
-:- use_module( 'main.pl', [ (:=)/2, value/2 ] ).
+% backslash/1, %% makegram/0,  compile_english/0, compile_norsk/0,   %% RS-140920 Moved back to metacomp
+%dagrun_file/2,  dcg_file/2,     dcg_module/1, dcg_module/2, %% RS-131223 For metacomp.pl % UNUSED?: dcg_file/1,     
+%dict_file/2,    dict_module/1,  dict_module/2, gram_file/2,     gram_module/1,  gram_module/2,   %% RS-131225 For lex.pl
+%morph_file/2,   morph_module/1, %% RS-140920 For lex.pl?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- use_module( declare, [ (:=)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+
+:- use_module( 'main.pl', [ language/1 ] ). %(:=)/2, value/2 
 
 %% :-prolog_flag(discontiguous_warnings,_,off).  %%   RS-130330, or dcg_e.pl gets noisy!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RS-131227    UNIT: / (FIRST!)
-:- ensure_loaded( 'declare' ). %% RS-111213  General (semantic) Operators
+%:- ensure_loaded( user:'declare' ). %% RS-111213  General (semantic) Operators   := /2
+:- use_module( declare, [ (:=)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
 :- ( airbusflag := false ). %% NEW FLAG %% TA-090331
 
@@ -52,13 +57,15 @@
 %%  :- (single_sentence := true).
 %% DIS-Allow several sentences on a line
 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %UNIT: utility   %% RS-111213
-:-use_module( 'utility/utility', [ ] ). % variant/2 ] ).       %RS-131223 Value == TROUBLE! value/2    (And for(X,Y) is trouble too!)
+%:-use_module( 'utility/utility', [ ] ). % variant/2 ] ).       %RS-131223 Value == TROUBLE! value/2    (And for(X,Y) is trouble too!)
 %:-use_module( 'utility/library.pl',  [ ] ).  % ). %% %% RS-131225  [ for/2 ] ). %% ,  value/2  ]). %RS-131223 And for(X,Y) is trouble too!)
 %:-use_module( 'utility/datecalc.pl', [ ] ).  %  ). %% ?-compile('utility/datecalc.pl').
-:-use_module( 'utility/writeout', [ language/1 ]).       %RS-131223 Value == TROUBLE! value/2    (And for(X,Y) is trouble too!)
+%:-use_module( 'utility/writeout', [ ]).       %RS-131223 Value == TROUBLE! value/2    (And for(X,Y) is trouble too!)
 
 %% :-use_module( 'utility/extracut.pl', [ create_regcut/1 ] ).  %% TA-080201 %%% ?-compile('utility/extractreg.pl'). %% SUSPENDED %% RS-140411
 %% :-use_module( 'makeauxtables.pl', [ ] ).
@@ -102,8 +109,7 @@
 %% RS-131229. Includes gram_e, gram_n, dcg_e, dcg_n, ...
 %% makegram(DAGFILE,DICTFILE,DCGFILE,DCGMODULE,GRAMMODULE):-
 
-%:- use_module('tuc/metacomp.pl', [ makegram/0 ] ).     %%?-  compile('tuc/metacomp.pl').     % compiles the grammar %%RS-131223
-%:- use_module('tuc/metacomp.pl', [ ] ).
+%:- use_module( 'tuc/metacomp.pl', [ makegram/0 ] ).     %%?-  compile('tuc/metacomp.pl').     % compiles the grammar %%RS-131223
 %:- makegram.    %%RS-131223      % RS-140920      Use compile after all? Try bottom of the file?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -144,7 +150,7 @@ prompt2( english, 'E: ' ).
 prompt2( norsk, 'N: ' ).
 
 
-readfile_extension(X):-
+readfile_extension(X) :-
     language(L),
     readfile_extension(L,X).
 

@@ -14,9 +14,10 @@
 %% for conformation with ordinary queries
 
 %% RS-131225, UNIT: / & utility/
-:- ensure_loaded( user:'../declare' ).
+%:- ensure_loaded( user:'../declare' ).
+:- use_module( '../declare', [ (:=)/2, (=:)/2, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
-:- use_module( '../main.pl', [ ( := )/2, ( =: )/2, value/2 ] ). %% , reset/0, traceprint/2, (::)/2
+:- use_module( '../main.pl', [ language/1 ] ). %% , reset/0, traceprint/2, (::)/2 , ( := )/2, ( =: )/2, value/2
 
 %:- ensure_loaded( user:'../utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
 %:-use_module('../utility/utility', [ foralltest/2, iso_atom_chars/2, last_character/2, lastmem/2, lastmems/3, maximum/2, maxval/3, minimum/2, minval/3,
@@ -24,7 +25,7 @@
 %        testmember/2,value/2, (:=)/2, (=:)/2, textlength/2 ] ).
 
 :- use_module( '../utility/utility', [ append_atoms/3, begins_with/3, delete1/3, ends_with/3, flatten/2, for/2 ] ). %% keep local: 
-:- use_module( '../utility/writeout', [ doubt/2, language/1, out/1, output/1, prettyprint/1 ] ).%% RS-140912
+:- use_module( '../utility/writeout', [ doubt/2, out/1, output/1, prettyprint/1 ] ).%% RS-140912
 
 %% RS-131225, UNIT: /
 :- use_module( '../sicstus4compatibility', [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.

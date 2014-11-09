@@ -8,7 +8,7 @@
 %% Compiles all  the necessary files for
 
 %% BUSTER Dialog Versjon
-% NOT :-module( tucbuster, [ ] ). % run/0 ] ). %% Not module! Compile in "" module
+% NOT :-module( tucbuster, [ ] ). % run/0 ] ). %% Not module! Compile in "user:" module?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -26,13 +26,14 @@
 %?-compile('busterversion.pl'). 
 ?-use_module( 'busterversion.pl', [ ] ).
 
-?-compile( 'diabus.pl' ). 
-
 %?-compile('bustermain2.pl'). %% NEW, TELE COMPATIBLE  
-:- use_module( main, [ ( := )/2, dialog/0, run/0 ] ). %% RS-131227 Avoid loop?
+:- use_module( declare, [ ( := )/2 ] ). %% RS-131227 Avoid loop?
+:- use_module( main, [ dialog/0, run/0 ] ). %% RS-131227 Avoid loop?
 
 %?-compile('tele2.pl'). %% specific tele programs %% TA-051116
 ?-use_module( 'tele2.pl', [ ] ). %% specific tele programs %% TA-051116
+
+?-compile( 'diabus.pl' ). 
 
 :-compile( 'dialog/d_call.pl' ). %% diolog/0, etc.?
 %:-ensure_loaded( 'dialog/d_call.pl' ). %% create_splitacts/x, etc.?

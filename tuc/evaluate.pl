@@ -30,13 +30,14 @@
 
 
 %%% RS-131231, UNIT: /  %%% RS-111205, UNIT: utility/
-:- ensure_loaded( '../declare' ).  %% RS-140208    main:difact/2, fact/2
+%:- ensure_loaded( user:'../declare' ).  %% RS-140208    main:difact/2, fact/2
+:- use_module( '../declare', [ ( =: )/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../main.pl', [ fact0/1, language/1, reset/0 ] ). %% RS-140209 [ (=>)/2, reset/0, traceprint/2 ] Why is => in translat.pl ?! RS-140927
 
 :- use_module( '../utility/utility', [ aggregate/3, set_of/3, writelist/1 ]).  %% RS-131117 includes declare.pl language/1,
-:- use_module( '../utility/writeout', [ doubt/2, language/1, out/1, output/1 ] ).%% RS-140912
+:- use_module( '../utility/writeout', [ doubt/2, out/1, output/1, traceprint/2 ] ).%% RS-140912
 
 % main:difact/2, 
-:- use_module( '../main.pl', [ ( =: )/2, fact0/1, reset/0, traceprint/2, value/2 ] ). %% RS-140209 [ (=>)/2, reset/0, traceprint/2 ] Why is => in translat.pl ?! RS-140927
 %:-use_module( '../tucbuses', [ ] ).  %RS-140101 % Common File for tucbus  (english) and  tucbuss (norwegian), language/1
 
 %% RS-131227    UNIT: tuc/
@@ -186,37 +187,37 @@ qdev(X,X).
 disqev(P) :-  
     qev(nil,P).     %% only allowed to refer to discourse elements
 
-qev(P):-
+qev( P ) :-
 
   traceprint(4,P), %%
 
-qev(0,P). 
+  qev(0,P).
 
-qev(N,(X,Y)):-!,
-    qev(N,X),
-    qev(N,Y) .
+qev( N, (X,Y) ) :- !,
+    qev( N, X ),
+    qev( N, Y ).
 
 
-qev(N,not X) :- !,
+qev( N, not X) :- !,
     \+ qev(N,X).
 
-qev(_,true) :- !.
+qev( _, true ) :- !.
 
-qev(N,set_of(X,Y,Z)):-!, 
-    set_of(X,qev(N,Y),Z).
+qev( N, set_of(X,Y,Z) ) :- !,
+    set_of( X, qev(N,Y), Z ).
 
-qev(N,aggregate(MAX,X,Y,P,ML)):-!, 
+qev( N, aggregate(MAX,X,Y,P,ML)):-!, 
     set_of(Y-X,qev(N,P),Z1),        %% X:Y ==> Y-X  (keysort notation)
     keysort(Z1,Z2),               %% even if not necessary
     aggregate(MAX,Z2,ML).         %% utility.pl
 
-qev(_,quant(CR/M,X):::P):- !,  
+qev( _, quant(CR/M,X):::P ) :- !,  
      findq(X,P,Z),  
      length(Z,M1),
      testquant(CR,M1,M).           
 
 
-qev(N,dob/be/AB/CD/_) :- 
+qev( N, dob/be/AB/CD/_ ) :- 
     nonvar(AB),
     AB=(A,B),
     !,
@@ -225,7 +226,7 @@ qev(N,dob/be/AB/CD/_) :-
     qev(N,be/B/D/_). 
 
 
-qev(N,P):-
+qev( N, P ) :-
     factrule(N,P).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -248,8 +249,8 @@ vfact(nil,X isa Y):- !,     % for dialog query
 
 vfact(nil,X):- !, difact(X). 
 
-
-vfact(_,Z):-  \+ ( Z = _ isa _),  %% Fronted %% TA-031112
+vfact(_,Z) :-
+   \+ ( Z = _ isa _),  %% Fronted %% TA-031112
    fact(Z).
 
 vfact(N,X):-  

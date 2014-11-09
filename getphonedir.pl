@@ -25,19 +25,21 @@
 %:- meta_predicate  track(+,0) .
 
 %%% RS-141026, UNIT: /
-:- use_module( 'main', [ ( := )/2, value/2 ] ).
+%:- use_module( 'main', [ ( := )/2, value/2 ] ).
 %:- use_module( 'utility/utility', [ := /2 , user:value/2 ,  etc. ] ).  %% RS-140209 %% RS-131117 includes declare.pl
-%:- ensure_loaded( '../declare' ).       %% RS-111212  
+%:- ensure_loaded( 'declare' ).       %% RS-111212  
+:- use_module( declare, [ (:=)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
 %% RS-131227    UNIT: / and /utility/
 %:- ensure_loaded( 'declare' ).    %% :-op( 714,xfx, := ).  etc... , track/2, trackprog/2
 %track(X, Y) :- user:track(X, Y) .
 
-:- use_module( 'dialog/checkitem2', [ trackprog/2 ] ). %% MOVED TO DIALOG      LOOP !!! parseres, 
+%:- use_module( 'dialog/checkitem2', [ trackprog/2 ] ). %% MOVED TO DIALOG      LOOP !!! parseres, 
 
 :- use_module( 'utility/utility', [ delete1/3, set_eliminate/4, set_ops/3 ] ). %keep local: foralltest/2, 
 :- use_module( 'utility/library', [ exec/3, remove_duplicates/2, shell/1 ]). %% TEMPORARY non-FIX!
 :- use_module( 'utility/writeout', [ out/1, output/1, track/2 ] ).%% RS-140912
+:- use_module( 'utility/writeout', [ trackprog/2 ] ).%% RS-141105
 
 :- use_module( main, [ create_taggercall/2, update_compnames/1, write_taggercall/1 ] ).
 

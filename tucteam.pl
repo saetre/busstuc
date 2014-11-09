@@ -10,16 +10,15 @@
 %%?-prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates
 
 %:-compile('tucbuses.pl'). 
-:- use_module( tucbuses ). %% RS-131227 Avoid loop?
+:- use_module( tucbuses, [ ] ). %% RS-131227 Avoid loop?
+
+%?-compile('main.pl').    %% TA-031115
+%:- use_module( main, [ ( := )/2 ] ). %% RS-131227 Avoid loop?
+:- use_module( declare, [ (:=)/2, (=:)/2, remember/1, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
 ?-compile('version.pl'). %% TA-031117
 
 ?-compile('monobus.pl'). %% TA-031115
-
-%?-compile('main.pl').    %% TA-031115
-:- use_module( main, [ ( := )/2 ] ). %% RS-131227 Avoid loop?
-
-
 
 
 ?- (unix_language := eng),      %% Standard for IDI/NTNU UNIX Solaris 

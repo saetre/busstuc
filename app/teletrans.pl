@@ -10,11 +10,12 @@
 
 
 %% RS-141026    UNIT: /
-:- use_module( '../main.pl', [ value/2 ] ). %MISERY?!
+%:- ensure_loaded( '../declare' ). %% RS-111213 General (semantic) Operators
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+%:- use_module( '../main.pl', [ value/2 ] ). %MISERY?!
 %:- ensure_loaded( user:'../app/pragma' ). %% RS-111213 Pragmatic (rule) Operators
 %:- use_module( '../app/pragma', [] ). %% RS-140207 Pragmatic (rule) Operators
 
-:- ensure_loaded( '../declare' ). %% RS-111213 General (semantic) Operators
 :- op( 725, fy,addcon).     %% add if not already present 
 
 :- op( 715, fy,add).

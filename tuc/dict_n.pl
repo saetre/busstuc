@@ -11,7 +11,7 @@
         ow/1,   preposition/1,
         pronoun/1,      rep_verb/1,   %% RS-121118   %% English / Norsk (from fernando.pl, Don't import there!)
         rewording/2,
-%%                   splitword/2, %% Defined in the user:module
+        splitword/2, %% Defined in the user:module
         synsms/2,                synwordx/2,
         unwanted_adjective/1,    unwanted_noun/1,       unwanted_number/1,
 %%                unwanted_verb/1,
@@ -21,7 +21,8 @@
 ]).
 
 %% RS-141026    UNIT: /
-:- use_module( '../main.pl', [ backslash/1, value/2 ] ). %MISERY?!
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../main.pl', [ backslash/1 ] ). %MISERY?!
 
 %%RS-131225     %% UNIT: /
 %:- ensure_loaded( user:'../declare' ). %, [ := /2 etc. ] ).      %RS-131225  Get dynamic definition for user:value/2

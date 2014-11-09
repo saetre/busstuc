@@ -16,9 +16,9 @@
 
 %% META-PREDICATE
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate once1(:).
-once1(P):-P,!. %% same as once, but version independent
-               %% try once, otherwise FAIL
+%:- meta_predicate once1(:).
+%once1(P):-P,!. %% same as once, but version independent
+%               %% try once, otherwise FAIL
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% RS-121118  %% English / Norsk Already in user (from fernando.pl). Don't export rep_verb/1!
@@ -30,12 +30,12 @@ once1(P):-P,!. %% same as once, but version independent
 ]).
 
 %:-use_module( morph_e, [ lexv/2 ]).          %% RS-131225    Only /2 ? There is another one with /4
-:-use_module( lex, [ ] ). % lcode2/2 ] ). %% RS-141026.       % part_word/1
+:-use_module( lex, [ part_word/1 ] ). % lcode2/2 ] ). %% RS-141026.       % part_word/1
 :-use_module( semantic, [ adj_templ/2, ako/2, dtv_templ/4, iv_templ/2, pvi_templ/2, tv_templ/3 ]).
 
 %% RS-131225, UNIT: /   %% RS-131225, UNIT: utility/
-:- ensure_loaded( '../declare.pl' ). %% RS-131228 "new syntax" defs, META-preds: for/2, remember/1, value/2, :=/2, =;/2
-:- use_module( '../utility/utility', [ ends_with/3 ] ). %% RS-140209, Keep local: , once1/1
+%:- ensure_loaded( '../declare.pl' ). %% RS-131228 "new syntax" defs, META-preds: for/2, remember/1, value/2, :=/2, =;/2
+:- use_module( '../utility/utility', [ ends_with/3, once1/1 ] ). %% RS-140209, Keep local: , once1/1
 
 %% ends_with(X,Y,Z):-           %% RS-131225    Try to use modules instead!
 %%      ends_with(X,Y,Z).     
@@ -193,8 +193,8 @@ lcode2(X,[X]):-           % Test on actual word
 
                          
 lcode2(X,[X]):-           %%   not name(X,n,0) as before
-%%    once1(part_word(X)).    %% RS-131225   
-    once1( lex:part_word(X) ).      %% RS-131225
+    once1( part_word(X) ).    %% RS-131225   
+%%    once1( lex:part_word(X) ).      %% RS-131225
 
 verbroot(W):- 
     be_verb(W);

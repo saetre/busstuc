@@ -11,9 +11,18 @@
 %% ?-prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates// Testing
 
 %% RS-131227    UNIT: /
-:- ensure_loaded( 'declare' ). %% RS-111213  Operators % AND sequence_member/2 is used in tucbuss -> monobuss -> negans.pl
+%:- ensure_loaded( 'declare' ). %% RS-111213  Operators % AND sequence_member/2 is used in tucbuss -> monobuss -> negans.pl
+:- use_module( declare, [ (:=)/2, (=:)/2, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
-:- use_module( main, [ (:=)/2, dialog/0, hei/0, hi/0, jettyrun/1, r/1, run/0, spyr/1, status/0 ] ). %% RS-140209    %?-compile('main.pl').
+%:- compile('tucbuses.pl'). %% Sicstus 4 requires *.pl extension
+:- use_module( 'tucbuses.pl', [] ). %% Sets the busflag:=true etc...
+
+:- ensure_loaded( version ).       %% RS-131227    With version_date/1, used in monobus -> teledat2.pl
+
+:- use_module( main, [ dialog/0, hei/0, hi/0, jettyrun/1, r/1, run/0, spyr/1, status/0 ] ). %% RS-140209    %?-compile('main.pl'). (:=)/2, 
+
+
+:- compile( monobus ). %% // after main.pl, to avoid  Unknown error?
 
 ?-  (gpsflag := true), %% NB TEST VERSION, NTNU Server
 
@@ -55,12 +64,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%:-compile('tucbuses.pl'). %% Sicstus 4 requires *.pl extension  %:-use_module('tucbuses.pl', [ makegram/0 ] ).
-:-use_module( 'tucbuses.pl', [] ). %% Sicstus 4 requires *.pl extension  %:-use_module('tucbuses.pl', [ makegram/0 ] ). %% RS-141024
-
-:-ensure_loaded( user:version ).       %% RS-131227    With version_date/1, used in monobus -> teledat2.pl
-
-?-compile('monobus.pl'). %% // after main.pl  Unknown error 
 
 /*   COMPILE FILE OVERVIEW
  create_busstuc  (Unix command)
@@ -75,6 +78,7 @@
                    tuc/ *.pl
                    tuc/gram_n.pl
                    tuc/gram_e.pl
+                     ?-makegram.
                       ?-compile_english.                  
                       ?-compile_norsk.
                main.pl        %% RS-140101

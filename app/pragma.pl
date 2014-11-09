@@ -66,9 +66,10 @@
 
 
 %% RS-141026    UNIT: /
-:- use_module( '../main.pl', [ value/2 ] ). %MISERY?!
-%% UNIT: /
 %:- ensure_loaded( user:'../declare' ).  %% RS-140928 or? and? not? %% Including...
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+%:- use_module( '../main.pl', [ value/2 ] ). %MISERY?!
+%% UNIT: /
 %:- op( 715, fy, assume). %operator in pragma, but looks like assume(predicate) in bustrans... ? meta_predicate setting?
 
 
@@ -83,7 +84,7 @@
 :- use_module( '../utility/utility', [ match/2, occ/2, roundrecmember/2, roundreverse/2, sequence_member/2 ] ).
         %% RS-131231 bound/1, testmember/2, test/1, unbound/1  is used only in rules:
         %%   in interapp % follow_after/3, follow_sequence/3, roundmember/2,
-:- use_module( '../utility/writeout', [ out/1 ] ).
+:- use_module( '../utility/writeout', [ out/1, prettypr/2 ] ).
 :- use_module( '../utility/datecalc', [ ] ). % add_days/3, addtotime/3, before_date1/2, difftime/3, isday/1, sub_days/3, subfromtime/3, timenow/1, timenow2/2, today/1, todaysdate/1 ] ).
 %% Already imported by telelog? % Contains the utility predicates that has to do with dates, call-ed below!
 
@@ -95,7 +96,7 @@
 :- use_module( teletrans, [ ]).        %% RS-140210 , (not)/1   %% RS-141001 Moved to bustrans, tele et al. (rule/2)
 
 %:- use_module( dmeq, [ dmeq/2 ]). %% RS-140102, Really Used, in several  pragma.pl->interapp->bustrans rules
-:- use_module( interapp, [ prettypr/2 ] ). % newfree/1 ]).  % %% RS-131230, Don't confuse with prettyprint/1 in utility.pl 
+%:- use_module( interapp, [ prettypr/2 ] ). % newfree/1 ]).  % %% RS-131230, Don't confuse with prettyprint/1 in utility.pl 
 %:- use_module( interapp, [ prettypr/2 ]).  % %% RS-131230, Don't confuse with prettyprint/1 in utility.pl 
 %:- use_module( negans, [ ] ). % trytofool/3 ] ).
 

@@ -8,7 +8,8 @@
 :-module( dmeq, [ dmeq/2 ] ).
 
 %% UNIT: /
-:- use_module( '../main', [ value/2 ] ).
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+%:- use_module( '../main', [ value/2 ] ).
 
 %% UNIT: utility/
 :- use_module( '../utility/utility', [ testmember/2 ] ).%:- ensure_loaded( user:'../utility/utility' ).       %% RS-131231

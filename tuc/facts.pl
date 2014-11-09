@@ -19,11 +19,12 @@
 :-module( facts, [ difact/1, fact/1, have/4, isa/2, neighbourhood/1, precedent_firstname/1, unproperstation1/1 ] ). % Unknown stations (unproperstations) could be neibhorhoods at least!
 
 %% RS-131225, UNIT: / and utility/
-:- ensure_loaded( '../declare' ).       %% RS-111212 :-op( 710,xfx, isa ).
+%:- ensure_loaded( '../declare' ).       %% RS-111212 :-op( 710,xfx, isa ).
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 %:- use_module( '../utility/utility', [ ] ). %% RS-131225 value/2, etc?
 
 %MISERY? 
-:- use_module( '../main', [ difact/2, fact0/1, value/2 ] ).
+:- use_module( '../main', [ difact/2, fact0/1 ] ).
 
 %%% RS-111205, UNIT: tuc/
 %:- use_module( evaluate, [  ] ).   % fact/1    %% RS-140921

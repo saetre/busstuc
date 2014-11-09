@@ -3,7 +3,8 @@
 %% CREATED   TA-051007
 %% REVISED   TA-060208
 
-:- ensure_loaded( user:'declare' ). %% RS-111213 General (semantic) Operators
+%:- ensure_loaded( user:'declare' ). %% RS-111213 General (semantic) Operators
+:- use_module( declare, [ (:=)/2, (=:)/2, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
 %% UNIX Version
 

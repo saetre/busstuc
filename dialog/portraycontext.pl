@@ -10,12 +10,13 @@
 :-module( portraycontext, [ dumpcontext/0, dumpstack/1, dumptopframe/0, lcon/0, pcon/0, pcontext/0, printcontext/0, printdialogtreenode/1, printslot/2 ] ).
 
 %%% RS-131225, UNIT: /
-:- use_module( '../main', [ indentprint/2, value/2 ] ).
-:- use_module( '../ptbwrite', [ tab/1 ] ). %% RS-140914
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+%:- use_module( '../main', [ value/2 ] ).
+:- use_module( '../utility/ptbwrite', [ tab/1 ] ). %% RS-140914
 
 %% RS-140101. UNIT: /utility
 :- use_module( '../utility/utility', [ for/2 ] ). %% RS-140101 for/2 ?!
-:- use_module( '../utility/writeout', [ out/1, output/1 ] ). %% RS-140101 for/2 ?!
+:- use_module( '../utility/writeout', [ indentprint/2, out/1, output/1 ] ). %% RS-140101 for/2 ?!
 
 %% RS-140101. UNIT: Prolog Library
 %:-use_module( library(aggregate), [ foral/2 ] ).   %% RS-141029  for-all Does NOT work like utility:for/2
@@ -213,7 +214,7 @@ dumpcontext(Cid) :-
 	write('NodeStack: '), nl,
 	dumpnodestack(NodeStack).
 
-dumpnodestack([node(Name,  _  , focus(Frame, Refer, Query), Rem) | Rest]) :-
+dumpnodestack( [node(Name,  _  , focus(Frame, Refer, Query), Rem) | Rest] ) :-
 	write(' Node: '), write(Name), nl,
 	write('  Frame: '), nl,
 	dumpframe(Frame, 2),
@@ -223,6 +224,7 @@ dumpnodestack([node(Name,  _  , focus(Frame, Refer, Query), Rem) | Rest]) :-
 	write('  Remainder: '), write(Rem), nl, nl,
 	dumpnodestack(Rest).
 
+dumpnodestack( [] ).
 
 dumpframe(Frame) :-
 	dumpframe(Frame, 0).
@@ -243,21 +245,22 @@ dumpframe([[Name, Value, class(_), Count] | Rest], Depth) :-
 dumpframe([], _).
 	
 
-dumprefer(List) :-
+dumprefer( List ) :-
 	dumprefer(List, 0).
 
-dumprefer([]).
+dumprefer( [] ).
+dumprefer( [], _ ). %% RS-141105 Was missing " , 0 "
 
-dumprefer([Head | Rest], Depth) :-
-	write_indent(Depth),
-	write(Head), nl, 
-	dumprefer(Rest, Depth).
+dumprefer( [ Head | Rest ], Depth ) :-
+	write_indent( Depth ),
+	write( Head ), nl, 
+	dumprefer( Rest, Depth ).
 
-write_indent(Depth) :-
+write_indent( Depth ) :-
 	Depth > 0,
 	write(' '),
 	NewDepth is Depth - 1,
-	write_indent(NewDepth).
+	write_indent( NewDepth ).
 
 write_indent(_).
 

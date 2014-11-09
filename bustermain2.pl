@@ -20,40 +20,35 @@
         webrun_english/0,      webrun_norsk/0, webrun_tele/0,  write_taggercall/1
 ] ).
 
-:- meta_predicate  track(+,0) .
+%:- meta_predicate  track(+,0) .
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%MISERY? 
-:- use_module( 'main', [ difact/2, fact0/1, set/2, value/2 ] ).
 
-%:- dynamic
-%        ( => )/2,    %% See translat.pl
-%        difact/2,    %% Dynamic,  context dependent  %% TA-980301
-%        fact0/1.     %% Semi permanent, in evaluate.pl
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% RS-131225, UNIT: /   %% RS-131225, UNIT: utility/
-:- ensure_loaded( 'declare.pl' ). %% RS-131228 "new syntax" defs, META-preds: for/2, remember/1, value/2, :=/2, =;/2
-% backslash( B ) :- user:backslash( B ). % RS-141024 "Imported" from declare.pl
-
-:- use_module( 'main', [ value/2 ] ).
+%:- ensure_loaded( user:'declare.pl' ). %% RS-131228 "new syntax" defs, META-preds: for/2, remember/1, value/2, :=/2, =;/2
+:- use_module( declare, [ (:=)/2, (=:)/2, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
 %% RS-131227, UNIT: EXTERNAL LIBRARIES
 :- use_module( library(system), [ sleep/1 ] ). 
 :- use_module( library(timeout), [ ] ). 
 :- use_module( library(process), [ process_id/1 ] ).    %% RS-141024
 
-:- use_module( 'main', [ (:=)/2, (=:)/2, backslash/1 ] ).
-
-:- use_module( ptbwrite, [ ptbwrite/1 ] ). %% RS-140914
 
 %% RS-131225, UNIT: /utility/
 :- use_module('utility/utility', [ append_atomlist/2, append_atoms/3, for/2, makestring/2, 
                                    pront/1, psl/2, purge/3, set_ops/3, shell_copyfile/2, starttime/0, taketime/0, timeout/3 ] ). %% RS-120816 sequence_member, etc.
 :- use_module( 'utility/library', [ reverse/2, shell/1 ] ).  %% RS-131225 exec/1 ] ). % RS-131227 Investigate this ;-)
 %:-use_module( 'utility/datecalc', [ datetime/6 ]).%% RS-131225    For app/buslog, telelog, etc?
-:-use_module( 'utility/writeout', [ doubt/2, language/1, out/1, output/1, prettyprint/1 ]).%% RS-141024
+:- use_module( 'utility/ptbwrite', [ ptbwrite/1 ] ). %% RS-140914
+:- use_module( 'utility/writeout', [ doubt/2, out/1, output/1, prettyprint/1, track/2, traceprint/2 ]).%% RS-141024
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% RS-131225, UNIT: /   %% RS-131225, UNIT: utility/
+% backslash( B ) :- user:backslash( B ). % RS-141024 "Imported" from declare.pl
+
+%:-ensure_loaded( version ).       %% RS-131227    With version_date/1, used in monobus -> teledat2.pl
+:- use_module( busterversion, [ version_date_buster/1 ] ).       %% RS-131227    With version_date/1, used in monobus -> teledat2.pl
+:- use_module( 'main', [ difact/2, fact0/1, backslash/1, language/1 ] ). %(:=)/2, (=:)/2, :- use_module( 'main', [ value/2 ] ). , set/2, value/2 ] ).
 
 %% RS-131224  calls the for-predicate  %% Used in FOR from makeauxtables
 :- use_module( getphonedir, [ create_tags/1, hazardous_tagname/1 ]).        %% RS-131227    send_taggercall/1, hazardous_tagname/1
@@ -90,8 +85,17 @@
 % ensure_loaded( 'tuc/torehash' ).   % RS-131224 OBSOLETE! Moved to utility/makeauxtables!
 :- use_module( 'tuc/translat', [ (=>)/2, transfix1/2 ] ).        %% RS-131227    UNIT: tuc/ clausifystm/1, clausifyq/2 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:- dynamic
+%        ( => )/2,    %% See translat.pl
+%        difact/2,    %% Dynamic,  context dependent  %% TA-980301
+%        fact0/1.     %% Semi permanent, in evaluate.pl
 
+%:-dynamic txt/3,      % elementary words       %% RS-131225    Moved to lex?
+%          ctxt/3,     % composite words 
+%          maxl/1.
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % local copy of META-PREDICATES from utility.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %for(P,Q):-
@@ -107,11 +111,6 @@ break(_). %% dummy for breakpoints
 
 % Main program
 
-
-%:-dynamic txt/3,      % elementary words       %% RS-131225    Moved to lex?
-%          ctxt/3,     % composite words 
-%          maxl/1.
-%
 
 ?-op(1150,fx,spyg). %% spy grammar rule
 ?-op(1150,fx,spyr). %% spy pragma rule
@@ -398,9 +397,6 @@ bad_language :-
 
 %%%%%%%%%%%%%%% Other Commands
 
-
-%:-ensure_loaded( version ).       %% RS-131227    With version_date/1, used in monobus -> teledat2.pl
-:- use_module( busterversion ).       %% RS-131227    With version_date/1, used in monobus -> teledat2.pl
 
 tuc_version:-   
     %version_date(V),     %% version.pl
@@ -1009,19 +1005,19 @@ present(N,P):-
 
 
 
-traceprint(N,P):- 
-    value(trace,M), number(M), M >= N, 
-    !,
-    write(P),nl
-;
-    true.
+%traceprint(N,P):- 
+%    value(trace,M), number(M), M >= N, 
+%    !,
+%    write(P),nl
+%;
+%    true.
 
-track( N, P ) :-
-    value(trace,M),  number(M), M >= N, 
-    !,
-    P
-;
-    true.
+%track( N, P ) :-
+%    value(trace,M),  number(M), M >= N, 
+%    !,
+%    P
+%;
+%    true.
  
 %trackprog(N,P):- 
 %    value(traceprog,M), number(M), M >= N, 

@@ -30,3 +30,4 @@
 :-use_module( 'makeauxtables.pl', [ ] ).   %% RS-130330    Slow! Takes a couple of minutes...
 
 %%%%%%% THE END %%%%%%%%%%%%%%%%%%%%%%%%%
+

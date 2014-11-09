@@ -28,10 +28,6 @@
 :- meta_predicate dumppredas(0,?).       %% Moved to extracut... ??
 
 :- meta_predicate tafind(?,0,0), taexists(?,0,0), taforall(?,0,0) .
-tafind(_X,Y,Z):- Y,Z.
-taexists(_X,Y,Z):-Y,Z,!.
-taforall(_X,Y,Z):- \+ (Y, \+ Z),!.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% MOVED BACK TO UTILITY
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -51,9 +47,10 @@ taforall(_X,Y,Z):- \+ (Y, \+ Z),!.
 
 
 %% RS-140102. UNIT: /  and  /utility/  %% RS-140101 Moved to user:declare for common and early compilation!
-:- ensure_loaded( 'declare.pl' ). %, [ := /2 etc. ] ). test/1 
+%:- ensure_loaded( 'declare.pl' ). %, [ := /2 etc. ] ). test/1 
+:- use_module( declare, [ remember/1 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
-:- use_module( 'utility/utility.pl', [  delete1/3, ends_with/3, for/2, remember/1, set_of/3, textlength/2 ] ).
+:- use_module( 'utility/utility.pl', [  delete1/3, ends_with/3, for/2, set_of/3, textlength/2 ] ).
 :- use_module( 'utility/datecalc.pl', [ datetime/6 ] ). % add_days/3, easterdate/2, sub_days/3, this_year/1 ]).%% RS-121325-140928 to timedat.pl
 :- use_module( 'utility/writeout', [  out/1, output/1, writepred/1 ] ). %writepred/1 is USED! in for/3 or set_of/3,
 
@@ -106,6 +103,10 @@ taforall(_X,Y,Z):- \+ (Y, \+ Z),!.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+tafind(_X,Y,Z):- Y,Z.
+taexists(_X,Y,Z):-Y,Z,!.
+taforall(_X,Y,Z):- \+ (Y, \+ Z),!.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 verify_files_exist( Filename ) :-
         output( Filename ),
@@ -596,7 +597,7 @@ remembertorehash(U,Y):-
     remember(makeauxtables:torehash0(U,Y)). 
 
 %https://sicstus.sics.se/spider/determinacy_analyzer.html How to hide "fake" non-success warnings? RS-140928
-spurious_street_hash(Kroglunds,Kroglundsv) :- 
+spurious_street_hash( Kroglunds, Kroglundsv ) :-
     composite_stat(Johan,[P,Kroglunds,street],Johan_p_kroglundsv),
     ends_with_vg(Johan_p_kroglundsv),
     composite_stat(Johan,[P,Kroglundsv],      Johan_p_kroglundsv),
