@@ -169,7 +169,7 @@ dcg_module( norsk,   dcg_n ).
 
 %% RS-131227 Makegram is used IN tucbuses!  %% Avoid circles!?
 makegram( PATH ) :-
-        current_directory( _, '/eclipse/workspace/busstuc' ),
+%        current_directory( _, '/eclipse/workspace/busstuc' ),
         compile_english( PATH ),
         compile_norsk( PATH ). % , current_directory( _, OldDir ).
 
