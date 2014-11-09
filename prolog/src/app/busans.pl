@@ -14,8 +14,9 @@
 %UNIT: app/
 :- module( busans, [ rule/2, tracevalue/1 ] ). %%  Different for busans and bustrans 
 
-:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
-:- use_module( '../main', [ value/2 ] ).
+%:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+%:- use_module( '../main', [ value/2 ] ).
 tracevalue(L) :- value(traceans,L).  % Trace level 1-4
 
 %% Rule format
@@ -223,11 +224,11 @@ ip  [].
 
 % Two stations, no transfer (one bus)
 twonotrans  rule 
-is  connections(_,_,_Bus,_From_,ToPlace,Day,_Dayseqno,FLN,Deps,[])
+is  connections( _, _, _Bus, _From, ToPlace, Day, _Dayseqno, FLN, Deps, [] )
 
 id	 add (google(MAP),Out) %% <------- %% TA-100227
  
-ip	 outdeplist(Deps,Day,FLN,ToPlace,Out,MAP). %% TA-100223
+ip	 outdeplist( Deps, Day, FLN, ToPlace, Out, MAP ). %% TA-100223
 
 % Two stations with transfer (two buses)
 
@@ -249,7 +250,7 @@ ip	 \+ value(smsflag,true).
 keepfrom rule 
 is  keepfrom(Place,_,_),passevent(Deps,_,_,Opts,Day,_)
 id	 add (google(MAP),Out)
-ip	 Place == hovedterminalen, 
+ip	 Place == hovedterminalen,
     outdeplist(Deps,Day,Opts,from(Place),Out,MAP).
 
 direction rule 

@@ -7,15 +7,19 @@
 %% Anaphoric resolution
 :- module( anaphors, [ is_the/2, matchresol0/2, nabi/3, resolve/2 ] ). % externalresolveit/2, inventresolveit/2, 
 
+:- meta_predicate  mege( +, ?, ?, -).
+
 %% UNIT: / and /utility
 %:- ensure_loaded( '../declare' ).  %% RS-140915 , track/2
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
 %% RS-131225, UNIT: utility/
-:- use_module( '../utility/utility', [ match/2, nth/3, test/1 ] ). %local: , test/1
+:- use_module( '../utility/utility', [ match/2, nth/3 ] ). %local: , test/1
 :- use_module( '../utility/library', [ reverse/2 ] ).%% RS-131225
+:- use_module( '../utility/writeout', [ track/2 ] ).  %% Module util  , prettyprint/1, output/1, 
 
 %% RS-111205, UNIT: / 
-:- use_module( '../main.pl', [ value/2 ] ). %% RS-140209 hei/0,   run/0,  track/2 localized to avoid MISERY!
+%:- use_module( '../main.pl', [ value/2 ] ). %% RS-140209 hei/0,   run/0,  track/2 localized to avoid MISERY!
 
 %% RS-140210. UNIT: /tuc/
 :- use_module( evaluate, [ disqev/1, fakt/1 ] ).          %% RS-140210
@@ -29,7 +33,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% META-PREDICATES
-:- meta_predicate  track(+,0) .
+%:- meta_predicate  track(+,0) .
 
 %:- meta_predicate test(0) .  %% RS-140615  %% test/1 is a meta-predicate ( just passing on the incoming X-predicate
 %test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
@@ -287,8 +291,8 @@ internalresolve(X1:T,L):-
 
 %% You can only refer to a possible referent with a more general reference.
 
-anasumes(T,U):- % referent T   versus reference U
-    test(subclass0(U,T)).
+anasumes(T,U) :- % referent T   versus reference U:    test(
+        \+ ( \+ ( subclass0(U,T) ) ).
 
 
 %% internalresolveit
@@ -401,7 +405,7 @@ res2((_X,_Y),_,_,_,_):-!,error_in_anaphors.
 
 res2(findexternal(X:C)::P,L1,L,Z1,Z):- 
     !,
-    mege(_,X/0 isa C,Z1,Z2),
+    mege( _, X/0 isa C, Z1, Z2 ),
     res2(P,L1,L,Z2,Z).
 
 res2(findpron(X:C)::P,L1,L,Z1,Z):- 
@@ -474,10 +478,10 @@ nabi(X1,C,DL):-         %%   X1/N isa Y exists on L
     X1=X2,
     !.
 
-externalres2(N,X,C,L1,L):-      % Dynamically query the qualia  X:_
+externalres2( N, X, C, L1, L ) :-      % Dynamically query the qualia  X:_
      bagof(Y,fakt(Y isa C),Z),  % Z > []
      discnth(N,Z,X),
-     mege(_,X/N isa C,L1,L).    %    [X/N isa C|L1]).
+     mege( _, X/N isa C, L1, L ).    %    [X/N isa C|L1]).
 
 
 discnth(N,Z,X):-
@@ -490,19 +494,12 @@ mege( 1, X/N isa C, L, M ) :-
     !,
     L=M.
 
-mege(0,P,L,M):- 
-    mege0(P,L,M).
+mege( 0, P, L, M ) :- 
+    mege0( P, L, M ).
 
 mege0(X/N isa C,L,[X/N isa C|L]).
 
 
 
 %%%%%%%%%%%%%%%%%%%%%THE END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-track( N, P ) :- 
-    value( trace, M ),  number(M), M >= N, 
-    !,
-    call(P)   %% TA-110130
-;
-    true.
 

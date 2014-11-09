@@ -10,9 +10,10 @@
         % pronoun/1, rep_verb/1, rewording/2, splitword/2, synsms/2, synwordx/2, unwanted_adjective/1, unwanted_noun/1, unwanted_interpretation/2, verbroot2/2, xcompword/3,
 
 %% RS-131225    UNIT: /
-:- ensure_loaded( '../declare' ).
+%:- ensure_loaded( '../declare' ).
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
-:- use_module( '../main.pl', [ backslash/1, value/2 ] ).
+:- use_module( '../main.pl', [ backslash/1 ] ).
 
 %% MISERY! %% RS-131229
 %:- ensure_loaded( user:'../tucbuses' ).  %% RS-130329 Make sure (gram/lang) modules are available: dcg_module,

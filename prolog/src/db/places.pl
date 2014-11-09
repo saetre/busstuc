@@ -37,9 +37,10 @@
 ] ).
 
 %% RS-141026    UNIT: /
-:- use_module( '../main.pl', [ value/2 ] ). %MISERY?!
-%%RS-131225     %% UNIT: /
 %:- ensure_loaded( user:'../declare' ). %, [ := /2 etc. ] ).      %RS-131225  Get dynamic definition for user:value/2
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+%:- use_module( '../main.pl', [ value/2 ] ). %MISERY?!
+%%RS-131225     %% UNIT: /
 
 %%RS-131225     %% UNIT: utility/
 :- use_module( '../utility/utility', [ ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
@@ -197,7 +198,7 @@ isat(munkegata_m3,sentrum).
 isat(munkegata_m4,sentrum). 
 isat(munkegata_m5,sentrum). 
 
-isat(olav_tryggvasons_gate,sentrum).    %% RS-121223
+isat(olav_tryggvasons_gate,hovedterminalen).    %% RS-121223 RS-141104 Sommer vs. vinter!?
 
 %% RS-140102    TODO: hovedterminalen  vs.  sentrum ??
 
@@ -220,6 +221,7 @@ isat(charlottenlund_kirke,charlottenlund).
 isat(charlottenlund_nedre,charlottenlund). 
 
 isat(city_lade,lade).   %% RS-130625 %% Sommerrute-løsning
+isat(lade_gård,lade).   %% RS-130625 %% Nattbuss-løsning
 
 isat(city_syd_e6,city_syd). %% RS-130818
 isat(city_syd_vestre,city_syd). %% TA-110627
@@ -7139,6 +7141,9 @@ short_specname(ts11,'Trondheim S 11').  %% (avoid list of identical names)
 short_specname(ts13,'Trondheim S 13').  %%
 
 short_specname(universitetet_lade,'Univ. Lade'). 
+
+%specname0(S0,S):- specname(S0,S),!.
+%specname0(S0,S):- bigcap(S0,S).
 
 specname('10c','10C'). 
 specname('24a','24A'). 

@@ -11,10 +11,10 @@
 :-meta_predicate  g_execute2( ?, ?, ?, 0).
 :-meta_predicate  g_select2( ?, ?, ?, 0).
 
-:-meta_predicate  trackprog(+,0).
+%:-meta_predicate  trackprog(+,0).
 
 %% UNIT / AND /utiltity/
-:- ensure_loaded( user:'../declare' ).       %% RS-111212  traceprog/2, trackprog/2
+%:- ensure_loaded( user:'../declare' ).       %% RS-111212  traceprog/2, trackprog/2
 %trackprog(X, Y) :- user:trackprog(X, Y).
 
 :- use_module( checkitem2, [ checkitem/3, sysout_item/1 ] ).       %% RS-140210
@@ -27,6 +27,7 @@
 
 %% UNIT: /utility/
 :- use_module( '../utility/writeout', [ out/1, output/1 ] ).   %% Common Dialog Grammar for bus and tele
+:- use_module( '../utility/writeout', [ trackprog/2 ] ).%% RS-141105
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

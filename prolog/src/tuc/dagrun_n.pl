@@ -13,10 +13,15 @@
 % Norwegian  clone of runtime routines 
 % - Loaded/Used in module dcg_n later...
 
+%% RS-131227    UNIT: /
+:- use_module( '../declare', [ set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+%:-use_module( '../main.pl', [ set/2, value/2 ] ). %% RS-140207, extra?  maxl/1,
+
+
 %% RS-131227    UNIT: tuc/
 %:-ensure_loaded( user:lex ). %%, [ maxl/1, txt/3  ]).                %% RS-131227    From lex.pl
 :-use_module( '../tuc/lex.pl', [ maxl/1, txt/3 ] ). %% RS-140207, extra?  maxl/1,
-:-use_module( '../main.pl', [ set/2, value/2 ] ). %% RS-140207, extra?  maxl/1,
+:-use_module( '../tuc/lex.pl', [ maxl/1, txt/3 ] ). %% RS-140207, extra?  maxl/1,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

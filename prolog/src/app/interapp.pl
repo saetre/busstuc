@@ -12,9 +12,8 @@
 %:- meta_predicate  % This area (before :-module ) belongs to pragma!! Why? Last import?
 
 %% UNIT: /app/
-:-module( interapp, [ avoidfool/1, decidewday/2, determine_application_period/1, determine_query_period/0, execute_program2/2, % To checkitem2.pl execute_program/1, 
-                      ieval/1, invisible_mess/1, isuccess/1, konstantify/1, makeanswer/4, newfree/1, notbothfree/2, nocols/2, prettypr/2,
-                      traceanswer/1, waves/0, webstat/3, writeprog/1 ] ).  % occ/2 and roundmember/2, % needed in pragma.pl?
+:-module( interapp, [ avoidfool/1, decidewday/2, determine_application_period/1, determine_query_period/0, execute_program/1, execute_program2/2, % To checkitem2.pl  
+                      ieval/1, invisible_mess/1, isuccess/1, konstantify/1, makeanswer/4, newfree/1, notbothfree/2, nocols/2, webstat/3 ] ).  % occ/2, roundmember/2, waves/0, % needed in pragma.pl?
 
 :-op( 731,xfy, ::: ).    %% sentence tag  %% TA-090514 For main, tuc/ [ translat, gram_x, evaluate, dcg_x, anaphors ], dialog/d_dialogue, app/interapp
 :-op( 730,xfy, :: ).     %% lambda infix  %% RS-141026 For      tuc/ [ translat gram_x fernando  dcg_x anaphors ], app/interapp, dialog/ [checkitem/2 d_context d_dialogue frames/2 makeframe/2 parseres virtuals relax update2 usesstate2]
@@ -34,10 +33,10 @@
 
 :- meta_predicate  foralltest(0,0).  %% for/2. Stay inside interapp? %% RS-140619
 :- meta_predicate  make_total_google( 0, ? ) .   %% RS-140927 Move up? Before busanshp?
-:- meta_predicate  once1(0) .    %% RS-140615  %% once1/1 meta-predicate
-:- meta_predicate  traceanswer(0).
+%:- meta_predicate  once1(0) .    %% RS-140615  %% once1/1 meta-predicate
+%:- meta_predicate  traceanswer(0).
 :- meta_predicate  totaljsonprint( +, 0 ) .      %% RS-140927
-:- meta_predicate  writeanswer(0).
+%:- meta_predicate  writeanswer(0).
 
 %:- meta_predicate  avoidfool( 0 ).  %% RS-141018
 %:- meta_predicate  find_tag( 0, - ). %% RS-141018
@@ -57,20 +56,21 @@
 % 
 
 %%% RS-131225, UNIT: / and utility/
-%:- ensure_loaded( '../declare' ). %% RS-111213 General (semantic) Operators
+%:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
+:- use_module( '../declare', [ ( := )/2, forget/1, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
 %%% RS-131225, UNIT: /utility/
-:- use_module( '../utility/utility', [ append_atoms/3, flatround/2, newconst/1, fnuttify2/2, for/2, forget/1, sequence_member/2 ] ). 
-        % Made local:  occ/2, once1/1, %% RS-140928 %% RS-140412 output/1  %% RS-131231, False Warning, SPIDER-bug. output/1 IS used !! when called from... bustrans?
-:- use_module( '../utility/writeout', [ output/1 ] ). 
+:- use_module( '../utility/utility', [ append_atoms/3, flatround/2, newconst/1, fnuttify2/2, for/2, once1/1, sequence_member/2 ] ). %forget/1,  
+        % Made local:  occ/2, %% RS-140928 %% RS-140412 output/1  %% RS-131231, False Warning, SPIDER-bug. output/1 IS used !! when called from... bustrans?
+:- use_module( '../utility/writeout', [ output/1, printdots/0, trackprog/2, waves/0, writeanswer/1, writeprog/1 ] ). % traceanswer/1,  
 
 %%% RS-140921, EXTERNAL LIBRARIES
-:- use_module( library( varnumbers ), [ numbervars/1 ] ). %% RS-140210.
+%:- use_module( library( varnumbers ), [ numbervars/1 ] ). %% RS-140210.
 %:- use_module( library( aggregate ), [ foral/2 ] ). %% RS-140210.   %% RS-141029  for-all Does NOT work like utility:for/2
 
 %%% RS-131225, UNIT: /
 %% RS-141026    UNIT: /
-:- use_module( '../main.pl', [ ( := )/2, printdots/0, set/2, value/2 ] ). %MISERY: trackprog/2, 
+%:- use_module( '../main.pl', [ ( := )/2, set/2, value/2 ] ). %MISERY: trackprog/2, 
 %:- use_module( '../main.pl', [ ] ). %% RS-111213 printdots/0, trackprog/2, 
 :- use_module( '../interfaceroute', [ search_period_module/3 ] ). %%, 
 
@@ -90,7 +90,7 @@
 
 %% RS-141026, UNIT; /dialog/
 %:- use_module( '../dialog/checkitem2', [ trackprog/2 ] ).  %% RS-131117 includes declare.pl , writeanswer/1 localized
-:- use_module( '../dialog/update2', [ trackprog/2 ] ).  %% RS-141031
+%:- use_module( '../dialog/update2', [ trackprog/2 ] ).  %% RS-141031
 
 %%% RS-131225, UNIT: /tuc/
 :- use_module( '../tuc/evaluate', [ evaluateq/1 ] ).  %% RS-131117 includes declare.pl
@@ -101,9 +101,9 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-foralltest(P,Q):- \+ ( P, \+ Q). 
+foralltest(P,Q) :- \+ ( P, \+ Q). 
 
-once1(P):-P,!. %% same as once, but version independent % try once, otherwise FAIL
+%once1(P) :- P,!. %% same as once, but version independent % try once, otherwise FAIL
 
 % Debug Exit: :(interapp,writeanswer(,(startmark,,(printmessage(date_isa_day(date(2014,4,13),sunday)),,(endline,,(printmessage(otherperiod(date(2014,4,13))),,(endline,,(google(dir(depnode(32,32,2,2,30,bus_0108_0007,108,2,dronningens_gate_d1),stavset)),,(bwrbusbc(nightbus,108),,(bcp(passes),,(bwr(dronningens_gate_d1),,(bcp(attime),,(bwt(32),,(nl,,(bcp(and),,(bcp(arrivesat),,(bwr(stavset),,(bcp(attime),,(bwt(54),,(period,,(output(...),,(bwrbusbc(nightbus,119),,(bcp(passes),,(bwr(munkegata_m1),,(bcp(attime),,(bwt(302),,(nl,,(bcp(and),,(bcp(arrivesat),,(bwr(stavset_senter),,(bcp(attime),,(bwt(325),,(period,earliesttimes))))))))))))))))))))))))))))))))) ?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -171,19 +171,6 @@ ieval(TQL0) :-
 
     waves. 
 
-
-waves :-  value(norsource,true), %% TA-110207
-    !.
-
-waves :-  value(traceprog,0), %% TA-110207
-          !.
-
-waves :-  value(dialog,1),
-          !.
-
-waves :-	
-         write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'), % 77 chars
-	 write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'),nl.
 
 determine_query_period :-
      
@@ -265,38 +252,6 @@ be_prep1(TQL,FQL):-
 	 konstantify(FQL).         % Flat TQL
 
 
-%% ¤¤¤¤¤¤¤¤¤¤¤¤
-traceanswer( _:Panswer ) :- 
-	 value(traceans,L),
-	 L>1,
-    !,
-	 copy_term( Panswer, Pwr ),
-	 numbervars(Pwr),         % utility.pl?
-	 prettypr('Application answer program',Pwr),nl. 
-traceanswer(_). %% Otherwise
-
-
-writeanswer( Panswer ) :- 
-    traceanswer( Panswer ),
-    Panswer,
-    !. 
-
-%% sant
-
-writeprog(P) :-
-	 value(traceprog,L),
-	 L>1,
-	 !,
-    copy_term(P,Pwr),
-	 numbervars(Pwr),
- 	 nl,  
-    prettypr('Application program',Pwr), 
-    nl, 
-    !.
-
-writeprog(_). % Otherwise
-
-%% ¤¤¤¤¤¤¤¤¤¤¤¤
 
 % Check if TQL still contains elements that it does not know anything about
 % Before Try TUC
@@ -368,7 +323,7 @@ irun1( _, _FlatCode, _FC1, Program ) :-
 
 irun1( _, FlatCode, _FC1, Program ) :-
     isuccess( Program ),
-%   execute_program( user:Program ),
+
     execute_program( buslog:Program ),         %% Make answer just for successful application program? %% RS-141030
     !,
     makeanswer( true, FlatCode, Program, Panswer ),
@@ -423,8 +378,8 @@ execute_program2(_Program,false).
         
 
 % MOVED TO CHECKITEM2.pl
-%execute_program( Module:Program ) :- %% For trace      %% RS-141012
-%    call( Module:Program ). %% Someone else MUST have used the correct use_modules in user: (message/1 etc.)
+execute_program( Module:Program ) :- %% For trace      %% RS-141012
+    call( Module:Program ). %% Someone else MUST have used the correct use_modules in user: (message/1 etc.)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MOVED BACK FROM  interapp.pl. Localized in checkitem2, interapp and update2, to avoid meta_predicate ordering conflicts. %% RS-141026
 %:- meta_predicate  execute_program( 0 ).  %% Stay inside interapp? %% RS-140619
@@ -595,12 +550,12 @@ make_total_google( AnswerOut,  TOTAL ):-
 googlemaptrace(nil,[]):-!. %% no route
 
 
-googlemaptrace(W,Bingo):-
-     maptrace(W,dual(List1,List2)),
-     enterexit(List1,Bing1),
-     enterexit(List2,Bing2),
+googlemaptrace( W, Bingo ) :-
+     maptrace( W, dual( List1, List2 ) ),
+     enterexit( List1, Bing1 ),
+     enterexit( List2, Bing2 ),
 
-     append(Bing1,Bing2,Bingo),
+     append( Bing1, Bing2, Bingo ),
      !.
 
 
@@ -608,7 +563,7 @@ googlemaptrace(W,Bingo):-
 
 
 
-prettyjsonprint(Bingo):-
+prettyjsonprint( Bingo ) :-
     write('['),nl,
     jsonbody(Bingo),
     write(']'),nl.
@@ -682,19 +637,19 @@ xstatcoord(_Num0, Intname,Intname, 0,0). %% NB Missing station in direction,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-maptrace( dir(depnode(_,_,_,_,_,Rid,_,_,Gløshaugen_syd),Nardosenteret),dual(LIST,[])):-
+maptrace( dir( depnode(_,_,_,_,_,Rid,_,_,Gløshaugen_syd), Nardosenteret), dual( LIST, [] ) ) :-
     !,
     xstation_trace(Rid,Gløshaugen_syd,Nardosenteret,LIST).
 
 
-maptrace( corr(depans(_,Rid1,_,Prinsen_kinosenter,_,_Rid2,_,Gløshaugen_nord), %% Special, dummy corr-> direct
-               nil),dual(List1,[])):-
+maptrace( corr( depans( _, Rid1, _, Prinsen_kinosenter, _, _Rid2, _, Gløshaugen_nord ), %% Special, dummy corr-> direct
+               nil ), dual( List1, [] ) ) :-
     !,
     xstation_trace(Rid1,Prinsen_kinosenter,Gløshaugen_nord,List1). %% TA-110323
 
 
-maptrace( corr(depans(_,Rid1,_,Prinsen_kinosenter,_,Rid2,_,Gløshaugen_nord),
-               midans(_,_,Studentersamfundet_1,_,_,Studentersamfundet_2)),dual(List1,List2)):-
+maptrace( corr( depans( _, Rid1, _, Prinsen_kinosenter, _, Rid2, _, Gløshaugen_nord ),
+               midans( _, _, Studentersamfundet_1, _, _, Studentersamfundet_2) ), dual( List1, List2 ) ) :-
 
     xstation_trace(Rid1,Prinsen_kinosenter,   Studentersamfundet_1, List1), %% TA-110323
     xstation_trace(Rid2,Studentersamfundet_2, Gløshaugen_nord,      List2). %%
@@ -729,7 +684,7 @@ makeanswer( true, FlatCode, ProgIn,  busanshp:AnswerOut       ) :-
     makeinitanswer( true, FlatCode, ProgIn, InitAnswer ),
     pragma_aux( busans:ProgIn, InitAnswer, AnswerOut ),   % pragma.pl pragma_aux/3 %% RS-141012
     !,
-    make_total_google( AnswerOut, _TOTAL). %% busanshp.pl
+    make_total_google( AnswerOut, _TOTAL) ; true. %% busanshp.pl  DON'T fail on missing GoogleMap functionality!
 
 
 makeanswer( false, FlatCode, ProgIn, busanshp:AnswerOut ) :-
@@ -812,19 +767,6 @@ newfree(free(C)) :- newconst(C).   % utility.pl
 bind(A) :- nonvar(A).
 bind(free(C)) :- newconst(C).
 
-prettypr(H,P) :- 
-	write('*** '), %% drop ... %% TA-110204
-   write(H),
-   write(' ***'),
-   nl,nl, 
-   prettypr2(P).
-prettypr2((X,R)) :-
-	!,   
-   write(X),nl,prettypr2(R).
-prettypr2(X) :-
-	write(X),nl.
-
-%%% 
 
 
 decidewday(Surday,M):- %% classical !trap 

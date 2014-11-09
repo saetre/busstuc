@@ -19,7 +19,7 @@
    passes44/6,    passesstations/4, passevent/6, passMOD/7, passtimeMOD/8, popframe/0, proper_end_station/2, pushframe/0, relax/1, replyq/1,  %% For negans.pl
    rid_to_direction/3, ridstobuses/2, samefplace/2, %% RS-140929 for bustrans.pl rules 
    selectroute/3, standardizeemit/2, station_trace/4, stationsat/3, statorplace/1, takestime/3, testanswer/2,
-   ticketprice2/2, timeis/1, trackprog/2, transferXYZ/3, trytransbuslist/4, withinslack/2,
+   ticketprice2/2, timeis/1, transferXYZ/3, trytransbuslist/4, withinslack/2,
 
    airbus_module/1, keepafter/3, passeq/6, ridtobusname/2, ridtobusnr/2, veh_mod/1, %% RS-140927 For busanshp.pl, moved to utility.pl: internalkonst/1, 
    stationD/2, properstation/1,    %% RS-131225 for makeauxtables
@@ -32,13 +32,13 @@
 %% META-PREDICATES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :- meta_predicate not(0).     % not/1,
-:- meta_predicate  once1(0) .    %% RS-140615  %% once1/1 meta-predicate
+%:- meta_predicate  once1(0) .    %% RS-140615  %% once1/1 meta-predicate
 %:- meta_predicate  set_of(+,0,-) . %% 141024. Moved BACK to utility.pl?
-:- meta_predicate  set_ops(+,0,-).
+%:- meta_predicate  set_ops(+,0,-).
 :- meta_predicate  set_eliminate(+,0,-,-).
 :- meta_predicate  set_filter(+,0,-,-).
 :- meta_predicate  test(0) .  %% RS-140615  %% test/1 is a meta-predicate ( just passing on the incoming X-predicate )
-:- meta_predicate  trackprog(+,0) .
+%:- meta_predicate  trackprog(+,0) .
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %% not/1 or (not)/1 is a predicate, and not can be written (also) a prefix operator (see operator-list in declare.pl)
@@ -65,7 +65,7 @@ not X :- \+ X.
 %frame_isfull/1,         frame_setexperience/4,        frame_setexperience_rec/4
 %xframe_getvalue/2,      xframe_setvalue/2      % From dialog/frames2
 
-%once1(P):-P,!. %% same as once, but version independent   %% try once, otherwise FAIL
+%once1( P ) :- P,!. %% same as once, but version independent   %% try once, otherwise FAIL
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Prologs set_of is baroque %% RS-140614  130sec runtime vs. 28sec runtime for \r tests/batch !
 %:- meta_predicate  set_of(+,0,-) . %% 141024. Moved BACK to utility.pl?
@@ -79,21 +79,23 @@ not X :- \+ X.
 %    remove_duplicates(Z1,Z). %% order-preserving
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- ensure_loaded( '../declare' ). %% RS-111213 ,  value/2, traceprog/2, trackprog/2
+%:- ensure_loaded( '../declare' ). %% RS-111213 ,  value/2, traceprog/2, trackprog/2
+:- use_module( '../declare', [ (:=)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
 :- ensure_loaded('../db/discrepancies.pl' ). %% RS-131230 alias_station2/3, etc.
 
 %%% RS-140101, UNIT: /  and  /utility/
-:-use_module( '../utility/utility', [ bound/1, charno/3, firstmem/2, lastmem/2, maximum/2, maxval/3, members/3, minimum/2, minval/3,
-        testmember/2, set_difference/3, set_of/3, starttime/0, timeout/3, unbound/1 ] ). %test/1, testmember/2 %  ]). %% Made loca: set_eliminate/4, set_filter/4, 
+:-use_module( '../utility/utility', [ bound/1, charno/3, firstmem/2, lastmem/2, maximum/2, maxval/3, members/3, minimum/2, minval/3, once1/1,
+        testmember/2, set_difference/3, set_of/3, set_ops/3, starttime/0, taketime/0, timeout/3, unbound/1 ] ). %test/1, testmember/2 %  ]). %% Made loca: set_eliminate/4, set_filter/4, 
 %% locale meta-predicates: once1/1, test/1,  %% RS-131117 includes declare.pl
 
 :-use_module( '../utility/datecalc', [ add_days/3, days_between/3, addtotime/3, dayno/2, difftime/3, subfromtime/3, timenow/1, timenow2/2, today/1 ] ). %%, datetime/6, getdaynew/1, timenow/1, 
 :-use_module( '../utility/library', [ delete/3, remove_duplicates/2, reverse/2 ] ). %% RS-131225  For app/buslog, telelog, etc?
-:- use_module( '../utility/writeout', [ output/1 ] ).%% RS-140912
+:- use_module( '../utility/writeout', [ out/1, output/1, trackprog/2 ] ).%% RS-140912
+%:- use_module( '../utility/writeout', [ trackprog/2 ] ).%% RS-141105
 
 %%% RS-140101, UNIT: /
-:- use_module( '../main', [ ( := )/2, gps_origin/2, progtrace/2, value/2, traceprog/2 ] ).  %% RS-140209
+:- use_module( '../main', [ gps_origin/2, progtrace/2, traceprog/2 ] ).  %% RS-140209 ( := )/2, value/2, 
 :- use_module('../interfaceroute' , [ decide_period/2, domain_module/2 ]). % Interface procedures for handling interface to route modules, with topreg
 
 %%% RS-140210, UNIT: app/
@@ -122,26 +124,26 @@ not X :- \+ X.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sequence preserving setof, ( first occurrence stays first)
-set_ops(X,Y,Z):-
-    findall(X,Y,Z1),
-    remove_duplicates(Z1,Z). %% order-preserving
+%set_ops(X,Y,Z):-
+%    findall(X,Y,Z1),
+%    remove_duplicates(Z1,Z). %% order-preserving
 
-set_eliminate(X,Predicate,List1,List2):- 
+set_eliminate( X, Predicate, List1, List2 ) :- 
     set_ops( X, ( member(X,List1), \+ Predicate ), List2 ).
 
-set_filter(X,Predicate,List1,List2):-
+set_filter( X, Predicate, List1, List2 ) :-
     set_ops( X, ( member(X,List1), Predicate ), List2 ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 test(X):- \+ ( \+ ( X ) ).        %% Calls test(nostation(Y)) among other things, so: import nostation/1  Move to pragma.pl ?
 
-trackprog( N, P ) :-
-    value( traceprog, M ), number(M), M >= N,
-    !,
-    ( nl, call(P) )    %% TA-110130
-        ;
-    true. %% Finally, succeed anyway
+%trackprog( N, P ) :-
+%    value( traceprog, M ), number(M), M >= N,
+%    !,
+%    ( nl, call(P) )    %% TA-110130
+%        ;
+%    true. %% Finally, succeed anyway
 
 
 %%%%%%%%%%%%%%%% ALL ROUTE INTERFACE PREDICATES %%%%%%%%%%%%%%%%%%
@@ -297,6 +299,8 @@ bus(X):-
     veh_mod(TTP),TTP:regbus(X), number(X),
     X  < 10000. %%   e.g. buss 777
 
+:- use_module( '../db/tables/r1611_141020/regcut', [ composite_stat/3, departureday/4, route/3 ] ).
+
 xroute( X, Y, Z ) :-            %% TA-090331
     value( airbusflag, true ),
     !,
@@ -343,8 +347,8 @@ new_cutset_test(TTP,XStation,Trace1,Trace2,Rid1,Rid2,Delta,W) :-
 
 %%%%%%%%%%%%%%%%%%%%
 
-xpasses5(TTP,_Rid1,Trace1,STATNO,Station,Seq,DelArr,DelDep) :- %% TA-090812
-     TTP: ex_passes4(Trace1,STATNO,Station,Seq,DelArr,DelDep).
+xpasses5( TTP, _Rid1, Trace1, STATNO, Station, Seq, DelArr, DelDep ) :- %% TA-090812
+     TTP: ex_passes4( Trace1, STATNO, Station, Seq, DelArr, DelDep ).
 
 
 
@@ -428,13 +432,13 @@ cname(X,Y):-
 
 %% Needed for makeauxtables , inconsistent
 
-route(A,B,C):-         bus_mod(TTP), TTP:route(A,B,C).   %% RS-141026 true to Remove warnings because of TTP-modules not visible
+% route(A,B,C) :-          bus_mod(TTP), TTP:route(A,B,C).   %% RS-141026 true to Remove warnings because of TTP-modules not visible
 
-hpl(A,B,C):-           bus_mod(TTP),TTP:hpl(A,_,B,C).
+hpl(A,B,C) :-            bus_mod(TTP),TTP:hpl(A,_,B,C).
 
-composite_stat(A,B,C) :- bus_mod(TTP), TTP:composite_stat(A,B,C).   %% RS-141026 true to Remove warnings because of TTP-modules not visible
+% composite_stat(A,B,C) :- bus_mod(TTP), TTP:composite_stat(A,B,C).   %% RS-141026 true to Remove warnings because of TTP-modules not visible
 
-departureday(A,B,C,D) :- bus_mod(TTP),TTP:ex_departureday(A,B,C,D).
+% departureday(A,B,C,D) :- bus_mod(TTP),TTP:ex_departureday(A,B,C,D).
 
 passes44(A,STATNO,B,C,D,E) :-   bus_mod(TTP),TTP:ex_passes4(A,STATNO,B,C,D,E).
 
@@ -1233,8 +1237,9 @@ departure(Bus,Place,Day,DepSet) :- % Alle natt-bussavganger ved en stasjon
    setdepMOD(TTP,Place,Day,DepSet1),
 
    set_filter(X,night_route(X),DepSet1,DepSet2),
-   set_filter(X,not_extreme_hastus_time(X),DepSet2,DepSet3),
-   set_filter(Y, approvenightbustoplace(Place,Y)  ,DepSet3,DepSet).
+%   set_filter(X,not_extreme_hastus_time(X),DepSet2,DepSet3),   %% RS-141109  Nightbusses are no longer duplicated (Friday 26:35 === Saturday 02:35)
+%   set_filter(Y, approvenightbustoplace(Place,Y)  ,DepSet3,DepSet).
+   set_filter(Y, approvenightbustoplace(Place,Y)  ,DepSet2,DepSet).
 
 
 departure(Bus,Place,Day,DepSet) :- % Alle flybussavganger ved en stasjon
@@ -1259,14 +1264,14 @@ departure(Bus,Place,Day,DepSet) :- % Bussavgangene for en buss ved en stasjon
         atomic(Bus), % 5 is a bus
    !,
         veh_mod(TTP),
-   set_of(depnode(Time0,Time9,DelArr,DelDep,BegTime,Rid1,Bus,SEQNO,Station1),
+   set_of( depnode(Time0,Time9,DelArr,DelDep,BegTime,Rid1,Bus,SEQNO,Station1),
               depbusMOD(TTP,Bus,Place,Day,Time0,Time9,DelArr,DelDep,BegTime,Rid1,SEQNO,Station1),
-              DepSet).
+              DepSet ).
 
 %% Double departures Hastus   Friday 2800 + Staurday 0400
-not_extreme_hastus_time(X):-
-    X=depnode(_2820,_,_20,_,T2800,_Bus_108_3049,_,_,_),
-    T2800 < 1200.
+%not_extreme_hastus_time( X ) :-
+%    X = depnode(_2820,_,_20,_,T2800,_Bus_108_3049,_,_,_),
+%    T2800 < 1200.
 
 approvenightbustoplace(Place,Y) :-
    \+ avoidnightbustoplace(Place,Y).
@@ -1303,11 +1308,11 @@ airbus_route( depnode(_Time0,_Time9,_DelArr,_DelDep,_BegTime,Rid1,NB,_,_) ) :-
     busdat:airbus(NB).
 
 
-xdepartureMOD(TTP, Rid,Trace,BegTime,DaySeqNO):-          %% TA-100318
+xdepartureMOD( TTP, Rid, Trace, BegTime, DaySeqNO ) :-          %% TA-100318
 
-   TTP: ex_departureday(Rid,Trace,BegTime,DaySeqNO),
-   BegTime < 2500. %% "Friday" at 2500 = "Saturday" at 0100
-                   %% ignore, because 2500.. deps are duplicated
+   TTP: ex_departureday(Rid,Trace,BegTime,DaySeqNO)
+   . % ,  (BegTime < 2500 -> true ) ;  out('app/buslog~1314:late'), output(Rid) ). %% "Friday" at 2500 = "Saturday" at 0100
+                   %% ignore, because 2500.. deps are duplicated  %% RS-141109 Entries are no longer duplicated!?!
 
 
 
@@ -1319,7 +1324,7 @@ xdepartureMOD(TTP, Rid,Trace,BegTime,DaySeqNO):-          %% TA-100318
 %% Bus is unknown
 depMOD(TTP,Place,Day,Time0,Time9,DelArr,DelDep,BegTime,Rid,Bus,Seq,Station) :-
    passeqMOD0(TTP,Rid,Place,_STATNO,Station,Seq,DelArr,DelDep),
-   ridtobusnr(Rid,Bus),  TTP:regbus(Bus), %% dont generate removed buses  %% TA-110824
+   ridtobusnr(Rid,Bus),  TTP:regbus(Bus), %% dont generate removed buses  %% TA-110824 %% RS-141104 What about nightbus?
    adjustarr999(DelArr,DelDep,RealDelArr),
    adjustdep999(DelArr,DelDep,RealDelDep),
 
@@ -1692,7 +1697,7 @@ connections(StartDeps,EndDeps,Bus,FromPlace,ToPlace,Day,DaySeqNo,Opts,Deps,Mid01
 
     coupled(StartDeps1,EndDeps1,Bus,FromPlace,ToPlace,Day,DaySeqNo,Opts,Deps,Mid01),
 
-    trackprog( 2, ( nl, utility:taketime, nl ) ). %% TA-110322
+    trackprog( 2, ( nl, taketime, nl ) ). %% TA-110322
 
 remove_roundtrip_deps(FromPlace,ToPlace,StartDeps0,StartDeps1):- %% TA-110224
     set_eliminate(X,looping(FromPlace,ToPlace,X),StartDeps0,StartDeps1).
@@ -2637,6 +2642,7 @@ passeq(RID,STATNO,Station,Seq,DelArr,DelDep):-   %% Pass with seq. no.
 
     xpasses5( TTP,RID, Trace,STATNO,Station,Seq,DelArr,DelDep).
 
+
 passeqMOD(TTP,RID,STATNO,Station,Seq,DelArr,DelDep):-   %% Pass with seq. no.
 
      xdepartureMOD(TTP,RID,Trace,_BegTime,_),
@@ -2793,8 +2799,8 @@ occurs_before([_|Z],X1,X2):-
 
 %% ridtobusnr(RID,BusNr).   %% RID is known, gets BusNr and repaired BusName
 
-ridtobusnr(RID,BusNr):-
-    xroute(RID,BusNr,_),
+ridtobusnr( RID, BusNr ) :-
+    xroute( RID, BusNr, _ ),
     !.
 
 %% ridtobusname(RID,BusName).   %% RID is known, gets busname
@@ -2990,7 +2996,8 @@ depset(_,_).
 
 
 
-askref(_, _) :- false.     %% If we need to clarify references, we don't have to compute.
+askref(_, _) :- false.  %% If we need to clarify references, we don't have to compute.
+askref(never,succeeds). %% If we need to clarify references, we don't have to compute.
 
 pushframe.
 popframe.

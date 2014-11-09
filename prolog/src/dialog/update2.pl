@@ -11,33 +11,34 @@
 
 %% UNIT: /dialog/
 :-module( update2, [ dorelax/3, fixnameproblem/5, framevalue/2, getuserrefer/2, issubclass/2, istype/2, knowFlag/1, remove_fields/3, remove_knowflags/2,
-                     saturate/3, saturatemod/3, telerelax/3, trackprog/2, updateframe/3, updateframe_checkanswer/4, updateitems/2 ] ).
+                     saturate/3, saturatemod/3, telerelax/3, updateframe/3, updateframe_checkanswer/4, updateitems/2 ] ).
 
 
-:- meta_predicate  execute_program( 0 ).  %% Stay inside interapp? %% RS-140619
-:- meta_predicate  trackprog(+,0).  %% Stay inside the calling module (for the second argument)!  %% RS-140922
+%:- meta_predicate  execute_program( 0 ).  %% Stay inside interapp? %% RS-140619
+%:- meta_predicate  trackprog(+,0).  %% Stay inside the calling module (for the second argument)!  %% RS-140922
 %///
-trackprog( N, P ) :-
-    value( traceprog, M ), number(M), M >= N,
-    !,
-    ( nl, call(P) )    %% TA-110130
-        ;
-    true. %% Finally, succeed anyway
+%trackprog( N, P ) :-
+%    value( traceprog, M ), number(M), M >= N,
+%    !,
+%    ( nl, call(P) )    %% TA-110130
+%        ;
+%    true. %% Finally, succeed anyway
 
 %///
 
 %% UNIT: /
 %:- ensure_loaded( '../declare' ). %% RS-111213 General (semantic) Operators, e.g.  :: , trackprog/2        %Helper
-:- use_module( '../main', [ value/2 ] ). % trackprog/2, 
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+%:- use_module( '../main', [ value/2 ] ). % trackprog/2, 
 
 %% RS-131225    UNIT: / and /utility/
 :- use_module( '../utility/utility', [ set_of/3 ] ). %% LOOP?
-:- use_module( '../utility/writeout', [ output/1 ] ). %% Contains declare?
+:- use_module( '../utility/writeout', [ output/1, trackprog/2, writeprog/1 ] ). %% Contains declare? trackprog/2, 
 
 %% RS-140914    UNIT: /app/
 :-use_module( '../app/busanshp', [ paraphrase2/2, paraphrase_tele/2 ] ). %% extra: paraph2/1, paraphrase/1, paraphrase3/3, paraphrase_changes1/1,
 :-use_module( '../app/pragma', [ pragma/3, pragma_aux/3, pragma_complete/5, roundmember/2 ] ). % (old:4), %% RS-140102, ipragmaor0/0, set/2
-:-use_module( '../app/interapp', [ writeprog/1 ] ). % execute_program/1
+:-use_module( '../app/interapp', [ execute_program/1 ] ). % 
 
 %% RS-140914    UNIT: /db/
 :-use_module( '../db/teledat2', [ teleprocessdirect/4 ] ).
@@ -355,11 +356,11 @@ issubclass(SubType, SuperType) :-  %% TA-060309 More efficient
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% MOVED BACK FROM  interapp.pl. Localized in checkitem2, interapp and update2, to avoid meta_predicate ordering conflicts. %% RS-141026
-execute_program( Prog ) :-
-
-    trackprog(2, output('BEGIN  program')), 
-(   call( Prog ) ->
-           trackprog(2, output('END  program'));
-           trackprog(2, output('FAIL  program')),
-           fail ).
+%execute_program( Prog ) :-
+%
+%    trackprog(2, output('BEGIN  program')), 
+%(   call( Prog ) ->
+%           trackprog(2, output('END  program'));
+%           trackprog(2, output('FAIL  program')),
+%           fail ).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

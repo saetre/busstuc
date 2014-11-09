@@ -57,9 +57,10 @@
 
 %% RS-131228, UNIT: /  and  % UNIT: utility/    %% MISERY?
 %:- ensure_loaded( '../declare' ).  %% RS-131223        Get dynamic definition for user:value/2
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
 %% UNIT: /
-:- use_module( '../main', [ value/2 ] ).
+%:- use_module( '../main', [ value/2 ] ).
 %:- use_module( '../utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
 
 :- use_module( '../utility/utility', [ divmod/4, subcase/2, test/1, testmember/2 ] ).       %% RS-131117 make local: test/1, 
@@ -84,8 +85,8 @@ subject_object_test(_ ,_:Self ,_):-
 
 subject_object_test(_, _      ,_:agent):-!,fail. %% rough
 
-subject_object_test(V,X,Y):-  %% TA-100905
-    test(tv_template(V,X,Y,_S,_)). 
+subject_object_test(V,X,Y):-  %% TA-100905    test(
+        \+ ( \+ ( tv_template(V,X,Y,_S,_) ) ). 
 
 thenwhat(SWT,  SWT::EAP, ERS::EAP and ERS). %% Dont Ask, It works
 
@@ -427,9 +428,12 @@ isfaktor(100000).
 
 
 rep_verb(X):-  
+    dict_module(dict_n), dict_n:rep_verb(X).  %% RS-131231 "Imported" from tucbuses (norsk or english)
+
+rep_verb(X):-  
     dict_module(D), D:rep_verb(X).  %% RS-131231 "Imported" from tucbuses (norsk or english)
 
-which_thing(X:Thing,which(X:Thing)):- 
+which_thing( X:Thing, which(X:Thing) ) :-
      type(thing,Thing).
 
 
@@ -491,15 +495,15 @@ verbtype(evah,tv). %%   (resiproc have)
 verbtype(have,tv).
 verbtype(be,cv).   %% New verbtype 
 
-verbtype(Give,dtv) :- test(semantic:dtv_templ(Give,_,_,_)).
+verbtype(Give,dtv) :- test( semantic:dtv_templ(Give,_,_,_) ).
 
-verbtype(Kill,tv)  :- test(semantic:tv_templ(Kill,_,_)). 
+verbtype(Kill,tv)  :- test( semantic:tv_templ(Kill,_,_) ). 
 
 verbtype(Say, rv)  :- test( rep_verb(Say) ).    % Moved last (tell )
 
-verbtype(Live,iv)  :- test(semantic:tv_templ(Live,_,nil)). % kjøpe=kjøpe noe 
+verbtype(Live,iv)  :- test( semantic:tv_templ(Live,_,nil) ). % kjøpe=kjøpe noe 
 
-verbtype(Live,iv)  :- test(semantic:iv_templ(Live,_)). % important iv after tv
+verbtype(Live,iv)  :- test( semantic:iv_templ(Live,_) ). % important iv after tv
                                               % Greedy Heuristics
 
 

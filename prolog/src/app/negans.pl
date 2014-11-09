@@ -9,16 +9,17 @@
 %UNIT: /app/
 :- module( negans, [ cannot/1, cannotanswer/1, makenegative/3, trytofool/2, trytofool/3 ] ).
 
-%:-meta_predicate  makenegative( ?, +, 0 ).      %% RS-1401025 To match notthenanswer 
-:-meta_predicate  makenegative( ?, +, ? ).
+%:-meta_predicate  makenegative( ?, +, 0 ).     %% RS-141025  To match notthenanswer 
+:-meta_predicate  makenegative( ?, +, ? ).      %% RS-141105  Invalid Goal... busanshp:AnswerOut
 
 :-meta_predicate  notthenanswer( ?, ?, ?, ?, 0 ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% RS-141026    UNIT: /
-:- use_module( '../main.pl', [ progtrace/2, value/2 ] ). %MISERY?!
 %:- ensure_loaded( user:'../declare' ).       %% RS-111212 :-op( 710,xfx, isa ). traceprog/2
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../main.pl', [ progtrace/2 ] ). %MISERY?!
 :- use_module( '../utility/utility', [ bound/1, sequence_member/2, testmember/2 ] ). %% RS-141012
 
 % :- use_module( '../utility/utility', [  ] ).  %% RS-140209
@@ -242,10 +243,10 @@ makenegative((new,_),_,Ans)        :-
     Ans = (busanshp:( bcpbc(ok),nl)). %% NB negative ? Jeg er på dragvoll
 
 % 1 ?
-makenegative((which(A),P),Q,Ans)   :-   %% Hvilke busser må jeg ta
+makenegative( (which(A),P), Q, busanshp:Ans )   :-   %% Hvilke busser må jeg ta
     sequence_member(srel/(with)/frequency/A/_,P),
     getactualtime(Q,Date,Day,Clock),                               
-    notthenanswer(Date,Day,Clock,Q,Ans), 
+    notthenanswer(Date,Day,Clock,Q, busanshp:Ans ),
    !,progtrace(4,ne24).
 
 % 2 ?
@@ -266,14 +267,14 @@ makenegative((DN,P),Q,Ans) :-
     progtrace(4,ne26),!,
     Ans = (busanshp:( bcpbc(idonotknow),nl)). 
 
-makenegative( (which(A),P), Q, Ans )   :-  % awkard way of getting the actual day
+makenegative( (which(A),P), Q, busanshp:Ans )   :-  % awkard way of getting the actual day
     sequence_member(srel/in/place/A/_,P), 
  \+ sequence_member(stationsat(_,_,_),Q), %% Dirty  %% Time independent 
     getactualtime(Q,Date,Day,Clock),
     progtrace(4,ne27),!,
-    notthenanswer(Date,Day,Clock,Q,Ans).
+    notthenanswer(Date,Day,Clock,Q,busanshp:Ans).
 
-makenegative((which(A),P),Q,Ans)   :-      % awkard way of getting the actual day
+makenegative((which(A),P),Q,busanshp:Ans)   :-      % awkard way of getting the actual day
   \+ sequence_member(message(idonotknow),Q), %% Avoid double
 
     sequence_member(srel/in/place/A/_,P),
@@ -281,19 +282,19 @@ makenegative((which(A),P),Q,Ans)   :-      % awkard way of getting the actual da
     getactualtime(Q,Date,Day,Clock), 
     progtrace(4,ne28),!,
     (station(Vestre) -> 
-        Ans = (busanshp:( bcpbc(idonotknow),nl)); 
-        notthenanswer(Date,Day,Clock,Q,Ans)). 
+        Ans = ( bcpbc(idonotknow),nl ) ;
+        notthenanswer(Date,Day,Clock,Q,busanshp:Ans)). 
 
-makenegative((which(A),P),Q,Ans)   :- 
+makenegative((which(A),P),Q, busanshp:Ans)   :- 
     sequence_member(srel/in/time/A/_,P), 
     getactualtime(Q,Date,Day,Clock),                                 
-    notthenanswer(Date,Day,Clock,Q,Ans), 
+    notthenanswer(Date,Day,Clock,Q, busanshp:Ans), 
     progtrace(4,ne29),!.
 
-makenegative((which(A),P),Q,Ans)   :- 
+makenegative((which(A),P),Q, busanshp:Ans)   :- 
     sequence_member(A isa time,P),
     getactualtime(Q,Date,Day,Clock),                                
-    notthenanswer(Date,Day,Clock,Q,Ans),
+    notthenanswer(Date,Day,Clock,Q, busanshp:Ans),
     progtrace(4,ne30),!. 
 
 makenegative((which(_),_),Q,Ans)   :- 

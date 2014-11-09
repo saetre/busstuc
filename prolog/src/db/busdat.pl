@@ -32,10 +32,12 @@
                      %% RS-120402 %% Moved to timedat.pl  %% create_named_dates/0, % dedicated_date/1, orig_named_date/2,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- ensure_loaded( user:'../declare' ).       %% RS-120402       %% for(X,Y)
+%:- ensure_loaded( user:'../declare' ).       %% RS-120402       %% for(X,Y)
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+
 :- use_module( '../utility/utility', [ bound/1, testmember/2 ] ).
 
-:- use_module( '../main', [ value/2 ] ).
+%:- use_module( '../main', [ value/2 ] ).
 
 %% UNIT: /db/
 :- use_module( places, [ corr/2, foreign/1, isat/2, nostation/1, placestat/2 ] ). %% RS-131225

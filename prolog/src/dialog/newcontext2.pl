@@ -24,10 +24,10 @@
 %:- use_module( library(lists) ). %% delete/3 is also loaded from utility/library.pl !!
 
 %% UNIT: / and /utility/
-:- ensure_loaded( '../declare' ). %% RS-111213 General Operators, Meta_Predicates: set_of/3
-:- use_module( '../main', [ value/2 ] ). %% RS-141015        Set variable-values,  in the user:module !
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+%:- use_module( '../main', [ value/2 ] ). %% RS-141015        Set variable-values,  in the user:module !
 
-:- use_module( '../utility/utility', [ set_difference/3 ] ).       %% RS-131223 includes declare.pl
+:- use_module( '../utility/utility', [ set_difference/3, set_of/3 ] ).       %% RS-131223 includes declare.pl
 :- use_module( '../utility/library', [ delete/3 ] ).%% RS-131225 , reverse/2 for busanshp?
 
 %% RS-140101. UNIT: /app/
@@ -47,11 +47,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Prologs setof is baroque %% 
-:- meta_predicate set_of(+,0,-) .
-
-set_of(X,Y,Z):-           %%
-    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
-    Z=[].                 %% What is wrong with empty sets ?
+%:- meta_predicate set_of(+,0,-) .
+%
+%set_of(X,Y,Z):-           %%
+%    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
+%    Z=[].                 %% What is wrong with empty sets ?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% current is the id of the current context
@@ -226,7 +226,7 @@ gettopic(Topic) :-
 
                                               
 preselect_features(Topic,Type,Refer,Prefer) :-
-    set_of(SubType, (member([SubType, _X_],Refer),subclass0(SubType,Type)),    Z),
+    set_of( SubType, (member([SubType, _X_],Refer),subclass0(SubType,Type)),    Z),
 
     prescreen(Topic,Type,Z,Prefer).
 

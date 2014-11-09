@@ -100,8 +100,12 @@ nightbus
 */
 
 %UNIT: / and utility/
-:- ensure_loaded( '../declare' ). % includes NON-volatile value/2.  %% RS-130630 This caused BIG TROUBLE!  value/2
-:- use_module( '../main', [ value/2 ] ).
+%:- ensure_loaded( '../declare' ). % includes NON-volatile value/2.  %% RS-130630 This caused BIG TROUBLE!  value/2
+
+%:- use_module( '../declare', [ set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../declare' ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+
+%:- use_module( '../main', [ value/2 ] ).
 %value(Key,Val) :- value(Key,Val).  %% RS-130630 value must NOT be volatile predicate!!! This caused BIG TROUBLE!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -131,7 +135,7 @@ dep_module( '../utility/datecalc', [ add_days/3, addtotime/3, before_date1/2, da
                                      xweekday/2 ] ).
 %UNIT: /
 dep_module( '../interfaceroute', [ decide_period/2 ] ). %% RS-141015 
-dep_module( '../main', [ set/2 ] ). %% RS-141015        Set variable-values,  in the module !
+%dep_module( '../main', [ set/2 ] ). %% RS-141015        Set variable-values,  in the module !
 
 %UNIT: /app/
 %%% RS-131225, UNIT: app/
@@ -8059,8 +8063,9 @@ is  []
 id  not flag(exit),
     not atday(_),
     not atdate2(_,_),
+    
     add (today(Day),
-         atday(Day)),  %% atday only temporary for dialog
+         atday(Day) ),  %% atday only temporary for dialog
     not message(completesentence)
 ip  today(Day)
  ):- double.
@@ -8070,13 +8075,13 @@ ip  today(Day)
 todaydate rule bustrans:( % ...if no day is mentioned, default to today
 is  not present ( _ isa saturdayroute), %% Rough
     not present ( _ isa sundayroute)
-id  not flag(exit),
-    not atday(_),
-    not atdate2(_,_),
-    add (today(Day),
-         atday(Day)),  %% atday only temporary for dialog
-    not message(completesentence)
-ip  today(Day)
+id  not flag( exit ),
+    not atday( _ ),
+    not atdate2( _, _ ),
+    add ( today( Day ),
+          atday( Day ) ),  %% atday only temporary for dialog
+    not message( completesentence )
+ip  today( Day )
  ):-single.
 
 
@@ -15937,27 +15942,27 @@ is  %% not present dob/give/_/_/_, %% give me the times
 
 id  not flag(exit),
     add  flag(exit),     %% retention
-    not flag(fail),
 
     not  ticketprice2(_,_),
 
-    not listofall(bus,_),
-    not departure(_,_,_,_),
-    not message(date_isa_day(_,_)),
+    not listofall( bus, _ ),
+    not departure( _, _, _, _ ),
+    not message( date_isa_day(_,_) ),
     not findstations(_,_,_),
     not timeis(_),
-     not message(answer(_)),     %%  then tuc knows
+     not message( answer(_) ),     %%  then tuc knows
 
-    not message(noinfoabout(irregularity)),
-    not message(mustknow(bus)),
-    not message(mustknow(place)),
-    not message(howtuchelp),
-    not stationsat(_,_,_),
+    not message( noinfoabout(irregularity) ),
+    not message( mustknow(bus) ),
+    not message( mustknow(place) ),
+    not message( howtuchelp ),
+    not stationsat( _, _, _ ),
 
-    removeif message(date_isa_day(_,_)), %% er det søndagsruter idag
-    removeif message(otherperiod(_)),
-    removeif message(date_day_route(_,_))
+    removeif message( date_isa_day(_,_) ), %% er det søndagsruter idag
+    removeif message( otherperiod(_) ),
+    removeif message( date_day_route(_,_) ),
 
+    not flag(fail)
 %     add flag(fail) %% needed as retention
 %%%%   <-- Kills messages
 

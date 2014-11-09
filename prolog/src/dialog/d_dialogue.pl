@@ -12,9 +12,9 @@
 
 %% META-PREDICATES
 :- meta_predicate  g_execute1( ?, ?, 0).
-:- meta_predicate  traceanswer(0).
-:- meta_predicate  trackprog(+,0) .
-:- meta_predicate  writeanswer(0).
+%:- meta_predicate  traceanswer(0).
+%:- meta_predicate  trackprog(+,0) .
+%:- meta_predicate  writeanswer(0).
 
 :- volatile
            confused/1,
@@ -31,23 +31,23 @@
 :- assert( confused(noone) ). %-)
 
 
-:- use_module( library(varnumbers), [ numbervars/1 ] ). %% RS-141026.
+%:- use_module( library(varnumbers), [ numbervars/1 ] ). %% RS-141026.
 
 %% RS-140914  UNIT: /
-:- ensure_loaded( '../declare' ). %% RS-111213 General (semantic) Operators, e.g.  :: , trackprog/2        %Helper
-:- use_module( '../main', [ (:=)/2, value/2, exetuc/1, translate2/2 ] ). % dialog/0, 
+:- use_module( '../declare', [ (:=)/2, value/2 ] ). %% RS-111213 General (semantic) Operators, e.g.  :: , trackprog/2        %Helper
+:- use_module( '../main', [ exetuc/1, translate2/2 ] ). % dialog/0, 
 :- use_module( '../getphonedir', [  reset_ldapcon/0  ]).%% RS-131227    For ...main.pl, extra: create_tags/1,  
 :- use_module( '../interfaceroute', [  reset_period/0 ] ).
 
 %% RS-140914  UNIT: /utility/
 :- use_module( '../utility/utility', [ flatround/2, timeout/3 ] ).         %% RS-140102 AVOID LOOPS PLEASE!! %trackprog(X, Y) :- user:trackprog(X, Y) .
-%:- use_module( '../utility/writeout', [ output/1 ] ).%% RS-131225
+:- use_module( '../utility/writeout', [ trackprog/2, waves/0, writeanswer/1, xwriteanswer/2 ] ).%% RS-141105
 
 %%% RS-140914, UNIT: /app/
 :- use_module( '../app/busanshp', [  ] ).
 %:- use_module( '../app/buslog', [ timeout/3 ] ).
 :- use_module( '../app/pragma', [ pragma/3 ] ).        %% RS-140102, ipragmaor0/0, set/2
-:- use_module( '../app/interapp', [ konstantify/1, makeanswer/4, nocols/2, prettypr/2, waves/0 ] ). %% RS-141026 traceanswer/1, writeanswer/1 localized
+:- use_module( '../app/interapp', [ konstantify/1, makeanswer/4, nocols/2 ] ). %% RS-141026 traceanswer/1, writeanswer/1 localized
 
 %% RS-140914,   UNIT: /dialog/
 %% Dialogue manager.
@@ -57,7 +57,7 @@
 :- use_module( newcontext2, [ clearold/0, getcontext/2, getcurrent/1, newcontext/1, reset_context/0, setcontext/2, setcurrent/1 ] ).
                 %%, setframe/2, setquery/2, topic_subclass/3 ] ). %% RS-140101
 :- use_module( frames2, [ xframe_setvalue/2 ] ).
-:- use_module( parseres, [ xwriteanswer/2 ] ).
+%:- use_module( parseres, [ xwriteanswer/2 ] ).
 :- use_module( portraycontext, [ printcontext/0 ] ).
 
 
@@ -73,12 +73,12 @@ dialogrun0 :-
 %
 % hi:-debug, run. 
 
-trackprog( N, P ) :-
-    value( traceprog, M ), number(M), M >= N,
-    !,
-    ( nl, call(P) )    %% TA-110130
-        ;
-    true. %% Finally, succeed anyway
+%trackprog( N, P ) :-
+%    value( traceprog, M ), number(M), M >= N,
+%    !,
+%    ( nl, call(P) )    %% TA-110130
+%        ;
+%    true. %% Finally, succeed anyway
 
 processinput(Q) :-                     %%AM-980301
 	
@@ -176,7 +176,7 @@ reset_dialog(Reason):- %%  // bye/error
    makeanswer(true,Fql, Program ,AnswerOut), 
    waves, 
  
-   xwriteanswer(Fql,AnswerOut). %% -> dir_file?%% TA-070419 
+   xwriteanswer( Fql, AnswerOut ). %% -> dir_file?%% TA-070419 
 
 
 reset_dialog:- 
@@ -362,19 +362,19 @@ subst_tql(_, _, Item, Item) :- !.
 
 %% ¤¤¤¤¤¤¤¤¤¤¤¤
 %:- meta_predicate  traceanswer(0).
-traceanswer( _:Panswer ) :- 
-         value(traceans,L),
-         L>1,
-    !,
-         copy_term( Panswer, Pwr ),
-         numbervars(Pwr),         % utility.pl?
-         prettypr('Application answer program',Pwr),nl. 
-traceanswer(_). %% Otherwise
-
+%traceanswer( _:Panswer ) :- 
+%         value(traceans,L),
+%         L>1,
+%    !,
+%         copy_term( Panswer, Pwr ),
+%         numbervars(Pwr),         % utility.pl?
+%         prettypr('Application answer program',Pwr),nl. 
+%traceanswer(_). %% Otherwise
+%
 %% ¤¤¤¤¤¤¤¤¤¤¤¤
-writeanswer( Panswer ) :- 
-    traceanswer( Panswer ),
-    Panswer,
-    !. 
+%writeanswer( Panswer ) :- 
+%    traceanswer( Panswer ),
+%    Panswer,
+%    !. 
 
 %% sant

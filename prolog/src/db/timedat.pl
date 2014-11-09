@@ -14,15 +14,16 @@
         %% When does morning start?
 ] ).
 
-:- meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
-:- meta_predicate  remember(0) .        %% RS-140928 Remember the facts IN THE MODULE THAT CALLS REMEMBER! Use  :  or  0
+%:- meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
+%:- meta_predicate  remember(0) .        %% RS-140928 Remember the facts IN THE MODULE THAT CALLS REMEMBER! Use  :  or  0
 
 % Domains:   BOOLEAN ROUTETYPE STATION PLACE MINUTES
 %            DATE DAY DOMAIN CLOCK
 
-:- ensure_loaded( user:'../declare' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
+%:- ensure_loaded( user:'../declare' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
+:- use_module( '../declare', [ remember/1 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
-%:- use_module( '../utility/utility', [ for/2, remember/1 ] ).  %%  used in forall instead of utility:for/2. % Moved to declare.pl
+:- use_module( '../utility/utility', [ for/2 ] ).  %%  used in forall instead of utility:for/2. % Moved to declare.pl
 :- use_module( '../utility/datecalc.pl', [ add_days/3, easterdate/2, sub_days/3, this_year/1, todaysdate/1 ]).  %% RS-121325 Contains the utility predicates that has to do with dates
 :- use_module( '../utility/writeout.pl', [ output/1 ] ). % out/1, Not used  %% RS-141029
 
@@ -34,14 +35,14 @@
 :-dynamic named_date/2. %% Created Initially,  redefined with remember(day_map) below
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-remember( Module:F ) :- Module:F, ! ; assert( Module:F ).        %% Add F it is does not already exist.
+%remember( Module:F ) :- Module:F, ! ; assert( Module:F ).        %% Add F it is does not already exist.
 % remember( Module:F ) :- out( 'timedat:remember/1 => Something went wrong with:'), out( Module:F ), (call( Module:F ) -> output( 'true' ) ; output( false )).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
-for( P, Q ) :- %% For all P, do Q (with part of P). Finally succeed
-  P, Q, false ; true.
+%for( P, Q ) :- %% For all P, do Q (with part of P). Finally succeed
+%  P, Q, false ; true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 create_named_dates :-

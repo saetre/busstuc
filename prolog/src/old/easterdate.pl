@@ -7,7 +7,7 @@
 
 % Computes date of easter day for a given year
 
-
+:- meta_predicate  if3( 0, ?, ?, ? ) .
 
 easterdate(Y,Date):-
 
@@ -59,7 +59,7 @@ easterdate(Y,Date):-
 
 % utils
 
-if3(Expr,Var,Expr1,Expr2):- 
+if3( Expr, Var, Expr1, Expr2 ) :-
     Expr,!, 
     Var is Expr1
           ;

@@ -11,16 +11,20 @@
                      frame_setvalue_rec/4, frame_setexperience/4, frametemplate/2, is_subframe/2,  resetframe/0,
                      xframe_getvalue/2,  xframe_setvalue/2, askfor/3  ] ). /*extra? askfor/3?*/
 
+%:- meta_predicate  frame_getvalue_rec( 0, ?, ?, ? ) . %% RS-141105 Troublesome!?
+
 :-volatile
            framecounter/1.
 :-dynamic
            framecounter/1.
 
 %:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+
 :-op( 730,xfy, :: ).     %% lambda infix  %% RS-141026 For      tuc/ [ translat gram_x fernando  dcg_x anaphors ], app/interapp, dialog/ [checkitem/2 d_context d_dialogue frames/2 makeframe/2 parseres virtuals relax update2 usesstate2]
 
 %% UNIT: /
-:- use_module( '../main', [ value/2 ] ).
+%:- use_module( '../main', [ value/2 ] ).
 
 
 :- assert(framecounter(1)).
@@ -278,12 +282,12 @@ frame_getvalue(Slot, Value, Type) :-
     getframe(Cid, Frame),
     frame_getvalue_rec(Frame, Slot, Value, Type).
 
-frame_getvalue_rec(Frame, Super::Rest, Value, Type) :-
+frame_getvalue_rec( _:Frame, Super::Rest, Value, Type) :-  %% RS-141105 Deal with modules and meta_predicates!!    _:Predicate
     member([Super, SubFrame, subframe(_), _], Frame),
     frame_getvalue_rec(SubFrame, Rest, Value, Type).
 
-frame_getvalue_rec(Frame, Slot, Value, Type) :-
-    member([Slot, Value, class(Type), _], Frame),
+frame_getvalue_rec( _:Frame, Slot, Value, Type) :-      %% RS-141105 Deal with modules and meta_predicates!!   Module:Predicate
+    member( [Slot, Value, class(Type), _], Frame ),
     \+ Value == ? .
 
 frame_gettype(Slot, Type) :-

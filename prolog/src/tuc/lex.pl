@@ -22,6 +22,9 @@
         unconnectedtxt/2,       unknown/1,                      unknown_words/2,        unprotected_verb/0,     tucsoundex/2    %% TUCsoundex // Replace in sequence recursively
 ] ).    %% RS-131225
 
+:- meta_predicate rewordrepl1( ?, ?, - ). %% RS-141108  Only one output argument!?!
+:- meta_predicate tsxrepl1( ?, ?, - ). %% RS-141108  Only one output argument!?!
+
 % % % % % % % % % % % % % % % % % % % % % % % % % % 
 
 %%%%%% The coding conventions %%%%%%%%%%%%%%%%%%%%%
@@ -45,15 +48,15 @@
 %% META PREDICATES : for/2, foralltest/2, once1/1, set_of/3, set_ops/3, test/1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :- meta_predicate doall(0) .   %% RS-141019     doall/1 (Goal_0) . Zero input arguments for Goal_0 % doall(P): (P, then succeed)
-:- meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
+%:- meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
 :- meta_predicate  foralltest(0,0).
-:- meta_predicate  once1(0).
-:- meta_predicate  remember(0) .        %% RS-140928 Remember the facts IN THE MODULE THAT CALLS REMEMBER! Use  :  or  0
-:- meta_predicate  set_of(+,0,-).
-:- meta_predicate  set_ops(+,0,-).
+%:- meta_predicate  once1(0).
+%:- meta_predicate  remember(0) .        %% RS-140928 Remember the facts IN THE MODULE THAT CALLS REMEMBER! Use  :  or  0
+%:- meta_predicate  set_of(+,0,-).
+%:- meta_predicate  set_ops(+,0,-).
 :- meta_predicate  test(0).
-:- meta_predicate  track(+,0) .
 
+%:- meta_predicate  track(+,0) .
 %:- meta_predicate assertnewa(0) .     %% RS-140616  %% RS-141024  assertnewa/1 Goal_0 metapredicate.
 %:- meta_predicate assertnewz(:) .     %% RS-140616  assertnewa/1 Goal_0 metapredicate.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -72,53 +75,18 @@
           ctxt/3,     % composite words 
           maxl/1.
 
-:- use_module( '../utility/writeout', [ language/1, out/1, output/1 ]).       %RS-131223 Value == TROUBLE! value/2    (And for(X,Y) is trouble too!)
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
-for( P, Q ) :- %% For all P, do Q (with part of P). Finally succeed
-  P, Q, false ; true.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%% MOVE THESE BACK TO UTILITY.pl ?!
-foralltest(P,Q):- \+ ( P, \+ Q). 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% meta_predicate  once1(0).
-once1(P):-P,!. %% same as once, but version independent   try once, otherwise FAIL
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-remember( Module:F ) :- Module:F, ! ; assert( Module:F ).        %% Add F it is does not already exist.
-% remember( Setting ) :- out( 'lex:remember/1 => Something went wrong with:'), output( Setting ), output( call( Setting ) ).
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Prologs setof is baroque %% 
-set_of(X,Y,Z):-           %%
-    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
-    Z=[].                 %% What is wrong with empty sets ?
-%% Sequence preserving setof, ( first occurrence stays first)
-set_ops(X,Y,Z):-
-    findall(X,Y,Z1),
-    remove_duplicates(Z1,Z). %% order-preserving
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)) among other things, so: import nostation/1  Move to pragma.pl ?
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%:- use_module( library(bags), [ member/3 ] ).  %% RS-141026 gps_origin/2, For gps_origin handling
-
-%% RS-131225, UNIT: / and utility
-:- ensure_loaded( '../declare' ).  %% RS-140915 , track/2
-
-%%% RS-131225, UNIT: BUILT-IN FUNCTIONS
-%:- use_module( library( aggregate ), [ foral/2 ] ).
-%% RS-140927 %% For-all/2 FAILS when there are no "Generators", or when any Goal fails for a Generator!  for/2 always succeeds...
-
 %%% RS-131225, UNIT: / and /utility/,
-:- use_module( '../utility/utility', [ append_atoms/3, begins_with/3, delete1/3, ends_with/3, flatten/2, iso_atom_chars/2, %% RS-141029  Avoid bad loops! for/2, foralltest/2, once1/1,  
-                                       remove_duplicates/2, set_union/3, testmember/2, textlength/2 ] ). % remember/1, remove_duplicates/2, set_of/3, set_ops/3, test/1,   
+:- use_module( '../declare', [ (:=)/2, (=:)/2, remember/1, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+
+:- use_module( '../utility/utility', [ append_atoms/3, begins_with/3, delete1/3, ends_with/3, flatten/2, for/2, iso_atom_chars/2, %% RS-141029  Avoid bad loops! foralltest/2, once1/1,  
+                                       once1/1, set_of/3, set_ops/3, set_union/3, testmember/2, textlength/2 ] ). % remember/1, remove_duplicates/2, set_of/3, test/1,   
+:- use_module( '../utility/writeout', [ track/2, traceprint/2 ] ).  %% Module util  , prettyprint/1, output/1, 
+
 % Keep them local? YES: foralltest/2, once1/1, set_of/3, set_ops/3, track/2, test/1,
 %:-use_module( '../utility/library', [ ] ).      %% RS-131229 Make this internal! (Decoupling modules!)
 
 %%MISERY?:
-:- use_module( '../main' , [ (:=)/2, ( =: )/2, set/2, traceprint/2, value/2 ] ). % gps_origin/2, %% RS-141026 gps_origin/2, For gps_origin handling
+:- use_module( '../main' , [ language/1 ] ). % gps_origin/2, %% RS-141026 gps_origin/2, For gps_origin handling.  (:=)/2, ( =: )/2,  set/2, value/2
 %% RS-131224  ctxt/3 is dynamicly used below. track/2 localized
 
 
@@ -148,7 +116,7 @@ test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)) among other things, 
 :- use_module( '../dialog/frames2', [  xframe_getvalue/2 ] ).
 
 %%% RS-111205, UNIT: tuc
-:- use_module( dict_n, [ kw/1 ] ). %% TA-100902 %%%%%%%%%  All the words appearing as [ ] constants in grammar %% RS-131225
+:- use_module( dict_n, [ kw/1, splitword/2 ] ). %% TA-100902 %%%%%%%%%  All the words appearing as [ ] constants in grammar %% RS-131225
 :- use_module( evaluate, [ instant/2 ] ). %% RS-111204    isa/2 from facts.pl
 :- use_module( facts, [ fact/1, isa/2,  neighbourhood/1, unproperstation1/1 ] ).  %% RS-111204    isa/2 from facts.pl
 :- use_module( names, [  compname/3,  generic_place/1,  samename/2,  streetsyn/1, synname/2,  unwanted_name/1  ] ).
@@ -156,6 +124,46 @@ test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)) among other things, 
 %%
 %:- morph_n:ensure_loaded( morph_n ). %%  lcode2/2 %% RS-140421  , lexv/4, noun/1, tall/2, verbroot/1 USED in morph:lcode2(X,Y)
 :- use_module( morph_n, [ ] ). % lcode2/2 ] ). %% RS-140421  , lexv/4, noun/1, tall/2, verbroot/1 USED in morph:lcode2(X,Y)
+
+:- use_module( '../utility/writeout', [ out/1, output/1 ]).       %RS-131223 Value == TROUBLE! value/2    (And for(X,Y) is trouble too!)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
+%for( P, Q ) :- %% For all P, do Q (with part of P). Finally succeed
+%  P, Q, false ; true.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% MOVE THESE BACK TO UTILITY.pl ?!
+foralltest(P,Q):- \+ ( P, \+ Q). 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% meta_predicate  once1(0).
+%once1(P):-P,!. %% same as once, but version independent   try once, otherwise FAIL
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%remember( Module:F ) :- Module:F, ! ; assert( Module:F ).        %% Add F it is does not already exist.
+% remember( Setting ) :- out( 'lex:remember/1 => Something went wrong with:'), output( Setting ), output( call( Setting ) ).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Prologs setof is baroque %% 
+%set_of(X,Y,Z):-           %%
+%    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
+%    Z=[].                 %% What is wrong with empty sets ?
+%% Sequence preserving setof, ( first occurrence stays first)
+%set_ops(X,Y,Z):-
+%    findall(X,Y,Z1),
+%    remove_duplicates(Z1,Z). %% order-preserving
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)) among other things, so: import nostation/1  Move to pragma.pl ?
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%:- use_module( library(bags), [ member/3 ] ).  %% RS-141026 gps_origin/2, For gps_origin handling
+
+%% RS-131225, UNIT: / and utility
+%:- ensure_loaded( user:'../declare' ).  %% RS-140915 , track/2
+:- use_module( '../declare', [ (:=)/2, (=:)/2, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+
+%%% RS-131225, UNIT: BUILT-IN FUNCTIONS
+%:- use_module( library( aggregate ), [ foral/2 ] ).
+%% RS-140927 %% For-all/2 FAILS when there are no "Generators", or when any Goal fails for a Generator!  for/2 always succeeds...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -183,7 +191,7 @@ lexproc3(L1,AssumedLanguage,L3) :-
     lexproc2(L1,L3,_Nunks).
 
 
-lexproc3(L1,AssumedLanguage,L3):- 
+lexproc3( L1, AssumedLanguage, L3 ) :- 
     ( language  =: OldLanguage ),
     lexproc2(L1,L2Old,NunksOld),
     !,
@@ -258,17 +266,28 @@ insert_split([X|Y],[X|Z]):- %%
 
 dict_module( D ) :- language( L ), dict_module( L, D ).
 
-%%  Experimental  %%
+%%  Experimental  %% RS-141105 Improved slightly to reduce error warnings in SPIDER
+
+%splitwordx(X, YZ):-   
+%    splitword(X,YZ),
+%    !.
+
+%splitword( X, KL ) :-
+%    value(language,N),
+%    dict_module(N, Dict),
+%    Dict:splitword(X,KL).
 
 splitwordx(X, YZ):-   
-    splitword(X,YZ),
+    value(language,N),
+    dict_module(N, dict_n),
+    dict_n:splitword(X,YZ),
     !.
 
-
-splitword( X, KL ) :-
-    value(language,N),
-    dict_module(N, Dict),
+splitwordx( X, KL ) :-
+    value( language, N ),
+    dict_module( N, Dict ),
     Dict:splitword(X,KL).
+
 
 %% REWORD REPLACE 
 
@@ -291,7 +310,7 @@ rewordrepl1([A|XL],ÅR,1):- % only 1 replacement
    rewordmatches(AZ,XL,XZ),
    !.
 
-rewordrepl1([X|XL],[X|YL],Suc):- % 
+rewordrepl1( [X|XL], [X|YL], Suc ) :- % 
    !,
    rewordrepl1(XL,YL,Suc).
 
@@ -1469,7 +1488,7 @@ cleantxt :-
 %% dronningens gate
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-doall(P):-  % P, then succeed 
+doall( P ) :-  % P, then succeed
     P,
     false ;
     true.
@@ -2525,12 +2544,12 @@ tsxreplace(XL,XL,Max):-
     traceprint(4, ' '). 
 
 
-tsxrepl1([A|XL],ÅR,1):- % only 1 replacement
+tsxrepl1( [A|XL], ÅR, 1 ) :- % only 1 replacement
    rw1([A|AZ],XZ:ÅR),
    tsxmatches(AZ,XL,XZ),
    !.
 
-tsxrepl1([X|XL],[X|YL],Suc):- % 
+tsxrepl1( [X|XL], [X|YL], Suc ) :- % 
    !,
    tsxrepl1(XL,YL,Suc).
 
@@ -2590,12 +2609,12 @@ unprotected_verb :-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-track( N, P ) :- 
-    value( trace, M ),  number(M), M >= N, 
-    !,
-    call(P)   %% TA-110130
-;
-    true.
+%track( N, P ) :- 
+%    value( trace, M ),  number(M), M >= N, 
+%    !,
+%    call(P)   %% TA-110130
+%;
+%    true.
 
 %% Extra utility.pl info
 %:- use_module( '../utility/utility', [  append_atoms/3, begins_with/3, delete1/3, ...]  % P, then succeed

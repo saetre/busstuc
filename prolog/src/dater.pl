@@ -9,6 +9,7 @@
 %% Same function as the file tucbus.
 
 
+:- use_module( declare, [ (:=)/2, (=:)/2, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
 %%?-prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates
 

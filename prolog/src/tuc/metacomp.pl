@@ -8,7 +8,7 @@
 %  (What about dict/lex-files?) %% RS-140920 Moved to tuc/lex.pl: moved to  lex.pl: dict_module/1, dict_module/2, morph_module/1,   
 
 %% SYSTEM TUC
-:-module( metacomp, [ dcg_module/1, dict_file/2, gram_file/2,    gram_module/1,  gram_module/2,  makegram/0, %% RS-140921
+:-module( metacomp, [ dcg_module/1, gram_file/2,    gram_module/1,  gram_module/2,  makegram/1, %% RS-140921 % dict_file/2, 
         morph_file/2,   segram/0,   regram/0,    virtf/2,        virtx/1 ] ).     %% RS-140920. segram and regram are "bloody hacks?"
 %  compile_english/0,  compile_norsk/0,  genvirt/1, optiprod/1, %
 
@@ -20,13 +20,14 @@
 
 :- use_module( library(file_systems) ).
 
-   %% RS-131223   % UNIT: /
-%:- ensure_loaded( '../declare' ). %% RS-131228 "new syntax" defs, META-preds: remember/1, value/2, :=/2, =;/2
+%% RS-131223   % UNIT: /
+%% RS-131228 "new syntax" defs, META-preds:  remember/1,  value/2,  :=/2,  =:/2
+:- use_module( '../declare', [ (:=)/2, remember/1, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
-:- use_module( '../main', [ (:=)/2, value/2 ] ). %% RS-140209    %?-compile('main.pl'). ( := )/2 
+:- use_module( '../main', [ language/1 ] ). %% RS-140209    %?-compile('main.pl'). ( := )/2 
 
 %% RS-131223   % UNIT: /utility/     Get dynamic definition for value/2
-:- use_module( '../utility/utility', [ for/2, remember/1, test/1 ] ). %, variant/2 ] ). %% , for/2, %% RS-131117 includes user:declare.pl appendfiles/3, 
+:- use_module( '../utility/utility', [ for/2, test/1 ] ). %, variant/2 ] ). %% , for/2, %% RS-131117 includes user:declare.pl appendfiles/3, 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %:- meta_predicate test(0) . %% RS-140211
@@ -67,7 +68,7 @@ subsum1(X,Y):-
 %:- use_module( tucbuses:'../tucbuses', [  dagrun_file/2,  dcg_file/2, dcg_module/2,  dict_file/2, morph_file/2,
 %        gram_file/2, gram_module/2,     style_check/1  ] ). %% RS-131227 Avoid loop?!!   language/1,
 
-:-use_module( '../utility/writeout', [ language/1 ] ). %% RS-140920  %% RS-131227 Avoid loops?
+%:-use_module( '../utility/writeout', [ language/1 ] ). %% RS-140920  %% RS-131227 Avoid loops?
 
 %% RS-131223   % UNIT: /utility/*.pl
 :- use_module( '../utility/datecalc', [ datetime/6 ] ). %% RS-140921 For the file headings
@@ -103,12 +104,12 @@ segram:- %% short %% norsource facilities %% TA-100207
     nodebug, 
     ( norsource := true ),
     consult(gramn),
-    makegram.
+    makegram( './' ).
 
 regram:- %% short 
     nodebug, 
     consult(gramn),
-    makegram.
+    makegram( './' ).
 
 
 %%% THESE ARE NOW CALLED FROM TUC (MAIN) DIRECTORY
@@ -118,16 +119,15 @@ regram:- %% short
 dagrun_file( english,   dagrun_e ).
 dagrun_file( norsk,     dagrun_n ).
 
-%dict_file(english,   '../tuc/dict_e.pl').
-%dict_file(norsk,     '../tuc/dict_n.pl').
-dict_file( english,   dict_e ).
-dict_file( norsk,     dict_n ).
+%dict_file(english,   'dict_e.pl').
+%dict_file(norsk,     'dict_n.pl').
+dict_module( english,   dict_e ).
+dict_module( norsk,     dict_n ).
 
-
-%gram_file(english, '../tuc/gram_e.pl'). %% TA-000118
-%gram_file(norsk,   '../tuc/gram_n.pl'). %% TA-000118
-gram_file( english, gram_e ). %% TA-000118
-gram_file( norsk,   gram_n ). %% TA-000118
+gram_file(english, 'gram_e.pl'). %% TA-000118
+gram_file(norsk,   'gram_n.pl'). %% TA-000118
+%gram_file( english, gram_e ). %% TA-000118
+%gram_file( norsk,   gram_n ). %% TA-000118
 
 gram_module( english, gram_e ).
 gram_module( norsk,   gram_n ).
@@ -137,17 +137,21 @@ gram_module( norsk,   gram_n ).
 morph_file( english, morph_e ).
 morph_file( norsk,   morph_n ).
 
-gram_module(D) :- language(L),gram_module(L,D).
+gram_module( D ) :- language(L), gram_module(L,D).
 
-dcg_module(U) :- language(L),dcg_module(L,U).
+dcg_module( U ) :- language(L), dcg_module(L,U).
+%dcg_module( U ) :- language(L), dcg_file(L,U).
 
-% dcg_file(U) :-language(L),dcg_file(L,U).      %% RS-140920 Unused?
 
-dcg_file(english, 'dcg_e.pl'). %% MAIN
-dcg_file(norsk,   'dcg_n.pl'). %% MAIN
+%dcg_module( english, 'dcg_e.pl' ).
+%dcg_module( norsk,   'dcg_n.pl' ).
+dcg_module( english, dcg_e ).
+dcg_module( norsk,   dcg_n ).
 
-dcg_module(english, dcg_e).
-dcg_module(norsk,   dcg_n).
+%dcg_file(U) :-language(L),dcg_file(L,U).      %% RS-140920 Unused?
+%dcg_file( english, 'tuc/dcg_e.pl' ). %% MAIN
+%dcg_file( norsk,   'tuc/dcg_n.pl' ). %% MAIN
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -164,12 +168,14 @@ dcg_module(norsk,   dcg_n).
 %    makegram(Lang).
 
 %% RS-131227 Makegram is used IN tucbuses!  %% Avoid circles!?
-makegram :-
-%        current_directory( OldDir, '/eclipse/workspace/busstuc/tuc' ),
-        compile_english,
-        compile_norsk. % , current_directory( _, OldDir ).
+makegram( PATH ) :-
+        current_directory( _, '/eclipse/workspace/busstuc' ),
+        compile_english( PATH ),
+        compile_norsk( PATH ). % , current_directory( _, OldDir ).
 
-writeheading( DAGFILE, DCGFILE, DCGMODULE, DICTFILE, 'gram_e' ) :- 
+%% ENGLISH GENERATION 
+
+writeheader( DAGFILE, DCGFILE, DCGMODULE, DICTMODULE, 'gram_e' ) :- 
         write('%% FILE '),write(DCGFILE),nl,
         write('%% Automatically created by tuc/metacomp.pl, based on dict and tuc/gram_...'),nl, nl,
         write(':-module( '),write(DCGMODULE),write(', '),write( [ sentence/6, anorder/7, as0/5, atom/6, atomlist/6, be_modal/6, begin/5, bus_number/6, clock_number/6, colon0/5,
@@ -177,15 +183,53 @@ writeheading( DAGFILE, DCGFILE, DCGMODULE, DICTFILE, 'gram_e' ) :-
                 ones/5, or1/5, others/5, pointNO/5, prep0/6, qtrailer/5, road_number/6, statemenreal/6, statics/6, streetno/5,
                 superlative/7, that_verb/11, that0/5, that0/6, this1/7, trans_verbs/10, very/5, year0/6  ] ),write(' ).'),nl,nl,
 
-%       write(':- ensure_loaded( ''../declare.pl'' ). %% RS-111213 General (semantic) Operators, ...'), nl,
-        write(':- use_module( ''../main'', [ value/2, traceprint/2 ] ). %%RS-140209 '),nl,
-        write(':- use_module( ''../utility/utility\', [ testmember/2 ] ).  %% test/1, RS-140914'),nl, nl,
+%        write(':- meta_predicate  '),nl,
+        write(':- meta_predicate  adjunct1(?,?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  andor(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  adverb(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  clausal_phrase(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  command( ?, ?, ?, -, ?, - ).'),nl,
+        write(':- meta_predicate  date(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  dendagen(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  determiner0(?,?,?,?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  do(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  do0(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  howadj(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  howadjq(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  howq(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  lexv(?,?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  namep(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  nameq1(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  negation0(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  noun(-,?,?,?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  np_head(?,?,?,?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  np_head1(?,?,?,?,?,-,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  number(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  passive(?,?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  person_name(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  ppq( ?, ?, ?, -, ?, - ).'),nl,
+        write(':- meta_predicate  preadj1(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  quit(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  rel_clause(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  sentence1( ?, ?, ?, -, ?, - ).'),nl,
+        write(':- meta_predicate  statemens0( ?, ?, ?, ?, ?, -, ?, - ).'),nl,
+        write(':- meta_predicate  timeq12(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  whatq(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  whichq(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  whenq(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  wherefromq(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  whereq(?,?,?,-,?,-).'),nl,
+        nl,     %        write(':- meta_predicate  '),nl,
 
-        write('%:- ensure_loaded( '), write(DCGMODULE),write(':\''),write(DAGFILE),write('\' ). %%, [ cc/5, w6 ] ). %% RS-140209 What is DAG?'), nl,
+        write(':- use_module( ''../declare'', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .'), nl,
+        write(':- use_module( ''../utility/utility'', [ testmember/2 ] ).  %% test/1, RS-140914'),nl, nl,
+        write(':- use_module( ''../utility/writeout'', [ traceprint/2 ] ).  %% Module util track/2,  , prettyprint/1, output/1, RS-140914'),nl, nl,
+
+        write('%:- ensure_loaded( '''), write(DCGMODULE),write(':'''),write(DAGFILE),write(''' ). %%, [ cc/5, w6 ] ). %% RS-140209 What is DAG?'), nl,
         write(':- use_module( '''),write( DAGFILE ),write(''', '),write( [ cc/5,  check_stop/5, end_of_line/5, lock/5, look_ahead/6, not_look_ahead/6,
                 pushstack/7, skip_rest/5, unlock/4, virtual/6, w/6 ] ),write(' ). %% RS-111213 What is DAG? '),nl,
 
-        write(':- use_module( '''),write( DICTFILE ),write(''', '),write( [ noun/1, preposition/1, pronoun/2 ] ), write('). %% RS-111213 What is DAG? '),nl,
+        write(':- use_module( '''),write( DICTMODULE ),write(''', '),write( [ noun/1, preposition/1, pronoun/2 ] ), write('). %% RS-111213 What is DAG? '),nl,
         write(':- prolog_flag(discontiguous_warnings,_,off).'),nl,nl,
         
         write(':- use_module( ''../utility/datecalc'', [ addtotime/3, this_year/1, todaysdate/1 ] ).  %% RS-131228, add_days/3, datetime/6, days_between/3, easterdate/2, subfromtime/3, timenow/1, today/1, '),nl,
@@ -201,10 +245,12 @@ writeheading( DAGFILE, DCGFILE, DCGMODULE, DICTFILE, 'gram_e' ) :-
         write(':- use_module( semantic, [ a_compl/4, gradv_templ/2, measureclass/1, particle/3, post_adjective/1, pvi_templ/2, stanprep/2, subclass0/2, tv_templ/3, v_compl/4 ] ). %% RS-131227' ),nl,
         write(':- use_module( lex, [ no_unprotected_verb/0 ] ). %% txt/3, unprotected_verb/0, maxl/1, RS-140209' ),nl,nl.
 
-writeheading( DAGFILE, DCGFILE, DCGMODULE, DICTFILE, 'gram_n' ) :- 
+%% NORSK GENERATION
+
+writeheader( DAGFILE, DCGFILE, DCGMODULE, DICTFILE, 'gram_n' ) :- 
         write('%% FILE '),write(DCGFILE),nl,
         write('%% Automatically created by tuc/metacomp.pl, based on dict and tuc/gram_...'),nl, nl,
-        write(':-module( '),write(DCGMODULE),write(', '),write( [ sentence/6, (\)/7, addressat0/5, adj_conjunction0/5, altsogå/5, andor0/6, andwhere0/5, anorder/7, areyou/5, as0/5, assemble_stop_locations/6, at0/5, atom/6, atomlist/6, aux0/7, auxs/5,
+        write(':-module( '''),write(DCGMODULE),write(''', '),write( [ sentence/6, (\)/7, addressat0/5, adj_conjunction0/5, altsogå/5, andor0/6, andwhere0/5, anorder/7, areyou/5, as0/5, assemble_stop_locations/6, at0/5, atom/6, atomlist/6, aux0/7, auxs/5,
                 be_modal/6, be_there_modal/6, be_truefalse_that/6, be0/5, begin/5, both0/5, bus_number/6, check_stop_locations/5, clock_number/6, clock_time/6, colon0/5, commas0/5, complement1_accept/8,
                 denbussen/5, dendet0/5, detå/5, do/6, each/5, either0/5, end/5, endofline1/5, erdetdet/5, everything/5,
                 faa0/5, faaverb/6, fast/5, flnpproper/6, fordent0/6, forto0/5, from/5, førnår/5, gadd/5, grums/5, halfhour/5, has0/5, hashad0/5, herefrom/5, 
@@ -218,10 +264,121 @@ writeheading( DAGFILE, DCGFILE, DCGMODULE, DICTFILE, 'gram_n' ) :-
                 themost/5, then0/5, theonly0/5, there_be_modal/6, thereitN/5, this/6, thousand0/5, tilsiden/5, timenexp/6, today0/5,
                 trafikk/5, trans_verbs/10, verb0/6, when0/5, when10/5, where1/5, whose_noun/7, year0/6 ] ),write(' ).'),nl,nl,
 
+
+%        write(':- meta_predicate  '),nl,
+        write(':- meta_predicate  adj1s(?,?,?,-,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  adjunct1(?,?,?,?,?,-,?,-).'),nl,       %english  adjunct1/9
+        write(':- meta_predicate  adverb(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  andor(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  aux1(?,?,?,?,?,?,-).'),nl,
+        write(':- meta_predicate  ampm0(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  aname_phrase(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  art0(-,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  adverbial3(-,-,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  adverbx(?,?,-,?,?,?,?,-).'),nl,
+        write(':- meta_predicate  adverbial1(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  adverbix(?,?,?,?,?,?,?,-).'),nl,
+        write(':- meta_predicate  be_noun(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  colemin(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  clock_kernel(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  flnp(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  art(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  bus_head(-,-,-,?,-,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  do_phrase(?,?,?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  clock_sequel(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  command( ?, ?, ?, -, ?, - ).'),nl,
+        write(':- meta_predicate  date(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  dendagen(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  determiner0(-,?,?,-,?,?,?,-,?,-).'),nl,       %English:  determiner0/11  (vs. /10)
+        write(':- meta_predicate  complement_nil(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  do(?,?,?,-,?,-).'),nl,       %english  do0/8
+        write(':- meta_predicate  determiner00(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  missingprep(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  hours100(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  howadj(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  howadjq(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  howmuchq(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  howq(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  hlexv(?,-,?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  itstatem(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  lexv(?,?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  gradverb(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  nameq2(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  namep(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  noun_complex(?,?,-,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  np_head(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  nameq1(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  negation( ?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  negation0(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  negation2(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  noun(-,?,?,?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  noun2(-,-,?,?,-,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  noun_phrases0(?,?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  np_kernel(?,?,?,?,?,-,?,-).'),nl,       %english:  np_head/11, np_head1/11
+        write(':- meta_predicate  np0_accept(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  np1(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  npa(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  np_head1(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  np0(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  noun_phrase1(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  noun_phrases2(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  name1g(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  name_phrase(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  noun_mod(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  number(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  object2(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  obviousclock1(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  obviousdate1(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  orwill(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  partday(?,?,-,?,?,?,?,-).'),nl,
+        write(':- meta_predicate  particle(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  person_name(?,?,-,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  personal(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  pp(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  plausibledate1(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  plausibleclock(-,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  plausibleclock1(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  prep1(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  prep2(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  pronoun(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  ppq( ?, ?, ?, -, ?, - ).'),nl,
+        write(':- meta_predicate  quant_pron(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  preadj1(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  question1(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  quit(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  qverb_phrase(?,?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  rel_clause(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  rvp_kernel(?,?,?,?,-,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  rvpk(?,?,?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  rep_v(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  sentence1( ?, ?, ?, -, ?, - ).'),nl,
+        write(':- meta_predicate  statem(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  substate(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  subjunction(?,-,-,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  statemens0( ?, ?, ?, ?, ?, -, ?, - ).'),nl,
+        write(':- meta_predicate  time1(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  time012(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  timeq1(?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  verb_phrases0(?,?,?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  verb_mod1(?,?,?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  verb_phrase1(?,?,?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  vp_kernel(?,?,?,?,-,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  whatq(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  when_adverbial(?,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  whx_phrase(-,?,?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  whichq(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  whenq(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  wherefromq(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  whereq(?,?,?,-,?,-).'),nl,
+        write(':- meta_predicate  wnameg(?,?,?,?,?,-,?,-).'),nl,
+%        write(':- meta_predicate  '),nl,
+
 %       write(':- ensure_loaded( ''../declare.pl'' ). %% RS-111213 General (semantic) Operators, ...'), nl,
-        write(':- use_module( ''../main'', [ ( := )/2, assert_default_origins/1, traceprint/2, value/2  ] ). %%RS-140209 '),nl,
+        write(':- use_module( ''../declare'', [ (:=)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .'), nl,
+        write(':- use_module( ''../main'', [ assert_default_origins/1  ] ). %%RS-140209 , ( := )/2, traceprint/2, value/2'),nl,
         write(':- use_module( ''../utility/utility\', [ test/1, testmember/2 ] ).  %% RS-140914'),nl, nl,
         write(':- use_module( ''../utility/datecalc'', [ add_days/3, datetime/6, easterdate/2, subfromtime/3, this_year/1, timenow/1, today/1, todaysdate/1  ] ).  %% RS-131228, addtotime/3, days_between/3, '),nl,
+        write(':- use_module( ''../utility/writeout'', [ traceprint/2 ] ).  %% Module util track/2,  , prettyprint/1, output/1, RS-140914'),nl, nl,
 
         write(':- use_module( '''),write( DAGFILE ),write(''', '),write( [ cc/5,  check_stop/5, end_of_line/5, end_of_line0/5, lock/5, look_ahead/6, not_look_ahead/6,
                 pushstack/7, skip_rest/5, unlock/4, virtual/6, w/6 ] ), write('). %% RS-111213 What is DAG? '),nl,
@@ -248,7 +405,8 @@ writeheading( DAGFILE, DCGFILE, DCGMODULE, DICTFILE, 'gram_n' ) :-
         write('         rv_templ/2 ] ). % RS-131227 measureclass/1, particle/3, post_adjective/1, pvi_templ/2, stanprep/2, tv_templ/3, v_compl/4, vako/2, testclass/1, n_compl/3, pai_templ/2,'),nl,
         nl.
 
-makegram( DAGFILE, DCGFILE, DICTFILE, DCGMODULE, GRAMMODULE ) :- % DICTFILE, 
+makegram( DAGFILE, DCGMODULE, DICTMODULE, GRAMMODULE, PATH ) :- % DICTFILE,
+    atom_concat( PATH, DCGMODULE, DCGPATH),    atom_concat( DCGPATH, '.pl', DCGFILE),
     retractall( virtf(_,_) ),
     retractall( virtx(_) ),
     retractall( optiprod(_) ), 
@@ -261,8 +419,8 @@ makegram( DAGFILE, DCGFILE, DICTFILE, DCGMODULE, GRAMMODULE ) :- % DICTFILE,
     open( DCGFILE, write, DcgStream, [encoding('UTF-8')] ),
 %   open('dcg.pl', write, DcgStream, [encoding('UTF-8')] ),
     set_output(DcgStream),
-        writeheading,
-        writeheading( DAGFILE, DCGFILE, DCGMODULE, DICTFILE, GRAMMODULE ),
+        writeheader,
+        writeheader( DAGFILE, DCGFILE, DCGMODULE, DICTMODULE, GRAMMODULE ),
         for( ( GRAMMODULE: (X ---> Y) ), genprod(X,Y) ),       %% RS-140101 meta_predicate for/2
         write('%%% optionals'), nl,
 
@@ -276,7 +434,7 @@ makegram( DAGFILE, DCGFILE, DICTFILE, DCGMODULE, GRAMMODULE ) :- % DICTFILE,
 
 %     appendfiles('dcg.pl','virtuals.pl',DCGFILE),  %% RS-140921   appendfiles('virtuals.pl','dcg.pl',DCG), %%% <--- NO! %%SEQUENCE MATTERS! below...
 
-     compile(DCGMODULE:DCGFILE),
+     compile( DCGMODULE:DCGFILE ),
 
     style_check(+singleton). %% SWI only  
 
@@ -285,13 +443,13 @@ style_check(_).         %% Cheat for Sicstus Prolog (only used for SWI Prolog)
 %%%%%%%%%%%%%%%%%%%%%
 
 %% RS-131227 Copied from makeauxtables!
-writeheading:-
+writeheader:-
     datetime(A,B,C,D,E,F),
     write('/* -*- Mode:Prolog; coding:utf-8; -*- */'),        %% Make this work with open/4 and encoding %% RS-121118
     nl,
     write('% Grammar files transformed to dcg_e.pl or dcg_n.pl '),
     nl,
-    write('%%from writeheading in tuc/metacomp.pl'),
+    write('%%from writeheader in tuc/metacomp.pl'),
     nl, write('%% '), write(datetime(A,B,C,D,E,F)),
     nl,nl.
 
@@ -531,33 +689,48 @@ prist(X):-
 plink :- trace.
 
 
+% http://stackoverflow.com/questions/16898156/how-to-concatenate-two-atoms-strings
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    morph_file(english, MORPHFILE), %  use_module( MORPHFILE, [ ] ),     % morphology for E
+%    atom_concat( PATH, MORPHFILE, MORPHURL ),
+%    use_module( MORPHURL, [ ] ), % use_module( MORPHFILE, [ ] ),
+%    morph_file( norsk, MORPHFILE ),   % morphology for N
+
 %% RS-131230    Empty [ ] avoids colliding predicates from N and E.
 
-compile_english :- %Prefix
-    dict_file( english, DICTFILE ),     use_module( DICTFILE, [ ] ),      % COMPILE dictionary for E
-%    morph_file(english, MORPHFILE), %  use_module( MORPHFILE, [ ] ),     % morphology for E
-    gram_file(english, GRAMFILE),       use_module( GRAMFILE, [ ] ),      % COMPILE grammar for E
+compile_english( PATH ) :- %Prefix
+    %dict_file( english, DICTFILE ), 
+    dict_module( english, DICTMODULE ),
+    atom_concat( PATH, DICTMODULE, URL ),
+    use_module( URL, [ ] ),      % "COMPILE" dictionary for E
+    gram_file(english, GRAMFILE),  atom_concat( PATH, GRAMFILE, GRAMURL ), use_module( GRAMURL, [ ] ),      % COMPILE grammar for E
     gram_module( english, GRAMMODULE ),                            % 'dcg_e'
 
     dagrun_file( english, DAGFILE ),   %% RS-131228 Moved up to customize the dcg.pl as either norsk or english!
-    dcg_file( english, DCGFILE),  dcg_module( english, DCGMODULE ),
-    makegram( DAGFILE, DCGFILE, DICTFILE, DCGMODULE, GRAMMODULE ).
+    dcg_module( english, DCGMODULE ),   % dcg_file( english, DCGFILE),
+    makegram( DAGFILE, DCGMODULE, DICTMODULE, GRAMMODULE, PATH ). % DICTFILE,
 
-compile_norsk:-        %    makegram(norsk).
-    dict_file( norsk, DICTFILE ),      use_module( DICTFILE, [ ] ),      % dictionary for N
-%    morph_file( norsk, MORPHFILE ),    use_module( MORPHFILE, [ ] ),   % morphology for N
-    gram_file( norsk, GRAMFILE ),      use_module( GRAMFILE, [ ] ),      % grammar for N
+compile_norsk( PATH ) :-        %    makegram(norsk).
+    %dict_file( norsk, DICTFILE ),
+    dict_module( english, DICTMODULE ),
+    atom_concat( PATH, DICTMODULE, URL ),    use_module( URL, [ ] ),    % dictionary for N
+
+    gram_file( norsk, GRAMFILE ),  atom_concat( PATH, GRAMFILE, GRAMURL ), use_module( GRAMURL, [ ] ),     % grammar for N
     gram_module( norsk, GRAMMODULE ),
 
     dagrun_file( norsk, DAGFILE ),   %% RS-131228 Moved up to customize the dcg.pl as either norsk or english!
-    dcg_file( norsk, DCGFILE ),    dcg_module( norsk, DCGMODULE ),
-    makegram( DAGFILE, DCGFILE, DICTFILE, DCGMODULE, GRAMMODULE ). % DICTFILE, 
+    dcg_module( norsk, DCGMODULE ),     %dcg_file( norsk, DCGFILE ),
+    makegram( DAGFILE, DCGMODULE, DICTMODULE, GRAMMODULE, PATH ). % DICTFILE,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% RS-131229    When to do this?        HAS TO BE DONE FROM TUCBUSES!?
-:- makegram.    %% RS-140921    %?-compile_english.     %?-compile_norsk.
+% metacomp:makegram -> library:for -> metacomp:genprod -> ??
+%:- use_module( '../tuc/metacomp' ).     % [ genprod/2 ] (etc.?) is called in the for-predicate (etc.) %% RS-131117
+                %% Used for calling      genprod(wx(adj2(_123,_124)),w(adj2(_124,_123))) (From gram_e or gram_n)!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% RS-131229    When to do this?        HAS TO BE DONE FROM TUCBUSES!?
+%:- makegram.    %% RS-140921    %?-compile_english.     %?-compile_norsk.
+:- makegram( '' ).
+

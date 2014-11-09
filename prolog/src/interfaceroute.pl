@@ -12,9 +12,10 @@
 :-volatile  thisdate_period_module/3 .       %% RS-120915 Not stored in the save_program
 :-dynamic   thisdate_period_module/3 .
 
-:- ensure_loaded( 'declare.pl' ). %, [ := /2 etc. ] ). META:  set/2,   value/2
+%:- ensure_loaded( 'declare.pl' ). %, [ := /2 etc. ] ). META:  set/2,   value/2
+:- use_module( declare, [ set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
-:- use_module( 'main.pl', [ set/2, value/2 ] ).
+%:- use_module( 'main.pl', [ set/2, value/2 ] ).
 
 :- use_module( 'utility/writeout', [ output/1 ] ).
 

@@ -12,7 +12,7 @@
 :-module( utility, [ absorb/3, aggregate/3, all/1, ans/1, appendfiles/3, append_atomlist/2, append_atoms/3,  %% RS-141025 Move to main: (:=)/2, (=:)/2, 
         begins_with/3, bound/1, breakpoint/2, charno/3, %% FOR busanshp.pl
         compar/3, debug/2, default/2, deleteall/3, divmod/4, (do)/1, ends_with/3, equal/2, error/2, firstmem/2, flatlist/2, fnuttify1/2, fnuttify2/2, for/2,     
-        forget/1, remember/1, % moved here from declare.pl
+        
         delete1/3, featurematch/4, featurematchlist/2, flatten/2, maximum/2, mergeavlists/3, minimum/2,  
         do_count/1, freshcopy/2, subsumes/2,     %% RS-140927 For translat.pl
         foralltest/2, ident_member/2, implies/2, internalkonst/1, iso_atom_chars/2, last_character/2, lastmems/3, listlength/2, makestring/2, matchinitchars/2,
@@ -47,7 +47,7 @@
 :- meta_predicate  measurecall(0,+) , measurecall1(0,+) .
 :- meta_predicate  number_of(+,0,+) . %% RS-140211      % set_ops/3
 :- meta_predicate  once1(0).
-:- meta_predicate  remember(0) .        %% RS-140928 Remember the facts IN THE MODULE THAT CALLS REMEMBER! Use  :  or  0
+%:- meta_predicate  remember(0) .        %% RS-140928 Remember the facts IN THE MODULE THAT CALLS REMEMBER! Use  :  or  0
 :- meta_predicate  set_ops(+,0,-).
 :- meta_predicate  set_eliminate(+,0,-,-).
 :- meta_predicate  set_filter(+,0,-,-).
@@ -68,7 +68,7 @@
 %% RS-111205, UNIT: /
 
 %(:=)/2, %% RS-131225 Set user:value  %(=:)/2 %% RS-131225 Get user:value  %set/2, user:value/2, %% RS-140101 Moved to declare for early compiling!
-:- ensure_loaded( '../declare' ). %% RS-111213  General (semantic) Operators
+:- use_module( '../declare', [ ( := )/2, ( =: )/2, value/2 ] ). %% RS-111213  General (semantic) Operators remember/1, 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Utility-functions %RS-141019 Moved to main.pl (To be accessable for the scripts.n)
@@ -101,7 +101,7 @@
 %% RS-131225, UNIT: /
 :- use_module( '../sicstus4compatibility', [ get0/1 ] ). % , tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 %MISERY!!
-:- use_module( '../main', [ (:=)/2, (=:)/2, value/2 ] ). %% Loops back here in the for-predicates etc. e.g. for (A => B)
+%:- use_module( '../main', [ (:=)/2, (=:)/2, value/2 ] ). %% Loops back here in the for-predicates etc. e.g. for (A => B)
 %% RS-130329 Make sure (gram/lang) modules are available before this point (e.g. dcg_modules),
 
 %% RS-111205, UNIT: app/
@@ -143,16 +143,6 @@ occ( B, B ) :- \+ ( B = (_,_) ) .
 %
 sequence_member( X, Y ) :-
    occ( X, Y ). %%
-
-%% "MEMORY" SECTION
-%forget/1, remember/1, 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-forget(X) :- retractall(X).
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% meta_predicate  remember(0) .        %% RS-140928 Remember the facts IN THE MODULE THAT CALLS REMEMBER! Use  :  or  0
-remember( Module:F ) :- Module:F, ! ; assert( Module:F ).        %% Add F it is does not already exist.
-% remember( Setting ) :- out( 'utility:remember/1 => Something went wrong with:'), output( Setting ), output( call( Setting ) ).
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 breakpoint(Pred,Prop):- %% New Predicate Delayed Dynamic set spypoint
@@ -261,9 +251,6 @@ unbound( X ) :- internalkonst(X).
 %% RS-111205, UNIT: db/
 %:-use_module( '../db/timedat' ). %% , [ orig_named_date/2 ]). "for" Called from timedat!   %% Time data for bus routes (in general)
 %:-use_module('../tuc/lex', [ blockmark/1, ctxt/3, exmatchcompword/2, matchcompword/2, txt/3 ] ). %assertnewtxt/3, lex.pl uses it!
-%% metacomp:makegram -> library:for -> metacomp:genprod -> ??
-%:- use_module( '../tuc/metacomp' ).     % [ genprod/2 ] (etc.?) is called in the for-predicate (etc.) %% RS-131117
-                %% Used for calling      genprod(wx(adj2(_123,_124)),w(adj2(_124,_123))) (From gram_e or gram_n)!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % problematic for-loops?
 %:- use_module( library(aggregate), [ forall/2 ] ).      %% RS-140928
@@ -614,8 +601,8 @@ default(V,E):-
 %% avoid conflict with SWI (other parameter sequence)
 
 delete1(X,[X|Y],Y).  
-delete1(X,[U|V],[U|W]):-   
-    delete1(X,V,W).
+delete1( X, [U|V], [U|W] ) :-
+    delete1( X, V, W ).
 
 deleteall(X,Y,Z):- delall(X,Y,Z).
 

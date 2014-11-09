@@ -16,9 +16,10 @@
 ] ).
 
 %% RS-141026    UNIT: /
-:- use_module( '../main.pl', [ value/2 ] ). %MISERY?!
-%% RS-131225, UNIT: utility/
 %:- ensure_loaded( user:'../declare' ). %% RS-140208  General (semantic) Operators, value/2, := /2, =: /2, ...
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+%:- use_module( '../main.pl', [ value/2 ] ). %MISERY?!
+%% RS-131225, UNIT: utility/
 %:- use_module( '../utility/utility', [ ] ). %% RS-140208. Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
 
 %% Names that occur several places as general appendages

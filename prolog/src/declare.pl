@@ -6,8 +6,42 @@
 
 %% Declarations used by TUC
 %% USAGE:
+%% :- use_module( declare, [ (:=)/2, (=:)/2, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+%% OLD
 %% :- ensure_loaded( user:'../declare' ). %% RS-120403 RS-131224 (:=)/2, forget/1, remember/1  moved from utility!
 
+%% RS-141105 Modularized
+
+:- module( declare, [ (:=)/2, ( =: )/2, forget/1, remember/1, set/2, value/2 ] ).
+
+:- meta_predicate  remember(0) .        %% RS-140928 Remember the facts IN THE MODULE THAT CALLS REMEMBER! Use  :  or  0
+%:-use_module( 'utility/writeout', [ out/1, output/1 ] ).       %% Avoid ANY Loops from declare import X, X use_module( declare ). !!!  RS-141108
+
+
+%%%%%%%%%%%%%%%%%%%%%%  SPECIAL (non-volatile) SECTION. Stored with save_program  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%value( X, Y ) :- main:value( X, Y ).
+%:- meta_predicate  value( ?, ? ).
+%:-volatile
+%          value/2.      %% RS-130630. NOT VOLATILE!!! These values HAVE to be stored in the compiled save_program!!!
+:-dynamic
+          value/2.      %% RS-130630. This is modified by the  :=  predicate 
+%
+
+set( Counter, Value ) :- 
+    retractall( value( Counter, _ ) ),
+    assert( value( Counter, Value ) ).
+
+%forget/1, remember/1, % moved to main from declare.pl  %% RS-141105 Didn't work :-(
+%% "MEMORY" SECTION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+forget(X) :- retractall(X).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+remember( Module:F ) :- Module:F, ! ; assert( Module:F ). %, out( 'remember' ),output(Module:F).        %% Add F it is does not already exist.
+% remember( Setting ) :- out( 'utility:remember/1 => Something went wrong with:'), output( Setting ), output( call( Setting ) ).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Operatorer for Pragma-regler
 % is operator prefixed with rule RuleID
 
@@ -52,4 +86,11 @@
 :-op( 500,xfy,-...). %% same as \
 :-op( 500,xfy,-.).   %% same as -
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% RS-141105
+X := Y  :-      %% RS-131228    :=/2    X set to Y's value
+    set(X,Y).
+X =: Y  :-      %% RS-141024    =:/2    Y is set to X's value
+    value(X,Y). % ->  true ; ( out(X), output(' not set!'), fail ).   % ; ( out(X), output(' not set!'), fail ).
+

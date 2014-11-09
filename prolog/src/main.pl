@@ -12,31 +12,15 @@
 
 % c = compile % (::)/2 is used in inger and update2.pl! How does it work? %% RS-140208 %Extra? crash/0 is used a test of SPIDER etc.
 %%% RS-131225, UNIT: /
-:-module( main, [ (:=)/2, ( =: )/2, abortword/1, assert_default_origins/1, backslash/1, begin/0, break/1, c/1, check/0, create_taggercall/2, dialog/0, difact/2,
+:-module( main, [ abortword/1, assert_default_origins/1, backslash/1, begin/0, break/1, c/1, check/0, create_taggercall/2, dialog/0, difact/2,
         english/0, exetuc/1, fact0/1, gps_origin/2, haltword/1, idiotpoint/0,  logrun/0, norsk/0, ns/1,   % listxt/0, gorg/0, %% For debugging... (removed) %% RS-140928
-        clearport/0, closefile/1, reset_period/0,  getfromport/1, gorg/0, indentprint/2, % For Dialog / Buster . %processorwait_d/1
-        hei/0, hi/0, ho/0, run/0, traceprint/2, jettyrun/1, mtrprocess/1, %Remove mtrprocessweb/1,         %RUN-predicates, with (very slow debugging!) and without debug.
-        printdots/0, processorwait/1, writepid/0, progtrace/2, r/1, readday/0, readscript/0, restart/0, run/1, reset/0, reset_origins/0,    % printparse/1, 
-        scanfile/2, set/2, (sp)/1, spyg/1, spyr/1, statistics/1, status/0, testgram/0, traceprog/2, trackprog/2, translate2/2, tuc/0, update_compnames/1, % track/2
-        value/1, value/2, webrun_english/0, webrun_norsk/0, webrun_tele/0, write_taggercall/1  % verify_empty_origins/0,  main:value/2
+        clearport/0, closefile/1, reset_period/0,  getfromport/1, gorg/0, % To writeout: indentprint/2 . For Dialog / Buster . %processorwait_d/1
+        hei/0, hi/0, ho/0, run/0, jettyrun/1, language/1, mtrprocess/1, %Remove mtrprocessweb/1,         %RUN-predicates, with (very slow debugging!) and without debug.   % printparse/1,
+        processorwait/1,  progtrace/2, r/1, readday/0, readscript/0, restart/0, reset/0, reset_origins/0,  run/1,  
+        scanfile/2, (sp)/1, spyg/1, spyr/1, status/0, testgram/0, traceprog/2, translate2/2, tuc/0, update_compnames/1,
+        % to utility/writeout.pl: track/2, statistics/1 (in bustermain2)
+        value/1, webrun_english/0, webrun_norsk/0, webrun_tele/0, write_taggercall/1, writepid/0  % verify_empty_origins/0,  value/2
 ] ).
-
-%% META-PREDICATES
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
-:- meta_predicate  remember(0) .        %% RS-140928 Remember the facts IN THE MODULE THAT CALLS REMEMBER! Use  :  or  0
-:- meta_predicate  sp(0).
-%:- meta_predicate  track(+,0) .        %% RS-141026  Moved to utility/writeout.pl
-:- meta_predicate  trackprog(+,0) .
-
-%%%%%%%%%%%%%%%%%%%%%%  SPECIAL (non-volatile) SECTION. Stored with save_program  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%value( X, Y ) :- main:value( X, Y ).
-%:- meta_predicate  value( ?, ? ).
-%:-volatile
-%          value/2.      %% RS-130630. NOT VOLATILE!!! These values HAVE to be stored in the compiled save_program!!!
-:-dynamic
-          value/2.      %% RS-130630.
-%
 
 %% DYNAMIC SECTION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -49,33 +33,33 @@
          difact/2,    %% Dynamic,  context dependent  %% TA-980301
          fact0/1.     %% Semi permanent, in evaluate.pl
 
+%% META-PREDICATES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:- meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
+:- meta_predicate  sp(0).
+%:- meta_predicate  track(+,0) .        %% RS-141026  Moved to utility/writeout.pl
+%:- meta_predicate  trackprog(+,0) .
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- ensure_loaded( 'declare' ). %% RS-111213  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) :- X := Y .
-:- use_module( 'utility/writeout', [ doubt/2, language/1, out/1, output/1, prettyprint/1, track/2 ] ).%% RS-140912
+% UNIT: / AND /utility/
+
+:- use_module( declare, [ (:=)/2, (=:)/2, remember/1, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+
+:- use_module( 'utility/writeout', [ doubt/2, out/1, output/1, prettyprint/1, print_parse_tree/1, printdots/0, track/2 ] ).%% RS-140912
 
 %Utility-functions %RS-141019 Moved to main.pl (To be accessable for the scripts.n)
 %set( Key, Value ).
-set( Counter, Value ) :- 
-    retractall( main:value( Counter, _ ) ),
-    assert( main:value( Counter, Value ) ).
 
-%% RS-131227    UNIT: / AND /utility/
-
-X := Y  :-      %% RS-131228    :=/2    X set to Y's value
-    main:set(X,Y).
-X =: Y  :-      %% RS-141024    =:/2    Y is set to X's value
-    main:value(X,Y). % ; ( out(X), output(' not set!'), fail ).
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 backslash('\\').
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % for/2. Stay inside the CALLING module? %% RS-141029
-for( P, Q ) :- %% For all P, do Q (with part of P). Finally succeed
-  P, Q, false ; true.
+%for( P, Q ) :- %% For all P, do Q (with part of P). Finally succeed
+%  P, Q, false ; true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-remember( Module:F ) :- Module:F, ! ; assert( Module:F ).        %% Add F it is does not already exist.
+%:- meta_predicate  remember(0) .        %% RS-140928 Remember the facts IN THE MODULE THAT CALLS REMEMBER! Use  :  or  0
+%remember( Module:F ) :- Module:F, ! ; assert( Module:F ).        %% Add F it is does not already exist.
 %remember( Setting ) :- out( 'main:remember/1 => Something went wrong with:'), output( Setting ), output( call( Setting ) ).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -88,8 +72,10 @@ batchfile_predicates( 'utility/utility', [ startbatch/0, starttimebatch/0, stopt
 % starttimebatch/0,  %% RS-131225, reverse/2. Moved to lex.pl interactive: language/1, transfix/2,  % for/2,
 
 %% RS-131225, UNIT: utility/
-:- use_module( 'utility/utility', [ append_atomlist/2, append_atoms/3, makestring/2, psl/2, purge/3, shell_copyfile/2, starttime/0, writelist/1 ] ).  % pront/1, taketime/0, for/2, remember/1, %% LOOPS! RS-141029 
+:- use_module( 'utility/utility', [ append_atomlist/2, append_atoms/3, for/2, makestring/2, psl/2, purge/3, shell_copyfile/2, starttime/0, writelist/1 ] ).  % pront/1, taketime/0, for/2, remember/1, %% LOOPS! RS-141029 
 :- use_module( 'utility/library', [ reverse/2, shell/1 ] ).%% RS-131225
+:- use_module( 'utility/ptbwrite', [ drucke_baum/1 ] ). %% drucke_baum_list/1, , ptbwrite/1, shrink_tree/2, indentprint/2 
+:- use_module( 'utility/writeout', [ track/2, trackprog/2 ] ).
  
 %% UNIT: EXTERNAL LIBRARIES
 %:- use_module( library( aggregate ), [ foral/2 ] ).   %% RS-141029  for-all/2 Does NOT work like utility:for/2
@@ -107,8 +93,7 @@ batchfile_predicates( 'utility/utility', [ startbatch/0, starttimebatch/0, stopt
 
 :- use_module( getphonedir, [ create_tags/1 ]).        %% RS-131227    send_taggercall/1, etc.
 :- use_module( interfaceroute, [  reset_period/0 ] ).   % Interface procedures for handling interface to route modules
-:- use_module( ptbwrite, [ drucke_baum/1, ptbwrite/1, shrink_tree/2 ] ). %% drucke_baum_list/1, 
-:- use_module( sicstus4compatibility, [ tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+%:- use_module( sicstus4compatibility, [ tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 :- use_module( tucbuses, [ legal_language/1, readfile_extension/1, script_file/1 ] ). % , language/1, dcg_module/1 %  Common File for tucbus  (english) and  tucbuss (norwegian)
 %:-use_module( xmlparser, [ xmltaggerparse/2 ] ). %% RS-140102  For getphonedir.pl etc...
 
@@ -150,23 +135,6 @@ batchfile_predicates( 'utility/utility', [ startbatch/0, starttimebatch/0, stopt
 :-op( 1150, fx, sp).   %% spy X,X
 :-op( 1150, fx, c).    %% consult file  %% TA-110106 
 
-%///
-traceprint(N,P):- %% same as trace
-    value(trace,M), number(M), M >= N, 
-    !,
-    write(P),nl
-;
-    true.
-
-%///
-trackprog( N, P ) :-
-    value( traceprog, M ), number(M), M >= N,
-    !,
-    ( nl, call(P) )    %% TA-110130
-        ;
-    true. %% Finally, succeed anyway
-
-%///
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% from declare.pl %progtrace(X,Y) :- user:traceprog(X,Y).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -196,10 +164,6 @@ spyr X :- ( debugrule := X ),
           spy pragma:spy_me.
 
 sp Module:X :- functor(X,F,_), spy F, Module:X.  %% call X with spy on X
-
-statistics(G) :- 
-               statistics(G,K),
-               output(K).
 
 
 %% Strategy for switching language
@@ -391,13 +355,14 @@ dialog :-
 
 
 
-hi :-% language := english, 
+hi :- % language := english,
     create_named_dates, 
-    debug,
+%    debug,
+     trace,
     go.
 
 
-hei:-% language:= norsk, 
+hei :- % language:= norsk,
     reset_period,   
 
      create_named_dates, 
@@ -429,8 +394,8 @@ go:-
 
        origlanguage =: Lang, 
        language := Lang,
-       doask_user(L),
 
+       doask_user(L),
        process(L).
 
 
@@ -508,6 +473,7 @@ jettyrun(S)  :- %% This was gone so I reimplemented it. %% TE-120207
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+language(L) :- value( language, L ). %% value(language,X) should have been set dynamically by now! In tucbuses?
 
 restoreworld :- 
     (world =: _W_) -> true;
@@ -559,7 +525,7 @@ status:-
    nl,output('Facts:'),nl,
    for( fact0(X),   prettyprint(X)), 
    for( difact(UID,X),   prettyprint(UID:X)),   
-   track( 2, ( nl, writeout:output('Flags:'), nl, listing(value/2) ) ).
+   track( 2, ( nl, output('Flags:'), nl, listing(value/2) ) ).
 
 testgram:- 
     dcg_module(DCG),
@@ -869,13 +835,6 @@ translate2(L,TQL):-
     analyse2(L,TQL).
 
 
-printdots:-  %% TA-110204
-    dotline(DOTS),
-    traceprint(1,DOTS).
-
-dotline(''):-value(smsflag,true),!.
-dotline('........................................................................').
-   
 
 analyse2(L,Stop):- 
     stopcommand(L,Stop),
@@ -1085,20 +1044,6 @@ parse_sentence(P,N,Success):-  %% Parse With TimeLimit
 
     print_parse_tree(Parse1). %% TA-110207
 
-print_parse_tree(Parse1):- %% TA-110207
-   value(norsource,true),
-   !,
-   shrink_tree(Parse1,Pa1),
-
-   output('<tree> '),   prettyprint(Pa1),  output('</tree>'),nl.
-
-   
-print_parse_tree(Parse1):- %% TA-110207
-   track(4, printparse(Parse1) ), %%  print proper parsetree
-   track(2, writeout:output('*** Simplified parse tree ***') ),
-   track(1, ptbwrite:ptbwrite(Parse1) ), %% -> ptbwrite.pl
-   track(2, (writeout:output('*****************************'),nl) ).
-
 no_verb(_L) :-!, no_unprotected_verb. %% TA-090529
 
 
@@ -1132,26 +1077,6 @@ present(N,P):-
 value(X):-
     value(X,Y),
     out(X),out('='),writeout:output(Y),nl.
-
-
-printparse(X) :- 
-    write('*** Parse Tree ***'),nl,nl,
-    indentprint(0,X),nl,
-    write('******************'),nl,nl.
-
-indentprint(N,Y):-
-     var(Y),
-     !,
-     tab(N),write(Y),nl.
-    
-indentprint(N,[H|T]):-
-    !,
-    tab(N),write(H),nl,
-    M is N+2, 
-    for( member(X,T), indentprint(M,X) ).
-
-indentprint(N,Y):-
-     tab(N),write(Y),nl.
 
 
     
@@ -1467,6 +1392,5 @@ verify_empty_origins :- %% all gps_origin should be gone !!!!!!
 %%%%%%%%%%%  THE END %%%%%%%%%%%%%%%%%%%%%%
 
 %:- makegram.    %% RS-140921    %?-compile_english.     %?-compile_norsk.
-
 :- initiate.
 
