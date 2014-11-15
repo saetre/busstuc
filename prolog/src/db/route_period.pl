@@ -28,12 +28,11 @@ route_period(   tt, r1611_140331, date(2014,03,31),   date(2014,06,22) ).       
 %%route_period( tt, r1613_130812, date(2013,08,12),   date(2014,06,22) ).     %% Vinter13_14
 %%route_period( tt, r1601_130930, date(2013,09,30),   date(2014,07,22) ).       %% Høst2013oktober
 route_period(   tt, r1611_140623, date(2014,06,23),   date(2014,08,17) ).	%% Sommer 2014
-route_period(   tt, r1611_140818, date(2014,08,18),   date(2014,10,06) ).	%% Høst
-route_period(   tt, r1611_141006, date(2014,10,06),   date(2014,10,19) ).	%% Høst_v2
+route_period(   tt, r1611_140818, date(2014,08,18),   date(2014,10,19) ).	%% Høst
 route_period(   tt, r1611_141020, date(2014,10,20),   date(2014,10,24) ).       %% Høst v4
 route_period(   tt, r1612_141020, date(2014,10,20),   date(2014,10,25) ).	%% VintertidsHelgen 25-26
-route_period(   tt, r1611_141020, date(2014,10,20),   date(2014,12,31) ).	%% Høst v4
-route_period(   tt, r1611_141020, date(2014,10,20),   date(2014,12,31) ).	%% Høst v3
+route_period(   tt, r1611_141020, date(2014,10,20),   date(2014,12,31) ).       %% Høst v4
+%%route_period( gb, r1630_111201, date(2012,12,01),   date(2014,12,31) ).  %% Graakallbanen
+route_period(   gb, r1611_141020, date(2014,10,20),   date(2014,12,31) ).       %% Høst v4, including tram!! %% RS-141115
 route_period(   tmn,r1630_101201, date(2012,12,01),   date(2014,12,31) ).
-route_period(   gb, r1630_111201, date(2012,12,01),   date(2014,12,31) ).  %% Graakallbanen
 route_period(   tt, r1611_140331, date(2014,03,31),   date(2015,01,01) ).       %% Før og etter påske 2014

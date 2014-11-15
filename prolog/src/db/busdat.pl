@@ -15,29 +15,58 @@
 
 %* List of predicates
 
-:- module( busdat, [ airbus/1, airbusstation/1, bus_depend_station/3, bus_dependent_station/3, busfare2/2, central_airbus_station/1, central_fromstation/1, cmbus/3, corr0/2, % corr/2,
-                      % (BUS?) % (STATION)% (ROUTE,PLACE,STATION) % (ROUTETYPE,NUMBER*)                      % (STATION)                % (STATION) avoid default to ST % use places.pl (AtB Domain)
-                     corresp/2, corresp0/2, corresponds/2, cutloop_station/2, date_day_map/2, disallowed_night/1, default_destination/2, endneighbourhood/2,       
-                      % (PLACE,PLACE) % (PLACE,PLACE)                       % (STATION,STATION)  % (DATE)           % (ROUTE,STATION)  % (ROUTE,PLACE)
-                     exbus/1,      exbusname/2, explicit_part_name/1, extraallowed_night/2, fromstationonly/1, home_town/1, hours_delay/1,
-                     % (ROUTE) % (ROUTE,ROUTE) % (NAME)                                         % (STATION)        % (PLACE)       % RS-120402  Was missing
-                     intbusname/2, intbusnr/2, internal_airbus/1,     maxnumberofindividualdepartures/1, moneyunit/1,
-                     % (ROUTE,ROUTE) % (ROUTE,ROUTE) % (BOOLEAN)                                         % (NAME) % from db/regbusall.pl nightbus/1, 
-                     nightbusstation/1, nightbusdestination/1, nostationfor/1, nostationfor1/1, preferred_transfer/5, railway_station/1, regbus/1, % From regbusall, %% RS-140413, experiment
-                     % (STATION) % (STATION) % (PLACE) % (PLACE) 
-                     spurious_return/2, synbus/2,         thetram/1, thetramno/1, tramstation/1,        thetramstation/1, thetramstreetstation/2, tostationonly/1,    
-                                        % (NAME,ROUTE)                              % (STATION),          % (STATION)                             % (STATION) %% TA-110228
-                     unique_vehicle/2,  vehicletype/2,  xisat/2,  xforeign/1, xplacestat/2, xsynplace/2 ] ). 
-                                                                  % (PLACE)
-                     %% RS-120402 %% Moved to timedat.pl  %% create_named_dates/0, % dedicated_date/1, orig_named_date/2,
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- module( busdat, [ airbus/1,                  % (BUS?)
+                     airbusstation/1,           % (STATION)
+                     bus_depend_station/3,      % (ROUTE,PLACE,STATION)
+                     bus_dependent_station/3,   % (ROUTETYPE,NUMBER*) 
+                     busfare2/2,
+                     central_airbus_station/1,  % (STATION) 
+                     central_fromstation/1,     % (STATION) avoid default to ST % use places.pl (AtB Domain)
+                     cmbus/3, corr0/2, % corr/2,
+                     corresp/2,                 % (PLACE,PLACE)
+                     corresp0/2,                % (PLACE,PLACE)
+                     corresponds/2,
+                     cutloop_station/2,         % (STATION,STATION)
+                     date_day_map/2,            % (DATE)
+                     disallowed_night/1,
+                     default_destination/2,     % (ROUTE,STATION)
+                     endneighbourhood/2,        % (ROUTE,PLACE)
+                     exbus/1,                   % (ROUTE)
+                     exbusname/2,               % (ROUTE,ROUTE)
+                     explicit_part_name/1,      % (NAME)
+                     extraallowed_night/2,
+                     fromstationonly/1,         % (STATION)
+                     home_town/1,               % (PLACE)       % RS-120402  Was missing
+                     hours_delay/1,
+                     intbusname/2,              % (ROUTE,ROUTE)
+                     intbusnr/2,                % (ROUTE,ROUTE)
+                     internal_airbus/1,         % (BOOLEAN)
+                     maxnumberofindividualdepartures/1,
+                     moneyunit/1,               % (NAME) % from db/regbusall.pl nightbus/1,
+                     nightbusstation/1,         % (STATION)
+                     nightbusdestination/1,     % (STATION)
+                     nostationfor/1,            % (PLACE)
+                     nostationfor1/1,           % (PLACE)
+                     preferred_transfer/5, railway_station/1, regbus/1, % From regbusall, %% RS-140413, experiment
+                     spurious_return/2,
+                     synbus/2,                  % (NAME,ROUTE)
+                     thetram/1, thetramno/1,
+                     tramstation/1,             % (STATION)
+                     thetramstation/1,          % (STATION)
+                     thetramstreetstation/2,
+                     tostationonly/1,           % (STATION) %% TA-110228
+                     unique_vehicle/2,  vehicletype/2,  xisat/2,
+                     xforeign/1,                % (PLACE)
+                     xplacestat/2, xsynplace/2 ] ). 
+                     
+%% RS-120402 %% Moved to timedat.pl  %% create_named_dates/0, % dedicated_date/1, orig_named_date/2,
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%:- ensure_loaded( user:'../declare' ).       %% RS-120402       %% for(X,Y)
+%% UNIT: /
 :- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../interfaceroute', [ domain_module/2, thisdate_period_module/3 ] ).    %% HEAVY DB?
 
 :- use_module( '../utility/utility', [ bound/1, testmember/2 ] ).
-
-%:- use_module( '../main', [ value/2 ] ).
 
 %% UNIT: /db/
 :- use_module( places, [ corr/2, foreign/1, isat/2, nostation/1, placestat/2 ] ). %% RS-131225
@@ -46,9 +75,6 @@
 
 %% RS-140416 Two different regbus (Period-independent, and many modules with regbus too. %%This used to be done from topreg? (Should be done from topreg:makeauxtable?)
 %:- use_module( regcompstr, [] ). %% HEAVY DB! %:- use_module( regstr, [] ). %% HEAVY DB! %:- use_module( teledat2, [] ). %% HEAVY DB!
-
-%% UNIT: /
-:- use_module( '../interfaceroute', [ domain_module/2 ] ).    %% HEAVY DB! %:- ensure_loaded( user:'../interfaceroute' ). %% [ domain_module/2 ]    %% HEAVY DB!
 
 %% UNIT: /app/
 :- use_module( '../app/buslog', [ bus/1, station/1 ] ).%% RS-130210 %% RS-131225  %% keep  until modules are fixed % 
@@ -65,11 +91,12 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%:-volatile named_date/2. %% Moved to timedat.pl
-%:-dynamic named_date/2. %% Moved to timedat.pl
+%% tram_module( r1630_111201 ). %% RS-140922       Update this please!
+%%route_period(   gb, r1611_141020, date(2014,10,20),   date(2014,12,31) ).       %% Høst v4, including tram!! %% RS-141115
+%% thisdate_period_module( _Module, _Todate, TTP ), %% SomeOnes-period covering current date  %% set by reset_period/0
 
-
-tram_module( r1630_111201 ). %% RS-140922       Update this please!
+tram_module( Module ) :-
+        thisdate_period_module( _Company, _Todate, Module ). %% SomeOnes-period covering current date  %% set by reset_period/0   %% RS-141115
 
 
 %:-volatile station/1. %% RS-121223 
@@ -79,10 +106,9 @@ tram_module( r1630_111201 ). %% RS-140922       Update this please!
 %        station(X). %% RS-130210 --> '../app/buslog'      %% RS-131223
 
 
-railway_station(ts). %% NB not STATION ! %% TA-110724
-
-
+railway_station( ts ). %% NB not STATION ! %% TA-110724
 %% railway_station(trondheim_s_10).      %% TA-110706
+
 
 
 %% CUTLOOP SECTION 
@@ -369,8 +395,8 @@ xsynplace(X,Y):-
 
 %% PLACE INTERFACE SECTION
 
-xsynplace(sentrum,gb_st_olavs_gt):- %% Generalize
-    value(tmnflag,true).   %% RS-131230 From declare.pl 
+xsynplace( sentrum, gb_st_olavs_gate ) :- %% Generalize
+    value( tmnflag, true ).   %% RS-131230 From declare.pl
 
                        
 xsynplace(toget,ts) :-  %% presumes stasjonen is not noun def
@@ -407,7 +433,7 @@ unique_vehicle(bus,false). %%
 
 thetram(1).   %% Only one tram.  
 
-thetramstreetstation(st_olavs_street,st_olavs_gt).
+thetramstreetstation(st_olavs_street,st_olavs_gate).
 
 central_airbus_station(torget). %% hovedterminalen// sentrum 
 
@@ -443,7 +469,7 @@ nostationfor(X) :- %% Heimdal  is unproper, BUT place (with) station
 
 % Places in trondheim with no stations
 
-nostationfor1(X):-nostation(X).     %%  Places with no close bus station 
+nostationfor1(X) :- nostation(X).     %%  Places with no close bus station 
 
 
 nostationfor1(X):-
@@ -453,19 +479,18 @@ nostationfor1(X):-
 
 
 %% nostation ---> places.pl %% TA-100311
+
 %% places in trondheim (not foreign)
 
-
-
-tramstation(st_olavs_gt). 
-tramstation(st_olavs_street). %% for street reference 
+tramstation( st_olavs_gate ).
+tramstation( st_olavs_street ). %% for street reference 
 %% tram_station(st_olavs_gt). %% Wrong, kep for security %% TA-100317
 
-tramstation(X):-
-    value(tramflag,true),  %% RS-131230 From declare.pl  
-    tram_module(Tram),   %%  tram_mod(Tram), %% succeeds also if tramflag=false
+tramstation(X) :-
+    value( tramflag, true ),  %% RS-131230 From declare.pl
+    tram_module( Tram ),   %%  tram_mod(Tram), %% succeeds also if tramflag=false
     Tram \== nil, %% precaution 
-    Tram:hpl(_,_,X,_).   %%
+    Tram:hpl( _, _, X, _ ).   %%
 
 
 
@@ -558,7 +583,7 @@ bus_depend_station(4,    mellomstreet,   mellomv_5).      %%  Mellomveien
 
 
 
-bus_depend_station(1,hovedterminalen, st_olavs_gt). 
+bus_depend_station(1,hovedterminalen, st_olavs_gate). 
 
 %% bus_depend_station(4,    tonstadkrysset,tonstadkrysset_2). %% fra heimdal
 
@@ -673,9 +698,7 @@ corresp0(X,Y):-
 corresp(X,Y):-
 
    value(actual_domain,T), %% RS-131230 From declare.pl
-  (corrx(T,X,Y)
-   ;
-   corrx(T,Y,X)).
+   ( corrx(T,X,Y)   ;   corrx(T,Y,X) ).
 
 corresp(X,Y):-                    %% 
    value(actual_domain,T), %% RS-131230 From declare.pl
@@ -686,15 +709,18 @@ corresp(X,Y):-                    %%
 
 %% corrx(Domain,Place1,Place2).
 
-corrx(tt,X,Y) :- corr(X,Y).    %% Default Ad Hoc
+corrx( tt, X, Y ) :- corr( X, Y ).    %% Default Ad Hoc
 
-corrx(gb,gb_st_olavs_gt,hovedterminalen). 
+corrx( gb, X, Y ) :- corr( X, Y ).    %% Default Ad Hoc
+%corrx( gb, st_olavs_gate, hovedterminalen ).    %% RS-141115. Don't treat tram any different... 
 
-corrx(tmn,trondheim_s,hovedterminalen).
+corrx( gb, gb_st_olavs_gate, hovedterminalen ). 
 
-corrx(tmn,tmn_trondheim_s,hovedterminalen). 
+corrx( tmn, trondheim_s, hovedterminalen ).
 
-corrx(tmn,tmn_trondheim,hovedterminalen).
+corrx( tmn, tmn_trondheim_s, hovedterminalen ). 
+
+corrx( tmn, tmn_trondheim, hovedterminalen ).
 
 
 

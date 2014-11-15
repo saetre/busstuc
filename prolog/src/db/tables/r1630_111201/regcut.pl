@@ -21,7 +21,7 @@ xi(pax(22,0,0,0),2).
 
 %%% 
 
-ex_passes4(1,16010718,st_olavs_gt,1,999,0).
+ex_passes4(1,16010718,st_olavs_gate,1,999,0).
 ex_passes4(1,16010719,dronningensgt,2,0,0).
 ex_passes4(1,16010724,hospitalkirka,3,1,1).
 ex_passes4(1,16010779,kalvskinnet,4,2,2).
