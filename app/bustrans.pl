@@ -559,7 +559,6 @@ is  context B isa Bus,
 id  []
 ip  dmeq( [bus,nightbus,route,tram], Bus ), newfree(A) ).
 
-
 modifier1a rule bustrans:(  %% busser i tide %% not 1A (\spyr command)
 is  context  srel/ION/time/A/C, {dmeq([in,on,nil],ION)}, %% nil
     not _ isa endstation,
@@ -582,11 +581,14 @@ ip  newfree(B)).
 modifier2 rule bustrans:( %% Til nardosenteret
 is  not present (do)/go/_/_ ,
     not _ isa  tram,
-    replaceall modifier(C)
-    with  (which(A),B isa bus,
+    replaceall modifier( C )
+      with  (
+               which( A ),
+               B isa bus,
           %%%  adj/nil/next/B/real,  %% gets more buses
 			 %% "affects  Buster dialog %%
-            A isa time,(do)/go/B/C,srel/in/time/A/C)
+               A isa time, (do)/go/B/C, srel/in/time/A/C 
+            )
 id  []
 ip  newfree(A),newfree(B)).
 
@@ -2682,10 +2684,10 @@ ip  dmeq([sky,ocean,sea,su,moon],Ocean) ). %% ridiculous place subclasses
 
 
 nostation1 rule bustrans:(
-is  X isa station,  { bound(X)},
+is  X isa station,  { bound(X) },
     clear
 id  clear,
-    addcon message(noroutesto(X))
+    addcon message( noroutesto(X) )
 ip  nostationfor(X) ).
 
 nostation2 rule bustrans:(
@@ -4058,7 +4060,6 @@ id  not flag(nightbusflag),
     not buslog:atdate2(_,_),
     add atdate2(DaySeqNo,DATE),
     add message(assumetomorrow)  %% <--- sometimes unnec
-
 ip  today(TODAY),
     daysucc(TODAY,TOM),
     number(Six),
@@ -7205,8 +7206,9 @@ id  flag(nightbusflag),
 ip  dmeq(mtwtfss,Friday),
     today(Tuesday),
     daysucc(Friday,Saturday),
-    number_of_days_between(Tuesday,Saturday,N),
-    finddate(N,DATE),
+%   number_of_days_between(Tuesday,Saturday,N),        %% RS-141115. Clock is extended until 27:59, the SAME day!
+    number_of_days_between(Tuesday,Friday,N),   
+    finddate(N,DATE),                                   %% RS-141115. Clock is extended until 27:59, the SAME day!
     extraallowed_night(DATE,Saturday),
     dayModSeqNo(DATE,DaySeqNo) ).
 
@@ -7227,7 +7229,8 @@ id  flag(nightbusflag),
 ip  dmeq(mtwtfss,Friday),
     today(Tuesday),
     daysucc(Friday,Saturday),
-    number_of_days_between(Tuesday,Saturday,N),
+%   number_of_days_between(Tuesday,Saturday,N),        %% RS-141115. Clock is extended until 27:59, the SAME day!
+    number_of_days_between(Tuesday,Friday,N),   
     finddate(N,DATE),
     \+ disallowed_night(DATE),
     dayModSeqNo(DATE,DaySeqNo) ).
@@ -7247,8 +7250,9 @@ id  flag(nightbusflag),
     add atdate2(DaySeqNo,DATE)
 ip  dmeq(mtwtfss,Friday),
     today(Tuesday),
-    daysucc(Friday,Saturday),
-    number_of_days_between(Tuesday,Saturday,N),
+%    daysucc(Friday,Saturday),
+%   number_of_days_between(Tuesday,Saturday,N),        %% RS-141115. Clock is extended until 27:59, the SAME day!
+    number_of_days_between(Tuesday,Friday,N),   
     finddate(N,DATE),
     dayModSeqNo(DATE,DaySeqNo) ).
 
@@ -7264,7 +7268,8 @@ ip  dmeq([this_midnight,tonight],This_midnight),
     today(Friday),
     daysucc(Friday,Saturday),
     timenow2(0,HHMM), HHMM > 430, %%  not at midnight
-    finddate(1,DATE), %% find date tomorrow
+%   finddate(1,DATE), %% find date tomorrow
+    finddate(0,DATE),           %% RS-141115. Clock is extended until 27:59, the SAME day!
     dayModSeqNo(DATE,DaySeqNo) ).
 
 
@@ -7312,7 +7317,8 @@ id  flag(nightbusflag),
 ip  timenow2(0,T), T > 0430,
     today(Tuesday),
     daysucc(Friday,Saturday),
-    number_of_days_between(Tuesday,Saturday,N),
+%   number_of_days_between(Tuesday,Saturday,N),        %% RS-141115. Clock is extended until 27:59, the SAME day!
+    number_of_days_between(Tuesday,Friday,N),   
     finddate(N,DATE),
     \+ extraallowed_night(DATE,_),
     \+ disallowed_night(DATE),
@@ -7327,11 +7333,12 @@ is  not srel/T/day/_/_  when { T \== today},      %% day not mentioned except to
 id  flag(nightbusflag),
     not atdate2(_,_),
     add  atday(Saturday),
+%    add  atday(Friday),        %% RS-141115. Clock is extended until 27:59, the SAME day!
     add atdate2(DaySeqNo,DATE)
 ip  timenow2(0,T), T > 0430,
     today(Friday),
-    daysucc(Friday,Saturday),
-    finddate(1,DATE),
+    daysucc(Friday,Saturday),  
+    finddate(0,DATE),           %% RS-141115. Clock is extended until 27:59, the SAME day!
     \+ extraallowed_night(DATE,_),
     \+ disallowed_night(DATE),
     dayModSeqNo(DATE,DaySeqNo) ).
@@ -14693,7 +14700,7 @@ id  not flag(exit),
     not keepto(_,_,_),
     not connections(_,_,_,_,_,_,_,_,_,_),
     not frequency(_,_,_,_),
-    not departure(_,st_olavs_gt,_,_),  %% Dirty
+    not departure(_,st_olavs_gate,_,_),  %% Dirty
     not findstations(_,_,_),
 
     atday(Day),atdate2(DaySeqNo,_Date),
@@ -14726,7 +14733,7 @@ id  not flag(exit),
     not keepto(_,_,_),
     not connections(_,_,_,_,_,_,_,_,_,_),
     not frequency(_,_,_,_),
-    not departure(_,st_olavs_gt,_,_),  %% Dirty
+    not departure(_,st_olavs_gate,_,_),  %% Dirty
     not findstations(_,_,_),
 
     atday(Day),atdate2(DaySeqNo,_Date),
@@ -14758,7 +14765,7 @@ id  not flag(defaultdest),
     not keepto(_,_,_),
     not connections(_,_,_,_,_,_,_,_,_,_),
     not frequency(_,_,_,_),
-    not departure(_,st_olavs_gt,_,_),  %% Dirty
+    not departure(_,st_olavs_gate,_,_),  %% Dirty
     not findstations(_,_,_),
     add (departure(Bus36,Paul_Skolemesters_vei,DaySeqNo,Depset),
 			passevent(Depset,Bus36,Paul_Skolemesters_vei,[to],Day,E)),
@@ -14784,7 +14791,7 @@ id  not flag(defaultdest),
     not connections(_,_,_,_,_,_,_,_,_,_),
     not frequency(_,_,_,_),
 %%%%%%%%%%%%%%%%%%%%%%    not departure(_,hovedterminalen,_,_),
-    not departure(_,st_olavs_gt,_,_),  %% Dirty
+    not departure(_,st_olavs_gate,_,_),  %% Dirty
     not findstations(_,_,_),
     add (departure(Bus36,CHLK,DaySeqNo,Depset),
 			passevent(Depset,Bus36,CHLK,[to],Day,E)),
@@ -14809,7 +14816,7 @@ id  not flag(defaultdest),  %%  Retention
     not keepto(_,_,_),
     not connections(_,_,_,_,_,_,_,_,_,_),
     not frequency(_,_,_,_),
-    not departure(_,st_olavs_gt,_,_),  %% Dirty
+    not departure(_,st_olavs_gate,_,_),  %% Dirty
     not findstations(_,_,_),
     add (departure(Bus36,CHLK,DaySeqNo,Depset),
 			passevent(Depset,Bus36,CHLK,[from],Day,E)),
@@ -15894,7 +15901,7 @@ id  not flag(exit),
     departure(_,_,_,_),
     not connections(_,_,_,_,_,_,_,_,_,_),
     not frequency(_,_,_,_),
-    not departure(_,st_olavs_gt,_,_),  %% Dirty
+    not departure(_,st_olavs_gate,_,_),  %% Dirty
     not findstations(_,_,_),
     not message(mustknow(place)),
     not message(mustknowanother(place)),

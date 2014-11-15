@@ -416,9 +416,10 @@ vehicletype(flybussen,bus):-!. %%  ...// Used as neste "buss" Flybussen
 vehicletype(airbus,airbus):-!.
 vehicletype(fb,airbus):-!.
 
-vehicletype(1,tram):-!. %% NB TRONDHEIM
+vehicletype( 1, nighttram ) :- value( nightbusflag, true ), !. %% NB TRONDHEIM   %% RS-141115
+vehicletype( 1, tram ) :- !. %% NB TRONDHEIM
 
-vehicletype(X,nightbus):-   nightbus(X),!.  %%% <------ 
+vehicletype(X,nightbus) :-   nightbus(X),!.  %%% <------
    %% side effects on answer generation  
 
 vehicletype(X,bus):- exbus(X). 
@@ -702,9 +703,9 @@ corresp(X,Y):-
 
 corresp(X,Y):-                    %% 
    value(actual_domain,T), %% RS-131230 From declare.pl
-   (corrx(T,X,hovedterminalen)
+   ( corrx(T,X,hovedterminalen)
    , %%%%%%% <----------- ; sic
-   corrx(T,Y,hovedterminalen)).
+     corrx(T,Y,hovedterminalen) ).
 
 
 %% corrx(Domain,Place1,Place2).

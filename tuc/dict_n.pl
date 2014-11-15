@@ -16008,12 +16008,12 @@ noun2(nattbuss,nightbus).
     noun2(nnattbuss,nightbus). 
     noun2(nttbuss,nightbus). 
     noun2(nattuss,nightbus). 
-%%   noun2(nattrikk,nightbus). 
-%%   noun2(natttrikk,nightbus). 
+    noun2(nattrikk,nightbus).   %% RS-141115
+    noun2(natttrikk,nightbus).  %% RS-141115
     noun2(nsttbuss,nightbus).  %% sp
 
-noun2(nattrikk,tram).     %% Rough 
-   noun2(natttrikk,tram). %% Rough sp
+%noun2(nattrikk,tram).     %% Rough     %% RS-141115
+%   noun2(natttrikk,tram). %% Rough sp  %% RS-141115
    noun2(strikk,tram).    %% sp 
 
 noun2(naturgass,gas). 

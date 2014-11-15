@@ -82,6 +82,8 @@ regbus(777).
 
 %%  Moved from busdat 
 %%  Nightbuses
+nightbus(1).    %% RS-141115    Added night-Trikk
+
 nightbus(103). 
 nightbus(104).
 nightbus(105).

@@ -24,7 +24,7 @@
 %:-volatile
 %          value/2.      %% RS-130630. NOT VOLATILE!!! These values HAVE to be stored in the compiled save_program!!!
 :-dynamic
-          value/2.      %% RS-130630. This is modified by the  :=  predicate 
+          value/2.      %% RS-130630. declare:value is modified by the  :=  predicate, and checked by the =: predicate
 %
 
 set( Counter, Value ) :- 
