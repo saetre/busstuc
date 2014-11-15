@@ -8,7 +8,7 @@
 
 :-module( interfaceroute, [ current_period/4, decide_period/2, domain_module/2, thisdate_period_module/3, reset_period/0, search_period_module/3, valid_period/2 ] ).
 
-% thisdate_period_module(TT,_,Period) contains the actual period... Dynamicly updated by reset_period/0
+% thisdate_period_module( TT, _Module, Period ) contains the actual period... Dynamicly updated by reset_period/0
 :-volatile  thisdate_period_module/3 .       %% RS-120915 Not stored in the save_program
 :-dynamic   thisdate_period_module/3 .
 
@@ -40,8 +40,8 @@ reset_period :- %% called from main.pl
     value(tramflag,true),
     set(actual_domain,gb),
     set_period_module(gb),  
-    current_period(gb,CP,_,_),
-    set(actual_period,CP),
+    current_period( gb, CP, _, _ ),
+    set( actual_period, CP ),
 
     !. %% ///////// %% RS-140616 Tram ONLY? Use ONLY the FIRST MATCH for a given domain.
 
@@ -102,8 +102,8 @@ search_period_module(_TT,_Date,_Noperiod):-
     !,
     fail.
 
-current_period(T,CurrentPeriod,Date1,Date2):-
-    thisdate_period_module(T,_,CurrentPeriod),      
+current_period( T, CurrentPeriod, Date1, Date2 ):-
+    thisdate_period_module( T, _, CurrentPeriod ),      
     route_period( T, CurrentPeriod, Date1, Date2 ),
     !.
 

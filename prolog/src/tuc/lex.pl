@@ -1282,7 +1282,7 @@ remove_confusing_stations(tmn):-
 remove_confusing_stations(tt):- 
     !,
  
-    retractall( txt(_, w(sentrum,name(gb_st_olavs_gt, n,station)),_)   ),
+    retractall( txt(_, w(sentrum,name(gb_st_olavs_gate, n,station)),_)   ),
     retractall( txt(_, w(sentrum,name(tmn_sentrum,    n,station)),_)   ),
     retractall( txt(_, w(tmn_sentrum,name(tmn_sentrum,n,station)),_)   ).
 % etc

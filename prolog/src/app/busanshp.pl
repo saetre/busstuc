@@ -477,9 +477,10 @@ outdeplist1(Deps0,Day,Opts,DirPlace,(OutFirst,OutNext,earliesttimes), MAP,_Smart
    \+ value(smsflag,true), %% NONSMS -> FIRST/LAST
    \+ member(firstcorr,Opts),
    \+ member(time,Opts),       % time means a clock has been set
-        (  member(first,Opts);       % unspecified first
-      member(first(1),Opts);    % ambiguous, get both !
-      member(next(1),Opts)),
+   (  member(first,Opts) ;       % unspecified first
+      member(first(1),Opts) ;    % ambiguous, get both !
+      member(next(1),Opts) 
+   ),
     \+ anotherday(Day),
     !,
     progtrace(4,case15),
@@ -559,7 +560,6 @@ outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :-   % N
          outdeplisttime([Dep],Day,Opts,DirPlace,Out,MAP,SmartDeps).
 
 
-
 % Få eller alle avganger
 outdeplist1(Deps,_,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :-
     (testmember(time,Opts)  ;  testmember(timeset,Opts)),   %% from utility.pl
@@ -627,7 +627,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :- %% fr
     %%print_smartdep_entries(SmartDeps).
 
 
-outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)), MAP,SmartDeps) :-       %% RS-120813 case27: Last resort? Default? Catch all... (Nightbus?)
+outdeplist1( Deps, Day, Opts, DirPlace, ( (Out,earliesttimes) ), MAP, SmartDeps ) :-       %% RS-120813 case27: Last resort? Default? Catch all... (Nightbus?)
     !,
     progtrace(4,case27),
     outdeplisttime( Deps, Day, Opts, DirPlace, Out, MAP, SmartDeps ). %% Next/Last
@@ -1527,15 +1527,16 @@ outdepnext(Deps,Opts,TimeF,TimeL,DirPlace,Out, MAP,Smartdep_entry) :- %% - Day
     Dep1=depnode(_,Time9,DelArr1,_DelDep1,BegTime,Rid,BusN,_,Station),
     nextdep(Tid, Dep1,Deps),
          ridtobusname(Rid,BusN),
-         (\+  value(dialog, 1),!
+    ( \+  value(dialog, 1), !
       ;
-    getcurrent(Cid),
-    addref(Cid, Rid, lastrid)
+      getcurrent(Cid),
+      addref(Cid, Rid, lastrid)
     ),
-         outdepnext2(Opts,TimeF,TimeL,Time9,DelArr1,BegTime,Rid,BusN,
-                                         Station,DirPlace,Out, MAP),
+         outdepnext2(Opts,TimeF,TimeL,Time9,DelArr1,BegTime,Rid,BusN, Station,DirPlace,Out, MAP),
+    ( Out = []  ->  Smartdep_entry = []   ;
          difftime(DelArr1,Time9,Duration), %% MW-121008
-         create_smartdep_entry2(Station,Time9,Duration,Rid, DirPlace , Smartdep_entry).
+         create_smartdep_entry2(Station,Time9,Duration,Rid, DirPlace , Smartdep_entry)
+    ).
 
 
 outdepnext(_,_,_,_,_,[],_NAP,[]).  %%
@@ -2996,6 +2997,22 @@ cwc(minutes,['min.','min.']):-
  \+ value(dialog,1),!.  %% Talsmann
 cwc(minutes,['minutes','minutter']).
 
+/*
+cwc(misfjordeaster,
+     ['Nightbus goes night to  Easter Sunday from O.Tryggvasons gt. at  0100,0200 and 0300  am.',
+      'Nattbuss går natt til 1. påskedag fra O.Tryggvasons gt. kl 0100,0200 og 0300. ']).
+
+
+cwc(misfjordxmas, ['Nightbus goes from O.Tryggvasons gt.: 0100, 0200 and 0300 am.',
+  'Nattbussen har følgende avganger 27.12 fra O.Tryggvasons gt.: 0100, 0200 og  0300. ']).
+
+
+cwc(misfjordmessage, ['Nightbus goes from O.Tryggvasons gt.: 0100, 0200 and   0300 am.',
+  'Nattbussen har følgende avganger 27.12 fra O.Tryggvasons gt.: 0100, 0200 og 300.']).
+
+*/
+
+
 cwc(monday,['Monday','mandag']).
 cwc(mondays,['Mondays','mandager']).
 
@@ -3007,6 +3024,18 @@ cwc(may17,['Constitutional Day','Nasjonaldag']). %% TA-110518   %% RS-120503
 
 cwc(mustknowfood,['You must specify food in such questions',
                   'Du må spesifisere mat i slike spørsmål']).
+
+cwc(near,['near','nær']).
+
+cwc(never,['never','aldri']).
+cwc(neverpasses,['never passes ','passerer aldri ']).
+cwc(next,['next','neste']).
+
+cwc(nightbus,[' Nightbus', 'Nattbuss ']).   %% * nattbussen 106
+cwc(nighttram,[' Night-tram', 'Natt-trikk ']).   %% * nattrikk 1  %% RS-141115
+
+cwc(nightbus0,[' night bus', 'nattbuss ']). %% -> the nightbus
+%cwc(nighttram0,[' night tram', 'natt-trikk ']). %% -> the nightbus
 
 cwc(new_years_eve,['New years eve','nyttårsaften']).
 cwc(new_years_day,['New years day','nyttårsdag']).
@@ -3047,11 +3076,7 @@ cwc(noroutesforthisdate,['I have no routes for this date.', %% RS-140616  yet? M
 cwc(notthestation, ['This route does not pass the station.',
                     'Denne ruten passerer ikke stasjonen.']).
 
-cwc(near,['near','nær']).
-
-cwc(never,['never','aldri']).
-cwc(neverpasses,['never passes ','passerer aldri ']).
-cwc(next,['next','neste']).
+cwc(no,['No.','Nei.']).
 
 cwc(nocorresponse,['I cannot answer the request for correspondance',
                    'Jeg kan ikke besvare forespørsel om korrespondering']).
@@ -3061,28 +3086,6 @@ cwc(nodatesX,[ 'Route data for this date is not available yet',
 
 cwc(nodirectroutes,['There are no direct routes ', 'Det er ingen direkteruter']).
 
-cwc(nightbus,[' Nightbus', 'Nattbuss ']).   %% * nattbussen 106
-
-cwc(nightbus0,[' night bus', 'nattbuss ']). %% -> the nightbus
-
-cwc(no,['No.','Nei.']).
-
-
-
-/*
-cwc(misfjordeaster,
-     ['Nightbus goes night to  Easter Sunday from O.Tryggvasons gt. at  0100,0200 and 0300  am.',
-      'Nattbuss går natt til 1. påskedag fra O.Tryggvasons gt. kl 0100,0200 og 0300. ']).
-
-
-cwc(misfjordxmas, ['Nightbus goes from O.Tryggvasons gt.: 0100, 0200 and 0300 am.',
-  'Nattbussen har følgende avganger 27.12 fra O.Tryggvasons gt.: 0100, 0200 og  0300. ']).
-
-
-cwc(misfjordmessage, ['Nightbus goes from O.Tryggvasons gt.: 0100, 0200 and   0300 am.',
-  'Nattbussen har følgende avganger 27.12 fra O.Tryggvasons gt.: 0100, 0200 og 300.']).
-
-*/
 
 
 

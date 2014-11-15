@@ -91,7 +91,7 @@ not X :- \+ X.
 
 :-use_module( '../utility/datecalc', [ add_days/3, days_between/3, addtotime/3, dayno/2, difftime/3, subfromtime/3, timenow/1, timenow2/2, today/1 ] ). %%, datetime/6, getdaynew/1, timenow/1, 
 :-use_module( '../utility/library', [ delete/3, remove_duplicates/2, reverse/2 ] ). %% RS-131225  For app/buslog, telelog, etc?
-:- use_module( '../utility/writeout', [ out/1, output/1, trackprog/2 ] ).%% RS-140912
+:- use_module( '../utility/writeout', [ output/1, trackprog/2 ] ).  %% RS-140912  out/1, 
 %:- use_module( '../utility/writeout', [ trackprog/2 ] ).%% RS-141105
 
 %%% RS-140101, UNIT: /
@@ -617,9 +617,9 @@ keepbetweenstat2(Rid,FromSeq,ToSeq,_InnStats,UtStats) :-
 %% but it is also M0 (accidentally), but that is ignored.
 
 
-streetstation2(St_olavs_street,_,St_olavs_gt):-
+streetstation2(St_olavs_street,_,st_olavs_gate):-
     value(tramflag,true), %% TA-100120
-    busdat:thetramstreetstation(St_olavs_street,St_olavs_gt), %% SPECIAL  busdat.pl
+    busdat:thetramstreetstation(St_olavs_street,st_olavs_gate), %% SPECIAL  busdat.pl
     !.
 
 streetstation2(Ident,Num,Station2):- %% Station name in streetstat
@@ -757,11 +757,11 @@ keepcorr(StartDeps,EndDeps,BothStartDeps) :-
      set_filter( X, occurs_afterwards(X,EndDeps), StartDeps, BothStartDeps ).
 
 
-occurs_afterwards(depnode(_A1,D1,_,_,BegTime,Rid,Bus,SeqNo1,Stat1),EndDeps) :-
+occurs_afterwards( depnode( _A1, D1, _, _, BegTime, Rid, Bus, SeqNo1, Stat1 ), EndDeps ) :-
 
      D1 \== 9999, %% non existing departure time
 
-     member( depnode(_A2,_D2,_X2,_Y2, BegTime,Rid,Bus,SeqNo2,Stat2), EndDeps),
+     member( depnode( _A2, _D2, _X2, _Y2, BegTime, Rid, Bus, SeqNo2, Stat2 ), EndDeps ),
 
 %%%%%%%%%%%%%%%     Y2 > 0, %% then never after (Bus 36 M4 -> Jakobsli -> M4) %% TA-110323
 
@@ -1218,7 +1218,7 @@ numberof(_,Set,Length) :-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-departure(Bus,Place,Day,DepSet) :- % Alle dag-bussavganger ved en stasjon
+departure( Bus, Place, Day, DepSet ) :- % Alle dag-bussavganger ved en stasjon
         unbound(Bus),
    \+   value(nightbusflag,true),  % NOT Nightbus query
    \+   value(airbusflag,true),    %% TA-090331
@@ -1234,12 +1234,12 @@ departure(Bus,Place,Day,DepSet) :- % Alle natt-bussavganger ved en stasjon
    !,
         veh_mod(TTP),
 
-   setdepMOD(TTP,Place,Day,DepSet1),
+   setdepMOD( TTP, Place, Day, DepSet1 ),
 
    set_filter(X,night_route(X),DepSet1,DepSet2),
-%   set_filter(X,not_extreme_hastus_time(X),DepSet2,DepSet3),   %% RS-141109  Nightbusses are no longer duplicated (Friday 26:35 === Saturday 02:35)
-%   set_filter(Y, approvenightbustoplace(Place,Y)  ,DepSet3,DepSet).
-   set_filter(Y, approvenightbustoplace(Place,Y)  ,DepSet2,DepSet).
+   set_filter(X,not_extreme_hastus_time(X),DepSet2,DepSet3),   %% RS-141109  Nightbusses are no longer duplicated (Friday 26:35 === Saturday 02:35)
+   set_filter(Y, approvenightbustoplace(Place,Y)  ,DepSet3,DepSet).
+%   set_filter(Y, approvenightbustoplace(Place,Y)  ,DepSet2,DepSet).
 
 
 departure(Bus,Place,Day,DepSet) :- % Alle flybussavganger ved en stasjon
@@ -1269,9 +1269,9 @@ departure(Bus,Place,Day,DepSet) :- % Bussavgangene for en buss ved en stasjon
               DepSet ).
 
 %% Double departures Hastus   Friday 2800 + Staurday 0400
-%not_extreme_hastus_time( X ) :-
-%    X = depnode(_2820,_,_20,_,T2800,_Bus_108_3049,_,_,_),
-%    T2800 < 1200.
+not_extreme_hastus_time( X ) :-
+    X = depnode(_2820,_,_20,_,T2800,_Bus_108_3049,_,_,_),     %    T2800 > 1200. %% TA-?
+    T2800 > 2459.       %% RS-141115  Remove everything except real nightbusses (or trams)...
 
 approvenightbustoplace(Place,Y) :-
    \+ avoidnightbustoplace(Place,Y).
@@ -1285,7 +1285,7 @@ avoidnightbustoplace(Place,Y) :-
 
 
 setdepMOD( TTP, Place, Kay, DepSet ):-
-        set_of( depnode(Time0,Time9,DelArr,DelDep,BegTime1,Rid1,Bus1,SEQNO,Station1),
+        set_of( depnode( Time0, Time9, DelArr, DelDep, BegTime1, Rid1, Bus1, SEQNO, Station1 ),
               depMOD(TTP,Place,Kay,Time0,Time9,DelArr,DelDep,BegTime1,Rid1,Bus1,SEQNO,Station1),
               DepSet).
 
@@ -1405,24 +1405,24 @@ passMOD(TTP,Rid,Place,STATNO,Station,DelArr,DelDep) :-
 %-
 
 
-isat2(Station,sentrum):- %% TA-090915
+isat2(Station,sentrum) :- %% TA-090915
     value(airbusflag,true),
     busdat:central_airbus_station(Station).
 
 
-isat2(Station,Place):- %% studentersamfundet syndrom
+isat2( Station, Place ) :- %% studentersamfundet syndrom
      bound(Place),
     (
-    (station(Place),Station=Place);
-    (busdat:airbusstation(Place),Station=Place); %% TA-090401
-     placestat(Place,Station);
-     alias_stationx(Station,Place); %% AtB
+     ( station(Place), Station=Place ) ;
+     ( busdat:airbusstation(Place), Station=Place ) ; %% TA-090401
+     placestat(Place,Station) ;
+     alias_station(Station,Place) ; %% AtB
      isat(Station,Place)
     ).
 
 
-alias_stationx(Station,Place):-
-    alias_station(Station,Place).
+%alias_station(Station,Place) :-         %% RS-141115
+%    alias_station(Station,Place).
 
 
 
@@ -1682,8 +1682,8 @@ connections(StartDeps,EndDeps,Bus,FromPlace,ToPlace,Day,DaySeqNo,Opts,Deps,Mid01
 
     starttime,   %% TA-110322  Timer == Stop-watch
 
-    nonvar(StartDeps),
-    nonvar(EndDeps),
+    nonvar( StartDeps ),   %% Departure are added by the XXX predicate(s)?
+    nonvar( EndDeps ),     %% Departure are added by the XXX predicate(s)?
 
     debug_prune(StartDeps,StartDeps777),
 

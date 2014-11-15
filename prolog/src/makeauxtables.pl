@@ -230,14 +230,13 @@ createonlytostations:-
 
 createtransbuslist:-
 
-    thisdate_period_module(tt,_Todate,TTP), %% TT-period covering current date  %% set by reset_period
-    makenext(TTP),
+    thisdate_period_module( _Module, _Todate, TTP ), %% SomeOnes-period covering current date  %% set by reset_period/0
+    makenext( TTP ),
 
     makeinteriors,
 
-    for(transbuslist1(X,Y,Z),assert(transbuslist0(X,Y,Z))),
-
-    dumppredas(transbuslist0(X,Y,Z),transbuslist(X,Y,Z)).
+    for( transbuslist1(X,Y,Z), assert( transbuslist0(X,Y,Z) ) ),
+    dumppredas(transbuslist0(X,Y,Z),transbuslist(X,Y,Z)).       %% TODO_ Remember to FORGET all the transbuslist0 that where just written to file again?
 
 
 nopassanyway(D,S):-
@@ -489,7 +488,6 @@ torehash(yggdrasi,yggdrasil).
 */
 
 
-
 createhash :-
     %    verify_files_exist( 'db/namehashtable.pl' ) ;
     told,
@@ -701,12 +699,12 @@ verify_consistency :-
 %        default_period( tt, summer, First) ,
         default_period( tt, previous, First) ,
         reset_period ,
-        thisdate_period_module(tt,_,Second) , % contains the actual period... Dynamicly updated by reset_period/0
+        thisdate_period_module( _Module, _, Second ) , % contains the actual period... Dynamicly updated by reset_period/0  (above)
 
-        utility:append_atoms( 'db/tables/', Second, WinterFile ),
-        utility:append_atoms( WinterFile, '/reghpl.pl', WinterFileExtension ),
         utility:append_atoms( 'db/tables/', First, SummerFile ),
+        utility:append_atoms( 'db/tables/', Second, WinterFile ),
         utility:append_atoms( SummerFile, '/reghpl.pl', SummerFileExtension ),
+        utility:append_atoms( WinterFile, '/reghpl.pl', WinterFileExtension ),
 
         ensure_loaded( Second:WinterFileExtension ),
         ensure_loaded( First:SummerFileExtension ),
