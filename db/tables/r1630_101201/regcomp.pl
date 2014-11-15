@@ -15,10 +15,10 @@ composite_stat(bergsligate,[],bergsli_gate). % generated 1.0
 composite_stat(bergsli_street,[],bergsli_gate). % generated 1.1
 composite_stat(bergsli,[street],bergsli_gate). % generated 1.2
 composite_stat(skansen,[],skansen).
-composite_stat(st,[olavs, gt],st_olavs_gt).
-composite_stat(st,[olavsgt],st_olavs_gt). % generated 2.0
-composite_stat(st,[olavs_street],st_olavs_gt). % generated 2.1
-composite_stat(st,[olavs, street],st_olavs_gt). % generated 2.2
+composite_stat(st,[olavs, gt],st_olavs_gate).
+composite_stat(st,[olavsgt],st_olavs_gate). % generated 2.0
+composite_stat(st,[olavs_street],st_olavs_gate). % generated 2.1
+composite_stat(st,[olavs, street],st_olavs_gate). % generated 2.2
 composite_stat(dronningensgt,[],dronningensgt).
 composite_stat(dronningen,[gt],dronningensgt). % generated 4.0
 composite_stat(dronningen,[street],dronningensgt). % generated 4.1

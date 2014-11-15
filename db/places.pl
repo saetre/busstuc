@@ -10,7 +10,7 @@
 % m1 --> munkegata_m1 etc
 % p1 --> prinsens_gate_p1 etc
 
-%  Det heter Værestrøa ***
+%  Det heter Værestrøa *** med s.
 
 %% Contains predicates that describes information about places (only).
 
@@ -19,21 +19,23 @@
 
 % See also names.pl for general synonyms
 
-:-module( places, [ alias_name/2, alias_station/2, aliasteamatb/3, % (NAME,NAME) % (STATION,STATION) % (STATNUMBER,STATION_TEAM,STATION_ATB)  %%%%%% Conversion TA-100822
-  cmpl/3,                  % (NAME,NAME*,LIST)
-  corr/2,                  % (PLACE,PLACE)
-  foreign/1,               % (PLACE), e.g. aalesund, orkanger(?).   %%% FOREIGN (to Trondheim) places
-  isat/2,                  % (STATION,PLACE)
-  nostation/1,             % (PLACE)
-  place_resolve/2,         % (PLACE,STATION).
-  placestat/2,             % (PLACE,STATION)
-  sameplace/2,             % (PLACE,PLACE)
-  short_specname/2,        % (NAME,STRING)     %% RS-131225 For concise SMS-messages
-  specname/2,              % (NAME,STRING)
-  synplace/2,              % (NAME,PLACE)
-  underspecified_place/1,  % (PLACE)
-  unwanted_place/1,        % (PLACE)
-  unwanted_station/1       % (PLACE)
+:-module( places, [ alias_name/2,       % (NAME,NAME)
+                    alias_station/2,    % (STATION,STATION)
+                    aliasteamatb/3,     % (STATNUMBER,STATION_TEAM,STATION_ATB)  %%%%%% Conversion TA-100822
+                    cmpl/3,             % (NAME,NAME*,LIST)
+                    corr/2,             % (PLACE,PLACE)
+                    foreign/1,          % (PLACE), e.g. aalesund, orkanger(?).   %%% FOREIGN (to Trondheim) places
+                    isat/2,             % (STATION,PLACE)
+                    nostation/1,        % (PLACE)
+                    place_resolve/2,    % (PLACE,STATION).
+                    placestat/2,        % (PLACE,STATION)
+                    sameplace/2,        % (PLACE,PLACE)
+                    short_specname/2,   % (NAME,STRING)     %% RS-131225 For concise SMS-messages
+                    specname/2,         % (NAME,STRING)
+                    synplace/2,         % (NAME,PLACE)
+                    underspecified_place/1,  % (PLACE)
+                    unwanted_place/1,   % (PLACE)
+                    unwanted_station/1  % (PLACE)
 ] ).
 
 %% RS-141026    UNIT: /
@@ -126,6 +128,7 @@ corr(munkegata_m0,hovedterminalen).  %% Generic central place
 corr(prinsens_gate_p1,hovedterminalen). %% Atb
 corr(prinsens_gate_p2,hovedterminalen). %% RS-140102
 
+corr( st_olavs_gate, hovedterminalen ). %% RS-140102 %% RS-141115 Tra
 
 %% END HOVEDTERMINALEN == "Sentrum" %%
 
@@ -160,15 +163,20 @@ alias_name(teamtrafikk,tt).
 %STATION is very close to other STATIONs, and walking is faster than waiting. So practially identical options.
 
 alias_station(berg_østre,østre_berg). %% AtB
-
+alias_station( breidablikk_trikk, breidablikk ).        %% RS-141115
 alias_station(dv,dragvoll).
 
 %%alias_station(gudes_gate,høgskoleringen).       %% RS-131027 Not needed according to heuristics
+alias_station( hospitalskirka_trikk, hospitalskirka ).            %% RS-141115
 %%alias_station(høgskoleringen,gudes_gate).
 
 alias_station(lade_alle_80,lade). %% TA-100802 old station-> neibourhood
 
+alias_station( munkvoll_trikk, munkvoll ).        %% RS-141115
 alias_station(ntnu_dragvoll,dragvoll). 
+
+alias_station( nyveibakken_trikk, nyveibakken ).  %% RS-141115
+alias_station( ugla_trikk, ugla ).                %% RS-141115
 
 
 
@@ -327,7 +335,7 @@ isat(gyldenløves_gate,rosenborg). %% AtB
 isat(sluppen,sluppen).  %% postterminalen på sluppen
 isat(solbakken_bru,solbakken).  
 isat(solbakken_skole,solbakken). 
-%% isat(st_olavs_gate,sentrum).  %% not AtB
+isat(st_olavs_gate,sentrum).  %% not AtB. %% RS-141115. Yes! AtB is Everything now?!?
 isat(stavset_senter,stavset). 
 
 isat(søndre_flatåsen,flatåsen). %7
@@ -378,27 +386,28 @@ isat(øvre_flatåsveg,flatåsen). % 9,17
 %% TRAM  stations
 %%  Experiment Only if not properstation
 
+%% ALWAYS INCLUDE TRAMSTATIONS! %% RS-141115
+%nostation(bygrensen):- \+value(tmnflag,true).    
+%nostation(ferstad):-   \+value(tmnflag,true). %% Ferstads vei
+%nostation(herlofsonsløypa) :- \+value(tmnflag,true). 
+%nostation(lian):-      \+value(tmnflag,true).  
+%nostation(lian). 
+%nostation(nordre_hoem) :- \+value(tmnflag,true). 
+%nostation(rognheim) :- \+value(tmnflag,true). 
+%nostation(søndre_hoem):- \+value(tmnflag,true). 
+%  nostation(st_olavs_gate). 
+%nostation(st_olavs_gate):- \+ value(tmnflag,true).        %% RS-131223    From busdat.pl
+
+
+
 nostation(arbeidsbuss). %% SIC  endstation bus 100 
-
-nostation(bygrensen):- \+value(tmnflag,true).    
-
-nostation(ferstad):-   \+value(tmnflag,true). %% Ferstads vei
 
 nostation(frøset). 
 
-
-
-nostation(herlofsonsløypa) :- \+value(tmnflag,true). 
 %% nostation(heggsnipen). %% fins ikke i rdata(barei hefte). %%fikset 5.3.07
-nostation(lian):-      \+value(tmnflag,true).  
-nostation(nordre_hoem) :- \+value(tmnflag,true). 
-nostation(rognheim) :- \+value(tmnflag,true). 
-nostation(søndre_hoem):- \+value(tmnflag,true). 
 
 
 %%%%%% Nostation  no bus to place ever
-
-nostation(lian). 
 
 nostation(baklidammen). 
 nostation(bjørnebyen).    %% (langs trikkelinjen mot Lian)
@@ -491,9 +500,6 @@ nostation(sunnlandsskrenten).      %%  (no spellc)
 nostation(sundlandsveien). 
     nostation(sundlandsvn). %% NO SPELLCORR to NOSTATION 
  nostation(sundlandsskrenten). 
-
-%  nostation(st_olavs_gate). 
-nostation(st_olavs_gt):- \+ value(tmnflag,true).        %% RS-131223    From busdat.pl
 
 
 nostation(teisendammen).  

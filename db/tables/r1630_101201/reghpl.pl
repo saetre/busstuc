@@ -12,7 +12,7 @@ hpl(16010711,bygrensen,bygrensen,'Bygrensen').
 hpl(16010712,nyveibakken_trondheim,nyveibakken_trondheim,'Nyveibakken, Trondheim').
 hpl(16010713,bergsli_gate,bergsli_gate,'Bergsli gate').
 hpl(16010715,skansen,skansen,'Skansen').
-hpl(16010718,st_olavs_gt,st_olavs_gt,'St. Olavs gt.').
+hpl(16010718,st_olavs_gate,st_olavs_gate,'St. Olavs gt.').
 hpl(16010719,dronningensgt,dronningensgt,'Dronningensgt.').
 hpl(16010724,hospitalkirka,hospitalkirka,'Hospitalkirka').
 hpl(16010740,belvedere,belvedere,'Belvedere').
