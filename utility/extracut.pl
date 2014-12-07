@@ -102,6 +102,7 @@ create_regcut(Module):-
 
    reset_dynamic_predicates, %% TA-110317
 
+   seemodule(Module,'regbus.pl'), %% For mod_cut_rid
    seemodule(Module,'regdep.pl'), 
    seemodule(Module,'regpas.pl'), 
 

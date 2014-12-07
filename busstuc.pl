@@ -68,7 +68,6 @@
 %:- createhash.    %% RS-130330       Takes another minute...   %% Produce the db/namehashtable  makeauxtables:
 :- told.            %% RS-140208 Reset all output-streams first...
 
-
 %% Already compiled by tucbuss -> monobuss! %?- [ 'db/discrepancies.pl' ].  %% Must be updated before winter %% TA -> RS-120805 Se e-post korrespondansen til Tore
 %:- load_files('busroute.pl', [load_type(source),compilation_mode(compile)]).    %% RS-140210    Bootstrapping for fast compilation!
 
