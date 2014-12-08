@@ -617,9 +617,11 @@ keepbetweenstat2(Rid,FromSeq,ToSeq,_InnStats,UtStats) :-
 %% but it is also M0 (accidentally), but that is ignored.
 
 
-streetstation2(St_olavs_street,_,st_olavs_gate):-
+ streetstation2(St_olavs_street,_,St_olavs_gate):-
+%streetstation2(St_olavs_street,_,st_olavs_gate):-
     value(tramflag,true), %% TA-100120
-    busdat:thetramstreetstation(St_olavs_street,st_olavs_gate), %% SPECIAL  busdat.pl
+    busdat:thetramstreetstation(St_olavs_street,St_olavs_gate), %% SPECIAL  busdat.pl
+%   busdat:thetramstreetstation(St_olavs_street,st_olavs_gate), %% SPECIAL  busdat.pl
     !.
 
 streetstation2(Ident,Num,Station2):- %% Station name in streetstat
@@ -1310,8 +1312,8 @@ airbus_route( depnode(_Time0,_Time9,_DelArr,_DelDep,_BegTime,Rid1,NB,_,_) ) :-
 
 xdepartureMOD( TTP, Rid, Trace, BegTime, DaySeqNO ) :-          %% TA-100318
 
-   TTP: ex_departureday(Rid,Trace,BegTime,DaySeqNO)
-   . % ,  (BegTime < 2500 -> true ) ;  out('app/buslog~1314:late'), output(Rid) ). %% "Friday" at 2500 = "Saturday" at 0100
+   TTP: ex_departureday(Rid,Trace,BegTime,DaySeqNO).
+    % ,  (BegTime < 2500 -> true ) ;  out('app/buslog~1314:late'), output(Rid) ). %% "Friday" at 2500 = "Saturday" at 0100
                    %% ignore, because 2500.. deps are duplicated  %% RS-141109 Entries are no longer duplicated!?!
 
 

@@ -712,7 +712,7 @@ verify_consistency :-
 
 verify_consistency( Mod1, Mod2 ) :-
  
-     out('%% Discrepancies'),   out(Mod1),out(Mod2),nl,
+     out('%% db/discrepancies'),   out(Mod1),out(Mod2),nl,
    
 for(
 

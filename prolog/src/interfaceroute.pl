@@ -6,7 +6,8 @@
 
 % Interface procedures for handling interface to route modules
 
-:-module( interfaceroute, [ current_period/4, decide_period/2, domain_module/2, thisdate_period_module/3, reset_period/0, search_period_module/3, valid_period/2 ] ).
+:-module( interfaceroute, [ current_period/4, decide_period/2, domain_module/2, reset_period/0, search_period_module/3,
+                            thisdate_period_module/3, valid_period/2 ] ).
 
 % thisdate_period_module( TT, _Module, Period ) contains the actual period... Dynamicly updated by reset_period/0
 :-volatile  thisdate_period_module/3 .       %% RS-120915 Not stored in the save_program

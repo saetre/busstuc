@@ -122,6 +122,9 @@ corr(munkegata_m0,hovedterminalen).  %% Generic central place
 %corr(munkegata_m41,hovedterminalen).  %% SIC
 %corr(munkegata_m5,hovedterminalen). 
 
+%% TODO: RS-141207 COMMENT AWAY these two entries?!?
+corr(prinsens_gate_p1,hovedterminalen). %% Atb
+corr(prinsens_gate_p2,hovedterminalen). %% RS-140102
 
 %corr(p1,hovedterminalen).  %% RS-140102 Difficulties with hovedterminalen != sentrum? Ambiguous p1 == prinsen == prinsens gate == ...
 %corr(p2,hovedterminalen).
@@ -206,15 +209,19 @@ isat(munkegata_m3,sentrum).
 isat(munkegata_m4,sentrum). 
 isat(munkegata_m5,sentrum). 
 
+%isat( olav_tryggvasons_gate, sentrum ).    %% RS-121223 Nightbus-station?
 isat(olav_tryggvasons_gate,hovedterminalen).    %% RS-121223 RS-141104 Sommer vs. vinter!?
 
 %% RS-140102    TODO: hovedterminalen  vs.  sentrum ??
 
 %isat(prinsens_gate_p1,prinsens_street). %% RS-131007 - 140102
 %isat(prinsens_gate_p2,prinsens_street). %% RS-140102 See db/regstr.pl
-isat(prinsens_gate_p1,sentrum). %% RS-140428
-isat(prinsens_gate_p2,sentrum). %% RS-140428... But  See db/regstr.pl
-%isat(prinsens_gate_p2,prinsenkrysset). %% TA-110822  %% RS-131007 Didn't really work, obsolete?, see tegstr.pl
+%isat(prinsens_gate_p1,sentrum). %% RS-140428
+%isat(prinsens_gate_p2,sentrum). %% RS-140428... But  See db/regstr.pl
+isat(prinsens_gate_p1,prinsenkrysset). %% TA-110822  %% RS-141102
+isat(prinsens_gate_p2,prinsenkrysset). %% RS-141102
+isat(kongens_gate_k1,prinsenkrysset). %% RS-141102
+isat(kongens_gate_k2,prinsenkrysset). %% RS-141102
 
 
 isat(bratsberg_kirke,bratsberg). %% TA-110325
@@ -335,8 +342,10 @@ isat(gyldenløves_gate,rosenborg). %% AtB
 isat(sluppen,sluppen).  %% postterminalen på sluppen
 isat(solbakken_bru,solbakken).  
 isat(solbakken_skole,solbakken). 
-isat(st_olavs_gate,sentrum).  %% not AtB. %% RS-141115. Yes! AtB is Everything now?!?
-isat(stavset_senter,stavset). 
+isat(st_olavs_gate,sentrum).  %% not AtB. %% RS-141115. Yes! AtB includes Everything now?!?
+isat(stavset_senter,stavset).
+isat( strandveikaia, ringnes ).
+isat( strandveikaia, ec_dahls_bryggeri ).
 
 isat(søndre_flatåsen,flatåsen). %7
 isat(søndre_gate_22,søndregate). 
@@ -501,6 +510,8 @@ nostation(sundlandsveien).
     nostation(sundlandsvn). %% NO SPELLCORR to NOSTATION 
  nostation(sundlandsskrenten). 
 
+%  nostation(st_olavs_gate). 
+nostation(st_olavs_gate):- \+ value(tmnflag,true).        %% RS-131223    From busdat.pl
 
 nostation(teisendammen).  
 nostation(theisendammen). 
@@ -1049,7 +1060,8 @@ cmpl(e,[b,schildropsvei],edgar_b_schieldrops_veg).
 cmpl(e,[b,schjeldrups,vei],edgar_b_schieldrops_veg). 
 cmpl(e,[b,shieldropsvei],edgar_b_schieldrops_veg). 
 
-cmpl(e,[c,dahls,bryggeri],strandveikaia).  %%
+cmpl(e,[c,dahls], ec_dahls_bryggeri ).  %% RS-141110
+cmpl(e,[c,dahls,bryggeri], strandveikaia).  %%
 cmpl(e,[c,dahls,gate],e_c_dahls_street).   %% central
 
 
@@ -5910,8 +5922,8 @@ placestat(kretsfengselet,tunga_kretsfengsel).
 placestat(kristiansten,ankers_gate). 
 placestat(kristianstenfestning,ankers_gate). 
 placestat(kuhaugen,gina_krogs_veg). 
-placestat(kyvannet,skavlans_veg). 
-placestat(kyvatnet,skavlans_veg). 
+%placestat(kyvannet,skavlans_veg). 
+%placestat(kyvatnet,skavlans_veg). 
 %% placestat(køff,leangenveien). %% TA-110822
 
 %%¤¤¤ %% ulykke AtB %% TA-100715

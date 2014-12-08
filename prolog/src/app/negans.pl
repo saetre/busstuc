@@ -24,7 +24,7 @@
 
 % :- use_module( '../utility/utility', [  ] ).  %% RS-140209
 
-%:- use_module( '../app/busanshp', [ space0/0 ] ). %% RS-111212 
+:- use_module( '../app/busanshp', [ ] ). %% RS-111212 space0/0 
 :- use_module( '../app/buslog', [ bus/1, neverpasses/2, place_station/2, station/1 ] ). %% RS-111212 
 %:- use_module( '../app/telelog', [ bound/1 ] ).    %% RS-131225 %% To utility.pl
 

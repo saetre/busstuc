@@ -1044,6 +1044,20 @@ parse_sentence(P,N,Success):-  %% Parse With TimeLimit
 
     print_parse_tree(Parse1). %% TA-110207
 
+%print_parse_tree(Parse1):- %% TA-110207
+%   value(norsource,true),
+%   !,
+%   shrink_tree(Parse1,Pa1),
+%
+%   output('<tree> '),   prettyprint(Pa1),  output('</tree>'),nl.
+
+   
+%print_parse_tree(Parse1):- %% TA-110207
+%   track(4, printparse(Parse1) ), %%  print proper parsetree
+%   track(2, writeout:output('*** Simplified parse tree ***') ),
+%   track(1, ptbwrite:ptbwrite(Parse1) ), %% -> ptbwrite.pl
+%   track(2, (writeout:output('*****************************'),nl) ).
+
 no_verb(_L) :-!, no_unprotected_verb. %% TA-090529
 
 

@@ -438,9 +438,9 @@ thetramstreetstation(st_olavs_street,st_olavs_gate).
 
 central_airbus_station(torget). %% hovedterminalen// sentrum 
 
-:- volatile nightbusstation/1. %%RS-121223
-:- dynamic nightbusstation/1. %%RS-121223
-%%nightbusstation(olav_tryggvasons_gate). %% AtB \== Team %% TA-101202 %%RS-121223
+%:- volatile nightbusstation/1. %%RS-121223
+%:- dynamic nightbusstation/1. %%RS-121223
+nightbusstation( olav_tryggvasons_gate ). %% AtB \== Team %% TA-101202 %%RS-121223
 
 /*  %% compiled into user // regstr.pl %% TA-110406
 streetstat(A,B,C,D,E):-  
@@ -485,7 +485,7 @@ nostationfor1(X):-
 
 tramstation( st_olavs_gate ).
 tramstation( st_olavs_street ). %% for street reference 
-%% tram_station(st_olavs_gt). %% Wrong, kep for security %% TA-100317
+%% tram_station(st_olavs_gt). %% Wrong, kept for security %% TA-100317
 
 tramstation(X) :-
     value( tramflag, true ),  %% RS-131230 From declare.pl
@@ -711,11 +711,10 @@ corresp(X,Y):-                    %%
 %% corrx(Domain,Place1,Place2).
 
 corrx( tt, X, Y ) :- corr( X, Y ).    %% Default Ad Hoc
+%corrx( gb, X, Y ) :- corr( X, Y ).    %% Default Ad Hoc   DOUBLES THE TIME!!!
+corrx( gb, st_olavs_gate, hovedterminalen ).    %% RS-141115. Don't treat tram any different... 
 
-corrx( gb, X, Y ) :- corr( X, Y ).    %% Default Ad Hoc
-%corrx( gb, st_olavs_gate, hovedterminalen ).    %% RS-141115. Don't treat tram any different... 
-
-corrx( gb, gb_st_olavs_gate, hovedterminalen ). 
+%corrx( gb, gb_st_olavs_gate, hovedterminalen ). 
 
 corrx( tmn, trondheim_s, hovedterminalen ).
 
@@ -812,10 +811,10 @@ busfare2(nightbus,[90]).
 fromstationonly(heaven). %% Ad HOC 
 tostationonly(hell).     %% 
 
-central_fromstation(torget). %%  (avoid from torget = default to ST)
-central_fromstation(prinsenkrysset). 
-central_fromstation(Olav_tryggvasons_gate):- 
-    nightbusstation(Olav_tryggvasons_gate).
+central_fromstation( torget ). %%  (avoid from torget = default to ST)
+central_fromstation( prinsenkrysset ). 
+central_fromstation( Olav_tryggvasons_gate ) :- 
+    nightbusstation( Olav_tryggvasons_gate ).
 
 %% Some names occur only in lists in cmpl.
 %% They are invisible before new hashtable is created
