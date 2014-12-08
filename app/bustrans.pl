@@ -158,7 +158,7 @@ dep_module( interapp, [ newfree/1 ] ).
 %                              railway_station/1, thetramno/1, tostationonly/1, vehicletype/2, xforeign/1 ] ).
 :-use_module( '../db/busdat' ).
 
-dep_module( '../db/places', [ corr/2, foreign/1, isat/2, nostation/1, place_resolve/2, placestat/2, underspecified_place/1 ] ). %% RS-131225  %uses /db/placestat/2 !! corr/2, foreign/1, isat/2, nostation/1, 
+dep_module( '../db/places', [ corr/2, foreign/1, isat/2, nostation/1, place_resolve/2, placestat/2, underspecified_place/1 ] ). %% RS-141102  %uses /db/placestat/2 !! corr/2, foreign/1, isat/2, nostation/1, 
 dep_module( '../db/regbusall', [ nightbus/1 ] ). %% RS-111213 General (semantic) Operators Moved (back) to busdat
 dep_module( '../db/teledat2', [ has_att_val/4, have_att_val/4 ] ). %% RS-111213 General (semantic) Operators Moved (back) to busdat
 dep_module( '../db/timedat', [  aroundmargin/1, maxtraveltime/1, morning_break/1, named_date/2 ] ). %% RS-111213 General (semantic) Operators Moved (back) to busdat
@@ -3612,7 +3612,8 @@ notanightbus rule bustrans:( %%   NN not a nightbus
 is  (NBus isa nightbus),clear
 id	 add message(not(nightbus0,NBus)) %% ikke nattbussen men natbuss
 ip	 atomic(NBus),  NBus \== it, %% internal anaphora  :-)
-    not vehicletype(NBus,nightbus) ).
+%    not vehicletype(NBus,nightbus) ).
+    \+ vehicletype(NBus,nightbus) ).
 
 
 notatram2 rule bustrans:( %% X is not a tram
@@ -13831,8 +13832,8 @@ id	 not message(neverpasses(_,_)),
     removeall keepbefore1(_,_,_),     %%
     add flag(exit)
 ip
-    place_station(Place1,Station1),
-    place_station(Place2,Station2),
+    place_station( Place1, Station1 ),
+    place_station( Place2, Station2 ),
     Station1 == Station2
 ).  %% NEVER MAKE A CONNECTION TO ITSELF
 
