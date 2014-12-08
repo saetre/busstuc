@@ -19,23 +19,23 @@
 
 % See also names.pl for general synonyms
 
-:-module( places, [ alias_name/2,       % (NAME,NAME)
-                    alias_station/2,    % (STATION,STATION)
-                    aliasteamatb/3,     % (STATNUMBER,STATION_TEAM,STATION_ATB)  %%%%%% Conversion TA-100822
-                    cmpl/3,             % (NAME,NAME*,LIST)
-                    corr/2,             % (PLACE,PLACE)
-                    foreign/1,          % (PLACE), e.g. aalesund, orkanger(?).   %%% FOREIGN (to Trondheim) places
-                    isat/2,             % (STATION,PLACE)
-                    nostation/1,        % (PLACE)
-                    place_resolve/2,    % (PLACE,STATION).
-                    placestat/2,        % (PLACE,STATION)
-                    sameplace/2,        % (PLACE,PLACE)
-                    short_specname/2,   % (NAME,STRING)     %% RS-131225 For concise SMS-messages
-                    specname/2,         % (NAME,STRING)
-                    synplace/2,         % (NAME,PLACE)
-                    underspecified_place/1,  % (PLACE)
-                    unwanted_place/1,   % (PLACE)
-                    unwanted_station/1  % (PLACE)
+:-module( places, [ alias_name/2,       % ( NAME, NAME )                %% RS-141122  NAME vs. PLACE? (Neighborhood?)
+                    alias_station/2,    % ( STATION, STATION )          %% RS-141122  Faster to walk than to wait.
+                    aliasteamatb/3,     % ( STATNUMBER, STATION_TEAM, STATION_ATB )  %%%%%% Conversion TA-100822
+                    cmpl/3,             % ( NAME, NAME*, LIST )
+                    corr/2,             % ( PLACE, PLACE )
+                    foreign/1,          % ( PLACE ), e.g. aalesund, orkanger(?).   %%% FOREIGN (to Trondheim) places
+                    isat/2,             % ( STATION, PLACE )    
+                    nostation/1,        % ( PLACE )
+                    place_resolve/2,    % ( PLACE, STATION ).   %% RS-141122 If multiple stations there...
+                    placestat/2,        % ( PLACE, STATION )    %% RS-141122 If only one station there...
+                    sameplace/2,        % ( PLACE, PLACE )
+                    short_specname/2,   % ( NAME, STRING )     %% RS-131225 For concise SMS-messages
+                    specname/2,         % ( NAME, STRING )
+                    synplace/2,         % ( NAME, PLACE )
+                    underspecified_place/1,  % ( PLACE )
+                    unwanted_place/1,   % ( PLACE )
+                    unwanted_station/1  % ( PLACE )
 ] ).
 
 %% RS-141026    UNIT: /
@@ -131,7 +131,9 @@ corr(prinsens_gate_p2,hovedterminalen). %% RS-140102
 corr(prinsens_gate_p1,hovedterminalen). %% Atb
 corr(prinsens_gate_p2,hovedterminalen). %% RS-140102
 
-corr( st_olavs_gate, hovedterminalen ). %% RS-140102 %% RS-141115 Tra
+corr( st_olavs_gate, hovedterminalen ). %% RS-140102 %% RS-141115 Tram
+corr( olav_tryggvasons_gate, hovedterminalen ).  %% RS-120915
+
 
 %% END HOVEDTERMINALEN == "Sentrum" %%
 
@@ -173,7 +175,9 @@ alias_station(dv,dragvoll).
 alias_station( hospitalskirka_trikk, hospitalskirka ).            %% RS-141115
 %%alias_station(høgskoleringen,gudes_gate).
 
-alias_station(lade_alle_80,lade). %% TA-100802 old station-> neibourhood
+alias_station( lade_gård, lade ). %% TA-100802 old station-> neibourhood
+alias_station( lade_alle_80, lade ). %% TA-100802 old station-> neibourhood
+alias_station( lade_alle_80, jørgen_b_lysholms_vei ).     %% Bussen står og venter her ganske lenge!  %% RS-141122
 
 alias_station( munkvoll_trikk, munkvoll ).        %% RS-141115
 alias_station(ntnu_dragvoll,dragvoll). 
@@ -287,18 +291,18 @@ isat(hovedterminalen,dronningens_gate).  %% Where is sentrumsterminalen
 isat(hovedterminalen,munkegata).  %%
 isat(hovedterminalen,sentrum).  %% Experiment Trikk St. Olavs. gt og så sentrum
 
+isat( john_aae_s_veg,city_syd).   %%
+isat( jørgen_b_lysholms_vei, lade_arena ).     %% Bussen står og venter her ganske lenge!  %% RS-141122  Se lade_alle_80
+
 isat(klæbu_sentrum,klæbu).  %% AtB
-
-
-isat(john_aae_s_veg,city_syd).   %%
-
 isat(kroppanmarka,kroppanmarka_snuplass). %%RS-120305
 isat(kvt,city_syd).             %%
 
 %%¤¤¤ %% ulykke AtB %% TA-100715
 %%%%%%placestat(lade,lade_alle_80).  %% ( lade-alle_80 more passages => PREFERRED!)
 %%¤¤¤
-isat(lade_alle_80,lade).
+isat( lade_alle_80,lade).
+isat( lade_alle_80,lade_arena ).              %% RS-141122  Moved to isat (station, place)
 
 isat(lerkendal_stadion,lerkendal). 
 isat(lerchendal_gård,lerkendal).   %% ?
@@ -535,7 +539,7 @@ aliasteamatb(16010001,munkegata_m1,munkegata_m1). %% just 1 for safety
 
 %%%%%%%  9940 %%%%
 
-%% CMPL 
+%% CMPL  ( FIRSTWORD, [ FOLLOWING, WORDS ], identifier ).
 
 cmpl(st,[o,hospital],st_olavs_hospital).         %% Fronted for test 
 
@@ -1744,7 +1748,7 @@ cmpl(jørgen,[b,lysholmersvei],jørgen_b_lysholms_vei).
 cmpl(jørgen,[lysholms,v],jørgen_b_lysholms_vei). 
 cmpl(jørgen,[lysholms,veg],jørgen_b_lysholms_street).  %%
 cmpl(jørgen,[lysholms,vei],jørgen_b_lysholms_vei). 
-cmpl(jørgen,[lysholms_vei],jørgen_b_lysholms_street).  %% Problem
+cmpl(jørgen,[lysholms_vei],jørgen_b_lysholms_street).  %% Problem (Både vei og busstopp!) %% RS-141122
 
 
 cmpl(k,[1],kongens_gate_k1). %%RS-130812
@@ -1914,7 +1918,8 @@ cmpl(kvilhaugen,gård,kvilhaugen).
 cmpl(kvt,[city,syd],kvt). 
 cmpl(kvt,vgs,kvt). 
 
-cmpl(lade,[arena],haakon_vii_gate_9). 
+%% cmpl(lade,[arena],haakon_vii_gate_9). %cmpl(lade,[arena],haakon_vii_gate_25).  %% Navnebytte?  %% RS-141122 
+cmpl(lade,[arena],lade_arena).
 cmpl(lade,80,lade_alle_80). 
 %%%%%% cmpl(lade,[all,e],lade_alle_80). 
 cmpl(lade,[jarlen,vgs],ladejarlen_v_g_s). 
@@ -5575,6 +5580,10 @@ place_resolve(hist,torget).  %%AiTel
 place_resolve(kino,nova_kinosenter).  %%
 place_resolve(kino,prinsen_kinosenter). 
 place_resolve(kino,rosendal). 
+
+%place_resolve( lade_arena, lade_alle_80 ).              %% RS-141122  Moved to isat (station, place) %% Moved to alias_station
+%place_resolve( lade_arena, jørgen_b_lysholms_vei ).     %% Bussen står og venter her ganske lenge!  %% RS-141122
+
 place_resolve(ntnu,dragvoll). 
 place_resolve(ntnu,gløshaugen).  %% try without GløsS
 
@@ -5930,6 +5939,8 @@ placestat(kuhaugen,gina_krogs_veg).
 %%%%%%placestat(lade,lade_alle_80).  %% ( lade-alle_80 more passages)
 %%¤¤¤
 placestat(lade_alle,lade_alle_80).  %%
+%placestat(lade_arena,lade_alle_80).  %& RS-141122  Moved to isat (station, place)...
+%placestat(lade_arena,jørgen_b_lysholms_vei).  %% Bussen står og venter her ganske lenge!  %% RS-141122
 
 placestat(ladehammerveien,ladehammeren).  %%(manystations,
 placestat(lademoen,rønningsbakken). 
@@ -5994,8 +6005,8 @@ placestat(nardoskole,nardokrysset).
 placestat(nardosletta,nardosenteret).  %% Names should not disappear
 placestat(nardovegen,dybdahls_veg). 
 
-%%placestat(nattbussterminalen,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB %% TA-100715
-%%placestat(nattbussterminalen,hovedterminalen). %% CORREC %% TA-101203 %% AtB %% TA-100715
+placestat(nattbussterminalen,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB %% TA-100715
+placestat(nattbussterminalen,hovedterminalen). %% CORREC %% TA-101203 %% AtB %% TA-100715
 placestat(olav_tryggvasons_gate,sentrum). %% CORREC %% TA-101203 %% AtB %% TA-100715 %% RS-121223
 
 placestat(nedre_elvehavn,solsiden).  %%(?)

@@ -89,8 +89,9 @@ not X :- \+ X.
         testmember/2, set_difference/3, set_of/3, set_ops/3, starttime/0, taketime/0, timeout/3, unbound/1 ] ). %test/1, testmember/2 %  ]). %% Made loca: set_eliminate/4, set_filter/4, 
 %% locale meta-predicates: once1/1, test/1,  %% RS-131117 includes declare.pl
 
-:-use_module( '../utility/datecalc', [ add_days/3, days_between/3, addtotime/3, dayno/2, difftime/3, subfromtime/3, timenow/1, timenow2/2, today/1 ] ). %%, datetime/6, getdaynew/1, timenow/1, 
-:-use_module( '../utility/library', [ delete/3, remove_duplicates/2, reverse/2 ] ). %% RS-131225  For app/buslog, telelog, etc?
+:- use_module( '../utility/datecalc', [ add_days/3, days_between/3, addtotime/3, dayno/2, difftime/3, subfromtime/3, timenow/1, timenow2/2, today/1 ] ). %%, datetime/6, getdaynew/1, timenow/1, 
+:- use_module( '../utility/library', [ delete/3, reverse/2 ] ). %% RS-131225  For app/buslog, telelog, etc? remove_duplicates/2, 
+:- use_module( '../sicstus4compatibility', [ remove_duplicates1/2 ] ).         %% RS-141207
 :- use_module( '../utility/writeout', [ output/1, trackprog/2 ] ).  %% RS-140912  out/1, 
 %:- use_module( '../utility/writeout', [ trackprog/2 ] ).%% RS-141105
 
@@ -473,9 +474,7 @@ rid_to_direction(RID,Y,Station):-
      Y = X.
 
 %% NEW FORMAT %% TA-110323
-
 % depnode(TimeArr,TimeDep,DelayArr,DelayDep,BegTime,Rid,Bus,SeqNo,Station)
-
 % depnode(TimeArr,TimeDep,DelayArr,DelayDep,BegTime,Rid,Station) //old
 
 
@@ -651,7 +650,7 @@ optional_alias2(Station,Station2):-     %% in case of period renameing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-stationsat(IdentNum,Instation,Station):-
+stationsat( IdentNum, Instation, Station ) :-
          nonvar(IdentNum),
     IdentNum=Ident-Num, %% vollabakken 1
          !,
@@ -659,12 +658,12 @@ stationsat(IdentNum,Instation,Station):-
     streetstation2(Ident,Num,Station).
 
 
-stationsat(Place,Instation,Stations):-
+stationsat( Place, Instation, Stations ) :-
          set_of(S,stathelp(Place,Instation,S),Stations),
          Stations \== [],
     !.
 
-stationsat(Place,InStation,Stations) :-
+stationsat( Place, InStation, Stations ) :-
          unbound(InStation),
          !,
     set_of(Station,  (place_station1(Place,Station); %% NB place_station1  Must be a station
@@ -672,16 +671,16 @@ stationsat(Place,InStation,Stations) :-
            IsatStations),
     Stations=IsatStations.
 
-stationsat(_Place,Neigh,Stations) :- % Special case, Neigh is also a neighbourhood
+stationsat( _Place, Neigh, Stations ) :- % Special case, Neigh is also a neighbourhood
          bound(Neigh),
     neighbourhood(Neigh), %% e.g  Migosenteret , \+  Nardosenteret
     !,
-         setof( Station, %% RS140614 setof/3 is 4x SLOWER than set_of/3
+         set_of( Station, %% RS140614 setof/3 is 4x SLOWER than set_of/3
                 bingbong(Neigh,Station), %% (place_station(Neigh,Station); isat(Station,Neigh)), %% RS-140614 Module Problem?
            IsatStations ),
     Stations=IsatStations.
 
-stationsat(_,Station,Places1) :- %% Nardosenteret
+stationsat( _, Station, Places1 ) :- %% Nardosenteret
          bound(Station),
     !,
     set_of(Place,(place_station(Place,Station) ,Place \==Station),Places),
@@ -689,8 +688,8 @@ stationsat(_,Station,Places1) :- %% Nardosenteret
              Places1=[] %%%  [Station] % GDMØ dont know
            ; Places1=Places). %%
 
-%% something rotten (wrotten?) Debug stationsat above the above:
-bingbong(Neigh,Station) :- (place_station(Neigh,Station); isat(Station,Neigh)). %% RS-120816 Debug Above Predicate
+%% something rotten (wrotten?) Debug stationsat above the above: (4 times slower than usual?!?)
+bingbong(Neigh,Station) :- ( place_station(Neigh,Station) ; isat(Station,Neigh) ). %% RS-120816 To Debug Above Predicate
 
 
 
@@ -754,9 +753,9 @@ corrstats([_|Stats1],Stats2,CorrStats) :- % Else
 
 % keepcorr(StartDeps,EndDeps,BothStartDeps).
 
-
 keepcorr(StartDeps,EndDeps,BothStartDeps) :-
      set_filter( X, occurs_afterwards(X,EndDeps), StartDeps, BothStartDeps ).
+
 
 
 occurs_afterwards( depnode( _A1, D1, _, _, BegTime, Rid, Bus, SeqNo1, Stat1 ), EndDeps ) :-
@@ -1082,7 +1081,7 @@ endstations(Bus,Stations):-
 endstation(Bus,Stations) :-
          set_of(Rid,bustorid(Bus,Rid),Rids),
          ridtoendhpl(Rids,RawStations),
-         remove_duplicates(RawStations,Stations),
+         remove_duplicates1(RawStations,Stations),
     !.
 
 
@@ -1096,7 +1095,7 @@ allnightbuses(Buses) :-
 
 bus_equivalents(List1,List3):-
     set_of(Y, (member(X,List1),converttostandard(X,Y)),List2),
-    remove_duplicates(List2,List3).
+    remove_duplicates1(List2,List3).
 
 converttostandard(IntX,ExtY):- %% TA-09819
     (busdat:exbusname(IntX,ExtY)
@@ -1527,7 +1526,7 @@ bus_place_station(_Bus,X,Y):-
 
 %% PLACE-STATION
 
-place_station(user_location,user_location). %% TA-11048
+place_station( user_location, user_location ). %% TA-110408  Siste innspurt...
 
 place_station(Place,Place) :-  %% TA-090401
      nonvar(Place),
@@ -1558,12 +1557,13 @@ place_station(Place,Station) :-  %% Place is instantiated
 %      nonvar(Place),
           bound(Place),
 
-     (placestat(Place,Station)-> true;
+     (placestat(Place,Station)-> true ;
 
-     station(Place)-> Station=Place;  %% NOT risk  place_station(next,next)
+     station(Place)-> Station=Place ;  %% NOT risk  place_station(next,next)
 
-     isat(_,Place)-> Station=Place).   %% e.g. studentersamfunde KEEP the placename!
-                                        %%      sentrum %% TA-090401
+     isat(_,Place)-> Station=Place     %% e.g. studentersamfunde KEEP the placename!
+     ).                                %%      sentrum %% TA-090401
+
 
 
 place_station(Ident,Station2):- %% Name in streetstat
@@ -1684,8 +1684,8 @@ connections(StartDeps,EndDeps,Bus,FromPlace,ToPlace,Day,DaySeqNo,Opts,Deps,Mid01
 
     starttime,   %% TA-110322  Timer == Stop-watch
 
-    nonvar( StartDeps ),   %% Departure are added by the XXX predicate(s)?
-    nonvar( EndDeps ),     %% Departure are added by the XXX predicate(s)?
+    nonvar( StartDeps ),   %% Departures ( depnode() ) are added by the buslog:X_departure predicates?
+    nonvar( EndDeps ),     %% Departures are added by the buslog:departure predicate(s)?
 
     debug_prune(StartDeps,StartDeps777),
 
@@ -1732,6 +1732,7 @@ remove_spurious_deps(Deps,Deps1):-
     set_eliminate(X,  (X=depnode(_,_,_,999,_,_,_,_,_)),Deps,Deps1).
 
 
+%% depnode(TimeArr,TimeDep,DelayArr,DelayDep,BegTime,Rid,Bus,SeqNo,Station)
 remove_spurious_arrs(Deps,Deps1):-
     set_eliminate(X, (X=depnode(_,_,999,_,_,_,_,_,_)),Deps,Deps1).
 
@@ -1905,17 +1906,17 @@ coupled(StartDeps,EndDeps,_,_,_,Day,DaySeqNo,Opts,Deps,Mid01) :-
    !,
         keepcorr(StartDeps1,EndDeps1,BothStartDeps), %% TA-100828
 
-   coupled_time(BothStartDeps,StartDeps1,EndDeps1,Day,DaySeqNo,Opts,Deps,Mid01).
+   coupled_time( BothStartDeps, StartDeps1, EndDeps1, Day, DaySeqNo, Opts, Deps, Mid01 ).
 
 
 
 
 % Finner alle rids som passerer endestasjonen
-coupled(StartDeps,EndDeps,_,_,_,Day,DaySeqNo,Opts,Deps,Mid01) :-
-        StartDeps\==[],EndDeps\==[],     % Fail when no departures
-        keepcorr(StartDeps,EndDeps,BothStartDeps),
+coupled( StartDeps, EndDeps, _, _, _, Day, DaySeqNo, Opts, Deps, Mid01 ) :-
+         StartDeps\==[], EndDeps\==[],     % Fail when no departures
+        keepcorr( StartDeps, EndDeps, BothStartDeps ),
    !,
-   coupled_time(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01).
+   coupled_time( BothStartDeps, StartDeps, EndDeps, Day, DaySeqNo, Opts, Deps, Mid01 ).
 
 
 

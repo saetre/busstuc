@@ -88,13 +88,13 @@ batchfile_predicates( 'utility/utility', [ startbatch/0, starttimebatch/0, stopt
 %% COMMON CO-VERSION: BUSS & TELE    difact/2, %% Dynamic,context dependent   fact0/1,Semi permanent, in evaluate.pl  %% TA-980301
 %        quit/0,%        receive_tags/1,%        send_taggercall/1,     %% From getphonedir!
 
-%% RS-131227    UNIT: /         %% RS-130329 Make sure (gram/lang) modules are available: dcg_module, backslash/1, ? %% RS-140928
+%% RS-131227    UNIT: /
 :- ensure_loaded( version ).       %% RS-131227    With version_date/1
 
 :- use_module( getphonedir, [ create_tags/1 ]).        %% RS-131227    send_taggercall/1, etc.
 :- use_module( interfaceroute, [  reset_period/0 ] ).   % Interface procedures for handling interface to route modules
 %:- use_module( sicstus4compatibility, [ tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
-:- use_module( tucbuses, [ legal_language/1, readfile_extension/1, script_file/1 ] ). % , language/1, dcg_module/1 %  Common File for tucbus  (english) and  tucbuss (norwegian)
+:- use_module( tucbuses, [ legal_language/1, readfile_extension/1, script_file/1 ] ). % , language/1, %  Common File for tucbus  (english) and  tucbuss (norwegian)
 %:-use_module( xmlparser, [ xmltaggerparse/2 ] ). %% RS-140102  For getphonedir.pl etc...
 
 %% RS-131227    UNIT: db/
@@ -107,14 +107,16 @@ batchfile_predicates( 'utility/utility', [ startbatch/0, starttimebatch/0, stopt
 %:- use_module( 'dialog/checkitem2', [ trackprog/2 ] ).  %% RS-130329 dialogrun0/0 
 :- use_module( 'dialog/d_dialogue', [ dialogrun0/0 ] ).  %% RS-130329 dialogrun0/0 
 
-%% RS-131227    UNIT: tuc/
+%% RS-131227    UNIT: tuc/      dcg_module %% RS-141122
+%% RS-130329 Make sure (gram/lang) modules are available: 1: gram_n -> ( 2: metacomp ) -> 3: dcg_n   (The same for English)
+:- use_module( 'tuc/metacomp' ,[ dcg_module/1, sentence/7 ]). % makegram/0, language/1 %  Common File for tucbus  (english) and  tucbuss ("norwegian"/norsk)
+
 :- use_module( 'tuc/anaphors' , [ resolve/2 ] ).       %% RS-131227
 :- use_module( 'tuc/evaluate', [ evaluateq/1, evaluateq2/1 ] ). %% RS-131224      fact0/1 and difact/2 are is DANGEROUS? Dynimic in user:declare...
         %% Moved to lex? ctxt/3, txt/3, maxl/1 %% RS-131225
         %% Semi-tagger (quasi multitagger)
 :-use_module( 'tuc/lex', [ decide_domain/0, lexproc3/3, maxl/1, mix/2, no_unprotected_verb/0, spread/1, unknown_words/2 ] ).
 
-:- use_module( 'tuc/metacomp' ,[ dcg_module/1 ]). %, makegram/0, language/1 %  Common File for tucbus  (english) and  tucbuss ("norwegian"/norsk)
 
 :-use_module( 'tuc/readin' ). %%, [  ask_file/1, ask_user/1, read_in/1, words/3  ]). %%  Read a sentence into a list of symbols
 :-use_module( 'tuc/translat', [  (=>)/2, transfix1/2  ] ).        %% RS-131227 -141026 clausifyq/2, clausifystm/1 
@@ -139,7 +141,7 @@ batchfile_predicates( 'utility/utility', [ startbatch/0, starttimebatch/0, stopt
 %% from declare.pl %progtrace(X,Y) :- user:traceprog(X,Y).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% same as traceprog
-progtrace(N,P):- 
+progtrace( N, P ) :-
     value(traceprog,M), number(M), M >= N, 
     !,
     write(P),nl
@@ -527,11 +529,15 @@ status:-
    for( difact(UID,X),   prettyprint(UID:X)),   
    track( 2, ( nl, output('Flags:'), nl, listing(value/2) ) ).
 
-testgram:- 
-    dcg_module(DCG),
-    spy(DCG:sentence/6),
-    spy(DCG:statreal/6),     
-    spy(DCG:do_phrase/10),  
+testgram :- 
+%    dcg_module(DCG),
+%    spy(DCG:sentence/6),
+%    spy(DCG:statreal/6),     
+%    spy(DCG:do_phrase/10),  
+    spy(sentence/6),
+    spy(statreal/6),     
+    spy(do_phrase/10),
+
     spy(evaluate:qev/1),       
     trace := 3,
 %%     spellcheck :=0, %% debug makes it slow // not any longer 
@@ -955,7 +961,7 @@ grammar2(_,FOL):-
     cursor := 0,
     maxl(N),
 
-    parse_sentence(P,N,Success), 
+    parse_sentence(P,N,Success),  %% RS-141122  ( ProgramGenerated, NumberOfWords?, OK-flag )
 
     (Success == success -> true; 
 
@@ -1028,15 +1034,16 @@ grammar2(L,error):-                  % Failed also with type check
 
 
 % % % % % % % % % % % % % % % % % % %
+%% Uses dcg_n or dcg_e (Generated from gram_n or gram_e).
 
 
-parse_sentence(P,N,Success):-  %% Parse With TimeLimit
-    dcg_module(G),
+parse_sentence( P, N, Success ) :-  %% Parse With TimeLimit
+    dcg_module(G),      %   use_module( G, [ sentence/6 ] ),
     value(parsetime_limit,Limit),   
 
     time_out(   %%  library(timeout) contains time_out/3. RS-140210 
 
-        G:sentence(P,Parse,[],[],0,N), 
+        sentence( G, P, Parse, [], [], 0, N ),    %% RS-141122 (dcg-Language, TQL-Program, ParseTree, StackIn, StackOut, Start-index, Stop-index)
         Limit,
         Success),
 

@@ -42,7 +42,7 @@
 %:-use_module( 'tucbuss.pl', [ hei/0, run/0 ] ).   %% Compiles tucbuses (norsk and english)
 
 %% RS-141107    UNIT: /tuc/
-:- use_module( 'tuc/metacomp.pl', [ makegram/1 ] ). %% RS-141024
+%:- use_module( 'tuc/metacomp.pl', [ makegram/1 ] ). %% RS-141024
 
 
 %Busroute is already compiled from  monobus -> makeauxtables -> busroute?

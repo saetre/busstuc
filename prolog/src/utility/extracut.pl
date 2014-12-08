@@ -180,8 +180,8 @@ mod_passes4(Module,Trace1,STATNO,Station,Seq,Arr1,Dep1):-
 mod_departureday(Module,Rid1,Trace1,Time1,Day):-
      Module:departureday(Rid1,Trace1,Time1,Day).
 
-mod_route(Module,Rid1,Bus,Xbus):-
-     Module:route(Rid1,Bus,Xbus).
+mod_route(Module,Rid1,Bus,Xbus) :-
+     Module:route(Rid1,Bus,Xbus). %% From regbus.pl
      
 mod_ntourstops(Module,Trace1,Delta):-
      Module:ntourstops(Trace1,Delta).

@@ -800,12 +800,15 @@ moneyunit(nok).    %% Trondheim %% Local currency
 
 %% busfare(30,15). %% Adult/Child 
 
-busfare2(bus,[50,25]).  
-busfare2(airbus,[90,45]). 
-busfare2(nightbus,[90]). 
+busfare2(airbus,[130,65]). 
+busfare2(bus,[50,25]).
+busfare2(nightbus,[80-90-110]). % Byen - Klæbu - Byneset
+busfare2(nightbus_klæbu,[90]).
+busfare2(nightbus_byneset,[110]).
+busfare2(nighttram,[80]).
+busfare2(tram,[50,25]).  
 
-%%  Ikke Klæbu/Melhus/Byneset (80) but that is foreign
-
+%%  Ikke Klæbu/Melhus/Byneset (90/110), but that is foreign
 
 
 fromstationonly(heaven). %% Ad HOC 

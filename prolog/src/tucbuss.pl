@@ -77,10 +77,10 @@
                                    (sicstuc.pl)
                    tuc/ *.pl
                    tuc/gram_n.pl
-                   tuc/gram_e.pl
-                     ?-makegram.
-                      ?-compile_english.                  
                       ?-compile_norsk.
+                   tuc/gram_e.pl
+                      ?-compile_english.                  
+%                  ?-makegram. (Moved into gram_n/gram_e.pl)
                main.pl        %% RS-140101
                monobus.pl
                    app/...pl

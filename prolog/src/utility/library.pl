@@ -10,11 +10,12 @@
 
 %% UNIT: /utility/.     %% USAGE:
 %:- use_module( 'utility/library', [ exec/3, shell/1 ]). %% TEMPORARY non-FIX!
-:-module( library, [ delete/3, exec/3, intersection/3, remove_duplicates/2, reverse/2, shell/1 ] ).
+:-module( library, [ delete/3, exec/3, intersection/3, reverse/2, shell/1 ] ). %remove_duplicates/2, 
  
 
-:- ensure_loaded( user:'../declare' ).
+%:- use_module( '../declare', [] ).
 %:- use_module( utility, [ ] ).         %% RS-140102 AVOID LOOPS PLEASE!!
+%:- use_module( sicstus4compatibility, [ remove_duplicates1/2 ).         %% RS-141207
 
 %% LOTS of extra imports because of the for-predicate taking several different other predicate inputs!
 
@@ -51,14 +52,17 @@ delete(X,[U|V],[U|W]):-
     delete(X,V,W).
 
 
+%remove_duplicates1(X,Y):-   % preserves order of first occurrence (in sicstus4compatibility
+%    rem_dups(X,[],Y).
+
 %% Remove duplicates  %% Standard %% TA-030922  %% Does standard preserve order of occurrence ?
-remove_duplicates([],[]):-!.
-remove_duplicates([P],[P]):-!.  
-remove_duplicates([X|Y],R):-
-    member(U,Y),X==U,!,
-    remove_duplicates(Y,R).
-remove_duplicates([X|Y],[X|Z]):-
-    remove_duplicates(Y,Z).
+%remove_duplicates([],[]):-!.
+%remove_duplicates([P],[P]):-!.  
+%remove_duplicates([X|Y],R):-
+%    member(U,Y),X==U,!,
+%    remove_duplicates(Y,R).
+%remove_duplicates([X|Y],[X|Z]):-
+%    remove_duplicates(Y,Z).
 
 
 % intersection(X,Y,Z)  Z is intersection of sets X and Y

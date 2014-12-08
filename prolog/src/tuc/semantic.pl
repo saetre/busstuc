@@ -12,7 +12,7 @@
         testclass/1, tv_templ/3, v_compl/4,  vako/2      %% RS-131225    Necessary?
 ] ).
 
-:- ensure_loaded( user:'../declare' ).
+:- use_module( '../declare', [ ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
 %UNIT: /tuc/
 % :- use_module( facts, [ isa/2 ] ).       %% RS-131225    Necessary?

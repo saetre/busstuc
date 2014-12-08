@@ -26,9 +26,9 @@
                                    (sicstuc.pl)
                    tuc/ *.pl
                    tuc/gram_n.pl
+                      ?-compile_norsk.
                    tuc/gram_e.pl
                       ?-compile_english.                  
-                      ?-compile_norsk.
                main.pl        %% RS-140101
                monobus.pl
                    app/...pl

@@ -2,15 +2,11 @@
 %% SYSTEM TUC
 %% CREATED TA-940118
 %% REVISED TA-090514
-%% REVISED  RS-140101 modularized
+%% REVISED RS-141105 Modularized
 
 %% Declarations used by TUC
 %% USAGE:
-%% :- use_module( declare, [ (:=)/2, (=:)/2, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-%% OLD
-%% :- ensure_loaded( user:'../declare' ). %% RS-120403 RS-131224 (:=)/2, forget/1, remember/1  moved from utility!
-
-%% RS-141105 Modularized
+%:- use_module( declare, [ (:=)/2, (=:)/2, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
 :- module( declare, [ (:=)/2, ( =: )/2, forget/1, remember/1, set/2, value/2 ] ).
 

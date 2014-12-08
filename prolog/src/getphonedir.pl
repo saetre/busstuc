@@ -37,7 +37,8 @@
 %:- use_module( 'dialog/checkitem2', [ trackprog/2 ] ). %% MOVED TO DIALOG      LOOP !!! parseres, 
 
 :- use_module( 'utility/utility', [ delete1/3, set_eliminate/4, set_ops/3 ] ). %keep local: foralltest/2, 
-:- use_module( 'utility/library', [ exec/3, remove_duplicates/2, shell/1 ]). %% TEMPORARY non-FIX!
+:- use_module( 'utility/library', [ exec/3, shell/1 ]). %% TEMPORARY non-FIX! remove_duplicates/2, 
+:- use_module( 'sicstus4compatibility', [ remove_duplicates1/2 ] ). %% RS-141207
 :- use_module( 'utility/writeout', [ out/1, output/1, track/2 ] ).%% RS-140912
 :- use_module( 'utility/writeout', [ trackprog/2 ] ).%% RS-141105
 
@@ -273,8 +274,8 @@ x_getdbtags(PAT,Tags,Compnames) :- %% TLF-030408
     xml_subterm(XML, element(result,_,Data)),
     !,
     parse_tags(Data,T,C),!,
-    remove_duplicates(T,Tags),
-    remove_duplicates(C,Compnames),
+    remove_duplicates1(T,Tags),
+    remove_duplicates1(C,Compnames),
     nl,nl,
     track(2, ( 
         write('tags = '),output(Tags),
@@ -319,8 +320,8 @@ y_receive_tags(Tags,Compnames,File) :-          %% MTK 021018/TLF
     xml_subterm(XML, element(result,_,Data)),
     !,
     parse_tags(Data,T,C),
-    remove_duplicates(T,Tags),
-    remove_duplicates(C,Compnames),
+    remove_duplicates1(T,Tags),
+    remove_duplicates1(C,Compnames),
     nl,nl,
     trackprog(3, (
         write('tags = '),output(Tags),

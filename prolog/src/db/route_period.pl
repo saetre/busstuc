@@ -4,6 +4,8 @@
 % Xmas routes before winter routes
 % Easter routes before winter routes
 
+:- module( route_period, [ route_period/4 ] ).
+
 %% Route module 'nil' in route_period means that the route module is not implemented yet
 %% Important to have dummy route modules to give message of no routes for this date
 
@@ -28,15 +30,18 @@ route_period(   tt, r1611_140331, date(2014,03,31),   date(2014,06,22) ).       
 route_period(   tt, r1611_140623, date(2014,06,23),   date(2014,08,17) ).	%% Sommer 2014
 route_period(   tt, r1611_140818, date(2014,08,18),   date(2014,10,19) ).	%% Høst
 route_period(   tt, r1611_141020, date(2014,10,20),   date(2014,10,24) ).       %% Høst v4
-route_period(   tt, r1612_141020, date(2014,10,20),   date(2014,10,25) ).	%% VintertidsHelgen 25-26
-route_period(   tt, r1613_141223, date(2014,12,23),   date(2014,12,25) ).	%% Julaften/FørsteJuledag
-route_period(   tt, r1613_141223, date(2014,12,23),   date(2014,12,25) ).	%% Julaften/FørsteJuledag
-route_period(   tt, r1614_141223, date(2014,12,23),   date(2014,12,30) ).	%% Mellomjula
-route_period(   tt, r1615_141223, date(2014,12,23),   date(2014,12,31) ).	%% Nyttårsaften
+%route_period(   tt, r1612_141020, date(2014,10,20),   date(2014,10,25) ).	%% VintertidsHelgen 25-26
+route_period(   tt, r1611_141201, date(2014,12,01),   date(2014,12,23) ).       %% 2014 vanlig
+route_period(   tt, r1612_141223, date(2014,12,23),   date(2014,12,24) ).       %% Julen 2014 (1)
+route_period(   tt, r1613_141223, date(2014,12,23),   date(2014,12,25) ).	%% Første juledag  (2)
+route_period(   tt, r1612_141223, date(2014,12,23),   date(2014,12,26) ).       %% Julen 2014 (1)
+route_period(   tt, r1611_141201, date(2014,12,01),   date(2014,12,28) ).       %% 2014 vanlig
+route_period(   tt, r1614_141223, date(2014,12,23),   date(2014,12,30) ).	%% Mellomjula (3)
+route_period(   tt, r1615_141223, date(2014,12,23),   date(2014,12,31) ).	%% Nyttårsaften (4)
+route_period(   tt, r1612_141223, date(2014,12,23),   date(2015,01,01) ).       %% Julen 2014 (1)
+route_period(   tt, r1611_141201, date(2014,12,01),   date(2015,01,11) ).	%% 2015 (første uken)
 route_period(   tt, r1611_141020, date(2014,10,20),   date(2014,12,31) ).       %% Høst v4
+%route_period(   tt, r1611_140331, date(2014,03,31),   date(2015,01,01) ).       %% Før og etter påske 2014
 %%route_period( gb, r1630_111201, date(2012,12,01),   date(2014,12,31) ).  %% Graakallbanen
-route_period(   gb, r1611_141020, date(2014,10,20),   date(2014,12,31) ).       %% Høst v4, including tram!! %% RS-141115
-route_period(   tmn,r1630_101201, date(2012,12,01),   date(2014,12,31) ).
-route_period(   tt, r1612_141223, date(2014,12,23),   date(2015,01,01) ).	%% Lille Julaften
-route_period(   tt, r1611_140331, date(2014,03,31),   date(2015,01,01) ).       %% Før og etter påske 2014
-route_period(   tt, r1611_141201, date(2014,12,01),   date(2015,01,11) ).	%% 2015
+route_period(   gb, r1611_141201, date(2014,10,20),   date(2014,12,31) ).       %% Høst v4, including tram!! %% RS-141115
+%route_period(   tmn,r1630_111201, date(2012,12,01),   date(2014,12,31) ).
