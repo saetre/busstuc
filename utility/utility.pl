@@ -16,7 +16,7 @@
         delete1/3, featurematch/4, featurematchlist/2, flatten/2, maximum/2, mergeavlists/3, minimum/2,  
         do_count/1, freshcopy/2, subsumes/2,     %% RS-140927 For translat.pl
         foralltest/2, ident_member/2, implies/2, internalkonst/1, iso_atom_chars/2, last_character/2, lastmems/3, listlength/2, makestring/2, matchinitchars/2,
-        flatround/2 /*interapp*/, remove_duplicates/2 /*lex*/,
+        flatround/2 /*interapp*/,  %% remove_duplicates/2 /*lex*/,
         lastmem/2, maxval/3, minval/3, nth/3, set_of/3, set_ops/3, test/1, 
         measurecall/2, members/3, naive/0, newconst/1, number_of/3, number_to_string/2, outputlist/1, pling/1, pront/1, psl/2, 
         occ/2, once1/1, match/2, matchinitchars/3, purge/3, roundreverse/2, sequence_member/2, unbound/1,
@@ -84,7 +84,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% RS-131225, UNIT: utility/
-:- use_module( '../utility/library', [ remove_duplicates/2, reverse/2, shell/1 ] ).%% RS-131225
+:- use_module( '../utility/library', [ reverse/2, shell/1 ] ).%% RS-131225 remove_duplicates/2, 
+:- use_module( '../sicstus4compatibility', [ remove_duplicates1/2 ] ). %% RS-141207
 :- use_module( '../utility/writeout', [ out/1, output/1 ] ).%% RS-131225
 
 :- use_module( library( timeout ), [ time_out/3 ] ). %% RS-140210.
@@ -198,7 +199,7 @@ once1(P):-P,!. %% same as once, but version independent
 %% Sequence preserving setof, ( first occurrence stays first)
 set_ops(X,Y,Z):-
     findall(X,Y,Z1),
-    remove_duplicates(Z1,Z). %% order-preserving
+    remove_duplicates1(Z1,Z). %% order-preserving
 
 set_eliminate(X,Predicate,List1,List2):- 
     set_ops( X, ( member(X,List1), \+ Predicate ), List2 ).

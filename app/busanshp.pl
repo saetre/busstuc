@@ -2503,8 +2503,8 @@ pmess(nearest_station(_STARTSTOP,Street,Station)):-
 
 %% General Nightbus message ( following weekend is normal )
 pmess(generalnightbusmessage):-
-    pen(['Nightbus goes every 30 min from O.Tryggvasons gt. at 0030,0100,0130,0200,0230,0300 am night to Saturday and Sunday.',
-         'Nattbuss går hver halvtime fra  O.Tryggvasons gt. kl 0030,0100,0130,0200,0230 og 0300 natt til lørdag og søndag.']).
+    pen(['Nightbus goes every 30 min from O.Tryggvasons gt. at 0100,0130,0200,0230,0300 am night to Saturday and Sunday. Nighttram every hour from 0115.',
+         'Nattbuss går hver halvtime fra  O.Tryggvasons gt. kl 0100,0130,0200,0230 og 0300 natt til lørdag og søndag. Nattrikk hver time fra 0115.']). %0030,
 
 %% 400 deps cancelled
 
@@ -3031,11 +3031,14 @@ cwc(never,['never','aldri']).
 cwc(neverpasses,['never passes ','passerer aldri ']).
 cwc(next,['next','neste']).
 
-cwc(nightbus,[' Nightbus', 'Nattbuss ']).   %% * nattbussen 106
-cwc(nighttram,[' Night-tram', 'Natt-trikk ']).   %% * nattrikk 1  %% RS-141115
+cwc(nightbus,['Nightbus', 'Nattbuss']).   %% * nattbussen 106
+cwc(nightbus_far,['Nightbus(Town/Byneset/Klæbu)', 'Nattbuss(By-Byneset-Klæbu)']).   %% * nattbussen 106
+cwc(nightbus_klæbu,['Nightbus(Klæbu)', 'Nattbuss (Byen)']).   %% * nattbussen 106
+cwc(nightbus_byneset,['Nightbus(byneset)', 'Nattbuss (Byen)']).   %% * nattbussen 106
+cwc(nighttram,['Night-tram', 'Natt-trikk ']).   %% * nattrikk 1  %% RS-141115
 
-cwc(nightbus0,[' night bus', 'nattbuss ']). %% -> the nightbus
-%cwc(nighttram0,[' night tram', 'natt-trikk ']). %% -> the nightbus
+cwc(nightbus0,['night bus', 'nattbuss']). %% -> the nightbus
+%cwc(nighttram0,['night tram', 'natt-trikk']). %% -> the nightbus
 
 cwc(new_years_eve,['New years eve','nyttårsaften']).
 cwc(new_years_day,['New years day','nyttårsdag']).

@@ -40,24 +40,22 @@
 %        rv_template/7,  screenmeasure/2,                        setvartype/2,           subclass/2,             %%  RS-131227    For translat.pl
 %        subclass2/3,    subclass0/2,    subject_object_test/3,  subtype0/2,  
 %        teen/1,                 testconstraint/2,       %% RS-131227    For dcg_n.pl
-%        thenwhat/3,     tidvarp/3,      type/2,                 tv_template/5,          verb_compl/6,
+%        tidvarp/3,      type/2,                 tv_template/5,          verb_compl/6,
 %        value_world/1,  vartype/3,      vartypeid/2,            verbtype/2,             which_thing/2,
 %        whodunnit/2 ] ).
 
 %% TOUGH TIMES?
-% adjname_template2/3, adjnamecomp_template/3, adjnoun_template/4, atv_template/6, co_template/6, decide_quantifier/4, dtv_template/6, event/4, thenwhat/3, tidvarp/3,
+% adjname_template2/3, adjnamecomp_template/3, adjnoun_template/4, atv_template/6, co_template/6, decide_quantifier/4, dtv_template/6, event/4, tidvarp/3,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %:- meta_predicate test(0) . %% RS-140211
-%test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)) among other things, so: import nostation/1  Move to pragma.pl ?
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% RS-131228, UNIT: /  and  % UNIT: utility/    %% MISERY?
-%:- ensure_loaded( '../declare' ).  %% RS-131223        Get dynamic definition for user:value/2
-:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105 dynamic definition for user:value/2
+%% General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:-op( 730,xfy, :: ).     %% lambda infix  %% RS-141026 For      tuc/ [ translat gram_x fernando  dcg_x anaphors ], app/interapp, dialog/ [checkitem/2 d_context d_dialogue frames/2 makeframe/2 parseres virtuals relax update2 usesstate2]
 
 %% UNIT: /
 %:- use_module( '../main', [ value/2 ] ).

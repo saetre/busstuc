@@ -3,13 +3,18 @@
 %% SYSTEM TUC
 %% CREATED TA-930310
 %% REVISED TA-110823
+%% REVISED RS-141122
+
+
 :-module( gram_e ,[ (--->)/2 ] ).    %% RS-130330    Export consensical grammar rules to dcg_e.pl, via /tuc/metacomp.pl
 
 %  Consensical Grammar for English
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- ensure_loaded( '../declare' ).
+:- use_module( '../declare', [] ).  %:-op( 710,xfx, isa ).  % Move to tuc/facts?        %:-op( 1150, xfx, ---> ).
+%:- use_module( '../utility/writeout', [ output/1 ] ).  %% RS-141122 Write with following nl (NewLine).
+
 :- op(1150,xfx, ---> ).         %% RS-141026 For gram_n and gram_e
 :- op(1150,xfx, ( ---> ) ).     %% RS-141026 For gram_n and gram_e
 
@@ -4317,6 +4322,15 @@ youverymuch0 ---> w(prep(for)),noun_phrase1(_,_,_),!.
 
 %%%%%%%% END OF GRAMMAR %%%%%%%%%%%%%%%%%%%%%%%% 
 
+%% EXPERIMENT %% RS-1411220
+%file_date( filename ) :-
+%        writeout:output( filename ).
+%
+%:- file_date( 'hei' ).
 
+%makegram. %% RS-141130
+%:- use_module( metacomp, [ compile_english/1 ] ).  %% RS-141122 Make the dcg_e.pl file, based on updates in this gram_e file.
+%:- compile_english( '' ).        %% For quick recompilation
 
 %%%%%%%%%%%%%%%%%%%%%%%THE END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

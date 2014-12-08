@@ -4,21 +4,23 @@
 %% SYSTEM BUSSTUC/BUSTER
 %% CREATED TA-961017
 %% REVISED TA-110825
-%% REVISED RS-140921
+%% REVISED RS-141122
 
 
-:-module( gram_n, [ ( ---> )/2 ] ).  % , sentence/3 ] ).
+%:-module( gram_n, [ sentence/3 ] ).  % ( --> )/2, sentence/3 ] ).
+:-module( gram_n, [ ( ---> )/2 ] ).
 
 %  T H E     J U L E K A L E N D E R, Trøngelsk! English/Norwegian mix
 %  Consensical Grammar for Norwegian
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- ensure_loaded( '../declare' ).  %:-op( 710,xfx, isa ).  % Move to tuc/facts?
-:-op( 1150, xfx, ---> ). 
+%:- use_module( '../utility/writeout', [ output/1 ] ).  %% RS-141122 Write with following nl (NewLine).
+
+:- use_module( '../declare', [] ).  %:-op( 710,xfx, isa ).  % Move to tuc/facts?        %:-op( 1150, xfx, ---> ).
 :- op( 731,xfy, ::: ).          %% sentence tag  %% TA-090514 
 :- op( 730,xfy, :: ).           %% lambda infix      %% RS-131229 For dialog/frames2 and /virtuals (autofile)
-:- op( 710,xfx, isa ).          % Move to tuc/facts
+:- op( 710,xfx, isa ).          % Move to tuc/facts?
 %...
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -74,26 +76,44 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Avoid error messages (because of spaces? No 4----> vs. 3--->   OR  same ---> in gram_e !)
-%(A --> B) :-
-%        ( A ---> B ).
+%(A ---> B) :-
+%        ( A ----> B ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%:- ensure_loaded( '../utility/utility' ). %% testmember/2 Make it local instead (in dcg_?.pl
+%:- use_module( '../declare', [ (:=)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+
+
 % UNIT:db
 %:- use_module( '../db/busdat', [ clock_delay/3 ] ). %%, named_date/2 ] ).
+%:- use_module( '../db/timedat', [ dedicated_date/1, named_date/2 ] ). %% RS-131228
+
 % UNIT:tuc
-%:- use_module( '../tuc/semantic', [ tv_templ/3 ] ).
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%:- use_module( '../main.pl', [ ( := )/2, value/2 ] ). 
+%:- use_module( 'dagrun_n', [ ] ). %% RS-111213 What is DAG? 
+%:- use_module( 'dict_n', [ ] ). %% RS-111213 What is DAG? 
+%:- use_module( fernando, [ adj_compl/6, adjnamecomp_template/3, adjnoun_template/4, adjustprep/3, adjust_year/3, adj_template/5, adjustprepv/3, adv_compl/6, align_measure/5, align_noun_name/5, atom_templ/2, alignable/2, atv_template/6, bealign/5, bigno/3,
+%         compare/5, clock_test/1, co_template/6, comparad/5, compatvar/2, compliancetest2/3, compoundtest/4, constrain/2, constrainit/2,     %%  constrain0/2, constrain2/3,  ctype/2,
+%         dayname/1, decide_adjective/3, decide_quantifier/4, dtv_template/6, % defact/3, event/4,
+%         has_template/3, it_template/1, iv_template/4, % hour_test/1, idvarx/3, isfaktor/1, issiffer/1, issifre/1,
+%         joinclass/3,  joinclasses/2, latin/4, monthnumber/2, negate/3, % meetclass/3,
+%         norpart/3, numberdate/2,  noun_adverb/4, noun_compl/4, plausible_busno/1, plausibleclocktest/3, % nil_noun_compl/1, 
+%         preadjs_template/4, % rep_verb/1, pluralis/2, 
+%         setvartype/2, subject_object_test/3, subtype0/2, testconstraint/2, thenwhat/3, tv_template/5, % type/2, subclass/2, subclass0/2, screenmeasure/2, rv_template/7, 
+%         vartype/3, vartypeid/2, verb_compl/6, verbtype/2, which_thing/2 ] ). %% RS-140921 value_world/1, whodunnit/2
+% adjname_template2/3, adjname_template/4, cat_templ/5, align/5,
+%:- use_module( semantic, [ a_compl/4, abnormalverb/2, adjname_templ/2, ako/2, measureclass/1, post_adjective/1, pvi_templ/2, subclass/2, subclass0/2, tv_templ/3, v_compl/4, rv_templ/2 ] ). %% ] ). %% RS-140921
+
+
+%:- use_module( '../main', [ assert_default_origins/1  ] ). %%RS-140209 , ( := )/2, traceprint/2, value/2
+
+% UNIT: /utility/
 %:- use_module( '../utility/utility', [ test/1, testmember/2 ] ).  %% RS-140914
 %
 %:- use_module( '../utility/datecalc', [ add_days/3, datetime/6, easterdate/2, subfromtime/3, this_year/1, timenow/1, today/1, todaysdate/1  ] ).  %% RS-131228, addtotime/3, days_between/3, 
-%:- use_module( 'dagrun_n', [ ]). %% RS-111213 What is DAG? 
-%:- use_module( 'dict_n', [ ]). %% RS-111213 What is DAG? 
+
+
 %:- prolog_flag(discontiguous_warnings,_,off). %% RS-140921 Does this actually work?
-%
-%:- use_module( '../db/timedat', [ dedicated_date/1, named_date/2 ] ). %% RS-131228
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% GPS SECTION
 
@@ -317,7 +337,7 @@ sentence1(new:::P) ---> %% fint at =(Det er) fint at %% TA-110518
     [at],
     !,
     clausal_object1(NewSCo,CNP),
-    statreal(P)\  (xnp(NewSCo,CNP),w(verb(be,pres,fin)), w(adj2(Good,Nil))).
+    statreal(P) \  (xnp(NewSCo,CNP),w(verb(be,pres,fin)), w(adj2(Good,Nil))).
 
 
 
@@ -949,7 +969,7 @@ statement(P) --->  %% Hvis trikken står (så) tar jeg bussen
    adverbial3(Prep, Y,SCP3),
    soredundant, %% look_ahead([så]),
    !,
-   substatement1(P)/([så], xadverbial1(Prep, Y,SCP3)).
+   substatement1(P) / ([så], xadverbial1(Prep, Y,SCP3)).
 
 
 
@@ -2013,7 +2033,7 @@ statem(S,Com::Q) ---> %%  Da er ikke du  et orakel
 statem(S,Com::Q) ---> %% Nå skal vi gå
     adverbx(Day,DayClass,pre), 
     saa0,
-    (do),
+    (doit),
     state(S, Com::Q)  -                    
         (xadverb(Day,DayClass)). %% -x 
 
@@ -2042,7 +2062,7 @@ statem(S,SemSt) --->
 
 statem(S, SEM) ---> % i morgen kveld må %% EXPERIMENT 
     preadverbials0,      % are stored
-    aux1, %% (do),  må/skal 
+    aux1, %% (doit),  må/skal 
     !,accept,
     state(S, SEM).               
 
@@ -2058,7 +2078,7 @@ statem(S,Com::Q) ---> %% I Trondheim er det en buss
 
 statem(S,Com::Q) ---> %% på mandag skal jeg <dra> til nth 
     preadverbial1(Prep,Y, SC::P3),
-    (do),
+    (doit),
     specific_phrase(A, B::C),
 %   <dra>
     w(prep(TO)),
@@ -2072,7 +2092,7 @@ statem(S,Com::Q) ---> %% på mandag skal jeg <dra> til nth
 
 statem(S,Com::Q) ---> %% fronted %% I Trondheim vil/(ambig) vi ta buss
     preadverbial1(Prep,Y, SC::P3), 
-    (do),
+    (doit),
     !,
     state(S, Com::Q)  -                    
         ( adverbial1(Prep,Y, SC::P3)).
@@ -3245,7 +3265,7 @@ implicitq(which(X):::Q) --->   %% teleflag avdeling erik harborg
     endofline, %% s.p.andersens veg = sentrum. ... 
     !,
     {traceprint(4,iq5)}, 
-    no_phrases(X,Q)= 
+    no_phrases(X,Q) = 
         (w(noun(Dep,sin,u,n)),w(prep(to)),  nameq1(EH:person,PP)),
     !,accept. 
 
@@ -4186,7 +4206,7 @@ ynq(P) --->    %% Rhetorical negation (incomplete)
 
 
 ynq(P) ---> % YES NO Questions  %% Kan du vise meg
-    (do),
+    (doit),
     you,
     w(verb(V,_,fin)), %% imp/inf/pres 
     {testmember(V,[list,show])}, %% etc. 
@@ -4196,7 +4216,7 @@ ynq(P) ---> % YES NO Questions  %% Kan du vise meg
 
 
 ynq(P) ---> % YES NO Questions
-    (do), 
+    (doit), 
     negation0(_), %% ignore negation
     statreal1(P).      
  
@@ -4447,7 +4467,7 @@ forwq(P,Prep,X,Q1::Q) ---> %% HVOR ER = be1
 
 
 forwq(P,Prep,X,Q1::Q) ---> %% before verb: kan,skal,vil er also "verbs"
-    (do),  
+    (doit),  
     !, 
     statreal(P)
         -  adverbial1(Prep,X, Q1::Q).
@@ -5085,8 +5105,8 @@ whatq(WhichX:::P) --->
 
 whatq(P) --->
     [hva], 
-    (do), 
-    whichq(P)  \  (which,w(noun(thing,sin,u,n)),(do)). 
+    (doit), 
+    whichq(P)  \  (which,w(noun(thing,sin,u,n)),(doit)). 
 
 
 whatq(P) ---> %% * Hva skjer 
@@ -5398,7 +5418,7 @@ whereq(which(_Y):::_P) --->
 whereq(P) --->   %% hvor får jeg ta buss %% TA-100902
     where,
     aux1,         %% NB ikke får %% hvor får jeg buss
-    ppq(P) \ (prep(in),which,w(noun(place,sin,u,n)),(do)).
+    ppq(P) \ (prep(in),which,w(noun(place,sin,u,n)),(doit)).
 
 
 whereq(WP) ---> % object %% moved after pp
@@ -5637,7 +5657,7 @@ howadjq(P) ---> % moved forw
     {testmember(FREQ,
           [frequency,speed,lateness,earliness,duration,distance])},
     !,     %%  <----    !!!!!
-    ppq(P)  \  (prep(with),which,w(noun(FREQ,sin,u,n)),(do)). %% iv
+    ppq(P)  \  (prep(with),which,w(noun(FREQ,sin,u,n)),(doit)). %% iv
 
 
 howadjq(P) ---> 
@@ -5801,7 +5821,7 @@ howadjq(P) ---> % hvor gammel/lang    er
 howadjq(P) ---> % hvor lang tid vil X  bruke /Nominal Front 
     hvor, 
     howadj1(Noun), % hvor lang tid 
-    (do),
+    (doit),
     np(A,NP),
     w(verb(Use,_,_)), %% bruke/brukt
     {testmember(Use,[use,take])}, %% not use2
@@ -5935,8 +5955,8 @@ howadjq(P) ---> % hvor lang tid bruker ==> go with duration
 howadjq(P) ---> % hvor lenge må jeg
     hvor, 
     howadj1(Noun), % hvor lang tid  
-    (do),
-    ppq(P)  \  (prep(with),which,w(noun(Noun,sin,u,n)),(do)),
+    (doit),
+    ppq(P)  \  (prep(with),which,w(noun(Noun,sin,u,n)),(doit)),
     !,accept. %% <-- !!!
 
 howadjq(P) --->  
@@ -8497,7 +8517,7 @@ qverb_phrase(Y,N, S,ComP2) --->
         npgap(Y)).
 
 qverb_phrase(Y,N, S,ComP2) ---> %% hva vil du vite
-    (do),
+    (doit),
     noun_phrase1(X, P::P1),
     lexv(Vcat,know1,Tense,fin),
     {traceprint(4,qv21)}, 
@@ -8583,7 +8603,7 @@ qverb_phrase(Y,N, S, ComP2 )---> % tror du at jeg kan ta -> tar jeg
 
 
 qverb_phrase(Y,N, S, ComP2 )---> 
-    (do),                         % kan       
+    (doit),                         % kan       
     noun_phrase1(X, NP1),       % du
     negation2(id,N),            % ikke 
     redundant0x, %% så allowed here 
@@ -13658,7 +13678,7 @@ begin ---> []. %% ad hoc
 end --->   []. %% ad hoc
 
 accept  --->  [].     %%  JUST FOR EMPHASIS ! and SPY 
-reject  --->  {fail}. %%  METAPROGRAMMING 
+reject  --->  {fail}. %%  METAPROGRAMMING
 
 
 %% hvilket land er oslo hovedstaden til ? ? ?
@@ -15758,13 +15778,13 @@ lexv(tv,know1,P,Q) ---> %% kjenne
 
 
 lexv(T,Live,P,Q)--->
-    (do), faa,
+    (doit), faa,
     w(verb(Live,P,Q)),
     {verbtype(Live,T)},    
     !,accept.
 
 lexv(T,Live,P,Q)--->
-    (do),                   %% SUSPECT
+    (doit),                   %% SUSPECT
     not_look_ahead([nå]), %% <--
     w(verb(Live,P,Q)),
     {verbtype(Live,T)},    
@@ -15974,9 +15994,9 @@ preadj1(NIL/PA) --->
     !.
 
 %%%
-
- adj_conjunction0 --->  adj_conjunction,!. 
- adj_conjunction0 ---> [].
+%% RS-141122 Optional adj_conjunction?
+% adj_conjunction0 --->  adj_conjunction,!. 
+% adj_conjunction0 ---> [].
 
  adj_conjunction ---> [og]. 
  adj_conjunction ---> [men].
@@ -16803,7 +16823,7 @@ aux10 ---> [].
 aux0 ---> faa,look_ahead(w(verb(_Help,_,_))),!. %% få|r hj_lpe(t)
 aux0 ---> [må]. %% Special case, jeg må til nth/ jeg må gå til nth
 aux0 ---> be,[så], w(adj2(good,nil)),[å],!,accept. %% ( fronted)
-aux0 ---> (do). 
+aux0 ---> (doit). 
 aux0 ---> [].
 
 
@@ -16828,12 +16848,12 @@ paux0 ---> [].
 do(N) --->  use,negation0(N),infinitive.
 
 do(N) ---> 
-    (do),
+    (doit),
     negation0(N),hasto0.
 
 do(id )---> [] .  
 
-do0 ---> (do).
+do0 ---> (doit).
 
 do0 ---> []. 
 
@@ -16841,21 +16861,21 @@ do0 ---> [].
 docan ---> [kan].
 docan ---> [må].
 docan ---> [får]. %% .. får jeg ta ...
-docan ---> (do),!.
+docan ---> (doit),!.
 
 %%%%¤¤¤  DO   Basic active aux
 
-(do) ---> faa, 
+(doit) ---> faa, 
     w(noun(information,_,_,_)), %% få greie på 
     !,
     reject.                          
 
-(do) ---> [vil],[vil],!,accept. %% e.g.  skulle ville 
+(doit) ---> [vil],[vil],!,accept. %% e.g.  skulle ville 
 
-(do) ---> skalsaa. %% aux1 
+(doit) ---> skalsaa. %% aux1 
 
-(do) ---> may.
-(do) ---> must.
+(doit) ---> may.
+(doit) ---> must.
 
 
 
@@ -19732,8 +19752,6 @@ gmem(X,L) ---> {testmember(X,L)}. %% TA-110309 (memb
 
 panic(H) ---> {write(H)}.  
 
-%traceprint(N,P) ---> {user:traceprint(N,P)}.  OLD?
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%% END OF GRAMMAR %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -19742,4 +19760,14 @@ panic(H) ---> {write(H)}.
 %                                                                 %
 %  This file is already too big to maintain for any               %
 %  sane person. It must under no circumstances exceed             %
-%  19549 lines.                                                  
+%  19765 lines.                                                   %
+
+%% EXPERIMENT %% RS-1411220
+%file_date( filename ) :-
+%        writeout:output( filename ).
+%
+%:- file_date( 'hei' ).
+
+%makegram.
+%:- use_module( metacomp, [ compile_norsk/1 ] ).  %% RS-141122 Make the dcg_n.pl file, based on updates in this gram_n file.
+%:- compile_norsk( '' ).  %% For quick recompilation

@@ -509,7 +509,7 @@ id  not flag(nightbusflag),
     add flag(nightbusflag)
 ip  bound(X),
     nightbus(X),
-    set(nightbusflag,true)).  %% must be reset initially
+    set(nightbusflag,true) ).  %% must be reset initially
 
 nightbusquery2 rule bustrans:(
 is  context X isa route  %% not class nightbus
@@ -8907,8 +8907,20 @@ id  addcon  ticketprice2(bus,_)
 ip  [] ).
 
 
+costittram rule bustrans:( % koster det NN kroner
+is  dob/cost/A/_NN/_, A isa V,{dmeq([tram],V)},
+    not _ isa nightbus,
+    not _ isa airport,
+    not present _ isa airbus,
+    clear                %% only SMS ?
+id  not  message(noinfoabout(_)), %% dogs,prams etc.
+    clear,
+    addcon  ticketprice2(tram,_), % gets tour as well
+    add flag(exit)
+ip  [] ).
+
 costitbus rule bustrans:( % koster det NN kroner
-is  dob/cost/A/_NN/_, A isa V,{dmeq([ticket,vehicle,bus],V)},
+is  dob/cost/A/_NN/_, A isa V,{dmeq([ticket,vehicle,bus,tram],V)},
     not _ isa nightbus,
     not _ isa airport,
     not present _ isa airbus,
@@ -8966,7 +8978,7 @@ is  which(A),dob/cost/_IT/A/_ ,
     not present _ isa airport,
     clear
 id  clear,
-    add ticketprice2(nightbus,_),
+    add ticketprice2(nightbus_far,_),
     add flag(exit)
 ip  [] ).
 
@@ -8979,7 +8991,7 @@ is  dob/cost/B/_A/_ ,B isa Nbus,
 id  clear,
     add ticketprice2(Nbus,_),
     add flag(exit)
-ip  dmeq([bus,nightbus],Nbus) ).
+ip  dmeq([bus,nightbus,nighttram],Nbus) ).
 
 
 ticketcost1 rule bustrans:( % Price of a ticket //vet du hva billetten koster/hva koster billetten
@@ -13577,15 +13589,16 @@ ip	 setopt(last(1),Opts,Opts1) ).
 yesterdayevening  rule bustrans:(  %% 00:00 -- 00:30 , probably last evenings deps
 is  _ isa bus or _ isa departure,  %% only relevant questions %% HAIRY  %% day is already fixed to yestarday
     not present _ isa morning %% TA-110724
-id	 flag(yesterday),
+id   flag(yesterday),
     remove flag(yesterday),
     addfront message(assumeyesterdepartures), %% TA-110816
         replace passevent(A,B,C,FROM,Day,D) %% NB [first(1),from],
         with    (keepafter(NEWLATETIME,A,A1), passevent(A1,B,C,FROM,Day,D)) %%
 	 %%  only late departures yesterday
-ip	 testmember(from,FROM),
-    timenow(T30),
-    addtotime(2400,T30,NEWLATETIME) ).
+ip	testmember(from,FROM),
+        set(nightbusflag,true),         %% RS-141115 Does this work?
+        timenow(T30),
+        addtotime(2400,T30,NEWLATETIME) ).
 
 
 withlastbus rule bustrans:( % last ARRDEP

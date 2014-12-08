@@ -24,8 +24,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% For main.pl, dict_e, dict_n, ...? moved to declare.pl
-:-module( tucbuses, [ legal_language/1, prompt/1, readfile_extension/1, script_file/1 ] ).
-                    %% For readin.pl language/1,
+:-module( tucbuses, [ legal_language/1, prompt/1, readfile_extension/1, script_file/1 ] ).            %% For readin.pl language/1,
 
 % backslash/1, %% makegram/0,  compile_english/0, compile_norsk/0,   %% RS-140920 Moved back to metacomp
 %dagrun_file/2,  dcg_file/2,     dcg_module/1, dcg_module/2, %% RS-131223 For metacomp.pl % UNUSED?: dcg_file/1,     
@@ -34,7 +33,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :- use_module( declare, [ (:=)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-
 :- use_module( 'main.pl', [ language/1 ] ). %(:=)/2, value/2 
 
 %% :-prolog_flag(discontiguous_warnings,_,off).  %%   RS-130330, or dcg_e.pl gets noisy!
@@ -46,8 +44,8 @@
 
 :- ( airbusflag := false ). %% NEW FLAG %% TA-090331
 
-:- ( tramflag := false ).   %% Trams are NOT included ( Route 1 )
-%:- ( tramflag := true ).   %% Trams are included ( Route 1 )      %% RS-131228
+%:- ( tramflag := false ).  %% Trams are NOT included ( Route 1 )       %% RS-141130
+%:- ( tramflag := true ).   %% Trams are included ( Route 1 )           %% RS-131228
 
 :- ( busflag := true ).     %% Full Bus Application
 :- ( queryflag := true ).   %% Statements are implicit queries
@@ -98,6 +96,11 @@
 %:- use_module( 'tuc/fernando.pl', [ ] ).     % semantic interface       %%RS-131223
 %:- use_module( 'tuc/names.pl', [ ] ).     % general names and synonyms  (moved from database) %% RS-131223
 %% :-  use_module( 'tuc/semantic.pl', [ ako/2 ] ).     % the semantic net (moved from database)    %RS-131225
+
+
+:- use_module( 'tuc/gram_e.pl', [ ] ).     % general names and synonyms  (moved from database) %% RS-131223
+:- use_module( 'tuc/gram_n.pl', [ ] ).     % general names and synonyms  (moved from database) %% RS-131223
+
 
 %%   compile('tuc/world0.pl').       % empty world predicates %% TA-110301
 %%%   compile('tuc/slash.pl').        % slash facts / %% Irrelevant

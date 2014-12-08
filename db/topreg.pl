@@ -109,29 +109,35 @@ period_message( r1611_131201,
  'AtB Vinterruter']). %% \+ .   %% RS-121223
 
 
-period_message( r1612_131216,
-['Routes for Christmas Eve',
- 'Ruter for Julaften']). %% \+ .   %% RS-131223
+period_message( r1611_141201,
+['Normal Routes',               %% RS-141207.
+ 'Vanlige Ruter']). %% \+ .   %% 01.12.14 – 23.12.14, 27.12.14 – 28.12.14 og 02.01.15 – 11.01.15
+%period_message( r1612_141223,
+%['Routes for Christmas Eve',
+% 'Ruter for Julaften']). %% \+ .   %% RS-131223
+period_message( r1612_141223,
+['Routes for Christmas',
+ 'Ruter for Julen']). %% \+ .   %% RS-131223
 
 %%%% 1-2.juledag, 6.juledag, nyttårsdag
-period_message( r1613_131216,
-['AtB Christmas routes',
- 'AtB Juleruter']). %% \+ .   %% RS-131223
+period_message( r1613_141223,
+['AtB 1st Christmas Day routes',
+ 'AtB Juleruter 1.juledag']). %% \+ .   %% RS-131223
 
 period_message( r1614_131216,
 ['AtB Christmas (Saturday) routes for 27th',
  'Spesial/lørdags-ruter for 27/12']). %% \+ .   %% RS-131223
 
 %%%% 4.5.juledag
-period_message( r1615_131216,
+period_message( r1614_141223,
 ['AtB Middle Christmas routes',
  'AtB Ruter for romjulen']). %% \+ .   %% RS-131223
 
-period_message( r1616_131216,
+period_message( r1615_141223,
 ['Routes for New Years Eve',
  'Ruter for Nyttårsaften']). %% \+ .   %% RS-131223
 
-period_message( r1613_131216,
+period_message( r1612_141223,
 ['Routes for New Years Day',
  'Ruter for Nyttårsdagen']). %% \+ .   %% RS-131223
 
