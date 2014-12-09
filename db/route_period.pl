@@ -41,7 +41,6 @@ route_period(   tt, r1615_141223, date(2014,12,23),   date(2014,12,31) ).	%% Nyt
 route_period(   tt, r1612_141223, date(2014,12,23),   date(2015,01,01) ).       %% Julen 2014 (1)
 route_period(   tt, r1611_141201, date(2014,12,01),   date(2015,01,11) ).	%% 2015 (første uken)
 %route_period(   tt, r1611_141020, date(2014,10,20),   date(2014,12,31) ).       %% Høst v4
-route_period(   tt, r1611_141201, date(2014,12,01),   date(2015,01,11) ).       %% 2015 (første uken)
 %route_period(   tt, r1611_140331, date(2014,03,31),   date(2015,01,01) ).       %% Før og etter påske 2014
 %route_period( gb, r1630_111201, date(2012,12,01),   date(2014,12,31) ).  %% Graakallbanen
 %route_period(   gb, r1611_141201, date(2014,10,20),   date(2014,12,31) ).       %% Høst v4, including tram!! %% RS-141115
