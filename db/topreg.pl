@@ -109,9 +109,10 @@ period_message( r1611_131201,
  'AtB Vinterruter']). %% \+ .   %% RS-121223
 
 
-period_message( r1611_141201,
-['Normal Routes',               %% RS-141207.
- 'Vanlige Ruter']). %% \+ .   %% 01.12.14 – 23.12.14, 27.12.14 – 28.12.14 og 02.01.15 – 11.01.15
+%period_message( r1611_141201,
+%['Normal Routes',               %% RS-141207.
+% 'Vanlige Ruter']). %% \+ .   %% 01.12.14 – 23.12.14, 27.12.14 – 28.12.14 og 02.01.15 – 11.01.15
+
 %period_message( r1612_141223,
 %['Routes for Christmas Eve',
 % 'Ruter for Julaften']). %% \+ .   %% RS-131223
