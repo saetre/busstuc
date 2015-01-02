@@ -64,7 +64,7 @@
 
 %% UNIT: /
 :- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-:- use_module( '../interfaceroute', [ domain_module/2, thisdate_period_module/3 ] ).    %% HEAVY DB?
+:- use_module( '../interfaceroute', [ domain_module/2 ] ).    %% HEAVY DB? , thisdate_period_module/3
 
 :- use_module( '../utility/utility', [ bound/1, testmember/2 ] ).
 
@@ -95,8 +95,8 @@
 %%route_period(   gb, r1611_141020, date(2014,10,20),   date(2014,12,31) ).       %% Høst v4, including tram!! %% RS-141115
 %% thisdate_period_module( _Module, _Todate, TTP ), %% SomeOnes-period covering current date  %% set by reset_period/0
 
-tram_module( Module ) :-
-        thisdate_period_module( _Company, _Todate, Module ). %% SomeOnes-period covering current date  %% set by reset_period/0   %% RS-141115
+%tram_module( Module ) :-
+%        thisdate_period_module( _Company, _Todate, Module ). %% SomeOnes-period covering current date  %% set by reset_period/0   %% RS-141115
 
 
 %:-volatile station/1. %% RS-121223 
@@ -473,10 +473,10 @@ nostationfor(X) :- %% Heimdal  is unproper, BUT place (with) station
 nostationfor1(X) :- nostation(X).     %%  Places with no close bus station 
 
 
-nostationfor1(X):-
-    \+ value(tmnflag,true),        %% RS-131230 From declare.pl 
-    tramstation(X),
-    \+ station(X).
+%nostationfor1(X):-
+%    \+ value(tmnflag,true),        %% RS-131230 Tram-stations ONLY for TMN? Not any more!
+%    tramstation(X),
+%    \+ station(X).
 
 
 %% nostation ---> places.pl %% TA-100311
@@ -487,11 +487,12 @@ tramstation( st_olavs_gate ).
 tramstation( st_olavs_street ). %% for street reference 
 %% tram_station(st_olavs_gt). %% Wrong, kept for security %% TA-100317
 
-tramstation(X) :-
-    value( tramflag, true ),  %% RS-131230 From declare.pl
-    tram_module( Tram ),   %%  tram_mod(Tram), %% succeeds also if tramflag=false
-    Tram \== nil, %% precaution 
-    Tram:hpl( _, _, X, _ ).   %%
+%% All the tram-stations are mixed with other stations in the routes from AtB!! %% RS-150102
+%tramstation(X) :-
+%    value( tramflag, true ),  %% RS-131230 From declare.pl
+%    tram_module( Tram ),   %%  tram_mod(Tram), %% succeeds also if tramflag=false
+%    Tram \== nil, %% precaution 
+%    Tram:hpl( _, _, X, _ ).   %%
 
 
 
