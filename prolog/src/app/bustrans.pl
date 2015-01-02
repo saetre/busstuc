@@ -3600,10 +3600,10 @@ ip  \+ value(tmnflag,true),
 
 
 nostation3 rule bustrans:( %% explicit not a destination, after noroutesfrotram1
-is  X isa neighbourhood, { bound(X)},
+is  X isa neighbourhood, { bound(X) },
     clear
 id  clear,
-    addcon message(noroutesto(X))
+    addcon message( noroutesto(X) )
 ip  nostationfor(X),   %% adm_rit
     \+ placestat(X,_) ).
 
@@ -7454,7 +7454,7 @@ ip  disallowed_night(DATE) ).
 
 
 setexdate1 rule bustrans:(   %% Set date if another day //  på mandag
-is  not (YMD isa date) when { bound(YMD)},  %% another date overrule bustrans:(s
+is  not (YMD isa date) when { bound(YMD) },  %% another date overrule bustrans:(s
     context(U isa Monday),  {dmeq(mtwtfss, Monday)},
     not  comp/day/ne/_/U,            %% not excluded !
     not present srel/today/_Day/nil/_ %% søndagsrute idag ...
