@@ -255,7 +255,7 @@ passanyway(D,S):-
 
 
 xproperstation(A):-
-    properstation(A). %% , test( stationD(A,tt) ).   %%% Very Ad Hoc, only TT    %% TODO: RS-140210 
+    properstation(A). %% , test( stationD(A,tt) ).   %%% Very Ad Hoc, only TT    %% TOD O: RS-140210 
         %% RS-140914 What about unproperstation(X) ??
 
 % It is impossible to go FROM  hovedterminalen to A  (in this order)
