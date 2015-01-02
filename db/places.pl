@@ -122,14 +122,14 @@ corr(munkegata_m0,hovedterminalen).  %% Generic central place
 %corr(munkegata_m41,hovedterminalen).  %% SIC
 %corr(munkegata_m5,hovedterminalen). 
 
-%% TODO: RS-141207 COMMENT AWAY these two entries?!?
+
+%% RS-141207 COMMENT AWAY these two entries?!?
+%corr(prinsens_gate_p1,hovedterminalen). %% Atb
+%corr(prinsens_gate_p2,hovedterminalen). %% RS-140102
 corr(prinsens_gate_p1,hovedterminalen). %% Atb
 corr(prinsens_gate_p2,hovedterminalen). %% RS-140102
-
 %corr(p1,hovedterminalen).  %% RS-140102 Difficulties with hovedterminalen != sentrum? Ambiguous p1 == prinsen == prinsens gate == ...
 %corr(p2,hovedterminalen).
-corr(prinsens_gate_p1,hovedterminalen). %% Atb
-corr(prinsens_gate_p2,hovedterminalen). %% RS-140102
 
 corr( st_olavs_gate, hovedterminalen ). %% RS-140102 %% RS-141115 Tram
 corr( olav_tryggvasons_gate, hovedterminalen ).  %% RS-120915
@@ -216,7 +216,7 @@ isat(munkegata_m5,sentrum).
 %isat( olav_tryggvasons_gate, sentrum ).    %% RS-121223 Nightbus-station?
 isat(olav_tryggvasons_gate,hovedterminalen).    %% RS-121223 RS-141104 Sommer vs. vinter!?
 
-%% RS-140102    TODO: hovedterminalen  vs.  sentrum ??
+%% RS-140102    TOD O: hovedterminalen  vs.  sentrum ??
 
 %isat(prinsens_gate_p1,prinsens_street). %% RS-131007 - 140102
 %isat(prinsens_gate_p2,prinsens_street). %% RS-140102 See db/regstr.pl

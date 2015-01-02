@@ -297,17 +297,17 @@ makenegative((which(A),P),Q, busanshp:Ans)   :-
     notthenanswer(Date,Day,Clock,Q, busanshp:Ans),
     progtrace(4,ne30),!. 
 
-makenegative((which(_),_),Q,Ans)   :- 
+makenegative((which(_),_),Q,busanshp:Ans)   :- 
     sequence_member(departure(_,_,_,_),Q),  % INCOMPLETE  % Know there is none test 
      progtrace(4,ne31),!,
     getactualtime(Q,Date,Day,Clock),                               
-    notthenanswer(Date,Day,Clock,Q,Ans).
+    notthenanswer(Date,Day,Clock,Q,busanshp:Ans).
 
-makenegative((modifier(_),_),Q,Ans)   :-
+makenegative((modifier(_),_),Q, busanshp:Ans)   :-
     sequence_member(departure(_,_,_,_),Q),  % INCOMPLETE  % Know there is none test 
      progtrace(4,ne32),!,
     getactualtime(Q,Date,Day,Clock),                               
-    notthenanswer(Date,Day,Clock,Q,Ans).
+    notthenanswer(Date,Day,Clock,Q, busanshp:Ans).
 
 
 makenegative(_,Prog,Ans):- 
@@ -330,10 +330,10 @@ makenegative((which(_),_),Prog,Ans)   :-
      progtrace(4,ne37),!,
      Ans = (busanshp:(space0)).
 
-makenegative((explain,_),Q,Ans)    :-
+makenegative((explain,_),Q, busanshp:Ans)    :-
      getactualtime(Q,Date,Day,Clock), 
       progtrace(4,ne38),!,   %   filter out TODAY when stupid
-     notthenanswer(Date,Day,Clock,Q,Ans).  
+     notthenanswer(Date,Day,Clock,Q, busanshp:Ans).  
 
 %% TEST if you should know or not 
 

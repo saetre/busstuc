@@ -2010,7 +2010,7 @@ passes4(2003,16011442,skansen,18,12,12).
 passes4(2003,16011013,kalvskinnet,19,13,13).
 passes4(2003,16011014,hospitalskirka,20,13,13).
 passes4(2003,16010907,kongens_gate_k2,21,15,15).
-%passes4(2003,16010505,tonstadkrysset_2,22,30,30).
+%passes4(2003,16010505,tonstadkrysset_2,22,30,30).      Liten feil på linje 11 fra Trollahaugen kl 1540 julaften, skal stoppe på k2. %% RS-141209
 %passes4(2003,16010408,rostengrenda,23,31,31).
 %passes4(2003,16010208,john_aae_s_veg,24,32,32).
 %passes4(2003,16010469,stor_rosta,25,33,33).
