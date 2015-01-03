@@ -15,22 +15,17 @@
         today/1,        todaysdate/1,   valid_date/1,   weekday/2,      weeknumber/2,         xweekday/2
 ] ).
 
-%% UNIT: /
-%:- ensure_loaded( user:'../declare' ).%, [ := /2, for/2 (from library.pl) etc. ] ). %% RS-140208
-:- use_module( '../declare', [ (:=)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-%:- use_module( '../main', [ ( := )/2, value/2 ] ).
+:- meta_predicate  convert_zone(?,?,?,?,?,?,-,-,-,-,-,-).
+:- meta_predicate  conzoneH(?,?,?,?,-,-,-,-).
+:- meta_predicate  conzoneM(?,?,?,-,-,-).
 
-%% UNIT: /utility/
-%:-use_module( utility, [ coerce2d/2, concat_atomlist/2 ] ). %RS-131223 Includes ?-compile( user:'declare.pl' ).
+%% UNIT: /
+:- use_module( '../declare', [ (:=)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
 %UNIT: External
 :-use_module( library(system), [ datime/1 ] ).       %% get the date (for metacomp headers, for example
 
-%UNIT: /app/
-%:-use_module( '../app/buslog', [ today/1] ).       %% get the date (for metacomp headers, for example
-
 %UNIT: /db/
-%:-use_module( '../db/busdat', [ clock_delay/3 ] ).       %% get the date (for metacomp headers, for example
 :-use_module( '../db/timedat', [ clock_delay/3, named_date/2 ]).       %%  EASTER DATES AND OTHERS %% RS-131225
 
 
@@ -516,13 +511,13 @@ findfirstcomingdate(easterhol,Date):- %% TA-050322 = easterday
     !.
 
 
-findfirstcomingdate(Day,Date):- 
+findfirstcomingdate(Day,Date) :-
     today(X),
     number_of_days_between(X,Day,N),
     finddate(N,Date).
 
 
-finddate(Displacement,Date):- 
+finddate( Displacement, Date ) :-
     Displacement >= 0,
     !,
     datetime(Y,M,D,_,_,_),
