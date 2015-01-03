@@ -95,7 +95,7 @@
 %:- use_module( '../tucbuses', [ morph_module/1 ] ). %% RS-140920 Made local to lex?: dict_module/1, dict_module/2,  
 
 %%% RS-131225, UNIT: /app/,
-:- use_module( '../app/buslog', [  bus/1, composite_stat/3, station/1 ] ). % regbus/1, %% RS-140416, moved to busdat?
+:- use_module( '../app/buslog', [  bus/1, station/1 ] ). % regbus/1, %% RS-140416, moved to busdat? composite_stat/3, 
 
 %% RS-111205, UNIT: db/                        % (NAME)      % (NAME,ROUTE)  % (STATION) % (PLACE)
 :- use_module( '../db/busdat', [ cmbus/3, explicit_part_name/1, synbus/2, tramstation/1, xforeign/1, xsynplace/2 ] ).
@@ -427,7 +427,7 @@ dont_spell_check_test(Strandveien,L):-
 %% NB   known_name has failed
 
 
-believed_name(Brosetveien,Brøsetv,n,Class,1):-    %% Brosetveien %% Special
+believed_name( Brosetveien, Brøsetv, n, Class, 1 ) :-    %% Brosetveien %% Special
     value(spellcheck,1),  
     \+ value(textflag,true),  
     \+ unwanted_name(Brosetveien), 
@@ -439,7 +439,7 @@ believed_name(Brosetveien,Brøsetv,n,Class,1):-    %% Brosetveien %% Special
 
     sameplace(Broset,Brøset),
  
-    composite_stat(Brøset,[street],Brøsetv), 
+    buslog:veh_mod(TTP),TTP:composite_stat(Brøset,[street],Brøsetv), 
 
     classify(Brøsetv,Class).
  %% !  NB  brosetveien 145 = street + station clock %% TA-100312 
@@ -906,8 +906,8 @@ part_name(X):-
 part_name(X):-  
     nonvar(X), 
     \+ value(tmnflag,true), 
-    composite_stat(_First,Rest,_), 
-    member(X,Rest). 
+    buslog:veh_mod(TTP),TTP:composite_stat( _First, Rest, _),
+    member( X, Rest ).
 
 part_name(X):-
     cmpl(X,R,_),   %% Partname proper  
@@ -1296,7 +1296,7 @@ remove_confusing_stations(_).
 set_of_stations_advanced(Z):-
     set_of_names_with_alts(ZZ),
     make_an_intelligent_decision(ZZ,Z).
-   
+
 
 set_of_names_with_alts(ZZ):-
     set_of(Name,txt(_, w(Name,name(_,n,station)), _),Names),
@@ -2141,7 +2141,7 @@ xcomposite(First,Restlist,Key) :-
 
 
 xcomposite(First,Restlist,Key) :-  
-    composite_stat(First,Restlist,Key).
+    buslog:veh_mod(TTP),TTP:composite_stat( First, Restlist, Key ).
 
 
 xcomposite(First,Rest,Key) :- 
@@ -2253,7 +2253,7 @@ splitstreet0(Oslov,Oslo,V):-
 
 streetstation2(Gudrunsgt,Gudruns_gt):-
     splitstreet0(Gudrunsgt,Gudruns,_),
-    composite_stat(Gudruns,[street],Gudruns_gt).
+    buslog:veh_mod(TTP),TTP:composite_stat(Gudruns,[street],Gudruns_gt).
    
  
 

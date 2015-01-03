@@ -62,7 +62,7 @@
 :- use_module( 'interfaceroute', [ domain_module/2, thisdate_period_module/3, reset_period/0 ] ).
 
 %% RS-111205, UNIT: /app/
-:- use_module('app/buslog', [ composite_stat/3, properstation/1, stationD/2 ] ). %, passeq/6, station/1 ] ). %% RS-131223   route/3,  etc.
+:- use_module('app/buslog', [ properstation/1, stationD/2 ] ). %, passeq/6, station/1 ] ). %% RS-131223   route/3, composite_stat/3,  etc.
 
 %% RS-111205, UNIT: db/
 :- use_module( 'db/places.pl', [ cmpl/3,        isat/2,         placestat/2,    sameplace/2 ] ). % (NAME,NAME*,LIST) % (STATION,PLACE)  % (PLACE,STATION)  % (PLACE,PLACE).
@@ -166,12 +166,12 @@ createstatbus:-
 
     dumppredas(statbus0(X,Y),statbus(X,Y)).
 
-stallbuss(Station):-  %% NB use actual buses names (stop, allbuss?)
+stallbuss( Station ):-  %% NB use actual buses names (stop, allbuss)?
     set_of( BusName, ( buslog:passeq(Rid,_Statno,Station,_,_,_),  %% TA-100311 %% RS-140102
-                    buslog:route(Rid,_Bus,BusName) ) 
-          ,Z), 
+                    buslog:veh_mod(TTP),TTP:route(Rid,_Bus,BusName) ) 
+          , Z ),
     \+ (Z=[]),
-   assert(statbus0(Station,Z)).
+   assert( statbus0(Station,Z) ).
 
 
 createhovedt:-  % mainly for tabuss, %% RS-140102 hovedterminalen is default to/from
@@ -193,7 +193,7 @@ createbusstat:-
 busstall(Bus):- 
     set_of(Station,
 
-   (buslog:route(Rid,Bus,_),buslog:passeq(Rid,_Statno,Station,_,_,_)) 
+   (buslog:veh_mod(TTP),TTP:route(Rid,Bus,_),buslog:passeq(Rid,_Statno,Station,_,_,_)) 
 
           ,Z), 
     \+ (Z=[]),
@@ -536,13 +536,13 @@ ambletarget(X):- sameplace(X,_);
  
                  cmpl(_,X,_), atom(X), X \== []; 
 
-                 composite_stat(X,_,_); %% includes X,[],X
+                 buslog:veh_mod(TTP),TTP:composite_stat(X,_,_); %% includes X,[],X
 
                  composite_road(X,_,_);
 
                  cmpl(_,Y,_),member(X,Y); %% Expensive %% TA-080911
 
-                 composite_stat(_,Y,_),member(X,Y); %% Expensive %% TA-080911
+                 buslog:veh_mod(TTP),TTP:composite_stat(_,Y,_),member(X,Y); %% Expensive %% TA-080911
 
                  composite_road(_,Y,_),member(X,Y). %% Expensive %% TA-080911
 
@@ -596,20 +596,20 @@ remembertorehash(U,Y):-
 
 %https://sicstus.sics.se/spider/determinacy_analyzer.html How to hide "fake" non-success warnings? RS-140928
 spurious_street_hash( Kroglunds, Kroglundsv ) :-
-    composite_stat(Johan,[P,Kroglunds,street],Johan_p_kroglundsv),
+    buslog:veh_mod(TTP),TTP:composite_stat(Johan,[P,Kroglunds,street],Johan_p_kroglundsv),
     ends_with_vg(Johan_p_kroglundsv),
-    composite_stat(Johan,[P,Kroglundsv],      Johan_p_kroglundsv),
+    buslog:veh_mod(TTP),TTP:composite_stat(Johan,[P,Kroglundsv],      Johan_p_kroglundsv),
     ends_with_vg(Johan_p_kroglundsv).
 
 
 spurious_street_hash(Kroglunds,Kroglundsv) :- %% TA-061108
-    composite_stat(Johan,[Kroglunds,street],Johan_kroglundsv),
+    buslog:veh_mod(TTP),TTP:composite_stat(Johan,[Kroglunds,street],Johan_kroglundsv),
     ends_with_vg(Johan_kroglundsv),
-    composite_stat(Johan,[Kroglundsv],      Johan_kroglundsv),
+    buslog:veh_mod(TTP),TTP:composite_stat(Johan,[Kroglundsv],      Johan_kroglundsv),
     ends_with_vg(Johan_kroglundsv).
 
 spurious_street_hash(Flatås,Flatåsv) :- 
-    composite_stat(Flatås,[street],Flatåsv),
+    buslog:veh_mod(TTP),TTP:composite_stat(Flatås,[street],Flatåsv),
     ends_with_vg(Flatåsv).
 
 
@@ -638,7 +638,7 @@ splitgenroad(Wisting,  Wisting,street,Off):-
     composite_road(_Oscar,[Wisting,street],Off).
 
 splitgenroad(Churchills,  Churchills,streetstat,Churchills_v):-  
-    composite_stat(Churchills,[V],Churchills_v),
+    buslog:veh_mod(TTP),TTP:composite_stat(Churchills,[V],Churchills_v),
     streetsyn(V),
     buslog:station(Churchills_v).
 

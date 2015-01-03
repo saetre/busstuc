@@ -10,7 +10,7 @@
 %%% RS-111205, UNIT: /app/
 % Some predicates (like addcontext/0) are only to preserve information, no filtering..
 :-module( buslog, [ addcontext/0, askref/2, atdate/1, atdate2/2, atday/1, avoidbus/3, before/2, boundstreet/1, bugdep1/2, bugdep2/4, bus_place_station/3,
-   bus_mod/1, busorfree/1, bustorid/3, cname/2, composite_stat/3, connections/10, corrstats/3, dateis/4, dayModSeqNo/2, departure/4, departureday/4,
+   bus_mod/1, busorfree/1, bustorid/3, cname/2, connections/10, corrstats/3, dateis/4, dayModSeqNo/2, departure/4, % composite_stat/3, departureday/4,  
    departuredayMOD/5, depset/2,     diffdep4/4, direct_connection/3, endstations1/1, ensure_removed/3, findstations/3, firstactualdeparturetime/4,
    flag/1,        %% For using flag( X ) from program (from busanshp for example)
    frame_remember/2, hpl/3, irrelevantdirect/4, islist/1, isnear/2, keepafterstrict/3, keepafterwalking/2, keeparound/3, keepat/3, keepbefore1/3, keepbeforerev/3,
@@ -228,14 +228,14 @@ mod_day_in_set(TTP,DayX,DayCode) :- %% example, May 1=sunday route
     atom(MASK), %% string '01' for whole period
     charno(XN,MASK,'1'). %% utility.pl
 
-
-mod_day_in_set(TTP,DayX,DayCode) :- % NEW regime
+% NEW regime
+mod_day_in_set( TTP, DayX, DayCode ) :- 
     number(DayX),
     number(DayCode),
     !,
-    TTP:dko(DayCode,_,_,_,_,_,_,MASK),
-    atom(MASK), %% string '01' for whole period
-    charno(DayX,MASK,'1'). %% utility.pl
+    TTP:dko( DayCode, _, _, _, _, _, _, MASK ),
+    atom( MASK ), %% string '01' for whole period
+    charno( DayX, MASK, '1' ). %% utility.pl
 
 
 
@@ -277,7 +277,7 @@ veh_mod(TTP):-
 
 
 bus_mod(TTP):-
-    value(actual_period,TTP),
+    value( actual_period, TTP ),
     !, TTP \== nil.  %% Dynamic !
 
 
@@ -299,8 +299,6 @@ bus_mod(TTP):-
 bus(X):-
     veh_mod(TTP),TTP:regbus(X), number(X),
     X  < 10000. %%   e.g. buss 777
-
-:- use_module( '../db/tables/r1611_141020/regcut', [ composite_stat/3, departureday/4, route/3 ] ).
 
 xroute( X, Y, Z ) :-            %% TA-090331
     value( airbusflag, true ),
@@ -754,7 +752,7 @@ corrstats([_|Stats1],Stats2,CorrStats) :- % Else
 % keepcorr(StartDeps,EndDeps,BothStartDeps).
 
 keepcorr(StartDeps,EndDeps,BothStartDeps) :-
-     set_filter( X, occurs_afterwards(X,EndDeps), StartDeps, BothStartDeps ).
+     set_filter( X, occurs_afterwards( X, EndDeps ), StartDeps, BothStartDeps ).
 
 
 
@@ -1228,18 +1226,23 @@ departure( Bus, Place, Day, DepSet ) :- % Alle dag-bussavganger ved en stasjon
    setdepMOD(TTP,Place,Day,DepSet1),      %%
    set_filter( X, day_route(X), DepSet1, DepSet ).
 
-departure(Bus,Place,Day,DepSet) :- % Alle natt-bussavganger ved en stasjon
+departure( Bus, Place, Day, DepSet ) :- % Alle natt-bussavganger ved en stasjon
         unbound(Bus),
    value(nightbusflag,true),      % Nightbus query
-  \+   value(airbusflag,true),     %% TA-090331
+        NextDay is Day+1,
+   \+   value(airbusflag,true),     %% TA-090331
    !,
         veh_mod(TTP),
 
-   setdepMOD( TTP, Place, Day, DepSet1 ),
+%   setdepMOD( TTP, Place, Day, DepSet1 ),
+  setdepMOD( TTP, Place, NextDay, DepSet1 ),
 
-   set_filter(X,night_route(X),DepSet1,DepSet2),
-   set_filter(X,not_extreme_hastus_time(X),DepSet2,DepSet3),   %% RS-141109  Nightbusses are no longer duplicated (Friday 26:35 === Saturday 02:35)
-   set_filter(Y, approvenightbustoplace(Place,Y)  ,DepSet3,DepSet).
+   set_filter( X, night_route(X), DepSet1, DepSet ). %,
+
+% Hastus means YESTERDAY's Nightbuses?!
+%   set_filter(X,not_extreme_hastus_time(X),DepSet2,DepSet).   %% RS-141109  Nightbusses are no longer duplicated? (Friday 26:35 === Saturday 02:35)
+
+%   set_filter(Y, approvenightbustoplace(Place,Y)  ,DepSet2,DepSet).
 %   set_filter(Y, approvenightbustoplace(Place,Y)  ,DepSet2,DepSet).
 
 
@@ -1274,15 +1277,15 @@ not_extreme_hastus_time( X ) :-
     X = depnode(_2820,_,_20,_,T2800,_Bus_108_3049,_,_,_),     %    T2800 > 1200. %% TA-?
     T2800 > 2459.       %% RS-141115  Remove everything except real nightbusses (or trams)...
 
-approvenightbustoplace(Place,Y) :-
-   \+ avoidnightbustoplace(Place,Y).
-
-
-avoidnightbustoplace(Place,Y) :-
-    Y= depnode(_,_,_,_,_,Bus_57_nn,__,_),
-    route( Bus_57_nn, _, B57 ),
-    busdat:spurious_return(B57,Place), %% morten_erichsen_forbid(B57,Place),
-    !.
+%approvenightbustoplace( Place, Y ) :-
+%   \+ avoidnightbustoplace( Place, Y ).
+%
+%
+%avoidnightbustoplace( Place, Y ) :-
+%    Y= depnode( _, _, _, _, _, Bus_57_nn, _, _),
+%    route( Bus_57_nn, _, B57 ),
+%    busdat:spurious_return( B57, Place ), %% morten_erichsen_forbid( B57, Place ),
+%    !.
 
 
 setdepMOD( TTP, Place, Kay, DepSet ):-
@@ -1291,16 +1294,19 @@ setdepMOD( TTP, Place, Kay, DepSet ):-
               DepSet).
 
 
-day_route(depnode(_Time0,_Time9,_DelArr,_DelDep,_BegTime,Rid1,NB,_SEQNO,_Station1)):-
-    ridtobusnr(Rid1,NB),
-    \+ nightbus(NB),
+day_route( depnode( _Time0,_Time9,_DelArr,_DelDep,BegTime,Rid1,NB,_SEQNO,_Station1) ) :-
+    ridtobusnr( Rid1, NB ),
+    \+ nightbus(NB) ; ( NB=1, BegTime > 0400, BegTime < 2459 ),         %% Tram is both day_route and night_route! %% RS-150102
     \+ busdat:exbusname(NB,skolebuss).
 
+%day_route( depnode( _Time0,_Time9,_DelArr,_DelDep,BegTime,Rid1,NB,_SEQNO,_Station1) ) :-
+%    ridtobusnr( Rid1, NB ),
+%    ( ( NB=1, BegTime > 0400, BegTime < 2459 ) ; \+ nightbus(NB) ),         %% Tram is both day_route and night_route! %% RS-150102
+%    \+ busdat:exbusname(NB,skolebuss).
 
 
-
-night_route(depnode(_Time0,_Time9,_DelArr,_DelDep,_BegTime,Rid1,NB,_,_)):-
-    ridtobusnr(Rid1,NB),
+night_route( depnode(_Time0,_Time9,_DelArr,_DelDep,_BegTime,Rid1,NB,_,_) ) :-
+    ridtobusnr( Rid1, NB ),
     nightbus(NB).
 
 
@@ -1701,6 +1707,7 @@ connections(StartDeps,EndDeps,Bus,FromPlace,ToPlace,Day,DaySeqNo,Opts,Deps,Mid01
 
     trackprog( 2, ( nl, taketime, nl ) ). %% TA-110322
 
+
 remove_roundtrip_deps(FromPlace,ToPlace,StartDeps0,StartDeps1):- %% TA-110224
     set_eliminate(X,looping(FromPlace,ToPlace,X),StartDeps0,StartDeps1).
 
@@ -1889,7 +1896,7 @@ lastquicktransfer(FromStat,ToStat,X,FT1,LT2,DaySeqNo,Dep01,Mid01):-
 
 % Finner alle rids som passerer endestasjonen, AFTER NOW if SMS/notime
 
-coupled(StartDeps,EndDeps,_,_,_,Day,DaySeqNo,Opts,Deps,Mid01) :-
+coupled( StartDeps, EndDeps, _, _, _, Day, DaySeqNo, Opts, Deps, Mid01 ) :-
 
 %%%%%%%%%%%%%%  value(smsflag,true), %% NB no bygone departs
 
@@ -1925,8 +1932,8 @@ coupled( StartDeps, EndDeps, _, _, _, Day, DaySeqNo, Opts, Deps, Mid01 ) :-
 
 %% TO AVOID HANGING, THERE IS A timeout CLAUSE ON COUPLED
 
-coupled_time(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01):-
-    buslogtimeout(MAXTIME),     %% timedat: RS-141015
+coupled_time( BothStartDeps, StartDeps, EndDeps, Day, DaySeqNo, Opts, Deps, Mid01 ) :-
+    buslogtimeout( MAXTIME ),     %% timedat: RS-141015
     timeout(            %%  calls time_out if not notimeoutflag
       coupled1(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01),
         MAXTIME, %% 10 seconds
@@ -2850,27 +2857,29 @@ neverpasses(Bus,Place):-
     test(vehicletype(Bus,_)),
     \+ sometimepasses(Bus,Place). %% cuts unnec
 
+%    veh_mod(TTP),TTP:regbus(X)
+%% :- use_module( '../db/tables/r1611_141020/regcut', [ composite_stat/3, departureday/4, route/3 ] ). %% RS-150102 WHAT is This!?
 
-sometimepasses(Bus,Sentrum):-
-    atomic(Bus),
-    samefplace(Sentrum,hovedterminalen),
-    busdat:corresp(X,hovedterminalen),
-    route(Rid,Bus,_),
-    passeq(Rid,_,X,_,_,_),
+sometimepasses( Bus, Sentrum ) :-
+    atomic( Bus ),
+    samefplace( Sentrum, hovedterminalen ),
+    busdat:corresp( X, hovedterminalen ),
+    veh_mod(TTP),TTP:route( Rid, Bus, _ ),
+    passeq( Rid, _, X, _, _, _ ),
     !.
 
-sometimepasses(Bus,Station):-
+sometimepasses( Bus, Station ) :-
     atomic(Bus),
-    route(Rid,Bus,_),
+    veh_mod(TTP),TTP:route(Rid,Bus,_),
     passeq(Rid,_,Station,_,_,_),
     !.
 
 
-sometimepasses(Bus,Place):-
+sometimepasses( Bus, Place ) :-
     atomic(Bus),
     atomic(Place),
     isat2(Station,Place),
-    route(Rid,Bus,_),
+    veh_mod(TTP),TTP:route(Rid,Bus,_),
     passeq(Rid,_,Station,_,_,_),
     !.
 
@@ -2892,14 +2901,14 @@ sometimearrives(Bus,Sentrum):-
     atomic(Bus),
     samefplace(Sentrum,hovedterminalen),
     busdat:corresp(X,hovedterminalen),
-    route(Rid,Bus,_),
+    veh_mod(TTP),TTP:route(Rid,Bus,_),
     passeq(Rid,_,X,Seq,_,_),
     Seq > 1, %% NB Seq=1 only means only depart
     !.
 
 sometimearrives(Bus,Station):-
     atomic(Bus),
-    route(Rid,Bus,_),
+    veh_mod(TTP),TTP:route(Rid,Bus,_),
     passeq(Rid,_,Station,Seq,_,_),
     Seq > 1, %% NB Seq=1  means only depart
     !.
@@ -2909,7 +2918,7 @@ sometimearrives(Bus,Place):-
     atomic(Bus),
     atomic(Place),
     isat2(Station,Place),
-    route(Rid,Bus,_),
+    veh_mod(TTP),TTP:route(Rid,Bus,_),
     passeq(Rid,_,Station,Seq,_,_),
     Seq > 1, %% NB Seq=1 only means only depart
     !.
@@ -2932,14 +2941,14 @@ sometimedeparts(Bus,Sentrum):-
     atomic(Bus),
     samefplace(Sentrum,hovedterminalen),
     busdat:corresp(X,hovedterminalen),
-    route(Rid,Bus,_),
+    veh_mod(TTP),TTP:route(Rid,Bus,_),
     passeq(Rid,_,X,_Seq,_,_),
  %%%%%%%%%%%%%%%%%%%%%%%%%% TA-110107   Seq = 1, %% NB Seq=1 only means only depart
     !. %% not if cutloop in sentrum
 
 sometimedeparts(Bus,Station):-
     atomic(Bus),
-    route(Rid,Bus,_),
+    veh_mod(TTP),TTP:route(Rid,Bus,_),
     passeq(Rid,_,Station,_Seq,_,_),
   %%%%%%%%%%%%%%%%%%%%%%%%%% TA-110107    Seq = 1, %% NB Seq=1 only means only depart
     !. %% not if cutloop in sentrum
@@ -2949,7 +2958,7 @@ sometimedeparts(Bus,Place):-
     atomic(Bus),
     atomic(Place),
     isat2(Station,Place),
-    route(Rid,Bus,_),
+    veh_mod(TTP),TTP:route(Rid,Bus,_),
     passeq(Rid,_,Station,_Seq,_,_),
  %%%%%%%%%%%%%%%%%%%%%%%%%% TA-110107     Seq = 1, %% NB Seq=1 only means only depart
     !.%% not if cutloop in sentrum
