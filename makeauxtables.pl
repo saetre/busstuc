@@ -54,10 +54,10 @@
 :- use_module( 'utility/datecalc.pl', [ datetime/6 ] ). % add_days/3, easterdate/2, sub_days/3, this_year/1 ]).%% RS-121325-140928 to timedat.pl
 :- use_module( 'utility/writeout', [  out/1, output/1, writepred/1 ] ). %writepred/1 is USED! in for/3 or set_of/3,
 
+%COMPILE THE ENTIRE BUSROUTE
 %:- compile( busroute:'compileroute.pl' ).   %% Bootstrapping for compilation, faster than "ensure loaded"?!
 :- use_module( 'compileroute.pl', [ consultbase/1 ] ). %% Interface modules
-%COMPILE THE ENTIRE BUSROUTE
-:- consultbase(tt).   %% Bootstrapping for compilation
+:- consultbase(tt).   %% Bootstrapping for compilation         %% RS-150104  Moved to busroute?
 
 :- use_module( 'interfaceroute', [ domain_module/2, thisdate_period_module/3, reset_period/0 ] ).
 
@@ -149,9 +149,8 @@ writeheading( Module ) :-
     datetime(A,B,C,D,E,F),
     write('/* -*- Mode:Prolog; coding:utf-8; -*- */'),nl,  %% Make this work with open/4 and encoding %% RS-121118
     %%write('/* -*- Mode:Prolog; coding:utf-8; -*- */'),nl %% For other prologs than sicstus, utf-8 compatible
-    write('% Auxillary tables created '),nl,
-    write('%%from writeheading in utility/makeauxtables.pl'),nl,
-    write('%% '), write(datetime(A,B,C,D,E,F)),nl,
+    write('%% Auxillary tables created '),write(datetime(A,B,C,D,E,F)),nl,
+    write('%%  from writeheading in ./makeauxtables.pl (from createhash/0 and makeauxtables/0)'),nl,nl,
     write(':-module( '), write(Module), write(' ). '),nl,
     nl.
 
@@ -505,8 +504,8 @@ createhash :-
     set_output(Stream), 
     writeheading( 'namehashtable, [ toredef/3, torehash/2 ]' ),   %%write(':-module(namehashtable, [ toredef/3, torehash/2 ]).'),nl,
 
-   dumppredas(toredef0(X,Y,Z),toredef(X,Y,Z)),
-   dumppredas(torehash0(X,Y),torehash(X,Y)),
+   dumppredas( toredef0(X,Y,Z), toredef(X,Y,Z) ),
+   dumppredas( torehash0(X,Y), torehash(X,Y) ),
    told,
 
 %%   consult('db/namehashtable.pl'),      %% Test it?     %% RS-131225

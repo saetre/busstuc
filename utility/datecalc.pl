@@ -303,7 +303,8 @@ isday(sunday).
 number_of_days_between(Thursday,Friday,N):-
     dayno(Thursday,X),
     dayno(Friday,Y),
-    N is mod(Y+7-X,7).
+    N is mod( Y+7 -X -1, 7 ) +1.%% RS-150103. 7 days from Monday to Monday!
+%   N is mod( Y+7 -X, 7 ).      %% RS-150103. 0 days from Monday to Monday!
 
 dayno(monday,1).
 dayno(tuesday,2).
@@ -479,7 +480,7 @@ monthdays(_,12,31).
 %%%%  DATE CALCULATIONS  
 
 on_valid_period( X, Y, Z ) :- % X in [Y -- Z] inclusive %% TA-110411
-   X=date( _, _, _ ), %% NOT free( ) 
+   X=date( _, _, _ ), %% NOT free( )    %% actualdate?
    before_date0( Y, X ),
    before_date0( X, Z ).
 
@@ -836,13 +837,13 @@ mem(X,[U|V]):-X==U;mem(X,V).
 
 
 today(Dag) :-
-         datetime(_,_,Daynr,_,_,_),
-         xlastday(Lastdaynr,Lastday),
-         (Lastdaynr \== Daynr ->
-          findday(Daynr,Dag1)
-        ; Lastday=Dag1),
-         !,
-    Dag=Dag1. %% may act as  a test
+    datetime(_,_,Daynr,_,_,_),
+    xlastday(Lastdaynr,Lastday),
+    ( Lastdaynr \== Daynr  ->  findday(Daynr,Dag1)  ;  Lastday=Dag1 ),
+    !,
+    Dag=Dag1.  %%, may act as  a test
+    %% RS-150103. Doesn't work for NightBus (next week)! NOW>0430,
+    %% value( actualdate, Today ) -> finddate( 0, Today ) ; true . % Really same day!
 
 
 findday(Daynr,Dag) :-

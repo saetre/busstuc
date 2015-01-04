@@ -33,7 +33,7 @@ N: hei.
 %:- use_module( 'tucbuster.pl', [ ] ).   %% :-[tuctele]. %%% // Tele things %% TA-051018
 
 %?- compile('busroute.pl').  %% TA-071026
-:- use_module( busroute, [  ] ). %% RS-131227 Avoid loop?
+%:- use_module( busroute, [  ] ). %% RS-131227 Avoid loop?
 
 
 ?- (duallangflag :=true). %% telebuster is not  speech based

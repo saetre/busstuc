@@ -19,7 +19,8 @@
         processorwait/1,  progtrace/2, r/1, readday/0, readscript/0, restart/0, reset/0, reset_origins/0,  run/1,  
         scanfile/2, (sp)/1, spyg/1, spyr/1, status/0, testgram/0, traceprog/2, translate2/2, tuc/0, update_compnames/1,
         % to utility/writeout.pl: track/2, statistics/1 (in bustermain2)
-        value/1, webrun_english/0, webrun_norsk/0, webrun_tele/0, write_taggercall/1, writepid/0  % verify_empty_origins/0,  value/2
+        value/1, version_date/1,
+        webrun_english/0, webrun_norsk/0, webrun_tele/0, write_taggercall/1, writepid/0  % verify_empty_origins/0,  value/2
 ] ).
 
 %% DYNAMIC SECTION

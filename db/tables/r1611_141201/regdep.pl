@@ -5,6 +5,9 @@
 %%   Example: departureday( bus_2_6101, 749, 723, 1).
 %%   Tourtype almost matches the linenumber in regpas.pl and FILE.TDA or FILE.TMS
 
+%:-use_module( '../../../compileroute' ). :-compileroute:compile_route_set( r1611_141201 ). %findOrCreateRegcut/3
+%findOrCreateRegcut('db/tables/r1611_141201/regdep','db/tables/r1611_141201/regpas','db/tables/r1611_141201/regcut').
+
 departureday( bus_0001_0001, 1, 630, 6 ).
 departureday( bus_0001_0002, 1, 645, 6 ).
 departureday( bus_0001_0003, 1, 700, 6 ).

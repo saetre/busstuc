@@ -40,7 +40,7 @@ routedomain(tmn). %% Generic for TMN related routes
 %% Special list to be compiled
 
 compilerouteaux( tt, [
-%%      'db/regbusall', %% Inclusive  set of buses      %% RS-131226 Removed?
+        'db/regbusall', %% Inclusive  set of buses      %% RS-131226 Removed?
         'db/regstr',    %% Streets
         'db/regcompstr' %% Composite Street names
 ]).
@@ -48,9 +48,9 @@ compilerouteaux( tt, [
 %% DEFAULT ROUTE PERIODS
 
 %default_period(tt,winter, r1601_110822).  %% 2011 Autumn
-default_period( tt, winter, r1601_130930).  %% 2014 Winter/Spring?
-default_period( tt, summer, r1611_140623).  %% 2013 Summer
-default_period(tt,previous, r1611_140203).  %% 2013 Most recently period used %% RS-140616
+default_period( tt, winter,  r1611_141201).  %% 2014 Winter/Spring?
+default_period( tt, summer,  r1611_140623).  %% 2013 Summer
+default_period( tt,previous, r1611_140203).  %% 2013 Most recently period used %% RS-140616
 
 
 %default_message(tt,winter,['AtB winter routes are from  Jan. 2, 2012  to Jun. 26, 2012.',

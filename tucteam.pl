@@ -16,7 +16,7 @@
 %:- use_module( main, [ ( := )/2 ] ). %% RS-131227 Avoid loop?
 :- use_module( declare, [ (:=)/2, (=:)/2, remember/1, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
-?-compile('version.pl'). %% TA-031117
+% ?-compile('version.pl'). %% TA-031117 %% RS-131227    With version_date/1, used in monobus -> teledat2.pl  %% RS-150104 Moved to main!
 
 ?-compile('monobus.pl'). %% TA-031115
 

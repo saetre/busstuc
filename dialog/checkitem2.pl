@@ -30,11 +30,11 @@
 %:- use_module( '../utility/utility', [ ] ). %roundmember/2 ] ). %% RS-140208. := /2, listall/1, Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
 :- use_module( '../utility/writeout', [ colon/0, trackprog/2, waves/0, writeprog/1, writeanswer/1 ] ).%% RS-141105 traceanswer/1,
 :- use_module( '../utility/datecalc', [ daysucc/2, isday/1, today/1 ] ).
-:- use_module( '../utility/writeout', [ busanswer_sat/3, doubt/2, listall/1, listrequirements/1,  output/1, period/0, space/0, teleanswer_sat/2,
+:- use_module( '../utility/writeout', [ bcp/1, bcpbc/1, bwrbc/1, busanswer_sat/3, doubt/2, listall/1, listrequirements/1,  output/1, period/0, space/0, teleanswer_sat/2,
         writetelebusteranswer_rep/1, writetelebusteranswer_saf/2, writetelebusteranswer_sqt/3, writetelebusteranswer4/4 ] ).%% RS-140912
 
 %%% RS-140914, UNIT: /app/
-:- use_module( '../app/busanshp', [ bcp/1, bcpbc/1, bwrbc/1, paraphrase/1, paraphrase2/2, paraphrase3/3, prent0/1, printmessage/1 ] ). % period/0, space/0, -> writeout 
+:- use_module( '../app/busanshp', [ paraphrase/1, paraphrase2/2, paraphrase3/3, prent0/1, printmessage/1 ] ). % period/0, space/0, -> writeout 
 :- use_module( '../app/interapp', [ execute_program/1, isuccess/1, makeanswer/4 ] ). %% LOOP!! writeanswer/1, traceanswer/1, waves/0, writeprog/1 was used in interapp (now writeout?)
 :- use_module( '../app/negans', [ makenegative/3, trytofool/2 ] ).
 
