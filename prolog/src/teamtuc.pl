@@ -8,7 +8,7 @@
 %%?- prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates
 
 %?-['busroute'].
-:- use_module( busroute, [  ] ). %% RS-131227 Avoid loop?
+%:- use_module( busroute, [  ] ). %% RS-131227 Avoid loop?
 
 ?-[tucteam].
 

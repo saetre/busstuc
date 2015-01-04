@@ -8,7 +8,7 @@
 %% Bussrute database tilpasning PLACES in TRONDHEIM
 
 %     This is adapted to reghpl.pl created from REGTOP format by
-%     the program extractreg.pl.
+%     the program extractreg.pl (or extracut.pl).
 
 % Domains:   BOOLEAN ROUTETYPE STATION PLACE MINUTES
 %            DATE DAY DOMAIN CLOCK
@@ -47,7 +47,7 @@
                      nightbusdestination/1,     % (STATION)
                      nostationfor/1,            % (PLACE)
                      nostationfor1/1,           % (PLACE)
-                     preferred_transfer/5, railway_station/1, regbus/1, % From regbusall, %% RS-140413, experiment
+                     preferred_transfer/5, railway_station/1, % regbus/1, % in regbusall,
                      spurious_return/2,
                      synbus/2,                  % (NAME,ROUTE)
                      thetram/1, thetramno/1,
@@ -70,7 +70,7 @@
 
 %% UNIT: /db/
 :- use_module( places, [ corr/2, foreign/1, isat/2, nostation/1, placestat/2 ] ). %% RS-131225
-:- use_module( regbusall, [ nightbus/1, regbus/1 ] ).  %% RS-140619
+:- use_module( regbusall, [ nightbus/1 ] ).  %% RS-140619 %% RS-150104 , regbus/1 not used here...
 :- use_module( timedat, [ named_date/2 ] ).  %% keep  until modules are fixed bound/1, bus/1, station/1
 
 %% RS-140416 Two different regbus (Period-independent, and many modules with regbus too. %%This used to be done from topreg? (Should be done from topreg:makeauxtable?)
@@ -438,8 +438,7 @@ thetramstreetstation(st_olavs_street,st_olavs_gate).
 
 central_airbus_station(torget). %% hovedterminalen// sentrum 
 
-%:- volatile nightbusstation/1. %%RS-121223
-%:- dynamic nightbusstation/1. %%RS-121223
+%:-dynamic nightbusstation/1. %% RS-150104 Make sure there is at least one example station!
 nightbusstation( olav_tryggvasons_gate ). %% AtB \== Team %% TA-101202 %%RS-121223
 
 /*  %% compiled into user // regstr.pl %% TA-110406

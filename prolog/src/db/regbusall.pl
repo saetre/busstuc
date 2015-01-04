@@ -8,6 +8,9 @@
 :- module( regbusall, [ nightbus/1, regbus/1 ] ). %% HEAVY DB! %% RS-120803 RS-131225 regbus/1 MOVED to app/buslog.pl
 %% Inclusive set of bus routes
 
+:- use_module( '../app/buslog', [ veh_mod/1 ] ).  %% RS-140927 For busanshp.pl, moved to utility.pl: internalkonst/1,
+
+
 %% NB NB Has the same name as the <module>:regbus
 
 
@@ -30,7 +33,7 @@ regbus(19).    %% New from 5.3.07
 
 regbus(20).
 regbus(24).
- regbus(25).  %% Out 2007
+% regbus(25).  %% Out 2007
 
 regbus(36).
 
@@ -40,7 +43,7 @@ regbus(43).
 regbus(44).
 regbus(46).
 regbus(47). %%  (Klæbu)
- regbus(48). %% Out 070305
+% regbus(48). %% Out 070305
 regbus(49).
 
 regbus(52).
@@ -78,6 +81,15 @@ regbus(99).  %% .. not in this period
 regbus(254).
 regbus(255). 
 regbus(777).
+
+
+%% regbuss from regbussall. %% RS-140413, Experiment.
+%% PERIOD INDEPENDENT + CURRENT MODULE (Should be the same?)
+
+regbus(X):- %% TA-110308
+   veh_mod(TTP),TTP:regbus(X), number(X),
+   X  < 10000. %%   e.g. buss 777
+
 
 
 %%  Moved from busdat 

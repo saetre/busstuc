@@ -7,6 +7,7 @@
 
 %% Makefile for SMSTUC   server, Incrementally
 
+:- use_module( declare, [ ( := )/2 ] ). %% RS-131227 Avoid loop?
 
 
 %%?-prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates
@@ -14,12 +15,13 @@
 %:-compile('tucbuses.pl'). 
 :- use_module( tucbuses ). %% RS-131227 Avoid loop?
 
-?-compile('version.pl').
+% ?-compile('version.pl'). %% RS-150104 Moved to main?
 
 ?-compile('monobus.pl').
 
-%?-compile('main.pl').  
-:- use_module( main, [ ( := )/2 ] ). %% RS-131227 Avoid loop?
+%?-compile('main.pl').
+%:- use_module( main, [ run/0 ] ). %% RS-131227 Avoid loop?
+:- use_module( main ). %% RS-131227 Avoid loop?
 
 
 ?- (internal_aitbusflag  := false), %% NB May change <--- ???

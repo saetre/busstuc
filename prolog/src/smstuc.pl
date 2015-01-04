@@ -14,6 +14,7 @@
 
 ?- ['tucsms.pl'].
 %?- ['busroute.pl'].
-?-use_module('busroute.pl').    %% RS-140102. Import all (public!) predicates from this module!
+
+?-use_module( 'busroute.pl', [] ).    %% RS-140102. Import all (public!) predicates from this module!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

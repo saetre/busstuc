@@ -21,14 +21,15 @@
 %% RS-141026    UNIT: /
 %:- ensure_loaded( user:'../declare' ). %% Import has_a operator        %% RS-130624
 :- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-%:- use_module( '../main.pl', [ value/2 ] ). %MISERY?!
+
+% :- ensure_loaded( user:'../version' ). %% RS-130624 , version_date/1 %% RS-150104 Moved to main.pl module
+
+:- use_module( '../main.pl', [ version_date/1 ] ). %MISERY?!
 
 %% RS-111205, UNIT: utility
 :- use_module( '../utility/utility', [ append_atomlist/2, absorb/3, for/2, matchinitchars/3, pront/1, set_of/3, set_ops/3 ] ).  %% RS-141029 for/2, 
 %:- use_module( '../utility/library', [ remove_duplicates/2 ]). %% TEMPORARY non-FIX!
 :- use_module( '../utility/writeout', [ doubt/2, output/1 ] ).%% RS-140912
-
-:- ensure_loaded( '../version' ). %% RS-130624
 
 :-use_module( '../getphonedir.pl', [  getdbrowsdirect/2 ] ). %% Get LDAP phone info from NTNU
 
@@ -341,7 +342,7 @@ has_att_val(_Agent,webaddress,atb,'http://www.atb.no'). %% %% agent? %% TA-10100
 
 has_att_val(program,programmer,tuc,tagore).  %%  (pseudonym of course :-)
 
-has_att_val(system,version,tuc,    X):- version_date(X).   %% RS-131231 version.pl?
+has_att_val(system,version,tuc,    X):- version_date(X).   %% RS-131231 version.pl? Imported through main.pl!
 has_att_val(system,version,busstuc,X):- version_date(X).
 has_att_val(system,version,bustuc, X):- version_date(X).
 

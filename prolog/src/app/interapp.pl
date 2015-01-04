@@ -75,7 +75,7 @@
 :- use_module( '../interfaceroute', [ search_period_module/3 ] ). %%, 
 
 %%% RS-131225, UNIT: app/
-:- use_module( busanshp, [ empty_sms_message/1, pay/0, printmessage/1, printmessageunconditionally/1 ] ).
+:- use_module( busanshp, [ empty_sms_message/1, printmessage/1, printmessageunconditionally/1 ] ).
                 % make_total_google/2, startmark/0 %, og mange flere ] ). % bustrans calls ... space/0, ...
 :- use_module( buslog, [ station_trace/4, veh_mod/1 ] ). %% message/1 used in call-back from xxx!??? xxx = busanshp?  trackprog/2, 
 :- use_module( negans, [ makenegative/3, trytofool/3 ] ).       %% RS-140208
@@ -96,8 +96,9 @@
 :- use_module( '../tuc/evaluate', [ evaluateq/1 ] ).  %% RS-131117 includes declare.pl
 
 %%% RS-131225, UNIT: utility/
-:- use_module( '../utility/datecalc' ). %%, [ timenow2/2, todaysdate/1 ] ).  %% RS-131231, SPIDER-bug. timenow2/2 IS used!!
-
+:- use_module( '../utility/datecalc', [ todaysdate/1 ] ).  %% RS-131231, SPIDER-bug. timenow2/2 IS used!!  ). %% timenow2/2, 
+%% :- DependsOn = [  timenow2/2 ], use_module( '../utility/datecalc', DependsOn ).
+:- use_module( '../utility/writeout', [ pay/0 ] ).  %% RS-131231, SPIDER-bug. timenow2/2 IS used!!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
