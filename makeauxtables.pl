@@ -8,9 +8,9 @@
 %%%%%%%% Section to create Auxillary Bus Tables           %%%%%%%
 
 %% RS-131225    From torehash.pl (010101)  %% dynamic
-:-module( makeauxtables, [ createhash/0, createonlyfromstations/0, createonlytostations/0, makeauxtables/0, nopassanyway/2, 
-                           taexists/3, verify_consistency/0, verify_files_exist/1 %, verify_movedates/0 %% RS-140928 moved to db/timedat.pl
-                         ] ).
+:-module( makeauxtables, [ createhash/0, createonlyfromstations/0, createonlytostations/0, makeauxtables/0, nopassanyway/2,
+                           taexists/3, verify_consistency/0, verify_files_exist/2  ] ). %% % verify_movedates/0 %% RS-140928 moved to db/timedat.pl
+                        
 
 % Create files with auxillary bustables (auxtables.pl)
  
@@ -45,6 +45,9 @@
 %test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+%% RS-150104 Unit: external
+:-use_module( library(file_systems), [ file_property/3 ] ).  %% , directory_property/3
 
 %% RS-140102. UNIT: /  and  /utility/  %% RS-140101 Moved to user:declare for common and early compilation!
 %:- ensure_loaded( 'declare.pl' ). %, [ := /2 etc. ] ). test/1 
@@ -108,41 +111,57 @@ taexists(_X,Y,Z):-Y,Z,!.
 taforall(_X,Y,Z):- \+ (Y, \+ Z),!.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-verify_files_exist( Filename ) :-
-        output( Filename ),
-        output('...makeauxtables.pl~103: auxtables-file already exists!!!'), nl,
-        true .
-%        false . % FORCE REGENARATION OF THE DB-files
+% Check whether the regcut file exists with the extensions `.pl' (or `.prolog'), is readable, and newer than the dep and pas files,
+% if this fails, someone has to create a new regcut file as soon as possible!
+%findOrCreateRegcut( RegdepFile, RegpasFile, RegcutFile ) :-
+
+%% Predicate copied from compileroute
+verify_files_exist( Filename, BaseFile ) :-
+  %% RS-150104 % List out all possible file properties
+  %   use_module( 'utility/writeout', [ out/1, output/1 ] ), ( directory_property( BaseFile, P, V ),    out(P), out('='), output(V), fail ; true ),     %% For Folders
+  %   use_module( 'utility/writeout', [ out/1, output/1 ] ), ( file_property( BaseFile, P, V ),    out(P), out('='), output(V), fail ; true ),          %% For Files
+
+        absolute_file_name( Filename, Absfile,  [ extensions( ['.pl','.prolog'] ), access( [read] ), file_errors( fail ) ] ),
+        file_property( Absfile, modify_timestamp, Time ),
+        absolute_file_name( BaseFile, AbsBasefile,  [ extensions( ['.pl','.prolog'] ), access( [read] ), file_errors( fail ) ] ), %% Only for files, not folders?
+%        directory_property( BaseFile, access_timestamp, TimeBase ),
+        file_property( AbsBasefile, modify_timestamp, TimeBase ),
+        Time > TimeBase,
+        out('...makeauxtables.pl~130 File already exists: '),out( Filename ), out( Time ),out( 'timestamp > SKIP making ' ),output( TimeBase ).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 makeauxtables :-
-    %    verify_files_exist( 'db/auxtables.pl' ) ; 
-    told,       %% Close all potentially open output-streams first!
-%    user:( tramflagg := false ), %% RS-140106 Trenger ikke auxtables for tram?!?
-%    user:( tmnflagg := false ), %% RS-140106 Trenger ikke auxtables for trafikanten midtnorge?!?
-    reset_period,  %% get the right period 
-
-    write( '... makeauxtables~114: Please wait 1 minute while creating (db/auxtables) regstr/2' ),nl,
-
-    open( 'db/auxtables.pl', write, Stream, [encoding('UTF-8')] ), %% RS-140102, Run from monobuss folder !!
-    %open( 'auxtables.pl', write, Stream, [encoding('UTF-8')] ), %% RS-140102, Run from the /db/ folder !!
-    set_output(Stream),
-
-    writeheading( 'auxtables, [ busstat/2, statbus/2, transbuslist/3, unproperstation/1 ]' ),  %% Didn't work?
-
-    createstatbus,  % 30 sec
-    createbusstat,  % 10 sec
-    createunproperstations, % 10 sec
-    createtransbuslist, % 20 sec
-
-/**** %% AD HOC  OMITTED 
-    createonlyfromstations, % 20 sec
-    createonlytostations, % 20 sec
-*/
-    told,
-%%     createcutribs,  % 2 min
-    write(' Finish'),nl,
-
-    crerr.  %% List  undefined station references
+    verify_files_exist( 'db/auxtables.pl', 'db/places.pl' ) ;
+        ( 
+            told,       %% Close all potentially open output-streams first!
+        %    user:( tramflagg := false ), %% RS-140106 Trenger ikke auxtables for tram?!?
+        %    user:( tmnflagg := false ), %% RS-140106 Trenger ikke auxtables for trafikanten midtnorge?!?
+            reset_period,  %% get the right period 
+        
+            write( '... makeauxtables~140(770): Please wait 1 minute while creating (db/auxtables) regstr/2' ),nl,
+        
+            open( 'db/auxtables.pl', write, Stream, [encoding('UTF-8')] ), %% RS-140102, Run from monobuss folder !!
+            %open( 'auxtables.pl', write, Stream, [encoding('UTF-8')] ), %% RS-140102, Run from the /db/ folder !!
+            set_output(Stream),
+        
+            writeheading( 'auxtables, [ busstat/2, statbus/2, transbuslist/3, unproperstation/1 ]' ),  %% Didn't work?
+        
+            createstatbus,  % 30 sec
+            createbusstat,  % 10 sec
+            createunproperstations, % 10 sec
+            createtransbuslist, % 20 sec
+        
+        /**** %% AD HOC  OMITTED 
+            createonlyfromstations, % 20 sec
+            createonlytostations, % 20 sec
+        */
+            told,
+        %%     createcutribs,  % 2 min
+            write(' Finish'),nl,
+        
+            crerr  %% List  undefined station references
+    ).
 
 
 writeheading( Module ) :-
@@ -488,29 +507,30 @@ torehash(yggdrasi,yggdrasil).
 
 
 createhash :-
-    %    verify_files_exist( 'db/namehashtable.pl' ) ;
-    told,
-    write('... makeauxtables~488: Please Wait another minute for namehash-table'),nl, %% TA-090317
-
-    reset_period,  %% Use the current names (just for hashing)
-
-    retractall(toredef0(_,_,_)),   %% NOT abolish
-    retractall(torehash0(_,_)),  
-
-    for( toretarget(X),
-        generatehash(X) ),      % Generate all toredef0 to write as toredef in namehashtable.pl
-   !,
-    open( 'db/namehashtable.pl', write, Stream, [encoding('UTF-8')] ),     %% Call from monobuss.pl (store in db...)
-    set_output(Stream), 
-    writeheading( 'namehashtable, [ toredef/3, torehash/2 ]' ),   %%write(':-module(namehashtable, [ toredef/3, torehash/2 ]).'),nl,
-
-   dumppredas( toredef0(X,Y,Z), toredef(X,Y,Z) ),
-   dumppredas( torehash0(X,Y), torehash(X,Y) ),
-   told,
-
-%%   consult('db/namehashtable.pl'),      %% Test it?     %% RS-131225
-
-   nl,write(' Finished! Now run: consult(\'db/namehashtable.pl\') '),nl.
+    verify_files_exist( 'db/namehashtable.pl', 'db/regstr.pl' ) ; (   %% BaseFolder? 'db/tables/r1611_141201'
+            told,
+            write('... makeauxtables~488: Please Wait another minute for namehash-table'),nl, %% TA-090317
+        
+            reset_period,  %% Use the current names (just for hashing)
+        
+            retractall(toredef0(_,_,_)),   %% NOT abolish
+            retractall(torehash0(_,_)),  
+        
+            for( toretarget(X),
+                generatehash(X) ),      % Generate all toredef0 to write as toredef in namehashtable.pl
+           !,
+            open( 'db/namehashtable.pl', write, Stream, [encoding('UTF-8')] ),     %% Call from monobuss.pl (store in db...)
+            set_output(Stream), 
+            writeheading( 'namehashtable, [ toredef/3, torehash/2 ]' ),   %%write(':-module(namehashtable, [ toredef/3, torehash/2 ]).'),nl,
+        
+           dumppredas( toredef0(X,Y,Z), toredef(X,Y,Z) ),
+           dumppredas( torehash0(X,Y), torehash(X,Y) ),
+           told,
+        
+           %%   consult('db/namehashtable.pl'),      %% Test it?     %% RS-131225
+        
+           nl,write(' Finished! Now run: consult(\'db/namehashtable.pl\') '),nl
+    ).
 
 
 
@@ -742,12 +762,16 @@ for(
 % :- use_module( 'makeauxtables', [ toretarget/1,  stallbuss/1 % Loops back here in the for-predicates etc. %% RS-131224 %% Used in FOR from makeauxtables
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% USAGE
-% Run in the /db/ directory...
+%% USAGE (/db/)
+% Run in the busstuc/ (ROOT) directory...
 
-%%RS-140421
-%:- makeauxtables.        %%% Move to busstuc.pl? RS-140927   :- vs ?- ???
-%:- verify_consistency.
+%%RS-140421. For immediate recompilation when modifying/debugging this file.
+
+%%% Move to busstuc.pl? RS-140927   :- vs ?-  (first directive type shows up in "Call Hierarchy" in SPIDEr.
+:- verify_consistency.  %% Discover changed station names between X and Y modules.
+:- makeauxtables.
+:- createhash.
+
 
 %% 0.  Take backup (or use svn)
 % mv db/auxtables.pl  old/auxtables.pl
@@ -756,20 +780,20 @@ for(
 
 %%  1. Create Tables 
 % busestuc.sav
-%?- makeauxtables.
+%:- makeauxtables.
 
 %% 2. Create namehashtable
-%?- createhash.
+%:- createhash.
 
 %% 2.5 Create discrepancies
-%?- verify_consistency.
+%:- verify_consistency.
 
 %% 3. Finish
-%?-halt.
+%:-halt.
 
 %%  4.  Recompile BusstUC
 % busbase.sav
-%?-[busstuc]. %% or other
-%?-save_program(busestuc).
-%?-halt.
+%:-[busstuc]. %% or other
+%:-save_program(busestuc).
+%:-halt.
 

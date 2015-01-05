@@ -302,7 +302,7 @@ is  listofall(Dom,List),
     not present numberof(_,_,_) 
 id  add (write(Doms),space,bcp(are),nl,bcw(Dom,List), 
        period) 
-ip  theplural(Dom,Doms).    
+ip  busanshp:theplural(Dom,Doms).    
 
 
 

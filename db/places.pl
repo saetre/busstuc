@@ -188,209 +188,6 @@ alias_station( ugla_trikk, ugla ).                %% RS-141115
 
 
 
-% ISAT   (STATION, PLACE)
-%Examples:
-%
-%isat(lerkendal_stadion,lerkendal).
-%isat(lerchendal_gård,lerkendal). 
-%isat(gløshaugen_syd,gløshaugen).
-%
-%STATION is (one, but NOT preferred, among several) stations that belong to the neighbourhood of PLACE
-
-%% ISAT    ( Station , Neighbourhood )
-
-isat(dronningens_gate_d1,sentrum). %% AtB
-%isat(dronningens_gate_d2,sentrum). 
-%isat(dronningens_gate_d3,sentrum). 
-%isat(dronningens_gate_d4,sentrum). 
-
-isat(kongens_gate_k1,sentrum). %% AtB
-isat(kongens_gate_k2,sentrum). 
-
-isat(munkegata_m1,sentrum). 
-isat(munkegata_m2,sentrum). 
-isat(munkegata_m3,sentrum). 
-isat(munkegata_m4,sentrum). 
-isat(munkegata_m5,sentrum). 
-
-%isat( olav_tryggvasons_gate, sentrum ).    %% RS-121223 Nightbus-station?
-isat(olav_tryggvasons_gate,hovedterminalen).    %% RS-121223 RS-141104 Sommer vs. vinter!?
-
-%% RS-140102    TODO: hovedterminalen  vs.  sentrum ??
-
-%isat(prinsens_gate_p1,prinsens_street). %% RS-131007 - 140102
-%isat(prinsens_gate_p2,prinsens_street). %% RS-140102 See db/regstr.pl
-%isat(prinsens_gate_p1,sentrum). %% RS-140428
-%isat(prinsens_gate_p2,sentrum). %% RS-140428... But  See db/regstr.pl
-isat(prinsens_gate_p1,prinsenkrysset). %% TA-110822  %% RS-141102
-isat(prinsens_gate_p2,prinsenkrysset). %% RS-141102
-isat(kongens_gate_k1,prinsenkrysset). %% RS-141102
-isat(kongens_gate_k2,prinsenkrysset). %% RS-141102
-
-
-isat(bratsberg_kirke,bratsberg). %% TA-110325
-
-%% isat(britannia_hotell,sentrum). %%  FB? %% not AtB
-isat(bromstadsvingen,bromstad).
-isat(bromstadvegen,bromstad). 
-%%isat(byåsen_butikksenter,byåsen). %% RS-131117
-isat(brøsetvegen_168,brøsetvegen). 
-
-isat(charlottenlund_kirke,charlottenlund). 
-isat(charlottenlund_nedre,charlottenlund). 
-
-isat(city_lade,lade).   %% RS-130625 %% Sommerrute-løsning
-isat(lade_gård,lade).   %% RS-130625 %% Nattbuss-løsning
-
-isat(city_syd_e6,city_syd). %% RS-130818
-isat(city_syd_vestre,city_syd). %% TA-110627
-isat(city_syd_østre,city_syd).  %% TA-100901
-
-isat(dalen_hageby,persaunetveien). %% RS-130625 AD-HOC. persaunvegen burde egentlig inkludere alle stoppene i den "vegen",
-                                   %%ikke bare svare "kan ikke finne flere ruter..." (til "peraunvegen isa station")
-
-isat(fagerliveien,fagerliv). %% Panic %% AtB TA-101010
-isat(flatåstoppen,flatåsen). % 7,17
-isat(framveien,byåsen). 
-
-isat(gartnerhallen,ikea). %%  (?)
-
-isat(gløshaugen_nord,gløshaugen). 
-isat(gløshaugen_nord,nth). 
-isat(gløshaugen_syd,gløshaugen). 
-isat(gløshaugen_syd,hesthagen). 
-isat(gløshaugen_syd,nth). 
-
-isat(haakon_vii_gate_17,haakon_vii_gate). 
-isat(haakon_vii_gate_17,haakon_vii_gate). 
-isat(haakon_vii_gate_25,haakon_vii_gate). 
-isat(haakon_vii_gate_25,haakon_vii_gate). 
-%%isat(haakon_vii_gate_29,lade_alle_80).
-%%isat(haakon_vii_gate_29,lade_alle_80).
-isat(haakon_vii_gate_9,haakon_vii_gate). 
-isat(haakon_vii_gate_9,haakon_vii_gate). 
-
-% isat(haukåsen,haukåsen).  %% RS-130330, hva skjer her? %% RS-140502. Haukåsen station removed from AtB's routes 140102
-%isat(heggstadmoen,heggstadmoen_4).
-%isat(heggstadmoen,heggstadmoen_2).
-
-isat(heimdal_sentrum,heimdal). 
-isat(heimdal_sentrum,heimdal). 
-isat(heimdal_stasjon,heimdal). 
-isat(heimdal_stasjon,heimdal). 
-
-%isat (STATION, PLACE).
-%% isat(hommelvik_skole,hommelvik).  %% RS-140614 not since 2013? No longer auto-generated
-isat(hommelvik_stasjon,hommelvik_skole).     %% RS-130627 %% Different route from hommelvik_stasjon
-isat(hommelvik_stasjon,hommelvik).
-%% isat(hommelvikhøgda,hommelvik). %% RS-130627 %% Outside? Same departing busses...
-
-isat(hovedterminalen,dronningens_gate).  %% Where is sentrumsterminalen
-%%isat(hovedterminalen,kongens_gate).  %% RS-130812 Where is sentrumsterminalen, men unngå:
-                                        %%      Holdeplassen nærmest Kongens_gate er Sentrumsterminalen ??
-isat(hovedterminalen,munkegata).  %%
-isat(hovedterminalen,sentrum).  %% Experiment Trikk St. Olavs. gt og så sentrum
-
-isat( john_aae_s_veg,city_syd).   %%
-isat( jørgen_b_lysholms_vei, lade_arena ).     %% Bussen står og venter her ganske lenge!  %% RS-141122  Se lade_alle_80
-
-isat(klæbu_sentrum,klæbu).  %% AtB
-isat(kroppanmarka,kroppanmarka_snuplass). %%RS-120305
-isat(kvt,city_syd).             %%
-
-%%¤¤¤ %% ulykke AtB %% TA-100715
-%%%%%%placestat(lade,lade_alle_80).  %% ( lade-alle_80 more passages => PREFERRED!)
-%%¤¤¤
-isat( lade_alle_80,lade).
-isat( lade_alle_80,lade_arena ).              %% RS-141122  Moved to isat (station, place)
-
-isat(lerkendal_stadion,lerkendal). 
-isat(lerchendal_gård,lerkendal).   %% ?
-isat(lerkendal_gård,lerkendal).   %% ?
-
-isat(loholtbakken,loholt). 
-isat(lohove,loholt). 
-isat(lykkmarka,sjetnmarka). %% Nightbus 
-
-isat(markaplassen_skole,vikåsen). 
-isat(moholt,lingit). %% Ad HOC, best conn from NTH
-isat(moholt_storsenter,lingit).
-
-isat(nedre_humlehaugen_øst,ranheim_kirke).  %% RS-130302 Ranheim Kirke Replaced by Nedre Humlehaugen Øst except morning ride 
-
-isat(nordre_flatåsen,flatåsen). %7
-%% isat(nordre_hoem,hoem). %% not AtB
-isat(nova_kinosenter,royal_garden). 
-
-isat(okstad_østre,kroppanmarka).        %% RS-140614
-
-isat(omkjøringsveien_moholt,omkjøringsveien). 
-isat(omkjøringsveien_moholt,omkjøringsveien). 
-isat(omkjøringsveien_nardo,omkjøringsveien). 
-isat(omkjøringsveien_nardo,omkjøringsveien). 
-
-isat(persaunvegen,persaunetveien). 
-
-isat(paul_skolemesters_veg,sjetnmarka). 
-isat(prof_brochs_gate,hesthagen). 
-isat(ranheim_fabrikker,ranheim). 
-isat(ranheim_idrettsplass,ranheim). %% TA-110426
-isat(ranheim_kirke,ranheim_kirke).  %% RS-130302 Ranheim Kirke Replaced by Nedre Humlehaugen Øst except morning ride 
-isat(ranheim_stasjon,ranheim). 
-isat(ringve_museum,ringve). 
-isat(ringve_museum,ringve). 
-isat(ringve_skole,ringve). 
-isat(gyldenløves_gate,rosenborg). %% AtB
-
-
-isat(sluppen,sluppen).  %% postterminalen på sluppen
-isat(solbakken_bru,solbakken).  
-isat(solbakken_skole,solbakken). 
-isat(st_olavs_gate,sentrum).  %% not AtB. %% RS-141115. Yes! AtB includes Everything now?!?
-isat(stavset_senter,stavset).
-isat( strandveikaia, ringnes ).
-isat( strandveikaia, ec_dahls_bryggeri ).
-
-isat(søndre_flatåsen,flatåsen). %7
-isat(søndre_gate_22,søndregate). 
-isat(søndre_gate_23,søndregate). 
-isat(søndre_gate_23,royal_garden). 
-%% isat(søndre_hoem,hoem). %% not AtB
-
-isat(tempe_kirke,tempe).  %%NB
-isat(tempevegen_11,tempe). %% AtB
-isat(tonstadkrysset,tonstadkrysset).  %%4
-
-isat(travbanen,ikea). %%  (?)
-
-isat(trollahaugen_10,trollahaugen). 
-isat(trollahaugen_2,trollahaugen). 
-isat(trollahaugen_46,trollahaugen).  %% 11->trollahaugen 64,75->trolla
-%% isat(trollahaugen_64,trollahaugen). 
-
-isat(trondheim_s_10,ts). %% SUMMER %% TA-110627
-isat(trondheim_s_11,ts). %%
-isat(trondheim_s_13,ts). %%
-
-isat(tvetestien,cecilienborg).  %% RS-130330, Cecilienborg finnes ikke lenger?
-
-isat(tyholt,tyholt).  %% Hvilke holdeplasserer på tyholt?
-
-isat(valøyvegen,tempe).  %% valøyveien stationname!
-isat(vestlia,steinan).   %%  NOT placestat 
-isat(vestlia,vestlia).   %%NB!!!
-isat(vestlia_endeholdeplass,steinan).  %%Haz?
-isat(vestlia_endeholdeplass,vestlia). 
-isat(voll_gård,voll). 
-isat(voll_studentby,voll). 
-
-
-isat(østre_berg,berg_østre). %% AtB  tricky
-isat(østre_rosten,city_syd).    %% Ø R must be station
-isat(øvre_flatåsveg,flatåsen). % 9,17 
-
-
-
 
 %% NOSTATION 
 
@@ -1467,9 +1264,9 @@ cmpl(hallfred,[høyems,veg],hallfred_høyems_vei).  %%vei
 cmpl(hallfredhøyems,vei,hallfred_høyems_vei). 
 cmpl(hallgrim,[høyems,vei],hallfred_høyems_vei). 
     cmpl(harald,[høyems,vei],hallfred_høyems_vei). 
-cmpl(hallset,[videregående,skole],søndre_halset). 
+cmpl(hallset,[videregående,skole],søndre_hallset).  %% RS-150104. Discrepencies: 1 eller 2 l'er: søndre_halset 
 cmpl(hallset,kirke,hallset).  %%???
-cmpl(hallset,skole,søndre_halset).  %%Østrehallsetvangen8
+cmpl(hallset,skole,søndre_hallset).  %%Østrehallsetvangen8
 cmpl(hallstein,gård,halstein_gård). 
 cmpl(hallstein,gården,halstein_gård). 
 cmpl(halset,kirke,migosenteret). 
@@ -3061,7 +2858,7 @@ cmpl(søndre,hoem,søndre_hoem).  %%
 cmpl(søndre,gate,søndregate). 
 cmpl(søndre,gløshaugen,gløshaugen_syd).  %% (sydlige?)
 cmpl(søndre,gt,søndregate). 
-cmpl(søndre,hallset,søndre_halset).  %% \+ spellc to halset
+cmpl(søndre,hallset,søndre_hallset).  %% \+ spellc to halset
 cmpl(søndre,hoem,søndre_hoem). 
 cmpl(søndre,hoem,søndre_hoem).  %% Tramstation
 
@@ -5534,6 +5331,216 @@ foreign(åstun).
 foreign(åstveit). 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% ISAT   (STATION, PLACE)
+%STATION is (one, but NOT preferred, among several) stations that belong to the neighbourhood of PLACE
+%% ISAT    ( Station , Neighbourhood )
+%
+%Examples:
+%
+%isat(lerkendal_stadion,lerkendal).
+%isat(lerchendal_gård,lerkendal). 
+%isat(gløshaugen_syd,gløshaugen).
+%
+
+isat(dronningens_gate_d1,sentrum). %% AtB
+%isat(dronningens_gate_d2,sentrum). 
+%isat(dronningens_gate_d3,sentrum). 
+%isat(dronningens_gate_d4,sentrum). 
+
+isat(kongens_gate_k1,sentrum). %% AtB
+isat(kongens_gate_k2,sentrum). 
+
+isat(munkegata_m1,sentrum). 
+isat(munkegata_m2,sentrum). 
+%isat(munkegata_m3,sentrum). %% Removed winter 2014? 
+isat(munkegata_m4,sentrum). 
+isat(munkegata_m5,sentrum). 
+
+%isat( olav_tryggvasons_gate, sentrum ).    %% RS-121223 Nightbus-station?
+isat(olav_tryggvasons_gate,hovedterminalen).    %% RS-121223 RS-141104 Sommer vs. vinter!?
+
+%% RS-140102    TODO: hovedterminalen  vs.  sentrum ??
+
+%isat(prinsens_gate_p1,prinsens_street). %% RS-131007 - 140102
+%isat(prinsens_gate_p2,prinsens_street). %% RS-140102 See db/regstr.pl
+%isat(prinsens_gate_p1,sentrum). %% RS-140428
+%isat(prinsens_gate_p2,sentrum). %% RS-140428... But  See db/regstr.pl
+isat(prinsens_gate_p1,prinsenkrysset). %% TA-110822  %% RS-141102
+isat(prinsens_gate_p2,prinsenkrysset). %% RS-141102
+isat(kongens_gate_k1,prinsenkrysset). %% RS-141102
+isat(kongens_gate_k2,prinsenkrysset). %% RS-141102
+
+
+isat(bratsberg_kirke,bratsberg). %% TA-110325
+
+%% isat(britannia_hotell,sentrum). %%  FB? %% not AtB
+isat(bromstadsvingen,bromstad).
+isat(bromstadvegen,bromstad). 
+%%isat(byåsen_butikksenter,byåsen). %% RS-131117
+%isat(brøsetvegen_168,brøsetvegen). %% RS-150104. Removed winter 2014?
+
+isat(charlottenlund_kirke,charlottenlund). 
+isat(charlottenlund_nedre,charlottenlund). 
+
+isat(city_lade,lade).   %% RS-130625 %% Sommerrute-løsning
+isat(lade_gård,lade).   %% RS-130625 %% Nattbuss-løsning
+
+isat(city_syd_e6,city_syd). %% RS-130818
+isat(city_syd_vestre,city_syd). %% TA-110627
+isat(city_syd_østre,city_syd).  %% TA-100901
+
+isat(dalen_hageby,persaunetveien). %% RS-130625 AD-HOC. persaunvegen burde egentlig inkludere alle stoppene i den "vegen",
+                                   %%ikke bare svare "kan ikke finne flere ruter..." (til "peraunvegen isa station")
+
+isat(fagerliveien,fagerliv). %% Panic %% AtB TA-101010
+isat(flatåstoppen,flatåsen). % 7,17
+isat(framveien,byåsen). 
+
+isat(gartnerhallen,ikea). %%  (?)
+
+isat(gløshaugen_nord,gløshaugen). 
+isat(gløshaugen_nord,nth). 
+isat(gløshaugen_syd,gløshaugen). 
+isat(gløshaugen_syd,hesthagen). 
+isat(gløshaugen_syd,nth). 
+
+isat(haakon_vii_gate_17,haakon_vii_gate). 
+isat(haakon_vii_gate_17,haakon_vii_gate). 
+isat(haakon_vii_gate_25,haakon_vii_gate). 
+isat(haakon_vii_gate_25,haakon_vii_gate). 
+%%isat(haakon_vii_gate_29,lade_alle_80).
+%%isat(haakon_vii_gate_29,lade_alle_80).
+isat(haakon_vii_gate_9,haakon_vii_gate). 
+isat(haakon_vii_gate_9,haakon_vii_gate). 
+
+% isat(haukåsen,haukåsen).  %% RS-130330, hva skjer her? %% RS-140502. Haukåsen station removed from AtB's routes 140102
+%isat(heggstadmoen,heggstadmoen_4).
+%isat(heggstadmoen,heggstadmoen_2).
+
+isat(heimdal_sentrum,heimdal). 
+isat(heimdal_sentrum,heimdal). 
+isat(heimdal_stasjon,heimdal). 
+isat(heimdal_stasjon,heimdal). 
+
+%isat (STATION, PLACE).
+%% isat(hommelvik_skole,hommelvik).  %% RS-140614 not since 2013? No longer auto-generated
+isat(hommelvik_stasjon,hommelvik_skole).     %% RS-130627 %% Different route from hommelvik_stasjon
+isat(hommelvik_stasjon,hommelvik).
+%% isat(hommelvikhøgda,hommelvik). %% RS-130627 %% Outside? Same departing busses...
+
+isat(hovedterminalen,dronningens_gate).  %% Where is sentrumsterminalen
+%%isat(hovedterminalen,kongens_gate).  %% RS-130812 Where is sentrumsterminalen, men unngå:
+                                        %%      Holdeplassen nærmest Kongens_gate er Sentrumsterminalen ??
+isat(hovedterminalen,munkegata).  %%
+isat(hovedterminalen,sentrum).  %% Experiment Trikk St. Olavs. gt og så sentrum
+
+isat( john_aae_s_veg,city_syd).   %%
+isat( jørgen_b_lysholms_vei, lade_arena ).     %% Bussen står og venter her ganske lenge!  %% RS-141122  Se lade_alle_80
+
+isat(klæbu_sentrum,klæbu).  %% AtB
+isat(kroppanmarka,kroppanmarka_snuplass). %%RS-120305
+isat(kvt,city_syd).             %%
+
+%%¤¤¤ %% ulykke AtB %% TA-100715
+%%%%%%placestat(lade,lade_alle_80).  %% ( lade-alle_80 more passages => PREFERRED!)
+%%¤¤¤
+isat( lade_alle_80,lade).
+isat( lade_alle_80,lade_arena ).              %% RS-141122  Moved to isat (station, place)
+
+isat(lerkendal_stadion,lerkendal). 
+%isat(lerchendal_gård,lerkendal).   %% ? Move to spellcheck somewhere?... Synplace?
+isat(lerkendal_gård,lerkendal).   %% ?
+
+isat(loholtbakken,loholt). 
+isat(lohove,loholt). 
+isat(lykkmarka,sjetnmarka). %% Nightbus 
+
+isat(markaplassen_skole,vikåsen). 
+isat(moholt,lingit). %% Ad HOC, best conn from NTH
+isat(moholt_storsenter,lingit).
+
+isat(nedre_humlehaugen_øst,ranheim_kirke).  %% RS-130302 Ranheim Kirke Replaced by Nedre Humlehaugen Øst except morning ride 
+
+isat(nordre_flatåsen,flatåsen). %7
+%% isat(nordre_hoem,hoem). %% not AtB
+isat(nova_kinosenter,royal_garden). 
+
+isat(okstad_østre,kroppanmarka).        %% RS-140614
+
+isat(omkjøringsveien_moholt,omkjøringsveien). 
+isat(omkjøringsveien_moholt,omkjøringsveien). 
+isat(omkjøringsveien_nardo,omkjøringsveien). 
+isat(omkjøringsveien_nardo,omkjøringsveien). 
+
+isat(persaunvegen,persaunetveien). 
+
+isat(paul_skolemesters_veg,sjetnmarka). 
+isat(prof_brochs_gate,hesthagen). 
+isat(ranheim_fabrikker,ranheim). 
+isat(ranheim_idrettsplass,ranheim). %% TA-110426
+isat(ranheim_kirke,ranheim_kirke).  %% RS-130302 Ranheim Kirke Replaced by Nedre Humlehaugen Øst except morning ride 
+isat(ranheim_stasjon,ranheim). 
+isat(ringve_museum,ringve). 
+isat(ringve_museum,ringve). 
+isat(ringve_skole,ringve). 
+isat(gyldenløves_gate,rosenborg). %% AtB
+
+
+isat(sluppen,sluppen).  %% postterminalen på sluppen
+isat(solbakken_bru,solbakken).  
+isat(solbakken_skole,solbakken). 
+isat(st_olavs_gate,sentrum).  %% not AtB. %% RS-141115. Yes! AtB includes Everything now?!?
+isat(stavset_senter,stavset).
+isat( strandveikaia, ringnes ).
+isat( strandveikaia, ec_dahls_bryggeri ).
+
+isat(søndre_flatåsen,flatåsen). %7
+isat(søndre_gate_22,søndregate). 
+isat(søndre_gate_23,søndregate). 
+isat(søndre_gate_23,royal_garden). 
+%% isat(søndre_hoem,hoem). %% not AtB
+
+isat(tempe_kirke,tempe).  %%NB
+isat(tempevegen_11,tempe). %% AtB
+isat(tonstadkrysset,tonstadkrysset).  %%4
+
+isat(travbanen,ikea). %%  (?)
+
+isat(trollahaugen_10,trollahaugen). 
+isat(trollahaugen_2,trollahaugen). 
+isat(trollahaugen_46,trollahaugen).  %% 11->trollahaugen 64,75->trolla
+%% isat(trollahaugen_64,trollahaugen). 
+
+isat(trondheim_s_10,ts). %% SUMMER %% TA-110627
+%%isat(trondheim_s_11,ts). %% Terminated WINTER %% RS-150104
+isat(trondheim_s_13,ts). %%
+
+isat(tvetestien,cecilienborg).  %% RS-130330, Cecilienborg finnes ikke lenger?
+
+isat(tyholt,tyholt).  %% Hvilke holdeplasserer på tyholt?
+
+isat(valøyvegen,tempe).  %% valøyveien stationname!
+%isat(vestlia,steinan).   %%  NOT placestat      %% RS-150104. Vestlia was terminated
+%isat(vestlia,vestlia).   %%NB!!!                %% RS-150104. Vestlia was terminated
+isat(vestlia_endeholdeplass,steinan).  %%Haz? NOT placestat. %% RS-150104. Vestlia was terminated
+isat(vestlia_endeholdeplass,vestlia). 
+isat(voll_gård,voll). 
+isat(voll_studentby,voll). 
+
+
+isat(østre_berg,berg_østre). %% AtB  tricky
+isat(østre_rosten,city_syd).    %% Ø R must be station
+isat(øvre_flatåsveg,flatåsen). % 9,17 
+
+% ISAT   (STATION, PLACE)
+%STATION is (one, but NOT preferred, among several) stations that belong to the neighbourhood of PLACE
+%% ISAT    ( Station , Neighbourhood )
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 %%% PLACE_RESOLVE (PLACE,STATION).
 % STATION is one of several determinations for PLACE
@@ -5648,7 +5655,7 @@ placestat(atb,prinsenkrysset). %% TA-101108
 placestat(studentersamfundet,studentersamfundet).  %% AtB %% NB \+ isat         %% RS-141020    Feedback from Norvald Ryeng
 placestat(studentersamfundet,studentersamfundet_2).  %% TA-100922  %% RS-140901 %% Reverserte disse
 
-placestat('ALT/Statoil',rotvoll_nedre).%% hist/ALT %% extra dep Bus 6 
+placestat('ALT/Statoil',rotvoll).%% hist/ALT %% extra dep Bus 6 
 placestat('Adolf Øiens skole',prinsen_kinosenter).  %%
 placestat('Bakke kirke',bakkegata).  %% Syndrome Hvor er bakke kirke
 placestat('Berg arbeidskirke',kvilhaugen). 
@@ -5662,7 +5669,7 @@ placestat('Hotell Augustin',torget).  %% Brage
 placestat('Motor Trade',fiolsvingen). %% Bilverksted
 placestat('Lilleby skole',stiklestadveien).  %% Ladeveien 1 
 placestat('Ni muser',prinsen_kinosenter). 
-placestat('Steinan studentby',vestlia).
+placestat('Steinan studentby',vestlia_endeholdeplass).
 placestat('Tiller kirke',moltmyra_øst).  
 placestat('Torbjørn Bratts veg',fiolsvingen). 
 
@@ -5835,9 +5842,9 @@ placestat(grillstad,grilstadkleiva).
 placestat(grilstad,grilstadkleiva). 
 placestat(grilstadfjæra,grilstadkleiva). 
 
-placestat(hallset,søndre_halset).  %% nordre søndre 
-placestat(halset,søndre_halset).   %% nordre søndre
-placestat(hallsetvangen,søndre_halset). 
+placestat(hallset,søndre_hallset).  %% nordre søndre 
+placestat(halset,søndre_hallset).   %% nordre søndre
+placestat(hallsetvangen,søndre_hallset). %% RS-150104. Halset/Hallset Summer/Winter naming problem. 
 placestat(hanger,hangeråsen). 
 placestat(hangersletta,hangeråsen).  %% aasen UN properstation
 placestat(hangerås,hangeråsen).  %% necessary because laura hangerås veg
@@ -5886,6 +5893,7 @@ placestat(hårstad,martin_kregnes_veg).
 placestat(hårstadmarka,martin_kregnes_veg). 
 placestat(hårstadmyra,martin_kregnes_veg). 
 placestat(idrettsbygget,høgskoleringen). 
+placestat(idrettsplassen, idrettsplassen_jakobsli). %% RS-150104. Name-change. Summer/Winter?
 
 placestat(ilabekken,ila). 
 placestat(iladalen,ila).
@@ -5953,7 +5961,8 @@ placestat(ladeskolen,lade_kirke).
 placestat(ladetorget,østmarkveien). 
 placestat(lamoparken,buran). 
 placestat(langlohaugen,langlo). 
-placestat(larsbyen,olav_nygårds_veg). 
+%placestat(larsbyen,olav_nygårds_veg). %% RS-150104. Summer/Winter naming problem 
+ placestat(larsbyen,olav_nygards_veg). %% RS-150104. Summer/Winter naming problem
 placestat(leangen,travbanen). 
 placestat(leangenhallen,bromstadsvingen). 
 placestat(legard,legårdsbakken). 
@@ -5970,8 +5979,8 @@ placestat(loholt_alle,lohove).
 %% placestat(louisenlyst,leangenveien).  %% Leangenveien3 %% TA-110822
 placestat(luftkrigsskolen,persaunet_leir). 
 placestat(lundhøgda,lundåsen_nordre).        %% RS-140616 lundåsen_n ?
-placestat(lærerhøgskole,rotvoll_nedre). 
-placestat(lærerhøgskolen,rotvoll_nedre). 
+placestat(lærerhøgskole,rotvoll). 
+placestat(lærerhøgskolen,rotvoll). 
 placestat(mamoz,fiolsvingen). %% nardo_street-16). 
 placestat(marineborgstasjon,marienborg_stasjon).       %% RS-130330. Marienborg er utgått 
 placestat(marinen,prinsen_kinosenter). 
@@ -6125,8 +6134,8 @@ placestat(rotvollfjæra,rotvoll).  %%?
 placestat(rønning,rønningsbakken). 
 placestat(rådhuset,torget). 
 
-%placestat(sandgata,hospitalskirka).    %% RS-141021 TEMPORARY, construction in kongensgt.
-%placestat(sandgata,hospitalskirka).    %% RS-141021 Sandgata er en ny (midlertidig) stasjon ifm veiarbeid i Kongensgt.
+placestat(sandgata,hospitalskirka).    %% RS-141021 TEMPORARY REMOVED, construction in kongensgt. %% RS-150104 Restarted
+placestat(sandgata,hospitalskirka).    %% RS-141021 Sandgata er en ny (midlertidig) stasjon ifm veiarbeid i Kongensgt.
  
 placestat(sandmoencamping,sandmoen). 
 placestat(saupstad,saupstadsenteret). 
@@ -6167,15 +6176,15 @@ placestat(spongdalskole,spongdal).
 placestat(stabbursmoenskole,ditlev_bloms_veg). 
 placestat(statens_hus,prinsen_kinosenter). 
 
-placestat(statoil,statoil_rotvoll). %% TA-110627 ? isat?
+placestat(statoil_rotvoll,rotvoll). %% TA-110627 ? isat? %% RS-150104
 
-placestat(stavne,stavnebrua).  %% confuse hvor langt er det fra stavne bro til breidablikk
-placestat(stavnebro,stavnebrua). 
+placestat(stavne,tempe_kirke).  %% confuse hvor langt er det fra stavne bro til breidablikk
+placestat(stavnebro,tempe_kirke). %% RS-150104. Stavnebrua Station closed in 2014.
 
 %%%                       placestat(steinan,vestlia).  %% NOT nattbussen
 
 placestat(steinandalsvegen,steindalsvegen). 
-placestat(steinanstudentby,vestlia). 
+placestat(steinanstudentby,vestlia_endeholdeplass). %% RS-150104. Used to be vestlia, 
 placestat(steinanv,heggdalen). 
 placestat(steinanvegen,heggdalen). 
 placestat(steinanveien,heggdalen). 
@@ -7852,9 +7861,10 @@ synplace(brøsetflatata,brøsetflata). %?
 synplace(brøseth,brøset). 
 synplace(brøsethvegen,brøsetv).  %%
 synplace(brøsethveien,brøsetv).  %% station is preferred %%  Touchy
-synplace(brøsetvegen168,brøsetvegen_168). 
+%% brøsetvegen_168 Station was removed in 2014. %% RS-150104
+synplace(brøsetvegen168,brøsetvegen_168).   
 %% synplace(brøsetvegen186,brøsetvegen_186). 
-synplace(brøsetvn168,brøsetvegen_168). 
+synplace(brøsetvn168,brøsetvegen_168).
 %% synplace(brøsetvn186,brøsetvegen_186). 
 synplace(brøsterveien,brøsetvegen). 
 synplace(buan,buran). 

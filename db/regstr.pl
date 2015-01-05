@@ -38,7 +38,7 @@ streetstat(alfred_larsens_street,'Alfred Larsens gate',1,13,valøyvegen).
 streetstat(alfred_trønsdals_street,'Alfred Trønsdals veg',4,8,othilienborg).
 streetstat(alfred_trønsdals_street,'Alfred Trønsdals veg',1,28,k_o_thornæs_veg).
 streetstat(alme_street,'Almeveien',1,52,sandbakken).
-streetstat(alv_schiefloes_street,'Alv Schiefloes veg',1,29,idrettsplassen).
+streetstat(alv_schiefloes_street,'Alv Schiefloes veg',1,29,idrettsplassen_jakobsli).
 streetstat(amalienborg_street,'Amalienborgveien',1,16,hitravegen).
 streetstat(amalienlyst,'Amalienlyst',1,6,travbanen).
 streetstat(amtmannssvingen,'Amtmannssvingen',1,24,olderdalen).
@@ -217,10 +217,9 @@ streetstat(brøset_street,'Brøsetvegen',75,75,solvollvegen).
 streetstat(brøset_street,'Brøsetvegen',141,145,henrik_ourens_veg).
 streetstat(brøset_street,'Brøsetvegen',177,188,moholt_storsenter). %% TA-100226
 streetstat(brøset_street,'Brøsetvegen',103,115,brøset_hageby).
-streetstat(brøset_street,'Brøsetvegen',145,164,strinda_kirke).
 streetstat(brøset_street,'Brøsetvegen',81,101,brøsetflata).
 streetstat(brøset_street,'Brøsetvegen',117,139,teglverkskrysset).
-streetstat(brøset_street,'Brøsetvegen',147,184,brøsetvegen_168).
+streetstat(brøset_street,'Brøsetvegen',145,184,strinda_kirke).
 streetstat(brøset_street,'Brøsetvegen',28,79,bromstadsvingen).
 streetstat(brøset_street,'Brøsetvegen',1,131,gildheim).
 streetstat(brøttems_street,'Brøttemsvegen',63,270,sandmoen).
@@ -257,7 +256,7 @@ streetstat(carl_j_hambros_street,'C.J.Hambros vei',1,20,c_j_hambros_vei).
 streetstat(camilla_collets_street,'Camilla Collets veg',1,9,strindheim_hageby).
 streetstat(carl_dons_street,'Carl Dons veg',1,22,leirøya).
 streetstat(carl_johans_street,'Carl Johans gate',1,14,hovedterminalen).
-streetstat(carl_lønseths_street,'Carl Lønseths veg',1,3,idrettsplassen).
+streetstat(carl_lønseths_street,'Carl Lønseths veg',1,3,idrettsplassen_jakobsli).
 %% streetstat(carl_schjetnans_street,'Carl Schjetnans veg',7,7,alf_godagers_veg).
 streetstat(carl_schjetnans_street,'Carl Schjetnans veg',1,9,paul_skolemesters_veg).
 streetstat(carl_schjetnans_street,'Carl Schjetnans veg',6,18,carl_schjetnans_veg).
@@ -268,14 +267,15 @@ streetstat(catharine_lysholms_street,'Catharine Lysholms veg',1,13,munkvoll_går
 streetstat(cecilie_thoresens_street,'Cecilie Thoresens veg',1,4,cecilie_thoresens_veg).
 streetstat(christian_bloms_street,'Christian Bloms veg',5,5,brundalen_skole).
 streetstat(christian_eggens_street,'Christian Eggens veg',1,93,einar_øfstis_veg).
-streetstat(christian_fredriks_street,'Christian Fredriks gate',1,20,vollabakken).
+%streetstat(christian_fredriks_street,'Christian Fredriks gate',1,20,vollabakken).     %% RS-150104 Terminated. Or Summer/Winter discrepancy?
+streetstat(christian_fredriks_street,'Christian Fredriks gate',1,20,studentersamfundet).
 streetstat(christian_jelstrups_street,'Christian Jelstrups vei',1,6,christian_jelstrups_vei).
 streetstat(christian_monsens_street,'Christian Monsens gate',1,1,weidemannsveien).
 %streetstat(christian_monsens_street,'Christian Monsens gate',2,11,chr_monsens_gate).  %% RS-140615 Missing?
 streetstat(christian_monsens_street,'Christian Monsens gate',2,11,gyldenløves_gate).
 streetstat(churchills_street,'Churchills veg',14,23,tunvegen).
 streetstat(churchills_street,'Churchills veg',1,17,churchills_veg).
-streetstat(cicilie_street,'Cicilieveien',1,7,thora_storms_vei).
+streetstat(cicilie_street,'Cicilieveien',1,7,tvetestien).
 streetstat(credoeveita,'Credoeveita',1,2,hovedterminalen).
 streetstat(dalen_hageby,'Dalen Hageby',1,70,dalen_hageby).
 streetstat(dalgårdstien,'Dalgårdstien',1,14,dalgård).
@@ -307,7 +307,7 @@ streetstat(dybdahls_street,'Dybdahls veg',34,38,østre_berg).
 streetstat(dybdahls_street,'Dybdahls veg',1,57,berg_studentby).
 streetstat(dyrborg_street,'Dyrborgveien',1,35,ila).
 streetstat(e_c_dahls_street,'E.C. Dahls gate',1,10,torget).
-streetstat(edgar_b_schieldrops_street,'Edgar B. Schieldrops veg',1,82,vestlia).
+streetstat(edgar_b_schieldrops_street,'Edgar B. Schieldrops veg',1,82,vestlia_endeholdeplass).   %% RS-150104. vestlia is Terminated 2014?
 streetstat(edgar_b_schieldrops_street,'Edgar B. Schieldrops veg',81,178,vestlia_endeholdeplass).
 streetstat(edvard_griegs_street,'Edvard Griegs gate',7,13,einar_tambarskjelves_gate).
 streetstat(eggan_street,'Egganvegen',1,10,granhaugan).
@@ -338,15 +338,16 @@ streetstat(ellen_lies_street,'Ellen Lies vei',1,22,ringve_skole).
 streetstat(elve_street,'Elvegata',1,18,hospitalskirka).         %% RS-140615 hospital(s?)kirka
 streetstat(elve_street,'Elveveien',16,38,prof_brochs_gate).
 streetstat(emilie_kroghs_street,'Emilie Kroghs veg',1,10,munkvoll).
-streetstat(engelsås_street,'Engelsås vei',1,58,brandhaugen).
+%streetstat(engelsås_street,'Engelsås vei',1,58,brandhaugen). %% RS-150104. brandhaugen terminated oktober 2014.
+streetstat(engelsås_street,'Engelsås vei',1,58,solbakken_bru). %% RS-150104. brandhaugen terminated oktober 2014.
 streetstat(eng_street,'Engvegen',1,29,brøset_hageby).
 streetstat(enerom_street,'Eneromvegen',50,83,leirelva).
 streetstat(enerom_street,'Eneromvegen',72,110,stavsetsvingen).
 streetstat(enerom_street,'Eneromvegen',1,48,alfheimsvingen).
 streetstat(enerom_street,'Eneromvegen',91,227,stavset).
-streetstat(erika_lies_street,'Erika Lies veg',5,20,søndre_halset).
+streetstat(erika_lies_street,'Erika Lies veg',5,20,søndre_hallset).      %% RS-150104. Discrepancy Summer/Winter: søndre_halset
 streetstat(erlends_street,'Erlends veg',1,11,rydningen).
-streetstat(erling_høviks_street,'Erling Høviks veg',1,27,idrettsplassen).
+streetstat(erling_høviks_street,'Erling Høviks veg',1,27,idrettsplassen_jakobsli).
 streetstat(erling_skakkes_street,'Erling Skakkes gate',47,58,hospitalskirka).   %% RS-140615 hospital(s?)kirka
 streetstat(erling_skakkes_street,'Erling Skakkes gate',58,70,kalvskinnet).
 streetstat(erling_skakkes_street,'Erling Skakkes gate',1,45,torget).
@@ -364,7 +365,7 @@ streetstat(fagerli_street,'Fagerliveien',1,38,fagerliveien).
 streetstat(fagertun_street,'Fagertunvegen',1,3,åsveien_skole).
 streetstat(falsens_street,'Falsens gate',7,14,gyldenløves_gate).
 streetstat(falsens_street,'Falsens gate',1,16,ankers_gate).
-streetstat(fernanda_nissens_street,'Fernanda Nissens  veg',1,12,persaunevegen).
+streetstat(fernanda_nissens_street,'Fernanda Nissens  veg',1,12,persaunet_leir).
 streetstat(fernanda_nissens_street,'Fernanda Nissens  veg',13,43,kong_øysteins_veg).
 streetstat(ferstadbakken,'Ferstadbakken',1,14,ugla).
 streetstat(festnings_street,'Festningsgata',1,7,bakkegata).
@@ -401,8 +402,9 @@ streetstat(fredrikkested,'Fredrikkested',1,113,osbakken).
 streetstat(freidigstien,'Freidigstien',1,16,skavlans_veg).
 streetstat(fridheim_street,'Fridheimveien',1,3,stiklestadveien).
 streetstat(friggs_street,'Friggs veg',1,4,karl_jonssons_veg).
-streetstat(fritjof_nansens_street,'Fritjof Nansens vei',36,47,oscar_wistings_vei).
-streetstat(fritjof_nansens_street,'Fritjof Nansens vei',54,66,thora_storms_vei).
+%streetstat(fritjof_nansens_street,'Fritjof Nansens vei',36,47,oscar_wistings_vei).     %% RS-150104. oscar_wistings_vei Terminated June 2014.
+streetstat(fritjof_nansens_street,'Fritjof Nansens vei',36,47,nyveibakken).
+streetstat(fritjof_nansens_street,'Fritjof Nansens vei',54,66,tvetestien).
 streetstat(fritjof_nansens_street,'Fritjof Nansens vei',1,35,hammersborg).
 streetstat(fritz_aabakkens_street,'Fritz Aabakkens veg',12,17,c_j_hambros_vei).
 streetstat(fritz_aabakkens_street,'Fritz Aabakkens veg',1,11,idrettsveien).
@@ -471,7 +473,8 @@ streetstat(granås_street,'Granåsvegen',29,43,angelltrøvegen).
 streetstat(granås_street,'Granåsvegen',45,65,sildråpevegen).
 streetstat(gregus_street,'Gregus gate',9,12,strandveien).
 streetstat(gregus_street,'Gregus gate',1,8,buran).
-streetstat(grensen,'Grensen',6,15,vollabakken).
+%streetstat(grensen,'Grensen',6,15,vollabakken).     %% RS-150104 Terminated. Or Summer/Winter discrepancy?
+streetstat(grensen,'Grensen',6,15,studentersamfundet).
 streetstat(gressbane_street,'Gressbanevegen',1,3,valøyvegen).
 streetstat(griffenfelds_street,'Griffenfelds gate',1,2,hospitalskirka).         %% RS-140615 hospital(s?)kirka
 streetstat(grilstad_street,'Grilstadvegen',1,27,skovgård).
@@ -565,7 +568,7 @@ streetstat(heimtun,'Heimtun',9999,9999,korsen).
 streetstat(helmer_hanssens_street,'Helmer Hanssens veg',5,10,persaunet_leir).
 streetstat(helmer_lundgrens_street,'Helmer Lundgrens gate',1,4,prinsen_kinosenter).
 streetstat(henrik_angells_street,'Henrik Angells gate',1,7,dalen_hageby).
-streetstat(henrik_angells_street,'Henrik Angells gate',8,37,persaunevegen).
+streetstat(henrik_angells_street,'Henrik Angells gate',8,37,persaunet_leir).
 streetstat(henrik_mathiesens_street,'Henrik Mathiesens vei',1,15,gyldenløves_gate).
 %streetstat(henrik_mathiesens_street,'Henrik Mathiesens vei',16,30,chr_monsens_gate). %% RS-140615 Missing?
 streetstat(henrik_mathiesens_street,'Henrik Mathiesens vei',16,30,gyldenløves_gate).
@@ -613,7 +616,8 @@ streetstat(høgreina,'Høgreina',278,454,høgreina_øvre).
 streetstat(høgreina,'Høgreina',12,274,høgreina).
 streetstat(høgsetgrenda,'Høgsetgrenda',1,67,leirelva).
 streetstat(høgskoleringen,'Høgskoleringen',1,8,gløshaugen_nord).
-streetstat(høgskole_street,'Høgskoleveien',1,12,vollabakken).
+%streetstat(høgskole_street,'Høgskoleveien',1,12,vollabakken).     %% RS-150104 Terminated. Or Summer/Winter discrepancy?
+streetstat(høgskole_street,'Høgskoleveien',1,12,studentersamfundet).
 streetstat(høili_plass,'Høili plass',1,10,unknown).
 streetstat(høili_street,'Høilivegen',1,9,tyholttårnet).
 streetstat(høili_street,'Høilivegen',10,25,kvilhaugen).
@@ -628,7 +632,7 @@ streetstat(håkon_håkonsons_street,'Håkon Håkonsons gate',23,41,magnus_berrf�
 streetstat(håkon_jarls_street,'Håkon Jarls gate',1,12,studentersamfundet).
 streetstat(håkon_magnussons_street,'Håkon Magnussons gate',9,12,city_lade).
 streetstat(håkon_magnussons_street,'Håkon Magnussons gate',1,5,harald_hårfagres_gate).
-streetstat(håkon_sverressons_street,'Håkon Sverressons veg',1,10,valentinlystvegen).
+streetstat(håkon_sverressons_street,'Håkon Sverressons veg',1,10,østre_berg).
 streetstat(hårstadstien,'Hårstadstien',6,13,unknown).
 streetstat(ibsens_street,'Ibsens gate',9,15,gyldenløves_gate).
 streetstat(idretts_street,'Idrettsveien',1,20,heimdal_stasjon).
@@ -644,7 +648,8 @@ streetstat(ingemann_torps_street,'Ingemann Torps vei',6,140,ingemann_torps_vei).
 streetstat(inge_krokanns_street,'Inge Krokanns veg',1,22,dalgård).
 streetstat(ingeborg_aas_street,'Ingeborg Aas veg',1,6,risvollan_senter).
 streetstat(ingrid_kiærs_street,'Ingrid Kiærs veg',1,21,ranheim_kirke).
-streetstat(ingvald_undsets_street,'Ingvald Undsets gate',1,4,vollabakken).
+%streetstat(ingvald_undsets_street,'Ingvald Undsets gate',1,4,vollabakken).     %% RS-150104 Terminated. Or Summer/Winter discrepancy?
+streetstat(ingvald_undsets_street,'Ingvald Undsets gate',1,4,studentersamfundet).
 streetstat(ingvald_ystgaards_street,'Ingvald Ystgaards veg',1,10,tunga_kretsfengsel).
 streetstat(ingvald_ystgaards_street,'Ingvald Ystgaards veg',7,24,hallfred_høyems_veg).
 streetstat(innbrektsflata,'Innbrektsflata',1,3,skårgangen).
@@ -665,13 +670,14 @@ streetstat(ivar_aasens_street,'Ivar Aasens veg',1,33,ugla).
 streetstat(ivar_mortensons_street,'Ivar Mortensons veg',1,11,dalgård).
 streetstat(j_o_stavs_street,'J.O.Stavs veg',1,14,heimdal_stasjon).
 streetstat(jacob_b_bulls_street,'Jacob B. Bulls veg',1,9,dalgård).
-streetstat(jacob_rolls_street,'Jacob Rolls gate',1,44,vollabakken).
+%streetstat(jacob_rolls_street,'Jacob Rolls gate',1,44,vollabakken).     %% RS-150104 Terminated. Or Summer/Winter discrepancy?
+streetstat(jacob_rolls_street,'Jacob Rolls gate',1,44,studentersamfundet).
 streetstat(jakob_kjeviks_street,'Jakob Kjeviks vei',1,8,åsveien_skole).
 streetstat(jakobsli_street,'Jakobslivegen',1,18,jakobslivegen_nedre).
 streetstat(jakobsli_street,'Jakobslivegen',43,64,charlottenlund_kirke).
 streetstat(jakobsli_street,'Jakobslivegen',19,41,konglevegen).
 streetstat(jakobsli_street,'Jakobslivegen',61,86,presthusaunet).
-streetstat(jakobsli_street,'Jakobslivegen',83,114,idrettsplassen).
+streetstat(jakobsli_street,'Jakobslivegen',83,114,idrettsplassen_jakobsli).
 streetstat(jakobstien,'Jakobstien',1,15,tvetestien).
 streetstat(jarle_street,'Jarleveien',44,44,lade_kirke).
 streetstat(jarle_street,'Jarleveien',1,19,stiklestadveien).
@@ -701,7 +707,7 @@ streetstat(johan_tillers_street,'Johan Tillers vei',20,20,brænne).
 streetstat(johan_tillers_street,'Johan Tillers vei',2,7,heimdal_stasjon).
 streetstat(johan_tillers_street,'Johan Tillers vei',1,28,breidablikk_skole).
 streetstat(johannes_minsaas_street,'Johannes Minsaas veg',1,24,ranheim_idrettsplass).
-streetstat(john_bjørgums_street,'John Bjørgums veg',1,58,persaunevegen).
+streetstat(john_bjørgums_street,'John Bjørgums veg',1,58,persaunet_leir).
 streetstat(johan_p_kroglunds_street,'John P. Kroglunds veg',1,67,john_p_kroglunds_veg).
 streetstat(john_skaarvolds_street,'John Skaarvolds  veg',40,40,heimdal_stasjon).
 streetstat(john_skaarvolds_street,'John Skaarvolds  veg',19,40,havstadsenteret).
@@ -767,9 +773,11 @@ streetstat(klingenbergs_street,'Klingenbergs vei',1,12,weidemannsveien).
 streetstat(klokker_lassens_street,'Klokker Lassens gate',1,2,prof_brochs_gate).
 streetstat(klokkstein_street,'Klokksteinvegen',1,17,john_p_kroglunds_veg).
 streetstat(klosterenget,'Klosterenget',4,8,unknown).
-streetstat(kloster_street,'Klostergata',1,1,vollabakken).
-streetstat(kloster_street,'Klostergata',2,91,studentersamfundet).
-streetstat(kluwers_street,'Kluwers gate',1,2,vollabakken).
+%streetstat(kloster_street,'Klostergata',1,1,vollabakken).     %% RS-150104 Terminated. Or Summer/Winter discrepancy?
+streetstat(kloster_street,'Klostergata',1,1,studentersamfundet).
+%streetstat(kloster_street,'Klostergata',2,91,studentersamfundet).
+%streetstat(kluwers_street,'Kluwers gate',1,2,vollabakken).     %% RS-150104 Terminated. Or Summer/Winter discrepancy?
+streetstat(kluwers_street,'Kluwers gate',1,2,studentersamfundet).
 streetstat(klæbu_street,'Klæbuveien',134,145,valgrindvegen).
 streetstat(klæbu_street,'Klæbuveien',170,182,anton_grevskotts_veg).
 streetstat(klæbu_street,'Klæbuveien',212,227,nygård).
@@ -780,7 +788,7 @@ streetstat(klæbu_street,'Klæbuveien',146,169,sorgenfri).
 streetstat(klæbu_street,'Klæbuveien',1,44,einar_tambarskjelves_gate).
 streetstat(klæbu_street,'Klæbuveien',46,110,prof_brochs_gate).
 streetstat(kløver_street,'Kløvervegen',1,6,brøset_hageby).
-streetstat(knudssøns_street,'Knudssøns gate',1,10,valentinlystvegen).
+streetstat(knudssøns_street,'Knudssøns gate',1,10,østre_berg).
 streetstat(knut_glomsaas_street,'Knut Glomsaas`vei',1,14,ringve_museum).
 streetstat(knut_hamsuns_street,'Knut Hamsuns veg',1,4,ugla).
 streetstat(kobbes_street,'Kobbes gate',6,18,strandveien).
@@ -822,7 +830,8 @@ streetstat(konrad_dahls_street,'Konrad Dahls veg',1,26,ugla).
 streetstat(konsul_lorcks_street,'Konsul Lorcks gate',1,23,dalen_hageby).
 streetstat(konvall_street,'Konvallvegen',1,42,moholt_studentby).
 streetstat(kornblomst_street,'Kornblomstvegen',1,38,fiolsvingen).
-streetstat(kors_street,'Korsgata',1,29,vollabakken).
+%streetstat(kors_street,'Korsgata',1,29,vollabakken).      %% RS-150104 Terminated. Or Summer/Winter discrepancy?
+streetstat(kors_street,'Korsgata',1,29,studentersamfundet).
 streetstat(korsnebb_street,'Korsnebbvegen',1,59,kattemskogen).
 streetstat(korsvik_alle,'Korsvik allé',1,12,lade_kirke).
 streetstat(krambu_street,'Krambugata',1,14,nova_kinosenter).
@@ -886,7 +895,7 @@ streetstat(lars_hofstads_street,'Lars Hofstads veg',1,10,breidablikk).
 streetstat(lars_onsagers_street,'Lars Onsagers veg',1,16,berg_studentby).
 streetstat(lauritz_jenssens_street,'Lauritz Jenssens gate',1,18,dalen_hageby).
 streetstat(lauritz_jenssens_street,'Lauritz Jenssens gate',31,51,persaunet_leir).
-streetstat(lauritz_jenssens_street,'Lauritz Jenssens gate',15,36,persaunevegen).
+streetstat(lauritz_jenssens_street,'Lauritz Jenssens gate',15,36,persaunet_leir).
 streetstat(laura_hangerås_street,'Laura Hangerås veg',1,77,kystad).
 streetstat(lauvsanger_street,'Lauvsangervegen',1,12,stabells_veg).
 streetstat(leangen_alle,'Leangen allé',1,4,leangen_alle).
@@ -917,7 +926,7 @@ streetstat(lidarende,'Lidarende',1,16,moholt_studentby).
 streetstat(lille_lade,'Lille Lade',402,402,krutthusbakken).
 streetstat(lilleberg_street,'Lillebergvegen',1,2,tyholttårnet).
 streetstat(lilleberg_street,'Lillebergvegen',18,21,østre_berg).
-streetstat(lilleberg_street,'Lillebergvegen',6,17,valentinlystvegen).
+streetstat(lilleberg_street,'Lillebergvegen',6,17,østre_berg).
 streetstat(lillegårdsbakken,'Lillegårdsbakken',1,45,jonsvannsveien).
 streetstat(lilleplassveita,'Lilleplassveita',1,8,hovedterminalen).
 streetstat(lillerydningen,'Lillerydningen',1,29,rydningen).
@@ -967,13 +976,14 @@ streetstat(marcus_thranes_street,'Marcus Thranes vei',1,6,peder_morsets_veg).
 streetstat(marcus_thranes_street,'Marcus Thranes vei',7,28,marcus_thranes_vei).
 streetstat(margretes_street,'Margretes gate',1,11,unknown).
 streetstat(marie_michelets_street,'Marie Michelets veg',9,17,kong_øysteins_veg).
-streetstat(marie_michelets_street,'Marie Michelets veg',1,10,persaunevegen).
+streetstat(marie_michelets_street,'Marie Michelets veg',1,10,persaunet_leir).
 streetstat(marie_sørdals_street,'Marie Sørdals veg',1,29,marie_sørdals_veg).
 streetstat(marie_wexelsens_street,'Marie Wexelsens veg',1,10,strindheim_hageby).
 streetstat(marienberg_street,'Marienbergveien',1,15,hammersborg).
 streetstat(marienlyst_street,'Marienlystvegen',1,4,thaulowbakken).
 streetstat(maristu_street,'Maristuveien',1,4,gudes_gate).
-streetstat(maristu_street,'Maristuveien',5,15,vollabakken).
+%streetstat(maristu_street,'Maristuveien',5,15,vollabakken).     %% RS-150104 Terminated. Or Summer/Winter discrepancy?
+streetstat(maristu_street,'Maristuveien',5,15,studentersamfundet).
 streetstat(marit_fladaas_street,'Marit Fladaas veg',1,3,heimdal_stasjon).
 streetstat(markaplassen,'Markaplassen',1,26,vikåsen_skole).
 streetstat(markaplassen,'Markaplassen',27,86,markaplassen).
@@ -1045,7 +1055,8 @@ streetstat(mår_street,'Mårvegen',1,40,kattem).
 streetstat(nardobakken,'Nardobakken',1,2,fiolsvingen).
 streetstat(nardoskrenten,'Nardoskrenten',1,27,fiolsvingen).
 streetstat(nardo_street,'Nardovegen',1,19,fiolsvingen).
-streetstat(nedre_alle,'Nedre allé',24,24,vollabakken).
+%streetstat(nedre_alle,'Nedre allé',24,24,vollabakken).     %% RS-150104 Terminated. Or Summer/Winter discrepancy?
+streetstat(nedre_alle,'Nedre allé',24,24,studentersamfundet).
 streetstat(nedre_alle,'Nedre allé',13,22,gudes_gate).
 streetstat(nedre_alle,'Nedre allé',1,12,jonsvannsveien).
 streetstat(nedre_bakklandet,'Nedre Bakklandet',1,85,bakkegata).
@@ -1071,7 +1082,8 @@ streetstat(nertrøa,'Nertrøa',1,61,lundåsen).
 streetstat(nerviks_street,'Nerviksvegen',1,15,presthus).
 streetstat(nerviks_street,'Nerviksvegen',16,39,askeladdvegen).
 streetstat(neufeldts_street,'Neufeldts gate',17,28,jonsvannsveien).
-streetstat(neufeldts_street,'Neufeldts gate',1,24,vollabakken).
+%streetstat(neufeldts_street,'Neufeldts gate',1,24,vollabakken).     %% RS-150104 Terminated. Or Summer/Winter discrepancy?
+streetstat(neufeldts_street,'Neufeldts gate',1,24,studentersamfundet).
 streetstat(nidareid,'Nidareid',1,6,skansen).
 streetstat(nidarholms_street,'Nidarholms gate',1,11,anders_buens_gate).
 streetstat(nidarøy_street,'Nidarøy gate',1,10,unknown).
@@ -1092,7 +1104,7 @@ streetstat(nordli_street,'Nordlivegen',1,20,charlottenlund_nedre).
 streetstat(nordlund_street,'Nordlundvegen',1,59,lundåsen).
 streetstat(nordmyr_street,'Nordmyrvegen',1,139,lundåsen). 
 streetstat(nordre_berg_street,'Nordre Berggate',1,4,bakkegata).
-streetstat(nordre_eberg_street,'Nordre Eberg gate',1,6,valentinlystvegen).
+streetstat(nordre_eberg_street,'Nordre Eberg gate',1,6,østre_berg).
 streetstat(nordre_hallset_street,'Nordre Hallset veg',1,105,munkvoll).
 streetstat(nordre_husebytun,'Nordre Husebytun',1,13,husebytunet).
 streetstat(nordre_jons_street,'Nordre Jonsgate',1,7,studentersamfundet).
@@ -1108,7 +1120,7 @@ streetstat(ny_street,'Nygata',1,30,bakkegata).
 streetstat(nygård_street,'Nygårdvegen',1,15,nygård).
 streetstat(nyheims_street,'Nyheimsvegen',13,26,konglevegen).
 streetstat(nyheims_street,'Nyheimsvegen',1,16,jakobslivegen_nedre).
-streetstat(nyheims_street,'Nyheimsvegen',55,70,idrettsplassen).
+streetstat(nyheims_street,'Nyheimsvegen',55,70,idrettsplassen_jakobsli).
 streetstat(nyheims_street,'Nyheimsvegen',21,40,charlottenlund_kirke).
 streetstat(nyheims_street,'Nyheimsvegen',31,62,presthusaunet).
 streetstat(nyplia,'Nyplia',16,32,nypan).
@@ -1122,7 +1134,7 @@ streetstat(odd_husbys_street,'Odd Husbys veg',45,56,ola_setroms_veg).
 streetstat(odd_husbys_street,'Odd Husbys veg',72,97,leirbrua_gård).
 streetstat(odd_husbys_street,'Odd Husbys veg',55,84,stavsetvegen).
 streetstat(odd_husbys_street,'Odd Husbys veg',1,44,dalgård).
-streetstat(odd_sørlis_street,'Odd Sørlis veg',1,31,idrettsplassen).
+streetstat(odd_sørlis_street,'Odd Sørlis veg',1,31,idrettsplassen_jakobsli).
 streetstat(odense_street,'Odenseveien',1,19,nyborg).
 streetstat(odense_street,'Odenseveien',2,33,byåsen_butikksenter).
 streetstat(odins_street,'Odins veg',1,12,nygård).
@@ -1189,7 +1201,7 @@ streetstat(orre_street,'Orrevegen',2,8,saupstadmyra).
 streetstat(orre_street,'Orrevegen',1,25,skyttervegen).
 streetstat(o_s_bragstads_plass,'O.S. Bragstads plass',1,6,gløshaugen_nord).
 
-streetstat(oscar_wistings_street,'Oscar Wistings vei',1,42,oscar_wistings_vei).
+streetstat(oscar_wistings_street,'Oscar Wistings vei',1,42,nyveibakken). %% RS-150104. oscar_wistings_vei Terminated June 2014.
 streetstat(oscar_wistings_street,'Oscar Wistings vei',44,62,åsveien_skole).
 
 streetstat(oskar_braatens_street,'Oskar Braatens veg',1,73,ola_setroms_veg).
@@ -1221,7 +1233,8 @@ streetstat(overviks_street,'Overviksvegen',1,8,olderdalen).
 streetstat(p_a_munchs_street,'P.A. Munchs gate',1,17,prof_brochs_gate).
 streetstat(parallellen,'Parallellen',1,15,halstein_gård).
 streetstat(parallellen,'Parallellen',12,47,paul_skolemesters_veg).
-streetstat(park_street,'Parkveien',1,12,vollabakken).
+%streetstat(park_street,'Parkveien',1,12,vollabakken).     %% RS-150104 Terminated. Or Summer/Winter discrepancy?
+streetstat(park_street,'Parkveien',1,12,studentersamfundet).
 streetstat(park_street,'Parkveien',5,28,jonsvannsveien).
 streetstat(paul_fjermstads_street,'Paul Fjermstads veg',29,34,kvilhaugen).
 streetstat(paul_fjermstads_street,'Paul Fjermstads veg',17,27,magnus_blindes_veg).
@@ -1236,12 +1249,12 @@ streetstat(peder_morsets_street,'Peder Morsets veg',1,32,peder_morsets_veg).
 streetstat(peder_myhres_street,'Peder Myhres veg',1,21,'').
 streetstat(peder_østlunds_street,'Peder Østlunds veg',1,5,'').
 streetstat(per_halvorsens_street,'Per Halvorsens vei',1,4,breidablikk_skole).
-streetstat(per_kvists_street,'Per Kvists veg',1,14,idrettsplassen).
+streetstat(per_kvists_street,'Per Kvists veg',1,14,idrettsplassen_jakobsli).
 streetstat(per_lykkes_street,'Per Lykkes veg',1,15,stabells_veg).
 streetstat(per_sivles_street,'Per Sivles veg',1,51,ugla).
 %%streetstat(persaun_street,'Persaunvegen',1,1,dalen_hageby). %% Default to this when asked about persaunvegen
 streetstat(persaun_street,'Persaunvegen',1,9,dalen_hageby).
-streetstat(persaun_street,'Persaunvegen',11,27,persaunevegen).
+streetstat(persaun_street,'Persaunvegen',11,27,persaunet_leir).
 streetstat(persaun_street,'Persaunvegen',6,57,persaunet_leir).
 streetstat(persaun_street,'Persaunvegen',52,61, gina_krogs_veg).
 streetstat(persaun_street,'Persaunvegen',60,63,tyholt).
@@ -1256,11 +1269,12 @@ streetstat(petersborg_street,'Petersborg gate',1,6,jonsvannsveien).
 streetstat(petter_lies_street,'Petter Lies vei',1,12,ringve_skole).
 streetstat(pianist_sandbergs_street,'Pianist Sandbergs vei',1,13,ringve_museum).
 streetstat(pilegrimsstien,'Pilegrimsstien',1,6,skavlans_veg).
-streetstat(pinebergsvingen,'Pinebergsvingen',1,12,persaunevegen).
+streetstat(pinebergsvingen,'Pinebergsvingen',1,12,persaunet_leir).
 streetstat(pineberg_street,'Pinebergvegen',1,24,dalen_hageby).
-streetstat(pineberg_street,'Pinebergvegen',9,52,persaunevegen).
-streetstat(pir_i,'Pir I',1,7,tollbua).
-streetstat(pir_ii,'Pir II',1,23,tollbua).
+streetstat(pineberg_street,'Pinebergvegen',9,52,persaunet_leir).
+streetstat(pir_i,'Pir I',1,7,brattøra).
+%streetstat(pir_ii,'Pir II',1,23,tollbua).      %% RS-150104. Terminated June 2014?
+streetstat(pir_ii,'Pir II',1,23,brattøra).
 streetstat(planet_street,'Planetvegen',1,50,risvollan_senter).
 streetstat(pluto_street,'Plutovegen',1,12,dalsaunevegen).
 streetstat(port_arthur,'Port Arthur',1,11,bakkegata).
@@ -1274,12 +1288,14 @@ streetstat(presthus_street,'Presthusvegen',1,5,ranheim_idrettsplass).
 streetstat(presthus_street,'Presthusvegen',47,84,jakobslivegen_øvre).
 streetstat(presthus_street,'Presthusvegen',2,46,presthus).
 streetstat(prestmo_street,'Prestmovegen',1,17,presthus).
-streetstat(prinsens_street,'Prinsens gate',1,67,prinsenkrysset).        %% RS-140102 Not quite 'hovedterminalen' !
+%streetstat(prinsens_street,'Prinsens gate',1,67,prinsenkrysset).        %% RS-140102 Not quite 'hovedterminalen' ?
+streetstat(prinsens_street,'Prinsens gate',1,67,hovedterminalen).        %% RS-150102 'hovedterminalen' or prinsens_gate_p1/p2 ?
 streetstat(prinsesse_street,'Prinsessevegen',1,6,askeladdvegen).
 streetstat(prof_brochs_street,'Prof Brochs gate',1,12,prof_brochs_gate).
 streetstat(prof_j_h_l_vogts_street,'Prof J.H.L. Vogts veg',1,7,tyholt).
 streetstat(prof_mørchs_street,'Prof Mørchs veg',1,10,tyholt).
-streetstat(prof_street,'Profveien',1,4,vollabakken).
+%streetstat(prof_street,'Profveien',1,4,vollabakken).     %% RS-150104 Terminated. Or Summer/Winter discrepancy?
+streetstat(prof_street,'Profveien',1,4,studentersamfundet).
 streetstat(prost_castbergs_street,'Prost Castbergs veg',1,12,prestegårdsjordet).
 streetstat(ragnhilds_street,'Ragnhilds gate',1,16,studentersamfundet).
 streetstat(ramsharts_street,'Ramsharts vei',1,9,fagerliveien).
@@ -1360,7 +1376,7 @@ streetstat(røllik_street,'Røllikvegen',1,42,fiolsvingen).
 streetstat(rønningsbakken,'Rønningsbakken',1,15,rønningsbakken).
 streetstat(rønningsbakken,'Rønningsbakken',16,36,dalen_hageby).
 streetstat(rønningsbakken,'Rønningsbakken',37,57,strindheim).
-streetstat(rønnings_street,'Rønningsvegen',9,22,persaunevegen).
+streetstat(rønnings_street,'Rønningsvegen',9,22,persaunet_leir).
 streetstat(rønnings_street,'Rønningsvegen',23,42,persaunet_leir).
 streetstat(rønnings_street,'Rønningsvegen',1,30,rønningsbakken).
 streetstat(rørosstien,'Rørosstien',1,11,ola_setroms_veg).
@@ -1378,8 +1394,8 @@ streetstat(sagberget,'Sagberget',1,4,klefstadhaugen).
 streetstat(sagplass_street,'Sagplassvegen',1,74,vikåsen_skole).
 streetstat(sag_street,'Sagvegen',1,18,haugnessvingen).
 streetstat(sandborgs_street,'Sandborgs veg',1,3,munkvoll_gård).
-%streetstat(sand_street,'Sandgata',30,48,hospitalskirka).        %% RS-140615 hospital(s?)kirka
-streetstat(sand_street,'Sandgata',30,48,sandgata).        %% RS-141021 TEMPORARY, because of road-work in Kongensgt.
+streetstat(sand_street,'Sandgata',30,48,hospitalskirka).        %% RS-140615 hospital(s?)kirka
+%streetstat(sand_street,'Sandgata',30,48,sandgata).        %% RS-141021 TEMPORARY, because of road-work in Kongensgt.
 streetstat(sand_street,'Sandgata',50,75,kalvskinnet).
 streetstat(sand_street,'Sandgata',1,29,hovedterminalen).
 streetstat(sandmo_street,'Sandmovegen',1,149,sandmoen).
@@ -1392,7 +1408,8 @@ streetstat(saupstadringen,'Saupstadringen',105,131,saupstadringen_109).
 streetstat(saupstadringen,'Saupstadringen',51,87,midteggen).
 streetstat(saxenborg_alle,'Saxenborg allé',1,3,rønningsbakken).
 streetstat(schirmers_street,'Schirmers gate',1,7,prinsen_kinosenter).
-streetstat(schives_street,'Schives gate',1,15,vollabakken).
+%streetstat(schives_street,'Schives gate',1,15,vollabakken).     %% RS-150104 Terminated. Or Summer/Winter discrepancy?
+streetstat(schives_street,'Schives gate',1,15,studentersamfundet).
 streetstat(schiøtz_street,'Schiøtz vei',1,23,schiøtz_vei).
 streetstat(schjoldagerveita,'Schjoldagerveita',1,4,hovedterminalen).
 streetstat(schmidts_street,'Schmidts gate',1,7,jonsvannsveien).
@@ -1407,7 +1424,7 @@ streetstat(selsbakk_øvre,'Selsbakk Øvre',1,44,selsbakkflata).
 streetstat(selsbakkflata,'Selsbakkflata',1,28,selsbakkflata).
 streetstat(selsbakkflata,'Selsbakkflata',13,42,fjøslia).
 streetstat(selsbakk_street,'Selsbakkvegen',1,10,munkvoll).
-streetstat(selsbakk_street,'Selsbakkvegen',11,26,søndre_halset).
+streetstat(selsbakk_street,'Selsbakkvegen',11,26,søndre_hallset).      %% RS-150104. Discrepancy Summer/Winter: søndre_halset
 streetstat(selsbakk_street,'Selsbakkvegen',7,94,migosenteret).
 streetstat(sem_sælands_street,'Sem Sælands vei',1,14,gløshaugen_syd).
 streetstat(serinelyst_street,'Serinelystvegen',1,42,nyborg).
@@ -1421,7 +1438,7 @@ streetstat(sigurd_einbus_street,'Sigurd Einbus veg',1,20,venusvegen).
 streetstat(sigurd_hoels_street,'Sigurd Hoels veg',1,3,dalgård).
 streetstat(sigurd_høidals_street,'Sigurd Høidals veg',1,6,olderdalen).
 streetstat(sigurd_jorsalfars_street,'Sigurd Jorsalfars veg',16,22,tyholttårnet).
-streetstat(sigurd_jorsalfars_street,'Sigurd Jorsalfars veg',19,25,valentinlystvegen).
+streetstat(sigurd_jorsalfars_street,'Sigurd Jorsalfars veg',19,25,østre_berg).
 streetstat(sigurd_jorsalfars_street,'Sigurd Jorsalfars veg',1,8,kvilhaugen).
 streetstat(sigurd_jorsalfars_street,'Sigurd Jorsalfars veg',37,68,teglverkskrysset).
 streetstat(sigurd_jorsalfars_street,'Sigurd Jorsalfars veg',24,58,magnus_berrføtts_veg).
@@ -1435,7 +1452,8 @@ streetstat(simon_leinums_street,'Simon Leinums veg',1,12,åsheim_skole).
 streetstat(simon_leinums_street,'Simon Leinums veg',29,45,skytterbanen).
 streetstat(simon_leinums_street,'Simon Leinums veg',11,28,klokkstein).
 streetstat(simonsens_street,'Simonsens veg',1,6,fagerliveien).
-streetstat(singsakerbakken,'Singsakerbakken',1,30,vollabakken).
+%streetstat(singsakerbakken,'Singsakerbakken',1,30,vollabakken).     %% RS-150104 Terminated. Or Summer/Winter discrepancy?
+streetstat(singsakerbakken,'Singsakerbakken',1,30,studentersamfundet).
 streetstat(sirius_street,'Siriusvegen',1,13,nygård).
 streetstat(sisik_street,'Sisikvegen',1,20,vestre_rosten).
 streetstat(sivert_dalens_street,'Sivert Dalens veg',1,29,nydalen).
@@ -1485,7 +1503,7 @@ streetstat(solborg_street,'Solborgvegen',1,6,prof_brochs_gate).
 streetstat(solems_street,'Solemsvegen',1,35,ola_setroms_veg).
 streetstat(solhøgd_street,'Solhøgdvegen',1,19,breidablikk).
 streetstat(solhøgd_street,'Solhøgdvegen',18,37,johan_falkbergets_vei).
-streetstat(solvangen,'Solvangen',133,179,søndre_halset).
+streetstat(solvangen,'Solvangen',133,179,søndre_hallset).      %% RS-150104. Discrepancy Summer/Winter: søndre_halset
 streetstat(solvangen,'Solvangen',2,67,migosenteret).
 streetstat(solvangen,'Solvangen',1,131,selsbakkflata).
 streetstat(solvoll_street,'Solvollvegen',1,27,bromstadsvingen).
@@ -1559,7 +1577,7 @@ streetstat(svalsbergstien,'Svalsbergstien',1,7,byåsen_butikksenter).
 streetstat(svartholtet,'Svartholtet',1,70,rognbudalen).
 streetstat(sveiser_street,'Sveiservegen',1,35,olderdalen).
 streetstat(sverdrups_street,'Sverdrups veg',1,39,hammersborg).
-streetstat(sverdrups_street,'Sverdrups veg',5,57,oscar_wistings_vei).
+streetstat(sverdrups_street,'Sverdrups veg',5,57,nyveibakken). %% RS-150104. oscar_wistings_vei Terminated June 2014.
 streetstat(sverre_støstads_street,'Sverre Støstads veg',19,31,marcus_thranes_vei).
 streetstat(sverre_støstads_street,'Sverre Støstads veg',1,18,c_j_hambros_vei).
 streetstat(sverre_svendsens_street,'Sverre Svendsens veg',1,40,olderdalen).
@@ -1602,7 +1620,7 @@ streetstat(tempe_street,'Tempevegen',1,25,valøyvegen).
 streetstat(tempe_street,'Tempevegen',2,45,bratsbergvegen).
 streetstat(terminalen,'Terminalen',1,14,terminalen).
 streetstat(tesli,'Tesli',4,4,terminalen).
-streetstat(tessems_street,'Tessems veg',1,9,persaunevegen).
+streetstat(tessems_street,'Tessems veg',1,9,persaunet_leir).
 streetstat(tessems_street,'Tessems veg',10,21,strindheim).
 streetstat(thaulowbakken,'Thaulowbakken',1,15,thaulowbakken).
 streetstat(theodor_petersens_street,'Theodor Petersens veg',1,26,lohove).
@@ -1612,7 +1630,7 @@ streetstat(thomas_von_westens_street,'Thomas Von Westens gate',1,28,rønningsbak
 streetstat(thonning_owesens_street,'Thonning Owesens gate',36,39,gildheim).
 streetstat(thonning_owesens_street,'Thonning Owesens gate',20,35,strindheim).
 streetstat(thonning_owesens_street,'Thonning Owesens gate',1,19,dalen_hageby).
-streetstat(thora_storms_street,'Thora Storms vei',1,12,thora_storms_vei).
+streetstat(thora_storms_street,'Thora Storms vei',1,12,tvetestien).
 streetstat(thorry_kiærs_street,'Thorry Kiærs veg',1,11,ranheim_kirke).
 streetstat(thorvald_erichsens_street,'Thorvald Erichsens vei',1,17,nyborg).
 streetstat(thrond_nergaards_street,'Thrond Nergaards veg',1,7,dalen_hageby).
@@ -1695,7 +1713,7 @@ streetstat(utleir_street,'Utleirvegen',16,31,tors_veg).
 streetstat(utleir_street,'Utleirvegen',1,17,nardokrysset).
 streetstat(utleir_street,'Utleirvegen',68,140,risvollan_senter).
 streetstat(utsikten_alle,'Utsikten allé',1,8,tvetestien).
-streetstat(valentinlyst_street,'Valentinlystvegen',1,13,valentinlystvegen).
+streetstat(valentinlyst_street,'Valentinlystvegen',1,13,østre_berg).
 streetstat(valgrind_street,'Valgrindvegen',1,13,valgrindvegen).
 %% streetstat(valkendorfs_street,'Valkendorfs gate',16,30,mauritz_hansens_gate).
 streetstat(valkyrje_street,'Valkyrjevegen',11,16,tors_veg).
@@ -1720,7 +1738,7 @@ streetstat(venus_street,'Venusvegen',19,34,risvollan_senter).
 streetstat(venus_street,'Venusvegen',1,26,dalsaunevegen).
 streetstat(verfts_street,'Verftsgata',1,10,bakkegata).
 streetstat(vestmark_street,'Vestmarkvegen',1,38,skavlans_veg).
-streetstat(vestre_hallsetvangen,'Vestre Hallsetvangen',1,5,søndre_halset).
+streetstat(vestre_hallsetvangen,'Vestre Hallsetvangen',1,5,søndre_hallset).      %% RS-150104. Discrepancy Summer/Winter: søndre_halset
 streetstat(vestre_husebytun,'Vestre Husebytun',1,35,husebytunet).
 streetstat(vestre_kanalkai,'Vestre kanalkai',19,24,ts).
 streetstat(vestre_moholttun,'Vestre Moholttun',1,27,moholt).
@@ -1741,7 +1759,8 @@ streetstat(vikelvfaret,'Vikelvfaret',1,6,ranheim_fabrikker).
 streetstat(viktor_baumanns_street,'Viktor Baumanns vei',40,42,framveien).
 streetstat(viktor_baumanns_street,'Viktor Baumanns vei',1,38,åsveien_skole).
 streetstat(vikåsen,'Vikåsen',1,65,vikåsen_skole).
-streetstat(vilhelm_krags_street,'Vilhelm Krags veg',1,10,olav_nygårds_veg).
+%streetstat(vilhelm_krags_street,'Vilhelm Krags veg',1,10,olav_nygårds_veg).
+streetstat(vilhelm_krags_street,'Vilhelm Krags veg',1,10,olav_nygards_veg).  %% RS-150104. a/å Discrepancies!
 streetstat(vilhelm_storms_street,'Vilhelm Storms gate',1,4,prinsen_kinosenter).
 streetstat(vinkelstien,'Vinkelstien',1,16,skavlans_veg).
 streetstat(vinter_street,'Vintervegen',1,4,peder_morsets_veg).
@@ -1785,7 +1804,7 @@ streetstat(østkoll_street,'Østkollvegen',1,11,breidablikkveien).
 streetstat(østmark_street,'Østmarkveien',1,36,østmarkveien).
 streetstat(østmo_street,'Østmovegen',1,19,presthus).
 streetstat(østre_berg,'Østre Berg',1,36,østre_berg).
-streetstat(østre_hallsetvangen,'Østre Hallsetvangen',1,8,søndre_halset).
+streetstat(østre_hallsetvangen,'Østre Hallsetvangen',1,8,søndre_hallset).      %% RS-150104. Discrepancy Summer/Winter: søndre_halset
 streetstat(østre_ila,'Østre Ila',1,2,skansen).
 streetstat(østre_moholttun,'Østre Moholttun',1,24,moholt).
 streetstat(østre_rosten,'Østre Rosten',4,26,rostengrenda).
@@ -1799,7 +1818,7 @@ streetstat(øvergjerdet,'Øvergjerdet',1,12,åsveien_skole).
 streetstat(øvertrøa,'Øvertrøa',1,54,lundåsen).
 streetstat(øvre_bakklandet,'Øvre Bakklandet',1,66,hovedterminalen).
 streetstat(øvre_bergsvingen,'Øvre Bergsvingen',1,9,harald_bothners_veg).
-streetstat(øvre_bergsvingen,'Øvre Bergsvingen',10,29,valentinlystvegen).
+streetstat(øvre_bergsvingen,'Øvre Bergsvingen',10,29,østre_berg).
 streetstat(øvre_ferstad_street,'Øvre Ferstadveg',1,20,arnt_smistads_veg).
 streetstat(øvre_flatås_street,'Øvre Flatåsveg',1,29,flatåsen_senter).
 streetstat(øvre_flatås_street,'Øvre Flatåsveg',65,97,furuhaugen).

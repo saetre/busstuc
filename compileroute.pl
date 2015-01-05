@@ -100,7 +100,7 @@ make_mod_file_list( Module, MF ) :-
     %        !,      %% Only create max 1 new regcut without total re-compilation.
     % Check if regcut exists and is newer than regdep and regpas (base files), % and create_regcut if not...
     %  compileroute:compile_route_set( Module ) :-
-    findOrCreateRegcut( Regdep, Regpas, Regcut )  ->  true  ;  create_regcut( Module ).
+    findOrCreateRegcut( Regdep, Regpas, Regcut )  ->  true  ;  create_regcut( Module ).  %% RS-150105. ->  true May not be necessary
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RS-150104
@@ -119,7 +119,7 @@ findOrCreateRegcut( RegdepFile, RegpasFile, RegcutFile ) :-
         file_property( AbsCutfile, modify_timestamp, TimeCut ),
 
         TimeCut > TimeDep, TimeCut > TimePas,
-        out( 'SKIP createCut for ' ),output( TimeCut ).
+        out( 'compileroute.pl~122: SKIP createCut for timestamp ' ),out( RegcutFile ),out( TimeCut ),out(' > '),output( TimeDep ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
