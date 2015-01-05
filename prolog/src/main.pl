@@ -46,7 +46,7 @@
 
 :- use_module( declare, [ (:=)/2, (=:)/2, remember/1, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
-:- use_module( 'utility/writeout', [ doubt/2, out/1, output/1, prettyprint/1, print_parse_tree/1, printdots/0, track/2 ] ).%% RS-140912
+:- use_module( 'utility/writeout', [ doubt/2, out/1, output/1, prettyprint/1, print_parse_tree/1, printdots/0, track/2, trackprog/2 ] ).%% RS-140912
 
 %Utility-functions %RS-141019 Moved to main.pl (To be accessable for the scripts.n)
 %set( Key, Value ).
@@ -76,7 +76,7 @@ batchfile_predicates( 'utility/utility', [ startbatch/0, starttimebatch/0, stopt
 :- use_module( 'utility/utility', [ append_atomlist/2, append_atoms/3, for/2, makestring/2, psl/2, purge/3, shell_copyfile/2, starttime/0, writelist/1 ] ).  % pront/1, taketime/0, for/2, remember/1, %% LOOPS! RS-141029 
 :- use_module( 'utility/library', [ reverse/2, shell/1 ] ).%% RS-131225
 :- use_module( 'utility/ptbwrite', [ drucke_baum/1 ] ). %% drucke_baum_list/1, , ptbwrite/1, shrink_tree/2, indentprint/2 
-:- use_module( 'utility/writeout', [ track/2, trackprog/2 ] ).
+%:- use_module( 'utility/writeout', [ track/2, trackprog/2 ] ). %% RS-150104 Move up or down to avoid warnings? 
  
 %% UNIT: EXTERNAL LIBRARIES
 %:- use_module( library( aggregate ), [ foral/2 ] ).   %% RS-141029  for-all/2 Does NOT work like utility:for/2

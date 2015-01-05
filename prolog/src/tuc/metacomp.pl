@@ -12,37 +12,33 @@
 
 %% SYSTEM TUC
 :-module( metacomp, [ compile_english/1,  compile_norsk/1,  dcg_module/1, gram_file/2,    gram_module/1,  gram_module/2,  %% RS-140921 % dict_file/2, makegram/1,  
-        morph_file/2, sentence/7, virtf/2, virtx/1 ] ).     %% RS-140920. segram and regram are "bloody hacks?" What is norsource? segram/0, regram/0, 
-%  genvirt/1, optiprod/1, %
+        morph_file/2, sentence/7, virtf/2, virtx/1 ] ).
 
-%(What about dict/lex-files?) %% RS-140920 Moved to tuc/lex.pl: dict_module/1, dict_module/2, morph_module/1,
+%% RS-140920.   What about dict/lex-files? Moved to tuc/lex.pl: dict_module/1, dict_module/2, morph_module/1,
+%% RS-131227 loop?!: language/1  -> Moved to main %:-use_module( '../utility/writeout', [ language/1 ] ). %% RS-140920
+%% RS-131227    UNIT: tuc/      dcg_module %% RS-141122
+%% RS-130329 Make sure (gram/lang) modules are available: 1: gram_n -> ( 2: metacomp ) -> 3: dcg_n   (The same for English). Moved after :- makegram.
 
-%% RS-140920 Keep it local? makegram/4,
-%% OLD: makegram/1, e.g. makegram(norsk). %% RS-131223 for utility.pl! for-loop? (During makegram) makegram/0,    makegram/1, segram/0,     regram/0,
+%%:- use_module( tucbuses:'../tucbuses', [  dagrun_file/2,  dcg_file/2, dcg_module/2,  dict_file/2, morph_file/2, gram_file/2, gram_module/2, style_check/1  ] ).
+%% What is norsource? E.g.: segram/0, regram/0, are "bloody hacks?" What about %  genvirt/1, optiprod/1, %
+%% OLD: makegram/1, e.g. makegram(norsk).
+
 %% RS-131225 Experiment, failed, removed: make_predname_argscount/2, write_protected_preds/1,
-
 %% ?-prolog_flag(unknown,_,fail). %% Don't crash on undefined predicates        %% RS-131227 Removed?
 
 %% RS-131227, UNIT: EXTERNAL LIBRARY
 :- use_module( library(varnumbers), [ numbervars/1 ] ). %% RS-140210.
-% UNIT: EXTERNAL  %:- use_module( library(lists3), [ remove_duplicates/2 ] ). %% RS-131223   
-% :- use_module( library(file_systems) ). %% RS-141122 Why?
+%:- use_module( library(lists3), [ remove_duplicates/2 ] ). %% RS-131223
+%:- use_module( library(file_systems), [ file_properties/3 ] ). %% RS-141122 Why? To check whether gram_n or gram_e have changed -> then recreate dcg_n or dcg_e!
 
 
 %% RS-131223   % UNIT: /     Get dynamic definition for value/2
 :- use_module( '../declare', [ remember/1, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-
 :- use_module( '../main', [ language/1 ] ). %% RS-140209    %?-compile('main.pl'). ( := )/2 
-
-%:- use_module( tucbuses:'../tucbuses', [  dagrun_file/2,  dcg_file/2, dcg_module/2,  dict_file/2, morph_file/2, gram_file/2, gram_module/2, style_check/1  ] ). %% RS-131227 loop?!: language/1,
-
-%% RS-131227    UNIT: tuc/      dcg_module %% RS-141122
-%% RS-130329 Make sure (gram/lang) modules are available: 1: gram_n -> ( 2: metacomp ) -> 3: dcg_n   (The same for English). Moved after :- makegram.
+:- use_module( '../makeauxtables', [ verify_files_exist/2 ] ).
 
 %% RS-131223   % UNIT: /utility/*.pl
 :- use_module( '../utility/utility', [ for/2, test/1 ] ). %, variant/2 ] ). %% test(X):- \+ ( \+ ( X)).  % :- meta_predicate test(0) . %% RS-140211
-%:-use_module( '../utility/writeout', [ language/1 ] ). %% RS-140920  %% RS-131227 Avoid loops?
-
 :- use_module( '../utility/datecalc', [ datetime/6 ] ). %% RS-140921 For the file headings
 
 
@@ -406,30 +402,29 @@ makegram( DAGFILE, DCGMODULE, DICTMODULE, GRAMMODULE, PATH ) :- % DICTFILE,
     %%retractall(predheads(_) ),
 
     told,       %% Close all current output streams
-    write('%    .....metacomp.pl~100: making file.....: '), write(DCGFILE),nl,
+    ( verify_files_exist( DCGFILE, GRAMMODULE ) ;   (
+            write('%    .....tuc/metacomp.pl~404: making file.....: '), write(DCGFILE),nl,
 
-    %% In other prologs than Sicstus: open is the same as  tell('dcg.pl'), plus UTF-8 encoding  %% RS-121121
-    open( DCGFILE, write, DcgStream, [encoding('UTF-8')] ),
-%   open('dcg.pl', write, DcgStream, [encoding('UTF-8')] ),
-    set_output(DcgStream),
-        writeheader,
-        writeheader( DAGFILE, DCGFILE, DCGMODULE, DICTMODULE, GRAMMODULE ),
-        for( ( GRAMMODULE: (X ---> Y) ), genprod(X,Y) ),       %% RS-140101 meta_predicate for/2
-        write('%%% optionals'), nl,
-
-%    open( 'virtuals.pl', write, VirtualStream, [encoding('UTF-8')] ),  set_output(VirtualStream),
-        %% RS-131228 Moved up to customize the virtuals.pl as either norsk or english!
-        for( metacomp:optiprod(MP), metacomp:genprod(optional(MP),(MP,!)) ), %% RS-140921 Should not be any optiprod (because it aborts before assert)?
-        prite((optional(_,[],X,X) -->[])), 
-        write('%%% virtuals'), nl,
-        for( metacomp:virtx(B),    metacomp:genvirt(B) ),
-    told,  % vs. close(VirtualStream), ?   %% RS-121121
-
-%     appendfiles('dcg.pl','virtuals.pl',DCGFILE),  %% RS-140921   appendfiles('virtuals.pl','dcg.pl',DCG), %%% <--- NO! %%SEQUENCE MATTERS! below...
-
-     compile( DCGMODULE:DCGFILE ),
-
-    style_check(+singleton). %% SWI only  
+            %% In other prologs than Sicstus: open is the same as  tell('dcg.pl'), plus UTF-8 encoding  %% RS-121121
+            open( DCGFILE, write, DcgStream, [encoding('UTF-8')] ),
+        %   open('dcg.pl', write, DcgStream, [encoding('UTF-8')] ),
+            set_output(DcgStream),
+                writeheader,
+                writeheader( DAGFILE, DCGFILE, DCGMODULE, DICTMODULE, GRAMMODULE ),
+                for( ( GRAMMODULE: (X ---> Y) ), genprod(X,Y) ),       %% RS-140101 meta_predicate for/2
+                write('%%% optionals'), nl,
+        
+        %    open( 'virtuals.pl', write, VirtualStream, [encoding('UTF-8')] ),  set_output(VirtualStream),
+                %% RS-131228 Moved up to customize the virtuals.pl as either norsk or english!
+                for( metacomp:optiprod(MP), metacomp:genprod(optional(MP),(MP,!)) ), %% RS-140921 Should not be any optiprod (because it aborts before assert)?
+                prite((optional(_,[],X,X) -->[])), 
+                write('%%% virtuals'), nl,
+                for( metacomp:virtx(B),    metacomp:genvirt(B) ),
+            told  % vs. close(VirtualStream), ?   %% RS-121121  appendfiles('dcg.pl','virtuals.pl',DCGFILE),
+                                                  %% OLD STUFF: RS-140921   appendfiles('virtuals.pl','dcg.pl',DCG), %%% <--- NO! %%SEQUENCE MATTERS! below...
+    ) ),  %% Only compile when MISSING or if gram_n is newer than dcg_n, OR gram_e NEWER THAN dcg_e
+    compile( DCGMODULE:DCGFILE ),       %% RS-150105. ALWAYS compile the DCG-files!
+    style_check(+singleton). %% SWI only
 
 %%%%%%%%%%%%%%%%%%%%%
 style_check(_).         %% Cheat for Sicstus Prolog (only used for SWI Prolog)
@@ -722,8 +717,7 @@ compile_norsk( PATH ) :-        %    makegram(norsk).
 %:- dcg_n:use_module( dcg_n, [ sentence/6 ]). % makegram/0, language/1 %  Common File for tucbus  (english) and  tucbuss ("norwegian"/norsk)
 
 sentence(DCG, A,B,C,D,E,F) :-
-    %dcg_module(DCG),  use_module( DCG, [ sentence/6 ] ),
-    DCG:sentence(A,B,C,D,E,F).
+        DCG:sentence(A,B,C,D,E,F). %dcg_module(DCG),  use_module( DCG, [ sentence/6 ] ),  %% RS-150105. Does this take much extra time?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % metacomp:makegram -> library:for -> metacomp:genprod -> ??

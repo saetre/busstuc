@@ -74,7 +74,7 @@ generic_place(høyskolesenteret). %% HIST?
 generic_place(ica). 
 
 %% generic_place(idrettsanlegg). %% Hutaheiti idrettsanlegg -> noinfoabout idrettsanlegg
-%% generic_place(idrettsbygg).   %% NB idrettsplassen jakonsli station %% TA-100828
+%% generic_place(idrettsbygg).   %% NB idrettsplassen jakobsli station %% TA-100828
 
 generic_place(jordbruksskole). 
 generic_place(kafe).  
