@@ -82,7 +82,7 @@
 :-use_module( '../utility/writeout', [
     bcp/1,      bcpbc/1,        bwr/1,  bwr2/2, bwrbc/1, bwrstreet/1,   bwt/1,  
     colon/0,    comma/0,        cwc/2,  dot/0,  doubt/2, getphrase0/2,  languagenr/1, nopay/0,
-    out/1,      outcap/1,       output/1,  pay1/0,     period/0,       period0/0,      space/0,
+    out/1,      outcap/1,       output/1,  pay1/0,     period/0,       period0/0,      space/0, % startmark/0, 
     writedate/1, writefields/1,  writename/1, writesimplelist/1 ] ). %% RS-141105 Moved to main: language/1,
 %% Moved back to main: language/1. Where?: roundwrite/1
 

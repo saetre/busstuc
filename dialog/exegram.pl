@@ -15,6 +15,7 @@
 
 %% UNIT / AND /utiltity/
 %:- ensure_loaded( user:'../declare' ).       %% RS-111212  traceprog/2, trackprog/2
+:- use_module( '../declare', [ trackprog/2 ] ).  %% RS-150111     %% RS-111212  traceprog/2, trackprog/2
 %trackprog(X, Y) :- user:trackprog(X, Y).
 
 :- use_module( checkitem2, [ checkitem/3, sysout_item/1 ] ).       %% RS-140210
@@ -27,7 +28,7 @@
 
 %% UNIT: /utility/
 :- use_module( '../utility/writeout', [ out/1, output/1 ] ).   %% Common Dialog Grammar for bus and tele
-:- use_module( '../utility/writeout', [ trackprog/2 ] ).%% RS-141105
+%:- use_module( '../utility/writeout', [ trackprog/2 ] ).%% RS-141105
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

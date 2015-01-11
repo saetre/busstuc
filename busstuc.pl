@@ -36,8 +36,9 @@
 %:- use_module( 'tuc/metacomp.pl', [ makegram/1 ] ). %% RS-141024
 
 
+%% RS-140210 :- load_files(busroute, [load_type(source),compilation_mode(compile)])  Slow compilation -> Fast runtime?!
 %% RS-150104 Busroute is already compiled from  tucbuss -> monobus -> makeauxtables -> busroute? 'busroute.pl', Compiles database db/tables/*
-%:- use_module( busroute, [] ). %% RS-140210 :- load_files(busroute, [load_type(source),compilation_mode(compile)])  Slow compilation -> Fast runtime?!
+:- use_module( busroute, [] ).
 %?- [ 'db/discrepancies.pl' ].  %% Must be updated before winter %% TA -> RS-120805 Se e-post korrespondansen til Tore
 
 %:- use_module( 'utility/utility.pl', [  ] ).     %%RS-141015    Make sure all the  :-meta_predicates  are declared

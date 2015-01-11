@@ -88,7 +88,7 @@ not X :- \+ X.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %:- ensure_loaded( '../declare' ). %% RS-111213 ,  value/2, traceprog/2, trackprog/2
-:- use_module( '../declare', [ (:=)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../declare', [ (:=)/2, trackprog/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
 :- ensure_loaded('../db/discrepancies.pl' ). %% RS-131230 alias_station2/3, etc.
 
@@ -101,7 +101,7 @@ not X :- \+ X.
         %% datetime/6, getdaynew/1, timenow/1,
 :- use_module( '../utility/library', [ delete/3, reverse/2 ] ). %% RS-131225  For app/buslog, telelog, etc? remove_duplicates/2, 
 :- use_module( '../sicstus4compatibility', [ remove_duplicates1/2 ] ).         %% RS-141207
-:- use_module( '../utility/writeout', [ output/1, trackprog/2 ] ).  %% RS-140912  out/1, 
+:- use_module( '../utility/writeout', [ output/1 ] ).  %% RS-140912  out/1, 
 %:- use_module( '../utility/writeout', [ trackprog/2 ] ).%% RS-141105
 
 %%% RS-140101, UNIT: /
@@ -1302,9 +1302,9 @@ departure(Bus,Place,Day,DepSet) :- % Bussavgangene for en buss ved en stasjon
               DepSet ).
 
 %% Double departures Hastus   Friday 2800 + Staurday 0400
-not_extreme_hastus_time( X ) :-
-    X = depnode(_2820,_,_20,_,T2800,_Bus_108_3049,_,_,_),     %    T2800 > 1200. %% TA-?
-    T2800 > 2459.       %% RS-141115  Remove everything except real nightbusses (or trams)...
+%not_extreme_hastus_time( X ) :-
+%    X = depnode(_2820,_,_20,_,T2800,_Bus_108_3049,_,_,_),     %    T2800 > 1200. %% TA-?
+%    T2800 > 2459.       %% RS-141115  Remove everything except real nightbusses (or trams)...
 
 %approvenightbustoplace( Place, Y ) :-
 %   \+ avoidnightbustoplace( Place, Y ).

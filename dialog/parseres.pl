@@ -21,17 +21,17 @@
 
 %:- meta_predicate  listall( + ) .
 %:- meta_predicate  writeanswer(0).
-%:- meta_predicate  trackprog(+,0) .
 
 %:- use_module( library(varnumbers), [ numbervars/1 ] ). %% RS-140210.
 
 %% RS-141026    UNIT: /
+%:- ensure_loaded( user:'../declare' ).       %% RS-111212 traceprog/2, trackprog/2 %:- meta_predicate  trackprog(+,0) .
+:- use_module( '../declare', [ trackprog/2 ] ).       %% RS-150111 trackprog/2 %:- meta_predicate  trackprog(+,0) .
 %:- use_module( '../main.pl', [ value/2 ] ). %MISERY?!
 %% RS-140208. %% UNIT: / and utility/ [ testmember/2, user:value/2  ]).   %% RS-131117 includes declare.pl ?
-%:- ensure_loaded( user:'../declare' ).       %% RS-111212 traceprog/2, trackprog/2
 
 :- use_module( '../utility/utility', [  append_atoms/3, listlength/2, set_ops/3 ] ). % RS-140929 Made local: listall/1, LOOP? set_ops/3 append_atomlist/2, for/2,  
-:- use_module( '../utility/writeout', [ trackprog/2, writevaluelist/2 ] ).%% RS-140912 %% RS-141105 busanswer_sat/3, doubt/2, out/1, output/1, prettyprint/1, 
+:- use_module( '../utility/writeout', [ writevaluelist/2 ] ).%% RS-140912 %% RS-141105 busanswer_sat/3, doubt/2, out/1, output/1, prettyprint/1, trackprog/2,
 
 %:-use_module( library(aggregate), [ foral/2 ] ). %% KISS %% RS-140914   %% RS-141029  for-all Does NOT work like utility:for/2
 

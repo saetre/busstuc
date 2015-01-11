@@ -12,13 +12,17 @@
 :- module( ptbwrite, [ alle_args/2, drucke_baum/1, drucke_baum_list/1, ptbwrite/1, shrink_tree/2, tab/1 ] ). %% RS-140914
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate  ana(?,?,?,-).
+:- meta_predicate  berechne_pos(?,-,?,?,?,?).
 
 %% RS-131227    UNIT: / and /utility/
 %:- ensure_loaded( 'declare' ).    %% :-op( 714,xfx, := ).  etc... , track/2, trackprog/2
+:-use_module( '../declare', [ track/2 ] ).      %% RS-150111. Trying to sort out compile-order.
+
 %:- use_module( main, [ track/2 ] ). %% RS-140928 Moved (back) to declare.pl hei/0,   run/0 %track(X, Y) :- user:track(X, Y) .
 
 %:- use_module( 'utility/utility', [ output/1, prettyprint/1 ] ).  %% Module util
-:- use_module( writeout, [ output/1, track/2 ] ).  %% Module util  , prettyprint/1
+:- use_module( writeout, [ output/1 ] ).  %% Module util  , prettyprint/1   , track/2
 
 
 /*

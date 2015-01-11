@@ -16,7 +16,6 @@
 :- meta_predicate  normsplit( ?, ?, -).
 :- meta_predicate  skolem( ?, ?, ?, ?, - ).
 %:- meta_predicate  test(0) . %% RS-140211 RS-140915 0 instead of : ?
-%:- meta_predicate  track(+,0) .
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
 % for(P,Q) :- P,Q,  false;true. %% RS-140929 What about variable binding? Compare to library(aggregate):forall/2. CAREFUL: there is a "homemade" forall in BusTUC!
@@ -27,17 +26,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %local: test/1 % RS-131117 includes declare.pl  %%,  unsquare/2 RS-131227
 
+%% RS-141026    UNIT: /
+%:- ensure_loaded( '../declare' ).%, [ := /2, for/2 (from library.pl) etc. ] ). %% RS-140208 %:- meta_predicate  track(+,0) .
+:- use_module( '../declare', [ (:=)/2, (=:)/2, track/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../main.pl', [ difact/2, fact0/1 ] ). %MISERY? track/2
+
 %% RS-131227    UNIT: /utility/
-:- use_module( '../utility/utility', [ error/2, do_count/1, flatlist/2, flatround/2, for/2, freshcopy/2, ident_member/2, match/2, occ/2, subcase/2, subsumes/2 ] ). %% RS-141029  LOOPS! for/2, test/1
 :- use_module( '../utility/library', [ reverse/2 ] ).  %%    %% RS-131225
-:- use_module( '../utility/writeout', [ output/1, prettyprint/1, track/2 ] ).  %% Module util  , prettyprint/1, output/1, 
+:- use_module( '../utility/utility', [ error/2, do_count/1, flatlist/2, flatround/2, for/2, freshcopy/2, ident_member/2, match/2, occ/2, subcase/2, subsumes/2 ] ). %% RS-141029  LOOPS! for/2, test/1
+:- use_module( '../utility/writeout', [ output/1, prettyprint/1 ] ).  %% Module util  , prettyprint/1, output/1, 
 
 :- use_module( library(varnumbers), [ numbervars/1 ] ). %% RS-140210.
-
-%% RS-141026    UNIT: /
-%:- ensure_loaded( '../declare' ).%, [ := /2, for/2 (from library.pl) etc. ] ). %% RS-140208
-:- use_module( '../declare', [ (:=)/2, (=:)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-:- use_module( '../main.pl', [ difact/2, fact0/1 ] ). %MISERY? track/2
 
 % UNIT: tuc/
 :- use_module( slash, [ def/1 ] ).     %% RS-131228

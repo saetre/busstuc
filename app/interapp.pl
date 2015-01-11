@@ -57,12 +57,12 @@
 
 %%% RS-131225, UNIT: / and utility/
 %:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
-:- use_module( '../declare', [ ( := )/2, forget/1, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../declare', [ ( := )/2, forget/1, set/2, trackprog/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
 %%% RS-131225, UNIT: /utility/
 :- use_module( '../utility/utility', [ append_atoms/3, flatround/2, newconst/1, fnuttify2/2, for/2, once1/1, sequence_member/2 ] ). %forget/1,  
         % Made local:  occ/2, %% RS-140928 %% RS-140412 output/1  %% RS-131231, False Warning, SPIDER-bug. output/1 IS used !! when called from... bustrans?
-:- use_module( '../utility/writeout', [ output/1, printdots/0, trackprog/2, waves/0, writeanswer/1, writeprog/1 ] ). % traceanswer/1,  
+:- use_module( '../utility/writeout', [ output/1, printdots/0, waves/0, writeanswer/1, writeprog/1 ] ). % traceanswer/1,  
 
 %%% RS-140921, EXTERNAL LIBRARIES
 %:- use_module( library( varnumbers ), [ numbervars/1 ] ). %% RS-140210.

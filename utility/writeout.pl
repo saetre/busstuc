@@ -17,7 +17,7 @@
     punkt/0,  question/0,
     space0/0,   startmark/0,      %% From BusAnsHP
     out/1, output/1, prettyprint/1, roundwrite/1, prettypr/2, print_parse_tree/1, printdots/0,
-    sequence_write/1, statistics/1, teleanswer_sat/2, traceanswer/1, traceprint/2, track/2, trackprog/2,
+    sequence_write/1, statistics/1, teleanswer_sat/2, traceanswer/1, traceprint/2,  %  track/2, trackprog/2, 
     waves/0, writeanswer/1, writedate/1, writefields/1, writename/1, writepred/1, writeprog/1,       writesimplelist/1,
     writetelebusteranswer_rep/1, writetelebusteranswer_saf/2, writetelebusteranswer_sqt/3, writetelebusteranswer4/4, writetelebusteranswerfields/1,
     writevaluelist/2, xwriteanswer/2
@@ -31,9 +31,9 @@
 %:-meta_predicate  output( + ) .   %% RS-100101 ?  %% NEW PREDICATE
 %:-meta_predicate  output( 0 ) .   %% RS-140928 ?  %% NOT META PREDICATE: write/1
 :- meta_predicate  teleanswer_sat( +, 0 ) .
-:- meta_predicate  track( +, 0 ) .
+%:- meta_predicate  track( +, 0 ) .     %% Moved to declare!  %% RS-150111
 :- meta_predicate  traceanswer( 0 ) .
-:- meta_predicate  trackprog( +, 0 ) .
+%:- meta_predicate  trackprog( +, 0 ) . %% Moved to declare!  %% RS-150111
 :- meta_predicate  writetelebusteranswer1( 0 ) .
 :- meta_predicate  writetelebusteranswer_rep( 0 ) .
 :- meta_predicate  writetelebusteranswer_saf( ?, 0 ) .
@@ -41,7 +41,7 @@
 :- meta_predicate  xwriteanswer( ?, 0 ) .
 
 %:- ensure_loaded( user:'../declare' ).  %% RS-140102 (:=)/2, user:value/2
-:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../declare', [ track/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :- use_module( library(varnumbers), [ numbervars/1 ] ). %% RS-140210.
 
@@ -1733,22 +1733,6 @@ traceprint(N,P):- %% same as trace
     write(P),nl
 ;
     true.
-
-%///
-track( N, P ) :- 
-    value( trace, M ),  number(M), M >= N, 
-    !,
-    call(P)   %% TA-110130
-;
-    true.
-
-%///
-trackprog( N, P ) :-
-    value( traceprog, M ), number(M), M >= N,
-    !,
-    ( nl, call(P) )    %% TA-110130
-        ;
-    true. %% Finally, succeed anyway
 
 %///
 

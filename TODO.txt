@@ -3,6 +3,10 @@ FIX THIS!!!
 Når går bussen  fra sentrum til ugla lørdag 02.00.
 
 
+#vm-6114: (Must ALWAYS be executable, from /var/www/regtop/*.php
+	sh: 1: /home/busstuc/busstuc/compile/extract_cut.sh: Permission denied
+
+
 SMS:
 
 from prinsen to krokstien. (prinsen kino eller prinsenkrysset? Reklameinntekter?)

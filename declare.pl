@@ -8,7 +8,7 @@
 %% USAGE:
 %:- use_module( declare, [ (:=)/2, (=:)/2, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
-:- module( declare, [ (:=)/2, ( =: )/2, forget/1, remember/1, set/2, value/2 ] ).
+:- module( declare, [ (:=)/2, ( =: )/2, forget/1, remember/1, set/2, track/2, trackprog/2, value/2 ] ).
 
 :- meta_predicate  remember(0) .        %% RS-140928 Remember the facts IN THE MODULE THAT CALLS REMEMBER! Use  :  or  0
 %:-use_module( 'utility/writeout', [ out/1, output/1 ] ).       %% Avoid ANY Loops from declare import X, X use_module( declare ). !!!  RS-141108
@@ -35,6 +35,22 @@ forget(X) :- retractall(X).
 remember( Module:F ) :- Module:F, ! ; assert( Module:F ). %, out( 'remember' ),output(Module:F).        %% Add F it is does not already exist.
 % remember( Setting ) :- out( 'utility:remember/1 => Something went wrong with:'), output( Setting ), output( call( Setting ) ).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate  track( +, 0 ) .
+track( N, P ) :- 
+    value( trace, M ),  number(M), M >= N, 
+    !,
+    call(P)   %% TA-110130
+;
+    true.
+%///
+:- meta_predicate  trackprog( +, 0 ) . %% Moved to declare!  %% RS-150111
+trackprog( N, P ) :-
+    value( traceprog, M ), number(M), M >= N,
+    !,
+    ( nl, call(P) )    %% TA-110130
+        ;
+    true. %% Finally, succeed anyway
+%///
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
