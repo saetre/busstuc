@@ -7,7 +7,8 @@
 
 :- module( makeframe2, [ rule/2 ]). %% - maketeleframe  %% RS-130624 Experiment from 2012?
 
-:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
+%:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
+:- use_module( '../declare', [] ). %% RS-111213 General (semantic) Operators
 
 %:-ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators
 :- use_module( '../app/pragma', [] ). %% RS-140207 Pragmatic (rule) Operators

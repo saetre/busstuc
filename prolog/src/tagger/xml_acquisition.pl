@@ -34,6 +34,12 @@
  *
  */
 
+:- module( xml_acquisition, [ xml_to_document/3,  pp_string/1, nmtokens/3, xml_declaration_attributes_valid/1 ] ).
+
+:- meta_predicate  uri1(?,?,?,-). % uri1/4, 
+:- meta_predicate  nmtoken_chars_tail(?,?,-).
+:- meta_predicate  xml_string1(?,?,?,-).
+
 %% UNIT: /tagger/
 
 %% UNIT: /utility/.     %% USAGE:
@@ -488,6 +494,7 @@ uri( URI ) -->
 uri1( Quote, [] ) -->
 	quote( Quote ),
 	!.
+
 uri1( Quote, [Char|Chars] ) -->
 	[Char],
 	uri1( Quote, Chars ).
