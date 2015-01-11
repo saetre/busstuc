@@ -80,6 +80,7 @@ consult_route_set_list( [] ).
 
 compile_route_set( Module ) :-
      make_mod_file_list( Module, MF ),
+     nonvar( MF ),      %% RS-150111. Only for real, given, ModuleFiles.
      consult( Module:MF ).
 
 

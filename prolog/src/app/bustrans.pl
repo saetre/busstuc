@@ -7154,7 +7154,7 @@ id  flag(nightbusflag),
     not atday(_),
     add  atday(Saturday),
     add atdate2(DaySeqNo,ED)
-ip  timenow(D), D > 0430, %% NOT moday 27 between 2400 - 0059
+ip  timenow(D), D > 0430, %% NOT monday 27 between 2400 - 0059
     todaysdate(DATE),
     add_days(DATE,1,ED),
     extraallowed_night(ED,Saturday),
@@ -7303,23 +7303,24 @@ ip  timenow2(0,T), T > 0430,
     finddate(N,DATE),
     disallowed_night(DATE) ).
 
+%% RS-141115. OLD: Tram-Clock is extended until 27:59, the SAME day!
 
-
-%%%% when nightbus is referred by day, it means the following midnight
+%%%% when nightbus is referred by Friday or Saturday, it means the following day (after midnight).
+%%%  But Sunday still means "very early Sunday Morning"
 setexdagnattdespair  rule bustrans:(    %% nightbus query after 0430 means next day
-is  not srel/T/day/_/_ when { T \== today},      %% day not mentioned except today
+is  not srel/TO/day/_/_ when { TO \== today},      %% day not mentioned, except as today
     not srel/_/date/_/_,      %% no explicit date mentioned
-    not srel/nil/midnight/_/_, %% natt til
+    not srel/nil/midnight/_/_, %% ikke "natt til"
     _ isa Friday , {dmeq(mtwtfss,Friday)}
 id  flag(nightbusflag),
     not atdate2(_,_),
     add  atday(Saturday),
     add atdate2(DaySeqNo,DATE)
-ip  timenow2(0,T), T > 0430,
+ip  % timenow2(0,Time), Time > 0430, %% This messes up "after midnight nightbus on xDay queries".
     today(Tuesday),
-    daysucc(Friday,Saturday),
-%   number_of_days_between(Tuesday,Saturday,N),        %% RS-141115. Clock is extended until 27:59, the SAME day!
-    number_of_days_between(Tuesday,Friday,N),   
+%                            daysucc(Friday,Saturday),    %% RS-150103
+    ( Friday \== sunday  ->  daysucc(Friday,Saturday)  ;  Friday=Saturday ),    %% RS-150103. Sunday can mean Sunday (morning)!
+    number_of_days_between( Tuesday, Saturday, N ), %% Or Tuesday to Friday
     finddate(N,DATE),
     \+ extraallowed_night(DATE,_),
     \+ disallowed_night(DATE),
@@ -7328,21 +7329,22 @@ ip  timenow2(0,T), T > 0430,
 
 
 nightbusmeanstomorrow  rule bustrans:(    %% nightbus query after 0430 means next day
-is  not srel/T/day/_/_  when { T \== today},      %% day not mentioned except today
+is  not srel/Tod/day/_/_  when { Tod \== today},      %% day not mentioned, except as "today"
     not srel/_/date/_/_,       %% no explicit date mentioned
     not srel/nil/midnight/_/_ %% natt til
 id  flag(nightbusflag),
     not atdate2(_,_),
-    add  atday(Saturday),
-%    add  atday(Friday),        %% RS-141115. Clock is extended until 27:59, the SAME day!
-    add atdate2(DaySeqNo,DATE)
+%    add  atday(Friday),        %% RS-141115. Tram Clock is extended until 27:59, the SAME day!
+    add  atday(Saturday),       %% RS-141115. But not for ALL 1xx-nightbuses. Fixed the Tram!
+    add atdate2( DaySeqNo, DATE )
 ip  timenow2(0,T), T > 0430,
     today(Friday),
     daysucc(Friday,Saturday),  
-    finddate(0,DATE),           %% RS-141115. Clock is extended until 27:59, the SAME day!
+%    finddate(0,DATE),           %% RS-141115. Tram-Clock is extended until 27:59, the SAME day!
+   finddate(1,DATE),           %% RS-141115. Bus-Clock is NOT extended until 27:59, the SAME day!
     \+ extraallowed_night(DATE,_),
     \+ disallowed_night(DATE),
-    dayModSeqNo(DATE,DaySeqNo) ).
+    dayModSeqNo( DATE, DaySeqNo ) ).
 
 
 
@@ -8016,7 +8018,7 @@ ip  timenow(G), G < 60, %% < 01:00 at night
 
 %%%% before morrow1
 yesterdaydate rule bustrans:( % between 0000 and 0059, date is set to yesterday
-     %   -> spurious if  no deps, but rule bustrans:( must apply early
+     %   -> spurious if  no deps, but rule must apply early
 is  _ isa bus or _ isa departure,
     not present _ isa morrow,
     not present _ isa morning,   %% TA-110724
@@ -13589,17 +13591,18 @@ ip	 setopt(last(1),Opts,Opts1) ).
 yesterdayevening  rule bustrans:(  %% 00:00 -- 00:30 , probably last evenings deps
 is  _ isa bus or _ isa departure,  %% only relevant questions %% HAIRY  %% day is already fixed to yestarday
     not present _ isa morning %% TA-110724
-id   flag(yesterday),
+id  flag(yesterday),  %% RS-150103. Completely remove this flag and all associated rules now?
     remove flag(yesterday),
-    addfront message(assumeyesterdepartures), %% TA-110816
-        replace passevent(A,B,C,FROM,Day,D) %% NB [first(1),from],
-        with    (keepafter(NEWLATETIME,A,A1), passevent(A1,B,C,FROM,Day,D)) %%
+    addfront message(assumeyesterdepartures)  %% TA-110816  %% RS-150104
+%        replace passevent(A,B,C,FROM,Day,D) %% NB [first(1),from],
+%       with    (keepafter(NEWLATETIME,A,A1), passevent(A1,B,C,FROM,Day,D))     %% RS-150103. Did I change this now?
+%        with    (keepafter(T30,A,A1), passevent(A1,B,C,FROM,Day,D))             %% RS-150103. Did I change this now?
 	 %%  only late departures yesterday
-ip	testmember(from,FROM),
-        set(nightbusflag,true),         %% RS-141115 Does this work?
-        timenow(T30),
-        addtotime(2400,T30,NEWLATETIME) ).
-
+ip	[] % testmember(from,FROM) %,
+%        set(nightbusflag,true),         %% RS-141115 Does this work?
+%        timenow(T30) %,
+%       addtotime(2400,T30,NEWLATETIME)           %% RS-150103. Did I change this now?
+).
 
 withlastbus rule bustrans:( % last ARRDEP
 is  present AD isa ARRDEP,adj/_/last/AD/_,
@@ -13864,8 +13867,8 @@ id  not flag(exit),
 
     atdate2(SeqNo,_Date_),
 
-    add (connections(Depset1,Depset2,Bus1,Station1,Station2,Day,SeqNo,OptsUnite,_,_)),
-                                     %??% Bus2 ???
+    add ( connections(Depset1,Depset2,Bus1,Station1,Station2,Day,SeqNo,OptsUnite,_,_) ),
+                                      %??% Bus2 ???
     add flag(exit)
 ip	 mixopt(Opts2,Opts1,OptsUnite),
     place_station(Place2,Station2),
