@@ -1316,7 +1316,7 @@ departure(Bus,Place,Day,DepSet) :- % Bussavgangene for en buss ved en stasjon
 %    route( Bus_57_nn, _, B57 ),
 %    busdat:spurious_return(B57,Place), %% morten_erichsen_forbid(B57,Place),
 %    !.
-
+%
 
 setdepMOD( TTP, Place, Kay, DepSet ):-
         set_of( depnode( Time0, Time9, DelArr, DelDep, BegTime1, Rid1, Bus1, SEQNO, Station1 ),
@@ -2717,15 +2717,15 @@ passeqMOD(TTP,RID,STATNO,Station,Seq,DelArr,DelDep):-   %% Pass with seq. no.
 %    addtotime(BegTime,DelDep,DepTime).
 %
 
-passtimeMOD(TTP,Rid,STATNO,Station,Seq,ArrTime,DepTime,DaySeqNo):-
-
-    xdepartureMOD(TTP,Rid,Trace,BegTime,Kay),
-
-    mod_day_in_set(TTP,DaySeqNo,Kay),
-    xpasses5(TTP,Rid, Trace,STATNO,Station,Seq,DelArr,DelDep),
-    \+ nostation(Station), %% Ad Hoc for abandoned stations
-    addtotime(BegTime,DelArr,ArrTime),
-    addtotime(BegTime,DelDep,DepTime).
+%passtimeMOD(TTP,Rid,STATNO,Station,Seq,ArrTime,DepTime,DaySeqNo):-
+%
+%    xdepartureMOD(TTP,Rid,Trace,BegTime,Kay),
+%
+%    mod_day_in_set(TTP,DaySeqNo,Kay),
+%    xpasses5(TTP,Rid, Trace,STATNO,Station,Seq,DelArr,DelDep),
+%    \+ nostation(Station), %% Ad Hoc for abandoned stations
+%    addtotime(BegTime,DelArr,ArrTime),
+%    addtotime(BegTime,DelDep,DepTime).
 
 
 %% Day has already been is checked %% TA-110325
