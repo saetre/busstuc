@@ -163,7 +163,8 @@ dep_module( interapp, [ newfree/1 ] ).
 
 %UNIT: /db/
 dep_module( '../db/places', [ corr/2, foreign/1, isat/2, nostation/1, place_resolve/2, placestat/2, underspecified_place/1 ] ). %% RS-141102  %uses /db/placestat/2 !! corr/2, foreign/1, isat/2, nostation/1, 
-dep_module( '../db/regbusall', [ nightbus/1 ] ). %% RS-111213 General (semantic) Operators Moved (back) to busdat
+%:- use_module( '../db/regbusall' ). % , [ nightbus/1, regbus/1 ]  %% HEAVY DB! %% RS-120803 RS-131225 regbus/1 MOVED to app/buslog.pl
+dep_module( '../db/regbusall', [ nightbus/1, regbus/1 ] ). %% RS-111213 General (semantic) Operators Moved (back) to busdat
 dep_module( '../db/teledat2', [ has_att_val/4, have_att_val/4 ] ). %% RS-111213 General (semantic) Operators Moved (back) to busdat
 dep_module( '../db/timedat', [  aroundmargin/1, maxtraveltime/1, morning_break/1, named_date/2 ] ). %% RS-111213 General (semantic) Operators Moved (back) to busdat
 

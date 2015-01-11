@@ -2440,7 +2440,7 @@ cmpl(rit,adm,adm_rit). %
 cmpl(rit,hovedport,st_olavs_hospital). 
 cmpl(rit,hovedporten,st_olavs_hospital). 
 cmpl(romols,lia,romolslia). 
-cmpl(romolslia,skole,skårgangen).  %% romulslia is correct
+cmpl(romolslia,skole,skårgangen).  %% romulslia is the correct one, but not working?
 cmpl(romolslia,øvre,romolslia_øvre). 
 cmpl(romuls,lia,romolslia). 
 cmpl(romulslia,skole,skårgangen).  %% tamburhaugen 1
@@ -5629,10 +5629,10 @@ place_resolve(studentbyen,prestegårdsjordet).  %% lerkendal studentby
 place_resolve(studentbyen,vestlia).  %% steinan studentby
 place_resolve(studentbyen,voll_studentby). 
 
-place_resolve(tanem, tanem_bru). %% RS-150111 Langt unna
-place_resolve(tanem, tanem_gård). %% RS-150111
-place_resolve(tanem, tanemskrysset). %% RS-150111
-place_resolve(tanem, tanemsmoen). %% RS-150111
+%place_resolve(tanem, tanem_bru). %% RS-150111 Langt unna. Using isat/2 instead.
+%place_resolve(tanem, tanem_gård). %% RS-150111
+%place_resolve(tanem, tanemskrysset). %% RS-150111
+%place_resolve(tanem, tanemsmoen). %% RS-150111
 
 /*  = godsterminalen_nsb
 place_resolve(terminalen,terminalen). 
@@ -5848,6 +5848,7 @@ placestat(fosenferja,pirbadet).
 placestat(fosenterminalen,pirbadet). 
 placestat(fossesenteret,fossegrenda). %% Leirfossvegen 45
 %%cmpl(fossesenteret,[],fossesenteret). %% RS-120805      How? Necessary? 
+placestat(fossestuvegen,nedre_leirfoss).   %% RS-150111
 
 placestat(gartnerhagen,gartnerhallen). 
 placestat(gilde,gartnerhallen). 
@@ -6223,7 +6224,7 @@ placestat(sykehusbrua,tvetestien).
 placestat(sykepleierhøgskolen,st_olavs_hospital). 
 placestat(sykepleierhøyskolen,st_olavs_hospital). 
 placestat(sykepleierskolen,st_olavs_hospital). 
-%placestat(tanem, tanemsmoen). %% RS-150111     %% Try isat/2 instead?
+%placestat(tanem, tanemsmoen). %% RS-150111     %% RS-150111. Using isat/2 instead.
 placestat(tavern,trøndelag_folkemuseum). 
 placestat(tavernaen,trøndelag_folkemuseum). 
 placestat(teateret,prinsen_kinosenter).       %% 
@@ -8176,8 +8177,9 @@ synplace(flåtasveg,øvre_flatåsveg).
 synplace(fløshaugen,gløshaugen). 
 synplace(folketmuseet,folkemuseum). 
 synplace(fossestua,fossestu_street).  %%
-synplace(fossestua,fossestuv). 
-synplace(fossestuen,fossestuv). 
+synplace(fossestua,fossestuv).
+synplace(fossestuen,fossestuv).
+synplace(fosseutvegen,fossestuvegen).   %% RS-150111
 synplace(fragvoll,dragvoll). 
 synplace(fremstad,fjermstads). 
 synplace(fremstads,fjermstads). 
