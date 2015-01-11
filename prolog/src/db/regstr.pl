@@ -306,6 +306,7 @@ streetstat(dybdahls_street,'Dybdahls veg',30,32,bugges_veg).
 streetstat(dybdahls_street,'Dybdahls veg',34,38,østre_berg).
 streetstat(dybdahls_street,'Dybdahls veg',1,57,berg_studentby).
 streetstat(dyrborg_street,'Dyrborgveien',1,35,ila).
+streetstat(dyre_halses_street,'Dyre Halses gate',1,35,strandvegen).
 streetstat(e_c_dahls_street,'E.C. Dahls gate',1,10,torget).
 streetstat(edgar_b_schieldrops_street,'Edgar B. Schieldrops veg',1,82,vestlia_endeholdeplass).   %% RS-150104. vestlia is Terminated 2014?
 streetstat(edgar_b_schieldrops_street,'Edgar B. Schieldrops veg',81,178,vestlia_endeholdeplass).

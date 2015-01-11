@@ -11,10 +11,16 @@ Hva er din versjon ?
 
 Hva heter du?
 
+er du jente.
+
+hvor mange busser er det i trondheim.
+
 nth natt til søndag.
 
 hva koster nattbussen.
-hva koster Barn/Honnør/Sykkel/Hund/Militær.
+hva koster Barn / Honnør / Sykkel / Hund / Militær.
+dyre halses gate.
+Når går bussen fra Strandveien 15:30 til Saupstadsenteret 16:00?
 
 Klæbu sentrum  til Tanem.
 
@@ -81,6 +87,8 @@ neste 3 busser  fra glos til sentrum etter 2004.
 hvor stopper flybussen.
 
 jernbanetorget til værnes.
+
+Når går bussen fra Melhus skysstasjon til værnes flystasjon.
 
 når må jeg ta bussen fra torget for å være på gammel-lina 1245?
 

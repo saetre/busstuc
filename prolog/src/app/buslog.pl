@@ -97,8 +97,8 @@ not X :- \+ X.
         testmember/2, set_difference/3, set_of/3, set_ops/3, starttime/0, taketime/0, timeout/3, unbound/1 ] ). %test/1, testmember/2 %  ]). %% Made local: set_eliminate/4, set_filter/4, 
 %% locale meta-predicates: once1/1, test/1,  %% RS-131117 includes declare.pl
 
-:- use_module( '../utility/datecalc', [ add_days/3, days_between/3, addtotime/3, dayno/2, difftime/3, finddate/2, subfromtime/3, timenow/1, timenow2/2, today/1 ] ).
-        %% datetime/6, getdaynew/1, timenow/1,
+:- use_module( '../utility/datecalc', [ add_days/3, days_between/3, addtotime/3, dayno/2, difftime/3, subfromtime/3, timenow/1, timenow2/2, today/1 ] ).
+        %% datetime/6, finddate/2, getdaynew/1, timenow/1,
 :- use_module( '../utility/library', [ delete/3, reverse/2 ] ). %% RS-131225  For app/buslog, telelog, etc? remove_duplicates/2, 
 :- use_module( '../sicstus4compatibility', [ remove_duplicates1/2 ] ).         %% RS-141207
 :- use_module( '../utility/writeout', [ output/1 ] ).  %% RS-140912  out/1, 
