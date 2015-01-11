@@ -60,7 +60,7 @@
 %COMPILE THE ENTIRE BUSROUTE
 %:- compile( busroute:'compileroute.pl' ).   %% Bootstrapping for compilation, faster than "ensure loaded"?!
 :- use_module( 'compileroute.pl', [ consultbase/1 ] ). %% Interface modules
-:- consultbase(tt).   %% Bootstrapping for compilation         %% RS-150104  Moved to busroute?
+:- consultbase(tt).   %% Bootstrapping for compilation         %% RS-150104  Moved to busroute? Done twice?
 
 :- use_module( 'interfaceroute', [ domain_module/2, thisdate_period_module/3, reset_period/0 ] ).
 

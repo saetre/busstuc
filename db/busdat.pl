@@ -385,7 +385,7 @@ xsynplace(X,Y):-
 
 
 xsynplace(X,Y):-
-    \+ value(tmnflag,true),        %% RS-131230 From declare.pl
+    \+ value(tmnflag,true), %% RS-131230 From declare.pl
     !,
     domain_module(tt,TMN),  %% RS-131230 From topreg.pl
     TMN \== nil, 

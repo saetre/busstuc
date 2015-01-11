@@ -26,6 +26,3 @@ route_period(   tt, r1611_140517, date(2014,05,17),   date(2014,05,17) ).	%% 17m
 %%route_period( tt, r1601_130930, date(2013,09,30),   date(2014,07,22) ).       %% Høst2013oktober
 route_period(   tt, r1611_141201, date(2014,12,01),   date(2015,01,11) ).	%% 2015 (første uken)
 route_period(   tt, r1611_150112, date(2015,01,12),   date(2015,06,21) ).	%% 2015
-route_period(   tt, r1611_150112, date(2015,01,12),   date(2015,06,21) ).	%% Nye Ruter 2015
-route_period(   tt, r1611_150112, date(2015,01,12),   date(2015,06,21) ).	%% Ny Vinter 2015
-route_period(   tt, r1611_150112, date(2015,01,12),   date(2015,06,21) ).	%% Vinter 2015
