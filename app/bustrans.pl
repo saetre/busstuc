@@ -127,29 +127,12 @@ module_dependencies :-
         use_module( Module, PredList ),
         fail ; true .   %% Get all use_modules, then succeed...
 
-%UNIT: /utility/  and  /
-dep_module( '../utility/utility', [ bound/1, implies/2,  set_of/3, testmember/2, unbound/1 ] ). %% RS-131225 set(X,Y) from declare.pl
-dep_module( '../utility/datecalc', [ add_days/3, addtotime/3, before_date1/2, days_between/3, daysucc/2, difftime/3,
-                                     finddate/2, findfirstcomingdate/2, isday/1, number_of_days_between/3,
-                                     sub_days/3, subfromtime/3, timenow/1, timenow2/2, today/1, todaysdate/1, valid_date/1, weekday/2,
-                                     xweekday/2 ] ).
-%UNIT: /
-dep_module( '../interfaceroute', [ decide_period/2 ] ). %% RS-141015 
-%dep_module( '../main', [ set/2 ] ). %% RS-141015        Set variable-values,  in the module !
-
 %UNIT: /app/
-%%% RS-131225, UNIT: app/
-%dep_module( busanshp, [ evening_time/2, i_or_a_bus/3, mixopt/3, setopt/3, setopts/3, warningtime/2 ]).     %% RS-140102 get all? tracevalue/1 is unique for each rule module! (traceans, traceprog, ...)
-%                         empty_sms_message/1, make_total_google/2, pay/0, printmessage/1, startmark/0 ] ). %%Extra?
 :-use_module( busanshp ).
 %dep_module( buslog, [ airbus_module/1, before/2, bus/1, bus_place_station/3, busorfree/1, composite_stat/3, dayModSeqNo/2, departure/4, message/1,
 %                      neverarrives/2, neverdeparts/2, neverpasses/2, not/1, notaclock/1, passesstations/4, place_station/2, samefplace/2, station/1,
 %                      stationsat/3, street_station/2 ] ). 
 :-use_module( buslog ).
-dep_module( dmeq, [ dmeq/2 ] ). %% RS-140102, Really Used, in several  pragma.pl->interapp->bustrans rules 
-dep_module( interapp, [ newfree/1 ] ).
-%dep_module( pragma, [  ]). %% RS-140102-141002 These modules are highly connected: interapp, pragma, bustrans!
-%FIXED META-PREDICATES!?!
 
 %UNIT: /db/
 %dep_module( '../db/busdat', [ airbusstation/1, bus_dependent_station/3, central_fromstation/1, corresponds/2, date_day_map/2,
@@ -158,6 +141,27 @@ dep_module( interapp, [ newfree/1 ] ).
 %                              railway_station/1, thetramno/1, tostationonly/1, vehicletype/2, xforeign/1 ] ).
 :-use_module( '../db/busdat' ).
 
+%UNIT: /
+%UNIT: /utility/  and  /
+dep_module( '../utility/utility', [ bound/1, implies/2,  set_of/3, testmember/2, unbound/1 ] ). %% RS-131225 set(X,Y) from declare.pl
+dep_module( '../utility/datecalc', [ add_days/3, addtotime/3, before_date1/2, days_between/3, daysucc/2, difftime/3,
+                                     finddate/2, findfirstcomingdate/2, isday/1, number_of_days_between/3,
+                                     sub_days/3, subfromtime/3, timenow/1, timenow2/2, today/1, todaysdate/1, valid_date/1, weekday/2,
+                                     xweekday/2 ] ).
+
+dep_module( '../interfaceroute', [ decide_period/2 ] ). %% RS-141015 
+%dep_module( '../main', [ set/2 ] ). %% RS-141015        Set variable-values,  in the module !
+
+%UNIT: /app/
+%%% RS-131225, UNIT: app/
+%dep_module( busanshp, [ evening_time/2, i_or_a_bus/3, mixopt/3, setopt/3, setopts/3, warningtime/2 ]).     %% RS-140102 get all? tracevalue/1 is unique for each rule module! (traceans, traceprog, ...)
+%                         empty_sms_message/1, make_total_google/2, pay/0, printmessage/1, startmark/0 ] ). %%Extra?
+dep_module( dmeq, [ dmeq/2 ] ). %% RS-140102, Really Used, in several  pragma.pl->interapp->bustrans rules 
+dep_module( interapp, [ newfree/1 ] ).
+%dep_module( pragma, [  ]). %% RS-140102-141002 These modules are highly connected: interapp, pragma, bustrans!
+%FIXED META-PREDICATES!?!
+
+%UNIT: /db/
 dep_module( '../db/places', [ corr/2, foreign/1, isat/2, nostation/1, place_resolve/2, placestat/2, underspecified_place/1 ] ). %% RS-141102  %uses /db/placestat/2 !! corr/2, foreign/1, isat/2, nostation/1, 
 dep_module( '../db/regbusall', [ nightbus/1 ] ). %% RS-111213 General (semantic) Operators Moved (back) to busdat
 dep_module( '../db/teledat2', [ has_att_val/4, have_att_val/4 ] ). %% RS-111213 General (semantic) Operators Moved (back) to busdat

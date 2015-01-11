@@ -4,16 +4,20 @@
 %% CREATED TA-100221
 %% REVISED TA-100223
 
-
 %% Extract  GPS coordinte from table into a predicate
 
 % assume all files are separated correctly with a Tab (ASCII 9)
 
+:- module( extracoord, [ blank/1, cleaniso/2, convchar/2, extracoord/0, firstlist/4, mini/3, remblanks/2, remchar/2, reverse/2,
+                         skipch/1, special/2, val/1, val2/1, val3/1, writefact/1 ] ).
+
 %:- use_module( '../sicstus4compatibility', [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
+:- meta_predicate  scanfield(?,?,-).
 
-:-volatile val/1, val2/1, val3/1.
-:-dynamic val/1, val2/1, val3/1.
+
+:- volatile val/1, val2/1, val3/1.
+:- dynamic val/1, val2/1, val3/1.
 
 
 

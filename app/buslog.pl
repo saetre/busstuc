@@ -1271,7 +1271,8 @@ departure( Bus, Place, Day, DepSet ) :- % Alle natt-bussavganger ved en stasjon
 % Hastus means YESTERDAY's Nightbuses?!
 %   set_filter(X,not_extreme_hastus_time(X),DepSet2,DepSet).   %% RS-141109  Nightbusses are no longer duplicated? (Friday 26:35 === Saturday 02:35)
 
-%   set_filter(Y, approvenightbustoplace(Place,Y)  ,DepSet2,DepSet).
+%   set_filter(X,night_route(X),DepSet1,DepSet2),
+%%   set_filter(X,not_extreme_hastus_time(X),DepSet2,DepSet3),   %% RS-141109  Nightbusses are no longer duplicated (Friday 26:35 === Saturday 02:35) RS-150102
 %   set_filter(Y, approvenightbustoplace(Place,Y)  ,DepSet2,DepSet).
 
 
@@ -1302,28 +1303,25 @@ departure(Bus,Place,Day,DepSet) :- % Bussavgangene for en buss ved en stasjon
               DepSet ).
 
 %% Double departures Hastus   Friday 2800 + Staurday 0400
-%not_extreme_hastus_time( X ) :-
-%    X = depnode(_2820,_,_20,_,T2800,_Bus_108_3049,_,_,_),     %    T2800 > 1200. %% TA-?
-%    T2800 > 2459.       %% RS-141115  Remove everything except real nightbusses (or trams)...
+not_extreme_hastus_time( X ) :-
+    X = depnode(_2820,_,_20,_,T2800,_Bus_108_3049,_,_,_),     %    T2800 > 1200. %% TA-?
+    T2800 > 2459.       %% RS-141115  Remove everything except real nightbusses (or trams)...
 
-%approvenightbustoplace( Place, Y ) :-
-%   \+ avoidnightbustoplace( Place, Y ).
-%
-%
-%avoidnightbustoplace( Place, Y ) :-
-%    Y= depnode( _, _, _, _, _, Bus_57_nn, _, _),
-%    route( Bus_57_nn, _, B57 ),
-%    busdat:spurious_return( B57, Place ), %% morten_erichsen_forbid( B57, Place ),
-%    !.
+approvenightbustoplace(Place,Y) :-
+   \+ avoidnightbustoplace(Place,Y).
 
 
-setdepMOD( TTP, Place, Kay, DepSet ) :-
+avoidnightbustoplace(Place,Y) :-
+    Y= depnode(_,_,_,_,_,Bus_57_nn,__,_),
+    route( Bus_57_nn, _, B57 ),
+    busdat:spurious_return(B57,Place), %% morten_erichsen_forbid(B57,Place),
+    !.
+
+
+setdepMOD( TTP, Place, Kay, DepSet ):-
         set_of( depnode( Time0, Time9, DelArr, DelDep, BegTime1, Rid1, Bus1, SEQNO, Station1 ),
-
-                depMOD(TTP,Place,Kay,Time0,Time9,DelArr,DelDep,BegTime1,Rid1,Bus1,SEQNO,Station1),
-                
-                DepSet ).
-
+              depMOD(TTP,Place,Kay,Time0,Time9,DelArr,DelDep,BegTime1,Rid1,Bus1,SEQNO,Station1),
+              DepSet).
 
 day_route( depnode( _Time0,_Time9,_DelArr,_DelDep,BegTime,Rid1,NB,_SEQNO,_Station1) ) :-
     ridtobusnr( Rid1, NB ),
@@ -1340,6 +1338,10 @@ night_route( depnode( Time0, Time9, DelArr, DelDep, BegTime, Rid1, NB, X1, X2) )
 %    ridtobusnr( Rid1, NB ),
 %    nightbus(NB).
     \+ day_route( depnode( Time0, Time9, DelArr, DelDep, BegTime, Rid1, NB, X1, X2) ).
+
+%night_route(depnode(_Time0,_Time9,_DelArr,_DelDep,_BegTime,Rid1,NB,_,_)):-
+%    ridtobusnr(Rid1,NB),
+%    nightbus(NB).
 
 
 airbus_route( depnode(_Time0,_Time9,_DelArr,_DelDep,_BegTime,Rid1,NB,_,_) ) :-
@@ -1930,6 +1932,7 @@ lastquicktransfer(FromStat,ToStat,X,FT1,LT2,DaySeqNo,Dep01,Mid01):-
 
 
 
+
 % Finner alle rids som passerer endestasjonen, AFTER NOW if SMS/notime
 
 coupled( StartDeps, EndDeps, _, _, _, Day, DaySeqNo, Opts, Deps, Mid01 ) :-
@@ -1939,7 +1942,7 @@ coupled( StartDeps, EndDeps, _, _, _, Day, DaySeqNo, Opts, Deps, Mid01 ) :-
    \+ member(nextaftertime(_),Opts),
 
    sameday(Day),   %% RS-150103. Doesn't work for NightBus (next week)! NOW>0430,
-   finddate( 0, Today ), value( actualdate, Today ), % Really same day!
+%   finddate( 0, Today ), value( actualdate, Today ), % Really same day!
 
    timenow2(0,NOW),     % \+ value( nightbusflag, true ),   \+ member(nightbus, Opts ),
 
@@ -2083,8 +2086,8 @@ sameday(_Day) :-
      value(samedayflag,true),
      ! . %% TA-091229  Don't backtrack
 sameday(Day) :-
-     today(Day),
-     \+ value(samedayflag,false),
+     (today(Day),
+     \+ value(samedayflag,false)),
      !.
 
 
@@ -2181,7 +2184,7 @@ coupled2(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
 coupled2(BothStartDeps,_,_,Day, _DaySeqNo,_Opts,BothStartDeps1,MidDeps) :-
     BothStartDeps \== [],
     sameday(Day),
-    value( actualdate, Today ), finddate( 0, Today ), % Really same day!
+%    value( actualdate, Today ), finddate( 0, Today ), % Really same day!
 %%%%%%%%%%%%%%%%%%%%%%% TA-110706    \+ testmember(lastcorr,Opts),
     progtrace(4,coup6),
     timenow2(0,NOW),
@@ -2197,8 +2200,8 @@ coupled2(BothStartDeps,_,_,Day,_DaySeqNo,_Opts,BothStartDeps,MidDeps) :-
     BothStartDeps \== [],
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  %% TA-110705
-    value( actualdate, Today ),
-    \+ ( sameday(Day), finddate( 0, Today ) ),  % NOT Really same day! %% time might give opportunity to take next day
+%    value( actualdate, Today ),
+    \+ ( sameday(Day) ),%, finddate( 0, Today ) ),  % NOT Really same day! %% time might give opportunity to take next day
     !,
     progtrace(4,coup7),
     MidDeps=[].
@@ -2713,6 +2716,17 @@ passeqMOD(TTP,RID,STATNO,Station,Seq,DelArr,DelDep):-   %% Pass with seq. no.
 %    addtotime(BegTime,DelArr,ArrTime),
 %    addtotime(BegTime,DelDep,DepTime).
 %
+
+passtimeMOD(TTP,Rid,STATNO,Station,Seq,ArrTime,DepTime,DaySeqNo):-
+
+    xdepartureMOD(TTP,Rid,Trace,BegTime,Kay),
+
+    mod_day_in_set(TTP,DaySeqNo,Kay),
+    xpasses5(TTP,Rid, Trace,STATNO,Station,Seq,DelArr,DelDep),
+    \+ nostation(Station), %% Ad Hoc for abandoned stations
+    addtotime(BegTime,DelArr,ArrTime),
+    addtotime(BegTime,DelDep,DepTime).
+
 
 %% Day has already been is checked %% TA-110325
 
