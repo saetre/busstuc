@@ -1729,18 +1729,18 @@ unconnectedtxt(_M1,N1):- maxl(MAX), N1 < MAX, \+ txt(N1,w(_,_),_).
 
 %%      erlends-street  means just   elendse is a street PREFIX 
 
-prepare_class(CName,Officialname,Class):-
+prepare_class(CName,Officialname,Class) :-
     moshe_prepare(CName,AName),
     moshe_class(AName,Officialname,Class).   
 
 
-moshe_prepare(X-street,XYstreet):-!,
+moshe_prepare(X-street,XYstreet) :- ! ,
      append_atoms(X,'_street',XYstreet).  %% street   strandvegen = strand_street 
 
-moshe_prepare(X-streetstat,XYstreet):-!,
+moshe_prepare(X-streetstat,XYstreet) :- ! ,
      append_atoms(X,'_street',XYstreet).  %% station   strandvegen = strand_street 
 
-moshe_prepare(V-nil,W):-!,
+moshe_prepare(V-nil,W) :- ! ,
     (sameloc(V,W);      %% TA-071030
      V=W).
 
@@ -1749,7 +1749,7 @@ moshe_prepare(V,V).
 
 
 
-moshe_class(W,W,Stat):-
+moshe_class(W,W,Stat) :-
     classify(W,Stat),
     \+ (Stat=station,unwanted_station(W)). 
 
@@ -1762,9 +1762,9 @@ moshe_class(Strand_street,Strandveien,station):-
 */
 
 
-moshe_class(W,W,0):- once1(street_part_name(W)). 
+moshe_class(W,W,0) :- once1(street_part_name(W)). 
 
-moshe_class(W,W,0):- once1(part_name(W)). 
+moshe_class(W,W,0) :- once1(part_name(W)). 
 
 moshe_class(W,W1,0):-  %% lerkendal -> name(lerkendal,0) .. stadion
     sameloc(W,W1),
@@ -1775,9 +1775,9 @@ moshe_class(W,W1,0):-  %% lerkendal -> name(lerkendal,0) .. stadion
 
 %% Non recursive
 
-classify(W,C):-fact(W isa C).  
+classify(W,C) :- fact(W isa C).
 
-classify(W,place):- generic_place(W). 
+classify(W,place) :- generic_place(W).
 
 % % % % % % % %
 

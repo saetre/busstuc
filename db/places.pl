@@ -27,8 +27,8 @@
                     foreign/1,          % ( PLACE ), e.g. aalesund, orkanger(?).   %%% FOREIGN (to Trondheim) places
                     isat/2,             % ( STATION, PLACE )    
                     nostation/1,        % ( PLACE )
-                    place_resolve/2,    % ( PLACE, STATION ).   %% RS-141122 If multiple stations there...
-                    placestat/2,        % ( PLACE, STATION )    %% RS-141122 If only one station there...
+                    place_resolve/2,    % ( PLACE, STATION ).   %% RS-141122 If multiple STATIONs at/for/around PLACE...
+                    placestat/2,        % ( PLACE, STATION )    %% RS-141122 If only one STATION at/for/around PLACE...
                     sameplace/2,        % ( PLACE, PLACE )
                     short_specname/2,   % ( NAME, STRING )     %% RS-131225 For concise SMS-messages
                     specname/2,         % ( NAME, STRING )
@@ -4966,7 +4966,7 @@ foreign(tana).
 foreign(tananger). 
 %% foreign(tanberg).  
 foreign(tandberg).  %%
-foreign(tanem).  %% ( Klæbukomm. ) 
+%foreign(tanem).  %% ( Klæbukomm. ) 
 foreign(tangen). %% TA-110818
 foreign(tangenåsen).
 foreign(tangvall). 
@@ -5488,6 +5488,8 @@ isat(ringve_museum,ringve).
 isat(ringve_skole,ringve). 
 isat(gyldenløves_gate,rosenborg). %% AtB
 
+isat(romolslia, romolslia). %% RS-150111. Trøbbel? Both station and neighborhood.
+isat(romolslia_øvre, romolslia). %% RS-150111. Trøbbel? HACK!! (Switched station and neighborhood!)
 
 isat(sluppen,sluppen).  %% postterminalen på sluppen
 isat(solbakken_bru,solbakken).  
@@ -5503,6 +5505,15 @@ isat(søndre_gate_23,søndregate).
 isat(søndre_gate_23,royal_garden). 
 %% isat(søndre_hoem,hoem). %% not AtB
 
+% ISAT   (STATION, PLACE)
+%STATION is (one, but NOT preferred, among several) stations that belong to the neighbourhood of PLACE
+%% ISAT    ( Station , Neighbourhood )
+
+isat(tanem_bru, tanem). %% RS-150111 Langt unna
+isat(tanem_gård, tanem). %% RS-150111
+isat(tanemskrysset, tanem). %% RS-150111
+isat(tanemsmoen, tanem). %% RS-150111
+              
 isat(tempe_kirke,tempe).  %%NB
 isat(tempevegen_11,tempe). %% AtB
 isat(tonstadkrysset,tonstadkrysset).  %%4
@@ -5602,6 +5613,7 @@ place_resolve(prestegården,prestegårsjordet).  %%gårdj
 place_resolve(rutebilstasjonen,hovedterminalen). 
 place_resolve(rutebilstasjonen,leuthenhaven). 
 place_resolve(rutebilstasjonen,ts). %% AtB. 
+
 place_resolve(solbakken,solbakken_bru). 
 place_resolve(solbakken,solbakken_skole).  %%solbakken->solbakken_bruaftersummer06,
 
@@ -5616,6 +5628,11 @@ place_resolve(studentbyen,moholt_studentby).
 place_resolve(studentbyen,prestegårdsjordet).  %% lerkendal studentby
 place_resolve(studentbyen,vestlia).  %% steinan studentby
 place_resolve(studentbyen,voll_studentby). 
+
+place_resolve(tanem, tanem_bru). %% RS-150111 Langt unna
+place_resolve(tanem, tanem_gård). %% RS-150111
+place_resolve(tanem, tanemskrysset). %% RS-150111
+place_resolve(tanem, tanemsmoen). %% RS-150111
 
 /*  = godsterminalen_nsb
 place_resolve(terminalen,terminalen). 
@@ -6206,6 +6223,7 @@ placestat(sykehusbrua,tvetestien).
 placestat(sykepleierhøgskolen,st_olavs_hospital). 
 placestat(sykepleierhøyskolen,st_olavs_hospital). 
 placestat(sykepleierskolen,st_olavs_hospital). 
+%placestat(tanem, tanemsmoen). %% RS-150111     %% Try isat/2 instead?
 placestat(tavern,trøndelag_folkemuseum). 
 placestat(tavernaen,trøndelag_folkemuseum). 
 placestat(teateret,prinsen_kinosenter).       %% 
@@ -6809,7 +6827,7 @@ sameplace(ringvemuseum,ringve_museum).  %% RS-120805 Sorting
 sameplace(risvollansenter,risvollan_senter). 
 sameplace(risvollansenteret,risvollan_senter). 
 
-sameplace(romolia,romolslia_øvre). 
+%sameplace(romolslia,romolslia_øvre). %% RS-150111. Move to isat?
 sameplace(romulslia,romolslia_øvre).  %% romulslia street, prefer station
 
 sameplace(ronningbakken,rønningsbakken). 
@@ -9622,9 +9640,10 @@ synplace(tambesjelvesgate,einar_tambarskjelves_gate).
 
 synplace(tanbergsjedesgate,einar_tambarskjelves_gate). 
 
-synplace(taøh,tøh). %% TA-110411   %% tÃ¸h 
+synplace(taøh,tøh). %% TA-110411   %% tÃ¸h
 
 synplace(tanemskrysset,tanemskrysset_1). 
+synplace(tanemskrysset,tanemskrysset_2). %% RS-150111
 synplace(teamkontoret,servicekontoret). 
 synplace(technoport,trondheim_spektrum). 
 

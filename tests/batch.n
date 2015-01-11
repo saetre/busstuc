@@ -14,6 +14,9 @@ Hva heter du?
 nth natt til søndag.
 
 hva koster nattbussen.
+hva koster Barn/Honnør/Sykkel/Hund/Militær.
+
+Klæbu sentrum  til Tanem.
 
 Når går bussen  fra p1 til høgreina.
 

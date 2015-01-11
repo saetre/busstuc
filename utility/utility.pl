@@ -193,8 +193,8 @@ number_of(X,Y,N):-
     set_of(X,Y,Z),
     length(Z,N).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-once1(P):-P,!. %% same as once, but version independent
-               %% try once, otherwise FAIL
+once1(P) :- P, ! . %% same as once, but version independent
+                   %% try once, otherwise FAIL
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Sequence preserving setof, ( first occurrence stays first)
 set_ops(X,Y,Z):-
