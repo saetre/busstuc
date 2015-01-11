@@ -101,7 +101,8 @@ make_mod_file_list( Module, MF ) :-
     %        !,      %% Only create max 1 new regcut without total re-compilation.
     % Check if regcut exists and is newer than regdep and regpas (base files), % and create_regcut if not...
     %  compileroute:compile_route_set( Module ) :-
-    findOrCreateRegcut( Regdep, Regpas, Regcut )  ->  true  ;  create_regcut( Module ).  %% RS-150105. ->  true May not be necessary
+    ( findOrCreateRegcut( Regdep, Regpas, Regcut )  ->  true  ;  create_regcut( Module ) ) % , output( ' Now is the time to recompile regcut!' )
+    .  %% RS-150105. ->  true May not be necessary
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RS-150104
@@ -137,9 +138,11 @@ consult_periodset( TT ) :-
 
 consultbase(TT) :- %% TA-110301
 
+        %% RS-150111 Common files across modules!
    ta_for( compilerouteaux(TT,Z), 
           compile(Z) ), %% TA-110302
 
+        %% RS-150111 Unique separate files for each separate module!
    ta_for( routedomain(X), 
           consult_periodset(X) ).
 
