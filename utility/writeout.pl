@@ -115,8 +115,7 @@ doubt(A,B) :-
 % Predikat som skriver ut navn og tall etc.  bwr*
 
 
-bwrprices([Ad,Ch]):-
-    moneyunit(nok), % both languages
+bwrprices([Ad,Ch]):- moneyunit(nok), % both languages
     !,
     bwr(Ad),bcp(or),bwr(Ch),bcp(kroner).
 
@@ -980,10 +979,14 @@ cwc(never,['never','aldri']).
 cwc(neverpasses,['never passes ','passerer aldri ']).
 cwc(next,['next','neste']).
 
-cwc(nightbus,['Nightbus', 'Nattbuss']).   %% * nattbussen 106
-cwc(nightbus_far,['Nightbus(Town/Byneset/Klæbu)', 'Nattbuss(By-Byneset-Klæbu)']).   %% * nattbussen 106
-cwc(nightbus_klæbu,['Nightbus(Klæbu)', 'Nattbuss (Byen)']).   %% * nattbussen 106
-cwc(nightbus_byneset,['Nightbus(byneset)', 'Nattbuss (Byen)']).   %% * nattbussen 106
+%% * nattbussen 106 ??
+% busfare2(nightbus,[100-150-200]). % By,Nes - Klæbu,Melhus,Malvik,Skaun - Stjørdal,Orkdal
+ cwc(nightbus,['Nightbus(City - Klæbu,Melhus,Malvik,Skaun - Stjørdal,Orkdal)', 'Nattbuss(By/nes - Klæbu,Melhus,Malvik,Skaun - Stjørdal,Orkdal)']).
+%cwc(nightbus_far,['Nightbus(Town/Byneset/Klæbu)', 'Nattbuss(By-Byneset-Klæbu)']).   %% * nattbussen 106
+ cwc(nightbus_far,['Nightbus(Stjørdal,Orkdal)', 'Nattbuss(Stjørdal,Orkdal)']).   %% * nattbussen 106
+%cwc(nightbus_klæbu,['Nightbus(Klæbu)', 'Nattbuss (Byen)']).   %% * nattbussen 106
+ cwc(nightbus_klæbu,['Nightbus(Klæbu,Melhus,Malvik,Skaun)', 'Nattbuss (Klæbu,Melhus,Malvik,Skaun)']).   %% * nattbussen 106
+cwc(nightbus_byneset,['Nightbus(Byneset)', 'Nattbuss (Byneset)']).   %% * nattbussen 106
 cwc(nighttram,['Night-tram', 'Natt-trikk ']).   %% * nattrikk 1  %% RS-141115
 
 cwc(nightbus0,['night bus', 'nattbuss']). %% -> the nightbus
@@ -2024,7 +2027,7 @@ writetelebusteranswer_sqt(TQL,_AnswerOut,_Frame) :-   %% TA-060224
 
         output('*** Answer ***'),nl,
         output(' '),nl.   %% no answer 
-%%        writeanswer(AnswerOut),nl.  %% TA-060825  
+%%        writeanswer(AnswerOut),nl.  %% TA-060825
 
 
 writetelebusteranswer_sqt(_TQL,_,_Frame) :-  %% TA-060825  
