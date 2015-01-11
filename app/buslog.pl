@@ -10,13 +10,13 @@
 %%% RS-111205, UNIT: /app/
 % Some predicates (like addcontext/0) are only to preserve information, no filtering..
 :-module( buslog, [ addcontext/0, askref/2, atdate/1, atdate2/2, atday/1, avoidbus/3, before/2, boundstreet/1, bugdep1/2, bugdep2/4, bus_place_station/3,
-   bus_mod/1, busorfree/1, bustorid/3, cname/2, connections/10, corrstats/3, dateis/4, dayModSeqNo/2, departure/4, % composite_stat/3, departureday/4,  
+   bus_mod/1, busorfree/1, cname/2, connections/10, corrstats/3, dateis/4, dayModSeqNo/2, departure/4, % UNUSED? bustorid/3, %% RS-150103
    departuredayMOD/5, depset/2,     diffdep4/4, direct_connection/3, endstations1/1, ensure_removed/3, findstations/3, firstactualdeparturetime/4,
    flag/1,        %% For using flag( X ) from program (from busanshp for example)
    frame_remember/2, hpl/3, irrelevantdirect/4, islist/1, isnear/2, keepafterstrict/3, keepafterwalking/2, keeparound/3, keepat/3, keepbefore1/3, keepbeforerev/3,
    keepbetweenstat/5, keepbus/3, keepdepafter/3, keepuntil/4, keepwithin/4, listofall/2, maybestation/3, message/1, neverarrives/2, neverdeparts/2, neverpasses/2, %% For negans.pl
    new_cutloop_extend/4, new_cutset_test/8, nextdep/3, nocontext/0, not/1, notaclock/1, notification/2, numberof/3, occurs_before/3, pass_after/2, pass_before/2,
-   passes44/6,    passesstations/4, passevent/6, passMOD/7, passtimeMOD/8, popframe/0, proper_end_station/2, pushframe/0, relax/1, replyq/1,  %% For negans.pl
+   passes44/6,    passesstations/4, passevent/6, passMOD/7, popframe/0, proper_end_station/2, pushframe/0, relax/1, replyq/1,  %% For negans.pl
    rid_to_direction/3, ridstobuses/2, samefplace/2, %% RS-140929 for bustrans.pl rules 
    selectroute/3, standardizeemit/2, station_trace/4, stationsat/3, statorplace/1, takestime/3, testanswer/2,
    ticketprice2/2, timeis/1, transferXYZ/3, trytransbuslist/4, withinslack/2,
@@ -45,11 +45,25 @@
 not X :- \+ X.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%once1( P ) :- P,!. %% same as once, but version independent   %% try once, otherwise FAIL
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Prologs set_of is baroque %% RS-140614  130sec runtime vs. 28sec runtime for \r tests/batch !
+%:- meta_predicate  set_of(+,0,-) . %% 141024. Moved BACK to utility.pl?
+%set_of(X,Y,Z):-           %%
+%    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
+%    Z=[].                 %% What is wrong with empty sets ?
+
+%% Sequence preserving set_of, ( first occurrence stays first)
+%set_ops(X,Y,Z):-
+%    findall(X,Y,Z1),
+%    remove_duplicates(Z1,Z). %% order-preserving
 
 
+% extra / local
 %%      airbus_route/1,         approvenightbustoplace/2, arr_after/2, arr_between/3, arrdep_after/2, arrdep_before/2,
 %       converttostandard/2,    coupled1/8,     %% RS-131225    Necessary?
-%       day_route/1,            dep_after/2,            dep_between/3,          depbusMOD/12,           depMOD/12,      %% OBSOLETE when RealTime: depbeforestationwalk/1, 
+%       day_route/1,            dep_after/2,            dep_between/3,          depbusMOD/12,           depMOD/12,   
+%% OBSOLETE when RealTime: depbeforestationwalk/1,
 %       endstations/2,          %% RS-131225    For telelog.pl 'sk(_).'
 %       keepbefore/3,           looping/3,              %% RS-131225 For busanshp,makeauxtables.pl
 %       night_route/1,          (not)/1,                not_arr_between/3,      not_dep_between/3,      not_extreme_hastus_time/1,
@@ -65,18 +79,12 @@ not X :- \+ X.
 %frame_isfull/1,         frame_setexperience/4,        frame_setexperience_rec/4
 %xframe_getvalue/2,      xframe_setvalue/2      % From dialog/frames2
 
-%once1( P ) :- P,!. %% same as once, but version independent   %% try once, otherwise FAIL
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Prologs set_of is baroque %% RS-140614  130sec runtime vs. 28sec runtime for \r tests/batch !
-%:- meta_predicate  set_of(+,0,-) . %% 141024. Moved BACK to utility.pl?
-%set_of(X,Y,Z):-           %%
-%    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
-%    Z=[].                 %% What is wrong with empty sets ?
+%From db/tables/r16xx_xxxx.pl
+% composite_stat/3, departureday/4,
 
-%% Sequence preserving set_of, ( first occurrence stays first)
-%set_ops(X,Y,Z):-
-%    findall(X,Y,Z1),
-%    remove_duplicates(Z1,Z). %% order-preserving
+%UNUSED?
+%passtimeMOD/8, 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %:- ensure_loaded( '../declare' ). %% RS-111213 ,  value/2, traceprog/2, trackprog/2
@@ -86,10 +94,11 @@ not X :- \+ X.
 
 %%% RS-140101, UNIT: /  and  /utility/
 :-use_module( '../utility/utility', [ bound/1, charno/3, firstmem/2, lastmem/2, maximum/2, maxval/3, members/3, minimum/2, minval/3, once1/1,
-        testmember/2, set_difference/3, set_of/3, set_ops/3, starttime/0, taketime/0, timeout/3, unbound/1 ] ). %test/1, testmember/2 %  ]). %% Made loca: set_eliminate/4, set_filter/4, 
+        testmember/2, set_difference/3, set_of/3, set_ops/3, starttime/0, taketime/0, timeout/3, unbound/1 ] ). %test/1, testmember/2 %  ]). %% Made local: set_eliminate/4, set_filter/4, 
 %% locale meta-predicates: once1/1, test/1,  %% RS-131117 includes declare.pl
 
-:- use_module( '../utility/datecalc', [ add_days/3, days_between/3, addtotime/3, dayno/2, difftime/3, subfromtime/3, timenow/1, timenow2/2, today/1 ] ). %%, datetime/6, getdaynew/1, timenow/1, 
+:- use_module( '../utility/datecalc', [ add_days/3, days_between/3, addtotime/3, dayno/2, difftime/3, finddate/2, subfromtime/3, timenow/1, timenow2/2, today/1 ] ).
+        %% datetime/6, getdaynew/1, timenow/1,
 :- use_module( '../utility/library', [ delete/3, reverse/2 ] ). %% RS-131225  For app/buslog, telelog, etc? remove_duplicates/2, 
 :- use_module( '../sicstus4compatibility', [ remove_duplicates1/2 ] ).         %% RS-141207
 :- use_module( '../utility/writeout', [ output/1, trackprog/2 ] ).  %% RS-140912  out/1, 
@@ -112,13 +121,15 @@ not X :- \+ X.
 :- use_module( '../db/route_period', [ route_period/4 ]).
 :- use_module( '../db/busdat', [ vehicletype/2, endneighbourhood/2, tramstation/1 ] ). % NOT USED!?!   
 :- use_module( '../db/places', [ alias_station/2, corr/2, foreign/1, isat/2, nostation/1, placestat/2, underspecified_place/1 ] ). % (PLACE) -> places.pl
-:- use_module( '../db/regbusall', [ nightbus/1 ] ).  %% RS-141024 % NOT USED!?!   , regbus/1
+:- use_module( '../db/regbusall', [ nightbus/1, regbus/1 ] ).  %% RS-141024 % NOT USED!?!   % regbus(Bus)
 :- use_module( '../db/regstr', [ streetstat/5 ] ).      %% RS-131224 Obsolete?
 :- use_module( '../db/timedat', [ aroundmargin/1, buslogtimeout/1, delay_margin/1, maxarrivalslack/1, maxtraveltime/1, softime/3 ] ).
 
 %%% RS-111205, UNIT: tuc/
 :- use_module( '../tuc/facts', [ isa/2,  neighbourhood/1  ] ).  %% RS-111204    isa/2 from facts.pl
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% statbus/busstat are pertinent to (created from?) the current module of the makeauxtables creation date !
 %% RS-140210.   LAST IMPORT! MUST BE GENERATED FIRST! %% Should be called AFTER makeauxtables in db!
 %% RS-140210. Autogenerated from monobuss -> makeauxtables.
 :- use_module( '../db/auxtables.pl', [ busstat/2, statbus/2, transbuslist/3 ] ). %% Should be called AFTER makeauxtables in db! statbus/2, 
@@ -201,9 +212,9 @@ standardizeemit(D90615,date(Y2009,M06,D15)):-
 %% e.g May 1 is the 160 th day in route period r1612_091123  %% has S(un)day  route
 
 %% Default mapping to special days if not specific schedule
-%% NEVER APPLIES TO nightbus
+%% NEVER APPLIES TO nightbus    %% TA-100412
 
-seqno_day(TTP,K160,May1,XN) :- %% XN relative nr of FIRST Sday in Route Module %% TA-100108
+seqno_day( TTP, K160, May1, XN ) :- %% XN relative nr of FIRST Sday in Route Module %% TA-100108
     \+ value(nightbusflag,true), %% TA-100412
     route_period(_, TTP,  Date1,_),   %% topreg.pl
 
@@ -218,25 +229,42 @@ seqno_day(TTP,K160,May1,XN) :- %% XN relative nr of FIRST Sday in Route Module %
     dayxnumber(EMITDAY,SDay,XN). %% relative number of FIRST SDay in DayCode
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% RS-150103
+%% Check if DayX (eg 35) contains '1' in the DayCode (eg 3) string (eg 00000110000011...)
+%% ...Or if DayX-1 (eg 34) contains '1' in the DayCode (eg 3) string AND Time>2400 (nightbus?)
+
 %% ONLY if MAP Date to day is applied,
-mod_day_in_set(TTP,DayX,DayCode) :- %% example, May 1=sunday route
+mod_day_in_set( TTP, DayX, DayCode, Time, Time ) :- %% example, May 1=sunday route
     number(DayX),                   %% not separate module
     number(DayCode),
-    seqno_day(TTP,DayX,_May1,XN),
+    seqno_day( TTP, DayX, _May1, XN ),  % Not for nightbuses?
 %%    !,                              %% SDay route !   %%RS-130327, Try new (backup) Regime below?
-    TTP:dko(DayCode,_,_,_,_,_,_,MASK),
+    TTP:dko( DayCode, _, _, _, _, _, _, MASK ),
     atom(MASK), %% string '01' for whole period
-    charno(XN,MASK,'1'). %% utility.pl
+    charno( XN, MASK, '1' ). %% utility.pl
 
-% NEW regime
-mod_day_in_set( TTP, DayX, DayCode ) :- 
+% NEW regime (For nightbuses only?)
+mod_day_in_set( TTP, DayX, DayCode, Time, TodayTime ) :-
     number(DayX),
     number(DayCode),
     !,
     TTP:dko( DayCode, _, _, _, _, _, _, MASK ),
     atom( MASK ), %% string '01' for whole period
-    charno( DayX, MASK, '1' ). %% utility.pl
+    
+    DayBefore is DayX-1,
+    ( Time > 2359  ->  TodayTime is Time-2400, charno( DayBefore, MASK, '1' )  ;  TodayTime=Time, charno( DayX, MASK, '1' ) )
+    . %% utility.pl
 
+% NEW regime (For nightbuses only?)
+%mod_day_in_set( TTP, DayX, DayCode ) :- 
+%    number(DayX),
+%    number(DayCode),
+%    !,
+%    TTP:dko( DayCode, _, _, _, _, _, _, MASK ),
+%    atom( MASK ), %% string '01' for whole period
+%    charno( DayX, MASK, '1' ). %% utility.pl
+%
 
 
 
@@ -334,10 +362,8 @@ xpasses4(Trace,STATNO,Station,Seq,DelArr,DelDep) :-
 % Assumes tours that corresponds are unique
 
 
-
-
-new_cutloop_extend(TTP,XStation,Trace1,Trace2):-
-    TTP:cutloop_trace(XStation,Trace1,Trace2).
+new_cutloop_extend( TTP, XStation, Trace1, Trace2 ) :-
+    TTP:cutloop_trace( XStation, Trace1, Trace2 ).
 
 
 new_cutset_test(TTP,XStation,Trace1,Trace2,Rid1,Rid2,Delta,W) :-
@@ -1065,7 +1091,7 @@ listofall(tramstation,S):-
 
 
 endstations1(Stations):-
-    set_of(S, (busdat:regbus(Bus), endstation(Bus,Z),member(S,Z)), Stations).
+    set_of(S, (regbus(Bus), endstation(Bus,Z),member(S,Z)), Stations).
 
 
 endstations(Bus,Stations):-
@@ -1084,7 +1110,7 @@ endstation(Bus,Stations) :-
 
 
 allbuses(Buses) :-
-        set_of(Bus,busdat:regbus(Bus),Buses1),   %% was exbus(Bus) %% TA-090608
+        set_of(Bus,regbus(Bus),Buses1),   %% was exbus(Bus) %% TA-090608
    bus_equivalents(Buses1,Buses).
 
 allnightbuses(Buses) :-
@@ -1224,18 +1250,21 @@ departure( Bus, Place, Day, DepSet ) :- % Alle dag-bussavganger ved en stasjon
    !,
         veh_mod(TTP),
    setdepMOD(TTP,Place,Day,DepSet1),      %%
-   set_filter( X, day_route(X), DepSet1, DepSet ).
+   set_filter( X, day_route(X), DepSet1, DepSetDag ),
+   set_filter( X, night_route(X), DepSet1, DepSetNatt ),
+   %% RS-150104
+   ( DepSetDag == [] -> DepSet=DepSetNatt ; DepSet=DepSetDag )
+   .
 
 departure( Bus, Place, Day, DepSet ) :- % Alle natt-bussavganger ved en stasjon
         unbound(Bus),
-   value(nightbusflag,true),      % Nightbus query
-        NextDay is Day+1,
+   value(nightbusflag,true),      % Nightbus query...  %% RS-150103 Always use as backup?
    \+   value(airbusflag,true),     %% TA-090331
    !,
         veh_mod(TTP),
 
-%   setdepMOD( TTP, Place, Day, DepSet1 ),
-  setdepMOD( TTP, Place, NextDay, DepSet1 ),
+   setdepMOD( TTP, Place, Day, DepSet1 ), % Natt til søndag means on søndag morning! (Same as nattbuss lørdag?)
+%   NextDay is Day+1, setdepMOD( TTP, Place, NextDay, DepSet1 ), %% This was wrong? But include YESTERDAY > 2400
 
    set_filter( X, night_route(X), DepSet1, DepSet ). %,
 
@@ -1288,10 +1317,12 @@ not_extreme_hastus_time( X ) :-
 %    !.
 
 
-setdepMOD( TTP, Place, Kay, DepSet ):-
+setdepMOD( TTP, Place, Kay, DepSet ) :-
         set_of( depnode( Time0, Time9, DelArr, DelDep, BegTime1, Rid1, Bus1, SEQNO, Station1 ),
-              depMOD(TTP,Place,Kay,Time0,Time9,DelArr,DelDep,BegTime1,Rid1,Bus1,SEQNO,Station1),
-              DepSet).
+
+                depMOD(TTP,Place,Kay,Time0,Time9,DelArr,DelDep,BegTime1,Rid1,Bus1,SEQNO,Station1),
+                
+                DepSet ).
 
 
 day_route( depnode( _Time0,_Time9,_DelArr,_DelDep,BegTime,Rid1,NB,_SEQNO,_Station1) ) :-
@@ -1305,9 +1336,10 @@ day_route( depnode( _Time0,_Time9,_DelArr,_DelDep,BegTime,Rid1,NB,_SEQNO,_Statio
 %    \+ busdat:exbusname(NB,skolebuss).
 
 
-night_route( depnode(_Time0,_Time9,_DelArr,_DelDep,_BegTime,Rid1,NB,_,_) ) :-
-    ridtobusnr( Rid1, NB ),
-    nightbus(NB).
+night_route( depnode( Time0, Time9, DelArr, DelDep, BegTime, Rid1, NB, X1, X2) ) :-
+%    ridtobusnr( Rid1, NB ),
+%    nightbus(NB).
+    \+ day_route( depnode( Time0, Time9, DelArr, DelDep, BegTime, Rid1, NB, X1, X2) ).
 
 
 airbus_route( depnode(_Time0,_Time9,_DelArr,_DelDep,_BegTime,Rid1,NB,_,_) ) :-
@@ -1327,6 +1359,7 @@ xdepartureMOD( TTP, Rid, Trace, BegTime, DaySeqNO ) :-          %% TA-100318
 
 
 %% Above here, all days should be converted
+%% RS-150103. But remember that nightbus can start at "25:15 the night before" OR/AND "01:15 this morning".
 
 %% Bus is unknown
 depMOD(TTP,Place,Day,Time0,Time9,DelArr,DelDep,BegTime,Rid,Bus,Seq,Station) :-
@@ -1335,11 +1368,13 @@ depMOD(TTP,Place,Day,Time0,Time9,DelArr,DelDep,BegTime,Rid,Bus,Seq,Station) :-
    adjustarr999(DelArr,DelDep,RealDelArr),
    adjustdep999(DelArr,DelDep,RealDelDep),
 
-        xdepartureMOD(TTP,Rid,_,BegTime,Kay),
+        xdepartureMOD( TTP, Rid, _, BegTime, Kay ),
 
-   mod_day_in_set(TTP,Day,Kay),
-        addtotime(BegTime,RealDelArr,Time0),
-   addtotime(BegTime,RealDelDep,Time9),
+   mod_day_in_set( TTP, Day, Kay, BegTime, TodayTime ),
+%        addtotime(BegTime,RealDelArr,Time0),
+%   addtotime(BegTime,RealDelDep,Time9),
+        addtotime( TodayTime, RealDelArr, Time0 ),
+   addtotime( TodayTime, RealDelDep, Time9 ),
    true.
 
 
@@ -1354,9 +1389,11 @@ depbusMOD(TTP,Bus,Place,Day,Time0,Time9,DelArr,DelDep,BegTime,Rid,Seq,Station) :
 
    xdepartureMOD(TTP, Rid,_,BegTime,Kay), %% TA-100318
 
-   mod_day_in_set(TTP,Day,Kay),
-        addtotime(BegTime,RealDelArr,Time0),
-   addtotime(BegTime,RealDelDep,Time9).
+   mod_day_in_set( TTP, Day, Kay, BegTime, TodayTime ),
+%        addtotime(BegTime,RealDelArr,Time0),
+%   addtotime(BegTime,RealDelDep,Time9).
+        addtotime( TodayTime, RealDelArr, Time0 ),
+   addtotime( TodayTime, RealDelDep, Time9 ).
 
 
 
@@ -1893,7 +1930,6 @@ lastquicktransfer(FromStat,ToStat,X,FT1,LT2,DaySeqNo,Dep01,Mid01):-
 
 
 
-
 % Finner alle rids som passerer endestasjonen, AFTER NOW if SMS/notime
 
 coupled( StartDeps, EndDeps, _, _, _, Day, DaySeqNo, Opts, Deps, Mid01 ) :-
@@ -1902,9 +1938,11 @@ coupled( StartDeps, EndDeps, _, _, _, Day, DaySeqNo, Opts, Deps, Mid01 ) :-
 
    \+ member(nextaftertime(_),Opts),
 
-   sameday(Day),
+   sameday(Day),   %% RS-150103. Doesn't work for NightBus (next week)! NOW>0430,
+   finddate( 0, Today ), value( actualdate, Today ), % Really same day!
 
-   timenow2(0,NOW),
+   timenow2(0,NOW),     % \+ value( nightbusflag, true ),   \+ member(nightbus, Opts ),
+
 
    keepafter(NOW,StartDeps,StartDeps1),
    keepafter(NOW,EndDeps,EndDeps1),
@@ -2041,16 +2079,18 @@ purge_deps(_Opts,StartDeps,EndDeps,LeanStartDeps,LeanEndDeps):-
 
 
 
-sameday(_Day) :-     %% TA-091229  Dont backtrack
-     value(samedayflag,true),!.
+sameday(_Day) :-     
+     value(samedayflag,true),
+     ! . %% TA-091229  Don't backtrack
 sameday(Day) :-
-     (today(Day),
-     \+ value(samedayflag,false)),
+     today(Day),
+     \+ value(samedayflag,false),
      !.
 
 
 
-
+wrotten :-
+        write('Something very wrotten happened...').
 
 %% Section coupled2
 
@@ -2068,13 +2108,13 @@ sameday(Day) :-
 %% 2. Screws it up if later  after NOW is added
 
 %% FIRSTFREAK
-%% IF SMSFLAG, FIRSTCORR  There is a direct connection, but FIRST EnDep >> First Startdep
+%% IF SMSFLAG, FIRSTCORR  There is a direct connection, but FIRST EndDep >> First Startdep
 %% ==> Try indirect
 
 
 coupled2(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
 
-     fail, wrotten,   %% TA-110411
+     fail, wrotten,   %% TA-110411... Debugging!
 
      BothStartDeps \== [], %% There is a direct connection
 
@@ -2137,10 +2177,11 @@ coupled2(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
 
 % SMS,  cut out bygone departures
 
-% Putter ut listen over busser som passerer begge steder
-coupled2(BothStartDeps,_,_,Day,_DaySeqNo,_Opts,BothStartDeps1,MidDeps) :-
+% Putter ut listen over busser som passerer begge steder |after now|
+coupled2(BothStartDeps,_,_,Day, _DaySeqNo,_Opts,BothStartDeps1,MidDeps) :-
     BothStartDeps \== [],
     sameday(Day),
+    value( actualdate, Today ), finddate( 0, Today ), % Really same day!
 %%%%%%%%%%%%%%%%%%%%%%% TA-110706    \+ testmember(lastcorr,Opts),
     progtrace(4,coup6),
     timenow2(0,NOW),
@@ -2156,7 +2197,8 @@ coupled2(BothStartDeps,_,_,Day,_DaySeqNo,_Opts,BothStartDeps,MidDeps) :-
     BothStartDeps \== [],
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  %% TA-110705
-   \+ sameday(Day),   %% time might give opportunity to take next day
+    value( actualdate, Today ),
+    \+ ( sameday(Day), finddate( 0, Today ) ),  % NOT Really same day! %% time might give opportunity to take next day
     !,
     progtrace(4,coup7),
     MidDeps=[].
@@ -2170,7 +2212,7 @@ coupled2(BothStartDeps,_,_,Day,_DaySeqNo,_Opts,BothStartDeps,MidDeps) :-
 % Ingen dag oppgitt
 % Intet tidspunkt oppgitt
 % finner første mulighet etter nå ("neste") if possible
-%%%   , otherwise FAIL (Dont announce bygone departures)
+%%%   , otherwise FAIL (Don't announce bygone departures)
 
 coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
 %%     value(smsflag,true), %%  Neste buss fra P.A. Munchs gt til Dragvoll
@@ -2660,17 +2702,17 @@ passeqMOD(TTP,RID,STATNO,Station,Seq,DelArr,DelDep):-   %% Pass with seq. no.
      xpasses5(TTP,RID,Trace,STATNO,Station,Seq,DelArr,DelDep).
 
 
-
-passtimeMOD(TTP,Rid,STATNO,Station,Seq,ArrTime,DepTime,DaySeqNo):-
-
-    xdepartureMOD(TTP,Rid,Trace,BegTime,Kay),
-
-    mod_day_in_set(TTP,DaySeqNo,Kay),
-    xpasses5(TTP,Rid, Trace,STATNO,Station,Seq,DelArr,DelDep),
-    \+ nostation(Station), %% Ad Hoc for abandoned stations
-    addtotime(BegTime,DelArr,ArrTime),
-    addtotime(BegTime,DelDep,DepTime).
-
+%% RS-150103 Unusued?
+%passtimeMOD(TTP,Rid,STATNO,Station,Seq,ArrTime,DepTime,DaySeqNo) :-
+%
+%    xdepartureMOD(TTP,Rid,Trace,BegTime,Kay),
+%
+%    mod_day_in_set(TTP,DaySeqNo,Kay),
+%    xpasses5(TTP,Rid, Trace,STATNO,Station,Seq,DelArr,DelDep),
+%    \+ nostation(Station), %% Ad Hoc for abandoned stations
+%    addtotime(BegTime,DelArr,ArrTime),
+%    addtotime(BegTime,DelDep,DepTime).
+%
 
 %% Day has already been is checked %% TA-110325
 
@@ -2740,7 +2782,7 @@ listofbuses(A) :-
 
 notification(_,_). %% Dummy
 
-atdate2(_,Date):- %% ad hoc %% TA-090618
+atdate2(_,Date) :- %% ad hoc %% TA-090618
 
     set_actualdate(Date), %%
 
@@ -2824,27 +2866,24 @@ ridtobusname( RID, BusName ) :-
 
 
 
-%% bustorid(Bus,RID).        %% bus is either BusNr or BusName, Gets RID
-
-
+%% bustorid/2: bustorid( Bus, RID ).        %% bus is either BusNr or BusName, Gets RID
 bustorid(Bus,Rid) :-
      xroute(Rid,_,Bus).
 
 
 
-%% bustorid3
-
-bustorid(Bus,DaySeqNo,Rid) :-
-    veh_mod(TTP),
-    xroute(Rid,_,Bus),
-         TTP:ex_departureday(Rid,_,_,Kay), %% TA-090812
-    mod_day_in_set(TTP,DaySeqNo,Kay).
+%% busToRid/3: ( Bus, DaySeqNo, Rid )
+%bustorid( Bus, DaySeqNo, Rid ) :-
+%    veh_mod(TTP),
+%    xroute( Rid, _, Bus ),
+%         TTP:ex_departureday( Rid, _, _, Kay ), %% TA-090812
+%    mod_day_in_set( TTP, DaySeqNo, Kay ).
 
 
 %%%%%%%%%%%%%%% NEVER PASS test %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % neverpases   neverarrives neverdeparts
 
-% statbus/busstat are pertinent to the current module of the creation date !
+% statbus/busstat are pertinent to (created from?) the current module of the makeauxtables creation date !
 
 
 neverpasses(Bus,_Place):- %% Bus is free => neverpasses fails
@@ -2857,8 +2896,6 @@ neverpasses(Bus,Place):-
     test(vehicletype(Bus,_)),
     \+ sometimepasses(Bus,Place). %% cuts unnec
 
-%    veh_mod(TTP),TTP:regbus(X)
-%% :- use_module( '../db/tables/r1611_141020/regcut', [ composite_stat/3, departureday/4, route/3 ] ). %% RS-150102 WHAT is This!?
 
 sometimepasses( Bus, Sentrum ) :-
     atomic( Bus ),
@@ -3032,14 +3069,11 @@ transferXYZ( GN, CS, XS ):-
            XS ).
 
 transbuslist3(B1,B2,Z):-
-    B2 @< B1 -> transbuslist(B2,B1,Z);
+    B2 @< B1 -> transbuslist(B2,B1,Z) ;
                 transbuslist(B1,B2,Z). %% TA-110318
 
 
 frame_remember(_,_):-!. %% Pro forma
 
-%%%% 2989 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-wrotten :-
-        write('Something very wrotten...').
+%%%% 3069 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Keep the rule-files "small" please!
 
