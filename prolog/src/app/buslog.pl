@@ -1303,19 +1303,19 @@ departure(Bus,Place,Day,DepSet) :- % Bussavgangene for en buss ved en stasjon
               DepSet ).
 
 %% Double departures Hastus   Friday 2800 + Staurday 0400
-not_extreme_hastus_time( X ) :-
-    X = depnode(_2820,_,_20,_,T2800,_Bus_108_3049,_,_,_),     %    T2800 > 1200. %% TA-?
-    T2800 > 2459.       %% RS-141115  Remove everything except real nightbusses (or trams)...
-
-approvenightbustoplace(Place,Y) :-
-   \+ avoidnightbustoplace(Place,Y).
-
-
-avoidnightbustoplace(Place,Y) :-
-    Y= depnode(_,_,_,_,_,Bus_57_nn,__,_),
-    route( Bus_57_nn, _, B57 ),
-    busdat:spurious_return(B57,Place), %% morten_erichsen_forbid(B57,Place),
-    !.
+%not_extreme_hastus_time( X ) :-
+%    X = depnode(_2820,_,_20,_,T2800,_Bus_108_3049,_,_,_),     %    T2800 > 1200. %% TA-?
+%    T2800 > 2459.       %% RS-141115  Remove everything except real nightbusses (or trams)...
+%
+%approvenightbustoplace(Place,Y) :-
+%   \+ avoidnightbustoplace(Place,Y).
+%
+%
+%avoidnightbustoplace(Place,Y) :-
+%    Y= depnode(_,_,_,_,_,Bus_57_nn,__,_),
+%    route( Bus_57_nn, _, B57 ),
+%    busdat:spurious_return(B57,Place), %% morten_erichsen_forbid(B57,Place),
+%    !.
 
 
 setdepMOD( TTP, Place, Kay, DepSet ):-
