@@ -77,7 +77,8 @@
 :-use_module( '../utility/datecalc', [ add_days/3, addtotime/3, before_date1/2, difftime/3, sub_days/3, subfromtime/3, timenow/1, timenow2/2, today/1, todaysdate/1 ] ).
 :-use_module( '../utility/library', [ reverse/2 ] ).         %% RS-131225 nth/3 moved to utility
 
-:- DependsOn = [ bw1/1, bwrbus/2, bwrbusbc/2, bwtimes2/1, endline/0, punkt/0, question/0, space0/0, startmark/0 ], use_module( '../utility/writeout', DependsOn ).
+:- DependsOn = [ bcw/2, bigcap/2, bw1/1, bwc/2,  bwq/1, bwr2bc/1, bwrbus/2, bwrbusbc/2, bwrprices/1, bwstat2/2, bwt2/1,
+                 bwtimes2/1, endline/0, punkt/0, question/0, space0/0, startmark/0 ], use_module( '../utility/writeout', DependsOn ).
 %:- DependsOn = [  ], use_module( '../utility/writeout', DependsOn ).  %% Moved back to main: language/1. Where?: roundwrite/1
 :-use_module( '../utility/writeout', [
     bcp/1,      bcpbc/1,        bwr/1,  bwr2/2, bwrbc/1, bwrstreet/1,   bwt/1,  

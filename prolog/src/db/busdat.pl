@@ -802,10 +802,11 @@ moneyunit(nok).    %% Trondheim %% Local currency
 
 busfare2(airbus,[130,65]). 
 busfare2(bus,[50,25]).
-busfare2(nightbus,[80-90-110]). % Byen - Klæbu - Byneset
-busfare2(nightbus_klæbu,[90]).
-busfare2(nightbus_byneset,[110]).
-busfare2(nighttram,[80]).
+busfare2(nightbus,[100-150-200]). % By,Nes - Klæbu,Melhus,Malvik,Skaun - Stjørdal,Orkdal
+busfare2(nightbus_klæbu,[150]).
+busfare2(nightbus_byneset,[100]).
+%busfare2(nighttram,[80]). %% RS-150111 Changed?
+busfare2(nighttram,[100]). %% RS-150111 Changed? %https://www.atb.no/priser/#route/110504, Din saksid er: 40634
 busfare2(tram,[50,25]).  
 
 %%  Ikke Klæbu/Melhus/Byneset (90/110), but that is foreign
