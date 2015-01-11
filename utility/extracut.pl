@@ -115,7 +115,7 @@ create_regcut(Module) :-
    output('% extracted from Dep and Pas: departureday/4, ntourstops/2, passes4/6, ...? '),nl,
    output(':-ensure_loaded( [ regbus, regcomp, regdko, reghpl ] ).'),
 
-crecut2(Module) ,
+        crecut2(Module) ,
 
    recreate_deppas(Module),
 
