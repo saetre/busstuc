@@ -2763,7 +2763,7 @@ toolongtraveltime(Time1,Time2):-
 % Penger
 
 
-ticketprice2(BusType,List):-
+ticketprice2(BusType,List) :-
     busdat:busfare2(BusType,List).    %% Busdat
 
 

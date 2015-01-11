@@ -798,7 +798,8 @@ moneyunit(nok).    %% Trondheim %% Local currency
 
 %% PRICES ETC
 
-%% busfare(30,15). %% Adult/Child 
+%% busfare(30,15). %% Adult/Child (2005)
+% Voksen koster 50, Barn/Honnør/Sykkel/Hund/Militær koster 25 (2015)
 
 busfare2(airbus,[130,65]). 
 busfare2(bus,[50,25]).

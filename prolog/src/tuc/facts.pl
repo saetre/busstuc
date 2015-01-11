@@ -659,8 +659,8 @@ teleoption :-
 
 
 neighbourhood(X):- 
-    neibor(X);
-    abroad(X); 
+    neibor(X)  ;
+    abroad(X)  ; 
     xforeign(X). 
 
 neibor(X):-   
