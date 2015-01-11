@@ -9,4 +9,4 @@ echo "/home/busstuc/busstuc/compile/extract_cut.sh ... Make Regcut.pl" >&2
 #echo "  use_module( 'utility/extracut.pl', [ create_regcut/1 ] ), create_regcut($1), halt." | /home/busstuc/busstuc/busestuc4.sav
 
 #re-compile busstuc
-echo "compile(busstuc), save_program(busestuc4), halt." | sicstus
+echo "compile(busstuc), save_program(busestuc4), halt." | sicstus >&2
