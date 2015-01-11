@@ -66,5 +66,8 @@
 :- told.            %% RS-140208 Reset all output-streams first...
 %:- verify_consistency. %% RS-140420  Between current and previous period?     
 
+%% Bootstrapping for compilation         %% RS-150111  Moved to busroute? No! Done twice? Maybe! Moved to bottom of makeauxtables?
+%:- use_module( 'compileroute.pl', [ consultbase/1 ] ). %% Interface modules
+%:- consultbase(tt). %% <-------------- %% TA-110302   %% Bootstrapped for compilation, Already called from makeauxtables!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
