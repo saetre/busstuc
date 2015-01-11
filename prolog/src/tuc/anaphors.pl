@@ -11,12 +11,12 @@
 
 %% UNIT: / and /utility
 %:- ensure_loaded( '../declare' ).  %% RS-140915 , track/2
-:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../declare', [ track/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
 %% RS-131225, UNIT: utility/
-:- use_module( '../utility/utility', [ match/2, nth/3 ] ). %local: , test/1
 :- use_module( '../utility/library', [ reverse/2 ] ).%% RS-131225
-:- use_module( '../utility/writeout', [ track/2 ] ).  %% Module util  , prettyprint/1, output/1, 
+:- use_module( '../utility/utility', [ match/2, nth/3 ] ). %local: , test/1
+%:- use_module( '../utility/writeout', [ track/2 ] ).  %% Module util  , prettyprint/1, output/1, 
 
 %% RS-111205, UNIT: / 
 %:- use_module( '../main.pl', [ value/2 ] ). %% RS-140209 hei/0,   run/0,  track/2 localized to avoid MISERY!

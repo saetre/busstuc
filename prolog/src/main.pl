@@ -44,9 +44,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % UNIT: / AND /utility/
 
-:- use_module( declare, [ (:=)/2, (=:)/2, remember/1, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+%% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( declare, [ (:=)/2, (=:)/2, remember/1, set/2, track/2, trackprog/2, value/2 ] ).
 
-:- use_module( 'utility/writeout', [ doubt/2, out/1, output/1, prettyprint/1, print_parse_tree/1, printdots/0, track/2, trackprog/2 ] ).%% RS-140912
+:- use_module( 'utility/writeout', [ doubt/2, out/1, output/1, prettyprint/1, print_parse_tree/1, printdots/0 ] ).%% RS-140912
 
 %Utility-functions %RS-141019 Moved to main.pl (To be accessable for the scripts.n)
 %set( Key, Value ).
@@ -1399,6 +1400,7 @@ reset_origins :- %% TA-110128
     retractall( gps_origin(_,_) ),
  
 %%%    traceprog( 3,reset_origins),
+%%%    trackprog( 3, verify_empty_origins ). %% TA-110206
     trackprog( 3, verify_empty_origins ). %% TA-110206
 
 verify_empty_origins :- %% all gps_origin should be gone !!!!!!

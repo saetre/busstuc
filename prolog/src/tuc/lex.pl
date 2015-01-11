@@ -76,11 +76,11 @@
           maxl/1.
 
 %%% RS-131225, UNIT: / and /utility/,
-:- use_module( '../declare', [ (:=)/2, (=:)/2, remember/1, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../declare', [ (:=)/2, (=:)/2, remember/1, set/2, track/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
 :- use_module( '../utility/utility', [ append_atoms/3, begins_with/3, delete1/3, ends_with/3, flatten/2, for/2, iso_atom_chars/2, %% RS-141029  Avoid bad loops! foralltest/2, once1/1,  
                                        once1/1, set_of/3, set_ops/3, set_union/3, testmember/2, textlength/2 ] ). % remember/1, remove_duplicates/2, set_of/3, test/1,   
-:- use_module( '../utility/writeout', [ track/2, traceprint/2 ] ).  %% Module util  , prettyprint/1, output/1, 
+:- use_module( '../utility/writeout', [ traceprint/2 ] ).  %% Module util  , prettyprint/1, output/1, 
 
 % Keep them local? YES: foralltest/2, once1/1, set_of/3, set_ops/3, track/2, test/1,
 %:-use_module( '../utility/library', [ ] ).      %% RS-131229 Make this internal! (Decoupling modules!)
