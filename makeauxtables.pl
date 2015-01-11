@@ -60,7 +60,8 @@
 %COMPILE THE ENTIRE BUSROUTE
 %:- compile( busroute:'compileroute.pl' ).   %% Bootstrapping for compilation, faster than "ensure loaded"?!
 :- use_module( 'compileroute.pl', [ consultbase/1 ] ). %% Interface modules
-:- consultbase(tt).   %% Bootstrapping for compilation         %% RS-150104  Moved to busroute? Done twice?
+
+%:- consultbase(tt).   %% Bootstrapping for compilation         %% RS-150104  Moved to busroute? Done twice? Try do move down a bit?
 
 :- use_module( 'interfaceroute', [ domain_module/2, thisdate_period_module/3, reset_period/0 ] ).
 
@@ -127,19 +128,19 @@ verify_files_exist( Filename, BaseFile ) :-
 %        directory_property( BaseFile, access_timestamp, TimeBase ),
         file_property( AbsBasefile, modify_timestamp, TimeBase ),
         Time > TimeBase,
-        out('...makeauxtables.pl~130 File already exists: '),out( Filename ), out( Time ),out( 'timestamp > SKIP making ' ),output( TimeBase ).
+        out('...makeauxtables.pl~131 File already exists: '),out( Filename ), out( Time ),out( 'timestamp > SKIP making ' ),output( TimeBase ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 makeauxtables :-
-    verify_files_exist( 'db/auxtables.pl', 'db/places.pl' ) ;
+        (  verify_files_exist( 'db/auxtables.pl', 'db/places.pl' )  ,  verify_files_exist( 'db/auxtables.pl', 'version.pl' )  ) ;
         ( 
             told,       %% Close all potentially open output-streams first!
         %    user:( tramflagg := false ), %% RS-140106 Trenger ikke auxtables for tram?!?
         %    user:( tmnflagg := false ), %% RS-140106 Trenger ikke auxtables for trafikanten midtnorge?!?
             reset_period,  %% get the right period 
         
-            write( '... makeauxtables~140(770): Please wait 1 minute while creating (db/auxtables) regstr/2' ),nl,
+            write( '... makeauxtables~143 (~770): Please wait 1 minute while creating (db/auxtables) regstr/2' ),nl,
         
             open( 'db/auxtables.pl', write, Stream, [encoding('UTF-8')] ), %% RS-140102, Run from monobuss folder !!
             %open( 'auxtables.pl', write, Stream, [encoding('UTF-8')] ), %% RS-140102, Run from the /db/ folder !!
@@ -768,6 +769,8 @@ for(
 %%RS-140421. For immediate recompilation when modifying/debugging this file.
 
 %%% Move to busstuc.pl? RS-140927   :- vs ?-  (first directive type shows up in "Call Hierarchy" in SPIDEr.
+:- consultbase(tt).   %% Bootstrapping for compilation         %% RS-150104  Moved to busroute? Done twice?
+
 :- verify_consistency.  %% Discover changed station names between X and Y modules.
 :- makeauxtables.
 :- createhash.
