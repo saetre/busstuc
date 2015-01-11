@@ -2,7 +2,7 @@
 cd /home/busstuc/busstuc
 
 echo "/home/busstuc/busstuc/compile/extract_cut.sh ... Make Regcut.pl" >&2
-echo " create_regcut($1), halt." | /home/busstuc/busstuc/busestuc4.sav
+#echo " create_regcut($1), halt." | /home/busstuc/busstuc/busestuc4.sav
 #OLD:
 #echo "compile(busstuc),create_regcut($1),halt." | sicstus
 #echo " use_module( 'compileroute.pl', [ compile_route_set/1 ] ), compile_route_set($1), #Doesn't work... Asks for the regcut being created: $1 
