@@ -837,9 +837,12 @@ cmpl(dybdahls,v,dybdahls_veg).  %% summer/ vinter: dybdals_veg %% TA-110704
 cmpl(dybdahls,veg,dybdahls_veg).  %%
 cmpl(dybdahls,vegen,dybdahls_veg).  %%
 
-cmpl(dyre,[halses,gate],nidelv_bru).  %% ? ad hoc
-cmpl(dyre,[halses,gt],nidelv_bru).    %%
-cmpl(dyre,halsesgate,nidelv_bru).   
+%cmpl(dyre,[halses,gate],nidelv_bru).  %% ? ad hoc
+%cmpl(dyre,[halses,gt],nidelv_bru).    %%
+%cmpl(dyre,halsesgate,nidelv_bru).   
+cmpl(dyre,[halses,gate],strandvegen).  %% ? RS-150111. Less ad hoc?
+cmpl(dyre,[halses,gt],strandvegen).    %%
+cmpl(dyre,halsesgate,strandvegen).   
 
 cmpl(dødens,dal,høyskoleringen). 
 cmpl(e,['-',verket],e_verket). %telehas'-'

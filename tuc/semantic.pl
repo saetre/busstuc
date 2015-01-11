@@ -7509,7 +7509,7 @@ adj_templ(equal,thing). %% set), % buses go at the same time
 adj_templ(european,thing).
 
 %% adj_templ(expensive,thing). %% ala cheap %% avoid cheap girls (?)
-adj_templ(expensive,thing).   %%      Dyre halse = expensive Halset  
+adj_templ(expensive,thing).   %%      Dyre halse = expensive Halset   %% RS-150111. Sukk... Dyre Halses gate.
 adj_templ(expensive,price).
     adj_templ(expensive,trip).
     a_compl(expensive,thing,with,thing).

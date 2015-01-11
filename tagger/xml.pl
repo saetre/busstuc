@@ -1,6 +1,6 @@
 %% UNIT: /tagger/
 
-:- module( xml,	[ nmtokens/3, xml_parse/2, xml_parse/3, xml_subterm/2, xml_pp/1 ] ).   %Extra?:         nmtokens/3 from xml_aqcquisition
+:- module( xml,	[ xml_parse/2, xml_parse/3, xml_subterm/2, xml_pp/1 ] ).   %Extra?:         nmtokens/3 from xml_aqcquisition
 
 /* xml.pl : Contains xml_parse/[2,3] a bi-directional XML parser written in
  * Prolog.
@@ -95,6 +95,25 @@
  * of the data structure. Output parsing throws an exception if the document
  * is not well-formed, diagnosis tries to identify the specific culprit term.
  */
+
+/* xml is intended to be a rather modular module: it should be easy to
+ * build a program that can output XML, but not read it, or vice versa.
+ * Similarly, you may be happy to dispense with diagnosis once you are
+ * sure that your code will only try to make valid calls to xml_parse/2.
+ *
+ * It is intended that the code should be very portable too. Clearly,
+ * some small changes will be needed between platforms, but these should
+ * be limited to xml_utilities. xml_utilities contains most of the shared
+ * code and most of the potentially non-portable code.
+ */
+%:- ensure_loaded( xml_acquisition ).
+:- use_module( xml_acquisition, [ xml_to_document/3 ] ).
+:- ensure_loaded( xml_diagnosis ).
+:- ensure_loaded( xml_generation ).
+:- ensure_loaded( xml_pp ).
+:- ensure_loaded( xml_utilities ).
+
+
 xml_parse( Chars, Document ) :-
 	xml_parse( [], Chars, Document ).
 
@@ -136,19 +155,3 @@ xml_subterm( element(_Name,_Attributes,Content), Term ) :-
 	xml_subterm( Content, Term ).
 xml_subterm( namespace(_URI,_Prefix,Content), Term ) :-
 	xml_subterm( Content, Term ).
-
-/* xml is intended to be a rather modular module: it should be easy to
- * build a program that can output XML, but not read it, or vice versa.
- * Similarly, you may be happy to dispense with diagnosis once you are
- * sure that your code will only try to make valid calls to xml_parse/2.
- *
- * It is intended that the code should be very portable too. Clearly,
- * some small changes will be needed between platforms, but these should
- * be limited to xml_utilities. xml_utilities contains most of the shared
- * code and most of the potentially non-portable code.
- */
-:- ensure_loaded( xml_acquisition ).
-:- ensure_loaded( xml_diagnosis ).
-:- ensure_loaded( xml_generation ).
-:- ensure_loaded( xml_pp ).
-:- ensure_loaded( xml_utilities ).
