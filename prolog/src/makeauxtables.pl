@@ -52,10 +52,13 @@
 %% RS-140102. UNIT: /  and  /utility/  %% RS-140101 Moved to user:declare for common and early compilation!
 %:- ensure_loaded( 'declare.pl' ). %, [ := /2 etc. ] ). test/1 
 :- use_module( declare, [ remember/1 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( sicstus4compatibility, [ output/1, writepred/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
-:- use_module( 'utility/utility.pl', [  delete1/3, ends_with/3, for/2, set_of/3, textlength/2 ] ).
+:- use_module( 'utility/utility.pl', [  delete1/3, ends_with/3, for/2, set_of/3, textlength/2 ] ). %out/1, 
 :- use_module( 'utility/datecalc.pl', [ datetime/6 ] ). % add_days/3, easterdate/2, sub_days/3, this_year/1 ]).%% RS-121325-140928 to timedat.pl
-:- use_module( 'utility/writeout', [  out/1, output/1, writepred/1 ] ). %writepred/1 is USED! in for/3 or set_of/3,
+%:- use_module( 'utility/writeout', [  ] ). %writepred/1 is USED! in for/3 or set_of/3,
+
+:-use_module( sicstus4compatibility, [ out/1 ] ). %% RS-131227 , tab/1
 
 %COMPILE THE ENTIRE BUSROUTE
 %:- compile( busroute:'compileroute.pl' ).   %% Bootstrapping for compilation, faster than "ensure loaded"?!
@@ -115,6 +118,9 @@ taforall(_X,Y,Z):- \+ (Y, \+ Z),!.
 % Check whether the regcut file exists with the extensions `.pl' (or `.prolog'), is readable, and newer than the dep and pas files,
 % if this fails, someone has to create a new regcut file as soon as possible!
 %findOrCreateRegcut( RegdepFile, RegpasFile, RegcutFile ) :-
+
+%% Predicate copied from writeout
+%out(P) :- write(P), tab(1).
 
 %% Predicate copied from compileroute
 verify_files_exist( Filename, BaseFile ) :-

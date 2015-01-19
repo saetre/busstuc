@@ -1,3 +1,6 @@
+
+:- module( xml_diagnosis, [ xml_fault/5 ] ). %% , pp_string/1, xml_declaration_attributes_valid/1, xml_to_document/3,   ] ).
+
 /* xml_diagnosis.pl : XML exception diagnosis.
  *
  * Copyright (C) 2001, 2002 Binding Time Limited
@@ -37,8 +40,10 @@
  *
  */
 
-
 :-use_module( library(lists), [ is_list/1 ] ).
+
+:-use_module( xml_acquisition, [ chars/3 ] ). %% , pp_string/1, xml_declaration_attributes_valid/1, xml_to_document/3,   ] ).
+:-use_module( xml_generation, [ generation/7 ] ). %% , pp_string/1, xml_declaration_attributes_valid/1, xml_to_document/3,   ] ).
 
 /* xml_fault( +Term, +Indentation, ?SubTerm, ?Path, ?Message ) identifies SubTerm
  * as a sub-term of Term which cannot be serialized after Indentation.

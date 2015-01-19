@@ -3,7 +3,9 @@
 %% CREATED  TA-031114
 %% REVISED  TA-110727
 
-% Compiles the bus files for BUSTER
+:-module( diabus, [ ] ).
+
+% Compiles the BUS files for BUSTER
 
 %% :- compile( 'db/discrepancies.pl').  %% NB Ad Hoc Swap routeplan data
 

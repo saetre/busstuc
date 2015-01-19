@@ -33,11 +33,12 @@ Program is run in same directory as busestuc (or in the utility folder below?)
 %% RS-140411    UNIT: / (FIRST!)
 %:- ensure_loaded( user:'../declare' ). %% RS-111213  General (semantic) Operators, %% RS-140914 AND  remember/1 (-> utility.pl)
 :- use_module( '../declare', [ remember/1 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../sicstus4compatibility', [ out/1, output/1, writepred/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 %% UNIT: / and /utility/*
 :- use_module( '../utility/utility.pl', [ append_atomlist/2, for/2, set_of/3 ] ). % remember/1, 
 :- use_module( '../utility/datecalc', [ addtotime/3, difftime/3 ] ).
-:- use_module( '../utility/writeout', [ out/1, output/1, writepred/1 ] ).%% RS-140912
+%:- use_module( '../utility/writeout', [ ] ).%% RS-140912 REMOVED 150119
 
 %% UNIT: /db/*
 :- use_module('../db/busdat', [cutloop_station/2]). %% cutloop_station
@@ -89,7 +90,7 @@ reset_dynamic_predicates :- %% TA-110317
 dumppredas( T0, T ):-
     nl,
     write('%%% ' ),nl,nl, 
-    for( T0, writeout:writepred(T) ),
+    for( T0, writepred(T) ),
     nl.
 
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % 

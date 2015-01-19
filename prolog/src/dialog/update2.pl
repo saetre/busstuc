@@ -30,10 +30,11 @@
 %:- ensure_loaded( '../declare' ). %% RS-111213 General (semantic) Operators, e.g.  :: , trackprog/2        %Helper
 %% RS-150111  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y . %:- use_module( '../main', [ ] ). % trackprog/2, value/2 
 :- use_module( '../declare', [ trackprog/2, value/2 ] ). 
+:- use_module( '../sicstus4compatibility', [ output/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 %% RS-131225    UNIT: / and /utility/
 :- use_module( '../utility/utility', [ set_of/3 ] ). %% LOOP?
-:- use_module( '../utility/writeout', [ output/1, writeprog/1 ] ). %% Contains declare? trackprog/2, 
+:- use_module( '../utility/writeout', [ writeprog/1 ] ). %% Contains declare? trackprog/2, 
 
 %% RS-140914    UNIT: /app/
 :-use_module( '../app/busanshp', [ paraphrase2/2, paraphrase_tele/2 ] ). %% extra: paraph2/1, paraphrase/1, paraphrase3/3, paraphrase_changes1/1,

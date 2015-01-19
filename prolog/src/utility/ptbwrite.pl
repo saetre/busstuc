@@ -17,12 +17,14 @@
 
 %% RS-131227    UNIT: / and /utility/
 %:- ensure_loaded( 'declare' ).    %% :-op( 714,xfx, := ).  etc... , track/2, trackprog/2
-:-use_module( '../declare', [ track/2 ] ).      %% RS-150111. Trying to sort out compile-order.
+:- use_module( '../declare', [ track/2 ] ).      %% RS-150111. Trying to sort out compile-order.
+
+:- use_module( '../sicstus4compatibility', [ output/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 %:- use_module( main, [ track/2 ] ). %% RS-140928 Moved (back) to declare.pl hei/0,   run/0 %track(X, Y) :- user:track(X, Y) .
 
 %:- use_module( 'utility/utility', [ output/1, prettyprint/1 ] ).  %% Module util
-:- use_module( writeout, [ output/1 ] ).  %% Module util  , prettyprint/1   , track/2
+%:- use_module( writeout, [ output/1 ] ).  %% Module util  , prettyprint/1   , track/2
 
 
 /*
@@ -53,7 +55,7 @@ ptbwrite(K):- %% TA-110207
 
   track(2, ( nl,write(M),nl,nl)),     %% TA-061027
 
-  track(1, ( nl,nl,ptbwrite:drucke_baum_list(M), writeout:output('    '),nl)). %% TA-061027 
+  track(1, ( nl,nl,ptbwrite:drucke_baum_list(M), output('    '),nl)). %% TA-061027 
  
   
 

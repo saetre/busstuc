@@ -1,3 +1,9 @@
+
+:- module( xml_utilities, [ canonical_xml_declaration_attribute/2, close_context/3, context_update/4, current_namespace/2, current_tag/2,
+                  default_namespace/2, defined_entity/3, initial_context/2, lowercase/2, pp_string/1, space_preserve/1, specific_namespace/3,
+                  void_context/1, xml_declaration_attributes_valid/1, xml_declaration_attribute_valid/2 ] ).
+%Extra?:         nmtokens/3 from xml_aqcquisition
+
 /* XML Utilities
  *
  * Copyright (C) 2001, 2002 Binding Time Limited

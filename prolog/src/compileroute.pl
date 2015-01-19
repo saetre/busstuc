@@ -12,6 +12,8 @@
 %% Unit: external
 :-use_module( library(file_systems), [ file_property/3 ] ).
 
+:- use_module( sicstus4compatibility, [ out/1, output/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+
 %% RS-150104
 % Experiment: Create regcut.pl on the fly, only if missing or if regdep and regpas have been updated:
 %  findOrCreateRegcut/3 ( depfile, pasfile, cutfile ) FAILS when an update is needed, e.g. (Module is r1611_141201)
@@ -20,7 +22,7 @@
 
 %% Unit: /utility/
 :-use_module( 'utility/extracut', [ create_regcut/1 ] ).     %% RS-140511 This file is imported INTO the busroute.pl module
-:-use_module( 'utility/writeout', [ out/1, output/1 ] ).
+%:-use_module( 'utility/writeout', [ output/1 ] ).
 
 %% Unit: DB
 :- use_module( 'db/route_period.pl', [ route_period/4 ]). %% RS-140511

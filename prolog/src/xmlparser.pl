@@ -5,7 +5,8 @@
 
 :-module( xmlparser, [ xmlrowparse/2, xmltaggerparse/2 ] ).
 
-:-use_module( 'utility/writeout', [ output/1 ] ).
+:-use_module( sicstus4compatibility, [ output/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+%:-use_module( 'utility/writeout', [ output/1 ] ).
 
 :-use_module( main, [ scanfile/2 ] ).
 

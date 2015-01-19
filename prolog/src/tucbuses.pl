@@ -15,16 +15,9 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%:-meta_predicate        prompt(+).     %% RS-140208    What's this for?
-%prompt( ' ' ) :- value(norsource,true). %% TA-110207
-%prompt('?: '). % Undefined Prompt.
-%prompt2( english, 'E: ' ).
-%prompt2( norsk, 'N: ' ).
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %% For main.pl, dict_e, dict_n, ...? moved to declare.pl
-:-module( tucbuses, [ legal_language/1, prompt/1, readfile_extension/1, script_file/1 ] ).            %% For readin.pl language/1,
+:-module( tucbuses, [ ] ). % , readfile_extension/1, legal_language/1
+%% For readin.pl language/1, prompt/1, script_file/1
 
 % backslash/1, %% makegram/0,  compile_english/0, compile_norsk/0,   %% RS-140920 Moved back to metacomp
 %dagrun_file/2,  dcg_file/2,     dcg_module/1, dcg_module/2, %% RS-131223 For metacomp.pl % UNUSED?: dcg_file/1,     
@@ -32,15 +25,17 @@
 %morph_file/2,   morph_module/1, %% RS-140920 For lex.pl?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- use_module( declare, [ (:=)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-:- use_module( 'main.pl', [ language/1 ] ). %(:=)/2, value/2 
+
+%:- use_module( 'main.pl', [ language/1 ] ). %(:=)/2, value/2 
 
 %% :-prolog_flag(discontiguous_warnings,_,off).  %%   RS-130330, or dcg_e.pl gets noisy!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RS-131227    UNIT: / (FIRST!)
 %:- ensure_loaded( user:'declare' ). %% RS-111213  General (semantic) Operators   := /2
-:- use_module( declare, [ (:=)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+%% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+%:- use_module( declare, [ (:=)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( declare, [ (:=)/2 ] ).   % , value/2
 
 :- ( airbusflag := false ). %% NEW FLAG %% TA-090331
 
@@ -121,41 +116,6 @@
 
 %% :- use_module( 'db/busdat', [ clock_delay/3 ] ). 
 %% :- use_module( 'db/timedat', [ named_date/2 ]).       %%  EASTER DATES AND OTHERS %% RS-131225
-
-
-legal_language(english).
-legal_language(norsk). %% NB not 'norwegian'
-
-%language(L) :- value( language, L ). %% value(language,X) should have been set dynamically by now! Moved to utility...?
-
-script_file(S):-
-    language(L),script_file(L,S).
-
-script_file(english,facts_e).
-script_file(norsk,  facts_n).
-
-readfile_extension(english, '.e').
-readfile_extension(norsk,   '.n').
-
-
-prompt( ' ' ) :-
-   value(norsource,true). %% TA-110207
-
-prompt(P):-
-    language(L),
-    prompt2(L,P),
-    !.
-
-prompt('?: '). % Undefined Prompt.
-
-
-prompt2( english, 'E: ' ).
-prompt2( norsk, 'N: ' ).
-
-
-readfile_extension(X) :-
-    language(L),
-    readfile_extension(L,X).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

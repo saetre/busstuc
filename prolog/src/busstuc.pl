@@ -29,7 +29,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %:- ensure_loaded( user:'declare' ). %% RS-111213  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) :- X := Y .
-:- use_module( main, [ dialog/0, hei/0, hi/0, jettyrun/1, r/1, run/0, spyr/1, status/0 ] ). %% RS-140209    %?-compile('main.pl').
+:- use_module( main, [ hei/0, hi/0, jettyrun/1, r/1, run/0, spyr/1, status/0 ] ). %% RS-140209    %?-compile('main.pl'). % dialog/0, 
 
 
 %% RS-141107    UNIT: /tuc/

@@ -19,7 +19,7 @@
 
 % :- ensure_loaded( version ).       %% RS-131227    With version_date/1, used in monobus -> teledat2.pl  %% RS-150104 Moved to main!
 
-:- use_module( main, [ dialog/0, hei/0, hi/0, jettyrun/1, r/1, run/0, spyr/1, status/0 ] ). %% RS-140209    %?-compile('main.pl'). (:=)/2, 
+:- use_module( main, [ hei/0, hi/0, jettyrun/1, r/1, run/0, spyr/1, status/0 ] ). %% RS-140209    %?-compile('main.pl'). (:=)/2,  %dialog/0,  
 
 
 :- compile( monobus ). %% // after main.pl, to avoid  Unknown error?

@@ -8,13 +8,18 @@
 %% Compiles all  the necessary files for
 
 %% BUSTER Dialog Versjon
-% NOT :-module( tucbuster, [ ] ). % run/0 ] ). %% Not module! Compile in "user:" module?
+:-module( tucbuster, [ dialog/0, run/0 ] ). %% Not module! Compile in "user:" module?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Based on:  database/busroute.pl is compiled
 
 %%% ?-prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates %% TA-031106
+
+:- use_module( declare, [ ( := )/2 ] ). %% RS-131227 Avoid loop?
+%?-compile('bustermain2.pl'). %% NEW, TELE COMPATIBLE  
+:- use_module( bustermain2, [ dialog/0, run/0 ] ). %% NEW, TELE COMPATIBLE
+%:- use_module( main, [ dialog/0, run/0 ] ). %% RS-131227 Avoid loop?
 
 
 %:-volatile lastday/2 . %% RS-130331
@@ -26,14 +31,11 @@
 %?-compile('busterversion.pl'). 
 ?-use_module( 'busterversion.pl', [ ] ).
 
-%?-compile('bustermain2.pl'). %% NEW, TELE COMPATIBLE  
-:- use_module( declare, [ ( := )/2 ] ). %% RS-131227 Avoid loop?
-:- use_module( main, [ dialog/0, run/0 ] ). %% RS-131227 Avoid loop?
-
 %?-compile('tele2.pl'). %% specific tele programs %% TA-051116
 ?-use_module( 'tele2.pl', [ ] ). %% specific tele programs %% TA-051116
 
-?-compile( 'diabus.pl' ). 
+%?-compile( 'diabus.pl' ). 
+:-use_module( diabus, [ ] ).    %% RS-150119
 
 :-compile( 'dialog/d_call.pl' ). %% diolog/0, etc.?
 %:-ensure_loaded( 'dialog/d_call.pl' ). %% create_splitacts/x, etc.?

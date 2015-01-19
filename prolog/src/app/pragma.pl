@@ -18,15 +18,7 @@
 %%% RS-140914, UNIT: /app/
 :-module( pragma, [ pragma/3, pragma_aux/3, pragma_complete/5,  flatroundre/2, roundmember/2, ip2addto/4 ] ). % RS-141015  , test_dependencies/0  Needed?
 
-%%Local predicates
-%%       i2oddcond/3, %% i/0, iandrec/0, ip/0,
-%%       ipragmaor/3, ipragmaor0/2, % occ/2, sequence_member/2, % EXPERIMENT pragma/2, %%RS-141006 
-%%       varalarm/1,             %% RS-140102, ipragmaor0/0, set/2
-
-%%        i0/3, d0/3, p0/1        %% RS-141006 . FOR TESTING ?
-
 %FIXED META-PREDICATES?!?
-%%meta_predicates: p0/1, test/1 ?       RS-140208 moved from utility.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :- meta_predicate  i0(0,+,-)  . %% RS-140101    Declared in interapp.pl ? RS-140928 Just for trace-output
 :- meta_predicate  i(0,+,-)  . %% RS-141018    % Shield what from meta-processing?
@@ -64,10 +56,18 @@
 
 :- meta_predicate  writepragmastep(+,+,?).
 
+%%Local predicates
+%%       i2oddcond/3, %% i/0, iandrec/0, ip/0,
+%%       ipragmaor/3, ipragmaor0/2, % occ/2, sequence_member/2, % EXPERIMENT pragma/2, %%RS-141006 
+%%       varalarm/1,             %% RS-140102, ipragmaor0/0, set/2
+
+%%        i0/3, d0/3, p0/1        %% RS-141006 . FOR TESTING ?
 
 %% RS-141026    UNIT: /
 %:- ensure_loaded( user:'../declare' ).  %% RS-140928 or? and? not? %% Including...
 :- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../sicstus4compatibility', [ out/1, output/1, prettypr/2 ] ).  %% Compatible with sicstus4, get0/1 etc.
+
 %:- use_module( '../main.pl', [ value/2 ] ). %MISERY?!
 %% UNIT: /
 %:- op( 715, fy, assume). %operator in pragma, but looks like assume(predicate) in bustrans... ? meta_predicate setting?
@@ -84,7 +84,7 @@
 :- use_module( '../utility/utility', [ match/2, occ/2, roundrecmember/2, roundreverse/2, sequence_member/2 ] ).
         %% RS-131231 bound/1, testmember/2, test/1, unbound/1  is used only in rules:
         %%   in interapp % follow_after/3, follow_sequence/3, roundmember/2,
-:- use_module( '../utility/writeout', [ out/1, prettypr/2 ] ).
+%:- use_module( '../utility/writeout', [ prettypr/2 ] ).
 :- use_module( '../utility/datecalc', [ ] ). % add_days/3, addtotime/3, before_date1/2, difftime/3, isday/1, sub_days/3, subfromtime/3, timenow/1, timenow2/2, today/1, todaysdate/1 ] ).
 %% Already imported by telelog? % Contains the utility predicates that has to do with dates, call-ed below!
 
@@ -154,7 +154,7 @@ pragma( RuleModule, Source, DestOut ) :-
 
 pragma( RuleModule, _Source, _DestOut ) :-
    %pragma_aux( RuleModule: Source, [], DestOut ).
-        writeout:output( 'pragma.pl~140 BAD OR MISSING RULE MODULE: '), writeout:output( RuleModule ), nl,fail. %,trace
+        output( 'pragma.pl~140 BAD OR MISSING RULE MODULE: '), output( RuleModule ), nl,fail. %,trace
 
 
 

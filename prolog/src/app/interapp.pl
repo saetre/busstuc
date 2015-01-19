@@ -33,19 +33,7 @@
 
 :- meta_predicate  foralltest(0,0).  %% for/2. Stay inside interapp? %% RS-140619
 :- meta_predicate  make_total_google( 0, ? ) .   %% RS-140927 Move up? Before busanshp?
-%:- meta_predicate  once1(0) .    %% RS-140615  %% once1/1 meta-predicate
-%:- meta_predicate  traceanswer(0).
 :- meta_predicate  totaljsonprint( +, 0 ) .      %% RS-140927
-%:- meta_predicate  writeanswer(0).
-
-%:- meta_predicate  avoidfool( 0 ).  %% RS-141018
-%:- meta_predicate  find_tag( 0, - ). %% RS-141018
-
-%:- meta_predicate  makeanswer(?,?,0,?).  %% Stay inside interapp? %% RS-140619     % makeanswer(Success,+FlatCode ,+Program,-AnswerOut).
-%:- meta_predicate  makeinitanswer(?,?,0,-).  %% Stay inside interapp? %% RS-140619     % makeanswer(Success,+FlatCode ,+Program,-AnswerOut).
-%:- meta_predicate  makeanswertele(0).  %% Stay inside interapp? %% RS-140619
-%:- meta_predicate  printallmessagesprogram(0).   %% RS-141018
-%:- meta_predicate  printpaytag(0).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :- volatile
@@ -58,11 +46,12 @@
 %%% RS-131225, UNIT: / and utility/
 %:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
 :- use_module( '../declare', [ ( := )/2, forget/1, set/2, trackprog/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../sicstus4compatibility', [ output/1, writeanswer/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 %%% RS-131225, UNIT: /utility/
 :- use_module( '../utility/utility', [ append_atoms/3, flatround/2, newconst/1, fnuttify2/2, for/2, once1/1, sequence_member/2 ] ). %forget/1,  
         % Made local:  occ/2, %% RS-140928 %% RS-140412 output/1  %% RS-131231, False Warning, SPIDER-bug. output/1 IS used !! when called from... bustrans?
-:- use_module( '../utility/writeout', [ output/1, printdots/0, waves/0, writeanswer/1, writeprog/1 ] ). % traceanswer/1,  
+:- use_module( '../utility/writeout', [ printdots/0, waves/0, writeprog/1 ] ). % traceanswer/1,  
 
 %%% RS-140921, EXTERNAL LIBRARIES
 %:- use_module( library( varnumbers ), [ numbervars/1 ] ). %% RS-140210.

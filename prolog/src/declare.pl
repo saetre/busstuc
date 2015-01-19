@@ -8,7 +8,7 @@
 %% USAGE:
 %:- use_module( declare, [ (:=)/2, (=:)/2, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
-:- module( declare, [ (:=)/2, ( =: )/2, forget/1, remember/1, set/2, track/2, trackprog/2, value/2 ] ).
+:- module( declare, [ (:=)/2, ( =: )/2, forget/1, language/1, remember/1, set/2, track/2, trackprog/2, value/2 ] ).
 
 :- meta_predicate  remember(0) .        %% RS-140928 Remember the facts IN THE MODULE THAT CALLS REMEMBER! Use  :  or  0
 %:-use_module( 'utility/writeout', [ out/1, output/1 ] ).       %% Avoid ANY Loops from declare import X, X use_module( declare ). !!!  RS-141108
@@ -22,6 +22,8 @@
 :-dynamic
           value/2.      %% RS-130630. declare:value is modified by the  :=  predicate, and checked by the =: predicate
 %
+
+language(L) :- value( language, L ). %% value(language,X) should have been set dynamically by now! Moved to utility...?
 
 set( Counter, Value ) :- 
     retractall( value( Counter, _ ) ),

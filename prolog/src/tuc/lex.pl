@@ -9,9 +9,9 @@
 %% Transforms each word into a list of alternatives.
 %% Semi-tagger (quasi multitagger)
 
-:-module( lex, [ assertnewtxt/3, avoid_spurious_street/1,       believed_name/5,        blockmark/1,            %% RS-131225 for utility for-loop?
+:-module( lex, [ assertnewtxt/3, avoid_spurious_street/1,       believed_name/5,        blockmark/1,      %% RS-131225 for utility for-loop?
         classify/2,        clean1/0,               completely_unknown/3,           ctxt/3,
-        decide_domain/0,        decide_topic/0,                 dict_module/1,          dict_module/2,    doall/1,      %% RS-131227    For buster (Dialog)
+        decide_domain/0,        decide_topic/0,                 dict_module/1,          dict_module/2,    %% RS-131227    For buster (Dialog)
         exmatchcompword/2,      extract_inter_pares/3,          known_name/1,      lcode1/2,              lexcandsearch/3,%% RS-131225    For utility.pl for-loop         %language/1,
         lexproc3/3,             maxl/1,                         matchcomp3/3,           matchcompword/2,        %% For utility for-loop
         mix/2,                  numbernext/1,                   no_unprotected_verb/0,  %% RS-131225 % mix used by main.pl (write a * in the list)
@@ -47,7 +47,6 @@
 
 %% META PREDICATES : for/2, foralltest/2, once1/1, set_of/3, set_ops/3, test/1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate doall(0) .   %% RS-141019     doall/1 (Goal_0) . Zero input arguments for Goal_0 % doall(P): (P, then succeed)
 %:- meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
 :- meta_predicate  foralltest(0,0).
 %:- meta_predicate  once1(0).
@@ -77,8 +76,8 @@
 
 %%% RS-131225, UNIT: / and /utility/,
 :- use_module( '../declare', [ (:=)/2, (=:)/2, remember/1, set/2, track/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-
-:- use_module( '../utility/utility', [ append_atoms/3, begins_with/3, delete1/3, ends_with/3, flatten/2, for/2, iso_atom_chars/2, %% RS-141029  Avoid bad loops! foralltest/2, once1/1,  
+:- use_module( '../sicstus4compatibility', [ out/1, output/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+:- use_module( '../utility/utility', [ append_atoms/3, begins_with/3, delete1/3, doall/1, ends_with/3, flatten/2, for/2, iso_atom_chars/2, %% RS-141029  Avoid bad loops! foralltest/2, once1/1,  
                                        once1/1, set_of/3, set_ops/3, set_union/3, testmember/2, textlength/2 ] ). % remember/1, remove_duplicates/2, set_of/3, test/1,   
 :- use_module( '../utility/writeout', [ traceprint/2 ] ).  %% Module util  , prettyprint/1, output/1, 
 
@@ -86,7 +85,8 @@
 %:-use_module( '../utility/library', [ ] ).      %% RS-131229 Make this internal! (Decoupling modules!)
 
 %%MISERY?:
-:- use_module( '../main' , [ language/1 ] ). % gps_origin/2, %% RS-141026 gps_origin/2, For gps_origin handling.  (:=)/2, ( =: )/2,  set/2, value/2
+:- use_module( '../sicstuc' , [ language/1 ] ). % gps_origin/2, %% RS-141026 gps_origin/2, For gps_origin handling.  (:=)/2, ( =: )/2,  set/2, value/2
+%:- use_module( '../main' , [ language/1 ] ). % gps_origin/2, %% RS-141026 gps_origin/2, For gps_origin handling.  (:=)/2, ( =: )/2,  set/2, value/2
 %% RS-131224  ctxt/3 is dynamicly used below. track/2 localized
 
 
@@ -127,7 +127,7 @@
 %:- morph_n:ensure_loaded( morph_n ). %%  lcode2/2 %% RS-140421  , lexv/4, noun/1, tall/2, verbroot/1 USED in morph:lcode2(X,Y)
 :- use_module( morph_n, [ ] ). % lcode2/2 ] ). %% RS-140421  , lexv/4, noun/1, tall/2, verbroot/1 USED in morph:lcode2(X,Y)
 
-:- use_module( '../utility/writeout', [ out/1, output/1 ]).       %RS-131223 Value == TROUBLE! value/2    (And for(X,Y) is trouble too!)
+%:- use_module( '../utility/writeout', [ output/1 ]).       %RS-131223 Value == TROUBLE! value/2    (And for(X,Y) is trouble too!)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
@@ -1489,12 +1489,6 @@ cleantxt :-
 %% dronningens -> out
 %% dronningens gate
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-doall( P ) :-  % P, then succeed
-    P,
-    false ;
-    true.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 proxyclean :- %% TA-101027
      doall( clean1 ). %% failure driven loop (utility)

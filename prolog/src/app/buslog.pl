@@ -32,63 +32,21 @@
 %% META-PREDICATES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :- meta_predicate not(0).     % not/1,
-%:- meta_predicate  once1(0) .    %% RS-140615  %% once1/1 meta-predicate
-%:- meta_predicate  set_of(+,0,-) . %% 141024. Moved BACK to utility.pl?
-%:- meta_predicate  set_ops(+,0,-).
 :- meta_predicate  set_eliminate(+,0,-,-).
 :- meta_predicate  set_filter(+,0,-,-).
 :- meta_predicate  test(0) .  %% RS-140615  %% test/1 is a meta-predicate ( just passing on the incoming X-predicate )
-%:- meta_predicate  trackprog(+,0) .
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %% not/1 or (not)/1 is a predicate, and not can be written (also) a prefix operator (see operator-list in declare.pl)
 not X :- \+ X.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%once1( P ) :- P,!. %% same as once, but version independent   %% try once, otherwise FAIL
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Prologs set_of is baroque %% RS-140614  130sec runtime vs. 28sec runtime for \r tests/batch !
-%:- meta_predicate  set_of(+,0,-) . %% 141024. Moved BACK to utility.pl?
-%set_of(X,Y,Z):-           %%
-%    setof(X,Y^Y,Z),!;     %% Trick to avoid alternatives
-%    Z=[].                 %% What is wrong with empty sets ?
-
-%% Sequence preserving set_of, ( first occurrence stays first)
-%set_ops(X,Y,Z):-
-%    findall(X,Y,Z1),
-%    remove_duplicates(Z1,Z). %% order-preserving
-
-
-% extra / local
-%%      airbus_route/1,         approvenightbustoplace/2, arr_after/2, arr_between/3, arrdep_after/2, arrdep_before/2,
-%       converttostandard/2,    coupled1/8,     %% RS-131225    Necessary?
-%       day_route/1,            dep_after/2,            dep_between/3,          depbusMOD/12,           depMOD/12,   
-%% OBSOLETE when RealTime: depbeforestationwalk/1,
-%       endstations/2,          %% RS-131225    For telelog.pl 'sk(_).'
-%       keepbefore/3,           looping/3,              %% RS-131225 For busanshp,makeauxtables.pl
-%       night_route/1,          (not)/1,                not_arr_between/3,      not_dep_between/3,      not_extreme_hastus_time/1,
-%       occurs_afterwards/2,    pass_after_strict/2,    pass_at/2,              pass_between/3,         pass_bus/2,            pass_rid/2,
-%       passrids/2,             place_station1/2,       place_station/2,        regbus/1,
-%       ridtobusname/2,         route/3,        %%  %% RS-131231 for utility/makeauxtables
-%       ridtotour/2,            samefplace/2,           stathelp/3,             tourtoend/2,
-%       try_preferred_transfer/4        RS-131226     % Extra?
-
-%extra?
-%find_askfor/3,          find_parentslot/3,      resetframe/0,           %% from dialog/frames2
-%frame_getcount/2,       frame_getsubslots/2,    frame_gettype/2,        frame_iscomplete/1,        frame_isempty/1,
-%frame_isfull/1,         frame_setexperience/4,        frame_setexperience_rec/4
-%xframe_getvalue/2,      xframe_setvalue/2      % From dialog/frames2
-
-%From db/tables/r16xx_xxxx.pl
-% composite_stat/3, departureday/4,
-
 %UNUSED?
 %passtimeMOD/8, 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%:- ensure_loaded( '../declare' ). %% RS-111213 ,  value/2, traceprog/2, trackprog/2
 :- use_module( '../declare', [ (:=)/2, trackprog/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../sicstus4compatibility', [ output/1, remove_duplicates1/2, traceprog/2 ] ).         %% RS-141207-150119  progtrace/2, 
 
 :- ensure_loaded('../db/discrepancies.pl' ). %% RS-131230 alias_station2/3, etc.
 
@@ -100,12 +58,12 @@ not X :- \+ X.
 :- use_module( '../utility/datecalc', [ add_days/3, days_between/3, addtotime/3, dayno/2, difftime/3, subfromtime/3, timenow/1, timenow2/2, today/1 ] ).
         %% datetime/6, finddate/2, getdaynew/1, timenow/1,
 :- use_module( '../utility/library', [ delete/3, reverse/2 ] ). %% RS-131225  For app/buslog, telelog, etc? remove_duplicates/2, 
-:- use_module( '../sicstus4compatibility', [ remove_duplicates1/2 ] ).         %% RS-141207
-:- use_module( '../utility/writeout', [ output/1 ] ).  %% RS-140912  out/1, 
+
+%:- use_module( '../utility/writeout', [ output/1 ] ).  %% RS-140912  out/1, 
 %:- use_module( '../utility/writeout', [ trackprog/2 ] ).%% RS-141105
 
 %%% RS-140101, UNIT: /
-:- use_module( '../main', [ gps_origin/2, progtrace/2, traceprog/2 ] ).  %% RS-140209 ( := )/2, value/2, 
+:- use_module( '../utility/gps', [ gps_origin/2 ] ).  %% RS-140209 ( := )/2, value/2, progtrace/2, traceprog/2
 :- use_module('../interfaceroute' , [ decide_period/2, domain_module/2 ]). % Interface procedures for handling interface to route modules, with topreg
 
 %%% RS-140210, UNIT: app/
@@ -2156,7 +2114,7 @@ coupled2(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
 
      !, %% ignore direct connection
 
-     progtrace(4,coup2),
+     traceprog(4,coup2),
 
      coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01).
 
@@ -2186,7 +2144,7 @@ coupled2(BothStartDeps,_,_,Day, _DaySeqNo,_Opts,BothStartDeps1,MidDeps) :-
     sameday(Day),
 %    value( actualdate, Today ), finddate( 0, Today ), % Really same day!
 %%%%%%%%%%%%%%%%%%%%%%% TA-110706    \+ testmember(lastcorr,Opts),
-    progtrace(4,coup6),
+    traceprog(4,coup6),
     timenow2(0,NOW),
     keepafter(NOW,BothStartDeps,BothStartDeps1), %% NB direct line early in morning***
     BothStartDeps1 \== [], %% TA-100828          %%
@@ -2203,7 +2161,7 @@ coupled2(BothStartDeps,_,_,Day,_DaySeqNo,_Opts,BothStartDeps,MidDeps) :-
 %    value( actualdate, Today ),
     \+ ( sameday(Day) ),%, finddate( 0, Today ) ),  % NOT Really same day! %% time might give opportunity to take next day
     !,
-    progtrace(4,coup7),
+    traceprog(4,coup7),
     MidDeps=[].
 
 
@@ -2227,7 +2185,7 @@ coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
 
     sameday(Day),
          !,
-    progtrace(4,coup8),
+    traceprog(4,coup8),
     timenow2(1,NOW),   %% Dont announce bygone departures
     keeparrafter(NOW,StartDeps,AfterStartDeps),
     keeparrafter(NOW,EndDeps,AfterEndDeps),
@@ -2249,7 +2207,7 @@ coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
 
     sameday(Day),
          !,
-         progtrace(4,coup9),
+         traceprog(4,coup9),
     coupledtry(StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01).
 
 
@@ -2262,7 +2220,7 @@ coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
     \+ time_options(Opts),   %%  busanshp.pl
     \+ sameday(Day),
          !,
-         progtrace(4,coup10),
+         traceprog(4,coup10),
          coupled3(StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01).
 
 
@@ -2271,7 +2229,7 @@ coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
 coupled2([],StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01) :-
     \+ member(direct,Opts),  % Indirect solutions is not to be found
          !,
-         progtrace(4,coup11),
+         traceprog(4,coup11),
          coupled3(StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01).
 
 
@@ -2368,8 +2326,8 @@ coupled3(StartDeps,EndDeps,Day,DaySeqNo,Opts,Dep01,Mid01) :-
         ridtobusname(Rid1,BusN1),
         ridtobusname(Rid2,BusN2),
 
-      progtrace(5,depnode(_,Time1,_,_,_,Rid1,BusN1,SeqNo1,Station1)),
-      progtrace(5,depnode(Time2,_,_,_,_,Rid2,BusN2,SeqNo2,Station2)),
+      traceprog(5,depnode(_,Time1,_,_,_,Rid1,BusN1,SeqNo1,Station1)),
+      traceprog(5,depnode(Time2,_,_,_,_,Rid2,BusN2,SeqNo2,Station2)),
 
         Dep01 = depans(BusN1,Rid1,Time1,Station1,BusN2,Rid2,Time2,Station2),
    Mid01=  midans(BusN1,OffTime,OffStation,BusN2,OnTime,OnStation).
@@ -2621,7 +2579,7 @@ trytransbuslist(Bus1,Bus2,OffStation,OnStation):- %% TA-110322
     testmember(HoffStat,TBL),
     testmember(HonStat,TBL),
 
-    progtrace(3,trytransbuslist(Bus1,Bus2,OffStation,OnStation)).
+    traceprog(3,trytransbuslist(Bus1,Bus2,OffStation,OnStation)).
 
  htrans(OffStation,hovedterminalen):-
     corr(OffStation,hovedterminalen),!.

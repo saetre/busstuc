@@ -5,7 +5,8 @@
 
 % Compiles the RUTH system for NTNU server.
 
-?-compile('../buster.pl'). %% TA-070811
+%?-compile('../buster.pl'). %% TA-070811
+:-use_module( '../buster.pl', [] ). %% TA-070811
 ?-save_program(buster).
-?-halt.
+% ?-halt.
 

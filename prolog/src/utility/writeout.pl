@@ -16,9 +16,9 @@
     nopay/0,    nopay1/0,       outcap/1,       pay/0,  pay1/0,  period/0, period0/0, space/0,
     punkt/0,  question/0,
     space0/0,   startmark/0,      %% From BusAnsHP
-    out/1, output/1, prettyprint/1, roundwrite/1, prettypr/2, print_parse_tree/1, printdots/0,
-    sequence_write/1, statistics/1, teleanswer_sat/2, traceanswer/1, traceprint/2,  %  track/2, trackprog/2, 
-    waves/0, writeanswer/1, writedate/1, writefields/1, writename/1, writepred/1, writeprog/1,       writesimplelist/1,
+    prettyprint/1, roundwrite/1, print_parse_tree/1, printdots/0, %% out/1, MOVED prettypr to sicstus4comp... Avoiding loops in imports.
+    sequence_write/1, statistics/1, teleanswer_sat/2, traceprint/2,  %  track/2, trackprog/2, 
+    waves/0, writedate/1, writefields/1, writename/1, writeprog/1,       writesimplelist/1, %writepred/1, MOVED to SP4compatibility
     writetelebusteranswer_rep/1, writetelebusteranswer_saf/2, writetelebusteranswer_sqt/3, writetelebusteranswer4/4, writetelebusteranswerfields/1,
     writevaluelist/2, xwriteanswer/2
   ] ). %% RS-141105 Moved to main?: language/1,
@@ -28,21 +28,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :- meta_predicate  busanswer_sat( ?, 0, ? ) . %% RS-141105
 :- meta_predicate listall( 0 ) .
-%:-meta_predicate  output( + ) .   %% RS-100101 ?  %% NEW PREDICATE
-%:-meta_predicate  output( 0 ) .   %% RS-140928 ?  %% NOT META PREDICATE: write/1
 :- meta_predicate  teleanswer_sat( +, 0 ) .
-%:- meta_predicate  track( +, 0 ) .     %% Moved to declare!  %% RS-150111
-:- meta_predicate  traceanswer( 0 ) .
-%:- meta_predicate  trackprog( +, 0 ) . %% Moved to declare!  %% RS-150111
+:- meta_predicate  xwriteanswer( ?, 0 ) .
 :- meta_predicate  writetelebusteranswer1( 0 ) .
 :- meta_predicate  writetelebusteranswer_rep( 0 ) .
 :- meta_predicate  writetelebusteranswer_saf( ?, 0 ) .
-:- meta_predicate  writeanswer( 0 ) .
-:- meta_predicate  xwriteanswer( ?, 0 ) .
 
-%:- ensure_loaded( user:'../declare' ).  %% RS-140102 (:=)/2, user:value/2
-:- use_module( '../declare', [ track/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- use_module( '../declare', [ language/1, track/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../sicstus4compatibility', [ out/1, output/1, prettypr/2, tab/1, writeanswer/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+
 :- use_module( library(varnumbers), [ numbervars/1 ] ). %% RS-140210.
 
 %% RS-131225, UNIT: /utility/
@@ -55,7 +50,6 @@
 
 %% RS-141026    UNIT: /
 %:- use_module( '../main.pl', [ language/1 ] ). %MISERY?!
-:- use_module( '../sicstus4compatibility', [ tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 %%% RS-140914, UNIT: /app/
 %:- use_module( '../app/busanshp', [ bcp/1, bcpbc/1, bwrbc/1 ] ). % , colon/0, space/0 
@@ -79,11 +73,15 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-out(P) :- write(P), tab(1).
-output(P) :- write(P), nl.
-language(L) :- value( language, L ). %% value(language,X) should have been set dynamically by now! In tucbuses
+%:- meta_predicate  track( +, 0 ) .     %% Moved to declare!  %% RS-150111
+%:- meta_predicate  trackprog( +, 0 ) . %% Moved to declare!  %% RS-150111
+%:- meta_predicate  traceanswer( 0 ) .
+%:- meta_predicate  writeanswer( 0 ) .
+%out(P) :- write(P), tab(1). %% Moved to sicstus4compatibility!
+%output(P) :- write(P), nl.
+%language(L) :- value( language, L ). %% value(language,X) should have been set dynamically by now! In tucbuses
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%MOVED
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1620,9 +1618,9 @@ print_parse_tree(Parse1):- %% TA-110207
    
 print_parse_tree(Parse1):- %% TA-110207
    track(4, printparse(Parse1) ), %%  print proper parsetree
-   track(2, writeout:output('*** Simplified parse tree ***') ),
+   track(2, output('*** Simplified parse tree ***') ),
    track(1, ptbwrite:ptbwrite(Parse1) ), %% -> ptbwrite.pl
-   track(2, (writeout:output('*****************************'),nl) ).
+   track(2, (output('*****************************'),nl) ).
 
 printparse(X) :- 
     write('*** Parse Tree ***'),nl,nl,
@@ -1696,21 +1694,6 @@ listreq2([]).
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 
-prettypr(H,P) :- 
-        write('*** '), %% drop ... %% TA-110204
-   write(H),
-   write(' ***'),
-   nl,nl, 
-   prettypr2(P).
-prettypr2((X,R)) :-
-        !,   
-   write(X),nl,prettypr2(R).
-prettypr2(X) :-
-        write(X),nl.
-
-%%% 
-
-
 printdots :-  %% TA-110204
     dotline(DOTS),
     traceprint(1,DOTS).
@@ -1740,23 +1723,6 @@ traceprint(N,P):- %% same as trace
 %///
 
 
-%% ¤¤¤¤¤¤¤¤¤¤¤¤
-traceanswer( _:Panswer ) :- 
-         value(traceans,L),
-         L>1,
-    !,
-         copy_term( Panswer, Pwr ),
-         numbervars(Pwr),         % utility.pl?
-         prettypr('Application answer program',Pwr),nl. 
-
-traceanswer( _ ). %% Always Succeeds (Otherwise)
-
-
-writeanswer( Panswer ) :- 
-    traceanswer( Panswer ),
-    Panswer,
-    !. 
-
 %% sant
 
 writeprog(P) :-
@@ -1773,13 +1739,6 @@ writeprog(P) :-
 writeprog(_). % Otherwise
 
 %% ¤¤¤¤¤¤¤¤¤¤¤¤
-
-
-writepred(P) :- writeq(P),write('.'),nl. 
-
-
-
-
 
 
 
