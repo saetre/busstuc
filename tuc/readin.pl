@@ -20,18 +20,18 @@
 %% RS-141026    UNIT: /
 %:- ensure_loaded( '../declare' ).  %% RS-140102 (:=)/2, user:value/2
 :- use_module( '../declare', [ (:=)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-%:- use_module( '../main.pl', [ ( := )/2, value/2 ] ). %MISERY?!
+:- use_module( '../sicstus4compatibility', [ get0/1, output/1, prompt/1, ttyflush/0 ] ).  %% Compatible with sicstus4, get0/1 etc.
+
 %% RS-131225, UNIT: /   and /utility/
 %:- ensure_loaded( '../tucbuses' ). % , [ prompt/1 ] ). %% RS-131229-140928 NOT A MODULE (any more, after all...)
-:- use_module( '../tucbuses', [ prompt/1 ] ). %% RS-131229-140928 NOT A MODULE (any more, after all...)
-
-:- use_module( '../utility/library', [ ] ).    %% RS-131225 etc?
-:- use_module( '../utility/utility', [ splitlast/3 ] ).  %% RS-131225 etc?
-:- use_module( '../utility/writeout', [ output/1 ] ).  %% RS-140921
-
-:- use_module( '../sicstus4compatibility', [ get0/1, ttyflush/0 ] ).  %% Compatible with sicstus4, get0/1 etc.
-
+%:- use_module( '../main.pl', [ ( := )/2, value/2 ] ). %MISERY?!
+%:- use_module( '../utility/writeout', [ output/1 ] ).  %% RS-140921
 %:- use_module( '../main.pl', [ norsource_prefix/0 ] ). %% RS-140209 hei/0,   run/0     %% RS-141002 DON'T !! (LOOP!) 
+
+%:- use_module( '../sicstuc', [ prompt/1 ] ). %% RS-140928-150119
+
+%:- use_module( '../utility/library', [ ] ).    %% RS-131225 etc?
+:- use_module( '../utility/utility', [ splitlast/3 ] ).  %% RS-131225 etc?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

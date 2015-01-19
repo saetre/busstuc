@@ -1,3 +1,6 @@
+
+:- module( xml_acquisition, [ chars/3, nmtokens/3, xml_to_document/3 ] ). %% , pp_string/1, xml_declaration_attributes_valid/1, xml_to_document/3,   ] ).
+
 /* xml_acquisition.pl : XML -> Document translation.
  *
  * Copyright (C) 2001, 2002 Binding Time Limited
@@ -34,8 +37,6 @@
  *
  */
 
-:- module( xml_acquisition, [ xml_to_document/3,  pp_string/1, nmtokens/3, xml_declaration_attributes_valid/1 ] ).
-
 :- meta_predicate  uri1(?,?,?,-). % uri1/4, 
 :- meta_predicate  nmtoken_chars_tail(?,?,-).
 :- meta_predicate  xml_string1(?,?,?,-).
@@ -45,7 +46,8 @@
 %% UNIT: /utility/.     %% USAGE:
 %:-use_module( '../utility/library', [ exec/3, shell/1 ]). %% TEMPORARY non-FIX!
 %:-use_module( library(lists) ). %% delete/3, reverst/2, etc? is also loaded from utility/library.pl !!
-:- ensure_loaded( xml_utilities ).
+:-use_module( xml_utilities, [  close_context/3, context_update/4, current_namespace/2, current_tag/2, default_namespace/2, defined_entity/3,
+                                initial_context/2, space_preserve/1, specific_namespace/3, void_context/1, xml_declaration_attribute_valid/2 ] ).
 
 /* xml_to_document( +Controls, +XML, ?Document ) translates the list of
  * character codes XML into the Prolog term Document. Controls is a list

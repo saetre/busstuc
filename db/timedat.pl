@@ -22,10 +22,11 @@
 
 %:- ensure_loaded( user:'../declare' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
 :- use_module( '../declare', [ remember/1 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../sicstus4compatibility', [ output/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 :- use_module( '../utility/utility', [ for/2 ] ).  %%  used in forall instead of utility:for/2. % Moved to declare.pl
 :- use_module( '../utility/datecalc.pl', [ add_days/3, easterdate/2, sub_days/3, this_year/1, todaysdate/1 ]).  %% RS-121325 Contains the utility predicates that has to do with dates
-:- use_module( '../utility/writeout.pl', [ output/1 ] ). % out/1, Not used  %% RS-141029
+%:- use_module( '../utility/writeout.pl', [ output/1 ] ). % out/1, Not used  %% RS-141029
 
 %% :-use_module( '../utility/library.pl' ).        %% for: uses orig_named_date %% KISS %% RS-131230
 %:-use_module( library(aggregate), [ foral/2 ] ). %% KISS %% RS-140914    %% RS-141029  for-all Does NOT work like utility:for/2

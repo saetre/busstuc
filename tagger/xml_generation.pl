@@ -1,3 +1,6 @@
+
+:- module( xml_generation, [ document_generation/4, generation/7 ] ). %% , pp_string/1, xml_declaration_attributes_valid/1, xml_to_document/3,   ] ).
+
 /* xml_generation.pl : Document -> XML translation
  *
  * Copyright (C) 2001, 2002 Binding Time Limited
@@ -36,6 +39,9 @@
  *
  *
  */
+
+:-use_module( xml_acquisition, [ chars/3 ] ). %% , pp_string/1, xml_declaration_attributes_valid/1, xml_to_document/3,   ] ).
+:-use_module( xml_utilities, [ xml_declaration_attributes_valid/1 ] ).
 
 /* document_generation( +Format, +Document ) is a DCG generating Document
  * as a list of character codes. Format is true|false defining whether layouts,

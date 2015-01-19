@@ -12,9 +12,9 @@
 %        fact0/1,        %% Semi permanent, in evaluate.pl
 %        %Compilation predicates?
 :-module( bustermain2, [ begin/0,        break/1,       c/1,            check/0,        create_taggercall/2,    % crash/0,        test on undefined predicate
-        dialog/0,      dialogrun0/0,   english/0,      hei/0,           hi/0,           ho/0,      %% See d_dialogue
+        dialog/0,      english/0,      hei/0,           hi/0,           ho/0,      %% See d_dialogue dialogrun0/0,   
         indentprintlist/2,     listxt/0,      logrun/0,        norsk/0,        plustoatom/2,  printparse/1,   %%        progtrace/2,
-        quit/0,        r/1,           readday/0,        readscript/0,   restart/0,      run/1,  %%% readscript/0,   
+        quit/0,        r/1,           readday/0,        readscript/0,   restart/0,      run/0,  run/1,  %%% readscript/0,   
         scanfile/2,    spyg/1,         spyr/1,         statistics/1,   status/0,  %% (sp)/1,         %% RS-141026 Use main.pl instead!!!
         testgram/0,    tuc/0,        update_compnames/1, %, value/1, (from declare.pl) trackprog/2,    
         webrun_english/0,      webrun_norsk/0, webrun_tele/0,  write_taggercall/1
@@ -25,7 +25,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %:- ensure_loaded( user:'declare.pl' ). %% RS-131228 "new syntax" defs, META-preds: for/2, remember/1, value/2, :=/2, =;/2
-:- use_module( declare, [ (:=)/2, (=:)/2, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( declare, [ (:=)/2, (=:)/2, language/1, set/2, track/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( sicstus4compatibility, [ out/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 %% RS-131227, UNIT: EXTERNAL LIBRARIES
 :- use_module( library(system), [ sleep/1 ] ). 
@@ -34,12 +35,11 @@
 
 
 %% RS-131225, UNIT: /utility/
-:- use_module('utility/utility', [ append_atomlist/2, append_atoms/3, for/2, makestring/2, 
-                                   pront/1, psl/2, purge/3, set_ops/3, shell_copyfile/2, starttime/0, taketime/0, timeout/3 ] ). %% RS-120816 sequence_member, etc.
+:- use_module('utility/utility', [ append_atomlist/2, append_atoms/3, for/2, makestring/2, pront/1, psl/2, purge/3, set_ops/3, shell_copyfile/2, starttime/0, taketime/0, timeout/3 ] ). %% RS-120816 sequence_member, etc. 
 :- use_module( 'utility/library', [ reverse/2, shell/1 ] ).  %% RS-131225 exec/1 ] ). % RS-131227 Investigate this ;-)
 %:-use_module( 'utility/datecalc', [ datetime/6 ]).%% RS-131225    For app/buslog, telelog, etc?
 :- use_module( 'utility/ptbwrite', [ ptbwrite/1 ] ). %% RS-140914
-:- use_module( 'utility/writeout', [ doubt/2, out/1, output/1, prettyprint/1, track/2, traceprint/2 ]).%% RS-141024
+:- use_module( 'utility/writeout', [ doubt/2, prettyprint/1, traceprint/2 ]).%% RS-141024  out/1, output/1, track/2,  
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -48,16 +48,18 @@
 
 %:-ensure_loaded( version ).       %% RS-131227    With version_date/1, used in monobus -> teledat2.pl
 :- use_module( busterversion, [ version_date_buster/1 ] ).       %% RS-131227    With version_date/1, used in monobus -> teledat2.pl
-:- use_module( 'main', [ difact/2, fact0/1, backslash/1, language/1 ] ). %(:=)/2, (=:)/2, :- use_module( 'main', [ value/2 ] ). , set/2, value/2 ] ).
+:- use_module( 'main', [ difact/2, fact0/1, backslash/1 ] ). %(:=)/2, (=:)/2, :- use_module( 'main', [ value/2 ] ). , set/2, value/2 ] ). , language/1
 
 %% RS-131224  calls the for-predicate  %% Used in FOR from makeauxtables
 :- use_module( getphonedir, [ create_tags/1, hazardous_tagname/1 ]).        %% RS-131227    send_taggercall/1, hazardous_tagname/1
 :- use_module( interfaceroute, [  reset_period/0  ]).     % Interface procedures for handling interface to route modules
 :- use_module( sicstus4compatibility ). %, [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
+:- use_module( sicstuc, [ legal_language/1, readfile_extension/1, script_file/1 ] ). % , language/1, %  Common File for tucbus  (english) and  tucbuss (norwegian)
+
 %% RS-130329 Make sure (gram/lang) modules are available: dcg_module, 
 %:-ensure_loaded( tucbuses ). % ,[ backslash/1, dcg_module/1, language/1, legal_language/1, readfile_extension/1, script_file/1 ]). %% RS-140211
-:-use_module( tucbuses, [ legal_language/1, readfile_extension/1, script_file/1 ]). %% RS-140211   backslash/1, dcg_module/1, 
+%:-use_module( tucbuses, [ legal_language/1, readfile_extension/1, script_file/1 ]). %% RS-140211   backslash/1, dcg_module/1, 
 
 % RS-111205, UNIT: app/
 :- use_module( 'app/buslog' ). % , [ station/1 ] ).  %% RS-130210 called in for-predicate     bound/1, bus/1,
@@ -69,7 +71,7 @@
 %:- use_module( 'db/timedat', [ orig_named_date/2 ]). % Called from main!       %% Time data for bus routes in general 
 
 % RS-111205, UNIT: dialog/
-:- use_module( 'dialog/d_dialogue.pl', [ quit_dialog/0, dialogrun0/0 ] ). % etc.
+:- use_module( 'dialog/d_dialogue.pl', [ quit_dialog/0, dialog/0 ] ). % etc.
 :- use_module( 'dialog/portraycontext.pl', [ pcontext/0 ] ).    % RS-141024     corr/2, foreign/1, isat/2, placestat/2
 
 % RS-131227    UNIT: tuc/
@@ -323,15 +325,15 @@ resetsmsflag :-
 */
 
 
-dialog :-      %% RS-131228  
-	 nl,
-	 (seen),
-	 ( permanence := 0 ), 
-	 ( dialog := 1 ),   
-    queryflag := true,       %% (Statements are implicit queries)
-    closereadfile,   
-    %%% TA-060426 %% remember(lastday(-1,noday)), 
-    dialogrun0.   
+%dialog :-      %% RS-131228  
+%	 nl,
+%	 (seen),
+%	 ( permanence := 0 ), 
+%	 ( dialog := 1 ),   
+%    queryflag := true,       %% (Statements are implicit queries)
+%    closereadfile,   
+%    %%% TA-060426 %% remember(lastday(-1,noday)), 
+%    dialogrun0.   
 
 
 

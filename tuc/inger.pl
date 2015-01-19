@@ -7,6 +7,7 @@
 %% Non Horn Theorem Prover with level control
 %% and two way explanation
 
+:-module( inger , [ cpro/1, exprove/1, lkb/1, rawproblem/1, solve2/2 ] ).  %% local: (::)/2
 
 %% fakt ==> factum   %% TA-970528
 
@@ -15,20 +16,22 @@
 
 %% RS-131225, UNIT: / & utility/
 %:- ensure_loaded( user:'../declare' ).
-:- use_module( '../declare', [ (:=)/2, (=:)/2, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../declare', [ (:=)/2, (=:)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y . set/2, 
 
-:- use_module( '../main.pl', [ language/1 ] ). %% , reset/0, traceprint/2, (::)/2 , ( := )/2, ( =: )/2, value/2
+:- use_module( '../sicstus4compatibility', [ out/1, output/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+
+%:- use_module( '../main.pl', [ language/1 ] ). %% , reset/0, traceprint/2, (::)/2 , ( := )/2, ( =: )/2, value/2
 
 %:- ensure_loaded( user:'../utility/utility' ). %, [ := /2 etc. ] ).  %% RS-131117 includes declare.pl
 %:-use_module('../utility/utility', [ foralltest/2, iso_atom_chars/2, last_character/2, lastmem/2, lastmems/3, maximum/2, maxval/3, minimum/2, minval/3,
 %       number_to_string/2, once 1/1,out/1,output/1,roundmember/2,roundwrite/1,sequence_member/2,set/2,set_of/3,(set_ops)/3,set_filter/4,set_union/3,split/4,splitlast/3,starttime/0, %% test/1,
 %        testmember/2,value/2, (:=)/2, (=:)/2, textlength/2 ] ).
 
-:- use_module( '../utility/utility', [ append_atoms/3, begins_with/3, delete1/3, ends_with/3, flatten/2, for/2 ] ). %% keep local: 
-:- use_module( '../utility/writeout', [ doubt/2, out/1, output/1, prettyprint/1 ] ).%% RS-140912
+:- use_module( '../utility/utility', [ for/2 ] ). %% keep local: append_atoms/3, begins_with/3, delete1/3, ends_with/3, flatten/2,
+%:- use_module( '../utility/writeout', [ output/1 ] ).%% RS-140912 doubt/2,, prettyprint/1
 
 %% RS-131225, UNIT: /
-:- use_module( '../sicstus4compatibility', [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+:- use_module( '../sicstus4compatibility', [ tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc. get0/1,
 %:- use_module( '../main.pl', [ (=>)/2 ] ). %% , reset/0, traceprint/2, (::)/2
 
 %% RS-131225, UNIT: /tuc/
@@ -93,7 +96,7 @@ lkb(P):-
     retractall( problem(_) ),
     retractall( lemma _ ),
     retractall( fat _ ),
-    retractall( _ :: _ ),   % RS-140209 (::)/0
+    retractall( _ :: _ ),   % RS-140209 (::)/2
     compile(P).
 
 %% lemmas need only be proved once.

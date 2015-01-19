@@ -12,12 +12,12 @@
 
 % c = compile % (::)/2 is used in inger and update2.pl! How does it work? %% RS-140208 %Extra? crash/0 is used a test of SPIDER etc.
 %%% RS-131225, UNIT: /
-:-module( main, [ abortword/1, assert_default_origins/1, backslash/1, begin/0, break/1, c/1, check/0, create_taggercall/2, dialog/0, difact/2,
-        english/0, exetuc/1, fact0/1, gps_origin/2, haltword/1, idiotpoint/0,  logrun/0, norsk/0, ns/1,   % listxt/0, gorg/0, %% For debugging... (removed) %% RS-140928
-        clearport/0, closefile/1, reset_period/0,  getfromport/1, gorg/0, % To writeout: indentprint/2 . For Dialog / Buster . %processorwait_d/1
-        hei/0, hi/0, ho/0, run/0, jettyrun/1, language/1, mtrprocess/1, %Remove mtrprocessweb/1,         %RUN-predicates, with (very slow debugging!) and without debug.   % printparse/1,
-        processorwait/1,  progtrace/2, r/1, readday/0, readscript/0, restart/0, reset/0, reset_origins/0,  run/1,  
-        scanfile/2, (sp)/1, spyg/1, spyr/1, status/0, testgram/0, traceprog/2, translate2/2, tuc/0, update_compnames/1,
+:-module( main, [ abortword/1, backslash/1, begin/0, break/1, c/1, check/0, create_taggercall/2, difact/2,  %% dialog/0, 
+        english/0, exetuc/1, fact0/1, haltword/1, idiotpoint/0,  logrun/0, norsk/0, ns/1,   % listxt/0, gorg/0, %% For debugging... (removed) %% RS-140928
+        clearport/0, closefile/1, reset_period/0,  getfromport/1, % To writeout: indentprint/2 . For Dialog / Buster . %processorwait_d/1
+        hei/0, hi/0, ho/0, run/0, jettyrun/1, mtrprocess/1, %Remove mtrprocessweb/1,         %RUN-predicates, with (very slow debugging!) and without debug.   % printparse/1, language/1, 
+        processorwait/1,  r/1, readday/0, readscript/0, restart/0, reset/0, run/1,  
+        scanfile/2, (sp)/1, spyg/1, spyr/1, status/0, testgram/0, translate2/2, tuc/0, update_compnames/1,
         % to utility/writeout.pl: track/2, statistics/1 (in bustermain2)
         value/1, version_date/1,
         webrun_english/0, webrun_norsk/0, webrun_tele/0, write_taggercall/1, writepid/0  % verify_empty_origins/0,  value/2
@@ -45,9 +45,10 @@
 % UNIT: / AND /utility/
 
 %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-:- use_module( declare, [ (:=)/2, (=:)/2, remember/1, set/2, track/2, trackprog/2, value/2 ] ).
-
-:- use_module( 'utility/writeout', [ doubt/2, out/1, output/1, prettyprint/1, print_parse_tree/1, printdots/0 ] ).%% RS-140912
+:- use_module( declare, [ (:=)/2, (=:)/2, set/2, track/2, trackprog/2, value/2 ] ).
+:- use_module( sicstus4compatibility, [ out/1, output/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+:- use_module( 'utility/gps', [ reset_origins/0, transfix/2 ] ).  %% RS-150119. transfix overriding translat:transfix/2 
+:- use_module( 'utility/writeout', [ doubt/2, prettyprint/1, print_parse_tree/1, printdots/0 ] ).%% RS-140912 %% out/1, 
 
 %Utility-functions %RS-141019 Moved to main.pl (To be accessable for the scripts.n)
 %set( Key, Value ).
@@ -96,7 +97,11 @@ batchfile_predicates( 'utility/utility', [ startbatch/0, starttimebatch/0, stopt
 :- use_module( getphonedir, [ create_tags/1 ]).        %% RS-131227    send_taggercall/1, etc.
 :- use_module( interfaceroute, [  reset_period/0 ] ).   % Interface procedures for handling interface to route modules
 %:- use_module( sicstus4compatibility, [ tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
-:- use_module( tucbuses, [ legal_language/1, readfile_extension/1, script_file/1 ] ). % , language/1, %  Common File for tucbus  (english) and  tucbuss (norwegian)
+
+%:- use_module( tucbuses, [ legal_language/1, readfile_extension/1, script_file/1 ] ). % , language/1, %  Common File for tucbus  (english) and  tucbuss (norwegian)
+:- use_module( sicstuc, [ language/1, legal_language/1, readfile_extension/1, script_file/1 ] ). % , language/1, %  Common File for tucbus  (english) and  tucbuss (norwegian)
+% Moved back to sicstuc
+
 %:-use_module( xmlparser, [ xmltaggerparse/2 ] ). %% RS-140102  For getphonedir.pl etc...
 
 %% RS-131227    UNIT: db/
@@ -107,7 +112,8 @@ batchfile_predicates( 'utility/utility', [ startbatch/0, starttimebatch/0, stopt
 
 %% RS-131227    UNIT: dialog/
 %:- use_module( 'dialog/checkitem2', [ trackprog/2 ] ).  %% RS-130329 dialogrun0/0 
-:- use_module( 'dialog/d_dialogue', [ dialogrun0/0 ] ).  %% RS-130329 dialogrun0/0 
+
+%:- use_module( 'dialog/d_dialogue', [ dialog/0 ] ).  %% RS-130329 dialogrun0/0 
 
 %% RS-131227    UNIT: tuc/      dcg_module %% RS-141122
 %% RS-130329 Make sure (gram/lang) modules are available: 1: gram_n -> ( 2: metacomp ) -> 3: dcg_n   (The same for English)
@@ -121,17 +127,14 @@ batchfile_predicates( 'utility/utility', [ startbatch/0, starttimebatch/0, stopt
 
 
 :-use_module( 'tuc/readin' ). %%, [  ask_file/1, ask_user/1, read_in/1, words/3  ]). %%  Read a sentence into a list of symbols
-:-use_module( 'tuc/translat', [  (=>)/2, transfix1/2  ] ).        %% RS-131227 -141026 clausifyq/2, clausifystm/1 
+:-use_module( 'tuc/translat', [  (=>)/2  ] ).        %% RS-131227 -141026 clausifyq/2, clausifystm/1  , transfix1/2 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Main program
 
-%% RS-141015 Import gps_origin from where it is defined! Or get it from the user... E.g utility:gps_origin (stored in user:)?
-:-volatile  gps_origin/2 . %% TA-110127   %% Set by user input: Station +minutes
-:-dynamic   gps_origin/2 . %% TA-110127
-
 %       webstat/3.  % webstat(date(2009,04,21),#sms,#tot). %% Where is this counted?
+
 %       (::)/2,        %% RS-131228 For inger.pl ,         %% How does it work?
 
 :-op( 1150, fx, spyg). %% spy grammar rule
@@ -140,17 +143,6 @@ batchfile_predicates( 'utility/utility', [ startbatch/0, starttimebatch/0, stopt
 :-op( 1150, fx, c).    %% consult file  %% TA-110106 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% from declare.pl %progtrace(X,Y) :- user:traceprog(X,Y).
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% same as traceprog
-progtrace( N, P ) :-
-    value(traceprog,M), number(M), M >= N, 
-    !,
-    write(P),nl
-;
-    true.
-
-gorg :- listing( main:gps_origin ). %% debug %% TA-110128
 
 break(_). %% dummy for breakpoints
 
@@ -348,16 +340,16 @@ webrun :-
 	 ! ; true.     %% Never reaches this point!
 
 
-dialog :-  
-	 nl,
-	 (seen),
-	 permanence := 0, 
-	 dialog := 1,   
-%    queryflag := true,       %% (Statements are implicit queries)
-    closereadfile,   
-    dialogrun0.         % dialog/d_dialogue.pl   
-
-
+%dialog :-  
+%	 nl,
+%	 (seen),
+%	 permanence := 0, 
+%	 dialog := 1,   
+%%    queryflag := true,       %% (Statements are implicit queries)
+%    closereadfile,   
+%    dialogrun0.         % dialog/d_dialogue.pl   
+%
+%
 
 hi :- % language := english,
     create_named_dates, 
@@ -477,7 +469,7 @@ jettyrun(S)  :- %% This was gone so I reimplemented it. %% TE-120207
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-language(L) :- value( language, L ). %% value(language,X) should have been set dynamically by now! In tucbuses?
+% language(L) :- value( language, L ). %% value(language,X) should have been set dynamically by now! In tucbuses?
 
 restoreworld :- 
     (world =: _W_) -> true;
@@ -1343,12 +1335,12 @@ plustoatom(X,X).
 %;
 %    true.
 
-traceprog( N, P ) :- 
-    value( traceprog, M ), number(M), M >= N, 
-    !,
-    write(P),nl
-;
-    true.
+%traceprog( N, P ) :- 
+%    value( traceprog, M ), number(M), M >= N, 
+%    !,
+%    write(P),nl
+%;
+%    true.
 
 % MOVED to dialog/checkitem2.pl
 %trackprog( N, P ) :-
@@ -1360,57 +1352,6 @@ traceprog( N, P ) :-
 %
 % % % % % % % % %
 
-
-
-
-%%% FOR GPS %%%
-
-
-%% Control Section
-
-assert_default_origins( X ) :-
-        output( 'GPS locations: '), out( X ), nl,nl,
-        remember( gps_origin( 'Gløshaugen syd', 3 ) ). %% RS-141026    NOT properly implemented yet!!!
-
-transfix( [gpsflag:::Orgy | Rest], U ) :-!,
-
-    %%( Orgy \== [] -> smartdepflag := true ; smartdepflag := true ), %% if gps, special output
-     (smartdepflag := true), %% Quickfix to allow json output to all queries. %% TE-120206
-
-    for( member( gps_origin(X,Y), Orgy ),
-           remember( gps_origin(X,Y) ) ),       % remeber( main:gps_origin(X,Y) )
-       transfix(Rest,U).
-
-
-%% Several statements 
-transfix([[]],[replyq('?')]):-!.  %% Avoid empty answers (by synonym)
-
-transfix([X|Y],[X1|Y1]):- 
-    !,
-    transfix1(X,X1),
-    transfix(Y,Y1).
-transfix([],[]):-!.
-
-transfix(P,Q):-transfix1(P,Q). %% PANIC
-
-    
-
- 
-reset_origins :- %% TA-110128
-    retractall( gps_origin(_,_) ),
- 
-%%%    traceprog( 3,reset_origins),
-%%%    trackprog( 3, verify_empty_origins ). %% TA-110206
-    trackprog( 3, verify_empty_origins ). %% TA-110206
-
-verify_empty_origins :- %% all gps_origin should be gone !!!!!!
-    gps_origin(X,Y) -> 
-        ( write('***'),write( gps_origin(X,Y) ) )
-         ;
-         true.
-
-%%% OLD %%%
-   %% RS-140928 Keep in declare: track/2, ?
 
 
 %%%%%%%%%%%  THE END %%%%%%%%%%%%%%%%%%%%%%

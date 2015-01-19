@@ -9,10 +9,12 @@
 :-module( slash, [ def/1, description/2 ] ).    %% RS-140922    Moved from busanshp
 
 %%% RS-111205, UNIT: /
-:- ensure_loaded( user:'../declare' ).
+:- use_module( '../declare' ).
+
+:- use_module( '../sicstus4compatibility', [ out/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 %% RS-131225    UNIT: utility/
-:- use_module( '../utility/writeout', [ out/1 ]). %%RS-131224 %% RS-140915
+%:- use_module( '../utility/writeout', [ out/1 ]). %%RS-131224 %% RS-140915
 
 %%% RS-111205, UNIT: app/
 %:- use_module( '../app/busanshp', [  ] ).          %% RS-131225 description/2

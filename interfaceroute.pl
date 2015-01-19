@@ -16,9 +16,11 @@
 %:- ensure_loaded( 'declare.pl' ). %, [ := /2 etc. ] ). META:  set/2,   value/2
 :- use_module( declare, [ set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
+:- use_module( sicstus4compatibility, [ output/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+
 %:- use_module( 'main.pl', [ set/2, value/2 ] ).
 
-:- use_module( 'utility/writeout', [ output/1 ] ).
+%:- use_module( 'utility/writeout', [ output/1 ] ).
 
 :- use_module( 'db/topreg', [ default_period/3, routedomain/1  ]). %% default_message/3, period_message/2,  is not used?, Really?!
 :- use_module( 'db/route_period', [ route_period/4  ]). %% default_message/3, period_message/2,  is not used?, Really?!

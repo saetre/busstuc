@@ -68,6 +68,7 @@
 %:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
 :- use_module( '../declare', [ (:=)/2, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
+:- use_module( '../sicstus4compatibility', [ out/1, output/1, traceprog/2 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 %:- use_module( telelog , [  bound/1,  unbound/1 ]). --> utility.pl
 :- use_module( '../utility/utility', [ append_atomlist/2, bound/1, delete1/3, deleteall/3, firstmem/2, fnuttify2/2, for/2, lastmem/2, % language/1, 
@@ -83,7 +84,7 @@
 :-use_module( '../utility/writeout', [
     bcp/1,      bcpbc/1,        bwr/1,  bwr2/2, bwrbc/1, bwrstreet/1,   bwt/1,  
     colon/0,    comma/0,        cwc/2,  dot/0,  doubt/2, getphrase0/2,  languagenr/1, nopay/0,
-    out/1,      outcap/1,       output/1,  pay1/0,     period/0,       period0/0,      space/0, % startmark/0, 
+    outcap/1,   pay1/0,     period/0,       period0/0,      space/0, % startmark/0, 
     writedate/1, writefields/1,  writename/1, writesimplelist/1 ] ). %% RS-141105 Moved to main: language/1,
 %% Moved back to main: language/1. Where?: roundwrite/1
 
@@ -93,7 +94,8 @@
  
 
 %%UNIT: /
-:- use_module( '../main', [ language/1, progtrace/2 ] ).  %% RS-141026 backslash/1,  , (:=)/2, set/2, value/2 
+:- use_module( '../sicstuc', [ language/1 ] ).  %% RS-141026 backslash/1,  , (:=)/2, set/2, value/2 
+%:- use_module( '../main', [ traceprog/2 ] ).  %% RS-141026 backslash/1,  , (:=)/2, set/2, value/2 
 %:- use_module( '../tucbuses', [ dict_module/1 ] ). % , language/1
 
 %% RS-131225    UNIT: /app/
@@ -191,7 +193,7 @@ outdeplist00( Deps, Day, Opts, DirPlace, Out, MAP, SmartDeps ) :-
 outdeplist01(Deps,Day,Opts,DirPlace,Out,MAP,SmartDeps) :-   % neste =< N avganger etter tidspunkt
          delete1(nextaftertime(N),Opts,Opts1),   %% nextaftertime(1) is default (unspecified), sms-dependent
          !,
-    progtrace(4,case11),
+    traceprog(4,case11),
     decide_actual_noid3(N,Opts,NActual), %% if nth(4), Nactual>=4 %% TA-101022
          memberids0(NActual,Deps,NextDeps),
     setopt(timeset,Opts1,Opts2),
@@ -205,7 +207,7 @@ outdeplist01( Deps, Day, Opts, DirPlace, Out, MAP, SmartDeps ) :-
 outdeplisttime( [], _Day, _Opts, _DirPlace, true, _MAP, [] ) :- !.
 
 outdeplisttime( Deps, Day, Opts, DirPlace, OutDep, MAP, SmartDeps ) :-
-    progtrace(3,Deps), %% trace , %% 3  Temp %% RS-120814   %% DEBUG %%
+    traceprog(3,Deps), %% trace , %% 3  Temp %% RS-120814   %% DEBUG %%
     firstdepnotices(Deps),      %% Warn if first dep has already left!
     outdeplisttime1( Deps, Day, Opts, DirPlace, OutDep, MAP, SmartDeps ).        %% MW-120829 %% Maybe good place to add JSON?
 
@@ -333,7 +335,7 @@ outdeplist1(Deps,_Day,Opts,_Place,Out1Out2,  [Dep1,Dep2],_SmartDeps) :-
     value(smsflag,true),
     Opts = [],    % no direction
     !,
-    progtrace(4,case1),
+    traceprog(4,case1),
          timenow(Tid),               %% should be part of bustrans?
     keepafter(Tid,Deps,AfterDeps),
     firsttostation(AfterDeps,Dep1),   % from HT
@@ -351,7 +353,7 @@ outdeplist1( Deps, Day, Opts, DirPlace, ( ( Out, earliesttimes ) ), MAP, SmartDe
          member(nth(N),Opts),
          member(last(1),Opts),
     !,
-    progtrace(4,case3),
+    traceprog(4,case3),
          reverse(Deps,RevDeps),
          nth(N,RevDeps,Dep),
          outdeplisttime([Dep],Day,Opts,DirPlace,Out,MAP,SmartDeps).
@@ -360,7 +362,7 @@ outdeplist1( Deps, Day, Opts, DirPlace, ( ( Out, earliesttimes ) ), MAP, SmartDe
 outdeplist1(Deps,Day,Opts,DirPlace,Out,MAP,SmartDeps) :-   % siste N avganger
          delete1(last(N),Opts,Opts1),
     !,
-    progtrace(4,case4),
+    traceprog(4,case4),
          reverse(Deps,RevDeps),
          memberids0(N,RevDeps,LastRev), %% if 0, keep all
          reverse(LastRev,LastDeps),
@@ -372,7 +374,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,Out,MAP,SmartDeps) :-   % siste N avganger
 outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :-   % siste avgang
          member(last(1),Opts),
     !,
-    progtrace(4,case5),
+    traceprog(4,case5),
          lastmem(Deps,Dep),     
          outdeplisttime([Dep],Day,Opts,DirPlace,Out,MAP,SmartDeps).
 
@@ -380,7 +382,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :-   % s
 outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :-   % ankomst FØR == siste ankomst
     member(lastcorr,Opts),
     !,
-    progtrace(4,case6),
+    traceprog(4,case6),
     find_last_arrival(Deps,Dep),
          outdeplisttime([Dep],Day,Opts,DirPlace,Out,MAP,SmartDeps).
 
@@ -390,7 +392,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :-   % N
          member(nth(N),Opts),
 %%%%     member(first(1),Opts), %% TA-101022 ??
     !,
-    progtrace(4,case7),
+    traceprog(4,case7),
          nth(N,Deps,Dep),
          outdeplisttime([Dep],Day,Opts,DirPlace,Out,MAP,SmartDeps).
 
@@ -399,7 +401,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,(Out, earliesttimes),MAP,SmartDeps) :-   % Nt
          member(next(N1),Opts),
     N1 < 0, N is -N1, %%
     !,
-    progtrace(4,case8),
+    traceprog(4,case8),
     nth(N,Deps,Dep),
          outdeplisttime([Dep],Day,Opts,DirPlace,Out,MAP,SmartDeps).
 
@@ -408,7 +410,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :-   % N
          member(nth(N),Opts),
          member(next(1),Opts),
     !,
-    progtrace(4,case9),
+    traceprog(4,case9),
 
     nth(N,Deps,Dep),
          outdeplisttime([Dep],Day,Opts,DirPlace,Out,MAP,SmartDeps).
@@ -418,7 +420,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :-   % N
          member(nth(N),Opts),
          member(nextaftertime(1),Opts),
     !,
-    progtrace(4,case10),
+    traceprog(4,case10),
          nth(N,Deps,Dep),
          outdeplisttime([Dep],Day,Opts,DirPlace,Out,MAP,SmartDeps).
 
@@ -428,7 +430,7 @@ outdeplist1(Deps,_Day,Opts,DirPlace,(Out,earliesttimes),MAP,SmartDeps) :-   % ne
          member(next(_N),Opts),
 
     !,
-    progtrace(4,case12),
+    traceprog(4,case12),
 
     justoutputtheliststar(Deps,DirPlace,Out,Opts,MAP,SmartDeps).
 
@@ -444,7 +446,7 @@ outdeplist1(Deps0,Day,Opts,DirPlace,(OutFirst), MAP,_SmartDeps) :- % første/nes
       member(first,Opts);       % unspecified first
       member(first(1),Opts)) ),    % ambiguous, get both !
     !,
-    progtrace(4,case13),
+    traceprog(4,case13),
 (
     member(nightbus,Opts) ->
     Deps0=Deps
@@ -466,7 +468,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,(OutNext,earliesttimes),MAP,SmartDeps) :- % f
      member(first(1),Opts);    % ambiguous, get both !
      member(next(1),Opts)),
     !,
-    progtrace(4,case14),
+    traceprog(4,case14),
     timenow(NOW),
     keepafter(NOW,Deps,AfterDeps),
          memberids(1,AfterDeps,NextDeps),
@@ -489,7 +491,7 @@ outdeplist1(Deps0,Day,Opts,DirPlace,(OutFirst,OutNext,earliesttimes), MAP,_Smart
    ),
     \+ anotherday(Day),
     !,
-    progtrace(4,case15),
+    traceprog(4,case15),
          timenow(Tid),               %% should be part of bustrans?
    (
     member(nightbus,Opts) ->
@@ -507,7 +509,7 @@ outdeplist1(Deps0,Day,Opts,DirPlace,(OutFirst,OutNext,earliesttimes), MAP,_Smart
 outdeplist1( Deps, Day, Opts, DirPlace, Out, MAP, SmartDeps ) :-   % første N avganger
          delete1( first(N), Opts, Opts1 ),
     !,
-    progtrace(4,case16),
+    traceprog(4,case16),
     deleteall( first, Opts1, Opts2 ),           % just a flag
          memberids0( N, Deps, FirstDeps ),
     outdeplist1( FirstDeps, Day, [time|Opts2], DirPlace, Out, MAP, SmartDeps).
@@ -517,7 +519,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :-   % n
          member(nth(N),Opts),                                   % samme dag
     \+ anotherday(Day), %%
     !,
-    progtrace(4,case17),
+    traceprog(4,case17),
     timenow(NOW),
     keepafter(NOW,Deps,Deps1),
 
@@ -528,7 +530,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :-   % n
 outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :-   % neste avgang
          member(next(1),Opts),
     !,
-    progtrace(4,case19),
+    traceprog(4,case19),
          timenow(Tid),
          nextdep(Tid,Dep,Deps), %% DepTime >= Tid  buslog.pl
          outdeplisttime([Dep],Day,Opts,DirPlace,Out,MAP,SmartDeps).
@@ -538,7 +540,7 @@ outdeplist1(Deps,Day,Opts,DirPlace, ((Out,earliesttimes)),dir(Dep1,DirPlace),Sma
 
          member(Dep,Deps),
     !,
-    progtrace(4,case20),
+    traceprog(4,case20),
     first_dep(Deps,Dep1),
          outdeplisttime([Dep],Day,Opts,DirPlace,Out,_MAP,SmartDeps).
 
@@ -548,7 +550,7 @@ outdeplist1(Deps,Day,Opts,DirPlace, ((Out,earliesttimes)),dir(Dep1,DirPlace),Sma
 outdeplist1(_Deps,_,Opts,_DirPlace,space0,_MAP,_SmartDeps) :-
          member(number,Opts),
     !,
-    progtrace(4,case21).
+    traceprog(4,case21).
 
 %%   departure/departures Taken care of in busans
 
@@ -556,7 +558,7 @@ outdeplist1(_Deps,_,Opts,_DirPlace,space0,_MAP,_SmartDeps) :-
 outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :-   % Nte avgang
          member(nth(N),Opts),
     !,
-    progtrace(4,case22),
+    traceprog(4,case22),
 
          length(Deps,LDS), %% TA-101021
     minval(N,LDS,N1), %% check, nth(N) =< # list   % from utility.pl
@@ -574,7 +576,7 @@ outdeplist1(Deps,_,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :-
     maxnumberofindividualdepartures(MaxInd),
     DepsLengde=< MaxInd,
          !,
-    progtrace(4,case23),
+    traceprog(4,case23),
 
     justoutputthelist(Deps,DirPlace,Out,Opts,MAP,SmartDeps).
     %%print_smartdep_entries(SmartDeps). %% star only for sms and afternow
@@ -597,7 +599,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :-
 %%%%%%%%%%    Deps1 \== [], %% EMPTY /// ---> Needs warning, TIME not tomorrow
 
     !,
-    progtrace(4,case24),
+    traceprog(4,case24),
 
     justoutputtheliststar(Deps1,DirPlace,Out,Opts,MAP,SmartDeps).
     %%print_smartdep_entries(SmartDeps).
@@ -607,7 +609,7 @@ outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :-
 
 outdeplist1([],Day,Opts,DirPlace,Out,MAP,SmartDeps) :- %% not earliesttimes
     !,
-    progtrace(4,case25),
+    traceprog(4,case25),
     outdeplisttime([],Day,Opts,DirPlace,Out,MAP,SmartDeps). %% whatever you get
 
 
@@ -616,7 +618,7 @@ outdeplist1(Deps,_Day,Opts,DirPlace,((Out,earliesttimes)),DESTMAP,SmartDeps) :- 
 %%    \+ anotherday(Day),     %% RS-120813 Maybe this should work for any day?
     \+ value(dialog,1),
     !,
-    progtrace(4,case26na),
+    traceprog(4,case26na),
 
 %%%%%    outdeplisttime(Deps,Day,Opts,DirPlace,Out,MAP). %% same as \
     justoutputthelistnotafternow(Deps,DirPlace,Out,Opts,DESTMAP,SmartDeps). %% %% then not afternow
@@ -628,14 +630,14 @@ outdeplist1(Deps,Day,Opts,DirPlace,((Out,earliesttimes)),MAP,SmartDeps) :- %% fr
     \+ value(dialog,1),
 
     !,
-    progtrace(4,case26),
+    traceprog(4,case26),
     justoutputtheliststar(Deps,DirPlace,Out,Opts,MAP,SmartDeps).
     %%print_smartdep_entries(SmartDeps).
 
 
 outdeplist1( Deps, Day, Opts, DirPlace, ( (Out,earliesttimes) ), MAP, SmartDeps ) :-       %% RS-120813 case27: Last resort? Default? Catch all... (Nightbus?)
     !,
-    progtrace(4,case27),
+    traceprog(4,case27),
     outdeplisttime( Deps, Day, Opts, DirPlace, Out, MAP, SmartDeps ). %% Next/Last
 
 
@@ -852,13 +854,13 @@ saysomething(Out1,Out2,((Out1,Out2))).
 
 
 justoutputthelistnotafternow(Deps,DirPlace,Out,Opts,DESTMAP,SmartDeps):-
-    progtrace(7,Deps),
+    traceprog(7,Deps),
 
     maxnumberofindividualdepartures(MNID), %% Extra check
 
     ( (member(next(N),Opts), N > 0) -> minval(N,MNID,MAX);MAX=MNID), %% MAX is N; MAX is MNID),
 
-    progtrace(5,just(MAX)),
+    traceprog(5,just(MAX)),
 
     memberids(MAX,Deps,Deps5),
 
@@ -879,12 +881,12 @@ justoutputtheliststar(Deps,DirPlace,Out,Opts,MAP,SmartDeps):-
 
 
 justoutputtheliststar(Deps,DirPlace,Out,Opts,MAP,SmartDeps):-
-    progtrace(7,Deps),
+    traceprog(7,Deps),
 
 
     decide_actual_noid7(Opts,NActual),
 
-    progtrace(5,just(NActual)),
+    traceprog(5,just(NActual)),
 
     split(1,Deps,[Dep1],Deps1),
 
@@ -904,7 +906,7 @@ justoutputtheliststar(Deps,DirPlace,Out,Opts,MAP,SmartDeps):-
 % % % %
 
 justoutputthelist(Deps,DirPlace,Out,Opts,DESTMAP,SmartDeps):-
-    progtrace(4,Deps),
+    traceprog(4,Deps),
     firstdepnotices(Deps),
     Deps = [Dep|_], %% safe ????
 
@@ -1033,7 +1035,7 @@ warningtime(Date,Time):- %% super Ad Hoc %% TA-110202
     printdatetimetoalarmstring2(Date,Time).
 
 firstdepnotice(Dep):-
-    progtrace(4,Dep), %% 3  Temp %% TA-110204
+    traceprog(4,Dep), %% 3  Temp %% TA-110204
 
     getdeptime(Dep,Firstdeparturetime),
     addrefdialog(firstdeparturetime,Firstdeparturetime),
@@ -1726,7 +1728,7 @@ outfromtocorr0(Opts,Dep,OutDep,Mid01,OutAns,MAP,SmartDeps):-
 outfromtocorr1(_Opts,Dep,_OutDep,Mid01,OutAns,MAP,_SmartDeps):-
     dummy_transfer(Mid01),
     !,
-    progtrace(4,case30),
+    traceprog(4,case30),
     outfromtodirect(Dep,OutAns,MAP),
     !. %% unnec
 
@@ -1736,7 +1738,7 @@ outfromtocorr1(_Opts,Dep,OutDep,Mid01,(OutCorr,earliesttimes), corr(Dep,Mid01),_
     cutloop(Mid01,TF),
     TF=true,
     !,
-    progtrace(4,case31),
+    traceprog(4,case31),
     outfromto(TF,Dep,OutDep),
     outcorr(TF,Mid01,OutCorr).
 
@@ -1748,7 +1750,7 @@ outfromtocorr1(_Opts,Dep,OutDep1,Mid01,(OutDep2,earliesttimes),corr(Dep,Mid01),S
     Mid01 =  midans(StartBusN,OffTime,OffStation,EndBusN,OnTime,OnStation),
     !,
     firstdepnotice(Dep),
-    progtrace(4,case32),
+    traceprog(4,case32),
 
     OutDep1 = ( bwrbusbc(Bust1,StartBusN),
            bcp(goesfrom),
@@ -1823,7 +1825,7 @@ shorttrip(_OnTime,EndTime,(bcp(attime),bwt(EndTime)) ) .
 %%%%%%%%%%% SUSPECT   Not applicable %%%%%
 outfromtocorr1(_Opts,Dep,OutDep,Mid01, ((OutCorr,earliesttimes)), corr(Dep,Mid01)):-
     TF=false, %% cutloop
-    progtrace(4,case33),
+    traceprog(4,case33),
     outfromto(TF,Dep,OutDep),
     outcorr(TF,Mid01,OutCorr).
 */

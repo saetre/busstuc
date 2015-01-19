@@ -9,11 +9,6 @@
 %% UNIT /dialog/
 :-module( checkitem2, [ checkitem/3, current_frame/1, remove_messages/2,  remtp/3, sysout_item/1, writeconstlist/1, writeconstlist1st/1 ] ). %execute_program/1, writeanswer/1,  
 
-%:- meta_predicate  execute_program( 0 ).  %% Stay inside interapp? %% RS-140619
-%:- meta_predicate  trackprog(+,0) .
-%:- meta_predicate  writeanswer(0).
-%:- meta_predicate  writeanswer2(+,0,+). %% RS-141026  writeanswer2 is in interapp...
-
 :- volatile
            current_frame/1.    %%, last_answer/2. %% RS-131218
 :- dynamic
@@ -23,16 +18,15 @@
 
 %%% RS-141026, UNIT: /
 %:- use_module( '../main', [ value/2 ] ).
-%:- ensure_loaded( '../declare' ).       %% RS-111212  traceprog/2, trackprog/2
 :- use_module( '../declare', [ trackprog/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../sicstus4compatibility', [ output/1, writeanswer/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 %% UNIT: /utility/,     RS-140914
 %:- use_module( '../utility/utility', [ ] ). %roundmember/2 ] ). %% RS-140208. := /2, listall/1, Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
 :- use_module( '../utility/datecalc', [ daysucc/2, isday/1, today/1 ] ).
 %  ] ).%% RS-141105 traceanswer/1,
-:- use_module( '../utility/writeout', [ bcp/1, bcpbc/1, bwrbc/1, busanswer_sat/3, colon/0, doubt/2, listall/1, listrequirements/1, output/1, period/0,
-        space/0, teleanswer_sat/2, waves/0, writeprog/1, writeanswer/1,
-        writetelebusteranswer_rep/1, writetelebusteranswer_saf/2, writetelebusteranswer_sqt/3, writetelebusteranswer4/4 ] ).%% RS-140912
+:- use_module( '../utility/writeout', [ bcp/1, bcpbc/1, bwrbc/1, busanswer_sat/3, colon/0, doubt/2, listall/1, listrequirements/1, period/0, 
+        space/0, teleanswer_sat/2, waves/0, writeprog/1, writetelebusteranswer_rep/1, writetelebusteranswer_saf/2, writetelebusteranswer_sqt/3, writetelebusteranswer4/4 ] ).%% RS-140912
 
 %%% RS-140914, UNIT: /app/
 :- use_module( '../app/busanshp', [ paraphrase/1, paraphrase2/2, paraphrase3/3, prent0/1, printmessage/1 ] ). % period/0, space/0, -> writeout 

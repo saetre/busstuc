@@ -11,12 +11,14 @@
 
 %%% RS-131225, UNIT: /
 :- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../sicstus4compatibility', [ out/1, output/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+
 %:- use_module( '../main', [ value/2 ] ).
 :- use_module( '../utility/ptbwrite', [ tab/1 ] ). %% RS-140914
 
 %% RS-140101. UNIT: /utility
 :- use_module( '../utility/utility', [ for/2 ] ). %% RS-140101 for/2 ?!
-:- use_module( '../utility/writeout', [ indentprint/2, out/1, output/1 ] ). %% RS-140101 for/2 ?!
+:- use_module( '../utility/writeout', [ indentprint/2 ] ). %% RS-140101 for/2 ?!
 
 %% RS-140101. UNIT: Prolog Library
 %:-use_module( library(aggregate), [ foral/2 ] ).   %% RS-141029  for-all Does NOT work like utility:for/2

@@ -32,16 +32,19 @@
 %%% RS-131231, UNIT: /  %%% RS-111205, UNIT: utility/
 %:- ensure_loaded( user:'../declare' ).  %% RS-140208    main:difact/2, fact/2
 :- use_module( '../declare', [ ( =: )/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-:- use_module( '../main.pl', [ fact0/1, language/1, reset/0 ] ). %% RS-140209 [ (=>)/2, reset/0, traceprint/2 ] Why is => in translat.pl ?! RS-140927
+:- use_module( '../sicstus4compatibility', [ out/1, output/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
-:- use_module( '../utility/utility', [ aggregate/3, set_of/3, writelist/1 ]).  %% RS-131117 includes declare.pl language/1,
-:- use_module( '../utility/writeout', [ doubt/2, out/1, output/1, traceprint/2 ] ).%% RS-140912
+:- use_module( '../main.pl', [ fact0/1, reset/0 ] ). %% RS-140209 [ (=>)/2, reset/0, traceprint/2 ] Why is => in translat.pl ?! RS-140927
+:- use_module( '../sicstuc.pl', [ language/1 ] ). %% RS-140209 [ (=>)/2, reset/0, traceprint/2 ] Why is => in translat.pl ?! RS-140927
+
+:- use_module( '../utility/utility', [ aggregate/3, doall/1, set_of/3, writelist/1 ]).  %% RS-131117 includes declare.pl language/1,
+:- use_module( '../utility/writeout', [ doubt/2, traceprint/2 ] ).%% RS-140912
 
 % main:difact/2, 
 %:-use_module( '../tucbuses', [ ] ).  %RS-140101 % Common File for tucbus  (english) and  tucbuss (norwegian), language/1
 
 %% RS-131227    UNIT: tuc/
-:- use_module( lex, [ doall/1 ] ).          % lcode1/2  is called in the for-predicate (etc.) %% RS-131225
+%:- use_module( lex, [ doall/1 ] ).          % lcode1/2  is called in the for-predicate (etc.) %% RS-131225
 :- use_module( facts, [ fact/1, difact/1, have/4, isa/2 ]). % , isa/2  %% RS-140210
 %:- use_module( fernando, [ ] ).
 :- use_module( semantic , [ ako/2, subclass0/2, testclass/1 ] ). %% RS-131228

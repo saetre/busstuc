@@ -11,7 +11,7 @@
 %%% RS-131225, UNIT: utility, %% FOR metacomp, makeauxtables.pl
 :-module( utility, [ absorb/3, aggregate/3, all/1, ans/1, appendfiles/3, append_atomlist/2, append_atoms/3,  %% RS-141025 Move to main: (:=)/2, (=:)/2, 
         begins_with/3, bound/1, breakpoint/2, charno/3, %% FOR busanshp.pl
-        compar/3, debug/2, default/2, deleteall/3, divmod/4, (do)/1, ends_with/3, equal/2, error/2, firstmem/2, flatlist/2, fnuttify1/2, fnuttify2/2, for/2,     
+        compar/3, debug/2, default/2, deleteall/3, divmod/4, (do)/1, doall/1, ends_with/3, equal/2, error/2, firstmem/2, flatlist/2, fnuttify1/2, fnuttify2/2, for/2,     
         
         delete1/3, featurematch/4, featurematchlist/2, flatten/2, maximum/2, mergeavlists/3, minimum/2,  
         do_count/1, freshcopy/2, subsumes/2,     %% RS-140927 For translat.pl
@@ -41,6 +41,7 @@
 :- meta_predicate  breakpoint(+,0).   %% RS-100101 ?  %% NEW PREDICATE
 :- meta_predicate  debug(0,+).   %% RS-100101 ?  %% NEW PREDICATE
 :- meta_predicate  do(0) .
+:- meta_predicate  doall(0) .   %% RS-141019     doall/1 (Goal_0) . Zero input arguments for Goal_0 % doall(P): (P, then succeed)
 :- meta_predicate  for(0,0).  %% for(0,:).  %% for/2. Stay inside interapp? %% RS-140619
 :- meta_predicate  foralltest(0,0) .
 :- meta_predicate  implies(0,0).
@@ -85,8 +86,8 @@
 
 %% RS-131225, UNIT: utility/
 :- use_module( '../utility/library', [ reverse/2, shell/1 ] ).%% RS-131225 remove_duplicates/2, 
-:- use_module( '../sicstus4compatibility', [ remove_duplicates1/2 ] ). %% RS-141207
-:- use_module( '../utility/writeout', [ out/1, output/1 ] ).%% RS-131225
+:- use_module( '../sicstus4compatibility', [ out/1, output/1, remove_duplicates1/2 ] ). %% RS-141207
+%:- use_module( '../utility/writeout', [ output/1 ] ).%% RS-131225
 
 :- use_module( library( timeout ), [ time_out/3 ] ). %% RS-140210.
 %DEPENDENCIES: library.pl (remove_duplicates/2)
@@ -110,24 +111,8 @@
 
 %:- use_module( '../app/busanshp.pl', [ memberids/3  ] ).  %% RS-140921 called in for-predicate     bound/1, bus/1,
 
-%% RS-111205, UNIT: db/
-%:- use_module( '../db/places', [ corr/2, foreign/1, isat/2, nostation/1, placestat/2 ] ). %% RS-140101 Moved (back) to lex.pl
-%:- use_module( '../db/regstr', [ streetstat/5 ] ).      %% RS-131224 Obsolete?
-%:- use_module( '../db/teledat2', [ ] ). %%, [ has_att_val/4, teledbtagfile/1 ] ). %% RS-140101 Better get EVERYTHING, NOOOOOO! Havoc!
-%:-use_module( '../db/timedat' , [ orig_named_date/2 ]). Called from main!       %% Time data for bus routes in general 
-
-%% RS-131225, UNIT: tuc/
-%:- use_module( '../tuc/evaluate', [ qev/1 ] ).     % GRUF == Grammar Utility File %% RS-131117
-%:- use_module( '../tuc/fernando', [ ] ).     % GRUF == Grammar Utility File %% RS-131117
-
-%:- use_module( '../tuc/lex', [ language/1 ] ).  %% RS-140921    % lcode1/2  is called in the for-predicate (etc.) %% RS-131225
-
-%:- use_module( '../tuc/metacomp', [ ] ).     % genprod is called in the set_ops(?) -predicate (etc?) %% RS-131228
-
 %%  Read a sentence into a list of symbols      %% RS-140101, Compile danger?
 :- use_module( '../tuc/readin', [ read_in/1 ]). %% ask_user/1, in user: prompt!
-
-%:- use_module( '../tuc/translat', [ clausifyq/2, clausifystm/1 ]). %% RS-140928 Trouble? RS-141012
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -159,6 +144,12 @@ debug(Prop,Text):-
 pling(I) :- output( pling(I) ). %%  Debug
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 do(P):- \+ ( \+ P). 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+doall( P ) :-  % P, then succeed
+    P,
+    false ;
+    true.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
 for( P, Q ) :- %% For all P, do Q (with part of P). Finally succeed

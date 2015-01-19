@@ -8,13 +8,10 @@
 %% Dialogue manager.
 
 %% RS-140910   Make a module here... It should keep track of it's own linecounter variables etc.  !!! See newcontext2 and frames2 !!!
-:- module( d_dialogue, [ dialogrun0/0, evalline_multi/2, last_answer/2, linecounter/1, processinput/1, quit_dialog/0, reset_conns/0, subst_tql/4, varmember/2 ] ). %hi/0, run/0, 
+:- module( d_dialogue, [ dialog/0, evalline_multi/2, last_answer/2, linecounter/1, processinput/1, quit_dialog/0, reset_conns/0, run/0, subst_tql/4, varmember/2 ] ). %hi/0, dialogrun0/0,  
 
 %% META-PREDICATES
 :- meta_predicate  g_execute1( ?, ?, 0).
-%:- meta_predicate  traceanswer(0).
-%:- meta_predicate  trackprog(+,0) .
-%:- meta_predicate  writeanswer(0).
 
 :- volatile
            confused/1,
@@ -35,13 +32,14 @@
 
 %% RS-140914  UNIT: /
 :- use_module( '../declare', [ (:=)/2, trackprog/2, value/2 ] ). %% RS-111213 General (semantic) Operators, e.g.  :: , trackprog/2        %Helper
+:- use_module( '../sicstus4compatibility', [ output/1, writeanswer/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 :- use_module( '../main', [ exetuc/1, translate2/2 ] ). % dialog/0, 
 :- use_module( '../getphonedir', [  reset_ldapcon/0  ]).%% RS-131227    For ...main.pl, extra: create_tags/1,  
 :- use_module( '../interfaceroute', [  reset_period/0 ] ).
 
 %% RS-140914  UNIT: /utility/
 :- use_module( '../utility/utility', [ flatround/2, timeout/3 ] ).         %% RS-140102 AVOID LOOPS PLEASE!! %trackprog(X, Y) :- user:trackprog(X, Y) .
-:- use_module( '../utility/writeout', [ bcpbc/1, period/0, startmark/0, waves/0, writeanswer/1, xwriteanswer/2 ] ).%% RS-141105
+:- use_module( '../utility/writeout', [ bcpbc/1, period/0, startmark/0, waves/0, xwriteanswer/2 ] ).%% RS-141105   writeanswer/1,  
 
 %%% RS-140914, UNIT: /app/
 :- use_module( '../app/busanshp', [  ] ).
@@ -61,17 +59,16 @@
 :- use_module( portraycontext, [ printcontext/0 ] ).
 
 
-%dialog :-      %% RS-131228  
-dialogrun0 :-  
+dialog :-      %% RS-131228  
+%dialogrun0 :-  
    ( dialog := 1 ), 
    reset_period,
    reset_context,
    dialog2.
 
-% run :-          %% RS-131228   Moved to /bustermain2.pl
-%    dialog.  
-%
-% hi:-debug, run. 
+run :-  dialog.         %% RS-131228   Moved to /bustermain2.pl  
+
+%hi:-debug, run. 
 
 %trackprog( N, P ) :-
 %    value( traceprog, M ), number(M), M >= N,
