@@ -36,23 +36,6 @@ forget(X) :- retractall(X).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 remember( Module:F ) :- Module:F, ! ; assert( Module:F ). %, out( 'remember' ),output(Module:F).        %% Add F it is does not already exist.
 % remember( Setting ) :- out( 'utility:remember/1 => Something went wrong with:'), output( Setting ), output( call( Setting ) ).
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate  track( +, 0 ) .
-track( N, P ) :- 
-    value( trace, M ),  number(M), M >= N, 
-    !,
-    call(P)   %% TA-110130
-;
-    true.
-%///
-:- meta_predicate  trackprog( +, 0 ) . %% Moved to declare!  %% RS-150111
-trackprog( N, P ) :-
-    value( traceprog, M ), number(M), M >= N,
-    !,
-    ( nl, call(P) )    %% TA-110130
-        ;
-    true. %% Finally, succeed anyway
-%///
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -108,3 +91,20 @@ X := Y  :-      %% RS-131228    :=/2    X set to Y's value
 X =: Y  :-      %% RS-141024    =:/2    Y is set to X's value
     value(X,Y). % ->  true ; ( out(X), output(' not set!'), fail ).   % ; ( out(X), output(' not set!'), fail ).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate  track( +, 0 ) .
+track( N, P ) :- 
+    value( trace, M ),  number(M), M >= N, 
+    !,
+    call(P)   %% TA-110130
+;
+    true.
+%///
+:- meta_predicate  trackprog( +, 0 ) . %% Moved to declare!  %% RS-150111
+trackprog( N, P ) :-
+    value( traceprog, M ), number(M), M >= N,
+    !,
+    ( nl, call(P) )    %% TA-110130
+        ;
+    true. %% Finally, succeed anyway
+%///

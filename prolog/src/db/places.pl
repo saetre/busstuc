@@ -3262,6 +3262,7 @@ cmpl(østmarka,sykehus,østmarkveien). % (Østmarkveien15). Avoid underspecified
 cmpl(østre,eberg,østre_berg). 
 cmpl(østre,ber,østre_berg). 
 cmpl(østre,berg,østre_berg). %% AtB 
+cmpl(østre,roten,østre_roten).         %% RS-150111. Spell-check. Synplace?
 cmpl(østre,være,være_østre). 
 cmpl(øverste,singsaker,singsaker).  %% EOB:-)
 cmpl(øvre,[charlottenlund],skovgård). 
@@ -9991,6 +9992,7 @@ synplace(østerberg,østre_berg).
 synplace(østgårds,ystgaards). 
 
 
+synplace(østre_roten,østre_rosten).         %% RS-150111. Spell-check. Synplace?
 synplace(østrerosten,østre_rosten). 
 synplace(øver,øvre). 
 synplace(øveraas,øverås). 

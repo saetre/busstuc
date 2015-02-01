@@ -1,5 +1,122 @@
 FIX THIS!!!
 
+N: rotvoll alle 14.1 kl 08.00.
+........................................................................
+
+
+*** Word graph ***
+
+lex:txt(1, w(alle,[alle]), 2).
+lex:txt(2, w(14,nb(14,num)), 3).
+lex:txt(3, w('.',['.']), 4).
+lex:txt(4, w(1,[1]), 5).
+lex:txt(4, w(1,nb(1,num)), 5).
+lex:txt(4, w(1,name(1,n,tram)), 5).
+lex:txt(4, w(1,name(1,n,nightbus)), 5).
+lex:txt(4, w(1,name(1,n,route)), 5).
+lex:txt(5, w(kl,noun(clock,sin,def,n)), 6).
+lex:txt(5, w(kl,[klokken]), 6).
+lex:txt(5, w(kl,[kl]), 6).
+lex:txt(6, w(8,[8]), 7).
+lex:txt(6, w(8,nb(8,num)), 7).
+lex:txt(6, w(8,name(8,n,route)), 7).
+lex:txt(7, w('.',['.']), 8).
+lex:txt(8, w(0,[0]), 9).
+lex:txt(8, w(0,nb(0,num)), 9).
+lex:txt(9, w('.',['.']), 10).
+lex:txt(0, w(rotvoll_alle,name(rotvoll_alle,n,station)), 2).
+
+
+******************
+
+*** Simplified parse tree ***
+
+[verb_modifiers,name(rotvoll_alle,n,station),[verb_modifiers,[plausibledate1,nb(14,num),lit(.),nb(1,num)],[obviousclock1,lit(kl),[clock_kernel,nb(8,num),[colemin2,lit(.),nb(0,num),lit(.)]]]]]
+
+
+
+
+           verb_modifiers
+        __________|_________
+       /                    \
+     name             verb_modifiers
+       |               ______|_____
+       |              /            \
+ rotvoll_alle  plausibledate1 obviousclock1
+                 ___|___         ___|___
+                /   |   \       /       \
+               nb  lit  nb     lit clock_kernel
+                |   |    |      |     ___|__
+                |   |    |      |    /      \
+               14   .    1     kl   nb   colemin2
+                                     |    ___|___
+                                     |   /    |  \
+                                     8  lit  nb  lit
+                                         |    |   |
+                                         |    |   |
+                                         .    0   .
+
+
+    
+
+*****************************
+
+[gpsflag:::[],modifier(A):::(srel/nil/place/rotvoll_alle/A and srel/nil/date/date(2015,1,14)/A and srel/nil/clock/800/A and event/real/A)and((rotvoll_alle isa station and true)and date(2015,1,14)isa date)and 800 isa clock]
+
+
+15 ms
+
+
+[modifier(A):::(rotvoll_alle isa station,date(2015,1,14)isa date,800 isa clock,srel/nil/place/rotvoll_alle/A,srel/nil/date/date(2015,1,14)/A,srel/nil/clock/800/A,event/real/A)]
+
+
+
+bustrans/Found rule:tqllist2
+bustrans/Found rule:modifier2
+bustrans/Found rule:standardclock
+bustrans/Found rule:normalizedate
+bustrans/Found rule:clocksequence
+bustrans/Found rule:setexdate3day
+bustrans/Found rule:nottoday1
+bustrans/Found rule:nilplaceeqto
+bustrans/Found rule:keepfrombay
+bustrans/Found rule:busdepaftertimegps
+bustrans/Found rule:connectionexplicit
+
+*** Application program ***
+
+atdate2(3,date(2015,1,14))
+atday(wednesday)
+message(date_isa_day(date(2015,1,14),wednesday))
+message(otherperiod(date(2015,1,14)))
+departure(free(590),rotvoll_alle,3,A)
+keepafter(800,A,B)
+flag(keepfrombay)
+departure(free(590),hovedterminalen,3,C)
+connections(C,B,free(590),hovedterminalen,rotvoll_alle,wednesday,3,[time,nextaftertime(0),to,from],D,E)
+flag(exit)
+
+........................................................................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+578 ms
+
+{"transfer":"true" ,
+"timeset":"true" ,
+"departures" : [
+{"busstopname":"Munkegata M5","busstopnumber":16010005,"busnumber":4,"time":1452,"duration":8,"destination":"Harald Hårfagres gate"} ,
+{"busstopname":"Harald Hårfagres gate","busstopnumber":16010534,"busnumber":90,"time":1507,"duration":7,"destination":"Rotvoll alle"} ]}
+
+14. Jan. 2015 er en  onsdag .
+Buss 4 går fra Munkegata M5 kl. 1452 til Harald Hårfagres gate kl. 1500 
+og  buss 90 går fra Harald Hårfagres gate kl. 1507 til Rotvoll allé kl. 1514 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
 Når går bussen  fra sentrum til ugla lørdag 02.00.
 
 
