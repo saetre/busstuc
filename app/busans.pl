@@ -14,9 +14,8 @@
 %UNIT: app/
 :- module( busans, [ rule/2, tracevalue/1 ] ). %%  Different for busans and bustrans 
 
-%:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
 :- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-%:- use_module( '../main', [ value/2 ] ).
+
 tracevalue(L) :- value(traceans,L).  % Trace level 1-4
 
 %% Rule format

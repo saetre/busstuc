@@ -365,7 +365,7 @@ writeheader( DAGFILE, DCGFILE, DCGMODULE, DICTFILE, 'gram_n' ) :-
 
         nl,     %        write(':- meta_predicate  '),nl,
         write(':- use_module( ''../declare'', [ (:=)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .'), nl,
-        write('%% :- use_module( ''../main'', [ assert_default_origins/1  ] ). %%RS-140209 , ( := )/2, traceprint/2, value/2'),nl,
+        write(':- use_module( ''../utility/gps'', [ assert_default_origins/1  ] ). %%RS-140209 , ( := )/2, traceprint/2, value/2'),nl,
         write(':- use_module( ''../utility/utility\', [ test/1, testmember/2 ] ).  %% RS-140914'),nl, nl,
         write(':- use_module( ''../utility/datecalc'', [ add_days/3, datetime/6, easterdate/2, subfromtime/3, this_year/1, timenow/1, today/1, todaysdate/1  ] ).  %% RS-131228, addtotime/3, days_between/3, '),nl,
         write(':- use_module( ''../utility/writeout'', [ traceprint/2 ] ).  %% Module util track/2,  , prettyprint/1, output/1, RS-140914'),nl, nl,
