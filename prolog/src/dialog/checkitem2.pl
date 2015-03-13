@@ -441,8 +441,8 @@ checkitem(_,saf, focus(Frame, OldRefer, A), focus(Frame, NewRefer, A)) :-
 checkitem(_,saf, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, [Tql, NewProg])) :-
     saturate(Frame, Prog, NewProg),
     getcurrent(Cid),
-    makenegative(Tql, NewProg, busanshp:AnswerOut),
-%    makenegative(Tql, NewProg, AnswerOut),
+%    makenegative(Tql, NewProg, busanshp:AnswerOut),
+    makenegative(Tql, NewProg, AnswerOut),
     waves,
     paraphrase2(Prog,Frame), %% <--- suspect for tele ??? %% TA-060705
     writeanswer( busanshp:AnswerOut ),
@@ -478,7 +478,7 @@ checkitem(teletrans,sqt, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRe
 
     find_askfor2(teletrans,Frame, Slot, NewSlot),
     getcurrent(Cid),
-    makenegative(Tql, askfor(X, NewSlot, Y), busanshp:AnswerOut),
+    makenegative(Tql, askfor(X, NewSlot, Y), AnswerOut),
     waves, %% TA-050809
     writeanswer(busanshp:AnswerOut),
 
@@ -516,7 +516,7 @@ checkitem(tele,sal, focus(Frame, OldRefer, A), focus(Frame, NewRefer, A)) :-
 
 checkitem(_,sqd, focus(Frame, Refer, [Tql, Prog]), focus(Frame, Refer, [Tql, Prog])) :-
     roundmember(askref(_Type, _List), Prog),
-    makenegative(Tql, Prog, busanshp:AnswerOut),
+    makenegative(Tql, Prog, AnswerOut),
     waves,
     writeanswer(busanshp:AnswerOut).
 

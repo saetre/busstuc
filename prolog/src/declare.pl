@@ -29,8 +29,8 @@ set( Counter, Value ) :-
     retractall( value( Counter, _ ) ),
     assert( value( Counter, Value ) ).
 
-%forget/1, remember/1, % moved to main from declare.pl  %% RS-141105 Didn't work :-(
 %% "MEMORY" SECTION
+%forget/1, remember/1, % moved to main from declare.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 forget(X) :- retractall(X).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

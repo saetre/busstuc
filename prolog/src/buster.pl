@@ -14,7 +14,7 @@ BUSTER  is built upon the BUSTUC  system, and share a set of files.
 
 These files are Headed by SYSTEM BUSTER
 
-All others are labeled BUSSTUC ( or TUC)
+All others are labeled BUSSTUC (or TUC)
 
 The unique files of BUSTER are
 

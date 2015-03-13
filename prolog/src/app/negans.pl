@@ -257,7 +257,7 @@ makenegative((which(_),P),Q,Ans) :-
     !,traceprog(4,ne25).
 
 makenegative((DN,P),Q,Ans) :- 
-    \+ member(DN,[do,new]), 
+    \+ member(DN,[doit,new]),   %% RS-150311. Forgot to rename all "do" to "doit" when sp4 introduced "do" as a new reserved word
 
     \+ sequence_member(dob/say/tuc/_/_,P), %% ad hoc-> cannot
     \+ sequence_member(message(_),Q), % if message, you know
@@ -401,11 +401,10 @@ makenegative((doit,replyq(M)),_,Ans)  :-
 
 
 
-
-
-makenegative((doit,quit(_)),_,Ans)  :- 
+makenegative((doit,quit(M)),_,Ans)  :- %% Why don't we output the actual Message here?
    traceprog(4,ne48),!,
-   Ans = (busanshp:(space0)). 
+%   Ans = (busanshp:(space0)). 
+   Ans = (busanshp:( bcpbc(M),nl )). 
 
 
 makenegative((doit,_),Q,Ans)  :- 
