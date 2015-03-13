@@ -389,9 +389,9 @@ go:-
  %%      reset_origins, %% reset GPS origins
 
        origlanguage =: Lang, 
+       doask_user(L),
        language := Lang,
 
-       doask_user(L),
        process(L).
 
 
@@ -1246,7 +1246,9 @@ anash( [listing,Module,:,Plist] ) :-
 
 anash( Plist ) :-
     Callp =.. Plist,
-    call( Callp ).
+    % catch(:ProtectedGoal, ?ExceptionTerm, :Handler)   ISO
+    % e.g. existence_error(procedure,main:trace/1)
+    catch( call( Callp ), error(existence_error(procedure,Predicate),_), ( out( 'Illegal Predicate ' ), output( Predicate ) ) ).
 
 
 appfilename(Dir,P,DirP):- 
