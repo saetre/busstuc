@@ -4006,7 +4006,7 @@ ip bound(C) ).
 
 %%%
 
-innight0 rule bustrans:( % IF T before clock, T < 1200 => innight just eveningtime
+innight0 rule bustrans:( % IF T before clock, T < 1200 => in-night just eveningtime
 is  srel/in_night/time/nil/E,
     replaceall  (  T isa clock, srel/Prep/time/T/E)
     with        ( T1 isa clock, srel/Prep/time/T1/E)
@@ -4241,14 +4241,17 @@ ip  [] ).
 
 
 %%%% before assumeatmidnight
-ateveningimplicit  rule bustrans:( %%  1230:, jeg skal til byen før 0200 -> 1400>1230
+ateveningimplicit  rule bustrans:( %%  1230:  jeg skal til byen før 0200 -> 1400>1230
 is  context srel/Prep/time/Six/D,
-          { (number(Six),morning_break(T0430),Six =< T0430)},  %% improbable
-        not present srel/early/time/nil/_,
+        not  { (number(Six), morning_break(T0430), Six =< T0430) },  %% improbable
         not present _B isa morning,
+        not present srel/early/time/nil/_,
         not present srel/this_morning/time/nil/_,
         not present srel/in_morning/time/nil/_,
         not present srel/this_midnight/time/nil/_,
+        not present srel/on/day/_/_,                    %% RS-150313  Only when "today" is implicit as well
+        not present srel/tomorrow/day/nil/_,            %% RS-150313  Only when "today" is implicit as well
+       %not present nrel/tomorrow/vehicle/day/_/nil,    %% RS-150313  Only when "today" is implicit as well
     replaceall ( Six isa clock, srel/Prep/time/Six/D)
     with       ( Eighteen isa clock,srel/Prep/time/Eighteen/D) % time is standard
 id  not flag(earlytime),
@@ -4277,6 +4280,7 @@ id  not flag(airbus),
     add flag(nightbusflag)
 
 ip  set(nightbusflag,true) ). %%  // necessary
+
 
 %%%% before tomorrow rule bustrans:( %% TA-101025
 
@@ -8264,9 +8268,10 @@ id   not atday(_),
 ip   [] ).
 
 
+%% RS-150313 TODO: Make two rules to assume either Monday or Saturday (or Sunday?)
 unksetexweekday rule bustrans:(   %% after weeknumber# %% TA-110203
 is  _ isa Weekday, {dmeq([week,weekday,weekend],Weekday)},
-    not (YMD isa date) when { bound(YMD)},  %% another date overrule bustrans:(s
+    not (YMD isa date) when { bound(YMD)},  %% another date overrules
     not  comp/day/ne/_/_,            %% not excluded !
     not present srel/today/_Day/nil/_ %% søndagsrute idag ...
 id  not atdate2(_,_),
