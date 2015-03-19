@@ -10,7 +10,7 @@
 
 %%% RS-131225, UNIT: utility, %% FOR metacomp, makeauxtables.pl
 :-module( utility, [ absorb/3, aggregate/3, all/1, ans/1, appendfiles/3, append_atomlist/2, append_atoms/3,  %% RS-141025 Move to main: (:=)/2, (=:)/2, 
-        begins_with/3, bound/1, breakpoint/2, charno/3, %% FOR busanshp.pl
+        bag_of/3, begins_with/3, bound/1, breakpoint/2, charno/3, %% FOR busanshp.pl
         compar/3, debug/2, default/2, deleteall/3, divmod/4, (do)/1, doall/1, ends_with/3, equal/2, error/2, firstmem/2, flatlist/2, fnuttify1/2, fnuttify2/2, for/2,     
         
         delete1/3, featurematch/4, featurematchlist/2, flatten/2, maximum/2, mergeavlists/3, minimum/2,  
@@ -34,10 +34,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %META-PREDICATES!
-%% LIST OF ALL META_PREDICATES: (do)/1, for/2, foralltest/2, implies/2,  number_of/3, once1/1, set_of/3, set_ops/3, , test/1, tryonce/1, ...?
+%% LIST OF ALL META_PREDICATES: (do)/1, bag_of/3, for/2, foralltest/2, implies/2,  number_of/3, once1/1, set_of/3, set_ops/3, , test/1, tryonce/1, ...?
 %% META_PREDICATES SECTION, %% RS-140101 meta_predicates    : means use source module       + means use this (utility) module  for expansion %% RS-131231 %From utility.pl
 %% RS-140101 meta_predicates expansion    : source module       + this(utility) module          0 source (zero supressed arguments)     ? in/out?
 
+:- meta_predicate  bag_of(+,0,+) . %% EE-150209
 :- meta_predicate  breakpoint(+,0).   %% RS-100101 ?  %% NEW PREDICATE
 :- meta_predicate  debug(0,+).   %% RS-100101 ?  %% NEW PREDICATE
 :- meta_predicate  do(0) .
@@ -172,6 +173,10 @@ measurecall1( P, N ) :- N >0, call( P ), fail.
 measurecall1( P, N ) :- N >0, M is N-1, measurecall1( P, M ).
 measurecall1( _, 0 ) :- ! .
 
+% Prolog's bagof is baroque %%
+bag_of( X, Y, Z ) :-
+    bagof( X, Y^Y, Z ), ! ;
+    Z = [].
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % member(X,[X|_]). % member(X,[_|Y]):-member(X,Y).   %BUILT-IN?

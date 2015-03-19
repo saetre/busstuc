@@ -1,0 +1,76 @@
+
+\nodebug
+
+\set queryflag true
+
+\set smsflag false
+
+\starttimebatch
+
+\norsk
+
+    holdeplasser buss 5.
+
+    hvor stopper buss 66?
+
+    hva er holdeplassene til buss 7?
+
+    på hvilke holdeplasser stopper buss 22?
+
+    på hvilke holdeplasser stopper buss 21?
+
+    gi meg holdeplassene til buss 36.
+
+\set smsflag true
+
+    holdeplasser buss 5.
+
+    hvor stopper buss 66?
+
+    hva er holdeplassene til buss 7?
+
+    på hvilke holdeplasser stopper buss 22?
+
+    på hvilke holdeplasser stopper buss 21?
+
+    gi meg holdeplassene til buss 36.
+
+\set smsflag false
+
+\english
+
+    where is bus 5.
+
+    where does bus 66 stop?
+
+    what are the bus stops for bus 7?
+
+    at which bus stops does bus 22 stop?
+
+    at which bus stops does bus 21 stop?
+
+    give me the bus stops for bus 36.
+
+\set smsflag true
+
+    where is bus 5.
+
+    where does bus 66 stop?
+
+    what are the bus stops for bus 7?
+
+    at which bus stops does bus 22 stop?
+
+    at which bus stops does bus 21 stop?
+
+    give me the bus stops for bus 36.
+
+\norsk
+
+\stoptimebatch
+
+\set smsflag false
+
+hvor mange spørsmål har du besvart ?
+
+\end

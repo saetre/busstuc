@@ -125,6 +125,16 @@ fra klæbu til sentrum  etter kl 1100  på mandag.
  
 buss 46 fra sentrum til klæbu.
 
+holdeplasser buss 5.
+
+hvor stopper buss 66?
+
+hva er holdeplassene til buss 7?
+
+på hvilke holdeplasser stopper buss 22?
+
+på hvilke holdeplasser stopper buss 21?
+
 \set smsflag true
 
 varsle meg når klokken er 2215.
@@ -166,6 +176,16 @@ Fra lade alle 20 til lade alle 80 .
 buss 7 fra sentrum til vikåsen etter 2340.
 
 når går første buss fra ila til sentrum 1. påskedag .
+
+holdeplasser buss 5.
+
+hvor stopper buss 66?
+
+hva er holdeplassene til buss 7?
+
+på hvilke holdeplasser stopper buss 22?
+
+på hvilke holdeplasser stopper buss 21?
 
 \set smsflag false
 
@@ -231,6 +251,16 @@ bus 8 from tors veg to nardokrysset.
 bus 63 from vollabakken to rosenborg.
 
 I want to go home from NTH to ygdrasilvn 9 as soon as possible .
+
+where is bus 5.
+
+where does bus 66 stop?
+
+what are the bus stops for bus 7?
+
+at which bus stops does bus 22 stop?
+
+at which bus stops does bus 21 stop?
 
 \norsk
 
