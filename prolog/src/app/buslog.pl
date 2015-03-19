@@ -51,7 +51,7 @@ not X :- \+ X.
 :- ensure_loaded('../db/discrepancies.pl' ). %% RS-131230 alias_station2/3, etc.
 
 %%% RS-140101, UNIT: /  and  /utility/
-:-use_module( '../utility/utility', [ bound/1, charno/3, firstmem/2, lastmem/2, maximum/2, maxval/3, members/3, minimum/2, minval/3, once1/1,
+:-use_module( '../utility/utility', [ bag_of/3, bound/1, charno/3, firstmem/2, lastmem/2, maximum/2, maxval/3, members/3, minimum/2, minval/3, once1/1,
         testmember/2, set_difference/3, set_of/3, set_ops/3, starttime/0, taketime/0, timeout/3, unbound/1 ] ). %test/1, testmember/2 %  ]). %% Made local: set_eliminate/4, set_filter/4, 
 %% locale meta-predicates: once1/1, test/1,  %% RS-131117 includes declare.pl
 
@@ -1054,14 +1054,15 @@ endstations1(Stations):-
 
 endstations(Bus,Stations):-
     endstation(Bus,Stations1),
-    set_of(S,endneighbourhood(Bus,S),Stations2), %% busdat
+    bag_of(S,endneighbourhood(Bus,S),FullStationslist), %% EE-150209
+    remove_duplicates1(FullStationslist,Stations2), %% EE-150209
     append(Stations1,Stations2,Stations).
 
 
 % endstation(+Bus,-StationList).
 
 endstation(Bus,Stations) :-
-         set_of(Rid,bustorid(Bus,Rid),Rids),
+         bag_of(Rid,bustorid(Bus,Rid),Rids), %% EE-150312
          ridtoendhpl(Rids,RawStations),
          remove_duplicates1(RawStations,Stations),
     !.
@@ -1113,13 +1114,15 @@ ridtoendhpl(Rids,Ends):-
 
 
 ridstotours(Rids,Traces):-
-    set_of(Trace,(member(Rid,Rids),ridtotour(Rid,Trace)),Traces).
+    bag_of(Trace,(member(Rid,Rids),ridtotour(Rid,Trace)),FullTracesList), %% EE-150312
+    remove_duplicates1(FullTracesList,Traces). %% EE-150312
 
 ridtotour(Rid,Trace):-
     xdepartureday(Rid,Trace,_,_).
 
 tourstoends(Traces,Ends):-
-    set_of(End ,(member(Trace,Traces),tourtoend(Trace,End)), Ends).
+    bag_of(End, (member(Trace,Traces),tourtoend(Trace,End)), FullEndsList), %% EE-150312
+    remove_duplicates1(FullEndsList,Ends). %% EE-150312
 
 tourtoend(Trace,EndStat):-
     maxseqtour(Trace,MaxSeq),
@@ -1142,11 +1145,12 @@ findstations(Bus,_Day,Stationslist) :- %% Only endstations if smsflag
    endstations(Bus,Stationslist),
    Stationslist \== []. %% Better with an error message
 
-% A bit slower, bus preserves some station order
+% A bit slower, bus preserves chronological station order
 findstations(Bus,_Day,Stationslist) :-
         set_of(Rid,bustorid(Bus,Rid),Rids), %% TA-090626
 
-   set_of(Station,passrids(Rids,Station),Stationslist),
+   bag_of(Station,passrids(Rids,Station),FullStationslist), %% EE-150209
+   remove_duplicates1(FullStationslist,Stationslist), %% EE-150209
 
    Stationslist \== []. %% Better with an error message
 
