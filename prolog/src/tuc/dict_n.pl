@@ -15253,6 +15253,15 @@ noun2(funksjonshemmede,handicapped). %% inflection as for ADJ
    noun2(handicapped,handicapped).   
    noun2(handicappede,handicapped).  %%  adj/noun flex
    noun2(handicaped,handicapped). 
+   noun2(handicapet,handicapped). %% spiw
+   noun2(handicappet,handicapped). %% spiw
+   noun2(handicapvennlig,handicapped). %% rough
+   noun2(handikap,handicapped). %% rough
+   noun2(handikapet,handicapped). %% spiw
+   noun2(handikappet,handicapped).
+   noun2(handikapped,handicapped). %% spiw
+   noun2(handikappede,handicapped). %% plu
+   noun2(handikapvennlig,handicapped). %% rough
    noun2(ufør,handicapped). %% plu
    noun2(uføre,handicapped). %% plu
    noun2(uføretrygdede,handicapped). 
@@ -16860,6 +16869,7 @@ noun2(robot,robot).
 
 noun2(rullestol,wheelchair).
    noun2(rullestolbruker,wheelchair). %% Rough 
+   %noun2(rullestolvennlig,wheelchair). %% Rough
 
 noun2(rushtid,rush_hour).
    noun2(rush,rush_hour). %% rushen/et 
