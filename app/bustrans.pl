@@ -7945,6 +7945,12 @@ id  add ( message(answer(db_reply(tt,webaddress,K)))),  %% will be executed in o
 ip  has_att_val(company,webaddress,tt,K) ).
 
 
+handicap_topic rule bustrans:( %% ask for handicap related information % EE-1503dd
+is  _ isa Handicap, clear
+id  addfront(message(handicapinfo)),
+    add flag(exit)
+ip  dmeq([handicapped,lowentry,lowentry_bus,pram,room,wheelchair], Handicap)).
+
 atb_topic rule bustrans:( %% no info but pointer to TEAM < nodates
 is   _ isa Special_ticket,clear
 id  not  message(answer(db_reply(tt,webaddress,K))),  %% ref buyticket
@@ -7963,7 +7969,6 @@ ip   dmeq([agelimit,animal,bag, bicycle,camera,cat, %% TA-110121
            wallet,wheelchair,zone],
         Special_ticket),
     has_att_val(company,webaddress,tt,K) ).
-
 
 wheniseaster rule bustrans:(   %% ask for period, specify DAY(eastereve?)
 is   which(A),srel/in/time/A/C,A isa time,(do)/exist/B/C,
