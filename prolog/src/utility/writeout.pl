@@ -7,36 +7,51 @@
 %%%% OUTPUT     %% RS-140921 To split utility.pl into managable modules
 
 :-module( writeout, [
-  %% From BusAnsHP
+   %% From/For BusAnsHP
     bcp/1,      bcw/2,  bcpbc/1,        bigcap/2,
     bw1/1,      bwc/2,  bwq/1,  bwr/1,  bwr2/2,         bwr2bc/1, bwrbc/1, bwrbus/2, bwrbusbc/2,
     bwrstreet/1,        bwrprices/1,    bwstat2/2,  bwt/1,  bwt2/1,         bwtimes2/1,     %% Utility
-    colon/0, comma/0,   cwc/2,  dot/0,  busanswer_sat/3,        doubt/2,      getphrase0/2,
-    endline/0,  indentprint/2,  languagenr/1,   listall/1,              listrequirements/1,
+    colon/0, comma/0,   cwc/2,  dot/0,  
+    busanswer_sat/3,    %% RS-150329 Extra?
+    doubt/2,      getphrase0/2,
+    endline/0,  indentprint/2,  languagenr/1,   
+    listrequirements/1, % listall/1,
     nopay/0,    nopay1/0,       outcap/1,       pay/0,  pay1/0,  period/0, period0/0, space/0,
     punkt/0,  question/0,
-    space0/0,   startmark/0,      %% From BusAnsHP
+    space0/0,   startmark/0,      %% From/For BusAnsHP (used in d_dialogue)
     prettyprint/1, roundwrite/1, print_parse_tree/1, printdots/0, %% out/1, MOVED prettypr to sicstus4comp... Avoiding loops in imports.
-    sequence_write/1, statistics/1, teleanswer_sat/2, traceprint/2,  %  track/2, trackprog/2, 
-    waves/0, writedate/1, writefields/1, writename/1, writeprog/1,       writesimplelist/1, %writepred/1, MOVED to SP4compatibility
-    writetelebusteranswer_rep/1, writetelebusteranswer_saf/2, writetelebusteranswer_sqt/3, writetelebusteranswer4/4, writetelebusteranswerfields/1,
-    writevaluelist/2, xwriteanswer/2
+    sequence_write/1, statistics/1, traceprint/2,  %  track/2, trackprog/2, 
+    waves/0, writedate/1, writefields/1,  writefieldvalue/2,  writefieldvalues/2, writefieldverb/1,
+    writename/1, writeprog/1,  writesimplelist/1,  %, writepred/1, MOVED to SP4compatibility
+   writetelebusteranswer_rep/1, writetelebusteranswer_saf/2, writetelebusteranswer_sqt/3,    %% RS-150329 Extra?
+    writetelebusteranswer4/4, teleanswer_sat/2, writetelebusteranswerfields/1,     %% RS-150329 Extra?
+%    writeanswer/1, Move to meta_preds to avoid Circles in the use_module imports.
+    writevaluelist/2 %  %meta_predicates writeanswer/1,  xwriteanswer/2
   ] ). %% RS-141105 Moved to main?: language/1,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% META_PREDICATES SECTION, %% RS-140927 meta_predicates    : means use source module       + means use this (utility) module  for expansion %% RS-131231 %From utility.pl
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate  busanswer_sat( ?, 0, ? ) . %% RS-141105
-:- meta_predicate listall( 0 ) .
-:- meta_predicate  teleanswer_sat( +, 0 ) .
-:- meta_predicate  xwriteanswer( ?, 0 ) .
-:- meta_predicate  writetelebusteranswer1( 0 ) .
-:- meta_predicate  writetelebusteranswer_rep( 0 ) .
-:- meta_predicate  writetelebusteranswer_saf( ?, 0 ) .
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:- meta_predicate  busanswer_sat( ?, 0, ? ) . %% RS-141105
+%:- meta_predicate  track( +, 0 ) .     %% Moved to declare!  %% RS-150111
+%:- meta_predicate  trackprog( +, 0 ) . %% Moved to declare!  %% RS-150111
+
+%:- meta_predicate  writetelebusteranswer_rep( 0 ) .
+%:- meta_predicate  writetelebusteranswer1( 0 ) .
+%:- meta_predicate  writetelebusteranswer_saf( ?, 0 ) .
+%:- meta_predicate  listall( 0 ) .
+%:- meta_predicate  teleanswer_sat( +, 0 ) .
+%:- meta_predicate  xwriteanswer( ?, 0 ) .
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- use_module( '../declare', [ language/1, track/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-:- use_module( '../sicstus4compatibility', [ out/1, output/1, prettypr/2, tab/1, writeanswer/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+%writeanswer/1, Move to meta_preds to avoid Circles in the use_module imports.
+%:- meta_predicate  traceanswer( 0 ) .
+%:- meta_predicate  writeanswer( 0 ) .
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+:- use_module( '../declare', [ language/1, track/2, value/2 ] ).
+:- use_module( '../utility/meta_preds', [ writeanswer/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+:- use_module( '../sicstus4compatibility', [ out/1, output/1, prettypr/2, tab/1 ] ). % , writeanswer/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 :- use_module( library(varnumbers), [ numbervars/1 ] ). %% RS-140210.
 
@@ -62,7 +77,7 @@
 :- use_module( '../db/regstr', [ streetstat/5 ] ). %% RS-150104
 
 %% RS-141026    UNIT: /dialog/
-:- use_module( '../dialog/frames2', [ frame_getvalue_rec/4, frame_setvalue_rec/4 ] ). %MISERY?!
+:- use_module( '../dialog/frames2', [ frame_getvalue_rec/4, frame_setvalue_rec/4 ] ). %MISERY?! , frame_setvalue_rec/4
 :- use_module( '../dialog/newcontext2', [ addref/3, getcurrent/1 ] ). %% RS-131223 INCLUDED IN FRAMES2!!
 :- use_module( '../dialog/parseres', [ atomreplace/4, cleanup_name/3, findfieldvalue1/3, convert_tucnf/3, ldap_addrefdialog/2, ldaptotuc/2,
                                        removebackslashes/2, recordfieldvalue/3 ] ). %MISERY?!
@@ -72,11 +87,6 @@
 :- use_module( '../tuc/lex', [ dict_module/1, known_name/1 ] ).  %  TUCs  Lexical Knowledge Base.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%:- meta_predicate  track( +, 0 ) .     %% Moved to declare!  %% RS-150111
-%:- meta_predicate  trackprog( +, 0 ) . %% Moved to declare!  %% RS-150111
-%:- meta_predicate  traceanswer( 0 ) .
-%:- meta_predicate  writeanswer( 0 ) .
 %out(P) :- write(P), tab(1). %% Moved to sicstus4compatibility!
 %output(P) :- write(P), nl.
 %language(L) :- value( language, L ). %% value(language,X) should have been set dynamically by now! In tucbuses
@@ -682,7 +692,7 @@ cwc(anotherplace,['another place','et sted til']).
 cwc(aplace,['a place','et sted']).
 cwc(atime,['a time','et tidspunkt']).
 cwc(are,['are','er']).
-cwc(are_the_same_as,['are the same as on','er de samme som på']).
+cwc(are_the_same_as,['are almost the same as on','er nesten de samme som på']).
 cwc(aroute,['a route','en rute']).
 cwc(arrivesat,['','']):- value(smsflag,true),!.
 cwc(arrivesat,['arrives at ','kommer til ']).
@@ -1622,7 +1632,7 @@ print_parse_tree(Parse1):- %% TA-110207
    output('<tree> '),   prettyprint(Pa1),  output('</tree>'),nl.
 
    
-print_parse_tree(Parse1):- %% TA-110207
+print_parse_tree(Parse1) :- %% TA-110207
    track(4, printparse(Parse1) ), %%  print proper parsetree
    track(2, output('*** Simplified parse tree ***') ),
    track(1, ptbwrite:ptbwrite(Parse1) ), %% -> ptbwrite.pl
@@ -1648,26 +1658,6 @@ indentprint(N,Y):-
      tab(N),write(Y),nl.
 
 
-%listall(Frame) :-
-%
-%   frame_getvalue_rec(Frame, return, [Field|Rest], _),!,
-%       frame_getvalue_rec(Frame, itemsfound::items, Recs, _),
-%
-%   for(member(Rec,Recs),                %% TA-060614
-%       tahasattval(Rec, [Field|Rest])). %% Speakable
-%%%     listfields(Recs, [cn,Field]).
-%
-%listall(Frame) :-
-%       frame_getvalue_rec(Frame, itemsfound::items, Recs, _),
-%
-%   for(member(Rec,Recs),
-%       tahasattval(Rec, [department,telephone])). %% Speakable
-%
-%%%     listfields(Recs, [cn,department,telephone]).
-%
-%
-%
-%%%%%   listfields(Recs, [cn,title,telephonenumber,mail,ou,roomnumber,street]).
 
 listrequirements( Frame ) :-
         set_ops( Field=Val, frame_getvalue_rec( Frame, attributes::Field,Val,_), List ),
@@ -1937,30 +1927,6 @@ wrf1(X):-
 
 
 
-
-%% QUIT %% TA-070419
-xwriteanswer( Fql, AnswerOut ) :-
-    value(directflag,true),
-    !,
-    value(directoutputfile,Newans), 
-    tell(Newans), 
-       nl,
-
-        output('*** TQL  ***'),nl,
-        output(Fql),nl,
-
-        output('*** Answer ***'),nl,
-        output(' '),nl,
-
-        call(AnswerOut),nl,
-
-     told.
-
-
-xwriteanswer(_Fql,AnswerOut):- %% TA-070608
-   writeanswer( AnswerOut ).
-
-
 %% WRITE TELEBUSTER ANSWER ...
 
 writetelebusteranswer4(sant,TQL,_AnswerOut,_Frame):-%% TA-060905 
@@ -2213,6 +2179,4 @@ xspecname(TMN_S,S):-
    M \== nil,
    M:hpl(_,_S0,TMN_S,S),
    !.
-
-
 
