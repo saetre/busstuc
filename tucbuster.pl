@@ -37,7 +37,8 @@
 %?-compile( 'diabus.pl' ). 
 :-use_module( diabus, [ ] ).    %% RS-150119
 
-:-compile( 'dialog/d_call.pl' ). %% diolog/0, etc.?
+:-use_module( 'dialog/d_call.pl', [] ). %% diolog/0, etc.?
+%:-compile( 'dialog/d_call.pl' ). %% diolog/0, etc.?
 %:-ensure_loaded( 'dialog/d_call.pl' ). %% create_splitacts/x, etc.?
 
 

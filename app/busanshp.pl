@@ -41,7 +41,6 @@
 %% META-PREDICATES
 :- meta_predicate  outdeplist1( ?, ?, ?, ?, ?, -, ? ) .         %% RS-140927 %%% OUTDEPLIST1 %%%%%%%
 
-
 %%% OUTDEPLISTTIME %% TIME %%%%%
 :- meta_predicate  outdeplisttime(  ?, ?, ?, ?, ?, -, ? ) .         %% RS-140927
 :- meta_predicate  outdeplisttime1( ?, ?, ?, ?, ?, -, - ) .         %% RS-140927
@@ -58,6 +57,10 @@
 %:- meta_predicate  test(0).
 %test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%:- meta_predicate  pmess( 0 ) .         %% RS-140927 %%% OUTDEPLIST1 %%%%%%%
+%printmessage( assumetomorrow ) :-
+%    pmess( writeout:cwc(assumetomorrow, _) ).
+
 
 
 %% Version Based On the principle that the GoogleMapInfo is printed out
@@ -839,7 +842,7 @@ earliesttimes :-
     \+ value(smsflag,true),
     \+ value(dialog,1),
     !,
-    printmess1(earliesttimes).
+    printmess1( earliesttimes ).
 earliesttimes.
 
 %%%%%%%%%% END OUTDEPLIST %%%%%%%%%%%%%%%%%%%%%
@@ -2280,9 +2283,9 @@ obvious_station(sentrum).
 
 %% Unconditional print
 
-pmess(answer(P)):- P.
+pmess( answer(P) ) :- P.
 
-pmess(place_resolve(Hageby,List)):-
+pmess( place_resolve(Hageby,List) ):-
    bcpbc(theplace), bwr(Hageby), bcp(ismanyvalued),period,
    bcpbc(precize),nl,
    bcpbc(possalternatives),bwr2(List,station),period0.
@@ -2397,9 +2400,9 @@ pmess(unrecognized_street(BIV,KJV)):-    %%  actually a staff warning
     bcpbc(unknown),bcp(connection),bwr(BIV),comma,bwr(KJV),dot.
 
 
-pmess(date_day_route(date(Y2000,Y5,Y29),Monday)):-
-    bcpbc(the_routes_on),writedate(date(Y2000,Y5,Y29)),
-    bcp(are_the_same_as),outdays(Monday),dot.
+pmess( date_day_route(date(Y2000,Y5,Y29),Monday) ) :-
+    bcpbc( the_routes_on ), writedate( date(Y2000,Y5,Y29) ),
+    bcp( are_the_same_as ), outdays( Monday ), dot.
 
 pmess(date_isa_day(date(Y2000,Y5,Y29),Monday)):-
     writedate(date(Y2000,Y5,Y29)),

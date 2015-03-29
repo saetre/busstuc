@@ -13,12 +13,15 @@
    bus_mod/1, busorfree/1, cname/2, connections/10, corrstats/3, dateis/4, dayModSeqNo/2, departure/4, % UNUSED? bustorid/3, %% RS-150103
    departuredayMOD/5, depset/2,     diffdep4/4, direct_connection/3, endstations1/1, ensure_removed/3, findstations/3, firstactualdeparturetime/4,
    flag/1,        %% For using flag( X ) from program (from busanshp for example)
-   frame_remember/2, hpl/3, irrelevantdirect/4, islist/1, isnear/2, keepafterstrict/3, keepafterwalking/2, keeparound/3, keepat/3, keepbefore1/3, keepbeforerev/3,
-   keepbetweenstat/5, keepbus/3, keepdepafter/3, keepuntil/4, keepwithin/4, listofall/2, maybestation/3, message/1, neverarrives/2, neverdeparts/2, neverpasses/2, %% For negans.pl
+   frame_remember/2, hpl/3, irrelevantdirect/4, islist/1, isnear/2,
+   keepafterstrict/3, keepafterwalking/2, keeparound/3, keepat/3, keepbefore1/3, keepbeforerev/3,
+   keepbetweenstat/5, keepbus/3, keepdepafter/3, keepuntil/4, keepwithin/4, listofall/2,
+   maybestation/3, message/1, mod_day_in_set/5,
+   neverarrives/2, neverdeparts/2, neverpasses/2, %% For negans.pl
    new_cutloop_extend/4, new_cutset_test/8, nextdep/3, nocontext/0, not/1, notaclock/1, notification/2, numberof/3, occurs_before/3, pass_after/2, pass_before/2,
    passes44/6,    passesstations/4, passevent/6, passMOD/7, popframe/0, proper_end_station/2, pushframe/0, relax/1, replyq/1,  %% For negans.pl
    rid_to_direction/3, ridstobuses/2, samefplace/2, %% RS-140929 for bustrans.pl rules 
-   selectroute/3, standardizeemit/2, station_trace/4, stationsat/3, statorplace/1, takestime/3, testanswer/2,
+   selectroute/3, seqno_day/4, standardizeemit/2, station_trace/4, stationsat/3, statorplace/1, takestime/3, testanswer/2,
    ticketprice2/2, timeis/1, transferXYZ/3, trytransbuslist/4, withinslack/2,
 
    airbus_module/1, keepafter/3, passeq/6, ridtobusname/2, ridtobusnr/2, veh_mod/1, %% RS-140927 For busanshp.pl, moved to utility.pl: internalkonst/1, 
@@ -31,7 +34,8 @@
 
 %% META-PREDICATES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate not(0).     % not/1,
+:- meta_predicate  not(0).     % not/1,
+%:- meta_predicate seqno_day(?,+,-,-).
 :- meta_predicate  set_eliminate(+,0,-,-).
 :- meta_predicate  set_filter(+,0,-,-).
 :- meta_predicate  test(0) .  %% RS-140615  %% test/1 is a meta-predicate ( just passing on the incoming X-predicate )
@@ -124,7 +128,7 @@ test(X):- \+ ( \+ ( X ) ).        %% Calls test(nostation(Y)) among other things
 
 %% official codes for daysets are
 
-%% dMTWTFSS e.g.  d0000001 sunday
+%% dMTWTFSS e.g.  d0000001 sunday, d1000000 monday, d0100000 tueday
 
 
 %% day_in_set(DayX,DayCode)
@@ -140,17 +144,16 @@ dkodate(081224, 3). // Means Routes are created wednesday
 */
 
 %% What is the date' s sequence number in the current module
-dayModSeqNo(Date,DaySeqNo) :- %% TA-090618
+dayModSeqNo( Date, DaySeqNo ) :- %% TA-090618
 
     decide_period(Date,TTP), %%%%  <----- !!! %% TA-091207 veh_mod(TTP),   %% from topreg.pl
 
     TTP \== nil,  %% TA-091209
 
-    route_period(_, TTP,  Date1,_),   %% from topreg.pl
+    route_period( _, TTP,  Date1, _ ),   %% from topreg.pl
 
 %%  1. day of route_period
 %%  They must be equal to emitday anyhow
-
 
     days_between(Date1,Date,DaySeqN),
     DaySeqNo is DaySeqN+1.
@@ -167,14 +170,14 @@ standardizeemit(D90615,date(Y2009,M06,D15)):-
 
 
 
-%% e.g May 1 is the 160 th day in route period r1612_091123  %% has S(un)day  route
-
 %% Default mapping to special days if not specific schedule
 %% NEVER APPLIES TO nightbus    %% TA-100412
 
-seqno_day( TTP, K160, May1, XN ) :- %% XN relative nr of FIRST Sday in Route Module %% TA-100108
-    \+ value(nightbusflag,true), %% TA-100412
-    route_period(_, TTP,  Date1,_),   %% topreg.pl
+%% Example Variables: May 1st is the 160 th day in route period r1612_091123
+%% It has S(un)day  routes (EmitDay / SDay)
+seqno_day( TTP, K160, May1, XN ) :-     %% XN relative nr of FIRST Sday in Route Module %% TA-100108
+    \+ value(nightbusflag,true),        %% TA-100412
+    route_period( _, TTP,  Date1, _ ),     %% topreg.pl
 
 %%  1. day of route_period
 %%  They must be equal to emitday anyhow
@@ -191,39 +194,33 @@ seqno_day( TTP, K160, May1, XN ) :- %% XN relative nr of FIRST Sday in Route Mod
 %% RS-150103
 %% Check if DayX (eg 35) contains '1' in the DayCode (eg 3) string (eg 00000110000011...)
 %% ...Or if DayX-1 (eg 34) contains '1' in the DayCode (eg 3) string AND Time>2400 (nightbus?)
+%
+%% timenow(NOW), %% 150328
+%
 
 %% ONLY if MAP Date to day is applied,
 mod_day_in_set( TTP, DayX, DayCode, Time, Time ) :- %% example, May 1=sunday route
     number(DayX),                   %% not separate module
     number(DayCode),
-    seqno_day( TTP, DayX, _May1, XN ),  % Not for nightbuses?
-%%    !,                              %% SDay route !   %%RS-130327, Try new (backup) Regime below?
+    seqno_day( TTP, DayX, _May1, XN ),  %% NOT for nightbus, see below    %% TA-100412
+%%    !, 
+%% SDay route !   %%RS-130327, Try new (backup? / nightbus?) Regime below?
     TTP:dko( DayCode, _, _, _, _, _, _, MASK ),
-    atom(MASK), %% string '01' for whole period
+    atom(MASK), %% string of zeros and ones '0100' for whole period
     charno( XN, MASK, '1' ). %% utility.pl
 
-% NEW regime (For nightbuses only?)
-mod_day_in_set( TTP, DayX, DayCode, Time, TodayTime ) :-
+% For nightbuses (only?): Changes the potential BigTimes (e.g. 2530), to 24-hour clock (0130) TodayTime
+mod_day_in_set( TTP, DayX, DayCode, BigTime, TodayTime ) :-
     number(DayX),
     number(DayCode),
     !,
     TTP:dko( DayCode, _, _, _, _, _, _, MASK ),
-    atom( MASK ), %% string '01' for whole period
+    atom( MASK ), %% string of zeros and ones '0100' for whole period
     
     DayBefore is DayX-1,
-    ( Time > 2359  ->  TodayTime is Time-2400, charno( DayBefore, MASK, '1' )  ;  TodayTime=Time, charno( DayX, MASK, '1' ) )
-    . %% utility.pl
-
-% NEW regime (For nightbuses only?)
-%mod_day_in_set( TTP, DayX, DayCode ) :- 
-%    number(DayX),
-%    number(DayCode),
-%    !,
-%    TTP:dko( DayCode, _, _, _, _, _, _, MASK ),
-%    atom( MASK ), %% string '01' for whole period
-%    charno( DayX, MASK, '1' ). %% utility.pl
-%
-
+    ( BigTime > 2359  -> % if %% utility:charno before or after midnight
+      TodayTime is BigTime-2400, charno( DayBefore, MASK, '1' )  ;  % then
+      TodayTime=BigTime, charno( DayX, MASK, '1' ) ). % else
 
 
 %% Day from query is coded as symbols

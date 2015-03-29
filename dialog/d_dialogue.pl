@@ -8,7 +8,8 @@
 %% Dialogue manager.
 
 %% RS-140910   Make a module here... It should keep track of it's own linecounter variables etc.  !!! See newcontext2 and frames2 !!!
-:- module( d_dialogue, [ dialog/0, evalline_multi/2, last_answer/2, linecounter/1, processinput/1, quit_dialog/0, reset_conns/0, run/0, subst_tql/4, varmember/2 ] ). %hi/0, dialogrun0/0,  
+:- module( d_dialogue, [ dialog/0, last_answer/2, linecounter/1, processinput/1, run/0, quit_dialog/0, reset_conns/0,
+                       subst_tql/4, varmember/2 ] ). % dialog/0, evalline_multi/2, last_answer/2, linecounter/1, processinput/1, quit_dialog/0, reset_conns/0, run/0, subst_tql/4, varmember/2 ] ). %hi/0, dialogrun0/0,  
 
 %% META-PREDICATES
 :- meta_predicate  g_execute1( ?, ?, 0).
@@ -32,14 +33,14 @@
 
 %% RS-140914  UNIT: /
 :- use_module( '../declare', [ (:=)/2, trackprog/2, value/2 ] ). %% RS-111213 General (semantic) Operators, e.g.  :: , trackprog/2        %Helper
-:- use_module( '../sicstus4compatibility', [ output/1, writeanswer/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
-:- use_module( '../main', [ exetuc/1, translate2/2 ] ). % dialog/0, 
-:- use_module( '../getphonedir', [  reset_ldapcon/0  ]).%% RS-131227    For ...main.pl, extra: create_tags/1,  
-:- use_module( '../interfaceroute', [  reset_period/0 ] ).
+:- use_module( '../utility/meta_preds', [ writeanswer/1, xwriteanswer/2 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 %% RS-140914  UNIT: /utility/
 :- use_module( '../utility/utility', [ flatround/2, timeout/3 ] ).         %% RS-140102 AVOID LOOPS PLEASE!! %trackprog(X, Y) :- user:trackprog(X, Y) .
-:- use_module( '../utility/writeout', [ bcpbc/1, period/0, startmark/0, waves/0, xwriteanswer/2 ] ).%% RS-141105   writeanswer/1,  
+:- use_module( '../utility/writeout', [ bcpbc/1, period/0, startmark/0, waves/0 ] ).%% RS-141105   writeanswer/1,  , xwriteanswer/2,
+:- use_module( '../main', [ exetuc/1, translate2/2 ] ). % dialog/0, 
+:- use_module( '../getphonedir', [  reset_ldapcon/0  ]).%% RS-131227    For ...main.pl, extra: create_tags/1,  
+:- use_module( '../interfaceroute', [  reset_period/0 ] ).
 
 %%% RS-140914, UNIT: /app/
 :- use_module( '../app/busanshp', [  ] ).
@@ -172,7 +173,7 @@ reset_dialog(Reason):- %%  // bye/error
         
    makeanswer(true,Fql, Program ,AnswerOut), 
    waves, 
- 
+
    xwriteanswer( Fql, AnswerOut ). %% -> dir_file?%% TA-070419 
 
 
@@ -305,9 +306,7 @@ evalline(_, Tql) :-
 
 evalline(_, _) :-
         waves, %% TA-050809
-
-%        writeanswer( busanshp:( startmark,bcpbc(dialogerror),period ) ).     % use busanshp: module
-        writeanswer( ( startmark, bcpbc(dialogerror), period ) ).     % use busanshp: module ?
+        writeanswer( ( startmark, bcpbc(dialogerror), period ) ).     % uses the busanshp: module 
 
 %% Handle one TQL that appears in a sequence
 

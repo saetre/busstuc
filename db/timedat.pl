@@ -31,9 +31,18 @@
 %% :-use_module( '../utility/library.pl' ).        %% for: uses orig_named_date %% KISS %% RS-131230
 %:-use_module( library(aggregate), [ foral/2 ] ). %% KISS %% RS-140914    %% RS-141029  for-all Does NOT work like utility:for/2
 
+
 %% List of predicates
-:-volatile named_date/2. %% Created Initially, not stored in save_program
-:-dynamic named_date/2. %% Created Initially,  redefined with remember(day_map) below
+:- volatile named_date/2. %% Created Initially, not stored in save_program
+:- dynamic named_date/2. %% Created Initially,  redefined with remember(day_map) below
+
+create_named_dates :-
+    list_of_named_dates(L), 
+    for( ( member(A,L), orig_named_date(A,B) ),
+          remember( named_date(A,B) )          % remember( timedat:named_date(A,B) )
+       ), %% To be     refined
+    verify_movedates. % verify_dates (that change every year)
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %remember( Module:F ) :- Module:F, ! ; assert( Module:F ).        %% Add F it is does not already exist.
@@ -45,14 +54,6 @@
 %for( P, Q ) :- %% For all P, do Q (with part of P). Finally succeed
 %  P, Q, false ; true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-create_named_dates :-
-    list_of_named_dates(L), 
-    for( ( member(A,L), orig_named_date(A,B) ),
-          remember( named_date(A,B) )          % remember( timedat:named_date(A,B) )
-       ), %% To be     refined
-    verify_movedates. % verify_dates (that change every year)
-
 
 %%%%%%%  TIME  SECTION %%%%%%%%%%%%%%%%%
 
@@ -134,7 +135,7 @@ orig_named_date(new_years_day,date(YYY1,01,01)):- %% all other todays date
      YYY1 is YYYY+1,
      !.
 
-orig_named_date(easterday,         ED):- %% datecalc
+orig_named_date(easterday,    ED):- %% datecalc
     this_year(YYYY),
     easterdate(YYYY,ED).
 

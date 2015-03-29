@@ -14,20 +14,29 @@
 :- dynamic
            current_frame/1.    %%, last_answer/2. %% RS-131218 Trouble with multiple Modules?
 
+%:- meta_predicate  traceanswer( 0 ) .
+%:- meta_predicate  writeanswer( 0 ) .
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %% User input terminals
 
 %%% RS-141026, UNIT: /
 %:- use_module( '../main', [ value/2 ] ).
 :- use_module( '../declare', [ trackprog/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-:- use_module( '../sicstus4compatibility', [ output/1, writeanswer/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+:- use_module( '../utility/meta_preds', [ writeanswer/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+:- use_module( '../sicstus4compatibility', [ output/1 ] ). %, writeanswer/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 %% UNIT: /utility/,     RS-140914
-%:- use_module( '../utility/utility', [ ] ). %roundmember/2 ] ). %% RS-140208. := /2, listall/1, Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
-:- use_module( '../utility/datecalc', [ daysucc/2, isday/1, today/1 ] ).
-%  ] ).%% RS-141105 traceanswer/1,
-:- use_module( '../utility/writeout', [ bcp/1, bcpbc/1, bwrbc/1, busanswer_sat/3, colon/0, doubt/2, listall/1, listrequirements/1, period/0, 
-        space/0, teleanswer_sat/2, waves/0, writeprog/1, writetelebusteranswer_rep/1, writetelebusteranswer_saf/2, writetelebusteranswer_sqt/3, writetelebusteranswer4/4 ] ).%% RS-140912
-
+:- use_module( '../utility/utility', [ for/2, set_ops/3 ] ). %% RS-150328
+%:- use_module( '../utility/utility', [ ] ). %roundmember/2 ] ).
+%% RS-140208. := /2, listall/1, Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
+:- use_module( '../utility/datecalc', [ daysucc/2, isday/1, today/1 ] ). %  ] ).%% RS-141105 traceanswer/1,
+:- use_module( '../utility/writeout', [ bcp/1, bcpbc/1, bwrbc/1, % busanswer_sat/3, teleanswer_sat/2, writetelebusteranswer_rep/1,
+                                        colon/0, doubt/2, period/0, prettyprint/1, space/0, waves/0, writeprog/1  ] ). %% RS-140912 150328 listrequirements/1, 
+% , listall/1,  writetelebusteranswer_saf/2, writetelebusteranswer_sqt/3, writetelebusteranswer4/4 ] ). %% RS-140912
+%    writetelebusteranswer_rep/1, writetelebusteranswer_saf/2, writetelebusteranswer_sqt/3, writetelebusteranswer4/4, writetelebusteranswerfields/1 ] ). %% RS-140912
+%                                        writefieldvalue/2, writefieldvalues/2, writefieldverb/1 ] ). 
 %%% RS-140914, UNIT: /app/
 :- use_module( '../app/busanshp', [ paraphrase/1, paraphrase2/2, paraphrase3/3, prent0/1, printmessage/1 ] ). % period/0, space/0, -> writeout 
 :- use_module( '../app/interapp', [ execute_program/1, isuccess/1, makeanswer/4 ] ). %% LOOP!! writeanswer/1, traceanswer/1, waves/0, writeprog/1 was used in interapp (now writeout?)
@@ -48,6 +57,17 @@
 
 :- use_module( '../app/pragma', [ flatroundre/2, pragma/3, roundmember/2 ] ). %% roundmember must be declared meta_predicate early on!
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% META_PREDICATES SECTION, %% RS-140927 meta_predicates    : means use source module       + means use this (utility) module  for expansion %% RS-131231 %From utility.pl
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate  busanswer_sat( ?, 0, ? ) . %% RS-141105
+%:- meta_predicate  writetelebusteranswer_rep( 0 ) .
+%:- meta_predicate  writetelebusteranswer1( 0 ) .
+%:- meta_predicate  writetelebusteranswer_saf( ?, 0 ) .
+%:- meta_predicate  listall( 0 ) .
+%:- meta_predicate  teleanswer_sat( +, 0 ) .
+%:- meta_predicate  xwriteanswer( ?, 0 ) .
 
 %:- meta_predicate  trackprog(+,0) .
 %trackprog( N, P ) :-
@@ -311,12 +331,6 @@ checkitem( _, sant, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRefer, 
 
     writetelebusteranswer4(sant,Tql,nil,Frame). %% TA-060905 
 
-
-
-
-%% ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
-
-%% sat
 
 
 checkitem(tele,sat, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, OldRefer, [Tql, Prog])) :-
@@ -615,6 +629,240 @@ checkitem(_,sayq(Output), Focus, Focus) :-
     writeanswer(bcpbc(Output)), nl.
 
 %% ¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+%% WRITE TELEBUSTER ANSWER ...
+
+writetelebusteranswer4(sant,TQL,_AnswerOut,_Frame):-%% TA-060905 
+    value(directflag,true),
+    !,
+    nl,
+    output('*** TQL  ***'),nl,
+    prettyprint(TQL), nl,
+    output('*** Answer ***'),nl,
+    output(' '),nl.   %% no answer 
+
+writetelebusteranswer4(sant,_Tql,_AnswerOut,_Frame). %% TA-060905 
+
+
+writetelebusteranswer_rep( Frame ) :- %% TA-060224
+    writetelebusteranswer1( Frame ).
+
+%% sqt
+
+writetelebusteranswer_sqt(TQL,_AnswerOut,_Frame) :-   %% TA-060224
+    value(directflag,true),
+    !,
+%%     value(directoutputfile,Newans), %% TA-060825
+%%     tell(Newans), %% ALREADY OPEN BY PARAPHRASE2
+
+        nl,
+        output('*** TQL  ***'),nl,
+        prettyprint(TQL), nl,
+
+        output('*** Answer ***'),nl,
+        output(' '),nl.   %% no answer 
+%%        writeanswer(AnswerOut),nl.  %% TA-060825
+
+
+writetelebusteranswer_sqt(_TQL,_,_Frame) :-  %% TA-060825  
+   true.
+
+
+
+
+
+
+
+
+writetelebusteranswer_saf(TQL,Frame) :-  %% TA-060420
+    value(directflag,true),
+    !,
+%%  value(directoutputfile,Newans),  %% TA-060825
+%%     tell(Newans),  %% Already OPEN by paraphrase2
+
+        output('*** TQL  ***'),nl,
+        prettyprint(TQL), nl,
+       
+        output('*** Answer ***'),nl,
+       
+        writetelebusteranswer1( Frame ),
+
+    true.  %% TA-060127 %% Keep open
+
+
+writetelebusteranswer_saf(_,_Frame) :- %% TA-060420
+    !. %% writetelebusteranswer1(_Frame). 
+
+
+
+listall( Module:P ) :- for( Module:P, output(Module:P) ).  %% RS-141015 Always succeed even when no output? RS-150328 TODO...
+
+%listall(Frame) :-
+%
+%   frame_getvalue_rec(Frame, return, [Field|Rest], _),!,
+%       frame_getvalue_rec(Frame, itemsfound::items, Recs, _),
+%
+%   for(member(Rec,Recs),                %% TA-060614
+%       tahasattval(Rec, [Field|Rest])). %% Speakable
+%%%     listfields(Recs, [cn,Field]).
+%
+%listall(Frame) :-
+%       frame_getvalue_rec(Frame, itemsfound::items, Recs, _),
+%
+%   for(member(Rec,Recs),
+%       tahasattval(Rec, [department,telephone])). %% Speakable
+%
+%%%     listfields(Recs, [cn,department,telephone]).
+%
+%
+%
+%%%%%   listfields(Recs, [cn,title,telephonenumber,mail,ou,roomnumber,street]).
+
+listrequirements( Frame ) :-
+        set_ops( Field=Val, frame_getvalue_rec( Frame, attributes::Field,Val,_), List ),
+
+        listrequirements2(List).
+
+
+
+listrequirements2([_Field=dontknow|Rest]) :-
+        listrequirements2(Rest).
+
+listrequirements2([_Field=doknow|Rest]) :-
+        listrequirements2(Rest).
+
+listrequirements2([Field=Value|Rest]) :-
+    value(traceprog,N), N >=2,
+    !,
+    listreq2([Field=Value|Rest]).
+
+listrequirements2(_). 
+
+
+listreq2([Field=Value|Rest]) :-
+   !,
+        bcpbc( field(Field) ), colon, write(Value),nl,
+        listreq2(Rest).
+
+listreq2([]).
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%
+
+writetelebusteranswer1( Module:Frame ) :-
+    frame_getvalue_rec( Module:Frame, return, [count|_], _ ),!,
+    !,
+    frame_getvalue_rec( Module:Frame, itemsfound::itemcount, C, _),
+    bcpbc(numrecords(C)),
+    colon,nl. %%%  period.
+
+writetelebusteranswer1( Module:Frame ) :- 
+    frame_getvalue_rec( Module:Frame, return, [], _),
+    !, 
+    output('Fant ingen felt å finne verdien til.'),nl.  %% doubt
+
+
+writetelebusteranswer1( Module:Frame ) :-                %% return not set,show standard (Marvin):
+    value(telebusterflag,true),     %% Telebuster,  address is important
+    \+ frame_getvalue_rec( Module:Frame, return, _A,_B ), %% TA-0605116
+
+    frame_setvalue_rec( Module:Frame, return,[roomnumber,address], Frame1 ),
+    !,
+
+    listall( Frame1 ). %% avdeling til odd pettersen
+%%     writetelebusteranswerfields(Frame1). 
+
+
+
+writetelebusteranswer1( Module:Frame) :-                %% return not set,show standard (Marvin):
+    value(teleflag,true),        %% DAter, telephone is important
+    \+ frame_getvalue_rec( Module:Frame, return,_A,_), %% TA-0605116
+    !,
+    frame_setvalue_rec( Module:Frame,return,[telephonenumber],Frame1),
+
+
+    listall(Frame1).
+
+%%    writetelebusteranswerfields(Frame1). %% TA-060302
+
+
+writetelebusteranswer1( Module:Frame ) :-                %% 
+    value(teleflag,true),      
+    frame_getvalue_rec( Module:Frame, return,_A,_),
+    !,
+    listall( Module:Frame ).
+
+
+
+writetelebusteranswer1(Frame) :-                %% return not set, show a nice list of properties
+    listall(Frame).                
+
+
+%writetelebusteranswerfields( Module:Frame ) :- %% TA-060306
+%    frame_getvalue_rec( Module:Frame, return, RList, _),
+%    !, 
+%    frame_getvalue_rec( Module:Frame, itemsfound::items, Recs, _),
+%
+%%% torea amble has phone 94451
+%
+%   tahasattval(Recs,RList).
+%
+%writetelebusteranswerfields(Frame) :- %% TA-060306
+%
+%     output(Frame). %%%%%%%% Panic Dump %%%%%%
+%
+%
+%tahasattval(I,RList) :-
+%
+%    writefieldvalue(I,cn),
+%    writefieldverb(RList),
+%    !, 
+%    writefieldvalues(I,RList),
+%    nl.
+
+
+%% ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+%% sat
+
+busanswer_sat( TQL, AnswerOut, _Frame ) :-  %% TA-060224
+    value(directflag,true),
+    !,
+%%    value(directoutputfile,Newans), %% TA-060825
+%%     tell(Newans), %% Already open by PARAPHRASE2
+
+        output('*** TQL  ***'),nl,
+        prettyprint(TQL), nl,
+        output('*** Answer ***'),nl,
+        writeanswer(AnswerOut), %% TA-060428
+    true.  %% TA-060127 Keep Open
+
+
+busanswer_sat(_Tql,AnswerOut,_Frame):-  %% TA-060428
+    writeanswer(AnswerOut).
+
+
+%% sat
+
+teleanswer_sat( TQL, Frame ) :-  %% TA-060224
+    value(directflag,true),
+    !,
+%%    value(directoutputfile,Newans), %% TA-060825
+%%    tell(Newans), %% ALREADY OPEN BY PARAPHRASE2
+
+        nl,
+        output('*** TQL  ***'),nl,
+        prettyprint(TQL), nl,
+        output('*** Answer ***'),nl,
+        writetelebusteranswer1( Frame ),
+    true.  %% TA-060127 Keep Open
+
+teleanswer_sat(_,Frame) :-
+    writetelebusteranswer1(Frame). 
+
 
 
 remove_messages(Prog,Prog). %% e.g. howtuchelp %% TA-051214

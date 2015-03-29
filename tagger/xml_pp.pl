@@ -32,7 +32,8 @@
  */
 
 
-:- ensure_loaded( xml_utilities ).
+:- use_module( xml_utilities ).
+:- use_module( '../sicstus4compatibility', [ put/1 ] ). %% RS-150119  progtrace/2, 
 
 /* xml_pp( +XMLDocument ) "pretty prints" XMLDocument on the current
  * output stream.

@@ -46,7 +46,8 @@
 %%% RS-131225, UNIT: / and utility/
 %:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
 :- use_module( '../declare', [ ( := )/2, forget/1, set/2, trackprog/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-:- use_module( '../sicstus4compatibility', [ output/1, writeanswer/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+:- use_module( '../utility/meta_preds', [ writeanswer/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
+:- use_module( '../sicstus4compatibility', [ output/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 %%% RS-131225, UNIT: /utility/
 :- use_module( '../utility/utility', [ append_atoms/3, flatround/2, newconst/1, fnuttify2/2, for/2, once1/1, sequence_member/2 ] ). %forget/1,  
