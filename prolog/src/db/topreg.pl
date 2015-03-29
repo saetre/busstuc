@@ -75,17 +75,17 @@ period_message( r1630_111201,
 ['AtB Routes for Tram 2012',
  'AtB Ruter for Trikk 2012']).
 
-period_message( r1613_140415,
-['AtB Routes for Easter 2014',
- 'AtB Ruter påska 2014']).
+period_message( r1611_150330,
+['AtB Routes for Easter 2015',
+ 'AtB Ruter påska 2015']).
 
-period_message( r1614_140415,
-['AtB Routes for Easter 2014',
- 'AtB Ruter påska 2014']).
+period_message( r1612_150330,
+['AtB Routes for Easter 2015',
+ 'AtB Ruter påska 2015']).
 
-period_message( r1615_140415,
-['AtB Routes for Easter 2014',
- 'AtB Ruter påska 2014']).
+period_message( r1613_150330,
+['AtB Routes for Easter 2015',
+ 'AtB Ruter påska 2015']).
 
 period_message( r1611_140623,
 ['AtB Routes for summer 2014',

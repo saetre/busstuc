@@ -27,8 +27,8 @@
                      corresp0/2,                % (PLACE,PLACE)
                      corresponds/2,
                      cutloop_station/2,         % (STATION,STATION)
-                     date_day_map/2,            % (DATE)
-                     disallowed_night/1,
+                     date_day_map/2,            % (DATE, DayOfWeek)
+                     disallowed_night/1,        % (DATE)
                      default_destination/2,     % (ROUTE,STATION)
                      endneighbourhood/2,        % (ROUTE,PLACE)
                      exbus/1,                   % (ROUTE)
@@ -246,8 +246,8 @@ disallowed_night(date(2011,04,23)).  %% natt til påskeaften %% TA-110426
 
 %% DATE_DAY_MAP    
 
-%% Maps dates to day, when this is different from the actual day
-%% and not covered by route module (as. f.ex.  christmas  2010)
+%% Maps dates to a day-of-week, when this is different from the actual day-of-week
+%% and not covered by special route module (as. f.ex.  christmas  2010)
 %% 
 %% e.g sunday route, BUT only sunday route OF the same route module
 %% e.g. 2. juledag 2010 was coverd by a separate datamodule but also declared sunday route,
@@ -258,26 +258,42 @@ disallowed_night(date(2011,04,23)).  %% natt til påskeaften %% TA-110426
    %% date_day_map(date(2008,05,02),    saturday).  % friday after may 17 2008(!)
    %% date_day_map(Date,  sunday):-  named_date(palm_sunday,Date).     % Palmesøndag 
 
-%% Easter week will have a separate module, 
-%% Mon-Wed in easter are saturday routes + extra departures
-%% These are ad hoc definitions %% TA-100106
-
+%% Easter week will have separate module(s),
+%% Mon-Wed in easter are saturday routes (plus a few extra departures)
+%% Thu-Mon in easter are sunday routes
+%% These are ad hoc definitions %% TA-100106 %% RS-150329
 
 %%%  NOT valid 2011-20xx, own schedules for easter
-%%
- date_day_map(Date,  sunday):-  
-     named_date(easterday2,Date).   %% 2 Påskedag Ad Hoc
+%%      palm_sunday,    palm_monday, palm_tuesday, palm_wednesday,
+%%      maundy_thursday,good_friday, eastereve, easterday,      easterday2,
 
- date_day_map(Date,   monday):-   %% ad hoc
+ date_day_map(Date,   saturday) :- %% ad hoc 30/3-15
      named_date(palm_monday,Date).
 
- date_day_map(Date,   saturday):-   %% ad hoc
+ date_day_map(Date,   saturday) :- %% ad hoc 31/3-15
      named_date(palm_tuesday,Date).
 
-
- date_day_map(Date,   saturday):-   %% ad hoc
+ date_day_map(Date,   saturday) :- %% ad hoc 1/4-15
      named_date(palm_wednesday,Date).
 
+ date_day_map(Date,  sunday) :-  
+     named_date(maundy_thursday,Date). %% ad hoc 2/4-15
+
+ date_day_map(Date,  sunday) :-  
+     named_date(good_friday,Date). %% ad hoc 3/4-15
+
+ date_day_map(Date,  saturday) :-  
+     named_date(eastereve,Date).   %% ad hoc 4/4-15
+
+ date_day_map(Date,  sunday) :-  
+     named_date(easterday,Date).   %% ad hoc 5/4-15
+
+ date_day_map(Date,  sunday) :-  
+     named_date(easterday2,Date).  %% ad hoc 6/4-15
+
+ date_day_map(Date,  sunday) :-  
+     named_date(easterday2,Date).  %% 2 Påskedag Ad Hoc, %% 7/4-15
+%%
 
 date_day_map(date(_Y20XX,05,01), sunday).   % 1.mai Fix, NOT separate route module
 
@@ -292,10 +308,10 @@ date_day_map(Date,  sunday):-  named_date(whitsun_day,Date).    %  1. pinsedag
 date_day_map(Date,  sunday):-  named_date(whitsun_day2,Date).   %  2. pinsedag
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%¤¤¤¤¤¤
+%%%%%%%%%%%%%%%%%%%%%%%
+%¤¤¤¤¤¤
 
 %% RESPONSE PARAMETERS
-
 
 maxnumberofindividualdepartures(2):-
     value(smsflag,true),

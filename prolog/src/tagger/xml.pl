@@ -108,10 +108,10 @@
  */
 %:- ensure_loaded( xml_acquisition ).
 :- use_module( xml_acquisition, [ xml_to_document/3 ] ).
-:- ensure_loaded( xml_diagnosis ).
-:- ensure_loaded( xml_generation ).
+:- use_module( xml_diagnosis ).
+:- use_module( xml_generation ).
 :- ensure_loaded( xml_pp ).
-:- ensure_loaded( xml_utilities ).
+:- use_module( xml_utilities ).
 
 
 xml_parse( Chars, Document ) :-

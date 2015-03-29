@@ -76,7 +76,6 @@
 :- use_module( 'db/regcompstr.pl', [ composite_road/3 ] ).
 :- use_module( 'db/places.pl' , [ corr/2, isat/2, placestat/2 ] ).
 :- use_module( 'db/regstr', [ streetstat/5 ] ). %% RS-131225  makeauxtables USES a for-loop WITH streetstat in it!!
-%:- use_module( 'db/timedat.pl', [ named_date/2 ] ).       %%  EASTER DATES AND OTHERS %% RS-131225
 :- use_module( 'db/topreg', [ default_period/3  ] ).
 %:- use_module( 'db/busdat.pl', [ nightbus/1, vehicletype/2, xforeign/1 ]).
 

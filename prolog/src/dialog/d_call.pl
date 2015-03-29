@@ -7,8 +7,12 @@
 %% Compiles all of the necessary files. (in user: NOT a module)
 %% Same function as the file tucbuses. (Called from tucbuster.pl)
 
+:- module( d_call, [ ] ).
+
 %:- compile(d_main).            %% RS-141002 Changed to modules!
 :- use_module( d_main, [ ] ). % Import ALL?  %% RS-140914
+
+%:- use_module( '../utility/writeout', [ xwriteanswer/2 ] ). %% For d_dialogue %% RS-150329
 %:- compile(d_dialogue).        %% RS-141002 Changed to modules!
 :- use_module( d_dialogue, [ ] ). % Import ALL?
 

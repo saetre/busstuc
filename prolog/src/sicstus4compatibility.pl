@@ -4,20 +4,15 @@
 %% REVISED TA-080506
 
 :-module( sicstus4compatibility, [ get0/1, get/1, out/1, output/1, prettypr/2, prompt/1, put/1, remove_duplicates1/2,
-                                   tab/1, traceprog/2, ttyflush/0, writeanswer/1, writepred/1 ] ). %% RS-150119  progtrace/2, 
+                                   tab/1, traceprog/2, ttyflush/0, 
+                                   %writeanswer/1,
+                                   writepred/1 ] ). %% RS-150119  progtrace/2, 
 
 %% Sicstus 4 compatibility
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-:- meta_predicate  traceanswer( 0 ) .
-:- meta_predicate  writeanswer( 0 ) .
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 :-use_module( declare, [ language/1, value/2 ] ).
-
-:- use_module( library(varnumbers), [ numbervars/1 ] ). %% RS-150119.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -101,24 +96,6 @@ traceprog( N, P ) :-
     write(P),nl
 ;
     true.
-
-
-%% いいいいいい
-traceanswer( _:Panswer ) :- 
-         value(traceans,L),
-         L>1,
-    !,
-         copy_term( Panswer, Pwr ),
-         numbervars(Pwr),         % utility.pl?
-         prettypr('Application answer program',Pwr),nl. 
-
-traceanswer( _ ). %% Always Succeeds (Otherwise)
-
-
-writeanswer( Panswer ) :- 
-    traceanswer( Panswer ),
-    Panswer,
-    !. 
 
 
 write_blanks(N):-

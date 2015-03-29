@@ -1,0 +1,31 @@
+
+\nodebug
+
+\set queryflag true
+
+\set smsflag false
+
+\starttimebatch
+
+Hva er din versjon ?
+
+nth palmesøndag.
+nth monday.
+nth tuesday.
+nth onsdag.
+nth skjærtorsdag.
+nth langfredag.
+nth lørdag.
+nth påskeaften.
+nth påskedag.
+nth andre påskedag.
+
+når går første buss fra ila til sentrum 1. påskedag .
+
+\stoptimebatch
+
+\set smsflag false
+
+hvor mange spørsmål har du besvart ?
+
+\end
