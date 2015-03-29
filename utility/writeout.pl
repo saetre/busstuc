@@ -15,7 +15,7 @@
     busanswer_sat/3,    %% RS-150329 Extra?
     doubt/2,      getphrase0/2,
     endline/0,  indentprint/2,  languagenr/1,   
-    listrequirements/1, % listall/1,
+    listrequirements/1, listall/1,
     nopay/0,    nopay1/0,       outcap/1,       pay/0,  pay1/0,  period/0, period0/0, space/0,
     punkt/0,  question/0,
     space0/0,   startmark/0,      %% From/For BusAnsHP (used in d_dialogue)
@@ -2033,6 +2033,26 @@ writetelebusteranswer_saf(_,_Frame) :- %% TA-060420
 
 listall( Module:P ) :- for( Module:P, output(Module:P) ).  %% RS-141015 Always succeed even when no output?
 
+%listall(Frame) :-
+%
+%   frame_getvalue_rec(Frame, return, [Field|Rest], _),!,
+%       frame_getvalue_rec(Frame, itemsfound::items, Recs, _),
+%
+%   for(member(Rec,Recs),                %% TA-060614
+%       tahasattval(Rec, [Field|Rest])). %% Speakable
+%%%     listfields(Recs, [cn,Field]).
+%
+%listall(Frame) :-
+%       frame_getvalue_rec(Frame, itemsfound::items, Recs, _),
+%
+%   for(member(Rec,Recs),
+%       tahasattval(Rec, [department,telephone])). %% Speakable
+%
+%%%     listfields(Recs, [cn,department,telephone]).
+%
+%
+%
+%%%%%   listfields(Recs, [cn,title,telephonenumber,mail,ou,roomnumber,street]).
 
 %%
 

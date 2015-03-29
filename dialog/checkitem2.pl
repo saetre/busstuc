@@ -28,13 +28,13 @@
 :- use_module( '../sicstus4compatibility', [ output/1 ] ). %, writeanswer/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 %% UNIT: /utility/,     RS-140914
-:- use_module( '../utility/utility', [ for/2, set_ops/3 ] ). %% RS-150328
+:- use_module( '../utility/utility', [ set_ops/3 ] ). %% RS-150328 for/2, 
 %:- use_module( '../utility/utility', [ ] ). %roundmember/2 ] ).
 %% RS-140208. := /2, listall/1, Includes user:declare, and GRUF (fernando) %% :-op( 714,xfx, := ).
 :- use_module( '../utility/datecalc', [ daysucc/2, isday/1, today/1 ] ). %  ] ).%% RS-141105 traceanswer/1,
 :- use_module( '../utility/writeout', [ bcp/1, bcpbc/1, bwrbc/1, % busanswer_sat/3, teleanswer_sat/2, writetelebusteranswer_rep/1,
-                                        colon/0, doubt/2, period/0, prettyprint/1, space/0, waves/0, writeprog/1  ] ). %% RS-140912 150328 listrequirements/1, 
-% , listall/1,  writetelebusteranswer_saf/2, writetelebusteranswer_sqt/3, writetelebusteranswer4/4 ] ). %% RS-140912
+                                        colon/0, doubt/2, period/0, listall/1, prettyprint/1, space/0, waves/0, writeprog/1  ] ). %% RS-140912 150328 listrequirements/1, 
+% , writetelebusteranswer_saf/2, writetelebusteranswer_sqt/3, writetelebusteranswer4/4 ] ). %% RS-140912
 %    writetelebusteranswer_rep/1, writetelebusteranswer_saf/2, writetelebusteranswer_sqt/3, writetelebusteranswer4/4, writetelebusteranswerfields/1 ] ). %% RS-140912
 %                                        writefieldvalue/2, writefieldvalues/2, writefieldverb/1 ] ). 
 %%% RS-140914, UNIT: /app/
@@ -696,7 +696,7 @@ writetelebusteranswer_saf(_,_Frame) :- %% TA-060420
 
 
 
-listall( Module:P ) :- for( Module:P, output(Module:P) ).  %% RS-141015 Always succeed even when no output? RS-150328 TODO...
+%listall( Module:P ) :- for( Module:P, output(Module:P) ).  %% RS-141015 Always succeed even when no output? RS-150328 TODO...
 
 %listall(Frame) :-
 %
