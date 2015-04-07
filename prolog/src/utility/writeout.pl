@@ -834,9 +834,13 @@ cwc(goesto,  ['goes to','går til']).
 cwc(going,['going','å dra']).
 cwc(happy_new_year,['Happy New Year','Godt Nyttår']).
 
-cwc(handicapinfo, 
+cwc(handicap_info, 
     ['All city buses except route 47 and 48 have ground-level entry. Other buses do not. Buses with elevated entry are equipped with lifts. There is room for prams and wheelchairs (max. 80x120 cm and 300 kg) in the middle of the bus. Electrical wheelchairs are not necessarily supported. The bus driver can assist with boarding if necessary.',
      'Alle bybusser unntatt rute 47 og 48 har laventré, men ingen regionruter har laventré. Busser uten laventré har lem eller heis for dette. Det er plass til rullestol og barnevogn midt i bussen, beregnet for maks. 80x120 cm og 300 kg. Det er ikke alltid tilrettelagt for elektrisk rullestol. Sjåføren kan hjelpe med omborstigning.'
+    ]).
+cwc(handicap_info_sms, [
+    'Low entry: all city buses except 47 & 48. Others have lifts. Room for wheelchairs of max. 80x120 cm, 300 kg. Driver can assist with boarding.',
+    'Laventré: alle bybusser unntatt 47 & 48. Andre har heis. Plass til rullestol maks. 80x120 cm, 300 kg. Sjåføren kan hjelpe med omborstigning.'
     ]).
 
 cwc(endure,['Endure!','Hold ut!']).
