@@ -7946,9 +7946,15 @@ id  add ( message(answer(db_reply(tt,webaddress,K)))),  %% will be executed in o
 ip  has_att_val(company,webaddress,tt,K) ).
 
 
-handicap_topic rule bustrans:( %% ask for handicap related information % EE-1503dd
-is  _ isa Handicap, clear
-id  addfront(message(handicapinfo)),
+handicap_topic rule bustrans:( %% ask for handicap related information (not SMS) % EE-1503dd
+is  _ isa Handicap, { value(smsflag,false) }, clear
+id  addfront(message(handicap_info)),
+    add flag(exit)
+ip  dmeq([handicapped,lowentry,lowentry_bus,pram,room,wheelchair], Handicap)).
+
+handicap_topic_sms rule bustrans:( %% ask for handicap related information (SMS) % EE-1503dd
+is  _ isa Handicap, { value(smsflag,true) }, clear
+id  addfront(message(handicap_info_sms)),
     add flag(exit)
 ip  dmeq([handicapped,lowentry,lowentry_bus,pram,room,wheelchair], Handicap)).
 
