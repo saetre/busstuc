@@ -1,9 +1,10 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE bustrans.pl
 %% SYSTEM BUSTUC
-%% AUTHOR   T.Amble
+%% AUTHOR   T.Amble (TA)
 %% CREATED  TA-041006
 %% REVISED  TA-110825   %% RS-131225  flag/1, used in execute_ptogram ( interapp/pragma... (could be local bustrans?... Fix meta_predicates!)
+%% Rune Sætre (RS), Erlig Eeg-Henriksen (EE)
 
 :- module( bustrans, [ rule/2, module_dependencies/0, tracevalue/1 ] ). %  %% id/2, ip/2, is/1, 
 
@@ -23,11 +24,9 @@
 %   id ID
 %   ip IP.
 
-:- op( 1150, xfy, rule ). %% Moved to declare.pl ?  % RS-140617
-:- op( 1120,  fy, is ).
-:- op( 1110, xfy, id ).
-:- op( 1110, xfy, ip ).
-:- op( 730,xfy, :: ).     %% lambda infix  %% RS-141026 For      tuc/ [ translat gram_x fernando  dcg_x anaphors ], app/interapp, dialog/ [checkitem/2 d_context d_dialogue frames/2 makeframe/2 parseres virtuals relax update2 usesstate2]
+% Explanation: If IS is satisfied in input source, then modify output destination program according to ID, if IP is true.
+% In Source progam (IS), In Destination program (ID), In Prolog code (IP)
+
 
 :- meta_predicate rule( +, 0 ) .   %% How can we get SPIDER to help us check that all predicates are imported correctly?
 %:- meta_predicate is( 0 ) .   %% How can we get SPIDER to help us check that all predicates are imported correctly?
@@ -100,21 +99,16 @@ nightbus
 */
 
 %UNIT: / and utility/
-%:- ensure_loaded( '../declare' ). % includes NON-volatile value/2.  %% RS-130630 This caused BIG TROUBLE!  value/2
-
-%:- use_module( '../declare', [ set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-:- use_module( '../declare' ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-
-%:- use_module( '../main', [ value/2 ] ).
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, value/2.  set( X, Y ) is X := Y .
 %value(Key,Val) :- value(Key,Val).  %% RS-130630 value must NOT be volatile predicate!!! This caused BIG TROUBLE!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-                                   % single-question application
+                                 % single-question application
 single :- value(dialog,0) ;   % if dialog is 0   or
           \+ value(dialog,_). % if dialog is undefined .
 
-                                   % dialog-question application
+                                 % dialog-question application
 double :- value(dialog,1).    % if dialog is 1
 
                                    % single-question application
@@ -143,16 +137,16 @@ module_dependencies :-
 
 %UNIT: /
 %%% TODO: Find out why datetime/6, went undiscovered! There must be a way to test all these rules for completeness...
+dep_module( '../declare', [ set/2 ] ). %% RS-141015        Set variable-values,  in the module ! (RS-150414. Which module? Caller or Called Module?)
 
 %UNIT: /utility/  and  /
-dep_module( '../utility/utility', [ bound/1, implies/2,  maxval/3, minval/3, set_of/3, test/1, testmember/2, unbound/1 ] ). %% RS-131225 set(X,Y) from declare.pl
+dep_module( '../utility/utility', [ append_atomlist/2, bound/1, implies/2,  maxval/3, minval/3, set_of/3, test/1, testmember/2, unbound/1 ] ). %% RS-131225 set(X,Y) from declare.pl
 dep_module( '../utility/datecalc', [ add_days/3, addtotime/3, before_date1/2, datetime/6, days_between/3, daysucc/2, difftime/3,
                                      finddate/2, findfirstcomingdate/2, isday/1, number_of_days_between/3,
                                      sub_days/3, subfromtime/3, timenow/1, timenow2/2, today/1, todaysdate/1, valid_date/1, weekday/2,
                                      xweekday/2 ] ).
 
 dep_module( '../interfaceroute', [ decide_period/2 ] ). %% RS-141015 
-%dep_module( '../main', [ set/2 ] ). %% RS-141015        Set variable-values,  in the module !
 
 %UNIT: /app/
 %%% RS-131225, UNIT: app/
@@ -225,33 +219,35 @@ tracevalue(L) :- value(traceprog,L).  % Trace level 1-7      %% RS-131225    Def
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- op( 715, fy,context).    %% similar to present, but doesnt mark as seen 
-:- op( 715, fy,addfront).   %% (for messages etc) 
-:- op( 725, fy,addcon).     %% add if not already present 
-
-:-op( 725,xfy, or ).    %% From ../declare.pl   OPERATORS
-:-op( 720,xfy, and ).
-:-op( 715, fy, not ).   %% :- op( 715, fy,not).  % Already defined in TUC
-:- op( 715, fy,removeall).  %% remove all of a list
-:- op( 715, fy,removeif).   %% remove all if any , always succeed 
-:- op( 715, fy,replaceall). %% replace iteratively all elements 
-:- op( 715, fy,replaceif).  %% replace if occuring. 
-:- op( 715, fy,replace).
-:- op( 715, fy,replacelast).
-:- op( 715,xfy,with).
-%%  :- op( 715, fy,to). %% not used, interferes with SWI-Prolog /srel/to/--
-%%  :- op( 715,xfy,append).
-:- op( 715, fy,no).
-:- op( 715, fy,exactly). 
-:- op( 715, fy,add).
-:- op( 715, fy,remove).
-:- op( 715, fy,present).
-%:-op( 715, fy,assume). %operator in pragma, but looks like assume(predicate) in bustrans.
-%:-op( 714,xfy,seq).     %% directly sequence 
-
-:- op( 714,xfy,cond).    %% new   not X isa place cond bound(X)
-:- op( 714,xfy,when).    %% same as cond %% TA-081106
-:- op( 712, fy,seen). % Lower than "not", higher than "isa"
+%From declare.pl: %% RS-150414
+% :- op( 1150, xfy, rule ). %% Moved to declare.pl ?  % RS-140617
+% :- op( 1120,  fy, is ).   %% "is" is a prolog operator!?? RS-141006
+% :- op( 1110, xfy, id ).
+% :- op( 1110, xfy, ip ).
+%
+%:- op( 715, fy,context).    %% similar to present, but doesnt mark as seen 
+%:- op( 715, fy,addfront).   %% (for messages etc) 
+%:- op( 725, fy,addcon).     %% add if not already present 
+%
+%:-op( 725,xfy, or ).    %% From ../declare.pl   OPERATORS
+%:-op( 720,xfy, and ).
+%:-op( 715, fy, not ).   %% :- op( 715, fy,not).  % Already defined in TUC
+%:- op( 715, fy,removeall).  %% remove all of a list
+%:- op( 715, fy,removeif).   %% remove all if any , always succeed 
+%:- op( 715, fy,replaceall). %% replace iteratively all elements 
+%:- op( 715, fy,replaceif).  %% replace if occuring. 
+%:- op( 715, fy,replace).
+%:- op( 715, fy,replacelast).
+%:- op( 715,xfy,with).
+%:- op( 715, fy,no).
+%:- op( 715, fy,exactly). 
+%:- op( 715, fy,add).
+%:- op( 715, fy,remove).
+%:- op( 715, fy,present).
+%
+%:- op( 714,xfy,cond).    %% new   not X isa place cond bound(X)
+%:- op( 714,xfy,when).    %% same as cond %% TA-081106
+%:- op( 712, fy,seen). % Lower than "not", higher than "isa"
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RULE SECTION
@@ -296,7 +292,7 @@ ip  [])
 tqllist3 rule bustrans:( %  varsel  buss går til nth
 is  [(flag,Flagname),replyq(_)]
 id  add message(mustknow(time)),
-    add flag(exit) % no mire action
+    add flag(exit) % no more action
 ip  set(Flagname,true))
     :-single.
 
@@ -530,7 +526,7 @@ nightbusquery3 rule bustrans:(
 is  context _X isa nightbus
 id  not flag(nightbusflag),
     add flag(nightbusflag)             %% Somewhat dirty
-ip  set(nightbusflag,true) ).  %% must be reset initially
+ip  set(nightbusflag,true) ).    %% must be reset initially
 
 nightbusquery4 rule bustrans:(   %% move this after shunt ?
 is  context _x isa midnight,
@@ -2635,7 +2631,7 @@ ip  has_att_val(person,retirement,Tagore,DATE),
 
 
 retire rule bustrans:(
-is  (do)/Retire/Arvid_holme/_, {dmeq([retire,end],Retire)},
+is  do/Retire/Arvid_holme/_, { dmeq([retire,end],Retire) },
     Arvid_holme isa Man ,{dmeq(trafficant,Man)} %%  i.e. << agent
 id  add message(date_isa_day(DATE,Monday)),
     add flag(exit)
@@ -2644,7 +2640,7 @@ ip  has_att_val(person,retirement,Arvid_holme,DATE),
 
 howlongtoadate1  rule bustrans:(
 is  which(A),DATE isa date,A isa duration,
-    (do)/exist/A/B,srel/Before/time/DATE/B,
+    do/exist/A/B,srel/Before/time/DATE/B,
     {dmeq([before,to],Before)} %% TA-100828
 id  add message(numberof(N,day))
 ip  todaysdate(TODAY),
@@ -3595,15 +3591,15 @@ ip  vehicletype(X,tram),
     \+ value(tmnflag,true) ).
 
 
-noroutesfortram1 rule bustrans:( %%  trikk til nth
-is  _ isa tram,
-    not X isa neighbourhood when { foreign(X) },
-    not present _ isa clock, %% ad hoc  den (klokka) er 1
-    clear
-id  addcon  message( noroutesfor(tram) ),
-    addcon  message(answer(db_reply('Gråkallbanen',webaddress,K)))
-ip  \+ value(tmnflag,true),
-    has_att_val(company,webaddress,tram,K) ).
+%noroutesfortram1 rule bustrans:( %%  trikk til nth
+%is  _ isa tram,
+%    not X isa neighbourhood when { foreign(X) },
+%    not present _ isa clock, %% ad hoc  den (klokka) er 1
+%    clear
+%id  addcon  message( noroutesfor(tram) ),
+%    addcon  message(answer(db_reply('Gråkallbanen',webaddress,K)))
+%ip  \+ value(tmnflag,true),
+%    has_att_val(company,webaddress,tram,K) ).
 
 
 nostation3 rule bustrans:( %% explicit not a destination, after noroutesfrotram1
@@ -4259,10 +4255,12 @@ is  context srel/Prep/time/Six/D,
 id  not flag(earlytime),
     not flag(latetime),
     not flag(latetime),
-    not flag(nightbusflag)
+    not flag(nightbusflag),
+        addfront message(assumeyesterdepartures) %%
 ip  timenow(T1200),
     evening_time(Six,Eighteen),
-    T1200 =< Eighteen ).
+    T1200 =< Eighteen,  %% RS-150420. kl 0900: valentinlyst til stindheim kl 11.15....
+    T1200 > Six ).      %% RS-150420. Oops! Buss 22 går fra Valentinlyst kl. 2247 til Dalen Hageby kl. 2253 (Morning!)
 
 
 
@@ -4602,7 +4600,7 @@ ip  [] ).  %%   vi tar bussen fra risvollan kl 19. \=  vi rekker bussen fra risv
 %%%% After reachtrainthatleaves
 notabusnotmn rule bustrans:( %% AFTER nobustohell boat,plane  no tmnflag
 is  (_NotBus isa BR),
-    { dmeq([airplane,train,train_route_plan,tram,boat],BR)},
+    { dmeq([airplane,train,train_route_plan,boat],BR)}, %tram,  %% RS-15-0415
     not present _ isa clock, %% den (klokka) er 1.
     clear
 id  clear,
@@ -5632,12 +5630,12 @@ ip  set(nightbusflag,true) ).
 inattbuss2 rule bustrans:(
 is  srel/this_midnight/time/nil/_
 id  addcon flag(nightbusflag)
-ip  user:set(nightbusflag,true) ).   
+ip  set(nightbusflag,true) ).
 
 
 inatt rule bustrans:( %% catch
 is  replaceall (srel/in_midnight/time/nil/E)
-    with       (2400 isa clock,srel/after/time/2400/E),
+          with (2400 isa clock,srel/after/time/2400/E),
     not present srel/before/time/_/_   %% probably an early morning time
 id  addcon flag(nightbusflag)
 ip  [] ).
@@ -7298,17 +7296,19 @@ ip  timenow2(0,T), T > 0430,
     weekday(DATE,Day),
     dayModSeqNo(DATE,DaySeqNo) ).
 
-setexdagnattXmas  rule  bustrans:( %% Special rules for Xmas/NY 2005/2005
+setexdagnattxmas  rule  bustrans:( %% Special rules for Xmas/NewYear/Easter 2005(-2015)
 is  not srel/T/day/_/_   when { T \== today},
     not srel/_/date/_/_
 id  flag(nightbusflag),
-    today(Friday),
+    today(Friday),      %% RS-150404 Asked day?
     not atdate2(_,_),
     clear,
     add message(generalnightbusxmas),
-    add flag(exit)
+    add flag(exit),
+    add flag(fail),      %% Force neganswer for easter (not for XMas!)
+    add flag(nightbusflag)             %% Somewhat dirty
 ip  timenow2(0,T), T > 0430,
-    today(Tuesday),
+    today(Tuesday),     %% RS-150404 Real day?
     daysucc(Friday,Saturday),
     number_of_days_between(Tuesday,Saturday,N),
     finddate(N,DATE),
@@ -7555,7 +7555,7 @@ nightbusholidayno  rule bustrans:( %%  CASE: NIGHTBUS DATA  MISSING
 is  not present _ isa price , clear %% <-----------------
 id  flag(nightbusflag),
     not flag(exit),
-    add flag(nightbusflag),
+    add flag(nightbusflag), %% Duplicate? RS-150404
     add flag(exit),
     atday(Day),
     add message(nonightbusesthen) %%
@@ -7823,7 +7823,7 @@ ip  \+  busdat:extraallowed_night(EX,_) ).
 
 
 
-nonightbusgen rule bustrans:( % no nightbus, no nightbus on  on saturday/sunday
+nonightbusgen rule bustrans:( % no nightbus, no nightbus on, on saturday/sunday
 is  NB isa nightbus,  { unbound(NB)},
     not present dob/cost/_/_/_,
     not present _ isa price,
@@ -7949,6 +7949,7 @@ ip  has_att_val(company,webaddress,tt,K) ).
 handicap_topic rule bustrans:( %% ask for handicap related information (not SMS) % EE-1503dd
 is  _ isa Handicap, { value(smsflag,false) }, clear
 id  addfront(message(handicap_info)),
+%id  add message(handicapinfo),
     add flag(exit)
 ip  dmeq([handicapped,lowentry,lowentry_bus,pram,room,wheelchair], Handicap)).
 
@@ -7963,10 +7964,10 @@ is   _ isa Special_ticket,clear
 id  not  message(answer(db_reply(tt,webaddress,K))),  %% ref buyticket
     add  message(answer(db_reply(tt,webaddress,K))),  %% will be executed in order
     addfront(message(noinfoabout(Special_ticket)))
-ip   dmeq([agelimit,animal,bag, bicycle,camera,cat, %% TA-110121
+ip   dmeq([agelimit,animal,bag, camera, cat, %% TA-110121 %% RS-150415 bicycle,
            dog,discount, extrabus,
            flexibus,gasbus,  articulated_bus,lowentry,lowentry_bus,
-           card,handicapped,%% overview,
+           card, %% overview, %% RS-150415 handicapped,
            luggage,military,
            package,pensioner,pram,room,   %% TA-100829
            ringroute,season_ticket,shed,ski,
@@ -7977,17 +7978,21 @@ ip   dmeq([agelimit,animal,bag, bicycle,camera,cat, %% TA-110121
         Special_ticket),
     has_att_val(company,webaddress,tt,K) ).
 
-wheniseaster rule bustrans:(   %% ask for period, specify DAY(eastereve?)
-is   which(A),srel/in/time/A/C,A isa time,(do)/exist/B/C,
+%
+wheniseaster rule bustrans:(   %% ask for period, specify DAY. (Or assume [easter/Xmas] _eve?)
+is   which(A), A isa time, B isa Easter, srel/in/time/A/C, do/Come/B/C, event/real/C,
+        { dmeq( [easter, whitsun, christmas ], Easter ), dmeq( [ be1, come ], Come ),
+          append_atomlist( [ Easter, '_eve' ], EasterEve ), named_date( EasterEve, DATE) },
      not _ isa date,
      not _ isa holiday,
      not srel/today/_Day/nil/_,
      not _ isa morrow,
-     B isa Easter,
-       { dmeq([easter,whitsun,christmas],Easter)},
-     clear
-id   clear,
-     addfront message(mustknow(day))
+     add context(DATE isa date)                 %replace  B isa Easter  with  EasterEveDate isa Date
+     %clear
+     %replace Easter with Easter-eve
+id   %clear,
+%     addfront message( mustknow(day) )
+     addfront message( assumeeve( EasterEve ) ) %DayEve
 ip   [] ).
 
 
@@ -8215,12 +8220,13 @@ is   %% not _ isa time, %% når er påsken %% TA-101124
      not _ isa holiday,
      not srel/today/_Day/nil/_,
      not _ isa morrow,
-     _ isa Easter,
-       { dmeq([advent,autumn,easter,easter_eve,eastereve,fall,spring,
-               christmasroute,semester,
-               vacation,whitsun,holiday,easterroute,christmas],Easter)},
+      _ isa Easter, %% RS-150404 (not not?)
+      { dmeq([advent,autumn,fall,spring,
+              christmasroute,semester, vacation,whitsun,holiday,easterroute,christmas],
+              Easter) }, % easter,easter_eve,easter_eve,palm_sunday,
      clear
-id   clear,
+id   not message(mustknow(date)), %% RS-150404 avoid endless recursion!
+     clear,
      addfront message(mustknow(date))
 ip   [] ).
 
@@ -8931,6 +8937,22 @@ id  addcon  ticketprice2(bus,_)
 ip  [] ).
 
 
+ticketcost1 rule bustrans:( % Price of a ticket //vet du hva billetten koster/hva koster billetten
+is  dob/cost/B/_A/_ , B isa Ticket, srel/for/_PersonThing/C/_, C isa Adult,  %% not season ticket
+    not present X isa neighbourhood when { foreign(X)},
+    not present _ isa airbus,
+    not present _ isa airport, %% TA-100828
+    not present _ isa nightbus,
+    %not present _ isa bicycle, %% RS-150415
+    not present _ isa pram,      %% etc
+    clear
+id  clear,
+    add ticketprice2( Adult, _ ),
+    add flag(exit)
+ip  dmeq( [ ticket,trip ], Ticket ),
+    dmeq( [ adult, child, bicycle ], Adult ) ).
+
+
 costittram rule bustrans:( % koster det NN kroner
 is  dob/cost/A/_NN/_, A isa V,{dmeq([tram],V)},
     not _ isa nightbus,
@@ -8944,12 +8966,12 @@ id  not  message(noinfoabout(_)), %% dogs,prams etc.
 ip  [] ).
 
 costitbus rule bustrans:( % koster det NN kroner
-is  dob/cost/A/_NN/_, A isa V,{dmeq([ticket,vehicle,bus,tram],V)},
+is  dob/cost/A/_NN/_, A isa V, { dmeq([ticket,vehicle,bus,tram],V) },
     not _ isa nightbus,
     not _ isa airport,
     not present _ isa airbus,
     clear                %% only SMS ?
-id  not  message(noinfoabout(_)), %% dogs,prams etc.
+id  not  message( noinfoabout(_) ), %% dogs,prams etc.
     clear,
     addcon  ticketprice2(bus,_), % gets tour as well
     add flag(exit)
@@ -9002,7 +9024,7 @@ is  which(A),dob/cost/_IT/A/_ ,
     not present _ isa airport,
     clear
 id  clear,
-    add ticketprice2(nightbus_far,_),
+    add ticketprice2(nightbus,_),
     add flag(exit)
 ip  [] ).
 
@@ -9016,21 +9038,6 @@ id  clear,
     add ticketprice2(Nbus,_),
     add flag(exit)
 ip  dmeq([bus,nightbus,nighttram],Nbus) ).
-
-
-ticketcost1 rule bustrans:( % Price of a ticket //vet du hva billetten koster/hva koster billetten
-is  dob/cost/B/_A/_ ,B isa Ticket,  %% not season ticket
-    not present X isa neighbourhood when { foreign(X)},
-    not present _ isa airbus,
-    not present _ isa airport, %% TA-100828
-    not present _ isa nightbus,
-    not present _ isa bicycle,
-    not present _ isa pram,      %% etc
-    clear
-id  clear,
-    add ticketprice2(bus,_),
-    add flag(exit)
-ip  dmeq([ticket,trip,adult,child],Ticket) ).
 
 
 ticketcostnight rule bustrans:( % Price of a ticket %% not special  ticket
@@ -15685,6 +15692,7 @@ id  not departure(_,_,_,_),        %% gives an extra go
     not message(onlyonesentence),
     not message(onlyonething),       %% may give spurious errors
     not message(date_day_route(_,_)),
+    not flag(exit),     %% Skip this rule if exit is already set. 
     addcon message(mustknow(place))
 ip  [] ).  %% TA-110329
 
@@ -15998,6 +16006,7 @@ id  not flag(exit),
     not timeis(_),
      not message( answer(_) ),     %%  then tuc knows
 
+   % not message( webstatistics ),
     not message( noinfoabout(irregularity) ),
     not message( mustknow(bus) ),
     not message( mustknow(place) ),
@@ -16008,9 +16017,8 @@ id  not flag(exit),
     removeif message( otherperiod(_) ),
     removeif message( date_day_route(_,_) ),
 
-    not flag(fail)
-%     add flag(fail) %% needed as retention
-%%%%   <-- Kills messages
+    not flag(fail),
+    add flag(fail) %% needed as retention       %%%%   <-- Kills messages
 
 ip  []
    ):-single.

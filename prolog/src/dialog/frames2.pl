@@ -120,7 +120,6 @@ frametemplate( itemsfound,
 %:- compile(user:d_dialogue).        %% RS-141002 Changed to modules!
 :- use_module( d_dialogue, [ linecounter/1 ] ). %% RS-140101 LOOP !?!
 
-
 %:- use_module( '../dialog/d_dialogue' ). %%, [ addref/3, getcurrent/1 ] ). %% RS-131223 INCLUDED IN FRAMES2!!
 :- use_module( parseres, [ field_is_equal/3 ] ). %% Printing the result from database query
 

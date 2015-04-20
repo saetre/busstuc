@@ -192,7 +192,6 @@ listfields([Record|Rest], Fields) :-
 
 listfields(record(Fields), [First|Rest]) :-
 	set_ops(Value, recordfieldvalue(record(Fields), First, Value),Values),
-
 	writevaluelist(First,Values),
 	nl,
 	listfields(record(Fields), Rest).

@@ -10340,9 +10340,9 @@ synword(pasererer,     passerer).
 synword(pasesrer,      passerer). 
 
 synword(paskedag,      easterday).  %% NB
-synword(paskeaften,    eastereve). 
+synword(paskeaften,    easter_eve). 
 synword(pæskedag,      easterday).  %% NB
-synword(pæskeaften,    eastereve). 
+synword(pæskeaften,    easter_eve). 
 synword(pæskerute,     påskerute).
 
 
@@ -10433,16 +10433,16 @@ synword(påtorsdag,     torsdag).
 synword(påfredag,      fredag). 
 synword(pålørdag,      lørdag). 
 
-synword(påskaften,     eastereve). 
+synword(påskaften,     easter_eve). 
 synword(påskdag,       easterday). 
 synword(påskfag,       easterday). %% sms
 
-synword(påskeaftem,    eastereve). 
-synword(påskeaften,    eastereve). 
+synword(påskeaftem,    easter_eve). 
+synword(påskeaften,    easter_eve). 
 
-synword(paaskeaften,    eastereve). 
+synword(paaskeaften,    easter_eve). 
 
-synword(påskaften,     eastereve).
+synword(påskaften,     easter_eve).
 synword(påskedag,      easterday). 
 synword(påskesøndag,   easterday).
 synword(påskehelligdag,påske).       %% (Rough, -> must specify date) 

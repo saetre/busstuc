@@ -62,11 +62,11 @@
 %% META_PREDICATES SECTION, %% RS-140927 meta_predicates    : means use source module       + means use this (utility) module  for expansion %% RS-131231 %From utility.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :- meta_predicate  busanswer_sat( ?, 0, ? ) . %% RS-141105
-%:- meta_predicate  writetelebusteranswer_rep( 0 ) .
-%:- meta_predicate  writetelebusteranswer1( 0 ) .
-%:- meta_predicate  writetelebusteranswer_saf( ?, 0 ) .
+:- meta_predicate  writetelebusteranswer_rep( 0 ) .
+:- meta_predicate  writetelebusteranswer1( 0 ) .
+:- meta_predicate  writetelebusteranswer_saf( ?, 0 ) .
 %:- meta_predicate  listall( 0 ) .
-%:- meta_predicate  teleanswer_sat( +, 0 ) .
+:- meta_predicate  teleanswer_sat( +, 0 ) .
 %:- meta_predicate  xwriteanswer( ?, 0 ) .
 
 %:- meta_predicate  trackprog(+,0) .

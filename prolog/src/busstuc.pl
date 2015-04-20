@@ -13,8 +13,8 @@
 % A General Natural Language                          %
 %     Understanding System                            %
 %                                                     %
-% COPYRIGHT  (C) 2001 - 2012  Tore Amble              %
-% COPYRIGHT  (C) 2012 -       Rune Sætre              %
+% COPYRIGHT  (C) 2001 - 2012  Tore Amble (LingIT)     %
+% COPYRIGHT  (C) 2012 -       Rune Sætre (NTNU)       %
 %  Group of Logic and Language Technology             %
 %  Department of Computer and Information Science     %
 %  The Norwegian University of Science and Technology %

@@ -157,6 +157,7 @@ spyg X :- dcg_module(L),
           spy L:X. %% utility
 
 spyr X :- ( debugrule := X ),
+          parsetime_limit := 100000, %%  ONLY FOR DEBUGGING
           spy pragma:spy_me.
 
 sp Module:X :- functor(X,F,_), spy F, Module:X.  %% call X with spy on X
@@ -957,7 +958,7 @@ grammar2(_,FOL):-
 
     parse_sentence(P,N,Success),  %% RS-141122  ( ProgramGenerated, NumberOfWords?, OK-flag )
 
-    (Success == success -> true; 
+    (Success == success -> true; %% continue; else error-message
 
      (    startteleerror,
              nl,   

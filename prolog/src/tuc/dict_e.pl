@@ -191,7 +191,7 @@ compword(new,[year,s,day],new_years_day).
 %% compword(carnival,[],carnival). %% Sunday before Lent (Faste)
 
 compword(palm,[sunday],palm_sunday). 
-compword(easter,[eve],eastereve).
+compword(easter,[eve],easter_eve).
 compword(easter,[day],easterday).
 compword(easter,[monday],easterday2).
 %% compword(day,[of,liberation],may8). %% ? new

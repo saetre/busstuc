@@ -9,6 +9,16 @@
 
 Hva er din versjon ?
 
+når er påsken?
+Når er pinsen?
+Når er julen?
+
+nattbuss.
+nattbuss i påska.
+nattbuss palmesøndag.
+nattbuss lørdag 4.4.
+nattbuss påskeaften.
+
 nth palmesøndag.
 nth monday.
 nth tuesday.
@@ -29,3 +39,4 @@ når går første buss fra ila til sentrum 1. påskedag .
 hvor mange spørsmål har du besvart ?
 
 \end
+

@@ -871,7 +871,7 @@ xlastday(Lastdaynr,Lastday):- %% if missing
 
 %timenow(1200).
 
-timenow(Tid) :-  % Tiden akkurat nå
+timenow( Tid ) :-  % Tiden akkurat nå
          datetime(_,_,_,Hour,Min,_),
          Tid is Hour*100+Min.
 

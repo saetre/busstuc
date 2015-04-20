@@ -202,7 +202,7 @@ home_town(trondheim).
 % busdat:extraallowed_night(date(2009,04,12),saturday). 
 
 
-%% SPECIAL DATES FOR NIGHTBUS
+%% SPECIAL DATES FOR __NIGHTBUS__
 
 %% SEE busanshp.pl(->topreg?) for correct default messages !!!
 
@@ -211,7 +211,7 @@ home_town(trondheim).
 %% if DAY=nil, it means NO nightbus routes at all in module,
 
 %% ADJUSTMENT NIGHTBUS Holidays
-extraallowed_night(date(9999,12,31),saturday). %% Just at least1
+extraallowed_night(date(9999,12,31),saturday). %% Just to name at least 1
 % extraallowed_night(date(2009,04,12),saturday).  %%  Påskedag om morgenen 
 % extraallowed_night(date(2013,05,17),fredag).  %%  natt til 17mai. %%Handled by separate route module for may17th.
 
@@ -226,9 +226,11 @@ extraallowed_night(date(9999,12,31),saturday). %% Just at least1
 %  JUST standard answer (misfjord rule: NB May vary)
 %% disallowed_night(date(9999,12,31)).    %% Just at least 1
 
-%% EASTER 
-disallowed_night(date(2009,04,13)).  %%  Påskeaften om morgenen 
-disallowed_night(date(2011,04,23)).  %% natt til påskeaften %% TA-110426
+%% EASTER (originally Christmas, X-mas)
+disallowed_night( date(2009,04,13) ).  %%  Påskeaften om morgenen 
+disallowed_night( date(2011,04,23) ).  %% natt til påskeaften %% TA-110426
+disallowed_night( date(2015,04,4) ).  %% natt til påskeaften %% RS-150329
+disallowed_night( date(2015,04,5) ).  %% natt til påskedag %% RS-150329
 
 %% CHRISTMAS
 %% Extrallowed
@@ -265,7 +267,7 @@ disallowed_night(date(2011,04,23)).  %% natt til påskeaften %% TA-110426
 
 %%%  NOT valid 2011-20xx, own schedules for easter
 %%      palm_sunday,    palm_monday, palm_tuesday, palm_wednesday,
-%%      maundy_thursday,good_friday, eastereve, easterday,      easterday2,
+%%      maundy_thursday,good_friday, easter_eve, easterday,      easterday2,
 
  date_day_map(Date,   saturday) :- %% ad hoc 30/3-15
      named_date(palm_monday,Date).
@@ -276,23 +278,23 @@ disallowed_night(date(2011,04,23)).  %% natt til påskeaften %% TA-110426
  date_day_map(Date,   saturday) :- %% ad hoc 1/4-15
      named_date(palm_wednesday,Date).
 
- date_day_map(Date,  sunday) :-  
-     named_date(maundy_thursday,Date). %% ad hoc 2/4-15
+ date_day_map(Date,  sunday) :-   %% ad hoc 2/4-15
+     named_date(maundy_thursday,Date).
 
- date_day_map(Date,  sunday) :-  
-     named_date(good_friday,Date). %% ad hoc 3/4-15
+ date_day_map(Date,  sunday) :-   %% ad hoc 3/4-15
+     named_date(good_friday,Date).
 
- date_day_map(Date,  saturday) :-  
-     named_date(eastereve,Date).   %% ad hoc 4/4-15
+ date_day_map(Date,  saturday) :-  %% ad hoc 4/4-15
+     named_date(easter_eve,Date).   
 
- date_day_map(Date,  sunday) :-  
-     named_date(easterday,Date).   %% ad hoc 5/4-15
+ date_day_map(Date,  sunday) :-    %% ad hoc 5/4-15
+     named_date(easterday,Date). 
 
- date_day_map(Date,  sunday) :-  
-     named_date(easterday2,Date).  %% ad hoc 6/4-15
+ date_day_map(Date,  sunday) :-    %% ad hoc 6/4-15
+     named_date(easterday2,Date).
 
- date_day_map(Date,  sunday) :-  
-     named_date(easterday2,Date).  %% 2 Påskedag Ad Hoc, %% 7/4-15
+ date_day_map(Date,  sunday) :-    %% 2 Påskedag Ad Hoc, %% 7/4-15     
+     named_date(easterday2,Date).  
 %%
 
 date_day_map(date(_Y20XX,05,01), sunday).   % 1.mai Fix, NOT separate route module
@@ -816,15 +818,21 @@ moneyunit(nok).    %% Trondheim %% Local currency
 
 %% busfare(30,15). %% Adult/Child (2005)
 % Voksen koster 50, Barn/Honnør/Sykkel/Hund/Militær koster 25 (2015)
+% RS-150415 % NEW busfare2
+%
+% busfare2( BusArea, AgeType, BusType, Price ).
 
-busfare2(airbus,[130,65]). 
-busfare2(bus,[50,25]).
-busfare2(nightbus,[100-150-200]). % By,Nes - Klæbu,Melhus,Malvik,Skaun - Stjørdal,Orkdal
-busfare2(nightbus_klæbu,[150]).
-busfare2(nightbus_byneset,[100]).
-%busfare2(nighttram,[80]). %% RS-150111 Changed?
-busfare2(nighttram,[100]). %% RS-150111 Changed? %https://www.atb.no/priser/#route/110504, Din saksid er: 40634
-busfare2(tram,[50,25]).  
+busfare2( adult, [ 30.80, 50 ]).        %% RS-150415. For Bus
+busfare2( airbus, [130,65]). 
+busfare2( bicycle, [ 15.40, 25 ]).        %% RS-150415. For Bus
+busfare2( bus, [ 50, 15.40 ]).
+busfare2( child, [ 15.40, 25 ]).        %% RS-150415. For Bus
+busfare2( nightbus_all, [100-150-200]). % By,Nes - Klæbu,Melhus,Malvik,Skaun - Stjørdal,Orkdal
+busfare2( nightbus_klæbu, [150]).
+busfare2( nightbus_byneset, [100]).
+%busfare2( nighttram, [80]). %% RS-150111 Changed?
+busfare2( nighttram, [100]). %% RS-150111 Changed? %https://www.atb.no/priser/#route/110504, Din saksid er: 40634
+busfare2( tram, [ 50, 15.40] ).
 
 %%  Ikke Klæbu/Melhus/Byneset (90/110), but that is foreign
 

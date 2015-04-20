@@ -337,7 +337,7 @@ little_christmas_eve isa date.
 %% christmas     isa date. 
 
 easterday isa date.  
-eastereve isa date.  
+easter_eve isa date.  
 
 midsummer_day isa date. 
 midsummer_eve isa date.

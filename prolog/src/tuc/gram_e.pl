@@ -2859,7 +2859,7 @@ date(Date:date,Date isa date) ---> %%  n'te pinsedag etc. some may change month
      w(name(Whitsun_eve,n,date)),
      {testmember(Whitsun_eve,
           [whitsun_eve,whitsun_day,maundy_thursday,good_friday,
-           eastereve,easterday,christmas_eve,christmas_day,
+           easter_eve,easterday,christmas_eve,christmas_day,
            new_years_eve,new_years_day,midsummer_eve,midsummer_day])},
      !,
      {named_date(Whitsun_eve,Date)}.

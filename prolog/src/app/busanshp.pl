@@ -1,7 +1,7 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE busanshp.pl     hovedprogram?
 %% SYSTEM BUSTUC/BUSTER
-%% CREATED  JB-970220   REVISED  EH-031120 TA-110503 RS-111025 RS-120402 RS-131224 RS-140928
+%% CREATED  JB-970220   REVISED  EH-031120 TA-110503 RS-111025 RS-120402 RS-131224 RS-140928 RS-150414
 %% REVISED  RS-140101 modularized
 
 %%%%%%%%% COMMON VERSION BUSTER/BUSTUC  %%%%%%%%%%%%%%%
@@ -45,6 +45,9 @@
 :- meta_predicate  outdeplisttime(  ?, ?, ?, ?, ?, -, ? ) .         %% RS-140927
 :- meta_predicate  outdeplisttime1( ?, ?, ?, ?, ?, -, - ) .         %% RS-140927
 
+%:- meta_predicate  pmess( 0 ) .         %% RS-150406 %%% See OUTDEPLIST1 %%%%%%% %printmessage( assumetomorrow ) :- pmess( writeout:cwc(assumetomorrow, _) ).
+%:- meta_predicate  printmessageunconditionally( 0 ) .
+
 :- meta_predicate  bollepling( 0, ? ) .         %% RS-140927
 
 %% bingo(G) :- nl,out('<'),output(G),call(G),out(G),output('>').
@@ -57,10 +60,6 @@
 %:- meta_predicate  test(0).
 %test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)), test("X ako Y"), among other things, so: make it local in metacomp-> dcg_?.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%:- meta_predicate  pmess( 0 ) .         %% RS-140927 %%% OUTDEPLIST1 %%%%%%%
-%printmessage( assumetomorrow ) :-
-%    pmess( writeout:cwc(assumetomorrow, _) ).
-
 
 
 %% Version Based On the principle that the GoogleMapInfo is printed out
@@ -2046,8 +2045,8 @@ printmessageunconditionally(X):-
 printmessage( notification(Date,Clock) ):-
     write('bing '),bwr(Date),bwr(Clock),nl. %% AD HOC
 
-printmessage(assumetomorrow) :-
-    pmess(assumetomorrow).
+printmessage( assumetomorrow ) :-
+    pmess( assumetomorrow ).
 
 
 printmessage(X):-
@@ -2266,16 +2265,15 @@ write_mess_off(NextPeriod):-
     write('For this date, '), %%  "routes for" part of routename
     out(E),write(apply),write('.'),nl.
 
-write_mess_off(   _      ):-! . %% assume message has been written already
-
-
+%% assume message has been written already
+write_mess_off(   _      ):-! .
 
 %------------------------------------------
 
-obvious_station(sentrum).
-
 %% obvious_station(munkegata).           %%  Skal vi møtes på D.g.
 %% obvious_station(dronningens_gate).    %%
+
+obvious_station(sentrum).
 
 
 
@@ -2285,13 +2283,16 @@ obvious_station(sentrum).
 
 pmess( answer(P) ) :- P.
 
+pmess( assumeeve(DayEve) ) :-
+     bcpbc( assumeeve(DayEve) ). %.
+
 pmess( place_resolve(Hageby,List) ):-
    bcpbc(theplace), bwr(Hageby), bcp(ismanyvalued),period,
    bcpbc(precize),nl,
    bcpbc(possalternatives),bwr2(List,station),period0.
 
 
-pmess(nightbuson(_Day)):- %% saturday/sunday is confusing around christmas.
+pmess( nightbuson(_Day) ) :- %% saturday/sunday is confusing around christmas.
     todaysdate(date(_YYYY,MM,DD)),
     ((MM=12, DD >= 20)
     ;
@@ -2382,15 +2383,15 @@ pmess(mustknow(route)):-(bcpbc(you),bcp(must),bcp(specify),bcp(aroute),
 pmess(mustknow(vehicle)):- (bcpbc(you),bcp(must),bcp(specify),bcp(avehicle),
                             bcp(in),bcp(such),bcp(questions)),dot. %.
 
-pmess(mustknow(station)):- (bcpbc(you),bcp(must),bcp(specify),
+pmess(mustknow(station)) :- (bcpbc(you),bcp(must),bcp(specify),
                             bcp(astation),bcp(in),bcp(such),
                                            bcp(questions)),dot. %.
 
-pmess(mustknow(date)):- (bcpbc(you),bcp(must),bcp(specify),
+pmess(mustknow(date)) :- (bcpbc(you),bcp(must),bcp(specify),
                             bcp(adate),bcp(in),bcp(such),
                                            bcp(questions)),dot. %.
 
-pmess(mustknow(day)):-
+pmess(mustknow(day)) :-
      bcpbc(you),bcp(must),bcp(specify),
       bcp(aday),bcp(in),bcp(such),
            bcp(questions),dot. %.
@@ -2487,14 +2488,14 @@ pmess(nearest_station(_STARTSTOP,Street,Station)):-
 
 
 
-%% nightbus 400 deps cancelled
+%% nightbus 0400 deps cancelled
 
 %% General Nightbus message ( following weekend is normal )     %% RS-130630 Only for summer routes!!! Update this in June 2014
 %pmess(generalnightbusmessage):-
 %    pen(['Nightbus goes every hour in the summer from O.Tryggvasons gt. at 0100,0200,0300 am night to Saturday and Sunday.',
 %         'Nattbuss går hver time om sommeren fra O.Tryggvasons gt. kl 0100,0200 og 0300 natt til lørdag og søndag.']).
 
-%% General Nightbus message ( following weekend is normal )
+%% General Nightbus message ( following weekend is normal )     %% Non-summer %% RS-150330
 pmess(generalnightbusmessage):-
     pen(['Nightbus goes every 30 min from O.Tryggvasons gt. at 0100,0130,0200,0230,0300 am night to Saturday and Sunday. Nighttram every hour from 0115.',
          'Nattbuss går hver halvtime fra  O.Tryggvasons gt. kl 0100,0130,0200,0230 og 0300 natt til lørdag og søndag. Nattrikk hver time fra 0115.']). %0030,
@@ -2502,12 +2503,14 @@ pmess(generalnightbusmessage):-
 %% 400 deps cancelled
 
 %% Påske-nattbuss
+pmess(generalnightbuseaster):- %% Sjekk hvert år ! %% TA-110426 %% RS-150330
+    pen(['There is no nightbus night to Saturday or Sunday in the easter Weekend.',
+         'Det er ingen nattbuss natt til lørdag eller søndag i påskehelgen.']).
 
-pmess(generalnightbuseaster):- %% Sjekk hvert år ! %% TA-110426
-    pen(['At easter, the nightbus only goes night to  Easter Sunday from O.Tryggvasons gt. at 0100,0200 and 0300  am.',
-         'I påsken går nattbuss  bare natt til 1. påskedag fra O.Tryggvasons gt. kl 0100,0200 og 0300. ']).
-
-
+%pmess(generalnightbuseaster):- %% Sjekk hvert år ! %% TA-110426 %% RS-150330
+%    pen(['At easter, the nightbus only goes night to  Easter Sunday from O.Tryggvasons gt. at 0100,0200 and 0300  am.',
+%         'I påsken går nattbuss  bare natt til 1. påskedag fra O.Tryggvasons gt. kl 0100,0200 og 0300. ']).
+%
 /* %% TA-110426
 pmess(generalnightbuseaster):-
     pen(['Nightbus goes night to  Easter Sunday from O.Tryggvasons gt. at  0100,0200 and 0300  am.',
@@ -2517,9 +2520,13 @@ pmess(generalnightbuseaster):-
 
 %% Jule-nattbuss  %% Must be rechecked
 
+%pmess(generalnightbusxmas):-
+%    pen( ['There are No nightbus in Xmas/NewY except night to Dec. 24., 27. 30. and 31.',
+%          'Det er ingen nattbuss i julehelgen unntatt natt til 27.12, 30.12  og 31.12.']).
+
 pmess(generalnightbusxmas):-
-    pen( ['There are No nightbus in Xmas/NewY except night to Dec. 24., 27. 30. and 31.',
-          'Det er ingen nattbuss i julehelgen unntatt natt til 27.12, 30.12  og 31.12. ']).
+    pen( ['There are No nightbus in Easter/Xmas/NewY except the nights to Dec. 27., 30., and 31.',
+          'Det er ingen nattbuss i påsken/julehelgen unntatt natt til desember 27., 30., og 31.']).
 
 pmess(nonightbusesthen):- %% dont propose Saturday/Sunday if these are disallowed
     pen( ['There are no nightbuses.',
@@ -2638,15 +2645,13 @@ nibcp(Day):-
 
 nibcp(Day):- bcp(on), bcp(Day).
              %%     for is more neutral %% NO %%
-             %% in case the day is a alias day (KRHF)
+             %% in case the day is a alias day (Kristi HimmelFart)
 
 %% Standard Nightbus Information Message
 
-standnight(easterhol):- %% Standnight  påsken
+standnight(easterhol) :- %% Standnight  påsken
     value(nightbusflag,true),
     pmess(generalnightbuseaster),nl.
-
-
 
 
 /*   %% Stand night   Christmas
@@ -2654,34 +2659,21 @@ standnight(D):-
     value(nightbusflag,true),
     kindofday(D,workday),
 
-(    value(language,norsk)->
-(
+(    value(language,norsk)->  (
     output('Nattbussen går ikke mellomjula,unntatt natt til tredje juledag.'),
-
     output('Ellers går nattbuss bare natt til lørdag og natt til søndag') %% <160 nattbuss[en]
-);(
-
+   ) ; (
     output('There are no nightbus during Christmas holidays except night to Dec. 27'),
     output('Otherwise, only night to Saturdays and night to Sundays')
-)).
-
+) ).
 */
 
-
-
-standnight(D):-
+standnight(D) :- %% < 160 nattbuss[en]
     value(nightbusflag,true),
     kindofday(D,workday),
-
-(    value(language,norsk)->
-
-(
-                                                        %% unntatt i påskehelgen'
-    output('Nattbussen går bare natt til lørdag og søndag.') %% <160 nattbuss[en]
-);(                                               % natt til %% <160
-                                                              %%  except Easter holiday
-    output('The Nightbus only goes night to Saturdays and Sundays.')
-)).
+    doubt( 'The Nightbus only goes night to Saturdays and Sundays.',  %%  except Easter holiday    % natt til %% <160   
+           'Nattbussen går bare natt til lørdag og søndag.' ), %% unntatt i påskehelgen'  
+    nl.
 
 
 standnight(_).
@@ -2690,9 +2682,6 @@ ondate(_Date):- %% TA-110301
     bcp(on),
     doubt('this','denne'),
     doubt('date','datoen').
-
-
-
 
 
 ondays(Day):-
@@ -2746,16 +2735,12 @@ plural(_,departure,departures).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
-
-
-
 % HELP Predicates in user for bustrans
 
 
 special_day(holiday).
 special_day(easterhol).
-special_day(eastereve).
+special_day(easter_eve).
 special_day(may17).
 
 
