@@ -69,9 +69,12 @@ prettypr(H,P) :-
    write(' ***'),
    nl,nl, 
    prettypr2(P).
+
 prettypr2((X,R)) :-
         !,   
-   write(X),nl,prettypr2(R).
+   write(X),nl,
+   prettypr2(R).
+
 prettypr2(X) :-
         write(X),nl.
 

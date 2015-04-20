@@ -12,11 +12,7 @@
 %% RS-140927. rule/2 is "executed" by pragma.pl:itr/5 (but so is TELETRANS:rule, bustrans:rule, tele:rule or teletrans:rule, frames:rule, etc...
 
 %UNIT: app/
-:- module( busans, [ rule/2, tracevalue/1 ] ). %%  Different for busans and bustrans 
-
-:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-
-tracevalue(L) :- value(traceans,L).  % Trace level 1-4
+:- module( busans, [ rule/2, tracevalue/1 ] ). %%  Different for busans and bustrans  (\set traceans 3 vs. \set traceprog 3)
 
 %% Rule format
 
@@ -25,19 +21,21 @@ tracevalue(L) :- value(traceans,L).  % Trace level 1-4
 %   id ID
 %   ip IP.
 %:- ensure_loaded('../app/pragma'). %% RS-111213 Pragmatic (rule) Operators
-:- op(1150,xfy,rule).  
 
-:- op(1120, fy,is).
-:- op(1110,xfy,id).
-:- op(1110,xfy,ip).
-
-:- op( 715, fy,replace).
-:- op( 715,xfy,with).
-:- op( 715, fy,exactly). 
-:- op( 715, fy,add).
-:- op( 715, fy,present).
-
-:- op( 712, fy,seen). % Lower than "not", higher than "isa"
+%% RS-150414. From declare.pl
+%:- op(1150,xfy,rule).  
+%
+%:- op(1120, fy,is).
+%:- op(1110,xfy,id).
+%:- op(1110,xfy,ip).
+%
+%:- op( 715, fy,replace).
+%:- op( 715,xfy,with).
+%:- op( 715, fy,exactly). 
+%:- op( 715, fy,add).
+%:- op( 715, fy,present).
+%
+%:- op( 712, fy,seen). % Lower than "not", higher than "isa"
 
 %:- meta_predicate rule( +, 0 ) .   %% How can we get SPIDER to help us check that all predicates are imported correctly?
 %:- meta_predicate is( 0 ) .   %% How can we get SPIDER to help us check that all predicates are imported correctly?
@@ -45,13 +43,17 @@ tracevalue(L) :- value(traceans,L).  % Trace level 1-4
 %:- meta_predicate ip( ?, ? ) .   %% How can we get SPIDER to help us check that all predicates are imported correctly?
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
+
+%:- use_module( bustrans, [ module_dependencies/0 ]  ). %% RS-141019 Import all predicates used in the rules below, from the correct modules.
 % USE_MODULE DEPENDENCIES       %% RS-141019
 
 module_dependencies :-
         dep_module( Module, PredList ),
         use_module( Module, PredList ),
         fail ; true .   %% Get all use_modules, then succeed...
+
+dep_module( dmeq, [ dmeq/2 ] ). %% Domein Equal concepts. RS-140102, Really Used, in several  pragma.pl->interapp->bustrans rules
 
 %UNIT: /utility/  and  /
 %dep_module( '../utility/utility', [ bound/1, testmember/2, unbound/1 ] ). %% RS-131225    %:-volatile value/2.  %% RS-130630 This caused BIG TROUBLE!  value/2 
@@ -63,26 +65,37 @@ dep_module( '../interfaceroute', [ decide_period/2 ] ). %% RS-141015
 %%% RS-131225, UNIT: app/
 dep_module( busanshp, [ outdeplist/6, outfromtocorr/6 ]).     %% RS-140102 Dangerous to get all? tracevalue/1
 
-:- module_dependencies.
+:- module_dependencies. %% RS-141019 Import all predicates used in the rules below, from the correct modules.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+tracevalue(L) :- value(traceans,L).  % Trace level 1-4
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %:-meta_predicate  rule(+,:).
 %:-meta_predicate  is(0). %% RS-140929 Wouldn't it be nice if this worked?! I guess we need to build a debug-predicate to test all rules instead...
 
 wakeup rule %%  Varsle meg kl 7 i morgen  
-is  notification(date(YYYY,MM,DD),HHMM),   %% NEW BUSLOG Predicate
+is  notification( date(YYYY,MM,DD), HHMM ),   %% NEW BUSLOG Predicate
     clear 
 id  clear,
-    add  printmessage(notification(date(YYYY,MM,DD),HHMM))
+    add  printmessage( notification( date(YYYY,MM,DD), HHMM ) )
 ip	 [].
 
+
+% hva er prisen for en tur?
+% Du har ulike måter å kjøpe billett på. Billettprisene varierer ut i fra hvilken billettype du velger (15-50 kroner).
+ticketprice rule 
+is  ticketprice2(BusType,Price)
+id       add (bcpbc(theprice),bcp(ofatrip),bcp(with),bcp(bus),bcp(for),bcp(BusType),
+                        bcp(is),bwrprices(Price),period) 
+ip       dmeq( [adult, bicycle, child, dog, elderly, soldier ], BusType ).
 
 ticketprice2 rule % hva er prisen for en tur
-is  ticketprice2(Type,Price)
-id	 add (bcpbc(theprice),bcp(ofatrip),bcp(with),bcp(Type),
-			bcp(is),bwrprices(Price),period) 
-ip	 [].
+is  ticketprice2(BusType,Price),
+        { BusType = nightbus -> Type = nightbus_all ; Type = BusType }
+id       add (bcpbc(theprice),bcp(ofatrip),bcp(with),bcp(Type),bcp(for),bcp(BusType),
+                        bcp(is),bwrprices(Price),period) 
+ip       [].
 
 /* TA-110215 Made superfluous
 coupled_connections rule

@@ -10704,7 +10704,7 @@ obviousdate1(Date:date,Date isa date) ---> %%  pinsedag etc. some may change mon
      w(name(Whitsun_eve,n,date)),
      {testmember(Whitsun_eve,
         [whitsun_eve,whitsun_day,palm_sunday,maundy_thursday,good_friday, 
-         eastereve,easterday,christmas_eve,christmas_day,
+         easter_eve,easterday,christmas_eve,christmas_day,
          new_years_eve,new_years_day,midsummer_eve,midsummer_day])},
          
          not_look_ahead(w(prep(in))),         %%  i 2009

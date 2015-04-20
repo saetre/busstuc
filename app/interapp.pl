@@ -150,7 +150,7 @@ ieval(TQL0) :-
 
     waves,
 
-    first_meat( FQL, FQL1 ),     % react to first FQL if negative message
+    first_meat( FQL, FQL1 ),     % react to first FQL if negative message (FQL = Flat Code?)
 
 %         irun( TQL, FQL, FQL1, buslog:P ),     % Evaluates program (in buslog.pl), makes answer if success
         irun( TQL, FQL, FQL1, P ),     % Evaluates program (in busans.pl)?, makes answer if success
@@ -317,12 +317,12 @@ irun1( _, FlatCode, _FC1, Program ) :-
 
     execute_program( buslog:Program ),         %% Make answer just for successful application program? %% RS-141030
     !,
-    makeanswer( true, FlatCode, Program, Panswer ),
+    makeanswer( true, FlatCode, Program, Panswer ), %% true == successful program
 	 !, 
     ( value( mapflag, true ) -> true ;  ( printpaytag(Program), writeanswer2( FlatCode, Program, Panswer ) ) ).
 
  
-% Unsuccessful program	
+% Unsuccessful program	(No routes info, ...)
 
 
 irun1( _, _FC, (item,_), Program ) :-   %% TA-110125    %% No messages
@@ -332,7 +332,7 @@ irun1( _, _FC, (item,_), Program ) :-   %% TA-110125    %% No messages
 
 
 irun1( _, _, FlatCode1, Program ) :-
-     makeanswer( false, FlatCode1, Program, Panswer),
+     makeanswer( false, FlatCode1, Program, Panswer),   %% false == unsuccessful program
 	  !, 
      printpaytag( Program ),
     
@@ -406,9 +406,9 @@ writeanswer2(FQL,Program,Panswer):-
     !,
     printallmessagesanswer(FQL,Panswer,false). %% false means without departures
 
-
-writeanswer2( _, _, Panswer ) :- 
+writeanswer2( _, _, Panswer ) :- %% RS-150403 Experiment??
     writeanswer( busanshp:Panswer ).
+
 
 printallmessagesanswer( _FQL, _:Answer, false ) :- %% no deps, print even sms-invis
     sequence_member( printmessage(_), Answer ),    %%
@@ -660,9 +660,9 @@ xstation_trace(_Rid,_Gløshaugen_syd,_Nardosenteret,[]). %% error berg_studentby
 
 
 
-% makeanswer(Success,+FlatCode ,+Program,-AnswerOut).
+% makeanswer( Success, +FlatCode , +Program, -AnswerOut ).
 
-%%%%%%%%        makeanswer(true,_, [timeout],_):- output('*** timeout ***'),!.
+%%%%%%%%        makeanswer( true, _, [timeout], _) :- output('*** timeout ***'), !.
 
 
 makeanswer( _, nil, _,  busanshp:(bcpbc(ok),nl)     ) :- !. 
@@ -770,50 +770,47 @@ decidewday(Wday,Wday).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Suksessregler (interapp success)
-
 % The list of all proper buslog predicates
 
-isc( listofall( _Entity, _) ).                % generalized list of entities 
-
+isc( listofall( _Entity, _) ).          % generalized list of entities
 /*
   isc(allbuses(_)).                     % navnet på bussene 
   isc(allnightbuses(_)).                % navnet på nattbussene 
   isc(allstations(_)).                  % navnet på stasjonene 
 */
-
 %% isc(atdate(_)).                       % Hvilken dato turen går
 
-isc(notification(_Date,_Time)).       % notification independent of departures
-isc(connections(_,_,_,_,_,_,_,_,_,_)).  % en rute mellom to steder
-isc(coupled(_,_,_,_,_,_,_,_)).        % en rute mellom to steder
-isc(db_reply(_,_,_)).                 % answer from database
-isc(dateis(_,_,_,_)).                 % datoen
+isc(notification(_Date,_Time)).         % notification independent of departures
+isc(connections(_,_,_,_,_,_,_,_,_,_)).  % en rute mellom to steder (ingen overgang?)
+isc(coupled(_,_,_,_,_,_,_,_)).          % en rute mellom to steder (overgang?)
+isc(db_reply(_,_,_)).                   % answer from database
+isc(dateis(_,_,_,_)).                   % datoen
 % isc(daysucc(_,_)).                    % next day %% hva klokka i går 
 % isc(diffdep(_,_,_,_,_)).              % tidsdifferanser
-isc(diffdep4(_,_,_,_)).               % tidsdifferanser 
-isc(endstation(_,_)).                 % endestasjoner // old %%  /3 -> /3
-isc(endstations(_,_)).                % endestasjoner
-isc(false).                           % Answer No 
-isc(findprice(_,_,_,_)).              % en bussturpris
-isc(message(X)):-                     % En beskjed %% avoid donotknow message 
+isc(diffdep4(_,_,_,_)).                 % tidsdifferanser 
+isc(endstation(_,_)).                   % endestasjoner // old %%  /3 -> /3
+isc(endstations(_,_)).                  % endestasjoner
+isc(false).                             % Answer No 
+isc(findprice(_,_,_,_)).                % en bussturpris
+isc(message(X)):-                       % En beskjed %% avoid donotknow message 
    informative_message(X).
-isc(flag(exit)).  
-isc(numberof(_,_,_)).                 % antall stasjoner/busser/...
-isc(passesstations(_,_,_,_)).         % stasjonene en buss passerer
-isc(passevent(_,_,_,_,_,_)).          % en busspassering
-isc(departure(_,_,_,_)).              % a departure 
-isc(properstation(_)).                % er en busstasjon
+isc(flag(exit)).                        % RS-150403 Should this be success or fail?
+isc(numberof(_,_,_)).                   % antall stasjoner/busser/...
+isc(passesstations(_,_,_,_)).           % stasjonene en buss passerer
+isc(passevent(_,_,_,_,_,_)).            % en busspassering
+isc(departure(_,_,_,_)).                % a departure 
+isc(properstation(_)).                  % er en busstasjon
 isc(reply(_)). 
-isc(replyq(_)).                       %
-isc(station(_)).                      % er en stasjon
-isc(stationsat(_,_,_)).               % stasjoner på sted, implicit
-isc(stationsnear(_,_,_)).             % stasjoner nært sted
-isc(takestime(_,_,_)).                % lag tidsforbruks liste 
-isc(testanswer(_,_)).                 % yes or no test 
-isc(ticketprice2(_,_)).               % en billettpris specific 
-isc(timeis(_)).                       % klokka
-isc(tramstations(_)).                 % navnet på trikkestasjonene
-isc(true).                            % Answer Yes
+isc(replyq(_)).                         %
+isc(station(_)).                        % er en stasjon
+isc(stationsat(_,_,_)).                 % stasjoner på sted, implicit
+isc(stationsnear(_,_,_)).               % stasjoner nært sted
+isc(takestime(_,_,_)).                  % lag tidsforbruks liste 
+isc(testanswer(_,_)).                   % yes or no test 
+isc(ticketprice2(_,_)).                 % en billettpris specific 
+isc(timeis(_)).                         % klokka
+isc(tramstations(_)).                   % navnet på trikkestasjonene
+isc(true).                              % Answer Yes
 
 isc( teleprocess(_,_,_,_) ) :- value( teleflag,true ).
 

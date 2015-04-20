@@ -39,51 +39,74 @@ remember( Module:F ) :- Module:F, ! ; assert( Module:F ). %, out( 'remember' ),o
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Operatorer for Pragma-regler
-% is operator prefixed with rule RuleID
+%% RS-141026 For gram_n and gram_e
+:- op(1150,xfx, ---> ).
+:- op(1150,xfx, ( ---> ) ).
 
-:- op(1150,xfy,rule).  
-:- op(1150,xfx, ---> ).         %% RS-141026 For gram_n and gram_e
-:- op(1150,xfx, ( ---> ) ).     %% RS-141026 For gram_n and gram_e
+% Operatorer for Pragma-regler (bustrans, busans, teleans, negans, etc.)
+% "is"-operator is prefixed with rule RuleID
 
-:- op(1120, fy,is).     %% is is a prolog operator!?? RS-141006
-:- op(1110,xfy,id).
-:- op(1110,xfy,ip).
+:- op( 1150, xfy, rule ). %% Moved to declare.pl ?  % RS-140617
+:- op( 1120,  fy, is ).   %% "is" is a prolog operator!?? RS-141006
+:- op( 1110, xfy, id ).
+:- op( 1110, xfy, ip ).
 
 %% Some Prologs don't like LISTS OF OPERATORS
-:-op( 999,fx,listall).   %% TA-030504
-%:-op( 997, fx, rule ). %% proxy , NOW a pragma operator
-:-op( 800,fx,  def ).
+:- op( 999,fx,listall ).   %% TA-030504
+:- op( 800,fx,  def ).
 %:-op( 731,xfy, ::: ).    %% sentence tag  %% TA-090514 For main, tuc/ [ translat gram_x evaluate dcg_x anaphors ], app/ [ busanshp bustrans interapp ], dialog/d_dialogue
-%:-op( 730,xfy, :: ).     %% lambda infix  %% RS-141026 For      tuc/ [ translat gram_x fernando  dcg_x anaphors ], app/interapp, dialog/ [checkitem/2 d_context d_dialogue frames/2 makeframe/2 parseres virtuals relax update2 usesstate2]
-:-op( 729,xfx, : ).      %% variable type
-:-op( 727,xfy, => ).     %% for main.pl and translat.pl "rules?"
-:-op( 727,yfx, if ). 
-:-op( 726,xfx, then ).   
-:-op( 725,xfy, or ).
-:-op( 720,xfy, and ).
-:-op( 720,xfy, & ).
-:-op( 719,yfx, butnot ).
-:-op( 715, fy, not ).
+%% RS-150414.   ::: is also a kind of lambda? which(A):::car(A).
+:- op( 730,xfy, :: ).     %% lambda infix  %% RS-141026 For      tuc/ [ translat gram_x fernando  dcg_x anaphors ], app/interapp, dialog/ [checkitem/2 d_context d_dialogue frames/2 makeframe/2 parseres virtuals relax update2 usesstate2]
+:- op( 729,xfx, : ).      %% variable type
+:- op( 727,xfy, => ).     %% for main.pl and translat.pl "rules?"
+:- op( 727,yfx, if ). 
+:- op( 726,xfx, then ).   
+:- op( 725,xfy, or ).
+:- op( 725, fy,addcon ).     %% add if not already present 
+:- op( 720,xfy, and ).
+:- op( 720,xfy, & ).
+:- op( 719,yfx, butnot ).
+:- op( 715, fy, not ).   %% :- op( 715, fy,not).  % Already defined in TUC
+
+:- op( 715, fy, addfront ).   %% (for messages etc) 
+:- op( 715, fy, context ).    %% similar to present, but doesn't mark as seen 
+
+:- op( 715, fy, no ).
+:- op( 715, fy, remove ).
+:- op( 715, fy, removeall ).  %% remove all of a list
+:- op( 715, fy, removeif ).   %% remove all if any , always succeed 
+
+:- op( 715, fy, replaceall ). %% replace iteratively all elements 
+:- op( 715, fy, replaceif ).  %% replace if occuring. 
+:- op( 715, fy, replacelast ).
+%%  :- op( 715,xfy,append).
+
+%For busans.pl
+:- op( 715, fy, add ).
+:- op( 715, fy, exactly ). 
+:- op( 715, fy, present ).
+:- op( 715, fy, replace ).
+:- op( 715,xfy, with ).
 
 %For pragma.pl
-:- op( 715, fy, assume). %operator in pragma, but looks like assume(predicate) in bustrans... ? meta_predicate setting?
-:- op( 714,xfy,seq).     %% directly sequence 
+:- op( 715, fy, assume ). %operator in pragma, but looks like assume(predicate) in bustrans... ? meta_predicate setting?
+:- op( 714,xfy, seq ).     %% directly sequence 
 
-:-op( 714,xfx, := ).
-:-op( 713,xfx, =: ). 
-:-op( 710,xfx, ako ).
-:-op( 710,xfx, apo ).
-:-op( 710,xfx, isa ).  % Move to tuc/facts
-:-op( 710,xfx, has_a ).
-:-op( 710,xfx, is_the ).
+:- op( 714,xfy, cond ).    %% new   not X isa place cond bound(X)
+:- op( 714,xfy, when ).    %% same as cond %% TA-081106
+:- op( 712, fy, seen ). % Lower than "not", higher than "isa"
+:- op( 710,xfx, ako ).
+:- op( 710,xfx, apo ).
+:- op( 710,xfx, isa ).  % Move to tuc/facts
+:- op( 710,xfx, has_a ).
+:- op( 710,xfx, is_the ).
 
-:-op( 500,xfy, \  ).
+:- op( 500,xfy, \  ).
+:- op( 500,xfy, -... ). %% same as \
+:- op( 500,xfy, -. ).   %% same as -
 
-:-op( 500,xfy,-...). %% same as \
-:-op( 500,xfy,-.).   %% same as -
-
-
+:- op( 714,xfx, := ).
+:- op( 713,xfx, =: ). 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RS-141105
 X := Y  :-      %% RS-131228    :=/2    X set to Y's value

@@ -32,7 +32,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% META_PREDICATES SECTION, %% RS-140927 meta_predicates    : means use source module       + means use this (utility) module  for expansion %% RS-131231 %From utility.pl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%:- meta_predicate  busanswer_sat( ?, 0, ? ) . %% RS-141105
+:- meta_predicate  busanswer_sat( ?, 0, ? ) . %% RS-141105 %% RS-150413
+%:- meta_predicate  bwr( 0 ) . %% RS-141105 %% RS-150413
+
 %:- meta_predicate  track( +, 0 ) .     %% Moved to declare!  %% RS-150111
 %:- meta_predicate  trackprog( +, 0 ) . %% Moved to declare!  %% RS-150111
 
@@ -41,7 +43,7 @@
 %:- meta_predicate  writetelebusteranswer_saf( ?, 0 ) .
 %:- meta_predicate  listall( 0 ) .
 %:- meta_predicate  teleanswer_sat( +, 0 ) .
-%:- meta_predicate  xwriteanswer( ?, 0 ) .
+%:- meta_predicate  xwriteanswer( ?, 0 ) . %% RS-150403 Moved to meta_preds
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %writeanswer/1, Move to meta_preds to avoid Circles in the use_module imports.
@@ -112,7 +114,7 @@ space0.                 %% nothing
 doubt(A,B) :-
     language( english ) -> out( A );
     language( norsk ) -> out( B );
-    out(A).
+    out(A).     %% Default to English when language is not specified.
 
 
 %% RS-150104 From BusAnsHP
@@ -122,27 +124,28 @@ doubt(A,B) :-
 
 % Predikat som skriver ut navn og tall etc.  bwr*
 
-
-bwrprices([Ad,Ch]):- moneyunit(nok), % both languages
+bwrprices([Ad,Ch]) :- moneyunit(nok), % both languages (Ad=Adult, Ch=Child. %% RS-150413 NO, Now it's simply Ad=Max, Ch=Min
     !,
-    bwr(Ad),bcp(or),bwr(Ch),bcp(kroner).
+%   bwr(Ad),bcp(or),bwr(Ch),bcp(kroner).
+    bcp(between), space, bwr( and([Ad,Ch]) ), bcp(kroner).
 
-bwrprices([Ad,Ch]):-
+bwrprices([Ad,Ch]) :-
     moneyunit(usd), % both languages
     !,
-    bwr(Ad),write('$'),bcp(or),bwr(Ch),write('$').
+%    bwr(Ad),write('$'),bcp(or),bwr(Ch),write('$').
+    bcp(between),bwr( and( [Ad,Ch] ) ),write('$').
 
-bwrprices([Ad]):- %% Unit Price
-    moneyunit(nok), % both languages
+%% Unit Price (Just one)
+bwrprices([Ad]) :-  moneyunit(nok), % same moneyunit for both languages
     !,
     bwr(Ad),bcp(kroner).
 
-bwrprices([Ad]):-  %% Unit Price
-    moneyunit(usd), % both languages
+%% Unit Price (Just one)
+bwrprices([Ad]) :- moneyunit(usd), % same moneyunit for both languages
     !,
     bwr(Ad),write('$').
 
-bwrprices(Price):-  bwr(or(Price)).
+bwrprices(Price):-  bwr( or(Price) ).
 
 
 
@@ -191,7 +194,7 @@ bwrsinglelist((Elem1,Elem2)) :- % Round lists...
 bwrsinglelist((Elem,List)) :-
         bwr(Elem),comma,bwrsinglelist(List).
 
-% Square or lists
+% Square "or-lists"
 
 %% writesimplelist %% TA-110110
 
@@ -210,7 +213,7 @@ bwrsingleorlist([Elem1,Elem2]) :-
 bwrsingleorlist([Elem|List]) :-
         bwr(Elem),comma,bwrsingleorlist(List).
 
-% Round or lists
+% Round "or-lists"
 
 bwrsingleorlist(Elem) :-
         atomic(Elem),
@@ -221,6 +224,28 @@ bwrsingleorlist((Elem1,Elem2)) :- % Round lists...
         bwr(Elem2).
 bwrsingleorlist((Elem,List)) :-
         bwr(Elem),comma,bwrsingleorlist(List).
+
+% Square "and-lists"
+
+bwrsingleorandlist([Elem]) :-
+        bwr(Elem).
+bwrsingleorandlist([Elem1,Elem2]) :-
+        bwr(Elem1), bcp(and), % RS-150413
+        bwr(Elem2).
+bwrsingleorandlist([Elem|List]) :-
+        bwr(Elem),comma,bwrsingleorandlist(List).
+
+% Round "and-lists"
+
+bwrsingleorandlist(Elem) :-
+        atomic(Elem),
+        !,
+        bwr(Elem).
+bwrsingleorandlist((Elem1,Elem2)) :- % Round lists...
+        atomic(Elem2),bwr(Elem1),  bcp(or), %% bcp(and), ØF-990908
+        bwr(Elem2).
+bwrsingleorandlist((Elem,List)) :-
+        bwr(Elem),comma,bwrsingleorandlist(List).
 
 
 
@@ -386,7 +411,7 @@ outcap(X):-
     out(Y).
 
 bcpbc(Con) :-
-         (cwc(Con,Phrases);cwcerror(Con,Phrases)),
+         ( cwc(Con,Phrases) ; cwcerror(Con,Phrases) ),
          languagenr(LN),
          nth(LN,Phrases,Phrase),
          bigcap(Phrase,BCPhrase),
@@ -411,7 +436,7 @@ bcp(_):- write(' ** ').
 
 
 %% RS-120728
-%% bwc: Basic Word Common? Concept?
+%% bwc: Big-letter Write C? (Common? Concept?)
 
 % New  List with Class, Big caps
 
@@ -419,14 +444,14 @@ bwc([],Class):- !,bcpbc(notany),bcp(Class).
 bwc([X],buses) :- !, %% Trikk 1 / Buss 2
     busortram(X,BT),bcpbc(BT),bwr(X).
 
-bwc(List,buses):- !,portionlist(List),space.
+bwc(List,buses) :- !,portionlist(List),space.
 
-bwc(List,_):- bwrsinglelist(List),space.
+bwc(List,_) :- bwrsinglelist(List),space.
 
 
-bcw(bus,List):-!,portionlist(List),space.
-bcw(route,List):-!,portionlist(List),space.
-bcw(station,List):-!,portionlist(List),space.
+bcw(bus,List) :- !,portionlist(List),space.
+bcw(route,List) :- !,portionlist(List),space.
+bcw(station,List) :- !,portionlist(List),space.
 
 bcw(_,List):- \+ value(smsflag,true),!,portionlist(List),space.
 bcw(_,List):- bwrsinglelist(List),space.
@@ -440,28 +465,28 @@ bwstat2(X,N)     :- bigcap(X,N),!.
 
 
 
-%% bwr    %%
+%% bwr  (Big firstletter WRite  %% RS-150414
 
 
-bwr(V):- var(V),!,write('X? '). %% capture loop  error
+bwr( V ) :- var(V), !, write('X? '). %% capture loop  error
 
-bwr(_TT_:X):-!,bwr(X). %% TMN
+%bwr( _TT_:X ) :- !, bwr(X). %% TMN
 
-bwr(date(Year,Month,DayNr)) :- %% TA-110519
+bwr( date(Year,Month,DayNr) ) :- %% TA-110519
     writedate(date(Year,Month,DayNr)).
 
-bwr(unknown) :-!,bcp(unknown).
+bwr( unknown ) :- !, bcp( unknown ).
 
 
 %% Update reference for all relevant items that are printed
-bwr(X) :- value(dialog, 1),
+bwr( X ) :- value(dialog, 1),
           atomic(X),
           X isa Type,
           \+  Type=number, %% uninteresting as reference
           getcurrent(Cid), addref(Cid, X, Type),
           false.  %% it is meant to backtrack
 
-bwr(X)     :- X=STOG-N,streetstat(STOG,_,_,_,_),
+bwr( X )     :- X = STOG-N, streetstat(STOG,_,_,_,_),
               !,
               bwr(STOG),write(N),space, realspeak_comma.
 
@@ -469,8 +494,9 @@ bwr(X-Y)   :- !,  bwr(X),bwr(-),bwr(Y).
 
 bwr([nostation]):-!, bcp(nostation).
 
-bwr(X)     :- internalkonst(X),!,bcp(that),space.
-bwr(or(X)) :- !,bwrsingleorlist(X),space.
+bwr( X )     :- internalkonst(X),!,bcp(that),space.
+bwr( or(X) ) :- !, bwrsingleorlist(X), space.
+bwr( and(X) ) :- !, bwrsingleorandlist(X), space.
 bwr(X)     :- islist(X),!, %% compound(X),!, %% built-in
               portionlist(X). %%  bwrsinglelist(X).
 
@@ -480,31 +506,31 @@ bwr(X)     :- streetspecname(X,N),!,write(N),space,realspeak_comma.
 
 bwr(X)     :- compound(X),!, write('***'),nl.
 
-% ',' for better Realspeak Prosody
 
+% ',' for better Realspeak Prosody
 
 bwr(X)     :- X==so_on,!,getphrase0(X,N),write(N),space. %% Special:  så videre,  lowercase
 bwr(X)     :- xspecname(X,N),!,    write(N), space,realspeak_comma. %% Holdeplassnavn
 bwr(X)     :- cname(X,N),!,        write(N), space,realspeak_comma.
 
 
-bwr(X)     :- bigcap(X,N),!,   %%  space,
+bwr( X )     :- bigcap(X,N),!,   %%  space,
                write(N),space, realspeak_comma.
 
 
-
-
-bwr(X)     :- %% space,
+bwr( X )     :- %% space,
               write(X).  %% DEFAULT
+
 
 %%
 
 bwq(X) :- write(X). %% no space
 
 
-bw1(X-Y) :- value(dialog,1),write(X),bcp(to),space,write(Y). %% RealSpeak
+bw1(X-Y) :- value(dialog,1),
+        write(X), bcp(to), space, write(Y). %% RealSpeak
 
-bw1(X)     :- space,write(X),space.  %% NEW Predicate No add ref
+bw1(X)     :- space, write(X), space.  %% NEW Predicate No add ref
 
 %%%
 
@@ -675,7 +701,7 @@ bigcap(P,P).          % Else, already big or bigcapping do not apply
 % Mapping fra konsept til ord på hvert språk
 
 %% RS-120728
-%% Common Word Concept
+%% Common Word Concept (for english and norsk)
 
 cwc(quote(S),[S,S]).
 
@@ -707,6 +733,11 @@ cwc(as,['as','som']).
 cwc(astation,['a station','en holdeplass']).
 
 
+cwc( assumeeve(DayEve), [ Eng, Nor] ) :-
+        cwc( DayEve, [ Day_Eve, DayAften ] ),
+        append_atomlist( ['I assume you mean ', Day_Eve, '.' ], Eng ),
+        append_atomlist( ['Jeg antar du mener ', DayAften, '.' ], Nor ).
+  
 cwc(assumetomorrow,['I assume you want routes for tomorrow.',    %% TA-110201
                     'Jeg antar du ønsker ruter for i morgen.']). %%
 
@@ -797,10 +828,11 @@ cwc(earliesttimes,[ 'The hours indicate the earliest passing times.',
 
 cwc(easterday2,['2. Easter day','2. påskedag']).
 
-cwc(eastereve,['Easter eve','påskeaften']).
+cwc(easter_eve,['Easter eve','påskeaften']).
 cwc(easterhol,['Easter holiday','påskehelligdag']).
 cwc(each,['each','hvert']).
 cwc(end_stations,['the end stations','endestasjonene']).
+cwc(endure,['Endure!','Hold ut!']).
 cwc(entering,['entering','å gå på']).
 
 cwc(error_reports_sent,        %% TA-101206
@@ -821,7 +853,7 @@ cwc(first,['first','første']).
 
 /* %% TA-110426
 cwc(generalnightbuseaster, %% also pmess !
-         ['Nightbus goes night to  Easter Sunday from O.Tryggvasons gt. at  0100,0200 and 300 am.',
+         ['Nightbus goes night to  Easter Sunday from O.Tryggvasons gt. at  0100,0200 and 0300 am.',
           'Nattbuss går natt til 1. påskedag fra O.Tryggvasons gt. kl 0100,0200 og 0300.']).
 */
 
@@ -832,7 +864,6 @@ cwc(goes,['goes','går']).
 cwc(goesfrom, ['goes from','går fra']).
 cwc(goesto,  ['goes to','går til']).
 cwc(going,['going','å dra']).
-cwc(happy_new_year,['Happy New Year','Godt Nyttår']).
 
 cwc(handicap_info, 
     ['All city buses except route 47 and 48 have ground-level entry. Other buses do not. \nBuses with elevated entry are equipped with lifts. \nThere is room for prams and wheelchairs (max. 80x120 cm, 300 kg) in the middle of the bus. \nElectrical wheelchairs are not necessarily supported. \nThe bus driver can assist with boarding.',
@@ -842,8 +873,8 @@ cwc(handicap_info_sms, [
     'Low entry: all city buses except 47 & 48. Others have lifts. \nRoom for wheelchairs of max. 80x120 cm, 300 kg. Driver can assist with boarding.',
     'Laventré: alle bybusser unntatt 47 & 48. Andre har heis. \nPlass til rullestol maks. 80x120 cm, 300 kg. Sjåføren kan hjelpe med omborstigning.'
     ]).
+cwc(happy_new_year,['Happy New Year','Godt Nyttår']).
 
-cwc(endure,['Endure!','Hold ut!']).
 cwc(holiday,['route holiday','rutehelligdag']).
 cwc(have,['have','har']).
 cwc(has,['has','har']).
@@ -999,7 +1030,8 @@ cwc(next,['next','neste']).
 
 %% * nattbussen 106 ??
 % busfare2(nightbus,[100-150-200]). % By,Nes - Klæbu,Melhus,Malvik,Skaun - Stjørdal,Orkdal
- cwc(nightbus,['Nightbus(City - Klæbu,Melhus,Malvik,Skaun - Stjørdal,Orkdal)', 'Nattbuss(By/nes - Klæbu,Melhus,Malvik,Skaun - Stjørdal,Orkdal)']).
+ cwc(nightbus,['Nightbus', 'Nattbuss']).
+ cwc(nightbus_all,['Nightbus(City - Klæbu,Melhus,Malvik,Skaun - Stjørdal,Orkdal)', 'Nattbuss(By/nes - Klæbu,Melhus,Malvik,Skaun - Stjørdal,Orkdal)']).
 %cwc(nightbus_far,['Nightbus(Town/Byneset/Klæbu)', 'Nattbuss(By-Byneset-Klæbu)']).   %% * nattbussen 106
  cwc(nightbus_far,['Nightbus(Stjørdal,Orkdal)', 'Nattbuss(Stjørdal,Orkdal)']).   %% * nattbussen 106
 %cwc(nightbus_klæbu,['Nightbus(Klæbu)', 'Nattbuss (Byen)']).   %% * nattbussen 106
@@ -1176,7 +1208,8 @@ cwc(otherbus, ['other route company. ',
 cwc(passes,['passes by ','passerer ']).
 cwc(passing,['passing','passerer']).
 cwc(past,[past,forbi]).           %% not past time
-cwc(phonehelp,['Bustuc has phone number  73511348.','Busstuc har telefon 73511348.']).
+%cwc(phonehelp,['Bustuc has phone number  73511348.','Busstuc har telefon 73511348.']).
+cwc(phonehelp,['Bustuc has phone number  73521290.','Busstuc har telefon 73521290.']).
 cwc(ping,[ping,ping]).            %%  :-)
 cwc(pong,[pong,pong]).            %%  :-)
 cwc(possalternatives,
@@ -1228,9 +1261,8 @@ cwc(specify,['specify','oppgi']).
 
 
 %% except Easter holiday
-cwc(standnight,['The Nightbus goes only  night to Saturdays and  Sundays.',
-                'Nattbussen går  bare natt til lørdag og søndag. ']).
-                                              %% unntatt i påskehelgen
+cwc(standnight,['The Nightbus goes only  night to Saturdays and  Sundays.', %% (except the easter weekend).
+                'Nattbussen går  bare natt til lørdag og søndag. ']).  %% unntatt i påskehelgen
 
 cwc(station,['station','holdeplass']).
 cwc(stations,['stations','holdeplasser']).
@@ -1327,6 +1359,7 @@ cwc(why,['Why  ?','Hvorfor ?']).
 cwc(whynot,['Why not ?','Hvorfor ikke ?']).
 cwc(with,['with','med']).
 cwc(withthat,['with this','med denne']).
+cwc(whitsun_eve,['Whitsun eve','pinseaften']).
 cwc(wonderful,['Wonderful','Flott']).
 cwc(work,[work,arbeide]).  %% verb/noun?
 cwc(would,['would','ville']).
@@ -2003,7 +2036,6 @@ busanswer_sat( TQL, AnswerOut, _Frame ) :-  %% TA-060224
 
 busanswer_sat(_Tql,AnswerOut,_Frame):-  %% TA-060428
     writeanswer(AnswerOut).
-
 
 
 

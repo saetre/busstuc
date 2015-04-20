@@ -2723,7 +2723,8 @@ toolongtraveltime(Time1,Time2):-
 
 
 ticketprice2(BusType,List) :-
-    busdat:busfare2(BusType,List).    %% Busdat
+    (BusType = nightbus -> Type = nightbus_all ; Type = BusType),
+    busdat:busfare2(Type,List).    %% Busdat
 
 
 

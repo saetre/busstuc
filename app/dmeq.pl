@@ -15,16 +15,15 @@
 :- use_module( '../utility/utility', [ testmember/2 ] ).%:- ensure_loaded( user:'../utility/utility' ).       %% RS-131231
 :- use_module( '../tuc/semantic', [ subclass0/2 ] ).
 
-%%%%%%%% dmeq(A,B) betyr at ordet til høyre
-%%%%%%%% betyr det samme som ordet til venstre i dette domenet
+%%%%%%%% dmeq( A, B ) : B betyr det samme som A i dette domenet;
+%%%%%%%% dmeq( List,B): B er et av ordene i LIST;
 %%%%%%%% First argument must be bound !!!
 
 
-dmeq(List,U):-   %% traps var
+dmeq( List, U ) :-   %% traps var
     \+ atom(List),
     !,      
     testmember(U,List).    %% utility.pl
-
 
 
 dmeq(about,about).

@@ -10,8 +10,8 @@
                     %% Dedicated Date Example 22.10 not clock if 22.10 is date of new route tables
         defaultprewarningtime/1, delay_margin/1, kindofday/2, maxarrivalslack/1,      % unacceptably long  exchange waitingtime
         maxtraveltime/1,        %% 100 MINUTES in Trondheim %% fra Vestlia til Jonsvatnet kl. 14.30? %%  1258 ->  1430
-        morning_break/1,        named_date/2,        orig_named_date/2,      softime/3               %% These times are implicit and shall not be VERIFIED in answers
-        %% When does morning start?
+        morning_break/1,        named_date/2,        orig_named_date/2,      softime/3,               %% These times are implicit and shall not be VERIFIED in answers
+        verify_movedates/0      %% When does morning start?
 ] ).
 
 %:- meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
@@ -32,7 +32,7 @@
 %:-use_module( library(aggregate), [ foral/2 ] ). %% KISS %% RS-140914    %% RS-141029  for-all Does NOT work like utility:for/2
 
 
-%% List of predicates
+%% List of volatile/dynamic predicates (named_date includes all orig_named_date and Holidays)
 :- volatile named_date/2. %% Created Initially, not stored in save_program
 :- dynamic named_date/2. %% Created Initially,  redefined with remember(day_map) below
 
@@ -78,7 +78,7 @@ list_of_named_dates( [
     palm_wednesday,
     maundy_thursday,
     good_friday,
-    eastereve,
+    easter_eve,
     easterday,
     easterday2,
     ascension_day,
@@ -169,7 +169,7 @@ orig_named_date(good_friday,    ND) :-
     easterdate(YYYY,ED),
     sub_days(ED,2, ND).
 
-orig_named_date(eastereve,    ND) :-    
+orig_named_date(easter_eve,    ND) :-    
     this_year(YYYY),
     easterdate(YYYY,ED),
     sub_days(ED,1, ND).
@@ -322,7 +322,7 @@ kindofday(sunday,sunday).
 kindofday(workday,workday). 
 kindofday(holiday,holiday).
 
-kindofday(eastereve,eastereve).
+kindofday(easter_eve,easter_eve).
 kindofday(easterhol,easterhol). 
 
 
@@ -337,8 +337,7 @@ kindofday(easterhol,easterhol).
 %% Verify that all movable holidays are included, and internally consistent
 verify_movedates :-
    ver_movedate,
-   !;
-   (nl,output('***** The moving holidays are inconsistent *****'),nl).
+   ! ; ( nl, output('***** The moving holidays are inconsistent *****'), nl ).
 
 
 %VERIFY
@@ -350,7 +349,7 @@ ver_movedate :-    %% Added check for May17 %% TA-100106
    named_date(easterday, Easterday ),
 
    sub_days( Easterday,1,Eastereve),
-   named_date(eastereve,Eastereve),
+   named_date(easter_eve,Eastereve),
 
 
    sub_days( Easterday,2,Good_friday),

@@ -4,7 +4,9 @@
 %% CREATED  TA-990212
 %% REVISED  TA-110706
 
-%% Handle empty answer from buslog 
+%% Handle empty answer from buslog.
+%% RS-150414. In other words, overrides the use of pragma to create answers from busans-rules...
+%% Directly returns an *** Application answer program ***
 
 %UNIT: /app/
 :- module( negans, [ cannot/1, cannotanswer/1, makenegative/3, trytofool/2, trytofool/3 ] ).
@@ -35,31 +37,31 @@
 
 :- use_module( '../utility/datecalc', [ days_between/3, daysucc/2, today/1  ]).
 
-%%makenegative( FlatCode, ProgIn, busanshp:AnswerOut ) :-
-makenegative( (head,_TF_), _, busanshp:nl ) :-
+%%makenegative( FlatCode, ProgIn,  busanshp:AnswerOut ) :-
+makenegative( (head,_TF_), _,  busanshp:nl ) :-
     traceprog(4,ne00),     %% from main.pl
     !.
 
-makenegative((confirm,_TF_),_, busanshp:(bcpbc(ok),period)):-
+makenegative( (confirm,_TF_), _,  busanshp:(bcpbc(ok), period) ):-
     traceprog(4,ne01),!.
 
-makenegative(nil,_, busanshp:(bcpbc(ok),nl)):- 
+makenegative( nil, _,  busanshp:(bcpbc(ok),nl) ):- 
     traceprog(4,ne02),!. %% queryflag = false, statements are not to be treated
 
 %% Security Check, superfluous by test in interapp 
 
-makenegative( (item,_), _ , busanshp:(space0) ) :-
+makenegative( (item,_), _ ,  busanshp:(space0) ) :-
     traceprog(4,ne03),!. 
 
-makenegative( _, Q, busanshp:(bcpbc(no),nl) ) :-
+makenegative( _, Q,  busanshp:(bcpbc(no),nl) ) :-
     sequence_member( false, Q ),
     traceprog(4,ne04),!.
 
-makenegative(_,Q, busanshp:(space0) ):- %% drop idontknow message
+makenegative( _,Q,  busanshp:space0 ):- %% drop idontknow message
     sequence_member( message(cannotanswer), Q ), %% = roundmember
      traceprog(4,ne05),!.
 
-makenegative((new,not _),_, busanshp:(bcpbc(ok),nl) ) :-
+makenegative((new,not _),_,  busanshp:(bcpbc(ok),nl) ) :-
      traceprog(4,ne06),!.
 
 
@@ -125,7 +127,7 @@ makenegative((_,_),Q,Mess):-
 
 
 
-makenegative((which(_),_),Q,Ans)   :- 
+makenegative( (which(_),_), Q, Ans )   :- 
     sequence_member(passesstations(_,_,_,_),Q),
     traceprog(4,ne12),!,
     getactualday(Q,Day),
@@ -136,7 +138,7 @@ makenegative((which(_),_),Q,Ans)   :-
    %% You ask about at station at an illegal date.
    %% X is known at parsing time, but unknown at execution time
 
-makenegative((test,P),Q,Ans) :- 
+makenegative( (test,P), Q, Ans ) :- 
     \+ sequence_member(message(_),Q),  
     sequence_member(X isa station,P), 
     bound(X),
@@ -146,14 +148,14 @@ makenegative((test,P),Q,Ans) :-
 
 
 
-makenegative((test,P),Q,Ans) :-  %% Negative introspection
+makenegative( (test,P), Q, Ans ) :-  %% Negative introspection
     sequence_member(dob/know1/_/_/_,P), 
     \+ sequence_member(message(_),Q), 
     traceprog(4,ne14),!,
     Ans = (busanshp:( bcpbc(no),nl)). 
 
 
-makenegative((test,P),Q,Ans) :-  %% Negative introspection
+makenegative( (test,P), Q, Ans ) :-  %% Negative introspection
     sequence_member(dob/know/_/_/_,P),
     \+ sequence_member(message(_),Q), 
     traceprog(4,ne14),!,
@@ -171,7 +173,7 @@ makenegative((_,P),_,Ans)  :-
 
 
 
-makenegative((_W,_),Q,Mess):- %%  Never pass negative message 
+makenegative( (_W,_), Q, Mess ):- %%  Never passes, negative message 
 
 %   sequence_member(departure(Nine,Lade,_,_),Q), %% does not catch keepbus %%
 
@@ -187,13 +189,13 @@ makenegative((_W,_),Q,Mess):- %%  Never pass negative message
 
 
 
-makenegative((_When,_), Q, (busanshp:space0) ) :- %% 
-    sequence_member(message(noroutesforthisdate),Q),  
-    traceprog(4,ne17), %% ad hoc, shouldnt have executed program at all
+makenegative( (_When,_), Q,  busanshp:space0 ) :- %% any statement type, including "when"
+    sequence_member( message(noroutesforthisdate), Q ),  
+    traceprog(4,ne17), %% ad hoc, shouldn't have executed program at all
     !. 
 
 
-makenegative( (_When,_), Q, busanshp:Mess ) :- %% any statement type, also when
+makenegative( (_When,_), Q, busanshp:Mess ) :- %% any statement type, including "when"
     getactualtime( Q, Date, Day, Clock ),
     notthenanswer( Date, Day, Clock, Q, busanshp:Mess ),
     traceprog( 4, ne18 ), !.
@@ -217,7 +219,7 @@ makenegative((new,_),P,Ans)        :-
       Ans = (busanshp:(%%% bcpbc(it),space,bcp(is), 
            bcp(notpossible),nl)). 
 
-makenegative((new,_),Prog,Ans)  :- 
+makenegative( (new,_), Prog, Ans )  :- 
       value(dialog,1),
       sequence_member(message(M),Prog),    %%
       traceprog(4,ne21),!, 
@@ -256,14 +258,14 @@ makenegative((which(_),P),Q,Ans) :-
      Ans = (busanshp:(bcpbc(nodirectroutes),nl)),
     !,traceprog(4,ne25).
 
-makenegative((DN,P),Q,Ans) :- 
-    \+ member(DN,[doit,new]),   %% RS-150311. Forgot to rename all "do" to "doit" when sp4 introduced "do" as a new reserved word
+makenegative( (DoOrNew,P), Q, Ans ) :- 
+    \+ member(DoOrNew,[doit,new]),   %% RS-150311. Forgot to rename all "do" to "doit" when sp4 introduced "do" as a new reserved word
 
     \+ sequence_member(dob/say/tuc/_/_,P), %% ad hoc-> cannot
     \+ sequence_member(message(_),Q), % if message, you know
 
-    sequence_member(Frog,P),
-    partiallyignorant(Frog),  %% if buslog program failed, e.g. I
+    sequence_member( Frog,P ),
+    partiallyignorant( Frog ),  %% if buslog program failed, e.g. I
     traceprog(4,ne26),!,
     Ans = (busanshp:( bcpbc(idonotknow),nl)). 
 
@@ -310,27 +312,33 @@ makenegative((modifier(_),_),Q, busanshp:Ans)   :-
     notthenanswer(Date,Day,Clock,Q, busanshp:Ans).
 
 
-makenegative(_,Prog,Ans):- 
+makenegative( _, Prog, busanshp:Ans ) :-
     value(smsflag,true),
     sequence_member(message(answer(db_reply(_,_,_))),Prog),
      traceprog(4,ne33),!,
-    Ans = (busanshp:(space0)). %%% ??? 
+    Ans = space0. %%% ??? 
 
 
 
+%makenegative( (which(_Time),_), Prog, busanshp:Ans )  :- %% RS-150406 Handle by setting christmas to christmaseve, easter to easter_eve, etc.
+%      sequence_member( whenis(Holiday), Prog ),    %%
+%      traceprog(4,ne35),!, 
+%      Ans = ( bcpbc(Holiday),out(is),bcpbc(Date) ).
 
-makenegative((which(_),_Q),Prog,Ans)   :- 
-        \+ sequence_member(message(_),Prog),     %%  avoid Jeg vet ikke,  + mess
-         traceprog(4,ne37),!,
-        Ans = (busanshp:((bcpbc(idonotknow),nl))). %% Default
+
+makenegative( (which(_),_Q), Prog, busanshp:Ans )   :- 
+        \+ sequence_member(message(_),Prog),     %%  avoid "Jeg vet ikke",  + message
+         traceprog(4,ne36),!,
+        Ans = ( bcpbc(idonotknow), nl ). %% Default
 
 
-makenegative((which(_),_),Prog,Ans)   :- 
+makenegative( (which(_),_), Prog, busanshp:Ans )   :- 
      sequence_member(message(_),Prog), 
      traceprog(4,ne37),!,
-     Ans = (busanshp:(space0)).
+     Ans = space0.
 
-makenegative((explain,_),Q, busanshp:Ans)    :-
+
+makenegative( (explain,_), Q, busanshp:Ans )    :-
      getactualtime(Q,Date,Day,Clock), 
       traceprog(4,ne38),!,   %   filter out TODAY when stupid
      notthenanswer(Date,Day,Clock,Q, busanshp:Ans).  
@@ -351,6 +359,7 @@ makenegative((explain,_),Q,Ans)    :-
 
 
 makenegative((howmany(_),_),Q,Ans) :- 
+  \+ sequence_member(message(webstatistics),Q), %% RS-150405
   \+ sequence_member(message(idonotknow),Q), %% Avoid double
    traceprog(4,ne41),!,  
      Ans = (busanshp:(bcpbc(idonotknow),nl)). %% honest  ( not none)) 
@@ -442,27 +451,25 @@ makenegative( _, _, _:true ) :- %% no extra nl
 
 
  %% not standard nightbus message if following weekend is abnormal
-notthenanswer(Date,_Wed,_,_Q,
-           (busanshp:((bcpbc(generalnightbuseaster),period))) ) :-
+notthenanswer( Date, _Wed, _, _Q,    busanshp:( bcpbc(generalnightbuseaster), period) ) :-
     value(nightbusflag,true),
     following_weekend_abnormal(Date),
     !,                         %%
     traceprog(4,nt0). 
 
-notthenanswer(_Date,easterhol,_,_Q,
-           busanshp:( (bcpbc(cannotfindanyroutes),period,bcpbc(generalnightbuseaster),period)) ) :-
+notthenanswer( _Date, easterhol, _, _Q,   busanshp:( bcpbc(cannotfindanyroutes), period, bcpbc(generalnightbuseaster), period ) ) :-
     value(nightbusflag,true),
     !,  
     traceprog(4,nt1).
 
-notthenanswer(_Date,Day,Clock,Q, busanshp:(bcpbc(nolonger),nibcp(Day),AttimeClock,DirAns,standnight(Day)) ) :- 
+notthenanswer( _Date, Day, Clock, Q,  busanshp:( bcpbc(nolonger), nibcp(Day), AttimeClock, DirAns, standnight(Day) ) ) :- 
     sequence_member(keepafter(_,_,_),Q),  %% in case time+1200
     attimeclock(Clock,AttimeClock),  
     !,
     traceprog(4,nt2), 
     dirans(Q,DirAns).
                                
-notthenanswer(_Date,Day,_,Q, busanshp:(bcpbc(cannotfindanyroutes),nibcp(Day),DirAns,standnight(Day)) ) :- 
+notthenanswer(_Date,Day,_,Q, busanshp:( bcpbc(cannotfindanyroutes), nibcp(Day), DirAns, standnight(Day) ) ) :- 
     sequence_member(keepafter(_,_,_),Q),
     \+ testmember(Day,[saturday,sunday]), 
     !,
@@ -568,17 +575,13 @@ notthenanswer(_Date,Day,_,Q, busanshp:(bcpbc(notpossible),nibcp(Day),DirAns,stan
     dirans(Q,DirAns).
 
 
-notthenanswer(_Date,Day,_,Q, 
-    busanshp:(bcpbc(nolonger),  %% no time, no other date
-                DirAns,standnight(Day))) :- 
+notthenanswer(_Date,Day,_,Q,     busanshp:( bcpbc(nolonger), DirAns,standnight(Day) ) ) :-  %% no time, no other date
     \+ sequence_member(message(otherperiod(_)),Q),
     !,
     traceprog(4,nt10),  
     dirans(Q,DirAns).
 
-notthenanswer(Date,Day,_,Q, 
-    busanshp:( bcpbc(notpossible), ondate(Date),%% TA-110301
-                DirAns,standnight(Day))) :- 
+notthenanswer(Date,Day,_,Q,  busanshp:( bcpbc(notpossible), ondate(Date),   DirAns,standnight(Day))) :- %% TA-110301
     !,
     traceprog(4,nt11),  
     dirans(Q,DirAns).
@@ -595,7 +598,7 @@ notthenanswer(_Date,Day,_,Q,
 
 % %
 
-following_weekend_abnormal(Date):-
+following_weekend_abnormal(Date) :-
     disallowed_night(Easter),
     days_between(Date,Easter,N),
     N>=1, N =< 6,
@@ -622,7 +625,8 @@ dirans(Q,Answer):-
     Answer= period.   
 
 
-
+%% P = Program
+%% Get Date, Day, Clock of desired travel
 getactualtime(P,Date,Day,Clock) :- 
     getactualdate(P,Date), 
     getactualday(P,Day),
@@ -630,21 +634,19 @@ getactualtime(P,Date,Day,Clock) :-
 
 
 getactualdate(P,Date) :-
-    sequence_member(atdate2(_N,Date),P), 
+    sequence_member( atdate2(_N,Date), P ), 
     !.
 getactualdate(_P,nil).
 
 
 
 getactualday(P,Day) :- 
-      (sequence_member(departure(_,_,_,_),P);      %% only relevant if departure
-       sequence_member(passesstations(_,_,_,_),P)), %%              /passesstation
+      ( sequence_member(departure(_,_,_,_), P ) ;      %% only relevant if departure
+        sequence_member(passesstations(_,_,_,_), P ) ), %%              /passesstation
        !,
 
 %% This is stupid, but we have to recompute the actual day
 %% because   total program backtracks
-
-  
 
       today(Day0),
 
@@ -745,7 +747,7 @@ trytofool(_Tag,FOL, Ans) :-
  
 
 trytofool2(doit,  doit/think/tuc/_,sorrycannot).     %% TA-100823 Tenk!  
-trytofool2(doit,  dob/call/tuc/_/_,sorrycannot).   %% TA-101228 rung noen
+trytofool2(doit,  dob/call/tuc/_/_,sorrycannot).   %% TA-101228 ring noen
 trytofool2(doit,  dob/talk/tuc/norwegian/_,ok).  
 trytofool2(doit,  dob/talk/tuc/english/_,ok).    %% speak english!
 
