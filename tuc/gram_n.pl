@@ -3551,7 +3551,7 @@ implicitq(modifier(S)::: Com12 and P3) ---> %%  neste  Nth til Risvollan
 %% NNN -> What is NNN
 
 
-implicitq(WI) ---> %% bilett til
+implicitq(WI) ---> %% billett til
         { \+ value(dialog,1)},  
         not_look_ahead(w(noun(clock,_,_,_))),
         not_look_ahead(w(noun(thing,_,_,_))), %% etc
@@ -3620,6 +3620,22 @@ implicitq(modifier(S)::: Com12 and P3) ---> %% Dalen Hageby -> TIL Hageby
      verb_modifiers(go,XB,S, Com12 ::true, ERS),  %% only1 ? ( ooo) %% TA-110106
         !,accept, %%   ( don t waste time )
         qtrailer0.  %% takk 
+
+
+implicitq(WI) ---> %% handicap (based on iq23 (implicitq further up))
+        { \+ value(dialog,1)},  
+        not_look_ahead(w(noun(clock,_,_,_))),
+        not_look_ahead(w(noun(thing,_,_,_))), %% etc
+        not_look_ahead(w(noun(answer,_,_,_))),
+        not_look_ahead([det]),                %% d. 
+        not_look_ahead(w(name(_Prinsen,n,_))), %% Prisen hotell 
+        look_ahead(w(noun(Handicap,_,_,n))),   
+       {testmember(Handicap,[handicap,handicapped,wheelchair])}, %% etc etc
+    np1_accept(A, NP),
+        !,accept,
+        {traceprint(4,iq27)},
+    whatq(WI) \ ( whatbe,  xnp(A,NP)). % implicitq er samme som whatq uten whatbe,xnp
+                                       % i praksis: omgjør til whatq ved å pushe whatbe,xnp til stack
 
 
 %%%%¤¤ REJECT-IMPLICITQ     

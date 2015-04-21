@@ -15240,6 +15240,8 @@ noun2(frase,phrase).         %%   (Meta)
 
 noun2(front,front).  
 
+noun2(handicap,handicap).
+
 noun2(funksjonshemmede,handicapped). %% inflection as for ADJ
    noun2(blind,handicapped). %% rough ...
    noun2(blinde,handicapped). %% rough ...
