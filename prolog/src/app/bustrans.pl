@@ -7951,7 +7951,7 @@ is  _ isa Handicap, { value(smsflag,false) }, clear
 id  addfront(message(handicap_info)),
 %id  add message(handicapinfo),
     add flag(exit)
-ip  dmeq([handicapped,lowentry,lowentry_bus,pram,room,wheelchair], Handicap)).
+ip  dmeq([handicap,handicapped,lowentry,lowentry_bus,pram,room,wheelchair], Handicap)).
 
 handicap_topic_sms rule bustrans:( %% ask for handicap related information (SMS) % EE-1503dd
 is  _ isa Handicap, { value(smsflag,true) }, clear

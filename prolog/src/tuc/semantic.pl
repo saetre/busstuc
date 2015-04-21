@@ -2391,6 +2391,7 @@ greeting        ako    message.
 halfyear        ako    time. %% apo year /not ako year
 lastyear        ako    time. 
 
+handicap     ako    person.
 handicapped     ako    person.
 
 healthcenter    ako    house. 
