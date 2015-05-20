@@ -19,7 +19,7 @@
     nopay/0,    nopay1/0,       outcap/1,       pay/0,  pay1/0,  period/0, period0/0, space/0,
     punkt/0,  question/0,
     space0/0,   startmark/0,      %% From/For BusAnsHP (used in d_dialogue)
-    prettyprint/1, roundwrite/1, print_parse_tree/1, printdots/0, %% out/1, MOVED prettypr to sicstus4comp... Avoiding loops in imports.
+    prettyprint/1, print_endstation_slashlist/1, roundwrite/1, print_parse_tree/1, printdots/0, %% out/1, MOVED prettypr to sicstus4comp... Avoiding loops in imports.
     sequence_write/1, statistics/1, traceprint/2,  %  track/2, trackprog/2, 
     waves/0, writedate/1, writefields/1,  writefieldvalue/2,  writefieldvalues/2, writefieldverb/1,
     writename/1, writeprog/1,  writesimplelist/1,  %, writepred/1, MOVED to SP4compatibility
@@ -313,6 +313,23 @@ bwrbc(X):-bwr(X). %% TA-101102
 bwrbc(X)     :- bigcap(X,N),!,    out(N). %% Default
 
 
+%% Prints a list of stations, with slashes between if more than one.
+print_endstation_slashlist([Stop]) :- %% list of 1 stop
+    xspecname(Stop,StopName),
+    !,
+    write(StopName).
+    %bwr(Stop).
+
+print_endstation_slashlist([StopA|StopB]) :- % list of more than 1 stop
+    print_endstation_slashlist(StopA),
+    write('/'),
+    print_endstation_slashlist(StopB).
+
+print_endstation_slashlist(Stop) :- % 1 stop (no list)
+    xspecname(Stop,StopName),
+    !,
+    write(StopName).
+    %bwr(Stop).
 
 
 % Øyvind Krøvel-Velle Standal.
@@ -1332,6 +1349,7 @@ cwc(toolate,['Time of notification has already passed.',
 cwc(toomanyplaces,['I can not handle so many places at a time !',
                    'Jeg kan ikke svare for så mange steder av gangen !']).
 
+cwc(towards,['towards','mot']).
 cwc(tram,['tram','trikk']).
 cwc(trams,['trams','trikker']).
 cwc(tramstation,['tramstation',trikkestasjon]).

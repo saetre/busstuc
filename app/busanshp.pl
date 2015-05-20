@@ -20,6 +20,7 @@
 %% UNIT: /app/
 %  colon/0, comma/0,  endline/0,      punkt/0,        period/0,     question/0, space/0,       space0/0,                   
 :-module( busanshp, [   %% bcw: bcpbc = basic common phrase big cap     
+        bus_endstop_brackets/3, bus_endstop_brackets_busno/3,
         busleave/9,     busleaveset/6,  busman/2, %% For bustrans->interapp->pragma "x-WRiters"
         comptimeflag/2, comptimeflag/3, convifpossible/2,       corresporder/3,
         db_reply/3,     doublyprinted/1, empty_sms_message/1,           %% RS-140922 description/2,
@@ -86,7 +87,7 @@
 :-use_module( '../utility/writeout', [
     bcp/1,      bcpbc/1,        bwr/1,  bwr2/2, bwrbc/1, bwrstreet/1,   bwt/1,  
     colon/0,    comma/0,        cwc/2,  dot/0,  doubt/2, getphrase0/2,  languagenr/1, nopay/0,
-    outcap/1,   pay1/0,     period/0,       period0/0,      space/0, % startmark/0, 
+    outcap/1,   pay1/0,      period/0,  period0/0,   print_endstation_slashlist/1,    space/0, % startmark/0, 
     writedate/1, writefields/1,  writename/1, writesimplelist/1 ] ). %% RS-141105 Moved to main: language/1,
 %% Moved back to main: language/1. Where?: roundwrite/1
 
@@ -101,8 +102,9 @@
 %:- use_module( '../tucbuses', [ dict_module/1 ] ). % , language/1
 
 %% RS-131225    UNIT: /app/
-:- use_module( buslog, [ airbus_module/1, busorfree/1, ensure_removed/3, keepafter/3, nextdep/3,
-                         passeq/6, passMOD/7, rid_to_direction/3, ridtobusname/2, ridtobusnr/2, veh_mod/1 ] ).
+:- use_module( buslog, [ airbus_module/1, busorfree/1, bustorid/2, ensure_removed/3, keepafter/3, nextdep/3,
+                         passeq/6, passMOD/7, searchforlaterendhpl/4, rid_to_direction/3, 
+                         ridtobusname/2, ridtobusnr/2, veh_mod/1 ] ).
 :- use_module( dmeq, [  dmeq/2 ]). %% RS-131231
 :- use_module( pragma, [  roundmember/2 ] ).
 :- use_module( interapp, [  newfree/1 ] ).
@@ -216,7 +218,9 @@ outdeplisttime( Deps, Day, Opts, DirPlace, OutDep, MAP, SmartDeps ) :-
 
 
 outdeponly(Dep,DirPlace,
-                                (bwrbusbc(Bus,BusN),bcp(passes),
+                                (bwrbusbc(Bus,BusN),
+                                 bus_endstop_brackets_busno(BusN,Station,DirPlace), %% EE-1505
+                                 bcp(passes),
                                  bwr(Station),bcp(attime),bwt(Time9),OutArr,period),dir(Dep,FINAL),Smartdep_entry) :-
 
          Dep = depnode(_Time0,Time9,_DelArr,DelDep,BegTime,Rid,BusN,_,Station),
@@ -1274,6 +1278,7 @@ outsmalldeps0([],_,[],_Opts, []). %% , [] ).%% RS-120829 %% empty Smartdep_entri
 
 outsmalldeps0([ x3(TimesDuration,BusN,Station)|BusDeps],DirPlace, %% TimesDuration FIRST!!!!
                                  (bwrbusbc(Bus,BusN),
+                                  bus_endstop_brackets_busno(BusN,Station,DirPlace), %% EE-150424
              bcp(Passes),     bwr(Station),
 
     OutDeps2,period,OutDeps),Opts, [Smartdep_entry|Smartdep_entries]) :- %% RS-120829 %%
@@ -1748,18 +1753,20 @@ outfromtocorr1(_Opts,Dep,OutDep,Mid01,(OutCorr,earliesttimes), corr(Dep,Mid01),_
 %% NOT CUTLOOP Station
 outfromtocorr1(_Opts,Dep,OutDep1,Mid01,(OutDep2,earliesttimes),corr(Dep,Mid01),SmartDeps):-  %% roles changed slightly for OutDep1,2
 
-    Dep   =  depans(StartBusN,Rid1,StartTime,StartStation,EndBusN,_Rid2,EndTime,EndStation),
+    Dep   =  depans(StartBusN,Rid1,StartTime,StartStation,EndBusN,Rid2,EndTime,EndStation),
     Mid01 =  midans(StartBusN,OffTime,OffStation,EndBusN,OnTime,OnStation),
     !,
     firstdepnotice(Dep),
     traceprog(4,case32),
 
     OutDep1 = ( bwrbusbc(Bust1,StartBusN),
+                bus_endstop_brackets(Rid1,StartStation,OffStation), %% EE-150424
            bcp(goesfrom),
                           bwr(StartStation),bcp(attime),bwt(StartTime),
                           bcp(to), bwr(OffStation), bcp(attime),bwt(OffTime),nl),
 
     OutDep2 = ( bcp(and), bwrbus(Bust2,EndBusN),
+                bus_endstop_brackets(Rid2,OnStation,EndStation), %% EE-150424
            bcp(goesfrom),
                           bwr(OnStation),bcp(attime),bwt(OnTime),
                           bcp(to), bwr(EndStation),
@@ -1959,6 +1966,50 @@ outcorr(false,midans(StrBusN,OffTime,OffStation,EndBusN,OnTime,OnStation),
 
     vehicletype(StrBusN,_bust1),
     vehicletype(EndBusN,_bust2).
+
+
+%% '... Buss 5 ...'  -->  '... Buss 5 (towards Buenget ) ...', EE-150424
+% When this does not print a bracket:
+% > (It is Bus 36 or 66, or)
+% > It is typically due to ambiguous or inconsistent station names.
+% > This is solved by adding the lacking entries to either disambiguate_stations or conform_firststation. Trace to determine which.
+
+% When no exact RID is available
+bus_endstop_brackets_busno(BusNo,FromStation,ToStation) :- %% EE-1505
+    % number, not RID
+    number(BusNo),
+    bustorid(BusNo,Rid),
+    !,
+    bus_endstop_brackets(Rid,FromStation,ToStation).
+
+% When exact RID is available (preferred)
+bus_endstop_brackets(Rid,FromStation,ToStation) :- %% EE-150506
+    % RID, not Bus Number
+    \+ number(Rid),
+    !,
+    ( bus_endstop_brackets1(Rid,FromStation,ToStation) ; 
+      % If a final stop was not found, just continue
+      true).
+
+bus_endstop_brackets1(Rid,FromStation,ToStation):-
+    % 66 and 36 currently have final stops marked very differently than the bus screens (too different because of loop route)
+    ridtobusnr(Rid,BusNo), !, BusNo\= 66, BusNo \= 36,
+    
+    searchforlaterendhpl(Rid,FromStation,ToStation,EndStations),
+    
+    (EndStations \= [] -> (      %% only print if a clear "end stop" is found
+            %% towards/mot
+            cwc('towards',Phrases),
+            languagenr(LN),
+            nth(LN,Phrases,Phrase),
+            
+            % write(...) used when out()'s space isn't needed
+            write('('),
+            out(Phrase),
+            % print with slashes between if more than one found
+            print_endstation_slashlist(EndStations),
+            out(')')
+    ) ; true ). %% print nothing if no clear "end stop"-marked stop
 
 
 
