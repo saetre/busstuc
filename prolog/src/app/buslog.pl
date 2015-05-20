@@ -10,7 +10,7 @@
 %%% RS-111205, UNIT: /app/
 % Some predicates (like addcontext/0) are only to preserve information, no filtering..
 :-module( buslog, [ addcontext/0, askref/2, atdate/1, atdate2/2, atday/1, avoidbus/3, before/2, boundstreet/1, bugdep1/2, bugdep2/4, bus_place_station/3,
-   bus_mod/1, busorfree/1, cname/2, connections/10, corrstats/3, dateis/4, dayModSeqNo/2, departure/4, % UNUSED? bustorid/3, %% RS-150103
+   bus_mod/1, busorfree/1, bustorid/2, cname/2, connections/10, corrstats/3, dateis/4, dayModSeqNo/2, departure/4, % UNUSED? bustorid/3, %% RS-150103
    departuredayMOD/5, depset/2,     diffdep4/4, direct_connection/3, endstations1/1, ensure_removed/3, findstations/3, firstactualdeparturetime/4,
    flag/1,        %% For using flag( X ) from program (from busanshp for example)
    frame_remember/2, hpl/3, irrelevantdirect/4, islist/1, isnear/2,
@@ -20,7 +20,7 @@
    neverarrives/2, neverdeparts/2, neverpasses/2, %% For negans.pl
    new_cutloop_extend/4, new_cutset_test/8, nextdep/3, nocontext/0, not/1, notaclock/1, notification/2, numberof/3, occurs_before/3, pass_after/2, pass_before/2,
    passes44/6,    passesstations/4, passevent/6, passMOD/7, popframe/0, proper_end_station/2, pushframe/0, relax/1, replyq/1,  %% For negans.pl
-   rid_to_direction/3, ridstobuses/2, samefplace/2, %% RS-140929 for bustrans.pl rules 
+   rid_to_direction/3, searchforlaterendhpl/4, ridstobuses/2, samefplace/2, %% RS-140929 for bustrans.pl rules 
    selectroute/3, seqno_day/4, standardizeemit/2, station_trace/4, stationsat/3, statorplace/1, takestime/3, testanswer/2,
    ticketprice2/2, timeis/1, transferXYZ/3, trytransbuslist/4, withinslack/2,
 
@@ -280,7 +280,7 @@ bus_mod(TTP):-
 
 
 bus(X):-
-    veh_mod(TTP),TTP:regbus(X), number(X),
+    veh_mod(TTP),TTP:regbus(X), number(X), % TTP = T... T... Period?
     X  < 10000. %%   e.g. buss 777
 
 xroute( X, Y, Z ) :-            %% TA-090331
@@ -1105,9 +1105,82 @@ ridstobuses2([Rid|Rids],[BusN|Buses]) :-
         ridstobuses2(Rids,Buses).
 
 
+%% Finds the list of stations for the given RID. Does not (and should not) remove duplicate stations. 
+ridtostations(Rid,StationsList) :- %% EE-1504
+    bag_of(Station,passeq(Rid,_,Station,_,_,_),StationsList).
+
 ridtoendhpl(Rids,Ends):-
     ridstotours(Rids,Traces),
     tourstoends(Traces,Ends).
+
+%% Finds the end stations after a given station
+searchforlaterendhpl(Rids,FromStation,ToStation,LaterEndStations):- %% EE-1504
+    ridstotours([Rids],Traces),
+    tourstoends(Traces,EndStations),
+    ridtostations(Rids,StationsList),
+    !,
+    % use specific ToStation (ex.: samf_1, not samf)
+    disambiguate_stations(StationsList,ToStation,ToStationFixed), 
+    !,
+    % ensure that FromStation fits list (it sometimes doesn't)
+    conform_firststation(StationsList,FromStation,FromStationFixed),
+    !, 
+    % split stations at FromStation
+    splitlistatstation(StationsList,FromStationFixed,StationsBefore,StationsAfter),
+    
+    %% find endstations only in the relevant direction
+    % first part if travelling "backwards" through list
+    ( member(ToStationFixed,StationsBefore) -> 
+        set_filter(Station,member(Station,StationsBefore), EndStations, LaterEndStations) 
+        ; true ),
+    % last part if travelling with the list order
+    ( member(ToStationFixed,StationsAfter) -> 
+        set_filter(Station,member(Station,StationsAfter), EndStations, LaterEndStations) 
+        ; true )
+    .
+
+%% Splits a list into the parts before and after an element
+splitlistatstation(List,Station,ListBefore,ListAfter) :-
+    % append() to find "before" and "after" fitting List and Station
+    append(ListBefore, [Station|ListAfter], List).
+
+
+%% Finds matching start station when a start station is not in its list of stations (inaccurate DB) (ex.: munkegt M1 -> munkegt M5)
+conform_firststation(List,From,From) :-
+    member(From,List). %% no adjustment needed when they already match
+
+conform_firststation(List,From,FromFixed) :-
+    \+ member(From,List),
+    conform_firststation1(List,From,[city_syd_vestre,city_syd_østre,city_syd_e6],FromFixed) ;
+    conform_firststation1(List,From,[dr_gate_d1,dr_gate_d2],FromFixed) ;
+    conform_firststation1(List,From,[heimdal,heimdal_stasjon],FromFixed) ;
+    conform_firststation1(List,From,[kongens_gate_k1,kongens_gate_k2],FromFixed) ;
+    conform_firststation1(List,From,[munkegata_m1,munkegata_m2,munkegata_m3,munkegata_m4,munkegata_m5],FromFixed) ;
+    conform_firststation1(List,From,[prinsens_gate_p1,prinsens_gate_p2],FromFixed) ;
+    conform_firststation1(List,From,[studentersamfundet,studentersamfundet_2],FromFixed) ;
+    
+    % If this line is reached, the station needs to be corrected above, but isn't. Add it when found.
+    false. % fake success.
+
+conform_firststation1(List,From,Alternatives,FromFixed) :-
+    member(From,Alternatives),
+    set_filter(Station,(member(Station,List),member(Station,Alternatives)),List,[FromFixed|_]).
+
+
+%% If ToStation is a station group, finds the specific station for the case of StationsList
+disambiguate_stations(List,To,To) :- member(To,List). % Skip when not needed
+disambiguate_stations(List,To,heimdal_stasjon) :- To == heimdal, member(heimdal_stasjon,List).
+disambiguate_stations(List,To,kongens_gate_k1) :- To == hovedterminalen, member(kongens_gate_k1,List).
+disambiguate_stations(List,To,kongens_gate_k2) :- To == hovedterminalen, member(kongens_gate_k2,List).
+disambiguate_stations(List,To,munkegata_m1) :- To == hovedterminalen, member(munkegata_m1,List).
+disambiguate_stations(List,To,munkegata_m2) :- To == hovedterminalen, member(munkegata_m2,List).
+disambiguate_stations(List,To,munkegata_m3) :- To == hovedterminalen, member(munkegata_m3,List).
+disambiguate_stations(List,To,munkegata_m4) :- To == hovedterminalen, member(munkegata_m4,List).
+disambiguate_stations(List,To,munkegata_m5) :- To == hovedterminalen, member(munkegata_m5,List).
+disambiguate_stations(List,To,prinsens_gate_p1) :- To == hovedterminalen, member(prinsens_gate_p1,List).
+disambiguate_stations(List,To,prinsens_gate_p2) :- To == hovedterminalen, member(prinsens_gate_p2,List).
+disambiguate_stations(List,To,studentersamfundet_2) :- To == studentersamfundet, member(studentersamfundet_2,List).
+disambiguate_stations(_List,To,To) :- true. %% If this is reached, disamb. is needed, but not found. Add above.
 
 
 ridstotours(Rids,Traces):-

@@ -142,7 +142,7 @@ ieval(TQL0) :-
 
 %................
 
-         pragma( bustrans, FQL, P ),      % Builds program // may set samedayflag
+         pragma( bustrans, FQL, P ),      % Builds buslog program P from (Flat code?) queryLanguage FQL// may set samedayflag
          !,                        % Looks only at first try
          writeprog(P),
 
@@ -153,7 +153,7 @@ ieval(TQL0) :-
     first_meat( FQL, FQL1 ),     % react to first FQL if negative message (FQL = Flat Code?)
 
 %         irun( TQL, FQL, FQL1, buslog:P ),     % Evaluates program (in buslog.pl), makes answer if success
-        irun( TQL, FQL, FQL1, P ),     % Evaluates program (in busans.pl)?, makes answer if success
+        irun( TQL, FQL, FQL1, P ),     % Evaluates program (in busanshp.pl)?, makes answer if success
                               % TQL is only for tuc proper
          !,                        % Only one program run
                               % // May use  samedayflag
