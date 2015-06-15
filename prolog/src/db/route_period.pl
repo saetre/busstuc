@@ -34,4 +34,4 @@ route_period(   tt, r1611_150112, date(2015,01,12),   date(2015,04,04) ).       
 route_period(   tt, r1611_150330, date(2015,03,30),   date(2015,04,05) ).       %% 30_02_05_Påske (1)
 route_period(   tt, r1611_150112, date(2015,01,12),   date(2015,06,21) ).       %% Nye ruter 2015
 route_period(   tt, r1601_150622, date(2015,06,22),   date(2015,08,09) ).	%% Sommer1
-route_period(   tt, r1602_150810, date(2015,08,10),   date(2015,08,16) ).	%% Sommer1
+route_period(   tt, r1602_150810, date(2015,08,10),   date(2015,08,16) ).	%% Sommer2
