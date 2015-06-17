@@ -4238,29 +4238,32 @@ id	 add (timenow2(0,T),timeis(T)),
 ip  [] ).
 
 
+%%TODO: THIS ONE IS CAUSEING PROBLEMS: RS-20150617
+
 %%%% before assumeatmidnight
-ateveningimplicit  rule bustrans:( %%  1230:  jeg skal til byen før 0200 -> 1400>1230
-is  context srel/Prep/time/Six/D,
-        not  { (number(Six), morning_break(T0430), Six =< T0430) },  %% improbable
-        not present _B isa morning,
-        not present srel/early/time/nil/_,
-        not present srel/this_morning/time/nil/_,
-        not present srel/in_morning/time/nil/_,
-        not present srel/this_midnight/time/nil/_,
-        not present srel/on/day/_/_,                    %% RS-150313  Only when "today" is implicit as well
-        not present srel/tomorrow/day/nil/_,            %% RS-150313  Only when "today" is implicit as well
-       %not present nrel/tomorrow/vehicle/day/_/nil,    %% RS-150313  Only when "today" is implicit as well
-    replaceall ( Six isa clock, srel/Prep/time/Six/D)
-    with       ( Eighteen isa clock,srel/Prep/time/Eighteen/D) % time is standard
-id  not flag(earlytime),
-    not flag(latetime),
-    not flag(latetime),
-    not flag(nightbusflag),
-        addfront message(assumeyesterdepartures) %%
-ip  timenow(T1200),
-    evening_time(Six,Eighteen),
-    T1200 =< Eighteen,  %% RS-150420. kl 0900: valentinlyst til stindheim kl 11.15....
-    T1200 > Six ).      %% RS-150420. Oops! Buss 22 går fra Valentinlyst kl. 2247 til Dalen Hageby kl. 2253 (Morning!)
+%ateveningimplicit  rule bustrans:( %%  1230:  jeg skal til byen før 0200 -> 1400>1230
+%is  context srel/Prep/time/Six/D,
+%        not  { (number(Six), morning_break(T0430), Six =< T0430) },  %% improbable
+%        not present _B isa morning,
+%        not present srel/early/time/nil/_,
+%        not present srel/this_morning/time/nil/_,
+%        not present srel/in_morning/time/nil/_,
+%        not present srel/this_midnight/time/nil/_,
+%        not present srel/on/day/_/_,                    %% RS-150313  Only when "today" is implicit as well
+%        not present srel/tomorrow/day/nil/_,            %% RS-150313  Only when "today" is implicit as well
+%       %not present nrel/tomorrow/vehicle/day/_/nil,    %% RS-150313  Only when "today" is implicit as well
+%    replaceall ( Six isa clock, srel/Prep/time/Six/D)
+%    with       ( Eighteen isa clock,srel/Prep/time/Eighteen/D) % time is standard
+%id  not flag(earlytime),
+%    not flag(latetime),
+%    not flag(latetime),
+%    not flag(nightbusflag),
+%        addfront message(assumeyesterdepartures) %%
+%ip  timenow(T1200),
+%    evening_time(Six,Eighteen),
+%    T1200 =< Eighteen,  %% RS-150420. kl 0900: valentinlyst til stindheim kl 11.15....
+%    T1200 > Six ).      %% RS-150420. Oops! Buss 22 går fra Valentinlyst kl. 2247 til Dalen Hageby kl. 2253 (Morning!)
+
 
 
 
