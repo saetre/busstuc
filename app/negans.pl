@@ -128,7 +128,7 @@ makenegative((_,_),Q,Mess):-
 
 
 makenegative( (which(_),_), Q, Ans )   :- 
-    sequence_member(passesstations(_,_,_,_),Q),
+    sequence_member( passesstations(_,_,_,_), Q ),
     traceprog(4,ne12),!,
     getactualday(Q,Day),
     (Ans = (busanshp:(bcpbc(notpossible),ondays(Day),period,standnight(Day)))). 
@@ -173,7 +173,7 @@ makenegative((_,P),_,Ans)  :-
 
 
 
-makenegative( (_W,_), Q, Mess ):- %%  Never passes, negative message 
+makenegative( (_W,_), Q, Mess ) :- %%  Never passes, negative message 
 
 %   sequence_member(departure(Nine,Lade,_,_),Q), %% does not catch keepbus %%
 
@@ -507,11 +507,11 @@ notthenanswer(_Date,Day,Clock,Q, busanshp:(bcpbc(noroutes),nibcp(Day),bcp(attime
 notthenanswer(_Date,Day,_,Q, busanshp:(bcpbc(nolonger),  DirAns,standnight(Day)) ) :- 
     sequence_member(connections(_,_,_,_,_,_,_,Options,_,_),Q), %% not test
 
-(  %%%%%%   value(smsflag,true);  %% Will "always" try solutions after now 
+ (  %%%%%%   value(smsflag,true);  %% Will "always" try solutions after now 
      member(next,Options);
      member(next(_),Options);
      member(nextaftertime(_),Options)
-),
+ ),
 
      sequence_member(today(Thursday),Q), %% not test
      sequence_member(atday(Saturday),Q),
@@ -523,9 +523,10 @@ notthenanswer(_Date,Day,_,Q, busanshp:(bcpbc(nolonger),  DirAns,standnight(Day))
 %% if route day mapped to same day    
 notthenanswer(_Date,Day,_,Q, busanshp:(       bcpbc(nolonger),nibcp(Day),DirAns,standnight(Day)) ) :- 
      sequence_member(connections(_,_,_,_,_,_,_,Options,_,_),Q),  %% not test 
-(    value(smsflag,true);  %% dubious, excludes nolonger message if smsflag false
+ (    value(smsflag,true);  %% dubious, excludes nolonger message if smsflag false
      member(next,Options);
-     member(next(_),Options)),
+     member(next(_),Options)
+ ),
 
      sequence_member(today(Thursday),Q), %% not test
      sequence_member(atday(Saturday),Q),
@@ -552,8 +553,7 @@ notthenanswer(_Date,Day,_,Q, busanshp:(bcpbc(nolonger),nibcp(Day),DirAns,standni
 notthenanswer(_Date,Day,_,Q, busanshp:(bcpbc(cannotfindanyroutes),nibcp(Day),DirAns,standnight(Day)) ) :- 
     \+ testmember(Day,[saturday,sunday]), 
      sequence_member(connections(_,_,_,_,_,_,_,Options,_,_),Q),
-(    member(next,Options);
-     member(next(_),Options)),
+ (    member(next,Options) ;  member(next(_),Options) ),
      !,
      traceprog(4,nt8), 
      dirans(Q,DirAns).
@@ -959,7 +959,7 @@ trytofool(has/agent/beer/tuc/_,         thatisimpossible).
 trytofool(has/agent/coffee/tuc/_,       thatisimpossible). 
 
 % trytofool(has/agent/feeling/tuc/_, thatisimpossible). // ha det bra
-    trytofool(has/agent/feeling/bustuc/_,      thatisimpossible). %% AD HOC
+trytofool(has/agent/feeling/bustuc/_,      thatisimpossible). %% AD HOC
 
 trytofool(has/agent/aunt/tuc/_,     thatisimpossible).
 trytofool(has/agent/brother/tuc/_,  thatisimpossible).

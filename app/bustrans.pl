@@ -158,7 +158,9 @@ dep_module( interapp, [ newfree/1 ] ).
 %FIXED META-PREDICATES!?!
 
 %UNIT: /db/
-dep_module( '../db/places', [ corr/2, foreign/1, isat/2, nostation/1, place_resolve/2, placestat/2, underspecified_place/1 ] ). %% RS-141102  %uses /db/placestat/2 !! corr/2, foreign/1, isat/2, nostation/1, 
+dep_module( '../db/foreign_places', [ foreign/1 ] ). % (PLACE) -> places.pl
+dep_module( '../db/places', [ corr/2, isat/2, nostation/1, place_resolve/2, placestat/2, underspecified_place/1 ] ). 
+%% RS-141102  %uses /db/placestat/2 !! corr/2, foreign/1, isat/2, nostation/1, 
 %:- use_module( '../db/regbusall' ). % , [ nightbus/1, regbus/1 ]  %% HEAVY DB! %% RS-120803 RS-131225 regbus/1 MOVED to app/buslog.pl
 dep_module( '../db/regbusall', [ nightbus/1, regbus/1 ] ). %% RS-111213 General (semantic) Operators Moved (back) to busdat
 dep_module( '../db/teledat2', [ has_att_val/4, have_att_val/4 ] ). %% RS-111213 General (semantic) Operators Moved (back) to busdat
@@ -7995,7 +7997,7 @@ is   which(A), A isa time, B isa Easter, srel/in/time/A/C, do/Come/B/C, event/re
      %replace Easter with Easter-eve
 id   %clear,
 %     addfront message( mustknow(day) )
-     addfront message( assumeeve( EasterEve ) ) %DayEve
+     addfront message( assumeeve( EasterEve ) ) %DayEve. Messages are printed even if the ans-program is fail.
 ip   [] ).
 
 
@@ -8885,8 +8887,8 @@ ip  \+ value(teleflag,true),
              easter,christmas,whitsun,information,
              moment,clock,hour,date,midnight,month,week,weather,year,arrival,departure]),
     unbound(Tagore),
-    description(Programmer,Person) ):-
-single.
+    description(Programmer,Person) ) :-
+ single.
 
 team_topic_web_routes  rule bustrans:( %% link til rutene
 is  B isa webaddress, has/_agent/webaddress/Tuc/B,   {unbound(Tuc)},
@@ -10343,8 +10345,7 @@ ip  dmeq(travelbe,TRAVELBE),
     place_station(Place,Station), Station \== unknown,
     i_or_a_bus(Cat,BVP,Bus),
     {\+ frame_getvalue(where::arrival,_,_)} %% <-- NB
-)
-:-double.
+) :- double.
 
 
 nilplacetoeqfromdialog rule bustrans:( % nth to risvollan   %% IF already TO then NIL means FROM
@@ -10364,7 +10365,7 @@ ip  dmeq(travelbe,TRAVELBE),
     bus_place_station(Cat,Place,Station), %%   90 risvollankrysset
     Station \== unknown,
     i_or_a_bus(Cat,BVP,Bus)
- ):-double.
+ ) :- double.
 
 
 nilplaceemptyeqfromdialog rule bustrans:( % nth to risvollan   %% IF not already TO, not from, = from if NOT in frame
@@ -10492,8 +10493,7 @@ ip  bus_place_station(Cat,Place,Station),  %%  bus_
          Station \== unknown,
     i_or_a_bus(Cat,BVP,Bus),
    \+ neverpasses(Cat,Station)  %% buss 5 from ila to dokkparken ).
-)
-:-single.
+) :- single.
 
 
 
@@ -12228,8 +12228,7 @@ ip  member(from,Opts),
 
     newfree(E),
     newfree(FreeBus)
-)
-:-single.
+) :- single.
 
 
 % TIMES
@@ -12565,7 +12564,7 @@ ip	 dmeq(morning,MORNING),
     setopt(time,Opts,Opts0),
     setopt(firstcorr,Opts0,Opts1) ).
 
- midtpådagen  rule bustrans:( % midt på dagen
+midtpådagen  rule bustrans:( % midt på dagen
 eveningbeforenoon rule bustrans:( %% contradictory evening before noon
 is  srel/EVENING/time/nil/_ % see and ignore
 id  keepbefore1(F,_,_)      % before?  This is just an experiment
@@ -13429,7 +13428,7 @@ justnthbusanotherday  rule bustrans:(
 is  adj/_/ORD/BD/_, { (ordinal(ORD,N), N >1)},
     present (BD isa BDA),
     not present adj/_/last/_/_,
-    not present srel/before/time/_1700/_
+    not present srel/before/time/_C1700/_
 id  atday(BB),
     replace passevent(Deps,Bus,Place,Opts,Day,A)
 	 with    passevent(Deps,Bus,Place,Opts1,Day,A)
@@ -13443,7 +13442,7 @@ is  adj/_/ORD/BD/_, { ordinal(ORD,N)},
     present (BD isa BDA),
     srel/today/_Day/nil/_,
     not present adj/_/last/_/_,
-    not present srel/before/time/_c1700/_
+    not present srel/before/time/_C1700/_
 id  replace passevent(Deps,Bus,Place,Opts,Day,A)
 	 with    passevent(Deps,Bus,Place,Opts1,Day,A)
 ip	 dmeq(busdeparrN,BDA),  %% first also for Nightbus
@@ -13496,8 +13495,7 @@ id	 not message(mustknow(place)),
 	 with	   ( keepafter(0430,Deps,NewDeps),
               passevent(NewDeps,Bus,Place,Opts1,Day,A))
 ip	 dmeq([first,early],First),
-    setopt(first(1),Opts,Opts1) ):-
-double.
+    setopt(first(1),Opts,Opts1) ) :- double.
 
 
 firstbus1 rule bustrans:( % first bus
@@ -14639,8 +14637,7 @@ ip  \+ value(teleflag,true),
           route,vehicle,driver,destination,
           clock,telephone,departure,information,route_plan,
           time,question,answer,station,stop]) %% etc.
-)
-:-single.
+) :- single.
 
 
 %%%%%%%%%
@@ -15174,8 +15171,7 @@ id	 not message(day_isa_date(_,_)),
 ip  dmeq(bepass,PASS),
     dmeq(trafficant,BR),
     timenow2(0,TNOW), AfTime is max(TNOW,1200)  %%  Pragmatic: after now
-)
-:- double.
+) :- double.
 
 bingoanotherafternoon rule bustrans:( %% i kveld %% Grotesque
 is  present  A isa afternoon, srel/in/time/A/_,
@@ -15400,8 +15396,7 @@ id  []
 
 ip  dmeq(vehicle,Bus),
     current_frame_getvalue(where::departure, NewPlace)
-)
-:-double.
+) :- double.
 
 ournextbus rule bustrans:(
 is  context adj/_/Next/F69/_, { dmeq([first,next],Next)},
@@ -15413,8 +15408,7 @@ is  context adj/_/Next/F69/_, { dmeq([first,next],Next)},
 id  []
 ip  dmeq(vehicle,Bus),
     current_frame_getvalue(where::departure, NewPlace)
-)
-:-double.
+) :- double.
 
 
 ourjustlastbus rule bustrans:(    %% -> med siste buss
@@ -15456,8 +15450,8 @@ id  []
 
 ip  number(MM),  %% no spurious  after this time
     current_frame_getvalue(where::departure, NewPlace)
-)
-:-double.
+) :- double.
+
 %%%
 
 ourdepearlier rule bustrans:(
@@ -15552,8 +15546,7 @@ is  context srel/after/time/Rel/E,
 id  []
 ip  number(Rel),  %% no spurious  after this time
     current_frame_getvalue(where::departure, NewPlace)
-)
-:-double.
+) :- double.
 
 ournilafter2 rule   bustrans:(    %% FIX rule in connection with standardclock
 is  context srel/nil/time/Rel/E,
@@ -16024,7 +16017,7 @@ id  not flag(exit),
     add flag(fail) %% needed as retention       %%%%   <-- Kills messages
 
 ip  []
-   ):-single.
+   ) :- single.
 
 missingconnection rule bustrans:(  %% insist on having a connection
 is  not present has/agent/information/tuc/_, %% -> NO
@@ -16088,8 +16081,7 @@ ip   %%    value(dialog,1),
         frame_getvalue(where::departure,_,place),
     \+  frame_getvalue(where::arrival,_,place),
         varmember(X, List)
-                     )
-:- double.
+                     ) :- double.
 
 
 fledsbo12 rule bustrans:( %% If keepafter, we guess from
@@ -16211,4 +16203,4 @@ ip  [] ).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                                                 %
 %  This file is already too big to maintain for any sane person.  %
-%  It must under no circumstances exceed  15956 lines.            %
+%  It must under no circumstances exceed  16000 lines.            %

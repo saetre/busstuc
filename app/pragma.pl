@@ -337,12 +337,11 @@ i( _:X,     Rinn, Rut )            :- i2( X, Rinn, Rut ).
 
 
 ipragmaor( X, Y, Rinn ) :-
-    test(
-
+  test(
       ( roundmember( X, Rinn )
-      ;
+    ;
       ipragmaor0( Y, Rinn ) )
-).
+  ).
 
 ipragmaor0( Y or Z, _:Rinn ):- !,
    ipragmaor( Y, Z, Rinn ),

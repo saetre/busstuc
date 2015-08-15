@@ -97,7 +97,7 @@ traceprog( N, P ) :-
     value( traceprog, M ), number(M), M >= N, 
     !,
     write(P),nl
-;
+ ;
     true.
 
 

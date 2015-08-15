@@ -96,7 +96,7 @@ foralltest(P,Q) :- \+ ( P, \+ Q).
 
 %once1(P) :- P,!. %% same as once, but version independent % try once, otherwise FAIL
 
-% Debug Exit: :(interapp,writeanswer(,(startmark,,(printmessage(date_isa_day(date(2014,4,13),sunday)),,(endline,,(printmessage(otherperiod(date(2014,4,13))),,(endline,,(google(dir(depnode(32,32,2,2,30,bus_0108_0007,108,2,dronningens_gate_d1),stavset)),,(bwrbusbc(nightbus,108),,(bcp(passes),,(bwr(dronningens_gate_d1),,(bcp(attime),,(bwt(32),,(nl,,(bcp(and),,(bcp(arrivesat),,(bwr(stavset),,(bcp(attime),,(bwt(54),,(period,,(output(...),,(bwrbusbc(nightbus,119),,(bcp(passes),,(bwr(munkegata_m1),,(bcp(attime),,(bwt(302),,(nl,,(bcp(and),,(bcp(arrivesat),,(bwr(stavset_senter),,(bcp(attime),,(bwt(325),,(period,earliesttimes))))))))))))))))))))))))))))))))) ?
+% Debug Exit: :(interapp,writeanswer(,(startmark,,(printmessage(date_isa_day(date(2014,4,13),sunday)),,(endline,,(printmessage(otherperiod(date(2014,4,13))),,(endline,,(google(dir(depnode(32,32,2,2,30,bus_0108_0007,108,2,dr_gate_d1),stavset)),,(bwrbusbc(nightbus,108),,(bcp(passes),,(bwr(dr_gate_d1),,(bcp(attime),,(bwt(32),,(nl,,(bcp(and),,(bcp(arrivesat),,(bwr(stavset),,(bcp(attime),,(bwt(54),,(period,,(output(...),,(bwrbusbc(nightbus,119),,(bcp(passes),,(bwr(munkegata_m1),,(bcp(attime),,(bwt(302),,(nl,,(bcp(and),,(bcp(arrivesat),,(bwr(stavset_senter),,(bcp(attime),,(bwt(325),,(period,earliesttimes))))))))))))))))))))))))))))))))) ?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %For tele!
@@ -336,7 +336,7 @@ irun1( _, _, FlatCode1, Program ) :-
 	  !, 
      printpaytag( Program ),
     
-     printallmessagesprogram( Program ), %% TA-110511 avoid 2Xneverpasses
+     printallmessagesprogram( Program ), %% TA-110511 avoid 2 X neverpasses
      
      writeanswer( Panswer ).             %%
 
@@ -377,10 +377,10 @@ execute_program( Module:Program ) :- %% For trace      %% RS-141012
 execute_program( Prog ) :-
 
     trackprog(3, output('interapp BEGIN  program') ), 
-(   call( Prog ) ->
+  ( call( Prog ) ->
            trackprog(3, output('END  program') ) ;
            trackprog(3, output('FAIL  program') ), fail 
-).
+  ).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 printallmessagesprogram( Program ) :-
@@ -573,7 +573,7 @@ enterexit([X|Rest],[B1|Brest]):-!,
     enterexit1(Rest,Brest).
 
 
- enterexit1([X],[B1]):-
+enterexit1([X],[B1]) :-
     !,
     makelement('"busstop"','"exit"',X,B1).
 

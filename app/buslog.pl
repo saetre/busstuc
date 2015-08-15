@@ -4,6 +4,7 @@
 %% AUTHOR  Jon S Bratseth
 %% CREATED JB-970312    %% REVISED TA-110824
 %% REVISED RS-140101 modularized
+%% REVISED EWEH-150601 Erling Wishman Eek-Henriksen
 
 %%%%%%%%%%%%%%%% ALL ROUTE INTERFACE PREDICATES %%%%%%%%%%%%%%%%%%
 
@@ -52,14 +53,15 @@ not X :- \+ X.
 :- use_module( '../declare', [ (:=)/2, trackprog/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 :- use_module( '../sicstus4compatibility', [ output/1, remove_duplicates1/2, traceprog/2 ] ).         %% RS-141207-150119  progtrace/2, 
 
-:- ensure_loaded('../db/discrepancies.pl' ). %% RS-131230 alias_station2/3, etc.
+%:- ensure_loaded('../db/discrepancies.pl' ). %% RS-131230 alias_station2/3, etc.
+:- use_module( '../db/discrepancies.pl', [ alias_station2/3 ] ). %% RS-150814
 
 %%% RS-140101, UNIT: /  and  /utility/
 :-use_module( '../utility/utility', [ bag_of/3, bound/1, charno/3, firstmem/2, lastmem/2, maximum/2, maxval/3, members/3, minimum/2, minval/3, once1/1,
         testmember/2, set_difference/3, set_of/3, set_ops/3, starttime/0, taketime/0, timeout/3, unbound/1 ] ). %test/1, testmember/2 %  ]). %% Made local: set_eliminate/4, set_filter/4, 
 %% locale meta-predicates: once1/1, test/1,  %% RS-131117 includes declare.pl
 
-:- use_module( '../utility/datecalc', [ add_days/3, days_between/3, addtotime/3, dayno/2, difftime/3, subfromtime/3, timenow/1, timenow2/2, today/1 ] ).
+:- use_module( '../utility/datecalc', [ add_days/3, before_date0/2, days_between/3, addtotime/3, dayno/2, difftime/3, subfromtime/3, timenow/1, timenow2/2, today/1, todaysdate/1 ] ).
         %% datetime/6, finddate/2, getdaynew/1, timenow/1,
 :- use_module( '../utility/library', [ delete/3, reverse/2 ] ). %% RS-131225  For app/buslog, telelog, etc? remove_duplicates/2, 
 
@@ -82,7 +84,8 @@ not X :- \+ X.
 %% RS-111205, UNIT: db/
 :- use_module( '../db/route_period', [ route_period/4 ]).
 :- use_module( '../db/busdat', [ vehicletype/2, endneighbourhood/2, tramstation/1 ] ). % NOT USED!?!   
-:- use_module( '../db/places', [ alias_station/2, corr/2, foreign/1, isat/2, nostation/1, placestat/2, underspecified_place/1 ] ). % (PLACE) -> places.pl
+:- use_module( '../db/foreign_places', [ foreign/1 ] ). % (PLACE) -> places.pl
+:- use_module( '../db/places', [ alias_station/2, corr/2, isat/2, nostation/1, placestat/2, underspecified_place/1 ] ). % (PLACE) -> places.pl
 :- use_module( '../db/regbusall', [ nightbus/1, regbus/1 ] ).  %% RS-141024 % NOT USED!?!   % regbus(Bus)
 :- use_module( '../db/regstr', [ streetstat/5 ] ).      %% RS-131224 Obsolete?
 :- use_module( '../db/timedat', [ aroundmargin/1, buslogtimeout/1, delay_margin/1, maxarrivalslack/1, maxtraveltime/1, softime/3 ] ).
@@ -351,9 +354,16 @@ maxseqtour(Trace,N):-
 station( hovedterminalen ).  %% Proforma station
 %% station(m0).   %% (default streetstat) %% TA-100120
 
-station(X):- %% TA-110415
+station(X) :- %% TA-110415
     veh_mod(TTP),
     modstat(TTP,X).
+
+%% RS-150815. Experiment. Check all (future) modules. Try to implement some automatic compl(station,[names]) here!
+station(X) :-
+   todaysdate( Today  ), %% NOT free( date(Y,M,D) )    %% actualdate
+   route_period( _Company, TTPeriod, FromDate, _ToDate ),
+   before_date0( Today, FromDate ),  %% Today < FromDate (Future module)
+   modstat(TTPeriod,X).
 
 /*
  %% NB  station names may vary between route periods
@@ -375,17 +385,16 @@ station(X):-
     domain_module(_D,TTP),
     TTP \== nil, 
     modstat(TTP,X).    
-
-stationD(X,D):- 
-   domain_module(D,TTP),
-   TTP \== nil,
-   modstat(TTP,X).
 */
-stationD(X,D):- 
+%% stationD(X,D):- 
+%   domain_module(D,TTP),
+%   TTP \== nil,
+%   modstat(TTP,X).
+
+stationD(X,D) :-
    domain_module(D,TTP),
    TTP \== nil,
    modstat(TTP,X).
-
 
 
 modstat(TTP,X):-  %% 1  X nonvar
@@ -595,7 +604,7 @@ keepbetweenstat2(Rid,FromSeq,ToSeq,_InnStats,UtStats) :-
 %% but it is also M0 (accidentally), but that is ignored.
 
 
- streetstation2(St_olavs_street,_,St_olavs_gate):-
+streetstation2(St_olavs_street,_,St_olavs_gate):-
 %streetstation2(St_olavs_street,_,st_olavs_gate):-
     value(tramflag,true), %% TA-100120
     busdat:thetramstreetstation(St_olavs_street,St_olavs_gate), %% SPECIAL  busdat.pl
@@ -1006,17 +1015,17 @@ keepuntil(Time,Mins,R,Rny):-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Enkel resonnering over data i bussdatabasen
 
-listofall(route,[]):- %% TA-090210
+listofall( route,[] ) :- %% TA-090210
     value(smsflag,true),
     !.
-listofall(route,Buses):- %% ad hoc
-    allbuses(Buses).     %% trams/ferrys etc
+listofall( route,Buses ) :- %% ad hoc
+    allbuses( Buses ).     %% trams/ferrys etc
 
 
-listofall(bus,[]):- %% TA-090210
-    value(smsflag,true),
+listofall( bus,[] ) :- %% TA-090210
+    value(smsflag,true), %%Skip big list
     !.
-listofall(bus,Buses):- %%
+listofall( bus,Buses ) :- %%
     allbuses(Buses).
 
 
@@ -1051,36 +1060,35 @@ endstations1(Stations):-
 
 endstations(Bus,Stations):-
     endstation(Bus,Stations1),
-    bag_of(S,endneighbourhood(Bus,S),FullStationslist), %% EE-150209
-    remove_duplicates1(FullStationslist,Stations2), %% EE-150209
+    bag_of(S,endneighbourhood(Bus,S),FullStationslist), %% EWEH-150209
+    remove_duplicates1(FullStationslist,Stations2), %% EWEH-150209
     append(Stations1,Stations2,Stations).
 
 
 % endstation(+Bus,-StationList).
 
 endstation(Bus,Stations) :-
-         bag_of(Rid,bustorid(Bus,Rid),Rids), %% EE-150312
+         bag_of(Rid,bustorid(Bus,Rid),Rids), %% EWEH-150312
          ridtoendhpl(Rids,RawStations),
          remove_duplicates1(RawStations,Stations),
     !.
 
 
-allbuses(Buses) :-
-        set_of(Bus,regbus(Bus),Buses1),   %% was exbus(Bus) %% TA-090608
+% Samle alle Bus fra regbus( Bus ) i Buses1-listen
+allbuses( Buses ) :-
+        set_of( Bus, regbus(Bus), Buses1 ),   %% was exbus(Bus) %% TA-090608
    bus_equivalents(Buses1,Buses).
 
 allnightbuses(Buses) :-
         set_of(Bus,nightbus(Bus),Buses1),
    bus_equivalents(Buses1,Buses).
 
-bus_equivalents(List1,List3):-
-    set_of(Y, (member(X,List1),converttostandard(X,Y)),List2),
-    remove_duplicates1(List2,List3).
+bus_equivalents( List1, List3 ) :-
+    set_of(Y, ( member(X,List1), converttostandard(X,Y) ), List2 ),
+    remove_duplicates1( List2, List3 ).
 
-converttostandard(IntX,ExtY):- %% TA-09819
-    (busdat:exbusname(IntX,ExtY)
-     -> true
-     ; ExtY=IntX).
+converttostandard(IntX,ExtY) :- %% TA-09819
+    ( busdat:exbusname(IntX,ExtY)  ->  true ;  ExtY=IntX ).
 
 
 
@@ -1106,7 +1114,7 @@ ridstobuses2([Rid|Rids],[BusN|Buses]) :-
 
 
 %% Finds the list of stations for the given RID. Does not (and should not) remove duplicate stations. 
-ridtostations(Rid,StationsList) :- %% EE-1504
+ridtostations(Rid,StationsList) :- %% EWEH-1504
     bag_of(Station,passeq(Rid,_,Station,_,_,_),StationsList).
 
 ridtoendhpl(Rids,Ends):-
@@ -1114,7 +1122,7 @@ ridtoendhpl(Rids,Ends):-
     tourstoends(Traces,Ends).
 
 %% Finds the end stations after a given station
-searchforlaterendhpl(Rids,FromStation,ToStation,LaterEndStations):- %% EE-1504
+searchforlaterendhpl(Rids,FromStation,ToStation,LaterEndStations):- %% EWEH-1504
     ridstotours([Rids],Traces),
     tourstoends(Traces,EndStations),
     ridtostations(Rids,StationsList),
@@ -1184,15 +1192,15 @@ disambiguate_stations(_List,To,To) :- true. %% If this is reached, disamb. is ne
 
 
 ridstotours(Rids,Traces):-
-    bag_of(Trace,(member(Rid,Rids),ridtotour(Rid,Trace)),FullTracesList), %% EE-150312
-    remove_duplicates1(FullTracesList,Traces). %% EE-150312
+    bag_of(Trace,(member(Rid,Rids),ridtotour(Rid,Trace)),FullTracesList), %% EWEH-150312
+    remove_duplicates1(FullTracesList,Traces). %% EWEH-150312
 
 ridtotour(Rid,Trace):-
     xdepartureday(Rid,Trace,_,_).
 
 tourstoends(Traces,Ends):-
-    bag_of(End, (member(Trace,Traces),tourtoend(Trace,End)), FullEndsList), %% EE-150312
-    remove_duplicates1(FullEndsList,Ends). %% EE-150312
+    bag_of(End, (member(Trace,Traces),tourtoend(Trace,End)), FullEndsList), %% EWEH-150312
+    remove_duplicates1(FullEndsList,Ends). %% EWEH-150312
 
 tourtoend(Trace,EndStat):-
     maxseqtour(Trace,MaxSeq),
@@ -1215,12 +1223,12 @@ findstations(Bus,_Day,Stationslist) :- %% Only endstations if smsflag
    endstations(Bus,Stationslist),
    Stationslist \== []. %% Better with an error message
 
-% A bit slower, bus preserves chronological station order
 findstations(Bus,_Day,Stationslist) :-
         set_of(Rid,bustorid(Bus,Rid),Rids), %% TA-090626
 
-   bag_of(Station,passrids(Rids,Station),FullStationslist), %% EE-150209
-   remove_duplicates1(FullStationslist,Stationslist), %% EE-150209
+   bag_of(Station,passrids(Rids,Station),FullStationslist), %% EWEH-150209 % A bit slower, bus preserves chronological station order
+%   set_of(Station,passrids(Rids,Station),FullStationslist), %% RS-150815 % Quick, and useful with sorthing for this prolog programmer (RS)
+   remove_duplicates1(FullStationslist,Stationslist), %% EWEH-150209
 
    Stationslist \== []. %% Better with an error message
 
@@ -1783,7 +1791,7 @@ remove_roundtrip_deps(FromPlace,ToPlace,StartDeps0,StartDeps1):- %% TA-110224
     set_eliminate(X,looping(FromPlace,ToPlace,X),StartDeps0,StartDeps1).
 
 
-looping(FromPlace,ToPlace,Bingo):- %% TA-110224
+looping(FromPlace,ToPlace,Bingo) :- %% TA-110224
 
         Bingo =depnode(9999,T1520,_DelArr,_DelDep,_Time,RID,_BUS,_1,FromPlace),
 
@@ -1803,7 +1811,7 @@ looping(FromPlace,ToPlace,Bingo):- %% TA-110224
 
      addtotime(T1520,DelDep3,DepTime3), DepTime3 > DepTime2,
 
-!.
+        !.
 
 
 remove_spurious_deps(Deps,Deps1):-
@@ -2331,7 +2339,7 @@ irrelevantdirect(_Opts,FirstDirectTime,LastDirectTime,FirstStartTime) :- %% too 
      maxtraveltime(MaxT),
      addtotime(FirstStartTime,MaxT,F60),
 
-(    FirstDirectTime > F60
+   ( FirstDirectTime > F60
      ; %% even after 60 minutes, have to wait
      LastDirectTime < FirstStartTime). %% direct only in the past
 
@@ -2655,9 +2663,9 @@ trytransbuslist(Bus1,Bus2,OffStation,OnStation):- %% TA-110322
 
     traceprog(3,trytransbuslist(Bus1,Bus2,OffStation,OnStation)).
 
- htrans(OffStation,hovedterminalen):-
+htrans(OffStation,hovedterminalen) :-
     corr(OffStation,hovedterminalen),!.
- htrans(X,X).
+htrans(X,X).
 
 
 

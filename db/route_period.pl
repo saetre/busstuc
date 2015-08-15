@@ -21,18 +21,18 @@
 %%route_period( tt, r1612_121001, date(2012,10,01),   date(2012,11,30) ).  %% New nightbusses etc. ver5 Hoest 2012
 %%route_period( tt, r1601_120101, date(2012,01,01),   date(2012,12,31) ).
 %%route_period( tt, r1613_130622, date(2013,06,22),   date(2013,08,11) ).     %% sommer2013
-route_period(   tt, r1611_140517, date(2014,05,17),   date(2014,05,17) ).	%% 17mai
+%route_period(   tt, r1611_140517, date(2014,05,17),   date(2014,05,17) ).	%% 17mai
 %%route_period( tt, r1613_130812, date(2013,08,12),   date(2014,06,22) ).     %% Vinter13_14
 %%route_period( tt, r1601_130930, date(2013,09,30),   date(2014,07,22) ).       %% Høst2013oktober
-route_period(   tt, r1611_141201, date(2014,12,01),   date(2015,01,11) ).	%% 2015 (første uken)
-route_period(   tt, r1611_150330, date(2015,03,30),   date(2015,03,30) ).       %% 30_02_05_Påske (1)
-route_period(   tt, r1612_150330, date(2015,03,30),   date(2015,03,31) ).	%% lørdagEkstraRute (2)
-route_period(   tt, r1613_150330, date(2015,03,30),   date(2015,04,01) ).       %% Påskerute01_03apr (3)
-route_period(   tt, r1611_150330, date(2015,03,30),   date(2015,04,02) ).       %% 30_02_05_Påske (1)
-route_period(   tt, r1613_150330, date(2015,03,30),   date(2015,04,03) ).       %% Påskerute01_03apr (3)
-route_period(   tt, r1611_150112, date(2015,01,12),   date(2015,04,04) ).       %% Nye ruter 2015
-route_period(   tt, r1611_150330, date(2015,03,30),   date(2015,04,05) ).       %% 30_02_05_Påske (1)
-route_period(   tt, r1611_150112, date(2015,01,12),   date(2015,06,21) ).       %% Nye ruter 2015
+%route_period(   tt, r1611_141201, date(2014,12,01),   date(2015,01,11) ).	%% 2015 (første uken)
+%route_period(   tt, r1611_150330, date(2015,03,30),   date(2015,03,30) ).       %% 30_02_05_Påske (1)
+%route_period(   tt, r1612_150330, date(2015,03,30),   date(2015,03,31) ).	%% lørdagEkstraRute (2)
+%route_period(   tt, r1613_150330, date(2015,03,30),   date(2015,04,01) ).       %% Påskerute01_03apr (3)
+%route_period(   tt, r1611_150330, date(2015,03,30),   date(2015,04,02) ).       %% 30_02_05_Påske (1)
+%route_period(   tt, r1613_150330, date(2015,03,30),   date(2015,04,03) ).       %% Påskerute01_03apr (3)
+%route_period(   tt, r1611_150112, date(2015,01,12),   date(2015,04,04) ).       %% Nye ruter 2015
+%route_period(   tt, r1611_150330, date(2015,03,30),   date(2015,04,05) ).       %% 30_02_05_Påske (1)
+%route_period(   tt, r1611_150112, date(2015,01,12),   date(2015,06,21) ).       %% Nye ruter 2015
 route_period(   tt, r1601_150622, date(2015,06,22),   date(2015,08,09) ).	%% Sommer1
 route_period(   tt, r1602_150810, date(2015,08,10),   date(2015,08,16) ).	%% Sommer2
 route_period(   tt, r1601_150817, date(2015,08,17),   date(2015,12,23) ).	%% Høst

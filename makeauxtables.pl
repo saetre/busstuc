@@ -138,7 +138,11 @@ verify_files_exist( Filename, BaseFile ) :-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 makeauxtables :-
-        (  verify_files_exist( 'db/auxtables.pl', 'db/places.pl' )  ,  verify_files_exist( 'db/auxtables.pl', 'version.pl' )  ) ;
+        (       %% Make sure auxtables is as new as all the input-files: places, version
+           verify_files_exist( 'db/auxtables.pl', 'db/foreign_places.pl' ),
+           verify_files_exist( 'db/auxtables.pl', 'db/places.pl' ),
+           verify_files_exist( 'db/auxtables.pl', 'version.pl' ) 
+        ) ;     %% or create a new auxtables now
         ( 
             told,       %% Close all potentially open output-streams first!
         %    user:( tramflagg := false ), %% RS-140106 Trenger ikke auxtables for tram?!?
@@ -440,7 +444,7 @@ transbuslist1(B1,B2,Z):-
 
 connive(X,Z1,Z2):- 
    member(X,Z1),propertransfer(X), member(X,Z2)
-; 
+ ; 
    member(U,Z1),corr_ht(U),member(V,Z2),corr_ht(V), 
    X=hovedterminalen.
 
@@ -549,27 +553,28 @@ toretarget(X):-
     ambletarget(X),
     \+ ends_with(X,_,street). %% already streeted
 
-ambletarget(X):- sameplace(X,_);
-                 samename(X,_);    
+ambletarget(X):- sameplace(X,_) ; 
+
+                 samename(X,_) ; 
 
    %%        foreign(X);     %% No spellch on foreigns (fori-> Frei *)
    %%        abroad(X);      %% No spellch on abroad names
 
-                 placestat(X,_);   %%%% \+ cmpl(_,_,X) ; % avoid X_Y * husebyhallen 
+                 placestat(X,_) ;   %%%% \+ cmpl(_,_,X) ; % avoid X_Y * husebyhallen 
 
-                 cmpl(X,_,_);
+                 cmpl(X,_,_) ;  
  
-                 cmpl(_,X,_), atom(X), X \== []; 
+                 cmpl(_,X,_), atom(X), X \== [] ;
 
-                 buslog:veh_mod(TTP),TTP:composite_stat(X,_,_); %% includes X,[],X
+                 buslog:veh_mod(TTP),TTP:composite_stat(X,_,_) ; %% includes X,[],X
 
-                 composite_road(X,_,_);
+                 composite_road(X,_,_) ;
 
-                 cmpl(_,Y,_),member(X,Y); %% Expensive %% TA-080911
+                 cmpl(_,Y,_),member(X,Y) ; %% Expensive %% TA-080911
 
-                 buslog:veh_mod(TTP),TTP:composite_stat(_,Y,_),member(X,Y); %% Expensive %% TA-080911
+                 buslog:veh_mod(TTP), TTP:composite_stat(_,Y,_),member(X,Y) ; %% Expensive %% TA-080911
 
-                 composite_road(_,Y,_),member(X,Y). %% Expensive %% TA-080911
+                 composite_road(_,Y,_), member(X,Y). %% Expensive %% TA-080911
 
 
 
@@ -739,14 +744,15 @@ verify_consistency( Mod1, Mod2 ) :-
  
      out('%% db/discrepancies'),   out(Mod1),out(Mod2),nl,
    
-for(
+  for(
 
    ( Mod1:hpl(Nr,Name1,_,_),
      Mod2:hpl(Nr,Name2,_,_),
 
      Name1 \== Name2),
 
-     writepred( alias_station2(Nr,Name1,Name2)) ).
+     writepred( alias_station2(Nr,Name1,Name2) )
+  ).
 
 %:-told.            %% RS-140208 Reset all output-streams first...
 %:-nl,write( 'makeauxtables.pl~line790 is making auxtables now...' ),nl.

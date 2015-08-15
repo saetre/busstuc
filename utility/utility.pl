@@ -570,13 +570,21 @@ atomname(X,L):-
     convert_expression_to_atom(X,Y),
     name(Y,L). 
 
-convert_expression_to_atom(X,Y):- %% ad hoc 
-   X= (Nardoveien - NR1),
+
+%% ad hoc %% TA-11xxxx
+convert_expression_to_atom(X,Y):- 
+   X = (Nardoveien - NR1),
    !,
    append_atomlist([Nardoveien,'-', NR1],Y).
     
+%% ad hoc %% RS-150815
+convert_expression_to_atom(X,Y):-
+   X = (date(Year,Month,Day)),
+   !,
+   append_atomlist( [ Year,'-',Month,'-',Day ], Y ).
+    
 
-convert_expression_to_atom(_,' ? ').
+convert_expression_to_atom( _, ' ?convert? ').
 
 
 
@@ -832,11 +840,11 @@ minimum([A,B|C],R):-
 minimum([],10000):-!.
 
 minval(A,B,C):- 
-( A < B -> 
+ ( A < B -> 
   C is A
   ;
   C is B
-).
+ ).
 
 
 maximum([A],A):-!. 
@@ -845,12 +853,12 @@ maximum([A,B|C],R):-
 maximum([],-10000):-!.
 
 maxval(A,B,C):- 
-( A < B -> 
+ ( A < B -> 
 
   C is B
   ;
   C is A
-).
+ ).
 
 
 

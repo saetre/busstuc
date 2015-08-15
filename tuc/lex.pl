@@ -200,12 +200,12 @@ lexproc3( L1, AssumedLanguage, L3 ) :-
     track(4,nl), 
 
 
-(    NunksOld = 0 -> 
+ (    NunksOld = 0 -> 
         (AssumedLanguage = OldLanguage,
          L3 = L2Old)
-;
+    ;
 
-(   
+   (   
     the_other_language(OldLanguage,NewLanguage),
     ( language := NewLanguage ),
     lexproc2(L1,L2New,NunksNew),
@@ -217,7 +217,8 @@ lexproc3( L1, AssumedLanguage, L3 ) :-
 
     (AssumedLanguage = OldLanguage -> L3 = L2Old;
                                       L3 = L2New)
-)).
+   )
+ ).
 
 
 the_other_language(english,norsk).
@@ -413,7 +414,7 @@ handle_unknown(N,Taglist,Names):-  %% Only called if NO Tags (feature)
 dont_spell_check_test(Strandveien,L):-  
 
 %(    test( buslog:station(Strandveien)) %% eg Blakli -> * Baklia 
-(    test( station(Strandveien) ) %% eg Blakli -> * Baklia
+ (   test( station(Strandveien) ) %% eg Blakli -> * Baklia
      ;
 %%%%     test( synname(Strandveien,_))    %% already a synname   **solem veien -> skole veien**
 %%%%     ;                               %% bishops -> biskops %% TA-110411
@@ -422,7 +423,7 @@ dont_spell_check_test(Strandveien,L):-
      test( places:nostation(Strandveien))
      ;
      test( member(adj2(_,_),L))   %%  fremme -> Fremo *
-).
+ ).
 
 
 
@@ -961,12 +962,12 @@ lcompword(X,Y,Z):-
 
 ylcompword(X,Y,Z):-
     dict_module(L),
-(
+ (
     L:xcompword(X,Y,Z)
-    ;
+  ;
     L:compword(X,Y,Z)
 
-).
+ ).
 
 ylcompword(X,[],[]):-
     dict_module(L),
@@ -1221,9 +1222,10 @@ decide_top1(T,B,BT):-  %% no  previous topic, same length
     length(B,BN),  %% tore amble
     TN > 0, BN > 0, TN=BN, 
 
-(   testmember(lastname,T);
+ (   testmember(lastname,T);
     testmember(firstname,T);
-    testmember(person,T)),
+    testmember(person,T)
+ ),
     !,
     BT=tele.
 
@@ -1459,7 +1461,7 @@ movelasttofront:-
 
 % move start  towards front
 
- movefirsttoback:-
+movefirsttoback:-
     for(txt(M2,w([],[]),M3),
        (
         for(txt(M3,A,M4),
@@ -1937,11 +1939,12 @@ matchreststreet5(_,N2,[Street],_,_):- %% skip vei allowed if not "vei" follows
     streetsyn(Street), %% Street is to be matched
     txt(N2, VVV,_), %% Street exists in txt
 
-(    
+ (    
      VVV=w(V,_),streetsyn(V)  ;
  
 %%     V=[alle]),       %% olav engelbrektssons alle 5
-     VVV=[alle]),       %% olav engelbrektssons alle 5  %% RS-130624
+     VVV=[alle]
+ ),       %% olav engelbrektssons alle 5  %% RS-130624
 
     !,fail.            %% no skip
 
@@ -2390,98 +2393,97 @@ single_letter(X):- %% TA-101117
 
 %% Specific (longest first)
 
-  rw1([a,i,l,l],       X:[a,l,l|X]).   %  aill -> all
+rw1([a,i,l,l],       X:[a,l,l|X]).   %  aill -> all
 
-  rw1([h,a,ø,y],       X:[h,ø,y|X]).   %  hÃ¸yskoleparken 
-  rw1([m,a,n,d],       X:[m,a,n,n|X]). %  tiedemand %% TA-100204
-  rw1([s,c,h,j],       X:[s,j|X]).     %  schj -> sj 
-  rw1([s,c,h,i],       X:[s,j|X]).     %  schi -> sj 
-  rw1([s,h,c,i],       X:[s,j|X]).     %  shci -> sj %% spell
+rw1([h,a,ø,y],       X:[h,ø,y|X]).   %  hÃ¸yskoleparken 
+rw1([m,a,n,d],       X:[m,a,n,n|X]). %  tiedemand %% TA-100204
+rw1([s,c,h,j],       X:[s,j|X]).     %  schj -> sj 
+rw1([s,c,h,i],       X:[s,j|X]).     %  schi -> sj 
+rw1([s,h,c,i],       X:[s,j|X]).     %  shci -> sj %% spell
 
 
-  rw1([c,h,r],         X:[k,r|X]).     %  chr  -> kr
-  rw1([c,h,i],         X:[s,j,i|X]).   %  chi  -> sji
-  rw1([c,h,o],         X:[s,j,o|X]).   %  cho  -> sjo %% choice 
-  rw1([c,h,u],         X:[s,j,u|X]).   %  chu  -> sju
-  rw1([i,e,d],         X:[i,d|X]).     %  tiedeman -> tideman  
-  rw1([i,æ,'½'],       X:[å|X]).       %  iæ½   -> å  %% flatiæ½stoppen
-  rw1([o,c,h],         X:[o,k|X]).     %  och  -> ok
-  rw1([o,i,l],         X:[o,l|X]).     %  oil  -> ol
-  rw1([r,o,p],         X:[r,u,p|X]).   %  rop  -> rup   Most common
+rw1([c,h,r],         X:[k,r|X]).     %  chr  -> kr
+rw1([c,h,i],         X:[s,j,i|X]).   %  chi  -> sji
+rw1([c,h,o],         X:[s,j,o|X]).   %  cho  -> sjo %% choice 
+rw1([c,h,u],         X:[s,j,u|X]).   %  chu  -> sju
+rw1([i,e,d],         X:[i,d|X]).     %  tiedeman -> tideman  
+rw1([i,æ,'½'],       X:[å|X]).       %  iæ½   -> å  %% flatiæ½stoppen
+rw1([o,c,h],         X:[o,k|X]).     %  och  -> ok
+rw1([o,i,l],         X:[o,l|X]).     %  oil  -> ol
+rw1([r,o,p],         X:[r,u,p|X]).   %  rop  -> rup   Most common
 %%  rw1([r,s,k],       X:[s,k|X]).       %  rsk  -> sk  norsk
-  rw1([s,c,e],         X:[s,j,e|X]).   %  sce  -> sje  scene/sceldrup 
-  rw1([s,c,h],         X:[s,j|X]).     %  sch  -> sj 
-  rw1([s,c,i],         X:[s,j,i|X]).   %  sci  -> sji  %% (science)
-  rw1([s,h,c],         X:[s,j|X]).     %  shc  -> sj   %%  spell
-  rw1([s,c,j],         X:[s,j|X]).     %  scj  -> sj   %% 
-  rw1([s,h,e],         X:[s,j,e|X]).   %  she  -> sje 
+rw1([s,c,e],         X:[s,j,e|X]).   %  sce  -> sje  scene/sceldrup 
+rw1([s,c,h],         X:[s,j|X]).     %  sch  -> sj 
+rw1([s,c,i],         X:[s,j,i|X]).   %  sci  -> sji  %% (science)
+rw1([s,h,c],         X:[s,j|X]).     %  shc  -> sj   %%  spell
+rw1([s,c,j],         X:[s,j|X]).     %  scj  -> sj   %% 
+rw1([s,h,e],         X:[s,j,e|X]).   %  she  -> sje 
 %%   rw1([s,k,e],       X:[s,j,e|X]).  %  ske  -> sje  %% norske
-  rw1([s,k,j],         X:[s,j|X]).     %  skj  -> sj 
-  rw1([s,k,y],         X:[s,j,y|X]).   %  sky  -> sjy 
-  rw1([s,t,j],         X:[s,j|X]).     %  stj  -> sj   %%  stjørdal ->
-  rw1([t,i,e],         X:[t,i|X]).     %  matiesen -> matisen
-  rw1([t,i,o],         X:[s,j,o|X]).   %  tio  -> sjo
-  rw1([u,r,g],         X:[o,r,g|X]).   %  urg  -> org 
-  rw1([v,i,o],         X:[f,i,o|X]).   %  vio  -> fio
+rw1([s,k,j],         X:[s,j|X]).     %  skj  -> sj 
+rw1([s,k,y],         X:[s,j,y|X]).   %  sky  -> sjy 
+rw1([s,t,j],         X:[s,j|X]).     %  stj  -> sj   %%  stjørdal ->
+rw1([t,i,e],         X:[t,i|X]).     %  matiesen -> matisen
+rw1([t,i,o],         X:[s,j,o|X]).   %  tio  -> sjo
+rw1([u,r,g],         X:[o,r,g|X]).   %  urg  -> org 
+rw1([v,i,o],         X:[f,i,o|X]).   %  vio  -> fio
 
-  rw1([a,e],           X:[e|X]).       %  ae   -> e
-
-  rw1([a,'¦'],         X:[e|X]).     %  ae   -> e  steinkjÃ¦r?
-  rw1([a,'|'],         X:[e|X]).     %  ae   -> e  steinkjÃ|r?
+rw1([a,e],           X:[e|X]).       %  ae   -> e
+rw1([a,'¦'],         X:[e|X]).     %  ae   -> e  steinkjÃ¦r?
+rw1([a,'|'],         X:[e|X]).     %  ae   -> e  steinkjÃ|r?
 
 %%  rw1([a,f],           X:[a,v|X]).     %  af   -> av  drafiol -> draviol ->drafiol ooooooooooo
 %%  rw1([a,y],           X:[ø|X]).       %  ay   -> ø %%  graaemÃ¥lna -> graaemaylna 
-  rw1([a,y],           X:[å|X]).       % PrestegÃ¥rdsjordet? 
-  rw1([a,ø],           X:[ø|X]).       %  aø   -> ø [-> o] %%           rÃ¸ros ->  raøros 
-  rw1([a,a],           X:[å|X]).       %  aa   -> å (å-trøbbel) %% TA-071217
-  rw1([c,a],           X:[k,a|X]).     %  ca   -> ka
-  rw1([c,e],           X:[s,e|X]).     %  ce   -> se
-  rw1([c,i],           X:[s,j|X]).     %  ci   -> sj
-  rw1([c,h],           X:[k|X]).       %  ch   -> k  %% chu -> sj ,
-  rw1([c,k],           X:[k|X]).       %  ck   -> k  
+rw1([a,y],           X:[å|X]).       % PrestegÃ¥rdsjordet? 
+rw1([a,ø],           X:[ø|X]).       %  aø   -> ø [-> o] %%           rÃ¸ros ->  raøros 
+rw1([a,a],           X:[å|X]).       %  aa   -> å (å-trøbbel) %% TA-071217
+rw1([c,a],           X:[k,a|X]).     %  ca   -> ka
+rw1([c,e],           X:[s,e|X]).     %  ce   -> se
+rw1([c,i],           X:[s,j|X]).     %  ci   -> sj
+rw1([c,h],           X:[k|X]).       %  ch   -> k  %% chu -> sj ,
+rw1([c,k],           X:[k|X]).       %  ck   -> k  
 %%   rw1([d,s],           X:[t,s|X]).    %  ds   -> ts  // sigurd
-  rw1([d,t],           X:[t|X]).       %  dt   -> t  
+rw1([d,t],           X:[t|X]).       %  dt   -> t  
 %%  rw1([e,i],           X:[e|X]).       %  ei   -> e   %% Meierier <-- /veien->v->[]
-  rw1([e,u],           X:[ø,y|X]).     %  eu   -> øy  
-  rw1([g,h],           X:[g|X]).       %  gh   -> g
-  rw1([g,j],           X:[j|X]).       %  gj   -> j  
-  rw1([h,n],           X:[n|X]).       %  hn   -> n
-  rw1([h,k],           X:[k|X]).       %  hk   -> k
-  rw1([i,c],           X:[i,k|X]).     %  ic   -> ik
+rw1([e,u],           X:[ø,y|X]).     %  eu   -> øy  
+rw1([g,h],           X:[g|X]).       %  gh   -> g
+rw1([g,j],           X:[j|X]).       %  gj   -> j  
+rw1([h,n],           X:[n|X]).       %  hn   -> n
+rw1([h,k],           X:[k|X]).       %  hk   -> k
+rw1([i,c],           X:[i,k|X]).     %  ic   -> ik
 %%  rw1([i,e],           X:[i|X]).     %  ie   -> i %% Meierier
-  rw1([k,h],           X:[k|X]).       %  kh   -> k
-  rw1([k,y],           X:[s,j,y|X]).   %  ky   -> sjy %% Kystad/ Kyvann <-- 
-  rw1([l,d],           X:[l|X]).       %  ld   -> l
-  rw1([o,e],           X:[ø|X]).       %  oe   -> ø ( -> o) 
-  rw1([o,u],           X:[a,u|X]).     %  ou   -> au
-  rw1([o,y],           X:[ø,y|X]).     %  oy   -> øy 
-  rw1([q,u],           X:[k,v|X]).     %  qu   -> kv
+rw1([k,h],           X:[k|X]).       %  kh   -> k
+rw1([k,y],           X:[s,j,y|X]).   %  ky   -> sjy %% Kystad/ Kyvann <-- 
+rw1([l,d],           X:[l|X]).       %  ld   -> l
+rw1([o,e],           X:[ø|X]).       %  oe   -> ø ( -> o) 
+rw1([o,u],           X:[a,u|X]).     %  ou   -> au
+rw1([o,y],           X:[ø,y|X]).     %  oy   -> øy 
+rw1([q,u],           X:[k,v|X]).     %  qu   -> kv
 %%   rw1([r,s],           X:[s|X]).      %  rs   -> s %% norsk -> nosk
 %%  rw1([s,h],           X:[s,j|X]).     %  sh   -> sj %% sammfunnshus -> samfunsjus *
-  rw1([t,h],           X:[t|X]).       %  th   -> t 
+rw1([t,h],           X:[t|X]).       %  th   -> t 
 %%   rw1([t,n],           X:[n|X]).       %  tn   -> n  %% schjetnan -> sjenan ?
-  rw1([t,h],           X:[t|X]).       %  th   -> t  
-  rw1([u,y],           X:[u|X]).       %  uy  -> u   ?
-  rw1([ø,g],           X:[ø,y|X]).     %  øg   -> øy 
-  rw1([ø,i],           X:[ø,y|X]).     %  øi   -> øy 
-  rw1([ø,ª],           X:[ø|X]).       %  øª -> ø  %%   løªrdag %% TA-100131
-  rw1([å,e],           X:[å|X]).       %  åesen -> åsen 
+rw1([t,h],           X:[t|X]).       %  th   -> t  
+rw1([u,y],           X:[u|X]).       %  uy  -> u   ?
+rw1([ø,g],           X:[ø,y|X]).     %  øg   -> øy 
+rw1([ø,i],           X:[ø,y|X]).     %  øi   -> øy 
+rw1([ø,ª],           X:[ø|X]).       %  øª -> ø  %%   løªrdag %% TA-100131
+rw1([å,e],           X:[å|X]).       %  åesen -> åsen 
 
 
-  rw1([q],             X:[k|X]).       %  q    -> k  
-  rw1([x],             X:[k,s|X]).     %  x    -> ks 
+rw1([q],             X:[k|X]).       %  q    -> k  
+rw1([x],             X:[k,s|X]).     %  x    -> ks 
 %%  rw1([y],               X:[i|X]).        %  y    -> i ? statsbigd
-  rw1([z],             X:[s|X]).       %  z    -> s
-  rw1([w],             X:[v|X]).       %  w    -> v  
-  rw1([æ],             X:[e|X]).       %  æ    -> e % sound
+rw1([z],             X:[s|X]).       %  z    -> s
+rw1([w],             X:[v|X]).       %  w    -> v  
+rw1([æ],             X:[e|X]).       %  æ    -> e % sound
 %%   rw1([ø],             X:[o|X]).       %  ø    -> o % sound hoyskoleringen 
 
-    rw1([å],             X:[a|X]).       %  å    -> a % \+ sound // asvang -> åsvang 
+rw1([å],             X:[a|X]).       %  å    -> a % \+ sound // asvang -> åsvang 
 
 
 %% General
 
-  rw1([C,C],       X:[C|X]).  %%  CC -> C
+rw1([C,C],       X:[C|X]).  %%  CC -> C
 
 %% Final
 
@@ -2493,14 +2495,13 @@ rw1([e,n,'$'],      X:['@'|X]).  %%  en$ ->  @ % ends with, only last// matisen 
 %% Rognbudal(en) etc %
 
 %% rw1([e,t,'$'],     X:['@'|X]).  %%  et$ ->  @ Klett
+rw1([s,t,a,d,'$'],  X:[s,t,a,'@'|X]).  %  stad. -> sta.  %% stadion
 
-  rw1([s,t,a,d,'$'],  X:[s,t,a,'@'|X]).  %  stad. -> sta.  %% stadion
+rw1([n,d,'$'],      X:[n,'@'|X]).     %  nd.   -> n.
 
-  rw1([n,d,'$'],      X:[n,'@'|X]).     %  nd.   -> n.
+rw1([n,s,'$'],      X:[n,'@'|X]).   %  ns$  ->  n@   // not s$ -> @ plass -> pla 
 
-  rw1([n,s,'$'],      X:[n,'@'|X]).   %  ns$  ->  n@   // not s$ -> @ plass -> pla 
-
-  rw1([s,'$'],        X:['@'|X]).     % sigurd -> sigurds %% Hazard ? 
+rw1([s,'$'],        X:['@'|X]).     % sigurd -> sigurds %% Hazard ? 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
