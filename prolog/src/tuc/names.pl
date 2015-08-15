@@ -130,7 +130,7 @@ generic_place(ungdomsskole).   %%
 generic_place(ultra). 
 generic_place(velferdssenter).
 generic_place(verkstedhall).   %% TA-10206
-    generic_place(verkstedhallen). %% ?
+generic_place(verkstedhallen). %% ?
 %% generic_place(vestkanten). 
 %% generic_place(østkanten).   %% .. undersp
 
@@ -217,7 +217,7 @@ compname(lingit,[a,'/',s],lingit).
 
 
 compname(nett,[buss],nettbuss). 
-    compname(s,[enteret],senteret). %% <--- doesnt work for nardo s enteret
+compname(s,[enteret],senteret). %% <--- doesnt work for nardo s enteret
 
 compname(new,[delhi],new_delhi). %% TA-110603
 compname(new,[york],new_york).   %% 
@@ -355,7 +355,7 @@ synname(klaeburuten,klaburuten).
 
 synname(klaburuten,klæburuten).  
 synname(klæburata,klæburuten). 
-   synname(vassfjellbussen,klæburuten).
+synname(vassfjellbussen,klæburuten).
                                              %% klæbu_sentrum in DB
 
 %% Section Th
@@ -375,12 +375,7 @@ synname(tamberskjelves,tambarskjelves).
 
 %%%%%%%%%%%%%%%%%%%%
 
-%%%%¤¤  SYNNAME
-
-    synname(tambarkjelves,tambarskjelves).
-    synname(tambarsjelvas,tambarskjelves). 
-%    synname(tambarskjelve,tambarskjelves).  
-%    synname(tambarsjkelvs,tambarskjelves).
+%%%%  SYNNAME
 
 synname(gode,godes). %% Magnus d g
 
@@ -623,6 +618,8 @@ synname(donnigens,dronningens).
 synname(dons,duuns).  
 
 synname(dr,overlege).     %% Kindt 
+synname(dr,prof). 
+synname(dr,professor). 
 synname(doktor,overlege). %% 
 
 synname(droming,dronningens). %% ?
@@ -893,36 +890,36 @@ synname(kinosal,kino).
 synname(kion,kino). 
 
 synname(krk,kirke). 
-  synname(hirke,kirke). 
-  synname(kirek,kirke). 
-  synname(kire,kirke). 
-  synname(kirek,kirke).  
-  synname(kirk,krk).  
-  synname(kirk,kirke). 
-  synname(kirka,kirke). 
-  synname(kirkegård,kirke).  
-  synname(kirge,krk).   %% strinfa_krk 
-  synname(kirge,kirke).
-  synname(kirken,kirke). 
-  synname(kirkte,kirke). %% \+ kirken
-  synname(krike,kirke). 
-  synname(krke,kirke).  
-  synname(kyrkje,kirke). 
+synname(hirke,kirke). 
+synname(kirek,kirke). 
+synname(kire,kirke). 
+synname(kirek,kirke).  
+synname(kirk,krk).  
+synname(kirk,kirke). 
+synname(kirka,kirke). 
+synname(kirkegård,kirke).  
+synname(kirge,krk).   %% strinfa_krk 
+synname(kirge,kirke).
+synname(kirken,kirke). 
+synname(kirkte,kirke). %% \+ kirken
+synname(krike,kirke). 
+synname(krke,kirke).  
+synname(kyrkje,kirke). 
 
 synname(kyststasjon,skysstasjon). %% TA-110418
 
 synname(kirke,krk).  %% chl kirke
-  synname(hirke,krk). 
-  synname(kirek,krk). 
-  synname(kire,krk). 
-  synname(kirek,krk).  
-  synname(kirka,krk). 
-  synname(kirkegård,krk).  
-  synname(kirken,krk). 
-  synname(kirkte,krk). %% \+ kirken
-  synname(krike,krk). 
-  synname(krke,krk).  
-  synname(kyrkje,krk). 
+synname(hirke,krk). 
+synname(kirek,krk). 
+synname(kire,krk). 
+synname(kirek,krk).  
+synname(kirka,krk). 
+synname(kirkegård,krk).  
+synname(kirken,krk). 
+synname(kirkte,krk). %% \+ kirken
+synname(krike,krk). 
+synname(krke,krk).  
+synname(kyrkje,krk). 
 
 
 synname(krogh,krog). %% Pedere Krogh, Gina Krog 
@@ -1049,8 +1046,6 @@ synname(professor,prof).       %% professor_brochs_gate ! station
 synname(prof,professor).       %% professor_brochs_street ! street
 synname(prod,professor). 
 synname(prog,professor).  
-   synname(dr,prof). 
-   synname(dr,professor). 
 synname(prifesor,professor). 
 synname(profersor,professor). 
 synname(profesor,professor). 
@@ -1282,8 +1277,12 @@ synname(tambeskjells,tambarskjelves).
 
 synname(tabarskjelvs,tambarskjelves). 
 synname(tabarsjelves,tambarskjelves). 
-synname(taberskjelvesgate,tambarskjelvesgate).
+synname(tambarsjelvas,tambarskjelves). 
+synname(tambarkjelves,tambarskjelves).
+%synname(tambarskjelve,tambarskjelves).
+%synname(tambarsjkelvs,tambarskjelves).
 synname(tambarselves,tambarskjelves). 
+synname(taberskjelvesgate,tambarskjelvesgate).
 synname(tamberselves,tambarskjelves).  
 synname(tamberskjelv,tambarskjelves).
 synname(tamberskjelves,tambarskjelves). 
@@ -2041,12 +2040,12 @@ streetsyn(vægen).
 %% streetsyn(sgata).
 %% streetsyn(sgate).
 %% streetsyn(sgaten).
-   streetsyn(sgt).    %%  haakon 7 sgt.23 .
+streetsyn(sgt).    %%  haakon 7 sgt.23 .
 %% streetsyn(sv). 
 %% streetsyn(sveg).
 %% streetsyn(svegen).
 %% streetsyn(sveien).
-   streetsyn(svei).   %% Paul Fremstad svei 
+streetsyn(svei).   %% Paul Fremstad svei 
 %% streetsyn(svg).
 %% streetsyn(svn).
 
@@ -2054,97 +2053,97 @@ streetsyn(vægen).
 
 % Countries  (European first)
 
- country(albania).
- country(arabia). 
- country(belgia).  
- country(bermuda). %% TA-101122
- country(bosnia). 
- country(danmark). country(denmark).
- country(england).         %% not formally a country  
- country(estland). country(estonia).
- country(finland).   country(finnland). 
- country(frankrike).  country(france). 
- country(georgia). 
- country(greece). 
- country(hellas).  
- country(irak).
- country(irland).  
- country(italia).  
- country(island).
- country(jugoslavia).  country(yugoslavia).
- country(lichtenstein). 
- country(latvia).       %% TA-110110
- country(litauen).      country(lithuania).  
- country(malta).  
- country(marokko).  
- country(mexico). 
- country(montenegro). 
- country(norge). country(norway).    %%   s y n w o r d norway ?
- country(peru). 
- country(polen). country(poland). 
- country(portugal). 
- country(romania). 
- country(russland).
- country(serbia).
- country(skottland). country(skotland).  country(scotland).
- country(slovakia).
- country(spania). country(spain). 
- country(sveits). 
- country(sverige). 
- country(sweden). %% \+ smeden
- country(tunisia). 
- country(tyskland). country(germany). 
- country(ukraina).  
- country(ungarn). 
- country(vatikanstaten). 
+country(albania).
+country(arabia). 
+country(belgia).  
+country(bermuda). %% TA-101122
+country(bosnia). 
+country(danmark). country(denmark).
+country(england).         %% not formally a country  
+country(estland). country(estonia).
+country(finland).   country(finnland). 
+country(frankrike).  country(france). 
+country(georgia). 
+country(greece). 
+country(hellas).  
+country(irak).
+country(irland).  
+country(italia).  
+country(island).
+country(jugoslavia).  country(yugoslavia).
+country(lichtenstein). 
+country(latvia).       %% TA-110110
+country(litauen).      country(lithuania).  
+country(malta).  
+country(marokko).  
+country(mexico). 
+country(montenegro). 
+country(norge). country(norway).    %%   s y n w o r d norway ?
+country(peru). 
+country(polen). country(poland). 
+country(portugal). 
+country(romania). 
+country(russland).
+country(serbia).
+country(skottland). country(skotland).  country(scotland).
+country(slovakia).
+country(spania). country(spain). 
+country(sveits). 
+country(sverige). 
+country(sweden). %% \+ smeden
+country(tunisia). 
+country(tyskland). country(germany). 
+country(ukraina).  
+country(ungarn). 
+country(vatikanstaten). 
 
 % Non European countries
 
- country(bakvendtland).    %%  :-)
- country(langtvekkistan).  %%  :-)
+country(bakvendtland).    %%  :-)
+country(langtvekkistan).  %%  :-)
 
- country(afghanistan).  country(afganistan).
- country(angola). 
- country(australia).
- country(botswana).
- country(brasil).  country(brazil).
- country(burma). 
- country(bhutan). 
-   country(butan).
+country(afghanistan).  country(afganistan).
+country(angola). 
+country(australia).
+country(botswana).
+country(brasil).  country(brazil).
+country(burma). 
+country(bhutan). 
+country(butan).
 
- country(canada). 
- country(chile). 
- country(china).  country(kina).  
- country(cuba).
- country(egypt). 
- country(etiopia). 
- country(ghana).   
- country(guatemala).
- country(india). 
- country(israel). 
- country(japan).  
- country(kambodsja).
- country(kenya).  
- country(kongo). 
- country(korea). 
- country(kurdistan).
- country(malaysia).
- country(mocambique). 
- country(mongolia).
- country(nigeria).
- country(pakistan). 
- country(somalia). 
- country(sudan). 
- country(syria).
- country(thailand). 
- country(turkmenistan). 
- country(tyrkia).
- country(uganda).  
- country(uruguay). 
- country(usa).
- country(uzbekistan). 
- country(zambia).  
- country(zimbabwe).  
+country(canada). 
+country(chile). 
+country(china).  country(kina).  
+country(cuba).
+country(egypt). 
+country(etiopia). 
+country(ghana).   
+country(guatemala).
+country(india). 
+country(israel). 
+country(japan).  
+country(kambodsja).
+country(kenya).  
+country(kongo). 
+country(korea). 
+country(kurdistan).
+country(malaysia).
+country(mocambique). 
+country(mongolia).
+country(nigeria).
+country(pakistan). 
+country(somalia). 
+country(sudan). 
+country(syria).
+country(thailand). 
+country(turkmenistan). 
+country(tyrkia).
+country(uganda).  
+country(uruguay). 
+country(usa).
+country(uzbekistan). 
+country(zambia).  
+country(zimbabwe).  
 
 
 abroad(afrika). 
@@ -2203,7 +2202,7 @@ abroad(helsinki).
 abroad(himalaya). 
 abroad(holland).  
 abroad(hollywood). 
-  abroad(holywood). 
+abroad(holywood). 
 abroad(hongkong). 
 
 abroad(huttheita). %%:-) ..
@@ -2269,7 +2268,7 @@ abroad(new_york). %% city %% TA-110603
 abroad(nilen). 
 abroad(nordpolen). 
 abroad(norrtælje).  
-   abroad(sødertælje). %% 
+abroad(sødertælje). %% 
 abroad(oklahoma).      %% TA-110328 ?
 abroad(orknøyene).
 abroad(osaka). 
@@ -2610,8 +2609,8 @@ community(oslo, oslo).
 community(osterøy, hordaland).
 community(overhalla, nord_trøndelag).
 community(porsanger, finnmark).
+community(porsgrund, telemark). %% TA-101129 ?
 community(porsgrunn, telemark).
-    community(porsgrund, telemark). %% TA-101129 ?
 community(radøy, hordaland).
 community(rakkestad, østfold).
 community(rana, nordland).

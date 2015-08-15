@@ -69,7 +69,8 @@
 :- use_module( '../utility/utility', [ bound/1, testmember/2 ] ).
 
 %% UNIT: /db/
-:- use_module( places, [ corr/2, foreign/1, isat/2, nostation/1, placestat/2 ] ). %% RS-131225
+:- use_module( foreign_places, [ foreign/1 ] ). % (PLACE) -> places.pl
+:- use_module( places, [ corr/2, isat/2, nostation/1, placestat/2 ] ). %% RS-131225
 :- use_module( regbusall, [ nightbus/1 ] ).  %% RS-140619 %% RS-150104 , regbus/1 not used here...
 :- use_module( timedat, [ named_date/2 ] ).  %% keep  until modules are fixed bound/1, bus/1, station/1
 
@@ -142,7 +143,7 @@ cutloop_station(pling,plong). %%
 %% cutloop_station(7,munkegata_m2). %% Vikåsen -M2-Flatåsen
 %% cutloop_station(7,munkegata_m5). %% Flatåsen-M2-Vikåsen
  
-%% cutloop_station(8,dronningens_gate_d1). %% Risvollan - D1 - Stavset
+%% cutloop_station(8,dr_gate_d1). %% Risvollan - D1 - Stavset
 %% cutloop_station(8,dronningens_gate_d3). %% Stavset - D3 - Risvollan 
 
 cutloop_station(9,heimdal_sentrum). 
@@ -165,7 +166,7 @@ cutloop_station(60,valentinlyst).
 
 %% cutloop_station(63,asbjørnsens_gate). %% TA-110315 NB %% RS-131027 Station no longer exists!
 
-%% cutloop_station(63,dronningens_gate_d1). %% TA-110315 wrong
+%% cutloop_station(63,dr_gate_d1). %% TA-110315 wrong
 %% cutloop_station(63,munkegata_m3).        %% TA-110315 wrong
 
 cutloop_station(66,stokkhaugen). %% TA-110824 charlottenlund_krk). 
@@ -269,31 +270,31 @@ disallowed_night( date(2015,04,5) ).  %% natt til påskedag %% RS-150329
 %%      palm_sunday,    palm_monday, palm_tuesday, palm_wednesday,
 %%      maundy_thursday,good_friday, easter_eve, easterday,      easterday2,
 
- date_day_map(Date,   saturday) :- %% ad hoc 30/3-15
+date_day_map(Date,   saturday) :- %% ad hoc 30/3-15
      named_date(palm_monday,Date).
 
- date_day_map(Date,   saturday) :- %% ad hoc 31/3-15
+date_day_map(Date,   saturday) :- %% ad hoc 31/3-15
      named_date(palm_tuesday,Date).
 
- date_day_map(Date,   saturday) :- %% ad hoc 1/4-15
+date_day_map(Date,   saturday) :- %% ad hoc 1/4-15
      named_date(palm_wednesday,Date).
 
- date_day_map(Date,  sunday) :-   %% ad hoc 2/4-15
+date_day_map(Date,  sunday) :-   %% ad hoc 2/4-15
      named_date(maundy_thursday,Date).
 
- date_day_map(Date,  sunday) :-   %% ad hoc 3/4-15
+date_day_map(Date,  sunday) :-   %% ad hoc 3/4-15
      named_date(good_friday,Date).
 
- date_day_map(Date,  saturday) :-  %% ad hoc 4/4-15
+date_day_map(Date,  saturday) :-  %% ad hoc 4/4-15
      named_date(easter_eve,Date).   
 
- date_day_map(Date,  sunday) :-    %% ad hoc 5/4-15
+date_day_map(Date,  sunday) :-    %% ad hoc 5/4-15
      named_date(easterday,Date). 
 
- date_day_map(Date,  sunday) :-    %% ad hoc 6/4-15
+date_day_map(Date,  sunday) :-    %% ad hoc 6/4-15
      named_date(easterday2,Date).
 
- date_day_map(Date,  sunday) :-    %% 2 Påskedag Ad Hoc, %% 7/4-15     
+date_day_map(Date,  sunday) :-    %% 2 Påskedag Ad Hoc, %% 7/4-15     
      named_date(easterday2,Date).  
 %%
 
@@ -344,11 +345,11 @@ exbusname(airbus,'Flybussen').
 exbusname(flybussen,'Flybussen'). 
 exbusname(fb,'Flybussen'). 
 
-exbusname(254,'Klæburuten'). 
-exbusname(255,'Klæburuten').
-
 exbusname(13,'ekstrabuss'). 
 
+exbusname(154,'Klæburuten'). %% RS-150815 
+%exbusname(254,'Klæburuten'). 
+%exbusname(255,'Klæburuten').
 
 exbusname( 990,skolebuss). 
 exbusname( 992,skolebuss).
@@ -531,8 +532,9 @@ xforeign(fb,C):- foreign(C), %% værnes malvik %%
                  \+ airbusstation(C).         %% TA-100322
 
 
-xforeign(tt,C):- community(C,County), %% tt malvik foreign to fb
-                County \== sør_trøndelag,
+xforeign(tt,C) :-
+        community(C,County), %% tt malvik foreign to fb
+        County \== sør_trøndelag, County \== nord_trøndelag,
          %% e.g. Klæbu //=> \+ trondheim   isa neighbourhood
                 \+ station(C). %% e.g. berg     %% RS-130210 TODO:FIX BUG
 
@@ -784,7 +786,7 @@ airbusstation(sorgenfriveien).
 airbusstation(bratsbergveien).
 airbusstation(valøyvegen).
 airbusstation(britannia).
-   airbusstation(britannia_hotell).
+airbusstation(britannia_hotell).
 airbusstation(royal_garden).
 
 

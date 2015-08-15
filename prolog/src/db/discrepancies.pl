@@ -1,6 +1,10 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
 %% RS-130625    %% RS-131229 Compiled by monobus.pl
 
+%%% RS-111205, UNIT: /app/
+% Some predicates (like addcontext/0) are only to preserve information, no filtering..
+:-module( discrepancies, [ alias_station2/3 ] ).
+
 alias_station2(16010000,breidablikk_trikk,breidablikk).
 alias_station2(16010023,strindheim_2,brannstasjon_øst).
 alias_station2(16010254,ladeveien,ladevegen).
@@ -68,10 +72,48 @@ alias_station2(16626030,sjøla,skjøla).
 alias_station2(16627030,sjøla,skjøla).
 
 %% Discrepancies r1613_130622 r1601_130930 
-alias_station2(16010403,rosenborg_skole,gyldenløves_gate).
+alias_station2(16010403,rosenborg_skole,gyldenløves_gt).
 alias_station2(16010752,leinstrand_samfunnshus,leinstrand_samf_hus).
 alias_station2(16011752,leinstrand_samfunnshus,leinstrand_samf_hus).
 alias_station2(16533040,brekkåsen_snuplass,brekkåsen_snpl).
 alias_station2(16638335,vikhammeråsen_rundkjøring,vikhammeråsen).
 alias_station2(17142510,stjørdal_stasjon,stjørdal_st).
 
+%% 2015.06.03
+%alias_station2(16010190,idrettsplassen_jakobsli,idrettsplassen). %% Not in August routes
+
+%% db/discrepancies r1602_150810 r1611_140203 
+alias_station2(16010006,dronningens_gate_d1, dr_gate_d1).
+alias_station2(16010007,dr_gate_d2,dronningens_gate_d2).
+alias_station2(16010023,strindheim_2,brannstasjon_øst).
+alias_station2(16010254,ladeveien,ladevegen).
+alias_station2(16010272,lundåsen_nordre,lundåsen_n).
+alias_station2(16010309,j_minsaa_s_veg,johannes_minsaas_veg).
+%alias_station2(16010403,gyldenløves_gt,gyldenløves_gate).
+alias_station2(16010420,ada_arnfinsens_v,ada_arnfinsens_veg).
+alias_station2(16010482,søndre_hallset,søndre_halset).
+alias_station2(16010704,ugla,ugla_trikk).
+alias_station2(16010706,munkvoll_trikk,munkvoll).
+alias_station2(16010761,vestre_sætran,sæterbakken).
+alias_station2(16011000,breidablikk_trikk,breidablikk).
+alias_station2(16011023,strindheim_2,brannstasjon_øst).
+alias_station2(16011196,bergheim_snuplass,bergheim_snpl).
+alias_station2(16011347,olav_tryggvasons_gate,olav_trygvassons_gate).
+alias_station2(16011403,gyldenløves_gt,gyldenløves_gate).
+alias_station2(16011456,s_jorsalfars_v,sigurd_jorsalfars_veg).
+alias_station2(16011482,søndre_hallset,søndre_halset).
+alias_station2(16011704,ugla,ugla_trikk).
+alias_station2(16011706,munkvoll_trikk,munkvoll).
+alias_station2(16011761,vestre_sætran,sæterbakken).
+alias_station2(16533001,skottvoll,skottvold).
+alias_station2(16533003,brubakken,brubakk).
+alias_station2(16533004,gylle,kvitland).
+alias_station2(16533040,brekkåsen_snpl,brekkåsen_snuplass).
+alias_station2(16533190,gimseflata_ikke_i_bruk,gimseflata).
+alias_station2(16538501,skottvoll,skottvold).
+alias_station2(16538503,brubakken,brubakk).
+alias_station2(16538504,gylle,kvitland).
+alias_station2(16626007,ulset,ulseth).
+alias_station2(16632028,hommelvikhøgda,hommelvik_høgda).
+alias_station2(16638328,hommelvikhøgda,hommelvik_høgda).
+alias_station2(17142707,torvet,torvet_stjørdal).

@@ -7,7 +7,7 @@
 % Contains the utility predicates that has to do with dates
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% UNIT: /utility/,     RS-140914
-:-module( datecalc, [   add_days/3,     addtotime/3,    before_date1/2, 
+:-module( datecalc, [   add_days/3,     addtotime/3,    before_date0/2, before_date1/2, 
         datetime/6,     dayname/2,      dayno/2,        datestring/1,   timestring/1,   %% RS-131225    For app/buslog?
         days_between/3, daysucc/2,      difftime/3,     finddate/2,     findfirstcomingdate/2,          getdaynew/1,        month_name/2,
         easterdate/2,   isday/1,        inttime/2,      number_of_days_between/3,               off_valid_period/3,         on_valid_period/3, %% How to use this?
@@ -250,8 +250,8 @@ datestring('00000000').
 %           YYYYMMDD
 
 
-
-todaysdate(date(Y,M,D)):- 
+%% Extract todaysdate from datetime
+todaysdate( date(Y,M,D) ) :-
      datetime(Y,M,D,_,_,_).       
 
 %% daysdate(date(Y,M,D)):-   %% Obsolete, kept for security
@@ -473,15 +473,15 @@ monthdays(_,10,31).
 monthdays(_,11,30).
 monthdays(_,12,31).
 
-
  
 %% Taken from trans
 
 %%%%  DATE CALCULATIONS  
 
+%% X is in Y-Z
 on_valid_period( X, Y, Z ) :- % X in [Y -- Z] inclusive %% TA-110411
-   X=date( _, _, _ ), %% NOT free( )    %% actualdate?
-   before_date0( Y, X ),
+   X=date( _, _, _ ), %% NOT free( )    %% actualdate? %% asked_date?
+   before_date0( Y, X ),  %% Y < X < Z, or
    before_date0( X, Z ).
 
 
@@ -493,10 +493,12 @@ on_valid_period(X,Y,Z) :- % X in [Y -- Z] inclusive
 */
 
 
-off_valid_period(X,Y,Z) :- % X is not in [Y -- Z]
-   (before_date1(X,Y)
-    ;
-    before_date1(Z,X)),    
+%% X is not in [Y -- Z], allows for missing Z (open ended)?
+off_valid_period(X,Y,Z) :- 
+   ( before_date1(X,Y)
+   ;
+     before_date1(Z,X) 
+   ),    
     !.
 
 

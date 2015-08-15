@@ -112,10 +112,10 @@ list_of_named_dates( [
 %%% DATES NAMED BY EVENTS  :-)
 
 
-orig_named_date(john_f_kennedy_day,   date(1963,11,22)).  
-orig_named_date(oddvar_brå_day,       date(1982,02,25)).  
-orig_named_date(arvid_holme_day,      date(2011,01,17)).  
-orig_named_date(dooms_day,            date(2012,12,21)). %% :-) %% TA-100323|      date(10000,01,01)). 
+orig_named_date(john_f_kennedy_day, date(1963,11,22) ).  
+orig_named_date(oddvar_brå_day,     date(1982,02,25) ).  
+orig_named_date(arvid_holme_day,    date(2011,01,17) ).  
+orig_named_date(dooms_day,          date(2012,12,21) ). %% :-) %% TA-100323|      date(10000,01,01)). 
 
 %% Named dates
 
@@ -376,7 +376,7 @@ ver_movedate :-    %% Added check for May17 %% TA-100106
 
     named_date(may17,May17),   
 
-(  Ascension_day = May17 -> _Sunday=holiday ; _Sunday=sunday),
+   (  Ascension_day = May17  ->  _Sunday=holiday  ;  _Sunday=sunday ),
 
 
    add_days(Easterday,48,      Whitsun_eve), %% TA-080108

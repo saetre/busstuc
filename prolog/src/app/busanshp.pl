@@ -67,17 +67,18 @@
 
 %:- use_module( library( aggregate ), [ foral/2 ] ) .  %% RS-141029  for-all Does NOT work like utility:for/2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% RS-131225    UNIT: / and /utility/
+
+%% RS-131225    UNIT: /
 %:- ensure_loaded( user:'../declare' ). %% RS-111213 General (semantic) Operators
 :- use_module( '../declare', [ (:=)/2, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
 :- use_module( '../sicstus4compatibility', [ out/1, output/1, traceprog/2 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
-%:- use_module( telelog , [  bound/1,  unbound/1 ]). --> utility.pl
+%% RS-131225    UNIT: /utility/
 :- use_module( '../utility/utility', [ append_atomlist/2, bound/1, delete1/3, deleteall/3, firstmem/2, fnuttify2/2, for/2, lastmem/2, % language/1, 
         maximum/2, maxval/3, members/3, minimum/2, minval/3, nth/3, number_to_string/2, occ/2, % doubt/2, out/1, output/1, roundwrite/1, % writeout 
         set_filter/4, set_of/3, set_ops/3, set_union/3, split/4, test/1, testmember/2, unbound/1 ] ). %%, [ ] ). %, [ := /2, for/2,  nth/3, etc. ] ). %% RS-140914 test/1, & set_of set_ops/3(LOOP?),
-                        % follow_sequence/3, once1/1, roundmember/2, occ/2, sequence_member/2,
+        % follow_sequence/3, once1/1, roundmember/2, occ/2, sequence_member/2,
 :-use_module( '../utility/datecalc', [ add_days/3, addtotime/3, before_date1/2, difftime/3, sub_days/3, subfromtime/3, timenow/1, timenow2/2, today/1, todaysdate/1 ] ).
 :-use_module( '../utility/library', [ reverse/2 ] ).         %% RS-131225 nth/3 moved to utility
 
@@ -108,13 +109,15 @@
 :- use_module( dmeq, [  dmeq/2 ]). %% RS-131231
 :- use_module( pragma, [  roundmember/2 ] ).
 :- use_module( interapp, [  newfree/1 ] ).
+%:- use_module( telelog , [  bound/1,  unbound/1 ]). --> utility.pl
 
-%% RS-131225    UNIT: / and /db/               %% RS-120816 statcoord? corr/2, ?
+%% RS-131225    UNIT: /db/               %% RS-120816 statcoord? corr/2, ?
+%% RS-131225    UNIT: /
 :- use_module( '../interfaceroute', [ current_period/4, decide_period/2 ] ). %% RS-140210 from topreg.pl
 
 :- use_module( '../db/busdat', [ cutloop_station/2, home_town/1, maxnumberofindividualdepartures/1, vehicletype/2 ] ).
 :- use_module( '../db/places',  [ corr/2 ] ). %% RS-131231, , specname/2
-:- use_module( '../db/timedat', [ defaultprewarningtime/1, kindofday/2, morning_break/1 ] ). %% RS-131226-140928
+:- use_module( '../db/timedat', [ defaultprewarningtime/1, kindofday/2, morning_break/1 ] ). %% RS-131226-140928 , orig_named_date/2
 :- use_module( '../db/topreg', [ default_message/3, default_period/3, period_message/2 ] ). %% RS-131226 
 
 %% RS-131225    UNIT: tuc/
@@ -453,7 +456,7 @@ outdeplist1(Deps0,Day,Opts,DirPlace,(OutFirst), MAP,_SmartDeps) :- % første/nes
       member(first(1),Opts)) ),    % ambiguous, get both !
     !,
     traceprog(4,case13),
-(
+ (
     member(nightbus,Opts) ->
     Deps0=Deps
     ;
@@ -939,13 +942,13 @@ justoutputthelist0(Deps,DirPlace,Out,Opts, dir(Dep1,Bingo),SmartDeps):-  %% no w
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
- dest_station( X3LIST, RID,   DEST):-
+dest_station( X3LIST, RID,   DEST):-
      member(X3,X3LIST),
      X3 = x3(TDLIST,_Busno,_Orig),
      member( td(_, RID , _,DEST),TDLIST),
      !.
 
- dest_station( _X3LIST,_RID,nil).
+dest_station( _X3LIST,_RID,nil).
 
 %%  dest_station([x3([td(1507,bus_5_251,21,dragvoll),td(1515,bus_5_252,21,dragvoll),td(1527,bus_5_253,21,dragvoll)],5,dronningens_gate_d3)],bus_5_251,_159176) ?
 
@@ -1331,10 +1334,10 @@ faenta(TDlist,Times,Durations,SetofStations):-
 
     minimum(TD,M1),    %% utility.pl
     maximum(TD,M2),    %% utility.pl
-(
+ (
     M1 = M2 -> Durations = M1 ;
                Durations = M1 - M2 %% NB =, not is
-) .
+ ) .
 
 
 out_comma(_) :- %% Printing comma if smartdepflag is set %% TE-120406
@@ -1442,7 +1445,7 @@ print_smartdep_entry(smartdepentry(Fullstatname1,Localstatno1,BusNo,Time,Duratio
 %% MW-120906
 print_smartdep_entries([]).
 
- print_smartdep_entries([Smartdep_entry|Smartdep_entries]):-
+print_smartdep_entries([Smartdep_entry|Smartdep_entries]):-
          print_smartdep_entry(Smartdep_entry),
           ( Smartdep_entries \== [] -> out_comma(_) ; true ), %%Comma between list elements %%TE-120406
          print_smartdep_entries(Smartdep_entries).
@@ -1638,10 +1641,10 @@ minuteslater(Durations , (bw1(Durations),bcp(minutes),bcp(later))):- %% bw1 does
 outandarrives6(_,_Station1,nil,_,_,_,passes,_FINAL,_Arrival):-!. %% destination nil
 
 outandarrives6(_,Station1,Station2,_,_,[],passes,_FINAL,_Arrival):- %% SAME station
-(
+ (
     (Station1==hovedterminalen , corr(Station2,hovedterminalen));
     (Station2==hovedterminalen , corr(Station1,hovedterminalen))
-),
+ ),
  !. %% Genialt hvis  ..ankommer m1 0738 og går fra m1 0745
 
 outandarrives6(_,Station,from(Place),_,_,[],passes,_FINAL,_Arrival):- %% arrivesat) :-
@@ -1668,10 +1671,11 @@ outandarrives4(DepTime,DirPlace,Rid,BegTime, Out, ToStation,Arrival) :-
          addtotime(BegTime,DelArr2,Arrival),
     Arrival >= DepTime, %%%%%%%%% <---- Avoid Tour hit if Retour
 
-(   DepTime = Arrival  ->
+ (   DepTime = Arrival  ->
      Out=  (nl,bcp(and),bcp(arrivesat), bwr(ToStation),bcp(thereafter))
    ;
-     Out = (nl,bcp(and),bcp(arrivesat), bwr(ToStation),bcp(attime), bwt(Arrival))).
+     Out = (nl,bcp(and),bcp(arrivesat), bwr(ToStation),bcp(attime), bwt(Arrival))
+ ).
 
 
 
@@ -1690,20 +1694,19 @@ outandarrivesonly(FromPlace,FromTime,DirPlace,Rid,BegTime,DelDep1,ArrivalTime,Ou
     set(firstdeparturetime,FromTime),
     set(lastarrivaltime,ArrivalTime),  %% OBSOLETE
 
-         (\+  value(dialog, 1),!
+   ( \+  value(dialog, 1),!
       ;
     getcurrent(Cid),
       addref(Cid,FromTime,firstdeparturetime),
       addref(Cid,ArrivalTime,lastarrivaltime)
-    ),
-
-(
+   ),
+  (
   (ArrivalTime = FromTime) ->
 
    Out = (nl,bcp(and),bcp(arrivesat), bwr(ToStation),bcp(thereafter))
   ;
    Out  = (nl,bcp(and),bcp(arrivesat), bwr(ToStation),bcp(attime), bwt(ArrivalTime))
-).
+  ).
 
 outandarrivesonly(_FromPlace,_FromTime,_DirPlace,_Rid,_BegTime,_DelDep,_ARRIVALTIME,space0,_).
 
@@ -2023,14 +2026,14 @@ time_options(List):-
     !.
 
 time_option(time).  %% Means that a time has been set, avoid default after now
-time_option(last(_)).
-   time_option(first(_)).
-   time_option(next(_)).
-time_option(prev(_)).
-time_option(nth(_)).
-   time_option(first).
-time_option(lastcorr).
-time_option(nextaftertime(_)).
+time_option( last(_) ).
+time_option( first(_) ).
+time_option( next(_) ).
+time_option( prev(_) ).
+time_option( nth(_) ).
+time_option( first ).
+time_option( lastcorr ).
+time_option( nextaftertime(_) ).
 
 
 sentenceend( writeout:period ).
@@ -2242,9 +2245,10 @@ printmess1(nearest_station(_STARTSTOP,X,_)) :-
 printmess1(nearest_station(_,Street,Station)) :-
     bcpbc(theneareststationto),bwrstreet(Street),
     bcp(is),space,
-(Station = '' -> %% (in case empty station)
+ ( Station = '' -> %% (in case empty station)
     doubt(unknown,ukjent);         %% utility.pl
-    bwr(Station)),
+    bwr(Station)
+ ),
     period,
     !.
 
@@ -2337,7 +2341,8 @@ obvious_station(sentrum).
 pmess( answer(P) ) :- P.
 
 pmess( assumeeve(DayEve) ) :-
-     bcpbc( assumeeve(DayEve) ). %.
+     bcpbc( assumeeve(DayEve) )  % , orig_named_date(DayEve, Date ), bwr( Date )
+        .
 
 pmess( place_resolve(Hageby,List) ):-
    bcpbc(theplace), bwr(Hageby), bcp(ismanyvalued),period,
@@ -2355,7 +2360,7 @@ pmess( nightbuson(_Day) ) :- %% saturday/sunday is confusing around christmas.
     output(':').
 
 
-pmess(nightbusondate(Date)):-
+pmess( nightbusondate(Date) ) :-
     prent0(nightbusdepartures),
     writedate(Date),
     output(':').
@@ -2501,9 +2506,8 @@ pmess(illegal(Class,Object)):-
     (bcpbc(this),bcp(Class),bcp(Object),bcp(is),bcp(illegal),period0).
 
 
-pmess(notinperiod(Class,Object)):-
-    (bcpbc(therearenodeparturesfor),bcp(Class),bcp(Object),
-                bcp(inthisperiod),period0).
+pmess( notinperiod(Class,Object) ) :-
+    ( bcpbc(therearenodeparturesfor), bcp(Class), bcp(Object), bcp(inthisperiod), period0 ).
 
 
 pmess(sameplace(Place1,Place2)):-
@@ -2869,8 +2873,9 @@ evening_time24(NOW,X,Y):-
 notatnight(X,Y):-
     number(X),
     morning_break(T0430),
-(   X  < 0100 -> Y is X + 2400;
-    (X >= 100, X =< T0430) -> Y is X + 1200). %% NO default here
+ (   X  < 0100 -> Y is X + 2400;
+    (X >= 100, X =< T0430) -> Y is X + 1200
+ ). %% NO default here
 
 
 
@@ -3048,7 +3053,7 @@ paraphrase_dual_topics(L):-
 
 paraph_list(data,L):-
     L=[]->true
-;
+ ;
     nl,
     doubt('Search for ','Søker etter '),
     paraph_list1(L),
@@ -3057,7 +3062,7 @@ paraph_list(data,L):-
 
 paraph_list(event,L):-
     L=[]->true
-;
+ ;
     nl,
     doubt('You want to go','Du vil dra'),
     paraph_list1(L),
@@ -3194,12 +3199,12 @@ paraph1(frame_setvalue((when)::day,T)):- % old, kept
 
 
 
-paraph1(frame_setvalue(date,T)):- %% moved out
+paraph1( frame_setvalue(date,T) ):- %% moved out
    !,
    doubt(' on ',' den '),writedate(T).
 
 
-paraph1(frame_setvalue((when)::date,T)):-     %%  old, kept
+paraph1(frame_setvalue( (when)::date,T) ):-     %%  old, kept
    !,
    doubt(' on ',' den '),writedate(T).
 

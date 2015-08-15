@@ -11,21 +11,16 @@
     bcp/1,      bcw/2,  bcpbc/1,        bigcap/2,
     bw1/1,      bwc/2,  bwq/1,  bwr/1,  bwr2/2,         bwr2bc/1, bwrbc/1, bwrbus/2, bwrbusbc/2,
     bwrstreet/1,        bwrprices/1,    bwstat2/2,  bwt/1,  bwt2/1,         bwtimes2/1,     %% Utility
-    colon/0, comma/0,   cwc/2,  dot/0,  
-    busanswer_sat/3,    %% RS-150329 Extra?
-    doubt/2,      getphrase0/2,
-    endline/0,  indentprint/2,  languagenr/1,   
-    listrequirements/1, listall/1,
-    nopay/0,    nopay1/0,       outcap/1,       pay/0,  pay1/0,  period/0, period0/0, space/0,
-    punkt/0,  question/0,
-    space0/0,   startmark/0,      %% From/For BusAnsHP (used in d_dialogue)
+    colon/0, comma/0,   cwc/2,  dot/0,  busanswer_sat/3,    %% RS-150329 Extra?
+    doubt/2,      getphrase0/2, endline/0,  indentprint/2,  languagenr/1,   
+    listrequirements/1, listall/1, nopay/0,    nopay1/0,       outcap/1,       pay/0,  pay1/0,  period/0, period0/0, space/0,
+    punkt/0,  question/0,  space0/0,   startmark/0,      %% From/For BusAnsHP (used in d_dialogue)
     prettyprint/1, print_endstation_slashlist/1, roundwrite/1, print_parse_tree/1, printdots/0, %% out/1, MOVED prettypr to sicstus4comp... Avoiding loops in imports.
     sequence_write/1, statistics/1, traceprint/2,  %  track/2, trackprog/2, 
     waves/0, writedate/1, writefields/1,  writefieldvalue/2,  writefieldvalues/2, writefieldverb/1,
     writename/1, writeprog/1,  writesimplelist/1,  %, writepred/1, MOVED to SP4compatibility
-   writetelebusteranswer_rep/1, writetelebusteranswer_saf/2, writetelebusteranswer_sqt/3,    %% RS-150329 Extra?
-    writetelebusteranswer4/4, teleanswer_sat/2, writetelebusteranswerfields/1,     %% RS-150329 Extra?
-%    writeanswer/1, Move to meta_preds to avoid Circles in the use_module imports.
+    writetelebusteranswer_rep/1, writetelebusteranswer_saf/2, writetelebusteranswer_sqt/3,    %% RS-150329 Extra?
+    writetelebusteranswer4/4, teleanswer_sat/2, writetelebusteranswerfields/1,     %% RS-150329 Extra? % writeanswer/1, Move to meta_preds to avoid Circles in the module imports.
     writevaluelist/2 %  %meta_predicates writeanswer/1,  xwriteanswer/2
   ] ). %% RS-141105 Moved to main?: language/1,
 
@@ -58,15 +53,12 @@
 :- use_module( library(varnumbers), [ numbervars/1 ] ). %% RS-140210.
 
 %% RS-131225, UNIT: /utility/
-:- use_module( '../utility/utility', [ append_atomlist/2,
-        for/2, internalkonst/1, lastmems/3, nth/3, set_ops/3, split/4, testmember/2 ] ). %% RS-150104
-        % follow_sequence/3, once1/1, roundmember/2, occ/2, sequence_member/2,
+% :- use_module( datecalc, [ todaysdate/1 ] ). %% drucke_baum_list/1, drucke_baum/1,
+:- use_module( utility, [ append_atomlist/2, for/2, internalkonst/1, lastmems/3, nth/3, set_ops/3, split/4, testmember/2 ] ). %% RS-150104
 :- use_module( ptbwrite, [ ptbwrite/1, shrink_tree/2 ] ). %% drucke_baum_list/1, drucke_baum/1,
+:- use_module( utility, [ for/2, set_ops/3 ] ). %% drucke_baum_list/1, drucke_baum/1, append_atomlist/2, TROUBLE RS-141105 % follow_sequence/3, once1/1, roundmember/2, occ/2, sequence_member/2,
 
-:- use_module( utility, [ for/2, set_ops/3 ] ). %% drucke_baum_list/1, drucke_baum/1, append_atomlist/2,   TROUBLE RS-141105
-
-%% RS-141026    UNIT: /
-%:- use_module( '../main.pl', [ language/1 ] ). %MISERY?!
+%% RS-141026    UNIT: / :- use_module( '../main.pl', [ language/1 ] ). %MISERY?!
 
 %%% RS-140914, UNIT: /app/
 %:- use_module( '../app/busanshp', [ bcp/1, bcpbc/1, bwrbc/1 ] ). % , colon/0, space/0 
@@ -77,6 +69,7 @@
 :- use_module( '../db/busdat', [ exbusname/2, moneyunit/1, vehicletype/2 ] ).
 :- use_module( '../db/places', [ short_specname/2, specname/2 ] ).
 :- use_module( '../db/regstr', [ streetstat/5 ] ). %% RS-150104
+:- use_module( '../db/timedat', [ orig_named_date/2 ] ). %% RS-150104
 
 %% RS-141026    UNIT: /dialog/
 :- use_module( '../dialog/frames2', [ frame_getvalue_rec/4, frame_setvalue_rec/4 ] ). %MISERY?! , frame_setvalue_rec/4
@@ -416,10 +409,9 @@ bwrstreet(X-N) :- bwr(X),write(N),space,!.
 bwrstreet(X)   :- bwr(X).
 
 
-%% BCP   Basic Common Words
-
-
-%% bcw: bcpbc = basic common phrase big cap
+%% BCP   Basic Common Phrase
+%% bcw = "basic common" or "big cap" word?
+%% bcpbc = basic common phrase, big cap
 %% RS-120728
 
 outcap(X):-
@@ -427,7 +419,7 @@ outcap(X):-
     write(' '),
     out(Y).
 
-bcpbc(Con) :-
+bcpbc( Con ) :-
          ( cwc(Con,Phrases) ; cwcerror(Con,Phrases) ),
          languagenr(LN),
          nth(LN,Phrases,Phrase),
@@ -706,7 +698,7 @@ bigcap(In,Out) :-
 bigcap(In,Out) :-
          atomic(In),            %% SAFEGUARD
          name(In,[SC|R]),
-         SC>223,SC<256,    % à-ÿ, some exceptions not covered, i guess
+         SC > 223, SC < 256,    % à-ÿ, some exceptions not covered, i guess
          !,
          BC is SC-32,
          name(Out,[BC|R]).
@@ -731,7 +723,7 @@ cwc(airbuses,[airbuses,flybusser]).
 cwc(and,['and ','og ']).
 cwc(adate,['a date','en dato']).
 cwc(aday,['a day','en dag']).
-cwc(anotherplace,['another place','et sted til']).
+cwc(anotherplace,['to/from one more place','til/fra et sted til']).
 cwc(aplace,['a place','et sted']).
 cwc(atime,['a time','et tidspunkt']).
 cwc(are,['are','er']).
@@ -749,11 +741,12 @@ cwc(andsoon,[',...',',...']). %%  ( Realspeak ?)
 cwc(as,['as','som']).
 cwc(astation,['a station','en holdeplass']).
 
-
+%% RS-150815
 cwc( assumeeve(DayEve), [ Eng, Nor] ) :-
         cwc( DayEve, [ Day_Eve, DayAften ] ),
-        append_atomlist( ['I assume you mean ', Day_Eve, '.' ], Eng ),
-        append_atomlist( ['Jeg antar du mener ', DayAften, '.' ], Nor ).
+        orig_named_date(DayEve, Date ), %bwr( Date ),
+        append_atomlist( ['I assume you mean ', Day_Eve, ' (', Date, ').' ], Eng ),
+        append_atomlist( ['Jeg antar du mener ', DayAften, ' (', Date, ').' ], Nor ).
   
 cwc(assumetomorrow,['I assume you want routes for tomorrow.',    %% TA-110201
                     'Jeg antar du ønsker ruter for i morgen.']). %%
@@ -1047,12 +1040,12 @@ cwc(next,['next','neste']).
 
 %% * nattbussen 106 ??
 % busfare2(nightbus,[100-150-200]). % By,Nes - Klæbu,Melhus,Malvik,Skaun - Stjørdal,Orkdal
- cwc(nightbus,['Nightbus', 'Nattbuss']).
- cwc(nightbus_all,['Nightbus(City - Klæbu,Melhus,Malvik,Skaun - Stjørdal,Orkdal)', 'Nattbuss(By/nes - Klæbu,Melhus,Malvik,Skaun - Stjørdal,Orkdal)']).
+cwc(nightbus,['Nightbus', 'Nattbuss']).
+cwc(nightbus_all,['Nightbus(City - Klæbu,Melhus,Malvik,Skaun - Stjørdal,Orkdal)', 'Nattbuss(By/nes - Klæbu,Melhus,Malvik,Skaun - Stjørdal,Orkdal)']).
 %cwc(nightbus_far,['Nightbus(Town/Byneset/Klæbu)', 'Nattbuss(By-Byneset-Klæbu)']).   %% * nattbussen 106
- cwc(nightbus_far,['Nightbus(Stjørdal,Orkdal)', 'Nattbuss(Stjørdal,Orkdal)']).   %% * nattbussen 106
+cwc(nightbus_far,['Nightbus(Stjørdal,Orkdal)', 'Nattbuss(Stjørdal,Orkdal)']).   %% * nattbussen 106
 %cwc(nightbus_klæbu,['Nightbus(Klæbu)', 'Nattbuss (Byen)']).   %% * nattbussen 106
- cwc(nightbus_klæbu,['Nightbus(Klæbu,Melhus,Malvik,Skaun)', 'Nattbuss (Klæbu,Melhus,Malvik,Skaun)']).   %% * nattbussen 106
+cwc(nightbus_klæbu,['Nightbus(Klæbu,Melhus,Malvik,Skaun)', 'Nattbuss (Klæbu,Melhus,Malvik,Skaun)']).   %% * nattbussen 106
 cwc(nightbus_byneset,['Nightbus(Byneset)', 'Nattbuss (Byneset)']).   %% * nattbussen 106
 cwc(nighttram,['Night-tram', 'Natt-trikk ']).   %% * nattrikk 1  %% RS-141115
 
@@ -1308,7 +1301,7 @@ cwc(thatisunclear,['That is unclear.','Det er uklart.']).
 cwc(thatmeans,['that means','det betyr at']).
 cwc(the,['the','den']).
 cwc(thereafter,[thereafter,'like etterpå']).
-cwc(therearenodeparturesfor,['There are no departures for','Det er ingen avganger for']).
+cwc(therearenodeparturesfor,['I have no departures for','Jeg finner ingen avganger for']).
 cwc(thebus,['the bus','bussen']).
 cwc(thebuses,['the buses','bussene']).
 cwc(the_routes_on,['The routes on ','Rutene ']).
@@ -1768,7 +1761,7 @@ traceprint(N,P):- %% same as trace
     value(trace,M), number(M), M >= N, 
     !,
     write(P),nl
-;
+ ;
     true.
 
 %///
@@ -2196,14 +2189,14 @@ waves :-
          write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'),nl.
 
 
-writedate(date(Y2000,M11,D12)) :-
+writedate( date(Y2000,M11,D12) ) :-
     language(norsk),
     !,
     monthshort(M11,_,Nov),
     write(D12),write('. '),write(Nov),write(' '),write(Y2000),write(' ').
 
 
-writedate(date(Y2000,M11,D12)) :-
+writedate( date(Y2000,M11,D12) ) :-
     language(english),
     !,
     monthshort(M11,Nov,_),

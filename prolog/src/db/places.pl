@@ -5,7 +5,7 @@
 %% REVISED TA-110818 %% RS-120805 Sorting
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% d1 --> dronningens_gate_d1  etc 
+% d1 --> dr_gate_d1  etc 
 % k1 --> kongens_gate_k1  etc 
 % m1 --> munkegata_m1 etc
 % p1 --> prinsens_gate_p1 etc
@@ -24,11 +24,11 @@
                     aliasteamatb/3,     % ( STATNUMBER, STATION_TEAM, STATION_ATB )  %%%%%% Conversion TA-100822
                     cmpl/3,             % ( NAME, NAME*, LIST )
                     corr/2,             % ( PLACE, PLACE )
-                    foreign/1,          % ( PLACE ), e.g. aalesund, orkanger(?).   %%% FOREIGN (to Trondheim) places
-                    isat/2,             % ( STATION, PLACE )    
+%                    foreign/1,          % ( PLACE ), e.g. aalesund, orkanger(?).   %%% FOREIGN (to Trondheim) places Moved to foreign_places.pl
+                    isat/2,             % ( STATION, PLACE )    %% STATION is (one, but NOT preferred, among several) stations that belong to the NEIGHBOURHOOD (PLACE)    
                     nostation/1,        % ( PLACE )
-                    place_resolve/2,    % ( PLACE, STATION ).   %% RS-141122 If multiple STATIONs at/for/around PLACE...
-                    placestat/2,        % ( PLACE, STATION )    %% RS-141122 If only one STATION at/for/around PLACE...
+                    place_resolve/2,    % ( PLACE, STATION ).   %% RS-141122 If multiple STATIONs at/for/around PLACE...(see isat/2 or underspecified_place/1)
+                    placestat/2,        % ( PLACE, STATION )    %% RS-141122 If only one STATION at/for/around PLACE... (see isat/2 or underspecified_place/1)
                     sameplace/2,        % ( PLACE, PLACE )
                     short_specname/2,   % ( NAME, STRING )     %% RS-131225 For concise SMS-messages
                     specname/2,         % ( NAME, STRING )
@@ -62,22 +62,26 @@
 % corr(prinsenkrysset,hovedterminalen). %% ???  SUMMER %% TA-110701
   %% sorry, gir destinasjon munkegate = Prinsenkrysset  %%
 
-corr(sentrum,hovedterminalen).  
+%corr(sentrum,hovedterminalen). %% RS-150815 Synplace?
 
 corr(torget,hovedterminalen).         %% SUMMER %% TA-110628 %% RS-130816 REMOVED before WINTER...
 
 corr(munke_street,hovedterminalen). 
 
 
-corr(d1,hovedterminalen). 
+%corr(d1,hovedterminalen).      %% RS-150815. Move this to lex?
 %corr(d2,hovedterminalen). 
-%corr(d3,hovedterminalen). 
-corr(d4,hovedterminalen). 
+%%corr(d3,hovedterminalen). 
+%%corr(d4,hovedterminalen). 
 
-corr(dronningens_gate_d1,hovedterminalen). %% Atb
-%corr(dronningens_gate_d2,hovedterminalen). %% RS-130818
-%corr(dronningens_gate_d3,hovedterminalen). 
-corr(dronningens_gate_d4,hovedterminalen). 
+corr(dr_gate_d1,hovedterminalen). %% Atb
+corr(dr_gate_d2,hovedterminalen). %% RS-130818  %% RS-150815 d2 Tatt med igjen?
+%corr(dr_gate_d3,hovedterminalen). 
+%corr(dr_gate_d4,hovedterminalen). 
+%corr(dronningens_gate_d1,hovedterminalen). %% Atb   %% RS-150815 Gammelt (2014-feb) format
+%corr(dronningens_gate_d2,hovedterminalen). %% RS-130818  %% RS-150815 Tatt med igjen?
+%%corr(dronningens_gate_d3,hovedterminalen). 
+%%corr(dronningens_gate_d4,hovedterminalen). 
 
 corr(dronningens_gate_19,hovedterminalen). %% TA-110627
 corr(dronningens_gate_46,hovedterminalen). %% TA-110627
@@ -106,12 +110,12 @@ corr(m41,hovedterminalen).  %% SIC
 corr(m5,hovedterminalen). 
 
 %%%%%% corr(munkegata_m0,hovedterminalen).  %% Atb
-corr(munkegata_m1,hovedterminalen). 
-corr(munkegata_m2,hovedterminalen). 
+corr(munkegata_m1, hovedterminalen). 
+corr(munkegata_m2, hovedterminalen). 
 %corr(munkegata_m3,hovedterminalen). 
-corr(munkegata_m4,hovedterminalen). 
+corr(munkegata_m4, hovedterminalen). 
 corr(munkegata_m41,hovedterminalen).  %% SIC
-corr(munkegata_m5,hovedterminalen). 
+corr(munkegata_m5, hovedterminalen).
 
 %% old team for compatibility
 corr(munkegata_m0,hovedterminalen).  %% Generic central place
@@ -308,8 +312,8 @@ nostation(sundalsveien).
 nostation(sundlandsskrenten). 
 nostation(sunnlandsskrenten).      %%  (no spellc)
 nostation(sundlandsveien). 
-    nostation(sundlandsvn). %% NO SPELLCORR to NOSTATION 
- nostation(sundlandsskrenten). 
+nostation(sundlandsvn). %% NO SPELLCORR to NOSTATION 
+nostation(sundlandsskrenten). 
 
 %  nostation(st_olavs_gate). 
 % nostation(st_olavs_gate) :- \+ value(tmnflag,true). %% RS-131223  From busdat.pl
@@ -457,7 +461,7 @@ cmpl(bergstudent,by,berg_studentby).
 cmpl(berg,østre,østre_berg). 
 cmpl(bergheim,amfi,bergheim). 
 cmpl(bergheim,terrasse,bergheim). 
-cmpl(bergs,alle,gyldenløves_gate).  %% \+ sig bergs
+cmpl(bergs,alle,gyldenløves_gt).  %% \+ sig bergs
 cmpl(bergsgårds,[vei],arne_bergsgårds_vei). 
 cmpl(bi,tiller,østre_rosten). 
 cmpl(bi,trondheim,bi). 
@@ -685,10 +689,16 @@ cmpl(cruise,pier,pirbadet).
 cmpl(cruise,port,pirbadet). 
 cmpl(curtshill,gate,churchills_veg). 
 cmpl(cyti,syd,city_syd). 
-cmpl(d,[1],dronningens_gate_d1). 
-%cmpl(d,[2],dronningens_gate_d2). 
-%cmpl(d,[3],dronningens_gate_d3). 
-cmpl(d,[4],dronningens_gate_d4). 
+
+
+%cmpl(d,[1],d1). %% RS-150815 Experiment. TA-11xxxx moved to prelex?
+%cmpl(d,[2],d2). 
+%%cmpl(d,[3],d3). 
+%%cmpl(d,[4],d4).
+%cmpl(d,[1],dr_gate_d1). %% RS-150815 Experiment, but put longest matches first!!
+%cmpl(d,[2],dr_gate_d2). 
+%%cmpl(d,[3],dr_gate_d3). 
+%%cmpl(d,[4],dr_gate_d4).
 cmpl(d,[l,øverlidsv],distriktslege_øverlids_vei). 
 cmpl(d,[l,øvrelidsv],distriktslege_øverlids_vei). 
 cmpl(d,gt,dronningens_gate).  %% \+ dv(dragvoll)aliasdv_street
@@ -748,10 +758,14 @@ cmpl(dragvoll,idrettssenter,dragvoll).  %%?
 cmpl(dragvoll,ntnu,dragvoll). 
 cmpl(dragvoll,universitet,dragvoll).  %% universitetet_dragvoll???
 
-cmpl(dronn,[gt,d1],dronningens_gate_d1).  %% Because it is your abbrev. 
+cmpl(dronn,[gt,d1],dr_gate_d1).  %% Because it is your (AtB) abbrev.
+cmpl(dronn,[gt,d2],dr_gate_d2). 
+%cmpl(dronn,[gt,d3],dr_gate_d3). 
+%cmpl(dronn,[gt,d4],dr_gate_d4).
+%cmpl(dronn,[gt,d1],dronningens_gate_d1).  %% Because it is your (AtB) abbrev. RS-150815 Old station name (from 2014)
 %cmpl(dronn,[gt,d2],dronningens_gate_d2). 
-%cmpl(dronn,[gt,d3],dronningens_gate_d3). 
-cmpl(dronn,[gt,d4],dronningens_gate_d4). 
+%%cmpl(dronn,[gt,d3],dronningens_gate_d3). 
+%%cmpl(dronn,[gt,d4],dronningens_gate_d4). 
 cmpl(dronn,gt,dronningens_gate).  %%Asyouspeak,
 
 cmpl(dronning,[mauds,høgskole],dalen_hageby). 
@@ -767,66 +781,63 @@ cmpl(dronning,maud,dalen_hageby).
 cmpl(dronning,[s,gate],dronningens_gate).
 
 
-cmpl(dronningens,[gate,holdeplass,d,1],dronningens_gate_d1). 
-%cmpl(dronningens,[gate,holdeplass,d,2],dronningens_gate_d2). 
-%cmpl(dronningens,[gate,holdeplass,d,3],dronningens_gate_d3). 
-cmpl(dronningens,[gate,holdeplass,d,4],dronningens_gate_d4). 
-
-cmpl(dronningens,[gate,holdeplass,d1],dronningens_gate_d1). %% d 1 -> d1 is prelexed
-%cmpl(dronningens,[gate,holdeplass,d2],dronningens_gate_d2). %% ugly ?
-%cmpl(dronningens,[gate,holdeplass,d3],dronningens_gate_d3).
-cmpl(dronningens,[gate,holdeplass,d4],dronningens_gate_d4). 
-
-
-cmpl(dronningens,[gate,d,1],dronningens_gate_d1). 
-%cmpl(dronningens,[gate,d,2],dronningens_gate_d2). 
-%cmpl(dronningens,[gate,d,3],dronningens_gate_d3). 
-cmpl(dronningens,[gate,d,4],dronningens_gate_d4). 
-
-cmpl(dronningens,[gate,d,1],dronningens_gate_d1). 
-%cmpl(dronningens,[gate,d,2],dronningens_gate_d2). 
-%cmpl(dronningens,[gate,d,3],dronningens_gate_d3). 
-cmpl(dronningens,[gate,d,4],dronningens_gate_d4). 
-
-%cmpl(dronningens,[gate,d1],dronningens_gate_d1). %% if not split
-%cmpl(dronningens,[gate,d2],dronningens_gate_d2). 
-%cmpl(dronningens,[gate,d3],dronningens_gate_d3). 
-cmpl(dronningens,[gate,d4],dronningens_gate_d4). 
-
-cmpl(dronningens,[gt,d,1],dronningens_gate_d1). 
-%cmpl(dronningens,[gt,d,2],dronningens_gate_d2). 
-%cmpl(dronningens,[gt,d,3],dronningens_gate_d3). 
-cmpl(dronningens,[gt,d,4],dronningens_gate_d4). 
-
-cmpl(dronningens,[gt,d1],dronningens_gate_d1). 
-%cmpl(dronningens,[gt,d2],dronningens_gate_d2).  
-%cmpl(dronningens,[gt,d3],dronningens_gate_d3). 
-cmpl(dronningens,[gt,d4],dronningens_gate_d4). 
-
-cmpl(dronningens,gata,dronningens_gate). 
+cmpl(dronningens,gata,dronningens_gate). %% RS-150815. How do these work?
 cmpl(dronningens,gate,dronningens_gate). 
 cmpl(dronningens,gate,hovedterminalen). 
-cmpl(dronningens,gt,dronningens_gate). 
 
-cmpl(dronningensgate,[d,1],dronningens_gate_d1). %% TA-101026
-%cmpl(dronningensgate,[d,2],dronningens_gate_d2). 
-%cmpl(dronningensgate,[d,3],dronningens_gate_d3). 
-cmpl(dronningensgate,[d,4],dronningens_gate_d4). 
 
-cmpl(dronningensgate,[holdeplass,d,1],dronningens_gate_d1). 
-cmpl(dronningensgate,[holdeplass,d,2],dronningens_gate_d2). 
-cmpl(dronningensgate,[holdeplass,d,3],dronningens_gate_d3). 
-cmpl(dronningensgate,[holdeplass,d,4],dronningens_gate_d4). 
+cmpl(dronningens,[gate,d,1],dr_gate_d1). 
+cmpl(dronningens,[gate,d,2],dr_gate_d2). 
+%cmpl(dronningens,[gate,d,3],dr_gate_d3). 
+%cmpl(dronningens,[gate,d,4],dr_gate_d4). 
 
-cmpl(dronningensgate,[d1],dronningens_gate_d1). %% if not split
-%cmpl(dronningensgate,[d2],dronningens_gate_d2). 
-%cmpl(dronningensgate,[d3],dronningens_gate_d3). 
-cmpl(dronningensgate,[d4],dronningens_gate_d4). 
+cmpl(dronningens,[gate,d1],dr_gate_d1). %% if not split  %% TA-11xxxx ??
+cmpl(dronningens,[gate,d2],dr_gate_d2). 
+%cmpl(dronningens,[gate,d3],dr_gate_d3). 
+%cmpl(dronningens,[gate,d4],dr_gate_d4). 
 
-cmpl(dronningensgate,[holdeplass,d1],dronningens_gate_d1). 
-%cmpl(dronningensgate,[holdeplass,d2],dronningens_gate_d2). 
-%cmpl(dronningensgate,[holdeplass,d3],dronningens_gate_d3). 
-cmpl(dronningensgate,[holdeplass,d4],dronningens_gate_d4). 
+cmpl(dronningens,[gate,holdeplass,d,1],dr_gate_d1). 
+cmpl(dronningens,[gate,holdeplass,d,2],dronningens_gate_d2). 
+%cmpl(dronningens,[gate,holdeplass,d,3],dronningens_gate_d3). 
+%cmpl(dronningens,[gate,holdeplass,d,4],dronningens_gate_d4). 
+
+cmpl(dronningens,[gate,holdeplass,d1],dr_gate_d1). %% d 1 -> d1 is prelexed
+cmpl(dronningens,[gate,holdeplass,d2],dronningens_gate_d2). %% ugly ?
+%cmpl(dronningens,[gate,holdeplass,d3],dronningens_gate_d3).
+%cmpl(dronningens,[gate,holdeplass,d4],dronningens_gate_d4). 
+
+cmpl(dronningens,gt,dronningens_gate).  %% RS-150815. How do these work?
+
+cmpl(dronningens,[gt,d,1],dr_gate_d1). 
+cmpl(dronningens,[gt,d,2],dr_gate_d2). 
+%cmpl(dronningens,[gt,d,3],dr_gate_d3). 
+%cmpl(dronningens,[gt,d,4],dr_gate_d4). 
+
+%cmpl(dronningens,[gt,d1],dr_gate_d1). %% if not split  %% TA-11xxxx ??
+%cmpl(dronningens,[gt,d2],dr_gate_d2).  
+%%cmpl(dronningens,[gt,d3],dr_gate_d3). 
+%%cmpl(dronningens,[gt,d4],dr_gate_d4). 
+
+
+cmpl(dronningensgate,[d,1],dr_gate_d1). %% TA-101026
+cmpl(dronningensgate,[d,2],dr_gate_d2). 
+%cmpl(dronningensgate,[d,3],dr_gate_d3). 
+%cmpl(dronningensgate,[d,4],dr_gate_d4). 
+
+cmpl(dronningensgate,[holdeplass,d,1],dr_gate_d1). 
+cmpl(dronningensgate,[holdeplass,d,2],dr_gate_d2). 
+%cmpl(dronningensgate,[holdeplass,d,3],dr_gate_d3). 
+%cmpl(dronningensgate,[holdeplass,d,4],dr_gate_d4). 
+
+cmpl(dronningensgate,[d1],dr_gate_d1). %% if not split
+cmpl(dronningensgate,[d2],dr_gate_d2). 
+%cmpl(dronningensgate,[d3],dr_gate_d3). 
+%cmpl(dronningensgate,[d4],dr_gate_d4). 
+
+cmpl(dronningensgate,[holdeplass,d1],dr_gate_d1). 
+cmpl(dronningensgate,[holdeplass,d2],dr_gate_d2). 
+%cmpl(dronningensgate,[holdeplass,d3],dr_gate_d3). 
+%cmpl(dronningensgate,[holdeplass,d4],dr_gate_d4). 
 
 cmpl(dronningmauds,[minne,høyskole],dalen_hageby). 
 cmpl(dronningmauds,[minne,høyskole],dalen_hageby). 
@@ -1156,7 +1167,6 @@ cmpl(landbrukssenteret,[tunga],gartnerhallen).
 cmpl(gauldal,billag,gauldal_billag). 
 cmpl(generalwibes,v,general_wibes_street). 
 cmpl(gerhard,[schønings,skole],torget). 
-   cmpl(schøning,[videregående,skole],torget). 
 cmpl(gildevangen,hotell,søndregate). 
 cmpl(gina,[krogh,s,veg],gina_krogs_veg). 
 cmpl(gina,[krogh,s,vei],gina_krogs_veg). 
@@ -1266,7 +1276,6 @@ cmpl(hallfred,[h,veg],hallfred_høyems_vei).
 cmpl(hallfred,[høyems,veg],hallfred_høyems_vei).  %%vei
 cmpl(hallfredhøyems,vei,hallfred_høyems_vei). 
 cmpl(hallgrim,[høyems,vei],hallfred_høyems_vei). 
-    cmpl(harald,[høyems,vei],hallfred_høyems_vei). 
 cmpl(hallset,[videregående,skole],søndre_hallset).  %% RS-150104. Discrepencies: 1 eller 2 l'er: søndre_halset 
 cmpl(hallset,kirke,hallset).  %%???
 cmpl(hallset,skole,søndre_hallset).  %%Østrehallsetvangen8
@@ -1286,6 +1295,7 @@ cmpl(hanskemakker,bakken,hanskemakerbakken).
 cmpl(harald,[bothners,vei],harald_bothners_veg). 
 cmpl(harald,bothnersvei,harald_bothners_veg). 
 cmpl(harald,[botners,vei],harald_bothners_veg). 
+cmpl(harald,[høyems,vei],hallfred_høyems_vei). 
 cmpl(harald,[ourens,vei],henrik_ourens_vei). 
 cmpl(harald,hårfagres,harald_hårfagres_street). 
 
@@ -1348,9 +1358,8 @@ cmpl(hospitals,kirken,hospitalskirka).
 cmpl(hospitals,løkkan,hospitalsløkkan). 
 cmpl(hospitalsløkkan,kirke,hospitalskirka).
 
-cmpl(royal,[garden,hotell],royal_garden).   %% Flybuss 
-  cmpl(hotell,[royal,garden],royal_garden). 
-  cmpl(hotel,[royal,garden],royal_garden).   
+cmpl(hotell,[royal,garden],royal_garden). 
+cmpl(hotel,[royal,garden],royal_garden).   
 
 cmpl(hotell,[scandic,ved,moholt],esso_motorhotell). 
 cmpl(hotell,augustin,'Hotell Augustin'). 
@@ -1886,6 +1895,7 @@ cmpl(martinkrengnesvei,[],martin_kregnes_veg).
 cmpl(martinstokkens,vei,martin_stokkens_street). 
 cmpl(maskin,agentur,maskinagentur). 
 cmpl(maskinagentur,rosten,maskinagentur). 
+cmpl(melhus,[],melhus_sentrum ).  %%Street//MappingProblem %% RS-150815
 cmpl(mellom,ila,mellomila).  %%Street//MappingProblem
  %% cmpl(mellomv,[5],mellomv_5). 
  %% cmpl(mellomvegen,[5],mellomv_5). 
@@ -1983,7 +1993,7 @@ cmpl(munkvoll,sykehjem,migosenteret).  %% selsbakkveien 28
 cmpl(music,[museum],ringve_museum). 
 cmpl(musikk,[museum],ringve_museum). 
 cmpl(møllenberg,nedre,nedre_møllenberg). 
-cmpl(møllenberg,øvre,gyldenløves_gate). %% \+ sig bergs
+cmpl(møllenberg,øvre,gyldenløves_gt). %% \+ sig bergs
 cmpl(møller,[bil,as],møller_bil). 
 %%%%% cmpl(møller,bil,granåsveien).  %% haakon_vii_gate_25). 
 cmpl(møller,bil,møller_bil). 
@@ -2449,10 +2459,11 @@ cmpl(romuls,lia,romolslia).
 cmpl(romulslia,skole,skårgangen).  %% tamburhaugen 1
 cmpl(rosen,dal,rosendal). 
 
-cmpl(rosenborg,park,gyldenløves_gate). 
+cmpl(rosenborg,park,gyldenløves_gt). 
 cmpl(rosenborg,stadion,lerkendal_stadion). 
 cmpl(rosenborg,stadium,lerkendal_stadion).  %% (f o r e i g n e r s)
 cmpl(rosenborg,ungdomsskole,rosenborg_skole).
+cmpl(rosenborg,vandrerhjem,weidemannsveien). 
 cmpl(rosendal,kino,rosendal). 
 cmpl(rosendal,skole,rosenborg_skole). %% ?
 cmpl(rosendal,teater,rosendal). 
@@ -2464,13 +2475,14 @@ cmpl(rot,voll,rotvoll).
 cmpl(rotvoll,[alt],statoil_rotvoll). %% ALT %% TA-110627
 cmpl(rotvoll,[statoil],statoil_rotvoll).  %% TA-110627
 cmpl(rotvoll,n,rotvoll_nedre). 
-cmpl(royal,[garden,hotel],royal_garden). 
-cmpl(royal,[garden,hotell],royal_garden). 
 cmpl(royal,garden,royal_garden). 
+cmpl(royal,[garden,hotel],royal_garden). 
+cmpl(royal,[garden,hotell],royal_garden).   %% Flybuss 
 cmpl(rundkjøringen,[nardo],omkjøringsveien_nardo). 
 cmpl(rundkjøringen,[på,nardo],omkjøringsveien_nardo). 
 cmpl(rutebil,[stasjonen],rutebilstasjonen).  %%??
 cmpl(rønnings,bakken,rønningsbakken). 
+
 cmpl(s,['.',tasjon],ts).   %% AtB. %% TA-110310
 cmpl(s,['.',tasjonen],ts). %% AtB. %%
 cmpl(s,[p,andersensvei],s_p_andersens_street). 
@@ -2527,6 +2539,7 @@ cmpl(schieldrops,veg,e_b_schieldrops_vei).
 cmpl(schjeldrups,vei,e_b_schieldrops_vei). % Gateetternavn
 cmpl(schjetnans,veg,carl_schjetnans_vei). 
 cmpl(schjetnans,vei,carl_schjetnans_vei). 
+cmpl(schøning,[videregående,skole],torget). 
 cmpl(se,[4,ntrum],sentrum).  %% neibk
 cmpl(se,ntrum,sentrum). 
 cmpl(selsbakk,skole,selsbakk). 
@@ -2562,17 +2575,17 @@ cmpl(siemens,[as],siemens).
 cmpl(siemens,bru,siemens). 
 cmpl(siemens,bygget,siemens). 
 cmpl(siemens,krysset,siemens). 
-cmpl(sig,[bergs,alle],gyldenløves_gate).  %% \+ sig bergs
-cmpl(sigrid,[bergs,alle],gyldenløves_gate). 
-cmpl(sigrun,[bergs,alle],gyldenløves_gate).  %% Sigrun ???
-cmpl(sigurd,[bergs,all],gyldenløves_gate).   %% Makter ikke
-cmpl(sigurd,[bergs,alle],gyldenløves_gate).  %% Sigrun ???
-cmpl(sigurd,[bergs,gate],gyldenløves_gate). 
-cmpl(sigurd,bergsgate,gyldenløves_gate).  
-cmpl(sigurd,[bergsted,alle],gyldenløves_gate). 
-cmpl(sigurd,bergsalle,gyldenløves_gate). 
-cmpl(sigurdbergs,alle,gyldenløves_gate).  
-cmpl(sigurds,[berg,alle],gyldenløves_gate). 
+cmpl(sig,[bergs,alle],gyldenløves_gt).  %% \+ sig bergs
+cmpl(sigrid,[bergs,alle],gyldenløves_gt). 
+cmpl(sigrun,[bergs,alle],gyldenløves_gt).  %% Sigrun ???
+cmpl(sigurd,[bergs,all],gyldenløves_gt).   %% Makter ikke
+cmpl(sigurd,[bergs,alle],gyldenløves_gt).  %% Sigrun ???
+cmpl(sigurd,[bergs,gate],gyldenløves_gt). 
+cmpl(sigurd,bergsgate,gyldenløves_gt).  
+cmpl(sigurd,[bergsted,alle],gyldenløves_gt). 
+cmpl(sigurd,bergsalle,gyldenløves_gt). 
+cmpl(sigurdbergs,alle,gyldenløves_gt).  
+cmpl(sigurds,[berg,alle],gyldenløves_gt). 
 
 %% trouble spot
 cmpl(sigurd,biskopsgate,biskop_sigurds_gate). %% etc :-)
@@ -2663,9 +2676,9 @@ cmpl(st,[elisabeth,hospital,ila],ila).
 cmpl(st,[elisabeth,hospital],ila). 
 cmpl(st,[elisabeths,hospital],ila). 
 
-cmpl(st,[ing,dahls,gate],gyldenløves_gate). %% \+ sig bergs
-cmpl(st,[ing,dahls,gt],gyldenløves_gate). 
-cmpl(st,[ing,dahlsgate],gyldenløves_gate). 
+cmpl(st,[ing,dahls,gate],gyldenløves_gt). %% \+ sig bergs
+cmpl(st,[ing,dahls,gt],gyldenløves_gt). 
+cmpl(st,[ing,dahlsgate],gyldenløves_gt). 
 
 cmpl(st,[olav,s,hospital],st_olavs_hospital). 
 cmpl(st,[olav],st_olavs_hospital). 
@@ -2690,22 +2703,22 @@ cmpl(st,olovhospital,st_olavs_hospital).
 cmpl(st,samf,studentersamfunnet). 
 cmpl(stabbursmoen,skole,ditlev_bloms_veg).
 
-cmpl(stads,[ing,dahls,gt],gyldenløves_gate).  %% ++ sig_bergs
-cmpl(stads,[ingeniør,dahls,gate],gyldenløves_gate). 
-cmpl(stads,[ingeniør,dahls,gt],gyldenløves_gate). 
+cmpl(stads,[ing,dahls,gt],gyldenløves_gt).  %% ++ sig_bergs
+cmpl(stads,[ingeniør,dahls,gate],gyldenløves_gt). 
+cmpl(stads,[ingeniør,dahls,gt],gyldenløves_gt). 
 
-cmpl(stadsing,[dahls,alle],gyldenløves_gate). %% TA-110530
+cmpl(stadsing,[dahls,alle],gyldenløves_gt). %% TA-110530
 
-cmpl(stadsing,[dahls,gt],gyldenløves_gate).  
-cmpl(stadsingdal,gate,gyldenløves_gate).  
-cmpl(stadsingdals,gate,gyldenløves_gate). 
-cmpl(stadsingeniør,[dahls,gate],gyldenløves_gate). 
-cmpl(stadsingeniør,[dahls,gate],gyldenløves_gate).  %% \+ street,avoid rosendal
-cmpl(stadsingeniør,[dahls,gt],gyldenløves_gate). 
-cmpl(stadsingeniør,[dahls,vei],gyldenløves_gate). 
-cmpl(stadsingeniør,[dahlsgate],gyldenløves_gate). 
-cmpl(stadsingeniør,[dahlsgt],gyldenløves_gate). 
-cmpl(stat,[ingeniør,dahls,gate],gyldenløves_gate). 
+cmpl(stadsing,[dahls,gt],gyldenløves_gt).  
+cmpl(stadsingdal,gate,gyldenløves_gt).  
+cmpl(stadsingdals,gate,gyldenløves_gt). 
+cmpl(stadsingeniør,[dahls,gate],gyldenløves_gt). 
+cmpl(stadsingeniør,[dahls,gate],gyldenløves_gt).  %% \+ street,avoid rosendal
+cmpl(stadsingeniør,[dahls,gt],gyldenløves_gt). 
+cmpl(stadsingeniør,[dahls,vei],gyldenløves_gt). 
+cmpl(stadsingeniør,[dahlsgate],gyldenløves_gt). 
+cmpl(stadsingeniør,[dahlsgt],gyldenløves_gt). 
+cmpl(stat,[ingeniør,dahls,gate],gyldenløves_gt). 
 
 cmpl(stads,[ing,dahls,gate],stadsing_dahls_street).  %% Stads. ing. dahls gate  .
 cmpl(stadsingdahlsgate,[],stadsing_dahls_street). 
@@ -2715,12 +2728,11 @@ cmpl(stat,[ing,dahl,gate],stadsing_dahls_street).
 
 cmpl(statens,hus,statens_hus). 
 cmpl(statens,vegvesen,postterminalen). 
-cmpl(stating,dahlsgt,gyldenløves_gate). 
+cmpl(stating,dahlsgt,gyldenløves_gt). 
 cmpl(statoil,[bygget],statoil_rotvoll). 
 cmpl(statoil,[forskningssenter,på,rotvoll],statoil_rotvoll). 
 cmpl(statoil,[på,lade],statoil_rotvoll). 
-
-   cmpl(statoil,[på,rotvoll],statoil_rotvoll). %% rotvoll).
+cmpl(statoil,[på,rotvoll],statoil_rotvoll). %% rotvoll).
 
 cmpl(statoil,[research,center],statoil_rotvoll). 
 cmpl(statoil,forskningssenter,statoil_rotvoll). 
@@ -2729,11 +2741,11 @@ cmpl(statoil,researchcenter,statoil_rotvoll).
 cmpl(statoil,rotvoll,rotvoll). 
 cmpl(statoils,forskningssenter,statoil_rotvoll). 
 
-cmpl(stats,ingeniørsgate,gyldenløves_gate). 
-cmpl(stats,[ingenørdals,gate],gyldenløves_gate). 
-cmpl(statsingdal,gate,gyldenløves_gate). 
-cmpl(statsingeniør,[dahls,gt],gyldenløves_gate). 
-cmpl(statsingeniørs,[gt],gyldenløves_gate). 
+cmpl(stats,ingeniørsgate,gyldenløves_gt). 
+cmpl(stats,[ingenørdals,gate],gyldenløves_gt). 
+cmpl(statsingdal,gate,gyldenløves_gt). 
+cmpl(statsingeniør,[dahls,gt],gyldenløves_gt). 
+cmpl(statsingeniørs,[gt],gyldenløves_gt). 
 cmpl(stav,gjestegård,stav). 
 cmpl(stav,hotell,stav).  %%st. olavshotell\+
 cmpl(stav,set,stavset). 
@@ -2767,7 +2779,7 @@ cmpl(steinerskolen,[på,ila],skansen). %%
 cmpl(steinerskolen,[på,rotvoll],rotvoll). 
 
 cmpl(steintrøveien,endeholdeplass,steintrøveien). 
-cmpl(stjørdal,sentrum,stjørdal). 
+cmpl(stjørdal,sentrum,stjørdal_stasjon).        %% RS-150815. New bus added 310/410.
 cmpl(stokkan,haugen,stokkanhaugen).
 cmpl(stolavs,[hospital],st_olavs_hospital).  %%
 cmpl(stolavs,gt,st_olavs_gate). 
@@ -3107,7 +3119,6 @@ cmpl(trondheim,trafikkselskap,tt).  %%Also for non-places
 cmpl(trondheim,trafikkstasjon,ts). %% AtB. 
 cmpl(trondheim,university,ntnu). 
 cmpl(trondheim,vandrerhjem,weidemannsveien). 
-    cmpl(rosenborg,vandrerhjem,weidemannsveien). 
 cmpl(trondheim,verft,solsiden). 
 cmpl(trondheim,vernes,værnes).  %% NO spell on parts (if too many)
 cmpl(trondheim,værnes,værnes).  %% Flybuss trondheim værnes Align
@@ -3240,19 +3251,11 @@ cmpl(wullimsgården,[],byåsen_butikksenter). %% TA-101230
 cmpl(youth,hostel,weidemannsveien). 
 cmpl(ystgaards,vei,ingvald_ystgaards_street). 
 cmpl(zion,sykehjem,ole_hogstads_street-16).  %% Tegleverkskrysset
-cmpl(å,[berggårdsvei],arne_bergsgårds_vei). 
-cmpl(å,grevskottsvei,anton_grevskotts_veg). 
-cmpl(ås,skole,åsveien_skole).  %%?
-cmpl(åsheim,[ungdom,skole],åsheim_skole). 
-cmpl(åsheim,[videregående,skole],åsheim_skole).  %% ? 
-cmpl(åsheim,ungdomsskole,åsheim_skole). 
-cmpl(åsv,skole,åsveien_skole). 
-cmpl(åsveien,skolen,åsveien_skole). 
-cmpl(åsvenein,skole,åsveien_skole).  %% ?
- cmpl(ø,[flatås,v],øvre_flatåsveg).  %%Syndrome
- cmpl(ø,[flatås,vei],øvre_flatåsveg).  %% \+ direction
+
 cmpl(ø,[jakobsli],jakobslivegen_øvre). 
 cmpl(ø,berg,østre_berg). 
+cmpl(ø,[flatås,v],øvre_flatåsveg).  %%Syndrome
+cmpl(ø,[flatås,vei],øvre_flatåsveg).  %% \+ direction
 cmpl(ø,flatåsen,øvre_flatåsveg). 
 cmpl(ø,jakobsliv,jakobslivegen_øvre). 
 cmpl(ø,rosten,østre_rosten). 
@@ -3262,7 +3265,7 @@ cmpl(østmarka,sykehus,østmarkveien). % (Østmarkveien15). Avoid underspecified
 cmpl(østre,eberg,østre_berg). 
 cmpl(østre,ber,østre_berg). 
 cmpl(østre,berg,østre_berg). %% AtB 
-cmpl(østre,roten,østre_roten).         %% RS-150111. Spell-check. Synplace?
+cmpl(østre,roten,østre_rosten).         %% RS-150111. Spell-check. Synplace?
 cmpl(østre,være,være_østre). 
 cmpl(øverste,singsaker,singsaker).  %% EOB:-)
 cmpl(øvre,[charlottenlund],skovgård). 
@@ -3280,7 +3283,7 @@ cmpl(øvre,flatåsvei,øvre_flatåsveg).
 cmpl(øvre,høgreina,høgreina_øvre). 
 cmpl(øvre,jakobsli,jakobslivegen_øvre).  %% iv_!#¤ %%changed?  %% feil rute 66
 cmpl(øvre,jakobsli_street,jakobslivegen_øvre).  %% street ?
-cmpl(øvre,møllenberg,gyldenløves_gate). 
+cmpl(øvre,møllenberg,gyldenløves_gt). 
 cmpl(øvre,romolslia,romolslia_øvre). 
 cmpl(øvre,rosten,østre_rosten). 
 cmpl(øvre,singsaker,singsaker). 
@@ -3289,2058 +3292,23 @@ cmpl(øvreflatåsen,veg,øvre_flatåsveg).
 cmpl(øvremøllenberg,gate,øvre_møllenberg_street). 
 cmpl(øya,helsehus,øya_helsehus). %RS-110926
 
-
-%%% FOREIGN (to Trondheim) places
-
-
-foreign(aalesund). 
-foreign(aardal).  %% \+ aurdal
-foreign(aare). 
-foreign(abildsø).
-foreign(abrahallen). 
-foreign(adamstuen).
-foreign(afjord).
-foreign(agdenes). 
-foreign(agder). 
-foreign(ajer). 
-foreign(aker). 
-foreign(akershus). 
-foreign(aksdal). 
-%% foreign(alesund). %% -> synplace 
-foreign(alna). 
-foreign(alstad).
-foreign(alsvåg). 
-foreign(alta). 
-foreign(alteren). 
-foreign(alvdal). 
-foreign(alversund).  
-foreign(alvim).   
-foreign(alværn). 
-foreign(alvøen).  
-foreign(amdal). 
-foreign(ammerud). 
-foreign(andalsnes). 
-foreign(andebu). 
-foreign(andenes).
-foreign(andselv). 
-foreign(andøy).  
-foreign(andøya). 
-foreign(anglevik). 
-foreign(ankenes).
-foreign(arendal). 
-foreign(arna).    
-foreign(arnvika).
-foreign(arnøy).  
-foreign(arvika). 
-foreign(asker). 
-foreign(askim). 
-foreign(askøy). 
-foreign(aspelund). 
-foreign(aspmyra).  
-    foreign(aspemyra).   %%  ?
-foreign(asserøya). 
-foreign(augland). 
-foreign(aukra). 
-foreign(auli). 
-foreign(aundalen). 
-foreign(aurdal). 
-foreign(aure). 
-foreign(aurskog). 
-foreign(austagder). 
-foreign(austråt). 
-foreign(austrått). 
-foreign(avaldsnes).
-foreign(averøy). 
-foreign(avløs). %% Bærum 
-
-foreign(bagn).
-%% foreign(balestrand). %%K 
-foreign(ballangen). 
-foreign(ballstad). 
-foreign(bamble). 
-foreign(bangsund). 
-foreign(bardufoss).
-foreign(barkåker). 
-foreign(begby).  
-foreign(beisfjord).
-foreign(beitstad). 
-foreign(bekkelaget).
-foreign(bekkestranda). 
-foreign(bekkestua).  %% (bus center)
-foreign(bergen). 
-foreign(bergkrystallen). 
-foreign(bergmo).  
-foreign(bergseng).  
-foreign(bergsåsen). 
-foreign(berkåk).
-foreign(berlevåg). 
-%% foreign(berner).   %% carl
-foreign(bessaker). 
-foreign(bildøy).   
-foreign(billingstad). 
-foreign(biri).  
-foreign(birkeland). 
-foreign(birtavarre).
-foreign(bislet).  
-foreign(bislett). 
-foreign(bjelland). 
-foreign(bjerkaker).
-foreign(bjerke). 
-foreign(bjerkvik). 
-foreign(bjerkøya). 
-
-foreign(bjordal). 
-foreign(bjorli). 
-
-foreign(bjugn). 
-  foreign(bjung). 
-foreign(bjølsen). 
-foreign(bjølstad). 
-foreign(bjørbekk).
-foreign(bjørkelangen).  %% (toget på NTH ?)
-foreign(bjørnevatn). 
-foreign(bjørnsletta). 
-foreign(bjørset). 
-foreign(blakstad). 
-foreign(blaker).
-foreign(blefjell). 
-foreign(bleiker). 
-foreign(bleikemyr).
-foreign(bleikmyr).
-foreign(bleikvassli).
-    foreign(bleikvasslia). %
-foreign(blessom). 
-foreign(blindern). 
-foreign(blindheim). 
-foreign(blommenholm).  
-foreign(blystadlia). 
-foreign(bodø). 
-foreign(bogerud). 
-foreign(bognes). 
-foreign(bolsøya).
-foreign(bommestad).
-foreign(bones). 
-foreign(borgen).    %% oslo
-foreign(borgestad).
-foreign(borkenes).
-foreign(borre). 
-foreign(borgund).  
-foreign(borlaug).  
-foreign(bosberg). 
-foreign(bossekop). 
-foreign(botngard). 
-foreign(botngård). 
-foreign(botnhamn). 
-foreign(botteråsen).
-foreign(bragenes). 
-foreign(brandbu). 
-foreign(brannfjell).
-foreign(braskereidfoss). 
-foreign(brattlikollen). 
-foreign(brattholmen).
-foreign(brattvåg). 
-foreign(brattås).    %% TA-100828 ??? [name(bauta,n,0),name(bratts,n,0)]
-foreign(breistein). 
-foreign(breivang). 
-foreign(brekken). 
-foreign(brekkerød). 
-foreign(brekktrøa). 
-%% foreign(brekkåsen). %% MW-121119 bus301 
-foreign(brekstad). 
-foreign(bremanger).  
-foreign(bremsnes).
-foreign(brennåsen).
-foreign(brevik). 
-foreign(bragernes).
-foreign(brakahaug).
-foreign(briskeby).
-foreign(bruhagen).  
-foreign(brummunddal). %% off spel
-   foreign(brumundal). 
-   foreign(brumunddal). 
-foreign(bruteig). 
-foreign(bryn).  
-foreign(bryne). 
-foreign(brøholt). 
-foreign(brønnøysund). 
-foreign(brøttem). 
-foreign(brånåsen). 
-foreign(bråvann). %% ?
-foreign(budal). 
-foreign(budalen). 
-foreign(bugården). 
-foreign(buktamo).  
-foreign(buktamoen).
-foreign(buktelia).
-foreign(burfjord). 
-foreign(buskerud). 
-foreign(buskerud). 
-foreign(buvik). 
-foreign(buvika). 
-foreign(buås).  %% Hommelvik
-foreign(bygdin). 
-foreign(bygdø). 
-foreign(bygdøy).  %% oslo
-foreign(byrkjelo). 
-foreign(bårdshaug). 
-foreign(båsmo). 
-foreign(båsmoen).  %% Nordland 
-foreign(båtsfjord). 
-foreign(bærum). 
-foreign(bø).  %% i Telemark 
-foreign(bødalen). 
-foreign(bøler).
-foreign(bøleråsen).
-foreign(bømlo). 
-foreign(bønes). 
-foreign(børsa). 
-foreign(børssa). 
-
-foreign(carl_berners_plass). 
-
-foreign(dalby). 
-foreign(dalselv). 
-foreign(dalsgrenda). 
-foreign(dalsøyra). 
-foreign(darbu). 
-foreign(davik). 
-foreign(dikemark). 
-foreign(dirdal). 
-foreign(disen).    
-foreign(djupdalen). 
-foreign(djupvika). 
-foreign(dokka). 
-foreign(dolven). 
-foreign(dombaas). 
-foreign(dombas). 
-foreign(dombås). 
-foreign(dovre). 
-foreign(dovrefjell). 
-foreign(drabløs).  %%?
-foreign(dragesten). 
-foreign(dragsten). 
-foreign(draksten). 
-foreign(drammen). 
-foreign(drammensveien). 
-foreign(drange). 
-foreign(drangedal).
-foreign(drevsjø). %% ?  
-foreign(drevvatn).
-foreign(drøbak). 
-foreign(dvergsnes). 
-foreign(dyrnes). 
-foreign(dyrvik). 
-foreign(edøy). 
-foreign(egersund). 
-foreign(egge). 
-foreign(eggemoen). 
-foreign(eggkleiva). 
-foreign(eid). 
-foreign(eidanger). %% TA-100511
-foreign(eide). 
-foreign(eidfjord). 
-foreign(eidsbøen).
-foreign(eidsdal). 
-foreign(eidsfjord). 
-foreign(eidsmo).   
-foreign(eidsvold). 
-   foreign(eidsvoll). 
-foreign(eidsvåg). 
-foreign(eidsvågneset).
-foreign(eidså). 
-foreign(eik). 
-foreign(eikangervåg).
-foreign(eikelandsosen).
-foreign(eikeli).   
-foreign(eiker).   
-foreign(eiksmarka).
-foreign(eikås).   
-foreign(ekeberg). 
-foreign(ekholt).   
-foreign(ekne). 
-foreign(eknes).  
-foreign(ellingsrud). 
-foreign(ellingsøy).  
-foreign(elnesvågen). 
-foreign(elsfjord).  
-foreign(eltonåsen).  
-foreign(elvebakken). 
-foreign(elvenes).  
-foreign(elveneset). 
-foreign(elverum). 
-foreign(elvestad). 
-foreign(elvran). 
-foreign(enebakk). 
-foreign(engdal). 
-foreign(engerdal). 
-foreign(engelsviken).
-foreign(engervannet). %% Sandvika 
-foreign(ensjø). 
-foreign(erdal).  
-foreign(espa). 
-foreign(espeland).
-foreign(etne). 
-foreign(etterstad). 
-foreign(evanger). 
-foreign(evenes). 
-foreign(evenskjer).
-foreign(evenstad). 
-foreign(evje). 
-foreign(evjen). 
-foreign(eydehavn). 
-
-foreign(fagerborg).  %% oslo
-foreign(fagernes). 
-foreign(fagerstrand). 
-%% foreign(falkeid). %% not place
-foreign(falkum).
-foreign(falstad). 
-   foreign(falstadsenteret).
-foreign(fana). 
-foreign(fannerm). %%*
-foreign(fannrem). 
-foreign(fannremsmoen). 
-foreign(fanrem). 
-foreign(fanremmen). 
-foreign(fantoft). 
-foreign(farmandstredet). 
-foreign(farsund). 
-foreign(fauskanger). 
-foreign(fauske). 
-foreign(feda). 
-foreign(fenes). 
-foreign(fenstad).   %% (\+ferstad)
-foreign(ferkingstad). 
-foreign(fet).
-foreign(fetsund). 
-foreign(fevik). 
-foreign(fevåg). 
-foreign(figgjo). 
-foreign(fillan). 
-foreign(filtvedt). 
-foreign(finmark). 
-foreign(finnefjorden). 
-foreign(finnfjordbotten).  %% botn ?
-foreign(finnmark). 
-foreign(finnmarksvidda). 
-foreign(finnsnes). foreign(finsnes). 
-foreign(finstad).  
-foreign(fiskarstrand).
-foreign(fiskebøl).  
-foreign(fitjar). 
-foreign(firda).  
-foreign(fjellhamar). 
-    foreign(fjellhammer).
-foreign(fjerdingby). 
-foreign(fjøsanger).  
-
-foreign(fjellværøy). 
-foreign(fjordgård).
-foreign(fjæremfossen). 
-foreign(flatanger). 
-foreign(flateby).
-foreign(flaktveit).
-foreign(flatøy).
-foreign(flekke). 
-foreign(flekkefjord). 
-foreign(flekkerøy). 
-   foreign(flekkerøya).
-foreign(fjertnes). %% :-) %% TA-101123
-foreign(fleksnes). %% 
-foreign(flesberg).  
-foreign(fleskmo).
-foreign(flesland). 
-foreign(flisa). 
-foreign(flisnes). 
-foreign(flora). 
-foreign(flornes). 
-foreign(florvåg).
-foreign(florø). 
-foreign(flotmyr).
-foreign(flå). 
-foreign(flåklypa). %%  :-)
-foreign(flønes). 
-foreign(folbu).  %%
-foreign(foldrøy). 
-foreign(folkvang). 
-foreign(follafoss). 
-foreign(follbu). 
-foreign(follebu). 
-foreign(folkestad). 
-foreign(follese).   %% e 
-foreign(fongen). 
-foreign(fornebu). 
-foreign(forus).  %% Stavanger
-foreign(fosen).  %% ( \+ Osen)
-foreign(fosenhalvøya). 
-foreign(fosnavåg). 
-foreign(fossbrenna).
-foreign(frafjord).  
-foreign(framnes). 
-foreign(fredrikstad). 
-foreign(frei). 
-foreign(frekhaug). 
-foreign(frogn).   
-foreign(frogner).  %% oslo
-foreign(frognerparken).  %% oslo
-foreign(frol). 
-foreign(froland). 
-foreign(fron). %% Sør Fron %% TA-110415
-foreign(frosta). 
-   foreign(frostad). %% sp %%  \= Ferstad
-foreign(frydendal).
-foreign(frysja). 
-foreign(frøya).
-foreign(frøya). foreign(frøja). 
-foreign(furnes). 
-foreign(furukollen). 
-foreign(furuset). 
-foreign(fusa). 
-foreign(fyllingsdalen). 
-foreign(førde). 
-foreign(førre).
-foreign(fåberg).
-foreign(fåvang). %% TA-101228
-
-foreign(galdhøpiggen). 
-foreign(galgeberg). 
-foreign(ganddal). 
-foreign(gangsås).  %%~Harstad
-foreign(gardemoen). 
-foreign(gardermoen). 
-foreign(garderåsen). 
-foreign(garnes).  
-foreign(gauldal). 
-foreign(gaulosen). 
-foreign(gausdal). 
-foreign(gaustad).
-foreign(gautefall). 
-foreign(gauterød) . 
-foreign(geilo). 
-foreign(geiranger). 
-foreign(geithus). 
-foreign(gibostad). 
-foreign(gimle).  %% ?
-foreign(gimlekollen). 
-%% foreign(gimse).  %% ? = Gimle(veien) %% bus301 %% MW-121119
-foreign(giæverbukta). 
-foreign(giske).   %% Ålesund
-foreign(gjelleråsen).  %% oslo
-foreign(gjemnes). 
-foreign(gjende). 
-foreign(gjendesheim). 
-foreign(gjengstø). 
-foreign(gjennestad).
-foreign(gjerde). 
-foreign(gjerdrum). 
-foreign(gjerdsvika).
-foreign(gjerpen).   %% TA-101201
-foreign(gjettum).  
-foreign(gjølme). 
-foreign(gjøra). 
-foreign(gjøvik). 
-foreign(glesnes). 
-foreign(glittertind). %% :-)
-foreign(glomfjord).
-foreign(glomma).  %% TA-110105 ?
-foreign(gloppen). 
-foreign(gluppe).
-foreign(glåmos). 
-foreign(godalen). 
-foreign(gokk). %% :-) 
-foreign(gol). 
-foreign(gomsrud).  
-foreign(gotterud). 
-foreign(gran). 
-foreign(granholmen).
-foreign(gravdal). 
-foreign(grefsen).   %%  \+ Grensen 
-foreign(grenland). 
-foreign(gressvik). 
-foreign(greverud). 
-foreign(greåker). 
-foreign(grimseid).
-foreign(grimstad). 
-foreign(grindaheim). 
-foreign(grindal). 
-foreign(grindbakken). 
-foreign(grinde). 
-foreign(grinder). 
-foreign(grong). 
-foreign(grorud). 
-foreign(grotli).   
-foreign(gruben).    
-foreign(grua).
-foreign(grunerløkka).  %% yy
-foreign(gryllefjord). 
-foreign(grynerløkka). 
-foreign(grøa).  %%?
-foreign(grødem). 
-
-foreign(grønnland).  %% Oslo       %% TA-101118 (nn)
-%% foreign(graønnland). %% avoid grønlia %% 
-%% foreign(grønlan).    %%
-
-foreign(grønlund).  
-foreign(grønnåsen).
-foreign(gråbrekk). 
-foreign(gråkammen). 
-foreign(grålum).  
-foreign(gudvangen).
-foreign(gulldalen). 
-foreign(gullhaug). 
-foreign(gulset).  
-foreign(gulskogen). 
-foreign(gulsvik). 
-foreign(gutvik). 
-foreign(gvarv). 
-foreign(gyllenborg).
-foreign(gålå). 
-foreign(gåsbu). 
-
-foreign(haakonsvern). 
-foreign(haddal).  
-foreign(hadeland). 
-foreign(hafrsfjord). 
-foreign(hafslund).
-foreign(hagafjell). 
-foreign(hagavik). 
-
-foreign(hafjell). 
-foreign(hakadal). 
-foreign(halden). 
-foreign(hallagerbakken).
-foreign(hallingby). 
-foreign(hallingdal). 
-foreign(halmstad). %% Østfold (+S)
-foreign(halsa). 
-foreign(halsøy). 
-foreign(haltdal). 
-foreign(haltdalen). 
-foreign(hamar). 
-foreign(hamarøy). 
-foreign(hammarby). 
-foreign(hammerfest). 
-foreign(hamna). 
-foreign(hamnvik). 
-foreign(hamresanden). 
-
-foreign(hanestad). 
-foreign(hanevik).
-foreign(hankø).     %% TA-101124
-foreign(hannestad).
-foreign(hannevika). 
-foreign(hanøy).   
-foreign(heer).     %%  +her
-foreign(heie).     %% TA-110429
-foreign(hellesøy).
-foreign(hellvik).
-  foreign(hetlevik). 
-foreign(hen).      %%  nw ?
-foreign(henningsvær). 
-
-foreign(hardanger). 
-foreign(hareid). 
-foreign(harestua). 
-foreign(harstad).  %% \=Havstad
-foreign(hasle).   
-foreign(haslum).   %%  Bærum
-foreign(hasselvika). 
-foreign(hatlelia). 
-foreign(hatlestad).
-foreign(hattfjelldal). 
-foreign(hattrem). 
-foreign(haugaland).
-foreign(haugastøl). %% TA-110803
-foreign(hauge).     %% \+ hagen  
-foreign(haugenstua). 
-foreign(haugerud). 
-foreign(haugesund). 
-foreign(haugsbygd).  %% TA-110128
-foreign(haugsbygda).
-foreign(haukeland).  
-foreign(haukelid). 
-foreign(haukeliseter). 
-foreign(hauketo). 
-foreign(haukåa). 
-foreign(haus). 
-foreign(havdal). 
-foreign(havik). 
-foreign(havøysund). 
-foreign(hedmark). 
-foreign(hegra). 
-foreign(heiane). 
-foreign(heimsjøen). 
-foreign(heistad).
-foreign(heistadmoen).
-foreign(helgeland).    
-foreign(helgelandsmoen). 
-foreign(helgeroa). 
-%% foreign(hell). %% bus301 %% MW-121119 
-foreign(hella). 
-foreign(hellandsjøen). 
-foreign(helleland).
-foreign(hellemyr). 
-foreign(hellerud). 
-foreign(helleskaret).
-foreign(hellesylt).
-foreign(hellåsen).  %% ?
-foreign(helsfyr). 
-foreign(helsingborg). 
-foreign(hembre). 
-foreign(hemne). 
-foreign(hemnekjølen). 
-foreign(hemnes).    % ?
-foreign(hemnesberget). 
-foreign(hemnskjel). 
-foreign(hemsedal). 
-foreign(heradsbygda). 
-foreign(herdla).   
-foreign(hernes). 
-foreign(herringen).  
-foreign(herøy).   
-    foreign(herøya).
-foreign(hessa). 
-foreign(hessdalen). 
-foreign(hesseng). 
-foreign(hestvika). 
-foreign(hillerbyen). 
-foreign(hillesøy). 
-foreign(hillevåg).
-foreign(hinna).  %% Stvg
-foreign(hisøy). 
-foreign(hitra). 
-foreign(hjellestad). 
-foreign(hjelmeland). 
-foreign(hjelset). 
-foreign(hjerkin). 
-foreign(hjerkinn). 
-foreign(hjuksebø). 
-foreign(hokksund). 
-foreign(hole). 
-foreign(hollingen). 
-foreign(holmenenga). 
-foreign(holmenkollen). 
-foreign(holmestrand). 
-foreign(holmlia). 
-foreign(holmsbu).
-foreign(holtålen). 
-foreign(holum).  
-foreign(holvik). 
-foreign(holvika). 
-foreign(homborsund). 
-%%foreign(homelvik). 
-%%foreign(homelvika).  
-%%foreign(hommelvik). 
-%%foreign(hommelvika). 
-%%foreign(hommelviken). 
-foreign(hommersåk). 
-foreign(honningsvåg). 
-foreign(hordaland). 
-foreign(hordvik). 
-foreign(hordvikneset). 
-foreign(horg). 
-foreign(horstad).
-foreign(horten). 
-foreign(hosanger).
-foreign(hosle).    %% TA-101021
-foreign(hov). 
-foreign(hovda).
-foreign(hovdebygda). 
-foreign(hovden). 
-foreign(hovet). 
-foreign(hovin). 
-foreign(hovind). 
-foreign(hovjordet).
-foreign(hovseter). 
-foreign(huk).  %% Oslo 
-foreign(humelvik). 
-%%foreign(hummelvik). 
-%%foreign(hummelvika).
-foreign(hunderfossen). %% TA-110228
-foreign(hundhameren). 
-foreign(hundhammer). 
-foreign(hundhammeren). 
-foreign(hundorp). 
-foreign(hakkebakkeskogen).  %% :-)
-foreign(hundremeterskogen). %% :-)
-foreign(hunstad). 
-foreign(hundvåg).  %% Stavanger
-foreign(hurdal). 
-foreign(hurum). 
-foreign(hushovd). 
-foreign(husnes).
-foreign(husvik).
-foreign(hvaler). 
-foreign(hvalstad). 
-foreign(hvalstrand). 
-foreign(hvasser).    
-foreign(hvittingfoss). 
-foreign(hylkje). 
-foreign(hysnes). 
-foreign(hægeland).
-foreign(høgåsen). 
-foreign(høietun).
-foreign(høland). 
-foreign(høle).  
-foreign(hølen).  
-foreign(høllen). 
-foreign(hølonda). 
-foreign(hønefoss). 
-foreign(høvik). foreign(høvikodden). 
-foreign(høvåg). 
-foreign(høyanger). 
-foreign(høybråten). 
-foreign(høylandsbygd).
-foreign(høysand). 
-foreign(håkvik). 
-foreign(håkonsvern). 
-foreign(hånes). 
-foreign(hårberg). 
-foreign(håvik).  
-
-foreign(ilseng).  
-foreign(inderøy). 
-    foreign(innerøya).
-foreign(ingeberg).
-foreign(inndyr). 
-foreign(isfjorden). 
-foreign(jakobsnes). 
-foreign(jar).  %% Bærum \+ Jarvegen
-foreign(jaren). 
-foreign(jektvik).
-foreign(jelsnes).
-foreign(jenserud). 
-foreign(jerpestad). % foreign(jerpstad). 
-foreign(jervan). 
-foreign(jessheim). 
-foreign(jessnes). 
-foreign(jevnaker). 
-foreign(jomås).  
-foreign(jotunheimen). 
-foreign(julsundet). 
-foreign(justvik). 
-foreign(juvik).  
-foreign(jæren).
-foreign(jøa). 
-foreign(jølster). 
-foreign(jømna). 
-foreign(jønsberg). 
-foreign(jørpeland). 
-foreign(jørstadmoen).
-foreign(jøssåsen). 
-foreign(jøvik). %% sic 
-foreign(jåttå).
-
-foreign(kalvøya). 
-foreign(kabelvåg). 
-foreign(kalbakken). 
-foreign(kaldbakken). 
-foreign(kaljord).  
-%% foreign(kalvås).  %% Anton Kalvaas gate
-foreign(kampen). %% Oslo \+ Kammen
-%% foreign(kamset).     %% ? (sounds genuine) NO 
-foreign(kapp). %% gjøvik 
-foreign(karasjok). foreign(karasjokk). %% ? 
-foreign(karihaugen).
-foreign(karlsrud).   
-foreign(karmsund).
-foreign(karmøy).   
-foreign(kasfjord). 
-foreign(kastanjesletta). 
-foreign(kattfjord).
-foreign(kaupang). 
-foreign(kaupanger). 
-foreign(kautokeino). 
-foreign(kila).  
-foreign(kilbotn). %%
-foreign(kilsund). 
-foreign(kinsarvik). 
-foreign(kippermoen). 
-foreign(kirkenes). 
-foreign(kirkenær). 
-foreign(kirkerud).  
-foreign(kistefjell). 
-foreign(kjeller). 
-foreign(kjelsås). 
-foreign(kjerrgarden).  
-foreign(kjerringøy).  
-foreign(kjevik). 
-foreign(kjøde). 
-foreign(kjøpsvik).
-foreign(kjøsterud).  
-foreign(klakegg).   
-foreign(klekken).   
-foreign(klevjerhagen).
-foreign(kleive).  %% Molde
-foreign(klepp).
-foreign(kleppe). 
-foreign(kleppekrossen). 
-foreign(kleppestø). 
-foreign(klinga). 
-foreign(klyve). 
-foreign(kløfta). 
-foreign(kløvberget). 
-foreign(knapstad).
-foreign(knarberg). 
-foreign(knarvik). 
-foreign(kokstad). 
-foreign(kolbotn). 
-foreign(kolbu). %% Østre Toten  \+ Klæbu %% TA-110629
-foreign(kolvereid). 
-foreign(kongsbakken).
-foreign(kongsberg). 
-foreign(kongsskog). %% ss %%  Nittedal
-foreign(kongsskogen).
-foreign(kongsvinger). 
-foreign(kongsvoll). 
-foreign(konnerud). 
-foreign(kopervik). 
-   foreign(koppervik). 
-foreign(koppang). 
-foreign(kopperud). 
-foreign(korgen).  
-foreign(korsvoll). 
-foreign(kragerø). 
-foreign(kringlebotn).
-foreign(kristiansand). 
-foreign(kristiansund). 
-foreign(krokeide). 
-foreign(krokelvdalen). 
-foreign(kroken).   
-foreign(krokstadelva).
-foreign(krokstadøra). 
-foreign(krokvolden).  
-foreign(kronstad).  
-foreign(krøderen).  
-foreign(krødsherad). 
-foreign(kråkenes). 
-foreign(kråkerøy).  
-foreign(kråkstad).  
-foreign(kråkvåg). 
-foreign(kulstadlia). 
-foreign(kurland). 
-foreign(kvalvik). foreign(kvalvika). 
-foreign(kvalsvik). 
-foreign(kvaløy). 
-  foreign(kvaløya). 
-foreign(kvaløysletta). 
-foreign(kvalvåg).
-foreign(kvam). 
-foreign(kvamskogen). 
-foreign(kvarstein). 
-foreign(kvernaland). %%  the place
-    foreign(kverneland). %%  na?
-foreign(kvernevik). 
-foreign(kvikne). 
-foreign(kviltorp).  
-foreign(kvina).     
-foreign(kvinesdal). 
-foreign(kvinherad). 
-foreign(kvithamar). 
-%% foreign(kvitland). %% bus301 %% MW-121119 
-foreign(kvæfjord).  
-foreign(kværnerbyen).
-foreign(kvål).
-foreign(kvås). 
-foreign(kyrkseterøra). 
-  foreign(kyksæterøra). 
-  foreign(kyrkseterrøra). 
-  foreign(kyrksetøra). 
-  foreign(kyrksæterøra). 
-  foreign(kyrksætrøra). 
-  foreign(kyrseterøra). 
-  foreign(kyrsæterøra). 
-foreign(kårvåg). 
-
-foreign(kyrkjebø).
-foreign(lahaugmoen).
-foreign(lahelle). 
-foreign(lakselv). 
-foreign(laksevåg). 
-foreign(lambertseter). 
-foreign(landro).
-foreign(landrø). 
-foreign(landås). 
-foreign(landøya). 
-foreign(langdalen).  %%??
-foreign(langesund). 
-foreign(langevåg).  
-foreign(langhus).  %% ? 
-foreign(langmyra). 
-foreign(langnes). 
-foreign(langøya).
-foreign(larkollen). 
-foreign(larseng). 
-foreign(larsnes).  
-foreign(larvik). 
-foreign(lauvsnes). 
-foreign(lauvstad). 
-foreign(lauvøya). 
-foreign(leikanger). 
-foreign(leiknes).  %% TA-110125
-foreign(leikvoll). 
-foreign(leinøra). 
-foreign(leirsjøen).
-foreign(leirsund).  
-foreign(leirvik). 
-foreign(leistad). 
-foreign(leka). 
-foreign(lekka).  %% namsos
-foreign(leknes). 
-foreign(leksnes).  %% ?
-foreign(leksvik). 
-    foreign(leksvika). 
-foreign(lena). %% Toten 
-foreign(lensvik). foreign(lensvika). 
-foreign(lepsøy). 
-foreign(ler). 
-foreign(lerstad). 
-foreign(lervik). 
-foreign(levanger). 
-foreign(liabø).  %% ?
-foreign(lier). 
-foreign(lierberget). 
-foreign(lierbyen). 
-foreign(lierne). 
-foreign(lierskogen). 
-foreign(lierstranda).
-foreign(liertoppen).
-foreign(liknes). 
-foreign(lilleaker).  %% Oslo 
-foreign(lillehamer). 
-foreign(lillehammer). 
-foreign(lillesand). 
-foreign(lillestrøm). 
-foreign(lillo).   
-foreign(lindeberg).  %% Oslo
-foreign(lindern). 
-foreign(linderud). 
-foreign(linderudsletta). 
-foreign(lindesnes). 
-foreign(linesøya).  %% ?
-foreign(lisleby).   %% lilleby ?
-foreign(lismarka). 
-foreign(lista).    
-foreign(ljabru). 
-%% foreign(ljan). %% Oslo ??  -> Lian?
-foreign(lodalen).
-foreign(loddefjord). 
-foreign(loen). 
-foreign(lofoten). 
-foreign(lom). 
-foreign(lommedalen). 
-foreign(lomundal). 
-foreign(lonevåg). 
-foreign(longum). 
-foreign(lundamo). 
-foreign(lundamoen). 
-foreign(lundermoen). %% confuse lundamo ? 
-foreign(lunderåsen). %% confuse lundåsen ? 
-foreign(lundsvågen).   
-foreign(lunner).    
-foreign(lura).   
-foreign(lutvann). %% TA-101026
-foreign(lye).  
-foreign(lyngbø). 
-foreign(lyngdal). 
-foreign(lyngmoen). 
-foreign(lyngseidet). 
-foreign(lysaker).    %% Oslo 
-foreign(lysejordet). 
-foreign(lysekil). 
-foreign(lysøysund). 
-foreign(lånke). 
-foreign(lærdal). 
-foreign(lødingen). 
-foreign(løken). 
-foreign(løkkemyra). 
-foreign(løkken). 
-foreign(lønset). 
-foreign(løpsmark). 
-foreign(løpsmarka).
-foreign(lørenfallet). %%  ?
-foreign(lørenskog). 
-foreign(løten). %%  \+ Løften
-foreign(løvenstad).
-foreign(løvset). 
-foreign(madla). 
-foreign(magerholm).  
-foreign(magnor). 
-foreign(maihaugen).
-foreign(majorstua). 
-foreign(majorstuen). 
-foreign(malm). 
-foreign(malmefjorden). 
-foreign(malmøya). 
-%foreign(malvik). %% RS-120702 Malvik is provided by AtB, and happens to be where Marius Wollamo lives.
-foreign(mandal). 
-%% foreign(manger).  %% mange ? %% TA-110125
-foreign(manglerud).
-foreign(manndalen).
-foreign(mannsverk).
-foreign(manstad).
-foreign(marikoven). 
-foreign(mastemyr). 
-foreign(matre).  
-foreign(mebygda). 
-foreign(medkila). 
-foreign(mefjordvær). 
-foreign(megård). 
-foreign(mehamn). 
-foreign(melbu). 
-foreign(meldal). 
-foreign(melhus). 
-foreign(meling). 
-foreign(melsom). 
-foreign(melsomvik).
-foreign(meråker). 
-foreign(mesnali). 
-foreign(midtbygda). 
-foreign(midtsand). 
-foreign(midtsanden). 
-foreign(midtstuen).
-foreign(midttun). 
-foreign(milde).   %% Bergen/Fana?
-foreign(minde). 
-foreign(minnesund).
-foreign(mjøland).   %% (?)
-foreign(mjømna).   
-foreign(mjøndalen). 
-%% foreign(maridalsveien).  %% oslo 
-foreign(mariero).  
-foreign(moa). 
-foreign(mo_i_rana). 
-foreign(modalen). 
-foreign(moelv). 
-   foreign(moelven).  %% ?
-foreign(moensletta).
-foreign(moi).         %% Rogaland
-foreign(moland). 
-foreign(molde). 
-foreign(molnes). 
-foreign(momarka). 
-foreign(momarken). 
-foreign(momoen). 
-foreign(mongstad).
-foreign(montebello). %% TA-100519
-foreign(mortensnes). 
-foreign(mortensrud).
-foreign(morvik). 
-foreign(mosby).
-foreign(mosjøen). 
-foreign(moskog). 
-foreign(moss). 
-foreign(mosseporten). 
-foreign(mosserød).
-foreign(mostadmarka). 
-foreign(mosvik). 
-foreign(mosvika). 
-foreign(moum). 
-foreign(movik).  
-%% foreign(muruvik). bus301 %% MW-121119
-%% foreign(muruvika). bus301 %% MW-121119
-foreign(myre).   
-foreign(myrland).
-foreign(myrvåg). 
-foreign(mysen). 
-foreign(måløy). 
-foreign(måndalen). 
-foreign(møre). 
-foreign(møre_og_romsdal). 
-foreign(mørkved).  %% (Bodø) 
-foreign(møvik).   
-
-foreign(nabbetorp). 
-foreign(nadderud). 
-foreign(nadderudjordet). 
-foreign(nakkerud). 
-foreign(namdal). 
-foreign(namdalen). 
-foreign(namdalseid). 
-foreign(namskogan). 
-foreign(namsos). 
-foreign(namsskogan). 
-foreign(nannestad). 
-foreign(nanset). 
-foreign(narvik). 
-foreign(nasjonalteateret). 
-foreign(nationalteateret). 
-foreign(nationaltheateret). 
-foreign(nasjonalteatret). 
-foreign(nationalteatret). 
-foreign(nationaltheatret). 
-foreign(naustdal). 
-foreign(nenset).
-foreign(nesbru). 
-foreign(nesbyen). 
-foreign(neshov). %% :-) %% BerlPop
-foreign(neskollen). 
-foreign(nesna). 
-foreign(nesodden). 
-foreign(nesoddtangen). 
-foreign(nessane).  
-foreign(nesset). 
-foreign(nestun).  
-foreign(nesttun). 
-foreign(nesøya). 
-foreign(nipedalen). 
-foreign(nittedal). 
-foreign(nodeland). 
-foreign(nodelandsheia). 
-foreign(nordagutu).   %% TA-101206
-foreign(nordby). 
-foreign(nordbyen). 
-foreign(nordfjord). 
-foreign(nordfjordeid).
-foreign(nordheimsund). 
-foreign(nordkapp). 
-foreign(nordkisa). 
-foreign(nordkjosbotn).
-foreign(nordland). 
-foreign(nordlandet).
-foreign(nordmarka).  %% (Oslo)
-foreign(nordmela). 
-foreign(nordnes). 
-foreign(nordnorge). 
-foreign(nordstrand). 
-foreign(nordtrøndelag). 
-foreign(nordvågen). 
-foreign(nordås).  
-foreign(norefjell). 
-foreign(noresund). 
-foreign(norfjord).  %%
-foreign(norge).  %% Force error message
-foreign(norheim). 
-foreign(norheimsund). 
-foreign(norway). 
-foreign(notodden). 
-foreign(nybu).     
-foreign(nyjordet). 
-foreign(nykirke).  
-foreign(nyland). %% \+ Nypan %% TA-110816
-foreign(nummedal). 
-foreign(nummedalen). foreign(numedalen). foreign(numedal). 
-foreign(nybergsund). foreign(nybersund). 
-foreign(nypvang). 
-foreign(nystrand). 
-foreign(nærbø).  
-foreign(nærsnes).  
-foreign(nøkkeland).
-foreign(nøste). 
-foreign(nøtterøy).
-
-foreign(odal). 
-foreign(odalen). 
-foreign(odda). 
-foreign(oddevall). 
-  foreign(oerland). 
-  foreign(oeysand). 
-foreign(ofoten).  %% TA-100905
-foreign(ogndal). 
-foreign(okkenhaug). 
-foreign(oksvoll). 
-foreign(olderfjord).
-foreign(olrud).  
-foreign(olso). %% oslo 
-foreign(olsvik). 
-foreign(olsvika).
-foreign(oltedal). 
-foreign(onsøy). 
-foreign(omre).  
-foreign(opaker).
-foreign(opdal). 
-foreign(oppdal). 
-foreign(oppegård). 
-foreign(oppeid). 
-foreign(oppsal). 
-foreign(opstad).   %%  \+ okstad
-foreign(opsund).   
-foreign(oredalen).
-%% foreign(orkanger).  %% RS-131222    Try to include more! 
-   foreign(organger). 
-   foreign(orkager). 
-foreign(orkdal). 
-foreign(orkdalen). 
-foreign(orkerød). 
-foreign(orkganger). 
-foreign(ormåsen). 
-foreign(os). 
-foreign(oslo). 
-foreign(osterøy).  
-foreign(osøyro). 
-foreign(otta). 
-foreign(otterøya). 
-foreign(ottestad).  %% (case)
-foreign(overhalla). 
-foreign(oysand). 
-
-foreign(paradis). %% Bergen 
-foreign(persbråten).  
-foreign(pilestredet).  %% Oslo
-foreign(polarsirkelen). 
-foreign(porsgrunn). 
-foreign(portland). 
-foreign(prinsdal).
-foreign(prostneset). 
-foreign(radiumhospitalet). 
-foreign(ragde).  %% Odda
-foreign(raillkattlia).  %% :-)
-foreign(rakkestad). 
-foreign(rakvåg). 
-foreign(råkvåg). 
-    foreign(råkvågen). 
-foreign(ramberg). 
-foreign(ramdal).
-foreign(ramfjord). 
-foreign(ramstein). 
-foreign(ramsøy). 
-foreign(rana). 
-foreign(ranavik).
-foreign(randaberg). 
-foreign(randesund). 
-foreign(raufoss). 
-foreign(ravnanger). 
-foreign(raøros).  
-foreign(refsnes). 
-foreign(reinsvoll). 
-foreign(reinås). 
-foreign(reinøya). 
-foreign(reistad). 
-foreign(rena). 
-foreign(rendalen). 
-foreign(rennebu). 
-foreign(rennesøy). 
-foreign(rensvik). 
-foreign(revetal). 
-foreign(revheim).
-foreign(revsnes). 
-foreign(ridabu). 
-foreign(rindal). 
-foreign(rindalen). 
-foreign(rindalsskogen). 
-foreign(ringebu). 
-foreign(ringsaker). 
-foreign(ringstabekk).
-foreign(rinndal). 
-foreign(rinndalen). 
-foreign(ris).  %% oslo, \+  RIT
-foreign(risløkka). 
-foreign(rissa). 
-foreign(risør). 
-foreign(risøy).  
-foreign(rjukan). 
-foreign(roa). 
-foreign(roan). 
-foreign(robergrønningen). 
-foreign(robru). 
-foreign(rogaland). 
-foreign(rognan). 
-foreign(rolvsrud). 
-foreign(rolvsøy).  
-foreign(romedal).  
-foreign(rommetveit). 
-foreign(romsdal). 
-foreign(romsdalen). 
-foreign(romsås). 
-foreign(rondane). 
-foreign(ropeid).  
-foreign(roros).
-foreign(rosseland). 
-foreign(rosenhoff).
-foreign(rossfjord). 
-foreign(rotnes).    %%  Nittedal
-foreign(roverud).  
-foreign(rubbestadneset).  %% ?
-foreign(rud). 
-foreign(rudshøgda). 
-foreign(ruggevik). 
-foreign(ruggevika). %% ? 
-foreign(rugsund).   
-foreign(rullestad). 
-%% foreign(rye).    %% ? station 
-foreign(ryen). %% TA-100828
-foreign(ryfylke). %% TA-101101
-foreign(rygge).
-foreign(rykene). 
-foreign(rykkin). 
-foreign(rykkinn). 
-foreign(rysjedalsvika). 
-foreign(rælingen).
-foreign(røa).  %% Oslo
-foreign(røbekk).  %% Molde?
-foreign(rødberg).
-foreign(rødde). 
-foreign(rødhammer).  %%?
-foreign(rødsjø). 
-foreign(rødsjøen). 
-foreign(rødtvedt). 
-foreign(rødtvet). 
-foreign(rønvik). 
-   foreign(rønvika). 
-foreign(røren). 
-foreign(røros). 
-foreign(rørvik). 
-foreign(røyken). 
-foreign(røyse).  
-foreign(røyslimoen).
-foreign(råde).  
-foreign(rådhusplassen).  %% Oslo
-foreign(råholt).  %% Eidsvoll 
-foreign(rånåsfoss). 
-
-foreign(sagdalen). 
-foreign(sagene). 
-foreign(sagstua).  
-foreign(sagvåg). 
-%% foreign(saksvik). malvik bus301 %% MW-121119 
-foreign(saksvikvollen). 
-foreign(salhus).  
-foreign(salten). 
-foreign(saltnes). 
-foreign(saltrød).  
-foreign(saltstraumen). 
-foreign(samdal).  
-foreign(samuelsberg). 
-foreign(sandaker).
-foreign(sandal).   
-foreign(sandane). 
-foreign(sande). 
-foreign(sandefjord). 
-foreign(sandeid). 
-foreign(sanderud). 
-foreign(sandnes). 
-foreign(sandnesjøen). 
-foreign(sandnessjøen). 
-foreign(sandsli). 
-foreign(sandstad). 
-foreign(sandve). 
-foreign(sandved). 
-foreign(sandvika). 
-foreign(sandviken).  %%?
-foreign(sandviksberget). 
-foreign(sandvikvåg).
-foreign(sandvolden).
-foreign(sandvollan).  %%?
-foreign(sarpsborg). 
-foreign(sauda). 
-foreign(saudal).  %%?
-foreign(savalen). %% ? 
-foreign(seiersten).
-foreign(sel). 
-foreign(selbjørn). 
-foreign(selbu). 
-foreign(selbusjøen). 
-foreign(selbustrand). 
-foreign(selfors). 
-foreign(selje).  
-foreign(seljestad). 
-foreign(seljord). 
-foreign(selli). 
-foreign(selnes). 
-foreign(sem). 
-foreign(senjahopen). 
-foreign(sessvollmoen). 
-foreign(setemsdalen). 
-foreign(setermoen). 
-foreign(setesdal). foreign(sætesdal). 
-foreign(settemsdalen). 
-foreign(sevland). 
-foreign(siggerud).
-foreign(silsand). 
-foreign(singsås). 
-foreign(sinsen). foreign(sinsenkrysset). 
-foreign(sira).  
-foreign(sirdalen).
-foreign(sistranda). 
-foreign(sjoa). 
-foreign(sjusjøen). 
-foreign(sjøholt). 
-%% foreign(sjølyst). %% malvik bus301 %% MW-121119 
-foreign(sjølystveien).  %% (Oslo)
-%foreign(sjørdal). 
-%foreign(sjørdalen). 
-foreign(sjøvold).  %% ?
-foreign(sjøvoll). 
-%% foreign(sjøvåg).  
-foreign(sjåstad).   
-foreign(skage).       %% namsos
-foreign(skallestad).
-foreign(skallevold). 
-foreign(skarbøvik). 
-foreign(skarnes).  
-foreign(skarnsund). 
-foreign(skarpnes). 
-foreign(skarpsno).
-foreign(skattval). 
-    foreign(skatval). 
-foreign(skaug). 
-foreign(skaugum). 
-foreign(skaun). 
-foreign(skedsmo). 
-foreign(skedsmokorset). 
-foreign(skei). 
-
-    foreign(ski). %% comm Akershus  / luggage
-
-foreign(skibotn). 
-foreign(skien). 
-foreign(skillebekk). 
-foreign(skinstø). 
-foreign(skivika). 
-foreign(skjeberg). 
-foreign(skjebstad). 
-foreign(skjelsvik). 
-foreign(skjerstad). 
-foreign(skjervøy). 
-foreign(skjetten). 
-foreign(skjold). 
-foreign(skjolden). 
-foreign(skjærviken). 
-foreign(skjærhalden). 
-foreign(skjåk).   
-foreign(skodje).   %% kommune
-foreign(skoger).   %% TA-110214 
-foreign(skogly). 
-foreign(skogn). 
-foreign(skogsvåg). 
-foreign(skonseng). 
-foreign(skoppum). 
-foreign(skorpa).   
-foreign(skotfoss). 
-foreign(skotselv). 
-foreign(skotterud). 
-foreign(skredderåsen). 
-foreign(skreia).
-foreign(skrimsletta). 
-
-foreign(skudesnes). %
-foreign(skudeneshavn). %
-foreign(skudesneshavn). 
-foreign(skui).  %% Bærum
-foreign(skullerud). %% oslo 
-foreign(skåla). %% Molde
-foreign(skålevik). 
-foreign(skårer). 
-foreign(skøyen).  %% oslo
-foreign(slattum).
-foreign(slemdal). 
-foreign(slemmestad).
-foreign(slependen). 
-foreign(slettaelva).  
-foreign(sletten).   
-foreign(slettheia).  
-foreign(slevik). 
-foreign(slidre). 
-foreign(slitu).  %% ?
-foreign(slottet).  %% oslo
-foreign(slåstad).  
-foreign(slåttaelva).
-foreign(slåttnes). 
-foreign(smeby).   
-foreign(smedstua).  
-foreign(smertu). 
-foreign(smestad).  %% oslo
-%% foreign(smiskaret). %% MW-121119
-foreign(smøla). 
-foreign(smørås).  
-foreign(snartemo). 
-foreign(snarum).  %% ?
-foreign(snarøya). 
-foreign(snillfjord). 
-foreign(snippen). 
-foreign(snåsa). 
-foreign(sofiemyr). %% TA-100902 ?
-foreign(sofienberg).
-foreign(sogn). 
-foreign(sogn_og_fjordane). 
-foreign(sogndal). 
-foreign(sognefjord). 
-foreign(sokna). 
-foreign(soknadalen). 
-foreign(sokndal). 
-foreign(sokndalen). 
-foreign(soknedal). 
-foreign(soknedalen). 
-foreign(sola).  %% (in Rogaland)
-foreign(solheim). 
-foreign(solheimsviken).
-foreign(solum).  
-foreign(solumstua).
-foreign(solvollen). 
-foreign(solør). 
-foreign(solåsen). 
-foreign(sommerro). %% TA-100519
-foreign(son).    
-foreign(sortland). 
-foreign(sotra). 
-foreign(spanne).
-foreign(sparbu). 
-foreign(spikkestad). 
-foreign(spjelkavik). 
-foreign(spydeberg). 
-foreign(stabbursmoen). 
-foreign(stabekk). 
-foreign(stadsbygd). 
-foreign(stadsbygda). 
-foreign(stadt). 
-foreign(stakkevollan).  %% ?
-foreign(stalheim).  
-foreign(stamnan). 
-foreign(stamsund). 
-foreign(stange). 
-foreign(stangeland). 
-foreign(stangnes). 
-foreign(stathelle).
-foreign(statthelle).   
-foreign(statsbygd). 
-foreign(statsbygda). 
-foreign(staubø). 
-%% foreign(stav).  %% malvik/hommelvik %% MW-121119
-% foreign(stavanger). 
-foreign(stavern). 
-foreign(stavsjø). %% TA-110502
-foreign(stavsøra). 
-% foreign(steigen). 
-
-foreign(steinkjer). %% community
-foreign(stenkjer).
-foreign(steikjer). 
-foreign(steinker). 
-foreign(steinskjer). 
-
-foreign(steinsland).  
-foreign(steinsvik).  
-foreign(steinsviken). 
-
-foreign(steinkjersannan). 
-foreign(steinrusten).  
-foreign(steinvikholmen). 
-foreign(steinviksholmen).  
-foreign(stig).  %% TA-110520
-foreign(stiklestad). 
-% foreign(stjørdal). 
-   foreign(stjoerdal). 
-   foreign(stjordal). 
-   foreign(stjørdalen). 
-foreign(stjørdalhalsen). 
-foreign(stjørdalshalsen). 
-foreign(stokke). 
-foreign(stokmarknes). %%  kk
-foreign(stokksund). 
-foreign(stokkåsen). 
-foreign(stokkøya). 
-foreign(stord). 
-foreign(stordal). 
-foreign(stordalen).
-foreign(storebø). 
-foreign(storelv). 
-foreign(storelva).
-foreign(storetveit).
-foreign(storforshei). 
-foreign(storfosna). 
-foreign(storgata).  %% \+ (Thora) Storms_street 
-foreign(storgaten). 
-foreign(storhaug). 
-foreign(storhove). 
-foreign(storjord).  
-foreign(storlia). 
-foreign(storlien).  %% Almost Norwegian :-)
-foreign(stormyr). 
-foreign(stormyra). 
-foreign(stornes).
-foreign(storo).   %%  Oslo 
-foreign(storoddan). 
-%% foreign(storsand). %% MW-121119 bus 301
-foreign(storskogen).
-foreign(storslett). 
-foreign(storsteinnes). 
-foreign(stortinget). 
-foreign(stortorvet).  %% Oslo ???
-foreign(storås). 
-foreign(stovner). 
- foreign(strai). 
-
-foreign(stranda). %% community // unwanted (strinda)
-foreign(strandafjellet). 
-foreign(strandebarm). 
-foreign(straume). 
-foreign(straumen). 
-foreign(straumgjerde). 
-foreign(straumsbukta). 
-foreign(straumsnes). 
-foreign(stridskleveien). 
-foreign(strusshamn). 
-foreign(stryn). 
-foreign(strømmen). 
-foreign(strømsdalen).
-foreign(strømsnes). 
-foreign(strømsveien). 
-foreign(strømsø).   
-foreign(strøtvet).   
-foreign(stuerød).   
-foreign(stuggudal). 
-foreign(stugudal). 
-foreign(stugudalen). 
-
-foreign(stø). 
-foreign(støbotn). 
-foreign(støren). 
-    foreign(størn). 
-foreign(stårheim). 
-foreign(sula). 
-foreign(suldalen). 
-foreign(sulesund).
-foreign(sulitjelma). 
-foreign(sundalsora). 
-foreign(sundalsøra). 
-foreign(sunde). 
-foreign(sundvolden). %% TA-110113 hotels etc
-foreign(sundvollen). %% place
-foreign(sunnan).     %%-steinkjer
-foreign(sunndal). 
-foreign(sunndalen). 
-foreign(sunndalsora). 
-foreign(sunndalsøra). 
-foreign(sunnfjord). 
-foreign(sunnhordaland).
-foreign(sunnmøre). 
-foreign(surnadal). 
-foreign(surnadalen). 
-foreign(surnadaln). 
-foreign(surndal). 
-foreign(survika). 
-foreign(svarttjern). 
-foreign(svea).
-foreign(sveberg). 
-foreign(sveberget).
-foreign(svebergkrysset). 
-foreign(sveggen).
-foreign(sveggesundet).
-foreign(svehøgda). 
-foreign(sveio).   
-foreign(svelgen).
-foreign(svelvik). 
-foreign(svensenga). 
-foreign(svinesund). 
-foreign(svolvær). 
-foreign(svorkmo). 
-foreign(svortland). 
-foreign(sykkylven). 
-foreign(sylan).  
-foreign(sylling). 
-foreign(syrbekk).
-foreign(syvde).
-foreign(sæby). 
-foreign(sæbø).  
-foreign(sælbu). 
-foreign(sætre).   
-foreign(sævollen). 
-foreign(søbakken).
-foreign(søberg).   %% ? i Th ?
-foreign(søfteland). 
-foreign(søgne). 
-foreign(søm). 
-foreign(sømna).
-foreign(søreide). 
-foreign(sørfron). 
-foreign(sørkedalen). %% Oslo 
-foreign(sørland). 
-foreign(sørlandet). 
-foreign(sørlandsparken).
-foreign(sørli).  
-foreign(sørreisa).
-foreign(sørrollnes).
-foreign(sørskogbygda). 
-foreign(sørum). 
-foreign(sørumsand).
-foreign(sørvik).   
-foreign(sørvågen). 
-foreign(sørøya).   
-foreign(søvassli). 
-foreign(søvasslia). 
-foreign(søvik). 
-foreign(sølsnes).
-
-
-
-foreign(taftøysundet).  %% ?
-foreign(tambartun).  
-foreign(tana). 
-foreign(tananger). 
-%% foreign(tanberg).  
-foreign(tandberg).  %%
-%foreign(tanem).  %% ( Klæbukomm. ) 
-foreign(tangen). %% TA-110818
-foreign(tangenåsen).
-foreign(tangvall). 
-foreign(tasta).
-foreign(tau). 
-foreign(tautra). 
-foreign(teiehøyden). 
-foreign(telavåg). %% TA-110311
-foreign(telemark). 
-foreign(tennfjord). 
-foreign(tenvik). 
-foreign(terningmoen).
-foreign(terråk). 
-foreign(tertnes). 
-foreign(tingvoll). foreign(tingvold). 
-foreign(tinnheia). 
-foreign(tistedal). 
-foreign(titran). 
-foreign(tjeldbergodden).  
-foreign(tjelta).
-foreign(tjensvoll). 
-foreign(tjøme). 
-foreign(tjørvåg).
-foreign(tjøtta). 
-foreign(tofte). 
-foreign(tolga). 
-foreign(tollnes). %% \+ tone %% TA-110415
-foreign(tomter). 
-foreign(tonsenhagen). 
-foreign(tonsåsen).  %% TA-100519
-foreign(tornes).
-%% foreign(torp). %% MW-121119 bus301
-foreign(torshov).  %% Oslo
-foreign(torvastad). 
-foreign(torød).
-foreign(toten). 
-foreign(tranby). 
-foreign(trasop).
-foreign(trastad). 
-foreign(tresfjord). 
-foreign(treungen). 
-foreign(trofors). 
-foreign(trollheimen). 
-foreign(trollveggen).
-foreign(trollvik). 
-foreign(troms). 
-foreign(tromsdalen). 
-foreign(tromstun). 
-foreign(tromsø). 
-foreign(tromøy).  
-foreign(tromøya). 
-foreign(trondenes). 
-foreign(trondheimsfjorden). 
-foreign(trondheimsveien).  %% Oslo
-foreign(trondhjemsfjorden). 
-foreign(tronvik).
-foreign(trosterud). 
-foreign(trysil). 
-foreign(tryvann). 
-    foreign(tøgstad).  %% avoid -> toyaota amble#
-%% foreign(trøndelag).  %% trøndealg folkemuseum (miss spellcorr) 
-foreign(tråstad). 
-foreign(tsjørdal). %% ?
-foreign(tufsingdalen). 
-foreign(tullinløkka).
-foreign(turtagrø). 
-foreign(tusenfryd).  %% (OSL)
-foreign(tustna). 
-foreign(tvedestrand). 
-foreign(tveit).  
-foreign(tveita).  
-foreign(tverlandet). 
-foreign(tydal). 
-foreign(tyin).  
-foreign(tylldalen). 
-foreign(tynset). 
-foreign(tynseth). 
-foreign(tyrifjord).
-foreign(tyristrand). 
-foreign(tysnes). 
-foreign(tømmerdalen). 
-foreign(tømmerstø). %% Kr.Sand %%
-foreign(tømmervåg). 
-foreign(tømra).  %% (selbu)
-foreign(tønsberg). 
-foreign(tøyen). 
-foreign(tårnåsen). 
-foreign(tårnelv). 
-foreign(tåsen).   
-
-foreign(udduvoll). 
-
-foreign(uib). %% Universitetet i B
-foreign(uio).
-foreign(uis).
-
-foreign(ulefoss). 
-foreign(ullandhaug). 
-foreign(ullevaal). 
-foreign(ullevål). 
-foreign(ullset). 
-foreign(ullstad). 
-foreign(ulnes). 
-  foreign(ullsberg). 
-foreign(ulsberg). 
-foreign(ulset). 
-foreign(ulsetsanden).
-foreign(ulsrud). 
-foreign(ulstad). 
-foreign(ulsteinvik). 
-foreign(ullsteinvik). 
-foreign(ulven). 
-foreign(ulvøya). 
-foreign(underlia). 
-foreign(uranienborg). 
-foreign(uskedal).
-    foreign(uskedalen).
-foreign(utby). 
-%% foreign(utgård). %% ? 
-foreign(utgårdskilen).
-foreign(uthaug).
-foreign(utne).  
-foreign(utskarpen). 
-foreign(utøy). 
-foreign(uvdal).
-foreign(uvesund).
-
-foreign(vadheim). 
-foreign(vadmyra). 
-foreign(vadsø). 
-foreign(vaker).  
-foreign(vaksvik). 
-foreign(valangen). 
-foreign(valderøy).
-foreign(valdres). 
-foreign(valhall). %% TA-101005 :-)
-foreign(valestrand). 
-foreign(valldal). 
-foreign(valle). 
-foreign(valler). 
-foreign(vallersund). 
-foreign(vallerud).   
-foreign(vallesverd). 
-foreign(valsøy). 
-foreign(valsøybotn). 
-foreign(valsøybotten). 
-foreign(valsøyfjord). 
-foreign(vang). 
-foreign(vannvikan). foreign(vanvikan). foreign(vanvika). 
-foreign(vannvåg). 
-foreign(vanse).   
-foreign(vanvik). 
-foreign(varanger).
-foreign(varatun). 
-foreign(vardenes). 
-   foreign(vardeneset). 
-foreign(vardø).   
-foreign(vardåsen).
-foreign(varingskollen).
-foreign(varmdal). 
-foreign(vartdal). 
-foreign(varteig). 
-foreign(vassdal). 
-foreign(vassdalen). 
-foreign(vassenden). 
-foreign(vassfjellet). 
-foreign(vassmyra). 
-foreign(vatne). 
-foreign(vats). 
-foreign(vedavågen). 
-foreign(vefsn).  
-foreign(veggli). 
-foreign(vegsund). 
-foreign(vegårdshei). 
-foreign(veitvedt). 
-foreign(veitvet). 
-foreign(vemestad). 
-foreign(venjaneset). 
-foreign(vennberg). 
-foreign(vennersberg).
-foreign(vennerød). %% TA-110411
-foreign(vennesla). 
-foreign(vennesland). 
-foreign(vennesund). 
-foreign(veldre).  
-foreign(verdal). foreign(verdalen). foreign(værdal). 
-foreign(verdalsøra). foreign(værdalsøra). 
-foreign(verningen). 
-foreign(vestagder). 
-foreign(vestby). 
-foreign(vesterøy). 
-foreign(vesterålen). 
-foreign(vestfold). 
-foreign(vestfossen).
-foreign(vestlandet). 
-foreign(vestmarka).  %% (Bærum?)
-foreign(vestnes). 
-foreign(vestskogen). 
-foreign(vettre). 
-foreign(veum). %% Fr.stad 
-foreign(vevik). 
-foreign(viddalen).
-foreign(vigeland). 
-foreign(vigmostad). 
-foreign(vigra). 
-foreign(vigrestad). 
-foreign(viggja). 
-foreign(vika).  %% (?)
-foreign(vikebukt). 
-foreign(vikammeråsen). 
-foreign(vikbygd). 
-foreign(vikedal).
-foreign(vikeland). 
-foreign(vikersund). foreign(vikersundbakken). foreign(vikersundsbakken). 
-
-%% foreign(vikhamar). %% MW-121119 bus301
-%% foreign(vikhamaren).  
-%% foreign(vikhamarn). 
-%% foreign(vikhammar). 
-%% foreign(vikhammaren). 
-%% foreign(vikhammarn). 
-%% foreign(vikhamer). 
-%% foreign(vikhammer). 
-%% foreign(vikhammeren). 
-
-%% foreign(vikhammeråsen). 
-%% foreign(vikhov). %% MW-121119 bus301 
-foreign(vikvarvet). 
-foreign(vikran).  
-foreign(vilberg). 
-foreign(vinderen). 
-foreign(vindern).  
-foreign(vindmyr).  
-   foreign(vindsmyr). 
-foreign(vindøla). 
-foreign(vingesand). 
-foreign(vingrom). 
-foreign(vinje).    %% also company in trh
-foreign(vinjeøra). 
-foreign(vinstra). 
-foreign(vinterbro).  
-foreign(vippetangen). 
-foreign(vivestad). 
-foreign(voksenkollen). %% oslo 
-foreign(volda). 
-foreign(volden). 
-foreign(vollebekk). 
-foreign(volleberg). 
-foreign(vollevannet). 
-foreign(volvat). 
-foreign(vormedal). 
-foreign(vormstad). 
-foreign(vormsund).  
-foreign(voss). 
-foreign(vråliosen). 
-foreign(værholmen). 
-foreign(værran). %% Bodo+ dial verran 
-foreign(vågan). 
-foreign(våge).  
-foreign(vågen).  %% \+ vegen
-foreign(vågland).  %% Halsa
-foreign(vågsbotn).
-foreign(vågsbygd). 
-foreign(vågsbygda). 
-foreign(vågstranda). 
-foreign(vågå). 
-foreign(våler). 
-foreign(vålerenga). 
-foreign(vædal). 
-foreign(værdal). 
-foreign(værdalen). 
-%% foreign(værnes). %% airport
-foreign(vøyen). foreign(vøyenenga). 
-
-foreign(ytteren).
-
-foreign(ødegård). 
-foreign(ødegårdshøgda). 
-foreign(øisand). 
-foreign(økland). %% TA-110609
-foreign(økern). 
-foreign(øksnevad). 
-foreign(øland). 
-foreign(ølen).  
-foreign(øraker).  
-foreign(ørje). 
-foreign(øreåsen). 
-    foreign(øråsen). %% 
-foreign(ørland). 
-foreign(ørlandet). 
-foreign(ørnes).
-foreign(ørskog). 
-foreign(ørsta). 
-foreign(østby).    
-foreign(østbyhøgda). 
-foreign(østensjø).  %% TA-110325
-foreign(østerdalen). 
-foreign(østskogen). 
-foreign(østerås). %% Bærum 
-foreign(østfold). 
-foreign(østlandet). 
-foreign(østsiden). %% Also eastside 
-foreign(øverbygd). 
-foreign(øvrevoll). 
-foreign(øyenkilen). 
-foreign(øyer).
-foreign(øygarden). 
-foreign(øysand). 
-foreign(øysandan). 
-foreign(øysanden). 
-
-foreign(ådland). 
-foreign(åfarnes). 
-foreign(åfjor). 
-foreign(åfjord). 
-foreign(åfjorden). 
-%% foreign(åfjoren). 
-foreign(åfoss). 
-foreign(ågotnes). 
-foreign(åknes). 
-foreign(åkra). 
-foreign(åkrehamn). 
-foreign(ål). 
-foreign(ålefjær). 
-foreign(ålen). 
-foreign(ålesund). 
-foreign(ålgård). 
-foreign(ålsund). 
-foreign(ålvik).
-foreign(ålvundeid). 
-foreign(ålvundfjord). 
-foreign(åmdalen). 
-foreign(åmli). 
-foreign(åmot). 
-foreign(åmøy). 
-foreign(åndalsnes). foreign(aandalsnes). 
-foreign(åneby). %% \+ arneby %% Nittedal
-foreign(ånes). 
-foreign(ånesmyra).
-foreign(ånøya). 
-foreign(årdal). 
-foreign(årdalstangen). 
-foreign(åre). 
-foreign(årnes). 
-foreign(åros). 
-foreign(årstad).
-foreign(årvoll). 
-foreign(årø). 
-foreign(ås). 
-foreign(åsbyen). 
-foreign(åsbygda). 
-foreign(åsane). 
-foreign(åsen). 
-foreign(åseral). 
-foreign(åsgård). %% TA-110822
-foreign(åsgårdstrand). 
-foreign(åsjordet). %% Bærum %% TA-101105
-foreign(åskollen). 
-foreign(åssiden). 
-foreign(åstad). 
-foreign(åstun).
-foreign(åstveit). 
+cmpl(å,[berggårdsvei],arne_bergsgårds_vei). 
+cmpl(å,grevskottsvei,anton_grevskotts_veg). 
+cmpl(ås,skole,åsveien_skole).  %%?
+cmpl(åsheim,[ungdom,skole],åsheim_skole). 
+cmpl(åsheim,[videregående,skole],åsheim_skole).  %% ? 
+cmpl(åsheim,ungdomsskole,åsheim_skole). 
+cmpl(åsv,skole,åsveien_skole). 
+cmpl(åsveien,skolen,åsveien_skole). 
+cmpl(åsvenein,skole,åsveien_skole).  %% ?
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 % ISAT   (STATION, PLACE)
-%STATION is (one, but NOT preferred, among several) stations that belong to the neighbourhood of PLACE
-%% ISAT    ( Station , Neighbourhood )
+% ISAT   (Station, Neighbourhood)
+%STATION is (one, but NOT preferred, among several) stations that belong to the NEIGHBOURHOOD (PLACE)
 %
 %Examples:
 %
@@ -5349,10 +3317,14 @@ foreign(åstveit).
 %isat(gløshaugen_syd,gløshaugen).
 %
 
-isat(dronningens_gate_d1,sentrum). %% AtB
+isat(dr_gate_d1,sentrum). %% AtB 2015 format  %% RS-150815 Get rid of sentrum? Keep just as synonym/sameas/etc to hovedterminalen? 
+isat(dr_gate_d2,sentrum). 
+%isat(dr_gate_d3,sentrum). 
+%isat(dr_gate_d4,sentrum). 
+%isat(dronningens_gate_d1,sentrum). %% AtB (2014-feb) format
 %isat(dronningens_gate_d2,sentrum). 
-%isat(dronningens_gate_d3,sentrum). 
-%isat(dronningens_gate_d4,sentrum). 
+%%isat(dronningens_gate_d3,sentrum). 
+%%isat(dronningens_gate_d4,sentrum). 
 
 isat(kongens_gate_k1,sentrum). %% AtB
 isat(kongens_gate_k2,sentrum). 
@@ -5378,6 +3350,7 @@ isat(kongens_gate_k1,prinsenkrysset). %% RS-141102
 isat(kongens_gate_k2,prinsenkrysset). %% RS-141102
 
 
+isat(asbjørn_øverås_veg, risvollan). %% RS-150629 %% RS-150813 Missing in autumn?
 isat(bratsberg_kirke,bratsberg). %% TA-110325
 
 %% isat(britannia_hotell,sentrum). %%  FB? %% not AtB
@@ -5490,7 +3463,7 @@ isat(ranheim_stasjon,ranheim).
 isat(ringve_museum,ringve). 
 isat(ringve_museum,ringve). 
 isat(ringve_skole,ringve). 
-isat(gyldenløves_gate,rosenborg). %% AtB
+isat(gyldenløves_gt,rosenborg). %% AtB %% RS-150813 Missing in autumn?
 
 isat(romolslia, romolslia). %% RS-150111. Trøbbel? Both station and neighborhood.
 isat(romolslia_øvre, romolslia). %% RS-150111. Trøbbel? HACK!! (Switched station and neighborhood!)
@@ -5671,10 +3644,6 @@ place_resolve(vegmesterveien,veimester_kroghs_street).
 %
 
 placestat(atb,prinsenkrysset). %% TA-101108 
-
-%placestat(studentersamfundet,studentersamfundet_1).  %% AtB %% NB \+ isat      %% RS-141020, changed name from s-samfundet_1 to s-samfundet
-placestat(studentersamfundet,studentersamfundet).  %% AtB %% NB \+ isat         %% RS-141020    Feedback from Norvald Ryeng
-placestat(studentersamfundet,studentersamfundet_2).  %% TA-100922  %% RS-140901 %% Reverserte disse
 
 placestat('ALT/Statoil',rotvoll).%% hist/ALT %% extra dep Bus 6 
 placestat('Adolf Øiens skole',prinsen_kinosenter).  %%
@@ -5915,7 +3884,7 @@ placestat(hårstad,martin_kregnes_veg).
 placestat(hårstadmarka,martin_kregnes_veg). 
 placestat(hårstadmyra,martin_kregnes_veg). 
 placestat(idrettsbygget,høgskoleringen). 
-placestat(idrettsplassen, idrettsplassen_jakobsli). %% RS-150104. Name-change. Summer/Winter?
+% placestat(idrettsplassen, idrettsplassen_jakobsli). %% RS-150104. Name-change. Summer/Winter? %% RS-150814 Doesn't work in autumn
 
 placestat(ilabekken,ila). 
 placestat(iladalen,ila).
@@ -5984,7 +3953,7 @@ placestat(ladetorget,østmarkveien).
 placestat(lamoparken,buran). 
 placestat(langlohaugen,langlo). 
 %placestat(larsbyen,olav_nygårds_veg). %% RS-150104. Summer/Winter naming problem 
- placestat(larsbyen,olav_nygards_veg). %% RS-150104. Summer/Winter naming problem
+placestat(larsbyen,olav_nygards_veg). %% RS-150104. Summer/Winter naming problem
 placestat(leangen,travbanen). 
 placestat(leangenhallen,bromstadsvingen). 
 placestat(legard,legårdsbakken). 
@@ -6052,7 +4021,7 @@ placestat(nidarosdomen,prinsen_kinosenter).
 placestat(nidarvoll,nidarvoll_skole). 
 placestat(nidarvollsykehjem,nygård). 
 placestat(nidarø,trondheim_spektrum). %% not sum08
-placestat(nidelvbrua,nidelv_bru). 
+%placestat(nidelvbrua,nidelv_bru).  %% nedlagt 22. mars %% TA-110822 %% RS-150814 
 placestat(nidelvhallen,valøyvegen).  %% ?
 placestat(nilsbyen,stavset_senter). 
 placestat(nissekollen,fiolsvingen). 
@@ -6066,7 +4035,7 @@ placestat(nrk,tyholttårnet).
 placestat(nth,gløshaugen_syd).  %%
 placestat(ntnu_lade,harald_hårfagres_gate).  %% Changed Name %<---
 placestat(ntnui,høgskoleringen).  
-placestat(nyhavna,nidelv_bru).  %%(?)
+%placestat(nyhavna,nidelv_bru).  %%(?) %% nedlagt 22. mars %% TA-110822 %% RS-150814
 placestat(nyveilia,bjørndalsbrua). 
 placestat(næringssenteret,buran).
 placestat(okstadbrinken,kroppanmarka). 
@@ -6139,16 +4108,14 @@ placestat(rognbu,rognbudalen).
 placestat(rognbuveien,rognbudalen).  %%?
 placestat(rogndalen,rognbudalen). 
 
-placestat(rosenborghallen,gyldenløves_gate). %% TA-101025
+placestat(rosenborghallen,gyldenløves_gt). %% TA-101025
 
-%% placestat(rosenborg,gyldenløves_gate). %% isat (AtB/Team)
-%% placestat(rosenborghallen,gyldenløves_gate). 
+%% placestat(rosenborg,gyldenløves_gt). %% isat (AtB/Team)
+%% placestat(rosenborghallen,gyldenløves_gt). 
 
 %% placestat(rosta,rostengrenda).  %% Rosten is station #43
 %% placestat(rosten,rostengrenda).
 %% placestat(rosten,rostengrenda). 
-
-
 
 placestat(rostenhallen,kvt). 
 placestat(rostenkrysset,østre_rosten). 
@@ -6219,6 +4186,12 @@ placestat(stokkanhaugen,stokkhaugen).  %% SUMMER  %% TA-110627
 
 placestat(stubban,venusvegen). 
 placestat(studenterhytta,skistua). 
+
+%placestat(studentersamfundet,studentersamfundet_1).  %% AtB %% NB \+ isat      %% RS-141020, changed name from s-samfundet_1 to s-samfundet
+placestat(studentersamfundet,studentersamfundet).  %% AtB %% NB \+ isat         %% RS-141020    Feedback from Norvald Ryeng
+placestat(studentersamfundet,studentersamfundet_2).  %% TA-100922  %% RS-140901 %% Reverserte disse
+placestat(stjørdal,stjørdal_stasjon).        %% RS-150815. New bus added 310/410.
+
 placestat(sunnland,karl_jonssons_veg).  %%sunnlandskole
 placestat(sunnlandskole,karl_jonssons_veg). 
 placestat(svartlamon,strandveien).  %% NB veien
@@ -6836,7 +4809,7 @@ sameplace(risvollansenteret,risvollan_senter).
 sameplace(romulslia,romolslia_øvre).  %% romulslia street, prefer station
 
 sameplace(ronningbakken,rønningsbakken). 
-sameplace(rosenborgskole,gyldenløves_gate).  
+sameplace(rosenborgskole,gyldenløves_gt).  
 sameplace(rosendalområdet,rosendal). 
 sameplace(rotvollan,rotvoll). 
 sameplace(rotvollen,rotvoll). 
@@ -7120,21 +5093,21 @@ sameplace(kattemsentret,kattemsenteret).
 
 
 short_specname(d1,'Dronn. gt D1'). 
-%short_specname(d2,'Dronn. gt D2'). 
+short_specname(d2,'Dronn. gt D2'). 
 %short_specname(d3,'Dronn. gt D3'). 
-short_specname(d4,'Dronn. gt D4'). 
+%short_specname(d4,'Dronn. gt D4'). 
+short_specname(d19,'Dronn. gt D19'). %% Buss 67. City Lade / Bergheim %% RS-150815
 
 short_specname(dronningens_gate,'Dronn. gt').
  
-short_specname(dronningens_gate_d1,'Dronn. gt D1'). %% AtB
-%short_specname(dronningens_gate_d2,'Dronn. gt D2'). 
-%short_specname(dronningens_gate_d3,'Dronn. gt D3'). 
-short_specname(dronningens_gate_d4,'Dronn. gt D4'). 
-
-short_specname(dronningensgate_d1,'Dronn. gt D1'). 
+short_specname(dr_gate_d1,'Dronn. gt D1'). %% AtB
+short_specname(dr_gate_d2,'Dronn. gt D2'). 
+%short_specname(dr_gate_d3,'Dronn. gt D3'). 
+%short_specname(dr_gate_d4,'Dronn. gt D4'). 
+%short_specname(dronningensgate_d1,'Dronn. gt D1'). %% RS-150815 Old (2014-feb) format
 %short_specname(dronningensgate_d2,'Dronn. gt D2'). 
-%short_specname(dronningensgate_d3,'Dronn. gt D3'). 
-short_specname(dronningensgate_d4,'Dronn. gt D4'). 
+%%short_specname(dronningensgate_d3,'Dronn. gt D3'). 
+%%short_specname(dronningensgate_d4,'Dronn. gt D4'). 
 
 
 short_specname(einar_tambarskjelves_gt,'Einar Tambarskj. gt'). 
@@ -7237,7 +5210,7 @@ specname(angelltrøveien,'Angelltrøveien').
 specname(ankers_gt,'Ankersgate').  %% EH-030616
 specname(arilds_gt,'Arildsgate').  %% EH-030616
 specname(arnt_smistads_vei,'Arnt Smistads vei').  %%\+smistad(correction)
-specname(asbjørn_overås_veg,'Asbjørn Øverås veg'). 
+specname(asbjørn_øverås_veg,'Asbjørn Øverås veg'). %% RS-150813 Missing in autumn?
 
 specname(asbjørnsens_gate,'Asbjørnsens gate'). %% old ?
 specname(asbjørnsensgt,'Asbjørnsens gate').  %% EH-030616
@@ -7308,15 +5281,18 @@ specname(dmmh,'DMMH'). %% TA-110323
 
 %% drop holdeplass %% TA-110531
 
-specname(dronningens_gate_d1,'Dronningens gate D1').  
+specname(dr_gate_d1,'Dronningens gate D1').  
+specname(dr_gate_d2,'Dronningens gate D2'). 
+%specname(dr_gate_d3,'Dronningens gate D3'). 
+%specname(dr_gate_d4,'Dronningens gate D4'). 
+%specname(dronningens_gate_d1,'Dronningens gate D1'). %% RS-150815. 2014 februarformat.  
 %specname(dronningens_gate_d2,'Dronningens gate D2'). 
-%specname(dronningens_gate_d3,'Dronningens gate D3'). 
-specname(dronningens_gate_d4,'Dronningens gate D4'). 
-
+%%specname(dronningens_gate_d3,'Dronningens gate D3'). 
+%%specname(dronningens_gate_d4,'Dronningens gate D4'). 
 specname(d1,'Dronningens gate D1').  %% EH-031120
-%specname(d2,'Dronningens gate D2').  %% 
+specname(d2,'Dronningens gate D2').  %% 
 %specname(d3,'Dronningens gate D3').  %%
-specname(d4,'Dronningens gate D4').  %%
+%specname(d4,'Dronningens gate D4').  %%
 
 
 specname(den,'den'). %% M .. den godes gate ... 
@@ -7651,23 +5627,10 @@ specname(øvre_flatåsv,'Øvre Flatåsveg').
 specname(øya_helsehus,'Øya Helsehus').		%RS-110926
 
 
-%% Trapez -> Hastus synplaces 
+%% Trapez (Nytt rutesystem hos AtB) -> Hastus synplaces (to make it work). %% TA-11 -> RS-150815
 
 %%%%%%%%% synplace(tveregga,tvereggen).
 %%%%%%%%% synplace(tverregga,tvereggen).
-
-synplace(rosa,ross). %% ? %% TA-110415 Ole Ross veg
-synplace(rosta,rosten). %% / 
-synplace(ostmarka,østmarka). 
-%% synplace(ola,ila). %% Haz? %% TA-110328
-
-synplace(olavtrygvasonsgate,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB
-
-synplace(berf,berg). %% ?
-synplace(bert,berg). %% ?
-
-synplace(berføttsvei,berrføttsveg).   
-synplace(berrføttsvei,magnus_berrføttsveg). 
 
 synplace(easmith,e_a_smith). 
 
@@ -7679,17 +5642,24 @@ synplace(mobilt,moholt). %% ???
 
 synplace(morseths,morsets). %% NEC
 
+synplace(ostmarka,østmarka). 
+%% synplace(ola,ila). %% Hazard? %% TA-110328
+
+synplace(olavtrygvasonsgate,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB
+
+synplace(polishuset,ts). %% AtB. %%  ts is neib). 
+
+synplace(reppekrysset,reppevegen). %%  reppevegen is not in the routes
+
+synplace(rosa,ross). %% ? %% TA-110415 Ole Ross veg
+synplace(rosta,rosten). %% / 
+
 synplace(staøren,støren). %% TA-101221
 
 %% synplace(steinåsen,seinåsen). 
 
 %% synplace(stiklestadveien,stiklastadveien). %% fixed 
 synplace(stiklesveien,stiklestadveien). %% ?
-
-synplace(polishuset,ts). %% AtB. %%  ts is neib). 
-
-synplace(reppekrysset,reppevegen). %%  reppevegen is not in the routes
-
 
 synplace('va|retraøa',værestrøa).
 synplace(val,valentinlyst).
@@ -7704,6 +5674,7 @@ synplace(oppland,opland).
 synplace(prestegårsjordet,prestegårdsjordet).
 synplace(endeholdepl,endehpl).
 synplace(tyholtårnet,tyholttårnet).   %% NB 1 t
+
 
 synplace('by''n',sentrum).  %%By'n==>'by''n'
 synplace('la''moen',lademoen). 
@@ -7805,10 +5776,14 @@ synplace(bbyn,byen).
 synplace(beg,berg).  %% nohash<4
 synplace(beldevere,belvedere). 
 synplace(belverede,belvedere). 
+synplace(berf,berg). %% ?
+synplace(berføttsvei,berrføttsveg).   
+synplace(berrføttsvei,magnus_berrføttsveg). 
 synplace(berfoettsvei,berføttsvei). 
 synplace(berg,bergs).  %%nohashbecausenot unknown
 synplace(bergkirke,berg_prestegård). 
 synplace(bergårdsvei,bergsgårdsvei). 
+synplace(bert,berg). %% ?
 synplace(bestlia,vestlia). 
 synplace(beunge,buenget). 
 synplace(bharlottenlund,charlottenlund).  %%?
@@ -8010,12 +5985,14 @@ synplace(citilade,city_lade).
 synplace(citylade,city_lade). 
 synplace(cytisyd,city_syd). 
 
-
-synplace(d1,dronningens_gate_d1). 
+synplace(d1,dr_gate_d1). %% RS-150815. Experiment. Move to compl (shortest "catch all" last) ?
+synplace(d2,dr_gate_d2).
+%synplace(d3,dr_gate_d3).
+%synplace(d4,dr_gate_d4).
+%synplace(d1,dronningens_gate_d1). %% RS-150815. old (2014-feb) station identifiers
 %synplace(d2,dronningens_gate_d2).
-%synplace(d3,dronningens_gate_d3).
-synplace(d4,dronningens_gate_d4).
-
+%%synplace(d3,dronningens_gate_d3).
+%%synplace(d4,dronningens_gate_d4).
 
 synplace(dagevoll,dragvoll). 
 synplace(dalenhage,dalen_hageby). 
@@ -8283,7 +6260,6 @@ synplace(gløsshaggen,gløshaugen).
 synplace(gløst,gløshaugen). 
 synplace(glåøs,gløshaugen).  %% GlÃ¸s
 synplace(glås,gløshaugen).  
-    synplace(løshaugen,gløshaugen).
 
 synplace(godsnsb,terminalen). 
 synplace(graaemølla,graaemølna).  
@@ -8483,7 +6459,7 @@ synplace(idrettssentret,idrettsbygget).
 synplace(ihla,ila). 
 %% synplace(ika,ikea).    %% ica?
 %% synplace(ike,ikea).    %% ikke
- synplace(ikae,ikea).  %%
+synplace(ikae,ikea).  %% %typo
 synplace(ilakirka,ila). 
 synplace(ilakrysset,ila). 
 synplace(ilas,ila). 
@@ -8788,6 +6764,7 @@ synplace(lysholmsv,jørgen_b_lysholms_vei).
 synplace(lysholms_vei,jørgen_b_lysholms_vei). 
 synplace(lythenhaven,leuthenhaven). 
 synplace(lærekendal,lerkendal). 
+synplace(løshaugen,gløshaugen). %typo
 synplace(løvaasen,løvaasveien). 
 synplace(løvaasvegen,løvaasveien). 
 synplace(løvaasveien,løvaasveien). 
@@ -9255,10 +7232,10 @@ synplace(romuslisa,romolslia).
 synplace(romåslia,romolslia). 
 synplace(roros,røros). 
 synplace(rosedal,rosendal).  %%IKKE Romsdal (wrong preference)
-synplace(rosenborgpark,gyldenløves_gate).  
-synplace(rosenborgparken,gyldenløves_gate).   
+synplace(rosenborgpark,gyldenløves_gt).  
+synplace(rosenborgparken,gyldenløves_gt).   
 synplace(rosenborgs,rosenborg). 
-synplace(rosenborgskolen,gyldenløves_gate).   
+synplace(rosenborgskolen,gyldenløves_gt).   
 synplace(rosenbårr,rosenborg). 
 synplace(rosendela,rosendal). 
 synplace(rostagrenda,rostengrenda).  %%
@@ -9401,7 +7378,7 @@ synplace(shieldrups,schieldrops).
 synplace(shiledrops,schieldrops). 
 synplace(shoppingcenter,senter). 
 synplace(shøitzsvei,schiøtz_vei). 
-synplace(sigurdbergsalle,gyldenløves_gate). 
+synplace(sigurdbergsalle,gyldenløves_gt). 
 synplace(silddråvegen,silddråvegen). 
 %% synplace(simen,siemens).  
 synplace(singsakerkrysset,jonsvannsveien). 

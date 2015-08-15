@@ -35,8 +35,6 @@
 %% Question Date is the date occurring in the question
 
 
-
-
 domain_module(D,M):- 
     routedomain(D), % unique solutions
     route_period( D, M, _, _ ).
@@ -79,7 +77,7 @@ set_period_module(TT) :-       %% Date is the days date, not the date that is as
  
 set_period_module(TT) :- 
     todaysdate(Todate), 
-    \+  thisdate_period_module(TT,Todate,_CurrentPeriod), % or not assigned
+    \+  thisdate_period_module(TT,Todate,_CurrentPeriod), % and nothing assigned to Todate
     search_period_module(TT,Todate,NewPeriod),
     !,
     retractall( thisdate_period_module(TT,_,_)),
