@@ -1810,7 +1810,7 @@ streetstat(østre_ila,'Østre Ila',1,2,skansen).
 streetstat(østre_moholttun,'Østre Moholttun',1,24,moholt).
 streetstat(østre_rosten,'Østre Rosten',4,26,rostengrenda).
 streetstat(østre_rosten,'Østre Rosten',27,49,østre_rosten).
-streetstat(østre_rosten,'Østre Rosten',57,118,ole_ross_veg).
+streetstat(østre_rosten,'Østre Rosten',57,118,ole_ross_veg). %% RS-150816 This street needs a serious update! (Google Map: What's here?)
 streetstat(østre_tunhøgda,'Østre Tunhøgda',1,5,tunvegen).
 streetstat(østtun_street,'Østtunvegen',1,23,breidablikkveien).
 streetstat(øverfoss_street,'Øverfossvegen',1,70,hagen).

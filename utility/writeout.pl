@@ -763,7 +763,7 @@ cwc(assumeyesterdepartures,['I assume you mean departures tonight.',
 cwc(atram,['a tram','en trikk']).
 cwc(at,['at','ved']).
 cwc(atday,['at','på']).
-cwc(atstation,['at ','ved ']). %% 'på'  ved mer nøytralt  ( "Hovedterminalen er på Trondheim")
+cwc(atstation,['at ','ved ']). %% 'på'  ved mer nøytralt  ("Hovedterminalen er på Trondheim")
 
 cwc(attime,['at','klokken']):- value(dialog,1),!.
 cwc(attime,['at','kl.']).  % otherwise

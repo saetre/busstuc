@@ -22,6 +22,7 @@
         unconnectedtxt/2,       unknown/1,                      unknown_words/2,        unprotected_verb/0,     tucsoundex/2    %% TUCsoundex // Replace in sequence recursively
 ] ).    %% RS-131225
 
+:- meta_predicate doall(0) .   %% RS-141019     doall/1 (Goal_0) . Zero input arguments for Goal_0 % doall(P): (P, then succeed)
 :- meta_predicate rewordrepl1( ?, ?, - ). %% RS-141108  Only one output argument!?!
 :- meta_predicate tsxrepl1( ?, ?, - ). %% RS-141108  Only one output argument!?!
 
@@ -1495,7 +1496,7 @@ cleantxt :-
 %% dronningens gate
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate  doall(0) .   %% RS-141019     doall/1 (Goal_0) . Zero input arguments for Goal_0 % doall(P): (P, then succeed)
+%:- meta_predicate  doall(0) .   %% RS-141019     doall/1 (Goal_0) . Zero input arguments for Goal_0 % doall(P): (P, then succeed)
 doall( P ) :-  % P, then succeed
     P, 
     false ;
