@@ -6,7 +6,7 @@
 %% REVISED RS-120705 Manually
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:-module(regstr, [ streetstat/5 ] ).
+:- module( regstr, [ streetstat/5 ] ).
 
 %% isat(kongens_street-34,atb). %%  funk ??? %% TA-101116
 
@@ -1809,7 +1809,7 @@ streetstat(østre_hallsetvangen,'Østre Hallsetvangen',1,8,søndre_hallset).    
 streetstat(østre_ila,'Østre Ila',1,2,skansen).
 streetstat(østre_moholttun,'Østre Moholttun',1,24,moholt).
 streetstat(østre_rosten,'Østre Rosten',4,26,rostengrenda).
-streetstat(østre_rosten,'Østre Rosten',27,49,tonstadgrenda).
+streetstat(østre_rosten,'Østre Rosten',27,49,østre_rosten).
 streetstat(østre_rosten,'Østre Rosten',57,118,ole_ross_veg).
 streetstat(østre_tunhøgda,'Østre Tunhøgda',1,5,tunvegen).
 streetstat(østtun_street,'Østtunvegen',1,23,breidablikkveien).

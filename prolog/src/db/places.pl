@@ -3342,8 +3342,8 @@ isat(olav_tryggvasons_gate,hovedterminalen).    %% RS-121223 RS-141104 Sommer vs
 
 %isat(prinsens_gate_p1,prinsens_street). %% RS-131007 - 140102
 %isat(prinsens_gate_p2,prinsens_street). %% RS-140102 See db/regstr.pl
-%isat(prinsens_gate_p1,sentrum). %% RS-140428
-%isat(prinsens_gate_p2,sentrum). %% RS-140428... But  See db/regstr.pl
+isat(prinsens_gate_p1,sentrum). %% RS-140428
+isat(prinsens_gate_p2,sentrum). %% RS-140428... But  See db/regstr.pl
 isat(prinsens_gate_p1,prinsenkrysset). %% TA-110822  %% RS-141102
 isat(prinsens_gate_p2,prinsenkrysset). %% RS-141102
 isat(kongens_gate_k1,prinsenkrysset). %% RS-141102
@@ -4682,7 +4682,7 @@ sameplace(midtbyn,sentrum).
 sameplace(midtbysonen,sentrum). 
 
 sameplace(midtbyterminalen,hovedterminalen). 
-                          %% not sentrumsterminalen whic itsel is a samename
+                          %% not sentrumsterminalen which itsel is a samename
 sameplace(moholtalle,moholt).  %%
 sameplace(moholtkirka,strinda_kirke).
 sameplace(moholtkirke,strinda_kirke). 

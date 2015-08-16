@@ -40,7 +40,7 @@
 :- ( airbusflag := true ). %% NEW FLAG %% TA-090331
 
 %:- ( tramflag := false ).  %% Trams are NOT included ( Route 1 )       %% RS-141130
-%:- ( tramflag := true ).   %% Trams are included ( Route 1 )           %% RS-131228
+:- ( tramflag := true ).   %% Trams are included ( Route 1 )           %% RS-131228
 
 :- ( busflag := true ).     %% Full Bus Application
 :- ( queryflag := true ).   %% Statements are implicit queries

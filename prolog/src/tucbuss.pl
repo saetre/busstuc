@@ -49,11 +49,11 @@
 
 %%%%%%%   (nodotflag := true),         %% Interm. dots are  removed
 
-   (tramflag := false),         %% A/S Gråkallen not OK at TEAM, OK at NTNU
-%   (tramflag := true),         %% A/S Gråkallen not OK at TEAM, OK at NTNU      %% RS-131228
+%   (tramflag := false),         %% A/S Gråkallen not OK at TEAM, OK at NTNU
+   (tramflag := true),         %% A/S Gråkallen not OK at TEAM, OK at NTNU      %% RS-131228
 
    (tmnflag := false),         %%
-%5   (tmnflag := true),         %% RS-141115  Try to give information about ALL routes!
+%   (tmnflag := true),         %% RS-141115  Try to give information about ALL routes!
    (mapflag  := false),         %% (don't) show MAP trace
 
    (parsetime_limit := 10000).  %% slower server %%  benchmark
