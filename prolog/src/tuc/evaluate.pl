@@ -11,11 +11,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %:- meta_predicate doall(0) .  % doall/1 (Goal_0) . Zero input arguments for Goal_0 % doall(P): (P, then succeed)
 %:- meta_predicate set_of(+,0,-) .
+:- meta_predicate  doall(0) .   %% RS-141019     doall/1 (Goal_0) . Zero input arguments for Goal_0 % doall(P): (P, then succeed)
 
-%doall( P ):-  % P, then succeed 
-%    P,
-%    false ;
-%    true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Prologs setof is baroque %%
 %set_of(X,Y,Z):-           %%
@@ -74,7 +71,6 @@ evaluateq2([R|_]):-  %% NB  Only first of multiple queries.
 %% TUC Query Language Evaluation
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate  doall(0) .   %% RS-141019     doall/1 (Goal_0) . Zero input arguments for Goal_0 % doall(P): (P, then succeed)
 %% try all, fail, then succeed in the end
 doall( P ) :-  % do all possible Ps, then succeed
     P, 

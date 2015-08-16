@@ -37,12 +37,12 @@
 %% FLAGS: ( used in BusTrans, local (everything accepted) in buslog.pl )
 %flag(_).  %% From buslog... Panic : Global flag that is sometimes not removed by bustrans
 
-% flag(exit)                 Dont create more departures
+% flag(exit)                 Don't create more departures
 % flag(fail)                 Explicit call of negative answer
 
 %% % flag(nightbus)      %%   = nightbusflag
 % flag(nightbusflag)         Query is about nightbus
-% flag(nightbusoption)       Ad Hoc Retention flag (Loop control)
+% flag(nightbusoption)       Ad Hoc Retention flag (avoid-Loop control)
 
 
 % flag(warningflag)          Query contained warning request
@@ -4240,7 +4240,7 @@ id	 add (timenow2(0,T),timeis(T)),
 ip  [] ).
 
 
-%%TODO: THIS ONE IS CAUSEING PROBLEMS: RS-20150617
+%%TODO: THIS ONE IS CAUSEING PROBLEMS: RS-150617
 
 %%%% before assumeatmidnight
 %ateveningimplicit  rule bustrans:( %%  1230:  jeg skal til byen før 0200 -> 1400>1230
@@ -4284,7 +4284,7 @@ id  not flag(airbus),
     not flag(nightbusflag),
     add flag(nightbusflag)
 
-ip  set(nightbusflag,true) ). %%  // necessary
+ip  set(nightbusflag,true) ). %%  // necessary (flag above vs. memory
 
 
 %%%% before tomorrow rule bustrans:( %% TA-101025
@@ -15964,7 +15964,7 @@ is  %%%%%%%%%%%%%%%%%  not present new, %%%  ==> \+ jeg vet ikke %% TA-101015 du
     not present adj/_/ordinary/_/_,
     not present srel/regularly/time/_/_
 id  not flag(exit),
-    not message(_),  %% 22. mars (påskeaften) missing negans
+    not message( M ) or M == nearest_station(_,_,_,_),  %% 22. mars (påskeaften) missing negans
     not reply(_),
     not true, %% = Yes
     not ticketprice2(_,_),
