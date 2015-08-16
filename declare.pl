@@ -119,9 +119,7 @@ X =: Y  :-      %% RS-141024    =:/2    Y is set to X's value
 track( N, P ) :- 
     value( trace, M ),  number(M), M >= N, 
     !,
-    call(P)   %% TA-110130
-;
-    true.
+    call(P)  ;   true.   %% TA-110130  %% RS-150816 Always suceeds.
 %///
 :- meta_predicate  trackprog( +, 0 ) . %% Moved to declare!  %% RS-150111
 trackprog( N, P ) :-

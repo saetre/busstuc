@@ -39,14 +39,15 @@ domain_module(D,M):-
     routedomain(D), % unique solutions
     route_period( D, M, _, _ ).
 
-reset_period :- %% called from main.pl
-    value(tramflag,true),
-    set(actual_domain,gb),
-    set_period_module(gb),  
-    current_period( gb, CP, _, _ ),
-    set( actual_period, CP ),
-
-    !. %% ///////// %% RS-140616 Tram ONLY? Use ONLY the FIRST MATCH for a given domain.
+%% RS-150816 Tram is included as route 1 in the main module
+%reset_period :- %% called from main.pl
+%    value(tramflag,true),
+%    set(actual_domain,gb),
+%    set_period_module(gb),  
+%    current_period( gb, CP, _, _ ),
+%    set( actual_period, CP ),
+%
+%    !. %% ///////// %% RS-140616 Tram ONLY? Use ONLY the FIRST MATCH for a given domain.
 
 reset_period :- %% main.pl
     value(tmnflag,true),
@@ -86,7 +87,8 @@ set_period_module(TT) :-
     !. %% /////////
  
 set_period_module(TT) :-
-    output('interfacesroute.pl~89: UNABLE TO FIND CURRENT MODULE FOR THIS DATE for '),output(TT).
+    output('interfacesroute.pl~89: UNABLE TO FIND CURRENT MODULE FOR THIS DATE for '),
+    output(TT).
 %%,   abort.
 
 

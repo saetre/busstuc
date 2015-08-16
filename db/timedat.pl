@@ -40,7 +40,7 @@ create_named_dates :-
     list_of_named_dates(L), 
     for( ( member(A,L), orig_named_date(A,B) ),
           remember( named_date(A,B) )          % remember( timedat:named_date(A,B) )
-       ), %% To be     refined
+    ), %% To be     refined
     verify_movedates. % verify_dates (that change every year)
 
 

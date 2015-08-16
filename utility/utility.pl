@@ -11,7 +11,8 @@
 %%% RS-131225, UNIT: utility, %% FOR metacomp, makeauxtables.pl
 :-module( utility, [ absorb/3, aggregate/3, all/1, ans/1, appendfiles/3, append_atomlist/2, append_atoms/3,  %% RS-141025 Move to main: (:=)/2, (=:)/2, 
         bag_of/3, begins_with/3, bound/1, breakpoint/2, charno/3, %% FOR busanshp.pl
-        compar/3, debug/2, default/2, deleteall/3, divmod/4, (do)/1, doall/1, ends_with/3, equal/2, error/2, firstmem/2, flatlist/2, fnuttify1/2, fnuttify2/2, for/2,     
+        compar/3, debug/2, default/2, deleteall/3, divmod/4, (do)/1,    %doall/1,
+        ends_with/3, equal/2, error/2, firstmem/2, flatlist/2, fnuttify1/2, fnuttify2/2, for/2,     
         
         delete1/3, featurematch/4, featurematchlist/2, flatten/2, maximum/2, mergeavlists/3, minimum/2,  
         do_count/1, freshcopy/2, subsumes/2,     %% RS-140927 For translat.pl
@@ -42,7 +43,6 @@
 :- meta_predicate  breakpoint(+,0).   %% RS-100101 ?  %% NEW PREDICATE
 :- meta_predicate  debug(0,+).   %% RS-100101 ?  %% NEW PREDICATE
 :- meta_predicate  do(0) .
-:- meta_predicate  doall(0) .   %% RS-141019     doall/1 (Goal_0) . Zero input arguments for Goal_0 % doall(P): (P, then succeed)
 :- meta_predicate  for(0,0).  %% for(0,:).  %% for/2. Stay inside interapp? %% RS-140619
 :- meta_predicate  foralltest(0,0) .
 :- meta_predicate  implies(0,0).
@@ -146,12 +146,6 @@ pling(I) :- output( pling(I) ). %%  Debug
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 do(P):- \+ ( \+ P). 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-doall( P ) :-  % P, then succeed
-    P,
-    false ;
-    true.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
 for( P, Q ) :- %% For all P, do Q (with part of P). Finally succeed
   P, Q, false ; true.
@@ -253,6 +247,7 @@ unbound( X ) :- internalkonst(X).
 %:- use_module( library(aggregate), [ forall/2 ] ).      %% RS-140928
 %listall( P ) :- forall( call(P), output(P) ).
 
+%% print all on list
 pront(L):-
     nl,
     for(member(X,L),output(X)),
@@ -1062,6 +1057,6 @@ writeN0(N):-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %OLD STUFF, extra? 
-%:- meta_predicate   for(0,0), once 1(:), set_ops(+,:,+), test(:), % doall(:) %% RS-131231 Moved to declare/evaluate etc.  
+%:- meta_predicate   for(0,0), once 1(:), set_ops(+,:,+), test(:), %% RS-131231 Moved to declare/evaluate etc.  
 %do/1, foralltest/2, number_of/3, set_of/3, set_ops/3, tryonce/1  ] ).
 

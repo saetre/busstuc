@@ -77,7 +77,8 @@
 %%% RS-131225, UNIT: / and /utility/,
 :- use_module( '../declare', [ (:=)/2, (=:)/2, remember/1, set/2, track/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 :- use_module( '../sicstus4compatibility', [ out/1, output/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
-:- use_module( '../utility/utility', [ append_atoms/3, begins_with/3, delete1/3, doall/1, ends_with/3, flatten/2, for/2, iso_atom_chars/2, %% RS-141029  Avoid bad loops! foralltest/2, once1/1,  
+:- use_module( '../utility/utility', [ append_atoms/3, begins_with/3, delete1/3, %   doall/1,
+                                       ends_with/3, flatten/2, for/2, iso_atom_chars/2, %% RS-141029  Avoid bad loops! foralltest/2, once1/1,
                                        once1/1, set_of/3, set_ops/3, set_union/3, testmember/2, textlength/2 ] ). % remember/1, remove_duplicates/2, set_of/3, test/1,   
 :- use_module( '../utility/writeout', [ traceprint/2 ] ).  %% Module util  , prettyprint/1, output/1, 
 
@@ -1042,11 +1043,11 @@ unknown_words(Strict,L,Z):-
 
 completely_unknown( _Strict, Nuss, L ) :- 
      member( w( Nuss, NameSet ), L ),
-     member( name(Nuss,unknown,_ ), NameSet ).
-%     txt( _N1, w(Nuss, name(Nuss,unknown,unk) ), _N2)  ; true .
-                                                 %% RS-140616. Check if the unknown name has been removed already
-%Bad Experiment: Suddenly no english!            %% because of beeing a part of something known ( see clean1/0 ).
-     %% write( Nuss ), nl, write( 'lex.pl~1001' ). %% RS-140616 Debugging unknown 
+     member( name(Nuss,unknown,_ ), NameSet ),
+     
+     txt( _N1, w(Nuss, name(Nuss,unknown,unk) ), _N2) . %% RS-140616. Check if the unknown name has been removed already ( from assert lex:txt() memory )
+%Bad Experiment: Suddenly no english!                   %% because of beeing a part of something known ( see clean1/0 ).
+     %% write( Nuss ), nl, write( 'lex.pl~1049' ). %% RS-140616 Debugging unknown 
 
 
 only_part_name(Jakobsli):-  
@@ -1065,7 +1066,7 @@ spread(L):-
     retractall( ctxt(_,_,_) ),
     retractall( maxl(_) ),
     ( cursor := 0 ),
-    sprea(0,L),
+    sprea(0,L),         %% RS-150816 Find all possible word forms (including typos? østre->øvre, but not roten->rosten !)
     composal.
 
 sprea(M,[X|Y]):-
@@ -1383,8 +1384,10 @@ makecompnames :-
 
 
 makecompwords :- %% Try every word, succeed with no words as well...
-    for( txt(N1,w(Lap,_TAG),_), 
-         matchcompword(N1,Lap) ).
+    for(
+        txt(N1,w(Lap,_TAG),_),
+        matchcompword(N1,Lap)
+    ).
 
 matchcompword(N1,Lap):-
     lcompword(Lap,TopComputer,Computer),
@@ -1491,6 +1494,13 @@ cleantxt :-
 %% dronningens -> out
 %% dronningens gate
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate  doall(0) .   %% RS-141019     doall/1 (Goal_0) . Zero input arguments for Goal_0 % doall(P): (P, then succeed)
+doall( P ) :-  % P, then succeed
+    P, 
+    false ;
+    true.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 proxyclean :- %% TA-101027
      doall( clean1 ). %% failure driven loop (utility)
@@ -1506,8 +1516,9 @@ clean1 :-  %% john_aae_s_veg (station) %% RS-140616 fronted "Remove unknown part
     txt(N1, w(Aaes,name(Aaes,unknown,unk)),N2),
 %   txt(N1, w(john_aae_s_veg,name(john_aae_s_veg,_,_)),N3), %% RS-140616   OOps, bad case of search and replace!
     txt(N0, w(John_aaes_veg,name(John_aaes_veg,_,_)),N3),   %% This name (N0-N3) spans the problematic word at N1-N2
-        N0 < N1  ,  N2 < N3 , 
-        txtretract( txt(N1,w(aaes,name(aaes,unknown,unk)),N2) ).
+%      N0 < N1  ,  N2 < N3 ,  
+      N0 < N1  ,  N2 =< N3 ,  %% 0 østre 1 roten 2 , 0 østre_rosten 2 => slett 1 roten 2
+      txtretract( txt(N1,w(Aaes,name(Aaes,unknown,unk)),N2) ). %% OOPS!
 
 
 clean1 :- %% Odd husbys veg \+ wrong husbys veg %% TA-110105
@@ -1577,31 +1588,29 @@ clean1 :- %% bu = buss, \= bo!
 
 %% remove txt(M1,..,M2) if text(M1,..,M3) and conditions are satisfied
 
+%% RS-150816 Debug this for typos like "østre roten".
 remove_subnames :- 
 
- for( (txt(M1, w(_,name(_,n,C1 )),M3),  %% comparison
-    
-     (C1==station;C1==street;C1==neighbourhood)       ),     %%  dalen_hageby  station
+ for( (
+         txt(M1, w(_,name(_,n,C1 )), M3),  %% comparison
+         ( C1==station ; C1==street ; C1==neighbourhood ) %% For all texts that are "Places"
+      ),     %%  dalen_hageby  station
 
-      for( (txt(M1,w(Name2,name(NAME,n,C2)),M2), %% .. candidate for elimination
-
-      (  (C2==station;C2==street;C2==neighbourhood;C2=city;
-             C2=company;C2=man;C2=woman;C2=firstname;C2=lastname) ,                  
-       ( 
-
-        ( M2 =< M3, (C1 \== street,C2==street)); %% neighbourhood kills street
-                                                 %% rosenbor g %% TA-110314
-        ( M2 =< M3, (C1== street,C2==company)); %% AtB = Kongens gate 34
+      for( (
+              txt(M1,w(Name2,name(NAME,n,C2)),M2), %% .. for all candidates for elimination
+              (  ( C2==station ; C2==street ; C2==neighbourhood ; C2=city; C2=company ; C2=man ; C2=woman ; C2=firstname ; C2=lastname ),
+               (
+                ( M2 =< M3, (C1 \== street, C2 == street ) ) ; %% neighbourhood kills street
+                                                           %% rosenbor g %% TA-110314
+                ( M2 =< M3, (C1 == street, C2 == company ) ) ;  %% AtB = Kongens gate 34
  
-        ( M2 < M3))
-        
-
-        )),    
-                                        
-          txtretract(txt(M1,w(Name2,name(NAME,n,C2)),M2)) 
-
-      )
-   ).
+                ( M2 < M3)
+               )
+              )
+           ),
+           txtretract( txt( M1, w(Name2,name(NAME,n,C2)), M2 ) ) %% Retract sub-place
+      ) %% For sub-txt-places
+   ). %% For txt-places
 
 remove_other_nouns :- %% rutebilstasjonen noun , also name %% TA-110223
                       %% hurtigruta     name|noun(boat)    %% TA-110614
@@ -1884,7 +1893,7 @@ matchrestassert(N0,N1,[],Ident):-
     value(tmnflag,true),          %% No streets as such
     !,
     moshe_class(Ident,_,Class),
-    assertnewa( ctxt(N0,w(Ident,name(Ident,n,Class)), N1) ).  %%  suspect
+    assertnewa( ctxt(N0,w(Ident,name(Ident,n,Class)), N1) ).  %%  suspect - First?
 
 
 matchrestassert(N0,N1,Brochsgate,Ident):-
@@ -2014,6 +2023,7 @@ assertstreetxt(N,Ident,N2):- %% priority Station before STREET
     member(Class,Z), %% Ad Hoc, avoid stupid backtracking
 
     assertnewz(txt(N, w(Ident,name(Ident,n,Class)), N2)). %% TA-110520
+    %assertnewa(txt(N, w(Ident,name(Ident,n,Class)), N2)). %% RS-150816 Assert FIRST?
 
     %% a!  -> bynesveien -> bryns vei ?
     %% a!  ->  hareveien -> havreveien
@@ -2138,7 +2148,7 @@ xcomposite(First,_Restlist,_Key) :-
 xcomposite(First,Restlist,Key) :-
     compname(First,Restlist,Key).   
 
-
+%% RS-150816 TODO: Include future station-modules as well!
 xcomposite(First,Restlist,Key) :-  
     buslog:veh_mod(TTP),TTP:composite_stat( First, Restlist, Key ).
 
@@ -2208,10 +2218,10 @@ matchsyntxt(N,Veh,N1):- %% match lexicals with hash
 
 
 assertnewtxt(M1,WWW,N1):-
-        assertnewz( txt(M1,WWW ,N1)). %% TA-110520
-     %% assertnewa NB  latecomers are spell corrected
+        assertnewz( txt(M1,WWW ,N1)). %% TA-110520  latecomers are spell corrected
+     %% assertnewa( txt(M1,WWW ,N1)). %% RS-150816 NB
 
-assertnewa( P ) :- lex:P, ! ;   %% RS-141024 Exists ; or assert (in lex-module, temporary)
+assertnewa( P ) :- lex:P, ! ;   %% first? RS-141024 Exists ; or assert (in lex-module, temporary)
     asserta( P ).
 
 assertnewz( P ) :- lex:P, !; %% last (actually undefined!), dont shadow stations. %% RS-140616 (hopefully!)
@@ -2368,7 +2378,7 @@ lexsplitroad(X,Y,Street):-
 lexsplitroad(X,X,nil).
 
 lextorehash0(X,X).
-lextorehash0(X,Y):-
+lextorehash0(X,Y) :-
     torehash(X,Y).   %% namehashtable.pl 
 
 

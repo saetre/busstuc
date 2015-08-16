@@ -20,7 +20,10 @@
         scanfile/2, (sp)/1, spyg/1, spyr/1, status/0, testgram/0, translate2/2, tuc/0, update_compnames/1,
         % to utility/writeout.pl: track/2, statistics/1 (in bustermain2)
         value/1, version_date/1,
-        webrun_english/0, webrun_norsk/0, webrun_tele/0, write_taggercall/1, writepid/0  % verify_empty_origins/0,  value/2
+        webrun_english/0, webrun_norsk/0, webrun_tele/0, write_taggercall/1, writepid/0,  % verify_empty_origins/0,  value/2
+        
+        %For debugging
+        listxt/0        %% List all text-fragments currently in the chart-parser, with their indexes
 ] ).
 
 %% DYNAMIC SECTION
@@ -354,8 +357,8 @@ webrun :-
 
 hi :- % language := english,
     create_named_dates, 
-%    debug,
-     trace,
+    debug,
+%     trace,
     go.
 
 
@@ -525,13 +528,13 @@ status:-
    track( 2, ( nl, output('Flags:'), nl, listing(value/2) ) ).
 
 testgram :- 
-%    dcg_module(DCG),
-%    spy(DCG:sentence/6),
-%    spy(DCG:statreal/6),     
-%    spy(DCG:do_phrase/10),  
-    spy(sentence/6),
-    spy(statreal/6),     
-    spy(do_phrase/10),
+    dcg_module(DCG),
+    spy(DCG:sentence/6),
+    spy(DCG:statreal/6),     
+    spy(DCG:do_phrase/10),  
+%    spy(sentence/6),
+%    spy(statreal/6),     
+%    spy(do_phrase/10),
 
     spy(evaluate:qev/1),       
     trace := 3,
@@ -920,7 +923,7 @@ stopteleerror :-
 
 stopteleerror :-!.
 
-grammar2(L,error) :-     
+grammar2( L, error ) :-
     value(notimeoutflag,true),
     length(L,M),M > 21, %% Temporary Emergency 
     !,
@@ -947,7 +950,7 @@ grammar2(L,error):-                % Failed with type check,
                                          %% after : ????
                                          %% TA-101201
 
-       writelist(Z),nl, nl, %% avoid [ ] which are rendered as blank e on some mobile
+       writelist(Z),nl, nl, %% avoid [ ] which are rendered as blanks on some mobile
     stopteleerror.
 
 
@@ -1108,8 +1111,8 @@ layout2(L,TQL):-
 %%%     proxytag, %% TA-101027 -> lex/proxyclean
 
     track( 2, (nl, writeout:output('*** Word graph ***'),nl)), 
-    %user:track( 2,  listxt ), 
-    track( 2,  listing( lex:txt ) ),
+    track( 2,  listxt ), 
+    %track( 2,  listing( lex:txt ) ),
     track( 2, nl ),  
     track( 2, ( write('******************'),nl,nl)),
 
@@ -1129,7 +1132,7 @@ layout2(L,TQL):-
     transfix(FOL,TQL).
 
 
-% listxt :- listing( lex:txt ). %% RS-140615 Modularized (not in main, but in lex(?) )
+listxt :- listing( lex:txt ). %% RS-140615 Modularized (not in main, but in lex(?) )
 
 
 %%  Execute command

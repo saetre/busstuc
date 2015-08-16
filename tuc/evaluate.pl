@@ -37,7 +37,7 @@
 :- use_module( '../main.pl', [ fact0/1, reset/0 ] ). %% RS-140209 [ (=>)/2, reset/0, traceprint/2 ] Why is => in translat.pl ?! RS-140927
 :- use_module( '../sicstuc.pl', [ language/1 ] ). %% RS-140209 [ (=>)/2, reset/0, traceprint/2 ] Why is => in translat.pl ?! RS-140927
 
-:- use_module( '../utility/utility', [ aggregate/3, doall/1, set_of/3, writelist/1 ]).  %% RS-131117 includes declare.pl language/1,
+:- use_module( '../utility/utility', [ aggregate/3, set_of/3, writelist/1 ]).  %% RS-131117 includes declare.pl language/1,
 :- use_module( '../utility/writeout', [ doubt/2, traceprint/2 ] ).%% RS-140912
 
 % main:difact/2, 
@@ -73,6 +73,15 @@ evaluateq2([R|_]):-  %% NB  Only first of multiple queries.
 
 %% TUC Query Language Evaluation
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+:- meta_predicate  doall(0) .   %% RS-141019     doall/1 (Goal_0) . Zero input arguments for Goal_0 % doall(P): (P, then succeed)
+%% try all, fail, then succeed in the end
+doall( P ) :-  % do all possible Ps, then succeed
+    P, 
+    false ;
+    true.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 evaluateq(doit:::quit):-!,
     reset,  
     output('Good bye'),
@@ -84,7 +93,7 @@ evaluateq(doit:::hello):- !,
 
 evaluateq(doit:::P):-
     !,
-    doall( qev(P) ), %% succeed in the end   % utility.pl
+    doall( qev(P) ),
     nl,nl.
 
 
