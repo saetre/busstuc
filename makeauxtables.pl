@@ -553,30 +553,29 @@ toretarget(X):-
     ambletarget(X),
     \+ ends_with(X,_,street). %% already streeted
 
-ambletarget(X):- sameplace(X,_) ; 
-
-                 samename(X,_) ; 
-
+ambletarget(X):- sameplace(X,_)
+                 ; 
+                 samename(X,_)
+                 ; 
    %%        foreign(X);     %% No spellch on foreigns (fori-> Frei *)
    %%        abroad(X);      %% No spellch on abroad names
 
-                 placestat(X,_) ;   %%%% \+ cmpl(_,_,X) ; % avoid X_Y * husebyhallen 
-
-                 cmpl(X,_,_) ;  
- 
-                 cmpl(_,X,_), atom(X), X \== [] ;
-
-                 buslog:veh_mod(TTP),TTP:composite_stat(X,_,_) ; %% includes X,[],X
-
-                 composite_road(X,_,_) ;
-
-                 cmpl(_,Y,_),member(X,Y) ; %% Expensive %% TA-080911
-
-                 buslog:veh_mod(TTP), TTP:composite_stat(_,Y,_),member(X,Y) ; %% Expensive %% TA-080911
-
-                 composite_road(_,Y,_), member(X,Y). %% Expensive %% TA-080911
-
-
+                 placestat(X,_) %%%%, \+ cmpl(_,_,X)  % avoid X_Y * husebyhallen
+                 ;    
+                 cmpl(X,_,_) 
+                 ;   
+                 cmpl(_,X,_), atom(X), X \== []
+                 ;
+                 buslog:veh_mod(TTP), TTP:composite_stat(X,_,_)   %% includes X,[],X
+                 ;
+                 composite_road(X,_,_)
+                 ;
+                 cmpl(_,Y,_),member(X,Y) %% Expensive %% TA-080911
+                 ;
+                 buslog:veh_mod(TTP), TTP:composite_stat(_,Y,_), member(X,Y) %% Expensive %% TA-080911
+                 ;
+                 composite_road(_,Y,_), member(X,Y)   %% Expensive %% TA-080911
+                 .
 
 
 /*  

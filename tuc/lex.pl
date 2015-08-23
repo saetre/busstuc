@@ -400,7 +400,7 @@ handle_unknown(Strandveien,L,L1):-
      L=L1.
 
 
-handle_unknown(N,Taglist,Names):-  %% Only called if NO Tags (feature)
+handle_unknown(N,Taglist,Names) :-  %% Only called if NO Tags (feature)
 
      set_ops( name(X,Gen,Class),    %% Sequence Preserve
            believed_name(N,X,Gen,Class,_U), 
@@ -411,9 +411,10 @@ handle_unknown(N,Taglist,Names):-  %% Only called if NO Tags (feature)
               %% ferstads = neib + ferstad
               %% kroglund ->  kroglunds 
               %% eidsvoll ->  eidsvolls 
-              %% avoid strand_street \+-> strind_street at all 
 
-dont_spell_check_test(Strandveien,L):-  
+     %% avoid strand_street \+-> strind_street at all 
+
+dont_spell_check_test(Strandveien,L) :-  
 
 %(    test( buslog:station(Strandveien)) %% eg Blakli -> * Baklia 
  (   test( station(Strandveien) ) %% eg Blakli -> * Baklia
