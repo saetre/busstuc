@@ -357,9 +357,9 @@ sentence1(new:::P) ---> %% Hvorvidt bussen går er bra
     !,
     statreal(P)\ xnp(NewSCo,CNP).
 
-  hvorvidt ---> [hvorvidt].
-  hvorvidt ---> [det],[at].
-  hvorvidt ---> [at]. %% TA-110111
+hvorvidt ---> [hvorvidt].
+hvorvidt ---> [det],[at].
+hvorvidt ---> [at]. %% TA-110111
 
 
 sentence1(new:::P)  --->   %% Da er det sant at
@@ -1119,26 +1119,26 @@ statemens0(R,P,P and Q) --->
 statemens0(_,P,P) ---> [].
 
 
- stm_conjunction ---> [hvorav]. %% TA-110617 jeg har flere vinduer hvorav  ett [vindu] er åpent .  
-  
- stm_conjunction ---> [å],look_ahead([så]). %% TA-110105
- stm_conjunction ---> [å],look_ahead([nå]). %%
+stm_conjunction ---> [hvorav]. %% TA-110617 jeg har flere vinduer hvorav  ett [vindu] er åpent .  
+ 
+stm_conjunction ---> [å],look_ahead([så]). %% TA-110105
+stm_conjunction ---> [å],look_ahead([nå]). %%
 
- stm_conjunction ---> [og],look_ahead([nå]).
+stm_conjunction ---> [og],look_ahead([nå]).
 
- stm_conjunction ---> [og],[at]. 
- stm_conjunction ---> [men],[at].  
- stm_conjunction ---> [altså],[at].
- stm_conjunction ---> and1. 
- stm_conjunction ---> [men].
+stm_conjunction ---> [og],[at]. 
+stm_conjunction ---> [men],[at].  
+stm_conjunction ---> [altså],[at].
+stm_conjunction ---> and1. 
+stm_conjunction ---> [men].
              
  
 stm_conjunction  ---> look_ahead([så]). %% Haz? 
 
- stm_conjunction  ---> 
+stm_conjunction  ---> 
      optional([',']), % if present
      look_ahead([ikke]). %% Haz?
- stm_conjunction ---> [mens]. %%  (also subjunction with)
+stm_conjunction ---> [mens]. %%  (also subjunction with)
 
 
 %%%%%¤¤¤  STATEMEN1 (R,Q)   %% initial statement of R
@@ -5339,13 +5339,13 @@ whereq(which(Z):::P) ---> %% hvor tar jeg  bussen (fra) . *
         xnp(O,ONP)). 
 */
 
- subjectverb(S,SNP,Take) ---> % tar jeg %% TA-110121
+subjectverb(S,SNP,Take) ---> % tar jeg %% TA-110121
                               % bør jeg kunne ta ...
      w(verb(Take,_,fin)),
      subject(S,SNP),
      !.
 
- subjectverb(S,SNP,Take) ---> % bør jeg (kunne) ta ... %% TA-110121
+subjectverb(S,SNP,Take) ---> % bør jeg (kunne) ta ... %% TA-110121
      aux1, %% ad hoc
      subject(S,SNP),
      w(verb(Take,inf,fin)).
@@ -10061,7 +10061,7 @@ particlev2(lead,cause) ---> [til].
 
 particlev2(lie1,belong_to) ---> [under]. %% TA-101102 ? admin
 
-          particlev2(list,list)    ---> [opp].
+particlev2(list,list)    ---> [opp].
 
 particlev2(long,want) ---> [etter]. %% lengte etter/ivre etter %% TA-110329
 
@@ -16014,10 +16014,10 @@ preadj1(NIL/PA) --->
 % adj_conjunction0 --->  adj_conjunction,!. 
 % adj_conjunction0 ---> [].
 
- adj_conjunction ---> [og]. 
- adj_conjunction ---> [men].
- adj_conjunction ---> [eller].
- adj_conjunction ---> ['/'].
+adj_conjunction ---> [og]. 
+adj_conjunction ---> [men].
+adj_conjunction ---> [eller].
+adj_conjunction ---> ['/'].
 
 
 %%%%¤¤  ADJ1S    1 eller flere 
@@ -16098,7 +16098,7 @@ gradverb(little) ---> [litt].
 gradverb(somewhat)---> [noe]. 
 gradverb(often) ---> [ofte]. %%  " very delayed" not similar to "often delayed" ?
 
-  gradverb(nil) ---> [så].     %%   collides with så fort som mulig
+gradverb(nil) ---> [så].     %%   collides with så fort som mulig
 
 
 
@@ -16314,7 +16314,7 @@ subjunction(nil, coevent, despite_of)    --->  prep1(without),[at].
 
 subjunction(nil, coevent, instead_of)    --->  instead_of. 
 
-   subjunction(nil, coevent, because_of) --->  [med],[at]. %%  behjelpelig med at
+subjunction(nil, coevent, because_of) --->  [med],[at]. %%  behjelpelig med at
 
 subjunction(nil, coevent, because_of) --->  so_that. 
 subjunction(nil, coevent, because_of) ---> [slik]. %% john vant slik det var forventet 
@@ -16425,18 +16425,18 @@ detå --->
  
 %% buss til IKEA  >buss nr 25<  
  
- numberroute ---> optionalbus,num1,!.
- numberroute ---> bus1,!.
+numberroute ---> optionalbus,num1,!.
+numberroute ---> bus1,!.
   
- optionalbus ---> bus1,optional([nr]). %% TA-101206
- optionalbus ---> num1.
- optionalbus ---> [].
+optionalbus ---> bus1,optional([nr]). %% TA-101206
+optionalbus ---> num1.
+optionalbus ---> [].
 
- num1---> w(noun(number,sin,_,n)),point0,!. %%  nummeret 
- num1---> [nr],point0,!.
+num1---> w(noun(number,sin,_,n)),point0,!. %%  nummeret 
+num1---> [nr],point0,!.
 
- bus1 ---> w(noun(route,sin,_,_)).
- bus1 ---> w(noun(bus,sin,_,_)).
+bus1 ---> w(noun(route,sin,_,_)).
+bus1 ---> w(noun(bus,sin,_,_)).
 
 
 commas0 ---> comma,!,commas0.
@@ -16671,11 +16671,11 @@ as0 ---> [].
 
 andsoon ---> [og], sovidere0. 
 
-  sovidere0 ---> sov0,videre0.
-  sov0  ---> [så].
-  sov0  ---> [].
-  videre0   ---> [videre].
-  videre0   ---> [].
+sovidere0 ---> sov0,videre0.
+sov0  ---> [så].
+sov0  ---> [].
+videre0   ---> [videre].
+videre0   ---> [].
 
 
 
@@ -18489,17 +18489,17 @@ prep2(without)  ---> [fri],[for].
 
 % % % % % % % % % % % % %
 
- umpover ---> [opp],prep1(over). 
- umpover ---> [bort].  
- umpover ---> prep1(over). 
- umpover ---> [bortover].
- umpover ---> [utover].
- umpover ---> [innover].
- umpover ---> [oppover].
- umpover ---> [nedover].
- umpover ---> [hitover].
- umpover ---> prep1(on),w(noun(route,sin,_,n)).     %%  Norw på vei
- umpover ---> prep1(on),w(noun(direction,sin,_,n)). %%  Norw
+umpover ---> [opp],prep1(over). 
+umpover ---> [bort].  
+umpover ---> prep1(over). 
+umpover ---> [bortover].
+umpover ---> [utover].
+umpover ---> [innover].
+umpover ---> [oppover].
+umpover ---> [nedover].
+umpover ---> [hitover].
+umpover ---> prep1(on),w(noun(route,sin,_,n)).     %%  Norw på vei
+umpover ---> prep1(on),w(noun(direction,sin,_,n)). %%  Norw
 
 %   umpover ---> [nordover]. %% -> warning direction
 %   umpover ---> [sørover].

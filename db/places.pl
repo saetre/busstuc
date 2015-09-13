@@ -448,7 +448,8 @@ cmpl(ber,studentby,berg_studentby).  %% < 4 bokst
 cmpl(berg,skole,bergsbakken). %%   BERGSBAKKEN 17 , Harald Gilles veg .?
 cmpl(berg,[skole,på,tyholt],bergsbakken). 
 cmpl(berg,[st,by],berg_studentby).  %%
-cmpl(berg,[student,by],bugges_veg). 
+%cmpl(berg,[student,by],bugges_veg). %% RS-150913 Stengt permanent i februar
+cmpl(berg,[student,by],berg_studentby). 
 
 cmpl(berg,arbeiderkirke,'Berg arbeidskirke'). %% \= berg_prestegård). 
 cmpl(berg,arbeidskirke,'Berg arbeidskirke'). 
@@ -498,7 +499,6 @@ cmpl(bragstads,[plass],o_s_bragstads_plass).
 cmpl(bratsberg,skole,bratsberg).   
 
 cmpl(britannia,hotell,britannia_hotell). %% Flybussen 
-cmpl(hotell,britannia,britannia_hotell). %% Flybussen 
 
 cmpl(broch,[s,gate],prof_brochs_gate).  %%broch'sgate
 cmpl(brochs,gata,prof_brochs_gate). 
@@ -633,7 +633,10 @@ cmpl(cha,kirke,charlottenlund_kirke). %%  ?
 cmpl(charlotten,lund,charlottenlund). 
 cmpl(charlotten,[lund,nedre],charlottenlund_nedre). 
 cmpl(charlottenlund,[ung,skole],charlottenlund_videregående). %?
-cmpl(charlottenlund,[videregående,skole],charlottenlund_videregående). 
+cmpl(charlottenlund,[vgs],  charlottenlund_videregående). %% %% RS-150912, etter klage fra nettet.
+cmpl(charlottenlund,[vgs,skole],  charlottenlund_videregående). %% %% RS-150912, etter klage fra nettet.
+cmpl(charlottenlund,videregående, charlottenlund_videregående). %% byåsen_videregående_skole). %% neib gets lower priority than byåsen skole
+cmpl(charlottenlund,[videregående,skole], charlottenlund_videregående). %% RS-150912, etter klage fra nettet.
 cmpl(charlottenlund,[øvre],skovgård). 
 cmpl(charlottenlund,hallen,charlottenlundhallen). 
 cmpl(charlottenlund,n,charlottenlund_nedre). 
@@ -684,6 +687,9 @@ cmpl(cj,hambrosv,c_j_hambros_vei).
 cmpl(cj,hambrosvei,c_j_hambros_vei). 
 cmpl(cl,[lund,kirke],charlottenlund_kirke). 
 
+cmpl(clairon,[],clarion_hotell). %% RS-150913 Common Typo
+cmpl(clarion,[],clarion_hotell). %% RS-150913
+cmpl(clarion,hotell,clarion_hotell). %% RS-150913
 cmpl(comfort,[hotel,park],'Comfort Hotel Park'). 
 
 cmpl(cruise,pier,pirbadet).
@@ -1299,6 +1305,7 @@ cmpl(harald,[botners,vei],harald_bothners_veg).
 cmpl(harald,[høyems,vei],hallfred_høyems_vei). 
 cmpl(harald,[ourens,vei],henrik_ourens_vei). 
 cmpl(harald,hårfagres,harald_hårfagres_street). 
+cmpl(harald,hårfarge,harald_hårfagres_street). 
 
 cmpl(harald,[hardrådes,plass],harald_hardrådes_street). %% ? 
 cmpl(harald,[hårdrådes,plass],harald_hardrådes_street). %%
@@ -1359,16 +1366,16 @@ cmpl(hospitals,kirken,hospitalskirka).
 cmpl(hospitals,løkkan,hospitalsløkkan). 
 cmpl(hospitalsløkkan,kirke,hospitalskirka).
 
-cmpl(hotell,[royal,garden],royal_garden). 
+%% hotels...  See also a / b / c - hotell       %% RS-150913
 cmpl(hotel,[royal,garden],royal_garden).   
 
-cmpl(hotell,[scandic,ved,moholt],esso_motorhotell). 
 cmpl(hotell,augustin,'Hotell Augustin'). 
+cmpl(hotell,britannia,britannia_hotell). %% Flybussen 
+cmpl(hotell,clarion,clarion_hotell). %% RS-150913
+cmpl(hotell,[royal,garden],royal_garden). 
+%cmpl(hotell,[scandic,ved,moholt],esso_motorhotell). %% OLD %% RS-150913
+%cmpl(hotell,scandic,esso_motorhotell).
 
-cmpl(hotell,britannia,britannia_hotell).  %% flybuss 
-cmpl(hotell,britannia,britannia_hotell). 
-
-%% cmpl(hotell,scandic,esso_motorhotell). 
 cmpl(hourens,vei,henrik_ourens_vei). 
 cmpl(husbys,vei,odd_husbys_street). 
 cmpl(huseby,[videregående,skole],saupstadsenteret). 
@@ -1794,9 +1801,13 @@ cmpl(nedre,[humle,haug],nedre_humlehaugen_vest).
 cmpl(nedre,[humlehaugen],nedre_humlehaugen_vest).
 cmpl(n,[humlehaugen],nedre_humlehaugen_vest).
 cmpl(nedre,[leir,foss],nedre_leirfoss). 
+
+cmpl(leiebeua,[],leirbrua_gård). %% RS-150913 Typo
 cmpl(leira,fengsel,leira_skole).  %% Bratsbergveien 189
 cmpl(leira,gartneri,leira_skole). 
 cmpl(leirbrua,går,leirbrua_gård).
+cmpl(leirbrua,går,leirbrua_gård).
+
 cmpl(leirnua,gård,leirbrua_gård). 
 
 cmpl(leiv,[erikson,senter],pirbadet). 
@@ -2155,8 +2166,9 @@ cmpl(obs,[på,lade],city_lade).  %% (should avoid obs (and) on lade!)
 cmpl(obs,[ved,lade],city_lade). 
 cmpl(odense,vegen,odenseveien). 
 cmpl(okstad,plassen,okstadplassen).  %% street
-cmpl(okstad,skole,okstad).  %% Okstadvegen 6 = Okstad
+cmpl(okstad,skole,okstad_skole).  %% Okstadvegen 6 = Okstad
 cmpl(okstad,østre,okstad_østre). 
+cmpl(okstadskole,[],okstad_skole).  %% Okstadvegen 6 = Okstad %% RS-130915
 
 cmpl(okstad,ø,okstad_østre).  %% TA-110125 NB, %% RS-140614 Ikke OkstadØy!
 
@@ -3656,29 +3668,13 @@ place_resolve(vegmesterveien,veimester_kroghs_street).
 
 placestat(atb,prinsenkrysset). %% TA-101108 
 
-placestat('ALT/Statoil',rotvoll).%% hist/ALT %% extra dep Bus 6 
-placestat('Adolf Øiens skole',prinsen_kinosenter).  %%
-placestat('Bakke kirke',bakkegata).  %% Syndrome Hvor er bakke kirke
-placestat('Berg arbeidskirke',kvilhaugen). 
-%% placestat('Brøset sykehus',brøsetvegen_119).
-placestat('Comfort Hotel Park',prinsen_kinosenter).
-placestat('Dalgård skole',dalgård).  %%
-placestat('Din bil',nidarvoll_skole).  %% Bratsbergveien 11
-placestat('Eberg skole',teglverkskrysset).
-placestat('Heimdal politistasjon',heimdal_stasjon).  %%
-placestat('Hotell Augustin',torget).  %% Brage 
-placestat('Motor Trade',fiolsvingen). %% Bilverksted
-placestat('Lilleby skole',stiklestadveien).  %% Ladeveien 1 
-placestat('Ni muser',prinsen_kinosenter). 
-placestat('Steinan studentby',vestlia_endeholdeplass).
-placestat('Tiller kirke',moltmyra_øst).  
-placestat('Torbjørn Bratts veg',fiolsvingen). 
-
 
 placestat(adm_rit,st_olavs_hospital). 
+placestat('Adolf Øiens skole',prinsen_kinosenter).  %%
 placestat(adresseavisa,adresseavisen). 
 placestat(alfheim,alfheimsvingen). 
 placestat(alfheimsv,alfheimsvingen).  %% Forkortelse (alfheimsv i rutehefte)
+placestat('ALT/Statoil',rotvoll).%% hist/ALT %% extra dep Bus 6 
 
 placestat(amo_senteret,henrik_ourens_veg). 
 placestat(angelltrøa,angelltrøvegen). 
@@ -3686,27 +3682,15 @@ placestat(angeltrøa,angelltrøvegen).
 placestat(arbeidsmarkedsinstituttet,lade_alle_80). 
 placestat(arnebyen,ugla). 
 
-
-
 placestat(atmel,maskinagentur). 
 
 placestat(autronica,haakon_vii_gate_25). %% TA-110818
 
-placestat(multiconsult,postterminalen). %% sluppenvegen 23 %% TA-110415
-
  
-%% placestat(lingit,moholt_storsenter). %% //confuse Lingit company
-
-placestat(lingit,moholt). %% TA-110401
-
-placestat(idi,gløshaugen_syd). %% TA-110401
-
-placestat(dis,gløshaugen_syd). %% TA-110401
-
-
 placestat(badeland,pirbadet). 
 placestat(bakkaunet,rosendal). 
 placestat(bakkebru,bakkegata). 
+placestat('Bakke kirke',bakkegata).  %% Syndrome Hvor er bakke kirke
 placestat(balders_street,tors_veg).  %% street
 %% placestat(barneklinikken,st_olavs_hospital_vest).  %% ????????
 placestat(bassengbakken,solsiden). 
@@ -3716,7 +3700,8 @@ placestat(befalsskolen,festningsgata).
 %% placestat(berg,østre_berg). 
 %% also station on obscure route 73 (not in busrutehefte)
 
-placestat(bergstudentby,bugges_veg). 
+placestat('Berg arbeidskirke',kvilhaugen). 
+%placestat(bergstudentby,bugges_veg). 
 placestat(bergsvingen,harald_bothners_veg).  %% øvre/nedre
 placestat(bi,pirbadet). %%  BI
 placestat(bi,østre_rosten). 
@@ -3755,6 +3740,7 @@ placestat(britannia_hotell,hovedterminalen).
 
 placestat(bromstadkrysset,bromstadsvingen). 
 placestat(brøset,brøsetflata). 
+%% placestat('Brøset sykehus',brøsetvegen_119).
 placestat(brøsetsvingen,bromstadsvingen). 
 placestat(bussgarasjen,sorgenfri). 
 placestat(byavisa,nardokrysset).  %%?
@@ -3766,7 +3752,8 @@ placestat(byåsen_videregående_skole,migosenteret). %% byåsen_videregående_sk
 
 placestat(cathedral,prinsen_kinosenter). 
 placestat(ceciliebrua,tvetestien). 
-placestat(charlottenlund_skole,churchills_veg).  %% Ungdomsskole/Videregående?
+%placestat(charlottenlund_skole,churchills_veg).  %% Ungdomsskole/Videregående?
+placestat(charlottenlund_skole, tunvegen ).  %% Ungdomsskole/Videregående? %% RS-150912
 placestat(charlottenlund_videregående,brundalen_skole). 
 %% placestat(charlottenlundbanen,churchills_veg).
 placestat(charlottenlundhallen,churchills_veg). 
@@ -3775,8 +3762,12 @@ placestat(chr_eggens_veg,bjarne_ness_veg).
 placestat(church,prinsen_kinosenter). 
 placestat(cicilliebrua,tvetestien). 
 placestat(city_hall,prinsen_kinosenter). 
+placestat(clarion_hotell,brattøra).
+placestat('Comfort Hotel Park',prinsen_kinosenter).
+
 placestat(dalen,dalen_hageby). 
 placestat(dalenhageby,dalen_hageby). 
+placestat('Dalgård skole',dalgård).  %%
 placestat(dalsaune,dalsaunevegen). 
 placestat(dalseng,prof_brochs_gate). 
 placestat(dalsenget,prof_brochs_gate). 
@@ -3785,6 +3776,8 @@ placestat(devlegård,olav_engelbrektssons_alle).
 
 placestat(bilbyen,nidarvoll_skole). %%  bratsbergveien 17. // garage
 placestat(dinbil,nidarvoll_skole).  %%  bratsbergveien 11. // garage
+placestat('Din bil',nidarvoll_skole).  %% Bratsbergveien 11
+placestat(dis,gløshaugen_syd). %% TA-110401
 
 placestat(dmmh,dalen_hageby). %% TA-110301
 
@@ -3803,6 +3796,8 @@ placestat(dorahallen,dora).
 placestat(dronningens_gate,hovedterminalen).  %% jeg skal til dronningens gate. 
 placestat(dronningens_street,hovedterminalen).  %% Technical
 placestat(døveskolen,skyttervegen).  %%
+
+placestat('Eberg skole',teglverkskrysset).
 placestat(ekle,eklesbakken). 
 placestat(elgeseter,prof_brochs_gate). 
 placestat(elgsetergata,prof_brochs_gate).  %% \+ sæterbakken
@@ -3864,6 +3859,8 @@ placestat(havstein,havstadsenteret).
 placestat(havsteinekra,stabells_veg). %%% ?? helse og velferdssenter
 placestat(havsteinflata,havstadsenteret). 
 placestat(havsteinflaten,havstadsenteret). 
+
+placestat('Heimdal politistasjon',heimdal_stasjon).  %%
 placestat(heimdalsentrum,heimdal_sentrum). 
 placestat(hoeggen,hoeggen_skole). 
 placestat(holtermannsveien,valøyvegen). 
@@ -3873,8 +3870,8 @@ placestat(hospitalløkkan,hospitalskirka).
 placestat(hospitalløkken,hospitalskirka). 
 placestat(hospitalsløkkan,hospitalskirka). 
 placestat(hospitalsløkka,hospitalskirka). %% hospitalslokka 
-
 %% placestat(hostel,weidemannsveien). %% * P-hotels %% TA-101202
+placestat('Hotell Augustin',torget).  %% Brage 
 placestat(hurtigbåten,pirbadet). 
 placestat(hurtigbåtkaia,pirbadet). 
 placestat(hurtigbåtkaia,pirbadet). 
@@ -3894,6 +3891,8 @@ placestat(husebysenteret,saupstadsenteret).
 placestat(hårstad,martin_kregnes_veg). 
 placestat(hårstadmarka,martin_kregnes_veg). 
 placestat(hårstadmyra,martin_kregnes_veg). 
+
+placestat(idi,gløshaugen_syd). %% TA-110401
 placestat(idrettsbygget,høgskoleringen). 
 % placestat(idrettsplassen, idrettsplassen_jakobsli). %% RS-150104. Name-change. Summer/Winter? %% RS-150814 Doesn't work in autumn
 
@@ -3977,12 +3976,16 @@ placestat(lerkendalskrysset,lerkendal_stadion).
 placestat(lerkendalsvegen,gløshaugen_syd). 
 placestat(leuthenhaven,torget). 
 %% placestat(lianvannet,lian). %% not AtB
+placestat('Lilleby skole',stiklestadveien).  %% Ladeveien 1 
+% placestat(lingit,moholt_storsenter). %% //confuse Lingit company
+placestat(lingit,moholt). %% TA-110401
 placestat(loholt_alle,lohove). 
 %% placestat(louisenlyst,leangenveien).  %% Leangenveien3 %% TA-110822
 placestat(luftkrigsskolen,persaunet_leir). 
 placestat(lundhøgda,lundåsen_nordre).        %% RS-140616 lundåsen_n ?
 placestat(lærerhøgskole,rotvoll). 
 placestat(lærerhøgskolen,rotvoll). 
+
 placestat(mamoz,fiolsvingen). %% nardo_street-16). 
 placestat(marineborgstasjon,marienborg_stasjon).       %% RS-130330. Marienborg er utgått 
 placestat(marinen,prinsen_kinosenter). 
@@ -3992,7 +3995,6 @@ placestat(norske_meierier,heggstadmoen_2). %% NB %% TA-110705
 
 %% placestat(melkekartongen,city_syd). 
 
-
 % placestat(migosenter,migosenteret). 
 % placestat(migosenteret,migosenteret).  %% halset internal name
 
@@ -4001,8 +4003,10 @@ placestat(moholtkrysset,omkjøringsveien_moholt).
 placestat(moholtområdet,moholt). 
 placestat(moholtsenteret,moholt_storsenter).  
 placestat(moholtterasse,moholt).  %% ???
-placestat(moholttun,moholt). 
+placestat(moholttun,moholt).
+placestat('Motor Trade',fiolsvingen). %% Bilverksted
 placestat(mts,magnus_berrføtts_veg).  %% Lazy complex
+placestat(multiconsult,postterminalen). %% sluppenvegen 23 %% TA-110415
 placestat(munkegata,hovedterminalen). 
 placestat(møllenberg,solsiden). 
 
@@ -4019,11 +4023,11 @@ placestat(nardovegen,dybdahls_veg).
 
 placestat(nattbussterminalen,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB %% TA-100715
 placestat(nattbussterminalen,hovedterminalen). %% CORREC %% TA-101203 %% AtB %% TA-100715
-placestat(olav_tryggvasons_gate,sentrum). %% CORREC %% TA-101203 %% AtB %% TA-100715 %% RS-121223
 
 placestat(nedre_elvehavn,solsiden).  %%(?)
 placestat(nedre_møllenberg,bakkegata). 
 placestat(neptunveien,risvollan_senter). 
+placestat('Ni muser',prinsen_kinosenter). 
 placestat(nidar,strindheim). 
 placestat(nidarbergene,strindheim). 
 placestat(nidarfabrikken,strindheim). 
@@ -4031,7 +4035,8 @@ placestat(nidaros,hovedterminalen).  %% New name for midtbyn
 placestat(nidarosdomen,prinsen_kinosenter). 
 placestat(nidarvoll,nidarvoll_skole). 
 placestat(nidarvollsykehjem,nygård). 
-placestat(nidarø,trondheim_spektrum). %% not sum08
+%placestat(nidarø,trondheim_spektrum). %% not sum08
+placestat(nidarø,skansen). %% RS-150913
 %placestat(nidelvbrua,nidelv_bru).  %% nedlagt 22. mars %% TA-110822 %% RS-150814 
 placestat(nidelvhallen,valøyvegen).  %% ?
 placestat(nilsbyen,stavset_senter). 
@@ -4040,8 +4045,6 @@ placestat(nissekollen,fiolsvingen).
 %% placestat(nordre,nordre_gate).  %% nordre general//HAZARD
 
 placestat(nordre_halset,migosenteret). %% renamed
-
-
 placestat(nrk,tyholttårnet). 
 placestat(nth,gløshaugen_syd).  %%
 placestat(ntnu_lade,harald_hårfagres_gate).  %% Changed Name %<---
@@ -4049,8 +4052,10 @@ placestat(ntnui,høgskoleringen).
 %placestat(nyhavna,nidelv_bru).  %%(?) %% nedlagt 22. mars %% TA-110822 %% RS-150814
 placestat(nyveilia,bjørndalsbrua). 
 placestat(næringssenteret,buran).
+
 placestat(okstadbrinken,kroppanmarka). 
 placestat(okstadtunet,okstad). 
+placestat(olav_tryggvasons_gate,sentrum). %% CORREC %% TA-101203 %% AtB %% TA-100715 %% RS-121223
 placestat(olavshallen,nova_kinosenter). 
 placestat(olavskvartalet,nova_kinosenter). 
 placestat(olavskvarteret,nova_kinosenter). 
@@ -4183,6 +4188,7 @@ placestat(stavnebro,tempe_kirke). %% RS-150104. Stavnebrua Station closed in 201
 
 %%%                       placestat(steinan,vestlia).  %% NOT nattbussen
 
+placestat('Steinan studentby',vestlia_endeholdeplass).
 placestat(steinandalsvegen,steindalsvegen). 
 placestat(steinanstudentby,vestlia_endeholdeplass). %% RS-150104. Used to be vestlia, 
 placestat(steinanv,heggdalen). 
@@ -4212,6 +4218,7 @@ placestat(sykehusbrua,tvetestien).
 placestat(sykepleierhøgskolen,st_olavs_hospital). 
 placestat(sykepleierhøyskolen,st_olavs_hospital). 
 placestat(sykepleierskolen,st_olavs_hospital). 
+
 %placestat(tanem, tanemsmoen). %% RS-150111     %% RS-150111. Using isat/2 instead.
 placestat(tavern,trøndelag_folkemuseum). 
 placestat(tavernaen,trøndelag_folkemuseum). 
@@ -4226,6 +4233,7 @@ placestat(teknobyen,prof_brochs_gate).  %%(?)
 placestat(teknostallen,prof_brochs_gate). 
 placestat(telenorbygget,magnus_berrføtts_veg). 
 placestat(tf,magnus_berrføtts_veg). 
+placestat('Tiller kirke',moltmyra_øst).  
 placestat(tiller,torvtaket). 
 %% placestat(tiller,moltmyra).  %% moltmyra_øst//bare en retning
 placestat(tillerbruvegen,tiller_bru). 
@@ -4236,9 +4244,11 @@ placestat(tillerbyen,tonstadgrenda).  %%?koieflata).
 placestat(tmv,solsiden).   %% TA-101214
 placestat(tomasskolen,bakkegata). 
 placestat(tonstad,tonstadkrysset). 
+placestat('Torbjørn Bratts veg',fiolsvingen). 
 placestat(transitten,brøset_hageby).  %% (nb transittgata->strandveien)
 placestat(trikkehallen,prof_brochs_gate). 
 placestat(trikkestallen,prof_brochs_gate). 
+placestat(trondheim_spektrum, skansen). %% RS-150913
 placestat(trondheim_torg,torget). 
 placestat(trondheimstorget,torget). 
 placestat(trondsletten,brøset_hageby). %% beh. senter
@@ -4844,7 +4854,7 @@ sameplace(sammfunnet,studentersamfundet).
 sameplace(saupstadsenter,saupstadsenteret). 
 sameplace(saupstadveien,søbstad_street).  %%street
 sameplace(saupstapsentret,saupstadsenteret). 
-sameplace(scandichotel,esso_motorhotell). 
+%sameplace(scandichotel,esso_motorhotell). 
 sameplace(schjetnansveg,carl_schjetnans_veg). 
 sameplace(schjetnansvei,carl_schjetnans_veg). 
 
@@ -5287,6 +5297,7 @@ specname(chr_eggens_veg,'Christian Eggens veg').  %% EH-030616
 specname(chr_monsensgt,'Christian Monsens gate').  %% EH-031017
 specname(christian_jelstrups_v,'Christian Jelstrups vei').  %% EH-030616
 specname(churchills_v,'Churchills vei').  %% EH-030616
+specname(clarion_hotell,'Clarion hotell').               %% airbus
 
 specname(dmmh,'DMMH'). %% TA-110323
 
@@ -5531,7 +5542,7 @@ specname(rye_skole,'Rye skole').
 specname(santa_barbara,'Santa Barbara'). 
 specname(sas,'SAS'). 
 specname(saxenborg_all,'Saxenborg allé'). 
-specname(esso_motorhotell,'Esso Motorhotell').  %% ??? (Old station name)
+%specname(esso_motorhotell,'Esso Motorhotell').  %% ??? (Old station name) %% RS-150913
 specname(senter,senter). 
 specname(sentrum,sentrum). 
 
@@ -6456,6 +6467,7 @@ synplace(idrettsanleg,idrettsbygg).
 synplace(idrettsanlegg,idrettsbygg). 
 synplace(idrettsanlegg,idrettsplass). 
 synplace(idrettsanlegget,idrettsplassen). 
+synplace(idretsbanen,idrettsbygget). %% RS-150913 Typo 
 synplace(idrettsbanen,idrettsbygget). 
 synplace(idrettsbygg,idrettssenter). 
 synplace(idrettsbygningen,idrettsbygget). 
@@ -7304,11 +7316,12 @@ synplace(sandmo,sandmoen).  %% sandmom -> sandmoveien -> sandmoen
 synplace(sanktolavssykehus,st_olavs_hospital). 
 synplace(saubsta,saupstad). 
 synplace(saubstasentre,saupstadsenteret). 
-synplace(saupsdaringen,saupstadringen_109).  
+synplace(saupsdaringen,saupstadringen_109).
 synplace(saupstadringen,saupstadringen_109). 
 synplace(saupstadringen,saupstadringen_109). 
 synplace(saupstads,saupstadsenteret). 
 synplace(saupstadsentrum,saupstadsenteret).  
+synplace(saupstadsvingen,saupstadringen_109). 
 synplace(saupstakrysset,saupstadsenteret). 
 synplace(saupstasenteret,saupstadsentret). 
 synplace(saupstasentre,saupstadsenteret). 
@@ -7576,6 +7589,7 @@ synplace(supsta,saupstad).
 synplace(svaresborg,sverresborg). 
 synplace(svartlademoen,svartlamon). 
 synplace(svartlamoen,svartlamon). 
+synplace(sveberg,svebergkrysset). %% RS-150913
 synplace(sverige,sweden). %nec?
 synplace(sverresgård,sverresborg). 
 synplace(sykeheim,sykehjem). 
@@ -7981,7 +7995,6 @@ synplace(øst,østre).
 synplace(østerberg,østre_berg). 
 synplace(østgårds,ystgaards). 
 
-
 synplace(østre_roten,østre_rosten).         %% RS-150111. Spell-check. Synplace?
 synplace(østrerosten,østre_rosten). 
 synplace(øver,øvre). 
@@ -7991,6 +8004,8 @@ synplace(øvreflatåsvegen,øvre_flatåsveg).
 synplace(øvrejakobsli,jakobslivegen_øvre).  
 synplace(øvreromulslia,romolslia_øvre).  %% (SICromol)//redundant eventually
 synplace(øvretvereggen,øvre_tvereggen).  %% street?
+synplace(øysand,øysandkrysset).  %% RS-150913
+
 synplace(åaveienskole,åsveien_skole). 
 synplace(åirbadet,pirbadet). 
 synplace(åiren,pirbadet).   %%?
