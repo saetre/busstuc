@@ -937,7 +937,7 @@ part_name(P) :-
 
 %%   (compword gives [xxx], not name(xxx,n,o) as before)
 
-part_word(X):-  
+part_word(X)    :-      %% Add VEHMOD:COMPOSITE_STAT HERE!!! %% RS-150823
   dict_module(L),
   L: rewording(R,_),
   member(X,R).

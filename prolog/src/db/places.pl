@@ -4892,10 +4892,6 @@ sameplace(sentrumsterminal,hovedterminalen).
 sameplace(sentrumsterminalen,hovedterminalen). 
 sameplace(sentrumssentralen,hovedterminalen). 
 
-
-
-
-
 sameplace(shieldropsvei,e_b_schieldrops_vei). %Gateetternavn
 sameplace(siemensbygget,siemens). 
 sameplace(siemensfabrikken,siemens). 
