@@ -97,9 +97,13 @@ period_message( r1602_150810,
  'AtB Sommerruter  2015']).
 
 
-period_message( r1601_150817,
-['AtB Autumn routes',
- 'AtB Høstruter']). %% \+ .   %% RS-120810
+period_message( r1603_151012,
+['New Autumn routes',
+ 'Endrede Høstruter']). %% \+ .   %% RS-151004
+
+%period_message( r1601_150817,
+%['AtB Autumn routes',
+% 'AtB Høstruter']). %% \+ .   %% RS-120810
 
 %period_message( r1611_141020,
 %['End of Daylight Saving Time!',
