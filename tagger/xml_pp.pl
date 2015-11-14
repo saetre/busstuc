@@ -69,8 +69,10 @@ xml_pp_indented( element(Tag,Attributes,Contents), Indent ) :-
 	format( '~selement( ~q,~n', [Indent,Tag] ),
 	pp_attributes( Attributes, [32|Indent] ),  %% "0' "
 
-put_code(44),nl, %% put(0',), nl,
+        
+        put_code(44),nl, %% put(0',), nl,
 
+        
 	xml_pp_list( Contents, [32|Indent] ), write( ' )' ).
 xml_pp_indented( instructions(Target, Processing), Indent ) :-
 	format( '~sinstructions( ~q, ', [Indent,Target] ),

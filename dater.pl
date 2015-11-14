@@ -13,8 +13,8 @@
 
 %%?-prolog_flag(unknown,_,fail). %% (Don't?) crash on undefined predicates
 
-:-compile( 'tucbuster.pl' ).  
-%:- use_module( 'tucbuster.pl', [ ] ).   %% :-[tuctele]. %%% // Tele things %% TA-051018
+%:-compile( 'tucbuster.pl' ).  
+:- use_module( 'tucbuster.pl', [ ] ).   %% :-[tuctele]. %%% // Tele things %% TA-051018
 
 ?- (duallangflag := false).      %% speech based
 

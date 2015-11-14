@@ -188,12 +188,12 @@ addref(Cid, X, Type) :-
 	getcontext(Cid, context(Tql, Prog, TempRefer, NodeStack )),
 	member([Type, List], TempRefer),
 
-(
+ (
 	member(X, List) -> (TempRefer2 = TempRefer) %% TA-050103
-;
+ ;
 	delete(TempRefer, [Type, List], TempRefer1),
 	TempRefer2 = [[Type, [X | List]] | TempRefer1]
-),
+ ),
 
 	setcontext(Cid, context(Tql, Prog, TempRefer2, NodeStack )).
 	

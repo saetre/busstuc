@@ -276,7 +276,7 @@ whattoget(Module,T,Trace1,Trace2,M,W,ex_passes4(Mindex4,STATNO,Station,SeqM,DelA
     Module:passes4(Trace2,STATNO,Station,Seq,DelArr,DelDep),
 %%%%%%%%%%%%%%    DelDep \= 999,  %%%% TA-100913
     xi(pax(Trace1,Trace2,M,W),Mindex4),
-(DelDep=999 -> DelDepW is 999;DelDepW is DelDep + W), %% TA-101207
+ (DelDep=999 -> DelDepW is 999;DelDepW is DelDep + W), %% TA-101207
   (  (Seq = 1) 
           -> fail % drop 1. of 2. leg
           ; ( SeqM is Seq+M-1,

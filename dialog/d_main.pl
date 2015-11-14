@@ -70,7 +70,7 @@ webrun_dialog :- !,
    ( world  := real ),   
    ( warningflag := false ), %% if applicable 
 
-(  repeat,              %% TA-050723
+ (  repeat,              %% TA-050723
 %%%     resetsmsflag,  %% TA-081218
         reset_period,       %%   ---> topreg.pl (Now, interfaceroute)
 	getfromport(L),

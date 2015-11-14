@@ -372,7 +372,7 @@ checkitem(trans,sat, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, OldRefer,
 
 checkitem(tele,sat, focus(Frame, OldRefer, [Tql, Prog]), focus(NewFrame, NewRefer, [Tql, Prog])) :-
 	\+ frame_getvalue_rec(Frame, return, [unknown|_],_),
-(
+ (
     frame_iscomplete(Frame, [])
     ;
     frame_getvalue_rec(Frame, return, [count|_],_)),
@@ -477,10 +477,10 @@ checkitem(teletrans,sqt, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRe
     saturate(Frame, Prog, NewProg), %%%%    Eggen, Fra NT til nardo // use Eggen program?
 %                   %??% 
 
-(
+ (
     roundmember(askfor(X, Slot, Y), NewProg),  
     \+ frame_getvalue_rec(Frame, Slot, _, _), !
-;
+ ;
     \+ roundmember(nocontext, NewProg),  %% TA-030223
     
     (frame_iscomplete(Frame, [Slot | RestSlots]), %% !! means frame is incomplete !
@@ -488,7 +488,7 @@ checkitem(teletrans,sqt, focus(Frame, OldRefer, [Tql, Prog]), focus(Frame, NewRe
     \+ youhaveaskedformissingslot(NewProg,[Slot | RestSlots]))
 
 
-),
+ ),
 
     find_askfor2(teletrans,Frame, Slot, NewSlot),
     getcurrent(Cid),

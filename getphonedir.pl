@@ -149,7 +149,7 @@ getdbrowsdirect(Query, Result) :-
 
 
 
-track(2, (write('*** Db: '),out(Expression),
+ track(2, (write('*** Db: '),out(Expression),
          write('srch '), write(''''),write(Query),write(''''), nl,nl)), 
    
    texec(Expression, [pipe(Outstream), pipe(Instream), std], _Pid),

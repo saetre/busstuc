@@ -13,7 +13,8 @@
 %:- use_module( '../utility/writeout', [ doubt/2, out/1, output/1, prettyprint/1 ] ).%% RS-140912
 
 %%% RS-111205, UNIT: app/
-:-use_module( '../app/busanshp', [ bigcap/2 ] ).
+%:-use_module( '../app/busanshp', [ bigcap/2 ] ).
+:-use_module( '../utility/writeout', [ bigcap/2 ] ).
 
 %%% RS-111205, UNIT: dialog/
 :-use_module( '../dialog/grammar', [ gram/3 ] ).

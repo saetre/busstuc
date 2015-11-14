@@ -7,10 +7,10 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% RS-131227    UNIT: / (FIRST!)
-:- ensure_loaded( user:'declare' ). %% RS-111213  General (semantic) Operators
+%:- ensure_loaded( user:'declare' ). %% RS-111213  General (semantic) Operators
+:- use_module( declare, [ ( := )/2 ] ). %% RS-131227 Avoid loop?
 
 :-use_module( tucbuses ). % Both languages are compiled
-:- use_module( main, [ ( := )/2 ] ). %% RS-131227 Avoid loop?
 
 :-  (unix_language := nor).    %% Installation language for  unix
 

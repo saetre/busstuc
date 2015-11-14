@@ -1,7 +1,6 @@
 %% FILE: d_contextDB.pl
 %% Created AM-980303 
 
-:- ensure_loaded( user:'../declare' ).
 :-op( 730,xfy, :: ).     %% lambda infix  %% RS-141026 For      tuc/ [ translat gram_x fernando  dcg_x anaphors ], app/interapp, dialog/ [checkitem/2 d_context d_dialogue frames/2 makeframe/2 parseres virtuals relax update2 usesstate2]
 
 %%
@@ -25,9 +24,11 @@
 :- volatile dbId/1.     %% RS-131223    TROUBLE WHEN NOT STORED TO FILE!?
 :- dynamic  dbId/1.
 
+%:- use_module( '../utility/writeout', [ track/2 ] ). %% RS-131227 Avoid loop?
+%:- use_module( '../main', [ ( := )/2 ] ). %% RS-131227 Avoid loop?
+:- use_module( '../declare', [ ( := )/2, track/2 ] ). %% RS-131227 Avoid loop?
+
 :- use_module( library(lists) ).
-:- use_module( '../utility/writeout', [ track/2 ] ). %% RS-131227 Avoid loop?
-:- use_module( '../main', [ ( := )/2 ] ). %% RS-131227 Avoid loop?
 
 context( Id ) :-                                    %% AM-980311
 	dbIskey( state, Id ),

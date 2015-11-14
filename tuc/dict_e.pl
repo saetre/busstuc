@@ -254,11 +254,11 @@ compword(when,[bus],bus).
 
 
 
-   xcompword(am,[going,to],will). 
-   xcompword(are,[going,to],will). %% 
+xcompword(am,[going,to],will). 
+xcompword(are,[going,to],will). %% 
+xcompword(is,[going,to],will).      %% bus is going to 
+xcompword(nr,['.'],number).  
 
-   xcompword(is,[going,to],will).      %% bus is going to 
-   xcompword(nr,['.'],number).  
 
 xcompword(can,[t],cannot).
 
@@ -297,21 +297,21 @@ xcompword(29,[th],twentyninth9).
 xcompword(30,[th],thirtieth).  
 xcompword(31,[st],thirtyfirst).  xcompword(31,[th],thirtyfirst).
 
-    xcompword(airport,[express],airbus). 
+xcompword(airport,[express],airbus). 
 
-    xcompword(any,[other],any). %% TA-100907 Rondane
-    xcompword(bus,[number],bus). 
-    xcompword(bus,[ride],trip). %% TA-100902
-    xcompword(departure,[time],departure). 
-    xcompword(departure,[times],departures). %% saves problems
+xcompword(any,[other],any). %% TA-100907 Rondane
+xcompword(bus,[number],bus). 
+xcompword(bus,[ride],trip). %% TA-100902
+xcompword(departure,[time],departure). 
+xcompword(departure,[times],departures). %% saves problems
 
-    xcompword(human,[being],human). %% TA-110825
+xcompword(human,[being],human). %% TA-110825
 
-    xcompword(pass,[by],pass). 
-    xcompword(season,[ticket],special_ticket). 
-    xcompword(the,[turing],turings). %% .. test Ad Hoc 
+xcompword(pass,[by],pass). 
+xcompword(season,[ticket],special_ticket). 
+xcompword(the,[turing],turings). %% .. test Ad Hoc 
 
-    xcompword(to,[morrow],tomorrow). 
+xcompword(to,[morrow],tomorrow). 
 
 
 
@@ -344,7 +344,7 @@ unwanted_noun(second). %% confuse 2. %% TA-100909
 
 
 % be   = be0  ( be sick )  
-% be   = be1  ( be in england  )     
+% be   = be1  ( be in england  ) 
 % be   = be2  ( be a man  = be equal to a man)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -385,18 +385,18 @@ cw(a). cw(b). cw(c). cw(d). cw(e). cw(f). cw(g). cw(h). %% street letters
 cw(i). cw(j). cw(k). cw(l). cw(m). cw(n). cw(o). cw(p). 
 cw(q). cw(r). cw(s). cw(t). cw(u). cw(v). cw(w).
 
-    cw(able). cw(ago).
-    cw(according). cw(all). cw(also). cw(always). 
-    cw(afternoon). 
-    cw(am). % < 12 
-    cw(an). cw(and). cw(another). cw(any). cw(anybody). 
-    cw(anything). cw(anyone). cw(anywhere) .
-    cw(as). cw(average). cw(away). 
+cw(able). cw(ago).
+cw(according). cw(all). cw(also). cw(always). 
+cw(afternoon). 
+cw(am). % < 12 
+cw(an). cw(and). cw(another). cw(any). cw(anybody). 
+cw(anything). cw(anyone). cw(anywhere) .
+cw(as). cw(average). cw(away). 
 
 cw(b). %% allow S. R. 12b 
 %%%% cw(bay). %% Necessary ????
 cw(be). cw(because). cw(been). cw(bigger). cw(biggest). 
-   cw(both). cw(bound). cw(bravo).  cw(but). cw(by). cw(bye). 
+cw(both). cw(bound). cw(bravo).  cw(but). cw(by). cw(bye). 
 
 cw(can). cw(cannot). cw(clock).  % cw('can''t'). 
 cw(coaches). %% ad hoc  Klæbu coaches
@@ -406,23 +406,23 @@ cw(day).
 cw(different). cw(do). cw(dont). cw(does).
 
 cw(each). cw(east). cw(equal). cw(every). cw(everybody). cw(everyone).
-    cw(evening).
-    cw(everything). cw(everywhere). cw(exit).
+cw(evening).
+cw(everything). cw(everywhere). cw(exit).
 
 cw(false). 
-    cw(far). cw(few).  
-    cw(farewell). cw(for).
+cw(far). cw(few).  
+cw(farewell). cw(for).
 
 cw(good). 
-    cw(goodbye). cw(greater). cw(greatest).
+cw(goodbye). cw(greater). cw(greatest).
 
 cw(h). cw(hello). cw(herself). cw(here). 
-    cw(him). cw(himself). cw(his). cw(holdeplass). %% TA-101022
-    cw(hour). cw(hours). cw(hrs). 
-    cw(how).
+cw(him). cw(himself). cw(his). cw(holdeplass). %% TA-101022
+cw(hour). cw(hours). cw(hrs). 
+cw(how).
 
 cw(i). cw(ideally). cw(if).  cw(in). %%
-   cw(it). cw(its). cw(itself). 
+cw(it). cw(its). cw(itself). 
 
 cw(just).
 
@@ -431,50 +431,50 @@ cw(kl).  %%   Norwagism, OK
 % cw(kind). %% (noun, but only used in phrases)
 
 cw(last).  cw(lawl). 
-    cw(least). cw(less). 
+cw(least). cw(less). 
 
 cw(m). cw(may). %% cw(medium). ==> pro forma adjective
-   cw(morning). 
+cw(morning). 
 
 cw(never). cw(next). cw(newyear).  cw(no). %% as in no.
 
 cw(o). cw(ok). cw(oclock). cw(often). 
-    cw(older). cw(one). cw(other).
+cw(older). cw(one). cw(other).
 
 cw(many). cw(more). cw(most). cw(much). 
-    cw(must). cw(my). cw(next).
+cw(must). cw(my). cw(next).
 
 cw(night).
 cw(no). cw(nobody). cw(noone). cw(north). cw(not). cw(nothing). cw(nowhere).
 
 cw(older). cw(only). cw(or). cw(order). cw(other).  cw(others). 
-    cw(own).
+cw(own).
 
 cw(p). cw(ping). cw(pong).  cw(pm). %% > 12 
 
 cw(recently). cw(regards). cw(right). 
 
-    cw(lol). cw(lawl). cw(rotfl). cw(rofl). cw(roflmao). cw(rotflmao). cw(lmao).
+cw(lol). cw(lawl). cw(rotfl). cw(rofl). cw(roflmao). cw(rotflmao). cw(lmao).
 
 cw(s). %% 's  genitive 
 cw(set). 
-   cw(several).   cw(shall). 
-   cw(simpler).   cw(smaller).  cw(smallest). cw(so). 
-   cw(some).      cw(somebody). cw(someone).  cw(something). 
-   cw(somewhere). cw(south). cw(such). 
+cw(several).   cw(shall). 
+cw(simpler).   cw(smaller).  cw(smallest). cw(so). 
+cw(some).  cw(somebody). cw(someone).  cw(something). 
+cw(somewhere). cw(south). cw(such). 
 
 cw(than). cw(thank). cw(thanks). cw(thankyou). cw(that). cw(thats). cw(the).  
-    cw(their). cw(then). cw(there).  cw(these) .
-    cw(this).  cw(to). cw(total). cw(true).
+cw(their). cw(then). cw(there).  cw(these) .
+cw(this).  cw(to). cw(total). cw(true).
 
 cw(unequal). cw(until). cw(using). cw(usual). cw(usually).
 
 
 cw(whats). 
 cw(well). cw(west). cw(will). cw(without).  
-    cw(what). cw(when). 
-    cw(where). cw(wherefrom).  cw(whether). cw(which). cw(while).
-    cw(who). cw(whose). cw(why).
+cw(what). cw(when). 
+cw(where). cw(wherefrom).  cw(whether). cw(which). cw(while).
+cw(who). cw(whose). cw(why).
 
 
 cw(yes). cw(you). cw(younger). cw(your). cw(yours).
@@ -1188,7 +1188,7 @@ nounsyn(busdeparture,  departure).
 nounsyn(busdriver,  driver). 
 nounsyn(bussdriver,  driver). %% sp %% TA-110215
 
-  nounsyn(bussdeparture,  departure). 
+nounsyn(bussdeparture,  departure). 
 nounsyn(busnumber,     number).       %%  (bus ?) busnumber of a bus
 nounsyn(bustime,       departure).  
 
@@ -1245,7 +1245,7 @@ nounsyn(tour,          trip).
 nounsyn(town,          city). 
 nounsyn(tramway,       tram). 
 nounsyn(traveller,     passenger).
-   nounsyn(traveler,     passenger). %% US 
+nounsyn(traveler,     passenger). %% US 
 
 nounsyn(trouble,       problem). 
 nounsyn(wc,            toilet).   

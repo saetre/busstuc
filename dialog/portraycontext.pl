@@ -43,7 +43,7 @@ printcontext :-               %% TA-060126
     value(contextflag,true),
     !,
     printcontext1
-;
+ ;
     true.
 
 
@@ -168,7 +168,7 @@ pcontext :-
     !,
     pcon0,
     !
-;
+ ;
     true.
 
 	

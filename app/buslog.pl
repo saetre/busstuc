@@ -12,7 +12,7 @@
 % Some predicates (like addcontext/0) are only to preserve information, no filtering..
 :-module( buslog, [ addcontext/0, askref/2, atdate/1, atdate2/2, atday/1, avoidbus/3, before/2, boundstreet/1, bugdep1/2, bugdep2/4, bus_place_station/3,
    bus_mod/1, busorfree/1, bustorid/2, cname/2, connections/10, corrstats/3, dateis/4, dayModSeqNo/2, departure/4, % UNUSED? bustorid/3, %% RS-150103
-   departuredayMOD/5, depset/2,     diffdep4/4, direct_connection/3, endstations1/1, ensure_removed/3, findstations/3, firstactualdeparturetime/4,
+   departureday/4, departuredayMOD/5, depset/2,     diffdep4/4, direct_connection/3, endstations1/1, ensure_removed/3, findstations/3, firstactualdeparturetime/4,
    flag/1,        %% For using flag( X ) from program (from busanshp for example)
    frame_remember/2, hpl/3, irrelevantdirect/4, islist/1, isnear/2,
    keepafterstrict/3, keepafterwalking/2, keeparound/3, keepat/3, keepbefore1/3, keepbeforerev/3,
@@ -303,8 +303,8 @@ xroute( X, Y, Z ) :-
 
 
 
-xdepartureday(Rid,A,B,Kay):- %% not redundant
-    veh_mod(TTP), TTP: ex_departureday(Rid,A,B,Kay). %% TA-090812
+xdepartureday( Rid, A, B, Kay ) :- %% not redundant
+    veh_mod( TTP ), TTP: ex_departureday( Rid, A, B, Kay ). %% TA-090812
 
 
 
@@ -427,7 +427,7 @@ hpl(A,B,C) :-            bus_mod(TTP),TTP:hpl(A,_,B,C).
 
 % composite_stat(A,B,C) :- bus_mod(TTP), TTP:composite_stat(A,B,C).   %% RS-141026 true to Remove warnings because of TTP-modules not visible
 
-% departureday(A,B,C,D) :- bus_mod(TTP),TTP:ex_departureday(A,B,C,D).
+departureday(A,B,C,D) :- bus_mod(TTP),TTP:ex_departureday(A,B,C,D).   %% RS-151114 Re-instate?
 
 passes44(A,STATNO,B,C,D,E) :-   bus_mod(TTP),TTP:ex_passes4(A,STATNO,B,C,D,E).
 

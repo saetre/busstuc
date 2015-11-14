@@ -124,14 +124,14 @@ g_execute2( node(Type,  _  , OldFocus, Sacts),  RestStack,NewStack, Multi) :-
 
 %%     copyright(Options, NewFocus, NextFocus), %% TA-050720
 
-(    
+ (    
      (sysout_item(ItemType) ; Multi) ->  
 
     NewStack = [node(Type, item(ItemType)  , NewFocus, RestActs)| RestStack]   ;
 
            g_execute2( node(Type,  _  ,NewFocus, RestActs),  RestStack ,  NewStack, Multi) 
-                                      
-).
+
+ ).
 
 
 

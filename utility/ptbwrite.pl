@@ -472,27 +472,27 @@ numeric(X):- number(X).
 /*    instanziieren noch freier   variablen     */
 
 
- sv(X):- sv(X,1,_).
+sv(X):- sv(X,1,_).
 
 
- sv(X, N, N1):-
+sv(X, N, N1):-
     var(X),
     !,
 
     nextvar(X,N),
     N1 is N+1 .
- sv([X | Y], N, N2):-
+sv([X | Y], N, N2):-
     !,
     sv(X, N, N1),
     sv(Y, N1, N2).
 
- sv(S,N,N1):-
+sv(S,N,N1):-
     compound(S),
     S =..[_F|A],
     !,
     sv(A,N,N1).
 
- sv(_X, N, N).
+sv(_X, N, N).
 
 
 nextvar('X',1).
