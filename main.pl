@@ -51,6 +51,7 @@
 :- use_module( declare, [ (:=)/2, (=:)/2, set/2, track/2, trackprog/2, value/2 ] ).
 :- use_module( sicstus4compatibility, [ out/1, output/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 :- use_module( 'utility/gps', [ reset_origins/0, transfix/2 ] ).  %% RS-150119. transfix overriding translat:transfix/2 
+:- use_module( 'utility/utility', [ pront/1 ] ).  %% RS-150119. transfix overriding translat:transfix/2 
 :- use_module( 'utility/writeout', [ doubt/2, prettyprint/1, print_parse_tree/1, printdots/0 ] ).%% RS-140912 %% out/1, 
 
 %Utility-functions %RS-141019 Moved to main.pl (To be accessable for the scripts.n)
@@ -197,9 +198,9 @@ readscript1(X):-
 % Default settings. May be redefined
 
 initiate :-   %% called at compiletime !  RS-131227
-    trace:=1,      
-    maxdepth:=3,   
-    error_phase:=0,
+    trace := 1,
+    maxdepth := 3,
+    error_phase := 0,
     context_id := 1.
 
 %%%    parsetime_limit := 10000. %% Max 10 seconds for parsing
@@ -831,7 +832,7 @@ haltword( johnforbeskerry ).   %% <- Top Secret
       %% Otherwise,                 TQL = command(P).
 
 
-translate2(L,TQL):-  
+translate2( L, TQL ) :- 
     track(1,nl),
  
     new_origin := false,  %% ugly reset explicit  new_origin flag %% TA-110206
@@ -853,15 +854,13 @@ analyse2(L1,TQL):-
     \+ value(teleflag,true),
     !,
 
-
-    lexproc3(L1,AssumedLanguage,L2),
+    lexproc3( L1, AssumedLanguage, L2 ),
 
     language := AssumedLanguage,
 
- track( 4, utility:pront(L2) ), %% TA-110218
+   track( 4, pront(L2) ), %% TA-110218
 
     error_phase:= 0, 
-
 
     layout2(L2,TQL), 
     print_tql(TQL), %% TA-110207
@@ -1250,9 +1249,9 @@ anash( [listing,Module,:,Plist] ) :-
 
 anash( Plist ) :-
     Callp =.. Plist,
-    % catch(:ProtectedGoal, ?ExceptionTerm, :Handler)   ISO
-    % e.g. existence_error(procedure,main:trace/1)
-    catch( call( Callp ), error(existence_error(procedure,Predicate),_), ( out( 'Illegal Predicate ' ), output( Predicate ) ) ).
+    % catch( :ProtectedGoal, ?ExceptionTerm, :Handler )   ISO
+    % e.g. existence_error( procedure, main:trace/1 )
+    catch( call( Callp ), error( existence_error(procedure,Predicate), _ ), ( out( 'Illegal Predicate ' ), output( Predicate ) ) ).
 
 
 appfilename(Dir,P,DirP):- 

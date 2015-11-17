@@ -186,41 +186,38 @@ morph_module(D) :- language(L),morph_module(L,D).
 %  analyse the input for selection of most probable language,
 %  then answer in the same language
 
-lexproc3(L1,AssumedLanguage,L3) :-
+lexproc3( L1, AssumedLanguage, L3 ) :-
 
-    ( language  =: AssumedLanguage ), %% AssumedLanguage := value$(language)
+    ( language  =: AssumedLanguage ), %% AssumedLanguage := value(language)
 
-    \+ value(duallangflag,true),  %% without duallangflag, only 1 language
+    \+ value( duallangflag, true ),   %% without duallangflag, only 1 language
     !,                  
-    lexproc2(L1,L3,_Nunks).
+    lexproc2( L1, L3, _Nunks ).
 
 
 lexproc3( L1, AssumedLanguage, L3 ) :- 
     ( language  =: OldLanguage ),
-    lexproc2(L1,L2Old,NunksOld),
+    lexproc2( L1, L2Old, NunksOld ),
     !,
     track(4,nl), 
 
+    ( NunksOld = 0 ->
 
- (    NunksOld = 0 -> 
-        (AssumedLanguage = OldLanguage,
-         L3 = L2Old)
-    ;
+      ( AssumedLanguage = OldLanguage,
+        L3 = L2Old )
+     ; (
+          the_other_language( OldLanguage, NewLanguage ),
+          language := NewLanguage,
+          lexproc2( L1, L2New, NunksNew ),
+          !,
+          track(4,nl),
+          language := OldLanguage, % ad hoc, for safety
 
-   (   
-    the_other_language(OldLanguage,NewLanguage),
-    ( language := NewLanguage ),
-    lexproc2(L1,L2New,NunksNew),
-    !,
-    track(4,nl),  
-    ( language := OldLanguage ), % ad hoc, for safety
+          decide_language( NunksOld, NunksNew, OldLanguage, NewLanguage, AssumedLanguage ),
 
-    decide_language(NunksOld,NunksNew,OldLanguage,NewLanguage,AssumedLanguage),
-
-    (AssumedLanguage = OldLanguage -> L3 = L2Old;
-                                      L3 = L2New)
-   )
- ).
+          ( AssumedLanguage = OldLanguage -> L3 = L2Old ; L3 = L2New )
+        )
+   ).
 
 
 the_other_language(english,norsk).
@@ -235,11 +232,11 @@ decide_language(NuOld,NuNew,_Old,New,New) :-
 decide_language(_NuOld,_NuNew,Old,_New,Old).
 
 
-lexproc2(L1,L3,Nunks) :-
-    lexproc(L1,L3),
-    unknown_words(strict,L3,Unknowns), %% To decide language, 
-                                       %% neglect misspelled part_names
-    length(Unknowns,Nunks).
+lexproc2( L1, L3, Nunks ) :-
+    lexproc( L1, L3 ),
+    unknown_words( strict, L3, Unknowns ), %% To decide language, 
+                                           %% neglect misspelled part_names
+    length( Unknowns, Nunks ).
 
 
 lexproc(L1,L3):-
@@ -1031,23 +1028,27 @@ unknown(W):-
     \+ synword(_,W),
     \+ kw(W).  %% known words 
 
-unknown_words(L,Z):- %% called from main.pl
-    unknown_words(unstrict,L,Z).
+unknown_words( L, Z ) :- %% called from main.pl
+    unknown_words( unstrict, L, Z ).
 
 
-unknown_words(Strict,L,Z):- 
-     set_ops(X,      %% keep list in original seq 
-             completely_unknown(Strict,X,L), %% AD HOC
-            Z).        
+unknown_words( Strict, L, Z ) :-
+     set_ops( X,  %% keep list in original seq
+              completely_unknown(Strict,X,L), %% AD HOC
+              Z 
+            ).
 
 % Write an unknown word warning unless the name is a misspelled fullname... (Already removed by clean1/0).
 
-
 completely_unknown( _Strict, Nuss, L ) :- 
-     member( w( Nuss, NameSet ), L ),
-     member( name(Nuss,unknown,_ ), NameSet ),
-     
-     txt( _N1, w(Nuss, name(Nuss,unknown,unk) ), _N2) . %% RS-140616. Check if the unknown name has been removed already ( from assert lex:txt() memory )
+     member( w( Nuss, NameSet ),  L ),
+
+     member( name( Nuss, unknown, _ ),  NameSet ).
+%    member( name( Nuss, unknown, _ ),  NameSet ),
+  
+%% Do you understand this now?? RS-151117   
+
+%%     txt( _N1, w( Nuss, name( Nuss, unknown, unk ) ), _N2) . %% RS-140616. Check if the unknown name has been removed already ( from assert lex:txt() memory )
 %Bad Experiment: Suddenly no english!                   %% because of beeing a part of something known ( see clean1/0 ).
      %% write( Nuss ), nl, write( 'lex.pl~1049' ). %% RS-140616 Debugging unknown 
 

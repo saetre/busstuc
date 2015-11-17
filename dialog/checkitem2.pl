@@ -797,8 +797,8 @@ writetelebusteranswer1( Module:Frame ) :-                %%
 
 
 
-writetelebusteranswer1(Frame) :-                %% return not set, show a nice list of properties
-    listall(Frame).                
+writetelebusteranswer1( Frame ) :-                %% return not set, show a nice list of properties
+    listall( Frame ).
 
 
 %writetelebusteranswerfields( Module:Frame ) :- %% TA-060306

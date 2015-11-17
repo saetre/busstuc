@@ -25,3 +25,4 @@
 %%route_period( tt, r1601_130930, date(2013,09,30),   date(2014,07,22) ).       %% Høst2013oktober
 route_period(   tt, r1603_151012, date(2015,10,12),   date(2015,12,23) ).	%% Høst15
 route_period(   tt, r1602_150901, date(2015,09,01),   date(2015,12,23) ).	%% Høst v3
+route_period(   tt, r1611_200203, date(2010,08,23),   date(2020,06,26) ).
