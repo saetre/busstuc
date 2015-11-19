@@ -1,0 +1,39 @@
+%% IDEAS for DEBUGGING
+
+%%
+
+1. Trace?
+2. Samlepredikat. 
+3. Output to screen, spot the error!
+
+
+%% CHANGE CURRENT FOLDER like this
+use_module(library(file_systems)).
+current_directory(OldDir,'c:/cygwin/home/satre/git/busstuc').
+%current_directory(OldDir,'..').
+
+
+%% tell(File), told(File) vs. Stream examples
+11.3.38 close/[1,2] [ISO]
+Synopsis
+close(+Stream)
+close(+Stream, +Options)
+Examples
+In this example, ‘foo’ will be closed:
+see(foo),
+...
+close(foo)
+However, in this example, a permission error will be raised and ‘foo’ will not be closed:
+open(foo, read, S),
+...
+close(foo)
+Here, close(S) should have been used.
+See Also
+see/1, tell/1, open/[3,4], Section 4.6.7 [ref-iou-sfh], page 106, Section 10.22 [lib-sockets],
+page 500.
+
+%% RS-121121 %% INSTEAD OF tell(File).
+    open(File,write,Stream,[encoding('UTF-8')]),
+    set_output(Stream).
+    
+    

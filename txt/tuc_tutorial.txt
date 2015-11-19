@@ -1,0 +1,1442 @@
+The Understanding Computer: A Tutorial
+
+Tore Amble, Martin Thorsen Ranang and Rune Sætre
+
+8th October 2002
+
+
+Contents
+========
+
+* Introduction
+* Main Description
+   - System Requirements
+   - File System Overview
+   - How to Create the System
+   - How to Run the System
+   - Sample Session
+   - How the System Works
+   - System Commands in Prolog Mode
+   - Parameters
+   - System Commands in NL Mode
+* Language and Grammar
+   - The Accepted language
+   - The Grammar System  (ConSensiCal Grammar)
+   - Skeleton Grammar
+   - Metagrammar rules
+* Adaptability
+   - Dictionary
+   - User Defined Facts
+   - The Tables and Their Roles
+   - In 'semantic.pl'
+   - In 'dict_[en].pl'
+   - In 'compnames.pl'
+   - Script Files
+* TUC Query Language
+* Example Traces (With Comments)
+* How to Implement an Adaptation
+* Frequently Asked Questions
+* Version Management Policy
+
+
+Introduction
+============
+
+The Understanding Computer (TUC) is a framework for natural language
+processing (NLP) developed mainly by Tore Amble at the Department of
+Computer and Information Science (IDI) at Norwegian University of
+Science and Technology (NTNU).  
+
+This document describes how to develop new interfaces (or modules) for
+TUC.  So far, TUC has been adapted for domains such as bus route
+departure information (BusTUC) and for reading and understanding
+articles in molecular genetics (GeneTUC). Work has also been started
+on adapting TUC to the domain of reading and understanding
+encyclopedia articles for the purpose of creating a "living
+encyclopedia".
+
+
+Main Description
+================
+
+TUC is a prototypical Natural Language Processor written in Prolog.
+It is designed to be a general purpose easily adaptable natural
+language processor.
+
+It consists of a general grammar for a subset of the language, a
+semantic knowledge base, and modules for interfaces to other systems
+like UNIX, SQL-databases and Traffic Information Systems.
+
+There is at the moment two versions, one for English and one for
+Norwegian. We will let the English version be used for a generic
+description. (A suffix _e distinguishes the English version from the
+Norwegian version _n).
+
+A feature of the system is to detect which language is actually typed,
+and then process and answer the query in this language.
+
+The interface modules are not included in this package.
+
+
+System Requirements
+-------------------
+
+The implementation language is SICStus Prolog 3 which is a standard
+Prolog.
+
+The features of the Prolog system needed are:
+
+ -  A Prolog compiler for efficiency.
+   
+ -  A full DCG preprocessor.
+
+ -  A standard module system.
+
+
+File System Overview
+--------------------
+Listed below is an overview of the files and directories in the TUC
+package:
+
+TUC/
+|-- ans.pl
+|-- bus.pl
+|-- buster.pl
+|-- database/
+|   |-- auxtables.pl		# Auxiliary tables.
+|   |-- busdat.pl		# Bus adaption predicates.
+|   |-- busroute.pl		# Bus database.
+|   |-- compnames.pl		# Composite-name definitions.
+|   |-- facts.pl		# Static facts for common sense.
+|   |-- semantic.pl		# Lexical semantic knowledge base.
+|   `-- topreg.pl
+|-- dcg.pl			# Auto-generated, temporary file.
+|-- dcg_e.pl			# Auto-generated, temporary file.
+|-- dcg_n.pl			# Auto-generated, temporary file.
+|-- declare.pl			# Declarations used by TUC.
+|-- dicte.pl			# Compiles 'tuc/dict_e.pl' as a module.
+|-- dictn.pl			# Compiles 'tuc/dict_n.pl' as a module.
+|-- grame.pl			# Compiles 'tuc/gram_e.pl' as a module.
+|-- gramn.pl			# Compiles 'tuc/gram_n.pl' as a module.
+|-- main.pl			# The main program.
+|-- morphe.pl			# Compiles 'tuc/morph_e.pl' as a module.
+|-- morphn.pl			# Compiles 'tuc/morph_n.pl' as a module.
+|-- noroute.pl
+|-- notuc.pl
+|-- semantic -> database/semantic.pl*	# Symbolic link.
+|-- sicstuc.pl			# Generic SICStus version of TUC.
+|-- trans.pl
+|-- tuc/
+|   |-- anaphors.pl		# Anaphoric resolution.
+|   |-- dagrun_e.pl		# Runtime routines for gram_e.pl (English).
+|   |-- dagrun_n.pl		# Runtime routines for gram_n.pl (Norwegian).
+|   |-- dict_e.pl		# Dictionary for the language E.
+|   |-- dict_n.pl		# Dictionary for the language N.
+|   |-- evaluate.pl		# TQL evaluation.
+|   |-- fernando.pl		# Grammar utility file.  Generates TQL.
+|   |-- gram_e.pl		# ConSensiCal grammar (English).
+|   |-- gram_n.pl		# ConSensiCal grammar (Norwegian).
+|   |-- inger.pl		# Theorem prover with level control.
+|   |-- lex.pl			# Transforms a word to a list of alternatives.
+|   |-- metacomp.pl		# Compiles the grammars.
+|   |-- morph_e.pl		# Morphological analyzer for the language E.
+|   |-- morph_n.pl		# Morphological analyzer for the language N.
+|   |-- readin.pl		# Read a sentence into a list of symbols.
+|   |-- slash.pl		# Definition of some generic facts.
+|   |-- translat.pl		# Skolemization of FOL expressions.
+|   `-- world0.pl		# Dummy predicates for an empty world.
+|-- tuc.pl
+|-- tucbus.pl
+|-- tucbuses.pl
+|-- tucbuss.pl
+|-- tuclinuks.pl
+|-- utility/
+|   |-- datecalc.pl		# Predicates that has to do with dates.
+|   |-- library.pl		# Some utility predicates (possibly standard).
+|   |-- makeauxtables.pl	# Create a file of auxiliary bus tables.
+|   `-- utility.pl		# Utility routines that are not built in.
+|-- version.pl			# Defines version and date.
+`-- virtuals.pl			# Auto-generated, temporary file.
+
+Entries in the above list ending with a slash (/) indicate that it is
+a directory name.
+
+
+How to Create the System
+------------------------
+
+Note that the bus system contains a large database 'busroute.pl'.  It
+is therefore necessary to compile this separately into a saved state
+(e.g. busbase) and use busbase instead of the compiler command.
+
+
+Example:
+
+   % sicstus
+   ?-compile(busroute).
+   ?-save_program(busbase).
+   ?-halt.
+   .....
+
+   % busbase
+   ?-[tucbus].
+   ?-save_program(bustuc).
+   ?-halt.
+   ......
+
+
+1. Assume that all the files are collected in a directory.
+   Then call the Prolog compiler to compile TUC by the 
+   commands
+
+     ?-[tucbus].    ( Bus system, English version)
+
+     ?-[tucbuss].   ( Bus system, Norwegian version)
+
+     ?-[tucunix].   ( for  UNIX Sicstus version)  
+
+     ?-[tucswi].    ( for  WINDOWS SWI-Prolog version)
+
+     ?-[tuclinuks]. ( Linux, Norwegian installation language 
+                      and user language)
+
+2. Optionally, Application or Interface programs
+
+      ?-[chatw1].    ( contains some world geography)
+or
+      ?-[trinity].   ( contains Common Sense Logic)
+
+3. Make an executable program, e.g. nrl (or bustuc)
+
+
+     ?-save_program(nrl).  
+                   
+
+How to Run the System
+---------------------
+
+1.  Load the compiled system
+
+    % nrl          
+
+    yes
+    | ?-
+
+2.  Call the system.
+
+    | ?- run.        
+
+    E:
+
+3.  Tell and ask.
+
+
+Sample Session
+--------------
+
+The user is prompted by an E: for each new sentence.
+
+For this example to work, it may be necessary to set queryflag to
+false (i.e, "?- queryflag := false.") depending on default settings.
+Otherwise, statements are taken as implicit questions).
+
+***************************************************
+
+E: every man that lives loves mary.
+
+........................................................................
+(A isa man,live/A/B,event/real/B)=>love/A/mary/sk(1,A)
+(A isa man,live/A/B,event/real/B)=>event/real/sk(1,A)
+........................................................................
+
+
+E: john lives.
+
+........................................................................
+john isa man
+live/john/sk(3)
+event/real/sk(3)
+........................................................................
+
+
+
+E: who loves mary ?
+
+........................................................................
+[which(A)::(mary isa woman,A isa agent,love/A/mary/B,event/real/B)]
+
+........................................................................
+
+
+john 
+
+
+How the System Works
+--------------------
+
+The system translates the English text via a general grammar with
+semantic constraints.  The constraints are determined by the content
+of the semantic knowledge base.
+
+The system operates on a backtracking fashion, returning solutions
+which are both syntactically and semantically correct.  In this
+version, only the first possible solution is presented, the others are
+cut away.
+
+Example:
+
+ "John saw a man in the park with a telescope" 
+
+This sentence is genuinely ambiguous, but the analysis chosen will at
+least be semantically plausible (with the current semantic
+definitions).
+
+TUC translates English to First Order Logic (FOL), performs anaphoric
+resolution on this FOL statement, and then translates the FOL statment
+to a Skolemized form called TUC Query Language (TQL).  Slash (/) is
+used as a general predicate generating operator, which is
+left-associative.  The last argument is usually a situation-variable
+or -constant.  In most cases, it can be understood as an unspecified
+time period.
+
+Statements are translated to stored facts and rules.
+
+Queries are processed and answered according to the knowledge base and
+the dialogue content.
+
+Except for system commands, commands are meant to be performed by TUC.
+
+A script of sentences can be read from a text file, given by a read
+command.  All definitions given herein will be semipermanent.
+Otherwise, definitions given in dialogue will be forgotten by reset
+commands.
+
+There are a few error messages.  They are accompanied by a rephrase of
+the input, and a '*' pointing at the error, (usually the word before
+or after the '*').  The '*' signifies how far the analysis proceeded
+until no more alternatives were possible.
+
+
+The error messages are:
+
+  --- Ungrammatical at * ---
+
+The phrase was ungrammatical, even if the semantic check was off.
+
+  --- Meaningless at * ---
+
+The phrase was grammatical, but violated a semantic constraint
+
+  --- Incomprehensible at * ---
+
+General error, normally followed by a list of unknown words
+
+  ---  Incomprehensible  words:  [< words >] 
+
+The phrase was ungrammatical, but incomplete ( no verbs)
+
+  --- Please use a complete sentence ---
+
+
+If you get an error message which is not an unknown word, you should
+experiment with simpler versions of the phrase.  Hopefully, missing
+semantic definitions should be the main source of the problem.
+
+For the description below, the user types whatever is not printed.
+Text surrounded by < > is generic and is not verbatim.
+
+
+System Commands in Prolog Mode
+------------------------------
+
+ ?-tuc.           Initiating call. Calls start
+
+ ?-start.         Prints version data, starts
+
+ ?-restart.       Erases temporary and semipermanent memory and starts
+ 
+ ?-erase.         Erases semipermanent memory
+
+ ?-reset.         Erases temporary memory.
+
+ ?-clear.         Resets trace and debugs.
+
+ ?-run.           Normal go
+
+ ?-hi.            Calls NLP with debug on.
+
+ ?-ho.            Calls NLP with debug off. 
+
+ ?-makegram.      Compile a new grammar. 
+                  
+                  This command must be given after
+
+                   ?-[gram_e].
+
+ ?-dialog.        Sets system in dialog mode. (Experimental)
+
+ ?-status.        List the contents of dialogue memory.
+
+ ?-testgram.      Set spypoints on the grammar for debugging.
+
+ ?-set(<parameter>,<value>).
+
+                  Dynamically sets parameter to value
+
+ ?- X := Y.       Same as ?-set(X,Y).
+                  X and Y must be constants
+
+ ?- X =: Y.       Same as  value(X,Y). 
+
+ ?- value(P)      Prints the current value of the parameter P.
+
+ ?- readscript.   Reads a file for permanent store.
+
+ ?- norsk.        Change language to Norwegian.
+
+ ?- english.      Change language to English.
+
+ ?- spyg <Pred>.  Spy predicate in DCG grammar (similar to spy).
+
+ ?- spyr <Rule>.  Spy Pragma translation rule
+
+
+Parameters
+----------
+
+  trace := N	Tracelevel
+
+                    N=0		 Just answers.
+
+		    N=1		 Generated TQL code (default).
+
+		    N=2		 FOL from parsing lexical analysis
+				 output.
+
+                    N=3		 Lexical analysis output (more).  The
+				 parse tree FOL from parsing (after
+				 anaphora resolution).
+
+                    N=4		 Print details of unknown words
+				 handling.
+
+  maxdepth   := N.		 Max depth of theorem prover.
+				 Default value N=3
+
+  spellcheck := 1.  		 Set spell check on level 1 (one
+				 character errors).
+
+  busflag    := true/false.	 Activate the Bus application
+				 interface.
+
+  tramflag   := true/false.	 The trams are included.
+
+  queryflag  := true/false.	 Statements are implicit queries.
+
+  unknownflag := true/false.	 Accept/Reject unknown words.
+
+  spellstreetflag := true/false. Accept spell correction in street
+				 names.
+
+  textflag   := true/false.	 Read text, process 1 sentence at a
+				 time regardless of line divisions.
+
+  smsflag    := true/false.	 Short answers ( <160 chars ) are
+				 preferred.
+
+  noparentflag := true/false.	 Skip parentheses including content.
+
+  duallangflag := true/false.	 Try the other language if unknown
+				 words.
+
+  noevalflag := true/false.	 Skip evaluation under TUC.
+
+  nodotflag  := true/false.	 All '.' except last is ignored.
+
+  dialog     := 0.		 Missing data are replaced by default
+				 values.
+
+                1.		 Missing data left unknown (for
+				 prompting by dialog processor).
+
+  traceprog  := 1..6.		 Trace of pragmatic rule application.
+
+  traceans   := 1..6.		 Trace of bus answer rule application.
+
+  semantest  := true/false.	 Separate error message if grammatical
+				 but meaningless.
+
+  parsetime_limit := N.		 Max parsing time in ms before
+                                 parser gives up.  Default N=3000.
+
+  language   := english/norsk.	 Default user language.
+
+  unix_language := eng/nor.	 Unix installation language.
+  
+  world      := <identifier>.	 Possible to have another world than
+				 real.  NB: World parameter is always
+				 reset to real after end of read file.
+
+  permanence := true/false.	 Facts are stored semipermanently.
+
+
+System Commands in NL Mode
+--------------------------
+
+These commands starts with a backslash operator to distinguish them
+from NL text.  The NL commands must appear on one line, a last dot is
+optional.
+
+ E: .                Exit, return to Prolog mode.
+
+ E: \                Exit, return to Prolog mode.
+
+ E: \begin           Same as reset, sets permanence on.
+
+ E: \check           Check the consistency of the base.
+
+ E: \clear           Reset to initial condition.
+
+ E: \end             Exit, turns permanence off.
+ 
+ E: \c   <file>      Consults the file '<file>.pl'.
+ 
+ E: \r   <file>      Reads text from the file '<file>.e'
+                
+ E: \u   <call>      Shell command <call> is issued.
+
+ E: \<pred>          Same as ?-call(<pred>).
+
+ E: \<pred> <arg>    Same as ?-call(<pred>(<arg>)).
+                     
+ E: \<pred> <arg1> ... <argn>    
+                     Same as ?-call(<pred>(<arg1>,...,<argn>)). 
+
+
+All the System commands in Prolog mode listed above are also available
+in NL mode (e.g. the command \clear which is listed as an example).
+
+
+Language and Grammar
+====================
+
+The Accepted language
+---------------------
+
+The accepted language, which is called E is a subset of English.  A
+Norwegian version is also available.  Among all its restrictions, note
+the following:
+
+ - Punctuations are only allowed (taken into account) as the final marks, 
+   (no comma ,semicolon or hyphens).
+
+          statement .
+          question ?
+          command !
+
+ - A line may be split into several lines until the line ends with one
+   of these marks.
+
+ - No attention is payed to the morphological form, e.g. singular or
+   plural or tense.
+
+ - All names not put in 'quotes' must be known by the system.  New
+   names can be defined using the standard phrase
+
+    'is a' <noun>  or 'is an'  <noun>
+
+   as in
+
+     E: anne is a girl.
+
+ - Genitive is written by a single 's' without apostrophe as in
+
+     E: who is johns mother ? 
+
+For a demonstration, see the content of the file 'twm.e' which is
+listed below.
+
+****************************************************
+
+\begin  
+ 
+  Every person that gets a spot has this spot.
+
+  Once upon a time there lived in England a king.
+  The  king had 3 wise men.
+  Every  wise man got a coloured spot on his forehead.
+  Every spot was red or white.
+  Every wise man could see every spot that was unequal
+  his own spot.
+  The king said that there was at least one white spot.
+  The king gave each wise man a white spot.
+  How did one man know that he had a white spot ?
+
+\end 
+
+*****************************************************
+
+For your information, some files with extension '.e' are included in
+the delivery as illustrative examples.  Also the file 'problems.e'
+contains examples of sentences which are not treated adequately.
+
+
+The Grammar System  (ConSensiCal Grammar)
+-----------------------------------------
+
+The grammar is based on a simple grammar for statements, while
+questions and commands are derived by use of movements.  The grammar
+formalism is called ConSensiCal Grammar, which is an acronym for
+Context Sensitive Categorial Attribute Logical Grammar.  It is an easy
+to use variant of Extraposition Grammars (XG-grammars
+(Fernando. C. N. Pereira)), which is an extension Definite Clause
+Grammars.  A characteristic grammatical expression in ConSensiCal
+Grammar is found in the definition of a relative_clause which after
+'that' expects a statement MINUS a noun_phrase.
+
+A skeleton grammar follows below for declarative sentences
+(statements).  The grammar which is listed in the file 'gram_e.pl' is
+much more comprehensive and sophisticated.  The grammar is in fact an
+attributed grammar that produces a formula in a first order event
+calculus.
+
+
+Skeleton Grammar
+----------------
+
+sentence ---> statement . |
+              question ? |
+              command !
+
+statement ---> noun_phrase verb_phrase  
+ 
+command ---> statement \ [you] .
+
+verb_phrase ---> aux vp verb_complement(s)  
+
+aux  ---> do | will |  ...  
+
+vp ---> intransitive_verb |
+        transitive_verb noun_phrase  
+
+verb_complement ---> prep_phrase |
+                     adverbial_phrase  
+
+prep_phrase ---> preposition noun_phrase  
+
+adverbial_phrase ---> today | yesterday | ...
+
+noun_phrase ---> determiner adjective(s)
+                 noun noun_complement(s) 
+
+noun_complement --->  prep_phrase |
+                      relative_clause
+
+relative_clause ---> that (statement / noun_phrase)
+
+determiner  ---> a | the | every | ...   
+
+
+Metagrammar rules
+-----------------
+
+  --->   Production
+
+  |      Alternatives
+
+  +      One or more ocurrences.
+
+  *      Zero or more ocurrences.
+
+  ...    an open ended list .
+
+  C/D    A phrase of category C, lacking a phrase
+         of category C
+
+  C\D    similar to / , but the subtracted phrase 
+         must occur first in the text.
+
+  C-D    similar to / but D may reappar after C
+
+  [ ]    Literal brackets
+
+  ( )    just grouping 
+
+*****************************************************
+
+
+Adaptability
+============
+
+TUC is adaptable, which means that there is a general grammar for the
+syntax, while the semantics of the words are declared in tables.  It
+should be noted that multiple tables can be defined in one file, but
+one specific table may not be defined in multiple files.
+
+A table for a predicate 'x' consists of all the atomic formulas with
+the 'x' predicate occurring in that file.  Since 'isa' and 'ako' are
+Prolog predicates defined as infix operators, both 'isa' and 'ako' are
+tables consisting of all the 'isa' and 'ako' statements occurring in
+the files where they are defined.
+
+
+Dictionary
+----------
+
+The dictionary is defined by the two files
+
+dict_e.pl       - Which contains the words definitions (the dictionary
+	          for the language E); and
+
+morph_e.pl	- Which contains the morphological rules/analyzer for
+		  English.
+
+Also, the file 
+
+semantic.pl     - Contains many root forms of words, but it is mainly
+	          TUC's lexical semantic knowledge base.
+
+In addition,
+
+lex.pl		- Contains general rules for lexical analysis.
+
+
+User Defined Facts
+------------------
+
+A file 'facts.pl' contains a set of definitions of object names.  The
+main relation is 'is a':
+
+   <name> isa <class>
+
+   richard isa  employee.
+   january isa month.
+
+
+The Tables and Their Roles
+--------------------------
+
+It might be helpful with a comment about complements and templates.
+Usually a complement (when talking about grammar) is a mandatory
+sentential part used to complete a grammatical construction, but in
+TUC complements are used to define sentential constructions that make
+sense.  In TUC, the template tables may be seen as something more
+fundamental than the complement tables.
+
+
+In 'semantic.pl'
+----------------
+
+a_compl/4	- Defines adjective complements.  Adjective
+		  complements are complements to the adjectives.  The
+		  general syntax is
+		  "a_compl(<adjective>,<subject>,<preposition>,<object>).".
+		  Examples are "a_compl(responsible,agent,for,thing)."
+		  and "a_compl(afraid,agent,of,thing).".
+
+adj_templ/2	- Defines adjective templates.  The general syntax is 
+		  "adj_templ(<adjective>,<class>).".  E.g.,
+		  "adj_templ(dead,animate).",
+		  "adj_templ(married,person)." and
+		  "adj_templ(poor,agent).".
+
+adjname_templ/2 - Defines adjective name templates.  E.g.,
+		  "adjname_templ(prolog,system).".
+
+adjname_templ/3 - Defines adjective name templates and introduces a
+		  co-occurrence meaning.  E.g.,
+		  "adjname_templ(www,page,homepage).".
+
+adjnoun_templ/2 - Defines adjective noun templates.  E.g.,
+		  "adjnoun_templ(knowledge,base).".
+
+adjnoun_templ/3 - Defines adjectival noun prefixes and introduces a
+		  co-occurrence meaning.  E.g.,
+		  "adjnoun_templ(age,limit,agelimit).".
+
+align1/2 -	  Aligns two concepts to allow comparison of
+		  non-compatible concepts.  This is done to permit
+		  concepts of different class hierarchies in TUC's
+		  hierarchy to be compared.  E.g.,
+		  "align1(program,woman)." allows the question "Are
+		  you a woman?" to be asked (this has no impact on the
+		  answer to such a question).
+
+ako/2		- Defines "a kind of"-relations.  If "A ako B", B is a
+		  generalization of A.  Lexically, this means that B
+		  is a hypernym for A and that A is a hyponym for B.
+		  Nouns are defined in a 'ako' hierarchy.  The
+		  hierarchy is tree-structured.  Definitions are made
+		  as facts of the kind <class> ako <superclass>.  For
+		  example, 
+			   
+			   "agent   ako thing.
+			    animate ako agent.
+			    person  ako animate.
+			    animal  ako animate.
+			    adult   ako person.
+			    man     ako adult. 
+			    father  ako man.".
+		  
+apo/2		- Defines "a part of"-relations.  This relation is
+		  used to define the constituent structure of the
+		  nouns.  E.g., the statement "continent apo world."
+		  states that "continent" is a part of "world".  I.e.,
+		  "world" is a holonym for "continent".  Other
+		  examples are
+     
+			"month apo year.
+			 week  apo month.
+			 day   apo week.".
+
+		  This is used to lexically allow some expressions
+		  like "week in a year" without explicitly defining it
+		  as noun compliance.  Note that the relation apo must
+		  NOT be confused with the ako relation.
+
+attributable/4 -  E.g., the predicate
+		  "attributable(european,europe,continent,country)."
+		  is a semantic rule which says that a country is
+		  European if its continent attribute has the value
+		  Europe.
+
+bm_templ/2	- Bimodal templates defines templates with sentential
+		  complements.  E.g., the relation
+		  "bm_templ(cost,money)." allows phrases like "it
+		  costs money to ...".
+
+dtv_templ/4	- Ditransitive verb template.  E.g.,
+		  "dtv_templ(sell,to,person,thing).".
+
+has_a/2		- Defines "has_a"-relations.  The attributes of a
+		  class is declared by the predicate "has_a".  The
+		  general syntax is "<subject> has_a <object>.".
+		  E.g., "person has_a age.", "country has_a capital."
+		  and "dog has_a owner.".
+
+isa/2		- Defines "is_a"-relations.  E.g., "trondheim isa
+		  city.".
+
+iv_templ/2	- Defines intransitive verb templates as
+		  "iv_templ(<verb>,<agent>).".  E.g.,
+		  "iv_templ(live,animate)." and
+		  "iv_templ(work,employee).".
+
+measureclass/1	- Defines classes that acts as measures.  E.g.,
+		  "measureclass(minute).".
+
+n_compl/3	- Defines noun complements.  Noun complements are
+		  modifiers of the noun. The general syntax is
+		  "n_compl(<subject>,<preposition>,<object>).".  E.g.,
+		  "n_compl(regarding,truth,thing).",
+		  "n_compl(person,with,telescope)." and
+		  "n_compl(park,with,statue).".
+
+ordinal/2	- Defines adjectively ordinals.
+
+particle/3	- Defines adverbial particles.  E.g.,
+	          "particle(above,place,pre)." states that ... can be
+		  used prefix, while "particle(after,time,post)."
+		  states that ... cannot be used prefix.
+
+post_adjective/1- E.g., "post_adjective(present).".  (Only applicable
+		  to Norwegian.)
+
+rv_templ/2	- Defines reporting verb templates.  E.g,
+		  "rv_templ(ask,agent)." states that "ask" is a
+		  reporting verb.  The "agent" argument is the subject
+		  of a sentence.
+
+stanprep/2	- Defines preposition templates common to all
+		  normal(?) verbs.  E.g., "stanprep(at,time)." states
+		  that it is possible to do anything at a certain
+		  place.
+
+testclass/1	- Defines classes for which there will not be created
+		  Skolem constants during translation to TQL.  E.g.,
+		  "testclass(identity).".
+
+tv_templ/3	- Defines transitive verb templates.  The syntax is
+		  "tv_templ(<verb>,<agent>,<patient>).".  E.g.,
+		  "tv_templ(start,agent,company)." states that an
+		  agent can start a company.  Other examples are
+		  "tv_templ(kill,animate,animate)." and
+		  "tv_templ(earn,person,money).".
+
+v_compl/4	- Defines possible verb complements.  Verb complements
+		  are modifiers of the verb.  The general syntax is
+		  "v_compl(<verb>,<subject>,<preposition>,<object>).".
+		  E.g., "v_compl(be1,agent,in,meeting)." states that
+		  an agent can be in a meeting.  Other examples are
+		  "v_compl(borrow,person,from,person)." and
+		  "v_compl(live,animate,in,time).".
+
+
+In 'dict_e.pl' / 'dict_n.pl'
+----------------------------
+
+It should be noted that 'dict_e.pl' (English) and 'dict_n.pl'
+(Norwegian) differ in some ways.  Most importantly, in 'dict_n.pl' every
+word is defined, while in 'dict_e.pl' the words that are defined 'in
+semantic.pl' are left out.  This is a natural consequence of TUC's
+English semantic core.  In 'dict_e.pl' the following tables are defined:
+
+adjective2/2	- E.g., "adjective2(fun,good)."
+
+compword/3	- Class-independent composite words.  E.g.,
+		  "compword(down,[town],downtown).".
+
+cw/1		- Defines a closed word class (all the words appearing
+		  as [] constants in diagram).  E.g., "cw(all).".  See
+		  also ow/1.
+
+noisew/1	- Defines words that always can be removed without
+		  changing the meaning of a sentence.  E.g.,
+		  "noisew(actually).".
+
+noun_form/5	- Defines synonyms of nouns.  E.g.,
+		  "noun_form(Form,Root,Num,Def,Gen)." states that Root
+		  is the base of Form, Num defines whether Form is in
+		  plural (plu) or singular (sin) form, Def defines
+		  whether Form is referring to one (or a group of)
+		  particular object(s) or an undetermined (multiple)
+		  of object(s), and Gen defines the genus of Form.
+
+noun3/2		- Defines synonyms of nouns.  Supports inflected forms.
+		  E.g., "noun3(aeroplane, airplane)." will replace an
+		  occurrence of "aeroplane" with "airplane".
+
+numerid/2	- Defines a number ID.  E.g., "numerid(one,1).".
+
+ordinal2/3	- Defines local ordinals, i.e. ordinals for the
+		  language in question.  E.g.,
+		  "ordinal2('1st',first,1).".
+
+ow/1		- Defines an open word class.
+
+preposition/1	- Defines prepositions.  E.g., "preposition(about)."
+		  states that "about" is a preposition.
+
+pronoun/2	- Defines what class a pronoun refers to.  E.g.,
+		  "pronoun(her,woman)." states that her refers to an
+		  agent of the woman class.
+
+synsms/2	- Defines synonymous words occurring in the Short
+		  Message Service (SMS) domain.
+
+synword/2       - Defines synonymous words.  These words are translated in
+		  verbatim.  The relations defined in synword are
+		  non-exclusive, so that words occurring either as the
+		  first or the second argument of this predicate may
+		  be part of other definitions in TUC.
+		  E.g. "synword(nov,november)." states that "nov" and
+		  "november" are synonyms.
+
+verbroot2/2	- Defines synonymous verbs.  The essence here is that
+		  if the first argument is inflected, so will the
+		  second be.  E.g., the rule "verbroot2(admire,like)."
+		  also says that "admired" is synonymous with "liked".
+
+verb_form/4	- Defines irregular verbs.  E.g.,
+		  "verb_form(ate,eat,past,fin).".
+
+
+In 'compnames.pl'
+-----------------
+
+In the file 'compnames.pl', the following table is defined:
+
+cmpl/3		- Defines composite names, as opposed to compword/3,
+		  which defines composite words.
+		  E.g. "cmpl(tandberg,data,tandberg_data).".
+
+
+Script Files
+------------
+
+TUC may be directed to read NL text from file.
+
+The command to do this in dialogue mode is
+
+E: \r <file> .
+
+The file <file> must have extension .e (English) or .n (Norwegian),
+e.g. twm.e whose content is shown above.
+
+
+TUC Query Language
+==================
+
+By typing the command "trace := 1." (default) you will be able to see
+the TUC Query Language (TQL) statements generated from the sentences
+entered.
+
+A TQL expression is a skolemized and simplified event calculus
+formula.  For clarity, these concepts are explained below:
+
+ * Skolemization is the process of removing all existential
+   quantifiers in a formula.
+
+ * The simplifying process removes all atomic formulas in the
+   expression which are always true, or which are implied by other
+   conditions.
+
+ * Event calculus is a form of logic where the atomic formulas belong
+   to an event represented by an event variable added as a last
+   argument to the atomic formula.
+
+   Event variables provides a means to bind simple formulas together
+   to describe more complicated aspects of an event than can be
+   described by a single atomic formula.  An event in event calculus
+   can be both a certain time interval and place, and an abstract
+   event representing for instance a belief a person has (which might
+   not be true).
+
+
+Here is an example session:
+
+> First, let us set the appropriate flags
+
+| ?- english.
+yes
+| ?- trace := 1.
+yes
+
+> and then, let us start the session:
+
+| ?- run.
+
+E: John loves Mary.
+........................................................................
+love/john/mary/sk(3)
+event/real/sk(3)
+........................................................................
+
+- This TQL expression can be paraphrased as: John loves Mary in an
+  event identified by the Skolem constant sk(3) which is an event in
+  the real world.
+
+E: Who loves Mary?
+........................................................................
+[which(A)::(mary isa woman,A isa agent,love/A/mary/B,event/real/B)]
+........................................................................
+
+- This TQL expression can be paraphrased as: Which As are such that
+  Mary is a woman, A is an agent, A loves Mary in event B and B is an
+  event in the real world.  (Answer = John.)
+
+E: Does John love Mary?
+........................................................................
+[test::(john isa man,mary isa woman,love/john/mary/A,event/real/A)]
+........................................................................
+
+- This TQL expression can be paraphrased as: Test to see if it is so
+  that John is a man, Mary is a woman, John loves Mary in an event A
+  and A is an event in the real world.  (Answer = yes.)
+
+
+A TQL sentence consists of a marker which determines the sentence
+type, and a body that expresses the actual meaning of the sentence.
+The marker classifies the sentence into one following classes:
+
+ - A "which" question asking for individuals satisfying the body.
+
+ - A "test" question asking for the truth of the body.
+
+ - A "how many" question asking for the number of individuals
+   satisfying the body.
+
+ - An "explain" question asking for an explanation of the contents of
+   the body.
+
+ - A "do" command, telling TUC to execute the body.
+
+ - A "new" sentence, representing new information that should be
+   stored in TUC's case-specific data base.
+
+
+The body of the TQL sentence consist of a number of atomic (and in a
+few cases compounded) expressions of which the following are the most
+important:
+
+ - "Individual isa Class"
+
+   Says that Individual is of class Class.
+
+ - "Verb/Agent/Event"
+   
+   Says that Agent does Verb in Event. This represents an
+   intransitive verb phrase.  This is made possible by the predicate
+   "iv_templ(Verb,Agent).".
+
+ - "Verb/Agent/Patient/Event"
+
+   Says that Agent does Verb to Patient in Event. This represents
+   a transitive verb phrase.  The predicate responsible for this is
+   "tv_templ(Verb,Agent,Patient).".
+
+ - "srel/Modifier/Class/Individual/Event"
+
+   Says that Individual of Class is modified by Modifier in
+   Event. This represents a verb modifier phrase.  To achieve this,
+   the predicate "v_compl(<verb>,<subject>,Modifier,Class)." must be
+   defined.  The Individual is an instance of Class.  E.g., with a
+   predicate that says "v_compl(see,person,through,telescope).", the
+   statement "John saw a dog through a telescope." is translated into
+   the TQL statements "sk(1)isa telescope", "sk(2)isa dog",
+   "see/john/sk(2)/sk(3)", "srel/through/telescope/sk(1)/sk(3)" and
+   "event/real/sk(3)".
+
+ - "nrel/Modifier/Class1/Class2/Individual1/Individual2"
+
+   Says that Individual1 of Class1 is modified by Modifier and
+   Individual2 of Class2.  This represents a noun modifier phrase.
+   The phrase "John liked a woman from Trondheim." is translated into
+   the TQL statements "sk(1)isa woman",
+   "nrel/from/person/place/sk(1)/trondheim", "like/john/sk(1)/sk(2)"
+
+
+ - "adj/Adjective/Individual/_"
+
+   Says that Individual has the property Adjective.  For example, the
+   sentence "John is dead." generates the TQL statements
+   "adj/dead/john/sk(1)" and "event/real/sk(1)". 
+
+ - "has/SubjectClass/Attribute/Subject/Value"
+
+   says that the Subject of class SubjectClass has attribute Attribute
+   with value Value.  The parameters are taken from the "has_a" table.
+
+TQL is meant to be a sufficient interface between TUC and an
+application.  TQL must therefore be independent of context, because
+TUC shall be usable for different applications without changing the
+TQL representation, and since TUC has no knowledge of the pragmatics
+and context of a certain application area.
+
+Of course, making TUC independent of pragmatics can be achieved both
+by knowing everything about pragmatics (and thus always disambiguate,
+or translate, into the right pragmatic interpretation) or by knowing
+nothing about pragmatics and making no pragmatic judgments.  In TUC,
+the latter approach is used for obvious reasons.
+
+To make TQL context independent, the semantics of a natural language
+sentence as represented in a TQL expression must contain all (or at
+least all likely) possible interpretations, so that the right
+interpretation of the sentence can be left to the application.  To
+achieve this goal the TQL must be limited to expressing the structure
+of the given input sentence, more precisely the type and literal
+content of each phrase, the type of words and the interdependencies of
+the phrases.  Since the pragmatic meaning of the input sentence must
+be determined by the application, an application using TUC will still
+be dealing with natural language, but TUC does the job of filtering
+out irrelevant details of the input sentences and structuring the
+sentence.
+
+
+Example Traces (With Comments)
+==================================
+
+Below, a couple of traces (level 3) with some hopefully helpful
+explanations follow.  The examples were generated by running the
+program 'notuc.pl' and setting the language to English.  The comments
+are introduced by the token '%':
+
+E: John loves Mary.
+
+   % This was the input sentence.  The predicate that is responsible
+   % for presenting this prompt and reading the supplied text is
+   % ask_user/1 in the file 'readin.pl'.
+
+........................................................................
+
+w(john,[name(john,n,man)])
+w(loves,[verb(love,pres,fin),noun(love,plu,u,n),noun(love,sin,u,gen)])
+w(mary,[name(mary,n,woman)])
+w(.,[[.]])
+
+   % This is the output from the lexical analysis.  Here, the sentence
+   % has been broken down into words.  One can see that "john" and
+   % "mary" has been identified as names, while the word "loves" can
+   % be either a verb or a noun.
+
+txt(0, w(john,name(john,n,man)), 1).
+txt(1, w(loves,verb(love,pres,fin)), 2).
+txt(1, w(loves,noun(love,plu,u,n)), 2).
+txt(1, w(loves,noun(love,sin,u,gen)), 2).
+txt(2, w(mary,name(mary,n,woman)), 3).
+txt(3, w('.',['.']), 4).
+
+   % Here, the words with their possible classes are shown together
+   % with their start and stop positions in the sentence.
+
+*** Parse Tree ***
+
+sentence
+  {}
+  !
+  sentence1
+    greetings0
+      []
+    statement
+      {}
+      statemen
+        statemes
+          statems
+            statem
+              state
+                st
+                  noun_phrase
+                    noun_phrases
+                      both0
+                        []
+                      noun_phrase1
+                        np1
+                          np_kernel
+                            aname_phrase
+                              athe0
+                                []
+                              preadjs0
+                                []
+                              name_phrase
+                                namep
+                                  the0
+                                    []
+                                  nameq
+                                    nameq1
+                                      no0
+                                        []
+                                      name(john,n,man)
+                                      {}
+                                      {}
+                                      {}
+                              {}
+                          noun_modifiers
+                            lock
+                              +
+                            noun_complements
+                              []
+                            unlock
+                              nil
+                      noun_phrases0
+                        []
+                  verb_phrase
+                    verb_phrase1
+                      do0
+                        []
+                      do_phrase
+                        adverbx0
+                          []
+                        vp_head
+                          lexv
+                            verb(love,pres,fin)
+                            {}
+                          reciproc0
+                            there0
+                              []
+                          negation
+                            []
+                          event00
+                            {}
+                          noun_phrase2
+                            noun_phrase
+                              noun_phrases
+                                both0
+                                  []
+                                noun_phrase1
+                                  np1
+                                    np_kernel
+                                      aname_phrase
+                                        athe0
+                                          []
+                                        preadjs0
+                                          []
+                                        name_phrase
+                                          namep
+                                            the0
+                                              []
+                                            nameq
+                                              nameq1
+                                                no0
+                                                  []
+                                                name(mary,n,woman)
+                                                {}
+                                                {}
+                                                {}
+                                        {}
+                                    noun_modifiers
+                                      lock
+                                        +
+                                      noun_complements
+                                        []
+                                      unlock
+                                        nil
+                                noun_phrases0
+                                  []
+                          {}
+                        verb_complements0
+                          {}
+                      !
+                    verb_phrases0
+                      []
+                {}
+            statems0
+              []
+  terminator
+    termchar
+      [.]
+
+   % Above, the sentence is parsed according to the grammar defined in
+   % 'gram_e.pl'.  One can see how the statement (st) is parsed as 
+   % "st -> noun_phrase verb_phrase".
+
+******************
+
+[new::true and john isa man and true and mary isa woman
+and(exists(A:event)::love/john/mary/A and event/real/A)]
+
+   % The above text is a FOL statement before anaphora resolution is
+   % performed.
+
+[new::true and john isa man and true and mary isa woman
+and(exists(A:event)::love/john/mary/A and event/real/A)]
+   
+   % In this version of the FOL statement, anaphora resolution has
+   % been performed, but there were no anaphoric references.
+
+john isa man
+mary isa woman
+love/john/mary/sk(1)
+event/real/sk(1)
+
+   % These are the TQL statements generated from the parse.
+
+mary is_the woman
+john is_the man
+
+   % The two lines above states any new information that was
+   % introduced by the parse.  Thus, they represent the last mentioned
+   % discourse referents and is used when external anaphora resolution
+   % is needed.
+
+........................................................................
+
+20 ms % This is the time it took to process the sentence.  The speed
+      % will usually vary with the amount of output the traces
+      % generate.  Less output reduces the processing time.
+
+Another parse, which does not succeed, is shown below:
+
+E: John loves.
+
+........................................................................
+w(john,[name(john,n,man)])
+w(loves,[verb(love,pres,fin),noun(love,plu,u,n),noun(love,sin,u,gen)])
+w(.,[[.]])
+
+txt(0, w(john,name(john,n,man)), 1).
+txt(1, w(loves,verb(love,pres,fin)), 2).
+txt(1, w(loves,noun(love,plu,u,n)), 2).
+txt(1, w(loves,noun(love,sin,u,gen)), 2).
+txt(2, w('.',['.']), 3).
+
+
+
+--- Incomprehensible at  * --- 
+
+john loves . * 
+
+........................................................................
+
+20 ms
+
+   % Here, there exists no successful parse because, according to the
+   % current grammar, loves is either a transitive or a reporting verb
+   % and none of these conditions can be met in the input sentence
+
+
+How to Implement an Adaptation
+==============================
+
+If you want to use TUC to create an application in a particular
+domain, you will probably need to change and/or extend:
+
+ - The semantics of TUC.  Even though TUC has a core of semantics that
+   has been developed over several years, there will probably be some
+   non-common semantics which belong to the domain you are
+   investigating, or which is simply not covered yet.
+
+ - All new words must be defined in the appropriate dictionaries.
+
+ - The grammar of TUC.  It should be noted that as a last resort, when
+   a problem cannot be solved by only changing/extending the
+   semantics, you might consider to contact Amble to argue for the
+   need of changing the grammar of TUC.  It is not very likely that
+   you will have to change any of the grammar of TUC, but there might be
+   some intricate sentence structures that occur in your domain which
+   does not normally occur in natural language.  The main reason for
+   this is that the grammar of TUC is considered to be domain
+   independent.
+
+
+Frequently Asked Questions
+==========================
+
+Q: How do I add a new name (e.g., for a company) to TUC?
+
+A: You can do that by adding an entry like
+
+      xerox_corporation isa company.
+
+   to the 'facts.pl' file.
+
+
+Q: But, how can I add all of a person's name so that they are treated
+   like references for that person?
+
+A: It is possible to add names that consists of multiple words as
+   composite concepts in TUC. For the example above, an entry for the
+   Xerox Corporation may be entered as
+
+      cmpl(xerox,[corporation],xerox_corporation).
+
+   into the 'compnames.pl' file.
+
+
+Q: And if I would like to add a new composite word, which is not a
+   name, what do I do then?
+
+A: Then it would be appropriate to use the compword/3 predicate.  To
+   add the word down town as a concept, one would add the following
+   rule to the 'dict_e.pl' or 'dict_n.pl' file:
+
+      compword(down,[town],downtown).
+
+
+Version Management Policy
+=========================
+
+The program system has a Version X.Y and a Date YYMMDD.  The Date is
+the date of the last modification.
+
+The documentation also has a Version X.Y and a Date YYMMDD, which is
+the date of the last correction.
+
+The Version of the documentation and the program system must
+correspond.  The Date however may deviate.
+
+Two files, documents or programs with the same Version and Date are
+identical.
+
+The documentation can be changed (improved) without changing the
+Version number.  If the program is unaffected, only the Date is
+changed.
+
+Similarly, programs can be changed (improved) with only a change in
+the Date when the documentation is not affected.
+
+Each file has a similar field for the last revision date.  Changes in
+the files will normally be added a signature and a date of the
+modification (e.g. TA-960702).
+
+The date of the system release is the date of the last revision of any
+of its files.  This date is written in the file 'version.pl'.

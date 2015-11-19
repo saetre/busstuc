@@ -1,0 +1,175 @@
+From torbjorn@lingit.com Mon May  4 12:27:40 2009
+Date: Mon, 04 May 2009 12:27:23 +0200
+From: Torbjorn Nordgard <torbjorn@lingit.com>
+To: Tore Amble <toreamb@idi.ntnu.no>
+Subject: [Fwd: [Fwd: Re: [Fwd: Fwd: Klokka på BussTUC-serveren går 7 minutter for langsomt.]]]
+
+Nå skulle det være i orden.
+
+-torbj
+
+    [ Part 2: "Included Message" ]
+
+Date: Mon, 04 May 2009 12:02:55 +0200
+From: Kristian Skarbø <kristian@lingit.no>
+To: Torbjorn Nordgard <torbjorn@lingit.com>
+Subject: [Fwd: Re: [Fwd: Fwd: Klokka på BussTUC-serveren går 7 minutter for langsomt.]]
+
+FYI.
+
+
+-Kristian
+
+-------- Original Message --------
+Subject: Re: [Fwd: Fwd: Klokka på BussTUC-serveren går 7 minutter for
+langsomt.]
+Date: Mon, 04 May 2009 11:17:47 +0200
+From: Tor Rune Skoglund <trs@lingit.no>
+To: Kristian Skarbø <kristian@lingit.no>
+References: <49FEABEB.5060402@lingit.no>
+
+Ventelo Hosting fikser klokka og legger inn ntp, så slipper vi
+dette i framtiden. De fakturerer lingit 1 konsulenttime for dette.
+
+Maskina er forresten en "gammel" 2.6.8 kernel, burde kanskje
+på sikt få dette inn i mer oppdaterte former...
+
+Øyvind stod fortsatt som kontaktperson på mail/driftstjenester.
+Fikk dette endret til support@lingit.no
+
+Mvh
+Tor Rune Skoglund
+Lingit AS
+
+Kristian Skarbø skrev:
+> Dette gjelder serveren busstuc.lingit.no som driftes av Ventelo. Vi har
+> ikke rot, men passord til to brukere: tore og mtr. Bussorakelet er satt
+> opp som brukeren tore.
+> 
+> Det var ØB som var kontakt mot Ventelo, så vi burde nok fått litt mer
+> ordnede former på dette.
+> 
+> En tidligere e-post med en driftsmelding fra Ventelo som Torbjørn
+> videresendte meg inneholdt følgende kontaktinformasjon:
+> 
+> """
+> Kontakt:
+> 
+> Ved spørsmål kan Ventelo Hosting kontaktes ved å:
+> 
+>   * Sende mail til support@ventelohosting.no.
+>   * Ringte vårt vaktnummer på telefon +47 21 65 00 99.
+> """
+> 
+> 
+> -Kristian
+> 
+> -------- Original Message --------
+> Subject: Fwd: Klokka på BussTUC-serveren går 7 minutter for langsomt.
+> Date: Thu, 30 Apr 2009 13:36:06 +0200 (CEST)
+> From: Torbjorn Nordgard <torbjorn@lingit.com>
+> To: kristian@lingit.no
+> 
+> 
+> Hei
+> 
+> Kan du se på dette? Jeg vet ikke engang hvilken maskin det er snakk om ...
+> 
+> -torbj
+> 
+> ----- Start Forwarded Message -----
+> Sent: Thu, 30 Apr 2009 12:51:57 +0200 (MEST)
+> From: Tore Amble <toreamb@idi.ntnu.no>
+> To: torbjorn@lingit.no
+> Subject: Klokka på BussTUC-serveren går 7 minutter for langsomt.
+> 
+> 
+> 
+> 
+> Klokka på BussTUC-serveren går 7 minutter for langsomt.
+> 
+> Hvem kan stille den riktig ?
+> 
+> 
+> Når det gjelder I-Phone vennlig format er det en god ide,
+> men jeg vet ikke akkurat hva som må gjøres av oss.
+> 
+> (SMS-inntektene får vel også konkurranse på sikt, men det betyr kanskje
+> ikke så mye).
+> 
+> De andre forslagene skal vurderes .
+> 
+> 
+> 
+> 
+> ----------------------------------------------------------------------
+> God morgen, Tore!
+> 
+> Vi har mottatt klage på klokken på Bussoraklet.
+> Jeg opplever også at jeg får svar om kommende bussavgang,
+> etter at det klokkeslettet er passert.
+> 
+> Har du mulighet til å sjekke opp,
+> og gi meg tilbakemelding?
+> 
+> Mvh
+> Johanne S. Bakke
+> Grafisk formgiver
+> Team Trafikk AS
+> Tlf 480 13 861
+> team-trafikk.no <http://www.team-trafikk.no/>
+> 
+> 
+> 
+>   Trenger du å skrive ut denne e-posten?
+> 
+> 
+> 
+> ________________________________
+> 
+> Fra: andreas@andreas.ringdal.no [mailto:andreas@andreas.ringdal.no] På
+> vegne av Andreas Ringdal
+> Sendt: 30. april 2009 06:24
+> Til: Firmapostkasse Team Trafikk AS
+> Emne: Bussorakelet trenger å få stilt klokken
+> 
+> 
+> 06:17 i dag kjørte jeg søket
+> "Når går bussen fra kroppanmarka til sentrum"
+> 
+> og fikk dette svaret
+> 
+> 
+> 
+>          Neste buss , nummer 3 passerer Kroppanmarka kl. 0612  og kommer
+> til Munkegata, holdeplass M5 kl. 0629 .
+>          Siste buss , nummer 3 passerer Kroppanmarka kl. 2341 og kommer
+> til
+> Munkegata, holdeplass M5 kl. 2358 .
+> 
+> 
+> 
+> Det hjelper veldig lite å vite at det gikk en buss for 5 minutter siden,
+> kan dere be noen ta en justering på bussorakelet slik at jeg slipper å
+> måtte taste inn "etter
+> 06:17" for å få med neste buss.
+> 
+> Savner at den viser de 2-3 neste avgangene, når neste buss går om 1 minutt
+> er det ikke sikkert at jeg rekker til holdeplassen, og da er det veldig
+> interessant å vite
+> når neste buss går.
+> 
+> Savner også en versjon av bussoraklet som er iphonevennlig. Er mye lettere
+> å bruke nettleseren på telefonen fremfor å sende sms, men nettsidene deres
+> egner seg ikke
+> så veldig til bruk fra telefon. Trenger ikke mobilvenlig utgave av hele
+> nettstedet, bare ruteinformasjon
+> 
+> 
+> 
+> 
+> 
+> 
+
+
+

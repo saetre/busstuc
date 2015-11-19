@@ -1,0 +1,37 @@
+%% FILE strictrules
+%% SYSTEM busstuc
+%% CREATED TA-070119
+%% REVISED TA-070421
+
+Rules governing the permission/obligation to modify BussTUC
+
+
+Must:
+
+1. Errors  must be corrected 
+2. Gross misunderstandings must be corrected
+3. Missing answers where there is a good answer
+4. Time out of moderate sized sentences
+5. Answers that demonstrate stupidity
+
+May:
+
+1. Improve answers that shows ignorance
+2. Obvious spelling errors not covered by amblehash
+
+
+May not:
+
+1. If a correction does not lead to a proper answer anyway.
+2. Improvements of facetious questions           
+3. Questions that are too imprecise/ambiguous 
+4. Questions containing more than one error
+5. Correct more than one aspect of a question
+6. Change an addition if it was there for a purpose.
+
+Must Not:
+
+1. Errors not encountered in user dialogs.
+2. Just new spelling errors
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

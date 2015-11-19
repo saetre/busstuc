@@ -1,0 +1,105 @@
+%% FILE BusTables.txt
+%% SYSTEM BUSSTUC
+%% CREATED TA-100315
+%% REVISED TA-100316	RS-130327
+
+
+
+BusTUC  Maintenance Manual
+--------------------------
+
+
+This Manual is written for the purpose of maintaining the Bus Oracle
+that is produces by Lingit A/S and delivered to Team-trafikk A/S and
+later Trøndelag Kollektivtrafikk.
+Currently maintained by Endors AS for AtB.
+
+It requires some knowledge of the Bus traffic in Trondheim in general.
+Some rudimentary knowledge  of Prolog is also beneficiary as all the
+internal tables are written in Prolog.
+
+The important topics of grammar, syntax analysis, and understanding system
+are  treated in other documents.
+
+What is described in this manual is the data system that lies behind
+the system. The priorities is in the tables that may be needed to be
+modified and maintained when external changes occur. However, the 
+language, dictionary and semantic definitions rule set for query
+production and query system is ideally not a subject for change.
+
+The system also includes a Dialog system (Buster) and interfaces to
+speech based interfaces. They are not treated here.
+
+
+Quick OverView
+--------------
+
+
+BussTUC answers questions about Bus Traffic in Norwegian (N) and
+English (E).
+
+The system is to a large extent made up by internal tables and rule
+bases. 
+
+The whole system is represented in text files that contain
+tables and programs in the format of Prolog.
+
+The main parts are: (program names in parentheses)
+
+   A scanner ( READIN )
+
+   A lexical processor ( LEX, MORPH-N, MORPH-E )
+
+   Dictionaries  ( DICT-N,  DICT_E)
+
+   Grammar    (GRAM_N, GRAM_E)
+
+   Query interpretation rule base ( PRAGMA )
+
+   Query Processor ( BUSLOG)
+
+   Name tables ( NAMES, PLACES, REGSTR, REGCOMPSTR) 
+
+   Route tables ( se below)
+
+   Service programs to create internal tables  (see below)
+
+
+
+%% 
+
+Principles :
+
+Prolog has the convention that all identifiers -must- be started with a
+lower case letter.  Norwegian letters æøå are allowed. 
+
+Compound identifers are conjoined using an underscore (albert_moe)
+
+It is a convention that identifiers use only lower case letters, digits and underscores.
+
+These principes can be sidestepped by using single quotes  ( 'St. Olavs hospital')
+
+There are a few composite terms that goes beyond these rules:
+
+-- street address numbers
+
+   Street address with numbers
+
+      andres-wigens-street-1.
+
+-- dates
+
+   date(2009,10,18)
+
+-- clock
+
+   HHMM
+
+     1618
+
+The postfix street is common to all street names regardless of
+writing (gate,gt,vei etc).
+
+The street number is separated by a minus sign "-".
+Street number letters are ignored.
+

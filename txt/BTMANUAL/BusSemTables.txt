@@ -1,0 +1,318 @@
+/* -*- Mode:Prolog; coding:iso-88851-1; -*- */
+
+%% FILE BusSemTables.txt
+%% SYSTEM BussTUC
+%% CREATED TA-100322
+%% REVISED TA-100322
+
+
+%% Description of the contents of the semantic nest (ontlogy) of the
+   bus world.
+
+%% The concepts are using  English a reference language
+
+
+// FILE FACTS.PL
+
+¤ ISA(ENTITY,CATEGORY)  (Infix operator)
+
+Examples:
+
+lars_mo isa man. 
+payex  isa system. 
+bustuc  isa program.  
+
+X isa station :-
+	 value(busflag,true), 
+    station(X).     
+
+Defines an instance ENTITY as belonging to CATEGORY.
+May be connected to larger Prolog database, e.g. station.
+
+
+
+% HAVE(CATEGORY,ATTRIBUTE,SUBJECT ID, Attribute  VALUE)
+
+General, on application oriented attribute value definition.
+ 
+Example:
+
+have(team,stadium,brann,brann_stadion).
+
+The team Brann has a statium called brann_stadion.
+
+// Compare has_att_val in file TELEDAT2
+
+
+
+
+// FILE SEMANTIC.PL
+
+
+¤ AKO    (CATEGORY 1 CATEGORY 2) // infix operator
+
+Examples:
+
+bus ako vehicle.
+man ako adult.
+
+General hyponym relation on categories
+
+¤ HAS_A (CATEGORY,ATTRIBUTE) // infix operator
+
+Examples:
+
+    bus             has_a  card. 
+    bus             has_a  horsepower.
+    bus             has_a  route. 
+    bus             has_a  route_plan.  
+    bus             has_a  wheel.  
+
+The  CATEGORY has an ATTRIBUTE (that my have a value)
+
+
+¤ ABNORMALVERB (VERB,CATEGORY)
+
+Example:
+
+abnormalverb(cost,_)
+
+The standard prepositional compliances do not apply.
+
+¤ VAKO  (VERB 1, VERB 2)
+
+Example:
+
+vako(walk,go).    
+
+VERB 1 is a troponym of VERB 2
+
+( If something walks then it goes)
+
+
+¤ JAKO ( ADJECTIVE 1, ADJECTIVE 2)
+
+Example:
+
+jako(smokefree,clean).
+
+ ADJECTIVE1 is a adjectival troponym of ADJECTIVE 2 
+
+If  something is smokefree then it is clean)
+
+¤ TESTCLASS (CATEGORY)
+
+Example:
+
+testclass(place). 
+
+CATEGORY shall not be the subject of search for instances of it.
+
+¤ MEASURECLASS (CATEGORY)
+
+Example:
+
+measureclass(minute).
+
+A number of CATEGORY shal not be regarded as a number of individuals,
+but as a value of a variable.
+
+¤ COHER_CLASS(CLASS 1, CLASS 2, CLASS 3)
+
+Example:
+
+coher_class(information,version,information)
+
+Used to group and reclassify conjunction of objects of different categories.
+
+¤ ALIGN1 (CATEGORY 1, CATEGORY 2)
+
+Example:
+
+align1(address,neighbourhood). %%
+
+Allow CLASS 1 objects to be compared to CLASS 2.
+Does not apply to subcategories.
+Used symmetrically.
+
+
+¤ ALIGEN2 (CATEGORY 1, CATEGORY 2)
+
+Example:
+
+aligen2(cause,thing).    
+
+Allow CATEGORY 1 objects to be compared to CATEGORY 2 objects .
+That also includes subcategories.
+Used symmetrically.
+
+¤ RV_TEMPL (VERB,CATEGORY)
+
+Examples:
+
+rv_templ(ask,agent). 
+rv_templ(admit,agent).  
+
+The VERB is a reporting verb governing clausal statements.
+
+¤ PVI_TEMPL (VERB,CATEGORY)  
+
+Examples:
+
+pvi_templ(cost,money). 
+
+Declaration of some verbs that support the construction:
+
+  It VERB NP to do ...
+
+(It costs 30 crowns to take the bus)
+
+
+¤ PAI_TEMPL (VERB,ADJECTIVE)
+
+Examples:
+
+pai_templ(be,cheap). 
+
+Declaration of some verbs that support the construction:
+
+It is cheap to take the bus
+
+
+
+
+¤ IV_TEMPL (VERB, Subject CATEGORY)
+
+Examples:
+
+iv_templ(be1,thing).
+iv_templ(go,agent).  
+iv_templ(push,agent).        %% Norw.
+ 
+Intransitive verb constraint template.
+
+
+¤ TV_TEMPL (VERB, Subject CATEGORY,Object CATEGORY)
+
+Examples:
+
+tv_templ(push,agent,button). %% English
+tv_templ(use,agent,thing). 
+tv_templ(read,agent,thing). 
+
+tv_templ(read,agent,nil). %% allow intransitive use ,unspecified object
+
+Transitive verb constraint template.
+
+
+
+
+¤ V_COMPL (VERB,Subject CATEGORY,PREPOSITION,PrepObj CATEGORY)
+
+Examples: (nil means empty/missing preposition)
+
+  v_compl(read,agent,in,information). 
+  v_compl(read,agent,nil,page).  %% les (på) side 16
+  v_compl(push,agent,on,button). %% Norw.
+
+Verb frame compliance
+
+
+
+¤ STANPREP(PREPOSTION, PrepObj CATEGORY)
+
+Examples: (nil means empty/missing preposition)
+
+stanprep(nil,clock). %% Jeg kjører kl 8
+stanprep(before,time).
+stanprep(without,problem). 
+
+Prepositional adjunct categories  allowed for all verbs.
+
+
+
+
+¤ N_COMPL (PREPOSITION,Head CATEGORY,Adjunct CATEGORY)
+
+Examples: (nil means empty/missing preposition)
+
+n_compl(to,departure,place).  
+n_compl(towards,station,place).
+n_compl(nil,route_plan,date). 
+
+NP attachment selectional criteria.
+
+
+¤ GRADV_TEMPL (ADVERB, ADJECTIVE)
+
+Examples:
+
+gradv_templ(easily,adaptable).
+gradv_templ(just,after).  
+gradv_templ(more,great).
+gradv_templ(too,early).
+gradv_templ(too,late). 
+gradv_templ(very,_).
+
+
+Grade adverb selectional criteria
+
+
+
+¤ ADJ_TEMPL(ADJECTIVE, CATEGORY)
+
+Examples:
+
+adj_templ(big,thing). %%
+adj_templ(impossible,thing). 
+
+Adjectival templates
+
+
+A_COMPL (ADJECTIVE,CATEGORY, PREPOSITION, AGENT)
+
+
+Example:
+
+
+   a_compl(impossible,thing,for,agent). 
+
+Adjective modifier compliance criteria
+
+¤ ORDINAL (NAME, NUNBER)
+
+Example:
+
+ordinal(twentysecond,22). 
+
+Adjectival numeric ordinals.
+
+¤ POST_ADJECTIVE (ADJECTIVE)
+
+ 
+Example:
+
+post_adjective(down). 
+
+Prohibits adjective as prefix.
+
+
+¤ ADJNOUN_TEMPL (CATEGORY 1, CATYEGORY 2)
+
+Example:
+
+
+adjnoun_templ(bus,accident)
+
+Makes CATEGORY 1 an addjectival prefix to CATEGORY 2
+
+
+¤ ADJNOUNCOMP_TEMPL( CATEGORY 1,CATEGORY 2,CATEGORY 3)
+
+Example:
+
+adjnouncomp_templ(internet,address,webaddress). 
+adjnouncomp_templ(age,limit,agelimit). 
+
+Makes a new CATEGORY out of two categories.
+

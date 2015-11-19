@@ -1,0 +1,867 @@
+BEFORE MAJOR MODULE RESTRUCTIRING!
+=======================================
+Restarting Prolog
+Process ended with exit value 1
+SICStus 4.2.3 (x86_64-win32-nt-4): Sun Oct  7 18:55:53 WEDT 2012
+Licensed to SP4 Endors AS for Rune Saetre
+% source_info
+| ?- 
+% compiling c:/eclipse/workspace/busstuc/busstuc.pl...
+%  compiling c:/eclipse/workspace/busstuc/db/route_period.pl...
+%  compiled c:/eclipse/workspace/busstuc/db/route_period.pl in module user, 16 msec 4928 bytes
+%  compiling c:/eclipse/workspace/busstuc/tucbuss.pl...
+%   compiling c:/eclipse/workspace/busstuc/tucbuses.pl...
+%    compiling c:/eclipse/workspace/busstuc/utility/library.pl...
+%     compiling c:/eclipse/workspace/busstuc/declare.pl...
+%     compiled c:/eclipse/workspace/busstuc/declare.pl in module user, 0 msec 13056 bytes
+%    compiled c:/eclipse/workspace/busstuc/utility/library.pl in module user, 15 msec 21104 bytes
+%    compiling c:/eclipse/workspace/busstuc/utility/utility.pl...
+%     compiling c:/eclipse/workspace/busstuc/sicstus4compatibility.pl...
+%     compiled c:/eclipse/workspace/busstuc/sicstus4compatibility.pl in module user, 0 msec 3040 bytes
+%     compiling c:/eclipse/workspace/busstuc/tuc/fernando.pl...
+%     compiled c:/eclipse/workspace/busstuc/tuc/fernando.pl in module user, 78 msec 317344 bytes
+%    compiled c:/eclipse/workspace/busstuc/utility/utility.pl in module user, 110 msec 437808 bytes
+%    compiling c:/eclipse/workspace/busstuc/ptbwrite.pl...
+%     module ptbwrite imported into user
+%    compiled c:/eclipse/workspace/busstuc/ptbwrite.pl in module ptbwrite, 31 msec 47856 bytes
+%    compiling c:/eclipse/workspace/busstuc/utility/datecalc.pl...
+%     loading c:/program files/sicstus prolog vc10 4.2.3/library/system.po...
+%     module system imported into user
+%      loading c:/program files/sicstus prolog vc10 4.2.3/library/types.po...
+%      module types imported into system
+%      loaded c:/program files/sicstus prolog vc10 4.2.3/library/types.po in module types, 0 msec 1632 bytes
+%     loaded c:/program files/sicstus prolog vc10 4.2.3/library/system.po in module system, 0 msec 2736 bytes
+%     compiling c:/eclipse/workspace/busstuc/db/busdat.pl...
+%      module busdat imported into user
+%      compiling c:/eclipse/workspace/busstuc/db/places.pl...
+%      compiled c:/eclipse/workspace/busstuc/db/places.pl in module user, 608 msec 2544384 bytes
+%      compiling c:/eclipse/workspace/busstuc/db/regbusall.pl...
+%      compiled c:/eclipse/workspace/busstuc/db/regbusall.pl in module busdat, 0 msec 3584 bytes
+%      compiling c:/eclipse/workspace/busstuc/app/buslog.pl...
+%       compiling c:/eclipse/workspace/busstuc/dialog/frames2.pl...
+%       compiled c:/eclipse/workspace/busstuc/dialog/frames2.pl in module user, 31 msec 60688 bytes
+%      compiled c:/eclipse/workspace/busstuc/app/buslog.pl in module user, 125 msec 302816 bytes
+%      compiling c:/eclipse/workspace/busstuc/db/timedat.pl...
+%      compiled c:/eclipse/workspace/busstuc/db/timedat.pl in module user, 0 msec 21808 bytes
+%      compiling c:/eclipse/workspace/busstuc/interfaceroute.pl...
+%      compiled c:/eclipse/workspace/busstuc/interfaceroute.pl in module user, 16 msec 10112 bytes
+%      compiling c:/eclipse/workspace/busstuc/tuc/names.pl...
+%      compiled c:/eclipse/workspace/busstuc/tuc/names.pl in module user, 140 msec 582256 bytes
+%     compiled c:/eclipse/workspace/busstuc/db/busdat.pl in module busdat, 920 msec 3670304 bytes
+%    compiled c:/eclipse/workspace/busstuc/utility/datecalc.pl in module user, 951 msec 3734240 bytes
+%    compiling c:/eclipse/workspace/busstuc/utility/makeauxtables.pl...
+%    compiled c:/eclipse/workspace/busstuc/utility/makeauxtables.pl in module user, 16 msec 58064 bytes
+%    compiling c:/eclipse/workspace/busstuc/utility/extracut.pl...
+%    compiled c:/eclipse/workspace/busstuc/utility/extracut.pl in module user, 16 msec 22560 bytes
+%    compiling c:/eclipse/workspace/busstuc/tuc/readin.pl...
+%    compiled c:/eclipse/workspace/busstuc/tuc/readin.pl in module user, 31 msec 85168 bytes
+%    compiling c:/eclipse/workspace/busstuc/tuc/lex.pl...
+%    compiled c:/eclipse/workspace/busstuc/tuc/lex.pl in module user, 93 msec 347104 bytes
+%    compiling c:/eclipse/workspace/busstuc/tuc/translat.pl...
+%    compiled c:/eclipse/workspace/busstuc/tuc/translat.pl in module user, 32 msec 78336 bytes
+%    compiling c:/eclipse/workspace/busstuc/tuc/evaluate.pl...
+%     compiling c:/eclipse/workspace/busstuc/main.pl...
+%      loading c:/program files/sicstus prolog vc10 4.2.3/library/timeout.po...
+%      module timeout imported into user
+%       module types imported into timeout
+%       loading foreign resource c:/program files/sicstus prolog vc10 4.2.3/library/x86_64-win32-nt-4/timeout.dll in module timeout
+%      loaded c:/program files/sicstus prolog vc10 4.2.3/library/timeout.po in module timeout, 0 msec 13504 bytes
+%      loading c:/program files/sicstus prolog vc10 4.2.3/library/process.po...
+%      module process imported into user
+%      loaded c:/program files/sicstus prolog vc10 4.2.3/library/process.po in module process, 0 msec 5920 bytes
+%     compiled c:/eclipse/workspace/busstuc/main.pl in module user, 46 msec 126432 bytes
+%    compiled c:/eclipse/workspace/busstuc/tuc/evaluate.pl in module user, 46 msec 154304 bytes
+%    compiling c:/eclipse/workspace/busstuc/tuc/anaphors.pl...
+%    compiled c:/eclipse/workspace/busstuc/tuc/anaphors.pl in module user, 32 msec 38848 bytes
+%    compiling c:/eclipse/workspace/busstuc/tuc/metacomp.pl...
+%    compiled c:/eclipse/workspace/busstuc/tuc/metacomp.pl in module user, 15 msec 28640 bytes
+%    compiling c:/eclipse/workspace/busstuc/tuc/fernando.pl...
+%    compiled c:/eclipse/workspace/busstuc/tuc/fernando.pl in module user, 63 msec 3376 bytes
+%    compiling c:/eclipse/workspace/busstuc/tuc/dagrun_e.pl...
+%    compiled c:/eclipse/workspace/busstuc/tuc/dagrun_e.pl in module dcg_e, 15 msec 16720 bytes
+%    compiling c:/eclipse/workspace/busstuc/tuc/dagrun_n.pl...
+%    compiled c:/eclipse/workspace/busstuc/tuc/dagrun_n.pl in module dcg_n, 0 msec 15648 bytes
+%    compiling c:/eclipse/workspace/busstuc/tuc/semantic.pl...
+%    compiled c:/eclipse/workspace/busstuc/tuc/semantic.pl in module user, 484 msec 1830304 bytes
+%    compiling c:/eclipse/workspace/busstuc/tuc/names.pl...
+%    compiled c:/eclipse/workspace/busstuc/tuc/names.pl in module user, 140 msec -176 bytes
+%    compiling c:/eclipse/workspace/busstuc/tuc/facts.pl...
+%     compiling c:/eclipse/workspace/busstuc/tuc/world0.pl...
+%     compiled c:/eclipse/workspace/busstuc/tuc/world0.pl in module tuc, 16 msec 23824 bytes
+%     compiling c:/eclipse/workspace/busstuc/db/regcompstr.pl...
+%     compiled c:/eclipse/workspace/busstuc/db/regcompstr.pl in module user, 140 msec 578272 bytes
+%    compiled c:/eclipse/workspace/busstuc/tuc/facts.pl in module user, 187 msec 846224 bytes
+%    compiling c:/eclipse/workspace/busstuc/tuc/dict_e.pl...
+%     module dict_e imported into user
+%    compiled c:/eclipse/workspace/busstuc/tuc/dict_e.pl in module dict_e, 94 msec 404480 bytes
+%    compiling c:/eclipse/workspace/busstuc/tuc/morph_e.pl...
+%     module morph_e imported into user
+%    compiled c:/eclipse/workspace/busstuc/tuc/morph_e.pl in module morph_e, 16 msec 22256 bytes
+%    compiling c:/eclipse/workspace/busstuc/tuc/gram_e.pl...
+%     module gram_e imported into user
+%     compiling c:/eclipse/workspace/busstuc/declare.pl...
+%     compiled c:/eclipse/workspace/busstuc/declare.pl in module gram_e, 0 msec 8064 bytes
+%    compiled c:/eclipse/workspace/busstuc/tuc/gram_e.pl in module gram_e, 156 msec 472352 bytes
+%    compiling c:/eclipse/workspace/busstuc/dcg_e.pl...
+%     compiling c:/eclipse/workspace/busstuc/declare.pl...
+%     compiled c:/eclipse/workspace/busstuc/declare.pl in module dcg_e, 0 msec 8064 bytes
+%    compiled c:/eclipse/workspace/busstuc/dcg_e.pl in module dcg_e, 406 msec 822224 bytes
+%    compiling c:/eclipse/workspace/busstuc/tuc/dict_n.pl...
+%     module dict_n imported into user
+%    compiled c:/eclipse/workspace/busstuc/tuc/dict_n.pl in module dict_n, 1108 msec 4799312 bytes
+%    compiling c:/eclipse/workspace/busstuc/tuc/morph_n.pl...
+%     module morph_n imported into user
+%    compiled c:/eclipse/workspace/busstuc/tuc/morph_n.pl in module morph_n, 31 msec 83072 bytes
+%    compiling c:/eclipse/workspace/busstuc/tuc/gram_n.pl...
+%     module gram_n imported into user
+%     compiling c:/eclipse/workspace/busstuc/declare.pl...
+%     compiled c:/eclipse/workspace/busstuc/declare.pl in module gram_n, 0 msec 8064 bytes
+%    compiled c:/eclipse/workspace/busstuc/tuc/gram_n.pl in module gram_n, 686 msec 1828064 bytes
+%    compiling c:/eclipse/workspace/busstuc/dcg_n.pl...
+%     compiling c:/eclipse/workspace/busstuc/declare.pl...
+%     compiled c:/eclipse/workspace/busstuc/declare.pl in module dcg_n, 0 msec 8000 bytes
+%    compiled c:/eclipse/workspace/busstuc/dcg_n.pl in module dcg_n, 1638 msec 3025008 bytes
+%   compiled c:/eclipse/workspace/busstuc/tucbuses.pl in module user, 7051 msec 19308176 bytes
+%   compiling c:/eclipse/workspace/busstuc/version.pl...
+%   compiled c:/eclipse/workspace/busstuc/version.pl in module user, 0 msec 304 bytes
+%   compiling c:/eclipse/workspace/busstuc/main.pl...
+%   compiled c:/eclipse/workspace/busstuc/main.pl in module user, 31 msec 1200 bytes
+%   compiling c:/eclipse/workspace/busstuc/monobus.pl...
+%    compiling c:/eclipse/workspace/busstuc/app/pragma.pl...
+%    compiled c:/eclipse/workspace/busstuc/app/pragma.pl in module user, 31 msec 71680 bytes
+%    compiling c:/eclipse/workspace/busstuc/app/interapp.pl...
+%    compiled c:/eclipse/workspace/busstuc/app/interapp.pl in module user, 16 msec 57520 bytes
+%    compiling c:/eclipse/workspace/busstuc/app/bustrans.pl...
+%     module trans imported into user
+%     compiling c:/eclipse/workspace/busstuc/declare.pl...
+%     compiled c:/eclipse/workspace/busstuc/declare.pl in module trans, 0 msec 8064 bytes
+%    compiled c:/eclipse/workspace/busstuc/app/bustrans.pl in module trans, 796 msec 1950064 bytes
+%    compiling c:/eclipse/workspace/busstuc/app/dmeq.pl...
+%    compiled c:/eclipse/workspace/busstuc/app/dmeq.pl in module user, 31 msec 101904 bytes
+%    compiling c:/eclipse/workspace/busstuc/app/busans.pl...
+%     module ans imported into user
+%     compiling c:/eclipse/workspace/busstuc/declare.pl...
+%     compiled c:/eclipse/workspace/busstuc/declare.pl in module ans, 0 msec 8064 bytes
+%    compiled c:/eclipse/workspace/busstuc/app/busans.pl in module ans, 31 msec 60688 bytes
+%    compiling c:/eclipse/workspace/busstuc/app/negans.pl...
+%    compiled c:/eclipse/workspace/busstuc/app/negans.pl in module user, 62 msec 180640 bytes
+%    compiling c:/eclipse/workspace/busstuc/app/busanshp.pl...
+%     compiling c:/eclipse/workspace/busstuc/db/statcoord2.pl...
+%     compiled c:/eclipse/workspace/busstuc/db/statcoord2.pl in module user, 391 msec 1393808 bytes
+%     compiling c:/eclipse/workspace/busstuc/db/regstr.pl...
+%     compiled c:/eclipse/workspace/busstuc/db/regstr.pl in module user, 156 msec 668640 bytes
+%    compiled c:/eclipse/workspace/busstuc/app/busanshp.pl in module user, 734 msec 2675872 bytes
+%    compiling c:/eclipse/workspace/busstuc/db/timedat.pl...
+%    compiled c:/eclipse/workspace/busstuc/db/timedat.pl in module user, 16 msec -176 bytes
+%    compiling c:/eclipse/workspace/busstuc/db/teledat2.pl...
+%    compiled c:/eclipse/workspace/busstuc/db/teledat2.pl in module user, 15 msec 60928 bytes
+%    compiling c:/eclipse/workspace/busstuc/db/places.pl...
+%    compiled c:/eclipse/workspace/busstuc/db/places.pl in module user, 592 msec 14496 bytes
+%    compiling c:/eclipse/workspace/busstuc/db/auxtables.pl...
+%    compiled c:/eclipse/workspace/busstuc/db/auxtables.pl in module user, 266 msec 720864 bytes
+%    consulting c:/eclipse/workspace/busstuc/db/namehashtable.pl...
+%    consulted c:/eclipse/workspace/busstuc/db/namehashtable.pl in module user, 982 msec 11749968 bytes
+%    compiling c:/eclipse/workspace/busstuc/app/buslog.pl...
+%    compiled c:/eclipse/workspace/busstuc/app/buslog.pl in module user, 94 msec -22336 bytes
+%   compiled c:/eclipse/workspace/busstuc/monobus.pl in module user, 3666 msec 17622336 bytes
+%  compiled c:/eclipse/workspace/busstuc/tucbuss.pl in module user, 10748 msec 36938064 bytes
+%  compiling c:/eclipse/workspace/busstuc/busroute.pl...
+%   compiling c:/eclipse/workspace/busstuc/compileroute.pl...
+%   compiled c:/eclipse/workspace/busstuc/compileroute.pl in module user, 0 msec 8544 bytes
+%   compiling c:/eclipse/workspace/busstuc/interfaceroute.pl...
+%   compiled c:/eclipse/workspace/busstuc/interfaceroute.pl in module user, 0 msec -32 bytes
+%   compiling c:/eclipse/workspace/busstuc/compileroute.pl...
+%   compiled c:/eclipse/workspace/busstuc/compileroute.pl in module user, 15 msec -176 bytes
+%   compiling c:/eclipse/workspace/busstuc/db/statcoord2.pl...
+%   compiled c:/eclipse/workspace/busstuc/db/statcoord2.pl in module user, 375 msec -176 bytes
+%   compiling c:/eclipse/workspace/busstuc/db/topreg.pl...
+%   compiled c:/eclipse/workspace/busstuc/db/topreg.pl in module user, 0 msec 8192 bytes
+%   compiling c:/eclipse/workspace/busstuc/db/regstr.pl...
+%   compiled c:/eclipse/workspace/busstuc/db/regstr.pl in module user, 156 msec -176 bytes
+%   compiling c:/eclipse/workspace/busstuc/db/regcompstr.pl...
+%   compiled c:/eclipse/workspace/busstuc/db/regcompstr.pl in module user, 141 msec -176 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1605_140102/regdko.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1605_140102/regdko.pl in module r1605_140102, 0 msec 4480 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1605_140102/regbus.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1605_140102/regbus.pl in module r1605_140102, 156 msec 1519104 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1605_140102/reghpl.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1605_140102/reghpl.pl in module r1605_140102, 31 msec 310272 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1605_140102/regcomp.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1605_140102/regcomp.pl in module r1605_140102, 47 msec 392432 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1605_140102/regcut.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1605_140102/regcut.pl in module r1605_140102, 421 msec 4347616 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1611_131201/regdko.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1611_131201/regdko.pl in module r1611_131201, 0 msec 5168 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1611_131201/regbus.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1611_131201/regbus.pl in module r1611_131201, 140 msec 1222592 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1611_131201/reghpl.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1611_131201/reghpl.pl in module r1611_131201, 32 msec 318960 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1611_131201/regcomp.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1611_131201/regcomp.pl in module r1611_131201, 62 msec 405168 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1611_131201/regcut.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1611_131201/regcut.pl in module r1611_131201, 421 msec 3364592 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1612_131216/regdko.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1612_131216/regdko.pl in module r1612_131216, 0 msec 1632 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1612_131216/regbus.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1612_131216/regbus.pl in module r1612_131216, 31 msec 300096 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1612_131216/reghpl.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1612_131216/reghpl.pl in module r1612_131216, 78 msec 663184 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1612_131216/regcomp.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1612_131216/regcomp.pl in module r1612_131216, 78 msec 681664 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1612_131216/regcut.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1612_131216/regcut.pl in module r1612_131216, 266 msec 2101280 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1613_131216/regdko.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1613_131216/regdko.pl in module r1613_131216, 0 msec 9600 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1613_131216/regbus.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1613_131216/regbus.pl in module r1613_131216, 93 msec 2804000 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1613_131216/reghpl.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1613_131216/reghpl.pl in module r1613_131216, 78 msec 606016 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1613_131216/regcomp.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1613_131216/regcomp.pl in module r1613_131216, 78 msec 667152 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1613_131216/regcut.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1613_131216/regcut.pl in module r1613_131216, 406 msec 3153488 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1614_131216/regdko.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1614_131216/regdko.pl in module r1614_131216, 0 msec 1920 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1614_131216/regbus.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1614_131216/regbus.pl in module r1614_131216, 62 msec 524208 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1614_131216/reghpl.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1614_131216/reghpl.pl in module r1614_131216, 63 msec 621632 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1614_131216/regcomp.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1614_131216/regcomp.pl in module r1614_131216, 78 msec 682720 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1614_131216/regcut.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1614_131216/regcut.pl in module r1614_131216, 375 msec 2926128 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1615_131216/regdko.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1615_131216/regdko.pl in module r1615_131216, 0 msec 2608 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1615_131216/regbus.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1615_131216/regbus.pl in module r1615_131216, 78 msec 692080 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1615_131216/reghpl.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1615_131216/reghpl.pl in module r1615_131216, 78 msec 592576 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1615_131216/regcomp.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1615_131216/regcomp.pl in module r1615_131216, 78 msec 656160 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1615_131216/regcut.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1615_131216/regcut.pl in module r1615_131216, 437 msec 2663120 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1616_131216/regdko.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1616_131216/regdko.pl in module r1616_131216, 0 msec 1632 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1616_131216/regbus.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1616_131216/regbus.pl in module r1616_131216, 31 msec 414752 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1616_131216/reghpl.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1616_131216/reghpl.pl in module r1616_131216, 62 msec 616544 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1616_131216/regcomp.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1616_131216/regcomp.pl in module r1616_131216, 94 msec 676528 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1616_131216/regcut.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1616_131216/regcut.pl in module r1616_131216, 312 msec 2453376 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1630_111201/regdko.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1630_111201/regdko.pl in module r1630_111201, 0 msec 11056 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1630_111201/regbus.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1630_111201/regbus.pl in module r1630_111201, 0 msec 31600 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1630_111201/reghpl.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1630_111201/reghpl.pl in module r1630_111201, 0 msec 7744 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1630_111201/regcomp.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1630_111201/regcomp.pl in module r1630_111201, 0 msec 9264 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1630_111201/regcut.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1630_111201/regcut.pl in module r1630_111201, 16 msec 44304 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1630_101201/regdko.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1630_101201/regdko.pl in module r1630_101201, 0 msec 5008 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1630_101201/regbus.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1630_101201/regbus.pl in module r1630_101201, 0 msec 31600 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1630_101201/reghpl.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1630_101201/reghpl.pl in module r1630_101201, 0 msec 7488 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1630_101201/regcomp.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1630_101201/regcomp.pl in module r1630_101201, 0 msec 9200 bytes
+%   consulting c:/eclipse/workspace/busstuc/db/tables/r1630_101201/regcut.pl...
+%   consulted c:/eclipse/workspace/busstuc/db/tables/r1630_101201/regcut.pl in module r1630_101201, 15 msec 44304 bytes
+%  compiled c:/eclipse/workspace/busstuc/busroute.pl in module user, 4960 msec 36657152 bytes
+%  compiling c:/eclipse/workspace/busstuc/db/discrepancies.pl...
+%  compiled c:/eclipse/workspace/busstuc/db/discrepancies.pl in module user, 0 msec 4704 bytes
+% The debugger is switched off
+%  Please wait 1 minute...
+ Finish
+
+Undefined station identifiers 
+
+heggstadmoen
+hommelvik_skole
+hovedterminalen
+john_aaes_veg
+leinstrand_samfunnshus
+lerchendal_gård
+munkegata_m3
+olav_nygårds_veg
+rotvoll_nedre
+sentrum
+statoil_rotvoll
+stavnebrua
+torget
+vestlia
+
+-------------
+
+Undefined street to station references 
+
+chr_monsens_gate
+dist_lege_øverlids_vei
+hospitalkirka
+kongleveien
+leinstrand_samfunnshus
+olav_nygårds_veg
+persaunevegen
+tollbua
+torget
+torget_orkanger
+ts
+unknown
+valentinlystvegen
+vestlia
+
+-------------
+% compiled c:/eclipse/workspace/busstuc/busstuc.pl in module user, 27097 msec 75267408 bytes
+run.
+
+
+
+N: hva er klokka.
+........................................................................
+
+
+
+
+                   onesentence
+          ______________|_____________
+         /                            \
+       whatq                          lit
+   ______|_____                        |
+  /            \                       |
+ lit      qverb_phrase                 .
+  |      _______|_______
+  |     /     |         \
+ hva  verb  noun       state
+        |     |      ____|___
+        |     |     /        \
+       be   clock  < >  verb_phrase1
+                    |      __|_
+                    |     /    \
+                   xnp   < >   < >
+                          |     |
+                          |     |
+                        verb  thing
+
+
+    
+
+[which(A):::(A isa thing,B isa clock,event/real/C,dob/be/B/A/C)]
+
+
+........................................................................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Klokka er nå 1729 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+N: \set trace 6
+........................................................................
+
+
+
+
+N: hva er klokka.
+........................................................................
+
+handle_unknown(hva,[[hva]],[[hva]])
+handle_unknown(er,[verb(be,pres,fin),[er]],[verb(be,pres,fin),[er]])
+handle_unknown(klokka,[noun(clock,sin,def,n),[klokka]],[noun(clock,sin,def,n),[klokka]])
+handle_unknown(.,[[.]],[[.]])
+
+
+w(hva,[[hva]])
+w(er,[verb(be,pres,fin),[er]])
+w(klokka,[noun(clock,sin,def,n),[klokka]])
+w(.,[[.]])
+
+
+*** Word graph ***
+
+txt(0, w(hva,[hva]), 1).
+txt(1, w(er,verb(be,pres,fin)), 2).
+txt(1, w(er,[er]), 2).
+txt(2, w(klokka,noun(clock,sin,def,n)), 3).
+txt(2, w(klokka,[klokka]), 3).
+txt(3, w('.',['.']), 4).
+
+
+******************
+
+bx01
+bx02
+bx03
+bx04
+bx05
+bx06
+bx07
+bx08
+bx09
+bx10
+bx11
+bx12
+bx13
+bx14
+bx15
+bx16
+bx17
+bx18
+bx19
+bx20
+bx01
+bx02
+bx03
+bx04
+bx05
+bx06
+bx07
+bx08
+bx09
+bx10
+bx11
+bx12
+bx13
+bx14
+bx15
+bx16
+bx17
+bx18
+bx19
+bx20
+bx01
+bx02
+bx03
+bx04
+bx05
+bx06
+bx07
+bx08
+bx09
+bx10
+bx11
+bx12
+bx13
+bx14
+bx15
+bx16
+bx17
+bx18
+bx19
+bx20
+bx01
+bx02
+bx03
+bx04
+bx05
+bx06
+bx07
+bx08
+bx09
+bx10
+bx11
+bx12
+bx13
+bx14
+bx15
+bx16
+bx17
+bx18
+bx19
+bx20
+bx01
+bx02
+bx03
+bx04
+bx05
+bx06
+bx07
+bx08
+bx09
+bx10
+bx11
+bx12
+bx13
+bx14
+bx15
+bx16
+bx17
+bx18
+bx19
+bx20
+bx01
+bx02
+bx03
+bx04
+bx05
+bx06
+bx07
+bx08
+bx09
+bx10
+bx11
+bx12
+bx13
+bx14
+bx15
+bx16
+bx17
+bx18
+bx19
+bx20
+bx01
+bx02
+bx03
+bx04
+bx05
+bx06
+bx07
+bx08
+bx09
+bx10
+bx11
+bx12
+bx13
+bx14
+bx15
+bx16
+bx17
+bx18
+bx19
+bx20
+bx01
+bx02
+bx03
+bx04
+bx05
+bx06
+bx07
+bx08
+bx09
+bx10
+bx11
+bx12
+bx13
+bx14
+bx15
+bx16
+bx17
+bx18
+bx19
+bx20
+qv15b
+bx01
+bx02
+bx03
+bx04
+bx05
+bx06
+bx07
+bx08
+bx09
+bx10
+bx11
+bx12
+bx13
+bx14
+bx15
+bx16
+bx17
+bx18
+bx19
+bx20
+bx01
+bx02
+bx03
+bx04
+bx05
+bx06
+bx07
+bx08
+bx09
+bx10
+bx11
+bx12
+bx13
+bx14
+bx15
+bx16
+bx17
+bx18
+bx19
+bx20
+bx01
+bx02
+bx03
+bx04
+bx05
+bx06
+bx07
+bx08
+bx09
+bx10
+bx11
+bx12
+bx13
+bx14
+bx15
+bx16
+bx17
+bx18
+bx19
+bx20
+bx01
+bx02
+bx03
+bx04
+bx05
+bx06
+bx07
+bx08
+bx09
+bx10
+bx11
+bx12
+bx13
+bx14
+bx15
+bx16
+bx17
+bx18
+bx19
+bx20
+*** Parse Tree ***
+
+sentence
+  {}
+  origin_phrase
+    []
+  !
+  sentences
+    onesentence
+      grums0
+        []
+      sentence1
+        greetings0
+          []
+        question
+          whatq
+            what_phrase
+              lit(hva)
+            realcomp
+              []
+            qverb_phrase
+              verb(be,pres,fin)
+              subject
+                nil
+                nil
+                not_look_ahead_lit
+                  []
+                np
+                  noun_phrases
+                    noun_phrase1
+                      np1
+                        np_kernel
+                          np_head
+                            determiner0
+                              determiner00
+                                []
+                            preadjs0
+                              []
+                            {}
+                            nil
+                            noun_complex
+                              nil
+                              nil
+                              noun_compound
+                                nil
+                                noun2
+                                  noun
+                                    noun(clock,sin,def,n)
+                                {}
+                                s0
+                                  []
+                                ncomps0
+                                  {}
+                            {}
+                        noun_modifiers0
+                          noun_modsx0
+                            []
+                    noun_phrases0
+                      []
+                    !
+                    accept
+                      []
+              traceprint
+                {}
+              !
+              state
+                subject
+                  nil
+                  nil
+                  not_look_ahead_lit
+                    []
+                  np
+                    xnp
+                      < >(xnp)
+                redundant0
+                  []
+                negation0
+                  []
+                vp
+                  verb_phrase
+                    verb_phrase1
+                      nil
+                      aux10
+                        []
+                      redundants0
+                        []
+                      be
+                        be1
+                          < >(verb)
+                          redundant0
+                            []
+                          negation0
+                            []
+                        !
+                        accept
+                          []
+                      not_look_ahead_verbx
+                        nil
+                      danow0
+                        []
+                      redundant0
+                        []
+                      not_look_ahead_prepx
+                        []
+                      be_complements
+                        be_complement
+                          not_look_ahead_lit
+                            []
+                          be_noun
+                            redundant0
+                              []
+                            object
+                              not_look_ahead_subject
+                                []
+                              noun_phrase_accept
+                                np
+                                  noun_phrases
+                                    noun_phrase1
+                                      npgap
+                                        < >(thing)
+                                    noun_phrases0
+                                      []
+                                    !
+                                    accept
+                                      []
+                                !
+                                accept
+                                  []
+                            {}
+                            []
+                            !
+                            verb_modifiers0
+                              {}
+                        be_complements20
+                          redundant0
+                            []
+                    verb_phrases0
+                      []
+                {}
+                {}
+        qtrailer0
+          []
+      sentence_delimiter
+        terminatore
+          terminator1
+            terminator
+              termchar
+                lit(.)
+              !
+              accept
+                []
+            nil
+            nil
+            nil
+            nil
+            !
+            accept
+              []
+      accept
+        []
+    {}
+    nil
+    moresentences0
+      onesentence
+        endofline
+          nil
+        !
+        accept
+          []
+      nil
+      !
+      accept
+        []
+      evenmore0
+        []
+        !
+
+******************
+
+*** Simplified parse tree ***
+
+[onesentence,[whatq,lit(hva),[qverb_phrase,verb(be,pres,fin),noun(clock,sin,def,n),[state,< >(xnp),[verb_phrase1,< >(verb),< >(thing)]]]],lit(.)]
+
+
+
+
+                   onesentence
+          ______________|_____________
+         /                            \
+       whatq                          lit
+   ______|_____                        |
+  /            \                       |
+ lit      qverb_phrase                 .
+  |      _______|_______
+  |     /     |         \
+ hva  verb  noun       state
+        |     |      ____|___
+        |     |     /        \
+       be   clock  < >  verb_phrase1
+                    |      __|_
+                    |     /    \
+                   xnp   < >   < >
+                          |     |
+                          |     |
+                        verb  thing
+
+
+    
+
+*****************************
+
+[gpsflag:::[],which(A:thing):::A isa thing and(exists(B:clock)::B isa clock and(exists(C:event)::event/real/C and dob/be/B/A/C))]
+
+[gpsflag:::[],which(A:thing):::A isa thing and(exists(B:clock)::B isa clock and(exists(C:event)::event/real/C and dob/be/B/A/C))]
+
+
+93 ms
+
+[which(A):::(A isa thing,B isa clock,event/real/C,dob/be/B/A/C)]
+
+
+........................................................................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Klokka er nå 1729 .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+N: \halt
+........................................................................
+
+
+Process ended with exit value 0

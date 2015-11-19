@@ -1,0 +1,386 @@
+%% FILE bustables.doc
+%% SYSTEM BUSSTUC/TABUSS
+%% AUTHOR T.Amble
+%% CREATED TA-970830
+%% REVISED TA-990613
+
+/////// %% REVISED TA-070220
+
+
+departureday(bus_52_83,7390,825,d1111100).
+Offisielt  Linje 52  Tur 83
+
+
+Vedlagt kopi av rutetabeller for Team trafikk for inneværende periode.
+
+Tabellene er i Prolog-format, men er lett forståelige.
+
+Eksempler:
+
+regdep.pl:
+
+departureday(bus_2_1,19,715,d1111100).
+...
+Bussavgang bus_2_1 følger trase 19 og starter 0715 på hverdager
+
+Bussavgang bus_2_1 er en identifikator sammensatt av
+
+   Kjøretøy type   bus
+   Linje           2
+   Tur             1
+
+
+regpas.pl:
+
+Trase 19 starter ved pirterminalen (1. stopp), ankomst etter 0 min, avgang etter 0 min
+
+passes3(19,pirterminalen,1,0,0).
+passes3(19,tollbua,2,1,1).
+passes3(19,ts_10,3,3,3).
+...
+////////////
+
+A brief documentation of the bustables and predicates used by the
+BUS systems  BUSSTUC and TABUSS. 
+
+It is of great importance that these bus  files 
+are common to the various systems, otherwise
+problems of multiversion maintenance will arise.
+
+
+Main structure:
+
+
+The bus predicates consist of four parts:
+
+1. Bus database                 busroute.pl
+2. Bus adaption predicates      busdat.pl
+3. Bus route access predicates  buslog.pl and newbuslog.pl
+4. Auxillary tables             auxtables.pl
+
+
+
+
+
+1. Bus database   busroute.pl
+----------------------------------
+
+This table is generated from the TT database by a special conversion
+program. It is not to be modified, as the changes will be lost
+whenever the route tables are changed. All modifications
+must be done via the other files.
+There is also a principle in Prolog that one predicate
+can only occur in one file. Therefore, supplementary instances to predicates
+in  busroute.pl must be placed under busdat.pl under another name, and be 
+accessed via buslog predicates.
+
+The file is fairly big, it takes several minutes to compile.
+However, since  it never changes, it is advisable to compile(!) it 
+once and for all into a save state (e.g. busbase ),
+and use busbase as a start for further compilation.
+
+busroute.pl contains the following predicates
+
+route(RID,BID,BNAME,Z).  
+
+passes2(RID,STATID,SEQNO,DELAY).
+
+departureday(RID,DEPTIME,DAY).
+
+bus(BNAME).
+
+station(RID)
+
+composite_stat(FIRST,REST,STATID).
+
+cname(STATID,PRINTNAME).
+
+
+RID         Route Identifier
+BID         Bus Identifier
+BID         Bus name
+Z           Not used (always 0)
+STATID      Station identifier
+DELAY       Delay in minutes since busroute started from start station
+
+DEPTIME     Start time of busroute from start station 
+DAY         Day of departure
+FIRST       First name in a composite name
+REST        Rest of names,  a square list of names 
+PRINTNAME   Official printed name
+
+............................................................
+Time is always represented as a decimal number HHMM or HMM
+
+DELAY is  kept sorted on increasing time.
+
+
+Examples:
+
+route(bus_4_9,4,'4',0).
+
+passes2(bus_4_9,heimdal_stasjon,1,0).
+passes2(bus_4_9,heimdalsvegen,2,0).
+...
+
+departureday(bus_4_9,627,monday).
+departureday(bus_4_9,627,tuesday).
+...
+
+bus('8c').
+
+station(munkegata_m1).
+
+composite_stat(munkegata,[m1],munkegata_m1).
+
+cname(munkegata_m1,'Munkegata (M1)').
+
+
+2. busdat.pl
+--------------------------------------------------------
+
+placestat(PLACE,STATID).  Station is THE nearest station to Place (FD).
+                          Station is also the representatitive station for Place.
+
+sameplace(PLACE1,PLACE2). Similar to synplace, but there is a normal
+                          spellchecking on PLACE1. 
+                          PLACE1 is an accepted alternative to PLACE2.
+                          sameplace(X,Y) is similar to cmpl(X,[],Y).
+
+synplace(PLACE1,PLACE2).  PLACE1 is synonym, i.e. accepted misspelling of PLACE2.
+                          PLACE1 needs never occur any further in the databases
+                          There is never any  spell correction towards PLACE1
+                          ( design feature ).
+ 
+
+isat(STATID,PLACE)            Station / Place relation
+
+corr(STATID1,STATID2)         Corresponding stations (very close)
+
+corresponds(STATID1,STATID2)  Reflexive, Symmetric and Transitive
+                              closure of corr/2
+
+cmpl(FIRST,REST,NAMEID).      Composite name definition.
+                              Supplementary to composite_name/3 in busroute.pl
+
+foreign(NAMEID).              Known names, but external to bus routes          
+
+specname(NAMEID,PRINTNAME).   Names that are printed in a special way
+                              Supplementary to cname/2 in busroute
+
+unknown_place(NAMEID).        Place, unknown by decree, to avoid
+                              spurious spell correction
+
+tramstation(NAMEID).          Declares a station as a tram station.
+
+airbusstation(NAMEID).        Declares a station as an airbus station.
+  
+underspecified_place(PLACE)   Place that is imprecise or many-valued, for error message.
+
+                               
+.....................................................................
+
+STATID                   Station Identifier
+PLACE,PLACE1,PLACE2      Name of a neighbourhood or station
+STATID1,STATID2          Station Identifier
+FIRST                    First name in a composite name
+REST                     Rest of names, either a square list of names 
+                             or a singleton name
+NAMEID                   STATID or PLACE
+PRINTNAME                Official printed name
+
+Examples:
+
+
+isat(hovedterminalen,sentrum).    %% TA-970813
+
+
+cmpl(professor,[brochs,gate],prof_brochs_gate).
+cmpl(prof,brochsgt,prof_brochs_gate).
+cmpl(værnes,[airport],værnes). 
+cmpl(asbjørnsensgate,[],asbjørnsens_gate). % empty tail
+                                           % similar to synplace, but with spellcheck
+
+foreign(værnes).
+
+specname(nth,'NTH').  
+
+
+Comments:
+
+  isat(Station,Place) says that the station Station is at Place
+
+  This predicate is used to transform place names into station
+  names, and if so, the first station name is chosen as a representative.
+  for the neighbourhood. It is therefore important that the first occurrence represent
+  a TYPICAL station (most departures, on sundays etc.).
+  Stations and Places where this is important is listed first
+  in a separate section.
+
+
+  Example:  isat(arbeidsmarkedsinst,lade). 
+            isat(rishaughallen,lade).       % fewer departures
+
+
+  Some 'station's like 'heimdal' in busroute.pl is not a proper station,
+  these are redefined by the  isat predicate
+  by the representative definition.
+
+  Example:     isat(heimdal_stasjon,heimdal).
+               isat(skavlans_veg,kyvannet). 
+
+  However, some stations, like 'dragvoll'  is also neighbourhood for
+  another station, e.g. 'universitetet_dragvoll'.      
+
+  Therefore, if a neighbourhood is a station, then  the station
+  has to be declared as representative of itself qua neighbourhood
+
+  Example: isat(dragvoll,dragvoll).
+
+  Some neighbourhoods are wildly ambiguous, like NTNU.
+  The representative is chosen to be NTH
+
+  Example:    isat(nth,ntnu).
+
+  Some stations like  NTH have been officially renamed ( to Gløshaugen) after
+  the busbase is created. This has been remedied by a
+  isat declaration.
+
+  Example:     isat(nth,gløshaugen).
+
+  Some places are recognised, but have no adjacent station.
+  They are marked by a fictitious non existing station nil
+
+  Example:     isat(nil,munkholm).
+
+
+  Some neighbourhoods have composite names.
+  Instead of mapping the composite names directly to stations,
+  it is better to map them to a temporary name, which
+  is then connected as a neighbourhood to a station.
+
+  Example:   singsaker studenthjem.
+
+   cmpl(singsaker,[studenthjem], singsaker_studenthjem)
+
+  It is then necessary to define the official name by
+  the specname predicate, as it otherwise is printed ad verbatim.
+
+   specname(singsaker_studenthjem,'Singsaker studenthjem')
+
+
+3. buslog.pl
+----------------
+
+  Some of the access predicates used by TABUSS is actually defined in
+  a separate file
+
+   newbuslog.pl
+
+  which calls predicates in buslog.pl
+
+  This is a temporary arrangement however, and the files buslog.pl and
+  will eventually be joined into one file.
+
+
+The main predicate for tabuss is in newbuslog.pl:
+
+
+bestroute(Fromstation,Tostation,Day,FirstLast,Keepafter,Keepbefore,Schedule)
+
+
+A schedule is returned as a term 
+
+  schedule(
+
+     [Day,Bus,Rid,Fromstation,Starttime,Tostation,Stoptime],
+      [[Midstat1,Offtime1,Bus2,Rid2,Midstat2,Ontime2]]) 
+        % e.g. list of transfers , [] if no transfer
+  ).                                               
+ 
+
+
+4. Auxillary tables, file auxtables.pl
+-----------------------------------------
+
+This files contain auxillary tables derived from busroute.pl to help 
+speed up the route planning. The file is generated by a program
+makeauxtables.pl compiled and run together with tabuss in a special 
+task.
+
+The tables are somewhat experimental, but comprise 
+
+
+statbus(STATID,BUSLIST).
+
+transfer(STATID,BUSLIST).
+
+
+BUSLIST is the list of buses that passes the station STATID.
+
+
+The only differences is that transfer only contains stations 
+that are frequented by more than one bus, and thus are candidates for
+bus transfers.
+
+
+Example:
+
+statbus(munkegata_m1, [57]).
+statbus(munkegata_m3, [60,66]).
+
+transfer(munkegata_m3, [60,66]).
+transfer(trondheim_sentralstasjon, [2,9,41,44,46,48,49,52,54,63,71,73,75,76]).
+
+
+
+%%% APPENDIX %%%%%%%%
+
+NB Markør / marker betyr at predikatet blir 
+instansiert under prolog-eksekvering
+ved unifisering, og deretter inngår får å lage et svar.
+
+
+
+List of External Buslog Predicates 
+-----------------------------------
+
+
+atday(Day). % aktuell dag
+allstations(Stations)                % navnet på stasjonene
+comingfrom(Deps,Bus,Place,Day,Station).        % hvor kommer bussen fra
+coupled(StartDepset,EndDepset,Bus,EndStation,Day,Opts,Deps,Midlist). % en rute mellom to steder
+datetime(YYYY,MM,DD,HH,MM,SS). %% Externall TIME
+dateis(YYYY,MM,DD,Day).               % datoen ( markør)
+daysucc(Monday,Tuesday).                % next day 
+departure(Bus,Place,Day,Deps).              % departures  
+diffdep(Deps,Place,Duration,FromStation,ToStation).
+endstation(Bus,StationList,Situation).   % endestasjoner
+findprice(FromPlace,ToPlace,Day,Price).  % en bussturpris
+keepafter(LimTime,Deps1,Deps2). % filter passeringer etter LimTime
+keeparound(Time,R,Rny).   % filter passeringer på Time + - 14 min
+keepat(Time,Deps1,Deps2). % filter passeringer på nøyaktig Time
+keepbefore(LimTime,Deps1,Deps2).
+keepbetween(LowTime,HighTime,Deps1,Deps2). % filter passeringer mellom
+                                           % Lowtime og HighTime
+keepbetweenstat(Bus,FromPlace,ToPlace,InnStats,UtStats). % selekter
+                                                         % stasjoner mellom stasjoner
+keepbus(Bus,Deps1,Deps2).      % filter passeringer med Bus
+keepfrom(Place,Deps1,Deps2).   % filter passeringer i retning fra place
+keepto(Place,Deps1,Deps2).     % filter passeringer i retning place
+keepwithin(Time,Mins,R,Rny).   % filter passeringer mellom Time, Time+Mins
+
+message(Myst).                    % En beskjed (Language Dependent)
+passesstations(_,_,_,_).       % stasjonene en buss passerer
+passevent(Deps,Bus,Place,Options,Deps,EventID).        % en busspassering ( only a marker )
+properstation(station).        % er en aktuell busstasjon 
+reply(text).                      % Textual  reply (Language independent)
+station(station).              % er en stasjon
+stationsat(Place,InStation,Stations)            % stasjoner på sted
+stationsnear(GivenPlace,FreePlace,Result).           % stasjoner nært sted
+ticketprice([Adult,Child])               % en billettpris
+takestime(Duration,FromStation,ToStation). % Markør 
+timeis(Time).                  % klokka  HHMM
+today(Day).   % dagen i dag        
+
+%%%%%%%%%%%%%%THIS IS THE END%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

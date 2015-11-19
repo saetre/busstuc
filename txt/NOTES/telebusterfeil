@@ -1,0 +1,739 @@
+%% FILE telebusterfeil
+%% SYSTEM Telebuster
+%% CREATED TA-050914
+%% REVISED TA-060212
+
+
+%% Errors in telebuster, not mended .
+
+%% TOP RECENT
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Paraphrasing:   
+   Torget,    on  Friday. W
+          ____
+
+
+
+til gløshaugen.
+
+
+fra nardo.
+
+// gløshaugen disappears as referent
+
+Jeg skal være der før 10 -> nardo.
+
+Maybe externalresolve should look into context.
+
+
+
+
+
+*** Tag: java ldapconnection.LDAPSearcher tag jeg
+
+
+
+E: fra nth til nardo.
+E: i shall be there before 10.
+
+Which  place, Nardo,  or NTH,  ?
+----------------------------------
+
+////////////////
+
+
+selje$ telebuster.sav
+% restoring /home/a/16/toreamb/TELEBUSTER/buster/telebuster.sav...
+run.
+% /home/a/16/toreamb/TELEBUSTER/buster/telebuster.sav restored in 1990 msec 33450464 bytes
+SICStus 3.11.2 (sparc64-solaris-5.7): Wed Jun  2 11:45:29 MET DST 2004
+Licensed to idi.ntnu.no
+| ?- 
+N:  jeg skal på et møte på nth på fredag.
+
+
+
+Holdeplassen nærmest  NTH,  er  Gløshaugen Syd, .
+
+Du vil dra  til  Gløshaugen Syd, og  på   fredag. Hvor vil du reise fra ? 
+----------------------------------
+
+N: nardo.
+
+
+
+Holdeplassen nærmest  Nardo,  er  Nardosenteret, .
+
+Du vil dra  fra  Nardosenteret, og  på   fredag. Når vil du dra? 
+----------------------------------
+
+N: jeg skal være der før kl 10.
+
+
+
+Vet du  etternavnet?
+----------------------------------
+
+N: 
+
+selje$ telebuster.sav
+% restoring /home/a/16/toreamb/TELEBUSTER/buster/telebuster.sav...
+% /home/a/16/toreamb/TELEBUSTER/buster/telebuster.sav restored in 1800 msec 33440288 bytes
+SICStus 3.11.2 (sparc64-solaris-5.7): Wed Jun  2 11:45:29 MET DST 2004
+Licensed to idi.ntnu.no
+| ?- run.
+
+N:  jeg skal ha  et  møte med magne johnsen på fredag.
+
+
+
+Søker etter post 
+
+
+----------------------------------
+
+N: 
+
+
+
+
+N: jeg skal ha et møte med magne johnsen på fredag
+N: hva er hans adresse ?
+ ---> Vet du  avdelingen?
+N: nei.
+
+Kan ikke finne det antallet : 
+
+Kan ikke liste så mange poster .
+
+
+
+
+
+N: jeg skal besøke mangne johnsen på fredag.
+
+N. hva er hans adresse ?
+
+---> vet du avdelingen ?
+
+
+
+
+
+
+%% hva er tore amble -> TITTEL
+
+
+
+N: jeg skal besøke mangne johnsen på fredag.
+
+
+// EMPTY 
+
+
+----------------------------------
+
+
+%% jeg skal besøke magne johnsen
+%% jeg bor på nardo
+
+
+
+N: adhl
+
+[which(adhl)::adhl isa unk]
+
+%% repeats answer
+
+
+
+
+N: hva er hans telefonnummer og emailadresse ?
+Jeg skjønner ikke .
+----------------------------------
+
+
+
+N: hva er klokka.
+Søker etter post 
+Klokka  er 10:25, .
+----------------------------------
+
+
+ketil bø.
+-->
+Vet du  etternavnet?
+----------------------------------
+
+
+N: hva er adressen til tore amble ?
+
+
+Søker etter  adresse  hvor  fornavnet er  tore  og  etternavnet er  amble .
+
+Tore Amble har adresse  S. Sælands v 9.
+
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+N: hvordan kommer jeg dit ?
+
+
+
+Du vil dra  til  Gløshaugen Syd, .
+
+
+Hvor vil du reise fra ? 
+----------------------------------
+
+// Ikke opplysning om Nærmeste Holdeplass
+
+
+
+
+N: erik sjetne. // eksempel på sted - etternavn
+
+Vet du  etternavnet?
+----------------------------------
+
+N: adjø.
+
+
+Ha det bra 
+----------------------------------
+
+hvor sitter amble (sitter = etternavn)
+
+Hvor vil du reise fra ? 
+----------------------------------
+
+N:  Bragstads Pl 6.
+
+
+Jeg skjønner ikke .
+----------------------------------
+
+
+N:  o.s. Bragstads Pl 6.
+
+
+Du vil dra  fra  O.S. Bragstads plass,  -,  6, .
+
+                                       *****
+
+E-post: Mhj@iet.ntnu.no // noen navn skal ikke ha stor forbokstav(også busstuc/buster)
+
+
+selje$ telebuster.sav
+?-run.
+N: \set trace 3
+N: hallstein gård.
+*** Tag: java ldapconnection.LDAPSearcher tag hallstein gård  herregård 
+! segmentation violation
+% Execution aborted
+| ?- 
+
+Next:
+
+selje$  telebuster.sav
+oooooooooooooooooooooooooooooooo
+
+selje$  telebuster.sav
+
+?-debug.
+?-run.
+
+N:  hallstein gård.
+
+
+
+Vet du etternavnet?
+----------------------------------
+// ok
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+N:  tlfnummer til erik harborg.
+
+
+Søker etter  telefonnummer  hvor  fornavnet er  erik  og  etternavnet er  harborg 
+
+Erik Harborg har telefonnummer : 93139
+
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+N: nardo.
+
+
+
+Søker etter  telefonnummer  hvor  fornavnet er  erik  og  etternavnet er  harborg 
+
+Erik Harborg har telefonnummer : 93139
+
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+// Gjentar spørsmålet her (????!)
+
+
+
+N: tlfnr til hallstein johnsen.
+
+
+
+N:  hallstein johnsen.
+
+Jeg forstår ikke.
+----------------------------------
+----------------------------------
+
+N:  hallstein johnsen.
+
+
+*** Tag: java ldapconnection.LDAPSearcher tag hallstein johnsen 
+
+
+tags = [[johnsen,lastname]]
+compnames = [[johnsen,[],johnsen]]
+
+
+60 ms
+
+Jeg forstår ikke.
+----------------------------------
+
+N: 
+
+Hvor sitter ketil bø ?
+Hvem sitter på rom 312 ?
+Hvor sitter Rune Sætre
+Hvor sitter Rof Dahl
+Hvor sitter Rof Harald Dahl
+Dahl -> Unk
+
+
+
+Marvin
+
+Hvor sitter tore ?
+// Tåler ikke motspørsmål
+
+
+%% Aldri gi ut hele lista i en muntlig dialog
+
+
+
+
+&& telebuster
+fra nth til nardo.
+
+
+
+N: gå til rom 312!
+Started LDAPSearcher, args: tag gå til  rom  312 
+
+
+
+Vet du etternavnet?
+----------------------------------
+
+
+%%%%%%%%%%%%%%%%%
+
+N: hvilke avdelinger har hist ?
+
+N: hva er avdelingene til hist ?
+
+// HIST både neighbourhood (bus) og department (tele).
+
+
+*** Tag: java ldapconnection.LDAPSearcher tag hvilke avdelinger  har  hist 
+Started LDAPSearcher, args: tag hvilke avdelinger  har  hist 
+
+
+txt(0, w(hvilke,[hvilke]), 1).
+txt(1, w(avdelinger,noun(department,plu,u,n)), 2).
+txt(2, w(har,verb(have,pres,fin)), 3).
+txt(3, w(hist,name(hist,n,neighbourhood)), 4).
+txt(3, w(hist,name(hist,n,department)), 4).
+txt(4, w(?,[?]), 5).
+
+
+[which(A:department)::A isa department and true and(exists(B:event)::has/department/department/A/hist and event/real/B)and hist isa department]
+
+[which(A)::(hist isa department,A isa department,has/department/department/A/hist,event/real/B)]
+
+// wrong subject/object
+
+
+
+///// Imponator
+ 
+N: hva er gateadressen til ahs.
+
+
+
+Søker etter  gate  hvor  avdelingen er  ahs 
+
+avd. for Helse og sosialfag har gate : Ranheimsveien 10
+----------------------------------
+
+
+
+
+            
+"Team når går buss 6 fra sentrum. Jeg skal være på rotvoll kl. 1000"
+
+
+adjø. // virker adjø i telebuster
+
+
+hvem sitter -> lette ut all informasjon om navn (fornavn,etternavn). 
+
+N: gå til rom 361 .
+
+Vet du fornavnet?
+----------------------------------
+///////////////////
+
+
+
+hvis eg vil ta buss nummer ni den vet eg også går til stavset når tid går den fra samfundet mot stavset
+
+... i morgen
+...
+...  kl 7 -> IKKE 19:00
+
+
+søndag
+...
+i kveld -> IKKE søndag kveld
+
+jeg skal være der = ankomststed (demo...)
+
+
+// passevent skal ikke ut av butrans
+// but connections is always present then , check usestate
+// how about options
+
+
+Torsdag 20:30
+
+
+jeg skal til nth i morgen.
+
+jeg skal være der før 10 //  
+
+  ---> ikke 2200 , dette er en annen dag
+
+jeg skal være der før 10 om morgenen
+
+  -->  ikke 0500 06:16, 
+            klokken 09:46, 
+
+
+
+neste buss ( hvis kjent avgangstidspunkt, deretter)
+
+feil:   slett siste opplysning,  restart (gir sannsynligvis riktig
+ledespørsmål)
+
+
+
+N:  før lunsj. 
+
+
+Du vil dra  til  Torget,  før klokken   12:00, .
+
+
+
+Buss 91,  passerer  Heimdal sentrum,  klokken 04:49, 
+ og   Torget,  klokken 05:31, .
+...
+Buss 4,  passerer  HEIMDAL  STASJON,  klokken 23:57, 
+ og   Torget,  klokken 00:18, .
+
+
+
+
+
+¤¤¤¤¤
+fra lerkendal til sentrum.
+ ankomst før klokka 17.
+ avreise etter klokka 17.
+   Det er ikke mulig med avgang etter klokken 17:00, .
+   Buss 20,  passerer  Lerkendal stadion,  klokken 16:51, 
+    og   Dronningensgate, holdeplass D4,  klokken 17:00, .
+   Ønsker du flere opplysninger kan du spørre nå, eller legge på røret.
+
+
+
+tore amble på idi
+
+
+Få med tql selv om det er Jeg forstår ikke .
+%%¤¤¤¤¤¤¤¤¤¤¤
+
+
+%%%%%% Unsolved %%%%%%%%%%%%%%
+ 
+
+N:  hva er avdelingen  til tore hansen ?
+
+Vet du avdelingen?
+----------------------------------
+// Doesnt check that we asked for department.
+
+
+"Team skal til stjørdal. Går det buss kl syv?"
+// sammensatt
+
+
+N: frøyen.
+
+Finner ingen med fornavn marianne.
+
+Men det er 3 poster som svarer til etternavn frøyen.
+
+Søker etter post  hvor  fornavnet er  marianne  og  etternavnet er  frøyen 
+
+Kan ikke finne noen som svarer til søket.
+Fornavn: marianne
+Etternavn: frøyen
+------
+----------------------------
+
+// skifte av etternavn resetter fornavn
+
+
+N: hva er avdelingen  til tore berg hansen ?
+
+
+Søker etter  avdeling hvor  fornavnet er  tore  og  etternavnet er  hansen 
+
+Jeg finner  ?  poster som svarer til søket: 
+
+Navn: Tore Hansen
+Avdeling: NTNU
+
+Navn: Tore Berg Hansen
+Avdeling: HiST
+
+----------------------------------
+
+N: 
+N: hvem har telefonnummer  94451.
+
+
+
+Søker etter post  hvor  telefonnummeret er  94451 
+
+Kan ikke finne noen som svarer til søket.
+Telefonnummer: 94451
+----------------------------------
+
+
+N: hva er meningen med livet ?
+
+
+Søker etter post 
+
+
+ 42
+----------------------------------
+
+/// :-) ///
+
+
+
+hva er telf til tore amble på ntnu ? //
+
+N: takk.
+........................................................................
+[do::quit(you_are_welcome)]
+........................................................................
+
+Jeg skjønner ikke.
+----------------------------------
+
+Finn Bostad.
+Finn finn bostad.
+hva er telf til finn bostad ? OK
+
+
+tore amble.
+hva er nr til tore ?
+Finner ingen med fornavn tore.
+
+Men det er 2 poster som svarer til etternavn tore.
+
+Søker etter post  hvor  fornavnet er  tore  og  etternavnet er  tore 
+
+Kan ikke finne noen som svarer til søket.
+Fornavn: tore
+Etternavn: tore
+
+
+
+%%%%%%  Pending ( Tagger problem) %%%%%%%%%%%%%%%
+
+
+Løvfall. Bjørn Tore  -> Tore blir etternavn !
+
+
+%%%%%%%%%%%  Solved %%%%%%%%%%%%%
+
+hva er avdelingen hans
+
+hva er avdelingen til denne personen.
+
+hva er romnummer til denne personen.
+
+hvilket rom har = hvilket kontor har .
+
+
+N: hva er din versjon.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Søker etter  ukjent felt
+
+Jeg har ikke svaret på det spørsmålet.
+----------------------------------
+//ok
+
+torbjorn -> torbjørn. // use synname before taggercall
+
+hvor har tore rom ? No
+hvor har tore amble rom ?  // ok
+
+hvem har telefonnummer 94451
+
+telefon til tore
+
+N: finn informasjon om alan j munro.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Søker etter post  hvor  navnet er  alan j munro 
+
+Navn: Alan J. Munro
+Tittel: Post.doc.
+Telefonnummer: 93980
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Søker etter post  hvor  navnet er  alan j munro 
+
+Jeg kan desverre ikke gjøre det.
+----------------------------------
+
+N: hvem er jostein hernes.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Søker etter post  hvor  navnet er  jostein hernes 
+
+Jeg finner 2 poster som svarer til søket. 
+Navn: Jostein Hernes
+Tittel: Prosjektsjef
+Telefonnummer: 92705
+E-post: jostein.hernes@sintef.no
+Avdeling: SINTEF
+Romnummer: PTS2: 321
+Gateadresse: []                <------ subsumed
+
+Navn: Jostein Hernes
+Tittel: Prosjektsjef
+Telefonnummer: 92705
+E-post: jostein.hernes@sintef.no
+Avdeling: SINTEF
+Romnummer: PTS2: 321
+Gateadresse: S P Andersensv 15b
+
+----------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// Telebuster may or may not detect that a record is
+// subsumed by another
+
+// NB Ingen treff i NETTSØK
+
+www.idi.ntnu.no/telefonkat/finn
+
+
+Hvem er Håkon Grønning
+Navn: [] - Håkon Grønning
+Tittel: [] - Førsteamanuensis
+Telefonnummer: [] - 59590
+E-post: hakon.gronning@hist.no - []
+Avdeling: [] - HiST - Avdeling for teknologi (AFT) - AFT, Program for elektro- og datateknikk
+Romnummer: [] - Gunnerusgate: 203a
+Gateadresse: [] - Gunnerus Gate 1
+//  all these []
+
+........................................................................
+hva er tlf. nr. til erik harborg.
+(eller "tlfnr.").
+..........................
+---------------------------------
+
+
+Testspørsmål som gir fornuftige svar:
+
++ hva er nr til tore b hansen?                          + hvor er han?  +
+hvor sitter han?
+
+
+
+N: hvilken tittel har per borgesen .
+
+tags = [[har,lastname],[har per,pname],[har per,firstname],[per,lastname],[borgesen,pname],[borgesen,lastname]]
+compnames = [[har,[],har],[har,[per],har per],[per,[],per],[borgesen,[],borgesen]]
+
+// odditet  har[ald] per johnsen ?
+
+
+
+hvilken tittel har tore amble * 
+
+SJEKK teletrans.pl vs app/teletrans.pl
+
+fjerner kontor (hazard)
+
+
+listtoplus feiler
+
+
+/buster
+
+N: hva er din versjon.
+
+TUC  har versjon    22.0  D  Date 050721
+TUC  har versjon    22.0  D  Date 050721
+
+-hvilken tittel har per borgesen.
+
+er tore amble en lærer -> er (tore amble lærer) ...
+
+-jeg skulle hatt nr til en lærer/person/ansatt/lektor på hist.
+// Beyond Search Capacity, and not relevant
+
+
+varsle  buss dragvoll samfundet.
+østmarka psykiatriske sykehus . // confusion telebuster
+siste buss på kveld til Halseth. // etc ikke i telegram
+
+-hvor har han kontor?
+-hva er nr til tore. 
+(- avd: hist. -> tore k eliassen. selv om det finnes flere tore på hist)
+-hva er romnr hans? (klarer "romnummeret")
+
+-aitel. ('vet du avdelingen?' kjenner ikke igjen aitel som avd. gjelder også
+[alle?] andre avd på HiST)
+
+
+N: er arne halaas lærer ?
+
+'arne er'  destroys arne firstname
+
+%%%%% 554 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

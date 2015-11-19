@@ -3,7 +3,7 @@
 
 \set queryflag true
 
-når går bussen fra jakobsli ved holdeplass skovgård til fossegrenda på
+nÃ¥r gÃ¥r bussen fra jakobsli ved holdeplass skovgÃ¥rd til fossegrenda pÃ¥
 hverdager ?
 
 \end

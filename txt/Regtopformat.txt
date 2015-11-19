@@ -1,0 +1,296 @@
+%% FILE Regtopformat.txt
+%% SYSTEM BUSSTUC
+%% CREATED TA-080118
+%% REVISED TA-080130
+%% REVISED RS-111218
+
+
+
+
+Short description of the REGTOP format used to send route tables for
+integration into BussTUC, and the corresponding Prolog tables that are
+used.
+
+
+
+The New format is identical to the old, except that it contains 
+a lot of redundant information, identical trace-segments as given
+in the TDA file.
+
+Therefore, all identical trace-segments must be coalesced, and indices
+to these (as given in the TIX file) must be redirected to the unique traces.
+
+
+The format is a text format dump of relational databases. The extract
+needed is a set of 4 files for each route period. They are given names
+(typically R0021) and fixed extensions (DKO,HPL,TDA,TIX) or (dko,hpl,tda,tix)
+
+
+R0021.DKO	  Date							
+R0021.HPL     Stations
+R0021.TDA     Trace data file (TurData)
+R0021.tms	  May be given instead of .TDA! RS-111218
+R0021.TIX     Index into TDA (TurIndex)
+
+
+For each route module, the following Prolog files are created,
+containing essentially the same information as Prolog tables.
+
+
+
+File         Tables (/arity)
+
+regbus.pl     regbus/1,  route/3  
+regdep.pl     departureday/4
+reghpl.pl     hpl/4
+regcomp.pl    composite_stat/3
+regdko.pl     dko/9       
+regpas.pl     ntourstops/2, passes3/5
+regcut.pl     cutloop_extend/5, cutset/4
+
+
+(It may be that the file regcut.pl  must be created by a Prolog-program)
+
+
+Formats:  REGTOP
+----------------
+
+.DKO  [X+3,Y+1,DAYC+4, +7,+7,+7,+7,+364]
+
+Line 1 [YYMMDD+6,-1]
+     * [-3,-1,DAYC+4,MASK1+7,MASK2+7,MASK3+7,MASK4+7,MASKS+364]
+
+
+.HPL  [-4,STATNR+8,STATNAME+30,-5,-7,-35]
+
+
+#v1.1
+.TDA  [STATNR+8,ARR+3,DEP+3,-6] 
+#v1.2
+.tms  [-3,-1,LINE+4,DIR+1,TMSNR+2,-3,STATNR+8,ARR+3,-2,DEP+3,-2,-7,-2,-6] 
+
+#v1.1
+.TIX  [-4, LINE+4, TOUR+4, -3, DAYC+4, -24,                 DEPTIME+4, NSTAT+3, TDAX+7, -2]
+#v1.2
+.TIX  [-4, LINE+4, TOUR+4, -3, DAYC+4, -21, DIR+1, TMSNR+2, DEPTIME+4, +4, HPLX+4, DAYS+7]
+										NSTAT+3 ???
+#v1.2
+# Referanse fra TURIX (TIX) til TURMSTR (TMS) er feltene
+# Linjenr (LINE), Retning (DIR) og Turmønsternr (TMSNR): fra 5-11
+
+Explanations:                    Convert to
+
+
+-n             Skip
+
+YYMMDD+6       Date              Integer
+DAYC+4         Daycode           Integer
+MASK1+7        Daymask           Identifier 
+                            (special conversion, See Note 1
+                                   
+MASK2+7        Daymask            2. week
+MASK3+7        Daymask            3. week 
+MASK4+7        Daymask            4. week
+MASKS          Daymask            remaining weeks
+STATNR+8       Stationnumber      Integer
+STATNAME+30    Station name       Identifier 
+                             (special conversion, See Note 2) 
+                                    
+													
+ARR+3          Arrivel Delay      Integer   (999 starts at station)
+DEP+3          Departure Delay    Integer   (999 ends at station)
+TDAX+7         Index into TDA     Line number
+NSTAT+3        Number of stations in trace (tour)
+
+Formats:  Prolog tables
+
+regbus.pl     regbus/1,  route/3  
+regdep.pl     departureday/4
+reghpl.pl     hpl/4
+regcomp.pl    composite_stat/3
+regdko.pl     dko/9       
+regpas.pl     ntourstops/2, passes3/5
+regcut.pl     cutloop_extend/5, cutset/4
+
+
+
+RID   Route Identifier   Format   bus_<LINE>_<TOUR>  
+
+   regbus(LINE)
+
+   route(RID,LINE,XLINE) %% XLINE is External outlook (e. 6A), default=LINE
+
+   departureday(RID,TDAX,DEPTIME,DMASK1).
+
+   hpl(STATNR,STATID,XSTATID,'STATNAME'). %% XSTATID external station identifier
+
+   composite_stat(partname1,[<list of part names>],STATID) // See Note 3
+
+   dko(DayC,X,Y,DAYC,MASK1,MASK2,MASK3,MASK4,MASKS)  
+
+   ntourstops(TDAX,NSTAT)
+
+   passes3(TDAX,STATID,SEQ,ARR,DEP). % SEQ seq in tour
+
+   cutloop_extend(STATID,TOUR1,TOUR2,NTOUR1,DELAY1)
+   cutset(STATID,TOUR1,TOUR2,  [ list of terms  toupes(RID1,RID2,NTOUR1,DELAY1) ]).
+
+
+%%%%%%%%%%%%%%%%
+
+Note 1   Conversion of MASK to DAYMASK
+
+  (1111100 -> d1111100)  
+
+   MASKn   -> DMASKn
+
+%%%%%%%%
+
+Note 2  Conversion 
+
+   'Gl�shaugen Syd' -> gl�shaugen_syd
+
+Only the following characters are generated:   [a-�],[0-9],[_]
+(Must start with letter ( [a-�])
+
+All letters -> small letters
+
+//Special characters (Maybe not necessary now, but later)
+
+lc(232,101). % �  -> e  // Lade all�
+lc(233,101). % �  -> e  // Lade all�
+lc(252,121). % � -> y   // M�ller
+
+Initial blanks are ignored, other sequences of blanks assembled to 1 '_'
+
+'-' (minus) is converted to '_'
+
+'.' are first replaced by ' ' (blanks),
+
+All other characters are ignored (appostrophs , etc).
+
+Initial blanks are ignored.
+Trailing blanks are ignored.
+
+Then all remaining sequences of blanks are replaced by underscore '_'
+
+'E.A.Smith' -> e_a_smith
+
+' Joh. Falkbergets   veg ' -> joh_falkbergets_veg 
+
+'Johannes Minsaa`s veg' -> 'johannes_minsaas veg
+
+'Jonsvannsv.'  -> jonsvannsv
+
+%%%%%%%%
+
+Note 3
+
+
+
+Prinsipp 1:
+
+Eksempel
+
+ hpl(16010258,anders_buens_gt,anders_buens_gt,'Anders Buens gt.').
+
+is converted to 
+
+composite_stat(anders,[buens,gt],anders_buens_gt)
+composite_stat(anders,[buensgt],anders_buens_gt)
+composite_stat(anders,[buens_street],anders_buens_gt)
+composite_stat(anders,[buens,street],anders_buens_gt)
+
+Station names that are written with  gt/vei isolated (see list of
+street synonyms) shall contain a lookup where gt is joined with the
+last word
+
+
+composite_stat(anders,[buensgt],anders_buens_gt)
+
+Further, all lookups that contain gt/etc must contain the same
+information, but where 
+                      gt isolated is replaced by street,
+               og   ..gt contagiously  is replaced by .._street
+
+omposite_stat(anders,[buens_street],anders_buens_gt)
+composite_stat(anders,[buens,street],anders_buens_gt)
+
+Prinsipp 2
+
+
+Eksempel
+
+hpl(16010027,bromstadveien,bromstadveien,'Bromstadveien').
+
+is converted to 
+
+composite_stat(bromstadveien,[],bromstadveien).
+composite_stat(bromstad_street,[],bromstadveien).
+composite_stat(bromstad,[street],bromstadveien).
+
+Station names that are written with gt/vei contiguously (see list over
+street synonyms) shall also contain a lookup where ...gt is replaces by ..._street
+
+
+composite_stat(bromstad_street,[],bromstadveien).
+
+
+In addition, a lookup is made where street is added as if it was separate.
+�
+composite_stat(bromstad,[street],bromstadveien).
+
+
+
+hpl(16010027,bromstadveien,bromstadveien,'Bromstadveien').
+
+is converted to 
+
+composite_stat(bromstadveien,[],bromstadveien).
+
+composite_stat(bromstad_street,[],bromstadveien).
+composite_stat(bromstad,[street],bromstadveien).
+
+New example of the same:
+
+hpl(16010205,joh_falkbergets_veg,joh_falkbergets_veg,'Joh.Falkbergets veg.').
+
+-> 
+
+composite_stat(joh,[falkbergets,veg],joh_falkbergets_veg).
+
+composite_stat(joh,[falkbergetsveg],joh_falkbergets_veg).
+composite_stat(joh,[falkbergets_street],joh_falkbergets_veg).
+composite_stat(joh,[falkbergets,street],joh_falkbergets_veg).
+
+
+
+%%%%
+
+Street synonyms that  appear in the tables   (e.g.  reghpl.pl)
+( List of street synonyms are bigger for the customers input)
+
+exstreet1(gata).
+exstreet1(gate).
+exstreet1(gaten).
+exstreet1(gt).
+exstreet1(v).
+exstreet1(veg).
+exstreet1(vegen).
+exstreet1(vei).
+exstreet1(veien).
+exstreet1(vg).
+exstreet1(vn).
+
+
+exsstreet1(sgata).
+exsstreet1(sgate).
+exsstreet1(sgaten).
+exsstreet1(sgt).
+exsstreet1(sv).
+exsstreet1(sveg).
+exsstreet1(svegen).
+exsstreet1(svei).
+exsstreet1(sveien).
+exsstreet1(svg).
+exsstreet1(svn).

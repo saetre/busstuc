@@ -1,0 +1,651 @@
+%% FILE  BusInfoTables.txt
+%% SYSTEM BussTUC
+%% CREATED TA-100316
+%% REVISED TA-100316	RS-130327
+
+
+Contains a description of all the table information that is supported/supplied manually to the bus system. 
+
+They contain name information that are not station names and time information
+
+
+
+
+
+// FILE BUSDAT1.PL
+
+%% This file contains all controlling parameters governing the
+behavior of the bus query system.
+Some of the predicates are conditional or created at creation times.
+
+ Examples show typical results.
+
+
+¤ MAXNUMBEROFINDIVIDUALDEPARTURES (NUMBER)
+
+Example: 
+
+maxnumberofindividualdepartures(3).
+
+Maximum number of individual bus passings in answer.
+
+
+
+¤ DEDICATED DATE   (DATE)
+
+Example: 
+
+dedicated_date(date(2010,12,24)).
+
+Prominent date that takes presedence over the interpretation as a clock.
+
+
+
+¤ EXTRAALLOWEDNIGHT   (DATE, KINDOFDAY)
+
+Example:
+
+busdat:extraallowed_night(date(2009,04,12),saturday). 
+
+Nightbus goes after midnight on this date despite rule.
+The route plan is the same as on KINDOFDAY.
+
+¤ DISALLOWED_NIGHT (DATE)
+
+Example: 
+
+disallowed_night (date(2009,04,13))
+
+
+Nightbus does not go  (after midnight) on this date despite rules.
+
+
+¤ NAMED_DATE  (NAME)
+
+Example: 
+
+named_date (date(2010,04,04),easterday2)
+
+Second Easterday in current year (2010) is date(2010,04,04).
+
+¤ DATE_DAY_MAP (DATE,DAY)
+
+Example:
+
+date_day_map(date(2010,04,05),sunday)
+
+Routes on this date follows the route plan of Sunday
+(despite it is a Monday)
+
+
+¤ SOFTIME (NAME,FIRST CLOCK,LAST CLOCK)
+
+Example:
+
+softime(prenoon,0900,1200).
+
+Prenoon (Norwegian formiddag) is defined to be between
+FIRST clock and LAST clock.
+
+
+
+MAXTRAVELTIME (MINUTES)
+
+Example: 
+
+maxtraveltime(100).
+
+Discard travel proposals  that are longer than MINUTES.
+
+
+
+¤ BUSLOGTIMEOUT  (MILLISEC)
+
+Example: 
+
+buslogtimeout(10000).
+
+Maximum computing time in millisec after which the route planner gives up
+
+
+¤ AROUNDMARGIN  (MINUTES)
+
+Example: 
+
+aroundmargin(20).
+
+The limits of the fuzzy expression "around" clock.
+
+
+¤ MAXARRIVALSLACK  (MINUTES)
+
+Example: 
+
+maxarrivalslack(60).
+
+Maximum allowed time between arrival and departure for bus exchange
+
+
+¤ KINDOFDAY (DAY,KINDOFDAY)  // NOT USED ???
+
+Example: 
+
+kindofday(monday,workday).
+
+Classiffy days into a category
+
+
+
+¤ DELAY_MARGIN     (MINUTES)
+
+Example:
+
+delay_margin(5).
+
+The time between scheduled arrival and scheduled departure for a safe bus
+exchange. Used by route planner
+
+
+¤ PREFERRED_TRANSFER (ROUTE 1,ROUTE 2,STATION 1,STATION 2)
+
+
+Example: 
+
+preferred_transfer(47,46,klæbu_sentrum,city_syd). 
+
+Rules that the tranfer between ROUTE 1 and ROUTE 2, where ROUTE 1
+starts at STATION 1 shall occur at STATION 2, overruling
+the route planners default preference.
+The delay margin is also ignored because ROUTE 2 is obliged to wait.
+
+
+¤ DEFAULT_DESTINATION (ROUTE,STATION)
+
+Example:
+
+default_destination(52,vestlia)
+
+Determines that Vestlia is the default destination going outwards from
+center.
+
+¤ DEFAULT_DESTINATION (ROUTE,STATION)
+
+// conditional on airbusflag
+
+Example:
+
+default_origin(flybussen,sorgenfriveien).
+
+
+¤ MORNING_BREAK (CLOCK) 
+
+Example: 
+
+morning_break(0430).
+
+Determines the earliest time for ordinary daytime buses
+
+
+¤ NIGHTBUSDESTINATION (STATION) 
+
+nightbusdestination(klæbu).
+
+Determines that klæbu is an allowed destination for the nightbus.
+Annuls the classifiction as a foreign station.
+
+
+¤ CENTRAL_AIRBUS_STATION (STATION)  
+
+Example:
+
+central_airbus_station(torget). 
+
+Default central station for airbus
+
+
+NOSTATIONFOR    (PLACE)
+
+Example:
+
+
+
+// conditional on a predicate nostation // File PLACES.PL
+
+Example:
+
+nostation(munkholmen).  
+
+Determines that PLACE is not a destination for a vehicle
+
+
+¤ UNPROPERSTATION  (PLACE)
+
+A station that is not visited (any more)
+
+// NOT USED
+
+
+¤ XFOREIGN (PLACE)
+// conditional on a predicate FOREIGN // File PLACES.PL
+
+Determines that a place is outside route domain.
+
+
+¤ CORRESPOND predicates (used externally)
+
+corresponds             % (STATION,STATION)
+corresp0                % (STATION,STATION)
+corresp                 % (STATION,STATION)
+corrx                   % (DOMAIN,STATION,STATION)
+
+(corr0/2                   % (STATION,STATION) Internal)
+
+
+¤ INTBUSNAME  (ROUTE,ROUTE)
+
+Convert official busid to internal bus id
+
+// NOT USED
+
+¤ INTBUSNR (ROUTE,ROUTE)
+
+Convert official busnr to internal bus id
+
+// NOT USED
+
+
+¤ EXBUSNAME (BUSNUMBER,NAME)
+
+Example:
+
+exbusname(254,'Klæburuten'). 
+
+Some busnr are only for internal use.
+
+
+
+AIRBUSSTATION   (STATION)
+
+Example: 
+
+airbusstation(værnes).
+
+Stations that are not ordinary bus stations
+
+
+¤ TRAMSTATION    (STATION)
+
+Example:
+
+tramstation(st_olavs_gate).
+
+Stations that are explicit and exclusive  tram station
+
+
+¤ NIGHTBUSSTATION   (STATION) 
+
+Example:
+
+nightbusstation(olav_tryggvasons_gate).
+
+Stations that are explicit and exclusive nightbus station station
+
+
+¤ BUS_DEPEND_STATION  (ROUTE,PLACE,STATION)
+
+Example:
+
+bus_depend_station(60,berg,berg_prestegård). 
+
+PLACE is made unique in connection with route number.
+
+
+¤ INTERNAL_AIRBUS (BOOLEAN)
+
+Conditionally dependent on flag internal_airbusflag.
+
+Example:
+
+internal_airbus(false).  
+
+The airbus is/is not part of ordinary bus system.
+
+
+¤ HOURS_DELAY (NUMBER)
+
+Examples:
+
+hours_delay(0).     % Trondheim
+% hours_delay(8).  % Tokyo
+% hours_delay(-9).  % Santa Barbara
+
+
+The number of hours that must be added to the server time to get the
+local time.
+
+
+%% CLOCK_DELAY  (HH,MM,SS)	%% Moved to timedat.pl
+
+Example:
+
+clock_delay(00,00,00). %%  FOR CLOCK ADJUSTMENT
+
+Used to adjust clock time in the abnormal case that
+the the server's clock is wrong.
+
+// NOT USED
+
+
+
+¤ HOME_TOWN (PLACE)
+
+Example:
+
+home_town(trondheim).
+
+Name of home town for route domain.
+
+
+¤ MONEYUNIUT (NAME)
+
+Example:
+
+ moneyunit(nok).  
+
+Used for prinouts of amounts.
+
+
+¤ BUSFARE2 (ROUTETYPE, LIST(AMOUNT))
+
+Example:
+
+busfare2(bus,[30,15]).
+
+Bus fare for adult/child
+
+
+
+¤ SYNBUS   (NAME,ROUTE)
+
+Example
+
+synbus(toerbussen,2).
+
+Popular NAME for ROUTE.
+
+
+
+¤ CMBUS (NAME,NAMES,ROUTE)
+
+Example:
+
+cmbus(9,ern,9). 
+
+Popular composite name for ROUTE.
+
+
+¤ EXPLICIT_PART_NAME  (NAME)
+
+Example: 
+
+explicit_part_name(skjelvesgate).  
+
+Ad hoc definition of partnames that occur in popular names with more than two
+part names, e.g.
+
+    einar tambar skjelvesgate
+
+Are made obsolete when a new namehashtable is run.
+
+
+¤ ENDNEIGHBOURHOOD  (ROUTE,PLACE)
+
+Example: 
+
+endneighbourhood(57,klæbu).
+
+Used to define end places of routes when place is not a station.
+
+
+¤ SPURIOUS_RETURN   (ROUTE,PLACE)
+
+Example: 
+
+spurious_return(154,hesttrø).
+
+Nightbuses return to these places, but misleading since other alternatives exist
+
+¤ FROMSTATIONONLY  (STATION)
+
+Stations that have only departures and no arrivals.
+The purpose is for  warning messages.
+
+// NOT USED
+
+¤ TOTATIONONLY  (STATION)
+
+Stations that have only arrivals and no departures.
+The purpose is for  warning messages.
+
+// NOT USED
+
+
+¤ CENTRAL_FROMSTATION (STATION)
+
+Example: 
+
+central_fromstation(torget). 
+
+Station is closed to centre, so it blocks the centre as a default destination.
+
+
+¤ UNIQUE_VEHICLE (VEHICLETYPE,TRUTH)
+
+Examples:
+
+unique_vehicle(tram,true). %%  NB Trondheim
+unique_vehicle(bus,false). 
+
+There is only one tram, so the designator tram is uniqe.
+There are may buses.
+
+¤ THETRAM(NUMBER)
+
+Example:
+
+thetram(1).   %
+
+NUMBER is the unique trm number
+
+¤ THETRAMSTREETSTATION (STREET,STTION)
+
+Example;
+
+thetramstreetstation(st_olavs_street,st_olavs_gate).
+
+
+Converts the unspecified street name of the tram station to the tram station.
+
+
+¤ CUTLOOP_STATION (ROUTE,STATION)
+
+
+Example:
+
+cutloop_station(3,munkegata_m2). 
+
+ROUTE isa shuttle route that formally stops at STATION for
+exchange,  but in fact continues without exchange.
+
+
+
+
+ 
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+
+// FILE REGBUSALL.PL
+
+¤ REGBUS (ROUTE)
+
+Example:
+
+regbus(2).
+
+Inclusive set of bus routes transcending route periods.
+
+
+¤ NIGHTBUS (ROUTE)
+
+Example:
+
+nightbus(103). 
+
+
+
+//FILE TELEDAT2.pl
+
+This file contains non-route information that may be relevant to some
+applications as a directory assistant.
+Adaption to a local LDAP database for employees at NTNU.
+Here is only the data entries.
+
+
+
+¤ BUILDING (NAME)
+
+
+Example:
+
+building(itbygget).  
+
+NAME is a name of a building.
+
+
+¤ LDAPTOTUCPLACE (STREETADDRESS 1, STREETADDRESS 2)
+
+Example:
+
+ldaptotucplace('Høgskoleringen 1',høgskoleringen-1).
+
+Converts LDAP street address  to a BussTUC street address.
+
+//// An internal parsing could have done this automatically //// 
+
+
+
+¤  HAZARD_TAGNAME (NAME)
+
+Examples:
+
+hazard_tagname(bor).  
+hazard_tagname(etasje). 
+
+NAME is excluded from the list of names that is sent to the database
+for tagging.
+
+//Comment:
+
+Queries to the LDAP database are divided into 
+
+  a tagger call that finds the interpretation (tag) of a each word that
+  occur in the database.
+
+  an informed query call based upon the knowledge of type of words in the database 
+
+Some words however will give spurious results if sent into the (sloppy) LDAP database.
+because they occur as part words somewhere. 
+
+
+¤ LEGAL_TAGNAME (NAME)
+
+Example:
+
+legal_tagname(amble).  // SUPERFLUOUS
+
+NAME is an exception to HAZARD_NAME.
+
+Not used yet.
+
+¤ UNWANTED_DBNAME (NAME)
+
+Example:
+
+unwanted_dbname(gløshaugen). %% <--- Ad Hoc
+
+NAME has confusinmg roles in application
+
+// SUPERFLUOUS
+
+
+¤ HAS_ATT_VAL (CLASS,ATTRIBUTE,SUBJECT,VALUE)
+
+Exampe:
+
+has_att_val(person,retirement,(tore,amble),date(2012,04,21)).  %%  TA-091213
+
+The CLASS SUBJECT has ATTRIBUTE VALUE
+
+
+
+//FILETOPREG.PL
+
+This file is the top file controlling the route periods.
+
+¤ ROUTEDOMAIN (Domain NAME)
+
+Examples:
+
+routedomain(tt).  %% Team Trafikk
+routedomain(gb).  %% Gråkallbanen
+routedomain(fb).  %% Flybussen
+routedomain(tmn). %% Generic for TMN related routes
+
+
+¤ DEFAULT_PERIOD (Domain NAME,Year PART, Routeperiod DATE)
+
+Examples:
+
+default_period(tt,winter, r1612_100111).  %% 2010
+default_period(tt,summer, r1611_090615).  %% 2009 NB
+
+¤ PERIOD_MESSAGE (NAME, LANGUAGE*)
+ 
+Example:
+
+period_message(r1613_100329,['Team routes for Easter', 'Team påskeruter']).  
+
+
+¤ ROUTE_PERIOD (DOMAIN, MODULE, Start DATE, End DATE)
+
+Example:
+
+route_period( tt, r1613_100329,  date(2010,03,29),    date(2010,04,05)).
+
+/// NB 
+
+The route periods may overlap, but they are placed (and searched) in
+the sequence of -increasing- End DATE.
+
+
+
+¤ AIRBUS_MODULE (NAME)
+
+airbus_module(fb_090329)
+
+Module identifier and subdirectory for Airbus routes
+
+
+¤ TRAM_MODULE  (NAME)
+
+Example:
+
+tram_module(gb040604).
+
+Module identifier/subdirectory for Tram routes
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

@@ -1,0 +1,282 @@
+%% FILE BusPeriodTables.txt
+%% SYSTEM BusstUC
+%% CREAYED TA-100315
+%% REVISED TA-100316
+
+
+
+
+%% THESE TABLES ARE SPECIFIC for a route period
+
+They are stored in separate sub-dictionaries, one for each route period.
+
+Internally, they are loaded into separate Prolog modules.
+
+
+
+ROUTE  TABLES.
+
+Route tables are delivered as data sets in text format from the bus company.
+
+The format is in a standard called REGTOP and is a dump of company's
+database. The relevant parts of this format is described in a separate document.
+
+
+It is converted to internal tables by a program (  regtopToBusTUC.ConvertRegTop)
+
+
+The tables are organised in domains and route periods.
+
+The domains are typically 
+
+ tt    Team trafikk  (buses)
+ fb    Flybussen     (airbus)
+ tmn   Trafikanten midt-norge routes
+ gb    Gråkallbanen  (tram)
+ kl    Klæburuten    (not implememted)
+
+For each domain, there is a set of route period modules that describes
+the set of departures within the dates of the route period.
+
+Tables are all written in the format
+
+name(arg1,...,argn).
+
+The final dot is mandatory.
+
+They are described  by a name followed by a list of argument domains
+(types), followed by a few examples
+
+
+These tables are generated, and need not be changed
+
+
+The domains are
+
+   ROUTE         route number (line)
+   RID           tour identifier
+   NAME          atomic name identifier
+   STATION       station (bus-stop) name
+   DAYCODE       day code (denotes actual  dates of a tour)
+   DAYSTRING     charcter string denoting departure days
+   DEPARTURETIME for tour (HHMM)
+   LIST(Domain)  square bracket list of Domain  
+   NUMBER        integer
+   TOURTYPE      identifier of station trace of the tour
+   STATIONNUMBER numer identifying station
+   STATIONNAME   official printed station name
+   DELAY         minutes after som start time
+
+   -            not used
+
+
+/// The tables (predicates) are organised into files which are
+/// compiled during creation
+
+
+// FILE REGBUS.PL
+
+
+¤ REGBUS (ROUTE) 
+
+A table of the route numbers occuring in the period module.
+
+Example:
+
+regbus(2).
+
+
+¤ ROUTE (RID,ROUTE)
+
+for each RID, the route number of the tour
+
+Example:
+
+route(bus_2_11,2,2).
+
+
+
+// FILE REGHPL.PL//
+
+HPL (STATIONNUMBER,STATION1,STATION2,STATIONNAME)   
+
+Connects station numbers, internal names and printed name
+
+Example:
+
+hpl(16010035,anton_grevskotts_vei,anton_grevskotts_vei,'Anton Grevskotts vei').
+
+Comment: STATION2 is an alias identifier, used for alternative bus companies.
+
+
+The same station may be represented twice, one for each direction.
+The 5.th digit in the station number signifies the direction
+
+    (0    direction from center outwards to station
+     1    direction from station inwards to center)
+
+
+
+
+
+// FILE REGCOMP.PL
+
+¤ COMPOSITE_STAT (NAME,LIST(NAME),STATION)   
+
+Examples:
+
+composite_stat(anton,[grevskotts, vei],anton_grevskotts_vei).
+composite_stat(hospitalkirka,[],hospitalkirka).
+composite_stat(prinsen,[kinosenter],prinsen_kinosenter).
+
+
+
+¤ DEPARTUREDAY  (RID,TOURTYPE,DEPARTURETIME,DAYCODE)
+
+Example:
+
+departureday(bus_2_6101,749,723,1).
+
+// FILE REGDKO.PL //
+
+DKODATE (DATE,EMITDAY)
+
+Example:
+
+dkodate(100111, 1).
+
+
+The route period started on the date(2010,01,11) which was a monday (day number 1).
+
+
+¤ DKO (DAYCODE, - , - , - , - , - , - ,DAYSTRING)
+
+Example:
+
+dko(1,161,2,1111100,1111100,1111100,1111100,'11111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100').
+
+Comment:
+
+ 1 is the daycode. 
+ The characters of the DAYSTRING denotes
+     departure ('1')/no departure('0') for each successive day of the
+     period
+
+
+// FILE REGPAS.PL //
+
+
+¤ NTOURSTOPS (TOURTYPE,LENGTH)
+
+Defines the length (number of stations) inthe tourtype
+
+
+ntourstops(12713,5).
+
+¤  PASSES4 (TOURTYPE,STATION NUMBER,STATION,SEQNUMBER,ARR DELAY,DEP DELAY)
+
+Example:
+
+passes4(17326,16011035,anton_grevskotts_vei,22,15,16).
+
+Tour-type 17326 passes station with number 16011035, and internal name  anton_grevskotts_vei
+as number 22 in the sequence. It arrives at 15 minutes after start of tour , and departs 16 minutes
+after start of tour.
+
+Arrival at the first station and departure at last station
+are  fictitious.
+
+
+
+//// FILE REGCUT.PL ///
+
+The file contains some auxiliary predicates for handling tours that
+are formally defined as two adjacent tours on the same route.
+It is implicit that the passenger needs not change bus.
+
+
+¤ EX_NTOURSTOPS (New TOURTYPE,LENGTH)
+
+Example:
+
+ex_ntourstops(128,49).
+
+The new TOURTYPE 128 has 49 station passings.
+
+
+¤ EX_PASSES4 (New TOURTYPE,STATIONNUMBER,STATION,New SEQ,ARR DELAY, DEP DELAY)
+
+Example:
+
+ex_passes4(128,16011035,anton_grevskotts_vei,22,15,16). 
+
+New tourtype 128 passes station number 16011035 with  internal name  anton_grevskotts_vei
+as number 22 in the sequence. It arrives at 15 minutes after start of tour , and departs 16 minutes
+after start of tour.
+
+
+¤ EX_DEPARTUREDAY (RID,New TOURTYPE,DEPTIME,DAYCODE)
+
+Example:
+
+ex_departureday(bus_3_372,128,1932,1).
+
+
+// The following tables may occur in the file, but are only used
+temporarily during the creation of the final set of bus tables
+(EX_DEPARTUREDAY, EX_PASSES3, EX_NTOURSTOPS):
+
+ 
+
+¤ CUTLOOP_TRACE(STATION,TOURTYPE 1,TOURTYPE2)
+
+This says that the STATION is a fictitious exchange station which is
+defined formally  as two adjacent tours of tourtypes 1 and 2  with the same route.
+
+
+Example:
+
+cutloop_trace(munkegata_m2,14459,15562).
+
+
+CUTLOOP_RID(STATION,RID 1,TOURTYPE 1,RID 2,TOURTYPE2,SEQ,DELAY)
+
+Example:
+
+cutloop_rid(munkegata_m2,bus_3_1258,14459,bus_3_1423,15562,17,20).
+
+Contains a more detailed version of cutloop_trace.
+
+SEQ is the length of the first leg, so as to adjust the sequence
+number of the second leg when regarded as one adjacent tour.
+
+DEALY is the waiting time at the exchange station, and is used to
+compute the delays of  the second leg when regarded as one adjacent
+tour.
+
+
+%% XI is a conversion file from old pairs of tourtypes to a new tourtype
+
+¤ XI  (TERM,New TOURTYPE) 
+
+Example 1:
+
+xi(pax(17326,14652,31,33),128). 
+
+
+The combination of tourtypes 17326 and 14652 with sequence shift 31
+and delay shift 33  gets a new tourtype 128
+
+Example 2:
+
+xi(pax(148077,0,0,0),580). 
+
+No combination, just the old TOURTYPE 148077, got the new number 580.
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+
+

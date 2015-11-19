@@ -1,0 +1,91 @@
+%% FILE BusTablesSummary.txt
+%% SYSTEM BUSSTU
+%% AUTHOR T.Amble
+%% CREATED TA-080926
+%% REVISED TA-080926
+
+
+
+%% 
+
+This file contains a brief summary of the Bus Route Tables as they
+are used by the Bus Oracle. The files have been converted from a set
+of files in a format called RegTop, which has been produced by the
+Traffic company, in this case Team Trafikk, Trondheim.
+
+
+The  files are as follows (file data from Aug. 9.)
+
+146882 Jul 28 13:54 regbus.pl
+102425 Jul 28 13:54 regcomp.pl
+  5800 Jul 28 14:01 regcut.pl
+277131 Jul 28 13:54 regdep.pl
+  4132 Jul 28 13:54 regdko.pl
+ 65342 Jul 28 13:54 reghpl.pl
+341575 Jul 28 13:54 regpas.pl
+
+
+The content of each file is relational tables in a text format called
+Prolog-format.
+
+
+They are shown with a typical table entry, and an explanation
+
+
+regbus.pl
+--------
+
+regbus(2).
+...
+
+route(bus_2_1,2,2)
+...
+
+
+
+regcomp.pl
+---------
+
+composite_stat(målsjøåsen,[],målsjøåsen).
+
+
+
+regcut.pl
+--------
+
+cutloop_trace(asbjørnsens_gt,72848,72125).
+
+
+cutloop_rid(asbjørnsens_gt,bus_63_2563,72848,bus_63_2564,72125,9,10).
+...
+
+
+regdep.pl
+---------
+
+departureday(bus_2_1,34919,715,d1111100).
+...
+
+regdko.pl
+----------
+
+dkodate(080818, 1).
+...
+
+dko(1,161,0,1111100,....
+...
+
+reghpl.pl
+----------
+
+hpl(16010011,prinsen_kinosenter,prinsen_kinosenter,'Prinsen kinosenter').
+
+
+regpas.pl
+--------
+
+ntourstops(34919,6).
+
+passes3(34919,politihuset,3,1,1).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

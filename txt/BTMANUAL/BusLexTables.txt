@@ -1,0 +1,277 @@
+/* -*- Mode:Prolog; coding:iso-8851-1; -*- */
+%% FILE BusLexTables.txt
+%% SYSTEM BussTUC
+%% CREATED TA-100322
+%% REVISED TA-100325
+
+// FILES DICT_E.PL,  DICT_N.PL 
+
+These files contain respectively the English and Norwegian
+dictionaries.
+
+The predicates are the same, but the usage is slightly different,
+because the Norwegian uses English words as reference.
+
+In general, there are no deafult spell correction for common words, as
+opposed to names.
+
+// FILE DICT_N.PL 
+
+
+¤ CW (WORD)
+
+Examples:
+
+ cw(uansett). cw(takk).
+
+List of words that are function words in the grammar.
+
+
+¤ REWORDING (WORD*,  DLIST)
+
+Some replacements that are only valid in a context.
+The replacement is destructive (originals removed)
+
+rewording([beste,buss],        X:[neste,buss |X]).   %% TA-100110 
+
+
+¤ SPLITWORD (WORD, WORD*)
+
+Examples:
+
+splitword(bortimot,[nesten]).  
+splitword(bussfra,[buss,fra]). 
+
+
+Single words that are split into one or more words prior further
+analysis. The replacement is desctructive (originals removed)
+
+
+
+¤ COMPWORD (WORD 1,WORD*,WORD )
+
+Examples:
+
+compword(års,[kort],årskort).
+compword(vær,[hilset],hei).  
+
+List (WORD 1 + WORDS) is replaced by WORD .
+The replacement is NON-destructive.
+
+
+ 
+
+¤ XCOMPWORD (WORD 1,WORD*,WORD 2)
+
+Examples:
+
+  xcompword(får,[tak,i],mottar). 
+  xcompword(for,[den,sakens,skyld],redundant0)
+
+List (WORD 1 + WORDS) is replaced by WORD 2.
+
+The replacement is destructive.
+
+
+¤ UNWANTED_NUMBER(WORD)
+
+Examples:
+ 
+unwanted_number(entre).%% not 13
+unwanted_number(nien). %% not 91
+
+Some words will be interpreted erroneously as numbers.
+
+
+
+¤ UNWANTED ADJECTIVE (WORD)
+
+Examples:
+
+unwanted_verb(an).    % not imperative of "ane" (suspect)  
+
+Avoid unwanted (regular) inflections of some verbs because
+they are irrelevant or  confusing.
+
+¤ UNWANTED_NOUN (WORD)
+
+Example:
+
+unwanted_noun(flatas).   %% not plains
+
+Avoid unwanted (regular) inflections of some nouns because
+they are irrelevant or  confusing.
+
+
+
+
+¤ NOUN2(Norwegian WORD,English WORD)
+
+Examples:
+
+noun2(adresse,address). 
+
+The preferred Norwegian word apperas first for the cae of paraphrasing
+an english pharse to Norwegian.
+
+
+
+¤ NOUN3 (Norwegian WORD,English WORD, Gender)
+
+Examples:
+
+ noun3(vedlegg,attachment,n). 
+
+For some words, it is importan to know the gender.
+Otherwise, spurious interpretations may occur
+ ( e.g. vedlegger is not a plural of noun vedlegg). 
+
+¤ VERB2 (Norwegian WORD,English WORD)
+
+Examples:
+
+verb2(anse,regard). 
+verb2(anta,believe).
+
+The verb Norwegian WORD is translated to an English root WORD.
+
+
+¤ VERB_FORM ( Norwegian WORD,Norwgian ROOT, Time, Finiteness)
+
+Examples:
+
+Irregular verbs are lø
+verb_form(antok,  anta,past,fin). 
+verb_form(antatt, anta,past,part).
+
+
+¤ PREPOSITION2 (Norwegian WORD,English WORD)
+
+Example:
+
+preposition2(angående,regarding). 
+
+Translation of Norwegian to English with some technicl definitions.
+
+
+¤ NOUN_FORM (WORD, ROOT, Gram. Number,Det,Gen)
+
+Example;
+
+noun_form(ansatte,ansatt,plu,u,n).  
+
+¤ ORDINAL2 (Norwegian WORD,English WORD, NUMERIC)
+
+Example:
+
+ordinal2(tredje,third,3). 
+
+
+¤ NUMERID (Norwegian WORD, Numeric)
+
+Example:
+
+Numbers spelled out with letters are translated to numerics.
+
+
+numerid(halvannen,1.5). 
+numerid(tjue,20).    numerid(tyve,20).      
+numerid(tretti,30).  numerid(tredve,30). 
+
+
+¤ PRONOUN (Norwegian WORD,CATEGORY)
+
+Example:
+
+pronoun(dere,agent). %% ? Haz
+
+Declarion of pronouns, and the category they normally refer to.
+
+¤ NOISEW (WORD)
+
+Example:
+
+noisew(absolutt). 
+
+Word can be ignored in all its proper positions.
+
+
+¤ TLF (WORD)
+
+Example:
+
+tlf(nomer).
+
+Special list of sysnonyms to the word telefon (telephone)
+
+
+¤ SYNWORD (Typed WORD, Interpreted Word)
+
+Examples:
+
+synword(hivlke,        hvilke). 
+synword(hivlken,       hvilken). 
+synword(hivlket,       hvilket). 
+
+
+¤ ADJ2 (Norwegian Word, English Word)
+
+Examples:
+
+adj2(automatisk,automatic). 
+adj2(billig,cheap). 
+
+Defines adjective root forms in terms of English equivalents.
+
+
+¤ ADJ3 (Norwegian WORD,GRADE,Englis WORD)
+
+Examples:
+
+adj3(bedre,comp,good).  % better
+adj3(best,sup,good).    % best
+
+Defines some adjectives as comparative or superlative form
+
+
+¤ ADV2 (Norwegian WORD,English WORD)
+
+Examples:
+
+adv2(sakte,slowly).    
+adv2(lite,little). 
+adv2(allikevel, redundantly). 
+   
+
+Defines adverbs in terms of similar English equivalents.
+
+("redundantly" is an technical adverb that has only a syntactic, and no semantic function).
+
+List of synonyms that are pertinent to the SMS tablatur.
+No prior spellcheck.
+ 
+
+
+¤ SYNSMS (Typed WORD, Interpreted Word)
+
+Examples:
+
+
+synsms(etteq,etter). %% close keys for sms
+synsms(cul8r,adjø). % see you later
+
+
+Special list of synonyms that are pertinent to the SMS tablatur.
+No prior spellcheck.
+
+// FILE DICT_E.PL
+
+
+Additional predicates for DICTE_E
+
+
+verbroot
+
+
+
+%%%%%%%%%

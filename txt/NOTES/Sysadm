@@ -1,0 +1,42 @@
+
+cvs update
+
+  og så
+
+cvs commit -m fix
+
+-----------------
+
+
+buster må kjøre på peon (=www.idi.ntnu.no)
+
+Portnummer   er 17103
+
+ligger i
+
+ ~tagore/public_html/buster/index.html
+
+
+
+
+Stoppes  (på peon)
+
+ ps -u tagore
+
+kill   # sp.exe
+
+Startes (på peon!)
+
+ ~/BUSTER/buster/
+
+   startport.sh  17103
+
+
+Rekompileres:
+
+
+på BUSTER/buster
+   database/busbase
+   ?-[buster].
+   save_program(buster).
+

@@ -1,0 +1,1176 @@
+%% FILE busterfeil
+%% SYSTEM telebuster
+%% CREATED TA-060420
+%% REVISED TA-100108
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Errors in Buster/TeleBuster (as such), not mended
+
+%% Top recent
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Hva er telefonnummeret til Tore Amble
+                       hans
+                      .
+
+
+
+
+Til Nardo 15
+Før kl 15
+
+kluss avg/ankomst 15
+
+
+klokka to (dialog) \=0200
+
+
+
+N: fra nth til nardo.
+
+
+Holdeplassen nærmest Nardo , er  Nardosenteret , .
+Holdeplassen nærmest NTH , er  Gløshaugen Syd , .
+
+Du vil dra  til Nardosenteret ,    fra Gløshaugen Syd , . 
+Når vil du dra? 
+----------------------------------
+
+N: fredag.
+
+
+
+
+Du vil dra  på  søndag . 
+
+1. Mai. 2009 er en  fredag .
+----------------------------------
+///////////////////////////////////////
+
+
+2009-04-24 09:15:19 ttpd INFO [198ab] billing=2 SMS (82.115.146.170, LINGSMSIN) BILLING
+SMS BILLING 
+"Team når går neste buss 19 fra husdaytunet til byåsen skole?"
+"Buss 19 passerer  Husebytunet kl.  0921 og  kl.  0951 
+og   Byåsen skole ,  10 min. senere ."
+//how
+
+
+N: hva er hans tittel ?
+
+
+
+Søker etter rom   hvor fornavnet  er  Bjørn og  etternavnet  er  Gambæck .
+
+Björn Gambäck har rom   IT-bygget*343 .
+----------------------------------
+
+N: hvilken tittel har han ?
+
+
+
+Søker etter tittel   hvor fornavnet  er  Bjørn og  etternavnet  er  Gambæck .
+
+Björn Gambäck har tittel   Professor .
+----------------------------------
+
+
+
+
+
+: jeg skal til nardo.
+
+
+
+Holdeplassen nærmest Nardo , er  Nardosenteret , .
+
+Du vil dra  til Nardosenteret , . 
+Hvor vil du reise fra ? 
+----------------------------------
+
+N: nth.
+
+
+
+Holdeplassen nærmest NTH , er  Gløshaugen Syd , .
+
+Du vil dra  fra Gløshaugen Syd , . 
+Når vil du dra? 
+----------------------------------
+
+N: med siste buss før 1730.
+
+
+
+
+Du vil dra  til Nardosenteret ,    fra Gløshaugen Syd ,    før klokken   17:30,   . 
+
+Buss 52 , passerer  Gløshaugen Syd , klokken  17:16,  
+og  Nardosenteret , klokken  17:20,  .
+----------------------------------
+
+N: går det en tidligere buss ? // ignore ?
+
+
+
+
+Du vil dra  til Nardosenteret , . 
+
+Buss 52 , passerer  Gløshaugen Syd , klokken  17:16,  
+og   Nardosenteret , klokken  17:20,  .
+----------------------------------
+
+N: går det en tidligere buss ?
+
+
+
+
+Du vil dra      til Nardosenteret ,    før klokken   17:19,   . 
+
+Buss 52 , passerer  Gløshaugen Syd , klokken  17:01,  
+og   Nardosenteret , klokken  17:05,  .
+----------------------------------
+
+N: 
+
+
+
+// Knothing/A    ..
+
+//subst_tql ....
+
+-----------------------------------------------------
+
+
+
+
+
+N: jeg skal i et møte som begynner kl 16.
+
+
+
+
+Du vil dra  etter klokken    16:00,  . 
+Hvor vil du reise ? 
+----------------------------------
+
+N: 
+
+
+
+Nielsen, Knut H. Hassel   knutnie    ITS-207          91846  91598606   
+
+N: knut hassel nielsen.
+
+
+
+Søker etter post hvor fornavnet  er  Knut og  etternavnet  er  Hassel og  fornavnet  er  Nielsen 
+
+Kan ikke finne noen som svarer til søket .
+----------------------------------
+
+N: 
+
+
+kai ---> oooo
+
+Søker etter post hvor fornavnet  er  Tore og  etternavnet  er  Rolf og  etternavnet  er  Jørgensen 
+
+Kan ikke finne noen som svarer til søket .
+----------------------------------
+
+N:  tore rolf  jørgensen.
+
+
+N:  tore r jørgensen.
+
+*** Db: java ldapconnection.LDAPSearcher srch 'select([*],katnavn,[lastname:jørgensen,lastname:tore],X)'
+
+Søker etter post hvor etternavnet  er  Jørgensen og  etternavnet  er  Tore 
+
+Kan ikke finne noen som svarer til søket .
+----------------------------------
+
+
+
+
+Søker etter post  hvor fornavnet  er  Tore og  etternavnet  er  Jørgensen .
+
+Jeg finner 3 poster som svarer til søket : 
+
+Tore Jørgensen har avdeling   NTNU og  telefon   94901 .
+Tore Rolf Jørgensen har avdeling   NTNU og  telefon   98035 .
+Tore S Jørgensen har avdeling   Andre og  telefon   90780 .
+----------------------------------
+
+
+N: tore jørgensens telefon.
+
+N: tore jørgensen telefon.
+
+
+Jeg forstår ikke.
+-------------------------------
+
+
+N:  tore jørgensen.
+
+
+
+Vet du avdelingen ?
+----------------------------------
+
+N: ime.
+
+
+
+Søker etter post hvor fornavnet  er  Ime 
+
+Kan ikke finne noen som svarer til søket .
+----------------------------------
+
+N: 
+
+Når går neste buss // sjekke om vi har lastdeparture -> senere buss
+
+: kan du gi meg neste buss.
+
+
+
+- - - Uforståelig ved * - - - 
+
+kan du gi meg neste buss * 
+
+
+J
+
+%% do you pass the turings test
+
+I dont understand
+
+E: hei. // Norwegian
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Hello <-- English
+----------------------------------
+
+//
+
+Sjekk opp telebuster på ATIsfoils
+
+(mangler hvor vil du reise)
+
+N: jeg trenger å reise 17. april.
+
+Du vil dra  på  torsdag . 
+
+17. Apr. 2008 er en  torsdag .    <----- Hvor vil du reise til ? // mangler
+----------------------------------
+ 
+N: jeg skal være på et møte som begynner kl 18.
+
+Du vil dra  fra Nardosenteret ,    etter klokken    18:00,      på  torsdag . 
+Hvor vil du reise til ?            /////////////
+----------------------------------
+
+
+
+
+Auditorium er teledomain
+
+
+Hvor er rom 242 ? //not in corridor
+
+Hvor er rom 312 ?
+
+Hvem sitter der ?
+
+
+
+N: hvor er ime-fakultetet.
+
+
+Søker etter post hvor fornavnet  er  Ime og  etternavnet  er  Fakultetet 
+
+Kan ikke finne noen som svarer til søket .
+----------------------------------
+
+N: hvor er ime.
+
+
+
+Søker etter post hvor fornavnet  er  Ime 
+
+Kan ikke finne noen som svarer til søket .
+----------------------------------
+
+// virket på Wll Guide
+&&&&&&&&&&&&&&&&&&&&&&
+
+
+
+
+N:  jeg skal besøke Tore Amble.
+
+
+Søker etter post  hvor fornavnet  er  Tore og  etternavnet  er  Amble .
+
+Tore Amble har auditorium   IT-bygget*312 og  adresse   S. Sælands v 9 .
+----------------------------------
+
+N: N: hva er telefonnummeret..
+
+
+
+Søker etter post  hvor fornavnet  er  Tore og  etternavnet  er  Amble .
+
+Tore Amble har auditorium   IT-bygget*312 og  adresse   S. Sælands v 9 .
+----------------------------------
+
+//
+
+
+TeleBuster
+
+E:
+
+1.   How do I get there  ???? (How do I go to this place OK)
+
+2.   Hotel Augustin  ( switches to Norwegian)
+
+
+
+N: bjørn eske sørensen.
+
+Søker etter post  hvor fornavnet  er  Eske og  etternavnet  er  Sørensen .
+
+Bjørn Eske Sørensen har rom   Bergbygget*B502 B og  adresse   S. Sælands v 1 .
+----------------------------------
+// Hvorfor ikke fornavn bjørn?
+
+
+
+jeg skal til teknoparken den 17.1.
+Før kl 13. ==> (fortsatt den 17.1) !
+
+N: jeg skal til teknobyen  den 17.1 før kl 1300.
+
+17. Jan. 2008 er en  torsdag .
+Buss 8 , passerer  Professor Brochs gate , klokken  13:00,  .
+// HVORFRA
+
+ingen web-log fra telebuster 
+
+
+
+
+N: hva er telef til amble.
+
+Jeg forstår ikke.
+----------------------------------
+
+N: hva er telefon til amble.
+
+
+telef
+
+telef = telefon (buster) 
+
+
+tags = [[telef,lastname,0/419]]
+
+
+
+
+N: hvlken dag  er det ?
+
+Du vil dra  på  fredag . 
+
+----------------------------------
+
+selje$ telebuster.sav
+% restoring /home/a/16/toreamb/tele/buster/telebuster.sav...
+run.
+% /home/a/16/toreamb/tele/buster/telebuster.sav restored in 2360 msec 39768416 bytes
+SICStus 3.11.2 (sparc64-solaris-5.7): Wed Jun  2 11:45:29 MET DST 2004
+Licensed to idi.ntnu.no
+| ?- 
+N: nrdosenteret.
+
+
+- - - Uforståelige ord:  
+[nrdosenteret]
+
+
+Jeg forstår ikke.
+----------------------------------
+
+
+
+"Team.tar buss fra bjørndalsbrua til sluppen.må være på sluppen 10.40.når kommer d buss på bjørndalsbrua da?"
+"Team.linje 4 går 9.50 fra heimdal.hva er neste avgang fra heimdal?"
+
+----------------------------------
+
+N: første buss til nardosenteret .
+
+
+Du vil dra  til Nardosenteret ,    etter klokken   16:23,   . 
+Hvor vil du reise fra ? 
+----------------------------------
+
+N: gløshaugen syd.
+
+
+Du vil dra  fra Gløshaugen Syd , . 
+
+Buss 52 , passerer  Gløshaugen Syd , klokken  16:13,  
+og   Nardosenteret , klokken  16:17,  .
+----------------------------------
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+//FIXET ?
+
+N: første buss til nardosenteret.
+
+
+Du vil dra  til Nardosenteret ,    etter klokken   16:23,   . 
+Hvor vil du reise fra ? 
+----------------------------------
+
+N: gløshaugen syd.
+
+Du vil dra  fra Gløshaugen Syd , . 
+
+Buss 52 , passerer  Gløshaugen Syd , klokken  16:43,  
+og   Nardosenteret , klokken  16:47,  .
+----------------------------------
+
+
+
+
+
+N: adjø.
+
+
+E: from nth to henrik mathiesens vei 28.
+(Pål Johan From har rom  Elektro D*D431.)
+
+
+The station nearest to  NTH,  is  Gløshaugen Syd, .
+The station nearest to  Henrik Mathiesens vei,  28 is  Christian Monsens gate, .
+
+You want to go  to  Christian Monsens gate,    from   Gløshaugen Syd, . 
+When do you wish to travel ? 
+----------------------------------
+
+E: \norsk
+
+----------------------------------
+
+N: from nth to henrik mathiesens vei 28.
+
+
+
+- - - Vennligst bruk en fullstendig setning - - - 
+
+Jeg forstår ikke.
+----------------------------------
+
+// From er egennavn
+
+N: 
+
+
+
+E: good bye.
+
+Good bye 
+----------------------------------
+
+E: \norsk
+// automatic switch to N: after good bye
+
+
+
+
+N: hvor sitter erik harborg ? -> room number
+Erik Harborg har rom  Elektro D-setra*13.
+
+referents: [[room,[Elektro D-setra*13]],[person,[(erik,harborg)]]]
+
+N: Hvordan kommer jeg dit --> ???
+
+
+
+N: hvilken adresse har  erik harborg ? 
+
+Erik Harborg har adresse  O. S. Bragstads plass 2.
+----------------------------------
+referents: [[address,[o_s_bragstads_plass-2]],[person,[(erik,harborg)]]]
+
+N: hvordan kommer jeg dit. -> Gløshaugen  ...//ok
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+N: \english
+
+----------------------------------
+
+E: how do i get to tore amble ?
+
+Jeg forstår ikke.
+----------------------------------
+E: 
+
+¤¤¤¤¤
+
+N: hvordan kommer jeg til tore amble.
+
+* Topic:  nil 
+
+
+
+Hvor vil du reise ? 
+----------------------------------
+
+// Name should take overhand
+
+
+
+
+Telephone numbers ---> full 735+
+
+
+
+
+
+
+
+
+Nora:
+
+
+Kl 1623
+
+  jeg skal ha første buss fra nardosenteret ... nei  første buss fra
+  gløshaugen syd.
+
+// Oppfattet   " fra nardosenteret //
+
+Jeg skal ha første buss fra Gløshaugen syd
+
+.. hvor vil du reise til ?
+
+nardosenteret
+
+... 
+
+Føsret buss passerer Gløs.. 1619 og ankommer Nardosenteret 1623
+                            ---
+
+:.   Oppfattes som første ankomst etter 1623 (nå),
+    
+
+
+/////////////////////////
+
+Det var rart.
+
+Det må være en feil som snek seg inn igjen.
+jeg skal se på det senere.
+
+
+
+On Mon, 5 Feb 2007, Harborg Erik wrote:
+
+> Er det en gammel versjon du sendte meg den 2/2?
+> Denne virker ikke slik du beskriver i fila 'svartileh070112'
+> F.eks. feilen med Vanvikan (når dialoghistorikk er nullstilt) er der fortsatt:
+> 
+> N: neste buss fra sentrum til Vanvikan.
+> 
+> 
+> Hvor vil du reise ?
+> ----------------------------------
+> 
+> ---> <EH: Oppfatter ikke Vanvikan ovenfor når dialoghistorien er blank,
+>          men hvis vi spør om noe lovlig først....>
+> 
+> N: \quit
+> 
+> ¤¤¤¤ TA: Fikset ¤¤¤¤¤¤¤¤¤¤¤¤¤
+> 
+> N:  neste buss fra sentrum til Vanvikan.
+> 
+> 
+> 
+> Jeg  har bare ruter for busser i Trondheim, .
+> 
+> 
+> Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+> ----------------------------------
+> ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+> 
+
+
+
+
+
+N: jeg skal til avh.
+
+
+- - - Uforståelige ord:
+[avh]                               <--- \+[]
+
+
+Jeg forstår ikke.
+----------------------------------
+
+
+<bruker> Jeg skal i et møte med Tore Amble
+<Marvina> Tore Amble har kontor på rom 312 i IT-bygget på Gløshaugen. Hvor er du nå?
+<bruker> Jeg er ved Hotell Augustin.
+<Marvina> Holdeplassen nærmest Hotell Augustin er Torget. Når vil du dra?
+<bruker> Jeg vil være der før kl. 2.
+<Marvina> Buss 5 passerer Torget klokken 13:51 og Gløshaugen Syd kl 13:56
+(vi tenker at brukeren reiser med bussen)
+<bruker> Jeg er ved Hotell Augustin.
+<Marvina> Buss 52 passerer Gløshaugen Syd klokken 14:07 og Sentrumsterminalen klokken 14:15
+
+Jeg kan ikke huske at det var slik før?
+
+
+
+N: jeg står på NTH. jeg skal til nardo med første buss.
+// arrival after !!!!!
+
+
+Holdeplassen nærmest  NTH,  er  Gløshaugen Syd, .
+
+Du vil dra  til  Sentrumsterminalen,    fra  Gløshaugen Syd, . // NO
+Holdeplassen nærmest  Nardo,  er  Nardosenteret, .             // NO
+
+Du vil dra  til  Nardosenteret,    etter klokken   04:30, . <-----------
+
+Buss  52,  passerer  Gløshaugen Syd,  klokken 11:44,        <-----------
+ og   Nardosenteret,  klokken 11:48, .
+
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+
+
+jeg står nå i korridoren i 3. etage i itbygget utenfor rom 312.
+--> itbygget utenfor rom 312 //
+
+
+
+N: etasje er  3 nå.
+
+
+*** Db: java ldapconnection.LDAPSearcher srch 'select([*],katnavn,[telephonenumber:3],X)'
+
+Søker etter  rom 
+
+Ole Henrik Augestad har----------------------------------
+
+
+
+N: jo skjermo.
+
+
+
+Vet du  avdelingen?
+----------------------------------
+
+N: nei.
+
+
+
+Søker etter post  hvor  fornavnet er  Jo og  etternavnet er  Skjermo.
+
+
+Jeg finner 2 poster som svarer til søket : 
+
+Jo Skjermo har avdeling  NTNU og  telefon  91447.
+Jorunn Skjermo har avdeling  SINTEF og  telefon  98245040. // <-- ???
+----------------------------------
+
+- 'jo skjermo' 
+
+Jan -> Januar in tele !
+
+
+
+N: fra lerkendal.
+
+N:  torget etter 16.
+
+
+today(wednesday)
+atday(wednesday)
+departure(free(76),torget,wednesday,A)
+keepafter(1600,A,B)
+depset(to,[B,A])
+depset(from,[C])
+departure(D,lerkendal_stadion,wednesday,C)
+connections(C,B,free(76),lerkendal_stadion,torget,wednesday,[from,time,to,nextaftertime(1)],E,F)
+
+
+BEGIN  program
+
+END  program
+
+BEGIN  answer
+case8
+case23
+depnode(1555,1555,10,10,1545,bus_8_54,lerkendal_stadion)
+
+END  answer
+
+Buss  8,  passerer  Lerkendal stadion,  klokken 15:55, 
+ og   Torget,  klokken 16:01, .
+
+checkitem: sat succeeded. 
+----------------------------------
+
+¤¤¤¤¤¤¤¤¤¤¤
+
+............... Application program ....................
+
+today(wednesday)
+atday(wednesday)
+departure(free(82),sentrum,wednesday,A)
+keepafter(1600,A,B)
+depset(to,[B,A])
+depset(from,[C])
+departure(D,lerkendal_stadion,wednesday,C)
+connections(C,B,free(82),lerkendal_stadion,sentrum,wednesday,[from,time,to,nextaftertime(1)],E,F)
+
+
+BEGIN  program
+
+END  program
+
+BEGIN  answer
+case8
+case23
+depnode(605,605,0,0,605,bus_60_1,_,_,lerkendal_stadion)
+
+END  answer
+
+Buss  60,  passerer  Lerkendal stadion,  klokken 06:05, 
+ og   sentrum,  klokken 06:32, .
+
+checkitem: sat succeeded. 
+----------------------------------
+
+
+
+
+
+
+jeg søker tore amble i databasen.
+
+///
+Topic nil:
+
+no answer (OK), just store information.
+
+N: jeh skal til it_bygget.
+
+*** Tag: java ldapconnection.LDAPSearcher tag jeh it  bygget 
+
+
+dater(tlf): Takk // no
+
+Søker etter  telefon  hvor  etternavnet er  Krogstie.
+Jeg finner 3 poster som svarer til søket : 
+
+John Krogstie har telefon  93677.
+Birgit R. Krogstie har telefon  96101.
+John Krogstie har telefon  93677.
+
+
+
+> Jeg finner ikke Ole Hartvigsen i internkatalogen, jeg.
+> Hva er  e-post-adressen hans?
+
+
+%% FILE telekeys.pl
+%% SYSTEM TeleTUC
+%% CREATED TLF-021019
+%% REVISED TLF-021019
+
+%% This file contains a list of keys that pragma expands to words
+
+
+%% General predicate to expand (or not) a key
+expandkey(Key,Expansion) :-
+	keyexpansion(Key, Expansion);
+	Expansion = Key.
+
+
+%% List of expansions (maybe this should be generated from a database in the system???)
+%keyexpansion(idi, 'datateknikk+og+info.vitenskap').
+%keyexpansion(ime, 'info.teknologi,+matem+og+elekt').
+
+
+how do i get there // tele|bus ?
+
+[magne,room,1/2]] // <-- one exact, one partial
+
+
+Pål Johan From har rom  Elektro D*D431 og  adresse  O.S. Bragstads pl 8.
+
+E: from nth to nardo.
+
+
+topic nil (in fact parsed as a bus query)
+
+
+Do you know  the family name? 
+----------------------------------
+
+E: \set trace 3
+
+----------------------------------
+
+E: from nth to nardo.
+
+*** Tag: java ldapconnection.LDAPSearcher tag from to 
+
+
+tags = [[from,lastname,1/1]]
+compnames = [[from,[],from]]
+
+¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+I want to go to Gløshaugen.
+
+.. where do yoy want to go from
+
+Dragvoll
+
+  -- Du vil dra fra Dragvoll (Norsk)
+
+// Only on WEB-version
+
+
+I want to go to NTNU
+
+Where do you want to travel (no underspecified message)
+
+
+N: jeg skal fra nth til sentrum.
+
+Holdeplassen nærmest  NTH,  er  Gløshaugen Syd, .
+
+Du vil dra  til  sentrum,    fra  Gløshaugen Syd, . 
+Når vil du dra? 
+----------------------------------
+
+N: når går buss 5.
+
+
+Når vil du dra? 
+----------------------------------
+
+N: nå.
+
+
+Du vil dra  fra  Gløshaugen Syd,    etter klokken    16:56, . 
+
+Buss  52,  passerer  Gløshaugen Syd,  klokken 16:57, 
+ og   Munkegata, holdeplass M4,  klokken 17:05, .
+
+Ønsker du flere opplysninger kan du spørre nå, eller avslutte samtalen.
+----------------------------------
+
+
+- - - Uforståelig ved * - - - 
+
+jeg tar bussen . jeg * bor på nardo . 
+
+
+1760 ms
+
+ + 222356      6 Call: evalline(error,error) ? 
+
+
+
+
+selje$ buster.sav
+% restoring /home/a/16/toreamb/tele/buster/buster.sav...
+% /home/a/16/toreamb/tele/buster/buster.sav restored in 1660 msec 31891632 bytes
+SICStus 3.11.2 (sparc64-solaris-5.7): Wed Jun  2 11:45:29 MET DST 2004
+Licensed to idi.ntnu.no
+| ?- run.
+
+N:  nei jeg mener på julebordet.
+
+yes
+| ?- 
+
+
+
+// Får topic bus i buster
+
+// får jeg topic buss hvis jeg snakker om telefon ?
+
+
+N:jeg skal fra nth til nardo.
+
+N: jeg skal være der kl 1730.
+
+call checkitem: sqt
+
+Saturate query: Before 
+usestate/Found rule:depplace
+usestate/Found rule:depafter_pass
+usestate/Found rule:arrplace2
+usestate/Found rule:makeconnection
+
+Saturate query: After 
+
+*** g_execute back: uiqRepl := askfors 
+*** g_execute  uiqRepl := sub(uiqRepl2) 
+*** g_execute  uiqRepl2 := item(sat)
+
+call checkitem: sat
+
+Saturate query: Before 
+usestate/Found rule:depplace
+usestate/Found rule:depafter_pass
+usestate/Found rule:arrplace2
+usestate/Found rule:makeconnection
+
+Saturate query: After 
+
+// why saturate 2 times ?????
+
+
+
+N: jeg skal på møte på gløshaugen kl 10.
+
+Holdeplassen nærmest  Gløshaugen,  er  Gløshaugen Syd, .
+
+Du vil dra  til  Gløshaugen Syd,    etter klokken   22:00, . 
+Hvor vil du reise fra ? 
+----------------------------------
+// FØR
+
+
+
+N: jeg bor på nardosenteret og skal på julebord på royal garden fredag 8. desember kl 19.
+
+Holdeplassen nærmest  Royal Garden,  er  Nova kinosenter, .
+
+
+
+
+
+Jeg skal være på valentinlyst kl. 12.00, hvilken buss må jeg da ta?
+
+Hei, når skal jeg ta bussen hvis jeg skal komme meg hjem til Vestlia før klokken 15.
+Jeg er på gløshaugen -->
+
+N: ntnu.
+
+/////////////////////////////////////////////
+
+"Team n g neste buss fra samfundet til dragvoll etter denne?"
+/ sistnevnte avgang
+
+/////////
+
+N:  hva er nr til andré liem.
+
+Søker etter post  hvor  fornavnet er  André og  etternavnet er  Liem.
+
+André Liem har rom  Prod.design*344 og  adresse  K.hejes Vei 2b.
+----------------------------------
+
+N: hvilken avdeling har tore amble ?
+
+Søker etter  sted  hvor  fornavnet er  Tore og  etternavnet er  Amble.
+
+Tore Amble er på sted  NTNU.
+----------------------------------
+
+N:  hva er nr til andré liem.
+
+Søker etter  sted  hvor  etternavnet er  Liem.
+
+André Liem er på sted  NTNU.
+----------------------------------
+// sted henger igjen ???
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+N: hva kan du fortelle om busser.
+
+-er jeg i it-bygget?   [IT-bygget*312]
+
+    -ja
+    -nei
+    -gjerne
+    -det hadde vært fint
+
+¤¤¤ neste buss ==> senere buss //  neste buss etter det
+
+Du vil dra  fra  Gløshaugen Syd,   . 
+Buss  52,  passerer  Gløshaugen Syd,  klokken 16:12, 
+ og   Nardosenteret,  klokken 16:22, .
+----------------------------------
+
+%%%%%% 204 %%%%%%%%%%
+
+Eksempel på følsomhet for spørremåte nedenfor:
+==============================================
+
+N: hvor bor tore amble.
+
+
+
+
+Søker etter post  hvor fornavnet  er  Tore og  etternavnet  er  Amble .
+
+Tore Amble har rom   IT-bygget*312 og  adresse   S. Sælands v 9 .
+----------------------------------
+
+N: hvordan kommer jeg dit.
+
+
+
+
+Du vil dra  til Gløshaugen Syd , .
+Hvor vil du reise fra ?
+----------------------------------
+
+--> <EH: Tolker til_sted ovenfor. Samme oppførsel hvis vi spør:
+         - "jeg skal besøke tore amble"
+	 - "jeg skal til tore amble"
+	 - "tore amble">
+
+N: \quit.
+
+----------------------------------
+
+N: hvor er tore amble.
+
+
+
+Søker etter rom   hvor fornavnet  er  Tore og  etternavnet  er  Amble .
+
+Tore Amble har rom   IT-bygget*312 .
+----------------------------------
+
+--> <EH: Tar ikke med adressen her, og tolker dermed ikke til_sted i
+         oppfølgingsspørsmålet nedenfor. Samme oppførsel hvis vi spør:
+	 - "hvor finner jeg tore amble"
+	 - "kontoret til tore amble">
+
+N: hvordan kommer jeg dit.
+
+
+
+
+Hvor vil du reise ?
+----------------------------------
+
+
+Eksempler som kanskje burde tolkes bedre.
+=========================================
+
+N: neste buss til tore amble.
+
+
+
+- - - Vennligst bruk en fullstendig setning - - -
+
+Jeg forstår ikke.
+----------------------------------
+
+N: \quit
+
+----------------------------------
+
+N: jeg skal ta neste buss til tore amble.
+
+
+
+
+Hvor vil du reise ?
+----------------------------------
+
+==================
+==================
+
+N: hvordan kommer jeg til tore amble.
+
+
+
+Søker etter post  hvor fornavnet  er  Tore og  etternavnet  er  Amble .
+
+Tore Amble har rom   IT-bygget*312 og  adresse   S. Sælands v 9 .
+----------------------------------
+
+N: jeg vil ta bussen.
+
+
+
+
+Hvor vil du reise ?
+----------------------------------
+
+N: til tore amble.
+
+
+
+
+Jeg forstår ikke.
+----------------------------------
+
+
+======
+
+N: telefonummer til tore amble.
+
+
+
+Søker etter telefon   hvor fornavnet  er  Tore og  etternavnet  er  Amble .
+
+Tore Amble har telefon   73594451 .
+----------------------------------
+
+N: hva er kontoradressen.
+
+
+
+Søker etter telefon   hvor fornavnet  er  Tore og  etternavnet  er  Amble .
+
+Tore Amble har telefon   73594451 .
+----------------------------------
+
+N: hva er adressen.
+
+
+
+Søker etter adresse   hvor fornavnet  er  Tore og  etternavnet  er  Amble .
+
+Tore Amble har adresse   S. Sælands v 9 .
+----------------------------------
+
+
+--> <EH: Burde kanskje skjønne "kontoradressen"?>
+
+
+

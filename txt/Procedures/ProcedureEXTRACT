@@ -1,0 +1,102 @@
+%% FILE ProcedureEXTRACT
+%% SYSTEM BUSSTUC
+%% CREATED TA-080219
+%% REVISED TA-110411
+%% REVISED RS-111218
+%%   UTF-8 encoding, preparations for RegTOPP v1.2 (TMS vs. TDA)
+
+%% Installment and Extraction of REGTOP DATA
+
+%% INSTALLMENT
+
+Java Program is stored in package
+
+    regtopToBusTUC
+
+currently under catalog
+
+    javapackage/regtopToBusTUC/
+
+For that to fuction properly, you should have
+
+setenv CLASSPATH .:/usr/java/lib:/home/a/16/toreamb/javapackage:
+
+in .cshrc
+
+Java files are gathered under regtopToBusTUC/
+
+and compiled by javac -encoding UTF-8 *.java
+
+From then on, the compiled java program is run (from anywhere) by
+
+    java regtopToBusTUC.ConvertRegTop
+
+
+%% EXTRACTION
+
+NB. NB. NB. NB.
+
+If you only want to recreate regcut after a manual update of
+route tables regdep or  regpas.
+( extractreg will overwrite manual updates of internal route tables)
+
+NEVER run this with more than 1 set without recompiling. !!!
+
+% create_busstuc
+
+% busstuc
+
+   ?-create_regcut( <module name> ).
+   ?-halt.
+%  create_busstuc 
+
+%%%%%%%%% End of short version
+
+
+
+
+NB NB. If several routes sets are delivered at the same time, this
+procedure must be followed for each individual set as if they were separate deliveries,
+
+Remove files in the directory  tele/REGTOP/
+Put REGTOP-files from TEAM in THE  directory  tele/REGTOP/
+
+
+e.g.
+
+R0021.DKO   
+R0021.HPL   
+R0021.TDA (v1.1) vs. R0021.TMS (v1.2)
+R0021.TIX
+
+
+% cd   ~/tele/REGTOP/
+
+
+% java regtopToBusTUC.ConvertRegTop 
+
+// wait
+
+% ls
+
+# Note the name of the created module, <module name> e.g.
+
+   r0021_080201 
+
+
+
+% cd  ~/tele/buster
+
+% Extractshell <module name>   
+    //  wait 2 minutes
+
+
+
+EDIT database/topreg.pl to accommodate the new routes !!!!
+//NB this can be done after all the route set has been extracted
+
+% create_busstuc
+
+
+������������������������������������������������������
+

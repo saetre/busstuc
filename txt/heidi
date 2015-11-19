@@ -1,0 +1,1187 @@
+buss . neste  -> neste
+buss . når  -> neste
+: )  -> []
+; )  -> []
++ retur  -> tilbake
+. fra  -> fra
+. til  -> til
+2 er  -> 2
+3 er  -> 3
+4 er  -> 4
+5 er  -> 5
+6 er  -> 6
+7 er  -> 7
+8 er  -> 8
+9 er  -> 9
+a fra  -> fra
+a m  -> formiddag
+aldri i verden  -> nei
+all din  -> din
+all e  -> alle
+alle andre  -> andre
+aller helst  -> []
+aller først  -> først
+aller første  -> første
+aller sist  -> sist
+aller siste  -> siste
+alt mulig  -> alt
+alt om  -> om
+altså ikke  -> unntatt
+altså  -> []
+andre steder enn  -> []
+ankom før  -> før
+ankomme før  -> før
+ankomst før  -> før
+ankomst rundt  -> rundt
+annet enn  -> []
+antall kilometer  -> avstanden
+arbeids buss  -> arbeidsbuss
+arbeids bussen  -> arbeidsbussen
+at at  -> at
+att med  -> forbi
+att me  -> forbi
+at med  -> forbi
+at me  -> forbi
+automatisk svarer  -> automat
+av gårde  -> []
+av på  -> av
+avg pr time  -> avgangshyppighet
+avg buss  -> buss
+avg nr  -> buss
+avgang buss  -> buss
+avgang etter  -> etter
+avgang rute  -> rute
+avganger linje  -> linje
+avgang nr  -> buss
+avganger buss  -> buss
+avganger etter  -> etter
+b .  -> buss
+b nr  -> buss
+bare  -> []
+barne billett  -> barnebillett
+barnehagen ved  -> []
+benytte meg av  -> bruke
+beste rute  -> rute
+billettypen midtby  -> midtbybillett
+billetttypen midtby  -> midtbybillett
+billettype midtby  -> midtbybillett
+ble det av  -> er
+bli det av  -> er
+blir det satt opp  -> kjører
+blir d av  -> er
+blir det av  -> er
+bortsett fra det  -> []
+bortsett fra  -> unntatt
+brutt sammen  -> stoppet
+bu 8 ss  -> buss
+bus buss  -> buss
+bus hold  -> holdpelass
+bus s  -> buss
+buss / busser  -> busser
+buss / trikk  -> kjøretøy
+buss buss  -> buss
+buss det buss  -> buss
+buss eller trikk  -> kjøretøy
+buss eller tog  -> tog
+buss en  -> bussen
+buss folka  -> sjåførene
+buss første buss  -> buss
+buss første  -> buss
+buss hold  -> holdeplass
+buss holde plass  -> holdeplass
+buss holde plassen  -> holdeplassen
+buss holde plassenr  -> holdeplasser
+buss i linje  -> buss
+buss kart  -> busskart
+buss linje  -> buss
+bus n  -> bussen
+buss n  -> bussen
+buss nr  -> buss
+buss . nr  -> buss
+buss nr .  -> buss
+buss nummer  -> buss
+buss neste  -> neste
+buss når  -> buss
+buss orakel  -> bussorakel
+buss ruta  -> ruteplanen
+buss rute  -> buss
+buss ruter  -> busser
+buss stopp  -> holdeplass
+buss stoppen  -> holdeplassen
+buss stoppet  -> holdeplassen
+buss tur  -> busstur
+buss busser  -> busser
+buss siste  -> siste
+bussen e  -> bussene
+bussen bussen  -> bussen
+bussen etter neste  -> andre
+bussen første buss  -> bussen
+bussen første bussen  -> bussen
+bussen fra bussen  -> bussen
+bussen fra neste  -> neste
+bussen neste bussen  -> bussen
+bussen neste buss  -> bussen
+bussen neste  -> bussen
+bussen siste  -> siste
+bussen ta buss  -> buss
+bussene rute  -> buss
+busser rute  -> buss
+busser buss  -> buss
+bussholde plass  -> holdeplass
+bussholde plassen  -> holdeplassen
+bussholde plassene  -> holdeplassene
+bussholde plasser  -> holdeplasser
+bussholder plass  -> holdeplass
+bussnr .  -> rute
+bussrute tider  -> busstider
+bussruter til buss  -> buss
+by en  -> byen
+c a  -> ca
+ca i  -> i
+ca imorgen  -> imorgen
+ca mellom  -> mellom
+ca nå  -> nå
+ca når  -> når
+ca rundt  -> rundt
+cirka når  -> når
+cirka rundt  -> rundt
+d en  -> en
+d å  -> []
+dagen busser  -> buss
+dagens siste  -> siste
+data maskin  -> datamaskin
+de de  -> de
+de neste gangene  -> heretter
+definisjonen på en  -> en
+den neste gangen  -> heretter
+den du nettopp oppga  -> denne
+den en  -> det
+den i dag  -> idag
+den idag  -> idag
+den lørdag  -> lørdag
+den søndag  -> søndag
+den mandag  -> mandag
+den nærmeste til  -> nærmest
+den nærmeste  -> nærmest
+den vet eg  -> den
+den vet jeg  -> den
+denne sms tjenesten  -> smstuc
+denne smstjenesten  -> smstuc
+der jeg bor  -> []
+det er greitt  -> ja
+det er greitt det  -> ja
+det fikk jeg ikke med meg  -> gjenta
+det hele  -> alt
+det med bussen  -> bussen
+det må du gjenta  -> gjenta
+det ser ut som  -> []
+det siste du sa  -> dette
+det vil si  -> []
+dette her  -> dette
+dit jeg skal  -> dit
+dr de  -> de
+dra klokka  -> etter
+driver med  -> gjør
+driver på  -> arbeider
+du anbefale meg å  -> jeg
+du buss  -> buss
+du ikke  -> du
+du jeg  -> jeg
+du når  -> når
+dukke opp  -> komme
+dukker opp  -> kommer
+dukket opp  -> kom
+dukket opp  -> kommet
+duss buss  -> buss
+døgnets tider  -> tider
+e .  -> etter
+e mail  -> email
+e mailen  -> mailadressen
+e post  -> epost
+e posten  -> mailadressen
+e r  -> er
+easy drenge fra angora  -> adjø
+easy on drengene fra angora  -> adjø
+easy on  -> adjø
+egner seg  -> er
+eller i nærheten  -> []
+en gang til  -> gjenta
+en toer  -> to
+en treer  -> tre
+en firer  -> fire
+en femmer  -> fem
+en sekser  -> seks
+en sjuer  -> sju
+en åtter  -> åtte
+en nier  -> ni
+en tier  -> ti
+en elver  -> elve
+en tolver  -> tolv
+en million  -> 1000000
+en gang til  -> []
+en slik  -> en
+en så  -> en
+en viss  -> en
+ende opp  -> komme
+ender opp  -> kommer
+endte opp  -> kom
+en slik  -> en
+en slikt  -> en
+endeholde plass  -> endeholdeplass
+enn ellers  -> []
+er den neste til å kjøre  -> går
+er det med  -> er
+er det blitt av  -> er
+er du av  -> er
+er du vel  -> []
+er e  -> er
+er er  -> er
+er går  -> går
+er i drift  -> går
+er med  -> er
+er må  -> må
+er passerer  -> passerer
+er så  -> er
+et dusin  -> 12
+et kl  -> etter
+et slik  -> et
+et slikt  -> et
+et snes  -> 20
+et sted på  -> på
+et ter  -> etter
+et visst  -> et
+et så  -> et
+ett er  -> etter
+etter den  -> deretter
+etter den som går  -> efter
+etter det  -> deretter
+etter etter  -> etter
+etter fra  -> fra
+etter før  -> før
+etter mellom  -> mellom
+etter passert  -> etter
+etter til  -> til
+etter å ha passert  -> forbi
+ettermiddag / kveld  -> ettermiddag
+eventuelt når  -> []
+eventuelt  -> []
+evt når  -> []
+evt  -> []
+f eks  -> []
+f . eks .  -> []
+f . eks  -> []
+f o m  -> etter
+f o m .  -> etter
+f . o . m  -> etter
+f . o . m .  -> etter
+f r  -> før
+f ra  -> fra
+f rste  -> første
+f til  -> til
+f å være i  -> til
+f å være på  -> til
+ferdig til  -> før
+ferie ruter  -> ferie
+finne sted  -> finnes
+finner sted  -> finnes
+fr a  -> fra
+fra der jeg er nå  -> herfra
+fra for  -> for
+fra / forbi  -> forbi
+fra forbi  -> fra
+fra fra  -> fra
+fra før  -> fra
+fra / til  -> forbi
+fra her på  -> fra
+fra herfra  -> herfra
+fra herifra  -> herfra
+fra i  -> i
+fra hjem  -> hjemmefra
+fra nr  -> nr
+fra nå til klokken  -> før
+fra nå til  -> før
+fra rundt  -> fra
+fra til  -> til
+fare for  -> mulig
+fler enn en  -> flere
+fly buss  -> flybuss
+fly bussen  -> flybuss
+fly bussene  -> flybussene
+fly plas  -> flyplass
+fly plasen  -> flyplassen
+fly plaset  -> flyplassen
+fly plass  -> flyplass
+fly plassen  -> flyplassen
+for a være på  -> til
+for æ være på  -> til
+for æ vere på  -> til
+for a vaere på  -> til
+for eksempel  -> []
+for fra  -> fra
+for i morgen  -> imorgen
+for idag  -> idag
+for kl  -> før
+for klokka  -> før
+for komme til  -> til
+for og være der  -> før
+for og være framme før  -> før
+for og være framme rundt  -> før
+for og være framme  -> før
+for og være frem  -> før
+for og være fremme  -> før
+for og være i  -> til
+for og være på  -> til
+for og være til  -> til
+for noe  -> []
+for sein  -> forsinket
+for sen  -> forsinket
+for seint  -> forsinket
+for sent  -> forsinket
+for så å  -> og
+for så  -> og
+for til  -> til
+for å i  -> til
+for å for  -> for
+for å på  -> til
+for å rekke det  -> []
+for å var i  -> til
+for å være der  -> før
+for å være fra  -> fra
+for å være fram på  -> til
+for å være fram  -> før
+for å være framme før  -> før
+for å være framme rundt  -> før
+for å være framme  -> før
+for å være frem  -> før
+for å være fremme  -> før
+for å være i  -> til
+for å være på  -> til
+for å være til  -> til
+for å være å  -> til
+for å være  -> til
+for åvære i  -> til
+for åvære på  -> til
+for å værepå  -> til
+foran i  -> i
+forrerst i  -> i
+forbi bortenfor  -> forbi
+forbi etter  -> etter
+forbi fra  -> fra
+forbi her  -> hit
+forbi på  -> forbi
+forbin delse  -> forbindelse
+forbli i  -> ankomme
+forbli på  -> ankomme
+forsen  -> forsinket
+forsein  -> forsinket
+forseint  -> forsinket
+fotball bussen  -> fotballbuss
+fra buss fra  -> fra
+fra dit  -> dit
+fra hit  -> hit
+fra før  -> allerede
+fra heim  -> hjemmefra
+fra hvor i  -> fra
+fra mot  -> mot
+fra nord  -> nordfra
+fra sør  -> sørfra
+fra syd  -> sørfra
+fra t  -> til
+fra til  -> til
+fra vest  -> vestfra
+fra øst  -> østfra
+fram til da  -> tidligere
+frem til da  -> tidligere
+fremme på  -> til
+fremme til  -> til
+fullt mulig  -> mulig
+før / etter  -> rundt
+før den som går  -> før
+før etter  -> etter
+før før  -> før
+før like etter  -> etter
+før til  -> til
+først kommende  -> neste
+først som sist  -> []
+første av  -> første
+første etter nå  -> neste
+første fra nå  -> neste
+før i kveld  -> ikveld
+før kvelden  -> ikveld
+første neste  -> neste
+få opp  -> få
+får i  -> går
+får klokka  -> før
+g ¬ ør  -> går
+g ør  -> går
+g r  -> går
+g ? r  -> går
+g Œ r  -> går
+g år  -> går
+ga ƒ ayr  -> går
+gang til  -> gang
+ganger i døgnet  -> ganger
+ganger om dagen  -> ganger
+gitt at  -> hvis
+giæ ½ r  -> går
+gjenta det siste du sa  -> gjenta
+gjør oppmerksom på  -> sier
+gjør rede for  -> fortell
+gå avstand  -> gangavstand
+gå r  -> går
+går bra  -> passerer
+går dem en  -> går
+går de ei  -> går
+går de en  -> går
+går de et  -> går
+går det ei  -> går
+går det en  -> går
+går det et  -> går
+går er  -> er
+går går  -> går
+går jeg ta  -> går
+går ofte  -> går
+går kommer  -> kommer
+går me  -> går
+går må  -> må
+går passerer  -> passerer
+går vil  -> passerer
+h p  -> holdeplass
+h pl  -> holdeplass
+ha behov for å  -> []
+ha en hyggelig kveld  -> adjø
+ha med  -> ha
+ha ha  -> hei
+ha ha ha  -> hei
+ha neste  -> går
+hadde tenkt meg å  -> skal
+hadde tenkt meg  -> skal
+han / hun  -> han
+har ankomst  -> ankommer
+har avgang  -> forlater
+har behov for å  -> må
+har d  -> går
+har et ønske om  -> ønsker
+har går  -> går
+har tenkt meg å  -> skal
+har tenkt meg  -> skal
+har til  -> ankommer
+he he  -> hei
+helst  -> []
+herfra på  -> fra
+hjem igjen  -> hjem
+hjem fra  -> fra
+hjem til  -> til
+hjemme fra  -> hjemmefra
+hjemme sida  -> hjemmesiden
+hjemme siden  -> hjemmesiden
+hold opp  -> adjø
+holde plass  -> holdeplass
+holde plassen  -> holdeplassen
+holde plassene  -> holdeplassene
+holde plasser  -> holdeplasser
+holder til  -> er
+holder plass  -> holdeplass
+holdt på med  -> gjort
+honnør billett  -> honnørbillett
+honnør bilett  -> honnørbillett
+honnør rabatt  -> honnørbillett
+hv a  -> hva
+hva behager  -> hva
+hva med  -> []
+hva mer  -> hva
+hva om  -> []
+hva slags  -> hvilket
+hva tid når  -> går
+hvert øyeblikk  -> straks
+hvilke av  -> hvilke
+hvilken av  -> hvilke
+hvilket av  -> hvilke
+hvilke bus fra  -> fra
+hvilken bus fra  -> fra
+hvilket bus fra  -> fra
+hvilke buss fra  -> fra
+hvilken buss fra  -> fra
+hvilket buss fra  -> fra
+hvilke busser fra  -> fra
+hvilken busser fra  -> fra
+hvilket busser fra  -> fra
+hvilke og når  -> når
+hvilken går buss  -> buss
+hvilken hvilken  -> hvilken
+hvilken hvilket  -> hvilket
+hvilken en  -> hvilken
+hvilken som helst  -> alle
+hvilket hvilken  -> hvilket
+hvilket hvilket  -> hvilken
+hvis for  -> for
+hvis framme  -> før
+hvor dan  -> hvordan
+hvor hvordan  -> hvordan
+hvor jeg ankommer  -> []
+hvor mange og når  -> når
+hvor mange minutter  -> hvor
+hvor som helst  -> []
+hvord an  -> hvordan
+hvordan fra  -> fra
+hvordan overganger går  -> går
+hvordan reise  -> []
+hvordan skal til  -> til
+hvordan type  -> hvilken
+hvordan å komme fra  -> fra
+hvordan å komme til  -> til
+hvorfor ikke  -> hvorfor
+hvorfor hva  -> hva
+høre til  -> tilhøre
+hører til  -> tilhører
+hørte til  -> tilhørte
+hørt til  -> tilhørt
+høst rutene  -> høstrutene
+i all verden  -> []
+i allverden  -> []
+i alle dager  -> []
+i allefall  -> []
+i ca  -> [i]
+i den anledning  -> []
+i der  -> der
+i det hele tatt  -> []
+i det heletatt  -> []
+i etter  -> etter
+i frå  -> ifra
+i følge  -> ifølge
+i går  -> igår
+i hele  -> i
+i hvertfall  -> []
+i hvert fall  -> []
+i hvilken grad  -> hvordan
+i hvilket intervall  -> når
+i hvilken intervall  -> når
+i i  -> i
+i kilometer  -> []
+i live  -> levende
+i morgen  -> imorgen
+i morra  -> imorgen
+i nærheten av  -> nær
+i på  -> på
+i retning av  -> mot
+i retning  -> mot
+i retning mot  -> mot
+i rundt  -> rundt
+i sin helhet  -> []
+i sta  -> tidligere
+i ste  -> tidligere
+i stad  -> tidligere
+i stedet  -> []
+i såfall  -> []
+i så fall  -> []
+i til  -> til
+i tilfelle  -> []
+i tillfelle  -> []
+i østlig retning  -> østover
+i nordlig retning  -> nordover
+i sydlig retning  -> sørover
+i sørlig retning  -> sørover
+i vestlig retning  -> vestover
+idet hele tatt  -> []
+idet heletatt  -> []
+idretts anlegget  -> idrettsanlegget
+idretts plassen  -> idrettsplassen
+ikke sant  -> []
+iløpet av  -> innen
+in til  -> til
+ingen andre enn  -> []
+ingen andre busser enn  -> busser
+ingen fare for  -> umulig
+ja ja  -> ja
+ja takk  -> ja
+jeg jeg  -> jeg
+jeg må være der før  -> før
+jeg må være der  -> før
+jeg skal være der før  -> før
+jeg skal være der  -> før
+jeg slik  -> slik
+jeg vil buss  -> buss
+jern bane  -> jernbane
+ka før  -> hvilken
+kan d varsle  -> varsle
+kan jeg ta som  -> []
+kan å  -> kan
+kjøpe senter  -> kjøpesenter
+klippe kort  -> klippekort
+kl ca kl  -> klokken
+kl ca  -> klokken
+klo kken  -> klokken
+klokk en  -> klokken
+klokka kl  -> klokken
+klokken er blitt  -> klokken
+klokken er over  -> klokken
+klokken etter  -> etter
+klokken har blitt  -> klokken
+klokken klokken  -> klokken
+klæbu ruta  -> klæburuta
+kommer det til å  -> det
+kong haakon  -> haakon
+kor ti  -> når
+kort tid etter  -> etter
+kos n  -> hvordan
+koss n  -> hvordan
+koss d går  -> hei
+koss det går  -> hei
+kossn vi kjæm oss  -> buss
+koster er  -> koster
+koster det for et  -> koster
+koster å ta  -> koster
+kristi himmelfartsdag  -> ascension_day
+kvantum klippekort  -> klippekort
+kveld / natt  -> kveld
+kveldens busser  -> kveldsbusser
+kvelds tid  -> kveldstid
+la oss si  -> []
+lang fredag  -> langfredag
+lang reisetid  -> langt
+langt oppe på  -> på
+lei meg  -> trist
+lei seg  -> trist
+lei deg  -> trist
+like etter  -> etterpå
+like etterpå  -> etterpå
+like godt  -> []
+like ved  -> nær
+like ved på  -> nær
+lille julaften  -> little_christmas_eve
+linje nr  -> rute
+list opp  -> list
+liste over når  -> når
+litt av  -> []
+litt over halv  -> halv
+lykke til  -> adjø
+l rdag  -> lørdag
+lø rdag  -> lørdag
+lønner det seg å ta  -> går
+lørdag / søndag  -> weekend
+lørdager / søndager  -> weekend
+m å  -> må
+mye forsinket  -> forsinket
+man .  -> mandag
+tirs .  -> tirsdag
+ons .  -> onsdag
+tors .  -> torsdag
+fre .  -> fredag
+lør .  -> lørdag
+søn .  -> søndag
+sankt hans  -> sankthans
+sankthans aften  -> midsummer_eve
+sankthans dag  -> midsummer_day
+manglende punktlighet  -> forsinkelser
+me jeg ta  -> går
+med ankomst før  -> før
+med ankomst nær  -> før
+med det første  -> snart
+med en gang  -> nå
+med fra  -> fra
+med gratis  -> gratis
+med overgang til  -> til
+med på  -> med
+med unntak ab  -> unntatt
+med unntak av  -> unntatt
+meg jeg  -> jeg
+meget bra  -> bra
+mellom etter  -> etter
+mellom nå og  -> før
+mellom til  -> til
+men etter  -> etter
+men før  -> før
+men ikke  -> unntatt
+mest mulig av  -> []
+mulig av  -> []
+mulig for meg  -> mulig
+mulig for deg  -> mulig
+mulig for noen  -> mulig
+midtby billett  -> midtbybillett
+minne meg  -> varsle
+minner meg  -> varsler
+minne meg på  -> varsle
+minner meg på  -> varsler
+minner om  -> vet
+minste alder  -> aldersgrense
+mitt bosted  -> []
+mnd kort  -> månedskort
+mnd merke  -> månedskort
+mnd merker  -> månedskort
+morgen / formiddag  -> formiddag
+morgen buss  -> morgenbuss
+morgen bussen  -> morgenbussen
+morgenen av  -> morgenen
+mot fra  -> fra
+mot mot  -> mot
+mot nord  -> nordover
+mot sør  -> sørover
+mot syd  -> sørover
+mot til  -> til
+mot vest  -> vestover
+mot øst  -> østover
+mus eum  -> museum
+må eg at  -> går
+må jeg på  -> går
+må jeg ta som  -> []
+må når går  -> går
+må tar  -> går
+må vær der  -> før
+må være der  -> før
+må ta  -> går
+må være der  -> før
+må være framme  -> før
+må å  -> må
+månedskort buss  -> månedskort
+mår må  -> må
+n ¬ ør  -> når
+v & 230 re  -> være
+& 229  -> å
+m & 229  -> må
+n & 229  -> nå
+n & 229 r  -> når
+p & 229  -> på
+n este  -> neste
+n g  -> går
+n gayr  -> går
+n går  -> går
+n må  -> må
+n r  -> når
+n år  -> når
+n ? r  -> når
+n ¬ ør  -> når
+n ør  -> når
+niæ ½ r  -> når
+na ƒ ayr  -> når
+n Œ r  -> når
+naar neste  -> går
+nat bus  -> nattbuss
+nat buss  -> nattbuss
+natt bus  -> nattbuss
+natt buss  -> nattbuss
+natt bussen  -> nattbussen
+natt bussene  -> nattbussene
+natt busser  -> nattbusser
+natt trikk  -> trikk
+natt trikken  -> trikk
+natt trikker  -> trikk
+natt trikkene  -> trikk
+natt rute  -> nattbuss
+nattbussen e  -> nattbuss
+nattbussen rute  -> nattbussen
+nei nei  -> nei
+nei takk  -> nei
+nest neste  -> andre
+neste buss etter neste  -> andre
+neste de  -> de
+neste deretter  -> neste
+neste der igjen  -> neste
+neste der igjen da  -> neste
+neste det  -> neste
+neste etter første  -> andre
+neste etter nest  -> andre
+neste etter neste  -> andre
+neste etter neste etter neste  -> tredje
+neste etter nå  -> neste
+neste fra  -> fra
+neste første  -> første
+neste gang  -> heretter
+neste ganger  -> heretter
+neste to ganger  -> heretter
+neste 2 ganger  -> heretter
+neste 3 ganger  -> heretter
+neste på  -> neste
+neste tre ganger  -> heretter
+noe annet  -> noe
+noe annet enn  -> ikke
+noe mere enn  -> []
+noe mer  -> noe
+noe mer enn  -> []
+noe mer  -> mer
+noe mere  -> mer
+noen av  -> noen
+noen flere  -> flere
+noen gang  -> []
+nr .  -> kjøretøy
+nr buss  -> buss
+nr første  -> første
+nr gr nste buss  -> buss
+nr nr  -> nr
+naar går  -> går
+naar gar  -> går
+naar gr  -> går
+naar gaar  -> går
+nar går  -> går
+nar gar  -> går
+nar gr  -> går
+nar gaar  -> går
+nr går  -> går
+nr gar  -> går
+nr gr  -> går
+nr gaar  -> går
+nr på buss  -> buss
+nummer på buss  -> buss
+nyttårs aften  -> nyttårsaften
+nyttårs dag  -> nyttårsdag
+nærmere kl  -> før
+nærmes te  -> nærmeste
+nermest mulig  -> nærmest
+nærmest mulig  -> nærmest
+nøyaktig på  -> på
+nå + r  -> når
+nå jeg skal være der  -> før
+nå jeg skal være i  -> til
+nå jeg ta  -> går
+nå kl  -> nå
+nå klokka  -> nå
+nå klokken  -> nå
+nå 5 r  -> når
+nå r  -> når
+nå rmå  -> []
+nå ta  -> tar
+når buss  -> buss
+når de går  -> går
+når det er  -> []
+når det går  -> går
+når dra fra  -> fra
+når for  -> for
+når fra neste  -> neste
+når får  -> går
+når går buss går  -> []
+når går når  -> når
+når har  -> går
+når hvilke  -> hvilke
+når hvilken  -> hvilken
+når hvilket  -> hvilket
+når hvordan  -> hvordan
+når jeg må ta  -> går
+når jeg ta  -> går
+når klokka  -> når
+når klokken  -> når
+når meg jeg ta  -> går
+når må jeg at  -> går
+når må jeg buss  -> buss
+når må jeg bussen  -> bussen
+når må ta  -> går
+når neste går  -> []
+når neste  -> []
+nær neste  -> går
+når nøyaktig  -> når
+når nå  -> må
+når når  -> når
+når og ankommer  -> []
+nor og hvilke  -> hvilke
+nor og hvilken  -> hvilken
+nor og hvilket  -> hvilket
+norges nasjonaldag  -> may17
+når og hvilke  -> hvilke
+når og hvilken  -> hvilken
+når og hvilken  -> når
+når og hvilket  -> hvilket
+når og hvor  -> hvor
+når og hvorfra  -> når
+når og hvor fra  -> når
+når og hvor ifra  -> når
+når og vilken  -> hvilken
+når på dagen  -> når
+når på  -> på
+når sånn ca  -> når
+når ta  -> går
+når ti  -> når
+når år  -> når
+nårg år  -> går
+nårmå jeg  -> jeg
+o /  -> via
+ofte fullt  -> fullt
+ofte i timen  -> ofte
+ofte og når  -> ofte
+og ankommer  -> til
+og av  -> av
+og bare  -> og
+og den  -> som
+og er i  -> til
+og etter  -> etter
+og før  -> før
+og hjem  -> hjem
+og inn te  -> til
+og inn til  -> til
+og kommer til  -> til
+og lignende  -> []
+og mot  -> mot
+og mot kl  -> før
+og ned til  -> til
+og når går den  -> går
+og når den er i  -> til
+og opp til  -> til
+og passering  -> forbi
+og retur  -> tilbake
+og skal  -> til
+og som  -> til
+og såtil  -> og
+og tilbake  -> tilbake
+og ut kvelden  -> ikveld
+og være framme klokka  -> før
+og være fremme på  -> til
+og være fremme ved  -> til
+og være ved  -> til
+og være på  -> til
+og å være på  -> til
+om man vil være på  -> til
+om mellom  -> mellom
+om nær  -> når
+om når  -> når
+ombord i  -> i
+omtrent samtidig  -> samtidig
+omtrent som  -> som
+opp forbi  -> forbi
+opp i  -> til
+opp igjen  -> tilbake
+opp til opp i  -> til
+oppe på  -> på
+oppover  -> []
+over i morgen  -> overimorgen
+over hodet  -> []
+over på  -> på
+over sikt  -> oversikt
+p ¬ ø  -> på
+p ø  -> på
+p m  -> ettermiddag
+p å  -> på
+pas serer  -> passerer
+passer det best å ta  -> passer
+passer best å ta  -> passer
+passer det best for meg å ta  -> passer
+per dags dato  -> idag
+på best mulig måte  -> []
+på etter  -> etter
+på fra  -> fra
+på før  -> på
+på grunn av  -> pga
+på i  -> i
+på idag  -> idag
+på jeg ta  -> går
+på kortest mulig tid  -> snarest
+på kl  -> klokken
+på klokken  -> klokken
+på mindre enn  -> innen
+på når  -> når
+på rundt  -> rundt
+på tide  -> mulig
+på tur mot  -> til
+på tur via  -> fra
+på v  -> ved
+på ved  -> ved
+på vei mot  -> til
+på tur til  -> til
+på vei til  -> til
+r d lenge til  -> []
+rabatt kort  -> rabattkort
+raskest komme  -> komme
+raskest mulig  -> []
+raskeste måte  -> []
+regner med at  -> antar
+regne med at  -> anta
+regnet med at  -> antok
+regner med å  -> []
+rei gjerne reise  -> reise
+rei reise  -> reise
+reise forbindelse  -> forbindelse
+reise klokka  -> etter
+reise måte  -> reisemåte
+resten av dagen  -> heretter
+resten av  -> []
+retning nord  -> nordover
+retning syd  -> sørover
+retning sør  -> sørover
+retning vest  -> vestover
+retning øst  -> østover
+rundt omkring i  -> i
+rute buss  -> buss
+rute / ruter  -> ruter
+rute tider  -> rutetider
+ruter til buss  -> buss
+rutetabell rute  -> rute
+rutetider buss  -> buss
+s ndag  -> søndag
+sentrum sentrum  -> sentrum
+si det  -> snakke
+si det en gang til  -> gjenta
+si fra  -> varsle
+sier fra  -> varsler
+skal jeg med  -> går
+skal være der  -> før
+skal være framme  -> før
+skal være fremme  -> før
+skjær torsdag  -> skjærtorsdag
+skriv inn  -> skriv
+slett ikke  -> ikke
+slik at jeg ankommer  -> før
+slik er fremme  -> før
+som ankommer  -> før
+som er der før  -> før
+som er der til  -> før
+som er framme før  -> før
+som er fremme før  -> før
+som er framme  -> før
+som er fremme  -> før
+som er i  -> til
+som er på  -> til
+som går fra  -> fra
+som passer med  -> slik
+som passerer  -> til
+som erpå  -> til
+som helst  -> []
+som mulig  -> []
+som jeg sa  -> []
+som til  -> til
+som vanlig  -> presis
+sommer ruta  -> sommerruta
+sommer rute  -> sommerrute
+sommer ruter  -> sommerruter
+sommer tider  -> sommerruter
+stoppe steder  -> stoppesteder
+svare på  -> vite
+søndag påske  -> påskesøndag
+søndags ruter  -> søndagsruter
+så fort som mulig  -> nå
+så gjerne  -> []
+så er du grei  -> []
+så jeg ankommer  -> før
+så klart  -> []
+så nære  -> nær
+så nære som mulig  -> før
+sånn at ankomst er  -> []
+sånn cirka  -> []
+sånn ved  -> ved
+t bane  -> tbane
+t o m  -> før
+t o m .  -> før
+t . o . m  -> før
+t . o . m .  -> før
+t kort  -> tkort
+ta i bruk  -> bruke
+ta meg  -> komme
+ta seg  -> komme
+ta som går  -> ta
+tar seg  -> kommer
+tar meg  -> kommer
+te neste  -> neste
+te ved  -> til
+team påskeruter  -> påskeruter
+team sommerruter  -> sommerruter
+tenke deg å  -> []
+tenkt å dukke opp  -> ankommet
+teste  -> neste
+tett ved  -> nær
+ti l  -> til
+tid buss  -> buss
+tid oversikt  -> ruteplan
+tiden tiden  -> tiden
+tider og nr  -> tider
+tidlig etter  -> etter
+tidligere enn  -> før
+tidligst mulig  -> tidlig
+til +  -> til
+til dit  -> dit
+til en holdeplass ved  -> til
+til / fra  -> forbi
+til forbi  -> forbi
+til går  -> går
+til i nærheten av  -> til
+til i  -> til
+til hit  -> hit
+til hvilken tid  -> når
+til hvis  -> hvis
+til l  -> til
+til med ankomst  -> til
+til med  -> til
+til nærheten av  -> til
+til og fra  -> forbi
+til og være fremme  -> til
+til på  -> til
+til retning  -> til
+til rundt  -> før
+til sammen  -> []
+til sent  -> []
+til slutt  -> sist
+til sånn  -> sånn
+til ut  -> ut
+til ved  -> til
+til viss  -> hvis
+til å  -> til
+til øverst i  -> til
+tilsentrum  -> []
+tilbyen  -> []
+times tid  -> time
+tt kontoret  -> servicekontoret
+tt kort  -> kort
+tt s  -> tts
+tur retur  -> tilbake
+tur rettur  -> tilbake
+tur / retur  -> tilbake
+u bane  -> tbane
+u båt  -> båt
+uke dag  -> ukedag
+universal kort  -> universalkort
+universelt kort  -> universalkort
+universelt skilebusskort  -> universalkort
+ut av  -> fra
+ut om  -> ut
+ut på  -> på
+ut å  -> []
+uten bussbytte  -> direkte
+uten pause  -> direkte
+uten stopp  -> direkte
+uten å bytte buss  -> direkte
+uttrykke deg  -> snakke
+utvidet skolekort  -> skolekort
+v /  -> ved
+va re  -> være
+vanlig dag  -> hverdag
+varsle fra  -> varsle
+ved på  -> på
+vel ikke  -> []
+vel  -> []
+vell  -> []
+ved i  -> i
+ved på  -> på
+ved til  -> til
+vekke meg opp  -> varsle
+vet du om  -> fins
+vg s  -> vgs
+vice versa  -> tilbake
+vil det være  -> er
+vil være der  -> før
+ville det være  -> er
+visa kort  -> visakort
+visst  -> []
+vær så god  -> værsågod
+vær så snill  -> []
+vær så snill å  -> []
+væ der  -> ankomme
+være der klokken  -> før
+være framme  -> før
+være i  -> til
+være på  -> til
+være ved  -> til
+være så snill å  -> []
+værsågod å  -> []
+versågod å  -> []
+vært på  -> til
+vært ved  -> til
+vå re  -> være
+øvre aldersgrense  -> aldersgrense
+å fra  -> fra
+å ja  -> ja
+å jasså  -> []
+å ned  -> ned
+å nei  -> nei
+å så  -> å
+å t  -> til
+å ta fra  -> fra
+å ta til  -> til
+å te  -> til
+å til  -> til
+år går  -> går
+år må  -> må
+års kort  -> årskort

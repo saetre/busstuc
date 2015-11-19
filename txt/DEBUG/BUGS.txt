@@ -1,0 +1,85 @@
+Sjekk
+ https://www.ntnu.no/wiki/display/FUIROS/BUGS+-+PROBLEM+REPORTS
+ 
+ Clever debug mechanism for missing departures:
+	| ?- departure(free(11),heggstadmyra,2,A).
+
+
+TOUGH CASES
+N: buss fra ila til vikåsen på lørdag . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+]}
+
+4. Aug. 2012 er en  lørdag .
+Første buss , nummer 11 passerer  Ila kl. 0956 
+og  kommer til  Vikåsen kl. 1033 .
+Siste buss , nummer 11 passerer  Ila kl. 1641 
+og  kommer til  Vikåsen kl. 1723 .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+N: fra berg studentby til lerkendal . 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,
+"timeset":"false" ,
+"departures" : [
+
+
+
+
+
+1 N: buss 94 til lade i morgen.
+
+trans/Found rule:tqllist2
+trans/Found rule:doubleshunt
+trans/Found rule:doubleshuntbe1
+trans/Found rule:bego
+trans/Found rule:morrow1
+trans/Found rule:nottoday1
+trans/Found rule:toplace1
+trans/Found rule:keepfrombaywithbus
+trans/Found rule:connectionexplicit
+
+2 N: til lade i morgen.
+
+trans/Found rule:tqllist2
+trans/Found rule:modifier2
+trans/Found rule:morrow1
+trans/Found rule:nottoday1
+trans/Found rule:toplace1
+trans/Found rule:keepfrombay
+trans/Found rule:connectionexplicit
+
+
+1 *** Application program ***
+
+today(tuesday)
+atday(wednesday)
+atdate2(4,date(2012,4,4))
+message(date_isa_day(date(2012,4,4),wednesday))
+message(otherperiod(date(2012,4,4)))
+departure(free(112),lade,4,A)
+flag(keepfrombay)
+departure(94,hovedterminalen,4,B)
+connections(B,A,bus,hovedterminalen,lade,wednesday,4,[to,from],C,D)
+flag(exit)
+
+
+2 *** Application program ***
+
+today(tuesday)
+atday(wednesday)
+atdate2(4,date(2012,4,4))
+message(date_isa_day(date(2012,4,4),wednesday))
+message(otherperiod(date(2012,4,4)))
+departure(free(119),lade,4,A)
+flag(keepfrombay)
+departure(free(119),hovedterminalen,4,B)
+connections(B,A,free(119),hovedterminalen,lade,wednesday,4,[to,from],C,D)
+flag(exit)

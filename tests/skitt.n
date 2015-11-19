@@ -8,8 +8,7 @@
 \startbatch
 
 
-Når går bussen fra NTNU på LAde til byen mellom klokken 10 og 11 i
-dag?  
+Når går bussen fra NTNU på LAde til byen mellom klokken 10 og 11 i dag?  
 nåre går neste buss fra dragvoll til sentrum.
 o store bussruteorakel, regner det i trondheim i dag?
 Hva er essensen av T. W. Adornos hovedverk "Estetisk teori"?

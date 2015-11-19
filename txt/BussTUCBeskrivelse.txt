@@ -1,0 +1,98 @@
+Hei Tore,
+
+Kan du lage en tekst om Bussorakelet som vi kan legge ut på Lingits nye nettsider? 
+Helst kort, konsist og forståelig for alle. Gjerne slik at det pirrer nysgjerrighet
+også ...
+
+-torbj
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+Bussoraklet (BussTUC) er utviklet ved Institutt for Datateknikk
+ ved NTNU, i samarbeide med Lingit A/S og er et system for å kunne
+ besvare spørsmål om bussavganger i Trondheim.
+
+Navnet BussTUC er avledet av TUC som står for The Understanding
+Computer, og er et generelt rammeverk for å forstå naturlig språk like
+godt som en menneskelig operatør innenfor et begrenset område, i dette
+tilfelle buss-spørsmål.
+
+BussTUC ble utviklet første gang i 1997, og ble satt i drift som en
+del av Team trafikks ruteopplysning på nett i 1998. I tillegg er det laget  SMS tjeneste .
+
+BussTUC ble i  2001 kommersialisert av  Lingit A/S som har ansvar for
+drift og vedlikehold av systemet.
+
+BussTUC er tospråklig, og svarer på samme språk som spørsmålet ble stilt på.
+( Hvis det er ord som er ukjente på norsk, og det er  færre eller ingen ukjente ord
+  med  engelsk vil den svare på engelsk).
+
+I tillegg til alle holdeplassnavn har BussTUC også en liste med andre
+stedsnavn, inkludert en fullstendig liste over gateadresser med
+tilhørende nærmeste holdeplass.
+
+BussTUC har en avansert stavefeilsanalyse, og er tolerant overfor
+vanlige skrivefeil, dialektord og avvikende skrivemåter.
+
+BussTUC har en ganske komplett forståelse av klokkeslett, årstall og datoer .
+
+
+Når går siste buss fra yggdraslivegen 9c til  Sivilforsvaret granåsen
+  før kl 21 den  21.12. 2012.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+21. Des. 2012 er en  fredag .
+Jeg har ingen ruter for denne datoen.
+Holdeplassen nærmest Yggdrasilvegen 9 er  Nardosenteret .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Bruksfrekvensen er stadig voksende. Samlet er det nå en trafikk på bussoraklet
+som svarer til nesten 1 million spørsmål pr år.
+
+Feilraten er liten, og nesten forsvinnende for standard spørsmål.
+(Det er umulig å tallfeste feilraten uansett pga useriøse spørsmål).
+
+Et kriterium for et naturlig språk grensesnitt er at 
+det  ikke skal være nødvendig med noen opplæring i bruk.
+Det som er relevant og forståelig for en menneskelig operatør skal
+forstås av systemet. 
+
+Systemet skal selvfølgelig aldri  gi feilaktige,  mangelfulle
+eller misvisende svar. Men det skal heller  ikke være mulig å få systemet til å gi
+uintelligente svar. 
+
+BussTUC er ikke laget for underholdning, men prøver å besvare alle forståelige spørsmål  
+på en høflig og saklig måte. Men det er allikevel morsomt å prøve ut
+systemets menneskelige egenskaper, som f.eks.
+
+   Har du det bra ?
+   Liker du å svare på spørsmål ?
+   Hva er meningen med livet ?
+
+
+BussTUC er siden blitt utvidet til å forstå tekst som omhandler
+rutetrafikk generelt, og bussoraklet spesielt. For eksempel vil
+bussoraklet forstå de fleste  setningene i denne beskrivelsen.
+
+Du må gjerne prøve ut systemet på nettsiden til Team Trafikk
+
+     http://www.team-trafikk.no/
+Fra 2012:
+	http://www.atb.no/
+
+eller en tilsvarende hjemmeside på NTNU
+
+    http://www.idi.ntnu.no/~tagore/busstuc/
+Fra 2012:
+	http://busstuc.idi.ntnu.no
+
+SMS tjenesten er basert på samme system, bare med noe kortere svar.
+
+ Start meldingen med Team, og send til 1939. (kr 1,- pr melding)
+Fra 2012:
+ Start meldingen med Rute, og send til 2027. (kr 1,- pr melding)
+
+Hvis du har kommentarer eller forslag til forbedringer kan du jo starte
+med å fortelle disse til bussoraklet selv. Feilrapporter vil bli
+videresendt til administrator.
+

@@ -1,0 +1,263 @@
+%% FILE BusPlaceTables.txt
+%% SYSTEM BussTUC
+%% CREATED TA-100317
+%% REVISED TA-100322
+
+
+%% Contains description of some places and names
+
+
+// FILE  NAMES.PL
+
+
+The file contains name information that is nonspecific for any domain
+(e.g. Trondheim)
+
+
+¤ GENERIC_PLACE (NAME)
+
+Example:
+
+generic_place(golfbane).  
+
+General suffixes of establishments that are in general unknown.
+Used for informative error messages.
+
+
+¤ CITY (NAME)
+
+Example:
+
+city(oslo).
+
+Names of cities that are commonly known.
+
+
+¤ COMPNAME (PART NAME, LIST(PART NAME), TARGET NAME)
+
+Example:
+
+compname(carl,[berners,plass],carl_berners_plass). %% Oslo, 
+
+General composite names.
+
+
+¤ SYNNAME (SYNONYM NAME, TARGET NAME)
+
+Example:
+
+synname(kleburuten,klaburuten). 
+
+General synonym names not subject to spelling correction
+
+
+¤ SAMENAME (SYNONYM NAME, TARGET NAME)
+
+Example:
+
+samename(tambaskjelvs,tambarskjelves). 
+
+Geneal synonym names  subject of spelling correction
+
+
+¤ UNWANTED_NAME (NAME)
+
+Example
+
+unwanted_name(buksa).   %%  \+ bukta (station) 
+
+Names that are supposed to be spotted as unknown, and not attempted
+spell corrected to a legal name.
+
+¤ STREETSYN (NAME)
+
+Example:
+
+streetsyn(gatan). 
+
+Names  that are legal synonyms of street or street suffix.
+
+¤ COUNTRY (NAME)
+
+Example:
+
+ country(albania).
+
+Country or equivalent (e.g. Wales)
+
+Used for proper error messages.
+
+¤ ABROAD (NAME)
+
+Example:
+
+abroad(afrika). 
+
+Unspecified name abroad
+
+Used for proper error messages.
+
+
+¤ COMMUNITY (COMMUNITY NAME, COUNTY NAME)
+
+Example:
+
+community(agdenes, sør_trøndelag).
+
+Municipalities (or equivalent) and its county.
+
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+// FILE  PLACES.PL
+
+
+
+¤ ALIAS_NAME  (NAME,NAME)
+
+Example:
+
+alias_name(klæburuta,klæburuten). /// MOVE TO NAMES
+
+General synonym of non place names.
+
+
+¤ ALIAS_STATION  (STATION 1,STATION 2)
+
+Example:
+
+alias_station(dv,dragvoll).
+
+Altarnative Station identifiers for identical stations
+
+
+
+¤ CMPL  (NAME,NAME*,STION)
+
+Example:
+
+cmpl(anton,[grev,skott,veg],anton_grevskotts_vei).
+cmpl(østre,eberg,berg_østre). 
+
+Extra help to interpret composite names that are not derivable from
+the official composite names.
+The list bracket is optional if NAME* is singleton.
+
+
+¤ CORR (STATION 1,STATION 2)
+
+
+Examples:
+
+corr(stavset_senter,stavset_senter_2).
+corr(studentersamfundet_1,studentersamfundet_2).
+
+Information that bus transfer is possible between STATION 1 and
+STATION 2
+
+
+
+¤ ISAT   (STATION, PLACE)
+
+Examples:
+
+isat(lerkendal_stadion,lerkendal).
+isat(lerchendal_gård,lerkendal). 
+
+isat(gløshaugen_syd,gløshaugen).
+
+STATION is (among several) stations that belong to the neighbourhood of PLACE
+
+
+¤ UNDERSPECIFIED_PLACE (PLACE)
+
+Example
+
+underspecified_place(charlottenlund).
+
+The name PLACE is not a unique determinator.
+
+
+¤ PLACE_RESOLVE (PLACE,STATION).
+
+Examples:
+
+place_resolve(charlottenlund,charlottenlund_krk).
+place_resolve(charlottenlund,charlottenlund_nedre).
+place_resolve(charlottenlund,charlottenlund_skole).
+
+STATION is one of several determinations for PLACE
+
+
+¤ PLACESTAT  (PLACE,STATION)
+
+Examples;
+
+placestat(arbeidsmarkedsinstituttet,lade_alle_80).
+placestat('Hotell Augustin',torget).
+
+STATION is the preferred /recommended nearest station to the
+neighbourhood of PLACE
+
+
+¤  SAMEPLACE  (PLACE 1,PLACE2)
+
+Examples:
+
+sameplace(barneavdelingen,barneklinikken).
+
+PLACE 1 is an intended but mistaken spelling of PLACE2
+PLACE 1 will be spell checked as legal name, however.
+
+
+¤  SYNPLACE  (NAME,PLACE)
+
+Examples:
+
+synplace(ola,ila).
+synplace(rosta,rosten).
+
+NAME is a misspelled name for PLACE. 
+NAME  will not be spellchecked, because it is by itself an extension of the 
+the spellchecking of PLACE.
+
+¤ SPECNAME (NAME,STRING)
+
+Exampes:
+
+specname(churchills_v,'Churchills vei').
+specname(charlottenlund_videregående,'Charlottenlund videregående'). 
+
+Some official names  use  abbreviations, or are incorrect in other ways.
+or they would be incorrectly spelled if left to the deafult printout.
+
+
+¤ SHORT_SPECNAME(NAME,STRING)
+
+Examples:
+
+short_specname(einar_tambarskjelves_gt,'Einar Tambarskj.gt').
+
+Some names have to be shortened due to SMS limits.
+
+
+¤ UNWANTED_PLACE (PLACE)
+
+Examples:
+
+unwanted_place(banan).    %% not "banen"
+unwanted_place(bakenden). %% not "Bakken"
+
+Some names with irrelevant or unwanted interpretations would unintentionally be spelle checked to a legal name.
+The policy is to force an unwanted-word message.
+
+¤ UNWANTED_STATION (STATION)
+
+Example:
+
+unwanted_station(politihuset).
+
+STATION is a legal station names but is only used by obscure trips,
+and the name is better interpreted a s a neighbourhood.
+

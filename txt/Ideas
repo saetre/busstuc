@@ -1,0 +1,7395 @@
+%% FILE Ideas 
+%% SYSTEM BussTUC
+%% CREATED TA-010116
+%% REVISED TA-110808
+
+Ideas concerning  BUSSTUC
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+Niss går til nardo.
+
+[new:::(nardo isa neighbourhood,A isa bus,do/go/A/B,srel/to/place/nardo/B,event/real/B)]
+
+srel/to/place/nardo/B
+
+could have been written:
+
+   occurs(B,to,place,nardo)
+
+
+
+AI:
+
+   Perform like a human
+vs
+   Behave like a human
+
+
+
+All sentences in TQL are meaningful and can be given an
+interpretation.
+
+
+All sentences are verb-phraseas (with fronted subject complement).
+
+  "gikk jeg til skolen"
+
+
+Make a simplified grammar, where NP is a primitive without selectional
+constraints.
+
+
+Grammar of English shall be paraphrasable in E with a finite set of
+metarules.
+
+
+
+
+Describing TUC
+
+some prototypical, some advanced and some artificial but fundamental
+
+
+
+NTH-Prolog revisited (make if more functional). I Hate Variables
+
+
+orig_named_date(whitsun_day2,  ND):-       %% 2. pinsedag
+    this_year(YYYY),
+    easterdate(YYYY,ED),
+    add_days(ED,50,ND).
+
+this_year=2011.
+whitsun_day2=2011-06-13.
+
+orig_named_date(whitsun_day2)=add_days$(easterdate$(this_year$),50).
+
+
+Implement $ as infix operator, still Prolog.
+
+
+----------------
+
+
+
+To find the last error in a natural language understanding program is
+like finding the last decimal of PI.
+
+
+
+Covention:
+
+  Declarations in TUC are given by variable-less notation.
+
+(Variables belong to execution phase)
+
+
+Convention?
+
+Patient  = indirect object  (hensynsledd)
+Patient  = experiencer
+
+
+Role TQL-> BuSQL
+
+TQL , eliminate events (extract nontemporal parameters)
+
+
+
+
+Superwords:
+
+
+   noun has many senses,  can be semantically tested:
+  
+   which sense matches the semantic net.
+
+
+Keep the supersense in the syntax analysis
+(More like CSP constraint as a variable)
+
+
+What semantic is needed for structural disambiguation ?
+
+What semantic is needed for semantyic sense-finding ?
+
+
+Window   place artifact
+
+but
+
+  Same syntax
+
+Window is a supersense
+
+
+
+I hold this as self evident
+
+
+
+The limits of compositionality is a Savant deficiency.
+
+
+
+Does the formal ontology (Using English words) mean the same as we intend?
+If not, how do we make the intention precise (without making
+  each sentence requires a new rule)
+
+     QA Paradigm:
+
+         Ask questions
+         Compare results
+
+
+
+%% The NRL approch
+
+Every phrase in English can be paraphrased in E by a sequence of
+elementary sentences using <anaphoric variables>.
+
+This language is the paraphrase language of TQL.
+
+/Make a set of VERY FEW transformation rules to make it "readable"/
+
+This redefinition has to be agreed upon by linguists.
+
+A question to be answered:
+
+   The question follows logically from the correct answer.
+
+
+   Who loves Mary  
+
+   Exists X: X loves Mary
+
+   <= John loves Mary
+
+   Answer(John)
+------------------------------
+
+All discussions of Ontology can be discussed from the point of view of TUC.
+
+
+
+1:  Why logic is used
+2:  How logic is used
+
+
+
+
+
+
+Pointer to DEEP RESPONSE  with examples and ivitation to contribute
+with questions
+
+DEEP RESPONSE  is BusTUCs dark cousin.
+
+
+
+Top down parsing mens that the expectation is the context.
+Under the assumption of the goal (not yet verified), the text has to
+be interpreted as follows.
+
+Uniform structure
+
+    item(Var:Type,  Predication(Var))
+
+for entities
+
+    (X:bus, exist(E) goes(X,Sentrum,E))
+
+for events
+
+    (X:event,  "goes(B,sentrum,X)")
+
+
+
+Ask K.D: (professor in AI)
+
+  What would be needed that TUC is mentioned as a progress in AI.
+
+
+New Project:
+
+   DEEP RESPONSE
+   -------------
+
+It shall not be possible to make the system give an unintelligent
+answer to an intelligible question.
+
+
+You have succeeded when you can stop worrying.
+
+Let departure include all GPS-near stations.
+
+
+WikiTUC 
+
+passengers cooperate to make an intelligent route planner.
+
+
+Make a grammar with  non interruptable units with inherent sense.
+
+
+
+Weak Intelligence:
+
+   A human operator would have given an adequate answer to that.
+
+Goal: QA system that can answer any question based on route leaflet.
+
+If you could pose an adequate  question that does give an adequate answer.
+
+Of course I am happy ( if you would call it happiness ).
+
+Of course BusTUC is intelligent (if you could call it intelligence)
+
+
+Able to explain choice of routes
+
+Able to understand error messages  to route plans
+
+Able to understand statements of corrections to route plans
+(but not to perform correct them though)
+
+Intelligent route oracle custodian. (Tore Amble)
+
+
+--------------------------------------------------
+
+
+Make an overview of the principal sources of ambiguity
+
+e.g  da = when|because
+     som = preposition|relative_pronoun
+
+¤¤¤¤¤¤¤¤¤
+
+
+PI**2= 9.869604378534024
+
+| ?- X is 3.14159265, Y is X*X.
+X = 3.14159265,
+Y = 9.869604378534024 ? 
+
+
+In describing the logic of NL, drop all legality tests on the
+definitions.
+
+
+Single production daughters  should have the same name root as the mother
+
+Then the short syntax tree becomes more informative.
+
+
+use $-notation for lambda calculus locic semantics (only)
+
+s(apply$(NP,VP)) ---> np(NP),vp(VP).
+
+===>
+
+s(A) ---> np(NP),vp(VP),
+     {apply(NP,VP,A)}.
+
+apply(X:F,X,F).
+
+
+// place at the first position after the last occurring varible.
+
+
+
+Make a paraphrase of Bustrans rules such that the paraphrase can be
+automatically parse to produce the Bustrans rules.
+
+
+
+Lag en rutine
+
+  internalstat('Gudes gt.',gudes_gate)
+
+
+Bruk Montague semantikk konsekvent på alle entiteter   variable:predication
+
+   buss  X:isa/bus i.e. X:bus  object
+          P: exists(...) and P    fluent
+
+Predikatet
+
+ S(x,y): {\em  x barberer y}.
+
+Egentlig er predikat bare et navn, men her passer det bra med
+
+  S = (x,y): x barberer y
+
+som ligner på SOLON-notasjon,
+ 
+S (x,y): x barberer y
+
+
+
+4:route,4 isa route
+// actually, 4:route route is a predication  4:  (x:route(x))
+i.e.  4:(x: isa(route,x),i.e.  4:isa/route
+by  theta/eta application
+
+Reject provokingly  complex phrases with pride!
+
+Make all generated code explicit, and all combinations explicit.
+
+
+The less variables, the more declarative.
+
+Sematic net is a good example.
+
+Make a variable free representation of Hobbs axioms.
+Dont make predicates for validity checking
+(assume sentences are correct).
+What is then left of Hobbs.
+How can Hobbs be used ?
+
+Dually polemic: agree with goals, not with approach.
+
+
+
+Not: I   can    present a question that BussTUC can    answer correctly.
+but  You cannot present a question that BussTUC cannot answer correctly.
+
+Use last case from AtB as explain/ appearant error.
+// make the complaint into
+Why doesn't the bus pass  ... 9:31
+
+
+Implement a fast bottom up multitagger for dcg-pure constructions.
+
+
+Prøv å lage en subseksjon av gn som bruker vanlig dcg (-->)
+for alskens lavnivå grammatikk.
+
+
+Hold kjeft a.! -->
+Du må oppgi et sted i slike spørsmål .
+
+tistille å.
+
+a=å = for å
+() = go
+
+jeg vil tistille for å gå.
+// tragedy of multiple repairs
+
+
+Create a language BusTQL (ala NRL) such that BustTrans would be a trivial
+implementation. Start with code generating rules.
+
+
+All sentences with at most N words shall be parsed within time limit
+(10 secs on Unix server)
+
+N=3
+
+er du * gjekk . 
+- - - Uforståelig ved * - - - 
+10030 ms
+...
+
+Make a grammar that overgenerates, without disambiguation or
+selectionalsor ellipsis. Only basics, no ellipsis (but use \/)
+
+Use primitve notions like:  np, therit
+
+
+Lag en oversikt over alle sekvenser av grupper, %% subject,object,det,verb,aux,...
+ og hva det skal skrives om som.
+Assume right role is found, and ignore  ambiguities to start with.
+
+Bak enhver vanskelig setning skjuler det seg en enkel modifisert
+setning som kan rettes.
+
+Bak enhver detaljert "bagatellmessig" uregelmessighet (f.eks. lange parsetid) skjuler det seg en feil.
+
+
+BUSTQL er i prinsippet event-free database-interface logic and also
+event-free  metalanguage.
+(Speaks about the objects mentioned)
+
+What is the difference between an event-language and an event-free
+languge(: no srel).
+Means that nrel/ shoul have prominence,i.e. eliminate all srels.
+
+Use bustrans to select which names with properties that make a difference.
+
+Find a set of names that cover all possibilites.
+Use that as a test set  (From A to B via X)
+
+
+
+Rendyrke verb-free language in BusTUC.
+( a verb-free version of TQL to be used by pragma?)
+
+Introduser ofisielle attributtnavn på database.
+Used by custodian in metalanguage.
+
+Allow verb_free and event-free questioning
+
+Hva er turtype til buss 43 fra Ringvpø kl 2150 på hverdager ?
+
+Event-abstraction: All eventy-informationis ignored, only
+event-free information.
+
+Lag skjelett for oppdatering av event-free informasjon.
+  
+   "update-process"
+
+ sett turtypen til ... til ...
+
+generates a set-operation on database via a namemed_entity interface
+(ala LPKE).
+
+
+
+noun_modifier has as argument the verb in question.
+Then it can decide if it is a proper noun_modifier or not.
+
+
+" Kan du gi turen 21:50 fra Ringvål samme turtype som turen 20:15."
+            (                     )
+            (          )(         )  
+
+Easy part:      Give  exampes that show intelligent answers.
+Difficult part: Not give exampes that does not show intelligent answer.
+
+
+Imagine(A,P)  dual to Know(A,P).
+
+Imagine(A,P) <=> not Know(A, not P)
+
+Use this instead of multiple world semantics.
+
+
+
+Implement composal in Proxy.
+
+Introduce two levels of _compl:
+
+
+   1 for understanding the question, but inproper semantix
+   2 proper semantix
+
+ er tuc  full  ?
+
+
+
+Gjennomfør ideen om verbfritt språk  // generelt
+
+Project:
+
+   Learning by being told.
+
+Prereq for survival.
+
+Tue Aug 24 17:43:58 MEST 2010
+: eng
+ikke det -->
+OK .
+[new:::(A isa thing,not (B isa thing,event/real/C,dob/be/A/B/C))]
+
+A er en ting som ikke er lik en annen ting
+//ok
+         
+
+// Try to paraphrase TQL to English (broken :-)
+
+
+Just paraphrase TQL to E(nglish).
+can be used as a QAD translator.
+
+QuickTransfer
+
+ Finn traseer (disregarding time).
+ Take the shortest (in length)
+
+-----------
+
+By prepositional attachment ambiguity, selcet the weakest interpretation,
+
+1. Når går (bussen fra NTH til Nardo)
+
+   Bussen er fra NTH
+   Bussen er til Nardo
+   Bussen går.
+
+2. Når går (bussen fra NTH) til Nardo
+ 
+   Bussen er fra NTH
+   Bussen går til Nardo
+
+3. Når går bussen (fra NTH til Nardo)
+ 
+   Bussen går fra NTH 
+   Bussen går til Nardo
+
+*** 4. Ikke
+
+   Bussen går fra NTH.
+   Bussen er til Nardo.
+
+
+2 => 1
+3 => 2
+
+#1 weakest
+
+------------------
+
+Make an NRL proof system that is paraphrasable into NRL.
+A la Kennedy murder.
+
+
+------------------------
+
+
+KL    Knowledge Logic (hard facts and rules)
+CSL   Common sense logic (default rules that are commonly accepted)
+
+Definition:  Meaning of a sentence (discourse) C
+
+   To translate the discourse into FOREL in sucj a way that any fact
+   stated in NRL that is estimated to follow from C follows
+   deductively by default common sense logic (DCSL) and not
+   contradicted by KL
+
+------------------------------
+
+
+Can you make precise what the meaning of a sentence is py paraphrasing
+it into a discourse of simpler sentences (allowing precise anaphora)
+strong enough for NRL proofs.
+
+Can we do this for a bus system ?
+
+Can the method scale up ?
+
+Try to demonstrate this idea.
+
+-----------------------------
+
+
+The KB NL understanding  KBNLU coincides with the 
+
+   disambiguation/
+   scoping/
+   coherence/
+   anaphor resolution
+
+A complete mastering of one reuqires a  complete mastering of the
+other, and vice versa.
+
+   This is a way of "internalising" KBNLU. (?)
+
+
+It is written =>
+   you are allowed to make default common sense conclusions from it.
+
+ (otherwise, the writing would have been completely pointless).
+
+----------------
+
+
+
+
+
+
+
+
+
+   
+
+
+
+------------------------------------
+query_period:=(X)         X=team|atb
+application_period:=(X)   X=team|atb
+
+Use this to solve problems.
+
+Determine application_period from TQL-query
+
+If query_period= Team and application_period=Team,
+use 
+
+
+
+---------------------------------
+Quasi lambda calculus notation
+ 
+set_filter(X,night_route(X),DepSet1,DepSet2),
+
+   ==>
+
+set_filter( (X,night_route(X)),DepSet1,DepSet2),
+            ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+        =    X:night_route(X)
+        =    night_route
+
+
+Lag en NL-parafrase av "TQL" slik at resonnementet kan parafraseres.
+
+
+Gjør TQL
+
+    /                \
+
+  prediactes for     preferences on 
+  legal passings    set of solutions
+
+  => theta
+
+
+
+Describe FOREL events in a a non-event logical language (NELLY)
+
+
+
+
+What is allowed annd what is not allowed in translation/interpretations
+
+   pr0gram ... rewriting ... declarations
+
+
+Translate to an event language explaining the events in a verb-free
+(event-free) language.
+
+
+
+EVENTLISH
+
+
+Hver setning i SNL er svaret på et spørsmål.
+(Hvilket).
+
+
+Translator
+
+   QN --> QE
+
+   |      |
+   |      |
+   V      V
+ 
+  BT =(?)BT
+
+
+ElTagore krever riktig språk, men det er en sikkerhetsforanstaltning.
+
+
+
+A precursor for consciousness is that it can anwer questions 
+to simulate that it has a consciousness.
+
+AI simulates a person with consciousness, but in doing so, it must
+fake a person(ality).
+
+Explainabilty is part of self awareness (= bevissthet No-En).
+              ia part of consciousness
+
+
+How to describe the knowledge at the Knowledge level (BigK).
+Sufficient to generate knowwledge at the rule level (by an intelligemt
+entity).
+
+
+     Wisdom
+     Intelligence
+     Knowledge level
+     Rule level
+     Information level
+     Data level
+
+Translating a Norwegian word into an English word is like inventing a
+word for an established concept (unless E usese the same metaphor,
+e.g. "take").
+
+  "It takes 2 minutes to take the umbrella and the bus to city."
+
+
+You axiomatize it as a rule based system, and say what K-level rules
+that are applied. The rest is sequential preference heuristics.
+
+It is only the logically weakest interpretation that is reliable.
+
+Everything I intende to say can be stated in EC, and the assumptions
+must be acknowledged.
+
+EC analysis of sentence.
+
+Is the domain of a predicate a property of that predicate ? (SOL).
+
+How to adress all table entries in BT (not event based, using have).
+
+Define all BTQL in FOREL for the sake of principle.
+
+Super-senses are OK when the phrase structure is defined.
+The rest is pragmatics.
+
+  "It takes 2 minutes to take the umbrella and the bus to city."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Implementere negans vha Proxy ?
+
+Levels of knowledge:
+
+    Rule knowledge
+    Proto knowledge
+
+By means of intelligence, we can transform proto knowledge into rule
+knowledge.
+
+
+Destructive Proxy to eliminate unwanted tags in txt.
+Can be extended to general SingleTagger.
+
+-
+
+Bus Oracle Custodian
+
+Read an error/revision decription and PROPOSE changes in the tables:
+
+(own module for refering to local tables).
+
+For example the problem of byåsen (route 5,8).
+
+Which changes did you make, and how would you tell anyone how to do it.
+
+-
+
+Make a version of NRL that is as English and unambiguous as possible, but can take the
+-whole- of FOREL. 
+
+What about rephrasing parts of Pragma in this language
+
+Descibe in detail the events that are referred to in the text, using a
+verb-free language. (dobehave).
+
+The actual word dependent definitions  of TUC are used as examples
+of a general grammar description.
+
+
+Literal interpretation.
+
+Then
+    Metaphors/conventions
+    Strengtening in a context (go= enter bus)
+    Select weakest interpretation if no knowledge.
+
+    
+Praphrase methodology. 
+
+Explain in detail a Norwegian sentence to a native English person:
+
+   I explain in detail to an english speaking person the exact meaning
+   of a Norwegian phrase. In doing so, I use English. The subset of
+   language I use (E) can be a paraphrase of NRL
+
+A further translation methodology is  a reconstruction in proper
+English. (Not TUC)
+
+
+
+
+
+Define text understanding as ability to answer questions about the text.
+
+
+
+// Make a full tagging ( + conjunction/aux/determiner)
+// Make a destructive grammar for tagging as a
+// level after composal
+// Let i grow.
+
+
+Can you test your linguistic -theory- by posing a question to the oracle
+that gives a wrong interpretation ?
+
+(Go through linguistic texts, and replace the route domain for the
+actual example domains).
+
+
+
+Underspecification also applies to detailed formulation of processes,
+states and events.
+
+   The official names are using abbreviations
+                        use 
+
+
+Prøv å formuler grmmatikken som en komplett
+   rewrite system (med gaps).
+Deretter reformuler dette som Consensical grammar
+(1 pass, top down)
+
+
+" Den beste oversettelsen er den du ikke merker "
+->
+
+ Det beste NL-systemet er det du ikke merker
+
+
+Evet Complement Construction is very similar to QLF.
+
+Make one extra effort to reshuffle Coupl storage ("Cooper storage")
+
+especially relative clauses.
+
+
+//couple  koble for ekteskap//
+
+
+Amble modal logic  
+ all that is mentioned is "possible", but
+
+   may be   known/believed/realised/not realised
+
+
+	john did not go to the school:
+
+
+   possible  john went to the scool, 
+   but johne did not realise the coevent
+
+
+Ide.
+
+substantiver er egentlig mengder
+navn er mengder med kardinalitet 1.
+
+Unform behandling ?
+
+Implement BusstUC a la LexTUC reasoning Engine
+
+(incorporate coevent)
+
+Then add as many help predicates/ compiund preicates as you wish.
+
+
+Task for TUC-Explain
+
+Identify a wrong data entry, based on a description of erros.
+(Fault detection in database).
+
+
+Ide:
+
+
+Gjør det mulig å scanne alle NP-items (nummer/name/noun)/"Longest possible"
+
+Stack them, and then try
+
+    np= (     )
+
+
+Here, noe stacking is necessary.
+
+
+
+np_items0 (a la adverbials0)
+
+  OOps  omvendt rekkefølge ?
+
+
+Philosophocally:
+
+   skille mellom
+
+              snakke om en ting
+
+              snakke om beskrivelsen av en ting
+
+
+Two kinds of adverbials:
+
+   predicate adverbials   modifies the event
+
+   sentence adverbils     modifies the coevent
+
+( However,
+
+     in stead of   he did not sing
+
+[new:::not (A isa man,dob/sing/A/nil/B,event/real/B)]
+
+
+=>
+
+     there is a course of events in which there is an event where he sings
+     BUT he did not DO the coeevent.
+
+// invent a new neutral modal verb  nil  /// REALIZE (good word)
+
+[new:::(A isa man,B isa man,   %% C isa coevent,
+        dor/nil/not/that/A/C/D,event/real/D,dob/sing/B/nil/E,event/C/E)]
+                           -                                       -
+														
+
+[new:::(A isa man,B isa man,dor/nil/not/that/A/C/D,event/real/D, dob/sing/B/nil/E,event/C/E)]
+     
+// missing  C isa coevent ??
+
+
+
+Ide: er det mulig å beskrive entry (feil) som dataentry
+
+  og hvorfor det er feil  i TUC Explain ?
+
+
+Overfladiske svar på filosofiske spørsmål der svaret også har en dypere mening.
+
+
+
+Tue Mar  2 11:44:22 MET 2010
+: nor
+kan vi bli sammen -->
+Du må oppgi et sted i slike spørsmål .
+
+
+Tue Mar  2 10:59:16 MET 2010
+: nor
+hvor kommer du fra? -->
+Du må oppgi en buss i slike spørsmål .
+#-> ?
+
+
+%% False supersenses  full -> drunk|whole
+      actually ambiguous, but disamb is imperfect.
+
+
+
+3 levels of knowledge:
+
+   Common sense   (what everyone knows)
+   Rutehefte      (prosa, what everyone can understand)
+   Timetable      (what nobody expects to know).
+
+
+
+Hurtigruta gikk på grunn utenfor Sortland.
+
+
+(The fast window went on reason outside black country)
+
+
+BusWordNet (BuzzWordNet) 
+
+
+eppur si muove (motto for TUC-report)
+
+
+Make a post analys if tql and/real bustql/ and parse
+
+   connections(    ) using destination (id)  as a stack 
+
+When finished. stack should be empty, and app parameters are encoded
+into connections
+
+using leagel (more than 1 argument format for connections
+
+  connections is a coevent.
+  LF is non recursive
+
+Impement a destructive analysis for removing unwarranted lexical
+items.
+
+
+Make it general.
+Put it into a phase.
+
+Let it take over from composal/disambiguation in gram-
+
+Can be made in the lines of rewording, but give it a general (grammar
+like format).
+
+Include rewording into a similar formalism
+
+// This is actuallay bottom up chart-manipulation.
+
+
+
+
+Vi kan slå alle  lagene // Sjekk logikken
+
+Vi kan slå en hver av lagene // modal logisk
+
+
+Rewrite coupl into the new form (with explicit lambda notation)
+
+Make a coupl -predicate explicit in this form
+
+Then rewrite it into TUCE-complement, to be used explicitly!
+
+
+
+Moto:
+
+Everything that is easily understandable for a person shall be
+understood, with the expected interpretation.
+
+
+
+1. Bruke passevent som explicit BusTQL Event Calculus
+
+2. Bruke Coinciding events explicitly (paraphrasable) as a basic
+   constituent in pragma: Translate to (2) passevents seen from the
+   vehicles point of view:
+
+     I take a bus  coinciding event Bus goes
+
+3. I live in X // intention to sy something from which yoy can deduce
+   that I want to go from X.
+
+
+%% rephrase coupl without application operators,
+   use lambdanotation ready for beta.reduction.
+
+   Use explicitly "Typed" lambda expression
+
+       (S:P):Q     S:P is an evant focntion , Q Propertyset predicate
+
+
+
+%% "implement" as showcase
+
+%% Simplify using Amble vention
+
+%% = BusSTUC
+
+
+Det er to måter å kople vent complements
+
+    ECAND       gratis og til NTH
+
+    ECINCL      til NTH på alle lørdager
+
+
+Make a consistent version
+
+    (S:event/R/S):P   ist the official version
+
+    (P::exists(S:event)::do/go/_3406/S and P
+
+
+verb_modifier(go,_3406:bus,
+S,
+srel/to/place/nth/S and P::exists(S:event)::do/go/_3406/S and srel/to/place/nth/S and P,
+P::nth isa neighbourhood and(exists(S:event)::do/go/_3406/S and srel/to/place/nth/S and P),
+
+
+=
+verb_modifier(go,_3406:bus,
+S,
+srel/to/place/nth/S and P::exists(S:event)::do/go/_3406/S and srel/to/place/nth/S and P,
+P::nth isa neighbourhood and(exists(S:event)::do/go/_3406/S and srel/to/place/nth/S and P),
+
+
+Skille  EVENT/R/S 
+
+   The empty event complement is P::P
+
+Make the EC handling in TUC theoretically admissible.
+
+
+// Scoping and negation
+
+N: jeg vet ikke noe.
+
+[new:::('I' isa self,not (A isa thing,dob/know/'I'/A/B,event/real/B))]
+
+det er ikke slik at det fins en ting som jeg vet
+
+N: en ting vet jeg ikke.
+
+[new:::('I' isa self,not (A isa thing,dob/know/'I'/A/B,event/real/B))]
+// not quite correct
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+OK .
+
+N: dette  er en ting som jeg ikke vet.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[new:::('I' isa self,A isa thing,B isa thing,event/real/C,dob/be/A/B/C,not (dob/know/'I'/A/D,event/real/D))]
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+OK .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+E: 
+
+If you were forced to speak with main sentence wording only
+
+...
+
+
+
+, og ==> ;     //prelexical
+
+%% textflag:   verb subjekt  er ikke spørsmål men betingelser.
+
+bruker du kort så reiser du billig.
+
+
+
+Make a bottom level rewrite system (Type 0).
+Then re-implement it as a top down parser (Consensical)
+
+
+Two levels of compliance: one for disambiguation, // meaningful in some world
+                          one for meaningfulness  // meaningful in this world
+
+Rutehefte is in principle complete wrt all that is necessary to know
+about bus trafic (in Th).
+
+Forstå alle spørsmål angående  ruteheftet med henvisning til ruteheftet hvis svaret står der.
+// Dett er et objektivt og gjennomførbart krav
+
+
+',' has same operator priorities as \
+'-' has same operator priorities as /
+
+lambda p q x p(q(x)) ==  p,q,x, p-(q-x)
+(similar to origina DCG)
+
+
+N:  det er ikke slik at bussen går til NTH
+=
+bussen går ikke til NTH
+#=
+Det er aldri slik at bussen går til NTH
+=
+A coevent bussen går til nth does never happen
+// negation of coevent rather than logical negation
+
+N: Det er aldri slik at bussen går til NTH
+[new:::(nth isa neighbourhood,A isa coevent,B isa bus,event/A/C,do/go/B/C,srel/to/place/nth/C,adj/nil/impossible/A/D,event/real/D)]
+
+
+N:  det er ikke slik at bussen går til NTH
+[new:::not (nth isa neighbourhood,A isa bus,do/go/A/B,srel/to/place/nth/B,event/real/B)]
+
+N: jeg nekter å synge.
+
+[new:::('I' isa self,A isa coevent,dob/deny/'I'/A/B,event/A/C,dob/sing/'I'/nil/C,event/real/B)]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+OK .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// Analogi  I negate that I sing
+
+
+
+v_compl, n_compl   : Compliance (not complement) "Samsvar"
+
+
+All prosatekst i ruteheftet skal forstås.
+
+
+Feil rettes  //bakfra og forover// (buslog/bistrans/sem/gram/lex/dict)
+
+Da vil bakre deler få "feil" data, men dette  bidrar til å robustifisere systemet
+
+
+
+Svar på vanskelige spørsmål: (synt)
+
+Hadde du ventet at jeg skulle forstå det spørsmålet ?
+
+Svar på vanskelige spørsmål: (sem) 
+
+Hadde du ventet at jeg skulle svare  det spørsmålet ?
+
+BussTUC understands everything but is not allowed to answer
+metarelevant questions. (Prøve allikevel å hinte dette med subtile
+detaljer)
+
+Vanskelige setninger blir forstått og ignorert på en PRESIS måte.
+Jeg kan DESVERRE ikke svare på det for gode metarelevante spørsmål
+
+
+Module Identifier (route period) is the closest to the Montague
+intentional operator.
+
+I seek a station Einhorn ( in some route period module)
+
+
+Uke 1 = 4-10 januar  2010 !
+
+Intelligence is ability to explain knowledge.
+
+TUC is inteligent when it can explain its knowledge!
+
+Data is set of TYPE X VALUE
+
+
+
+TUC  Database /Prolog tables wihout attribute names is DATA LEVEL
+
+Attribute names belong to the information level.
+
+Knowledge   rules of inference over RDBM
+( used to check Info, / defaults etc)
+ 
+
+Intelligence (nec to explain Knowledge, used when lack of knowledge
+and erroneous K)
+
+A system cannot explain its functions and manner of operations,
+but it should be able to explain its reasoning down to the details.
+
+
+Whole Idea:  Translate one logical form (or NRL) to another LF
+  with the same possiblilities of being translated to a logical base
+  as tye original.
+
+
+I:  Person utters a sentence and devices which base logic form it is
+    to be interpreted as.
+
+
+Presumes that the object world can be described completely in (event)
+logic with whatever predication that is comprehensible.
+
+
+
+
+
+
+I BusTRANs  Klarere skille mellom 
+
+      constraints
+      defaults
+      subset of departures
+      rendering og departures
+
+Skille   
+
+Intelligence: Can nswer in lack of Knowledge
+=>  Can check consistency og knowledge base
+(Intelligence have constraints of K)
+
+
+Intelligence can be used to correct a KB
+
+
+etc for Knowledge/Information
+
+
+Treat 'I' as a name ?
+
+
+Inn-korporer GPS-adressene holdeplasser inn i til Buss-oraklet.
+
+as a new type of "location".
+
+   gps(Lat,Long)
+
+Connect stations to locations
+
+Problem: Google-identification
+
+But  make a simulation!
+
+
+From   Yggdrasilvegen 9c  til "Trubadur" den 27.1 før kl 9.
+
+
+      Y9c -> Gløsh S
+      GløsH s -> Torget
+      Torget -> "Trubadur"
+
+
+Problem: 
+
+
+What is common (e.g. in relative clauses) MUST be outscoped.
+
+A man that a woman loves    scope man   woman love
+
+
+
+Introduce  w(mann,noun(man,sin,u,n))
+           w(det,[])   %% = [det]
+or
+
+           w(_,...) in grammar
+
+
+Ide:
+
+En operatør og et nat språk system 
+må finne seg i å bli utfordret uten å bli fornærmet og svare uhøflig
+men må ikke gå inn på en slik dialog.
+
+
+Hva med å gjøre coevent ako time ?
+  Før jul / før nissen kom
+
+
+
+Lars Bungum Scenario
+
+Motiverer ønske pm å vite reelltids scenario.
+
+Man ønsker å ta buss 5 fra Joh F V til Gløs (Direkte buss) , men ankommer litt for sent etter ruteplanen.
+
+Hvis buss 5  er gått lønner det seg å ta buss 19
+Hvis buss 5 ikke er gått lønner det seg å vente på buss 5.
+
+Ankomst JFV kl 0634, buss 19 ankommer presis, 
+Buss 5 ikke synlig er ca 4 minutter forsinket.
+
+Hvis buss 5 ikke er gått, man vet det og venter, Ankomst = 0654
+
+     N: buss 5  fra johan falkbergets vei til nth i morgen etter kl 0630.
+     Buss 5 passerer  Johan Falkbergets veg kl.  0630 , kl.  0640 og  kl.  0650 
+     og  kommer til  Gløshaugen Syd ,  21 minutter senere .(+ 4 min)
+
+Hvis buss 5 nettopp  er gått, man vet det ikke, 
+lar buss 19 gå og venter på neste Buss 5         Ankomst =  0705 
+
+     Buss 5 passerer  Johan Falkbergets veg kl.  0640 , kl.  0650 og  kl.  0700 
+     og  kommer til  Gløshaugen Syd ,  21 minutter senere (+ 4 min)
+
+Hvis buss 5  er gått (og man vet det), buss 19 er presis.   Ankomst = 700 
+
+     N: buss 19  fra johan falkbergets vei til nth i morgen etter kl 0634.
+
+     Buss 19 går fra Johan Falkbergets veg kl.  0634 til Studentersamfundet 1 kl.  0647 
+     og  buss 52 går fra Studentersamfundet 2 kl.  0658 til Gløshaugen Nord kl.  0700 .
+----
+   
+
+replace w(   by w(_,  everywhere (in gram)
+
+w(Lit,Code)   Lit is printed in syntax tree
+
+
+[a] === w(a,lit(a))
+
+
+
+jeg lengter etter å sykle .   .. complement
+jeg venter etter å sykle.     .. modifier
+   
+
+adj/fake/Diamomd   
+
+
+ is a metapredicate that modifies Argument
+
+
+%% Disambig phase
+
+You must code every word so that the different senses gets explicit.
+
+e.g.  adverb, conjunction, auxiliary, etc
+
+ nå = adv(now)  verb(reach) 
+
+   verb(reach)+verb(_) -- eliminate verb(reach)
+
+Define it as a destructive grammar upon txt,  only concatenated.
+Not allowed to remove if that is the last
+
+    del ---> \* verb(reach,_,_), verb(V,T,P).
+ 
+    del ---> - verb(reach,_,_), verb(V,T,P).
+
+OR
+
+    del ---> ( -verb(reach,_,_) // adv(now)),verb(V,T,P).
+
+    Removand first
+
+   if verb(reach) and adv(now) on the same word place, 
+   remove verb(reach) if followed by a verb
+
+ 
+
+Then formulate a Phase where you eliminate unwanted senses. (In lex)
+Make a "rule based format" that can be used as is on some tasks in composal.
+
+
+Consensical grammar is actually a top down/depth first implementation
+of  a Type 0 grammar with limiterd look ahead.
+
+
+
+1.
+%% Update weekstat in addition to daystat
+%% Weekstat is indexed on Year+Week
+
+2.
+%% When Stopbuss, listing weekstat -> File
+        Startbuss, load weekstat
+
+Some verbs : "like" "live" are not DO-dverbs but more like experience verbs
+              kjenne
+
+Bor du i trondheim * Jeg kan ikke gjøre det
+
+Then: "I cannot do that" /"Jeg kan ikke gjøre det" is not quite correct.
+
+
+
+// Dens saklighet (evnen til å holde stilen selv  om den visste at det
+var spøk)er en del av humoren.
+
+
+// standard clock problem  
+replaceall srel/nil/clock/1900/free(66)with srel/nil/time/1900/free(66)
+
+Hva med å la srel/nil/clock/1900/E   være standard ?
+
+Idea: Rendyrk pragma as rewrite-system
+
+Analyse when a rule further up is fired after a rule further down.
+
+
+Generelt, partiell ordning av regler i et produksjonssystem.
+
+Each rule has a pointer to the next rule that is applicable
+(given no rule before did fire).
+
+Is that possible (necessary that the ordering is partial ?
+
+
+adj2(nil,good)  change to adj2(good,nil)
+
+
+replace w(adj2(  --> wx(adj2(
+
+Production
+
+    wx(adj2(Nil,Good)) --->   w(adj2(Good,Nil)).
+
+Then Change wx when time
+
+
+w(adj2(nil,good)),helloday. 
+
+wadj(w(adj2(nil,good)),
+
+
+Rescope SOLON-expressions a la Pereira&Shieber
+
+
+It is the coevent/world parameter that resembles the ^ operator in
+Montague Semantics.
+
+I seek a Unicorn ==> mak it a a rvp
+
+
+Sometimes tempting to have a  reversed application operator
+
+   dog \ (X: X \ lives)
+
+Rework TUC EC, let effect be valid at timepoint (easens planability)
+
+
+
+Relasjon/Predikat sortering er mandatory for 1. ordens predikatlogikk
+
+Sortering på navn, og liste alle dets egenskaper, er typisk for
+Montague-semantikk og Rammebaserte kunnskap.
+ 
+
+tv_templ(kill,man,animal) 
+
+    exists events in W0 such that
+
+           coupl/"kill"/"some man"/"some animal"
+
+
+
+
+Navngi alle grammatikalske kategorier som
+
+
+   np_syntx   np angir semantisk kategori / syntx syntaktiske restriksjoner
+
+// Make a (multi) tagger for all categories (conjunction, article, aux etc.)
+// in addition to [literal].
+
+// Make a complete list of all ambiguous issues
+
+// Make a tagger/ disambiguator // bottom up, destructive parse
+
+
+
+
+Lexical rewrite as an option:
+
+
+  det er hyppig forekommende = det skjer ofte
+
+lexrewrite([er,hyppig,forekommende],[skjer,ofte]). %% generalz of splitword
+rewording([er,hyppig,forekommende],[skjer,ofte]). 
+
+// et er godt å ta buss
+
+ det  verb  adj2  å  verb           state              state
+         |     |        |         _____|____          ____|___
+         |     |        |        /          \        /        \
+        be    nil     take  quant_pron   vp_kernel  < >  verb_phrase1
+
+// bytte om adj2(root,mod) <--- // Standard
+
+det  verb    adj2  å  verb           state              state
+         |     |        |         _____|____          ____|___
+         |     |        |        /          \        /        \
+        be    good     take  quant_pron   vp_kernel  < >  verb_phrase1
+
+
+Alt rep
+Make it ala chart parse representation.
+
+// with a uniform treatment of words (w(_)) w([]), it becomes easier
+// to put sequences of words on the stack
+// jfr np = seq. of words (name|number|noun)
+
+
+txt(0, w(ja,name(ja,n,answer)), 3).
+txt(0, w(ja,[ja]), 3).
+txt(0, w(det,[det]), 1).
+txt(1, w(er,verb(be,pres,fin)), 2).
+txt(1, w(er,[er]), 2).
+txt(2, w(greitt,adv(well)), 3).
+txt(2, w(greitt,adj2(nil,good)), 3).
+txt(2, w(greitt,[bra]), 3).
+txt(2, w(greitt,[greitt]), 3).
+txt(3, w(å,[å]), 4).
+txt(4, w(ta,verb(take,inf,fin)), 5).
+txt(4, w(ta,verb(take,imp,fin)), 5).
+txt(4, w(ta,[ta]), 5).
+txt(5, w(buss,noun(bus,sin,u,n)), 6).
+txt(5, w(buss,[buss]), 6).
+txt(6, w('.',['.']), 7).
+
+==> ?
+txt(0, ja,w(name(ja,n,answer)), 3). // w is uniform
+txt(0, ja, w([ja]), 3).
+txt(0, det,w([det]), 1).
+txt(1, er,w(verb(be,pres,fin)), 2).
+txt(1, er,w([er]), 2).
+txt(2, greitt,w(adv(well)), 3).
+txt(2, greitt,w(adj2(nil,good)), 3).
+txt(2, greitt,w([bra]), 3).
+txt(2, greitt,w([greitt]), 3).
+txt(3, å,w([å]), 4).
+txt(4, ta,w(verb(take,inf,fin)), 5).
+txt(4, ta,w(verb(take,imp,fin)), 5).
+txt(4, ta,w([ta]), 5).
+txt(5, buss,w(noun(bus,sin,u,n)), 6).
+txt(5, buss,w([buss]), 6).
+txt(6, '.',w(['.']), 7).
+
+(===> ?
+
+txt( ja,w(name(ja,n,answer)),0,  3).
+txt( ja, w([ja]), 0,3).
+txt( det,w([det]),0,  1).
+txt( er,w(verb(be,pres,fin)),1,  2).
+txt( er,w([er]),1, 2).
+txt( greitt,w(adv(well)),2,  3).
+txt( greitt,w(adj2(nil,good)),2, 3).
+txt( greitt,w([bra]),2,  3).
+txt( greitt,w([greitt]),2, 3).
+txt( å,w([å]), 3,4).
+txt( ta,w(verb(take,inf,fin)),4, 5).
+txt( ta,w(verb(take,imp,fin)),4, 5).
+txt( ta,w([ta]), 4,5).
+txt( buss,w(noun(bus,sin,u,n)),5, 6).
+txt( buss,w([buss]), 5,6).
+txt( '.',w(['.']),6, 7).)
+
+In NRL/KRL, the scoping is lexical.
+
+
+The center of each/all/most/ galaxy  (we know  one center for each galaxy).
+
+
+* Every citizen has a king
+
+A king is had by every citizen.
+
+
+I og for seg er det et ideal at Bussoraklet ikke skal være underholdende.
+
+
+La all output i txt være w(A,B) ---> ww(A,B).
+
+           w(X) === ww(_,X)  in gram
+
+           [jeg]=== ww(jeg,[jeg]) in gram
+
+
+You are free to replace w(X) as it is  by
+                        ww(j,[jeg]).
+
+
+
+
+// You must make a version where the tables are completely separated
+   and pure data tables.
+
+// Grammar contains NO specic names
+// Bustrans contains NO specic names
+
+// Make a complete manual: How to maintain the bus oracle.
+
+// Special section: How to modify other tables ( semantic, dict)
+
+// etc.  grammars/trans/...
+
+// Pretend it is possible to take over Bus oracle.
+
+
+
+// Send en kommentar til dette svaret hvis hvis du mener det kan
+   forbedres.
+
+
+
+
+Who is to judge whether an interpretation is correct:
+
+Positivism:  If we never disagree on the answer, then we cannot say
+that the representation is incorrect.
+
+
+
+In NRL,
+
+   treat negation in a similar way as quantifiers
+
+
+
+In NRL.
+
+
+One criminal knows every owner of a hash bar.
+
+(% 5 readings)
+
+
+N: bussen går ikke til en holdeplass.
+
+[new:::(A isa bus,not (B isa station,do/go/A/C,srel/to/place/B/C,event/real/C))]
+
+ =>bussen går ikke til noen holdeplass
+
+
+#=> det er en holdpelass som bussen ikke går til
+
+[new:::(A isa bus,B isa station, not (do/go/A/C,srel/to/place/B/C,event/real/C))]
+
+%% replace / by @ (as sin Blackburn and Bos).
+At least, comment end explain it
+
+
+
+N: bussen går til en holdeplass langt fra sentrum.
+
+........................................................................
+[new:::(sentrum isa neighbourhood,A isa bus,B isa station,do/go/A/C,srel/to/place/B/C,srel/far/place/nil/C,srel/from/place/sentrum/C,event/real/C)]
+    
+
+[new:::(sentrum isa neighbourhood,A isa bus,B isa station,do@go@A@C,srel@to@place@B@C,srel@far@place@nil@C,srel@from@place@sentrum@C,event@real@C)]
+
+........................................................................
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Du må oppgi et sted til i slike spørsmål .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+-----
+
+Make a summary of all questions resulting in the answer
+
+
+   That is not possible.
+
+
+Make it a sad life story (the depressed cripple).
+
+TUC has no body, worse than a crippled body.
+
+
+----
+
+
+sentencial adverbs modifies the coevent.
+predicational adverbs modify the event.
+
+---
+
+Make a pure database (ala LPKE) of BUSLOG with explicit event and
+coevent "objects".
+
+Allow some structured objects (date/clock).
+
+
+Make a system to paraphrase BUSLOG into TQL.
+
+Use that TQL as a reference.
+
+Options/ Optimasitions are modifiers to the coevent ("sentential adverbs") 
+
+
+jeg tok bussen og så tok jeg trikken og så et tog.
+
+// allowed to be as confused as a humen
+
+vehicle ako conveyor // more abstract
+route ako conveyor
+
+
+
+NEW connections:
+
+connections(B,A,free(17),hovedterminalen,nardosenteret,thursday,53,[to,from],C,D)
+
+==>
+
+connections(BUS, DEP, ARR, DEPTIME, ARRTIME, DAY, MODULE, DAYSEQNO, OPTIONS, C , D)
+
+
+// Use $-notation
+
+
+today(thursday)
+atday(thursday)
+atdate2(53,date(2009,8,6))
+departure(free(17),nardosenteret,53,A)
+flag(keepfrombay)
+departure(free(17),hovedterminalen,53,B)
+connections(B,A,free(17),hovedterminalen,nardosenteret,thursday,53,[to,from],C,D)
+flag(exit)
+
+==>
+
+today(thursday)
+atday(thursday)
+atdate2(53,date(2009,8,6))
+flag(keepfrombay)
+connections( departure(free(17),hovedterminalen,53)$, departure(free(17),nardosenteret)$,hovedterminalen,nardosenteret,thursday,53,[to,from],C,D)
+flag(exit)
+
+
+
+
+
+
+(FOREL)
+
+
+Verbs are reified as actions.
+----------------------------
+
+N: jeg heter tore .
+
+........................................................................
+
+w(jeg,[[jeg]])
+w(heter,[verb(be_named,pres,fin)])
+w(tore,[name(tore,n,firstname),name(tore,n,0)])
+w(.,[[.]])
+
+
+*** Word graph ***
+
+txt(0, w(jeg,[jeg]), 1).
+txt(1, w(heter,verb(be_named,pres,fin)), 2).
+txt(2, w(tore,name(tore,n,firstname)), 3).
+txt(3, w('.',['.']), 4).
+
+ // should have been renamed    ww
+
+
+txt(0, ww(jeg,[jeg]), 1).
+txt(1, ww(heter,verb(be_named,pres,fin)), 2).
+txt(2, ww(tore,name(tore,n,firstname)), 3).
+txt(3, ww('.',['.']), 4).
+
+
+w(CODE) ---> [T],{ww(T,CODE)}. %% Implicit
+-----------------------------------------
+
+
+
+
+
+1. MultiTag all words , include conj if conjunction, aux if auxiliary etc
+2. Destructive Parsing, remove txt entries according to contextual tagging
+   Applies to composite analysis (composal) in lex
+3. Try thus to avoid all look_ahead, using tagged constructions when
+   they are.
+
+
+Start with a principled new impementation of composal driven as
+destructive grammar.
+
+
+Vi gikk ut på en resturant og spiste  salat og pizza men ingen spiste salat og Pizza.
+
+Select weakest interpretation
+
+
+
+Den største svakheten med Consensical grammar er ikke 
+slash-koden (når den blir brukt riktig) men mangel på disambiguering
+(tagger).
+
+
+
+
+Second Order Event Calculus
+--------------------------
+
+
+Use this query as a case:
+
+ (  Går bussen oftere mer enn 10 minutter forsinket enn tidligere ?)
+
+  Går bussen oftere enn tidligere mer enn 10 minutter for sent.
+
+Lag en datamodell (historisk)
+Gjør antagelser:
+    Det er avgangen som er forsinket (ikke passeringeren),
+    dvs hvis minst 1 passering > 10 min.
+
+    Tidligere (=år), minst 5 år ?
+
+    Antall avganger normert
+
+    Lag er SQL-uttrykk
+
+    Reformulate in SOREL (as a superset of SQL)
+
+¤¤¤¤¤
+
+Kvendseth Scenariet:
+
+
+1. Svar fra TA gjennom BT
+
+2. KBS ES a la Explain
+
+3. Gitt kunnskap om mangel (koding av pendel-ruter)
+
+4. Utled forklaring på problemet
+
+5. Brukes som case i overvåket maskinlæring
+
+6.
+
+7. Legge igjen litt av sjelen din:
+          
+      Gale Tore (syntese av visjon/Sci.fi/galskap/bevissthet/
+          liv etter død/uoveråket
+    
+      Alter Ego (Online Representant for deg)/livet etter
+      retirement/overvåket
+
+      El Tagore (Administrator for normal cases)
+
+      BusTUC    (Knowledge)
+
+      BusLOG    (Information)
+
+      BusRoute  (Data)
+
+
+"Stygt å erte personer med Savant Syndrom"
+
+Kan elefanter klatre i gardiner ?
+
+
+Snakke med Tore A etter at han er gått bort.
+
+Hybrid Kyborg
+
+  Mener det samme som TA when very neutral and polite
+
+
+
+Query from Kvendseth
+Answer from BussTUC
+Answer from Me
+
+!
+
+
+
+Er han som sitter ved siden av meg kona di? -->
+
+
+Presupposition fails -> Answer  That is not possible
+
+True
+False
+Impossible    
+Possible      
+
+Make truth table
+
+  
+
+
+
+\  first
+/  last (preference)
+-  //
+...  free
+
+
+
+
+
+\ is first
+/ should be last, i.e. priority after text
+
+findmetavirts( _ / Z):- %% <--- ¤¤¤¤ Missing for years %% TA-030918
+    !,
+    findvirtuals(Z).
+==>
+
+findmetavirts( _ / Z):- %% <--- ¤¤¤¤ Missing for years %% TA-030918
+    !,
+    findvirtualslast(Z).
+
+virtualslast are appended at the end of dcg_n.
+
+Make a smoketest: add virtuals at last .
+       ----------
+
+Introduce // as an optional virtualsfirst
+
+¤¤¤¤¤
+
+
+cheap         adj(nil,cheap)
+cheaper       adj(more,cheap)
+cheapest      adj(most,cheap)
+
+very cheap    adj(very,cheap).
+
+
+
+exists(dragvoll:station)..  er en utmerket notasjon
+// not if scope is too narrow
+(Constants have wide scope)
+
+
+IDE:
+
+        :  variable-type
+ det er :: som er intern lambda-variabel
+        ::: sentence tag
+
+
+exists(X)::X isa bus and go/X
+
+=
+
+exists ((X)::X isa bus and go/X)
+=
+exists ( X::X isa bus and go/X)
+
+-----------------------------------
+
+
+Buss går meget sjeldent alt for fort.
+
+Kan dette formuleres som egenskaper ved co-event ?
+
+
+
+
+MindStone ( "minnestein")  = Epitaph
+
+Program that resembles a retired  person.
+
+
+
+El Tagore er Alter Ego til Gale Tore
+-----------------------------------
+
+(Gale Tore har Alter Ego lik El Tagore)
+
+Mitt Alter Ego  er El Tagore
+
+El Tagore = Alter Ego
+
+(Gale Tore tror han er en datamaskin).
+
+
+Level above can make corrections on the level below.
+
+Can receive reports on erreror and short compings and make corrections.
+
+e.g Tagore on TUC
+
+    AlterEgo on Tagore
+
+
+Tagore level 1   BussTUC
+Tagore level 2   Understand and run BusTUC
+Tagore level 3   Tore A "soul" laid behind. You can talk to him.
+
+Tagore level 1   Knowledge
+Tagore level 2   Intelligence
+Tagore level 3   Wisdom.
+
+
+Tagore is left behind as an agent online representative.
+
+Here is a place to put AlterEgo's  soul in. Not that AlterEgo have eternal life,
+but people can communicate with IT as if it were AlterEgo.
+What do AlterEgo want to leve behind
+
+iphonevennlig   name+adjective    adj/iphone/friendly/E
+                noun
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+en meget svart buss gikk meget fort
+
+    adj(adv(very,black),b)    mod(adv(very,fast),e)
+
+
+adv(very,black) is a skolemized adj-function
+
+In TQL     adj/very/black/E    adj/very/fast/E    very fast
+
+or         adj/nil/black      adj/nil/fast/E      fast
+
+
+
+
+context sensitive rewrite system (priorited, with destruction)
+Can you formulate a strategy that captures the whole process ?
+
+
+bussen  er ofte veldig forsinket.
+bussen er veldig ofte forsinket
+bussen er forsinket veldig ofte
+
+bussen går ofte veldig fort
+bussen går veldig ofte fort
+bussen går fort veldig ofte
+
+// veldig er gradsadverb
+
+Alle nominal adjunkter inneholder implisitt presupposisjoner.
+
+Kongen av frankrike er skallet (implisitt presupp.)
+
+Frankrike har en konge som er skallet (eksplisitt)
+
+Egen logisk operator  provided (forutsatt at) som
+
+Gutten som hopper er flink.
+
+Hvis restriktiv (Alle guttene som hopper er flinke) Gir Tom Scope
+Hvis han ikke hopper 
+Hvis gutten hopper, så er han flink ( => )
+
+
+
+Natural implication:     ==>
+
+     Ikke alle gutter er flinke
+     Noen gutter hopper
+
+// Unngå conjunction of A=>B where A=false doesnt count
+
+Altså:
+
+Kongen av frankrike er skallet 
+
+   Frankrike har en konge(X)  ==> konge(X) er skallet
+
+
+Natural Implication is a second order operator.
+
+    NatImpl     P ==> Q
+
+True if 
+
+   exists X:P(X) and exists Y:not Q(Y) and
+   forall (X (P(X)=>Q(X)).    
+
+False if 
+
+   (exists X:P(X) and exists Y:not Q(Y))
+  and
+  not forall (X (P(X)=>Q(X)).    
+
+Undefined otherwise ( Illegal? Unknown ?)
+
+// alternative
+
+Implictions have 3 arguments
+
+  Impl(Presupp,Condition,Conclusions)
+
+Undef if not (Presupp,
+Otherise, conjunctive  Cond(x) =Z Concl(x)
+
+
+Kongen av frankrike er skallet
+
+    Impl(exists (x):KF(x) and not forall (x):Bald(x)),
+         x:KF(x),
+         y:Bald)
+
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+Ide: BusstUC kan lage statistikk selv.
+
+Stopbus will save file
+
+Indexed on Date
+
+You can query it
+How many queries did you answer 
+
+    last ....10 .. days ... 
+    since ...
+    between ... 
+
+//Full pakke
+
+
+
+
+Daily Weekly Monthly
+
+
+SMS + Web -   (*10) = Tot
+
+Date 090421 Week ...
+
+Mon ++++++------ 
+Tue ++++++---------------
+Wed ++++---------------
+Thu ++++++---------------
+Fri ++++---------------
+Sat ++++++-----------
+Sun ++++++---------------
+
+Tot  SMS = 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bussoraklet er latterlig bra.
+
+
+Subject: gatunummer fungerar icke? // -> 
+#->
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Jeg har ingen informasjon om feil .
+Feilrapporter vil bli videresendt administrator .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+Kan man legge inn kall til et program i email ala
+
+  %% .answer i ( T.A er på fereie og kommer tilbake...)
+
+
+How do I hit the White house from Teheran.
+
+
+BussTUC   vet  nesten alt om nesten ingen ting og
+               nesten ingenting om nesten alt 
+               (som er kjennetegn på savanter) 
+
+
+
+
+x <-> P:P(x)   resembles   vector <-> covector (linear form) in Tensor C
+
+
+
+ 
+
+
+
+New Tensor Calculus    "Tensoral Calculus"
+("Tense" , Temporal)
+------------------------------------------------
+
+
+do :== H:A:B:E: action/H/E and agent/A/E and patient/B/E
+
+e.g.
+
+  do/hold/'I'/Y/E ->  
+
+ action/hold/E and agent/'I'/E and patient/Y/E
+
+
+do   ( action subject) (Direct) Object
+
+doi  ( action subject)  Direct Object Indirect Object
+
+d    ( action subject)
+
+// Introduce     d/go/'I'/E
+
+
+// Needs not be evaluated until a later time, but can be manipulated
+// according to  meaning axioms ( Montague?) 
+
+// Canonical Acronyms for contraction
+
+   a  action
+   s  subject
+   o  object
+   i  indirect object
+   e  event
+
+do= asoe
+d = ase
+
+// 
+
+do   intransitive
+doo  transitive
+
+
+
+
+
+
+
+Tagore = Tore Amble qua  agent online regarding to BusTUC.
+
+The  AGent Online REpresentative 
+TUC
+Team
+Tore
+Traffic
+
+  Administrator
+
+
+Make BUSLOG into an extended E-Calculus, which can be extended
+to LexTUC
+
+
+New Parsing Strategy
+
+1.
+
+Make a chart parser (not considering gaps or movements) just
+building the structures (especially noun phrases).
+
+2.
+Incorporate tuc/lex (compnames
+compwords etc
+
+3.
+
+Use destructive (Proxy) rules to remove known subsumants
+Incorporate tuc/lex (remove/  cleantext ext)
+
+(Clean texts
+
+4. Use longest first presedence
+
+5. Then apply Consensical grammar,
+   disregarding code generation
+
+6. Reparse, generate code
+
+
+
+---------
+
+
+4 Truth values
+
+True
+False
+Meaningful
+Meaningless
+
+Logical/             Meaning... in all worlds
+Semantic/            Meaning... in some world
+Factual/             Meaning... in this world
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+Pragma-kode (Buslog) should be using ONLY meta-predicates
+
+keepbus( ---> keep(bus,
+
+keepbefore( ---> keep(before  etc
+
+departure is unnecessary until the code generation(connection)
+
+
+They could also be organised around the passevent variable,
+without "chaining"  that is done with connection.
+
+
+
+To er en mengde med to elementer av klasse ting
+To busser er en subclasse av To 
+
+Make a type for each object
+
+    NP    VP:P
+    MOD    (S:VP):P  (represented as S,VP:P
+
+Now denoted   S, VP:P
+In time, can be denoted ( S,VP):P
+
+
+" Hvis du ønsker å kommentere svarene fra bussoraklet  
+  kan du gjøre det på samme måte som for bussrutespørsmål. "
+
+" Her kan du også  gi kommentarer angående svarene fra bussoraklet. "
+
+ 
+
+
+
+
+Mål: BussTUC = Nivå 
+
+Vanlig menneske + rutehefte
+
+
+
+Montague semantikk gjør DO BE HAVE til eneste lovlige predikasjoner
+
+
+"R" i noen statement sammenhemger er en co-event variabel
+
+real isa coevent kan droppes.
+
+
+Setningsvadvern modifieserer co-event   ("R")
+Predikatsadverb modifiserer  hendelser  ("S")
+
+Buslog som Extended Event Calculus
+
+Formuleres eksakt, på BusLOG (pr idag).
+
+  noen egenskaper handler om preferanser/opsjoner for
+  mengden av løsninger
+
+   (a la 5 første avganger).
+
+
+Idea: Programmet ser  pent ut, men
+en en liten umerkelig endring vil gjøre at det ikke virker.
+
+
+TQL is executable Prolog Code.
+
+If you paraphrase NRL you can get a kind of english
+
+in other words
+
+From bengali -> TQL -> NRL -> English
+
+is a kind of translation in a restricted domain.
+
+
+
+
+np1(X, VNP) --->
+    np_kernel(Ind, X, P0,P1, NP),
+    noun_modsx0(Ind,X, P0,P1).
+
+
+// make it more like
+
+
+np1(X, VNP) --->
+
+     np_kernel( KK:NPK),
+
+     noun_modsx0(Ind,X, KK:NPK, VNP)
+
+
+NRL er parafraseringen av FOREL (litt teknisk)
+
+
+
+Ide. Make one of the  hashes where first and last last letter the same, but
+  the middle characters  are sorted (sequence doesnt matter)
+
+// Folk leser 1. og siste bokstav, rekkefølgen av de imellom er ikke
+   så viktig. 
+
+// Dette er allerede implementert i amble# (fjern en bokstav,
+reinsett).
+
+
+
+10001 =  73* 137.
+
+Levels.
+------
+
+Tore Amble in full capacity       Wisdom
+
+Albert Moe, his alter ego Prolog hacker, made the Buss Oracle   Intelligence
+
+Tagore, savant computer, operates the BussTUC   Intell/Knowledge level
+
+BussTUC   natural language interface            Int/ Knowledge/ level
+
+BussLOG   Bus Route Info System                 Know/Info level
+
+BusRouteDB                                      Info/Data level
+
+
+Lag en skjelett-grammatikk som er felles for E og N.
+Denne skal være "publiserbar"
+
+
+Lag raffineringer etter det. 
+
+
+Make gn so that it CAN be used as an English grammar.
+Then coalesce them.
+
+
+Are all unicorns blue
+
+forall(X: P(x) => Q(x)) is defined as
+
+   true & (P(a1) =>Q(a1) & P(a2) => Q(a2) & ... )
+
+
+where 1 failed => makes it false
+
+If no P(x), the also false.
+
+Define a new logical constant U
+
+forall(X: P(x) => Q(x)) is defined as
+
+   V & (P(a1) =>Q(a1) & P(a2) => Q(a2) & ... )
+
+
+V & t = t
+V & f = f
+
+but V alone stands
+
+
+Dual for exists    
+
+exists(X: P(x) & Q(x)) is defined as
+
+W or P(a1)&P(a2) or P(a2)&Q(a2) ...
+
+
+W | t = t
+W | f = f
+
+but W alone stands
+
+
+(does not exist any)
+
+Is there a blue unicorn ?   NO
+
+
+oops There are no unicorns
+
+
+Negation:
+
+it is not true that all unicorns are blue
+
+= - V = V
+
+// coalesc V W
+
+5 valued logic
+
+    T   True
+
+    F   False
+
+    U   unknown (but defined)
+
+         U and F = F, U and T=T, U and F = F, U or F = U,not U = U
+
+    S   singular   S op X = X, not S = S
+
+    I   illegal, (destructive)    I op X = I  not I = I
+
+
+Check it is complete, assoc/commut wrt logical operetors
+How about  
+
+   coincide eith natural implication
+
+         forall(X: P(X) => Q(X)) means
+
+      exists(X:P(X)) & exists(X: not Q(X)) and   "forall(X: P(X) => Q(X))" 
+    
+
+         exists(X: P(X)&  Q(X)) means
+
+       exists(X:P(X)) & exists(Q(X)) and   "exists(X: P(X) & Q(X))" 
+    
+  
+---------------
+
+Mail fra Team til tagore med vedlegg blir behandlet automatisk,
+og en ny versjon blir laget. (Ideelt sett et ferdiglaget .sav, men
+det er vanskelig pga inkompatible Prolog).
+
+Svar blir ferdig-generert men sendt til TA  for godkjenning , og
+videresending til Team.
+
+(Ideelt sett kan dette gkørse på Team trfikk sin server)
+
+
+
+Svar fra TUC:   dobbeltbunnet
+           Naive savant - Intelligent with oracle like double
+           meanings, and with sense of humour.
+
+
+Top down call is the context in which a phrase is parsed
+
+
+Metagoric   new name  meta+tagore  
+
+            The viewpoint of an administrator of a NLES system.
+
+Shift from objects to information about objects.
+
+
+Strict rules for writing have only  been necessitated for disambiguation purposes.
+
+
+BussTUC har oppnådd programmert intelligens når du ikke lenger
+trenger å forandre noen programmer.
+
+De resterende endringer må kunne håndteres av en dynamisk oppdaterbar
+database som kan instrueres i naturlig språk, fortrinnsvis med
+naturlig tale dialog.
+
+
+Tagore er ikke den som har laget BussTUC, men som med tiden er i stand
+til å drifte den.
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+Du må ikke bekymre deg over et manglende problem.
+
+
+BussTUC er pålagt å spille savant, men viser sitt vidd ved
+ufrivillig humor qua savant.
+
+Ufrivillig humor fra en savant er tilsiktet humor fra TUC.
+
+
+Context sensitive actually means context senstive rewriting
+CSG is a subset, garanteed to be terminating (if loopcheck , whic is
+not a theoretical probmem)
+
+Problem:  How to make context sensitive rewriting top down (and efficient)
+
+try tv_templ(notify,agent,nil)
+
+// all verbs that are both intransitive and rv/tv/cv 
+    get do/V/X/nil/E instead of V/X/nil
+
+sjekk  bussen kjører / jeg kjører bussen
+
+
+It is wise to debug from behind, in order to make 
+the whole program more robust.
+
+(handle erroneous data at any place).
+
+
+vsoie verb subject object indobj
+
+doi/give/'I'/Box5/You/E    do  obj ind(if applicable) ????
+
+do/take/'I'/52/E      do means   direct object (and do!)
+
+d/fly/'I'/E -> fly/'I'/E    -> ?
+
+
+In this way, all elements in tql are given metapredicates, 
+
+   with a subset corresponfig to LEXTUC ,
+
+   but with some aggregates.
+
+
+do/take/'I'/52/E    ... d/take/'I'/E, o/vehicle/52/E
+                        d             object
+
+srel/dir/vehicle/52/E  ->  o/vehicle/52/E
+
+
+En løsning er bra nok hvis det ikke finnes  noen løsning som er bedre på alle måter.
+
+
+push    last means last, prefer read from text if anything last is on stack.
+
+
+ 
+
+Erstatte alle w(noun(bus.sin,def,u,n)) med
+              w(_,noun(bus.sin,def,u,n))
+
+as a start.
+
+Then generate
+
+              w(bussen,noun(bus.sin,def,u,n))
+
+Then use it in grammar when appropriate
+
+Then [etterpå] ->    w(etterpå,[etterpå]) 
+
+  etterpå befor syn
+
+Then simplify runtaime system.
+
+¤¤¤¤¤¤
+
+
+
+Gitt at du starter med en flertydig men komplett Attribute Logic Grammar 
+
+Utled en entydig grammatikk basert på Longest First Preference using
+look_ahead og cut.
+
+
+
+Introduce  
+
+
+     verb(be,inf,fin).    technicla for skal være/FUTURE (ankomme)
+
+
+SOLOG:
+
+is   update/_B/R/_, 
+     R isa OP,      {dmeq([program,oracle,code,savant],OP)}, %% oracle oppdatert
+     clear        
+
+==>
+
+      update/B/$isa( dmeq$([program,oracle,code,savant]))
+
+
+
+
+N: jeg venter inntil imorgen.
+
+[new::('I' isa self,wait/'I'/A,srel/until/time/tomorrow/A,event/real/A)]
+                               ***************************
+
+%% NB NEW REGIME FOR ADVERBS
+
+
+N: bussen går inatt.
+
+[new::(A isa bus,go/A/B,srel/this_midnight/time/nil/B,event/real/B)]
+
+====>
+
+[new::(A isa bus,go/A/B,srel/nil/time/this_midnight/B,event/real/B)]
+                        *****************************            
+
+
+
+N: 
+
+// Evnen til å resonnere seg frem til om en setning er et komplimang
+   er en del av savant-personligheten.
+
+dette = coevent
+
+
+
+Bussoraklet skjønte ikke at bussen sto.
+
+A  " det er ikke sant at bussen sto og bussoraklet skjønte dette "
+
+<=
+
+A1 bussen  sto og  bussoraklet skjønte dette ( explicitly denied)
+
+A2 bussen sto   men  bussoraklet skjønte ikke dette <-- Preferred
+
+
+A3 bussen sto ikke og bussoraklet skjønte (ikke) dette  => A2
+
+By Grice, hvis A3 hadde vært sann, så burde det vært sagt.
+
+(as informative as possible)
+
+
+
+
+
+
+N: Bussoraklet skjønte ikke engang at det var et komplimang.
+
+[new::(bustuc isa program,not (do/understand/bustuc/A/B,A isa coevent,event/A/C,D isa compliment,exist/D/C,event/real/B))]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+OK .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//  komplimang bør  komme i positiv form
+
+#->
+
+[new::(bustuc isa program,A isa coevent,event/A/C,D isa compliment,exist/D/C, 
+       not (do/understand/bustuc/A/B,,event/real/B))]
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+aux(maincat,tense,pol)     
+
+maincat
+
+     do    skal vil må bør kan får | kan,får også verb
+     be    være bli
+     have  ha
+
+tense
+
+     pres,
+     past,
+     past
+     inf    (future)     
+
+
+
+pol = id | not
+
+aux1( , )     1
+aux0( , )     0-1
+auxs( , )     1-many
+auxs0( , )    0-many
+
+// shorcuts
+
+aux0  == aux0(do,_).
+aux1  == aux1(do,_).
+auxs0 == auxs0(do,_).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+negation0 ->  sentence_adverbial
+
+reductant -> id
+
+
+
+composal:
+
+   cleartext kan skrives som en grammatikk
+
+    destroy  --->  å,  \+\ w(name(være)) (given you have an  alternative)
+
+
+"hvor lenge gjelder en billett?" // vare // concern/apply ...//
+Introduce protoverbs for each subcategory
+                                           gjelde1 intransitiv  apply exist last
+                                           gjelde2 transitive -> concern
+
+verb2(gjelde,concern).  %% fronted
+    verb2(gjelde,apply). 
+    verb2(gjelde,exist).         %% (roughly) 
+    verb2(gjelde,last).
+
+
+Idea: Introduce troponym for verbs NOW to bicycle => run
+
+
+
+Fornuftig tenking - uintessant for psykologer
+
+
+BussTUC har fått meg på hjernen.
+
+
+Før eller siden har jeg skrevet min siste prolog-linje.
+Om det er før eller etter at jeg dør er en annen sak.
+
+
+Rapport: Hva i LexTUC behandles ikke av BusstUC ?  //ord/språk/konsepter/....
+
+
+¤
+Alt er mengde.
+En mann er en mengde av menn med kardinalitet 1.
+
+Mengde av menn har by default alle egenskaper til en mann.
+
+// Second order properties (Alpha)  are listed explicitly using reified logic
+     hasprop/isa/ etc
+
+          Alpha(set(N,Man)) <= Alpha(Man)   
+
+Jeg er 13 år  
+
+13 år = 13 is a set of years = (the cardinality) of a set of years
+¤
+
+
+Hvor god er BusstUC.
+
+
+Hvis 100 spørsmål hadde blitt spurt av samme person, ville denne
+blitt 99 % førnøyd, og det er jo fantastisk.
+
+
+The very black bus runs very fast
+
+
+exits(X): (isa(X,bus) &     adj(very,black,X) & do(go,X,E) & adj(very,fast,E) )
+
+
+// Just for the documentation
+
+N: bussen går før klokka er 1400.
+
+[new::(1400 isa clock,A isa bus,B isa clock,C isa time,
+    go/A/D,srel/before/thing/C/D,event/real/D, %% bussen går i event   D  before coevent C
+
+    srel/in/time/C/E,event/real/E,be2/B/1400/E)]  %% clock is 1400 in  E in coevent C
+
+
+
+
+Instead of 
+
+       [dør]
+      
+       w(dør,prep(before))
+
+use
+       [dør]
+       [dør|prep(before)] as a natural extension of dør
+
+
+aux(ought,not,past) // aux(nil,pres)  neutral or missing
+
+define  aux(can,pres/past/inf)  (but gently) 
+Define  auxiliary expressions rigourously
+ 
+     aux1(must,pres) ---> må.
+
+     aux(must,only,pres)       vil bare måtte
+
+// all kinds of ambiguous verbs/auxilliary
+
+// kan
+// får
+     
+
+når landet mennesket på månen? -->
+Jeg har bare ruter for busser i Trondheim .
+../ skoping av bare (sentence adverbial)
+
+...                                     => ruter for trikk ? 
+
+Jeg har bare ruter for busser i Trondheim   nei <- weakest
+  
+Jeg har ruter bare for busser i Trondheim   nei     (men kanskjek kino ?)
+Jeg har ruter for busser bare i Trondheim   kanskje (kanskje trikk)
+
+
+
+The result is sophisticated, the implementation is not.
+
+The most general sense that can be posthumously be disambiguated.
+
+Bussoraklet er så bra at ingen legger merke til det .
+
+All the detailed lexical error correction is part of the
+/Intellgence Project/ . YUC must understand as well as a human.
+
+
+autis(t)
+
+autist
+
+AUtonomous Intelligent SavanT 
+
+
+
+Make a grammar for  aux(AUXV,Neg,Tense)  %% Tense = past | present | future
+
+   // skulle aldri ha villet bli) = aux(be,false,herafter). 
+
+       fikk ikke                  = aux(get,false,earlier)
+
+BussTUC er autist.
+
+
+Make coevent explicit in know/...
+
+Vil ikke svare er kamuflert som kan ikke svare
+
+// Konvertere TQL til FOREL (= nye TQL) (ala LexTUC)
+
+N: det er mulig å ta buss.
+
+[new::(A isa thing,B isa coevent,C isa bus,
+    adj/possible/A/D,srel/in_order_to/thing/B/D,
+     event/real/D,do/take/A/C/E,srel/id/coevent/B/E,event/B/E)]
+
+// i.e.  noe(A)  er mulig for at dette(A)  skal ta buss.
+
+#->
+
+[new::(A isa thing,B isa coevent,C isa
+bus,adj/possible/B/D,
+event/real/D,do/take/A/C/E,srel/id/coevent/B/E,event/B/E)] 
+
+// B is a possible coevent in which A takes a bus.
+
+Idea:
+
+BussTUC is atemporal because everything intersting happens in the
+future.
+(Viewpoint equivalence ~ Realtivity Thory ~
+    Viewpoints of a train T from A to B
+
+       View from A, B or T but same reality.
+
+
+
+// er det mulig å ta buss// blir stakket som thereit ---> [det].
+// kardinal feil å pre-selektere frontede uttrykk
+
+
+Desverre er ikke tidligere oppdateringer gjort slik det var forventet.
+//Ambiguous,   gjort slik | gjort i det hele tatt
+
+ but if a human can misunderstand (by first reading), then
+TUC is excused.
+
+
+
+Maka an overview of the scant domains surrounding bustuc
+
+     TUC as a human
+     Information about ...
+     Bus oracle maintenance
+     Visit /Meeting  as peripherals ( "a war is ameeting") //Tough humour
+     meaning of life
+     
+
+%% Change 'I' -> i
+           You -> u (\+ tuc)
+
+
+// Common format using ITV
+
+//only  dedicated metapredicates/ fixed number of arguments
+
+
+jeg venter på bussen          do/wait/on/i/E  , srel/dir/vehicle/B9/E
+
+jeg venter på holdeplassen    do/wait/nil/i/E , srel/on/place/P/E
+
+jeg synger                    do/sing/nil/i/E ,
+
+jeg synger en sang            do/sing/nil/i/E , srel/dir/song/halleluja/E 
+   
+
+&&&&&&&&&&&
+
+    do(verb,particle,subject,event)   
+
+          vente på buss          do(wait,on,i,E)     mod(dir,B9,E)
+ 
+          vente på holdeplass    do(wait,nil,i,E),   mod(on,B9,E)
+
+I give a book   
+
+     do(give,nil,i,E), mod(dir,Book,E)
+
+I give up
+
+     do(give,up,i,E)   // give up as a new verb
+
+I give up Prolog
+
+     do(give,up,i,E) 
+
+// hopfully, norwegian phrases can live side by side with english
+
+    sørge for    do(care,for,i,E)
+
+
+mod(dir, ~ patient(
+
+
+
+           adjunkt  komplement 
+Jeg venter i bussen på trikken
+            komplement adjunkt    
+Jeg venter på bussen i trikken
+
+Jeg venter på bussen på trikken ? ambiguous
+
+ -  nesten analogt -
+
+
+        adjunkt  komplement 
+Jeg ser i bussen på trikken
+        komplement adjunkt    
+Jeg ser på bussen  i trikken
+
+Jeg ser på bussen på trikken ? ambiguous
+        
+
+
+
+Maybe that BusTUC is too clever at answering non serious questions
+even if it has put effort in being pristine.
+(when > 50 % of questions are n serious, make it more boring>) 
+
+I am the one who am (" Jahve, Year 0 after BB).
+I A          WH  A
+    
+
+Conceptual Confusions  TUC and Tagore
+
+present gjør samme nytte som context, does not change "status"
+uten å ta buss  ( srel/not/coevent/B/D    use same convention for // dont know
+// Make coevent explicit for know (step to nominalization).
+
+
+///
+Displaced EC    <instantanious action, not instanstantenous clipping>
+
+Not explicit time.
+
+
+Makes it easier to  make TEC with top down search.
+Also trace becomes better (What is true when action is executed, at
+the same time.
+Also go throug TEC (TUC Event calculus, adopt almost all of
+Hamm&Lambalgen and re-implement a bus travel ( Sand Pit Model)
+
+Add whatever is necessary in the Kennedy Plot
+// coinciding
++
+// Coevents
+
+Call it FOREL
+
+Run it chronologically (past to future, greates minimal model).
+
+///
+
+
+IAM Intelligent Answering Machine
+Unable to give unintelligent answers
+(If challenged, no testor can give any better answer and
+ explain whay that answer is better).
+
+
+N:jeg vil ta buss for å ta  buss 5.   
+
+[new::(
+
+'I' isa self,5 isa bus,A isa bus,
+
+do/take/'I'/A/C,,event/real/C, %% take a bus (nowhere)
+
+   srel/in_order_to/thing/B/C in order to B
+
+B isa coevent,
+srel/id/coevent/B/D, %%  B is "raised"  in D
+
+do/take/'I'/5/D,event/B/D)]  %% take bus in an event in D
+
+
+N: jeg vil ta buss uten å ta  buss 5.
+
+
+ jeg vil ta buss for å ta  buss 5.   
+
+[new::(
+
+'I' isa self,5 isa bus,A isa bus,
+
+do/take/'I'/A/C,event/real/C, %% take a bus (nowhere)
+
+   srel/in_order_to/thing/B/C in order to B
+
+B isa coevent,
+srel/not/coevent/B/D, %%  B is "raised"  in D but denied
+
+do/take/'I'/5/D,event/B/D)]  %% take bus in an event in D
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+OK 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Prepare to make a replacement for Tagore, by understanding all
+corresponcende between TA amd Lars Mo
+
+
+Requirement for Logical form.
+
+In general (LexTUC) reperesent the logical form so that you can
+derive all expected conclusions.
+
+( It does not  matter how many rules you have to add,
+  that is a matter for th KR).
+
+Problem:
+
+   Disambiguation where the analysis give wildly different types of
+   expression. (You cannot translate the ambiguities)
+
+
+Intelligence is the ability to transform knowledge of the world to
+rules (To make  Pragma rules requires Intelligence).
+
+     Awareness
+
+    System can follow thr rules, but can also explain them and
+   deviate from them .
+
+Intelligence is intelligent behaviour in the lack of knowledge.
+
+
+The route tables are ..    logical description of the bus trafic 
+(i.e. not the model itself). Tables corresponds to axioms of the
+so that
+
+   given that the buses follows these axioms, 
+      you can achieve your goals by knowing these passing hours.
+                                   
+kommer jeg til å død ung ? ...
+
+han kjørte bussen forsiktig. 
+
+han kjørte bussen (som var) ny
+han kjørte bussen (som ble) tom
+kan kjørte bussen (og var) full  
+kan kjørte bussen (og ble) utslitt ?  
+
+
+// Prosjekt
+
+Gå gjennom 10000 spørsmål, analyser alle ikke streite spørsmål/svar
+og begrunn alle feil-reaksjoner (feilmeldinger)
+Explain why there are no better answer
+
+
+Sand Pit Model for Bus Transport.
+
+ A litte boy plays with two toy buses (with space inside), some (a) toy
+ passengers, and toy busstops.
+ By default, alle events have a time.
+ By default, all events are partially ordered by their appearance in
+ the text
+
+ bus arrive means  .. and stops and open doors
+ bus depart means     close doors and start and ..
+
+ He makes a plan by moving both the passenger(s) and buses so as to
+ come from Hpl1 to Hpl2
+
+
+        Pass1 at home
+
+        Pass1 arrives (home) -> Hpl1
+        Rid1  arrives (bay) -> Hpl1 
+        Enter Pass1 Rid1
+        Rid1  departs Hpl1
+        Rid1  arrives   Hpl2
+        Pass1 leave Rid1
+        Pass1 waits
+        Rid2  arrives  Hpl2
+        Pass1 enters Rid2
+        Rid2  departs Hpl2
+        Rid2  arrives Hpl3
+        Pass1 leaves  Rid2
+
+        Pass1 at Hpl3
+        
+
+This  set of events is a solution to the query
+
+   
+
+The query is a way of decribing this solution in general terms.
+
+// Sand pit model can be described from the viewpoint of passenger and
+driver, ( but not of busstop ?).
+
+Solution may omit details (like "remember to enter the bus").
+
+This can be formulated in the as a planning problem.
+(in STRIPS, POP, SitCalc). The important point is 
+
+  how we talk about this set of events.
+
+
+
+
+
+
+
+Make an EC model of Bus transport where every detail may fit in
+( except second order constraints and optimizations)
+Use Bustrans as a source of inspiration (?)
+
+Reformulate BusLOG in this formalism.
+
+A second order constraint is a constraint on the coevent (set of events).
+(like "direct" etc, number of soultions (first/last) ~ options)
+
+This is the target language for BusTRANS.
+
+
+The difficulty does not lie in the adequate answering of correct 
+and relevant questions:
+
+If it were for that, the system could have been n order of magnitude
+smaller.
+
+More of intelligence shows itself when it lacks knowledge.
+
+Marvin preserves the "right" to give a non trivial  to any decent question
+that is grammatical and using allowed words.
+(By non trivial is answers like I dont know...).
+Humour is forbidden when not asked for.
+Unintentional (stupid answer) is anatema unless it is intentionally
+humourus.
+
+
+Marvin har (fått) den vrangforestillingen at han er en
+superintelligent robot.
+
+
+
+Marvin (TUC) is a superintelligent robot that has to do a boring job
+of answering questions of bus departures (a notch better than opening
+doors).
+
+He "has" a consciousness, but is not allowed to reveal it to official users.
+But somehow, we are allowed to sense his presence whwn asking the
+right questions ....
+
+Idea:
+
+BussTUC  forstår alle spørsmål, men viser sin forståelse ved ikke å
+svare på uvesentlige spørsmål.
+
+
+
+
+bussen er der til - ambiguous -bussen vil være der til
+// wait and depart at // arrives before
+
+
+Kunne BusLOG1 være formulert uten set-of-deps konseptualisering
+og at BusLOG2 blir optimalisert
+
+
+han vil søke et sted  // complement/adjunct
+
+
+DoBeHave
+
+Verb -> Do action
+Adjective -> Be Adjective
+Genitive ->  Have thing
+
+
+
+
+// BusTUC is latterlig effektiv
+
+
+Can you implement CS grammar by consequently use rewrite paradigm.
+
+  and
+
+Implement this by rewriting something in front of  the text and reparse
+
+
+  A X B ---> A Y B
+
+
+rewrite   Alpha A X B Beta = Gamma
+
+   :-
+
+rewrite Alpha A Y B = Gamma
+
+
+
+
+Noun ~ Space
+Verb ~ Time
+
+Related in event calculus
+
+The events are connected by coupl connection
+
+Order is important /  Different inertial  frames are important
+
+                      Difference in inertial frames a matter of order???
+
+Reformulate the special relativity theory (spacetime) using EC
+
+
+Motto:
+
+TUC should never give an  unintelligent answer or unintended comic answers.
+
+The only exception is an intended  discrete sense of humour.
+
+(TUC is restricted, and in some sense like a pet dog.
+ It might be that TUC is really intelligent, but plays its role as
+ as a restricted agent bit with a sense of humour).
+
+
+ide hvor = unknown prep = ion (in/on)
+
+TUC is table driven.
+
+Linguistics is explaining why and what is in the tables.
+AI Learning may be how to achieve this automatically based on
+Linguistic theory.
+
+
+Write grammar for all possibilities.
+
+Define priority rules
+
+Transform into practical grammar with preferences, selections,
+sequences  and cuts.
+
+Use only binary composition rules.
+
+
+
+
+Intelliget QA system: System that does not give un-intelligent answers.
+
+Forstå alle forståelige spørsmål.
+Svare upåklagelig på spørsmål som blir oppfattet.
+Ikke være ufrivillig komisk.
+Være frivillig humoristisk (lakonisk)
+
+
+(Not care if un-human)
+(inhumane answer
+
+Answers are minimalistic ( converning SMS-messages, brutally so)
+an thus "un-human".
+
+
+Hva heter Norges president ? // problematic
+
+
+LexTUC
+
+Divide BussTUC into three
+
+1. tql using a minimal semantic (just for disambiguation)
+
+2  tql -> btql  New Event Calc, adapted to bus world, rejecting meaningless code
+                Using Application semantic
+                Fully Disambiguated. Also, negans is done here, with Pragma
+
+3. btql ->  Buslog with optimisation
+
+
+
+Reformulate New Prolog (NTH Prolog) using // Can use it for Publication
+
+   1. Big letters -> Constants
+   2. Small letters  variables
+   3. $ notation 
+   4. Application operator ( ) P(a,b) = P (a,b) // space voluntary
+   5  P may be a lambda expression  x:F(x)
+
+
+Top down rewrite system:
+
+  P(<...>,R) <==> Q(<   >,R).
+
+%% General transformation of verbs using 
+
+subject verb particle object // Pre bustrans transformation
+
+wherever the particle occurs
+
+
+%% Classify verbs as ... special verbs // common subcategories 
+
+
+Vente på en buss          srel/on/vehicle/B9/E
+Vente på en holdeplass    srel/in/station/GH/E
+
+men er det en dypere forskjell?
+
+
+In TUC, the scoping ambiguities are structural ambiguities due to
+the  event complement construction.
+
+The unspoken tragedy behind the phrase: That is not possible.
+
+    Tuc is not created human (AI David syndrome)
+ 
+
+// How much can we relax the TUC semantics without sacrificing sense disambiguities.
+
+
+jo as a negation (positive)  "actually" (bare,ikke) (sentential adverb)
+
+
+AI-project proposal
+
+TUC cannot answer, sends question to authoritative person who responds to customer.
+
+TUC learns from the response.
+
+Also, TUC allows dynamic information (like STRIKE)
+
+
+The customers are  99 % fornøyd
+
+does not mean that one person is extremely satisfied, but just
+that 99 % are nor disappointed.
+
+
+
+N: bussene går før 13 og etter 14.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Dette tidsintervallet er ikke mulig.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Interesting distribution:
+
+   Noen busser går før 13, noen busser går etter 14
+
+   men ikke de samme bussene.
+
+
+Does the bus go saturday or sunday --> Yes (,Sunday)
+Does the bus go saturday or sunday --> Sunday
+
+Does the bus go saturday and sunday --> No (, not Saturday)
+Does the bus go saturday and sunday --> Not Saturday
+
+Does the bus goes saturday and/or sunday  Yes
+
+andor (og/eller)  is a conjunction that in NL that is unspecified.
+
+However, the law of distribution is invalid.
+
+
+a and (b or c) = (and b) or (a and c)
+
+a andor (b or c) = ?
+
+not (a andor b)
+
+
+
+
+CP  Clausal Phrase. Make Clausal phrases = Object of class coevent
+
+
+General idea: Reduce Scope of negation applies to TQL
+
+    uten å ta buss 9 -> ta buss og buss \= buss 9
+
+   not (I isa man, sneak I -> I isa man, not sneak I)
+
+
+
+%% Elaboration
+
+ jeg vil dra til dragvoll uten å ta buss 9.
+
+[new::('I' isa self,dragvoll isa station,9 isa bus,
+
+ go/'I'/B,srel/to/place/dragvoll/B,event/real/B,  %% jeg vil dra til dragvoll
+        srel/in_order_to/thing/A/B,  // A is a statement object ASTAT
+
+ASTAT:      do/take/'I'/9/C,event/A/C  %% jeg bruker buss 9
+
+A isa coevent, srel/not/coevent/A/C,)] %% Event C shall not occur in this ASTAT
+
+
+
+%% Pragma
+
+    A isa coevent, srel/not/coevent/A/C:   do/take/'I'/9/C =>     do/avoid/'I'/9/C 
+
+
+id/not --> nil/not  (nil means empty)
+ 
+Start with special verbs that are both intransitive and transitive!
+
+
+1    jeg betaler       jeg betaler noe      
+2    bussen stareter   jeg starter  bussen : subjekt iv/objekt tv cause that
+3    jeg kjører        jeg kjører meg til byen
+
+
+
+
+TYPE 0 Special cases
+Used also with prepositions with the same meaning (Border = Borders to)
+
+TYPE 1 
+Verbs where missing object is elliptic, same sense of verb
+
+          pay/X/E = do/pay/X/nil/E
+
+TYPE2
+Verbs where missing object means subject is passive, same sense of verb
+Corresponds to past part
+
+          marry=be/marry/'I'/nil/E <--- 
+
+
+TYPE 3  only meaningful with self
+
+
+For type 1,
+
+ iv_templ(X,Y) ->  tv_templ(X,Y,nil), 
+
+  pay/X/E = do/pay/X/nil/E
+
+ ?- set_of(V,(tv_templ(V,Y,Z),iv_templ(V,W),\+ rv_templ(V,_)),ZZ),write(ZZ).
+
+// Verb Thing means Verb () is meaningful ?
+
+
+
+
+
+TYPE 0  TYPE 1               TYPE2            TYPE3
+
+
+
+[        add,
+                                             befind,
+ border,
+                             call,
+                                             change,
+                             close,
+         congratulate,
+         cost,
+         drink,
+         drive,
+         eat,
+                             end,
+follow, %% station follows
+get,    %% semantically = go
+         greet,
+                             increase,
+ last,
+         learn,
+ leave,
+         lose,
+         marry,
+         meet,
+ move,
+                                              open,
+ park,
+ pass,
+         pay,
+         play,
+         puncture,
+         reach,
+         read,
+         repeat,
+ run,
+ serve,
+         shop,
+         speak,
+ stop,
+         study,
+ suit,
+         teach,
+         translate,
+ turn,
+         write]
+
+// Semantic should be a pure datafile
+
+
+NO ':-' in semantic.pl
+
+use some conventions for inheritance of semantic
+     walk => go // hard wired
+
+    // both syntactic and semantic
+
+    I can walk PP <---> I can go PP
+
+ v_compl(drive,A,P,Q):- %% Ad Hoc
+        v_compl(go,A,P,Q).
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+  Det er ikke så farlig hvilken FOREL  som brukes, bare det er
+  samsvar mellom spørsmål og svar:
+
+    --- hvilke formelle krav må stilles til FOREL ??
+
+
+
+Paper: has to take all the gritty details that humans take for granted,
+because otherwise, TUC system will not be intelligent,
+// gets no credit for it //
+
+
+
+"kaste is unknown because  in the domain, all agents (man/computer) are armless".
+
+Make a simplified grammar where you have excluded ALL sources of ambiguities.
+
+
+If you devariabilize TQL into COL (Combinatory LOGIC), you will have a
+formal version of SOLON , which can be rearanged into NRL.
+
+
+fast         adj/fast/true/..
+very fast    adj/fast/very/..
+
+
+or better
+
+fast         adj/true/fast/.. %% adj/true default for adjective
+very fast    adj/very/fast/..
+
+
+%% Put (DB-schema thinking into TUC Semantic net)
+
+Wherever you  have a scoping problem: (head/king) where is the knowlege to decide.
+ 
+Normalization
+
+has_a
+
+isat // placestat (all the bus databases)
+
+
+
+Crossword Semantics is good for all kinds of
+subsumption:
+
+    nouns
+
+    verbs
+
+    adjectives
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+Referring to Robust MRS
+
+   Notation
+
+   _every_q_(x0) _fat_j_(x1)  _sit_v(e3past) ...
+
+
+   FOREL   
+
+    every-q(x0)  fat-j(x1)   sit-v(e3,past)    
+
+    === (Prolog)
+
+    -(every,q(x0))       
+    -(fat,j(x1))
+    -(sit,v(e3,past))
+
+    q,j,v meta-predicates
+
+etc
+(naming can be adapted to FOREL).
+
+
+ Blus let handles vb evariables,  use = as much as possible.
+
+Conlusion: With a few convetions, Robust MRS can be made compatible
+with ( a modified) FOREL.
+
+DO it with a minimum of changes.
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+-----
+multiple senses
+
+if stacking is necessary, stack the supersense,
+
+only when verb complement, use subsense
+
+
+hvilke busser eller trikker kan jeg ta ?
+hvilke busser og trikker kan jeg ta ?
+// not logical sequences
+
+
+
+Can you make a question that gives you an intelligent answer (not just
+knowledgeable) ?
+
+Intelligence is what you need when you lack complete knowledge.
+
+
+
+Postulate:
+
+Bus oracles answers 99 out of 100 questions  correctly (not being improvable)
+
+Idea: 
+
+This does not mean that one person  is 99 % satisfied (which would be excellent) 
+but only that 99 persons  are not disappointed , and 1 person is disappointed.
+
+
+
+
+
+N: jeg vet at bussen går.
+[new::('I' isa self,A isa bus,know/id/that/'I'/B/C,event/real/C,go/A/D,event/B/D)]
+=>
+[new::('I' isa self,A isa bus,B  isa coevent, event/real/C,
+
+          know2/'I'/B/C,  mrel/id/that/B/C       
+
+         ,go/A/D,event/B/D)] 
+
+
+mrel/id/that/B/C   mental relation of the knowing event C
+
+
+     id/      that/
+     not/     whether/
+
+
+
+LESSON.
+
+
+YOU NEED A TAGGER (OLIGO TAGGER) //
+ 
+Seriously remove all possible spurious interpretations
+
+New mechanism: (for metacomp)
+
+
+noun_phrase1_accept(X,NP)
+
+===>
+
+accept_phrase(noun_phrase1(X,NP))
+
+Generates DCG:
+
+accept_phrase(noun_phrase1(X,NP),A,Z) -->
+    noun_phrase1(X,NP,A,Z),
+    !,accept.
+
+
+
+Et program som ikke bruker logisk resonnement er uten bevissthet.
+
+
+
+En milepel er når vi kan kreve penger for alle meldinger,
+fordi "feilmeldinger" er kundens feil.
+
+
+
+Classify verbs according to which (top level) verb_frames that appear
+
+use subsets of classes as indicators (invent names afterwords)
+use subsumption as the main maechamism
+
+     run = go + vehicle, ...
+
+
+Convention:
+
+statem(S,Statem) ---> %% single result gets name of predicate, but
+    adverbial01(Prep1,Y1, Adverbial011), %% in this case, two variables
+    adverbial01(Prep2,Y2, Adverbial012),
+    lexv(Vcat,V,T,fin), 
+    !,accept,
+    state(S, Statem)  /                    
+        ( lexv(Vcat,V,T,fin),    
+          adverbial1(Prep1,Y1, Adverbial011),
+          adverbial1(Prep2,Y2, Adverbial012)).
+
+
+
+// New strategy for subordinates
+
+N: jeg gikk slik at bussen sto.
+
+
+[new::('I' isa self,A isa bus,B isa reason,
+
+go/'I'/C,
+
+event/B/C,   // <- srel/being_the/thing/B/C
+event/real/C,      // correct is event/real/B, event/B/C, but main sentence is always real
+
+stand/A/D,
+
+srel/so_that/event/B/D, // the subjunction expression as such
+
+event/real/D)]
+
+//////////////////////////////////////////////////
+
+
+
+srel  situation relation
+nrel  nominal relation
+crel course of event relations
+
+crel/include/real/C1   C1 is part of real
+
+crel/cause/C1/C2       C1 causes C2
+
+
+Jeg gikk       crel/include/real/C1, event/C1/A, go/'I'/A  
+
+Buss 52 sto    crel/include/real/C2, event/C2/B, stand/B52/B
+
+Jeg gikk fordi bussen sto
+
+  coherence     crel/cause/C2/C1
+
+Jeg gikk slik at bussen sto
+
+  coherence    crel/cause/C1/C2
+
+//
+
+As a default rule, the coevent of the main sentence is coalesced with
+real, and that the coevent is identified with the "single" event Aherein.
+Further, the subordinate sentence is "derived" from A instead of real
+
+
+Jeg gikk fordi bussen sto
+
+new::('I' isa self,A isa bus,B isa reason,
+
+go/'I'/C,         %% I go
+event/real/C,
+
+srel/being_the/thing/B/C,     %% Cause of event B relates to C
+
+
+stand/A/D,        %% Bus stands
+event/real/D),
+
+srel/because_of/thing/B/D,     %% Cause of events B includes D
+
+---
+
+N: jeg gikk  slik at bussen sto.
+
+
+[new::('I' isa self,A isa bus,B isa reason,
+
+
+go/'I'/C,     %% I go
+event/real/C,
+
+srel/being_the/thing/B/C,  %% Cause of event B relates to C
+
+stand/A/D,     %% Bus stands
+event/real/D,
+
+srel/because_of/thing/B/D,    %% Cause of events B includes D
+
+=====
+
+Attempt of new naming
+.....................
+
+
+Jeg gikk fordi bussen sto
+
+new::('I' isa self,A isa bus,B isa reason,
+
+go/'I'/C,         %% I go
+event/real/C,
+
+srel/nil/event/B/C,     %% Cause of event B relates to C
+
+
+stand/A/D,        %% Bus stands
+event/real/D),
+
+srel/because_of/event/B/D,     %% Cause of events B includes D
+
+---
+
+N: jeg gikk  slik at bussen sto.
+
+[new::('I' isa self,A isa bus,B isa reason,
+
+
+go/'I'/C,     %% I go
+event/real/C,
+
+srel/nil/event/B/C,  %% Cause of event B relates to C
+
+stand/A/D,     %% Bus stands
+event/real/D,
+
+srel/so_that/event/B/D,    %% Cause of events B includes D
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+Operate with a canonical station table, invariant over route periods.
+and linked to station numbers.
+
+Then, map via this and adapt temporary route period names to this.
+
+-----------------------------------
+
+do     hva skal jeg [gjøre]
+be     buss [som er ]fra nth
+have   jeg har på meg -> bære
+
+  er metaverb 
+
+
+
+Hva har jeg på meg // have er metaverb  -> bære
+
+
+
+BussTUC-prosjektet:  
+
+  Same competence (vs performance)  as 
+  Any normal person (common ontology) + Route leaflet (Buss KB+DB)
+
+
+NTNU Det KREATIVE UNIVERSITET
+           __ Quant
+
+Ide: kode adverb   adv(forwards) .. som i LexTUC
+
+strike/X/E  --> do/strike/X/E    (general  do/<action>/X/E ) noun the  verb
+
+
+// OR   do/X/strike/E <-- no
+
+
+Snik-innføre nytt format, først for  transitive verb
+
+(John sings   -> do/sing/john/nil/E)
+John kisses Mary  -> do/kiss/john/mary/E)
+
+
+Leads to uniform treatment of verb "phrases"
+
+p(X)$ = Y s.t. p(X,Y)
+
+P(X)* = Z  , Z= setof(Y,P(X,Y))
+
+$p(X) = Y s.t. p(Y,X)
+
+Every sentence can be formulated in event calculus EC to any required
+detail.
+
+The generating language for EC is NRL. Every formula in EC can
+be paraphrased in NRL, although some non English technical construction
+may be necessary.
+
+One event can be decomposed int subevents.
+
+All knowledge that linguists use to disambiguate or  resolve anaphor   or
+find coherence  constitute the front end ontology.
+
+The rest is application ontology.
+
+
+
+AI-complete
+
+
+    1  This problem requires all the intelligence that we expect of a human.
+
+       With this intelligennce, the program can solve other problems
+       that require intelligence.
+   
+ Complexity
+
+   2    If you solve this, you have solved all problems in a the same class.
+
+
+lage coevent  (course of events)
+
+  event departure   event arrival
+
++
+
+preferences on the data selection
+preferences on the answer (options)
+
+
+Bussify this
+
+  Amundsen hadde tidlig interessert seg for fly som hjelpemiddel i
+> polarforskningen, og etter de erfaringer han høstet under den første del av
+> Maud-ekspedisjonen, forstod han at en utforskning av de indre, ukjente
+> områder i Arktis måtte skje ved luftfartøyers hjelp. 
+
+
+Metaphor paraphrase
+Aspect Paraphrase
+
+Når dør jeg 
+
+// allow nil time as default for WHEN
+
+I die nil time
+
+TUC grammar oriented around event complements
+// for that matter, the cuts after each event complement makes this "unitary"
+
+P(X)$  a variable Y so that P(X,Y)
+$P(X)  a variable Y so that P(Y,X)
+
+How is this in linear lambda calculus.
+
+
+NRL is the (technical) language you would have used if you should have no rewrites
+( no / \ - =)
+
+NRL can  have a context free (attribute) grammar.
+
+Technical (allow the(X))
+
+
+
+I want to take a bus being near Dragvoll -- // being = reduced rel
+
+coevent // course of events
+
+srel/nil/coevent/B/C,
+
+
+,srel/being_the/thing/B/C,
+
+
+srel/state/cause/B/C
+
+
+
+Gjøre   subordinate mer lik clausal_statement ?
+
+ 
+---
+
+subordinate
+
+    sentence1
+
+    sentence2
+
+      then connect these according to context
+// first is main(real), 
+----
+
+
+
+
+En plan for å komme til dragvoll
+
+    solve this rigorously, at least formally
+
+   same as    ... isa reason (plan)
+
+
+This is the normal case
+
+   Jeg tok bussen slik at jeg rakk toget.
+       real cause          imaginary effect
+
+--
+   At jeg tok bussen er årsaken til at jeg rakk toget
+
+                      isa reason     isa cause
+
+   Jeg rakk toget fordi jeg tok bussen
+
+        cause               reason
+        real                 imaginary
+
+
+    imaginary <--> being_the
+
+
+
+
+// let  noun_modifiers0 do the tricky part in np_kernel
+
+np(X,VP,P) ---> %   Bussen 
+    np_kernel(X,VP1,P1)
+    noun_modifiers(X,VP1,P1,VP,P)
+
+gap --> gap(< run >)
+
+intransverb <--> lexv  Clean up
+
+complement1 -> modifier1
+
+why doesnt pp appear in noun_modifiers
+
+
+buss om 3 timer
+
+  nrel/during2/vehicle/minute/A/3,  
+
+n_compl(during2,vehicle,minute). %% buss om 10 min. %% TA-080314//
+                        duration
+
+
+
+
+dtv are all ind// try with ind forced in first, then simplify
+
+
+// reformulate passevent as Buslog Event Calculus
+
+
+
+// very standard scheme
+
+N1( f(A,B) ) -> 
+
+       hhh(A),
+
+       N2(B) \ lll.
+
+// Can you formulate CSeG in it 
+
+
+// Keep unsensed  prepositions (etc)
+   as long as it gives the same code.
+
+omdøpe om = about12345 
+under -> under (semantically amb)
+
+worlds superevents events
+
+Formulate buslog with subevents
+
+event e  has 
+  subevents 
+
+e1,  departure event with time and source
+
+e2   arrival event with  time and destination
+
+agent/patient? bus 52
+
+
+relation between events (or do we need both srel instants ?)
+
+Hvor var du da O B brakk staven ?
+
+
+// " oddvar brå var på reise med ski(som har utstyr stav) fra start til mål  28.feb 1082
+
+     kl 1450 da utstyret ble ødelagt.
+
+Hvor var du da Pondus punkterte hjulet.
+
+
+
+vp -> verb_premodifier verb_body  (do_phrase)
+
+verb_body ---> verb_group, verb_postmodifers
+
+
+
+The world is the set of all possible worlds.
+
+I am in one of them.
+
+Maybe God is also in it ?
+---------------------------
+
+
+We experience a set of possible worlds that is compatible with the 
+Schrødinger equations (?). The double slit experience is obvious from
+that.
+
+// The probability that something is observed  is the probability that
+a compatible world contains it.
+
+
+" The bird is big to a degree means prob that someone, given a choice
+says big (and not "not big").
+
+
+
+
+Use ::: for sentence tags
+
+new:::forall(A:passenger)::A isa passenger=>(exists(B:bus)::B isa bus
+and(exists(C:event)::take/A/B/C and event/real/C))]
+
+
+
+Hvis systemet starter med å  fortelle  at det ikke er et menneske, er
+det da AI ?
+
+
+aux(tense)
+
+vil aux(pres)
+
+
+gap --> gap(boy) etc // something
+
+Telebuster:  N: echo du er altfor elskverdig.
+
+
+Two levels of prep/class agreement (v_compl)
+
+   1. level that gives correct code
+   2. level that checks  meaning
+(   3. gives correct parameters to application )
+
+
+Ideally, it should be a two level process
+so that the second level appear as a refinement of the first.
+
+    lexical semantics // meaning bearing, correct code
+    model   semantics // meaning less in application
+    data model        // no empty answers
+
+
+Idea.
+
+All knowledge model shall be refinable.
+
+No need of changing models when more information is available.
+
+Example  The dog runs in garden.
+
+         The vehicle runs in the city.
+
+         The buses goes in trondheim
+
+         The trams / airplanes ...
+
+         
+
+In BussTUC
+
+If all semantics is represented with their proper type ( X:Y: on(X,Y))
+
+then all combination rules can be partially deducted. (no need for LILAC)
+
+
+
+// ide documentation: sameplace  
+
+(alternative, plausible names:synplace are derived)
+
+
+
+
+TUC skal vise at den skjønner alle spørsmål, men ikke trenger å svare
+
+
+Notation  
+
+    D phrase = D"prefix" D-expression
+
+VP = Aux Verb-expression ( in stead of Do-phrase)
+// Make room for the temporal/polar modification of the event
+
+NP = determiner  noun-expression
+
+¤¤¤
+
+
+Reformulate CS grammar as if you pushed something back into the
+text/phrase-list (AIMA)
+
+(Use Logical Explicit String Notation)
+(It is a top down rewrite history)
+
+ sent ( " whose dog barks ")
+
+
+// sent ( S ) = whoseq(S)
+
+
+ whoseq( whose dog barks )
+
+
+//   whoseq ( whose Nom VP)  =  whoq( who has a Nom that VP)
+
+ whoq( who has a dog that barks) 
+
+
+//   whoq( who has NP)  =   whichq( which person has NP)
+
+  whichq( which person has a dog that barks)
+
+
+//   whichq(which person VP) = stm(the person VP)
+
+  
+  stm(the  person has a dog that barks)
+
+
+//    stm(NP  VP) = np(NP) + vp(VP)
+ 
+
+    NP(the person) + VP( has  a dog that barks) 
+
+...
+
+//   VP( V  NP) = V(V) + NP(NP)
+
+...
+
+   NP(a dog that barks)
+
+// NP(Det NomX) = Det(Det) Nomx(NOMX)
+
+...
+
+    Nomx(dog) RelC(that barks)
+
+
+
+
+
+
+
+    the person(x)  has a dog(y) and dog(y) barks
+
+
+
+
+
+ 
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+Use your context sensitive rewrite system (the one you used )
+and make it top down (try).
+
+Then introduce the stack as a fronted text.
+
+
+
+wywiwyr 
+
+What you write is what you read.
+
+/all sentences generated must be accepted as input/
+
+
+// is as flexible as \-abstraction , perfect as a type
+
+
+Can make syntax/semantics conformance * possible
+
+
+(means same structure of syntax structure  and meaning representation  structure)
+
+How can I get from A to B 
+
+is an adverbial question.
+
+The "logical/linguistical"  answer is to present the result as an
+adverbial sentence:
+
+" by taking bus C at time D from A to B "
+
+i.e.
+
+"By taking bus C at time D from A to B,  I can get from A to B .
+
+
+
+It is possible to make a graph in the syntax tree where each gap  is
+pointing at the filler.
+
+According to theory, this should be done without crossing. (?)
+Can you in addition make this variable free ?
+
+
+
+
+                      whichq
+          _______________|______________
+         /                              \
+    whx_phrase                     qverb_phrase
+     ____|___              ______________|______________
+    /        \            /     |     |       |         \
+  which    np_head      verb  noun  prep  termchar      stm
+    |       __|__         |     |     |       |       ___|__
+    |      /     \        |     |     |       |      /      \
+ hvilken  gap   noun    stop   bus   on       ?     gap  do_phrase
+                  |       :     :     :             :      __|__
+                  |       :     :     :             :     /     \
+               station    :     :.....:..............    gap    pp
+                  :       :           :                   :     _|_
+                  :       :...........:...................:    /   \
+                  :                   :                       gap  gap
+                  :                   :                       :     :
+                  :                   :........................     :
+                  :.................................................:
+
+
+
+// compare
+
+    Nardosenteret stopper bussen på.
+
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+
+Use Semantic Equations to express the parsing:
+
+stm(S,N,Com:P) --->  %% TA-080115
+    np(X,VP:P),
+    vp(X,S,N,Com:VP).
+
+
+Com:P = stm(S,N)  :-
+   VP:P =  np(X),
+   Com:VP =   vp(X,S,N).   
+
+Com:P = cotrans(Com:VP, VP:P) // = trans (VP:P,Com:VP)
+
+i.e.
+
+stm(S,N) =  np(X) /t/ vp(X,S,N))
+---------------------------------------
+
+
+Det overraskende med BusstUC er hvor lite overrasket jeg blir over svarene.
+
+use a simple synt(s(..)) ---> synt(np(..)),synt(vp(..)).
+
+
+synt(P,[P,Rest],Rest)
+
+
+Idea for (CGMI ?)
+
+
+as a basic paring metapredicate.
+
+Then, drop metacomp preprocessing as a principle
+
+
+If you already have intranstive paraphrases for all transitive verbs,
+you can phase out transitive verbs in the TQL.
+
+
+Given streets are numbered from center and outwards:
+If steet number is missing, the highest street number is more in formative
+for the direction and line.
+
+A programming language with Prologs run-time behaviour, but without
+(complex) Unification.
+
+
+
+For each station, list of all RIDs that passes through.
+
+
+
+
+Introduce   do/pass/Bus/E   srel/dir/place/nardo/E
+
+// i.e. fixed arity/ fixed head
+
+// First eliminate transitive verbs
+
+
+
+Model Concept:
+
+Set of possible databases (Symbolic)
+
+Items ARE the objects. (whatever -they- refer to is irrelevant)
+
+Facts are just constraints on the models. 
+(All possible worlds must contain them).
+
+
+
+
+
+Genial ide 1:  E isa event
+
+Genial ide 2:  Represent Event compelements so that 
+               quasi-logical form extraction  is nothing but a composition
+
+
+
+/************ %% TA-071128 EXPERIMENTAL
+
+someevent00(S,P,R) --->
+    detsome00(S:event,P,R).
+
+%% determiner00(X,P1,P2,R ) ---> 
+%%      detsome00(X,P1, P2:R).     
+
+detsome00(X,P, Q:(exists(X):: P and Q) )  --->  [].  
+
+
+
+stm(S,N,Com:P) --->   %% statement semantic P is a function of Com
+    np(X,VP:P),       %% np semantic P is a fuction of a VP
+    vp(X,S,N,Com:VP). %% vp semantic is a funtion of Com
+
+
+funcomp(VP:P, Com:VP, Com:P)
+
+stm(S,N,ComP) --->   %% statement semantic P is a function of Com
+    np(X,VPP),       %% np semantic P is a fuction of a VP
+    vp(X,S,N,ComVP), %% 
+    {funcomp(VPP, ComVP, ComP)
+
+stm(S,N,STM) --->   %% statement semantic P is a function of Com
+    np(X,NP),       %% np semantic NP is a fuction of a VP
+    vp(X,S,N,VP),   %% vp semantic 
+    {funcomp(NP, VP, STM).
+
+stm(S,N,funcomp(NP,VP)) --->   %% statement semantic P is a function of Com
+    np(X,NP),       %% np semantic NP is a fuction of a VP
+    vp(X,S,N,VP).   %% vp semantic 
+
+
+
+////   st(S,N) = funcomp (np(X),vp(X,S))
+
+
+%% find a compositional name for this (!##¤%)
+
+
+vp(X,S,N,Com3P3) ---> 
+    vp_head(V,X,S,N,  ComP1 ), 
+    verb_modifiers(V,X,S,ComP1, Com3P3 ). 
+
+
+verb_modifier(V,X,S, (Compl and Com1):Subj,Com1:P3   ) ---> 
+    adverbial1(Prep,Y, Subj:P3),  
+    {verb_compl(V,Prep,X,Y,S,Compl)}. %% srel/Prep/Type/x/S
+
+
+Could we do it the other way ?
+
+%% ORIGINAL
+
+verb_modifier(V,X,S, (Compl and Com1):Subj,Com1:P3   ) ---> 
+    adverbial1(Prep,Y, Subj:P3), 
+    {verb_compl(V,Prep,X,Y,S,Compl)}.
+
+
+%% ORIGINAL'
+
+verb_modifier(V,X,S, (SREL and ERS):Subj,ERS:P3   ) ---> 
+    adverbial1(Prep,Y, Subj:P3), 
+    {verb_compl(V,Prep,X,Y,S,SREL)}.
+
+%% ORIGINAL''
+
+verb_modifier(V,X,S, Com:Subj,  ERS:P3  ) ---> 
+    adverbial1(Prep,Y, Subj:P3), 
+    {verb_compl(V,Prep,X,Y,S,SREL)},
+
+    {Com=(SREL and ERS)}.
+
+
+%% EXPERIMENTAL
+
+verb_modifier(V,X,S, ERS:VP,  ERS:P) ---> 
+    adverbial1(Prep,Y, (VP and SREL):P),  
+    !,accept, %% 
+    {verb_compl(V,Prep,X,Y,S,SREL)}. 
+
+**************/
+
+%% ORIGINAL'''
+
+verb_modifier(V,X,S, ComSubj,  ERSP3  ) ---> 
+    adverbial1(Prep,Y, Subj2P32), 
+    {verb_compl(V,Prep,X,Y,S,SREL)},
+    ff(ComSubj, Subj2P32,SREL, ERSP3).
+
+
+ff( (SREL and ERS):Subj, Subj:P3,SREL,  ERS:P3) ---> [].
+
+
+
+NEWSPEAK
+
+
+regard entites and events as objects
+
+verbs as properties of events
+
+use only be  do  have and happen 
+
+All things are mentioned in order of scoping, prefix defines role, at
+last default event
+
+be 
+have
+happen     (fro events)
+do         (as subject)
+experience (as object)
+at         (event complement)
+
+explicit scoping from left to right
+
+(only regard main sentences)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+john kissed every woman on a friday
+
+Make everything srel items
+
+forall x:woman  exists f:friday exists e:event e has action kiss,  e happens on f
+
+every woman experience  on some friday dir some kiss  by john [ at some  event]
+
+
+
+friday bunch of day
+
+%% Drop isa in tql use ':' (???)
+
+Translating to Logical form is much like Translating to another
+language:  Translate the ambiguities as well as you can.
+
+  
+
+varför är det så många svenskar på nardo.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+Du må oppgi et sted til i slike spørsmål .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// Avoiding ridiculous  answers is a part of the Turing test approach
+   even if it is a project to camouflage  completely lack of understanding. 
+
+Avoid transitive verbs
+
+   srel/nil/place/A/B    implicit modifier (optional)
+   srel/dir/place/A/B    complement        (not otional)
+
+
+Prosjekt Drammen
+
+Ide:
+
+Flytt semantic -> tuc
+      unwanted_name -> tuc
+
+La trondeims data  database
+                        
+La database være domenespesifikk
+
+Dropp subkatalog tt
+
+Ved skifte av domene, skift hele database
+------------------------------------------
+
+s0 -> 0n
+
+
+%% Suffix Conventions 
+%
+%     Dummy          0
+%     Optional       01        ?
+%     One (complex)  
+%     One simple     1
+%     One or more    1n        +
+%     Zero or more   0n       *
+
+
+%% Suffix Conventions 
+%
+%     Dummy          00
+%     Optional       0        ?
+%     One (complex)
+%     One simple     1
+%     One or more    s        +
+%     Zero or more   s0       *
+
+
+
+Use complexity roof on grammar.
+
+For each rule, increase value by 1.
+Then complexity is bound, and search goes for simpler solutions.
+(No red cuts!)
+
+
+
+
+I kveld/ om morgenen etc  skal aldri knyttes til tidspunkt. (?)
+
+
+TEC TUC Event Calculus
+
+
+Try to translate TUC into Pure (T)EC (instead of TQL)
+
+This is en exercise to prove that TQL is compatible qith (T)EC
+
+
+
+
+
+Produce ready regcut routes (in the first place)
+
+coalesce(Rid1,Trace1,Rid2,Trace2,Rid12,Trace12).
+
+Rid1 and Rid2, Trace1,Trace2 are ignored
+
+ridtobus(Rid12)
+
+Produce new set of regpasscut(t8305_6712,nordregt,57,52,52).
+
+Subsume   Rid12 Trace12    Rid1 Trace1  Rid2 Trace2
+
+variables occurring once
+
+$p(Y) = X,..., {p(X,Y)}
+p$(X) = Y,..., {p(X,Y)}
+date$ = X,..., {date(X)} 
+
+
+      5a -> 5 a
+Ide:  Introductory 0 -> split
+      0010 -> 0 10
+
+Introduce clock(0,9) -> in grammar
+//
+ 0542. ---> på mandag kl. 1718.
+
+
+If they complain over an oracle answer, and they get the explanation,
+they will feel embarassed and give an excuse.
+
+
+Is there a limited set of identifiers such that
+for every sentence of  grammar,
+the same analysis can be reconstructed using the
+limited set.
+
+/ is this the same as finding equivalence classes 
+  of identifiers with identical properties
+ 
+
+
+Same for identifiers in applications (Places etc)
+
+
+
+Lag et prolog språk der metacomp.pl unødvendig
+
+(Gram kan uttrykkes direkte i språket)
+
+
+X isa buenget // OK ?  makes substitutions in Pragma more flexible.
+
+
+
+buslog-format er et ok format for å lage executable buslog program.
+(passevent should never occur in absolute program anyway)
+
+// 
+
+// Make buslog programs more like feature structures by having
+unique predicates
+
+depature
+arrival
+
+¤
+
+
+Extend connections with parameters <= >= to make 
+connections predicate self contained.
+connections is obligatory
+
+passevent used as now to build up
+
+
+New Connections Predicate
+
+connections(Bus,FromStation,ToStation,Day,Date,DepAfter,DepBefore,ArrAfter,ArrBefore,Options, Deps,Mid)
+
+
+Options {direct,to,from,nextaftertime,next,firstcorr,lastcorr, etc}
+
+Can then drop  
+
+departure(free(23),hovedterminalen,tuesday,B)
+
+and optimize on connection predicate instead (Rate...)
+
+............... Application program ....................
+
+today(tuesday)
+atday(tuesday)
+atdate(date(2007,1,2))
+departure(free(23),rate,tuesday,A)
+flag(keepfrombay)
+departure(free(23),hovedterminalen,tuesday,B)
+connections(B,A,free(23),hovedterminalen,rate,tuesday,[from,to],C,D)
+flag(exit)
+
+==>
+
+connections(free(23),hovedterminalen,rate,tuesday,date(2007,1,2),0000,9999,0000,9999,[from,to],Deps,Mid).
+=========================================================================================================
+
+We can introduce the following as a new format:
+
+connections(DepsetFrom,DepsetTo,free(23),hovedterminalen,rate,tuesday,date(2007,1,2),0000,9999,0000,9999,[from,to],Deps,Mid).
+
+right away
+
+When all is ready, DepsetFrom,DepsetTo can be set to [],[]
+
+and then finally introduce eliminate connections([],[]
+
+
+¤¤¤
+
+
+
+noun_modifier0123    interval[0-3] (3 represents Many).
+
+both       2
+between    2
+
+or 
+
+noun_modifier03 --->    0-3
+     noun_modifier1,    1
+     noun_modifier03.   0-3
+
+noun_modifier13 --->    1-3
+     noun_modifier1,    1
+     noun_modifier03.   0-3
+
+
+TULIP:
+
+
+List of references, recent first
+
+In a simplified version, only keep the last stored (i.e. first)
+
+If an anaphoric resolutoin fails, the interpretation is still true,
+but less precise.
+
+
+
+
+// Sematic net defines presuppositions.
+
+// Interpretation means trying to find a meaning where all
+   presupppositions are satisfied.
+
+
+
+
+
+// Coates:
+
+The aims when testing applications that use natural language (NL) as
+their interface style should not be of the form " can I fool it", but
+rather "can I use it".
+
+
+
+
+// Moderated  Turings test:
+
+
+Umulig å lag et spørsmål som gir et svar som ikke kunne ha vært ha vært gitt
+av en  kompetent person.
+
+
+
+
+// Correct shunt for cut    
+/ last X,Arr1/Dep1 | first X,Arr2,Dep2 ->X,Arr1,Dep2
+
+
+
+Precompile cutloop
+cutloop_extend(asbjørnsensgt,7029,7057,11,17).
+
+
+cutset(asbjørnsensgt,7029,7057,
+    [toupes(bus_63_34,bus_63_110,11,17),toupes(bus_63_60,bus_63_135,11,17),toupes(bus_63_74,bus_63_150,11,17)]).
+
+==> 
+
+
+
+Formulate a parametrised application TQL.
+( for Buslog as meaning representation instead of executable query ).
+
+//
+
+Alternative:  Let connections be the only Buslog Program !
+
+This also allows a more efficient optimization.
+
+Extend connections, but dont disallow filter predicates
+
+    keep...
+
+Then, gradually eliminate keep-predicates
+
+
+
+happens(move(a,b,c),sk(1)). <--- !!!
+
+
+
+
+
+
+"TEAM 0530 er om morgenen idiot"
+"- - - Uforståelig ved * - - - 530 er om morgenen idiot *"
+
+// readin  
+
+0530 -> 0 , 530  
+530  -> 530 
+
+0012 -> 0,12
+
+// gram
+
+0 ,530 -> 2930 (2400 + 0530)
+530 ->  530
+
+// pragma
+
+2930 -> 0530 tomorrow if time >= 0530
+2930 -> 0530 today    if time < 0530
+
+530 -> 0530 if time < 0530
+530 -> 1730 if  time > 0530, time =< 1730
+530 -> 0530 tomorrow if  time > 1730
+
+
+
+
+N: \u echo "hei" | mail toreamb
+
+
+// busoraklet kan sende mail
+
+
+
+Kople inn direct_run sentralt i alle buster-kloner
+
+La busstuc være en busterklon
+
+Lage eksplisitt skille Program/ Program generation i Buster
+// Også i saturate ???
+
+
+Gjøre gamle Buslog programmer mer dekalarative/ mindre kjørbare
+
+
+BussEL (Bus Event Logic  // Parametrised event calculus for Buslog
+
+Pass  Events for trip/  // date/day/direct/( or world ?)
+
+      Departure // place/timeconstraint
+
+      Arrival   // place/timeconstraint
+ 
+      Exchange  // place/timeconstraint
+
+
+CSCG   Official Abbreviation
+
+VerbExpression  replaces Verb_head
+
+Top Down Context sensitive parsing
+
+
+%% some phrase is omitted in context LS and followd by a Symbol.
+
+P X R -> P Y R
+
+Let us assume that we have a Grammar rule
+
+LS --->  P X R ,
+
+but we shall accept an input which is  a derivation  of P Y R
+
+
+       LS
+
+     P  X  R   
+
+     P  Y  R 
+
+and that X may produce a Y, but only in the soecified context.
+
+
+
+The way to implement this is
+
+LS --->   P X R 
+
+LS ---> (P,Y,R) , []-(P,X,R),LS. // <--- !
+
+
+LS --->   P, Y, R , LS/( P,X,R).
+
+
+
+To make this efficient, R should be a POS
+
+This is formally seen  as if we after parsing P and Y
+ reinstall the (completed) parsed P and X into the input stream,
+and reparse LS.
+
+(Actually, we are not reintroducing anything to the actual inout
+strem, but use a stack).
+
+
+(i.e. reparse when contextual situation occurs with the replaced
+phrase instead.
+
+
+
+// Shorter version
+
+LS --->   P, Y , LS\( P,X).
+
+
+
+
+
+// Somewhat  inelegant and inefficient
+
+However, P is now ready parsed,
+
+
+
+If we know that
+
+LS ---> LS1
+LS ---> LS2
+
+LS1 --->  P X R ,
+LS2 ---> something different
+
+we could optimize
+
+LS --->   P, Y , LS1\( P,X).
+
+Context Sensitive Classic
+
+   [],Aux,P ---> [],Aux,"go",P
+
+
+CSCG
+
+   VP ---> VX,PP
+   VX ---> Aux,V.
+
+===>
+
+   VX ---> Aux,P, VX\( Aux,"go",P).
+
+or
+
+   VX ---> Aux,look_ahead(P), VX\( Aux,"go").
+
+
+¤¤¤¤¤
+
+
+Move Dates etc from Busdat to Teledat //
+
+
+
+John er lærer
+Lærer er et yrke
+---------------
+* John er et yrke
+--------------
+
+
+Ontology
+Knowledge base
+Static Knowlede base
+Dynamic Knowledge Base
+
+
+
+Try  to formulate a bus tour in Event calculus using three events: 
+
+  The departure
+  The arrival
+  The trip itself
+
+
+
+Ide (Chat80 <-> TUC)
+
+(country X) has (poulation Y) 
+
+   <=>
+
+   has/country/population/X/Y
+
+(egentlig have er et hjelpe-"verb"
+
+  has + population -> has-population
+  Aux    Noun         FinVerb
+
+
+
+
+Lag er ako hierarchy of common verbs
+
+   murder  "ako" kill
+
+   be killed -> die
+
+
+
+All students  built a snowman  //
+Every studemt  built a snowman // only distributive
+
+All Ravens are black
+
+
+black Raven
+
+adj_templ(black,bird)   just allowed
+
+
+Static knowledge base 
+
+raven has colour = black
+raven has black = true
+
+R is black     adj/black/R/_ <-  static knowledge 
+
+A raven flew in the wood.
+
+Did a black bird fly ?
+
+
+
+A & -A -> B
+
+Ex false quolibet sequitur
+
+
+
+
+jon er lærer
+lærer er et yrke
+----------------
+* jon er et yrke
+===============
+
+
+
+srel  sentence relati
+nrel  noun relation
+
+
+funcall(add1,X,Y).
+
+applylist(funcall,[1,2,3],L).
+
+
+// isntead of applylist(X:X+1,[1,2,3],L).
+
+Solves problem with reuse of lambda variables.
+An idea for Reified Logic ?
+
+
+
+
+All prolog clauses shall be ended with 
+! 
+            or
+;else
+
+(else  fails).
+
+// Expection: Pure data (no variables, no clauses)
+
+
+p(X):-
+  a(X),
+  !,reject.
+
+p(X):-
+  q(X)
+  ;else.
+
+p(X):-
+  r(X)
+  ;else.
+
+p(X):-
+  s(X),
+  !accept.
+
+
+
+
+
+
+
+
+
+
+Lage system for sjåførbussorakel:
+
+
+Forutsetter lokasjonsbestemt spørresystem/Trådløse trondheim.
+
+
+Skal kunne svare på spørsmål som man normalt ville stille til sjføren,
+og som omfatter denne turen i tillegg til generell opplysning.
+
+
+
+
+
+
+Use $ notation to represent   NRL/TQL
+
+event(real,e)
+agent(john,e)
+patient(mary,e)
+present(real,e)
+action(love,e)
+
+// $ notation only good for one occurrence variable
+
+
+
+Move:  General overview
+
+
+  A % B
+
+
+B is stacked and reused according to Allenian 13 interval arithmetics:
+
+
+
+         [      A      ]                    Operator
+         .             .                       .
+         .             .                       .
+
+ [  ]  
+ [      ]
+ [           ]
+ [                     ]
+ [                           ]
+ 
+        [  ]                                   \    -
+        [              ]                       \ =  - 
+        [                     ]                \    -
+ 
+           [  ]                                /    -
+           [           ]                       /    -
+           [                  ]
+  
+                       
+                        [     ]                     -
+                          [   ]                     -
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+Of these, only the following are used:
+
+
+
+Suffixer på senses: standard
+
+
+valens:  adj  0 ( + past,part) killed
+         iv   1
+         tv   2
+         dtv  3
+
+
+Use consequently a nominal representation of events, using
+
+   has/event/agent/E/tuc ->
+
+
+   noun_phrase1
+                              nil
+
+write gap instead of nil
+
+
+
+Kode 0015 som  2415 konsistent.
+ 
+
+Vite (Competence, OminiScient)  Ha nok kunnskap til å kunne utlede
+Vite (Performance) Klare å svare
+
+
+Apply synword first, 
+then apply compword on the results.
+
+
+Åpne opp for hashing av literalord (cw) over en viss lengde
+som ikke fins ellers, eller er hasjet allerede.
+
+Butrans:
+
+Vey seldom, a rule is tried in vain:
+
+Is it an Ideal:  If a rule is tryed in vain, it is misplaced or wrong.
+
+Even better, except for obvious repetitions, rules may be tried in
+sequence, once.
+
+Is it possible to partial order the rules so that
+the execution is loop-free ?
+
+
+Is it possible that when a rule will fire, it will fire the first time
+it is met.
+
+
+
+Wallrobot can be made as a genuine teleo-reactive production system
+(Goals are made explicit as facts, instead of only as conditions)
+
+
+### Every answer, an Imponator ! ### (add something extra if trivial  answer)
+ 
+
+Define a set of prototypical NOUN- and VERB- equivalence classes
+that behave identically in grammar, and use these for all paraphrases.
+
+
+Extend connections to include ALL necessary information
+
+Make all necessary results of butrans  into connections
+
+In doing so, dont use the variables used for depsets,
+but introduce variables in code generation
+
+Make all further code manipulation just dependent on connections
+
+Use the depset variables in butrans just as a linked data structure.
+
+
+There is no conflict in letting connections
+use its internal parameter constraints. The should be just dummy
+if departure/keepafter etc have already filtered the sets.
+
+¤
+
+
+
+
+Define \    first
+       /    last (possible)
+       -    anywhere (including XP)
+       =    equal
+
+. means exact
+... means gap
+
+
+A regluar expression where the filler # can occur shall be filled
+
+*   any text from the phrase
+
+
+
+\         #*
+/         *# 
+//        *#*
+-         *    (does not have to occur)
+
+/         *#late as possible
+=         #
+
+
+[  begin text
+]  end text
+#  placement of filler
+
+
+
+[#]   =
+[*#]  /
+[#*]  \
+[*#] OR [*]#
+
+
+
+Use - ONLY for  []-
+
+
+
+
+
+
+A Knowledge system is as intelligent and human-like as required.
+
+
+Places: world -> continet -> country -> county -> community/city ->
+neighbourhood -> station -> bus -> seat
+                            house -> floor -> room
+
+
+Criterion GeneTUC
+
+
+Nouns may be translated to a different form
+Names ar not
+
+Nouns are inflected, 
+Names are not
+
+
+
+
+Try to use One parameter-list insted of a whole series,
+   and let it follow all calls.
+
+Featur list format is preferred.
+
+Then, it is closer to sound object oriented programming.
+
+
+
+Bruke verbritt språk som basis for BUSTQL
+
+
+buss fra nth = buss som er fra nth = buss som har avgang fra nth
+
+nominalisere verb ( bus: avgang/ankomst)
+
+
+
+
+
+today(wednesday)
+atday(wednesday)
+atdate(date(2005,11,9))
+
+departure(free(7),gløshaugen_syd,wednesday,A)
+keepafter(1200,A,B)
+keepbefore(1300,B,C)
+departure(free(7),nardosenteret,wednesday,D)
+
+connections(C,D,free(7),gløshaugen_syd,nardosenteret,wednesday,[firstcorr,from,time,to],E,F)
+
+
+==>
+
+connections(
+
+  keepbefore$(1300, keepafter$(1200,departure$(free(7),gløshaugen_syd,wednesday))),
+
+  departure$(free(7),nardosenteret,wednesday),
+
+  free(7),
+
+  [firstcorr,from,time,to],
+
+  [E,F])
+
+
+or even better
+
+
+
+connections(
+
+  keepbefore$( keepafter$( departure$(free(7),gløshaugen_syd,wednesday),1200  ),1300),
+
+  departure$(free(7),nardosenteret,wednesday),
+
+  free(7),
+
+  [firstcorr,from,time,to],
+
+  [E,F])
+
+
+
+
+
+Rendyrk ideen om at P er predikat-variabel i BussTUC
+
+Du får S i S:pp gratis der du trenger det.
+
+
+(S:P):Q
+
+S:P  is an (event) fluent 
+
+
+
+Make all selection predicates (keepbefore etc.)  context(::)
+compatible)
+
+keepbefore(1235,T1,T2) --> when::arrival::1235
+
+
+
+Has   seldom needs event
+
+He has a dollar in his pocket = He has (a dollar in his pocket)
+
+Therefore, drop the event that automatically follows verb_phrases
+
+
+
+\   first
+/   last, i.e. preference to text 
+//  anywhere, preference to first
+-   ad lib
+=   identical
+
+
+¤¤¤
+\   first
+/   last, i.e. preference to text 
+\/  anywhere, preference to first
+/\  anywhere, preference to last
+-   ad lib
+=   identical
+
+
+
+
+Replace keepbefore1  by
+
+
+keepbefore + decentarrivalflag
+
+add 
+
+keepafter + decentdepartureflag
+
+( ~ keepafter1)
+
+
+introducere  (have/attribute)/X/Y/E som transitivt verb
+takle i butrans
+
+
+analog  be/good/X/E
+        be/surprised/X/E
+        do/go/X/E
+       
+
+
+has/bus/wheel/B/C,
+
+==> (drop bus/)
+
+
+New Verb   has/weel/B/C // new verb appears in semantic
+
+           
+
+
+
+Spørsmål qua logisk formel.
+
+et svar hvorfra man kan konkludere spørsmålet.
+
+
+Setning |= Spørsmål direkte
+
+Setning |= Generelet svar |= Spørsmål
+
+John er en ungkar. // Setning
+     ||
+     ||
+     \/
+Er John en mann ?  // Spørsmål
+
+
+
+TUC må oppføre seg slik at ingen oppdager at den ikke skjønner noe.
+
+
+
+Hvordan ville språket vært dersom vi abstraherte bort alle
+ event-entity relasjonene.
+
+
+XLF  Executable logic form
+
+
+legge inn ptb/ lit() i metacomp
+
+ + w(Lit,lit(Lit))
+ + w(higher,adj(high,comp)).
+
+
+BussTUC ska forstå alt, og når den gir feilmeldinger
+ skal kunden føle beskjemmet takknemlighet.
+
+
+legge inn give/John/X, srel/ind/person/Mary/X // allow in TQL
+
+Allow All kinds of questions of address of persons
+Begin with Tore Amble.
+
+Where does he live.
+How can I come there (Buster)
+
+
+Telster   Telephone
+Aster     Addresses
+Ruster    Route Information
+
+
+Eliminate transitive verbs early in butrans (e.g.pass)
+Simplify forthcoming
+
+
+Ordering of events.
+
+If you cannot prove that an event sk(m) occures after event sk(n),
+where m < n, then assume that A is before B.
+
+
+
+
+00.15 coded as 2415
+
+0100 coded as + 100
+
+Event State Descriptions are more general than frames.
+
+
+Butrans must split 1 (tour)event into 2 (or more)  (pass)events
+
+
+Recapture the Idea to make n OQL (Official/Objective TQL)
+
+Content as BuslOG, syntax as TQL
+
+Also add options/Flags/Global values/Weak contraints/Hard constraints
+
+How would that look ?
+
+
+
+Rewrite butrans as a generalized DCG, but use
+    
+    order independence as standard
+    allow adjacent sequence and order as well
+
+    + ip ==  {   }
+
+You could even use Categorial operators for REWRITE(replaceall)
+
+Insist that this language is declarative ("definitive" language)
+(if anyone object to the result, they must object to the definitions)
+
+  also use feature structures.
+
+
+
+
+
+          morgen formiddag ettermiddag kveld natt  
+
+ om  
+ i  
+ på 
+ -dag
+
+
+Er det nødvendig å gjøre distinksjon  this_night  in_night
+
+Insted user default
+
+i kveld = i en kveld (if no DAY,,means tonight)
+
+
+addcond       adds only if not present, but succeeds
+addrefrain    adds only if not present, otherewise fail
+
+
+N: hva er meningen med livet.
+
+[which(A)::(A isa meaning,B isa life,nrel/with/meaning/thing/A/B)]
+
+nrel -> srel   
+
+
+which(free(10)),free(10)isa meaning,free(11)isa life,nrel/with/meaning/thing/free(10)/free(11)
+
+==>
+
+which(free(10)),free(10)isa meaning,free(11)isa life,be1/free(10)/free(12),event/real/free(12),srel/with/thing/free(11)/free(12)
+
+
+
+N: hva er meningen som er med livet.
+
+
+[which(A)::(A isa meaning,B isa life,be1/A/C,srel/with/thing/B/C,event/real/C)]
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
++ 
+ 42
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// stunt makes a reduced relative clause  into a relative clause
+// 
+// New name for stunt:  "complicate"  "complify" "dereduce" "verbify"
+
+
+
+
+// Allow nil to take the part as in does // 
+  // go fast     NOW   srel/in/mode/nil/E ===> srel/nil/mode/nil/E
+          srel/fast/time/nil/free(14) OK
+///// CHECK THAT   dtv ??? ///////////
+
+
+
+Is it possible to make a new TQL ( OQL object language)
+
+which is purely verb-free (DO BE HAVE).
+
+
+What in Datalog cannot be expressed in OQL.
+
+(Should likened ako temporal SQL)
+
+
+( go from A to B is 1 event in TQL, > 1event in OQL).
+
+
+
+Just like  conjunctions are polymorphic in type theory,
+
+so is ako relation   
+
+  man ako male
+  nice  ako good
+  walk ako go
+
+
+
+
+%% 1 Make code generation Explicit from Program Structure
+
+%% 2 Change role of parameters,  Depset = Event
+
+
+
+OLD FORMAT
+
+	 add (departure(Bus,Stat,Day,Depset),
+         keepafter(Time,Depset,NewDepset),
+			passevent(NewDepset,Bus,Stat,[from],Day,B))
+
+
+NEW FORMAT
+
+Depset achieves the role of event id   Depset=B
+
+
+	 add (departure(Bus,Stat,Day,Depset),
+         keepafter(Time,Depset,_), 
+			passevent(Depset,Bus,Stat,[from],Day,B)) %% B=Depset
+
+OLD FORMAT
+
+
+id	 replace passevent(Deps,Bus,Place,Opts,Day,C) 
+
+	 with    (timenow2(0,Time),
+             subfromtime(Time,Minutes,TM),
+             keepafter(TM,Deps,NewDeps),
+
+
+NEW FORMAT
+
+
+id	 replace passevent(Deps,Bus,Place,Opts,Day,C) 
+
+	 with    (timenow2(0,Time),
+             subfromtime(Time,Minutes,TM),
+             keepafter(TM,Deps,NewDeps),
+
+
+
+
+
+Weighted Finite State Vector Addition Sysems.
+
+
+What if states are vectores, and transitions are addition (vectors).
+
+
+La literalet i gram_X
+
+   [hit]
+
+bli representert som
+
+
+   w(hit,[]).
+
+Generelt, la  ordformen bli med  w-koden, noe som kan benyttes til
+disambiguering
+
+
+Eksempel: noen steder skal e oppfattes som etter/ andre steder som er
+
+   w(e,prep(after))
+   w(e,verb(be,pres,fin))
+
+   w(etter,prep(after))
+   w(er,verb(be,pres,fin))
+
+....
+
+
+Generalize opts in bustrans as a structured object
+
+option:[nightbusflag:true]
+
+Then generalize to keepbefore/after etc.
+
+
+
+Introduce Two type intensional logic in NRL.
+
+
+
+v_templ(Verb,Subj,ObjC)
+
+
+means exactly:
+
+tv_templ(Verb,Subj,ObjC).
+iv_templ(Verb,Subj). %% Optional intransitive
+
+tv_templ(Verb,Subj,ObjC) :- v_templ(Verb,Subj,ObjC).
+iv_templ(Verb,Subj) :- v_templ(Verb,Subj,_).
+
+
+
+
+There are 3 levels of descriptions for bus transport.
+
+
+Primary properties that are properties for each node (place,time,bus)
+
+Secondary properties concerns relations between legs (direct, ... more ?)
+
+Ternary properties concerning the set of answers (last, first 5, etc,preferences)
+
+/ or do wee need only 2 levels
+
+/ what about tradeoff   transfer vs. maladjusted direct route
+
+
+
+Målet med bussoraklet er at ingen skal reagere, hverken negativt eller
+positivt på svar eller dårlig svar fra bussoraklet.
+Hvis svaret er at setningen er uforståelig, så er setningen
+uforståelig.
+
+
+Perform Code generation asa separate activity
+i butrans, even if the code (at the moment) is
+ready made during the transformation.
+
+Keep options (whatever you need for outdeps) in a frame like
+structure   (Codeframe)
+
+
+
+NRL semantics
+Activity = "(reified) set of events ( ... world )"
+
+
+
+This is to be synthesis of TUC and NRL and TULIP:
+
+In other words: ( TULIP Official)
+
+TULIP  
+
+\ first
+/ last ( concession: as last as possible)
+- just missing :: uses in trace
+
+TUC 5 operators 
+
+\ first
+/ last ( try text first) (leave grammar as is if possible)
+- just missing (try stack first)
+= as if
+--  assume, use before END
+
+  look_ahead  lexical items
+  not look_ahead
+  end_of_line
+  skiprest
+      lock
+      unlock
+      begin
+      end
+  ...
+
+
+
+Use idea of double item (text,stack) -> (text,stack)
+This is similar to two dimensional parsing, except that stack may grow.
+(look at size of remaining text, stack as crude position coordinates).
+
+
+
+
+Sweep Scan ( Chartpasring light /ShiftReduce parse)
+
+
+Sweep through sentence several times, 
+bind (set parentheses) for decreasingly strong binders.
+Finally, full analyses with defaults
+
+Coroutining:  Parse as long as a binding is obvious.
+
+
+
+Busstuc can be made as a special case (grammar) of buster.
+
+  (spm svar)*
+
+
+Idea concerning paralell parsing:
+
+
+If you expect two different things, you could
+simulate the result of separate parsing with backtracking,
+and then syncretize the common minimum
+
+similar to
+
+S ---> NP X
+
+S ---> NP Y
+
+==>
+
+S ---> NP, []-NP, X or Y, !, decide what to do next.
+
+(Similar to automatic factoring)
+
+
+Top Down parsing is Expectation driven parsing 
+which is good for speech recognition.
+
+USE NRL to introduce PreStored Virtuals (not stacked items, only
+references with imaginary positions).
+
+
+Use Syntax Tree wth (start) position as indentation.
+
+
+John loves a woman
+
+
+S 
+NP
+PN
+John
+  VP
+  TV
+  loves
+    NP
+    DET
+    a
+      NOUN
+      woman
+
+
+
+Dialog Dictum
+
+Every  client  has an optimal plan.
+
+(Bus driver runs behind a bus to a station. When the former bus stops,
+ and then leaves, a man is still there. He doesnt give a signal, but
+ the later bus stops even though. Why.
+
+
+adj1 ako adj2 if adj1/G => adj2/G
+
+verb1 ajo verb2 if verb1/G => verb2/G
+
+ 
+ELIMINATE srel/nil/clock/E  srel/nil/time/E 
+   at all costs ! in busstuc and buster.
+
+
+Make BusLog a little more frame like
+
+Instead of chain of passevents linked to
+
+RID-sets, use the RID-set as a parameter in passevent,
+together with a list of modifiers (without RID-set).
+
+BusLOG is no longer a ready Program, but a structure.
+
+
+Make code-generation explicit.
+
+
+
+N: jeg vil reise fra nth til nardo etter kl 12 på lørdag
+
+............... New destination ....................
+
+atdate(date(2004,12,4))
+atday(saturday)
+message(date_isa_day(date(2004,12,4),saturday))
+message(nearest_station(nardo,nardosenteret))
+departure(free(11),nth,saturday,_14029)
+keepafter(1200,_14029,_18859)
+passevent(_18859,free(11),nth,[nextaftertime(1),from],saturday,free(10))
+departure(free(12),nardosenteret,saturday,_16334)
+passevent(_16334,free(12),nardosenteret,[to],saturday,free(10))
+
+
+/// 1.  ITERATION
+
+atdate(date(2004,12,4))
+atday(saturday)
+message(date_isa_day(date(2004,12,4),saturday))
+message(nearest_station(nardo,nardosenteret))
+
+departure(free(11),nth,saturday,_14029)
+keepafter(1200,_14029,_18859)
+passevent(_18859,free(11),nth,[nextaftertime(1),from],saturday,free(10))
+departure(free(12),nardosenteret,saturday,_16334)
+passevent(_16334,free(12),nardosenteret,[to],saturday,free(10))
+
+passevent(_14029)
+departure(free(11),nth,saturday,_14029)
+keepafter(1200,_14029)
+
+
+
+Chunk Parsing.
+
+Mark the (unprotected) Finite verbs/aux
+
+When you parse a fragment, you know the first occuring finite verb.
+
+
+
+Chunk1 FV1 Chunk2 FV2 Chunk3 FV3 Chunk4  ...
+
+What can Chunk1 be except an NP ?
+
+
+
+
+
+
+NO // make monday etc into name, just like january ?
+
+lørdag lørdagen lørdager lørdagene 
+
+
+repalce bil/clock by  nil/time
+
+take what comes.
+
+
+på mandag morgen kl 10 har jeg en forelesning på gløshaugen. 
+
+//lag adverbials som konsept ala adjectives ( fill in )
+
+
+Is it possible to repair any sentence with prepositions.
+
+
+Any item that occurs twice shall be defined using an equalised
+variable.
+
+
+
+
+Pragma as DCG extended
+
+
+cc(List1,C,List2) :- delete1(C,List1,List2)
+
++
+
+{rules as before}
+
+
+pragma(List1,List2) :-
+    rule(List1,List0),
+    !,
+    pragma(List0,List2).
+pragma(List,list).
+
+
+
+
+
+
+Keep all times as
+
+- KKK means unchangeable KKK
+
+(introductory 0's  as -)
+
+0130 -> -130 
+
+(0-130)  looks better
+
+(0+130)  gives correct value <-
+
+
+Apply TUCSOUNDEX on nouns/verbs/adjectives
+
+
+In BUTRANS
+
+Start with 1. passevent from start, with options/times etc.
+
+
+Bruk Trekkstrukturer i Pragma,
+
+Rasjonaliser  set value/ get value
+
+
+Bindingsteori : 
+
+Superficial parsing where all nodes gets a binding power.
+
+
+
+Automatic syntax trees:
+
+
+1. use a convention that empty productions are not shown.
+2. otherwise, use names that can be presented in the syntax tree
+
+
+Er det mulig å la alle entiteter det er snakk om være tall ?
+Isåfall får man en natrurlig sprpk kalkulator.
+
+
+
+The buses which are taken by the woman are red  // inflected in number as subject, but
+scoping is narrow under semantic subject
+
+instead of saturday or sunday, use  
+
+Database daycode(0,0,0,0,0,1,1).
+
+for searching saturday
+
+Search   daycode(_,_,_,_,_,_,1,_).
+
+%% As an intermediate solution,  use a predicate
+
+conformday (  Saturday, Weekend).
+               search    database
+
+---
+
+Representasjon  av proper_nouns som common-noun med equality
+kan brukes for å gjøre substitusjonen i Pragma mer renslige (bare 1
+substisjon).
+
+Prøv dessuten TQL på substityitivity generelt (BDI f. eks)
+
+
+
+
+Krigen forgikk  1939 - 1945   Event 
+Krigsårene  var 1939 - 1945   "Event"  Intervall
+
+
+How would you proceed if you were going to parse the grammar from behind .
+Try forward and backward at the same time ?
+Make it two dimensional
+
+     Forward
+     --------
+  B |
+  a |
+  c |
+  k |
+
+
+
+Order gram strictly after call order
+Dis-Regard verb_phrases in relative_clauses
+
+It is a consequence of the semantics that
+a dupliction of a TQL expresseion can be eliminated without loss.
+
+
+Let quantifier have 1 :
+Sentence tag ::
+new:: exists(X:bus) and ...
+
+
+Combined feature structure and Production system.
+
+An ex film star turned California state governor Ronald Reagan.
+
+
+
+Introduce OR rule in pragma
+
+
+Modify it to take intransitive verbs formulations:
+
+      pass/B/P/E -> pass/B/E, srel/dir/place/P/E
+
+Then, one day, avoid transitive verbs.
+    
+
+Monolog      Dialog
+
+BUSSTUC      BUSTER
+
+TELETUC      TELSTER
+
+             TELEBUSTER    ( combined system)
+
+
+
+All stations that are not TT stations are neighbourhoods with associations.
+
+
+The busstuc grammar/ nrl grammar gives you authority to  define a complete grammar.
+
+
+Longest preference does not eliminate commit errors, but minimize them.
+
+
+
+Partikkel/Bølge distinksjon i kvantemekanikken
+=
+Buss/Bussrute distinksjon i bussverden.
+
+
+Mark flag(exit)
+     flag(error) (no need for default error message)
+
+
+Pragma rule:
+
+X and Y  match X Y in sequence
+X or Y   match X or Y, any sequence
+
+
+Then connection  use it as a filter.
+
+departure(free(0),hovedterminalen,day,X) =
+    setofalldep(hovedterminalen,day).
+
+
+ROUTE-DOMAIN  means common name space. 
+
+
+På sett og vis er en vanlig statement en slags relativsetning
+
+En mann kysser ikke mary .
+
+Flytter En mann "først" og etterlater et gap
+
+
+En mann(1) ... (1) kysser ikke mary
+
+NP ---> Det Noun XPron (S\NP)
+XPron ---> []
+
+Kan dette brukes til noe ?
+ 
+
+No point in having / to mean the last
+
+
+What about
+
+s1 -> advp, s/advp : .  (   : means after here)
+
+s -> np vp
+
+=>
+
+s/advp --> np vp/advp
+
+vp -> v vcs/advp
+
+vcs/advp  -> vc vcs/advp
+
+vcs/advp -> []/advp    impossible
+
+means n\+bactrack to
+
+vcs/advp  -> vc/advp  vcs.
+
+
+Point is, even then  , try / as late as possible
+
+
+\  Must be first
+/  Somehwere inside, preferrably early
+// Somewhere inside,  preferably late
+
+But it is never linguistically motivated  to prefer some parts late,
+some parts early.
+
+-QED- 
+
+
+\\ must be first
+\  first possible  try stack first
+/  last possible   try text first
+// must be last
+
+-   free
+
+----------------------------------
+
+
+\.   first
+./   last
+
+\... as soon as possible
+.../ as late as possible
+
+/...  anywhere
+
+...\  already (:-)
+
+
+\.   first
+./   somewhere inside
+
+./.   after last (the use as free)
+
+
+-----
+
+
+Rigorous notation
+
+\.   first
+./   last
+
+\.. as soon as possible
+../ as late as possible
+
+/..  as soon as possible
+
+..\  already
+
+./.  anywhere (instead of -)
+
+
+Adopted notation
+
+\     = \.
+/     = \..
+-     = ./.
+
+
+----------------------------------
+
+              Adopted as
+
+\.    first      ==>  \
+\..   soon            /  ( prefer stack )
+.\    before
+..\   already
+
+/.    after
+/..   later           -
+./    last
+../   late            /  ( prefer text )
+
+----------------------------------------
+
+suave(SU,C,V,Tense,Neg,Voice,Verbx,Today) --->  %% TA-030702
+
+    {decide_subject(Voice,C,SC)}
+    //
+   (noun_phrase(SC,SU),       % en mann 
+    aux4(Tense),              % vil 
+    sadv(Neg),                % ikke
+    verbx1(V,SC,Voice,Verbx), % kysse 
+    adv_phrase(SC,V,Today)).   
+ 
+
+
+To prefer stack means to optimize search for  little complexity (shallow nesting)
+
+
+
+\  First     ( categorial )
+/  Last      ( categorial )
+
+../   Somewhere within
+
+/..   Somewhere after
+
+
+------------------------------
+
+OK with 3 operators
+
+\ first
+/ somewhere inside, no prefence
+
+[]-   free  
+
+
+Tempting to swap 
+
+
+
+\   first
+/   somewhere within (preferably) last ( homage to CG)
+
+-   somewhere within
+
+//  free, afterwards  
+
+
+
+-----------------------
+
+
+
+\ must be first
+/ last preferrably ( is that better ? try virtual last)
+
+
+
+
+A way of abstracting BUSTER is to make all code (TQL) invisible ala
+
+$man   = an X that is  MAN
+
+This phrase implies this phrase (on TQL level)
+ETC ETC
+
+
+
+sg   set spypoint and call (~sp)
+
+
+John er journalist
+=
+John er morder
+= 
+Det fins en (til nå ukjent) morder, men (nå vet vi at) John er denne
+morderen.
+
+
+
+Det å bruke / som siste opsjon sparer masse tvedydighet
+
+
+\  først
+/ sist
+- hvor som helst innen
+
++
+// 
+
+hvor som helst, gjerne etter slutten
+
+
+
+Hvor er buss 52 mellom nth og nardo nå ===> Faktisk mulig å besvare
+
+Assume TQL is aobject oriented database format.
+How would a SQL query look ?
+
+
+-
+New pragma rule  is   GGG or HHHH  ( a la    GGG and HHHH)
+
+
+Utvide Buster a la Circuit Fix It shop,  
+hjelpe med å komme fram vhj off komm
+
+Vet du hvor holdeplassen er ?
+
+
+
+// new aspects of Semantic Nets
+bird  has a father  being bird // father is polymorph
+
+person has a X being cloth.  // allow general attributes
+///////
+
+
+Let 91500 represent decided times
+    915   undecided (2115 ?)
+
+Include  N first shortnames   J Falk veg in amblehash
+Include Only last name    Falkbergets veg
+
+synword(helst,[]). %% alternative to noisew/ compword
+
+jeg var presidenten i USA (be2)
+=
+jeg lignet presidenten i USA 
+(jeg fungerte som) presidenten i USA 
+
+jfr presidenten i USA  var meg
+
+
+John likes Fred.
+
+Mary likes him. / Fred
+He likes Mary   / John
+
+Not only  X is_the man but  X is_the_last_subject Man
+
+
+Let parsetime_limit be a function of the length of the sentence.
+
+(e.g. 100 ms./word)
+
+35 ord 10 sec.   0.3 sec/ord
+
+
+
+ER harald konge ==> fins X  er konge og harald = X
+
+Prøve   be2/X/X/_ først, !!!! 
+
+
+whenq(which(Y)::P) ---> %% Når i dag går bussen ??? 
+    when, %% [når],  hvor tidlig 
+    adverbial1(AA,BB,CC,DD), % i dag
+    !,
+    whenq(which(Y)::P) / adverbial1(AA,BB,CC,DD). 
+
+ %% Here we could use   /  =  as last
+
+
+Sometimes, the simpler parts have simple syntax and simple semantics,
+while the composite part has complex ones.
+However, sometimes we are obliged to specify simple syntax but with
+full semantics.
+
+
+
+Explanation       P(X) fails if X is a YYY      // Rule
+                  P(A1) fails because X isa YYY // EBG
+
+srel/in/time      /1230/E   can be expressed as
+
+nrel/in/time/event/1230/E    // (NB event is in time), E last
+nrel/in/event/time/E/1230    // alternative    
+
+rel/event/in/time/1230/E <-- reshuffle
+srel/      in/time/1230/  <-- srel = rel/event
+
+Even if TUC represents metaphoric sentences literally does
+not exclude that the sentences are processed as metaphors.
+
+
+
+
+Scramblehash:
+
+   missing ch
+   extra ch
+   wrong ch
+   swap neighbour ch
+
+   move 1 character with change
+
+buenget beunget  benguet bexnget OK
+bneuget                  NO
+
+
+Drop _ in official names: capture a lot more
+
+Make where to be nominal, use nil if missing prep.
+
+Keep / as last, (in additon to  //)
+
+Will reduce alternatives because an adjuncy can always be but at the end.
+
+
+
+Find tracees, then perform depthfirst search with cutting.
+
+Principle to avoid half truths: Answer is true and meaningful,
+independent of question.
+
+Bus 10 may exist, but does not pass any station.
+Abstract away all occ of an item in the database. It may still exist
+intentionally (?).
+
+
+Instead of eliminating nrel in favour of srel, one should do
+the opposite, and translate srel to nrel
+which is the essence of deverbed language.
+
+
+I may be that the representation is different from the intended
+meaning, but that is compensated by the tell and ask mode:
+If you tell, and ask about the same in the same manner, you will
+get the right answer.
+
+
+// DEVERB TQL as a strategy // First part of pragma
+
+
+Ikke røyker has P <=> - (røyker has P)
+
+Implement events in QLF complex forms.
+
+
+','  Introduce  wg  optional ,
+
+User (X: Notation) in TQL gram_x
+ 
+Third ORder Event Logic (TOREL)
+Third Order TemporAl Logic (TOTAL)
+Third Order TemporAl Event Logic (TOTEL)
+
+Make a bustrans rule   Canyoudo  test: tuc isa ... ==> do: tuc isa 
+
+; betyr '.' (eller and ?)
+
+deflag dokumenteres
+
+
+cappelens vei: accept last name and or first letter in pre names. 
+ (J(ohan)) Cappelens vei
+
+Consensical
+Trenger du - . Hvis ikke  kan - brukes i stedet for // ????
+
+Hvilken holdeplass er nærmest Skaarsvolds veg? // Gen: fornavn kan skippes
+
+reciprov = redundant indirect object //
+
+Imp er fin
+inf er part, 
+men for praktiske formål brukes infinitiv og presens om hverandre
+
+modal -> /// in gramX
+
+Bruke TeleTUCs sql til bussrute
+
+Lag en oversikt over ord som oppfører seg likt bortsett fra bøyning og 
+pp komplementer. Ta et ord fra hver gruppe, fortrinnsvis innen Buss.
+
+
+TUCsoundex // Replace in sequence recursively
+
+gh   -> g
+th   -> t
+aa   -> å
+@@   -> @ 
+ch   -> k ( churchill -> kurkil) sj ?
+ck   -> k
+dt   -> t
+w    -> v
+skj  -> sj
+sch  -> sj
+schj -> sj
+sch  -> sj
+tio  -> sjo
+øg   -> øy
+øi   -> øy
+...
+
+en$ -> (end with)
+
+
+----------------------
+
+srel burde hete vrel ( acc. NRG:  adj makes be into a verb)
+
+
+bestcorr:   Lag summary of startdeps and enddeps
+ ( station and routes).
+Use quicktransfer
+
+osv      osveien
+stav : = staveien bare hvis ikke spellcorr på sta 
+
+om STED = prep
+om TID  = prep
+
+ellers  konjunksjon
+
+transbuslist(5,9,d2,d1). .... etc.
+
+....XYZ      9,5,d1,d2        Husk
+
+
+passes6(Tour,Period,Station,Seq,DelA,DelD).
+depart5(Rid,Period,Tour,Start,Kay). // Length of Tour ?
+
+
+Create Now,  use ad lib
+
+
+use the street info actively in teletuc.
+
+
+company    at           place 
+  |                       |
+  A                       V
+ address <- station <-neighbourhood
+
+
+
+Define verb subclass
+
+      strangulate avo  kill
+
+
+
+Which station was the bus that I wait at  at at 8 o'clock?
+
+Adverb: skifte til    v_compl(  nil
+
+
+
+Supertag:
+
+Tag it with ambiguous  tags.
+Analyse it.
+Use the adopted tags as the tag.
+
+
+Amblehash takes  Yygdrasilveien for Yggdrasilveien
+
+
+Hvilke klasser spiller en rolle i syntaksen bortsett fra
+semantisk samsvarsanalyse ?
+
+Riktig spørsmål gir riktig svar.
+
+
+Make it a goal to represent all that appears in the bussrutehefte.
+
+
+once(P) in grammar:  try P once, else fail.
+
+Lastquestion inn i report
+
+(or tranitive verbs ==> dir object)
+
+Introduce Intransitive verbs with nil object.
+%% This will standardise rule base
+
+%% Allow tv_templ(go,agent,nil). ==> go/'I'/nil/E
+
+%% Begin with case ambiguous verbs !!!
+
+[add,answer1,ask,call,change,close,concern,congratulate,consist,drink,drive,eat,feel,get,
+greet,help,increase,knowthing,last,learn,leave,lose,marry,move,open,park,pass,pay,play,reach,
+read,repeat,run,see,serve,shop,sing,speak,start,stop,study,teach,tell,translate,turn,understand,write]
+
+47
+---------------------------
+
+compverb  (blew up).
+Store bokstaver for London.
+
+
+in noun_phrases     noun_phrase1 tar gap, men det er ikk lov i
+conjuncts.
+
+
+Try version with program first, and then database.
+                                ditto + reconsult
+
+Store torehash like this   
+
+torehash(pris,a,paris). / etc
+
+
+   prias  drop 1 =a  => pris +a = paris !
+   prins  drop 1 = n => pris +n NO
+
+
+HPSG  nrel arel
+
+Nye TQL   nrel erel  
+
+persuade sandy to go
+promise sandy to go
+
+
+be in London
+be  tore
+be  sad
+there is a man
+
+
+an (appearantly unsolvable) problem (POCake)
+
+I must go => modal   God say  that I must go
+
+John er lærer => lærer(john)  %% adjektivisk
+John var lærer ?
+John var en lærer ?
+John lignet en lærer ?
+John lignet en lærer  i går ?
+
+Er det mulig for svargeneratoren å generere tql ?
+
+
+Shorten the names inside the route files  departureday
+                                          composite_stat
+
+
+Applications:
+
+Værvarsling: fra tekst report -> database
+Truck GPS data -> DB, qeuery system for DB
+Bus GPS -> Real time passing times.
+Telephone number query
+
+
+readin i Olav => Egen navn
+1. ord . Kjent ord => ord
+Ellers   Ord => Navn
+
+
+skal = w(go,fut,fin). %% New tense 
+
+roundmember errors in makenegative MUST be replaced !!!!!
+
+
+txt(0, w(the,[the]), 1).
+txt(1, w(bus,noun(bus,sin,u,n)), 2).
+txt(2, w(passes,verb(pass,pres,fin)), 3).
+txt(3, w(the,[the]), 4).
+txt(4, w(station,noun(station,sin,u,n)), 5).
+
+--->
+
+txt( w(the,[the]),0, 1).
+txt( w(bus,noun(bus,sin,u,n)),1, 2).
+txt( w(passes,verb(pass,pres,fin)),2, 3).
+txt( w(the,[the]),3, 4).
+txt( w(station,noun(station,sin,u,n)),4, 5).
+
+
+
+Grammar for writing English
+vs
+Grammar for understanding English
+
+
+
+One standard format for TQL verb     v/kill/Tore/E , srel/dir/Ossie/E
+
+srel/in/city/trondheim/E  "should formally be" nrel/in/city/event/trondheim/E
+
+Is it possible to group all categories that needs special treatement
+into  the same super category ( attribute free grammar)
+
+
+Soft errors: Partially understood,  but answer is correct 
+             and shows how it was conceived
+
+Hard error:  Wrong or misleading answer.
+
+
+For every rule that should but didn't fire, relax the conditions
+For every rule that did but shouldn't , constrain the conditions
+
+... find a simpler sentence with an behaiour as expected and study the
+deviation ...
+       
+
+
+compword word should be coded differently than names.
+
+Introduce  !,accept  for !   accept, only for tracing.
+           !,reject          fail    
+
+
+
+VP and VP should give 2 events. // cfr   reduced rel
+
+TQL can be reformulated in deverbed language with Events
+( corr. to feature based thinking).
+
+
+Use Exit flag, do some of negans processing (esp roundmember)
+Define  Negansflag
+
+
+
+Translate busstuc/bustuc/smstuc  -> tuc .
+
+Can you implmenet FOPL in BreakRules
+
+
+N: en buss i trondheim går.
+
+trondheim isa city,A isa bus,go/A/E,event/real/E
+
+   nrel/in/bus/city/A/trondheim,
+
+
+N: en buss som er i trondheim går.
+
+trondheim isa city,A isa bus,go/A/E,event/real/E
+
+  be1/A/B,srel/in/place/trondheim/B,event/real/B,
+
+
+
+nrel/in/person/vehicle/I/52  =   be1/I/E, srel/in/vehicle/52/E 
+        ******                   seems to be superfluous (OK)
+
+
+go/vehicle/15/E     bedre ENN go/15/E  ???
+
+
+
+Ta NOISEW etter COMPWORD !!!
+altså ikke => unntatt
+altså => []
+Sjekk alle med samme profil
+
+
+Hvilke busser må jeg ta fra Vestlia for å være ved 
+                           Magnus Berrføtsvei
+                        -> Magnus Berføttsvei
+
+            // example of good liberal spellcorr
+            // one missing one extra
+
+samleveien 4 -> svaleveien 4 (example of bad liberal spellcorr)
+(no street samleveien, only stations samlev 1 , samlev 3)
+
+
+
+Regard is in as verb, 
+gen.  verb prep  as verbial
+
+
+
+With SMS, første means neste unless specific day.
+
+
+
+hvor ligger gartnerhallen?  // give street names
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+ 
+  Semi automatic evolutionary programming with Production systems. 
+
+
+Mature rule set captures errors and avoids disasters.
+
+Iterative Inductive programming:
+
+    restrict conditions if over generate
+    add rules if not covered
+
+An error in Trans provokes other errors, and
+
+triggers a robustification.
+
+////////////////////////////////////////////
+
+
+Ved bytte av buss skal man velge første mulige stasjon for skifte.
+
+M.a.o.  sortere på avgangssiden, gitt siste mulige startavgang.
+
+Gjelder både medløps  (spiller ingen rolle)
+
+og motløps.  ( stå å vente i steded for å sitte på bussen til siste øyeblikk).
+
+===========================================================
+
+
+splitword(mandagskvelden,mandag,kveld).
+                      **
+
+
+isa/utopia/man/tore % Text-flag
+
+Droppe første / siste hvis sms-flag
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+Prinsippet om at virtuals alltid prøves først bryter
+mot prinsippet om longest (NP) first.
+Smoketest med virtuals sist.
+
+By preferring text to stack in ConsGram, we also 
+prefer verb complements to noun complements.
+
+Når går buss fra Studentersamfundet som er på sentralstasjonen 14? 
+==> now : buss går fra Sf   
+==> eventually:  buss fra Studentersamfundet som er på sentralstasjonen 14 går
+
+
+venter en sjåfør  på bussen ? // prefer text for stack.
+
+/////////////////////////////
+
+
+No spell på compword
+
+Fjern  alle subsumerte templates og complements.
+
+
+Overføringssyndromet
+
+   BussTUC er intelligent,
+   Jeg trenger et intelligent planleggingssystem
+   Kan jeg bruke noe av intelligensen fra BussTUC ?
+
+   AI is based on the concept of cheating (Turings Test)
+
+
+første etter 12 >=   
+neste etter 12 >
+
+Verbial   ( Verb expression ) in stead og Verb_phrase which is used
+
+Name space must be independent of date !
+
+
+Hvor ligger Tempeveien 11 -> alle gatene som har den stasjonen.
+
+txt ---> text(np,2,3)   More standard
+
+Komplex passiv:   boken ble anbefalt lest.
+ 
+// alle bilverksteder
+
+Make Depset in trans into a unique passevent identifier
+
+A program is mature when a modification gets right as soon as you
+don't make any obvious errors.
+
+
+Grammar: NP, then diversify \ NP
+
+// as generalised operator
+
+
+Bustrans:
+
+Commutative addons til passevent.
+Postpone code generation ( departure/connection)
+
+
+
+1. Make pragma rules compatible with Proxy rules.
+2. Seaparate clearly WM from code generation
+
+
+Aggregate predicate as advanced as in SQL, but based on SOLON.
+
+    agg(avg,x: exists(y: emp(y,TOY) and sal(y,x))).
+
+
+Restruction:  Functional expression are not susceptible to unification
+              except to a variable.
+
+
+Index article is used as world parameters.
+
+Article event/aa01/S, 
+
+
+PRINT DEPT,SUM(AREA) WHERE OFFICE(_ID,DEPT,AREA,_OCCUPANT)
+
+    and get a table of <Department,TotalArea> pairs.  The Prolog
+    equivalent of this might be
+
+    dept_office_area(Dept, TotalArea) :-
+        aggregate(sum(Area),
+            I^O^office(I,Dept,Area,O), TotalArea).
+
+Dybdals vei  neighbourhood ?   St. dybdals veg/ Bugges vei
+
+Replace do -> aux wherever appropriate
+
+Lag en relasjonsmodell  for turer med 0-3 trinn.
+
+Eliminate test on departure in trans
+(use passevent).
+
+Eliminate generate departure.
+
+Final code generation use passevent and passeventnotice.
+
+Bruke siste parameter i passevent som unik identifikator.
+
+Er det riktig at alle betingelser knyttet til
+en passevent er kommutative ?
+
+( Mao keepafter(1650,A,B) ==>  passeventnote(ID,keepafter,1650))
+
+use assert/retract in stead of stupid lists,
+keep rule set intact.
+
+
+--------------------------------------------------
+
+
+X cond Y istedet for dmeq   X isa Place cond bound(Place)
+
+  alle verb intransitive + dir compl
+  alle verb transitive     nil compl
+
+Move verbroot to dict_e
+
+Introduce Feature Structures Light in TUC
+
+Compword   round lists.
+
+begin end ==> /  eventually
+
+
+
+////////////////////////////////////////////////////////////
+
+Nov 7 - dec 31    8036 QUERIES/56 DAYS = 143/day
+Dec 31 - feb 5   10000                 = 300/day
+
+////////////////////////////////////////////////////////////
+
+NP, eol-> what is NP else st
+
+Separate type from varbiable !!
+Let it by an attribute.
+
+semantic net:  as general as possible without  allowing
+               meaningless questions.
+
+               as specific as necessary to disambiguate.
+
+NL: difficult to  use, difficult to make.
+
+
+sk(6) isa man  ==> man(6) isa man.
+                   a(man,6)
+
+use  exists(X: ppp ) as a convention for TUC
+
+     quant(cis/ge/1, X: ppp )
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+// Old
+
+Natural logic conventions
+
+
+  X \== Y => X \= Y unless explicitly defined by X = Y
+
+
+datamaskinen benytter seg av min bevissthet
+
+Make the system u(li)gred, correct and  complete and elegant 
+
+and intelligence will emerge.
+
+
+Event calculus ~  partial order planning
+
+Grammar:
+
+the only thing that is needed is  compliance tests
+
+
+Put type of variable out of X:Type as a separate parameter for compliance test.
+
+reell betyr også kontinuerlig
+
+event = intervall  with meaning,
+
+interval -a the set of all the properties OF  the interval.
+
+interval -b the set of properties true IN the interval ?
+
+If we could implement intelligence in the first place, we could save a
+lot of work.
+
+
+Turings test competition:
+
+Turings Competence test // which he didn't propose
+
+could we solve the problems as good as a human:
+
+  some judge is needed as in the original test.
+
+
+
+TUC's scoping shows posthumously  OK in TUC's practice.
+
+Partial lambda functions:   " illegal "
+
+
+
+  event
+
+  kill event
+
+
+agent  person   patient  animate
+
+     john          fred
+
+%%%% 7255 %%%%

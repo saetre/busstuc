@@ -1,0 +1,150 @@
+%% FILE BusDomainTables.txt
+%% SYSTEM BussTUC
+%% CREATED TA-100316
+%% REVISED TA-100316
+
+
+%% These tables and predicates are general for a route domain, e.g TT
+(Trondheim). They are independent of any time or date.
+
+They are generated automatically by the creation process.
+
+
+
+
+GENERAL DOMAIN TABLES (   // database/
+
+
+// FILE REGSTR.PL
+
+¤ STREETSTAT(STREET NAME,PRINTED NAME ,LOW NUMBER, HIGH NUMBER, STATION)
+
+Examples:
+
+
+streetstat(anders_buens_street,'Anders Buens gate',13,19,rosendal).
+streetstat(anders_buens_street,'Anders Buens gate',2,9,anders_buens_gt).
+
+streetstat(anton_grevskotts_street,'Anton Grevskotts veg',1,3,siemens). // the street
+
+The LOW  and HIGH  numbers are intervals of street address numbers
+pertinent to the station.
+
+there may be overlaps and ambiguities, but they are resolved by the
+search that takes the first that matches.
+Street number letters are ignored.
+
+Note that stations and streets may have the same name, but may not
+coincide ( ref. 'Anders Buens gate',13,
+
+
+//FILE  REGCOMPSTREET.PL
+
+¤ COMPOSITE_ROAD(Name,LIST(NAME),STREET)
+
+Examples:
+
+composite_road(anders,[buens,street],anders_buens_street).
+composite_road(anders,[buens_street],anders_buens_street).
+
+composite_road(anton,[grevskotts,street],anton_grevskotts_street).
+composite_road(anton,[grevskotts_street],anton_grevskotts_street).
+
+Note that there may be several entries for the same composite name,
+depending on whethere the name is written in one word or two words, e.g.
+
+  Anders Buensgt
+  Anders Buens gt
+
+The name entity recognizer will treat various names for street as
+equivalent:
+
+Examples:
+
+   Anders Buens  vei , Anders Buens gate
+   
+
+AUXILLIARY TABLES
+
+The following tables are created during creation time, and are
+supporting the name entity recognition:
+
+// FILE AUXTABLES.PL
+
+
+¤ STATBUS (STATION, LIST(ROUTE) )
+
+Example:
+
+statbus(anton_grevskotts_vei,[3,55,103]).
+
+For each station, a list of routes that passes it
+
+¤ BUSSTAT (ROUTE LIST(STATION) )
+
+For each route, a list of stations  that it passes
+
+¤ TRANSBUSLIST (ROUTE 1, ROUTE 2, LIST(STATION))
+
+Example:
+
+transbuslist(3,55,[anton_grevskotts_vei,astronomveien,dalsauneveien,einar_tambarskjelves_gt,fossegrenda,hovedterminalen,lerkendal_stadion,nordslettveien,nygård,prinsen_kinosenter,
+                   professor_brochs_gate,sorgenfri,studentersamfundet_1,torget,utleirmark,valgrindveien]).
+
+For each pair of routes, a list of stations that may be used for exchange, either way.
+( Equivalent stations have been removed, i.e. possible exchange stations with neighbouring exchange stations on both sides)
+
+
+
+
+// FILE  NAMEHASHTABLE.PL
+
+
+¤  TOREDEF (NAME,TYPE,TARGET NAME)
+
+
+Examples:
+
+   toredef(nardosenteret,nil,nardosenteret).     %% full or part name/ not street
+
+   toredef(erlends,street,erlends).              %% prefix street
+
+   toredef(amalienlyst,streetname,amalienlyst).  %% full street name 
+
+   toredef(skytter,streetstat,skytterveien).     %% partname of both street and station
+
+
+NAME is a candidate name
+
+TARGET NAME is the official result name
+
+TYPE is a type of the name  
+     (street : NAME is the first part of street name)
+     (streetstat : NAME is both a part of a streetname and of a station)
+     (streetname : NAME is the full streetname)
+     (nil:     NAME is not a part of a streetname)
+
+
+(In short, a search name will generate a set of misspelled name
+variants, and the misspelled variants will be looked up  against NAME)
+
+
+// FILE STATCOORD.PL
+
+The table is used to draw the actual bus tours on a map.
+
+¤ STATCOORD(STATION NUMBER,PRINTED NAME,XCOORD,YCOORD)
+
+Examples:
+
+statcoord(16010035,'Anton Grevskotts vei',570233.767,7031316.831).
+statcoord(16011035,'Anton Grevskotts vei',570191.925,7031355.139).
+
+
+There are two entries for this station. The first is for the direction
+outwards from center. The second ("secondary direction") is the
+direction inwards to the center.
+
+XCOORD and YCOORD are metric GPS coordinates (UTM Zone 32 V) as used by the bus company. (%% RS-120727)
+
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤

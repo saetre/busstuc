@@ -1,0 +1,1160 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
+%% rule format
+listoftql0 rule  % YES. | NO.
+listoftql1 rule   % YES, ... | NO, ...
+listoftql2 rule  % List with one query
+listoftql3 rule %  varsel  buss går til nth 
+listoftql3 rule %  varsel  buss går til nth 
+listoftql5 rule %  Hei ! Jeg heter Tore
+listoftql6 rule  % List with several  queries
+error rule %% Erroneous and nonsensical
+nonightbusatall rule %% buster 
+lunchtime rule 
+tilklokka rule %% til klokka 6 = før klokka 6 %%  Norwagism
+erdetlangt rule %% er det langt ==> hvor lenge varer det 
+movedto rule %% I moved to = go from 
+nightbusquery1 rule   %% set nightbus flag
+nightbusquery3 rule 
+nightbusquery4 rule   %% move this after stunt ?
+donot rule %% dont do that
+modifier0 rule  %% empty modifier
+modifier1 rule %%  med buss til buenget
+modifier1a rule  %% busser i tide %% not 1A (\spyr command)
+modifier1b rule  %% buss på lørdag morgen 
+modifier2 rule %% default   which bus go
+modifier3 rule %% Bloody repair rule 
+arrivalstat rule %% ( Not tested)
+nrelbetweenplace rule  % buss mellom A og B
+nrelforbus rule % avgang for B1 og B2
+nrelday rule   % buss på torsdag og fredag
+stuntaroundtime rule %% i halv tre tiden -> halv tre 
+stuntbetweentime rule %% same event
+stuntbetween1 rule %% same event
+stuntbetween2 rule  % i tidrsommet  mellom T1 til T2
+nrelplaceand rule %% bus from A and B
+nrelplaceor rule %% bus from A or  B
+srelstationnear rule %% to a station near 
+srelbetweenplace rule  %% bus between  A ,  B
+passplaceand1 rule  %% passes NS and BE 
+srelplaceand1 rule  %% past A and B
+srelplaceand2 rule %% to A and  B
+srelplaceor rule %% to A or B
+srelvehor rule %% buss sju eller åtte
+back rule %  and back
+busintimerepair rule % buss (i tiden ) 1700 1800 
+canigetinfo rule %% can i get info
+iwantinfo rule %% jeg ønsker informasjon om
+givemeinfo rule % gi meg informasjon om
+be2a rule %% Hva er billettprisen : which(A), B isa price & be2/B/A/D
+be2b rule %% hvilke busser er det fra ...
+infohelp rule % (gi meg) informasjon
+nowash1 rule  % ingen info om ren
+nowash2 rule  % ingen info om renhold
+rungo rule %% intransitive run=go, simplify rules
+howlong rule % how long is it from 
+howlongbetween rule % how long is it between 
+midday0 rule % mid day is 1200
+whathaveyouinfoabout rule % what have you info about 
+laststop1 rule % What is the last station for Bus %% TA-060302
+laststopfor rule % What is the last station for Bus %% TA-060507
+laststop2 rule % last stop means end station
+secondlast rule %% nestsiste %% 
+arrivenilplace rule   %%  Norw  ankomme NTH %% TA-061019
+arriveniltime rule   %% Norw  ankomme kl 10 %% TA-061019
+leave2 rule   %% Norw  forlate
+pastab rule %% go past A, B
+summer1 rule %%  sommeruter til A
+summer2 rule %% om sommeren
+winter1 rule  %% when is winterroutes
+winter2 rule  %% %% when is winter
+edemang rule %% is it many that (Norw)
+knowstation rule %% TUC knows station 
+isused rule %% is used means exists
+witharrivaltime rule %% with arrival Time means before Time
+beduring2time rule %% Skal være om 30 minutter = FØR 
+during2time rule %% om 30 minutter ==> during2 30 minutter ==> after 30 minutes
+withinday rule %% innen tre dager %%  Very ODD and Rough %% i løpet av en dag -> om en dag
+duringevening rule %%  buss om kvelden
+eveningbus rule %% evening bus 
+morningbus rule %% morning bus
+traveldisttime rule 
+travellength rule %% travel length 
+directionfromtown rule % from place out from hoveterminalen means to place
+directionfrom rule % from place in direction  hoveterminalen means from  place
+whatisthis rule 
+whichdays rule 
+seesomething rule 
+wonderquery rule 
+standardclock rule %% <-------- %% TA-060807 %% FRONTED
+intimeperiodto rule  %%  I tiden 8 til 9 // both numbers
+nestsiste rule %% repair %% ( should be taken in grammar)
+nestførste rule %% repair %% ( should be taken in grammar)
+answerin rule 
+eveningbus rule 
+eveningroute rule 
+beforebefore rule 
+numebergo rule 
+goodjob  rule %% You do a good job
+hourafter1 rule 
+graakallen rule  %% Gråkallen syndrom (NOT synbus)
+%%  longto rule %% unevokable
+walking rule 
+takenilafter rule %% Repair rule ,  before inordertobe
+inordertobeon rule 
+inordertobe1 rule 
+getholdon rule 
+tofromjob rule 
+raskpaa rule 
+nearestfuture rule 
+%% trikken rule %% trikken means # 1 in Trondheim trikk fra ila kl 15 -*-   doublestunt + begofore2
+aftereight rule %% (drop before 1200, may collide with other req)
+beforeeight rule %% Ad hoc rule when both morning and evening
+isitpossible rule 
+isittakeit rule 
+answer0 rule   %% hve svarer på spørsmål
+answer1 rule   %%  answer1 is strictly intransitive
+isto rule %% Repair rule  %%  Telefon_  TIL  TT  
+ison rule %% Repair rule  %%  nummer på  bussen  
+onlyon rule %% Repair rule  %%  nummer på  bussen
+spectick rule 
+holi_day rule 
+amorrow rule  
+makeastop rule 
+be2eliminate  rule  %% HVA ER       drastic %% TA-060209
+be2repair rule %% before clock is 1800
+ifclockrepair rule %% if clock is 1800 
+itimeor rule   %% kl 11 eller 13
+nameon rule %% Name on a thing X = the thing X 
+nameof rule % subsumed ???
+smsrule1 rule 
+smsrule2 rule %% TA-060119
+toab rule %% to A and B
+leavef   rule  %% Leave a station means go FROM station to center
+ihaveaq rule % I have a question
+listover  rule 
+nstationonplace rule %% stasjon på sted => stasjon
+depofbus rule %%   before stunt
+nildeparture rule %% TA-060707
+nilarrival rule %% TA-060707
+meeting0 rule  %% TA-061022 before doublestunt //avoid meeting on Place = be on place
+doublestunt rule  %% already got one event
+be2 rule 
+equalnameno rule %% = be2name  ???
+saturdayroute5 rule %% ad hoc %% TA-060619 lørdagsrute 5 = rute 5 på lørdag.
+sundayroute5 rule %% ad hoc %% TA-060619 søndagsrute 5 = rute 5 på lørdag.
+workdayroute5 rule %% ad hoc %% TA-060621 hverdagsrute 5 = rute 5 på lørdag.
+stunt rule  
+hasstat0 rule %% Havstads holdeplass
+srelbetweentime rule  %%   fra 09.15 - 09.45"
+gonilfrom rule %%  etter lørdag kl 1234.
+best rule  % hvilken buss er best til ...
+runisrun rule %% rutene kjøre = rutene kjører 
+named_date rule  %% also translation in grammar
+invaliddate rule %% reject invalid date
+hello rule  %% Fronted %% TA-060209
+quit rule 
+qmess rule 
+mondaynight  rule %% Repair / Standardize mandag kveld -> mandag om kvelden.
+tomorrownight rule %%  Repair / Standardize i morgen kveld -> i morgen om kvelden
+meeting rule 
+meetingbetween rule %%  Møte mellom 2 og 3 = møte kl 2
+meeting1 rule %% Moved after stunt
+warning_sentence  rule %% warning + sentence 
+warningflag1 rule %%  a werning => set warningflag
+warningflag2 rule %%  warn me => set warningflag
+warningflag3 rule %%set warningflag
+warningflag4 rule %% set warningflag
+hourswarningadhoc rule %% trans %% Horrendous Hack
+prewarning0before  rule %% send notification before first departure 
+prewarning1before  rule %% warning time befor first departure 
+prewarning1after  rule %% warning time befor first departure 
+prewarning2before  rule %% warning time befor first departure 
+prewarning2after  rule %% warning time befor first departure 
+prewarning3before  rule %% warning time before first departure 
+prewarning3after  rule %% warning time befor first departure 
+prewarning4before  rule %% warning time before first departure 
+prewarning4after  rule %% warning time befor first departure 
+starttogo rule %%  start to go = go early 
+startandgo rule %%  start and go = go early 
+startinat rule %%  start in/at = go from
+startgo rule %% otherwise  start = go
+gotoxandbeinx1 rule % before tofromsameplace
+gotoxandbeinx2 rule 
+totosameplace rule %% to to same place %% remove one
+tofromsameplace rule %% to from sameplace 
+isversion0 rule 
+isupdated0 rule  %% when were you updated
+nilnilclocksequence  rule %% buran  torget  2030 = before  2030 
+clocknilnilsequence  rule %% 2030  buran  torget = after 2030
+nilclocknilsequence  rule %%  buran  2030 torget = after 2030 %% TA-060920
+nilnilsequence  rule % go A B
+tofromclocksequence  rule %% til nardosenteret fra gløshaugen syd 945.
+toclocksequence  rule %% to A 12:34 //  til vikåsen fra samfundet 1600 .OBS!!! feil
+fromtoclocksequence  rule %% Fra eberg .. ved Brundalen kl 0930 = before %% TA-060925
+fromclocksequence  rule %% from A 12:34 // fra telverkskrysset 2150 i dag til sentrum?
+clockfromsequence  rule %% 2030 fra buran til torget = after 2030 
+clockniltosequence  rule %% go 12:34 to A  %% 0730 kroppanmarka til dragvoll .
+clocktosequence  rule %% go 12:34 to A = before/ towards = after (subtle)
+clockfromsequence  rule %% go 12:34 from A  %% after fromniltimesequence
+clocksequence  rule %% go 12:34 (but with default place)  %% TA-060807 
+seepass rule %% to see is to pass %% special
+passnear  rule  %% Pass (near) station means go FROM station to center
+passpast  rule  %%  Pass X  past Y  means go FROM Y to X
+passf2  rule  %% Pass a station means go FROM station to center 
+passgopast  rule     %% Otherwise Pass a station means go paststation to center 
+youdo  rule %%  du gjør --> gjør!
+canyoudo  rule %% kan du gjøre ?--> gjør
+iwonder rule %% I wonder whether
+belie rule 
+be2or rule % are you A or B %% TA-060130
+manif rule % exist a or b ?
+walking rule 
+web_address rule 
+knownas rule % 
+wayboundost rule %% TA-051118
+offside rule %%   e.g. south of
+wards rule 
+takedur rule 
+labelled rule 
+fromdash rule  % go 1800 after  1800
+doilive1 rule %% only in test mode, not suitable for negans
+doilive3 rule %% only in test mode, not suitable for negans 
+stand0 rule % two prepositions % i stand means I go from 
+stand1 rule 
+stand2 rule % I am now at 
+during2timein rule  
+during2timeafter rule 
+goandbe rule % after stunt: go and be in_evening => go in_evening
+agelimits rule 
+whereaboutastt rule % user knows you don't know, astt has answer
+whereaboutdn rule % user knows you don't know, I don't know
+wherefindastt rule % user knows you don't know, astt has answers of OTHER Topics 
+tellwhat1 rule %% TA-060512 
+tellwhere1 rule 
+tellwhere2 rule 
+thereafter rule 
+notatram1 rule 
+notabusatall rule 
+notanightbus rule %% TA-051202
+notatram2 rule 
+notaclock rule 
+whichtrase rule 
+stationsonroute rule 
+nighttosunday rule 
+withfore rule %% innen en time   (ankomst om en time) %% TA-060704
+withafter rule %% OM 1 time
+direction1 rule 
+direction2 rule % ?
+direction3 rule % ? 
+itemrulesingle rule % an item
+itemdate rule % an item is treated like a modifier
+itemclock rule % an item is treated like a modifier
+iteminfo rule  %% TA-060418 "bussruteinformasjon"
+inperiod rule       %% for å nå DV til kl 0830 
+hasdeparture1 rule  
+hasdeparture2 rule 
+bushasdeparture rule  %% .. avganger har du ... %% TA-060113
+bushasarrival rule  %% .. ankomster har du ... %% TA-060113
+befind rule %% befinne seg  %% Norwagism
+hq rule %% what is the office of company
+reachat1 rule 
+takeit1 rule %% Horrible Hack
+get2it rule 
+longdist1 rule 
+longdist2 rule %% TA-061003  ???
+%% notatnight rule   %% Too rough if user says 0300 SUSPECT/SUBSUMED 
+innight0 rule % IF T before clock, T < 1200 => innight just eveningtime
+niltoclockrepair rule % 8 til 9 ( sam as tocclocl ?)
+toclock rule %% clock with toplace = before clock %%  After tonightat
+aroundtimetime rule %% rundt 1000 - 1030 -> from 1000 - 1030
+tomorrowat6ugly  rule % Klokken 22:  reise kl 6, om morgenen => next morning with message
+tomorrowat6early  rule % Klokken > 1200:  reise  om morgenen => next morning with message
+tomorrowat6early  rule % Klokken 22:  reise kl 6,  next morning with message
+tonightis18ugly  rule 
+tonightis18  rule 
+tonightat6pragdouble  rule   % Time 1500:  1000 - 1100 -> 2200 - 2300
+tonightat6pragsingle  rule %% 1230:   jeg skal til byen før 6 -> 1800
+tonightat6pragdialog  rule %% 1230:   jeg skal til byen før 6 -> 1800
+ateveningexplicit  rule %% 1230:   jeg skal til byen før 6 -> 1800
+eveningtimedefault  rule %% Klokken 2 på søndag NOT nightbus default
+anight rule %%  buss går  mellom klokka 6 og 7 om kvelden
+tonightat6 rule %%  buss går  mellom klokka 6 og 7 om kvelden
+inconsistenttimes rule %% before 1100 and after 1200
+neighbourstreetonplace rule %% neighbour street on place
+beinheaven rule %% for å være på
+liveinhell rule %% means going from
+fetch rule  % Fetching cars is very relevant %% after liveinhell
+nobustohell rule % ignore where train goes to 
+reachtrain rule % nå et tog
+reachboat rule  % nå en båt
+ankomme rule  %% NB after reachtrain  %% Norwagism %% ankomme (reach) = gå til 
+sothatrule rule 
+beavailable rule 
+noroutesfortram0 rule %%  Before notabusnotmn
+noroutesfortram1 rule %%  Before notabusnotmn
+notabusnotmn rule %% AFTER nobustohell boat,plane  no tmnflag
+describename rule 
+describenoun rule  
+contain rule  %%  ( NB   takes both  Subj/OBj and Obj/Subj
+firsthour rule %% firstminutes rule ???
+everynthminute rule 
+often rule  % how often 
+eachhour rule % "each hour"  means "how often"
+goon rule  % Go on means take
+ident1  rule %% TA-060126
+ident2  rule %% TA-060126
+areyouwhator rule % are you a man  or a computer
+areyouwhatyes0 rule % are you a program 1
+areyouwhatyes1 rule % are you a program 2
+areyouwhatno0 rule  %%  are you a girl 1
+areyouwhatno1 rule %%  are you a girl 2
+areyouwhat1 rule % are you busstuc 1
+areyouwhat2 rule % are you busstuc 1
+areyouwhat3 rule % are you an oracle
+isitwhat1 rule 
+isitwhat2 rule 
+isitwhat4 rule 
+languageyes1 rule  %%  snakke på 
+languageyes2 rule % may I speak = you speak
+languageyes3 rule 
+languageyes4 rule 
+languageno1 rule 
+languageno2 rule 
+reply rule 
+replyq rule   
+only_one_busreach rule 
+only_one_busgo rule 
+only_one_buspass rule 
+busankom rule % Does a bus COME a place? %% after only_one_busreach
+only_one_bus1or rule   %%  etc
+only_one_buspassor rule 
+only_one_buspass2or rule 
+only_one_bus4 rule 
+only_one_bus5 rule 
+only_one_bus5or rule 
+arriveandison rule %% arrive  NTH  and ... to TV
+isalreadyon rule %% is on NTH  and ... to TV
+wannagoto0 rule %% Dirty repair
+wannabeon1 rule 
+wannabefore rule %% Made less volatile
+wannabeprep rule 
+mismatch2 rule 
+haho0 rule %%   before hm1
+hm0 rule %%  N  hours 
+hm1 rule %%  an hour
+haho1 rule %%  halfhour to minutes
+haho2 rule %%  n  halfhours  to minutes 
+qm1 rule %%   quarter to minutes
+qm2 rule %%  quarters to minutes
+whichisnamed  rule %%    Hvor ligger bussholderplassen som heter Tyholt? %% TA-060327
+whatistagore rule  %%  what is D means describe D %% TA-060209 NEW FORMAT
+life42 rule %% What is the meaning of life %% fronted %% TA-060213
+life43 rule 
+life421 rule 
+life422 rule 
+life423 rule 
+whatis1 rule  %%  what is D means describe D 
+whatis2 rule  %% hvem er (det som er) tagore
+whoareyou3 rule %% TA-060617
+whoareyou7 rule %% repair  which agent is you
+whatisnamed1  rule %%   Hva heter Tagore -> Tagore % after whoareyou %% TA-060617
+whatisnamed2  rule %%   Hva heter du ???
+whois1 rule  %%  who  is D (which agent is such that A is D)
+marvin rule %% outdated ?
+noinfoaboutnadj rule %% no info and TT doesn either %% TA-060926
+eat rule %% allowed to eat on bus :-)  %% TA-061022
+noinfoaboutfood rule %% allowed to eat on bus :-) %% TA-061022
+noinfoaboutnoun rule %% no info and TT doesn either
+whers rule %% hvorfor finnes busstuc
+whyareyouhere rule 
+whyareyoumade rule %% why are you made ?
+made1 rule  %% når ble du/dette laget
+made2 rule  %% hvem laget deg/dette
+madenoun1 rule 
+madenoun2 rule 
+made3 rule 
+purp rule 
+mean rule 
+it1 rule %% Hva er dette ? 
+whytuc rule 
+work1 rule 
+weather2 rule  %  Weather
+weather3 rule  %  Weather
+weather41 rule  %  ice Weather
+weather42 rule  %  Weather
+weather4 rule %  Weather
+weather5 rule %  Weather
+thanks1 rule %% Acknowledge praise 
+whereami rule % where am i?
+stationonneib rule %% TA-051120 holdeplassen på Nardo=Nardo
+stationoneigh0 rule %% TA-051118 til  Markaplassen ved Vikåsen (neib)
+stationoneigh1 rule %% TA-051118 til  Markaplassen på Vikåsen (neib)
+stationoneigh2 rule %% station on neighbourhood is a special case ( touchy)
+stationonstat rule %% TA-051118  Markaplassen på Vikåsen (stat) 
+midday rule 
+daypart rule 
+night18 rule % bus sunday night MEANS bus after at the proper time
+nesteomkvelden rule  %% neste buss i kveld, gitt atklokken er > 1800 %% TA-061021
+omkvelden1 rule  %% Hva er busstidene på kvelden
+omkvelden2 rule  %% Hva er busstidene på kvelden
+evening17 rule 
+evening1720 rule %% Tuesday evening MEANS Tuesday between 1700 and 2000  
+nilmorning rule %% bus goes [monday] morning
+aftermorning rule %% bus goes om morgen -> after morning
+noon rule 
+prenoon0 rule %% Assume time is already adjusted for evening time
+afternoon0 rule  %% Assume time is already adjusted for evening time
+rush rule % i rushtiden betyr mellom 1530 og 1730 
+innight1 rule 
+twelvemidnight rule % natten  MEANS etter 2400  
+inattbuss2 rule 
+inatt rule %% catch 
+umpdaynatt rule  %% Saturday night means Sunday
+prepnatt rule 
+middag12 rule 
+connectwith1 rule 
+endplace rule %% end stop   END station  rules
+routeofbus1 rule %% what is the route of bus 52 MEANS which station does 52 pass 
+routeofbus2 rule %% Same rule, but with a variant due to the BUS/ROUTE syndrome
+bepresentat rule % be present at means go to
+benextgoafter rule % be next after
+begofore1 rule % be nil = before
+bego rule % be go  = be %% TA-061021
+existbe rule  %% Does risvollan  exist (in ...)
+startfromp rule %% A bus Starts from P MEANS  The bus has end station at P  
+startatp rule 
+endsinp rule 
+afterdayat rule %% after Thursday at 1800 MEANS  on Thursday after 1800 
+beforedayat rule %% before Thursday at 1800 MEANS  on Thursday before 1800 
+frompattopatt rule %  from dragvoll at 1200  to nardo at 1300 
+priceforto rule %% prisen for å ... // before   onecantake 
+someonetake rule %%  after inorder1
+icantake rule %%   after inorder1
+onecantake rule 
+youcantake rule 
+doyouhavex rule % do you have a X   MEANS  which X are there
+describe0 rule %% describe X  MEANS what is the class/superclass %% TA-061001
+describe1 rule %% describe X  MEANS what is the class/superclass
+describe2 rule   %% Dummy, but 2 tuc is coerced
+tthave1 rule %% which X does TT have  MEANS  which X 
+caniseeit rule 
+letmeseeit rule %%  let me see IT  MEANS what is IT 
+fullham rule 
+listinformation1 rule %% Kan jeg få listet
+listinformation2 rule 
+listinformation3 rule %%   What is information about
+knowinformation rule %%  Have\you  information about %% TA-060116
+info1 rule %% about a Boo
+info1E rule %% whether  Boo exists 
+info2 rule %% about Boo  [exists] 
+infobus rule  %% This is a default rule  nrel -> srel
+shallbeinfrom rule 
+%%%% shallbeinto rule 
+thereattime rule %% jeg skal være der
+toattime rule 
+fromattime rule  
+gimmethat rule 
+allofakind0 rule %% kan du bussene FRONTED
+clinton rule %% vite (hva) om noe
+starr rule    %%  vet du noe om % hva vet du om  MEANS what is 
+canigetinfo rule % the route of the route (bus) %% PANIC
+wannasee rule 
+isee rule 
+canigetbus rule 
+givemeabus rule 
+iwant rule 
+listallstat rule  %% list all stations MEANS what is a station ?
+trondheim3 rule 
+trondheim3n rule 
+trondheim4 rule 
+trondheim5 rule 
+directroute rule 
+colour0 rule %%
+colour1 rule %% colour of a bus (not color) %% both colour0 and colour1
+colour2 rule 
+speed2 rule 
+betweenplace rule %% (go) between TimeA and TimeB MEANS go after TimeA before TimeB 
+betweentime0 rule 
+betweentime rule 
+afternow rule 
+betweenwhat1 rule 
+betweenwhat2 rule 
+yourbuses rule %% your buses 
+tuchasabus1 rule   %% tuc has a bus MEANS there exists a bus 
+tuchasabus2 rule % hvilken buss har tuc
+howminutes rule %% how many minutes MEANS  how long time
+nextday rule %% next day MEANS tomorrow  
+earlyinthemorning rule %% Imorgen tidlig  MEANS tomorrow  before 0900
+goearly rule %% go early means after 0430 unless ...
+goearlydefault rule %% TA-051205
+todaysfirst rule %% Days first bus = early
+bearly rule %% early in the morning
+howmanytimesgo rule % how many times does a bus go MEANS how many buses go 
+gowithouttrans rule %  A bus goes without transfer MEANS A bus goes directly
+takeandbeon rule %  I take a bus and is on a place MEANS  I (will)  pass the place.
+beonandtake rule %% be on place and take
+beonandgo rule % be on and go
+goandbeon rule %% go and be on
+nearto rule  %% near to place
+downtown rule %% go downtown
+iknowx rule %% Do I know  (" få vite ")
+iknowifx rule % "Do you know whether... " is superf ( ..when .. is not superfluous
+showup rule % show up means pass 
+possibletogo rule % "be possible" is the same as go
+citycentre rule % centre of city - > sentrum
+whichnumberhas rule % hvilket nr har bussene ? nr -> route (SIC)
+allofakindmain rule %% what are the main buses 
+allofakind1 rule % Which buses are there? / What is a bus
+allofakind2 rule 
+allofakind4 rule 
+allofakind5 rule %% hva heter bussene %% TA-060616
+allbuses0 rule 
+allbuses1 rule % Goddag mann 
+allbuses2 rule %% list all buses
+allbuses3 rule % Which numbers do the buses have ? 
+howmanystations1 rule % How many stations are there? 
+howmanystations2 rule % How many stations have ...? 
+whichbuses1 rule % Which buses are there? 
+counthowmany  rule % hva er antall busser
+howmanybuses1  rule % How many buses are there  ?  
+howmanybuses2 rule % Howmany buses goes? 
+howmanybuses3 rule % How many buses have you (after transform)  ?  
+whbusin rule % Which buses are there in ...? 
+whnightbusesgo rule % Which nightbuses go?  
+whatisabus  rule %% what is a bus ?
+whbusesgo rule % Which buses go?  
+busesexist rule %% (which/does) buses exist
+listroute rule %% list rute 8
+cancel rule 
+waitdelay rule %% TA-051112
+delay3 rule 
+delay5 rule 
+delay6 rule  
+corresponding1 rule 
+corresponding1w rule 
+corresponding2 rule 
+ireachbus rule %% similar to corresponding
+imissbus rule %% similar to reach (miss=lose)
+canicallyou rule  %% TA-060201
+calltmn1 rule 
+airplane  rule %% fly_buss --> fly buss -> plane bus 
+airport1 rule %%  airport 
+airport11 rule %%  airport
+airport2 rule %%  airport værnes 
+airport3 rule %%  airport  
+airport4 rule %%  airport  
+goddagmann rule 
+nofrequenciessms rule  %%  TA-060401
+nofrequencies rule  %% how often -> when  %% TA-060401
+perhour rule 
+nofrequencies99 rule %% destructive 
+one77 rule %% Ruteopplysningstelefonen 
+hasattvalTT rule 
+hastelephone rule %% til politiet %% ad hoc %% TA-060619
+hasatt0 rule %% Ruteopplysningstelefonen 
+hasatt01 rule %% before hasatt1  
+hasatt1 rule  %% Standard General
+hasattvalgen2 rule 
+nopicture rule   %% have you got a picture
+nomap rule   %% Moved forward
+wherefinddn rule % user knows you don't know,  I dont know 
+wheretram rule % Where does the tram go
+knowtram rule  % Where does the bus go
+wherecanigo rule % Where can I go
+nopreviousbus rule  %% TA-060822
+normalizedate rule 
+setexdatenightdateextra rule   %%
+setexdatenightdateextraotherwise rule   %%
+setexdatenightextraalloweddefault rule % I get sick %% TA-051228
+setexdatenightdateextratoday rule %% TA-051130  monday 27, "nightbus"
+crazyhorse rule  %% day is given as e.g. julaften, converted to
+setdatexdagnattextra rule  %% Nightbus Friday (night) = Saturday
+setdatexdagnatt1 rule  %% Nightbus Friday (night) = Saturday
+setdatexdagnatt2 rule  %% Nightbus Friday night = Saturday
+setexdateinatt rule  %% Nightbus tonight
+setexnighttodate  rule  %% natt til/før 1. mai  
+setexdagnattXmas  rule  %% Special rules for Xmas/NewYear 2005
+setexdagnattdespair  rule    %% nightbus query after 0430 means next day
+setexeveningbefore  rule  %% kveld  før dato
+setexoneveningbefore1  rule  %% på/om kveld  før dato
+setexoneveningbefore2  rule  %% på/om kveld  før dato 
+nodatecalc  rule  %%  N dager  før dato % NIX
+setexdate0 rule %% om tre dager 
+setexdate1previous rule  
+setexdate1next rule  
+setexdatemidnightxholiday rule  
+setexdate1 rule   %% Set date if another day 
+setexdatenamed rule   %% Set date if named date %% TA-060101
+setexdate3nightextra rule   %% date  via 2. juledag ->  date -> night to 3. X
+setexdate3nightcrazy rule   %% Set date if explicit 
+setexdate3night rule   %% Set date if explicit 
+setexdate3day rule   %% Set date if explicit 
+nightbusholidayno  rule %%  CASE: NIGHTBUS DATA  MISSING
+nodates00 rule % Special dates outside valid routeplan %% Before holywood
+holywood1 rule   %% Holiday , but same date !!! 
+holywood2 rule %% Holiday , but another day  
+nottoday1 rule % on a day not today %% after holywood
+nottoday2 rule % on a date not today
+mapday1 rule %% Mapped  day , but same date !!!
+mapday2 rule %% Map day , but another date
+whatisdate  rule %% hva er datoen %% NEW REGIME %% TA-060209
+date1 rule % hvilken dato er det. 
+date2 rule % hva er datoen %% TA-060704
+date3 rule % hvilken dato er det i dag
+date4 rule %% hvilken ... er det nå 
+date5 rule %%   er det mandag (idag)
+date6 rule %% hvilket år er det i år
+date8 rule % Hvilken dato er det 
+date9 rule % hvilket år er det
+date10 rule %% Hvilken dag er det i går/imorgen 
+date11 rule %% Hva er (lik) datoen i morgen 
+daysdate rule % Hva er dagens dato 
+weekday1 rule % ...on weekday ( today is sat/sun)
+weekday2 rule % ...on Day (on friday, etc.)
+weekday3 rule  % ...on Day (on friday, etc.)
+weekday4 rule % ... Day (passes nardo friday, etc.)
+nostation00 rule % bus from an ocean to nth. It is a ridiculous place
+nostation0 rule %% foreigners 
+nostation1 rule 
+nostation2 rule 
+nostationx rule %% outside T ( meaning not at T)
+whatistime rule %% NEW REGIME %% TA-060209
+whattime0 rule %% TA-060309 %% Hvilken tid er det
+whattimeisit rule %% TA-060309
+whattime1 rule % Hva er klokka? %  Fronted, Date irrelevant 
+whattimenow rule % Hva er klokka nå ? %  Fronted, Date irrelevant 
+telltime1 rule % Fortell  hva klokka er 
+notabusperiod rule 
+nightbus0  rule %% date is a holiday, no nightbuses %% Fronted  %% TA-060516
+nightbusgen  rule % nightbus, no number, no destination %% TA-060402
+nightbus1  rule % nightbuses go from center 
+nightbusonly  rule % nightbuses go from center 
+nodates02 rule % Special dates without known mapping
+nodates04 rule   %% except for the day today 
+nodates05 rule   %% only week
+nodates06 rule %% only week 
+nodates07 rule   %% except for the day today 
+nodates08 rule   %% weekend
+nodates09 rule   %% month only
+nodates10 rule   %% year only 
+nodates10b rule   %% year
+nodates12 rule % is it sundayroute on date (ordinary sunday) 
+nodates13 rule   %% NEW route 
+irregular rule %% irregularity
+morrowholiday rule % ...tomorrow (is a specialday)
+morrow1 rule % ...tomorrow %% Fronted
+morrow2 rule % ...day_after_tomorrow 
+yester1 rule % ...yesterday
+yester2 rule %   day_before_yesterday
+dianotoday rule % check in frames:  if not explicit today, keep old date
+todaydatedefault rule % ...if no day is mentioned, default to today %% TA-051117
+todaydate rule % ...if no day is mentioned, default to today %% TA-051117
+atdate rule %%   Find the actual date 
+dateisaday rule %% Message date is a day 
+whatdoyouknow rule %% What do you know  also tuchelp3
+knowthing rule % Goddag mann %% Moved after nodates 
+workdayroute rule  %%   (NB  tuesdayroute --> weekday --> monday
+havestation1  rule 
+havestation2  rule 
+placestatdepend rule %% place stat with bus_depend
+placestat1 rule %% %% Hvilket sted  fins på nardo
+placestat2 rule %% nærmeste holdeplass til nardo 
+placestat3 rule %% nærmeste holdeplass  nardo %% TA-060316
+placestat0 rule %% nærmeste holdeplass 
+isatnth rule % NTH. isat(Y,NTH)  Select one, avoid Donotknow message
+stationstation rule %% The name IS a station 
+streetstatunknown rule %% gaten nth fins ikke i aktuell ruteplan
+andbeonplace rule %%  and be on a place 
+team_topic rule %% no info but pointer to TEAM
+whatisclass2 rule  %%  what is D means describe D %% TA-060209 NEW FORMAT
+team_topic_web rule %% nettsider for buss? //cant say no info about
+otherbus0 rule %% NSB buss
+otherbus1 rule %% NSB buss
+otherbus2 rule 
+otherbus3 rule 
+costit22 rule % koster det NN kroner
+costit rule % hvor mye koster det
+busncost1 rule % Price of a Nbus
+ticketcost2 rule % Price of a ticket
+ticketcostnight rule % Price of a ticket %% not special  ticket
+costto rule %% cost to (go...)  TA-060807
+ticketprice3 rule % Price of a ticket
+freeride rule %% is it free to   %%  UGLY
+sufficient rule  %% ticket  sufficient
+expensiveto rule %% is it expensive to %% TA-060306
+cheapto  rule %% is it cheap to // er du billig 
+gratis rule 
+begratis rule 
+pay2 rule 
+ticketpricek1 rule % Price of a ticket
+ticketpricek2 rule    % Price of a ticket in the night
+ticketpricek3 rule    % Price of a ticket 
+ticketpricek4 rule      % What is a price
+ticketpricek5 rule      % What is a price from to 
+ticketpricek6 rule % What is a price on
+ticketpricek7 rule % What is a price 
+ticketpricek8 rule % What is a price 
+ticketpricek9 rule % What is a price
+ticketpriceveh rule %% pris buss %% no use ????
+ticketpricenight rule % What is a price Nightbus
+price100 rule   % What is a price for going
+whattime2 rule % fortell hva klokka er 
+whattime3 rule % vet du klokka  / vet du hva klokka er ?
+whattime4 rule % har du klokke ?
+doyouknowthetime rule % Vet du hva klokka er 
+clock1 rule % Hva er klokka? 
+clock2 rule % Hva er klokka?
+clock3 rule % Hva er klokka nå?
+clock4 rule % What is the time?
+clock5 rule % What is the time now?  
+clock6 rule % What time is it?
+clock6b rule % What time is it?
+clock7 rule % What time is it now?
+whattime10 rule % What is your clock .
+whattime11 rule % Time is now (?).
+whattime12 rule % when is it now  (Eng)
+notram2 rule %% Tram station, but user has asked for bus 
+notram3 rule %% tram 
+geton rule %% PLASS Where can i get on a bus?
+getoff rule %% PLASS Where can i get off a bus?
+stopbetween  rule   %% TA-060505
+passbetween1 rule  %%  Which places does bus N PASS at  between stations
+passbetweenunkbus rule %% Which places does a bus PASS at  between stations
+passbetw3 rule %% Hack   Has stops between 
+statbetween_named rule %% hva heter holdeplassene  mellom%% TA-060901
+statbetween_named_nobus rule 
+statbetween1 rule  %% hva er holdeplassene mellom A og B (be2 regime)
+statbefore rule  %% hva er holdeplassene før B %% TA-060507
+statbetween0 rule  %% hva er holdeplassene mellom A og B //NO ROUTE
+statbetween2 rule 
+passat1 rule  %% PLASS Which places does a bus PASS at?
+pass1 rule %% PLASS Which places does a bus <pass>?
+tofrombyq rule % PLASS Which places does a buss <pass> <TOFROMBY>?
+change1 rule % Hvor kan man CHANGE fra Buss1 til Buss2
+meet2 rule % Where does Bus1 and Bus2 meet?
+samefplace2 rule %% Avoid question if same place  
+samefplace2b rule 
+samefplace3 rule 
+samefplace4 rule 
+samefplace5 rule  %%  
+diffdep1 rule %% hvilken varighet er det (hvor langt er det )
+diffdep2 rule % use time in order to go 
+diffdep4 rule 
+diffdep5 rule %% from A to B %% after befrom/beto
+diffdep6 rule % How long does it take to...
+diffdep7 rule % How long does it take to...  New regime
+diffdep8 rule 
+diffdep9 rule % How long does it take from...
+diffdep10 rule % How long does it take from...
+diffdep11 rule % How long does it take from... (alternative)
+diffdep12 rule % How long does it take from... (alternative)
+diffdep13 rule % How long does it take from...
+diffdep14 rule % which bus uses short time 
+diffdep15 rule % which bus uses short time 
+leavename rule %% Does a bus LEAVE a place? 
+traseeforbus  rule % Route for bus meaning trasee 
+sometakebusfrom rule % someone take the bus FROM a place
+bustakemefrom rule % Bus take me
+bustakemebyto rule % Bus take me by = to
+bustakemebyfrom rule % Bus take me by = from (Deafult)
+takefrom rule % take FROM
+sometake1 rule % someone take the bus BY a place
+takeby rule % take BY
+sometake2take rule % someone take the bus TO a place
+takeme rule % Bus take me to
+taketo rule % take TO
+leavaplace rule % when Does a bus LEAVE a place? (Place is unbound)
+wherebus11 rule % Hvor går buss Bus fra/til? 
+wherebus12 rule % Hvor går buss Bus ? %% moved after fromp
+wherebus13 rule % Hvor går trikk 1 ? 
+whatisbus rule % Hva er buss 6 
+passfrom2 rule % Do I PASS FROM a place with bus Bus ? 
+passfrom3 rule % Do I PASS FROM a place with tram ? 
+passdir rule % I pass Place to/from Another place 
+passtofrom rule % I pass Place to/from Another place
+passfrom5 rule % Can someone TRAVEL FROM a place a time?
+leave1 rule % is a Place  bus LEAVEing a place? 
+leave2 rule % Does a bus LEAVE a place? %%  leave is noe neutral wrp direction
+wayfrom rule % raskeste vei fra // %% TA-060508
+befrom rule % be FROM
+nevergowithtomessage  rule %% after toplace1 (in case of  depend)   
+beto rule % be TO
+bepastto rule  %%  neither to/from ==> DEFAULT TO 
+bepastfrom rule %%  neither to/from , already TO   FROM 
+benil rule  %% be ?
+arrdep0 rule  % arr dep
+listdeparture rule  % list departures
+sorttofrom rule %%   in/place to/place ==> from/place to/place
+toplaceobviously rule % toplace obviously
+totoplace rule % to nth to nardo  
+fromfromplace rule % fra nth fra nardo   %% (?)
+nilplaceeqtodialog  rule %%   nth (from nardo)   TO NTH (from nardo) //FIRST
+nilplacetoeqfromd rule % nth to nardo   %% Fell out // SECOND 
+nilplaceemptyeqfromd rule % nth to nardo   %% Fell out // SECOND 
+nilplaceeqto rule %%   nth (from nardo)   TO NTH (from nardo) //FIRST
+nilplacenotimeeqto rule  %% IF no time (and only 1 place ) then S->Place
+nilplacetimeeqfrom rule  %% IF time (and only 1 place ) then Place -> S
+hasarrivaltoplace rule %%  Baroque
+hasdeparturefromplace rule %%  Baroque 
+fromplace1 rule % someone TRAVEL FROM a place? 
+neverpassfromessage  rule %%  after fromplace1 in case of depend
+befromplace rule % and ...  I am on NTH and ...
+busnotoplacetowards rule  %% Does a bus TRAVEL TO a place TOWARDS a place ? 
+busforto rule  %% Does a bus TRAVEL FOR  a place TO a place ? %% TA-060203
+iamin rule %% I am in Nardo 
+toplace1 rule  %% Jeg er på lade og skal til dragvoll ==> TO dragvoll
+neverpasstomessage  rule %% after toplace1 (in case of  depend)   
+nilp rule % Does a bus TRAVEL () a place?   // 
+endstat1 rule % What is the first STATION FOR Bus
+endstat2 rule % What is the last STATION FOR Bus
+endstat3 rule % What is the name of the endstation for Bus
+endstat4 rule % What is the endstation for Bus
+endstat5 rule % Where is the endstation for Bus %% TA-060830
+endstat6 rule % Where do the buses turn
+endstat7 rule % What is the endstation for Bus
+endstat8 rule % What is the endstation for Bus
+endstat8hete rule % What is the endstation for Bus
+endstat9 rule % Where is the endstation for Bus
+endstat10 rule % Where is the endstation for Bus
+isendstation rule % Test Endstation
+findstation2 rule 
+findstation3 rule % Hvor kan jeg PASS on Bus
+findstation4 rule % Where can i get off Bus
+findstation5 rule % Where can i get on Bus
+findstation6 rule % Which stations is AT route Bus
+findstation7 rule % Hva er stasjoner til en buss 
+findstation8 rule % Hva er stasjonene til en buss
+findstationwhere rule % Hvor  er stasjonene til en buss
+findstation8nobus rule % Hva er stasjonene til en buss
+findstation9 rule %%   ruteplan for en buss
+findstation20 rule  %% Variant   rute for en rute
+findstation30 rule % Hva er trasee for en rute 
+findstation40 rule % Hvor kan jeg ta en Bus
+findstation60 rule  % Hvor kan jeg PASS off Bus
+findstation70 rule % Hvor kan jeg PASS with Bus
+findstation80 rule % Where PASS the Bus bus %% TA-060620
+findstation90 rule % Hviken ruteplan/rute  tar/følger buss 20
+passby2 rule %  Does a bus PASS BY two places? % OR A PERSON 
+passbyname rule % Does a bus PASSBY a place? (Place is unbound) ??? <----------
+travelbyplace rule % Do I  TRAVEL BY a place?
+travelbyto rule  %% past X from  Y
+travelbyfrom rule  %%  (past)  X to Y 
+travelby rule % Does a bus TRAVEL BY a place?  => TRAVEL  == FROM 
+travelbybusbyp rule % someone TRAVEL BY bus by a place? 
+sometravelby rule % Can someone TRAVEL BY a place a time?
+nnpassing rule % is a NN bus PASSing a place?
+somepassbybus0 rule % Does a place belong to a route? 
+somepassbybus1 rule % Does a bus PASS a place?  Dragvoll misere
+somepassbybus2 rule % which routes station does route have 
+somepassbybus3 rule % På hvilke ruter fins moholt
+hasstation1 rule % bus has station
+hasstation2 rule %%  after keepbus
+allbuses100 rule %%  list all the buses 
+beat1 rule % be AT Place % This is too greedy, (How many girls are there)
+doescome rule %%  Does a bus COME a place? (Place is unbound)
+passto1 rule % Does a bus PASS TO a place? (Place is unbound)
+gotoplace rule % Does a bus PASS TO a place?
+travelby1 rule % someone TRAVEL by bus a place? 
+travelby2 rule % someone TRAVEL TO a place when I start at ...
+travelby99 rule % travel "by" a vehicle which is not a bus
+passplace1 rule % someone pass a place? 
+travelto2 rule % Can someone TRAVEL TO a place a time?
+%% passplace2 rule subsumed passfromto4
+comebus1 rule % is a Place bus  COMEing?
+passplace4 rule % pass _ TO Place
+passtoplace3 rule % when PASS Bus TO Place,   srel variant
+befed rule  %%  Dirty
+arrdep1 rule % ARRDEP with buss (Place is unbound) 
+arrdep2 rule 
+arrdep3 rule % ARRDEP for buss (Place is unbound)
+istoplace rule % is ARRDEP TO Place
+isfromplace rule % is ARRDEP FROM Place, Bus is UNKNOWN !!!
+hasvehdep rule %% TA-060113
+whathasroute  rule %% which stations exist on route  5
+remallstations rule %% if specific station passing, remove listall stations moved up %% TA-061023
+firstnext rule % Panic   first,next 4,  no departure yet
+prevlast rule % Panic   previous,last 4,  no departure yet
+home1 rule %% manyplaces % moved before   NEXT bus home 
+home2 rule %% manyplaces % moved before   NEXT bus home 
+defaultfromcenter rule %% default from hovedterminalen
+numberonbus rule %   which number(?) are on the buses
+in16time rule  %%  ...in Time time (i 16 tida = around 16) % Norwagism 
+intimetotime rule % ...in time Time1 to Time2
+minago rule %  for   30 minutter siden
+beforemin rule  % before 30 minutter %% TA-060704
+aftermin rule  % after 30 minutter 
+aftersec rule % after 30 seconds
+duringmin rule 
+within2 rule %% within arrival constraints but after NOW 
+firstanotherdayisearliest rule  %% TA-060119
+firstishereafter rule  
+lastisdepbeforemidnight rule  
+lastisarrbeforemidnight rule  
+within3 rule  %%   bussen går () neste time 
+innextmin1 rule 
+nextmin3 rule 
+nextmin4 rule 
+beatafter rule 
+justlate rule 
+howlongmeanshowlate rule %% TA-060524
+fastap rule  % ... fast (as possible)
+arrwitharr rule 
+gofromclock rule %% BEFORE busbeforetime rules 
+earlierdeparture rule %%
+igoearlier rule %% TA-051214
+earlierarrival rule %%
+laterarrival rule %% TA-051108
+laterdeparture rule %% %% TA-051108
+igolater rule %% %% TA-051215
+busbeforetimedouble rule %%   bus before a time before time  early in the morning  (late at night ?)
+busaftertime0 rule  % bus goes time?
+busaftertime3 rule 
+busaftertimehereafter rule % ...after a clock? 
+busaftertimebetw rule % ...after a clock? but before another cloc
+busaftertime5 rule % ...after a clock? 
+busarrivalaftertime rule %% TA-051215  Moved after busaftertime5 
+nowresetotady  rule       %% If explicit NOW, reset today if necessary
+nowwhat rule 
+busaroundtimearrdep rule  % fra A ca kl T til D -> Avgang (?)
+busaroundtimearr rule  % framme ca  FØR busaroundtimedep 
+busaroundtimedep rule  % around time departure, not lastcorr
+busaroundtime2 rule % bus around a time
+busbeforetime0 rule   % bus before a time? %%%  unstrict time limit (morningbus),
+busbeforetime1 rule %%  before time, but not last  arrival 
+busarrjustbeforetime rule %% last arrival before time
+busbeforetime3 rule  %% shouldn't apply to morningbus
+busbeforetime4 rule %% Allow bus from place before time
+beforeatime rule %% Finally,  bus before time vanilla
+prenoonarr1 rule %%   < 1200 %%  arrival
+afternoon0 rule % an afternoon  (>=1200)
+thisafternoon1 rule % This afternoon  (>=1200) < (=< 1800)
+defaultafternoon rule % This afternoon  (>=1200) < (=< 1800)
+afternoon2 rule % afternoon  (>=1200)
+morning1 rule % a morning  (=<1100)  
+morning2to rule % This morning  (=<1200) , prefer the passevent with to 
+morning2from rule % This morning  (=<1200) 
+morning3 rule % morning  (=<1200) 
+%% midtpådagen  rule % midt på dagen 
+eveningbeforenoon rule %% contradictory evening before noon
+thisafternoon rule % i ettermiddag %% > 1200 
+evening rule % evening  ( > 1800)  , but if Time > 1800 then after Time !
+dayevening rule % evening  ( > 1800)  
+eveningnightbus rule % Friday evening means friday midningt night
+nightlybus rule % night bus ( > 2400)
+mornbus rule % morning bus   
+evebus rule % an evening  (>=1800  and =<2400) 
+thiseve rule % This evening  (>=1800)
+nileve rule % evening  (>=1800 and =<2400) 
+daysaftnoon rule % an afternoon  12-18
+thisaft1218 rule % This afternoon  12-18
+aft1218 rule % afternoon  12-18
+udayeve rule % Uday evening 
+udayaft rule % Uday afternoon 
+anight18 rule % a night  (>=1800)
+thisnightis18ormore rule % This night  (>=1800)
+anothernightisafter18 rule % This night  (>=1800 < oo)
+nightis18 rule % This night  (>=1800)
+befevening rule % BeforeThis night  (>=1800)
+routeforeve rule  % Busroute for the evening
+night18 rule % night  (>=1800)
+batbefore1 rule % be1 at a time (means the bus must be there before that time)
+beatbefore2 rule % be1 at a time (means the bus must be there before that time) % ?
+atatime1 rule % ...at a time?
+fromtimetotime rule 
+aroundatime rule 
+keepbus2 rule % buss 9 er i sentrum 
+keepbus3 rule % with Bus 8  % This is a reserve rule,  too late for bus dependence -> 2415
+keepbus4 rule % with line 8  
+keepbus5 rule % bus that has number 8
+exceptbus rule  % except  Bus 8  
+goexceptbus rule % go except  Bus 8  
+firstNbus rule  % first  N departures
+firstNdep rule % first  N departures
+firstarr rule %  first ARRDEP
+firsttime rule % first time
+nextnbusaftertime rule %%  % next N buses after time see also nextnaftertime
+nextnaftertime rule % next N buses after time
+nbusesaftertime rule %%  N buses after time 
+nextnbusesanotherday rule %%% Next bus another day   = first on that day IF different Actual day
+nextnbuses rule % next N buses  %% next(N) is AMBIGUOUS  after now/ after time..
+nextbusanotherday rule % Next bus another day %% = first on that day IF different Actual day
+busdepaftertime rule %% bus departure after a time
+busarraftertime rule %% bus arrival after a time %% SPECIAL
+afteratime rule % ...after a time?  
+afteratime2 rule % ...after a time?  %% default,  OK with next bus to place
+afteratime00 rule % ...from a time? %% defaultdest=> nil clock=after
+afteratime3 rule % ...from a time? // if no departure place, arrival after !!
+next1aftertime rule % next bus after time 
+justnlastbuses rule  %%  cant take last Nth
+justnthbusanotherday  rule 
+justnthbustoday rule  %%% Nth bus = next N buses
+justnbuses rule % N buses = next N buses
+firstbus2 rule % Dialog: first bus another day, no time %% TA-060706
+firstbus1 rule % first bus 
+firstbus3 rule  % bus goes first (samme situasjon som i passevent)
+nextbus0 rule % next bus (samme buss som i passevent)
+nextbus2 rule % next bus ARRDEP
+nextbus3 rule % next time
+lastN rule % last  N buses  %% CANNOT TAKE N'th last = N last
+lastNdefault rule % N buses before, default last 
+lastbus1 rule  % last bus (samme buss som i passevent)
+lastbus2 rule % last bus (samme situasjon som i passevent)
+lastbus3 rule % bus goes last (samme situasjon som i passevent)
+lastbus4 rule % buss slutter å gå
+withlastbus rule % last ARRDEP
+lasttime rule % last time
+prevN rule % previous N buses 
+prevbus1 rule % previous bus (samme situasjon som i passevent)
+prevarrdep rule % previous ARRDEP
+prevtime rule % previous time
+nthbus1 rule % Nth bus (samme buss som i passevent)
+nthbus2 rule % Nth ARRDEP
+nbuses rule 
+nnextbuses rule 
+nlastbuses rule 
+nbuses9 rule 
+samebus rule 
+direct1 rule 
+directly rule 
+remreduntant rule % Fjerner redundant stasjon uten melding 
+underspecified0 rule %% underspecified city? 
+underspecneibresolve rule %% underspecified neighbourhood, alternative list 
+underspecifiedneibbus rule %% underspecified neighbourhood, bus given
+underspecifiedneibnobus rule %% underspecified neighbourhood, no bus, no alt
+underspecstatresolve rule %% underspecified neighbourhood, alternative list 
+underspecifiedstat rule %% underspecified station 
+underspecifiedneibus rule %% underspecified neighb, bus# %% TA-061003 
+toomanyplaces rule %% Går buss 9 fra dragvoll via moltmyra til flatåsen senter .
+connection0 rule %% Shortcircuit if sameplace 
+connectionexplicit rule %% connect  2-> from to explicit
+connectionimplicit rule % no direction given or from to as usual
+setnightbusflag rule % Extremely dirty 
+superfluoustat rule % superfluous station buss fra samfundet  til munkvoll-heimdal.
+connection3 rule % Kobler sammen to busspasseringer ellers ( REDUNDANT ?)
+defaultlast rule %% % Legger paa default siste  busspassering (SMS)
+nameofstations rule % What is the name of the stations?
+whichstationsk rule % Which stations do you know
+whereisstation1 rule % Where is Station?
+whereisstreet rule %%  subsumed by streetstatknown ?
+whereisstation2 rule  % Where is Station?
+whereisneigh1 rule % Where is a neighbourhood 
+whereisneigh2 rule % Where is a neighbourhood 
+whereisstation rule % Where is Station?
+where_station_at_place rule % where is Station at Place?
+where_is_nearest_station_to_place rule %%  where is the nearest Station to Place? 
+whereisneareststation0 rule % where is nearest Station ? 
+station_at_station   rule %% which station is near station
+station_at_place rule %% which station is at Place
+neib_lies_at_place rule %% does a neib lie at a place
+wherewhat_is_place rule 
+place_has_station rule % Place has station
+whereistuc rule % Where is tuc ,Are you here %% TA-060208
+whereisbustuc rule % Where is bustuc  % Nec? %% TA-060208
+getoff rule % Where can i get off the bus
+geton rule % Where can i get on the bus
+wstatdoyouknow rule % Which stations do you know
+wisnumberofbus rule % What is the numer of bus Bus
+isplacestation rule % is station a bus station?
+isbusstation rule % is station a bus station?
+buzz rule % is Bus a Bus 
+depsinayear rule % haow many deps in a year
+quant  rule % antall  departures, no connections %% TA-060807
+howmany1 rule % how many buses, have connections
+howmany2 rule % how many departures, no connections
+howmany3 rule % how many deparures, have connections
+howmany99 rule   %% LAST of howmany ?  Moved before tuchelp
+tuchelp00 rule % What kan busstuc brukes til 
+tuchelp0 rule % What is your task/purpose/job/quest/ 
+tuchelp2 rule % can you tell / hva kan du hjelpe med
+tuchelp3 rule % What can you do? Can you anything
+% tuchelp4 rule subsumed by tuchelp1 
+tuchelp5 rule % What can i ask
+tuchelp6tv rule 
+tuchelp6itv rule 
+tuchelp7 rule   % What can jeg spørre om
+tuchelp8 rule   % Hvilke spørsmål kan jeg stille
+tuchelp8b rule % Kan jeg/man spørre 
+tuchelp9 rule % What is possible for you 
+tuchelp10 rule % I need help 
+tuchelp11 rule %% hva har du informasjon om
+busstations0 rule % Which bus stations 
+busstations1 rule % Which bus stations 
+wstations9 rule % Which bus stations 
+wtramstat1 rule % Which tram stations 
+wtramstat2 rule % Which tram stations 
+wtramstat3 rule % Where are the tram stations
+wherearestat rule % Where are the bus stations
+whichavestattt rule % which stations (is had by) TT 
+whichavestattt rule % which stations (is had by) GB 
+equal rule 
+describe100 rule   % What is a man %% moved backwards
+keepfrombaywithbus rule %% go from center, given bus %% TA-060118
+keepfrombay rule %% go from center
+keeptobay rule %% go to  center
+tramfromcenter rule %% Default tram go from center %% The worst rule
+gofromcenter rule %% Default go from center
+gotocenter rule % Default go to center
+gotodefaultplace rule %% go from S to default  place
+gotodefaultplacefromcenter rule %% TA-060306
+gofromdefaultplace rule %% go to S  from default  place
+isclass rule %% is tagore a dog ? (assume it passed the alignment test)
+wakeup1 rule  %%  Just wakeup call notify/1
+wakeup1sick rule  %%  sick    %% You notify me at 1245
+wakeup2sick rule  %%  sick    %% You notify (me) 1245
+wakeup2 rule  %%  Just wakeup send notification
+wakeup3 rule  %% Just wakeup send notification
+iwantalaterdeparture  rule  %% TA-051105
+iwantalaterarrival  rule  %%  TA-051105
+iwantanearlierarrival  rule   %% TA-051105
+iwantanearlierdeparture  rule   %% TA-051105
+askforlaterbus  rule 
+askforearlierbus  rule  
+bingothisevening rule %% i kveld %%  Grotesque
+bingoanotherevening rule %% mandag  kveld
+bingothisafternoon rule %% i ettermiddag 
+bingoanotherafternoon rule %% i kveld %% Grotesque
+bingo rule %% askforwheredeptimeonly rule  
+jaglanddepartnil rule    %%   %% jeg vil reise  kl 1500 ->  før kl 1500
+bongo rule %% askforwherearrtimeonly rule   
+jaglandarrivenil rule    %% jeg vil ankomme kl 1500 -> før kl 1500
+askforwhere rule % PASS Bus (Place is unbound, bus is unknown)  
+mustknowplace0  rule  %% Går Buss 8 ?  
+mustknowplace7 rule        %% Jeg er på et sted
+mustknowplace8 rule % bus has time (Place is unbound, bus is unknown) 
+mustknowplace10 rule  
+mustknowplace11 rule  %% sick 
+warnmustknowbus1 rule 
+warnmustknowbusrule2 rule 
+warnmustknowbus3 rule 
+istand rule %% jeg står på X -> jeg går fra X
+ouraround rule       %%  pretend it is before time 
+ourarrbefore rule   
+ourwithlastbus rule    %% mimic i kveld
+ourwithnextbus rule  
+ournextbus rule  %% TA-060620
+ourjustlastbus rule    %% -> med siste buss
+ourtonight rule 
+ourom rule   %  om to timer, create departure place
+ourdepearlier rule              %% TA-051106
+ourarrearlier1 rule              %% TA-051215
+ourarrearlier2 rule        %% TA-051215   
+ourarrlater rule              %% TA-051106
+ourdeplater rule              %% TA-051106
+ourigolater rule              %% TA-051215
+ourdepafter rule  
+ournilafter2 rule      %% FIX rule in connection with standardclock      
+ourafternow rule 
+mustknowbus0  rule % Which station exists 
+mustknowbus1 rule % Where does the bus go
+mustknowbus2 rule %% PLASS Which places between ( NO BUS)
+mustknowbus3 rule   %% No bus or place   
+turings  rule  %% :-)
+gowhere rule  %% 
+norouteinfonomess rule  %% Force negative answer response if no other message
+norouteinfo rule  %% Force negative answer response // LAST
+fledsbo8 rule %% %%  Sort out the unknown depsets:We don't know if it's to or from. Hence, it's unknown...
+fledsbonilplaceafter rule %% Lerkendal after 1200, check frames = departure, guess to
+fledsbo12 rule %% If keepafter, we guess from
+fledsbo131 rule %% If keepbefore1, we guess to
+fledsbo13 rule %% If keepbefore, we guess to
+fledsboaround rule %% This was already in buslog, but it makes it hard for makeframe.
