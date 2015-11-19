@@ -1,0 +1,89 @@
+From mtr@ranang.org Mon Apr  4 20:05:53 2011
+Date: Mon, 04 Apr 2011 20:05:49 +0200
+From: Martin Thorsen Ranang <mtr@ranang.org>
+To: Tore Amble <toreamb@idi.ntnu.no>
+Cc: torbjorn@lingit.no
+Subject: Re: HJELP, [utf-8] får ikke restartet ny versjon [utf-8] på AtB
+
+    [ The following text is in the "utf-8" character set. ]
+    [ Your display is set for the "ISO-8859-1" character set.  ]
+    [ Some characters may be displayed incorrectly. ]
+
+On ma., april 04 2011, Tore Amble wrote:
+
+> Jeg skulle legge inn en ny versjon av BussTUC på AtB serveren, men jeg
+> får ikke restartet den nye versjonen som er AtB Date 110404
+>
+> Spør jeg AtB busstuc
+>
+> Hva er din versjon får jeg svar
+>
+> TUC har versjon AtB-2 Date 110107
+>
+> som er den forrige versjonen.
+>
+>
+> Det er antagelig en prosess som har hengt seg opp.
+
+Hei, Tore.
+
+Det stemmer.  Det var en prosess som hadde hengt seg opp.  Det er i
+orden igjen nå.
+
+> Legger ved kokeoppskriften som jeg har fulgt.
+
+Det er bra, så kan jeg tilføye et par (nødhjelpssteg):
+
+> 22. $ cd
+
+22.5 Sjekk kjørende TTPD-prossess og dens PID.
+
+     $ pgrep -lf ttpd
+
+     Forventet output: 
+     
+     <pid> /usr/bin/python -OOtt /usr/sbin/ttpd --log-level=debug
+
+     Der <pid> en en prosess-id, f.eks. 1137.
+
+> 23. Gjør en omstart av TTPD
+
+>      sudo /etc/init.d/ttpd restart
+
+23.5 Sjekk kjørende TTPD-prossess og dens PID (igjen).
+
+     $ pgrep -lf ttpd
+
+     Forventet output: 
+
+     PID'en bør nå være endret.
+
+23.6 Dersom PID'en er den samme som i steg 22.5, så må prosessen drepes:
+
+     $ sudo pkill -f ttpd
+
+     Kontroller at prosessen er død:
+
+     $ pgrep -lf ttpd
+
+     Start ny TTPD:
+
+     sudo /etc/init.d/ttpd start
+
+> 24 Gjør en omstart av Apache
+
+>      sudo /etc/init.d/apache2 restart
+
+
+> PS.
+>
+> Det er noe rart ved den, jeg får ikke alltid samme respons som står i
+> oppskriften at jeg skal få.
+
+-- 
+Kind regards,
+
+
+Martin Thorsen Ranang, Ph.D.
+Skype: mtranang
+http://no.linkedin.com/in/ranang
