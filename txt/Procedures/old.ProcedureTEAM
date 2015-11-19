@@ -1,0 +1,127 @@
+%% FILE ProcedureTEAM
+%% SYSTEM TUC
+%% Created TA-050101
+%% Revised TA-061117 // OUTDATED
+
+
+
+Procedure to introduce a new version into Team.
+
+%% Because TEAM server does not recognize selje,
+%% it is necessary  to enter furu.idi.ntnu.no
+
+
+ 0. Login on  furu.idi.ntnu.no
+
+ 1. Enter directory buster/
+
+ 2. Scrub
+
+        Removes unnecessary duplicate files in all directories
+ 
+ 3. Move all  .sav files to out
+
+       (done by Makebustar)
+
+ 4. Enter  directory tele/
+
+
+ 5. Makebustar
+
+            tar -cvf buster.tar   buster/
+            gzip buster.tar
+
+ 
+ 6.  scp buster.tar.gz buster@138.62.102.129:
+   
+ 7. password:  < A1........>
+
+%% While you are at it (if not done already)
+
+   (  scp buster.tar.gz tore@busstuc.lingit.no:)
+   (  password:  < P85...>
+
+      [ 8. Enter F-secure SSH Client Does NOT function]
+
+ 9. ssh  buster@138.62.102.129
+
+10. password:  < A1........>
+
+11a. df  // Check not full disk
+
+11b. ls
+
+12. rm -r buster.<olddate> // remove old backup
+
+13. mv buster buster.<datetoday> // create backup 
+
+14.a  gunzip  buster.tar.gz
+14.b  tar -xvf buster.tar // creates new buster dir
+
+15. cd buster
+
+16. ./create_teamtuc
+
+17. ./busestuc.sav  // NB .sav  newer version
+
+18. ?-run.
+
+19. N: hva er din versjon. // sjekk at det er siste versjon
+
+20. \halt     // exit
+
+21. cd 
+
+22. su -
+
+23. password: <Sn.....>
+
+
+24  cd /home/httpd/cgi-bin/busstuc/
+
+25.  ./savebuss
+    
+           ( cp busestuc.sav   bu.busestuc )
+
+26.  ./sleepdog
+
+           ( touch  /tmp/tuc_halt )
+
+27.  ./stopbuss
+
+28.  ./copybuss      
+
+          ( cp /home/buster/buster/busestuc.sav  busestuc.sav )
+
+29.   ./wakedog
+
+          ( rm /tmp/tuc_halt )
+
+29b.  ps -u root // check sicstus and startbuss
+
+29c. exit
+
+// http:www.team-trafikk.no/asttweb/bussorakel2.asp
+
+//  Hva er din versjon ?   |Spør|
+
+30.  su - tagore
+
+31.  passord <A1........>
+
+32.  cd log
+
+32b  ls -l
+32c  wc weblog*
+
+33.  rm weblog.<oldest>
+
+34.  cp weblog.txt   weblog.<datetoday>
+
+35.  cp emptylog.txt weblog.txt
+
+36.  exit //  (from tagore)
+
+37.  exit //  (from buster)
+==========================================================
+

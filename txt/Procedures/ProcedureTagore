@@ -1,0 +1,48 @@
+%% FILE ProcedureTagore
+%% SYSTEM BUSSTUC
+%% CREATED TA-091128
+%% REVISED TA-091207
+
+
+Procedure to make a new version of BussTUC running on tagore
+
+Assume logged in on ~toreamb/ (root)
+Not in Emacs
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+cd
+
+cp tele/buster/busestuc.sav .   
+
+chmod go+r  busestuc.sav
+
+sudo -u tagore  cp busestuc.sav ~tagore/.   
+
+Password: 123...
+
+sudologin tagore 
+
+Stopbuss
+
+Liftbuss
+
+Startbuss
+
+    serverpid: No such file or directory
+    RET
+
+Clearlog    // optional
+
+Restorepid
+
+emacs busst  
+   edit new version info
+emacs bust    
+   edit new version info  
+
+^x^c  (out from emacs)
+
+exit
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,0 +1,46 @@
+
+
+%% Put all REGTOP-files in directory
+
+tele/buster/regtop/
+
+% busestuc.sav.
+
+?-extractreg.
+( i.e.  
+?- compile_route_set( <module name> ).
+?- create_regcut( <module name> ).
+)
+
+For each route set, do 
+
+/********
+
+ Procedure extractreg is a part of busstuc, and is 
+ run in main directory  ( tele/buster/ )
+
+ REGTOP data has to be  put in the  directory
+
+     tele/buster/regtop/
+
+% busestuc.sav  
+?-extractreg.
+?-halt.
+
+
+
+ name of files   =  R0021     (typically)
+ extensiontype (dko | DKO)  DKO (if extensions are in big letters)
+ domain =  tt        (normally)
+ module =  tt06may17 (example)
+
+ All files are put in  tele/buster/database/<module>/
+
+*/
+
+
+Put the names and dates of the modules into topreg.
+
+
+% create_busstuc
+

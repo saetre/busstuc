@@ -1,0 +1,97 @@
+TODO
+=====
+
+Check out 2015.06.15
+-----------------------
+alias_station2(16010000,breidablikk_trikk,breidablikk).
+alias_station2(16010023,strindheim_2,brannstasjon_st).
+alias_station2(16010190,idrettsplassen_jakobsli,idrettsplassen).
+alias_station2(16010254,ladeveien,ladevegen).
+alias_station2(16010272,lundsen_nordre,lundsen_n).
+alias_station2(16010309,j_minsaa_s_veg,johannes_minsaas_veg).
+alias_station2(16010482,sndre_hallset,sndre_halset).
+alias_station2(16010706,munkvoll_trikk,munkvoll).
+alias_station2(16010712,nyveibakken_trikk,nyveibakken).
+alias_station2(16010761,vestre_stran,sterbakken).
+alias_station2(16011000,breidablikk_trikk,breidablikk).
+alias_station2(16011023,strindheim_2,brannstasjon_st).
+alias_station2(16011190,idrettsplassen_jakobsli,idrettsplassen).
+alias_station2(16011347,olav_tryggvasons_gate,olav_trygvassons_gate).
+alias_station2(16011482,sndre_hallset,sndre_halset).
+alias_station2(16011706,munkvoll_trikk,munkvoll).
+alias_station2(16011712,nyveibakken_trikk,nyveibakken).
+alias_station2(16011724,hospitalskirka_trikk,hospitalskirka).
+alias_station2(16011761,vestre_stran,sterbakken).
+alias_station2(16533001,skottvoll,skottvold).
+alias_station2(16533003,brubakken,brubakk).
+alias_station2(16533004,gylle,kvitland).
+alias_station2(16533040,brekksen_snpl,brekksen_snuplass).
+alias_station2(16538501,skottvoll,skottvold).
+alias_station2(16538503,brubakken,brubakk).
+alias_station2(16538504,gylle,kvitland).
+alias_station2(16626007,ulset,ulseth).
+alias_station2(16632028,hommelvikhgda,hommelvik_hgda).
+alias_station2(16638328,hommelvikhgda,hommelvik_hgda).
+alias_station2(17142707,torvet,torvet_stjrdal).
+
+Undefined - identifiers... (db/places) placestat/2
+
+hovedterminalen
+prinsenkrysset
+sentrum
+torget
+trondheim_spektrum
+
+-------------
+
+Undefined street to station references (streetstat/5)
+
+gudruns_gate
+strandvegen
+torget
+torget_orkanger
+ts
+unknown
+
+
+
+
+After updating to Ubuntu 14.04
+
+Check out what amanda services are (what backup, to where?)
+From /etc/inetd.conf:
+---------------------
+#:OTHER: Other services
+amanda dgram udp wait backup /usr/sbin/tcpd /usr/lib/amanda/amandad -auth=bsd amdump amindexd amidxtaped
+amanda stream tcp nowait backup /usr/lib/amanda/amandad amandad -auth=bsdtcp amdump amindexd amidxtaped
+
+
+Keep Bus statistics in case restarted/deleted (low because of new SMS-2027 provider wtw):
+DATE SMS TOTAL 2014-6-19 0 155 2014-6-20 0 469 2014-6-21 3 470 2014-6-22 0 395 2014-6-23 3 632 2014-6-24 3 582 2014-6-25 5 667 2014-6-26 0 528 2014-6-27 0 438 2014-6-28 0 416 2014-6-29 21 367 2014-6-30 19 525 2014-7-1 0 332
+
+
+Diff /etc/apache2/sites-avail.../000-default.conf:
+-       DocumentRoot /var/www
++       DocumentRoot /var/www/html
+
+
+Diff /etc/apache2/apache2.conf
+-# RS-140109    Recommended
+-ServerName busstuc.idi.ntnu.no
+
+ <Directory /var/www/>
+        Options Indexes FollowSymLinks
+-       AllowOverride All
++       AllowOverride None
+
+
+
+
+
+
+
+Q: Når går bussen fra rimi persaunet til sentrum
+A: 
+Jeg har ingen informasjon om Rimi.
+
+

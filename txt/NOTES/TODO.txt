@@ -1,0 +1,113 @@
+DEBUG IN MODULES
+=================
+ 
+ ?- spy dict_n:xcompword/3.
+% The debugger will first zip -- showing spypoints (zip)
+% Plain spypoint for dict_n:xcompword/3 added, BID=2
+yes
+% zip,source_info
+
+| ?- trace := 6 .
+or
+| ?- run.
+N: \set trace 6
+.....................
+N: fra p2 til nova.
+
+[w(p,[prep(from),[fra],[fra]]),
+ w(p,[prep(on),[på],[p],name(p,n,0)]),
+ w(2,[[2],nb(2,num),name(2,n,route),name(2,n,0)]),
+ w(til,[prep(to),[til]]),
+ w(prinsen,[name(pinsen,n,0),name(pinsens,n,0),name(prinsen,n,neighbourhood),name(...)|...]),
+ w('.',[['.']])]
+
+
+
+Undefined station identifiers 
+
+asbjørnsens_gate
+haakon_vii_gate_29
+heggstadmoen
+hommelvik_skole
+hovedterminalen
+john_aaes_veg
+leinstrand_samfunnshus
+lerchendal_gård
+olav_nygårds_veg
+rotvoll_nedre
+sentrum
+statoil_rotvoll
+stavnebrua
+
+-------------
+
+Undefined street to station references 
+
+chr_monsens_gate
+dist_lege_øverlids_vei
+haakon_vii_gate_29
+hospitalkirka
+kongleveien
+leinstrand_samfunnshus
+olav_nygårds_veg
+persaunevegen
+tollbua
+ts
+unknown
+valentinlystvegen
+
+-------------
+ Please Wait another minute... 
+%  consulting c:/eclipse/workspace/busstuc/db/namehashtable.pl...
+%  consulted c:/eclipse/workspace/busstuc/db/namehashtable.pl in module user, 967 msec 16 bytes
+
+ Finished 
+% compiled c:/eclipse/workspace/busstuc/busstuc.pl in module user, 50823 msec 59787264 bytes
+run.
+
+
+
+N: hva er din versjon.
+........................................................................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+TUC har versjon    AtB-I Date 131007 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+NY VERSJON 11/11-13:
+=====================
+ Finish
+
+Undefined station identifiers
+
+asbjørnsens_gate
+haakon_vii_gate_29
+heggstadmoen
+hommelvik_skole
+hovedterminalen
+john_aaes_veg
+leinstrand_samfunnshus
+lerchendal_gård
+olav_nygårds_veg
+rotvoll_nedre
+sentrum
+statoil_rotvoll
+stavnebrua
+
+-------------
+
+Undefined street to station references
+
+chr_monsens_gate
+dist_lege_øverlids_vei
+haakon_vii_gate_29
+hospitalkirka
+kongleveien
+leinstrand_samfunnshus
+olav_nygårds_veg
+persaunevegen
+tollbua
+ts
+unknown
+valentinlystvegen
+

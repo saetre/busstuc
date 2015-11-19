@@ -1,0 +1,84 @@
+%% FILE ProcedureSMS
+%% CREATED TA-050101
+%% REVISED TA-101007
+
+
+NB  TRY ProcedureAtB if you mean AtB
+-------------------------------------
+Procedure to introduce a new version into busstuc.lingit.no
+
+          Run statistics on Team: Hvor mange spørsmål har du besvart?
+          Keep statistics, and send to Team
+
+ 0. Login (on   selje.idi.ntnu.no) //or furu
+
+ 1. Enter directory (tele/)buster/
+
+ 2. Scrub (Removes unnecessary duplicate files in all directories)
+ 
+(3. Move all  .sav files out of buster/ ) Actually done by Makebustar
+
+ 4. Enter  directory tele/
+
+ 5. Makebustar
+          ( tar -cvf buster.tar   buster/ )
+          ( gzip buster.tar               )
+
+ 6. scp buster.tar.gz tore@busstuc.lingit.no:  // NB :
+ 7. password:  < P85........>
+
+ 8. ssh  tore@busstuc.lingit.no
+
+ 9. password:  < P85.......>
+
+10. ls -l  // VERIFY that you have logged in on server!
+
+11. df  // Check not full disk
+
+12. rm -r buster.<olddate> // remove old backup directory
+
+13. mv buster buster.<datetoday> // create backup 
+
+14. gunzip buster.tar.gz
+           buster.tar already exists; do you wish to overwrite (y or  n)? yes
+
+15. tar -xvf buster.tar // creates new buster dir
+
+16. cd buster
+
+17. ./create_smstuc
+
+18. ./busestuc     // not  .sav  if old  Prolog version
+
+19. ?-run.
+
+20. N: hva er din versjon. // verify that it is the last version
+
+21. \halt     // exit
+
+22. cd 
+
+23. ./Stopbuss    //  wait < 5 min
+
+23b.  ps -u tore x
+
+ 23c   kill -9 any process  xxxx  ttpd
+ 23d   kill -9 any process starting with sicstus
+
+24. ./Savebuss  %% copy current program to backup
+25. ./Copybuss  %% copy new program into running directory
+26. ./Startbuss
+
+26b. ps -u tore x %% should be 1-2 sicstus processes+ttpd
+                  %% or /usr/bin/python -OOtt /home/tore/bin/ttpd --port=8081
+
+27  Sjekk SMS-oraklet    http://busstuc.lingit.no/~tore/smstuc/  Hva er din versjon
+
+    NB. The first question may take 2 minutes (warming up, handling backlog)
+
+28  Sjekk TEAM-oraklet   http://www.team-trafikk.no/
+
+(29.  export TERM=linux // dont use shell  // Edit  WEBside if nec)
+      emacs bust  
+30. exit
+
