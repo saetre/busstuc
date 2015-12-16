@@ -1,5 +1,5 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
-%% Auxillary tables created datetime(2015,11,14,14,16,22)
+%% Auxillary tables created datetime(2015,12,16,16,3,45)
 %%  from writeheading in ./makeauxtables.pl (from createhash/0 and makeauxtables/0)
 
 :-module( auxtables, [ busstat/2, statbus/2, transbuslist/3, unproperstation/1 ] ). 
@@ -833,9 +833,11 @@ busstat(410,[aks,bratsbergvegen,brekka,buvika,børsa,city_syd_e6,dr_gate_d1,dr_g
 %%% 
 
 unproperstation(heaven).
-unproperstation(draksten).
+unproperstation(hjalmar_johansens_vei).
 unproperstation(hydrost_hell).
 unproperstation(nidelv_bru).
+unproperstation(oscar_wistings_vei).
+unproperstation(thora_storms_vei).
 
 
 %%% 
