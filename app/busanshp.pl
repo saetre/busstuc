@@ -2261,8 +2261,8 @@ printmess1(dateis(Year,Month,DayNr,Day)) :-
 printmess1( otherperiod(_Date) ) :-
     value( airbusflag, true ),
     !,
-    airbus_module(FB),
-    write_mess_off(FB).
+    airbus_module( FB ),        %% RS-151219 FlyBuss
+    write_mess_off( FB ).
 
 
 printmess1(otherperiod(Date)) :-
@@ -2459,7 +2459,7 @@ pmess(unrecognized_street(BIV,KJV)):-    %%  actually a staff warning
     bcpbc(unknown),bcp(connection),bwr(BIV),comma,bwr(KJV),dot.
 
 
-pmess( date_day_route(date(Y2000,Y5,Y29),Monday) ) :-
+pmess( date_day_route( date(Y2000,Y5,Y29), Monday ) ) :-
     bcpbc( the_routes_on ), writedate( date(Y2000,Y5,Y29) ),
     bcp( are_the_same_as ), outdays( Monday ), dot.
 
@@ -2792,11 +2792,10 @@ plural(_,departure,departures).
 
 % HELP Predicates in user for bustrans
 
-
-special_day(holiday).
-special_day(easterhol).
-special_day(easter_eve).
-special_day(may17).
+special_day( holiday ).
+special_day( easterhol ).
+special_day( easter_eve ).
+special_day( may17 ).
 
 
 numberofnextbuses2(_,2):-    %% neste -> neste 2 SMS

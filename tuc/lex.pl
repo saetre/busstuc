@@ -1240,10 +1240,9 @@ decide_top1(_X,_Y,nil):- !.
 
 
 
-%% Decide Domain :  Decide which part of Norway is actual
+%% Decide Domain :  Decide which part of Norway is actual %% Last Experiment
 
 decide_domain :- true. %% no change
-
 
 /* %% TA-110208 FARA
 decide_domain :- 
@@ -1252,9 +1251,6 @@ decide_domain :-
 
     actual_domain := G.
 */
-
-
-
 decide_domain :- 
  
     value(tmnflag,true),
@@ -1275,7 +1271,8 @@ decide_domain :-
      ( actual_domain := G ),
 
     remove_confusing_stations(G).
-   
+
+
 remove_confusing_stations(gb):- 
     !,
     retractall( txt(_, w(sentrum,name(tmn_sentrum,n,station)),_)   ).

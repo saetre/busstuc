@@ -253,8 +253,8 @@ dayxnumber(EMITDAY,Monday,XN) :-
 :- volatile airbus_module/1.    %% RS-121223 No airbusmodules currently implemented
 :- dynamic airbus_module/1.
 
-veh_mod(TTP):-
-     value(airbusflag,true),
+veh_mod(TTP):- %% RS-151219. This BREAKS facts:station(solsiden) when airbusflag is true!
+     value( airbusflag, true ), % Check delare:value (usually false) 
      !,
      airbus_module(TTP).
 
@@ -355,14 +355,16 @@ station( hovedterminalen ).  %% Proforma station
 %% station(m0).   %% (default streetstat) %% TA-100120
 
 station(X) :- %% TA-110415
-    veh_mod(TTP),
-    modstat(TTP,X).
+    veh_mod( TTP ),
+    modstat( TTP, X ).
 
-%% RS-150815. Experiment. Check all (future) modules. Try to implement some automatic compl(station,[names]) here!
+%% RS-150815. Experiment. Check all (future and alternative current) modules. Try to implement some automatic compl(station,[names]) here!
 station(X) :-
    todaysdate( Today  ), %% NOT free( date(Y,M,D) )    %% actualdate
    route_period( _Company, TTPeriod, FromDate, _ToDate ),
-   before_date0( Today, FromDate ),  %% Today < FromDate (Future module)
+   (  before_date0( Today, FromDate )           % future schedule
+   % -> true ; before_date0( Today, ToDate )    % 
+   ),  %% Today < FromDate (Future module)
    modstat(TTPeriod,X).
 
 /*
@@ -614,8 +616,8 @@ streetstation2(St_olavs_street,_,St_olavs_gate):-
 streetstation2(Ident,Num,Station2):- %% Station name in streetstat
     streetstat(Ident,_,Low,High,Station),
 
-    optional_alias2(Station,Station2), %% in case of period renameing
-                                       %% TA-110803
+    optional_alias2(Station,Station2), %% in case of period renameing       %% TA-110803
+    
     number(Low),
     number(High),
     Num =< High, Low =< Num,
@@ -627,7 +629,7 @@ streetstation2(Ident,_,unknown):-
     streetstat(Ident,_,_,_,_),
     !.
 
-optional_alias2(Station,Station2):-     %% in case of period renameing
+optional_alias2( Station, Station2 ) :-     %% in case of period renameing %% RS-151219 Trying to figure this out today (for Christmas routes)
     alias_station2(_,Station,Station2), %% TA-110803
     !; Station=Station2.
 
@@ -1268,7 +1270,7 @@ diffdep4(_,_,_,-1). %% (in case of timeout) | catchall
 
 
 
-xxxstateplace(X,Y):- (busdat:corresp0(X,Y);isat2(X,Y)). %% ugly
+xxxstateplace( X, Y ) :- ( busdat:corresp0( X, Y ) ; isat2(X,Y) ). %% ugly
 
 
 %% Bustrans specific predicate
@@ -1498,11 +1500,11 @@ isat2(Station,sentrum) :- %% TA-090915
 
 isat2( Station, Place ) :- %% studentersamfundet syndrom
      bound(Place),
-    (
+    ( % One OR the other of the following lines
      ( station(Place), Station=Place ) ;
      ( busdat:airbusstation(Place), Station=Place ) ; %% TA-090401
      placestat(Place,Station) ;
-     alias_station(Station,Place) ; %% AtB
+     alias_station(Station,Place) ; %% AtB %% RS-151219 The station identifiers keep changing twice a year!
      isat(Station,Place)
     ).
 
@@ -1668,14 +1670,13 @@ place_station(Ident,U):-
     U= unknown.
 
 
-place_station(Place,Station) :- %%  (If Place is free, get all)
+place_station( Place, Station ) :- %%  (If Place is free, get all)
          var(Place),
     !,
-         (placestat(Place,Station);
-     isat(Station,Place)).
+         ( placestat(Place,Station) ; isat(Station,Place) ). %% get/Use both
 
 
-place_station(Station,Station2):- %% in case of period renaming %% TA-110804
+place_station( Station, Station2 ):- %% in case of period renaming %% TA-110804 %% RS-151219
          bound(Station),
     optional_alias2(Station,Station2), %% TA-110803
     !.

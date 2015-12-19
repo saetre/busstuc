@@ -1,0 +1,29 @@
+
+Undefined - identifiers... (db/places) placestat/2
+
+hovedterminalen
+orkanger_skyss
+prinsenkrysset
+prof_brochs_gate
+ranheim_kirke
+ranheim_stasjon
+sentrum
+torget
+
+-------------
+
+Undefined street to station references (streetstat/5)
+
+gudruns_gate
+kvenilds_veg
+ladejarlen_v_g_s
+osveien
+prof_brochs_gate
+ranheim_kirke
+ranheim_stasjon
+risvollveien
+strandvegen
+torget
+traneveien
+ts
+unknown

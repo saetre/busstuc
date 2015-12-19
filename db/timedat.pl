@@ -37,7 +37,7 @@
 :- dynamic named_date/2. %% Created Initially,  redefined with remember(day_map) below
 
 create_named_dates :-
-    list_of_named_dates(L), 
+    list_of_named_dates( L ),
     for( ( member(A,L), orig_named_date(A,B) ),
           remember( named_date(A,B) )          % remember( timedat:named_date(A,B) )
     ), %% To be     refined
@@ -72,6 +72,7 @@ clock_delay(00,00,00). %%  FOR ABNORMAL SERVER TIME ERROR, CLOCK ADJUSTMENT
 list_of_named_dates( [
     new_years_eve,
     new_years_day,
+
     palm_sunday,
     palm_monday,
     palm_tuesday,
@@ -98,9 +99,14 @@ list_of_named_dates( [
     midsummer_day, 
 
     little_christmas_eve,
-    christmas_eve,           
+    christmas_eve,
 
     christmas_day, %% TA-100122
+    christmas_day2, %% RS-151219
+    christmas_day3, %% RS-151219
+    christmas_day4, %% RS-151219
+    christmas_day5, %% RS-151219
+    christmas_day6, %% RS-151219
 
     john_f_kennedy_day, 
     oddvar_brå_day, 
@@ -111,112 +117,114 @@ list_of_named_dates( [
 
 %%% DATES NAMED BY EVENTS  :-)
 
-
 orig_named_date(john_f_kennedy_day, date(1963,11,22) ).  
 orig_named_date(oddvar_brå_day,     date(1982,02,25) ).  
 orig_named_date(arvid_holme_day,    date(2011,01,17) ).  
 orig_named_date(dooms_day,          date(2012,12,21) ). %% :-) %% TA-100323|      date(10000,01,01)). 
 
-%% Named dates
+%% Named dates ( Ordered Chronologically within a year ). %% RS-151219
 
-orig_named_date(new_years_eve,date(YYYY,12,31)) :- %% Nyttårsaften& januar  -> i fjor
-     todaysdate(date(YYY1,01,_)),
-     YYYY is YYY1 -1,
-     !.
-orig_named_date(new_years_eve,date(YYYY,12,31)) :- %% Nyttårsaften i år
-     this_year(YYYY),
-     !.
-
-orig_named_date(new_years_day,date(YYYY,01,01)):- %% january -> this year
-    todaysdate(date(YYYY,01,_)),
-    !.
-orig_named_date(new_years_day,date(YYY1,01,01)):- %% all other todays date 
-     this_year(YYYY),
-     YYY1 is YYYY+1,
-     !.
-
-orig_named_date(easterday,    ED):- %% datecalc
+orig_named_date( easterday,    ED ):- %% datecalc
     this_year(YYYY),
     easterdate(YYYY,ED).
 
-orig_named_date(palm_sunday, ND ) :- 
+orig_named_date( palm_sunday, ND ) :- 
     this_year(YYYY),
     easterdate(YYYY,ED),
     sub_days(ED,7, ND).
 
-orig_named_date(palm_monday,   ND) :- %% Pro forma
+orig_named_date( palm_monday,   ND ) :- %% Pro forma
     this_year(YYYY),
     easterdate(YYYY,ED),
     sub_days(ED,6, ND).
 
-orig_named_date(palm_tuesday,  ND) :- %% Pro forma
+orig_named_date( palm_tuesday,  ND ) :- %% Pro forma
     this_year(YYYY),
     easterdate(YYYY,ED),
     sub_days(ED,5, ND).
 
-orig_named_date(palm_wednesday,   ND) :- 
+orig_named_date( palm_wednesday,   ND ) :- 
     this_year(YYYY),
     easterdate(YYYY,ED),
     sub_days(ED,4, ND).
 
-orig_named_date(maundy_thursday,   ND) :- %% skjærT NOT monday  
+orig_named_date( maundy_thursday,   ND ) :- %% skjærT NOT monday  
     this_year(YYYY),
     easterdate(YYYY,ED),
     sub_days(ED,3, ND).
 
-orig_named_date(good_friday,    ND) :-
+orig_named_date( good_friday,    ND ) :-
     this_year(YYYY),
     easterdate(YYYY,ED),
     sub_days(ED,2, ND).
 
-orig_named_date(easter_eve,    ND) :-    
+orig_named_date( easter_eve,    ND ) :-    
     this_year(YYYY),
     easterdate(YYYY,ED),
     sub_days(ED,1, ND).
 
-orig_named_date(easterday2,     ND) :- %% 2. påskedag 
+orig_named_date( easterday2,     ND ) :- %% 2. påskedag 
     this_year(YYYY),
     easterdate(YYYY,ED),
     add_days(ED,1, ND).
 
-orig_named_date(ascension_day,   ND) :- %% Krhf 
+orig_named_date( ascension_day,   ND ) :- %% Krhf 
     this_year(YYYY),
     easterdate(YYYY,ED),
     add_days(ED,39,ND).
 
 
-orig_named_date(whitsun_eve, ND):-    %% pinseaften
+orig_named_date( whitsun_eve, ND ) :-    %% pinseaften
     this_year(YYYY),
     easterdate(YYYY,ED),
     add_days(ED,48,ND).
 
-orig_named_date(whitsun_day,   ND):-   %% pinsedag
+orig_named_date( whitsun_day,   ND ) :-   %% pinsedag
     this_year(YYYY),
     easterdate(YYYY,ED),
     add_days(ED,49,ND).
 
-
-orig_named_date(whitsun_day2,  ND):-       %% 2. pinsedag
+orig_named_date( whitsun_day2,  ND ) :-       %% 2. pinsedag
     this_year(YYYY),
     easterdate(YYYY,ED),
     add_days(ED,50,ND).
 
-
-orig_named_date(little_christmas_eve,date(YYYY,12,23)):- 
-      this_year(YYYY).
-
-orig_named_date(christmas_eve,     date(YYYY,12,24)):- this_year(YYYY).
-orig_named_date(christmas_day,     date(YYYY,12,25)):- this_year(YYYY).
-
 %% orig_named_date(vernal_equinox,    date(YYYY,03,21)):- this_year(YYYY). 
 %% orig_named_date(autumnal_equinox,  date(YYYY,09,21)):- this_year(YYYY).
 
-orig_named_date(midsummer_eve,     date(YYYY,06,23)):- this_year(YYYY). 
-orig_named_date(midsummer_day,     date(YYYY,06,24)):- this_year(YYYY). 
+orig_named_date( may1,              date(YYYY,05,01)) :- this_year(YYYY). 
 
-orig_named_date(may1,              date(YYYY,05,01)):- this_year(YYYY). 
+orig_named_date( may17,             date(YYYY,05,17)) :- this_year(YYYY).
 
-orig_named_date(may17,             date(YYYY,05,17)):- this_year(YYYY). 
+orig_named_date( midsummer_eve,     date(YYYY,06,23)) :- this_year(YYYY). 
+orig_named_date( midsummer_day,     date(YYYY,06,24)) :- this_year(YYYY).
+
+
+orig_named_date( little_christmas_eve, date(YYYY,12,23) ) :- this_year(YYYY).
+
+orig_named_date( christmas_eve,     date(YYYY,12,24) ) :- this_year(YYYY).
+orig_named_date( christmas_day,     date(YYYY,12,25) ) :- this_year(YYYY).
+orig_named_date( christmas_day2,     date(YYYY,12,26) ) :- this_year(YYYY).
+orig_named_date( christmas_day3,     date(YYYY,12,27) ) :- this_year(YYYY).
+orig_named_date( christmas_day4,     date(YYYY,12,28) ) :- this_year(YYYY).
+orig_named_date( christmas_day5,     date(YYYY,12,29) ) :- this_year(YYYY).
+orig_named_date( christmas_day6,     date(YYYY,12,30) ) :- this_year(YYYY).
+
+orig_named_date( new_years_eve, date(YYYY,12,31) ) :- %% Nyttårsaften& januar  -> i fjor
+     todaysdate(date(YYY1,01,_)),
+     YYYY is YYY1 -1,
+     !.
+orig_named_date( new_years_eve,date(YYYY,12,31) ) :- %% Nyttårsaften i år
+     this_year(YYYY),
+     !.
+
+orig_named_date( new_years_day, date(YYYY,01,01) ) :- %% january -> this year
+    todaysdate( date(YYYY,01,_) ),
+    !.
+orig_named_date( new_years_day, date(YYY1,01,01) ) :- %% all other todays date -> next year (january)
+     this_year(YYYY),
+     YYY1 is YYYY+1,
+     !.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -230,11 +238,9 @@ orig_named_date(may17,             date(YYYY,05,17)):- this_year(YYYY).
 %% Example   22.10 not clock if 22.10 is date of new route tables
 
 %% dedicated_date(date(YYYY,05,17)):- this_year(YYYY). %% Suspended ved gløshaugen før 17.05 
-dedicated_date(date(YYYY,12,24)):- this_year(YYYY).
+dedicated_date( date(YYYY,12,24) ) :- this_year(YYYY).
 
 %% dedicated_date(date(2006,06,19)). %% Check %% summer route
-
-
 
 
 

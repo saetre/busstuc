@@ -37,7 +37,7 @@
 %:- use_module( declare, [ (:=)/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 :- use_module( declare, [ (:=)/2 ] ).   % , value/2
 
-:- ( airbusflag := true ). %% NEW FLAG %% TA-090331
+:- ( airbusflag := false ). %% NEW FLAG %% TA-090331  %%  RS-151219 Should ALWAYS be FALSE initially! See bustrans.pl for set(airbusflag,true)
 
 %:- ( tramflag := false ).  %% Trams are NOT included ( Route 1 )       %% RS-141130
 :- ( tramflag := true ).   %% Trams are included ( Route 1 )           %% RS-131228

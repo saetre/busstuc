@@ -133,7 +133,7 @@ verify_files_exist( Filename, BaseFile ) :-
 %        directory_property( BaseFile, access_timestamp, TimeBase ),
         file_property( AbsBasefile, modify_timestamp, TimeBase ),
         Time > TimeBase,
-        out('...makeauxtables.pl~131 File already exists: '),out( Filename ), out( Time ),out( 'timestamp > SKIP making ' ),output( TimeBase ).
+        out('...makeauxtables.pl~136 File already exists: '),out( Filename ), out( Time ),out( 'timestamp > SKIP making ' ),output( TimeBase ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -141,6 +141,7 @@ makeauxtables :-
         (       %% Make sure auxtables is as new as all the input-files: places, version
            verify_files_exist( 'db/auxtables.pl', 'db/foreign_places.pl' ),
            verify_files_exist( 'db/auxtables.pl', 'db/places.pl' ),
+           verify_files_exist( 'db/auxtables.pl', 'db/regstr.pl' ),
            verify_files_exist( 'db/auxtables.pl', 'version.pl' ) 
         ) ;     %% or create a new auxtables now
         ( 
@@ -149,7 +150,7 @@ makeauxtables :-
         %    user:( tmnflagg := false ), %% RS-140106 Trenger ikke auxtables for trafikanten midtnorge?!?
             reset_period,  %% get the right period 
         
-            write( '... makeauxtables~143 (~770): Please wait 1 minute while creating (db/auxtables) regstr/2' ),nl,
+            write( '... makeauxtables~153 (~787): Please wait 1 minute while creating (db/auxtables) regstr/2' ),nl,
         
             open( 'db/auxtables.pl', write, Stream, [encoding('UTF-8')] ), %% RS-140102, Run from monobuss folder !!
             %open( 'auxtables.pl', write, Stream, [encoding('UTF-8')] ), %% RS-140102, Run from the /db/ folder !!
@@ -737,7 +738,8 @@ verify_consistency :-
 
         ensure_loaded( Second:WinterFileExtension ),
         ensure_loaded( First:SummerFileExtension ),
-        verify_consistency( Second, First ) .
+       %verify_consistency( Second, First ) .
+        verify_consistency( First, Second ) .  %% RS-151219 Christmas
 
 verify_consistency( Mod1, Mod2 ) :-
  

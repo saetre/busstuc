@@ -72,7 +72,7 @@
 :- use_module( foreign_places, [ foreign/1 ] ). % (PLACE) -> places.pl
 :- use_module( places, [ corr/2, isat/2, nostation/1, placestat/2 ] ). %% RS-131225
 :- use_module( regbusall, [ nightbus/1 ] ).  %% RS-140619 %% RS-150104 , regbus/1 not used here...
-:- use_module( timedat, [ named_date/2 ] ).  %% keep  until modules are fixed bound/1, bus/1, station/1
+:- use_module( timedat, [ named_date/2, orig_named_date/2 ] ).  %% keep  until modules are fixed bound/1, bus/1, station/1
 
 %% RS-140416 Two different regbus (Period-independent, and many modules with regbus too. %%This used to be done from topreg? (Should be done from topreg:makeauxtable?)
 %:- use_module( regcompstr, [] ). %% HEAVY DB! %:- use_module( regstr, [] ). %% HEAVY DB! %:- use_module( teledat2, [] ). %% HEAVY DB!
@@ -258,57 +258,50 @@ disallowed_night( date(2015,04,5) ).  %% natt til påskedag %% RS-150329
 
 %% These are special date_map_days that are declared explicitly each year !!!!!
 
-   %% date_day_map(date(2008,05,02),    saturday).  % friday after may 17 2008(!)
-   %% date_day_map(Date,  sunday):-  named_date(palm_sunday,Date).     % Palmesøndag 
+   %% date_day_map( date(2008,05,02),    saturday).  % friday after may 17 2008(!)
+   %% date_day_map( Date,  sunday ) :-  named_date(palm_sunday,Date).     % Palmesøndag
 
 %% Easter week will have separate module(s),
 %% Mon-Wed in easter are saturday routes (plus a few extra departures)
 %% Thu-Mon in easter are sunday routes
-%% These are ad hoc definitions %% TA-100106 %% RS-150329
 
-%%%  NOT valid 2011-20xx, own schedules for easter
+%%%  NOT valid 2011-20xx, own schedules for easter?
 %%      palm_sunday,    palm_monday, palm_tuesday, palm_wednesday,
 %%      maundy_thursday,good_friday, easter_eve, easterday,      easterday2,
 
-date_day_map(Date,   saturday) :- %% ad hoc 30/3-15
-     named_date(palm_monday,Date).
+%% These are ad hoc definitions %% TA-100106 %% RS-150329 %%
+%% named_date moves every year, while orig_named_date is constant every year.   %% RS-151219
 
-date_day_map(Date,   saturday) :- %% ad hoc 31/3-15
-     named_date(palm_tuesday,Date).
-
-date_day_map(Date,   saturday) :- %% ad hoc 1/4-15
-     named_date(palm_wednesday,Date).
-
-date_day_map(Date,  sunday) :-   %% ad hoc 2/4-15
-     named_date(maundy_thursday,Date).
-
-date_day_map(Date,  sunday) :-   %% ad hoc 3/4-15
-     named_date(good_friday,Date).
-
-date_day_map(Date,  saturday) :-  %% ad hoc 4/4-15
-     named_date(easter_eve,Date).   
-
-date_day_map(Date,  sunday) :-    %% ad hoc 5/4-15
-     named_date(easterday,Date). 
-
-date_day_map(Date,  sunday) :-    %% ad hoc 6/4-15
-     named_date(easterday2,Date).
-
-date_day_map(Date,  sunday) :-    %% 2 Påskedag Ad Hoc, %% 7/4-15     
-     named_date(easterday2,Date).  
+date_day_map( Date,   saturday ) :- named_date( palm_monday, Date ).%% ad hoc 30/3-15
+date_day_map( Date,   saturday ) :- named_date( palm_tuesday, Date ).%% ad hoc 31/3-15
+date_day_map( Date,   saturday ) :- named_date( palm_wednesday, Date ).%% ad hoc 1/4-15
+date_day_map( Date,  sunday ) :-    named_date( maundy_thursday, Date).
+date_day_map( Date,  sunday ) :-    named_date( good_friday, Date).
+date_day_map( Date,  saturday ) :-  named_date( easter_eve, Date).
+date_day_map( Date,  sunday ) :-    named_date( easterday, Date).
+date_day_map( Date,  sunday ) :-    named_date( easterday2, Date).
 %%
-
-date_day_map(date(_Y20XX,05,01), sunday).   % 1.mai Fix, NOT separate route module
-
+date_day_map( date(_Y20XX,05,01), sunday ).   % 1.mai Fix, NOT separate route module
    %% date_day_map(date(_20XX,05,17),   holiday).  %% OWN route module
 
-date_day_map(Date,  sunday):-     %  KrHf- %% NOT OWN route module
-     named_date(ascension_day,Date),
-     \+ named_date(may17,Date).
+date_day_map( Date,  sunday ) :-    named_date( ascension_day, Date ),  \+ named_date( may17, Date ). %  KrHf- %% NOT OWN route module
 
-date_day_map(Date,  sunday):-  named_date(whitsun_day,Date).    %  1. pinsedag 
-  
-date_day_map(Date,  sunday):-  named_date(whitsun_day2,Date).   %  2. pinsedag
+date_day_map( Date,  sunday ) :-    named_date( whitsun_day, Date ).    %  1. pinsedag 
+
+date_day_map( Date,  sunday ) :-    named_date( whitsun_day2, Date ).   %  2. pinsedag
+
+%% RS-151219 This was last checked for Christmas 2015
+date_day_map( Date,  saturday ) :-  orig_named_date( christmas_eve, Date ).   %  Julaften. Lørdagsrute med stopp kl 16
+date_day_map( Date,  sunday )  :-  orig_named_date( christmas_day, Date ).   %  1. Juledag. Søndagsruter
+date_day_map( Date,  sunday )  :-  orig_named_date( christmas_day2, Date ).   %  2. Juledag. Søndagsruter
+date_day_map( Date,  sunday )  :-  orig_named_date( christmas_day3, Date ).   %  3. Juledag. Søndagsruter
+
+date_day_map( Date,  saturday ) :-  orig_named_date( christmas_day4, Date ).   %  4. Juledag. Lørdagsruter
+date_day_map( Date,  saturday ) :-  orig_named_date( christmas_day5, Date ).   %  5. Juledag. Lørdagsruter
+date_day_map( Date,  saturday ) :-  orig_named_date( christmas_day6, Date ).   %  6. Juledag. Lørdagsruter
+
+date_day_map( Date,  saturday ) :-  orig_named_date( new_years_eve, Date ).   %  Nyttårsaften. Lørdagsruter
+date_day_map( Date,  sunday )  :-  orig_named_date( new_years_day, Date ).   %  Nyttårsdagen. Søndagsruter
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -722,10 +715,10 @@ corresp(X,Y):-
    ( corrx(T,X,Y)   ;   corrx(T,Y,X) ).
 
 corresp(X,Y):-                    %% 
-   value(actual_domain,T), %% RS-131230 From declare.pl
-   ( corrx(T,X,hovedterminalen)
-   , %%%%%%% <----------- ; sic
-     corrx(T,Y,hovedterminalen) ).
+   value(actual_domain,T), %% RS-131230 uses declare:value
+   ( corrx( T, X, hovedterminalen )    , %%%%%%% <----------- ; sic
+     corrx( T, Y, hovedterminalen ) 
+   ).
 
 
 %% corrx(Domain,Place1,Place2).
@@ -799,12 +792,11 @@ airbusstation(royal_garden).
 %% airbusflag           dynamic  set if airbus or airbus station is explicitly mentioned
                                  
 
-internal_airbus(IAB):-  
-    value(internal_airbusflag,true) ->     %% RS-131230 From declare.pl 
+internal_airbus( IAB ):-
+    value(internal_airbusflag,true) ->     %% RS-131230 check declare.pl:value
         IAB=true
       ; 
         IAB=false.
-
 
 
 moneyunit(nok).    %% Trondheim %% Local currency
@@ -881,12 +873,12 @@ preferred_transfer(46,47,pirbadet,munkegate_m4,city_syd).
 %% Airbus Section
 
 default_origin(_,sorgenfriveien) :- %% AD HOC 
-    value(airbusflag,true),        %% RS-131230 From declare.pl
+    value(airbusflag,true),        %% RS-131230 check declare:value
     !.
 
 
 default_destination(_,værnes) :- %% AD HOC 
-    value(airbusflag,true),        %% RS-131230 From declare.pl
+    value(airbusflag,true),        %% RS-131230 check declare:value
     !.
 
 

@@ -6,7 +6,7 @@
 %% REVISED  TA-110825   %% RS-131225  flag/1, used in execute_ptogram ( interapp/pragma... (could be local bustrans?... Fix meta_predicates!)
 %% Rune Sætre (RS), Erlig Eeg-Henriksen (EE)
 
-:- module( bustrans, [ rule/2, module_dependencies/0, tracevalue/1 ] ). %  %% id/2, ip/2, is/1, 
+:- module( bustrans, [ rule/2, module_dependencies/0, tracevalue/1 ] ). %  %% id/2, ip/2, is/1,   composite_stat/3,
 
 % Transformation rules for the bus domain (rule/2 is executed from pragma.pl)
 
@@ -102,6 +102,10 @@ nightbus
 :- use_module( '../declare', [ value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, value/2.  set( X, Y ) is X := Y .
 %value(Key,Val) :- value(Key,Val).  %% RS-130630 value must NOT be volatile predicate!!! This caused BIG TROUBLE!
 
+:- use_module( '../utility/utility', [ append_atomlist/2 ] ). 
+                                    
+:-use_module( '../db/topreg', [ default_period/3 ] ).   %% RS-151219 Will this work?
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
                                  % single-question application
@@ -122,11 +126,14 @@ module_dependencies :-
         fail ; true .   %% Get all use_modules, then succeed...
 
 %UNIT: /app/
-:-use_module( busanshp ).
-%dep_module( buslog, [ airbus_module/1, before/2, bus/1, bus_place_station/3, busorfree/1, composite_stat/3, dayModSeqNo/2, departure/4, message/1,
-%                      neverarrives/2, neverdeparts/2, neverpasses/2, not/1, notaclock/1, passesstations/4, place_station/2, samefplace/2, station/1,
-%                      stationsat/3, street_station/2 ] ). 
-:-use_module( buslog ).
+dep_module( AtbModule, [ composite_stat/3 ] ) :-
+        default_period( tt, winter,  Module ),
+        append_atomlist( [ '../db/tables/', Module, '/regcut.pl' ], AtbModule ).        %write( AtbModule ).     %% RS-151219 Debug. Use append_atoms instead.
+
+dep_module( buslog, [ airbus_module/1, before/2, bus/1, bus_place_station/3, busorfree/1, dayModSeqNo/2, departure/4, message/1,
+                      neverarrives/2, neverdeparts/2, neverpasses/2, not/1, notaclock/1, passesstations/4, place_station/2, samefplace/2, station/1,
+                      stationsat/3, street_station/2 ] ). 
+% :-use_module( buslog ).
 
 %UNIT: /db/
 %dep_module( '../db/busdat', [ airbusstation/1, bus_dependent_station/3, central_fromstation/1, corresponds/2, date_day_map/2,
@@ -140,7 +147,7 @@ module_dependencies :-
 dep_module( '../declare', [ set/2 ] ). %% RS-141015        Set variable-values,  in the module ! (RS-150414. Which module? Caller or Called Module?)
 
 %UNIT: /utility/  and  /
-dep_module( '../utility/utility', [ append_atomlist/2, bound/1, implies/2,  maxval/3, minval/3, set_of/3, test/1, testmember/2, unbound/1 ] ). %% RS-131225 set(X,Y) from declare.pl
+dep_module( '../utility/utility', [ bound/1, implies/2,  maxval/3, minval/3, set_of/3, test/1, testmember/2, unbound/1 ] ). %% RS-131225 set(X,Y) from declare.pl
 dep_module( '../utility/datecalc', [ add_days/3, addtotime/3, before_date1/2, datetime/6, days_between/3, daysucc/2, difftime/3,
                                      finddate/2, findfirstcomingdate/2, isday/1, number_of_days_between/3,
                                      sub_days/3, subfromtime/3, timenow/1, timenow2/2, today/1, todaysdate/1, valid_date/1, weekday/2,
@@ -150,8 +157,12 @@ dep_module( '../interfaceroute', [ decide_period/2 ] ). %% RS-141015
 
 %UNIT: /app/
 %%% RS-131225, UNIT: app/
-%dep_module( busanshp, [ evening_time/2, i_or_a_bus/3, mixopt/3, setopt/3, setopts/3, warningtime/2 ]).     %% RS-140102 get all? tracevalue/1 is unique for each rule module! (traceans, traceprog, ...)
+%:-use_module( busanshp ).      %% RS-140102 get all? tracevalue/1 is unique for each rule module! (traceans, traceprog, ...)
+
+dep_module( busanshp, [ busman/2, corresporder/3, evening_time/2, evening_time0/2, i_or_a_bus/3, mixopt/3,
+                        setopt/3, setopts/3, sorttimes/4, special_day/1, warningtime/2 ] ).
 %                         empty_sms_message/1, make_total_google/2, pay/0, printmessage/1, startmark/0 ] ). %%Extra?
+
 dep_module( dmeq, [ dmeq/2 ] ). %% RS-140102, Really Used, in several  pragma.pl->interapp->bustrans rules 
 dep_module( interapp, [ newfree/1 ] ).
 %dep_module( pragma, [  ]). %% RS-140102-141002 These modules are highly connected: interapp, pragma, bustrans!
@@ -460,8 +471,8 @@ id  not flag(airbus),
 ip  internal_airbus(true),
     bound(X),
     airbus(X),
-    set(airbusflag,true),  %% must be reset initially
-    set(actual_domain,fb)).  %% reset in interapp
+    set( airbusflag,true ),  %% must be set to FALSE initially! RS-151219 Remember to do this in tucbuses.pl !
+    set( actual_domain, fb ) ).  %% reset in interapp ?
 
 airbusquery2 rule bustrans:(
 is  context X isa route  %% not class airbus
@@ -469,7 +480,7 @@ id  not flag(airbus),
     add flag(airbus)             %% Somewhat dirty
 ip  internal_airbus(true),bound(X),
     airbus(X),
-    set(airbusflag,true),  %% must be reset initially
+    set(airbusflag,true),  %% must be false initially
     set(actual_domain,fb)).  %% reset in interapp
 
 
@@ -478,7 +489,7 @@ is  context _X isa airbus
 id  not flag(airbus),
     add flag(airbus)             %% Somewhat dirty
 ip  internal_airbus(true),
-    set(airbusflag,true),  %% must be reset initially
+    set(airbusflag,true),  %% must be false initially
     set(actual_domain,fb)).
 
 
@@ -488,7 +499,7 @@ id  not flag(airbus),
     add flag(airbus)
 ip  internal_airbus(true),
     set(actual_domain,fb),
-    set(airbusflag,true)).
+    set(airbusflag,true)). %% must be false initially
 
 
 %%% subtle, swaps sequence of sentrum flyplass -> værnes sentrum
@@ -7711,14 +7722,17 @@ id   not flag(fail),
      atday(_Day),
      atdate2(_DaySeqNo,DATE),
      not timeis(_),    %% spurte om klokka
-     not message(nodates),
-     not message(date_day_route(date(YYYY,MM,DD),_)),
-     not message(otherperiod(date(YYYY,MM,DD),_)),
-     add message(date_day_route(DATE,MapDay)),
+     not message( nodates ),
+     not message( otherperiod(date(YYYY,MM,DD),_) ),
+     not message( date_day_route( date(YYYY,MM,DD), _ ) ),
+     
+     add message( date_day_route( DATE, MapDay ) ),
+
      remove atday(_),
-%%     add atday(MapDay)        %% RS-130327 Not needed when "Real routes are provided"?
+%%     add atday(MapDay)        %% RS-130327 Not needed when "Real routes" (Separate Christmas/Easter modules) are provided?
      add atday(MapDay)
-ip   date_day_map(DATE,MapDay),
+
+ip   date_day_map( DATE, MapDay ),
      \+  special_day(MapDay) ).
 
 
@@ -10473,7 +10487,7 @@ nilplaceeqto rule bustrans:( %%   nth (from risvollan)   TO NTH (from risvollan)
 is  srel/nil/Plass/Place/_,  %% NOT coevent
        {dmeq([place,station,neighbourhood],Plass)}, %% ANOMALY
     not present adj/_/next/_/_, %% next means at station
-%     { \+ value(airbusflag,true)},  %% DIRTY   %% ankomst flybuss lerkendal.
+%     { \+ value(airbusflag,true)},  %% { DIRTY }   %% ankomst flybuss lerkendal.
     present (do)/TRAVELBE/Cat/B, { dmeq(travelbe,TRAVELBE)},
     not present _ isa departure,
     not present _ isa arrival,  %% ankomst flybuss lerkendal
@@ -14650,13 +14664,13 @@ fbdefaultfromlerkendal  rule bustrans:(
 is  FB isa Airbus, {dmeq(vehicle,Airbus)},
 
    %%  flag(airbus),
-    {value(airbusflag,true)},
+    { value(airbusflag,true) },
 
     not present srel/from/place/Lerk/_,  %% this is a deafult rule bustrans:(
 
     not present srel/to/place/Lerk/_  when {\+ airbusstation(Lerk)},
 
-   {default_origin(_,LerkStad)}, %% sorgenfriveien
+    { default_origin(_,LerkStad) }, %% sorgenfriveien
 
     not present srel/from/place/Scandic/_  when { bound(Scandic)},
     present event/real/E,
@@ -14683,7 +14697,7 @@ id  not flag(exit),
 			passevent(Depset,flybussen,CHLK,[from],Day,E))
 
 
-ip  default_origin(flybussen,CHLK) %% NEW busdat
+ip  default_origin( flybussen,CHLK ) %% NEW busdat
  ):- single.
 
 

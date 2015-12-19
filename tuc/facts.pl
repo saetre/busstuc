@@ -553,14 +553,14 @@ X isa route :-
 
 
 X isa station :-
-         value(busflag,true), %% \+ dater
-    station(X),                %%  Semantically, not actual
+    value( busflag, true ), %% \+ dater
+    station( X ),                %%  Semantically, not actual
     \+ xforeign(X),             %%   ( adjust database error)  
     \+ unwanted_place(X),       %%   ( adjust database error)
     \+ unproperstation(X).     %%   ( stations with no passings)  %% RS-131230 See lex.pl unproperstation1/1
                                  %% maybe empty 
 
-%%  \+ tramstation(X).         %% NO ILA is both
+%%  \+ tramstation(X).         %% NO ILA is both  %% RS-151219
 
 
 X isa house :- 

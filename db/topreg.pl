@@ -48,11 +48,12 @@ compilerouteaux( tt, [
 %% DEFAULT ROUTE PERIODS
 
 %default_period(tt,winter, r1601_110822).  %% 2011 Autumn
-default_period( tt, winter,  r1611_141201).  %% 2014 Winter/Spring?
+default_period( tt, winter,  r1611_151214).  %% 2015 Winter/Christmas/Spring?
 default_period( tt, summer,  r1611_140623).  %% 2013 Summer
-%default_period( tt,previous, r1611_140203).  %% 2013 Most recently period used %% RS-140616
-default_period( tt,previous, r1601_150622).  %% 2013 Most recently period used %% RS-140616
 
+%default_period( tt,previous, r1611_140203 ).  %% 2013 Most recently period used %% RS-140616
+%default_period( tt,previous, r1601_150622 ).  %% 2013 Most recently period used
+default_period( tt,previous, r1603_151012 ).  %% 2013 Most recently period used %% RS-151219
 
 %default_message(tt,winter,['AtB winter routes are from  Jan. 2, 2012  to Jun. 26, 2012.',
 %                           'AtB vinterruter gjelder fra 2. jan. 2012 til 26. jun. 2012']).
@@ -67,14 +68,20 @@ default_message(tt,summer,['AtB summer routes are from Jun. 22 to  Aug. 16. 2014
 %%see routes.pl
 
 
+% 17. mai
+
 %Lørdagsruter med første avgang fra kl 08.30 med tilleggsturer.
 period_message( r1611_140517,
 [ 'AtB Routes for Constitution Day are as Saturday, starting from 8.30 o´clock',
   'AtB Lørdagsruter for 17. mai, med første avgang fra kl 08.30 og noen tilleggsturer']).
 
+% Tram 
+
 period_message( r1630_111201,
 ['AtB Routes for Tram 2012',
  'AtB Ruter for Trikk 2012']).
+
+% Easter
 
 period_message( r1611_150330,
 ['AtB Routes for Easter 2015',
@@ -88,6 +95,8 @@ period_message( r1613_150330,
 ['AtB Routes for Easter 2015',
  'AtB Ruter påska 2015']).
 
+% Summer
+
 period_message( r1601_150622,
 ['AtB Routes for summer 2015',
  'AtB Sommerruter  2015']).
@@ -96,6 +105,7 @@ period_message( r1602_150810,
 ['AtB Routes for summer 2015',
  'AtB Sommerruter  2015']).
 
+% Autumn
 
 period_message( r1603_151012,
 ['New Autumn routes',
@@ -105,14 +115,12 @@ period_message( r1603_151012,
 %['AtB Autumn routes',
 % 'AtB Høstruter']). %% \+ .   %% RS-120810
 
+
 %period_message( r1611_141020,
 %['End of Daylight Saving Time!',
 % 'Husk Vintertid!']). %% \+ .   %% RS-120810
 
-period_message( r1601_120101,
-['AtB Winter routes',
- 'AtB Vinterruter']). %% \+ .   %% RS-111220
-
+% Winter
 
 period_message( r1611_131201,
 ['AtB Winter routes',
@@ -123,34 +131,55 @@ period_message( r1611_131201,
 %['Normal Routes',               %% RS-141207.
 % 'Vanlige Ruter']). %% \+ .   %% 01.12.14 – 23.12.14, 27.12.14 – 28.12.14 og 02.01.15 – 11.01.15
 
+% Christmas
+
 %period_message( r1612_141223,
 %['Routes for Christmas Eve',
 % 'Ruter for Julaften']). %% \+ .   %% RS-131223
-period_message( r1612_141223,
+
+%Christmas 2015
+%route_period(   tt, r1611_151214, date(2015,12,14),   date(2016,12,22) ).       %% Juleruter
+%route_period(   tt, r1615_151214, date(2015,12,14),   date(2015,12,23) ).       %% Desember23_27_30
+%route_period(   tt, r1612_151214, date(2015,12,14),   date(2015,12,25) ).       %% Julaften_25des
+%route_period(   tt, r1613_151214, date(2015,12,14),   date(2015,12,26) ).       %% Desember26_28_29
+%route_period(   tt, r1615_151214, date(2015,12,14),   date(2015,12,27) ).       %% Desember23_27_30
+%route_period(   tt, r1613_151214, date(2015,12,14),   date(2015,12,29) ).       %% Desember26_28_29
+%route_period(   tt, r1615_151214, date(2015,12,14),   date(2015,12,30) ).       %% Desember23_27_30
+%route_period(   tt, r1614_151214, date(2015,12,14),   date(2015,12,31) ).       %% Nyttårsaften
+%route_period(   tt, r1611_151214, date(2015,12,14),   date(2016,01,17) ).       %% Juleruter
+
+period_message( r1611_151214,
+['Routes for Christmas',
+ 'Ruter for Julen']). %% \+ .   %% RS-131223
+
+period_message( r1612_151214,
 ['Routes for Christmas',
  'Ruter for Julen']). %% \+ .   %% RS-131223
 
 %%%% 1-2.juledag, 6.juledag, nyttårsdag
-period_message( r1613_141223,
-['AtB 1st Christmas Day routes',
- 'AtB Juleruter 1.juledag']). %% \+ .   %% RS-131223
+period_message( r1613_151214,
+['Routes for Christmas',
+ 'Ruter for Julen']). %% \+ .   %% RS-131223
+%['AtB 1st Christmas Day routes',
+% 'AtB Juleruter 1.juledag']). %% \+ .   %% RS-131223
 
-period_message( r1614_131216,
-['AtB Christmas (Saturday) routes for 27th',
- 'Spesial/lørdags-ruter for 27/12']). %% \+ .   %% RS-131223
+%['AtB Christmas (Saturday) routes for 27th',
+% 'Spesial/lørdags-ruter for 27/12']). %% \+ .   %% RS-131223
 
-%%%% 4.5.juledag
-period_message( r1614_141223,
-['AtB Middle Christmas routes',
- 'AtB Ruter for romjulen']). %% \+ .   %% RS-131223
-
-period_message( r1615_141223,
+period_message( r1614_151214,
 ['Routes for New Years Eve',
  'Ruter for Nyttårsaften']). %% \+ .   %% RS-131223
 
-period_message( r1612_141223,
-['Routes for New Years Day',
- 'Ruter for Nyttårsdagen']). %% \+ .   %% RS-131223
+period_message( r1615_151214,
+['Routes for Christmas',
+ 'Ruter for Julen']). %% \+ .   %% RS-131223
+%['AtB Middle Christmas routes',
+% 'AtB Ruter for romjulen']). %% \+ .   %% RS-131223
+
+%%%% 4.5.juledag
+%period_message( r1612_141223,
+%['Routes for New Years Day',
+% 'Ruter for Nyttårsdagen']). %% \+ .   %% RS-131223
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -168,33 +197,6 @@ period_message( r1612_141223,
 
 %%%% ACTUAL  ROUTES              START-DATE           END-DATE (sorted!)
 
-%%route_period( tt, r1618_110517, date(2011,05,17),   date(2011,05,17) ). 
-%%route_period( tt, r1611_100823, date(2010,08,23),   date(2011,06,26) ).
-%%route_period( tt, r1603_120409, date(2012,04,09),   date(2012,05,12) ). %% Overwrote 120415
-%%route_period( tt, r1601_120415, date(2012,04,15),   date(2012,06,24) ).
-%%route_period( tt, r1602_120425, date(2012,04,25),   date(2012,06,24) ). %% Mangler alle linjer over 79
-%%route_period( tt, r1611_110627, date(2012,06,27),   date(2012,08,14) ).     
-%%route_period( tt, r1602_120813, date(2012,08,13),   date(2012,09,12) ).
-%%route_period( tt, r1612_121001, date(2012,10,01),   date(2012,11,30) ).  %% New nightbusses etc. ver5 Hoest 2012
-%%route_period( tt, r1601_120101, date(2012,01,01),   date(2012,12,31) ).
-%%route_period( tt, r1613_130622, date(2013,06,22),   date(2013,08,11) ).     %% sommer2013
-%route_period(   tt, r1611_131201, date(2013,12,01),   date(2013,12,23) ).       %% NyttPrinsenkryss, vinter2013-2014?
-%%route_period(   tt, r1612_131216, date(2013,12,16),   date(2013,12,24) ).       %% Julaften
-%%route_period(   tt, r1613_131216, date(2013,12,16),   date(2013,12,26) ).       %% 1-2.juledag, 6.juledag, nyttårsdag
-%%route_period(   tt, r1614_131216, date(2013,12,16),   date(2013,12,27) ).       %% 3.juledag
-%%route_period(   tt, r1615_131216, date(2013,12,16),   date(2013,12,29) ).       %% 4.5.juledag
-%%route_period(   tt, r1613_131216, date(2013,12,16),   date(2013,12,30) ).       %% 1-2.juledag, 6.juledag, nyttårsdag
-%%route_period(   tt, r1616_131216, date(2013,12,16),   date(2013,12,31) ).       %% Nyttår
-%%route_period(   tt, r1613_131216, date(2013,12,16),   date(2014,01,01) ).       %% 1-2.juledag, 6.juledag, nyttårsdag
-%route_period(   tt, r1611_140203, date(2014,02,03),   date(2014,03,30) ).       %% mars 2014
-%%route_period(   tt, r1613_140415, date(2014,04,15),   date(2014,04,15) ).       %% 15og21april
-%%route_period(   tt, r1614_140415, date(2014,04,15),   date(2014,04,16) ).      %% 16april
-%%route_period(   tt, r1615_140415, date(2014,04,15),   date(2014,04,20) ).      %% 17til20april
-%%route_period(   tt, r1613_140415, date(2014,04,15),   date(2014,04,21) ).      %% 15og21april
-%%route_period(   tt, r1611_140331, date(2014,03,31),   date(2014,05,16) ).       %% Før og etter påske 2014
-%route_period(   tt, r1611_140517, date(2014,05,17),   date(2014,05,17) ).       %% 17mai
-%route_period(   tt, r1611_140331, date(2014,03,31),   date(2014,06,22) ).       %% Før og etter påske 2014
-%%%route_period( tt, r1613_130812, date(2013,08,12),   date(2014,06,22) ).     %% Vinter13_14
 %%%route_period( tt, r1601_130930, date(2013,09,30),   date(2014,07,22) ).       %% Høst2013oktober
 %route_period(   tmn,r1630_101201, date(2012,12,01),   date(2014,12,31) ).
 %route_period(   gb, r1630_111201, date(2012,12,01),   date(2014,12,31) ).  %% Graakallbanen

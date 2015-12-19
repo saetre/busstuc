@@ -24,8 +24,8 @@
 %%route_period( tt, r1613_130812, date(2013,08,12),   date(2014,06,22) ).     %% Vinter13_14
 %%route_period( tt, r1601_130930, date(2013,09,30),   date(2014,07,22) ).       %% Høst2013oktober
 route_period(   tt, r1603_151012, date(2015,10,12),   date(2015,12,13) ).	%% Høst15
-route_period(   tt, r1602_150901, date(2015,09,01),   date(2015,12,13) ).	%% Høst v3
-route_period(   tt, r1611_151214, date(2015,12,14),   date(2016,12,22) ).       %% Juleruter
+%route_period(   tt, r1602_150901, date(2015,09,01),   date(2015,12,13) ).	%% Høst v3
+route_period(   tt, r1611_151214, date(2015,12,14),   date(2015,12,22) ).       %% Juleruter
 route_period(   tt, r1615_151214, date(2015,12,14),   date(2015,12,23) ).       %% Desember23_27_30
 route_period(   tt, r1612_151214, date(2015,12,14),   date(2015,12,25) ).	%% Julaften_25des
 route_period(   tt, r1613_151214, date(2015,12,14),   date(2015,12,26) ).	%% Desember26_28_29
