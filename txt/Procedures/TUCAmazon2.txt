@@ -1,0 +1,157 @@
+From mtr@ranang.org Wed Apr 14 14:24:46 2010
+Date: Wed, 14 Apr 2010 14:24:39 +0200
+From: Martin Thorsen Ranang <mtr@ranang.org>
+To: Tore Amble <toreamb@idi.ntnu.no>
+Subject: Re: BussTUC
+
+    [ The following text is in the "utf-8" character set. ]
+    [ Your display is set for the "ISO-8859-1" character set.  ]
+    [ Some characters may be displayed incorrectly. ]
+
+On on., april 14 2010, Tore Amble wrote:
+
+> Jeg skal nå overføre kildefil til "amazon".
+>
+> Jeg prøvde ( i min naivitet)
+>
+>
+>  scp buster.tar.gz   tore@79.125.17.150:
+>
+> men fikk feilmelding:
+>
+> Permission denied (publickey).
+> lost connection
+>
+> Hva må jeg gjøre?
+
+Det var nærme, men ikke nærme nok.  Løsningen er enten å kjøre kommandoen:
+
+  scp -i ~/.ssh/busstuc_eu_west.pem buster.tar.gz tore@79.125.17.150:
+
+Der flagget -i forteller hvilken identitetsfil (privat kryptonøkkel) som
+SSH skal benytte for autentisering.
+
+... eller, en kanskje bedre løsning:
+
+Å legge til følgende i fila ~/.ssh/config (opprett en tom slik, dersom
+den ikke eksisterer):
+
+Host 79.125.17.150
+     User tore
+     IdentityFile ~/.ssh/busstuc_eu_west.pem
+
+Den "konfigurasjonssnutten" sørger for at hver gang du forsøker å koble
+til 79.125.17.150, så vil ssh automatisk benytte nevnte brukernavn og
+identitetsfil.  Dermed vil du kunne kjøre vanlige ssh- og scp-kommandoer
+mot den tjeneren uten å trenge å spesifisere hverken -i <identitetsfil>
+eller <bruker>@...
+
+Dermed vil jeg kanskje anbefale å ta deg bryet med å sette opp SSH i
+henhold til siste alternativ.  
+
+-- 
+Vennlig hilsen,
+
+
+
+Martin Thorsen Ranang
+
+
+>
+>
+>
+> scp buster.tar.gz   tore@79.125.17.150:
+>
+> On Tue, 13 Apr 2010, Martin Thorsen Ranang wrote:
+>
+>> On ti., april 13 2010, Tore Amble wrote:
+>>
+>>>>  scp busstuc.lingit.no:amazon/busstuc_eu_west.pem .ssh/
+>>>
+>>> Jeg trenger vel et  passord her.
+>>>
+>>>
+>>> (Mitt gamle på busstuc.lingit.no virker ikke)
+>>
+>> Hmm...  Ovennenvte kommand forsøker å kopiere filen
+>> amazon/busstuc_eu_west.pem fra din konto på busstuc.lingit.no.  Derfor
+>> burde ditt gamle passord være tilstrekkelig.  Kanskje det kan hjelpe å
+>> eksplisitt oppgi brukernavn?:
+>>
+>>  scp tore@busstuc.lingit.no:amazon/busstuc_eu_west.pem .ssh/
+>>
+>>
+>>>
+>>> On Tue, 13 Apr 2010, Martin Thorsen Ranang wrote:
+>>>
+>>>> On ti., april 13 2010, Tore Amble wrote:
+>>>>
+>>>>> Jeg har nå fått nye rutedata fra Team, og de blir gyldige f.o.m. lørdag
+>>>>> 17.4 (!).
+>>>>>
+>>>>> Jeg kan inntil videre godt legge inn rutedata flere steder
+>>>>> (busstuc.lingit.no og   79.125.17.150), men jeg klarer ikke logge meg
+>>>>> inn på sistnevnte.
+>>>>>
+>>>>> Hvordan gjør jeg det ?
+>>>>>
+>>>>>   ssh ????
+>>>>>   scp ????
+>>>>
+>>>> Hei, Tore.
+>>>>
+>>>> Beklager at det har tatt lang tid å svare på spørsmålene dine.  Men, nå
+>>>> skal jeg forsøke:
+>>>>
+>>>>  1. På hjemmeområdet ditt på (nåværende) busstuc.lingit.no (host'et av
+>>>>     Ventelo), ligger det en SSH-nøkkel:
+>>>>
+>>>>       ~/amazon/busstuc_eu_west.pem
+>>>>
+>>>>  2. Den nøkkelen må du kopiere til din .ssh katalog som ligger rett
+>>>>     under hjemmekatalogen din på IDI sin server.  Det burde kunne
+>>>>     gjøres med følgende kommando, kjørt _fra_ IDI sin server:
+>>>>
+>>>>       cd ~/
+>>>>
+>>>>       scp busstuc.lingit.no:amazon/busstuc_eu_west.pem .ssh/
+>>>>
+>>>> Gitt at ovennevnte steg fungerer, skal det ikke være nødvendig å utføre
+>>>> de mer enn 1 gang.  Deretter følger hvordan du heretter kan koble deg
+>>>> til serveren som står hos Amazon (den har som du vet foreløpig kun et
+>>>> IP-nummer):
+>>>>
+>>>>  3. Koble til Amazon sin tjener (79.125.17.150) fra IDI sin tjener:
+>>>>
+>>>>       ssh -i ~/.ssh/busstuc_eu_west.pem tore@79.125.17.150
+>>>>
+>>>>  4. På hjemmeområdet ditt (~/) på 79.125.17.150 ligger følgende
+>>>>     kataloger:
+>>>>
+>>>>       tore@ip-10-227-135-34:~$ tree -L 2
+>>>>       .
+>>>>       `-- export
+>>>>           |-- buster
+>>>>           `-- buster-pre2010-02-23
+>>>>
+>>>>     Det vil si at den versjonen av buster/busstuc som skal gjelde
+>>>>     legges som ~/export/buster/
+>>>>
+>>>>  5. For å restarte TTPD, skal det (etterhvert) holde å deretter skrive:
+>>>>
+>>>>       sudo /etc/init.d/ttpd restart
+>>>>
+>>>>     etterfulgt av en
+>>>>
+>>>>       sudo /etc/init.d/apache2 restart
+>>>>
+>>>>     Men, fordi ikke alt er helt stabilt på plass ennå, så er det
+>>>>     kanskje greit om jeg utfører omstarten når det blir aktuelt?
+>>>>
+>>>>
+>>>> Håper dette var til hjelp, og at du i alle fall lykkes med stegene 1--4
+>>>> i første omgang.
+>>>>
+>>>>
+>>
+>>

@@ -1,0 +1,202 @@
+%% FILE ProcedureAtB
+%% CREATED TA-100820
+%% REVISED TA-110407   RS-120309
+
+
+// NB see comments at BOTTOM
+
+Procedure to introduce a new version into busstuc-atb.lingit.no
+
+          Run statistics on AtB: Hvor mange spørsmål har du besvart?
+          Keep statistics, and send to AtB
+          
+          Remember to update version.pl with the last version info.
+
+ 0. Login on   furu.idi.ntnu.no
+
+ 1. Enter directory (tele/)buster/   %% or ~satre/BUSSTUC/busstuc
+ 
+ 2. % Scrub (Removes unnecessary duplicate files in all directories)
+ 
+ 3. Move all  .sav files out of buster/ 
+    
+    % mv *.sav ../
+
+ 4. Enter  directory  BUSSTUC/  (../)
+
+ cd BUSSTUC
+
+ 5. % Makebustar    % REMOVE 5,6,7 if using SVN...
+          ( tar -cvzf buster.tgz   busstuc/ )
+
+%% 5+6  OR  use SVN at http://basar.idi.ntnu.no/svn/busstuc/
+ 5. % svn ci -m "Changelog Message... Comments."
+
+ 6. % scp -i  ~/.ssh/busstuc_eu_west.pem buster.tgz tore@busstuc-atb.lingit.no:download/
+
+ 7.   <no password necessary>
+
+ 8.   ssh  -i  ~/.ssh/busstuc_eu_west.pem tore@busstuc-atb.lingit.no
+
+ 9.  <no password necessary>
+
+10.  $ ls -l  // VERIFY that you have logged in on server!
+
+     $hostname   (# expected:  ip-10-227-34-117  | ip-10-226-129-241 )
+
+11.   df  // Check not full disk
+
+12.   cd  ~/export
+
+12. (if many backup directories,  rm -r buster.<olddate> )
+
+13.  $ mv buster buster.<datetoday> // create backup 
+
+14. %Pakk ut den nye buster-versjonen 
+    %   tar xvzf  ~/download/buster.tgz %Da skal den nye katalog "buster" ligge i /home/tore/export
+    mv busstuc buster
+
+ cd export
+ svn up http://basar.idi.ntnu.no/svn/busstuc buster
+
+15. Sett riktige rettigheter for kataloger of filer rekursivt
+
+      chmod go+rx -R  ~/export
+
+16.   cd buster
+
+17.   ./create_smstuc
+
+18.   ./busestuc     // not  .sav  if old  Prolog version
+
+19. ?-run.
+
+20. N: hva er din versjon. // verify that it is the last version
+
+21. N: \halt     // exit
+
+---- Ta statistikk AtB !
+
+22. $ cd 
+
+22.5 Sjekk kjørende TTPD-prossess og dens PID.
+
+     $ pgrep -lf ttpd
+
+     Forventet output: 
+     
+     <pid> /usr/bin/python -OOtt /usr/sbin/ttpd --log-level=debug
+
+     Der <pid> en en prosess-id, f.eks. 1137.
+
+23. Gjør en omstart av TTPD
+
+     sudo /etc/init.d/ttpd restart
+
+23.5 Sjekk kjørende TTPD-prossess og dens PID (igjen).
+
+     $ pgrep -lf ttpd
+
+     Forventet output: 
+
+     PID'en bør nå være endret.
+
+23.6 Dersom PID'en er den samme som i steg 22.5, så må prosessen drepes:
+
+     $ sudo pkill -f ttpd
+
+     Kontroller at prosessen er død:
+
+     $ pgrep -lf ttpd     // skal gi ingen output
+
+     Start ny TTPD:
+
+     $ sudo /etc/init.d/ttpd start      // ikke restart
+
+24 Gjør en omstart av Apache
+
+     $ sudo /etc/init.d/apache2 restart
+
+
+25  Sjekk at loggen til TTPD ser ut 
+
+     $ tail -15 /var/log/ttpd/ttpd.log
+
+
+26  Sjekk AtB-oraklet   http://www.atb.no/
+
+
+27. exit
+¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+
+
+> Jeg skulle legge inn en ny versjon av BussTUC på AtB serveren, men jeg
+> får ikke restartet den nye versjonen som er AtB Date 110404
+>
+> Spør jeg AtB busstuc
+>
+> Hva er din versjon får jeg svar
+>
+> TUC har versjon AtB-2 Date 110107
+>
+> som er den forrige versjonen.
+>
+>
+> Det er antagelig en prosess som har hengt seg opp.
+
+Hei, Tore.
+
+Det stemmer.  Det var en prosess som hadde hengt seg opp.  Det er i
+orden igjen nå.
+
+> Legger ved kokeoppskriften som jeg har fulgt.
+
+Det er bra, så kan jeg tilføye et par (nødhjelpssteg):
+
+> 22. $ cd
+
+22.5 Sjekk kjørende TTPD-prossess og dens PID.
+
+     $ pgrep -lf ttpd
+
+     Forventet output: 
+     
+     <pid> /usr/bin/python -OOtt /usr/sbin/ttpd --log-level=debug
+
+     Der <pid> en en prosess-id, f.eks. 1137.
+
+> 23. Gjør en omstart av TTPD
+
+>      sudo /etc/init.d/ttpd restart
+
+23.5 Sjekk kjørende TTPD-prossess og dens PID (igjen).
+
+     $ pgrep -lf ttpd
+
+     Forventet output: 
+
+     PID'en bør nå være endret.
+
+23.6 Dersom PID'en er den samme som i steg 22.5, så må prosessen drepes:
+
+     $ sudo pkill -f ttpd
+
+     Kontroller at prosessen er død:
+
+     $ pgrep -lf ttpd     // skal gi ingen output
+
+     Start ny TTPD:
+
+     sudo /etc/init.d/ttpd start
+
+> 24 Gjør en omstart av Apache
+
+>      sudo /etc/init.d/apache2 restart
+
+-----------------------------------------
+
+
+Extras
+============
+% Watch the running log
+tail -f /var/log/ttpd/ttpd.log (.1-n)

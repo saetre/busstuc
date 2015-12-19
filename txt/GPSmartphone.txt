@@ -1,0 +1,39 @@
+%% FILE GPSmartphone.txt
+%% CREATED TA-110404
+%% REVISED TA-110406
+
+                                                      
+%% BussTUC GPS Smartphone interface
+%% Proposed format  JSON
+
+%% Example:
+
+%%  Time is 1700 on Monday 4.4 
+
+N: (Gløshaugen nord+3,Gløshaugen syd+4,Dybdals vei +10) til nardo før 1730.
+
+    %% (NB misses 1. dep 1702 from  Gløshaugen because of  walking times).
+
+{
+"departures" :
+[
+{"busstopname":"Gløshaugen syd",
+ "busstopnumber":16010265,
+ "busnumber":52,
+ "time":1717,
+ "duration":4}
+
+{"busstopname":"Gløshaugen nord",
+ "busstopnumber":16010333,
+ "busnumber":52,
+ "time":1717,
+ "duration":4}
+
+{"busstopname":"Dybdals veg",
+ "busstopnumber":16010102,
+ "busnumber":8,
+ "time":1714,
+ "duration":3}
+]
+}
+
