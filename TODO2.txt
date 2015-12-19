@@ -1,3 +1,25 @@
+%% OOOPS (0940 ?!?)
+N: nth palmesøndag . 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{"transfer":"false" ,"timeset":"false" ,"departures" : [
+{"busstopname":"Kongens gate K2","busstopnumber":16010907,"busnumber":5,"time":940,"duration":8,"destination":"Gløshaugen Syd"} ,
+{"busstopname":"Munkegata M1","busstopnumber":16010001,"busnumber":22,"time":1505,"duration":7,"destination":"Gløshaugen Syd"} ,
+{"busstopname":"Prinsens gate P1","busstopnumber":16010015,"busnumber":22,"time":1506,"duration":6,"destination":"Gløshaugen Syd"} ]}
+Holdeplassen nærmest NTH er  Gløshaugen Syd .
+Buss 5 passerer  Kongens gate K2 kl. 0940 , kl. 1510  og  kl. 1540 og  kommer til  Gløshaugen Syd ,  8 minutter senere .
+Buss 22 passerer  Munkegata M1 kl. 1505  og  kl. 1605 og  kommer til  Gløshaugen Syd ,  7 minutter senere .
+Buss 22 passerer  Prinsens gate P1 kl. 1506 og  kommer til  Gløshaugen Syd ,  6 minutter senere.
+Tidene angir tidligste passeringer av holdeplassene.
+
+%% OOOPS (Nattbussen kjører IKKE natt til lørdag og søndag i påsken!)
+N: nattbuss nth påskeaften. (lørdag?)
+4. Apr. 2015 er en  lørdag .
+Holdeplassen nærmest NTH er  Gløshaugen Syd .
+Nattbuss(By/nes - Klæbu,Melhus,Malvik,Skaun - Stjørdal,Orkdal) 155 passerer  Olav Tryggvasons gate kl. 0100 , kl. 0130  og  kl. 0200 og  kommer til  Gløshaugen Syd ,  8 minutter senere .
+Tidene angir tidligste passeringer av holdeplassene. 
+
+
+
 
 Undefined - identifiers... (db/places) placestat/2
 

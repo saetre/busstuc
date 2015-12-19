@@ -1,5 +1,5 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
-%% Auxillary tables created datetime(2015,12,19,21,1,26)
+%% Auxillary tables created datetime(2015,12,19,22,0,26)
 %%  from writeheading in ./makeauxtables.pl (from createhash/0 and makeauxtables/0)
 
 :-module( auxtables, [ busstat/2, statbus/2, transbuslist/3, unproperstation/1 ] ). 
