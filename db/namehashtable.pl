@@ -1,5 +1,5 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
-%% Auxillary tables created datetime(2015,12,19,20,51,52)
+%% Auxillary tables created datetime(2015,12,19,21,57,20)
 %%  from writeheading in ./makeauxtables.pl (from createhash/0 and makeauxtables/0)
 
 :-module( namehashtable, [ toredef/3, torehash/2 ] ). 
