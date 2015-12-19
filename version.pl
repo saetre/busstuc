@@ -3,6 +3,6 @@
 %% FILE version.pl
 %% SYSTEM TUC
 %% CREATED TA-970913
-/* REVISED : RS- */  version_date('AtB-I  Date 151217  JulaftenOg25').
+/* REVISED : RS- */  version_date('AtB-I  Date 151217  Juleruter').
 
 %% JulaftenOg25
