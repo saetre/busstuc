@@ -1,3 +1,20 @@
+
+Q: Tonstad   (Dobbelt opp!)
+A:
+
+Holdeplassen nærmest Tonstad er Tonstadkrysset.
+Buss 6 (mot Flatåstoppen) passerer Munkegata M2 kl. 2250 og kl. 2320
+og kommer til Tonstadkrysset, 13 minutter senere.
+Buss 4 (mot Heimdal stasjon) passerer Munkegata M2 kl. 2300 og kl. 2330
+og kommer til Tonstadkrysset, 13 minutter senere.
+Buss 4 (mot Heimdal stasjon) passerer Prinsens gate P1 kl. 2301
+og kommer til Tonstadkrysset, 12 minutter senere.
+Buss 6 (mot Flatåstoppen) passerer Prinsens gate P1 kl. 2321
+og kommer til Tonstadkrysset, 12 minutter senere.
+
+Tidene angir tidligste passeringer av holdeplassene.
+
+
 %% OOOPS (0940 ?!?)
 N: nth palmesøndag . 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

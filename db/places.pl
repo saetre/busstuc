@@ -7152,7 +7152,8 @@ synplace(pribadet,pirbadet).
 synplace(prinsegate,prinsens_gate). 
 synplace(prinsengata,prinsens_gate).  %% (actual)
 synplace(prinsengate,prinsens_gate). 
-synplace(prinsenkryss,prinsenkrysset). 
+synplace(prinsenkryss,prinsenkrysset).
+synplace(prinsenskrysset,prinsenkrysset).       %% RS-151219
 synplace(prinsgade,prinsens_gate).  %% (actual)
 synplace(prisentret,pirsenteret).  
 %% synplace(prisenteret,pirsenteret).  %% unnec

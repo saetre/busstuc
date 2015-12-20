@@ -4228,8 +4228,10 @@ ip  [] ).
 
 
 clock8sic2 rule bustrans:( % hvor lenge er det til klokka 2400
-is  which(A),(2400 isa clock,A isa time,(do)/be1/_CLOCK/B,srel/in/time/A/B,event/real/B),
-    {unbound(A)}
+is  which(A), ( 2400 isa clock, A isa time, (do)/be1/_CLOCK/B, srel/in/time/A/B, event/real/B ),
+    { unbound(A) },
+    %% not nrel/around/vehicle/time/_B/_2400, %% RS-151219 Transformed earlier by another rule to this:
+    not srel/around/time/_2400/_FreeEvent
 id	 add (timenow2(0,T),timeis(T)),
     add flag(exit)
 ip  [] ).
