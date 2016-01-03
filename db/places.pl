@@ -6636,7 +6636,8 @@ synplace(klætt,klett).
 synplace(knudzonsgt,knudssøns_street). 
 synplace(koeflat,koieflata). 
 synplace(koieflaten,koieflata). 
-synplace(kolstadtoppen,kolstadhaugen). 
+synplace(kolstadtoppen,kolstadhaugen).
+synplace(kolsåslia,kolsåsdalen).
 synplace(komunesenter,kommunesenter). 
 synplace(komunesenteret,kommunesenter). 
 
