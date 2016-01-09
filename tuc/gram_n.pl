@@ -74,6 +74,18 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% HOW TO DEBUG THIS FILE (after it's translated into dcg_n.pl)
+%%
+%% N: \set trace 4
+%%  or
+%% N: \spyg implicitq
+%%
+%% Most rules will then be marked, for example Implicit Question
+%%  (the 26th of 40 such rules) will produce the following debug output: iq26
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Avoid error messages (because of spaces? No 4----> vs. 3--->   OR  same ---> in gram_e !)
 %(A ---> B) :-
@@ -11880,7 +11892,7 @@ np1(X, NP1) ---> %   hva du skriver ?
 
 
 
-np1(X, NP) ---> %  (da sender) de meldingeN 
+np1(X, NP) ---> %  (da sender) de meldingen
     [de],
     not_look_ahead(w(nb(_,_))), %%%%%% TI = TIME = NOUN 
     look_ahead(w(noun(_,sin,_,_))),
@@ -19378,7 +19390,10 @@ grums ---> [ja],look_ahead(w(verb(_,_,_))).
 grums ---> [typisk]. 
 grums ---> [uff].   %%  :-)
 grums ---> [vel].  
-grums ---> [å],not_look_ahead_vp.  %% Å komme til Lian er lett
+grums ---> [å],
+           not_look_ahead_vp,  %% Å komme til Lian er lett
+           not_look_ahead(['.']).  %% RS-160109. "A. Jenssens vei" må ikke bli "å ...".
+                %% See dcg_n.pl, line 19814
                                   
 grums ---> w(nb(1939,num)),point0.
 

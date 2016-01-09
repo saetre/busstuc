@@ -462,7 +462,7 @@ streetstat(A,B,C,D,E):-
 
 
 thetramno(One):-
-    value(tmnflag,true),   %% RS-131230 From declare.pl  
+    value(tramflag,true),   %% RS-131230 From declare.pl
     unique_vehicle(tram,true),
     thetram(One).
 

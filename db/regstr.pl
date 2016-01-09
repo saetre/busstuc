@@ -1171,7 +1171,9 @@ streetstat(olav_magnussons_street,'Olav Magnussons veg',1,3,magnus_berrføtts_ve
 streetstat(olav_magnussons_street,'Olav Magnussons veg',5,13,valentinlyst).
 streetstat(olav_nygards_street,'Olav Nygards veg',1,53,rydningen).
 streetstat(olav_trondsons_street,'Olav Trondsons veg',1,5,berg_studentby).
+streetstat(odd_brochmanns_street,'Odd Brochmanns veg',1,50,berg_studentby).
 
+               
 streetstat(olav_tryggvasons_street,'Olav Tryggvasons gate',28,51,olav_tryggvasons_gate). %% CORR
 streetstat(olav_tryggvasons_street,'Olav Tryggvasons gate',1,27,søndre_gate_23).
 
@@ -1357,10 +1359,14 @@ streetstat(rognbudalen,'Rognbudalen',1,90,rognbudalen).
 streetstat(rognersvingen,'Rognersvingen',1,21,johan_falkbergets_vei).
 streetstat(rogner_street,'Rognervegen',1,14,johan_falkbergets_vei).
 streetstat(romemyra,'Romemyra',1,89,tonstadgrenda).
-streetstat(romulslia,'Romulslia',27,27,skårgangen).
-streetstat(romulslia,'Romulslia',10,23,romolslia_nedre).
-streetstat(romulslia,'Romulslia',1,15,gammel_lina).
-streetstat(romulslia,'Romulslia',29,82,romolslia_øvre).
+streetstat(romolslia,'Romolslia',10,24,romolslia_nedre).
+streetstat(romolslia,'Romolslia',1,15,gammel_lina).
+streetstat(romolslia,'Romolslia',27,27,skårgangen).
+streetstat(romolslia,'Romolslia',29,82,romolslia_øvre).
+streetstat(romulslia,'Romolslia',10,24,romolslia_nedre).
+streetstat(romulslia,'Romolslia',1,15,gammel_lina).
+streetstat(romulslia,'Romolslia',27,27,skårgangen).
+streetstat(romulslia,'Romolslia',29,82,romolslia_øvre).
 streetstat(roosevelts_street,'Roosevelts veg',1,18,jakobslivegen_nedre).
 streetstat(rosenborg_street,'Rosenborg gate',1,34,solsiden).
 streetstat(rostengrenda,'Rostengrenda',143,251,tonstadgrenda).

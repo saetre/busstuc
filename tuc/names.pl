@@ -232,6 +232,7 @@ compname(sankt,[petersburg],sankt_petersburg). %% TA-110614
 compname(santa,[barbara],santa_barbara). 
 
 compname(st,['.',hans],midsummer_day).        %% TA-100903
+compname(st,['.',olav],st_olav).              %% RS-160109
 compname(st,[hans], midsummer_day).           %% 
 compname(st,['.',hans,aften], midsummer_eve). %%
 compname(st,[hans,aften], midsummer_eve).     %%
@@ -2299,6 +2300,7 @@ abroad(stanford).
 abroad(stockholm). 
 abroad(strasbourg). 
 abroad(strømstad). 
+abroad(strømsund). 
 abroad(sundsvall). 
 abroad(svalbard). 
 abroad(syden). 

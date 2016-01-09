@@ -120,7 +120,9 @@ track( N, P ) :-
     value( trace, M ),  number(M), M >= N, 
     !,
     call(P)  ;   true.   %% TA-110130  %% RS-150816 Always suceeds.
+
 %///
+
 :- meta_predicate  trackprog( +, 0 ) . %% Moved to declare!  %% RS-150111
 trackprog( N, P ) :-
     value( traceprog, M ), number(M), M >= N,

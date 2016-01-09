@@ -505,8 +505,7 @@ propertransfer(P):-
 
 
 /*
-
-
+Example: yggdrasil x7
 torehash(ygdrasil,yggdrasil).
 torehash(yggrasil,yggdrasil).
 torehash(yggdasil,yggdrasil).

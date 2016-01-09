@@ -5,20 +5,20 @@
 %% REVISED TA-110127
 %% REVISED RS-140921
 
-:-module( dagrun_n, [ cc/5, check_stop/5, compute_gap_item/2, end_of_line/5, end_of_line0/5, lock/5, look_ahead/6, not_look_ahead/6,
-        pushstack/7, skip_rest/5, unlock/4, virtual/6, w/6, word/5  ] ). %% RS-140209
+:-module( dagrun_n, [ cc/5, check_stop/5, compute_gap_item/2, end_of_line/5, end_of_line0/5,
+        lock/5, look_ahead/6, not_look_ahead/6, pushstack/7, skip_rest/5,
+        unlock/4, virtual/6, w/6, word/5  ] ). %% RS-140209
 
-%% RS-131227  dcg_e and dcg_n are both auto-generated from metacomp.pl! (CONTAINS dcg.pl)
+%% RS-131227  dcg_e and dcg_n are both auto-generated from metacomp.pl! (Both CONTAINS dcg.pl)
 
 % Norwegian  clone of runtime routines 
 % - Loaded/Used in module dcg_n later...
 
 %% RS-131227    UNIT: /
-:- use_module( '../declare', [ set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
-
-
+:- use_module( '../declare', [ set/2, value/2 ] ). %% RS-141105  General (semantic) Operators,
+                                %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 %% RS-131227    UNIT: tuc/
-:-use_module( '../tuc/lex.pl', [ maxl/1, txt/3 ] ). %% RS-140207, extra?  maxl/1,
+:-use_module( '../tuc/lex.pl', [ maxl/1, txt/3 ] ). %% RS-140207, extra?  maxl/1 is used where?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -30,17 +30,16 @@
 
 % Read literal constant from stack
 
-cc(U,UW,W,X,Y):-
+cc(U,UW,W,X,Y) :-
     virtual([U],_,UW,W,X,Y). %% TA-060318
 
 % Read  literal constant from text
 
 
-cc(U,X,X,UW,W):- 
+cc(U,X,X,UW,W) :-
    \+ frontgap(X),
-    txt(UW,w(_,[U]),W),
-    upcur(W).             % UPDATE *  
-
+    txt(UW,w(_,[U]),W),    %% RS-160109. "A. Jenssens vei" må ikke bli "å ...". Fiks i gram_n.pl
+    upcur(W).          % UPDATE * position in any error message
 
 word(U,X,X,UW,W):-        %% Reads the word as is
    txt(UW,w(U,_),W), 

@@ -816,9 +816,8 @@ isc( teleprocess(_,_,_,_) ) :- value( teleflag,true ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% Dont pay for noninformative messages %% Policy changed !!! 
+%% Dont pay for noninformative messages %% Policy changed !!! Lingit 2010
 %% Avoid don't know/OK  for informative messages
-
 
 informative_message(answer(_)).   
 informative_message(noroutesfor(_)). 

@@ -119,7 +119,8 @@ regbus(X):- %% TA-110308
 
 %%  Moved from busdat 
 %%  Nightbuses
-nightbus(1).    %% RS-141115    Added night-Trikk
+% nightbus(1).    %% RS-141115  Added night-Trikk
+                  %% RS-160108  Make a nighttram-predicate instead! or invent 1n (1-night/natt)
 
 nightbus(103). 
 nightbus(104).

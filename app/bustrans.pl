@@ -3592,7 +3592,7 @@ is  X isa route,      %% bane fra nationalteateret AFTER nostation
     clear
 id  addcon  message(noroutesfor(tram))
 ip  vehicletype(X,tram),
-    \+ value(tmnflag,true) ).
+    value(tramflag,false) ).
 
 noroutesforbus1 rule bustrans:( %%  Buss 1
 is  X isa bus ,      %% bane fra nationalteateret AFTER nostation
@@ -3601,7 +3601,7 @@ is  X isa bus ,      %% bane fra nationalteateret AFTER nostation
     clear
 id  addcon  message(noroutesfor(tram))
 ip  vehicletype(X,tram),
-    \+ value(tmnflag,true) ).
+    value(tramflag,false) ).
 
 
 %noroutesfortram1 rule bustrans:( %%  trikk til nth
@@ -9441,7 +9441,8 @@ is  X isa tramstation,
     clear
 id  addcon message(noroutesto(X))
 ip  bound(X),
-    \+ value(tmnflag,true),
+%    \+ value(tmnflag,true),
+%    \+ value(tramflag,true),
     \+ X isa station ).                %% Ugla
 
 
@@ -9451,7 +9452,8 @@ is  _X isa tramstation,
     clear
 id	 clear,
     addcon message(noroutesfor(tram))
-ip   \+ value(tmnflag,true) ).
+%ip   \+ value(tmnflag,true) ).
+ip   \+ value(tramflag,true) ).
 
 %%%% Sørger for riktig retning i "buss fra/til sted passerer TOFROMBY" etc.
 
@@ -9490,7 +9492,9 @@ id	 not flag(exit),
     atday(Day),
     not  passevent(_,_,_,_,_,_), %% avoid test departure(_,_,_,_),
 	 add (findstations(Bus,Day,Stl),passesstations(Bus,Day,Stl,_))
-ip	 unbound(Station),exbus(Bus) ).
+ip	 unbound(Station),
+         exbus(Bus)
+).
 
 wherebus13 rule bustrans:( % Hvor går stopper buss 5 nær sentrum
 is  which(P),P isa Place,
@@ -9520,8 +9524,10 @@ id	 atday(Day),
     not  passevent(_,_,_,_,_,_), %% avoid test    not departure(_,_,_,_),
 	 add (findstations(Tramno,Day,Stl),
          passesstations(Tramno,Day,Stl,_))
-ip	 unbound(Station),dmeq(pass,PASS),
-    thetramno(Tramno) ).
+ip	 unbound(Station),
+         dmeq(pass,PASS),
+        thetramno(Tramno)
+).
 
 
 whatisbus rule bustrans:( % Hva er buss 6
@@ -10545,10 +10551,11 @@ ip  place_station(Place,Station),   Station \== unknown ).
 
 fromplace1 rule bustrans:( % someone TRAVEL FROM a place?
 is  srel/FROM/place/Place/_ ,   %%  Too Restricted ?
-      { dmeq([after,around,from    ],FROM)}, %%,on %% fra skansen for a vaere pa ostre berg 1530
+      { dmeq([after,around,from,past  ],FROM)}, %%,on %% fra skansen for a vaere pa ostre berg 1530
                                             %% er jeg på nardo %%   %% in depart in = from
                                             %% Jeg bor i sentrum og skal  fra heimdal
-                                            %% not in
+                                            %% NOT in
+                                            %% Når går bussen FORBI samfunnet til byen %% RS-160109
     present (do)/TRAVELFROM/Cat/B, { dmeq(travelfrom,TRAVELFROM)},
     present Cat isa BVP, {dmeq(trafficant,BVP)} %% hvilke busser går forbi IKEA = to
 
@@ -11582,7 +11589,7 @@ id  atday(Day), atdate2(DaySeqNo,_Date),
       with  passevent(Depset2,Bus,STOGT,Opts1,Day,A)
 ip  bound(Bus),
     thetramno(Bus),
-    thetramstation(STOGT),
+    thetramstation(STOGT),      % St. Olavs Gate
     unbound(PlaceVar),
     setopt(from,Opts,Opts1) ).
 

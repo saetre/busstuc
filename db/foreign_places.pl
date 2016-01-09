@@ -453,6 +453,7 @@ foreign(gjerdrum).
 foreign(gjerdsvika).
 foreign(gjerpen).   %% TA-101201
 foreign(gjettum).  
+foreign(gjølga). 
 foreign(gjølme). 
 foreign(gjøra). 
 foreign(gjøvik). 

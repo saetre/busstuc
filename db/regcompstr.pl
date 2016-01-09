@@ -84,6 +84,8 @@ composite_road(anton,[bergs,street],anton_bergs_street).
 composite_road(anton,[bergs_street],anton_bergs_street).
 composite_road(anton,[grevskotts,street],anton_grevskotts_street).
 composite_road(anton,[grevskotts_street],anton_grevskotts_street).
+composite_road(anoton,[jenssens,street],anton_jenssens_street).
+composite_road(anton,[jenssens_street],anton_jenssens_street).
 composite_road(anton,[kalvaas,street],anton_kalvaas_street).
 composite_road(anton,[kalvaas_street],anton_kalvaas_street).
 composite_road(antonie,[løchens,street],antonie_løchens_street).
@@ -717,6 +719,8 @@ composite_road(karl,[jonssons_street],karl_jonssons_street).
 composite_road(karoliner,[street],karoliner_street).
 composite_road(karse,[street],karse_street).
 composite_road(kattemskogen,[],kattemskogen).
+%composite_road(kattemskogveien,[],kattemskogen).       %% RS-160108
+composite_road(kattemskogsveien,[],kattemskogen).
 composite_road(kattems,[street],kattems_street).
 composite_road(kirke,[street],kirke_street).
 composite_road(kirkeringen,[],kirkeringen).
@@ -1031,6 +1035,8 @@ composite_road(nyveibakken,[],nyveibakken).
 composite_road(nyveilia,[],nyveilia).
 composite_road(o,[j,aalmos,street],o_j_aalmos_street).
 composite_road(o,[j,aalmos_street],o_j_aalmos_street).
+composite_road(odd,[brochmanns,street],odd_brochmanns_street). %% RS-160108
+composite_road(odd,[brochmanns_street],odd_brochmanns_street). %% RS-160108
 composite_road(odd,[husbys,street],odd_husbys_street).
 composite_road(odd,[husbys_street],odd_husbys_street).
 composite_road(odd,[sørlis,street],odd_sørlis_street).
@@ -1370,8 +1376,8 @@ composite_road(sommerveita,[],sommerveita).
 composite_road(sorgenfri,[street],sorgenfri_street).
 composite_road(spove,[street],spove_street).
 composite_road(st,[jørgensveita],st_jørgensveita).
-composite_road(st,[olavs,street],st_olavs_street).
-composite_road(st,[olavs_street],st_olavs_street).
+%composite_road(st,[olavs,street],st_olavs_street).
+%composite_road(st,[olavs_street],st_olavs_street).
 composite_road(stabells,[street],stabells_street).
 composite_road(stadsing,[dahls,street],stadsing_dahls_street).
 composite_road(stadsing,[dahls_street],stadsing_dahls_street).

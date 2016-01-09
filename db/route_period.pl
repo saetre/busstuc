@@ -34,4 +34,5 @@ route_period(   tt, r1615_151214, date(2015,12,14),   date(2015,12,30) ).       
 route_period(   tt, r1614_151214, date(2015,12,14),   date(2015,12,31) ).	%% Nyttårsaften
 route_period(   tt, r1611_151214, date(2015,12,14),   date(2016,01,17) ).	%% Juleruter
 route_period(   tt, r1611_160118, date(2016,01,18),   date(2016,06,19) ).	%% Vår2016
-route_period(   tt, r1611_200203, date(2010,08,23),   date(2020,06,26) ).
+
+route_period(   tt, r1611_200203, date(2010,08,23),   date(2020,06,26) ).       %% Backup? Test?

@@ -46,6 +46,16 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HOW TO DEBUG lex.pl
+%%%%%%%%%%%%%%%%%%%%%%%
+% For example
+%       "spy lex:anystreetnumberassert."
+%
+%       N: \set trace 3
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %% META PREDICATES : for/2, foralltest/2, once1/1, set_of/3, set_ops/3, test/1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %:- meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
@@ -162,7 +172,6 @@ test(X):- \+ ( \+ ( X)).        %% Calls test(nostation(Y)) among other things, 
 %:- use_module( library(bags), [ member/3 ] ).  %% RS-141026 gps_origin/2, For gps_origin handling
 
 %% RS-131225, UNIT: / and utility
-%:- ensure_loaded( user:'../declare' ).  %% RS-140915 , track/2
 :- use_module( '../declare', [ (:=)/2, (=:)/2, set/2, value/2 ] ). %% RS-141105  General (semantic) Operators, %helpers := /2, =: /2, set/2, value/2.  set( X, Y ) is X := Y .
 
 %%% RS-131225, UNIT: BUILT-IN FUNCTIONS
@@ -1107,7 +1116,7 @@ star(_).
 
 outwx(w(H,_)):-out(H).
 
-%listing( lex:_ ),        % DEBUG
+% listing( lex:_ ),        % DEBUG
 
 %%%%%%%% Composite Lexical Analysis
 
@@ -1379,7 +1388,12 @@ makecompnames :-
      set_ops( (N,W,X,NEXT), syntxt1(N,W,X,NEXT), SYNTSET ),     %% sequence preserving tagore programmer/man
      for( member( (N,W,X,NEXT), SYNTSET),    matchcomp3(N,X,NEXT)  ),   %% RS-140616 For "John Aae`s vei" etc.
   
-     for( ctxt(M1,WWW,N1), assertnewtxt(M1,WWW,N1) ).   %% RS-140616 For dialog context?
+     for( ctxt(M1,WWW,N1), assertnewtxt(M1,WWW,N1) ),   %% RS-140616 For dialog context?
+     
+        track( 3, ( nl, writeout:output( '*** MakeCompNames ***' ), nl )),
+        track( 3,  listing( lex:txt ) ),
+        track( 3, ( nl, write( '******************' ),nl,nl )).
+
 
 
 
@@ -1788,6 +1802,12 @@ classify(W,place) :- generic_place(W).
 
 % % % % % % % %
 
+%% RS-160109. For heavy debugging!
+matchcomp3(_,Part,_) :-
+        track( 4, ( nl, writeout:out( '*** Lex: MakeCompNames for *** ' ), writeout:output( Part ), nl )),
+        track( 4,  listing( lex:txt ) ),
+        track( 4, ( nl, write( '******************' ),nl,nl )),
+        fail.
 
 
 matchcomp3(N0,Prof,N1):-
@@ -1837,14 +1857,13 @@ matchcomp3(N0,P,_):-
 
 %% ROADS
 
-matchcomp3(N,Prof,N1):- % Prof Brochs gate 20 
-        xcomposite_road(Prof,Brochsgate,Ident), %% street, composite or not
-
-%%%    N1 is N+1,   
-        skip_dot(N1,N2), %% s. p andersens vei 
-   matchreststreet(N,N2,Brochsgate,N3), 
-   skip_dot(N3,N4),
-   anystreetnumberassert(N,Ident,N4). % whole with number
+matchcomp3( N, Prof, N1 ) :- % Prof Brochs gate 20
+        xcomposite_road( Prof, Brochsgate, Ident ), %% street, composite or not
+%%%    N1 is N+1,
+        skip_dot(N1,N2), %% s. p andersens vei
+   matchreststreet( N, N2, Brochsgate, N3),
+   skip_dot( N3, N4 ),
+   anystreetnumberassert( N, Ident, N4 ). % whole with number
 
 
 
@@ -1904,11 +1923,11 @@ matchrestassert(N0,N1,Brochsgate,Ident):-
 
 %%%¤¤  MATCHRESTSTREET  (stations or street)
    
-matchreststreet(_,N,X,N1):- 
+matchreststreet( _, N, X, N1 ) :-
     X \== [], 
     atomic(X), 
     !,
-    matchsyntxt(N,X,N1),
+    matchsyntxt( N, X, N1 ),
     !. 
 
 matchreststreet(_,N,[],N):- 
@@ -1916,18 +1935,18 @@ matchreststreet(_,N,[],N):-
     true.
 
  
-matchreststreet(N0,N,[X|Z],N4):- %% First occurrence
+matchreststreet( N0, N, [X|Z], N4 ) :- %% First occurrence
     skip_dotx([X|Z],N,NN),  
     matchsyntxt(NN,X,N1),
     skip_dotx(Z,N1,N2),  %% K. O. Thornæsv. %% \+ skip '.' %% TA-100118
        (Z \== [] -> Opt=true;Opt=false), 
-    matchreststreet5(N0,N2,Z,N4,Opt), 
+    matchreststreet5( N0, N2, Z, N4, Opt ), 
     !. 
 
 
 %
 
-matchreststreet5(N0,N,[X|Z],N4,Opt):- 
+matchreststreet5( N0, N, [X|Z], N4, Opt ) :-
     skip_dotx([X|Z],N,NN),  
     matchsyntxt(NN,X,N1),
     skip_dotx(Z,N1,N2),  %% K. O. Thornæsv. %% www.klaburuten.no %% \+ skip '.'
@@ -1935,7 +1954,7 @@ matchreststreet5(N0,N,[X|Z],N4,Opt):-
     !. 
  
 
-matchreststreet5(_,N,[],N,_):- 
+matchreststreet5( _, N, [], N, _) :-
    !,
    true.
 
@@ -1943,44 +1962,44 @@ matchreststreet5(_,N,[],N,_):-
 %% "street" can be omitted under certain conditions
 %% 1. the name contains at least 2 items
 
-
-matchreststreet5(_,N2,[Street],_,_):- %% skip vei allowed if not "vei" follows 
+matchreststreet5( _, N2, [Street], _, _) :- %% skip vei allowed if not "vei" follows
     streetsyn(Street), %% Street is to be matched
-    txt(N2, VVV,_), %% Street exists in txt
+    txt( N2, VVV, _ ), %% Street exists in txt
 
  (    
      VVV=w(V,_),streetsyn(V)  ;
- 
 %%     V=[alle]),       %% olav engelbrektssons alle 5
      VVV=[alle]
  ),       %% olav engelbrektssons alle 5  %% RS-130624
-
     !,fail.            %% no skip
 
 
-matchreststreet5(N0,N2,[Street],N2,true):- %% skip vei allowed if not "vei" follows  
+matchreststreet5( N0, N2, [Street], N2, true ) :- %% skip vei allowed if not "vei" follows, Except for "St. olav." (Hospital). RS-160109
 
-    (Street==street;streetsyn(Street);Street=alle), 
+    ( Street==street ; streetsyn(Street) ; Street=alle ),
   
  \+ txt(N2, w(_,[plass]),_),    %% Aleksander Kiellands plass 
  \+ (txt(N0,w(O,_),_n2), unwanted_place(O)), %% o -> osveien 
  \+ txt(N0,w(Vold,name(Voll,n,station)),N2), %%  vold -> voll, NOT vollgt
  \+ txt(N0,w(Vold,name(Voll,n,neighbourhood)),N2),
+ 
  \+ txt(N0,w(Reppe,name(Reppe,n,station)),_n2), %% not Reppevegen if Reppe is station
- \+ txt(N0,w(Reppe,name(Reppe,n,neighbourhood)),_n2).
-
+ \+ txt(N0,w(Reppe,name(Reppe,n,neighbourhood)),_n2),
+ 
+ N1 is N2-1,
+ \+ txt(N1, w(olav,name(olav,n,0)), N2).        %% RS-160109  Except for "St. olav." (Hospital).
 
 
 
 % %
 
-anystreetnumberassert(N1,Ident,N2) :- 
+anystreetnumberassert( N1, Ident, N2 ) :-
    nonvar(Ident),
-%%    \+ Ident isa street,  % Tonstadgrenda isa street & station 
-   assertstreetxt(N1,Ident,N2).    
+%%    \+ Ident isa street,  % Tonstadgrenda isa street & station        % St.Olav isa street and a hospital !
+   assertstreetxt( N1, Ident, N2 ).
 
 
-anystreetnumberassert(N0,Ident,N1) :-
+anystreetnumberassert( N0, Ident, N1 ) :-
    Ident isa street, %%   make it safer for street stat 
    parsestreetnumber(N1,Num,N2),  %%   yggdrasilvn. nr. 9
    Num < 500,  %%%%%%%%   Pragmatic test for street numbers/ not clock !!!
@@ -2025,20 +2044,18 @@ assertstreetxt(N,Ident,N2):- %% priority Station before STREET
     assertnewz(txt(N, w(Ident,name(Ident,n,Class)), N2)). %% TA-110520
     %assertnewa(txt(N, w(Ident,name(Ident,n,Class)), N2)). %% RS-150816 Assert FIRST?
 
-    %% a!  -> bynesveien -> bryns vei ?
-    %% a!  ->  hareveien -> havreveien
-    %% z!  ->  Johan Bojers vei = Johan (Bojer) ...
+    %% a! (first)  -> bynesveien -> bryns vei ?
+    %% a! (first)  ->  hareveien -> havreveien
+    %% z! (last) ->  Johan Bojers vei = Johan (Bojer) ...
 
-assertstreetxt(N,Ident,N2):-  %% priority Station before STREET 
+assertstreetxt( N, Ident, N2 ) :-  %% priority Station before STREET
     Ident isa street,
 
-    assertnewz( %% NOT FIRST because shadows station (Mikkelveien) 
-    %%       a => bynesvien = bryns vei %% TA-110520 NB
-
+                 %% NOT FIRST because shadows station (Mikkelveien) 
+                    %%       a => bynesvien = bryns vei %% TA-110520 NB
                 %% Johan Falkbergets vei , Johan = name, Falkberget gets unconnected
-                %% Johan Falkbergets vei is last, John is taken, 
-      txt(N, w(Ident,name(Ident,n,street)), N2)).  
-
+                %% Johan Falkbergets vei is last, John is taken,
+    assertnewz(  txt(N, w(Ident,name(Ident,n,street)), N2)  ).
 
 
 %%
@@ -2148,7 +2165,7 @@ xcomposite(First,_Restlist,_Key) :-
 xcomposite(First,Restlist,Key) :-
     compname(First,Restlist,Key).   
 
-%% RS-150816 TODO: Include future station-modules as well!
+%% RS-150816 TODO: Include future station-modules as well! %% RS-160109 Still doesn't work, because actual_period/1 is not set yet!
 xcomposite(First,Restlist,Key) :-  
     buslog:veh_mod(TTP),TTP:composite_stat( First, Restlist, Key ).
 
@@ -2194,38 +2211,37 @@ cmplacebus(X,Y,Z) :-
 
 syntxt1(N,Vei,Veg,N1):- % strict
     txt(N,Word,N1),     
-    (Word = w(Vei,name(Veg,_N_,_));  %% havstads gen ok
-     Word = w(Vei,[Veg])).
+    ( Word = w(Vei,name(Veg,_N_,_))  ;  %% havstads gen ok
+      Word = w(Vei,[Veg])
+    ).
 
 
 syntxt(N,Veg,N1):- %%   liberal
     txt(N,Word,N1),
-    (Word = w(Veg,_);
-     Word = w(_Vei,[Veg]);
-     Word = w(_Vei,name(Veg,n,_))).
+    (Word = w(Veg,_) ;  Word = w(_Vei,[Veg]) ;  Word = w(_Vei,name(Veg,n,_))).
 
 
 %%¤¤¤  MATCHSYNTXT
 
-matchsyntxt(N,street,N1):- 
-    syntxt(N,Vei,N1),
-    streetsyn(Vei).       
+matchsyntxt( N, street, N1 ) :-
+    syntxt( N, Vei, N1 ),
+    streetsyn( Vei ).
 
-matchsyntxt(N,Veh,N1):- %% match lexicals with hash
-     syntxt(N,Veg,N1),
-     lextorehash0(Veh,V),
+matchsyntxt( N, Veh, N1 ) :- %% match lexicals with hash
+     syntxt( N, Veg, N1 ),
+     lextorehash0( Veh, V ),
      V == Veg.    %% Precaution 
 
 
 assertnewtxt(M1,WWW,N1):-
-        assertnewz( txt(M1,WWW ,N1)). %% TA-110520  latecomers are spell corrected
-     %% assertnewa( txt(M1,WWW ,N1)). %% RS-150816 NB
+        assertnewz( txt(M1,WWW ,N1) ). %% TA-110520  latecomers are spell corrected
+     %% assertnewa( txt(M1,WWW ,N1) ). %% RS-150816 NB
 
 assertnewa( P ) :- lex:P, ! ;   %% first? RS-141024 Exists ; or assert (in lex-module, temporary)
     asserta( P ).
 
-assertnewz( P ) :- lex:P, !; %% last (actually undefined!), dont shadow stations. %% RS-140616 (hopefully!)
-    assert( P ).
+assertnewz( P ) :-                 %% enter as last P-predicate (hopefully! actually undefined where!) if new
+        lex:P ,! ; assert( P ).    %% avoid shadowing stations with street names, for example. %% RS-140616
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
@@ -2620,7 +2636,7 @@ unprotected_verb :-
 %    value( trace, M ),  number(M), M >= N, 
 %    !,
 %    call(P)   %% TA-110130
-%;
+%       ;
 %    true.
 
 %% Extra utility.pl info

@@ -2844,11 +2844,8 @@ atdate2(_,Date) :- %% ad hoc %% TA-090618
 
     decide_period(Date,_). %%%%%% NEW, always executed     %% RS-140102 topreg? interfaceroute?
 
-
 atdate(Date):-
-
     set_actualdate(Date), %%
-
     decide_period(Date,_). %%%%%% NEW, always executed
 
 
@@ -2857,26 +2854,42 @@ set_actualdate(Date):-
 
 
 %%%%%%%%%%%%%%% This was almost identical with telelog!! %% RS-140101 (Re-move telelog?)
+
+%% These predicates are actually "execcuted" later, for example in busans
+% They are only here to preserve information in the output from the rule-modules inference enginges %% RS-160108
+
+%%e.g.
+% messy rule       %% Messages are independent of the susscess of Bus programs !
+% is  message(X)    %% This rule obsoletes the other message rules
+% id       add (printmessage(X),endline) %% 
+% ip       [].
+%
+% or in buslog
+%e.g.
+% atdate(Date):-
+%    set_actualdate(Date), %%
+%    decide_period(Date,_). %%%%%% NEW, always executed
+
 % These predicates are only to preserve information?, no filtering...
 
 flag(_).  %% Panic : Global flag that is sometimes not removed by bustrans
 
 passevent(Deps,_,_,_,_,_) :- Deps\==[]. %%  ==> Message   NO PASSES
-atday(_).
+atday(_).       %% teletrans.pl??  %% RS-160108
 
-timeis(_).
-dateis(_,_,_,_).
-message(_).
+timeis(_).              %% RS-160108     % klokka 
+dateis(_,_,_,_).        %% 
+message(_).   %% See busans:messy rule
 
 replyq(_).
 %reply(_).      %% This should do something in buslog!
 takestime(_,_,_).
 passesstations(_,_,_,_).
-% busespass(_,_,_,_).
+% busespass(_,_,_,_). %% This should do something in buslog!?
 
+% duplicates from telelog %% RS-160108
+% atdate(_). atday(_). % timeis(_). % dateis(_,_,_,_). % message(_). % takestime(_,_,_). %passesstations(_,_,_,_).
 
-% from telelog
-%atday(_). %atdate(_). %timeis(_). %dateis(_,_,_,_). %message(_). %%takestime(_,_,_). %passesstations(_,_,_,_).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 internalkonst( sk(_) ).
