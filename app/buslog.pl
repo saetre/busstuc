@@ -1502,12 +1502,11 @@ isat2( Station, Place ) :- %% studentersamfundet syndrom
      bound(Place),
     ( % One OR the other of the following lines
      ( station(Place), Station=Place ) ;
-     ( busdat:airbusstation(Place), Station=Place ) ; %% TA-090401
+     ( busdat:airbusstation(Place), Station=Place ) ;   %% TA-090401
      placestat(Place,Station) ;
-     alias_station(Station,Place) ; %% AtB %% RS-151219 The station identifiers keep changing twice a year!
+     alias_station(Station,Place) ;     %% AtB %% RS-151219 The station identifiers keep changing twice a year!
      isat(Station,Place)
     ).
-
 
 %alias_station(Station,Place) :-         %% RS-141115
 %    alias_station(Station,Place).

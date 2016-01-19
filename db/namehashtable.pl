@@ -1,5 +1,5 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
-%% Auxillary tables created datetime(2016,1,8,23,43,37)
+%% Auxillary tables created datetime(2016,1,10,23,26,44)
 %%  from writeheading in ./makeauxtables.pl (from createhash/0 and makeauxtables/0)
 
 :-module( namehashtable, [ toredef/3, torehash/2 ] ). 
@@ -469,6 +469,7 @@ toredef(prinsenkinosenter,nil,prinsenkinosenter).
 toredef(prinsenkinosenteret,nil,prinsenkinosenteret).
 toredef(prinsensgatekinoene,nil,prinsensgatekinoene).
 toredef(priterminalen,nil,priterminalen).
+toredef(prof,nil,prof).
 toredef(professorbrochsgate,nil,professorbrochsgate).
 toredef(professorbrochs,nil,professorbrochs).
 toredef(ragnhildsgt,nil,ragnhildsgt).
@@ -834,6 +835,7 @@ toredef(fagerheim,nil,fagerheim).
 toredef(fagerlia,nil,fagerlia).
 toredef(fagerlien,nil,fagerlien).
 toredef(falkenborg,nil,falkenborg).
+toredef(falkenborg,street,falkenborg).
 toredef(felleskjøpet,nil,felleskjøpet).
 toredef(fengsel,nil,fengsel).
 toredef(fengselet,nil,fengselet).
@@ -1699,7 +1701,6 @@ toredef(olav,nil,olav).
 toredef(olavengelbreksons,nil,olavengelbreksons).
 toredef(olavnygårds,nil,olavnygårds).
 toredef(olavs,nil,olavs).
-%% toredef(olavs,street,st_olavs_street).          %% How to get rid of st.olavs == st. olavs street?
 toredef(olavtryggvasons,nil,olavtryggvasons).
 toredef(olavtrygvasonsgate,nil,olavtrygvasonsgate).
 toredef(older,nil,older).
@@ -1748,7 +1749,6 @@ toredef(professor,street,professor).
 toredef(prinsens,nil,prinsens).
 toredef(prinsens,street,prinsens).
 toredef(prisen,nil,prisen).
-toredef(prof,nil,prof).
 toredef(profbrochs,nil,profbrochs).
 toredef(quality,nil,quality).
 toredef(radisson,nil,radisson).
@@ -2301,6 +2301,7 @@ toredef(jakobslivei,nil,jakobslivei).
 toredef(møllenberggt,nil,møllenberggt).
 toredef(sjettenhaugen,nil,sjettenhaugen).
 toredef(sjettnhaugen,nil,sjettnhaugen).
+toredef(skovgård,nil,skovgård).
 toredef(muser,nil,muser).
 toredef(bergene,nil,bergene).
 toredef(fabrikker,nil,fabrikker).
@@ -2405,8 +2406,6 @@ toredef(postsenter,nil,postsenter).
 toredef(postsentral,nil,postsentral).
 toredef(siden,nil,siden).
 toredef(privatgymnas,nil,privatgymnas).
-toredef(elisabeth,nil,elisabeth).
-toredef(elisabeths,nil,elisabeths).
 toredef(olavsgaten,nil,olavsgaten).
 toredef(olavsgt,nil,olavsgt).
 toredef(olavsplass,nil,olavsplass).
@@ -2737,7 +2736,6 @@ toredef(sildråpe,streetstat,sildråpevegen).
 toredef(sildråpevegen,nil,sildråpevegen).
 toredef(skansen,nil,skansen).
 toredef(skavlansveg,nil,skavlansveg).
-toredef(skovgård,nil,skovgård).
 toredef(skytterbanen,nil,skytterbanen).
 toredef(skytter,streetstat,skyttervegen).
 toredef(skyttervegen,nil,skyttervegen).
@@ -3329,6 +3327,7 @@ toredef(fagerli,nil,fagerli).
 toredef(fagerli,street,fagerli).
 toredef(fagertun,nil,fagertun).
 toredef(fagertun,street,fagertun).
+toredef(falkenborgveien,nil,falkenborgveien).
 toredef(falsens,nil,falsens).
 toredef(falsens,street,falsens).
 toredef(fernanda,nil,fernanda).
@@ -4638,6 +4637,8 @@ toredef(tonstadv,nil,tonstadv).
 toredef(andersens,nil,andersens).
 toredef(andersensv,nil,andersensv).
 toredef(lavs,nil,lavs).
+toredef(elisabeth,nil,elisabeth).
+toredef(elisabeths,nil,elisabeths).
 toredef(ing,nil,ing).
 toredef(dahlsgate,nil,dahlsgate).
 toredef(vest,nil,vest).
@@ -10099,6 +10100,7 @@ torehash(priterminlen,priterminalen).
 torehash(pritermnalen,priterminalen).
 torehash(pritrminalen,priterminalen).
 torehash(prterminalen,priterminalen).
+torehash(prof,prof).
 torehash(pofessorbrochsgate,professorbrochsgate).
 torehash(prfessorbrochsgate,professorbrochsgate).
 torehash(proessorbrochsgate,professorbrochsgate).
@@ -20696,7 +20698,6 @@ torehash(pris,prisen).
 torehash(prise,prisen).
 torehash(prisn,prisen).
 torehash(prsen,prisen).
-torehash(prof,prof).
 torehash(pofbrochs,profbrochs).
 torehash(prfbrochs,profbrochs).
 torehash(probrochs,profbrochs).
@@ -24189,6 +24190,14 @@ torehash(sjettnhauge,sjettnhaugen).
 torehash(sjettnhaugn,sjettnhaugen).
 torehash(sjettnhugen,sjettnhaugen).
 torehash(sjttnhaugen,sjettnhaugen).
+torehash(skogård,skovgård).
+torehash(skovgard,skovgård).
+torehash(skovgrd,skovgård).
+torehash(skovgåd,skovgård).
+torehash(skovgår,skovgård).
+torehash(skovård,skovgård).
+torehash(skvgård,skovgård).
+torehash(sovgård,skovgård).
 torehash(mser,muser).
 torehash(muer,muser).
 torehash(muse,muser).
@@ -24952,24 +24961,6 @@ torehash(privatgynas,privatgymnas).
 torehash(privatymnas,privatgymnas).
 torehash(privtgymnas,privatgymnas).
 torehash(prvatgymnas,privatgymnas).
-torehash(eisabeth,elisabeth).
-torehash(eliabeth,elisabeth).
-torehash(elisabeh,elisabeth).
-torehash(elisabet,elisabeth).
-torehash(elisabth,elisabeth).
-torehash(elisaeth,elisabeth).
-torehash(elisbeth,elisabeth).
-torehash(elsabeth,elisabeth).
-torehash(eisabeths,elisabeths).
-torehash(eliabeths,elisabeths).
-torehash(elisabehs,elisabeths).
-torehash(elisabet,elisabeths).
-torehash(elisabeth,elisabeths).
-torehash(elisabets,elisabeths).
-torehash(elisabths,elisabeths).
-torehash(elisaeths,elisabeths).
-torehash(elisbeths,elisabeths).
-torehash(elsabeths,elisabeths).
 torehash(oavsgaten,olavsgaten).
 torehash(olasgaten,olavsgaten).
 torehash(olavgaten,olavsgaten).
@@ -27324,14 +27315,6 @@ torehash(skavlanveg,skavlansveg).
 torehash(skavlasveg,skavlansveg).
 torehash(skavlnsveg,skavlansveg).
 torehash(skvlansveg,skavlansveg).
-torehash(skogård,skovgård).
-torehash(skovgard,skovgård).
-torehash(skovgrd,skovgård).
-torehash(skovgåd,skovgård).
-torehash(skovgår,skovgård).
-torehash(skovård,skovgård).
-torehash(skvgård,skovgård).
-torehash(sovgård,skovgård).
 torehash(sjyterban,skytterbanen).
 torehash(sktterbanen,skytterbanen).
 torehash(skyterbanen,skytterbanen).
@@ -30631,6 +30614,21 @@ torehash(fagerun,fagertun).
 torehash(fagetun,fagertun).
 torehash(fagrtun,fagertun).
 torehash(fgertun,fagertun).
+torehash(fakenborgveien,falkenborgveien).
+torehash(falenborgveien,falkenborgveien).
+torehash(falkeborgveien,falkenborgveien).
+torehash(falkenbogveien,falkenborgveien).
+torehash(falkenborgeien,falkenborgveien).
+torehash(falkenborgveen,falkenborgveien).
+torehash(falkenborgvei,falkenborgveien).
+torehash(falkenborgveie,falkenborgveien).
+torehash(falkenborgvein,falkenborgveien).
+torehash(falkenborgvien,falkenborgveien).
+torehash(falkenborveien,falkenborgveien).
+torehash(falkenbrgveien,falkenborgveien).
+torehash(falkenorgveien,falkenborgveien).
+torehash(falknborgveien,falkenborgveien).
+torehash(flkenborgveien,falkenborgveien).
 torehash(falens,falsens).
 torehash(falsen,falsens).
 torehash(falses,falsens).
@@ -36046,6 +36044,24 @@ torehash(andersnsv,andersensv).
 torehash(andesensv,andersensv).
 torehash(andrsensv,andersensv).
 torehash(anersensv,andersensv).
+torehash(eisabeth,elisabeth).
+torehash(eliabeth,elisabeth).
+torehash(elisabeh,elisabeth).
+torehash(elisabet,elisabeth).
+torehash(elisabth,elisabeth).
+torehash(elisaeth,elisabeth).
+torehash(elisbeth,elisabeth).
+torehash(elsabeth,elisabeth).
+torehash(eisabeths,elisabeths).
+torehash(eliabeths,elisabeths).
+torehash(elisabehs,elisabeths).
+torehash(elisabet,elisabeths).
+torehash(elisabeth,elisabeths).
+torehash(elisabets,elisabeths).
+torehash(elisabths,elisabeths).
+torehash(elisaeths,elisabeths).
+torehash(elisbeths,elisabeths).
+torehash(elsabeths,elisabeths).
 torehash(dahlgate,dahlsgate).
 torehash(dahlsate,dahlsgate).
 torehash(dahlsgae,dahlsgate).

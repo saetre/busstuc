@@ -364,6 +364,8 @@ streetstat(fagerheim_alle,'Fagerheim allé',16,38,olav_engelbrektssons_alle).
 streetstat(fagerheim_alle,'Fagerheim allé',40,101,ringve_museum).
 streetstat(fagerli_street,'Fagerliveien',1,38,fagerliveien).
 streetstat(fagertun_street,'Fagertunvegen',1,3,åsveien_skole).
+streetstat(falkenborg_street,'Falkenborgveien',1,14,dalen_hageby).
+streetstat(falkenborg_street,'Falkenborgveien',14,100,strindheim).
 streetstat(falsens_street,'Falsens gate',7,14,gyldenløves_gt).
 streetstat(falsens_street,'Falsens gate',1,16,ankers_gate).
 streetstat(fernanda_nissens_street,'Fernanda Nissens  veg',1,12,persaunet_leir).

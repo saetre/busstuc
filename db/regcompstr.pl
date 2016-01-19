@@ -354,6 +354,8 @@ composite_road(eyvind,[løkkens_street],eyvind_løkkens_street).
 composite_road(fagerheim,[alle],fagerheim_alle).
 composite_road(fagerli,[street],fagerli_street).
 composite_road(fagertun,[street],fagertun_street).
+composite_road(falkenborg,[street],falkenborg_street).
+composite_road(falkenborgveien,[],falkenborg_street).
 composite_road(falsens,[street],falsens_street).
 composite_road(fernanda,[nissens,street],fernanda_nissens_street).
 composite_road(fernanda,[nissens_street],fernanda_nissens_street).

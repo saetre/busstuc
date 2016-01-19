@@ -10,12 +10,9 @@
 % m1 --> munkegata_m1 etc
 % p1 --> prinsens_gate_p1 etc
 
-%  Det heter Værestrøa *** med s.
-
 %% Contains predicates that describes information about places (only).
-
 %% Domain specific names  (in principle)
-%% Domain TT (Team)
+%% Domain TT (Team) Now AtB
 
 % See also names.pl for general synonyms
 %% RS-160109: place == neighborhood
@@ -24,8 +21,8 @@
                     alias_station/2,    % ( STATION, STATION )          %% RS-141122  Faster to walk than to wait.
                     aliasteamatb/3,     % ( STATNUMBER, STATION_TEAM, STATION_ATB )  %%%%%% Conversion TA-100822
                     cmpl/3,             % ( NAME, NAME*, LIST ) %% Used for some kind of multiword spell-checking  %% RS-160108
-                    corr/2,             % ( PLACE, PLACE )
-%                    foreign/1,          % ( PLACE ), e.g. aalesund, orkanger(?).   %%% FOREIGN (to Trondheim) places Moved to foreign_places.pl
+                    corr/2,             % ( STATION, STATION )  %% RS-160110
+%                   foreign/1,          % ( PLACE ), e.g. aalesund, orkanger(?).   %%% FOREIGN (to Trondheim) places.  MOVED to foreign_places.pl
                     isat/2,             % ( STATION, PLACE )    %% STATION is (one, but not necessarily preferred, among several) stations that belong to the NEIGHBOURHOOD (PLACE)  %% RS-150823
                     nostation/1,        % ( PLACE )
                     place_resolve/2,    % ( PLACE, STATION ).   %% RS-141122 If multiple STATIONs at/for/around PLACE...(see isat/2 or underspecified_place/1)
@@ -94,6 +91,8 @@ corr(kongens_gate_k2,hovedterminalen).
 %corr(kongens_gate_19,hovedterminalen). %% TA-110627
 %corr(kongens_gate_46,hovedterminalen). %% TA-110627
 %corr(kongens_gate_50,hovedterminalen). %% TA-110627
+
+corr( astronomveien, krokstien ).      %% RS-160110 Instead of trying alias_station or isat!
 
 %% corr(munkegata_m0,sentrum).  %% ad hoc sverresgt-> m0->sentrum
 corr(m0,hovedterminalen).  %% Generic central place
@@ -173,21 +172,27 @@ alias_name(teamtrafikk,tt).
 %Examples:
 %
 %STATION is very close to other STATIONs, and walking is faster than waiting. So practially identical options.
+%% This doesn't work (yet?), so try isat (not isat2) instead! E.g. "Fra krokstien til samfunnet på søndag."
 
-alias_station(berg_østre, østre_berg). %% AtB
+%% RS-160110 This is also useful for stations that have no buses on Sundays, for example? No, use corr
+alias_station( krokstien, astronomveien ).
+alias_station( astronomveien, krokstien ).   %% Doesn't work (yet?), so use corr/2 instead
+
+alias_station( berg_østre, østre_berg ). %% AtB
 alias_station( breidablikk_trikk, breidablikk ).        %% RS-141115 %% RS-151219 Try to generalize this for all "X_trikk" if X is a station ?! See alias_station2 ?
-alias_station(dv,dragvoll).
+alias_station( dv,dragvoll ).
 
 %%alias_station(gudes_gate,høgskoleringen).       %% RS-131027 Not needed according to heuristics
 alias_station( hospitalskirka_trikk, hospitalskirka ).            %% RS-141115
 %%alias_station(høgskoleringen,gudes_gate).
+
 
 alias_station( lade_gård, lade ). %% TA-100802 old station-> neibourhood
 alias_station( lade_alle_80, lade ). %% TA-100802 old station-> neibourhood
 alias_station( lade_alle_80, jørgen_b_lysholms_vei ).     %% Bussen står og venter her ganske lenge!  %% RS-141122
 
 alias_station( munkvoll_trikk, munkvoll ).        %% RS-141115
-alias_station(ntnu_dragvoll,dragvoll). 
+alias_station( ntnu_dragvoll, dragvoll ).
 
 alias_station( nyveibakken_trikk, nyveibakken ).  %% RS-141115
 alias_station( ugla_trikk, ugla ).                %% RS-141115
@@ -2043,34 +2048,33 @@ cmpl(nardo,senteret,nardosenteret).
 
 cmpl(nardo,skole,nardokrysset). %% ? Fiosvingen ? %% TA-110516
 
+cmpl(nedre,bakklandet,bakkegata). 
+cmpl(nedre,byåsen,byåsen). 
 cmpl(nedre,[charlotten,lund],charlottenlund_nedre). 
 cmpl(nedre,[charlotten,lund],charlottenlund_nedre). 
+cmpl(nedre,charlottenlund,charlottenlund_nedre). 
+cmpl(nedre,chlund,charlottenlund_nedre). 
 cmpl(nedre,[elve,havn],nedre_elvehavn). 
 cmpl(nedre,[elvehavn],nedre_elvehavn). 
 cmpl(nedre,[elvehavnen],nedre_elvehavn). 
-cmpl(nedre,[jakobsli,veg],jakobsliveien_nedre). 
-cmpl(nedre,[jakobsli,vei],jakobsliveien_nedre). 
-cmpl(nedre,[lundåsen],lundåsen_n). 
-cmpl(nedre,[møllenberg,gate],nedre_møllenberg_street). 
-cmpl(nedre,[møllenbergs,gate],nedre_møllenberg_street). 
-cmpl(nedre,[møllenbergsgate],nedre_møllenberg_street). 
-cmpl(nedre,bakklandet,bakkegata). 
-cmpl(nedre,byåsen,byåsen). 
-cmpl(nedre,charlottenlund,charlottenlund_nedre). 
-cmpl(nedre,chlund,charlottenlund_nedre). 
-cmpl(nedre,elvehavn,nedre_elvehavn).
 cmpl(nedre,flatåsen,søndre_flatåsen).  %% ?
 cmpl(nedre,flatåssenteret,flatåsen_senter). 
 cmpl(nedre,hallset,nordre_halset).
 cmpl(nedre,hallsetvei,nordre_hallset_street). 
 cmpl(nedre,hoem,nordre_hoem). 
+cmpl(nedre,[jakobsli,veg],jakobsliveien_nedre). 
+cmpl(nedre,[jakobsli,vei],jakobsliveien_nedre). 
 cmpl(nedre,jakobsli,jakobsliveien_nedre). 
 cmpl(nedre,jakobsliv,jakobsliveien_nedre). 
 cmpl(nedre,jakobsliveg,jakobsliveien_nedre). 
 cmpl(nedre,jakobslivei,jakobsliveien_nedre). 
 cmpl(nedre,jakobsliveien,jakobsliveien_nedre). 
 cmpl(nedre,leirfossen,nedre_leirfoss). 
+cmpl(nedre,[lundåsen],lundåsen_n). 
 cmpl(nedre,møllenberg,nedre_møllenberg). 
+cmpl(nedre,[møllenberg,gate],nedre_møllenberg_street). 
+cmpl(nedre,[møllenbergs,gate],nedre_møllenberg_street). 
+cmpl(nedre,[møllenbergsgate],nedre_møllenberg_street). 
 cmpl(nedre,møllenberggate,nedre_møllenberg_street). 
 cmpl(nedre,møllenberggt,nedre_møllenberg_street). 
 cmpl(nedre,romolslia,romolslia_nedre). 
@@ -2078,6 +2082,7 @@ cmpl(nedre,rotvoll,rotvoll_nedre).
 cmpl(nedre,singsaker,jonsvannsveien).  
 cmpl(nedre,sjettenhaugen,nedre_sjetnhaugan).  %%->streetafter5. 3. 07
 cmpl(nedre,sjettnhaugen,nedre_sjetnhaugan).  %%
+cmpl(nedre,skovgård, skovgård).  %% RS-160110
 %% cmpl(nedre,tverreggen,tverregga).  %% nordre=Nordre 
 cmpl(nedre,vikåsen,vikåsen_nedre). 
 %% cmpl(new,york,new_york). %% TA-110603
@@ -3344,7 +3349,7 @@ cmpl(åsvenein,skole,åsveien_skole).  %% ?
 
 
 % ISAT   (STATION, PLACE), or
-% ISAT   (Station, Neighbourhood)?
+% ISAT   (Station, Neighbourhood)?      %% RS-160110    Neighborhood could be a STATION name? No, use corr/2 instead for stations
 %  STATION is (one, but NOT preferred, among several) stations that belong to the NEIGHBOURHOOD (PLACE)
 %
 %Examples:
@@ -3400,6 +3405,8 @@ isat(kongens_gate_k2,prinsenkrysset). %% RS-141102
 
 %% ALPHABETICALLY (STATION, PLACE), sorted on PLACE
 
+isat( astronomveien, krokstien ).      %% RS-160110 Stations! Use corr/2
+isat( krokstien, astronomveien ).      %% RS-160110 Stations! Use corr/2
 
 isat( bratsberg_kirke, bratsberg ). %% TA-110325
 isat( siemens, bratsbergsvegen ).
@@ -3889,7 +3896,7 @@ placestat(haukvatnet,dalgård).          %  placestat(haukvatnet,lian).
 placestat(havna,pirbadet).
 placestat(havna,pirbadet).  %%?
 placestat(havnen,pirbadet).
-placestat(havstad,havstadsenteret). 
+% placestat(havstad,havstadsenteret).   %% RS-160119 Havstad is now a station (bus 18), no longer neighborhood? 
 placestat(havstadflata,havstadsenteret). 
 placestat(havstein,havstadsenteret). 
 placestat(havsteinekra,stabells_veg). %%% ?? helse og velferdssenter
@@ -4243,8 +4250,9 @@ placestat(stokkanhaugen,stokkhaugen).  %% SUMMER  %% TA-110627
 placestat(stubban,venusvegen). 
 placestat(studenterhytta,skistua). 
 
-%placestat(studentersamfundet,studentersamfundet_1).  %% AtB %% NB \+ isat      %% RS-141020, changed name from s-samfundet_1 to s-samfundet
-placestat(studentersamfundet,studentersamfundet).  %% AtB %% NB \+ isat         %% RS-141020    Feedback from Norvald Ryeng
+%placestat(studentersamfundet,studentersamfundet_1).  %% AtB %% NB \+ isat      %% RS-141020, changed name from s-samfundet_1 to s-samfundet %% This line messes up the next line?
+                                                                                %%N: fra astrononmvegen til samf.
+placestat(studentersamfundet,studentersamfundet).  %% AtB %% NB \+ isat         %% RS-141020    Feedback from Norvald Ryeng. studentersamfundet (K) and _1 are missing without this line!
 placestat(studentersamfundet,studentersamfundet_2).  %% TA-100922  %% RS-140901 %% Reverserte disse
 placestat(stjørdal,stjørdal_stasjon).        %% RS-150815. New bus added 310/410.
 
@@ -5676,7 +5684,7 @@ specname(vikåsen_skole,'Vikåsen skole').
 specname(vollgt,'VOLLGATEN'). 
 specname(vådanv_5,'Vådanveien 5'). 
 specname(være_østre,'Være Østre'). 
-specname(væretroa,'Værestrøa'). 
+specname(væretroa,'Værestrøa').         %  Det heter nå Værestrøa *** med s. 
 specname(værestroa,'Værestrøa'). 
 specname(værestrøa,'Værestrøa'). %% Off name  
 specname(øvre_alle,'Øvre allé'). 
@@ -6084,6 +6092,7 @@ synplace(dokkbakken,solsiden).
 synplace(dokkerparken,solsiden).  
 synplace(dokkpark,solsiden). 
 synplace(dokkplassen,solsiden). 
+synplace(dolsiden,solsiden).
 synplace(dors,dora). 
 synplace(drag,dragvoll). 
 synplace(drag,dragvoll).  %% -dragv,dora,etc. 
@@ -6390,7 +6399,7 @@ synplace(haugnesveien,haugnessvingen).
 synplace(haukås,haukåsen). 
 synplace(haulowbakken,thaulowbakken). 
 synplace(havnegata,pirbadet).   %%???(case)
-synplace(havstads,havstadsenteret).  %%destroyshavstadsenteret?
+synplace(havstads,havstadsenteret).  %%destroys havstadsenteret?
 synplace(havstadsenter,havstadsenteret). 
 synplace(havstadtunet,havstadsenteret). 
 synplace(havstasenter,havstadsenteret). 
@@ -7571,6 +7580,7 @@ synplace(stjørdaln,stjørdalen).
 synplace(stjørdarn,stjørdalen). 
 synplace(stmarka,østmarka). %% ø trøbbel 
 synplace(stokkes,stokkens).  %% Martin
+synplace(stolan,stokkan). 
 synplace(stolav,st_olavs_hospital). 
 synplace(stolavs,st_olavs_hospital). 
 synplace(stolavsgata,st_olavs_gate). 

@@ -1,13 +1,62 @@
 Problems:
 --------------
+
+Q: Q: Hvilken buss går til utleirahallen?
+Q: Fra gløshaugen til munkvollhallen
+Q: Q: Når går bussen  fra valset kai
+
+Q: Flatåsen falkenborgveien 1300
+Q: Flatåsen til sirkus 13.
+
+(manglende default fra byen til endeholdeplassen)
+Q: Når går buss nr 11.
+Q: Når går bussen 310
+
+Manglende søndagsruter?
+
+Q: Fra krokstien
+- Hommelvik, Olderdalen, Saksvik, Vikhammer, Vikhov, vikhammerløkka etc.
+- Melhus, Okstad (43-bussen), etc.
+- Mellomila, Skansen, etc.
+
+Q: Fra Siemens til Være
+A: Jeg kan ikke finne flere ruteforbindelser på søndag.
+
+Q: Når går buss 118 fra byen til byåsen butikksenter? (Natt)
+A: Jeg kan ikke finne flere ruteforbindelser på søndag.
+
+Q: Når går nr 19 fra sentrum
+A: Jeg kan ikke finne flere ruteforbindelser på søndag.
+
+Q: Når går bussen fra sentrum til husebytun
+A: Buss 4 (mot Heimdal stasjon (K)) passerer Munkegata M2 kl. 1100, kl. 1130 og kl. 1200 og kommer til Husebytunet, 16 minutter senere.
+
+Q: Når går neste buss nr 19 fra sentrum
+A: Jeg kan ikke finne flere ruteforbindelser på søndag kl. 1053.
+
+Q: Angeltrøa til leangen (spurt rundt midnatt... Gir rare antakelser!!!)
+A:
+
+Jeg antar du mener avganger fra ikveld.
+9. Jan. 2016 er en lørdag.
+Holdeplassen nærmest Leangen er Travbanen.
+Holdeplassen nærmest Angeltrøa er Angelltrøvegen.
+Buss 18 (mot Havstad) går fra Angelltrøvegen kl. 0704 til Dalen Hageby kl. 0712
+og buss 7 (mot Reppe) går fra Dalen Hageby kl. 0743 til Travbanen kl. 0746.
+
+Tidene angir tidligste passeringer av holdeplassene.
+
+
 buss 21 (Prøv trikk 1 heller!)
+
+Overlapp mellom 36/66, og bussen til malvik_vgs? (Når går det busser til vikhammer egentlig?
 
  Idrettsplassen , Presthusaunet , 
 Charlottenlund kirke , Konglevegen , Brundalen skole , Brundalen , Brundalen sykehjem , 
 Tunvegen , Churchills veg , Jakobslivegen Nedre , Skovgård , Travbanen , 
 Gildheim , Strindheim (K) 
 
-
+Q: 19 Byåsen /flatåsen
 
 
 Oracle.war

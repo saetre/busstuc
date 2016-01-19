@@ -1581,6 +1581,7 @@ foreign(strai).
 foreign(stranda). %% community // unwanted (strinda)
 foreign(strandafjellet). 
 foreign(strandebarm). 
+foreign(straum).  %% RS-160110 (i Roan)
 foreign(straume). 
 foreign(straumen). 
 foreign(straumgjerde). 
