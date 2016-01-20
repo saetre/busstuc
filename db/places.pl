@@ -143,6 +143,7 @@ corr( olav_tryggvasons_gate, hovedterminalen ).  %% RS-120915 (Nightbus!)
 %% END HOVEDTERMINALEN == "Sentrum" %%  RS-151219 Different from: Sentrumskvartalet == sentrum !
 
 
+%% corr(havstad, havstadsenteret). %% RS-160119 OK?
 
 %%% corr(brannstasjon_øst,strindheim).  %% TA-110822
 corr(lerkendal_stadion,tempe_kirke). 
@@ -183,9 +184,12 @@ alias_station( breidablikk_trikk, breidablikk ).        %% RS-141115 %% RS-15121
 alias_station( dv,dragvoll ).
 
 %%alias_station(gudes_gate,høgskoleringen).       %% RS-131027 Not needed according to heuristics
+
+alias_station(havstad, havstadsenteret). %% RS-160119 OK? Should make this predicate symmetric?
+alias_station(havstadsenteret, havstad). %% RS-160119 OK?
+
 alias_station( hospitalskirka_trikk, hospitalskirka ).            %% RS-141115
 %%alias_station(høgskoleringen,gudes_gate).
-
 
 alias_station( lade_gård, lade ). %% TA-100802 old station-> neibourhood
 alias_station( lade_alle_80, lade ). %% TA-100802 old station-> neibourhood
