@@ -1,5 +1,5 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
-%% Auxillary tables created datetime(2016,1,10,23,26,44)
+%% Auxillary tables created datetime(2016,1,19,16,49,34)
 %%  from writeheading in ./makeauxtables.pl (from createhash/0 and makeauxtables/0)
 
 :-module( namehashtable, [ toredef/3, torehash/2 ] ). 
@@ -874,8 +874,6 @@ toredef(harbour,nil,harbour).
 toredef(haukvatnet,nil,haukvatnet).
 toredef(havna,nil,havna).
 toredef(havnen,nil,havnen).
-toredef(havstad,nil,havstad).
-toredef(havstad,street,havstad).
 toredef(havstadflata,nil,havstadflata).
 toredef(havstein,nil,havstein).
 toredef(havsteinekra,nil,havsteinekra).
@@ -1473,6 +1471,8 @@ toredef(hanskemakker,nil,hanskemakker).
 toredef(harald,nil,harald).
 toredef(haugnes,nil,haugnes).
 toredef(haukåsen,nil,haukåsen).
+toredef(havstad,nil,havstad).
+toredef(havstad,street,havstad).
 toredef(heggstadmoen,nil,heggstadmoen).
 toredef(heggstadmoen,streetname,heggstadmoen).
 toredef(heim,nil,heim).
@@ -2525,8 +2525,6 @@ toredef(breidablikk,streetstat,breidablikkveien).
 toredef(breidablikkv,streetstat,breidablikkveien).
 toredef(breidablikkveien,nil,breidablikkveien).
 toredef(cecilie,nil,cecilie).
-toredef(cecilienbor,streetstat,cecilienborg).
-toredef(cecilienborg,nil,cecilienborg).
 toredef(churchillsveg,nil,churchillsveg).
 toredef(ditlev,nil,ditlev).
 toredef(dolpa,nil,dolpa).
@@ -3061,8 +3059,10 @@ toredef(havnev,streetstat,havneveien).
 toredef(havneveien,nil,havneveien).
 toredef(leistadkrysset,nil,leistadkrysset).
 toredef(svebergkrysset,nil,svebergkrysset).
+toredef(vikhammeråsen,nil,vikhammeråsen).
 toredef(nortura,nil,nortura).
 toredef(sandsiloen,nil,sandsiloen).
+toredef(planetringen,nil,planetringen).
 toredef(draksten,nil,draksten).
 toredef(gjevingåsen,nil,gjevingåsen).
 toredef(hellsenteret,nil,hellsenteret).
@@ -4782,6 +4782,7 @@ toredef(bruv,nil,bruv).
 toredef(e39,nil,e39).
 toredef(hagebruk,nil,hagebruk).
 toredef(bomstasjon,nil,bomstasjon).
+toredef(snpl,nil,snpl).
 toredef(luftha,nil,luftha).
 toredef(fjellhall,nil,fjellhall).
 toredef(holans,nil,holans).
@@ -14412,12 +14413,6 @@ torehash(havn,havnen).
 torehash(havne,havnen).
 torehash(havnn,havnen).
 torehash(hvnen,havnen).
-torehash(hastad,havstad).
-torehash(havsad,havstad).
-torehash(havsta,havstad).
-torehash(havstd,havstad).
-torehash(havtad,havstad).
-torehash(hvstad,havstad).
 torehash(hastadflata,havstadflata).
 torehash(havsadflata,havstadflata).
 torehash(havstadfata,havstadflata).
@@ -19146,6 +19141,12 @@ torehash(haukåse,haukåsen).
 torehash(haukåsn,haukåsen).
 torehash(hauåsen,haukåsen).
 torehash(hukåsen,haukåsen).
+torehash(hastad,havstad).
+torehash(havsad,havstad).
+torehash(havsta,havstad).
+torehash(havstd,havstad).
+torehash(havtad,havstad).
+torehash(hvstad,havstad).
 torehash(heggsadmoen,heggstadmoen).
 torehash(heggstadmen,heggstadmoen).
 torehash(heggstadmoe,heggstadmoen).
@@ -25917,29 +25918,6 @@ torehash(cecili,cecilie).
 torehash(ceclie,cecilie).
 torehash(ceilie,cecilie).
 torehash(sesjlie,cecilie).
-torehash(ccilienbor,cecilienbor).
-torehash(ceciienbor,cecilienbor).
-torehash(cecilenbor,cecilienbor).
-torehash(ceciliebor,cecilienbor).
-torehash(cecilienbo,cecilienbor).
-torehash(cecilienbr,cecilienbor).
-torehash(cecilienor,cecilienbor).
-torehash(cecilinbor,cecilienbor).
-torehash(ceclienbor,cecilienbor).
-torehash(ceilienbor,cecilienbor).
-torehash(sesjlienbor,cecilienbor).
-torehash(ccilienborg,cecilienborg).
-torehash(ceciienborg,cecilienborg).
-torehash(cecilenborg,cecilienborg).
-torehash(cecilieborg,cecilienborg).
-torehash(cecilienbog,cecilienborg).
-torehash(cecilienbor,cecilienborg).
-torehash(cecilienbrg,cecilienborg).
-torehash(cecilienorg,cecilienborg).
-torehash(cecilinborg,cecilienborg).
-torehash(ceclienborg,cecilienborg).
-torehash(ceilienborg,cecilienborg).
-torehash(sesjlienborg,cecilienborg).
 torehash(chrchillsveg,churchillsveg).
 torehash(chuchillsveg,churchillsveg).
 torehash(churchillseg,churchillsveg).
@@ -29555,6 +29533,18 @@ torehash(svebergrysset,svebergkrysset).
 torehash(sveberkrysset,svebergkrysset).
 torehash(svebrgkrysset,svebergkrysset).
 torehash(sveergkrysset,svebergkrysset).
+torehash(vihammeråsen,vikhammeråsen).
+torehash(vikameras,vikhammeråsen).
+torehash(vikammeråsen,vikhammeråsen).
+torehash(vikhameråsen,vikhammeråsen).
+torehash(vikhammersen,vikhammeråsen).
+torehash(vikhammeråen,vikhammeråsen).
+torehash(vikhammeråse,vikhammeråsen).
+torehash(vikhammeråsn,vikhammeråsen).
+torehash(vikhammeåsen,vikhammeråsen).
+torehash(vikhammråsen,vikhammeråsen).
+torehash(vikhmmeråsen,vikhammeråsen).
+torehash(vkhammeråsen,vikhammeråsen).
 torehash(nortra,nortura).
 torehash(nortua,nortura).
 torehash(nortur,nortura).
@@ -29572,6 +29562,18 @@ torehash(sandsioen,sandsiloen).
 torehash(sandsloen,sandsiloen).
 torehash(sansiloen,sandsiloen).
 torehash(sndsiloen,sandsiloen).
+torehash(panetringen,planetringen).
+torehash(plaetringen,planetringen).
+torehash(planeringen,planetringen).
+torehash(planetingen,planetringen).
+torehash(planetrigen,planetringen).
+torehash(planetrinen,planetringen).
+torehash(planetring,planetringen).
+torehash(planetringe,planetringen).
+torehash(planetringn,planetringen).
+torehash(planetrngen,planetringen).
+torehash(plantringen,planetringen).
+torehash(plnetringen,planetringen).
 torehash(daksten,draksten).
 torehash(draksen,draksten).
 torehash(drakst,draksten).
@@ -36873,6 +36875,7 @@ torehash(bomstason,bomstasjon).
 torehash(bomstsjon,bomstasjon).
 torehash(bomtasjon,bomstasjon).
 torehash(bostasjon,bomstasjon).
+torehash(snpl,snpl).
 torehash(lftha,luftha).
 torehash(lufha,luftha).
 torehash(lufta,luftha).
