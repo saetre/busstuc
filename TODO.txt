@@ -1,3 +1,25 @@
+Påske 2016
+=====================
+Undefined - identifiers... (db/places) placestat/2
+astronomveien
+hovedterminalen
+olav_tryggvasons_gate
+prinsenkrysset
+romolslia
+sentrum
+torget
+-------------
+Undefined street to station references (streetstat/5)
+kolstaddalen
+okstadøy
+olav_tryggvasons_gate
+rosten
+ts
+unknown
+
+================
+
+
 FIX THIS!!!
 
 N: rotvoll alle 14.1 kl 08.00.

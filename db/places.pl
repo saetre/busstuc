@@ -143,7 +143,11 @@ corr( olav_tryggvasons_gate, hovedterminalen ).  %% RS-120915 (Nightbus!)
 %% END HOVEDTERMINALEN == "Sentrum" %%  RS-151219 Different from: Sentrumskvartalet == sentrum !
 
 
-%% corr(havstad, havstadsenteret). %% RS-160119 OK?
+%% corr(grilstadvegen, skovgård).  %% RS-160212
+%% corr(havstad, havstadsenteret). %% RS-160119 OK? No, didn't work! But this did (-:
+%%alias_station(havstad, havstadsenteret). %% RS-160119 OK? Should make this predicate symmetric?
+%%alias_station(havstadsenteret, havstad). %% RS-160119 OK?
+
 
 %%% corr(brannstasjon_øst,strindheim).  %% TA-110822
 corr(lerkendal_stadion,tempe_kirke). 
@@ -185,6 +189,8 @@ alias_station( dv,dragvoll ).
 
 %%alias_station(gudes_gate,høgskoleringen).       %% RS-131027 Not needed according to heuristics
 
+%alias_station(grilstadvegen, skovgård).  %% RS-160212 Bør brukes bare "en vei"?
+
 alias_station(havstad, havstadsenteret). %% RS-160119 OK? Should make this predicate symmetric?
 alias_station(havstadsenteret, havstad). %% RS-160119 OK?
 
@@ -199,6 +205,9 @@ alias_station( munkvoll_trikk, munkvoll ).        %% RS-141115
 alias_station( ntnu_dragvoll, dragvoll ).
 
 alias_station( nyveibakken_trikk, nyveibakken ).  %% RS-141115
+
+alias_station(skovgård, grilstadvegen).           %% RS-160212
+
 alias_station( ugla_trikk, ugla ).                %% RS-141115
 
 %% RS-151219 Can this also be used for stations that keep changing name between summer and winter routes?
