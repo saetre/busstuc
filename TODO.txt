@@ -19,6 +19,21 @@ unknown
 
 ================
 
+EKSPRESSBUSS
+
+N: lade etter 740 29. mars.
+........................................................................
+Buss 4 passerer  Prinsens gate P2 kl. 0721 
+og  kommer til  Lade ,  11-19 minutter senere .
+Buss 4 passerer  Munkegata M5 kl. 0723 
+og  kommer til  Lade ,  9-17 minutter senere .
+Buss 3 passerer  Prinsens gate P2 kl. 0726 
+og  kommer til  Lade allé 80 ,  20 minutter senere .
+
+Tidene angir tidligste passeringer av holdeplassene. 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 
 FIX THIS!!!
 
