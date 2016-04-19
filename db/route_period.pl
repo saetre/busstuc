@@ -24,16 +24,17 @@
 %%route_period( tt, r1613_130812, date(2013,08,12),   date(2014,06,22) ).     %% Vinter13_14
 %%route_period( tt, r1601_130930, date(2013,09,30),   date(2014,07,22) ).       %% Høst2013oktober
 route_period(   tt, r1603_151012, date(2015,10,12),   date(2015,12,21) ).	%% Høst15, v4. Extend duration from 14th to 21st, to keep bus 38 in schedule!
-route_period(   tt, r1611_151214, date(2015,12,14),   date(2015,12,22) ).       %% Juleruter
-route_period(   tt, r1601_150817, date(2015,08,17),   date(2015,12,23) ).	%% Runes Test
-route_period(   tt, r1615_151214, date(2015,12,14),   date(2015,12,23) ).       %% Desember23_27_30
-route_period(   tt, r1612_151214, date(2015,12,14),   date(2015,12,25) ).	%% Julaften_25des
-route_period(   tt, r1613_151214, date(2015,12,14),   date(2015,12,26) ).	%% Desember26_28_29
-route_period(   tt, r1615_151214, date(2015,12,14),   date(2015,12,27) ).       %% Desember23_27_30
-route_period(   tt, r1613_151214, date(2015,12,14),   date(2015,12,29) ).       %% Desember26_28_29
-route_period(   tt, r1615_151214, date(2015,12,14),   date(2015,12,30) ).       %% Desember23_27_30
-route_period(   tt, r1614_151214, date(2015,12,14),   date(2015,12,31) ).	%% Nyttårsaften
-route_period(   tt, r1611_151214, date(2015,12,14),   date(2016,01,17) ).	%% Juleruter
+%route_period(   tt, r1611_151214, date(2015,12,14),   date(2015,12,22) ).       %% Juleruter
+%route_period(   tt, r1601_150817, date(2015,08,17),   date(2015,12,23) ).	%% Runes Test
+%route_period(   tt, r1615_151214, date(2015,12,14),   date(2015,12,23) ).       %% Desember23_27_30
+%route_period(   tt, r1612_151214, date(2015,12,14),   date(2015,12,25) ).	%% Julaften_25des
+%route_period(   tt, r1613_151214, date(2015,12,14),   date(2015,12,26) ).	%% Desember26_28_29
+%route_period(   tt, r1615_151214, date(2015,12,14),   date(2015,12,27) ).       %% Desember23_27_30
+%route_period(   tt, r1613_151214, date(2015,12,14),   date(2015,12,29) ).       %% Desember26_28_29
+%route_period(   tt, r1615_151214, date(2015,12,14),   date(2015,12,30) ).       %% Desember23_27_30
+%route_period(   tt, r1614_151214, date(2015,12,14),   date(2015,12,31) ).	%% Nyttårsaften
+%route_period(   tt, r1611_151214, date(2015,12,14),   date(2016,01,17) ).	%% Juleruter
+route_period(   tt, r1611_160118, date(2016,01,18),   date(2016,03,20) ).       %% Vår2016
 route_period(   tt, r1612_160320, date(2016,03,20),   date(2016,03,23) ).	%% påske 2016
 route_period(   tt, r1601_160418, date(2016,04,18),   date(2016,06,19) ).	%% RusseRuter
 route_period(   tt, r1611_160118, date(2016,01,18),   date(2016,06,19) ).	%% Vår2016
