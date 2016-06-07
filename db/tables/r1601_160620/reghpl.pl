@@ -714,6 +714,7 @@ hpl(16011190,idrettsplassen,idrettsplassen,'Idrettsplassen').
 hpl(16011191,idrettsveien,idrettsveien,'Idrettsveien').
 hpl(16011192,ila,ila,'Ila (K)').
 hpl(16011193,iskremfabrikken,iskremfabrikken,'Iskremfabrikken').
+hpl(16011196,bergheim_snuplass,bergheim_snuplass,'Bergheim snuplass').
 hpl(16011197,høgskoleringen,høgskoleringen,'Høgskoleringen').
 hpl(16011199,nedre_humlehaugen_vest,nedre_humlehaugen_vest,'Nedre Humlehaugen Vest').
 hpl(16011200,jakobsli,jakobsli,'Jakobsli').
@@ -1241,6 +1242,27 @@ hpl(16626028,tanemsmovegen,tanemsmovegen,'Tanemsmovegen').
 hpl(16626029,brannåsen,brannåsen,'Brannåsen').
 hpl(16626030,sjøla,sjøla,'Sjøla').
 hpl(16626031,hallansvingen,hallansvingen,'Hallansvingen').
+hpl(16626039,moadalen,moadalen,'Moadalen').
+hpl(16626040,nygården,nygården,'Nygården').
+hpl(16626041,lettingvold,lettingvold,'Lettingvold').
+hpl(16626042,hyttfossen,hyttfossen,'Hyttfossen').
+hpl(16626043,svebakken,svebakken,'Svebakken').
+hpl(16626044,brøttemsmarka,brøttemsmarka,'Brøttemsmarka').
+hpl(16626045,brøttem_gård,brøttem_gård,'Brøttem gård').
+hpl(16626046,brøttemsåsen,brøttemsåsen,'Brøttemsåsen').
+hpl(16626047,grendstad,grendstad,'Grendstad').
+hpl(16626048,teigen,teigen,'Teigen').
+hpl(16626049,klæbu_bygdemuseum,klæbu_bygdemuseum,'Klæbu bygdemuseum').
+hpl(16626050,bjørklimark,bjørklimark,'Bjørklimark').
+hpl(16626051,bjørkligård,bjørkligård,'Bjørkligård').
+hpl(16626052,bjørkli,bjørkli,'Bjørkli').
+hpl(16626054,eggan,eggan,'Eggan').
+hpl(16626055,husby,husby,'Husby').
+hpl(16626056,haugum,haugum,'Haugum').
+hpl(16626057,svean,svean,'Svean').
+hpl(16626058,moodden,moodden,'Moodden').
+hpl(16626059,moen_gård,moen_gård,'Moen gård').
+hpl(16626060,moenkrysset,moenkrysset,'Moenkrysset').
 hpl(16626065,tanemskrysset_2,tanemskrysset_2,'Tanemskrysset 2').
 hpl(16627006,amunddal,amunddal,'Amunddal').
 hpl(16627009,storugla,storugla,'Storugla').
@@ -1264,6 +1286,26 @@ hpl(16627028,tanemsmovegen,tanemsmovegen,'Tanemsmovegen').
 hpl(16627029,brannåsen,brannåsen,'Brannåsen').
 hpl(16627030,sjøla,sjøla,'Sjøla').
 hpl(16627031,hallansvingen,hallansvingen,'Hallansvingen').
+hpl(16627039,moadalen,moadalen,'Moadalen').
+hpl(16627040,nygården,nygården,'Nygården').
+hpl(16627041,lettingvold,lettingvold,'Lettingvold').
+hpl(16627042,hyttfossen,hyttfossen,'Hyttfossen').
+hpl(16627043,svebakken,svebakken,'Svebakken').
+hpl(16627044,brøttemsmarka,brøttemsmarka,'Brøttemsmarka').
+hpl(16627045,brøttem_gård,brøttem_gård,'Brøttem gård').
+hpl(16627046,brøttemsåsen,brøttemsåsen,'Brøttemsåsen').
+hpl(16627047,grendstad,grendstad,'Grendstad').
+hpl(16627048,teigen,teigen,'Teigen').
+hpl(16627049,klæbu_bygdemuseum,klæbu_bygdemuseum,'Klæbu bygdemuseum').
+hpl(16627050,bjørklimark,bjørklimark,'Bjørklimark').
+hpl(16627051,bjørkligård,bjørkligård,'Bjørkligård').
+hpl(16627054,eggan,eggan,'Eggan').
+hpl(16627055,husby,husby,'Husby').
+hpl(16627056,haugum,haugum,'Haugum').
+hpl(16627057,svean,svean,'Svean').
+hpl(16627058,moodden,moodden,'Moodden').
+hpl(16627059,moen_gård,moen_gård,'Moen gård').
+hpl(16627060,moenkrysset,moenkrysset,'Moenkrysset').
 hpl(16627065,tanemskrysset,tanemskrysset,'Tanemskrysset').
 hpl(16632001,sjølyst,sjølyst,'Sjølyst').
 hpl(16632002,hundhamaren,hundhamaren,'Hundhamaren').
@@ -1273,6 +1315,7 @@ hpl(16632005,vikhammer,vikhammer,'Vikhammer').
 hpl(16632006,vikhammerløkka,vikhammerløkka,'Vikhammerløkka').
 hpl(16632007,vikhov,vikhov,'Vikhov').
 hpl(16632008,naustkleiva,naustkleiva,'Naustkleiva').
+hpl(16632009,vikhammer_2,vikhammer_2,'Vikhammer 2').
 hpl(16632010,malvik,malvik,'Malvik').
 hpl(16632011,haugan,haugan,'Haugan').
 hpl(16632012,torp,torp,'Torp').
