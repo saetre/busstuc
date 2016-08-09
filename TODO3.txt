@@ -1,6 +1,36 @@
 Problems:
 --------------
 
+Øie Skole (old) vs. Øye
+N: øie skole mandag.
+........................................................................
+
+           sentences
+           ____|____
+          /         \
+   verb_modifiers   lit
+      ____|___       |
+     /        \      |
+   name      noun    .
+     |         |
+     |         |
+ øie_skole  monday
+
+
+   [modifier(A):::(øie_skole isa station,B isa monday,srel/nil/place/øie_skole/A,srel/in/time/B/A,event/real/A)]
+........................................................................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+15. Aug. 2016 er en  mandag .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+A: - - - Uforståelig ved * - - -
+
+c. j. hambros veg
+
+fra * torget til sirkus
+
+
 Q: Q: Hvilken buss går til utleirahallen?
 Q: Fra gløshaugen til munkvollhallen
 Q: Q: Når går bussen  fra valset kai

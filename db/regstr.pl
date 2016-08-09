@@ -71,7 +71,8 @@ streetstat(apotekerveita,'Apotekerveita',4,4,hovedterminalen).
 streetstat(arilds_street,'Arilds gate',1,10,ila).
 streetstat(arkitekt_christies_street,'Arkitekt Christies gate',1,11,prinsen_kinosenter).
 streetstat(arkitekt_ebbells_street,'Arkitekt Ebbells veg',10,16,rotvoll).
-%% streetstat(armauer_hansens_street,'Armauer Hansens veg',1,8,brøsetvegen_119).
+%%streetstat(armauer_hansens_street,'Armauer Hansens veg',1,8,brøsetvegen_119).   %% RS-160802
+streetstat(armauer_hansens_street,'Armauer Hansens veg',1,8,brøset_hageby).   %% RS-160802
 streetstat(arne_bergsgårds_street,'Arne Bergsgårds veg',1,22,vestlia_endeholdeplass).
 streetstat(arne_fjellbus_street,'Arne Fjellbus veg',1,28,hoeggen_skole).
 streetstat(arne_garborgs_street,'Arne Garborgs veg',1,65,dalgård).
@@ -1175,8 +1176,10 @@ streetstat(olav_nygards_street,'Olav Nygards veg',1,53,rydningen).
 streetstat(olav_trondsons_street,'Olav Trondsons veg',1,5,berg_studentby).
 streetstat(odd_brochmanns_street,'Odd Brochmanns veg',1,50,berg_studentby).
 
-               
-streetstat(olav_tryggvasons_street,'Olav Tryggvasons gate',28,51,olav_tryggvasons_gate). %% CORR
+
+streetstat(olav_tryggvasons_street,'Olav Tryggvasons gate',28,51,olav_tryggvasons_gate). %% CORR  %% RS-160815 Only used as a (main) station?
+%streetstat(olav_tryggvasons_street,'Olav Tryggvasons gate',28,51,olav_tryggvasons_gate_ot_1). %% CORR  %% RS-160815 add this line instead on the 15th.
+
 streetstat(olav_tryggvasons_street,'Olav Tryggvasons gate',1,27,søndre_gate_23).
 
 streetstat(olav_vasseljens_street,'Olav Vasseljens veg',1,6,nardosenteret).
@@ -1262,7 +1265,7 @@ streetstat(per_sivles_street,'Per Sivles veg',1,51,ugla).
 streetstat(persaun_street,'Persaunvegen',1,9,dalen_hageby).
 streetstat(persaun_street,'Persaunvegen',11,27,persaunet_leir).
 streetstat(persaun_street,'Persaunvegen',6,57,persaunet_leir).
-streetstat(persaun_street,'Persaunvegen',52,61, gina_krogs_veg).
+streetstat(persaun_street,'Persaunvegen',52,61, clara_holsts_veg).
 streetstat(persaun_street,'Persaunvegen',60,63,tyholt).
 streetstat(persberg_street,'Persbergvegen',1,7,nedre_humlehaugen_øst).
 streetstat(perslia,'Perslia',1,56,klokkstein).

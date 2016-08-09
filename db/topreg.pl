@@ -48,12 +48,13 @@ compilerouteaux( tt, [
 %% DEFAULT ROUTE PERIODS
 
 %default_period(tt,winter, r1601_110822).  %% 2011 Autumn
-default_period( tt, winter,  r1611_151214).  %% 2015 Winter/Christmas/Spring?
-default_period( tt, summer,  r1611_140623).  %% 2013 Summer
+default_period( tt, winter,  r1601_160815).  %% 2016 Winter (Christmas/Spring?)
+default_period( tt, summer,  r1601_160620).  %% 2016 Summer
 
-%default_period( tt,previous, r1611_140203 ).  %% 2013 Most recently period used %% RS-140616
-%default_period( tt,previous, r1601_150622 ).  %% 2013 Most recently period used
-default_period( tt,previous, r1603_151012 ).  %% 2013 Most recently period used %% RS-151219
+%default_period(tt,previous, r1611_140203 ).  %% 2014 Most recently period used %% RS-140616
+%default_period(tt,previous, r1601_150622 ).  %% 2015 Most recently period used
+%default_period(tt,previous, r1601_160620 ).  %% 2016_2 Most recently period used %% RS-151219
+default_period( tt,previous, r1601_160815 ).  %% 2016_1 Most recently period used %% RS-151219
 
 %default_message(tt,winter,['AtB winter routes are from  Jan. 2, 2012  to Jun. 26, 2012.',
 %                           'AtB vinterruter gjelder fra 2. jan. 2012 til 26. jun. 2012']).

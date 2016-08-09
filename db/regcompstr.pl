@@ -601,6 +601,7 @@ composite_road(håkon,[håkonsons,street],håkon_håkonsons_street).
 composite_road(håkon,[håkonsons_street],håkon_håkonsons_street).
 composite_road(håkon,[jarls,street],håkon_jarls_street).
 composite_road(håkon,[jarls_street],håkon_jarls_street).
+composite_road(håkon,[magnus,street],håkon_magnussons_street).  %% RS-160802
 composite_road(håkon,[magnussons,street],håkon_magnussons_street).
 composite_road(håkon,[magnussons_street],håkon_magnussons_street).
 composite_road(håkon,[sverressons,street],håkon_sverressons_street).

@@ -5,6 +5,12 @@
 % Some predicates (like addcontext/0) are only to preserve information, no filtering..
 :-module( discrepancies, [ alias_station2/3 ] ).
 
+%% db/discrepancies r1601_160815 r1601_160620 
+alias_station2(16010384,engstrømbakken,ranheim_skole).
+alias_station2(16011384,engstrømbakken,ranheim_skole).
+alias_station2(16533184,øye,øie_skole).
+alias_station2(16538544,øye,øie_skole).
+
 %% RS 2015.12.19
 %% db/discrepancies r1603_151012 r1611_151214
 alias_station2(16010006,dr_gate_d1,dronningens_gate_d1).
@@ -13,7 +19,8 @@ alias_station2(16010111,grilstadveien,grilstadvegen).
 alias_station2(16010121,peder_myhres_vei,peder_myhres_veg).
 alias_station2(16010157,a_jenssens_veg,anton_jenssens_veg).
 alias_station2(16010186,hurtigbåtterm,hurtigbåtterminalen).
-alias_station2(16010240,kvenilds_veg,kvenildvegen).
+%alias_station2(16010240,kvenilds_veg,kvenildvegen).
+alias_station2(16010240,kvenildvegen,kvenilds_veg).
 alias_station2(16010253,ladejarlen_v_g_s,ladejarlen_vgs).
 alias_station2(16010266,lohove,lohove_snuplass).
 alias_station2(16010309,j_minsaas_veg,johannes_minsaas_veg).

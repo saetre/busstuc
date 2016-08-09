@@ -358,7 +358,7 @@ crerr:-
 
 crerr1 :-
 
-  nl, write('Undefined - identifiers... (db/places) placestat/2'),nl,nl,
+  nl, write('Undefined - identifiers... (db/places.pl) placestat/2'),nl,nl,
 
   set_of(X, (station_reference(X), \+ buslog:hpl(_,X,_Off)),
 
@@ -371,7 +371,7 @@ crerr1 :-
 
 crerr2 :-
   nl,
-  write( 'Undefined street to station references (streetstat/5)' ),nl,
+  write( 'Undefined street to station references (db/regstr.pl) streetstat/5' ),nl,
     
   set_of(D,(regstr:streetstat(_A,_B,_C1,_C2,D), \+ buslog:station(D)),Z),
 

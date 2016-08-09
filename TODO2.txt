@@ -1,3 +1,38 @@
+Buvik er på 310, ikke 410 !!
+
+Buss 310 går til holdeplassene
+Fannrem stasjon , Fannremsflata , Mo-marked , Fannremsmoen , Syindustrien ,
+Sorenskrivergården , Follo , Evjen , Orkdal Sykehus , Orkanger skysstasjon ,
+Rømme , Torget Orkanger , Orkanger skole , Hov , Børskrysset E39 ,
+Buvikkrysset E39 , Øysandkrysset , Gafset , Øie skole , Udduvoll bru V. ,
+Udduvoll bru Ø. , Stav Øvre , Storler , Sandmoen E6 , City Syd E6 ,
+Tonstadkrysset E6 (K) , Kroppanbrua (K) , Bratsbergvegen , Valøyvegen , Tempe kirke ,
+Professor Brochs gate , Einar Tambarskjelves gate , Studentersamfundet (K) , Prinsen kinosenter , Dronningens gate D2 ,
+Søndre gate 23 , Trondheim S 13 , Brattøra , Gildheim , Travbanen ,
+Ranheim Fabrikker E6 , Leistadkrysset , Stav , Svebergkrysset , Hommelvik bomstasjon ,
+Tangen Nord , Statoil Stjørdal , Stjørdal stasjon , Trondheim S 11 , Søndre gate 22 ,
+Dronningens gate D1 , Omkjøringsveien Klæbuveien , Omkjøringsveien Nardo , Omkjøringsveien Moholt , Granåsvegen ,
+Trondheim lufthavn , Vikelvveien (K) , Fosslia Fjellhall , Ole Vigs gate 38 , Halsen ungdomsskole ,
+Torvet , Heimdal stasjon (K) , Skovgård , Askeladdvegen , Presthus ,
+Olderdalen , J.P. Holans gate , Ranheim fabrikker , Heimdal sentrum .
+
+
+Buss 410 går til holdeplassene
+Orkanger skysstasjon , Rømme , Torget Orkanger , Orkanger skole , Hov ,
+Orkanger barnehage , Strandheim , AKS , Storsand , Rian ,
+Tråssåvika , Sildværet , Viggja , Sanden , Stykkan ,
+Lundan , Lund Hagebruk , Vikan , Haukvik , Fredlyveien ,
+Elistranda , Børsa , Mæla , Svalnestangen , Lykkjnesset ,
+Ølsholm , Havenget , Piene Mølle , Buvika , Tangen ,
+Brekka , Øysandkrysset , Gafset , Øie skole , Udduvoll bru V. ,
+Udduvoll bru Ø. , Stav Øvre , Storler , Sandmoen E6 , City Syd E6 ,
+Tonstadkrysset E6 (K) , Kroppanbrua (K) , Bratsbergvegen , Valøyvegen , Tempe kirke ,
+Professor Brochs gate , Einar Tambarskjelves gate , Studentersamfundet (K) , Prinsen kinosenter , Dronningens gate D2 ,
+Søndre gate 23 , Trondheim S 13 , Trondheim S 3 , Søndre gate 22 , Dronningens gate D1 ,
+Orkdal Sykehus , Evjen , Follo , Skaun ungdomsskole , Fannrem stasjon ,
+Fannremsflata , Mo-marked , Fannremsmoen , Syindustrien , Sorenskrivergården .
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 
 Q: Tonstad   (Dobbelt opp!)
 A:

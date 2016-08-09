@@ -92,7 +92,8 @@ corr(kongens_gate_k2,hovedterminalen).
 %corr(kongens_gate_46,hovedterminalen). %% TA-110627
 %corr(kongens_gate_50,hovedterminalen). %% TA-110627
 
-corr( astronomveien, krokstien ).      %% RS-160110 Instead of trying alias_station or isat!
+%corr(astronomveien, krokstien ).      %% RS-160110 Instead of trying alias_station or isat!
+corr( astronomvegen, krokstien ).      %% RS-160110 Instead of trying alias_station or isat! veg med g
 
 %% corr(munkegata_m0,sentrum).  %% ad hoc sverresgt-> m0->sentrum
 corr(m0,hovedterminalen).  %% Generic central place
@@ -180,8 +181,10 @@ alias_name(teamtrafikk,tt).
 %% This doesn't work (yet?), so try isat (not isat2) instead! E.g. "Fra krokstien til samfunnet på søndag."
 
 %% RS-160110 This is also useful for stations that have no buses on Sundays, for example? No, use corr
-alias_station( krokstien, astronomveien ).
-alias_station( astronomveien, krokstien ).   %% Doesn't work (yet?), so use corr/2 instead
+%alias_station(krokstien, astronomveien ).      %% RS-160101 vei med i
+%alias_station(astronomveien, krokstien ).   %% RS-160101
+alias_station( krokstien, astronomvegen ).      %% RS-160809 veg med g
+alias_station( astronomvegen, krokstien ).   %% Doesn't work (yet?), so use corr/2 instead
 
 alias_station( berg_østre, østre_berg ). %% AtB
 alias_station( breidablikk_trikk, breidablikk ).        %% RS-141115 %% RS-151219 Try to generalize this for all "X_trikk" if X is a station ?! See alias_station2 ?
@@ -718,6 +721,33 @@ cmpl(cl,[lund,kirke],charlottenlund_kirke).
 cmpl(clairon,[],clarion_hotell). %% RS-150913 Common Typo
 cmpl(clarion,[],clarion_hotell). %% RS-150913
 cmpl(clarion,hotell,clarion_hotell). %% RS-150913
+
+cmpl(c,[holst,s,veg],clara_holsts_veg). 
+cmpl(c,[holst,s,vei],clara_holsts_veg). 
+cmpl(c,[holst,veg],clara_holsts_veg). 
+cmpl(c,[holst,vei],clara_holsts_veg). 
+cmpl(c,[holsts,v],clara_holsts_veg). 
+cmpl(c,[holsts,veg],clara_holsts_veg). 
+cmpl(c,[holsts,vei],clara_holsts_veg). 
+cmpl(c,[holstsv],clara_holsts_veg). 
+cmpl(c,[holstsveg],clara_holsts_veg). 
+cmpl(c,[holstsvei],clara_holsts_veg). 
+cmpl(c,holstsv,clara_holsts_veg). 
+
+cmpl(clara,[holst,s,veg],clara_holsts_veg). 
+cmpl(clara,[holst,s,vei],clara_holsts_veg). 
+cmpl(clara,[holst,veg],clara_holsts_veg). 
+cmpl(clara,[holst,vei],clara_holsts_veg). 
+cmpl(clara,[holsts,v],clara_holsts_veg). 
+cmpl(clara,[holsts,veg],clara_holsts_veg). 
+cmpl(clara,[holsts,vei],clara_holsts_veg). 
+cmpl(clara,[holstsveg],clara_holsts_veg). 
+cmpl(clara,[holstsvei],clara_holsts_veg). 
+cmpl(clara,holst,clara_holsts_veg). 
+cmpl(clara,holts,clara_holsts_veg). 
+cmpl(clara,holsts,clara_holsts_veg). 
+cmpl(clara,holstsv,clara_holsts_veg). 
+
 cmpl(comfort,[hotel,park],'Comfort Hotel Park'). 
 
 cmpl(cruise,pier,pirbadet).
@@ -2332,7 +2362,8 @@ cmpl(pers,aunetleir,persaunet_leir).
 cmpl(persaune,veien,persaunetveien).   %% TA-110415
 cmpl(persaunet,leier,persaunet_leir). %% TA-110615
 cmpl(persaunet,leir,persaunet_leir).  %% SIC(errorinreghpl)
-cmpl(persaunet,sykehjem,gina_krogs_veg).  %% persaunvn54->
+%cmpl(persaunet,sykehjem,gina_krogs_veg).  %% persaunvn54->
+cmpl(persaunet,sykehjem,clara_holsts_veg).  %% persaunvn54->  %% RS-160809 NEW ROAD!
 cmpl(pinsen,kino,prinsen_kinosenter). 
 cmpl(pinsen,kinos,prinsen_kinosenter). 
 cmpl(pinsen,kinosenter,prinsen_kinosenter). 
@@ -3418,8 +3449,10 @@ isat(kongens_gate_k2,prinsenkrysset). %% RS-141102
 
 %% ALPHABETICALLY (STATION, PLACE), sorted on PLACE
 
-isat( astronomveien, krokstien ).      %% RS-160110 Stations! Use corr/2
-isat( krokstien, astronomveien ).      %% RS-160110 Stations! Use corr/2
+%isat( astronomveien, krokstien ).      %% RS-160110 Stations! Use corr/2 ? %% RS-160101 astronomvegen med g is a station! vei med i is not?
+%isat( krokstien, astronomveien ).      %% RS-160110 Stations! Use corr/2
+isat( astronomvegen, krokstien ).      %% RS-160110 Stations! Use corr/2 ? %% RS-160809 astronomvegen med g is a station! vei med i is not?
+isat( krokstien, astronomvegen ).      %% RS-160110 Stations! Use corr/2
 
 isat( bratsberg_kirke, bratsberg ). %% TA-110325
 isat( siemens, bratsbergsvegen ).
@@ -3996,7 +4029,8 @@ placestat(kotenghallen,vestre_rosten). %%  private?
 placestat(kretsfengselet,tunga_kretsfengsel). 
 placestat(kristiansten,ankers_gate). 
 placestat(kristianstenfestning,ankers_gate). 
-placestat(kuhaugen,gina_krogs_veg). 
+%placestat(kuhaugen,gina_krogs_veg). 
+placestat(kuhaugen,clara_holsts_veg).     %% RS-160809 NEW ROAD! 
 %placestat(kyvannet,skavlans_veg). 
 %placestat(kyvatnet,skavlans_veg). 
 %% placestat(køff,leangenveien). %% TA-110822
@@ -4565,7 +4599,8 @@ sameplace(fotballstadion,lerkendal_stadion).
 sameplace(froderinnansveg,frode_rinnans_street). 
 sameplace(gammellina,gammel_lina).  %%(_should be dropped). 
 sameplace(gildevangen,søndregate).  %%(NB no message)
-sameplace(ginakroghsgt,gina_krogs_veg). 
+%sameplace(ginakroghsgt,gina_krogs_veg).        %% RS-160809 NEW ROAD!
+sameplace(gina_krogs_veg,clara_holsts_veg).     %% RS-160809 NEW ROAD! 
 sameplace(gløahugen,gløshaugen). 
 sameplace(gløshaug,gløshaugen). 
 sameplace(gløshøgen,gløshaugen).  %%høgem 
@@ -4962,6 +4997,7 @@ sameplace(siemenskrysset,siemens).  %%(Ambiguous,butspecial)
 sameplace(sigurdjorsalfarsvei,sigurd_jorsalfars_street). 
 sameplace(sildredråpeveien,sildråpeveien). 
 sameplace(sildropveien,sildråpeveien). 
+sameplace(circus,sirkus_shopping).      %% RS-160802
 sameplace(sirkus,sirkus_shopping).
 sameplace(sirkussenter,sirkus_shopping).
 sameplace(sirkussenteret,sirkus_shopping).
