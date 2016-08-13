@@ -59,11 +59,11 @@ default_period( tt,previous, r1601_160815 ).  %% 2016_1 Most recently period use
 %default_message(tt,winter,['AtB winter routes are from  Jan. 2, 2012  to Jun. 26, 2012.',
 %                           'AtB vinterruter gjelder fra 2. jan. 2012 til 26. jun. 2012']).
 %
-default_message(tt,winter,['AtB winter routes are from  Aug. 13 to Dec 23.  2014.',
-                           'AtB vinterruter gjelder fra 13. aug. til 23. des. 2014']).
+default_message(tt,winter,['AtB winter routes are from  Aug. 15 to Dec 23.  2016.',
+                           'AtB vinterruter gjelder fra 15. aug. til 23. des. 2016']).
 
-default_message(tt,summer,['AtB summer routes are from Jun. 22 to  Aug. 16. 2014',
-                           'AtB sommerruter gjelder fra 22. juni til 16. aug. 2014.']).
+default_message(tt,summer,['AtB summer routes are from Jun. 22 to  Aug. 14. 2016',
+                           'AtB sommerruter gjelder fra 22. juni til 14. aug. 2016.']).
 
 %% ACTUAL ROUTE PERIODS  SORTED ON --- END DATE ----
 %%see routes.pl
@@ -108,13 +108,13 @@ period_message( r1602_150810,
 
 % Autumn
 
-period_message( r1603_151012,
-['New Autumn routes',
- 'Endrede Høstruter']). %% \+ .   %% RS-151004
+%period_message( r1603_151012,
+%['New Autumn routes',
+% 'Endrede Høstruter']). %% \+ .   %% RS-151004
 
-%period_message( r1601_150817,
-%['AtB Autumn routes',
-% 'AtB Høstruter']). %% \+ .   %% RS-120810
+period_message( r1601_160815,
+['AtB Autumn routes',
+ 'AtB Høstruter']). %% \+ .   %% RS-160813
 
 
 %period_message( r1611_141020,
