@@ -1,5 +1,10 @@
 Problems:
 --------------
+når går bussen til moholt natt til 20.8 (Virker)
+vs.
+når går nattbussen til moholt 20.8 (Virker ikke!)
+
+
 
 Øie Skole (old) vs. Øye
 N: øie skole mandag.

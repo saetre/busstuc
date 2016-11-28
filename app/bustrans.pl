@@ -8088,6 +8088,7 @@ id  not reply(_), %% in case no route
          atdate2(DaySeqNo,YESTERDATE)),
     not message(completesentence)
 %%%%%    add message(assumeyesterdepartures)  %% spurious if no deps
+%%ip  timenow(G), G < 30, %% < 01:00 at night
 ip  timenow(G), G < 60, %% < 01:00 at night
     today(Today),
     daysucc(Yesterday,Today),

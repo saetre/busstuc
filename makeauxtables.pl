@@ -230,15 +230,13 @@ busstall(Bus):-
 
 
 createunproperstations :-
-    assert( unproperstation0(heaven) ), %% dummy (needs 1) %% RS-140927TODO: Try to fix this again?. 
-
+    assert( unproperstation0(heaven) ), %% dummy (we need at least 1) %% RS-140927 TODO: Try to fix this NOFUNK again? ...
 /* SUSPENDED NOFUNK %% TA-090609 */
     set_of(stationD(S,D),stationD(S,D),Z), %% make it unique //StationD buslog
     for((member(stationD(S,D),Z),nopassanyway(D,S)),
-    assert(unproperstation0(S))), %% PANIC
+      assert(unproperstation0(S))), %% PANIC
     dumppredas(unproperstation0(X),unproperstation(X)).
 /* SUSPENDED NOFUNK %% TA-090609 */
-
 
 
 %% NB  The following actually pressuposes that the old version of
