@@ -869,7 +869,9 @@ nthval(N,L,X):-
 
 roundrecmember(X,Y):-occrec(X,Y).
 
-occrec(_,B):-var(B),!,fail. %% Serious
+occrec(_,B) :-
+   var(B),!,fail. %% Serious
+
 occrec(B,((C,D),E)):-!,
     occrec(B,(C,(D,E))).
 

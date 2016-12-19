@@ -290,18 +290,19 @@ date_day_map( Date,  sunday ) :-    named_date( whitsun_day, Date ).    %  1. pi
 
 date_day_map( Date,  sunday ) :-    named_date( whitsun_day2, Date ).   %  2. pinsedag
 
-%% RS-151219 This was last checked for Christmas 2015
-date_day_map( Date,  saturday ) :-  orig_named_date( christmas_eve, Date ).   %  Julaften. Lørdagsrute med stopp kl 16
-date_day_map( Date,  sunday )  :-  orig_named_date( christmas_day, Date ).   %  1. Juledag. Søndagsruter
-date_day_map( Date,  sunday )  :-  orig_named_date( christmas_day2, Date ).   %  2. Juledag. Søndagsruter
-date_day_map( Date,  sunday )  :-  orig_named_date( christmas_day3, Date ).   %  3. Juledag. Søndagsruter
+%% RS-161219 This was last checked for Christmas 2016
+        %% Removed to stop bustrans:mapday2 from firing, since we have exact routes for alle christmas days this year
+%date_day_map( Date,  saturday ) :-  orig_named_date( christmas_eve, Date ).   %  Julaften. Lørdagsrute med stopp kl 16
+%date_day_map( Date,  sunday )  :-  orig_named_date( christmas_day, Date ).   %  1. Juledag. Søndagsruter
+%date_day_map( Date,  sunday )  :-  orig_named_date( christmas_day2, Date ).   %  2. Juledag. Søndagsruter
+%date_day_map( Date,  sunday )  :-  orig_named_date( christmas_day3, Date ).   %  3. Juledag. Søndagsruter
 
-date_day_map( Date,  saturday ) :-  orig_named_date( christmas_day4, Date ).   %  4. Juledag. Lørdagsruter
-date_day_map( Date,  saturday ) :-  orig_named_date( christmas_day5, Date ).   %  5. Juledag. Lørdagsruter
-date_day_map( Date,  saturday ) :-  orig_named_date( christmas_day6, Date ).   %  6. Juledag. Lørdagsruter
+%date_day_map( Date,  saturday ) :-  orig_named_date( christmas_day4, Date ).   %  4. Juledag. Lørdagsruter
+%date_day_map( Date,  saturday ) :-  orig_named_date( christmas_day5, Date ).   %  5. Juledag. Lørdagsruter
+%date_day_map( Date,  saturday ) :-  orig_named_date( christmas_day6, Date ).   %  6. Juledag. Lørdagsruter
 
-date_day_map( Date,  saturday ) :-  orig_named_date( new_years_eve, Date ).   %  Nyttårsaften. Lørdagsruter
-date_day_map( Date,  sunday )  :-  orig_named_date( new_years_day, Date ).   %  Nyttårsdagen. Søndagsruter
+%date_day_map( Date,  saturday ) :-  orig_named_date( new_years_eve, Date ).   %  Nyttårsaften. Lørdagsruter
+%date_day_map( Date,  sunday )  :-  orig_named_date( new_years_day, Date ).   %  Nyttårsdagen. Søndagsruter
 
 
 %%%%%%%%%%%%%%%%%%%%%%%

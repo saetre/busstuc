@@ -24,7 +24,7 @@
 :- use_module( 'db/teledat2.pl', [] ). %% Mandatory
 :- use_module( 'db/busdat.pl', [] ).   %% split, Trondheim. use_module %% RS-130624
 :- use_module( 'db/places.pl', [] ).  
-:- use_module( 'db/auxtables.pl', [] ).  
+:- use_module( 'db/auxtables.pl', [] ). 
 %:- use_module( 'db/namehashtable.pl', [toredef/3] ). %% compile is too expensive?
 :- use_module( 'db/statcoord2.pl', [] ).    %% [ statcoord ] TA-110317 %% RS-131225
 

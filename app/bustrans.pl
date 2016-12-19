@@ -7731,9 +7731,8 @@ id   not flag(fail),
      add message( date_day_route( DATE, MapDay ) ),
 
      remove atday(_),
-%%     add atday(MapDay)        %% RS-130327 Not needed when "Real routes" (Separate Christmas/Easter modules) are provided?
+%%     add atday(MapDay)        %% RS-130327 DO NOT use when "Real routes" (Separate Christmas/Easter modules) are provided?
      add atday(MapDay)
-
 ip   date_day_map( DATE, MapDay ),
      \+  special_day(MapDay) ).
 
