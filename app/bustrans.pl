@@ -125,6 +125,10 @@ module_dependencies :-
         use_module( Module, PredList ),
         fail ; true .   %% Get all use_modules, then succeed...
 
+
+:-use_module( '../db/busdat' ).
+
+
 %UNIT: /app/
 dep_module( AtbModule, [ composite_stat/3 ] ) :-
         default_period( tt, winter,  Module ),
@@ -140,7 +144,6 @@ dep_module( buslog, [ airbus_module/1, before/2, bus/1, bus_place_station/3, bus
 %                              default_destination/2, disallowed_night/1, exbus/1, 
 %                              extraallowed_night/2, fromstationonly/1, home_town/1, internal_airbus/1, nightbusstation/1, nostationfor/1,
 %                              railway_station/1, thetramno/1, tostationonly/1, vehicletype/2, xforeign/1 ] ).
-:-use_module( '../db/busdat' ).
 
 %UNIT: /
 %%% TODO: Find out why datetime/6, went undiscovered! There must be a way to test all these rules for completeness...

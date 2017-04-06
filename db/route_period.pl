@@ -26,7 +26,10 @@
 route_period(   tt, r1601_160620, date(2016,06,20),   date(2016,08,14) ).	%% Sommer
 route_period(   tt, r1601_160815, date(2016,08,15),   date(2016,10,30) ).	%% Høst2016 v1.
 route_period(   tt, r1601_161031, date(2016,10,31),   date(2017,03,31) ).	%% Vinter16
+route_period(   tt, r1601_170403, date(2017,04,03),   date(2017,04,09) ).       %% vår17
 route_period(   tt, r1602_170403, date(2017,04,03),   date(2017,04,12) ).	%% påske17
+route_period(   tt, r1601_170403, date(2017,04,03),   date(2017,05,16) ).       %% vår17
 route_period(   tt, r1603_170403, date(2017,04,03),   date(2017,05,17) ).	%% 17mai17
-route_period(   tt, r1601_170403, date(2017,04,03),   date(2017,06,25) ).	%% vår17
+route_period(   tt, r1601_170403, date(2017,04,03),   date(2017,06,25) ).       %% vår17
+route_period(   tt, r1601_170403, date(2017,04,03),   date(2018,06,25) ).       %% vår17
 route_period(   tt, r1611_200203, date(2010,08,23),   date(2020,06,26) ).       %% Backup? Test?
