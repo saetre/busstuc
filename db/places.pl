@@ -3688,6 +3688,9 @@ place_resolve(kino,rosendal).
 
 place_resolve(ntnu,dragvoll). 
 place_resolve(ntnu,gløshaugen).  %% try without GløsS
+place_resolve(ntnu,kalvskinnet). 
+place_resolve(ntnu,gjøvik). 
+place_resolve(ntnu,ålesund).
 
 place_resolve( orkanger, orkanger_skole). %% RS-131222 % NOT Preferred
 %place_resolve( orkanger, orkanger_skyss ). %% Preferred because end-station? %% RS-150823

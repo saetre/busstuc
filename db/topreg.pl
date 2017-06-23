@@ -98,9 +98,9 @@ period_message( r1613_150330,
 
 % Summer
 
-period_message( r1601_150622,
-['AtB Routes for summer 2015',
- 'AtB Sommerruter  2015']).
+period_message( r1601_170626,
+['AtB Routes for summer 2017',
+ 'AtB Sommerruter  2017']).
 
 period_message( r1602_150810,
 ['AtB Routes for summer 2015',
