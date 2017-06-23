@@ -1,3 +1,30 @@
+%% db/discrepancies r1601_160815 r1601_170403
+alias_station2(16010208,john_aae_s_veg,john_aaes_veg).
+
+... makeauxtables~153 (~787): Please wait 1 minute while creating (db/auxtables) regstr/2
+
+Undefined - identifiers... (db/places.pl) placestat/2
+
+hovedterminalen
+john_aae_s_veg
+olav_tryggvasons_gate
+persaunvegen
+prinsenkrysset
+ranheim_skole
+sentrum
+torget
+
+-------------
+
+Undefined street to station references (db/regstr.pl) streetstat/5
+
+olav_tryggvasons_gate
+ranheim_skole
+ts
+unknown
+
+
+
 %% db/discrepancies r1603_151012 r1601_160620 
 alias_station2(16010006,dr_gate_d1,dronningens_gate_d1).
 alias_station2(16010007,dr_gate_d2,dronningens_gate_d2).

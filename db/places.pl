@@ -1218,7 +1218,8 @@ cmpl(gamle,bybrua,bybro).
 cmpl(gamle,bybruen,bybro). 
 %% cmpl(gamle,[kongens,vei],kongsvegen). %%   street
 %% cmpl(gamle,kongevei,kongsvegen).      %% 
-cmpl(gamle,nth,gløshaugen_syd). 
+%cmpl(gamle,nth,gløshaugen_syd). 
+cmpl(gamle,nth,prestegårdsjordet). 
 cmpl(gamle,åsvei,gamle_ås_street).  %%Street!
 cmpl(gamle,åsveien,gamle_ås_street). 
 cmpl(gamlekonge,vei,kongsvegen). 
@@ -2184,28 +2185,47 @@ cmpl(nr1,[],gråkallbanen).
 cmpl(nrk,[på,tyholt],tyholttårnet). 
 cmpl(nrk,tyholt,nrk). 
 cmpl(nsb,gods,terminalen). 
-cmpl(nth,[på,gløshaugen],gløshaugen_syd). 
+
+cmpl(nth,[på,gløshaugen],gløshaugen_syd).      %% RS-170623. Sommerruter not passing gløshaugen directly
 cmpl(nth,gløshaugen,gløshaugen_syd). 
 cmpl(nth,nord,gløshaugen_nord). 
 cmpl(nth,sør,gløshaugen_syd). 
-cmpl(ntnu,[at,gløshaugen],gløshaugen_syd). 
-cmpl(ntnu,[at,lade],ntnu_lade). 
-cmpl(ntnu,[at,lade],ntnu_lade). 
-cmpl(ntnu,[gløshaugen,nord],gløshaugen_nord). 
-cmpl(ntnu,[gløshaugen,sør],gløshaugen_syd). 
-cmpl(ntnu,[på,dragvoll],dragvoll). 
+
+%cmpl(nth,[på,gløshaugen],prestegårdsjordet). 
+%cmpl(nth,gløshaugen,prestegårdsjordet). 
+%cmpl(nth,nord,prestegårdsjordet). 
+%cmpl(nth,sør,prestegårdsjordet).
+%cmpl(ntnu,[på,gløshaugen],prestegårdsjordet). 
+%cmpl(ntnu,[at,gløshaugen],prestegårdsjordet). 
+%cmpl(ntnu,[gløshaugen,sør],prestegårdsjordet). 
+%cmpl(ntnu,[gløshaugen,nord],prestegårdsjordet). 
+%cmpl(ntnu,gloeshaugen,prestegårdsjordet). 
+%cmpl(ntnu,gløshaug,prestegårdsjordet). 
+%cmpl(ntnu,gløshaugen,prestegårdsjordet). 
+%cmpl(ntnu,n,prestegårdsjordet). 
+%cmpl(ntnu,nord,prestegårdsjordet). 
+%cmpl(ntnu,s,prestegårdsjordet). 
+%cmpl(ntnu,sør,prestegårdsjordet). 
+
 cmpl(ntnu,[på,gløshaugen],gløshaugen_syd). 
-cmpl(ntnu,[på,lade],ntnu_lade). 
-cmpl(ntnu,[på,lade],ntnu_lade). 
-cmpl(ntnu,dragvoll,ntnu_dragvoll). 
+cmpl(ntnu,[at,gløshaugen],gløshaugen_syd). 
+cmpl(ntnu,[gløshaugen,sør],gløshaugen_syd). 
+cmpl(ntnu,[gløshaugen,nord],gløshaugen_nord). 
 cmpl(ntnu,gloeshaugen,gløshaugen_nord). 
 cmpl(ntnu,gløshaug,gløshaugen_nord). 
 cmpl(ntnu,gløshaugen,gløshaugen_nord). 
-cmpl(ntnu,lade,ntnu_lade). 
 cmpl(ntnu,n,gløshaugen_nord). 
 cmpl(ntnu,nord,gløshaugen_nord). 
 cmpl(ntnu,s,gløshaugen_syd). 
 cmpl(ntnu,sør,gløshaugen_syd). 
+
+cmpl(ntnu,[at,lade],ntnu_lade). 
+cmpl(ntnu,[at,lade],ntnu_lade). 
+cmpl(ntnu,[på,dragvoll],dragvoll). 
+cmpl(ntnu,[på,lade],ntnu_lade). 
+cmpl(ntnu,[på,lade],ntnu_lade). 
+cmpl(ntnu,dragvoll,ntnu_dragvoll). 
+cmpl(ntnu,lade,ntnu_lade). 
 cmpl(nyborg,skole,nyborg). 
 cmpl(nyg,ård,nygård).  %%Nygård
 cmpl(nygards,street,olav_nygards_street).  %% Streets must be tagged as street
@@ -4140,7 +4160,10 @@ placestat(nissekollen,fiolsvingen).
 
 placestat(nordre_halset,migosenteret). %% renamed
 placestat(nrk,tyholttårnet). 
-placestat(nth,gløshaugen_syd).  %%
+
+%placestat(nth,gløshaugen_syd).  %%
+placestat(nth,prestegårdsjordet).  %%
+
 placestat(ntnu_lade,harald_hårfagres_gate).  %% Changed Name %<---
 placestat(ntnui,høgskoleringen).  
 %placestat(nyhavna,nidelv_bru).  %%(?) %% nedlagt 22. mars %% TA-110822 %% RS-150814
