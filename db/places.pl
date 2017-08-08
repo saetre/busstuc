@@ -3497,11 +3497,17 @@ isat( framveien,byåsen).
 
 isat( gartnerhallen,ikea). %%  (?)
 
+isat( professor_brochs_gate,gløshaugen). %% RS-170626
+isat( prestegårdsjordet,gløshaugen). %% RS-170626
 isat( gløshaugen_nord,gløshaugen). 
+
 isat( gløshaugen_nord,nth). 
 isat( gløshaugen_syd,gløshaugen). 
 isat( gløshaugen_syd,hesthagen). 
+
 isat( gløshaugen_syd,nth). 
+isat( professor_brochs_gate,nth). %% RS-170626
+isat( prestegårdsjordet,nth). %% RS-170626
 
 isat( haakon_vii_gate_17,haakon_vii_gate). 
 isat( haakon_vii_gate_17,haakon_vii_gate). 
@@ -3889,7 +3895,7 @@ placestat(devlegård,olav_engelbrektssons_alle).
 placestat(bilbyen,nidarvoll_skole). %%  bratsbergvegen 17. // garage
 placestat(dinbil,nidarvoll_skole).  %%  bratsbergvegen 11. // garage
 placestat('Din bil',nidarvoll_skole).  %% bratsbergvegen 11
-placestat(dis,gløshaugen_syd). %% TA-110401
+%placestat(dis,gløshaugen_syd). %% TA-110401 Division of Intelligent Systems? %% RS-170626
 
 placestat(dmmh,dalen_hageby). %% TA-110301
 
@@ -4162,7 +4168,7 @@ placestat(nordre_halset,migosenteret). %% renamed
 placestat(nrk,tyholttårnet). 
 
 %placestat(nth,gløshaugen_syd).  %%
-placestat(nth,prestegårdsjordet).  %%
+%placestat(nth,prestegårdsjordet).  %%
 
 placestat(ntnu_lade,harald_hårfagres_gate).  %% Changed Name %<---
 placestat(ntnui,høgskoleringen).  
