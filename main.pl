@@ -830,8 +830,6 @@ haltword( johnforbeskerry ).   %% <- Top Secret
       %% If an end command appears, TQL = end
       %% If an error occured,       TQL = error
       %% Otherwise,                 TQL = command(P).
-
-
 translate2( L, TQL ) :- 
     track(1,nl),
  

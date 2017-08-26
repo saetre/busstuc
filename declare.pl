@@ -23,8 +23,10 @@
           value/2.      %% RS-130630. declare:value is modified by the  :=  predicate, and checked by the =: predicate
 %
 
-language(L) :- value( language, L ). %% value(language,X) should have been set dynamically by now! Moved to utility...?
+%% value(language,X) should have been set dynamically by now! Moved to utility...?
+language(L) :- value( language, L ). 
 
+%% Set values on the "blackboard"
 set( Counter, Value ) :- 
     retractall( value( Counter, _ ) ),
     assert( value( Counter, Value ) ).
@@ -34,6 +36,8 @@ set( Counter, Value ) :-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 forget(X) :- retractall(X).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% "MEMORY" SECTION
+%forget/1, remember/1, % moved to main from declare.pl
 remember( Module:F ) :- Module:F, ! ; assert( Module:F ). %, out( 'remember' ),output(Module:F).        %% Add F it is does not already exist.
 % remember( Setting ) :- out( 'utility:remember/1 => Something went wrong with:'), output( Setting ), output( call( Setting ) ).
 
@@ -111,11 +115,14 @@ remember( Module:F ) :- Module:F, ! ; assert( Module:F ). %, out( 'remember' ),o
 %% RS-141105
 X := Y  :-      %% RS-131228    :=/2    X set to Y's value
     set(X,Y).
+
+%% Documentation! Reverse read/write from above
 X =: Y  :-      %% RS-141024    =:/2    Y is set to X's value
     value(X,Y). % ->  true ; ( out(X), output(' not set!'), fail ).   % ; ( out(X), output(' not set!'), fail ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :- meta_predicate  track( +, 0 ) .
+%% TA-110130  %% RS-150816 Always suceeds.
 track( N, P ) :- 
     value( trace, M ),  number(M), M >= N, 
     !,
@@ -124,6 +131,7 @@ track( N, P ) :-
 %///
 
 :- meta_predicate  trackprog( +, 0 ) . %% Moved to declare!  %% RS-150111
+%% Moved to declare!  %% RS-150111
 trackprog( N, P ) :-
     value( traceprog, M ), number(M), M >= N,
     !,

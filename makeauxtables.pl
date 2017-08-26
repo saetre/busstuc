@@ -110,6 +110,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 tafind(_X,Y,Z):- Y,Z.
+%% Utility
 taexists(_X,Y,Z):-Y,Z,!.
 taforall(_X,Y,Z):- \+ (Y, \+ Z),!.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -137,6 +138,7 @@ verify_files_exist( Filename, BaseFile ) :-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%% Documentation
 makeauxtables :-
         (       %% Make sure auxtables is as new as all the input-files: places, version
            verify_files_exist( 'db/auxtables.pl', 'db/foreign_places.pl' ),
@@ -250,6 +252,7 @@ createonlyfromstations :-
      dumppredas( fromstationonly0(X), fromstationonly(X) ).
 
 
+%% It will always be correct after two "passes"
 createonlytostations:- 
       for( tostation1(A), assert( tostationonly0(A) ) ),
 
@@ -266,6 +269,7 @@ createtransbuslist:-
     dumppredas(transbuslist0(X,Y,Z),transbuslist(X,Y,Z)).       %% TODO_ Remember to FORGET all the transbuslist0 that where just written to file again?
 
 
+%% It will always be correct after two "passes"
 nopassanyway(D,S):-
     \+ corr(S,_),
     \+ corr(_,S),
@@ -514,6 +518,7 @@ torehash(yggdrasi,yggdrasil).
 */
 
 
+%% BaseFolder? 'db/tables/r1611_141201'
 createhash :-
     verify_files_exist( 'db/namehashtable.pl', 'db/regstr.pl' ) ; (   %% BaseFolder? 'db/tables/r1611_141201'
             told,
@@ -685,7 +690,7 @@ splitgenroad(X,  X,nil,X).
 
 dumppredas( T0, T ):-
     nl,
-    write('%%% ' ),nl,nl, 
+    write('%%% Documentation' ),nl, %nl, 
     for( T0, writepred(T) ),
     nl.
 

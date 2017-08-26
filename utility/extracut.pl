@@ -89,7 +89,7 @@ reset_dynamic_predicates :- %% TA-110317
 
 dumppredas( T0, T ):-
     nl,
-    write('%%% ' ),nl,nl, 
+    write('%%% Documentation' ), nl, %nl, 
     for( T0, writepred(T) ),
     nl.
 

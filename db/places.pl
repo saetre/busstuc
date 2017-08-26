@@ -221,6 +221,12 @@ alias_station( ugla_trikk, ugla ).                %% RS-141115
 %% NOSTATION 
 
 %% places in Trondheim without station (not foreign)
+nostation(arbeidsbuss). %% SIC  endstation bus 100 
+
+nostation(frøset). 
+
+%% nostation(heggsnipen). %% fins ikke i rdata(barei hefte). %%fikset 5.3.07
+
 
 %% TRAM  stations
 %%  Experiment Only if not properstation
@@ -236,15 +242,6 @@ alias_station( ugla_trikk, ugla ).                %% RS-141115
 %nostation(søndre_hoem):- \+value(tmnflag,true). 
 %  nostation(st_olavs_gate). 
 %nostation(st_olavs_gate):- \+ value(tmnflag,true).        %% RS-131223    From busdat.pl
-
-
-
-nostation(arbeidsbuss). %% SIC  endstation bus 100 
-
-nostation(frøset). 
-
-%% nostation(heggsnipen). %% fins ikke i rdata(barei hefte). %%fikset 5.3.07
-
 
 %%%%%% Nostation  no bus to place ever
 
@@ -1218,8 +1215,8 @@ cmpl(gamle,bybrua,bybro).
 cmpl(gamle,bybruen,bybro). 
 %% cmpl(gamle,[kongens,vei],kongsvegen). %%   street
 %% cmpl(gamle,kongevei,kongsvegen).      %% 
-%cmpl(gamle,nth,gløshaugen_syd). 
-cmpl(gamle,nth,prestegårdsjordet). 
+cmpl(gamle,nth,gløshaugen_syd). 
+%cmpl(gamle,nth,prestegårdsjordet). 
 cmpl(gamle,åsvei,gamle_ås_street).  %%Street!
 cmpl(gamle,åsveien,gamle_ås_street). 
 cmpl(gamlekonge,vei,kongsvegen). 
@@ -3498,7 +3495,7 @@ isat( framveien,byåsen).
 isat( gartnerhallen,ikea). %%  (?)
 
 isat( professor_brochs_gate,gløshaugen). %% RS-170626
-isat( prestegårdsjordet,gløshaugen). %% RS-170626
+%isat( prestegårdsjordet,gløshaugen). %% RS-170626
 isat( gløshaugen_nord,gløshaugen). 
 
 isat( gløshaugen_nord,nth). 
@@ -4167,7 +4164,8 @@ placestat(nissekollen,fiolsvingen).
 placestat(nordre_halset,migosenteret). %% renamed
 placestat(nrk,tyholttårnet). 
 
-%placestat(nth,gløshaugen_syd).  %%
+placestat(nth,gløshaugen_syd).  %%
+placestat(nth,professor_brochs_gate).  %%
 %placestat(nth,prestegårdsjordet).  %%
 
 placestat(ntnu_lade,harald_hårfagres_gate).  %% Changed Name %<---
@@ -5239,6 +5237,7 @@ sameplace(øvreromolslia,romolslia_øvre).
 sameplace(kattemsentret,kattemsenteret). 
 
 
+% ( NAME, STRING )     %% RS-131225 For concise SMS-messages
 short_specname(d1,'Dronn. gt D1'). 
 short_specname(d2,'Dronn. gt D2'). 
 %short_specname(d3,'Dronn. gt D3'). 
@@ -8343,7 +8342,8 @@ underspecified_place(øya).  %% or nobuses ?
 underspecified_place(åsen). 
 
 
-unwanted_station(politihuset). % station, never used , but valid neighbourhood  
+% station, never used , but valid neighbourhood
+unwanted_station(politihuset).   
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
