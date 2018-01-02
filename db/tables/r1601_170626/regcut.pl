@@ -6,14 +6,16 @@
 
 :-ensure_loaded( [ regbus, regcomp, regdko, reghpl ] ).
 
-%%% Documentation
+%%% 
+
 cutloop_trace(stokkhaugen,2831,2860).
 cutloop_trace(stokkhaugen,4346,4386).
 cutloop_trace(stokkhaugen,4328,4386).
 
 
 
-%%% Documentation
+%%% 
+
 cutloop_rid(stokkhaugen,bus_0036_1002,2831,bus_0036_1001,2860,29,25).
 cutloop_rid(stokkhaugen,bus_0036_1004,2831,bus_0036_1003,2860,29,30).
 cutloop_rid(stokkhaugen,bus_0036_1006,2831,bus_0036_1005,2860,29,30).
@@ -135,7 +137,8 @@ cutloop_rid(stokkhaugen,bus_0066_9022,4328,bus_0066_9021,4386,18,20).
 cutloop_rid(stokkhaugen,bus_0066_9024,4328,bus_0066_9023,4386,18,20).
 
 
-%%% Documentation
+%%% 
+
 xi(pax(1,0,0,0),1).
 xi(pax(21,0,0,0),2).
 xi(pax(41,0,0,0),3).
@@ -344,7 +347,8 @@ xi(pax(6891,0,0,0),205).
 xi(pax(6898,0,0,0),206).
 
 
-%%% Documentation
+%%% 
+
 ex_passes4(1,16010718,st_olavs_gate,1,999,0).
 ex_passes4(1,16010014,hospitalskirka,2,1,1).
 ex_passes4(1,16010013,kalvskinnet,3,2,2).
@@ -7507,7 +7511,8 @@ ex_passes4(206,16386217,torget_orkanger,48,57,57).
 ex_passes4(206,16386093,rømme,49,58,58).
 
 
-%%% Documentation
+%%% 
+
 ex_ntourstops(1,20).
 ex_ntourstops(2,20).
 ex_ntourstops(3,37).
@@ -7716,7 +7721,8 @@ ex_ntourstops(205,7).
 ex_ntourstops(206,49).
 
 
-%%% Documentation
+%%% 
+
 ex_departureday(bus_0001_1001,2,612,6).
 ex_departureday(bus_0001_1002,1,645,6).
 ex_departureday(bus_0001_1003,2,642,6).
