@@ -72,7 +72,7 @@
 :- use_module( foreign_places, [ foreign/1 ] ). % (PLACE) -> places.pl
 :- use_module( places, [ corr/2, isat/2, nostation/1, placestat/2 ] ). %% RS-131225
 :- use_module( regbusall, [ nightbus/1 ] ).  %% RS-140619 %% RS-150104 , regbus/1 not used here...
-:- use_module( timedat, [ named_date/2, orig_named_date/2 ] ).  %% keep  until modules are fixed bound/1, bus/1, station/1
+:- use_module( timedat, [ named_date/2 ] ).  %% orig_named_date/2,    keep  until modules are fixed bound/1, bus/1, station/1
 
 %% RS-140416 Two different regbus (Period-independent, and many modules with regbus too. %%This used to be done from topreg? (Should be done from topreg:makeauxtable?)
 %:- use_module( regcompstr, [] ). %% HEAVY DB! %:- use_module( regstr, [] ). %% HEAVY DB! %:- use_module( teledat2, [] ). %% HEAVY DB!
