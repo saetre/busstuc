@@ -1,0 +1,2 @@
+feed_id,feed_publisher_name,feed_publisher_url,feed_lang
+RB,Rutebanken,http://www.rutebanken.org,no
