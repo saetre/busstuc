@@ -2295,7 +2295,7 @@ lextoresearch(X,[X]):-number(X),!.
 lextoresearch(X,_):- \+ atom(X),!,fail.
 
 
-lextoresearch(X,[X]):-
+lextoresearch(X,[X]) :-
     textlength(X,N), %% utility.pl
     N=< 4,     %% dont spellcheck NITH -> NTH
     !,         %% doesn't mean it is found
