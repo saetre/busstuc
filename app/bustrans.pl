@@ -146,7 +146,7 @@ dep_module( buslog, [ airbus_module/1, before/2, bus/1, bus_place_station/3, bus
 %                              railway_station/1, thetramno/1, tostationonly/1, vehicletype/2, xforeign/1 ] ).
 
 %UNIT: /
-%%% TODO: Find out why datetime/6, went undiscovered! There must be a way to test all these rules for completeness...
+%%% WHY: Find out why datetime/6, went undiscovered! There must be a way to test all these rules for completeness...
 dep_module( '../declare', [ set/2 ] ). %% RS-141015        Set variable-values,  in the module ! (RS-150414. Which module? Caller or Called Module?)
 
 %UNIT: /utility/  and  /

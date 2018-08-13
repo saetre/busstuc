@@ -1,0 +1,1394 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gis="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" version="1.08:NO-NeTEx-networktimetable:1.3">
+  <PublicationTimestamp>2018-08-09T23:53:21.094</PublicationTimestamp>
+  <ParticipantRef>RB</ParticipantRef>
+  <Description>Vikhammeråsen - Hommelvik - Sv</Description>
+  <dataObjects>
+    <CompositeFrame created="2018-06-25T00:00:00" version="1" id="ATB:CompositeFrame:74808">
+      <validityConditions>
+        <AvailabilityCondition version="1" id="ATB:AvailabilityCondition:74790">
+          <FromDate>2018-08-07T00:00:00</FromDate>
+          <ToDate>2019-08-09T00:00:00</ToDate>
+        </AvailabilityCondition>
+      </validityConditions>
+      <codespaces>
+        <Codespace id="nsr">
+          <Xmlns>NSR</Xmlns>
+          <XmlnsUrl>http://www.rutebanken.org/ns/nsr</XmlnsUrl>
+        </Codespace>
+        <Codespace id="atb">
+          <Xmlns>ATB</Xmlns>
+          <XmlnsUrl>http://www.rutebanken.org/ns/atb</XmlnsUrl>
+        </Codespace>
+      </codespaces>
+      <FrameDefaults>
+        <DefaultLocale>
+          <TimeZone>Europe/Oslo</TimeZone>
+          <DefaultLanguage>no</DefaultLanguage>
+        </DefaultLocale>
+      </FrameDefaults>
+      <frames>
+        <ServiceFrame version="1" id="ATB:ServiceFrame:74809">
+          <routes>
+            <Route version="1" id="ATB:Route:0537201-2018-08-13">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>01</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Vikhammeråsen</Name>
+              <ShortName>Vikhammeråsen</ShortName>
+              <LineRef ref="ATB:Line:0537-2018-08-13" version="1"/>
+              <DirectionType>inbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:74791">
+                  <RoutePointRef ref="ATB:RoutePoint:0537201001-2018-08-13"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:74792">
+                  <RoutePointRef ref="ATB:RoutePoint:0537201022-2018-08-13"/>
+                </PointOnRoute>
+              </pointsInSequence>
+            </Route>
+            <Route version="1" id="ATB:Route:0537203-2018-08-13">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>03</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Hommelvik</Name>
+              <ShortName>Hommelvik</ShortName>
+              <LineRef ref="ATB:Line:0537-2018-08-13" version="1"/>
+              <DirectionType>inbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:74793">
+                  <RoutePointRef ref="ATB:RoutePoint:0537203001-2018-08-13"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:74794">
+                  <RoutePointRef ref="ATB:RoutePoint:0537203006-2018-08-13"/>
+                </PointOnRoute>
+              </pointsInSequence>
+            </Route>
+            <Route version="1" id="ATB:Route:0537107-2018-08-13">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>07</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Sveberghallen</Name>
+              <ShortName>Sveberghallen</ShortName>
+              <LineRef ref="ATB:Line:0537-2018-08-13" version="1"/>
+              <DirectionType>outbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:74795">
+                  <RoutePointRef ref="ATB:RoutePoint:0537107001-2018-08-13"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:74796">
+                  <RoutePointRef ref="ATB:RoutePoint:0537107008-2018-08-13"/>
+                </PointOnRoute>
+              </pointsInSequence>
+            </Route>
+            <Route version="1" id="ATB:Route:0537106-2018-08-13">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>06</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Sveberghallen</Name>
+              <ShortName>Sveberghallen</ShortName>
+              <LineRef ref="ATB:Line:0537-2018-08-13" version="1"/>
+              <DirectionType>outbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:74797">
+                  <RoutePointRef ref="ATB:RoutePoint:0537106001-2018-08-13"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:74798">
+                  <RoutePointRef ref="ATB:RoutePoint:0537106027-2018-08-13"/>
+                </PointOnRoute>
+              </pointsInSequence>
+            </Route>
+          </routes>
+          <lines>
+            <Line version="1" id="ATB:Line:0537-2018-08-13">
+              <Name>Vikhammeråsen - Hommelvik - Sv</Name>
+              <ShortName>Vikhammeråsen - Hommelvik - Sv</ShortName>
+              <TransportMode>bus</TransportMode>
+              <TransportSubmode>
+                <BusSubmode>localBus</BusSubmode>
+              </TransportSubmode>
+              <PublicCode>537</PublicCode>
+              <OperatorRef ref="ATB:Operator:263"/>
+              <RepresentedByGroupRef ref="ATB:Network:160"/>
+            </Line>
+          </lines>
+          <journeyPatterns>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0537201-2018-08-13">
+              <Name>Vikhammeråsen</Name>
+              <ShortName>Vikhammeråsen</ShortName>
+              <RouteRef ref="ATB:Route:0537201-2018-08-13" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0537201001-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201001-2018-08-13"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0462-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0537201002-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201002-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="1" id="ATB:StopPointInJourneyPattern:0537201003-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201003-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="4" version="1" id="ATB:StopPointInJourneyPattern:0537201004-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201004-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="5" version="1" id="ATB:StopPointInJourneyPattern:0537201005-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201005-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="6" version="1" id="ATB:StopPointInJourneyPattern:0537201006-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201006-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="7" version="1" id="ATB:StopPointInJourneyPattern:0537201007-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201007-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="8" version="1" id="ATB:StopPointInJourneyPattern:0537201008-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201008-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="9" version="1" id="ATB:StopPointInJourneyPattern:0537201009-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201009-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="10" version="1" id="ATB:StopPointInJourneyPattern:0537201010-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201010-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="11" version="1" id="ATB:StopPointInJourneyPattern:0537201011-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201011-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="12" version="1" id="ATB:StopPointInJourneyPattern:0537201012-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201012-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="13" version="1" id="ATB:StopPointInJourneyPattern:0537201013-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201013-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="14" version="1" id="ATB:StopPointInJourneyPattern:0537201014-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201014-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="15" version="1" id="ATB:StopPointInJourneyPattern:0537201015-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201015-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="16" version="1" id="ATB:StopPointInJourneyPattern:0537201016-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201016-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="17" version="1" id="ATB:StopPointInJourneyPattern:0537201017-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201017-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="18" version="1" id="ATB:StopPointInJourneyPattern:0537201018-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201018-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="19" version="1" id="ATB:StopPointInJourneyPattern:0537201019-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201019-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="20" version="1" id="ATB:StopPointInJourneyPattern:0537201020-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201020-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="21" version="1" id="ATB:StopPointInJourneyPattern:0537201021-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201021-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="22" version="1" id="ATB:StopPointInJourneyPattern:0537201022-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537201022-2018-08-13"/>
+                  <ForBoarding>false</ForBoarding>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0537203-2018-08-13">
+              <Name>Hommelvik</Name>
+              <ShortName>Hommelvik</ShortName>
+              <RouteRef ref="ATB:Route:0537203-2018-08-13" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0537203001-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537203001-2018-08-13"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0463-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0537203002-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537203002-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="1" id="ATB:StopPointInJourneyPattern:0537203003-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537203003-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="4" version="1" id="ATB:StopPointInJourneyPattern:0537203004-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537203004-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="5" version="1" id="ATB:StopPointInJourneyPattern:0537203005-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537203005-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="6" version="1" id="ATB:StopPointInJourneyPattern:0537203006-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537203006-2018-08-13"/>
+                  <ForBoarding>false</ForBoarding>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0537107-2018-08-13">
+              <Name>Sveberghallen</Name>
+              <ShortName>Sveberghallen</ShortName>
+              <RouteRef ref="ATB:Route:0537107-2018-08-13" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0537107001-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537107001-2018-08-13"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0461-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0537107002-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537107002-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="1" id="ATB:StopPointInJourneyPattern:0537107003-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537107003-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="4" version="1" id="ATB:StopPointInJourneyPattern:0537107004-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537107004-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="5" version="1" id="ATB:StopPointInJourneyPattern:0537107005-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537107005-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="6" version="1" id="ATB:StopPointInJourneyPattern:0537107006-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537107006-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="7" version="1" id="ATB:StopPointInJourneyPattern:0537107007-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537107007-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="8" version="1" id="ATB:StopPointInJourneyPattern:0537107008-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537107008-2018-08-13"/>
+                  <ForBoarding>false</ForBoarding>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0537106-2018-08-13">
+              <Name>Sveberghallen</Name>
+              <ShortName>Sveberghallen</ShortName>
+              <RouteRef ref="ATB:Route:0537106-2018-08-13" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0537106001-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106001-2018-08-13"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0460-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0537106002-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106002-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="1" id="ATB:StopPointInJourneyPattern:0537106003-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106003-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="4" version="1" id="ATB:StopPointInJourneyPattern:0537106004-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106004-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="5" version="1" id="ATB:StopPointInJourneyPattern:0537106005-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106005-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="6" version="1" id="ATB:StopPointInJourneyPattern:0537106006-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106006-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="7" version="1" id="ATB:StopPointInJourneyPattern:0537106007-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106007-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="8" version="1" id="ATB:StopPointInJourneyPattern:0537106008-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106008-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="9" version="1" id="ATB:StopPointInJourneyPattern:0537106009-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106009-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="10" version="1" id="ATB:StopPointInJourneyPattern:0537106010-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106010-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="11" version="1" id="ATB:StopPointInJourneyPattern:0537106011-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106011-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="12" version="1" id="ATB:StopPointInJourneyPattern:0537106012-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106012-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="13" version="1" id="ATB:StopPointInJourneyPattern:0537106013-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106013-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="14" version="1" id="ATB:StopPointInJourneyPattern:0537106014-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106014-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="15" version="1" id="ATB:StopPointInJourneyPattern:0537106015-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106015-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="16" version="1" id="ATB:StopPointInJourneyPattern:0537106016-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106016-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="17" version="1" id="ATB:StopPointInJourneyPattern:0537106017-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106017-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="18" version="1" id="ATB:StopPointInJourneyPattern:0537106018-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106018-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="19" version="1" id="ATB:StopPointInJourneyPattern:0537106019-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106019-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="20" version="1" id="ATB:StopPointInJourneyPattern:0537106020-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106020-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="21" version="1" id="ATB:StopPointInJourneyPattern:0537106021-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106021-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="22" version="1" id="ATB:StopPointInJourneyPattern:0537106022-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106022-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="23" version="1" id="ATB:StopPointInJourneyPattern:0537106023-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106023-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="24" version="1" id="ATB:StopPointInJourneyPattern:0537106024-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106024-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="25" version="1" id="ATB:StopPointInJourneyPattern:0537106025-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106025-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="26" version="1" id="ATB:StopPointInJourneyPattern:0537106026-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106026-2018-08-13"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="27" version="1" id="ATB:StopPointInJourneyPattern:0537106027-2018-08-13">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0537106027-2018-08-13"/>
+                  <ForBoarding>false</ForBoarding>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+          </journeyPatterns>
+        </ServiceFrame>
+        <TimetableFrame version="1" id="ATB:TimetableFrame:74810">
+          <vehicleJourneys>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:05370011-2018-08-13">
+              <Name>Vikhammeråsen</Name>
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600028-2018-08-13"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0537201-2018-08-13" version="1"/>
+              <PublicCode>537</PublicCode>
+              <LineRef ref="ATB:Line:0537-2018-08-13" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201001-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201001-2018-08-13" version="1"/>
+                  <DepartureTime>21:15:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201002-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201002-2018-08-13" version="1"/>
+                  <DepartureTime>21:16:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201003-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201003-2018-08-13" version="1"/>
+                  <DepartureTime>21:19:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201004-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201004-2018-08-13" version="1"/>
+                  <DepartureTime>21:20:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201005-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201005-2018-08-13" version="1"/>
+                  <DepartureTime>21:21:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201006-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201006-2018-08-13" version="1"/>
+                  <DepartureTime>21:23:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201007-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201007-2018-08-13" version="1"/>
+                  <DepartureTime>21:24:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201008-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201008-2018-08-13" version="1"/>
+                  <DepartureTime>21:24:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201009-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201009-2018-08-13" version="1"/>
+                  <DepartureTime>21:25:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201010-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201010-2018-08-13" version="1"/>
+                  <DepartureTime>21:26:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201011-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201011-2018-08-13" version="1"/>
+                  <DepartureTime>21:27:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201012-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201012-2018-08-13" version="1"/>
+                  <DepartureTime>21:30:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201013-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201013-2018-08-13" version="1"/>
+                  <DepartureTime>21:31:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201014-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201014-2018-08-13" version="1"/>
+                  <DepartureTime>21:32:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201015-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201015-2018-08-13" version="1"/>
+                  <DepartureTime>21:33:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201016-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201016-2018-08-13" version="1"/>
+                  <DepartureTime>21:34:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201017-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201017-2018-08-13" version="1"/>
+                  <DepartureTime>21:35:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201018-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201018-2018-08-13" version="1"/>
+                  <DepartureTime>21:36:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201019-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201019-2018-08-13" version="1"/>
+                  <DepartureTime>21:36:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201020-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201020-2018-08-13" version="1"/>
+                  <DepartureTime>21:37:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201021-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201021-2018-08-13" version="1"/>
+                  <DepartureTime>21:39:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370011-2018-08-13-0537201022-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201022-2018-08-13" version="1"/>
+                  <ArrivalTime>21:40:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:05370009-2018-08-13">
+              <Name>Vikhammeråsen</Name>
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600028-2018-08-13"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0537201-2018-08-13" version="1"/>
+              <PublicCode>537</PublicCode>
+              <LineRef ref="ATB:Line:0537-2018-08-13" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201001-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201001-2018-08-13" version="1"/>
+                  <DepartureTime>18:50:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201002-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201002-2018-08-13" version="1"/>
+                  <DepartureTime>18:51:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201003-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201003-2018-08-13" version="1"/>
+                  <DepartureTime>18:54:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201004-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201004-2018-08-13" version="1"/>
+                  <DepartureTime>18:55:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201005-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201005-2018-08-13" version="1"/>
+                  <DepartureTime>18:56:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201006-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201006-2018-08-13" version="1"/>
+                  <DepartureTime>18:58:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201007-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201007-2018-08-13" version="1"/>
+                  <DepartureTime>18:59:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201008-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201008-2018-08-13" version="1"/>
+                  <DepartureTime>18:59:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201009-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201009-2018-08-13" version="1"/>
+                  <DepartureTime>19:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201010-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201010-2018-08-13" version="1"/>
+                  <DepartureTime>19:01:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201011-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201011-2018-08-13" version="1"/>
+                  <DepartureTime>19:02:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201012-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201012-2018-08-13" version="1"/>
+                  <DepartureTime>19:05:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201013-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201013-2018-08-13" version="1"/>
+                  <DepartureTime>19:06:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201014-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201014-2018-08-13" version="1"/>
+                  <DepartureTime>19:07:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201015-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201015-2018-08-13" version="1"/>
+                  <DepartureTime>19:08:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201016-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201016-2018-08-13" version="1"/>
+                  <DepartureTime>19:09:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201017-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201017-2018-08-13" version="1"/>
+                  <DepartureTime>19:10:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201018-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201018-2018-08-13" version="1"/>
+                  <DepartureTime>19:11:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201019-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201019-2018-08-13" version="1"/>
+                  <DepartureTime>19:11:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201020-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201020-2018-08-13" version="1"/>
+                  <DepartureTime>19:12:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201021-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201021-2018-08-13" version="1"/>
+                  <DepartureTime>19:14:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370009-2018-08-13-0537201022-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201022-2018-08-13" version="1"/>
+                  <ArrivalTime>19:15:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:05370005-2018-08-13">
+              <Name>Vikhammeråsen</Name>
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600028-2018-08-13"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0537201-2018-08-13" version="1"/>
+              <PublicCode>537</PublicCode>
+              <LineRef ref="ATB:Line:0537-2018-08-13" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201001-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201001-2018-08-13" version="1"/>
+                  <DepartureTime>17:50:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201002-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201002-2018-08-13" version="1"/>
+                  <DepartureTime>17:51:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201003-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201003-2018-08-13" version="1"/>
+                  <DepartureTime>17:54:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201004-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201004-2018-08-13" version="1"/>
+                  <DepartureTime>17:55:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201005-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201005-2018-08-13" version="1"/>
+                  <DepartureTime>17:56:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201006-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201006-2018-08-13" version="1"/>
+                  <DepartureTime>17:58:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201007-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201007-2018-08-13" version="1"/>
+                  <DepartureTime>17:59:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201008-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201008-2018-08-13" version="1"/>
+                  <DepartureTime>17:59:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201009-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201009-2018-08-13" version="1"/>
+                  <DepartureTime>18:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201010-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201010-2018-08-13" version="1"/>
+                  <DepartureTime>18:01:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201011-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201011-2018-08-13" version="1"/>
+                  <DepartureTime>18:02:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201012-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201012-2018-08-13" version="1"/>
+                  <DepartureTime>18:05:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201013-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201013-2018-08-13" version="1"/>
+                  <DepartureTime>18:06:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201014-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201014-2018-08-13" version="1"/>
+                  <DepartureTime>18:07:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201015-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201015-2018-08-13" version="1"/>
+                  <DepartureTime>18:08:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201016-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201016-2018-08-13" version="1"/>
+                  <DepartureTime>18:09:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201017-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201017-2018-08-13" version="1"/>
+                  <DepartureTime>18:10:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201018-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201018-2018-08-13" version="1"/>
+                  <DepartureTime>18:11:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201019-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201019-2018-08-13" version="1"/>
+                  <DepartureTime>18:11:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201020-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201020-2018-08-13" version="1"/>
+                  <DepartureTime>18:12:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201021-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201021-2018-08-13" version="1"/>
+                  <DepartureTime>18:14:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370005-2018-08-13-0537201022-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201022-2018-08-13" version="1"/>
+                  <ArrivalTime>18:15:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:05370007-2018-08-13">
+              <Name>Vikhammeråsen</Name>
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600028-2018-08-13"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0537201-2018-08-13" version="1"/>
+              <PublicCode>537</PublicCode>
+              <LineRef ref="ATB:Line:0537-2018-08-13" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201001-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201001-2018-08-13" version="1"/>
+                  <DepartureTime>20:10:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201002-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201002-2018-08-13" version="1"/>
+                  <DepartureTime>20:11:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201003-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201003-2018-08-13" version="1"/>
+                  <DepartureTime>20:14:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201004-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201004-2018-08-13" version="1"/>
+                  <DepartureTime>20:15:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201005-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201005-2018-08-13" version="1"/>
+                  <DepartureTime>20:16:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201006-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201006-2018-08-13" version="1"/>
+                  <DepartureTime>20:18:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201007-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201007-2018-08-13" version="1"/>
+                  <DepartureTime>20:19:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201008-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201008-2018-08-13" version="1"/>
+                  <DepartureTime>20:19:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201009-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201009-2018-08-13" version="1"/>
+                  <DepartureTime>20:20:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201010-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201010-2018-08-13" version="1"/>
+                  <DepartureTime>20:21:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201011-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201011-2018-08-13" version="1"/>
+                  <DepartureTime>20:22:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201012-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201012-2018-08-13" version="1"/>
+                  <DepartureTime>20:25:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201013-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201013-2018-08-13" version="1"/>
+                  <DepartureTime>20:26:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201014-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201014-2018-08-13" version="1"/>
+                  <DepartureTime>20:27:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201015-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201015-2018-08-13" version="1"/>
+                  <DepartureTime>20:28:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201016-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201016-2018-08-13" version="1"/>
+                  <DepartureTime>20:29:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201017-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201017-2018-08-13" version="1"/>
+                  <DepartureTime>20:30:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201018-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201018-2018-08-13" version="1"/>
+                  <DepartureTime>20:31:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201019-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201019-2018-08-13" version="1"/>
+                  <DepartureTime>20:31:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201020-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201020-2018-08-13" version="1"/>
+                  <DepartureTime>20:32:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201021-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201021-2018-08-13" version="1"/>
+                  <DepartureTime>20:34:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370007-2018-08-13-0537201022-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537201022-2018-08-13" version="1"/>
+                  <ArrivalTime>20:35:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:05370001-2018-08-13">
+              <Name>Hommelvik</Name>
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600028-2018-08-13"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0537203-2018-08-13" version="1"/>
+              <PublicCode>537</PublicCode>
+              <LineRef ref="ATB:Line:0537-2018-08-13" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370001-2018-08-13-0537203001-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537203001-2018-08-13" version="1"/>
+                  <DepartureTime>10:05:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370001-2018-08-13-0537203002-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537203002-2018-08-13" version="1"/>
+                  <DepartureTime>10:06:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370001-2018-08-13-0537203003-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537203003-2018-08-13" version="1"/>
+                  <DepartureTime>10:09:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370001-2018-08-13-0537203004-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537203004-2018-08-13" version="1"/>
+                  <DepartureTime>10:10:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370001-2018-08-13-0537203005-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537203005-2018-08-13" version="1"/>
+                  <DepartureTime>10:11:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370001-2018-08-13-0537203006-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537203006-2018-08-13" version="1"/>
+                  <ArrivalTime>10:15:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:05370003-2018-08-13">
+              <Name>Hommelvik</Name>
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600028-2018-08-13"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0537203-2018-08-13" version="1"/>
+              <PublicCode>537</PublicCode>
+              <LineRef ref="ATB:Line:0537-2018-08-13" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370003-2018-08-13-0537203001-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537203001-2018-08-13" version="1"/>
+                  <DepartureTime>11:40:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370003-2018-08-13-0537203002-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537203002-2018-08-13" version="1"/>
+                  <DepartureTime>11:41:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370003-2018-08-13-0537203003-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537203003-2018-08-13" version="1"/>
+                  <DepartureTime>11:44:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370003-2018-08-13-0537203004-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537203004-2018-08-13" version="1"/>
+                  <DepartureTime>11:45:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370003-2018-08-13-0537203005-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537203005-2018-08-13" version="1"/>
+                  <DepartureTime>11:46:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370003-2018-08-13-0537203006-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537203006-2018-08-13" version="1"/>
+                  <ArrivalTime>11:50:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:05370002-2018-08-13">
+              <Name>Sveberghallen</Name>
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600028-2018-08-13"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0537107-2018-08-13" version="1"/>
+              <PublicCode>537</PublicCode>
+              <LineRef ref="ATB:Line:0537-2018-08-13" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370002-2018-08-13-0537107001-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537107001-2018-08-13" version="1"/>
+                  <DepartureTime>09:50:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370002-2018-08-13-0537107002-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537107002-2018-08-13" version="1"/>
+                  <DepartureTime>09:51:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370002-2018-08-13-0537107003-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537107003-2018-08-13" version="1"/>
+                  <DepartureTime>09:52:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370002-2018-08-13-0537107004-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537107004-2018-08-13" version="1"/>
+                  <DepartureTime>09:53:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370002-2018-08-13-0537107005-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537107005-2018-08-13" version="1"/>
+                  <DepartureTime>09:57:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370002-2018-08-13-0537107006-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537107006-2018-08-13" version="1"/>
+                  <DepartureTime>09:58:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370002-2018-08-13-0537107007-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537107007-2018-08-13" version="1"/>
+                  <DepartureTime>09:59:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370002-2018-08-13-0537107008-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537107008-2018-08-13" version="1"/>
+                  <ArrivalTime>10:03:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:05370004-2018-08-13">
+              <Name>Sveberghallen</Name>
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600028-2018-08-13"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0537107-2018-08-13" version="1"/>
+              <PublicCode>537</PublicCode>
+              <LineRef ref="ATB:Line:0537-2018-08-13" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370004-2018-08-13-0537107001-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537107001-2018-08-13" version="1"/>
+                  <DepartureTime>11:20:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370004-2018-08-13-0537107002-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537107002-2018-08-13" version="1"/>
+                  <DepartureTime>11:21:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370004-2018-08-13-0537107003-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537107003-2018-08-13" version="1"/>
+                  <DepartureTime>11:22:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370004-2018-08-13-0537107004-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537107004-2018-08-13" version="1"/>
+                  <DepartureTime>11:23:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370004-2018-08-13-0537107005-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537107005-2018-08-13" version="1"/>
+                  <DepartureTime>11:27:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370004-2018-08-13-0537107006-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537107006-2018-08-13" version="1"/>
+                  <DepartureTime>11:28:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370004-2018-08-13-0537107007-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537107007-2018-08-13" version="1"/>
+                  <DepartureTime>11:29:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370004-2018-08-13-0537107008-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537107008-2018-08-13" version="1"/>
+                  <ArrivalTime>11:33:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:05370012-2018-08-13">
+              <Name>Sveberghallen</Name>
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600028-2018-08-13"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0537106-2018-08-13" version="1"/>
+              <PublicCode>537</PublicCode>
+              <LineRef ref="ATB:Line:0537-2018-08-13" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106001-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106001-2018-08-13" version="1"/>
+                  <DepartureTime>20:40:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106002-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106002-2018-08-13" version="1"/>
+                  <DepartureTime>20:41:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106003-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106003-2018-08-13" version="1"/>
+                  <DepartureTime>20:42:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106004-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106004-2018-08-13" version="1"/>
+                  <DepartureTime>20:44:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106005-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106005-2018-08-13" version="1"/>
+                  <DepartureTime>20:45:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106006-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106006-2018-08-13" version="1"/>
+                  <DepartureTime>20:46:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106007-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106007-2018-08-13" version="1"/>
+                  <DepartureTime>20:47:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106008-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106008-2018-08-13" version="1"/>
+                  <DepartureTime>20:48:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106009-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106009-2018-08-13" version="1"/>
+                  <DepartureTime>20:49:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106010-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106010-2018-08-13" version="1"/>
+                  <DepartureTime>20:50:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106011-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106011-2018-08-13" version="1"/>
+                  <DepartureTime>20:51:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106012-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106012-2018-08-13" version="1"/>
+                  <DepartureTime>20:51:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106013-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106013-2018-08-13" version="1"/>
+                  <DepartureTime>20:52:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106014-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106014-2018-08-13" version="1"/>
+                  <DepartureTime>20:52:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106015-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106015-2018-08-13" version="1"/>
+                  <DepartureTime>20:54:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106016-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106016-2018-08-13" version="1"/>
+                  <DepartureTime>20:56:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106017-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106017-2018-08-13" version="1"/>
+                  <DepartureTime>20:57:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106018-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106018-2018-08-13" version="1"/>
+                  <DepartureTime>20:58:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106019-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106019-2018-08-13" version="1"/>
+                  <DepartureTime>20:59:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106020-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106020-2018-08-13" version="1"/>
+                  <DepartureTime>21:01:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106021-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106021-2018-08-13" version="1"/>
+                  <DepartureTime>21:02:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106022-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106022-2018-08-13" version="1"/>
+                  <DepartureTime>21:03:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106023-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106023-2018-08-13" version="1"/>
+                  <DepartureTime>21:04:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106024-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106024-2018-08-13" version="1"/>
+                  <DepartureTime>21:08:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106025-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106025-2018-08-13" version="1"/>
+                  <DepartureTime>21:09:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106026-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106026-2018-08-13" version="1"/>
+                  <DepartureTime>21:10:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370012-2018-08-13-0537106027-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106027-2018-08-13" version="1"/>
+                  <ArrivalTime>21:12:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:05370010-2018-08-13">
+              <Name>Sveberghallen</Name>
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600028-2018-08-13"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0537106-2018-08-13" version="1"/>
+              <PublicCode>537</PublicCode>
+              <LineRef ref="ATB:Line:0537-2018-08-13" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106001-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106001-2018-08-13" version="1"/>
+                  <DepartureTime>18:15:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106002-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106002-2018-08-13" version="1"/>
+                  <DepartureTime>18:16:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106003-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106003-2018-08-13" version="1"/>
+                  <DepartureTime>18:17:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106004-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106004-2018-08-13" version="1"/>
+                  <DepartureTime>18:19:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106005-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106005-2018-08-13" version="1"/>
+                  <DepartureTime>18:20:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106006-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106006-2018-08-13" version="1"/>
+                  <DepartureTime>18:21:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106007-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106007-2018-08-13" version="1"/>
+                  <DepartureTime>18:22:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106008-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106008-2018-08-13" version="1"/>
+                  <DepartureTime>18:23:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106009-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106009-2018-08-13" version="1"/>
+                  <DepartureTime>18:24:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106010-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106010-2018-08-13" version="1"/>
+                  <DepartureTime>18:25:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106011-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106011-2018-08-13" version="1"/>
+                  <DepartureTime>18:26:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106012-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106012-2018-08-13" version="1"/>
+                  <DepartureTime>18:26:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106013-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106013-2018-08-13" version="1"/>
+                  <DepartureTime>18:27:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106014-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106014-2018-08-13" version="1"/>
+                  <DepartureTime>18:27:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106015-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106015-2018-08-13" version="1"/>
+                  <DepartureTime>18:29:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106016-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106016-2018-08-13" version="1"/>
+                  <DepartureTime>18:31:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106017-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106017-2018-08-13" version="1"/>
+                  <DepartureTime>18:32:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106018-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106018-2018-08-13" version="1"/>
+                  <DepartureTime>18:33:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106019-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106019-2018-08-13" version="1"/>
+                  <DepartureTime>18:34:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106020-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106020-2018-08-13" version="1"/>
+                  <DepartureTime>18:36:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106021-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106021-2018-08-13" version="1"/>
+                  <DepartureTime>18:37:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106022-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106022-2018-08-13" version="1"/>
+                  <DepartureTime>18:38:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106023-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106023-2018-08-13" version="1"/>
+                  <DepartureTime>18:39:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106024-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106024-2018-08-13" version="1"/>
+                  <DepartureTime>18:43:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106025-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106025-2018-08-13" version="1"/>
+                  <DepartureTime>18:44:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106026-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106026-2018-08-13" version="1"/>
+                  <DepartureTime>18:45:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370010-2018-08-13-0537106027-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106027-2018-08-13" version="1"/>
+                  <ArrivalTime>18:47:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:05370006-2018-08-13">
+              <Name>Sveberghallen</Name>
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600028-2018-08-13"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0537106-2018-08-13" version="1"/>
+              <PublicCode>537</PublicCode>
+              <LineRef ref="ATB:Line:0537-2018-08-13" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106001-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106001-2018-08-13" version="1"/>
+                  <DepartureTime>17:10:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106002-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106002-2018-08-13" version="1"/>
+                  <DepartureTime>17:11:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106003-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106003-2018-08-13" version="1"/>
+                  <DepartureTime>17:12:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106004-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106004-2018-08-13" version="1"/>
+                  <DepartureTime>17:14:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106005-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106005-2018-08-13" version="1"/>
+                  <DepartureTime>17:15:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106006-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106006-2018-08-13" version="1"/>
+                  <DepartureTime>17:16:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106007-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106007-2018-08-13" version="1"/>
+                  <DepartureTime>17:17:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106008-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106008-2018-08-13" version="1"/>
+                  <DepartureTime>17:18:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106009-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106009-2018-08-13" version="1"/>
+                  <DepartureTime>17:19:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106010-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106010-2018-08-13" version="1"/>
+                  <DepartureTime>17:20:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106011-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106011-2018-08-13" version="1"/>
+                  <DepartureTime>17:21:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106012-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106012-2018-08-13" version="1"/>
+                  <DepartureTime>17:21:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106013-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106013-2018-08-13" version="1"/>
+                  <DepartureTime>17:22:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106014-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106014-2018-08-13" version="1"/>
+                  <DepartureTime>17:22:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106015-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106015-2018-08-13" version="1"/>
+                  <DepartureTime>17:24:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106016-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106016-2018-08-13" version="1"/>
+                  <DepartureTime>17:26:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106017-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106017-2018-08-13" version="1"/>
+                  <DepartureTime>17:27:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106018-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106018-2018-08-13" version="1"/>
+                  <DepartureTime>17:28:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106019-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106019-2018-08-13" version="1"/>
+                  <DepartureTime>17:29:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106020-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106020-2018-08-13" version="1"/>
+                  <DepartureTime>17:31:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106021-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106021-2018-08-13" version="1"/>
+                  <DepartureTime>17:32:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106022-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106022-2018-08-13" version="1"/>
+                  <DepartureTime>17:33:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106023-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106023-2018-08-13" version="1"/>
+                  <DepartureTime>17:34:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106024-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106024-2018-08-13" version="1"/>
+                  <DepartureTime>17:38:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106025-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106025-2018-08-13" version="1"/>
+                  <DepartureTime>17:39:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106026-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106026-2018-08-13" version="1"/>
+                  <DepartureTime>17:40:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370006-2018-08-13-0537106027-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106027-2018-08-13" version="1"/>
+                  <ArrivalTime>17:42:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:05370008-2018-08-13">
+              <Name>Sveberghallen</Name>
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600028-2018-08-13"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0537106-2018-08-13" version="1"/>
+              <PublicCode>537</PublicCode>
+              <LineRef ref="ATB:Line:0537-2018-08-13" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106001-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106001-2018-08-13" version="1"/>
+                  <DepartureTime>19:20:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106002-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106002-2018-08-13" version="1"/>
+                  <DepartureTime>19:21:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106003-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106003-2018-08-13" version="1"/>
+                  <DepartureTime>19:22:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106004-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106004-2018-08-13" version="1"/>
+                  <DepartureTime>19:24:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106005-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106005-2018-08-13" version="1"/>
+                  <DepartureTime>19:25:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106006-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106006-2018-08-13" version="1"/>
+                  <DepartureTime>19:26:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106007-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106007-2018-08-13" version="1"/>
+                  <DepartureTime>19:27:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106008-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106008-2018-08-13" version="1"/>
+                  <DepartureTime>19:28:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106009-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106009-2018-08-13" version="1"/>
+                  <DepartureTime>19:29:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106010-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106010-2018-08-13" version="1"/>
+                  <DepartureTime>19:30:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106011-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106011-2018-08-13" version="1"/>
+                  <DepartureTime>19:31:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106012-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106012-2018-08-13" version="1"/>
+                  <DepartureTime>19:31:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106013-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106013-2018-08-13" version="1"/>
+                  <DepartureTime>19:32:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106014-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106014-2018-08-13" version="1"/>
+                  <DepartureTime>19:32:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106015-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106015-2018-08-13" version="1"/>
+                  <DepartureTime>19:34:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106016-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106016-2018-08-13" version="1"/>
+                  <DepartureTime>19:36:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106017-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106017-2018-08-13" version="1"/>
+                  <DepartureTime>19:37:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106018-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106018-2018-08-13" version="1"/>
+                  <DepartureTime>19:38:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106019-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106019-2018-08-13" version="1"/>
+                  <DepartureTime>19:39:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106020-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106020-2018-08-13" version="1"/>
+                  <DepartureTime>19:41:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106021-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106021-2018-08-13" version="1"/>
+                  <DepartureTime>19:42:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106022-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106022-2018-08-13" version="1"/>
+                  <DepartureTime>19:43:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106023-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106023-2018-08-13" version="1"/>
+                  <DepartureTime>19:44:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106024-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106024-2018-08-13" version="1"/>
+                  <DepartureTime>19:48:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106025-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106025-2018-08-13" version="1"/>
+                  <DepartureTime>19:49:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106026-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106026-2018-08-13" version="1"/>
+                  <DepartureTime>19:50:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:05370008-2018-08-13-0537106027-2018-08-13">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0537106027-2018-08-13" version="1"/>
+                  <ArrivalTime>19:52:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+          </vehicleJourneys>
+        </TimetableFrame>
+      </frames>
+    </CompositeFrame>
+  </dataObjects>
+</PublicationDelivery>

@@ -5,7 +5,7 @@
 %%    Example: passes4(17326,16011035,anton_grevskotts_vei,22,15,16).
 
 %% NTOURSTOPS (TOURTYPE,LENGTH). Tourtype almost matches the linenumber in regpas.pl and FILE.TDA or FILE.TMS
-%%    Defines the length (number of stations) inthe tourtype, e.g. ntourstops(12713,5).
+%%    Defines the length (number of stations) in the tourtype, e.g. ntourstops(12713,5).
 
 
 %% PASSES4 (TOURTYPE, STATION NUMBER, STATION, SEQNUMBER, ARR DELAY, DEP DELAY)

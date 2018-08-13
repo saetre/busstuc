@@ -1218,7 +1218,7 @@ cmpl(gamle,bybrua,bybro).
 cmpl(gamle,bybruen,bybro). 
 %% cmpl(gamle,[kongens,vei],kongsvegen). %%   street
 %% cmpl(gamle,kongevei,kongsvegen).      %% 
-%cmpl(gamle,nth,gløshaugen_syd). 
+cmpl(gamle,nth,gløshaugen). 
 cmpl(gamle,nth,prestegårdsjordet). 
 cmpl(gamle,åsvei,gamle_ås_street).  %%Street!
 cmpl(gamle,åsveien,gamle_ås_street). 
@@ -1261,8 +1261,8 @@ cmpl(gløshaugen,[idretts,senter],høyskoleringen). %% nec %% TA-101110
 cmpl(gløshaugen,n,gløshaugen_nord). 
 cmpl(gløshaugen,nord,gløshaugen_nord). 
 cmpl(gløshaugen,ntnu,gløshaugen_nord). 
-cmpl(gløshaugen,s,gløshaugen_syd). 
-cmpl(gløshaugen,sør,gløshaugen_syd). 
+cmpl(gløshaugen,s,gløshaugen). 
+cmpl(gløshaugen,sør,gløshaugen). 
 cmpl(godagers,[vei],alf_godagers_vei). 
 
 cmpl(gods,nsb,terminalen).  %% godsterminalen_nsb -> terminalen (AtB)
@@ -2075,7 +2075,7 @@ cmpl(møller,trondheim,møller_bil).
 cmpl(møre,[og,romsdal],møre_og_romsdal). 
 cmpl(n,[elvehavn],nedre_elvehavn). 
 cmpl(n,[ilevollen],nordre_ilevolden). 
-cmpl(n,[t,h],gløshaugen_syd). 
+%cmpl(n,[t,h],gløshaugen). 
 cmpl(n,[t,n,u],ntnu). 
 cmpl(n,charlottenlund,charlottenlund_nedre). 
 cmpl(n,leirfoss,nedre_leirfoss). 
@@ -2186,10 +2186,10 @@ cmpl(nrk,[på,tyholt],tyholttårnet).
 cmpl(nrk,tyholt,nrk). 
 cmpl(nsb,gods,terminalen). 
 
-cmpl(nth,[på,gløshaugen],gløshaugen_syd).      %% RS-170623. Sommerruter not passing gløshaugen directly
-cmpl(nth,gløshaugen,gløshaugen_syd). 
+cmpl(nth,[på,gløshaugen],gløshaugen).      %% RS-170623. Sommerruter not passing gløshaugen directly
+cmpl(nth,gløshaugen,gløshaugen). 
 cmpl(nth,nord,gløshaugen_nord). 
-cmpl(nth,sør,gløshaugen_syd). 
+cmpl(nth,sør,gløshaugen). 
 
 %cmpl(nth,[på,gløshaugen],prestegårdsjordet). 
 %cmpl(nth,gløshaugen,prestegårdsjordet). 
@@ -2207,17 +2207,17 @@ cmpl(nth,sør,gløshaugen_syd).
 %cmpl(ntnu,s,prestegårdsjordet). 
 %cmpl(ntnu,sør,prestegårdsjordet). 
 
-cmpl(ntnu,[på,gløshaugen],gløshaugen_syd). 
-cmpl(ntnu,[at,gløshaugen],gløshaugen_syd). 
-cmpl(ntnu,[gløshaugen,sør],gløshaugen_syd). 
+cmpl(ntnu,[på,gløshaugen],gløshaugen). 
+cmpl(ntnu,[at,gløshaugen],gløshaugen). 
+cmpl(ntnu,[gløshaugen,sør],gløshaugen). 
 cmpl(ntnu,[gløshaugen,nord],gløshaugen_nord). 
 cmpl(ntnu,gloeshaugen,gløshaugen_nord). 
 cmpl(ntnu,gløshaug,gløshaugen_nord). 
 cmpl(ntnu,gløshaugen,gløshaugen_nord). 
 cmpl(ntnu,n,gløshaugen_nord). 
 cmpl(ntnu,nord,gløshaugen_nord). 
-cmpl(ntnu,s,gløshaugen_syd). 
-cmpl(ntnu,sør,gløshaugen_syd). 
+cmpl(ntnu,s,gløshaugen). 
+cmpl(ntnu,sør,gløshaugen). 
 
 cmpl(ntnu,[at,lade],ntnu_lade). 
 cmpl(ntnu,[at,lade],ntnu_lade). 
@@ -2977,7 +2977,7 @@ cmpl(søndre,[gate,23],søndre_gate_23).
 cmpl(søndre,[gt,22],søndre_gate_22). 
 cmpl(søndre,[gt,23],søndre_gate_23). 
 cmpl(søndre,gate,søndregate). 
-cmpl(søndre,gløshaugen,gløshaugen_syd).  %% (sydlige?)
+cmpl(søndre,gløshaugen,gløshaugen).  %% (sydlige?)
 cmpl(søndre,gt,søndregate). 
 cmpl(søndre,hallset,søndre_hallset).  %% \+ spellc to halset
 cmpl(søndre,hoem,søndre_hoem).  %% Tramstation
@@ -3420,11 +3420,11 @@ cmpl(åsvenein,skole,åsveien_skole).  %% ?
 %
 % isat( lerkendal_stadion, lerkendal ).
 % isat( lerchendal_gård, lerkendal ). 
-% isat( gløshaugen_syd, gløshaugen ).
+% isat( gløshaugen_nord, gløshaugen ).
 %
 
 %% SENTRUM (PLACE) FIRST - ALPHABETICALLY (on PLACE) BELOW
-%% RS-140102    TODO: hovedterminalen (used for corr)  vs.  sentrum (used for isat, sentrum as a PLACE) ?
+%% RS-140102    REMEMBER: hovedterminalen (used for corr)  vs.  sentrum (used for isat, sentrum as a PLACE) ?
 
 %% REVERSE ??
 isat( olav_tryggvasons_gate, hovedterminalen ).    %% RS-121223 RS-141104 Sommer vs. vinter!?
@@ -3502,10 +3502,10 @@ isat( prestegårdsjordet,gløshaugen). %% RS-170626
 isat( gløshaugen_nord,gløshaugen). 
 
 isat( gløshaugen_nord,nth). 
-isat( gløshaugen_syd,gløshaugen). 
-isat( gløshaugen_syd,hesthagen). 
+isat( gløshaugen_nord,gløshaugen). 
+isat( gløshaugen_nord,hesthagen). 
 
-isat( gløshaugen_syd,nth). 
+isat( gløshaugen,nth). 
 isat( professor_brochs_gate,nth). %% RS-170626
 isat( prestegårdsjordet,nth). %% RS-170626
 
@@ -3895,7 +3895,7 @@ placestat(devlegård,olav_engelbrektssons_alle).
 placestat(bilbyen,nidarvoll_skole). %%  bratsbergvegen 17. // garage
 placestat(dinbil,nidarvoll_skole).  %%  bratsbergvegen 11. // garage
 placestat('Din bil',nidarvoll_skole).  %% bratsbergvegen 11
-%placestat(dis,gløshaugen_syd). %% TA-110401 Division of Intelligent Systems? %% RS-170626
+%placestat(dis,gløshaugen). %% TA-110401 Division of Intelligent Systems? %% RS-170626
 
 placestat(dmmh,dalen_hageby). %% TA-110301
 
@@ -3950,7 +3950,7 @@ placestat(fossestuvegen,nedre_leirfoss).   %% RS-150111
 placestat(gartnerhagen,gartnerhallen). 
 placestat(gilde,gartnerhallen). 
 placestat(gildheimsveien,gildheim). 
-placestat(gløshaugen,gløshaugen_syd).  %% Avoid GS/N messages
+%placestat(gløshaugen,gløshaugen_syd).  %% Avoid GS/N messages %% RS-180813
 placestat(godsterminalen,terminalen). 
 placestat(granåsen,granåsen_vm_anlegget). 
 placestat(grillstad,grilstadkleiva). 
@@ -4010,7 +4010,7 @@ placestat(hårstad,martin_kregnes_veg).
 placestat(hårstadmarka,martin_kregnes_veg). 
 placestat(hårstadmyra,martin_kregnes_veg). 
 
-placestat(idi,gløshaugen_syd). %% TA-110401
+placestat(idi,gløshaugen). %% TA-110401
 placestat(idrettsbygget,høgskoleringen). 
 % placestat(idrettsplassen, idrettsplassen_jakobsli). %% RS-150104. Name-change. Summer/Winter? %% RS-150814 Doesn't work in autumn
 
@@ -4092,7 +4092,7 @@ placestat(leinstrand,leinstrand_samf_hus). %% RS-140616 leinstrand_samfunnshus?
 placestat(leira,leira_skole). 
 placestat(leirbrua,leirbrua_gård). 
 placestat(lerkendalskrysset,lerkendal_stadion). 
-placestat(lerkendalsvegen,gløshaugen_syd). 
+placestat(lerkendalsvegen,gløshaugen). 
 placestat(leuthenhaven,torget). 
 %% placestat(lianvannet,lian). %% not AtB
 placestat('Lilleby skole',stiklestadveien).  %% Ladeveien 1 
@@ -4189,7 +4189,7 @@ placestat(olavsgården,strindheim). %% Thonning Owesens gate 20
 
 
 placestat(palmehaven,hovedterminalen). 
-placestat(perleporten,gløshaugen_syd). 
+placestat(perleporten,gløshaugen). 
 placestat(persaune,persaunet_leir). %neitherisspellch
 placestat(persaunet,persaunet_leir). %neitherisspellch
 placestat(pir,pirbadet). 
@@ -4226,7 +4226,7 @@ placestat( ranheim_kirke, nedre_humlehaugen_øst ). %% RS-130302 Overrides isat(
 
 placestat(ravnkloa,hovedterminalen).  %%(Hazard?)
 
-%% placestat(realfagbygget,gløshaugen_syd). %% --- Telebuster house
+%% placestat(realfagbygget,gløshaugen). %% --- Telebuster house
 placestat(regionssykehuset,st_olavs_hospital).  %%r_i_t_hovedporten). 
 placestat(regionsykehuset,st_olavs_hospital).  %%r_i_t_hovedporten). 
 placestat(reina,høgreina).  %%betterthanRena
@@ -5467,7 +5467,7 @@ specname(fjøslia,'Fjøslia').
 specname(fjøsvollan,'Fjøsvollan'). 
 specname(forsøket,'Forsøket'). 
 specname(gløshaugen_nord,'Gløshaugen Nord'). 
-specname(gløshaugen_syd,'Gløshaugen Syd'). 
+%specname(gløshaugen_syd,'Gløshaugen Syd'). 
 specname(godsterminalen_nsb,'Godsterminalen NSB').  %%(dontprintwhatisnot accepted)EH-030616
 specname(granåsen_gård,'Granåsen gård'). 
 specname(granåsen_vm_anlegget,'Granåsen VM-anlegget'). 
@@ -6396,8 +6396,8 @@ synplace(gløshagen,gløshaugen).
 
 synplace(gløshaugane,gløshaugen). 
 synplace(gløshaugennord,gløshaugen_nord). 
-synplace(gløshaugensyd,gløshaugen_syd). 
-synplace(gløshaugensør,gløshaugen_syd). 
+%synplace(gløshaugensyd,gløshaugen_syd). 
+%synplace(gløshaugensør,gløshaugen_syd). 
 synplace(gløshaun,gløshaugen). 
 synplace(gløshogen,gløshaugen). 
 synplace(gløshuagne,gløshaugen). 

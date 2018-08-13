@@ -1,0 +1,1540 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gis="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" version="1.08:NO-NeTEx-networktimetable:1.3">
+  <PublicationTimestamp>2018-08-09T23:56:27.675</PublicationTimestamp>
+  <ParticipantRef>RB</ParticipantRef>
+  <Description>Garten - Storfosna - Leksa - V</Description>
+  <dataObjects>
+    <CompositeFrame created="2018-06-25T00:00:00" version="1" id="ATB:CompositeFrame:91167">
+      <validityConditions>
+        <AvailabilityCondition version="1" id="ATB:AvailabilityCondition:91040">
+          <FromDate>2018-08-07T00:00:00</FromDate>
+          <ToDate>2019-08-09T00:00:00</ToDate>
+        </AvailabilityCondition>
+      </validityConditions>
+      <codespaces>
+        <Codespace id="nsr">
+          <Xmlns>NSR</Xmlns>
+          <XmlnsUrl>http://www.rutebanken.org/ns/nsr</XmlnsUrl>
+        </Codespace>
+        <Codespace id="atb">
+          <Xmlns>ATB</Xmlns>
+          <XmlnsUrl>http://www.rutebanken.org/ns/atb</XmlnsUrl>
+        </Codespace>
+      </codespaces>
+      <FrameDefaults>
+        <DefaultLocale>
+          <TimeZone>Europe/Oslo</TimeZone>
+          <DefaultLanguage>no</DefaultLanguage>
+        </DefaultLocale>
+      </FrameDefaults>
+      <frames>
+        <ServiceFrame version="1" id="ATB:ServiceFrame:91168">
+          <routes>
+            <Route version="1" id="ATB:Route:0860108-2018-06-25">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>08</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Værnes ferjekai</Name>
+              <ShortName>Værnes ferjekai</ShortName>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <DirectionType>outbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:91041">
+                  <RoutePointRef ref="ATB:RoutePoint:0860108001-2018-06-25"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:91042">
+                  <RoutePointRef ref="ATB:RoutePoint:0860108004-2018-06-25"/>
+                </PointOnRoute>
+              </pointsInSequence>
+              <InverseRouteRef ref="ATB:Route:0860208-2018-06-25" version="1"/>
+            </Route>
+            <Route version="1" id="ATB:Route:0860205-2018-06-25">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>05</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Leksa ferjekai</Name>
+              <ShortName>Leksa ferjekai</ShortName>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <DirectionType>inbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:91043">
+                  <RoutePointRef ref="ATB:RoutePoint:0860205001-2018-06-25"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:91044">
+                  <RoutePointRef ref="ATB:RoutePoint:0860205002-2018-06-25"/>
+                </PointOnRoute>
+              </pointsInSequence>
+              <InverseRouteRef ref="ATB:Route:0860105-2018-06-25" version="1"/>
+            </Route>
+            <Route version="1" id="ATB:Route:0860109-2018-06-25">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>09</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Værnes ferjekai</Name>
+              <ShortName>Værnes ferjekai</ShortName>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <DirectionType>outbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:91045">
+                  <RoutePointRef ref="ATB:RoutePoint:0860109001-2018-06-25"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:91046">
+                  <RoutePointRef ref="ATB:RoutePoint:0860109004-2018-06-25"/>
+                </PointOnRoute>
+              </pointsInSequence>
+            </Route>
+            <Route version="1" id="ATB:Route:0860203-2018-06-25">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>03</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Garten ferjekai</Name>
+              <ShortName>Garten ferjekai</ShortName>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <DirectionType>inbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:91047">
+                  <RoutePointRef ref="ATB:RoutePoint:0860203001-2018-06-25"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:91048">
+                  <RoutePointRef ref="ATB:RoutePoint:0860203004-2018-06-25"/>
+                </PointOnRoute>
+              </pointsInSequence>
+              <InverseRouteRef ref="ATB:Route:0860103-2018-06-25" version="1"/>
+            </Route>
+            <Route version="1" id="ATB:Route:0860107-2018-06-25">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>07</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Værnes ferjekai</Name>
+              <ShortName>Værnes ferjekai</ShortName>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <DirectionType>outbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:91049">
+                  <RoutePointRef ref="ATB:RoutePoint:0860107001-2018-06-25"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:91050">
+                  <RoutePointRef ref="ATB:RoutePoint:0860107003-2018-06-25"/>
+                </PointOnRoute>
+              </pointsInSequence>
+              <InverseRouteRef ref="ATB:Route:0860207-2018-06-25" version="1"/>
+            </Route>
+            <Route version="1" id="ATB:Route:0860204-2018-06-25">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>04</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Garten ferjekai</Name>
+              <ShortName>Garten ferjekai</ShortName>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <DirectionType>inbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:91051">
+                  <RoutePointRef ref="ATB:RoutePoint:0860204001-2018-06-25"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:91052">
+                  <RoutePointRef ref="ATB:RoutePoint:0860204004-2018-06-25"/>
+                </PointOnRoute>
+              </pointsInSequence>
+              <InverseRouteRef ref="ATB:Route:0860104-2018-06-25" version="1"/>
+            </Route>
+            <Route version="1" id="ATB:Route:0860202-2018-06-25">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>02</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Leksa ferjekai</Name>
+              <ShortName>Leksa ferjekai</ShortName>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <DirectionType>inbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:91053">
+                  <RoutePointRef ref="ATB:RoutePoint:0860202001-2018-06-25"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:91054">
+                  <RoutePointRef ref="ATB:RoutePoint:0860202002-2018-06-25"/>
+                </PointOnRoute>
+              </pointsInSequence>
+              <InverseRouteRef ref="ATB:Route:0860102-2018-06-25" version="1"/>
+            </Route>
+            <Route version="1" id="ATB:Route:0860106-2018-06-25">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>06</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Værnes ferjekai</Name>
+              <ShortName>Værnes ferjekai</ShortName>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <DirectionType>outbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:91055">
+                  <RoutePointRef ref="ATB:RoutePoint:0860106001-2018-06-25"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:91056">
+                  <RoutePointRef ref="ATB:RoutePoint:0860106004-2018-06-25"/>
+                </PointOnRoute>
+              </pointsInSequence>
+              <InverseRouteRef ref="ATB:Route:0860206-2018-06-25" version="1"/>
+            </Route>
+            <Route version="1" id="ATB:Route:0860201-2018-06-25">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>01</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Garten ferjekai</Name>
+              <ShortName>Garten ferjekai</ShortName>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <DirectionType>inbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:91057">
+                  <RoutePointRef ref="ATB:RoutePoint:0860201001-2018-06-25"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:91058">
+                  <RoutePointRef ref="ATB:RoutePoint:0860201003-2018-06-25"/>
+                </PointOnRoute>
+              </pointsInSequence>
+              <InverseRouteRef ref="ATB:Route:0860101-2018-06-25" version="1"/>
+            </Route>
+            <Route version="1" id="ATB:Route:0860208-2018-06-25">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>08</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Garten ferjekai</Name>
+              <ShortName>Garten ferjekai</ShortName>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <DirectionType>inbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:91059">
+                  <RoutePointRef ref="ATB:RoutePoint:0860208001-2018-06-25"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:91060">
+                  <RoutePointRef ref="ATB:RoutePoint:0860208004-2018-06-25"/>
+                </PointOnRoute>
+              </pointsInSequence>
+              <InverseRouteRef ref="ATB:Route:0860108-2018-06-25" version="1"/>
+            </Route>
+            <Route version="1" id="ATB:Route:0860105-2018-06-25">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>05</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Værnes ferjekai</Name>
+              <ShortName>Værnes ferjekai</ShortName>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <DirectionType>outbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:91061">
+                  <RoutePointRef ref="ATB:RoutePoint:0860105001-2018-06-25"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:91062">
+                  <RoutePointRef ref="ATB:RoutePoint:0860105004-2018-06-25"/>
+                </PointOnRoute>
+              </pointsInSequence>
+              <InverseRouteRef ref="ATB:Route:0860205-2018-06-25" version="1"/>
+            </Route>
+            <Route version="1" id="ATB:Route:0860103-2018-06-25">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>03</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Værnes ferjekai</Name>
+              <ShortName>Værnes ferjekai</ShortName>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <DirectionType>outbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:91063">
+                  <RoutePointRef ref="ATB:RoutePoint:0860103001-2018-06-25"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:91064">
+                  <RoutePointRef ref="ATB:RoutePoint:0860103002-2018-06-25"/>
+                </PointOnRoute>
+              </pointsInSequence>
+              <InverseRouteRef ref="ATB:Route:0860203-2018-06-25" version="1"/>
+            </Route>
+            <Route version="1" id="ATB:Route:0860207-2018-06-25">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>07</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Garten ferjekai</Name>
+              <ShortName>Garten ferjekai</ShortName>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <DirectionType>inbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:91065">
+                  <RoutePointRef ref="ATB:RoutePoint:0860207001-2018-06-25"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:91066">
+                  <RoutePointRef ref="ATB:RoutePoint:0860207004-2018-06-25"/>
+                </PointOnRoute>
+              </pointsInSequence>
+              <InverseRouteRef ref="ATB:Route:0860107-2018-06-25" version="1"/>
+            </Route>
+            <Route version="1" id="ATB:Route:0860104-2018-06-25">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>04</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Værnes ferjekai</Name>
+              <ShortName>Værnes ferjekai</ShortName>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <DirectionType>outbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:91067">
+                  <RoutePointRef ref="ATB:RoutePoint:0860104001-2018-06-25"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:91068">
+                  <RoutePointRef ref="ATB:RoutePoint:0860104002-2018-06-25"/>
+                </PointOnRoute>
+              </pointsInSequence>
+              <InverseRouteRef ref="ATB:Route:0860204-2018-06-25" version="1"/>
+            </Route>
+            <Route version="1" id="ATB:Route:0860102-2018-06-25">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>02</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Værnes ferjekai</Name>
+              <ShortName>Værnes ferjekai</ShortName>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <DirectionType>outbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:91069">
+                  <RoutePointRef ref="ATB:RoutePoint:0860102001-2018-06-25"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:91070">
+                  <RoutePointRef ref="ATB:RoutePoint:0860102004-2018-06-25"/>
+                </PointOnRoute>
+              </pointsInSequence>
+              <InverseRouteRef ref="ATB:Route:0860202-2018-06-25" version="1"/>
+            </Route>
+            <Route version="1" id="ATB:Route:0860206-2018-06-25">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>06</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Garten ferjekai</Name>
+              <ShortName>Garten ferjekai</ShortName>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <DirectionType>inbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:91071">
+                  <RoutePointRef ref="ATB:RoutePoint:0860206001-2018-06-25"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:91072">
+                  <RoutePointRef ref="ATB:RoutePoint:0860206003-2018-06-25"/>
+                </PointOnRoute>
+              </pointsInSequence>
+              <InverseRouteRef ref="ATB:Route:0860106-2018-06-25" version="1"/>
+            </Route>
+            <Route version="1" id="ATB:Route:0860101-2018-06-25">
+              <keyList>
+                <KeyValue>
+                  <Key>Number</Key>
+                  <Value>01</Value>
+                </KeyValue>
+              </keyList>
+              <Name>Værnes ferjekai</Name>
+              <ShortName>Værnes ferjekai</ShortName>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <DirectionType>outbound</DirectionType>
+              <pointsInSequence>
+                <PointOnRoute order="1" version="1" id="ATB:PointOnRoute:91073">
+                  <RoutePointRef ref="ATB:RoutePoint:0860101001-2018-06-25"/>
+                </PointOnRoute>
+                <PointOnRoute order="2" version="1" id="ATB:PointOnRoute:91074">
+                  <RoutePointRef ref="ATB:RoutePoint:0860101004-2018-06-25"/>
+                </PointOnRoute>
+              </pointsInSequence>
+              <InverseRouteRef ref="ATB:Route:0860201-2018-06-25" version="1"/>
+            </Route>
+          </routes>
+          <lines>
+            <Line version="1" id="ATB:Line:0860-2018-06-25">
+              <Name>Garten - Storfosna - Leksa - V</Name>
+              <ShortName>Garten - Storfosna - Leksa - V</ShortName>
+              <TransportMode>water</TransportMode>
+              <TransportSubmode>
+                <WaterSubmode>localCarFerry</WaterSubmode>
+              </TransportSubmode>
+              <PublicCode>860</PublicCode>
+              <OperatorRef ref="ATB:Operator:270"/>
+              <RepresentedByGroupRef ref="ATB:Network:160"/>
+            </Line>
+          </lines>
+          <journeyPatterns>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0860108-2018-06-25">
+              <Name>Værnes ferjekai</Name>
+              <RouteRef ref="ATB:Route:0860108-2018-06-25" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0860108001-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860108001-2018-06-25"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0860108-2018-06-25-0860108001-2018-06-25-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0860108002-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860108002-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="1" id="ATB:StopPointInJourneyPattern:0860108003-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860108003-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="4" version="1" id="ATB:StopPointInJourneyPattern:0860108004-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860108004-2018-06-25"/>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0860205-2018-06-25">
+              <Name>Leksa ferjekai</Name>
+              <RouteRef ref="ATB:Route:0860205-2018-06-25" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0860205001-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860205001-2018-06-25"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0860205-2018-06-25-0860205001-2018-06-25-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0860205002-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860205002-2018-06-25"/>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0860109-2018-06-25">
+              <Name>Værnes ferjekai</Name>
+              <RouteRef ref="ATB:Route:0860109-2018-06-25" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0860109001-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860109001-2018-06-25"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0860109-2018-06-25-0860109001-2018-06-25-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0860109002-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860109002-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="1" id="ATB:StopPointInJourneyPattern:0860109003-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860109003-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="4" version="1" id="ATB:StopPointInJourneyPattern:0860109004-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860109004-2018-06-25"/>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0860203-2018-06-25">
+              <Name>Garten ferjekai</Name>
+              <RouteRef ref="ATB:Route:0860203-2018-06-25" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0860203001-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860203001-2018-06-25"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0860203-2018-06-25-0860203001-2018-06-25-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0860203002-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860203002-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="1" id="ATB:StopPointInJourneyPattern:0860203003-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860203003-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="4" version="1" id="ATB:StopPointInJourneyPattern:0860203004-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860203004-2018-06-25"/>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0860107-2018-06-25">
+              <Name>Værnes ferjekai</Name>
+              <RouteRef ref="ATB:Route:0860107-2018-06-25" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0860107001-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860107001-2018-06-25"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0860107-2018-06-25-0860107001-2018-06-25-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0860107002-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860107002-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="1" id="ATB:StopPointInJourneyPattern:0860107003-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860107003-2018-06-25"/>
+                  <ForBoarding>false</ForBoarding>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0860204-2018-06-25">
+              <Name>Garten ferjekai</Name>
+              <RouteRef ref="ATB:Route:0860204-2018-06-25" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0860204001-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860204001-2018-06-25"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0860204-2018-06-25-0860204001-2018-06-25-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0860204002-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860204002-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="1" id="ATB:StopPointInJourneyPattern:0860204003-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860204003-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="4" version="1" id="ATB:StopPointInJourneyPattern:0860204004-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860204004-2018-06-25"/>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0860202-2018-06-25">
+              <Name>Leksa ferjekai</Name>
+              <RouteRef ref="ATB:Route:0860202-2018-06-25" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0860202001-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860202001-2018-06-25"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0860202-2018-06-25-0860202001-2018-06-25-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0860202002-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860202002-2018-06-25"/>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0860106-2018-06-25">
+              <Name>Værnes ferjekai</Name>
+              <RouteRef ref="ATB:Route:0860106-2018-06-25" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0860106001-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860106001-2018-06-25"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0860106-2018-06-25-0860106001-2018-06-25-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0860106002-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860106002-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="1" id="ATB:StopPointInJourneyPattern:0860106003-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860106003-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="4" version="1" id="ATB:StopPointInJourneyPattern:0860106004-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860106004-2018-06-25"/>
+                  <ForBoarding>false</ForBoarding>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0860201-2018-06-25">
+              <Name>Garten ferjekai</Name>
+              <RouteRef ref="ATB:Route:0860201-2018-06-25" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0860201001-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860201001-2018-06-25"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0860201-2018-06-25-0860201001-2018-06-25-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0860201002-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860201002-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="1" id="ATB:StopPointInJourneyPattern:0860201003-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860201003-2018-06-25"/>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0860208-2018-06-25">
+              <Name>Garten ferjekai</Name>
+              <RouteRef ref="ATB:Route:0860208-2018-06-25" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0860208001-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860208001-2018-06-25"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0860208-2018-06-25-0860208001-2018-06-25-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0860208002-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860208002-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="1" id="ATB:StopPointInJourneyPattern:0860208003-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860208003-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="4" version="1" id="ATB:StopPointInJourneyPattern:0860208004-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860208004-2018-06-25"/>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0860105-2018-06-25">
+              <Name>Værnes ferjekai</Name>
+              <RouteRef ref="ATB:Route:0860105-2018-06-25" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0860105001-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860105001-2018-06-25"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0860105-2018-06-25-0860105001-2018-06-25-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0860105002-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860105002-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="1" id="ATB:StopPointInJourneyPattern:0860105003-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860105003-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="4" version="1" id="ATB:StopPointInJourneyPattern:0860105004-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860105004-2018-06-25"/>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0860103-2018-06-25">
+              <Name>Værnes ferjekai</Name>
+              <RouteRef ref="ATB:Route:0860103-2018-06-25" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0860103001-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860103001-2018-06-25"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0860103-2018-06-25-0860103001-2018-06-25-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0860103002-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860103002-2018-06-25"/>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0860207-2018-06-25">
+              <Name>Garten ferjekai</Name>
+              <RouteRef ref="ATB:Route:0860207-2018-06-25" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0860207001-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860207001-2018-06-25"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0860207-2018-06-25-0860207001-2018-06-25-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0860207002-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860207002-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="1" id="ATB:StopPointInJourneyPattern:0860207003-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860207003-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="4" version="1" id="ATB:StopPointInJourneyPattern:0860207004-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860207004-2018-06-25"/>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0860104-2018-06-25">
+              <Name>Værnes ferjekai</Name>
+              <RouteRef ref="ATB:Route:0860104-2018-06-25" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0860104001-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860104001-2018-06-25"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0860104-2018-06-25-0860104001-2018-06-25-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0860104002-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860104002-2018-06-25"/>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0860102-2018-06-25">
+              <Name>Værnes ferjekai</Name>
+              <RouteRef ref="ATB:Route:0860102-2018-06-25" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0860102001-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860102001-2018-06-25"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0860102-2018-06-25-0860102001-2018-06-25-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0860102002-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860102002-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="1" id="ATB:StopPointInJourneyPattern:0860102003-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860102003-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="4" version="1" id="ATB:StopPointInJourneyPattern:0860102004-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860102004-2018-06-25"/>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0860206-2018-06-25">
+              <Name>Garten ferjekai</Name>
+              <RouteRef ref="ATB:Route:0860206-2018-06-25" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0860206001-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860206001-2018-06-25"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0860206-2018-06-25-0860206001-2018-06-25-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0860206002-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860206002-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="1" id="ATB:StopPointInJourneyPattern:0860206003-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860206003-2018-06-25"/>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+            <JourneyPattern version="1" id="ATB:JourneyPattern:0860101-2018-06-25">
+              <Name>Værnes ferjekai</Name>
+              <RouteRef ref="ATB:Route:0860101-2018-06-25" version="1"/>
+              <pointsInSequence>
+                <StopPointInJourneyPattern order="1" version="1" id="ATB:StopPointInJourneyPattern:0860101001-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860101001-2018-06-25"/>
+                  <ForAlighting>false</ForAlighting>
+                  <DestinationDisplayRef ref="ATB:DestinationDisplay:0860101-2018-06-25-0860101001-2018-06-25-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="2" version="1" id="ATB:StopPointInJourneyPattern:0860101002-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860101002-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="3" version="1" id="ATB:StopPointInJourneyPattern:0860101003-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860101003-2018-06-25"/>
+                </StopPointInJourneyPattern>
+                <StopPointInJourneyPattern order="4" version="1" id="ATB:StopPointInJourneyPattern:0860101004-2018-06-25">
+                  <ScheduledStopPointRef ref="ATB:ScheduledStopPoint:0860101004-2018-06-25"/>
+                </StopPointInJourneyPattern>
+              </pointsInSequence>
+            </JourneyPattern>
+          </journeyPatterns>
+          <noticeAssignments>
+            <NoticeAssignment order="18" version="1" id="ATB:NoticeAssignment:91092">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860204001-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="37" version="1" id="ATB:NoticeAssignment:91111">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860105003-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="3" version="1" id="ATB:NoticeAssignment:91077">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860108003-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="33" version="1" id="ATB:NoticeAssignment:91107">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860208003-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="14" version="1" id="ATB:NoticeAssignment:91088">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860203004-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="57" version="1" id="ATB:NoticeAssignment:91131">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860101004-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="15" version="1" id="ATB:NoticeAssignment:91089">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860107001-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="22" version="1" id="ATB:NoticeAssignment:91096">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860202001-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="38" version="1" id="ATB:NoticeAssignment:91112">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860105004-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="27" version="1" id="ATB:NoticeAssignment:91101">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860106004-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="17" version="1" id="ATB:NoticeAssignment:91091">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860107003-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="23" version="1" id="ATB:NoticeAssignment:91097">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860202002-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="46" version="1" id="ATB:NoticeAssignment:91120">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860104002-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="28" version="1" id="ATB:NoticeAssignment:91102">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860201001-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="51" version="1" id="ATB:NoticeAssignment:91125">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860206001-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="47" version="1" id="ATB:NoticeAssignment:91121">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860102001-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="43" version="1" id="ATB:NoticeAssignment:91117">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860207003-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="54" version="1" id="ATB:NoticeAssignment:91128">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860101001-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="12" version="1" id="ATB:NoticeAssignment:91086">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860203002-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="35" version="1" id="ATB:NoticeAssignment:91109">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860105001-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="13" version="1" id="ATB:NoticeAssignment:91087">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860203003-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="34" version="1" id="ATB:NoticeAssignment:91108">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860208004-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="26" version="1" id="ATB:NoticeAssignment:91100">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860106003-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="10" version="1" id="ATB:NoticeAssignment:91084">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860109004-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="55" version="1" id="ATB:NoticeAssignment:91129">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860101002-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="39" version="1" id="ATB:NoticeAssignment:91113">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860103001-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="11" version="1" id="ATB:NoticeAssignment:91085">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860203001-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="53" version="1" id="ATB:NoticeAssignment:91127">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860206003-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="41" version="1" id="ATB:NoticeAssignment:91115">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860207001-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="52" version="1" id="ATB:NoticeAssignment:91126">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860206002-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="31" version="1" id="ATB:NoticeAssignment:91105">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860208001-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="4" version="1" id="ATB:NoticeAssignment:91078">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860108004-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="21" version="1" id="ATB:NoticeAssignment:91095">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860204004-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="36" version="1" id="ATB:NoticeAssignment:91110">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860105002-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="32" version="1" id="ATB:NoticeAssignment:91106">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860208002-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="2" version="1" id="ATB:NoticeAssignment:91076">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860108002-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="5" version="1" id="ATB:NoticeAssignment:91079">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860205001-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="49" version="1" id="ATB:NoticeAssignment:91123">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860102003-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="29" version="1" id="ATB:NoticeAssignment:91103">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860201002-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="19" version="1" id="ATB:NoticeAssignment:91093">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860204002-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="40" version="1" id="ATB:NoticeAssignment:91114">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860103002-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="24" version="1" id="ATB:NoticeAssignment:91098">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860106001-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="16" version="1" id="ATB:NoticeAssignment:91090">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860107002-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="7" version="1" id="ATB:NoticeAssignment:91081">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860109001-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="48" version="1" id="ATB:NoticeAssignment:91122">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860102002-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="20" version="1" id="ATB:NoticeAssignment:91094">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860204003-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="6" version="1" id="ATB:NoticeAssignment:91080">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860205002-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="44" version="1" id="ATB:NoticeAssignment:91118">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860207004-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="1" version="1" id="ATB:NoticeAssignment:91075">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860108001-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="30" version="1" id="ATB:NoticeAssignment:91104">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860201003-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="42" version="1" id="ATB:NoticeAssignment:91116">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860207002-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="8" version="1" id="ATB:NoticeAssignment:91082">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860109002-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="45" version="1" id="ATB:NoticeAssignment:91119">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860104001-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="50" version="1" id="ATB:NoticeAssignment:91124">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860102004-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="56" version="1" id="ATB:NoticeAssignment:91130">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860101003-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="9" version="1" id="ATB:NoticeAssignment:91083">
+              <NoticeRef ref="ATB:Notice:093-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860109003-2018-06-25" version="1"/>
+            </NoticeAssignment>
+            <NoticeAssignment order="25" version="1" id="ATB:NoticeAssignment:91099">
+              <NoticeRef ref="ATB:Notice:088-2018-06-25"/>
+              <NoticedObjectRef ref="ATB:StopPointInJourneyPattern:0860106002-2018-06-25" version="1"/>
+            </NoticeAssignment>
+          </noticeAssignments>
+        </ServiceFrame>
+        <TimetableFrame version="1" id="ATB:TimetableFrame:91169">
+          <vehicleJourneys>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08600004-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600021-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860108-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600004-2018-06-25-0860108001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860108001-2018-06-25" version="1"/>
+                  <DepartureTime>12:40:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600004-2018-06-25-0860108002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860108002-2018-06-25" version="1"/>
+                  <DepartureTime>13:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600004-2018-06-25-0860108003-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860108003-2018-06-25" version="1"/>
+                  <DepartureTime>13:30:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600004-2018-06-25-0860108004-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860108004-2018-06-25" version="1"/>
+                  <ArrivalTime>14:05:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08600009-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600006-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860205-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600009-2018-06-25-0860205001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860205001-2018-06-25" version="1"/>
+                  <DepartureTime>19:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600009-2018-06-25-0860205002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860205002-2018-06-25" version="1"/>
+                  <ArrivalTime>19:30:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08607013-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600004-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860205-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607013-2018-06-25-0860205001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860205001-2018-06-25" version="1"/>
+                  <DepartureTime>19:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607013-2018-06-25-0860205002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860205002-2018-06-25" version="1"/>
+                  <ArrivalTime>19:30:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08600008-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600020-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860109-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600008-2018-06-25-0860109001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860109001-2018-06-25" version="1"/>
+                  <DepartureTime>17:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600008-2018-06-25-0860109002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860109002-2018-06-25" version="1"/>
+                  <DepartureTime>17:20:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600008-2018-06-25-0860109003-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860109003-2018-06-25" version="1"/>
+                  <DepartureTime>17:55:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600008-2018-06-25-0860109004-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860109004-2018-06-25" version="1"/>
+                  <ArrivalTime>18:30:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08600005-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600021-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860203-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600005-2018-06-25-0860203001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860203001-2018-06-25" version="1"/>
+                  <DepartureTime>15:30:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600005-2018-06-25-0860203002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860203002-2018-06-25" version="1"/>
+                  <DepartureTime>16:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600005-2018-06-25-0860203003-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860203003-2018-06-25" version="1"/>
+                  <DepartureTime>16:35:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600005-2018-06-25-0860203004-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860203004-2018-06-25" version="1"/>
+                  <ArrivalTime>17:00:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08607012-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600004-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860107-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607012-2018-06-25-0860107001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860107001-2018-06-25" version="1"/>
+                  <DepartureTime>18:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607012-2018-06-25-0860107002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860107002-2018-06-25" version="1"/>
+                  <DepartureTime>18:20:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607012-2018-06-25-0860107003-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860107003-2018-06-25" version="1"/>
+                  <ArrivalTime>19:00:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08607004-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600004-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860107-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607004-2018-06-25-0860107001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860107001-2018-06-25" version="1"/>
+                  <DepartureTime>15:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607004-2018-06-25-0860107002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860107002-2018-06-25" version="1"/>
+                  <DepartureTime>15:20:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607004-2018-06-25-0860107003-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860107003-2018-06-25" version="1"/>
+                  <ArrivalTime>16:00:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08600007-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600020-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860204-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600007-2018-06-25-0860204001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860204001-2018-06-25" version="1"/>
+                  <DepartureTime>18:30:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600007-2018-06-25-0860204002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860204002-2018-06-25" version="1"/>
+                  <DepartureTime>18:55:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600007-2018-06-25-0860204003-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860204003-2018-06-25" version="1"/>
+                  <DepartureTime>19:40:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600007-2018-06-25-0860204004-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860204004-2018-06-25" version="1"/>
+                  <ArrivalTime>20:00:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08600003-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600021-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860202-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600003-2018-06-25-0860202001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860202001-2018-06-25" version="1"/>
+                  <DepartureTime>14:05:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600003-2018-06-25-0860202002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860202002-2018-06-25" version="1"/>
+                  <ArrivalTime>14:30:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08607003-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600004-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860202-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607003-2018-06-25-0860202001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860202001-2018-06-25" version="1"/>
+                  <DepartureTime>16:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607003-2018-06-25-0860202002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860202002-2018-06-25" version="1"/>
+                  <ArrivalTime>16:25:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08606004-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600005-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860106-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08606004-2018-06-25-0860106001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860106001-2018-06-25" version="1"/>
+                  <DepartureTime>16:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08606004-2018-06-25-0860106002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860106002-2018-06-25" version="1"/>
+                  <DepartureTime>16:20:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08606004-2018-06-25-0860106003-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860106003-2018-06-25" version="1"/>
+                  <DepartureTime>16:55:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08606004-2018-06-25-0860106004-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860106004-2018-06-25" version="1"/>
+                  <ArrivalTime>17:30:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08600001-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600021-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860201-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600001-2018-06-25-0860201001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860201001-2018-06-25" version="1"/>
+                  <DepartureTime>08:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600001-2018-06-25-0860201002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860201002-2018-06-25" version="1"/>
+                  <DepartureTime>08:25:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600001-2018-06-25-0860201003-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860201003-2018-06-25" version="1"/>
+                  <ArrivalTime>09:00:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08606003-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600005-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860208-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08606003-2018-06-25-0860208001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860208001-2018-06-25" version="1"/>
+                  <DepartureTime>17:30:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08606003-2018-06-25-0860208002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860208002-2018-06-25" version="1"/>
+                  <DepartureTime>17:55:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08606003-2018-06-25-0860208003-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860208003-2018-06-25" version="1"/>
+                  <DepartureTime>18:30:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08606003-2018-06-25-0860208004-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860208004-2018-06-25" version="1"/>
+                  <ArrivalTime>19:00:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08607002-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600004-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860105-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607002-2018-06-25-0860105001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860105001-2018-06-25" version="1"/>
+                  <DepartureTime>09:20:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607002-2018-06-25-0860105002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860105002-2018-06-25" version="1"/>
+                  <DepartureTime>09:40:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607002-2018-06-25-0860105003-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860105003-2018-06-25" version="1"/>
+                  <DepartureTime>10:15:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607002-2018-06-25-0860105004-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860105004-2018-06-25" version="1"/>
+                  <ArrivalTime>10:40:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08606002-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600005-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860105-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08606002-2018-06-25-0860105001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860105001-2018-06-25" version="1"/>
+                  <DepartureTime>09:20:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08606002-2018-06-25-0860105002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860105002-2018-06-25" version="1"/>
+                  <DepartureTime>09:40:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08606002-2018-06-25-0860105003-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860105003-2018-06-25" version="1"/>
+                  <DepartureTime>10:15:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08606002-2018-06-25-0860105004-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860105004-2018-06-25" version="1"/>
+                  <ArrivalTime>10:40:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08600006-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600021-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860103-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600006-2018-06-25-0860103001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860103001-2018-06-25" version="1"/>
+                  <DepartureTime>15:05:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600006-2018-06-25-0860103002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860103002-2018-06-25" version="1"/>
+                  <ArrivalTime>15:30:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08607010-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600004-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860103-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607010-2018-06-25-0860103001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860103001-2018-06-25" version="1"/>
+                  <DepartureTime>16:30:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607010-2018-06-25-0860103002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860103002-2018-06-25" version="1"/>
+                  <ArrivalTime>16:55:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08607001-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600004-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860207-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607001-2018-06-25-0860207001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860207001-2018-06-25" version="1"/>
+                  <DepartureTime>10:40:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607001-2018-06-25-0860207002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860207002-2018-06-25" version="1"/>
+                  <DepartureTime>11:05:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607001-2018-06-25-0860207003-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860207003-2018-06-25" version="1"/>
+                  <DepartureTime>11:40:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607001-2018-06-25-0860207004-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860207004-2018-06-25" version="1"/>
+                  <ArrivalTime>12:00:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08606001-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600005-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860207-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08606001-2018-06-25-0860207001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860207001-2018-06-25" version="1"/>
+                  <DepartureTime>10:40:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08606001-2018-06-25-0860207002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860207002-2018-06-25" version="1"/>
+                  <DepartureTime>11:05:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08606001-2018-06-25-0860207003-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860207003-2018-06-25" version="1"/>
+                  <DepartureTime>11:40:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08606001-2018-06-25-0860207004-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860207004-2018-06-25" version="1"/>
+                  <ArrivalTime>12:00:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08600012-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600006-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860104-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600012-2018-06-25-0860104001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860104001-2018-06-25" version="1"/>
+                  <DepartureTime>19:30:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600012-2018-06-25-0860104002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860104002-2018-06-25" version="1"/>
+                  <ArrivalTime>20:00:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08607014-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600004-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860104-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607014-2018-06-25-0860104001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860104001-2018-06-25" version="1"/>
+                  <DepartureTime>19:30:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607014-2018-06-25-0860104002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860104002-2018-06-25" version="1"/>
+                  <ArrivalTime>20:00:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08600010-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600006-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860102-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600010-2018-06-25-0860102001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860102001-2018-06-25" version="1"/>
+                  <DepartureTime>17:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600010-2018-06-25-0860102002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860102002-2018-06-25" version="1"/>
+                  <DepartureTime>17:20:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600010-2018-06-25-0860102003-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860102003-2018-06-25" version="1"/>
+                  <DepartureTime>18:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600010-2018-06-25-0860102004-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860102004-2018-06-25" version="1"/>
+                  <ArrivalTime>18:30:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08600011-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600006-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860206-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600011-2018-06-25-0860206001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860206001-2018-06-25" version="1"/>
+                  <DepartureTime>20:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600011-2018-06-25-0860206002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860206002-2018-06-25" version="1"/>
+                  <DepartureTime>20:40:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600011-2018-06-25-0860206003-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860206003-2018-06-25" version="1"/>
+                  <ArrivalTime>21:00:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08607015-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600004-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860206-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607015-2018-06-25-0860206001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860206001-2018-06-25" version="1"/>
+                  <DepartureTime>20:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607015-2018-06-25-0860206002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860206002-2018-06-25" version="1"/>
+                  <DepartureTime>20:40:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607015-2018-06-25-0860206003-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860206003-2018-06-25" version="1"/>
+                  <ArrivalTime>21:00:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08607009-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600004-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860206-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607009-2018-06-25-0860206001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860206001-2018-06-25" version="1"/>
+                  <DepartureTime>17:00:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607009-2018-06-25-0860206002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860206002-2018-06-25" version="1"/>
+                  <DepartureTime>17:40:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08607009-2018-06-25-0860206003-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860206003-2018-06-25" version="1"/>
+                  <ArrivalTime>18:00:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+            <ServiceJourney version="1" id="ATB:ServiceJourney:08600002-2018-06-25">
+              <dayTypes>
+                <DayTypeRef ref="ATB:DayType:1600021-2018-06-25"/>
+              </dayTypes>
+              <JourneyPatternRef ref="ATB:JourneyPattern:0860101-2018-06-25" version="1"/>
+              <PublicCode>860</PublicCode>
+              <LineRef ref="ATB:Line:0860-2018-06-25" version="1"/>
+              <passingTimes>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600002-2018-06-25-0860101001-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860101001-2018-06-25" version="1"/>
+                  <DepartureTime>06:45:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600002-2018-06-25-0860101002-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860101002-2018-06-25" version="1"/>
+                  <DepartureTime>07:05:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600002-2018-06-25-0860101003-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860101003-2018-06-25" version="1"/>
+                  <DepartureTime>07:35:00</DepartureTime>
+                </TimetabledPassingTime>
+                <TimetabledPassingTime version="1" id="ATB:TimetabledPassingTime:08600002-2018-06-25-0860101004-2018-06-25">
+                  <StopPointInJourneyPatternRef ref="ATB:StopPointInJourneyPattern:0860101004-2018-06-25" version="1"/>
+                  <ArrivalTime>08:00:00</ArrivalTime>
+                </TimetabledPassingTime>
+              </passingTimes>
+            </ServiceJourney>
+          </vehicleJourneys>
+        </TimetableFrame>
+      </frames>
+    </CompositeFrame>
+  </dataObjects>
+</PublicationDelivery>

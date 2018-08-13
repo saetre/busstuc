@@ -1421,7 +1421,7 @@ print_smartdep_entry(smartdepentry(Fullstatname1,Localstatno1,BusNo,Time,Duratio
      !,
 
 %%     Frame={'"departures"' : [ ItemList]}, %% Printed beforehand
-%     RealTime is Time + 10,     %% RS-150420 TODO: How to connect to http://atb.no/realtime ??
+%     RealTime is Time + 10,     %% RS-150420 LATER: How to connect to http://atb.no/realtime ??
 
     ItemList = {'"busstopname"':FFullstatname1,
                 '"busstopnumber"':Localstatno1,

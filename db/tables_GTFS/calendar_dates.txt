@@ -1,4 +1,4 @@
-service_id,date,exception_type
+service_id,date,exception_type,COMMENT:Pre 2018 format? RS-180811
 ATB:Timetable:1600013-2018-04-02,20180501,2
 ATB:Timetable:1600013-2018-04-02,20180510,2
 ATB:Timetable:1600013-2018-04-02,20180517,2
