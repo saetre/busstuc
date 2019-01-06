@@ -576,7 +576,7 @@ bus_depend_station(_Bus,RGH,RGH) :- %% // busdependent ??????
 
 %% Berg   Berg is an obscure station on route 75,  76 (not in rutehefte)
 
-bus_depend_station(60,berg,berg_prestegård). 
+bus_depend_station(60,berg,berg_studentby). %% RS-190101 Tidligere berg_prestegård
 bus_depend_station(94,berg,berg_østre).
 
 %% 75 Berg , Berg bedehus , 
@@ -686,7 +686,7 @@ bus_depend_station(60,   tyholttårnet,tyholt).
 bus_depend_station(66,   charlottenlund,charlottenlund_kirke). %% AtB 
 bus_depend_station(66,   ntnu,ntnu_dragvoll).
 bus_depend_station(66,   dragvoll,ntnu_dragvoll). 
-bus_depend_station(66,   jakobsli, idrettsplassen). %% idrettsplassen_jakobsli
+bus_depend_station(66,   jakobsli, jakobsli_idrettsplass). %% jakobsli_idrettsplass RS-190101
 
 bus_depend_station(66,   dybdals_veg , peder_kroghs_v). 
 

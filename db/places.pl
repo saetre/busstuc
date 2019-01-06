@@ -59,8 +59,8 @@
 % corr(prinsenkrysset,hovedterminalen). %% ???  SUMMER %% TA-110701
   %% sorry, gir destinasjon munkegate = Prinsenkrysset  %%
 
-corr( city_syd_e6, city_syd_vestre ).     %% RS-150823
-corr( city_syd_e6, city_syd_østre ).      %% RS-150823
+corr( city_syd_e6_1, city_syd_sentervegen ).     %% RS-150823  %% RS-190101 Just one station now...
+corr( city_syd_e6_2, city_syd_sentervegen ).      %% RS-150823  %% RS-190101 Just one station now...
 
 %corr(d1,hovedterminalen).      %% RS-150815. Move this to lex?
 %corr(d2,hovedterminalen). 
@@ -1455,22 +1455,25 @@ cmpl(høyems,[vei],hallfred_høyems_vei).
 cmpl(høyskole,ringen,høyskoleringen). 
 cmpl(høyskolen,[i,sørtrøndelag],hist).      %%. . . på lade|rotvoll
 
-cmpl(idrettsparken,jakobsli,idrettsplassen).
-cmpl(idrettsplassen,[],idrettsplassen).
-cmpl(idrettsplassen,jakobsli,idrettsplassen).
-cmpl(idr,plassen,idrettsplassen).  %% I rutehefte
+cmpl(idrettsparken,jakobsli,jakobsli_idrettsplass).
+cmpl(idrettsplassen,[],jakobsli_idrettsplass).
+cmpl(idrettsplassen,jakobsli,jakobsli_idrettsplass).
+cmpl(idr,plassen,jakobsli_idrettsplass).  %% I rutehefte (på stasjonen). %% RS-190101
+
 cmpl(idrettsparken,jakobsli,idrettsplassen). 
+
+cmpl(idrettsplass,jakobsli,jakobsli_idrettsplass). 
+cmpl(idrettsplassen,[på,ranheim],ranheim_idrettsplass). 
 
 cmpl(idretts,[senter],idrettssenter).  %% TA-101110 //nohelp
 
 cmpl(idretts,[plass],idrettsplass).  %%  // nohelp
+
 cmpl(idrettsbygget,[på,dragvoll],dragvoll). 
 cmpl(idrettsbygget,[på,gløshaugen],høyskoleringen). 
 cmpl(idrettsbygget,[ved,gløshaugen],høyskoleringen). 
 cmpl(idrettsbygget,gløshaugen,høyskoleringen). 
 cmpl(idrettsbygget,nth,høyskoleringen). 
-cmpl(idrettsplass,jakobsli,idrettsplassen). 
-cmpl(idrettsplassen,[på,ranheim],ranheim_idrettsplass). 
 
 cmpl(ikea,[på,leangen],ikea). 
 cmpl(ikea,[leangen],ikea).
@@ -1530,8 +1533,8 @@ cmpl(john,[p,kroglundsvei], johan_p_kroglunds_veg).
 cmpl(j,falkberget,johan_falkbergets_veg). 
 cmpl(j,falkbergetsvei,johan_falkbergets_veg). 
 cmpl(j,tillersv,johan_tillers_vei).  %%Nøddef
-cmpl(jakobsli,idrettsplass,idrettsplassen). 
-cmpl(jakobsli,idrettsplassen,idrettsplassen). %% nec?
+cmpl(jakobsli,idrettsplass,jakobsli_idrettsplass). 
+cmpl(jakobsli,idrettsplassen,jakobsli_idrettsplass). %% nec?
 
 cmpl(jakobsli,n,jakobsliveien_nedre). 
 cmpl(jakobsli,nedre,jakobsliveien_nedre). 
@@ -3485,8 +3488,9 @@ isat( bromstadvegen, bromstad ).
 isat( charlottenlund_kirke, charlottenlund). 
 isat( charlottenlund_nedre, charlottenlund). 
 
-isat( city_syd_e6, city_syd ). %% RS-130818
-isat( city_syd_vestre, city_syd ). %% TA-110627
+isat( city_syd_e6_1, city_syd ). %% RS-130818  %% RS-190101
+isat( city_syd_e6_2, city_syd ). %% RS-130818  %% RS-190101
+isat( city_syd_sentervegen, city_syd ). %% TA-110627  %% RS-190101 Just one station at City Syd now.
 isat( city_syd_østre, city_syd ).  %% TA-100901
 isat( john_aae_s_veg, city_syd).   %%
 isat( kvt, city_syd ).             %%
@@ -3679,7 +3683,7 @@ place_resolve(badestranda,øysand).
 %% place_resolve(bakli,baklia). 
 %% place_resolve(bakli,blakli). 
 
-place_resolve(berg,berg_prestegård).
+%% place_resolve(berg,berg_prestegård). %% RS-190101 Bus 60 no longer stops at Berg Prestegård!
 place_resolve(berg,berg_studentby).
 place_resolve(berg,østre_berg).
 
@@ -3705,6 +3709,10 @@ place_resolve(hist,gildheim).  %%AHS
 place_resolve(hist,rotvoll_alle).  %%ALT
 place_resolve(hist,rotvoll_nedre).  %%ALU
 place_resolve(hist,torget).  %%AiTel
+
+place_resolve(idrettsplassen, jakobsli_idrettsplass).
+place_resolve(idrettsplassen, øya).
+
 place_resolve(kino,nova_kinosenter).  %%
 place_resolve(kino,prinsen_kinosenter). 
 place_resolve(kino,rosendal). 
@@ -4012,7 +4020,8 @@ placestat(hårstadmyra,martin_kregnes_veg).
 
 placestat(idi,gløshaugen). %% TA-110401
 placestat(idrettsbygget,høgskoleringen). 
-% placestat(idrettsplassen, idrettsplassen_jakobsli). %% RS-150104. Name-change. Summer/Winter? %% RS-150814 Doesn't work in autumn
+
+placestat(idrettsplassen, jakobsli_idrettsplass). %% RS-150104. Name-change. Summer/Winter? %% RS-150814 Doesn't work in autumn %% TODO RS-190101
 
 placestat(ilabekken,ila). 
 placestat(iladalen,ila).
@@ -6594,15 +6603,15 @@ synplace(idrettbygg,idrettsbygg).
 synplace(idrettsanleg,idrettsbygg). 
 synplace(idrettsanlegg,idrettsbygg). 
 synplace(idrettsanlegg,idrettsplass). 
-synplace(idrettsanlegget,idrettsplassen). 
+synplace(idrettsanlegget,jakobsli_idrettsplass). 
 synplace(idretsbanen,idrettsbygget). %% RS-150913 Typo 
 synplace(idrettsbanen,idrettsbygget). 
 synplace(idrettsbygg,idrettssenter). 
 synplace(idrettsbygningen,idrettsbygget). 
 synplace(idrettsenter,idrettssenter). 
-synplace(idrettsp,idrettsplassen). 
+synplace(idrettsp,jakobsli_idrettsplass). 
 synplace(idrettspark,idrettplass). 
-synplace(idrettspl,idrettsplassen).  %%
+synplace(idrettspl,jakobsli_idrettsplass).  %% Heter Idrettsplassen i ruteheftet/stasjonsskiltet ? RS-190101
 synplace(idrettssenter,idrettsbygg). 
 synplace(idrettssenter,idrettsbygg). 
 synplace(idrettssenteret,idrettsbygget). 
@@ -6659,7 +6668,7 @@ synplace(jakobli,jakobsli).
 synplace(jakobslien,jakobsli).    %% (NB jakobslien syndrom)
 synplace(jakobsligrend,jakobsli). 
 synplace(jakobsligrenda,jakobsli). 
-synplace(jakobsliidrettsplassen,idrettsplassen). 
+synplace(jakobsliidrettsplassen,jakobsli_idrettsplass). 
 
 synplace(jakobsliveiennedre,jakobsliveien_nedre). %% vn 
 
@@ -8224,9 +8233,11 @@ underspecified_place(hovedstasjonen).  %% TS|ST ?
 underspecified_place(huseby).     %% Husebyst//Husebysentret 
 underspecified_place(høgskolen).  %% HIST or NTH?
 underspecified_place(høyskolesenteret). 
+
 %% underspecified_place(idrettsbygg).  -> generic_place 
-underspecified_place(idrettsparken). 
-%% underspecified_place(idrettsplassen).  %% TA-100828  ipl jakobsli
+underspecified_place(idrettsparken).
+%% underspecified_place(idrettsplassen).  %% TA-100828  idrplassen jakobsli %% RS-190101 TODO
+
 underspecified_place(ingeniørhøgskolen). 
 underspecified_place(innlandet). 
 underspecified_place(jakobslivegen).  %% nedre/øvre vegen official road name

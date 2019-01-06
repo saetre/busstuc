@@ -248,7 +248,7 @@ composite_stat(ingeborg,[ofstadsveg],ingeborg_ofstads_veg). % generated 2.0
 composite_stat(ingeborg,[ofstads_street],ingeborg_ofstads_veg). % generated 2.1
 composite_stat(ingeborg,[ofstads, street],ingeborg_ofstads_veg). % generated 2.2
 composite_stat(ikea,[],ikea).
-composite_stat(idrettsplassen,[],idrettsplassen).
+%composite_stat(idrettsplassen,[],idrettsplassen).
 composite_stat(idrettsveien,[],idrettsveien).
 composite_stat(idrett,[veien],idrettsveien). % generated 4.0
 composite_stat(idrett,[street],idrettsveien). % generated 4.1

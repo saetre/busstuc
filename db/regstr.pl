@@ -38,7 +38,8 @@ streetstat(alfred_larsens_street,'Alfred Larsens gate',1,13,valøyvegen).
 streetstat(alfred_trønsdals_street,'Alfred Trønsdals veg',4,8,othilienborg).
 streetstat(alfred_trønsdals_street,'Alfred Trønsdals veg',1,28,k_o_thornæs_veg).
 streetstat(alme_street,'Almeveien',1,52,sandbakken).
-streetstat(alv_schiefloes_street,'Alv Schiefloes veg',1,29,idrettsplassen).  %% RS-150814. "idrettsplassen_jakobsli" in february routes!
+%streetstat(alv_schiefloes_street,'Alv Schiefloes veg',1,29,idrettsplassen).  %% RS-150814. "jakobsli_idrettsplass" in february routes!
+streetstat(alv_schiefloes_street,'Alv Schiefloes veg',1,29,jakobsli_idrettsplass).  %% RS-150814. "idrettsplassen_jakobsli" in february routes! RS-190101
 streetstat(amalienborg_street,'Amalienborgveien',1,16,hitravegen).
 streetstat(amalienlyst,'Amalienlyst',1,6,travbanen).
 streetstat(amtmannssvingen,'Amtmannssvingen',1,24,olderdalen).
@@ -257,7 +258,7 @@ streetstat(carl_j_hambros_street,'C.J.Hambros vei',1,20,c_j_hambros_vei).
 streetstat(camilla_collets_street,'Camilla Collets veg',1,9,strindheim_hageby).
 streetstat(carl_dons_street,'Carl Dons veg',1,22,leirøya).
 streetstat(carl_johans_street,'Carl Johans gate',1,14,hovedterminalen).
-streetstat(carl_lønseths_street,'Carl Lønseths veg',1,3,idrettsplassen).
+streetstat(carl_lønseths_street,'Carl Lønseths veg',1,3,jakobsli_idrettsplass).
 %% streetstat(carl_schjetnans_street,'Carl Schjetnans veg',7,7,alf_godagers_veg).
 streetstat(carl_schjetnans_street,'Carl Schjetnans veg',1,9,paul_skolemesters_veg).
 streetstat(carl_schjetnans_street,'Carl Schjetnans veg',6,18,carl_schjetnans_veg).
@@ -349,7 +350,7 @@ streetstat(enerom_street,'Eneromvegen',1,48,alfheimsvingen).
 streetstat(enerom_street,'Eneromvegen',91,227,stavset).
 streetstat(erika_lies_street,'Erika Lies veg',5,20,søndre_hallset).      %% RS-150104. Discrepancy Summer/Winter: søndre_halset
 streetstat(erlends_street,'Erlends veg',1,11,rydningen).
-streetstat(erling_høviks_street,'Erling Høviks veg',1,27,idrettsplassen).
+streetstat(erling_høviks_street,'Erling Høviks veg',1,27,jakobsli_idrettsplass).
 streetstat(erling_skakkes_street,'Erling Skakkes gate',47,58,hospitalskirka).   %% RS-140615 hospital(s?)kirka
 streetstat(erling_skakkes_street,'Erling Skakkes gate',58,70,kalvskinnet).
 streetstat(erling_skakkes_street,'Erling Skakkes gate',1,45,hovedterminalen).
@@ -667,9 +668,9 @@ streetstat(innherreds_street,'Innherredsveien',24,55,strandveien).
 streetstat(innherreds_street,'Innherredsveien',79,119,rønningsbakken).
 streetstat(innherreds_street,'Innherredsveien',101,143,dalen_hageby).
 streetstat(innherreds_street,'Innherredsveien',7,86,rosendal).
-streetstat(ivar_lykkes_street,'Ivar Lykkes veg',1,1,city_syd_vestre).
+streetstat(ivar_lykkes_street,'Ivar Lykkes veg',1,1,city_syd).
 streetstat(ivar_lykkes_street,'Ivar Lykkes veg',7,11,rognbudalen).
-streetstat(ivar_lykkes_street,'Ivar Lykkes veg',2,6,city_syd_vestre).
+streetstat(ivar_lykkes_street,'Ivar Lykkes veg',2,6,city_syd).
 streetstat(iver_trøans_street,'Iver Trøans vei',1,9,brukseier_olsens_vei_1).
 streetstat(ivar_aasens_street,'Ivar Aasens veg',1,33,ugla).
 streetstat(ivar_mortensons_street,'Ivar Mortensons veg',1,11,dalgård).
@@ -682,7 +683,7 @@ streetstat(jakobsli_street,'Jakobslivegen',1,18,jakobslivegen_nedre).
 streetstat(jakobsli_street,'Jakobslivegen',43,64,charlottenlund_kirke).
 streetstat(jakobsli_street,'Jakobslivegen',19,41,konglevegen).
 streetstat(jakobsli_street,'Jakobslivegen',61,86,presthusaunet).
-streetstat(jakobsli_street,'Jakobslivegen',83,114,idrettsplassen).
+streetstat(jakobsli_street,'Jakobslivegen',83,114,jakobsli_idrettsplass).
 streetstat(jakobstien,'Jakobstien',1,15,tvetestien).
 streetstat(jarle_street,'Jarleveien',44,44,lade_kirke).
 streetstat(jarle_street,'Jarleveien',1,19,stiklestadveien).
@@ -726,7 +727,7 @@ streetstat(jon_skogstads_street,'Jon Skogstads veg',1,19,korsen).
 streetstat(jonas_lies_street,'Jonas Lies gate',1,5,festningsgata).
 streetstat(jonsvanns_street,'Jonsvannsveien',1,25,jonsvannsveien).
 streetstat(jonsvanns_street,'Jonsvannsveien',26,35,gløshaugen_syd).
-streetstat(jonsvanns_street,'Jonsvannsveien',36,38,berg_prestegård).
+streetstat(jonsvanns_street,'Jonsvannsveien',36,38,berg_studentby).
 streetstat(jonsvanns_street,'Jonsvannsveien',39,55,harald_bothners_veg).
 streetstat(jonsvanns_street,'Jonsvannsveien',78,85,østre_berg).
 streetstat(jonsvanns_street,'Jonsvannsveien',87,99,'').
@@ -1125,7 +1126,7 @@ streetstat(ny_street,'Nygata',1,30,bakkegata).
 streetstat(nygård_street,'Nygårdvegen',1,15,nygård).
 streetstat(nyheims_street,'Nyheimsvegen',13,26,konglevegen).
 streetstat(nyheims_street,'Nyheimsvegen',1,16,jakobslivegen_nedre).
-streetstat(nyheims_street,'Nyheimsvegen',55,70,idrettsplassen).
+streetstat(nyheims_street,'Nyheimsvegen',55,70,jakobsli_idrettsplass).
 streetstat(nyheims_street,'Nyheimsvegen',21,40,charlottenlund_kirke).
 streetstat(nyheims_street,'Nyheimsvegen',31,62,presthusaunet).
 streetstat(nyplia,'Nyplia',16,32,nypan).
@@ -1139,7 +1140,7 @@ streetstat(odd_husbys_street,'Odd Husbys veg',45,56,ola_setroms_veg).
 streetstat(odd_husbys_street,'Odd Husbys veg',72,97,leirbrua_gård).
 streetstat(odd_husbys_street,'Odd Husbys veg',55,84,stavsetvegen).
 streetstat(odd_husbys_street,'Odd Husbys veg',1,44,dalgård).
-streetstat(odd_sørlis_street,'Odd Sørlis veg',1,31,idrettsplassen).
+streetstat(odd_sørlis_street,'Odd Sørlis veg',1,31,jakobsli_idrettsplass).
 streetstat(odense_street,'Odenseveien',1,19,nyborg).
 streetstat(odense_street,'Odenseveien',2,33,byåsen_butikksenter).
 streetstat(odins_street,'Odins veg',1,12,nygård).
@@ -1258,7 +1259,8 @@ streetstat(peder_morsets_street,'Peder Morsets veg',1,32,peder_morsets_veg).
 streetstat(peder_myhres_street,'Peder Myhres veg',1,21,'').
 streetstat(peder_østlunds_street,'Peder Østlunds veg',1,5,'').
 streetstat(per_halvorsens_street,'Per Halvorsens vei',1,4,breidablikk_skole).
-streetstat(per_kvists_street,'Per Kvists veg',1,14,idrettsplassen).
+%streetstat(per_kvists_street,'Per Kvists veg',1,14,idrettsplassen).
+streetstat(per_kvists_street,'Per Kvists veg',1,14,jakobsli_idrettsplass). %% RS-190101
 streetstat(per_lykkes_street,'Per Lykkes veg',1,15,stabells_veg).
 streetstat(per_sivles_street,'Per Sivles veg',1,51,ugla).
 %%streetstat(persaun_street,'Persaunvegen',1,1,dalen_hageby). %% Default to this when asked about persaunvegen

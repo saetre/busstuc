@@ -11,8 +11,6 @@
 
 %%%% ACTUAL  ROUTES              START-DATE           END-DATE (sorted!)
 
-route_period(   tt, r160_180813, date(2018,08,13),   date(2018,12,23) ).       %% Høst 2018 TEST GTFS
-route_period(   tt, r160_190101, date(2019,01,01),   date(2019,06,23) ).       %% Vår 2019 TEST
 %%route_period( tt, r1618_110517, date(2011,05,17),   date(2011,05,17) ). 
 %%route_period( tt, r1611_100823, date(2010,08,23),   date(2011,06,26) ).
 %%route_period( tt, r1603_120409, date(2012,04,09),   date(2012,05,12) ). %% Overwrote 120415
@@ -25,8 +23,10 @@ route_period(   tt, r160_190101, date(2019,01,01),   date(2019,06,23) ).       %
 %%route_period( tt, r1613_130622, date(2013,06,22),   date(2013,08,11) ).     %% sommer2013
 %%route_period( tt, r1613_130812, date(2013,08,12),   date(2014,06,22) ).     %% Vinter13_14
 %%route_period( tt, r1601_130930, date(2013,09,30),   date(2014,07,22) ).       %% Høst2013oktober
-route_period(   tt, r1601_180101, date(2018,01,01),   date(2018,03,25) ).	%% Vinter18
-route_period(   tt, r1601_180409, date(2018,04,09),   date(2018,06,24) ).	%% vår18
-route_period(   tt, r1601_180625, date(2018,06,25),   date(2018,08,12) ).	%% Sommer18
-route_period(   tt, r1601_180813, date(2018,08,13),   date(2018,12,23) ).       %% Høst 2018
-route_period(   tt, r1601_190101, date(2019,01,01),   date(2019,06,23) ).	%% Vinter2019
+%route_period(   tt, r1601_180101, date(2018,01,01),   date(2018,03,25) ).	%% Vinter18
+%route_period(   tt, r1601_180409, date(2018,04,09),   date(2018,06,24) ).	%% vår18
+%route_period(   tt, r1601_180625, date(2018,06,25),   date(2018,08,12) ).	%% Sommer18
+%route_period(   tt, r1601_180813, date(2018,08,13),   date(2018,12,23) ).       %% Høst 2018
+%route_period(   tt, r160_180813, date(2018,08,13),   date(2018,12,23) ).       %% Høst 2018 TEST GTFS
+route_period(   tt, r160_190101, date(2019,01,01),   date(2019,06,23) ).       %% Vår 2019 TEST
+%route_period(   tt, r1601_190101, date(2019,01,01),   date(2019,06,23) ).	%% Vinter2019

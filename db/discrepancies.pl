@@ -165,8 +165,8 @@ alias_station2(17142583,halsen_ung_skole,halsen_ungdomsskole).
 %alias_station2(16011706,munkvoll_trikk,munkvoll).
 %alias_station2(16533040,brekkåsen_snpl,brekkåsen_snuplass).
 
-%% 2015.06.03
-%alias_station2(16010190,idrettsplassen_jakobsli,idrettsplassen). %% Not in August routes
+%alias_station2(16010190,jakobsli_idrettsplass,idrettsplassen). %% Not in August routes %% 2015.06.03, Works in Winter RS-2019.01.01
+alias_station2(16010190,idrettsplassen,jakobsli_idrettsplass). %% Not in August routes %% 2015.06.03, Works in Winter RS-2019.01.01 Doesn't need BOTH ways
 
 %% db/discrepancies r1602_150810 r1611_140203 
 %alias_station2(16010006,dr_gate_d1, dronningens_gate_d1).
