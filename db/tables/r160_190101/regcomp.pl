@@ -845,7 +845,6 @@ composite_stat(klefstadbukta,[],klefstadbukta).
 composite_stat(klefstadhaugen,[],klefstadhaugen).
 composite_stat(kleivplassen,[],kleivplassen).
 composite_stat(klett,[],klett).
-composite_stat(klett,[møbel],klett_møbel).
 composite_stat(klettkrysset,[e39],klettkrysset_e39).
 composite_stat(klettkrysset,[melhu, street],klettkrysset_melhusvegen). % generated 3.2
 composite_stat(klettkrysset,[melhu, vegen],klettkrysset_melhusvegen). % generated 3.0
@@ -930,7 +929,6 @@ composite_stat(kåsløkkja,[],kåsløkkja).
 composite_stat(lade,[alle, 73],lade_alle_73).
 composite_stat(lade,[alle, 80],lade_alle_80).
 composite_stat(lade,[gård],lade_gård).
-composite_stat(lade,[kirke],lade_kirke).
 composite_stat(ladehammeren,[],ladehammeren).
 composite_stat(ladejarlen,[vgs],ladejarlen_vgs).
 composite_stat(ladeveien,[],ladeveien).
@@ -1328,7 +1326,6 @@ composite_stat(pirbadet,[],pirbadet).
 composite_stat(planetringen,[],planetringen).
 composite_stat(plassbekken,[],plassbekken).
 composite_stat(postterminalen,[],postterminalen).
-composite_stat(prestegårdsjordet,[],prestegårdsjordet).
 composite_stat(prestgårdsfeltet,[],prestgårdsfeltet).
 composite_stat(prestgårdskrysset,[],prestgårdskrysset).
 composite_stat(presthus,[],presthus).

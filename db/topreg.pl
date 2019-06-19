@@ -59,11 +59,11 @@ default_period( tt,previous, r160_180813 ).  %% 2016_1 Most recently period used
 %default_message(tt,winter,['AtB winter routes are from  Jan. 2, 2012  to Jun. 26, 2012.',
 %                           'AtB vinterruter gjelder fra 2. jan. 2012 til 26. jun. 2012']).
 %
-default_message(tt,winter,['AtB winter routes are from  Aug. 15 to Dec 23.  2016.',
+default_message(tt,winter,['AtB winter routes are from  August 15 to Dec 23.  2016.',
                            'AtB vinterruter gjelder fra 15. aug. til 23. des. 2016']).
 
-default_message(tt,summer,['AtB summer routes are from Jun. 26 to  Aug. 18. 2017',
-                           'AtB sommerruter gjelder fra 26. juni til 18. aug. 2017.']).
+default_message(tt,summer,['AtB summer routes are from June 24 to  Aug. 16. 2019',
+                           'AtB sommerruter gjelder fra 24. juni til 16. aug. 2019.']).
 
 %% ACTUAL ROUTE PERIODS  SORTED ON --- END DATE ----
 %%see routes.pl

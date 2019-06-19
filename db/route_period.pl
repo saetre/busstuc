@@ -28,5 +28,5 @@
 %route_period(   tt, r1601_180625, date(2018,06,25),   date(2018,08,12) ).	%% Sommer18
 %route_period(   tt, r1601_180813, date(2018,08,13),   date(2018,12,23) ).       %% Høst 2018
 %route_period(   tt, r160_180813, date(2018,08,13),   date(2018,12,23) ).       %% Høst 2018 TEST GTFS
-route_period(   tt, r160_190101, date(2019,01,01),   date(2019,06,23) ).       %% Vår 2019 TEST
-%route_period(   tt, r1601_190101, date(2019,01,01),   date(2019,06,23) ).	%% Vinter2019
+%route_period(   tt, r160_190101, date(2019,01,01),   date(2019,06,23) ).       %% Vår 2019 TEST
+route_period(   tt, r1601_190101, date(2019,01,01),   date(2019,06,23) ).	%% Vinter2019

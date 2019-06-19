@@ -797,7 +797,7 @@ writetelebusteranswer1( Module:Frame ) :-                %%
 
 
 
-writetelebusteranswer1( Frame ) :-                %% return not set, show a nice list of properties
+writetelebusteranswer1( Frame ) :-     %% return not set, show a nice list of properties
     listall( Frame ).
 
 
