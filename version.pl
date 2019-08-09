@@ -3,7 +3,6 @@
 %% FILE version.pl
 %% SYSTEM TUC
 %% CREATED TA-970913
-%%/* REVISED : RS- */  version_date('AtB-I  Date 2019.08.10  Vinter2019').
-/* REVISED : RS- */  version_date('AtB-I  Date 2019.04.22  Vinter2019').
+/* REVISED : RS- */  version_date('AtB-I  Date 2019.08.10  Autumn_2019').
 
 %% Vinter2019
