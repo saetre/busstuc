@@ -31,7 +31,7 @@
 
    (noparentflag := true),      %% Ignore content of parentheses
 
-   (tramflag := false),         %% They don't like A/S Gråkallen
+   (tramflag := false),         %% Team/TT didn't like A/S Gråkallbanen
 
    (nodotflag := true),         %% Readymade Q: Når går bussen fra ....
 

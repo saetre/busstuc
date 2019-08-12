@@ -342,7 +342,7 @@ splitdoublename(X,Y):-
 
 bwr2([],Class):- !,bcpbc(notany),bcp(Class).
 
-bwr2([X],buses) :- !, %% Trikk 1 / Buss 2
+bwr2([X],buses) :- !, %% Trikk 9 / Buss 1, 2, 3, ...
     busortram(X,BT),bcp(BT),bwr(X).
 
 bwr2(List,departure):- !,bwtimes(List),space.
@@ -450,7 +450,7 @@ bcp(_):- write(' ** ').
 % New  List with Class, Big caps
 
 bwc([],Class):- !,bcpbc(notany),bcp(Class).
-bwc([X],buses) :- !, %% Trikk 1 / Buss 2
+bwc([X],buses) :- !, %% Trikk 9 / Buss 1, 2, 3, ...
     busortram(X,BT),bcpbc(BT),bwr(X).
 
 bwc(List,buses) :- !,portionlist(List),space.

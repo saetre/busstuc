@@ -288,7 +288,7 @@ ip	 buslog:islist(Buses).
 
 neutral rule 
 is  passesstations(Bus,_,Stations,_)
-id	 add (bwr2bc(Bus), %%  Trikk 1/ Buss 2
+id	 add (bwr2bc(Bus), %%  Trikk 9 / Buss 1, 2, 3, ...
 			bcp(goesto), %% more neutral wrt end stations
          bcp(thestations),nl, 
          bwr(Stations),period)

@@ -3429,7 +3429,7 @@ ip [] ).
 wherefindastt rule bustrans:( % user knows you don't know, astt has answers of OTHER Topics
 is  (which(A),B isa self,A isa place,C isa Topic,
     find/B/C/E,event/real/E,srel/in/place/A/E),
-    not (1 isa route),  %% Ad Hoc,  ikke trikk
+    not (9 isa route),  %% Ad Hoc,  ikke trikk
     not X isa neighbourhood when { (bound(X),foreign(X))}   %% melhus
 id  add  message(answer(db_reply(TT,webaddress,K)))
 ip  dmeq([card,departure,nightbus,price,route_plan,
@@ -3607,7 +3607,7 @@ ip  vehicletype(X,tram),
     value(tramflag,false) ).
 
 
-%noroutesfortram1 rule bustrans:( %%  trikk til nth
+%noroutesfortram9 rule bustrans:( %%  trikk til nth
 %is  _ isa tram,
 %    not X isa neighbourhood when { foreign(X) },
 %    not present _ isa clock, %% ad hoc  den (klokka) er 1
@@ -4621,7 +4621,7 @@ ip  [] ).  %%   vi tar bussen fra risvollan kl 19. \=  vi rekker bussen fra risv
 %%%% After reachtrainthatleaves
 notabusnotmn rule bustrans:( %% AFTER nobustohell boat,plane  no tmnflag
 is  (_NotBus isa BR),
-    { dmeq([airplane,train,train_route_plan,boat],BR)}, %tram,  %% RS-15-0415
+    { dmeq([airplane,train,train_route_plan,boat],BR)}, %tram,  %% RS-20150415
     not present _ isa clock, %% den (klokka) er 1.
     clear
 id  clear,
@@ -9518,7 +9518,7 @@ ip	 exbus(Bus) ).
 
 
 
-wherebus14 rule bustrans:( % Hvor går trikk 1 ?
+wherebus14 rule bustrans:( % Hvor går trikk 9 ?
 is  which(Station),(do)/PASS/Tramno/B,srel/_In/place/Station/B,
     not srel/_Now/time/_/_ ,
     not srel/nil/time/_/_ ,
@@ -10855,8 +10855,8 @@ ip  dmeq(vehicle,Route),exbus(Bus) ).
 
 endstat7 rule bustrans:( % What is the endstation for Bus
 is  which(A),has/_/endstation/Tram/A, Tram isa tram
-id  add endstations(One,_) %% # Trikken
-ip  thetramno(One) ).
+id  add endstations(Nine,_) %% # Trikken
+ip  thetramno(Nine) ).
 
 
 endstat8 rule bustrans:( % What is the endstation for Bus

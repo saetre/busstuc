@@ -429,8 +429,8 @@ vehicletype(flybussen,bus):-!. %%  ...// Used as neste "buss" Flybussen
 vehicletype(airbus,airbus):-!.
 vehicletype(fb,airbus):-!.
 
-vehicletype( 1, nighttram ) :- value( nightbusflag, true ), !. %% NB TRONDHEIM   %% RS-141115
-vehicletype( 1, tram ) :- !. %% NB TRONDHEIM
+vehicletype( 9, nighttram ) :- value( nightbusflag, true ), !. %% NB TRONDHEIM   %% RS-141115
+vehicletype( 9, tram ) :- !. %% NB TRONDHEIM
 
 vehicletype(X,nightbus) :-   nightbus(X),!.  %%% <------
    %% side effects on answer generation  
@@ -445,7 +445,7 @@ vehicletype(X,bus):- exbus(X).
 unique_vehicle(tram,true). %%  NB Trondheim
 unique_vehicle(bus,false). %%
 
-thetram(1).   %% Only one tram.  
+thetram(9).   %% Only one tram.  
 
 thetramstreetstation(st_olavs_street,st_olavs_gate).
 
@@ -462,10 +462,10 @@ streetstat(A,B,C,D,E):-
 
 
 
-thetramno(One):-
+thetramno(Nine):-
     value(tramflag,true),   %% RS-131230 From declare.pl
     unique_vehicle(tram,true),
-    thetram(One).
+    thetram(Nine).
 
 thetramstation(STOGT):-
     value(tmnflag,true),   %% RS-131230 From declare.pl 
@@ -813,21 +813,24 @@ moneyunit(nok).    %% Trondheim %% Local currency
 
 %% busfare(30,15). %% Adult/Child (2005)
 % Voksen koster 50, Barn/Honnør/Sykkel/Hund/Militær koster 25 (2015)
-% RS-150415 % NEW busfare2
-%
-% busfare2( BusArea, AgeType, BusType, Price ).
 
-busfare2( adult, [ 30.80, 50 ]).        %% RS-150415. For Bus
-busfare2( airbus, [130,65]). 
-busfare2( bicycle, [ 15.40, 25 ]).        %% RS-150415. For Bus
-busfare2( bus, [ 50, 15.40 ]).
-busfare2( child, [ 15.40, 25 ]).        %% RS-150415. For Bus
+% RS-150415 % NEW busfare2
+% busfare2( BusArea, AgeType, BusType, Price ).
+% busfare2( BusType/AgeType, [LowPrice, HighPrice] ).
+
+
+busfare2( adult, [  38,  38 ]).        %% RS-150415. For Bus
+busfare2( airbus, [ 65, 130 ]). 
+busfare2( bicycle, [ 19, 19 ]).        %% RS-150415. For Bus
+busfare2( bus, [ 19, 38 ]).
+busfare2( child, [ 19, 19 ]).        %% RS-150415. For Bus
+busfare2( dog, [ 0, 0 ]).        %% RS-20190812. For Hund
 busfare2( nightbus_all, [100-150-200]). % By,Nes - Klæbu,Melhus,Malvik,Skaun - Stjørdal,Orkdal
 busfare2( nightbus_klæbu, [150]).
 busfare2( nightbus_byneset, [100]).
 %busfare2( nighttram, [80]). %% RS-150111 Changed?
 busfare2( nighttram, [100]). %% RS-150111 Changed? %https://www.atb.no/priser/#route/110504, Din saksid er: 40634
-busfare2( tram, [ 50, 15.40] ).
+busfare2( tram, [ 19, 38] ).
 
 %%  Ikke Klæbu/Melhus/Byneset (90/110), but that is foreign
 

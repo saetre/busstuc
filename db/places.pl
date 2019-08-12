@@ -168,7 +168,7 @@ alias_name('6e',6).
 alias_name('7a',7). 
 alias_name(dv,dragvoll). 
 alias_name(klæburuta,klæburuten). 
-alias_name(linje1,trikken). 
+alias_name(linje9,trikken). 
 alias_name(team,tt). 
 alias_name(teamtrafikk,tt). 
 
@@ -7917,7 +7917,7 @@ synplace(travpark,travbane).
 synplace(travpark,travbanen). 
 synplace(trdhiem,trondheim). 
 synplace(trheim,trondheim). 
-%% synplace(trikk1,1).  %%? 
+%% synplace(trikk9,9).  %%? 
 synplace(troendelag,trøndelag). 
 synplace(trola,trolla). 
 synplace(trollahaugen46,trollahaugen_46). 

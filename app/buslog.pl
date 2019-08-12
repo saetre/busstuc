@@ -1744,8 +1744,8 @@ street_station(STOGSTREET- _N_,STOGST):- %% St. Olavs gt 1 \= HT
 street_station(Street,Station):-
     street(Street),
     !,
-    place_station(Street,Station),!.%% NB in case of period renaming renaming
-                                     %% TA-110803
+    place_station(Street,Station),!.%% NB in case of period renaming      %% TA-110803
+
 street_station(Street,Station):-
     neighbourhood(Street),
     !,

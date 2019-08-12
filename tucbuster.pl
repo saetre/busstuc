@@ -63,7 +63,7 @@
 
 %%%%    ( nodotflag := true),       %%  Interm. dots are  removed. %% TA-080928
 
-   ( tramflag := false),        %% A/S Gråkallen not OK at TEAM
+   ( tramflag := true),        %% A/S Gråkallen OK NOW
 
    ( parsetime_limit := 7000), %% TA-041218
 

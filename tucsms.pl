@@ -42,7 +42,7 @@
 
    (nodotflag := false),       %% Interm. dots are  retained 
 
-   (tramflag := false),        %% A/S Gråkallen not OK at TEAM
+   (tramflag := true),        %% A/S Gråkallen not OK at TEAM (false), but OK now (AtB, true)
 
    (parsetime_limit := 3000),  %% Fast server
 

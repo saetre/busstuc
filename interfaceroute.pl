@@ -39,7 +39,7 @@ domain_module(D,M):-
     routedomain(D), % unique solutions
     route_period( D, M, _, _ ).
 
-%% RS-150816 Tram is included as route 1 in the main module
+%% RS-20190812 Tram is included as route 9 in the main module. %% RS-20190812
 %reset_period :- %% called from main.pl
 %    value(tramflag,true),
 %    set(actual_domain,gb),

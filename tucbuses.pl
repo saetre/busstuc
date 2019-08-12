@@ -39,8 +39,8 @@
 
 :- ( airbusflag := false ). %% NEW FLAG %% TA-090331  %%  RS-151219 Should ALWAYS be FALSE initially! See bustrans.pl for set(airbusflag,true)
 
-%:- ( tramflag := false ).  %% Trams are NOT included ( Route 1 )       %% RS-141130
-:- ( tramflag := true ).   %% Trams are included ( Route 1 )           %% RS-131228
+%:- ( tramflag := false ).  %% Trams are NOT included ( Route 9 )       %% RS-20190812
+:- ( tramflag := true ).   %% Trams are included ( Route 9 )            %% RS-20190812
 
 :- ( busflag := true ).     %% Full Bus Application
 :- ( queryflag := true ).   %% Statements are implicit queries

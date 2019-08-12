@@ -3,7 +3,10 @@
 %% SYSTEM BUSSTUC DOMAIN TT
 %% CREATED TA-020101
 %% REVISED TA-110824    RS-120803
+
 %% REVISED RS-140416    Keep using this! % No regbus after buslog.pl:regbusall was implemented?  %% RS-120803
+%% RS-120803 regbus is generalized in buslog.pl!
+%% RS-20190812 So this file is probably OBSOLETE now?
 
 %% UNIT /db/
 
@@ -21,9 +24,7 @@
 
 %% NB NB Has the same name as the <module>:regbus
 
-
-regbus(1). %% Tram/trikk     %% RS-120803 regbus is generalized in buslog.pl!
-
+regbus(1).
 regbus(2).
 regbus(3).
 regbus(4).
@@ -31,7 +32,8 @@ regbus(5).
 regbus(6).
 regbus(7).
 regbus(8).
-regbus(9).
+
+regbus(9). %% Tram/trikk     %% RS-120803 regbus is generalized in buslog.pl!
 
 regbus(10). 
 regbus(11). 
