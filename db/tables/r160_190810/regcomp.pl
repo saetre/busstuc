@@ -299,6 +299,7 @@ composite_stat(dyre,[halses, street],dyre_halses_gate). % generated 2.2
 composite_stat(dyre,[halses_street],dyre_halses_gate). % generated 2.1
 composite_stat(dyre,[halsesgate],dyre_halses_gate). % generated 2.0
 composite_stat(dyrvik,[],dyrvik).
+composite_stat(dyrøy,[ferjekai],dyrøy_ferjekai).
 composite_stat(dyrøy,[kai],dyrøy_kai).
 composite_stat(dyrøy,[skole],dyrøy_skole).
 composite_stat(dørremsgrenda,[],dørremsgrenda).
@@ -567,7 +568,6 @@ composite_stat(haltdalen,[coop, 1],haltdalen_coop_1).
 composite_stat(haltdalen,[coop, 2],haltdalen_coop_2).
 composite_stat(haltdalen,[coop],haltdalen_coop).
 composite_stat(haltdalen,[oppvekstsenter],haltdalen_oppvekstsenter).
-composite_stat(halten,[kai],halten_kai).
 composite_stat(haltstrand,[],haltstrand).
 composite_stat(hamarvika,[],hamarvika).
 composite_stat(hammerfjell,[],hammerfjell).
