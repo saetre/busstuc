@@ -770,7 +770,6 @@ hpl(74994,bergheim_snuplass,bergheim_snuplass,'Bergheim snuplass').
 hpl(73664,lundåsen_nordre,lundåsen_nordre,'Lundåsen nordre').
 hpl(72339,vinjeøra,vinjeøra,'Vinjeøra').
 hpl(72341,skjephaug,skjephaug,'Skjephaug').
-hpl(73672,tanemskrysset,tanemskrysset,'Tanemskrysset').
 hpl(72347,skjerbusdal,skjerbusdal,'Skjerbusdal').
 hpl(73678,møllebakken,møllebakken,'Møllebakken').
 hpl(76705,turifoss,turifoss,'Turifoss').
@@ -780,7 +779,6 @@ hpl(72348,skjerbusdal,skjerbusdal,'Skjerbusdal').
 hpl(73679,lykkmarka,lykkmarka,'Lykkmarka').
 hpl(73674,lykkjnesset,lykkjnesset,'Lykkjnesset').
 hpl(72342,skjephaug,skjephaug,'Skjephaug').
-hpl(73673,tanemskrysset,tanemskrysset,'Tanemskrysset').
 hpl(73676,tanemsmoen,tanemsmoen,'Tanemsmoen').
 hpl(73675,lykkjnesset,lykkjnesset,'Lykkjnesset').
 hpl(76706,turifoss,turifoss,'Turifoss').
