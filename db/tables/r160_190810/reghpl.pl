@@ -138,8 +138,8 @@ hpl(73635,søvassli_ungdomssenter,søvassli_ungdomssenter,'Søvassli Ungdomssent
 hpl(74962,berge,berge,'Berge').
 hpl(74963,berge,berge,'Berge').
 hpl(73632,lundamo,lundamo,'Lundamo').
-hpl(73631,sørvollan,sørvollan,'Sørvollan').
 hpl(72300,vikåsen,vikåsen,'Vikåsen').
+hpl(73631,sørvollan,sørvollan,'Sørvollan').
 hpl(73638,lundan,lundan,'Lundan').
 hpl(72307,selbuskogen_skisenter,selbuskogen_skisenter,'Selbuskogen skisenter').
 hpl(73637,måsøvalkrysset,måsøvalkrysset,'Måsøvalkrysset').
@@ -332,8 +332,8 @@ hpl(73559,myrplassen,myrplassen,'Myrplassen').
 hpl(74888,osen,osen,'Osen').
 hpl(74885,bell_skole_selbu_ungdomsskole,bell_skole_selbu_ungdomsskole,'Bell skole/Selbu ungdomsskole').
 hpl(98830,vinsmyr,vinsmyr,'Vinsmyr').
-hpl(74886,bell_skole_selbu_ungdomsskole,bell_skole_selbu_ungdomsskole,'Bell skole/Selbu ungdomsskole').
 hpl(73552,søndre_flatåsen,søndre_flatåsen,'Søndre Flatåsen').
+hpl(74886,bell_skole_selbu_ungdomsskole,bell_skole_selbu_ungdomsskole,'Bell skole/Selbu ungdomsskole').
 hpl(73554,søndre_flatåsen,søndre_flatåsen,'Søndre Flatåsen').
 hpl(72229,skarsem,skarsem,'Skarsem').
 hpl(73560,myrplassen,myrplassen,'Myrplassen').
@@ -365,8 +365,8 @@ hpl(74027,kattemsenteret,kattemsenteret,'Kattemsenteret').
 hpl(74028,spillebakken,spillebakken,'Spillebakken').
 hpl(75356,brekkåsen,brekkåsen,'Brekkåsen').
 hpl(74025,spellan,spellan,'Spellan').
-hpl(74026,kattemsenteret,kattemsenteret,'Kattemsenteret').
 hpl(75357,brekkåsen_snuplass,brekkåsen_snuplass,'Brekkåsen snuplass').
+hpl(74026,kattemsenteret,kattemsenteret,'Kattemsenteret').
 hpl(76687,meråker_sentrum,meråker_sentrum,'Meråker sentrum').
 hpl(100415,flakk_ferjekai,flakk_ferjekai,'Flakk ferjekai').
 hpl(74034,killingdal,killingdal,'Killingdal').
@@ -634,8 +634,8 @@ hpl(73715,løften,løften,'Løften').
 hpl(73714,møsta,møsta,'Møsta').
 hpl(73717,løften,løften,'Løften').
 hpl(73716,teglverkskrysset,teglverkskrysset,'Teglverkskrysset').
-hpl(72358,gullikstad,gullikstad,'Gullikstad').
 hpl(76716,grønberg,grønberg,'Grønberg').
+hpl(72358,gullikstad,gullikstad,'Gullikstad').
 hpl(73689,lysheim_skole,lysheim_skole,'Lysheim skole').
 hpl(72357,vintervollen,vintervollen,'Vintervollen').
 hpl(73688,lysheim_skole,lysheim_skole,'Lysheim skole').
@@ -717,8 +717,8 @@ hpl(72314,skistua,skistua,'Skistua').
 hpl(72313,skistua,skistua,'Skistua').
 hpl(74978,esp_meieri,esp_meieri,'Esp meieri').
 hpl(73647,lundemobakken,lundemobakken,'Lundemobakken').
-hpl(74976,berggardsmyra,berggardsmyra,'Berggardsmyra').
 hpl(73646,lundemobakken,lundemobakken,'Lundemobakken').
+hpl(74976,berggardsmyra,berggardsmyra,'Berggardsmyra').
 hpl(72310,vikåsen_skole,vikåsen_skole,'Vikåsen skole').
 hpl(74973,peder_morsets_veg,peder_morsets_veg,'Peder Morsets veg').
 hpl(73641,lunde,lunde,'Lunde').
@@ -729,8 +729,8 @@ hpl(74979,esp_meieri,esp_meieri,'Esp meieri').
 hpl(74980,bergheim,bergheim,'Bergheim').
 hpl(74981,bergheim,bergheim,'Bergheim').
 hpl(73650,lunderengshaugen,lunderengshaugen,'Lunderengshaugen').
-hpl(72325,skjefstadbakken,skjefstadbakken,'Skjefstadbakken').
 hpl(73656,tanem_bru,tanem_bru,'Tanem bru').
+hpl(72325,skjefstadbakken,skjefstadbakken,'Skjefstadbakken').
 hpl(72324,skjefstadbakken,skjefstadbakken,'Skjefstadbakken').
 hpl(73655,lundfjord,lundfjord,'Lundfjord').
 hpl(74986,bergheim_snuplass,bergheim_snuplass,'Bergheim snuplass').
@@ -751,8 +751,8 @@ hpl(74992,esplykkja,esplykkja,'Esplykkja').
 hpl(72330,skjelldam,skjelldam,'Skjelldam').
 hpl(74990,persaunet_leir,persaunet_leir,'Persaunet leir').
 hpl(73667,tanemskrysset,tanemskrysset,'Tanemskrysset').
-hpl(73666,tanemskrysset,tanemskrysset,'Tanemskrysset').
 hpl(72335,vinje_kirke,vinje_kirke,'Vinje kirke').
+hpl(73666,tanemskrysset,tanemskrysset,'Tanemskrysset').
 hpl(74997,espnes,espnes,'Espnes').
 hpl(73669,mærk_bru,mærk_bru,'Mærk bru').
 hpl(72338,vinjeøra,vinjeøra,'Vinjeøra').
@@ -814,8 +814,8 @@ hpl(75472,fremo_leir,fremo_leir,'Fremo leir').
 hpl(75470,bukta,bukta,'Bukta').
 hpl(74148,nordskag_skole,nordskag_skole,'Nordskag skole').
 hpl(74149,nordskag_skole,nordskag_skole,'Nordskag skole').
-hpl(74146,stavset_senter_nord,stavset_senter_nord,'Stavset senter nord').
 hpl(75477,fremstad_bru,fremstad_bru,'Fremstad bru').
+hpl(74146,stavset_senter_nord,stavset_senter_nord,'Stavset senter nord').
 hpl(74147,stavset_senter_nord,stavset_senter_nord,'Stavset senter nord').
 hpl(74155,nordskjør,nordskjør,'Nordskjør').
 hpl(74156,klokkerhaugen,klokkerhaugen,'Klokkerhaugen').
@@ -871,8 +871,8 @@ hpl(74107,nordsetra,nordsetra,'Nordsetra').
 hpl(74105,klefstadbukta,klefstadbukta,'Klefstadbukta').
 hpl(75433,brøsetflata,brøsetflata,'Brøsetflata').
 hpl(74102,klefstadbekken,klefstadbekken,'Klefstadbekken').
-hpl(75434,brøsetflata,brøsetflata,'Brøsetflata').
 hpl(76764,knoppan,knoppan,'Knoppan').
+hpl(75434,brøsetflata,brøsetflata,'Brøsetflata').
 hpl(74103,klefstadbekken,klefstadbekken,'Klefstadbekken').
 hpl(76774,hegenes,hegenes,'Hegenes').
 hpl(74111,klefstadhaugen,klefstadhaugen,'Klefstadhaugen').
@@ -1322,10 +1322,10 @@ hpl(73393,svellmoen,svellmoen,'Svellmoen').
 hpl(72062,ilhaugen,ilhaugen,'Ilhaugen').
 hpl(73392,svellmoen,svellmoen,'Svellmoen').
 hpl(72068,ilsvika,ilsvika,'Ilsvika').
-hpl(76426,husby,husby,'Husby').
 hpl(73399,ler,ler,'Ler').
-hpl(76425,husby,husby,'Husby').
+hpl(76426,husby,husby,'Husby').
 hpl(73398,ler,ler,'Ler').
+hpl(76425,husby,husby,'Husby').
 hpl(72067,siim,siim,'Siim').
 hpl(72069,velve,velve,'Velve').
 hpl(72074,sildværet,sildværet,'Sildværet').
@@ -1426,8 +1426,8 @@ hpl(74829,einar_øfstis_veg,einar_øfstis_veg,'Einar Øfstis veg').
 hpl(74827,ormhaugen,ormhaugen,'Ormhaugen').
 hpl(74828,einar_øfstis_veg,einar_øfstis_veg,'Einar Øfstis veg').
 hpl(74834,einbakkbrua,einbakkbrua,'Einbakkbrua').
-hpl(74835,orvos,orvos,'Orvos').
 hpl(73501,lian,lian,'Lian').
+hpl(74835,orvos,orvos,'Orvos').
 hpl(73504,myran,myran,'Myran').
 hpl(74833,einbakkbrua,einbakkbrua,'Einbakkbrua').
 hpl(73509,myrbakkan,myrbakkan,'Myrbakkan').
@@ -1551,8 +1551,8 @@ hpl(73475,syrstadmyra,syrstadmyra,'Syrstadmyra').
 hpl(76501,sætnan,sætnan,'Sætnan').
 hpl(76500,sætnan,sætnan,'Sætnan').
 hpl(73477,lialøkken,lialøkken,'Lialøkken').
-hpl(73483,sæterbakken,sæterbakken,'Sæterbakken').
 hpl(72152,sistranda_skole,sistranda_skole,'Sistranda skole').
+hpl(73483,sæterbakken,sæterbakken,'Sæterbakken').
 hpl(73482,sæterbakken,sæterbakken,'Sæterbakken').
 hpl(72151,grensen,grensen,'Grensen').
 hpl(72154,gressli,gressli,'Gressli').
@@ -1688,8 +1688,8 @@ hpl(76524,gjevingåsen,gjevingåsen,'Gjevingåsen').
 hpl(73497,myran,myran,'Myran').
 hpl(76523,gjevingåsen,gjevingåsen,'Gjevingåsen').
 hpl(72169,vik,vik,'Vik').
-hpl(72168,sjøbakken,sjøbakken,'Sjøbakken').
 hpl(73499,lian,lian,'Lian').
+hpl(72168,sjøbakken,sjøbakken,'Sjøbakken').
 hpl(22719,odenseveien,odenseveien,'Odenseveien').
 hpl(76532,hellsenteret,hellsenteret,'Hellsenteret').
 hpl(75200,flaten,flaten,'Flaten').
@@ -1756,8 +1756,8 @@ hpl(71436,rognes,rognes,'Rognes').
 hpl(72761,haugnes,haugnes,'Haugnes').
 hpl(71430,trondheim_s,trondheim_s,'Trondheim S').
 hpl(72760,åshuset,åshuset,'Åshuset').
-hpl(72763,mebost,mebost,'Mebost').
 hpl(71431,rognbudalen,rognbudalen,'Rognbudalen').
+hpl(72763,mebost,mebost,'Mebost').
 hpl(71432,rognbudalen,rognbudalen,'Rognbudalen').
 hpl(72762,haugnes,haugnes,'Haugnes').
 hpl(71437,rognes,rognes,'Rognes').
@@ -1848,8 +1848,8 @@ hpl(74414,storsand_1,storsand_1,'Storsand 1').
 hpl(74415,storsand_1,storsand_1,'Storsand 1').
 hpl(74412,ohraheia,ohraheia,'Ohraheia').
 hpl(71385,ringve_skole,ringve_skole,'Ringve skole').
-hpl(71386,trolla,trolla,'Trolla').
 hpl(74413,ohraheia,ohraheia,'Ohraheia').
+hpl(71386,trolla,trolla,'Trolla').
 hpl(75741,grendstuggu_by,grendstuggu_by,'Grendstuggu By').
 hpl(71387,hindsverkrønning,hindsverkrønning,'Hindsverkrønning').
 hpl(71388,ringvål,ringvål,'Ringvål').
@@ -1904,8 +1904,8 @@ hpl(73112,kåsløkkja,kåsløkkja,'Kåsløkkja').
 hpl(74443,storvollen,storvollen,'Storvollen').
 hpl(73115,mo_bru,mo_bru,'Mo bru').
 hpl(73114,stugudal_handel,stugudal_handel,'Stugudal Handel').
-hpl(75783,smedhaugen,smedhaugen,'Smedhaugen').
 hpl(110274,halsen_ungdomsskole,halsen_ungdomsskole,'Halsen ungdomsskole').
+hpl(75783,smedhaugen,smedhaugen,'Smedhaugen').
 hpl(110273,fosslia_fjellhall,fosslia_fjellhall,'Fosslia Fjellhall').
 hpl(74450,okstad_østre,okstad_østre,'Okstad østre').
 hpl(73122,mo_vegdele,mo_vegdele,'Mo vegdele').
@@ -1938,8 +1938,8 @@ hpl(72687,ålmoen,ålmoen,'Ålmoen').
 hpl(72689,harborg,harborg,'Harborg').
 hpl(75713,granby,granby,'Granby').
 hpl(75710,gogstadbakken,gogstadbakken,'Gogstadbakken').
-hpl(71352,tranvik_vegdele,tranvik_vegdele,'Tranvik vegdele').
 hpl(72684,markaplassen,markaplassen,'Markaplassen').
+hpl(71352,tranvik_vegdele,tranvik_vegdele,'Tranvik vegdele').
 hpl(72683,markaplassen,markaplassen,'Markaplassen').
 hpl(71353,restadveien,restadveien,'Restadveien').
 hpl(71354,restadveien,restadveien,'Restadveien').
@@ -2674,8 +2674,8 @@ hpl(71152,titran,titran,'Titran').
 hpl(72484,skytterbanen,skytterbanen,'Skytterbanen').
 hpl(72483,hage_bru,hage_bru,'Hage bru').
 hpl(71158,titran_skole,titran_skole,'Titran skole').
-hpl(72489,skyttervegen,skyttervegen,'Skyttervegen').
 hpl(71159,titran_skole,titran_skole,'Titran skole').
+hpl(72489,skyttervegen,skyttervegen,'Skyttervegen').
 hpl(75517,bygrensen,bygrensen,'Bygrensen').
 hpl(75514,byaberget,byaberget,'Byaberget').
 hpl(75512,by_nedre,by_nedre,'By nedre').
@@ -2703,8 +2703,8 @@ hpl(75525,byåsen_butikksenter,byåsen_butikksenter,'Byåsen Butikksenter').
 hpl(75526,frøya_kulturhus,frøya_kulturhus,'Frøya kulturhus').
 hpl(75523,bynesveien_16,bynesveien_16,'Bynesveien 16').
 hpl(71165,tjønnbakken,tjønnbakken,'Tjønnbakken').
-hpl(71166,presthusaunet,presthusaunet,'Presthusaunet').
 hpl(75524,byåsen_butikksenter,byåsen_butikksenter,'Byåsen Butikksenter').
+hpl(71166,presthusaunet,presthusaunet,'Presthusaunet').
 hpl(71167,presthusaunet,presthusaunet,'Presthusaunet').
 hpl(72499,vormstad,vormstad,'Vormstad').
 hpl(75522,bynesveien_16,bynesveien_16,'Bynesveien 16').
@@ -2991,8 +2991,8 @@ hpl(72641,hangran,hangran,'Hangran').
 hpl(73972,kambru,kambru,'Kambru').
 hpl(73979,nidarvoll_skole,nidarvoll_skole,'Nidarvoll skole').
 hpl(71316,torvtaket,torvtaket,'Torvtaket').
-hpl(73978,nidarvoll_skole,nidarvoll_skole,'Nidarvoll skole').
 hpl(80272,langøra,langøra,'Langøra').
+hpl(73978,nidarvoll_skole,nidarvoll_skole,'Nidarvoll skole').
 hpl(71317,torvtaket,torvtaket,'Torvtaket').
 hpl(80270,langøra,langøra,'Langøra').
 hpl(72649,marcus_thranes_vei,marcus_thranes_vei,'Marcus Thranes vei').
@@ -3014,8 +3014,8 @@ hpl(80283,lingen,lingen,'Lingen').
 hpl(72658,hanskemakerbakken,hanskemakerbakken,'Hanskemakerbakken').
 hpl(73989,solvollvegen,solvollvegen,'Solvollvegen').
 hpl(71329,trafost,trafost,'Trafost').
-hpl(72660,åfjord_skysstasjon,åfjord_skysstasjon,'Åfjord skysstasjon').
 hpl(73991,karlsaunet,karlsaunet,'Karlsaunet').
+hpl(72660,åfjord_skysstasjon,åfjord_skysstasjon,'Åfjord skysstasjon').
 hpl(73990,solvollvegen,solvollvegen,'Solvollvegen').
 hpl(71335,reppe,reppe,'Reppe').
 hpl(72665,ålbu,ålbu,'Ålbu').
@@ -3122,8 +3122,8 @@ hpl(74318,kotsøy,kotsøy,'Kotsøy').
 hpl(74315,stokkøy,stokkøy,'Stokkøy').
 hpl(74316,stokkøy,stokkøy,'Stokkøy').
 hpl(75647,garlimoen,garlimoen,'Garlimoen').
-hpl(74313,nypantunet,nypantunet,'Nypantunet').
 hpl(71286,refset,refset,'Refset').
+hpl(74313,nypantunet,nypantunet,'Nypantunet').
 hpl(75644,garli_rasteplass,garli_rasteplass,'Garli rasteplass').
 hpl(74314,nypantunet,nypantunet,'Nypantunet').
 hpl(75645,garli_rasteplass,garli_rasteplass,'Garli rasteplass').
@@ -3227,8 +3227,8 @@ hpl(72574,haltdalen_coop,haltdalen_coop,'Haltdalen Coop').
 hpl(71242,torgard,torgard,'Torgard').
 hpl(75601,churchills_veg,churchills_veg,'Churchills veg').
 hpl(71243,herfjordvatn,herfjordvatn,'Herfjordvatn').
-hpl(71244,torgard,torgard,'Torgard').
 hpl(72576,være_væretrøa,være_væretrøa,'Være Væretrøa').
+hpl(71244,torgard,torgard,'Torgard').
 hpl(72575,haltdalen_coop,haltdalen_coop,'Haltdalen Coop').
 hpl(71245,herfjordvatn,herfjordvatn,'Herfjordvatn').
 hpl(75609,city_syd_e6_1,city_syd_e6_1,'City Syd E6 1').
@@ -3350,8 +3350,8 @@ hpl(74357,o_j_aalmos_veg,o_j_aalmos_veg,'O. J. Aalmos veg').
 hpl(73025,midtskogen,midtskogen,'Midtskogen').
 hpl(75689,gjølme,gjølme,'Gjølme').
 hpl(73024,midtskogen,midtskogen,'Midtskogen').
-hpl(73027,strinda_kirke,strinda_kirke,'Strinda kirke').
 hpl(75686,gjæsingen_kai,gjæsingen_kai,'Gjæsingen kai').
+hpl(73027,strinda_kirke,strinda_kirke,'Strinda kirke').
 hpl(74355,krokstadøra,krokstadøra,'Krokstadøra').
 hpl(73032,migosenteret,migosenteret,'Migosenteret').
 hpl(73031,migosenteret,migosenteret,'Migosenteret').
