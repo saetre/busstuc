@@ -3501,7 +3501,7 @@ isat( framveien,byåsen).
 
 isat( gartnerhallen,ikea). %%  (?)
 
-isat( professor_brochs_gate,gløshaugen). %% RS-170626
+%% isat( professor_brochs_gate,gløshaugen). %% RS-170626  %% RS-190919
 isat( prestegårdsjordet,gløshaugen). %% RS-170626
 isat( gløshaugen_nord,gløshaugen). 
 
@@ -3510,7 +3510,7 @@ isat( gløshaugen_nord,gløshaugen).
 isat( gløshaugen_nord,hesthagen). 
 
 isat( gløshaugen,nth). 
-isat( professor_brochs_gate,nth). %% RS-170626
+%% isat( professor_brochs_gate,nth). %% RS-170626  %% RS-190919
 isat( prestegårdsjordet,nth). %% RS-170626
 
 isat( haakon_vii_gate_17,haakon_vii_gate). 
@@ -3826,7 +3826,7 @@ placestat(befalsskolen,festningsgata).
 %% placestat(berg,østre_berg). 
 %% also station on obscure route 73 (not in busrutehefte)
 
-placestat('Berg arbeidskirke',kvilhaugen). 
+placestat('Berg arbeidskirke',strinda_vgs). 
 %placestat(bergstudentby,bugges_veg). 
 placestat(bergsvingen,harald_bothners_veg).  %% øvre/nedre
 placestat(bi,pirbadet). %%  BI
@@ -4068,7 +4068,8 @@ placestat(kretsfengselet,tunga_kretsfengsel).
 placestat(kristiansten,ankers_gate). 
 placestat(kristianstenfestning,ankers_gate). 
 %placestat(kuhaugen,gina_krogs_veg). 
-placestat(kuhaugen,clara_holsts_veg).     %% RS-160809 NEW ROAD! 
+placestat(kuhaugen,clara_holsts_veg).     %% RS-160809 NEW ROAD!
+placestat(kvilhaugen,strinda_vgs).     %% RS-20190920 NEW ROAD!
 %placestat(kyvannet,skavlans_veg). 
 %placestat(kyvatnet,skavlans_veg). 
 %% placestat(køff,leangenveien). %% TA-110822
