@@ -1092,6 +1092,8 @@ present(N,P):-
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 
+%%% ?- value(P) Prints the current value of the parameter P.
+
 value(X):-
     value(X,Y),
     out(X),out('='),writeout:output(Y),nl.

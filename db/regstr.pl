@@ -507,7 +507,7 @@ streetstat(haakon_viis_street,'Haakon VII\'s gate',1,3,østmarkveien).
 streetstat(haakon_viis_street,'Haakon VII\'s gate',4,23,haakon_vii_gate_17).
 streetstat(haakon_viis_street,'Haakon VII\'s gate',9,13,haakon_vii_gate_9).
 streetstat(haakon_viis_street,'Haakon VII\'s gate',10,25,haakon_vii_gate_25).
-streetstat(haakon_viis_street,'Haakon VII\'s gate',5,7,city_lade).
+streetstat(haakon_viis_street,'Haakon VII\'s gate',5,7,lade_idrettsanlegg).
 streetstat(haakon_viis_street,'Haakon VII\'s gate',14,14,lade_alle_80). %% ? lade_alle_80
 streetstat(haakon_viis_street,'Haakon VII\'s gate',25,29,lade_alle_80). %% RS-131218 Haakon VII's gt 29 removed!
 streetstat(haakon_viis_street,'Haakon VII\'s gate',43,45,lade_alle_80). %% AtB
@@ -621,7 +621,7 @@ streetstat(høgreina,'Høgreina',1,18,furuhaugen).
 streetstat(høgreina,'Høgreina',278,454,høgreina_øvre).
 streetstat(høgreina,'Høgreina',12,274,høgreina).
 streetstat(høgsetgrenda,'Høgsetgrenda',1,67,leirelva).
-streetstat(høgskoleringen,'Høgskoleringen',1,8,gløshaugen_nord).
+streetstat(høgskoleringen,'Høgskoleringen',1,8,gløshaugen_syd).
 %streetstat(høgskole_street,'Høgskoleveien',1,12,vollabakken).     %% RS-150104 Terminated. Or Summer/Winter discrepancy?
 streetstat(høgskole_street,'Høgskoleveien',1,12,studentersamfundet).
 streetstat(høili_plass,'Høili plass',1,10,unknown).
@@ -668,9 +668,9 @@ streetstat(innherreds_street,'Innherredsveien',24,55,strandveien).
 streetstat(innherreds_street,'Innherredsveien',79,119,rønningsbakken).
 streetstat(innherreds_street,'Innherredsveien',101,143,dalen_hageby).
 streetstat(innherreds_street,'Innherredsveien',7,86,rosendal).
-streetstat(ivar_lykkes_street,'Ivar Lykkes veg',1,1,city_syd).
+streetstat(ivar_lykkes_street,'Ivar Lykkes veg',1,1,city_syd_e6).
 streetstat(ivar_lykkes_street,'Ivar Lykkes veg',7,11,rognbudalen).
-streetstat(ivar_lykkes_street,'Ivar Lykkes veg',2,6,city_syd).
+streetstat(ivar_lykkes_street,'Ivar Lykkes veg',2,6,city_syd_e6).
 streetstat(iver_trøans_street,'Iver Trøans vei',1,9,brukseier_olsens_vei_1).
 streetstat(ivar_aasens_street,'Ivar Aasens veg',1,33,ugla).
 streetstat(ivar_mortensons_street,'Ivar Mortensons veg',1,11,dalgård).
@@ -801,7 +801,7 @@ streetstat(kobbes_street,'Kobbes gate',6,18,strandveien).
 streetstat(koefoedgeilan,'Koefoedgeilan',1,2,iskremfabrikken).
 streetstat(koefoedgeilan,'Koefoedgeilan',2,13,ila).
 streetstat(koieflata,'Koieflata',1,66,koieflata).
-streetstat(kolbjørn_hejes_street,'Kolbjørn Hejes vei',1,4,gløshaugen_nord).
+streetstat(kolbjørn_hejes_street,'Kolbjørn Hejes vei',1,4,gløshaugen_syd).
 streetstat(kolstadflata,'Kolstadflata',3,3,høgreina).
 streetstat(kolstadflata,'Kolstadflata',1,5,husebytunet).
 streetstat(kolstadflata,'Kolstadflata',35,49,casper_lundes_veg).
@@ -1209,7 +1209,7 @@ streetstat(orkdal_street,'Orkdalsvegen',1,99,torget_orkanger).
 streetstat(ormen_langes_street,'Ormen Langes vei',1,29,strandveikaia).
 streetstat(orre_street,'Orrevegen',2,8,saupstadmyra).
 streetstat(orre_street,'Orrevegen',1,25,skyttervegen).
-streetstat(o_s_bragstads_plass,'O.S. Bragstads plass',1,6,gløshaugen_nord).
+streetstat(o_s_bragstads_plass,'O.S. Bragstads plass',1,6,gløshaugen_syd).
 
 streetstat(oscar_wistings_street,'Oscar Wistings vei',1,42,nyveibakken). %% RS-150104. oscar_wistings_vei Terminated June 2014.
 streetstat(oscar_wistings_street,'Oscar Wistings vei',44,62,åsveien_skole).

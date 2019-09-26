@@ -14,7 +14,7 @@
 %     Understanding System                            %
 %                                                     %
 % COPYRIGHT  (C) 2001 - 2012  Tore Amble (LingIT)     %
-% COPYRIGHT  (C) 2012 - 2018  Rune Sætre (NTNU)       %
+% COPYRIGHT  (C) 2012 - 2019  Rune Sætre (NTNU)       %
 %  Group of Logic and Language Technology             %
 %  Department of Computer and Information Science     %
 %  The Norwegian University of Science and Technology %

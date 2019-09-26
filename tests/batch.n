@@ -70,7 +70,7 @@ Lian.
 
 (Gløshaugen syd+3,Gløshaugen nord+4,Dybendals gate +20) til nardo før 1730.
 
-(Dybendals gate +10,Gløshaugen syd+3,Gløshaugen nord+4) til nardo  etter  1700.
+(Dybendals gate +10,Gløshaugen syd+3,Gløshaugen nord+4) til nardo  etter 1700.
 
 (Gløshaugen syd+3) Solsiden.
 

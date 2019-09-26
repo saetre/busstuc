@@ -323,13 +323,13 @@ maxnumberofindividualdepartures(3):- %% not ridiculously many sequence
 maxnumberofindividualdepartures(3). 
 
 
-
+%%% Documentation: Integer2Busname. UNUSED
 intbusname(X,X). 
+%%% Documentation: Integer2Busnumber. UNUSED
 intbusnr(X,X). 
 
 
-%% 
-
+%% Document
 airbus(fb).     
 airbus(airbus).
 airbus(flybussen).
@@ -339,7 +339,7 @@ exbusname(airbus,'Flybussen').
 exbusname(flybussen,'Flybussen'). 
 exbusname(fb,'Flybussen'). 
 
-exbusname(13,'ekstrabuss'). 
+%% exbusname(13,'ekstrabuss'). %% RS-20190920 
 
 exbusname(154,'Klæburuten'). %% RS-150815 
 %exbusname(254,'Klæburuten'). 
