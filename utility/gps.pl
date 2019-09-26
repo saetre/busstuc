@@ -24,7 +24,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-gorg :- listing( main:gps_origin ). %% debug %% TA-110128
+%% GPS Origin. debug %% TA-110128
+gorg :- listing( main:gps_origin ).
 
 %%% FOR GPS %%%
 
@@ -43,7 +44,7 @@ transfix( [gpsflag:::Orgy | Rest], U ) :- !,
      (smartdepflag := true), %% Quickfix to allow json output to all queries. %% TE-120206
 
     for( member( gps_origin(X,Y), Orgy ),
-           remember( gps_origin(X,Y) ) ),       % remeber( main:gps_origin(X,Y) )
+           remember( gps_origin(X,Y) ) ),       % remember( main:gps_origin(X,Y) )
        transfix(Rest,U).
 
 %% Several (old) statements
@@ -59,8 +60,8 @@ transfix(P,Q):-transfix1(P,Q). %% PANIC
 
     
 
- 
-reset_origins :- %% TA-110128
+%% TA-110128
+reset_origins :- 
     retractall( gps_origin(_,_) ),
  
 %%%    traceprog( 3,reset_origins),
