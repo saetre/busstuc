@@ -9,13 +9,14 @@
 % Make a slender syntax tree comparable to Penn Tree Bank tagging
 
 %%UNIT: / %% RS-111218, USAGE :-use_module( ptbwrite,[ ptbwrite/1 ] ).
-:- module( ptbwrite, [ alle_args/2, drucke_baum/1, drucke_baum_list/1, ptbwrite/1, shrink_tree/2 ] ). %% RS-140914
+:- module( ptbwrite, [ alle_args/2, drucke_baum/1, drucke_baum_list/1, ptbwrite/1, shrink_tree/2, tab/1 ] ). %% RS-140914
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%:- meta_predicate  ana(?,?,?,-).               %% RS-2019.09.27 No Meta argument?
-%:- meta_predicate  berechne_pos(?,-,?,?,?,?).  %% RS-2019.09.27 No Meta argument?
+%:- meta_predicate  ana(?,?,?,-).
+%:- meta_predicate  berechne_pos(?,-,?,?,?,?).
 
 %% RS-131227    UNIT: / and /utility/
+%:- ensure_loaded( 'declare' ).    %% :-op( 714,xfx, := ).  etc... , track/2, trackprog/2
 :- use_module( '../declare', [ track/2 ] ).      %% RS-150111. Trying to sort out compile-order.
 
 :- use_module( '../sicstus4compatibility', [ output/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
@@ -148,13 +149,73 @@ Out of print, now */
 %% REVISED TA-100922
 
 %% :- ensure_loaded( 'sicstus4compatibility' ). %, [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
-%% RS-131117: Write the needed predicates here (only) instead of in sicstus4compatibility.pl
+%% RS-131117: Write the needed predicates here (only) instead of in sicstus4compatibility.pl (Avoid Etarnal Import loops!)
+tab(N):- write_blanks(N). %% ad hoc
 
-tabx(X) :- %% Sictus Doesn't take tab(-1)
-    ( X < 0  ->  true ; n_mal(X,' ') ). %% Sicstus 4
+write_blanks(1) :- write(' ').
+write_blanks(2) :- write('  ').
+write_blanks(3) :- write('   ').
+write_blanks(4) :- write('    ').
+write_blanks(5) :- write('     ').
+write_blanks(6) :- write('      ').
+write_blanks(7) :- write('       ').
+write_blanks(8) :- write('        ').
+write_blanks(9) :- write('         ').
+write_blanks(10) :- write('          ').
+write_blanks(11) :- write('           ').
+write_blanks(12) :- write('            ').
+write_blanks(13) :- write('             ').
+write_blanks(14) :- write('              ').
+write_blanks(15) :- write('               ').
+write_blanks(16) :- write('                ').
+write_blanks(17) :- write('                 ').
+write_blanks(18) :- write('                  ').
+write_blanks(19) :- write('                   ').
+write_blanks(20) :- write('                    ').
+write_blanks(21) :- write('                     ').
+write_blanks(22) :- write('                      ').
+write_blanks(23) :- write('                       ').
+write_blanks(24) :- write('                        ').
+write_blanks(25) :- write('                         ').
+write_blanks(26) :- write('                          ').
+write_blanks(27) :- write('                           ').
+write_blanks(28) :- write('                            ').
+write_blanks(29) :- write('                             ').
+write_blanks(30) :- write('                              ').
+write_blanks(31) :- write('                               ').
+write_blanks(32) :- write('                                ').
+write_blanks(33) :- write('                                 ').
+write_blanks(34) :- write('                                  ').
+write_blanks(35) :- write('                                   ').
+write_blanks(36) :- write('                                    ').
+write_blanks(37) :- write('                                     ').
+write_blanks(38) :- write('                                      ').
+write_blanks(39) :- write('                                       ').
+write_blanks(40) :- write('                                        ').
+
+
+write_blanks(N):-
+     N > 40,
+     !,
+     write_blanks(40),
+     N1 is N-40,
+     write_blanks(N1).
+
+write_blanks(N):-
+     N > 0,
+     !,
+     write(' '),
+     N1 is N-1,
+     write_blanks(N1).
+
+write_blanks(_).
+
+tabx(X) :- %% Sictus Doesn take tab(-1) 
+    ( X <0 -> true ; tab(X) ). %% Sicstus 4
 
 
 %% Convert lists to terms 
+
 
 drucke_baum_list(F):-
    F=G, %%%%   atomize(F,G), %% TA
@@ -474,8 +535,8 @@ n_mal_x(N,A):- N > 0,
                write(A),
                M is N - 1,
                n_mal(M,A).
-
 n_mal_x(N,_):- N =< 0.
+
 
 
 atomic_laenge(A,N):- atom(A),
