@@ -274,7 +274,7 @@ run(L):-
    language := L,
    run.
     
-
+%% evt. read-files
 run :- 
     nl,
     (seen),              %% evt. read-files
@@ -818,19 +818,19 @@ process(L):-           %% Process is under a repeat loop
      TQL=stop).        %% Succeeds and  exit when stop command.
 
 
-abortword( georgewarrenbush ). %% <- Top Secret
-haltword( johnforbeskerry ).   %% <- Top Secret
+%% Top Secret
+abortword( georgewarrenbush ).
+%% Top Secret
+haltword( johnforbeskerry ).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % translate2
-
-      %% Produces a TQL expression from a List
-      %% If a stop command appears, TQL = stop
-      %% If an end command appears, TQL = end
-      %% If an error occured,       TQL = error
-      %% Otherwise,                 TQL = command(P).
-
+%% Produces a TQL expression from a List
+%% If a stop command appears, TQL = stop
+%% If an end command appears, TQL = end
+%% If an error occured,       TQL = error
+%% Otherwise,                 TQL = command(P).
 
 translate2( L, TQL ) :- 
     track(1,nl),

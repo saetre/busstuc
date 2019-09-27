@@ -9,22 +9,16 @@
 % Make a slender syntax tree comparable to Penn Tree Bank tagging
 
 %%UNIT: / %% RS-111218, USAGE :-use_module( ptbwrite,[ ptbwrite/1 ] ).
-:- module( ptbwrite, [ alle_args/2, drucke_baum/1, drucke_baum_list/1, ptbwrite/1, shrink_tree/2, tab/1 ] ). %% RS-140914
+:- module( ptbwrite, [ alle_args/2, drucke_baum/1, drucke_baum_list/1, ptbwrite/1, shrink_tree/2 ] ). %% RS-140914
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-:- meta_predicate  ana(?,?,?,-).
-:- meta_predicate  berechne_pos(?,-,?,?,?,?).
+%:- meta_predicate  ana(?,?,?,-).               %% RS-2019.09.27 No Meta argument?
+%:- meta_predicate  berechne_pos(?,-,?,?,?,?).  %% RS-2019.09.27 No Meta argument?
 
 %% RS-131227    UNIT: / and /utility/
-%:- ensure_loaded( 'declare' ).    %% :-op( 714,xfx, := ).  etc... , track/2, trackprog/2
 :- use_module( '../declare', [ track/2 ] ).      %% RS-150111. Trying to sort out compile-order.
 
 :- use_module( '../sicstus4compatibility', [ output/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
-
-%:- use_module( main, [ track/2 ] ). %% RS-140928 Moved (back) to declare.pl hei/0,   run/0 %track(X, Y) :- user:track(X, Y) .
-
-%:- use_module( 'utility/utility', [ output/1, prettyprint/1 ] ).  %% Module util
-%:- use_module( writeout, [ output/1 ] ).  %% Module util  , prettyprint/1   , track/2
 
 
 /*
@@ -43,6 +37,8 @@ En videreføring er å eliminere topp-noden i alle subtrær som bare har en prod
 shrink_tree(K,M):- %% TA-110207
     rewfat(K,L),
     rewprune(L,M).  
+
+% Make a slender syntax tree comparable to Penn Tree Bank tagging
 
 ptbwrite(time_out):- 
    !.
@@ -153,22 +149,12 @@ Out of print, now */
 
 %% :- ensure_loaded( 'sicstus4compatibility' ). %, [ get0/1, tab/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 %% RS-131117: Write the needed predicates here (only) instead of in sicstus4compatibility.pl
-tab(N):- write_blanks(N). %% ad hoc
-write_blanks(N):-
-     N > 0,
-     !,
-     write(' '),
-     N1 is N-1,
-     write_blanks(N1).
-write_blanks(_).
-%%%
 
-tabx(X) :- %% Sictus Doesn take tab(-1) 
-    ( X <0 -> true ; tab(X) ). %% Sicstus 4
+tabx(X) :- %% Sictus Doesn't take tab(-1)
+    ( X < 0  ->  true ; n_mal(X,' ') ). %% Sicstus 4
 
 
 %% Convert lists to terms 
-
 
 drucke_baum_list(F):-
    F=G, %%%%   atomize(F,G), %% TA
@@ -255,8 +241,7 @@ max(X,Y,Z):- X >= Y, !, X=Z. %% TA-061030 !trap
 max(_X,Y,Z):- Y=Z.
 
 
-
-
+% Print Tree
 
 drucke_baum(S):-
                 sv(S),
@@ -298,7 +283,6 @@ drucke_knoten([],_).
 
 dr_kn(k(X,Pos),S1,S2):-
              atomic_laenge(X,N),
-
 
              tabx(Pos - N//2 - S1), %% TA-061030  -1 > 0
 
@@ -434,13 +418,64 @@ knoten_zahl([k(_,_)|L],1):- \+ member_x(k(_,_),L).
 n_mal(Arith,A):- X is Arith,
                  n_mal_x(X,A).
 
+%% RS-2019.09.27 Ad Hoc!
+
+n_mal_x(1,'_') :- write('_').
+n_mal_x(2,'_') :- write('__').
+n_mal_x(3,'_') :- write('___').
+n_mal_x(4,'_') :- write('____').
+n_mal_x(5,'_') :- write('_____').
+n_mal_x(6,'_') :- write('______').
+n_mal_x(7,'_') :- write('_______').
+n_mal_x(8,'_') :- write('________').
+n_mal_x(9,'_') :- write('_________').
+n_mal_x(10,'_') :- write('__________').
+n_mal_x(11,'_') :- write('___________').
+n_mal_x(12,'_') :- write('____________').
+n_mal_x(13,'_') :- write('_____________').
+n_mal_x(14,'_') :- write('______________').
+n_mal_x(15,'_') :- write('_______________').
+n_mal_x(16,'_') :- write('________________').
+n_mal_x(17,'_') :- write('_________________').
+n_mal_x(18,'_') :- write('__________________').
+n_mal_x(19,'_') :- write('___________________').
+n_mal_x(20,'_') :- write('____________________').
+n_mal_x(21,'_') :- write('_____________________').
+n_mal_x(22,'_') :- write('______________________').
+n_mal_x(23,'_') :- write('_______________________').
+n_mal_x(24,'_') :- write('________________________').
+n_mal_x(25,'_') :- write('_________________________').
+n_mal_x(26,'_') :- write('__________________________').
+n_mal_x(27,'_') :- write('___________________________').
+n_mal_x(28,'_') :- write('____________________________').
+n_mal_x(29,'_') :- write('_____________________________').
+n_mal_x(30,'_') :- write('______________________________').
+n_mal_x(31,'_') :- write('_______________________________').
+n_mal_x(32,'_') :- write('________________________________').
+n_mal_x(33,'_') :- write('_________________________________').
+n_mal_x(34,'_') :- write('__________________________________').
+n_mal_x(35,'_') :- write('___________________________________').
+n_mal_x(36,'_') :- write('____________________________________').
+n_mal_x(37,'_') :- write('_____________________________________').
+n_mal_x(38,'_') :- write('______________________________________').
+n_mal_x(39,'_') :- write('_______________________________________').
+n_mal_x(40,'_') :- write('________________________________________').
+
+%% RS-2019.09.27 Ad Hoc!
+n_mal_x(N,'_'):- N > 40,
+               !,
+               n_mal_x(40,'_'),
+               M is N - 40,
+               n_mal(M,'_').
+
+%% Original
 n_mal_x(N,A):- N > 0,
                !,
                write(A),
                M is N - 1,
                n_mal(M,A).
-n_mal_x(N,_):- N =< 0.
 
+n_mal_x(N,_):- N =< 0.
 
 
 atomic_laenge(A,N):- atom(A),

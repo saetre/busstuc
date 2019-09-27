@@ -59,8 +59,8 @@
 % corr(prinsenkrysset,hovedterminalen). %% ???  SUMMER %% TA-110701
   %% sorry, gir destinasjon munkegate = Prinsenkrysset  %%
 
-corr( city_syd_e6_1, city_syd_sentervegen ).     %% RS-150823  %% RS-190101 Just one station now...
-corr( city_syd_e6_2, city_syd_sentervegen ).      %% RS-150823  %% RS-190101 Just one station now...
+corr( city_syd_e6_1, city_syd).     %% RS-150823  %% RS-190101 Just one station now...
+corr( city_syd_e6_2, city_syd).      %% RS-150823  %% RS-190101 Just one station now...
 
 %corr(d1,hovedterminalen).      %% RS-150815. Move this to lex?
 %corr(d2,hovedterminalen). 
@@ -3413,8 +3413,6 @@ cmpl(åsvenein,skole,åsveien_skole).  %% ?
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 % ISAT   (STATION, PLACE), or
 % ISAT   (Station, Neighbourhood)?      %% RS-160110    Neighborhood could be a STATION name? No, use corr/2 instead for stations
 %  STATION is (one, but NOT preferred, among several) stations that belong to the NEIGHBOURHOOD (PLACE)
@@ -3423,15 +3421,14 @@ cmpl(åsvenein,skole,åsveien_skole).  %% ?
 %
 % isat( lerkendal_stadion, lerkendal ).
 % isat( lerchendal_gård, lerkendal ). 
-% isat( gløshaugen_nord, gløshaugen ).
 %
 
 %% SENTRUM (PLACE) FIRST - ALPHABETICALLY (on PLACE) BELOW
 %% RS-140102    REMEMBER: hovedterminalen (used for corr)  vs.  sentrum (used for isat, sentrum as a PLACE) ?
 
-%% REVERSE ??
+%% ISAT   (STATION, PLACE)
 isat( olav_tryggvasons_gate, hovedterminalen ).    %% RS-121223 RS-141104 Sommer vs. vinter!?
-isat( hovedterminalen, dronningens_gate ).  %% Where is sentrumsterminalen
+%%isat( hovedterminalen, dronningens_gate ).  %% Where is sentrumsterminalen
 %%isat( hovedterminalen, kongens_gate ).  %% RS-130812 Where is sentrumsterminalen, men unngå:  Holdeplassen nærmest Kongens_gate er Sentrumsterminalen ??
 isat( hovedterminalen, munkegata ).  %%
 isat( hovedterminalen, sentrum ).  %% Experiment Trikk St. Olavs. gt og så sentrum
@@ -3490,8 +3487,8 @@ isat( charlottenlund_nedre, charlottenlund).
 
 isat( city_syd_e6_1, city_syd ). %% RS-130818  %% RS-190101
 isat( city_syd_e6_2, city_syd ). %% RS-130818  %% RS-190101
-isat( city_syd_sentervegen, city_syd ). %% TA-110627  %% RS-190101 Just one station at City Syd now.
-isat( city_syd_østre, city_syd ).  %% TA-100901
+%% isat( city_syd_sentervegen, city_syd ). %% TA-110627  %% RS-190101 Just one station at City Syd now.
+%% isat( city_syd_østre, city_syd ).  %% TA-100901 %% City Syd Østre no longer a station. %% RS-2019.09.26
 isat( john_aae_s_veg, city_syd).   %%
 isat( kvt, city_syd ).             %%
 
@@ -3542,7 +3539,7 @@ isat( jørgen_b_lysholms_vei, lade_arena ).     %% Bussen står og venter her ga
 isat(kroppanmarka,kroppanmarka_snuplass). %%RS-120305
 
 %%%%%%placestat( lade, lade_alle_80 ).  %% ( lade-alle_80 more passages => PREFERRED!) %%¤¤¤ %% ulykke AtB %% TA-100715
-isat( city_lade, lade ).   %% RS-130625 %% Sommerrute-løsning
+%% isat( city_lade, lade ).   %% RS-130625 %% Sommerrute-løsning
 isat( lade_gård, lade ).   %% RS-130625 %% Nattbuss-løsning
 
 isat( lade_alle_80, lade).

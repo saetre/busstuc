@@ -162,7 +162,7 @@ ieval(TQL0) :-
 
     waves. 
 
-
+%% Which route information is being used
 determine_query_period :-
      
     veh_mod(H),
@@ -172,6 +172,7 @@ determine_query_period :-
      ( query_period := nil )
     ).
 
+%% date occurs
 determine_application_period( [ _ ::: TQL ] ) :-
     veh_mod(H),
     ( sequence_member( date(A,B,C) isa date, TQL ) -> %% date occurs
@@ -189,8 +190,8 @@ determine_application_period(_):-
 %¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
 
 
-
-update_webstat :-  %% TA-090430
+%% TA-090430
+update_webstat :-  
     todaysdate(TODAY),
   
     retract(webstat(TODAY,SMS,TOT)), %% dynamic/ declare

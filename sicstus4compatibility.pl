@@ -60,11 +60,13 @@ rem_dups([_|Y],Keep,Z):-
     rem_dups(Y,Keep,Z).
 
 
-put(G) :- put_code(G). %%
+%%
+put(G) :- put_code(G).
 
 
+%% drop ... %% TA-110204
 prettypr(H,P) :- 
-        write('*** '), %% drop ... %% TA-110204
+        write('*** '), 
    write(H),
    write(' ***'),
    nl,nl, 
@@ -83,7 +85,10 @@ prettypr2(X) :-
 
 ttyflush :- flush_output(user).
 
-tab(N):- write_blanks(N). %% ad hoc
+
+%% ad hoc
+tab(N):- write_blanks(N).
+
 
 %% same as traceprog
 %progtrace( N, P ) :-
@@ -100,6 +105,54 @@ traceprog( N, P ) :-
  ;
     true.
 
+write_blanks(1) :- write(' ').
+write_blanks(2) :- write('  ').
+write_blanks(3) :- write('   ').
+write_blanks(4) :- write('    ').
+write_blanks(5) :- write('     ').
+write_blanks(6) :- write('      ').
+write_blanks(7) :- write('       ').
+write_blanks(8) :- write('        ').
+write_blanks(9) :- write('         ').
+write_blanks(10) :- write('          ').
+write_blanks(11) :- write('           ').
+write_blanks(12) :- write('            ').
+write_blanks(13) :- write('             ').
+write_blanks(14) :- write('              ').
+write_blanks(15) :- write('               ').
+write_blanks(16) :- write('                ').
+write_blanks(17) :- write('                 ').
+write_blanks(18) :- write('                  ').
+write_blanks(19) :- write('                   ').
+write_blanks(20) :- write('                    ').
+write_blanks(21) :- write('                     ').
+write_blanks(22) :- write('                      ').
+write_blanks(23) :- write('                       ').
+write_blanks(24) :- write('                        ').
+write_blanks(25) :- write('                         ').
+write_blanks(26) :- write('                          ').
+write_blanks(27) :- write('                           ').
+write_blanks(28) :- write('                            ').
+write_blanks(29) :- write('                             ').
+write_blanks(30) :- write('                              ').
+write_blanks(31) :- write('                               ').
+write_blanks(32) :- write('                                ').
+write_blanks(33) :- write('                                 ').
+write_blanks(34) :- write('                                  ').
+write_blanks(35) :- write('                                   ').
+write_blanks(36) :- write('                                    ').
+write_blanks(37) :- write('                                     ').
+write_blanks(38) :- write('                                      ').
+write_blanks(39) :- write('                                       ').
+write_blanks(40) :- write('                                        ').
+
+
+write_blanks(N):-
+     N > 40,
+     !,
+     write_blanks(40),
+     N1 is N-40,
+     write_blanks(N1).
 
 write_blanks(N):-
      N > 0,
@@ -107,7 +160,9 @@ write_blanks(N):-
      write(' '),
      N1 is N-1,
      write_blanks(N1).
+
 write_blanks(_).
 
+%% Use writeq/1
 writepred(P) :- writeq(P),write('.'),nl. 
 

@@ -1672,7 +1672,8 @@ prettyprint( P ) :-
     false; % release bindings
     true.
 
-print_parse_tree(Parse1):- %% TA-110207
+%% TA-110207
+print_parse_tree(Parse1):- 
    value(norsource,true),
    !,
    shrink_tree(Parse1,Pa1),
@@ -1738,7 +1739,8 @@ listreq2([]).
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 
-printdots :-  %% TA-110204
+%% TA-110204
+printdots :-  
     dotline(DOTS),
     traceprint(1,DOTS).
 
@@ -1746,18 +1748,21 @@ dotline(''):-value(smsflag,true),!.
 dotline('........................................................................').
    
 
-
-roundwrite( nil ) :-!. %% catches var
+%% catches var
+roundwrite( nil ) :-!. 
 roundwrite( (X,Y) ) :-!, out(X),roundwrite(Y).
 roundwrite( X ) :- !, out(X).
 
-sequence_write(X) :- roundwrite(X). %% New name, more standard
+%% New name, more standard
+sequence_write(X) :- roundwrite(X). 
 
+%% statistics/1
 statistics(G) :- 
                statistics(G,K),
                output(K).
 
-traceprint(N,P):- %% same as trace
+%% same as trace
+traceprint(N,P):- 
     value(trace,M), number(M), M >= N, 
     !,
     write(P),nl
@@ -2175,7 +2180,8 @@ tahasattval(I,RList):-
 
 
 
-waves :-  value(norsource,true), %% TA-110207
+%% TA-110207
+waves :-  value(norsource,true), 
     !.
 
 waves :-  value(traceprog,0), %% TA-110207

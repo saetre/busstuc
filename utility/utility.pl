@@ -132,27 +132,35 @@ sequence_member( X, Y ) :-
    occ( X, Y ). %%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-breakpoint(Pred,Prop):- %% New Predicate Delayed Dynamic set spypoint
+%% New Predicate Delayed Dynamic set spypoint
+breakpoint(Pred,Prop):-
     value(panic,true)->
     (call(Prop) -> spy Pred;true);
     true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Debug
 debug(Prop,Text):- 
     value(trace,4) ->
     (call(Prop) -> output(Text);true)
     ;
     true.
-pling(I) :- output( pling(I) ). %%  Debug
+%%  Debug
+pling(I) :- output( pling(I) ).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% NOT NOT P
 do(P):- \+ ( \+ P). 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % meta_predicate  for(0,0). % for/2. Stay inside the CALLING module? %% RS-141029
 for( P, Q ) :- %% For all P, do Q (with part of P). Finally succeed
   P, Q, false ; true.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % meta_predicate
 foralltest(P,Q):- \+ ( P, \+ Q). 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 measurecall(P,N):-
    statistics(runtime,[T1,_]),
    measurecall1(P,N),

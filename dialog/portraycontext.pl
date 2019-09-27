@@ -14,7 +14,7 @@
 :- use_module( '../sicstus4compatibility', [ out/1, output/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 %:- use_module( '../main', [ value/2 ] ).
-:- use_module( '../utility/ptbwrite', [ tab/1 ] ). %% RS-140914
+%:- use_module( '../utility/ptbwrite', [ tab/1 ] ). %% RS-140914
 
 %% RS-140101. UNIT: /utility
 :- use_module( '../utility/utility', [ for/2 ] ). %% RS-140101 for/2 ?!
@@ -153,11 +153,12 @@ printslot(N,X):-
 printslot(N,X):-
     X = [Slotname,Q,_,_], % if slotvalue a list, indent
     !,
-    tab(N),out(Slotname),output(Q).
+    %% tab(N), %% RS-2019.09.27 Import problems?
+    out(Slotname),output(Q).
 
 
 printslot(N,X):-
-    tab(N),
+    %tab(N),
     output(X).
 
 
