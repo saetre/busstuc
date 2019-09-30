@@ -3509,11 +3509,11 @@ isat( gløshaugen,nth).
 %% isat( professor_brochs_gate,nth). %% RS-170626  %% RS-190919
 isat( prestegårdsjordet,nth). %% RS-170626
 
-isat( haakon_vii_gate_17,haakon_vii_gate). 
-isat( haakon_vii_gate_25,haakon_vii_gate). 
+%isat( haakon_vii_gate_17,haakon_vii_gate). 
+%isat( haakon_vii_gate_25,haakon_vii_gate). 
 %%isat( haakon_vii_gate_29,lade_alle_80).
 %%isat( haakon_vii_gate_29,lade_alle_80).
-isat( haakon_vii_gate_9,haakon_vii_gate). 
+isat( haakon_vii_gate, lade_idrettsanlegg). %% RS-2019.09.27
 
 % isat(haukåsen,haukåsen).  %% RS-130330, hva skjer her? %% RS-140502. Haukåsen station removed from AtB's routes 140102
 %isat(heggstadmoen,heggstadmoen_4).
@@ -5241,6 +5241,7 @@ sameplace(øvreromolslia,romolslia_øvre).
 sameplace(kattemsentret,kattemsenteret). 
 
 
+%% How to write names in SMS-messages (max 160 characters?)
 short_specname(d1,'Dronn. gt D1'). 
 short_specname(d2,'Dronn. gt D2'). 
 %short_specname(d3,'Dronn. gt D3'). 
@@ -5326,6 +5327,7 @@ short_specname(ts13,'Trondheim S 13').  %%
 
 short_specname(universitetet_lade,'Univ. Lade'). 
 
+%How to usually write names in plain text.
 %specname0(S0,S):- specname(S0,S),!.
 %specname0(S0,S):- bigcap(S0,S).
 

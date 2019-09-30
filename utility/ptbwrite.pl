@@ -211,7 +211,7 @@ write_blanks(N):-
 write_blanks(_).
 
 tabx(X) :- %% Sictus Doesn take tab(-1) 
-    ( X <0 -> true ; tab(X) ). %% Sicstus 4
+    ( X < 0 -> true ; tab(X) ). %% Sicstus 4
 
 
 %% Convert lists to terms 

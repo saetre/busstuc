@@ -505,7 +505,7 @@ streetstat(gyldenløves_street,'Gyldenløves gate',1,10,solsiden).
 streetstat(gyldenløves_street,'Gyldenløves gate',10,31,gyldenløves_gt).
 streetstat(haakon_viis_street,'Haakon VII\'s gate',1,3,østmarkveien).
 streetstat(haakon_viis_street,'Haakon VII\'s gate',4,23,haakon_vii_gate_17).
-streetstat(haakon_viis_street,'Haakon VII\'s gate',9,13,haakon_vii_gate_9).
+streetstat(haakon_viis_street,'Haakon VII\'s gate',9,13,lade_idrettsanlegg).
 streetstat(haakon_viis_street,'Haakon VII\'s gate',10,25,haakon_vii_gate_25).
 streetstat(haakon_viis_street,'Haakon VII\'s gate',5,7,lade_idrettsanlegg).
 streetstat(haakon_viis_street,'Haakon VII\'s gate',14,14,lade_alle_80). %% ? lade_alle_80
