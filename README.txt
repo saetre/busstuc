@@ -8,11 +8,11 @@ REMAINING BUGS
 regtopp-automaten:
 Følgende mangler for at svn skal fungere etter en autoopplasting av nye ruter:
 
-satre@vm-6114:/home/busstuc/busstuc/db/tables/r1612_130617$ cd /home/busstuc/busstuc/db/tables/r1612_130617/
-satre@vm-6114:/home/busstuc/busstuc/db/tables/r1612_130617$ sudo chgrp busstuc *
-satre@vm-6114:/home/busstuc/busstuc/db/tables/r1612_130617$ sudo chgrp busstuc .
-satre@vm-6114:/home/busstuc/busstuc/db/tables/r1612_130617$ sudo chmod g+w *
-satre@vm-6114:/home/busstuc/busstuc/db/tables/r1612_130617$ sudo chmod g+w .
+satre@vm-6114:/lhome/busstuc/busstuc/db/tables/r1612_130617$ cd /lhome/busstuc/busstuc/db/tables/r1612_130617/
+satre@vm-6114:/lhome/busstuc/busstuc/db/tables/r1612_130617$ sudo chgrp busstuc *
+satre@vm-6114:/lhome/busstuc/busstuc/db/tables/r1612_130617$ sudo chgrp busstuc .
+satre@vm-6114:/lhome/busstuc/busstuc/db/tables/r1612_130617$ sudo chmod g+w *
+satre@vm-6114:/lhome/busstuc/busstuc/db/tables/r1612_130617$ sudo chmod g+w .
 
 ---------------------
 Don't remove to many / . , from the query!

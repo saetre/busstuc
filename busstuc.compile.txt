@@ -1,13 +1,13 @@
-/home/busstuc/busstuc/compile/extract_cut.sh ... Make Regcut.pl
+/lhome/busstuc/busstuc/compile/extract_cut.sh ... Make Regcut.pl
 SICStus 4.2.0 (x86_64-linux-glibc2.7): Mon Mar  7 20:02:41 CET 2011
 Licensed to studentSP4idi.ntnu.no
-% compiling /home/busstuc/busstuc/busstuc.pl...
-%  compiling /home/busstuc/busstuc/main.pl...
+% compiling /lhome/busstuc/busstuc/busstuc.pl...
+%  compiling /lhome/busstuc/busstuc/main.pl...
 %   module main imported into user
-%   compiling /home/busstuc/busstuc/declare.pl...
+%   compiling /lhome/busstuc/busstuc/declare.pl...
 %    module declare imported into main
-%   compiled /home/busstuc/busstuc/declare.pl in module declare, 20 msec 30528 bytes
-%   compiling /home/busstuc/busstuc/utility/writeout.pl...
+%   compiled /lhome/busstuc/busstuc/declare.pl in module declare, 20 msec 30528 bytes
+%   compiling /lhome/busstuc/busstuc/utility/writeout.pl...
 %    module writeout imported into main
 %    module declare imported into writeout
 %    loading /usr/local/sicstus4.2.0/bin/sp-4.2.0/sicstus-4.2.0/library/varnumbers.po...
@@ -16,15 +16,15 @@ Licensed to studentSP4idi.ntnu.no
 %     module types imported into varnumbers
 %     loaded /usr/local/sicstus4.2.0/bin/sp-4.2.0/sicstus-4.2.0/library/types.po in module types, 0 msec 1632 bytes
 %    loaded /usr/local/sicstus4.2.0/bin/sp-4.2.0/sicstus-4.2.0/library/varnumbers.po in module varnumbers, 0 msec 11488 bytes
-%    compiling /home/busstuc/busstuc/utility/utility.pl...
+%    compiling /lhome/busstuc/busstuc/utility/utility.pl...
 %     module utility imported into writeout
 %     module declare imported into utility
-%     compiling /home/busstuc/busstuc/utility/library.pl...
+%     compiling /lhome/busstuc/busstuc/utility/library.pl...
 %      module library imported into utility
-%     compiled /home/busstuc/busstuc/utility/library.pl in module library, 10 msec 4688 bytes
-%     compiling /home/busstuc/busstuc/sicstus4compatibility.pl...
+%     compiled /lhome/busstuc/busstuc/utility/library.pl in module library, 10 msec 4688 bytes
+%     compiling /lhome/busstuc/busstuc/sicstus4compatibility.pl...
 %      module sicstus4compatibility imported into utility
-%     compiled /home/busstuc/busstuc/sicstus4compatibility.pl in module sicstus4compatibility, 10 msec 4480 bytes
+%     compiled /lhome/busstuc/busstuc/sicstus4compatibility.pl in module sicstus4compatibility, 10 msec 4480 bytes
 %     module writeout imported into utility
 %     loading /usr/local/sicstus4.2.0/bin/sp-4.2.0/sicstus-4.2.0/library/timeout.po...
 %     module timeout imported into utility
@@ -32,72 +32,72 @@ Licensed to studentSP4idi.ntnu.no
 %      loading foreign resource /usr/local/sicstus4.2.0/bin/sp-4.2.0/sicstus-4.2.0/library/x86_64-linux-glibc2.7/timeout.so in module timeout
 %     loaded /usr/local/sicstus4.2.0/bin/sp-4.2.0/sicstus-4.2.0/library/timeout.po in module timeout, 10 msec 16208 bytes
 %     module varnumbers imported into utility
-%     compiling /home/busstuc/busstuc/tuc/readin.pl...
+%     compiling /lhome/busstuc/busstuc/tuc/readin.pl...
 %      module readin imported into utility
 %      module declare imported into readin
-%      compiling /home/busstuc/busstuc/tucbuses.pl...
+%      compiling /lhome/busstuc/busstuc/tucbuses.pl...
 %       module tucbuses imported into readin
 %       module declare imported into tucbuses
 %       module main imported into tucbuses
-%       compiling /home/busstuc/busstuc/tuc/gram_e.pl...
+%       compiling /lhome/busstuc/busstuc/tuc/gram_e.pl...
 %        module gram_e imported into tucbuses
 %        module declare imported into gram_e
-%       compiled /home/busstuc/busstuc/tuc/gram_e.pl in module gram_e, 370 msec 465072 bytes
-%       compiling /home/busstuc/busstuc/tuc/gram_n.pl...
+%       compiled /lhome/busstuc/busstuc/tuc/gram_e.pl in module gram_e, 370 msec 465072 bytes
+%       compiling /lhome/busstuc/busstuc/tuc/gram_n.pl...
 %        module gram_n imported into tucbuses
 %        module declare imported into gram_n
-%       compiled /home/busstuc/busstuc/tuc/gram_n.pl in module gram_n, 1790 msec 1720640 bytes
-%      compiled /home/busstuc/busstuc/tucbuses.pl in module tucbuses, 2170 msec 2197040 bytes
+%       compiled /lhome/busstuc/busstuc/tuc/gram_n.pl in module gram_n, 1790 msec 1720640 bytes
+%      compiled /lhome/busstuc/busstuc/tucbuses.pl in module tucbuses, 2170 msec 2197040 bytes
 %      module library imported into readin
 %      module utility imported into readin
 %      module writeout imported into readin
 %      module sicstus4compatibility imported into readin
-%     compiled /home/busstuc/busstuc/tuc/readin.pl in module readin, 2270 msec 2276992 bytes
-%    compiled /home/busstuc/busstuc/utility/utility.pl in module utility, 2430 msec 2398400 bytes
-%    compiling /home/busstuc/busstuc/utility/ptbwrite.pl...
+%     compiled /lhome/busstuc/busstuc/tuc/readin.pl in module readin, 2270 msec 2276992 bytes
+%    compiled /lhome/busstuc/busstuc/utility/utility.pl in module utility, 2430 msec 2398400 bytes
+%    compiling /lhome/busstuc/busstuc/utility/ptbwrite.pl...
 %     module ptbwrite imported into writeout
 %     module declare imported into ptbwrite
 %     module writeout imported into ptbwrite
-%    compiled /home/busstuc/busstuc/utility/ptbwrite.pl in module ptbwrite, 70 msec 43760 bytes
+%    compiled /lhome/busstuc/busstuc/utility/ptbwrite.pl in module ptbwrite, 70 msec 43760 bytes
 %    module sicstus4compatibility imported into writeout
-%    compiling /home/busstuc/busstuc/app/buslog.pl...
+%    compiling /lhome/busstuc/busstuc/app/buslog.pl...
 %     module buslog imported into writeout
 %     module declare imported into buslog
-%     compiling /home/busstuc/busstuc/db/discrepancies.pl...
-%     compiled /home/busstuc/busstuc/db/discrepancies.pl in module buslog, 20 msec 83216 bytes
+%     compiling /lhome/busstuc/busstuc/db/discrepancies.pl...
+%     compiled /lhome/busstuc/busstuc/db/discrepancies.pl in module buslog, 20 msec 83216 bytes
 %     module utility imported into buslog
-%     compiling /home/busstuc/busstuc/utility/datecalc.pl...
+%     compiling /lhome/busstuc/busstuc/utility/datecalc.pl...
 %      module datecalc imported into buslog
 %      module declare imported into datecalc
 %      loading /usr/local/sicstus4.2.0/bin/sp-4.2.0/sicstus-4.2.0/library/system.po...
 %      module system imported into datecalc
 %       module types imported into system
 %      loaded /usr/local/sicstus4.2.0/bin/sp-4.2.0/sicstus-4.2.0/library/system.po in module system, 0 msec 4672 bytes
-%      compiling /home/busstuc/busstuc/db/timedat.pl...
+%      compiling /lhome/busstuc/busstuc/db/timedat.pl...
 %       module timedat imported into datecalc
 %       module declare imported into timedat
 %       module utility imported into timedat
 %       module datecalc imported into timedat
 %       module writeout imported into timedat
-%      compiled /home/busstuc/busstuc/db/timedat.pl in module timedat, 40 msec 23120 bytes
-%     compiled /home/busstuc/busstuc/utility/datecalc.pl in module datecalc, 160 msec 100880 bytes
+%      compiled /lhome/busstuc/busstuc/db/timedat.pl in module timedat, 40 msec 23120 bytes
+%     compiled /lhome/busstuc/busstuc/utility/datecalc.pl in module datecalc, 160 msec 100880 bytes
 %     module library imported into buslog
 %     module sicstus4compatibility imported into buslog
 %     module writeout imported into buslog
 %     module main imported into buslog
-%     compiling /home/busstuc/busstuc/interfaceroute.pl...
+%     compiling /lhome/busstuc/busstuc/interfaceroute.pl...
 %      module interfaceroute imported into buslog
 %      module declare imported into interfaceroute
 %      module writeout imported into interfaceroute
-%      compiling /home/busstuc/busstuc/db/topreg.pl...
+%      compiling /lhome/busstuc/busstuc/db/topreg.pl...
 %       module topreg imported into interfaceroute
-%      compiled /home/busstuc/busstuc/db/topreg.pl in module topreg, 10 msec 10400 bytes
-%      compiling /home/busstuc/busstuc/db/route_period.pl...
+%      compiled /lhome/busstuc/busstuc/db/topreg.pl in module topreg, 10 msec 10400 bytes
+%      compiling /lhome/busstuc/busstuc/db/route_period.pl...
 %       module route_period imported into interfaceroute
-%      compiled /home/busstuc/busstuc/db/route_period.pl in module route_period, 10 msec 3168 bytes
+%      compiled /lhome/busstuc/busstuc/db/route_period.pl in module route_period, 10 msec 3168 bytes
 %      module datecalc imported into interfaceroute
-%     compiled /home/busstuc/busstuc/interfaceroute.pl in module interfaceroute, 30 msec 26832 bytes
-%     compiling /home/busstuc/busstuc/app/busanshp.pl...
+%     compiled /lhome/busstuc/busstuc/interfaceroute.pl in module interfaceroute, 30 msec 26832 bytes
+%     compiling /lhome/busstuc/busstuc/app/busanshp.pl...
 %      module busanshp imported into buslog
 %      module declare imported into busanshp
 %      module utility imported into busanshp
@@ -107,58 +107,58 @@ Licensed to studentSP4idi.ntnu.no
 %      module writeout imported into busanshp
 %      module main imported into busanshp
 %      module buslog imported into busanshp
-%      compiling /home/busstuc/busstuc/app/dmeq.pl...
+%      compiling /lhome/busstuc/busstuc/app/dmeq.pl...
 %       module dmeq imported into busanshp
 %       module declare imported into dmeq
 %       module utility imported into dmeq
-%       compiling /home/busstuc/busstuc/tuc/semantic.pl...
+%       compiling /lhome/busstuc/busstuc/tuc/semantic.pl...
 %        module semantic imported into dmeq
 %        module declare imported into semantic
-%       compiled /home/busstuc/busstuc/tuc/semantic.pl in module semantic, 840 msec 1545792 bytes
-%      compiled /home/busstuc/busstuc/app/dmeq.pl in module dmeq, 960 msec 1637904 bytes
-%      compiling /home/busstuc/busstuc/app/pragma.pl...
+%       compiled /lhome/busstuc/busstuc/tuc/semantic.pl in module semantic, 840 msec 1545792 bytes
+%      compiled /lhome/busstuc/busstuc/app/dmeq.pl in module dmeq, 960 msec 1637904 bytes
+%      compiling /lhome/busstuc/busstuc/app/pragma.pl...
 %       module pragma imported into busanshp
 %       module declare imported into pragma
 %       module utility imported into pragma
 %       module writeout imported into pragma
 %       module datecalc imported into pragma
-%       compiling /home/busstuc/busstuc/app/busans.pl...
+%       compiling /lhome/busstuc/busstuc/app/busans.pl...
 %        module busans imported into pragma
 %        module declare imported into busans
 %        module interfaceroute imported into busans
 %        module busanshp imported into busans
-%       compiled /home/busstuc/busstuc/app/busans.pl in module busans, 70 msec 50720 bytes
-%       compiling /home/busstuc/busstuc/app/bustrans.pl...
+%       compiled /lhome/busstuc/busstuc/app/busans.pl in module busans, 70 msec 50720 bytes
+%       compiling /lhome/busstuc/busstuc/app/bustrans.pl...
 %        module bustrans imported into pragma
 %        module declare imported into bustrans
 %        module busanshp imported into bustrans
 %        module buslog imported into bustrans
-%        compiling /home/busstuc/busstuc/db/busdat.pl...
+%        compiling /lhome/busstuc/busstuc/db/busdat.pl...
 %         module busdat imported into bustrans
 %         module declare imported into busdat
 %         module interfaceroute imported into busdat
 %         module utility imported into busdat
-%         compiling /home/busstuc/busstuc/db/places.pl...
+%         compiling /lhome/busstuc/busstuc/db/places.pl...
 %          module places imported into busdat
 %          module declare imported into places
 %          module utility imported into places
-%         compiled /home/busstuc/busstuc/db/places.pl in module places, 880 msec 2156208 bytes
-%         compiling /home/busstuc/busstuc/db/regbusall.pl...
+%         compiled /lhome/busstuc/busstuc/db/places.pl in module places, 880 msec 2156208 bytes
+%         compiling /lhome/busstuc/busstuc/db/regbusall.pl...
 %          module regbusall imported into busdat
 %          module buslog imported into regbusall
-%         compiled /home/busstuc/busstuc/db/regbusall.pl in module regbusall, 0 msec 17856 bytes
+%         compiled /lhome/busstuc/busstuc/db/regbusall.pl in module regbusall, 0 msec 17856 bytes
 %         module timedat imported into busdat
 %         module buslog imported into busdat
-%         compiling /home/busstuc/busstuc/tuc/names.pl...
+%         compiling /lhome/busstuc/busstuc/tuc/names.pl...
 %          module names imported into busdat
 %          module declare imported into names
-%         compiled /home/busstuc/busstuc/tuc/names.pl in module names, 450 msec 507280 bytes
-%        compiled /home/busstuc/busstuc/db/busdat.pl in module busdat, 1470 msec 2820864 bytes
+%         compiled /lhome/busstuc/busstuc/tuc/names.pl in module names, 450 msec 507280 bytes
+%        compiled /lhome/busstuc/busstuc/db/busdat.pl in module busdat, 1470 msec 2820864 bytes
 %        module utility imported into bustrans
 %        module datecalc imported into bustrans
 %        module interfaceroute imported into bustrans
 %        module dmeq imported into bustrans
-%        compiling /home/busstuc/busstuc/app/interapp.pl...
+%        compiling /lhome/busstuc/busstuc/app/interapp.pl...
 %         module interapp imported into bustrans
 %         module declare imported into interapp
 %         module utility imported into interapp
@@ -166,7 +166,7 @@ Licensed to studentSP4idi.ntnu.no
 %         module interfaceroute imported into interapp
 %         module busanshp imported into interapp
 %         module buslog imported into interapp
-%         compiling /home/busstuc/busstuc/app/negans.pl...
+%         compiling /lhome/busstuc/busstuc/app/negans.pl...
 %          module negans imported into interapp
 %          module declare imported into negans
 %          module main imported into negans
@@ -174,23 +174,23 @@ Licensed to studentSP4idi.ntnu.no
 %          module busanshp imported into negans
 %          module buslog imported into negans
 %          module busdat imported into negans
-%          compiling /home/busstuc/busstuc/tuc/facts.pl...
+%          compiling /lhome/busstuc/busstuc/tuc/facts.pl...
 %           module facts imported into negans
 %           module declare imported into facts
 %           module main imported into facts
 %           module names imported into facts
 %           module semantic imported into facts
-%           compiling /home/busstuc/busstuc/tuc/slash.pl...
+%           compiling /lhome/busstuc/busstuc/tuc/slash.pl...
 %            module slash imported into facts
 %            module declare imported into user
 %            module writeout imported into slash
-%            compiling /home/busstuc/busstuc/tuc/evaluate.pl...
+%            compiling /lhome/busstuc/busstuc/tuc/evaluate.pl...
 %             module evaluate imported into slash
 %             module declare imported into evaluate
 %             module main imported into evaluate
 %             module utility imported into evaluate
 %             module writeout imported into evaluate
-%             compiling /home/busstuc/busstuc/tuc/lex.pl...
+%             compiling /lhome/busstuc/busstuc/tuc/lex.pl...
 %              module lex imported into evaluate
 %              module declare imported into lex
 %              module utility imported into lex
@@ -199,25 +199,25 @@ Licensed to studentSP4idi.ntnu.no
 %              module interfaceroute imported into lex
 %              module buslog imported into lex
 %              module busdat imported into lex
-%              compiling /home/busstuc/busstuc/db/namehashtable.pl...
+%              compiling /lhome/busstuc/busstuc/db/namehashtable.pl...
 %               module namehashtable imported into lex
-%              compiled /home/busstuc/busstuc/db/namehashtable.pl in module namehashtable, 4020 msec 9305216 bytes
+%              compiled /lhome/busstuc/busstuc/db/namehashtable.pl in module namehashtable, 4020 msec 9305216 bytes
 %              module places imported into lex
-%              compiling /home/busstuc/busstuc/db/regcompstr.pl...
+%              compiling /lhome/busstuc/busstuc/db/regcompstr.pl...
 %               module regcompstr imported into lex
-%              compiled /home/busstuc/busstuc/db/regcompstr.pl in module regcompstr, 170 msec 420624 bytes
+%              compiled /lhome/busstuc/busstuc/db/regcompstr.pl in module regcompstr, 170 msec 420624 bytes
 %              module regbusall imported into lex
-%              compiling /home/busstuc/busstuc/db/regstr.pl...
+%              compiling /lhome/busstuc/busstuc/db/regstr.pl...
 %               module regstr imported into lex
-%              compiled /home/busstuc/busstuc/db/regstr.pl in module regstr, 390 msec 460080 bytes
+%              compiled /lhome/busstuc/busstuc/db/regstr.pl in module regstr, 390 msec 460080 bytes
 %              module route_period imported into lex
-%              compiling /home/busstuc/busstuc/db/teledat2.pl...
+%              compiling /lhome/busstuc/busstuc/db/teledat2.pl...
 %               module teledat2 imported into lex
 %               module declare imported into teledat2
 %               module main imported into teledat2
 %               module utility imported into teledat2
 %               module writeout imported into teledat2
-%               compiling /home/busstuc/busstuc/getphonedir.pl...
+%               compiling /lhome/busstuc/busstuc/getphonedir.pl...
 %                module getphonedir imported into teledat2
 %                module declare imported into getphonedir
 %                module utility imported into getphonedir
@@ -225,40 +225,40 @@ Licensed to studentSP4idi.ntnu.no
 %                module sicstus4compatibility imported into getphonedir
 %                module writeout imported into getphonedir
 %                module main imported into getphonedir
-%                compiling /home/busstuc/busstuc/xmlparser.pl...
+%                compiling /lhome/busstuc/busstuc/xmlparser.pl...
 %                 module xmlparser imported into getphonedir
 %                 module writeout imported into xmlparser
 %                 module main imported into xmlparser
-%                compiled /home/busstuc/busstuc/xmlparser.pl in module xmlparser, 30 msec 12128 bytes
-%                compiling /home/busstuc/busstuc/tele2.pl...
+%                compiled /lhome/busstuc/busstuc/xmlparser.pl in module xmlparser, 30 msec 12128 bytes
+%                compiling /lhome/busstuc/busstuc/tele2.pl...
 %                 module tele2 imported into getphonedir
 %                 module xmlparser imported into tele2
 %                 module getphonedir imported into tele2
-%                 compiling /home/busstuc/busstuc/tagger/tagger.pl...
+%                 compiling /lhome/busstuc/busstuc/tagger/tagger.pl...
 %                  module tagger imported into tele2
-%                  compiling /home/busstuc/busstuc/tagger/xml.pl...
+%                  compiling /lhome/busstuc/busstuc/tagger/xml.pl...
 %                   module xml imported into tagger
-%                   compiling /home/busstuc/busstuc/tagger/xml_acquisition.pl...
-%                    compiling /home/busstuc/busstuc/tagger/xml_utilities.pl...
+%                   compiling /lhome/busstuc/busstuc/tagger/xml_acquisition.pl...
+%                    compiling /lhome/busstuc/busstuc/tagger/xml_utilities.pl...
 %                     module sicstus4compatibility imported into xml
-%                    compiled /home/busstuc/busstuc/tagger/xml_utilities.pl in module xml, 160 msec 1693920 bytes
-%                   compiled /home/busstuc/busstuc/tagger/xml_acquisition.pl in module xml, 310 msec 1776560 bytes
-%                   compiling /home/busstuc/busstuc/tagger/xml_diagnosis.pl...
+%                    compiled /lhome/busstuc/busstuc/tagger/xml_utilities.pl in module xml, 160 msec 1693920 bytes
+%                   compiled /lhome/busstuc/busstuc/tagger/xml_acquisition.pl in module xml, 310 msec 1776560 bytes
+%                   compiling /lhome/busstuc/busstuc/tagger/xml_diagnosis.pl...
 %                    loading /usr/local/sicstus4.2.0/bin/sp-4.2.0/sicstus-4.2.0/library/lists.po...
 %                    module lists imported into xml
 %                     module types imported into lists
 %                    loaded /usr/local/sicstus4.2.0/bin/sp-4.2.0/sicstus-4.2.0/library/lists.po in module lists, 10 msec 105040 bytes
-%                   compiled /home/busstuc/busstuc/tagger/xml_diagnosis.pl in module xml, 30 msec 121312 bytes
-%                   compiling /home/busstuc/busstuc/tagger/xml_generation.pl...
-%                   compiled /home/busstuc/busstuc/tagger/xml_generation.pl in module xml, 80 msec 42576 bytes
-%                   compiling /home/busstuc/busstuc/tagger/xml_pp.pl...
-%                   compiled /home/busstuc/busstuc/tagger/xml_pp.pl in module xml, 10 msec 10912 bytes
-%                  compiled /home/busstuc/busstuc/tagger/xml.pl in module xml, 460 msec 1961296 bytes
+%                   compiled /lhome/busstuc/busstuc/tagger/xml_diagnosis.pl in module xml, 30 msec 121312 bytes
+%                   compiling /lhome/busstuc/busstuc/tagger/xml_generation.pl...
+%                   compiled /lhome/busstuc/busstuc/tagger/xml_generation.pl in module xml, 80 msec 42576 bytes
+%                   compiling /lhome/busstuc/busstuc/tagger/xml_pp.pl...
+%                   compiled /lhome/busstuc/busstuc/tagger/xml_pp.pl in module xml, 10 msec 10912 bytes
+%                  compiled /lhome/busstuc/busstuc/tagger/xml.pl in module xml, 460 msec 1961296 bytes
 %                  module lists imported into tagger
-%                 compiled /home/busstuc/busstuc/tagger/tagger.pl in module tagger, 480 msec 1972416 bytes
-%                compiled /home/busstuc/busstuc/tele2.pl in module tele2, 480 msec 1974704 bytes
+%                 compiled /lhome/busstuc/busstuc/tagger/tagger.pl in module tagger, 480 msec 1972416 bytes
+%                compiled /lhome/busstuc/busstuc/tele2.pl in module tele2, 480 msec 1974704 bytes
 %                module teledat2 imported into getphonedir
-%                compiling /home/busstuc/busstuc/dialog/parseres.pl...
+%                compiling /lhome/busstuc/busstuc/dialog/parseres.pl...
 %                 module parseres imported into getphonedir
 %                 module declare imported into parseres
 %                 module utility imported into parseres
@@ -266,17 +266,17 @@ Licensed to studentSP4idi.ntnu.no
 %                 module busanshp imported into parseres
 %                 module teledat2 imported into parseres
 %                 module xml imported into parseres
-%                compiled /home/busstuc/busstuc/dialog/parseres.pl in module parseres, 60 msec 36176 bytes
+%                compiled /lhome/busstuc/busstuc/dialog/parseres.pl in module parseres, 60 msec 36176 bytes
 %                module tagger imported into getphonedir
 %                module xml imported into getphonedir
 %                module lex imported into getphonedir
-%               compiled /home/busstuc/busstuc/getphonedir.pl in module getphonedir, 610 msec 2053840 bytes
+%               compiled /lhome/busstuc/busstuc/getphonedir.pl in module getphonedir, 610 msec 2053840 bytes
 %               module names imported into teledat2
 %               module semantic imported into teledat2
-%              compiled /home/busstuc/busstuc/db/teledat2.pl in module teledat2, 680 msec 2117072 bytes
+%              compiled /lhome/busstuc/busstuc/db/teledat2.pl in module teledat2, 680 msec 2117072 bytes
 %              module timedat imported into lex
 %              module topreg imported into lex
-%              compiling /home/busstuc/busstuc/dialog/frames2.pl...
+%              compiling /lhome/busstuc/busstuc/dialog/frames2.pl...
 %               module frames2 imported into lex
 %               module declare imported into frames2
 %               module system imported into frames2
@@ -284,7 +284,7 @@ Licensed to studentSP4idi.ntnu.no
 %               module lists3 imported into frames2
 %                module lists imported into lists3
 %               loaded /usr/local/sicstus4.2.0/bin/sp-4.2.0/sicstus-4.2.0/library/lists3.po in module lists3, 10 msec 12704 bytes
-%               compiling /home/busstuc/busstuc/dialog/newcontext2.pl...
+%               compiling /lhome/busstuc/busstuc/dialog/newcontext2.pl...
 %                module newcontext2 imported into frames2
 %                module system imported into newcontext2
 %                module declare imported into newcontext2
@@ -292,7 +292,7 @@ Licensed to studentSP4idi.ntnu.no
 %                module library imported into newcontext2
 %                module pragma imported into newcontext2
 %                module frames2 imported into newcontext2
-%                compiling /home/busstuc/busstuc/dialog/checkitem2.pl...
+%                compiling /lhome/busstuc/busstuc/dialog/checkitem2.pl...
 %                 module checkitem2 imported into newcontext2
 %                 module declare imported into checkitem2
 %                 module datecalc imported into checkitem2
@@ -300,7 +300,7 @@ Licensed to studentSP4idi.ntnu.no
 %                 module busanshp imported into checkitem2
 %                 module interapp imported into checkitem2
 %                 module negans imported into checkitem2
-%                 compiling /home/busstuc/busstuc/dialog/d_dialogue.pl...
+%                 compiling /lhome/busstuc/busstuc/dialog/d_dialogue.pl...
 %                  module d_dialogue imported into checkitem2
 %                  module declare imported into d_dialogue
 %                  module main imported into d_dialogue
@@ -311,27 +311,27 @@ Licensed to studentSP4idi.ntnu.no
 %                  module busanshp imported into d_dialogue
 %                  module pragma imported into d_dialogue
 %                  module interapp imported into d_dialogue
-%                  compiling /home/busstuc/busstuc/dialog/d_main.pl...
+%                  compiling /lhome/busstuc/busstuc/dialog/d_main.pl...
 %                   module d_main imported into d_dialogue
 %                   module declare imported into d_main
 %                   module utility imported into d_main
 %                   module main imported into d_main
 %                   module readin imported into d_main
 %                   module d_dialogue imported into d_main
-%                  compiled /home/busstuc/busstuc/dialog/d_main.pl in module d_main, 30 msec 27328 bytes
-%                  compiling /home/busstuc/busstuc/dialog/exegram.pl...
+%                  compiled /lhome/busstuc/busstuc/dialog/d_main.pl in module d_main, 30 msec 27328 bytes
+%                  compiling /lhome/busstuc/busstuc/dialog/exegram.pl...
 %                   module exegram imported into d_dialogue
 %                   module declare imported into exegram
 %                   module checkitem2 imported into exegram
 %                   module main imported into exegram
-%                   compiling /home/busstuc/busstuc/dialog/diagram.pl...
+%                   compiling /lhome/busstuc/busstuc/dialog/diagram.pl...
 %                    module diagram imported into exegram
-%                   compiled /home/busstuc/busstuc/dialog/diagram.pl in module diagram, 10 msec 8816 bytes
+%                   compiled /lhome/busstuc/busstuc/dialog/diagram.pl in module diagram, 10 msec 8816 bytes
 %                   module writeout imported into exegram
-%                  compiled /home/busstuc/busstuc/dialog/exegram.pl in module exegram, 30 msec 22432 bytes
+%                  compiled /lhome/busstuc/busstuc/dialog/exegram.pl in module exegram, 30 msec 22432 bytes
 %                  module newcontext2 imported into d_dialogue
 %                  module frames2 imported into d_dialogue
-%                  compiling /home/busstuc/busstuc/dialog/portraycontext.pl...
+%                  compiling /lhome/busstuc/busstuc/dialog/portraycontext.pl...
 %                   module portraycontext imported into d_dialogue
 %                   module declare imported into portraycontext
 %                   module ptbwrite imported into portraycontext
@@ -339,11 +339,11 @@ Licensed to studentSP4idi.ntnu.no
 %                   module writeout imported into portraycontext
 %                   module lists imported into portraycontext
 %                   module newcontext2 imported into portraycontext
-%                  compiled /home/busstuc/busstuc/dialog/portraycontext.pl in module portraycontext, 40 msec 28656 bytes
-%                 compiled /home/busstuc/busstuc/dialog/d_dialogue.pl in module d_dialogue, 150 msec 114880 bytes
+%                  compiled /lhome/busstuc/busstuc/dialog/portraycontext.pl in module portraycontext, 40 msec 28656 bytes
+%                 compiled /lhome/busstuc/busstuc/dialog/d_dialogue.pl in module d_dialogue, 150 msec 114880 bytes
 %                 module frames2 imported into checkitem2
 %                 module newcontext2 imported into checkitem2
-%                 compiling /home/busstuc/busstuc/dialog/update2.pl...
+%                 compiling /lhome/busstuc/busstuc/dialog/update2.pl...
 %                  module update2 imported into checkitem2
 %                  module declare imported into update2
 %                  module utility imported into update2
@@ -357,37 +357,37 @@ Licensed to studentSP4idi.ntnu.no
 %                  module parseres imported into update2
 %                  module facts imported into update2
 %                  module semantic imported into update2
-%                 compiled /home/busstuc/busstuc/dialog/update2.pl in module update2, 50 msec 38448 bytes
+%                 compiled /lhome/busstuc/busstuc/dialog/update2.pl in module update2, 50 msec 38448 bytes
 %                 module pragma imported into checkitem2
-%                compiled /home/busstuc/busstuc/dialog/checkitem2.pl in module checkitem2, 300 msec 214576 bytes
+%                compiled /lhome/busstuc/busstuc/dialog/checkitem2.pl in module checkitem2, 300 msec 214576 bytes
 %                module semantic imported into newcontext2
-%               compiled /home/busstuc/busstuc/dialog/newcontext2.pl in module newcontext2, 340 msec 242784 bytes
+%               compiled /lhome/busstuc/busstuc/dialog/newcontext2.pl in module newcontext2, 340 msec 242784 bytes
 %               module d_dialogue imported into frames2
 %               module parseres imported into frames2
-%              compiled /home/busstuc/busstuc/dialog/frames2.pl in module frames2, 450 msec 312368 bytes
-%              compiling /home/busstuc/busstuc/tuc/dict_n.pl...
+%              compiled /lhome/busstuc/busstuc/dialog/frames2.pl in module frames2, 450 msec 312368 bytes
+%              compiling /lhome/busstuc/busstuc/tuc/dict_n.pl...
 %               module dict_n imported into lex
 %               module declare imported into dict_n
 %               module main imported into dict_n
 %               module utility imported into dict_n
 %               module evaluate imported into dict_n
 %               module semantic imported into dict_n
-%              compiled /home/busstuc/busstuc/tuc/dict_n.pl in module dict_n, 2040 msec 4158320 bytes
+%              compiled /lhome/busstuc/busstuc/tuc/dict_n.pl in module dict_n, 2040 msec 4158320 bytes
 %              module evaluate imported into lex
 %              module facts imported into lex
 %              module names imported into lex
-%              compiling /home/busstuc/busstuc/tuc/morph_n.pl...
+%              compiling /lhome/busstuc/busstuc/tuc/morph_n.pl...
 %               module morph_n imported into lex
 %               module dict_n imported into morph_n
 %               module lex imported into morph_n
 %               module semantic imported into morph_n
 %               module utility imported into morph_n
-%              compiled /home/busstuc/busstuc/tuc/morph_n.pl in module morph_n, 130 msec 75120 bytes
+%              compiled /lhome/busstuc/busstuc/tuc/morph_n.pl in module morph_n, 130 msec 75120 bytes
 %              module writeout imported into lex
-%             compiled /home/busstuc/busstuc/tuc/lex.pl in module lex, 8210 msec 17076080 bytes
+%             compiled /lhome/busstuc/busstuc/tuc/lex.pl in module lex, 8210 msec 17076080 bytes
 %             module facts imported into evaluate
 %             module semantic imported into evaluate
-%             compiling /home/busstuc/busstuc/tuc/translat.pl...
+%             compiling /lhome/busstuc/busstuc/tuc/translat.pl...
 %              module translat imported into evaluate
 %              module declare imported into translat
 %              module main imported into translat
@@ -396,14 +396,14 @@ Licensed to studentSP4idi.ntnu.no
 %              module writeout imported into translat
 %              module varnumbers imported into translat
 %              module slash imported into translat
-%              compiling /home/busstuc/busstuc/tuc/anaphors.pl...
+%              compiling /lhome/busstuc/busstuc/tuc/anaphors.pl...
 %               module anaphors imported into translat
 %               module declare imported into anaphors
 %               module library imported into anaphors
 %               module utility imported into anaphors
 %               module evaluate imported into anaphors
 %               module facts imported into anaphors
-%               compiling /home/busstuc/busstuc/tuc/fernando.pl...
+%               compiling /lhome/busstuc/busstuc/tuc/fernando.pl...
 %                module fernando imported into anaphors
 %                module declare imported into fernando
 %                module utility imported into fernando
@@ -412,24 +412,24 @@ Licensed to studentSP4idi.ntnu.no
 %                module evaluate imported into fernando
 %                module facts imported into fernando
 %                module semantic imported into fernando
-%               compiled /home/busstuc/busstuc/tuc/fernando.pl in module fernando, 230 msec 144048 bytes
+%               compiled /lhome/busstuc/busstuc/tuc/fernando.pl in module fernando, 230 msec 144048 bytes
 %               module semantic imported into anaphors
 %               module translat imported into anaphors
 %               module newcontext2 imported into anaphors
-%              compiled /home/busstuc/busstuc/tuc/anaphors.pl in module anaphors, 320 msec 185232 bytes
+%              compiled /lhome/busstuc/busstuc/tuc/anaphors.pl in module anaphors, 320 msec 185232 bytes
 %              module evaluate imported into translat
 %              module facts imported into translat
 %              module semantic imported into translat
-%             compiled /home/busstuc/busstuc/tuc/translat.pl in module translat, 460 msec 261408 bytes
+%             compiled /lhome/busstuc/busstuc/tuc/translat.pl in module translat, 460 msec 261408 bytes
 %             module interapp imported into evaluate
-%            compiled /home/busstuc/busstuc/tuc/evaluate.pl in module evaluate, 8720 msec 17368176 bytes
+%            compiled /lhome/busstuc/busstuc/tuc/evaluate.pl in module evaluate, 8720 msec 17368176 bytes
 %            module facts imported into slash
 %            module semantic imported into slash
-%            compiling /home/busstuc/busstuc/tuc/world0.pl...
+%            compiling /lhome/busstuc/busstuc/tuc/world0.pl...
 %             module world0 imported into slash
 %             module utility imported into world0
-%            compiled /home/busstuc/busstuc/tuc/world0.pl in module world0, 30 msec 37008 bytes
-%           compiled /home/busstuc/busstuc/tuc/slash.pl in module slash, 8790 msec 17428352 bytes
+%            compiled /lhome/busstuc/busstuc/tuc/world0.pl in module world0, 30 msec 37008 bytes
+%           compiled /lhome/busstuc/busstuc/tuc/slash.pl in module slash, 8790 msec 17428352 bytes
 %           module buslog imported into facts
 %           module busdat imported into facts
 %           module places imported into facts
@@ -437,20 +437,20 @@ Licensed to studentSP4idi.ntnu.no
 %           module regcompstr imported into facts
 %           module regstr imported into facts
 %           module teledat2 imported into facts
-%           compiling /home/busstuc/busstuc/db/auxtables.pl...
+%           compiling /lhome/busstuc/busstuc/db/auxtables.pl...
 %            module auxtables imported into facts
-%           compiled /home/busstuc/busstuc/db/auxtables.pl in module auxtables, 0 msec 1168 bytes
-%          compiled /home/busstuc/busstuc/tuc/facts.pl in module facts, 8890 msec 17674544 bytes
+%           compiled /lhome/busstuc/busstuc/db/auxtables.pl in module auxtables, 0 msec 1168 bytes
+%          compiled /lhome/busstuc/busstuc/tuc/facts.pl in module facts, 8890 msec 17674544 bytes
 %          module datecalc imported into negans
-%         compiled /home/busstuc/busstuc/app/negans.pl in module negans, 9160 msec 17837888 bytes
+%         compiled /lhome/busstuc/busstuc/app/negans.pl in module negans, 9160 msec 17837888 bytes
 %         module pragma imported into interapp
-%         compiling /home/busstuc/busstuc/db/statcoord2.pl...
+%         compiling /lhome/busstuc/busstuc/db/statcoord2.pl...
 %          module statcoord2 imported into interapp
-%         compiled /home/busstuc/busstuc/db/statcoord2.pl in module statcoord2, 980 msec 1239488 bytes
+%         compiled /lhome/busstuc/busstuc/db/statcoord2.pl in module statcoord2, 980 msec 1239488 bytes
 %         module regstr imported into interapp
 %         module evaluate imported into interapp
 %         module datecalc imported into interapp
-%        compiled /home/busstuc/busstuc/app/interapp.pl in module interapp, 10280 msec 19155456 bytes
+%        compiled /lhome/busstuc/busstuc/app/interapp.pl in module interapp, 10280 msec 19155456 bytes
 %        module places imported into bustrans
 %        module regbusall imported into bustrans
 %        module teledat2 imported into bustrans
@@ -460,11 +460,11 @@ Licensed to studentSP4idi.ntnu.no
 %        module names imported into bustrans
 %        module semantic imported into bustrans
 %        module slash imported into bustrans
-%       compiled /home/busstuc/busstuc/app/bustrans.pl in module bustrans, 13250 msec 23670240 bytes
-%       compiling /home/busstuc/busstuc/app/teletrans.pl...
+%       compiled /lhome/busstuc/busstuc/app/bustrans.pl in module bustrans, 13250 msec 23670240 bytes
+%       compiling /lhome/busstuc/busstuc/app/teletrans.pl...
 %        module teletrans imported into pragma
 %        module declare imported into teletrans
-%       compiled /home/busstuc/busstuc/app/teletrans.pl in module teletrans, 130 msec 74384 bytes
+%       compiled /lhome/busstuc/busstuc/app/teletrans.pl in module teletrans, 130 msec 74384 bytes
 %       module busdat imported into pragma
 %       module places imported into pragma
 %       module teledat2 imported into pragma
@@ -472,7 +472,7 @@ Licensed to studentSP4idi.ntnu.no
 %       module facts imported into pragma
 %       module names imported into pragma
 %       module semantic imported into pragma
-%      compiled /home/busstuc/busstuc/app/pragma.pl in module pragma, 13570 msec 23858672 bytes
+%      compiled /lhome/busstuc/busstuc/app/pragma.pl in module pragma, 13570 msec 23858672 bytes
 %      module interapp imported into busanshp
 %      module interfaceroute imported into busanshp
 %      module busdat imported into busanshp
@@ -483,7 +483,7 @@ Licensed to studentSP4idi.ntnu.no
 %      module semantic imported into busanshp
 %      module frames2 imported into busanshp
 %      module newcontext2 imported into busanshp
-%     compiled /home/busstuc/busstuc/app/busanshp.pl in module busanshp, 14890 msec 25792768 bytes
+%     compiled /lhome/busstuc/busstuc/app/busanshp.pl in module busanshp, 14890 msec 25792768 bytes
 %     module route_period imported into buslog
 %     module busdat imported into buslog
 %     module places imported into buslog
@@ -492,7 +492,7 @@ Licensed to studentSP4idi.ntnu.no
 %     module timedat imported into buslog
 %     module facts imported into buslog
 %     module auxtables imported into buslog
-%    compiled /home/busstuc/busstuc/app/buslog.pl in module buslog, 15370 msec 26199408 bytes
+%    compiled /lhome/busstuc/busstuc/app/buslog.pl in module buslog, 15370 msec 26199408 bytes
 %    module busdat imported into writeout
 %    module places imported into writeout
 %    module regstr imported into writeout
@@ -501,7 +501,7 @@ Licensed to studentSP4idi.ntnu.no
 %    module parseres imported into writeout
 %    module facts imported into writeout
 %    module lex imported into writeout
-%   compiled /home/busstuc/busstuc/utility/writeout.pl in module writeout, 18220 msec 28965936 bytes
+%   compiled /lhome/busstuc/busstuc/utility/writeout.pl in module writeout, 18220 msec 28965936 bytes
 %   module utility imported into main
 %   module library imported into main
 %   module ptbwrite imported into main
@@ -510,20 +510,20 @@ Licensed to studentSP4idi.ntnu.no
 %   loaded /usr/local/sicstus4.2.0/bin/sp-4.2.0/sicstus-4.2.0/library/process.po in module process, 0 msec 5024 bytes
 %   module system imported into main
 %   module timeout imported into main
-%   compiling /home/busstuc/busstuc/version.pl...
-%   compiled /home/busstuc/busstuc/version.pl in module main, 0 msec 272 bytes
+%   compiling /lhome/busstuc/busstuc/version.pl...
+%   compiled /lhome/busstuc/busstuc/version.pl in module main, 0 msec 272 bytes
 %   module getphonedir imported into main
 %   module interfaceroute imported into main
 %   module tucbuses imported into main
 %   module teledat2 imported into main
 %   module timedat imported into main
 %   module d_dialogue imported into main
-%   compiling /home/busstuc/busstuc/tuc/metacomp.pl...
+%   compiling /lhome/busstuc/busstuc/tuc/metacomp.pl...
 %    module metacomp imported into main
 %    module varnumbers imported into metacomp
 %    module declare imported into metacomp
 %    module main imported into metacomp
-%    compiling /home/busstuc/busstuc/makeauxtables.pl...
+%    compiling /lhome/busstuc/busstuc/makeauxtables.pl...
 %     module makeauxtables imported into metacomp
 %     loading /usr/local/sicstus4.2.0/bin/sp-4.2.0/sicstus-4.2.0/library/file_systems.po...
 %     module file_systems imported into makeauxtables
@@ -535,83 +535,83 @@ Licensed to studentSP4idi.ntnu.no
 %     module utility imported into makeauxtables
 %     module datecalc imported into makeauxtables
 %     module writeout imported into makeauxtables
-%     compiling /home/busstuc/busstuc/compileroute.pl...
+%     compiling /lhome/busstuc/busstuc/compileroute.pl...
 %      module compileroute imported into makeauxtables
 %      module file_systems imported into compileroute
-%      compiling /home/busstuc/busstuc/utility/extracut.pl...
+%      compiling /lhome/busstuc/busstuc/utility/extracut.pl...
 %       module extracut imported into compileroute
 %       module declare imported into extracut
 %       module utility imported into extracut
 %       module datecalc imported into extracut
 %       module writeout imported into extracut
 %       module busdat imported into extracut
-%      compiled /home/busstuc/busstuc/utility/extracut.pl in module extracut, 40 msec 25520 bytes
+%      compiled /lhome/busstuc/busstuc/utility/extracut.pl in module extracut, 40 msec 25520 bytes
 %      module writeout imported into compileroute
 %      module route_period imported into compileroute
 %      module topreg imported into compileroute
-%     compiled /home/busstuc/busstuc/compileroute.pl in module compileroute, 70 msec 40048 bytes
-%     compiling /home/busstuc/busstuc/db/regbusall.pl...
+%     compiled /lhome/busstuc/busstuc/compileroute.pl in module compileroute, 70 msec 40048 bytes
+%     compiling /lhome/busstuc/busstuc/db/regbusall.pl...
 %      module regbusall imported into compileroute
 %      module buslog imported into regbusall
-%     compiled /home/busstuc/busstuc/db/regbusall.pl in module regbusall, 20 msec -7568 bytes
-%     compiling /home/busstuc/busstuc/db/regstr.pl...
+%     compiled /lhome/busstuc/busstuc/db/regbusall.pl in module regbusall, 20 msec -7568 bytes
+%     compiling /lhome/busstuc/busstuc/db/regstr.pl...
 %      module regstr imported into compileroute
-%     compiled /home/busstuc/busstuc/db/regstr.pl in module regstr, 580 msec -48 bytes
-%     compiling /home/busstuc/busstuc/db/regcompstr.pl...
+%     compiled /lhome/busstuc/busstuc/db/regstr.pl in module regstr, 580 msec -48 bytes
+%     compiling /lhome/busstuc/busstuc/db/regcompstr.pl...
 %      module regcompstr imported into compileroute
-%     compiled /home/busstuc/busstuc/db/regcompstr.pl in module regcompstr, 320 msec -48 bytes
-%     compiling /home/busstuc/busstuc/db/tables/r1611_140517/regdko.pl...
-%     compiled /home/busstuc/busstuc/db/tables/r1611_140517/regdko.pl in module r1611_140517, 0 msec 1104 bytes
-%     compiling /home/busstuc/busstuc/db/tables/r1611_140517/regbus.pl...
-%     compiled /home/busstuc/busstuc/db/tables/r1611_140517/regbus.pl in module r1611_140517, 130 msec 427328 bytes
-%     compiling /home/busstuc/busstuc/db/tables/r1611_140517/reghpl.pl...
-%     compiled /home/busstuc/busstuc/db/tables/r1611_140517/reghpl.pl in module r1611_140517, 300 msec 254928 bytes
-%     compiling /home/busstuc/busstuc/db/tables/r1611_140517/regcomp.pl...
-%     compiled /home/busstuc/busstuc/db/tables/r1611_140517/regcomp.pl in module r1611_140517, 320 msec 382704 bytes
-%     compiling /home/busstuc/busstuc/db/tables/r1611_140517/regcut.pl...
-%     compiled /home/busstuc/busstuc/db/tables/r1611_140517/regcut.pl in module r1611_140517, 900 msec 1565264 bytes
-%     compiling /home/busstuc/busstuc/db/tables/r1611_141201/regdko.pl...
-%     compiled /home/busstuc/busstuc/db/tables/r1611_141201/regdko.pl in module r1611_141201, 0 msec 4976 bytes
-%     compiling /home/busstuc/busstuc/db/tables/r1611_141201/regbus.pl...
-%     compiled /home/busstuc/busstuc/db/tables/r1611_141201/regbus.pl in module r1611_141201, 830 msec 1280720 bytes
-%     compiling /home/busstuc/busstuc/db/tables/r1611_141201/reghpl.pl...
-%     compiled /home/busstuc/busstuc/db/tables/r1611_141201/reghpl.pl in module r1611_141201, 300 msec 256832 bytes
-%     compiling /home/busstuc/busstuc/db/tables/r1611_141201/regcomp.pl...
-%     compiled /home/busstuc/busstuc/db/tables/r1611_141201/regcomp.pl in module r1611_141201, 320 msec 398240 bytes
-%     compiling /home/busstuc/busstuc/db/tables/r1611_141201/regcut.pl...
-%      compiling /home/busstuc/busstuc/db/tables/r1611_141201/regbus.pl...
-%      compiled /home/busstuc/busstuc/db/tables/r1611_141201/regbus.pl in module r1611_141201, 690 msec 1040336 bytes
-%      compiling /home/busstuc/busstuc/db/tables/r1611_141201/regcomp.pl...
-%      compiled /home/busstuc/busstuc/db/tables/r1611_141201/regcomp.pl in module r1611_141201, 510 msec 398064 bytes
-%      compiling /home/busstuc/busstuc/db/tables/r1611_141201/regdko.pl...
-%      compiled /home/busstuc/busstuc/db/tables/r1611_141201/regdko.pl in module r1611_141201, 0 msec 1856 bytes
-%      compiling /home/busstuc/busstuc/db/tables/r1611_141201/reghpl.pl...
-%      compiled /home/busstuc/busstuc/db/tables/r1611_141201/reghpl.pl in module r1611_141201, 120 msec 254416 bytes
-%     compiled /home/busstuc/busstuc/db/tables/r1611_141201/regcut.pl in module r1611_141201, 4140 msec 3133408 bytes
-%     consulting /home/busstuc/busstuc/db/tables/r1611_150112/regbus.pl...
-%     consulted /home/busstuc/busstuc/db/tables/r1611_150112/regbus.pl in module r1611_150112, 460 msec 1039200 bytes
-%     consulting /home/busstuc/busstuc/db/tables/r1611_150112/regdep.pl...
-%     consulted /home/busstuc/busstuc/db/tables/r1611_150112/regdep.pl in module r1611_150112, 340 msec 1137040 bytes
-%     consulting /home/busstuc/busstuc/db/tables/r1611_150112/regpas.pl...
-%     consulted /home/busstuc/busstuc/db/tables/r1611_150112/regpas.pl in module r1611_150112, 590 msec 1811504 bytes
-%     compiling /home/busstuc/busstuc/db/tables/r1611_150112/regdko.pl...
-%     compiled /home/busstuc/busstuc/db/tables/r1611_150112/regdko.pl in module r1611_150112, 0 msec 4160 bytes
-%     compiling /home/busstuc/busstuc/db/tables/r1611_150112/regbus.pl...
-%     compiled /home/busstuc/busstuc/db/tables/r1611_150112/regbus.pl in module r1611_150112, 790 msec 79376 bytes
-%     compiling /home/busstuc/busstuc/db/tables/r1611_150112/reghpl.pl...
-%     compiled /home/busstuc/busstuc/db/tables/r1611_150112/reghpl.pl in module r1611_150112, 310 msec 258656 bytes
-%     compiling /home/busstuc/busstuc/db/tables/r1611_150112/regcomp.pl...
-%     compiled /home/busstuc/busstuc/db/tables/r1611_150112/regcomp.pl in module r1611_150112, 560 msec 400208 bytes
-%     compiling /home/busstuc/busstuc/db/tables/r1611_150112/regcut.pl...
-%      compiling /home/busstuc/busstuc/db/tables/r1611_150112/regbus.pl...
-%      compiled /home/busstuc/busstuc/db/tables/r1611_150112/regbus.pl in module r1611_150112, 1050 msec 1017040 bytes
-%      compiling /home/busstuc/busstuc/db/tables/r1611_150112/regcomp.pl...
-%      compiled /home/busstuc/busstuc/db/tables/r1611_150112/regcomp.pl in module r1611_150112, 470 msec 399984 bytes
-%      compiling /home/busstuc/busstuc/db/tables/r1611_150112/regdko.pl...
-%      compiled /home/busstuc/busstuc/db/tables/r1611_150112/regdko.pl in module r1611_150112, 0 msec 1616 bytes
-%      compiling /home/busstuc/busstuc/db/tables/r1611_150112/reghpl.pl...
-%      compiled /home/busstuc/busstuc/db/tables/r1611_150112/reghpl.pl in module r1611_150112, 260 msec 258288 bytes
-%     compiled /home/busstuc/busstuc/db/tables/r1611_150112/regcut.pl in module r1611_150112, 3990 msec 540896 bytes
+%     compiled /lhome/busstuc/busstuc/db/regcompstr.pl in module regcompstr, 320 msec -48 bytes
+%     compiling /lhome/busstuc/busstuc/db/tables/r1611_140517/regdko.pl...
+%     compiled /lhome/busstuc/busstuc/db/tables/r1611_140517/regdko.pl in module r1611_140517, 0 msec 1104 bytes
+%     compiling /lhome/busstuc/busstuc/db/tables/r1611_140517/regbus.pl...
+%     compiled /lhome/busstuc/busstuc/db/tables/r1611_140517/regbus.pl in module r1611_140517, 130 msec 427328 bytes
+%     compiling /lhome/busstuc/busstuc/db/tables/r1611_140517/reghpl.pl...
+%     compiled /lhome/busstuc/busstuc/db/tables/r1611_140517/reghpl.pl in module r1611_140517, 300 msec 254928 bytes
+%     compiling /lhome/busstuc/busstuc/db/tables/r1611_140517/regcomp.pl...
+%     compiled /lhome/busstuc/busstuc/db/tables/r1611_140517/regcomp.pl in module r1611_140517, 320 msec 382704 bytes
+%     compiling /lhome/busstuc/busstuc/db/tables/r1611_140517/regcut.pl...
+%     compiled /lhome/busstuc/busstuc/db/tables/r1611_140517/regcut.pl in module r1611_140517, 900 msec 1565264 bytes
+%     compiling /lhome/busstuc/busstuc/db/tables/r1611_141201/regdko.pl...
+%     compiled /lhome/busstuc/busstuc/db/tables/r1611_141201/regdko.pl in module r1611_141201, 0 msec 4976 bytes
+%     compiling /lhome/busstuc/busstuc/db/tables/r1611_141201/regbus.pl...
+%     compiled /lhome/busstuc/busstuc/db/tables/r1611_141201/regbus.pl in module r1611_141201, 830 msec 1280720 bytes
+%     compiling /lhome/busstuc/busstuc/db/tables/r1611_141201/reghpl.pl...
+%     compiled /lhome/busstuc/busstuc/db/tables/r1611_141201/reghpl.pl in module r1611_141201, 300 msec 256832 bytes
+%     compiling /lhome/busstuc/busstuc/db/tables/r1611_141201/regcomp.pl...
+%     compiled /lhome/busstuc/busstuc/db/tables/r1611_141201/regcomp.pl in module r1611_141201, 320 msec 398240 bytes
+%     compiling /lhome/busstuc/busstuc/db/tables/r1611_141201/regcut.pl...
+%      compiling /lhome/busstuc/busstuc/db/tables/r1611_141201/regbus.pl...
+%      compiled /lhome/busstuc/busstuc/db/tables/r1611_141201/regbus.pl in module r1611_141201, 690 msec 1040336 bytes
+%      compiling /lhome/busstuc/busstuc/db/tables/r1611_141201/regcomp.pl...
+%      compiled /lhome/busstuc/busstuc/db/tables/r1611_141201/regcomp.pl in module r1611_141201, 510 msec 398064 bytes
+%      compiling /lhome/busstuc/busstuc/db/tables/r1611_141201/regdko.pl...
+%      compiled /lhome/busstuc/busstuc/db/tables/r1611_141201/regdko.pl in module r1611_141201, 0 msec 1856 bytes
+%      compiling /lhome/busstuc/busstuc/db/tables/r1611_141201/reghpl.pl...
+%      compiled /lhome/busstuc/busstuc/db/tables/r1611_141201/reghpl.pl in module r1611_141201, 120 msec 254416 bytes
+%     compiled /lhome/busstuc/busstuc/db/tables/r1611_141201/regcut.pl in module r1611_141201, 4140 msec 3133408 bytes
+%     consulting /lhome/busstuc/busstuc/db/tables/r1611_150112/regbus.pl...
+%     consulted /lhome/busstuc/busstuc/db/tables/r1611_150112/regbus.pl in module r1611_150112, 460 msec 1039200 bytes
+%     consulting /lhome/busstuc/busstuc/db/tables/r1611_150112/regdep.pl...
+%     consulted /lhome/busstuc/busstuc/db/tables/r1611_150112/regdep.pl in module r1611_150112, 340 msec 1137040 bytes
+%     consulting /lhome/busstuc/busstuc/db/tables/r1611_150112/regpas.pl...
+%     consulted /lhome/busstuc/busstuc/db/tables/r1611_150112/regpas.pl in module r1611_150112, 590 msec 1811504 bytes
+%     compiling /lhome/busstuc/busstuc/db/tables/r1611_150112/regdko.pl...
+%     compiled /lhome/busstuc/busstuc/db/tables/r1611_150112/regdko.pl in module r1611_150112, 0 msec 4160 bytes
+%     compiling /lhome/busstuc/busstuc/db/tables/r1611_150112/regbus.pl...
+%     compiled /lhome/busstuc/busstuc/db/tables/r1611_150112/regbus.pl in module r1611_150112, 790 msec 79376 bytes
+%     compiling /lhome/busstuc/busstuc/db/tables/r1611_150112/reghpl.pl...
+%     compiled /lhome/busstuc/busstuc/db/tables/r1611_150112/reghpl.pl in module r1611_150112, 310 msec 258656 bytes
+%     compiling /lhome/busstuc/busstuc/db/tables/r1611_150112/regcomp.pl...
+%     compiled /lhome/busstuc/busstuc/db/tables/r1611_150112/regcomp.pl in module r1611_150112, 560 msec 400208 bytes
+%     compiling /lhome/busstuc/busstuc/db/tables/r1611_150112/regcut.pl...
+%      compiling /lhome/busstuc/busstuc/db/tables/r1611_150112/regbus.pl...
+%      compiled /lhome/busstuc/busstuc/db/tables/r1611_150112/regbus.pl in module r1611_150112, 1050 msec 1017040 bytes
+%      compiling /lhome/busstuc/busstuc/db/tables/r1611_150112/regcomp.pl...
+%      compiled /lhome/busstuc/busstuc/db/tables/r1611_150112/regcomp.pl in module r1611_150112, 470 msec 399984 bytes
+%      compiling /lhome/busstuc/busstuc/db/tables/r1611_150112/regdko.pl...
+%      compiled /lhome/busstuc/busstuc/db/tables/r1611_150112/regdko.pl in module r1611_150112, 0 msec 1616 bytes
+%      compiling /lhome/busstuc/busstuc/db/tables/r1611_150112/reghpl.pl...
+%      compiled /lhome/busstuc/busstuc/db/tables/r1611_150112/reghpl.pl in module r1611_150112, 260 msec 258288 bytes
+%     compiled /lhome/busstuc/busstuc/db/tables/r1611_150112/regcut.pl in module r1611_150112, 3990 msec 540896 bytes
 %     module interfaceroute imported into makeauxtables
 %     module buslog imported into makeauxtables
 %     module places imported into makeauxtables
@@ -620,8 +620,8 @@ Licensed to studentSP4idi.ntnu.no
 %     module topreg imported into makeauxtables
 %     module lex imported into makeauxtables
 %     module names imported into makeauxtables
-%     compiling /home/busstuc/busstuc/db/tables/r1611_140203/reghpl.pl...
-%     compiled /home/busstuc/busstuc/db/tables/r1611_140203/reghpl.pl in module r1611_140203, 330 msec 258560 bytes
+%     compiling /lhome/busstuc/busstuc/db/tables/r1611_140203/reghpl.pl...
+%     compiled /lhome/busstuc/busstuc/db/tables/r1611_140203/reghpl.pl in module r1611_140203, 330 msec 258560 bytes
 compileroute.pl~122: SKIP createCut for timestamp  db/tables/r1611_140517/regcut 1399880731  >  1399878704
 compileroute.pl~122: SKIP createCut for timestamp  db/tables/r1611_141201/regcut 1420976285  >  1420935160
 
@@ -650,23 +650,23 @@ alias_station2(16011761,vestre_stran,sterbakken).
 alias_station2(16533001,skottvoll,skottvold).
 alias_station2(16533003,brubakken,brubakk).
 alias_station2(16533004,gylle,kvitland).
-%    compiled /home/busstuc/busstuc/makeauxtables.pl in module makeauxtables, 18000 msec 16634288 bytes
+%    compiled /lhome/busstuc/busstuc/makeauxtables.pl in module makeauxtables, 18000 msec 16634288 bytes
 %    module utility imported into metacomp
 %    module datecalc imported into metacomp
-%    compiling /home/busstuc/busstuc/tuc/dict_e.pl...
+%    compiling /lhome/busstuc/busstuc/tuc/dict_e.pl...
 %     module dict_e imported into metacomp
 %     module declare imported into dict_e
 %     module main imported into dict_e
 %     module evaluate imported into dict_e
-%     compiling /home/busstuc/busstuc/tuc/morph_e.pl...
+%     compiling /lhome/busstuc/busstuc/tuc/morph_e.pl...
 %      module morph_e imported into dict_e
 %      module dict_e imported into morph_e
 %      module lex imported into morph_e
 %      module semantic imported into morph_e
 %      module utility imported into morph_e
-%     compiled /home/busstuc/busstuc/tuc/morph_e.pl in module morph_e, 40 msec 22160 bytes
+%     compiled /lhome/busstuc/busstuc/tuc/morph_e.pl in module morph_e, 40 msec 22160 bytes
 %     module semantic imported into dict_e
-%    compiled /home/busstuc/busstuc/tuc/dict_e.pl in module dict_e, 360 msec 277952 bytes
+%    compiled /lhome/busstuc/busstuc/tuc/dict_e.pl in module dict_e, 360 msec 277952 bytes
 %    module gram_e imported into metacomp
 alias_station2(16533040,brekksen_snpl,brekksen_snuplass).
 alias_station2(16538501,skottvoll,skottvold).
@@ -678,56 +678,56 @@ alias_station2(16638328,hommelvikhgda,hommelvik_hgda).
 alias_station2(17142707,torvet,torvet_stjrdal).
 ...makeauxtables.pl~130 File already exists:  db/auxtables.pl 1420974884 timestamp > SKIP making  1420935160
 ...makeauxtables.pl~130 File already exists:  db/namehashtable.pl 1420977157 timestamp > SKIP making  1420935160
-%    compiling /home/busstuc/busstuc/tuc/dcg_e.pl...
+%    compiling /lhome/busstuc/busstuc/tuc/dcg_e.pl...
 %     module declare imported into dcg_e
 %     module utility imported into dcg_e
 %     module writeout imported into dcg_e
-%     compiling /home/busstuc/busstuc/tuc/dagrun_e.pl...
+%     compiling /lhome/busstuc/busstuc/tuc/dagrun_e.pl...
 %      module dagrun_e imported into dcg_e
 %      module declare imported into dagrun_e
 %      module lex imported into dagrun_e
-%     compiled /home/busstuc/busstuc/tuc/dagrun_e.pl in module dagrun_e, 20 msec 19552 bytes
+%     compiled /lhome/busstuc/busstuc/tuc/dagrun_e.pl in module dagrun_e, 20 msec 19552 bytes
 %     module dict_e imported into dcg_e
 %     module datecalc imported into dcg_e
 %     module timedat imported into dcg_e
 %     module fernando imported into dcg_e
 %     module semantic imported into dcg_e
 %     module lex imported into dcg_e
-%    compiled /home/busstuc/busstuc/tuc/dcg_e.pl in module dcg_e, 1000 msec 643104 bytes
+%    compiled /lhome/busstuc/busstuc/tuc/dcg_e.pl in module dcg_e, 1000 msec 643104 bytes
 %    module dict_e imported into metacomp
 %    module gram_n imported into metacomp
 ...makeauxtables.pl~130 File already exists:  ./dcg_e.pl 1420220247 timestamp > SKIP making  1418005541
-%    compiling /home/busstuc/busstuc/tuc/dcg_n.pl...
+%    compiling /lhome/busstuc/busstuc/tuc/dcg_n.pl...
 %     module declare imported into dcg_n
 %     module main imported into dcg_n
 %     module utility imported into dcg_n
 %     module datecalc imported into dcg_n
 %     module writeout imported into dcg_n
-%     compiling /home/busstuc/busstuc/tuc/dagrun_n.pl...
+%     compiling /lhome/busstuc/busstuc/tuc/dagrun_n.pl...
 %      module dagrun_n imported into dcg_n
 %      module declare imported into dagrun_n
 %      module lex imported into dagrun_n
-%     compiled /home/busstuc/busstuc/tuc/dagrun_n.pl in module dagrun_n, 30 msec 16576 bytes
+%     compiled /lhome/busstuc/busstuc/tuc/dagrun_n.pl in module dagrun_n, 30 msec 16576 bytes
 %     module dict_e imported into dcg_n
 %     module timedat imported into dcg_n
 %     module fernando imported into dcg_n
 %     module lex imported into dcg_n
 %     module semantic imported into dcg_n
-%    compiled /home/busstuc/busstuc/tuc/dcg_n.pl in module dcg_n, 3400 msec 2324912 bytes
-%   compiled /home/busstuc/busstuc/tuc/metacomp.pl in module metacomp, 22860 msec 19963680 bytes
+%    compiled /lhome/busstuc/busstuc/tuc/dcg_n.pl in module dcg_n, 3400 msec 2324912 bytes
+%   compiled /lhome/busstuc/busstuc/tuc/metacomp.pl in module metacomp, 22860 msec 19963680 bytes
 %   module anaphors imported into main
 %   module evaluate imported into main
 %   module lex imported into main
 %   module readin imported into main
 %   module translat imported into main
-%  compiled /home/busstuc/busstuc/main.pl in module main, 41260 msec 49085728 bytes
-%  compiling /home/busstuc/busstuc/busroute.pl...
+%  compiled /lhome/busstuc/busstuc/main.pl in module main, 41260 msec 49085728 bytes
+%  compiling /lhome/busstuc/busstuc/busroute.pl...
 %   module busroute imported into user
 %   module compileroute imported into busroute
-%  compiled /home/busstuc/busstuc/busroute.pl in module busroute, 10 msec 592 bytes
-%  compiling /home/busstuc/busstuc/tucbuss.pl...
+%  compiled /lhome/busstuc/busstuc/busroute.pl in module busroute, 10 msec 592 bytes
+%  compiling /lhome/busstuc/busstuc/tucbuss.pl...
 %   module tucbuses imported into user
-%   compiling /home/busstuc/busstuc/monobus.pl...
+%   compiling /lhome/busstuc/busstuc/monobus.pl...
 %    module busanshp imported into user
 %    module bustrans imported into user
 %    module pragma imported into user
@@ -736,8 +736,8 @@ alias_station2(17142707,torvet,torvet_stjrdal).
 %    module teledat2 imported into user
 %    module busdat imported into user
 %    module makeauxtables imported into user
-%   compiled /home/busstuc/busstuc/monobus.pl in module user, 10 msec 2960 bytes
-%  compiled /home/busstuc/busstuc/tucbuss.pl in module user, 10 msec 8640 bytes
+%   compiled /lhome/busstuc/busstuc/monobus.pl in module user, 10 msec 2960 bytes
+%  compiled /lhome/busstuc/busstuc/tucbuss.pl in module user, 10 msec 8640 bytes
 %  module makeauxtables imported into user
 % The debugger is switched off
 ...makeauxtables.pl~130 File already exists:  ./dcg_n.pl 1420220248 timestamp > SKIP making  1418005541
@@ -745,64 +745,64 @@ alias_station2(17142707,torvet,torvet_stjrdal).
 ...makeauxtables.pl~130 File already exists:  db/auxtables.pl 1420974884 timestamp > SKIP making  1420935160
 ...makeauxtables.pl~130 File already exists:  db/namehashtable.pl 1420977157 timestamp > SKIP making  1420935160
 %  module compileroute imported into user
-%  compiling /home/busstuc/busstuc/db/regbusall.pl...
+%  compiling /lhome/busstuc/busstuc/db/regbusall.pl...
 %   module regbusall imported into compileroute
 %   module buslog imported into regbusall
-%  compiled /home/busstuc/busstuc/db/regbusall.pl in module regbusall, 20 msec 192 bytes
-%  compiling /home/busstuc/busstuc/db/regstr.pl...
+%  compiled /lhome/busstuc/busstuc/db/regbusall.pl in module regbusall, 20 msec 192 bytes
+%  compiling /lhome/busstuc/busstuc/db/regstr.pl...
 %   module regstr imported into compileroute
-%  compiled /home/busstuc/busstuc/db/regstr.pl in module regstr, 460 msec -176 bytes
-%  compiling /home/busstuc/busstuc/db/regcompstr.pl...
+%  compiled /lhome/busstuc/busstuc/db/regstr.pl in module regstr, 460 msec -176 bytes
+%  compiling /lhome/busstuc/busstuc/db/regcompstr.pl...
 %   module regcompstr imported into compileroute
-%  compiled /home/busstuc/busstuc/db/regcompstr.pl in module regcompstr, 170 msec -176 bytes
-%  compiling /home/busstuc/busstuc/db/tables/r1611_140517/regdko.pl...
-%  compiled /home/busstuc/busstuc/db/tables/r1611_140517/regdko.pl in module r1611_140517, 0 msec -176 bytes
-%  compiling /home/busstuc/busstuc/db/tables/r1611_140517/regbus.pl...
-%  compiled /home/busstuc/busstuc/db/tables/r1611_140517/regbus.pl in module r1611_140517, 140 msec -176 bytes
-%  compiling /home/busstuc/busstuc/db/tables/r1611_140517/reghpl.pl...
-%  compiled /home/busstuc/busstuc/db/tables/r1611_140517/reghpl.pl in module r1611_140517, 370 msec -176 bytes
-%  compiling /home/busstuc/busstuc/db/tables/r1611_140517/regcomp.pl...
-%  compiled /home/busstuc/busstuc/db/tables/r1611_140517/regcomp.pl in module r1611_140517, 360 msec -176 bytes
-%  compiling /home/busstuc/busstuc/db/tables/r1611_140517/regcut.pl...
-%  compiled /home/busstuc/busstuc/db/tables/r1611_140517/regcut.pl in module r1611_140517, 1590 msec -176 bytes
-%  compiling /home/busstuc/busstuc/db/tables/r1611_141201/regdko.pl...
-%  compiled /home/busstuc/busstuc/db/tables/r1611_141201/regdko.pl in module r1611_141201, 0 msec -176 bytes
-%  compiling /home/busstuc/busstuc/db/tables/r1611_141201/regbus.pl...
-%  compiled /home/busstuc/busstuc/db/tables/r1611_141201/regbus.pl in module r1611_141201, 1380 msec -176 bytes
-%  compiling /home/busstuc/busstuc/db/tables/r1611_141201/reghpl.pl...
-%  compiled /home/busstuc/busstuc/db/tables/r1611_141201/reghpl.pl in module r1611_141201, 380 msec -176 bytes
-%  compiling /home/busstuc/busstuc/db/tables/r1611_141201/regcomp.pl...
-%  compiled /home/busstuc/busstuc/db/tables/r1611_141201/regcomp.pl in module r1611_141201, 500 msec -176 bytes
-%  compiling /home/busstuc/busstuc/db/tables/r1611_141201/regcut.pl...
-%   compiling /home/busstuc/busstuc/db/tables/r1611_141201/regbus.pl...
-%   compiled /home/busstuc/busstuc/db/tables/r1611_141201/regbus.pl in module r1611_141201, 710 msec 1040336 bytes
-%   compiling /home/busstuc/busstuc/db/tables/r1611_141201/regcomp.pl...
-%   compiled /home/busstuc/busstuc/db/tables/r1611_141201/regcomp.pl in module r1611_141201, 460 msec 398064 bytes
-%   compiling /home/busstuc/busstuc/db/tables/r1611_141201/regdko.pl...
-%   compiled /home/busstuc/busstuc/db/tables/r1611_141201/regdko.pl in module r1611_141201, 10 msec 1856 bytes
-%   compiling /home/busstuc/busstuc/db/tables/r1611_141201/reghpl.pl...
-%   compiled /home/busstuc/busstuc/db/tables/r1611_141201/reghpl.pl in module r1611_141201, 120 msec 254416 bytes
-%  compiled /home/busstuc/busstuc/db/tables/r1611_141201/regcut.pl in module r1611_141201, 3310 msec 528 bytes
-%  compiling /home/busstuc/busstuc/db/tables/r1611_150112/regdko.pl...
-%  compiled /home/busstuc/busstuc/db/tables/r1611_150112/regdko.pl in module r1611_150112, 0 msec -176 bytes
-%  compiling /home/busstuc/busstuc/db/tables/r1611_150112/regbus.pl...
-%  compiled /home/busstuc/busstuc/db/tables/r1611_150112/regbus.pl in module r1611_150112, 570 msec -176 bytes
-%  compiling /home/busstuc/busstuc/db/tables/r1611_150112/reghpl.pl...
-%  compiled /home/busstuc/busstuc/db/tables/r1611_150112/reghpl.pl in module r1611_150112, 120 msec -176 bytes
-%  compiling /home/busstuc/busstuc/db/tables/r1611_150112/regcomp.pl...
-%  compiled /home/busstuc/busstuc/db/tables/r1611_150112/regcomp.pl in module r1611_150112, 190 msec -176 bytes
-%  compiling /home/busstuc/busstuc/db/tables/r1611_150112/regcut.pl...
-%   compiling /home/busstuc/busstuc/db/tables/r1611_150112/regbus.pl...
-%   compiled /home/busstuc/busstuc/db/tables/r1611_150112/regbus.pl in module r1611_150112, 1360 msec 1017040 bytes
-%   compiling /home/busstuc/busstuc/db/tables/r1611_150112/regcomp.pl...
-%   compiled /home/busstuc/busstuc/db/tables/r1611_150112/regcomp.pl in module r1611_150112, 480 msec 399984 bytes
-%   compiling /home/busstuc/busstuc/db/tables/r1611_150112/regdko.pl...
-%   compiled /home/busstuc/busstuc/db/tables/r1611_150112/regdko.pl in module r1611_150112, 10 msec 1616 bytes
-%   compiling /home/busstuc/busstuc/db/tables/r1611_150112/reghpl.pl...
-%   compiled /home/busstuc/busstuc/db/tables/r1611_150112/reghpl.pl in module r1611_150112, 260 msec 258288 bytes
-%  compiled /home/busstuc/busstuc/db/tables/r1611_150112/regcut.pl in module r1611_150112, 3770 msec 592 bytes
-% compiled /home/busstuc/busstuc/busstuc.pl in module user, 54660 msec 49111232 bytes
-% /home/busstuc/busstuc/busestuc4.sav created in 1980 msec
+%  compiled /lhome/busstuc/busstuc/db/regcompstr.pl in module regcompstr, 170 msec -176 bytes
+%  compiling /lhome/busstuc/busstuc/db/tables/r1611_140517/regdko.pl...
+%  compiled /lhome/busstuc/busstuc/db/tables/r1611_140517/regdko.pl in module r1611_140517, 0 msec -176 bytes
+%  compiling /lhome/busstuc/busstuc/db/tables/r1611_140517/regbus.pl...
+%  compiled /lhome/busstuc/busstuc/db/tables/r1611_140517/regbus.pl in module r1611_140517, 140 msec -176 bytes
+%  compiling /lhome/busstuc/busstuc/db/tables/r1611_140517/reghpl.pl...
+%  compiled /lhome/busstuc/busstuc/db/tables/r1611_140517/reghpl.pl in module r1611_140517, 370 msec -176 bytes
+%  compiling /lhome/busstuc/busstuc/db/tables/r1611_140517/regcomp.pl...
+%  compiled /lhome/busstuc/busstuc/db/tables/r1611_140517/regcomp.pl in module r1611_140517, 360 msec -176 bytes
+%  compiling /lhome/busstuc/busstuc/db/tables/r1611_140517/regcut.pl...
+%  compiled /lhome/busstuc/busstuc/db/tables/r1611_140517/regcut.pl in module r1611_140517, 1590 msec -176 bytes
+%  compiling /lhome/busstuc/busstuc/db/tables/r1611_141201/regdko.pl...
+%  compiled /lhome/busstuc/busstuc/db/tables/r1611_141201/regdko.pl in module r1611_141201, 0 msec -176 bytes
+%  compiling /lhome/busstuc/busstuc/db/tables/r1611_141201/regbus.pl...
+%  compiled /lhome/busstuc/busstuc/db/tables/r1611_141201/regbus.pl in module r1611_141201, 1380 msec -176 bytes
+%  compiling /lhome/busstuc/busstuc/db/tables/r1611_141201/reghpl.pl...
+%  compiled /lhome/busstuc/busstuc/db/tables/r1611_141201/reghpl.pl in module r1611_141201, 380 msec -176 bytes
+%  compiling /lhome/busstuc/busstuc/db/tables/r1611_141201/regcomp.pl...
+%  compiled /lhome/busstuc/busstuc/db/tables/r1611_141201/regcomp.pl in module r1611_141201, 500 msec -176 bytes
+%  compiling /lhome/busstuc/busstuc/db/tables/r1611_141201/regcut.pl...
+%   compiling /lhome/busstuc/busstuc/db/tables/r1611_141201/regbus.pl...
+%   compiled /lhome/busstuc/busstuc/db/tables/r1611_141201/regbus.pl in module r1611_141201, 710 msec 1040336 bytes
+%   compiling /lhome/busstuc/busstuc/db/tables/r1611_141201/regcomp.pl...
+%   compiled /lhome/busstuc/busstuc/db/tables/r1611_141201/regcomp.pl in module r1611_141201, 460 msec 398064 bytes
+%   compiling /lhome/busstuc/busstuc/db/tables/r1611_141201/regdko.pl...
+%   compiled /lhome/busstuc/busstuc/db/tables/r1611_141201/regdko.pl in module r1611_141201, 10 msec 1856 bytes
+%   compiling /lhome/busstuc/busstuc/db/tables/r1611_141201/reghpl.pl...
+%   compiled /lhome/busstuc/busstuc/db/tables/r1611_141201/reghpl.pl in module r1611_141201, 120 msec 254416 bytes
+%  compiled /lhome/busstuc/busstuc/db/tables/r1611_141201/regcut.pl in module r1611_141201, 3310 msec 528 bytes
+%  compiling /lhome/busstuc/busstuc/db/tables/r1611_150112/regdko.pl...
+%  compiled /lhome/busstuc/busstuc/db/tables/r1611_150112/regdko.pl in module r1611_150112, 0 msec -176 bytes
+%  compiling /lhome/busstuc/busstuc/db/tables/r1611_150112/regbus.pl...
+%  compiled /lhome/busstuc/busstuc/db/tables/r1611_150112/regbus.pl in module r1611_150112, 570 msec -176 bytes
+%  compiling /lhome/busstuc/busstuc/db/tables/r1611_150112/reghpl.pl...
+%  compiled /lhome/busstuc/busstuc/db/tables/r1611_150112/reghpl.pl in module r1611_150112, 120 msec -176 bytes
+%  compiling /lhome/busstuc/busstuc/db/tables/r1611_150112/regcomp.pl...
+%  compiled /lhome/busstuc/busstuc/db/tables/r1611_150112/regcomp.pl in module r1611_150112, 190 msec -176 bytes
+%  compiling /lhome/busstuc/busstuc/db/tables/r1611_150112/regcut.pl...
+%   compiling /lhome/busstuc/busstuc/db/tables/r1611_150112/regbus.pl...
+%   compiled /lhome/busstuc/busstuc/db/tables/r1611_150112/regbus.pl in module r1611_150112, 1360 msec 1017040 bytes
+%   compiling /lhome/busstuc/busstuc/db/tables/r1611_150112/regcomp.pl...
+%   compiled /lhome/busstuc/busstuc/db/tables/r1611_150112/regcomp.pl in module r1611_150112, 480 msec 399984 bytes
+%   compiling /lhome/busstuc/busstuc/db/tables/r1611_150112/regdko.pl...
+%   compiled /lhome/busstuc/busstuc/db/tables/r1611_150112/regdko.pl in module r1611_150112, 10 msec 1616 bytes
+%   compiling /lhome/busstuc/busstuc/db/tables/r1611_150112/reghpl.pl...
+%   compiled /lhome/busstuc/busstuc/db/tables/r1611_150112/reghpl.pl in module r1611_150112, 260 msec 258288 bytes
+%  compiled /lhome/busstuc/busstuc/db/tables/r1611_150112/regcut.pl in module r1611_150112, 3770 msec 592 bytes
+% compiled /lhome/busstuc/busstuc/busstuc.pl in module user, 54660 msec 49111232 bytes
+% /lhome/busstuc/busstuc/busestuc4.sav created in 1980 msec
 compileroute.pl~122: SKIP createCut for timestamp  db/tables/r1611_140517/regcut 1399880731  >  1399878704
 compileroute.pl~122: SKIP createCut for timestamp  db/tables/r1611_141201/regcut 1420976285  >  1420935160
 compileroute.pl~122: SKIP createCut for timestamp  db/tables/r1611_150112/regcut 1420988292  >  1420988258
