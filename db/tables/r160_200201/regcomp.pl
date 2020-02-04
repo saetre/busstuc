@@ -1803,10 +1803,6 @@ composite_stat(johan,[tillers, street],johan_tillers_vei). % generated 2.2
 composite_stat(johan,[tillers, vei],johan_tillers_vei).
 composite_stat(johan,[tillers_street],johan_tillers_vei). % generated 2.1
 composite_stat(johan,[tillersvei],johan_tillers_vei). % generated 2.0
-composite_stat(john,[aaes, street],john_aaes_veg). % generated 2.2
-composite_stat(john,[aaes, veg],john_aaes_veg).
-composite_stat(john,[aaes_street],john_aaes_veg). % generated 2.1
-composite_stat(john,[aaesveg],john_aaes_veg). % generated 2.0
 composite_stat(john,[p, kroglunds, street],john_p_kroglunds_veg). % generated 2.2
 composite_stat(john,[p, kroglunds, veg],john_p_kroglunds_veg).
 composite_stat(john,[p, kroglunds_street],john_p_kroglunds_veg). % generated 2.1
@@ -3872,7 +3868,6 @@ composite_stat(stokkhaugen,[e39],stokkhaugen_e39).
 composite_stat(stokkslettbakken,[],stokkslettbakken).
 composite_stat(stokkøy,[],stokkøy).
 composite_stat(stolt,[],stolt).
-composite_stat(stor,[rosta],stor_rosta).
 composite_stat(storaunet,[],storaunet).
 composite_stat(storbekkrønning,[],storbekkrønning).
 composite_stat(storbergveien,[],storbergveien).
