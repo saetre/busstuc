@@ -1108,7 +1108,6 @@ composite_stat(gjeset,[],gjeset).
 composite_stat(gjesetmoen,[],gjesetmoen).
 composite_stat(gjesetodden,[],gjesetodden).
 composite_stat(gjetneset,[],gjetneset).
-composite_stat(gjevilvasshytta,[],gjevilvasshytta).
 composite_stat(gjeving,[],gjeving).
 composite_stat(gjevingfeltet,[øst],gjevingfeltet_øst).
 composite_stat(gjevingåsen,[],gjevingåsen).
@@ -2325,6 +2324,7 @@ composite_stat(lilleval,[],lilleval).
 composite_stat(lillevedde,[],lillevedde).
 composite_stat(lillevik,[],lillevik).
 composite_stat(lilleøen,[],lilleøen).
+composite_stat(limingveien,[],limingveien).
 composite_stat(lindahl,[],lindahl).
 composite_stat(lindal,[],lindal).
 composite_stat(lindgjerdet,[],lindgjerdet).
@@ -3079,7 +3079,6 @@ composite_stat(prestmoen,[øst],prestmoen_øst).
 composite_stat(prestrønning,[],prestrønning).
 composite_stat(prinsens,[gate, p1],prinsens_gate_p1).
 composite_stat(prinsens,[gate, p2],prinsens_gate_p2).
-composite_stat(prinsens,[gate, p3],prinsens_gate_p3).
 composite_stat(prix,[østbyen],prix_østbyen).
 composite_stat(pålsplass,[],pålsplass).
 composite_stat(raaen,[],raaen).
@@ -4206,7 +4205,6 @@ composite_stat(tollstad,[],tollstad).
 composite_stat(tomtebo,[],tomtebo).
 composite_stat(tonstadgrenda,[],tonstadgrenda).
 composite_stat(tonstadkrysset,[],tonstadkrysset).
-composite_stat(tonstadkrysset,[e6],tonstadkrysset_e6).
 composite_stat(toremoen,[],toremoen).
 composite_stat(torgaardssletta,[],torgaardssletta).
 composite_stat(torgard,[],torgard).
@@ -4790,6 +4788,10 @@ composite_stat(øvre,[flatåsveg],øvre_flatåsveg).
 composite_stat(øvre,[hernes],øvre_hernes).
 composite_stat(øvre,[rindal, skole],øvre_rindal_skole).
 composite_stat(øvre,[sætrum],øvre_sætrum).
+composite_stat(øvre,[sørli, street],øvre_sørliveg). % generated 6.2
+composite_stat(øvre,[sørli, veg],øvre_sørliveg). % generated 6.1
+composite_stat(øvre,[sørli_street],øvre_sørliveg). % generated 6.0
+composite_stat(øvre,[sørliveg],øvre_sørliveg).
 composite_stat(øvre,[tvereggen],øvre_tvereggen).
 composite_stat(øya,[],øya).
 composite_stat(øya,[ungdomskole],øya_ungdomskole).
