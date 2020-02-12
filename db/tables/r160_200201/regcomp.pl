@@ -2818,6 +2818,7 @@ composite_stat(nicolaisen,[],nicolaisen).
 composite_stat(nidarosdomen,[],nidarosdomen).
 composite_stat(nidarvoll,[],nidarvoll).
 composite_stat(nidarvoll,[skole],nidarvoll_skole).
+composite_stat(nidarø,[],nidarø).
 composite_stat(nittermark,[],nittermark).
 composite_stat(noem,[],noem).
 composite_stat(nold,[],nold).
@@ -3274,7 +3275,6 @@ composite_stat(ryumsjøen,[],ryumsjøen).
 composite_stat(råbakken,[],råbakken).
 composite_stat(råbygda,[],råbygda).
 composite_stat(råbygda,[skole, jåren],råbygda_skole_jåren).
-composite_stat(råbygda,[skole],råbygda_skole).
 composite_stat(råde,[],råde).
 composite_stat(rådyrvegen,[],rådyrvegen).
 composite_stat(råen,[],råen).
@@ -3754,6 +3754,7 @@ composite_stat(sparbu,[],sparbu).
 composite_stat(sparbu,[stasjon],sparbu_stasjon).
 composite_stat(spellan,[],spellan).
 composite_stat(spillebakken,[],spillebakken).
+composite_stat(spillum,[rv, 17],spillum_rv_17).
 composite_stat(spillum,[vegdele],spillum_vegdele).
 composite_stat(spillumshøgda,[],spillumshøgda).
 composite_stat(spillumstranda,[],spillumstranda).
@@ -4265,7 +4266,6 @@ composite_stat(trondheim,[s, 5],trondheim_s_5).
 composite_stat(trondheim,[s, 6],trondheim_s_6).
 composite_stat(trondheim,[s, 7],trondheim_s_7).
 composite_stat(trondheim,[s],trondheim_s).
-composite_stat(trondheim,[spektrum],trondheim_spektrum).
 composite_stat(trones,[],trones).
 composite_stat(trones,[skole],trones_skole).
 composite_stat(trones,[trones],trones_trones).
