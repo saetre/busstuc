@@ -2965,13 +2965,9 @@ composite_stat(olav,[nygards, street],olav_nygards_veg). % generated 2.2
 composite_stat(olav,[nygards, veg],olav_nygards_veg).
 composite_stat(olav,[nygards_street],olav_nygards_veg). % generated 2.1
 composite_stat(olav,[nygardsveg],olav_nygards_veg). % generated 2.0
-composite_stat(olav,[tryggvasons, gate, ot, 1],olav_tryggvasons_gate_ot_1).
-composite_stat(olav,[tryggvasons, gate, ot, 2],olav_tryggvasons_gate_ot_2).
-composite_stat(olav,[tryggvasons, gate, ot],olav_tryggvasons_gate_ot).
-composite_stat(olav,[tryggvasons, gate],olav_tryggvasons_gate).
-composite_stat(olav,[tryggvasons, street],olav_tryggvasons_gate). % generated 2.2
-composite_stat(olav,[tryggvasons_street],olav_tryggvasons_gate). % generated 2.1
-composite_stat(olav,[tryggvasonsgate],olav_tryggvasons_gate). % generated 2.0
+composite_stat(olav,[tryggvasons, gate, ot1],olav_tryggvasons_gate_ot1).
+composite_stat(olav,[tryggvasons, gate, ot2],olav_tryggvasons_gate_ot2).
+composite_stat(olav,[tryggvasons, gate, ot3],olav_tryggvasons_gate_ot3).
 composite_stat(olden,[],olden).
 composite_stat(olden,[veikryss],olden_veikryss).
 composite_stat(olderbakken,[],olderbakken).
