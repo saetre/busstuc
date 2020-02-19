@@ -1108,7 +1108,6 @@ composite_stat(gjeset,[],gjeset).
 composite_stat(gjesetmoen,[],gjesetmoen).
 composite_stat(gjesetodden,[],gjesetodden).
 composite_stat(gjetneset,[],gjetneset).
-composite_stat(gjevilvasshytta,[],gjevilvasshytta).
 composite_stat(gjeving,[],gjeving).
 composite_stat(gjevingfeltet,[øst],gjevingfeltet_øst).
 composite_stat(gjevingåsen,[],gjevingåsen).
@@ -1803,10 +1802,6 @@ composite_stat(johan,[tillers, street],johan_tillers_vei). % generated 2.2
 composite_stat(johan,[tillers, vei],johan_tillers_vei).
 composite_stat(johan,[tillers_street],johan_tillers_vei). % generated 2.1
 composite_stat(johan,[tillersvei],johan_tillers_vei). % generated 2.0
-composite_stat(john,[aaes, street],john_aaes_veg). % generated 2.2
-composite_stat(john,[aaes, veg],john_aaes_veg).
-composite_stat(john,[aaes_street],john_aaes_veg). % generated 2.1
-composite_stat(john,[aaesveg],john_aaes_veg). % generated 2.0
 composite_stat(john,[p, kroglunds, street],john_p_kroglunds_veg). % generated 2.2
 composite_stat(john,[p, kroglunds, veg],john_p_kroglunds_veg).
 composite_stat(john,[p, kroglunds_street],john_p_kroglunds_veg). % generated 2.1
@@ -2329,6 +2324,7 @@ composite_stat(lilleval,[],lilleval).
 composite_stat(lillevedde,[],lillevedde).
 composite_stat(lillevik,[],lillevik).
 composite_stat(lilleøen,[],lilleøen).
+composite_stat(limingen,[østre],limingen_østre).
 composite_stat(lindahl,[],lindahl).
 composite_stat(lindal,[],lindal).
 composite_stat(lindgjerdet,[],lindgjerdet).
@@ -2822,6 +2818,7 @@ composite_stat(nicolaisen,[],nicolaisen).
 composite_stat(nidarosdomen,[],nidarosdomen).
 composite_stat(nidarvoll,[],nidarvoll).
 composite_stat(nidarvoll,[skole],nidarvoll_skole).
+composite_stat(nidarø,[],nidarø).
 composite_stat(nittermark,[],nittermark).
 composite_stat(noem,[],noem).
 composite_stat(nold,[],nold).
@@ -2968,13 +2965,9 @@ composite_stat(olav,[nygards, street],olav_nygards_veg). % generated 2.2
 composite_stat(olav,[nygards, veg],olav_nygards_veg).
 composite_stat(olav,[nygards_street],olav_nygards_veg). % generated 2.1
 composite_stat(olav,[nygardsveg],olav_nygards_veg). % generated 2.0
-composite_stat(olav,[tryggvasons, gate, ot, 1],olav_tryggvasons_gate_ot_1).
-composite_stat(olav,[tryggvasons, gate, ot, 2],olav_tryggvasons_gate_ot_2).
-composite_stat(olav,[tryggvasons, gate, ot],olav_tryggvasons_gate_ot).
-composite_stat(olav,[tryggvasons, gate],olav_tryggvasons_gate).
-composite_stat(olav,[tryggvasons, street],olav_tryggvasons_gate). % generated 2.2
-composite_stat(olav,[tryggvasons_street],olav_tryggvasons_gate). % generated 2.1
-composite_stat(olav,[tryggvasonsgate],olav_tryggvasons_gate). % generated 2.0
+composite_stat(olav,[tryggvasons, gate, ot1],olav_tryggvasons_gate_ot1).
+composite_stat(olav,[tryggvasons, gate, ot2],olav_tryggvasons_gate_ot2).
+composite_stat(olav,[tryggvasons, gate, ot3],olav_tryggvasons_gate_ot3).
 composite_stat(olden,[],olden).
 composite_stat(olden,[veikryss],olden_veikryss).
 composite_stat(olderbakken,[],olderbakken).
@@ -3083,7 +3076,6 @@ composite_stat(prestmoen,[øst],prestmoen_øst).
 composite_stat(prestrønning,[],prestrønning).
 composite_stat(prinsens,[gate, p1],prinsens_gate_p1).
 composite_stat(prinsens,[gate, p2],prinsens_gate_p2).
-composite_stat(prinsens,[gate, p3],prinsens_gate_p3).
 composite_stat(prix,[østbyen],prix_østbyen).
 composite_stat(pålsplass,[],pålsplass).
 composite_stat(raaen,[],raaen).
@@ -3279,7 +3271,6 @@ composite_stat(ryumsjøen,[],ryumsjøen).
 composite_stat(råbakken,[],råbakken).
 composite_stat(råbygda,[],råbygda).
 composite_stat(råbygda,[skole, jåren],råbygda_skole_jåren).
-composite_stat(råbygda,[skole],råbygda_skole).
 composite_stat(råde,[],råde).
 composite_stat(rådyrvegen,[],rådyrvegen).
 composite_stat(råen,[],råen).
@@ -3503,6 +3494,7 @@ composite_stat(sjølstad,[],sjølstad).
 composite_stat(sjølyst,[],sjølyst).
 composite_stat(sjømark,[homnes],sjømark_homnes).
 composite_stat(sjømark,[verrastranda],sjømark_verrastranda).
+composite_stat(sjøtun,[],sjøtun).
 composite_stat(sjøåsen,[],sjøåsen).
 composite_stat(skaftnes,[vegdele],skaftnes_vegdele).
 composite_stat(skaftnesmoen,[],skaftnesmoen).
@@ -3759,6 +3751,7 @@ composite_stat(sparbu,[],sparbu).
 composite_stat(sparbu,[stasjon],sparbu_stasjon).
 composite_stat(spellan,[],spellan).
 composite_stat(spillebakken,[],spillebakken).
+composite_stat(spillum,[rv, 17],spillum_rv_17).
 composite_stat(spillum,[vegdele],spillum_vegdele).
 composite_stat(spillumshøgda,[],spillumshøgda).
 composite_stat(spillumstranda,[],spillumstranda).
@@ -3872,7 +3865,6 @@ composite_stat(stokkhaugen,[e39],stokkhaugen_e39).
 composite_stat(stokkslettbakken,[],stokkslettbakken).
 composite_stat(stokkøy,[],stokkøy).
 composite_stat(stolt,[],stolt).
-composite_stat(stor,[rosta],stor_rosta).
 composite_stat(storaunet,[],storaunet).
 composite_stat(storbekkrønning,[],storbekkrønning).
 composite_stat(storbergveien,[],storbergveien).
@@ -4211,7 +4203,6 @@ composite_stat(tollstad,[],tollstad).
 composite_stat(tomtebo,[],tomtebo).
 composite_stat(tonstadgrenda,[],tonstadgrenda).
 composite_stat(tonstadkrysset,[],tonstadkrysset).
-composite_stat(tonstadkrysset,[e6],tonstadkrysset_e6).
 composite_stat(toremoen,[],toremoen).
 composite_stat(torgaardssletta,[],torgaardssletta).
 composite_stat(torgard,[],torgard).
@@ -4272,7 +4263,6 @@ composite_stat(trondheim,[s, 5],trondheim_s_5).
 composite_stat(trondheim,[s, 6],trondheim_s_6).
 composite_stat(trondheim,[s, 7],trondheim_s_7).
 composite_stat(trondheim,[s],trondheim_s).
-composite_stat(trondheim,[spektrum],trondheim_spektrum).
 composite_stat(trones,[],trones).
 composite_stat(trones,[skole],trones_skole).
 composite_stat(trones,[trones],trones_trones).
@@ -4309,7 +4299,6 @@ composite_stat(tungavegen,[],tungavegen).
 composite_stat(tungvågen,[],tungvågen).
 composite_stat(tunnelvegen,[],tunnelvegen).
 composite_stat(tunnsjø,[],tunnsjø).
-composite_stat(tunnsjø,[østre],tunnsjø_østre).
 composite_stat(tunnsjødal,[vegdele],tunnsjødal_vegdele).
 composite_stat(tunnsjøelv,[],tunnsjøelv).
 composite_stat(tunnsjørøyrvik,[],tunnsjørøyrvik).
@@ -4795,6 +4784,10 @@ composite_stat(øvre,[flatåsveg],øvre_flatåsveg).
 composite_stat(øvre,[hernes],øvre_hernes).
 composite_stat(øvre,[rindal, skole],øvre_rindal_skole).
 composite_stat(øvre,[sætrum],øvre_sætrum).
+composite_stat(øvre,[sørli, street],øvre_sørliveg). % generated 6.2
+composite_stat(øvre,[sørli, veg],øvre_sørliveg). % generated 6.1
+composite_stat(øvre,[sørli_street],øvre_sørliveg). % generated 6.0
+composite_stat(øvre,[sørliveg],øvre_sørliveg).
 composite_stat(øvre,[tvereggen],øvre_tvereggen).
 composite_stat(øya,[],øya).
 composite_stat(øya,[ungdomskole],øya_ungdomskole).
