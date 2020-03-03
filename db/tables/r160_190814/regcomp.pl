@@ -1108,6 +1108,7 @@ composite_stat(gjeset,[],gjeset).
 composite_stat(gjesetmoen,[],gjesetmoen).
 composite_stat(gjesetodden,[],gjesetodden).
 composite_stat(gjetneset,[],gjetneset).
+composite_stat(gjevilvasshytta,[],gjevilvasshytta).
 composite_stat(gjeving,[],gjeving).
 composite_stat(gjevingfeltet,[øst],gjevingfeltet_øst).
 composite_stat(gjevingåsen,[],gjevingåsen).
@@ -3076,6 +3077,7 @@ composite_stat(prestmoen,[øst],prestmoen_øst).
 composite_stat(prestrønning,[],prestrønning).
 composite_stat(prinsens,[gate, p1],prinsens_gate_p1).
 composite_stat(prinsens,[gate, p2],prinsens_gate_p2).
+composite_stat(prinsens,[gate, p3],prinsens_gate_p3).
 composite_stat(prix,[østbyen],prix_østbyen).
 composite_stat(pålsplass,[],pålsplass).
 composite_stat(raaen,[],raaen).
@@ -3846,6 +3848,7 @@ composite_stat(sterten,[],sterten).
 composite_stat(stibakken,[],stibakken).
 composite_stat(stigen,[],stigen).
 composite_stat(stigerslia,[],stigerslia).
+composite_stat(stiklestad,[],stiklestad).
 composite_stat(stiklestad,[skole],stiklestad_skole).
 composite_stat(stjern,[],stjern).
 composite_stat(stjerna,[],stjerna).
@@ -4203,6 +4206,7 @@ composite_stat(tollstad,[],tollstad).
 composite_stat(tomtebo,[],tomtebo).
 composite_stat(tonstadgrenda,[],tonstadgrenda).
 composite_stat(tonstadkrysset,[],tonstadkrysset).
+composite_stat(tonstadkrysset,[e6],tonstadkrysset_e6).
 composite_stat(toremoen,[],toremoen).
 composite_stat(torgaardssletta,[],torgaardssletta).
 composite_stat(torgard,[],torgard).
