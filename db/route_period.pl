@@ -32,4 +32,4 @@ route_period(   tt, r160_180813, date(2018,08,13),   date(2018,12,23) ).       %
 %route_period(   tt, r1601_190101, date(2019,01,01),   date(2019,06,23) ).	%% Vinter2019
 route_period(   tt, r160_190422, date(2019,04,22),   date(2019,08,09) ).       %% Vår 2019 TEST
 route_period(   tt, r160_190810, date(2019,08,10),   date(2019,12,23) ).       %% Vår 2019 TEST
-route_period(   tt, r160_190810, date(2019,12,24),   date(2020,12,23) ).       %% Vår 2020 TEST
+route_period(   tt, r160_200618, date(2020,5,24),   date(2020,12,23) ).       %% Vår 2020 TEST
