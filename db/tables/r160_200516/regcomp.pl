@@ -1480,7 +1480,6 @@ composite_stat(henrik,[ourens, veg],henrik_ourens_veg).
 composite_stat(henrik,[ourens_street],henrik_ourens_veg). % generated 2.1
 composite_stat(henrik,[ourensveg],henrik_ourens_veg). % generated 2.0
 composite_stat(hepsøy,[hurtigbåtkai],hepsøy_hurtigbåtkai).
-composite_stat(herfjord,[],herfjord).
 composite_stat(herfjordvatn,[],herfjordvatn).
 composite_stat(herlofsenløypa,[],herlofsenløypa).
 composite_stat(hermanstad,[],hermanstad).
@@ -2216,7 +2215,6 @@ composite_stat(laugagården,[],laugagården).
 composite_stat(lauglo,[],lauglo).
 composite_stat(laugsand,[],laugsand).
 composite_stat(laukholm,[],laukholm).
-composite_stat(laukvika,[],laukvika).
 composite_stat(laup,[],laup).
 composite_stat(lauvhammer,[],lauvhammer).
 composite_stat(lauvhammerhaugen,[],lauvhammerhaugen).
