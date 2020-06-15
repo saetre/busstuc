@@ -1707,7 +1707,6 @@ composite_stat(høknes,[ungdomsskole],høknes_ungdomsskole).
 composite_stat(hølonda,[samvirkelag],hølonda_samvirkelag).
 composite_stat(høstad,[],høstad).
 composite_stat(høstadkorsen,[],høstadkorsen).
-composite_stat(høsøien,[],høsøien).
 composite_stat(høsøien,[stasjon],høsøien_stasjon).
 composite_stat(høvik,[],høvik).
 composite_stat(høvringen,[],høvringen).
