@@ -1,5 +1,4 @@
 /* -*- Mode:Prolog; coding:utf-8; -*- */
-composite_stat(aakvik,[],aakvik).
 composite_stat(abelvær,[],abelvær).
 composite_stat(abelvær,[hurtigbåtkai],abelvær_hurtigbåtkai).
 composite_stat(ada,[arnfinsens, street],ada_arnfinsens_veg). % generated 2.2
@@ -1376,7 +1375,6 @@ composite_stat(haugan,[helgådal],haugan_helgådal).
 composite_stat(haugan,[kvam],haugan_kvam).
 composite_stat(haugan,[neset],haugan_neset).
 composite_stat(haugankorsen,[],haugankorsen).
-composite_stat(haugaskaret,[],haugaskaret).
 composite_stat(haugavegen,[],haugavegen).
 composite_stat(haugbjørg,[],haugbjørg).
 composite_stat(haugbotn,[],haugbotn).
@@ -1752,7 +1750,6 @@ composite_stat(ingstad,[ingstad],ingstad_ingstad).
 composite_stat(ingstadnesset,[],ingstadnesset).
 composite_stat(ingul,[],ingul).
 composite_stat(inna,[bru],inna_bru).
-composite_stat(inndalsåkeren,[],inndalsåkeren).
 composite_stat(inner,[berg],inner_berg).
 composite_stat(innervika,[],innervika).
 composite_stat(innreitan,[],innreitan).
@@ -1781,7 +1778,6 @@ composite_stat(jaktvika,[],jaktvika).
 composite_stat(jamt,[],jamt).
 composite_stat(jamtvoll,[],jamtvoll).
 composite_stat(jektvika,[],jektvika).
-composite_stat(jektvollen,[],jektvollen).
 composite_stat(jenshaugen,[],jenshaugen).
 composite_stat(jensvolden,[],jensvolden).
 composite_stat(jensvoll,[],jensvoll).
