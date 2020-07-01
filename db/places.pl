@@ -1246,7 +1246,6 @@ cmpl(gina,[kroghsvei],gina_krogs_veg).
 cmpl(gina,krog,gina_krogs_veg). 
 cmpl(gina,krogh,gina_krogs_veg). 
 cmpl(gina,kroghsv,gina_krogs_veg). 
-cmpl(gina,kroghsv,gina_krogs_veg). 
 
 cmpl(gl,['&',248,shaugen],gløshaugen). 
 cmpl(gl,shaugen,gløshaugen).  %% æøåtrouble %%Gl;haugen
