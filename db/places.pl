@@ -188,6 +188,9 @@ alias_station( berg_østre, østre_berg ). %% AtB
 alias_station( breidablikk_trikk, breidablikk ).        %% RS-141115 %% RS-151219 Try to generalize this for all "X_trikk" if X is a station ?! See alias_station2 ?
 alias_station( dv,dragvoll ).
 
+alias_station(buran, buran_1).
+alias_station(buran,buran_2).
+
 %%alias_station(gudes_gate,høgskoleringen).       %% RS-131027 Not needed according to heuristics
 
 %alias_station(grilstadvegen, skovgård).  %% RS-160212 Bør brukes bare "en vei"?
