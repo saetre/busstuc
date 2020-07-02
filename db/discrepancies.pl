@@ -5,6 +5,7 @@
 % Some predicates (like addcontext/0) are only to preserve information, no filtering..
 :-module( discrepancies, [ alias_station2/3 ] ).
 
+
 %% db/discrepancies r1601_160815 r1601_160620 
 alias_station2(16010384,engstrømbakken,ranheim_skole).
 alias_station2(16011384,engstrømbakken,ranheim_skole).
