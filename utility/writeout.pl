@@ -833,8 +833,8 @@ cwc(donotknow,['don''t know','vet ikke']).
 
 %% cwc(drink,['drink','drikk']).
 
-cwc(earliesttimes,[ 'The hours indicate the earliest passing times.',
-                    'Tidene angir tidligste passeringer av holdeplassene.']).
+cwc(earliesttimes,[ 'The hours indicate the earliest passing times. So be a little earlier to be sure you catch it',
+                    'Tidene angir tidligste passeringer av holdeplassene. Så vær litt tidligere for å være sikker at du rekker :-)']).
 
 cwc(easterday2,['2. Easter day','2. påskedag']).
 
@@ -1743,7 +1743,7 @@ printdots :-  %% TA-110204
     traceprint(1,DOTS).
 
 dotline(''):-value(smsflag,true),!.
-dotline('........................................................................').
+dotline('...............................................................................................................').
    
 
 
@@ -2185,6 +2185,7 @@ waves :-  value(dialog,1),
           !.
 
 waves :-        
+         write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'), % 77 chars
          write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'), % 77 chars
          write('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'),nl.
 

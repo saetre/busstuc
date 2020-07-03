@@ -91,7 +91,7 @@ foreign(bergsåsen).
 foreign(berkåk).
 foreign(berlevåg). 
 %% foreign(berner).   %% carl
-foreign(bessaker). 
+%foreign(bessaker). 
 foreign(bildøy).   
 foreign(billingstad). 
 foreign(biri).  
@@ -162,7 +162,7 @@ foreign(brekken).
 foreign(brekkerød). 
 foreign(brekktrøa). 
 %% foreign(brekkåsen). %% MW-121119 buss 301, %% RS-150815, buss 38
-foreign(brekstad). 
+%%foreign(brekstad). 
 foreign(bremanger).  
 foreign(bremsnes).
 foreign(brennåsen).
@@ -246,7 +246,7 @@ foreign(drøbak).
 foreign(dvergsnes). 
 foreign(dyrnes). 
 foreign(dyrvik). 
-foreign(edøy). 
+%foreign(edøy). 
 foreign(egersund). 
 foreign(egge). 
 foreign(eggemoen). 
@@ -510,7 +510,7 @@ foreign(gullhaug).
 foreign(gulset).  
 foreign(gulskogen). 
 foreign(gulsvik). 
-foreign(gutvik). 
+%foreign(gutvik). 
 foreign(gvarv). 
 foreign(gyllenborg).
 foreign(gålå). 
@@ -554,7 +554,7 @@ foreign(harestua).
 foreign(harstad).  %% \=Havstad
 foreign(hasle).   
 foreign(haslum).   %%  Bærum
-foreign(hasselvika). 
+%foreign(hasselvika). 
 foreign(hatlelia). 
 foreign(hatlestad).
 foreign(hattfjelldal). 
@@ -625,7 +625,7 @@ foreign(hillesøy).
 foreign(hillevåg).
 foreign(hinna).  %% Stvg
 foreign(hisøy). 
-foreign(hitra). 
+%foreign(hitra). 
 foreign(hjellestad). 
 foreign(hjelmeland). 
 foreign(hjelset). 
@@ -738,7 +738,7 @@ foreign(julsundet).
 foreign(justvik). 
 foreign(juvik).  
 foreign(jæren).
-foreign(jøa). 
+%foreign(jøa). 
 foreign(jølster). 
 foreign(jømna). 
 foreign(jønsberg). 
@@ -820,7 +820,7 @@ foreign(korsvoll).
 foreign(kragerø). 
 foreign(kringlebotn).
 foreign(kristiansand). 
-foreign(kristiansund). 
+%%foreign(kristiansund). %% goes boat to this location 
 foreign(krokeide). 
 foreign(krokelvdalen). 
 foreign(kroken).   
@@ -908,7 +908,7 @@ foreign(leksnes).  %% ?
 foreign(leksvik). 
 foreign(leksvika). %typo 
 foreign(lena). %% Toten 
-foreign(lensvik). foreign(lensvika). 
+%foreign(lensvik). foreign(lensvika). 
 foreign(lepsøy). 
 %foreign(ler).  %% RS-150815 Buss nr. 310/410
 foreign(lerstad). 
@@ -1064,7 +1064,7 @@ foreign(mysen).
 foreign(måløy). 
 foreign(måndalen). 
 foreign(møre). 
-foreign(møre_og_romsdal). 
+%%foreign(møre_og_romsdal). 
 foreign(mørkved).  %% (Bodø) 
 foreign(møvik).   
 
@@ -1076,7 +1076,7 @@ foreign(namdal).
 foreign(namdalen). 
 foreign(namdalseid). 
 foreign(namskogan). 
-foreign(namsos). 
+%foreign(namsos). 
 foreign(namsskogan). 
 foreign(nannestad). 
 foreign(nanset). 
@@ -1212,7 +1212,7 @@ foreign(ramberg).
 foreign(ramdal).
 foreign(ramfjord). 
 foreign(ramstein). 
-foreign(ramsøy). 
+%foreign(ramsøy). 
 foreign(rana). 
 foreign(ranavik).
 foreign(randaberg). 
@@ -1298,7 +1298,7 @@ foreign(rønvik).
 foreign(rønvika). %typo 
 foreign(røren). 
 foreign(røros). 
-foreign(rørvik). 
+%foreign(rørvik). 
 foreign(røyken). 
 foreign(røyse).  
 foreign(røyslimoen).
@@ -1336,7 +1336,7 @@ foreign(sandve).
 foreign(sandved). 
 foreign(sandvika). 
 foreign(sandviken).  %%?
-foreign(sandviksberget). 
+%foreign(sandviksberget). 
 foreign(sandvikvåg).
 foreign(sandvolden).
 foreign(sandvollan).  %%?
@@ -1555,7 +1555,7 @@ foreign(storelv).
 foreign(storelva).
 foreign(storetveit).
 foreign(storforshei). 
-foreign(storfosna). 
+%foreign(storfosna). 
 foreign(storgata).  %% \+ (Thora) Storms_street 
 foreign(storgaten). 
 foreign(storhaug). 
@@ -1606,7 +1606,7 @@ foreign(støbotn).
 foreign(støren). 
 foreign(størn). %typo 
 foreign(stårheim). 
-foreign(sula). 
+%foreign(sula). 
 foreign(suldalen). 
 foreign(sulesund).
 foreign(sulitjelma). 
@@ -1837,7 +1837,7 @@ foreign(valsøybotn).
 foreign(valsøybotten).
 foreign(valsøyfjord). 
 foreign(vang). 
-foreign(vannvikan). foreign(vanvikan). foreign(vanvika). 
+%foreign(vannvikan). foreign(vanvikan). foreign(vanvika). 
 foreign(vannvåg). 
 foreign(vanse).   
 foreign(vanvik). 

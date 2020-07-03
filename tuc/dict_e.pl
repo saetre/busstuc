@@ -740,8 +740,8 @@ synword(fare,          price).    %%
 synword(fair,          good). 
 synword(fares,         prices). 
 synword(fellow,        man).    
-synword(ferry,         boat).    %% ( rather ako boat)
-synword(ferries,       boats). 
+%synword(ferry,         boat).    %% ( rather ako boat)
+%synword(ferries,       boats). 
 synword(fine,          good).  
 synword(firsth,        first). 
 synword(fix,           repair).
