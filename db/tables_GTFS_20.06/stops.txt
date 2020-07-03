@@ -1,0 +1,91 @@
+stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon,zone_id,stop_url,location_type,parent_station,wheelchair_boarding,stop_timezone,platform_code,vehicle_type
+NSR:StopPlace:42310,,Haakon VII gate 25,,63.44021600000001,10.460587,,,1,,2,,,700.0
+NSR:StopPlace:42314,,Lade idrettsanlegg,,63.443946999999994,10.449369,,,1,,2,,,700.0
+NSR:StopPlace:42329,,Skyttervegen,,63.36099,10.350651,,,1,,2,,,700.0
+NSR:StopPlace:44014,,Casper Lundes veg,,63.367817,10.357700999999999,,,1,,2,,,700.0
+NSR:StopPlace:41742,,Trondheim S,,63.436108,10.40108,,,1,,2,,,700.0
+NSR:StopPlace:42123,,Ingemann Torps vei,,63.446236,10.442506,,,1,,2,,,700.0
+NSR:StopPlace:43460,,Olav Tryggvasons gate,,63.43330400000001,10.399878999999999,,,1,,2,,,700.0
+NSR:StopPlace:43468,,Anders Buens gate,,63.43841,10.429672,,,1,,2,,,700.0
+NSR:StopPlace:41609,,Nidarosdomen,,63.42601,10.393397,,,1,,2,,,700.0
+NSR:StopPlace:41613,,Prinsens gate,,63.43099599999999,10.392081,,,1,,2,,,700.0
+NSR:StopPlace:41620,,Hesthagen,,63.414913,10.398166,,,1,,2,,,700.0
+NSR:StopPlace:41633,,Tonstadkrysset,,63.370174,10.376716,,,1,,2,,,700.0
+NSR:StopPlace:42975,,Lyngvegen,,63.357319999999994,10.355296000000001,,,1,,2,,,700.0
+NSR:StopPlace:42013,,Saupstadsenteret,,63.367043,10.348455,,,1,,2,,,700.0
+NSR:StopPlace:43347,,Kroppanbrua,,63.39577,10.390969,,,1,,2,,,700.0
+NSR:StopPlace:42052,,Valøyvegen,,63.40865,10.398642,,,1,,2,,,700.0
+NSR:StopPlace:42660,,Studentersamfundet,,63.42256999999999,10.394852,,,1,,2,,,700.0
+NSR:StopPlace:42686,,Ladeveien,,63.443934999999996,10.435963000000001,,,1,,2,,,700.0
+NSR:StopPlace:42611,,Midteggen,,63.362347,10.357173,,,1,,2,,,700.0
+NSR:StopPlace:42627,,Strindheim 2,,63.43554,10.457692999999999,,,1,,2,,,700.0
+NSR:StopPlace:60447,,Buran,,63.436523,10.42539,,,1,,2,,,700.0
+NSR:StopPlace:43027,,Sluppen,,63.40407,10.396047,,,1,,2,,,700.0
+NSR:StopPlace:43858,,Bratsbergvegen,,63.40429,10.396708,,,1,,2,,,700.0
+NSR:StopPlace:42582,,Heimdal stasjon,,63.35174,10.357622000000001,,,1,,2,,,700.0
+NSR:StopPlace:42478,,Åsheim skole,,63.351119999999995,10.343511999999999,,,1,,2,,,700.0
+NSR:StopPlace:43789,,Bjørndalsbrua,,63.37085,10.363664,,,1,,2,,,700.0
+NSR:StopPlace:43791,,Bjørndalstoppen,,63.370569999999994,10.354992,,,1,,2,,,700.0
+NSR:StopPlace:41962,,Husebytunet,,63.369296999999996,10.345156,,,1,,2,,,700.0
+NSR:StopPlace:60253,,Dyre Halses gate,,63.43699300000001,10.41325,,,1,,2,,,700.0
+NSR:StopPlace:60257,,Lerkendal,,63.412490000000005,10.399241,,,1,,2,,,700.0
+NSR:StopPlace:60258,,Østre Lund 1,,63.350502,10.3314,,,1,,2,,,700.0
+NSR:Quay:73571,,Olav Tryggvasons gate,,63.433856999999996,10.40033,,,0,NSR:StopPlace:43460,2,,OT3,700.0
+NSR:Quay:73729,,Lerkendal,,63.412003000000006,10.399536,,,0,NSR:StopPlace:60257,2,,,700.0
+NSR:Quay:73684,,Lyngvegen,,63.357513,10.355025,,,0,NSR:StopPlace:42975,2,,,700.0
+NSR:Quay:73683,,Lyngvegen,,63.357124,10.355567,,,0,NSR:StopPlace:42975,2,,,700.0
+NSR:Quay:103404,,Sluppen,,63.40155,10.395769999999999,,,0,NSR:StopPlace:43027,2,,1,700.0
+NSR:Quay:72107,,Ingemann Torps vei,,63.44616,10.442733,,,0,NSR:StopPlace:42123,2,,,700.0
+NSR:Quay:72108,,Ingemann Torps vei,,63.44631,10.442279,,,0,NSR:StopPlace:42123,2,,,700.0
+NSR:Quay:72756,,Åsheim skole,,63.35106999999999,10.34353,,,0,NSR:StopPlace:42478,2,,,700.0
+NSR:Quay:72755,,Åsheim skole,,63.351169999999996,10.343494,,,0,NSR:StopPlace:42478,2,,,700.0
+NSR:Quay:71416,,Trondheim S,,63.435931999999994,10.401385000000001,,,0,NSR:StopPlace:41742,2,,13,700.0
+NSR:Quay:71418,,Trondheim S,,63.436028,10.400624,,,0,NSR:StopPlace:41742,2,,10,700.0
+NSR:Quay:71204,,Hesthagen,,63.415535,10.398126,,,0,NSR:StopPlace:41620,2,,,700.0
+NSR:Quay:71209,,Tonstadkrysset,,63.37039,10.37405,,,0,NSR:StopPlace:41633,2,,,700.0
+NSR:Quay:72489,,Skyttervegen,,63.360565,10.351291,,,0,NSR:StopPlace:42329,2,,,700.0
+NSR:Quay:72490,,Skyttervegen,,63.361412,10.350011,,,0,NSR:StopPlace:42329,2,,,700.0
+NSR:Quay:71174,,Nidarosdomen,,63.425877,10.3933,,,0,NSR:StopPlace:41609,2,,,700.0
+NSR:Quay:71175,,Nidarosdomen,,63.426143999999994,10.393493,,,0,NSR:StopPlace:41609,2,,,700.0
+NSR:Quay:71184,,Prinsens gate,,63.430873999999996,10.391899,,,0,NSR:StopPlace:41613,2,,P1,700.0
+NSR:Quay:71181,,Prinsens gate,,63.431194,10.392114999999999,,,0,NSR:StopPlace:41613,2,,P2,700.0
+NSR:Quay:72453,,Haakon VII gate 25,,63.439856999999996,10.461441,,,0,NSR:StopPlace:42310,2,,,700.0
+NSR:Quay:72455,,Haakon VII gate 25,,63.440575,10.459734,,,0,NSR:StopPlace:42310,2,,,700.0
+NSR:Quay:72460,,Lade idrettsanlegg,,63.443782999999996,10.449631,,,0,NSR:StopPlace:42314,2,,,700.0
+NSR:Quay:72461,,Lade idrettsanlegg,,63.444109999999995,10.449106,,,0,NSR:StopPlace:42314,2,,,700.0
+NSR:Quay:103009,,Buran,,63.436330000000005,10.42295,,,0,NSR:StopPlace:60447,2,,1,700.0
+NSR:Quay:103008,,Buran,,63.43711,10.42678,,,0,NSR:StopPlace:60447,2,,3,700.0
+NSR:Quay:71824,,Husebytunet,,63.368869999999994,10.345149000000001,,,0,NSR:StopPlace:41962,2,,,700.0
+NSR:Quay:71825,,Husebytunet,,63.368725,10.344958,,,0,NSR:StopPlace:41962,2,,,700.0
+NSR:Quay:75300,,Bratsbergvegen,,63.40521999999999,10.397464,,,0,NSR:StopPlace:43858,2,,,700.0
+NSR:Quay:75301,,Bratsbergvegen,,63.40336,10.395951,,,0,NSR:StopPlace:43858,2,,,700.0
+NSR:Quay:71912,,Saupstadsenteret,,63.366935999999995,10.34865,,,0,NSR:StopPlace:42013,2,,,700.0
+NSR:Quay:71913,,Saupstadsenteret,,63.367146,10.34826,,,0,NSR:StopPlace:42013,2,,,700.0
+NSR:Quay:71981,,Valøyvegen,,63.409447,10.399251,,,0,NSR:StopPlace:42052,2,,,700.0
+NSR:Quay:71982,,Valøyvegen,,63.407852,10.398032,,,0,NSR:StopPlace:42052,2,,,700.0
+NSR:Quay:72946,,Heimdal stasjon,,63.351673,10.356849,,,0,NSR:StopPlace:42582,2,,,700.0
+NSR:Quay:75178,,Bjørndalstoppen,,63.37056,10.353316,,,0,NSR:StopPlace:43791,2,,,700.0
+NSR:Quay:75179,,Bjørndalstoppen,,63.370582999999996,10.356669,,,0,NSR:StopPlace:43791,2,,,700.0
+NSR:Quay:75176,,Bjørndalsbrua,,63.37081,10.364235,,,0,NSR:StopPlace:43789,2,,,700.0
+NSR:Quay:75175,,Bjørndalsbrua,,63.37095600000001,10.363111,,,0,NSR:StopPlace:43789,2,,,700.0
+NSR:Quay:72955,,Heimdal stasjon,,63.35171999999999,10.357611,,,0,NSR:StopPlace:42582,2,,,700.0
+NSR:Quay:101521,,Olav Tryggvasons gate,,63.433292,10.397798,,,0,NSR:StopPlace:43460,2,,OT1,700.0
+NSR:Quay:73101,,Studentersamfundet,,63.422596,10.394623,,,0,NSR:StopPlace:42660,2,,,700.0
+NSR:Quay:73103,,Studentersamfundet,,63.422222,10.394384,,,0,NSR:StopPlace:42660,2,,,700.0
+NSR:Quay:73152,,Ladeveien,,63.444088,10.436411999999999,,,0,NSR:StopPlace:42686,2,,,700.0
+NSR:Quay:73154,,Ladeveien,,63.443782999999996,10.435514,,,0,NSR:StopPlace:42686,2,,,700.0
+NSR:Quay:102720,,Lerkendal,,63.41219,10.39896,,,0,NSR:StopPlace:60257,2,,,700.0
+NSR:Quay:102721,,Østre Lund 1,,63.35046,10.331539999999999,,,0,NSR:StopPlace:60258,2,,,700.0
+NSR:Quay:102733,,Tonstadkrysset,,63.37076,10.38226,,,0,NSR:StopPlace:41633,2,,,700.0
+NSR:Quay:102713,,Dyre Halses gate,,63.43695,10.41344,,,0,NSR:StopPlace:60253,2,,,700.0
+NSR:Quay:102714,,Dyre Halses gate,,63.43704,10.413210000000001,,,0,NSR:StopPlace:60253,2,,,700.0
+NSR:Quay:102719,,Hesthagen,,63.4168,10.39713,,,0,NSR:StopPlace:41620,2,,,700.0
+NSR:Quay:74588,,Anders Buens gate,,63.438366,10.42949,,,0,NSR:StopPlace:43468,2,,,700.0
+NSR:Quay:74587,,Anders Buens gate,,63.43846,10.429855,,,0,NSR:StopPlace:43468,2,,,700.0
+NSR:Quay:75581,,Casper Lundes veg,,63.367867000000004,10.358672,,,0,NSR:StopPlace:44014,2,,,700.0
+NSR:Quay:75580,,Casper Lundes veg,,63.36776700000001,10.356729,,,0,NSR:StopPlace:44014,2,,,700.0
+NSR:Quay:73009,,Midteggen,,63.362095,10.356621,,,0,NSR:StopPlace:42611,2,,,700.0
+NSR:Quay:73008,,Midteggen,,63.362595,10.357724000000001,,,0,NSR:StopPlace:42611,2,,,700.0
+NSR:Quay:73036,,Strindheim 2,,63.435642,10.458179,,,0,NSR:StopPlace:42627,2,,,700.0
+NSR:Quay:73038,,Strindheim 2,,63.43544,10.457207,,,0,NSR:StopPlace:42627,2,,,700.0
+NSR:Quay:74370,,Kroppanbrua,,63.3954,10.38988,,,0,NSR:StopPlace:43347,2,,,700.0

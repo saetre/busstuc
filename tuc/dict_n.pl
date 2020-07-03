@@ -14808,9 +14808,9 @@ noun2(bygrense,city). %% rough
 
 noun2(bybuss,bus). 
 
-noun2(ferge,boat).
-noun2(bat,boat). 
-noun2(båt,boat).  
+noun2(ferge,ferry).
+noun2(båt,boat). 
+noun2(bat,boat).  
 noun2(bot,boat). %% fine ?
 noun2(bæt,boat).  
 noun2(baat,boat).  
@@ -14818,9 +14818,9 @@ noun2(baat,boat).
 noun2(båtforbindelse,boat). 
 noun2(båtskyss,boat). 
 noun2(ekspressbåt,boat).
-noun2(ferje,boat). 
+noun2(ferje,ferry). 
 noun2(hurtigrute,boat).
-noun2(kystbuss,boat). 
+%noun2(kystbuss,boat). 
 noun2(skip,boat). 
 %%     noun2(skute,boat). %% NB skuter
 
@@ -15032,10 +15032,10 @@ noun2(farge,colour).
 noun2(bakgrunnsfarge,colour). %% not bus
 noun2(farve,colour).
 
-noun2(ferje,boat).
-noun2(ferge,boat).
+noun2(ferje,ferry).
+noun2(ferge,ferry).
 
-noun2(ferjerute,boat_route_plan). 
+noun2(ferjerute,ferry_route_plan). 
 noun2(båtrute,boat_route_plan). %%
 
 noun2(ferie,vacation).       %%  (not holiday). Techn. term

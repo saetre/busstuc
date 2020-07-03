@@ -621,7 +621,8 @@ streetstat(høgreina,'Høgreina',1,18,furuhaugen).
 streetstat(høgreina,'Høgreina',278,454,høgreina_øvre).
 streetstat(høgreina,'Høgreina',12,274,høgreina).
 streetstat(høgsetgrenda,'Høgsetgrenda',1,67,leirelva).
-streetstat(høgskoleringen,'Høgskoleringen',1,8,gløshaugen).
+streetstat(høgskoleringen,'Høgskoleringen',1,3,høgskoleringen).
+streetstat(høgskoleringen,'Høgskoleringen',4,8,gløshaugen).
 %streetstat(høgskole_street,'Høgskoleveien',1,12,vollabakken).     %% RS-150104 Terminated. Or Summer/Winter discrepancy?
 streetstat(høgskole_street,'Høgskoleveien',1,12,studentersamfundet).
 streetstat(høili_plass,'Høili plass',1,10,unknown).

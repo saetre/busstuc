@@ -4621,7 +4621,7 @@ ip  [] ).  %%   vi tar bussen fra risvollan kl 19. \=  vi rekker bussen fra risv
 %%%% After reachtrainthatleaves
 notabusnotmn rule bustrans:( %% AFTER nobustohell boat,plane  no tmnflag
 is  (_NotBus isa BR),
-    { dmeq([airplane,train,train_route_plan,boat],BR)}, %tram,  %% RS-20150415
+    { dmeq([airplane,train,train_route_plan],BR)}, %tram,  %% RS-20150415 %boat %% AE-20200703 
     not present _ isa clock, %% den (klokka) er 1.
     clear
 id  clear,

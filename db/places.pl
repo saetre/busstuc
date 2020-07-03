@@ -59,8 +59,8 @@
 % corr(prinsenkrysset,hovedterminalen). %% ???  SUMMER %% TA-110701
   %% sorry, gir destinasjon munkegate = Prinsenkrysset  %%
 
-corr( city_syd_e6_1, city_syd).     %% RS-150823  %% RS-190101 Just one station now...
-corr( city_syd_e6_2, city_syd).      %% RS-150823  %% RS-190101 Just one station now...
+%corr( city_syd_e6_1, city_syd).     %% RS-150823  %% RS-190101 Just one station now...
+%corr( city_syd_e6_2, city_syd).      %% RS-150823  %% RS-190101 Just one station now...
 
 %corr(d1,hovedterminalen).      %% RS-150815. Move this to lex?
 %corr(d2,hovedterminalen). 
@@ -3441,6 +3441,9 @@ isat( dronningens_gate_d2, sentrum ).
 %%isat( dronningens_gate_d3, sentrum ). 
 %%isat( dronningens_gate_d4, sentrum ). 
 
+isat(buran_1, buran).
+isat(buran_2, buran).
+
 isat(kongens_gate_k1,sentrum). %% AtB
 isat(kongens_gate_k2,sentrum). 
 
@@ -3484,8 +3487,8 @@ isat( bromstadvegen, bromstad ).
 isat( charlottenlund_kirke, charlottenlund). 
 isat( charlottenlund_nedre, charlottenlund). 
 
-isat( city_syd_e6_1, city_syd ). %% RS-130818  %% RS-190101
-isat( city_syd_e6_2, city_syd ). %% RS-130818  %% RS-190101
+%isat( city_syd_e6_1, city_syd ). %% RS-130818  %% RS-190101
+isat( city_syd_e6, city_syd ). %% RS-130818  %% RS-190101
 %% isat( city_syd_sentervegen, city_syd ). %% TA-110627  %% RS-190101 Just one station at City Syd now.
 %% isat( city_syd_østre, city_syd ).  %% TA-100901 %% City Syd Østre no longer a station. %% RS-2019.09.26
 isat( john_aae_s_veg, city_syd).   %%
@@ -3498,11 +3501,11 @@ isat( framveien,byåsen).
 isat( gartnerhallen,ikea). %%  (?)
 
 %% isat( professor_brochs_gate,gløshaugen). %% RS-170626  %% RS-190919
-isat( prestegårdsjordet,gløshaugen). %% RS-170626
-isat( gløshaugen_nord,gløshaugen). 
-
-isat( gløshaugen_nord,nth). 
-isat( gløshaugen_nord,hesthagen). 
+isat( gløshaugen,prestegårdsjordet). %% AE-20200703
+%isat( gløshaugen_nord,gløshaugen). 
+%
+%isat( gløshaugen_nord,nth). 
+%isat( gløshaugen_nord,hesthagen). 
 
 isat( gløshaugen,nth). 
 %% isat( professor_brochs_gate,nth). %% RS-170626  %% RS-190919
@@ -3649,6 +3652,11 @@ isat(voll_studentby,voll).
 isat(østre_berg,berg_østre). %% AtB  tricky
 isat(østre_rosten,city_syd).    %% Ø R must be station
 isat(øvre_flatåsveg,flatåsen). % 9,17 
+
+isat(brekstad_ferjekai, brekstad).
+isat(brekstad_hurtigbåtkai, brekstad).
+isat(brekstad_kai, brekstad).
+
 
 % ISAT   (STATION, PLACE)
 %STATION is (one, but NOT preferred, among several) stations that belong to the neighbourhood of PLACE
@@ -5782,6 +5790,10 @@ specname(øya_helsehus,'Øya Helsehus').		%RS-110926
 %%%%%%%%% synplace(tverregga,tvereggen).
 
 %% RS-160108. Use cmpl for multiword synplaces, e.g. 
+
+synplace(lensvik, lensvik_hurtigbåtkai). %% added for the boat passing lensvik %% AE 20200703
+synplace(lensvika, lensvik_hurtigbåtkai).
+
 
 synplace(easmith,e_a_smith). 
 

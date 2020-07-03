@@ -1,0 +1,3 @@
+route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_url,route_color,route_text_color
+ATB:Line:200424196781875_2_200424196781518,ATB:Authority:1,2,Strindheim- Lade- sentrum- Sau,,704,,,
+ATB:Line:200109132268964_2_200109132268628,ATB:Authority:1,2,Strindheim- Lade- sentrum- Sau,,704,,,

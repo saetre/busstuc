@@ -431,6 +431,21 @@ vehicletype(fb,airbus):-!.
 
 vehicletype( 9, nighttram ) :- value( nightbusflag, true ), !. %% NB TRONDHEIM   %% RS-141115
 vehicletype( 9, tram ) :- !. %% NB TRONDHEIM
+vehicletype( 800, boat).
+vehicletype( 805, boat).
+vehicletype( 810, boat).
+vehicletype( 830, boat).
+vehicletype( 835, boat).
+vehicletype( 980, boat).
+vehicletype( 870, ferry).
+vehicletype( 850, ferry).
+vehicletype( 855, ferry).
+vehicletype( 820, ferry).
+vehicletype( 825, ferry).
+vehicletype( 880, ferry).
+vehicletype( 860, ferry).
+vehicletype( 966, ferry).
+vehicletype( 963, ferry).
 
 vehicletype(X,nightbus) :-   nightbus(X),!.  %%% <------
    %% side effects on answer generation  
