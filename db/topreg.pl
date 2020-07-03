@@ -48,6 +48,8 @@ compilerouteaux( tt, [
 %% DEFAULT ROUTE PERIODS
 
 %default_period(tt,winter, r1601_110822).  %% 2011 Autumn
+default_period( tt, winter,  r160_190101).  %% 2016 Winter (Christmas/Spring?)
+default_period( tt, summer,  r160_190101).  %% 2016 Summer
 
 %default_period(tt,previous, r1611_140203 ).  %% 2014 Most recently period used %% RS-140616
 %default_period(tt,previous, r1601_150622 ).  %% 2015 Most recently period used
