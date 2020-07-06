@@ -459,6 +459,7 @@ vehicletype(X,bus):- exbus(X).
 
 unique_vehicle(tram,true). %%  NB Trondheim
 unique_vehicle(bus,false). %%
+unique_vehicle(ferry,false).
 
 thetram(9).   %% Only one tram.  
 
