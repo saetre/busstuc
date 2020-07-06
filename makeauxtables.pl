@@ -375,7 +375,7 @@ crerr2 :-
   nl,
   write( 'Undefined street to station references (db/regstr.pl) streetstat/5' ),nl,
     
-  set_of(D,(regstr:streetstat(_A,_B,_C1,_C2,D), \+ buslog:station(D)),Z),
+  set_of(D,(regstr:streetstat(_A,_B,_C1,_C2,D), \+ buslog:station(D), \+ places:isat(_Q,D)),Z), % Added in that if it is found as the name where stations is at then also do not print as un referenced %% AE-20200706
 
   for(member(Y,Z),(write(Y),nl)),
 
