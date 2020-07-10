@@ -96,27 +96,27 @@ corr(kongens_gate_k2,hovedterminalen).
 corr( astronomvegen, krokstien ).      %% RS-160110 Instead of trying alias_station or isat! veg med g
 
 %% corr(munkegata_m0,sentrum).  %% ad hoc sverresgt-> m0->sentrum
-corr(m0,hovedterminalen).  %% Generic central place
-corr(m0,sentrum).  %% ad hoc sverresgt-> m0->sentrum
-corr(m1,hovedterminalen). 
-corr(m2,hovedterminalen). 
-corr(m3,hovedterminalen). 
-corr(m4,hovedterminalen). 
-corr(m41,hovedterminalen).  %% SIC
-corr(m5,hovedterminalen). 
+%corr(m0,hovedterminalen).  %% Generic central place
+%corr(m0,sentrum).  %% ad hoc sverresgt-> m0->sentrum
+%corr(m1,hovedterminalen). 
+%corr(m2,hovedterminalen). 
+%corr(m3,hovedterminalen). 
+%corr(m4,hovedterminalen). 
+%corr(m41,hovedterminalen).  %% SIC
+%corr(m5,hovedterminalen). 
 
 corr(munke_street,hovedterminalen). 
 
 %%%%%% corr(munkegata_m0,hovedterminalen).  %% Atb
-corr(munkegata_m1, hovedterminalen). 
-corr(munkegata_m2, hovedterminalen). 
-%corr(munkegata_m3,hovedterminalen). 
-corr(munkegata_m4, hovedterminalen). 
-corr(munkegata_m41,hovedterminalen).  %% SIC
-corr(munkegata_m5, hovedterminalen).
+%corr(munkegata_m1, hovedterminalen). 
+%corr(munkegata_m2, hovedterminalen). 
+%%corr(munkegata_m3,hovedterminalen). 
+%corr(munkegata_m4, hovedterminalen). 
+%corr(munkegata_m41,hovedterminalen).  %% SIC
+%corr(munkegata_m5, hovedterminalen).
 
 %% old team for compatibility
-corr(munkegata_m0,hovedterminalen).  %% Generic central place
+%corr(munkegata_m0,hovedterminalen).  %% Generic central place
 %corr(munkegata_m1,hovedterminalen). 
 %corr(munkegata_m2,hovedterminalen). 
 %corr(munkegata_m3,hovedterminalen). 
@@ -135,10 +135,10 @@ corr(prinsens_gate_p2,hovedterminalen). %% RS-140102
 
 %corr(sentrum,hovedterminalen). %% RS-150815 Synplace?
 
-corr(torget,hovedterminalen).         %% SUMMER %% TA-110628 %% RS-130816 REMOVED before WINTER...
+%corr(torget,hovedterminalen).         %% SUMMER %% TA-110628 %% RS-130816 REMOVED before WINTER...
 
 corr( st_olavs_gate, hovedterminalen ). %% RS-140102 %% RS-141115 (Tram!)
-corr( olav_tryggvasons_gate, hovedterminalen ).  %% RS-120915 (Nightbus!)
+corr( olav_tryggvasons_gate_ot1, hovedterminalen ).  %% RS-120915 (Nightbus!)
 
 
 %% END HOVEDTERMINALEN == "Sentrum" %%  RS-151219 Different from: Sentrumskvartalet == sentrum !
@@ -151,13 +151,12 @@ corr( olav_tryggvasons_gate, hovedterminalen ).  %% RS-120915 (Nightbus!)
 
 
 %%% corr(brannstasjon_øst,strindheim).  %% TA-110822
-corr(lerkendal_stadion,tempe_kirke). 
+corr(lerkendal_stadion,lerkendal). 
 
 %corr(stavset_senter,stavset_senter). %% RS-160108 ??
 
-corr(studentersamfundet,studentersamfundet_2).   %% RS-140901 Ser ikke ut som om _1 finnes lenger?
+%corr(studentersamfundet,studentersamfundet_2).   %% RS-140901 Ser ikke ut som om _1 finnes lenger?
 %corr(studentersamfundet_1,studentersamfundet_2). %% RS-140901 Ser ikke ut som om _1 finnes lenger?
-
 
 
 %% ALIAS_NAME
@@ -184,7 +183,7 @@ alias_name(teamtrafikk,tt).
 %alias_station(krokstien, astronomveien ).      %% RS-160101 vei med i
 %alias_station(astronomveien, krokstien ).   %% RS-160101
 alias_station( krokstien, astronomvegen ).      %% RS-160809 veg med g
-alias_station( astronomvegen, krokstien ).   %% Doesn't work (yet?), so use corr/2 instead
+%alias_station( astronomvegen, krokstien ).   %% Doesn't work (yet?), so use corr/2 instead
 
 alias_station( berg_østre, østre_berg ). %% AtB
 alias_station( breidablikk_trikk, breidablikk ).        %% RS-141115 %% RS-151219 Try to generalize this for all "X_trikk" if X is a station ?! See alias_station2 ?
@@ -314,7 +313,7 @@ nostation(nardoskrenten).
 
 %%% nostation(nidarø).    %% Trondheim spektrum 
 % nostation(nordre_ilevollen).  
-% nostation(omkjøringsveien_nardo). %% Not in summer 
+% nostation(nardo_omkjøringsvei). %% Not in summer 
 nostation(olsborg).   %%  Trlag ???
 %% nostation(royal_garden).   
 %%  nostation(skistua). 
@@ -362,7 +361,7 @@ nostation('Øvre Alle').
 %%%%%% Conversion  Team Station names > 100822
     %%             AtB Station names  < 100823
 
-aliasteamatb(16010001,munkegata_m1,munkegata_m1). %% just 1 for safety
+aliasteamatb(16010001,prinsens_gate_p1,prinsens_gate_p1). %% just 1 for safety
 
 %% CMPL  ( FIRSTWORD, [ FOLLOWING, WORDS ], identifier ).
 
@@ -509,30 +508,30 @@ cmpl(bjarne,wist,stjørdals_street).
 cmpl(bjørndals,brua,bjørndalsbrua). 
 cmpl(bjørndals,toppen,bjørndalstoppen). 
 cmpl(blindes,hus,churchills_veg). 
-cmpl(blussuvold,skole,tyholttårnet). 
-cmpl(blussuvoll,skole,tyholttårnet). 
+cmpl(blussuvold,skole,strinda_vgs). 
+cmpl(blussuvoll,skole,strinda_vgs). 
 cmpl(boat,pier,pirbadet).
 
 
-cmpl(bothners,v,harald_bothners_veg). 
-cmpl(bothners,vei,harald_bothners_veg). 
+%cmpl(bothners,v,harald_bothners_veg). 
+%cmpl(bothners,vei,harald_bothners_veg). 
 cmpl(bragstads,[plass],o_s_bragstads_plass). 
 %%%% cmpl(brit,[grytbakks,vei],brit_grytbakks_street). %% Ad Hoc (Ny veg,ikke nr)
 cmpl(bratsberg,skole,bratsberg).   
 
 cmpl(britannia,hotell,britannia_hotell). %% Flybussen 
 
-cmpl(broch,[s,gate],professor_brochs_gate).  %%broch'sgate
+cmpl(broch,[s,gate],hesthagen).  %%broch'sgate
 cmpl(brochmannsgate,[],odd_brochmanns_street). 
 cmpl(brochmannsveg,[],odd_brochmanns_street).
 cmpl(brochmannsvei,[],odd_brochmanns_street).
 cmpl(brochmanns,gate,odd_brochmanns_street). 
 cmpl(brochmanns,veg,odd_brochmanns_street). 
 cmpl(brochmanns,vei,odd_brochmanns_street). 
-cmpl(brochs,gata,professor_brochs_gate). 
-cmpl(brochs,gate,professor_brochs_gate). 
-cmpl(brochs,gt,professor_brochs_gate). 
-cmpl(brochs,vei,professor_brochs_gate). 
+cmpl(brochs,gata,hesthagen). 
+cmpl(brochs,gate,hesthagen). 
+cmpl(brochs,gt,hesthagen). 
+cmpl(brochs,vei,hesthagen). 
 cmpl(bromstad,svingen,bromstadsvingen). 
 cmpl(brun,dalen,brundalen). 
 cmpl(brundalen,[sykeheim],brundalen_sykehjem). 
@@ -587,7 +586,7 @@ cmpl(byåsen,[v,'.',g,skole], byåsen_videregående_skole). %% nec ?
 
 
 cmpl(byåsen,[vgs,skole],   byåsen_videregående_skole). %% 
-cmpl(byåsen,videregående,  migosenteret). %% byåsen_videregående_skole). %% neib gets lower priority than byåsen skole
+cmpl(byåsen,videregående,  hallset). %% byåsen_videregående_skole). %% neib gets lower priority than byåsen skole
 cmpl(byåsen,[videregående,skole],   byåsen_videregående_skole). %%
 
 cmpl(byåsen,butikksenter,byåsen_butikksenter). 
@@ -917,9 +916,9 @@ cmpl(dybdahls,vegen,dybdahls_veg).  %%
 %cmpl(dyre,[halses,gate],nidelv_bru).  %% ? ad hoc
 %cmpl(dyre,[halses,gt],nidelv_bru).    %%
 %cmpl(dyre,halsesgate,nidelv_bru).   
-cmpl(dyre,[halses,gate],strandveien).  %% ? RS-150111. Less ad hoc?
-cmpl(dyre,[halses,gt],strandveien).    %%
-cmpl(dyre,halsesgate,strandveien).   
+cmpl(dyre,[halses,gate],buran).  %% ? RS-150111. Less ad hoc?
+cmpl(dyre,[halses,gt],buran).    %%
+cmpl(dyre,halsesgate,buran).   
 
 cmpl(dødens,dal,høyskoleringen). 
 cmpl(e,['-',verket],e_verket). %telehas'-'
@@ -949,7 +948,7 @@ cmpl(e,[c,dahls,gate],e_c_dahls_street).   %% central
 
 cmpl(e,berg,berg). 
 
-cmpl(e,[brochs,gate],professor_brochs_gate).
+cmpl(e,[brochs,gate],hesthagen).
 
 cmpl(e,kraftverket,e_verket). 
 
@@ -1117,20 +1116,20 @@ cmpl(einar,æfstisv,einar_øfstis_veg).
 cmpl(elgeseter,bru,studentersamfundet). 
 % cmpl(elgeseter,gata,elgeseter).  %% (no spell on gata)
 
-cmpl(elgeseter,gate,professor_brochs_gate). 
+cmpl(elgeseter,gate,hesthagen). 
 %% cmpl(elgeseter,gt,elgeseter). 
 %% cmpl(elgseter,[gt],elgeseter). 
 cmpl(elgseter,bru,studentersamfundet). 
 cmpl(elgsæter,bru,studentersamfundet). 
-cmpl(elgsæter,gata,professor_brochs_gate). 
-cmpl(elgsæter,gt,professor_brochs_gate). 
+cmpl(elgsæter,gata,hesthagen). 
+cmpl(elgsæter,gt,hesthagen). 
 cmpl(endeholdeplass,vestlia,vestlia_endeholdeplass). 
-cmpl(engelbrektssons,alle,olav_engelbrektssons_alle). %% AtB 
-cmpl(engelbretsons,alle,olav_engelbrektssons_alle).  %% egt/ekt
+cmpl(engelbrektssons,alle,olav_engelbrektssons_allé). %% AtB 
+cmpl(engelbretsons,alle,olav_engelbrektssons_allé).  %% egt/ekt
 cmpl(esso,motorhotell,esso_motorhotell).  %% Lazy complex
 
 cmpl(europavei,6,e6). 
-cmpl(e6,nardo,omkjøringsveien_nardo).
+cmpl(e6,nardo,nardo_omkjøringsvei).
 
 
 cmpl(erlingskakkes,gate,erling_skakkes_street). 
@@ -1206,7 +1205,7 @@ cmpl(g,[kroghsveg],gina_krogs_veg).
 cmpl(g,[kroghsvei],gina_krogs_veg). 
 cmpl(g,kroghsv,gina_krogs_veg). 
 cmpl(g,løshaugen,gløshaugen). 
-cmpl(gaden,[og,larsen],stiklestadveien). 
+cmpl(gaden,[og,larsen],strandveikaia). 
 cmpl(gaden,larsen,stjørdals_street). 
 cmpl(gaden,wist,stjørdals_street). 
 cmpl(gamle,[elvehavn],nedre_elvehavn). 
@@ -1233,7 +1232,7 @@ cmpl(gartnerhallen,[tunga],gartnerhallen).
 cmpl(landbrukssenteret,[tunga],gartnerhallen). 
 cmpl(gauldal,billag,gauldal_billag). 
 cmpl(generalwibes,v,general_wibes_street). 
-cmpl(gerhard,[schønings,skole],torget). 
+cmpl(gerhard,[schønings,skole],hovedterminalen). 
 cmpl(gildevangen,hotell,søndregate). 
 cmpl(gina,[krogh,s,veg],gina_krogs_veg). 
 cmpl(gina,[krogh,s,vei],gina_krogs_veg). 
@@ -1276,7 +1275,6 @@ cmpl(granåsen,[alpinsenter],granåsen_vm_anlegget).  %% \+ alpine though
 cmpl(granåsen,[ski,anlegg],granåsen_vm_anlegget). 
 cmpl(granåsen,[ski,arena],granåsen_vm_anlegget). 
 cmpl(granåsen,[ski,senter],granåsen_vm_anlegget). 
-cmpl(granåsen,[vm,anlegg],granåsen_vm_anlegget). 
 cmpl(granåsen,[vm,anlegg],granåsen_vm_anlegget).  %%needshash
 cmpl(granåsen,skianlegg,granåsen_vm_anlegget). 
 cmpl(granåsen,skisenter,granåsen_vm_anlegget). 
@@ -1295,56 +1293,50 @@ cmpl(gudes,[gate],gudes_gate).
 cmpl(gudes,[vei],gudes_gate). 
 cmpl(gudesgate,[],gudes_gate). 
 
-cmpl(h,[botners,v],harald_bothners_veg). 
+%cmpl(h,[botners,v],harald_bothners_veg). 
 
 cmpl(haakon,['7',gate,25],haakon_vii_gate_25). 
 cmpl(haakon,['7s',gate,25],haakon_vii_gate_25). 
 cmpl(haakon,['7s',gate],haakon_vii_gate_25). 
-cmpl(haakon,[7,g],haakon_vii_gt). 
-cmpl(haakon,[7,gate],haakon_vii_gt). 
-cmpl(haakon,[7,gate],haakon_vii_gt). 
-cmpl(haakon,[7,gt],haakon_vii_gt).  %% a. s. o. . . . 
+cmpl(haakon,[7,g],haakon_vii_gate). 
+cmpl(haakon,[7,gate],haakon_vii_gate). 
+cmpl(haakon,[7,gt],haakon_vii_gate).  %% a. s. o. . . . 
 cmpl(haakon,[7,s,gate,25],haakon_vii_gate_25). 
 cmpl(haakon,[7,s,gate],haakon_viis_street).  %% haakon7. s gate 8
 cmpl(haakon,[den,'7s',gate],haakon_vii_gate_25). 
-cmpl(haakon,[den,7,gate],haakon_vii_gt). 
-cmpl(haakon,[den,7,gt],haakon_vii_gt). 
+cmpl(haakon,[den,7,gate],haakon_vii_gate). 
+cmpl(haakon,[den,7,gt],haakon_vii_gate). 
 cmpl(haakon,[den,sjuendes,gate,25],haakon_vii_gate_25). 
-cmpl(haakon,[den,sjuendes,gate],haakon_vii_gt). 
-cmpl(haakon,[den,vii,gate],haakon_vii_gt). 
-cmpl(haakon,[den,vii,gt],haakon_vii_gt). 
-cmpl(haakon,[den,vii,s,gate],haakon_vii_gt). 
-cmpl(haakon,[gate,vii],haakon_vii_gt). 
+cmpl(haakon,[den,sjuendes,gate],haakon_vii_gate). 
+cmpl(haakon,[den,vii,gate],haakon_vii_gate). 
+cmpl(haakon,[den,vii,gt],haakon_vii_gate). 
+cmpl(haakon,[den,vii,s,gate],haakon_vii_gate). 
+cmpl(haakon,[gate,vii],haakon_vii_gate). 
 cmpl(haakon,[sjuendes,gate,25],haakon_vii_gate_25). 
-cmpl(haakon,[sjuendes,gate],haakon_vii_gt). 
-cmpl(haakon,[vii,gate],haakon_vii_gt). 
-cmpl(haakon,[vii,gt],haakon_vii_gt). 
-cmpl(haakon,[vii,s,g],haakon_vii_gt). 
-cmpl(haakon,[vii,s,gate],haakon_vii_gt). 
-cmpl(haakon,[vii,s,gate],haakon_vii_gt). 
-cmpl(haakon,[vii,s,gate],haakon_vii_gt).  %% Experiment
-cmpl(haakon,[vii,s,gt],haakon_vii_gt). 
-cmpl(haakon,[vii,s,gt],haakon_vii_gt). 
-cmpl(haakon,[vii,s,gt],haakon_vii_gt). 
-cmpl(haakon,[vii,s,vei],haakon_vii_gt). 
-cmpl(haakon,[vii,vei],haakon_vii_gt). 
-cmpl(haakon,[vii,vei],haakon_vii_gt). 
-cmpl(haakon,[viis,gate],haakon_vii_gt). 
-cmpl(haakon,sjuendes,haakon_vii_gt). 
-cmpl(haakon,viigt,haakon_vii_gt). 
-cmpl(haakon7,gate,haakon_vii_gt). 
+cmpl(haakon,[sjuendes,gate],haakon_vii_gate). 
+cmpl(haakon,[vii,gate],haakon_vii_gate). 
+cmpl(haakon,[vii,gt],haakon_vii_gate). 
+cmpl(haakon,[vii,s,g],haakon_vii_gate). 
+cmpl(haakon,[vii,s,gate],haakon_vii_gate). 
+cmpl(haakon,[vii,s,gt],haakon_vii_gate). 
+cmpl(haakon,[vii,s,vei],haakon_vii_gate). 
+cmpl(haakon,[vii,vei],haakon_vii_gate). 
+cmpl(haakon,[viis,gate],haakon_vii_gate). 
+cmpl(haakon,sjuendes,haakon_vii_gate). 
+cmpl(haakon,viigt,haakon_vii_gate). 
+cmpl(haakon7,gate,haakon_vii_gate). 
 cmpl(haakon7gt,25,haakon_vii_gate_25). 
 cmpl(haakonvii,[gate],haakon_vii_gate_25). 
-cmpl(haakonvii,[s,gate],haakon_vii_gt). 
+cmpl(haakonvii,[s,gate],haakon_vii_gate). 
 cmpl(haakonviigt,25,haakon_vii_gate_25). 
 
 cmpl(hallfred,[h,veg],hallfred_høyems_vei). 
 cmpl(hallfred,[høyems,veg],hallfred_høyems_vei).  %%vei
 cmpl(hallfredhøyems,vei,hallfred_høyems_vei). 
 cmpl(hallgrim,[høyems,vei],hallfred_høyems_vei). 
-cmpl(hallset,[videregående,skole],søndre_hallset).  %% RS-150104. Discrepencies: 1 eller 2 l'er: søndre_halset 
+cmpl(hallset,[videregående,skole],hallset).  %% RS-150104. Discrepencies: 1 eller 2 l'er: søndre_halset 
 cmpl(hallset,kirke,hallset).  %%???
-cmpl(hallset,skole,søndre_hallset).  %%Østrehallsetvangen8
+cmpl(hallset,skole,hallset).  %%Østrehallsetvangen8
 cmpl(hallstein,gård,halstein_gård). 
 cmpl(hallstein,gården,halstein_gård). 
 cmpl(halset,kirke,migosenteret). 
@@ -1358,9 +1350,9 @@ cmpl(hansfinnes,gt,hans_finnes_street).
 cmpl(hanskemakergata,[],hanskemakerbakken). %% TA-101013
 cmpl(hanskemaker,bakken,hanskemakerbakken). 
 cmpl(hanskemakker,bakken,hanskemakerbakken). 
-cmpl(harald,[bothners,vei],harald_bothners_veg). 
-cmpl(harald,bothnersvei,harald_bothners_veg). 
-cmpl(harald,[botners,vei],harald_bothners_veg). 
+%cmpl(harald,[bothners,vei],harald_bothners_veg). 
+%cmpl(harald,bothnersvei,harald_bothners_veg). 
+%cmpl(harald,[botners,vei],harald_bothners_veg). 
 cmpl(harald,[høyems,vei],hallfred_høyems_vei). 
 cmpl(harald,[ourens,vei],henrik_ourens_vei). 
 cmpl(harald,hårfagres,harald_hårfagres_street). 
@@ -1406,13 +1398,13 @@ cmpl(henrikourens,vei,henrik_ourens_vei).
 cmpl(hermankrags,vei,herman_krags_street). 
 cmpl(hest,sjøen,hestsjøen). 
 cmpl(hist,ahs,gildheim). 
-cmpl(hist,aitel,torget).        %%
+cmpl(hist,aitel,hovedterminalen).        %%
 cmpl(hist,alt,rotvoll_alle).    %% AtB
 cmpl(hist,alu,rotvoll_nedre).   %% Avdelingfor Lærerutdanning
 cmpl(hist,ammt,gartnerhallen).  %%
 cmpl(hist,asp,rotvoll_nedre).   %%
 cmpl(hist,rotvoll,rotvoll_nedre). 
-cmpl(hist,tekn,torget).  %%
+cmpl(hist,tekn,hovedterminalen).  %%
 cmpl(hist,tøh,østre_berg).  %%
 cmpl(hoeggen,kirke,sollia). 
 cmpl(holtermanns,gate,holtermannsveien). 
@@ -1509,10 +1501,10 @@ cmpl(it,bygget,itbygget).
 cmpl(ivar,[lykkes,vei,1],melkekartongen). 
 cmpl(ivar,[lykkesvei,1],melkekartongen). 
 
-cmpl(j,[aaesvei],john_aae_s_veg). 
-cmpl(j,[aaes,gate],john_aae_s_veg). 
-cmpl(j,[aaes,v],john_aae_s_veg). 
-cmpl(j,[aaes,vei],john_aae_s_veg). 
+%cmpl(j,[aaesvei],john_aae_s_veg). 
+%cmpl(j,[aaes,gate],john_aae_s_veg). 
+%cmpl(j,[aaes,v],john_aae_s_veg). 
+%cmpl(j,[aaes,vei],john_aae_s_veg). 
 cmpl(j,[b,lysholmersv],jørgen_b_lysholms_vei). 
 cmpl(j,[b,lysholms,vei],jørgen_b_lysholms_vei). 
 cmpl(j,[b,lysholmsv],jørgen_b_lysholms_vei). 
@@ -1579,7 +1571,7 @@ cmpl(jernbanestasjonen,[holdeplass,10],ts).
 cmpl(jo,[aalmos,gate],o_j_aalmos_street).  %% jo noisew
 cmpl(jo,[aalmos,veg],o_j_aalmos_street).  %%
 cmpl(jo,[aalmos,vei],o_j_aalmos_street).  %%
-cmpl(johan,[aaes,v],john_aae_s_veg). 
+%cmpl(johan,[aaes,v],john_aae_s_veg). 
 cmpl(johan,[falkberges,vei],johan_falkbergets_veg). 
 cmpl(johan,[falkbergets,veg],johan_falkbergets_veg).  %%preferthestationforthestreet
 cmpl(johan,[kroglunds,vei], johan_p_kroglunds_veg). 
@@ -1593,28 +1585,28 @@ cmpl(johan,falkbergsveien,johan_falkbergets_veg).
 cmpl(johanfalkbergets,veg,johan_falkbergets_veg). 
 cmpl(johanfalkbergets,vei,johan_falkbergets_veg). 
 cmpl(johannes,[minsaa,s,veg],johannes_minsaas_veg).  %%'JohannesMinsaa`sveg'
-cmpl(john,[aae,s,veg],john_aae_s_veg). 
-cmpl(john,[aae,s,veg],john_aae_s_veg). 
-cmpl(john,[aae,s,vei],john_aae_s_veg).  %%(mapindex)
-cmpl(john,[aaes,veg],john_aae_s_veg). 
-cmpl(john,[aaesv],john_aae_s_veg).  %%(map)
-cmpl(john,[aaesvei],john_aae_s_veg). 
-cmpl(john,[aas,v],john_aae_s_veg). 
-cmpl(john,[aas,veg],john_aae_s_veg). 
-cmpl(john,[aas,vei],john_aae_s_veg). 
-cmpl(john,[aasv],john_aae_s_veg). 
-cmpl(john,[aasveg],john_aae_s_veg). 
-cmpl(john,[aasvei],john_aae_s_veg).  %%(mapindex)
+%cmpl(john,[aae,s,veg],john_aae_s_veg). 
+%cmpl(john,[aae,s,veg],john_aae_s_veg). 
+%cmpl(john,[aae,s,vei],john_aae_s_veg).  %%(mapindex)
+%cmpl(john,[aaes,veg],john_aae_s_veg). 
+%cmpl(john,[aaesv],john_aae_s_veg).  %%(map)
+%cmpl(john,[aaesvei],john_aae_s_veg). 
+%cmpl(john,[aas,v],john_aae_s_veg). 
+%cmpl(john,[aas,veg],john_aae_s_veg). 
+%cmpl(john,[aas,vei],john_aae_s_veg). 
+%cmpl(john,[aasv],john_aae_s_veg). 
+%cmpl(john,[aasveg],john_aae_s_veg). 
+%cmpl(john,[aasvei],john_aae_s_veg).  %%(mapindex)
 cmpl(john,[p,kroglunds,veg], johan_p_kroglunds_veg). 
 cmpl(john,[p,kroglundsvei], johan_p_kroglunds_veg). 
-cmpl(john,[åes,vei],john_aae_s_veg). 
-cmpl(john,[åsvei],john_aae_s_veg). 
-cmpl(john,aasensvei,john_aae_s_veg). 
+%cmpl(john,[åes,vei],john_aae_s_veg). 
+%cmpl(john,[åsvei],john_aae_s_veg). 
+%cmpl(john,aasensvei,john_aae_s_veg). 
 cmpl(johnssons,vei,karl_jonssons_veg). %% k_jonssons_vei -> karl_jonssons_vei 
-cmpl(jon,[aaens,vei],john_aae_s_veg). 
-cmpl(jon,[aaes,vei],john_aae_s_veg). 
-cmpl(jon,[aaesgt],john_aae_s_veg). 
-cmpl(jon,[aas,vei],john_aae_s_veg). 
+%cmpl(jon,[aaens,vei],john_aae_s_veg). 
+%cmpl(jon,[aaes,vei],john_aae_s_veg). 
+%cmpl(jon,[aaesgt],john_aae_s_veg). 
+%cmpl(jon,[aas,vei],john_aae_s_veg). 
 cmpl(jonssons,vei,karl_jonssons_veg). 
 cmpl(jonsvann,vei,jonsvanns_street).  %%problem
 cmpl(jonsvanns,vei,jonsvanns_street). 
@@ -1642,9 +1634,9 @@ cmpl(k,[jonsons,veg],karl_jonssons_veg).
 cmpl(k,[o,thornæs,veg],k_o_thornæs_vei). 
 cmpl(k,[o,thornæs_vei],k_o_thornæs_vei). 
 cmpl(k,[o,thornæs_veieg],k_o_thornæs_vei). 
-cmpl(k,[v,t],kvt). 
+cmpl(k,[v,t],østre_rosten). 
 cmpl(k,attem,kattem).  %% ?
-cmpl(kalvskinnet,skole,prinsen_kinosenter).
+cmpl(kalvskinnet,skole,nidarosdomen).
 cmpl(kaptein,roosen,kaptein_roosens_street). 
 cmpl(kaptein,roosens,kaptein_roosens_street). 
 
@@ -1681,13 +1673,13 @@ cmpl(kbs,senter,kbs_senteret).
 cmpl(kbs,senteret,kbs_senteret). 
 cmpl(kbs,sentret,kbs_senteret). 
 cmpl(kiellands,gate,alexander_kiellands_street). 
-cmpl(kino,[på,nova],nova_kinosenter). 
-cmpl(kino,nova,nova_kinosenter). 
-cmpl(kinoene,[i,prinsengata],prinsen_kinosenter). 
-cmpl(kinoene,[i,prinsengate],prinsen_kinosenter). 
-cmpl(kinoene,[i,prinsens,gate],prinsen_kinosenter). 
-cmpl(kinoene,[i,prinsensgate],prinsen_kinosenter). 
-cmpl(kinosenteret,prinsen,prinsen_kinosenter). 
+cmpl(kino,[på,nova],olav_tryggvasons_gate_ot2). 
+cmpl(kino,nova,olav_tryggvasons_gate_ot2). 
+cmpl(kinoene,[i,prinsengata],nidarosdomen). 
+cmpl(kinoene,[i,prinsengate],nidarosdomen). 
+cmpl(kinoene,[i,prinsens,gate],nidarosdomen). 
+cmpl(kinoene,[i,prinsensgate],nidarosdomen). 
+cmpl(kinosenteret,prinsen,nidarosdomen). 
 cmpl(kjøpe,[senter],kjøpesenter).  %%(KBS)kjøpesenter
 cmpl(kl,bu,klæbu).  %%kl'bu
 cmpl(klæbu,[ruta],klæburuten). 
@@ -1703,7 +1695,7 @@ cmpl(ko,thornsensvei,k_o_thornæs_vei).
 cmpl(koie,flata,koieflata).  
 cmpl(kolstad,['/',heimdal],kolstad).  %% names on bus 4
 cmpl(kolstad,dalen,kolstaddalen). 
-cmpl(kolstad,senter,torplassen). 
+cmpl(kolstad,senter,casper_lundes_veg). 
 cmpl(kolstad,skole,saupstadsenteret). 
 cmpl(kolstad,toppen,kolstadhaugen). 
 cmpl(kolstad,tunet,kolstadtunet). 
@@ -1766,7 +1758,7 @@ cmpl(kong,[øysteins,veg],kong_øysteins_veg).
 cmpl(kongøysteins,v,kong_øysteins_veg). 
 cmpl(kongøysteins,veg,kong_øysteins_veg).  %%
 cmpl(kongøysteins,vei,kong_øysteins_veg).  %%
-cmpl(korsvika,alle,lade_kirke).    
+cmpl(korsvika,alle,lade_gård).    
 % cmpl(kr,[himmel,farts,dag],ascension_day).  %% -> dictn
 cmpl(kr,marka,kroppanmarka). 
 cmpl(kr,sand,kristiansand). 
@@ -1774,7 +1766,7 @@ cmpl(kr,sund,kristiansund).
 cmpl(kretsfengselet,tunga,tunga_kretsfengsel). 
 % cmpl(kristelig,[himmelfarts,dag],ascension_day).  %%-> dictn
 % cmpl(kristelig,himmelfartsdag,ascension_day). %%-> dictn
-cmpl(kristen,[videregående,skole],kvt). 
+cmpl(kristen,[videregående,skole],østre_rosten). 
 % cmpl(kristi,[himmelfarts,dag],ascension_day).  %%-> dictn
 % cmpl(kristi,himmelfart,ascension_day).  %%-> dictn
 % cmpl(kristi,himmelfartsdag,ascension_day).  %%-> dictn
@@ -1795,24 +1787,24 @@ cmpl(kroppan,bru,kroppanbrua). %% AtB fall 2011 %% TA-110809
 
 cmpl(kroppans,bru,kroppan_bru). 
 cmpl(kvilhaugen,gård,kvilhaugen). 
-cmpl(kvt,[city,syd],kvt). 
-cmpl(kvt,vgs,kvt). 
+cmpl(kvt,[city,syd],østre_rosten). 
+cmpl(kvt,vgs,østre_rosten). 
 
 %% cmpl(lade,[arena],haakon_vii_gate_9). %cmpl(lade,[arena],haakon_vii_gate_25).  %% Navnebytte?  %% RS-141122 
 cmpl(lade,[arena],lade_arena).
-cmpl(lade,80,lade_alle_80). 
+cmpl(lade,80,lade_allé_80). 
 %%%%%% cmpl(lade,[all,e],lade_alle_80). 
 cmpl(lade,[jarlen,vgs],ladejarlen_v_g_s). 
-cmpl(lade,[v,g,skole],lade_kirke). 
-cmpl(lade,[vg,skole],lade_kirke). 
-cmpl(lade,[videregående],lade_kirke). 
+cmpl(lade,[v,g,skole],lade_gård). 
+cmpl(lade,[vg,skole],lade_gård). 
+cmpl(lade,[videregående],lade_gård). 
 
 %% cmpl(lade,alle,lade_alle_80).  %% By request from M. Erichsen,27. 2. 2002
 cmpl(lade,alle,lade_alle). %% AtB      
 
 
 
-cmpl(lade,alle80,lade_alle_80). %% AtB 
+cmpl(lade,alle80,lade_allé_80). %% AtB 
 cmpl(lade,city,lade_idrettsanlegg). 
 cmpl(lade,senter,lade_idrettsanlegg).
 cmpl(lade,torg,lade_idrettsanlegg). %% ? 
@@ -1820,11 +1812,11 @@ cmpl(lade,gaard,lade_gård).
 cmpl(lade,går,lade_gård).  
 cmpl(lade,hammeren,ladehammeren). 
 cmpl(lade,jarlen,ladejarlen_v_g_s). 
-cmpl(lade,kapell,lade_kirke). 
+cmpl(lade,kapell,ingemann_torps_vei). 
 cmpl(lade,ntnu,ntnu_lade). 
 cmpl(lade,obs,lade_idrettsanlegg). 
-cmpl(lade,skole,lade_kirke). 
-cmpl(lade,teknopark,stiklestadveien). 
+cmpl(lade,skole,krutthusbakken). 
+cmpl(lade,teknopark,ladeveien). 
 cmpl(lade,universitet,ntnu_lade). 
 cmpl(lade,university,ntnu_lade). 
 cmpl(lade,vei,lade_alle). 
@@ -1851,7 +1843,7 @@ cmpl(leangen,[trav,bane],travbanen).
 cmpl(leangen,hallen,leangenhallen).
 cmpl(leangen,idrettshall,bromstadsvingen). 
 cmpl(leangen,ishall,bromstadsvingen). 
-cmpl(leangen,postkontor,leangen_alle). %% AtB 
+cmpl(leangen,postkontor,leangen_allé). %% AtB 
 cmpl(leangen,skøytebane,bromstadsvingen). 
 cmpl(leangen,stadion,bromstadsvingen). 
 cmpl(leangen,travbane,travbanen). 
@@ -1898,7 +1890,7 @@ cmpl(lillebyskole,[],'Lilleby skole').
 cmpl(loholt,alle,loholt_alle). 
 cmpl(louisenlyst,gård,louisenlyst). 
 cmpl(luftkrigs,skolen,luftkrigsskolen). 
-cmpl(lundamo,auto,harald_hårfagres_gate). 
+cmpl(lundamo,auto,løvaasveien). 
 cmpl(lundå,sen,lundåsen_n).  %% ?
 
 cmpl(lundåsen,[n],lundåsen_n). 
@@ -1915,18 +1907,18 @@ cmpl(løkken,verk,løkken).
 cmpl(m,[0,holt],moholt). %% TA-100824   Tricky
 
 cmpl(m,0,hovedterminalen). 
-cmpl(m,[1],munkegata_m1). 
-cmpl(m,[2],munkegata_m2). 
-cmpl(m,[3],munkegata_m3). 
-cmpl(m,[4],munkegata_m4). 
-cmpl(m,[5],munkegata_m5). 
+cmpl(m,[1],hovedterminalen). 
+cmpl(m,[2],hovedterminalen). 
+cmpl(m,[3],hovedterminalen). 
+cmpl(m,[4],hovedterminalen). 
+cmpl(m,[5],hovedterminalen). 
 cmpl(m,[berrføtts,vei],magnus_berrføtts_veg). %% NB changed Hastus <- magnus_berføttsvei
-cmpl(m,[gt],munkegata). 
+cmpl(m,[gt],hovedterminalen). 
 cmpl(m,[kregnes,veg],martin_kregnes_veg). 
 cmpl(m,berføttsvei,magnus_berrføtts_veg). 
 cmpl(m,thranesvei,marcus_thranes_vei).  %%Nøddef
 cmpl(m,tranesgt,marcus_thranes_vei).  %%adhoc
-cmpl(m,unkegt,munkegata). 
+cmpl(m,unkegt,hovedterminalen). 
 cmpl(magnus,[barfots,veg],magnus_berrføtts_veg). 
 cmpl(magnus,[berrfots,veg],magnus_berrføtts_veg). 
 cmpl(magnus,[berrføtts,veg],magnus_berrføtts_veg). 
@@ -1988,11 +1980,11 @@ cmpl(midtby,n,sentrum).  %%(ikkemidtbyen!)
 cmpl(midtbyen,['/',sentrum],sentrum). 
 cmpl(midtre,[gauldal,billag],gauldal_billag). 
 cmpl(midtre,[gauldal],midtre_gauldal). 
-cmpl(migo,senteret,migosenteret).  %%Lazy
-cmpl(mnk,gata,munkegata). 
-cmpl(mnk,gate,munkegata). 
-cmpl(mnk,gaten,munkegata). 
-cmpl(mnk,gt,munkegata). 
+cmpl(migo,senteret,hallset).  %%Lazy
+cmpl(mnk,gata,hovedterminalen). 
+cmpl(mnk,gate,hovedterminalen). 
+cmpl(mnk,gaten,hovedterminalen). 
+cmpl(mnk,gt,hovedterminalen). 
 cmpl(mo,[holt,student,by],moholt_studentby). 
 cmpl(mo,[holt,studentby],moholt_studentby). 
 cmpl(mo,[i,rana],mo_i_rana). 
@@ -2026,47 +2018,16 @@ cmpl(motor,trade,'Motor Trade'). %% (Bil verksted) Nardo
 cmpl(monsens,gt,chr_monsensgt). 
 cmpl(morsets,vei,peder_morsets_vei). 
 cmpl(munk,[voll,gård],munkvoll_gård). 
-cmpl(munk,gt,munkegata). 
-cmpl(munke,gata,munkegata).  %% Touchy
-cmpl(munke,gate,munkegata). 
-cmpl(munke,gaten,munkegata).  %% Street Sentrum-> m0
-cmpl(munke,gt,munkegata). 
-cmpl(munkega,ta,munkegata). 
+cmpl(munk,gt,hovedterminalen). 
+cmpl(munke,gata,hovedterminalen).  %% Touchy
+cmpl(munke,gate,hovedterminalen). 
+cmpl(munke,gaten,hovedterminalen).  %% Street Sentrum-> m0
+cmpl(munke,gt,hovedterminalen). 
+cmpl(munkega,ta,hovedterminalen). 
 
-cmpl(munkegata,[holdeplass,m1],munkegata_m1).
-cmpl(munkegata,[holdeplass,m2],munkegata_m2). 
-cmpl(munkegata,[holdeplass,m3],munkegata_m3). 
-cmpl(munkegata,[holdeplass,m4],munkegata_m4).
-cmpl(munkegata,[holdeplass,m4],munkegata_m4). 
-cmpl(munkegata,[holdeplass,m5],munkegata_m5). 
-cmpl(munkegata,[holdeplass,m,41],munkegata_m41).
-
-cmpl(munkegata,[holdeplass,m,1],munkegata_m1). %% TA-101022 
-cmpl(munkegata,[holdeplass,m,2],munkegata_m2). 
-cmpl(munkegata,[holdeplass,m,3],munkegata_m3). 
-cmpl(munkegata,[holdeplass,m,4],munkegata_m4). 
-cmpl(munkegata,[holdeplass,m,5],munkegata_m5). 
-cmpl(munkegata,[holdeplass,m,41],munkegata_m41). 
-
-cmpl(munkegata,[m,1],munkegata_m1). 
-cmpl(munkegata,[m,2],munkegata_m2). 
-cmpl(munkegata,[m,3],munkegata_m3). 
-cmpl(munkegata,[m,4],munkegata_m4). 
-cmpl(munkegata,[m,5],munkegata_m5). 
-
-cmpl(munkegata,[m1],munkegata_m1). 
-cmpl(munkegata,[m2],munkegata_m2). 
-cmpl(munkegata,[m3],munkegata_m3). 
-cmpl(munkegata,[m4],munkegata_m4). 
-cmpl(munkegata,[m5],munkegata_m5). 
-cmpl(munkegatam,[1],munkegata_m1). 
-cmpl(munkegatam,[2],munkegata_m2).
-cmpl(munkegatam,[3],munkegata_m3).
-cmpl(munkegatam,[4],munkegata_m4).
-cmpl(munkegatam,[5],munkegata_m5).
 cmpl(munkvoll,går,munkvoll_gård). 
 cmpl(munkvoll,gård,munkvoll_gård). 
-cmpl(munkvoll,sykehjem,migosenteret).  %% selsbakkveien 28
+cmpl(munkvoll,sykehjem,hallset).  %% selsbakkveien 28
 cmpl(music,[museum],ringve_museum). 
 cmpl(musikk,[museum],ringve_museum). 
 cmpl(møllenberg,nedre,nedre_møllenberg). 
@@ -2151,7 +2112,7 @@ cmpl(nidarvoll,sykehjem,nygård).
 cmpl(nidarø,hallen,trondheim_spektrum). 
 cmpl(nidelv,[hallen],nidelvhallen). 
 cmpl(nidelven,bru,nidelv_bru). 
-cmpl(nidelven,skole,prinsen_kinosenter).
+cmpl(nidelven,skole,nidarosdomen).
 cmpl(niels,[abels,gt],abels_street). 
 
 cmpl(nord,california,california). %% rough ad hoc
@@ -2174,18 +2135,18 @@ cmpl(norges,[tekniske,høgskole],nth).
 cmpl(norges,[tekniske,universitet],nth). 
 
 
-cmpl(nova,kino,nova_kinosenter). 
-cmpl(nov,kino,nova_kinosenter). 
-cmpl(nov,kinosenter,nova_kinosenter). %% avoid november %% TA-101012
-cmpl(noa,kino,nova_kinosenter). 
-cmpl(noa,kinosenter,nova_kinosenter). 
+cmpl(nova,kino,olav_tryggvasons_gate_ot2). 
+cmpl(nov,kino,olav_tryggvasons_gate_ot2). 
+cmpl(nov,kinosenter,olav_tryggvasons_gate_ot2). %% avoid november %% TA-101012
+cmpl(noa,kino,olav_tryggvasons_gate_ot2). 
+cmpl(noa,kinosenter,olav_tryggvasons_gate_ot2). 
 
 cmpl(norske,meierier,norske_meierier). %% no longer station %% TA-110705
 
-cmpl(kino,novasenter,nova_kinosenter).  %% :-) 
+cmpl(kino,novasenter,olav_tryggvasons_gate_ot2).  %% :-) 
 
 cmpl(nr1,[],gråkallbanen). 
-cmpl(nrk,[på,tyholt],tyholttårnet). 
+cmpl(nrk,[på,tyholt],strinda_vgs). 
 cmpl(nrk,tyholt,nrk). 
 cmpl(nsb,gods,terminalen). 
 
@@ -2238,10 +2199,10 @@ cmpl(næringsakademiet,trondheim,bakkegata). %%
 
 cmpl(o,[almos,v],o_j_aalmos_street). 
 cmpl(o,[almos,vei],o_j_aalmos_street). 
-cmpl(o,[engebr,alle],olav_engelbrektssons_alle). 
+cmpl(o,[engebr,alle],olav_engelbrektssons_allé). 
 cmpl(o,[j,almaasvei],o_j_aalmos_street). 
 cmpl(o,[nygards,street],olav_nygards_street). 
-cmpl(o,[trygvassons,gt],olav_tryggvasons_gate). %% changed from olav_trygvassons_gt 
+cmpl(o,[trygvassons,gt],olav_tryggvasons_gate_ot1). %% changed from olav_trygvassons_gt 
 %% cmpl(obs,'!',lade_idrettsanlegg). %% confuse %% TA-110116
 cmpl(obs,['!',lade],lade_idrettsanlegg). 
 cmpl(obs,lade,lade_idrettsanlegg).  %% TA-100914
@@ -2268,17 +2229,17 @@ cmpl(ola,[sætres,veg],ola_setroms_vei).
 cmpl(ola,[sætres,veg],ola_setroms_vei). 
 cmpl(ola,[sætrums,veg],ola_setroms_vei).  %% (disc>1)
 cmpl(ola,setrumsv,ola_setroms_vei). 
-cmpl(olaf,[tryggvassonsgate],olav_tryggvasons_gate).  %% local mis
+cmpl(olaf,[tryggvassonsgate],olav_tryggvasons_gate_ot1).  %% local mis
 
 cmpl(olafbulls,veg,olaf_bulls_vei).
 cmpl(olav,[bulls,v],olaf_bulls_vei).    %% (ErroronMap)
 cmpl(olav,[bulls,vei],olaf_bulls_vei).  %% (ErroronMap)
-cmpl(olav,[engel,brektssons,alle],olav_engelbrektssons_alle). 
-cmpl(olav,[engelbregtsens,alle],olav_engelbrektssons_alle). 
-cmpl(olav,[engelbregtsons,alle],olav_engelbrektssons_alle). 
-cmpl(olav,[engelbrektsons,alle],olav_engelbrektssons_alle). 
+cmpl(olav,[engel,brektssons,alle],olav_engelbrektssons_allé). 
+cmpl(olav,[engelbregtsens,alle],olav_engelbrektssons_allé). 
+cmpl(olav,[engelbregtsons,alle],olav_engelbrektssons_allé). 
+cmpl(olav,[engelbrektsons,alle],olav_engelbrektssons_allé). 
 
-cmpl(olav,[engelbrektsons,gate],olav_engelbrektssons_alle). 
+cmpl(olav,[engelbrektsons,gate],olav_engelbrektssons_allé). 
 /*
 cmpl(olav,[engelbrektssons,gate],olav_engelbrektssons_alle).  %% Problem spot
 cmpl(olav,[engelbrektssons,v],   olav_engelbrektssons_alle).  %% Problem spot
@@ -2286,47 +2247,47 @@ cmpl(olav,[engelbrektssons,veg],olav_engelbrektssons_alle).
 cmpl(olav,[engelbrektssons,vei],olav_engelbrektssons_alle). 
 */
 
-cmpl(olav,[engelbretssons,alle],olav_engelbrektssons_alle). 
-cmpl(olav,[tryggvas,onsgate],olav_tryggvasons_gate). 
-cmpl(olav,[tryggvasons,gate],olav_tryggvasons_gate). 
-cmpl(olav,engebrektsgate,olav_engelbrektssons_alle). 
-cmpl(olav,engelbregtsalle,olav_engelbrektssons_alle). 
-cmpl(olav,engelbrektssonsgate,olav_engelbrektssons_alle). 
+cmpl(olav,[engelbretssons,alle],olav_engelbrektssons_allé). 
+cmpl(olav,[tryggvas,onsgate],olav_tryggvasons_gate_ot1). 
+cmpl(olav,[tryggvasons,gate],olav_tryggvasons_gate_ot1). 
+cmpl(olav,engebrektsgate,olav_engelbrektssons_allé). 
+cmpl(olav,engelbregtsalle,olav_engelbrektssons_allé). 
+cmpl(olav,engelbrektssonsgate,olav_engelbrektssons_allé). 
 cmpl(olav,kyrres,olav_kyrres_street). 
 cmpl(olav,nygaardsvei,olav_nygårds_vei). 
 cmpl(olav,nygård,olav_nygårds_vei).
-cmpl(olav,[t,gate],olav_tryggvasons_gate). 
-cmpl(olav,tryggvasons,olav_tryggvasons_gate). 
-cmpl(olav,tryggvasonsgt,olav_tryggvasons_gate). 
-cmpl(olav,trygvasonsgate,olav_tryggvasons_gate). 
-cmpl(olav,trygvasonsgt,olav_tryggvasons_gate). 
-cmpl(olavengelbreksons,alle,olav_engelbrektssons_alle). 
+cmpl(olav,[t,gate],olav_tryggvasons_gate_ot1). 
+cmpl(olav,tryggvasons,olav_tryggvasons_gate_ot1). 
+cmpl(olav,tryggvasonsgt,olav_tryggvasons_gate_ot1). 
+cmpl(olav,trygvasonsgate,olav_tryggvasons_gate_ot1). 
+cmpl(olav,trygvasonsgt,olav_tryggvasons_gate_ot1). 
+cmpl(olavengelbreksons,alle,olav_engelbrektssons_allé). 
 cmpl(olavnygårds,vei,olav_nygårds_vei).
 %% cmpl(olavs,gate,st_olavs_gate).  %% //confuse //irrelevant street
 cmpl(olavs,gt,st_olavs_gate).    %%
 cmpl(olavs,kvartalet,olavskvartalet). 
 cmpl(olavs,hospital,st_olavs_hospital). 
-cmpl(olavtryggvasons,gate,olav_tryggvasons_gate). 
+cmpl(olavtryggvasons,gate,olav_tryggvasons_gate_ot1). 
 
 
 
-cmpl(olavtrygvasonsgate,[],olav_tryggvasons_gate). 
+cmpl(olavtrygvasonsgate,[],olav_tryggvasons_gate_ot1). 
 
-cmpl(olavtryggvasons,gt,olav_tryggvasons_gate). 
+cmpl(olavtryggvasons,gt,olav_tryggvasons_gate_ot1). 
 cmpl(older,dalen,olderdalen).  
 cmpl(olderdalen,ranheim,olderdalen). 
 %%%% cmpl(ole,[aasveds,veg],ole_aasveds_street).  %% Ad Hoc (Ny veg,ikke nr)
-cmpl(ole,[engelbrektssons,alle],olav_engelbrektssons_alle). 
+cmpl(ole,[engelbrektssons,alle],olav_engelbrektssons_allé). 
 cmpl(ole,bullsve,ole_bulls_street). 
 cmpl(ole,nordgårdsvei,ole_nordgaards_street). 
 cmpl(ole,ross,ole_ross_veg). 
 cmpl(ole,rossvei,ole_ross_veg). 
-cmpl(omkjøringsveien,[ved,moholt],omkjøringsveien_moholt). 
-cmpl(omkjøringsveien,[ved,nardo],omkjøringsveien_nardo). 
+cmpl(omkjøringsveien,[ved,moholt],moholt_omkjøringsvei). 
+cmpl(omkjøringsveien,[ved,nardo],nardo_omkjøringsvei). 
 cmpl(omkjøringsveien,klæbuveien,omkjøringsv_klæbuvveien). 
-cmpl(omkjøringsveien,moholt,omkjøringsveien_moholt). 
-cmpl(omkjøringsveien,nardo,omkjøringsveien_nardo). 
-cmpl(omkjøringsveien,nardokrysset,omkjøringsveien_nardo). 
+cmpl(omkjøringsveien,moholt,moholt_omkjøringsvei). 
+cmpl(omkjøringsveien,nardo,nardo_omkjøringsvei). 
+cmpl(omkjøringsveien,nardokrysset,nardo_omkjøringsvei). 
 cmpl(oops,lade,lade_idrettsanlegg).  %%
 cmpl(ops,lade,lade_idrettsanlegg).  %%nec?
 cmpl(orkdalsbussen,[],hob). 
@@ -2387,10 +2348,10 @@ cmpl(persaunet,leier,persaunet_leir). %% TA-110615
 cmpl(persaunet,leir,persaunet_leir).  %% SIC(errorinreghpl)
 %cmpl(persaunet,sykehjem,gina_krogs_veg).  %% persaunvn54->
 cmpl(persaunet,sykehjem,clara_holsts_veg).  %% persaunvn54->  %% RS-160809 NEW ROAD!
-cmpl(pinsen,kino,prinsen_kinosenter). 
-cmpl(pinsen,kinos,prinsen_kinosenter). 
-cmpl(pinsen,kinosenter,prinsen_kinosenter). 
-cmpl(pinsens,kinosenter,prinsen_kinosenter). 
+cmpl(pinsen,kino,nidarosdomen). 
+cmpl(pinsen,kinos,nidarosdomen). 
+cmpl(pinsen,kinosenter,nidarosdomen). 
+cmpl(pinsens,kinosenter,nidarosdomen). 
 
 cmpl(pir,1,pir_i).  
 cmpl(pir,2,pir_ii).  %% street \+ pirat2'
@@ -2413,26 +2374,26 @@ cmpl(polities,hittegodskontor,politistasjonen).  %% own, nec, no spch
 cmpl(post,terminalen,postterminalen). 
 cmpl(posten,[på,sluppen],postterminalen). 
 cmpl(posten,sluppen,postterminalen). 
-cmpl(pr,[brochs,gate],professor_brochs_gate). 
+cmpl(pr,[brochs,gate],hesthagen). 
 cmpl(presteg,jordet,prestegårsjordet). 
 cmpl(prestegårds,jordet,prestegårsjordet). 
-cmpl(professor,[],professor_brochs_gate).  %% RS-160108 
+cmpl(professor,[],hesthagen).  %% RS-160108 
 
 
 
 cmpl(prinsen,[gate],prinsens_gate). 
 cmpl(prinsen,hotell,prinsenkrysset). 
-cmpl(prinsen,[kino,renter],prinsen_kinosenter). 
-cmpl(prinsen,[kino,senter],prinsen_kinosenter). 
+cmpl(prinsen,[kino,renter],nidarosdomen). 
+cmpl(prinsen,[kino,senter],nidarosdomen). 
 %% cmpl(prinsen,cinema,prinsen_kinosenter). %%  confuse
 cmpl(prinsen,gt,prinsens_gate). 
-cmpl(prinsen,kino,prinsen_kinosenter). 
-cmpl(prinsen,kino,prinsen_kinosenter). 
-cmpl(prinsen,kinos,prinsen_kinosenter). 
+cmpl(prinsen,kino,nidarosdomen). 
+cmpl(prinsen,kino,nidarosdomen). 
+cmpl(prinsen,kinos,nidarosdomen). 
 cmpl(prinsen,kryss,prinsenkrysset). 
 cmpl(prinsen,krysset,prinsenkrysset). 
-cmpl(prinsenkino,senter,prinsen_kinosenter). 
-cmpl(prinsen,teater,prinsen_kinosenter). 
+cmpl(prinsenkino,senter,nidarosdomen). 
+cmpl(prinsen,teater,nidarosdomen). 
 
 
 
@@ -2440,70 +2401,70 @@ cmpl(prinsen,teater,prinsen_kinosenter).
 % cmpl(prinsens,[gate],prinsens_gate). 
 % cmpl(prinsens,[gt],prinsens_gate). 
 
-cmpl(prinsens,[kinosenter],prinsen_kinosenter). 
-cmpl(prinsens,gt,prinsen_kinosenter). 
-cmpl(prinsens,kino,prinsen_kinosenter).  %%NOSPELL!
-cmpl(prisen,kino,prinsen_kinosenter). 
-cmpl(prisen,kinosenter,prinsen_kinosenter). 
+cmpl(prinsens,[kinosenter],nidarosdomen). 
+cmpl(prinsens,gt,nidarosdomen). 
+cmpl(prinsens,kino,nidarosdomen).  %%NOSPELL!
+cmpl(prisen,kino,nidarosdomen). 
+cmpl(prisen,kinosenter,nidarosdomen). 
 cmpl(prof,['. '],professor).  %%?Doesnthelp
-cmpl(prof,[b,gt],professor_brochs_gate). 
-cmpl(prof,[br,gate],professor_brochs_gate). 
-cmpl(prof,[broch,gate],professor_brochs_gate). 
-cmpl(prof,[broch,gt],professor_brochs_gate). 
-cmpl(prof,[broch,s,gate],professor_brochs_gate). 
-cmpl(prof,[brochs,g],professor_brochs_gate). 
-cmpl(prof,[brochs,gata],professor_brochs_gate). 
-cmpl(prof,[brochs,gate],professor_brochs_gate). 
-cmpl(prof,[brochs,gt],professor_brochs_gate). 
-cmpl(prof,[brochs,v],professor_brochs_gate). 
-cmpl(prof,[brochs,vei],professor_brochs_gate). 
-cmpl(prof,[brox,gate],professor_brochs_gate). 
-cmpl(prof,[brox,s,gate],professor_brochs_gate). 
-cmpl(prof,[broxs,gate],professor_brochs_gate). 
-cmpl(prof,broch,professor_brochs_gate). 
-cmpl(prof,brochs,professor_brochs_gate). 
-cmpl(prof,brochsgate,professor_brochs_gate). 
-cmpl(prof,brochsgt,professor_brochs_gate). 
-cmpl(prof,brochsv,professor_brochs_gate). 
-cmpl(prof,brochsvei,professor_brochs_gate). 
-cmpl(prof,brocksgate,professor_brochs_gate). 
-cmpl(prof,brocksgt,professor_brochs_gate). 
-cmpl(prof,brocksv,professor_brochs_gate). 
-cmpl(prof,prochsgate,professor_brochs_gate).  %% Contag
-cmpl(profbrochs,gate,professor_brochs_gate). 
+cmpl(prof,[b,gt],hesthagen). 
+cmpl(prof,[br,gate],hesthagen). 
+cmpl(prof,[broch,gate],hesthagen). 
+cmpl(prof,[broch,gt],hesthagen). 
+cmpl(prof,[broch,s,gate],hesthagen). 
+cmpl(prof,[brochs,g],hesthagen). 
+cmpl(prof,[brochs,gata],hesthagen). 
+cmpl(prof,[brochs,gate],hesthagen). 
+cmpl(prof,[brochs,gt],hesthagen). 
+cmpl(prof,[brochs,v],hesthagen). 
+cmpl(prof,[brochs,vei],hesthagen). 
+cmpl(prof,[brox,gate],hesthagen). 
+cmpl(prof,[brox,s,gate],hesthagen). 
+cmpl(prof,[broxs,gate],hesthagen). 
+cmpl(prof,broch,hesthagen). 
+cmpl(prof,brochs,hesthagen). 
+cmpl(prof,brochsgate,hesthagen). 
+cmpl(prof,brochsgt,hesthagen). 
+cmpl(prof,brochsv,hesthagen). 
+cmpl(prof,brochsvei,hesthagen). 
+cmpl(prof,brocksgate,hesthagen). 
+cmpl(prof,brocksgt,hesthagen). 
+cmpl(prof,brocksv,hesthagen). 
+cmpl(prof,prochsgate,hesthagen).  %% Contag
+cmpl(profbrochs,gate,hesthagen). 
 
-cmpl(professor,[b,gate],professor_brochs_gate). 
-cmpl(professor,[br,gate],professor_brochs_gate). 
-cmpl(professor,[broch,gate],professor_brochs_gate). 
-cmpl(professor,[broch,gt],professor_brochs_gate). 
-cmpl(professor,[broch,s,gate],professor_brochs_gate). 
-cmpl(professor,[broch],professor_brochs_gate).  %% Ekstraservice
-cmpl(professor,[brochs,gt],professor_brochs_gate). 
-cmpl(professor,[brochs,v],professor_brochs_gate). 
-cmpl(professor,[brochs,vei],professor_brochs_gate). 
-cmpl(professor,[brochs],professor_brochs_gate).  %% Confuses lex
-cmpl(professor,brock,professor_brochs_gate). 
-cmpl(professor,[brocks,gate],professor_brochs_gate). 
-cmpl(professor,[brocksgt],professor_brochs_gate).  %% Confuses lex
-cmpl(professor,[brocksv],professor_brochs_gate). 
-cmpl(professor,[brogsgate],professor_brochs_gate).  %% (bergsgate#)
-cmpl(professor,[brox,gate],professor_brochs_gate). 
-cmpl(professor,[brox,gt],professor_brochs_gate). 
-cmpl(professor,[brox,s,gate],professor_brochs_gate). 
-cmpl(professor,[broxs,gate],professor_brochs_gate). 
+cmpl(professor,[b,gate],hesthagen). 
+cmpl(professor,[br,gate],hesthagen). 
+cmpl(professor,[broch,gate],hesthagen). 
+cmpl(professor,[broch,gt],hesthagen). 
+cmpl(professor,[broch,s,gate],hesthagen). 
+cmpl(professor,[broch],hesthagen).  %% Ekstraservice
+cmpl(professor,[brochs,gt],hesthagen). 
+cmpl(professor,[brochs,v],hesthagen). 
+cmpl(professor,[brochs,vei],hesthagen). 
+cmpl(professor,[brochs],hesthagen).  %% Confuses lex
+cmpl(professor,brock,hesthagen). 
+cmpl(professor,[brocks,gate],hesthagen). 
+cmpl(professor,[brocksgt],hesthagen).  %% Confuses lex
+cmpl(professor,[brocksv],hesthagen). 
+cmpl(professor,[brogsgate],hesthagen).  %% (bergsgate#)
+cmpl(professor,[brox,gate],hesthagen). 
+cmpl(professor,[brox,gt],hesthagen). 
+cmpl(professor,[brox,s,gate],hesthagen). 
+cmpl(professor,[broxs,gate],hesthagen). 
 cmpl(professor,[j,h,vogts,vei],professor_j_h_l_vogts_street). 
-cmpl(professor,brochsgate,professor_brochs_gate). 
-cmpl(professor,brochsgt,professor_brochs_gate). 
-cmpl(professor,brochsveg,professor_brochs_gate). 
-cmpl(professor,brochsvei,professor_brochs_gate). 
-cmpl(professor,brocksgate,professor_brochs_gate). 
-cmpl(professor,brocksgate,professor_brochs_gate). 
-cmpl(professor,brocksvei,professor_brochs_gate). 
-cmpl(professorbrochs,gate,professor_brochs_gate). 
-cmpl(professorbrochs,gt,professor_brochs_gate). 
+cmpl(professor,brochsgate,hesthagen). 
+cmpl(professor,brochsgt,hesthagen). 
+cmpl(professor,brochsveg,hesthagen). 
+cmpl(professor,brochsvei,hesthagen). 
+cmpl(professor,brocksgate,hesthagen). 
+cmpl(professor,brocksgate,hesthagen). 
+cmpl(professor,brocksvei,hesthagen). 
+cmpl(professorbrochs,gate,hesthagen). 
+cmpl(professorbrochs,gt,hesthagen). 
 
 /* %% TA-110314
-cmpl(proffessor,[brochs,gate],professor_brochs_gate).  %%Just for fun
+cmpl(proffessor,[brochs,gate],hesthagen).  %%Just for fun
 cmpl(proffessor,[brochs,gt],professor_brochs_gate). 
 cmpl(proffessor,[brochs,vei],professor_brochs_gate). 
 cmpl(proffessor,[brocks,gate],professor_brochs_gate). 
@@ -2580,8 +2541,8 @@ cmpl(rotvoll,n,rotvoll_nedre).
 cmpl(royal,garden,royal_garden). 
 cmpl(royal,[garden,hotel],royal_garden). 
 cmpl(royal,[garden,hotell],royal_garden).   %% Flybuss 
-cmpl(rundkjøringen,[nardo],omkjøringsveien_nardo). 
-cmpl(rundkjøringen,[på,nardo],omkjøringsveien_nardo). 
+cmpl(rundkjøringen,[nardo],nardo_omkjøringsvei). 
+cmpl(rundkjøringen,[på,nardo],nardo_omkjøringsvei). 
 cmpl(rutebil,[stasjonen],rutebilstasjonen).  %%??
 cmpl(rønnings,bakken,rønningsbakken). 
 
@@ -2599,17 +2560,17 @@ cmpl(s,tasjonen,ts). %% AtB.
 cmpl(saksviks,gate,severin_saksviks_street). 
 
 cmpl(sam,fundet,studentersamfundet). 
-cmpl(samf,1,studentersamfundet_1).   %% nb split name
-cmpl(samf,2,studentersamfundet_2). 
-cmpl(samfun,[det],studentersamfundet). 
-cmpl(samfundet,1,studentersamfundet_1). 
-cmpl(samfundet,2,studentersamfundet_2). 
-cmpl(samfundet,[1],studentersamfundet_1). 
-cmpl(samfundet,[2],studentersamfundet_2). 
-cmpl(samfundet,[l],studentersamfundet_1).  %% L
-cmpl(samfunnet,[1],studentersamfundet_1).  %% AVOID 1300
-cmpl(samfunnet,[2],studentersamfundet_2).  %% AVOID 1400
-cmpl(samfunnet,[l],studentersamfundet_1).  %%
+%cmpl(samf,1,studentersamfundet_1).   %% nb split name
+%cmpl(samf,2,studentersamfundet_2). 
+%cmpl(samfun,[det],studentersamfundet). 
+%cmpl(samfundet,1,studentersamfundet_1). 
+%cmpl(samfundet,2,studentersamfundet_2). 
+%cmpl(samfundet,[1],studentersamfundet_1). 
+%cmpl(samfundet,[2],studentersamfundet_2). 
+%cmpl(samfundet,[l],studentersamfundet_1).  %% L
+%cmpl(samfunnet,[1],studentersamfundet_1).  %% AVOID 1300
+%cmpl(samfunnet,[2],studentersamfundet_2).  %% AVOID 1400
+%cmpl(samfunnet,[l],studentersamfundet_1).  %%
 cmpl(sandmoen,[camping],sandmoen). 
 
 cmpl(santolavs,[hospital],st_olavs_hospital). 
@@ -2638,7 +2599,7 @@ cmpl(schieldrops,veg,e_b_schieldrops_vei).
 cmpl(schjeldrups,vei,e_b_schieldrops_vei). % Gateetternavn
 cmpl(schjetnans,veg,carl_schjetnans_vei). 
 cmpl(schjetnans,vei,carl_schjetnans_vei). 
-cmpl(schøning,[videregående,skole],torget). 
+cmpl(schøning,[videregående,skole],hovedterminalen). 
 cmpl(se,[4,ntrum],sentrum).  %% neibk
 cmpl(se,ntrum,sentrum). 
 cmpl(selsbakk,skole,selsbakk). 
@@ -2663,7 +2624,7 @@ cmpl(sentralsta,sjon,sentralstasjon). %% ?
 %%% cmpl(sentru,m,sentrum). %% susmeded test %%  sentrum --> sentru***
 cmpl(sentrum,[av,trondheim],sentrum).  %% Ad Hoc (Sentrum Syndrom)
 cmpl(sentrum,[jernbanestasjon],ts). %% AtB. 
-cmpl(sentrum,kino,nova_kinosenter). 
+cmpl(sentrum,kino,olav_tryggvasons_gate_ot2). 
 cmpl(sentrum,politistasjon,politistasjonen). %% politihuset).
 cmpl(sentrum,stasjon,hovedterminalen). 
 cmpl(sentrum,trondheim,sentrum). 
@@ -2758,8 +2719,8 @@ cmpl(sol,siden,solsiden).
 cmpl(solsiden,dokkparken,solsiden).  
 cmpl(solsiden,kjøpesenter,solsiden). 
 cmpl(solsiden,senteret,solsiden). 
-cmpl(sonans,privatgymnas,nova_kinosenter). 
-cmpl(sonans,skole,nova_kinosenter). %% ? 
+cmpl(sonans,privatgymnas,olav_tryggvasons_gate_ot2). 
+cmpl(sonans,skole,olav_tryggvasons_gate_ot2). %% ? 
 cmpl(sorte,[lade,moen],svartlamon). 
 cmpl(sosial,høgskolen,gildheim).  %%??
 cmpl(sp,[andersens,vei],s_p_andersens_street). 
@@ -2884,7 +2845,7 @@ cmpl(steindalskole,[],hoeggen_skole).  %% TA-110121
 
 cmpl(steinerskolen,[i,ila],skansen). 
 cmpl(steinerskolen,[i,ila],skansen). 
-cmpl(steinerskolen,[i,trondheim],professor_brochs_gate). 
+cmpl(steinerskolen,[i,trondheim],hesthagen). 
 cmpl(steinerskolen,[på,ila],skansen). %%
 cmpl(steinerskolen,[på,rotvoll],rotvoll). 
 
@@ -2900,8 +2861,8 @@ cmpl(stor,rosten,stor_rosta).
 cmpl(stps,brøset,brøsetflata). 
 cmpl(str,heim,strindheim).  %% Dots are skipped after names
 cmpl(strandvei,kai,strandveikaia).
-cmpl(strandveien,[auto],strandveien).  %% Bilverksted
-cmpl(strandveien,auto,strandveien). 
+cmpl(strandveien,[auto],buran).  %% Bilverksted
+cmpl(strandveien,auto,buran). 
 
 cmpl(strinda,[skole],magnus_blindes_veg). %% TA-110708
 
@@ -2918,8 +2879,8 @@ cmpl(strindheim,[sirkus],strindheim).
 cmpl(strindheim,[sirkus,enteret],strindheim).
 cmpl(strindheim,kirke,valentinlyst).  %%  ?
 cmpl(strindheim,bil,jørgen_b_lysholms_vei).  %% lade alle 67a.  
-cmpl(stud,[samf,1],studentersamfundet_1). 
-cmpl(stud,[samf,2],studentersamfundet_2). 
+%cmpl(stud,[samf,1],studentersamfundet_1). 
+%cmpl(stud,[samf,2],studentersamfundet_2). 
 cmpl(stud,samf,studentersamfundet). 
 cmpl(stud,samfundet,studentersamfundet). 
 cmpl(stud,samfunn,studentersamfundet). 
@@ -2972,17 +2933,17 @@ cmpl(sykepleier,høgskolen,st_olavs_hospital).
 cmpl(sykepleier,skolen,st_olavs_hospital).  %%hvor???
 cmpl(sæter,bakken,sæterbakken).  
 
-cmpl(søndregate,[22],søndre_gate_22). %% Problem %% TA-110526
-cmpl(søndregate,[23],søndre_gate_23). %%
+cmpl(søndregate,[22],olav_tryggvasons_gate_ot3). %% Problem %% TA-110526
+cmpl(søndregate,[23],olav_tryggvasons_gate_ot3). %% Problem %% TA-110526
 
-cmpl(søndre,[gate,22],søndre_gate_22). 
-cmpl(søndre,[gate,23],søndre_gate_23). 
-cmpl(søndre,[gt,22],søndre_gate_22). 
-cmpl(søndre,[gt,23],søndre_gate_23). 
+cmpl(søndre,[gate,22],olav_tryggvasons_gate_ot3). 
+cmpl(søndre,[gate,23],olav_tryggvasons_gate_ot3). 
+cmpl(søndre,[gt,22],olav_tryggvasons_gate_ot3). 
+cmpl(søndre,[gt,23],olav_tryggvasons_gate_ot3). 
 cmpl(søndre,gate,søndregate). 
 cmpl(søndre,gløshaugen,gløshaugen).  %% (sydlige?)
 cmpl(søndre,gt,søndregate). 
-cmpl(søndre,hallset,søndre_hallset).  %% \+ spellc to halset
+cmpl(søndre,hallset,hallset).  %% \+ spellc to halset
 cmpl(søndre,hoem,søndre_hoem).  %% Tramstation
 
 cmpl(søndregt,[],søndregate).   %% NB then neighbourhood 22/23
@@ -3026,7 +2987,7 @@ cmpl(teams,servicekontor,servicekontoret).
 
 cmpl(trøndelag,museum,trøndelag_folkemuseum).
 cmpl(trøndelagfolkemuseum,[],trøndelag_folkemuseum). 
-cmpl(trøndelag,teater,prinsen_kinosenter).   
+cmpl(trøndelag,teater,nidarosdomen).   
 cmpl(trøndelag,trafikk,tt).   
 
 cmpl(trondheim,busstasjon,hovedterminalen). %%  + sentrumsterminalen
@@ -3072,8 +3033,8 @@ cmpl(thonningowesens,gt,thonning_owesens_street).
 cmpl(thornæs,veg,k_o_thornæs_veg). 
 cmpl(thornæs,vei,k_o_thornæs_veg). 
 cmpl(thornæs,veien,k_o_thornæs_veg). 
-cmpl(tilfredshet,kapell,studentersamfundet_1). 
-cmpl(tilfredshet,kirkegård,studentersamfundet_1). 
+cmpl(tilfredshet,kapell,studentersamfundet). 
+cmpl(tilfredshet,kirkegård,studentersamfundet). 
 cmpl(tiller,byen,koieflata). 
 cmpl(tiller,dps,tonstadgrenda). 
 
@@ -3101,7 +3062,7 @@ cmpl(tonstad,skole,tonstadgrenda).
 cmpl(tonstadkrysset,1,tonstadkrysset). 
 cmpl(thonstadkrysset,[],tonstadkrysset). %% TA-110110
 
-cmpl(tor,plassen,torplassen). 
+cmpl(tor,plassen,casper_lundes_veg). 
 cmpl(tor,veg,tors_veg). 
 cmpl(tor,vei,tors_veg). 
 cmpl(torbjørn,[brath,veg],'Torbjørn Bratts veg'). 
@@ -3110,13 +3071,13 @@ cmpl(torbjørn,[bratts,veg],'Torbjørn Bratts veg').
 cmpl(torbjørn,[brattsvei],'Torbjørn Bratts veg'). 
 cmpl(torget,[orkanger], torget_orkanger). %%RS-131222 Flere stasjoner takk!      
 
-cmpl(torp,holdeplass,torplassen).  %% misu nderstanding?
-cmpl(tors,plass,torplassen). 
+cmpl(torp,holdeplass,casper_lundes_veg).  %% misu nderstanding?
+cmpl(tors,plass,casper_lundes_veg). 
 cmpl(torv,myra,torvmyra). 
 %% cmpl(torve,t,torget).  %% destroys torve=torget%% TA-101122
 cmpl(town,centre,hovedterminalen). 
 cmpl(town,hall,rådhuset). 
-cmpl(town,square,torget). 
+cmpl(town,square,hovedterminalen). 
 cmpl(toyota,[hell,bil],jørgen_b_lysholms_vei).  %%
 cmpl(toyota,hell,jørgen_b_lysholms_vei). 
 cmpl(tr,['. ',h,sentralstasjon],ts). %% AtB. 
@@ -3127,14 +3088,14 @@ cmpl(tr,[heim,sentralst],ts). %% AtB.  %% Etc
 cmpl(tr,[heim,sentralstasjon],ts). %% AtB. 
 cmpl(tr,[heim,sentrum],sentrum). 
 cmpl(tr,[heim,st],ts). %% AtB. 
-cmpl(tr,[heim,torg],torget). 
+cmpl(tr,[heim,torg],hovedterminalen). 
 cmpl(tr,[lag,folkemuseum],trøndelag_folkemuseum). 
 cmpl(tr,heim,trondheim).  %% ?
 cmpl(tr,heimsentralstasjon,ts). %% AtB. 
 cmpl(tr,sentralstasjon,ts). %% AtB. 
 cmpl(tr,sentrum,sentrum). 
 cmpl(tr,st,ts). %% AtB.  %% ?
-cmpl(tr,torg,torget). 
+cmpl(tr,torg,hovedterminalen). 
 cmpl(trafikanten,[],tmn). 
 cmpl(trafikanten,midtnorge,tmn). 
 cmpl(trafikk,['. ',no],tt).  %%
@@ -3199,7 +3160,7 @@ cmpl(trondheim,jernbanestation,ts). %% AtB.
 cmpl(trondheim,katedralskole,katedralskolen). 
 cmpl(trondheim,kino,kino). 
 cmpl(trondheim,kretsfengsel,tunga_kretsfengsel). 
-cmpl(trondheim,lufthavn,værnes). 
+cmpl(trondheim,lufthavn,trondheim_lufthavn). 
 cmpl(trondheim,lærerhøgskole,rotvoll_nedre). 
 cmpl(trondheim,norway,trondheim). 
 cmpl(trondheim,rutebilstasjon,rutebilstasjonen). 
@@ -3215,13 +3176,13 @@ cmpl(trondheim,st,ts). %% AtB.
 cmpl(trondheim,stasjon,ts). %% AtB. 
 cmpl(trondheim,station,ts). %% AtB. 
 cmpl(trondheim,taxi,taxi). 
-cmpl(trondheim,teater,prinsen_kinosenter). 
+cmpl(trondheim,teater,nidarosdomen). 
 cmpl(trondheim,togstasjon,ts). %% AtB. 
 cmpl(trondheim,togstation,ts). %% AtB. 
-cmpl(trondheim,torg,torget). 
+cmpl(trondheim,torg,hovedterminalen). 
 cmpl(trondheim,torg,trondheim_torg). 
 cmpl(trondheim,torget,trondheim_torg). 
-cmpl(trondheim,torv,torget).  %%
+cmpl(trondheim,torv,hovedterminalen).  %%
 cmpl(trondheim,trafikk,tt). 
 cmpl(trondheim,trafikkselskap,tt).  %%Also for non-places
 cmpl(trondheim,trafikkstasjon,ts). %% AtB. 
@@ -3233,13 +3194,13 @@ cmpl(trondheim,værnes,værnes).  %% Flybuss trondheim værnes Align
 cmpl(trondheims,flygplats,værnes).  %%(Swe)
 cmpl(trondheims,flyplass,værnes). 
 cmpl(trondheims,sentrum,sentrum). 
-cmpl(trondheims,torg,torget). 
+cmpl(trondheims,torg,hovedterminalen). 
 cmpl(trondhjems,sporveier,gråkallbanen). 
-cmpl(tryggvasons,gate,olav_tryggvasons_gate). 
-cmpl(tryggvassons,gate,olav_tryggvasons_gate). 
-cmpl(tryggvassons,gt,olav_tryggvasons_gate). 
+cmpl(tryggvasons,gate,olav_tryggvasons_gate_ot1). 
+cmpl(tryggvassons,gate,olav_tryggvasons_gate_ot1). 
+cmpl(tryggvassons,gt,olav_tryggvasons_gate_ot1). 
 cmpl(trøndelag,[folk,museum],trøndelag_folkemuseum).  %% Eng
-cmpl(trøndelag,teater,prinsen_kinosenter).  %%(shortcut)
+cmpl(trøndelag,teater,nidarosdomen).  %%(shortcut)
 cmpl(tt,[kontoret],servicekontoret). 
 cmpl(tt,[s,servicekontor],servicekontoret). 
 cmpl(tt,[trafikk,'. ',no],tt). %(synnedaway)
@@ -3252,11 +3213,11 @@ cmpl(tunga,fengselet,tunga_kretsfengsel).
 cmpl(tunga,fengslet,tunga_kretsfengsel). 
 cmpl(tunga,kretsfengsel,tunga_kretsfengsel). 
 cmpl(tunga,landbrukssenter,gartnerhallen). 
-cmpl(tv,tower,tyholttårnet). 
-cmpl(tv,tårnet,tyholttårnet). 
+cmpl(tv,tower,strinda_vgs). 
+cmpl(tv,tårnet,strinda_vgs). 
 cmpl(tyholt,sykehjem,tyholt). 
-cmpl(tyholt,tower,tyholttårnet). 
-cmpl(tyholt,tårnet,tyholttårnet). 
+cmpl(tyholt,tower,strinda_vgs). 
+cmpl(tyholt,tårnet,strinda_vgs). 
 cmpl(tøh,moholt,tøh). 
 cmpl(ugla,[på,byåsen],ugla). 
 cmpl(ugla,skole,ugla). 
@@ -3339,8 +3300,8 @@ cmpl(volla,bakken,vollabakken).
 cmpl(vollan,gård,voll_gård). 
 cmpl(volls,studentby,voll_studentby). 
 cmpl(volls,tudentby,voll_studentby). 
-cmpl(vår,[frue,kirke],torget). 
-cmpl(vår,[frues,kirke],torget).  %%spc<6
+cmpl(vår,[frue,kirke],hovedterminalen). 
+cmpl(vår,[frues,kirke],hovedterminalen).  %%spc<6
 cmpl(være,trøa,værestrøa). %% off name 
 cmpl(værnes,[airport],værnes). 
 cmpl(værnes,[fly,havn],værnes). 
@@ -3427,11 +3388,14 @@ cmpl(åsvenein,skole,åsveien_skole).  %% ?
 %% RS-140102    REMEMBER: hovedterminalen (used for corr)  vs.  sentrum (used for isat, sentrum as a PLACE) ?
 
 %% ISAT   (STATION, PLACE)
-isat( olav_tryggvasons_gate, hovedterminalen ).    %% RS-121223 RS-141104 Sommer vs. vinter!?
+isat( olav_tryggvasons_gate_ot1, hovedterminalen ).    %% RS-121223 RS-141104 Sommer vs. vinter!?
 %%isat( hovedterminalen, dronningens_gate ).  %% Where is sentrumsterminalen
 %%isat( hovedterminalen, kongens_gate ).  %% RS-130812 Where is sentrumsterminalen, men unngå:  Holdeplassen nærmest Kongens_gate er Sentrumsterminalen ??
 isat( hovedterminalen, munkegata ).  %%
 isat( hovedterminalen, sentrum ).  %% Experiment Trikk St. Olavs. gt og så sentrum
+
+isat(stavset_senter_syd, stavset_senter).
+isat(stavset_senter_nord, stavset_senter).
 
 %isat( dr_gate_d1, sentrum ).   %% AtB 2015 format  %% RS-150815 Get rid of sentrum? Keep just as synonym/sameas/etc to hovedterminalen? 
 %isat( dr_gate_d2, sentrum ).   %% RS-151219 isat requires the stations to be "real stations". Idea: Try using discrepencies2( Fake, Real ) to avoid this?
@@ -3441,6 +3405,10 @@ isat( dronningens_gate_d1, sentrum ). %% AtB (2014-feb) format
 isat( dronningens_gate_d2, sentrum ). 
 %%isat( dronningens_gate_d3, sentrum ). 
 %%isat( dronningens_gate_d4, sentrum ). 
+
+isat(moholt_studentby, moholt).
+isat(moholt_omkjøringsvei, moholt).
+isat(moholt_storsenter, moholt).
 
 isat(buran_1, buran).
 isat(buran_2, buran).
@@ -3454,19 +3422,27 @@ isat(buran_1, næringssenteret).
 isat(buran_2, næringssenteret).
 isat(buran_3, næringssenteret).
 
+isat(østre_berg, østre_berg).
+isat(østre_berg_2, østre_berg).
+
 isat(charlottenlund_vgs, brundalen_skole).
+
+isat(lade_idrettsanlegg, haakon_vii_gate).
+isat(haakon_vii_gate_25, haakon_vii_gate).
 
 isat(jørgen_b_lysholms_vei, fagerheim_alle).
 isat(høgskoleringen, gudes_gate).
 
+isat(heimdalsvegen_73, heimdalsvegen).
+
 isat(kongens_gate_k1,sentrum). %% AtB
 isat(kongens_gate_k2,sentrum). 
 
-isat(munkegata_m1,sentrum). 
-isat(munkegata_m2,sentrum). 
-%isat(munkegata_m3,sentrum). %% Removed winter 2014? 
-isat(munkegata_m4,sentrum). 
-isat(munkegata_m5,sentrum). 
+%isat(munkegata_m1,sentrum). 
+%isat(munkegata_m2,sentrum). 
+%%isat(munkegata_m3,sentrum). %% Removed winter 2014? 
+%isat(munkegata_m4,sentrum). 
+%isat(munkegata_m5,sentrum). 
 
 %isat( olav_tryggvasons_gate, sentrum ).    %% RS-121223 Nightbus-station?
 
@@ -3489,7 +3465,7 @@ isat(kongens_gate_k2,prinsenkrysset). %% RS-141102
 %isat( astronomveien, krokstien ).      %% RS-160110 Stations! Use corr/2 ? %% RS-160101 astronomvegen med g is a station! vei med i is not?
 %isat( krokstien, astronomveien ).      %% RS-160110 Stations! Use corr/2
 isat( astronomvegen, krokstien ).      %% RS-160110 Stations! Use corr/2 ? %% RS-160809 astronomvegen med g is a station! vei med i is not?
-isat( krokstien, astronomvegen ).      %% RS-160110 Stations! Use corr/2
+%isat( krokstien, astronomvegen ).      %% RS-160110 Stations! Use corr/2
 
 isat( bratsberg_kirke, bratsberg ). %% TA-110325
 isat( siemens, bratsbergsvegen ).
@@ -3506,8 +3482,8 @@ isat( charlottenlund_nedre, charlottenlund).
 isat( city_syd_e6, city_syd ). %% RS-130818  %% RS-190101
 %% isat( city_syd_sentervegen, city_syd ). %% TA-110627  %% RS-190101 Just one station at City Syd now.
 %% isat( city_syd_østre, city_syd ).  %% TA-100901 %% City Syd Østre no longer a station. %% RS-2019.09.26
-isat( john_aae_s_veg, city_syd).   %%
-isat( kvt, city_syd ).             %%
+%isat( john_aae_s_veg, city_syd).   %%
+%isat( kvt, city_syd ).             %%
 
 isat( fagerliveien,fagerliv). %% Panic %% AtB TA-101010
 isat( flatåstoppen,flatåsen). % 7,17
@@ -3515,7 +3491,7 @@ isat( framveien,byåsen).
 
 isat( gartnerhallen,ikea). %%  (?)
 
-%% isat( professor_brochs_gate,gløshaugen). %% RS-170626  %% RS-190919
+%% isat( hesthagen,gløshaugen). %% RS-170626  %% RS-190919
 isat( gløshaugen,prestegårdsjordet). %% AE-20200703
 %isat( gløshaugen_nord,gløshaugen). 
 %
@@ -3523,23 +3499,21 @@ isat( gløshaugen,prestegårdsjordet). %% AE-20200703
 %isat( gløshaugen_nord,hesthagen). 
 
 isat( gløshaugen,nth). 
-%% isat( professor_brochs_gate,nth). %% RS-170626  %% RS-190919
+isat( hesthagen,nth). %% RS-170626  %% RS-190919
 isat( prestegårdsjordet,nth). %% RS-170626
 
 %isat( haakon_vii_gate_17,haakon_vii_gate). 
 %isat( haakon_vii_gate_25,haakon_vii_gate). 
 %%isat( haakon_vii_gate_29,lade_alle_80).
 %%isat( haakon_vii_gate_29,lade_alle_80).
-isat( haakon_vii_gate, lade_idrettsanlegg). %% RS-2019.09.27
+%isat( haakon_vii_gate, lade_idrettsanlegg). %% RS-2019.09.27
 
 % isat(haukåsen,haukåsen).  %% RS-130330, hva skjer her? %% RS-140502. Haukåsen station removed from AtB's routes 140102
 %isat(heggstadmoen,heggstadmoen_4).
 %isat(heggstadmoen,heggstadmoen_2).
 
-isat( heimdal_sentrum, heimdal ).
 isat( heimdal_stasjon, heimdal ).
-
-isat( professor_brochs_gate, hesthagen ).
+isat( heimdal_stasjon, heimdal_sentrum).
 
 %isat (STATION, PLACE).
 %% isat(hommelvik_skole,hommelvik).  %% RS-140614 not since 2013? No longer auto-generated
@@ -3548,7 +3522,6 @@ isat( hommelvik_stasjon,hommelvik).
 %% isat( hommelvikhøgda,hommelvik). %% RS-130627 %% Outside? Same departing busses...
 
 isat( studentersamfundet, høyskoleparken ).
-isat( studentersamfundet_2, høyskoleparken ).
 
 isat( klæbu_sentrum, klæbu ).  %% AtB %% Synplace?
 isat( jørgen_b_lysholms_vei, lade_arena ).     %% Bussen står og venter her ganske lenge!  %% RS-141122  Se lade_alle_80
@@ -3559,8 +3532,8 @@ isat(kroppanmarka,kroppanmarka_snuplass). %%RS-120305
 %% isat( city_lade, lade ).   %% RS-130625 %% Sommerrute-løsning
 isat( lade_gård, lade ).   %% RS-130625 %% Nattbuss-løsning
 
-isat( lade_alle_80, lade).
-isat( lade_alle_80, lade_arena ).              %% RS-141122  Moved to isat (station, place)
+isat( lade_allé_80, lade).
+isat( lade_allé_80, lade_arena ).              %% RS-141122  Moved to isat (station, place)
 
 isat(lerkendal_stadion,lerkendal). 
 %isat(lerchendal_gård,lerkendal).   %% ? Move to spellcheck somewhere?... Synplace?
@@ -3578,24 +3551,24 @@ isat( nedre_humlehaugen_øst, ranheim_kirke ).  %% RS-130302 Ranheim Kirke Repla
 
 isat( nordre_flatåsen, flatåsen ). %7
 %% isat(nordre_hoem,hoem). %% not AtB
-isat(nova_kinosenter,royal_garden). 
+isat(olav_tryggvasons_gate_ot2,royal_garden). 
 
 isat(okstad_østre,kroppanmarka).        %% RS-140614
 
-isat(omkjøringsveien_moholt,omkjøringsveien). 
-isat(omkjøringsveien_nardo,omkjøringsveien). 
+isat(moholt_omkjøringsvei,omkjøringsveien). 
+isat(nardo_omkjøringsvei,omkjøringsveien). 
 
 %isat( orkanger_skole, orkanger ).
 isat( orkanger_skysstasjon, orkanger ). %% Preferred because end-station? %% RS-150823
 %isat( torget_orkanger, orkanger ).
 
 isat( dalen_hageby,persaunetveien). %% RS-130625 AD-HOC. persaunvegen burde egentlig inkludere alle stoppene i den "vegen", ikke bare svare "kan ikke finne flere ruter..." (til "peraunvegen isa station")
-isat( persaunvegen,persaunetveien). 
+%isat( persaunvegen,persaunetveien). 
 
 
 isat( ranheim_fabrikker,ranheim). 
 isat( ranheim_idrettsplass,ranheim). %% TA-110426
-isat( ranheimsfjæra, ranheim_stasjon ).
+%isat( ranheimsfjæra, ranheim_stasjon ).
 %isat( ranheim_kirke, ranheim_kirke ).  %% RS-130302 Ranheim Kirke Replaced by Nedre Humlehaugen Øst except morning ride 
 
 isat( ringve_museum,ringve). 
@@ -3616,16 +3589,16 @@ isat( strandveikaia, ringnes ).
 isat( strandveikaia, ec_dahls_bryggeri ).
 
 isat(søndre_flatåsen,flatåsen). %7
-isat(søndre_gate_22,søndregate). 
-isat(søndre_gate_23,søndregate). 
-isat(søndre_gate_23,royal_garden). 
+isat(olav_tryggvasons_gate_ot3,søndregate). 
+isat(olav_tryggvasons_gate_ot3,søndregate). 
+isat(olav_tryggvasons_gate_ot3,royal_garden). 
 %% isat(søndre_hoem,hoem). %% not AtB
 
 % ISAT   (STATION, PLACE)
 %STATION is (one, but NOT preferred, among several) stations that belong to the neighbourhood of PLACE
 %% ISAT    ( Station , Neighbourhood )
 
-isat( lykkmarka, sjetnmarka ). %% Nightbus 
+isat( lykkmarka, sjetnmarka ). %% Nightbus ..... Some summer discrepancie?
 isat( paul_skolemesters_veg, sjetnmarka ). 
 
 isat(tanem_bru, tanem). %% RS-150111 Langt unna
@@ -3633,7 +3606,7 @@ isat(tanem_gård, tanem). %% RS-150111
 isat(tanemskrysset, tanem). %% RS-150111
 isat(tanemsmoen, tanem). %% RS-150111
               
-isat(tempe_kirke,tempe).  %%NB
+isat(lerkendal,tempe).  %%NB
 isat(tempevegen_11,tempe). %% AtB
 isat(tonstadkrysset,tonstadkrysset).  %%4
 
@@ -3669,6 +3642,12 @@ isat(brekstad_ferjekai, brekstad).
 isat(brekstad_hurtigbåtkai, brekstad).
 isat(brekstad_kai, brekstad).
 
+isat(lerkendal, lerkendal_stadion).
+
+
+
+%isat(hovedterminalen, britannia).
+%isat(hovedterminalen, britannia_hotell).
 
 % ISAT   (STATION, PLACE)
 %STATION is (one, but NOT preferred, among several) stations that belong to the neighbourhood of PLACE
@@ -3719,13 +3698,13 @@ place_resolve(hist,gartnerhallen).  %%AMT
 place_resolve(hist,gildheim).  %%AHS
 place_resolve(hist,rotvoll_alle).  %%ALT
 place_resolve(hist,rotvoll_nedre).  %%ALU
-place_resolve(hist,torget).  %%AiTel
+place_resolve(hist,hovedterminalen).  %%AiTel
 
 place_resolve(idrettsplassen, jakobsli_idrettsplass).
 place_resolve(idrettsplassen, øya).
 
-place_resolve(kino,nova_kinosenter).  %%
-place_resolve(kino,prinsen_kinosenter). 
+place_resolve(kino,olav_tryggvasons_gate_ot2).  %%
+place_resolve(kino,nidarosdomen). 
 place_resolve(kino,rosendal). 
 
 %place_resolve( lade_arena, lade_alle_80 ).              %% RS-141122  Moved to isat (station, place) %% Moved to alias_station
@@ -3802,12 +3781,12 @@ place_resolve(vegmesterveien,veimester_kroghs_street).
 %
 
 %% Extra for tram? %% RS-151219
-placestat(olav_tryggvasons_gate,sentrum). %% CORREC %% TA-101203 %% AtB %% TA-100715 %% RS-121223
+placestat(olav_tryggvasons_gate_ot1,sentrum). %% CORREC %% TA-101203 %% AtB %% TA-100715 %% RS-121223
 
 placestat(atb,prinsenkrysset). %% TA-101108 
 
 placestat(adm_rit,st_olavs_hospital). 
-placestat('Adolf Øiens skole',prinsen_kinosenter).  %%
+placestat('Adolf Øiens skole',nidarosdomen).  %%
 placestat(adresseavisa,adresseavisen). 
 placestat(alfheim,alfheimsvingen). 
 placestat(alfheimsv,alfheimsvingen).  %% Forkortelse (alfheimsv i rutehefte)
@@ -3816,7 +3795,7 @@ placestat('ALT/Statoil',rotvoll).%% hist/ALT %% extra dep Bus 6
 placestat(amo_senteret,henrik_ourens_veg). 
 placestat(angelltrøa,angelltrøvegen). 
 placestat(angeltrøa,angelltrøvegen). 
-placestat(arbeidsmarkedsinstituttet,lade_alle_80). 
+placestat(arbeidsmarkedsinstituttet,lade_allé_80). 
 placestat(arnebyen,ugla). 
 
 placestat(atmel,maskinagentur). 
@@ -3839,18 +3818,18 @@ placestat(befalsskolen,festningsgata).
 
 placestat('Berg arbeidskirke',strinda_vgs). 
 %placestat(bergstudentby,bugges_veg). 
-placestat(bergsvingen,harald_bothners_veg).  %% øvre/nedre
+%placestat(bergsvingen,harald_bothners_veg).  %% øvre/nedre
 placestat(bi,pirbadet). %%  BI
 placestat(bi,østre_rosten). 
 
-placestat(bilcentrum,leangen_alle). %%  Garage
+placestat(bilcentrum,leangen_allé). %%  Garage
 placestat(bilsakkyndige,e_verket). 
 placestat(bilsakskyndig,e_verket). 
 placestat(biltema,rostengrenda).  %% Østre rosten 22 (not garage)
 placestat(biltilsyn,e_verket). 
 placestat(biltilsynet,e_verket). 
-placestat(bispegata,prinsen_kinosenter). 
-placestat(bispegården,prinsen_kinosenter). 
+placestat(bispegata,nidarosdomen). 
+placestat(bispegården,nidarosdomen). 
 placestat(bispehaugenskole,bakkegata). 
 placestat(bjørndal,bjørndalsbrua). 
 %% placestat(blaklia,blakli).
@@ -3874,7 +3853,7 @@ placestat(bratørkaien,brattøra).
 %%% placestat(brit_grytbakks_street,gryta). 
 
 placestat(britannia,hovedterminalen).  %% (Britania by spch)%% airbus
-placestat(britannia_hotell,hovedterminalen). 
+placestat(britannia_hotell,hovedterminalen). %% Does not have airbus issues with normal buss that goes in that direction
 
 placestat(bromstadkrysset,bromstadsvingen). 
 placestat(brøset,brøsetflata). 
@@ -3884,11 +3863,11 @@ placestat(bussgarasjen,sorgenfri).
 placestat(byavisa,nardokrysset).  %%?
 placestat(bymarka,skistua).  %%
 placestat(byneset,trolla). 
-placestat(bytorget,torget).  %%avoidhplnærtorgetertorget
+placestat(bytorget,hovedterminalen).  %%avoidhplnærtorgetertorget
 %% placestat(byåsen_butikksenter,byåsen_butikksenter). %% TA-110627
-placestat(byåsen_videregående_skole,migosenteret). %% byåsen_videregående_skole neibourhood
+placestat(byåsen_videregående_skole,hallset). %% byåsen_videregående_skole neibourhood
 
-placestat(cathedral,prinsen_kinosenter). 
+placestat(cathedral,nidarosdomen). 
 placestat(ceciliebrua,tvetestien). 
 %placestat(charlottenlund_skole,churchills_veg).  %% Ungdomsskole/Videregående?
 placestat(charlottenlund_skole, tunvegen ).  %% Ungdomsskole/Videregående? %% RS-150912
@@ -3897,20 +3876,20 @@ placestat(charlottenlund_videregående,charlottenlund_vgs).
 placestat(charlottenlundhallen,churchills_veg). 
 placestat(charlottenlundhallen,tunvegen).  %% Tunveien18B,Jakobsli
 placestat(chr_eggens_veg,bjarne_ness_veg). 
-placestat(church,prinsen_kinosenter). 
+placestat(church,nidarosdomen). 
 placestat(cicilliebrua,tvetestien). 
-placestat(city_hall,prinsen_kinosenter). 
+placestat(city_hall,nidarosdomen). 
 placestat(clarion_hotell,brattøra).
-placestat('Comfort Hotel Park',prinsen_kinosenter).
+placestat('Comfort Hotel Park',nidarosdomen).
 
 placestat(dalen,dalen_hageby). 
 placestat(dalenhageby,dalen_hageby). 
 placestat('Dalgård skole',dalgård).  %%
 placestat(dalsaune,dalsaunevegen). 
-placestat(dalseng,professor_brochs_gate). 
-placestat(dalsenget,professor_brochs_gate). 
+placestat(dalseng,hesthagen). 
+placestat(dalsenget,hesthagen). 
 
-placestat(devlegård,olav_engelbrektssons_alle).
+placestat(devlegård,olav_engelbrektssons_allé).
 
 placestat(bilbyen,nidarvoll_skole). %%  bratsbergvegen 17. // garage
 placestat(dinbil,nidarvoll_skole).  %%  bratsbergvegen 11. // garage
@@ -3924,9 +3903,9 @@ placestat(dokkparken,solsiden). %%  // Changed name !
 placestat(dokkhuset,solsiden).
 placestat(dokksiden,solsiden). 
 placestat(dokkterminalen,solsiden).  %% ? 
-placestat(domen,prinsen_kinosenter). 
-placestat(domkirka,prinsen_kinosenter). 
-placestat(domkirken,prinsen_kinosenter). 
+placestat(domen,nidarosdomen). 
+placestat(domkirka,nidarosdomen). 
+placestat(domkirken,nidarosdomen). 
 
 %% placestat(dora,dora_1).  
 placestat(dorahallen,dora). 
@@ -3937,9 +3916,9 @@ placestat(døveskolen,skyttervegen).  %%
 
 placestat('Eberg skole',teglverkskrysset).
 placestat(ekle,eklesbakken). 
-placestat(elgeseter,professor_brochs_gate). 
-placestat(elgsetergata,professor_brochs_gate).  %% \+ sæterbakken
-placestat(erkebispegården,prinsen_kinosenter). 
+placestat(elgeseter,hesthagen). 
+placestat(elgsetergata,hesthagen).  %% \+ sæterbakken
+placestat(erkebispegården,nidarosdomen). 
 
 %% placestat(esso_motorhotell,brøsetvegen_186). %% Old name ! 
 
@@ -3954,7 +3933,7 @@ placestat(fengsel,tunga_kretsfengsel).
 placestat(fengselet,tunga_kretsfengsel). 
 placestat(festningen,ankers_gate). 
 placestat(festningsparken,ankers_gate).  %% ?
-placestat(filmteatret,prinsen_kinosenter). 
+placestat(filmteatret,nidarosdomen). 
 placestat(fischebygget,studentersamfundet). 
 placestat(flatåsen,flatåstoppen). %Nightbus
 placestat(flatåsensenteret,flatåsen_senter). 
@@ -3977,13 +3956,13 @@ placestat(grillstad,grilstadkleiva).
 placestat(grilstad,grilstadkleiva). 
 placestat(grilstadfjæra,grilstadkleiva). 
 
-placestat(hallset,søndre_hallset).  %% nordre søndre 
-placestat(halset,søndre_hallset).   %% nordre søndre
-placestat(hallsetvangen,søndre_hallset). %% RS-150104. Halset/Hallset Summer/Winter naming problem. 
+placestat(hallset,hallset).  %% nordre søndre 
+placestat(halset,hallset).   %% nordre søndre
+placestat(hallsetvangen,hallset). %% RS-150104. Halset/Hallset Summer/Winter naming problem. 
 placestat(hanger,hangeråsen). 
 placestat(hangersletta,hangeråsen).  %% aasen UN properstation
 placestat(hangerås,hangeråsen).  %% necessary because laura hangerås veg
-placestat(hansbakkfjæra,ranheim_skole).  %% map 
+placestat(hansbakkfjæra,granåsvegen).  %% map 
 placestat(harbour,pirbadet).  %% English the harbour
 %placestat(haukvatnet,haukåsen).        %% RS-140502. Haukåden was removed from AtB's routes 140102 
 placestat(haukvatnet,dalgård).          %  placestat(haukvatnet,lian).
@@ -3999,7 +3978,7 @@ placestat(havsteinflata,havstadsenteret).
 placestat(havsteinflaten,havstadsenteret). 
 
 placestat('Heimdal politistasjon',heimdal_stasjon).  %%
-placestat(heimdalsentrum,heimdal_sentrum). 
+placestat(heimdalsentrum,heimdal_stasjon). 
 placestat(hoeggen,hoeggen_skole). 
 placestat(holtermannsveien,valøyvegen). 
 placestat(horneberg,hornebergvegen). 
@@ -4009,7 +3988,7 @@ placestat(hospitalløkken,hospitalskirka).
 placestat(hospitalsløkkan,hospitalskirka). 
 placestat(hospitalsløkka,hospitalskirka). %% hospitalslokka 
 %% placestat(hostel,weidemannsveien). %% * P-hotels %% TA-101202
-placestat('Hotell Augustin',torget).  %% Brage 
+placestat('Hotell Augustin',hovedterminalen).  %% Brage 
 placestat(hurtigbåten,pirbadet). 
 placestat(hurtigbåtkaia,pirbadet). 
 placestat(hurtigbåtkaia,pirbadet). 
@@ -4055,26 +4034,26 @@ placestat(jonsvannet,solbakken_bru). %% TA-110202
 placestat(kaia,pirbadet). 
 placestat(kanalen,solsiden). 
 placestat(karinelund,strinda_kirke). 
-placestat(katedralen,prinsen_kinosenter). 
-placestat(katedralskolen,prinsen_kinosenter). 
+placestat(katedralen,nidarosdomen). 
+placestat(katedralskolen,nidarosdomen). 
 placestat(kbs,strindheim).
 placestat(kbs_senteret,strindheim).
-placestat(kinosenteret,prinsen_kinosenter). 
-placestat(kirka,prinsen_kinosenter).  %%Uncertain
+placestat(kinosenteret,nidarosdomen). 
+placestat(kirka,nidarosdomen).  %%Uncertain
 placestat(klefstad,klefstadhaugen). 
 placestat(klostergata,studentersamfundet).  %% (Øya?)_2
 %placestat(klæbu,klæbu_sentrum).  %% klæbu_skysstasjon rutehefte/
 %placestat(klæbu_skysstasjon,klæbu_sentrum).  %% klæbu_skysstasjon rutehefte/ %% RS-141101 Old
-placestat(kolstad,torplassen). 
-placestat(kolstadflata,torplassen). 
-placestat(kolstadsenter,torplassen). 
-placestat(kolstadsenteret,torplassen).  %%?
+placestat(kolstad,casper_lundes_veg). 
+placestat(kolstadflata,casper_lundes_veg). 
+placestat(kolstadsenter,casper_lundes_veg). 
+placestat(kolstadsenteret,casper_lundes_veg).  %%?
 placestat(kolsås,flatåstoppen).  %% også Bærum
 placestat(kolsåsen,flatåstoppen). 
 placestat(kolsåstoppen,flatåstoppen). 
 placestat(kongens_gate,hovedterminalen).  %% jeg skal til kongens gate. 
 placestat(kongsvegen,granåsen_vm_anlegget). 
-placestat(korsvika,lade_kirke). 
+placestat(korsvika,krutthusbakken). 
 placestat(kotenghallen,vestre_rosten). %%  private?
 placestat(kretsfengselet,tunga_kretsfengsel). 
 placestat(kristiansten,ankers_gate). 
@@ -4089,7 +4068,7 @@ placestat(kvilhaugen,strinda_vgs).     %% RS-20190920 NEW ROAD!
 %%¤¤¤ %% ulykke AtB %% TA-100715
 %%%%%%placestat(lade,lade_alle_80).  %% ( lade-alle_80 more passages)
 %%¤¤¤
-placestat(lade_alle,lade_alle_80).  %%
+placestat(lade_alle,lade_allé_80).  %%
 %placestat(lade_arena,lade_alle_80).  %& RS-141122  Moved to isat (station, place)...
 %placestat(lade_arena,jørgen_b_lysholms_vei).  %% Bussen står og venter her ganske lenge!  %% RS-141122
 
@@ -4099,7 +4078,7 @@ placestat(lademoen_kirke,rosendal).
  %% placestat(lademoen_skole,mellomv_5). 
 %placestat(lademoparken,buran). 
 %placestat(ladeparken,buran). 
-placestat(ladeskolen,lade_kirke). 
+placestat(ladeskolen,krutthusbakken). 
 placestat(ladetorget,østmarkveien). 
 %placestat(lamoparken,buran). 
 placestat(langlohaugen,langlo). 
@@ -4110,14 +4089,14 @@ placestat(leangenhallen,bromstadsvingen).
 placestat(legard,legårdsbakken). 
 placestat(legevakta,st_olavs_hospital). 
 placestat(legevakten,st_olavs_hospital). 
-placestat(leinstrand,leinstrand_samf_hus). %% RS-140616 leinstrand_samfunnshus?
+placestat(leinstrand,leinstrand_samfunnshus). %% RS-140616 leinstrand_samfunnshus?
 placestat(leira,leira_skole). 
 placestat(leirbrua,leirbrua_gård). 
 placestat(lerkendalskrysset,lerkendal_stadion). 
 placestat(lerkendalsvegen,gløshaugen). 
-placestat(leuthenhaven,torget). 
+placestat(leuthenhaven,hovedterminalen). 
 %% placestat(lianvannet,lian). %% not AtB
-placestat('Lilleby skole',stiklestadveien).  %% Ladeveien 1 
+placestat('Lilleby skole',ladeveien).  %% Ladeveien 1 
 % placestat(lingit,moholt_storsenter). %% //confuse Lingit company
 placestat(lingit,moholt). %% TA-110401
 placestat(loholt_alle,lohove). 
@@ -4130,7 +4109,7 @@ placestat(lærerhøgskolen,rotvoll).
 placestat(mamoz,fiolsvingen). %% nardo_street-16). 
 placestat(marienborg,marienborg_stasjon).               %% RS-160108. Marienborg betyr stasjonen
 placestat(marineborgstasjon,marienborg_stasjon).        %% RS-130330. Marienborg er utgått 
-placestat(marinen,prinsen_kinosenter). 
+placestat(marinen,nidarosdomen). 
 placestat(mediahuset,maskinagentur). 
 
 placestat(norske_meierier,heggstadmoen_2). %% NB %% TA-110705
@@ -4140,8 +4119,8 @@ placestat(norske_meierier,heggstadmoen_2). %% NB %% TA-110705
 % placestat(migosenter,migosenteret). 
 % placestat(migosenteret,migosenteret).  %% halset internal name
 
-placestat(misjonskirken,prinsen_kinosenter).  %% Arkitekt Christies gt
-placestat(moholtkrysset,omkjøringsveien_moholt). 
+placestat(misjonskirken,nidarosdomen).  %% Arkitekt Christies gt
+placestat(moholtkrysset,moholt_omkjøringsvei). 
 placestat(moholtområdet,moholt). 
 placestat(moholtsenteret,moholt_storsenter).  
 placestat(moholtterasse,moholt).  %% ???
@@ -4163,18 +4142,18 @@ placestat(nardoskole,nardokrysset).
 placestat(nardosletta,nardosenteret).  %% Names should not disappear
 placestat(nardovegen,dybdahls_veg). 
 
-placestat(nattbussterminalen,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB %% TA-100715
+placestat(nattbussterminalen,olav_tryggvasons_gate_ot1). %% CORREC %% TA-101203 %% AtB %% TA-100715
 placestat(nattbussterminalen,hovedterminalen). %% CORREC %% TA-101203 %% AtB %% TA-100715
 
 placestat(nedre_elvehavn,solsiden).  %%(?)
 placestat(nedre_møllenberg,bakkegata). 
 placestat(neptunveien,risvollan_senter). 
-placestat('Ni muser',prinsen_kinosenter). 
+placestat('Ni muser',nidarosdomen). 
 placestat(nidar,strindheim). 
 placestat(nidarbergene,strindheim). 
 placestat(nidarfabrikken,strindheim). 
 placestat(nidaros,hovedterminalen).  %% New name for midtbyn 
-placestat(nidarosdomen,prinsen_kinosenter). 
+placestat(nidarosdomen,nidarosdomen). 
 placestat(nidarvoll,nidarvoll_skole). 
 placestat(nidarvollsykehjem,nygård). 
 %placestat(nidarø,trondheim_spektrum). %% not sum08
@@ -4186,13 +4165,13 @@ placestat(nissekollen,fiolsvingen).
 
 %% placestat(nordre,nordre_gate).  %% nordre general//HAZARD
 
-placestat(nordre_halset,migosenteret). %% renamed
-placestat(nrk,tyholttårnet). 
+placestat(nordre_halset,hallset). %% renamed
+placestat(nrk,strinda_vgs). 
 
 placestat(nth,gløshaugen).  %%
 placestat(nth,prestegårdsjordet).  %%
 
-placestat(ntnu_lade,harald_hårfagres_gate).  %% Changed Name %<---
+placestat(ntnu_lade,ingemann_torps_vei).  %% Changed Name %<---
 placestat(ntnui,høgskoleringen).  
 %placestat(nyhavna,nidelv_bru).  %%(?) %% nedlagt 22. mars %% TA-110822 %% RS-150814
 placestat(nyveilia,bjørndalsbrua). 
@@ -4201,10 +4180,10 @@ placestat(nyveilia,bjørndalsbrua).
 placestat(okstadbrinken,kroppanmarka). 
 placestat(okstadtunet,okstad). 
 %placestat(olav_tryggvasons_gate,sentrum). %% CORREC %% TA-101203 %% AtB %% TA-100715 %% RS-121223 %% RS-151219 Moved to "sentrum-cluster" above
-placestat(olavshallen,nova_kinosenter). 
-placestat(olavskvartalet,nova_kinosenter). 
-placestat(olavskvarteret,nova_kinosenter). 
-placestat(olavsstatuen,torget). 
+placestat(olavshallen,olav_tryggvasons_gate_ot2). 
+placestat(olavskvartalet,olav_tryggvasons_gate_ot2). 
+placestat(olavskvarteret,olav_tryggvasons_gate_ot2). 
+placestat(olavsstatuen,hovedterminalen). 
 placestat(olavsgården,strindheim). %% Thonning Owesens gate 20 
 
 %% placestat(ole_aasveds_street,gryta). 
@@ -4231,9 +4210,9 @@ placestat(plantasjen,strindheim_hageby).  %% baldershage 18
 
  %% placestat(posthuset,postterminalen).  %%(\=p. h. isentrum)
 
-placestat(prinsen,prinsen_kinosenter). 
-placestat(prinsen,prinsen_kinosenter).  %%NB PRINSEN is also a fictitious station
-placestat(prinsenkino,prinsen_kinosenter). 
+placestat(prinsen,nidarosdomen). 
+placestat(prinsen,nidarosdomen).  %%NB PRINSEN is also a fictitious station
+placestat(prinsenkino,nidarosdomen). 
 %placestat(prinsens,prinsen_kinosenter).  %%(pga avertering) %% RS-140102 Veldig tvetydig: "prinsens gt p1" == To stopp og en gate?!
 %placestat(prinsens_gate,prinsen_kinosenter). RS-140101. prinsens_gate_p1 (og _p2) er nye offisielle navn på sentrumstasjonen! 
 %placestat(prinsens_gate,prinsens_gate_p1).     %% Doesn't work... Just one is the prefferred one. Use isat(X, prinsenkrysset)?
@@ -4280,11 +4259,11 @@ placestat(rosenborghallen,gyldenløves_gate). %% TA-101025
 %% placestat(rosten,rostengrenda).
 %% placestat(rosten,rostengrenda). 
 
-placestat(rostenhallen,kvt). 
+placestat(rostenhallen,østre_rosten). 
 placestat(rostenkrysset,østre_rosten). 
 placestat(rotvollfjæra,rotvoll).  %%?
 placestat(rønning,rønningsbakken). 
-placestat(rådhuset,torget). 
+placestat(rådhuset,hovedterminalen). 
 
 placestat(sandgata,hospitalskirka).    %% RS-141021 TEMPORARY REMOVED, construction in kongensgt. %% RS-150104 Restarted
 placestat(sandgata,hospitalskirka).    %% RS-141021 Sandgata er en ny (midlertidig) stasjon ifm veiarbeid i Kongensgt.
@@ -4294,7 +4273,7 @@ placestat(saupstad,saupstadsenteret).
 placestat(saupstadkrysset,saupstadsenteret).  %%?
 placestat(saupstadskole,midteggen). 
 placestat(saupstadvegen,heimdal_stasjon). 
-placestat(saxenborg,saxenborg_alle). 
+placestat(saxenborg,dalen_hageby). 
 placestat(schrøder,fossegrenda). 
 %placestat(servicekontoret,dronningens_gate_d2).        %% RS-130812 Gammelt TT-kontor!
 %%placestat(singsaker,asbjørnsens_gate). %% RS-131218. Moved towards Rosenborg Skole? 
@@ -4325,13 +4304,13 @@ placestat(spongdalskole,spongdal).
 
 %% placestat(st_olavs_gate,torget). %%  \+ tramflag not used at AtB
 
-placestat(stabbursmoenskole,heimdal). 
-placestat(statens_hus,prinsen_kinosenter). 
+placestat(stabbursmoenskole,heimdal_stasjon). 
+placestat(statens_hus,nidarosdomen). 
 
 placestat(statoil_rotvoll,rotvoll). %% TA-110627 ? isat? %% RS-150104
 
-placestat(stavne,tempe_kirke).  %% confuse hvor langt er det fra stavne bro til breidablikk
-placestat(stavnebro,tempe_kirke). %% RS-150104. Stavnebrua Station closed in 2014.
+placestat(stavne,lerkendal).  %% confuse hvor langt er det fra stavne bro til breidablikk
+placestat(stavnebro,lerkendal). %% RS-150104. Stavnebrua Station closed in 2014.
 
 %%%                       placestat(steinan,vestlia).  %% NOT nattbussen
 
@@ -4354,12 +4333,12 @@ placestat(studenterhytta,skistua).
 %placestat(studentersamfundet,studentersamfundet_1).  %% AtB %% NB \+ isat      %% RS-141020, changed name from s-samfundet_1 to s-samfundet %% This line messes up the next line?
                                                                                 %%N: fra astrononmvegen til samf.
 placestat(studentersamfundet,studentersamfundet).  %% AtB %% NB \+ isat         %% RS-141020    Feedback from Norvald Ryeng. studentersamfundet (K) and _1 are missing without this line!
-placestat(studentersamfundet,studentersamfundet_2).  %% TA-100922  %% RS-140901 %% Reverserte disse
+%placestat(studentersamfundet,studentersamfundet_2).  %% TA-100922  %% RS-140901 %% Reverserte disse
 placestat(stjørdal,stjørdal_stasjon).        %% RS-150815. New bus added 310/410.
 
 placestat(sunnland,karl_jonssons_veg).  %%sunnlandskole
 placestat(sunnlandskole,karl_jonssons_veg). 
-placestat(svartlamon,strandveien).  %% NB veien
+placestat(svartlamon,buran).  %% NB veien
 placestat(sverresborg,trøndelag_folkemuseum). 
 placestat(sykehusbrua,tvetestien). 
 %% placestat(sykehuset,st_olavs_hospital).  %% causes trouble sykehuset st olav
@@ -4370,21 +4349,21 @@ placestat(sykepleierskolen,st_olavs_hospital).
 %placestat(tanem, tanemsmoen). %% RS-150111     %% RS-150111. Using isat/2 instead.
 placestat(tavern,trøndelag_folkemuseum). 
 placestat(tavernaen,trøndelag_folkemuseum). 
-placestat(teateret,prinsen_kinosenter).       %% 
-placestat(teatret,prinsen_kinosenter).
+placestat(teateret,nidarosdomen).       %% 
+placestat(teatret,nidarosdomen).
 
 placestat(tegleverksveien, teglverkskrysset).
 placestat(teglgården,fossegrenda). 
 placestat(teglverket,teglverkskrysset).  %%(tegle)
 
-placestat(teknobyen,professor_brochs_gate).  %%(?)
-placestat(teknostallen,professor_brochs_gate). 
+placestat(teknobyen,hesthagen).  %%(?)
+placestat(teknostallen,hesthagen). 
 placestat(telenorbygget,magnus_berrføtts_veg). 
 placestat(tf,magnus_berrføtts_veg). 
 placestat('Tiller kirke',moltmyra_øst).  
 placestat(tiller,torvtaket). 
 %% placestat(tiller,moltmyra).  %% moltmyra_øst//bare en retning
-placestat(tillerbruvegen,tiller_bru). 
+placestat(tillerbruvegen,tiller_bru). %% sommer discrepancie ?
 placestat(tillerbyen,tonstadgrenda).  %%?koieflata). 
 
 %% placestat(tillertorget,city_syd).  %% Ivar Lykkes veg 3 
@@ -4394,11 +4373,11 @@ placestat(tomasskolen,bakkegata).
 placestat(tonstad,tonstadkrysset). 
 placestat('Torbjørn Bratts veg',fiolsvingen). 
 placestat(transitten,brøset_hageby).  %% (nb transittgata->strandveien)
-placestat(trikkehallen,professor_brochs_gate). 
-placestat(trikkestallen,professor_brochs_gate). 
+placestat(trikkehallen,hesthagen). 
+placestat(trikkestallen,hesthagen). 
 placestat(trondheim_spektrum, skansen). %% RS-150913
-placestat(trondheim_torg,torget). 
-placestat(trondheimstorget,torget). 
+placestat(trondheim_torg,hovedterminalen). 
+placestat(trondheimstorget,hovedterminalen). 
 placestat(trondsletten,brøset_hageby). %% beh. senter
 placestat(trønderenergi,tunga_kretsfengsel). 
 placestat(tunga,tunga_kretsfengsel).  %%(tunga=tungata=tunv#)
@@ -4419,15 +4398,15 @@ placestat(valøygrenda,valøyvegen).
 placestat(vegvesen,postterminalen). 
 placestat(vegvesenet,postterminalen). 
 placestat(veitrafikktilsynet,e_verket). 
-placestat(verdensteatret,prinsen_kinosenter). 
+placestat(verdensteatret,nidarosdomen). 
 placestat(vestoppfarten,møllebakken). 
 placestat(vikåsenhallen,markaplassen_skole). 
 placestat(vitenskapsmuseet,hospitalskirka).  %%  \+s
  %% placestat(voldsminde,mellomv_5).  
  %% placestat(voldsmindet,mellomv_5). 
 placestat(voll,voll_studentby). 
-placestat(væresbukta,være). 
-placestat(væresholmen,være). 
+placestat(væresbukta,være_ranheimsvegen). 
+placestat(væresholmen,væresholmen). 
 placestat(witro,fossegrenda). 
 placestat(åsheim,åsheim_skole). 
 placestat(åsheimhallen,åsheim_skole). 
@@ -4494,8 +4473,8 @@ sameplace(bratsberveien,bratsbergvegen).
 sameplace(brattsbergveien,bratsbergvegen). 
 sameplace(bredablikk,breidablikk). 
 sameplace(breidablik,breidablikk). 
-sameplace(brochsgt,professor_brochs_gate). 
-sameplace(brocksgt,professor_brochs_gate). 
+sameplace(brochsgt,hesthagen). 
+sameplace(brocksgt,hesthagen). 
 
 sameplace(broset,brøset). %%  brodet hageby
 
@@ -4705,7 +4684,7 @@ sameplace(hegstamoen,heggstadmoen).
 sameplace(hekstadmoen,heggstadmoen).
 sameplace(heimdalstasjon,heimdal_stasjon). 
 sameplace(herlofsonløypa,herlofsonsløypa).  %%2sp
-sameplace(hestehagen,professor_brochs_gate). 
+sameplace(hestehagen,hesthagen). 
 sameplace(hogskoleringen,høgskoleringen). 
 sameplace(holtermannsveg,holtermannsveien). 
 sameplace(holtermannsvei,holtermannsveien). 
@@ -4777,13 +4756,13 @@ sameplace(kattskinnet,kalvskinnet).
 sameplace(kattskjinnet,kalvskinnet).
 sameplace(kbssenter,kbs_senteret). 
 sameplace(kbssenteret,kbs_senteret). 
-sameplace(kinosenter,prinsen_kinosenter). 
+sameplace(kinosenter,nidarosdomen). 
 sameplace(kirkesæterøra,kyrkseterøra). 
 sameplace(kirksæterøra,kyrkseterøra). 
 sameplace(klabu,klæbu). 
 sameplace(klebu,klæbu).  %% ikke spell på foreign ?
 sameplace(koieflate,koieflata). 
-sameplace(kolstadsenter,torplassen). 
+sameplace(kolstadsenter,casper_lundes_veg). 
 sameplace(kojflata,koieflata). 
 sameplace(kongøysteinsv,kong_øysteins_veg).  %%alas
 sameplace(kongøysteinsvei,kong_øysteins_veg). 
@@ -4807,7 +4786,7 @@ sameplace(ladehammern,ladehammeren).  %%gammern
 sameplace(ladejarlen,ladejarlen_v_g_s).
 sameplace(ladejarlen,ladejarlen_v_g_s). 
 sameplace(lademoenkirke,lademoen_kirke). 
-sameplace(ladesletta,haakon_vii_gate).  %%neib
+%sameplace(ladesletta,haakon_vii_gate).  %%neib
 sameplace(ladeuniversitet,ntnu_lade). 
 sameplace(larkedal,lerkendal). %% eng 
 sameplace(leangentravbane,travbanen). 
@@ -4890,8 +4869,8 @@ sameplace(nidarøhallen,trondheim_spektrum).
 sameplace(nidarøhallene,trondheim_spektrum). 
 sameplace(nordslett,nordslettveien_snuplass). %%  \+ nordset
 sameplace(nordslettveiensnuplass,nordslettveien_snuplass). %% vegen 
-sameplace(nova,nova_kinosenter). 
-sameplace(novakino,nova_kinosenter). 
+sameplace(nova,olav_tryggvasons_gate_ot2). 
+sameplace(novakino,olav_tryggvasons_gate_ot2). 
 sameplace(ntnulade,ntnu_lade). 
 sameplace(nygaard,nygård).
 sameplace(nyvegbakken,nyveibakken). 
@@ -4906,8 +4885,8 @@ sameplace(okstadbakken,okstad).
 sameplace(olavsgate,st_olavs_gate). 
 sameplace(olavshospital,st_olavs_hospital). 
 sameplace(olavshospitalet,st_olavs_hospital). 
-sameplace(olavtryggvasonsgate,olav_tryggvasons_gate). 
-sameplace(olavtrygvasonsgt,olav_tryggvasons_gate). 
+sameplace(olavtryggvasonsgate,olav_tryggvasons_gate_ot1). 
+sameplace(olavtrygvasonsgt,olav_tryggvasons_gate_ot1). 
 sameplace(orkangerskole,orkanger_skole).
 sameplace(ostmarkveien,østmarkveien).
 sameplace(othelianborg,othilienborg). 
@@ -4959,14 +4938,14 @@ sameplace(prestgårdsjordet,prestegårdsjordet).
 sameplace(prinsegata,prinsens_gate). 
 sameplace(prinsegaten,prinsens_gate). 
 sameplace(prinsengt,prinsens_gate).  %%(actual)
-sameplace(prinsenkinosenter,prinsen_kinosenter). 
-sameplace(prinsenkinosenteret,prinsen_kinosenter). 
-sameplace(prinsensgatekinoene,prinsen_kinosenter). 
+sameplace(prinsenkinosenter,nidarosdomen). 
+sameplace(prinsenkinosenteret,nidarosdomen). 
+sameplace(prinsensgatekinoene,nidarosdomen). 
 sameplace(priterminalen,pirbadet).  
 
-sameplace(prof,professor_brochs_gate).   %% RS-160109  Too specific?
-sameplace(professorbrochsgate,professor_brochs_gate). 
-sameplace(professorbrochs,professor_brochs_gate). 
+sameplace(prof,hesthagen).   %% RS-160109  Too specific?
+sameplace(professorbrochsgate,hesthagen). 
+sameplace(professorbrochs,hesthagen). 
 
 sameplace(ragnhildsgt,ragnhlds_gate). 
 sameplace(rambech,f_rambech).  %% F Rambech 
@@ -5148,7 +5127,7 @@ sameplace(teglverkskysset,teglverkskrysset).
 sameplace(tekleverkstunet,teglverkskrysset).  %% contagation
 
 sameplace(tempehallen,nidelvhallen). 
-sameplace(tempekirke,tempe_kirke). 
+sameplace(tempekirke,lerkendal). 
 %% sameplace(tempevegen11,tempevegen_11). %% unnec %% TA-101118
 sameplace(tev,e_verket).  %% OBS generates te-veien
 sameplace(thaulow,thaulowbakken). 
@@ -5178,33 +5157,33 @@ sameplace(tonsdakryset,tonstadkrysset).
 sameplace(tonstadsvei,sivert_thonstads_vei).  %%etc
 sameplace(tonstakrysse,tonstadkrysset).  %% 2 ch dif
 sameplace(torgardsletta,torgardssletta). 
-sameplace(torgkvartalet,torget). 
+sameplace(torgkvartalet,hovedterminalen). 
 %% sameplace(torgplassen,torget). %% ? torplassen 
-sameplace(torgsenteret,torget).  
-sameplace(torplas,torplassen). 
-sameplace(torpsplass,torplassen).  %%?
+sameplace(torgsenteret,hovedterminalen).  
+sameplace(torplas,casper_lundes_veg). 
+sameplace(torpsplass,casper_lundes_veg).  %%?
 sameplace(torpveien,ingemann_torps_vei). %ingemann_torps_street).  %%station
-sameplace(torvet,torget).  %% catch spell-error?
-sameplace(torvplassen,torget). 
+sameplace(torvet,hovedterminalen).  %% catch spell-error?
+sameplace(torvplassen,hovedterminalen). 
 sameplace(travbanestasjonen,travbanen). 
 sameplace(travparken,travbanen). 
 sameplace(trhsentralstasjon,ts). %% AtB. 
 sameplace(trondheimsentral,ts). %% AtB. 
 sameplace(trondheimsentralstasjon,ts). %% AtB. 
 sameplace(trondheimstasjon,ts). %% AtB. %% inc  tronheimstasjon
-sameplace(trondheimtorg,torget).  %% tronheimtårg
+sameplace(trondheimtorg,hovedterminalen).  %% tronheimtårg
 sameplace(trondhjem,trondheim). 
 sameplace(tronheimfengsel,tunga_kretsfengsel). 
-sameplace(tryggvassonsgate, olav_tryggvasons_gate). %%  AtB %% TA-100515
-sameplace(tryggvassonsgt,olav_tryggvasons_gate).    %% AtB  %% TA-100515
+sameplace(tryggvassonsgate, olav_tryggvasons_gate_ot1). %%  AtB %% TA-100515
+sameplace(tryggvassonsgt,olav_tryggvasons_gate_ot1).    %% AtB  %% TA-100515
 sameplace(trøndermeieriet,norske_meierier). 
 sameplace(tungstadkrysset,tonstadkrysset). 
 sameplace(tvereggen,tverregga).  %% Confusion
 sameplace(tverreggen,tverregga). 
 
-sameplace(tyholtstårnet,tyholttårnet). %% tyholtstarnet 
-sameplace(tyholtornet,tyholttårnet).   %% NB 1 t in route db
-sameplace(tyholtårnet,tyholttårnet).   %% allow tyholtårent 
+sameplace(tyholtstårnet,strinda_vgs). %% tyholtstarnet 
+sameplace(tyholtornet,strinda_vgs).   %% NB 1 t in route db
+sameplace(tyholtårnet,strinda_vgs).   %% allow tyholtårent 
                                        %% changed to tyholttårnet Xmas 08
 sameplace(tåget,ts). %% AtB. 
 sameplace(tågstasjonen,ts). %% AtB. 
@@ -5282,10 +5261,10 @@ short_specname(dronningens_gate_d2,'Dronn. gt D2').
 
 
 short_specname(einar_tambarskjelves_gt,'Einar Tambarskj. gt'). 
-short_specname(haakon_vii_gate_17,'Haakon7. gate 17'). 
+%short_specname(haakon_vii_gate_17,'Haakon7. gate 17'). 
 short_specname(haakon_vii_gate_25,'Haakon7. gate 25'). 
 %%short_specname(haakon_vii_gate_29,'Haakon7. gate 29'). 
-short_specname(haakon_vii_gate_9,'Haakon7. gate 9'). 
+%short_specname(haakon_vii_gate_9,'Haakon7. gate 9'). 
 short_specname(heimdal_stasjon,'Heimdal st. ').  %% Extra sp
 short_specname(hovedterminalen,'Sentrumsterminalen'). 
 short_specname(johan_falkbergets_vei,'J Falkbergets v'). 
@@ -5303,22 +5282,22 @@ short_specname(kongens_gate_k2,'Kongens gt K2').
 short_specname(kongensgate_k1,'Kongens gt K1'). 
 short_specname(kongensgate_k2,'Kongens gt K2'). 
  
-short_specname(munkegata_m1,'Munkegt M1'). %% AtB
-short_specname(munkegata_m2,'Munkegt M2'). 
-short_specname(munkegata_m3,'Munkegt M3'). 
-short_specname(munkegata_m4,'Munkegt M4'). 
-short_specname(m41,'Munkegt M41'). 
-short_specname(munkegata_m5,'Munkegt M5'). 
-
-short_specname(m1,'Munkegt M1'). 
-short_specname(m2,'Munkegt M2'). 
-short_specname(m3,'Munkegt M3'). 
-short_specname(m4,'Munkegt M4'). 
-short_specname(m41,'Munkegt M41'). 
-short_specname(m5,'Munkegt M5'). 
+%short_specname(munkegata_m1,'Munkegt M1'). %% AtB
+%short_specname(munkegata_m2,'Munkegt M2'). 
+%short_specname(munkegata_m3,'Munkegt M3'). 
+%short_specname(munkegata_m4,'Munkegt M4'). 
+%short_specname(m41,'Munkegt M41'). 
+%short_specname(munkegata_m5,'Munkegt M5'). 
+%
+%short_specname(m1,'Munkegt M1'). 
+%short_specname(m2,'Munkegt M2'). 
+%short_specname(m3,'Munkegt M3'). 
+%short_specname(m4,'Munkegt M4'). 
+%short_specname(m41,'Munkegt M41'). 
+%short_specname(m5,'Munkegt M5'). 
 
 short_specname(moholt_studentby,'Moholt stud. by'). 
-short_specname(munkegata,'Munkegt'). 
+%short_specname(munkegata,'Munkegt'). 
 
 short_specname(p1,'Prins. gt P1').
 short_specname(p4,'Prins. gt P4').
@@ -5331,11 +5310,11 @@ short_specname(prinsens_gate_p4,'Prins. gt P4'). %% AtB
 short_specname(prinsens_gt_p1,'Prins. gt P1'). %% AtB
 short_specname(prinsens_gt_p4,'Prins. gt P4'). %% AtB
 
-short_specname(prinsen_kinosenter,'Prinsen kinos. '). 
-short_specname(professor_brochs_gate,'Prof. Brochs gt'). 
+short_specname(nidarosdomen,'Prinsen kinos. '). 
+short_specname(hesthagen,'Prof. Brochs gt'). 
 short_specname(ranheim_stasjon,'Ranheim st. '). 
-short_specname(studentersamfundet_1,'Stud. samf. 1'). 
-short_specname(studentersamfundet_2,'Stud. samf. 2'). 
+%short_specname(studentersamfundet_1,'Stud. samf. 1'). 
+%short_specname(studentersamfundet_2,'Stud. samf. 2'). 
 short_specname(ts,'Trondheim S'). 
 
 short_specname(ts_10,'Trondheim S 10').  %% old names
@@ -5498,11 +5477,11 @@ specname(granåsen_gård,'Granåsen gård').
 specname(granåsen_vm_anlegget,'Granåsen VM-anlegget'). 
 specname(gudes_gt,'Gudes gate'). 			 %% EH-030616
 specname(gudruns_gate,'Gudruns gate'). 			 %% EH-030616
-specname(haakon_vii_gt,'Haakon VII gate'). 
-specname(haakon_vii_gate_17,'Haakon den sjuendes gate 17'). 
+%specname(haakon_vii_gt,'Haakon VII gate'). 
+%specname(haakon_vii_gate_17,'Haakon den sjuendes gate 17'). 
 specname(haakon_vii_gate_25,'Haakon den sjuendes gate 25'). 
 %%specname(haakon_vii_gate_29,'Haakon den sjuendes gate 29'). 
-specname(haakon_vii_gate_9,'Haakon den sjuendes gate 9'). 
+%specname(haakon_vii_gate_9,'Haakon den sjuendes gate 9'). 
 specname(hallfred_høyems_vei,'Hallfred Høyems vei'). 
 specname(halstein_gård,'Halstein gård'). 
 specname(harald_bothnersv,'Harald Bothners vei'). 	 %% EH-030616
@@ -5532,7 +5511,7 @@ specname(johan_falkbergets_vei,'Johan Falkbergets veg').  %%Talsmann
 specname(johan_p_kroglundsv,'Johan P Kroglunds vei'). 
 specname(johan_tillers_vei,'Johan Tillers vei').  %% EH-031017
 specname(johannes_minsaas_veg,'Johannes Minsaas veg'). 
-specname(john_aae_s_veg,'John Aaes veg').  %% (avoid, Aae`s in return)
+%specname(john_aae_s_veg,'John Aaes veg').  %% (avoid, Aae`s in return)
 specname(jørgen_b_lysholms_vei,'Jørgen B Lysholms vei'). 
 specname(k_jonssons_veg,'Karl Jonssons vei'). 
 specname(k_o_thornæs_vei,'K O Thornæs vei').  %% EH-030616
@@ -5559,19 +5538,15 @@ specname(køff,'KØFF').
 
 
 specname(lade_all,'Lade allé'). %% 'Lade allé').  AtB
-specname(lade_alle_80,'Lade allé 80'). 
+specname(lade_allé_80,'Lade allé 80'). 
 
 
-specname(lade_alle,'Lade allé'). %% 'Lade allé').  AtB
-specname(lade_alle_80,'Lade allé 80'). 
-
-
-specname(lade_kirke,'Lade kirke'). 
+specname(lade_gård,'Lade kirke'). 
 specname(ladejarlen_v_g_s,'Ladejarlen skole'). %% realspeak 
 specname(lademoen_kirke,'Lademoen kirke'). 
 specname(lademoen_skole,'Lademoen skole'). 
 specname(leangen_all,'Leangen allé'). 
-specname(leangen_alle,'Leangen allé'). 
+specname(leangen_allé,'Leangen allé'). 
 specname(leira_sk,'Leira skole').
 specname(leirfossveien,'Leirfossveien'). 
 specname(leirøya,'Leirøya'). 
@@ -5583,21 +5558,21 @@ specname(lundåsen_n,'Lundåsen nedre').  %% Talsmann
 %% specname(løvaasveien,'Løvaasveien').  %% TA-110530  unnec
 
 
-specname(munkegata_m0, 'Munkegata M0').  
-specname(munkegata_m1, 'Munkegata M1'). 
-specname(munkegata_m2, 'Munkegata M2'). 
-specname(munkegata_m3, 'Munkegata M3'). 
-specname(munkegata_m4, 'Munkegata M4'). 
-specname(munkegata_m5, 'Munkegata M5'). 
-specname(munkegata_m41, 'Munkegata M41').%% TA-110107
-specname(m41, 'Munkegata M41'). %% SIC (in route data) %% TA-110107
-
-specname(m0, 'Munkegata M0').  %% keep old names also 
-specname(m1, 'Munkegata M1').  %%
-specname(m2, 'Munkegata M2').  %%
-specname(m3, 'Munkegata M3').  %%
-specname(m4, 'Munkegata M4').  %%
-specname(m5, 'Munkegata M5').  %%
+%specname(munkegata_m0, 'Munkegata M0').  
+%specname(munkegata_m1, 'Munkegata M1'). 
+%specname(munkegata_m2, 'Munkegata M2'). 
+%specname(munkegata_m3, 'Munkegata M3'). 
+%specname(munkegata_m4, 'Munkegata M4'). 
+%specname(munkegata_m5, 'Munkegata M5'). 
+%specname(munkegata_m41, 'Munkegata M41').%% TA-110107
+%specname(m41, 'Munkegata M41'). %% SIC (in route data) %% TA-110107
+%
+%specname(m0, 'Munkegata M0').  %% keep old names also 
+%specname(m1, 'Munkegata M1').  %%
+%specname(m2, 'Munkegata M2').  %%
+%specname(m3, 'Munkegata M3').  %%
+%specname(m4, 'Munkegata M4').  %%
+%specname(m5, 'Munkegata M5').  %%
 
 specname(magnus_berføttsvei,'Magnus Berføtts vei').  %% EH-031017
 specname(magnus_blindesv,'Magnus Blindes vei'). 	  %% EH-030616
@@ -5630,7 +5605,7 @@ specname(nordre_halset,'Nordre Hallset').
 specname(nordre_hoem,'Nordre Hoem'). 
 specname(nordslettveien_snuplass,'Nordslettveien snuplass'). 
 specname(norske_meierier,'Norske meierier'). 
-specname(nova_kinosenter,'Nova kinosenter').  %%k
+specname(olav_tryggvasons_gate_ot2,'Nova kinosenter').  %%k
 specname(nrk,'NRK'). 
 specname(nth,'NTH'). 
 specname(ntnu,'NTNU'). 
@@ -5643,14 +5618,14 @@ specname(okstadøy,'Okstadøy').
 specname(ola_setroms_vei,'Ola Setroms vei'). 
 specname(olaf_bulls_vei,'Olaf Bulls vei'). 	
 specname(olav_engelbrektssons_all,'Olav Engelbrektssons allé').   %% AtB %% TA-101018
-specname(olav_engelbrektssons_alle,'Olav Engelbrektssons allé').  %% EH-031017
+specname(olav_engelbrektssons_allé,'Olav Engelbrektssons allé').  %% EH-031017
 specname(olav_nygårdsv,'Olav Nygårds vei'). 
 specname(olav_trygvassons_gt,'Olav Tryggvasons gate').  %% AtB MISSPELLEDINDATABASE
 specname(olav_tryggvasons_gt,'Olav Tryggvasons gate').  %%Default
 
 specname(omkjøringsv_klæbuvveien,'Omkjøringsveien Klæbuveien').  %% EH-031121
-specname(omkjøringsveien_moholt,'Omkjøringsveien Moholt'). 
-specname(omkjøringsveien_nardo,'Omkjøringsveien Nardo').
+specname(moholt_omkjøringsvei,'Omkjøringsveien Moholt'). 
+specname(nardo_omkjøringsvei,'Omkjøringsveien Nardo').
 
 specname(orkanger_skole,'Orkanger skole'). %% RS-131222. Flere!
 
@@ -5663,7 +5638,7 @@ specname(peder_morsets_vei,'Peder Morsets vei').
 specname(persaunet_leir,'Persaunet leir'). 
 specname(persaunev,'Persaunevegen'). %% outdated?
 specname(prestegårdsjordet,'Prestegårdsjordet').  %% (error)
-specname(prinsen_kinosenter,'Prinsen kinosenter').  
+specname(nidarosdomen,'Prinsen kinosenter').  
 specname(prinsens_gate,'Prinsens gate'). 
 
 specname(prinsens_gate_p1,'Prinsens gate P1'). %% RS-140102
@@ -5720,14 +5695,14 @@ specname(stavset_senter_2,'Stavset senter 2').  %%, holdeplass 2').
 specname(steinanstudentby,'Steinan studentby'). 
 specname(strinda_kirke,'Strinda kirke'). 
 specname(strindheim_sk,'Strindheim skole'). 
-specname(studentersamfundet_1,'Studentersamfundet 1'). 
-specname(studentersamfundet_2,'Studentersamfundet 2'). 
+%specname(studentersamfundet_1,'Studentersamfundet 1'). 
+%specname(studentersamfundet_2,'Studentersamfundet 2'). 
 specname(støren_st,'Støren stasjon'). 
 specname(sverresborg_alle,'Sverresborg allé'). 
 specname(sverresborg_folkemuseum,'Sverresborg folkemuseum'). 
 specname(sæterbakken_bratsberg,'Sæterbakken Bratsberg'). 
-specname(søndre_gate_22,'Søndre gate 22'). 
-specname(søndre_gate_23,'Søndre gate 23'). 
+specname(olav_tryggvasons_gate_ot3,'Søndre gate 22'). 
+specname(olav_tryggvasons_gate_ot3,'Søndre gate 23'). 
 specname(søndre_hoem,'Søndre Hoem'). 
 specname(søndregate,'Søndre gate').  %% The neighbourhood (22/23)
 
@@ -5735,8 +5710,8 @@ specname(tagore,'Tagore').
 
 specname(tbane,'T-bane'). 
 specname(tempevegen_11,'Tempevegen 11'). 
-specname(tempe_kirke,'Tempe kirke').   
-specname(tempe_kirke,'Tempe kirke').  %% Airbus name
+specname(lerkendal,'Tempe kirke').   
+specname(lerkendal,'Tempe kirke').  %% Airbus name
 specname(tf,'Telenor Forskningssenter'). 
 specname(thora_storms_vei,'Thora Storms vei'). 
 specname(tilleringen_130,'Tillerringen 130').  %% (erri)
@@ -5811,7 +5786,6 @@ synplace(lensvika, lensvik_hurtigbåtkai).
 
 synplace(ladeparken, lademoparken).
 synplace(lamoparken, lademoparken).
-synplace(lamoparken, lademoparken).
 
 synplace(easmith,e_a_smith). 
 
@@ -5826,7 +5800,7 @@ synplace(morseths,morsets). %% NEC
 synplace(ostmarka,østmarka). 
 %% synplace(ola,ila). %% Hazard? %% TA-110328
 
-synplace(olavtrygvasonsgate,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB
+synplace(olavtrygvasonsgate,olav_tryggvasons_gate_ot1). %% CORREC %% TA-101203 %% AtB
 
 synplace(polishuset,ts). %% AtB. %%  ts is neib). 
 
@@ -5840,7 +5814,7 @@ synplace(staøren,støren). %% TA-101221
 %% synplace(steinåsen,seinåsen). 
 
 %% synplace(stiklestadveien,stiklastadveien). %% fixed 
-synplace(stiklesveien,stiklestadveien). %% ?
+synplace(stiklesveien,ladeveien). %% ?
 
 synplace('va|retraøa',værestrøa).
 synplace(val,valentinlyst).
@@ -5854,7 +5828,7 @@ synplace(torpsvei,torps_vei).
 synplace(oppland,opland).
 synplace(prestegårsjordet,prestegårdsjordet).
 synplace(endeholdepl,endehpl).
-synplace(tyholtårnet,tyholttårnet).   %% NB 1 t
+synplace(tyholtårnet,strinda_vgs).   %% NB 1 t
 
 
 synplace('by''n',sentrum).  %%By'n==>'by''n'
@@ -5888,7 +5862,8 @@ synplace(alvheimsveien,alfheimsvingen).
 synplace(ambjørnsensgate,asbjørnsens_gate).  %%(nospellc)
 synplace(amfundet,samfundet).  %%neib
 synplace(amfunnet,samfundet).  %%
-synplace(amigosenteret,migosenteret). %% TA-100519
+synplace(amigosenteret,hallset). %% TA-100519
+synplace(migosenteret,hallset). %% TA-100519
 synplace(amunkegata,munkegata). 
 synplace(andersbuensgate,anders_buens_gate). 
 synplace(andersbuesgate,anders_buens_gate). 
@@ -6024,9 +5999,9 @@ synplace(breidablikk,breidablik).  %%breidablikkveien->breidablikveien
 synplace(breidablikkskole,breidablikk_skole). 
 %synplace(broch,brochs).  %% \+ spc because known
 synplace(broch,odd_brochmanns_street).  %% RS-160108
-synplace(brochs,professor_brochs_gate).  %%?
-synplace(brochsgate,professor_brochs_gate). 
-synplace(brochsvei,professor_brochs_gate).
+synplace(brochs,hesthagen).  %%?
+synplace(brochsgate,hesthagen). 
+synplace(brochsvei,hesthagen).
 synplace(brogs,brochs). 
 synplace(bromsdat,bromstad). 
 synplace(bromsetsvingen,bromstadsvingen). 
@@ -6096,7 +6071,7 @@ synplace(bysentralen,hovedterminalen).
 %%  synplace(bysn).  byen | byåsen ?
 synplace(byterminalen,hovedterminalen). 
 synplace(byterminal,hovedterminalen).  
-synplace(bytårnet,tyholttårnet).  
+synplace(bytårnet,strinda_vgs).  
 synplace(byås,byåsen). 
 synplace(byåse,byåsen). 
 synplace(byåsenhallen,byåsen_videregående_skole).   
@@ -6502,7 +6477,7 @@ synplace(hansfinnesgt,hans_finnes_street).
 synplace(hanskebakken,hanskemakerbakken). 
 synplace(hanskemakerveien,hanskemakerbakken). 
 synplace(hansmakerbakken,hanskemakerbakken). 
-synplace(haraldbothnersvei,harald_bothners_veg). 
+%synplace(haraldbothnersvei,harald_bothners_veg). 
 synplace(haraldhårfagresgate,harald_hårfagres_street).  
 synplace(haraldhårfagresgt,harald_hårfagres_street).  
 synplace(haraldhårfagresvei,harald_hårfagres_street).  
@@ -6523,7 +6498,7 @@ synplace(hogskoleparken,høyskoleparken).
 
 synplace(haøyskoleparken,høyskoleparken). %%   Nec 
 
-synplace(heimdalsbyen,heimdal_sentrum). 
+synplace(heimdalsbyen,heimdal_stasjon). 
 synplace(heimdalsentralstasjon,heimdal_stasjon). 
 synplace(heimdalst,heimdal_stasjon). 
 synplace(helhus,melhus). 
@@ -6535,8 +6510,8 @@ synplace(henry,henrik).
 synplace(herløfs,herlofsons) . %% ? 
 
 synplace(herlofsenløypa,herlofsonsløypa). 
-synplace(hestehaven,professor_brochs_gate). 
-synplace(hesthaven,professor_brochs_gate). 
+synplace(hestehaven,hesthagen). 
+synplace(hesthaven,hesthagen). 
 %% synplace(himmelen,værnes).  %% -> airplane 
 synplace(himmelportalen,perleporten). 
 synplace(hjelstrupsvei,christian_jelstrups_v).  %%
@@ -6873,8 +6848,8 @@ synplace(ladehalvøya,lade).
 synplace(ladejarlen,ladejarlen_v_g_s).
 synplace(ladejarlenvgs,ladejarlen_v_g_s). 
 synplace(ladejarlenvideregående,ladejarlen_v_g_s). 
-synplace(ladekirka,lade_kirke). 
-synplace(ladekirke,lade_kirke). 
+synplace(ladekirka,lade_gård). 
+synplace(ladekirke,lade_gård). 
 synplace(lademoens,lademoen).  %%kirkealle
 synplace(laden,lade).
 synplace(ladeområdet,lade). 
@@ -6959,19 +6934,12 @@ synplace(løvåsveien,løvaasveien).  %% Prefer station
 synplace(løytenhaven,leuthenhaven). 
 synplace(løytnanthagen,leuthenhaven). 
 
-synplace(m0,hovedterminalen). 
-synplace(m1,munkegata_m1).  %%
-synplace(m2,munkegata_m2).  %%
-synplace(m3,munkegata_m3).  %%
-synplace(m4,munkegata_m4).  %%
-synplace(m5,munkegata_m5).  %%
-
-synplace(m0,hovedterminalen). 
-synplace(m1,munkegata_m1).  %%
-synplace(m2,munkegata_m2).  %%
-synplace(m3,munkegata_m3).  %%
-synplace(m4,munkegata_m4).  %%
-synplace(m5,munkegata_m5).  %%
+%synplace(m0,hovedterminalen). 
+%synplace(m1,munkegata_m1).  %%
+%synplace(m2,munkegata_m2).  %%
+%synplace(m3,munkegata_m3).  %%
+%synplace(m4,munkegata_m4).  %%
+%synplace(m5,munkegata_m5).  %%
 
 synplace(magnusblindes,magnusblindes). 
 synplace(malhus,melhus). 
@@ -7012,9 +6980,9 @@ synplace(michael,michel).
 synplace(midarvoll,nidarvoll). %% ? 
 synplace(midtgen,midteggen). 
 synplace(midtsandan,midtsanden). 
-synplace(migo,migosenteret).   %% TA-100519
-synplace(migosenter,migosenteret). 
-synplace(migosentre,migosenteret). %% TA-101004
+synplace(migo,hallset).   %% TA-100519
+synplace(migosenter,hallset). 
+synplace(migosentre,hallset). %% TA-101004
 synplace(mikael,michel).  %% grendahlsvei Nøddef
 synplace(minkegaten,munkegata). %% nec 
 synplace(minsås,minsaas). 
@@ -7120,9 +7088,9 @@ synplace(nordrehalset,nordre_halset). %% migosenteret).
 
 synplace(noreg,norge). 
 synplace(norgårds,nordgaards). 
-synplace(novakinosenter,nova_kinosenter). 
-synplace(nove,nova_kinosenter). 
-synplace(npva,nova_kinosenter). 
+synplace(novakinosenter,olav_tryggvasons_gate_ot2). 
+synplace(nove,olav_tryggvasons_gate_ot2). 
+synplace(npva,olav_tryggvasons_gate_ot2). 
 synplace(nrdo,nardo). 
 synplace(nsb,ts). %% AtB.  %%(=tog?)
 synplace(ntnt,ntnu). %%  sperr
@@ -7150,7 +7118,7 @@ synplace(nynu,ntnu).
 synplace(nyorg,nyborg). 
 synplace(nyveibk,nyveibakken). 
 synplace(nyåsen,byåsen). 
-synplace(nåva,nova_kinosenter). 
+synplace(nåva,olav_tryggvasons_gate_ot2). 
 synplace(oeveraas,øverås). 
 synplace(ofstisv,øfstis_vei).  %%einarofstisv. 
 synplace(okanger,orkanger).
@@ -7172,8 +7140,8 @@ synplace(olavnygårdsvei,olav_nygårds_vei).
 synplace(olavnygrdsvei,olav_nygårds_vei).  
 
 synplace(olavs,olav). 
-synplace(olavtryggvasonsgt,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB
-synplace(olavtrygvasonsgate,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB
+synplace(olavtryggvasonsgt,olav_tryggvasons_gate_ot1). %% CORREC %% TA-101203 %% AtB
+synplace(olavtrygvasonsgate,olav_tryggvasons_gate_ot1). %% CORREC %% TA-101203 %% AtB
 synplace(olderdal,olderdalen). 
 synplace(oldredal,olderdalen). 
 synplace(ole,ola). 
@@ -7315,9 +7283,9 @@ synplace(prinsgade,prinsens_gate).  %% (actual)
 synplace(prisentret,pirsenteret).  
 %% synplace(prisenteret,pirsenteret).  %% unnec
 synplace(prochs,brochs). 
-synplace(profbroch,professor_brochs_gate). 
+synplace(profbroch,hesthagen). 
 
-synplace(profbrochsgt,professor_brochs_gate). 
+synplace(profbrochsgt,hesthagen). 
 synplace(prov,prof).
 synplace(psentrum,sentrum). 
 synplace(qurens,ourens). %% ? 
@@ -7331,7 +7299,7 @@ synplace(ranheimkirka,ranheim_kirke).
 synplace(ranheimkirke,ranheim_kirke). 
 synplace(ranheimsidrettsplass,ranheim_idrettsplass). 
 synplace(ranheimsidrettsplassen,ranheim_idrettsplass). 
-synplace(ranheimskole,ranheim_skole). %% Hastus
+synplace(ranheimskole,granåsvegen). %% Hastus
 synplace(ranheom,ranheim). 
 synplace(rare,rate).     %% ?
 synplace(rat,rate). %% ?
@@ -7449,8 +7417,8 @@ synplace(rønningsgabkken,rønningsbakken).
 
 synplace(rørås,røros). 
 synplace(røvik,rørvik). 
-synplace(sakseborgveien,saxenborg_alle). 
-synplace(sakseborgvn,saxenborg_alle). 
+synplace(sakseborgveien,dalen_hageby). 
+synplace(sakseborgvn,dalen_hageby). 
 synplace(saksenborg,saxenborg). 
 synplace(saksevigs,saksviks). 
 synplace(saksvig,saksviks). 
@@ -7462,8 +7430,8 @@ synplace(saland,sælands).
 synplace(salgskontore,servicekontoret). 
 synplace(salgskontorene,servicekontoret). 
 synplace(salgskontoret,servicekontoret). 
-synplace(samf1,studentersamfundet_1). 
-synplace(samf2,studentersamfundet_2). 
+%synplace(samf1,studentersamfundet_1). 
+%synplace(samf2,studentersamfundet_2). 
 synplace(samfun,samfund). %% studne samfun 
 synplace(samfun,studentersamfundet). 
 synplace(samfunft,samfundet). 
@@ -7489,9 +7457,9 @@ synplace(saupstasentret,saupstadsenteret).
 synplace(saupstseneret,saupstadsenteret). 
 synplace(saustadsentret,saupstadsentret). 
 synplace(saustaringen,saupstadringen_109). 
-synplace(saxeborgveien,saxenborg_alle). 
-synplace(saxeborgvn,saxenborg_alle). 
-synplace(saxenborgale,saxenborg_alle). 
+synplace(saxeborgveien,dalen_hageby). 
+synplace(saxeborgvn,dalen_hageby). 
+synplace(saxenborgale,dalen_hageby). 
 synplace(saxenborgen,saxenborg). 
 synplace(saøndre,søndre). %% sÃ¸ndre halset? %% //u n d e r s p_place
 synplace(saørborgen,sørborgen). %% NB \+ sørberg %% TA-101108
@@ -7683,8 +7651,8 @@ synplace(steintrøa,steintrøveien).
 synplace(stensbakken,ny_steinsbakken). 
 synplace(stiftsgårn,stiftsgården). 
 synplace(stikkelstad,stiklestad).  %%
-synplace(stikkelstadveien,stiklestadveien). 
-synplace(stikklestadvegen,stiklestadveien). 
+synplace(stikkelstadveien,strandveikaia). 
+synplace(stikklestadvegen,strandveikaia). 
 synplace(stjørdaln,stjørdalen). 
 synplace(stjørdarn,stjørdalen). 
 synplace(stmarka,østmarka). %% ø trøbbel 
@@ -7700,7 +7668,7 @@ synplace(stolavssykehus,st_olavs_hospital).
 synplace(storlin,storlien). 
 synplace(storen,støren). 
 synplace(storsenter,senter). 
-synplace(stortorget,torget). 
+synplace(stortorget,hovedterminalen). 
 synplace(strandkaia,strandveikaia). %
 synplace(strandkaien,strandveikaia). 
 synplace(strandkaivegen,strandveikaia). 
@@ -7764,8 +7732,8 @@ synplace(søndemoen,sandmoen).  %%contag
 
 
 synplace(søndregate,søndre_street). %% Nec %% TA-110526
-synplace(søndregate_22,søndre_gate_22). 
-synplace(søndregate_23,søndre_gate_23). 
+synplace(søndregate_22,olav_tryggvasons_gate_ot3). 
+synplace(søndregate_23,olav_tryggvasons_gate_ot3). 
 synplace(søndregt,søndregate).  %%NBsynSyndrome
 
 
@@ -7874,7 +7842,7 @@ synplace(thaulwlobakken,thaulowbakken).
 synplace(theisendamen,theisendammen). 
 synplace(thoming,thonning). %% Owesen
 synplace(thonstad,tonstad). 
-synplace(thorsplassen,torplassen).  %%
+synplace(thorsplassen,casper_lundes_veg).  %%
 synplace(thouwlowbakken,thauwlowbakken). 
 synplace(thrheim,trondheim). 
 synplace(thonheim,trondheim). 
@@ -7893,7 +7861,7 @@ synplace(togbanestasjon,ts). %% AtB.
 % synplace(toget,ts). %% AtB // no torget ? %% 
 synplace(togsentral,ts). %% AtB. 
 synplace(togsentralen,ts). %% AtB. 
-synplace(toholdttårnet,tyholttårnet). 
+synplace(toholdttårnet,strinda_vgs). 
 synplace(tonstad,thonstad). 
 synplace(tonstad,thonstad).  %%Nec???
 synplace(tonstadbrinken,tonstad). 
@@ -7902,26 +7870,26 @@ synplace(tonstads,thonstads).
 synplace(tonstadsvei,thonstadsvei). 
 synplace(tonstagrena,tonstadgrenda). 
 synplace(tonstagrenna,tonstadgrenda). 
-synplace(toorvplassen,torget). 
+synplace(toorvplassen,hovedterminalen). 
 synplace(tordenskjol,tordenskiolds). 
 synplace(tordenskjoldsgate,tordenskiolds_gate).  %%Problems
 synplace(tordenskjoldsgt,tordenskiolds_gate). %inregtrikketc. 
 synplace(tordenskjols,tordenskiolds).  %%NBio
-synplace(torg,torget). 
-synplace(torge,torget).  %%nospellbecausetorg|torget
-synplace(torndheimtorg,torget). 
+synplace(torg,hovedterminalen). 
+synplace(torge,hovedterminalen).  %%nospellbecausetorg|torget
+synplace(torndheimtorg,hovedterminalen). 
 synplace(torne,thornæs). 
 synplace(tornesvei,k_o_thornæs_vei). 
-synplace(torsplass,torplassen).  %%
+synplace(torsplass,casper_lundes_veg).  %%
 synplace(torsvei,tors_veg). 
 synplace(torsvn,tors_veg). 
 synplace(torv,torg). 
-synplace(torvet,torget). 
-synplace(torvet,torget). 
+synplace(torvet,hovedterminalen). 
+synplace(torvet,hovedterminalen). 
 synplace(torvoll,rotvoll). 
 synplace(torvtakeket,torvtaket). 
-synplace(tovet,torget). 
-synplace(tprvet,torget). 
+synplace(tovet,hovedterminalen). 
+synplace(tprvet,hovedterminalen). 
 synplace(trafikksentralen,ts). %% AtB. 
 synplace(trafikkterminalen,hovedterminalen). 
 synplace(trafikkterminal,hovedterminalen). %% ? Moa traf.
@@ -7960,20 +7928,20 @@ synplace(trondheimsterminalen,ts). %% AtB.
 synplace(trondheimterminalen,ts). %% AtB.  %% ?
 synplace(trondheimterminalstasjon,ts). %% AtB.  %% used that way
 synplace(trondheimtrafikkstasjon,ts). %% AtB. 
-synplace(trondheitorg,torget). 
+synplace(trondheitorg,hovedterminalen). 
 synplace(trondhjemsdistriktet,trondheim). 
 synplace(trondsentrum,hovedterminalen). 
 synplace(tronheim,trondheim). 
 synplace(tronhem,trondheim). 
 synplace(tronheom,trondheim). 
 synplace(tronjæm,trondheim). 
-synplace(trovet,torget).  %% trofet-vegen ?
-synplace(trtorg,torget). 
+synplace(trovet,hovedterminalen).  %% trofet-vegen ?
+synplace(trtorg,hovedterminalen). 
 synplace(trudvengveien,trudevang_street).  %% dev. . 
 synplace(tryggvassons,trygvassons).  %% local misspell
 synplace(trygvason,tryggvason). 
 synplace(trygvason,tryggvasons). 
-synplace(trygvasonsgt,olav_tryggvasons_gate). %% CORREC %% TA-101203 %% AtB
+synplace(trygvasonsgt,olav_tryggvasons_gate_ot1). %% CORREC %% TA-101203 %% AtB
 synplace(tråjæm,trondheim). 
 synplace(trødheim,trondheim). 
 synplace(tsrindheim,strindheim). 
@@ -7984,16 +7952,16 @@ synplace(tungafengselet,tunga_kretsfengsel).
 synplace(tungakretsfengsel,tunga_kretsfengsel). 
 synplace(tungakrysset,iskremfabrikken).  %% (?)
 synplace(tunge,tunga). 
-synplace(turge,torget). 
+synplace(turge,hovedterminalen). 
 synplace(tvestien,tvetestien). %% TA100107
 synplace(tvedesiten,tvetestien). 
 synplace(tveitanstien,tvetestien). 
 synplace(tydalen,tydal).  %% (ikke Nydalen)
 synplace(tyhikt,tyholt).  %% dbl neib
-synplace(tyholttaarnet,tyholttårnet). 
-synplace(tyholttårn,tyholttårnet). 
-synplace(tyholtårndt,tyholttårnet). 
-synplace(tårnet,tyholttårnet). %% <- 
+synplace(tyholttaarnet,strinda_vgs). 
+synplace(tyholttårn,strinda_vgs). 
+synplace(tyholtårndt,strinda_vgs). 
+synplace(tårnet,strinda_vgs). %% <- 
 synplace(tæglegården,teglgården). 
 synplace(tæretrøa,værestrøa). %% off name  %% ?
 synplace(uantinlyst,valentinlyst).  %% ?
@@ -8241,8 +8209,7 @@ underspecified_place(grensen).
 %%   underspecified_place(gård). %% Stavne gård is not U
 
 underspecified_place(gården). 
-underspecified_place(haakon_vii_gate).  %% Despair 
-underspecified_place(hageby). 
+%underspecified_place(haakon_vii_gate).  %% Despair 
 underspecified_place(hageby). 
 underspecified_place(hist). 
 underspecified_place(hotell). 

@@ -362,7 +362,7 @@ crerr1 :-
 
   nl, write('Undefined - identifiers... (db/places.pl) placestat/2'),nl,nl,
 
-  set_of(X, (station_reference(X), \+ buslog:hpl(_,X,_Off)),
+  set_of(X, (station_reference(X), \+ buslog:hpl(_,X,_Off), \+ places:isat(_,X)),
 
       Z),
 

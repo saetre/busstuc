@@ -15141,7 +15141,7 @@ noun2(flyplats,airport).   %%    (Swedish)
 noun2(flygplats,airport).  %%    (Swedish)
 noun2(flyghavn,airport).   %%    (Danish)
 noun2(flyhavn,airport).  
-noun2(lufthavn,airport).   %%
+%noun2(lufthavn,airport).   %%
 
 noun2(forfalskning,forgery).
 

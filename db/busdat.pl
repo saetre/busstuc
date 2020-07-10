@@ -790,13 +790,13 @@ exbus(G) :- bus(G), \+ vehicletype(G,tram).
 
 %% Additional Airbus stations
 
-airbusstation(værnes). 
+%airbusstation(værnes). %% Can cause issue with normal busses going past værnes
 
 airbusstation(sorgenfriveien).
 airbusstation(bratsbergveien).
 airbusstation(valøyvegen).
-airbusstation(britannia).
-airbusstation(britannia_hotell).
+%airbusstation(britannia).
+%airbusstation(britannia_hotell).
 airbusstation(royal_garden).
 
 
