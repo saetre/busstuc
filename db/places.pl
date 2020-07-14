@@ -3396,6 +3396,11 @@ isat( hovedterminalen, sentrum ).  %% Experiment Trikk St. Olavs. gt og så sent
 
 isat(stavset_senter_syd, stavset_senter).
 isat(stavset_senter_nord, stavset_senter).
+isat(orkanger_torg, torget_orkanger).
+
+isat(hallset, migosenteret).
+isat(olav_tryggvasons_gate_ot2, nova_kinosenter).
+isat(nidarosdomen, prinsen_kinosenter).
 
 %isat( dr_gate_d1, sentrum ).   %% AtB 2015 format  %% RS-150815 Get rid of sentrum? Keep just as synonym/sameas/etc to hovedterminalen? 
 %isat( dr_gate_d2, sentrum ).   %% RS-151219 isat requires the stations to be "real stations". Idea: Try using discrepencies2( Fake, Real ) to avoid this?
@@ -3581,7 +3586,7 @@ isat(romolslia, romolslia). %% RS-150111. Trøbbel? Both station and neighborhoo
 isat(romolslia_øvre, romolslia). %% RS-150111. Trøbbel? HACK!! (Switched station and neighborhood!)
 
 isat(bratsbergvegen,sluppen).  %% postterminalen på sluppen
-isat(solbakken_bru,solbakken).  
+%isat(solbakken_bru,solbakken).  %% Sommer discrepancy %% AE - 200714
 isat(solbakken_skole,solbakken). 
 %isat(st_olavs_gate,sentrum).  %% not AtB. %% RS-141115. Yes! AtB includes Everything now?!? RS-151219 Moved to other sentrum-station above
 isat(stavset_senter,stavset).
@@ -3598,7 +3603,7 @@ isat(olav_tryggvasons_gate_ot3,royal_garden).
 %STATION is (one, but NOT preferred, among several) stations that belong to the neighbourhood of PLACE
 %% ISAT    ( Station , Neighbourhood )
 
-isat( lykkmarka, sjetnmarka ). %% Nightbus ..... Some summer discrepancie?
+%isat( lykkmarka, sjetnmarka ). %% Nightbus ..... Some summer discrepancie? TODO: fix when lykkmarka is back on table, for some reason buss 45 is not included in gtfs data
 isat( paul_skolemesters_veg, sjetnmarka ). 
 
 isat(tanem_bru, tanem). %% RS-150111 Langt unna
@@ -3725,7 +3730,7 @@ place_resolve(rutebilstasjonen,hovedterminalen).
 place_resolve(rutebilstasjonen,leuthenhaven). 
 place_resolve(rutebilstasjonen,ts). %% AtB. 
 
-place_resolve(solbakken,solbakken_bru). 
+%place_resolve(solbakken,solbakken_bru). TODO: switch on when available again
 place_resolve(solbakken,solbakken_skole).  %%solbakken->solbakken_bruaftersummer06,
 
 place_resolve(sorgendal,lerkendal). 
@@ -4028,9 +4033,8 @@ placestat(ilsvikøra,ilsvika).
 placestat(industribygget,solsiden). 
 placestat(innherredsveien,solsiden). 
 %% placestat(ishallen,bromstadsvingen). %% TA-101124 Station!
-placestat(jonsvannet,solbakken_bru). 
+%placestat(jonsvannet,solbakken_bru). 
 placestat(jonsvannsveikrysset,jonsvannsveien). 
-placestat(jonsvannet,solbakken_bru). %% TA-110202
 placestat(kaia,pirbadet). 
 placestat(kanalen,solsiden). 
 placestat(karinelund,strinda_kirke). 
@@ -4363,7 +4367,7 @@ placestat(tf,magnus_berrføtts_veg).
 placestat('Tiller kirke',moltmyra_øst).  
 placestat(tiller,torvtaket). 
 %% placestat(tiller,moltmyra).  %% moltmyra_øst//bare en retning
-placestat(tillerbruvegen,tiller_bru). %% sommer discrepancie ?
+%placestat(tillerbruvegen,tiller_bru). %% sommer discrepancie ? %% switch back on when it is available again
 placestat(tillerbyen,tonstadgrenda).  %%?koieflata). 
 
 %% placestat(tillertorget,city_syd).  %% Ivar Lykkes veg 3 
@@ -5863,7 +5867,7 @@ synplace(ambjørnsensgate,asbjørnsens_gate).  %%(nospellc)
 synplace(amfundet,samfundet).  %%neib
 synplace(amfunnet,samfundet).  %%
 synplace(amigosenteret,hallset). %% TA-100519
-synplace(migosenteret,hallset). %% TA-100519
+%synplace(migosenteret,hallset). %% TA-100519
 synplace(amunkegata,munkegata). 
 synplace(andersbuensgate,anders_buens_gate). 
 synplace(andersbuesgate,anders_buens_gate). 
