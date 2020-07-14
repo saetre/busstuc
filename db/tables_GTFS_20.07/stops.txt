@@ -244,8 +244,8 @@ NSR:StopPlace:44969,,Steen,,63.621918,10.529205,,,1,,2,,,700
 NSR:StopPlace:45817,,Skjelstad,,63.91048,10.930391,,,1,,2,,,700
 NSR:StopPlace:45819,,Lauvhammer,,64.45796,11.548385,,,1,,2,,,700
 NSR:StopPlace:42309,,Skottvoll,,63.30921,10.289422,,,1,,2,,,700
-NSR:StopPlace:42306,,Skola,,63.988117,10.202435,,,1,,2,,,700
 NSR:StopPlace:43637,,Engan,,64.262764,10.617662,,,1,,2,,,700
+NSR:StopPlace:42306,,Skola,,63.988117,10.202435,,,1,,2,,,700
 NSR:StopPlace:42789,,Leirvika,,63.6533,9.116838,,,1,,2,,,700
 NSR:StopPlace:43635,,Elvheim,,63.39782,10.387144,,,1,,2,,,700
 NSR:StopPlace:44962,,Solstad,,64.44668,11.804622,,,1,,2,,,700
@@ -283,18 +283,18 @@ NSR:StopPlace:45834,,Lilleenget,,64.47929,11.537422,,,1,,2,,,700
 NSR:StopPlace:44504,,Aglen,,64.63261,11.062909,,,1,,2,,,700
 NSR:StopPlace:43652,,Berg,,63.417686,9.516573,,,1,,2,,,700
 NSR:StopPlace:41473,,Edøy hurtigbåtkai,,63.28623,8.136833,,,1,,2,,,1000
-NSR:StopPlace:45836,,Rådyrvegen,,64.483444,11.544292,,,1,,2,,,700
 NSR:StopPlace:44505,,Heia,,64.3579,12.331213,,,1,,2,,,700
+NSR:StopPlace:45836,,Rådyrvegen,,64.483444,11.544292,,,1,,2,,,700
 NSR:StopPlace:42320,,Hagavika,,62.634125,11.836269,,,1,,2,,,700
 NSR:StopPlace:43650,,Berg,,63.379723,10.16709,,,1,,2,,,700
 NSR:StopPlace:44506,,Hellsenteret,,63.44859,10.913193,,,1,,2,,,700
 NSR:StopPlace:45837,,Mollstrand,,63.8428,10.681767,,,1,,2,,,700
-NSR:StopPlace:45839,,Skoglyvegen,,64.47405,11.535913,,,1,,2,,,700
 NSR:StopPlace:44508,,Bjørgan vegdele,,64.38934,12.340701,,,1,,2,,,700
+NSR:StopPlace:45839,,Skoglyvegen,,64.47405,11.535913,,,1,,2,,,700
 NSR:StopPlace:42329,,Skyttervegen,,63.36099,10.350651,,,1,,2,,,700
 NSR:StopPlace:44980,,Stegavik,,63.57227,10.348901,,,1,,2,,,700
-NSR:StopPlace:42327,,Vonheim,,63.146854,10.009318,,,1,,2,,,700
 NSR:StopPlace:43658,,Engvik,,62.593285,11.464105,,,1,,2,,,700
+NSR:StopPlace:42327,,Vonheim,,63.146854,10.009318,,,1,,2,,,700
 NSR:StopPlace:42326,,Skytterbanen,,63.358154,10.343101,,,1,,2,,,700
 NSR:StopPlace:45830,,Bogna bru nordre,,64.388756,11.400018,,,1,,2,,,700
 NSR:StopPlace:44983,,Storvika,,63.56341,10.328318,,,1,,2,,,700
@@ -399,8 +399,8 @@ NSR:StopPlace:42716,,Størenhallen snuplass,,63.036903,10.286243,,,1,,2,,,700
 NSR:StopPlace:42715,,Langlete,,62.95812,10.991882,,,1,,2,,,700
 NSR:StopPlace:42714,,Moen industriområde,,63.28347,10.434448,,,1,,2,,,700
 NSR:StopPlace:41866,,Tya,,62.966534,11.758395,,,1,,2,,,700
-NSR:StopPlace:42713,,Støren sentrum,,63.04746,10.282589,,,1,,2,,,700
 NSR:StopPlace:41867,,Røet,,63.29654,11.076358,,,1,,2,,,700
+NSR:StopPlace:42713,,Støren sentrum,,63.04746,10.282589,,,1,,2,,,700
 NSR:StopPlace:41864,,Rødsjøen,,63.779297,10.217772,,,1,,2,,,700
 NSR:StopPlace:42712,,Langfjæra,,63.6322,8.981858,,,1,,2,,,700
 NSR:StopPlace:42711,,Moen gård,,63.2788,10.446945,,,1,,2,,,700
@@ -443,13 +443,13 @@ NSR:StopPlace:44929,,Fagerli,,64.45131,11.854713,,,1,,2,,,700
 NSR:StopPlace:42749,,Lauvøy,,63.92237,9.927916,,,1,,2,,,700
 NSR:StopPlace:42746,,Moltmyra,,63.360878,10.394569,,,1,,2,,,700
 NSR:StopPlace:41897,,Rønsberg,,63.189613,11.166709,,,1,,2,,,700
-NSR:StopPlace:42744,,Sundet,,64.306015,10.469243,,,1,,2,,,700
 NSR:StopPlace:41898,,Hov,,63.308678,9.853832,,,1,,2,,,700
+NSR:StopPlace:42744,,Sundet,,64.306015,10.469243,,,1,,2,,,700
 NSR:StopPlace:42743,,Moholt studentby,,63.41328,10.432498,,,1,,2,,,700
 NSR:StopPlace:42742,,Lauglo,,63.35087,10.23254,,,1,,2,,,700
 NSR:StopPlace:45349,,Rinnleiret,,63.76535,11.438693,,,1,,2,,,700
-NSR:StopPlace:43169,,Nordgjerdet,,63.189915,10.131271,,,1,,2,,,700
 NSR:StopPlace:44019,,Fætten,,63.4409,9.3052,,,1,,2,,,700
+NSR:StopPlace:43169,,Nordgjerdet,,63.189915,10.131271,,,1,,2,,,700
 NSR:StopPlace:43166,,Killingdal,,63.43558,10.348933,,,1,,2,,,700
 NSR:StopPlace:43163,,Nordbotn kirke,,63.64868,9.13698,,,1,,2,,,700
 NSR:StopPlace:43162,,Spillebakken,,63.339848,10.578775,,,1,,2,,,700
@@ -463,15 +463,15 @@ NSR:StopPlace:44491,,Tømmervika,,64.6114,11.203174,,,1,,2,,,700
 NSR:StopPlace:44492,,Sagmo,,64.5581,12.47751,,,1,,2,,,700
 NSR:StopPlace:44493,,Veisetvegen,,63.39437,11.043717,,,1,,2,,,700
 NSR:StopPlace:44494,,Tømmerås,,64.44974,12.339427,,,1,,2,,,700
-NSR:StopPlace:45342,,Bogen,,64.01243,11.463464,,,1,,2,,,700
 NSR:StopPlace:44495,,Devikmoen,,64.62663,11.145467,,,1,,2,,,700
+NSR:StopPlace:45342,,Bogen,,64.01243,11.463464,,,1,,2,,,700
 NSR:StopPlace:44012,,Fykenborg,,63.420086,10.554949,,,1,,2,,,700
 NSR:StopPlace:45343,,Mulelia,,63.760868,11.405885,,,1,,2,,,700
 NSR:StopPlace:44496,,Brennmoen,,63.37144,11.072123,,,1,,2,,,700
 NSR:StopPlace:44013,,Carl Schjetnans veg,,63.371296,10.398595,,,1,,2,,,700
 NSR:StopPlace:44014,,Casper Lundes veg,,63.367817,10.357701,,,1,,2,,,700
-NSR:StopPlace:45345,,Brauta,,63.77458,11.479995,,,1,,2,,,700
 NSR:StopPlace:44498,,Devika,,64.631744,11.134708,,,1,,2,,,700
+NSR:StopPlace:45345,,Brauta,,63.77458,11.479995,,,1,,2,,,700
 NSR:StopPlace:46677,,Korsvollan,,64.29864,12.338739,,,1,,2,,,700
 NSR:StopPlace:44015,,Cecilie Thoresens veg,,63.42733,10.440393,,,1,,2,,,700
 NSR:StopPlace:45347,,Grønnlia,,63.76232,11.417497,,,1,,2,,,700
@@ -577,8 +577,8 @@ NSR:StopPlace:44074,,Gjæsingen kai,,63.92515,8.89777,,,1,,2,,,1000
 NSR:StopPlace:44075,,Gjølga,,63.794247,9.960421,,,1,,2,,,700
 NSR:StopPlace:46253,,Øyungen bru,,64.23859,11.058139,,,1,,2,,,700
 NSR:StopPlace:46254,,Inderøy vgs.,,63.876514,11.289351,,,1,,2,,,700
-NSR:StopPlace:44076,,Gjølme,,63.315914,9.809965,,,1,,2,,,700
 NSR:StopPlace:41802,,Holsmoen,,62.84397,9.903214,,,1,,2,,,700
+NSR:StopPlace:44076,,Gjølme,,63.315914,9.809965,,,1,,2,,,700
 NSR:StopPlace:46255,,Abelvær,,64.73176,11.183441,,,1,,2,,,700
 NSR:StopPlace:41800,,Rostengrenda,,63.36561,10.381975,,,1,,2,,,700
 NSR:StopPlace:46256,,Sakshaug skole,,63.87882,11.287151,,,1,,2,,,700
@@ -624,8 +624,8 @@ NSR:StopPlace:44411,,Fosslia Fjellhall,,63.478584,10.931214,,,1,,2,,,700
 NSR:StopPlace:43569,,Autotomta,,62.57091,11.386486,,,1,,2,,,700
 NSR:StopPlace:42238,,Skistugguveien,,62.562263,11.386786,,,1,,2,,,700
 NSR:StopPlace:45743,,Sandaunet,,64.059814,11.312168,,,1,,2,,,700
-NSR:StopPlace:43568,,Orkanger barnehage,,63.31037,9.858661,,,1,,2,,,700
 NSR:StopPlace:42237,,Grøtan vegkryss,,63.732037,9.676589,,,1,,2,,,700
+NSR:StopPlace:43568,,Orkanger barnehage,,63.31037,9.858661,,,1,,2,,,700
 NSR:StopPlace:43567,,Eide,,63.621742,8.930496,,,1,,2,,,700
 NSR:StopPlace:43577,,Bakkegata,,63.432343,10.407187,,,1,,2,,,700
 NSR:StopPlace:44425,,Ramsvikskogen,,64.51598,11.501999,,,1,,2,,,700
@@ -727,13 +727,13 @@ NSR:StopPlace:46631,,Vang,,63.84815,11.097377,,,1,,2,,,700
 NSR:StopPlace:45783,,Jådåren,,64.09657,11.446768,,,1,,2,,,700
 NSR:StopPlace:45784,,Follafoss kirke,,63.986233,11.114114,,,1,,2,,,700
 NSR:StopPlace:44453,,Flintvegen,,63.483208,10.966852,,,1,,2,,,700
-NSR:StopPlace:45301,,Branesvegen,,63.730923,11.285389,,,1,,2,,,700
 NSR:StopPlace:44454,,Finnvolldalen vegdele,,64.850845,13.030917,,,1,,2,,,700
+NSR:StopPlace:45301,,Branesvegen,,63.730923,11.285389,,,1,,2,,,700
 NSR:StopPlace:44455,,Vik kirke,,64.51101,11.29887,,,1,,2,,,700
 NSR:StopPlace:45786,,Klætt,,64.097855,11.433984,,,1,,2,,,700
-NSR:StopPlace:45303,,Momarkvegen,,63.729443,11.280435,,,1,,2,,,700
-NSR:StopPlace:46635,,Brasethammer,,63.839336,11.06648,,,1,,2,,,700
 NSR:StopPlace:44456,,Namsskogan Circle K,,64.93197,13.162236,,,1,,2,,,700
+NSR:StopPlace:46635,,Brasethammer,,63.839336,11.06648,,,1,,2,,,700
+NSR:StopPlace:45303,,Momarkvegen,,63.729443,11.280435,,,1,,2,,,700
 NSR:StopPlace:45787,,Korsenget,,64.099236,11.422146,,,1,,2,,,700
 NSR:StopPlace:43127,,Nicolaisen,,62.599495,11.501187,,,1,,2,,,700
 NSR:StopPlace:44457,,Stokkanvegen,,63.483734,10.930915,,,1,,2,,,700
@@ -759,20 +759,20 @@ NSR:StopPlace:44461,,Husvik vegdele,,64.52971,11.315622,,,1,,2,,,700
 NSR:StopPlace:46640,,Mosvik,,63.816875,11.003989,,,1,,2,,,700
 NSR:StopPlace:45792,,Østvik,,64.09533,11.386012,,,1,,2,,,700
 NSR:StopPlace:44462,,Tunnsjøelv,,64.71358,12.796236,,,1,,2,,,700
-NSR:StopPlace:45310,,Tyttebærvegen,,63.72071,11.273719,,,1,,2,,,700
 NSR:StopPlace:46642,,Meltingen,,63.79678,10.766647,,,1,,2,,,700
+NSR:StopPlace:45310,,Tyttebærvegen,,63.72071,11.273719,,,1,,2,,,700
 NSR:StopPlace:45794,,Bjørga Follafoss,,63.976166,11.085489,,,1,,2,,,700
 NSR:StopPlace:44464,,Vindsetmo,,64.52502,11.308421,,,1,,2,,,700
-NSR:StopPlace:45312,,Kreklingvegen,,63.722103,11.279382,,,1,,2,,,700
 NSR:StopPlace:44465,,Lindmoen,,64.7955,12.924795,,,1,,2,,,700
+NSR:StopPlace:45312,,Kreklingvegen,,63.722103,11.279382,,,1,,2,,,700
 NSR:StopPlace:46643,,Melakorsen,,64.2683,12.282862,,,1,,2,,,700
 NSR:StopPlace:45797,,Beitstad,,64.10782,11.39213,,,1,,2,,,700
 NSR:StopPlace:43139,,Solunda,,63.374496,10.091103,,,1,,2,,,700
 NSR:StopPlace:44467,,Hamnes,,64.51373,11.220719,,,1,,2,,,700
 NSR:StopPlace:46646,,Mosvik skole,,63.818615,11.005014,,,1,,2,,,700
-NSR:StopPlace:45315,,Høgberget snuplass,,63.723186,11.282264,,,1,,2,,,700
-NSR:StopPlace:46645,,Grande Mosvik,,63.82221,11.013197,,,1,,2,,,700
 NSR:StopPlace:44468,,Kjelmyrfossen,,64.83101,12.98819,,,1,,2,,,700
+NSR:StopPlace:46645,,Grande Mosvik,,63.82221,11.013197,,,1,,2,,,700
+NSR:StopPlace:45315,,Høgberget snuplass,,63.723186,11.282264,,,1,,2,,,700
 NSR:StopPlace:45799,,Torsveet,,63.953686,11.012635,,,1,,2,,,700
 NSR:StopPlace:46659,,Salsnes,,64.70303,11.441928,,,1,,2,,,700
 NSR:StopPlace:46658,,Jøa hurtigbåtkai,,64.637634,11.345774,,,1,,2,,,1000
@@ -789,13 +789,13 @@ NSR:StopPlace:42290,,Gylle,,63.29456,10.281427,,,1,,2,,,700
 NSR:StopPlace:44471,,Brekkvasselv,,64.8445,13.008837,,,1,,2,,,700
 NSR:StopPlace:46651,,Åring,,63.830383,10.949565,,,1,,2,,,700
 NSR:StopPlace:46650,,Moum,,64.27423,12.303005,,,1,,2,,,700
-NSR:StopPlace:45320,,Symrevegen,,63.726933,11.287565,,,1,,2,,,700
 NSR:StopPlace:44473,,Bjørhusdal vegdele,,64.91548,13.089856,,,1,,2,,,700
+NSR:StopPlace:45320,,Symrevegen,,63.726933,11.287565,,,1,,2,,,700
 NSR:StopPlace:44474,,Fosslandsosen,,64.540504,11.267413,,,1,,2,,,700
 NSR:StopPlace:45321,,Haug Kne,,64.13043,11.681766,,,1,,2,,,700
 NSR:StopPlace:46653,,Meltingseter vegdele,,63.790466,10.730412,,,1,,2,,,700
-NSR:StopPlace:45323,,Momarka barnehage,,63.727554,11.288238,,,1,,2,,,700
 NSR:StopPlace:44476,,Namsskogan,,64.928345,13.15914,,,1,,2,,,700
+NSR:StopPlace:45323,,Momarka barnehage,,63.727554,11.288238,,,1,,2,,,700
 NSR:StopPlace:44477,,Fossland,,64.54735,11.261234,,,1,,2,,,700
 NSR:StopPlace:46657,,Myrvika,,64.60464,11.427091,,,1,,2,,,700
 NSR:StopPlace:43149,,Karlsheim,,63.4079,10.50187,,,1,,2,,,700
@@ -815,8 +815,8 @@ NSR:StopPlace:46661,,Kvernvik,,64.73332,11.524471,,,1,,2,,,700
 NSR:StopPlace:44000,,Børskrysset E39,,63.322033,10.063109,,,1,,2,,,700
 NSR:StopPlace:44001,,Furuhaugen,,63.376595,10.339427,,,1,,2,,,700
 NSR:StopPlace:44485,,Årnes vegdele,,64.58467,11.26022,,,1,,2,,,700
-NSR:StopPlace:44002,,Børsa,,63.32614,10.069683,,,1,,2,,,700
 NSR:StopPlace:44486,,Jullum bru,,63.40132,10.946058,,,1,,2,,,700
+NSR:StopPlace:44002,,Børsa,,63.32614,10.069683,,,1,,2,,,700
 NSR:StopPlace:44488,,Årvika,,64.5931,11.259244,,,1,,2,,,700
 NSR:StopPlace:44489,,Solumsmoen,,64.578384,12.551505,,,1,,2,,,700
 NSR:StopPlace:44810,,Hildrem,,64.49337,11.946256,,,1,,2,,,700
@@ -839,8 +839,8 @@ NSR:StopPlace:42635,,Stråmyra,,63.64824,8.823426,,,1,,2,,,700
 NSR:StopPlace:41787,,Trøan,,62.64338,11.402412,,,1,,2,,,700
 NSR:StopPlace:43965,,Buvikkrysset E39,,63.307293,10.174458,,,1,,2,,,700
 NSR:StopPlace:42634,,Kvithylla,,63.565735,9.902139,,,1,,2,,,700
-NSR:StopPlace:41785,,Romolslia øvre,,63.37697,10.362483,,,1,,2,,,700
 NSR:StopPlace:42633,,Strindheim skole,,63.433,10.456021,,,1,,2,,,700
+NSR:StopPlace:41785,,Romolslia øvre,,63.37697,10.362483,,,1,,2,,,700
 NSR:StopPlace:43964,,Buvika,,63.310844,10.172474,,,1,,2,,,700
 NSR:StopPlace:42632,,Mikkelvegen,,63.37178,10.391139,,,1,,2,,,700
 NSR:StopPlace:43963,,Frengsmyra,,63.68848,9.890471,,,1,,2,,,700
@@ -926,8 +926,8 @@ NSR:StopPlace:42670,,Stykkan,,63.345993,10.013904,,,1,,2,,,700
 NSR:StopPlace:45708,,Hegge,,64.19958,11.990852,,,1,,2,,,700
 NSR:StopPlace:45709,,Røstadlia øvre,,63.75163,11.335799,,,1,,2,,,700
 NSR:StopPlace:43529,,Astronomvegen,,63.39316,10.409927,,,1,,2,,,700
-NSR:StopPlace:43526,,Onsøyen snekkeri,,63.24818,10.171874,,,1,,2,,,700
 NSR:StopPlace:42679,,Stølan,,63.791073,8.805863,,,1,,2,,,700
+NSR:StopPlace:43526,,Onsøyen snekkeri,,63.24818,10.171874,,,1,,2,,,700
 NSR:StopPlace:43525,,Dyrøy,,63.7985,8.682139,,,1,,2,,,700
 NSR:StopPlace:43524,,Aspøllkleivan,,63.1764,9.743955,,,1,,2,,,700
 NSR:StopPlace:42677,,Moabakken,,62.95299,10.741978,,,1,,2,,,700
@@ -951,8 +951,8 @@ NSR:StopPlace:42207,,Skaun bensinstasjon,,63.26816,10.056118,,,1,,2,,,700
 NSR:StopPlace:44861,,Kopperået,,63.589043,10.191788,,,1,,2,,,700
 NSR:StopPlace:43537,,Auka,,63.77694,8.746621,,,1,,2,,,700
 NSR:StopPlace:42205,,Vikhammeråsen,,63.43305,10.630478,,,1,,2,,,700
-NSR:StopPlace:42689,,Lakselva,,63.58022,8.959372,,,1,,2,,,700
 NSR:StopPlace:43536,,Oppdal skole,,62.594833,9.685876,,,1,,2,,,700
+NSR:StopPlace:42689,,Lakselva,,63.58022,8.959372,,,1,,2,,,700
 NSR:StopPlace:45710,,Lund Homnes,,64.02837,11.439749,,,1,,2,,,700
 NSR:StopPlace:42204,,Skauma bru,,62.81497,10.035122,,,1,,2,,,700
 NSR:StopPlace:42688,,Moan,,63.99075,10.448847,,,1,,2,,,700
@@ -968,8 +968,8 @@ NSR:StopPlace:44878,,Sagåsen,,63.767986,10.623691,,,1,,2,,,700
 NSR:StopPlace:43542,,Døsvik,,63.74032,9.679754,,,1,,2,,,700
 NSR:StopPlace:42210,,Grønberg,,63.41828,10.776193,,,1,,2,,,700
 NSR:StopPlace:45726,,Olderet,,64.006,11.191798,,,1,,2,,,700
-NSR:StopPlace:43541,,Aundalen,,63.277332,10.223092,,,1,,2,,,700
 NSR:StopPlace:42694,,Moan/Aasen,,62.598743,11.524984,,,1,,2,,,700
+NSR:StopPlace:43541,,Aundalen,,63.277332,10.223092,,,1,,2,,,700
 NSR:StopPlace:45727,,Sørholt,,63.754032,11.37266,,,1,,2,,,700
 NSR:StopPlace:43540,,Dørremsgrenda,,62.61549,9.537452,,,1,,2,,,700
 NSR:StopPlace:45728,,Hammer Skjevik,,64.030525,11.262161,,,1,,2,,,700
@@ -1007,8 +1007,8 @@ NSR:StopPlace:45730,,Brustu Skjevik,,64.03985,11.363899,,,1,,2,,,700
 NSR:StopPlace:44883,,Rota,,63.758274,10.597998,,,1,,2,,,700
 NSR:StopPlace:43559,,Aunhaugen,,63.337543,8.999851,,,1,,2,,,700
 NSR:StopPlace:43558,,Oppsynsmann Eggens veg,,63.34203,10.36073,,,1,,2,,,700
-NSR:StopPlace:45731,,Vada indre,,64.020325,11.216507,,,1,,2,,,700
 NSR:StopPlace:44400,,Gullholmstranda,,64.474335,11.451095,,,1,,2,,,700
+NSR:StopPlace:45731,,Vada indre,,64.020325,11.216507,,,1,,2,,,700
 NSR:StopPlace:42227,,Grønningsmarka,,63.511658,9.981894,,,1,,2,,,700
 NSR:StopPlace:45732,,Byborg,,63.74752,11.289545,,,1,,2,,,700
 NSR:StopPlace:42226,,Skilleås,,63.79708,10.075819,,,1,,2,,,700
@@ -1074,11 +1074,11 @@ NSR:StopPlace:43920,,Bruråk,,63.349285,10.497021,,,1,,2,,,700
 NSR:StopPlace:41742,,Trondheim S,,63.436108,10.40108,,,1,,2,,,700
 NSR:StopPlace:41750,,Hofstad,,64.19704,10.405546,,,1,,2,,,700
 NSR:StopPlace:70298,,Julan,,63.410484,10.937055,,,1,,2,,,700
-NSR:StopPlace:42608,,Midtbygda skole,,62.616005,9.565942,,,1,,2,,,700
 NSR:StopPlace:43939,,Buakrysset,,63.693207,8.470801,,,1,,2,,,700
+NSR:StopPlace:42608,,Midtbygda skole,,62.616005,9.565942,,,1,,2,,,700
 NSR:StopPlace:43938,,Brøttemsåsen,,63.256786,10.513586,,,1,,2,,,700
-NSR:StopPlace:42607,,Strandheim,,63.312515,9.863993,,,1,,2,,,700
 NSR:StopPlace:70296,,Julseth Østre,,63.392387,10.98488,,,1,,2,,,700
+NSR:StopPlace:42607,,Strandheim,,63.312515,9.863993,,,1,,2,,,700
 NSR:StopPlace:41758,,Rognheim,,63.3994,10.37312,,,1,,2,,,900
 NSR:StopPlace:43937,,Fossløkken,,63.128033,10.2446,,,1,,2,,,700
 NSR:StopPlace:43936,,Brøttemsmarka,,63.249,10.486451,,,1,,2,,,700
@@ -1152,8 +1152,8 @@ NSR:StopPlace:46551,,Trøakorsen,,63.90847,11.19078,,,1,,2,,,700
 NSR:StopPlace:45222,,Saurskorsen,,64.19167,11.930167,,,1,,2,,,700
 NSR:StopPlace:44376,,Namsos Samfunnshus,,64.465965,11.496286,,,1,,2,,,700
 NSR:StopPlace:45223,,Myran,,64.19302,11.942516,,,1,,2,,,700
-NSR:StopPlace:45226,,Garberg,,63.968903,11.409103,,,1,,2,,,700
 NSR:StopPlace:44379,,Namsos skysstasjon,,64.46456,11.492804,,,1,,2,,,700
+NSR:StopPlace:45226,,Garberg,,63.968903,11.409103,,,1,,2,,,700
 NSR:StopPlace:43059,,Nerskogveien,,62.922665,9.757389,,,1,,2,,,700
 NSR:StopPlace:43058,,Jensvoll,,62.934387,11.839923,,,1,,2,,,700
 NSR:StopPlace:43055,,Jensvolden,,62.607716,11.647325,,,1,,2,,,700
@@ -1222,8 +1222,8 @@ NSR:StopPlace:45292,,Gjemblekorsen,,63.74908,11.271148,,,1,,2,,,700
 NSR:StopPlace:45295,,Breidablikk,,63.74737,11.282601,,,1,,2,,,700
 NSR:StopPlace:45298,,Moan studentbolig,,63.738422,11.280862,,,1,,2,,,700
 NSR:StopPlace:43445,,Olalia,,63.58943,8.974138,,,1,,2,,,700
-NSR:StopPlace:42598,,Stranda,,63.198853,10.135358,,,1,,2,,,700
 NSR:StopPlace:42114,,Industrivegen,,63.49708,9.838119,,,1,,2,,,700
+NSR:StopPlace:42598,,Stranda,,63.198853,10.135358,,,1,,2,,,700
 NSR:StopPlace:44777,,Meådal,,63.4653,11.495402,,,1,,2,,,700
 NSR:StopPlace:43444,,Digre,,63.34393,10.519413,,,1,,2,,,700
 NSR:StopPlace:44778,,Tømmerdalen nedre,,63.63325,10.571946,,,1,,2,,,700
@@ -1249,14 +1249,14 @@ NSR:StopPlace:44776,,Kjølstad,,64.72361,12.357468,,,1,,2,,,700
 NSR:StopPlace:45623,,Markstein,,64.12099,11.773715,,,1,,2,,,700
 NSR:StopPlace:42115,,Veslenget,,62.675583,9.91544,,,1,,2,,,700
 NSR:StopPlace:44788,,Hestdalen,,63.600044,10.458611,,,1,,2,,,700
-NSR:StopPlace:43456,,Alset vegdele,,63.71141,10.318025,,,1,,2,,,700
 NSR:StopPlace:45635,,Grønnvika,,64.137276,11.87665,,,1,,2,,,700
+NSR:StopPlace:43456,,Alset vegdele,,63.71141,10.318025,,,1,,2,,,700
 NSR:StopPlace:42125,,Singsås stasjon,,62.956306,10.730078,,,1,,2,,,700
 NSR:StopPlace:43455,,Olav Nygards veg,,63.392017,10.348276,,,1,,2,,,700
 NSR:StopPlace:42124,,Vestmarka,,63.406475,10.325016,,,1,,2,,,900
 NSR:StopPlace:44789,,Rosendal,,64.80671,12.368691,,,1,,2,,,700
-NSR:StopPlace:42123,,Ingemann Torps vei,,63.446236,10.442506,,,1,,2,,,700
 NSR:StopPlace:43454,,Djupmyra,,63.34175,10.374271,,,1,,2,,,700
+NSR:StopPlace:42123,,Ingemann Torps vei,,63.446236,10.442506,,,1,,2,,,700
 NSR:StopPlace:44306,,Bangsund,,64.397,11.387302,,,1,,2,,,700
 NSR:StopPlace:45638,,Strinda,,64.135025,11.891335,,,1,,2,,,700
 NSR:StopPlace:42120,,Ingeborg Ofstads veg,,63.357296,10.399324,,,1,,2,,,700
@@ -1334,9 +1334,9 @@ NSR:StopPlace:44325,,Høgsneset,,64.22933,13.803801,,,1,,2,,,700
 NSR:StopPlace:42148,,Gressli,,63.059856,11.450716,,,1,,2,,,700
 NSR:StopPlace:45668,,Saursaunet,,64.08481,11.51926,,,1,,2,,,700
 NSR:StopPlace:43005,,Løkken boligfelt,,63.26903,10.215516,,,1,,2,,,700
+NSR:StopPlace:43004,,Nardokrysset,,63.40669,10.424068,,,1,,2,,,700
 NSR:StopPlace:42157,,Grilstadkleiva,,63.433685,10.500223,,,1,,2,,,700
 NSR:StopPlace:43488,,Anton Grevskotts veg,,63.40367,10.405687,,,1,,2,,,700
-NSR:StopPlace:43004,,Nardokrysset,,63.40669,10.424068,,,1,,2,,,700
 NSR:StopPlace:46515,,Ristad vegdele,,64.45251,11.891574,,,1,,2,,,700
 NSR:StopPlace:43003,,Terminalen,,63.34066,10.356569,,,1,,2,,,700
 NSR:StopPlace:44339,,Spillum vegdele,,64.43962,11.512411,,,1,,2,,,700
@@ -1417,8 +1417,8 @@ NSR:StopPlace:60840,,Strømnes,,64.09654,11.327194,,,1,,2,,,700
 NSR:StopPlace:45683,,Verrabotn,,63.802647,10.581465,,,1,,2,,,700
 NSR:StopPlace:45200,,Granlia,,64.08916,11.522073,,,1,,2,,,700
 NSR:StopPlace:46532,,Agle,,63.936413,11.235342,,,1,,2,,,700
-NSR:StopPlace:44354,,Fossbrenna,,64.48212,11.539716,,,1,,2,,,700
 NSR:StopPlace:45685,,Nybo,,64.13115,11.687826,,,1,,2,,,700
+NSR:StopPlace:44354,,Fossbrenna,,64.48212,11.539716,,,1,,2,,,700
 NSR:StopPlace:45686,,Haugan Kvam,,64.13455,11.702442,,,1,,2,,,700
 NSR:StopPlace:46533,,Brekksillan,,64.61698,11.428518,,,1,,2,,,700
 NSR:StopPlace:45203,,Haugåsen,,64.1113,11.573993,,,1,,2,,,700
@@ -1426,8 +1426,8 @@ NSR:StopPlace:355,,Grong stasjon,,64.45793,12.337327,,,1,,2,,,700
 NSR:StopPlace:43029,,Nedre Humlehaugen øst,,63.4283,10.537438,,,1,,2,,,700
 NSR:StopPlace:60841,,Østvik,,64.09613,11.383459,,,1,,2,,,700
 NSR:StopPlace:43028,,Jakobsli,,63.41056,10.489402,,,1,,2,,,700
-NSR:StopPlace:44358,,Oasen,,64.472664,11.525933,,,1,,2,,,700
 NSR:StopPlace:45689,,Kvamkorsen,,64.13912,11.730793,,,1,,2,,,700
+NSR:StopPlace:44358,,Oasen,,64.472664,11.525933,,,1,,2,,,700
 NSR:StopPlace:46535,,Nedre Vist,,63.929974,11.226358,,,1,,2,,,700
 NSR:StopPlace:43038,,Slættet,,63.510105,9.934324,,,1,,2,,,700
 NSR:StopPlace:45219,,Kjerkolkorsen,,64.18388,11.895055,,,1,,2,,,700
@@ -1451,16 +1451,16 @@ NSR:StopPlace:45695,,Levanger vgs.,,63.741547,11.285447,,,1,,2,,,700
 NSR:StopPlace:45211,,Strømstad,,64.15931,11.774533,,,1,,2,,,700
 NSR:StopPlace:45696,,Nold,,64.16796,11.799349,,,1,,2,,,700
 NSR:StopPlace:45697,,Kistevik,,63.986504,11.125388,,,1,,2,,,700
-NSR:StopPlace:44367,,Sykehuset Namsos,,64.46986,11.502852,,,1,,2,,,700
 NSR:StopPlace:45698,,Magneten,,63.73414,11.281816,,,1,,2,,,700
+NSR:StopPlace:44367,,Sykehuset Namsos,,64.46986,11.502852,,,1,,2,,,700
 NSR:StopPlace:45214,,Braset Braset,,64.18004,11.848761,,,1,,2,,,700
 NSR:StopPlace:46544,,Kåmyr,,63.91313,11.198092,,,1,,2,,,700
 NSR:StopPlace:45699,,Bruvelta,,64.16726,11.813792,,,1,,2,,,700
 NSR:StopPlace:43039,,Nedre Leirfoss,,63.380527,10.394453,,,1,,2,,,700
 NSR:StopPlace:45216,,Øksnes,,64.17862,11.866051,,,1,,2,,,700
 NSR:StopPlace:42994,,Teigen,,63.26592,10.525184,,,1,,2,,,700
-NSR:StopPlace:42510,,Ølsholm,,63.31864,10.147509,,,1,,2,,,700
 NSR:StopPlace:43841,,Botnlia,,63.2316,11.036589,,,1,,2,,,700
+NSR:StopPlace:42510,,Ølsholm,,63.31864,10.147509,,,1,,2,,,700
 NSR:StopPlace:43840,,Flesvik,,63.427708,9.229774,,,1,,2,,,700
 NSR:StopPlace:42992,,Teglverkskrysset,,63.418316,10.448104,,,1,,2,,,700
 NSR:StopPlace:41660,,Orkanger Torg,,63.30447,9.848899,,,1,,2,,,700
@@ -1507,8 +1507,8 @@ NSR:StopPlace:43860,,Fløttum,,63.166576,10.108438,,,1,,2,,,700
 NSR:StopPlace:41683,,Reistøa,,62.964138,10.86771,,,1,,2,,,700
 NSR:StopPlace:41680,,Torvet,,63.551456,9.924801,,,1,,2,,,700
 NSR:StopPlace:42539,,Melhus kirke,,63.27146,10.295042,,,1,,2,,,700
-NSR:StopPlace:43869,,Breidablikk,,63.412407,10.376646,,,1,,2,,,700
 NSR:StopPlace:42538,,Heggdalen,,63.40791,10.449652,,,1,,2,,,700
+NSR:StopPlace:43869,,Breidablikk,,63.412407,10.376646,,,1,,2,,,700
 NSR:StopPlace:42537,,Øverbygda skole,,63.200485,11.135514,,,1,,2,,,700
 NSR:StopPlace:41688,,Torvtaket,,63.34851,10.377116,,,1,,2,,,700
 NSR:StopPlace:43867,,Folla,,63.35481,10.442969,,,1,,2,,,700
@@ -1584,8 +1584,8 @@ NSR:StopPlace:44740,,Bjørngaard,,63.466038,11.138897,,,1,,2,,,700
 NSR:StopPlace:43899,,Bromstadsvingen,,63.427456,10.459367,,,1,,2,,,700
 NSR:StopPlace:43415,,Okstadøy,,63.373863,10.367146,,,1,,2,,,700
 NSR:StopPlace:44742,,Gangstad,,63.770485,10.637577,,,1,,2,,,700
-NSR:StopPlace:43414,,Kvamsrønningen,,63.275402,10.220628,,,1,,2,,,700
 NSR:StopPlace:42567,,Melkstadvik,,63.786163,8.788356,,,1,,2,,,700
+NSR:StopPlace:43414,,Kvamsrønningen,,63.275402,10.220628,,,1,,2,,,700
 NSR:StopPlace:44743,,Avelsgård,,63.4656,11.158959,,,1,,2,,,700
 NSR:StopPlace:44755,,Arnsetervegen,,63.771004,10.645063,,,1,,2,,,700
 NSR:StopPlace:43423,,Dalpro,,63.606354,8.886056,,,1,,2,,,700
@@ -1682,8 +1682,8 @@ NSR:StopPlace:42947,,Søvassli Ungdomssenter,,63.230606,9.43006,,,1,,2,,,700
 NSR:StopPlace:42946,,Lundamo,,63.151604,10.280762,,,1,,2,,,700
 NSR:StopPlace:41613,,Prinsens gate,,63.430996,10.392081,,,1,,2,,,700
 NSR:StopPlace:42943,,Lundabrua,,63.152676,10.288352,,,1,,2,,,700
-NSR:StopPlace:42942,,Sørvika,,63.61356,9.845782,,,1,,2,,,700
 NSR:StopPlace:41612,,Tjønnstua,,63.786236,9.879114,,,1,,2,,,700
+NSR:StopPlace:42942,,Sørvika,,63.61356,9.845782,,,1,,2,,,700
 NSR:StopPlace:43807,,Flatjord,,63.347675,10.509249,,,1,,2,,,700
 NSR:StopPlace:46077,,Strandval vegdele,,64.80707,11.454546,,,1,,2,,,700
 NSR:StopPlace:43806,,Blakstad,,63.29365,9.081677,,,1,,2,,,700
@@ -1725,8 +1725,8 @@ NSR:StopPlace:42964,,Lundåsen nordre,,63.354427,10.326437,,,1,,2,,,700
 NSR:StopPlace:41634,,Rambu,,62.503323,11.557544,,,1,,2,,,700
 NSR:StopPlace:42963,,Tanem gård,,63.313545,10.435684,,,1,,2,,,700
 NSR:StopPlace:41631,,Henmoen,,63.05022,11.587538,,,1,,2,,,700
-NSR:StopPlace:41632,,Rakbjørg gård,,63.25757,10.194148,,,1,,2,,,700
 NSR:StopPlace:42962,,Mælan,,63.753517,10.131512,,,1,,2,,,700
+NSR:StopPlace:41632,,Rakbjørg gård,,63.25757,10.194148,,,1,,2,,,700
 NSR:StopPlace:41640,,Ramsøy hurtigbåtkai,,64.32911,10.417335,,,1,,2,,,1000
 NSR:StopPlace:42971,,Møllebakken,,63.429356,10.358337,,,1,,2,,,700
 NSR:StopPlace:41641,,Ramsøyaunet hurtigbåtkai,,64.34052,10.415677,,,1,,2,,,1000
@@ -1757,16 +1757,16 @@ NSR:StopPlace:42981,,Tangvik,,63.47232,9.888348,,,1,,2,,,700
 NSR:StopPlace:41650,,Ranheim idrettsplass,,63.4277,10.524209,,,1,,2,,,700
 NSR:StopPlace:70196,,Kystmuseet,,63.606525,8.968003,,,1,,2,,,700
 NSR:StopPlace:43839,,Botnlia,,62.603127,11.841604,,,1,,2,,,700
-NSR:StopPlace:42507,,Haukvik,,63.342754,10.054128,,,1,,2,,,700
 NSR:StopPlace:43838,,Botngård skole/Fosen vgs.,,63.764416,9.819413,,,1,,2,,,700
+NSR:StopPlace:42507,,Haukvik,,63.342754,10.054128,,,1,,2,,,700
 NSR:StopPlace:43837,,Flenstad,,63.91951,10.446922,,,1,,2,,,700
 NSR:StopPlace:42505,,Øye,,63.32279,10.253928,,,1,,2,,,700
 NSR:StopPlace:43836,,Botngård,,63.76483,9.811568,,,1,,2,,,700
 NSR:StopPlace:42988,,Tarva ferjekai,,63.79607,9.42737,,,1,,2,,,1000
 NSR:StopPlace:42504,,Hauknes,,64.19888,10.365345,,,1,,2,,,700
 NSR:StopPlace:42987,,Mørreaunet,,63.910915,10.243033,,,1,,2,,,700
-NSR:StopPlace:43833,,Borstad,,63.2085,9.17365,,,1,,2,,,700
 NSR:StopPlace:42502,,Meldal Bygdemuseum,,63.051323,9.708821,,,1,,2,,,700
+NSR:StopPlace:43833,,Borstad,,63.2085,9.17365,,,1,,2,,,700
 NSR:StopPlace:42501,,Haukdalsbru,,62.99353,10.24575,,,1,,2,,,700
 NSR:StopPlace:43832,,Flauglia,,63.2263,9.307273,,,1,,2,,,700
 NSR:StopPlace:42985,,Tannvikvågen,,63.392063,9.232841,,,1,,2,,,700
@@ -1917,8 +1917,8 @@ NSR:StopPlace:42026,,Høgreina øvre,,63.38061,10.335361,,,1,,2,,,700
 NSR:StopPlace:44689,,Røstadlia,,63.69704,10.628722,,,1,,2,,,700
 NSR:StopPlace:43357,,Krutvik,,63.733555,8.651904,,,1,,2,,,700
 NSR:StopPlace:43356,,Stornes,,62.950195,10.771515,,,1,,2,,,700
-NSR:StopPlace:43355,,Krutthusbakken,,63.447792,10.432688,,,1,,2,,,700
 NSR:StopPlace:42024,,Schiøtz' vei,,63.425816,10.355214,,,1,,2,,,700
+NSR:StopPlace:43355,,Krutthusbakken,,63.447792,10.432688,,,1,,2,,,700
 NSR:StopPlace:42023,,Høgreina,,63.380753,10.339795,,,1,,2,,,700
 NSR:StopPlace:45539,,Sulkrysset,,63.79265,11.480075,,,1,,2,,,700
 NSR:StopPlace:44209,,Namsos handelspark,,64.464584,11.509053,,,1,,2,,,700
@@ -1927,8 +1927,8 @@ NSR:StopPlace:42020,,Høgkjølen,,63.233227,9.542733,,,1,,2,,,700
 NSR:StopPlace:43351,,Stormyra,,63.211666,9.020961,,,1,,2,,,700
 NSR:StopPlace:43350,,Kroppanmarka,,63.382496,10.385735,,,1,,2,,,700
 NSR:StopPlace:44682,,Gjevingåsen nord,,63.441532,10.882167,,,1,,2,,,700
-NSR:StopPlace:44683,,Grande vegdele,,63.668423,10.613249,,,1,,2,,,700
 NSR:StopPlace:45530,,Verdal stasjon,,63.791348,11.484694,,,1,,2,,,700
+NSR:StopPlace:44683,,Grande vegdele,,63.668423,10.613249,,,1,,2,,,700
 NSR:StopPlace:44685,,Litjbyen,,63.444534,10.9045,,,1,,2,,,700
 NSR:StopPlace:44201,,Namsen legesenter,,64.46043,11.542302,,,1,,2,,,700
 NSR:StopPlace:42029,,Høgskoleringen,,63.42057,10.404578,,,1,,2,,,700
@@ -2109,8 +2109,8 @@ NSR:StopPlace:42444,,Markaplassen skole,,63.413837,10.529572,,,1,,2,,,700
 NSR:StopPlace:45954,,Mulstadaunet,,64.863686,11.551242,,,1,,2,,,700
 NSR:StopPlace:44623,,Grubben,,63.424213,11.734313,,,1,,2,,,700
 NSR:StopPlace:44624,,Fiskum,,64.55298,12.466455,,,1,,2,,,700
-NSR:StopPlace:43774,,Festa,,62.615536,9.485276,,,1,,2,,,700
 NSR:StopPlace:41597,,Titran,,63.66681,8.306407,,,1,,2,,,700
+NSR:StopPlace:43774,,Festa,,62.615536,9.485276,,,1,,2,,,700
 NSR:StopPlace:42443,,Harborg,,62.703026,11.374139,,,1,,2,,,700
 NSR:StopPlace:41594,,Postterminalen,,63.397057,10.397027,,,1,,2,,,700
 NSR:StopPlace:43772,,Ferstad,,63.399555,10.34897,,,1,,2,,,900
@@ -2131,8 +2131,8 @@ NSR:StopPlace:45952,,Ånes vegdele,,64.86497,11.569676,,,1,,2,,,700
 NSR:StopPlace:44621,,Fiskumfoss,,64.54894,12.460667,,,1,,2,,,700
 NSR:StopPlace:42445,,Åremmen,,63.571888,9.786537,,,1,,2,,,700
 NSR:StopPlace:44634,,Bya,,64.574684,12.539597,,,1,,2,,,700
-NSR:StopPlace:43786,,Bjørnbet,,63.43558,9.921725,,,1,,2,,,700
 NSR:StopPlace:42455,,Årlivollveien,,63.169827,9.739209,,,1,,2,,,700
+NSR:StopPlace:43786,,Bjørnbet,,63.43558,9.921725,,,1,,2,,,700
 NSR:StopPlace:43301,,Stokkan,,63.410934,10.483041,,,1,,2,,,700
 NSR:StopPlace:43785,,Fillan busstasjon,,63.60113,8.973342,,,1,,2,,,700
 NSR:StopPlace:42453,,Martin Kregnes veg,,63.353745,10.396943,,,1,,2,,,700
@@ -2150,8 +2150,8 @@ NSR:StopPlace:43789,,Bjørndalsbrua,,63.37085,10.363664,,,1,,2,,,700
 NSR:StopPlace:42458,,Martin Linges veg,,63.35934,10.367836,,,1,,2,,,700
 NSR:StopPlace:45962,,Nakling,,64.85281,11.48283,,,1,,2,,,700
 NSR:StopPlace:44631,,Verksgården,,63.39914,11.837392,,,1,,2,,,700
-NSR:StopPlace:43304,,Konnstad,,63.22608,10.127461,,,1,,2,,,700
 NSR:StopPlace:42457,,Årlotten,,63.60778,9.847184,,,1,,2,,,700
+NSR:StopPlace:43304,,Konnstad,,63.22608,10.127461,,,1,,2,,,700
 NSR:StopPlace:43787,,Flakkråa,,63.445316,10.198598,,,1,,2,,,700
 NSR:StopPlace:42456,,Haugan,,63.435562,10.674623,,,1,,2,,,700
 NSR:StopPlace:45964,,Lillevedde,,64.849785,11.404152,,,1,,2,,,700
@@ -2257,8 +2257,8 @@ NSR:StopPlace:60261,,Skonnertvegen,,63.433796,10.507098,,,1,,2,,,700
 NSR:StopPlace:60262,,Torgardstrøa,,63.33072,10.367821,,,1,,2,,,700
 NSR:StopPlace:42839,,Munkvoll,,63.397305,10.359263,,,1,,2,,,700
 NSR:StopPlace:60267,,Saksvikorsen,,63.433155,10.593468,,,1,,2,,,700
-NSR:StopPlace:41989,,Sandstad vegstasjon,,63.52525,9.075311,,,1,,2,,,700
 NSR:StopPlace:42837,,Sybrua,,63.0328,9.708213,,,1,,2,,,700
+NSR:StopPlace:41989,,Sandstad vegstasjon,,63.52525,9.075311,,,1,,2,,,700
 NSR:StopPlace:42836,,Lettingvold,,63.26614,10.449419,,,1,,2,,,700
 NSR:StopPlace:60268,,Stibakken,,63.43395,10.605012,,,1,,2,,,700
 NSR:StopPlace:60266,,Sigrid Saxedatters veg,,63.433212,10.598797,,,1,,2,,,700
@@ -2323,13 +2323,13 @@ NSR:StopPlace:45461,,Nordsileiret,,64.01566,11.48057,,,1,,2,,,700
 NSR:StopPlace:44130,,Hammer,,64.21274,12.038758,,,1,,2,,,700
 NSR:StopPlace:44132,,Mastin,,64.41861,11.489902,,,1,,2,,,700
 NSR:StopPlace:44133,,Nordheim Nordheim,,64.24116,12.154839,,,1,,2,,,700
-NSR:StopPlace:45465,,Brekka vegdele,,63.944508,11.419368,,,1,,2,,,700
 NSR:StopPlace:46311,,Kvernmoen,,64.93382,11.911004,,,1,,2,,,700
+NSR:StopPlace:45465,,Brekka vegdele,,63.944508,11.419368,,,1,,2,,,700
 NSR:StopPlace:44134,,Vegset,,64.26382,12.26918,,,1,,2,,,700
 NSR:StopPlace:46314,,Fallet,,64.24315,11.210491,,,1,,2,,,700
 NSR:StopPlace:46313,,Sprengarbakkan,,64.91395,11.805625,,,1,,2,,,700
-NSR:StopPlace:45468,,Lund Vist,,63.963028,11.412338,,,1,,2,,,700
 NSR:StopPlace:46316,,Yttersetran,,64.90936,11.788048,,,1,,2,,,700
+NSR:StopPlace:45468,,Lund Vist,,63.963028,11.412338,,,1,,2,,,700
 NSR:StopPlace:44137,,Bruvoll,,64.27257,12.299563,,,1,,2,,,700
 NSR:StopPlace:46329,,Mekken,,63.906754,11.192025,,,1,,2,,,700
 NSR:StopPlace:46328,,Heimstad,,64.85485,11.503063,,,1,,2,,,700
@@ -2348,8 +2348,8 @@ NSR:StopPlace:46323,,Åneset,,64.85975,11.55807,,,1,,2,,,700
 NSR:StopPlace:46325,,Årgård,,64.27526,11.193595,,,1,,2,,,700
 NSR:StopPlace:46326,,Åkre,,64.85392,11.538751,,,1,,2,,,700
 NSR:StopPlace:44149,,Gran,,64.477806,13.517659,,,1,,2,,,700
-NSR:StopPlace:45482,,Vollan Sparbu,,63.894478,11.434356,,,1,,2,,,700
 NSR:StopPlace:46330,,Vestgård,,64.8512,11.444634,,,1,,2,,,700
+NSR:StopPlace:45482,,Vollan Sparbu,,63.894478,11.434356,,,1,,2,,,700
 NSR:StopPlace:44152,,Storenga,,64.486084,13.497723,,,1,,2,,,700
 NSR:StopPlace:45484,,Rambergmyran,,63.899315,11.438499,,,1,,2,,,700
 NSR:StopPlace:46331,,Langøra,,64.2891,11.196836,,,1,,2,,,700
@@ -2438,8 +2438,8 @@ NSR:StopPlace:46384,,Vådal,,63.963814,11.335082,,,1,,2,,,700
 NSR:StopPlace:41934,,Sagmoen,,63.28615,10.4349,,,1,,2,,,700
 NSR:StopPlace:45056,,Skei,,64.48815,11.91824,,,1,,2,,,700
 NSR:StopPlace:46386,,Skogaker,,63.965343,11.335105,,,1,,2,,,700
-NSR:StopPlace:46389,,Hustad,,63.965282,11.349705,,,1,,2,,,700
 NSR:StopPlace:45057,,Skjervesmarka,,63.676918,11.144265,,,1,,2,,,700
+NSR:StopPlace:46389,,Hustad,,63.965282,11.349705,,,1,,2,,,700
 NSR:StopPlace:41932,,Hulta,,62.962612,10.830937,,,1,,2,,,700
 NSR:StopPlace:46388,,Sørlia,,64.949104,11.949633,,,1,,2,,,700
 NSR:StopPlace:45059,,Skjerve,,63.681564,11.17281,,,1,,2,,,700
@@ -2507,8 +2507,8 @@ NSR:Quay:71845,,Hysnes Helsefort,,63.62902,9.825387,,,0,NSR:StopPlace:41974,2,,,
 NSR:Quay:71846,,Utleirmark,,63.389687,10.413459,,,0,NSR:StopPlace:41975,2,,,700
 NSR:Quay:71847,,Utleirmark,,63.390064,10.412157,,,0,NSR:StopPlace:41975,2,,,700
 NSR:Quay:80792,,Hall,,63.88763,11.294293,,,0,NSR:StopPlace:46587,2,,,700
-NSR:Quay:78482,,Lund Vist,,63.96299,11.412084,,,0,NSR:StopPlace:45468,2,,,700
 NSR:Quay:77151,,Todås vegdele,,64.485725,11.903665,,,0,NSR:StopPlace:44807,2,,,700
+NSR:Quay:78482,,Lund Vist,,63.96299,11.412084,,,0,NSR:StopPlace:45468,2,,,700
 NSR:Quay:77150,,Jullum,,63.406723,10.937508,,,0,NSR:StopPlace:44806,2,,,700
 NSR:Quay:80791,,Hall,,63.887604,11.294473,,,0,NSR:StopPlace:46587,2,,,700
 NSR:Quay:80796,,Rolshavn,,63.859516,11.329509,,,0,NSR:StopPlace:46589,2,,,700
@@ -2661,8 +2661,8 @@ NSR:Quay:73626,,Lundabrua,,63.152973,10.289794,,,0,NSR:StopPlace:42943,2,,,700
 NSR:Quay:74957,,Bergan,,62.68388,11.386673,,,0,NSR:StopPlace:43668,2,,,700
 NSR:Quay:74958,,Erlivegen,,62.6453,11.41374,,,0,NSR:StopPlace:43669,2,,,700
 NSR:Quay:72303,,Vikåsen nedre,,63.417095,10.533862,,,0,NSR:StopPlace:42230,2,,,700
-NSR:Quay:74966,,Ervik,,63.747593,8.831884,,,0,NSR:StopPlace:43674,2,,,700
 NSR:Quay:73634,,Søvassli Ungdomssenter,,63.230644,9.429653,,,0,NSR:StopPlace:42947,2,,,700
+NSR:Quay:74966,,Ervik,,63.747593,8.831884,,,0,NSR:StopPlace:43674,2,,,700
 NSR:Quay:74967,,Ervik,,63.74772,8.831842,,,0,NSR:StopPlace:43674,2,,,700
 NSR:Quay:103580,,Paul Skolemesters veg,,63.36963,10.394458,,,0,NSR:StopPlace:43670,2,,,700
 NSR:Quay:72305,,Vikåsen nedre,,63.417213,10.533689,,,0,NSR:StopPlace:42230,2,,,700
@@ -2671,14 +2671,14 @@ NSR:Quay:73635,,Søvassli Ungdomssenter,,63.23057,9.430467,,,0,NSR:StopPlace:429
 NSR:Quay:73632,,Lundamo,,63.15173,10.281462,,,0,NSR:StopPlace:42946,2,,,700
 NSR:Quay:72301,,Grønningsmarka,,63.51167,9.982125,,,0,NSR:StopPlace:42227,2,,,700
 NSR:Quay:72300,,Vikåsen,,63.415684,10.530862,,,0,NSR:StopPlace:42228,2,,,700
-NSR:Quay:73638,,Lundan,,63.34647,10.023762,,,0,NSR:StopPlace:42949,2,,,700
 NSR:Quay:72307,,Selbuskogen skisenter,,63.338013,11.088779,,,0,NSR:StopPlace:42232,2,,,700
+NSR:Quay:73638,,Lundan,,63.34647,10.023762,,,0,NSR:StopPlace:42949,2,,,700
 NSR:Quay:73637,,Måsøvalkrysset,,63.703434,8.519053,,,0,NSR:StopPlace:42948,2,,,700
 NSR:Quay:72309,,Vikåsen skole,,63.412666,10.537772,,,0,NSR:StopPlace:42233,2,,,700
 NSR:Quay:74968,,Berge,,63.206665,11.05933,,,0,NSR:StopPlace:43675,2,,,700
-NSR:Quay:73639,,Lundan,,63.34659,10.023666,,,0,NSR:StopPlace:42949,2,,,700
 NSR:Quay:72308,,Selbuskogen skisenter,,63.337997,11.088518,,,0,NSR:StopPlace:42232,2,,,700
 NSR:Quay:74969,,Ervika,,63.749718,9.719517,,,0,NSR:StopPlace:43676,2,,,700
+NSR:Quay:73639,,Lundan,,63.34659,10.023666,,,0,NSR:StopPlace:42949,2,,,700
 NSR:Quay:74970,,Berge,,63.206753,11.059356,,,0,NSR:StopPlace:43675,2,,,700
 NSR:Quay:71862,,Hyttfossen,,63.260105,10.455891,,,0,NSR:StopPlace:41983,2,,,700
 NSR:Quay:71863,,Hitra hurtigbåtterminal,,63.51702,9.112625,,,0,NSR:StopPlace:74009,2,,,1000
@@ -2819,8 +2819,8 @@ NSR:Quay:72275,,Vikhov,,63.440388,10.643215,,,0,NSR:StopPlace:42213,2,,,700
 NSR:Quay:72274,,Grønlia,,63.41529,10.302327,,,0,NSR:StopPlace:42214,2,,,700
 NSR:Quay:72271,,Grønlia,,63.415512,10.303579,,,0,NSR:StopPlace:42214,2,,,700
 NSR:Quay:73524,,Myrhaug,,62.84689,11.251187,,,0,NSR:StopPlace:42885,2,,,700
-NSR:Quay:73523,,Søberg,,63.259003,10.285857,,,0,NSR:StopPlace:42884,2,,,700
 NSR:Quay:98824,,Øysandkrysset,,63.324192,10.216483,,,0,NSR:StopPlace:42589,2,,,700
+NSR:Quay:73523,,Søberg,,63.259003,10.285857,,,0,NSR:StopPlace:42884,2,,,700
 NSR:Quay:73526,,Lilleevjen,,63.205822,11.1046,,,0,NSR:StopPlace:42886,2,,,700
 NSR:Quay:73525,,Myrhaug,,62.847446,11.250052,,,0,NSR:StopPlace:42885,2,,,700
 NSR:Quay:74852,,Barøy,,63.917774,9.972043,,,0,NSR:StopPlace:43608,2,,,700
@@ -2982,8 +2982,8 @@ NSR:Quay:77966,,Granlia,,64.0889,11.522054,,,0,NSR:StopPlace:45200,2,,,700
 NSR:Quay:76635,,Formo,,64.43526,12.336659,,,0,NSR:StopPlace:44556,2,,,700
 NSR:Quay:75304,,Fløttum,,63.16658,10.108358,,,0,NSR:StopPlace:43860,2,,,700
 NSR:Quay:76634,,Gudå bru,,63.444675,11.613877,,,0,NSR:StopPlace:44555,2,,,700
-NSR:Quay:75301,,Bratsbergvegen,,63.40336,10.395951,,,0,NSR:StopPlace:43858,2,,,700
 NSR:Quay:72279,,Skavlans veg,,63.403694,10.343087,,,0,NSR:StopPlace:42217,2,,,700
+NSR:Quay:75301,,Bratsbergvegen,,63.40336,10.395951,,,0,NSR:StopPlace:43858,2,,,700
 NSR:Quay:72278,,Skavlans veg,,63.403137,10.341981,,,0,NSR:StopPlace:42217,2,,,700
 NSR:Quay:77963,,Granlia,,64.089325,11.522126,,,0,NSR:StopPlace:45200,2,,,700
 NSR:Quay:76632,,Gudå bru,,63.444603,11.614198,,,0,NSR:StopPlace:44555,2,,,700
@@ -3098,8 +3098,8 @@ NSR:Quay:80850,,Almenningen,,63.877754,11.186149,,,0,NSR:StopPlace:46614,2,,,700
 NSR:Quay:99486,,Abelvær hurtigbåtkai,,64.732765,11.182773,,,0,NSR:StopPlace:58019,2,,,1000
 NSR:Quay:80855,,Oksål,,63.885292,11.184061,,,0,NSR:StopPlace:46616,2,,,700
 NSR:Quay:77214,,Husbyåsen,,63.477955,10.959675,,,0,NSR:StopPlace:44837,2,,,700
-NSR:Quay:77213,,Litl-Skogmo,,64.50559,12.02258,,,0,NSR:StopPlace:44836,2,,,700
 NSR:Quay:99487,,Skei hurtigbåtkai,,65.08767,11.740573,,,0,NSR:StopPlace:58020,2,,,1000
+NSR:Quay:77213,,Litl-Skogmo,,64.50559,12.02258,,,0,NSR:StopPlace:44836,2,,,700
 NSR:Quay:74186,,Klæbu bygdemuseum,,63.26574,10.53202,,,0,NSR:StopPlace:43249,2,,,700
 NSR:Quay:77212,,Litl-Skogmo,,64.50563,12.022925,,,0,NSR:StopPlace:44836,2,,,700
 NSR:Quay:80853,,Oksål,,63.885456,11.184203,,,0,NSR:StopPlace:46616,2,,,700
@@ -3169,8 +3169,8 @@ NSR:Quay:73720,,Teigen,,63.265858,10.52535,,,0,NSR:StopPlace:42994,2,,,700
 NSR:Quay:73729,,Lerkendal,,63.412003,10.399536,,,0,NSR:StopPlace:60257,2,,,700
 NSR:Quay:73726,,Løhre,,63.16782,10.313252,,,0,NSR:StopPlace:42997,2,,,700
 NSR:Quay:73728,,Løhre,,63.167336,10.312436,,,0,NSR:StopPlace:42997,2,,,700
-NSR:Quay:80011,,Strandhaugen,,64.80983,11.472873,,,0,NSR:StopPlace:46203,2,,,700
 NSR:Quay:79033,,Sætervika,,64.02777,11.246824,,,0,NSR:StopPlace:45725,2,,,700
+NSR:Quay:80011,,Strandhaugen,,64.80983,11.472873,,,0,NSR:StopPlace:46203,2,,,700
 NSR:Quay:80012,,Strandhaugen,,64.80978,11.472862,,,0,NSR:StopPlace:46203,2,,,700
 NSR:Quay:79034,,Olderet,,64.00601,11.191768,,,0,NSR:StopPlace:45726,2,,,700
 NSR:Quay:79035,,Olderet,,64.00598,11.191827,,,0,NSR:StopPlace:45726,2,,,700
@@ -3199,8 +3199,8 @@ NSR:Quay:80022,,Strand sør,,64.809746,11.481974,,,0,NSR:StopPlace:46208,2,,,700
 NSR:Quay:79044,,Vada indre,,64.02034,11.21648,,,0,NSR:StopPlace:45731,2,,,700
 NSR:Quay:79045,,Vada indre,,64.020325,11.216569,,,0,NSR:StopPlace:45731,2,,,700
 NSR:Quay:79046,,Byborg,,63.747566,11.288842,,,0,NSR:StopPlace:45732,2,,,700
-NSR:Quay:80021,,Strand sør,,64.8097,11.482047,,,0,NSR:StopPlace:46208,2,,,700
 NSR:Quay:79047,,Viset,,64.03869,11.350494,,,0,NSR:StopPlace:45733,2,,,700
+NSR:Quay:80021,,Strand sør,,64.8097,11.482047,,,0,NSR:StopPlace:46208,2,,,700
 NSR:Quay:79048,,Viset,,64.03866,11.3504,,,0,NSR:StopPlace:45733,2,,,700
 NSR:Quay:80027,,Laugagården,,64.79507,11.429129,,,0,NSR:StopPlace:46211,2,,,700
 NSR:Quay:79049,,Seterkorsen,,63.753242,11.36122,,,0,NSR:StopPlace:45734,2,,,700
@@ -3212,8 +3212,8 @@ NSR:Quay:73744,,Thaulowbakken,,63.412853,10.382253,,,0,NSR:StopPlace:43006,2,,,7
 NSR:Quay:72413,,Vollabrua,,63.29313,10.055615,,,0,NSR:StopPlace:42288,2,,,700
 NSR:Quay:72412,,Gylland,,63.090305,10.249735,,,0,NSR:StopPlace:42287,2,,,700
 NSR:Quay:73743,,Løkken boligfelt,,63.268974,10.215414,,,0,NSR:StopPlace:43005,2,,,700
-NSR:Quay:73746,,Løkken gård,,63.272373,10.218986,,,0,NSR:StopPlace:43007,2,,,700
 NSR:Quay:72415,,Skjøtskift,,63.147373,9.713565,,,0,NSR:StopPlace:42289,2,,,700
+NSR:Quay:73746,,Løkken gård,,63.272373,10.218986,,,0,NSR:StopPlace:43007,2,,,700
 NSR:Quay:73745,,Thaulowbakken,,63.412666,10.382123,,,0,NSR:StopPlace:43006,2,,,700
 NSR:Quay:72414,,Vollabrua,,63.29313,10.055615,,,0,NSR:StopPlace:42288,2,,,700
 NSR:Quay:73740,,Nardokrysset,,63.4064,10.424294,,,0,NSR:StopPlace:43004,2,,,700
@@ -3224,18 +3224,18 @@ NSR:Quay:72410,,Skjøstad,,63.3908,10.161285,,,0,NSR:StopPlace:42286,2,,,700
 NSR:Quay:73748,,Nardosenteret,,63.40358,10.426957,,,0,NSR:StopPlace:43008,2,,,700
 NSR:Quay:72417,,Gylle,,63.295113,10.282279,,,0,NSR:StopPlace:42290,2,,,700
 NSR:Quay:80041,,Skjånes,,64.808846,11.463329,,,0,NSR:StopPlace:46218,2,,,700
-NSR:Quay:73747,,Løkken gård,,63.272366,10.218746,,,0,NSR:StopPlace:43007,2,,,700
 NSR:Quay:72416,,Skjøtskift,,63.147408,9.713902,,,0,NSR:StopPlace:42289,2,,,700
+NSR:Quay:73747,,Løkken gård,,63.272366,10.218746,,,0,NSR:StopPlace:43007,2,,,700
 NSR:Quay:73749,,Nardosenteret,,63.403328,10.427125,,,0,NSR:StopPlace:43008,2,,,700
 NSR:Quay:72418,,Gylle,,63.294003,10.280575,,,0,NSR:StopPlace:42290,2,,,700
 NSR:Quay:80033,,Gutvik hurtigbåtkai,,65.084335,11.828695,,,0,NSR:StopPlace:46214,2,,,1000
 NSR:Quay:80034,,Gutvik hurtigbåtkai,,65.084366,11.828587,,,0,NSR:StopPlace:46214,2,,,1000
-NSR:Quay:80031,,Lilleval,,64.78558,11.407765,,,0,NSR:StopPlace:46213,2,,,700
 NSR:Quay:79057,,Skevik Skjevik,,64.040146,11.306886,,,0,NSR:StopPlace:45738,2,,,700
-NSR:Quay:80032,,Lilleval,,64.78535,11.408025,,,0,NSR:StopPlace:46213,2,,,700
+NSR:Quay:80031,,Lilleval,,64.78558,11.407765,,,0,NSR:StopPlace:46213,2,,,700
 NSR:Quay:79058,,Skevik Skjevik,,64.04012,11.306832,,,0,NSR:StopPlace:45738,2,,,700
-NSR:Quay:80037,,Vandholmen,,64.776855,11.381098,,,0,NSR:StopPlace:46215,2,,,700
+NSR:Quay:80032,,Lilleval,,64.78535,11.408025,,,0,NSR:StopPlace:46213,2,,,700
 NSR:Quay:79059,,Skevik Skjevik,,64.04012,11.306893,,,0,NSR:StopPlace:45738,2,,,700
+NSR:Quay:80037,,Vandholmen,,64.776855,11.381098,,,0,NSR:StopPlace:46215,2,,,700
 NSR:Quay:80035,,Vandholmen,,64.77683,11.381184,,,0,NSR:StopPlace:46215,2,,,700
 NSR:Quay:79050,,Seterkorsen,,63.7533,11.360936,,,0,NSR:StopPlace:45734,2,,,700
 NSR:Quay:79051,,Elnan,,64.04202,11.327848,,,0,NSR:StopPlace:45735,2,,,700
@@ -3334,17 +3334,17 @@ NSR:Quay:73693,,Mølnbukt,,63.616875,9.647598,,,0,NSR:StopPlace:42979,2,,,700
 NSR:Quay:72362,,Vognillan,,62.61562,9.576574,,,0,NSR:StopPlace:42260,2,,,700
 NSR:Quay:76727,,Hansmoen,,64.4648,12.82506,,,0,NSR:StopPlace:44599,2,,,700
 NSR:Quay:76726,,Hansmoen,,64.46475,12.825103,,,0,NSR:StopPlace:44599,2,,,700
-NSR:Quay:73699,,Mørre,,63.921585,10.215162,,,0,NSR:StopPlace:42982,2,,,700
 NSR:Quay:72368,,Volden,,63.600792,8.862403,,,0,NSR:StopPlace:42263,2,,,700
-NSR:Quay:73696,,Tangvik,,63.47229,9.888197,,,0,NSR:StopPlace:42981,2,,,700
+NSR:Quay:73699,,Mørre,,63.921585,10.215162,,,0,NSR:StopPlace:42982,2,,,700
 NSR:Quay:72365,,Skjervan,,62.846615,9.890293,,,0,NSR:StopPlace:42262,2,,,700
+NSR:Quay:73696,,Tangvik,,63.47229,9.888197,,,0,NSR:StopPlace:42981,2,,,700
 NSR:Quay:72364,,Vognillan,,62.61572,9.575973,,,0,NSR:StopPlace:42260,2,,,700
 NSR:Quay:76721,,Toremoen,,64.46073,12.763672,,,0,NSR:StopPlace:44595,2,,,700
-NSR:Quay:73698,,Mørre,,63.921722,10.215066,,,0,NSR:StopPlace:42982,2,,,700
 NSR:Quay:72367,,Volden,,63.600445,8.863312,,,0,NSR:StopPlace:42263,2,,,700
+NSR:Quay:73698,,Mørre,,63.921722,10.215066,,,0,NSR:StopPlace:42982,2,,,700
 NSR:Quay:76720,,Toremoen,,64.460785,12.763609,,,0,NSR:StopPlace:44595,2,,,700
-NSR:Quay:73697,,Tangvik,,63.47235,9.888499,,,0,NSR:StopPlace:42981,2,,,700
 NSR:Quay:72366,,Skjervan,,62.846573,9.891175,,,0,NSR:StopPlace:42262,2,,,700
+NSR:Quay:73697,,Tangvik,,63.47235,9.888499,,,0,NSR:StopPlace:42981,2,,,700
 NSR:Quay:72374,,Gullvåg camping,,62.91732,10.141754,,,0,NSR:StopPlace:42266,2,,,700
 NSR:Quay:72373,,Gullvåg camping,,62.91759,10.141745,,,0,NSR:StopPlace:42266,2,,,700
 NSR:Quay:75406,,Fossegrenda,,63.389694,10.396889,,,0,NSR:StopPlace:43917,2,,,700
@@ -3430,8 +3430,8 @@ NSR:Quay:74990,,Persaunet leir,,63.431572,10.442079,,,0,NSR:StopPlace:43687,2,,,
 NSR:Quay:73660,,Mælan,,63.753456,10.131519,,,0,NSR:StopPlace:42962,2,,,700
 NSR:Quay:73666,,Tanemskrysset,,63.31264,10.430236,,,0,NSR:StopPlace:42968,2,,,700
 NSR:Quay:72335,,Vinje kirke,,63.2072,9.001391,,,0,NSR:StopPlace:42245,2,,,700
-NSR:Quay:72338,,Vinjeøra,,63.202568,8.983212,,,0,NSR:StopPlace:42248,2,,,700
 NSR:Quay:73669,,Mærk bru,,62.902275,9.811301,,,0,NSR:StopPlace:42966,2,,,700
+NSR:Quay:72338,,Vinjeøra,,63.202568,8.983212,,,0,NSR:StopPlace:42248,2,,,700
 NSR:Quay:74997,,Espnes,,63.718857,8.59648,,,0,NSR:StopPlace:43691,2,,,700
 NSR:Quay:73668,,Mærk bru,,62.902195,9.811594,,,0,NSR:StopPlace:42966,2,,,700
 NSR:Quay:74998,,Bergli,,63.71413,8.591205,,,0,NSR:StopPlace:43690,2,,,700
@@ -3477,8 +3477,8 @@ NSR:Quay:101855,,Klettkrysset,,63.322487,10.301882,,,0,NSR:StopPlace:59821,2,,,7
 NSR:Quay:101853,,Klettkrysset,,63.32301,10.301944,,,0,NSR:StopPlace:59821,2,,,700
 NSR:Quay:101854,,Klettkrysset,,63.322464,10.302201,,,0,NSR:StopPlace:59821,2,,,700
 NSR:Quay:74144,,Klinga,,63.16272,9.731354,,,0,NSR:StopPlace:43228,2,,,700
-NSR:Quay:75476,,Fremstad bru,,63.60972,9.656005,,,0,NSR:StopPlace:43955,2,,,700
 NSR:Quay:74145,,Klinga,,63.16238,9.731286,,,0,NSR:StopPlace:43228,2,,,700
+NSR:Quay:75476,,Fremstad bru,,63.60972,9.656005,,,0,NSR:StopPlace:43955,2,,,700
 NSR:Quay:74142,,Stavset senter syd,,63.38696,10.329758,,,0,NSR:StopPlace:43227,2,,,700
 NSR:Quay:74143,,Stavset senter syd,,63.387253,10.329648,,,0,NSR:StopPlace:43227,2,,,700
 NSR:Quay:80810,,Volan,,63.873966,11.23679,,,0,NSR:StopPlace:46596,2,,,700
@@ -3674,8 +3674,8 @@ NSR:Quay:80546,,Museet,,63.82099,10.996733,,,0,NSR:StopPlace:46466,2,,,700
 NSR:Quay:79560,,Mølla,,64.20312,11.21541,,,0,NSR:StopPlace:45980,2,,,700
 NSR:Quay:72932,,Hegsnippen,,63.421482,10.14692,,,0,NSR:StopPlace:42570,2,,,700
 NSR:Quay:72931,,Hegsnippen,,63.422523,10.148766,,,0,NSR:StopPlace:42570,2,,,700
-NSR:Quay:71606,,Råbygda skole Jåren,,63.25306,9.971259,,,0,NSR:StopPlace:41845,2,,,700
 NSR:Quay:72938,,Hegstad,,63.4343,9.277664,,,0,NSR:StopPlace:42573,2,,,700
+NSR:Quay:71606,,Råbygda skole Jåren,,63.25306,9.971259,,,0,NSR:StopPlace:41845,2,,,700
 NSR:Quay:71607,,Råbygda skole Jåren,,63.25306,9.971259,,,0,NSR:StopPlace:41845,2,,,700
 NSR:Quay:72939,,Hegstad,,63.4343,9.277503,,,0,NSR:StopPlace:42573,2,,,700
 NSR:Quay:71609,,Hongsand,,64.14476,10.158705,,,0,NSR:StopPlace:41848,2,,,700
@@ -3908,8 +3908,8 @@ NSR:Quay:74661,,Dybdahls veg,,63.412968,10.413564,,,0,NSR:StopPlace:43507,2,,,70
 NSR:Quay:74662,,Dybdahls veg,,63.41287,10.414761,,,0,NSR:StopPlace:43507,2,,,700
 NSR:Quay:73331,,Leirbrua gård,,63.383747,10.321856,,,0,NSR:StopPlace:42780,2,,,700
 NSR:Quay:72000,,Høvringen,,63.445465,10.336896,,,0,NSR:StopPlace:42062,2,,,700
-NSR:Quay:73330,,Leirbrua gård,,63.38485,10.324088,,,0,NSR:StopPlace:42780,2,,,700
 NSR:Quay:74660,,Asbjørn Øverås veg,,63.39551,10.425956,,,0,NSR:StopPlace:43506,2,,,700
+NSR:Quay:73330,,Leirbrua gård,,63.38485,10.324088,,,0,NSR:StopPlace:42780,2,,,700
 NSR:Quay:73337,,Leirelva,,63.382698,10.332524,,,0,NSR:StopPlace:42783,2,,,700
 NSR:Quay:73336,,Leirelva,,63.38279,10.331877,,,0,NSR:StopPlace:42783,2,,,700
 NSR:Quay:72007,,Vaslagvågen,,63.50692,9.244413,,,0,NSR:StopPlace:42066,2,,,700
@@ -3942,8 +3942,8 @@ NSR:Quay:74684,,Onsøybakkan,,63.428413,10.170403,,,0,NSR:StopPlace:43521,2,,,70
 NSR:Quay:73353,,Leirøya,,63.38604,10.389708,,,0,NSR:StopPlace:42793,2,,,700
 NSR:Quay:72022,,Høyeggen skole,,63.286015,10.297105,,,0,NSR:StopPlace:42073,2,,,700
 NSR:Quay:73352,,Leirøya,,63.386642,10.389716,,,0,NSR:StopPlace:42793,2,,,700
-NSR:Quay:74682,,Dyrvik,,63.756332,8.823116,,,0,NSR:StopPlace:43520,2,,,700
 NSR:Quay:72021,,Vasslia,,63.22312,9.246968,,,0,NSR:StopPlace:42072,2,,,700
+NSR:Quay:74682,,Dyrvik,,63.756332,8.823116,,,0,NSR:StopPlace:43520,2,,,700
 NSR:Quay:72028,,Setra,,63.62343,9.105428,,,0,NSR:StopPlace:42077,2,,,700
 NSR:Quay:77716,,Dampsaga,,64.01918,11.489169,,,0,NSR:StopPlace:45081,2,,,700
 NSR:Quay:77715,,Dampsaga,,64.01923,11.488766,,,0,NSR:StopPlace:45081,2,,,700
@@ -4205,8 +4205,8 @@ NSR:Quay:73398,,Ler,,63.19748,10.301813,,,0,NSR:StopPlace:42819,2,,,700
 NSR:Quay:76425,,Husby,,63.47776,10.946194,,,0,NSR:StopPlace:44450,2,,,700
 NSR:Quay:77755,,Fiborgtangen,,63.71046,11.164001,,,0,NSR:StopPlace:45098,2,,,700
 NSR:Quay:72069,,Velve,,63.20501,11.084193,,,0,NSR:StopPlace:42099,2,,,700
-NSR:Quay:77764,,Lø,,63.99769,11.482554,,,0,NSR:StopPlace:45102,2,,,700
 NSR:Quay:76433,,Finnvolldalen vegdele,,64.85082,13.030955,,,0,NSR:StopPlace:44454,2,,,700
+NSR:Quay:77764,,Lø,,63.99769,11.482554,,,0,NSR:StopPlace:45102,2,,,700
 NSR:Quay:77763,,Lø,,63.998924,11.484773,,,0,NSR:StopPlace:45102,2,,,700
 NSR:Quay:72074,,Sildværet,,63.347843,9.976213,,,0,NSR:StopPlace:42103,2,,,700
 NSR:Quay:76432,,Flintvegen,,63.48322,10.966782,,,0,NSR:StopPlace:44453,2,,,700
@@ -4284,8 +4284,8 @@ NSR:Quay:79698,,Elsedalen,,64.820755,11.508367,,,0,NSR:StopPlace:46049,2,,,700
 NSR:Quay:79699,,Skaga,,64.82152,11.550252,,,0,NSR:StopPlace:46051,2,,,700
 NSR:Quay:80673,,Vikan Kjerknesvågen,,63.939144,11.235315,,,0,NSR:StopPlace:46530,2,,,700
 NSR:Quay:80674,,Galguften,,64.538155,12.137825,,,0,NSR:StopPlace:46529,2,,,700
-NSR:Quay:77038,,Sollia,,63.770027,10.628886,,,0,NSR:StopPlace:44752,2,,,700
 NSR:Quay:78369,,Slottet,,63.796185,11.528282,,,0,NSR:StopPlace:45410,2,,,700
+NSR:Quay:77038,,Sollia,,63.770027,10.628886,,,0,NSR:StopPlace:44752,2,,,700
 NSR:Quay:80679,,Agle,,63.936428,11.235209,,,0,NSR:StopPlace:46532,2,,,700
 NSR:Quay:77037,,Sollia,,63.77,10.62894,,,0,NSR:StopPlace:44752,2,,,700
 NSR:Quay:77036,,Einang,,63.443893,11.218445,,,0,NSR:StopPlace:44751,2,,,700
@@ -4317,10 +4317,10 @@ NSR:Quay:77047,,Tyldum,,64.61059,12.276986,,,0,NSR:StopPlace:44757,2,,,700
 NSR:Quay:78378,,Campus Guldbergaunet,,64.020966,11.513326,,,0,NSR:StopPlace:45416,2,,,700
 NSR:Quay:80689,,Otervegen,,63.919605,11.210808,,,0,NSR:StopPlace:46537,2,,,700
 NSR:Quay:78376,,Klepparvegen,,64.0359,11.550649,,,0,NSR:StopPlace:45414,2,,,700
-NSR:Quay:77044,,Arnsetervegen,,63.770985,10.645066,,,0,NSR:StopPlace:44755,2,,,700
 NSR:Quay:78375,,Haug,,63.795303,11.517658,,,0,NSR:StopPlace:45413,2,,,700
-NSR:Quay:77043,,Arnsetervegen,,63.77102,10.645059,,,0,NSR:StopPlace:44755,2,,,700
+NSR:Quay:77044,,Arnsetervegen,,63.770985,10.645066,,,0,NSR:StopPlace:44755,2,,,700
 NSR:Quay:78374,,Haug,,63.795387,11.517526,,,0,NSR:StopPlace:45413,2,,,700
+NSR:Quay:77043,,Arnsetervegen,,63.77102,10.645059,,,0,NSR:StopPlace:44755,2,,,700
 NSR:Quay:78373,,Solhaug,,64.03618,11.551531,,,0,NSR:StopPlace:45412,2,,,700
 NSR:Quay:77042,,Midtkil,,63.44351,11.246555,,,0,NSR:StopPlace:44754,2,,,700
 NSR:Quay:75268,,Botnlia,,63.231285,11.036178,,,0,NSR:StopPlace:43841,2,,,700
@@ -4437,8 +4437,8 @@ NSR:Quay:77052,,Aune Dal,,63.709194,10.636385,,,0,NSR:StopPlace:44758,2,,,700
 NSR:Quay:80693,,Skippervegen,,63.917336,11.205986,,,0,NSR:StopPlace:46539,2,,,700
 NSR:Quay:77051,,Aune Dal,,63.709198,10.636442,,,0,NSR:StopPlace:44758,2,,,700
 NSR:Quay:80694,,Skippervegen,,63.917404,11.205848,,,0,NSR:StopPlace:46539,2,,,700
-NSR:Quay:77050,,Aune Dal,,63.70914,10.636398,,,0,NSR:StopPlace:44758,2,,,700
 NSR:Quay:78381,,Teglverket,,63.794697,11.536083,,,0,NSR:StopPlace:45417,2,,,700
+NSR:Quay:77050,,Aune Dal,,63.70914,10.636398,,,0,NSR:StopPlace:44758,2,,,700
 NSR:Quay:78380,,Teglverket,,63.794334,11.537566,,,0,NSR:StopPlace:45417,2,,,700
 NSR:Quay:80697,,Sveet,,63.915638,11.201458,,,0,NSR:StopPlace:46541,2,,,700
 NSR:Quay:80698,,Sveet,,63.91559,11.201654,,,0,NSR:StopPlace:46541,2,,,700
@@ -4539,8 +4539,8 @@ NSR:Quay:73454,,Sykehjemmet,,63.70576,8.824121,,,0,NSR:StopPlace:42845,2,,,700
 NSR:Quay:72123,,Singsåsmoen,,62.95019,10.753191,,,0,NSR:StopPlace:42131,2,,,700
 NSR:Quay:72122,,Vestre Rosten,,63.360157,10.368833,,,0,NSR:StopPlace:42130,2,,,700
 NSR:Quay:74784,,Orkanger skole,,63.306637,9.850328,,,0,NSR:StopPlace:43578,2,,,700
-NSR:Quay:74785,,Orkanger skole,,63.306572,9.850307,,,0,NSR:StopPlace:43578,2,,,700
 NSR:Quay:73455,,Sykehjemmet,,63.705887,8.824544,,,0,NSR:StopPlace:42845,2,,,700
+NSR:Quay:74785,,Orkanger skole,,63.306572,9.850307,,,0,NSR:StopPlace:43578,2,,,700
 NSR:Quay:72124,,Singsåsmoen,,62.95032,10.753086,,,0,NSR:StopPlace:42131,2,,,700
 NSR:Quay:77818,,Vestrum,,63.706528,11.011105,,,0,NSR:StopPlace:45128,2,,,700
 NSR:Quay:77817,,Vestrum,,63.70649,11.011222,,,0,NSR:StopPlace:45128,2,,,700
@@ -4650,8 +4650,8 @@ NSR:Quay:73437,,Sybrua,,63.0328,9.708331,,,0,NSR:StopPlace:42837,2,,,700
 NSR:Quay:74767,,Aunegjerdet,,63.01778,10.421767,,,0,NSR:StopPlace:43564,2,,,700
 NSR:Quay:72101,,Vestlia endeholdeplass,,63.397236,10.440115,,,0,NSR:StopPlace:42118,2,,,700
 NSR:Quay:74764,,Eid skole,,63.16847,10.111192,,,0,NSR:StopPlace:43562,2,,,700
-NSR:Quay:74765,,Eid skole,,63.16847,10.111192,,,0,NSR:StopPlace:43562,2,,,700
 NSR:Quay:72100,,Ingdal,,63.460705,9.906253,,,0,NSR:StopPlace:42117,2,,,700
+NSR:Quay:74765,,Eid skole,,63.16847,10.111192,,,0,NSR:StopPlace:43562,2,,,700
 NSR:Quay:72103,,Ingeborg Ofstads veg,,63.35732,10.399495,,,0,NSR:StopPlace:42120,2,,,700
 NSR:Quay:73434,,Lettingvold,,63.266113,10.449358,,,0,NSR:StopPlace:42836,2,,,700
 NSR:Quay:72102,,Singsås Coop,,62.957172,10.72381,,,0,NSR:StopPlace:42119,2,,,700
@@ -4872,8 +4872,8 @@ NSR:Quay:72754,,Mausundvær kai,,63.86913,8.66213,,,0,NSR:StopPlace:42477,2,,,10
 NSR:Quay:71423,,Hjørundhølen bru,,63.695507,10.276829,,,0,NSR:StopPlace:41744,2,,,700
 NSR:Quay:71424,,Trondheim S,,63.43615,10.400911,,,0,NSR:StopPlace:41742,2,,2,700
 NSR:Quay:72756,,Åsheim skole,,63.35107,10.34353,,,0,NSR:StopPlace:42478,2,,,700
-NSR:Quay:72755,,Åsheim skole,,63.35117,10.343494,,,0,NSR:StopPlace:42478,2,,,700
 NSR:Quay:71425,,Risvollvegen,,63.394485,10.423483,,,0,NSR:StopPlace:41745,2,,,700
+NSR:Quay:72755,,Åsheim skole,,63.35117,10.343494,,,0,NSR:StopPlace:42478,2,,,700
 NSR:Quay:71420,,Trondheim S,,63.43615,10.401171,,,0,NSR:StopPlace:41742,2,,4,700
 NSR:Quay:71421,,Hjørundhølen bru,,63.695484,10.276921,,,0,NSR:StopPlace:41744,2,,,700
 NSR:Quay:71426,,Hoeggen skole,,63.401234,10.433748,,,0,NSR:StopPlace:41746,2,,,700
@@ -4924,8 +4924,8 @@ NSR:Quay:72770,,Åstad,,63.371887,9.002939,,,0,NSR:StopPlace:42486,2,,,700
 NSR:Quay:78077,,Domus,,63.74416,11.297908,,,0,NSR:StopPlace:45254,2,,,700
 NSR:Quay:78076,,Domus,,63.744328,11.297892,,,0,NSR:StopPlace:45254,2,,,700
 NSR:Quay:75802,,Nordheim Nordheim,,64.24112,12.154859,,,0,NSR:StopPlace:44133,2,,,700
-NSR:Quay:72776,,Åstan,,63.349354,9.900688,,,0,NSR:StopPlace:42489,2,,,700
 NSR:Quay:71444,,Trongbakken,,63.09837,9.693148,,,0,NSR:StopPlace:41756,2,,,700
+NSR:Quay:72776,,Åstan,,63.349354,9.900688,,,0,NSR:StopPlace:42489,2,,,700
 NSR:Quay:72775,,Megarden,,63.394016,10.161076,,,0,NSR:StopPlace:42488,2,,,700
 NSR:Quay:75803,,Mastin,,64.41855,11.489683,,,0,NSR:StopPlace:44132,2,,,700
 NSR:Quay:71445,,Hogsdalen,,63.69813,10.240574,,,0,NSR:StopPlace:41757,2,,,700
@@ -5017,8 +5017,8 @@ NSR:Quay:71405,,Rissa,,63.58258,9.953502,,,0,NSR:StopPlace:41738,2,,,700
 NSR:Quay:71406,,Rissa,,63.58264,9.953444,,,0,NSR:StopPlace:41738,2,,,700
 NSR:Quay:71407,,Trollahaugen 64,,63.452183,10.304464,,,0,NSR:StopPlace:41739,2,,,700
 NSR:Quay:79374,,Vada ytre,,64.01039,11.202976,,,0,NSR:StopPlace:45892,2,,,700
-NSR:Quay:79375,,Eidshaug hurtigbåtkai,,64.932304,11.46407,,,0,NSR:StopPlace:45893,2,,,1000
 NSR:Quay:80353,,Fjøsa,,64.82404,11.576124,,,0,NSR:StopPlace:46370,2,,,700
+NSR:Quay:79375,,Eidshaug hurtigbåtkai,,64.932304,11.46407,,,0,NSR:StopPlace:45893,2,,,1000
 NSR:Quay:79376,,Vada ytre,,64.01044,11.202935,,,0,NSR:StopPlace:45892,2,,,700
 NSR:Quay:80354,,Fjøsa,,64.8241,11.576092,,,0,NSR:StopPlace:46370,2,,,700
 NSR:Quay:80359,,Kvisterø,,64.82557,11.59198,,,0,NSR:StopPlace:46373,2,,,700
@@ -5061,8 +5061,8 @@ NSR:Quay:71385,,Ringve skole,,63.449654,10.446037,,,0,NSR:StopPlace:41725,2,,,70
 NSR:Quay:75743,,Brønstad,,64.2297,12.306457,,,0,NSR:StopPlace:44104,2,,,700
 NSR:Quay:74412,,Ohraheia,,63.775715,8.814294,,,0,NSR:StopPlace:43370,2,,,700
 NSR:Quay:75744,,Brønstad,,64.22976,12.30613,,,0,NSR:StopPlace:44104,2,,,700
-NSR:Quay:71386,,Trolla,,63.660103,9.082092,,,0,NSR:StopPlace:41726,2,,,700
 NSR:Quay:74413,,Ohraheia,,63.776142,8.813927,,,0,NSR:StopPlace:43370,2,,,700
+NSR:Quay:71386,,Trolla,,63.660103,9.082092,,,0,NSR:StopPlace:41726,2,,,700
 NSR:Quay:75741,,Grendstuggu By,,63.230732,9.763162,,,0,NSR:StopPlace:44102,2,,,700
 NSR:Quay:71387,,Hindsverkrønning,,62.959167,10.813842,,,0,NSR:StopPlace:41727,2,,,700
 NSR:Quay:71388,,Ringvål,,63.351875,10.249911,,,0,NSR:StopPlace:41728,2,,,700
@@ -5101,8 +5101,8 @@ NSR:Quay:74437,,Storvik,,64.2349,10.292801,,,0,NSR:StopPlace:43384,2,,,700
 NSR:Quay:73102,,Studentersamfundet,,63.422665,10.395227,,,0,NSR:StopPlace:42660,2,,,700
 NSR:Quay:73101,,Studentersamfundet,,63.422596,10.394623,,,0,NSR:StopPlace:42660,2,,,700
 NSR:Quay:73104,,Mjøset,,63.40109,10.163103,,,0,NSR:StopPlace:42661,2,,,700
-NSR:Quay:99734,,Namdalseid,,64.224014,11.223194,,,0,NSR:StopPlace:46302,2,,,700
 NSR:Quay:75763,,Vinje,,64.243324,12.360899,,,0,NSR:StopPlace:44113,2,,,700
+NSR:Quay:99734,,Namdalseid,,64.224014,11.223194,,,0,NSR:StopPlace:46302,2,,,700
 NSR:Quay:73103,,Studentersamfundet,,63.422222,10.394384,,,0,NSR:StopPlace:42660,2,,,700
 NSR:Quay:99735,,Levanger stasjon,,63.745094,11.300597,,,0,NSR:StopPlace:45170,2,,,700
 NSR:Quay:73109,,Stuevoll,,62.917248,11.883564,,,0,NSR:StopPlace:42663,2,,,700
@@ -5218,8 +5218,8 @@ NSR:Quay:78863,,Valøy gård,,64.13945,11.925766,,,0,NSR:StopPlace:45643,2,,,700
 NSR:Quay:73174,,Mobakken,,63.185143,10.124408,,,0,NSR:StopPlace:42698,2,,,700
 NSR:Quay:77531,,Fagerli vegdele,,63.5582,10.181789,,,0,NSR:StopPlace:44990,2,,,700
 NSR:Quay:73177,,Størdal,,63.56198,9.788035,,,0,NSR:StopPlace:42699,2,,,700
-NSR:Quay:77530,,Fagerli vegdele,,63.557423,10.179943,,,0,NSR:StopPlace:44990,2,,,700
 NSR:Quay:78861,,Valøy gård,,64.13952,11.925789,,,0,NSR:StopPlace:45643,2,,,700
+NSR:Quay:77530,,Fagerli vegdele,,63.557423,10.179943,,,0,NSR:StopPlace:44990,2,,,700
 NSR:Quay:73176,,Størdal,,63.56206,9.78834,,,0,NSR:StopPlace:42699,2,,,700
 NSR:Quay:73171,,Stølsvangsveien,,62.699757,9.94601,,,0,NSR:StopPlace:42696,2,,,700
 NSR:Quay:73170,,Stølsvangsveien,,62.699657,9.946241,,,0,NSR:StopPlace:42696,2,,,700
@@ -5243,8 +5243,8 @@ NSR:Quay:73185,,Moe kirke,,63.18646,9.76438,,,0,NSR:StopPlace:42702,2,,,700
 NSR:Quay:76210,,Spillumshøgda,,64.438324,11.509027,,,0,NSR:StopPlace:44336,2,,,700
 NSR:Quay:77542,,Skage øst,,64.46281,11.770874,,,0,NSR:StopPlace:44996,2,,,700
 NSR:Quay:76211,,Skåle,,64.165344,13.867912,,,0,NSR:StopPlace:44335,2,,,700
-NSR:Quay:77541,,Kleivavegen,,63.552006,10.207838,,,0,NSR:StopPlace:44995,2,,,700
 NSR:Quay:78872,,Strandvik vegdele,,64.159195,11.976918,,,0,NSR:StopPlace:45648,2,,,700
+NSR:Quay:77541,,Kleivavegen,,63.552006,10.207838,,,0,NSR:StopPlace:44995,2,,,700
 NSR:Quay:73187,,Langegga,,62.569515,11.382948,,,0,NSR:StopPlace:42703,2,,,700
 NSR:Quay:77540,,Kleivavegen,,63.552048,10.207796,,,0,NSR:StopPlace:44995,2,,,700
 NSR:Quay:73182,,Støren rådhus,,63.038567,10.284161,,,0,NSR:StopPlace:42701,2,,,700
@@ -5540,14 +5540,14 @@ NSR:Quay:72876,,Øverbø,,63.282127,11.080486,,,0,NSR:StopPlace:42540,2,,,700
 NSR:Quay:72871,,Melhus kirke,,63.27105,10.294904,,,0,NSR:StopPlace:42539,2,,,700
 NSR:Quay:72870,,Heggdalen,,63.407707,10.450313,,,0,NSR:StopPlace:42538,2,,,700
 NSR:Quay:72873,,Melhus kirke,,63.27187,10.295179,,,0,NSR:StopPlace:42539,2,,,700
-NSR:Quay:71542,,Rotvoll,,63.435036,10.484247,,,0,NSR:StopPlace:41813,2,,,700
 NSR:Quay:72872,,Heggdalen,,63.408108,10.448991,,,0,NSR:StopPlace:42538,2,,,700
+NSR:Quay:71542,,Rotvoll,,63.435036,10.484247,,,0,NSR:StopPlace:41813,2,,,700
 NSR:Quay:72879,,Melhus sentrum,,63.28746,10.275148,,,0,NSR:StopPlace:42542,2,,,700
 NSR:Quay:72878,,Melhus sentrum,,63.287388,10.274961,,,0,NSR:StopPlace:42542,2,,,700
 NSR:Quay:80493,,Sneve Utøy,,63.871086,11.20756,,,0,NSR:StopPlace:46440,2,,,700
 NSR:Quay:80494,,Sneve Utøy,,63.87105,11.20752,,,0,NSR:StopPlace:46440,2,,,700
-NSR:Quay:78181,,Bringebærvegen,,63.721607,11.271681,,,0,NSR:StopPlace:45307,2,,,700
 NSR:Quay:80499,,Lursvingen,,63.874306,11.248382,,,0,NSR:StopPlace:46443,2,,,700
+NSR:Quay:78181,,Bringebærvegen,,63.721607,11.271681,,,0,NSR:StopPlace:45307,2,,,700
 NSR:Quay:72880,,Heggstad,,63.341114,10.338949,,,0,NSR:StopPlace:42543,2,,,700
 NSR:Quay:78187,,Tyttebærvegen,,63.72069,11.273797,,,0,NSR:StopPlace:45310,2,,,700
 NSR:Quay:78186,,Tyttebærvegen,,63.720715,11.273657,,,0,NSR:StopPlace:45310,2,,,700
@@ -5718,12 +5718,12 @@ NSR:Quay:73218,,Langlo,,63.36723,10.111429,,,0,NSR:StopPlace:42720,2,,,700
 NSR:Quay:73217,,Størset,,63.66633,10.189656,,,0,NSR:StopPlace:42719,2,,,700
 NSR:Quay:74547,,Almlia,,63.338688,9.866396,,,0,NSR:StopPlace:43447,2,,,700
 NSR:Quay:75875,,Strandli,,64.4669,13.574051,,,0,NSR:StopPlace:44169,2,,,700
-NSR:Quay:73212,,Størenhallen snuplass,,63.036903,10.286243,,,0,NSR:StopPlace:42716,2,,,700
 NSR:Quay:74544,,Olalia,,63.58943,8.974249,,,0,NSR:StopPlace:43445,2,,,700
+NSR:Quay:73212,,Størenhallen snuplass,,63.036903,10.286243,,,0,NSR:StopPlace:42716,2,,,700
 NSR:Quay:75876,,Strandli,,64.46694,13.574048,,,0,NSR:StopPlace:44169,2,,,700
 NSR:Quay:78900,,Dyrstad,,64.077965,11.472716,,,0,NSR:StopPlace:45661,2,,,700
-NSR:Quay:73211,,Størenhallen snuplass,,63.036903,10.286243,,,0,NSR:StopPlace:42716,2,,,700
 NSR:Quay:74545,,Olalia,,63.58943,8.974027,,,0,NSR:StopPlace:43445,2,,,700
+NSR:Quay:73211,,Størenhallen snuplass,,63.036903,10.286243,,,0,NSR:StopPlace:42716,2,,,700
 NSR:Quay:74542,,Alfheimsvingen,,63.38345,10.327862,,,0,NSR:StopPlace:43443,2,,,700
 NSR:Quay:73214,,Moen skisenter,,62.963154,11.786923,,,0,NSR:StopPlace:42718,2,,,700
 NSR:Quay:74543,,Digre,,63.343956,10.519335,,,0,NSR:StopPlace:43444,2,,,700
@@ -5826,8 +5826,8 @@ NSR:Quay:110377,,Keiserås vd.,,63.568466,10.177658,,,0,NSR:StopPlace:70302,2,,,
 NSR:Quay:110376,,Breidli,,63.616673,10.233451,,,0,NSR:StopPlace:44834,2,,,700
 NSR:Quay:110375,,Bjørsetåsen,,63.640568,10.270504,,,0,NSR:StopPlace:44820,2,,,700
 NSR:Quay:110374,,Rønningen,,63.653454,10.254549,,,0,NSR:StopPlace:44823,2,,,700
-NSR:Quay:71488,,Tråssåvika,,63.347385,9.965967,,,0,NSR:StopPlace:41783,2,,,700
 NSR:Quay:74515,,Dalum,,63.29908,9.040412,,,0,NSR:StopPlace:43429,2,,,700
+NSR:Quay:71488,,Tråssåvika,,63.347385,9.965967,,,0,NSR:StopPlace:41783,2,,,700
 NSR:Quay:75847,,Lilleng,,64.48785,13.493601,,,0,NSR:StopPlace:44155,2,,,700
 NSR:Quay:74516,,Dalum,,63.299095,9.040591,,,0,NSR:StopPlace:43429,2,,,700
 NSR:Quay:71489,,Holden øvre,,62.78535,11.34143,,,0,NSR:StopPlace:41784,2,,,700
@@ -5912,8 +5912,8 @@ NSR:Quay:78980,,Bruvelta,,64.16729,11.813791,,,0,NSR:StopPlace:45699,2,,,700
 NSR:Quay:73293,,Legårdsbakken,,63.355423,10.266236,,,0,NSR:StopPlace:42760,2,,,700
 NSR:Quay:76328,,Ydstines,,63.46087,10.990284,,,0,NSR:StopPlace:44398,2,,,700
 NSR:Quay:77659,,Tuv,,63.67557,11.127402,,,0,NSR:StopPlace:45052,2,,,700
-NSR:Quay:78989,,Rinnan nedre,,63.765972,11.44869,,,0,NSR:StopPlace:45704,2,,,700
 NSR:Quay:77658,,Øyesvold vegdele,,64.48105,11.891961,,,0,NSR:StopPlace:45054,2,,,700
+NSR:Quay:78989,,Rinnan nedre,,63.765972,11.44869,,,0,NSR:StopPlace:45704,2,,,700
 NSR:Quay:76326,,Ydstines,,63.460777,10.990467,,,0,NSR:StopPlace:44398,2,,,700
 NSR:Quay:73299,,Leinbakken,,63.355766,10.258836,,,0,NSR:StopPlace:42763,2,,,700
 NSR:Quay:77657,,Tuv,,63.675858,11.130288,,,0,NSR:StopPlace:45052,2,,,700
@@ -5922,8 +5922,8 @@ NSR:Quay:76327,,Ydstines,,63.46074,10.990303,,,0,NSR:StopPlace:44398,2,,,700
 NSR:Quay:98579,,St. Olavs Hospital,,63.420773,10.390441,,,0,NSR:StopPlace:41617,2,,,700
 NSR:Quay:77656,,Tuv,,63.675053,11.126661,,,0,NSR:StopPlace:45052,2,,,700
 NSR:Quay:78987,,Rygg Rygg,,64.18125,11.888309,,,0,NSR:StopPlace:45703,2,,,700
-NSR:Quay:78986,,Vandbakk,,63.758842,10.454572,,,0,NSR:StopPlace:45702,2,,,700
 NSR:Quay:76325,,Frikirka,,64.475266,11.465457,,,0,NSR:StopPlace:44397,2,,,700
+NSR:Quay:78986,,Vandbakk,,63.758842,10.454572,,,0,NSR:StopPlace:45702,2,,,700
 NSR:Quay:102717,,Prinsens gate P3,,63.43222,10.39166,,,0,NSR:StopPlace:60255,2,,,700
 NSR:Quay:102718,,Dronningens gate 19,,63.43193,10.39153,,,0,NSR:StopPlace:60256,2,,,700
 NSR:Quay:102715,,Ratesvingen,,63.38782,10.3994,,,0,NSR:StopPlace:60254,2,,,700
@@ -6045,11 +6045,11 @@ NSR:Quay:74597,,Dragseid,,63.94895,10.100398,,,0,NSR:StopPlace:43473,2,,,700
 NSR:Quay:78953,,Haugan Kvam,,64.13456,11.701791,,,0,NSR:StopPlace:45686,2,,,700
 NSR:Quay:77622,,Husbymyra nord,,63.475952,10.934282,,,0,NSR:StopPlace:45036,2,,,700
 NSR:Quay:73274,,Moltmyra øst,,63.360573,10.399014,,,0,NSR:StopPlace:42751,2,,,700
-NSR:Quay:76300,,Vika,,64.468796,11.488738,,,0,NSR:StopPlace:44385,2,,,700
 NSR:Quay:77632,,Skillbrigt,,63.671375,11.068736,,,0,NSR:StopPlace:45041,2,,,700
+NSR:Quay:76300,,Vika,,64.468796,11.488738,,,0,NSR:StopPlace:44385,2,,,700
 NSR:Quay:78963,,Grøtan,,64.151436,11.765697,,,0,NSR:StopPlace:45691,2,,,700
-NSR:Quay:76301,,Vika,,64.468704,11.490051,,,0,NSR:StopPlace:44385,2,,,700
 NSR:Quay:77631,,Skillbrigt,,63.671314,11.068742,,,0,NSR:StopPlace:45041,2,,,700
+NSR:Quay:76301,,Vika,,64.468704,11.490051,,,0,NSR:StopPlace:44385,2,,,700
 NSR:Quay:78962,,Salthammer nordre,,63.764156,11.42598,,,0,NSR:StopPlace:45690,2,,,700
 NSR:Quay:73276,,Leangen allé,,63.433823,10.465222,,,0,NSR:StopPlace:42752,2,,,700
 NSR:Quay:78961,,Salthammer nordre,,63.76421,11.425899,,,0,NSR:StopPlace:45690,2,,,700
@@ -6060,8 +6060,8 @@ NSR:Quay:73272,,Moltmyra øst,,63.360416,10.399226,,,0,NSR:StopPlace:42751,2,,,7
 NSR:Quay:73271,,Lauvøy,,63.92237,9.927916,,,0,NSR:StopPlace:42749,2,,,700
 NSR:Quay:77639,,Ny Jord,,64.46954,11.820069,,,0,NSR:StopPlace:45045,2,,,700
 NSR:Quay:77638,,Dahling,,63.672237,11.08825,,,0,NSR:StopPlace:45044,2,,,700
-NSR:Quay:76306,,HaBu,,64.46966,11.480847,,,0,NSR:StopPlace:44388,2,,,700
 NSR:Quay:78969,,Noem,,64.16744,11.807539,,,0,NSR:StopPlace:45694,2,,,700
+NSR:Quay:76306,,HaBu,,64.46966,11.480847,,,0,NSR:StopPlace:44388,2,,,700
 NSR:Quay:77637,,Dahling,,63.672207,11.088231,,,0,NSR:StopPlace:45044,2,,,700
 NSR:Quay:78968,,Stabelvollen,,63.750107,11.309857,,,0,NSR:StopPlace:45693,2,,,700
 NSR:Quay:76307,,HaBu,,64.46951,11.481077,,,0,NSR:StopPlace:44388,2,,,700
@@ -6178,8 +6178,8 @@ NSR:Quay:73858,,Nerøyen,,63.01489,10.246533,,,0,NSR:StopPlace:43069,2,,,700
 NSR:Quay:73857,,Hårstadkrysset,,63.34715,10.37076,,,0,NSR:StopPlace:43068,2,,,700
 NSR:Quay:80151,,Heggstad,,63.945976,11.325165,,,0,NSR:StopPlace:46273,2,,,700
 NSR:Quay:72529,,Skåveien,,63.115723,9.699745,,,0,NSR:StopPlace:42352,2,,,700
-NSR:Quay:73859,,Nerøyen,,63.01493,10.24614,,,0,NSR:StopPlace:43069,2,,,700
 NSR:Quay:72528,,Skåveien,,63.11591,9.700007,,,0,NSR:StopPlace:42352,2,,,700
+NSR:Quay:73859,,Nerøyen,,63.01493,10.24614,,,0,NSR:StopPlace:43069,2,,,700
 NSR:Quay:80143,,Aune Sprova,,64.15631,11.272647,,,0,NSR:StopPlace:46268,2,,,700
 NSR:Quay:80144,,Jørstad,,63.861324,11.15527,,,0,NSR:StopPlace:46269,2,,,700
 NSR:Quay:79168,,Øra Malm,,64.06753,11.213063,,,0,NSR:StopPlace:45789,2,,,700
@@ -6207,8 +6207,8 @@ NSR:Quay:71201,,Hemnehallen,,63.292126,9.079069,,,0,NSR:StopPlace:41623,2,,,700
 NSR:Quay:71206,,Tonstadkrysset,,63.37075,10.38236,,,0,NSR:StopPlace:41633,2,,,700
 NSR:Quay:80161,,Gangstadkorsen,,63.958027,11.334267,,,0,NSR:StopPlace:46277,2,,,700
 NSR:Quay:80162,,Gangstadkorsen,,63.958057,11.334151,,,0,NSR:StopPlace:46277,2,,,700
-NSR:Quay:71207,,Rabben,,63.723564,8.837028,,,0,NSR:StopPlace:41627,2,,,700
 NSR:Quay:72537,,Hallgotto,,63.240902,11.056131,,,0,NSR:StopPlace:42357,2,,,700
+NSR:Quay:71207,,Rabben,,63.723564,8.837028,,,0,NSR:StopPlace:41627,2,,,700
 NSR:Quay:71208,,Hemnskjel,,63.4975,9.157105,,,0,NSR:StopPlace:41625,2,,,700
 NSR:Quay:71209,,Tonstadkrysset,,63.37039,10.37405,,,0,NSR:StopPlace:41633,2,,,700
 NSR:Quay:80160,,Morkabrekka,,64.1639,11.262102,,,0,NSR:StopPlace:46276,2,,,700
@@ -6238,8 +6238,8 @@ NSR:Quay:73873,,John P. Kroglunds veg,,63.352886,10.340496,,,0,NSR:StopPlace:430
 NSR:Quay:72542,,Hallguttu,,63.243767,9.770792,,,0,NSR:StopPlace:42360,2,,,700
 NSR:Quay:80172,,Fjordgløttvegen,,63.96311,11.309571,,,0,NSR:StopPlace:46282,2,,,700
 NSR:Quay:76907,,Grandesvingen,,63.667133,10.607427,,,0,NSR:StopPlace:44686,2,,,700
-NSR:Quay:72549,,Vårum,,63.499466,10.080238,,,0,NSR:StopPlace:42365,2,,,700
 NSR:Quay:71217,,Henmoen,,63.05019,11.587476,,,0,NSR:StopPlace:41631,2,,,700
+NSR:Quay:72549,,Vårum,,63.499466,10.080238,,,0,NSR:StopPlace:42365,2,,,700
 NSR:Quay:80173,,Fjordgløttvegen,,63.963116,11.309819,,,0,NSR:StopPlace:46282,2,,,700
 NSR:Quay:76906,,Grandesvingen,,63.66652,10.60702,,,0,NSR:StopPlace:44686,2,,,700
 NSR:Quay:71218,,Rakbjørg gård,,63.257755,10.194205,,,0,NSR:StopPlace:41632,2,,,700
@@ -6304,8 +6304,8 @@ NSR:Quay:80113,,Inderøy vgs.,,63.876293,11.28943,,,0,NSR:StopPlace:46254,2,,,70
 NSR:Quay:80118,,Sakshaug skole,,63.879005,11.286803,,,0,NSR:StopPlace:46256,2,,,700
 NSR:Quay:80116,,Abelvær,,64.73175,11.18349,,,0,NSR:StopPlace:46255,2,,,700
 NSR:Quay:80117,,Sakshaug skole,,63.878624,11.287513,,,0,NSR:StopPlace:46256,2,,,700
-NSR:Quay:72501,,Skålvollen,,63.247395,10.042417,,,0,NSR:StopPlace:42335,2,,,700
 NSR:Quay:73832,,Jensvolden,,62.60768,11.647263,,,0,NSR:StopPlace:43055,2,,,700
+NSR:Quay:72501,,Skålvollen,,63.247395,10.042417,,,0,NSR:StopPlace:42335,2,,,700
 NSR:Quay:72500,,Skålvollen,,63.247395,10.042417,,,0,NSR:StopPlace:42335,2,,,700
 NSR:Quay:73833,,Jensvolden,,62.607754,11.647386,,,0,NSR:StopPlace:43055,2,,,700
 NSR:Quay:73839,,Jensvoll,,62.934372,11.839813,,,0,NSR:StopPlace:43058,2,,,700
@@ -6352,8 +6352,8 @@ NSR:Quay:76842,,Åsmulen,,64.66126,12.651312,,,0,NSR:StopPlace:44654,2,,,700
 NSR:Quay:72488,,Vonheim,,63.146854,10.009318,,,0,NSR:StopPlace:42327,2,,,700
 NSR:Quay:71157,,Prestgårdskrysset,,63.29838,10.476495,,,0,NSR:StopPlace:41600,2,,,700
 NSR:Quay:76841,,Åsmulen,,64.66134,12.651219,,,0,NSR:StopPlace:44654,2,,,700
-NSR:Quay:72487,,Vonheim,,63.146854,10.009318,,,0,NSR:StopPlace:42327,2,,,700
 NSR:Quay:75511,,By nedre,,63.227478,9.765623,,,0,NSR:StopPlace:43974,2,,,700
+NSR:Quay:72487,,Vonheim,,63.146854,10.009318,,,0,NSR:StopPlace:42327,2,,,700
 NSR:Quay:75518,,Bygrensen,,63.418774,10.37556,,,0,NSR:StopPlace:43978,2,,,900
 NSR:Quay:75519,,Byneset kirke,,63.357796,10.118473,,,0,NSR:StopPlace:43979,2,,,700
 NSR:Quay:71161,,Presthus,,63.42474,10.515956,,,0,NSR:StopPlace:41602,2,,,700
@@ -6477,8 +6477,8 @@ NSR:Quay:79092,,Jevika Ekne,,63.70727,11.021106,,,0,NSR:StopPlace:45754,2,,,700
 NSR:Quay:72462,,Skovgård,,63.428776,10.495768,,,0,NSR:StopPlace:42315,2,,,700
 NSR:Quay:73793,,Jakobslivegen øvre,,63.412193,10.49242,,,0,NSR:StopPlace:43033,2,,,700
 NSR:Quay:79093,,Jevika Ekne,,63.7073,11.020357,,,0,NSR:StopPlace:45754,2,,,700
-NSR:Quay:72461,,Lade idrettsanlegg,,63.44411,10.449106,,,0,NSR:StopPlace:42314,2,,,700
 NSR:Quay:73792,,Sluppenvegen,,63.39749,10.389921,,,0,NSR:StopPlace:43032,2,,,700
+NSR:Quay:72461,,Lade idrettsanlegg,,63.44411,10.449106,,,0,NSR:StopPlace:42314,2,,,700
 NSR:Quay:79094,,Bartnes,,64.057594,11.24326,,,0,NSR:StopPlace:45755,2,,,700
 NSR:Quay:79096,,Bartnes,,64.05756,11.242908,,,0,NSR:StopPlace:45755,2,,,700
 NSR:Quay:79098,,Langås,,63.672787,11.082534,,,0,NSR:StopPlace:45757,2,,,700
@@ -6497,9 +6497,9 @@ NSR:Quay:76823,,Renå,,63.455807,11.572711,,,0,NSR:StopPlace:44645,2,,,700
 NSR:Quay:71132,,Pirbadet,,63.440933,10.402271,,,0,NSR:StopPlace:41586,2,,,700
 NSR:Quay:73795,,Jakobslivegen øvre,,63.411343,10.491534,,,0,NSR:StopPlace:43033,2,,,700
 NSR:Quay:72464,,Hafsmo,,63.37405,9.238484,,,0,NSR:StopPlace:42316,2,,,700
-NSR:Quay:72463,,Skovgård,,63.429214,10.494908,,,0,NSR:StopPlace:42315,2,,,700
 NSR:Quay:73794,,Sluppenvegen,,63.397522,10.389682,,,0,NSR:StopPlace:43032,2,,,700
 NSR:Quay:71133,,Tiller vgs.,,63.35806,10.378502,,,0,NSR:StopPlace:41587,2,,,700
+NSR:Quay:72463,,Skovgård,,63.429214,10.494908,,,0,NSR:StopPlace:42315,2,,,700
 NSR:Quay:71134,,Pirbadet,,63.441124,10.402221,,,0,NSR:StopPlace:41586,2,,,700
 NSR:Quay:76820,,Aunfoss,,64.61039,12.589194,,,0,NSR:StopPlace:44643,2,,,700
 NSR:Quay:72466,,Vollhagen,,63.280926,10.224609,,,0,NSR:StopPlace:42317,2,,,700
@@ -6807,8 +6807,8 @@ NSR:Quay:80261,,Åkre,,64.85395,11.538659,,,0,NSR:StopPlace:46326,2,,,700
 NSR:Quay:71306,,Reistøa,,62.96412,10.867879,,,0,NSR:StopPlace:41683,2,,,700
 NSR:Quay:71307,,Reistøa,,62.964157,10.867541,,,0,NSR:StopPlace:41683,2,,,700
 NSR:Quay:72639,,Ysetmoen,,62.93333,11.10438,,,0,NSR:StopPlace:42416,2,,,700
-NSR:Quay:71308,,Torvmyra,,63.361336,10.391673,,,0,NSR:StopPlace:41684,2,,,700
 NSR:Quay:73969,,Sollia,,63.399277,10.428326,,,0,NSR:StopPlace:43130,2,,,700
+NSR:Quay:71308,,Torvmyra,,63.361336,10.391673,,,0,NSR:StopPlace:41684,2,,,700
 NSR:Quay:72638,,Ysetmoen,,62.93336,11.103999,,,0,NSR:StopPlace:42416,2,,,700
 NSR:Quay:79276,,Vestre,,64.46971,11.483503,,,0,NSR:StopPlace:45841,2,,,700
 NSR:Quay:80251,,Nordsjøkorsen,,64.867584,11.587159,,,0,NSR:StopPlace:46321,2,,,700
@@ -6927,8 +6927,8 @@ NSR:Quay:72607,,Værnes ferjekai,,63.58077,9.509606,,,0,NSR:StopPlace:58667,2,,,
 NSR:Quay:72609,,Magnus Berrføtts veg,,63.42179,10.439023,,,0,NSR:StopPlace:42400,2,,,700
 NSR:Quay:73935,,Kaaldfeltet,,63.65054,9.024919,,,0,NSR:StopPlace:43110,2,,,700
 NSR:Quay:73934,,Nesvalen,,64.15292,10.187377,,,0,NSR:StopPlace:43109,2,,,700
-NSR:Quay:73937,,Solbu,,63.1724,10.121611,,,0,NSR:StopPlace:43111,2,,,700
 NSR:Quay:72606,,Værnes ferjekai,,63.58106,9.509576,,,0,NSR:StopPlace:42398,2,,,700
+NSR:Quay:73937,,Solbu,,63.1724,10.121611,,,0,NSR:StopPlace:43111,2,,,700
 NSR:Quay:73936,,Solbu,,63.17282,10.122561,,,0,NSR:StopPlace:43111,2,,,700
 NSR:Quay:80220,,Foldereid vest,,64.96281,12.177669,,,0,NSR:StopPlace:46306,2,,,700
 NSR:Quay:80221,,Foldereid vest,,64.96293,12.177787,,,0,NSR:StopPlace:46306,2,,,700
@@ -6983,8 +6983,8 @@ NSR:Quay:72628,,Winsnes,,62.950336,10.61089,,,0,NSR:StopPlace:42410,2,,,700
 NSR:Quay:72627,,Winsnes,,62.950245,10.610806,,,0,NSR:StopPlace:42410,2,,,700
 NSR:Quay:80242,,Yttersetran,,64.90935,11.788089,,,0,NSR:StopPlace:46316,2,,,700
 NSR:Quay:79266,,Rådyrvegen,,64.48296,11.542168,,,0,NSR:StopPlace:45836,2,,,700
-NSR:Quay:79267,,Rådyrvegen,,64.48404,11.545424,,,0,NSR:StopPlace:45836,2,,,700
 NSR:Quay:80241,,Yttersetran,,64.90936,11.787979,,,0,NSR:StopPlace:46316,2,,,700
+NSR:Quay:79267,,Rådyrvegen,,64.48404,11.545424,,,0,NSR:StopPlace:45836,2,,,700
 NSR:Quay:80246,,Finnemokorsen,,64.88316,11.667549,,,0,NSR:StopPlace:46318,2,,,700
 NSR:Quay:79268,,Mollstrand,,63.842766,10.681637,,,0,NSR:StopPlace:45837,2,,,700
 NSR:Quay:79269,,Mollstrand,,63.842735,10.681745,,,0,NSR:StopPlace:45837,2,,,700
@@ -7022,8 +7022,8 @@ NSR:Quay:75632,,Gammelgarden,,63.308144,10.15656,,,0,NSR:StopPlace:44044,2,,,700
 NSR:Quay:74308,,Stokkhaugen,,63.287018,9.630637,,,0,NSR:StopPlace:43314,2,,,700
 NSR:Quay:74309,,Stokkslettbakken,,63.736595,9.708934,,,0,NSR:StopPlace:43315,2,,,700
 NSR:Quay:75640,,Garberg bru,,63.249172,11.094111,,,0,NSR:StopPlace:44048,2,,,700
-NSR:Quay:110174,,Ler,mot Oslo,63.197906,10.301852,,,0,NSR:StopPlace:42819,2,,,700
 NSR:Quay:75641,,Garberg bru,,63.249485,11.094173,,,0,NSR:StopPlace:44048,2,,,700
+NSR:Quay:110174,,Ler,mot Oslo,63.197906,10.301852,,,0,NSR:StopPlace:42819,2,,,700
 NSR:Quay:74310,,Stokkslettbakken,,63.736687,9.708694,,,0,NSR:StopPlace:43315,2,,,700
 NSR:Quay:71285,,Tors veg,,63.404846,10.42714,,,0,NSR:StopPlace:41672,2,,,700
 NSR:Quay:110172,,Ler,mot Trondheim,63.197197,10.302099,,,0,NSR:StopPlace:42819,2,,,700
@@ -7092,14 +7092,14 @@ NSR:Quay:71221,,Rambu,,62.503304,11.557465,,,0,NSR:StopPlace:41634,2,,,700
 NSR:Quay:71222,,Henrik Ourens veg,,63.415012,10.445394,,,0,NSR:StopPlace:41635,2,,,700
 NSR:Quay:73885,,Soknes,,63.03424,10.273968,,,0,NSR:StopPlace:43084,2,,,700
 NSR:Quay:72554,,Løkkjbekken,,62.652615,9.865521,,,0,NSR:StopPlace:42367,2,,,700
-NSR:Quay:72553,,Løkkjbekken,,62.65264,9.865171,,,0,NSR:StopPlace:42367,2,,,700
 NSR:Quay:73884,,Jordhus,,63.139446,9.706823,,,0,NSR:StopPlace:43083,2,,,700
+NSR:Quay:72553,,Løkkjbekken,,62.65264,9.865171,,,0,NSR:StopPlace:42367,2,,,700
 NSR:Quay:71223,,Rambu,,62.503338,11.557623,,,0,NSR:StopPlace:41634,2,,,700
 NSR:Quay:80180,,Åsvegen,,63.962543,11.310409,,,0,NSR:StopPlace:46286,2,,,700
 NSR:Quay:71228,,Ramsvika,,63.75129,10.087534,,,0,NSR:StopPlace:41637,2,,,700
 NSR:Quay:80184,,Hanemo,,64.18338,11.220513,,,0,NSR:StopPlace:46288,2,,,700
-NSR:Quay:72559,,Halsen,,63.409737,9.959573,,,0,NSR:StopPlace:42370,2,,,700
 NSR:Quay:71229,,Tonstadkrysset E6,,63.3689,10.379022,,,0,NSR:StopPlace:41638,2,,,700
+NSR:Quay:72559,,Halsen,,63.409737,9.959573,,,0,NSR:StopPlace:42370,2,,,700
 NSR:Quay:80181,,Åsvegen,,63.962196,11.311203,,,0,NSR:StopPlace:46286,2,,,700
 NSR:Quay:76915,,Sandfærhus,,63.44898,10.914879,,,0,NSR:StopPlace:44690,2,,,700
 NSR:Quay:79198,,Hjellnesset,,64.116,11.32058,,,0,NSR:StopPlace:45805,2,,,700
@@ -7111,8 +7111,8 @@ NSR:Quay:80179,,Grønnesby,,63.96396,11.28605,,,0,NSR:StopPlace:46285,2,,,700
 NSR:Quay:79192,,Kråknesset,,64.10974,11.367491,,,0,NSR:StopPlace:45802,2,,,700
 NSR:Quay:72561,,Våvatnet,,63.321373,9.52904,,,0,NSR:StopPlace:42371,2,,,700
 NSR:Quay:79193,,Kråknesset,,64.109924,11.36781,,,0,NSR:StopPlace:45802,2,,,700
-NSR:Quay:72560,,Løkli,,62.908676,10.127403,,,0,NSR:StopPlace:42372,2,,,700
 NSR:Quay:71230,,Tonstadkrysset E6,,63.369102,10.37968,,,0,NSR:StopPlace:41638,2,,,700
+NSR:Quay:72560,,Løkli,,62.908676,10.127403,,,0,NSR:StopPlace:42372,2,,,700
 NSR:Quay:73891,,Jordsli,,62.828365,11.320913,,,0,NSR:StopPlace:43086,2,,,700
 NSR:Quay:79196,,Tunsøra,,63.94385,10.990695,,,0,NSR:StopPlace:45804,2,,,700
 NSR:Quay:79197,,Tunsøra,,63.943867,10.990596,,,0,NSR:StopPlace:45804,2,,,700
@@ -7124,8 +7124,8 @@ NSR:Quay:72566,,Halstad,,63.41485,10.780417,,,0,NSR:StopPlace:42374,2,,,700
 NSR:Quay:110138,,Trøakorsen,,63.90838,11.190769,,,0,NSR:StopPlace:46551,2,,,700
 NSR:Quay:76924,,Hognesaunet,,63.45996,10.961512,,,0,NSR:StopPlace:44695,2,,,700
 NSR:Quay:73897,,Joskjøra,,64.10399,10.206265,,,0,NSR:StopPlace:43090,2,,,700
-NSR:Quay:73899,,Solbakken,,63.42107,10.810519,,,0,NSR:StopPlace:43091,2,,,700
 NSR:Quay:72568,,Halstad,,63.414654,10.780927,,,0,NSR:StopPlace:42374,2,,,700
+NSR:Quay:73899,,Solbakken,,63.42107,10.810519,,,0,NSR:StopPlace:43091,2,,,700
 NSR:Quay:72563,,Løkli,,62.908672,10.127757,,,0,NSR:StopPlace:42372,2,,,700
 NSR:Quay:71231,,Hepsøy hurtigbåtkai,,64.323586,10.387782,,,0,NSR:StopPlace:41639,2,,,1000
 NSR:Quay:73893,,Solbakken,,63.353615,9.911254,,,0,NSR:StopPlace:43089,2,,,700
@@ -7319,8 +7319,8 @@ NSR:Quay:74357,,Arnt Smistads veg,,63.396122,10.354844,,,0,NSR:StopPlace:43502,2
 NSR:Quay:78714,,Fossem,,64.05271,11.601104,,,0,NSR:StopPlace:45577,2,,,700
 NSR:Quay:73025,,Midtskogen,,63.086353,9.700169,,,0,NSR:StopPlace:42619,2,,,700
 NSR:Quay:75688,,Gjølga,,63.794277,9.960503,,,0,NSR:StopPlace:44075,2,,,700
-NSR:Quay:75689,,Gjølme,,63.315918,9.810124,,,0,NSR:StopPlace:44076,2,,,700
 NSR:Quay:73024,,Midtskogen,,63.08655,9.699579,,,0,NSR:StopPlace:42619,2,,,700
+NSR:Quay:75689,,Gjølme,,63.315918,9.810124,,,0,NSR:StopPlace:44076,2,,,700
 NSR:Quay:73027,,Strinda kirke,,63.412933,10.444928,,,0,NSR:StopPlace:42620,2,,,700
 NSR:Quay:75686,,Gjæsingen kai,,63.92515,8.89777,,,0,NSR:StopPlace:44074,2,,,1000
 NSR:Quay:74355,,Krokstadøra,,63.400524,9.501972,,,0,NSR:StopPlace:43338,2,,,700

@@ -3649,7 +3649,9 @@ isat(brekstad_kai, brekstad).
 
 isat(lerkendal, lerkendal_stadion).
 
+%% Boats
 
+isat(kristiansund_hurtigbåtkai, kristiansund).
 
 %isat(hovedterminalen, britannia).
 %isat(hovedterminalen, britannia_hotell).
