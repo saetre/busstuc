@@ -75,7 +75,7 @@
 %:- use_module( bustrans, [ flag/1 ] ). %% flag/1 and message/1 used in call-back from xxx!??? xxx = busanshp?
 
 %%% RS-131225, UNIT: /db/
-:- use_module( '../db/statcoord2', [ statcoord/4 ] ). %% RS-120816 statcoord/4
+:- use_module( '../db/statcoord3', [ statcoord/4 ] ). %% RS-120816 statcoord/4
 :- use_module( '../db/regstr', [ streetstat/5 ] ). %% RS-140928
 
 %% RS-141026, UNIT; /dialog/

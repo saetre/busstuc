@@ -13,7 +13,7 @@
 %% UNIT: /db/
 %% Ny linje %:- ensure_loaded('db/route_period').        
 
-%:- use_module('db/statcoord2.pl', [ statcoord/4 ] ). %% RS-120802
+%:- use_module('db/statcoord3.pl', [ statcoord/4 ] ). %% RS-120802
 
 %:- prolog_flag(discontiguous_warnings,_,off). 
 

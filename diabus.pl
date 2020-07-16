@@ -26,7 +26,7 @@
 :- use_module( 'db/places.pl', [] ).  
 :- use_module( 'db/auxtables.pl', [] ). 
 %:- use_module( 'db/namehashtable.pl', [toredef/3] ). %% compile is too expensive?
-:- use_module( 'db/statcoord2.pl', [] ).    %% [ statcoord ] TA-110317 %% RS-131225
+:- use_module( 'db/statcoord3.pl', [] ).    %% [ statcoord ] TA-110317 %% RS-131225
 
 %:- use_module( 'app/buslog.pl', [] ).  %% Compile LAST, undetected ERROR(?)
 
