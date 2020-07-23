@@ -266,11 +266,11 @@ softime(midnight,2400,2500).
 
 %% maxtraveltime(90). 
  
-maxtraveltime(100).
+maxtraveltime(300).
 
 %% MAX 60 minutes  Arrival Slack
 
-maxarrivalslack(60).  % unacceptably long  exchange waitingtime
+maxarrivalslack(120).  % unacceptably long  exchange waitingtime
 
 
 

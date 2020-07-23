@@ -1383,6 +1383,12 @@ cmpl(heimdal,st,heimdal_stasjon).
 cmpl(heimdal,vdg,saupstadsenteret). 
 cmpl(heimdal,vgs,saupstadsenteret). 
 
+
+cmpl(hasselvika, kai, hysneset_kai).
+cmpl(hassel, [vika, kai], hysneset_kai).
+cmpl(hasselvik, kai, hysneset_kai).
+cmpl(hassel, [vik, kai], hysneset_kai).
+
 %%%  cmpl(heimdal,[videregående,skole],hvs). %% ? %% TA-110502
 
 
@@ -4424,6 +4430,7 @@ placestat(wollumsgarden,byåsen_butikksenter).  %% TA-110114 wollumsgarden
 
 placestat(østmarka,østmarkveien). %% TA-110623
 
+placestat(kristiansund,kristiansund_hurtigbåtkai).
 
 
 %%% END REFERENCE TO STATION SECTION

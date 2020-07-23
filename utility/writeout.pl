@@ -833,8 +833,8 @@ cwc(donotknow,['don''t know','vet ikke']).
 
 %% cwc(drink,['drink','drikk']).
 
-cwc(earliesttimes,[ 'The hours indicate the earliest passing times. So be a little earlier to be sure you catch it',
-                    'Tidene angir tidligste passeringer av holdeplassene. Så vær litt tidligere for å være sikker at du rekker :-)']).
+cwc(earliesttimes,[ 'The hours indicate the earliest passing times.',
+                    'Tidene angir tidligste passeringer av holdeplassene.']).
 
 cwc(easterday2,['2. Easter day','2. påskedag']).
 

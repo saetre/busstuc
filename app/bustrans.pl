@@ -12150,10 +12150,7 @@ ip  \+ member(to,Opts), %% NOW never about destination
 
 
 %%%% PLACES
-
-
-
-
+               
 keepfrombaywithbus rule bustrans:( %% go from center
 is  not present srel/from/place/X/_  when { bound(X)},
     not present srel/nil/place/X/_  when { bound(X)},
