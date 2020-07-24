@@ -88,6 +88,7 @@ corr(k2,hovedterminalen).
 corr(kongens_gate_k1,hovedterminalen). %% Atb
 corr(kongens_gate_k2,hovedterminalen). 
 
+
 %corr(kongens_gate_19,hovedterminalen). %% TA-110627
 %corr(kongens_gate_46,hovedterminalen). %% TA-110627
 %corr(kongens_gate_50,hovedterminalen). %% TA-110627
@@ -158,6 +159,8 @@ corr(lerkendal_stadion,lerkendal).
 %corr(studentersamfundet,studentersamfundet_2).   %% RS-140901 Ser ikke ut som om _1 finnes lenger?
 %corr(studentersamfundet_1,studentersamfundet_2). %% RS-140901 Ser ikke ut som om _1 finnes lenger?
 
+corr(trondheim_hurtigbåtterminal,trondheim_s).
+corr(trondheim_hurtigbåtterminal,pirbadet).
 
 %% ALIAS_NAME
 

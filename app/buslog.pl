@@ -942,11 +942,11 @@ arr_after(depnode(ArrTime,_,_,_,_,_,_,_,_),LimTime):-
 
 
 
-dep_after(depnode(_,_,_,_,DepTime,_,_,_,_),LimTime):-
+dep_after(depnode(_,DepTime,_,_,_,_,_,_,_),LimTime):-
     DepTime  >= LimTime.
 
 
-arrdep_before(depnode(ArrTime,_,_,_,DepTime,_,_,_,_),LimTime):-   %% TA-110308
+arrdep_before(depnode(ArrTime,DepTime,_,_,_,_,_,_,_),LimTime):-   %% TA-110308
    ( ArrTime = 9999 -> DT=DepTime;DT=ArrTime ),               %% ad hoc arrival before time,
     DT  =< LimTime.
 
@@ -2400,13 +2400,13 @@ coupled3(StartDeps,EndDeps,Day,DaySeqNo,Opts,Dep01,Mid01) :-
 
         bestcorr(StartDeps,EndDeps,Day,DaySeqNo,
 
-                                depnode(_,_,_,_,Time1,Rid1,BusN1,SeqNo1,Station1), % Start
+                                depnode(_,Time1,_,_,_,Rid1,BusN1,SeqNo1,Station1), % Start
                                 depnode(Time2,_,_,_,_,Rid2,BusN2,SeqNo2,Station2), % End
                                 [OffTime,OffStation,OnTime,OnStation],Opts), %% List
         ridtobusname(Rid1,BusN1),
         ridtobusname(Rid2,BusN2),
 
-      traceprog(5,depnode(_,_,_,_,Time1,Rid1,BusN1,SeqNo1,Station1)),
+      traceprog(5,depnode(_,Time1,_,_,_,Rid1,BusN1,SeqNo1,Station1)),
       traceprog(5,depnode(Time2,_,_,_,_,Rid2,BusN2,SeqNo2,Station2)),
 
         Dep01 = depans(BusN1,Rid1,Time1,Station1,BusN2,Rid2,Time2,Station2),
