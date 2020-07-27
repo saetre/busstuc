@@ -952,7 +952,7 @@ arrdep_before(depnode(ArrTime,DepTime,_,_,_,_,_,_,_),LimTime):-   %% TA-110308
 
 
 
-arrdep_after(depnode(ArrTime,_,_,_,DepTime,_,_,_,_),LimTime):- %% found minor issues here, DeptTime was in the wrong place, well not wrong, just comparing DepTime instead of BegTime might be wrong AE-200722
+arrdep_after(depnode(ArrTime,DepTime,_,_,_,_,_,_,_),LimTime):- %% found minor issues here, DeptTime was in the wrong place, well not wrong, just comparing DepTime instead of BegTime might be wrong AE-200722
    ( DepTime = 9999 -> DT=ArrTime;DT=DepTime ),               %% ad hoc arrival after time,
     DT  >= LimTime.
 
