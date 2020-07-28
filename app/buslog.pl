@@ -356,8 +356,7 @@ station( hovedterminalen ).  %% Proforma station
 
 station(X) :- %% TA-110415
     veh_mod( TTP ),
-    optional_alias2(X, X2),
-    modstat( TTP, X2).
+    modstat( TTP, X).
 
 %% RS-150815. Experiment. Check all (future and alternative current) modules. Try to implement some automatic compl(station,[names]) here!
 station(X) :-
@@ -366,8 +365,7 @@ station(X) :-
    (  before_date0( Today, FromDate )           % future schedule
    % -> true ; before_date0( Today, ToDate )    % 
    ),  %% Today < FromDate (Future module)
-   optional_alias2(X, X2),
-   modstat(TTPeriod,X2).
+   modstat(TTPeriod,X).
 
 /*
  %% NB  station names may vary between route periods
@@ -1505,8 +1503,7 @@ isat2( Station, Place ) :- %% studentersamfundet syndrom
      ( busdat:airbusstation(Place), Station=Place ) ;   %% TA-090401
      placestat(Place,Station) ;
      alias_station(Station,Place) ;     %% AtB %% RS-151219 The station identifiers keep changing twice a year!
-     optional_alias2(Station,Station2),
-     isat(Station2,Place)
+     isat(Station,Place)
     ).
 
 %alias_station(Station,Place) :-         %% RS-141115
@@ -2097,27 +2094,27 @@ purge_deps(_Opts,StartDeps,EndDeps,LeanStartDeps,LeanEndDeps):-
 
 % Avoid deps between firstdep+120, lastdep -120
 
-    maxval(FS,FE,LastActualDepTime), %% NB FS is spurious as 1. dep
-    addtotime(LastActualDepTime,120,LateDepLow),
+%    maxval(FS,FE,LastActualDepTime), %% NB FS is spurious as 1. dep
+%    addtotime(LastActualDepTime,120,LateDepLow),
 
-    subfromtime(LS,120, LateDepHigh),
+%    subfromtime(LS,120, LateDepHigh),
 
 
 % Avoid arrs between firstarr +120, lastarr -120
 
-    addtotime(LateDepLow,120, LateArrLow), %% TA-110324
-    subfromtime(LE,120,  LateArrHigh),
+%    addtotime(LateDepLow,120, LateArrLow), %% TA-110324
+%    subfromtime(LE,120,  LateArrHigh),
 
 %%
 
-    avoiddepbetween(LateDepLow,LateDepHigh,StartDeps,XStartDeps),
+%    avoiddepbetween(LateDepLow,LateDepHigh,StartDeps,XStartDeps),
 
-    keepdepbetween(FS2,LS1,XStartDeps,LeanStartDeps), %% FS2/LS1 must be DEPtimes!
+    keepdepbetween(FS2,LS1,StartDeps,LeanStartDeps), %% FS2/LS1 must be DEPtimes!
 
 
-    avoidarrbetween(LateArrLow,LateArrHigh,EndDeps,XEndDeps),
+%    avoidarrbetween(LateArrLow,LateArrHigh,EndDeps,XEndDeps),
 
-    keeparrbetween(FE1,LE2,XEndDeps,LeanEndDeps).
+    keeparrbetween(FE1,LE2,EndDeps,LeanEndDeps).
 
 
 
