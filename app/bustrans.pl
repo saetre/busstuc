@@ -6833,11 +6833,11 @@ ip  dmeq([self,program],Self),
 
 %% AIRBUS / AIRPORT SECTION + Ferry
 
-sail rule bustrans:(
-is  sail/_/_
-id	 clear,
-    add   message(noinfoabout(boat))
-ip  [] ).
+%sail rule bustrans:(
+%is  sail/_/_
+%id	 clear,
+%    add   message(noinfoabout(boat))
+%ip  [] ).
 
 fly rule bustrans:(
 is  fly/_/_

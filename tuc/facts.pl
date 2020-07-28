@@ -236,6 +236,12 @@ msn     isa program. %%
 X isa tram:-  
     vehicletype(X,tram). %% busdat.pl
 
+X isa boat:-
+    vehicletype(X,boat).
+
+X isa ferry:-
+    vehicletype(X,ferry).
+
 %%%%%%% Trouble
 
 atb isa company. 

@@ -4645,6 +4645,7 @@ v_compl(go,vehicle,through,place).
 %%    v_compl(go,vehicle,to,activity).    %% jobben %%  not til feil
 v_compl(go,vehicle,to,boat). %% TA-100908
 v_compl(go,vehicle,to,job). 
+v_compl(go,vehicle,to,ferry).
 
 v_compl(go,vehicle,to,agent).   
 v_compl(go,vehicle,to,airplane).    %% i.e. airport
@@ -5171,6 +5172,7 @@ v_compl(run,thing,towards,direction).
 iv_templ(sail,agent). 
 iv_templ(sail,vehicle).
 v_compl(sail,agent,with,boat). 
+v_compl(sail,agent,with,ferry).
 
 
 iv_templ(see,vehicle). %% se ut Norwagism 
@@ -9023,6 +9025,7 @@ n_compl(from,airplane,place).
 n_compl(from,arrival,place).  
 n_compl(from,arrival,bus).           %% EXPERIMENTAL  (e.g.  arrival by )
 n_compl(from,boat,place).            %% merge vehicle ?
+n_compl(from,ferry,place).
 
 % n_compl(from,bus,route).      %%  ~ on bus route
 % n_compl(from,bus,time).       %% (  clock   touchy ) 

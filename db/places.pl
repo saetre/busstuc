@@ -160,7 +160,6 @@ corr(lerkendal_stadion,lerkendal).
 %corr(studentersamfundet_1,studentersamfundet_2). %% RS-140901 Ser ikke ut som om _1 finnes lenger?
 
 corr(trondheim_hurtigbåtterminal,trondheim_s).
-corr(trondheim_hurtigbåtterminal,pirbadet).
 
 %% ALIAS_NAME
 
@@ -3604,7 +3603,7 @@ isat( strandveikaia, ec_dahls_bryggeri ).
 
 isat(søndre_flatåsen,flatåsen). %7
 isat(olav_tryggvasons_gate_ot3,søndregate). 
-isat(olav_tryggvasons_gate_ot3,søndregate). 
+%isat(olav_tryggvasons_gate_ot3,søndregate). 
 isat(olav_tryggvasons_gate_ot3,royal_garden). 
 %% isat(søndre_hoem,hoem). %% not AtB
 
@@ -3657,6 +3656,16 @@ isat(brekstad_hurtigbåtkai, brekstad).
 isat(brekstad_kai, brekstad).
 
 isat(lerkendal, lerkendal_stadion).
+
+isat(kristiansund_hurtigbåtkai, kristiansund). %% There are just one "station" that atb know about in kristiansand, so we may reference just the one as kristiansund
+isat(hitra_hurtigbåtterminal, hitra).
+isat(kjørsvikbugen_hurtigbåtkai, kjørsvikbugen).
+isat(edøy_hurtigbåtkai, edøy).
+isat(ringholmen_kai, ringholmen).
+
+isat(mausundvær_kai, mausundvær).
+isat(jøa_hurtigbåtkai, jøa).
+
 
 
 %isat(hovedterminalen, britannia).
@@ -3794,6 +3803,9 @@ place_resolve(vegmesterveien,veimester_kroghs_street).
 %
 
 %% Extra for tram? %% RS-151219
+placestat(namsos_kai,namsos_hurtigbåtkai).
+placestat(namsos_båt,namsos_hurtigbåtkai).
+
 placestat(olav_tryggvasons_gate_ot1,sentrum). %% CORREC %% TA-101203 %% AtB %% TA-100715 %% RS-121223
 
 placestat(atb,prinsenkrysset). %% TA-101108 
@@ -4223,7 +4235,7 @@ placestat(plantasjen,strindheim_hageby).  %% baldershage 18
  %% placestat(posthuset,postterminalen).  %%(\=p. h. isentrum)
 
 placestat(prinsen,nidarosdomen). 
-placestat(prinsen,nidarosdomen).  %%NB PRINSEN is also a fictitious station
+%placestat(prinsen,nidarosdomen).  %%NB PRINSEN is also a fictitious station
 placestat(prinsenkino,nidarosdomen). 
 %placestat(prinsens,prinsen_kinosenter).  %%(pga avertering) %% RS-140102 Veldig tvetydig: "prinsens gt p1" == To stopp og en gate?!
 %placestat(prinsens_gate,prinsen_kinosenter). RS-140101. prinsens_gate_p1 (og _p2) er nye offisielle navn på sentrumstasjonen! 
@@ -4432,9 +4444,6 @@ placestat(wullumsgayrden,byåsen_butikksenter). %% TA-101230
 placestat(wollumsgarden,byåsen_butikksenter).  %% TA-110114 wollumsgarden 
 
 placestat(østmarka,østmarkveien). %% TA-110623
-
-placestat(kristiansund,kristiansund_hurtigbåtkai).
-
 
 %%% END REFERENCE TO STATION SECTION
 

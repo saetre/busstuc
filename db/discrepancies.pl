@@ -5,57 +5,57 @@
 % Some predicates (like addcontext/0) are only to preserve information, no filtering..
 :-module( discrepancies, [ alias_station2/3 ] ).
 
-%% db/discrepancies r1601_160815 r1601_160620 
-alias_station2(16010384,engstrømbakken,ranheim_skole).
-alias_station2(16011384,engstrømbakken,ranheim_skole).
-alias_station2(16533184,øye,øie_skole).
-alias_station2(16538544,øye,øie_skole).
-
-%% RS 2015.12.19
-%% db/discrepancies r1603_151012 r1611_151214
-alias_station2(16010006,dr_gate_d1,dronningens_gate_d1).
-alias_station2(16010007,dr_gate_d2,dronningens_gate_d2).
-alias_station2(16010111,grilstadveien,grilstadvegen).
-alias_station2(16010121,peder_myhres_vei,peder_myhres_veg).
-alias_station2(16010157,a_jenssens_veg,anton_jenssens_veg).
-alias_station2(16010186,hurtigbåtterm,hurtigbåtterminalen).
-%alias_station2(16010240,kvenilds_veg,kvenildvegen).
-alias_station2(16010240,kvenildvegen,kvenilds_veg).
-alias_station2(16010253,ladejarlen_v_g_s,ladejarlen_vgs).
-alias_station2(16010266,lohove,lohove_snuplass).
-alias_station2(16010309,j_minsaas_veg,johannes_minsaas_veg).
-alias_station2(16010357,osveien,osvegen).
-alias_station2(16010376,prof_brochs_gate,professor_brochs_gate).
-alias_station2(16010395,risvollveien,risvollvegen).
-alias_station2(16010420,ada_arnfinsens_v,ada_arnfinsens_veg).
-alias_station2(16010446,hvs,heimdal_vgs).
-alias_station2(16010495,tiller_v_g_s,tiller_vgs).
-alias_station2(16010517,isdamveien,isdamvegen).
-alias_station2(16010603,traneveien,tranevegen).
-alias_station2(16011111,grilstadveien,grilstadvegen).
-alias_station2(16011121,peder_myhres_vei,peder_myhres_veg).
-alias_station2(16011157,a_jenssens_veg,anton_jenssens_veg).
-alias_station2(16011240,kvenilds_veg,kvenildvegen).
-alias_station2(16011253,ladejarlen_v_g_s,ladejarlen_vgs).
-alias_station2(16011309,j_minsaas_veg,johannes_minsaas_veg).
-alias_station2(16011357,osveien,osvegen).
-alias_station2(16011376,prof_brochs_gate,professor_brochs_gate).
-alias_station2(16011446,hvs,heimdal_vgs).
-alias_station2(16011456,s_jorsalfars_v,sigurd_jorsalfars_vei).
-alias_station2(16011495,tiller_v_g_s,tiller_vgs).
-alias_station2(16011603,traneveien,tranevegen).
-alias_station2(16386168,orkanger_skyss,orkanger_skysstasjon).
-alias_station2(16386218,orkdal_barne_h,orkanger_barnehage).
-alias_station2(16389168,orkanger_skyss,orkanger_skysstasjon).
-alias_station2(16389218,orkdal_barne_h,orkanger_barnehage).
-alias_station2(16533040,brekkåsen_snpl,brekkåsen_snuplass).
-alias_station2(16574021,nygård,sanden).
-alias_station2(16574030,skaun_ungdomskole,skaun_ungdomsskole).
-alias_station2(16578721,nygård,sanden).
-alias_station2(16632033,hommelvik_bom_st,hommelvik_bomstasjon).
-alias_station2(16638333,hommelvik_bom_st,hommelvik_bomstasjon).
-alias_station2(17142086,tr_heim_lufthavn,trondheim_lufthavn).
-alias_station2(17142583,halsen_ung_skole,halsen_ungdomsskole).
+%%% db/discrepancies r1601_160815 r1601_160620 
+%alias_station2(16010384,engstrømbakken,ranheim_skole).
+%alias_station2(16011384,engstrømbakken,ranheim_skole).
+%alias_station2(16533184,øye,øie_skole).
+%alias_station2(16538544,øye,øie_skole).
+%
+%%% RS 2015.12.19
+%%% db/discrepancies r1603_151012 r1611_151214
+%alias_station2(16010006,dr_gate_d1,dronningens_gate_d1).
+%alias_station2(16010007,dr_gate_d2,dronningens_gate_d2).
+%alias_station2(16010111,grilstadveien,grilstadvegen).
+%alias_station2(16010121,peder_myhres_vei,peder_myhres_veg).
+%alias_station2(16010157,a_jenssens_veg,anton_jenssens_veg).
+%alias_station2(16010186,hurtigbåtterm,hurtigbåtterminalen).
+%%alias_station2(16010240,kvenilds_veg,kvenildvegen).
+%alias_station2(16010240,kvenildvegen,kvenilds_veg).
+%alias_station2(16010253,ladejarlen_v_g_s,ladejarlen_vgs).
+%alias_station2(16010266,lohove,lohove_snuplass).
+%alias_station2(16010309,j_minsaas_veg,johannes_minsaas_veg).
+%alias_station2(16010357,osveien,osvegen).
+%alias_station2(16010376,prof_brochs_gate,professor_brochs_gate).
+%alias_station2(16010395,risvollveien,risvollvegen).
+%alias_station2(16010420,ada_arnfinsens_v,ada_arnfinsens_veg).
+%alias_station2(16010446,hvs,heimdal_vgs).
+%alias_station2(16010495,tiller_v_g_s,tiller_vgs).
+%alias_station2(16010517,isdamveien,isdamvegen).
+%alias_station2(16010603,traneveien,tranevegen).
+%alias_station2(16011111,grilstadveien,grilstadvegen).
+%alias_station2(16011121,peder_myhres_vei,peder_myhres_veg).
+%alias_station2(16011157,a_jenssens_veg,anton_jenssens_veg).
+%alias_station2(16011240,kvenilds_veg,kvenildvegen).
+%alias_station2(16011253,ladejarlen_v_g_s,ladejarlen_vgs).
+%alias_station2(16011309,j_minsaas_veg,johannes_minsaas_veg).
+%alias_station2(16011357,osveien,osvegen).
+%alias_station2(16011376,prof_brochs_gate,professor_brochs_gate).
+%alias_station2(16011446,hvs,heimdal_vgs).
+%alias_station2(16011456,s_jorsalfars_v,sigurd_jorsalfars_vei).
+%alias_station2(16011495,tiller_v_g_s,tiller_vgs).
+%alias_station2(16011603,traneveien,tranevegen).
+%alias_station2(16386168,orkanger_skyss,orkanger_skysstasjon).
+%alias_station2(16386218,orkdal_barne_h,orkanger_barnehage).
+%alias_station2(16389168,orkanger_skyss,orkanger_skysstasjon).
+%alias_station2(16389218,orkdal_barne_h,orkanger_barnehage).
+%alias_station2(16533040,brekkåsen_snpl,brekkåsen_snuplass).
+%alias_station2(16574021,nygård,sanden).
+%alias_station2(16574030,skaun_ungdomskole,skaun_ungdomsskole).
+%alias_station2(16578721,nygård,sanden).
+%alias_station2(16632033,hommelvik_bom_st,hommelvik_bomstasjon).
+%alias_station2(16638333,hommelvik_bom_st,hommelvik_bomstasjon).
+%alias_station2(17142086,tr_heim_lufthavn,trondheim_lufthavn).
+%alias_station2(17142583,halsen_ung_skole,halsen_ungdomsskole).
 
 %alias_station2(16010000,breidablikk_trikk,breidablikk).
 %alias_station2(16010023,strindheim_2,brannstasjon_øst).
@@ -166,7 +166,7 @@ alias_station2(17142583,halsen_ung_skole,halsen_ungdomsskole).
 %alias_station2(16533040,brekkåsen_snpl,brekkåsen_snuplass).
 
 %alias_station2(16010190,jakobsli_idrettsplass,idrettsplassen). %% Not in August routes %% 2015.06.03, Works in Winter RS-2019.01.01
-alias_station2(16010190,idrettsplassen,jakobsli_idrettsplass). %% Not in August routes %% 2015.06.03, Works in Winter RS-2019.01.01 Doesn't need BOTH ways
+%alias_station2(16010190,idrettsplassen,jakobsli_idrettsplass). %% Not in August routes %% 2015.06.03, Works in Winter RS-2019.01.01 Doesn't need BOTH ways
 
 %% db/discrepancies r1602_150810 r1611_140203 
 %alias_station2(16010006,dr_gate_d1, dronningens_gate_d1).

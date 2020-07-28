@@ -2511,7 +2511,7 @@ community(kongsberg, buskerud).
 community(kongsvinger, hedmark).
 community(kragerø, telemark).
 community(kristiansand, vest_agder).
-community(kristiansund, møre_og_romsdal).
+%community(kristiansund, møre_og_romsdal).
 community(krødsherad, buskerud).
 community(kvalsund, finnmark).
 community(kvam, hordaland).

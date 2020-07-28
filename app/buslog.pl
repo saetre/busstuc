@@ -356,7 +356,8 @@ station( hovedterminalen ).  %% Proforma station
 
 station(X) :- %% TA-110415
     veh_mod( TTP ),
-    modstat( TTP, X ).
+    optional_alias2(X, X2),
+    modstat( TTP, X2).
 
 %% RS-150815. Experiment. Check all (future and alternative current) modules. Try to implement some automatic compl(station,[names]) here!
 station(X) :-
@@ -365,7 +366,8 @@ station(X) :-
    (  before_date0( Today, FromDate )           % future schedule
    % -> true ; before_date0( Today, ToDate )    % 
    ),  %% Today < FromDate (Future module)
-   modstat(TTPeriod,X).
+   optional_alias2(X, X2),
+   modstat(TTPeriod,X2).
 
 /*
  %% NB  station names may vary between route periods
@@ -952,7 +954,7 @@ arrdep_before(depnode(ArrTime,DepTime,_,_,_,_,_,_,_),LimTime):-   %% TA-110308
 
 
 
-arrdep_after(depnode(ArrTime,DepTime,_,_,_,_,_,_,_),LimTime):- %% found minor issues here, DeptTime was in the wrong place, well not wrong, just comparing DepTime instead of BegTime might be wrong AE-200722
+arrdep_after(depnode(ArrTime,DepTime,_,_,_,_,_,_,_),LimTime):- 
    ( DepTime = 9999 -> DT=ArrTime;DT=DepTime ),               %% ad hoc arrival after time,
     DT  >= LimTime.
 
@@ -1503,7 +1505,8 @@ isat2( Station, Place ) :- %% studentersamfundet syndrom
      ( busdat:airbusstation(Place), Station=Place ) ;   %% TA-090401
      placestat(Place,Station) ;
      alias_station(Station,Place) ;     %% AtB %% RS-151219 The station identifiers keep changing twice a year!
-     isat(Station,Place)
+     optional_alias2(Station,Station2),
+     isat(Station2,Place)
     ).
 
 %alias_station(Station,Place) :-         %% RS-141115
