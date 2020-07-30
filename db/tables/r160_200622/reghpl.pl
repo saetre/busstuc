@@ -125,6 +125,12 @@ hpl(103547,dronningens_gate,dronningens_gate,'Dronningens gate').
 hpl(103580,paul_skolemesters_veg,paul_skolemesters_veg,'Paul Skolemesters veg').
 hpl(103894,strømnes,strømnes,'Strømnes').
 hpl(103895,østvik,østvik,'Østvik').
+hpl(104286,steinkjer_stasjon_s1,steinkjer_stasjon_s1,'Steinkjer stasjon S1').
+hpl(104287,steinkjer_stasjon_s2,steinkjer_stasjon_s2,'Steinkjer stasjon S2').
+hpl(104288,steinkjer_stasjon_s3,steinkjer_stasjon_s3,'Steinkjer stasjon S3').
+hpl(104289,steinkjer_stasjon_s4,steinkjer_stasjon_s4,'Steinkjer stasjon S4').
+hpl(104290,steinkjer_stasjon_s5,steinkjer_stasjon_s5,'Steinkjer stasjon S5').
+hpl(104291,steinkjer_stasjon_s6,steinkjer_stasjon_s6,'Steinkjer stasjon S6').
 hpl(110091,bakkegata,bakkegata,'Bakkegata').
 hpl(110093,vellamelen,vellamelen,'Vellamelen').
 hpl(110094,beitstad,beitstad,'Beitstad').

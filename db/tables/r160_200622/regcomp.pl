@@ -2126,6 +2126,12 @@ composite_stat(steindal_street,[],steindalsvegen). % generated 4.2
 composite_stat(steindalsvegen,[],steindalsvegen).
 composite_stat(steine,[],steine).
 composite_stat(steinkjer,[montessoriskole],steinkjer_montessoriskole).
+composite_stat(steinkjer,[stasjon, s1],steinkjer_stasjon_s1).
+composite_stat(steinkjer,[stasjon, s2],steinkjer_stasjon_s2).
+composite_stat(steinkjer,[stasjon, s3],steinkjer_stasjon_s3).
+composite_stat(steinkjer,[stasjon, s4],steinkjer_stasjon_s4).
+composite_stat(steinkjer,[stasjon, s5],steinkjer_stasjon_s5).
+composite_stat(steinkjer,[stasjon, s6],steinkjer_stasjon_s6).
 composite_stat(steinkjer,[stasjon],steinkjer_stasjon).
 composite_stat(steinvika,[],steinvika).
 composite_stat(steinvika,[terrasse],steinvika_terrasse).
