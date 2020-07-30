@@ -3667,7 +3667,6 @@ isat(mausundvær_kai, mausundvær).
 isat(jøa_hurtigbåtkai, jøa).
 
 
-
 %isat(hovedterminalen, britannia).
 %isat(hovedterminalen, britannia_hotell).
 
@@ -4018,7 +4017,7 @@ placestat(hurtigbåten,pirbadet).
 placestat(hurtigbåtkaia,pirbadet). 
 placestat(hurtigbåtkaia,pirbadet). 
 placestat(hurtigbåtkaien,pirbadet). 
-placestat(hurtigbåtterminalen,pirbadet). 
+placestat(hurtigbåtterminalen,trondheim_hurtigbåtterminal). 
 
 %% placestat(hurtigruta,pirbadet). %% Haz, boat
  
