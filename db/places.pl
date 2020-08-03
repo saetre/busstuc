@@ -161,6 +161,9 @@ corr(lerkendal_stadion,lerkendal).
 
 corr(trondheim_hurtigbåtterminal,trondheim_s).
 
+corr(strindheim, strindheim_2).
+corr(strindheim_2, strindheim).
+
 %% ALIAS_NAME
 
 alias_name('44a',44). 
@@ -918,9 +921,9 @@ cmpl(dybdahls,vegen,dybdahls_veg).  %%
 %cmpl(dyre,[halses,gate],nidelv_bru).  %% ? ad hoc
 %cmpl(dyre,[halses,gt],nidelv_bru).    %%
 %cmpl(dyre,halsesgate,nidelv_bru).   
-cmpl(dyre,[halses,gate],buran).  %% ? RS-150111. Less ad hoc?
-cmpl(dyre,[halses,gt],buran).    %%
-cmpl(dyre,halsesgate,buran).   
+%cmpl(dyre,[halses,gate],buran).  %% ? RS-150111. Less ad hoc?
+%cmpl(dyre,[halses,gt],buran).    %%
+%cmpl(dyre,halsesgate,buran).   %% new stop named Dyre Halses gate
 
 cmpl(dødens,dal,høyskoleringen). 
 cmpl(e,['-',verket],e_verket). %telehas'-'
@@ -3381,7 +3384,6 @@ cmpl(åsv,skole,åsveien_skole).
 cmpl(åsveien,skolen,åsveien_skole). 
 cmpl(åsvenein,skole,åsveien_skole).  %% ?
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ISAT   (STATION, PLACE), or
 % ISAT   (Station, Neighbourhood)?      %% RS-160110    Neighborhood could be a STATION name? No, use corr/2 instead for stations
@@ -3451,6 +3453,9 @@ isat(heimdalsvegen_73, heimdalsvegen).
 
 isat(kongens_gate_k1,sentrum). %% AtB
 isat(kongens_gate_k2,sentrum). 
+
+isat(skovgård_1, skovgård).
+isat(skovgård_2, skovgård).
 
 %isat(munkegata_m1,sentrum). 
 %isat(munkegata_m2,sentrum). 
@@ -3596,6 +3601,10 @@ isat(romolslia, romolslia). %% RS-150111. Trøbbel? Both station and neighborhoo
 isat(romolslia_øvre, romolslia). %% RS-150111. Trøbbel? HACK!! (Switched station and neighborhood!)
 
 isat(bratsbergvegen,sluppen).  %% postterminalen på sluppen
+isat(sluppen_1, sluppen).
+isat(sluppen_2, sluppen).
+isat(sluppen_3, sluppen).
+isat(sluppen_4, sluppen).
 %isat(solbakken_bru,solbakken).  %% Sommer discrepancy %% AE - 200714
 isat(solbakken_skole,solbakken). 
 %isat(st_olavs_gate,sentrum).  %% not AtB. %% RS-141115. Yes! AtB includes Everything now?!? RS-151219 Moved to other sentrum-station above
@@ -3613,7 +3622,7 @@ isat(olav_tryggvasons_gate_ot3,royal_garden).
 %STATION is (one, but NOT preferred, among several) stations that belong to the neighbourhood of PLACE
 %% ISAT    ( Station , Neighbourhood )
 
-%isat( lykkmarka, sjetnmarka ). %% Nightbus ..... Some summer discrepancie? TODO: fix when lykkmarka is back on table, for some reason buss 45 is not included in gtfs data
+isat( lykkmarka, sjetnmarka ). %% Nightbus ..... Some summer discrepancie? TODO: fix when lykkmarka is back on table, for some reason buss 45 is not included in gtfs data
 isat( paul_skolemesters_veg, sjetnmarka ). 
 
 isat(tanem_bru, tanem). %% RS-150111 Langt unna
@@ -3668,7 +3677,7 @@ isat(ringholmen_kai, ringholmen).
 isat(mausundvær_kai, mausundvær).
 isat(jøa_hurtigbåtkai, jøa).
 
-
+isat(stabells_veg, munkvoll_gård).
 %isat(hovedterminalen, britannia).
 %isat(hovedterminalen, britannia_hotell).
 
@@ -3748,8 +3757,8 @@ place_resolve(rutebilstasjonen,hovedterminalen).
 place_resolve(rutebilstasjonen,leuthenhaven). 
 place_resolve(rutebilstasjonen,ts). %% AtB. 
 
-%place_resolve(solbakken,solbakken_bru). TODO: switch on when available again
-place_resolve(solbakken,solbakken_skole).  %%solbakken->solbakken_bruaftersummer06,
+place_resolve(solbakken,solbakken_bru). %% TODO: switch on when available again
+%place_resolve(solbakken,solbakken_skole).  %%solbakken->solbakken_bruaftersummer06,
 
 place_resolve(sorgendal,lerkendal). 
 place_resolve(sorgendal,sorgenfri). 
@@ -5469,7 +5478,7 @@ specname(d2,'Dronningens gate D2').  %%
 %specname(d3,'Dronningens gate D3').  %%
 %specname(d4,'Dronningens gate D4').  %%
 
-
+specname(dyre_halses_gate,'Dyre Halses Gate').
 specname(den,'den'). %% M .. den godes gate ... 
 specname(devle_gård,'Devlegård'). 
 specname(dist_lege_øvrelids_v,'Distriktslege Øvrelid svei').    %% EH-030616
@@ -5645,6 +5654,7 @@ specname(olav_engelbrektssons_allé,'Olav Engelbrektssons allé').  %% EH-031017
 specname(olav_nygårdsv,'Olav Nygårds vei'). 
 specname(olav_trygvassons_gt,'Olav Tryggvasons gate').  %% AtB MISSPELLEDINDATABASE
 specname(olav_tryggvasons_gt,'Olav Tryggvasons gate').  %%Default
+specname(olav_kyrres_gate, 'Olav Kyrres Gate').
 
 specname(omkjøringsv_klæbuvveien,'Omkjøringsveien Klæbuveien').  %% EH-031121
 specname(moholt_omkjøringsvei,'Omkjøringsveien Moholt'). 
@@ -5672,6 +5682,7 @@ specname(p1,'Prinsens gate P1').  %% RS-140102
 specname(p2,'Prinsens gate P2').  %% RS-140102
 specname(p3,'Prinsens gate P3').
 
+specname(ratesvingen, 'Ratesvingen').
 specname(r_i_t_hovedporten,'St Olavs hospital'). 
 specname(ranheim_kirke,'Ranheim kirke').  %% RS-130302 Replaced by Nedre Humlehaugen Øst 
 specname(reppe_endehlp,'Reppe endeholdeplass'). 
@@ -5698,7 +5709,8 @@ specname(senter,senter).
 specname(sentrum,sentrum). 
 
 %% specname(sig_berg_alle,'Sigurd Bergs allé').   
-                                               
+
+specname(saksvikorsen, 'Saksvikorsen').                                               
 specname(singsaker_studenthjem,'Singsaker studenthjem'). 
 specname(sirkus_shopping,'Sirkus Shopping').
 specname(sivert_thonstadsv,'Sivert Thonstads vei'). 	 %% EH-030616
@@ -5710,6 +5722,7 @@ specname(solberg_mek_verksted,'Solbergmekaniskeverksted'). 	 %% EH-030616
 specname(sondre_hoem_sporvogn,'Søndre Hoems porvogn'). 
 specname(st_olavs_hospital_vest,'St Olavs hospital vest'). 
 specname(st_olavs_hospital_øst,'St Olavs hospital øst'). 
+specname(sigrid_saxedatters_veg, 'Sigrid Saxedatters veg').
 
 %%% specname(st_olavs_hospital,'St Olavs hospital hovedporten'). %% TA-100827
 specname(st_olavs_street,'St Olavs gate').
@@ -5797,7 +5810,8 @@ specname(øvre_alle,'Øvre allé').
 specname(øvre_flatåsv,'Øvre Flatåsveg'). 
 specname(øya_helsehus,'Øya Helsehus').		%RS-110926
 
-
+specname(skovgård, 'Skovgård').
+specname(strindfjordvegen, 'Strindfjordveien').
 %% Trapez (Nytt rutesystem hos AtB) -> Hastus synplaces (to make it work). %% TA-2011 -> RS-150815
 
 %%%%%%%%% synplace(tveregga,tvereggen).

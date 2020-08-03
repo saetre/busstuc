@@ -342,7 +342,7 @@ streetstat(elve_street,'Elvegata',1,18,hospitalskirka).         %% RS-140615 hos
 streetstat(elve_street,'Elveveien',16,38,hesthagen).
 streetstat(emilie_kroghs_street,'Emilie Kroghs veg',1,10,munkvoll).
 %streetstat(engelsås_street,'Engelsås vei',1,58,brandhaugen). %% RS-150104. brandhaugen terminated oktober 2014.
-%streetstat(engelsås_street,'Engelsås vei',1,58,solbakken_bru). %% RS-150104. brandhaugen terminated oktober 2014. %% TODO: fix when buss 45 is back in data set
+streetstat(engelsås_street,'Engelsås vei',1,58,solbakken_bru). %% RS-150104. brandhaugen terminated oktober 2014. %% TODO: fix when buss 45 is back in data set
 streetstat(eng_street,'Engvegen',1,29,brøset_hageby).
 streetstat(enerom_street,'Eneromvegen',50,83,leirelva).
 streetstat(enerom_street,'Eneromvegen',72,110,stavsetsvingen).
@@ -514,8 +514,8 @@ streetstat(haakon_viis_street,'Haakon VII\'s gate',43,45,lade_allé_80). %% AtB
 streetstat(haldens_street,'Haldens gate',1,29,gyldenløves_gate).
 streetstat(haldor_flatens_street,'Haldor Flatens veg',1,9,carl_schjetnans_veg).
 streetstat(haldor_flatens_street,'Haldor Flatens veg',11,30,hagen).
-%streetstat(haldor_flatens_street,'Haldor Flatens veg',31,52,halstein_gård).  %% TODO: fix when buss 45 is back in data set
-streetstat(haldor_flatens_street,'Haldor Flatens veg',31,52,hagen).
+streetstat(haldor_flatens_street,'Haldor Flatens veg',31,52,halstein_gård).  %% TODO: fix when buss 45 is back in data set
+%streetstat(haldor_flatens_street,'Haldor Flatens veg',31,52,hagen).
 %%%% streetstat(hallfred_høyems_street,'Hallfred Høyems veg',42,42,granli). 
 streetstat(hallfred_høyems_street,'Hallfred Høyems veg',6,45,tunga_kretsfengsel).
 streetstat(hallfred_høyems_street,'Hallfred Høyems veg',1,81,hallfred_høyems_veg).
@@ -955,14 +955,14 @@ streetstat(ludvig_musts_street,'Ludvig Musts veg',1,18,strinda_vgs).
 streetstat(luna_street,'Lunavegen',1,7,nygård).
 streetstat(lundemobakken,'Lundemobakken',12,17,c_j_hambros_vei).
 streetstat(lundemobakken,'Lundemobakken',1,19,heimdal_stasjon).
-%streetstat(lunderhaugen,'Lunderhaugen',3,9,halstein_gård).
-%streetstat(lunderhaugen,'Lunderhaugen',1,57,lykkmarka).  %% TODO: fix when buss 45 is back in data set
+streetstat(lunderhaugen,'Lunderhaugen',3,9,halstein_gård).
+streetstat(lunderhaugen,'Lunderhaugen',1,57,lykkmarka).  %% TODO: fix when buss 45 is back in data set
 streetstat(lundhøgda,'Lundhøgda',1,74,lundåsen).
 streetstat(lund_street,'Lundvegen',9,33,lundåsen).
 streetstat(lund_street,'Lundvegen',1,35,lundåsen). %% _n). 
 streetstat(lundåsen,'Lundåsen',1,61,lundåsen).     %%
 streetstat(lykkestien,'Lykkestien',1,5,charlottenlund_nedre).
-%streetstat(lykkmarka,'Lykkmarka',1,72,lykkmarka). %% TODO: fix when buss 45 is back in data set
+streetstat(lykkmarka,'Lykkmarka',1,72,lykkmarka). %% TODO: fix when buss 45 is back in data set
 streetstat(lyng_street,'Lyngvegen',1,23,lyngvegen).
 streetstat(løkke_street,'Løkkegata',1,3,ila).
 streetstat(lønn_street,'Lønnvegen',1,15,presthusaunet).
@@ -1076,8 +1076,8 @@ streetstat(nedre_møllenberg_street,'Nedre Møllenberg gate',51,69,solsiden).
 streetstat(nedre_møllenberg_street,'Nedre Møllenberg gate',70,101,solsiden).
 streetstat(nedre_møllenberg_street,'Nedre Møllenberg gate',1,49,bakkegata).
 streetstat(nedre_sjetnhaugan,'Nedre Sjetnhaugan',1,9,paul_skolemesters_veg).
-streetstat(nedre_sjetnhaugan,'Nedre Sjetnhaugan',11,25,paul_skolemesters_veg).
-%streetstat(nedre_sjetnhaugan,'Nedre Sjetnhaugan',11,25,halstein_gård). TODO: fix when buss 45 is back in data set
+%streetstat(nedre_sjetnhaugan,'Nedre Sjetnhaugan',11,25,paul_skolemesters_veg).
+streetstat(nedre_sjetnhaugan,'Nedre Sjetnhaugan',11,25,halstein_gård). %% TODO: fix when buss 45 is back in data set
 
 streetstat(neptun_street,'Neptunvegen',1,35,venusvegen).
 
@@ -1196,7 +1196,7 @@ streetstat(ole_ross_street,'Ole Ross veg',1,81,ole_ross_veg).
 streetstat(ole_rølvaags_street,'Ole Rølvaags veg',1,19,arnt_smistads_veg).
 streetstat(ole_skolemesters_street,'Ole Skolemesters veg',1,5,paul_skolemesters_veg).
 streetstat(ole_skolemesters_street,'Ole Skolemesters veg',6,15,paul_skolemesters_veg).
-%streetstat(ole_skolemesters_street,'Ole Skolemesters veg',6,15,halstein_gård). TODO: fix when buss 45 is back in data set
+streetstat(ole_skolemesters_street,'Ole Skolemesters veg',6,15,halstein_gård). %% TODO: fix when buss 45 is back in data set
 streetstat(ole_soelbergs_street,'Ole Soelbergs veg',1,12,persaunet_leir).
 streetstat(ole_tesliens_street,'Ole Tesliens veg',1,6,østre_berg).
 streetstat(ole_tilseths_street,'Ole Tilseths veg',1,21,dalsaunevegen).
@@ -1241,8 +1241,8 @@ streetstat(overlege_bratts_street,'Overlege Bratts veg',1,82,stavsetvegen).
 streetstat(overlege_kindts_street,'Overlege Kindts gate',1,33,jonsvannsveien).
 streetstat(overviks_street,'Overviksvegen',1,8,olderdalen).
 streetstat(p_a_munchs_street,'P.A. Munchs gate',1,17,hesthagen).
-%streetstat(parallellen,'Parallellen',1,15,halstein_gård). %% TODO: fix when buss 45 is back in data set
-streetstat(parallellen,'Parallellen',1,15,paul_skolemesters_veg).
+streetstat(parallellen,'Parallellen',1,15,halstein_gård). 
+%streetstat(parallellen,'Parallellen',1,15,paul_skolemesters_veg).
 streetstat(parallellen,'Parallellen',12,47,paul_skolemesters_veg).
 %streetstat(park_street,'Parkveien',1,12,vollabakken).     %% RS-150104 Terminated. Or Summer/Winter discrepancy?
 streetstat(park_street,'Parkveien',1,12,studentersamfundet).
@@ -1252,8 +1252,8 @@ streetstat(paul_fjermstads_street,'Paul Fjermstads veg',17,27,strinda_vgs).
 streetstat(paul_fjermstads_street,'Paul Fjermstads veg',66,79,tyholt).
 streetstat(paul_fjermstads_street,'Paul Fjermstads veg',35,59,strinda_vgs).
 streetstat(paul_fjermstads_street,'Paul Fjermstads veg',1,42,strinda_vgs).
-%streetstat(paul_skolemesters_street,'Paul Skolemesters veg',11,23,halstein_gård).  %% TODO: fix when buss 45 is back in data set
-streetstat(paul_skolemesters_street,'Paul Skolemesters veg',11,23,paul_skolemesters_veg).
+streetstat(paul_skolemesters_street,'Paul Skolemesters veg',11,23,halstein_gård).  %% TODO: fix when buss 45 is back in data set
+%streetstat(paul_skolemesters_street,'Paul Skolemesters veg',11,23,paul_skolemesters_veg).
 streetstat(paul_skolemesters_street,'Paul Skolemesters veg',1,14,paul_skolemesters_veg).
 streetstat(peder_kroghs_street,'Peder Kroghs veg',1,21,berg_studentby).
 streetstat(peder_morsets_street,'Peder Morsets veg',15,42,vestre_rosten).
@@ -1679,7 +1679,7 @@ streetstat(torvtaket,'Torvtaket',1,74,torvtaket).
 streetstat(trane_street,'Tranevegen',1,48,kattemsenteret).
 streetstat(transitt_street,'Transittgata',4,24,losgata).
 streetstat(travbane_street,'Travbanevegen',1,6,travbanevegen).
-%streetstat(trofet_street,'Trofetvegen',1,14,lykkmarka). %% TODO: fix when buss 45 is back in data set
+streetstat(trofet_street,'Trofetvegen',1,14,lykkmarka). %% TODO: fix when buss 45 is back in data set
 streetstat(trollahaugen,'Trollahaugen',25,45,trollahaugen_10).
 streetstat(trollahaugen,'Trollahaugen',1,24,trollahaugen_2).
 streetstat(trollahaugen,'Trollahaugen',46,71,trollahaugen_46).
