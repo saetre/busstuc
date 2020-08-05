@@ -160,6 +160,7 @@ corr(lerkendal_stadion,lerkendal).
 %corr(studentersamfundet_1,studentersamfundet_2). %% RS-140901 Ser ikke ut som om _1 finnes lenger?
 
 corr(trondheim_hurtigbåtterminal,trondheim_s).
+corr(trondheim_hurtigbåtterminal,pirbadet).
 
 corr(strindheim, strindheim_2).
 corr(strindheim_2, strindheim).

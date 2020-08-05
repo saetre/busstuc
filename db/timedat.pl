@@ -277,7 +277,7 @@ maxarrivalslack(120).  % unacceptably long  exchange waitingtime
 %% Max milliseconds  route  computing time
 
 
-buslogtimeout(10000) . %% Bloody Test 
+buslogtimeout(30000) . %% Bloody Test 
     % 10  seconds necessary ( usually for connections)
     % however, www.idi.ntnu.no (uranus) is SLOW.
 
