@@ -1165,8 +1165,6 @@ hpl(71790,ulsberg_e6,ulsberg_e6,'Ulsberg E6').
 hpl(71791,hunnestrøan,hunnestrøan,'Hunnestrøan').
 hpl(71792,ulsberg_e6,ulsberg_e6,'Ulsberg E6').
 hpl(71795,trondheim_hurtigbåtterminal,trondheim_hurtigbåtterminal,'Trondheim hurtigbåtterminal').
-hpl(71796,ulseth,ulseth,'Ulseth').
-hpl(71797,ulseth,ulseth,'Ulseth').
 hpl(71801,sandbrekka,sandbrekka,'Sandbrekka').
 hpl(71802,sandbrekka,sandbrekka,'Sandbrekka').
 hpl(71803,ulvan,ulvan,'Ulvan').
@@ -3028,8 +3026,6 @@ hpl(73820,nerdal,nerdal,'Nerdal').
 hpl(73821,nerdal,nerdal,'Nerdal').
 hpl(73822,jektvika,jektvika,'Jektvika').
 hpl(73823,jektvika,jektvika,'Jektvika').
-hpl(73824,smiskaret_rundkjøring,smiskaret_rundkjøring,'Smiskaret rundkjøring').
-hpl(73825,smiskaret_rundkjøring,smiskaret_rundkjøring,'Smiskaret rundkjøring').
 hpl(73826,nerhåggån,nerhåggån,'Nerhåggån').
 hpl(73827,jenshaugen,jenshaugen,'Jenshaugen').
 hpl(73828,jenshaugen,jenshaugen,'Jenshaugen').
@@ -3446,8 +3442,6 @@ hpl(74294,nyjord,nyjord,'Nyjord').
 hpl(74295,nyjord,nyjord,'Nyjord').
 hpl(74296,stokkhaugen,stokkhaugen,'Stokkhaugen').
 hpl(74297,stokkhaugen,stokkhaugen,'Stokkhaugen').
-hpl(74298,korsmo,korsmo,'Korsmo').
-hpl(74299,korsmo,korsmo,'Korsmo').
 hpl(74300,stokkhaugen_e39,stokkhaugen_e39,'Stokkhaugen E39').
 hpl(74301,stokkhaugen_e39,stokkhaugen_e39,'Stokkhaugen E39').
 hpl(74303,nypan,nypan,'Nypan').

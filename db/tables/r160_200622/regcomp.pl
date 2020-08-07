@@ -2021,7 +2021,6 @@ composite_stat(korsbakken,[],korsbakken).
 composite_stat(korsen,[],korsen).
 composite_stat(korsen,[gangstad],korsen_gangstad).
 composite_stat(korsenget,[],korsenget).
-composite_stat(korsmo,[],korsmo).
 composite_stat(korstad,[],korstad).
 composite_stat(korsvegen,[],korsvegen).
 composite_stat(korsvollan,[],korsvollan).
@@ -3668,7 +3667,6 @@ composite_stat(smevika,[],smevika).
 composite_stat(smevikaunet,[],smevikaunet).
 composite_stat(smines,[],smines).
 composite_stat(smiskaret,[],smiskaret).
-composite_stat(smiskaret,[rundkjøring],smiskaret_rundkjøring).
 composite_stat(smolan,[],smolan).
 composite_stat(småenget,[],småenget).
 composite_stat(smågesjø,[],smågesjø).
@@ -4358,7 +4356,6 @@ composite_stat(uglevegen,[],uglevegen).
 composite_stat(ulland,[],ulland).
 composite_stat(ulsberg,[e6],ulsberg_e6).
 composite_stat(ulsberg,[rv, 3],ulsberg_rv_3).
-composite_stat(ulseth,[],ulseth).
 composite_stat(ulsund,[],ulsund).
 composite_stat(ulvan,[],ulvan).
 composite_stat(ulvik,[],ulvik).
