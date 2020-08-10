@@ -4500,7 +4500,6 @@ composite_stat(vestre,[ranheim],vestre_ranheim).
 composite_stat(vestre,[rosten],vestre_rosten).
 composite_stat(vestre,[sandneset],vestre_sandneset).
 composite_stat(vestre,[sætran],vestre_sætran).
-composite_stat(vestrum,[],vestrum).
 composite_stat(vestrått,[],vestrått).
 composite_stat(vestvika,[],vestvika).
 composite_stat(vibe,[],vibe).

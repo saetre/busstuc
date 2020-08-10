@@ -6569,8 +6569,6 @@ hpl(77811,alstadhaug_kirke,alstadhaug_kirke,'Alstadhaug kirke').
 hpl(77812,hestvika_lorvik,hestvika_lorvik,'Hestvika Lorvik').
 hpl(77815,sparbu,sparbu,'Sparbu').
 hpl(77816,sparbu,sparbu,'Sparbu').
-hpl(77817,vestrum,vestrum,'Vestrum').
-hpl(77818,vestrum,vestrum,'Vestrum').
 hpl(77819,storsteinbakken,storsteinbakken,'Storsteinbakken').
 hpl(77820,storsteinbakken,storsteinbakken,'Storsteinbakken').
 hpl(77821,storsteinbakken,storsteinbakken,'Storsteinbakken').
