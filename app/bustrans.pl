@@ -6865,15 +6865,15 @@ id	 clear,
 ip  internal_airbus(false), %% busdat
     have_att_val(company,webaddress,flybussen,K) ).
 
-airport2 rule bustrans:( %%  airport værnes
-is  Værnes isa airport,
-    clear %% værnes, not gardermoen
-id	 clear,
-    add (message(noinfoabout(airbus)),
-         message(answer(db_reply(flybussen,webaddress,Z)))) %% TA-101110
-ip  internal_airbus(false), %% busdat
-    airbusstation(Værnes), %% busdat.pl
-    have_att_val(company,webaddress,flybussen,Z) ).
+%airport2 rule bustrans:( %%  airport værnes
+%is  Værnes isa airport,
+%    clear %% værnes, not gardermoen
+%id	 clear,
+%    add (message(noinfoabout(airbus)),
+%         message(answer(db_reply(flybussen,webaddress,Z)))) %% TA-101110
+%ip  internal_airbus(false), %% busdat
+%    airbusstation(Værnes), %% busdat.pl
+%    have_att_val(company,webaddress,flybussen,Z) ).
 
 
 airport21 rule bustrans:( %%  airport

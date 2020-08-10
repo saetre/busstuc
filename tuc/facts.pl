@@ -258,7 +258,7 @@ tbanen          isa underground.  %%  (non existent)
 visa  isa card.  
 mastercard isa card. %%
 %% gardermoen isa airport. %% yes, but foreign 
-værnes     isa airport.
+%værnes     isa airport. %% yes but there is a normal buss stop near by... Hack to make it work... may find other solution to this problem, as showing routes to værnes and printing flybuss info
 
 the_hitchhikers_guide_to_the_galaxy isa book.  %%  :-)
 

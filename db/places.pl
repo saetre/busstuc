@@ -218,6 +218,7 @@ alias_station(skovgård, grilstadvegen).           %% RS-160212
 
 alias_station( ugla_trikk, ugla ).                %% RS-141115
 
+
 %% RS-151219 Can this also be used for stations that keep changing name between summer and winter routes?
 %% Ref discrepencies:alias_station2 and isat2
 
@@ -3125,7 +3126,7 @@ cmpl(trollahaugen,46,trollahaugen_46).
 cmpl(trollahaugen,64,trollahaugen_64). 
 cmpl(trondhe,[4,m],trondheim).  %% smstabl
 cmpl(trondheim,[s,'.',holdeplass],ts). %%  TA-110310
-cmpl(trondheim,[airport],værnes). 
+cmpl(trondheim,[airport],trondheim_lufthavn_lufthavnveien). 
 cmpl(trondheim,[e,verk],e_verket).  %% NB'e-verk'
 cmpl(trondheim,[energi,verk],e_verket). 
 cmpl(trondheim,[fengsel],tunga_kretsfengsel). 
@@ -3163,8 +3164,8 @@ cmpl(trondheim,centrum,sentrum).
 cmpl(trondheim,city,sentrum). 
 cmpl(trondheim,enerigverk,e_verket). 
 cmpl(trondheim,festning,ankers_gate). 
-cmpl(trondheim,flygplats,værnes).  %%(Swe)
-cmpl(trondheim,flyplass,værnes). 
+cmpl(trondheim,flygplats,trondheim_lufthavn_lufthavnveien).  %%(Swe)
+cmpl(trondheim,flyplass,trondheim_lufthavn_lufthavnveien). 
 cmpl(trondheim,havn,pirbadet). 
 cmpl(trondheim,hovedjernbanestasjon,ts). %% AtB. 
 cmpl(trondheim,hovedstasjon,ts). %% AtB. 
@@ -3173,7 +3174,7 @@ cmpl(trondheim,jernbanestation,ts). %% AtB.
 cmpl(trondheim,katedralskole,katedralskolen). 
 cmpl(trondheim,kino,kino). 
 cmpl(trondheim,kretsfengsel,tunga_kretsfengsel). 
-cmpl(trondheim,lufthavn,trondheim_lufthavn). 
+cmpl(trondheim,lufthavn,trondheim_lufthavn_lufthavnveien). 
 cmpl(trondheim,lærerhøgskole,rotvoll_nedre). 
 cmpl(trondheim,norway,trondheim). 
 cmpl(trondheim,rutebilstasjon,rutebilstasjonen). 
@@ -3202,10 +3203,10 @@ cmpl(trondheim,trafikkstasjon,ts). %% AtB.
 cmpl(trondheim,university,ntnu). 
 cmpl(trondheim,vandrerhjem,weidemannsveien). 
 cmpl(trondheim,verft,solsiden). 
-cmpl(trondheim,vernes,værnes).  %% NO spell on parts (if too many)
-cmpl(trondheim,værnes,værnes).  %% Flybuss trondheim værnes Align
-cmpl(trondheims,flygplats,værnes).  %%(Swe)
-cmpl(trondheims,flyplass,værnes). 
+cmpl(trondheim,vernes,trondheim_lufthavn_lufthavnveien).  %% NO spell on parts (if too many)
+cmpl(trondheim,værnes,trondheim_lufthavn_lufthavnveien).  %% Flybuss trondheim værnes Align
+cmpl(trondheims,flygplats,trondheim_lufthavn_lufthavnveien).  %%(Swe)
+cmpl(trondheims,flyplass,trondheim_lufthavn_lufthavnveien). 
 cmpl(trondheims,sentrum,sentrum). 
 cmpl(trondheims,torg,hovedterminalen). 
 cmpl(trondhjems,sporveier,gråkallbanen). 
@@ -3260,7 +3261,7 @@ cmpl(university,[of,dragvoll],dragvoll).
 cmpl(university,[of,trondheim],ntnu). 
 cmpl(university,gløshaugen,nth). 
 cmpl(utleira,skole,risvollan_senter). 
-cmpl(v,rnes,værnes).  %%tov'rnes
+cmpl(v,rnes,trondheim_lufthavn_lufthavnveien).  %%tov'rnes
 cmpl(v,rosten,vestre_rosten). 
 cmpl(valentien,lyst,valentinlyst). 
 cmpl(valentin,lyst,valentinlyst). 
@@ -3316,14 +3317,14 @@ cmpl(volls,tudentby,voll_studentby).
 cmpl(vår,[frue,kirke],hovedterminalen). 
 cmpl(vår,[frues,kirke],hovedterminalen).  %%spc<6
 cmpl(være,trøa,værestrøa). %% off name 
-cmpl(værnes,[airport],værnes). 
-cmpl(værnes,[fly,havn],værnes). 
-cmpl(værnes,[luft,havn],værnes). 
-cmpl(værnes,flyhavn,værnes). 
-cmpl(værnes,flyplass,værnes). 
-cmpl(værnes,flystasjon,værnes). 
-cmpl(værnes,lufthavn,værnes). 
-cmpl(værnes,trondheim,værnes). 
+cmpl(værnes,[airport],trondheim_lufthavn_lufthavnveien). 
+cmpl(værnes,[fly,havn],trondheim_lufthavn_lufthavnveien). 
+cmpl(værnes,[luft,havn],trondheim_lufthavn_lufthavnveien). 
+cmpl(værnes,flyhavn,trondheim_lufthavn_lufthavnveien). 
+cmpl(værnes,flyplass,trondheim_lufthavn_lufthavnveien). 
+cmpl(værnes,flystasjon,trondheim_lufthavn_lufthavnveien). 
+cmpl(værnes,lufthavn,trondheim_lufthavn_lufthavnveien). 
+cmpl(værnes,trondheim,trondheim_lufthavn_lufthavnveien). 
 cmpl(wistings,street,oscar_wistings_street). %% TA-101115 nec
 cmpl(witro,bil,fossegrenda).
 
@@ -3384,6 +3385,7 @@ cmpl(åsheim,ungdomsskole,åsheim_skole).
 cmpl(åsv,skole,åsveien_skole). 
 cmpl(åsveien,skolen,åsveien_skole). 
 cmpl(åsvenein,skole,åsveien_skole).  %% ?
+cmpl(byåsen, kirke, martin_stokkens_veg).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ISAT   (STATION, PLACE), or
@@ -3681,6 +3683,11 @@ isat(jøa_hurtigbåtkai, jøa).
 isat(stabells_veg, munkvoll_gård).
 %isat(hovedterminalen, britannia).
 %isat(hovedterminalen, britannia_hotell).
+
+isat(hallset, martin_stokkens_veg).
+
+isat(nardokrysset, tors_veg).
+isat(nardo_omkjøringsvei, tors_veg).
 
 % ISAT   (STATION, PLACE)
 %STATION is (one, but NOT preferred, among several) stations that belong to the neighbourhood of PLACE
@@ -4655,7 +4662,7 @@ sameplace(flatåsensenter,flatåsen_senter).
 sameplace(flatåsensenteret,flatåsen_senter). 
 sameplace(flatåsentoppen,flatåstoppen). 
 sameplace(flatåssenteret,flatåsen_senter). 
-sameplace(flystasjonen,værnes). 
+sameplace(flystasjonen,trondheim_lufthavn_lufthavnveien). 
 sameplace(folkemuseet,trøndelag_folkemuseum). 
 sameplace(folkemuseum,trøndelag_folkemuseum). 
 sameplace(folkemuseumet,trøndelag_folkemuseum). 
@@ -5225,8 +5232,8 @@ sameplace(ulinvegen,ullins_street).
 sameplace(universitetssenteret,universitetet). 
 sameplace(utsikten,utsikten_alle). 
 %% sameplace(vaern,værnes). // valerveien -> va(l)er(n) -> værnes 
-sameplace(vaernes,værnes). 
-sameplace(vaerness,værnes). 
+sameplace(vaernes,trondheim_lufthavn_lufthavnveien). 
+sameplace(vaerness,trondheim_lufthavn_lufthavnveien). 
 sameplace(valdgrindsvegen,valgrindveien). 
 sameplace(valentilystsenteret,valentinlyst). 
 sameplace(valentilystsentret,valentinlyst). 
@@ -5234,11 +5241,11 @@ sameplace(valentinlystvegen,valentinlystveien).
 sameplace(valøy,valøyvegen). 
 sameplace(valøyvegen,valøyvegen). 
 sameplace(vandrerhjemmet,weidemannsveien).  %%+vandrehjemmet
-sameplace(varnes,værnes). 
-sameplace(varness,værnes). 
+sameplace(varnes,trondheim_lufthavn_lufthavnveien). 
+sameplace(varness,trondheim_lufthavn_lufthavnveien). 
 sameplace(velgrindvegen,valgrindveien). 
-sameplace(vernes,værnes). 
-sameplace(vernæs,værnes). 
+sameplace(vernes,trondheim_lufthavn_lufthavnveien). 
+sameplace(vernæs,trondheim_lufthavn_lufthavnveien). 
 sameplace(vestrerosten,vestre_rosten).  %%vestreostren
 sameplace(vikelva,vikelvveien). 
 sameplace(vikhamarløkka,vikhammeråsen). 
@@ -5250,7 +5257,7 @@ sameplace(vollstudentby,voll_studentby).
 sameplace(vådanvn,vådanv_5). 
 sameplace(våddanveien,vådanv_5). 
 sameplace(væretrøa,værestrøa). %% new official name  e.g. væretræa. 
-sameplace(værness,værnes).  %%(not genitive!)
+sameplace(værness,trondheim_lufthavn_lufthavnveien).  %%(not genitive!)
 
 sameplace(vullumsgården,byåsen_butikksenter). %% vyllumsgården.
 sameplace(wullumsgaard,byåsen_butikksenter). 
@@ -6947,7 +6954,7 @@ synplace(lovhovet,lohove).
 synplace(lroppanmarka,kroppanmarka). 
 synplace(lsdamveien,isdamveien). 
 %% synplace(lsentrum,sentrum).  %% fra moltmyra ti lsentrum? \+ Moltmyra 10 
-synplace(lufthavnværnes,værnes). 
+synplace(lufthavnværnes,trondheim_lufthavn_lufthavnveien). 
 synplace(luftkrigenskole,luftkrigsskolen). 
 synplace(lund,lundes). 
 
@@ -8077,7 +8084,7 @@ synplace(vassfjell,vassfjellet).
 synplace(vassfjelt,vassfjellet).
 
 synplace(vblakli,blakli). 
-synplace(vearnas,værnes). 
+synplace(vearnas,trondheim_lufthavn_lufthavnveien). 
 synplace(velntinlyst,valentinlyst).
 synplace(veratrøa,værestrøa). %% off name 
 synplace(verdaln,verdalen). 
@@ -8139,7 +8146,8 @@ synplace(våll,voll).
 synplace(værestrøya,værestrøa).
 synplace(væretrøen,værestrøa). 
 synplace(væretrøene,værestrøa).
-synplace(værnesflyplass,værnes). 
+synplace(værnesflyplass,trondheim_lufthavn_lufthavnveien). 
+synplace(værnes,trondheim_lufthavn_lufthavnveien).
 synplace(værøtra,værestrøa). 
 synplace(vætertrøa,værestrøa). 
 synplace(wist,stjørdals_street).  %% \+ placestat
