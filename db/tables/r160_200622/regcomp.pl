@@ -1104,7 +1104,6 @@ composite_stat(gjersvold,[],gjersvold).
 composite_stat(gjeset,[],gjeset).
 composite_stat(gjesetmoen,[],gjesetmoen).
 composite_stat(gjesetodden,[],gjesetodden).
-composite_stat(gjeslingan,[hurtigbåtkai],gjeslingan_hurtigbåtkai).
 composite_stat(gjetneset,[],gjetneset).
 composite_stat(gjevilvasshytta,[],gjevilvasshytta).
 composite_stat(gjeving,[],gjeving).

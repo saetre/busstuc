@@ -8289,7 +8289,6 @@ hpl(79780,brørs,brørs,'Brørs').
 hpl(79781,våg_vegdele,våg_vegdele,'Våg vegdele').
 hpl(79782,våg_vegdele,våg_vegdele,'Våg vegdele').
 hpl(79783,våg_vegdele,våg_vegdele,'Våg vegdele').
-hpl(79784,gjeslingan_hurtigbåtkai,gjeslingan_hurtigbåtkai,'Gjeslingan hurtigbåtkai').
 hpl(79785,storvea_vegdele,storvea_vegdele,'Storvea vegdele').
 hpl(79786,storvea_vegdele,storvea_vegdele,'Storvea vegdele').
 hpl(79787,storvea_vegdele,storvea_vegdele,'Storvea vegdele').
