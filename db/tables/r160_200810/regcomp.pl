@@ -1316,8 +1316,6 @@ composite_stat(halsen,[],halsen).
 composite_stat(halsen,[ungdomsskole],halsen_ungdomsskole).
 composite_stat(halstad,[],halstad).
 composite_stat(halstein,[gård],halstein_gård).
-composite_stat(haltdalen,[coop, 1],haltdalen_coop_1).
-composite_stat(haltdalen,[coop, 2],haltdalen_coop_2).
 composite_stat(haltdalen,[coop],haltdalen_coop).
 composite_stat(haltdalen,[oppvekstsenter],haltdalen_oppvekstsenter).
 composite_stat(halten,[kai],halten_kai).
