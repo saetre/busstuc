@@ -647,7 +647,6 @@ hpl(71231,hepsøy_hurtigbåtkai,hepsøy_hurtigbåtkai,'Hepsøy hurtigbåtkai').
 hpl(71232,ramsøy_hurtigbåtkai,ramsøy_hurtigbåtkai,'Ramsøy hurtigbåtkai').
 hpl(71233,ramsøyaunet_hurtigbåtkai,ramsøyaunet_hurtigbåtkai,'Ramsøyaunet hurtigbåtkai').
 hpl(71234,torgaardssletta,torgaardssletta,'Torgaardssletta').
-hpl(71235,herfjord,herfjord,'Herfjord').
 hpl(71236,torgaardssletta,torgaardssletta,'Torgaardssletta').
 hpl(71237,herfjord,herfjord,'Herfjord').
 hpl(71238,ramvika,ramvika,'Ramvika').
@@ -1327,8 +1326,6 @@ hpl(71985,høsøien_stasjon,høsøien_stasjon,'Høsøien stasjon').
 hpl(71986,varmbu,varmbu,'Varmbu').
 hpl(71987,selsbakkflata,selsbakkflata,'Selsbakkflata').
 hpl(71988,selsbakkflata,selsbakkflata,'Selsbakkflata').
-hpl(71989,høvik,høvik,'Høvik').
-hpl(71990,høvik,høvik,'Høvik').
 hpl(71991,varsmoen,varsmoen,'Varsmoen').
 hpl(71992,varsmoen,varsmoen,'Varsmoen').
 hpl(71993,selva,selva,'Selva').
@@ -4560,7 +4557,6 @@ hpl(75549,fuglmoen,fuglmoen,'Fuglmoen').
 hpl(75550,bøe,bøe,'Bøe').
 hpl(75551,furen,furen,'Furen').
 hpl(75552,furen,furen,'Furen').
-hpl(75555,børmark,børmark,'Børmark').
 hpl(75556,børmark,børmark,'Børmark').
 hpl(75557,børskrysset_e39,børskrysset_e39,'Børskrysset E39').
 hpl(75559,børskrysset_e39,børskrysset_e39,'Børskrysset E39').
