@@ -471,7 +471,7 @@ hpl(65947,setra,setra,'Setra').
 hpl(65953,setra,setra,'Setra').
 hpl(65988,vikan,vikan,'Vikan').
 hpl(66088,eidestranda,eidestranda,'Eidestranda').
-hpl(66284,innreitan,innreitan,'Innreitan').
+hpl(66284,blåbærhaugen,blåbærhaugen,'Blåbærhaugen').
 hpl(66356,våg,våg,'Våg').
 hpl(66423,vågland,vågland,'Vågland').
 hpl(66588,gåsvatnet,gåsvatnet,'Gåsvatnet').

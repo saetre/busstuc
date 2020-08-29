@@ -312,6 +312,7 @@ composite_stat(blokkumveien,[],blokkumveien).
 composite_stat(blomliene,[],blomliene).
 composite_stat(blomliflata,[],blomliflata).
 composite_stat(blåbyen,[],blåbyen).
+composite_stat(blåbærhaugen,[],blåbærhaugen).
 composite_stat(blåhammaren,[],blåhammaren).
 composite_stat(blåsmo,[],blåsmo).
 composite_stat(blåveislia,[],blåveislia).
@@ -1743,7 +1744,6 @@ composite_stat(inna,[bru],inna_bru).
 composite_stat(inndalsåkeren,[],inndalsåkeren).
 composite_stat(inner,[berg],inner_berg).
 composite_stat(innervika,[],innervika).
-composite_stat(innreitan,[],innreitan).
 composite_stat(innset,[s, lag],innset_s_lag).
 composite_stat(innset,[skole],innset_skole).
 composite_stat(innstrand,[],innstrand).
