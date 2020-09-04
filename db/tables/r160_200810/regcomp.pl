@@ -232,6 +232,7 @@ composite_stat(bertnem,[],bertnem).
 composite_stat(beskelandsfjorden,[],beskelandsfjorden).
 composite_stat(bessaker,[],bessaker).
 composite_stat(bessaker,[kai],bessaker_kai).
+composite_stat(best,[vormstad],best_vormstad).
 composite_stat(betania,[],betania).
 composite_stat(betna,[],betna).
 composite_stat(billehaugen,[],billehaugen).
@@ -624,7 +625,7 @@ composite_stat(draveng,[],draveng).
 composite_stat(dregseth,[],dregseth).
 composite_stat(dretvik,[øvre],dretvik_øvre).
 composite_stat(driva,[],driva).
-composite_stat(driva,[x],driva_x).
+composite_stat(driva,[krysset],driva_krysset).
 composite_stat(drivdalen,[skole],drivdalen_skole).
 composite_stat(drivstua,[],drivstua).
 composite_stat(dronningens,[gate, 19],dronningens_gate_19).
@@ -739,7 +740,6 @@ composite_stat(elvran,[kapell],elvran_kapell).
 composite_stat(elvran,[oppvekstsenter],elvran_oppvekstsenter).
 composite_stat(elvvatnet,[],elvvatnet).
 composite_stat(engan,[],engan).
-composite_stat(engan,[bru],engan_bru).
 composite_stat(engdal,[],engdal).
 composite_stat(enge,[],enge).
 composite_stat(engelsås,[],engelsås).
@@ -1263,6 +1263,7 @@ composite_stat(gurvikdal,[],gurvikdal).
 composite_stat(gustadkorsen,[],gustadkorsen).
 composite_stat(gustav,[berg],gustav_berg).
 composite_stat(gutvik,[],gutvik).
+composite_stat(gutvik,[ferjekai],gutvik_ferjekai).
 composite_stat(gutvik,[hurtigbåtkai],gutvik_hurtigbåtkai).
 composite_stat(gyldenløves,[gate],gyldenløves_gate).
 composite_stat(gyldenløves,[street],gyldenløves_gate). % generated 1.2
@@ -1296,7 +1297,6 @@ composite_stat(halla,[],halla).
 composite_stat(halla,[vegdele],halla_vegdele).
 composite_stat(hallan,[østre],hallan_østre).
 composite_stat(halland,[camping],halland_camping).
-composite_stat(hallansvingen,[],hallansvingen).
 composite_stat(hallbrua,[],hallbrua).
 composite_stat(hallem,[],hallem).
 composite_stat(hallfred,[høyems, street],hallfred_høyems_veg). % generated 2.2
@@ -2053,7 +2053,7 @@ composite_stat(krutvik,[],krutvik).
 composite_stat(krysset,[gisnadalen],krysset_gisnadalen).
 composite_stat(krysset,[sletta],krysset_sletta).
 composite_stat(krysset,[stræte, berg],krysset_stræte_berg).
-composite_stat(krysset,[vikvarvet, ausa],krysset_vikvarvet_ausa).
+composite_stat(krysset,[vikvarvet],krysset_vikvarvet).
 composite_stat(kråg,[],kråg).
 composite_stat(kråka,[],kråka).
 composite_stat(kråkdalen,[],kråkdalen).
@@ -2186,6 +2186,7 @@ composite_stat(langneset,[],langneset).
 composite_stat(langset,[østre],langset_østre).
 composite_stat(langseter,[],langseter).
 composite_stat(langstein,[],langstein).
+composite_stat(langstein,[stasjon],langstein_stasjon).
 composite_stat(langstrand,[vegdele],langstrand_vegdele).
 composite_stat(langås,[],langås).
 composite_stat(langås,[skei],langås_skei).
@@ -2555,6 +2556,7 @@ composite_stat(meungen,[],meungen).
 composite_stat(mevassvik,[snuplass],mevassvik_snuplass).
 composite_stat(meådal,[],meådal).
 composite_stat(meåsen,[],meåsen).
+composite_stat(meåsen,[snuplass],meåsen_snuplass).
 composite_stat(midjo,[],midjo).
 composite_stat(midtaune,[],midtaune).
 composite_stat(midtbygda,[skole],midtbygda_skole).
@@ -4209,6 +4211,7 @@ composite_stat(torvstrøvegen,[],torvstrøvegen).
 composite_stat(torvtaket,[],torvtaket).
 composite_stat(totland,[],totland).
 composite_stat(totsås,[],totsås).
+composite_stat(tovehaugen,[],tovehaugen).
 composite_stat(trafost,[],trafost).
 composite_stat(trangen,[],trangen).
 composite_stat(tranghaugen,[],tranghaugen).
@@ -4563,9 +4566,9 @@ composite_stat(vollabrua,[],vollabrua).
 composite_stat(vollagjerdet,[],vollagjerdet).
 composite_stat(vollakrysset,[],vollakrysset).
 composite_stat(vollan,[],vollan).
+composite_stat(vollan,[krysset],vollan_krysset).
 composite_stat(vollan,[skole],vollan_skole).
 composite_stat(vollan,[sparbu],vollan_sparbu).
-composite_stat(vollan,[x],vollan_x).
 composite_stat(vollavegkrysset,[],vollavegkrysset).
 composite_stat(vollberget,[øvre],vollberget_øvre).
 composite_stat(vollen,[],vollen).
@@ -4777,6 +4780,7 @@ composite_stat(øya,[vgs],øya_vgs).
 composite_stat(øyan,[],øyan).
 composite_stat(øyangen,[],øyangen).
 composite_stat(øyanvegen,[],øyanvegen).
+composite_stat(øyasætra,[],øyasætra).
 composite_stat(øyavegen,[],øyavegen).
 composite_stat(øybakken,[],øybakken).
 composite_stat(øybekkstua,[],øybekkstua).
