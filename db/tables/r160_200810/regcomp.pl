@@ -4503,7 +4503,6 @@ composite_stat(viggja,[],viggja).
 composite_stat(vik,[],vik).
 composite_stat(vik,[kirke],vik_kirke).
 composite_stat(vik,[spillum],vik_spillum).
-composite_stat(vik,[vik],vik_vik).
 composite_stat(vika,[],vika).
 composite_stat(vika,[kryss],vika_kryss).
 composite_stat(vika,[vegdele],vika_vegdele).

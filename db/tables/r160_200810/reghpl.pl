@@ -9205,8 +9205,8 @@ hpl(81038,brandsmo_vegdele,brandsmo_vegdele,'Brandsmo vegdele').
 hpl(81040,brandsmo_vegdele,brandsmo_vegdele,'Brandsmo vegdele').
 hpl(81041,trefjord,trefjord,'Trefjord').
 hpl(81042,trefjord,trefjord,'Trefjord').
-hpl(81043,vik_vik,vik_vik,'Vik Vik').
-hpl(81044,vik_vik,vik_vik,'Vik Vik').
+hpl(81043,vik,vik,'Vik').
+hpl(81044,vik,vik,'Vik').
 hpl(81045,nesset,nesset,'Nesset').
 hpl(81046,nesset,nesset,'Nesset').
 hpl(81047,kvaløysæter,kvaløysæter,'Kvaløysæter').
