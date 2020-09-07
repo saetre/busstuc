@@ -5953,7 +5953,6 @@ hpl(77188,bjørnes,bjørnes,'Bjørnes').
 hpl(77189,bjørnes,bjørnes,'Bjørnes').
 hpl(77190,rian_vegdele,rian_vegdele,'Rian vegdele').
 hpl(77191,rian_vegdele,rian_vegdele,'Rian vegdele').
-hpl(77192,rian_vegdele,rian_vegdele,'Rian vegdele').
 hpl(77193,værnes_prestegård,værnes_prestegård,'Værnes prestegård').
 hpl(77194,værnes_prestegård,værnes_prestegård,'Værnes prestegård').
 hpl(77195,værnes_prestegård,værnes_prestegård,'Værnes prestegård').
@@ -6688,7 +6687,6 @@ hpl(78016,garberg,garberg,'Garberg').
 hpl(78017,garberg,garberg,'Garberg').
 hpl(78018,halsankorsen,halsankorsen,'Halsankorsen').
 hpl(78019,halsankorsen,halsankorsen,'Halsankorsen').
-hpl(78020,halsankorsen,halsankorsen,'Halsankorsen').
 hpl(78021,ulvin,ulvin,'Ulvin').
 hpl(78022,ulvin,ulvin,'Ulvin').
 hpl(78025,gilstadlia,gilstadlia,'Gilstadlia').
@@ -6777,7 +6775,6 @@ hpl(78124,nordheim,nordheim,'Nordheim').
 hpl(78126,friggs_veg,friggs_veg,'Friggs veg').
 hpl(78127,friggs_veg,friggs_veg,'Friggs veg').
 hpl(78132,øyan,øyan,'Øyan').
-hpl(78133,øyan,øyan,'Øyan').
 hpl(78134,øyan,øyan,'Øyan').
 hpl(78137,brages_veg,brages_veg,'Brages veg').
 hpl(78138,brages_veg,brages_veg,'Brages veg').
@@ -8251,9 +8248,7 @@ hpl(79815,holstadsve,holstadsve,'Holstadsve').
 hpl(79816,holstadsve,holstadsve,'Holstadsve').
 hpl(79817,solheim,solheim,'Solheim').
 hpl(79818,solheim,solheim,'Solheim').
-hpl(79819,lødding_løding,lødding_løding,'Lødding Løding').
 hpl(79820,hestvika,hestvika,'Hestvika').
-hpl(79821,lødding_løding,lødding_løding,'Lødding Løding').
 hpl(79822,hestvika,hestvika,'Hestvika').
 hpl(79823,lødding_løding,lødding_løding,'Lødding Løding').
 hpl(79824,lødding_løding,lødding_løding,'Lødding Løding').
@@ -9254,7 +9249,6 @@ hpl(98828,kvernsjølia,kvernsjølia,'Kvernsjølia').
 hpl(98829,vinsmyr,vinsmyr,'Vinsmyr').
 hpl(98830,vinsmyr,vinsmyr,'Vinsmyr').
 hpl(98831,kjella_skole,kjella_skole,'Kjella skole').
-hpl(98851,skogmo,skogmo,'Skogmo').
 hpl(98852,mediå,mediå,'Mediå').
 hpl(98859,revyriket,revyriket,'Revyriket').
 hpl(98863,sykehuset_namsos,sykehuset_namsos,'Sykehuset Namsos').
@@ -9262,7 +9256,6 @@ hpl(98864,verdal_stasjon,verdal_stasjon,'Verdal stasjon').
 hpl(98944,reinbjør_vegdele,reinbjør_vegdele,'Reinbjør vegdele').
 hpl(98945,skage_vest,skage_vest,'Skage vest').
 hpl(98960,hammer_vegdele,hammer_vegdele,'Hammer vegdele').
-hpl(98961,ryggahøgda,ryggahøgda,'Ryggahøgda').
 hpl(99483,jøa_hurtigbåtkai,jøa_hurtigbåtkai,'Jøa hurtigbåtkai').
 hpl(99485,rørvik_hurtigbåtkai,rørvik_hurtigbåtkai,'Rørvik hurtigbåtkai').
 hpl(99486,abelvær_hurtigbåtkai,abelvær_hurtigbåtkai,'Abelvær hurtigbåtkai').
