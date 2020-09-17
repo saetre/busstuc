@@ -407,7 +407,6 @@ hpl(110171,innset_s_lag,innset_s_lag,'Innset S-lag').
 hpl(110172,ler,ler,'Ler').
 hpl(110174,ler,ler,'Ler').
 hpl(110175,innset_s_lag,innset_s_lag,'Innset S-lag').
-hpl(110180,støren_stasjon,støren_stasjon,'Støren stasjon').
 hpl(110181,lundamo,lundamo,'Lundamo').
 hpl(110188,kjørsvikbugen_hurtigbåtkai,kjørsvikbugen_hurtigbåtkai,'Kjørsvikbugen hurtigbåtkai').
 hpl(110230,kystmuseet,kystmuseet,'Kystmuseet').
