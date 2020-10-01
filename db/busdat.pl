@@ -447,6 +447,10 @@ vehicletype( 860, ferry).
 vehicletype( 966, ferry).
 vehicletype( 963, ferry).
 
+vehicletype( 1, monsterbus).
+vehicletype( 2, monsterbus).
+vehicletype( 3, monsterbus).
+
 vehicletype(X,nightbus) :-   nightbus(X),!.  %%% <------
    %% side effects on answer generation  
 

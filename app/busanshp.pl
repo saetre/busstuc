@@ -241,7 +241,7 @@ outdeponly(Dep,DirPlace,
     difftime(ARRIVALTIME, Time9, Duration), %% MW-121003 %% Correct duration time
     create_smartdep_entry2(Station,Time9,Duration,Rid, DirPlace ,  Smartdep_entry). %% TA-110505
 
-    %% print_smartdep_entry(Smartdep_entry). %% MW-120917 %% print out in outdeplist02, avoid side effects
+%     print_smartdep_entry(Smartdep_entry). %% MW-120917 %% print out in outdeplist02, avoid side effects
 
 
 outdeplisttime1( [Dep], _Day, _, DirPlace, OutDep, MAP, [SmartDeps] ) :-

@@ -143,8 +143,8 @@ streetstat(bjørk_street,'Bjørkvegen',1,11,jakobslivegen_nedre).
 streetstat(bjørk_street,'Bjørkvegen',12,40,charlottenlund_kirke).
 streetstat(bjørndalen,'Bjørndalen',17,17,forsøket).
 streetstat(bjørndalen,'Bjørndalen',1,3,kroppan).
-streetstat(bjørndalen,'Bjørndalen',80,83,rosten).
-streetstat(bjørndalen,'Bjørndalen',59,79,kolstaddalen).
+%streetstat(bjørndalen,'Bjørndalen',80,83,rosten).
+%streetstat(bjørndalen,'Bjørndalen',59,79,kolstaddalen).
 streetstat(bjørneby_street,'Bjørnebyvegen',1,38,ugla).
 streetstat(bjørnsons_street,'Bjørnsons gate',3,13,gyldenløves_gate).
 streetstat(blaklieggen,'Blaklieggen',1,14,blakli).
@@ -1153,7 +1153,7 @@ streetstat(okstad_street,'Okstadvegen',70,248,okstad_østre). %% RS-140614, 233 
 streetstat(okstadbrinken,'Okstadbrinken',1,36,kroppanmarka).
 streetstat(okstadplassen,'Okstadplassen',1,37,kroppanmarka).
 streetstat(okstadplassen,'Okstadplassen',2,38,kroppanmarka).
-streetstat(okstadøy,'Okstadøy',1,101,okstadøy).
+%streetstat(okstadøy,'Okstadøy',1,101,okstadøy). && canceled until further notice, will be put back when nightbus is back
 
 streetstat(ola_frosts_street,'Ola Frosts veg',1,11,valøyvegen). %% TA-110518 eien
 

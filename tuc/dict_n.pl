@@ -204,7 +204,7 @@ rewording([være,at],[bli,at]). %% ad hoc fedup %% TA-110810
 
 rewording([å,svar],            [å,svare]).  %% trouble svar=noun|verb
 
-
+rewording([tiltil], [til]). %% For users accidentaly writing tiltil instead of til
 %--
 
 %% No general rewrite rules (List -> List)  (Precaution)
@@ -14807,6 +14807,8 @@ noun2(by,city). %%  destroys  Anders Byens gate
 noun2(bygrense,city). %% rough
 
 noun2(bybuss,bus). 
+
+noun2(monsterbuss, monsterbus).
 
 noun2(ferge,ferry).
 noun2(båt,boat). 

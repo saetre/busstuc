@@ -2328,7 +2328,7 @@ cmpl(ovre,flataasveien,øvre_flatåsveg).
 cmpl(owesens,gate,thonning_owesens_street).  %% $Generic
 cmpl(p,[1],prinsens_gate_p1).
 cmpl(p,[2],prinsens_gate_p2).
-cmpl(p,[3],prinsens_gate_p3).
+%cmpl(p,[3],prinsens_gate_p3).
 cmpl(p,kroghsv,peder_kroghs_v). 
 cmpl(p,[morsets,vei],peder_morsets_veg). %% peder_morsetts_v %% (SIC) HASTUS 
 cmpl(p,morsetsv,peder_morsets_veg). 
@@ -3478,7 +3478,7 @@ isat(prinsens_gate_p1,prinsenkrysset). %% TA-110822  %% RS-141102
 isat(prinsens_gate_p2,prinsenkrysset). %% RS-141102
 isat(kongens_gate_k1,prinsenkrysset). %% RS-141102
 isat(kongens_gate_k2,prinsenkrysset). %% RS-141102
-isat(prinsens_gate_p3,sentralbadet).
+%isat(prinsens_gate_p3,sentralbadet).
 
 %% isat(britannia_hotell,sentrum). %%  FlyBuss? %% not AtB
 
@@ -5280,6 +5280,7 @@ sameplace(østmarkneset,østmarkveien).  %%nesset
 sameplace(øvreromolslia,romolslia_øvre).
 sameplace(kattemsentret,kattemsenteret). 
 
+sameplace(børskrysset,børskrysset_e39).
 
 %% How to write names in SMS-messages (max 160 characters?)
 short_specname(d1,'Dronn. gt D1'). 
@@ -5684,7 +5685,7 @@ specname(prinsens_gate,'Prinsens gate').
 
 specname(prinsens_gate_p1,'Prinsens gate P1'). %% RS-140102
 specname(prinsens_gate_p2,'Prinsens gate P2').
-specname(prinsens_gate_p3, 'Prinsens gate P3').
+%specname(prinsens_gate_p3, 'Prinsens gate P3'). %% All nightbusses are canceled until further notice
 
 specname(p1,'Prinsens gate P1').  %% RS-140102
 specname(p2,'Prinsens gate P2').  %% RS-140102
