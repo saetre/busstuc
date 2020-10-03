@@ -2278,12 +2278,12 @@ hpl(73029,kviltbakken,kviltbakken,'Kviltbakken').
 hpl(73030,strinda_vgs,strinda_vgs,'Strinda vgs.').
 hpl(73031,hallset,hallset,'Hallset').
 hpl(73032,hallset,hallset,'Hallset').
-hpl(73033,strindheim,strindheim,'Strindheim').
-hpl(73034,strindheim,strindheim,'Strindheim').
+hpl(73033,strindheim_2,strindheim_2,'Strindheim 2').
+hpl(73034,strindheim_1,strindheim_1,'Strindheim 1').
 hpl(73035,kviltbakken,kviltbakken,'Kviltbakken').
-hpl(73036,strindheim_2,strindheim_2,'Strindheim 2').
+hpl(73036,strindheim_3,strindheim_3,'Strindheim 3').
 hpl(73037,kvipsdalsveien,kvipsdalsveien,'Kvipsdalsveien').
-hpl(73038,strindheim_2,strindheim_2,'Strindheim 2').
+hpl(73038,strindheim_4,strindheim_4,'Strindheim 4').
 hpl(73039,kvipsdalsveien,kvipsdalsveien,'Kvipsdalsveien').
 hpl(73040,mikkelmo,mikkelmo,'Mikkelmo').
 hpl(73041,mikkelmo,mikkelmo,'Mikkelmo').

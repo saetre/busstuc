@@ -3930,8 +3930,10 @@ composite_stat(strinda,[],strinda).
 composite_stat(strinda,[kirke],strinda_kirke).
 composite_stat(strinda,[vgs],strinda_vgs).
 composite_stat(strindfjordvegen,[],strindfjordvegen).
+composite_stat(strindheim,[1],strindheim_1).
 composite_stat(strindheim,[2],strindheim_2).
-composite_stat(strindheim,[],strindheim).
+composite_stat(strindheim,[3],strindheim_3).
+composite_stat(strindheim,[4],strindheim_4).
 composite_stat(strindheim,[hageby],strindheim_hageby).
 composite_stat(strindheim,[skole],strindheim_skole).
 composite_stat(strindmoen,[],strindmoen).
