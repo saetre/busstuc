@@ -2268,7 +2268,10 @@ composite_stat(lerdalen,[],lerdalen).
 composite_stat(lereggen,[],lereggen).
 composite_stat(leren,[],leren).
 composite_stat(lerkehaug,[],lerkehaug).
-composite_stat(lerkendal,[],lerkendal).
+composite_stat(lerkendal,[1],lerkendal_1).
+composite_stat(lerkendal,[2],lerkendal_2).
+composite_stat(lerkendal,[3],lerkendal_3).
+composite_stat(lerkendal,[4],lerkendal_4).
 composite_stat(lerkendal,[gård],lerkendal_gård).
 composite_stat(lersbakken,[],lersbakken).
 composite_stat(lerstad,[],lerstad).
@@ -4282,7 +4285,6 @@ composite_stat(tulluan,[syd],tulluan_syd).
 composite_stat(tunga,[kretsfengsel],tunga_kretsfengsel).
 composite_stat(tungavegen,[],tungavegen).
 composite_stat(tungvågen,[],tungvågen).
-composite_stat(tunnelvegen,[],tunnelvegen).
 composite_stat(tunnsjø,[],tunnsjø).
 composite_stat(tunnsjø,[østre],tunnsjø_østre).
 composite_stat(tunnsjødal,[vegdele],tunnsjødal_vegdele).
@@ -4745,10 +4747,13 @@ composite_stat(østingen,[],østingen).
 composite_stat(østmarkveien,[],østmarkveien).
 composite_stat(østnes,[],østnes).
 composite_stat(østre,[],østre).
+composite_stat(østre,[berg, 1],østre_berg_1).
 composite_stat(østre,[berg, 2],østre_berg_2).
-composite_stat(østre,[berg],østre_berg).
+composite_stat(østre,[berg, 3],østre_berg_3).
 composite_stat(østre,[eidem],østre_eidem).
 composite_stat(østre,[lund, 1],østre_lund_1).
+composite_stat(østre,[lund, 3],østre_lund_3).
+composite_stat(østre,[lund, 4],østre_lund_4).
 composite_stat(østre,[rosten],østre_rosten).
 composite_stat(østvik,[],østvik).
 composite_stat(østvold,[],østvold).

@@ -90,7 +90,7 @@ hpl(102715,ratesvingen,ratesvingen,'Ratesvingen').
 hpl(102716,ratesvingen,ratesvingen,'Ratesvingen').
 hpl(102718,dronningens_gate_19,dronningens_gate_19,'Dronningens gate 19').
 hpl(102719,hesthagen,hesthagen,'Hesthagen').
-hpl(102720,lerkendal,lerkendal,'Lerkendal').
+hpl(102720,lerkendal_2,lerkendal_2,'Lerkendal 2').
 hpl(102721,østre_lund_1,østre_lund_1,'Østre Lund 1').
 hpl(102722,anders_søyseths_veg,anders_søyseths_veg,'Anders Søyseths veg').
 hpl(102723,anders_søyseths_veg,anders_søyseths_veg,'Anders Søyseths veg').
@@ -946,8 +946,8 @@ hpl(71564,tungvågen,tungvågen,'Tungvågen').
 hpl(71565,hommelvik_sjøside,hommelvik_sjøside,'Hommelvik sjøside').
 hpl(71566,ry,ry,'Ry').
 hpl(71567,ry,ry,'Ry').
-hpl(71568,tunnelvegen,tunnelvegen,'Tunnelvegen').
-hpl(71569,tunnelvegen,tunnelvegen,'Tunnelvegen').
+hpl(71568,østre_lund_4,østre_lund_4,'Østre Lund 4').
+hpl(71569,østre_lund_3,østre_lund_3,'Østre Lund 3').
 hpl(71570,hommelvik_skole,hommelvik_skole,'Hommelvik skole').
 hpl(71571,hommelvik_skole,hommelvik_skole,'Hommelvik skole').
 hpl(71572,rybrua,rybrua,'Rybrua').
@@ -2124,8 +2124,8 @@ hpl(72848,østmarkveien,østmarkveien,'Østmarkveien').
 hpl(72849,østmarkveien,østmarkveien,'Østmarkveien').
 hpl(72850,havstad,havstad,'Havstad').
 hpl(72851,havstad,havstad,'Havstad').
-hpl(72852,østre_berg,østre_berg,'Østre Berg').
-hpl(72853,østre_berg,østre_berg,'Østre Berg').
+hpl(72852,østre_berg_1,østre_berg_1,'Østre Berg 1').
+hpl(72853,østre_berg_3,østre_berg_3,'Østre Berg 3').
 hpl(72854,melhus_skysstasjon,melhus_skysstasjon,'Melhus skysstasjon').
 hpl(72855,havstadsenteret,havstadsenteret,'Havstadsenteret').
 hpl(72856,havstadsenteret,havstadsenteret,'Havstadsenteret').
@@ -2639,8 +2639,8 @@ hpl(73416,munkaunet,munkaunet,'Munkaunet').
 hpl(73417,munkaunet,munkaunet,'Munkaunet').
 hpl(73418,svorkdalen,svorkdalen,'Svorkdalen').
 hpl(73419,svorkdalen,svorkdalen,'Svorkdalen').
-hpl(73420,lerkendal,lerkendal,'Lerkendal').
-hpl(73421,lerkendal,lerkendal,'Lerkendal').
+hpl(73420,lerkendal_4,lerkendal_4,'Lerkendal 4').
+hpl(73421,lerkendal_3,lerkendal_3,'Lerkendal 3').
 hpl(73427,svorkmo,svorkmo,'Svorkmo').
 hpl(73428,svorkmo,svorkmo,'Svorkmo').
 hpl(73429,lersbakken,lersbakken,'Lersbakken').
@@ -2923,7 +2923,7 @@ hpl(73725,teksdal,teksdal,'Teksdal').
 hpl(73726,løhre,løhre,'Løhre').
 hpl(73727,teksdal,teksdal,'Teksdal').
 hpl(73728,løhre,løhre,'Løhre').
-hpl(73729,lerkendal,lerkendal,'Lerkendal').
+hpl(73729,lerkendal_1,lerkendal_1,'Lerkendal 1').
 hpl(73730,løkhaug,løkhaug,'Løkhaug').
 hpl(73731,løkhaug,løkhaug,'Løkhaug').
 hpl(73732,nabeita_skole,nabeita_skole,'Nabeita skole').
