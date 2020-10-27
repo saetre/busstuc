@@ -8,7 +8,6 @@ hpl(100576,aune,aune,'Aune').
 hpl(100844,aure,aure,'Aure').
 hpl(101366,moanes,moanes,'Moanes').
 hpl(101521,olav_tryggvasons_gate_ot1,olav_tryggvasons_gate_ot1,'Olav Tryggvasons gate OT1').
-hpl(101522,skansen,skansen,'Skansen').
 hpl(101526,gluggbekken,gluggbekken,'Gluggbekken').
 hpl(101527,gluggbekken,gluggbekken,'Gluggbekken').
 hpl(101530,øyanvegen,øyanvegen,'Øyanvegen').
