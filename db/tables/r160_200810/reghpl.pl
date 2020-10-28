@@ -355,7 +355,7 @@ hpl(103515,rokkonesløkka,rokkonesløkka,'Rokkonesløkka').
 hpl(103516,hetling,hetling,'Hetling').
 hpl(103517,hetling,hetling,'Hetling').
 hpl(103520,sunnan,sunnan,'Sunnan').
-hpl(103522,marienborg_stasjon,marienborg_stasjon,'Marienborg stasjon').
+hpl(103522,marienborg_stasjon_marienborg_stasjon_3,marienborg_stasjon_marienborg_stasjon_3,'Marienborg stasjon Marienborg stasjon 3').
 hpl(103539,engan,engan,'Engan').
 hpl(103540,engan,engan,'Engan').
 hpl(103546,sagveien,sagveien,'Sagveien').
@@ -621,11 +621,9 @@ hpl(71184,prinsens_gate_p1,prinsens_gate_p1,'Prinsens gate P1').
 hpl(71186,togstadjåren,togstadjåren,'Togstadjåren').
 hpl(71187,hellesvik_veikryss,hellesvik_veikryss,'Hellesvik veikryss').
 hpl(71188,togstadjåren,togstadjåren,'Togstadjåren').
-hpl(71189,st_olavs_hospital,st_olavs_hospital,'St. Olavs Hospital').
 hpl(71190,st_olavs_hospital,st_olavs_hospital,'St. Olavs Hospital').
 hpl(71191,st_olavs_hospital,st_olavs_hospital,'St. Olavs Hospital').
 hpl(71193,hellesvik_veikryss,hellesvik_veikryss,'Hellesvik veikryss').
-hpl(71195,hesthagen,hesthagen,'Hesthagen').
 hpl(71196,sagmælen,sagmælen,'Sagmælen').
 hpl(71197,sagmælen,sagmælen,'Sagmælen').
 hpl(71198,tomtebo,tomtebo,'Tomtebo').
@@ -1960,8 +1958,8 @@ hpl(72670,ålbu,ålbu,'Ålbu').
 hpl(72671,marienborg,marienborg,'Marienborg').
 hpl(72672,marienborg,marienborg,'Marienborg').
 hpl(72675,ålen_sentrum,ålen_sentrum,'Ålen sentrum').
-hpl(72677,marienborg_stasjon,marienborg_stasjon,'Marienborg stasjon').
-hpl(72678,marienborg_stasjon,marienborg_stasjon,'Marienborg stasjon').
+hpl(72677,marienborg_stasjon_marienborg_stasjon,marienborg_stasjon_marienborg_stasjon,'Marienborg stasjon Marienborg stasjon').
+hpl(72678,marienborg_stasjon_marienborg_stasjon,marienborg_stasjon_marienborg_stasjon,'Marienborg stasjon Marienborg stasjon').
 hpl(72679,harangen,harangen,'Harangen').
 hpl(72680,harangen,harangen,'Harangen').
 hpl(72681,ålen_øvre,ålen_øvre,'Ålen Øvre').
@@ -3215,8 +3213,8 @@ hpl(74053,nordhammer,nordhammer,'Nordhammer').
 hpl(74054,nordhammer,nordhammer,'Nordhammer').
 hpl(74055,kjelstad,kjelstad,'Kjelstad').
 hpl(74056,kjelstad,kjelstad,'Kjelstad').
-hpl(74057,st_olavs_hospital_vest,st_olavs_hospital_vest,'St. Olavs Hospital vest').
-hpl(74058,st_olavs_hospital_vest,st_olavs_hospital_vest,'St. Olavs Hospital vest').
+hpl(74057,st_olavs_hospital,st_olavs_hospital,'St. Olavs Hospital').
+hpl(74058,st_olavs_hospital,st_olavs_hospital,'St. Olavs Hospital').
 hpl(74059,kjelstad,kjelstad,'Kjelstad').
 hpl(74060,kjelstad,kjelstad,'Kjelstad').
 hpl(74061,st_olavs_gate,st_olavs_gate,'St. Olavs gate').
@@ -9224,7 +9222,6 @@ hpl(81115,moen,moen,'Moen').
 hpl(81120,staulan,staulan,'Staulan').
 hpl(81121,staulan,staulan,'Staulan').
 hpl(83394,kjella_skole,kjella_skole,'Kjella skole').
-hpl(98579,st_olavs_hospital,st_olavs_hospital,'St. Olavs Hospital').
 hpl(98586,idrettsplassen_1,idrettsplassen_1,'Idrettsplassen 1').
 hpl(98587,idrettsplassen_2,idrettsplassen_2,'Idrettsplassen 2').
 hpl(98592,høsøien,høsøien,'Høsøien').

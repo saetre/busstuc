@@ -2471,7 +2471,8 @@ composite_stat(marie,[sørdals, veg],marie_sørdals_veg).
 composite_stat(marie,[sørdals_street],marie_sørdals_veg). % generated 2.1
 composite_stat(marie,[sørdalsveg],marie_sørdals_veg). % generated 2.0
 composite_stat(marienborg,[],marienborg).
-composite_stat(marienborg,[stasjon],marienborg_stasjon).
+composite_stat(marienborg,[stasjon, marienborg, stasjon, 3],marienborg_stasjon_marienborg_stasjon_3).
+composite_stat(marienborg,[stasjon, marienborg, stasjon],marienborg_stasjon_marienborg_stasjon).
 composite_stat(markabygda,[montessoriskole],markabygda_montessoriskole).
 composite_stat(markabygda,[sentrum],markabygda_sentrum).
 composite_stat(markaplassen,[],markaplassen).
@@ -3743,7 +3744,6 @@ composite_stat(sporill,[],sporill).
 composite_stat(sprengarbakkan,[],sprengarbakkan).
 composite_stat(sprova,[],sprova).
 composite_stat(st,[olavs, gate],st_olavs_gate).
-composite_stat(st,[olavs, hospital, vest],st_olavs_hospital_vest).
 composite_stat(st,[olavs, hospital],st_olavs_hospital).
 composite_stat(st,[olavs, street],st_olavs_gate). % generated 2.2
 composite_stat(st,[olavs_street],st_olavs_gate). % generated 2.1
