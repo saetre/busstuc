@@ -168,7 +168,6 @@ composite_stat(berdal,[],berdal).
 composite_stat(berfjord,[],berfjord).
 composite_stat(berg,[],berg).
 composite_stat(berg,[bedehus],berg_bedehus).
-composite_stat(berg,[foldereid],berg_foldereid).
 composite_stat(berg,[nord],berg_nord).
 composite_stat(berg,[street],bergsveg). % generated 4.1
 composite_stat(berg,[studentby],berg_studentby).
@@ -1066,7 +1065,6 @@ composite_stat(gjersvold,[],gjersvold).
 composite_stat(gjeset,[],gjeset).
 composite_stat(gjesetmoen,[],gjesetmoen).
 composite_stat(gjesetodden,[],gjesetodden).
-composite_stat(gjeslingan,[hurtigbåtkai],gjeslingan_hurtigbåtkai).
 composite_stat(gjetneset,[],gjetneset).
 composite_stat(gjevilvasshytta,[],gjevilvasshytta).
 composite_stat(gjevingåsen,[],gjevingåsen).
@@ -1473,8 +1471,8 @@ composite_stat(hindrem,[],hindrem).
 composite_stat(hindsverkrønning,[],hindsverkrønning).
 composite_stat(hireita,[],hireita).
 composite_stat(hitra,[hurtigbåtterminal],hitra_hurtigbåtterminal).
-composite_stat(hjellnesset,[],hjellnesset).
 composite_stat(hjelmstadbakk,[gård],hjelmstadbakk_gård).
+composite_stat(hjelnesset,[],hjelnesset).
 composite_stat(hjemble,[],hjemble).
 composite_stat(hjertåsbakken,[],hjertåsbakken).
 composite_stat(hjorten,[],hjorten).
@@ -2918,6 +2916,7 @@ composite_stat(ordførarvegen,[],ordførarvegen).
 composite_stat(orkanger,[barnehage],orkanger_barnehage).
 composite_stat(orkanger,[skole],orkanger_skole).
 composite_stat(orkanger,[skysstasjon],orkanger_skysstasjon).
+composite_stat(orkanger,[torg],orkanger_torg).
 composite_stat(orkdalsveien,[95],orkdalsveien_95).
 composite_stat(ormhaugen,[],ormhaugen).
 composite_stat(orvos,[],orvos).
@@ -3992,6 +3991,7 @@ composite_stat(søndre,[hoem],søndre_hoem).
 composite_stat(søndre,[risvolltun],søndre_risvolltun).
 composite_stat(sør,[dyrøy],sør_dyrøy).
 composite_stat(sør,[elnes],sør_elnes).
+composite_stat(sør,[gjæslingan, hurtigbåtkai],sør_gjæslingan_hurtigbåtkai).
 composite_stat(sør,[roan, skole],sør_roan_skole).
 composite_stat(sør,[vera],sør_vera).
 composite_stat(søraker,[],søraker).
@@ -4096,7 +4096,6 @@ composite_stat(torgaardssletta,[],torgaardssletta).
 composite_stat(torgard,[],torgard).
 composite_stat(torgardshaugen,[],torgardshaugen).
 composite_stat(torgardstrøa,[],torgardstrøa).
-composite_stat(torget,[orkanger],torget_orkanger).
 composite_stat(torlandskorsen,[],torlandskorsen).
 composite_stat(torp,[],torp).
 composite_stat(torpet,[],torpet).

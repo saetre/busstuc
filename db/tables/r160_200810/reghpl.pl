@@ -707,8 +707,8 @@ hpl(71262,hermanstad,hermanstad,'Hermanstad').
 hpl(71263,hermanstad,hermanstad,'Hermanstad').
 hpl(71265,ranøyen,ranøyen,'Ranøyen').
 hpl(71266,ranøyen,ranøyen,'Ranøyen').
-hpl(71267,torget_orkanger,torget_orkanger,'Torget Orkanger').
-hpl(71268,torget_orkanger,torget_orkanger,'Torget Orkanger').
+hpl(71267,orkanger_torg,orkanger_torg,'Orkanger torg').
+hpl(71268,orkanger_torg,orkanger_torg,'Orkanger torg').
 hpl(71269,raphaugen,raphaugen,'Raphaugen').
 hpl(71270,hermstad,hermstad,'Hermstad').
 hpl(71271,hermstad,hermstad,'Hermstad').
@@ -7736,9 +7736,9 @@ hpl(79194,husby,husby,'Husby').
 hpl(79195,husby,husby,'Husby').
 hpl(79196,tunsøra,tunsøra,'Tunsøra').
 hpl(79197,tunsøra,tunsøra,'Tunsøra').
-hpl(79198,hjellnesset,hjellnesset,'Hjellnesset').
-hpl(79199,hjellnesset,hjellnesset,'Hjellnesset').
-hpl(79200,hjellnesset,hjellnesset,'Hjellnesset').
+hpl(79198,hjelnesset,hjelnesset,'Hjelnesset').
+hpl(79199,hjelnesset,hjelnesset,'Hjelnesset').
+hpl(79200,hjelnesset,hjelnesset,'Hjelnesset').
 hpl(79201,hellem,hellem,'Hellem').
 hpl(79202,hellem,hellem,'Hellem').
 hpl(79203,sprova,sprova,'Sprova').
@@ -7922,8 +7922,8 @@ hpl(79406,sjømark,sjømark,'Sjømark').
 hpl(79407,sjømark,sjømark,'Sjømark').
 hpl(79408,bergsvik,bergsvik,'Bergsvik').
 hpl(79409,bergsvik,bergsvik,'Bergsvik').
-hpl(79412,berg_foldereid,berg_foldereid,'Berg Foldereid').
-hpl(79413,berg_foldereid,berg_foldereid,'Berg Foldereid').
+hpl(79412,berg,berg,'Berg').
+hpl(79413,berg,berg,'Berg').
 hpl(79414,barstad,barstad,'Barstad').
 hpl(79415,barstad,barstad,'Barstad').
 hpl(79416,stranda_skole,stranda_skole,'Stranda skole').
@@ -8234,7 +8234,7 @@ hpl(79780,brørs,brørs,'Brørs').
 hpl(79781,våg_vegdele,våg_vegdele,'Våg vegdele').
 hpl(79782,våg_vegdele,våg_vegdele,'Våg vegdele').
 hpl(79783,våg_vegdele,våg_vegdele,'Våg vegdele').
-hpl(79784,gjeslingan_hurtigbåtkai,gjeslingan_hurtigbåtkai,'Gjeslingan hurtigbåtkai').
+hpl(79784,sør_gjæslingan_hurtigbåtkai,sør_gjæslingan_hurtigbåtkai,'Sør-Gjæslingan hurtigbåtkai').
 hpl(79785,storvea_vegdele,storvea_vegdele,'Storvea vegdele').
 hpl(79786,storvea_vegdele,storvea_vegdele,'Storvea vegdele').
 hpl(79787,storvea_vegdele,storvea_vegdele,'Storvea vegdele').
@@ -8659,8 +8659,6 @@ hpl(80302,hastad,hastad,'Hastad').
 hpl(80303,nordeiterkorsen,nordeiterkorsen,'Nordeiterkorsen').
 hpl(80304,hastad,hastad,'Hastad').
 hpl(80305,nordeiterkorsen,nordeiterkorsen,'Nordeiterkorsen').
-hpl(80306,nordeiterkorsen,nordeiterkorsen,'Nordeiterkorsen').
-hpl(80307,nordeiterkorsen,nordeiterkorsen,'Nordeiterkorsen').
 hpl(80308,rødhammer,rødhammer,'Rødhammer').
 hpl(80309,rødhammer,rødhammer,'Rødhammer').
 hpl(80310,hoelsdalen,hoelsdalen,'Hoelsdalen').
