@@ -269,8 +269,8 @@ hpl(103331,svarthaugsætra,svarthaugsætra,'Svarthaugsætra').
 hpl(103332,sør_dyrøy,sør_dyrøy,'Sør-Dyrøy').
 hpl(103333,sørsto,sørsto,'Sørsto').
 hpl(103334,sørsto,sørsto,'Sørsto').
-hpl(103335,ulsberg_rv_3,ulsberg_rv_3,'Ulsberg Rv 3').
-hpl(103336,ulsberg_rv_3,ulsberg_rv_3,'Ulsberg Rv 3').
+hpl(103335,ulsberg,ulsberg,'Ulsberg').
+hpl(103336,ulsberg,ulsberg,'Ulsberg').
 hpl(103337,utigard,utigard,'Utigard').
 hpl(103338,vasslia,vasslia,'Vasslia').
 hpl(103339,være,være,'Være').
@@ -8019,7 +8019,6 @@ hpl(79512,skaukorsen,skaukorsen,'Skaukorsen').
 hpl(79513,skaukorsen,skaukorsen,'Skaukorsen').
 hpl(79514,strømbrua,strømbrua,'Strømbrua').
 hpl(79515,strømbrua,strømbrua,'Strømbrua').
-hpl(79516,strømbrua,strømbrua,'Strømbrua').
 hpl(79517,bergsøra,bergsøra,'Bergsøra').
 hpl(79518,bergsøra,bergsøra,'Bergsøra').
 hpl(79519,helbostad,helbostad,'Helbostad').

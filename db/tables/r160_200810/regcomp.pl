@@ -4242,7 +4242,6 @@ composite_stat(ugla,[],ugla).
 composite_stat(uglevegen,[],uglevegen).
 composite_stat(ulland,[],ulland).
 composite_stat(ulsberg,[],ulsberg).
-composite_stat(ulsberg,[rv, 3],ulsberg_rv_3).
 composite_stat(ulsund,[],ulsund).
 composite_stat(ulvan,[],ulvan).
 composite_stat(ulvik,[],ulvik).
