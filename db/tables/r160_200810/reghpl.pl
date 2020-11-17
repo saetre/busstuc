@@ -5221,7 +5221,6 @@ hpl(76279,horten,horten,'Horten').
 hpl(76280,horten,horten,'Horten').
 hpl(76281,stallvika,stallvika,'Stallvika').
 hpl(76282,stallvika,stallvika,'Stallvika').
-hpl(76283,stallvika,stallvika,'Stallvika').
 hpl(76284,namsos_samfunnshus,namsos_samfunnshus,'Namsos Samfunnshus').
 hpl(76285,namsos_samfunnshus,namsos_samfunnshus,'Namsos Samfunnshus').
 hpl(76286,fosslia_skole,fosslia_skole,'Fosslia skole').
@@ -5853,7 +5852,6 @@ hpl(77045,grønset,grønset,'Grønset').
 hpl(77046,grønset,grønset,'Grønset').
 hpl(77047,tyldum,tyldum,'Tyldum').
 hpl(77048,tyldum,tyldum,'Tyldum').
-hpl(77049,tyldum,tyldum,'Tyldum').
 hpl(77050,aune,aune,'Aune').
 hpl(77051,aune,aune,'Aune').
 hpl(77053,fremstad,fremstad,'Fremstad').
