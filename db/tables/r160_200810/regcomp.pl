@@ -1578,7 +1578,6 @@ composite_stat(hovskogen,[vestre],hovskogen_vestre).
 composite_stat(hovskorsen,[],hovskorsen).
 composite_stat(hovstad,[],hovstad).
 composite_stat(hovstein,[],hovstein).
-composite_stat(hoåsen,[],hoåsen).
 composite_stat(hullet,[],hullet).
 composite_stat(hulta,[],hulta).
 composite_stat(huluvollen,[],huluvollen).
@@ -1635,7 +1634,6 @@ composite_stat(høgreina,[øvre],høgreina_øvre).
 composite_stat(høgskoleringen,[],høgskoleringen).
 composite_stat(høgsneset,[],høgsneset).
 composite_stat(høgsteggen,[],høgsteggen).
-composite_stat(høgåsen,[],høgåsen).
 composite_stat(høkdølssvingen,[],høkdølssvingen).
 composite_stat(høknes,[barneskole],høknes_barneskole).
 composite_stat(høknes,[ungdomsskole],høknes_ungdomsskole).
@@ -1889,7 +1887,6 @@ composite_stat(kleiva,[],kleiva).
 composite_stat(kleivan,[],kleivan).
 composite_stat(kleivavegen,[],kleivavegen).
 composite_stat(kleiven,[],kleiven).
-composite_stat(kleivland,[],kleivland).
 composite_stat(kleivmoen,[],kleivmoen).
 composite_stat(kleivplassen,[],kleivplassen).
 composite_stat(klemetvold,[],klemetvold).
@@ -4547,7 +4544,6 @@ composite_stat(ytre,[snillfjord],ytre_snillfjord).
 composite_stat(ytre,[sørlia],ytre_sørlia).
 composite_stat(ytterby,[],ytterby).
 composite_stat(yttersetran,[],yttersetran).
-composite_stat(ytteråsen,[],ytteråsen).
 composite_stat(ytterøy,[skole],ytterøy_skole).
 composite_stat(å,[bru],å_bru).
 composite_stat(å,[sentrum],å_sentrum).

@@ -4867,16 +4867,12 @@ hpl(75849,rønningen,rønningen,'Rønningen').
 hpl(75850,rønningen,rønningen,'Rønningen').
 hpl(75851,nesjan,nesjan,'Nesjan').
 hpl(75852,nesjan,nesjan,'Nesjan').
-hpl(75853,høgåsen,høgåsen,'Høgåsen').
-hpl(75854,høgåsen,høgåsen,'Høgåsen').
 hpl(75855,småvollan,småvollan,'Småvollan').
 hpl(75856,småvollan,småvollan,'Småvollan').
 hpl(75857,fagerstrand,fagerstrand,'Fagerstrand').
 hpl(75858,fagerstrand,fagerstrand,'Fagerstrand').
 hpl(75859,fjell,fjell,'Fjell').
 hpl(75860,fjell,fjell,'Fjell').
-hpl(75861,fjellset,fjellset,'Fjellset').
-hpl(75862,fjellset,fjellset,'Fjellset').
 hpl(75865,romstad,romstad,'Romstad').
 hpl(75866,romstad,romstad,'Romstad').
 hpl(75869,jerpstad,jerpstad,'Jerpstad').
@@ -5963,13 +5959,9 @@ hpl(77157,hildrem,hildrem,'Hildrem').
 hpl(77158,hildrem,hildrem,'Hildrem').
 hpl(77159,draveng,draveng,'Draveng').
 hpl(77160,draveng,draveng,'Draveng').
-hpl(77163,kleivland,kleivland,'Kleivland').
-hpl(77165,kleivland,kleivland,'Kleivland').
 hpl(77167,ranem,ranem,'Ranem').
 hpl(77168,ranem,ranem,'Ranem').
-hpl(77169,hoåsen,hoåsen,'Hoåsen').
 hpl(77170,kråkmo_vegdele,kråkmo_vegdele,'Kråkmo vegdele').
-hpl(77171,hoåsen,hoåsen,'Hoåsen').
 hpl(77172,kråkmo_vegdele,kråkmo_vegdele,'Kråkmo vegdele').
 hpl(77173,kråkmo_vegdele,kråkmo_vegdele,'Kråkmo vegdele').
 hpl(77174,tettlien,tettlien,'Tettlien').
@@ -5982,8 +5974,6 @@ hpl(77180,skiljås,skiljås,'Skiljås').
 hpl(77181,skiljås,skiljås,'Skiljås').
 hpl(77183,fagerhaug_oppvekstsenter,fagerhaug_oppvekstsenter,'Fagerhaug oppvekstsenter').
 hpl(77184,rønningen,rønningen,'Rønningen').
-hpl(77186,solbakken,solbakken,'Solbakken').
-hpl(77187,solbakken,solbakken,'Solbakken').
 hpl(77188,bjørnes,bjørnes,'Bjørnes').
 hpl(77189,bjørnes,bjørnes,'Bjørnes').
 hpl(77190,rian_vegdele,rian_vegdele,'Rian vegdele').
@@ -6044,7 +6034,6 @@ hpl(77252,grendahuset,grendahuset,'Grendahuset').
 hpl(77253,fjølvika,fjølvika,'Fjølvika').
 hpl(77254,fjølvika,fjølvika,'Fjølvika').
 hpl(77255,fjølvika,fjølvika,'Fjølvika').
-hpl(77257,ytteråsen,ytteråsen,'Ytteråsen').
 hpl(77258,solem,solem,'Solem').
 hpl(77259,solem,solem,'Solem').
 hpl(77261,tangen_næringsområde,tangen_næringsområde,'Tangen næringsområde').
