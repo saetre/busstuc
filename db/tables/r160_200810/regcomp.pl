@@ -2430,6 +2430,7 @@ composite_stat(martin,[stokkens, street],martin_stokkens_veg). % generated 2.2
 composite_stat(martin,[stokkens, veg],martin_stokkens_veg).
 composite_stat(martin,[stokkens_street],martin_stokkens_veg). % generated 2.1
 composite_stat(martin,[stokkensveg],martin_stokkens_veg). % generated 2.0
+composite_stat(marøy,[],marøy).
 composite_stat(marøystranda,[],marøystranda).
 composite_stat(maskinagentur,[],maskinagentur).
 composite_stat(maskinistboligene,[],maskinistboligene).
@@ -3565,7 +3566,6 @@ composite_stat(slættet,[],slættet).
 composite_stat(slørdal,[],slørdal).
 composite_stat(smeplassen,[],smeplassen).
 composite_stat(smevika,[],smevika).
-composite_stat(smevikaunet,[],smevikaunet).
 composite_stat(smines,[],smines).
 composite_stat(smiskaret,[],smiskaret).
 composite_stat(smiskaret,[rundkjøring],smiskaret_rundkjøring).

@@ -8571,9 +8571,9 @@ hpl(80205,lørdagsvika,lørdagsvika,'Lørdagsvika').
 hpl(80206,venneshavn,venneshavn,'Venneshavn').
 hpl(80207,venneshavn,venneshavn,'Venneshavn').
 hpl(80208,følstadkorsen,følstadkorsen,'Følstadkorsen').
-hpl(80209,smevikaunet,smevikaunet,'Smevikaunet').
+hpl(80209,marøy,marøy,'Marøy').
 hpl(80210,følstadkorsen,følstadkorsen,'Følstadkorsen').
-hpl(80211,smevikaunet,smevikaunet,'Smevikaunet').
+hpl(80211,marøy,marøy,'Marøy').
 hpl(80212,namdalseid,namdalseid,'Namdalseid').
 hpl(80213,namdalseid,namdalseid,'Namdalseid').
 hpl(80214,haugtun,haugtun,'Haugtun').
