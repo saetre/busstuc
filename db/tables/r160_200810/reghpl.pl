@@ -4805,7 +4805,6 @@ hpl(75781,ryggvold_vest,ryggvold_vest,'Ryggvold vest').
 hpl(75782,ryggvold_vest,ryggvold_vest,'Ryggvold vest').
 hpl(75784,buret,buret,'Buret').
 hpl(75786,buret,buret,'Buret').
-hpl(75787,agle_øst,agle_øst,'Agle øst').
 hpl(75788,agle_øst,agle_øst,'Agle øst').
 hpl(75789,agle_øst,agle_øst,'Agle øst').
 hpl(75790,hammeraunan,hammeraunan,'Hammeraunan').
