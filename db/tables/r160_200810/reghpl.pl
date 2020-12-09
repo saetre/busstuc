@@ -7500,7 +7500,6 @@ hpl(78942,mobekkmo,mobekkmo,'Mobekkmo').
 hpl(78943,mobekkmo,mobekkmo,'Mobekkmo').
 hpl(78944,nord_aunankorsen,nord_aunankorsen,'Nord-Aunankorsen').
 hpl(78945,nord_aunankorsen,nord_aunankorsen,'Nord-Aunankorsen').
-hpl(78946,verrabotn,verrabotn,'Verrabotn').
 hpl(78947,verrabotn,verrabotn,'Verrabotn').
 hpl(78948,verrabotn,verrabotn,'Verrabotn').
 hpl(78949,nybo,nybo,'Nybo').
@@ -8574,7 +8573,6 @@ hpl(80209,marøy,marøy,'Marøy').
 hpl(80210,følstadkorsen,følstadkorsen,'Følstadkorsen').
 hpl(80211,marøy,marøy,'Marøy').
 hpl(80212,namdalseid,namdalseid,'Namdalseid').
-hpl(80213,namdalseid,namdalseid,'Namdalseid').
 hpl(80214,haugtun,haugtun,'Haugtun').
 hpl(80215,haugtun,haugtun,'Haugtun').
 hpl(80216,holandsdalen,holandsdalen,'Holandsdalen').
@@ -8778,7 +8776,6 @@ hpl(80504,kvamsholmen,kvamsholmen,'Kvamsholmen').
 hpl(80506,westerhus,westerhus,'Westerhus').
 hpl(80507,westerhus,westerhus,'Westerhus').
 hpl(80508,himo,himo,'Himo').
-hpl(80509,nagelhuskorsen,nagelhuskorsen,'Nagelhuskorsen').
 hpl(80510,himo,himo,'Himo').
 hpl(80511,nagelhuskorsen,nagelhuskorsen,'Nagelhuskorsen').
 hpl(80512,nagelhuskorsen,nagelhuskorsen,'Nagelhuskorsen').
@@ -8850,7 +8847,6 @@ hpl(80602,gausa,gausa,'Gausa').
 hpl(80603,gausa,gausa,'Gausa').
 hpl(80604,mona,mona,'Mona').
 hpl(80605,mona,mona,'Mona').
-hpl(80606,mona,mona,'Mona').
 hpl(80607,sellæghylla,sellæghylla,'Sellæghylla').
 hpl(80608,berg,berg,'Berg').
 hpl(80609,sellæghylla,sellæghylla,'Sellæghylla').
