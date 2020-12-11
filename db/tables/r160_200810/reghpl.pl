@@ -6532,7 +6532,6 @@ hpl(77822,østhaugen,østhaugen,'Østhaugen').
 hpl(77823,østhaugen,østhaugen,'Østhaugen').
 hpl(77826,gjellsås,gjellsås,'Gjellsås').
 hpl(77827,gjellsås,gjellsås,'Gjellsås').
-hpl(77828,gjellsås,gjellsås,'Gjellsås').
 hpl(77829,falstad_øvre,falstad_øvre,'Falstad øvre').
 hpl(77830,falstad_øvre,falstad_øvre,'Falstad øvre').
 hpl(77831,fiksehøgda,fiksehøgda,'Fiksehøgda').
@@ -7125,7 +7124,6 @@ hpl(78550,lorvik,lorvik,'Lorvik').
 hpl(78553,leirset,leirset,'Leirset').
 hpl(78554,hafstadkorsen,hafstadkorsen,'Hafstadkorsen').
 hpl(78555,leirset,leirset,'Leirset').
-hpl(78556,hafstadkorsen,hafstadkorsen,'Hafstadkorsen').
 hpl(78557,hafstadkorsen,hafstadkorsen,'Hafstadkorsen').
 hpl(78558,nonsetskogen,nonsetskogen,'Nonsetskogen').
 hpl(78559,bunes,bunes,'Bunes').
@@ -7181,8 +7179,6 @@ hpl(78608,vinne,vinne,'Vinne').
 hpl(78609,heimstad,heimstad,'Heimstad').
 hpl(78610,heimstad,heimstad,'Heimstad').
 hpl(78611,bruem,bruem,'Bruem').
-hpl(78612,bruem,bruem,'Bruem').
-hpl(78613,bruem,bruem,'Bruem').
 hpl(78614,reinslia,reinslia,'Reinslia').
 hpl(78615,verdal_stasjon,verdal_stasjon,'Verdal stasjon').
 hpl(78616,reinslia,reinslia,'Reinslia').
@@ -7714,7 +7710,6 @@ hpl(79179,tessem,tessem,'Tessem').
 hpl(79180,hovehaug,hovehaug,'Hovehaug').
 hpl(79181,hovehaug,hovehaug,'Hovehaug').
 hpl(79182,beitstad,beitstad,'Beitstad').
-hpl(79183,beitstad,beitstad,'Beitstad').
 hpl(79184,hokling,hokling,'Hokling').
 hpl(79185,hokling,hokling,'Hokling').
 hpl(79186,torsveet,torsveet,'Torsveet').
