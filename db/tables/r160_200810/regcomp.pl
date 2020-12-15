@@ -2919,7 +2919,6 @@ composite_stat(orkanger,[barnehage],orkanger_barnehage).
 composite_stat(orkanger,[skole],orkanger_skole).
 composite_stat(orkanger,[skysstasjon],orkanger_skysstasjon).
 composite_stat(orkanger,[torg],orkanger_torg).
-composite_stat(orkdal,[sjukehus],orkdal_sjukehus).
 composite_stat(orkdalsveien,[95],orkdalsveien_95).
 composite_stat(ormhaugen,[],ormhaugen).
 composite_stat(orvos,[],orvos).
@@ -2984,6 +2983,7 @@ composite_stat(prestmoen,[øst],prestmoen_øst).
 composite_stat(prestrønning,[],prestrønning).
 composite_stat(prinsens,[gate, p1],prinsens_gate_p1).
 composite_stat(prinsens,[gate, p2],prinsens_gate_p2).
+composite_stat(prix,[brannan],prix_brannan).
 composite_stat(prix,[østbyen],prix_østbyen).
 composite_stat(pålsplass,[],pålsplass).
 composite_stat(raaen,[],raaen).
@@ -3397,6 +3397,7 @@ composite_stat(sjølia,[],sjølia).
 composite_stat(sjølstad,[],sjølstad).
 composite_stat(sjølyst,[],sjølyst).
 composite_stat(sjømark,[],sjømark).
+composite_stat(sjøvegen,[],sjøvegen).
 composite_stat(sjøåsen,[],sjøåsen).
 composite_stat(skaftnes,[vegdele],skaftnes_vegdele).
 composite_stat(skaftnesmoen,[],skaftnesmoen).
@@ -3557,7 +3558,6 @@ composite_stat(sluppen,[1],sluppen_1).
 composite_stat(sluppen,[2],sluppen_2).
 composite_stat(sluppen,[3],sluppen_3).
 composite_stat(sluppen,[4],sluppen_4).
-composite_stat(sluppen,[bru],sluppen_bru).
 composite_stat(sluppenvegen,[],sluppenvegen).
 composite_stat(slupphaugen,[],slupphaugen).
 composite_stat(slåttsve,[],slåttsve).

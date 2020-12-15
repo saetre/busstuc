@@ -2,7 +2,6 @@
 hpl(100064,rindal_rutebilstasjon,rindal_rutebilstasjon,'Rindal rutebilstasjon').
 hpl(100065,kvammen,kvammen,'Kvammen').
 hpl(100322,brekstad_ferjekai,brekstad_ferjekai,'Brekstad ferjekai').
-hpl(100345,orkdal_sjukehus,orkdal_sjukehus,'Orkdal Sjukehus').
 hpl(100415,flakk_ferjekai,flakk_ferjekai,'Flakk ferjekai').
 hpl(100512,stornaustet,stornaustet,'Stornaustet').
 hpl(100576,aune,aune,'Aune').
@@ -429,6 +428,9 @@ hpl(104656,tessemveien,tessemveien,'Tessemveien').
 hpl(104678,dronningens_gate_19,dronningens_gate_19,'Dronningens gate 19').
 hpl(104703,strandgata,strandgata,'Strandgata').
 hpl(104705,hølonda_vegdele,hølonda_vegdele,'Hølonda vegdele').
+hpl(104768,sjøvegen,sjøvegen,'Sjøvegen').
+hpl(104785,heimly,heimly,'Heimly').
+hpl(104786,prix_brannan,prix_brannan,'Prix Brannan').
 hpl(110091,bakkegata,bakkegata,'Bakkegata').
 hpl(110093,vellamelen,vellamelen,'Vellamelen').
 hpl(110094,beitstad,beitstad,'Beitstad').
@@ -3007,8 +3009,6 @@ hpl(73784,jakobsli,jakobsli,'Jakobsli').
 hpl(73785,jakobsli,jakobsli,'Jakobsli').
 hpl(73786,nedre_humlehaugen_øst,nedre_humlehaugen_øst,'Nedre Humlehaugen øst').
 hpl(73787,nedre_humlehaugen_øst,nedre_humlehaugen_øst,'Nedre Humlehaugen øst').
-hpl(73788,sluppen_bru,sluppen_bru,'Sluppen bru').
-hpl(73789,sluppen_bru,sluppen_bru,'Sluppen bru').
 hpl(73790,jakobslivegen_nedre,jakobslivegen_nedre,'Jakobslivegen nedre').
 hpl(73791,jakobslivegen_nedre,jakobslivegen_nedre,'Jakobslivegen nedre').
 hpl(73792,sluppenvegen,sluppenvegen,'Sluppenvegen').
