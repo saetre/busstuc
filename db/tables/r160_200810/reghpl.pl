@@ -602,8 +602,8 @@ hpl(70974,engdal,engdal,'Engdal').
 hpl(71004,rindal,rindal,'Rindal').
 hpl(71005,rindal_rutebilstasjon,rindal_rutebilstasjon,'Rindal rutebilstasjon').
 hpl(71008,rindal_skole,rindal_skole,'Rindal skole').
-hpl(71009,rindalskogen,rindalskogen,'Rindalskogen').
-hpl(71010,rindalskogen,rindalskogen,'Rindalskogen').
+hpl(71009,rindalsskogen,rindalsskogen,'Rindalsskogen').
+hpl(71010,rindalsskogen,rindalsskogen,'Rindalsskogen').
 hpl(71132,pirbadet,pirbadet,'Pirbadet').
 hpl(71133,tiller_vgs,tiller_vgs,'Tiller vgs.').
 hpl(71134,pirbadet,pirbadet,'Pirbadet').

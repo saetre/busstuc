@@ -3077,7 +3077,7 @@ composite_stat(rimset,[],rimset).
 composite_stat(rindal,[],rindal).
 composite_stat(rindal,[rutebilstasjon],rindal_rutebilstasjon).
 composite_stat(rindal,[skole],rindal_skole).
-composite_stat(rindalskogen,[],rindalskogen).
+composite_stat(rindalsskogen,[],rindalsskogen).
 composite_stat(rindsem,[],rindsem).
 composite_stat(ringholmen,[kai],ringholmen_kai).
 composite_stat(ringstad,[],ringstad).
