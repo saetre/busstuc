@@ -1387,6 +1387,7 @@ composite_stat(heimdalsvegen,[73],heimdalsvegen_73).
 composite_stat(heimly,[],heimly).
 composite_stat(heimsnes,[],heimsnes).
 composite_stat(heimstad,[],heimstad).
+composite_stat(heimtun,[],heimtun).
 composite_stat(heistad,[],heistad).
 composite_stat(heitlo,[],heitlo).
 composite_stat(helbostad,[],helbostad).

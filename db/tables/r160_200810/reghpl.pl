@@ -366,6 +366,7 @@ hpl(103583,løvmo,løvmo,'Løvmo').
 hpl(103687,grøset_søndre,grøset_søndre,'Grøset søndre').
 hpl(103894,strømnes,strømnes,'Strømnes').
 hpl(103895,østvik,østvik,'Østvik').
+hpl(103951,heimtun,heimtun,'Heimtun').
 hpl(104280,lauvåsen,lauvåsen,'Lauvåsen').
 hpl(104281,øsbyvegen,øsbyvegen,'Øsbyvegen').
 hpl(104282,sunnset_gård,sunnset_gård,'Sunnset Gård').
@@ -6552,7 +6553,6 @@ hpl(77846,øra,øra,'Øra').
 hpl(77847,øra,øra,'Øra').
 hpl(77848,hammerbakken,hammerbakken,'Hammerbakken').
 hpl(77849,hammerbakken,hammerbakken,'Hammerbakken').
-hpl(77850,rølikorsen,rølikorsen,'Rølikorsen').
 hpl(77851,rølikorsen,rølikorsen,'Rølikorsen').
 hpl(77852,rølikorsen,rølikorsen,'Rølikorsen').
 hpl(77853,bjørgum,bjørgum,'Bjørgum').
@@ -7146,7 +7146,6 @@ hpl(78575,dalem,dalem,'Dalem').
 hpl(78576,rognan,rognan,'Rognan').
 hpl(78577,rognan,rognan,'Rognan').
 hpl(78578,bergsgrav,bergsgrav,'Bergsgrav').
-hpl(78579,rognan,rognan,'Rognan').
 hpl(78580,bergsgrav,bergsgrav,'Bergsgrav').
 hpl(78581,aksnes,aksnes,'Aksnes').
 hpl(78582,aksnes,aksnes,'Aksnes').
@@ -7678,7 +7677,6 @@ hpl(79147,langnes,langnes,'Langnes').
 hpl(79148,simons_interiør,simons_interiør,'Simons interiør').
 hpl(79149,simons_interiør,simons_interiør,'Simons interiør').
 hpl(79150,røsegg,røsegg,'Røsegg').
-hpl(79151,røsegg,røsegg,'Røsegg').
 hpl(79152,røsegg,røsegg,'Røsegg').
 hpl(79153,grendebakken,grendebakken,'Grendebakken').
 hpl(79154,jådåren,jådåren,'Jådåren').
