@@ -2690,7 +2690,6 @@ composite_stat(naustan,[],naustan).
 composite_stat(naustbukta,[],naustbukta).
 composite_stat(naustervoll,[],naustervoll).
 composite_stat(naustkleiva,[],naustkleiva).
-composite_stat(naustvollen,[],naustvollen).
 composite_stat(nedre,[charlottenlund],nedre_charlottenlund).
 composite_stat(nedre,[gangstad],nedre_gangstad).
 composite_stat(nedre,[grande],nedre_grande).
@@ -3918,6 +3917,7 @@ composite_stat(sundsne_street,[],sundsnesvegen). % generated 4.2
 composite_stat(sundsnesvegen,[],sundsnesvegen).
 composite_stat(sundt,[],sundt).
 composite_stat(sunna,[],sunna).
+composite_stat(sunnan,[],sunnan).
 composite_stat(sunndalen,[snuplass],sunndalen_snuplass).
 composite_stat(sunnset,[gård],sunnset_gård).
 composite_stat(surendal,[],surendal).
