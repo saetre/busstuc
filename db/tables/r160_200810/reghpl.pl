@@ -4835,7 +4835,6 @@ hpl(75815,flora_montessoriskole,flora_montessoriskole,'Flora Montessoriskole').
 hpl(75816,myrset,myrset,'Myrset').
 hpl(75817,myrset,myrset,'Myrset').
 hpl(75820,sørli_skole,sørli_skole,'Sørli skole').
-hpl(75821,sørli_skole,sørli_skole,'Sørli skole').
 hpl(75822,sørli_skole,sørli_skole,'Sørli skole').
 hpl(75823,myrvang,myrvang,'Myrvang').
 hpl(75824,myrvang,myrvang,'Myrvang').
@@ -5089,7 +5088,6 @@ hpl(76127,venna_nord,venna_nord,'Venna nord').
 hpl(76128,fjær,fjær,'Fjær').
 hpl(76129,støvika,støvika,'Støvika').
 hpl(76130,støvika,støvika,'Støvika').
-hpl(76131,sandvika,sandvika,'Sandvika').
 hpl(76132,buan_nord,buan_nord,'Buan nord').
 hpl(76133,sandvika,sandvika,'Sandvika').
 hpl(76134,sandvika,sandvika,'Sandvika').
