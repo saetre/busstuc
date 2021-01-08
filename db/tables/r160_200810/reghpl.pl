@@ -8918,7 +8918,6 @@ hpl(80697,sveet,sveet,'Sveet').
 hpl(80698,sveet,sveet,'Sveet').
 hpl(80699,fosnes,fosnes,'Fosnes').
 hpl(80700,fosnes,fosnes,'Fosnes').
-hpl(80701,fosnes,fosnes,'Fosnes').
 hpl(80702,ålmo,ålmo,'Ålmo').
 hpl(80703,ålmo,ålmo,'Ålmo').
 hpl(80704,kåmyr,kåmyr,'Kåmyr').
