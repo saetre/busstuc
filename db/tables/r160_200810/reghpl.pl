@@ -461,7 +461,6 @@ hpl(110330,nygård,nygård,'Nygård').
 hpl(110331,holden,holden,'Holden').
 hpl(110332,melien,melien,'Melien').
 hpl(110333,rogstadgrind,rogstadgrind,'Rogstadgrind').
-hpl(110345,baglum,baglum,'Baglum').
 hpl(110359,julseth_østre,julseth_østre,'Julseth Østre').
 hpl(110360,brennmoen,brennmoen,'Brennmoen').
 hpl(110361,jullum,jullum,'Jullum').
