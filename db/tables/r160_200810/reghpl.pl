@@ -432,6 +432,7 @@ hpl(104705,hølonda_vegdele,hølonda_vegdele,'Hølonda vegdele').
 hpl(104768,sjøvegen,sjøvegen,'Sjøvegen').
 hpl(104785,heimly,heimly,'Heimly').
 hpl(104786,prix_brannan,prix_brannan,'Prix Brannan').
+hpl(104873,hembre_grus,hembre_grus,'Hembre grus').
 hpl(110091,bakkegata,bakkegata,'Bakkegata').
 hpl(110093,vellamelen,vellamelen,'Vellamelen').
 hpl(110094,beitstad,beitstad,'Beitstad').

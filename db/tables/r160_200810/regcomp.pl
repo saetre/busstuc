@@ -1412,6 +1412,7 @@ composite_stat(hellesvik,[],hellesvik).
 composite_stat(hellesvik,[veikryss],hellesvik_veikryss).
 composite_stat(hello,[],hello).
 composite_stat(hellstranda,[],hellstranda).
+composite_stat(hembre,[grus],hembre_grus).
 composite_stat(hemnehallen,[],hemnehallen).
 composite_stat(hemnskjel,[],hemnskjel).
 composite_stat(hemnskjela,[oppvekstsenter],hemnskjela_oppvekstsenter).
