@@ -1612,8 +1612,6 @@ hpl(72251,skaugabrua,skaugabrua,'Skaugabrua').
 hpl(72252,skaugabrua,skaugabrua,'Skaugabrua').
 hpl(72253,vikhammerløkka,vikhammerløkka,'Vikhammerløkka').
 hpl(72254,vikhammerløkka,vikhammerløkka,'Vikhammerløkka').
-hpl(72255,gryta,gryta,'Gryta').
-hpl(72256,gryta,gryta,'Gryta').
 hpl(72257,skauma_bru,skauma_bru,'Skauma bru').
 hpl(72258,skauma_bru,skauma_bru,'Skauma bru').
 hpl(72259,vikhammeråsen,vikhammeråsen,'Vikhammeråsen').
@@ -6457,7 +6455,6 @@ hpl(77732,ytre_sørlia,ytre_sørlia,'Ytre Sørlia').
 hpl(77733,ytre_sørlia,ytre_sørlia,'Ytre Sørlia').
 hpl(77735,hello,hello,'Hello').
 hpl(77736,hello,hello,'Hello').
-hpl(77737,hello,hello,'Hello').
 hpl(77738,skille,skille,'Skille').
 hpl(77739,skille,skille,'Skille').
 hpl(77740,statens_hus_øst,statens_hus_øst,'Statens hus øst').
@@ -6778,7 +6775,6 @@ hpl(78112,joplassvegen,joplassvegen,'Joplassvegen').
 hpl(78113,laup,laup,'Laup').
 hpl(78114,laup,laup,'Laup').
 hpl(78115,inna_bru,inna_bru,'Inna bru').
-hpl(78116,inna_bru,inna_bru,'Inna bru').
 hpl(78117,inna_bru,inna_bru,'Inna bru').
 hpl(78118,kalkovnan,kalkovnan,'Kalkovnan').
 hpl(78119,kalkovnan,kalkovnan,'Kalkovnan').
@@ -7056,7 +7052,6 @@ hpl(78485,frøset,frøset,'Frøset').
 hpl(78486,kvernmo_vegdele,kvernmo_vegdele,'Kvernmo vegdele').
 hpl(78487,frøset,frøset,'Frøset').
 hpl(78488,kvernmo_vegdele,kvernmo_vegdele,'Kvernmo vegdele').
-hpl(78489,kvernmo_vegdele,kvernmo_vegdele,'Kvernmo vegdele').
 hpl(78490,ogstad,ogstad,'Ogstad').
 hpl(78491,ogstad,ogstad,'Ogstad').
 hpl(78492,jevika,jevika,'Jevika').
@@ -7135,7 +7130,6 @@ hpl(78569,hofstad,hofstad,'Hofstad').
 hpl(78570,haugen,haugen,'Haugen').
 hpl(78571,hofstad,hofstad,'Hofstad').
 hpl(78572,haugen,haugen,'Haugen').
-hpl(78573,hofstad,hofstad,'Hofstad').
 hpl(78574,dalem,dalem,'Dalem').
 hpl(78575,dalem,dalem,'Dalem').
 hpl(78576,rognan,rognan,'Rognan').
@@ -7417,7 +7411,6 @@ hpl(78872,strandvik_vegdele,strandvik_vegdele,'Strandvik vegdele').
 hpl(78873,burheim,burheim,'Burheim').
 hpl(78874,strandvik,strandvik,'Strandvik').
 hpl(78875,strandvik,strandvik,'Strandvik').
-hpl(78876,fleskhus_vegdele,fleskhus_vegdele,'Fleskhus vegdele').
 hpl(78877,søraker,søraker,'Søraker').
 hpl(78878,fleskhus_vegdele,fleskhus_vegdele,'Fleskhus vegdele').
 hpl(78879,søraker,søraker,'Søraker').
