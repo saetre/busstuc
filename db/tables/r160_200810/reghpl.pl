@@ -6880,7 +6880,6 @@ hpl(78261,rinnan_stasjon,rinnan_stasjon,'Rinnan stasjon').
 hpl(78262,rinnan_stasjon,rinnan_stasjon,'Rinnan stasjon').
 hpl(78265,rinnan_øvre,rinnan_øvre,'Rinnan øvre').
 hpl(78266,rinnan_øvre,rinnan_øvre,'Rinnan øvre').
-hpl(78267,minsås,minsås,'Minsås').
 hpl(78268,minsås,minsås,'Minsås').
 hpl(78269,minsås,minsås,'Minsås').
 hpl(78270,steinkjer_montessoriskole,steinkjer_montessoriskole,'Steinkjer montessoriskole').
@@ -6985,7 +6984,6 @@ hpl(78407,helgåsen,helgåsen,'Helgåsen').
 hpl(78408,egge_barneskole,egge_barneskole,'Egge barneskole').
 hpl(78409,åkerhus,åkerhus,'Åkerhus').
 hpl(78410,egge_barneskole,egge_barneskole,'Egge barneskole').
-hpl(78411,åkerhus,åkerhus,'Åkerhus').
 hpl(78412,åkerhus,åkerhus,'Åkerhus').
 hpl(78413,egge_ungdomsskole,egge_ungdomsskole,'Egge ungdomsskole').
 hpl(78414,egge_ungdomsskole,egge_ungdomsskole,'Egge ungdomsskole').
@@ -7277,7 +7275,6 @@ hpl(78734,hundlo_jernbaneundergang,hundlo_jernbaneundergang,'Hundlo jernbaneunde
 hpl(78735,hundlo_jernbaneundergang,hundlo_jernbaneundergang,'Hundlo jernbaneundergang').
 hpl(78736,nesskorsen,nesskorsen,'Nesskorsen').
 hpl(78737,nesskorsen,nesskorsen,'Nesskorsen').
-hpl(78738,nesskorsen,nesskorsen,'Nesskorsen').
 hpl(78739,sunnan,sunnan,'Sunnan').
 hpl(78740,sunnan,sunnan,'Sunnan').
 hpl(78741,lundskin,lundskin,'Lundskin').
@@ -7294,7 +7291,6 @@ hpl(78751,oppem,oppem,'Oppem').
 hpl(78752,elli_vegdele,elli_vegdele,'Elli vegdele').
 hpl(78753,leirådal,leirådal,'Leirådal').
 hpl(78754,leirådal,leirådal,'Leirådal').
-hpl(78755,leirådal,leirådal,'Leirådal').
 hpl(78756,berg,berg,'Berg').
 hpl(78757,berg,berg,'Berg').
 hpl(78758,stubskin,stubskin,'Stubskin').
