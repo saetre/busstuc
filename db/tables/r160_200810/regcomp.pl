@@ -4190,6 +4190,7 @@ composite_stat(trøndelag,[folkemuseum],trøndelag_folkemuseum).
 composite_stat(trøndertun,[],trøndertun).
 composite_stat(trøveien,[],trøveien).
 composite_stat(trøyte,[],trøyte).
+composite_stat(trøyteåsen,[],trøyteåsen).
 composite_stat(tua,[],tua).
 composite_stat(tulluan,[nord],tulluan_nord).
 composite_stat(tulluan,[skole],tulluan_skole).

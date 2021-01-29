@@ -5806,9 +5806,9 @@ hpl(76991,hofstad,hofstad,'Hofstad').
 hpl(76994,knarbakkan,knarbakkan,'Knarbakkan').
 hpl(76995,knarbakkan,knarbakkan,'Knarbakkan').
 hpl(76996,moanes,moanes,'Moanes').
-hpl(76999,trøyte,trøyte,'Trøyte').
+hpl(76999,trøyteåsen,trøyteåsen,'Trøyteåsen').
 hpl(77000,høgli,høgli,'Høgli').
-hpl(77001,trøyte,trøyte,'Trøyte').
+hpl(77001,trøyteåsen,trøyteåsen,'Trøyteåsen').
 hpl(77002,høgli,høgli,'Høgli').
 hpl(77003,revyriket,revyriket,'Revyriket').
 hpl(77006,gråvvåbakkan,gråvvåbakkan,'Gråvvåbakkan').
