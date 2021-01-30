@@ -2288,6 +2288,7 @@ composite_stat(lohove,[],lohove).
 composite_stat(lomunda,[],lomunda).
 composite_stat(lomundsjø,[],lomundsjø).
 composite_stat(lona,[bru],lona_bru).
+composite_stat(lonbekken,[],lonbekken).
 composite_stat(lonmoen,[],lonmoen).
 composite_stat(lorvik,[],lorvik).
 composite_stat(loråsmarka,[],loråsmarka).
@@ -4083,7 +4084,8 @@ composite_stat(tiller,[],tiller).
 composite_stat(tiller,[bru],tiller_bru).
 composite_stat(tiller,[vgs],tiller_vgs).
 composite_stat(tillerkleiva,[],tillerkleiva).
-composite_stat(tillerterminalen,[],tillerterminalen).
+composite_stat(tillerterminalen,[1],tillerterminalen_1).
+composite_stat(tillerterminalen,[2],tillerterminalen_2).
 composite_stat(tillervegen,[],tillervegen).
 composite_stat(tilset,[],tilset).
 composite_stat(tiltnes,[],tiltnes).
@@ -4100,10 +4102,10 @@ composite_stat(togstadjåren,[],togstadjåren).
 composite_stat(tollstad,[],tollstad).
 composite_stat(tomtebo,[],tomtebo).
 composite_stat(tonstadgrenda,[],tonstadgrenda).
-composite_stat(tonstadkrysset,[1],tonstadkrysset_1).
-composite_stat(tonstadkrysset,[2],tonstadkrysset_2).
 composite_stat(tonstadkrysset,[3],tonstadkrysset_3).
 composite_stat(tonstadkrysset,[4],tonstadkrysset_4).
+composite_stat(tonstadkrysset,[terminal, 1],tonstadkrysset_terminal_1).
+composite_stat(tonstadkrysset,[terminal, 2],tonstadkrysset_terminal_2).
 composite_stat(toremoen,[],toremoen).
 composite_stat(torgaardssletta,[],torgaardssletta).
 composite_stat(torgard,[],torgard).
