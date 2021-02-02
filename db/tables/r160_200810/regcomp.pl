@@ -3154,6 +3154,7 @@ composite_stat(rottem,[],rottem).
 composite_stat(rotvoll,[],rotvoll).
 composite_stat(rugeldalen,[stasjon],rugeldalen_stasjon).
 composite_stat(rugelsjøen,[],rugelsjøen).
+composite_stat(rugldalen,[snuplass],rugldalen_snuplass).
 composite_stat(rundfurubakken,[],rundfurubakken).
 composite_stat(rundhaugen,[],rundhaugen).
 composite_stat(rungstad,[],rungstad).
@@ -3556,10 +3557,10 @@ composite_stat(slettet,[],slettet).
 composite_stat(slettvollen,[],slettvollen).
 composite_stat(slettvolvegen,[],slettvolvegen).
 composite_stat(slottet,[],slottet).
-composite_stat(sluppen,[1],sluppen_1).
-composite_stat(sluppen,[2],sluppen_2).
 composite_stat(sluppen,[3],sluppen_3).
 composite_stat(sluppen,[4],sluppen_4).
+composite_stat(sluppen,[metrostasjon, 1],sluppen_metrostasjon_1).
+composite_stat(sluppen,[metrostasjon, 2],sluppen_metrostasjon_2).
 composite_stat(sluppenvegen,[],sluppenvegen).
 composite_stat(slupphaugen,[],slupphaugen).
 composite_stat(slåttsve,[],slåttsve).
