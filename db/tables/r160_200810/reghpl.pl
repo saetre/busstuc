@@ -273,9 +273,9 @@ hpl(103335,ulsberg,ulsberg,'Ulsberg').
 hpl(103336,ulsberg,ulsberg,'Ulsberg').
 hpl(103337,utigard,utigard,'Utigard').
 hpl(103338,vasslia,vasslia,'Vasslia').
-hpl(103339,være,være,'Være').
-hpl(103340,være,være,'Være').
-hpl(103341,være,være,'Være').
+hpl(103339,væresletta,væresletta,'Væresletta').
+hpl(103340,væresletta,væresletta,'Væresletta').
+hpl(103341,væresletta,væresletta,'Væresletta').
 hpl(103342,øvre_sætrum,øvre_sætrum,'Øvre Sætrum').
 hpl(103343,øya_ungdomsskole,øya_ungdomsskole,'Øya ungdomsskole').
 hpl(103344,åsheim,åsheim,'Åsheim').
@@ -1084,7 +1084,6 @@ hpl(71675,hosethågån,hosethågån,'Hosethågån').
 hpl(71676,rønningen,rønningen,'Rønningen').
 hpl(71677,rønningen,rønningen,'Rønningen').
 hpl(71678,tyholtveien,tyholtveien,'Tyholtveien').
-hpl(71681,hospitalskirka,hospitalskirka,'Hospitalskirka').
 hpl(71682,tyve,tyve,'Tyve').
 hpl(71683,hospitalskirka,hospitalskirka,'Hospitalskirka').
 hpl(71684,tyve,tyve,'Tyve').

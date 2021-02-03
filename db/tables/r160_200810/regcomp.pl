@@ -4525,6 +4525,7 @@ composite_stat(værem,[],værem).
 composite_stat(væresbakken,[2],væresbakken_2).
 composite_stat(væresbakken,[],væresbakken).
 composite_stat(væresholmen,[],væresholmen).
+composite_stat(væresletta,[],væresletta).
 composite_stat(værestrøa,[],værestrøa).
 composite_stat(værnes,[ferjekai],værnes_ferjekai).
 composite_stat(værnes,[prestegård],værnes_prestegård).
