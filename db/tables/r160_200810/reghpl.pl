@@ -4980,7 +4980,6 @@ hpl(76003,karstein,karstein,'Karstein').
 hpl(76004,juleshaug,juleshaug,'Juleshaug').
 hpl(76005,juleshaug,juleshaug,'Juleshaug').
 hpl(76006,forbord,forbord,'Forbord').
-hpl(76007,forbord,forbord,'Forbord').
 hpl(76008,bangsund_skole,bangsund_skole,'Bangsund skole').
 hpl(76009,forbord,forbord,'Forbord').
 hpl(76010,saghaugen,saghaugen,'Saghaugen').
@@ -5011,7 +5010,6 @@ hpl(76039,låkke,låkke,'Låkke').
 hpl(76040,låkke,låkke,'Låkke').
 hpl(76041,alstad,alstad,'Alstad').
 hpl(76042,alstad,alstad,'Alstad').
-hpl(76043,alstad,alstad,'Alstad').
 hpl(76044,finnanger,finnanger,'Finnanger').
 hpl(76046,finnanger,finnanger,'Finnanger').
 hpl(76048,solstad,solstad,'Solstad').
@@ -5028,7 +5026,6 @@ hpl(76060,valan,valan,'Valan').
 hpl(76061,valan,valan,'Valan').
 hpl(76062,dregseth,dregseth,'Dregseth').
 hpl(76063,dregseth,dregseth,'Dregseth').
-hpl(76064,dregseth,dregseth,'Dregseth').
 hpl(76067,ganes,ganes,'Ganes').
 hpl(76068,ganes,ganes,'Ganes').
 hpl(76069,langstein,langstein,'Langstein').
@@ -5575,7 +5572,6 @@ hpl(76700,sandnes,sandnes,'Sandnes').
 hpl(76701,sandnes,sandnes,'Sandnes').
 hpl(76702,skogseth,skogseth,'Skogseth').
 hpl(76703,skogseth,skogseth,'Skogseth').
-hpl(76704,turifoss,turifoss,'Turifoss').
 hpl(76705,turifoss,turifoss,'Turifoss').
 hpl(76706,turifoss,turifoss,'Turifoss').
 hpl(76707,godejord,godejord,'Godejord').
@@ -5695,7 +5691,6 @@ hpl(76853,granamo,granamo,'Granamo').
 hpl(76854,granamo,granamo,'Granamo').
 hpl(76855,svingen,svingen,'Svingen').
 hpl(76856,svingen,svingen,'Svingen').
-hpl(76857,dalamo,dalamo,'Dalamo').
 hpl(76858,dalamo,dalamo,'Dalamo').
 hpl(76859,dalamo,dalamo,'Dalamo').
 hpl(76860,øra,øra,'Øra').
@@ -6082,7 +6077,6 @@ hpl(77322,høglendet,høglendet,'Høglendet').
 hpl(77323,helgemoen_sør,helgemoen_sør,'Helgemoen sør').
 hpl(77324,helgemoen_sør,helgemoen_sør,'Helgemoen sør').
 hpl(77327,reppesfeltet,reppesfeltet,'Reppesfeltet').
-hpl(77328,trøabakken,trøabakken,'Trøabakken').
 hpl(77329,reppesfeltet,reppesfeltet,'Reppesfeltet').
 hpl(77330,trøabakken,trøabakken,'Trøabakken').
 hpl(77331,trøabakken,trøabakken,'Trøabakken').
