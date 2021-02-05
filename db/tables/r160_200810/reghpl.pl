@@ -5208,7 +5208,6 @@ hpl(76275,ålneset,ålneset,'Ålneset').
 hpl(76276,ålneset,ålneset,'Ålneset').
 hpl(76277,e_verket,e_verket,'E-verket').
 hpl(76278,horten,horten,'Horten').
-hpl(76279,horten,horten,'Horten').
 hpl(76280,horten,horten,'Horten').
 hpl(76281,stallvika,stallvika,'Stallvika').
 hpl(76282,stallvika,stallvika,'Stallvika').
@@ -5896,8 +5895,8 @@ hpl(77100,malmtunet,malmtunet,'Malmtunet').
 hpl(77101,malmtunet,malmtunet,'Malmtunet').
 hpl(77102,bjørlia,bjørlia,'Bjørlia').
 hpl(77103,bjørlia,bjørlia,'Bjørlia').
-hpl(77104,gevingfeltet,gevingfeltet,'Gevingfeltet').
-hpl(77105,gevingfeltet,gevingfeltet,'Gevingfeltet').
+hpl(77104,gevingfeltet_øst,gevingfeltet_øst,'Gevingfeltet øst').
+hpl(77105,gevingfeltet_øst,gevingfeltet_øst,'Gevingfeltet øst').
 hpl(77106,strandstu,strandstu,'Strandstu').
 hpl(77107,strandstu,strandstu,'Strandstu').
 hpl(77108,meidal,meidal,'Meidal').
@@ -6239,7 +6238,6 @@ hpl(77513,berg,berg,'Berg').
 hpl(77514,storvika,storvika,'Storvika').
 hpl(77515,storvika,storvika,'Storvika').
 hpl(77516,haugåsvegen,haugåsvegen,'Haugåsvegen').
-hpl(77517,haugåsvegen,haugåsvegen,'Haugåsvegen').
 hpl(77518,haugåsvegen,haugåsvegen,'Haugåsvegen').
 hpl(77519,reinbjør,reinbjør,'Reinbjør').
 hpl(77520,reinbjør,reinbjør,'Reinbjør').

@@ -1036,7 +1036,7 @@ composite_stat(geisnes,[],geisnes).
 composite_stat(geisnes,[ferjekai],geisnes_ferjekai).
 composite_stat(geita,[],geita).
 composite_stat(geving,[],geving).
-composite_stat(gevingfeltet,[],gevingfeltet).
+composite_stat(gevingfeltet,[øst],gevingfeltet_øst).
 composite_stat(gevingåsen,[],gevingåsen).
 composite_stat(gifstad,[],gifstad).
 composite_stat(gildheim,[],gildheim).
