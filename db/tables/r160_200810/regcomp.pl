@@ -791,7 +791,6 @@ composite_stat(fiborgtangen,[],fiborgtangen).
 composite_stat(figga,[terrasse],figga_terrasse).
 composite_stat(fikkan,[skole],fikkan_skole).
 composite_stat(fiksdalen,[],fiksdalen).
-composite_stat(fiksehøgda,[],fiksehøgda).
 composite_stat(fillan,[busstasjon],fillan_busstasjon).
 composite_stat(finnanger,[],finnanger).
 composite_stat(finnaunet,[],finnaunet).
