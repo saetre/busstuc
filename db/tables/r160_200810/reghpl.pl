@@ -5253,7 +5253,6 @@ hpl(76323,røyrvik,røyrvik,'Røyrvik').
 hpl(76324,røyrvik,røyrvik,'Røyrvik').
 hpl(76325,frikirka,frikirka,'Frikirka').
 hpl(76326,ydstines,ydstines,'Ydstines').
-hpl(76327,ydstines,ydstines,'Ydstines').
 hpl(76328,ydstines,ydstines,'Ydstines').
 hpl(76331,gullholmstranda,gullholmstranda,'Gullholmstranda').
 hpl(76332,gullholmstranda,gullholmstranda,'Gullholmstranda').
@@ -5307,7 +5306,6 @@ hpl(76399,spjøtnes,spjøtnes,'Spjøtnes').
 hpl(76404,vikan,vikan,'Vikan').
 hpl(76405,vikan,vikan,'Vikan').
 hpl(76406,heimly,heimly,'Heimly').
-hpl(76407,sigurd_jarls_veg,sigurd_jarls_veg,'Sigurd Jarls veg').
 hpl(76408,heimly,heimly,'Heimly').
 hpl(76409,sigurd_jarls_veg,sigurd_jarls_veg,'Sigurd Jarls veg').
 hpl(76410,hovika,hovika,'Hovika').
@@ -5388,7 +5386,6 @@ hpl(76497,årvika,årvika,'Årvika').
 hpl(76498,solumsmoen,solumsmoen,'Solumsmoen').
 hpl(76499,solumsmoen,solumsmoen,'Solumsmoen').
 hpl(76500,sætnan,sætnan,'Sætnan').
-hpl(76501,sætnan,sætnan,'Sætnan').
 hpl(76502,tømmervika,tømmervika,'Tømmervika').
 hpl(76503,tømmervika,tømmervika,'Tømmervika').
 hpl(76504,sagmo,sagmo,'Sagmo').
@@ -5963,7 +5960,6 @@ hpl(77189,bjørnes,bjørnes,'Bjørnes').
 hpl(77190,rian_vegdele,rian_vegdele,'Rian vegdele').
 hpl(77191,rian_vegdele,rian_vegdele,'Rian vegdele').
 hpl(77193,værnes_prestegård,værnes_prestegård,'Værnes prestegård').
-hpl(77194,værnes_prestegård,værnes_prestegård,'Værnes prestegård').
 hpl(77195,værnes_prestegård,værnes_prestegård,'Værnes prestegård').
 hpl(77196,lungdalen,lungdalen,'Lungdalen').
 hpl(77197,rian,rian,'Rian').
