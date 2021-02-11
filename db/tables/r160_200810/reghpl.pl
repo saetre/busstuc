@@ -1135,8 +1135,8 @@ hpl(71728,hove_camping,hove_camping,'Hove camping').
 hpl(71729,hove_camping,hove_camping,'Hove camping').
 hpl(71730,røsetlåven,røsetlåven,'Røsetlåven').
 hpl(71731,røsetlåven,røsetlåven,'Røsetlåven').
-hpl(71732,tørrem_v_kr,tørrem_v_kr,'Tørrem v. kr.').
-hpl(71733,tørrem_v_kr,tørrem_v_kr,'Tørrem v. kr.').
+hpl(71732,tørrem_veikryss,tørrem_veikryss,'Tørrem veikryss').
+hpl(71733,tørrem_veikryss,tørrem_veikryss,'Tørrem veikryss').
 hpl(71734,røstad,røstad,'Røstad').
 hpl(71735,røstad,røstad,'Røstad').
 hpl(71736,hove,hove,'Hove').
@@ -1961,8 +1961,8 @@ hpl(72638,ysetmoen,ysetmoen,'Ysetmoen').
 hpl(72639,ysetmoen,ysetmoen,'Ysetmoen').
 hpl(72640,hangran,hangran,'Hangran').
 hpl(72641,hangran,hangran,'Hangran').
-hpl(72642,mandal_v_kr,mandal_v_kr,'Mandal v. kr.').
-hpl(72643,mandal_v_kr,mandal_v_kr,'Mandal v. kr.').
+hpl(72642,mandal_veikryss,mandal_veikryss,'Mandal veikryss').
+hpl(72643,mandal_veikryss,mandal_veikryss,'Mandal veikryss').
 hpl(72644,ytre_snillfjord,ytre_snillfjord,'Ytre Snillfjord').
 hpl(72645,hansensvingen,hansensvingen,'Hansensvingen').
 hpl(72646,hansensvingen,hansensvingen,'Hansensvingen').

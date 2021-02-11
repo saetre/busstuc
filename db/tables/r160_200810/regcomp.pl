@@ -2397,7 +2397,7 @@ composite_stat(malnesset,[],malnesset).
 composite_stat(malvik,[],malvik).
 composite_stat(malvik,[senter],malvik_senter).
 composite_stat(malvikkrysset,[],malvikkrysset).
-composite_stat(mandal,[v, kr],mandal_v_kr).
+composite_stat(mandal,[veikryss],mandal_veikryss).
 composite_stat(marcus,[thranes, street],marcus_thranes_vei). % generated 2.2
 composite_stat(marcus,[thranes, vei],marcus_thranes_vei).
 composite_stat(marcus,[thranes_street],marcus_thranes_vei). % generated 2.1
@@ -4244,7 +4244,7 @@ composite_stat(tømra,[],tømra).
 composite_stat(tømte,[],tømte).
 composite_stat(tøndervika,[],tøndervika).
 composite_stat(tørrem,[],tørrem).
-composite_stat(tørrem,[v, kr],tørrem_v_kr).
+composite_stat(tørrem,[veikryss],tørrem_veikryss).
 composite_stat(tørresdalen,[],tørresdalen).
 composite_stat(tørring,[],tørring).
 composite_stat(tørring,[snuplass],tørring_snuplass).
