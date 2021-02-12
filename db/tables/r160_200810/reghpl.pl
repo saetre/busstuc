@@ -479,7 +479,7 @@ hpl(110373,kråkmo_vegdele,kråkmo_vegdele,'Kråkmo vegdele').
 hpl(110374,rønningen,rønningen,'Rønningen').
 hpl(110375,bjørsetåsen,bjørsetåsen,'Bjørsetåsen').
 hpl(110376,breidli,breidli,'Breidli').
-hpl(110377,keiserås_vd,keiserås_vd,'Keiserås vd.').
+hpl(110377,keiserås_veideler,keiserås_veideler,'Keiserås veideler').
 hpl(110378,vollakrysset,vollakrysset,'Vollakrysset').
 hpl(110379,fagerli_vegdele,fagerli_vegdele,'Fagerli vegdele').
 hpl(110385,årvåg,årvåg,'Årvåg').
@@ -4599,10 +4599,10 @@ hpl(75559,børskrysset_e39,børskrysset_e39,'Børskrysset E39').
 hpl(75560,furuhaugen,furuhaugen,'Furuhaugen').
 hpl(75561,furuhaugen,furuhaugen,'Furuhaugen').
 hpl(75562,børsa,børsa,'Børsa').
-hpl(75563,børsa_skole_skaun_oppvekst,børsa_skole_skaun_oppvekst,'Børsa skole/Skaun oppvekst').
+hpl(75563,børsa_skole_skaun_ungdommskole,børsa_skole_skaun_ungdommskole,'Børsa skole/Skaun ungdommskole').
 hpl(75564,furunes,furunes,'Furunes').
 hpl(75565,furunes,furunes,'Furunes').
-hpl(75566,børsa_skole_skaun_u_skole,børsa_skole_skaun_u_skole,'Børsa skole/Skaun u.skole').
+hpl(75566,børsa_skole_skaun_ungdommskole,børsa_skole_skaun_ungdommskole,'Børsa skole/Skaun ungdommskole').
 hpl(75568,bøvra,bøvra,'Bøvra').
 hpl(75569,bøvra,bøvra,'Bøvra').
 hpl(75570,furunes,furunes,'Furunes').

@@ -491,8 +491,7 @@ composite_stat(bøgset,[],bøgset).
 composite_stat(bøla,[bru],bøla_bru).
 composite_stat(børmark,[],børmark).
 composite_stat(børsa,[],børsa).
-composite_stat(børsa,[skole, skaun, oppvekst],børsa_skole_skaun_oppvekst).
-composite_stat(børsa,[skole, skaun, u, skole],børsa_skole_skaun_u_skole).
+composite_stat(børsa,[skole, skaun, ungdommskole],børsa_skole_skaun_ungdommskole).
 composite_stat(børskrysset,[e39],børskrysset_e39).
 composite_stat(børstad,[],børstad).
 composite_stat(børøysund,[],børøysund).
@@ -1822,8 +1821,8 @@ composite_stat(kastbakken,[],kastbakken).
 composite_stat(kattem,[],kattem).
 composite_stat(kattemsenteret,[],kattemsenteret).
 composite_stat(kattmarka,[],kattmarka).
-composite_stat(keiserås,[vd],keiserås_vd).
 composite_stat(keiserås,[vegdele],keiserås_vegdele).
+composite_stat(keiserås,[veideler],keiserås_veideler).
 composite_stat(keiseråsen,[],keiseråsen).
 composite_stat(kiil,[],kiil).
 composite_stat(killingdal,[],killingdal).
