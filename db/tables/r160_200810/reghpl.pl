@@ -445,8 +445,6 @@ hpl(110135,coop_sistranda,coop_sistranda,'Coop Sistranda').
 hpl(110138,trøakorsen,trøakorsen,'Trøakorsen').
 hpl(110141,ugla,ugla,'Ugla').
 hpl(110171,innset_s_lag,innset_s_lag,'Innset S-lag').
-hpl(110172,ler,ler,'Ler').
-hpl(110174,ler,ler,'Ler').
 hpl(110175,innset_s_lag,innset_s_lag,'Innset S-lag').
 hpl(110181,lundamo,lundamo,'Lundamo').
 hpl(110188,kjørsvikbugen_hurtigbåtkai,kjørsvikbugen_hurtigbåtkai,'Kjørsvikbugen hurtigbåtkai').
@@ -859,7 +857,6 @@ hpl(71426,hoeggen_skole,hoeggen_skole,'Hoeggen skole').
 hpl(71427,hoeggen_skole,hoeggen_skole,'Hoeggen skole').
 hpl(71428,roan,roan,'Roan').
 hpl(71429,roan,roan,'Roan').
-hpl(71430,trondheim_s,trondheim_s,'Trondheim S').
 hpl(71431,rognbudalen,rognbudalen,'Rognbudalen').
 hpl(71432,rognbudalen,rognbudalen,'Rognbudalen').
 hpl(71433,hofstad,hofstad,'Hofstad').

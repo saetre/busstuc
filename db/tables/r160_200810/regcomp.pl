@@ -4164,7 +4164,6 @@ composite_stat(trondheim,[s, 4],trondheim_s_4).
 composite_stat(trondheim,[s, 5],trondheim_s_5).
 composite_stat(trondheim,[s, 6],trondheim_s_6).
 composite_stat(trondheim,[s, 7],trondheim_s_7).
-composite_stat(trondheim,[s],trondheim_s).
 composite_stat(trones,[],trones).
 composite_stat(trones,[skole],trones_skole).
 composite_stat(trongbakken,[],trongbakken).
