@@ -2969,7 +2969,7 @@ composite_stat(plassa,[],plassa).
 composite_stat(plassbekken,[],plassbekken).
 composite_stat(plassen,[],plassen).
 composite_stat(platten,[],platten).
-composite_stat(postterminalen,[],postterminalen).
+composite_stat(postterminalen,[sluppen],postterminalen_sluppen).
 composite_stat(prestegardsætra,[],prestegardsætra).
 composite_stat(prestegården,[],prestegården).
 composite_stat(prestgårdskrysset,[],prestgårdskrysset).

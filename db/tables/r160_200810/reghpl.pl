@@ -436,6 +436,7 @@ hpl(104873,hembre_grus,hembre_grus,'Hembre grus').
 hpl(104953,heimdal_stasjon,heimdal_stasjon,'Heimdal stasjon').
 hpl(104964,hoston,hoston,'Hoston').
 hpl(104965,øyum_gård,øyum_gård,'Øyum gård').
+hpl(105026,postterminalen_sluppen,postterminalen_sluppen,'Postterminalen Sluppen').
 hpl(110091,bakkegata,bakkegata,'Bakkegata').
 hpl(110093,vellamelen,vellamelen,'Vellamelen').
 hpl(110094,beitstad,beitstad,'Beitstad').
@@ -619,8 +620,8 @@ hpl(71142,plassen,plassen,'Plassen').
 hpl(71143,plassen,plassen,'Plassen').
 hpl(71145,tilset,tilset,'Tilset').
 hpl(71146,tilset,tilset,'Tilset').
-hpl(71147,postterminalen,postterminalen,'Postterminalen').
-hpl(71148,postterminalen,postterminalen,'Postterminalen').
+hpl(71147,postterminalen_sluppen,postterminalen_sluppen,'Postterminalen Sluppen').
+hpl(71148,postterminalen_sluppen,postterminalen_sluppen,'Postterminalen Sluppen').
 hpl(71149,helgbostad,helgbostad,'Helgbostad').
 hpl(71151,titran,titran,'Titran').
 hpl(71152,titran,titran,'Titran').
