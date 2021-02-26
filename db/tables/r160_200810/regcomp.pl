@@ -1494,7 +1494,6 @@ composite_stat(hogsdalen,[],hogsdalen).
 composite_stat(hojem,[],hojem).
 composite_stat(hokling,[],hokling).
 composite_stat(hokstad,[ferjekai],hokstad_ferjekai).
-composite_stat(hokstad,[ferjeleie],hokstad_ferjeleie).
 composite_stat(hol,[],hol).
 composite_stat(holan,[],holan).
 composite_stat(holand,[],holand).
@@ -1931,6 +1930,7 @@ composite_stat(kobberdammen,[],kobberdammen).
 composite_stat(koieflata,[],koieflata).
 composite_stat(kojan,[],kojan).
 composite_stat(kokkvollen,[],kokkvollen).
+composite_stat(kolstad,[kirke],kolstad_kirke).
 composite_stat(kolstadhaugen,[],kolstadhaugen).
 composite_stat(kolsåsdalen,[],kolsåsdalen).
 composite_stat(kolven,[],kolven).
@@ -3587,6 +3587,7 @@ composite_stat(snoen,[],snoen).
 composite_stat(snorroegga,[],snorroegga).
 composite_stat(snuplass,[almlia],snuplass_almlia).
 composite_stat(snuplass,[sandneset],snuplass_sandneset).
+composite_stat(snåsa,[hotell],snåsa_hotell).
 composite_stat(snåsa,[skole],snåsa_skole).
 composite_stat(snåsa,[stasjon],snåsa_stasjon).
 composite_stat(snøan,[],snøan).

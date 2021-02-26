@@ -432,11 +432,14 @@ hpl(104705,hølonda_vegdele,hølonda_vegdele,'Hølonda vegdele').
 hpl(104768,sjøvegen,sjøvegen,'Sjøvegen').
 hpl(104785,heimly,heimly,'Heimly').
 hpl(104786,prix_brannan,prix_brannan,'Prix Brannan').
+hpl(104869,kolstad_kirke,kolstad_kirke,'Kolstad kirke').
 hpl(104873,hembre_grus,hembre_grus,'Hembre grus').
 hpl(104953,heimdal_stasjon,heimdal_stasjon,'Heimdal stasjon').
 hpl(104964,hoston,hoston,'Hoston').
 hpl(104965,øyum_gård,øyum_gård,'Øyum gård').
 hpl(105026,postterminalen_sluppen,postterminalen_sluppen,'Postterminalen Sluppen').
+hpl(105040,snåsa_hotell,snåsa_hotell,'Snåsa Hotell').
+hpl(105041,snåsa_hotell,snåsa_hotell,'Snåsa Hotell').
 hpl(110091,bakkegata,bakkegata,'Bakkegata').
 hpl(110093,vellamelen,vellamelen,'Vellamelen').
 hpl(110094,beitstad,beitstad,'Beitstad').
@@ -3407,6 +3410,7 @@ hpl(74233,kokkvollen,kokkvollen,'Kokkvollen').
 hpl(74234,stene,stene,'Stene').
 hpl(74235,nygård,nygård,'Nygård').
 hpl(74236,nygård,nygård,'Nygård').
+hpl(74237,kolstad_kirke,kolstad_kirke,'Kolstad kirke').
 hpl(74238,stensetkrysset,stensetkrysset,'Stensetkrysset').
 hpl(74240,stensetkrysset,stensetkrysset,'Stensetkrysset').
 hpl(74242,stensåsen,stensåsen,'Stensåsen').
@@ -7865,8 +7869,8 @@ hpl(79446,bjørg,bjørg,'Bjørg').
 hpl(79447,bjørg,bjørg,'Bjørg').
 hpl(79448,skaftnesmoen,skaftnesmoen,'Skaftnesmoen').
 hpl(79449,skaftnesmoen,skaftnesmoen,'Skaftnesmoen').
-hpl(79450,hokstad_ferjeleie,hokstad_ferjeleie,'Hokstad Ferjeleie').
-hpl(79451,hokstad_ferjeleie,hokstad_ferjeleie,'Hokstad Ferjeleie').
+hpl(79450,hokstad_ferjekai,hokstad_ferjekai,'Hokstad ferjekai').
+hpl(79451,hokstad_ferjekai,hokstad_ferjekai,'Hokstad ferjekai').
 hpl(79452,skaftnes_vegdele,skaftnes_vegdele,'Skaftnes vegdele').
 hpl(79453,skaftnes_vegdele,skaftnes_vegdele,'Skaftnes vegdele').
 hpl(79454,øvre,øvre,'Øvre').
