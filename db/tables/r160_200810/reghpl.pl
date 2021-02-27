@@ -3307,6 +3307,7 @@ hpl(74114,staurset,staurset,'Staurset').
 hpl(74115,kleiva,kleiva,'Kleiva').
 hpl(74116,kleiva,kleiva,'Kleiva').
 hpl(74117,stav,stav,'Stav').
+hpl(74118,nordsetrønningen,nordsetrønningen,'Nordsetrønningen').
 hpl(74119,stav,stav,'Stav').
 hpl(74120,kleivan,kleivan,'Kleivan').
 hpl(74121,kleivan,kleivan,'Kleivan').
