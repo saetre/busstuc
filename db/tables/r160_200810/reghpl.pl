@@ -101,7 +101,7 @@ hpl(102729,hallset,hallset,'Hallset').
 hpl(102730,østre_berg_2,østre_berg_2,'Østre Berg 2').
 hpl(102731,skovgård_2,skovgård_2,'Skovgård 2').
 hpl(102732,skovgård_1,skovgård_1,'Skovgård 1').
-hpl(102733,tonstadkrysset_terminal_1,tonstadkrysset_terminal_1,'Tonstadkrysset terminal 1').
+hpl(102733,tonstadkrysset_1,tonstadkrysset_1,'Tonstadkrysset 1').
 hpl(102734,arnt_smistads_veg_1,arnt_smistads_veg_1,'Arnt Smistads veg 1').
 hpl(102735,grøset_søndre,grøset_søndre,'Grøset søndre').
 hpl(102736,sigrid_saxedatters_veg,sigrid_saxedatters_veg,'Sigrid Saxedatters veg').
@@ -676,7 +676,7 @@ hpl(71202,tonstadgrenda,tonstadgrenda,'Tonstadgrenda').
 hpl(71203,tonstadgrenda,tonstadgrenda,'Tonstadgrenda').
 hpl(71204,hesthagen,hesthagen,'Hesthagen').
 hpl(71205,hemnskjel,hemnskjel,'Hemnskjel').
-hpl(71206,tonstadkrysset_terminal_2,tonstadkrysset_terminal_2,'Tonstadkrysset terminal 2').
+hpl(71206,tonstadkrysset_2,tonstadkrysset_2,'Tonstadkrysset 2').
 hpl(71207,rabben,rabben,'Rabben').
 hpl(71208,hemnskjel,hemnskjel,'Hemnskjel').
 hpl(71209,tonstadkrysset_4,tonstadkrysset_4,'Tonstadkrysset 4').
@@ -694,6 +694,8 @@ hpl(71225,ramstad,ramstad,'Ramstad').
 hpl(71226,ramstad,ramstad,'Ramstad').
 hpl(71227,ramsvika,ramsvika,'Ramsvika').
 hpl(71228,ramsvika,ramsvika,'Ramsvika').
+hpl(71229,tonstadkrysset_e6,tonstadkrysset_e6,'Tonstadkrysset E6').
+hpl(71230,tonstadkrysset_e6,tonstadkrysset_e6,'Tonstadkrysset E6').
 hpl(71231,hepsøy_hurtigbåtkai,hepsøy_hurtigbåtkai,'Hepsøy hurtigbåtkai').
 hpl(71232,ramsøy_hurtigbåtkai,ramsøy_hurtigbåtkai,'Ramsøy hurtigbåtkai').
 hpl(71233,ramsøyaunet_hurtigbåtkai,ramsøyaunet_hurtigbåtkai,'Ramsøyaunet hurtigbåtkai').

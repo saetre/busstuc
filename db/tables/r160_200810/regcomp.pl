@@ -4100,10 +4100,11 @@ composite_stat(togstadjåren,[],togstadjåren).
 composite_stat(tollstad,[],tollstad).
 composite_stat(tomtebo,[],tomtebo).
 composite_stat(tonstadgrenda,[],tonstadgrenda).
+composite_stat(tonstadkrysset,[1],tonstadkrysset_1).
+composite_stat(tonstadkrysset,[2],tonstadkrysset_2).
 composite_stat(tonstadkrysset,[3],tonstadkrysset_3).
 composite_stat(tonstadkrysset,[4],tonstadkrysset_4).
-composite_stat(tonstadkrysset,[terminal, 1],tonstadkrysset_terminal_1).
-composite_stat(tonstadkrysset,[terminal, 2],tonstadkrysset_terminal_2).
+composite_stat(tonstadkrysset,[e6],tonstadkrysset_e6).
 composite_stat(toremoen,[],toremoen).
 composite_stat(torgaardssletta,[],torgaardssletta).
 composite_stat(torgard,[],torgard).
