@@ -4425,8 +4425,9 @@ composite_stat(vikelvveien,[],vikelvveien).
 composite_stat(viken,[],viken).
 composite_stat(viken,[dalakrysset],viken_dalakrysset).
 composite_stat(vikestad,[vegdele],vikestad_vegdele).
+composite_stat(vikhammer,[1],vikhammer_1).
 composite_stat(vikhammer,[2],vikhammer_2).
-composite_stat(vikhammer,[],vikhammer).
+composite_stat(vikhammer,[3],vikhammer_3).
 composite_stat(vikhammer,[skole],vikhammer_skole).
 composite_stat(vikhammerløkka,[],vikhammerløkka).
 composite_stat(vikhammeråsen,[],vikhammeråsen).
@@ -4522,7 +4523,7 @@ composite_stat(væresbakken,[2],væresbakken_2).
 composite_stat(væresbakken,[],væresbakken).
 composite_stat(væresholmen,[],væresholmen).
 composite_stat(væresletta,[],væresletta).
-composite_stat(værestrøa,[],værestrøa).
+composite_stat(væretrøa,[snuplass],væretrøa_snuplass).
 composite_stat(værnes,[ferjekai],værnes_ferjekai).
 composite_stat(værnes,[prestegård],værnes_prestegård).
 composite_stat(værum,[skole],værum_skole).

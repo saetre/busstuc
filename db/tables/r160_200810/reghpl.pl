@@ -1599,9 +1599,9 @@ hpl(72235,viken_dalakrysset,viken_dalakrysset,'Viken / Dalakrysset').
 hpl(72236,viken_dalakrysset,viken_dalakrysset,'Viken / Dalakrysset').
 hpl(72237,grunnkloppa,grunnkloppa,'Grunnkloppa').
 hpl(72238,skaset,skaset,'Skaset').
-hpl(72239,vikhammer,vikhammer,'Vikhammer').
+hpl(72239,vikhammer_1,vikhammer_1,'Vikhammer 1').
 hpl(72240,skaset,skaset,'Skaset').
-hpl(72241,vikhammer,vikhammer,'Vikhammer').
+hpl(72241,vikhammer_3,vikhammer_3,'Vikhammer 3').
 hpl(72242,vikhammer_2,vikhammer_2,'Vikhammer 2').
 hpl(72243,grunnsjømyra,grunnsjømyra,'Grunnsjømyra').
 hpl(72244,grunnsjømyra,grunnsjømyra,'Grunnsjømyra').
@@ -1905,7 +1905,7 @@ hpl(72572,halstein_gård,halstein_gård,'Halstein gård').
 hpl(72573,lønset_v_butikken,lønset_v_butikken,'Lønset v/butikken').
 hpl(72574,haltdalen_coop,haltdalen_coop,'Haltdalen Coop').
 hpl(72575,haltdalen_coop,haltdalen_coop,'Haltdalen Coop').
-hpl(72576,være,være,'Være').
+hpl(72576,væresletta,væresletta,'Væresletta').
 hpl(72577,løvaasveien,løvaasveien,'Løvaasveien').
 hpl(72578,løvaasveien,løvaasveien,'Løvaasveien').
 hpl(72579,være_østre,være_østre,'Være østre').
@@ -1928,8 +1928,7 @@ hpl(72596,hamarvik_s_lag,hamarvik_s_lag,'Hamarvik S-lag').
 hpl(72598,løvåsvegen,løvåsvegen,'Løvåsvegen').
 hpl(72599,hamarvika,hamarvika,'Hamarvika').
 hpl(72600,hamarvika,hamarvika,'Hamarvika').
-hpl(72601,værestrøa,værestrøa,'Værestrøa').
-hpl(72602,værestrøa,værestrøa,'Værestrøa').
+hpl(72601,væretrøa_snuplass,væretrøa_snuplass,'Væretrøa snuplass').
 hpl(72603,hammer,hammer,'Hammer').
 hpl(72604,hammer,hammer,'Hammer').
 hpl(72606,værnes_ferjekai,værnes_ferjekai,'Værnes ferjekai').
