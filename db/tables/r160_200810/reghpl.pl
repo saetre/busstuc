@@ -275,7 +275,7 @@ hpl(103337,utigard,utigard,'Utigard').
 hpl(103338,vasslia,vasslia,'Vasslia').
 hpl(103339,væresletta,væresletta,'Væresletta').
 hpl(103340,væresletta,væresletta,'Væresletta').
-hpl(103341,væresletta,væresletta,'Væresletta').
+hpl(103341,være,være,'Være').
 hpl(103342,øvre_sætrum,øvre_sætrum,'Øvre Sætrum').
 hpl(103343,øya_ungdomsskole,øya_ungdomsskole,'Øya ungdomsskole').
 hpl(103344,åsheim,åsheim,'Åsheim').
@@ -1905,7 +1905,7 @@ hpl(72572,halstein_gård,halstein_gård,'Halstein gård').
 hpl(72573,lønset_v_butikken,lønset_v_butikken,'Lønset v/butikken').
 hpl(72574,haltdalen_coop,haltdalen_coop,'Haltdalen Coop').
 hpl(72575,haltdalen_coop,haltdalen_coop,'Haltdalen Coop').
-hpl(72576,væresletta,væresletta,'Væresletta').
+hpl(72576,være,være,'Være').
 hpl(72577,løvaasveien,løvaasveien,'Løvaasveien').
 hpl(72578,løvaasveien,løvaasveien,'Løvaasveien').
 hpl(72579,være_østre,være_østre,'Være østre').
