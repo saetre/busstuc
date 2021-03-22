@@ -1530,7 +1530,6 @@ composite_stat(holtmoen,[],holtmoen).
 composite_stat(holåsen,[vest],holåsen_vest).
 composite_stat(hommeldal,[],hommeldal).
 composite_stat(hommelvik,[bomstasjon],hommelvik_bomstasjon).
-composite_stat(hommelvik,[sjøside],hommelvik_sjøside).
 composite_stat(hommelvik,[skole],hommelvik_skole).
 composite_stat(hommelvik,[stasjon],hommelvik_stasjon).
 composite_stat(hommelvik,[ungdomsskole],hommelvik_ungdomsskole).
@@ -4523,7 +4522,7 @@ composite_stat(væresbakken,[2],væresbakken_2).
 composite_stat(væresbakken,[],væresbakken).
 composite_stat(væresholmen,[],væresholmen).
 composite_stat(væresletta,[],væresletta).
-composite_stat(væretrøa,[snuplass],væretrøa_snuplass).
+composite_stat(værestrøa,[],værestrøa).
 composite_stat(værnes,[ferjekai],værnes_ferjekai).
 composite_stat(værnes,[prestegård],værnes_prestegård).
 composite_stat(værum,[skole],værum_skole).
@@ -4612,7 +4611,6 @@ composite_stat(åsly,[skole],åsly_skole).
 composite_stat(åsmulen,[],åsmulen).
 composite_stat(åstad,[],åstad).
 composite_stat(åstan,[],åstan).
-composite_stat(åsten,[],åsten).
 composite_stat(åstjønna,[],åstjønna).
 composite_stat(åsvang,[skole],åsvang_skole).
 composite_stat(åsvegen,[],åsvegen).
@@ -4692,7 +4690,6 @@ composite_stat(øyan,[],øyan).
 composite_stat(øyangen,[],øyangen).
 composite_stat(øyanvegen,[],øyanvegen).
 composite_stat(øyasætra,[],øyasætra).
-composite_stat(øyavegen,[],øyavegen).
 composite_stat(øybakken,[],øybakken).
 composite_stat(øybekkstua,[],øybekkstua).
 composite_stat(øyberget,[],øyberget).
