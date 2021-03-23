@@ -358,6 +358,8 @@ hpl(103539,engan,engan,'Engan').
 hpl(103540,engan,engan,'Engan').
 hpl(103546,sagveien,sagveien,'Sagveien').
 hpl(103547,dronningens_gate_62,dronningens_gate_62,'Dronningens gate 62').
+hpl(103576,hospitalskirka,hospitalskirka,'Hospitalskirka').
+hpl(103577,hospitalskirka,hospitalskirka,'Hospitalskirka').
 hpl(103580,paul_skolemesters_veg,paul_skolemesters_veg,'Paul Skolemesters veg').
 hpl(103581,bakken_snuplass,bakken_snuplass,'Bakken snuplass').
 hpl(103582,ingelsvatnet_vestre,ingelsvatnet_vestre,'Ingelsvatnet vestre').
@@ -366,6 +368,10 @@ hpl(103687,grøset_søndre,grøset_søndre,'Grøset søndre').
 hpl(103894,strømnes,strømnes,'Strømnes').
 hpl(103895,østvik,østvik,'Østvik').
 hpl(103951,heimtun,heimtun,'Heimtun').
+hpl(104110,ila,ila,'Ila').
+hpl(104111,ila,ila,'Ila').
+hpl(104112,skansen,skansen,'Skansen').
+hpl(104113,skansen,skansen,'Skansen').
 hpl(104280,lauvåsen,lauvåsen,'Lauvåsen').
 hpl(104281,øsbyvegen,øsbyvegen,'Øsbyvegen').
 hpl(104282,sunnset_gård,sunnset_gård,'Sunnset Gård').
