@@ -700,8 +700,8 @@ hpl(71225,ramstad,ramstad,'Ramstad').
 hpl(71226,ramstad,ramstad,'Ramstad').
 hpl(71227,ramsvika,ramsvika,'Ramsvika').
 hpl(71228,ramsvika,ramsvika,'Ramsvika').
-hpl(71229,tonstadkrysset_e6,tonstadkrysset_e6,'Tonstadkrysset E6').
-hpl(71230,tonstadkrysset_e6,tonstadkrysset_e6,'Tonstadkrysset E6').
+hpl(71229,tonstadkrysset_5,tonstadkrysset_5,'Tonstadkrysset 5').
+hpl(71230,tonstadkrysset_6,tonstadkrysset_6,'Tonstadkrysset 6').
 hpl(71231,hepsøy_hurtigbåtkai,hepsøy_hurtigbåtkai,'Hepsøy hurtigbåtkai').
 hpl(71232,ramsøy_hurtigbåtkai,ramsøy_hurtigbåtkai,'Ramsøy hurtigbåtkai').
 hpl(71233,ramsøyaunet_hurtigbåtkai,ramsøyaunet_hurtigbåtkai,'Ramsøyaunet hurtigbåtkai').

@@ -4103,7 +4103,8 @@ composite_stat(tonstadkrysset,[1],tonstadkrysset_1).
 composite_stat(tonstadkrysset,[2],tonstadkrysset_2).
 composite_stat(tonstadkrysset,[3],tonstadkrysset_3).
 composite_stat(tonstadkrysset,[4],tonstadkrysset_4).
-composite_stat(tonstadkrysset,[e6],tonstadkrysset_e6).
+composite_stat(tonstadkrysset,[5],tonstadkrysset_5).
+composite_stat(tonstadkrysset,[6],tonstadkrysset_6).
 composite_stat(toremoen,[],toremoen).
 composite_stat(torgaardssletta,[],torgaardssletta).
 composite_stat(torgard,[],torgard).
