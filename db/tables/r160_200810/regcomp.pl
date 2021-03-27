@@ -358,7 +358,6 @@ composite_stat(bratteggen,[],bratteggen).
 composite_stat(brattgjerd,[],brattgjerd).
 composite_stat(brattlia,[],brattlia).
 composite_stat(brattåsen,[],brattåsen).
-composite_stat(brattøra,[],brattøra).
 composite_stat(brauta,[],brauta).
 composite_stat(breen,[],breen).
 composite_stat(breidablikk,[],breidablikk).
@@ -3499,7 +3498,6 @@ composite_stat(skogmo,[],skogmo).
 composite_stat(skogmohøgda,[],skogmohøgda).
 composite_stat(skogn,[barne, og, ungdomsskole],skogn_barne_og_ungdomsskole).
 composite_stat(skogn,[sentrum],skogn_sentrum).
-composite_stat(skogn,[stasjon],skogn_stasjon).
 composite_stat(skogrand,[],skogrand).
 composite_stat(skogrud,[],skogrud).
 composite_stat(skogseth,[],skogseth).
@@ -4116,7 +4114,6 @@ composite_stat(torpet,[],torpet).
 composite_stat(tors,[street],tors_veg). % generated 1.2
 composite_stat(tors,[veg],tors_veg).
 composite_stat(tors_street,[],tors_veg). % generated 1.1
-composite_stat(torsbustaden,[skisenter],torsbustaden_skisenter).
 composite_stat(torshus,[],torshus).
 composite_stat(torstad,[vegdele],torstad_vegdele).
 composite_stat(torsveet,[],torsveet).

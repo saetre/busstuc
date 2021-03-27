@@ -447,9 +447,9 @@ hpl(105025,søraunet,søraunet,'Søraunet').
 hpl(105026,postterminalen_sluppen,postterminalen_sluppen,'Postterminalen Sluppen').
 hpl(105040,snåsa_hotell,snåsa_hotell,'Snåsa Hotell').
 hpl(105041,snåsa_hotell,snåsa_hotell,'Snåsa Hotell').
-hpl(105086,torsbustaden_skisenter,torsbustaden_skisenter,'Torsbustaden skisenter').
 hpl(105091,slørdalsvatnet,slørdalsvatnet,'Slørdalsvatnet').
 hpl(105092,slørdalsvatnet,slørdalsvatnet,'Slørdalsvatnet').
+hpl(105145,østre_rosten,østre_rosten,'Østre Rosten').
 hpl(110091,bakkegata,bakkegata,'Bakkegata').
 hpl(110093,vellamelen,vellamelen,'Vellamelen').
 hpl(110094,beitstad,beitstad,'Beitstad').
@@ -2168,7 +2168,6 @@ hpl(72858,østre_eidem,østre_eidem,'Østre Eidem').
 hpl(72859,hegg,hegg,'Hegg').
 hpl(72860,hegg,hegg,'Hegg').
 hpl(72861,østre_rosten,østre_rosten,'Østre Rosten').
-hpl(72862,østre_rosten,østre_rosten,'Østre Rosten').
 hpl(72864,hegg_bru,hegg_bru,'Hegg bru').
 hpl(72865,hegg_bru,hegg_bru,'Hegg bru').
 hpl(72868,øverbygda_skole,øverbygda_skole,'Øverbygda skole').
@@ -4367,8 +4366,6 @@ hpl(75307,brattgjerd,brattgjerd,'Brattgjerd').
 hpl(75308,brattlia,brattlia,'Brattlia').
 hpl(75311,fokset,fokset,'Fokset').
 hpl(75312,fokset,fokset,'Fokset').
-hpl(75313,brattøra,brattøra,'Brattøra').
-hpl(75314,brattøra,brattøra,'Brattøra').
 hpl(75315,vikvarvet_skole,vikvarvet_skole,'Vikvarvet skole').
 hpl(75316,vikvarvet_skole,vikvarvet_skole,'Vikvarvet skole').
 hpl(75317,folla,folla,'Folla').
@@ -6421,7 +6418,6 @@ hpl(77728,skogn_barne_og_ungdomsskole,skogn_barne_og_ungdomsskole,'Skogn barne- 
 hpl(77729,skogn_barne_og_ungdomsskole,skogn_barne_og_ungdomsskole,'Skogn barne- og ungdomsskole').
 hpl(77732,ytre_sørlia,ytre_sørlia,'Ytre Sørlia').
 hpl(77733,ytre_sørlia,ytre_sørlia,'Ytre Sørlia').
-hpl(77734,skogn_stasjon,skogn_stasjon,'Skogn stasjon').
 hpl(77735,hello,hello,'Hello').
 hpl(77736,hello,hello,'Hello').
 hpl(77738,skille,skille,'Skille').
