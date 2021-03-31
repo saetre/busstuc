@@ -3564,7 +3564,6 @@ composite_stat(smeplassen,[],smeplassen).
 composite_stat(smevika,[],smevika).
 composite_stat(smines,[],smines).
 composite_stat(smiskaret,[],smiskaret).
-composite_stat(smiskaret,[rundkjøring],smiskaret_rundkjøring).
 composite_stat(smolan,[],smolan).
 composite_stat(småenget,[],småenget).
 composite_stat(smågesjø,[],smågesjø).
