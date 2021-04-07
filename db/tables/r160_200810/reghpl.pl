@@ -2754,7 +2754,7 @@ hpl(73508,sætra,sætra,'Sætra').
 hpl(73509,myrbakkan,myrbakkan,'Myrbakkan').
 hpl(73510,myrbakkan,myrbakkan,'Myrbakkan').
 hpl(73511,sætra,sætra,'Sætra').
-hpl(73512,lian_rovatnet,lian_rovatnet,'Lian, Rovatnet').
+hpl(73512,lian,lian,'Lian').
 hpl(73513,sætra,sætra,'Sætra').
 hpl(73516,lien,lien,'Lien').
 hpl(73517,lien,lien,'Lien').

@@ -2237,7 +2237,6 @@ composite_stat(liagrind,[],liagrind).
 composite_stat(liakryss,[],liakryss).
 composite_stat(lialøkken,[],lialøkken).
 composite_stat(lian,[],lian).
-composite_stat(lian,[rovatnet],lian_rovatnet).
 composite_stat(libakken,[],libakken).
 composite_stat(liberg,[],liberg).
 composite_stat(lien,[],lien).
