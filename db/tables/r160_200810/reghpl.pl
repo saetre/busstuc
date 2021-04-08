@@ -4607,8 +4607,8 @@ hpl(75578,fykenborg,fykenborg,'Fykenborg').
 hpl(75580,casper_lundes_veg,casper_lundes_veg,'Casper Lundes veg').
 hpl(75581,casper_lundes_veg,casper_lundes_veg,'Casper Lundes veg').
 hpl(75582,cecilie_thoresens_veg,cecilie_thoresens_veg,'Cecilie Thoresens veg').
-hpl(75583,storevatnet,storevatnet,'Storevatnet').
-hpl(75584,storevatnet,storevatnet,'Storevatnet').
+hpl(75583,meungan_kommunegrense,meungan_kommunegrense,'Meungan kommunegrense').
+hpl(75584,meungan_kommunegrense,meungan_kommunegrense,'Meungan kommunegrense').
 hpl(75585,cecilie_thoresens_veg,cecilie_thoresens_veg,'Cecilie Thoresens veg').
 hpl(75588,fætten,fætten,'Fætten').
 hpl(75589,fætten,fætten,'Fætten').

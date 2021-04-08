@@ -2488,6 +2488,7 @@ composite_stat(merket,[øst],merket_øst).
 composite_stat(meråker,[sentrum],meråker_sentrum).
 composite_stat(meråker,[videregånde],meråker_videregånde).
 composite_stat(mestuggu,[],mestuggu).
+composite_stat(meungan,[kommunegrense],meungan_kommunegrense).
 composite_stat(meungen,[],meungen).
 composite_stat(mevassvik,[snuplass],mevassvik_snuplass).
 composite_stat(meådal,[],meådal).
@@ -3768,7 +3769,6 @@ composite_stat(stordalsvold,[],stordalsvold).
 composite_stat(store,[arnøy],store_arnøy).
 composite_stat(storem,[],storem).
 composite_stat(storenga,[],storenga).
-composite_stat(storevatnet,[],storevatnet).
 composite_stat(storflor,[],storflor).
 composite_stat(storfosna,[ferjekai],storfosna_ferjekai).
 composite_stat(storhallaren,[],storhallaren).
