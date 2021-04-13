@@ -312,7 +312,7 @@ hpl(103447,svanemsvatnet,svanemsvatnet,'Svanemsvatnet').
 hpl(103448,dyrøy_kai,dyrøy_kai,'Dyrøy kai').
 hpl(103449,mausundvær_kai,mausundvær_kai,'Mausundvær kai').
 hpl(103450,sula_ferjekai,sula_ferjekai,'Sula ferjekai').
-hpl(103451,sørburøy_kai,sørburøy_kai,'Sørburøy kai').
+hpl(103451,sørburøy_passasjerbåtkai,sørburøy_passasjerbåtkai,'Sørburøy passasjerbåtkai').
 hpl(103452,rørvik_ferjekai,rørvik_ferjekai,'Rørvik ferjekai').
 hpl(103453,hevle,hevle,'Hevle').
 hpl(103454,hevle,hevle,'Hevle').
@@ -1269,7 +1269,7 @@ hpl(71861,hitra_hurtigbåtterminal,hitra_hurtigbåtterminal,'Hitra hurtigbåtter
 hpl(71862,hyttfossen,hyttfossen,'Hyttfossen').
 hpl(71863,hitra_hurtigbåtterminal,hitra_hurtigbåtterminal,'Hitra hurtigbåtterminal').
 hpl(71864,utsikten,utsikten,'Utsikten').
-hpl(71865,sandstad,sandstad,'Sandstad').
+hpl(71865,sandstad_circle_k,sandstad_circle_k,'Sandstad Circle K').
 hpl(71866,utstrand,utstrand,'Utstrand').
 hpl(71867,håggån,håggån,'Håggån').
 hpl(71868,utstrand,utstrand,'Utstrand').
@@ -2832,7 +2832,7 @@ hpl(73595,sørborgen,sørborgen,'Sørborgen').
 hpl(73596,myrvang,myrvang,'Myrvang').
 hpl(73597,myrvang,myrvang,'Myrvang').
 hpl(73598,sula_ferjekai,sula_ferjekai,'Sula ferjekai').
-hpl(73599,sørburøy_kai,sørburøy_kai,'Sørburøy kai').
+hpl(73599,sørburøy_passasjerbåtkai,sørburøy_passasjerbåtkai,'Sørburøy passasjerbåtkai').
 hpl(73600,losgata,losgata,'Losgata').
 hpl(73601,sørgarden,sørgarden,'Sørgarden').
 hpl(73602,sørgarden,sørgarden,'Sørgarden').

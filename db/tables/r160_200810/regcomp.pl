@@ -3286,6 +3286,7 @@ composite_stat(sandrød,[],sandrød).
 composite_stat(sandsiloen,[rota],sandsiloen_rota).
 composite_stat(sandslia,[],sandslia).
 composite_stat(sandstad,[],sandstad).
+composite_stat(sandstad,[circle, k],sandstad_circle_k).
 composite_stat(sandstad,[vegstasjon],sandstad_vegstasjon).
 composite_stat(sandstaddalen,[],sandstaddalen).
 composite_stat(sandvik,[],sandvik).
@@ -4008,7 +4009,7 @@ composite_stat(sørberg,[],sørberg).
 composite_stat(sørborgen,[],sørborgen).
 composite_stat(sørborgen,[skole],sørborgen_skole).
 composite_stat(sørbu,[],sørbu).
-composite_stat(sørburøy,[kai],sørburøy_kai).
+composite_stat(sørburøy,[passasjerbåtkai],sørburøy_passasjerbåtkai).
 composite_stat(søreitran,[],søreitran).
 composite_stat(sørenget,[],sørenget).
 composite_stat(sørenmo,[],sørenmo).
