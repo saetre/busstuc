@@ -3160,7 +3160,6 @@ composite_stat(rybrua,[],rybrua).
 composite_stat(rydland,[],rydland).
 composite_stat(rydningen,[],rydningen).
 composite_stat(rye,[],rye).
-composite_stat(rye,[skole, 2],rye_skole_2).
 composite_stat(rye,[skole],rye_skole).
 composite_stat(ryen,[],ryen).
 composite_stat(rygg,[],rygg).
@@ -4513,6 +4512,10 @@ composite_stat(våttålia,[],våttålia).
 composite_stat(våvatnet,[],våvatnet).
 composite_stat(væktarstua,[],væktarstua).
 composite_stat(være,[],være).
+composite_stat(være,[ranheim, street],være_ranheimsvegen). % generated 3.2
+composite_stat(være,[ranheim, vegen],være_ranheimsvegen). % generated 3.0
+composite_stat(være,[ranheim_street],være_ranheimsvegen). % generated 3.1
+composite_stat(være,[ranheimsvegen],være_ranheimsvegen).
 composite_stat(være,[østre],være_østre).
 composite_stat(værem,[],værem).
 composite_stat(væresbakken,[2],væresbakken_2).

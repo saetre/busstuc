@@ -155,7 +155,7 @@ hpl(103117,kvernmovegen,kvernmovegen,'Kvernmovegen').
 hpl(103118,kvithammer,kvithammer,'Kvithammer').
 hpl(103121,mulelia,mulelia,'Mulelia').
 hpl(103138,markabygda_montessoriskole,markabygda_montessoriskole,'Markabygda montessoriskole').
-hpl(103140,rye_skole_2,rye_skole_2,'Rye skole 2').
+hpl(103140,rye_skole,rye_skole,'Rye skole').
 hpl(103141,væresbakken_2,væresbakken_2,'Væresbakken 2').
 hpl(103142,bratsberg_skole,bratsberg_skole,'Bratsberg skole').
 hpl(103143,nypvang_skole,nypvang_skole,'Nypvang skole').
@@ -1904,7 +1904,7 @@ hpl(72565,væktarstua,væktarstua,'Væktarstua').
 hpl(72566,halstad,halstad,'Halstad').
 hpl(72567,væktarstua,væktarstua,'Væktarstua').
 hpl(72568,halstad,halstad,'Halstad').
-hpl(72571,være,være,'Være').
+hpl(72571,være_ranheimsvegen,være_ranheimsvegen,'Være Ranheimsvegen').
 hpl(72572,halstein_gård,halstein_gård,'Halstein gård').
 hpl(72573,lønset_v_butikken,lønset_v_butikken,'Lønset v/butikken').
 hpl(72574,haltdalen_coop,haltdalen_coop,'Haltdalen Coop').
