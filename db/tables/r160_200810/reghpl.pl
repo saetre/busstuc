@@ -3850,7 +3850,6 @@ hpl(74762,aunvågen,aunvågen,'Aunvågen').
 hpl(74763,aunvågen,aunvågen,'Aunvågen').
 hpl(74764,eid_skole,eid_skole,'Eid skole').
 hpl(74765,eid_skole,eid_skole,'Eid skole').
-hpl(74766,orkanger_skysstasjon,orkanger_skysstasjon,'Orkanger skysstasjon').
 hpl(74767,aunegjerdet,aunegjerdet,'Aunegjerdet').
 hpl(74768,aunegjerdet,aunegjerdet,'Aunegjerdet').
 hpl(74769,eide,eide,'Eide').
