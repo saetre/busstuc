@@ -1153,9 +1153,9 @@ composite_stat(grindstad,[],grindstad).
 composite_stat(grindvollen,[],grindvollen).
 composite_stat(grinna,[],grinna).
 composite_stat(groegga,[],groegga).
-composite_stat(grong,[],grong).
 composite_stat(grong,[barne, og, ungdomsskole],grong_barne_og_ungdomsskole).
 composite_stat(grong,[gård],grong_gård).
+composite_stat(grong,[sentrum],grong_sentrum).
 composite_stat(grong,[stasjon],grong_stasjon).
 composite_stat(grong,[vgs],grong_vgs).
 composite_stat(gropa,[],gropa).
@@ -2440,7 +2440,6 @@ composite_stat(maureggen,[],maureggen).
 composite_stat(mausundvær,[kai],mausundvær_kai).
 composite_stat(mebost,[],mebost).
 composite_stat(mebygda,[],mebygda).
-composite_stat(mediå,[],mediå).
 composite_stat(mediås,[],mediås).
 composite_stat(medskogkrokan,[],medskogkrokan).
 composite_stat(megard,[planteskole],megard_planteskole).

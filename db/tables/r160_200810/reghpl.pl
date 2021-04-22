@@ -5497,7 +5497,7 @@ hpl(76638,voldnesset,voldnesset,'Voldnesset').
 hpl(76639,nåvik,nåvik,'Nåvik').
 hpl(76640,voldnesset,voldnesset,'Voldnesset').
 hpl(76641,nåvik,nåvik,'Nåvik').
-hpl(76642,mediå,mediå,'Mediå').
+hpl(76642,grong_sentrum,grong_sentrum,'Grong sentrum').
 hpl(76644,kirkeby,kirkeby,'Kirkeby').
 hpl(76645,kirkeby,kirkeby,'Kirkeby').
 hpl(76646,tautra,tautra,'Tautra').
@@ -5526,8 +5526,8 @@ hpl(76668,skogen,skogen,'Skogen').
 hpl(76669,skogen,skogen,'Skogen').
 hpl(76670,kroglund,kroglund,'Kroglund').
 hpl(76672,kroglund,kroglund,'Kroglund').
-hpl(76674,grong,grong,'Grong').
-hpl(76675,grong,grong,'Grong').
+hpl(76674,rønningen,rønningen,'Rønningen').
+hpl(76675,rønningen,rønningen,'Rønningen').
 hpl(76676,stormyra,stormyra,'Stormyra').
 hpl(76677,stormyra,stormyra,'Stormyra').
 hpl(76678,rygg,rygg,'Rygg').
@@ -9131,7 +9131,7 @@ hpl(98828,kvernsjølia,kvernsjølia,'Kvernsjølia').
 hpl(98829,vinsmyr,vinsmyr,'Vinsmyr').
 hpl(98830,vinsmyr,vinsmyr,'Vinsmyr').
 hpl(98831,kjella_skole,kjella_skole,'Kjella skole').
-hpl(98852,mediå,mediå,'Mediå').
+hpl(98852,grong_sentrum,grong_sentrum,'Grong sentrum').
 hpl(98859,revyriket,revyriket,'Revyriket').
 hpl(98863,sykehuset_namsos,sykehuset_namsos,'Sykehuset Namsos').
 hpl(98864,verdal_stasjon,verdal_stasjon,'Verdal stasjon').
