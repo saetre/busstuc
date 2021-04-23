@@ -3960,8 +3960,11 @@ composite_stat(svimyra,[],svimyra).
 composite_stat(svingen,[],svingen).
 composite_stat(svinsås,[],svinsås).
 composite_stat(svorkdalen,[],svorkdalen).
-composite_stat(svorkmo,[],svorkmo).
 composite_stat(svorkmo,[bru],svorkmo_bru).
+composite_stat(svorkmo,[klingli, street],svorkmo_klinglivegen). % generated 6.2
+composite_stat(svorkmo,[klingli, vegen],svorkmo_klinglivegen). % generated 6.1
+composite_stat(svorkmo,[klingli_street],svorkmo_klinglivegen). % generated 6.0
+composite_stat(svorkmo,[klinglivegen],svorkmo_klinglivegen).
 composite_stat(svorkmo,[rv, 65],svorkmo_rv_65).
 composite_stat(sybrua,[],sybrua).
 composite_stat(sydskjør,[],sydskjør).

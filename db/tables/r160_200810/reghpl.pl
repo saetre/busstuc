@@ -2027,8 +2027,8 @@ hpl(72707,årlivoll_skole,årlivoll_skole,'Årlivoll skole').
 hpl(72708,årlivoll_skole,årlivoll_skole,'Årlivoll skole').
 hpl(72709,martin_kregnes_veg,martin_kregnes_veg,'Martin Kregnes veg').
 hpl(72710,martin_kregnes_veg,martin_kregnes_veg,'Martin Kregnes veg').
-hpl(72713,svorkmo_rv_65,svorkmo_rv_65,'Svorkmo rv. 65').
-hpl(72714,svorkmo_rv_65,svorkmo_rv_65,'Svorkmo rv. 65').
+hpl(72713,svorkmo_klinglivegen,svorkmo_klinglivegen,'Svorkmo Klinglivegen').
+hpl(72714,svorkmo_klinglivegen,svorkmo_klinglivegen,'Svorkmo Klinglivegen').
 hpl(72715,haugan,haugan,'Haugan').
 hpl(72716,haugan,haugan,'Haugan').
 hpl(72717,årlotten,årlotten,'Årlotten').
@@ -2674,8 +2674,7 @@ hpl(73418,svorkdalen,svorkdalen,'Svorkdalen').
 hpl(73419,svorkdalen,svorkdalen,'Svorkdalen').
 hpl(73420,lerkendal_4,lerkendal_4,'Lerkendal 4').
 hpl(73421,lerkendal_3,lerkendal_3,'Lerkendal 3').
-hpl(73427,svorkmo,svorkmo,'Svorkmo').
-hpl(73428,svorkmo,svorkmo,'Svorkmo').
+hpl(73428,svorkmo_klinglivegen,svorkmo_klinglivegen,'Svorkmo Klinglivegen').
 hpl(73429,lersbakken,lersbakken,'Lersbakken').
 hpl(73430,lersbakken,lersbakken,'Lersbakken').
 hpl(73431,svorkmo_rv_65,svorkmo_rv_65,'Svorkmo rv. 65').
@@ -9135,7 +9134,6 @@ hpl(98852,grong_sentrum,grong_sentrum,'Grong sentrum').
 hpl(98859,revyriket,revyriket,'Revyriket').
 hpl(98863,sykehuset_namsos,sykehuset_namsos,'Sykehuset Namsos').
 hpl(98864,verdal_stasjon,verdal_stasjon,'Verdal stasjon').
-hpl(98944,reinbjør_vegdele,reinbjør_vegdele,'Reinbjør vegdele').
 hpl(98945,skage_vest,skage_vest,'Skage vest').
 hpl(98960,hammer_vegdele,hammer_vegdele,'Hammer vegdele').
 hpl(99483,jøa_hurtigbåtkai,jøa_hurtigbåtkai,'Jøa hurtigbåtkai').
