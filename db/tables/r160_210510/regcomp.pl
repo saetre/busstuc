@@ -1093,7 +1093,7 @@ composite_stat(godejord,[],godejord).
 composite_stat(gogstadbakken,[],gogstadbakken).
 composite_stat(gosen,[],gosen).
 composite_stat(gottås,[],gottås).
-composite_stat(graftås,[samf, hus],graftås_samf_hus).
+composite_stat(graftås,[samfunnshus],graftås_samfunnshus).
 composite_stat(gran,[],gran).
 composite_stat(granamo,[],granamo).
 composite_stat(granbrua,[],granbrua).
@@ -2986,7 +2986,6 @@ composite_stat(plassa,[],plassa).
 composite_stat(plassbekken,[],plassbekken).
 composite_stat(plassen,[],plassen).
 composite_stat(platten,[],platten).
-composite_stat(postterminalen,[sluppen],postterminalen_sluppen).
 composite_stat(prestegardsætra,[],prestegardsætra).
 composite_stat(prestegården,[],prestegården).
 composite_stat(prestgårdskrysset,[],prestgårdskrysset).
@@ -3578,6 +3577,7 @@ composite_stat(slettvolvegen,[],slettvolvegen).
 composite_stat(slottet,[],slottet).
 composite_stat(sluppen,[1],sluppen_1).
 composite_stat(sluppen,[2],sluppen_2).
+composite_stat(sluppen,[vaksinesenter],sluppen_vaksinesenter).
 composite_stat(sluppenvegen,[8],sluppenvegen_8).
 composite_stat(sluppenvegen,[9],sluppenvegen_9).
 composite_stat(slupphaugen,[],slupphaugen).

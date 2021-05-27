@@ -451,7 +451,7 @@ hpl(104964,hoston,hoston,'Hoston').
 hpl(104965,øyum_gård,øyum_gård,'Øyum gård').
 hpl(105024,stormyra,stormyra,'Stormyra').
 hpl(105025,søraunet,søraunet,'Søraunet').
-hpl(105026,postterminalen_sluppen,postterminalen_sluppen,'Postterminalen Sluppen').
+hpl(105026,sluppen_vaksinesenter,sluppen_vaksinesenter,'Sluppen Vaksinesenter').
 hpl(105040,snåsa_hotell,snåsa_hotell,'Snåsa Hotell').
 hpl(105041,snåsa_hotell,snåsa_hotell,'Snåsa Hotell').
 hpl(105091,slørdalsvatnet,slørdalsvatnet,'Slørdalsvatnet').
@@ -4758,8 +4758,8 @@ hpl(75707,gløshaugen,gløshaugen,'Gløshaugen').
 hpl(75708,gløshaugen,gløshaugen,'Gløshaugen').
 hpl(75709,gogstadbakken,gogstadbakken,'Gogstadbakken').
 hpl(75710,gogstadbakken,gogstadbakken,'Gogstadbakken').
-hpl(75711,graftås_samf_hus,graftås_samf_hus,'Graftås samf.hus').
-hpl(75712,graftås_samf_hus,graftås_samf_hus,'Graftås samf.hus').
+hpl(75711,graftås_samfunnshus,graftås_samfunnshus,'Graftås samfunnshus').
+hpl(75712,graftås_samfunnshus,graftås_samfunnshus,'Graftås samfunnshus').
 hpl(75713,granby,granby,'Granby').
 hpl(75714,granby,granby,'Granby').
 hpl(75715,grandal,grandal,'Grandal').
