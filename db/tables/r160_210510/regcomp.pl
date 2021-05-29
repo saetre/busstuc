@@ -4732,7 +4732,6 @@ composite_stat(øvre,[sørli_street],øvre_sørliveg). % generated 6.0
 composite_stat(øvre,[sørliveg],øvre_sørliveg).
 composite_stat(øvre,[tvereggen],øvre_tvereggen).
 composite_stat(øya,[],øya).
-composite_stat(øya,[ungdomsskole],øya_ungdomsskole).
 composite_stat(øya,[vgs],øya_vgs).
 composite_stat(øyan,[],øyan).
 composite_stat(øyangen,[],øyangen).

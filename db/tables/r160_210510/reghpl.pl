@@ -279,7 +279,7 @@ hpl(103339,væresletta,væresletta,'Væresletta').
 hpl(103340,væresletta,væresletta,'Væresletta').
 hpl(103341,være,være,'Være').
 hpl(103342,øvre_sætrum,øvre_sætrum,'Øvre Sætrum').
-hpl(103343,øya_ungdomsskole,øya_ungdomsskole,'Øya ungdomsskole').
+hpl(103343,øya_vgs,øya_vgs,'Øya vgs.').
 hpl(103344,åsheim,åsheim,'Åsheim').
 hpl(103345,åsheim,åsheim,'Åsheim').
 hpl(103346,korsvegen,korsvegen,'Korsvegen').
