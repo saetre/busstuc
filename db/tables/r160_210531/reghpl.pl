@@ -468,6 +468,7 @@ hpl(105219,ratvika_snuplass,ratvika_snuplass,'Ratvika snuplass').
 hpl(105220,sossvika,sossvika,'Sossvika').
 hpl(105221,sossvika,sossvika,'Sossvika').
 hpl(105352,guri_kunna_vgs,guri_kunna_vgs,'Guri Kunna vgs').
+hpl(105411,korsen,korsen,'Korsen').
 hpl(110091,bakkegata,bakkegata,'Bakkegata').
 hpl(110093,vellamelen,vellamelen,'Vellamelen').
 hpl(110094,beitstad,beitstad,'Beitstad').
