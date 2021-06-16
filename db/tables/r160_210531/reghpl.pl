@@ -9042,8 +9042,8 @@ hpl(80896,rennset,rennset,'Rennset').
 hpl(80898,rennset,rennset,'Rennset').
 hpl(80899,brevik,brevik,'Brevik').
 hpl(80900,brevik,brevik,'Brevik').
-hpl(80903,mosvik_skole,mosvik_skole,'Mosvik skole').
-hpl(80904,mosvik_skole,mosvik_skole,'Mosvik skole').
+hpl(80903,mosvik,mosvik,'Mosvik').
+hpl(80904,mosvik,mosvik,'Mosvik').
 hpl(80907,meltingen,meltingen,'Meltingen').
 hpl(80908,meltingen,meltingen,'Meltingen').
 hpl(80909,melakorsen,melakorsen,'Melakorsen').
@@ -9052,7 +9052,6 @@ hpl(80911,mohammar,mohammar,'Mohammar').
 hpl(80912,grande,grande,'Grande').
 hpl(80913,mohammar,mohammar,'Mohammar').
 hpl(80914,grande,grande,'Grande').
-hpl(80916,mosvik_skole,mosvik_skole,'Mosvik skole').
 hpl(80917,mosvik_skole,mosvik_skole,'Mosvik skole').
 hpl(80921,melvold,melvold,'Melvold').
 hpl(80922,melvold,melvold,'Melvold').

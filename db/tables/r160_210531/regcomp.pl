@@ -2586,6 +2586,7 @@ composite_stat(mosletta,[handel],mosletta_handel).
 composite_stat(mosløkkja,[],mosløkkja).
 composite_stat(mostadkorsen,[],mostadkorsen).
 composite_stat(mosvang,[],mosvang).
+composite_stat(mosvik,[],mosvik).
 composite_stat(mosvik,[skole],mosvik_skole).
 composite_stat(motun,[],motun).
 composite_stat(moum,[],moum).
