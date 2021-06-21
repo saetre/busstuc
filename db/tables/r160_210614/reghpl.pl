@@ -15,8 +15,6 @@ hpl(101530,øyanvegen,øyanvegen,'Øyanvegen').
 hpl(101531,øyanvegen,øyanvegen,'Øyanvegen').
 hpl(101532,vold,vold,'Vold').
 hpl(101533,vold,vold,'Vold').
-hpl(101534,skogveien,skogveien,'Skogveien').
-hpl(101536,sagdalsegga,sagdalsegga,'Sagdalsegga').
 hpl(101539,tråsåvika_camping,tråsåvika_camping,'Tråsåvika Camping').
 hpl(101547,helgesvegen,helgesvegen,'Helgesvegen').
 hpl(101549,sagvollen,sagvollen,'Sagvollen').
@@ -29,8 +27,6 @@ hpl(101852,klettkrysset_2,klettkrysset_2,'Klettkrysset 2').
 hpl(101853,klettkrysset_1,klettkrysset_1,'Klettkrysset 1').
 hpl(101854,klettkrysset_3,klettkrysset_3,'Klettkrysset 3').
 hpl(101855,klettkrysset_4,klettkrysset_4,'Klettkrysset 4').
-hpl(101856,joplassveien,joplassveien,'Joplassveien').
-hpl(101857,nedre_hovsbakkan,nedre_hovsbakkan,'Nedre Hovsbakkan').
 hpl(101913,beitstad_skole,beitstad_skole,'Beitstad skole').
 hpl(101914,borganvegen,borganvegen,'Borganvegen').
 hpl(101915,bruveitakorsen,bruveitakorsen,'Bruveitakorsen').
@@ -2152,8 +2148,6 @@ hpl(72822,ølsholm,ølsholm,'Ølsholm').
 hpl(72823,ølsholm,ølsholm,'Ølsholm').
 hpl(72825,ølstøren,ølstøren,'Ølstøren').
 hpl(72826,ølstøren,ølstøren,'Ølstøren').
-hpl(72828,ørland_flystasjon,ørland_flystasjon,'Ørland flystasjon').
-hpl(72829,ørland_flystasjon,ørland_flystasjon,'Ørland flystasjon').
 hpl(72830,meldal_sentrum,meldal_sentrum,'Meldal sentrum').
 hpl(72831,meldal_sentrum,meldal_sentrum,'Meldal sentrum').
 hpl(72832,havdal,havdal,'Havdal').

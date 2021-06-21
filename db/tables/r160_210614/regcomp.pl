@@ -1747,13 +1747,9 @@ composite_stat(jonsvann,[veien],jonsvannsveien). % generated 4.0
 composite_stat(jonsvann_street,[],jonsvannsveien). % generated 4.2
 composite_stat(jonsvannsveien,[],jonsvannsveien).
 composite_stat(joplas,[street],joplassvegen). % generated 4.1
-composite_stat(joplas,[street],joplassveien). % generated 4.1
 composite_stat(joplas,[vegen],joplassvegen). % generated 4.0
-composite_stat(joplas,[veien],joplassveien). % generated 4.0
 composite_stat(joplas_street,[],joplassvegen). % generated 4.2
-composite_stat(joplas_street,[],joplassveien). % generated 4.2
 composite_stat(joplassvegen,[],joplassvegen).
-composite_stat(joplassveien,[],joplassveien).
 composite_stat(jordhus,[],jordhus).
 composite_stat(jordsli,[],jordsli).
 composite_stat(joskjøra,[],joskjøra).
@@ -2700,7 +2696,6 @@ composite_stat(nedre,[charlottenlund],nedre_charlottenlund).
 composite_stat(nedre,[gangstad],nedre_gangstad).
 composite_stat(nedre,[grande],nedre_grande).
 composite_stat(nedre,[grøtan],nedre_grøtan).
-composite_stat(nedre,[hovsbakkan],nedre_hovsbakkan).
 composite_stat(nedre,[humlehaugen, vest],nedre_humlehaugen_vest).
 composite_stat(nedre,[humlehaugen, øst],nedre_humlehaugen_øst).
 composite_stat(nedre,[jervan],nedre_jervan).
@@ -3251,7 +3246,6 @@ composite_stat(røyrvik,[barne, og, ungdomsskole],røyrvik_barne_og_ungdomsskole
 composite_stat(røysing,[],røysing).
 composite_stat(saga,[],saga).
 composite_stat(sagberget,[],sagberget).
-composite_stat(sagdalsegga,[],sagdalsegga).
 composite_stat(sagen,[],sagen).
 composite_stat(sagfossen,[],sagfossen).
 composite_stat(saghaugen,[],saghaugen).
@@ -3513,7 +3507,6 @@ composite_stat(skogrud,[],skogrud).
 composite_stat(skogseth,[],skogseth).
 composite_stat(skogstad,[],skogstad).
 composite_stat(skogtun,[],skogtun).
-composite_stat(skogveien,[],skogveien).
 composite_stat(skogås,[],skogås).
 composite_stat(skola,[],skola).
 composite_stat(skolemarka,[],skolemarka).
@@ -4671,7 +4664,6 @@ composite_stat(ølstøren,[],ølstøren).
 composite_stat(øltappen,[],øltappen).
 composite_stat(øra,[],øra).
 composite_stat(ørdal,[],ørdal).
-composite_stat(ørland,[flystasjon],ørland_flystasjon).
 composite_stat(ørland,[ungdomsskole],ørland_ungdomsskole).
 composite_stat(ørmelen,[],ørmelen).
 composite_stat(ørsjødalen,[],ørsjødalen).
