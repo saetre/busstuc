@@ -1161,7 +1161,6 @@ composite_stat(grong,[stasjon],grong_stasjon).
 composite_stat(grong,[vgs],grong_vgs).
 composite_stat(gropa,[],gropa).
 composite_stat(grostad,[],grostad).
-composite_stat(grubben,[],grubben).
 composite_stat(grunnan,[],grunnan).
 composite_stat(grunnenget,[],grunnenget).
 composite_stat(grunnkloppa,[],grunnkloppa).
@@ -1360,7 +1359,6 @@ composite_stat(havneveien,[],havneveien).
 composite_stat(havstad,[],havstad).
 composite_stat(havstadsenteret,[],havstadsenteret).
 composite_stat(havstein,[],havstein).
-composite_stat(hegenes,[],hegenes).
 composite_stat(hegg,[],hegg).
 composite_stat(hegg,[bru],hegg_bru).
 composite_stat(heggdalen,[],heggdalen).
@@ -3415,7 +3413,6 @@ composite_stat(skakanova,[],skakanova).
 composite_stat(skansen,[],skansen).
 composite_stat(skaret,[],skaret).
 composite_stat(skarland,[],skarland).
-composite_stat(skarpsvingen,[],skarpsvingen).
 composite_stat(skarsem,[],skarsem).
 composite_stat(skarsvåg,[],skarsvåg).
 composite_stat(skaset,[],skaset).

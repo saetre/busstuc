@@ -5630,14 +5630,10 @@ hpl(76767,gartland,gartland,'Gartland').
 hpl(76768,gartland,gartland,'Gartland').
 hpl(76771,fossli,fossli,'Fossli').
 hpl(76772,fossli,fossli,'Fossli').
-hpl(76773,hegenes,hegenes,'Hegenes').
-hpl(76774,hegenes,hegenes,'Hegenes').
 hpl(76775,fiskumfoss,fiskumfoss,'Fiskumfoss').
 hpl(76776,fiskumfoss,fiskumfoss,'Fiskumfoss').
 hpl(76777,kvarme,kvarme,'Kvarme').
 hpl(76778,kvarme,kvarme,'Kvarme').
-hpl(76779,grubben,grubben,'Grubben').
-hpl(76780,grubben,grubben,'Grubben').
 hpl(76781,fiskum,fiskum,'Fiskum').
 hpl(76782,fiskum,fiskum,'Fiskum').
 hpl(76783,hellan,hellan,'Hellan').
@@ -6291,8 +6287,6 @@ hpl(77566,horkmyra,horkmyra,'Horkmyra').
 hpl(77567,kutrøhaugen,kutrøhaugen,'Kutrøhaugen').
 hpl(77568,kutrøhaugen,kutrøhaugen,'Kutrøhaugen').
 hpl(77569,vuddu,vuddu,'Vuddu').
-hpl(77570,skarpsvingen,skarpsvingen,'Skarpsvingen').
-hpl(77571,skarpsvingen,skarpsvingen,'Skarpsvingen').
 hpl(77572,himo_nord,himo_nord,'Himo nord').
 hpl(77573,himo_nord,himo_nord,'Himo nord').
 hpl(77574,fætta,fætta,'Fætta').
