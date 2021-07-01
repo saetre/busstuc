@@ -7114,8 +7114,8 @@ hpl(78585,stamphusmyra,stamphusmyra,'Stamphusmyra').
 hpl(78586,stamphusmyra,stamphusmyra,'Stamphusmyra').
 hpl(78587,vegmo_sør,vegmo_sør,'Vegmo sør').
 hpl(78588,vegmo_sør,vegmo_sør,'Vegmo sør').
-hpl(78589,norum,norum,'Norum').
-hpl(78590,norum,norum,'Norum').
+hpl(78589,vinne_skole,vinne_skole,'Vinne skole').
+hpl(78590,vinne_skole,vinne_skole,'Vinne skole').
 hpl(78591,brannan,brannan,'Brannan').
 hpl(78592,brannan,brannan,'Brannan').
 hpl(78593,lysheim,lysheim,'Lysheim').

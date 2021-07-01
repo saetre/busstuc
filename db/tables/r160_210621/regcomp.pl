@@ -2786,7 +2786,6 @@ composite_stat(nordslettvegen,[snuplass],nordslettvegen_snuplass).
 composite_stat(nordtun,[],nordtun).
 composite_stat(norem,[snuplass],norem_snuplass).
 composite_stat(norrkøpingveien,[],norrkøpingveien).
-composite_stat(norum,[],norum).
 composite_stat(norumsaunet,[],norumsaunet).
 composite_stat(nossum,[],nossum).
 composite_stat(nubdal,[],nubdal).
@@ -4473,6 +4472,7 @@ composite_stat(vinjeøra,[],vinjeøra).
 composite_stat(vinjeøra,[skole],vinjeøra_skole).
 composite_stat(vinne,[],vinne).
 composite_stat(vinne,[bensinstasjon],vinne_bensinstasjon).
+composite_stat(vinne,[skole],vinne_skole).
 composite_stat(vinsmyr,[],vinsmyr).
 composite_stat(vinterdal,[],vinterdal).
 composite_stat(vintervollen,[],vintervollen).
