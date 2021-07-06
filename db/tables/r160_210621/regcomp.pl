@@ -3554,7 +3554,6 @@ composite_stat(slettvolvegen,[],slettvolvegen).
 composite_stat(slottet,[],slottet).
 composite_stat(sluppen,[1],sluppen_1).
 composite_stat(sluppen,[2],sluppen_2).
-composite_stat(sluppen,[vaksinesenter],sluppen_vaksinesenter).
 composite_stat(sluppenvegen,[8],sluppenvegen_8).
 composite_stat(sluppenvegen,[9],sluppenvegen_9).
 composite_stat(slupphaugen,[],slupphaugen).

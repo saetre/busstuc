@@ -437,7 +437,6 @@ hpl(104964,hoston,hoston,'Hoston').
 hpl(104965,øyum_gård,øyum_gård,'Øyum gård').
 hpl(105024,stormyra,stormyra,'Stormyra').
 hpl(105025,søraunet,søraunet,'Søraunet').
-hpl(105026,sluppen_vaksinesenter,sluppen_vaksinesenter,'Sluppen Vaksinesenter').
 hpl(105040,snåsa_hotell,snåsa_hotell,'Snåsa Hotell').
 hpl(105041,snåsa_hotell,snåsa_hotell,'Snåsa Hotell').
 hpl(105091,slørdalsvatnet,slørdalsvatnet,'Slørdalsvatnet').
