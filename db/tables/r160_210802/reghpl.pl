@@ -346,8 +346,6 @@ hpl(103516,hetling,hetling,'Hetling').
 hpl(103517,hetling,hetling,'Hetling').
 hpl(103520,sunnan,sunnan,'Sunnan').
 hpl(103522,marienborg_stasjon_3,marienborg_stasjon_3,'Marienborg stasjon 3').
-hpl(103539,engan,engan,'Engan').
-hpl(103540,engan,engan,'Engan').
 hpl(103546,sagveien,sagveien,'Sagveien').
 hpl(103547,dronningens_gate_62,dronningens_gate_62,'Dronningens gate 62').
 hpl(103576,hospitalskirka,hospitalskirka,'Hospitalskirka').
