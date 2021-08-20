@@ -439,7 +439,7 @@ hpl(105199,stensesvegen,stensesvegen,'Stensesvegen').
 hpl(105200,myran_nerskogvegen,myran_nerskogvegen,'Myran Nerskogvegen').
 hpl(105201,myran_nerskogvegen,myran_nerskogvegen,'Myran Nerskogvegen').
 hpl(105213,evjevegen,evjevegen,'Evjevegen').
-hpl(105219,ratvika_snuplass,ratvika_snuplass,'Ratvika snuplass').
+hpl(105219,mellomskogen,mellomskogen,'Mellomskogen').
 hpl(105220,sossvika,sossvika,'Sossvika').
 hpl(105221,sossvika,sossvika,'Sossvika').
 hpl(105352,guri_kunna_vgs,guri_kunna_vgs,'Guri Kunna vgs.').

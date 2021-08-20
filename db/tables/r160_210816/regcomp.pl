@@ -2466,6 +2466,7 @@ composite_stat(melkstadvik,[],melkstadvik).
 composite_stat(melkvika,[],melkvika).
 composite_stat(melland,[],melland).
 composite_stat(mellomby,[],mellomby).
+composite_stat(mellomskogen,[],mellomskogen).
 composite_stat(mellomsætra,[],mellomsætra).
 composite_stat(meltingen,[],meltingen).
 composite_stat(meltingseter,[vegdele],meltingseter_vegdele).
@@ -3017,7 +3018,6 @@ composite_stat(ranøyen,[],ranøyen).
 composite_stat(raphaugen,[],raphaugen).
 composite_stat(rate,[],rate).
 composite_stat(ratesvingen,[],ratesvingen).
-composite_stat(ratvika,[snuplass],ratvika_snuplass).
 composite_stat(raudberget,[],raudberget).
 composite_stat(raustein,[],raustein).
 composite_stat(ravlo,[snuplass],ravlo_snuplass).
