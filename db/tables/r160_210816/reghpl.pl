@@ -77,7 +77,6 @@ hpl(102629,tørring_snuplass,tørring_snuplass,'Tørring snuplass').
 hpl(102630,valløyvegen,valløyvegen,'Valløyvegen').
 hpl(102631,vanebo,vanebo,'Vanebo').
 hpl(102632,vestvika,vestvika,'Vestvika').
-hpl(102633,ålberg,ålberg,'Ålberg').
 hpl(102713,dyre_halses_gate,dyre_halses_gate,'Dyre Halses gate').
 hpl(102714,dyre_halses_gate,dyre_halses_gate,'Dyre Halses gate').
 hpl(102715,ratesvingen,ratesvingen,'Ratesvingen').
@@ -465,6 +464,9 @@ hpl(105591,tranevegen,tranevegen,'Tranevegen').
 hpl(105592,tranevegen,tranevegen,'Tranevegen').
 hpl(105593,nedre_tunveg,nedre_tunveg,'Nedre Tunveg').
 hpl(105594,nedre_tunveg,nedre_tunveg,'Nedre Tunveg').
+hpl(105609,kokkås,kokkås,'Kokkås').
+hpl(105626,ratvika,ratvika,'Ratvika').
+hpl(105634,geitvollen,geitvollen,'Geitvollen').
 hpl(110091,bakkegata,bakkegata,'Bakkegata').
 hpl(110093,vellamelen,vellamelen,'Vellamelen').
 hpl(110094,beitstad,beitstad,'Beitstad').
@@ -9055,6 +9057,8 @@ hpl(80978,korsvollan,korsvollan,'Korsvollan').
 hpl(80979,korsvollan,korsvollan,'Korsvollan').
 hpl(80982,strindmoen,strindmoen,'Strindmoen').
 hpl(80983,strindmoen,strindmoen,'Strindmoen').
+hpl(80986,bjørgan,bjørgan,'Bjørgan').
+hpl(80987,bjørgan,bjørgan,'Bjørgan').
 hpl(80988,breide,breide,'Breide').
 hpl(80989,breide,breide,'Breide').
 hpl(80992,flatanger_montessoriskole,flatanger_montessoriskole,'Flatanger montessoriskole').

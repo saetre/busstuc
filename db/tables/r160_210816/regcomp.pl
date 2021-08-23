@@ -1035,6 +1035,7 @@ composite_stat(geilmunnet,[],geilmunnet).
 composite_stat(geisnes,[],geisnes).
 composite_stat(geisnes,[ferjekai],geisnes_ferjekai).
 composite_stat(geita,[],geita).
+composite_stat(geitvollen,[],geitvollen).
 composite_stat(geving,[],geving).
 composite_stat(gevingfeltet,[øst],gevingfeltet_øst).
 composite_stat(gevingåsen,[],gevingåsen).
@@ -1931,6 +1932,7 @@ composite_stat(kobberdammen,[],kobberdammen).
 composite_stat(koieflata,[],koieflata).
 composite_stat(kojan,[],kojan).
 composite_stat(kokkvollen,[],kokkvollen).
+composite_stat(kokkås,[],kokkås).
 composite_stat(kolstad,[kirke],kolstad_kirke).
 composite_stat(kolstaddalen,[],kolstaddalen).
 composite_stat(kolstadhaugen,[],kolstadhaugen).
@@ -3018,6 +3020,7 @@ composite_stat(ranøyen,[],ranøyen).
 composite_stat(raphaugen,[],raphaugen).
 composite_stat(rate,[],rate).
 composite_stat(ratesvingen,[],ratesvingen).
+composite_stat(ratvika,[],ratvika).
 composite_stat(raudberget,[],raudberget).
 composite_stat(raustein,[],raustein).
 composite_stat(ravlo,[snuplass],ravlo_snuplass).
