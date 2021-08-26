@@ -318,6 +318,7 @@ composite_stat(borsetmoen,[],borsetmoen).
 composite_stat(borstad,[],borstad).
 composite_stat(boråskorsen,[],boråskorsen).
 composite_stat(bostad,[],bostad).
+composite_stat(botnet,[],botnet).
 composite_stat(botngård,[],botngård).
 composite_stat(botngård,[skole, fosen, vgs],botngård_skole_fosen_vgs).
 composite_stat(botnlia,[],botnlia).
@@ -1063,9 +1064,6 @@ composite_stat(gjerdet,[],gjerdet).
 composite_stat(gjerdinga,[ferjekai],gjerdinga_ferjekai).
 composite_stat(gjersvika,[],gjersvika).
 composite_stat(gjersvold,[],gjersvold).
-composite_stat(gjeset,[],gjeset).
-composite_stat(gjesetmoen,[],gjesetmoen).
-composite_stat(gjesetodden,[],gjesetodden).
 composite_stat(gjetneset,[],gjetneset).
 composite_stat(gjevilvasshytta,[],gjevilvasshytta).
 composite_stat(gjevingåsen,[],gjevingåsen).
@@ -1331,6 +1329,7 @@ composite_stat(haugbjørg,[],haugbjørg).
 composite_stat(haugbotn,[],haugbotn).
 composite_stat(haugen,[],haugen).
 composite_stat(haugen,[gård],haugen_gård).
+composite_stat(haugli,[],haugli).
 composite_stat(haugnes,[],haugnes).
 composite_stat(haugnessvingen,[],haugnessvingen).
 composite_stat(haugrønning,[],haugrønning).
