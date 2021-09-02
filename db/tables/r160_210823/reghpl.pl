@@ -475,6 +475,7 @@ hpl(105634,geitvollen,geitvollen,'Geitvollen').
 hpl(105668,haugli,haugli,'Haugli').
 hpl(105669,haugli,haugli,'Haugli').
 hpl(105683,skoglund,skoglund,'Skoglund').
+hpl(105689,lundeveien,lundeveien,'Lundeveien').
 hpl(110091,bakkegata,bakkegata,'Bakkegata').
 hpl(110093,vellamelen,vellamelen,'Vellamelen').
 hpl(110094,beitstad,beitstad,'Beitstad').
@@ -4465,7 +4466,6 @@ hpl(75382,brubakken,brubakken,'Brubakken').
 hpl(75383,brubakken,brubakken,'Brubakken').
 hpl(75384,foss_snekkeri,foss_snekkeri,'Foss snekkeri').
 hpl(75385,foss_snekkeri,foss_snekkeri,'Foss snekkeri').
-hpl(75386,brubakken,brubakken,'Brubakken').
 hpl(75387,brudalen,brudalen,'Brudalen').
 hpl(75388,fossan,fossan,'Fossan').
 hpl(75389,fossan,fossan,'Fossan').
@@ -9140,7 +9140,6 @@ hpl(98596,gjøssvika_bru_1,gjøssvika_bru_1,'Gjøssvika bru 1').
 hpl(98597,gjøssvika_bru_2,gjøssvika_bru_2,'Gjøssvika bru 2').
 hpl(98602,ålen_sentrum_1,ålen_sentrum_1,'Ålen sentrum 1').
 hpl(98649,lade_allé_73,lade_allé_73,'Lade allé 73').
-hpl(98817,storås,storås,'Storås').
 hpl(98819,udduvoll_bru_vest,udduvoll_bru_vest,'Udduvoll bru vest').
 hpl(98822,øie_skole,øie_skole,'Øie skole').
 hpl(98824,øysandkrysset,øysandkrysset,'Øysandkrysset').
