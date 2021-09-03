@@ -1949,7 +1949,6 @@ hpl(72581,haltdalen_oppvekstsenter,haltdalen_oppvekstsenter,'Haltdalen oppveksts
 hpl(72582,haltdalen_oppvekstsenter,haltdalen_oppvekstsenter,'Haltdalen oppvekstsenter').
 hpl(72583,væresbakken,væresbakken,'Væresbakken').
 hpl(72584,væresbakken,væresbakken,'Væresbakken').
-hpl(72585,halten_kai,halten_kai,'Halten kai').
 hpl(72586,løvby,løvby,'Løvby').
 hpl(72587,løvby,løvby,'Løvby').
 hpl(72588,væresholmen,væresholmen,'Væresholmen').
@@ -2186,7 +2185,6 @@ hpl(72850,havstad,havstad,'Havstad').
 hpl(72851,havstad,havstad,'Havstad').
 hpl(72852,østre_berg_1,østre_berg_1,'Østre Berg 1').
 hpl(72853,østre_berg_3,østre_berg_3,'Østre Berg 3').
-hpl(72854,melhus_skysstasjon,melhus_skysstasjon,'Melhus skysstasjon').
 hpl(72855,havstadsenteret,havstadsenteret,'Havstadsenteret').
 hpl(72856,havstadsenteret,havstadsenteret,'Havstadsenteret').
 hpl(72857,østre_eidem,østre_eidem,'Østre Eidem').
@@ -5024,8 +5022,8 @@ hpl(76027,steinvik,steinvik,'Steinvik').
 hpl(76028,steinvik,steinvik,'Steinvik').
 hpl(76029,andsjøen,andsjøen,'Andsjøen').
 hpl(76030,andsjøen,andsjøen,'Andsjøen').
-hpl(76031,platten,platten,'Platten').
-hpl(76032,platten,platten,'Platten').
+hpl(76031,platten_øst,platten_øst,'Platten øst').
+hpl(76032,platten_øst,platten_øst,'Platten øst').
 hpl(76033,gammelbutikken_totland,gammelbutikken_totland,'Gammelbutikken Totland').
 hpl(76034,gammelbutikken_totland,gammelbutikken_totland,'Gammelbutikken Totland').
 hpl(76035,fløan,fløan,'Fløan').

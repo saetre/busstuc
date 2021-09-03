@@ -1280,7 +1280,6 @@ composite_stat(halstad,[],halstad).
 composite_stat(halstein,[gård],halstein_gård).
 composite_stat(haltdalen,[coop],haltdalen_coop).
 composite_stat(haltdalen,[oppvekstsenter],haltdalen_oppvekstsenter).
-composite_stat(halten,[kai],halten_kai).
 composite_stat(haltvika,[],haltvika).
 composite_stat(hamarsøy,[vegdele],hamarsøy_vegdele).
 composite_stat(hamarvik,[s, lag],hamarvik_s_lag).
@@ -2979,7 +2978,7 @@ composite_stat(planetringen,[],planetringen).
 composite_stat(plassa,[],plassa).
 composite_stat(plassbekken,[],plassbekken).
 composite_stat(plassen,[],plassen).
-composite_stat(platten,[],platten).
+composite_stat(platten,[øst],platten_øst).
 composite_stat(prestegardsætra,[],prestegardsætra).
 composite_stat(prestegården,[],prestegården).
 composite_stat(prestgårdskrysset,[],prestgårdskrysset).
