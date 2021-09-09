@@ -235,7 +235,7 @@ hpl(103299,landlaupet,landlaupet,'Landlaupet').
 hpl(103300,landlaupet,landlaupet,'Landlaupet').
 hpl(103304,lønset_kirke,lønset_kirke,'Lønset kirke').
 hpl(103305,lønset_kirke,lønset_kirke,'Lønset kirke').
-hpl(103306,lønset_v_butikken,lønset_v_butikken,'Lønset v/butikken').
+hpl(103306,lønset,lønset,'Lønset').
 hpl(103307,moe_kirke,moe_kirke,'Moe kirke').
 hpl(103308,ner_mørreaunet,ner_mørreaunet,'Ner Mørreaunet').
 hpl(103310,ordførarvegen,ordførarvegen,'Ordførarvegen').
@@ -494,7 +494,7 @@ hpl(110231,kystmuseet,kystmuseet,'Kystmuseet').
 hpl(110273,fosslia_fjellhall,fosslia_fjellhall,'Fosslia Fjellhall').
 hpl(110274,halsen_ungdomsskole,halsen_ungdomsskole,'Halsen ungdomsskole').
 hpl(110275,sigurd_jarls_veg,sigurd_jarls_veg,'Sigurd Jarls veg').
-hpl(110276,tangen_næringsområde,tangen_næringsområde,'Tangen næringsområde').
+hpl(110276,tangen_sør,tangen_sør,'Tangen sør').
 hpl(110325,falkberget,falkberget,'Falkberget').
 hpl(110326,mosløkkja,mosløkkja,'Mosløkkja').
 hpl(110327,tamlagsrønningen,tamlagsrønningen,'Tamlagsrønningen').
@@ -1938,7 +1938,7 @@ hpl(72567,væktarstua,væktarstua,'Væktarstua').
 hpl(72568,halstad,halstad,'Halstad').
 hpl(72571,være_ranheimsvegen,være_ranheimsvegen,'Være Ranheimsvegen').
 hpl(72572,halstein_gård,halstein_gård,'Halstein gård').
-hpl(72573,lønset_v_butikken,lønset_v_butikken,'Lønset v/butikken').
+hpl(72573,lønset,lønset,'Lønset').
 hpl(72574,haltdalen_coop,haltdalen_coop,'Haltdalen Coop').
 hpl(72575,haltdalen_coop,haltdalen_coop,'Haltdalen Coop').
 hpl(72576,være,være,'Være').
@@ -6030,7 +6030,7 @@ hpl(77255,fjølvika,fjølvika,'Fjølvika').
 hpl(77257,ytteråsen,ytteråsen,'Ytteråsen').
 hpl(77258,solem,solem,'Solem').
 hpl(77259,solem,solem,'Solem').
-hpl(77261,tangen_næringsområde,tangen_næringsområde,'Tangen næringsområde').
+hpl(77261,tangen_sør,tangen_sør,'Tangen sør').
 hpl(77262,kopperået,kopperået,'Kopperået').
 hpl(77263,kopperået,kopperået,'Kopperået').
 hpl(77264,amdal,amdal,'Amdal').

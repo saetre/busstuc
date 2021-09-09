@@ -2357,8 +2357,8 @@ composite_stat(løkkja,[],løkkja).
 composite_stat(løkkjbekken,[],løkkjbekken).
 composite_stat(løkli,[],løkli).
 composite_stat(lønnem,[],lønnem).
+composite_stat(lønset,[],lønset).
 composite_stat(lønset,[kirke],lønset_kirke).
-composite_stat(lønset,[v, butikken],lønset_v_butikken).
 composite_stat(lørdagsvika,[],lørdagsvika).
 composite_stat(løset,[],løset).
 composite_stat(løsetlia,[],løsetlia).
@@ -4081,7 +4081,7 @@ composite_stat(tanemsmoen,[],tanemsmoen).
 composite_stat(tanemsmovegen,[],tanemsmovegen).
 composite_stat(tangen,[],tangen).
 composite_stat(tangen,[nord],tangen_nord).
-composite_stat(tangen,[næringsområde],tangen_næringsområde).
+composite_stat(tangen,[sør],tangen_sør).
 composite_stat(tangmo,[],tangmo).
 composite_stat(tangsvekorsen,[],tangsvekorsen).
 composite_stat(tangvik,[],tangvik).
