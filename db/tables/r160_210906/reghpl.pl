@@ -285,8 +285,7 @@ hpl(103398,bangvegen,bangvegen,'Bangvegen').
 hpl(103399,dalsnes_bru_sør,dalsnes_bru_sør,'Dalsnes bru sør').
 hpl(103400,fagerhaugveien,fagerhaugveien,'Fagerhaugveien').
 hpl(103401,fagerhaugveien,fagerhaugveien,'Fagerhaugveien').
-hpl(103404,sluppen_1,sluppen_1,'Sluppen 1').
-hpl(103405,sluppen_2,sluppen_2,'Sluppen 2').
+hpl(103404,sluppen,sluppen,'Sluppen').
 hpl(103406,haugåsvoll,haugåsvoll,'Haugåsvoll').
 hpl(103407,ingstadnesset,ingstadnesset,'Ingstadnesset').
 hpl(103410,mobjørg,mobjørg,'Mobjørg').
