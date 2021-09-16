@@ -4033,7 +4033,6 @@ composite_stat(søndre,[hoem],søndre_hoem).
 composite_stat(søndre,[risvolltun],søndre_risvolltun).
 composite_stat(sør,[dyrøy],sør_dyrøy).
 composite_stat(sør,[elnes],sør_elnes).
-composite_stat(sør,[gjæslingan, hurtigbåtkai],sør_gjæslingan_hurtigbåtkai).
 composite_stat(sør,[roan, skole],sør_roan_skole).
 composite_stat(sør,[vera],sør_vera).
 composite_stat(søraker,[],søraker).
