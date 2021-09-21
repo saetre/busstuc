@@ -4749,8 +4749,8 @@ hpl(75695,gjøssvika_bru,gjøssvika_bru,'Gjøssvika bru').
 hpl(75696,gjøssvika_bru,gjøssvika_bru,'Gjøssvika bru').
 hpl(75697,glåmos,glåmos,'Glåmos').
 hpl(75698,glåmos,glåmos,'Glåmos').
-hpl(75699,glåmos_samf_hus,glåmos_samf_hus,'Glåmos samf.hus').
-hpl(75700,glåmos_samf_hus,glåmos_samf_hus,'Glåmos samf.hus').
+hpl(75699,glåmos_samfunnshus,glåmos_samfunnshus,'Glåmos samfunnshus').
+hpl(75700,glåmos_samfunnshus,glåmos_samfunnshus,'Glåmos samfunnshus').
 hpl(75701,glåmos_stadion,glåmos_stadion,'Glåmos stadion').
 hpl(75702,glåmos_stadion,glåmos_stadion,'Glåmos stadion').
 hpl(75703,glørstad,glørstad,'Glørstad').

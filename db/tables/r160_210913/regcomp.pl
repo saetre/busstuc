@@ -1084,7 +1084,7 @@ composite_stat(glomsmyran,[],glomsmyran).
 composite_stat(gluggbekken,[],gluggbekken).
 composite_stat(gluggfjellet,[],gluggfjellet).
 composite_stat(glåmos,[],glåmos).
-composite_stat(glåmos,[samf, hus],glåmos_samf_hus).
+composite_stat(glåmos,[samfunnshus],glåmos_samfunnshus).
 composite_stat(glåmos,[stadion],glåmos_stadion).
 composite_stat(glømstad,[],glømstad).
 composite_stat(glørstad,[],glørstad).
