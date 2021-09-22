@@ -1067,7 +1067,6 @@ composite_stat(gjerdinga,[ferjekai],gjerdinga_ferjekai).
 composite_stat(gjersvika,[],gjersvika).
 composite_stat(gjersvold,[],gjersvold).
 composite_stat(gjetneset,[],gjetneset).
-composite_stat(gjevilvasshytta,[],gjevilvasshytta).
 composite_stat(gjevingåsen,[],gjevingåsen).
 composite_stat(gjæsingen,[kai],gjæsingen_kai).
 composite_stat(gjølga,[],gjølga).
