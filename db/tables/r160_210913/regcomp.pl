@@ -3061,6 +3061,7 @@ composite_stat(renå,[],renå).
 composite_stat(reppa,[],reppa).
 composite_stat(reppasberget,[],reppasberget).
 composite_stat(reppe,[],reppe).
+composite_stat(reppe,[snuplass],reppe_snuplass).
 composite_stat(reppesfeltet,[],reppesfeltet).
 composite_stat(reppevegen,[],reppevegen).
 composite_stat(reppkleiv,[],reppkleiv).

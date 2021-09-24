@@ -811,7 +811,7 @@ hpl(71329,trafost,trafost,'Trafost').
 hpl(71330,hesttrø,hesttrø,'Hesttrø').
 hpl(71331,trafost,trafost,'Trafost').
 hpl(71332,hesttrø,hesttrø,'Hesttrø').
-hpl(71335,reppe,reppe,'Reppe').
+hpl(71335,reppe_snuplass,reppe_snuplass,'Reppe snuplass').
 hpl(71336,hesttrøa,hesttrøa,'Hesttrøa').
 hpl(71337,hesttrøa,hesttrøa,'Hesttrøa').
 hpl(71341,reppevegen,reppevegen,'Reppevegen').
