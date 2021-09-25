@@ -69,7 +69,7 @@ hpl(102598,myrtun,myrtun,'Myrtun').
 hpl(102599,rein,rein,'Rein').
 hpl(102600,reitlostubben,reitlostubben,'Reitlostubben').
 hpl(102601,reitlovegen,reitlovegen,'Reitlovegen').
-hpl(102604,skillegrind_snuplass,skillegrind_snuplass,'Skillegrind snuplass').
+hpl(102604,skillegrind_bru,skillegrind_bru,'Skillegrind bru').
 hpl(102605,slettvolvegen,slettvolvegen,'Slettvolvegen').
 hpl(102606,sparbu_stasjon,sparbu_stasjon,'Sparbu stasjon').
 hpl(102608,sveian,sveian,'Sveian').

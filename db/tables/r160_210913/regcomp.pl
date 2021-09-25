@@ -3463,7 +3463,7 @@ composite_stat(skiljås,[],skiljås).
 composite_stat(skillbrigt,[],skillbrigt).
 composite_stat(skille,[],skille).
 composite_stat(skillegrind,[],skillegrind).
-composite_stat(skillegrind,[snuplass],skillegrind_snuplass).
+composite_stat(skillegrind,[bru],skillegrind_bru).
 composite_stat(skilleås,[],skilleås).
 composite_stat(skillstad,[],skillstad).
 composite_stat(skippervegen,[],skippervegen).
