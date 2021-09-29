@@ -521,7 +521,7 @@ hpl(110373,kråkmo_vegdele,kråkmo_vegdele,'Kråkmo vegdele').
 hpl(110374,rønningen,rønningen,'Rønningen').
 hpl(110375,bjørsetåsen,bjørsetåsen,'Bjørsetåsen').
 hpl(110376,breidli,breidli,'Breidli').
-hpl(110377,keiserås_veideler,keiserås_veideler,'Keiserås veideler').
+hpl(110377,keiserås_vegdele,keiserås_vegdele,'Keiserås vegdele').
 hpl(110378,vollakrysset,vollakrysset,'Vollakrysset').
 hpl(110379,fagerli_vegdele,fagerli_vegdele,'Fagerli vegdele').
 hpl(110385,årvåg,årvåg,'Årvåg').
@@ -1621,8 +1621,8 @@ hpl(72216,groegga,groegga,'Groegga').
 hpl(72219,vikelvveien,vikelvveien,'Vikelvveien').
 hpl(72220,vikelvveien,vikelvveien,'Vikelvveien').
 hpl(72221,skansen,skansen,'Skansen').
-hpl(72222,groegga,groegga,'Groegga').
-hpl(72223,groegga,groegga,'Groegga').
+hpl(72222,oppøya,oppøya,'Oppøya').
+hpl(72223,oppøya,oppøya,'Oppøya').
 hpl(72224,skaret,skaret,'Skaret').
 hpl(72225,skaret,skaret,'Skaret').
 hpl(72226,viken,viken,'Viken').
@@ -4661,8 +4661,8 @@ hpl(75600,churchills_veg,churchills_veg,'Churchills veg').
 hpl(75601,churchills_veg,churchills_veg,'Churchills veg').
 hpl(75602,føll,føll,'Føll').
 hpl(75603,føll,føll,'Føll').
-hpl(75606,tillerterminalen_2,tillerterminalen_2,'Tillerterminalen 2').
-hpl(75607,tillerterminalen_1,tillerterminalen_1,'Tillerterminalen 1').
+hpl(75606,tillerterminalen_1,tillerterminalen_1,'Tillerterminalen 1').
+hpl(75607,tillerterminalen_2,tillerterminalen_2,'Tillerterminalen 2').
 hpl(75608,gaddåsen,gaddåsen,'Gaddåsen').
 hpl(75609,city_syd_e6,city_syd_e6,'City Syd E6').
 hpl(75610,city_syd_e6,city_syd_e6,'City Syd E6').

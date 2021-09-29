@@ -1820,7 +1820,6 @@ composite_stat(kattem,[],kattem).
 composite_stat(kattemsenteret,[],kattemsenteret).
 composite_stat(kattmarka,[],kattmarka).
 composite_stat(keiserås,[vegdele],keiserås_vegdele).
-composite_stat(keiserås,[veideler],keiserås_veideler).
 composite_stat(keiseråsen,[],keiseråsen).
 composite_stat(kiil,[],kiil).
 composite_stat(killingdal,[],killingdal).
@@ -2919,6 +2918,7 @@ composite_stat(oppsynsmann,[eggens, street],oppsynsmann_eggens_veg). % generated
 composite_stat(oppsynsmann,[eggens, veg],oppsynsmann_eggens_veg).
 composite_stat(oppsynsmann,[eggens_street],oppsynsmann_eggens_veg). % generated 2.1
 composite_stat(oppsynsmann,[eggensveg],oppsynsmann_eggens_veg). % generated 2.0
+composite_stat(oppøya,[],oppøya).
 composite_stat(ordførarvegen,[],ordførarvegen).
 composite_stat(orkanger,[barnehage],orkanger_barnehage).
 composite_stat(orkanger,[skole],orkanger_skole).
