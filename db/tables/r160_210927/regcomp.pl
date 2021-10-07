@@ -301,7 +301,7 @@ composite_stat(bogen,[],bogen).
 composite_stat(bogen,[i, bindal],bogen_i_bindal).
 composite_stat(bogna,[bru, nordre],bogna_bru_nordre).
 composite_stat(bogna,[bru, søndre],bogna_bru_søndre).
-composite_stat(bogøyvær,[kai],bogøyvær_kai).
+composite_stat(bogøyvær,[hurtigbåtkai],bogøyvær_hurtigbåtkai).
 composite_stat(bohus,[østre],bohus_østre).
 composite_stat(bollan,[],bollan).
 composite_stat(bollingmo,[],bollingmo).
@@ -1047,7 +1047,6 @@ composite_stat(geita,[],geita).
 composite_stat(geitvollen,[],geitvollen).
 composite_stat(geving,[],geving).
 composite_stat(gevingfeltet,[øst],gevingfeltet_øst).
-composite_stat(gevingåsen,[],gevingåsen).
 composite_stat(gifstad,[],gifstad).
 composite_stat(gildheim,[],gildheim).
 composite_stat(gildset,[],gildset).
@@ -3317,7 +3316,6 @@ composite_stat(saupstadringen,[109],saupstadringen_109).
 composite_stat(saupstadsenteret,[],saupstadsenteret).
 composite_stat(saursaunet,[],saursaunet).
 composite_stat(saurskorsen,[],saurskorsen).
-composite_stat(sauøya,[kai],sauøya_kai).
 composite_stat(schei,[],schei).
 composite_stat(schiøtz,[street],schiøtz_vei). % generated 1.2
 composite_stat(schiøtz,[vei],schiøtz_vei).

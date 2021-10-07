@@ -1358,7 +1358,6 @@ hpl(71911,håvik,håvik,'Håvik').
 hpl(71912,saupstadsenteret,saupstadsenteret,'Saupstadsenteret').
 hpl(71913,saupstadsenteret,saupstadsenteret,'Saupstadsenteret').
 hpl(71915,hæverstølen,hæverstølen,'Hæverstølen').
-hpl(71916,sauøya_kai,sauøya_kai,'Sauøya kai').
 hpl(71917,vallersund_oppvekstsenter,vallersund_oppvekstsenter,'Vallersund oppvekstsenter').
 hpl(71918,hæverstølen,hæverstølen,'Hæverstølen').
 hpl(71921,vallersund_samvirkelag,vallersund_samvirkelag,'Vallersund samvirkelag').
@@ -4333,7 +4332,7 @@ hpl(75227,flatåsen_senter,flatåsen_senter,'Flatåsen senter').
 hpl(75228,flatåsen_senter,flatåsen_senter,'Flatåsen senter').
 hpl(75229,bogen,bogen,'Bogen').
 hpl(75230,bogen,bogen,'Bogen').
-hpl(75231,bogøyvær_kai,bogøyvær_kai,'Bogøyvær kai').
+hpl(75231,bogøyvær_hurtigbåtkai,bogøyvær_hurtigbåtkai,'Bogøyvær hurtigbåtkai').
 hpl(75232,flatåstoppen,flatåstoppen,'Flatåstoppen').
 hpl(75233,bollan,bollan,'Bollan').
 hpl(75234,bollan,bollan,'Bollan').
@@ -5436,7 +5435,6 @@ hpl(76519,bergsmo_øst,bergsmo_øst,'Bergsmo øst').
 hpl(76520,bergsmo_øst,bergsmo_øst,'Bergsmo øst').
 hpl(76521,aglenårvika,aglenårvika,'Aglenårvika').
 hpl(76522,aglenårvika,aglenårvika,'Aglenårvika').
-hpl(76523,gjevingåsen,gjevingåsen,'Gjevingåsen').
 hpl(76524,gjevingåsen,gjevingåsen,'Gjevingåsen').
 hpl(76525,valskrå,valskrå,'Valskrå').
 hpl(76526,valskrå,valskrå,'Valskrå').
@@ -5743,8 +5741,7 @@ hpl(76894,kyllobakkan,kyllobakkan,'Kyllobakkan').
 hpl(76895,høylandet_øst,høylandet_øst,'Høylandet øst').
 hpl(76896,høylandet_øst,høylandet_øst,'Høylandet øst').
 hpl(76897,nybø,nybø,'Nybø').
-hpl(76898,gevingåsen,gevingåsen,'Gevingåsen').
-hpl(76899,gevingåsen,gevingåsen,'Gevingåsen').
+hpl(76898,gjevingåsen,gjevingåsen,'Gjevingåsen').
 hpl(76900,grande_vegdele,grande_vegdele,'Grande vegdele').
 hpl(76901,grande_vegdele,grande_vegdele,'Grande vegdele').
 hpl(76902,nylenden,nylenden,'Nylenden').
