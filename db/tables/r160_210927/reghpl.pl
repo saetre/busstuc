@@ -3282,8 +3282,8 @@ hpl(74055,kjelstad,kjelstad,'Kjelstad').
 hpl(74056,kjelstad,kjelstad,'Kjelstad').
 hpl(74057,st_olavs_hospital_vest,st_olavs_hospital_vest,'St. Olavs Hospital vest').
 hpl(74058,st_olavs_hospital_vest,st_olavs_hospital_vest,'St. Olavs Hospital vest').
-hpl(74059,kjelstad,kjelstad,'Kjelstad').
-hpl(74060,kjelstad,kjelstad,'Kjelstad').
+hpl(74059,kjeldstad,kjeldstad,'Kjeldstad').
+hpl(74060,kjeldstad,kjeldstad,'Kjeldstad').
 hpl(74061,st_olavs_gate,st_olavs_gate,'St. Olavs gate').
 hpl(74062,nordland,nordland,'Nordland').
 hpl(74063,nordland,nordland,'Nordland').
@@ -4044,7 +4044,7 @@ hpl(74919,berfjord,berfjord,'Berfjord').
 hpl(74920,berfjord,berfjord,'Berfjord').
 hpl(74921,engelsås,engelsås,'Engelsås').
 hpl(74922,engelsås,engelsås,'Engelsås').
-hpl(74923,osøy_bru,osøy_bru,'Osøy Bru').
+hpl(74923,osøy_bru,osøy_bru,'Osøy bru').
 hpl(74924,berg,berg,'Berg').
 hpl(74925,berg,berg,'Berg').
 hpl(74926,engesvoll,engesvoll,'Engesvoll').

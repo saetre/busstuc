@@ -1844,6 +1844,7 @@ composite_stat(kirkvoll,[],kirkvoll).
 composite_stat(kistevik,[],kistevik).
 composite_stat(kjelbergnes,[],kjelbergnes).
 composite_stat(kjelden,[bru],kjelden_bru).
+composite_stat(kjeldstad,[],kjeldstad).
 composite_stat(kjell,[hals, street],kjell_hals_veg). % generated 2.2
 composite_stat(kjell,[hals, veg],kjell_hals_veg).
 composite_stat(kjell,[hals_street],kjell_hals_veg). % generated 2.1
