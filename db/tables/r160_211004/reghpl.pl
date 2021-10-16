@@ -480,15 +480,23 @@ hpl(105741,coop_venn,coop_venn,'Coop Venn').
 hpl(105743,tømret,tømret,'Tømret').
 hpl(105762,sundan,sundan,'Sundan').
 hpl(105806,fiborgtangen_sør,fiborgtangen_sør,'Fiborgtangen sør').
+hpl(105807,moa_bru,moa_bru,'Moa bru').
 hpl(105818,reinsvatnet,reinsvatnet,'Reinsvatnet').
 hpl(105831,skillegrind_snuplass,skillegrind_snuplass,'Skillegrind snuplass').
 hpl(105835,almlitrø,almlitrø,'Almlitrø').
+hpl(105838,bergvegen,bergvegen,'Bergvegen').
 hpl(105840,eggan,eggan,'Eggan').
 hpl(105841,eggan,eggan,'Eggan').
 hpl(105842,kvålsjårvegen,kvålsjårvegen,'Kvålsjårvegen').
 hpl(105843,buan,buan,'Buan').
 hpl(105847,svean,svean,'Svean').
 hpl(105848,svean,svean,'Svean').
+hpl(105858,frøset,frøset,'Frøset').
+hpl(105859,holte_garasje,holte_garasje,'Holte garasje').
+hpl(105860,tjønnan,tjønnan,'Tjønnan').
+hpl(105861,hogstret,hogstret,'Hogstret').
+hpl(105898,val_barne_og_ungdomsskole,val_barne_og_ungdomsskole,'Val barne og ungdomsskole').
+hpl(105904,storåsveien,storåsveien,'Storåsveien').
 hpl(110091,bakkegata,bakkegata,'Bakkegata').
 hpl(110093,vellamelen,vellamelen,'Vellamelen').
 hpl(110094,beitstad,beitstad,'Beitstad').
