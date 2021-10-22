@@ -1993,8 +1993,8 @@ hpl(72611,værøyseter,værøyseter,'Værøyseter').
 hpl(72612,værøyseter,værøyseter,'Værøyseter').
 hpl(72616,weidemannsveien,weidemannsveien,'Weidemannsveien').
 hpl(72617,weidemannsveien,weidemannsveien,'Weidemannsveien').
-hpl(72619,hammerfjell,hammerfjell,'Hammerfjell').
-hpl(72620,hammerfjell,hammerfjell,'Hammerfjell').
+hpl(72619,sandberg,sandberg,'Sandberg').
+hpl(72620,sandberg,sandberg,'Sandberg').
 hpl(72621,willmannsøyen,willmannsøyen,'Willmannsøyen').
 hpl(72622,willmannsøyen,willmannsøyen,'Willmannsøyen').
 hpl(72625,hammersborg,hammersborg,'Hammersborg').
@@ -2153,8 +2153,8 @@ hpl(72790,haukdal,haukdal,'Haukdal').
 hpl(72791,haukdal,haukdal,'Haukdal').
 hpl(72792,åsveien,åsveien,'Åsveien').
 hpl(72793,åsveien,åsveien,'Åsveien').
-hpl(72794,melby,melby,'Melby').
-hpl(72795,melby,melby,'Melby').
+hpl(72794,nordland,nordland,'Nordland').
+hpl(72795,nordland,nordland,'Nordland').
 hpl(72796,haukdal_aas,haukdal_aas,'Haukdal / Aas').
 hpl(72797,haukdal_aas,haukdal_aas,'Haukdal / Aas').
 hpl(72798,åsveien_skole_4,åsveien_skole_4,'Åsveien skole 4').
@@ -3292,8 +3292,8 @@ hpl(74058,st_olavs_hospital_vest,st_olavs_hospital_vest,'St. Olavs Hospital vest
 hpl(74059,kjeldstad,kjeldstad,'Kjeldstad').
 hpl(74060,kjeldstad,kjeldstad,'Kjeldstad').
 hpl(74061,st_olavs_gate,st_olavs_gate,'St. Olavs gate').
-hpl(74062,nordland,nordland,'Nordland').
-hpl(74063,nordland,nordland,'Nordland').
+hpl(74062,kråksetdalen,kråksetdalen,'Kråksetdalen').
+hpl(74063,kråksetdalen,kråksetdalen,'Kråksetdalen').
 hpl(74064,kjerrengvoll,kjerrengvoll,'Kjerrengvoll').
 hpl(74065,kjerrengvoll,kjerrengvoll,'Kjerrengvoll').
 hpl(74068,kjerringvåg,kjerringvåg,'Kjerringvåg').

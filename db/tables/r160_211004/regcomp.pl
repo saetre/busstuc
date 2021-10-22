@@ -1296,7 +1296,6 @@ composite_stat(hammer,[vegdele],hammer_vegdele).
 composite_stat(hammeraunan,[],hammeraunan).
 composite_stat(hammerbakken,[],hammerbakken).
 composite_stat(hammerbekkrysset,[],hammerbekkrysset).
-composite_stat(hammerfjell,[],hammerfjell).
 composite_stat(hammersborg,[],hammersborg).
 composite_stat(hamn,[],hamn).
 composite_stat(hamnes,[],hamnes).
@@ -2013,6 +2012,7 @@ composite_stat(kråkerøya,[],kråkerøya).
 composite_stat(kråkmo,[vegdele],kråkmo_vegdele).
 composite_stat(kråknes,[],kråknes).
 composite_stat(kråknesset,[],kråknesset).
+composite_stat(kråksetdalen,[],kråksetdalen).
 composite_stat(kullåsen,[],kullåsen).
 composite_stat(kulseth,[],kulseth).
 composite_stat(kulsetvegen,[],kulsetvegen).
@@ -2456,7 +2456,6 @@ composite_stat(mekken,[],mekken).
 composite_stat(melakorsen,[],melakorsen).
 composite_stat(melan,[],melan).
 composite_stat(melandsjø,[],melandsjø).
-composite_stat(melby,[],melby).
 composite_stat(melbygraven,[],melbygraven).
 composite_stat(meldal,[barne, og, ungdomsskole],meldal_barne_og_ungdomsskole).
 composite_stat(meldal,[bygdemuseum],meldal_bygdemuseum).
@@ -3290,6 +3289,7 @@ composite_stat(salthammer,[],salthammer).
 composite_stat(salthammer,[nordre],salthammer_nordre).
 composite_stat(sand,[],sand).
 composite_stat(sandaunet,[],sandaunet).
+composite_stat(sandberg,[],sandberg).
 composite_stat(sandbrekka,[],sandbrekka).
 composite_stat(sanden,[],sanden).
 composite_stat(sandfærhus,[],sandfærhus).
