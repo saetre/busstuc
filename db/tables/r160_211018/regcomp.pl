@@ -366,7 +366,6 @@ composite_stat(breen,[],breen).
 composite_stat(breidablikk,[1],breidablikk_1).
 composite_stat(breidablikk,[2],breidablikk_2).
 composite_stat(breidablikk,[3],breidablikk_3).
-composite_stat(breidablikk,[4],breidablikk_4).
 composite_stat(breidablikk,[],breidablikk).
 composite_stat(breidablikk,[skole],breidablikk_skole).
 composite_stat(breidablikkveien,[],breidablikkveien).
@@ -3116,7 +3115,7 @@ composite_stat(risgrenda,[],risgrenda).
 composite_stat(risholt,[],risholt).
 composite_stat(rislivegen,[],rislivegen).
 composite_stat(risløkkja,[],risløkkja).
-composite_stat(rissa,[],rissa).
+composite_stat(rissa,[skysstasjon],rissa_skysstasjon).
 composite_stat(ristad,[vegdele],ristad_vegdele).
 composite_stat(risvik,[],risvik).
 composite_stat(risvika,[],risvika).

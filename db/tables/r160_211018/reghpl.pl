@@ -897,8 +897,8 @@ hpl(71401,risgrenda,risgrenda,'Risgrenda').
 hpl(71402,hjertåsbakken,hjertåsbakken,'Hjertåsbakken').
 hpl(71403,hjertåsbakken,hjertåsbakken,'Hjertåsbakken').
 hpl(71404,trollahaugen_46,trollahaugen_46,'Trollahaugen 46').
-hpl(71405,rissa,rissa,'Rissa').
-hpl(71406,rissa,rissa,'Rissa').
+hpl(71405,rissa_skysstasjon,rissa_skysstasjon,'Rissa skysstasjon').
+hpl(71406,rissa_skysstasjon,rissa_skysstasjon,'Rissa skysstasjon').
 hpl(71407,trollahaugen_64,trollahaugen_64,'Trollahaugen 64').
 hpl(71408,hjulmakerveien,hjulmakerveien,'Hjulmakerveien').
 hpl(71409,risvik,risvik,'Risvik').
@@ -4343,7 +4343,6 @@ hpl(75223,flatval,flatval,'Flatval').
 hpl(75224,flatval,flatval,'Flatval').
 hpl(75225,blækkan,blækkan,'Blækkan').
 hpl(75226,blækkan,blækkan,'Blækkan').
-hpl(75227,flatåsen_senter,flatåsen_senter,'Flatåsen senter').
 hpl(75228,flatåsen_senter,flatåsen_senter,'Flatåsen senter').
 hpl(75229,bogen,bogen,'Bogen').
 hpl(75230,bogen,bogen,'Bogen').
@@ -4433,7 +4432,6 @@ hpl(75319,breen,breen,'Breen').
 hpl(75320,breen,breen,'Breen').
 hpl(75321,breidablikk_2,breidablikk_2,'Breidablikk 2').
 hpl(75322,breidablikk_1,breidablikk_1,'Breidablikk 1').
-hpl(75323,breidablikk_4,breidablikk_4,'Breidablikk 4').
 hpl(75324,breidablikk_3,breidablikk_3,'Breidablikk 3').
 hpl(75325,folafoten,folafoten,'Folafoten').
 hpl(75326,folafoten,folafoten,'Folafoten').
