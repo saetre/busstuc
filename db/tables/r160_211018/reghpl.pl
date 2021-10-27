@@ -511,8 +511,6 @@ hpl(110134,coop_sistranda,coop_sistranda,'Coop Sistranda').
 hpl(110135,coop_sistranda,coop_sistranda,'Coop Sistranda').
 hpl(110138,trøakorsen,trøakorsen,'Trøakorsen').
 hpl(110141,ugla,ugla,'Ugla').
-hpl(110171,innset_s_lag,innset_s_lag,'Innset S-lag').
-hpl(110175,innset_s_lag,innset_s_lag,'Innset S-lag').
 hpl(110181,lundamo,lundamo,'Lundamo').
 hpl(110188,kjørsvikbugen_hurtigbåtkai,kjørsvikbugen_hurtigbåtkai,'Kjørsvikbugen hurtigbåtkai').
 hpl(110230,kystmuseet,kystmuseet,'Kystmuseet').
@@ -1553,8 +1551,8 @@ hpl(72109,vestmarka,vestmarka,'Vestmarka').
 hpl(72110,vestmarka,vestmarka,'Vestmarka').
 hpl(72111,singsås_stasjon,singsås_stasjon,'Singsås stasjon').
 hpl(72112,singsås_stasjon,singsås_stasjon,'Singsås stasjon').
-hpl(72113,innset_s_lag,innset_s_lag,'Innset S-lag').
-hpl(72114,innset_s_lag,innset_s_lag,'Innset S-lag').
+hpl(72113,innset_samvirkelag,innset_samvirkelag,'Innset samvirkelag').
+hpl(72114,innset_samvirkelag,innset_samvirkelag,'Innset samvirkelag').
 hpl(72117,singsåsbakken,singsåsbakken,'Singsåsbakken').
 hpl(72118,singsåsbakken,singsåsbakken,'Singsåsbakken').
 hpl(72119,innset_skole,innset_skole,'Innset skole').
