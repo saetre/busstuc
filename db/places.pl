@@ -1734,7 +1734,7 @@ cmpl(kongens,[gate,holdeplass,k2],kongens_gate_k2). %% ugly ?
 cmpl(kongens,[gate,k,1],kongens_gate_k1). 
 cmpl(kongens,[gate,k,2],kongens_gate_k2). 
 
-%cmpl(kongens,[gate,k,1],kongens_gate_k1). %DUPLICATE
+%cmpl(kongens,[gate,k,1],kongens_gate_k1). 
 %cmpl(kongens,[gate,k,2],kongens_gate_k2). 
 
 cmpl(kongens,[gate,k1],kongens_gate_k1). %% if not split
