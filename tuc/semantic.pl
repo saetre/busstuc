@@ -2685,11 +2685,14 @@ joke            ako    sentence.  %% :-)
 
 leapyear        ako    year. 
 
+metrobus        ako     bus.    %% RS-20211030
+
 minibus         ako    bus. 
 
 minute          ako    duration. %% time
 moment          ako    duration. 
 morningbus      ako    bus.
+monsterbus      ako     bus.    %% RS-20211030
 mother          ako    woman.    %  mother     ako parent.
 mountain        ako    place.
 
@@ -3142,6 +3145,7 @@ v_compl(be1,object,in,place).
 v_compl(be1,object,in,sale). 
 
 v_compl(be1,operation,for,thing). %% virkemåte 
+v_compl(be1,thing,in,format).   %% system/info  
 
 v_compl(be1,permission,on,vehicle).   %%  (Norwag)
 v_compl(be1,person,nil,daypart).      %% I am  on NTH monday morning
@@ -3156,7 +3160,6 @@ v_compl(be1,revision,in,time).
 
 v_compl(be1,sentence,to,agent). 
 
-v_compl(be1,thing,in,format).   %% system/info  
 
 v_compl(be1,thing,so_that,thing). %% abnormalverb
 
@@ -5163,7 +5166,7 @@ v_compl(run,vehicle,towards,place).
 
 iv_templ(run,route_plan). %% kjøres søndagsruter 
 
-v_compl(run,vehicle,past,place). 
+%v_compl(run,vehicle,past,place). 
 
 v_compl(run,thing,through,place).
 v_compl(run,thing,towards,place).   
@@ -5189,7 +5192,7 @@ tv_templ(see,agent,thing).
 v_compl(see,agent,nil,page). %% se .. side 86 
 v_compl(see,person,with,telescope). 
 v_compl(see,agent,nil,place). %%  ?
-v_compl(see,person,with,telescope).
+%v_compl(see,person,with,telescope).
 %     v_compl(see,person,at,shop).   
 v_compl(see,agent,from,vehicle).  
 v_compl(see,agent,in,route). %% se i rute 
@@ -10068,7 +10071,7 @@ n_compl(with,day,saturdayroute).
 n_compl(with,day,sundayroute).   
 
 n_compl(with,departure,duration). %% overgangstid 
-n_compl(with,departure,vehicle).
+%n_compl(with,departure,vehicle).
 n_compl(with,departure,daycode). 
 
 n_compl(with,dog,handicapped).
@@ -10107,7 +10110,7 @@ n_compl(with,indulgence,agent).
 n_compl(with,list,thing). 
 n_compl(with,map,station).  
 n_compl(with,meaning,thing).  
-n_compl(with,meeting,agent). %% person/company 
+%n_compl(with,meeting,agent). %% person/company 
 
 n_compl(with,passenger,price).   %% personer med voksentakt
 
@@ -10133,11 +10136,11 @@ n_compl(with,webaddress,thing).
 % n_compl(with,meaning,life).         %% :-)
 % n_compl(with,meaning,universe).     %% :-)
 
-n_compl(with,permission,thing).  
+%n_compl(with,permission,thing).  
 n_compl(with,person,money).         %%  thing =>  (?) en person med jernbanen*
 
 n_compl(with,price,bus). 
-n_compl(with,problem,thing).
+%n_compl(with,problem,thing).
 
 n_compl(with,regtop,thing). %% i.e. information
 n_compl(with,route,vehicle). 

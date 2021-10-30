@@ -7373,7 +7373,6 @@ synword(forsjelie,     forskjellige).
 synword(forsjelige,    forskjellige). %%
 synword(forsjellig,    forskjellig).
 synword(forsjellige,   forskjellige).
-synword(forsjelige,    forskjellige). 
 synword(forskinket,    forsinket). 
 synword(forskjelie,    forskjellige).
 synword(forskjelige,   forskjellige). 
@@ -12912,7 +12911,7 @@ adj2(nyttig,good).       adj2(næringsrik,good). %% :-)))
 
 adj2(ok,good).      %% er det OK å ta buss
 adj2(oppe,up).      %% Haz? 
-adj2(spennende,good).
+%adj2(spennende,good).
 adj2(opphissende,good). %% :-) %% TA-110426
 adj2(oppmerksom,aware). %% attentive+ 
 adj2(opptatt,busy).
@@ -14002,9 +14001,9 @@ unwanted_noun(ørens).  %% \+  the cent's /rule here?
 
 unwanted_noun(øyer).   %% Comm, \+ islands %% TA-110310
 
+
 % noun2 is also used as a de facto synword definition,
 % because all inflection comes with  the bargain
-
 
 %% NOUN3     noun3(NorRoot,EnglishRoot,Gender).
 %%   specially when illegal indlection causes ambiguoty (retter \= rights)
@@ -14036,11 +14035,13 @@ noun3(trikk,tram,m).
 noun3(vedlegg,attachment,n).   %% \+ vedlegger
 
 
-
-
+%%%%
+% noun2 is also used as a de facto synword definition,
+% because all inflection comes with  the bargain
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%noun2( norsk, english ).
 
-%% noun2(a 
+%% noun2(a section 
 
 noun2(abstraksjon,abstract). 
 noun2(abstrakt,abstract). 
@@ -14492,6 +14493,8 @@ noun2(jobbuss,bus).  %% rough
 noun2(lokalbuss,bus).              %% ( direktebuss?)
 noun2(lokaltransport,bus).  %% Rough
 noun2(matebuss,bus). 
+noun2(metrobuss,metrobus).           %% RS-20211030
+noun2(monsterbuss,metrobus).         %% RS-20211030
 noun2(muss,bus).                   %%  spc 
 noun2(mbuss,bus).     
 %%     noun2(nbuss,nightbus).  %% ?//or slip
@@ -14808,7 +14811,6 @@ noun2(bygrense,city). %% rough
 
 noun2(bybuss,bus). 
 
-noun2(monsterbuss, monsterbus).
 
 noun2(ferge,ferry).
 noun2(båt,boat). 
@@ -17141,7 +17143,6 @@ noun2(bussjårør,driver). %% sp
 noun2(bussjåffør,driver). 
 noun2(bussjaafor,driver).  
 noun2(busssjafør,driver). 
-noun2(busssjåfør,driver).  
 noun2(bussjaafoer,driver). %%  ?
 noun2(bussjafør,driver). 
 noun2(bussjofør, driver).  

@@ -152,7 +152,7 @@ makeauxtables :-
         %    user:( tmnflagg := false ), %% RS-140106 Trenger ikke auxtables for trafikanten midtnorge?!?
             reset_period,  %% get the right period 
         
-            write( '... makeauxtables~153 (~787): Please wait 1 minute while creating (db/auxtables) regstr/2' ),nl,
+            write( '... makeauxtables~155 (auxtables~787): Please wait 1 minute while creating (db/auxtables) regstr/2' ),nl,
         
             open( 'db/auxtables.pl', write, Stream, [encoding('UTF-8')] ), %% RS-140102, Run from monobuss folder !!
             %open( 'auxtables.pl', write, Stream, [encoding('UTF-8')] ), %% RS-140102, Run from the /db/ folder !!
@@ -645,14 +645,11 @@ spurious_street_hash(Flatås,Flatåsv) :-
     ends_with_vg(Flatåsv).
 
 
-ends_with_vg(JPv):- 
-    (ends_with(JPv,_,v),!
-     ;
-    ends_with(JPv,_,g)).
+ends_with_vg(JPv) :- 
+%    (ends_with(JPv,_,v),!   ;        ends_with(JPv,_,g)).
+    (ends_with(JPv,_,v)   ;        ends_with(JPv,_,g)).
 
-
-
-%%% dumppred(T):-nl,listing(T),nl.      %% RS-131225 OBSOLETE?
+%%% dumppred(T):-nl,listing(T),nl.      %% RS-131225 OBSOLETE? DEBUG TA-080415?
 
 
 %% splitgenroad is called by failure loop

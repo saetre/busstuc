@@ -138,7 +138,6 @@ generic_place(verkstedhallen). %% ?
 generic_place(tannklinikk). 
 generic_place(tannlege). 
 generic_place(tannlegekontor). 
-generic_place(tunnel).  
 generic_place(xxl).  %% TA-110125 
 
 % Cities  
@@ -1533,7 +1532,6 @@ synname(fabr,fabrikk).
 synname(fabr,fabrikker).  
 synname(fabrikk,fabrikker). 
 synname(fabrik,fabrikk). 
-synname(fabrikk,fabrikker). 
 synname(fabrik,fabrikker).  
 synname(fabrikken,fabrikker). %% ranheim fabrikken %% TA-110520
 

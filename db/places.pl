@@ -1719,9 +1719,10 @@ cmpl(kong,ingesgate,kong_inges_street).
 
 
 
-cmpl(kong,[gt,k1],kongens_gate_k1).  %% Because it is your abbrev. %% RS-130812 ??
-cmpl(kong,[gt,k2],kongens_gate_k2). 
-cmpl(kong,[gt],kongens_gate).  %%Asyouspeak,
+%cmpl(kong,[gt,k1],kongens_gate_k1).  %% Because it is your abbrev. %% RS-130812 ??
+%cmpl(kong,[gt,k2],kongens_gate_k2). 
+
+cmpl(kong,[gt],kongens_gate).  %% As you speak,
 cmpl(kong,[s,gate],kongens_gate).
 
 cmpl(kongens,[gate,holdeplass,k,1],kongens_gate_k1). 
@@ -1733,8 +1734,8 @@ cmpl(kongens,[gate,holdeplass,k2],kongens_gate_k2). %% ugly ?
 cmpl(kongens,[gate,k,1],kongens_gate_k1). 
 cmpl(kongens,[gate,k,2],kongens_gate_k2). 
 
-cmpl(kongens,[gate,k,1],kongens_gate_k1). 
-cmpl(kongens,[gate,k,2],kongens_gate_k2). 
+%cmpl(kongens,[gate,k,1],kongens_gate_k1). %DUPLICATE
+%cmpl(kongens,[gate,k,2],kongens_gate_k2). 
 
 cmpl(kongens,[gate,k1],kongens_gate_k1). %% if not split
 cmpl(kongens,[gate,k2],kongens_gate_k2). 
@@ -4598,7 +4599,6 @@ sameplace(dronningensgt,dronningens_gate).
 sameplace(dronningsgata,dronningens_gate). 
 sameplace(dronningsgate,dronningens_gate). 
 sameplace(dronningsgt,dronningens_gate). 
-sameplace(dronningsgt,dronningens_gate). 
 
 sameplace(dybendahls,dybdahls). %% ? %% TA-110131
 
@@ -6992,7 +6992,6 @@ synplace(løytnanthagen,leuthenhaven).
 synplace(magnusblindes,magnusblindes). 
 synplace(malhus,melhus). 
 synplace(malkvik,malvik). 
-synplace(mardo,nardo). 
 synplace(mardo,nardo). 
 synplace(mardosenter,nardosenteret). 
 synplace(mardosenteret,nardosenteret). 
