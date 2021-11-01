@@ -9579,7 +9579,7 @@ busonroutestoppingbetween  rule bustrans:(  %% TA-110510
 is  which(F22),   F22 isa place, {unbound(F22)},
     srel/Ni/place/F22/F23, {dmeq([in,nil],Ni)},
 
-    Fbus isa Veh1, {unbound(Fbus),dmeq(vehicle,Veh1)},
+    FbusEL isa Veh1, {unbound(FbusEL),dmeq(vehicle,Veh1)},
 
     (do)/Stop/FBus/F23, {dmeq([stop],Stop)}, %% \+ go!!!
     {unbound(FBus)},
@@ -9596,6 +9596,7 @@ id  atday(Day),
           keepbetweenstat(NBus,FromStat,ToStat,Stl1,Stl2),
           passesstations(NBus,Day,Stl2,_S_))
 ip  [] ).
+
 busstoppingbetween  rule bustrans:(
 is  which(F22),   F22 isa place,
     srel/Ni/place/F22/F23, {dmeq([in,nil],Ni)},
@@ -10614,29 +10615,29 @@ ip  i_or_a_bus(Agent,Whatever,Bus),
 busnotoplacetowards rule bustrans:(  %% Does a bus TRAVEL TO a place TOWARDS a place ?
 is   context srel/towards/place/_/_,
      srel/to/place/Place/C, %% actually from
-     present (do)/TRAVEL/Bus/C,
-     present Bus isa BUS
+     present (do)/TRAVEL/BusEL/C,
+     present BusEL isa BUS
 id   atday(Day),atdate2(DaySeqNo,_Date),
      not passevent(_,_,_,[from],_,_), %% already (Panic)
-     add (departure(Bus,Stat,DaySeqNo,Depset),
-          passevent(Depset,Bus,Stat,[from],Day,C))
+     add (departure(BusEL,Stat,DaySeqNo,Depset),
+          passevent(Depset,BusEL,Stat,[from],Day,C))
 ip  dmeq(travel,TRAVEL),
     dmeq([bus,nightbus,self,agent,route,departure,tram,it,connection],BUS),
-    busorfree(Bus),
-    bus_place_station(Bus,Place,Stat),
+    busorfree(BusEL),
+    bus_place_station(BusEL,Place,Stat),
     Stat \== unknown ).
 
 busforto rule bustrans:(  %% Does a bus TRAVEL FOR  a place TO a place ?
 is   context srel/to/place/_/_,
      srel/for/place/Place/C, %% actually from
      present (do)/TRAVEL/Bus/C,
-     present Bus isa BUS
+     present Bus isa BUSEL
 id   atday(Day),atdate2(DaySeqNo,_Date),
      not passevent(_,_,_,[from],_,_), %% already (Panic)
      add (departure(Bus,Stat,DaySeqNo,Depset),
           passevent(Depset,Bus,Stat,[from],Day,C))
 ip  dmeq(travel,TRAVEL),
-    dmeq([bus,nightbus,self,agent,route,departure,tram,it,connection],BUS),
+    dmeq([bus,nightbus,self,agent,route,departure,tram,it,connection],BUSEL),
     busorfree(Bus),
     bus_place_station(Bus,Place,Stat),
     Stat \== unknown ).
@@ -10815,17 +10816,17 @@ ip	dmeq(travel,TRAVEL),
 
 
 endstat1 rule bustrans:( % What is the first STATION FOR Bus
-is  which(A),(do)/be1/A/D,srel/in/place/Station/D,adj/_/first/Station/_,
+is  which(A),(do)/be1/A/D,srel/in/place/Stations/D,adj/_/first/Stations/_,
     srel/FOR/bus/Bus/D,
-    present Bus isa bus,present Station isa STATION
+    present Bus isa bus,present Stations isa STATION
 id  add endstations(Bus,_)
 ip  dmeq(for,FOR),exbus(Bus),dmeq(place,STATION) ).
 
 
 endstat2 rule bustrans:( % What is the last STATION FOR Bus
-is  which(A),(do)/be1/A/D,srel/in/place/Station/D,adj/_/last/Station/_,
+is  which(A),(do)/be1/A/D,srel/in/place/Stations/D,adj/_/last/Stations/_,
     srel/FOR/bus/Bus/D,
-    present Bus isa bus,present Station isa STATION
+    present Bus isa bus,present Stations isa STATION
 id  add endstations(Bus,_)
 ip  dmeq(place,STATION),dmeq(for,FOR) ,exbus(Bus) ).
 
@@ -11405,8 +11406,8 @@ ip	 dmeq(to,TO),bus_place_station(Bus,Place,Stat) ).
 
 
 arrdep1 rule bustrans:( % ARRDEP with buss (Place is unbound)
-is  present  Arrdep isa ARRDEP, %% which(Arrdep), %% also test
-    (do)/be1/Arrdep/E,srel/(with)/bus/Bus/E ,
+is  present  Arrdeps isa ARRDEP, %% which(Arrdep), %% also test
+    (do)/be1/Arrdeps/E,srel/(with)/bus/Bus/E ,
     not present srel/_/place/_/_
 id  not passevent(_,Bus,_,_,_,_),
     not connections(_,_,Bus,_,_,_,_,_,_,_),
@@ -11419,8 +11420,8 @@ ip  dmeq(arrdep,ARRDEP), busorfree(Bus),
 
 
 arrdep2 rule bustrans:(
-is  present  Arrdep isa TAR, %% which(Arrdep), %% also test
-    has/bus/ARRDEP/Bus/Arrdep,
+is  present  Arrdeps isa TAR, %% which(Arrdep), %% also test
+    has/bus/ARRDEP/Bus/Arrdeps,
     not present srel/_/place/_/_             %%  etc. etc. etc.
 id  not passevent(_,Bus,_,_,_,_),
     not connections(_,_,Bus,_,_,_,_,_,_,_),
@@ -11434,8 +11435,8 @@ ip  dmeq(arrdep,ARRDEP),dmeq(arrdep,TAR),
 
 
 arrdep3 rule bustrans:( % ARRDEP for buss (Place is unbound)
-is  present  Arrdep isa ARRDEP, %% which(Arrdep), %% also test
-    has/bus/ARRDEP/Bus/Arrdep
+is  present  Arrdeps isa ARRDEP, %% which(Arrdep), %% also test
+    has/bus/ARRDEP/Bus/Arrdeps
 id  not passevent(_,Bus,_,_,_,_),
     not connections(_,_,Bus,_,_Fro,_,_,_,_),
     addcon  message(mustknow(place))
@@ -14355,7 +14356,7 @@ ip  setopt(number,Opts,Opts1) ).
 
 
 howmany2 rule bustrans:( % how many departures, no connections
-is  howmany(Arrdep),present Arrdep isa ARRDEP,
+is  howmany(Arrdeps),present Arrdeps isa ARRDEP,
     not present srel/nil/week/_/_ %% hver uke
 id  replace passevent(Deps,X1,X2,Opts, X3,X4)
     with    passevent(Deps,X1,X2,Opts1,X3,X4),
@@ -14365,7 +14366,7 @@ ip  dmeq(busdeparr,ARRDEP),
 
 
 howmany3 rule bustrans:( % how many deparures, have connections
-is  howmany(Arrdep),present Arrdep isa ARRDEP,
+is  howmany(Arrdeps),present Arrdeps isa ARRDEP,
     not present _ isa self,
     not present  dob/take/_/_/_,
     not present srel/because_of/_/_/_ %% avoid hvor mange busser må jeg ta

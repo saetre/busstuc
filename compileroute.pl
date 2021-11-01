@@ -57,14 +57,16 @@ ta_append_atoms(A,B,C):-
     ta_atomname(A,AL),
     ta_atomname(B,BL),
     ta_append(AL,BL,CL),
-    name(C,CL).  %% <- %% name(94451, [32,57,52,52,53,49]). %% leading blanks
+%    name(C,CL).  %% <- %% name(94451, [32,57,52,52,53,49]). %% leading blanks
+    number_codes(C,CL).  %% <- %% name(94451, [32,57,52,52,53,49]). %% leading blanks %% RS-20211101 Deprecated 'name'
 
-
-ta_atomname(X,L):-atom(X),!,name(X,L).
+%ta_atomname(X,L):-atom(X),!,name(X,L).      %% RS-20211101 Deprecated 'name'
+ta_atomname(X,L):-atom(X),!,atom_codes(X,L). %% RS-20211101 Deprecated 'name'
 
 ta_atomname(X,L):-number(X),
     !,
-    name(X,L).
+%    name(X,L).        %% RS-20211101 Deprecated 'name'
+    number_codes(X,L). %% RS-20211101 Deprecated 'name'
   
 ta_append([],X,X).
 ta_append([X|Y],U,[X|V]) :-

@@ -285,8 +285,9 @@ ifstatement(R,forall(S)::(event/R/S and P => Q)) --->
     statemes(S, true,Q). % ands, if
 
 
-statemen1(R,P) ---> % simple version, with world 
-    statem(S,event/R/S,P).
+%DUPLICATE
+%statemen1(R,P) ---> % simple version, with world 
+%    statem(S,event/R/S,P).
 
 
 statemes(S,Com,exists(S:Event):: (Com and Q)) --->
@@ -1498,10 +1499,10 @@ verb_modifiers10(_,_,_,CP,CP) ---> []. % 0
 
 
 %%  Try Last  %%  I leave now  and tonight I will.. Experiment
-
-verb_modifiers10(V,X,S,Com1P1,Com12P3) ---> %% 0-n 
-    and2,                                     %% but
-    verb_modifiers(V,X,S,Com1P1,Com12P3).   %% 1-n
+%% DUPLICATE
+%verb_modifiers10(V,X,S,Com1P1,Com12P3) ---> %% 0-n 
+%    and2,                                     %% but
+%    verb_modifiers(V,X,S,Com1P1,Com12P3).   %% 1-n
 
 
 verb_modifier3(Sing,X,Y,SC, (exists(Y):: SC and P))  ---> % Y=T1:_
@@ -3524,7 +3525,7 @@ colon ---> ['.']. % if visible
 
 comparator1(eq) ---> [like]. 
 comparator1(eq) ---> [equal],to0.
-comparator1(eq) ---> [like].
+%comparator1(eq) ---> [like]. %% DUPLICATE
 comparator1(eq) ---> prep1(about). %% Rough 
 comparator1(ge) ---> greater,than0,[or],[equal],to0. 
 comparator1(ge) ---> [not],less,[than].

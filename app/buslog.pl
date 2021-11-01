@@ -801,14 +801,15 @@ keepdepbetween(LowTime,HighTime,Deps1,Deps2):-
     set_filter(Dep,dep_between(Dep,LowTime,HighTime),Deps1,Deps2).
 
 
-avoidarrbetween(LowTime,HighTime,Deps1,Deps2):-
-    nonvar(Deps1), %%%
-    set_filter(Dep,not_arr_between(Dep,LowTime,HighTime),Deps1,Deps2).
-
-
-avoiddepbetween(LowTime,HighTime,Deps1,Deps2):-
-    nonvar(Deps1),
-    set_filter(Dep,not_dep_between(Dep,LowTime,HighTime),Deps1,Deps2).
+%% OBSOLETE?
+%avoidarrbetween(LowTime,HighTime,Deps1,Deps2):-
+%    nonvar(Deps1), %%%
+%    set_filter(Dep,not_arr_between(Dep,LowTime,HighTime),Deps1,Deps2).
+%
+%
+%avoiddepbetween(LowTime,HighTime,Deps1,Deps2):-
+%    nonvar(Deps1),
+%    set_filter(Dep,not_dep_between(Dep,LowTime,HighTime),Deps1,Deps2).
 
 
 
@@ -836,15 +837,16 @@ dep_between(depnode(_Time0,Time9,_,_,_,_,_,_,_),LowTime,HighTime):-
     Time9 =< HighTime.
 
 
-not_arr_between(depnode(Time0,_Time9,_,_,_,_,_,_,_),LowTime,HighTime):- %% TA-110322
-    LowTime > Time0
-    ;
-    Time0 > HighTime.
-
-not_dep_between(depnode(_Time0,Time9,_,_,_,_,_,_,_),LowTime,HighTime):- %% TA-110322
-    LowTime > Time9
-    ;
-    Time9 > HighTime.
+%% RS-20211101 OBSOLETE?
+%not_arr_between(depnode(Time0,_Time9,_,_,_,_,_,_,_),LowTime,HighTime):- %% TA-110322
+%    LowTime > Time0
+%    ;
+%    Time0 > HighTime.
+%
+%not_dep_between(depnode(_Time0,Time9,_,_,_,_,_,_,_),LowTime,HighTime):- %% TA-110322
+%    LowTime > Time9
+%    ;
+%    Time9 > HighTime.
 
 
 %%%  Keep before  : acceptability test: < 1 hour before

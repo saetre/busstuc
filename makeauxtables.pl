@@ -136,6 +136,7 @@ verify_files_exist( Filename, BaseFile ) :-
         Time > TimeBase,
 %            told,       %% Close all potentially open output-streams first!   %% RS-20211031 Move to busstuc.pl?
         out('%   ...makeauxtables.pl~138 File already exists: '),out( Filename ), out( Time ),out( 'timestamp > SKIP making ' ),output( TimeBase ).
+%       err('...makeauxtables.pl~136 File already exists: '),err( Filename ), err( Time ),err( 'timestamp > SKIP making ' ),errput( TimeBase ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
