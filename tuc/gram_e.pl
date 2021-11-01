@@ -4232,7 +4232,7 @@ feeling0 ---> [].
 
 now0 ---> [now],!,accept. 
 now0 ---> particle(_),!,accept.
-now0 ---> [].
+%now0 ---> [].  %% DUPLICATE
 
 quit(bye) ---> [bye],[bye],!. 
 quit(bye) ---> [bye].            %% TA-110428
@@ -4241,7 +4241,7 @@ quit(bye) ---> w(adj2(best,nil)),[regards]. %%  TA-110428
 quit(bye) ---> wx(adj2(nil,good)),[bye].   
 quit(bye) ---> wx(adj2(nil,good)),[night]. 
 quit(bye) ---> wx(adj2(nil,good)),[day].  
-quit(bye) ---> [bye].
+%quit(bye) ---> [bye].   %% DUPLICATE
 quit(bye) ---> [exit]. 
 quit(bye) ---> [farewell].
 quit(bye) ---> [stop].

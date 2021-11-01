@@ -9978,7 +9978,7 @@ particlev1(reach) ---> [fram],[til]. %% fram til=til Dict %% TA-110419
 
 particlev1(read) ---> [gjennom].    %% TA-110105
 particlev1(receive)  ---> [opp].    %%  (får opp (på skjerm))
-particlev1(get)  ---> [opp].  
+%particlev1(get)  ---> [opp].   %% DUPLICATE  
 
 particlev1(send)  ---> [med]. 
 particlev1(send)  ---> [over].
@@ -10095,9 +10095,7 @@ particlev2(say,tell) ---> [fra].
 particlev2(say,tell) ---> [ifra]. %% TA-110724
 
 particlev2(see,appear)     ---> [ut]. %% TA-101210
-
 %% particlev2(see,exist) ---> [ut].  %% Ad Hoc koden ser slik ut %% TA-101102
-particlev2(see,appear) ---> [ut].
 
 particlev2(stand,indicate) ---> [for]. %% hva står BussTUC for=bety %% TA-110112
 

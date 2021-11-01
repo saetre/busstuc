@@ -355,9 +355,10 @@ concat_atomlist([],'').
 concat_atomlist([A],A):-!. 
 concat_atomlist([A,B],C):-!,
     atom_concat(A,B,C).
-concat_atomlist([A|B],C):-
-    concat_atomlist(B,B1),
-    atom_concat(A,B1,C).
+%% DUPLICATE
+%concat_atomlist([A|B],C):-
+%    concat_atomlist(B,B1),
+%    atom_concat(A,B1,C).
 
 
 

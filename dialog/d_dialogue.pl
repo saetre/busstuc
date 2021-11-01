@@ -46,7 +46,7 @@
 :- use_module( '../app/busanshp', [  ] ).
 %:- use_module( '../app/buslog', [ timeout/3 ] ).
 :- use_module( '../app/pragma', [ pragma/3 ] ).        %% RS-140102, ipragmaor0/0, set/2
-:- use_module( '../app/interapp', [ konstantify/1, makeanswer/4, nocols/2 ] ). %% RS-141026 traceanswer/1, writeanswer/1 localized
+:- use_module( '../app/interapp', [ makeanswer/4 ] ). %% RS-141026 traceanswer/1, writeanswer/1 localized , konstantify/1, nocols/2
 
 %% RS-140914,   UNIT: /dialog/
 %% Dialogue manager.

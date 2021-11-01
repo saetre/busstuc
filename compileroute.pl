@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE compileroute.pl
 %% SYSTEM BusTUC/REGTOP
 %% CREATED TA-040421

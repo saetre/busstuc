@@ -2035,9 +2035,6 @@ coupled1(BothStartDeps,StartDeps,EndDeps,Day,DaySeqNo,Opts,Deps,Mid01):-
 
     coupled2(BothStartDeps,LeanStartDeps,LeanEndDeps,Day,DaySeqNo,Opts,Deps,Mid01).
 
-
-
-
 /*
 <>      StartDeps
 []      EndDeps
@@ -2061,7 +2058,6 @@ Die ( oooo > 60 min)
 =>   > o ]
 */
 
-
 purge_deps(_Opts,StartDeps,EndDeps,LeanStartDeps,LeanEndDeps):-
 
     firstdeptime(FS,StartDeps),
@@ -2083,14 +2079,12 @@ purge_deps(_Opts,StartDeps,EndDeps,LeanStartDeps,LeanEndDeps):-
     subfromtime(FE,MaxT,XXX),
     maxval(FS,XXX,FS2),
 
-
 % Skip the first EndDeps  before the first StartDeps
     maxval(FE,FS,FE1),
 
 % Skip the last  EndDeps   an hour after the last StartDeps
     addtotime(LS,MaxT,YYY),
     minval(LE,YYY,LE2),
-
 
 % Avoid deps between firstdep+120, lastdep -120
 
@@ -2099,21 +2093,14 @@ purge_deps(_Opts,StartDeps,EndDeps,LeanStartDeps,LeanEndDeps):-
 
 %    subfromtime(LS,120, LateDepHigh),
 
-
 % Avoid arrs between firstarr +120, lastarr -120
-
 %    addtotime(LateDepLow,120, LateArrLow), %% TA-110324
 %    subfromtime(LE,120,  LateArrHigh),
-
 %%
-
 %    avoiddepbetween(LateDepLow,LateDepHigh,StartDeps,XStartDeps),
-
     keepdepbetween(FS2,LS1,StartDeps,LeanStartDeps), %% FS2/LS1 must be DEPtimes!
 
-
 %    avoidarrbetween(LateArrLow,LateArrHigh,EndDeps,XEndDeps),
-
     keeparrbetween(FE1,LE2,EndDeps,LeanEndDeps).
 
 

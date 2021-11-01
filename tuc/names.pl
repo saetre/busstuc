@@ -1798,7 +1798,7 @@ unwanted_name(moret).   %% \+ Møre
 %% unwanted_name(norges).  %% experiment spellcheck *-> norge
 unwanted_name(node).    %%  \+ nord (knutepunkt) 
 unwanted_name(og).      %%  \+ osveien|g(aten) 
-unwanted_name(og). %% \+ os ? 
+% unwanted_name(og). %% \+ os ? %% DUPLICATE 
 unwanted_name(person). %%  Persson? 
 unwanted_name(please). %%  place... %%  amble#
 unwanted_name(pluss).  %% \+ plass

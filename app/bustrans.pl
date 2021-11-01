@@ -4008,12 +4008,13 @@ ip (Meaning ako Abstract),
    \+ member(Meaning,[god,price]) ). %% etc.
 
 
-describename rule bustrans:(
-is (tuc isa savant,C isa Clock, dob/describe/tuc/C/E,event/real/E),clear
-id clear,          %% hva er du , 1 tuc isa savant -> describe2
-   add message(answer(bcpbc(Clock))),
-   add flag(exit)
-ip bound(C) ).
+%% DUPLICATE
+%describename rule bustrans:(
+%is (tuc isa savant,C isa Clock, dob/describe/tuc/C/E,event/real/E),clear
+%id clear,          %% hva er du , 1 tuc isa savant -> describe2
+%   add message(answer(bcpbc(Clock))),
+%   add flag(exit)
+%ip bound(C) ).
 
 
 
@@ -8169,12 +8170,12 @@ id  atdate2(_,Date),
     add message(date_isa_week(Date,Weekno))
 ip	 weeknumber(Date,Weekno) ).
 
-
-weeknumber01 rule bustrans:( %% hvilken uke er vi %% TA-110203
-is  which(A),A isa week
-id  atdate2(_,Date),
-    add message(date_isa_week(Date,Weekno))
-ip	 weeknumber(Date,Weekno) ).
+%% DUPLICATE
+%weeknumber01 rule bustrans:( %% hvilken uke er vi %% TA-110203
+%is  which(A),A isa week
+%id  atdate2(_,Date),
+%    add message(date_isa_week(Date,Weekno))
+%ip	 weeknumber(Date,Weekno) ).
 
 weeknumber1 rule bustrans:( %% hvilken uke (nr)  er dette
 is  which(A),A isa week,(do)/be1/_/C,srel/in/time/A/C,event/real/C,

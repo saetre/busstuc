@@ -134,7 +134,8 @@ verify_files_exist( Filename, BaseFile ) :-
 %        directory_property( BaseFile, access_timestamp, TimeBase ),
         file_property( AbsBasefile, modify_timestamp, TimeBase ),
         Time > TimeBase,
-        out('...makeauxtables.pl~136 File already exists: '),out( Filename ), out( Time ),out( 'timestamp > SKIP making ' ),output( TimeBase ).
+%            told,       %% Close all potentially open output-streams first!   %% RS-20211031 Move to busstuc.pl?
+        out('%   ...makeauxtables.pl~138 File already exists: '),out( Filename ), out( Time ),out( 'timestamp > SKIP making ' ),output( TimeBase ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -520,7 +521,9 @@ torehash(yggdrasi,yggdrasil).
 
 %% BaseFolder? 'db/tables/r1611_141201'
 createhash :-
-    verify_files_exist( 'db/namehashtable.pl', 'db/regstr.pl' ) ; (   %% BaseFolder? 'db/tables/r1611_141201'
+    verify_files_exist( 'db/namehashtable.pl', 'db/regstr.pl' ) 
+        ;
+    (   %% BaseFolder? 'db/tables/r1611_141201'
             told,
             write('... makeauxtables~488: Please Wait another minute for namehash-table'),nl, %% TA-090317
         

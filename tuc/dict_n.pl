@@ -121,7 +121,7 @@ rewording([feiler,det],[er,feil,med]).  %% TA-101103 hva er feil med deg
 
 rewording([for,kl],            [før,kl ]).  %% for kl 11 \+ for (rute) 11
 rewording([for,klokken],       [før,kl ]). 
-rewording([for,klokken],       [før,kl ]). 
+ 
 
 rewording([for,æ,være],        [for,å,være ]). 
 rewording([for,a,være],        [for,å,være ]).           %% TA-100921
@@ -454,7 +454,6 @@ splitword(gårnestebuss,[går,neste,buss]).
 splitword(gårnærmest,[går,nærmest]).  
 splitword(gårre,[går,det]). 
 splitword(gårsiste,[går,siste]). 
-splitword(gårbuss,[går,buss]). 
 splitword(gårbussen,[går,bussen]).  
 splitword(gåste,[går,neste]).  
 
@@ -602,14 +601,14 @@ splitword(fredagskvelden,[fredag,kveld]).
 % ...
 
 splitword(fredagsnatt,[fredag,natt]).  %%  smtotfl /s
-splitword(lørdagsnatt,[lørdag,natt]).  
+%splitword(lørdagsnatt,[lørdag,natt]).  
 
 splitword(fredagsnatta,[fredag,natt]).  %%  smtotfl /s
 splitword(lørdagsnatta,[lørdag,natt]).  
 
 
 splitword(fredagsnatten,[fredag,natt]).  %%  smtotfl /s
-splitword(lørdagsnatten,[lørdag,natt]).  
+%splitword(lørdagsnatten,[lørdag,natt]). %% DUPLICATES  
 
 splitword(mandagmorgen,[mandag,morgen]).  %% smtotfl /s %% Most typical
 splitword(mandagskveld,[mandag,kveld]).
@@ -623,7 +622,6 @@ splitword(mangedager,[mange,dager]).
 splitword(manpå,  [man,på]).  
 
 splitword(marskl,  [mars,kl]). %% etc
-splitword(maikl,   [mai,kl]).
 splitword(maikl,   [mai,kl]).
 
 splitword(megfra,[meg,fra]). 
@@ -644,7 +642,6 @@ splitword(munkegatakl,[munkegata,klokken]).
 splitword(munkegatatil,[munkegata,til]). 
 
 splitword(måeg,[må,jeg]).
-splitword(måjeg,[må,jeg]).
 splitword(månedlig,[hver,måned]).
 splitword(måjeg,   [må,jeg]).  
 splitword(nåjeg,   [må,jeg]). 
@@ -656,7 +653,6 @@ splitword(nestebus,[neste,buss]).
 splitword(nestebuss,[neste,buss]). 
 splitword(nestebussen,[neste,buss]). 
 splitword(nestebussene,[neste,bussene]).
-splitword(nestebusser,[neste,busser]). 
 splitword(nesteavgang,[neste,avgang]). 
 splitword(nesteavganger,[neste,avganger]). 
 splitword(nesteavgangen,[neste,avgangen]). 
@@ -1997,7 +1993,6 @@ compword(en,[slik], en).
 compword(en,[sånn], en). 
 compword(en,[så],en).    
 compword(en,[viss], en).     
-compword(en,[slik],en). 
 compword(en,[slikt],en).  
 
 compword(ende,[opp],komme). 
@@ -2011,9 +2006,8 @@ compword(ende,[holdeplass],endeholdeplass).
 compword(ende,[holde,plassen],endeholdeplass).
 compword(endeholde,[plassen],endeholdeplass).
 compword(ende,[holdeplassen],endeholdeplass).
-compword(endeholde,[plass],endeholdeplass). 
 
-compword(ender,[opp],kommer).
+%compword(ender,[opp],kommer). %% DUPLICATE
 
 xcompword(endres,['/',slettes],endres). %% weaker
 
@@ -2252,7 +2246,7 @@ xcompword(for,[på,være,på], til).
 %% compword(for,[å,komme,til], til). 
 xcompword(for,['?' ,komme,til], til).
 xcompword(fortelle,[med],fortelle). %% 
-xcompword(for,[for],for). 
+%xcompword(for,[for],for). %% DUPLICATE 
 compword(for,[guds,skyld],[]).
 xcompword(for,[i,være,på],til). 
 
@@ -2268,7 +2262,7 @@ compword(for,[mye],mye).
 
 xcompword(for,[sen],forsinket).  
 xcompword(for,[sein],forsinket). 
-xcompword(for,[sent],forsinket).  
+%xcompword(for,[sent],forsinket). %% DUPLICATE  
 xcompword(for,[seint],forsinket). 
 
 xcompword(for,[øyeblikket],[]). %% #->  nå // rough 
@@ -2282,7 +2276,7 @@ xcompword(for,[å,rekke,frem],før).
 xcompword(for,[å,være,der,til],før). 
 compword(for,[å,være,der],kl).  
 
-xcompword(for,[å,være,der,før],før).
+%xcompword(for,[å,være,der,før],før).
 
 %% compword(for,[å,være,der],[]).  
 
@@ -2304,7 +2298,7 @@ xcompword(får,[å,vere,på],til). %% no pardon
 compword(for,[at,være,i],til).      %%  DK
 compword(for,[at,være,på],til).     %% 
 
-compword(for,[være,i],til). 
+%compword(for,[være,i],til). 
 
 xcompword(fører,[til],forårsaker).  %% problem fører=noun 
 
@@ -2400,7 +2394,7 @@ compword(for,[å,hver,på],til).
 
 %% compword(for,[å,være],til).   %% Ad Hoc EXPERIMENT 
 
-compword(for,[å,komme,meg,til],til).  
+%compword(for,[å,komme,meg,til],til).  
 compword(for,[ay,vaøre,pay],til).
 compword(for,[å,hvære,på],til). 
 compword(for,[å,være,til],til). 
@@ -2519,7 +2513,7 @@ compword(fra,[nord],nordfra).
 compword(fra,[sør], sørfra). 
 compword(fra,[syd], sørfra). 
 compword(fra,[t],til).    %% Repair (forbi)
-compword(fra,[til],til).  %%
+%compword(fra,[til],til).  %%
 compword(fra,[ved],ved).  %% repair
 compword(fra,[vest],vestfra). 
 compword(fra,[øst], østfra). 
@@ -2541,8 +2535,8 @@ compword(frammøte,[før],før).
 compword(framøte,[før],før).
 compword(frammøte,[kl],før).  
 compword(framøte,[kl],før).
-compword(frammøte,[før],før).  
-compword(framøte,[før],før).
+%compword(frammøte,[før],før).  
+%compword(framøte,[før],før).
 compword(frammøte,[],før).  
 compword(framøte,[],før). %% etc 
 
@@ -3740,7 +3734,6 @@ compword(n,[r],når).  %% n?r
 compword(n,[år],når). %% n¨år   neib k 
 compword(n,['?',r],når). %% n?r 
 
-compword(n,['¬',ør],når). 
 compword(n,[ør],når).  
 
 compword(niæ,['½',r],når).         %% 
@@ -3893,8 +3886,6 @@ compword(norges,[nasjonaldag],may17).
 compword(nor,[og,hvilke],    hvilke). 
 compword(nor,[og,hvilken],   hvilken). 
 compword(nor,[og,hvilket],   hvilket).  
-
-compword(norges,[nasjonaldag],may17).  
 
 compword(naar,[går],går).  %%  Rough  
 compword(naar,[gar],går).  % å-trøbb 
@@ -4412,7 +4403,7 @@ compword(regner,[med,å],[]).
 compword(regne,[med,at],anta ).  
 compword(regner,[med,at],antar). 
 compword(regnet,[med,at],antok ).  
-compword(regner,[med,å],[]).  
+%compword(regner,[med,å],[]).  
 
 xcompword(regtop,[eksport], regtoppeksport).
 xcompword(regtopp,[eksport],regtoppeksport).
@@ -4496,7 +4487,7 @@ compword(rutetider,[buss],buss).  %% etc
 compword(rutatider,[buss],buss). 
 compword(rutetid,[rute],buss).  
 compword(rutetider,[rute],buss).  %% etc
-compword(rutatider,[buss],buss). 
+%compword(rutatider,[buss],buss). 
 
 
 %¤S
@@ -5058,7 +5049,6 @@ compword(til,[dømes],[]).
 compword(til,[for,å,være,i],til).  %%   // fronted
 compword(til,[for,å,være,ved],til).%%  repair
 compword(til,[for,å,være,på],til).
-compword(til,[for,å,være,på],til). 
 compword(til,[for],for). %%  repair
 
 compword(til,['+'],til).           %% actual ?
@@ -5141,7 +5131,7 @@ compword(tt,[kort],kort).
 compword(tt,[s],tts). 
 
 compword(tur,[retur],tilbake).  
-compword(tur,[retur],tilbake).             %% (ignore) 
+%compword(tur,[retur],tilbake).             %% (ignore) ? 
 compword(tur,[rettur],tilbake). 
 compword(tur,['/',retur],tilbake).   
 
@@ -5232,7 +5222,7 @@ xcompword(vegg,[til,vegg,med],nær).
 compword(vel,[ikke],[]).  
 compword(vell,[],[]). 
 compword(ved,[i], i).         %% Repair
-compword(ved,[på], på).       %% Repair 
+%compword(ved,[på], på).       %% Repair DUPLICATE 
 
 compword(ve,[sia,av],attmed).   
 compword(ve,[sida,av],attmed).  
@@ -5769,7 +5759,7 @@ cw(innimellom). cw(innover). cw(inntil).
 cw(isteden).   cw(istedet). cw(istedenfor). cw(istedetfor). 
 %% should be unnec , (compword)
 
-cw(j). %% nec to make j distinguisable from jeg
+%DUPLICATE cw(j). %% nec to make j distinguisable from jeg
 cw(ja).  cw(jo). cw(jovisst).  % cw(javel). 
 cw(jeg).  cw(jevnlig). cw(jul).
 
@@ -5786,16 +5776,16 @@ cw(lik). cw(like). cw(likeledes). cw(likevel). cw(likt). cw(lite).
 cw(lokalt). cw(rpgol).  cw(rpgolram). %% TA-110524
 cw(løpet). 
 
-cw(m). 
+%DUPLICATE cw(m). 
 cw(maksimum).
 cw(man). cw(mao). cw(mange). cw(med). %% (adv)
 cw(meg). %%  (  show difference between I and me )
 cw(meget).  cw(men).  cw(mens). cw(mer). 
 cw(midt). cw(million). cw(millioner). cw(milliard). cw(milliarder). 
-cw(min). cw(mindre).  cw(minst). cw(mine).   cw(minimum). cw(minst).  cw(mitt). 
+cw(min). cw(mindre).  cw(minst). cw(mine).   cw(minimum). cw(mitt). %DUPLICATE cw(minst). 
 cw(mon). cw(morges). cw(morgen). cw(mulig). cw(mye). cw(må). 
 
-cw(n). %% n = nr in certain places 
+%DUPLICATE cw(n). %% n = nr in certain places 
 cw(nb). %% 'NB' 
 cw(natt).  %%  (i natt) 
 cw(naturligvis).
@@ -5808,12 +5798,15 @@ cw(nær). %% Swedish, but    s y n w o r d nær,når ==> nær = reach
 cw(nærheten). 
 cw(nå).  cw(når). 
 
-cw(o). cw(obs). cw(ok). cw(om). cw(ommorgenen). cw(overalt). 
+%DUPLICATE cw(o).
+cw(obs). cw(ok). cw(om). cw(ommorgenen). cw(overalt). 
 cw(overmorgen). cw(overimorgen). cw(ofte).
-cw(og). cw(også).  cw(om). cw(opp). cw(oppover). 
+cw(og). cw(også). cw(opp). cw(oppover). 
 cw(oss). 
+%DUPLICATE cw(om).
 
-cw(p). cw(ps).
+%DUPLICATE cw(p).
+cw(ps).
 cw(ping). cw(pong). %% cw(pm). %% cw(presis). 
 cw(punktlighet).  
 cw(på). %%  lure på  , stige på 
@@ -5826,7 +5819,7 @@ cw(redundant0).%% Techn  % redundant adverb %%  only internal
 cw(resten). %% Techn  % resten av 
 cw(retur). 
 
-cw(s). %%  (  NSB s buss ==> nsb s buss) 
+%DUPLICATE cw(s). %%  (  NSB s buss ==> nsb s buss) 
 cw(samme). cw(sammen). cw(samtidig).
 cw(sann). cw(sanne). cw(sant). cw(seg). cw(selv). cw(selvom). cw(selvfølgelig).
 cw(selvsagt). 
@@ -5844,7 +5837,9 @@ cw(sydfra). cw(sydover). cw(så).
 
 
 cw(takk). cw(team). cw(tem).
-cw(ti). cw(tide). cw(tidlig). cw(t). cw(tt).  %%
+cw(ti). cw(tide). cw(tidlig).
+%DUPLICATE cw(t).
+cw(tt).  %%
 cw(tidligere).   cw(tidligst). cw(tidvis).
 cw(til). % inntil
 cw(tilbake). cw(tilfelle). cw(tilsammen).  cw(ting).
@@ -6117,7 +6112,6 @@ synword('va¦re',være).
 synword('va|re',være). 
 
 synword('a|',jeg). %%   Ã¦ %%  dial+
-synword('va|re',være). %%  va|re 
 %% synword('va|r',være). %%  va|r  ? %% dial+  
 
 
@@ -6142,9 +6136,9 @@ synword(iiv,vii).       %%  Haakon
 synword(iiv,  7).   %% correction 
 synword(iivs,  7).  %% 
 
-synword(v11 ,7).  
+%synword(v11 ,7).  
 synword(vii ,7).  
-synword(vll ,7). 
+%synword(vll ,7). 
 synword(viis ,7). 
 synword(viii,8).
 synword(ix,  9).
@@ -8013,7 +8007,7 @@ synword(helgin,        helgen).
 synword(helv,         halv).           %% \+ hell 
 synword(hem,           hjem).
 synword(hem,           hvem).  
-synword(hem,           hjem).   %% ?
+%synword(hem,           hjem).   %% ?
 synword(hemmat,        hjem). 
 synword(hendeholdeplass,  endeholdeplass). %% diffusion
 synword(henholdsvis,   både). 
@@ -8158,7 +8152,6 @@ synword(hurtigste,     beste).
 synword(huse,          huset).
 synword(huss,          buss).
 synword(hv,            hva). 
-synword(hvaa,          hva). 
 synword(hvaa,          hva). 
 synword(hvaaaa,        hva). 
 synword(hvab,          hva). 
@@ -8307,7 +8300,6 @@ synword(hviulken,      hvilken).
 synword(hvliken,       hvilken). 
 synword(hvlilken,      hvilken). 
 synword(hvlike,        hvilke).
-synword(hvliken,       hvilken).
 synword(hvliket,       hvilket). 
 synword(hvlke,         hvilke).  
 synword(hvlken,        hvilken). 
@@ -8334,7 +8326,7 @@ synword(hvoer,         hvor).
 synword(hvof,          hvor).        %%  own
 synword(hvofer,        hvorfor).  
 synword(hvofor,        hvorfor).
-synword(hvoilke,       hvilke). 
+%synword(hvoilke,       hvilke). 
 synword(hvoir,         hvor). 
 
 synword(hvoilkne,      hvilke). %% own 
@@ -8808,7 +8800,7 @@ synword(kanj,          kan).           %% dial
 
 synword(kankjse,       kanskje).  %% AK-110624
 synword(kansje,        kanskje).  %% redun %% TA-110624
-synword(kansje,        kanskje).  %%
+%DUPLICATE synword(kansje,        kanskje).  %%
 synword(kanksje,       kanskje).  %%
 
 
@@ -8865,7 +8857,7 @@ synword(kinon,         kinoene).
 synword(kjapp,         fort). 
 synword(kjappeste,     beste).  
 synword(kjapt,         fort).  
-synword(kjaøre,        kjøre).      %% kjÃ¸re  
+%DUPLICATE synword(kjaøre,        kjøre).      %% kjÃ¸re  
 synword(kjaører,       kjører). 
 synword(kjedeli,       kjedelig).  
 synword(kjederlig,     kjedelig). 
@@ -13021,7 +13013,6 @@ adj2(usunn,bad).    %% TA-110331 .. å røyke :-)
  
 adj2(vond,bad).   
 adj2(vondt,bad).   %% vondt adv (ok) 
-adj2(ødelagt,bad).  
 adj2(ødelagt,bad).     %%  :-)
 
 adj2(edru,sober).           %%  Facetious ?? 
@@ -13031,7 +13022,7 @@ adj2(eldre,old).
 adj2(elektrisk,electric).
 adj2(elektronisk,electronic). 
 adj2(elementær,single). 
-adj2(endret,different). 
+%adj2(endret,different). 
 adj2(engelsk,english).  
 adj2(enig,agreed).  %%  ( Norw  Tech).  
 %% adj2(enklest,fast).           %% (fastest) Adverb
@@ -15475,7 +15466,6 @@ noun2(høytidsdag,holiday). %% not just sunday ?????
 noun2(høytid,holiday).
 
 noun2(hånd,hand). 
-noun2(hånd,hand).
 
 noun2(håndtering,management). %% handling?
 noun2(disponering,management).
@@ -15605,12 +15595,10 @@ noun2(frikort,card).
 noun2(fylkeskort,card). 
 noun2(førerkort,card).  %% rough 
 noun2(klippekort,card).           %% (Rough, but so is answer (no info)  etc
-noun2(kredittkort,card).
 noun2(kortterminal,card). %% rough
 noun2(kredittkort,card). 
 noun2(kvantumsklippekort,card).
 noun2(kvantumskort,card). 
-noun2(kvantumsklippekort,card). 
 noun2(mastercard,card). 
 noun2(masterkort,card).  
 noun2(månadskort,card). 
@@ -15636,7 +15624,6 @@ noun2(studentkort,card).
 noun2(studentmånedskort,card). 
 noun2(trondheimkort,card). 
 noun2(trondheimskort,card). 
-noun2(studentmånedskort,card). 
 noun2(tkort,card).  
 noun2(tilleggskort,card).   
 noun2(ungdomskort,card).          %% (Rough, but so is answer)
@@ -15647,15 +15634,11 @@ noun2(visacard,card).
 noun2(visakort,card).
 noun2(økonomikort,card). 
 noun2(årskort,card). 
-noun2(bankkort,card). % not bus cards
-noun2(visakort,card). 
-
-
+%% noun2(bankkort,card). % not bus cards
+%% noun2(visakort,card). %% DUPLICATES
 
 
 noun2(klasse,class).  
-
-
 
 
 noun2(korrespondering,connection). 
@@ -15830,7 +15813,7 @@ noun2(nasjon, country).
 noun2(rike,   country). 
 
 noun2(landområde,territory). %%  (technical) 
-noun2(landområde,territory). %
+%noun2(landområde,territory). %
  
 
 noun2(laventrebuss,lowentry_bus). 
@@ -16091,7 +16074,7 @@ noun2(omforming,transformation).   %% TA-110503
 noun2(operatør,operator).
 noun2(oppførsel,behaviour). 
 
-noun2(overgang,transfer). %% TA-100903
+%% noun2(overgang,transfer). %% TA-100903 DUPLICATE
 noun2(overføring,transfer).     
 noun2(sending,transfer).   %% rough   
 noun2(overføringskapasitet,transfer). %% rough
@@ -16340,9 +16323,9 @@ noun2(tilbakemelding,message).
 
 noun2(mening,meaning). 
 noun2(betydning,meaning).  
-noun2(formål,meaning).  
+%noun2(formål,meaning).  
 noun2(hemmelighet,meaning). 
-noun2(hensikt,meaning). 
+%noun2(hensikt,meaning). 
 noun2(intensjon,meaning). 
 noun2(meening,meaning).    %%  ?  
 noun2(menin,meaning). 
@@ -16449,7 +16432,7 @@ noun2(periodebillett,season_ticket).
 %% noun2(månedskort,season_ticket). % card
 %% noun2(periodekort,season_ticket).% card
 
-noun2(måte,way). 
+%noun2(måte,way). 
 noun2(knep,way). 
 noun2(metode,way). 
 noun2(måde,way). %% DK 
@@ -16725,7 +16708,6 @@ noun2(script,program).      %% rough
 noun2(skript,program).      %% 
 noun2(snutt,program). %% programsnutt %%  own
 
-noun2(programmerer,programmer).  
 noun2(programvare,software). 
 noun2(programvaresystem,software). 
 noun2(programmeringsspråk,programminglanguage). 
@@ -16893,7 +16875,7 @@ noun2(rute17mai,may17route).
 
 
 
-noun2(ruteplan, route_plan).  
+%DUPLICATE noun2(ruteplan, route_plan).  
 noun2(avgangsoversikt,  route_plan).
 
 noun2(bustabell,     route_plan).
@@ -16907,7 +16889,7 @@ noun2(bussrutetabell,   route_plan).
 noun2(bussrutetabelll,  route_plan). %% sp 
 noun2(busserutetabell,  route_plan).  
 noun2(busstabell,       route_plan). 
-noun2(busstabell,       route_plan). 
+%DUPLICATE noun2(busstabell,       route_plan). 
 noun2(holdeplasstabell, route_plan). 
 noun2(katalog,          route_plan). 
 noun2(kjøremønster,     route_plan).
@@ -17021,7 +17003,7 @@ noun2(midtbypris,    special_ticket).  %% rough
 noun2(midtbytakst,special_ticket).  
 noun2(nattakst,   special_ticket).  % ?
 noun2(natttakst,  special_ticket). % ?
-noun2(overgangsbillett, special_ticket).
+%DUPLICATE noun2(overgangsbillett, special_ticket).
 noun2(pensjonistbillett,special_ticket). 
 noun2(persondagbillett, special_ticket). 
 noun2(studentbillett,special_ticket). 
@@ -17125,7 +17107,7 @@ noun2(staving,spelling).
 noun2(tilstand,situation). %% hva er kaos -> tilstand 
 noun2(situasjon,situation). 
 
-noun2(sitteplass,seat). 
+%DUPLICATE noun2(sitteplass,seat). 
 noun2(sjø,sea).  
 noun2(innsjø,sea).  %% TA-110105
 
@@ -17393,7 +17375,7 @@ noun2(fatt,hold). %%  hold ==> tak
 noun2(takst,price). 
 noun2(barnetakst,price).       %% rough
 noun2(ungdomstakst,price).     %%  
-noun2(voksentakst,price).      %%
+%noun2(voksentakst,price).      %%
 noun2(takstregel,price).       %% rough
 noun2(takstbestemmelse,price). %% rough 
 noun2(takstsone,zone).  
@@ -17483,7 +17465,7 @@ noun2(kveldstog,train).       %%  (Rough)
 noun2(lokaltog,train).        %%  (Rough) 
 noun2(morgentog,train).       %%  (Rough)    
 noun2(morgontog,train).
-noun2(lokaltog,train).      
+%noun2(lokaltog,train).      
 noun2(nabotog,train).      
 noun2(nattog,train).          %% Rough 
 noun2(regiontog,train).       %% Rough 
@@ -18219,7 +18201,7 @@ verb2(informere,tell).
 verb2(innrømme,tell).  %% Rough 
 verb2(kunngjøre,tell). 
 verb2(melde,tell). 
-verb2(oppgi,tell). 
+%verb2(oppgi,tell). %% DUPLICATE 
 verb2(opplyse,tell). 
 verb2(publisere,tell). 
 verb2(tilkjennegi,tell). 
@@ -18308,7 +18290,7 @@ verb2(fortjene,receive).
 */
 
 verb2(gi,give).  
-verb2(angi,give). 
+%DUPLICATE verb2(angi,give). 
 verb2(avgi,give). 
 verb2(donere,gi).  
 verb2(give,give).       %%  (Danish)
@@ -19422,7 +19404,6 @@ verb_form(ilagt,ilegge,past,part).
 
 verb_form(inneheld,inneholde,pres,fin). 
 verb_form(innlagt,innlegge,past,part). 
-verb_form(innlagt,innlegge,past,part). 
 verb_form(innså,innse,past,fin).   
 
 verb_form(jør,gjøre,pres,fin). %% TA-110114 nec 
@@ -20353,7 +20334,6 @@ noisew(hjertelig).
 noisew(hjertlig).
 noisew(hm). 
 noisew(hmf). 
-noisew(hmm). 
 noisew(hmm). 
 noisew(hmmm). 
 noisew(huh).
