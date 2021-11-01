@@ -133,8 +133,9 @@ verify_files_exist( Filename, BaseFile ) :-
         absolute_file_name( BaseFile, AbsBasefile,  [ extensions( ['.pl','.prolog'] ), access( [read] ), file_errors( fail ) ] ), %% Only for files, not folders?
 %        directory_property( BaseFile, access_timestamp, TimeBase ),
         file_property( AbsBasefile, modify_timestamp, TimeBase ),
-        Time > TimeBase,
-        out('...makeauxtables.pl~136 File already exists: '),out( Filename ), out( Time ),out( 'timestamp > SKIP making ' ),output( TimeBase ).
+        Time > TimeBase.
+%        out('...makeauxtables.pl~136 File already exists: '),out( Filename ), out( Time ),out( 'timestamp > SKIP making ' ),output( TimeBase ).
+%        err('...makeauxtables.pl~136 File already exists: '),err( Filename ), err( Time ),err( 'timestamp > SKIP making ' ),errput( TimeBase ).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
