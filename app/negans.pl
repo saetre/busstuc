@@ -962,11 +962,7 @@ trytofool(has/agent/coffee/tuc/_,       thatisimpossible).
 trytofool(has/agent/feeling/bustuc/_,      thatisimpossible). %% AD HOC
 
 trytofool(has/agent/aunt/tuc/_,     thatisimpossible).
-trytofool(has/agent/brother/tuc/_,  thatisimpossible).
 trytofool(has/agent/child/tuc/_,    thatisimpossible).
-trytofool(has/agent/father/tuc/_,   thatisimpossible). 
-trytofool(has/agent/brother/tuc/_,   thatisimpossible). 
-trytofool(has/agent/sister/tuc/_,    thatisimpossible).
 trytofool(has/agent/uncle/tuc/_,        thatisimpossible).
 trytofool(has/agent/wife/tuc/_,         thatisimpossible).  
 
@@ -982,10 +978,6 @@ trytofool(has/agent/knowledge/tuc/_,    howtuchelp).
 trytofool(has/agent/lunch/tuc/_,        thatisimpossible). 
 
 trytofool(has/agent/parent/tuc/_,       thatisimpossible). 
-trytofool(has/agent/relative/tuc/_,     thatisimpossible). 
-
-
-trytofool(has/agent/vacation/tuc/_,     thatisimpossible). 
 
 
 % trytofool(has/agent/age/_/_,      idonotknow). %% -> noinfoabout(age)

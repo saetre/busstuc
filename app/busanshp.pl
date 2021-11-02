@@ -266,8 +266,8 @@ outdeplisttime1(Deps,_Day,Opts,DirPlace,Out,MAP,_SmartDeps) :-
     !,
     maxnumberofindividualdepartures(MNID), %% Extra check
     memberids(MNID,Deps,Deps4), %% there may be many if unrestricted
-    justoutputthelist0(Deps4,DirPlace,Out,Opts,MAP,_Smartdeps).
-    %%print_smartdep_entries(SmartDeps)
+    justoutputthelist0(Deps4,DirPlace,Out,Opts,MAP,_SD).
+    %%print_smartdep_entries(_SmartDeps)
     %% Few anyway, dont miss any
                                               %% 0  no warning
 
@@ -2073,9 +2073,10 @@ print_paraphrase_message(nearest_station(_sTARTSTOP,A,B)):- % e.g. Holdeplassen 
     printmessageunconditionally(nearest_station(_sTARTSTOP,A,B)).
 
 
-print_paraphrase_message(nearest_station(_sTARTSTOP,A,B)):- % e.g. Holdeplassen nærmest A er B
-    !,
-    printmessageunconditionally(nearest_station(_sTARTSTOP,A,B)).
+%% DUPLICATE
+%print_paraphrase_message(nearest_station(_sTARTSTOP,A,B)):- % e.g. Holdeplassen nærmest A er B
+%    !,
+%    printmessageunconditionally(nearest_station(_sTARTSTOP,A,B)).
 
 print_paraphrase_message(X):- % e.g. NOT 27. Aug. 2005 er en  lørdag.
    printmessage(X).

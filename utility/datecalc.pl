@@ -328,7 +328,8 @@ coerce2d([],[]).
 coerc2d(D,DD)  :- 
     number(D),
     !,
-    name(D,KLIST),
+    %name(D,KLIST),
+    number_codes(D,KLIST), %% RS-20211101 'name' is deprecated
     code_chars2(KLIST,Clist),
     concat_atomlist(Clist,DD).
 
@@ -355,15 +356,15 @@ concat_atomlist([],'').
 concat_atomlist([A],A):-!. 
 concat_atomlist([A,B],C):-!,
     atom_concat(A,B,C).
-concat_atomlist([A|B],C):-
-    concat_atomlist(B,B1),
-    atom_concat(A,B1,C).
+%% DUPLICATE
+%concat_atomlist([A|B],C):-
+%    concat_atomlist(B,B1),
+%    atom_concat(A,B1,C).
 
 
 
 
 %% DATE SECTION taken from utility.pl
-
 
 
 getdaynew(DayOfWeek):- %%   // Get rid of exec call
@@ -376,9 +377,9 @@ this_year(YYYY):-
 
 
 datetime(YYYY,MM,DD,HH,MIN,SEC):- 
-    datime(datime(YYY,M,D,H,Min,Sec)), %% built_in %% Min Sec  stay the same
+    datime(datime(YYY,M,D,H,Mins,Secs)), %% built_in %% Mins Secs  stay the same
 
-    convert_zone(YYY, M, D, H, Min,Sec, %% TA-080407
+    convert_zone(YYY, M, D, H, Mins,Secs, %% TA-080407
                  YYYY,MM,DD,HH, MIN,SEC).
 
 % Prolog is really awkard here

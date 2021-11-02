@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE busroute.pl
 %% SYSTEM BusTUC  DOMAIN TT
 %% CREATED TA-050112

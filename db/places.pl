@@ -1874,7 +1874,6 @@ cmpl(leiebeua,[],leirbrua_gård). %% RS-150913 Typo
 cmpl(leira,fengsel,leira_skole).  %% bratsbergvegen 189
 cmpl(leira,gartneri,leira_skole). 
 cmpl(leirbrua,går,leirbrua_gård).
-cmpl(leirbrua,går,leirbrua_gård).
 
 cmpl(leirnua,gård,leirbrua_gård). 
 
@@ -5823,6 +5822,7 @@ specname(skovgård, 'Skovgård').
 specname(strindfjordvegen, 'Strindfjordveien').
 %% Trapez (Nytt rutesystem hos AtB) -> Hastus synplaces (to make it work). %% TA-2011 -> RS-150815
 
+
 %%%%%%%%% synplace(tveregga,tvereggen).
 %%%%%%%%% synplace(tverregga,tvereggen).
 
@@ -5848,7 +5848,7 @@ synplace(morseths,morsets). %% NEC
 synplace(ostmarka,østmarka). 
 %% synplace(ola,ila). %% Hazard? %% TA-110328
 
-synplace(olavtrygvasonsgate,olav_tryggvasons_gate_ot1). %% CORREC %% TA-101203 %% AtB
+%% synplace(olavtrygvasonsgate,olav_tryggvasons_gate_ot1). %% CORREC %% TA-101203 %% AtB DUPLICATE!
 
 synplace(polishuset,ts). %% AtB. %%  ts is neib). 
 
@@ -5970,7 +5970,6 @@ synplace(banestasjonen,jernbanestasjonen).
 synplace(bardo,nardo). 
 synplace(barfots,berrføtts). 
 synplace(barneavd,barneklinikken).  %%synname
-synplace(barneskole,skole). 
 synplace(barneskole,skole). 
 %% synplace(barnhage,barnehage). 
 synplace(bartlamoen,svartlamon). 
@@ -7183,7 +7182,6 @@ synplace(olav,ole).
 synplace(olavnigardsvei,olav_nygårds_vei).   
 synplace(olavnygaardsvei,olav_nygårds_vei). 
 synplace(olavnygårdsvei,olav_nygårds_vei). 
-synplace(olavnygårdsvei,olav_nygårds_vei). 
 synplace(olavnygrdsvei,olav_nygårds_vei).  
 
 synplace(olavs,olav). 
@@ -7273,7 +7271,6 @@ synplace(persetunet,persaunet).
 synplace(persuanevegen,persaun_street). 
 synplace(persunet,persaunet). 
 synplace(pier,pirbadet).  
-synplace(pierbadet,pirbadet). 
 synplace(pierbadet,pirbadet). 
 synplace(pinsen,prinsen).  %%confusewhitsun
 synplace(pir1,pirbadet).  

@@ -1,3 +1,4 @@
+/* -*- Mode:Prolog; coding:utf-8; -*- */
 %% FILE declare.pl                   
 %% SYSTEM TUC
 %% CREATED TA-940118

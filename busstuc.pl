@@ -63,6 +63,7 @@
 
 % Copied back into makeauxtables.pl... Verify that it works! Only (first) one should execute!
 :- makeauxtables. %% RS-130330       May take a minute...         %%Skip if not needed...  makeauxtables.pl:makeauxtables/0
+%:- told.            %% RS-20211031 Reset all output-streams first...
 :- createhash.    %% RS-130330       May takes another minute...   %% Produce the db/namehashtable  makeauxtables:xxx, if needed
 :- told.            %% RS-140208 Reset all output-streams first...
 %:- verify_consistency. %% RS-140420  Between current and previous period?     

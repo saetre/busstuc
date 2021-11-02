@@ -240,10 +240,11 @@ inventresolveit( X:Y, P, X isa Y and Q, L ) :-
     track( 2, ( write('Unresolved reference:  '),   write(Y),nl,nl) ),        
     resolv(P,Q,L).
 
-inventresolveit(X:Y,P,X isa Y and Q,L):- 
-    !,
-    track( 2, ( write('Unresolved reference:  '),   write(Y),nl,nl) ),        
-    resolv(P,Q,L).
+%% DUPLICATE
+%inventresolveit(X:Y,P,X isa Y and Q,L):- 
+%    !,
+%    track( 2, ( write('Unresolved reference:  '),   write(Y),nl,nl) ),        
+%    resolv(P,Q,L).
 
 
 inventresolve(I:self,P,Q,L) :-  

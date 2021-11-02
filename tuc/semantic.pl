@@ -502,7 +502,7 @@ align1(number,price).
 align1(number,quarter).  
 align1(number,room).  
 align1(number,route). 
-align1(number,speed). 
+%% align1(number,speed). %% DUPLICATE 
 
 align1(number,saturdayroute). 
 align1(number,sundayroute).   %% søndagsrute 4
@@ -799,7 +799,6 @@ agent           has_a  street.  %% Norw har kort vei
 agent           has_a  subscription. 
 agent           has_a  summerroute.    %% NB No inheritance in has_a 
 agent           has_a  system.  
-agent           has_a  service.  
 agent           has_a  station.        %% qua TT
 agent           has_a  talk. 
 agent           has_a  task.
@@ -842,7 +841,7 @@ course          has_a     year.
 
 creation        ako    activity. 
 
-definition      ako    abstract. 
+%% definition      ako    abstract. %% Moved to level 2
 
 effect          ako    abstract. 
 
@@ -949,7 +948,7 @@ company         has_a  minibus.
  
 company         has_a  holidayroute.
 company         has_a  mailaddress.  %% email ?
-company         has_a  minibus.
+%company         has_a  minibus.   %% DUPLICATE
 company         has_a  number. 
 company         has_a  office.
 company         has_a  postaddress. 
@@ -3172,9 +3171,9 @@ v_compl(be1,minute,in,time).
 
 v_compl(be1,minute,to,coevent).  %% til bussen går
 
-v_compl(be1,day,in,time).
-v_compl(be1,hour,in,time).  
-v_compl(be1,minute,in,time).  
+%v_compl(be1,day,in,time).  %% DUPLICATE
+%v_compl(be1,hour,in,time).  %% DUPLICATE
+%v_compl(be1,minute,in,time).  %% DUPLICATE 
 
 
 v_compl(be1,date,in,day).             %% what date is it today
@@ -5415,7 +5414,6 @@ iv_templ(wait,agent).
 v_compl(wait,thing,to,coevent).    %% = until
 v_compl(wait,thing,until,coevent). %% TA-110106
 v_compl(wait,agent,nil,place).
-v_compl(wait,agent,nil,duration). 
 v_compl(wait,agent,nil,duration).    % wait an hour
 v_compl(wait,agent,at,time).  
 v_compl(wait,agent,for,vehicle).
@@ -5853,7 +5851,7 @@ v_compl(cost,thing,in,time).
 v_compl(cost,thing,from,place). 
 v_compl(cost,thing,in,place). 
 v_compl(cost,thing,outside,place). %%
-v_compl(cost,thing,within,place).  %%
+% v_compl(cost,thing,within,place).  %% DUPLICATE
 v_compl(cost,thing,to,place).  
 %    v_compl(cost,thing,in,mode).      %% cost much
 
@@ -5861,7 +5859,7 @@ tv_templ(cost,trip,money).
 tv_templ(cost,ticket,money).  
 v_compl(cost,ticket,for,person). 
 v_compl(cost,ticket,from,place). 
-v_compl(cost,ticket,in,vehicle).  
+%% v_compl(cost,ticket,in,vehicle).  %% DUPLICATE  
 v_compl(cost,ticket,on,vehicle).    %% (Norwagism)     
 v_compl(cost,ticket,to,place). 
 v_compl(cost,ticket,with,discount).
@@ -6045,7 +6043,7 @@ v_compl(expect,agent,off,agent).
 v_compl(expect,agent,on,thing).  %% jeg venter på trikken på holdeplassen
                                      %% vente=wait/expect/await 
 tv_templ(explain,agent,thing). 
-v_compl(explain,agent,to,agent). 
+%% v_compl(explain,agent,to,agent). %% DUPLICATE 
 
 tv_templ(fetch,agent,thing). 
 v_compl(fetch,agent,nil,time).
@@ -7585,14 +7583,13 @@ a_compl(gratis,thing,on,vehicle).
 
 adj_templ(french,thing).   
 adj_templ(full,departure).  %% -- list, i.e. timetable 
-adj_templ(full,vehicle). 
+%% adj_templ(full,vehicle).  %% DUPLICATE
 a_compl(full,thing,in,vehicle).
 a_compl(full,thing,on,vehicle). %%  fullt på bussen
 adj_templ(full,place). 
 a_compl(full,place,with,thing).
 a_compl(full,place,on,thing).   %%  (på bussen :-)
 a_compl(full,place,off,thing).  %%  (av)
-a_compl(full,thing,on,vehicle). %% ?
 adj_templ(funny,thing).  %%   :-)
 
 adj_templ(general,abstract).
@@ -10474,7 +10471,7 @@ stanprep(nil,coevent).
 stanprep(nil,duration).  %% hvor lenge (venter) %% TA-100905
 stanprep(nil,date).      %%  ?
 stanprep(nil,day).  
-stanprep(nil,mode). 
+%% stanprep(nil,mode).  %% DUPLICATE
 stanprep(nil,place).     %% hvor (går bussen) ...til  
 
 stanprep(id,coevent).      %% alt.
@@ -10482,7 +10479,6 @@ stanprep(not,coevent).     %% and not doing %% pro forma
 
 stanprep(without,coevent). %% without (doing) statement 
 stanprep(without,problem). 
-
 
 
 stanprep(nil,mode).    %% kjøre gratis

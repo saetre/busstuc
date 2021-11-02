@@ -977,7 +977,6 @@ cmbus(4,a,4).
 cmbus(6,a,6). 
 %% cmbus(6,c,6). %%  // Only to  ALT/Statoil
 cmbus(6,e,6). 
-cmbus(6,e,6). 
 
 cmbus(7,a,7). 
 
@@ -1110,15 +1109,18 @@ synbus(åtterbuss , 8).
 synbus(nierbuss , 9). 
 synbus(tierbuss , 10).  %% etc etc %%
 
-synbus(toerbussen ,  2). 
-synbus(treerbussen , 3).
-synbus(firerbussen , 4). 
+%% DUPLICATES
+%synbus(toerbussen ,  2). 
+%synbus(treerbussen , 3).
+%synbus(firerbussen , 4). 
+%synbus(femmerbussen , 5). 
+%synbus(sekserbussen , 6). 
+%synbus(sjuerbussen , 7). 
+%synbus(åtterbussen , 8). 
+%synbus(nierbussen , 9). 
+%synbus(tierbussen , 10).  %% etc etc %%
+
 synbus(femerbussen , 5). 
-synbus(sekserbussen , 6). 
-synbus(sjuerbussen , 7). 
-synbus(åtterbussen , 8). 
-synbus(nierbussen , 9). 
-synbus(tierbussen , 10).  %% etc etc %%
 
 
 synbus('7buss',7).  %% etc //outdated  => 7 buss
@@ -1170,12 +1172,10 @@ synbus(ikeabussen,25).
 
 */
 
-
-
 synbus(linje1,1). 
 
 synbus(fema,5).  
-synbus(femeren,5).  
+%% synbus(femeren,5). %% DUPLICATE  
 synbus(femmerbuss,5). %%  ETC
 
 % List not complete 
