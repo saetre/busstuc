@@ -2157,8 +2157,8 @@ hpl(72792,åsveien,åsveien,'Åsveien').
 hpl(72793,åsveien,åsveien,'Åsveien').
 hpl(72794,nordland,nordland,'Nordland').
 hpl(72795,nordland,nordland,'Nordland').
-hpl(72796,haukdal_aas,haukdal_aas,'Haukdal / Aas').
-hpl(72797,haukdal_aas,haukdal_aas,'Haukdal / Aas').
+hpl(72796,haukdal_aas,haukdal_aas,'Haukdal/Aas').
+hpl(72797,haukdal_aas,haukdal_aas,'Haukdal/Aas').
 hpl(72798,åsveien_skole_4,åsveien_skole_4,'Åsveien skole 4').
 hpl(72799,åsveien_skole_3,åsveien_skole_3,'Åsveien skole 3').
 hpl(72800,åsveien_skole_1,åsveien_skole_1,'Åsveien skole 1').
