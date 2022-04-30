@@ -35,7 +35,7 @@ route_period(   tt, r160_210830, date(2021,08,30),   date(2022,01,06) ).    %% A
 %route_period(   tt, r160_210913, date(2021,09,13),   date(2022,02,06) ).    %% Auto Update: 2021-09-25
 %route_period(   tt, r160_210906, date(2021,09,06),   date(2022,02,06) ).    %% Auto Update: 2021-09-18
 %route_period(   tt, r160_210927, date(2021,09,27),   date(2022,03,05) ).    %% Auto Update: 2021-10-11
-route_period(   tt, r160_211101, date(2021,11,01),   date(2022,04,02) ).    %% Auto Update: 2021-11-08
-route_period(   tt, r160_211025, date(2021,10,25),   date(2022,04,02) ).    %% Auto Update: 2021-11-07
-route_period(   tt, r160_211018, date(2021,10,18),   date(2022,04,02) ).    %% Auto Update: 2021-10-29
-route_period(   tt, r160_211004, date(2021,10,04),   date(2022,04,02) ).    %% Auto Update: 2021-10-24
+route_period(   tt, r160_211101, date(2021,11,01),   date(2022,08,02) ).    %% Auto Update: 2021-11-08
+route_period(   tt, r160_211025, date(2021,10,25),   date(2022,08,02) ).    %% Auto Update: 2021-11-07
+route_period(   tt, r160_211018, date(2021,10,18),   date(2022,08,02) ).    %% Auto Update: 2021-10-29
+route_period(   tt, r160_211004, date(2021,10,04),   date(2022,08,02) ).    %% Auto Update: 2021-10-24
