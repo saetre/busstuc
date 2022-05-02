@@ -11885,18 +11885,18 @@ synword(ti,           10). %% as a bus
 %% synword(tier,          10). %% en tier = 1 10 = 1.10
 synword(tieren,        10).
 
-synword(toerne,2). 
-synword(treerne,3).
-synword(firerne,4).
-synword(femerne,5).
-synword(sekserne,6).
-synword(sjuerne,7).
-synword(åtterne,8).
-synword(nierne,9).
-synword(tierne,10). % ... osv
+%synword(toerne,2). 
+%synword(treerne,3).
+%synword(firerne,4).
+synword(femerne,5). %Typo?
+%synword(sekserne,6).
+%synword(sjuerne,7).
+%synword(åtterne,8).
+%synword(nierne,9).
+%synword(tierne,10). % ... osv
 
 %% etc etc
-synword('17oo',1700). 
+%synword('17oo',1700). %% Typo? 
 %% etc etc
 synword('20tida',2000). %% etc. etc. 
 

@@ -393,7 +393,7 @@ cw(an). cw(and). cw(another). cw(any). cw(anybody).
 cw(anything). cw(anyone). cw(anywhere) .
 cw(as). cw(average). cw(away). 
 
-cw(b). %% allow S. R. 12b 
+%cw(b). %% allow S. R. 12b 
 %%%% cw(bay). %% Necessary ????
 cw(be). cw(because). cw(been). cw(bigger). cw(biggest). 
 cw(both). cw(bound). cw(bravo).  cw(but). cw(by). cw(bye). 
@@ -433,28 +433,38 @@ cw(kl).  %%   Norwagism, OK
 cw(last).  cw(lawl). 
 cw(least). cw(less). 
 
-cw(m). cw(may). %% cw(medium). ==> pro forma adjective
+%cw(m).
+cw(may). %% cw(medium). ==> pro forma adjective
 cw(morning). 
 
 cw(never). cw(next). cw(newyear).  cw(no). %% as in no.
 
-cw(o). cw(ok). cw(oclock). cw(often). 
+%cw(o).
+cw(ok). cw(oclock). cw(often). 
 cw(older). cw(one). cw(other).
 
 cw(many). cw(more). cw(most). cw(much). 
-cw(must). cw(my). cw(next).
+cw(must). cw(my). 
+%cw(next).
 
 cw(night).
-cw(no). cw(nobody). cw(noone). cw(north). cw(not). cw(nothing). cw(nowhere).
+%cw(no).
+cw(nobody). cw(noone). cw(north). cw(not). cw(nothing). cw(nowhere).
 
-cw(older). cw(only). cw(or). cw(order). cw(other).  cw(others). 
+%cw(older).
+cw(only). cw(or). cw(order).
+%cw(other).
+cw(others).
 cw(own).
 
-cw(p). cw(ping). cw(pong).  cw(pm). %% > 12 
+%cw(p).
+cw(ping). cw(pong).  cw(pm). %% > 12 
 
 cw(recently). cw(regards). cw(right). 
 
-cw(lol). cw(lawl). cw(rotfl). cw(rofl). cw(roflmao). cw(rotflmao). cw(lmao).
+cw(lol).
+%cw(lawl).
+cw(rotfl). cw(rofl). cw(roflmao). cw(rotflmao). cw(lmao).
 
 cw(s). %% 's  genitive 
 cw(set). 

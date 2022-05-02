@@ -1,0 +1,403 @@
+agency_id,route_id,route_short_name,route_long_name,route_type
+ATB:Authority:2,ATB:Line:2_1,1,Ranheim - Strindheim - sentrum - Tiller - Heimdal - Kattem,704
+ATB:Authority:2,ATB:Line:2_10,10,Sæterbakken- Strindheim- Sentrum- Ratesvingen,704
+ATB:Authority:2,ATB:Line:2_101,101,Nattbuss Byåsen/Flatåsen,705
+ATB:Authority:2,ATB:Line:2_102,102,Nattbuss Valentinlyst/Jakobsli,705
+ATB:Authority:2,ATB:Line:2_103,103,Nattbuss Kroppanmarka/Sjetnema,705
+ATB:Authority:2,ATB:Line:2_104,104,Nattbuss Kolstad/Heimstad,705
+ATB:Authority:2,ATB:Line:2_105,105,Nattbuss Buenget,705
+ATB:Authority:2,ATB:Line:2_106,106,Nattbuss Lade/Værestrøa,705
+ATB:Authority:2,ATB:Line:2_107,107,Nattbuss Reppe/Vikåsen/Fortuna,705
+ATB:Authority:2,ATB:Line:2_108,108,Nattbuss Stavset,705
+ATB:Authority:2,ATB:Line:2_109,109,Nattbuss Bjørndalen/Kattem/Lun,705
+ATB:Authority:2,ATB:Line:2_11,11,Blakli- Sentrum- Stavset,704
+ATB:Authority:2,ATB:Line:2_110,110,Nattbuss Trondheim- Melhus,705
+ATB:Authority:2,ATB:Line:2_111,111,Nattbuss Tiller,705
+ATB:Authority:2,ATB:Line:2_112,112,Nattbuss Nidarvoll/Klæbu,705
+ATB:Authority:2,ATB:Line:2_113,113,Nattbuss Moholt/Brøset,705
+ATB:Authority:2,ATB:Line:2_114,114,Nattbuss Sentrum - Spongdal,705
+ATB:Authority:2,ATB:Line:2_115,115,Nattbuss Othilienborg/Risvolla,705
+ATB:Authority:2,ATB:Line:2_116,116,Trondheim- Hommelvik- Stjørdal,705
+ATB:Authority:2,ATB:Line:2_12,12,Dragvoll - Strindheim - sentrum - Marienborg,704
+ATB:Authority:2,ATB:Line:2_13,13,Østmarka- Strindheim- Lerkendal- Havstad,704
+ATB:Authority:2,ATB:Line:2_14,14,Lerkendal-Brundalen-Strindheim,704
+ATB:Authority:2,ATB:Line:2_15,15,Østmarka- Strindheim- E6- Nidarvoll- Tiller- Torgård,704
+ATB:Authority:2,ATB:Line:2_16,16,Flatåsen- Heimdal- Torgård,704
+ATB:Authority:2,ATB:Line:2_19,19,Lerkendal - Sluppen / Postterminalen,704
+ATB:Authority:2,ATB:Line:2_2,2,Strindheim- Lade- sentrum- Sau,704
+ATB:Authority:2,ATB:Line:2_20,20,Grillstad - Strindheim - Ladehammeren- Sentrum - Romolslia,704
+ATB:Authority:2,ATB:Line:2_201,201,Ranheim- Være- Vikåsen/Markapl,712
+ATB:Authority:2,ATB:Line:2_202,202,Olderdalen - Engstrømbakken,712
+ATB:Authority:2,ATB:Line:2_203,203,Muruvik- Hommelvik,712
+ATB:Authority:2,ATB:Line:2_204,204,Hommelvik skole- Sneisen,712
+ATB:Authority:2,ATB:Line:2_205,205,Storsand/Smiskaret- Hommelvik-,712
+ATB:Authority:2,ATB:Line:2_206,206,Hommelvik- Sveberg,712
+ATB:Authority:2,ATB:Line:2_207,207,Vikhammer skole,712
+ATB:Authority:2,ATB:Line:2_208,208,Rye- Flakk- Rye skole / Spongd,712
+ATB:Authority:2,ATB:Line:2_209,209,Spongdal- Hangeråsen- Rye- Spo,712
+ATB:Authority:2,ATB:Line:2_21,21,Brattøra- Sentrum- Trolla,704
+ATB:Authority:2,ATB:Line:2_210,210,Spongdal- Berg- Megarden- Spon,712
+ATB:Authority:2,ATB:Line:2_211,211,Værestrøa- Vikåsen- Brundalen,712
+ATB:Authority:2,ATB:Line:2_212,212,Rye skole- Flakk/Hangeråsen- R,712
+ATB:Authority:2,ATB:Line:2_214,214,Klæbu- Bjørkli- Ler,712
+ATB:Authority:2,ATB:Line:2_215,215,Lauglo/Fjøsvollan- Leinum- Nyp,712
+ATB:Authority:2,ATB:Line:2_216,216,City Syd/Heimdal- Skjetlein,712
+ATB:Authority:2,ATB:Line:2_217,217,Flakk- Lund,712
+ATB:Authority:2,ATB:Line:2_22,22,Vestlia- Othilienborg- Sentrum,704
+ATB:Authority:2,ATB:Line:2_23,23,Brattøra - St. Olavs- Hallset - Flatåsen - Sandmoen,704
+ATB:Authority:2,ATB:Line:2_24,24,City Syd- Kroppanmarka- Lerkendal,704
+ATB:Authority:2,ATB:Line:2_25,25,Vikåsen- Strindheim- Singsaker,704
+ATB:Authority:2,ATB:Line:2_26,26,Sentrum- Skistua,704
+ATB:Authority:2,ATB:Line:2_28,28,Ilsvika-Pirbadet via Singsaker,704
+ATB:Authority:2,ATB:Line:2_3,3,Lohove- Sentrum- Hallset,704
+ATB:Authority:2,ATB:Line:2_310,310,Trondheim - Orkanger - Fannrem,701
+ATB:Authority:2,ATB:Line:2_311,311,Stjørdal - Trondheim,701
+ATB:Authority:2,ATB:Line:2_340,340,Trondheim - Støren,701
+ATB:Authority:2,ATB:Line:2_350,350,Trondheim - Stadsbygd - Rissa,701
+ATB:Authority:2,ATB:Line:2_40,40,Flatåsen- Tonstad,704
+ATB:Authority:2,ATB:Line:2_41,41,Ranheim- Reppe,704
+ATB:Authority:2,ATB:Line:2_410,410,Trondheim - Orkanger - (Fannrem) via fv. 800,701
+ATB:Authority:2,ATB:Line:2_4101,4101,Nattbuss Trondheim - Orkanger,705
+ATB:Authority:2,ATB:Line:2_42,42,Buenget- Hallset- Munkvoll,704
+ATB:Authority:2,ATB:Line:2_420,420,Trondheim - Orkanger - Hitra - Frøya,701
+ATB:Authority:2,ATB:Line:2_421,421,Orkanger - Lensvik - Valset,701
+ATB:Authority:2,ATB:Line:2_422,422,(Sunde) - Sandstad - Sistranda,701
+ATB:Authority:2,ATB:Line:2_43,43,Bergheim/Voll studentby- Blakl,704
+ATB:Authority:2,ATB:Line:2_430,430,Trondheim - Stjørdal - Selbu - (Tydal),701
+ATB:Authority:2,ATB:Line:2_44,44,Ranheim - Klokkerplassen - Værestrøa,704
+ATB:Authority:2,ATB:Line:2_440,440,Støren - Røros,701
+ATB:Authority:2,ATB:Line:2_45,45,Sjetnmarka- Tiller- Tillerringen- Sandmoen,704
+ATB:Authority:2,ATB:Line:2_451,451,(Krinsvatnet) - Botngård - Brekstad,701
+ATB:Authority:2,ATB:Line:2_452,452,Sandviksberget - Åfjord - Vanvikan / Trondheim,701
+ATB:Authority:2,ATB:Line:2_453,453,Bjugn - Lysøysundet,701
+ATB:Authority:2,ATB:Line:2_455,455,Vanvikan - Leksvik - Inderøy -,701
+ATB:Authority:2,ATB:Line:2_46,46,Torgård- Lundåsen,704
+ATB:Authority:2,ATB:Line:2_460,460,Orkanger - Meldal - Berkåk,701
+ATB:Authority:2,ATB:Line:2_470,470,(Trondheim) - Orkanger - Kyrks,701
+ATB:Authority:2,ATB:Line:2_480,480,(Trondheim) - Støren - Berkåk,701
+ATB:Authority:2,ATB:Line:2_490,490,Osen - Sjøåsen,701
+ATB:Authority:2,ATB:Line:2_50,50,Sverresborg - Byåsen - Flatåsen - Saupstadringen - Heimdal - Sandmoen,704
+ATB:Authority:2,ATB:Line:2_5001,5001,(Brannåsen) - Rødde - Gimse,712
+ATB:Authority:2,ATB:Line:2_5002,5002,Ilhaugen - Øysand - Gimse,712
+ATB:Authority:2,ATB:Line:2_5003,5003,Melhus - Øyås - Varmbu - Melhus,712
+ATB:Authority:2,ATB:Line:2_5004,5004,Klett - Melhus - Støren,701
+ATB:Authority:2,ATB:Line:2_5005,5005,Korsvegen - Hovin - Lundamo,712
+ATB:Authority:2,ATB:Line:2_5006,5006,Hermanstad - Lundamo/Skjetlein,712
+ATB:Authority:2,ATB:Line:2_5008,5008,Flå - Finnaunet,712
+ATB:Authority:2,ATB:Line:2_5009,5009,Brekkåsen - Lete - Kregnes,712
+ATB:Authority:2,ATB:Line:2_5010,5010,Eid skole - Brokalykkja,712
+ATB:Authority:2,ATB:Line:2_504,504,Melhus - Hølonda,701
+ATB:Authority:2,ATB:Line:2_505,505,Melhus - Skaun - Børsa,701
+ATB:Authority:2,ATB:Line:2_51,51,Sandmoen- Tillerringen- Kroppa,704
+ATB:Authority:2,ATB:Line:2_5100,5100,Meldal - Storås - Orkanger,712
+ATB:Authority:2,ATB:Line:2_5101,5101,Løften/Slupphaugen - Grøtte sk,712
+ATB:Authority:2,ATB:Line:2_5102,5102,Orkanger - Gjølme - Svorkdalen,712
+ATB:Authority:2,ATB:Line:2_5103,5103,Grøtte skole - Vormstad,712
+ATB:Authority:2,ATB:Line:2_5104,5104,Ustan - Grøtte skole - Orkange,712
+ATB:Authority:2,ATB:Line:2_5105,5105,Årlivoll skole - Kårmo/Løften/,712
+ATB:Authority:2,ATB:Line:2_5106,5106,Våttålia/Ribygda - Venn,712
+ATB:Authority:2,ATB:Line:2_5107,5107,Skaun - Jåren/Råbygda skole,712
+ATB:Authority:2,ATB:Line:2_5109,5109,Vigdalsmo/Ilhaugen - Buvika - Ilhaugen / Vigdalsmo,712
+ATB:Authority:2,ATB:Line:2_511,511,Skaun - Børsa,701
+ATB:Authority:2,ATB:Line:2_5110,5110,Råbygda/Skaun - Orkdal VGS,712
+ATB:Authority:2,ATB:Line:2_5111,5111,Grønnesset - Venn - Børsa,712
+ATB:Authority:2,ATB:Line:2_515,515,Ilhaugen - Buvika,701
+ATB:Authority:2,ATB:Line:2_52,52,Skytterbanen- Lundåsen- Kattem - Heimdal - Flatåsen - Byåsen - St. Olavs Hospital,704
+ATB:Authority:2,ATB:Line:2_5201,5201,Lensvik - Singstad - Øyangen -,712
+ATB:Authority:2,ATB:Line:2_5202,5202,Lysheim - Selva - Kallklova -,712
+ATB:Authority:2,ATB:Line:2_5205,5205,Laksåvika - Strand skole,712
+ATB:Authority:2,ATB:Line:2_5206,5206,Fillan - Strøm - Kvenvær - Vær,712
+ATB:Authority:2,ATB:Line:2_5207,5207,Fillan - Barman - Strøm/Knutsh,712
+ATB:Authority:2,ATB:Line:2_5208,5208,Fillan - Fjellværøya/Ulvøya,712
+ATB:Authority:2,ATB:Line:2_5209,5209,Hestvika - Strand - Tranvikan,712
+ATB:Authority:2,ATB:Line:2_5210,5210,Sistranda - Flatval - Titran,712
+ATB:Authority:2,ATB:Line:2_5211,5211,Sistranda - Gurvikdal - Nordsk,712
+ATB:Authority:2,ATB:Line:2_5212,5212,Sistranda - Uttian - Dyrøy,712
+ATB:Authority:2,ATB:Line:2_53,53,Lundåsen- Heimdal- Saupstad- Flatåsen- Hallset- Ila- Sentrum- Sandmoen,704
+ATB:Authority:2,ATB:Line:2_5300,5300,Hårstadengene / Evjegjerdet - Selbu,712
+ATB:Authority:2,ATB:Line:2_5301,5301,Selbu - Selbustrand - Dambekken,712
+ATB:Authority:2,ATB:Line:2_5302,5302,Alset - Flønes - Selbu,712
+ATB:Authority:2,ATB:Line:2_5305,5305,Lerdalen - Selbu,712
+ATB:Authority:2,ATB:Line:2_535,535,Selbu - Tydal,701
+ATB:Authority:2,ATB:Line:2_54,54,Vikåsen/Ranheim- Lade- sentrum- Sluppen- Østre Rosten- Sandmoen,704
+ATB:Authority:2,ATB:Line:2_540,540,Røros - Synnervika,701
+ATB:Authority:2,ATB:Line:2_5400,5400,Røros - Glåmos - Brekken,712
+ATB:Authority:2,ATB:Line:2_5401,5401,Røros - Galåen - Røros,712
+ATB:Authority:2,ATB:Line:2_5402,5402,Glåmos - Viken,712
+ATB:Authority:2,ATB:Line:2_5403,5403,Ålen - Graftås - Nesvold,712
+ATB:Authority:2,ATB:Line:2_5404,5404,Haltdalen - Ålen - Røros,712
+ATB:Authority:2,ATB:Line:2_5406,5406,Røros - Synnervika,712
+ATB:Authority:2,ATB:Line:2_541,541,Røros - Brekken,701
+ATB:Authority:2,ATB:Line:2_543,543,Hessdalen  - Ålen - Røros,701
+ATB:Authority:2,ATB:Line:2_544,544,Tronsaunet - Haltdalen - Ålen,701
+ATB:Authority:2,ATB:Line:2_5471,5471,Støren - Singsås - Almås/Wolde,712
+ATB:Authority:2,ATB:Line:2_5472,5472,Kotsøy/Støren - Enodd Budalen,712
+ATB:Authority:2,ATB:Line:2_5473,5473,Støren - Soknedal - Vagnild - Sommervold/Holte,712
+ATB:Authority:2,ATB:Line:2_5474,5474,Frøsetfeltet - Støren Barneskole,712
+ATB:Authority:2,ATB:Line:2_5475,5475,Soknedal - Heggvoll - (Hage),712
+ATB:Authority:2,ATB:Line:2_5476,5476,Soknedal - Holte - Eggen,712
+ATB:Authority:2,ATB:Line:2_5501,5501,Fossbrua- Åsly - Flyta/Skogen,712
+ATB:Authority:2,ATB:Line:2_5502,5502,Rissa - Skogen - Grønningsmark,712
+ATB:Authority:2,ATB:Line:2_5504,5504,Hermstad - Stadsbygd,712
+ATB:Authority:2,ATB:Line:2_5505,5505,Åsly skole - Stadsbygd  - Vikan,712
+ATB:Authority:2,ATB:Line:2_5507,5507,Einbakk brua - Åsly skole,712
+ATB:Authority:2,ATB:Line:2_552,552,Vanvikan - Rissa,701
+ATB:Authority:2,ATB:Line:2_5521,5521,Åsly skole - Skaugdalen - Bergmyran,712
+ATB:Authority:2,ATB:Line:2_5522,5522,Råkstad - Mælan - Frengsmyra,712
+ATB:Authority:2,ATB:Line:2_5523,5523,Selnes/Årlot/Åsly skole - Fevå,712
+ATB:Authority:2,ATB:Line:2_5530,5530,Testmann - Brandsås - Testmann,712
+ATB:Authority:2,ATB:Line:2_5532,5532,Bergbygda,712
+ATB:Authority:2,ATB:Line:2_5533,5533,Leksvik - Straumen,712
+ATB:Authority:2,ATB:Line:2_5534,5534,Kråkmo - Vanvikan - Leksvik,712
+ATB:Authority:2,ATB:Line:2_5535,5535,Rian - Vanvikan,712
+ATB:Authority:2,ATB:Line:2_5551,5551,Elveng - Bjugn - Grøtan veg,712
+ATB:Authority:2,ATB:Line:2_5552,5552,Brekstad - Opphaug - Bjugn,712
+ATB:Authority:2,ATB:Line:2_5554,5554,Vallersund - Vasøy - Oksvoll - Bjugn,712
+ATB:Authority:2,ATB:Line:2_5555,5555,Bjugn - Oksvoll - Vallersund,712
+ATB:Authority:2,ATB:Line:2_5556,5556,Sandstad - Nes - Bjugn,712
+ATB:Authority:2,ATB:Line:2_5557,5557,Brekstad - Grøtan vegkryss - Stokkslettbakken - Bjugn,712
+ATB:Authority:2,ATB:Line:2_5558,5558,Uthaug - Hårberg - Bjugn,712
+ATB:Authority:2,ATB:Line:2_558,558,Brekstad - Garten,701
+ATB:Authority:2,ATB:Line:2_5601,5601,Skjøtskift/Bjørnli - Løkken -,712
+ATB:Authority:2,ATB:Line:2_5602,5602,Meldal rbst - Storås - Dragset,712
+ATB:Authority:2,ATB:Line:2_5603,5603,Grut - Å/Re - Meldal barne- og,712
+ATB:Authority:2,ATB:Line:2_5604,5604,Groegga - Storås - Dombu - Mel,712
+ATB:Authority:2,ATB:Line:2_5605,5605,Nerskogen - Voll - Berkåk,712
+ATB:Authority:2,ATB:Line:2_5606,5606,Garli - Berkåk,712
+ATB:Authority:2,ATB:Line:2_5607,5607,Berkåk - Ulsberg - Gisnadalen,712
+ATB:Authority:2,ATB:Line:2_5608,5608,Berkåk - Innset - Seierdalen,712
+ATB:Authority:2,ATB:Line:2_5609,5609,Skolrute Rindal,712
+ATB:Authority:2,ATB:Line:2_561,561,Hafsmo/Tannvikvågen - Krokstad,701
+ATB:Authority:2,ATB:Line:2_5610,5610,Rindal - Meldal vgs,712
+ATB:Authority:2,ATB:Line:2_5701,5701,Kyrksæterøra - Vinjeøra - Bjør,712
+ATB:Authority:2,ATB:Line:2_5702,5702,Ellingsgården/Slupphaugen - Vi,712
+ATB:Authority:2,ATB:Line:2_5703,5703,Kyrksæterøra - Gjengstø/Taftøy,712
+ATB:Authority:2,ATB:Line:2_5704,5704,Kyrksæterøra - Storoddan,712
+ATB:Authority:2,ATB:Line:2_5705,5705,Kyrksæterøra - Ytre Snillfjord,712
+ATB:Authority:2,ATB:Line:2_5706,5706,Skolerute Halsa,712
+ATB:Authority:2,ATB:Line:2_5707,5707,Vågan/Kongensvoll/Moltun - Kro,712
+ATB:Authority:2,ATB:Line:2_5708,5708,Liabøen>Strand/Rognskog/Halsa ferjekai,712
+ATB:Authority:2,ATB:Line:2_580,580,Oppdal - Gjevilvasshytta,701
+ATB:Authority:2,ATB:Line:2_5801,5801,(Oppdal) - Håmmårbekkrysset - Oppdal,712
+ATB:Authority:2,ATB:Line:2_5802,5802,Storlidalen - Lønset - Midtbygda - Oppdal,712
+ATB:Authority:2,ATB:Line:2_5803,5803,Oppdal - Holden - Fagerhaug - Strand,712
+ATB:Authority:2,ATB:Line:2_5805,5805,Oppdal - Driva - Engan,712
+ATB:Authority:2,ATB:Line:2_5904,5904,Åfjord - Grensen - Osen,712
+ATB:Authority:2,ATB:Line:2_5906,5906,Stokksund- Linesøya,712
+ATB:Authority:2,ATB:Line:2_591,591,Åfjord - Stokksund - Linesøya,701
+ATB:Authority:2,ATB:Line:2_592,592,Stjern - Åfjord - Åset skole,701
+ATB:Authority:2,ATB:Line:2_593,593,Åset skole - Åfjord - Ommundal,701
+ATB:Authority:2,ATB:Line:2_594,594,Åfjord- Tårnes/Lauvøy,701
+ATB:Authority:2,ATB:Line:2_595,595,Reppkleiv - Roan,701
+ATB:Authority:2,ATB:Line:2_596,596,Bessaker - Brandsfjord skole -,701
+ATB:Authority:2,ATB:Line:2_597,597,Strand - Åsegg,701
+ATB:Authority:2,ATB:Line:2_602,602,Fleksibel region Røros,701
+ATB:Authority:2,ATB:Line:2_603,603,Fleksibel by - Steinkjer,701
+ATB:Authority:2,ATB:Line:2_604,604,Levanger - Høgberget,701
+ATB:Authority:2,ATB:Line:2_605,605,Fleksibel by - Verdal,701
+ATB:Authority:2,ATB:Line:2_608,608,Fleksibel region Overhalla,701
+ATB:Authority:2,ATB:Line:2_609,609,Svea - Gullhomstrand Bybuss,701
+ATB:Authority:2,ATB:Line:2_610,610,Grong - Sørli,701
+ATB:Authority:2,ATB:Line:2_611,611,Grong - Harran - Namsskogan,701
+ATB:Authority:2,ATB:Line:2_612,612,Snåsa - Grong,701
+ATB:Authority:2,ATB:Line:2_615,615,Røyrvik - Skorovatn - Grong,701
+ATB:Authority:2,ATB:Line:2_630,630,Vanvikan - Follafoss - Steinkj,701
+ATB:Authority:2,ATB:Line:2_635,635,Levanger - Verdal - St,701
+ATB:Authority:2,ATB:Line:2_640,640,Levanger - Verdal - Steinkjer,701
+ATB:Authority:2,ATB:Line:2_660,660,Foldereid - Kolvereid - Rørvik,701
+ATB:Authority:2,ATB:Line:2_665,665,Kolvereid - Salsbruket - Lund - Namsos,701
+ATB:Authority:2,ATB:Line:2_670,670,Stjørdal - Meråker - Storlien,701
+ATB:Authority:2,ATB:Line:2_680,680,Levanger - Steinkjer - Namsos,701
+ATB:Authority:2,ATB:Line:2_681,681,Flatanger - Sjøåsen - Namsos,701
+ATB:Authority:2,ATB:Line:2_690,690,Grong - Steinkjer,701
+ATB:Authority:2,ATB:Line:2_695,695,Namsos - Grong - (Harran),701
+ATB:Authority:2,ATB:Line:2_70,70,Stjørdal/Hommelvik- Strindheim/Trondheim,704
+ATB:Authority:2,ATB:Line:2_71,71,Melhus - Tiller- Trondheim,704
+ATB:Authority:2,ATB:Line:2_7101,7101,Berglia - Sørli skole,712
+ATB:Authority:2,ATB:Line:2_7105,7105,Murumoen - Sandvika,712
+ATB:Authority:2,ATB:Line:2_7106,7106,Tunnsjø - Sandvika,712
+ATB:Authority:2,ATB:Line:2_7109,7109,Namsvatn - Røyrvik,712
+ATB:Authority:2,ATB:Line:2_7110,7110,Devika - Røyrvik,712
+ATB:Authority:2,ATB:Line:2_7111,7111,Stallvika - Rørvik,712
+ATB:Authority:2,ATB:Line:2_72,72,Tiller- Sandmoen- Klæbu,704
+ATB:Authority:2,ATB:Line:2_7201,7201,Inderøy - Verdal,712
+ATB:Authority:2,ATB:Line:2_7202,7202,Straumen - (Flaget) - Røra,712
+ATB:Authority:2,ATB:Line:2_7203,7203,Straumen - Grande - Røra,712
+ATB:Authority:2,ATB:Line:2_7204,7204,Steinkjer - Røra - Inderøy,712
+ATB:Authority:2,ATB:Line:2_7205,7205,Oksål > Vist > Akset,712
+ATB:Authority:2,ATB:Line:2_7206,7206,Gangstad - Straumen,712
+ATB:Authority:2,ATB:Line:2_7207,7207,Straumen - Grønnesby - Steinkj,712
+ATB:Authority:2,ATB:Line:2_7208,7208,Trøakorsen > Vist > Dalabakken > Lyngstad skole,712
+ATB:Authority:2,ATB:Line:2_7209,7209,Kjesbu - Utøy skole,712
+ATB:Authority:2,ATB:Line:2_7210,7210,Mosvik > Straumen,712
+ATB:Authority:2,ATB:Line:2_7211,7211,Vist > Utøy > Innherred kristne skole,712
+ATB:Authority:2,ATB:Line:2_722,722,Straumen - Steinkjer,701
+ATB:Authority:2,ATB:Line:2_723,723,Mosvik - Inderøy/Steinkjer,701
+ATB:Authority:2,ATB:Line:2_73,73,Lerkendal -Bostad- Klæbu,704
+ATB:Authority:2,ATB:Line:2_7301,7301,Steinkjer - Ogndal,712
+ATB:Authority:2,ATB:Line:2_7302,7302,Veiesdal - Henning - Steinkjer,712
+ATB:Authority:2,ATB:Line:2_7303,7303,Ogndal - Steinkjer,712
+ATB:Authority:2,ATB:Line:2_7304,7304,Mære - Guldbergaunet,712
+ATB:Authority:2,ATB:Line:2_7306,7306,Steinkjer - Sparbu,712
+ATB:Authority:2,ATB:Line:2_7307,7307,Steinkjer - Gangstad,712
+ATB:Authority:2,ATB:Line:2_7308,7308,Finstad -Reitan - Binde,712
+ATB:Authority:2,ATB:Line:2_7309,7309,Grønnvika - Binde,712
+ATB:Authority:2,ATB:Line:2_731,731,Sjøåsen - Namdalseid - Steinkj,712
+ATB:Authority:2,ATB:Line:2_7310,7310,Nyveiskorsen - Sunnan - Binde,712
+ATB:Authority:2,ATB:Line:2_7311,7311,Utgård - Binde,712
+ATB:Authority:2,ATB:Line:2_7312,7312,Binde - Egge ungdom skole,712
+ATB:Authority:2,ATB:Line:2_7313,7313,Råde - Fagerheim,712
+ATB:Authority:2,ATB:Line:2_7315,7315,Øvre Kvam - Steinkjer,712
+ATB:Authority:2,ATB:Line:2_7317,7317,Vellamelen - Steinkjer,712
+ATB:Authority:2,ATB:Line:2_7318,7318,Beistad - Jådåren,712
+ATB:Authority:2,ATB:Line:2_7319,7319,Beistad - Sprova,712
+ATB:Authority:2,ATB:Line:2_732,732,Steinkjer - Bartnes - Steinkje,701
+ATB:Authority:2,ATB:Line:2_7320,7320,Beistad - Bartnes,712
+ATB:Authority:2,ATB:Line:2_7321,7321,Hatligshus - Beistad skole/Vel,712
+ATB:Authority:2,ATB:Line:2_7322,7322,Vada - Malm skole Eldnes,712
+ATB:Authority:2,ATB:Line:2_7323,7323,Stjerna - Holdervegen - Bjørka,712
+ATB:Authority:2,ATB:Line:2_7324,7324,Malm skole - Holden,712
+ATB:Authority:2,ATB:Line:2_7327,7327,Agle - Snåsa,712
+ATB:Authority:2,ATB:Line:2_7328,7328,Strindmoen - Snåsa,712
+ATB:Authority:2,ATB:Line:2_7329,7329,Imsdalen - Snåsa,712
+ATB:Authority:2,ATB:Line:2_733,733,Agle Snåsa - Steinkjer,701
+ATB:Authority:2,ATB:Line:2_7330,7330,Holsing - Breide,712
+ATB:Authority:2,ATB:Line:2_7341,7341,Mære skole - Nesset,712
+ATB:Authority:2,ATB:Line:2_7342,7342,Mære skole - Granheim,712
+ATB:Authority:2,ATB:Line:2_7343,7343,Mære skole - Dalem - Reipa,712
+ATB:Authority:2,ATB:Line:2_7344,7344,Mære skole - Risholt,712
+ATB:Authority:2,ATB:Line:2_74,74,Tempe - Bratsberg- Flatjord,704
+ATB:Authority:2,ATB:Line:2_7401,7401,Levanger - Nesset - Gjemble,712
+ATB:Authority:2,ATB:Line:2_7402,7402,Elihu - Nesheim - Neset - Gjem,712
+ATB:Authority:2,ATB:Line:2_7403,7403,Børøya - Mule skole - Frol sko,712
+ATB:Authority:2,ATB:Line:2_7404,7404,Mule - Okkenhaug,712
+ATB:Authority:2,ATB:Line:2_7405,7405,Levanger - Buran - Nybrotta,712
+ATB:Authority:2,ATB:Line:2_7408,7408,Levanger - Munkeby - Stokkanba,712
+ATB:Authority:2,ATB:Line:2_7409,7409,Høgberget - Momarka - Halsan s,712
+ATB:Authority:2,ATB:Line:2_741,741,Levanger - Holåsen vest,701
+ATB:Authority:2,ATB:Line:2_7410,7410,Nossum - Håa - Nesheim - Gjemb,712
+ATB:Authority:2,ATB:Line:2_7411,7411,Stavlo - Skogn,712
+ATB:Authority:2,ATB:Line:2_7412,7412,Markabygda - Skogn - Levanger,712
+ATB:Authority:2,ATB:Line:2_7414,7414,Markabygda,712
+ATB:Authority:2,ATB:Line:2_7415,7415,Markabygda - Gruslina - Markab,712
+ATB:Authority:2,ATB:Line:2_7416,7416,Strandkorsen - Rongland - Leva,712
+ATB:Authority:2,ATB:Line:2_7417,7417,Skogn - Holte - Hotran,712
+ATB:Authority:2,ATB:Line:2_7418,7418,Strandkorsen - Ekne - Skogn,712
+ATB:Authority:2,ATB:Line:2_7419,7419,Åsen - Levanger,712
+ATB:Authority:2,ATB:Line:2_7420,7420,Åsen - Norbygda,712
+ATB:Authority:2,ATB:Line:2_7421,7421,Vinan - Sjur - Åsen barne- og,712
+ATB:Authority:2,ATB:Line:2_7422,7422,Leangen - Åsenfjorden - Åsen b,712
+ATB:Authority:2,ATB:Line:2_7423,7423,Nesjø - Fætten - Åsen barne-,712
+ATB:Authority:2,ATB:Line:2_7424,7424,Åsenfjorden - Åsen,712
+ATB:Authority:2,ATB:Line:2_7425,7425,Frosta - Åsen - Stjørdal - Lev,712
+ATB:Authority:2,ATB:Line:2_7426,7426,Frosta skole - Nordbygda - Fro,712
+ATB:Authority:2,ATB:Line:2_7427,7427,Giset - Frosta skole,712
+ATB:Authority:2,ATB:Line:2_7429,7429,Tautra - Frosta skole,712
+ATB:Authority:2,ATB:Line:2_7430,7430,Erstad - Hokstad,712
+ATB:Authority:2,ATB:Line:2_7431,7431,Hokstad - Ytterøy skole,712
+ATB:Authority:2,ATB:Line:2_7432,7432,Forberg - Ytterøy skole,712
+ATB:Authority:2,ATB:Line:2_7433,7433,Bønnesenteret - Vårtun,712
+ATB:Authority:2,ATB:Line:2_75,75,Trondheim S- Sentrum- Spongdal,704
+ATB:Authority:2,ATB:Line:2_7501,7501,Bjørga - Verdalsøra barneskole,712
+ATB:Authority:2,ATB:Line:2_7502,7502,Kulstadvika - Ørmelen,712
+ATB:Authority:2,ATB:Line:2_7503,7503,Verdalsøra skole - Vinne,704
+ATB:Authority:2,ATB:Line:2_7504,7504,Ravlo - Verdalsøra barne skole,712
+ATB:Authority:2,ATB:Line:2_7505,7505,Verdalsøra skole - Vinne,712
+ATB:Authority:2,ATB:Line:2_7506,7506,Forbregd - Stiklestad skole,712
+ATB:Authority:2,ATB:Line:2_7507,7507,Verdal vgs - Minsås,712
+ATB:Authority:2,ATB:Line:2_7509,7509,Sveagjardet - Verdal,712
+ATB:Authority:2,ATB:Line:2_7510,7510,Leksdal - Verdalsøra skole,712
+ATB:Authority:2,ATB:Line:2_7511,7511,Aspeheim - Leksdal,712
+ATB:Authority:2,ATB:Line:2_7512,7512,Mogrenda - Guldbergaunet,712
+ATB:Authority:2,ATB:Line:2_7514,7514,Lein - Vuku skole,712
+ATB:Authority:2,ATB:Line:2_7515,7515,Kråg - Stiklestad skole,712
+ATB:Authority:2,ATB:Line:2_7517,7517,Vuku - Leirådal - Vuku,712
+ATB:Authority:2,ATB:Line:2_7518,7518,Vuku skole - Sør Vera,712
+ATB:Authority:2,ATB:Line:2_7519,7519,Skjækerfossen - Vuku - Verdal,712
+ATB:Authority:2,ATB:Line:2_7520,7520,Innsmoen - Garnes - Verdal,712
+ATB:Authority:2,ATB:Line:2_7521,7521,Garnes skole - Stene,712
+ATB:Authority:2,ATB:Line:2_76,76,Flakkråa- Klefstadbukta- Spongdal,704
+ATB:Authority:2,ATB:Line:2_7603,7603,Måneset - Rørvik,712
+ATB:Authority:2,ATB:Line:2_7604,7604,Storval - Bjørndalen - Fikkan,712
+ATB:Authority:2,ATB:Line:2_7605,7605,Kolvereid - Våg - Arnøya,712
+ATB:Authority:2,ATB:Line:2_7606,7606,Rørvik - Lauvøya,712
+ATB:Authority:2,ATB:Line:2_7607,7607,Rørvik - Garstad - Austafjord,712
+ATB:Authority:2,ATB:Line:2_7608,7608,Stein - Leka skole,712
+ATB:Authority:2,ATB:Line:2_7609,7609,Ytre Vikna - Austafjord,712
+ATB:Authority:2,ATB:Line:2_761,761,Kolvereid - Gutvik,701
+ATB:Authority:2,ATB:Line:2_762,762,Abelvær - Kolvereid,701
+ATB:Authority:2,ATB:Line:2_763,763,Kolvereid - Ottersøy - Måneset,701
+ATB:Authority:2,ATB:Line:2_77,77,Heimdal- Klett- Spongdal,704
+ATB:Authority:2,ATB:Line:2_7701,7701,Lånke skole - Eidum/Geving/Hell,712
+ATB:Authority:2,ATB:Line:2_7702,7702,Langstein - Skatval - Halsen,712
+ATB:Authority:2,ATB:Line:2_7703,7703,Vassbygda - Kvislabakken - Halsen ungdomsskole,712
+ATB:Authority:2,ATB:Line:2_7705,7705,Halsen ungdomsskole - Skatval,712
+ATB:Authority:2,ATB:Line:2_7706,7706,Ytteråsen - Elvran - Stjørdal,712
+ATB:Authority:2,ATB:Line:2_7707,7707,Stjørdal - Geving - Lerbakken,712
+ATB:Authority:2,ATB:Line:2_7708,7708,Fremstad/Buan/Vigdenes bru - Forradal - Hegra - Haraldreina skole,712
+ATB:Authority:2,ATB:Line:2_7709,7709,Stjørdal - Eidum - Hegra - Ingstadnesset,712
+ATB:Authority:2,ATB:Line:2_7710,7710,Flora - Sonli - Hegra - Halsen,712
+ATB:Authority:2,ATB:Line:2_7711,7711,Hegra - Skjelstadmark - Hovskogen - Stjørdal,712
+ATB:Authority:2,ATB:Line:2_7712,7712,Stjørdal - Haraldreina - Prestmoen - Skjeldstadmarka - Hegra - Geving,712
+ATB:Authority:2,ATB:Line:2_7720,7720,Gudå - Meråker,712
+ATB:Authority:2,ATB:Line:2_7721,7721,Kluksdal/Kopperå - Meråker,712
+ATB:Authority:2,ATB:Line:2_7722,7722,Kluksdal - Meråker,712
+ATB:Authority:2,ATB:Line:2_78,78,Heimdal- Ringvål (-Spongdal),704
+ATB:Authority:2,ATB:Line:2_7801,7801,Korsen - Morkmo - Bjørgan,712
+ATB:Authority:2,ATB:Line:2_7802,7802,Derås - Hundset - Namdalseid s,712
+ATB:Authority:2,ATB:Line:2_7804,7804,Oksdøla - Statland skole,712
+ATB:Authority:2,ATB:Line:2_7807,7807,Romstad - Klinga Bangdalsruta,712
+ATB:Authority:2,ATB:Line:2_7808,7808,Bangsund,712
+ATB:Authority:2,ATB:Line:2_7809,7809,Svea - Høknes,712
+ATB:Authority:2,ATB:Line:2_781,781,Namsos - Bangsund,701
+ATB:Authority:2,ATB:Line:2_7810,7810,Svea - Buret - Høknes U (Østby,712
+ATB:Authority:2,ATB:Line:2_7811,7811,Namsos - Vibstad - Øysletta,712
+ATB:Authority:2,ATB:Line:2_7813,7813,Engan - Sørenget - Botnan,712
+ATB:Authority:2,ATB:Line:2_7814,7814,Kalkløv - Ganes - Sørenget,712
+ATB:Authority:2,ATB:Line:2_7815,7815,Stranda - Jøa skole,712
+ATB:Authority:2,ATB:Line:2_7816,7816,Tranåsn - Fosnes - Jøa skole,712
+ATB:Authority:2,ATB:Line:2_782,782,Sørenget - Hals - Kattmarka -,701
+ATB:Authority:2,ATB:Line:2_783,783,Fossbrenna - Sentrum - (Spillum),701
+ATB:Authority:2,ATB:Line:2_784,784,Namsos - Bangsund - Namdalseid,701
+ATB:Authority:2,ATB:Line:2_785,785,Aglen - Skorstad - Namsos,701
+ATB:Authority:2,ATB:Line:2_79,79,Sluppen/Strindheim - Være - Vikhammeråsen,704
+ATB:Authority:2,ATB:Line:2_7901,7901,Solstad - OBUS - Hunn skole,712
+ATB:Authority:2,ATB:Line:2_7902,7902,Sandmo - OBUS - Øysletta,712
+ATB:Authority:2,ATB:Line:2_7903,7903,Solem - Klabbdal - OBUS,712
+ATB:Authority:2,ATB:Line:2_7904,7904,Øyheim - Grong,712
+ATB:Authority:2,ATB:Line:2_7905,7905,Værem - Grong,712
+ATB:Authority:2,ATB:Line:2_7906,7906,Snåsa - Hammer,712
+ATB:Authority:2,ATB:Line:2_7908,7908,Høylandet - Grong,712
+ATB:Authority:2,ATB:Line:2_7910,7910,Mevassvik - Høylandet,712
+ATB:Authority:2,ATB:Line:2_7911,7911,Grong - Høylandet - Kongsmoen,712
+ATB:Authority:2,ATB:Line:2_7913,7913,Hovland - Namsskogan,712
+ATB:Authority:2,ATB:Line:2_7914,7914,OBUS > Bertnem > Flasnes,701
+ATB:Authority:2,ATB:Line:2_7915,7915,Namsos - Høylandet,712
+ATB:Authority:2,ATB:Line:2_80,80,Jonsvatnet / Vikåsen - Lohove,704
+ATB:Authority:2,ATB:Line:2_800,800,Trondheim - Brekstad - Kristiansund,1014
+ATB:Authority:2,ATB:Line:2_805,805,Trondheim - Brekstad,1014
+ATB:Authority:2,ATB:Line:2_81,81,Bratsberg- Nyjord- Bruråk,704
+ATB:Authority:2,ATB:Line:2_810,810,Trondheim - Vanvikan,1014
+ATB:Authority:2,ATB:Line:2_82,82,Melhus- Hesttrøa,704
+ATB:Authority:2,ATB:Line:2_820,820,Dyrøy - Øyrekken,1013
+ATB:Authority:2,ATB:Line:2_821,821,Dyrøy - Øyrekken (Sør - Væran),1013
+ATB:Authority:2,ATB:Line:2_825,825,Dyrøy - Mausundvær - Sula ferjekai,1004
+ATB:Authority:2,ATB:Line:2_83,83,Klæbu- Bjørkli/Tangen,704
+ATB:Authority:2,ATB:Line:2_830,830,Sandvikberget - Sætervik,1013
+ATB:Authority:2,ATB:Line:2_835,835,Sandvikberget - Sætervik - Bessaker,1013
+ATB:Authority:2,ATB:Line:2_85,85,Hommelvik- Sneisen,704
+ATB:Authority:2,ATB:Line:2_850,850,Dypfest - Tarva,1004
+ATB:Authority:2,ATB:Line:2_855,855,Garten - Storfosna,1004
+ATB:Authority:2,ATB:Line:2_86,86,Hommelvik- Sveberg-Leistad- Vikhammer,704
+ATB:Authority:2,ATB:Line:2_860,860,Garten - Storfosna - Leksa - Værnes,1004
+ATB:Authority:2,ATB:Line:2_870,870,Brekstad - Valset,1004
+ATB:Authority:2,ATB:Line:2_880,880,Flakk - Rørvik,1004
+ATB:Authority:2,ATB:Line:2_9,9,St. Olavs gate - Lian,902
+ATB:Authority:2,ATB:Line:2_90,90,Stjørdal stasjon - Terrassehus,701
+ATB:Authority:2,ATB:Line:2_950,950,Levanger - Hokstad,1004
+ATB:Authority:2,ATB:Line:2_960,960,Skei - Gutvik,1004
+ATB:Authority:2,ATB:Line:2_963,963,Gjerdinga - Eidshaug,1004
+ATB:Authority:2,ATB:Line:2_965,965,Hofles - Geisnes - Lund,1004
+ATB:Authority:2,ATB:Line:2_966,966,Borgan - Ramstadlandet,1004
+ATB:Authority:2,ATB:Line:2_980,980,Namsos-Rørvik-Leka,1014
+ATB:Authority:2,ATB:Line:2_985,985,Ølhammeren - Seierstad,1004

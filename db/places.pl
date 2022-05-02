@@ -4044,10 +4044,15 @@ placestat(hurtigrutekaia,pirbadet).
 placestat(hurtigrutekaien,pirbadet). 
 placestat(hurtigruten,pirbadet). 
 placestat(hurtigruteterminalen,pirbadet). %% ?
-placestat(huseby,husebytunet).  %% \+ synplace
+placestat(huseby,husebytunet_1).  %% \+ synplace
+placestat(huseby,husebytunet_2).  %% \+ synplace
+placestat(huseby,husebytunet_3).  %% \+ synplace
 placestat(husebybadet,saupstadsenteret). 
 placestat(husebyhallen,saupstadsenteret). 
 placestat(husebysenteret,saupstadsenteret). 
+placestat(husebytunet,husebytunet_1).  %% \+ synplace
+placestat(husebytunet,husebytunet_2).  %% \+ synplace
+placestat(husebytunet,husebytunet_3).  %% \+ synplace
 placestat(hårstad,martin_kregnes_veg). 
 placestat(hårstadmarka,martin_kregnes_veg). 
 placestat(hårstadmyra,martin_kregnes_veg). 
