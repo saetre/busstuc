@@ -4,8 +4,8 @@
 %% REVISED TA-110808
 
 Ideas concerning  BUSSTUC
-¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
-Niss går til nardo.
+Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
+Niss gÃ¥r til nardo.
 
 [new:::(nardo isa neighbourhood,A isa bus,do/go/A/B,srel/to/place/nardo/B,event/real/B)]
 
@@ -263,7 +263,7 @@ Make an overview of the principal sources of ambiguity
 e.g  da = when|because
      som = preposition|relative_pronoun
 
-¤¤¤¤¤¤¤¤¤
+Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 PI**2= 9.869604378534024
@@ -308,7 +308,7 @@ Lag en rutine
   internalstat('Gudes gt.',gudes_gate)
 
 
-Bruk Montague semantikk konsekvent på alle entiteter   variable:predication
+Bruk Montague semantikk konsekvent pÃ¥ alle entiteter   variable:predication
 
    buss  X:isa/bus i.e. X:bus  object
           P: exists(...) and P    fluent
@@ -321,7 +321,7 @@ Egentlig er predikat bare et navn, men her passer det bra med
 
   S = (x,y): x barberer y
 
-som ligner på SOLON-notasjon,
+som ligner pÃ¥ SOLON-notasjon,
  
 S (x,y): x barberer y
 
@@ -362,19 +362,19 @@ Why doesn't the bus pass  ... 9:31
 Implement a fast bottom up multitagger for dcg-pure constructions.
 
 
-Prøv å lage en subseksjon av gn som bruker vanlig dcg (-->)
-for alskens lavnivå grammatikk.
+PrÃ¸v Ã¥ lage en subseksjon av gn som bruker vanlig dcg (-->)
+for alskens lavnivÃ¥ grammatikk.
 
 
 Hold kjeft a.! -->
-Du må oppgi et sted i slike spørsmål .
+Du mÃ¥ oppgi et sted i slike spÃ¸rsmÃ¥l .
 
-tistille å.
+tistille Ã¥.
 
-a=å = for å
+a=Ã¥ = for Ã¥
 () = go
 
-jeg vil tistille for å gå.
+jeg vil tistille for Ã¥ gÃ¥.
 // tragedy of multiple repairs
 
 
@@ -388,7 +388,7 @@ All sentences with at most N words shall be parsed within time limit
 N=3
 
 er du * gjekk . 
-- - - Uforståelig ved * - - - 
+- - - UforstÃ¥elig ved * - - - 
 10030 ms
 ...
 
@@ -426,12 +426,12 @@ Use that as a test set  (From A to B via X)
 Rendyrke verb-free language in BusTUC.
 ( a verb-free version of TQL to be used by pragma?)
 
-Introduser ofisielle attributtnavn på database.
+Introduser ofisielle attributtnavn pÃ¥ database.
 Used by custodian in metalanguage.
 
 Allow verb_free and event-free questioning
 
-Hva er turtype til buss 43 fra Ringvpø kl 2150 på hverdager ?
+Hva er turtype til buss 43 fra RingvpÃ¸ kl 2150 pÃ¥ hverdager ?
 
 Event-abstraction: All eventy-informationis ignored, only
 event-free information.
@@ -451,7 +451,7 @@ noun_modifier has as argument the verb in question.
 Then it can decide if it is a proper noun_modifier or not.
 
 
-" Kan du gi turen 21:50 fra Ringvål samme turtype som turen 20:15."
+" Kan du gi turen 21:50 fra RingvÃ¥l samme turtype som turen 20:15."
             (                     )
             (          )(         )  
 
@@ -479,7 +479,7 @@ Introduce two levels of _compl:
 
 
 
-Gjennomfør ideen om verbfritt språk  // generelt
+GjennomfÃ¸r ideen om verbfritt sprÃ¥k  // generelt
 
 Project:
 
@@ -512,25 +512,25 @@ QuickTransfer
 
 By prepositional attachment ambiguity, selcet the weakest interpretation,
 
-1. Når går (bussen fra NTH til Nardo)
+1. NÃ¥r gÃ¥r (bussen fra NTH til Nardo)
 
    Bussen er fra NTH
    Bussen er til Nardo
-   Bussen går.
+   Bussen gÃ¥r.
 
-2. Når går (bussen fra NTH) til Nardo
+2. NÃ¥r gÃ¥r (bussen fra NTH) til Nardo
  
    Bussen er fra NTH
-   Bussen går til Nardo
+   Bussen gÃ¥r til Nardo
 
-3. Når går bussen (fra NTH til Nardo)
+3. NÃ¥r gÃ¥r bussen (fra NTH til Nardo)
  
-   Bussen går fra NTH 
-   Bussen går til Nardo
+   Bussen gÃ¥r fra NTH 
+   Bussen gÃ¥r til Nardo
 
 *** 4. Ikke
 
-   Bussen går fra NTH.
+   Bussen gÃ¥r fra NTH.
    Bussen er til Nardo.
 
 
@@ -627,7 +627,7 @@ set_filter(X,night_route(X),DepSet1,DepSet2),
    ==>
 
 set_filter( (X,night_route(X)),DepSet1,DepSet2),
-            ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+            Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
         =    X:night_route(X)
         =    night_route
 
@@ -635,7 +635,7 @@ set_filter( (X,night_route(X)),DepSet1,DepSet2),
 Lag en NL-parafrase av "TQL" slik at resonnementet kan parafraseres.
 
 
-Gjør TQL
+GjÃ¸r TQL
 
     /                \
 
@@ -664,7 +664,7 @@ Translate to an event language explaining the events in a verb-free
 EVENTLISH
 
 
-Hver setning i SNL er svaret på et spørsmål.
+Hver setning i SNL er svaret pÃ¥ et spÃ¸rsmÃ¥l.
 (Hvilket).
 
 
@@ -679,7 +679,7 @@ Translator
   BT =(?)BT
 
 
-ElTagore krever riktig språk, men det er en sikkerhetsforanstaltning.
+ElTagore krever riktig sprÃ¥k, men det er en sikkerhetsforanstaltning.
 
 
 
@@ -777,7 +777,7 @@ Read an error/revision decription and PROPOSE changes in the tables:
 
 (own module for refering to local tables).
 
-For example the problem of byåsen (route 5,8).
+For example the problem of byÃ¥sen (route 5,8).
 
 Which changes did you make, and how would you tell anyone how to do it.
 
@@ -843,7 +843,7 @@ states and events.
                         use 
 
 
-Prøv å formuler grmmatikken som en komplett
+PrÃ¸v Ã¥ formuler grmmatikken som en komplett
    rewrite system (med gaps).
 Deretter reformuler dette som Consensical grammar
 (1 pass, top down)
@@ -901,7 +901,7 @@ Identify a wrong data entry, based on a description of erros.
 Ide:
 
 
-Gjør det mulig å scanne alle NP-items (nummer/name/noun)/"Longest possible"
+GjÃ¸r det mulig Ã¥ scanne alle NP-items (nummer/name/noun)/"Longest possible"
 
 Stack them, and then try
 
@@ -914,7 +914,7 @@ Here, noe stacking is necessary.
 
 np_items0 (a la adverbials0)
 
-  OOps  omvendt rekkefølge ?
+  OOps  omvendt rekkefÃ¸lge ?
 
 
 Philosophocally:
@@ -957,25 +957,25 @@ Two kinds of adverbials:
 
 
 
-Ide: er det mulig å beskrive entry (feil) som dataentry
+Ide: er det mulig Ã¥ beskrive entry (feil) som dataentry
 
   og hvorfor det er feil  i TUC Explain ?
 
 
-Overfladiske svar på filosofiske spørsmål der svaret også har en dypere mening.
+Overfladiske svar pÃ¥ filosofiske spÃ¸rsmÃ¥l der svaret ogsÃ¥ har en dypere mening.
 
 
 
 Tue Mar  2 11:44:22 MET 2010
 : nor
 kan vi bli sammen -->
-Du må oppgi et sted i slike spørsmål .
+Du mÃ¥ oppgi et sted i slike spÃ¸rsmÃ¥l .
 
 
 Tue Mar  2 10:59:16 MET 2010
 : nor
 hvor kommer du fra? -->
-Du må oppgi en buss i slike spørsmål .
+Du mÃ¥ oppgi en buss i slike spÃ¸rsmÃ¥l .
 #-> ?
 
 
@@ -992,7 +992,7 @@ Du må oppgi en buss i slike spørsmål .
 
 
 
-Hurtigruta gikk på grunn utenfor Sortland.
+Hurtigruta gikk pÃ¥ grunn utenfor Sortland.
 
 
 (The fast window went on reason outside black country)
@@ -1035,9 +1035,9 @@ Include rewording into a similar formalism
 
 
 
-Vi kan slå alle  lagene // Sjekk logikken
+Vi kan slÃ¥ alle  lagene // Sjekk logikken
 
-Vi kan slå en hver av lagene // modal logisk
+Vi kan slÃ¥ en hver av lagene // modal logisk
 
 
 Rewrite coupl into the new form (with explicit lambda notation)
@@ -1083,11 +1083,11 @@ understood, with the expected interpretation.
 %% = BusSTUC
 
 
-Det er to måter å kople vent complements
+Det er to mÃ¥ter Ã¥ kople vent complements
 
     ECAND       gratis og til NTH
 
-    ECINCL      til NTH på alle lørdager
+    ECINCL      til NTH pÃ¥ alle lÃ¸rdager
 
 
 Make a consistent version
@@ -1152,9 +1152,9 @@ If you were forced to speak with main sentence wording only
 
 , og ==> ;     //prelexical
 
-%% textflag:   verb subjekt  er ikke spørsmål men betingelser.
+%% textflag:   verb subjekt  er ikke spÃ¸rsmÃ¥l men betingelser.
 
-bruker du kort så reiser du billig.
+bruker du kort sÃ¥ reiser du billig.
 
 
 
@@ -1168,8 +1168,8 @@ Two levels of compliance: one for disambiguation, // meaningful in some world
 Rutehefte is in principle complete wrt all that is necessary to know
 about bus trafic (in Th).
 
-Forstå alle spørsmål angående  ruteheftet med henvisning til ruteheftet hvis svaret står der.
-// Dett er et objektivt og gjennomførbart krav
+ForstÃ¥ alle spÃ¸rsmÃ¥l angÃ¥ende  ruteheftet med henvisning til ruteheftet hvis svaret stÃ¥r der.
+// Dett er et objektivt og gjennomfÃ¸rbart krav
 
 
 ',' has same operator priorities as \
@@ -1179,23 +1179,23 @@ lambda p q x p(q(x)) ==  p,q,x, p-(q-x)
 (similar to origina DCG)
 
 
-N:  det er ikke slik at bussen går til NTH
+N:  det er ikke slik at bussen gÃ¥r til NTH
 =
-bussen går ikke til NTH
+bussen gÃ¥r ikke til NTH
 #=
-Det er aldri slik at bussen går til NTH
+Det er aldri slik at bussen gÃ¥r til NTH
 =
-A coevent bussen går til nth does never happen
+A coevent bussen gÃ¥r til nth does never happen
 // negation of coevent rather than logical negation
 
-N: Det er aldri slik at bussen går til NTH
+N: Det er aldri slik at bussen gÃ¥r til NTH
 [new:::(nth isa neighbourhood,A isa coevent,B isa bus,event/A/C,do/go/B/C,srel/to/place/nth/C,adj/nil/impossible/A/D,event/real/D)]
 
 
-N:  det er ikke slik at bussen går til NTH
+N:  det er ikke slik at bussen gÃ¥r til NTH
 [new:::not (nth isa neighbourhood,A isa bus,do/go/A/B,srel/to/place/nth/B,event/real/B)]
 
-N: jeg nekter å synge.
+N: jeg nekter Ã¥ synge.
 
 [new:::('I' isa self,A isa coevent,dob/deny/'I'/A/B,event/A/C,dob/sing/'I'/nil/C,event/real/B)]
 
@@ -1210,29 +1210,29 @@ OK .
 v_compl, n_compl   : Compliance (not complement) "Samsvar"
 
 
-All prosatekst i ruteheftet skal forstås.
+All prosatekst i ruteheftet skal forstÃ¥s.
 
 
 Feil rettes  //bakfra og forover// (buslog/bistrans/sem/gram/lex/dict)
 
-Da vil bakre deler få "feil" data, men dette  bidrar til å robustifisere systemet
+Da vil bakre deler fÃ¥ "feil" data, men dette  bidrar til Ã¥ robustifisere systemet
 
 
 
-Svar på vanskelige spørsmål: (synt)
+Svar pÃ¥ vanskelige spÃ¸rsmÃ¥l: (synt)
 
-Hadde du ventet at jeg skulle forstå det spørsmålet ?
+Hadde du ventet at jeg skulle forstÃ¥ det spÃ¸rsmÃ¥let ?
 
-Svar på vanskelige spørsmål: (sem) 
+Svar pÃ¥ vanskelige spÃ¸rsmÃ¥l: (sem) 
 
-Hadde du ventet at jeg skulle svare  det spørsmålet ?
+Hadde du ventet at jeg skulle svare  det spÃ¸rsmÃ¥let ?
 
 BussTUC understands everything but is not allowed to answer
-metarelevant questions. (Prøve allikevel å hinte dette med subtile
+metarelevant questions. (PrÃ¸ve allikevel Ã¥ hinte dette med subtile
 detaljer)
 
-Vanskelige setninger blir forstått og ignorert på en PRESIS måte.
-Jeg kan DESVERRE ikke svare på det for gode metarelevante spørsmål
+Vanskelige setninger blir forstÃ¥tt og ignorert pÃ¥ en PRESIS mÃ¥te.
+Jeg kan DESVERRE ikke svare pÃ¥ det for gode metarelevante spÃ¸rsmÃ¥l
 
 
 Module Identifier (route period) is the closest to the Montague
@@ -1319,11 +1319,11 @@ Problem: Google-identification
 But  make a simulation!
 
 
-From   Yggdrasilvegen 9c  til "Trubadur" den 27.1 før kl 9.
+From   Yggdrasilvegen 9c  til "Trubadur" den 27.1 fÃ¸r kl 9.
 
 
-      Y9c -> Gløsh S
-      GløsH s -> Torget
+      Y9c -> GlÃ¸sh S
+      GlÃ¸sH s -> Torget
       Torget -> "Trubadur"
 
 
@@ -1345,46 +1345,46 @@ or
 
 Ide:
 
-En operatør og et nat språk system 
-må finne seg i å bli utfordret uten å bli fornærmet og svare uhøflig
-men må ikke gå inn på en slik dialog.
+En operatÃ¸r og et nat sprÃ¥k system 
+mÃ¥ finne seg i Ã¥ bli utfordret uten Ã¥ bli fornÃ¦rmet og svare uhÃ¸flig
+men mÃ¥ ikke gÃ¥ inn pÃ¥ en slik dialog.
 
 
-Hva med å gjøre coevent ako time ?
-  Før jul / før nissen kom
+Hva med Ã¥ gjÃ¸re coevent ako time ?
+  FÃ¸r jul / fÃ¸r nissen kom
 
 
 
 Lars Bungum Scenario
 
-Motiverer ønske pm å vite reelltids scenario.
+Motiverer Ã¸nske pm Ã¥ vite reelltids scenario.
 
-Man ønsker å ta buss 5 fra Joh F V til Gløs (Direkte buss) , men ankommer litt for sent etter ruteplanen.
+Man Ã¸nsker Ã¥ ta buss 5 fra Joh F V til GlÃ¸s (Direkte buss) , men ankommer litt for sent etter ruteplanen.
 
-Hvis buss 5  er gått lønner det seg å ta buss 19
-Hvis buss 5 ikke er gått lønner det seg å vente på buss 5.
+Hvis buss 5  er gÃ¥tt lÃ¸nner det seg Ã¥ ta buss 19
+Hvis buss 5 ikke er gÃ¥tt lÃ¸nner det seg Ã¥ vente pÃ¥ buss 5.
 
 Ankomst JFV kl 0634, buss 19 ankommer presis, 
 Buss 5 ikke synlig er ca 4 minutter forsinket.
 
-Hvis buss 5 ikke er gått, man vet det og venter, Ankomst = 0654
+Hvis buss 5 ikke er gÃ¥tt, man vet det og venter, Ankomst = 0654
 
      N: buss 5  fra johan falkbergets vei til nth i morgen etter kl 0630.
      Buss 5 passerer  Johan Falkbergets veg kl.  0630 , kl.  0640 og  kl.  0650 
-     og  kommer til  Gløshaugen Syd ,  21 minutter senere .(+ 4 min)
+     og  kommer til  GlÃ¸shaugen Syd ,  21 minutter senere .(+ 4 min)
 
-Hvis buss 5 nettopp  er gått, man vet det ikke, 
-lar buss 19 gå og venter på neste Buss 5         Ankomst =  0705 
+Hvis buss 5 nettopp  er gÃ¥tt, man vet det ikke, 
+lar buss 19 gÃ¥ og venter pÃ¥ neste Buss 5         Ankomst =  0705 
 
      Buss 5 passerer  Johan Falkbergets veg kl.  0640 , kl.  0650 og  kl.  0700 
-     og  kommer til  Gløshaugen Syd ,  21 minutter senere (+ 4 min)
+     og  kommer til  GlÃ¸shaugen Syd ,  21 minutter senere (+ 4 min)
 
-Hvis buss 5  er gått (og man vet det), buss 19 er presis.   Ankomst = 700 
+Hvis buss 5  er gÃ¥tt (og man vet det), buss 19 er presis.   Ankomst = 700 
 
      N: buss 19  fra johan falkbergets vei til nth i morgen etter kl 0634.
 
-     Buss 19 går fra Johan Falkbergets veg kl.  0634 til Studentersamfundet 1 kl.  0647 
-     og  buss 52 går fra Studentersamfundet 2 kl.  0658 til Gløshaugen Nord kl.  0700 .
+     Buss 19 gÃ¥r fra Johan Falkbergets veg kl.  0634 til Studentersamfundet 1 kl.  0647 
+     og  buss 52 gÃ¥r fra Studentersamfundet 2 kl.  0658 til GlÃ¸shaugen Nord kl.  0700 .
 ----
    
 
@@ -1397,8 +1397,8 @@ w(Lit,Code)   Lit is printed in syntax tree
 
 
 
-jeg lengter etter å sykle .   .. complement
-jeg venter etter å sykle.     .. modifier
+jeg lengter etter Ã¥ sykle .   .. complement
+jeg venter etter Ã¥ sykle.     .. modifier
    
 
 adj/fake/Diamomd   
@@ -1413,7 +1413,7 @@ You must code every word so that the different senses gets explicit.
 
 e.g.  adverb, conjunction, auxiliary, etc
 
- nå = adv(now)  verb(reach) 
+ nÃ¥ = adv(now)  verb(reach) 
 
    verb(reach)+verb(_) -- eliminate verb(reach)
 
@@ -1455,20 +1455,20 @@ of  a Type 0 grammar with limiterd look ahead.
 Some verbs : "like" "live" are not DO-dverbs but more like experience verbs
               kjenne
 
-Bor du i trondheim * Jeg kan ikke gjøre det
+Bor du i trondheim * Jeg kan ikke gjÃ¸re det
 
-Then: "I cannot do that" /"Jeg kan ikke gjøre det" is not quite correct.
+Then: "I cannot do that" /"Jeg kan ikke gjÃ¸re det" is not quite correct.
 
 
 
-// Dens saklighet (evnen til å holde stilen selv  om den visste at det
-var spøk)er en del av humoren.
+// Dens saklighet (evnen til Ã¥ holde stilen selv  om den visste at det
+var spÃ¸k)er en del av humoren.
 
 
 // standard clock problem  
 replaceall srel/nil/clock/1900/free(66)with srel/nil/time/1900/free(66)
 
-Hva med å la srel/nil/clock/1900/E   være standard ?
+Hva med Ã¥ la srel/nil/clock/1900/E   vÃ¦re standard ?
 
 Idea: Rendyrk pragma as rewrite-system
 
@@ -1519,7 +1519,7 @@ Rework TUC EC, let effect be valid at timepoint (easens planability)
 
 Relasjon/Predikat sortering er mandatory for 1. ordens predikatlogikk
 
-Sortering på navn, og liste alle dets egenskaper, er typisk for
+Sortering pÃ¥ navn, og liste alle dets egenskaper, er typisk for
 Montague-semantikk og Rammebaserte kunnskap.
  
 
@@ -1555,16 +1555,16 @@ Lexical rewrite as an option:
 lexrewrite([er,hyppig,forekommende],[skjer,ofte]). %% generalz of splitword
 rewording([er,hyppig,forekommende],[skjer,ofte]). 
 
-// et er godt å ta buss
+// et er godt Ã¥ ta buss
 
- det  verb  adj2  å  verb           state              state
+ det  verb  adj2  Ã¥  verb           state              state
          |     |        |         _____|____          ____|___
          |     |        |        /          \        /        \
         be    nil     take  quant_pron   vp_kernel  < >  verb_phrase1
 
 // bytte om adj2(root,mod) <--- // Standard
 
-det  verb    adj2  å  verb           state              state
+det  verb    adj2  Ã¥  verb           state              state
          |     |        |         _____|____          ____|___
          |     |        |        /          \        /        \
         be    good     take  quant_pron   vp_kernel  < >  verb_phrase1
@@ -1587,7 +1587,7 @@ txt(2, w(greitt,adv(well)), 3).
 txt(2, w(greitt,adj2(nil,good)), 3).
 txt(2, w(greitt,[bra]), 3).
 txt(2, w(greitt,[greitt]), 3).
-txt(3, w(å,[å]), 4).
+txt(3, w(Ã¥,[Ã¥]), 4).
 txt(4, w(ta,verb(take,inf,fin)), 5).
 txt(4, w(ta,verb(take,imp,fin)), 5).
 txt(4, w(ta,[ta]), 5).
@@ -1605,7 +1605,7 @@ txt(2, greitt,w(adv(well)), 3).
 txt(2, greitt,w(adj2(nil,good)), 3).
 txt(2, greitt,w([bra]), 3).
 txt(2, greitt,w([greitt]), 3).
-txt(3, å,w([å]), 4).
+txt(3, Ã¥,w([Ã¥]), 4).
 txt(4, ta,w(verb(take,inf,fin)), 5).
 txt(4, ta,w(verb(take,imp,fin)), 5).
 txt(4, ta,w([ta]), 5).
@@ -1624,7 +1624,7 @@ txt( greitt,w(adv(well)),2,  3).
 txt( greitt,w(adj2(nil,good)),2, 3).
 txt( greitt,w([bra]),2,  3).
 txt( greitt,w([greitt]),2, 3).
-txt( å,w([å]), 3,4).
+txt( Ã¥,w([Ã¥]), 3,4).
 txt( ta,w(verb(take,inf,fin)),4, 5).
 txt( ta,w(verb(take,imp,fin)),4, 5).
 txt( ta,w([ta]), 4,5).
@@ -1643,10 +1643,10 @@ The center of each/all/most/ galaxy  (we know  one center for each galaxy).
 A king is had by every citizen.
 
 
-I og for seg er det et ideal at Bussoraklet ikke skal være underholdende.
+I og for seg er det et ideal at Bussoraklet ikke skal vÃ¦re underholdende.
 
 
-La all output i txt være w(A,B) ---> ww(A,B).
+La all output i txt vÃ¦re w(A,B) ---> ww(A,B).
 
            w(X) === ww(_,X)  in gram
 
@@ -1702,14 +1702,14 @@ One criminal knows every owner of a hash bar.
 (% 5 readings)
 
 
-N: bussen går ikke til en holdeplass.
+N: bussen gÃ¥r ikke til en holdeplass.
 
 [new:::(A isa bus,not (B isa station,do/go/A/C,srel/to/place/B/C,event/real/C))]
 
- =>bussen går ikke til noen holdeplass
+ =>bussen gÃ¥r ikke til noen holdeplass
 
 
-#=> det er en holdpelass som bussen ikke går til
+#=> det er en holdpelass som bussen ikke gÃ¥r til
 
 [new:::(A isa bus,B isa station, not (do/go/A/C,srel/to/place/B/C,event/real/C))]
 
@@ -1718,7 +1718,7 @@ At least, comment end explain it
 
 
 
-N: bussen går til en holdeplass langt fra sentrum.
+N: bussen gÃ¥r til en holdeplass langt fra sentrum.
 
 ........................................................................
 [new:::(sentrum isa neighbourhood,A isa bus,B isa station,do/go/A/C,srel/to/place/B/C,srel/far/place/nil/C,srel/from/place/sentrum/C,event/real/C)]
@@ -1730,7 +1730,7 @@ N: bussen går til en holdeplass langt fra sentrum.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Du må oppgi et sted til i slike spørsmål .
+Du mÃ¥ oppgi et sted til i slike spÃ¸rsmÃ¥l .
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -1768,7 +1768,7 @@ Use that TQL as a reference.
 Options/ Optimasitions are modifiers to the coevent ("sentential adverbs") 
 
 
-jeg tok bussen og så tok jeg trikken og så et tog.
+jeg tok bussen og sÃ¥ tok jeg trikken og sÃ¥ et tog.
 
 // allowed to be as confused as a humen
 
@@ -1862,14 +1862,14 @@ Start with a principled new impementation of composal driven as
 destructive grammar.
 
 
-Vi gikk ut på en resturant og spiste  salat og pizza men ingen spiste salat og Pizza.
+Vi gikk ut pÃ¥ en resturant og spiste  salat og pizza men ingen spiste salat og Pizza.
 
 Select weakest interpretation
 
 
 
-Den største svakheten med Consensical grammar er ikke 
-slash-koden (når den blir brukt riktig) men mangel på disambiguering
+Den stÃ¸rste svakheten med Consensical grammar er ikke 
+slash-koden (nÃ¥r den blir brukt riktig) men mangel pÃ¥ disambiguering
 (tagger).
 
 
@@ -1881,16 +1881,16 @@ Second Order Event Calculus
 
 Use this query as a case:
 
- (  Går bussen oftere mer enn 10 minutter forsinket enn tidligere ?)
+ (  GÃ¥r bussen oftere mer enn 10 minutter forsinket enn tidligere ?)
 
-  Går bussen oftere enn tidligere mer enn 10 minutter for sent.
+  GÃ¥r bussen oftere enn tidligere mer enn 10 minutter for sent.
 
 Lag en datamodell (historisk)
-Gjør antagelser:
+GjÃ¸r antagelser:
     Det er avgangen som er forsinket (ikke passeringeren),
     dvs hvis minst 1 passering > 10 min.
 
-    Tidligere (=år), minst 5 år ?
+    Tidligere (=Ã¥r), minst 5 Ã¥r ?
 
     Antall avganger normert
 
@@ -1898,7 +1898,7 @@ Gjør antagelser:
 
     Reformulate in SOREL (as a superset of SQL)
 
-¤¤¤¤¤
+Â¤Â¤Â¤Â¤Â¤
 
 Kvendseth Scenariet:
 
@@ -1909,19 +1909,19 @@ Kvendseth Scenariet:
 
 3. Gitt kunnskap om mangel (koding av pendel-ruter)
 
-4. Utled forklaring på problemet
+4. Utled forklaring pÃ¥ problemet
 
-5. Brukes som case i overvåket maskinlæring
+5. Brukes som case i overvÃ¥ket maskinlÃ¦ring
 
 6.
 
 7. Legge igjen litt av sjelen din:
           
       Gale Tore (syntese av visjon/Sci.fi/galskap/bevissthet/
-          liv etter død/uoveråket
+          liv etter dÃ¸d/uoverÃ¥ket
     
       Alter Ego (Online Representant for deg)/livet etter
-      retirement/overvåket
+      retirement/overvÃ¥ket
 
       El Tagore (Administrator for normal cases)
 
@@ -1932,12 +1932,12 @@ Kvendseth Scenariet:
       BusRoute  (Data)
 
 
-"Stygt å erte personer med Savant Syndrom"
+"Stygt Ã¥ erte personer med Savant Syndrom"
 
 Kan elefanter klatre i gardiner ?
 
 
-Snakke med Tore A etter at han er gått bort.
+Snakke med Tore A etter at han er gÃ¥tt bort.
 
 Hybrid Kyborg
 
@@ -1981,12 +1981,12 @@ Make truth table
 \ is first
 / should be last, i.e. priority after text
 
-findmetavirts( _ / Z):- %% <--- ¤¤¤¤ Missing for years %% TA-030918
+findmetavirts( _ / Z):- %% <--- Â¤Â¤Â¤Â¤ Missing for years %% TA-030918
     !,
     findvirtuals(Z).
 ==>
 
-findmetavirts( _ / Z):- %% <--- ¤¤¤¤ Missing for years %% TA-030918
+findmetavirts( _ / Z):- %% <--- Â¤Â¤Â¤Â¤ Missing for years %% TA-030918
     !,
     findvirtualslast(Z).
 
@@ -1997,7 +1997,7 @@ Make a smoketest: add virtuals at last .
 
 Introduce // as an optional virtualsfirst
 
-¤¤¤¤¤
+Â¤Â¤Â¤Â¤Â¤
 
 
 cheap         adj(nil,cheap)
@@ -2031,7 +2031,7 @@ exists ( X::X isa bus and go/X)
 -----------------------------------
 
 
-Buss går meget sjeldent alt for fort.
+Buss gÃ¥r meget sjeldent alt for fort.
 
 Kan dette formuleres som egenskaper ved co-event ?
 
@@ -2083,7 +2083,7 @@ What do AlterEgo want to leve behind
 iphonevennlig   name+adjective    adj/iphone/friendly/E
                 noun
 
-¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 en meget svart buss gikk meget fort
 
@@ -2107,9 +2107,9 @@ bussen  er ofte veldig forsinket.
 bussen er veldig ofte forsinket
 bussen er forsinket veldig ofte
 
-bussen går ofte veldig fort
-bussen går veldig ofte fort
-bussen går fort veldig ofte
+bussen gÃ¥r ofte veldig fort
+bussen gÃ¥r veldig ofte fort
+bussen gÃ¥r fort veldig ofte
 
 // veldig er gradsadverb
 
@@ -2125,7 +2125,7 @@ Gutten som hopper er flink.
 
 Hvis restriktiv (Alle guttene som hopper er flinke) Gir Tom Scope
 Hvis han ikke hopper 
-Hvis gutten hopper, så er han flink ( => )
+Hvis gutten hopper, sÃ¥ er han flink ( => )
 
 
 
@@ -2134,9 +2134,9 @@ Natural implication:     ==>
      Ikke alle gutter er flinke
      Noen gutter hopper
 
-// Unngå conjunction of A=>B where A=false doesnt count
+// UnngÃ¥ conjunction of A=>B where A=false doesnt count
 
-Altså:
+AltsÃ¥:
 
 Kongen av frankrike er skallet 
 
@@ -2178,7 +2178,7 @@ Kongen av frankrike er skallet
 
 
 
-¤¤¤¤¤¤¤¤¤¤¤¤¤
+Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 
@@ -2247,7 +2247,7 @@ Feilrapporter vil bli videresendt administrator .
 
 Kan man legge inn kall til et program i email ala
 
-  %% .answer i ( T.A er på fereie og kommer tilbake...)
+  %% .answer i ( T.A er pÃ¥ fereie og kommer tilbake...)
 
 
 How do I hit the White house from Teheran.
@@ -2255,7 +2255,7 @@ How do I hit the White house from Teheran.
 
 BussTUC   vet  nesten alt om nesten ingen ting og
                nesten ingenting om nesten alt 
-               (som er kjennetegn på savanter) 
+               (som er kjennetegn pÃ¥ savanter) 
 
 
 
@@ -2372,7 +2372,7 @@ Logical/             Meaning... in all worlds
 Semantic/            Meaning... in some world
 Factual/             Meaning... in this world
 
-¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 Pragma-kode (Buslog) should be using ONLY meta-predicates
@@ -2401,23 +2401,23 @@ Now denoted   S, VP:P
 In time, can be denoted ( S,VP):P
 
 
-" Hvis du ønsker å kommentere svarene fra bussoraklet  
-  kan du gjøre det på samme måte som for bussrutespørsmål. "
+" Hvis du Ã¸nsker Ã¥ kommentere svarene fra bussoraklet  
+  kan du gjÃ¸re det pÃ¥ samme mÃ¥te som for bussrutespÃ¸rsmÃ¥l. "
 
-" Her kan du også  gi kommentarer angående svarene fra bussoraklet. "
+" Her kan du ogsÃ¥  gi kommentarer angÃ¥ende svarene fra bussoraklet. "
 
  
 
 
 
 
-Mål: BussTUC = Nivå 
+MÃ¥l: BussTUC = NivÃ¥ 
 
 Vanlig menneske + rutehefte
 
 
 
-Montague semantikk gjør DO BE HAVE til eneste lovlige predikasjoner
+Montague semantikk gjÃ¸r DO BE HAVE til eneste lovlige predikasjoner
 
 
 "R" i noen statement sammenhemger er en co-event variabel
@@ -2430,16 +2430,16 @@ Predikatsadverb modifiserer  hendelser  ("S")
 
 Buslog som Extended Event Calculus
 
-Formuleres eksakt, på BusLOG (pr idag).
+Formuleres eksakt, pÃ¥ BusLOG (pr idag).
 
   noen egenskaper handler om preferanser/opsjoner for
-  mengden av løsninger
+  mengden av lÃ¸sninger
 
-   (a la 5 første avganger).
+   (a la 5 fÃ¸rste avganger).
 
 
 Idea: Programmet ser  pent ut, men
-en en liten umerkelig endring vil gjøre at det ikke virker.
+en en liten umerkelig endring vil gjÃ¸re at det ikke virker.
 
 
 TQL is executable Prolog Code.
@@ -2477,8 +2477,8 @@ NRL er parafraseringen av FOREL (litt teknisk)
 Ide. Make one of the  hashes where first and last last letter the same, but
   the middle characters  are sorted (sequence doesnt matter)
 
-// Folk leser 1. og siste bokstav, rekkefølgen av de imellom er ikke
-   så viktig. 
+// Folk leser 1. og siste bokstav, rekkefÃ¸lgen av de imellom er ikke
+   sÃ¥ viktig. 
 
 // Dette er allerede implementert i amble# (fjern en bokstav,
 reinsett).
@@ -2504,7 +2504,7 @@ BusRouteDB                                      Info/Data level
 
 
 Lag en skjelett-grammatikk som er felles for E og N.
-Denne skal være "publiserbar"
+Denne skal vÃ¦re "publiserbar"
 
 
 Lag raffineringer etter det. 
@@ -2606,7 +2606,7 @@ det er vanskelig pga inkompatible Prolog).
 Svar blir ferdig-generert men sendt til TA  for godkjenning , og
 videresending til Team.
 
-(Ideelt sett kan dette gkørse på Team trfikk sin server)
+(Ideelt sett kan dette gkÃ¸rse pÃ¥ Team trfikk sin server)
 
 
 
@@ -2628,24 +2628,24 @@ Shift from objects to information about objects.
 Strict rules for writing have only  been necessitated for disambiguation purposes.
 
 
-BussTUC har oppnådd programmert intelligens når du ikke lenger
-trenger å forandre noen programmer.
+BussTUC har oppnÃ¥dd programmert intelligens nÃ¥r du ikke lenger
+trenger Ã¥ forandre noen programmer.
 
-De resterende endringer må kunne håndteres av en dynamisk oppdaterbar
-database som kan instrueres i naturlig språk, fortrinnsvis med
+De resterende endringer mÃ¥ kunne hÃ¥ndteres av en dynamisk oppdaterbar
+database som kan instrueres i naturlig sprÃ¥k, fortrinnsvis med
 naturlig tale dialog.
 
 
 Tagore er ikke den som har laget BussTUC, men som med tiden er i stand
-til å drifte den.
-¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+til Ã¥ drifte den.
+Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 
-Du må ikke bekymre deg over et manglende problem.
+Du mÃ¥ ikke bekymre deg over et manglende problem.
 
 
-BussTUC er pålagt å spille savant, men viser sitt vidd ved
+BussTUC er pÃ¥lagt Ã¥ spille savant, men viser sitt vidd ved
 ufrivillig humor qua savant.
 
 Ufrivillig humor fra en savant er tilsiktet humor fra TUC.
@@ -2662,7 +2662,7 @@ try tv_templ(notify,agent,nil)
 // all verbs that are both intransitive and rv/tv/cv 
     get do/V/X/nil/E instead of V/X/nil
 
-sjekk  bussen kjører / jeg kjører bussen
+sjekk  bussen kjÃ¸rer / jeg kjÃ¸rer bussen
 
 
 It is wise to debug from behind, in order to make 
@@ -2693,7 +2693,7 @@ do/take/'I'/52/E    ... d/take/'I'/E, o/vehicle/52/E
 srel/dir/vehicle/52/E  ->  o/vehicle/52/E
 
 
-En løsning er bra nok hvis det ikke finnes  noen løsning som er bedre på alle måter.
+En lÃ¸sning er bra nok hvis det ikke finnes  noen lÃ¸sning som er bedre pÃ¥ alle mÃ¥ter.
 
 
 push    last means last, prefer read from text if anything last is on stack.
@@ -2712,19 +2712,19 @@ Then generate
 
 Then use it in grammar when appropriate
 
-Then [etterpå] ->    w(etterpå,[etterpå]) 
+Then [etterpÃ¥] ->    w(etterpÃ¥,[etterpÃ¥]) 
 
-  etterpå befor syn
+  etterpÃ¥ befor syn
 
 Then simplify runtaime system.
 
-¤¤¤¤¤¤
+Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 
 Gitt at du starter med en flertydig men komplett Attribute Logic Grammar 
 
-Utled en entydig grammatikk basert på Longest First Preference using
+Utled en entydig grammatikk basert pÃ¥ Longest First Preference using
 look_ahead og cut.
 
 
@@ -2732,7 +2732,7 @@ look_ahead og cut.
 Introduce  
 
 
-     verb(be,inf,fin).    technicla for skal være/FUTURE (ankomme)
+     verb(be,inf,fin).    technicla for skal vÃ¦re/FUTURE (ankomme)
 
 
 SOLOG:
@@ -2756,7 +2756,7 @@ N: jeg venter inntil imorgen.
 %% NB NEW REGIME FOR ADVERBS
 
 
-N: bussen går inatt.
+N: bussen gÃ¥r inatt.
 
 [new::(A isa bus,go/A/B,srel/this_midnight/time/nil/B,event/real/B)]
 
@@ -2769,27 +2769,27 @@ N: bussen går inatt.
 
 N: 
 
-// Evnen til å resonnere seg frem til om en setning er et komplimang
+// Evnen til Ã¥ resonnere seg frem til om en setning er et komplimang
    er en del av savant-personligheten.
 
 dette = coevent
 
 
 
-Bussoraklet skjønte ikke at bussen sto.
+Bussoraklet skjÃ¸nte ikke at bussen sto.
 
-A  " det er ikke sant at bussen sto og bussoraklet skjønte dette "
+A  " det er ikke sant at bussen sto og bussoraklet skjÃ¸nte dette "
 
 <=
 
-A1 bussen  sto og  bussoraklet skjønte dette ( explicitly denied)
+A1 bussen  sto og  bussoraklet skjÃ¸nte dette ( explicitly denied)
 
-A2 bussen sto   men  bussoraklet skjønte ikke dette <-- Preferred
+A2 bussen sto   men  bussoraklet skjÃ¸nte ikke dette <-- Preferred
 
 
-A3 bussen sto ikke og bussoraklet skjønte (ikke) dette  => A2
+A3 bussen sto ikke og bussoraklet skjÃ¸nte (ikke) dette  => A2
 
-By Grice, hvis A3 hadde vært sann, så burde det vært sagt.
+By Grice, hvis A3 hadde vÃ¦rt sann, sÃ¥ burde det vÃ¦rt sagt.
 
 (as informative as possible)
 
@@ -2798,21 +2798,21 @@ By Grice, hvis A3 hadde vært sann, så burde det vært sagt.
 
 
 
-N: Bussoraklet skjønte ikke engang at det var et komplimang.
+N: Bussoraklet skjÃ¸nte ikke engang at det var et komplimang.
 
 [new::(bustuc isa program,not (do/understand/bustuc/A/B,A isa coevent,event/A/C,D isa compliment,exist/D/C,event/real/B))]
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 OK .
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//  komplimang bør  komme i positiv form
+//  komplimang bÃ¸r  komme i positiv form
 
 #->
 
 [new::(bustuc isa program,A isa coevent,event/A/C,D isa compliment,exist/D/C, 
        not (do/understand/bustuc/A/B,,event/real/B))]
 
-¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 
@@ -2820,8 +2820,8 @@ aux(maincat,tense,pol)
 
 maincat
 
-     do    skal vil må bør kan får | kan,får også verb
-     be    være bli
+     do    skal vil mÃ¥ bÃ¸r kan fÃ¥r | kan,fÃ¥r ogsÃ¥ verb
+     be    vÃ¦re bli
      have  ha
 
 tense
@@ -2858,7 +2858,7 @@ composal:
 
    cleartext kan skrives som en grammatikk
 
-    destroy  --->  å,  \+\ w(name(være)) (given you have an  alternative)
+    destroy  --->  Ã¥,  \+\ w(name(vÃ¦re)) (given you have an  alternative)
 
 
 "hvor lenge gjelder en billett?" // vare // concern/apply ...//
@@ -2879,17 +2879,17 @@ Idea: Introduce troponym for verbs NOW to bicycle => run
 Fornuftig tenking - uintessant for psykologer
 
 
-BussTUC har fått meg på hjernen.
+BussTUC har fÃ¥tt meg pÃ¥ hjernen.
 
 
-Før eller siden har jeg skrevet min siste prolog-linje.
-Om det er før eller etter at jeg dør er en annen sak.
+FÃ¸r eller siden har jeg skrevet min siste prolog-linje.
+Om det er fÃ¸r eller etter at jeg dÃ¸r er en annen sak.
 
 
-Rapport: Hva i LexTUC behandles ikke av BusstUC ?  //ord/språk/konsepter/....
+Rapport: Hva i LexTUC behandles ikke av BusstUC ?  //ord/sprÃ¥k/konsepter/....
 
 
-¤
+Â¤
 Alt er mengde.
 En mann er en mengde av menn med kardinalitet 1.
 
@@ -2900,17 +2900,17 @@ Mengde av menn har by default alle egenskaper til en mann.
 
           Alpha(set(N,Man)) <= Alpha(Man)   
 
-Jeg er 13 år  
+Jeg er 13 Ã¥r  
 
-13 år = 13 is a set of years = (the cardinality) of a set of years
-¤
+13 Ã¥r = 13 is a set of years = (the cardinality) of a set of years
+Â¤
 
 
 Hvor god er BusstUC.
 
 
-Hvis 100 spørsmål hadde blitt spurt av samme person, ville denne
-blitt 99 % førnøyd, og det er jo fantastisk.
+Hvis 100 spÃ¸rsmÃ¥l hadde blitt spurt av samme person, ville denne
+blitt 99 % fÃ¸rnÃ¸yd, og det er jo fantastisk.
 
 
 The very black bus runs very fast
@@ -2921,10 +2921,10 @@ exits(X): (isa(X,bus) &     adj(very,black,X) & do(go,X,E) & adj(very,fast,E) )
 
 // Just for the documentation
 
-N: bussen går før klokka er 1400.
+N: bussen gÃ¥r fÃ¸r klokka er 1400.
 
 [new::(1400 isa clock,A isa bus,B isa clock,C isa time,
-    go/A/D,srel/before/thing/C/D,event/real/D, %% bussen går i event   D  before coevent C
+    go/A/D,srel/before/thing/C/D,event/real/D, %% bussen gÃ¥r i event   D  before coevent C
 
     srel/in/time/C/E,event/real/E,be2/B/1400/E)]  %% clock is 1400 in  E in coevent C
 
@@ -2933,13 +2933,13 @@ N: bussen går før klokka er 1400.
 
 Instead of 
 
-       [dør]
+       [dÃ¸r]
       
-       w(dør,prep(before))
+       w(dÃ¸r,prep(before))
 
 use
-       [dør]
-       [dør|prep(before)] as a natural extension of dør
+       [dÃ¸r]
+       [dÃ¸r|prep(before)] as a natural extension of dÃ¸r
 
 
 aux(ought,not,past) // aux(nil,pres)  neutral or missing
@@ -2947,17 +2947,17 @@ aux(ought,not,past) // aux(nil,pres)  neutral or missing
 define  aux(can,pres/past/inf)  (but gently) 
 Define  auxiliary expressions rigourously
  
-     aux1(must,pres) ---> må.
+     aux1(must,pres) ---> mÃ¥.
 
-     aux(must,only,pres)       vil bare måtte
+     aux(must,only,pres)       vil bare mÃ¥tte
 
 // all kinds of ambiguous verbs/auxilliary
 
 // kan
-// får
+// fÃ¥r
      
 
-når landet mennesket på månen? -->
+nÃ¥r landet mennesket pÃ¥ mÃ¥nen? -->
 Jeg har bare ruter for busser i Trondheim .
 ../ skoping av bare (sentence adverbial)
 
@@ -2974,7 +2974,7 @@ The result is sophisticated, the implementation is not.
 
 The most general sense that can be posthumously be disambiguated.
 
-Bussoraklet er så bra at ingen legger merke til det .
+Bussoraklet er sÃ¥ bra at ingen legger merke til det .
 
 All the detailed lexical error correction is part of the
 /Intellgence Project/ . YUC must understand as well as a human.
@@ -3003,7 +3003,7 @@ Vil ikke svare er kamuflert som kan ikke svare
 
 // Konvertere TQL til FOREL (= nye TQL) (ala LexTUC)
 
-N: det er mulig å ta buss.
+N: det er mulig Ã¥ ta buss.
 
 [new::(A isa thing,B isa coevent,C isa bus,
     adj/possible/A/D,srel/in_order_to/thing/B/D,
@@ -3030,8 +3030,8 @@ future.
 
 
 
-// er det mulig å ta buss// blir stakket som thereit ---> [det].
-// kardinal feil å pre-selektere frontede uttrykk
+// er det mulig Ã¥ ta buss// blir stakket som thereit ---> [det].
+// kardinal feil Ã¥ pre-selektere frontede uttrykk
 
 
 Desverre er ikke tidligere oppdateringer gjort slik det var forventet.
@@ -3060,9 +3060,9 @@ Maka an overview of the scant domains surrounding bustuc
 //only  dedicated metapredicates/ fixed number of arguments
 
 
-jeg venter på bussen          do/wait/on/i/E  , srel/dir/vehicle/B9/E
+jeg venter pÃ¥ bussen          do/wait/on/i/E  , srel/dir/vehicle/B9/E
 
-jeg venter på holdeplassen    do/wait/nil/i/E , srel/on/place/P/E
+jeg venter pÃ¥ holdeplassen    do/wait/nil/i/E , srel/on/place/P/E
 
 jeg synger                    do/sing/nil/i/E ,
 
@@ -3073,9 +3073,9 @@ jeg synger en sang            do/sing/nil/i/E , srel/dir/song/halleluja/E
 
     do(verb,particle,subject,event)   
 
-          vente på buss          do(wait,on,i,E)     mod(dir,B9,E)
+          vente pÃ¥ buss          do(wait,on,i,E)     mod(dir,B9,E)
  
-          vente på holdeplass    do(wait,nil,i,E),   mod(on,B9,E)
+          vente pÃ¥ holdeplass    do(wait,nil,i,E),   mod(on,B9,E)
 
 I give a book   
 
@@ -3091,7 +3091,7 @@ I give up Prolog
 
 // hopfully, norwegian phrases can live side by side with english
 
-    sørge for    do(care,for,i,E)
+    sÃ¸rge for    do(care,for,i,E)
 
 
 mod(dir, ~ patient(
@@ -3099,21 +3099,21 @@ mod(dir, ~ patient(
 
 
            adjunkt  komplement 
-Jeg venter i bussen på trikken
+Jeg venter i bussen pÃ¥ trikken
             komplement adjunkt    
-Jeg venter på bussen i trikken
+Jeg venter pÃ¥ bussen i trikken
 
-Jeg venter på bussen på trikken ? ambiguous
+Jeg venter pÃ¥ bussen pÃ¥ trikken ? ambiguous
 
  -  nesten analogt -
 
 
         adjunkt  komplement 
-Jeg ser i bussen på trikken
+Jeg ser i bussen pÃ¥ trikken
         komplement adjunkt    
-Jeg ser på bussen  i trikken
+Jeg ser pÃ¥ bussen  i trikken
 
-Jeg ser på bussen på trikken ? ambiguous
+Jeg ser pÃ¥ bussen pÃ¥ trikken ? ambiguous
         
 
 
@@ -3128,8 +3128,8 @@ I A          WH  A
 
 Conceptual Confusions  TUC and Tagore
 
-present gjør samme nytte som context, does not change "status"
-uten å ta buss  ( srel/not/coevent/B/D    use same convention for // dont know
+present gjÃ¸r samme nytte som context, does not change "status"
+uten Ã¥ ta buss  ( srel/not/coevent/B/D    use same convention for // dont know
 // Make coevent explicit for know (step to nominalization).
 
 
@@ -3163,7 +3163,7 @@ Unable to give unintelligent answers
  explain whay that answer is better).
 
 
-N:jeg vil ta buss for å ta  buss 5.   
+N:jeg vil ta buss for Ã¥ ta  buss 5.   
 
 [new::(
 
@@ -3179,10 +3179,10 @@ srel/id/coevent/B/D, %%  B is "raised"  in D
 do/take/'I'/5/D,event/B/D)]  %% take bus in an event in D
 
 
-N: jeg vil ta buss uten å ta  buss 5.
+N: jeg vil ta buss uten Ã¥ ta  buss 5.
 
 
- jeg vil ta buss for å ta  buss 5.   
+ jeg vil ta buss for Ã¥ ta  buss 5.   
 
 [new::(
 
@@ -3241,19 +3241,19 @@ so that
    given that the buses follows these axioms, 
       you can achieve your goals by knowing these passing hours.
                                    
-kommer jeg til å død ung ? ...
+kommer jeg til Ã¥ dÃ¸d ung ? ...
 
-han kjørte bussen forsiktig. 
+han kjÃ¸rte bussen forsiktig. 
 
-han kjørte bussen (som var) ny
-han kjørte bussen (som ble) tom
-kan kjørte bussen (og var) full  
-kan kjørte bussen (og ble) utslitt ?  
+han kjÃ¸rte bussen (som var) ny
+han kjÃ¸rte bussen (som ble) tom
+kan kjÃ¸rte bussen (og var) full  
+kan kjÃ¸rte bussen (og ble) utslitt ?  
 
 
 // Prosjekt
 
-Gå gjennom 10000 spørsmål, analyser alle ikke streite spørsmål/svar
+GÃ¥ gjennom 10000 spÃ¸rsmÃ¥l, analyser alle ikke streite spÃ¸rsmÃ¥l/svar
 og begrunn alle feil-reaksjoner (feilmeldinger)
 Explain why there are no better answer
 
@@ -3341,7 +3341,7 @@ Unintentional (stupid answer) is anatema unless it is intentionally
 humourus.
 
 
-Marvin har (fått) den vrangforestillingen at han er en
+Marvin har (fÃ¥tt) den vrangforestillingen at han er en
 superintelligent robot.
 
 
@@ -3356,21 +3356,21 @@ right questions ....
 
 Idea:
 
-BussTUC  forstår alle spørsmål, men viser sin forståelse ved ikke å
-svare på uvesentlige spørsmål.
+BussTUC  forstÃ¥r alle spÃ¸rsmÃ¥l, men viser sin forstÃ¥else ved ikke Ã¥
+svare pÃ¥ uvesentlige spÃ¸rsmÃ¥l.
 
 
 
 
-bussen er der til - ambiguous -bussen vil være der til
+bussen er der til - ambiguous -bussen vil vÃ¦re der til
 // wait and depart at // arrives before
 
 
-Kunne BusLOG1 være formulert uten set-of-deps konseptualisering
+Kunne BusLOG1 vÃ¦re formulert uten set-of-deps konseptualisering
 og at BusLOG2 blir optimalisert
 
 
-han vil søke et sted  // complement/adjunct
+han vil sÃ¸ke et sted  // complement/adjunct
 
 
 DoBeHave
@@ -3452,10 +3452,10 @@ Use only binary composition rules.
 
 Intelliget QA system: System that does not give un-intelligent answers.
 
-Forstå alle forståelige spørsmål.
-Svare upåklagelig på spørsmål som blir oppfattet.
-Ikke være ufrivillig komisk.
-Være frivillig humoristisk (lakonisk)
+ForstÃ¥ alle forstÃ¥elige spÃ¸rsmÃ¥l.
+Svare upÃ¥klagelig pÃ¥ spÃ¸rsmÃ¥l som blir oppfattet.
+Ikke vÃ¦re ufrivillig komisk.
+VÃ¦re frivillig humoristisk (lakonisk)
 
 
 (Not care if un-human)
@@ -3505,8 +3505,8 @@ wherever the particle occurs
 %% Classify verbs as ... special verbs // common subcategories 
 
 
-Vente på en buss          srel/on/vehicle/B9/E
-Vente på en holdeplass    srel/in/station/GH/E
+Vente pÃ¥ en buss          srel/on/vehicle/B9/E
+Vente pÃ¥ en holdeplass    srel/in/station/GH/E
 
 men er det en dypere forskjell?
 
@@ -3534,21 +3534,21 @@ TUC learns from the response.
 Also, TUC allows dynamic information (like STRIKE)
 
 
-The customers are  99 % fornøyd
+The customers are  99 % fornÃ¸yd
 
 does not mean that one person is extremely satisfied, but just
 that 99 % are nor disappointed.
 
 
 
-N: bussene går før 13 og etter 14.
+N: bussene gÃ¥r fÃ¸r 13 og etter 14.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Dette tidsintervallet er ikke mulig.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Interesting distribution:
 
-   Noen busser går før 13, noen busser går etter 14
+   Noen busser gÃ¥r fÃ¸r 13, noen busser gÃ¥r etter 14
 
    men ikke de samme bussene.
 
@@ -3580,7 +3580,7 @@ CP  Clausal Phrase. Make Clausal phrases = Object of class coevent
 
 General idea: Reduce Scope of negation applies to TQL
 
-    uten å ta buss 9 -> ta buss og buss \= buss 9
+    uten Ã¥ ta buss 9 -> ta buss og buss \= buss 9
 
    not (I isa man, sneak I -> I isa man, not sneak I)
 
@@ -3588,7 +3588,7 @@ General idea: Reduce Scope of negation applies to TQL
 
 %% Elaboration
 
- jeg vil dra til dragvoll uten å ta buss 9.
+ jeg vil dra til dragvoll uten Ã¥ ta buss 9.
 
 [new::('I' isa self,dragvoll isa station,9 isa bus,
 
@@ -3613,7 +3613,7 @@ Start with special verbs that are both intransitive and transitive!
 
 1    jeg betaler       jeg betaler noe      
 2    bussen stareter   jeg starter  bussen : subjekt iv/objekt tv cause that
-3    jeg kjører        jeg kjører meg til byen
+3    jeg kjÃ¸rer        jeg kjÃ¸rer meg til byen
 
 
 
@@ -3712,13 +3712,13 @@ use some conventions for inheritance of semantic
 
  v_compl(drive,A,P,Q):- %% Ad Hoc
         v_compl(go,A,P,Q).
-¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
-  Det er ikke så farlig hvilken FOREL  som brukes, bare det er
-  samsvar mellom spørsmål og svar:
+  Det er ikke sÃ¥ farlig hvilken FOREL  som brukes, bare det er
+  samsvar mellom spÃ¸rsmÃ¥l og svar:
 
-    --- hvilke formelle krav må stilles til FOREL ??
+    --- hvilke formelle krav mÃ¥ stilles til FOREL ??
 
 
 
@@ -3769,7 +3769,7 @@ subsumption:
     adjectives
 
 
-¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 Referring to Robust MRS
 
@@ -3801,7 +3801,7 @@ with ( a modified) FOREL.
 
 DO it with a minimum of changes.
 
-¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 
@@ -3839,7 +3839,7 @@ but only that 99 persons  are not disappointed , and 1 person is disappointed.
 
 
 
-N: jeg vet at bussen går.
+N: jeg vet at bussen gÃ¥r.
 [new::('I' isa self,A isa bus,know/id/that/'I'/B/C,event/real/C,go/A/D,event/B/D)]
 =>
 [new::('I' isa self,A isa bus,B  isa coevent, event/real/C,
@@ -3885,7 +3885,7 @@ Et program som ikke bruker logisk resonnement er uten bevissthet.
 
 
 
-En milepel er når vi kan kreve penger for alle meldinger,
+En milepel er nÃ¥r vi kan kreve penger for alle meldinger,
 fordi "feilmeldinger" er kundens feil.
 
 
@@ -4033,7 +4033,7 @@ event/real/D,
 
 srel/so_that/event/B/D,    %% Cause of events B includes D
 
-¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 Operate with a canonical station table, invariant over route periods.
 and linked to station numbers.
@@ -4042,15 +4042,15 @@ Then, map via this and adapt temporary route period names to this.
 
 -----------------------------------
 
-do     hva skal jeg [gjøre]
+do     hva skal jeg [gjÃ¸re]
 be     buss [som er ]fra nth
-have   jeg har på meg -> bære
+have   jeg har pÃ¥ meg -> bÃ¦re
 
   er metaverb 
 
 
 
-Hva har jeg på meg // have er metaverb  -> bære
+Hva har jeg pÃ¥ meg // have er metaverb  -> bÃ¦re
 
 
 
@@ -4071,7 +4071,7 @@ strike/X/E  --> do/strike/X/E    (general  do/<action>/X/E ) noun the  verb
 // OR   do/X/strike/E <-- no
 
 
-Snik-innføre nytt format, først for  transitive verb
+Snik-innfÃ¸re nytt format, fÃ¸rst for  transitive verb
 
 (John sings   -> do/sing/john/nil/E)
 John kisses Mary  -> do/kiss/john/mary/E)
@@ -4127,15 +4127,15 @@ preferences on the answer (options)
 Bussify this
 
   Amundsen hadde tidlig interessert seg for fly som hjelpemiddel i
-> polarforskningen, og etter de erfaringer han høstet under den første del av
+> polarforskningen, og etter de erfaringer han hÃ¸stet under den fÃ¸rste del av
 > Maud-ekspedisjonen, forstod han at en utforskning av de indre, ukjente
-> områder i Arktis måtte skje ved luftfartøyers hjelp. 
+> omrÃ¥der i Arktis mÃ¥tte skje ved luftfartÃ¸yers hjelp. 
 
 
 Metaphor paraphrase
 Aspect Paraphrase
 
-Når dør jeg 
+NÃ¥r dÃ¸r jeg 
 
 // allow nil time as default for WHEN
 
@@ -4173,7 +4173,7 @@ srel/state/cause/B/C
 
 
 
-Gjøre   subordinate mer lik clausal_statement ?
+GjÃ¸re   subordinate mer lik clausal_statement ?
 
  
 ---
@@ -4191,7 +4191,7 @@ subordinate
 
 
 
-En plan for å komme til dragvoll
+En plan for Ã¥ komme til dragvoll
 
     solve this rigorously, at least formally
 
@@ -4204,7 +4204,7 @@ This is the normal case
        real cause          imaginary effect
 
 --
-   At jeg tok bussen er årsaken til at jeg rakk toget
+   At jeg tok bussen er Ã¥rsaken til at jeg rakk toget
 
                       isa reason     isa cause
 
@@ -4265,7 +4265,7 @@ N1( f(A,B) ) ->
 // Keep unsensed  prepositions (etc)
    as long as it gives the same code.
 
-omdøpe om = about12345 
+omdÃ¸pe om = about12345 
 under -> under (semantically amb)
 
 worlds superevents events
@@ -4287,9 +4287,9 @@ relation between events (or do we need both srel instants ?)
 Hvor var du da O B brakk staven ?
 
 
-// " oddvar brå var på reise med ski(som har utstyr stav) fra start til mål  28.feb 1082
+// " oddvar brÃ¥ var pÃ¥ reise med ski(som har utstyr stav) fra start til mÃ¥l  28.feb 1082
 
-     kl 1450 da utstyret ble ødelagt.
+     kl 1450 da utstyret ble Ã¸delagt.
 
 Hvor var du da Pondus punkterte hjulet.
 
@@ -4310,7 +4310,7 @@ Maybe God is also in it ?
 
 
 We experience a set of possible worlds that is compatible with the 
-Schrødinger equations (?). The double slit experience is obvious from
+SchrÃ¸dinger equations (?). The double slit experience is obvious from
 that.
 
 // The probability that something is observed  is the probability that
@@ -4330,7 +4330,7 @@ and(exists(C:event)::take/A/B/C and event/real/C))]
 
 
 
-Hvis systemet starter med å  fortelle  at det ikke er et menneske, er
+Hvis systemet starter med Ã¥  fortelle  at det ikke er et menneske, er
 det da AI ?
 
 
@@ -4390,7 +4390,7 @@ then all combination rules can be partially deducted. (no need for LILAC)
 
 
 
-TUC skal vise at den skjønner alle spørsmål, men ikke trenger å svare
+TUC skal vise at den skjÃ¸nner alle spÃ¸rsmÃ¥l, men ikke trenger Ã¥ svare
 
 
 Notation  
@@ -4402,7 +4402,7 @@ VP = Aux Verb-expression ( in stead of Do-phrase)
 
 NP = determiner  noun-expression
 
-¤¤¤
+Â¤Â¤Â¤
 
 
 Reformulate CS grammar as if you pushed something back into the
@@ -4470,7 +4470,7 @@ text/phrase-list (AIMA)
  
 
 
-¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 Use your context sensitive rewrite system (the one you used )
 and make it top down (try).
@@ -4542,10 +4542,10 @@ Can you in addition make this variable free ?
 
 // compare
 
-    Nardosenteret stopper bussen på.
+    Nardosenteret stopper bussen pÃ¥.
 
 
-¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 
@@ -4668,7 +4668,7 @@ stm(S,N,funcomp(NP,VP)) --->   %% statement semantic P is a function of Com
 ////   st(S,N) = funcomp (np(X),vp(X,S))
 
 
-%% find a compositional name for this (!##¤%)
+%% find a compositional name for this (!##Â¤%)
 
 
 vp(X,S,N,Com3P3) ---> 
@@ -4770,10 +4770,10 @@ language:  Translate the ambiguities as well as you can.
 
   
 
-varför är det så många svenskar på nardo.
+varfÃ¶r Ã¤r det sÃ¥ mÃ¥nga svenskar pÃ¥ nardo.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 + 
-Du må oppgi et sted til i slike spørsmål .
+Du mÃ¥ oppgi et sted til i slike spÃ¸rsmÃ¥l .
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // Avoiding ridiculous  answers is a part of the Turing test approach
@@ -4794,7 +4794,7 @@ Flytt semantic -> tuc
 
 La trondeims data  database
                         
-La database være domenespesifikk
+La database vÃ¦re domenespesifikk
 
 Dropp subkatalog tt
 
@@ -4873,7 +4873,7 @@ Ide:  Introductory 0 -> split
 
 Introduce clock(0,9) -> in grammar
 //
- 0542. ---> på mandag kl. 1718.
+ 0542. ---> pÃ¥ mandag kl. 1718.
 
 
 If they complain over an oracle answer, and they get the explanation,
@@ -4894,16 +4894,16 @@ Same for identifiers in applications (Places etc)
 
 
 
-Lag et prolog språk der metacomp.pl unødvendig
+Lag et prolog sprÃ¥k der metacomp.pl unÃ¸dvendig
 
-(Gram kan uttrykkes direkte i språket)
+(Gram kan uttrykkes direkte i sprÃ¥ket)
 
 
 X isa buenget // OK ?  makes substitutions in Pragma more flexible.
 
 
 
-buslog-format er et ok format for å lage executable buslog program.
+buslog-format er et ok format for Ã¥ lage executable buslog program.
 (passevent should never occur in absolute program anyway)
 
 // 
@@ -4914,7 +4914,7 @@ unique predicates
 depature
 arrival
 
-¤
+Â¤
 
 
 Extend connections with parameters <= >= to make 
@@ -4964,7 +4964,7 @@ When all is ready, DepsetFrom,DepsetTo can be set to [],[]
 and then finally introduce eliminate connections([],[]
 
 
-¤¤¤
+Â¤Â¤Â¤
 
 
 
@@ -5018,7 +5018,7 @@ rather "can I use it".
 // Moderated  Turings test:
 
 
-Umulig å lag et spørsmål som gir et svar som ikke kunne ha vært ha vært gitt
+Umulig Ã¥ lag et spÃ¸rsmÃ¥l som gir et svar som ikke kunne ha vÃ¦rt ha vÃ¦rt gitt
 av en  kompetent person.
 
 
@@ -5030,10 +5030,10 @@ av en  kompetent person.
 
 
 Precompile cutloop
-cutloop_extend(asbjørnsensgt,7029,7057,11,17).
+cutloop_extend(asbjÃ¸rnsensgt,7029,7057,11,17).
 
 
-cutset(asbjørnsensgt,7029,7057,
+cutset(asbjÃ¸rnsensgt,7029,7057,
     [toupes(bus_63_34,bus_63_110,11,17),toupes(bus_63_60,bus_63_135,11,17),toupes(bus_63_74,bus_63_150,11,17)]).
 
 ==> 
@@ -5065,7 +5065,7 @@ happens(move(a,b,c),sk(1)). <--- !!!
 
 
 "TEAM 0530 er om morgenen idiot"
-"- - - Uforståelig ved * - - - 530 er om morgenen idiot *"
+"- - - UforstÃ¥elig ved * - - - 530 er om morgenen idiot *"
 
 // readin  
 
@@ -5100,13 +5100,13 @@ N: \u echo "hei" | mail toreamb
 
 Kople inn direct_run sentralt i alle buster-kloner
 
-La busstuc være en busterklon
+La busstuc vÃ¦re en busterklon
 
 Lage eksplisitt skille Program/ Program generation i Buster
-// Også i saturate ???
+// OgsÃ¥ i saturate ???
 
 
-Gjøre gamle Buslog programmer mer dekalarative/ mindre kjørbare
+GjÃ¸re gamle Buslog programmer mer dekalarative/ mindre kjÃ¸rbare
 
 
 BussEL (Bus Event Logic  // Parametrised event calculus for Buslog
@@ -5219,15 +5219,15 @@ or
    VX ---> Aux,look_ahead(P), VX\( Aux,"go").
 
 
-¤¤¤¤¤
+Â¤Â¤Â¤Â¤Â¤
 
 
 Move Dates etc from Busdat to Teledat //
 
 
 
-John er lærer
-Lærer er et yrke
+John er lÃ¦rer
+LÃ¦rer er et yrke
 ---------------
 * John er et yrke
 --------------
@@ -5303,8 +5303,8 @@ Ex false quolibet sequitur
 
 
 
-jon er lærer
-lærer er et yrke
+jon er lÃ¦rer
+lÃ¦rer er et yrke
 ----------------
 * jon er et yrke
 ===============
@@ -5363,13 +5363,13 @@ p(X):-
 
 
 
-Lage system for sjåførbussorakel:
+Lage system for sjÃ¥fÃ¸rbussorakel:
 
 
-Forutsetter lokasjonsbestemt spørresystem/Trådløse trondheim.
+Forutsetter lokasjonsbestemt spÃ¸rresystem/TrÃ¥dlÃ¸se trondheim.
 
 
-Skal kunne svare på spørsmål som man normalt ville stille til sjføren,
+Skal kunne svare pÃ¥ spÃ¸rsmÃ¥l som man normalt ville stille til sjfÃ¸ren,
 og som omfatter denne turen i tillegg til generell opplysning.
 
 
@@ -5421,14 +5421,14 @@ B is stacked and reused according to Allenian 13 interval arithmetics:
                         [     ]                     -
                           [   ]                     -
 
-¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤
 
 
 Of these, only the following are used:
 
 
 
-Suffixer på senses: standard
+Suffixer pÃ¥ senses: standard
 
 
 valens:  adj  0 ( + past,part) killed
@@ -5452,15 +5452,15 @@ write gap instead of nil
 Kode 0015 som  2415 konsistent.
  
 
-Vite (Competence, OminiScient)  Ha nok kunnskap til å kunne utlede
-Vite (Performance) Klare å svare
+Vite (Competence, OminiScient)  Ha nok kunnskap til Ã¥ kunne utlede
+Vite (Performance) Klare Ã¥ svare
 
 
 Apply synword first, 
 then apply compword on the results.
 
 
-Åpne opp for hashing av literalord (cw) over en viss lengde
+Ã…pne opp for hashing av literalord (cw) over en viss lengde
 som ikke fins ellers, eller er hasjet allerede.
 
 Butrans:
@@ -5508,7 +5508,7 @@ There is no conflict in letting connections
 use its internal parameter constraints. The should be just dummy
 if departure/keepafter etc have already filtered the sets.
 
-¤
+Â¤
 
 
 
@@ -5586,7 +5586,7 @@ Then, it is closer to sound object oriented programming.
 
 
 
-Bruke verbritt språk som basis for BUSTQL
+Bruke verbritt sprÃ¥k som basis for BUSTQL
 
 
 buss fra nth = buss som er fra nth = buss som har avgang fra nth
@@ -5601,19 +5601,19 @@ today(wednesday)
 atday(wednesday)
 atdate(date(2005,11,9))
 
-departure(free(7),gløshaugen_syd,wednesday,A)
+departure(free(7),glÃ¸shaugen_syd,wednesday,A)
 keepafter(1200,A,B)
 keepbefore(1300,B,C)
 departure(free(7),nardosenteret,wednesday,D)
 
-connections(C,D,free(7),gløshaugen_syd,nardosenteret,wednesday,[firstcorr,from,time,to],E,F)
+connections(C,D,free(7),glÃ¸shaugen_syd,nardosenteret,wednesday,[firstcorr,from,time,to],E,F)
 
 
 ==>
 
 connections(
 
-  keepbefore$(1300, keepafter$(1200,departure$(free(7),gløshaugen_syd,wednesday))),
+  keepbefore$(1300, keepafter$(1200,departure$(free(7),glÃ¸shaugen_syd,wednesday))),
 
   departure$(free(7),nardosenteret,wednesday),
 
@@ -5630,7 +5630,7 @@ or even better
 
 connections(
 
-  keepbefore$( keepafter$( departure$(free(7),gløshaugen_syd,wednesday),1200  ),1300),
+  keepbefore$( keepafter$( departure$(free(7),glÃ¸shaugen_syd,wednesday),1200  ),1300),
 
   departure$(free(7),nardosenteret,wednesday),
 
@@ -5646,7 +5646,7 @@ connections(
 
 Rendyrk ideen om at P er predikat-variabel i BussTUC
 
-Du får S i S:pp gratis der du trenger det.
+Du fÃ¥r S i S:pp gratis der du trenger det.
 
 
 (S:P):Q
@@ -5677,7 +5677,7 @@ Therefore, drop the event that automatically follows verb_phrases
 =   identical
 
 
-¤¤¤
+Â¤Â¤Â¤
 \   first
 /   last, i.e. preference to text 
 \/  anywhere, preference to first
@@ -5721,28 +5721,28 @@ New Verb   has/weel/B/C // new verb appears in semantic
 
 
 
-Spørsmål qua logisk formel.
+SpÃ¸rsmÃ¥l qua logisk formel.
 
-et svar hvorfra man kan konkludere spørsmålet.
+et svar hvorfra man kan konkludere spÃ¸rsmÃ¥let.
 
 
-Setning |= Spørsmål direkte
+Setning |= SpÃ¸rsmÃ¥l direkte
 
-Setning |= Generelet svar |= Spørsmål
+Setning |= Generelet svar |= SpÃ¸rsmÃ¥l
 
 John er en ungkar. // Setning
      ||
      ||
      \/
-Er John en mann ?  // Spørsmål
+Er John en mann ?  // SpÃ¸rsmÃ¥l
 
 
 
-TUC må oppføre seg slik at ingen oppdager at den ikke skjønner noe.
+TUC mÃ¥ oppfÃ¸re seg slik at ingen oppdager at den ikke skjÃ¸nner noe.
 
 
 
-Hvordan ville språket vært dersom vi abstraherte bort alle
+Hvordan ville sprÃ¥ket vÃ¦rt dersom vi abstraherte bort alle
  event-entity relasjonene.
 
 
@@ -5755,8 +5755,8 @@ legge inn ptb/ lit() i metacomp
  + w(higher,adj(high,comp)).
 
 
-BussTUC ska forstå alt, og når den gir feilmeldinger
- skal kunden føle beskjemmet takknemlighet.
+BussTUC ska forstÃ¥ alt, og nÃ¥r den gir feilmeldinger
+ skal kunden fÃ¸le beskjemmet takknemlighet.
 
 
 legge inn give/John/X, srel/ind/person/Mary/X // allow in TQL
@@ -5827,11 +5827,11 @@ Insist that this language is declarative ("definitive" language)
 
  om  
  i  
- på 
+ pÃ¥ 
  -dag
 
 
-Er det nødvendig å gjøre distinksjon  this_night  in_night
+Er det nÃ¸dvendig Ã¥ gjÃ¸re distinksjon  this_night  in_night
 
 Insted user default
 
@@ -6022,10 +6022,10 @@ Ternary properties concerning the set of answers (last, first 5, etc,preferences
 
 
 
-Målet med bussoraklet er at ingen skal reagere, hverken negativt eller
-positivt på svar eller dårlig svar fra bussoraklet.
-Hvis svaret er at setningen er uforståelig, så er setningen
-uforståelig.
+MÃ¥let med bussoraklet er at ingen skal reagere, hverken negativt eller
+positivt pÃ¥ svar eller dÃ¥rlig svar fra bussoraklet.
+Hvis svaret er at setningen er uforstÃ¥elig, sÃ¥ er setningen
+uforstÃ¥elig.
 
 
 Perform Code generation asa separate activity
@@ -6175,7 +6175,7 @@ Make code-generation explicit.
 
 
 
-N: jeg vil reise fra nth til nardo etter kl 12 på lørdag
+N: jeg vil reise fra nth til nardo etter kl 12 pÃ¥ lÃ¸rdag
 
 ............... New destination ....................
 
@@ -6228,7 +6228,7 @@ What can Chunk1 be except an NP ?
 
 NO // make monday etc into name, just like january ?
 
-lørdag lørdagen lørdager lørdagene 
+lÃ¸rdag lÃ¸rdagen lÃ¸rdager lÃ¸rdagene 
 
 
 repalce bil/clock by  nil/time
@@ -6236,7 +6236,7 @@ repalce bil/clock by  nil/time
 take what comes.
 
 
-på mandag morgen kl 10 har jeg en forelesning på gløshaugen. 
+pÃ¥ mandag morgen kl 10 har jeg en forelesning pÃ¥ glÃ¸shaugen. 
 
 //lag adverbials som konsept ala adjectives ( fill in )
 
@@ -6310,8 +6310,8 @@ Automatic syntax trees:
 2. otherwise, use names that can be presented in the syntax tree
 
 
-Er det mulig å la alle entiteter det er snakk om være tall ?
-Isåfall får man en natrurlig sprpk kalkulator.
+Er det mulig Ã¥ la alle entiteter det er snakk om vÃ¦re tall ?
+IsÃ¥fall fÃ¥r man en natrurlig sprpk kalkulator.
 
 
 
@@ -6334,16 +6334,16 @@ conformday (  Saturday, Weekend).
 ---
 
 Representasjon  av proper_nouns som common-noun med equality
-kan brukes for å gjøre substitusjonen i Pragma mer renslige (bare 1
+kan brukes for Ã¥ gjÃ¸re substitusjonen i Pragma mer renslige (bare 1
 substisjon).
 
-Prøv dessuten TQL på substityitivity generelt (BDI f. eks)
+PrÃ¸v dessuten TQL pÃ¥ substityitivity generelt (BDI f. eks)
 
 
 
 
 Krigen forgikk  1939 - 1945   Event 
-Krigsårene  var 1939 - 1945   "Event"  Intervall
+KrigsÃ¥rene  var 1939 - 1945   "Event"  Intervall
 
 
 How would you proceed if you were going to parse the grammar from behind .
@@ -6407,7 +6407,7 @@ Longest preference does not eliminate commit errors, but minimize them.
 
 
 
-Partikkel/Bølge distinksjon i kvantemekanikken
+Partikkel/BÃ¸lge distinksjon i kvantemekanikken
 =
 Buss/Bussrute distinksjon i bussverden.
 
@@ -6431,11 +6431,11 @@ departure(free(0),hovedterminalen,day,X) =
 ROUTE-DOMAIN  means common name space. 
 
 
-På sett og vis er en vanlig statement en slags relativsetning
+PÃ¥ sett og vis er en vanlig statement en slags relativsetning
 
 En mann kysser ikke mary .
 
-Flytter En mann "først" og etterlater et gap
+Flytter En mann "fÃ¸rst" og etterlater et gap
 
 
 En mann(1) ... (1) kysser ikke mary
@@ -6624,15 +6624,15 @@ John er journalist
 =
 John er morder
 = 
-Det fins en (til nå ukjent) morder, men (nå vet vi at) John er denne
+Det fins en (til nÃ¥ ukjent) morder, men (nÃ¥ vet vi at) John er denne
 morderen.
 
 
 
-Det å bruke / som siste opsjon sparer masse tvedydighet
+Det Ã¥ bruke / som siste opsjon sparer masse tvedydighet
 
 
-\  først
+\  fÃ¸rst
 / sist
 - hvor som helst innen
 
@@ -6643,7 +6643,7 @@ hvor som helst, gjerne etter slutten
 
 
 
-Hvor er buss 52 mellom nth og nardo nå ===> Faktisk mulig å besvare
+Hvor er buss 52 mellom nth og nardo nÃ¥ ===> Faktisk mulig Ã¥ besvare
 
 Assume TQL is aobject oriented database format.
 How would a SQL query look ?
@@ -6654,7 +6654,7 @@ New pragma rule  is   GGG or HHHH  ( a la    GGG and HHHH)
 
 
 Utvide Buster a la Circuit Fix It shop,  
-hjelpe med å komme fram vhj off komm
+hjelpe med Ã¥ komme fram vhj off komm
 
 Vet du hvor holdeplassen er ?
 
@@ -6701,11 +6701,11 @@ Let parsetime_limit be a function of the length of the sentence.
 
 ER harald konge ==> fins X  er konge og harald = X
 
-Prøve   be2/X/X/_ først, !!!! 
+PrÃ¸ve   be2/X/X/_ fÃ¸rst, !!!! 
 
 
-whenq(which(Y)::P) ---> %% Når i dag går bussen ??? 
-    when, %% [når],  hvor tidlig 
+whenq(which(Y)::P) ---> %% NÃ¥r i dag gÃ¥r bussen ??? 
+    when, %% [nÃ¥r],  hvor tidlig 
     adverbial1(AA,BB,CC,DD), % i dag
     !,
     whenq(which(Y)::P) / adverbial1(AA,BB,CC,DD). 
@@ -6784,7 +6784,7 @@ get the right answer.
 // DEVERB TQL as a strategy // First part of pragma
 
 
-Ikke røyker has P <=> - (røyker has P)
+Ikke rÃ¸yker has P <=> - (rÃ¸yker has P)
 
 Implement events in QLF complex forms.
 
@@ -6810,19 +6810,19 @@ cappelens vei: accept last name and or first letter in pre names.
 Consensical
 Trenger du - . Hvis ikke  kan - brukes i stedet for // ????
 
-Hvilken holdeplass er nærmest Skaarsvolds veg? // Gen: fornavn kan skippes
+Hvilken holdeplass er nÃ¦rmest Skaarsvolds veg? // Gen: fornavn kan skippes
 
 reciprov = redundant indirect object //
 
 Imp er fin
 inf er part, 
-men for praktiske formål brukes infinitiv og presens om hverandre
+men for praktiske formÃ¥l brukes infinitiv og presens om hverandre
 
 modal -> /// in gramX
 
 Bruke TeleTUCs sql til bussrute
 
-Lag en oversikt over ord som oppfører seg likt bortsett fra bøyning og 
+Lag en oversikt over ord som oppfÃ¸rer seg likt bortsett fra bÃ¸yning og 
 pp komplementer. Ta et ord fra hver gruppe, fortrinnsvis innen Buss.
 
 
@@ -6830,7 +6830,7 @@ TUCsoundex // Replace in sequence recursively
 
 gh   -> g
 th   -> t
-aa   -> å
+aa   -> Ã¥
 @@   -> @ 
 ch   -> k ( churchill -> kurkil) sj ?
 ck   -> k
@@ -6841,8 +6841,8 @@ sch  -> sj
 schj -> sj
 sch  -> sj
 tio  -> sjo
-øg   -> øy
-øi   -> øy
+Ã¸g   -> Ã¸y
+Ã¸i   -> Ã¸y
 ...
 
 en$ -> (end with)
@@ -6858,7 +6858,7 @@ bestcorr:   Lag summary of startdeps and enddeps
 Use quicktransfer
 
 osv      osveien
-stav : = staveien bare hvis ikke spellcorr på sta 
+stav : = staveien bare hvis ikke spellcorr pÃ¥ sta 
 
 om STED = prep
 om TID  = prep
@@ -6912,7 +6912,7 @@ Amblehash takes  Yygdrasilveien for Yggdrasilveien
 Hvilke klasser spiller en rolle i syntaksen bortsett fra
 semantisk samsvarsanalyse ?
 
-Riktig spørsmål gir riktig svar.
+Riktig spÃ¸rsmÃ¥l gir riktig svar.
 
 
 Make it a goal to represent all that appears in the bussrutehefte.
@@ -6976,13 +6976,13 @@ an (appearantly unsolvable) problem (POCake)
 
 I must go => modal   God say  that I must go
 
-John er lærer => lærer(john)  %% adjektivisk
-John var lærer ?
-John var en lærer ?
-John lignet en lærer ?
-John lignet en lærer  i går ?
+John er lÃ¦rer => lÃ¦rer(john)  %% adjektivisk
+John var lÃ¦rer ?
+John var en lÃ¦rer ?
+John lignet en lÃ¦rer ?
+John lignet en lÃ¦rer  i gÃ¥r ?
 
-Er det mulig for svargeneratoren å generere tql ?
+Er det mulig for svargeneratoren Ã¥ generere tql ?
 
 
 Shorten the names inside the route files  departureday
@@ -6991,7 +6991,7 @@ Shorten the names inside the route files  departureday
 
 Applications:
 
-Værvarsling: fra tekst report -> database
+VÃ¦rvarsling: fra tekst report -> database
 Truck GPS data -> DB, qeuery system for DB
 Bus GPS -> Real time passing times.
 Telephone number query
@@ -7074,14 +7074,14 @@ Translate busstuc/bustuc/smstuc  -> tuc .
 Can you implmenet FOPL in BreakRules
 
 
-N: en buss i trondheim går.
+N: en buss i trondheim gÃ¥r.
 
 trondheim isa city,A isa bus,go/A/E,event/real/E
 
    nrel/in/bus/city/A/trondheim,
 
 
-N: en buss som er i trondheim går.
+N: en buss som er i trondheim gÃ¥r.
 
 trondheim isa city,A isa bus,go/A/E,event/real/E
 
@@ -7098,14 +7098,14 @@ go/vehicle/15/E     bedre ENN go/15/E  ???
 
 
 Ta NOISEW etter COMPWORD !!!
-altså ikke => unntatt
-altså => []
+altsÃ¥ ikke => unntatt
+altsÃ¥ => []
 Sjekk alle med samme profil
 
 
-Hvilke busser må jeg ta fra Vestlia for å være ved 
-                           Magnus Berrføtsvei
-                        -> Magnus Berføttsvei
+Hvilke busser mÃ¥ jeg ta fra Vestlia for Ã¥ vÃ¦re ved 
+                           Magnus BerrfÃ¸tsvei
+                        -> Magnus BerfÃ¸ttsvei
 
             // example of good liberal spellcorr
             // one missing one extra
@@ -7120,7 +7120,7 @@ gen.  verb prep  as verbial
 
 
 
-With SMS, første means neste unless specific day.
+With SMS, fÃ¸rste means neste unless specific day.
 
 
 
@@ -7146,13 +7146,13 @@ triggers a robustification.
 ////////////////////////////////////////////
 
 
-Ved bytte av buss skal man velge første mulige stasjon for skifte.
+Ved bytte av buss skal man velge fÃ¸rste mulige stasjon for skifte.
 
-M.a.o.  sortere på avgangssiden, gitt siste mulige startavgang.
+M.a.o.  sortere pÃ¥ avgangssiden, gitt siste mulige startavgang.
 
-Gjelder både medløps  (spiller ingen rolle)
+Gjelder bÃ¥de medlÃ¸ps  (spiller ingen rolle)
 
-og motløps.  ( stå å vente i steded for å sitte på bussen til siste øyeblikk).
+og motlÃ¸ps.  ( stÃ¥ Ã¥ vente i steded for Ã¥ sitte pÃ¥ bussen til siste Ã¸yeblikk).
 
 ===========================================================
 
@@ -7163,34 +7163,34 @@ splitword(mandagskvelden,mandag,kveld).
 
 isa/utopia/man/tore % Text-flag
 
-Droppe første / siste hvis sms-flag
+Droppe fÃ¸rste / siste hvis sms-flag
 
 
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-Prinsippet om at virtuals alltid prøves først bryter
+Prinsippet om at virtuals alltid prÃ¸ves fÃ¸rst bryter
 mot prinsippet om longest (NP) first.
 Smoketest med virtuals sist.
 
 By preferring text to stack in ConsGram, we also 
 prefer verb complements to noun complements.
 
-Når går buss fra Studentersamfundet som er på sentralstasjonen 14? 
-==> now : buss går fra Sf   
-==> eventually:  buss fra Studentersamfundet som er på sentralstasjonen 14 går
+NÃ¥r gÃ¥r buss fra Studentersamfundet som er pÃ¥ sentralstasjonen 14? 
+==> now : buss gÃ¥r fra Sf   
+==> eventually:  buss fra Studentersamfundet som er pÃ¥ sentralstasjonen 14 gÃ¥r
 
 
-venter en sjåfør  på bussen ? // prefer text for stack.
+venter en sjÃ¥fÃ¸r  pÃ¥ bussen ? // prefer text for stack.
 
 /////////////////////////////
 
 
-No spell på compword
+No spell pÃ¥ compword
 
 Fjern  alle subsumerte templates og complements.
 
 
-Overføringssyndromet
+OverfÃ¸ringssyndromet
 
    BussTUC er intelligent,
    Jeg trenger et intelligent planleggingssystem
@@ -7199,7 +7199,7 @@ Overføringssyndromet
    AI is based on the concept of cheating (Turings Test)
 
 
-første etter 12 >=   
+fÃ¸rste etter 12 >=   
 neste etter 12 >
 
 Verbial   ( Verb expression ) in stead og Verb_phrase which is used
@@ -7355,7 +7355,7 @@ the only thing that is needed is  compliance tests
 
 Put type of variable out of X:Type as a separate parameter for compliance test.
 
-reell betyr også kontinuerlig
+reell betyr ogsÃ¥ kontinuerlig
 
 event = intervall  with meaning,
 

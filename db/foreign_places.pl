@@ -9,6 +9,8 @@
 
 :-module( foreign, [ foreign/1 ] ).   % ( PLACE ), e.g. aalesund, orkanger(?).   %%% FOREIGN (to Trondheim) places Moved to foreign_places.pl
 
+%% foreign/1 are all places not covered by the GTFS AtB routes.  %% RS-200508
+
 foreign(aalesund). 
 foreign(aardal).  %% \+ aurdal
 foreign(aare). 
@@ -189,7 +191,6 @@ foreign(buktamo).
 foreign(buktamoen).
 foreign(buktelia).
 foreign(burfjord). 
-foreign(buskerud). 
 foreign(buskerud). 
 %foreign(buvik).        %% RS-150815. Buss 310 
 %foreign(buvika). 
@@ -408,7 +409,7 @@ foreign(frostad). %% sp %%  \= Ferstad
 foreign(frydendal).
 foreign(frysja). 
 foreign(frøya).
-foreign(frøya). foreign(frøja). 
+foreign(frøja). %foreign(frøya). Above 
 foreign(furnes). 
 foreign(furukollen). 
 foreign(furuset). 
@@ -1957,8 +1958,7 @@ foreign(vågstranda).
 foreign(vågå). 
 foreign(våler). 
 foreign(vålerenga). 
-foreign(vædal). 
-foreign(værdal). 
+foreign(vædal).  %% foreign(værdal). ABOVE 
 foreign(værdalen). 
 %% foreign(værnes). %% airport
 foreign(vøyen). foreign(vøyenenga). 

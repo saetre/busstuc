@@ -3777,7 +3777,7 @@ compword(nei,[nei],nei).  %% Repair
 compword(nei,[takk],nei). %% Dialog 
 xcompword(nei,[tvertimot],nei).  
 xcompword(nei,[tvert,i,mot],nei).
-xcompword(nei,[tvert,imot],nei). 
+%% xcompword(nei,[tvert,imot],nei). %% RS-220508 DUPLICATE 
 xcompword(tvertimot,[],nei).   
 xcompword(tvert,[i,mot],nei).    
 xcompword(tvert,[imot],nei).     
@@ -6211,7 +6211,7 @@ synword('9o',90).
 
 
 
-synword('23oo',2300). %%  etc
+%% synword('23oo',2300). %%  etc %% RS-220508 DUPLICATE
 
 synword('2oo2',2002).
 synword('2oo3',2003). %% etc 
@@ -6904,7 +6904,7 @@ synword(deyt,          det).
 synword(dfag,          dag).
 synword(dfør,          før). 
 synword(dga,           dag).   %% own
-synword(di,            din). 
+%% synword(di,            din). 
 %% synword(di,            de).    %%  dial Er mora di mann ?
 
 synword(dialekt,       norwegian). %% wrongeian :-)
@@ -7008,7 +7008,7 @@ synword(èn, ett).   %% ( no eq in masc)
 
 synword(ee,          er). %%  ?
 synword(een,         en). %%  (even ?)
-synword(eer,         er). 
+%% synword(eer,         er).  %% RS-220508 DUPLICATE
 synword(eeter,       etter). 
 synword(effektivt,   hurtig). 
 synword(efra,   fra). %% nest efra 
@@ -7039,7 +7039,7 @@ synword(ein,           en).
 synword(eit,           et).  
 synword(eitt,          ett). 
 synword(ej,       jeg). %% ikke). %% (DK) 
-synword(ej,       jeg). %% ?
+% synword(ej,       jeg). %% ?
 synword(ejg,      jeg). 
 synword(ejeg,     jeg).  
 %% synword(ekker,    eller). %% ? own 
@@ -9370,7 +9370,6 @@ synword(makan,         noe).   %%  :-)
 synword(maken,         noe).   %% 
 synword(mamge,         mange). 
 synword(mane,          mange). 
-synword(mangen,        mange). 
 synword(mangt,         mye). 
 synword(manhe,         mange). 
 synword(may,           må).  
@@ -9584,7 +9583,7 @@ synword(måå,           må).
 synword(mena,          mene).  
 synword(menge,         mange). 
 synword(meningsfullt,  bra).
-synword(meningn,       meningen). 
+%synword(meningn,       meningen).  %% DUPLICATE 
 synword(menner,        menn).
 synword(menneskan,     menneskene). %% dial 
 synword(mere,          mer).  
@@ -13129,7 +13128,7 @@ adj2(forfalsket,wrong).
 adj2(forvirret,wrong).      %% confused ? 
 adj2(galen,wrong).
 adj2(galn,wrong).  %% + galne
-adj2(gal,wrong). 
+%% adj2(gal,wrong). 
 adj2(mangelfull,wrong). 
 adj2(optimistisk,wrong). %% rough but wise %% TA-110411 (cmp pessimistisk)
 
@@ -14998,7 +14997,6 @@ noun2(ettermiddag,afternoon).
 noun2(ettermidag,afternoon). 
 noun2(etermiddag,afternoon). 
 noun2(etermidag,afternoon). 
-noun2(ettermidag,afternoon). 
 noun2(eftermiddag,afternoon).
 noun2(ettermiddagstid,afternoon). 
 noun2(ettermidsdag,  afternoon). 
@@ -17556,7 +17554,6 @@ noun2(trykk,tram).
 noun2(trikkeholdeplass,tramstation). 
 noun2(trikkholdeplass,tramstation).
 noun2(trikkeholdplass,tramstation).
-noun2(trikkeholdplass,tramstation).
 noun2(trikkestasjon,tramstation). 
 noun2(trikkestopp,tramstation).
 
@@ -17730,7 +17727,6 @@ noun2(vei,way).      %% ? kort vei //nb way after street
 noun2(veiledning,information). %% rough
 noun2(ruteplanveiledning,information). %% rough 
 noun2(vekt,weight). 
-noun2(venn,friend).
 noun2(bekjent,friend). 
 noun2(bestevenn,friend). %% ?
 noun2(kamerat,friend).  
@@ -17802,16 +17798,16 @@ noun2(nyår, spring).  %% nyåret
 
 
 
-noun2(webadresse,webaddress). 
+%% noun2(webadresse,webaddress). 
 noun2(bussorakelside,webaddress).     %% rough
 noun2(hjemmeadresse,webaddress).  %%
 noun2(hjemmeside,webaddress).     %% 
-noun2(internettadresse,webaddress).
+%% noun2(internettadresse,webaddress).
 noun2(internettside,webaddress). 
 %%     noun2(ipadresse,webaddress).   
 noun2(lenke,webaddress). 
 noun2(link,webaddress). 
-noun2(nettadresse,webaddress).
+%% noun2(nettadresse,webaddress).
 noun2(nettside,webaddress).      %%  (Rough)    
 noun2(nettsted,webaddress).  
 noun2(url,webaddress).  
@@ -17916,8 +17912,8 @@ noun2(mandagskveld, monday).  %% Rough
 noun2(tirsdagskveld,tuesday).  
 noun2(onsdagskveld, wednesday). 
 noun2(torsdagskveld,thursday). 
-noun2(fredagskveld, friday). 
-noun2(lørdagskveld, saturday). 
+%noun2(fredagskveld, friday).  %% DUPLICATE 
+%noun2(lørdagskveld, saturday).  %% DUPLICATE
 noun2(søndagskveld, sunday).  
 
 
@@ -18992,7 +18988,7 @@ verb2(igangsette,start).
 verb2(innføre,start).
 verb2(innlede,start). %% TA-110329
 verb2(lansere,start). 
-verb2(opprette,start). 
+%% verb2(opprette,start). %% RS-220508 DUPLICATE
 verb2(restarte,start). %%  rough
 verb2(stifte,start).
 verb2(utløse,start). %% .. garantien 
@@ -19095,7 +19091,7 @@ verb2(innpasse,adapt).
 verb2(tilrettelegge,adapt). 
 
 verb2(tjene,earn). 
-verb2(trafikkere,pass).
+%% verb2(trafikkere,pass). %% RS-220508 DUPLICATE
 %% jeg trenger billett
 
 %% verb2(tre,start). %% tre i kraft %% TA-101207 tr=start
@@ -19118,14 +19114,14 @@ verb2(tvile,doubt).
 verb2(tvinge,force). 
 
 verb2(tyde,indicate). %% .. på Norw 
-verb2(indikere,indicate).  
+%% verb2(indikere,indicate). %% RS-220508 DUPLICATE  
 
 verb2(tømme,empty). 
 
 verb2(undersøke,check).    %%  rough
 verb2(analysere,check).
 verb2(lodde,check). 
-verb2(sjekke,check).  
+%% verb2(sjekke,check). %% RS-220508 DUPLICATE  
 
 verb2(undervise,teach). 
 verb2(unngå,avoid). 

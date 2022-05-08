@@ -11,7 +11,6 @@
 :-module( makeauxtables, [ createhash/0, createonlyfromstations/0, createonlytostations/0, makeauxtables/0, nopassanyway/2,
                            taexists/3, verify_consistency/0, verify_files_exist/2  ] ). %% % verify_movedates/0 %% RS-140928 moved to db/timedat.pl
                         
-
 % Create files with auxillary bustables (auxtables.pl)
  
 %% NB they are compiled again as a separate file

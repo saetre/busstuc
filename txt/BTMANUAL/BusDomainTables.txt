@@ -17,7 +17,7 @@ GENERAL DOMAIN TABLES (   // database/
 
 // FILE REGSTR.PL
 
-¤ STREETSTAT(STREET NAME,PRINTED NAME ,LOW NUMBER, HIGH NUMBER, STATION)
+Â¤ STREETSTAT(STREET NAME,PRINTED NAME ,LOW NUMBER, HIGH NUMBER, STATION)
 
 Examples:
 
@@ -40,7 +40,7 @@ coincide ( ref. 'Anders Buens gate',13,
 
 //FILE  REGCOMPSTREET.PL
 
-¤ COMPOSITE_ROAD(Name,LIST(NAME),STREET)
+Â¤ COMPOSITE_ROAD(Name,LIST(NAME),STREET)
 
 Examples:
 
@@ -72,7 +72,7 @@ supporting the name entity recognition:
 // FILE AUXTABLES.PL
 
 
-¤ STATBUS (STATION, LIST(ROUTE) )
+Â¤ STATBUS (STATION, LIST(ROUTE) )
 
 Example:
 
@@ -80,15 +80,15 @@ statbus(anton_grevskotts_vei,[3,55,103]).
 
 For each station, a list of routes that passes it
 
-¤ BUSSTAT (ROUTE LIST(STATION) )
+Â¤ BUSSTAT (ROUTE LIST(STATION) )
 
 For each route, a list of stations  that it passes
 
-¤ TRANSBUSLIST (ROUTE 1, ROUTE 2, LIST(STATION))
+Â¤ TRANSBUSLIST (ROUTE 1, ROUTE 2, LIST(STATION))
 
 Example:
 
-transbuslist(3,55,[anton_grevskotts_vei,astronomveien,dalsauneveien,einar_tambarskjelves_gt,fossegrenda,hovedterminalen,lerkendal_stadion,nordslettveien,nygård,prinsen_kinosenter,
+transbuslist(3,55,[anton_grevskotts_vei,astronomveien,dalsauneveien,einar_tambarskjelves_gt,fossegrenda,hovedterminalen,lerkendal_stadion,nordslettveien,nygÃ¥rd,prinsen_kinosenter,
                    professor_brochs_gate,sorgenfri,studentersamfundet_1,torget,utleirmark,valgrindveien]).
 
 For each pair of routes, a list of stations that may be used for exchange, either way.
@@ -100,7 +100,7 @@ For each pair of routes, a list of stations that may be used for exchange, eithe
 // FILE  NAMEHASHTABLE.PL
 
 
-¤  TOREDEF (NAME,TYPE,TARGET NAME)
+Â¤  TOREDEF (NAME,TYPE,TARGET NAME)
 
 
 Examples:
@@ -133,7 +133,7 @@ variants, and the misspelled variants will be looked up  against NAME)
 
 The table is used to draw the actual bus tours on a map.
 
-¤ STATCOORD(STATION NUMBER,PRINTED NAME,XCOORD,YCOORD)
+Â¤ STATCOORD(STATION NUMBER,PRINTED NAME,XCOORD,YCOORD)
 
 Examples:
 
@@ -147,4 +147,4 @@ direction inwards to the center.
 
 XCOORD and YCOORD are metric GPS coordinates (UTM Zone 32 V) as used by the bus company. (%% RS-120727)
 
-¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤
+Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤Â¤

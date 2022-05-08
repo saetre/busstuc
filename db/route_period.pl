@@ -11,6 +11,7 @@
 
 %%%% ACTUAL  ROUTES              START-DATE           END-DATE (sorted!)
 
+route_period(    tt, r160_200201, date(2020,02,01),   date(2020,08,14) ).    %% Auto Update: Default Winter route
 %route_period(   tt, r160_200622, date(2020,06,22),   date(2020,08,14) ).    %% Auto Update: 2020-07-28
 %route_period(   tt, r160_200810, date(2020,08,10),   date(2021,07,01) ).    %% Auto Update: 2020-09-25
 %route_period(   tt, r160_200810, date(2020,08,10),   date(2021,07,02) ).    %% Auto Update: 2021-02-25

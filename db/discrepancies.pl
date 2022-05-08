@@ -274,8 +274,8 @@
 %alias_station2(73031,migosenteret,hallset).
 
 %% db/discrepancies r160_200622 r160_220502 
-%% db/discrepancies r160_200504 r160_220404 
 
+%% db/discrepancies r160_200504 r160_220404 
 alias_station2(77129,lona_bru,lona_bru_01).
 alias_station2(77128,almstad,almstad_01).
 alias_station2(78459,fagerheim,fagerheim_01).

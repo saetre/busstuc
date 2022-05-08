@@ -21,7 +21,7 @@
 
 %% RS-131225    UNIT: tuc/
 :- use_module( evaluate, [ instant/2 ] ).       %% RS-131225
-:- use_module( morph_e,[ verbroot/1 ] ).        %% RS-131225
+:- use_module( morph_e,[ verbroot/1 ] ).        %% RS-131225 Why is this not used? See verbroot2 instead!
 :- use_module( semantic, [ adj_templ/2, ako/2, gradv_templ/2, particle/3, rv_templ/2 ] ). %  TUCs  Lexical Semantic Knowledge Base
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -176,22 +176,23 @@ compword(m,[going],go).
 
 %% English named days %% TA-110201 ...
 
-compword(christmas,[eve],christmas_eve).
-compword(christmas,[day],christmas_day).
+%% See above as well!
+%% compword(christmas,[eve],christmas_eve).
+%% compword(christmas,[day],christmas_day).
 compword(boxing,[day],boxing_day). %% new 2. juledag
 
 compword(new,[year,eve],new_years_eve).
-compword(new,[years,eve],new_years_eve).
-compword(new,[year,s,eve],new_years_eve).
+%% compword(new,[years,eve],new_years_eve).
+%% compword(new,[year,s,eve],new_years_eve).
 
 compword(new,[year,day],new_years_day).
-compword(new,[years,day],new_years_day).
-compword(new,[year,s,day],new_years_day).
+%% compword(new,[years,day],new_years_day).
+%% compword(new,[year,s,day],new_years_day).
 
 %% compword(carnival,[],carnival). %% Sunday before Lent (Faste)
 
 compword(palm,[sunday],palm_sunday). 
-compword(easter,[eve],easter_eve).
+%% compword(easter,[eve],easter_eve).
 compword(easter,[day],easterday).
 compword(easter,[monday],easterday2).
 %% compword(day,[of,liberation],may8). %% ? new
@@ -205,7 +206,8 @@ compword(whit,[monday], whitsun_day2).
 
 compword(constitution,[day],may17). 
 
-compword(ascension,[day],ascension_day).
+%% See above for alphebetic sorted entries.
+%% compword(ascension,[day],ascension_day).
 compword(midsummer,[day],midsummer_day).  
 compword(midsummer,[eve],midsummer_eve).   
 
@@ -323,9 +325,10 @@ unwanted_interpretation(bruker,use). %% >1 dummy
 
 unwanted_adjective(supercalif). %% Needs 1 
 
+%% Document all predicates please!
 unwanted_verb(bing).  %% \+ being
 %% unwanted_verb(cost).  %% \+ cost! %% nofunk 
-unwanted_verb(meaning). %% noun, destroys error mess: complete sentence
+unwanted_verb(meaning). %% noun, destroys error mess-age: complete sentence
 
 unwanted_noun(ends).  %%  not plu %% TA-110606
 unwanted_noun(loves). %%  not plu 
@@ -416,12 +419,14 @@ cw(farewell). cw(for).
 cw(good). 
 cw(goodbye). cw(greater). cw(greatest).
 
-cw(h). cw(hello). cw(herself). cw(here). 
+%% cw(h).
+cw(hello). cw(herself). cw(here). 
 cw(him). cw(himself). cw(his). cw(holdeplass). %% TA-101022
 cw(hour). cw(hours). cw(hrs). 
 cw(how).
 
-cw(i). cw(ideally). cw(if).  cw(in). %%
+%% cw(i).
+cw(ideally). cw(if).  cw(in). %%
 cw(it). cw(its). cw(itself). 
 
 cw(just).
@@ -466,7 +471,7 @@ cw(lol).
 %cw(lawl).
 cw(rotfl). cw(rofl). cw(roflmao). cw(rotflmao). cw(lmao).
 
-cw(s). %% 's  genitive 
+%% cw(s). %% 's  genitive 
 cw(set). 
 cw(several).   cw(shall). 
 cw(simpler).   cw(smaller).  cw(smallest). cw(so). 
@@ -743,7 +748,7 @@ synword(enjoyed,       liked).
 synword(enjoys,        likes).   
 synword(esater,        easter).  
 synword(eve,           evening).  
-synword(eve,           evening).  %% (not Christmas Eve) 
+%%synword(eve,           evening).  %% (not Christmas Eve) 
 synword(exit,          quit).  
 
 synword(fare,          price).    %% 
@@ -1061,7 +1066,6 @@ synword(via,           past).
 synword(waht,          what).  
 synword(wat,           what).   
 synword(wath,          what).  
-synword(wath,          what). 
 synword(wanna,         will).
 synword(watch,         see).
 synword(watched,       saw).
@@ -1274,7 +1278,8 @@ nounsyn(phone,telephone).
 
 % VERB SECTION
 
-verbroot2(V,V) :- morph_e:verbroot(V).  %%
+%% verbroot2(V,V) :- morph_e:verbroot(V).  %%
+verbroot2(V,V) :- verbroot(V).  %%
 
 
 % These are verb root synonyms, inflection is included
@@ -1310,9 +1315,7 @@ verbroot2(type,   write).
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 
 
-%     Irregular Verbs
-
-
+%%     Irregular Verbs
 verb_form(admitted, admit,past,fin).  %% morph_e rule ?
 verb_form(admitted, admit,past,part). 
 
@@ -1419,7 +1422,7 @@ verb_form(shot,     shoot,past,part).
 verb_form(sitting,  sit,pres,part). 
 verb_form(spoke,    speak,past,fin). 
 verb_form(spoken,   speak,past,part).
-verb_form(shot,     shoot,past,fin). 
+%% verb_form(shot,     shoot,past,fin). 
 verb_form(shopped,  shop,past,fin).
 verb_form(slept,    sleep,past,fin).
 verb_form(sold,     sell,past,fin).
@@ -1458,10 +1461,10 @@ verb_form(wrote,write,past,fin).
 rep_verb(Tell):- 
     rv_templ(Tell,_). %% Semantic 
 
-preposition(by).
 
 %% preposition(intime).  % generic for when
 %% preposition(inplace). % generic for where
+preposition(by).
 
 preposition(about).   
 preposition(above).   
@@ -1482,7 +1485,7 @@ preposition(below).
 preposition(beside). 
 preposition(between).
 preposition(beyond).
-preposition(by).
+%% preposition(by). %% RS-220805 Moved first for some reason.
 preposition(down). 
 preposition(during).
 preposition(except).

@@ -243,9 +243,7 @@ adjustprep(_:Clock,past,after):-
 adjustprep(_:Stat,om,past):- %% OM dragvoll %% OM fictive preposition (Norw)
     subclass0(Stat,place),
     !.              
-adjustprep(_:Stat,om,past):- %% OM dragvoll 
-    subclass0(Stat,place),
-    !.              
+
 adjustprep(_:T,om,during2):-  %% om <tid>
     \+ member(T,[age]), %% etc etc ad hoc
     subclass0(T,time), %% not age
@@ -965,10 +963,10 @@ adj_template(Very,Brilliant,X:Persontype,S,adj/Very/Brilliant/X/S):-
      subtype0(Persontype,Person),
      !.
 
-adj_template(Very,Clever,X:Persontype,S,adj/Very/Clever/X/S):- 
-    adj_templ(Clever,Person),
-    subtype0(Persontype,Person),
-    !.
+adj_template(Very,Clever,X:Persontype,S,adj/Very/Clever/X/S):-  
+     adj_templ(Clever,Person),                        % adjective
+     subtype0(Persontype,Person),
+     !.
 
 /** NOT USED %% TA-100325
 
@@ -978,19 +976,6 @@ adj_template(_,European,X:Countrytype,_,has/Country/Continent/X/Europe):-
     !.
 
 */
-
-adj_template(Very,Clever,X:Persontype,S,adj/Very/Clever/X/S):-  
-     adj_templ(Clever,Person),                        % adjective
-     subtype0(Persontype,Person),
-     !.
-
-
-adj_template(Very,Brilliant,X:Persontype,S,adj/Very/Brilliant/X/S):-  
-     jako(Brilliant,Clever), %% semantic.pl // Only 1 level (care) 
-     adj_templ(Clever,Person),                        % adjective
-     subtype0(Persontype,Person),
-     !.
-
 
 adjname_template(Nil/TT,X:Bustype,_S,adj/Nil/TT/X/real):- %% TA-110103
      adjname_templ(TT,Bus),                               %% gps location

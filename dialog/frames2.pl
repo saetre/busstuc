@@ -376,10 +376,6 @@ frame_isempty_rec(Frame, Slot) :-
 frame_isempty_rec(Frame, Slot) :-
     member([Slot, ?, class(_), _], Frame).
 
-frame_isempty_rec(Frame, Super::Rest) :-
-    !,
-    member([Super, SubFrame, subframe(_), _], Frame),
-    frame_isempty_rec(SubFrame, Rest).
 
 
 frame_isempty_rec([ [_, ?, subframe(_), _] | Rest], Slot) :-

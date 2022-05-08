@@ -520,12 +520,6 @@ sentence1(new:::P) ---> %% TA-110518  må til byen
 
 
 
-%% Verb past part = Jeg past fin %% TA-101102
-sentence1(new:::P) ---> %%  %% Fått = jeg har fått= jeg fikk
-    w(verb(See,past,part)), 
-    !,
-    statreal(P)\ ([jeg],w(verb(See,past,fin))).
-
 
 %% VERB = JEG VERB
 
@@ -7070,13 +7064,12 @@ rvpk(V,X,N, S,Com1::( P3  and  P1)) --->
         {tv_template(V,X,NewS:Coevent,S,P3)}.
 
 
-at0 ---> [at],!.   
+% at0 ---> [at],!. %% Above   
 at0 ---> look_ahead_lit([jeg,du,han,hun,vi,dere,de]). 
-
-
-omut0 ---> [om],!.
-omut0 ---> [ut],!. %% finne (ut)
-omut0 ---> [].
+%%% Above
+%omut0 ---> [om],!.
+%omut0 ---> [ut],!. %% finne (ut)
+%omut0 ---> [].
 
 %% Spørre om hvilke  busser (SOM) går    
 
