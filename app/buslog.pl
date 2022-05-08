@@ -1162,11 +1162,12 @@ conform_firststation(List,From,From) :-
 conform_firststation(List,From,FromFixed) :-
     \+ member(From,List),
     conform_firststation1(List,From,[city_syd_vestre,city_syd_østre,city_syd_e6],FromFixed) ;
-    conform_firststation1(List,From,[dr_gate_d1,dr_gate_d2],FromFixed) ;
+%%    conform_firststation1(List,From,[dr_gate_d1,dr_gate_d2],FromFixed) ; %% RS-220508
+    conform_firststation1(List,From,[dronnings_gate,dr_gate_d1,dr_gate_d2],FromFixed) ; %% RS-220508
     conform_firststation1(List,From,[heimdal,heimdal_stasjon],FromFixed) ;
-    conform_firststation1(List,From,[kongens_gate_k1,kongens_gate_k2],FromFixed) ;
-    conform_firststation1(List,From,[munkegata_m1,munkegata_m2,munkegata_m3,munkegata_m4,munkegata_m5],FromFixed) ;
-    conform_firststation1(List,From,[prinsens_gate_p1,prinsens_gate_p2],FromFixed) ;
+    conform_firststation1(List,From,[kongens_gate,kongens_gate_k1,kongens_gate_k2],FromFixed) ;
+    conform_firststation1(List,From,[munkegata,munkegata_m1,munkegata_m2,munkegata_m3,munkegata_m4,munkegata_m5],FromFixed) ;
+    conform_firststation1(List,From,[prinsens_gate,prinsens_gate_p1,prinsens_gate_p2],FromFixed) ;
     conform_firststation1(List,From,[studentersamfundet,studentersamfundet_2],FromFixed) ;
     
     % If this line is reached, the station needs to be corrected above, but isn't. Add it when found.
@@ -1180,6 +1181,7 @@ conform_firststation1(List,From,Alternatives,FromFixed) :-
 %% If ToStation is a station group, finds the specific station for the case of StationsList
 disambiguate_stations(List,To,To) :- member(To,List). % Skip when not needed
 disambiguate_stations(List,To,heimdal_stasjon) :- To == heimdal, member(heimdal_stasjon,List).
+disambiguate_stations(List,To,kongens_gate) :- To == hovedterminalen, member(kongens_gate,List).
 disambiguate_stations(List,To,kongens_gate_k1) :- To == hovedterminalen, member(kongens_gate_k1,List).
 disambiguate_stations(List,To,kongens_gate_k2) :- To == hovedterminalen, member(kongens_gate_k2,List).
 disambiguate_stations(List,To,munkegata_m1) :- To == hovedterminalen, member(munkegata_m1,List).
@@ -1187,6 +1189,7 @@ disambiguate_stations(List,To,munkegata_m2) :- To == hovedterminalen, member(mun
 disambiguate_stations(List,To,munkegata_m3) :- To == hovedterminalen, member(munkegata_m3,List).
 disambiguate_stations(List,To,munkegata_m4) :- To == hovedterminalen, member(munkegata_m4,List).
 disambiguate_stations(List,To,munkegata_m5) :- To == hovedterminalen, member(munkegata_m5,List).
+disambiguate_stations(List,To,prinsens_gate) :- To == hovedterminalen, member(prinsens_gate,List).
 disambiguate_stations(List,To,prinsens_gate_p1) :- To == hovedterminalen, member(prinsens_gate_p1,List).
 disambiguate_stations(List,To,prinsens_gate_p2) :- To == hovedterminalen, member(prinsens_gate_p2,List).
 disambiguate_stations(List,To,studentersamfundet_2) :- To == studentersamfundet, member(studentersamfundet_2,List).

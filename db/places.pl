@@ -67,26 +67,30 @@
 %%corr(d3,hovedterminalen). 
 %%corr(d4,hovedterminalen). 
 
+corr(dronningens_gate,hovedterminalen). %% Atb   %% RS-150815 Gammelt (2014-feb) format %% RS-151219 Jule-format? RS-220502 _d1 _d2 removed?
 corr(dr_gate_d1,hovedterminalen). %% Atb
 corr(dr_gate_d2,hovedterminalen). %% RS-130818  %% RS-150815 d2 Tatt med igjen?
 %corr(dr_gate_d3,hovedterminalen). 
 %corr(dr_gate_d4,hovedterminalen). 
-corr(dronningens_gate_d1,hovedterminalen). %% Atb   %% RS-150815 Gammelt (2014-feb) format %% RS-151219 Jule-format?
-corr(dronningens_gate_d2,hovedterminalen). %% RS-130818  %% RS-150815 Tatt med igjen?
+%corr(dronningens_gate_d1,hovedterminalen). %% Atb   %% RS-150815 Gammelt (2014-feb) format %% RS-151219 Jule-format?
+%corr(dronningens_gate_d2,hovedterminalen). %% RS-130818  %% RS-150815 Tatt med igjen?
 %%corr(dronningens_gate_d3,hovedterminalen). 
 %%corr(dronningens_gate_d4,hovedterminalen). 
 
 corr(dronningens_gate_19,hovedterminalen). %% TA-110627
 corr(dronningens_gate_46,hovedterminalen). %% TA-110627
 corr(dronningens_gate_50,hovedterminalen). %% TA-110627
+corr(dronningens_gate_62,hovedterminalen). %% RS-220508
 
 
 %kongens gate (hovedterminalen fra 2013.08.12   %% RS-130812
 corr(k1,hovedterminalen). 
 corr(k2,hovedterminalen). 
 
-corr(kongens_gate_k1,hovedterminalen). %% Atb
-corr(kongens_gate_k2,hovedterminalen). 
+corr(kongens_gate,hovedterminalen). %% Atb
+%corr(kongens_gate_k2,hovedterminalen). 
+%corr(kongens_gate_k1,hovedterminalen). %% Atb
+%corr(kongens_gate_k2,hovedterminalen). 
 
 
 %corr(kongens_gate_19,hovedterminalen). %% TA-110627
@@ -3420,6 +3424,7 @@ isat(nidarosdomen, prinsen_kinosenter).
 %isat( dr_gate_d2, sentrum ).   %% RS-151219 isat requires the stations to be "real stations". Idea: Try using discrepencies2( Fake, Real ) to avoid this?
 %isat( dr_gate_d3, sentrum ). 
 %isat( dr_gate_d4, sentrum ). 
+isat( dronningens_gate, sentrum ). %% AtB (2014-feb) format
 isat( dronningens_gate_d1, sentrum ). %% AtB (2014-feb) format
 isat( dronningens_gate_d2, sentrum ). 
 %%isat( dronningens_gate_d3, sentrum ). 

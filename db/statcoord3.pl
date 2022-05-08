@@ -2740,7 +2740,7 @@ statcoord(74928,'Berg', 63.417686, 9.516573).
 statcoord(103540,'Engan', 63.05577, 10.28576).
 statcoord(74924,'Berg', 63.379704, 10.167199).
 statcoord(74925,'Berg', 63.379738, 10.166981).
-statcoord(103547,'Dronningens gate', 63.43153, 10.388027).
+statcoord(103547,'Dronningens gate 62', 63.43153, 10.388027).
 statcoord(73568,'Myrset', 63.36606, 9.578966).
 statcoord(72237,'Grunnkloppa', 62.67529, 11.408427).
 statcoord(74898,'Elvheim', 63.39809, 10.387507).
