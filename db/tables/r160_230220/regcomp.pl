@@ -4505,7 +4505,6 @@ composite_stat(rørosgård,[],rørosgård).
 composite_stat(rørvik,[],rørvik).
 composite_stat(rørvik,[båthavn, 02],rørvik_båthavn_02).
 composite_stat(rørvik,[ferjekai],rørvik_ferjekai).
-composite_stat(rørvik,[hurtigbåtkai, 01],rørvik_hurtigbåtkai_01).
 composite_stat(rørvik,[hurtigbåtkai],rørvik_hurtigbåtkai).
 composite_stat(rørvika,[],rørvika).
 composite_stat(røsegg,[02],røsegg_02).
@@ -4809,7 +4808,6 @@ composite_stat(skavlans_street,[],skavlans_veg). % generated 1.1
 composite_stat(skavlansveg,[],skavlans_veg). % generated 1.0
 composite_stat(skei,[01],skei_01).
 composite_stat(skei,[02],skei_02).
-composite_stat(skei,[ferjekai, 01],skei_ferjekai_01).
 composite_stat(skei,[ferjekai, 02],skei_ferjekai_02).
 composite_stat(skei,[hurtigbåtkai],skei_hurtigbåtkai).
 composite_stat(skei,[øvre, 01],skei_øvre_01).

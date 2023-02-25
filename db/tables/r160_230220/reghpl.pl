@@ -555,6 +555,8 @@ hpl(107835,vea,vea,'Vea').
 hpl(107860,herjuan,herjuan,'Herjuan').
 hpl(107886,legårdsbakken_snuplass,legårdsbakken_snuplass,'Legårdsbakken snuplass').
 hpl(107929,steinberget,steinberget,'Steinberget').
+hpl(107930,steinberget,steinberget,'Steinberget').
+hpl(107934,skansen,skansen,'Skansen').
 hpl(110093,vellamelen,vellamelen,'Vellamelen').
 hpl(110094,beitstad,beitstad,'Beitstad').
 hpl(110114,mosvik_skole,mosvik_skole,'Mosvik skole').
@@ -7770,7 +7772,6 @@ hpl(79774,varøya_01,varøya_01,'Varøya 01').
 hpl(79775,ramstadlandet_ferjekai_01,ramstadlandet_ferjekai_01,'Ramstadlandet ferjekai 01').
 hpl(79776,fikkan_skole_01,fikkan_skole_01,'Fikkan skole 01').
 hpl(79777,fikkan_skole_02,fikkan_skole_02,'Fikkan skole 02').
-hpl(79778,rørvik_hurtigbåtkai_01,rørvik_hurtigbåtkai_01,'Rørvik hurtigbåtkai 01').
 hpl(79779,brørs_02,brørs_02,'Brørs 02').
 hpl(79780,brørs_01,brørs_01,'Brørs 01').
 hpl(79781,våg_vegdele_03,våg_vegdele_03,'Våg vegdele 03').
@@ -7948,7 +7949,6 @@ hpl(80026,ledang_02,ledang_02,'Ledang 02').
 hpl(80027,laugagården_01,laugagården_01,'Laugagården 01').
 hpl(80028,laugagården_02,laugagården_02,'Laugagården 02').
 hpl(80029,skei_ferjekai_02,skei_ferjekai_02,'Skei ferjekai 02').
-hpl(80030,skei_ferjekai_01,skei_ferjekai_01,'Skei ferjekai 01').
 hpl(80031,lilleval_01,lilleval_01,'Lilleval 01').
 hpl(80032,lilleval_02,lilleval_02,'Lilleval 02').
 hpl(80035,vandholmen_02,vandholmen_02,'Vandholmen 02').
