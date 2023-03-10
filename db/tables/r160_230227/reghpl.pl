@@ -1499,8 +1499,6 @@ hpl(72046,idrettsveien,idrettsveien,'Idrettsveien').
 hpl(72047,vasøy,vasøy,'Vasøy').
 hpl(72049,siemens,siemens,'Siemens').
 hpl(72050,siemens,siemens,'Siemens').
-hpl(72051,ila,ila,'Ila').
-hpl(72052,ila,ila,'Ila').
 hpl(72056,ilbro,ilbro,'Ilbro').
 hpl(72057,ilbro,ilbro,'Ilbro').
 hpl(72058,vegdeler_holsøya,vegdeler_holsøya,'Vegdeler Holsøya').
@@ -1635,7 +1633,6 @@ hpl(72204,vikan,vikan,'Vikan').
 hpl(72206,skain,skain,'Skain').
 hpl(72209,vikasundet,vikasundet,'Vikasundet').
 hpl(72210,skansen,skansen,'Skansen').
-hpl(72212,skansen,skansen,'Skansen').
 hpl(72213,vikasætra,vikasætra,'Vikasætra').
 hpl(72214,vikasætra,vikasætra,'Vikasætra').
 hpl(72219,vikelvveien,vikelvveien,'Vikelvveien').
