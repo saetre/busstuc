@@ -2247,8 +2247,8 @@ hpl(72926,melkstadvik,melkstadvik,'Melkstadvik').
 hpl(72927,hegseth_eft,hegseth_eft,'Hegseth eft').
 hpl(72928,hegseth_eft,hegseth_eft,'Hegseth eft').
 hpl(72929,øyasætra,øyasætra,'Øyasætra').
-hpl(72931,hegsnippen,hegsnippen,'Hegsnippen').
-hpl(72932,hegsnippen,hegsnippen,'Hegsnippen').
+hpl(72931,heggsnipen,heggsnipen,'Heggsnipen').
+hpl(72932,heggsnipen,heggsnipen,'Heggsnipen').
 hpl(72933,melkvika,melkvika,'Melkvika').
 hpl(72934,melkvika,melkvika,'Melkvika').
 hpl(72938,hegstad,hegstad,'Hegstad').

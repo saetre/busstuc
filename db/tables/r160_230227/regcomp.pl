@@ -1917,6 +1917,7 @@ composite_stat(heggdalen,[],heggdalen).
 composite_stat(hegge,[01],hegge_01).
 composite_stat(hegge,[02],hegge_02).
 composite_stat(heggset,[],heggset).
+composite_stat(heggsnipen,[],heggsnipen).
 composite_stat(heggstad,[01],heggstad_01).
 composite_stat(heggstad,[02],heggstad_02).
 composite_stat(heggstad,[],heggstad).
@@ -1934,7 +1935,6 @@ composite_stat(hegra,[stasjon, 02],hegra_stasjon_02).
 composite_stat(hegramo,[01],hegramo_01).
 composite_stat(hegramo,[],hegramo).
 composite_stat(hegseth,[eft],hegseth_eft).
-composite_stat(hegsnippen,[],hegsnippen).
 composite_stat(hegstad,[],hegstad).
 composite_stat(heia,[01],heia_01).
 composite_stat(heia,[02],heia_02).

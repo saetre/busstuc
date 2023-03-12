@@ -2510,7 +2510,7 @@ passes4(10246, 102402, øverbylykkja, 26, 26, 26).
 passes4(10246, 74684, onsøybakkan, 27, 26, 26).
 passes4(10246, 106755, by_gård, 28, 27, 27).
 passes4(10246, 75498, by, 29, 27, 27).
-passes4(10246, 72932, hegsnippen, 30, 28, 28).
+passes4(10246, 72932, heggsnipen, 30, 28, 28).
 passes4(10246, 71588, rye_skole, 31, 28, 28).
 passes4(10246, 75368, fortuna, 32, 29, 29).
 passes4(10246, 71979, høstadkorsen, 33, 29, 29).
@@ -2555,7 +2555,7 @@ passes4(10247, 102402, øverbylykkja, 26, 28, 28).
 passes4(10247, 74684, onsøybakkan, 27, 28, 28).
 passes4(10247, 106755, by_gård, 28, 29, 29).
 passes4(10247, 75498, by, 29, 29, 29).
-passes4(10247, 72932, hegsnippen, 30, 30, 30).
+passes4(10247, 72932, heggsnipen, 30, 30, 30).
 passes4(10247, 71588, rye_skole, 31, 30, 30).
 passes4(10247, 75368, fortuna, 32, 31, 31).
 passes4(10247, 71979, høstadkorsen, 33, 31, 31).
@@ -2587,7 +2587,7 @@ passes4(10274, 71971, høstad, 13, 7, 7).
 passes4(10274, 71980, høstadkorsen, 14, 8, 8).
 passes4(10274, 75369, fortuna, 15, 8, 8).
 passes4(10274, 71587, rye_skole, 16, 10, 10).
-passes4(10274, 72931, hegsnippen, 17, 11, 11).
+passes4(10274, 72931, heggsnipen, 17, 11, 11).
 passes4(10274, 75499, by, 18, 12, 12).
 passes4(10274, 106754, by_gård, 19, 12, 12).
 passes4(10274, 74685, onsøybakkan, 20, 13, 13).
@@ -2633,7 +2633,7 @@ passes4(10276, 71971, høstad, 13, 7, 7).
 passes4(10276, 71980, høstadkorsen, 14, 8, 8).
 passes4(10276, 75369, fortuna, 15, 8, 8).
 passes4(10276, 71587, rye_skole, 16, 10, 10).
-passes4(10276, 72931, hegsnippen, 17, 11, 11).
+passes4(10276, 72931, heggsnipen, 17, 11, 11).
 passes4(10276, 75499, by, 18, 12, 12).
 passes4(10276, 106754, by_gård, 19, 12, 12).
 passes4(10276, 74685, onsøybakkan, 20, 13, 13).
@@ -2680,7 +2680,7 @@ passes4(10283, 71971, høstad, 14, 8, 8).
 passes4(10283, 71980, høstadkorsen, 15, 9, 9).
 passes4(10283, 75369, fortuna, 16, 9, 9).
 passes4(10283, 71587, rye_skole, 17, 11, 11).
-passes4(10283, 72931, hegsnippen, 18, 12, 12).
+passes4(10283, 72931, heggsnipen, 18, 12, 12).
 passes4(10283, 75499, by, 19, 13, 13).
 passes4(10283, 106754, by_gård, 20, 13, 13).
 passes4(10283, 74685, onsøybakkan, 21, 14, 14).
@@ -2728,7 +2728,7 @@ passes4(10284, 71980, høstadkorsen, 15, 9, 9).
 passes4(10284, 75369, fortuna, 16, 9, 9).
 passes4(10284, 103140, rye_skole, 17, 12, 12).
 passes4(10284, 71587, rye_skole, 18, 13, 13).
-passes4(10284, 72931, hegsnippen, 19, 14, 14).
+passes4(10284, 72931, heggsnipen, 19, 14, 14).
 passes4(10284, 75499, by, 20, 15, 15).
 passes4(10284, 106754, by_gård, 21, 15, 15).
 passes4(10284, 74685, onsøybakkan, 22, 16, 16).
@@ -2774,7 +2774,7 @@ passes4(10291, 71971, høstad, 13, 7, 7).
 passes4(10291, 71980, høstadkorsen, 14, 8, 8).
 passes4(10291, 75369, fortuna, 15, 8, 8).
 passes4(10291, 71587, rye_skole, 16, 9, 9).
-passes4(10291, 72931, hegsnippen, 17, 10, 10).
+passes4(10291, 72931, heggsnipen, 17, 10, 10).
 passes4(10291, 75499, by, 18, 11, 11).
 passes4(10291, 106754, by_gård, 19, 11, 11).
 passes4(10291, 74685, onsøybakkan, 20, 12, 12).
@@ -2820,7 +2820,7 @@ passes4(10293, 71971, høstad, 13, 7, 7).
 passes4(10293, 71980, høstadkorsen, 14, 8, 8).
 passes4(10293, 75369, fortuna, 15, 8, 8).
 passes4(10293, 71587, rye_skole, 16, 10, 10).
-passes4(10293, 72931, hegsnippen, 17, 11, 11).
+passes4(10293, 72931, heggsnipen, 17, 11, 11).
 passes4(10293, 75499, by, 18, 12, 12).
 passes4(10293, 106754, by_gård, 19, 12, 12).
 passes4(10293, 74685, onsøybakkan, 20, 13, 13).
@@ -3850,11 +3850,11 @@ passes4(10376, 74106, klefstadbukta, 4, 2, 2).
 passes4(10376, 74103, klefstadbekken, 5, 3, 3).
 passes4(10376, 75513, byaberget, 6, 5, 5).
 passes4(10376, 71584, rye, 7, 6, 6).
-passes4(10376, 72932, hegsnippen, 8, 7, 7).
+passes4(10376, 72932, heggsnipen, 8, 7, 7).
 passes4(10376, 71588, rye_skole, 9, 8, 8).
 passes4(10376, 103140, rye_skole, 10, 10, 10).
 passes4(10376, 71587, rye_skole, 11, 10, 10).
-passes4(10376, 72931, hegsnippen, 12, 11, 11).
+passes4(10376, 72931, heggsnipen, 12, 11, 11).
 passes4(10376, 71585, rye, 13, 12, 12).
 passes4(10376, 75468, bukta, 14, 13, 13).
 passes4(10376, 75105, bjøra, 15, 14, 14).
@@ -3894,9 +3894,9 @@ passes4(10379, 72640, hangran, 8, 8, 8).
 passes4(10379, 72773, haugrønning, 9, 10, 10).
 passes4(10379, 75106, bjøra, 10, 15, 15).
 passes4(10379, 75469, bukta, 11, 16, 16).
-passes4(10379, 72932, hegsnippen, 12, 17, 17).
+passes4(10379, 72932, heggsnipen, 12, 17, 17).
 passes4(10379, 71587, rye_skole, 13, 19, 19).
-passes4(10379, 72931, hegsnippen, 14, 21, 21).
+passes4(10379, 72931, heggsnipen, 14, 21, 21).
 passes4(10379, 71585, rye, 15, 22, 22).
 passes4(10379, 75514, byaberget, 16, 23, 23).
 passes4(10379, 74102, klefstadbekken, 17, 24, 24).
@@ -4019,11 +4019,11 @@ passes4(10391, 72640, hangran, 9, 9, 9).
 passes4(10391, 72773, haugrønning, 10, 11, 11).
 passes4(10391, 75106, bjøra, 11, 16, 16).
 passes4(10391, 75469, bukta, 12, 17, 17).
-passes4(10391, 72932, hegsnippen, 13, 18, 18).
+passes4(10391, 72932, heggsnipen, 13, 18, 18).
 passes4(10391, 71588, rye_skole, 14, 19, 19).
 passes4(10391, 103140, rye_skole, 15, 20, 20).
 passes4(10391, 71587, rye_skole, 16, 21, 21).
-passes4(10391, 72931, hegsnippen, 17, 22, 22).
+passes4(10391, 72931, heggsnipen, 17, 22, 22).
 passes4(10391, 71585, rye, 18, 22, 22).
 passes4(10391, 75514, byaberget, 19, 23, 23).
 passes4(10391, 74102, klefstadbekken, 20, 24, 24).
@@ -12771,7 +12771,7 @@ passes4(2549, 72640, hangran, 8, 10, 10).
 passes4(2549, 72773, haugrønning, 9, 13, 13).
 passes4(2549, 75106, bjøra, 10, 18, 18).
 passes4(2549, 75469, bukta, 11, 19, 19).
-passes4(2549, 72932, hegsnippen, 12, 21, 21).
+passes4(2549, 72932, heggsnipen, 12, 21, 21).
 passes4(2549, 71588, rye_skole, 13, 22, 22).
 passes4(2549, 75368, fortuna, 14, 23, 23).
 passes4(2549, 71979, høstadkorsen, 15, 23, 23).
@@ -13133,7 +13133,7 @@ passes4(2788, 75402, brundalen, 21, 29, 29).
 passes4(2788, 75404, charlottenlund_vgs, 22, 32, 32).
 
 passes4(2791, 71587, rye_skole, 2, 999, 0).
-passes4(2791, 72931, hegsnippen, 3, 1, 1).
+passes4(2791, 72931, heggsnipen, 3, 1, 1).
 passes4(2791, 75499, by, 4, 2, 2).
 passes4(2791, 74111, klefstadhaugen, 5, 4, 4).
 passes4(2791, 75173, flakkråa, 6, 6, 6).
@@ -13142,11 +13142,11 @@ passes4(2791, 74106, klefstadbukta, 8, 8, 8).
 passes4(2791, 74103, klefstadbekken, 9, 10, 10).
 passes4(2791, 75513, byaberget, 10, 11, 11).
 passes4(2791, 71584, rye, 11, 11, 11).
-passes4(2791, 72932, hegsnippen, 12, 11, 11).
+passes4(2791, 72932, heggsnipen, 12, 11, 11).
 passes4(2791, 71588, rye_skole, 13, 12, 12).
 
 passes4(2792, 71587, rye_skole, 2, 999, 0).
-passes4(2792, 72931, hegsnippen, 3, 1, 1).
+passes4(2792, 72931, heggsnipen, 3, 1, 1).
 passes4(2792, 71584, rye, 4, 1, 1).
 passes4(2792, 75468, bukta, 5, 2, 2).
 passes4(2792, 75105, bjøra, 6, 3, 3).
@@ -13489,7 +13489,7 @@ passes4(2828, 103687, grøset_søndre, 3, 1, 1).
 passes4(2828, 73237, langåsmyra, 4, 2, 2).
 passes4(2828, 74112, klefstadhaugen, 5, 3, 3).
 passes4(2828, 75498, by, 6, 5, 5).
-passes4(2828, 72932, hegsnippen, 7, 7, 7).
+passes4(2828, 72932, heggsnipen, 7, 7, 7).
 passes4(2828, 71588, rye_skole, 8, 8, 8).
 passes4(2828, 75368, fortuna, 9, 9, 9).
 passes4(2828, 71979, høstadkorsen, 10, 9, 9).
@@ -13529,7 +13529,7 @@ passes4(2829, 103687, grøset_søndre, 3, 1, 1).
 passes4(2829, 73237, langåsmyra, 4, 2, 2).
 passes4(2829, 74112, klefstadhaugen, 5, 3, 3).
 passes4(2829, 75498, by, 6, 5, 5).
-passes4(2829, 72932, hegsnippen, 7, 7, 7).
+passes4(2829, 72932, heggsnipen, 7, 7, 7).
 passes4(2829, 71588, rye_skole, 8, 8, 8).
 passes4(2829, 75368, fortuna, 9, 9, 9).
 passes4(2829, 71979, høstadkorsen, 10, 9, 9).
@@ -14755,7 +14755,7 @@ passes4(375, 73237, langåsmyra, 32, 29, 29).
 passes4(375, 74112, klefstadhaugen, 33, 30, 30).
 passes4(375, 74684, onsøybakkan, 34, 31, 31).
 passes4(375, 75498, by, 35, 32, 32).
-passes4(375, 72932, hegsnippen, 36, 33, 33).
+passes4(375, 72932, heggsnipen, 36, 33, 33).
 passes4(375, 71588, rye_skole, 37, 34, 34).
 passes4(375, 75368, fortuna, 38, 35, 35).
 passes4(375, 71979, høstadkorsen, 39, 35, 35).
