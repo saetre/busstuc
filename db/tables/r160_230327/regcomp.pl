@@ -5736,7 +5736,6 @@ composite_stat(tors,[street],tors_veg). % generated 1.2
 composite_stat(tors,[veg],tors_veg).
 composite_stat(tors_street,[],tors_veg). % generated 1.1
 composite_stat(torshus,[],torshus).
-composite_stat(torstad,[],torstad).
 composite_stat(torstad,[vegdele, 01],torstad_vegdele_01).
 composite_stat(torstad,[vegdele, 02],torstad_vegdele_02).
 composite_stat(torsveet,[01],torsveet_01).

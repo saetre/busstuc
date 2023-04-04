@@ -546,7 +546,6 @@ hpl(107382,akset_snuplass,akset_snuplass,'Akset snuplass').
 hpl(107394,brøset_interimskole,brøset_interimskole,'Brøset interimskole').
 hpl(107395,smidalen_grusplass,smidalen_grusplass,'Smidalen grusplass').
 hpl(107437,nyheim,nyheim,'Nyheim').
-hpl(107480,torstad,torstad,'Torstad').
 hpl(107504,engavegen,engavegen,'Engavegen').
 hpl(107505,stormo,stormo,'Stormo').
 hpl(107560,holo,holo,'Holo').
