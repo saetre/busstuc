@@ -3001,7 +3001,6 @@ composite_stat(ledang,[01],ledang_01).
 composite_stat(ledang,[02],ledang_02).
 composite_stat(lefstad,[],lefstad).
 composite_stat(legårdsbakken,[],legårdsbakken).
-composite_stat(legårdsbakken,[snuplass],legårdsbakken_snuplass).
 composite_stat(lein,[01],lein_01).
 composite_stat(lein,[02],lein_02).
 composite_stat(lein,[],lein).

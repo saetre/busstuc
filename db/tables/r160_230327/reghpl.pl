@@ -557,7 +557,6 @@ hpl(107739,rylen,rylen,'Rylen').
 hpl(107806,leistadkrysset,leistadkrysset,'Leistadkrysset').
 hpl(107835,vea,vea,'Vea').
 hpl(107860,herjuan,herjuan,'Herjuan').
-hpl(107886,legårdsbakken_snuplass,legårdsbakken_snuplass,'Legårdsbakken snuplass').
 hpl(107929,steinberget,steinberget,'Steinberget').
 hpl(107930,steinberget,steinberget,'Steinberget').
 hpl(107934,skansen,skansen,'Skansen').
