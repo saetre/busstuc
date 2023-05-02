@@ -3030,7 +3030,6 @@ hpl(73820,nerdal,nerdal,'Nerdal').
 hpl(73821,nerdal,nerdal,'Nerdal').
 hpl(73822,jektvika,jektvika,'Jektvika').
 hpl(73823,jektvika,jektvika,'Jektvika').
-hpl(73824,smiskaret_rundkjøring,smiskaret_rundkjøring,'Smiskaret rundkjøring').
 hpl(73826,kalvhåggån,kalvhåggån,'Kalvhåggån').
 hpl(73827,jenshaugen,jenshaugen,'Jenshaugen').
 hpl(73828,jenshaugen,jenshaugen,'Jenshaugen').

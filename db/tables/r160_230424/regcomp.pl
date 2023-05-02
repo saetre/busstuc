@@ -4978,7 +4978,6 @@ composite_stat(smidalen,[grusplass],smidalen_grusplass).
 composite_stat(smines,[01],smines_01).
 composite_stat(smines,[02],smines_02).
 composite_stat(smiskaret,[],smiskaret).
-composite_stat(smiskaret,[rundkjøring],smiskaret_rundkjøring).
 composite_stat(smolan,[02],smolan_02).
 composite_stat(småenget,[],småenget).
 composite_stat(smågesjø,[],smågesjø).
