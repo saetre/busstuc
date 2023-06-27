@@ -192,7 +192,6 @@ composite_stat(ballsnes,[],ballsnes).
 composite_stat(balsnes,[],balsnes).
 composite_stat(balsnesaunet,[],balsnesaunet).
 composite_stat(bangsund,[01],bangsund_01).
-composite_stat(bangsund,[02],bangsund_02).
 composite_stat(bangsund,[skole, 01],bangsund_skole_01).
 composite_stat(bangsund,[vegdele, 01],bangsund_vegdele_01).
 composite_stat(bangsund,[vegdele, 02],bangsund_vegdele_02).
@@ -830,7 +829,6 @@ composite_stat(draveng,[02],draveng_02).
 composite_stat(dregseth,[01],dregseth_01).
 composite_stat(dretvik,[øvre, 01],dretvik_øvre_01).
 composite_stat(dretvik,[øvre, 02],dretvik_øvre_02).
-composite_stat(driva,[],driva).
 composite_stat(driva,[kryss],driva_kryss).
 composite_stat(drivdalen,[skole],drivdalen_skole).
 composite_stat(drivstua,[],drivstua).
@@ -1221,8 +1219,6 @@ composite_stat(flesvik,[],flesvik).
 composite_stat(flintvegen,[01],flintvegen_01).
 composite_stat(floan,[01],floan_01).
 composite_stat(floan,[02],floan_02).
-composite_stat(flora,[montessoriskole, 01],flora_montessoriskole_01).
-composite_stat(flora,[montessoriskole, 02],flora_montessoriskole_02).
 composite_stat(florbekken,[],florbekken).
 composite_stat(flormoen,[01],flormoen_01).
 composite_stat(flornes,[01],flornes_01).
@@ -1370,7 +1366,6 @@ composite_stat(frøset,[02],frøset_02).
 composite_stat(frøset,[],frøset).
 composite_stat(frøsetfeltet,[],frøsetfeltet).
 composite_stat(frøsetveien,[],frøsetveien).
-composite_stat(frøstad,[01],frøstad_01).
 composite_stat(frøstad,[02],frøstad_02).
 composite_stat(frøvarpvegen,[],frøvarpvegen).
 composite_stat(frøya,[kulturhus],frøya_kulturhus).
@@ -1413,8 +1408,6 @@ composite_stat(føll,[],føll).
 composite_stat(følling,[01],følling_01).
 composite_stat(følling,[02],følling_02).
 composite_stat(følling,[barnehage],følling_barnehage).
-composite_stat(følstadkorsen,[01],følstadkorsen_01).
-composite_stat(følstadkorsen,[02],følstadkorsen_02).
 composite_stat(føynum,[01],føynum_01).
 composite_stat(føynum,[02],føynum_02).
 composite_stat(gaddåsen,[],gaddåsen).
@@ -1451,7 +1444,6 @@ composite_stat(garli,[rasteplass],garli_rasteplass).
 composite_stat(garlimoen,[],garlimoen).
 composite_stat(garnes,[skole, 01],garnes_skole_01).
 composite_stat(garnes,[skole, 02],garnes_skole_02).
-composite_stat(garstad,[02],garstad_02).
 composite_stat(garstad,[vegdele],garstad_vegdele).
 composite_stat(garten,[],garten).
 composite_stat(garten,[ferjekai],garten_ferjekai).
@@ -2139,7 +2131,6 @@ composite_stat(hollåsen,[02],hollåsen_02).
 composite_stat(holm,[01],holm_01).
 composite_stat(holm,[02],holm_02).
 composite_stat(holmberget,[01],holmberget_01).
-composite_stat(holmberget,[02],holmberget_02).
 composite_stat(holmen,[],holmen).
 composite_stat(holmenbrua,[01],holmenbrua_01).
 composite_stat(holmenbrua,[03],holmenbrua_03).
@@ -2264,7 +2255,6 @@ composite_stat(husby,[],husby).
 composite_stat(husbykrysset,[],husbykrysset).
 composite_stat(husbyåsen,[01],husbyåsen_01).
 composite_stat(husebytunet,[],husebytunet).
-composite_stat(hustad,[01],hustad_01).
 composite_stat(hustadlandet,[01],hustadlandet_01).
 composite_stat(hustadlandet,[02],hustadlandet_02).
 composite_stat(husvik,[02],husvik_02).
@@ -2574,8 +2564,6 @@ composite_stat(kjelmoåsen,[02],kjelmoåsen_02).
 composite_stat(kjelmyrfossen,[01],kjelmyrfossen_01).
 composite_stat(kjelmyrfossen,[02],kjelmyrfossen_02).
 composite_stat(kjelstad,[],kjelstad).
-composite_stat(kjelsås,[01],kjelsås_01).
-composite_stat(kjelsås,[02],kjelsås_02).
 composite_stat(kjelvik,[01],kjelvik_01).
 composite_stat(kjelvik,[02],kjelvik_02).
 composite_stat(kjenstad,[01],kjenstad_01).
@@ -2587,7 +2575,6 @@ composite_stat(kjerka,[01],kjerka_01).
 composite_stat(kjerka,[02],kjerka_02).
 composite_stat(kjerkolkorsen,[01],kjerkolkorsen_01).
 composite_stat(kjerkolkorsen,[02],kjerkolkorsen_02).
-composite_stat(kjerkolvegen,[],kjerkolvegen).
 composite_stat(kjerrengvoll,[],kjerrengvoll).
 composite_stat(kjerringvåg,[],kjerringvåg).
 composite_stat(kjerstad,[01],kjerstad_01).
@@ -2595,7 +2582,6 @@ composite_stat(kjerstad,[02],kjerstad_02).
 composite_stat(kjerstad,[],kjerstad).
 composite_stat(kjesbu,[01],kjesbu_01).
 composite_stat(kjesbu,[02],kjesbu_02).
-composite_stat(kjesbua,[],kjesbua).
 composite_stat(kjesbukorsen,[01],kjesbukorsen_01).
 composite_stat(kjesbukorsen,[03],kjesbukorsen_03).
 composite_stat(kjevli,[01],kjevli_01).
@@ -3089,8 +3075,6 @@ composite_stat(leksdal,[skole, 01],leksdal_skole_01).
 composite_stat(leksdal,[skole, 02],leksdal_skole_02).
 composite_stat(leksvik,[kommunehus, 01],leksvik_kommunehus_01).
 composite_stat(leksvik,[kommunehus, 02],leksvik_kommunehus_02).
-composite_stat(leksvik,[vgs, 01],leksvik_vgs_01).
-composite_stat(leksvik,[vgs, 02],leksvik_vgs_02).
 composite_stat(leland,[],leland).
 composite_stat(lenes,[],lenes).
 composite_stat(lennavika,[01],lennavika_01).
@@ -3361,7 +3345,6 @@ composite_stat(malm,[02],malm_02).
 composite_stat(malm,[skole, 01],malm_skole_01).
 composite_stat(malm,[skole, 02],malm_skole_02).
 composite_stat(malmplassen,[],malmplassen).
-composite_stat(malmsjøvegen,[],malmsjøvegen).
 composite_stat(malmtunet,[02],malmtunet_02).
 composite_stat(malvik,[],malvik).
 composite_stat(malvik,[senter],malvik_senter).
@@ -3523,7 +3506,6 @@ composite_stat(mo,[snuplass],mo_snuplass).
 composite_stat(mo,[vegdele],mo_vegdele).
 composite_stat(moa,[01],moa_01).
 composite_stat(moa,[02],moa_02).
-composite_stat(moa,[bru],moa_bru).
 composite_stat(moabakken,[],moabakken).
 composite_stat(moadalen,[],moadalen).
 composite_stat(moaflata,[],moaflata).
@@ -3782,8 +3764,6 @@ composite_stat(naustkleiva,[],naustkleiva).
 composite_stat(nedre,[charlottenlund],nedre_charlottenlund).
 composite_stat(nedre,[gangstad, 01],nedre_gangstad_01).
 composite_stat(nedre,[gangstad, 02],nedre_gangstad_02).
-composite_stat(nedre,[grande, 01],nedre_grande_01).
-composite_stat(nedre,[grande, 02],nedre_grande_02).
 composite_stat(nedre,[grøtan],nedre_grøtan).
 composite_stat(nedre,[gullikstad],nedre_gullikstad).
 composite_stat(nedre,[humlehaugen, vest],nedre_humlehaugen_vest).
@@ -3966,8 +3946,6 @@ composite_stat(nysætra,[],nysætra).
 composite_stat(nyveibakken,[],nyveibakken).
 composite_stat(nyveiskorsen,[01],nyveiskorsen_01).
 composite_stat(nyveiskorsen,[02],nyveiskorsen_02).
-composite_stat(nyvika,[01],nyvika_01).
-composite_stat(nyvika,[02],nyvika_02).
 composite_stat(nåvik,[01],nåvik_01).
 composite_stat(nåvik,[03],nåvik_03).
 composite_stat(nærøysundet,[skole, 01],nærøysundet_skole_01).
@@ -4690,8 +4668,6 @@ composite_stat(selnes,[vegdele, 02],selnes_vegdele_02).
 composite_stat(selnes,[vegdele],selnes_vegdele).
 composite_stat(selsbakk,[],selsbakk).
 composite_stat(selsbakkflata,[],selsbakkflata).
-composite_stat(selsetvik,[01],selsetvik_01).
-composite_stat(selsetvik,[02],selsetvik_02).
 composite_stat(selva,[],selva).
 composite_stat(selvåg,[],selvåg).
 composite_stat(sem,[skole, 01],sem_skole_01).
@@ -4809,7 +4785,6 @@ composite_stat(skakanova,[01],skakanova_01).
 composite_stat(skakanova,[02],skakanova_02).
 composite_stat(skansen,[],skansen).
 composite_stat(skaret,[01],skaret_01).
-composite_stat(skaret,[02],skaret_02).
 composite_stat(skaret,[],skaret).
 composite_stat(skarland,[01],skarland_01).
 composite_stat(skarland,[03],skarland_03).
@@ -4903,7 +4878,6 @@ composite_stat(skjervika,[],skjervika).
 composite_stat(skjervoldsmo,[01],skjervoldsmo_01).
 composite_stat(skjervoldsmo,[02],skjervoldsmo_02).
 composite_stat(skjesol,[01],skjesol_01).
-composite_stat(skjesol,[02],skjesol_02).
 composite_stat(skjesol,[03],skjesol_03).
 composite_stat(skjetlein,[],skjetlein).
 composite_stat(skjetnemark,[01],skjetnemark_01).
@@ -5188,7 +5162,6 @@ composite_stat(staur,[02],staur_02).
 composite_stat(staur,[03],staur_03).
 composite_stat(staurset,[],staurset).
 composite_stat(stav,[],stav).
-composite_stat(stav,[øvre],stav_øvre).
 composite_stat(staven,[],staven).
 composite_stat(staverløkk,[],staverløkk).
 composite_stat(stavlo,[østre, 01],stavlo_østre_01).
@@ -5676,7 +5649,6 @@ composite_stat(sørvika,[],sørvika).
 composite_stat(sørvollan,[],sørvollan).
 composite_stat(søråa,[vegdele, 01],søråa_vegdele_01).
 composite_stat(søråa,[vegdele, 02],søråa_vegdele_02).
-composite_stat(søråsen,[],søråsen).
 composite_stat(søvassli,[ungdomssenter],søvassli_ungdomssenter).
 composite_stat(taknes,[1],taknes_1).
 composite_stat(tallerås,[],tallerås).
@@ -5840,7 +5812,6 @@ composite_stat(tronstadkorsen,[02],tronstadkorsen_02).
 composite_stat(trosdal,[01],trosdal_01).
 composite_stat(trosdal,[02],trosdal_02).
 composite_stat(troøyen,[],troøyen).
-composite_stat(trygan,[],trygan).
 composite_stat(tråssåvika,[],tråssåvika).
 composite_stat(tråsåvika,[camping],tråsåvika_camping).
 composite_stat(trøa,[01],trøa_01).
@@ -6054,7 +6025,6 @@ composite_stat(vanvikan,[01],vanvikan_01).
 composite_stat(vanvikan,[02],vanvikan_02).
 composite_stat(vanvikan,[03],vanvikan_03).
 composite_stat(vanvikan,[],vanvikan).
-composite_stat(vanvikan,[fabrikker],vanvikan_fabrikker).
 composite_stat(vanvikan,[skole, 01],vanvikan_skole_01).
 composite_stat(varmbu,[],varmbu).
 composite_stat(varpnes,[vegdele, 03],varpnes_vegdele_03).
@@ -6120,8 +6090,6 @@ composite_stat(venna,[nord, 01],venna_nord_01).
 composite_stat(venna,[sør, 01],venna_sør_01).
 composite_stat(venna,[vegdele, 01],venna_vegdele_01).
 composite_stat(venna,[vegdele, 02],venna_vegdele_02).
-composite_stat(venneshavn,[01],venneshavn_01).
-composite_stat(venneshavn,[02],venneshavn_02).
 composite_stat(vennevik,[vegdele, 01],vennevik_vegdele_01).
 composite_stat(vennevik,[vegdele, 02],vennevik_vegdele_02).
 composite_stat(venu,[street],venusvegen). % generated 4.1
@@ -6464,7 +6432,6 @@ composite_stat(åsadalen,[01],åsadalen_01).
 composite_stat(åsadalen,[02],åsadalen_02).
 composite_stat(åsegg,[øvre],åsegg_øvre).
 composite_stat(åsen,[01],åsen_01).
-composite_stat(åsen,[02],åsen_02).
 composite_stat(åsen,[],åsen).
 composite_stat(åsen,[barne, og, ungdomsskole, 01],åsen_barne_og_ungdomsskole_01).
 composite_stat(åsen,[barne, og, ungdomsskole, 02],åsen_barne_og_ungdomsskole_02).
