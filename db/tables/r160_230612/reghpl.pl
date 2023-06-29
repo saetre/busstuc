@@ -91,7 +91,6 @@ hpl(102741,stibakken,stibakken,'Stibakken').
 hpl(102742,kleiva,kleiva,'Kleiva').
 hpl(102743,bedehuset,bedehuset,'Bedehuset').
 hpl(102749,olav_kyrres_gate,olav_kyrres_gate,'Olav Kyrres gate').
-hpl(102750,olav_kyrres_gate,olav_kyrres_gate,'Olav Kyrres gate').
 hpl(102751,høvik,høvik,'Høvik').
 hpl(102761,romstad_bomstasjon,romstad_bomstasjon,'Romstad bomstasjon').
 hpl(103007,buran,buran,'Buran').
@@ -2976,7 +2975,6 @@ hpl(73731,løkhaug,løkhaug,'Løkhaug').
 hpl(73732,nabeita_skole,nabeita_skole,'Nabeita skole').
 hpl(73733,nabeita_skole,nabeita_skole,'Nabeita skole').
 hpl(73734,tempevegen_11,tempevegen_11,'Tempevegen 11').
-hpl(73735,tempevegen_11,tempevegen_11,'Tempevegen 11').
 hpl(73738,terminalen_heimdal,terminalen_heimdal,'Terminalen Heimdal').
 hpl(73739,terminalen_heimdal,terminalen_heimdal,'Terminalen Heimdal').
 hpl(73740,nardokrysset,nardokrysset,'Nardokrysset').
@@ -3014,7 +3012,6 @@ hpl(73778,slettvollen,slettvollen,'Slettvollen').
 hpl(73779,slettvollen,slettvollen,'Slettvollen').
 hpl(73780,ivar_skjånes_veg,ivar_skjånes_veg,'Ivar Skjånes veg').
 hpl(73781,ivar_skjånes_veg,ivar_skjånes_veg,'Ivar Skjånes veg').
-hpl(73782,tempe,tempe,'Tempe').
 hpl(73783,tempe,tempe,'Tempe').
 hpl(73784,jakobsli,jakobsli,'Jakobsli').
 hpl(73785,jakobsli,jakobsli,'Jakobsli').
@@ -3022,9 +3019,7 @@ hpl(73786,nedre_humlehaugen_øst,nedre_humlehaugen_øst,'Nedre Humlehaugen øst'
 hpl(73787,nedre_humlehaugen_øst,nedre_humlehaugen_øst,'Nedre Humlehaugen øst').
 hpl(73790,jakobslivegen_nedre,jakobslivegen_nedre,'Jakobslivegen nedre').
 hpl(73791,jakobslivegen_nedre,jakobslivegen_nedre,'Jakobslivegen nedre').
-hpl(73792,trondheim_hovedbrannstasjon,trondheim_hovedbrannstasjon,'Trondheim hovedbrannstasjon').
 hpl(73793,jakobslivegen_øvre,jakobslivegen_øvre,'Jakobslivegen øvre').
-hpl(73794,trondheim_hovedbrannstasjon,trondheim_hovedbrannstasjon,'Trondheim hovedbrannstasjon').
 hpl(73795,jakobslivegen_øvre,jakobslivegen_øvre,'Jakobslivegen øvre').
 hpl(73796,nedre_jervan,nedre_jervan,'Nedre Jervan').
 hpl(73797,nedre_jervan,nedre_jervan,'Nedre Jervan').

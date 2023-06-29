@@ -5789,7 +5789,6 @@ composite_stat(trollahaugen,[10],trollahaugen_10).
 composite_stat(trollahaugen,[2],trollahaugen_2).
 composite_stat(trollahaugen,[46],trollahaugen_46).
 composite_stat(trollahaugen,[64],trollahaugen_64).
-composite_stat(trondheim,[hovedbrannstasjon],trondheim_hovedbrannstasjon).
 composite_stat(trondheim,[hurtigbåtterminal],trondheim_hurtigbåtterminal).
 composite_stat(trondheim,[lufthavn, 01],trondheim_lufthavn_01).
 composite_stat(trondheim,[s],trondheim_s).
