@@ -4859,7 +4859,7 @@ passes4(116, 73044, strindheim_hageby, 28, 32, 32).
 passes4(116, 75376, bromstadsvingen, 29, 33, 33).
 passes4(116, 75653, gartnerhallen, 30, 34, 34).
 passes4(116, 73774, iskremfabrikken, 31, 34, 34).
-passes4(116, 71538, tunga_kretsfengsel, 32, 35, 35).
+passes4(116, 71538, trondheim_fengsel, 32, 35, 35).
 passes4(116, 72532, hallfred_høyems_veg, 33, 36, 36).
 passes4(116, 74599, angelltrøvegen, 34, 37, 37).
 passes4(116, 72071, sildråpevegen, 35, 38, 38).
@@ -7279,7 +7279,7 @@ passes4(124, 73044, strindheim_hageby, 28, 34, 34).
 passes4(124, 75376, bromstadsvingen, 29, 35, 35).
 passes4(124, 75653, gartnerhallen, 30, 36, 36).
 passes4(124, 73774, iskremfabrikken, 31, 36, 36).
-passes4(124, 71538, tunga_kretsfengsel, 32, 37, 37).
+passes4(124, 71538, trondheim_fengsel, 32, 37, 37).
 passes4(124, 72532, hallfred_høyems_veg, 33, 38, 38).
 passes4(124, 74599, angelltrøvegen, 34, 39, 39).
 passes4(124, 72071, sildråpevegen, 35, 40, 40).
@@ -33730,7 +33730,7 @@ passes4(146, 75729, granåsen_gård, 7, 5, 5).
 passes4(146, 72072, sildråpevegen, 8, 6, 6).
 passes4(146, 74601, angelltrøvegen, 9, 7, 7).
 passes4(146, 72531, hallfred_høyems_veg, 10, 8, 8).
-passes4(146, 71539, tunga_kretsfengsel, 11, 9, 9).
+passes4(146, 71539, trondheim_fengsel, 11, 9, 9).
 passes4(146, 73775, iskremfabrikken, 12, 10, 10).
 passes4(146, 75652, gartnerhallen, 13, 10, 10).
 passes4(146, 73042, strindheim_hageby, 14, 12, 12).
@@ -33841,7 +33841,7 @@ passes4(147, 75729, granåsen_gård, 7, 6, 6).
 passes4(147, 72072, sildråpevegen, 8, 7, 7).
 passes4(147, 74601, angelltrøvegen, 9, 8, 8).
 passes4(147, 72531, hallfred_høyems_veg, 10, 9, 9).
-passes4(147, 71539, tunga_kretsfengsel, 11, 10, 10).
+passes4(147, 71539, trondheim_fengsel, 11, 10, 10).
 passes4(147, 73775, iskremfabrikken, 12, 11, 11).
 passes4(147, 75652, gartnerhallen, 13, 11, 11).
 passes4(147, 73042, strindheim_hageby, 14, 12, 12).
@@ -42527,7 +42527,7 @@ passes4(161, 73044, strindheim_hageby, 25, 32, 32).
 passes4(161, 75376, bromstadsvingen, 26, 33, 33).
 passes4(161, 75653, gartnerhallen, 27, 34, 34).
 passes4(161, 73774, iskremfabrikken, 28, 34, 34).
-passes4(161, 71538, tunga_kretsfengsel, 29, 35, 35).
+passes4(161, 71538, trondheim_fengsel, 29, 35, 35).
 passes4(161, 72532, hallfred_høyems_veg, 30, 36, 36).
 passes4(161, 74599, angelltrøvegen, 31, 37, 37).
 passes4(161, 72071, sildråpevegen, 32, 38, 38).
@@ -42700,7 +42700,7 @@ passes4(162, 73044, strindheim_hageby, 25, 30, 30).
 passes4(162, 75376, bromstadsvingen, 26, 31, 31).
 passes4(162, 75653, gartnerhallen, 27, 32, 32).
 passes4(162, 73774, iskremfabrikken, 28, 32, 32).
-passes4(162, 71538, tunga_kretsfengsel, 29, 33, 33).
+passes4(162, 71538, trondheim_fengsel, 29, 33, 33).
 passes4(162, 72532, hallfred_høyems_veg, 30, 34, 34).
 passes4(162, 74599, angelltrøvegen, 31, 35, 35).
 passes4(162, 72071, sildråpevegen, 32, 36, 36).
@@ -52344,7 +52344,7 @@ passes4(175, 73044, strindheim_hageby, 35, 38, 38).
 passes4(175, 75376, bromstadsvingen, 36, 39, 39).
 passes4(175, 75653, gartnerhallen, 37, 40, 40).
 passes4(175, 73774, iskremfabrikken, 38, 40, 40).
-passes4(175, 71538, tunga_kretsfengsel, 39, 41, 41).
+passes4(175, 71538, trondheim_fengsel, 39, 41, 41).
 passes4(175, 72532, hallfred_høyems_veg, 40, 41, 41).
 passes4(175, 74599, angelltrøvegen, 41, 42, 42).
 passes4(175, 72071, sildråpevegen, 42, 43, 43).
@@ -52480,7 +52480,7 @@ passes4(176, 75729, granåsen_gård, 7, 5, 5).
 passes4(176, 72072, sildråpevegen, 8, 6, 6).
 passes4(176, 74601, angelltrøvegen, 9, 7, 7).
 passes4(176, 72531, hallfred_høyems_veg, 10, 8, 8).
-passes4(176, 71539, tunga_kretsfengsel, 11, 9, 9).
+passes4(176, 71539, trondheim_fengsel, 11, 9, 9).
 passes4(176, 73775, iskremfabrikken, 12, 10, 10).
 passes4(176, 75652, gartnerhallen, 13, 10, 10).
 passes4(176, 73042, strindheim_hageby, 14, 12, 12).
@@ -54362,7 +54362,7 @@ passes4(3314, 73044, strindheim_hageby, 10, 11, 11).
 passes4(3314, 75376, bromstadsvingen, 11, 12, 12).
 passes4(3314, 75653, gartnerhallen, 12, 13, 13).
 passes4(3314, 73774, iskremfabrikken, 13, 13, 13).
-passes4(3314, 71538, tunga_kretsfengsel, 14, 14, 14).
+passes4(3314, 71538, trondheim_fengsel, 14, 14, 14).
 passes4(3314, 72532, hallfred_høyems_veg, 15, 15, 15).
 passes4(3314, 75732, granåsvegen, 16, 17, 17).
 passes4(3314, 74646, omkjøringsveien_moholt, 17, 18, 18).
@@ -54396,7 +54396,7 @@ passes4(3320, 73044, strindheim_hageby, 10, 11, 11).
 passes4(3320, 75376, bromstadsvingen, 11, 12, 12).
 passes4(3320, 75653, gartnerhallen, 12, 13, 13).
 passes4(3320, 73774, iskremfabrikken, 13, 13, 13).
-passes4(3320, 71538, tunga_kretsfengsel, 14, 14, 14).
+passes4(3320, 71538, trondheim_fengsel, 14, 14, 14).
 passes4(3320, 72532, hallfred_høyems_veg, 15, 15, 15).
 passes4(3320, 75732, granåsvegen, 16, 17, 17).
 passes4(3320, 74646, omkjøringsveien_moholt, 17, 18, 18).
@@ -54449,7 +54449,7 @@ passes4(3326, 74658, omkjøringsveien_nardo, 24, 25, 25).
 passes4(3326, 74645, omkjøringsveien_moholt, 25, 26, 26).
 passes4(3326, 75731, granåsvegen, 26, 28, 28).
 passes4(3326, 72531, hallfred_høyems_veg, 27, 29, 29).
-passes4(3326, 71539, tunga_kretsfengsel, 28, 30, 30).
+passes4(3326, 71539, trondheim_fengsel, 28, 30, 30).
 passes4(3326, 73775, iskremfabrikken, 29, 31, 31).
 passes4(3326, 75652, gartnerhallen, 30, 31, 31).
 passes4(3326, 73042, strindheim_hageby, 31, 32, 32).
@@ -54483,7 +54483,7 @@ passes4(3331, 74658, omkjøringsveien_nardo, 19, 21, 21).
 passes4(3331, 74645, omkjøringsveien_moholt, 20, 22, 22).
 passes4(3331, 75731, granåsvegen, 21, 24, 24).
 passes4(3331, 72531, hallfred_høyems_veg, 22, 25, 25).
-passes4(3331, 71539, tunga_kretsfengsel, 23, 26, 26).
+passes4(3331, 71539, trondheim_fengsel, 23, 26, 26).
 passes4(3331, 73775, iskremfabrikken, 24, 27, 27).
 passes4(3331, 75652, gartnerhallen, 25, 27, 27).
 passes4(3331, 73042, strindheim_hageby, 26, 28, 28).
@@ -54517,7 +54517,7 @@ passes4(3347, 74658, omkjøringsveien_nardo, 19, 22, 22).
 passes4(3347, 74645, omkjøringsveien_moholt, 20, 24, 24).
 passes4(3347, 75731, granåsvegen, 21, 25, 25).
 passes4(3347, 72531, hallfred_høyems_veg, 22, 26, 26).
-passes4(3347, 71539, tunga_kretsfengsel, 23, 27, 27).
+passes4(3347, 71539, trondheim_fengsel, 23, 27, 27).
 passes4(3347, 73775, iskremfabrikken, 24, 28, 28).
 passes4(3347, 75652, gartnerhallen, 25, 28, 28).
 passes4(3347, 73042, strindheim_hageby, 26, 30, 30).
@@ -54556,7 +54556,7 @@ passes4(3357, 74658, omkjøringsveien_nardo, 24, 25, 25).
 passes4(3357, 74645, omkjøringsveien_moholt, 25, 27, 27).
 passes4(3357, 75731, granåsvegen, 26, 28, 28).
 passes4(3357, 72531, hallfred_høyems_veg, 27, 29, 29).
-passes4(3357, 71539, tunga_kretsfengsel, 28, 30, 30).
+passes4(3357, 71539, trondheim_fengsel, 28, 30, 30).
 passes4(3357, 73775, iskremfabrikken, 29, 31, 31).
 passes4(3357, 75652, gartnerhallen, 30, 31, 31).
 passes4(3357, 73042, strindheim_hageby, 31, 33, 33).
@@ -54595,7 +54595,7 @@ passes4(3358, 74658, omkjøringsveien_nardo, 24, 26, 26).
 passes4(3358, 74645, omkjøringsveien_moholt, 25, 28, 28).
 passes4(3358, 75731, granåsvegen, 26, 30, 30).
 passes4(3358, 72531, hallfred_høyems_veg, 27, 31, 31).
-passes4(3358, 71539, tunga_kretsfengsel, 28, 32, 32).
+passes4(3358, 71539, trondheim_fengsel, 28, 32, 32).
 passes4(3358, 73775, iskremfabrikken, 29, 33, 33).
 passes4(3358, 75652, gartnerhallen, 30, 33, 33).
 passes4(3358, 73042, strindheim_hageby, 31, 35, 35).
@@ -54620,7 +54620,7 @@ passes4(3365, 73044, strindheim_hageby, 10, 11, 11).
 passes4(3365, 75376, bromstadsvingen, 11, 12, 12).
 passes4(3365, 75653, gartnerhallen, 12, 13, 13).
 passes4(3365, 73774, iskremfabrikken, 13, 13, 13).
-passes4(3365, 71538, tunga_kretsfengsel, 14, 14, 14).
+passes4(3365, 71538, trondheim_fengsel, 14, 14, 14).
 passes4(3365, 72532, hallfred_høyems_veg, 15, 15, 15).
 passes4(3365, 75732, granåsvegen, 16, 17, 17).
 passes4(3365, 74646, omkjøringsveien_moholt, 17, 19, 19).
@@ -54659,7 +54659,7 @@ passes4(3369, 73044, strindheim_hageby, 10, 11, 11).
 passes4(3369, 75376, bromstadsvingen, 11, 12, 12).
 passes4(3369, 75653, gartnerhallen, 12, 13, 13).
 passes4(3369, 73774, iskremfabrikken, 13, 13, 13).
-passes4(3369, 71538, tunga_kretsfengsel, 14, 14, 14).
+passes4(3369, 71538, trondheim_fengsel, 14, 14, 14).
 passes4(3369, 72532, hallfred_høyems_veg, 15, 15, 15).
 passes4(3369, 75732, granåsvegen, 16, 17, 17).
 passes4(3369, 74646, omkjøringsveien_moholt, 17, 18, 18).
@@ -54698,7 +54698,7 @@ passes4(3375, 73044, strindheim_hageby, 10, 11, 11).
 passes4(3375, 75376, bromstadsvingen, 11, 12, 12).
 passes4(3375, 75653, gartnerhallen, 12, 13, 13).
 passes4(3375, 73774, iskremfabrikken, 13, 13, 13).
-passes4(3375, 71538, tunga_kretsfengsel, 14, 14, 14).
+passes4(3375, 71538, trondheim_fengsel, 14, 14, 14).
 passes4(3375, 72532, hallfred_høyems_veg, 15, 15, 15).
 passes4(3375, 75732, granåsvegen, 16, 17, 17).
 passes4(3375, 74646, omkjøringsveien_moholt, 17, 18, 18).
@@ -54910,7 +54910,7 @@ passes4(351, 75729, granåsen_gård, 7, 5, 5).
 passes4(351, 72072, sildråpevegen, 8, 6, 6).
 passes4(351, 74601, angelltrøvegen, 9, 7, 7).
 passes4(351, 72531, hallfred_høyems_veg, 10, 8, 8).
-passes4(351, 71539, tunga_kretsfengsel, 11, 9, 9).
+passes4(351, 71539, trondheim_fengsel, 11, 9, 9).
 passes4(351, 73775, iskremfabrikken, 12, 10, 10).
 passes4(351, 75652, gartnerhallen, 13, 10, 10).
 passes4(351, 73042, strindheim_hageby, 14, 12, 12).
@@ -55073,7 +55073,7 @@ passes4(354, 75729, granåsen_gård, 7, 6, 6).
 passes4(354, 72072, sildråpevegen, 8, 7, 7).
 passes4(354, 74601, angelltrøvegen, 9, 8, 8).
 passes4(354, 72531, hallfred_høyems_veg, 10, 9, 9).
-passes4(354, 71539, tunga_kretsfengsel, 11, 10, 10).
+passes4(354, 71539, trondheim_fengsel, 11, 10, 10).
 passes4(354, 73775, iskremfabrikken, 12, 11, 11).
 passes4(354, 75652, gartnerhallen, 13, 11, 11).
 passes4(354, 73042, strindheim_hageby, 14, 13, 13).
@@ -55434,7 +55434,7 @@ passes4(398, 75729, granåsen_gård, 13, 12, 12).
 passes4(398, 72072, sildråpevegen, 14, 13, 13).
 passes4(398, 74601, angelltrøvegen, 15, 14, 14).
 passes4(398, 72531, hallfred_høyems_veg, 16, 15, 15).
-passes4(398, 71539, tunga_kretsfengsel, 17, 16, 16).
+passes4(398, 71539, trondheim_fengsel, 17, 16, 16).
 passes4(398, 73775, iskremfabrikken, 18, 17, 17).
 passes4(398, 75652, gartnerhallen, 19, 17, 17).
 passes4(398, 73042, strindheim_hageby, 20, 19, 19).
@@ -55550,7 +55550,7 @@ passes4(418, 75729, granåsen_gård, 13, 11, 11).
 passes4(418, 72072, sildråpevegen, 14, 12, 12).
 passes4(418, 74601, angelltrøvegen, 15, 13, 13).
 passes4(418, 72531, hallfred_høyems_veg, 16, 14, 14).
-passes4(418, 71539, tunga_kretsfengsel, 17, 15, 15).
+passes4(418, 71539, trondheim_fengsel, 17, 15, 15).
 passes4(418, 73775, iskremfabrikken, 18, 16, 16).
 passes4(418, 75652, gartnerhallen, 19, 16, 16).
 passes4(418, 73042, strindheim_hageby, 20, 18, 18).
@@ -55629,7 +55629,7 @@ passes4(421, 73044, strindheim_hageby, 28, 32, 32).
 passes4(421, 75376, bromstadsvingen, 29, 33, 33).
 passes4(421, 75653, gartnerhallen, 30, 34, 34).
 passes4(421, 73774, iskremfabrikken, 31, 34, 34).
-passes4(421, 71538, tunga_kretsfengsel, 32, 35, 35).
+passes4(421, 71538, trondheim_fengsel, 32, 35, 35).
 passes4(421, 72532, hallfred_høyems_veg, 33, 36, 36).
 passes4(421, 74599, angelltrøvegen, 34, 37, 37).
 passes4(421, 72071, sildråpevegen, 35, 38, 38).
@@ -55670,7 +55670,7 @@ passes4(422, 73044, strindheim_hageby, 28, 33, 33).
 passes4(422, 75376, bromstadsvingen, 29, 34, 34).
 passes4(422, 75653, gartnerhallen, 30, 35, 35).
 passes4(422, 73774, iskremfabrikken, 31, 36, 36).
-passes4(422, 71538, tunga_kretsfengsel, 32, 37, 37).
+passes4(422, 71538, trondheim_fengsel, 32, 37, 37).
 passes4(422, 72532, hallfred_høyems_veg, 33, 38, 38).
 passes4(422, 74599, angelltrøvegen, 34, 39, 39).
 passes4(422, 72071, sildråpevegen, 35, 40, 40).
@@ -55744,7 +55744,7 @@ passes4(424, 73044, strindheim_hageby, 28, 36, 36).
 passes4(424, 75376, bromstadsvingen, 29, 37, 37).
 passes4(424, 75653, gartnerhallen, 30, 38, 38).
 passes4(424, 73774, iskremfabrikken, 31, 39, 39).
-passes4(424, 71538, tunga_kretsfengsel, 32, 40, 40).
+passes4(424, 71538, trondheim_fengsel, 32, 40, 40).
 passes4(424, 72532, hallfred_høyems_veg, 33, 41, 41).
 passes4(424, 74599, angelltrøvegen, 34, 42, 42).
 passes4(424, 72071, sildråpevegen, 35, 43, 43).
@@ -55782,7 +55782,7 @@ passes4(437, 73044, strindheim_hageby, 25, 34, 34).
 passes4(437, 75376, bromstadsvingen, 26, 35, 35).
 passes4(437, 75653, gartnerhallen, 27, 36, 36).
 passes4(437, 73774, iskremfabrikken, 28, 37, 37).
-passes4(437, 71538, tunga_kretsfengsel, 29, 38, 38).
+passes4(437, 71538, trondheim_fengsel, 29, 38, 38).
 passes4(437, 72532, hallfred_høyems_veg, 30, 39, 39).
 passes4(437, 74599, angelltrøvegen, 31, 40, 40).
 passes4(437, 72071, sildråpevegen, 32, 41, 41).
@@ -56529,7 +56529,7 @@ passes4(492, 73044, strindheim_hageby, 28, 33, 33).
 passes4(492, 75376, bromstadsvingen, 29, 34, 34).
 passes4(492, 75653, gartnerhallen, 30, 35, 35).
 passes4(492, 73774, iskremfabrikken, 31, 36, 36).
-passes4(492, 71538, tunga_kretsfengsel, 32, 37, 37).
+passes4(492, 71538, trondheim_fengsel, 32, 37, 37).
 passes4(492, 72532, hallfred_høyems_veg, 33, 38, 38).
 passes4(492, 74599, angelltrøvegen, 34, 39, 39).
 passes4(492, 72071, sildråpevegen, 35, 40, 40).
@@ -56555,7 +56555,7 @@ passes4(494, 75729, granåsen_gård, 7, 6, 6).
 passes4(494, 72072, sildråpevegen, 8, 7, 7).
 passes4(494, 74601, angelltrøvegen, 9, 8, 8).
 passes4(494, 72531, hallfred_høyems_veg, 10, 9, 9).
-passes4(494, 71539, tunga_kretsfengsel, 11, 10, 10).
+passes4(494, 71539, trondheim_fengsel, 11, 10, 10).
 passes4(494, 73775, iskremfabrikken, 12, 11, 11).
 passes4(494, 75652, gartnerhallen, 13, 11, 11).
 passes4(494, 73042, strindheim_hageby, 14, 13, 13).
@@ -56597,7 +56597,7 @@ passes4(495, 75729, granåsen_gård, 13, 12, 12).
 passes4(495, 72072, sildråpevegen, 14, 13, 13).
 passes4(495, 74601, angelltrøvegen, 15, 14, 14).
 passes4(495, 72531, hallfred_høyems_veg, 16, 15, 15).
-passes4(495, 71539, tunga_kretsfengsel, 17, 16, 16).
+passes4(495, 71539, trondheim_fengsel, 17, 16, 16).
 passes4(495, 73775, iskremfabrikken, 18, 17, 17).
 passes4(495, 75652, gartnerhallen, 19, 17, 17).
 passes4(495, 73042, strindheim_hageby, 20, 19, 19).
@@ -57142,7 +57142,7 @@ passes4(512, 75729, granåsen_gård, 7, 5, 5).
 passes4(512, 72072, sildråpevegen, 8, 6, 6).
 passes4(512, 74601, angelltrøvegen, 9, 7, 7).
 passes4(512, 72531, hallfred_høyems_veg, 10, 8, 8).
-passes4(512, 71539, tunga_kretsfengsel, 11, 9, 9).
+passes4(512, 71539, trondheim_fengsel, 11, 9, 9).
 passes4(512, 73775, iskremfabrikken, 12, 10, 10).
 passes4(512, 75652, gartnerhallen, 13, 10, 10).
 passes4(512, 73042, strindheim_hageby, 14, 12, 12).
@@ -57272,7 +57272,7 @@ passes4(527, 73044, strindheim_hageby, 25, 31, 31).
 passes4(527, 75376, bromstadsvingen, 26, 32, 32).
 passes4(527, 75653, gartnerhallen, 27, 33, 33).
 passes4(527, 73774, iskremfabrikken, 28, 34, 34).
-passes4(527, 71538, tunga_kretsfengsel, 29, 35, 35).
+passes4(527, 71538, trondheim_fengsel, 29, 35, 35).
 passes4(527, 72532, hallfred_høyems_veg, 30, 36, 36).
 passes4(527, 74599, angelltrøvegen, 31, 37, 37).
 passes4(527, 72071, sildråpevegen, 32, 38, 38).
@@ -57319,7 +57319,7 @@ passes4(533, 73044, strindheim_hageby, 25, 30, 30).
 passes4(533, 75376, bromstadsvingen, 26, 31, 31).
 passes4(533, 75653, gartnerhallen, 27, 32, 32).
 passes4(533, 73774, iskremfabrikken, 28, 32, 32).
-passes4(533, 71538, tunga_kretsfengsel, 29, 33, 33).
+passes4(533, 71538, trondheim_fengsel, 29, 33, 33).
 passes4(533, 72532, hallfred_høyems_veg, 30, 34, 34).
 passes4(533, 74599, angelltrøvegen, 31, 35, 35).
 passes4(533, 72071, sildråpevegen, 32, 36, 36).
@@ -57485,7 +57485,7 @@ passes4(558, 73044, strindheim_hageby, 25, 31, 31).
 passes4(558, 75376, bromstadsvingen, 26, 32, 32).
 passes4(558, 75653, gartnerhallen, 27, 33, 33).
 passes4(558, 73774, iskremfabrikken, 28, 34, 34).
-passes4(558, 71538, tunga_kretsfengsel, 29, 35, 35).
+passes4(558, 71538, trondheim_fengsel, 29, 35, 35).
 passes4(558, 72532, hallfred_høyems_veg, 30, 36, 36).
 passes4(558, 74599, angelltrøvegen, 31, 37, 37).
 passes4(558, 72071, sildråpevegen, 32, 38, 38).
@@ -57529,7 +57529,7 @@ passes4(560, 73044, strindheim_hageby, 25, 30, 30).
 passes4(560, 75376, bromstadsvingen, 26, 31, 31).
 passes4(560, 75653, gartnerhallen, 27, 32, 32).
 passes4(560, 73774, iskremfabrikken, 28, 32, 32).
-passes4(560, 71538, tunga_kretsfengsel, 29, 33, 33).
+passes4(560, 71538, trondheim_fengsel, 29, 33, 33).
 passes4(560, 72532, hallfred_høyems_veg, 30, 34, 34).
 passes4(560, 74599, angelltrøvegen, 31, 35, 35).
 passes4(560, 72071, sildråpevegen, 32, 36, 36).
@@ -57930,7 +57930,7 @@ passes4(614, 75729, granåsen_gård, 13, 11, 11).
 passes4(614, 72072, sildråpevegen, 14, 12, 12).
 passes4(614, 74601, angelltrøvegen, 15, 13, 13).
 passes4(614, 72531, hallfred_høyems_veg, 16, 14, 14).
-passes4(614, 71539, tunga_kretsfengsel, 17, 15, 15).
+passes4(614, 71539, trondheim_fengsel, 17, 15, 15).
 passes4(614, 73775, iskremfabrikken, 18, 16, 16).
 passes4(614, 75652, gartnerhallen, 19, 16, 16).
 passes4(614, 73042, strindheim_hageby, 20, 18, 18).
@@ -58007,7 +58007,7 @@ passes4(616, 73044, strindheim_hageby, 35, 38, 38).
 passes4(616, 75376, bromstadsvingen, 36, 39, 39).
 passes4(616, 75653, gartnerhallen, 37, 40, 40).
 passes4(616, 73774, iskremfabrikken, 38, 40, 40).
-passes4(616, 71538, tunga_kretsfengsel, 39, 41, 41).
+passes4(616, 71538, trondheim_fengsel, 39, 41, 41).
 passes4(616, 72532, hallfred_høyems_veg, 40, 42, 42).
 passes4(616, 74599, angelltrøvegen, 41, 43, 43).
 passes4(616, 72071, sildråpevegen, 42, 44, 44).
@@ -59090,7 +59090,7 @@ passes4(681, 75434, brøsetflata, 15, 16, 16).
 passes4(681, 73989, solvollvegen, 16, 17, 17).
 passes4(681, 75653, gartnerhallen, 17, 18, 18).
 passes4(681, 73774, iskremfabrikken, 18, 18, 18).
-passes4(681, 71538, tunga_kretsfengsel, 19, 19, 19).
+passes4(681, 71538, trondheim_fengsel, 19, 19, 19).
 passes4(681, 72532, hallfred_høyems_veg, 20, 19, 19).
 passes4(681, 74599, angelltrøvegen, 21, 20, 20).
 passes4(681, 72071, sildråpevegen, 22, 21, 21).
@@ -61734,7 +61734,7 @@ passes4(86, 75729, granåsen_gård, 7, 6, 6).
 passes4(86, 72072, sildråpevegen, 8, 7, 7).
 passes4(86, 74601, angelltrøvegen, 9, 8, 8).
 passes4(86, 72531, hallfred_høyems_veg, 10, 9, 9).
-passes4(86, 71539, tunga_kretsfengsel, 11, 10, 10).
+passes4(86, 71539, trondheim_fengsel, 11, 10, 10).
 passes4(86, 73775, iskremfabrikken, 12, 11, 11).
 passes4(86, 75652, gartnerhallen, 13, 11, 11).
 passes4(86, 73042, strindheim_hageby, 14, 12, 12).
@@ -63818,7 +63818,7 @@ passes4(94, 75729, granåsen_gård, 7, 5, 5).
 passes4(94, 72072, sildråpevegen, 8, 6, 6).
 passes4(94, 74601, angelltrøvegen, 9, 7, 7).
 passes4(94, 72531, hallfred_høyems_veg, 10, 8, 8).
-passes4(94, 71539, tunga_kretsfengsel, 11, 9, 9).
+passes4(94, 71539, trondheim_fengsel, 11, 9, 9).
 passes4(94, 73775, iskremfabrikken, 12, 10, 10).
 passes4(94, 75652, gartnerhallen, 13, 10, 10).
 passes4(94, 73042, strindheim_hageby, 14, 12, 12).

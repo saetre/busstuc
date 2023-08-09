@@ -1059,8 +1059,8 @@ hpl(71533,tulluan_syd,tulluan_syd,'Tulluan syd').
 hpl(71534,holte,holte,'Holte').
 hpl(71535,holte,holte,'Holte').
 hpl(71537,rottem,rottem,'Rottem').
-hpl(71538,tunga_kretsfengsel,tunga_kretsfengsel,'Tunga kretsfengsel').
-hpl(71539,tunga_kretsfengsel,tunga_kretsfengsel,'Tunga kretsfengsel').
+hpl(71538,trondheim_fengsel,trondheim_fengsel,'Trondheim fengsel').
+hpl(71539,trondheim_fengsel,trondheim_fengsel,'Trondheim fengsel').
 hpl(71540,holten,holten,'Holten').
 hpl(71541,holten,holten,'Holten').
 hpl(71542,rotvoll,rotvoll,'Rotvoll').

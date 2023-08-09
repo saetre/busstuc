@@ -5776,6 +5776,7 @@ composite_stat(trollahaugen,[10],trollahaugen_10).
 composite_stat(trollahaugen,[2],trollahaugen_2).
 composite_stat(trollahaugen,[46],trollahaugen_46).
 composite_stat(trollahaugen,[64],trollahaugen_64).
+composite_stat(trondheim,[fengsel],trondheim_fengsel).
 composite_stat(trondheim,[hurtigbåtterminal],trondheim_hurtigbåtterminal).
 composite_stat(trondheim,[lufthavn, 01],trondheim_lufthavn_01).
 composite_stat(trondheim,[s],trondheim_s).
@@ -5824,7 +5825,6 @@ composite_stat(tua,[02],tua_02).
 composite_stat(tulluan,[nord],tulluan_nord).
 composite_stat(tulluan,[skole],tulluan_skole).
 composite_stat(tulluan,[syd],tulluan_syd).
-composite_stat(tunga,[kretsfengsel],tunga_kretsfengsel).
 composite_stat(tungavegen,[],tungavegen).
 composite_stat(tungvågen,[],tungvågen).
 composite_stat(tunnsjø,[01],tunnsjø_01).
