@@ -1667,7 +1667,6 @@ composite_stat(grønning,[],grønning).
 composite_stat(grønningen,[],grønningen).
 composite_stat(grønningsmarka,[],grønningsmarka).
 composite_stat(grønnlia,[01],grønnlia_01).
-composite_stat(grønnlia,[02],grønnlia_02).
 composite_stat(grønnvika,[01],grønnvika_01).
 composite_stat(grønnvika,[02],grønnvika_02).
 composite_stat(grønnøra,[vest],grønnøra_vest).
@@ -2736,7 +2735,6 @@ composite_stat(kringla,[02],kringla_02).
 composite_stat(krinsvatnet,[],krinsvatnet).
 composite_stat(kristiansund,[hurtigbåtkai, 1],kristiansund_hurtigbåtkai_1).
 composite_stat(kroa,[02],kroa_02).
-composite_stat(kroabrua,[01],kroabrua_01).
 composite_stat(kroabrua,[02],kroabrua_02).
 composite_stat(kroglund,[02],kroglund_02).
 composite_stat(kroglund,[04],kroglund_04).
@@ -4516,7 +4514,6 @@ composite_stat(røskje,[02],røskje_02).
 composite_stat(røstad,[01],røstad_01).
 composite_stat(røstad,[02],røstad_02).
 composite_stat(røstad,[],røstad).
-composite_stat(røstadlia,[01],røstadlia_01).
 composite_stat(røstadlia,[02],røstadlia_02).
 composite_stat(røstadlia,[nedre, 01],røstadlia_nedre_01).
 composite_stat(røstadlia,[nedre, 02],røstadlia_nedre_02).
@@ -4574,8 +4571,6 @@ composite_stat(saltbotn,[vegdele, 02],saltbotn_vegdele_02).
 composite_stat(saltbotn,[vegdele, 03],saltbotn_vegdele_03).
 composite_stat(salthammer,[01],salthammer_01).
 composite_stat(salthammer,[02],salthammer_02).
-composite_stat(salthammer,[nordre, 01],salthammer_nordre_01).
-composite_stat(salthammer,[nordre, 02],salthammer_nordre_02).
 composite_stat(sand,[02],sand_02).
 composite_stat(sandaunet,[01],sandaunet_01).
 composite_stat(sandaunet,[02],sandaunet_02).
@@ -5010,7 +5005,6 @@ composite_stat(snoen,[],snoen).
 composite_stat(snorroegga,[],snorroegga).
 composite_stat(snuplass,[almlia, 02],snuplass_almlia_02).
 composite_stat(snuplass,[sandneset, 02],snuplass_sandneset_02).
-composite_stat(snåsa,[hotell],snåsa_hotell).
 composite_stat(snåsa,[skole, 01],snåsa_skole_01).
 composite_stat(snåsa,[skole, 02],snåsa_skole_02).
 composite_stat(snåsa,[stasjon, 01],snåsa_stasjon_01).
@@ -6204,8 +6198,6 @@ composite_stat(vinjeøra,[],vinjeøra).
 composite_stat(vinjeøra,[skole],vinjeøra_skole).
 composite_stat(vinne,[01],vinne_01).
 composite_stat(vinne,[02],vinne_02).
-composite_stat(vinne,[bensinstasjon, 01],vinne_bensinstasjon_01).
-composite_stat(vinne,[bensinstasjon, 02],vinne_bensinstasjon_02).
 composite_stat(vinne,[skole, 01],vinne_skole_01).
 composite_stat(vinne,[skole, 02],vinne_skole_02).
 composite_stat(vinsmyr,[],vinsmyr).

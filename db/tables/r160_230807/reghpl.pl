@@ -396,7 +396,6 @@ hpl(104897,hallansvingen,hallansvingen,'Hallansvingen').
 hpl(104965,øyum_gård,øyum_gård,'Øyum gård').
 hpl(105024,stormyra,stormyra,'Stormyra').
 hpl(105025,søraunet,søraunet,'Søraunet').
-hpl(105041,snåsa_hotell,snåsa_hotell,'Snåsa Hotell').
 hpl(105091,slørdalsvatnet,slørdalsvatnet,'Slørdalsvatnet').
 hpl(105092,slørdalsvatnet,slørdalsvatnet,'Slørdalsvatnet').
 hpl(105196,klettgjerdet,klettgjerdet,'Klettgjerdet').
@@ -5593,7 +5592,6 @@ hpl(76907,grandesvingen_02,grandesvingen_02,'Grandesvingen 02').
 hpl(76908,lia_02,lia_02,'Lia 02').
 hpl(76909,lia_01,lia_01,'Lia 01').
 hpl(76910,skotthyllbanen_01,skotthyllbanen_01,'Skotthyllbanen 01').
-hpl(76912,røstadlia_01,røstadlia_01,'Røstadlia 01').
 hpl(76913,røstadlia_02,røstadlia_02,'Røstadlia 02').
 hpl(76914,sandfærhus_01,sandfærhus_01,'Sandfærhus 01').
 hpl(76915,sandfærhus_02,sandfærhus_02,'Sandfærhus 02').
@@ -5995,7 +5993,6 @@ hpl(77424,nordbakk_02,nordbakk_02,'Nordbakk 02').
 hpl(77425,nordbakk_01,nordbakk_01,'Nordbakk 01').
 hpl(77426,ryggahøgda_01,ryggahøgda_01,'Ryggahøgda 01').
 hpl(77427,ryggahøgda_02,ryggahøgda_02,'Ryggahøgda 02').
-hpl(77428,kroabrua_01,kroabrua_01,'Kroabrua 01').
 hpl(77429,kroabrua_02,kroabrua_02,'Kroabrua 02').
 hpl(77430,grindstad_02,grindstad_02,'Grindstad 02').
 hpl(77431,grindstad_01,grindstad_01,'Grindstad 01').
@@ -6600,7 +6597,6 @@ hpl(78242,bogen_01,bogen_01,'Bogen 01').
 hpl(78245,mulelia_01,mulelia_01,'Mulelia 01').
 hpl(78247,brauta_02,brauta_02,'Brauta 02').
 hpl(78248,brauta_01,brauta_01,'Brauta 01').
-hpl(78250,grønnlia_02,grønnlia_02,'Grønnlia 02').
 hpl(78252,grønnlia_01,grønnlia_01,'Grønnlia 01').
 hpl(78255,hatlinghus_01,hatlinghus_01,'Hatlinghus 01').
 hpl(78256,rinnleiret_01,rinnleiret_01,'Rinnleiret 01').
@@ -6744,7 +6740,6 @@ hpl(78478,steinsgropa_01,steinsgropa_01,'Steinsgropa 01').
 hpl(78479,steinsgropa_02,steinsgropa_02,'Steinsgropa 02').
 hpl(78480,tømmeråsen_01,tømmeråsen_01,'Tømmeråsen 01').
 hpl(78481,tømmeråsen_02,tømmeråsen_02,'Tømmeråsen 02').
-hpl(78482,lund_01,lund_01,'Lund 01').
 hpl(78483,flatås_02,flatås_02,'Flatås 02').
 hpl(78484,flatås_01,flatås_01,'Flatås 01').
 hpl(78485,frøset_02,frøset_02,'Frøset 02').
@@ -6914,8 +6909,6 @@ hpl(78673,skomakervegen_02,skomakervegen_02,'Skomakervegen 02').
 hpl(78674,skomakervegen_01,skomakervegen_01,'Skomakervegen 01').
 hpl(78675,vålen_skole_02,vålen_skole_02,'Vålen skole 02').
 hpl(78676,vålen_skole_01,vålen_skole_01,'Vålen skole 01').
-hpl(78677,vinne_bensinstasjon_01,vinne_bensinstasjon_01,'Vinne bensinstasjon 01').
-hpl(78678,vinne_bensinstasjon_02,vinne_bensinstasjon_02,'Vinne bensinstasjon 02').
 hpl(78679,eklo_01,eklo_01,'Eklo 01').
 hpl(78680,eklo_02,eklo_02,'Eklo 02').
 hpl(78681,skillegrind_02,skillegrind_02,'Skillegrind 02').
@@ -7157,8 +7150,6 @@ hpl(78957,vulusjøvegen_01,vulusjøvegen_01,'Vulusjøvegen 01').
 hpl(78958,vulusjøvegen_02,vulusjøvegen_02,'Vulusjøvegen 02').
 hpl(78959,kvamkorsen_02,kvamkorsen_02,'Kvamkorsen 02').
 hpl(78960,kvamkorsen_01,kvamkorsen_01,'Kvamkorsen 01').
-hpl(78961,salthammer_nordre_01,salthammer_nordre_01,'Salthammer nordre 01').
-hpl(78962,salthammer_nordre_02,salthammer_nordre_02,'Salthammer nordre 02').
 hpl(78963,grøtan_01,grøtan_01,'Grøtan 01').
 hpl(78964,grøtan_02,grøtan_02,'Grøtan 02').
 hpl(78965,follafoss_02,follafoss_02,'Follafoss 02').
