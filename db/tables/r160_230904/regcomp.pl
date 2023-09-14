@@ -83,10 +83,6 @@ composite_stat(ankersgate,[],ankers_gate). % generated 1.0
 composite_stat(annøl,[],annøl).
 composite_stat(anshus,[],anshus).
 composite_stat(ansnes,[],ansnes).
-composite_stat(anton,[grevskotts, street],anton_grevskotts_veg). % generated 2.2
-composite_stat(anton,[grevskotts, veg],anton_grevskotts_veg).
-composite_stat(anton,[grevskotts_street],anton_grevskotts_veg). % generated 2.1
-composite_stat(anton,[grevskottsveg],anton_grevskotts_veg). % generated 2.0
 composite_stat(arne,[bergsgårds, street],arne_bergsgårds_veg). % generated 2.2
 composite_stat(arne,[bergsgårds, veg],arne_bergsgårds_veg).
 composite_stat(arne,[bergsgårds_street],arne_bergsgårds_veg). % generated 2.1
@@ -2500,10 +2496,6 @@ composite_stat(karl,[fures, street],karl_fures_vei). % generated 2.2
 composite_stat(karl,[fures, vei],karl_fures_vei).
 composite_stat(karl,[fures_street],karl_fures_vei). % generated 2.1
 composite_stat(karl,[furesvei],karl_fures_vei). % generated 2.0
-composite_stat(karl,[jonssons, street],karl_jonssons_veg). % generated 2.2
-composite_stat(karl,[jonssons, veg],karl_jonssons_veg).
-composite_stat(karl,[jonssons_street],karl_jonssons_veg). % generated 2.1
-composite_stat(karl,[jonssonsveg],karl_jonssons_veg). % generated 2.0
 composite_stat(karlestrand,[],karlestrand).
 composite_stat(karlsaunet,[],karlsaunet).
 composite_stat(karlsberg,[01],karlsberg_01).
@@ -5082,7 +5074,6 @@ composite_stat(songmoen,[],songmoen).
 composite_stat(sonli,[01],sonli_01).
 composite_stat(sonli,[02],sonli_02).
 composite_stat(sorenskrivergården,[],sorenskrivergården).
-composite_stat(sorgenfri,[],sorgenfri).
 composite_stat(sorte,[skifer, 01],sorte_skifer_01).
 composite_stat(sorte,[skifer, 02],sorte_skifer_02).
 composite_stat(sossvika,[],sossvika).
@@ -5589,7 +5580,6 @@ composite_stat(søndre,[risvolltun],søndre_risvolltun).
 composite_stat(sør,[dyrøy],sør_dyrøy).
 composite_stat(sør,[elnes, 01],sør_elnes_01).
 composite_stat(sør,[elnes, 02],sør_elnes_02).
-composite_stat(sør,[gjæslingan, hurtigbåtkai, 01],sør_gjæslingan_hurtigbåtkai_01).
 composite_stat(sør,[roan, skole],sør_roan_skole).
 composite_stat(sør,[vera, 01],sør_vera_01).
 composite_stat(sør,[vera, 02],sør_vera_02).

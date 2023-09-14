@@ -3186,8 +3186,6 @@ hpl(73978,nidarvoll_skole,nidarvoll_skole,'Nidarvoll skole').
 hpl(73979,nidarvoll_skole,nidarvoll_skole,'Nidarvoll skole').
 hpl(73980,solum,solum,'Solum').
 hpl(73981,solum,solum,'Solum').
-hpl(73982,karl_jonssons_veg,karl_jonssons_veg,'Karl Jonssons veg').
-hpl(73983,karl_jonssons_veg,karl_jonssons_veg,'Karl Jonssons veg').
 hpl(73984,solunda,solunda,'Solunda').
 hpl(73985,karlestrand,karlestrand,'Karlestrand').
 hpl(73986,solunda,solunda,'Solunda').
@@ -3213,8 +3211,6 @@ hpl(74008,karlstad,karlstad,'Karlstad').
 hpl(74009,karlstad,karlstad,'Karlstad').
 hpl(74010,nordaune,nordaune,'Nordaune').
 hpl(74011,nordaune,nordaune,'Nordaune').
-hpl(74012,sorgenfri,sorgenfri,'Sorgenfri').
-hpl(74013,sorgenfri,sorgenfri,'Sorgenfri').
 hpl(74014,karrosserifabrikken,karrosserifabrikken,'Karrosserifabrikken').
 hpl(74015,karrosserifabrikken,karrosserifabrikken,'Karrosserifabrikken').
 hpl(74017,kastbakken,kastbakken,'Kastbakken').
@@ -3399,8 +3395,6 @@ hpl(74231,kokkvollen,kokkvollen,'Kokkvollen').
 hpl(74232,stene,stene,'Stene').
 hpl(74233,kokkvollen,kokkvollen,'Kokkvollen').
 hpl(74234,stene,stene,'Stene').
-hpl(74235,nygård,nygård,'Nygård').
-hpl(74236,nygård,nygård,'Nygård').
 hpl(74237,kolstad_kirke,kolstad_kirke,'Kolstad kirke').
 hpl(74238,stensetkrysset,stensetkrysset,'Stensetkrysset').
 hpl(74240,stensetkrysset,stensetkrysset,'Stensetkrysset').
@@ -3718,8 +3712,6 @@ hpl(74619,ansnes,ansnes,'Ansnes').
 hpl(74620,ansnes,ansnes,'Ansnes').
 hpl(74621,olsvik,olsvik,'Olsvik').
 hpl(74623,olsvik,olsvik,'Olsvik').
-hpl(74625,anton_grevskotts_veg,anton_grevskotts_veg,'Anton Grevskotts veg').
-hpl(74626,anton_grevskotts_veg,anton_grevskotts_veg,'Anton Grevskotts veg').
 hpl(74627,driva_kryss,driva_kryss,'Driva kryss').
 hpl(74628,driva_kryss,driva_kryss,'Driva kryss').
 hpl(74629,drivstua,drivstua,'Drivstua').
@@ -7781,7 +7773,6 @@ hpl(79780,brørs_01,brørs_01,'Brørs 01').
 hpl(79781,våg_vegdele_03,våg_vegdele_03,'Våg vegdele 03').
 hpl(79782,våg_vegdele_01,våg_vegdele_01,'Våg vegdele 01').
 hpl(79783,våg_vegdele_02,våg_vegdele_02,'Våg vegdele 02').
-hpl(79784,sør_gjæslingan_hurtigbåtkai_01,sør_gjæslingan_hurtigbåtkai_01,'Sør-Gjæslingan hurtigbåtkai 01').
 hpl(79785,storvea_vegdele_03,storvea_vegdele_03,'Storvea vegdele 03').
 hpl(79786,storvea_vegdele_01,storvea_vegdele_01,'Storvea vegdele 01').
 hpl(79788,rørvik_båthavn_02,rørvik_båthavn_02,'Rørvik båthavn 02').
