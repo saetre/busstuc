@@ -544,7 +544,6 @@ hpl(107563,forradalsvegen_463,forradalsvegen_463,'Forradalsvegen 463').
 hpl(107672,meråker_sentrum,meråker_sentrum,'Meråker sentrum').
 hpl(107686,aspjeld,aspjeld,'Aspjeld').
 hpl(107739,rylen,rylen,'Rylen').
-hpl(107806,leistadkrysset,leistadkrysset,'Leistadkrysset').
 hpl(107835,vea,vea,'Vea').
 hpl(107860,herjuan,herjuan,'Herjuan').
 hpl(107929,steinberget,steinberget,'Steinberget').
