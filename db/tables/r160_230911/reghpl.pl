@@ -4655,7 +4655,6 @@ hpl(75681,gjersvold,gjersvold,'Gjersvold').
 hpl(75682,gjersvold,gjersvold,'Gjersvold').
 hpl(75683,gjetneset,gjetneset,'Gjetneset').
 hpl(75684,gjetneset,gjetneset,'Gjetneset').
-hpl(75685,gjevilvasshytta,gjevilvasshytta,'Gjevilvasshytta').
 hpl(75686,gjæsingen_kai,gjæsingen_kai,'Gjæsingen kai').
 hpl(75687,gjølga,gjølga,'Gjølga').
 hpl(75688,gjølga,gjølga,'Gjølga').
