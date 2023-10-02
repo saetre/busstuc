@@ -4623,7 +4623,6 @@ composite_stat(saursaunet,[01],saursaunet_01).
 composite_stat(saursaunet,[02],saursaunet_02).
 composite_stat(saurskorsen,[01],saurskorsen_01).
 composite_stat(saurskorsen,[02],saurskorsen_02).
-composite_stat(sauøya,[kai],sauøya_kai).
 composite_stat(schei,[01],schei_01).
 composite_stat(schei,[02],schei_02).
 composite_stat(schei,[],schei).
