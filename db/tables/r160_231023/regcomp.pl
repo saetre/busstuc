@@ -1219,14 +1219,14 @@ composite_stat(flornes,[02],flornes_02).
 composite_stat(florreina,[02],florreina_02).
 composite_stat(flortjønna,[01],flortjønna_01).
 composite_stat(flortjønna,[02],flortjønna_02).
+composite_stat(flott,[01],flott_01).
+composite_stat(flott,[02],flott_02).
 composite_stat(flyta,[],flyta).
 composite_stat(flå,[],flå).
 composite_stat(flå,[skole],flå_skole).
 composite_stat(flåa,[01],flåa_01).
 composite_stat(flåa,[02],flåa_02).
 composite_stat(flåskog,[],flåskog).
-composite_stat(flått,[01],flått_01).
-composite_stat(flått,[02],flått_02).
 composite_stat(fløan,[01],fløan_01).
 composite_stat(fløan,[02],fløan_02).
 composite_stat(fløan,[østre, 01],fløan_østre_01).

@@ -5706,8 +5706,8 @@ hpl(77074,storflor_02,storflor_02,'Storflor 02').
 hpl(77075,testmann_02,testmann_02,'Testmann 02').
 hpl(77076,testmann_01,testmann_01,'Testmann 01').
 hpl(77077,skeiet_01,skeiet_01,'Skeiet 01').
-hpl(77079,flått_01,flått_01,'Flått 01').
-hpl(77080,flått_02,flått_02,'Flått 02').
+hpl(77079,flott_01,flott_01,'Flott 01').
+hpl(77080,flott_02,flott_02,'Flott 02').
 hpl(77081,leksvik_kommunehus_02,leksvik_kommunehus_02,'Leksvik kommunehus 02').
 hpl(77082,leksvik_kommunehus_01,leksvik_kommunehus_01,'Leksvik kommunehus 01').
 hpl(77083,kvålsåsen_02,kvålsåsen_02,'Kvålsåsen 02').
