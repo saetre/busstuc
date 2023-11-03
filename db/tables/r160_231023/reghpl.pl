@@ -6287,8 +6287,6 @@ hpl(77826,gjellsås_02,gjellsås_02,'Gjellsås 02').
 hpl(77827,gjellsås_03,gjellsås_03,'Gjellsås 03').
 hpl(77829,falstad_øvre_02,falstad_øvre_02,'Falstad øvre 02').
 hpl(77830,falstad_øvre_01,falstad_øvre_01,'Falstad øvre 01').
-hpl(77831,fiksehøgda_01,fiksehøgda_01,'Fiksehøgda 01').
-hpl(77832,fiksehøgda_02,fiksehøgda_02,'Fiksehøgda 02').
 hpl(77833,sveås_01,sveås_01,'Sveås 01').
 hpl(77835,ekne_sentrum_01,ekne_sentrum_01,'Ekne sentrum 01').
 hpl(77836,ekne_sentrum_02,ekne_sentrum_02,'Ekne sentrum 02').
@@ -6296,7 +6294,6 @@ hpl(77837,ryan_øst_02,ryan_øst_02,'Ryan øst 02').
 hpl(77838,ryan_øst_01,ryan_øst_01,'Ryan øst 01').
 hpl(77839,bakkan_02,bakkan_02,'Bakkan 02').
 hpl(77840,bakkan_01,bakkan_01,'Bakkan 01').
-hpl(77841,åsen_01,åsen_01,'Åsen 01').
 hpl(77843,aunet_01,aunet_01,'Aunet 01').
 hpl(77844,aunet_02,aunet_02,'Aunet 02').
 hpl(77846,øra_03,øra_03,'Øra 03').
@@ -6762,7 +6759,6 @@ hpl(78509,rotmoen_02,rotmoen_02,'Rotmoen 02').
 hpl(78510,vollan_02,vollan_02,'Vollan 02').
 hpl(78511,vollan_01,vollan_01,'Vollan 01').
 hpl(78512,aspheim_03,aspheim_03,'Aspheim 03').
-hpl(78513,aspheim_01,aspheim_01,'Aspheim 01').
 hpl(78514,aspheim_02,aspheim_02,'Aspheim 02').
 hpl(78515,rambergmyran_01,rambergmyran_01,'Rambergmyran 01').
 hpl(78516,rambergmyran_02,rambergmyran_02,'Rambergmyran 02').

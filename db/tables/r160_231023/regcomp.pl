@@ -107,7 +107,6 @@ composite_stat(asmundvåg,[],asmundvåg).
 composite_stat(asp,[01],asp_01).
 composite_stat(asp,[02],asp_02).
 composite_stat(asphaugen,[],asphaugen).
-composite_stat(aspheim,[01],aspheim_01).
 composite_stat(aspheim,[02],aspheim_02).
 composite_stat(aspheim,[03],aspheim_03).
 composite_stat(aspjeld,[],aspjeld).
@@ -1104,8 +1103,6 @@ composite_stat(figga,[terrasse, 02],figga_terrasse_02).
 composite_stat(fikkan,[skole, 01],fikkan_skole_01).
 composite_stat(fikkan,[skole, 02],fikkan_skole_02).
 composite_stat(fiksdalen,[],fiksdalen).
-composite_stat(fiksehøgda,[01],fiksehøgda_01).
-composite_stat(fiksehøgda,[02],fiksehøgda_02).
 composite_stat(fillan,[busstasjon],fillan_busstasjon).
 composite_stat(finnanger,[01],finnanger_01).
 composite_stat(finnanger,[02],finnanger_02).
@@ -6415,7 +6412,6 @@ composite_stat(åsa,[02],åsa_02).
 composite_stat(åsadalen,[01],åsadalen_01).
 composite_stat(åsadalen,[02],åsadalen_02).
 composite_stat(åsegg,[øvre],åsegg_øvre).
-composite_stat(åsen,[01],åsen_01).
 composite_stat(åsen,[],åsen).
 composite_stat(åsen,[barne, og, ungdomsskole, 01],åsen_barne_og_ungdomsskole_01).
 composite_stat(åsen,[barne, og, ungdomsskole, 02],åsen_barne_og_ungdomsskole_02).
