@@ -1364,9 +1364,7 @@ composite_stat(fuglmoen,[],fuglmoen).
 composite_stat(fuglår,[01],fuglår_01).
 composite_stat(fuglår,[02],fuglår_02).
 composite_stat(fulsetmo,[01],fulsetmo_01).
-composite_stat(fulsetmo,[02],fulsetmo_02).
 composite_stat(fulsetmo,[vest, 01],fulsetmo_vest_01).
-composite_stat(fulsetmo,[vest, 02],fulsetmo_vest_02).
 composite_stat(funnmo,[01],funnmo_01).
 composite_stat(funnmo,[02],funnmo_02).
 composite_stat(furen,[],furen).
@@ -2349,7 +2347,6 @@ composite_stat(ingemann,[torps_street],ingemann_torps_vei). % generated 2.1
 composite_stat(ingemann,[torpsvei],ingemann_torps_vei). % generated 2.0
 composite_stat(ingstad,[01],ingstad_01).
 composite_stat(ingstad,[02],ingstad_02).
-composite_stat(ingstadnesset,[],ingstadnesset).
 composite_stat(ingul,[01],ingul_01).
 composite_stat(ingul,[02],ingul_02).
 composite_stat(inna,[bru, 01],inna_bru_01).
@@ -5723,7 +5720,6 @@ composite_stat(torlandskorsen,[01],torlandskorsen_01).
 composite_stat(torlandskorsen,[02],torlandskorsen_02).
 composite_stat(torp,[],torp).
 composite_stat(torpet,[01],torpet_01).
-composite_stat(torpet,[02],torpet_02).
 composite_stat(tors,[street],tors_veg). % generated 1.2
 composite_stat(tors,[veg],tors_veg).
 composite_stat(tors_street,[],tors_veg). % generated 1.1

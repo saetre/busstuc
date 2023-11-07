@@ -264,7 +264,6 @@ hpl(103400,fagerhaugveien,fagerhaugveien,'Fagerhaugveien').
 hpl(103401,fagerhaugveien,fagerhaugveien,'Fagerhaugveien').
 hpl(103404,sluppen,sluppen,'Sluppen').
 hpl(103406,haugåsvoll,haugåsvoll,'Haugåsvoll').
-hpl(103407,ingstadnesset,ingstadnesset,'Ingstadnesset').
 hpl(103410,mobjørg,mobjørg,'Mobjørg').
 hpl(103411,nygård,nygård,'Nygård').
 hpl(103436,sørsidevegen,sørsidevegen,'Sørsidevegen').
@@ -5009,19 +5008,16 @@ hpl(76143,kyllo_01,kyllo_01,'Kyllo 01').
 hpl(76144,bangsund_vegdele_02,bangsund_vegdele_02,'Bangsund vegdele 02').
 hpl(76145,eidesmoen_01,eidesmoen_01,'Eidesmoen 01').
 hpl(76146,eidesmoen_02,eidesmoen_02,'Eidesmoen 02').
-hpl(76147,torpet_02,torpet_02,'Torpet 02').
 hpl(76148,torpet_01,torpet_01,'Torpet 01').
 hpl(76150,ner_bangsund_01,ner_bangsund_01,'Ner-Bangsund 01').
 hpl(76153,holand_02,holand_02,'Holand 02').
 hpl(76154,holand_01,holand_01,'Holand 01').
-hpl(76155,fulsetmo_vest_02,fulsetmo_vest_02,'Fulsetmo vest 02').
 hpl(76156,fulsetmo_vest_01,fulsetmo_vest_01,'Fulsetmo vest 01').
 hpl(76157,kvernhusdalen_01,kvernhusdalen_01,'Kvernhusdalen 01').
 hpl(76158,kvernhusdalen_02,kvernhusdalen_02,'Kvernhusdalen 02').
 hpl(76159,løvsjølia_01,løvsjølia_01,'Løvsjølia 01').
 hpl(76160,løvsjølia_02,løvsjølia_02,'Løvsjølia 02').
 hpl(76161,fulsetmo_01,fulsetmo_01,'Fulsetmo 01').
-hpl(76162,fulsetmo_02,fulsetmo_02,'Fulsetmo 02').
 hpl(76163,selnes_vegdele_01,selnes_vegdele_01,'Selnes vegdele 01').
 hpl(76164,selnes_vegdele_02,selnes_vegdele_02,'Selnes vegdele 02').
 hpl(76165,aunet_02,aunet_02,'Aunet 02').
@@ -5029,7 +5025,6 @@ hpl(76166,aunet_01,aunet_01,'Aunet 01').
 hpl(76167,aspnes_02,aspnes_02,'Aspnes 02').
 hpl(76168,aspnes_01,aspnes_01,'Aspnes 01').
 hpl(76169,ingstad_01,ingstad_01,'Ingstad 01').
-hpl(76170,ingstad_02,ingstad_02,'Ingstad 02').
 hpl(76171,pettermoen_01,pettermoen_01,'Pettermoen 01').
 hpl(76172,pettermoen_02,pettermoen_02,'Pettermoen 02').
 hpl(76173,ulland_01,ulland_01,'Ulland 01').
