@@ -582,6 +582,7 @@ hpl(108427,krøykesberget,krøykesberget,'Krøykesberget').
 hpl(108470,rungstad_sør,rungstad_sør,'Rungstad sør').
 hpl(108473,årbogen,årbogen,'Årbogen').
 hpl(108523,jådåren,jådåren,'Jådåren').
+hpl(108591,havneveien,havneveien,'Havneveien').
 hpl(110093,vellamelen,vellamelen,'Vellamelen').
 hpl(110094,beitstad,beitstad,'Beitstad').
 hpl(110114,mosvik_skole,mosvik_skole,'Mosvik skole').
@@ -1077,8 +1078,10 @@ hpl(71558,rugelsjøen,rugelsjøen,'Rugelsjøen').
 hpl(71559,rugelsjøen,rugelsjøen,'Rugelsjøen').
 hpl(71560,rundfurubakken,rundfurubakken,'Rundfurubakken').
 hpl(71561,tungvågen,tungvågen,'Tungvågen').
+hpl(71562,hommelvik_sjøside,hommelvik_sjøside,'Hommelvik sjøside').
 hpl(71563,rundfurubakken,rundfurubakken,'Rundfurubakken').
 hpl(71564,tungvågen,tungvågen,'Tungvågen').
+hpl(71565,hommelvik_sjøside,hommelvik_sjøside,'Hommelvik sjøside').
 hpl(71566,ry,ry,'Ry').
 hpl(71567,ry,ry,'Ry').
 hpl(71568,østre_lund,østre_lund,'Østre Lund').

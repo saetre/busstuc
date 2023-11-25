@@ -2156,6 +2156,7 @@ composite_stat(holåsen,[vest, 02],holåsen_vest_02).
 composite_stat(hommeldal,[01],hommeldal_01).
 composite_stat(hommeldal,[02],hommeldal_02).
 composite_stat(hommelvik,[bomstasjon],hommelvik_bomstasjon).
+composite_stat(hommelvik,[sjøside],hommelvik_sjøside).
 composite_stat(hommelvik,[skole],hommelvik_skole).
 composite_stat(hommelvik,[stasjon],hommelvik_stasjon).
 composite_stat(hommelvik,[ungdomsskole],hommelvik_ungdomsskole).
