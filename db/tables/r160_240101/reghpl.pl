@@ -276,7 +276,6 @@ hpl(103443,seierstad_ferjekai,seierstad_ferjekai,'Seierstad ferjekai').
 hpl(103446,svanemsvatnet,svanemsvatnet,'Svanemsvatnet').
 hpl(103447,svanemsvatnet,svanemsvatnet,'Svanemsvatnet').
 hpl(103448,dyrøy_kai,dyrøy_kai,'Dyrøy kai').
-hpl(103449,mausundvær_kai,mausundvær_kai,'Mausundvær kai').
 hpl(103451,sørburøy_hurtigbåtkai,sørburøy_hurtigbåtkai,'Sørburøy hurtigbåtkai').
 hpl(103452,rørvik_ferjekai,rørvik_ferjekai,'Rørvik ferjekai').
 hpl(103453,hevle,hevle,'Hevle').
