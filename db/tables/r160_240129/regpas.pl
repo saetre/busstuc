@@ -5687,7 +5687,7 @@ passes4(10513, 79767, varøystranda_01, 17, 36, 36).
 passes4(10513, 79764, dyrneset_02, 18, 38, 38).
 passes4(10513, 79759, storval_02, 19, 40, 40).
 
-passes4(10515, 103111, kolvereid, 2, 999, 0).
+passes4(10515, 103111, øvre_kirkåsen, 2, 999, 0).
 passes4(10515, 80252, nordsjøkorsen_02, 3, 1, 1).
 passes4(10515, 79499, ånes_vegdele_03, 4, 2, 2).
 passes4(10515, 80363, løvseth_02, 5, 2, 2).
@@ -6142,7 +6142,7 @@ passes4(10552, 79482, saltbotn_vegdele_02, 26, 59, 59).
 passes4(10552, 80245, finnemokorsen_02, 27, 63, 63).
 passes4(10552, 79488, finne_01, 28, 64, 64).
 passes4(10552, 79492, kolvereid_02, 29, 67, 67).
-passes4(10552, 103111, kolvereid, 30, 70, 70).
+passes4(10552, 103111, øvre_kirkåsen, 30, 70, 70).
 
 passes4(10553, 80121, abelvær_skole_01, 2, 999, 0).
 passes4(10553, 80116, abelvær_01, 3, 0, 0).
@@ -6163,7 +6163,7 @@ passes4(10553, 80028, laugagården_02, 17, 15, 15).
 passes4(10553, 80018, strandvalen_01, 18, 20, 20).
 passes4(10553, 79755, strandval_vegdele_03, 19, 20, 20).
 
-passes4(10554, 103111, kolvereid, 2, 999, 0).
+passes4(10554, 103111, øvre_kirkåsen, 2, 999, 0).
 passes4(10554, 80252, nordsjøkorsen_02, 3, 1, 1).
 passes4(10554, 79499, ånes_vegdele_03, 4, 3, 3).
 passes4(10554, 80363, løvseth_02, 5, 3, 3).
@@ -6246,7 +6246,7 @@ passes4(10556, 79671, tømmervik_vegdele_01, 28, 33, 33).
 passes4(10556, 79672, grinna_01, 29, 34, 34).
 passes4(10556, 79493, kolvereid_01, 30, 37, 37).
 
-passes4(10557, 103111, kolvereid, 2, 999, 0).
+passes4(10557, 103111, øvre_kirkåsen, 2, 999, 0).
 passes4(10557, 80252, nordsjøkorsen_02, 3, 1, 1).
 passes4(10557, 79499, ånes_vegdele_03, 4, 2, 2).
 passes4(10557, 80363, løvseth_02, 5, 2, 2).
@@ -6280,7 +6280,7 @@ passes4(10557, 80109, ramstad_01, 32, 31, 31).
 passes4(10557, 80115, abelvær_02, 33, 34, 34).
 passes4(10557, 80120, abelvær_skole_02, 34, 34, 34).
 
-passes4(10558, 103111, kolvereid, 2, 999, 0).
+passes4(10558, 103111, øvre_kirkåsen, 2, 999, 0).
 passes4(10558, 80252, nordsjøkorsen_02, 3, 1, 1).
 passes4(10558, 79499, ånes_vegdele_03, 4, 3, 3).
 passes4(10558, 80363, løvseth_02, 5, 3, 3).
@@ -6348,7 +6348,7 @@ passes4(10559, 79498, ånes_vegdele_02, 32, 36, 36).
 passes4(10559, 80251, nordsjøkorsen_01, 33, 37, 37).
 passes4(10559, 79493, kolvereid_01, 34, 39, 39).
 
-passes4(10560, 103111, kolvereid, 2, 999, 0).
+passes4(10560, 103111, øvre_kirkåsen, 2, 999, 0).
 passes4(10560, 79674, grinna_02, 3, 3, 3).
 passes4(10560, 79669, tømmervik_vegdele_02, 4, 5, 5).
 passes4(10560, 79678, horvereid_01, 5, 6, 6).
@@ -6377,7 +6377,7 @@ passes4(10560, 80109, ramstad_01, 27, 29, 29).
 passes4(10560, 80115, abelvær_02, 28, 35, 35).
 passes4(10560, 80120, abelvær_skole_02, 29, 36, 36).
 
-passes4(10562, 103111, kolvereid, 2, 999, 0).
+passes4(10562, 103111, øvre_kirkåsen, 2, 999, 0).
 passes4(10562, 79674, grinna_02, 3, 3, 3).
 passes4(10562, 79669, tømmervik_vegdele_02, 4, 5, 5).
 passes4(10562, 79678, horvereid_01, 5, 6, 6).
@@ -6440,7 +6440,7 @@ passes4(10563, 79498, ånes_vegdele_02, 31, 36, 36).
 passes4(10563, 80251, nordsjøkorsen_01, 32, 37, 37).
 passes4(10563, 79493, kolvereid_01, 33, 39, 39).
 
-passes4(10564, 103111, kolvereid, 2, 999, 0).
+passes4(10564, 103111, øvre_kirkåsen, 2, 999, 0).
 passes4(10564, 80252, nordsjøkorsen_02, 3, 2, 2).
 passes4(10564, 79499, ånes_vegdele_03, 4, 3, 3).
 passes4(10564, 80363, løvseth_02, 5, 4, 4).
@@ -6514,7 +6514,7 @@ passes4(10568, 79482, saltbotn_vegdele_02, 14, 40, 40).
 passes4(10568, 80245, finnemokorsen_02, 15, 43, 43).
 passes4(10568, 79488, finne_01, 16, 44, 44).
 passes4(10568, 79492, kolvereid_02, 17, 49, 49).
-passes4(10568, 103111, kolvereid, 18, 50, 50).
+passes4(10568, 103111, øvre_kirkåsen, 18, 50, 50).
 
 passes4(10569, 79493, kolvereid_01, 2, 999, 0).
 passes4(10569, 79489, finne_02, 3, 5, 5).
@@ -45258,7 +45258,7 @@ passes4(9034, 79704, skagamoen_02, 17, 13, 13).
 passes4(9034, 80360, kvisterø_02, 18, 14, 14).
 passes4(9034, 79709, hofles_ferjekai_02, 19, 15, 15).
 
-passes4(9035, 103111, kolvereid, 2, 999, 0).
+passes4(9035, 103111, øvre_kirkåsen, 2, 999, 0).
 passes4(9035, 80252, nordsjøkorsen_02, 3, 2, 2).
 passes4(9035, 79500, ånes_vegdele_01, 4, 3, 3).
 passes4(9035, 79503, mulstadaunet_01, 5, 4, 4).
@@ -45322,7 +45322,7 @@ passes4(9038, 79498, ånes_vegdele_02, 17, 12, 12).
 passes4(9038, 80251, nordsjøkorsen_01, 18, 12, 12).
 passes4(9038, 79492, kolvereid_02, 19, 15, 15).
 
-passes4(9042, 103111, kolvereid, 2, 999, 0).
+passes4(9042, 103111, øvre_kirkåsen, 2, 999, 0).
 passes4(9042, 80252, nordsjøkorsen_02, 3, 2, 2).
 passes4(9042, 79500, ånes_vegdele_01, 4, 3, 3).
 passes4(9042, 79503, mulstadaunet_01, 5, 4, 4).

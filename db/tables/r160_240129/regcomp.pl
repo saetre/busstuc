@@ -2683,7 +2683,6 @@ composite_stat(kolven,[01],kolven_01).
 composite_stat(kolven,[02],kolven_02).
 composite_stat(kolvereid,[01],kolvereid_01).
 composite_stat(kolvereid,[02],kolvereid_02).
-composite_stat(kolvereid,[],kolvereid).
 composite_stat(kommunehuset,[01],kommunehuset_01).
 composite_stat(kommunehuset,[02],kommunehuset_02).
 composite_stat(kongens,[gate],kongens_gate).
@@ -6538,6 +6537,7 @@ composite_stat(øvre,[flatå, veg],øvre_flatåsveg). % generated 3.0
 composite_stat(øvre,[flatå_street],øvre_flatåsveg). % generated 3.1
 composite_stat(øvre,[flatåsveg],øvre_flatåsveg).
 composite_stat(øvre,[gullikstad],øvre_gullikstad).
+composite_stat(øvre,[kirkåsen],øvre_kirkåsen).
 composite_stat(øvre,[rindal, skole, 1],øvre_rindal_skole_1).
 composite_stat(øvre,[rindal, skole],øvre_rindal_skole).
 composite_stat(øvre,[sætrum],øvre_sætrum).

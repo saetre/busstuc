@@ -128,7 +128,7 @@ hpl(103103,hovskorsen,hovskorsen,'Hovskorsen').
 hpl(103104,høylandet_skole,høylandet_skole,'Høylandet skole').
 hpl(103106,ingelsvatnet,ingelsvatnet,'Ingelsvatnet').
 hpl(103110,kluksbakkan,kluksbakkan,'Kluksbakkan').
-hpl(103111,kolvereid,kolvereid,'Kolvereid').
+hpl(103111,øvre_kirkåsen,øvre_kirkåsen,'Øvre Kirkåsen').
 hpl(103118,kvithammer,kvithammer,'Kvithammer').
 hpl(103121,mulelia,mulelia,'Mulelia').
 hpl(103138,markabygda_montessoriskole,markabygda_montessoriskole,'Markabygda montessoriskole').
