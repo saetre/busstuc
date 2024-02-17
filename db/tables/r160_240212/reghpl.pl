@@ -587,6 +587,8 @@ hpl(108676,skogly,skogly,'Skogly').
 hpl(108677,skogly,skogly,'Skogly').
 hpl(108865,skeisveien,skeisveien,'Skeisveien').
 hpl(108866,skeisveien,skeisveien,'Skeisveien').
+hpl(108948,buran,buran,'Buran').
+hpl(108957,stokksletta,stokksletta,'Stokksletta').
 hpl(110093,vellamelen,vellamelen,'Vellamelen').
 hpl(110094,beitstad,beitstad,'Beitstad').
 hpl(110114,mosvik_skole,mosvik_skole,'Mosvik skole').

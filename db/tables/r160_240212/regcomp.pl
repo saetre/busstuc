@@ -5259,6 +5259,7 @@ composite_stat(stokke,[bru],stokke_bru).
 composite_stat(stokke,[snuplass],stokke_snuplass).
 composite_stat(stokkhaugen,[],stokkhaugen).
 composite_stat(stokkhaugen,[e39],stokkhaugen_e39).
+composite_stat(stokksletta,[],stokksletta).
 composite_stat(stokkslettbakken,[],stokkslettbakken).
 composite_stat(stokkøy,[],stokkøy).
 composite_stat(stolt,[],stolt).
