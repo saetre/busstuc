@@ -1801,8 +1801,8 @@ hpl(72363,øvre_gullikstad,øvre_gullikstad,'Øvre Gullikstad').
 hpl(72364,vognillan,vognillan,'Vognillan').
 hpl(72365,skjervan,skjervan,'Skjervan').
 hpl(72366,skjervan,skjervan,'Skjervan').
-hpl(72367,volden,volden,'Volden').
-hpl(72368,volden,volden,'Volden').
+hpl(72367,vollen,vollen,'Vollen').
+hpl(72368,vollen,vollen,'Vollen').
 hpl(72369,gullvika,gullvika,'Gullvika').
 hpl(72370,gullvika,gullvika,'Gullvika').
 hpl(72371,skjervika,skjervika,'Skjervika').
