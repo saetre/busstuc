@@ -482,7 +482,6 @@ hpl(106156,vassbygda,vassbygda,'Vassbygda').
 hpl(106169,gåsbakken_misjonshus,gåsbakken_misjonshus,'Gåsbakken misjonshus').
 hpl(106171,trondheim_hurtigbåtterminal_c,trondheim_hurtigbåtterminal_c,'Trondheim hurtigbåtterminal C').
 hpl(106172,trondheim_hurtigbåtterminal_d,trondheim_hurtigbåtterminal_d,'Trondheim hurtigbåtterminal D').
-hpl(106174,vassfjellet_vinterpark,vassfjellet_vinterpark,'Vassfjellet vinterpark').
 hpl(106178,lauvøy_ungdomshus,lauvøy_ungdomshus,'Lauvøy ungdomshus').
 hpl(106229,gjevilvassvegen,gjevilvassvegen,'Gjevilvassvegen').
 hpl(106252,sunnsetlykkja,sunnsetlykkja,'Sunnsetlykkja').
