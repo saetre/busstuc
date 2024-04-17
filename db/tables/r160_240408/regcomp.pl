@@ -4444,7 +4444,6 @@ composite_stat(vassbukt,[],vassbukt).
 composite_stat(vassbygda,[],vassbygda).
 composite_stat(vassbygda,[grendahus],vassbygda_grendahus).
 composite_stat(vassdalen,[],vassdalen).
-composite_stat(vassfjellet,[vinterpark],vassfjellet_vinterpark).
 composite_stat(vasslia,[],vasslia).
 composite_stat(vassliveien,[],vassliveien).
 composite_stat(vasslægja,[],vasslægja).
