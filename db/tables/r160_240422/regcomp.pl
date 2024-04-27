@@ -2108,7 +2108,6 @@ composite_stat(kvistadbakkan,[],kvistadbakkan).
 composite_stat(kvistenkrysset,[],kvistenkrysset).
 composite_stat(kvisterø,[],kvisterø).
 composite_stat(kvithammer,[],kvithammer).
-composite_stat(kvithylla,[],kvithylla).
 composite_stat(kvitland,[],kvitland).
 composite_stat(kvitmyr,[],kvitmyr).
 composite_stat(kvitum,[],kvitum).
@@ -3102,13 +3101,13 @@ composite_stat(reinsvegen,[],reinsvegen).
 composite_stat(reipa,[],reipa).
 composite_stat(reipvegen,[],reipvegen).
 composite_stat(reistadkorsen,[],reistadkorsen).
-composite_stat(reistøa,[],reistøa).
 composite_stat(reitan,[],reitan).
 composite_stat(reitan,[bru],reitan_bru).
 composite_stat(reitanvegen,[],reitanvegen).
 composite_stat(reitlo,[],reitlo).
 composite_stat(reitlostubben,[],reitlostubben).
 composite_stat(reitlovegen,[],reitlovegen).
+composite_stat(reitstøa,[],reitstøa).
 composite_stat(reksa,[],reksa).
 composite_stat(rema,[1000, rissa],rema_1000_rissa).
 composite_stat(rema,[østre],rema_østre).
@@ -3166,6 +3165,7 @@ composite_stat(risgrenda,[],risgrenda).
 composite_stat(risholt,[],risholt).
 composite_stat(rislivegen,[],rislivegen).
 composite_stat(risløkkja,[],risløkkja).
+composite_stat(rissa,[betong],rissa_betong).
 composite_stat(rissa,[skysstasjon],rissa_skysstasjon).
 composite_stat(ristad,[vegdele],ristad_vegdele).
 composite_stat(risvik,[],risvik).
@@ -3569,7 +3569,7 @@ composite_stat(skjervoldsmo,[],skjervoldsmo).
 composite_stat(skjesol,[],skjesol).
 composite_stat(skjetlein,[],skjetlein).
 composite_stat(skjetnemark,[],skjetnemark).
-composite_stat(skjetnemyrbakken,[],skjetnemyrbakken).
+composite_stat(skjettmyrbakken,[],skjettmyrbakken).
 composite_stat(skjulenget,[],skjulenget).
 composite_stat(skjånes,[],skjånes).
 composite_stat(skjækerfossen,[],skjækerfossen).

@@ -883,8 +883,8 @@ hpl(71302,hessdalskjølen,hessdalskjølen,'Hessdalskjølen').
 hpl(71303,hessdalskjølen,hessdalskjølen,'Hessdalskjølen').
 hpl(71304,reinskleiva,reinskleiva,'Reinskleiva').
 hpl(71305,reinskleiva,reinskleiva,'Reinskleiva').
-hpl(71306,reistøa,reistøa,'Reistøa').
-hpl(71307,reistøa,reistøa,'Reistøa').
+hpl(71306,reitstøa,reitstøa,'Reitstøa').
+hpl(71307,reitstøa,reitstøa,'Reitstøa').
 hpl(71308,torvmyra,torvmyra,'Torvmyra').
 hpl(71309,torvmyra,torvmyra,'Torvmyra').
 hpl(71310,hessdalskrysset,hessdalskrysset,'Hessdalskrysset').
@@ -1817,8 +1817,8 @@ hpl(72378,skjetlein,skjetlein,'Skjetlein').
 hpl(72379,gunhildsøy_bru,gunhildsøy_bru,'Gunhildsøy bru').
 hpl(72380,volden,volden,'Volden').
 hpl(72381,volden,volden,'Volden').
-hpl(72382,skjetnemyrbakken,skjetnemyrbakken,'Skjetnemyrbakken').
-hpl(72383,skjetnemyrbakken,skjetnemyrbakken,'Skjetnemyrbakken').
+hpl(72382,skjettmyrbakken,skjettmyrbakken,'Skjettmyrbakken').
+hpl(72383,skjettmyrbakken,skjettmyrbakken,'Skjettmyrbakken').
 hpl(72384,gunnes,gunnes,'Gunnes').
 hpl(72385,gunnes,gunnes,'Gunnes').
 hpl(72386,voll,voll,'Voll').
@@ -2379,8 +2379,8 @@ hpl(73046,mikkelvegen,mikkelvegen,'Mikkelvegen').
 hpl(73047,mikkelvegen,mikkelvegen,'Mikkelvegen').
 hpl(73048,strindheim_skole,strindheim_skole,'Strindheim skole').
 hpl(73049,strindheim_skole,strindheim_skole,'Strindheim skole').
-hpl(73050,kvithylla,kvithylla,'Kvithylla').
-hpl(73051,kvithylla,kvithylla,'Kvithylla').
+hpl(73050,rissa_betong,rissa_betong,'Rissa Betong').
+hpl(73051,rissa_betong,rissa_betong,'Rissa Betong').
 hpl(73052,stråmyra,stråmyra,'Stråmyra').
 hpl(73053,stråmyra,stråmyra,'Stråmyra').
 hpl(73054,kvitland,kvitland,'Kvitland').

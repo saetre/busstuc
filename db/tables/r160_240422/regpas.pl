@@ -3248,7 +3248,7 @@ passes4(11359, 75235, bollingmo, 46, 62, 62).
 passes4(11359, 74663, dybdalsbakk, 47, 63, 63).
 passes4(11359, 74557, almåsøy, 48, 69, 69).
 passes4(11359, 74550, almås, 49, 69, 69).
-passes4(11359, 71307, reistøa, 50, 69, 69).
+passes4(11359, 71307, reitstøa, 50, 69, 69).
 passes4(11359, 71379, hindbjørgen, 51, 73, 73).
 passes4(11359, 74387, stornes, 52, 74, 74).
 passes4(11359, 72124, singsåsmoen, 53, 75, 75).
@@ -3296,7 +3296,7 @@ passes4(11359, 73626, lundabrua, 94, 131, 131).
 passes4(11359, 73615, lund, 95, 132, 132).
 passes4(11359, 74055, kjelstad, 96, 133, 133).
 passes4(11359, 73726, løhre, 97, 134, 134).
-passes4(11359, 72383, skjetnemyrbakken, 98, 134, 134).
+passes4(11359, 72383, skjettmyrbakken, 98, 134, 134).
 passes4(11359, 73714, møsta, 99, 135, 135).
 passes4(11359, 73399, ler, 100, 137, 137).
 passes4(11359, 74268, nyhus, 101, 138, 138).
@@ -3366,7 +3366,7 @@ passes4(11361, 75235, bollingmo, 46, 60, 60).
 passes4(11361, 74663, dybdalsbakk, 47, 61, 61).
 passes4(11361, 74557, almåsøy, 48, 67, 67).
 passes4(11361, 74550, almås, 49, 67, 67).
-passes4(11361, 71307, reistøa, 50, 67, 67).
+passes4(11361, 71307, reitstøa, 50, 67, 67).
 passes4(11361, 71379, hindbjørgen, 51, 71, 71).
 passes4(11361, 74387, stornes, 52, 72, 72).
 passes4(11361, 72124, singsåsmoen, 53, 73, 73).
@@ -3414,7 +3414,7 @@ passes4(11361, 73626, lundabrua, 94, 129, 129).
 passes4(11361, 73615, lund, 95, 130, 130).
 passes4(11361, 74055, kjelstad, 96, 131, 131).
 passes4(11361, 73726, løhre, 97, 132, 132).
-passes4(11361, 72383, skjetnemyrbakken, 98, 132, 132).
+passes4(11361, 72383, skjettmyrbakken, 98, 132, 132).
 passes4(11361, 73714, møsta, 99, 133, 133).
 passes4(11361, 73399, ler, 100, 135, 135).
 passes4(11361, 74268, nyhus, 101, 136, 136).
@@ -3460,7 +3460,7 @@ passes4(11362, 74429, storsten, 18, 50, 50).
 passes4(11362, 74269, nyhus, 19, 51, 51).
 passes4(11362, 73398, ler, 20, 53, 53).
 passes4(11362, 73713, møsta, 21, 54, 54).
-passes4(11362, 72382, skjetnemyrbakken, 22, 55, 55).
+passes4(11362, 72382, skjettmyrbakken, 22, 55, 55).
 passes4(11362, 73728, løhre, 23, 56, 56).
 passes4(11362, 74056, kjelstad, 24, 57, 57).
 passes4(11362, 73616, lund, 25, 57, 57).
@@ -3510,7 +3510,7 @@ passes4(11362, 74388, stornes, 68, 114, 114).
 passes4(11362, 71378, hindbjørgen, 69, 116, 116).
 passes4(11362, 71387, hindsverkrønning, 70, 117, 117).
 passes4(11362, 71767, hulta, 71, 118, 118).
-passes4(11362, 71306, reistøa, 72, 120, 120).
+passes4(11362, 71306, reitstøa, 72, 120, 120).
 passes4(11362, 74551, almås, 73, 120, 120).
 passes4(11362, 74556, almåsøy, 74, 120, 120).
 passes4(11362, 75236, bollingmo, 75, 127, 127).
@@ -3608,7 +3608,7 @@ passes4(11363, 75235, bollingmo, 46, 60, 60).
 passes4(11363, 74663, dybdalsbakk, 47, 61, 61).
 passes4(11363, 74557, almåsøy, 48, 67, 67).
 passes4(11363, 74550, almås, 49, 67, 67).
-passes4(11363, 71307, reistøa, 50, 67, 67).
+passes4(11363, 71307, reitstøa, 50, 67, 67).
 passes4(11363, 71379, hindbjørgen, 51, 71, 71).
 passes4(11363, 74387, stornes, 52, 72, 72).
 passes4(11363, 72124, singsåsmoen, 53, 73, 73).
@@ -3657,7 +3657,7 @@ passes4(11363, 73626, lundabrua, 95, 131, 131).
 passes4(11363, 73615, lund, 96, 132, 132).
 passes4(11363, 74055, kjelstad, 97, 133, 133).
 passes4(11363, 73726, løhre, 98, 134, 134).
-passes4(11363, 72383, skjetnemyrbakken, 99, 134, 134).
+passes4(11363, 72383, skjettmyrbakken, 99, 134, 134).
 passes4(11363, 73714, møsta, 100, 135, 135).
 passes4(11363, 73399, ler, 101, 137, 137).
 passes4(11363, 74268, nyhus, 102, 138, 138).
@@ -3704,7 +3704,7 @@ passes4(11364, 74429, storsten, 23, 53, 53).
 passes4(11364, 74269, nyhus, 24, 54, 54).
 passes4(11364, 73398, ler, 25, 56, 56).
 passes4(11364, 73713, møsta, 26, 57, 57).
-passes4(11364, 72382, skjetnemyrbakken, 27, 58, 58).
+passes4(11364, 72382, skjettmyrbakken, 27, 58, 58).
 passes4(11364, 73728, løhre, 28, 59, 59).
 passes4(11364, 74056, kjelstad, 29, 60, 60).
 passes4(11364, 73616, lund, 30, 60, 60).
@@ -3754,7 +3754,7 @@ passes4(11364, 74388, stornes, 73, 117, 117).
 passes4(11364, 71378, hindbjørgen, 74, 119, 119).
 passes4(11364, 71387, hindsverkrønning, 75, 120, 120).
 passes4(11364, 71767, hulta, 76, 121, 121).
-passes4(11364, 71306, reistøa, 77, 123, 123).
+passes4(11364, 71306, reitstøa, 77, 123, 123).
 passes4(11364, 74551, almås, 78, 123, 123).
 passes4(11364, 74556, almåsøy, 79, 123, 123).
 passes4(11364, 75236, bollingmo, 80, 130, 130).
@@ -3821,7 +3821,7 @@ passes4(11367, 73626, lundabrua, 15, 14, 14).
 passes4(11367, 73615, lund, 16, 15, 15).
 passes4(11367, 74055, kjelstad, 17, 16, 16).
 passes4(11367, 73726, løhre, 18, 17, 17).
-passes4(11367, 72383, skjetnemyrbakken, 19, 17, 17).
+passes4(11367, 72383, skjettmyrbakken, 19, 17, 17).
 passes4(11367, 73714, møsta, 20, 18, 18).
 passes4(11367, 73399, ler, 21, 20, 20).
 passes4(11367, 74268, nyhus, 22, 21, 21).
@@ -3872,7 +3872,7 @@ passes4(11368, 74429, storsten, 23, 53, 53).
 passes4(11368, 74269, nyhus, 24, 54, 54).
 passes4(11368, 73398, ler, 25, 56, 56).
 passes4(11368, 73713, møsta, 26, 57, 57).
-passes4(11368, 72382, skjetnemyrbakken, 27, 58, 58).
+passes4(11368, 72382, skjettmyrbakken, 27, 58, 58).
 passes4(11368, 73728, løhre, 28, 59, 59).
 passes4(11368, 74056, kjelstad, 29, 60, 60).
 passes4(11368, 73616, lund, 30, 60, 60).
@@ -3911,7 +3911,7 @@ passes4(11370, 74429, storsten, 17, 50, 50).
 passes4(11370, 74269, nyhus, 18, 51, 51).
 passes4(11370, 73398, ler, 19, 53, 53).
 passes4(11370, 73713, møsta, 20, 54, 54).
-passes4(11370, 72382, skjetnemyrbakken, 21, 55, 55).
+passes4(11370, 72382, skjettmyrbakken, 21, 55, 55).
 passes4(11370, 73728, løhre, 22, 56, 56).
 passes4(11370, 74056, kjelstad, 23, 57, 57).
 passes4(11370, 73616, lund, 24, 57, 57).
@@ -3961,7 +3961,7 @@ passes4(11370, 74388, stornes, 67, 114, 114).
 passes4(11370, 71378, hindbjørgen, 68, 116, 116).
 passes4(11370, 71387, hindsverkrønning, 69, 117, 117).
 passes4(11370, 71767, hulta, 70, 118, 118).
-passes4(11370, 71306, reistøa, 71, 120, 120).
+passes4(11370, 71306, reitstøa, 71, 120, 120).
 passes4(11370, 74551, almås, 72, 120, 120).
 passes4(11370, 74556, almåsøy, 73, 120, 120).
 passes4(11370, 75236, bollingmo, 74, 127, 127).
@@ -7642,7 +7642,7 @@ passes4(12644, 73626, lundabrua, 60, 85, 85).
 passes4(12644, 73615, lund, 61, 86, 86).
 passes4(12644, 74055, kjelstad, 62, 87, 87).
 passes4(12644, 73726, løhre, 63, 88, 88).
-passes4(12644, 72383, skjetnemyrbakken, 64, 88, 88).
+passes4(12644, 72383, skjettmyrbakken, 64, 88, 88).
 passes4(12644, 73714, møsta, 65, 89, 89).
 passes4(12644, 73399, ler, 66, 91, 91).
 passes4(12644, 74268, nyhus, 67, 93, 93).
@@ -7684,7 +7684,7 @@ passes4(12645, 74429, storsten, 18, 50, 50).
 passes4(12645, 74269, nyhus, 19, 51, 51).
 passes4(12645, 73398, ler, 20, 53, 53).
 passes4(12645, 73713, møsta, 21, 54, 54).
-passes4(12645, 72382, skjetnemyrbakken, 22, 55, 55).
+passes4(12645, 72382, skjettmyrbakken, 22, 55, 55).
 passes4(12645, 73728, løhre, 23, 56, 56).
 passes4(12645, 74056, kjelstad, 24, 57, 57).
 passes4(12645, 73616, lund, 25, 57, 57).
@@ -7891,7 +7891,7 @@ passes4(12655, 74429, storsten, 18, 50, 50).
 passes4(12655, 74269, nyhus, 19, 51, 51).
 passes4(12655, 73398, ler, 20, 53, 53).
 passes4(12655, 73713, møsta, 21, 54, 54).
-passes4(12655, 72382, skjetnemyrbakken, 22, 55, 55).
+passes4(12655, 72382, skjettmyrbakken, 22, 55, 55).
 passes4(12655, 73728, løhre, 23, 56, 56).
 passes4(12655, 74056, kjelstad, 24, 57, 57).
 passes4(12655, 73616, lund, 25, 57, 57).
@@ -8302,7 +8302,7 @@ passes4(12696, 71503, rosmælen_skole, 16, 29, 29).
 passes4(12697, 75285, flå_skole, 2, 999, 0).
 passes4(12697, 74334, krekabakken, 3, 4, 4).
 passes4(12697, 73713, møsta, 4, 5, 5).
-passes4(12697, 72382, skjetnemyrbakken, 5, 6, 6).
+passes4(12697, 72382, skjettmyrbakken, 5, 6, 6).
 passes4(12697, 73728, løhre, 6, 7, 7).
 passes4(12697, 74056, kjelstad, 7, 8, 8).
 passes4(12697, 73616, lund, 8, 8, 8).
@@ -8415,7 +8415,7 @@ passes4(12704, 73626, lundabrua, 3, 1, 1).
 passes4(12704, 73615, lund, 4, 2, 2).
 passes4(12704, 74055, kjelstad, 5, 3, 3).
 passes4(12704, 73726, løhre, 6, 4, 4).
-passes4(12704, 72383, skjetnemyrbakken, 7, 5, 5).
+passes4(12704, 72383, skjettmyrbakken, 7, 5, 5).
 passes4(12704, 73714, møsta, 8, 6, 6).
 passes4(12704, 74332, krekabakken, 9, 6, 6).
 passes4(12704, 75284, flå_skole, 10, 16, 16).
@@ -8440,7 +8440,7 @@ passes4(12705, 73626, lundabrua, 3, 0, 0).
 passes4(12705, 73615, lund, 4, 1, 1).
 passes4(12705, 74055, kjelstad, 5, 2, 2).
 passes4(12705, 73726, løhre, 6, 3, 3).
-passes4(12705, 72383, skjetnemyrbakken, 7, 4, 4).
+passes4(12705, 72383, skjettmyrbakken, 7, 4, 4).
 passes4(12705, 73714, møsta, 8, 5, 5).
 passes4(12705, 74332, krekabakken, 9, 6, 6).
 passes4(12705, 73399, ler, 10, 7, 7).
@@ -8497,7 +8497,7 @@ passes4(12709, 74269, nyhus, 12, 11, 11).
 passes4(12709, 73398, ler, 13, 13, 13).
 passes4(12709, 74334, krekabakken, 14, 14, 14).
 passes4(12709, 73713, møsta, 15, 15, 15).
-passes4(12709, 72382, skjetnemyrbakken, 16, 16, 16).
+passes4(12709, 72382, skjettmyrbakken, 16, 16, 16).
 passes4(12709, 73728, løhre, 17, 17, 17).
 passes4(12709, 74056, kjelstad, 18, 18, 18).
 passes4(12709, 73616, lund, 19, 18, 18).
@@ -8638,7 +8638,7 @@ passes4(12717, 74269, nyhus, 9, 19, 19).
 passes4(12717, 73398, ler, 10, 22, 22).
 passes4(12717, 74334, krekabakken, 11, 23, 23).
 passes4(12717, 73713, møsta, 12, 24, 24).
-passes4(12717, 72382, skjetnemyrbakken, 13, 25, 25).
+passes4(12717, 72382, skjettmyrbakken, 13, 25, 25).
 passes4(12717, 73728, løhre, 14, 26, 26).
 passes4(12717, 74056, kjelstad, 15, 26, 26).
 passes4(12717, 73616, lund, 16, 27, 27).
@@ -8664,7 +8664,7 @@ passes4(12720, 73626, lundabrua, 3, 0, 0).
 passes4(12720, 73615, lund, 4, 1, 1).
 passes4(12720, 74055, kjelstad, 5, 2, 2).
 passes4(12720, 73726, løhre, 6, 3, 3).
-passes4(12720, 72383, skjetnemyrbakken, 7, 4, 4).
+passes4(12720, 72383, skjettmyrbakken, 7, 4, 4).
 passes4(12720, 73714, møsta, 8, 5, 5).
 passes4(12720, 74332, krekabakken, 9, 6, 6).
 passes4(12720, 73399, ler, 10, 7, 7).
@@ -8687,7 +8687,7 @@ passes4(12724, 73626, lundabrua, 3, 0, 0).
 passes4(12724, 73615, lund, 4, 1, 1).
 passes4(12724, 74055, kjelstad, 5, 2, 2).
 passes4(12724, 73726, løhre, 6, 3, 3).
-passes4(12724, 72383, skjetnemyrbakken, 7, 4, 4).
+passes4(12724, 72383, skjettmyrbakken, 7, 4, 4).
 passes4(12724, 73714, møsta, 8, 5, 5).
 passes4(12724, 74332, krekabakken, 9, 6, 6).
 passes4(12724, 75284, flå_skole, 10, 9, 9).
@@ -8731,7 +8731,7 @@ passes4(12727, 73626, lundabrua, 3, 0, 0).
 passes4(12727, 73615, lund, 4, 2, 2).
 passes4(12727, 74055, kjelstad, 5, 3, 3).
 passes4(12727, 73726, løhre, 6, 4, 4).
-passes4(12727, 72383, skjetnemyrbakken, 7, 6, 6).
+passes4(12727, 72383, skjettmyrbakken, 7, 6, 6).
 passes4(12727, 74332, krekabakken, 8, 8, 8).
 passes4(12727, 75284, flå_skole, 9, 10, 10).
 
@@ -8740,7 +8740,7 @@ passes4(12728, 73626, lundabrua, 3, 0, 0).
 passes4(12728, 73615, lund, 4, 0, 0).
 passes4(12728, 74055, kjelstad, 5, 1, 1).
 passes4(12728, 73726, løhre, 6, 2, 2).
-passes4(12728, 72383, skjetnemyrbakken, 7, 4, 4).
+passes4(12728, 72383, skjettmyrbakken, 7, 4, 4).
 passes4(12728, 74332, krekabakken, 8, 6, 6).
 passes4(12728, 75284, flå_skole, 9, 8, 8).
 passes4(12728, 72081, simensbakken, 10, 10, 10).
@@ -13440,7 +13440,7 @@ passes4(13082, 73213, langlete_snuplass, 11, 12, 12).
 passes4(13082, 74663, dybdalsbakk, 12, 13, 13).
 passes4(13082, 74557, almåsøy, 13, 19, 19).
 passes4(13082, 74550, almås, 14, 19, 19).
-passes4(13082, 71307, reistøa, 15, 19, 19).
+passes4(13082, 71307, reitstøa, 15, 19, 19).
 passes4(13082, 71379, hindbjørgen, 16, 23, 23).
 passes4(13082, 74387, stornes, 17, 24, 24).
 passes4(13082, 72124, singsåsmoen, 18, 25, 25).
@@ -14119,7 +14119,7 @@ passes4(13140, 72123, singsåsmoen, 35, 56, 56).
 passes4(13140, 74388, stornes, 36, 57, 57).
 passes4(13140, 71378, hindbjørgen, 37, 60, 60).
 passes4(13140, 71767, hulta, 38, 62, 62).
-passes4(13140, 71306, reistøa, 39, 65, 65).
+passes4(13140, 71306, reitstøa, 39, 65, 65).
 passes4(13140, 74551, almås, 40, 66, 66).
 passes4(13140, 74556, almåsøy, 41, 70, 70).
 passes4(13140, 105861, hogstret, 42, 73, 73).
@@ -14159,7 +14159,7 @@ passes4(13141, 72123, singsåsmoen, 33, 33, 33).
 passes4(13141, 74388, stornes, 34, 34, 34).
 passes4(13141, 71378, hindbjørgen, 35, 35, 35).
 passes4(13141, 71767, hulta, 36, 36, 36).
-passes4(13141, 71306, reistøa, 37, 38, 38).
+passes4(13141, 71306, reitstøa, 37, 38, 38).
 passes4(13141, 74551, almås, 38, 39, 39).
 passes4(13141, 74556, almåsøy, 39, 40, 40).
 passes4(13141, 105861, hogstret, 40, 43, 43).
@@ -14182,7 +14182,7 @@ passes4(13142, 75303, bratteggen, 8, 14, 14).
 passes4(13142, 72106, singsås_skole, 9, 20, 20).
 
 passes4(13144, 74550, almås, 2, 999, 0).
-passes4(13144, 71307, reistøa, 3, 0, 0).
+passes4(13144, 71307, reitstøa, 3, 0, 0).
 passes4(13144, 71379, hindbjørgen, 4, 4, 4).
 passes4(13144, 74387, stornes, 5, 5, 5).
 passes4(13144, 72124, singsåsmoen, 6, 6, 6).
@@ -14197,7 +14197,7 @@ passes4(13144, 72106, singsås_skole, 13, 19, 19).
 passes4(13145, 105861, hogstret, 2, 999, 0).
 passes4(13145, 74557, almåsøy, 3, 2, 2).
 passes4(13145, 74550, almås, 4, 3, 3).
-passes4(13145, 71307, reistøa, 5, 3, 3).
+passes4(13145, 71307, reitstøa, 5, 3, 3).
 passes4(13145, 71379, hindbjørgen, 6, 8, 8).
 passes4(13145, 74387, stornes, 7, 9, 9).
 passes4(13145, 72124, singsåsmoen, 8, 10, 10).
@@ -14263,7 +14263,7 @@ passes4(13147, 72123, singsåsmoen, 9, 9, 9).
 passes4(13147, 74388, stornes, 10, 10, 10).
 passes4(13147, 71378, hindbjørgen, 11, 13, 13).
 passes4(13147, 71767, hulta, 12, 15, 15).
-passes4(13147, 71306, reistøa, 13, 18, 18).
+passes4(13147, 71306, reitstøa, 13, 18, 18).
 passes4(13147, 74551, almås, 14, 19, 19).
 passes4(13147, 74556, almåsøy, 15, 23, 23).
 passes4(13147, 105861, hogstret, 16, 26, 26).
@@ -14320,7 +14320,7 @@ passes4(13151, 72123, singsåsmoen, 35, 51, 51).
 passes4(13151, 74388, stornes, 36, 52, 52).
 passes4(13151, 71378, hindbjørgen, 37, 55, 55).
 passes4(13151, 71767, hulta, 38, 57, 57).
-passes4(13151, 71306, reistøa, 39, 60, 60).
+passes4(13151, 71306, reitstøa, 39, 60, 60).
 passes4(13151, 74551, almås, 40, 61, 61).
 passes4(13151, 74556, almåsøy, 41, 65, 65).
 passes4(13151, 105861, hogstret, 42, 68, 68).
@@ -15198,7 +15198,7 @@ passes4(13218, 75269, flyta, 9, 28, 28).
 passes4(13219, 72767, åsly_skole, 2, 999, 0).
 passes4(13219, 73240, sund, 3, 7, 7).
 passes4(13219, 71630, hopla, 4, 7, 7).
-passes4(13219, 73050, kvithylla, 5, 9, 9).
+passes4(13219, 73050, rissa_betong, 5, 9, 9).
 passes4(13219, 71300, torvet, 6, 12, 12).
 
 passes4(13220, 72767, åsly_skole, 2, 999, 0).
@@ -15375,7 +15375,7 @@ passes4(13235, 72198, vikan, 11, 25, 25).
 passes4(13236, 72767, åsly_skole, 2, 999, 0).
 passes4(13236, 73240, sund, 3, 2, 2).
 passes4(13236, 71628, hopla, 4, 4, 4).
-passes4(13236, 73050, kvithylla, 5, 6, 6).
+passes4(13236, 73050, rissa_betong, 5, 6, 6).
 passes4(13236, 71301, torvet, 6, 9, 9).
 passes4(13236, 107739, rylen, 7, 10, 10).
 passes4(13236, 75015, esvikflata, 8, 11, 11).
@@ -15457,7 +15457,7 @@ passes4(13240, 73802, slættet, 7, 7, 7).
 passes4(13240, 72425, skogen, 8, 10, 10).
 passes4(13240, 75015, esvikflata, 9, 11, 11).
 passes4(13240, 107739, rylen, 10, 13, 13).
-passes4(13240, 73051, kvithylla, 11, 16, 16).
+passes4(13240, 73051, rissa_betong, 11, 16, 16).
 passes4(13240, 71628, hopla, 12, 18, 18).
 passes4(13240, 73239, sund, 13, 19, 19).
 passes4(13240, 72767, åsly_skole, 14, 30, 30).
@@ -15483,7 +15483,7 @@ passes4(13241, 73802, slættet, 19, 34, 34).
 passes4(13241, 72425, skogen, 20, 37, 37).
 passes4(13241, 75015, esvikflata, 21, 38, 38).
 passes4(13241, 107739, rylen, 22, 39, 39).
-passes4(13241, 73051, kvithylla, 23, 39, 39).
+passes4(13241, 73051, rissa_betong, 23, 39, 39).
 passes4(13241, 71628, hopla, 24, 41, 41).
 passes4(13241, 73239, sund, 25, 43, 43).
 passes4(13241, 71405, rissa_skysstasjon, 26, 46, 46).
@@ -15491,7 +15491,7 @@ passes4(13241, 71405, rissa_skysstasjon, 26, 46, 46).
 passes4(13243, 71406, rissa_skysstasjon, 2, 999, 0).
 passes4(13243, 73240, sund, 3, 1, 1).
 passes4(13243, 71628, hopla, 4, 3, 3).
-passes4(13243, 73050, kvithylla, 5, 5, 5).
+passes4(13243, 73050, rissa_betong, 5, 5, 5).
 passes4(13243, 107739, rylen, 6, 8, 8).
 passes4(13243, 75015, esvikflata, 7, 12, 12).
 passes4(13243, 72426, skogen, 8, 14, 14).
@@ -53774,7 +53774,7 @@ passes4(4713, 72080, simensbakken, 24, 24, 24).
 passes4(4713, 75285, flå_skole, 25, 27, 27).
 passes4(4713, 73398, ler, 26, 30, 30).
 passes4(4713, 73713, møsta, 27, 32, 32).
-passes4(4713, 72382, skjetnemyrbakken, 28, 33, 33).
+passes4(4713, 72382, skjettmyrbakken, 28, 33, 33).
 passes4(4713, 73728, løhre, 29, 34, 34).
 passes4(4713, 74056, kjelstad, 30, 35, 35).
 passes4(4713, 73616, lund, 31, 35, 35).
@@ -58330,7 +58330,7 @@ passes4(8590, 74429, storsten, 19, 42, 42).
 passes4(8590, 74269, nyhus, 20, 43, 43).
 passes4(8590, 73398, ler, 21, 45, 45).
 passes4(8590, 73713, møsta, 22, 47, 47).
-passes4(8590, 72382, skjetnemyrbakken, 23, 48, 48).
+passes4(8590, 72382, skjettmyrbakken, 23, 48, 48).
 passes4(8590, 73728, løhre, 24, 49, 49).
 passes4(8590, 74056, kjelstad, 25, 50, 50).
 passes4(8590, 73616, lund, 26, 50, 50).
@@ -58373,7 +58373,7 @@ passes4(8591, 74429, storsten, 19, 42, 42).
 passes4(8591, 74269, nyhus, 20, 43, 43).
 passes4(8591, 73398, ler, 21, 45, 45).
 passes4(8591, 73713, møsta, 22, 47, 47).
-passes4(8591, 72382, skjetnemyrbakken, 23, 48, 48).
+passes4(8591, 72382, skjettmyrbakken, 23, 48, 48).
 passes4(8591, 73728, løhre, 24, 49, 49).
 passes4(8591, 74056, kjelstad, 25, 50, 50).
 passes4(8591, 73616, lund, 26, 50, 50).
@@ -58419,7 +58419,7 @@ passes4(8597, 74429, storsten, 20, 45, 45).
 passes4(8597, 74269, nyhus, 21, 46, 46).
 passes4(8597, 73398, ler, 22, 48, 48).
 passes4(8597, 73713, møsta, 23, 50, 50).
-passes4(8597, 72382, skjetnemyrbakken, 24, 51, 51).
+passes4(8597, 72382, skjettmyrbakken, 24, 51, 51).
 passes4(8597, 73728, løhre, 25, 52, 52).
 passes4(8597, 74056, kjelstad, 26, 53, 53).
 passes4(8597, 73616, lund, 27, 53, 53).
@@ -58467,7 +58467,7 @@ passes4(8604, 74429, storsten, 24, 44, 44).
 passes4(8604, 74269, nyhus, 25, 45, 45).
 passes4(8604, 73398, ler, 26, 47, 47).
 passes4(8604, 73713, møsta, 27, 49, 49).
-passes4(8604, 72382, skjetnemyrbakken, 28, 50, 50).
+passes4(8604, 72382, skjettmyrbakken, 28, 50, 50).
 passes4(8604, 73728, løhre, 29, 51, 51).
 passes4(8604, 74056, kjelstad, 30, 52, 52).
 passes4(8604, 73616, lund, 31, 52, 52).
@@ -58508,7 +58508,7 @@ passes4(8608, 73626, lundabrua, 17, 19, 19).
 passes4(8608, 73615, lund, 18, 20, 20).
 passes4(8608, 74055, kjelstad, 19, 21, 21).
 passes4(8608, 73726, løhre, 20, 22, 22).
-passes4(8608, 72383, skjetnemyrbakken, 21, 22, 22).
+passes4(8608, 72383, skjettmyrbakken, 21, 22, 22).
 passes4(8608, 73714, møsta, 22, 23, 23).
 passes4(8608, 73399, ler, 23, 25, 25).
 passes4(8608, 74268, nyhus, 24, 27, 27).
@@ -58555,7 +58555,7 @@ passes4(8609, 73626, lundabrua, 17, 19, 19).
 passes4(8609, 73615, lund, 18, 20, 20).
 passes4(8609, 74055, kjelstad, 19, 21, 21).
 passes4(8609, 73726, løhre, 20, 22, 22).
-passes4(8609, 72383, skjetnemyrbakken, 21, 22, 22).
+passes4(8609, 72383, skjettmyrbakken, 21, 22, 22).
 passes4(8609, 73714, møsta, 22, 23, 23).
 passes4(8609, 73399, ler, 23, 25, 25).
 passes4(8609, 74268, nyhus, 24, 27, 27).
@@ -58593,7 +58593,7 @@ passes4(8611, 73626, lundabrua, 17, 19, 19).
 passes4(8611, 73615, lund, 18, 20, 20).
 passes4(8611, 74055, kjelstad, 19, 21, 21).
 passes4(8611, 73726, løhre, 20, 22, 22).
-passes4(8611, 72383, skjetnemyrbakken, 21, 22, 22).
+passes4(8611, 72383, skjettmyrbakken, 21, 22, 22).
 passes4(8611, 73714, møsta, 22, 23, 23).
 passes4(8611, 73399, ler, 23, 25, 25).
 passes4(8611, 74268, nyhus, 24, 27, 27).
@@ -58636,7 +58636,7 @@ passes4(8616, 73626, lundabrua, 18, 19, 19).
 passes4(8616, 73615, lund, 19, 20, 20).
 passes4(8616, 74055, kjelstad, 20, 21, 21).
 passes4(8616, 73726, løhre, 21, 22, 22).
-passes4(8616, 72383, skjetnemyrbakken, 22, 22, 22).
+passes4(8616, 72383, skjettmyrbakken, 22, 22, 22).
 passes4(8616, 73714, møsta, 23, 23, 23).
 passes4(8616, 73399, ler, 24, 25, 25).
 passes4(8616, 74268, nyhus, 25, 27, 27).
@@ -58718,7 +58718,7 @@ passes4(8629, 74429, storsten, 17, 28, 28).
 passes4(8629, 74269, nyhus, 18, 29, 29).
 passes4(8629, 73398, ler, 19, 31, 31).
 passes4(8629, 73713, møsta, 20, 33, 33).
-passes4(8629, 72382, skjetnemyrbakken, 21, 34, 34).
+passes4(8629, 72382, skjettmyrbakken, 21, 34, 34).
 passes4(8629, 73728, løhre, 22, 35, 35).
 passes4(8629, 74056, kjelstad, 23, 36, 36).
 passes4(8629, 73616, lund, 24, 36, 36).
@@ -58757,7 +58757,7 @@ passes4(8630, 74429, storsten, 12, 16, 16).
 passes4(8630, 74269, nyhus, 13, 17, 17).
 passes4(8630, 73398, ler, 14, 19, 19).
 passes4(8630, 73713, møsta, 15, 21, 21).
-passes4(8630, 72382, skjetnemyrbakken, 16, 22, 22).
+passes4(8630, 72382, skjettmyrbakken, 16, 22, 22).
 passes4(8630, 73728, løhre, 17, 23, 23).
 passes4(8630, 74056, kjelstad, 18, 24, 24).
 passes4(8630, 73616, lund, 19, 24, 24).
@@ -58803,7 +58803,7 @@ passes4(8631, 73626, lundabrua, 19, 22, 22).
 passes4(8631, 73615, lund, 20, 23, 23).
 passes4(8631, 74055, kjelstad, 21, 24, 24).
 passes4(8631, 73726, løhre, 22, 25, 25).
-passes4(8631, 72383, skjetnemyrbakken, 23, 25, 25).
+passes4(8631, 72383, skjettmyrbakken, 23, 25, 25).
 passes4(8631, 73714, møsta, 24, 26, 26).
 passes4(8631, 73399, ler, 25, 28, 28).
 passes4(8631, 74268, nyhus, 26, 30, 30).
@@ -58837,7 +58837,7 @@ passes4(8632, 73626, lundabrua, 20, 23, 23).
 passes4(8632, 73615, lund, 21, 24, 24).
 passes4(8632, 74055, kjelstad, 22, 25, 25).
 passes4(8632, 73726, løhre, 23, 26, 26).
-passes4(8632, 72383, skjetnemyrbakken, 24, 26, 26).
+passes4(8632, 72383, skjettmyrbakken, 24, 26, 26).
 passes4(8632, 73714, møsta, 25, 27, 27).
 passes4(8632, 73399, ler, 26, 29, 29).
 passes4(8632, 74268, nyhus, 27, 31, 31).
@@ -58866,7 +58866,7 @@ passes4(8635, 74429, storsten, 12, 16, 16).
 passes4(8635, 74269, nyhus, 13, 17, 17).
 passes4(8635, 73398, ler, 14, 19, 19).
 passes4(8635, 73713, møsta, 15, 21, 21).
-passes4(8635, 72382, skjetnemyrbakken, 16, 22, 22).
+passes4(8635, 72382, skjettmyrbakken, 16, 22, 22).
 passes4(8635, 73728, løhre, 17, 23, 23).
 passes4(8635, 74056, kjelstad, 18, 24, 24).
 passes4(8635, 73616, lund, 19, 24, 24).
@@ -58912,7 +58912,7 @@ passes4(8641, 73626, lundabrua, 19, 22, 22).
 passes4(8641, 73615, lund, 20, 23, 23).
 passes4(8641, 74055, kjelstad, 21, 24, 24).
 passes4(8641, 73726, løhre, 22, 25, 25).
-passes4(8641, 72383, skjetnemyrbakken, 23, 25, 25).
+passes4(8641, 72383, skjettmyrbakken, 23, 25, 25).
 passes4(8641, 73714, møsta, 24, 26, 26).
 passes4(8641, 73399, ler, 25, 27, 27).
 passes4(8641, 74268, nyhus, 26, 29, 29).
@@ -58950,7 +58950,7 @@ passes4(8642, 73626, lundabrua, 15, 14, 14).
 passes4(8642, 73615, lund, 16, 15, 15).
 passes4(8642, 74055, kjelstad, 17, 16, 16).
 passes4(8642, 73726, løhre, 18, 17, 17).
-passes4(8642, 72383, skjetnemyrbakken, 19, 17, 17).
+passes4(8642, 72383, skjettmyrbakken, 19, 17, 17).
 passes4(8642, 73714, møsta, 20, 18, 18).
 passes4(8642, 73399, ler, 21, 20, 20).
 passes4(8642, 74268, nyhus, 22, 22, 22).
@@ -58994,7 +58994,7 @@ passes4(8643, 74429, storsten, 19, 42, 42).
 passes4(8643, 74269, nyhus, 20, 43, 43).
 passes4(8643, 73398, ler, 21, 45, 45).
 passes4(8643, 73713, møsta, 22, 47, 47).
-passes4(8643, 72382, skjetnemyrbakken, 23, 48, 48).
+passes4(8643, 72382, skjettmyrbakken, 23, 48, 48).
 passes4(8643, 73728, løhre, 24, 49, 49).
 passes4(8643, 74056, kjelstad, 25, 50, 50).
 passes4(8643, 73616, lund, 26, 50, 50).
@@ -59031,7 +59031,7 @@ passes4(8661, 73626, lundabrua, 15, 14, 14).
 passes4(8661, 73615, lund, 16, 15, 15).
 passes4(8661, 74055, kjelstad, 17, 16, 16).
 passes4(8661, 73726, løhre, 18, 17, 17).
-passes4(8661, 72383, skjetnemyrbakken, 19, 17, 17).
+passes4(8661, 72383, skjettmyrbakken, 19, 17, 17).
 passes4(8661, 73714, møsta, 20, 18, 18).
 passes4(8661, 73399, ler, 21, 20, 20).
 passes4(8661, 74268, nyhus, 22, 22, 22).
