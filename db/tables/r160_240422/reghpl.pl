@@ -389,7 +389,6 @@ hpl(104785,heimly,heimly,'Heimly').
 hpl(104852,nylandet,nylandet,'Nylandet').
 hpl(104853,nylandet,nylandet,'Nylandet').
 hpl(104869,kolstad_kirke,kolstad_kirke,'Kolstad kirke').
-hpl(104873,hembre_grus,hembre_grus,'Hembre grus').
 hpl(104897,hallansvingen,hallansvingen,'Hallansvingen').
 hpl(104965,øyum_gård,øyum_gård,'Øyum gård').
 hpl(105024,stormyra,stormyra,'Stormyra').
@@ -593,8 +592,6 @@ hpl(108957,stokksletta,stokksletta,'Stokksletta').
 hpl(108973,hitra_idrettspark,hitra_idrettspark,'Hitra idrettspark').
 hpl(108988,stabburet_barnehage,stabburet_barnehage,'Stabburet barnehage').
 hpl(109120,asbjørnsens_gate,asbjørnsens_gate,'Asbjørnsens gate').
-hpl(109132,sjøtrøa,sjøtrøa,'Sjøtrøa').
-hpl(109133,sjøtrøa,sjøtrøa,'Sjøtrøa').
 hpl(110093,vellamelen,vellamelen,'Vellamelen').
 hpl(110094,beitstad,beitstad,'Beitstad').
 hpl(110114,mosvik_skole,mosvik_skole,'Mosvik skole').
@@ -3062,7 +3059,6 @@ hpl(73820,nerdal,nerdal,'Nerdal').
 hpl(73821,nerdal,nerdal,'Nerdal').
 hpl(73822,jektvika,jektvika,'Jektvika').
 hpl(73823,jektvika,jektvika,'Jektvika').
-hpl(73824,smiskaret_rundkjøring,smiskaret_rundkjøring,'Smiskaret rundkjøring').
 hpl(73826,kalvhåggån,kalvhåggån,'Kalvhåggån').
 hpl(73827,jenshaugen,jenshaugen,'Jenshaugen').
 hpl(73828,jenshaugen,jenshaugen,'Jenshaugen').

@@ -1445,7 +1445,6 @@ composite_stat(hellesvik,[veikryss],hellesvik_veikryss).
 composite_stat(hellhaugan,[],hellhaugan).
 composite_stat(hello,[],hello).
 composite_stat(hellstranda,[],hellstranda).
-composite_stat(hembre,[grus],hembre_grus).
 composite_stat(hemnehallen,[],hemnehallen).
 composite_stat(hemnskjel,[],hemnskjel).
 composite_stat(hemnskjela,[oppvekstsenter],hemnskjela_oppvekstsenter).
@@ -3479,7 +3478,6 @@ composite_stat(sjølia,[],sjølia).
 composite_stat(sjølstad,[],sjølstad).
 composite_stat(sjølyst,[],sjølyst).
 composite_stat(sjømark,[],sjømark).
-composite_stat(sjøtrøa,[],sjøtrøa).
 composite_stat(sjøvegen,[],sjøvegen).
 composite_stat(sjøåsen,[],sjøåsen).
 composite_stat(skaftnes,[vegdele],skaftnes_vegdele).
@@ -3656,7 +3654,6 @@ composite_stat(smeplassen,[],smeplassen).
 composite_stat(smevika,[],smevika).
 composite_stat(smines,[],smines).
 composite_stat(smiskaret,[],smiskaret).
-composite_stat(smiskaret,[rundkjøring],smiskaret_rundkjøring).
 composite_stat(smolan,[],smolan).
 composite_stat(småenget,[],småenget).
 composite_stat(smågesjø,[],smågesjø).
