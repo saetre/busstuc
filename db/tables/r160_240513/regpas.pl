@@ -20184,7 +20184,7 @@ passes4(18273, 108973, hitra_idrettspark, 2, 999, 0).
 passes4(18273, 110230, kystmuseet, 3, 2, 2).
 passes4(18273, 74505, dalpro, 4, 6, 6).
 passes4(18273, 72368, vollen, 5, 8, 8).
-passes4(18273, 73067, strøm, 6, 18, 18).
+passes4(18273, 73067, straum, 6, 18, 18).
 passes4(18273, 71149, helgbostad, 7, 28, 28).
 passes4(18273, 72262, gryta, 8, 32, 32).
 passes4(18273, 73172, langdal, 9, 33, 33).
@@ -20192,7 +20192,7 @@ passes4(18273, 71702, tømmervik, 10, 34, 34).
 passes4(18273, 104488, kvenvær_oppvekstsenter, 11, 39, 39).
 passes4(18273, 72986, kvenvær, 12, 40, 40).
 passes4(18273, 72990, kvenvær_kirke, 13, 41, 41).
-passes4(18273, 71282, hernes_kryss, 14, 45, 45).
+passes4(18273, 71282, herneskrysset, 14, 45, 45).
 passes4(18273, 74593, anderskog, 15, 52, 52).
 passes4(18273, 74762, aunvågen, 16, 59, 59).
 passes4(18273, 75358, forsnes, 17, 63, 63).
@@ -20204,7 +20204,7 @@ passes4(18274, 73484, murvold, 3, 4, 4).
 passes4(18274, 75359, forsnes, 4, 7, 7).
 passes4(18274, 74763, aunvågen, 5, 11, 11).
 passes4(18274, 74594, anderskog, 6, 17, 17).
-passes4(18274, 71283, hernes_kryss, 7, 24, 24).
+passes4(18274, 71283, herneskrysset, 7, 24, 24).
 passes4(18274, 72991, kvenvær_kirke, 8, 28, 28).
 passes4(18274, 72985, kvenvær, 9, 29, 29).
 passes4(18274, 104489, kvenvær_oppvekstsenter, 10, 30, 30).
@@ -20212,7 +20212,7 @@ passes4(18274, 71705, tømmervik, 11, 35, 35).
 passes4(18274, 73173, langdal, 12, 37, 37).
 passes4(18274, 72261, gryta, 13, 39, 39).
 passes4(18274, 71149, helgbostad, 14, 43, 43).
-passes4(18274, 73066, strøm, 15, 53, 53).
+passes4(18274, 73066, straum, 15, 53, 53).
 passes4(18274, 72367, vollen, 16, 61, 61).
 passes4(18274, 74507, dalpro, 17, 65, 65).
 passes4(18274, 110231, kystmuseet, 18, 69, 69).
@@ -20224,7 +20224,7 @@ passes4(18275, 73484, murvold, 3, 3, 3).
 passes4(18275, 75359, forsnes, 4, 5, 5).
 passes4(18275, 74763, aunvågen, 5, 16, 16).
 passes4(18275, 74594, anderskog, 6, 22, 22).
-passes4(18275, 71283, hernes_kryss, 7, 29, 29).
+passes4(18275, 71283, herneskrysset, 7, 29, 29).
 passes4(18275, 72991, kvenvær_kirke, 8, 33, 33).
 passes4(18275, 72985, kvenvær, 9, 34, 34).
 passes4(18275, 104489, kvenvær_oppvekstsenter, 10, 35, 35).
@@ -20232,7 +20232,7 @@ passes4(18275, 71705, tømmervik, 11, 40, 40).
 passes4(18275, 73173, langdal, 12, 42, 42).
 passes4(18275, 72261, gryta, 13, 44, 44).
 passes4(18275, 71149, helgbostad, 14, 48, 48).
-passes4(18275, 73066, strøm, 15, 58, 58).
+passes4(18275, 73066, straum, 15, 58, 58).
 passes4(18275, 72367, vollen, 16, 68, 68).
 passes4(18275, 74507, dalpro, 17, 70, 70).
 passes4(18275, 110231, kystmuseet, 18, 74, 74).
@@ -20242,7 +20242,7 @@ passes4(18276, 105352, guri_kunna_vgs, 2, 999, 0).
 passes4(18276, 110230, kystmuseet, 3, 2, 2).
 passes4(18276, 74505, dalpro, 4, 6, 6).
 passes4(18276, 72368, vollen, 5, 8, 8).
-passes4(18276, 73067, strøm, 6, 18, 18).
+passes4(18276, 73067, straum, 6, 18, 18).
 
 passes4(18277, 72985, kvenvær, 2, 999, 0).
 passes4(18277, 104489, kvenvær_oppvekstsenter, 3, 1, 1).
@@ -20250,7 +20250,7 @@ passes4(18277, 71705, tømmervik, 4, 6, 6).
 passes4(18277, 73173, langdal, 5, 8, 8).
 passes4(18277, 72261, gryta, 6, 10, 10).
 passes4(18277, 71149, helgbostad, 7, 14, 14).
-passes4(18277, 73066, strøm, 8, 24, 24).
+passes4(18277, 73066, straum, 8, 24, 24).
 passes4(18277, 72367, vollen, 9, 32, 32).
 passes4(18277, 74507, dalpro, 10, 36, 36).
 passes4(18277, 110231, kystmuseet, 11, 40, 40).
@@ -20261,7 +20261,7 @@ passes4(18278, 108973, hitra_idrettspark, 2, 999, 0).
 passes4(18278, 110230, kystmuseet, 3, 2, 2).
 passes4(18278, 74505, dalpro, 4, 6, 6).
 passes4(18278, 72368, vollen, 5, 8, 8).
-passes4(18278, 73067, strøm, 6, 18, 18).
+passes4(18278, 73067, straum, 6, 18, 18).
 passes4(18278, 71149, helgbostad, 7, 28, 28).
 passes4(18278, 72262, gryta, 8, 32, 32).
 passes4(18278, 73172, langdal, 9, 34, 34).
@@ -20277,7 +20277,7 @@ passes4(18279, 72281, vikstrømkrysset, 5, 6, 6).
 passes4(18279, 72789, melandsjø, 6, 10, 10).
 passes4(18279, 73831, smågesjø, 7, 22, 22).
 passes4(18279, 74680, asmundvåg, 8, 27, 27).
-passes4(18279, 73067, strøm, 9, 32, 32).
+passes4(18279, 73067, straum, 9, 32, 32).
 passes4(18279, 72368, vollen, 10, 38, 38).
 
 passes4(18280, 108973, hitra_idrettspark, 2, 999, 0).
@@ -20294,10 +20294,10 @@ passes4(18280, 72789, melandsjø, 12, 22, 22).
 passes4(18280, 73831, smågesjø, 13, 34, 34).
 passes4(18280, 71318, hestnes, 14, 41, 41).
 passes4(18280, 74680, asmundvåg, 15, 51, 51).
-passes4(18280, 73067, strøm, 16, 56, 56).
+passes4(18280, 73067, straum, 16, 56, 56).
 passes4(18280, 72368, vollen, 17, 62, 62).
 
-passes4(18281, 73066, strøm, 2, 999, 0).
+passes4(18281, 73066, straum, 2, 999, 0).
 passes4(18281, 74681, asmundvåg, 3, 5, 5).
 passes4(18281, 71318, hestnes, 4, 10, 10).
 passes4(18281, 73830, smågesjø, 5, 17, 17).
@@ -20415,7 +20415,7 @@ passes4(18291, 110231, kystmuseet, 12, 27, 27).
 passes4(18291, 108973, hitra_idrettspark, 13, 30, 30).
 
 passes4(18292, 72368, vollen, 2, 999, 0).
-passes4(18292, 73066, strøm, 3, 8, 8).
+passes4(18292, 73066, straum, 3, 8, 8).
 passes4(18292, 74681, asmundvåg, 4, 14, 14).
 passes4(18292, 71318, hestnes, 5, 20, 20).
 passes4(18292, 73830, smågesjø, 6, 27, 27).
@@ -20431,7 +20431,7 @@ passes4(18292, 74507, dalpro, 15, 54, 54).
 passes4(18292, 110231, kystmuseet, 16, 58, 58).
 passes4(18292, 108973, hitra_idrettspark, 17, 61, 61).
 
-passes4(18293, 73066, strøm, 2, 999, 0).
+passes4(18293, 73066, straum, 2, 999, 0).
 passes4(18293, 74681, asmundvåg, 3, 5, 5).
 passes4(18293, 71318, hestnes, 4, 10, 10).
 passes4(18293, 73830, smågesjø, 5, 17, 17).

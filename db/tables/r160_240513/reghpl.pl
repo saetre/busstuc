@@ -910,8 +910,8 @@ hpl(71275,rate,rate,'Rate').
 hpl(71277,raudberget,raudberget,'Raudberget').
 hpl(71280,raustein,raustein,'Raustein').
 hpl(71281,raustein,raustein,'Raustein').
-hpl(71282,hernes_kryss,hernes_kryss,'Hernes kryss').
-hpl(71283,hernes_kryss,hernes_kryss,'Hernes kryss').
+hpl(71282,herneskrysset,herneskrysset,'Herneskrysset').
+hpl(71283,herneskrysset,herneskrysset,'Herneskrysset').
 hpl(71285,tors_veg,tors_veg,'Tors veg').
 hpl(71286,refset,refset,'Refset').
 hpl(71287,herremsveien,herremsveien,'Herremsveien').
@@ -2443,8 +2443,8 @@ hpl(73062,mjukliveien,mjukliveien,'Mjukliveien').
 hpl(73063,mjukliveien,mjukliveien,'Mjukliveien').
 hpl(73064,kvål,kvål,'Kvål').
 hpl(73065,kvål,kvål,'Kvål').
-hpl(73066,strøm,strøm,'Strøm').
-hpl(73067,strøm,strøm,'Strøm').
+hpl(73066,straum,straum,'Straum').
+hpl(73067,straum,straum,'Straum').
 hpl(73068,kvåle,kvåle,'Kvåle').
 hpl(73069,kvåle,kvåle,'Kvåle').
 hpl(73070,strømmevolden,strømmevolden,'Strømmevolden').

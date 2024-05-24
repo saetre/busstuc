@@ -1476,7 +1476,7 @@ composite_stat(herlofsonløypa,[],herlofsonløypa).
 composite_stat(hermanstad,[],hermanstad).
 composite_stat(hermstad,[],hermstad).
 composite_stat(hermundsli,[],hermundsli).
-composite_stat(hernes,[kryss],hernes_kryss).
+composite_stat(herneskrysset,[],herneskrysset).
 composite_stat(herrem,[street],herremsveien). % generated 4.1
 composite_stat(herrem,[veien],herremsveien). % generated 4.0
 composite_stat(herrem_street,[],herremsveien). % generated 4.2
@@ -3988,7 +3988,6 @@ composite_stat(strindheim,[skole],strindheim_skole).
 composite_stat(strindmoen,[],strindmoen).
 composite_stat(stråmyra,[],stråmyra).
 composite_stat(stræte,[],stræte).
-composite_stat(strøm,[],strøm).
 composite_stat(strømbrua,[],strømbrua).
 composite_stat(strømhylla,[],strømhylla).
 composite_stat(strømlia,[],strømlia).
