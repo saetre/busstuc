@@ -821,7 +821,7 @@ hpl(71145,tilset,tilset,'Tilset').
 hpl(71146,tilset,tilset,'Tilset').
 hpl(71147,sluppenvegen_9,sluppenvegen_9,'Sluppenvegen 9').
 hpl(71148,sluppenvegen_8,sluppenvegen_8,'Sluppenvegen 8').
-hpl(71149,helgbostad,helgbostad,'Helgbostad').
+hpl(71149,helgbustadkrysset,helgbustadkrysset,'Helgbustadkrysset').
 hpl(71151,titran,titran,'Titran').
 hpl(71152,titran,titran,'Titran').
 hpl(71154,heliveien,heliveien,'Heliveien').
@@ -1541,8 +1541,8 @@ hpl(71993,selva,selva,'Selva').
 hpl(71994,høvik,høvik,'Høvik').
 hpl(71995,selva,selva,'Selva').
 hpl(71996,høvik,høvik,'Høvik').
-hpl(71997,selvåg,selvåg,'Selvåg').
-hpl(71998,selvåg,selvåg,'Selvåg').
+hpl(71997,selvågan,selvågan,'Selvågan').
+hpl(71998,selvågan,selvågan,'Selvågan').
 hpl(71999,høvringen,høvringen,'Høvringen').
 hpl(72000,høvringen,høvringen,'Høvringen').
 hpl(72001,vaslag,vaslag,'Vaslag').
@@ -2819,11 +2819,11 @@ hpl(73476,lialøkken,lialøkken,'Lialøkken').
 hpl(73477,lialøkken,lialøkken,'Lialøkken').
 hpl(73478,sæter,sæter,'Sæter').
 hpl(73479,sæter,sæter,'Sæter').
-hpl(73480,murvold,murvold,'Murvold').
+hpl(73480,morvollan,morvollan,'Morvollan').
 hpl(73481,lian,lian,'Lian').
 hpl(73482,sæterbakken,sæterbakken,'Sæterbakken').
 hpl(73483,sæterbakken,sæterbakken,'Sæterbakken').
-hpl(73484,murvold,murvold,'Murvold').
+hpl(73484,morvollan,morvollan,'Morvollan').
 hpl(73485,myra,myra,'Myra').
 hpl(73487,sætergård,sætergård,'Sætergård').
 hpl(73488,sætergård,sætergård,'Sætergård').
@@ -3125,8 +3125,8 @@ hpl(73826,kalvhåggån,kalvhåggån,'Kalvhåggån').
 hpl(73827,jenshaugen,jenshaugen,'Jenshaugen').
 hpl(73828,jenshaugen,jenshaugen,'Jenshaugen').
 hpl(73829,småenget,småenget,'Småenget').
-hpl(73830,smågesjø,smågesjø,'Smågesjø').
-hpl(73831,smågesjø,smågesjø,'Smågesjø').
+hpl(73830,småge,småge,'Småge').
+hpl(73831,småge,småge,'Småge').
 hpl(73832,jensvolden,jensvolden,'Jensvolden').
 hpl(73833,jensvolden,jensvolden,'Jensvolden').
 hpl(73834,nerskogen_skole,nerskogen_skole,'Nerskogen skole').

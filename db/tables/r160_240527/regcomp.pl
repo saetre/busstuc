@@ -1432,7 +1432,7 @@ composite_stat(heimstad,[],heimstad).
 composite_stat(heistad,[],heistad).
 composite_stat(heitlo,[],heitlo).
 composite_stat(helbostad,[],helbostad).
-composite_stat(helgbostad,[],helgbostad).
+composite_stat(helgbustadkrysset,[],helgbustadkrysset).
 composite_stat(helge,[street],helgesvegen). % generated 4.1
 composite_stat(helge,[vegen],helgesvegen). % generated 4.0
 composite_stat(helge_street,[],helgesvegen). % generated 4.2
@@ -2628,6 +2628,7 @@ composite_stat(morset,[],morset).
 composite_stat(morsetkrysset,[],morsetkrysset).
 composite_stat(mortensen,[],mortensen).
 composite_stat(mortenslund,[],mortenslund).
+composite_stat(morvollan,[],morvollan).
 composite_stat(moshaug,[],moshaug).
 composite_stat(moshaugan,[],moshaugan).
 composite_stat(moslet,[bru],moslet_bru).
@@ -2660,7 +2661,6 @@ composite_stat(murbrekk,[],murbrekk).
 composite_stat(murumoen,[],murumoen).
 composite_stat(muruvik,[],muruvik).
 composite_stat(muruvik,[rundkjøringen],muruvik_rundkjøringen).
-composite_stat(murvold,[],murvold).
 composite_stat(museet,[],museet).
 composite_stat(mykkelmoen,[],mykkelmoen).
 composite_stat(mykkelvika,[],mykkelvika).
@@ -3430,7 +3430,7 @@ composite_stat(selnes,[vegdele],selnes_vegdele).
 composite_stat(selsbakk,[],selsbakk).
 composite_stat(selsbakkflata,[],selsbakkflata).
 composite_stat(selva,[],selva).
-composite_stat(selvåg,[],selvåg).
+composite_stat(selvågan,[],selvågan).
 composite_stat(sem,[skole],sem_skole).
 composite_stat(semshaugen,[],semshaugen).
 composite_stat(semsøra,[],semsøra).
@@ -3688,7 +3688,7 @@ composite_stat(smiskaret,[],smiskaret).
 composite_stat(smiskaret,[rundkjøring],smiskaret_rundkjøring).
 composite_stat(smolan,[],smolan).
 composite_stat(småenget,[],småenget).
-composite_stat(smågesjø,[],smågesjø).
+composite_stat(småge,[],småge).
 composite_stat(småland,[],småland).
 composite_stat(småland,[vuku],småland_vuku).
 composite_stat(smålandsbakkan,[],smålandsbakkan).
