@@ -1335,8 +1335,8 @@ hpl(71757,udduvoll_bru_vest,udduvoll_bru_vest,'Udduvoll bru vest').
 hpl(71758,saga,saga,'Saga').
 hpl(71759,sagberget,sagberget,'Sagberget').
 hpl(71760,sagberget,sagberget,'Sagberget').
-hpl(71761,hullet,hullet,'Hullet').
-hpl(71762,hullet,hullet,'Hullet').
+hpl(71761,holet,holet,'Holet').
+hpl(71762,holet,holet,'Holet').
 hpl(71763,udduvoll_bru_øst,udduvoll_bru_øst,'Udduvoll bru øst').
 hpl(71764,udduvoll_bru_øst,udduvoll_bru_øst,'Udduvoll bru øst').
 hpl(71765,sagen,sagen,'Sagen').
@@ -1836,8 +1836,8 @@ hpl(72332,vinje_kirke,vinje_kirke,'Vinje kirke').
 hpl(72333,grøtvågen,grøtvågen,'Grøtvågen').
 hpl(72334,grøtvågen,grøtvågen,'Grøtvågen').
 hpl(72335,vinje_kirke,vinje_kirke,'Vinje kirke').
-hpl(72336,skjellvik,skjellvik,'Skjellvik').
-hpl(72337,skjellvik,skjellvik,'Skjellvik').
+hpl(72336,skjelvik,skjelvik,'Skjelvik').
+hpl(72337,skjelvik,skjelvik,'Skjelvik').
 hpl(72338,vinjeøra,vinjeøra,'Vinjeøra').
 hpl(72341,skjephaug,skjephaug,'Skjephaug').
 hpl(72342,skjephaug,skjephaug,'Skjephaug').
@@ -2386,8 +2386,8 @@ hpl(72990,kvenvær_kirke,kvenvær_kirke,'Kvenvær kirke').
 hpl(72991,kvenvær_kirke,kvenvær_kirke,'Kvenvær kirke').
 hpl(72992,midtaune,midtaune,'Midtaune').
 hpl(72993,midtaune,midtaune,'Midtaune').
-hpl(72994,stranden,stranden,'Stranden').
-hpl(72995,stranden,stranden,'Stranden').
+hpl(72994,stranda,stranda,'Stranda').
+hpl(72995,stranda,stranda,'Stranda').
 hpl(72996,kvernengan,kvernengan,'Kvernengan').
 hpl(72997,kvernengan,kvernengan,'Kvernengan').
 hpl(72998,kvernland,kvernland,'Kvernland').
@@ -2468,8 +2468,8 @@ hpl(73080,mjøagrenda,mjøagrenda,'Mjøagrenda').
 hpl(73081,kvålskroken,kvålskroken,'Kvålskroken').
 hpl(73082,strømøy,strømøy,'Strømøy').
 hpl(73083,strømøy,strømøy,'Strømøy').
-hpl(73084,kværnø,kværnø,'Kværnø').
-hpl(73085,kværnø,kværnø,'Kværnø').
+hpl(73084,kvernøy,kvernøy,'Kvernøy').
+hpl(73085,kvernøy,kvernøy,'Kvernøy').
 hpl(73086,mjønes,mjønes,'Mjønes').
 hpl(73087,mjønes,mjønes,'Mjønes').
 hpl(73088,kyrksæterøra,kyrksæterøra,'Kyrksæterøra').
@@ -3604,8 +3604,8 @@ hpl(74408,storsand,storsand,'Storsand').
 hpl(74409,storsand,storsand,'Storsand').
 hpl(74410,kråka,kråka,'Kråka').
 hpl(74411,kråka,kråka,'Kråka').
-hpl(74412,ohraheia,ohraheia,'Ohraheia').
-hpl(74413,ohraheia,ohraheia,'Ohraheia').
+hpl(74412,urdaheia,urdaheia,'Urdaheia').
+hpl(74413,urdaheia,urdaheia,'Urdaheia').
 hpl(74414,storsand_1,storsand_1,'Storsand 1').
 hpl(74415,storsand_1,storsand_1,'Storsand 1').
 hpl(74416,kråkdalen,kråkdalen,'Kråkdalen').
