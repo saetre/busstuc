@@ -1112,6 +1112,7 @@ composite_stat(gjønnes,[],gjønnes).
 composite_stat(gjønnum,[],gjønnum).
 composite_stat(gjørvsjøen,[],gjørvsjøen).
 composite_stat(gjøssvika,[bru],gjøssvika_bru).
+composite_stat(gladse,[],gladse).
 composite_stat(gladsø,[nord],gladsø_nord).
 composite_stat(gladsø,[sør],gladsø_sør).
 composite_stat(gluggbekken,[],gluggbekken).
@@ -3556,6 +3557,7 @@ composite_stat(skei_street,[],skeisveien). % generated 4.2
 composite_stat(skeiet,[],skeiet).
 composite_stat(skeikorsen,[],skeikorsen).
 composite_stat(skeikrysset,[],skeikrysset).
+composite_stat(skeismoen,[],skeismoen).
 composite_stat(skeisveien,[],skeisveien).
 composite_stat(skevik,[],skevik).
 composite_stat(skiftkroken,[],skiftkroken).

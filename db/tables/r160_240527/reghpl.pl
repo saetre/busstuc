@@ -520,6 +520,7 @@ hpl(106848,coop_venn,coop_venn,'Coop Venn').
 hpl(106866,namsskogan_familiepark_hotell,namsskogan_familiepark_hotell,'Namsskogan Familiepark Hotell').
 hpl(106867,breifossen_kro,breifossen_kro,'Breifossen kro').
 hpl(106875,circle_k_høylandet,circle_k_høylandet,'Circle K Høylandet').
+hpl(106889,skeismoen,skeismoen,'Skeismoen').
 hpl(106909,tjønnmoen,tjønnmoen,'Tjønnmoen').
 hpl(106912,brattsberg,brattsberg,'Brattsberg').
 hpl(106951,skogstadvegen,skogstadvegen,'Skogstadvegen').
@@ -641,6 +642,7 @@ hpl(109227,meieriparken,meieriparken,'Meieriparken').
 hpl(109228,meieriparken,meieriparken,'Meieriparken').
 hpl(109229,libra,libra,'Libra').
 hpl(109230,libra,libra,'Libra').
+hpl(109234,gladse,gladse,'Gladse').
 hpl(109246,sætran,sætran,'Sætran').
 hpl(109247,sætran,sætran,'Sætran').
 hpl(109254,nordstuggu,nordstuggu,'Nordstuggu').
@@ -3368,6 +3370,7 @@ hpl(74114,staurset,staurset,'Staurset').
 hpl(74115,kleiva,kleiva,'Kleiva').
 hpl(74116,kleiva,kleiva,'Kleiva').
 hpl(74117,stav,stav,'Stav').
+hpl(74118,nordsetrønningen,nordsetrønningen,'Nordsetrønningen').
 hpl(74119,stav,stav,'Stav').
 hpl(74120,kleivan,kleivan,'Kleivan').
 hpl(74121,kleivan,kleivan,'Kleivan').
