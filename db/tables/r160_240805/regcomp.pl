@@ -2,7 +2,6 @@
 composite_stat(aakvik,[],aakvik).
 composite_stat(abelvær,[],abelvær).
 composite_stat(abelvær,[hurtigbåtkai],abelvær_hurtigbåtkai).
-composite_stat(abelvær,[skole],abelvær_skole).
 composite_stat(agholtet,[],agholtet).
 composite_stat(agle,[],agle).
 composite_stat(agle,[vest],agle_vest).
@@ -2251,7 +2250,6 @@ composite_stat(leksvik,[kommunehus],leksvik_kommunehus).
 composite_stat(leland,[],leland).
 composite_stat(lenes,[],lenes).
 composite_stat(lennavika,[],lennavika).
-composite_stat(lensvik,[],lensvik).
 composite_stat(lensvik,[hurtigbåtkai],lensvik_hurtigbåtkai).
 composite_stat(lensvik,[skole],lensvik_skole).
 composite_stat(ler,[],ler).
@@ -2960,10 +2958,6 @@ composite_stat(ole,[rossveg],ole_ross_veg). % generated 2.0
 composite_stat(ole,[vig, vgs, sutterøy],ole_vig_vgs_sutterøy).
 composite_stat(olsvik,[],olsvik).
 composite_stat(olsøya,[],olsøya).
-composite_stat(omkjøringsveien,[klæbu, street],omkjøringsveien_klæbuveien). % generated 6.2
-composite_stat(omkjøringsveien,[klæbu, veien],omkjøringsveien_klæbuveien). % generated 6.1
-composite_stat(omkjøringsveien,[klæbu_street],omkjøringsveien_klæbuveien). % generated 6.0
-composite_stat(omkjøringsveien,[klæbuveien],omkjøringsveien_klæbuveien).
 composite_stat(omkjøringsveien,[moholt],omkjøringsveien_moholt).
 composite_stat(omkjøringsveien,[nardo],omkjøringsveien_nardo).
 composite_stat(ommunddalen,[],ommunddalen).
@@ -3689,7 +3683,6 @@ composite_stat(snorroegga,[],snorroegga).
 composite_stat(snuplass,[almlia],snuplass_almlia).
 composite_stat(snuplass,[rampa],snuplass_rampa).
 composite_stat(snuplass,[sandneset],snuplass_sandneset).
-composite_stat(snåsa,[hotell],snåsa_hotell).
 composite_stat(snåsa,[skole],snåsa_skole).
 composite_stat(snåsa,[stasjon],snåsa_stasjon).
 composite_stat(snøan,[],snøan).
