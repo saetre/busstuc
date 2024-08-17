@@ -75,10 +75,6 @@ composite_stat(asbjørn,[øverås, street],asbjørn_øverås_veg). % generated 2
 composite_stat(asbjørn,[øverås, veg],asbjørn_øverås_veg).
 composite_stat(asbjørn,[øverås_street],asbjørn_øverås_veg). % generated 2.1
 composite_stat(asbjørn,[øveråsveg],asbjørn_øverås_veg). % generated 2.0
-composite_stat(asbjørnsens,[gate],asbjørnsens_gate).
-composite_stat(asbjørnsens,[street],asbjørnsens_gate). % generated 1.2
-composite_stat(asbjørnsens_street,[],asbjørnsens_gate). % generated 1.1
-composite_stat(asbjørnsensgate,[],asbjørnsens_gate). % generated 1.0
 composite_stat(asbjørnslettet,[],asbjørnslettet).
 composite_stat(askeladdvegen,[],askeladdvegen).
 composite_stat(asklund,[],asklund).
@@ -994,7 +990,6 @@ composite_stat(frøset,[],frøset).
 composite_stat(frøsetfeltet,[],frøsetfeltet).
 composite_stat(frøsetveien,[],frøsetveien).
 composite_stat(frøstad,[],frøstad).
-composite_stat(frøvarpvegen,[],frøvarpvegen).
 composite_stat(frøya,[kulturhus],frøya_kulturhus).
 composite_stat(frøya,[sykehjem],frøya_sykehjem).
 composite_stat(fuglem,[],fuglem).
@@ -3624,6 +3619,7 @@ composite_stat(skovgård,[3],skovgård_3).
 composite_stat(skredavegen,[],skredavegen).
 composite_stat(skreddervik,[],skreddervik).
 composite_stat(skrevstadkorsen,[],skrevstadkorsen).
+composite_stat(skrove,[østre],skrove_østre).
 composite_stat(skruen,[],skruen).
 composite_stat(skulvegen,[],skulvegen).
 composite_stat(skuruvegen,[],skuruvegen).
@@ -4206,7 +4202,6 @@ composite_stat(titran,[skole],titran_skole).
 composite_stat(tjennaråsen,[],tjennaråsen).
 composite_stat(tjønnan,[],tjønnan).
 composite_stat(tjønnbakken,[],tjønnbakken).
-composite_stat(tjønnlia,[],tjønnlia).
 composite_stat(tjønnmoen,[],tjønnmoen).
 composite_stat(tjønnstua,[],tjønnstua).
 composite_stat(toddum,[],toddum).
