@@ -642,6 +642,7 @@ hpl(109424,vestre_hoven,vestre_hoven,'Vestre Hoven').
 hpl(109431,byavegen_156,byavegen_156,'Byavegen 156').
 hpl(109442,skrove_østre,skrove_østre,'Skrove Østre').
 hpl(109443,skrove_østre,skrove_østre,'Skrove Østre').
+hpl(109448,stuggu,stuggu,'Stuggu').
 hpl(110093,vellamelen,vellamelen,'Vellamelen').
 hpl(110094,beitstad,beitstad,'Beitstad').
 hpl(110114,mosvik_skole,mosvik_skole,'Mosvik skole').
@@ -1741,8 +1742,8 @@ hpl(72241,vikhammer_3,vikhammer_3,'Vikhammer 3').
 hpl(72242,vikhammer_2,vikhammer_2,'Vikhammer 2').
 hpl(72243,grunnsjømyra,grunnsjømyra,'Grunnsjømyra').
 hpl(72244,grunnsjømyra,grunnsjømyra,'Grunnsjømyra').
-hpl(72245,skaudal_skole,skaudal_skole,'Skaudal skole').
-hpl(72246,skaudal_skole,skaudal_skole,'Skaudal skole').
+hpl(72245,skaugdal_skole,skaugdal_skole,'Skaugdal skole').
+hpl(72246,skaugdal_skole,skaugdal_skole,'Skaugdal skole').
 hpl(72247,vikhammer_skole,vikhammer_skole,'Vikhammer skole').
 hpl(72248,vikhammer_skole,vikhammer_skole,'Vikhammer skole').
 hpl(72249,grut,grut,'Grut').
@@ -5063,7 +5064,6 @@ hpl(76139,eide,eide,'Eide').
 hpl(76140,eide,eide,'Eide').
 hpl(76141,kyllo,kyllo,'Kyllo').
 hpl(76142,bangsund_vegdele,bangsund_vegdele,'Bangsund vegdele').
-hpl(76143,kyllo,kyllo,'Kyllo').
 hpl(76144,bangsund_vegdele,bangsund_vegdele,'Bangsund vegdele').
 hpl(76145,eidesmoen,eidesmoen,'Eidesmoen').
 hpl(76146,eidesmoen,eidesmoen,'Eidesmoen').
@@ -5616,7 +5616,6 @@ hpl(76888,stordalsvold,stordalsvold,'Stordalsvold').
 hpl(76889,høylandet_kommunehus,høylandet_kommunehus,'Høylandet kommunehus').
 hpl(76890,høylandet_kommunehus,høylandet_kommunehus,'Høylandet kommunehus').
 hpl(76893,kyllobakkan,kyllobakkan,'Kyllobakkan').
-hpl(76894,kyllobakkan,kyllobakkan,'Kyllobakkan').
 hpl(76895,høylandet_øst,høylandet_øst,'Høylandet øst').
 hpl(76896,høylandet_øst,høylandet_øst,'Høylandet øst').
 hpl(76897,nybø,nybø,'Nybø').

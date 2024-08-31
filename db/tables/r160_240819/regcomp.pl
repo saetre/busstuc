@@ -3516,8 +3516,8 @@ composite_stat(skatval,[kirke],skatval_kirke).
 composite_stat(skatval,[skole],skatval_skole).
 composite_stat(skatval,[stasjon],skatval_stasjon).
 composite_stat(skatvalskorsen,[],skatvalskorsen).
-composite_stat(skaudal,[skole],skaudal_skole).
 composite_stat(skaugabrua,[],skaugabrua).
+composite_stat(skaugdal,[skole],skaugdal_skole).
 composite_stat(skaukorsen,[],skaukorsen).
 composite_stat(skauma,[bru],skauma_bru).
 composite_stat(skaun,[bensinstasjon],skaun_bensinstasjon).
@@ -3978,6 +3978,7 @@ composite_stat(studentersamfundet,[2],studentersamfundet_2).
 composite_stat(studentersamfundet,[3],studentersamfundet_3).
 composite_stat(studentersamfundet,[4],studentersamfundet_4).
 composite_stat(stuevoll,[],stuevoll).
+composite_stat(stuggu,[],stuggu).
 composite_stat(stugudal,[handel],stugudal_handel).
 composite_stat(stykkan,[],stykkan).
 composite_stat(ståggånvegen,[],ståggånvegen).
