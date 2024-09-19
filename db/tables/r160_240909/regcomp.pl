@@ -1092,7 +1092,6 @@ composite_stat(gjetneset,[],gjetneset).
 composite_stat(gjevilvas,[street],gjevilvassvegen). % generated 4.1
 composite_stat(gjevilvas,[vegen],gjevilvassvegen). % generated 4.0
 composite_stat(gjevilvas_street,[],gjevilvassvegen). % generated 4.2
-composite_stat(gjevilvasshytta,[],gjevilvasshytta).
 composite_stat(gjevilvassvegen,[],gjevilvassvegen).
 composite_stat(gjevingåsen,[],gjevingåsen).
 composite_stat(gjæsingen,[kai],gjæsingen_kai).
