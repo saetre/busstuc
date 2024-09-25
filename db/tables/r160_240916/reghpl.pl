@@ -847,8 +847,8 @@ hpl(71181,prinsens_gate_p2,prinsens_gate_p2,'Prinsens gate P2').
 hpl(71184,prinsens_gate_p1,prinsens_gate_p1,'Prinsens gate P1').
 hpl(71186,togstadjåren,togstadjåren,'Togstadjåren').
 hpl(71188,togstadjåren,togstadjåren,'Togstadjåren').
-hpl(71190,st_olavs_hospital_øst,st_olavs_hospital_øst,'St. Olavs Hospital øst').
-hpl(71191,st_olavs_hospital_øst,st_olavs_hospital_øst,'St. Olavs Hospital øst').
+hpl(71190,st_olavs_hospital_øst,st_olavs_hospital_øst,'St. Olavs hospital øst').
+hpl(71191,st_olavs_hospital_øst,st_olavs_hospital_øst,'St. Olavs hospital øst').
 hpl(71193,hellesvik_veikryss,hellesvik_veikryss,'Hellesvik veikryss').
 hpl(71196,sagmælen,sagmælen,'Sagmælen').
 hpl(71197,sagmælen,sagmælen,'Sagmælen').
@@ -3305,8 +3305,8 @@ hpl(74052,sporill,sporill,'Sporill').
 hpl(74053,nordhammer,nordhammer,'Nordhammer').
 hpl(74055,kjelstad,kjelstad,'Kjelstad').
 hpl(74056,kjelstad,kjelstad,'Kjelstad').
-hpl(74057,st_olavs_hospital_vest,st_olavs_hospital_vest,'St. Olavs Hospital vest').
-hpl(74058,st_olavs_hospital_vest,st_olavs_hospital_vest,'St. Olavs Hospital vest').
+hpl(74057,st_olavs_hospital_vest,st_olavs_hospital_vest,'St. Olavs hospital vest').
+hpl(74058,st_olavs_hospital_vest,st_olavs_hospital_vest,'St. Olavs hospital vest').
 hpl(74059,kjeldstad,kjeldstad,'Kjeldstad').
 hpl(74060,kjeldstad,kjeldstad,'Kjeldstad').
 hpl(74061,st_olavs_gate,st_olavs_gate,'St. Olavs gate').
