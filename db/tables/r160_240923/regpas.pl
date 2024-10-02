@@ -26399,7 +26399,7 @@ passes4(6664, 72368, vollen, 52, 158, 158).
 passes4(6664, 73397, sveneset, 53, 160, 160).
 passes4(6664, 74753, aunet, 54, 161, 161).
 passes4(6664, 74841, barman_oppvekstsenter, 55, 162, 162).
-passes4(6664, 109247, sætran, 56, 164, 164).
+passes4(6664, 109247, ytterbarman, 56, 164, 164).
 passes4(6664, 74571, dolmsund_bru, 57, 166, 166).
 passes4(6664, 73052, stråmyra, 58, 169, 169).
 passes4(6664, 72600, hamarvika, 59, 176, 176).
@@ -26443,7 +26443,7 @@ passes4(6666, 71210, rabben, 4, 2, 2).
 passes4(6666, 72919, melkstaden, 5, 4, 4).
 passes4(6666, 72599, hamarvika, 6, 6, 6).
 passes4(6666, 73053, stråmyra, 7, 13, 13).
-passes4(6666, 109246, sætran, 8, 16, 16).
+passes4(6666, 109246, ytterbarman, 8, 16, 16).
 passes4(6666, 74843, barman_oppvekstsenter, 9, 17, 17).
 passes4(6666, 74752, aunet, 10, 18, 18).
 passes4(6666, 73396, sveneset, 11, 19, 19).
@@ -26459,7 +26459,7 @@ passes4(6667, 72919, melkstaden, 5, 4, 4).
 passes4(6667, 72599, hamarvika, 6, 7, 7).
 passes4(6667, 73053, stråmyra, 7, 13, 13).
 passes4(6667, 74572, dolmsund_bru, 8, 16, 16).
-passes4(6667, 109246, sætran, 9, 17, 17).
+passes4(6667, 109246, ytterbarman, 9, 17, 17).
 passes4(6667, 74843, barman_oppvekstsenter, 10, 19, 19).
 passes4(6667, 74752, aunet, 11, 20, 20).
 passes4(6667, 73396, sveneset, 12, 21, 21).
@@ -26520,7 +26520,7 @@ passes4(6668, 72919, melkstaden, 5, 4, 4).
 passes4(6668, 72599, hamarvika, 6, 7, 7).
 passes4(6668, 73053, stråmyra, 7, 13, 13).
 passes4(6668, 74572, dolmsund_bru, 8, 16, 16).
-passes4(6668, 109246, sætran, 9, 18, 18).
+passes4(6668, 109246, ytterbarman, 9, 18, 18).
 passes4(6668, 74843, barman_oppvekstsenter, 10, 20, 20).
 passes4(6668, 74752, aunet, 11, 21, 21).
 passes4(6668, 73396, sveneset, 12, 22, 22).
@@ -26631,7 +26631,7 @@ passes4(6670, 72368, vollen, 33, 92, 92).
 passes4(6670, 73397, sveneset, 34, 94, 94).
 passes4(6670, 74753, aunet, 35, 95, 95).
 passes4(6670, 74841, barman_oppvekstsenter, 36, 96, 96).
-passes4(6670, 109247, sætran, 37, 98, 98).
+passes4(6670, 109247, ytterbarman, 37, 98, 98).
 passes4(6670, 74571, dolmsund_bru, 38, 100, 100).
 passes4(6670, 73052, stråmyra, 39, 103, 103).
 passes4(6670, 72600, hamarvika, 40, 110, 110).
@@ -26648,7 +26648,7 @@ passes4(6671, 72919, melkstaden, 5, 3, 3).
 passes4(6671, 72599, hamarvika, 6, 5, 5).
 passes4(6671, 73053, stråmyra, 7, 12, 12).
 passes4(6671, 74572, dolmsund_bru, 8, 15, 15).
-passes4(6671, 109246, sætran, 9, 17, 17).
+passes4(6671, 109246, ytterbarman, 9, 17, 17).
 passes4(6671, 74843, barman_oppvekstsenter, 10, 18, 18).
 passes4(6671, 74752, aunet, 11, 19, 19).
 passes4(6671, 73396, sveneset, 12, 20, 20).
@@ -26737,7 +26737,7 @@ passes4(6672, 72368, vollen, 52, 149, 149).
 passes4(6672, 73397, sveneset, 53, 151, 151).
 passes4(6672, 74753, aunet, 54, 152, 152).
 passes4(6672, 74841, barman_oppvekstsenter, 55, 153, 153).
-passes4(6672, 109247, sætran, 56, 155, 155).
+passes4(6672, 109247, ytterbarman, 56, 155, 155).
 passes4(6672, 74571, dolmsund_bru, 57, 157, 157).
 passes4(6672, 73052, stråmyra, 58, 160, 160).
 passes4(6672, 72600, hamarvika, 59, 187, 187).
@@ -26754,7 +26754,7 @@ passes4(6675, 72919, melkstaden, 5, 4, 4).
 passes4(6675, 72599, hamarvika, 6, 6, 6).
 passes4(6675, 73053, stråmyra, 7, 13, 13).
 passes4(6675, 74572, dolmsund_bru, 8, 16, 16).
-passes4(6675, 109246, sætran, 9, 18, 18).
+passes4(6675, 109246, ytterbarman, 9, 18, 18).
 passes4(6675, 74843, barman_oppvekstsenter, 10, 20, 20).
 passes4(6675, 74752, aunet, 11, 21, 21).
 passes4(6675, 73396, sveneset, 12, 22, 22).
@@ -27049,7 +27049,7 @@ passes4(6690, 72368, vollen, 15, 33, 33).
 passes4(6690, 73397, sveneset, 16, 34, 34).
 passes4(6690, 74753, aunet, 17, 35, 35).
 passes4(6690, 74841, barman_oppvekstsenter, 18, 36, 36).
-passes4(6690, 109247, sætran, 19, 38, 38).
+passes4(6690, 109247, ytterbarman, 19, 38, 38).
 passes4(6690, 74571, dolmsund_bru, 20, 40, 40).
 passes4(6690, 73052, stråmyra, 21, 42, 42).
 passes4(6690, 72600, hamarvika, 22, 49, 49).
@@ -27081,7 +27081,7 @@ passes4(6692, 72368, vollen, 5, 6, 6).
 passes4(6692, 73397, sveneset, 6, 7, 7).
 passes4(6692, 74753, aunet, 7, 8, 8).
 passes4(6692, 74841, barman_oppvekstsenter, 8, 9, 9).
-passes4(6692, 109247, sætran, 9, 11, 11).
+passes4(6692, 109247, ytterbarman, 9, 11, 11).
 passes4(6692, 74571, dolmsund_bru, 10, 13, 13).
 passes4(6692, 73052, stråmyra, 11, 15, 15).
 passes4(6692, 72600, hamarvika, 12, 22, 22).
@@ -27104,7 +27104,7 @@ passes4(6693, 72368, vollen, 12, 25, 25).
 passes4(6693, 73397, sveneset, 13, 26, 26).
 passes4(6693, 74753, aunet, 14, 27, 27).
 passes4(6693, 74841, barman_oppvekstsenter, 15, 28, 28).
-passes4(6693, 109247, sætran, 16, 30, 30).
+passes4(6693, 109247, ytterbarman, 16, 30, 30).
 passes4(6693, 74571, dolmsund_bru, 17, 32, 32).
 passes4(6693, 73052, stråmyra, 18, 34, 34).
 passes4(6693, 72600, hamarvika, 19, 41, 41).
@@ -27141,7 +27141,7 @@ passes4(6695, 72368, vollen, 12, 25, 25).
 passes4(6695, 73397, sveneset, 13, 26, 26).
 passes4(6695, 74753, aunet, 14, 27, 27).
 passes4(6695, 74841, barman_oppvekstsenter, 15, 28, 28).
-passes4(6695, 109247, sætran, 16, 30, 30).
+passes4(6695, 109247, ytterbarman, 16, 30, 30).
 passes4(6695, 74571, dolmsund_bru, 17, 32, 32).
 passes4(6695, 73052, stråmyra, 18, 34, 34).
 passes4(6695, 72600, hamarvika, 19, 41, 41).
@@ -27164,7 +27164,7 @@ passes4(6703, 72368, vollen, 12, 25, 25).
 passes4(6703, 73397, sveneset, 13, 26, 26).
 passes4(6703, 74753, aunet, 14, 27, 27).
 passes4(6703, 74841, barman_oppvekstsenter, 15, 28, 28).
-passes4(6703, 109247, sætran, 16, 30, 30).
+passes4(6703, 109247, ytterbarman, 16, 30, 30).
 passes4(6703, 74571, dolmsund_bru, 17, 32, 32).
 passes4(6703, 73052, stråmyra, 18, 34, 34).
 passes4(6703, 72600, hamarvika, 19, 41, 41).
@@ -27224,7 +27224,7 @@ passes4(6705, 72919, melkstaden, 19, 28, 28).
 passes4(6705, 72599, hamarvika, 20, 30, 30).
 passes4(6705, 73053, stråmyra, 21, 37, 37).
 passes4(6705, 74572, dolmsund_bru, 22, 39, 39).
-passes4(6705, 109246, sætran, 23, 41, 41).
+passes4(6705, 109246, ytterbarman, 23, 41, 41).
 passes4(6705, 74843, barman_oppvekstsenter, 24, 42, 42).
 passes4(6705, 74752, aunet, 25, 43, 43).
 passes4(6705, 73396, sveneset, 26, 44, 44).
@@ -27246,7 +27246,7 @@ passes4(6706, 72919, melkstaden, 5, 3, 3).
 passes4(6706, 72599, hamarvika, 6, 5, 5).
 passes4(6706, 73053, stråmyra, 7, 12, 12).
 passes4(6706, 74572, dolmsund_bru, 8, 14, 14).
-passes4(6706, 109246, sætran, 9, 16, 16).
+passes4(6706, 109246, ytterbarman, 9, 16, 16).
 passes4(6706, 74843, barman_oppvekstsenter, 10, 17, 17).
 passes4(6706, 74752, aunet, 11, 18, 18).
 passes4(6706, 73396, sveneset, 12, 19, 19).
@@ -27268,7 +27268,7 @@ passes4(6708, 72919, melkstaden, 5, 3, 3).
 passes4(6708, 72599, hamarvika, 6, 5, 5).
 passes4(6708, 73053, stråmyra, 7, 12, 12).
 passes4(6708, 74572, dolmsund_bru, 8, 14, 14).
-passes4(6708, 109246, sætran, 9, 16, 16).
+passes4(6708, 109246, ytterbarman, 9, 16, 16).
 passes4(6708, 74843, barman_oppvekstsenter, 10, 17, 17).
 passes4(6708, 74752, aunet, 11, 18, 18).
 passes4(6708, 73396, sveneset, 12, 19, 19).
@@ -36217,7 +36217,7 @@ passes4(8317, 74753, aunet, 7, 9, 9).
 passes4(8317, 74841, barman_oppvekstsenter, 8, 10, 10).
 
 passes4(8318, 74841, barman_oppvekstsenter, 2, 999, 0).
-passes4(8318, 109247, sætran, 3, 1, 1).
+passes4(8318, 109247, ytterbarman, 3, 1, 1).
 passes4(8318, 73052, stråmyra, 4, 4, 4).
 passes4(8318, 73076, strømsvik, 5, 5, 5).
 passes4(8318, 75373, broholmen, 6, 6, 6).
@@ -36226,7 +36226,7 @@ passes4(8318, 74068, kjerringvåg, 8, 8, 8).
 passes4(8318, 74882, beknes_snuplass, 9, 15, 15).
 
 passes4(8319, 74841, barman_oppvekstsenter, 2, 999, 0).
-passes4(8319, 109247, sætran, 3, 1, 1).
+passes4(8319, 109247, ytterbarman, 3, 1, 1).
 passes4(8319, 74571, dolmsund_bru, 4, 3, 3).
 passes4(8319, 74576, dolmsundet, 5, 3, 3).
 passes4(8319, 72281, vikstrømkrysset, 6, 6, 6).
@@ -36237,7 +36237,7 @@ passes4(8319, 73067, straum, 10, 32, 32).
 passes4(8319, 72368, vollen, 11, 38, 38).
 
 passes4(8320, 74841, barman_oppvekstsenter, 2, 999, 0).
-passes4(8320, 109247, sætran, 3, 1, 1).
+passes4(8320, 109247, ytterbarman, 3, 1, 1).
 passes4(8320, 72915, heggåsen, 4, 5, 5).
 passes4(8320, 73052, stråmyra, 5, 7, 7).
 passes4(8320, 73076, strømsvik, 6, 8, 8).
@@ -36318,7 +36318,7 @@ passes4(8326, 72788, melandsjø, 7, 38, 38).
 passes4(8326, 72280, vikstrømkrysset, 8, 43, 43).
 passes4(8326, 74575, dolmsundet, 9, 46, 46).
 passes4(8326, 74571, dolmsund_bru, 10, 46, 46).
-passes4(8326, 109246, sætran, 11, 47, 47).
+passes4(8326, 109246, ytterbarman, 11, 47, 47).
 passes4(8326, 74843, barman_oppvekstsenter, 12, 49, 49).
 passes4(8326, 74752, aunet, 13, 50, 50).
 passes4(8326, 73396, sveneset, 14, 51, 51).
@@ -36332,7 +36332,7 @@ passes4(8327, 74068, kjerringvåg, 3, 8, 8).
 passes4(8327, 75372, broholmen, 4, 10, 10).
 passes4(8327, 73074, strømsvik, 5, 12, 12).
 passes4(8327, 73053, stråmyra, 6, 13, 13).
-passes4(8327, 109246, sætran, 7, 16, 16).
+passes4(8327, 109246, ytterbarman, 7, 16, 16).
 passes4(8327, 74843, barman_oppvekstsenter, 8, 18, 18).
 passes4(8327, 74752, aunet, 9, 19, 19).
 passes4(8327, 73396, sveneset, 10, 20, 20).

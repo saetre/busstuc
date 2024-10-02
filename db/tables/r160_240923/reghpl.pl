@@ -623,8 +623,8 @@ hpl(109228,meieriparken,meieriparken,'Meieriparken').
 hpl(109229,libra,libra,'Libra').
 hpl(109230,libra,libra,'Libra').
 hpl(109234,gladse,gladse,'Gladse').
-hpl(109246,sætran,sætran,'Sætran').
-hpl(109247,sætran,sætran,'Sætran').
+hpl(109246,ytterbarman,ytterbarman,'Ytterbarman').
+hpl(109247,ytterbarman,ytterbarman,'Ytterbarman').
 hpl(109254,nordstuggu,nordstuggu,'Nordstuggu').
 hpl(109255,nordstuggu,nordstuggu,'Nordstuggu').
 hpl(109260,sætra,sætra,'Sætra').

@@ -4661,6 +4661,7 @@ composite_stat(ystgården,[],ystgården).
 composite_stat(ystmarka,[],ystmarka).
 composite_stat(ytre,[namdal, vgs],ytre_namdal_vgs).
 composite_stat(ytre,[sørlia],ytre_sørlia).
+composite_stat(ytterbarman,[],ytterbarman).
 composite_stat(ytterby,[],ytterby).
 composite_stat(yttersetran,[],yttersetran).
 composite_stat(ytteråsen,[],ytteråsen).
