@@ -3388,7 +3388,6 @@ composite_stat(saupstadringen,[109],saupstadringen_109).
 composite_stat(saupstadsenteret,[],saupstadsenteret).
 composite_stat(saursaunet,[],saursaunet).
 composite_stat(saurskorsen,[],saurskorsen).
-composite_stat(sauøya,[kai],sauøya_kai).
 composite_stat(schei,[],schei).
 composite_stat(schiøtz,[street],schiøtz_vei). % generated 1.2
 composite_stat(schiøtz,[vei],schiøtz_vei).

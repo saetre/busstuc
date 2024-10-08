@@ -1464,7 +1464,6 @@ hpl(71911,håvik,håvik,'Håvik').
 hpl(71912,saupstadsenteret,saupstadsenteret,'Saupstadsenteret').
 hpl(71913,saupstadsenteret,saupstadsenteret,'Saupstadsenteret').
 hpl(71915,hæverstølen,hæverstølen,'Hæverstølen').
-hpl(71916,sauøya_kai,sauøya_kai,'Sauøya kai').
 hpl(71917,vallersund_oppvekstsenter,vallersund_oppvekstsenter,'Vallersund oppvekstsenter').
 hpl(71918,hæverstølen,hæverstølen,'Hæverstølen').
 hpl(71921,vallersund_samvirkelag,vallersund_samvirkelag,'Vallersund samvirkelag').
