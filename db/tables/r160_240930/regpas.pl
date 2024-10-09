@@ -24457,7 +24457,7 @@ passes4(5385, 74303, nypan, 3, 3, 3).
 passes4(5385, 101852, klettkrysset_2, 4, 5, 5).
 passes4(5385, 71763, udduvoll_bru_øst, 5, 7, 7).
 passes4(5385, 75142, fergestad, 6, 10, 10).
-passes4(5385, 73005, strandv_øyås_avkjøring, 7, 11, 11).
+passes4(5385, 73005, øyås_vegdele, 7, 11, 11).
 passes4(5385, 72888, melhus_skysstasjon, 8, 16, 16).
 
 passes4(5386, 72418, gylle, 2, 999, 0).
@@ -24644,7 +24644,7 @@ passes4(5399, 73535, storsand, 32, 40, 40).
 passes4(5399, 72873, melhus_kirke, 33, 40, 40).
 passes4(5399, 74224, stendal, 34, 41, 41).
 passes4(5399, 72889, melhus_skysstasjon, 35, 43, 43).
-passes4(5399, 73005, strandv_øyås_avkjøring, 36, 47, 47).
+passes4(5399, 73005, øyås_vegdele, 36, 47, 47).
 passes4(5399, 75142, fergestad, 37, 48, 48).
 passes4(5399, 71764, udduvoll_bru_øst, 38, 51, 51).
 passes4(5399, 101853, klettkrysset_1, 39, 53, 53).
@@ -28549,7 +28549,7 @@ passes4(7179, 72581, haltdalen_oppvekstsenter, 37, 51, 51).
 passes4(7179, 72575, haltdalen_coop, 38, 52, 52).
 passes4(7179, 71168, prestrønning, 39, 53, 53).
 passes4(7179, 72639, ysetmoen, 40, 55, 55).
-passes4(7179, 72546, vårhus, 41, 56, 56).
+passes4(7179, 72546, yset, 41, 56, 56).
 passes4(7179, 72434, gåregrenda, 42, 57, 57).
 passes4(7179, 75659, gildset, 43, 59, 59).
 passes4(7179, 73209, langlete, 44, 62, 62).
@@ -28705,7 +28705,7 @@ passes4(7181, 73210, langlete, 76, 122, 122).
 passes4(7181, 110330, nygård, 77, 123, 123).
 passes4(7181, 75660, gildset, 78, 125, 125).
 passes4(7181, 72435, gåregrenda, 79, 127, 127).
-passes4(7181, 72545, vårhus, 80, 128, 128).
+passes4(7181, 72545, yset, 80, 128, 128).
 passes4(7181, 72638, ysetmoen, 81, 129, 129).
 passes4(7181, 71169, prestrønning, 82, 131, 131).
 passes4(7181, 72574, haltdalen_coop, 83, 132, 132).
@@ -28824,7 +28824,7 @@ passes4(7182, 73210, langlete, 76, 123, 123).
 passes4(7182, 110330, nygård, 77, 124, 124).
 passes4(7182, 75660, gildset, 78, 126, 126).
 passes4(7182, 72435, gåregrenda, 79, 128, 128).
-passes4(7182, 72545, vårhus, 80, 129, 129).
+passes4(7182, 72545, yset, 80, 129, 129).
 passes4(7182, 72638, ysetmoen, 81, 130, 130).
 passes4(7182, 71169, prestrønning, 82, 132, 132).
 passes4(7182, 72574, haltdalen_coop, 83, 133, 133).
@@ -28904,7 +28904,7 @@ passes4(7184, 72581, haltdalen_oppvekstsenter, 37, 49, 49).
 passes4(7184, 72575, haltdalen_coop, 38, 50, 50).
 passes4(7184, 71168, prestrønning, 39, 51, 51).
 passes4(7184, 72639, ysetmoen, 40, 53, 53).
-passes4(7184, 72546, vårhus, 41, 54, 54).
+passes4(7184, 72546, yset, 41, 54, 54).
 passes4(7184, 72434, gåregrenda, 42, 55, 55).
 passes4(7184, 75659, gildset, 43, 57, 57).
 passes4(7184, 73209, langlete, 44, 60, 60).
@@ -29066,7 +29066,7 @@ passes4(7185, 73210, langlete, 81, 125, 125).
 passes4(7185, 110330, nygård, 82, 126, 126).
 passes4(7185, 75660, gildset, 83, 128, 128).
 passes4(7185, 72435, gåregrenda, 84, 130, 130).
-passes4(7185, 72545, vårhus, 85, 131, 131).
+passes4(7185, 72545, yset, 85, 131, 131).
 passes4(7185, 72638, ysetmoen, 86, 132, 132).
 passes4(7185, 71169, prestrønning, 87, 134, 134).
 passes4(7185, 72574, haltdalen_coop, 88, 135, 135).
@@ -29190,7 +29190,7 @@ passes4(7187, 73210, langlete, 81, 124, 124).
 passes4(7187, 110330, nygård, 82, 125, 125).
 passes4(7187, 75660, gildset, 83, 127, 127).
 passes4(7187, 72435, gåregrenda, 84, 129, 129).
-passes4(7187, 72545, vårhus, 85, 130, 130).
+passes4(7187, 72545, yset, 85, 130, 130).
 passes4(7187, 72638, ysetmoen, 86, 131, 131).
 passes4(7187, 71169, prestrønning, 87, 133, 133).
 passes4(7187, 72574, haltdalen_coop, 88, 134, 134).
@@ -29270,7 +29270,7 @@ passes4(7189, 72581, haltdalen_oppvekstsenter, 37, 49, 49).
 passes4(7189, 72575, haltdalen_coop, 38, 50, 50).
 passes4(7189, 71168, prestrønning, 39, 51, 51).
 passes4(7189, 72639, ysetmoen, 40, 53, 53).
-passes4(7189, 72546, vårhus, 41, 54, 54).
+passes4(7189, 72546, yset, 41, 54, 54).
 passes4(7189, 72434, gåregrenda, 42, 55, 55).
 passes4(7189, 75659, gildset, 43, 57, 57).
 passes4(7189, 73209, langlete, 44, 59, 59).
@@ -33704,7 +33704,7 @@ passes4(8093, 75614, gafset, 7, 6, 6).
 passes4(8093, 98822, øie_skole, 8, 7, 7).
 passes4(8093, 71757, udduvoll_bru_vest, 9, 8, 8).
 passes4(8093, 75142, fergestad, 10, 11, 11).
-passes4(8093, 73005, strandv_øyås_avkjøring, 11, 12, 12).
+passes4(8093, 73005, øyås_vegdele, 11, 12, 12).
 passes4(8093, 75665, gimse_skole, 12, 17, 17).
 passes4(8093, 72889, melhus_skysstasjon, 13, 22, 22).
 
@@ -33714,13 +33714,13 @@ passes4(8095, 75614, gafset, 4, 3, 3).
 passes4(8095, 98822, øie_skole, 5, 4, 4).
 passes4(8095, 71757, udduvoll_bru_vest, 6, 5, 5).
 passes4(8095, 75142, fergestad, 7, 8, 8).
-passes4(8095, 73005, strandv_øyås_avkjøring, 8, 9, 9).
+passes4(8095, 73005, øyås_vegdele, 8, 9, 9).
 passes4(8095, 75665, gimse_skole, 9, 14, 14).
 passes4(8095, 72889, melhus_skysstasjon, 10, 20, 20).
 
 passes4(8096, 72888, melhus_skysstasjon, 2, 999, 0).
 passes4(8096, 75664, gimse_skole, 3, 5, 5).
-passes4(8096, 73004, strandv_øyås_avkjøring, 4, 10, 10).
+passes4(8096, 73004, øyås_vegdele, 4, 10, 10).
 passes4(8096, 75140, fergestad, 5, 11, 11).
 passes4(8096, 71755, udduvoll_bru_vest, 6, 14, 14).
 passes4(8096, 72811, øie_skole, 7, 15, 15).
@@ -33730,7 +33730,7 @@ passes4(8096, 105932, øysand_camping, 10, 20, 20).
 
 passes4(8097, 72888, melhus_skysstasjon, 2, 999, 0).
 passes4(8097, 75664, gimse_skole, 3, 5, 5).
-passes4(8097, 73004, strandv_øyås_avkjøring, 4, 10, 10).
+passes4(8097, 73004, øyås_vegdele, 4, 10, 10).
 passes4(8097, 75140, fergestad, 5, 11, 11).
 passes4(8097, 71755, udduvoll_bru_vest, 6, 14, 14).
 passes4(8097, 72811, øie_skole, 7, 15, 15).
@@ -33744,7 +33744,7 @@ passes4(8097, 71516, trøveien, 14, 24, 24).
 passes4(8097, 72063, ilhaugen, 15, 25, 25).
 
 passes4(8098, 75664, gimse_skole, 2, 999, 0).
-passes4(8098, 73004, strandv_øyås_avkjøring, 3, 5, 5).
+passes4(8098, 73004, øyås_vegdele, 3, 5, 5).
 passes4(8098, 75140, fergestad, 4, 6, 6).
 passes4(8098, 71755, udduvoll_bru_vest, 5, 9, 9).
 passes4(8098, 72811, øie_skole, 6, 10, 10).
@@ -33765,11 +33765,11 @@ passes4(8100, 75614, gafset, 11, 17, 17).
 passes4(8100, 98822, øie_skole, 12, 18, 18).
 passes4(8100, 71757, udduvoll_bru_vest, 13, 18, 18).
 passes4(8100, 75142, fergestad, 14, 19, 19).
-passes4(8100, 73005, strandv_øyås_avkjøring, 15, 20, 20).
+passes4(8100, 73005, øyås_vegdele, 15, 20, 20).
 passes4(8100, 75665, gimse_skole, 16, 28, 28).
 passes4(8100, 72889, melhus_skysstasjon, 17, 33, 33).
 
-passes4(8101, 73005, strandv_øyås_avkjøring, 2, 999, 0).
+passes4(8101, 73005, øyås_vegdele, 2, 999, 0).
 passes4(8101, 75209, bleke, 3, 1, 1).
 passes4(8101, 75102, bjønnbakken, 4, 4, 4).
 passes4(8101, 75210, bleksmarka, 5, 4, 4).
@@ -33779,7 +33779,7 @@ passes4(8101, 71986, varmbu, 8, 7, 7).
 passes4(8101, 75664, gimse_skole, 9, 12, 12).
 passes4(8101, 72889, melhus_skysstasjon, 10, 22, 22).
 
-passes4(8102, 73005, strandv_øyås_avkjøring, 2, 999, 0).
+passes4(8102, 73005, øyås_vegdele, 2, 999, 0).
 passes4(8102, 75209, bleke, 3, 1, 1).
 passes4(8102, 75102, bjønnbakken, 4, 4, 4).
 passes4(8102, 75210, bleksmarka, 5, 4, 4).
@@ -33790,7 +33790,7 @@ passes4(8102, 75664, gimse_skole, 9, 15, 15).
 
 passes4(8104, 72888, melhus_skysstasjon, 2, 999, 0).
 passes4(8104, 75664, gimse_skole, 3, 5, 5).
-passes4(8104, 73005, strandv_øyås_avkjøring, 4, 8, 8).
+passes4(8104, 73005, øyås_vegdele, 4, 8, 8).
 passes4(8104, 75209, bleke, 5, 9, 9).
 passes4(8104, 75102, bjønnbakken, 6, 12, 12).
 passes4(8104, 75210, bleksmarka, 7, 12, 12).
@@ -33799,7 +33799,7 @@ passes4(8104, 105838, bergvegen, 9, 14, 14).
 passes4(8104, 71986, varmbu, 10, 20, 20).
 
 passes4(8106, 75664, gimse_skole, 2, 999, 0).
-passes4(8106, 73005, strandv_øyås_avkjøring, 3, 3, 3).
+passes4(8106, 73005, øyås_vegdele, 3, 3, 3).
 passes4(8106, 75209, bleke, 4, 4, 4).
 passes4(8106, 75102, bjønnbakken, 5, 7, 7).
 passes4(8106, 75210, bleksmarka, 6, 7, 7).
@@ -38896,7 +38896,7 @@ passes4(8489, 73210, langlete, 3, 1, 1).
 passes4(8489, 110330, nygård, 4, 2, 2).
 passes4(8489, 75660, gildset, 5, 4, 4).
 passes4(8489, 72435, gåregrenda, 6, 6, 6).
-passes4(8489, 72545, vårhus, 7, 7, 7).
+passes4(8489, 72545, yset, 7, 7, 7).
 passes4(8489, 72638, ysetmoen, 8, 9, 9).
 passes4(8489, 71169, prestrønning, 9, 11, 11).
 passes4(8489, 72574, haltdalen_coop, 10, 13, 13).
@@ -38918,7 +38918,7 @@ passes4(8490, 72581, haltdalen_oppvekstsenter, 2, 999, 0).
 passes4(8490, 72575, haltdalen_coop, 3, 1, 1).
 passes4(8490, 71168, prestrønning, 4, 3, 3).
 passes4(8490, 72639, ysetmoen, 5, 5, 5).
-passes4(8490, 72546, vårhus, 6, 7, 7).
+passes4(8490, 72546, yset, 6, 7, 7).
 passes4(8490, 72434, gåregrenda, 7, 8, 8).
 passes4(8490, 75659, gildset, 8, 11, 11).
 passes4(8490, 73209, langlete, 9, 14, 14).
@@ -38928,7 +38928,7 @@ passes4(8491, 72581, haltdalen_oppvekstsenter, 2, 999, 0).
 passes4(8491, 72575, haltdalen_coop, 3, 1, 1).
 passes4(8491, 71168, prestrønning, 4, 2, 2).
 passes4(8491, 72639, ysetmoen, 5, 4, 4).
-passes4(8491, 72546, vårhus, 6, 5, 5).
+passes4(8491, 72546, yset, 6, 5, 5).
 passes4(8491, 72434, gåregrenda, 7, 6, 6).
 passes4(8491, 75659, gildset, 8, 8, 8).
 passes4(8491, 73209, langlete, 9, 11, 11).
@@ -38954,7 +38954,7 @@ passes4(8492, 73210, langlete, 3, 1, 1).
 passes4(8492, 110330, nygård, 4, 2, 2).
 passes4(8492, 75660, gildset, 5, 4, 4).
 passes4(8492, 72435, gåregrenda, 6, 6, 6).
-passes4(8492, 72545, vårhus, 7, 7, 7).
+passes4(8492, 72545, yset, 7, 7, 7).
 passes4(8492, 72638, ysetmoen, 8, 8, 8).
 passes4(8492, 71169, prestrønning, 9, 9, 9).
 passes4(8492, 72574, haltdalen_coop, 10, 10, 10).

@@ -2008,8 +2008,8 @@ hpl(72541,vågen,vågen,'Vågen').
 hpl(72542,hallguttu,hallguttu,'Hallguttu').
 hpl(72543,hallguttu,hallguttu,'Hallguttu').
 hpl(72544,sletta,sletta,'Sletta').
-hpl(72545,vårhus,vårhus,'Vårhus').
-hpl(72546,vårhus,vårhus,'Vårhus').
+hpl(72545,yset,yset,'Yset').
+hpl(72546,yset,yset,'Yset').
 hpl(72549,vårum,vårum,'Vårum').
 hpl(72550,vårum,vårum,'Vårum').
 hpl(72551,hallset,hallset,'Hallset').
@@ -2390,8 +2390,8 @@ hpl(72999,strandheim,strandheim,'Strandheim').
 hpl(73000,kvernland,kvernland,'Kvernland').
 hpl(73001,strandheim,strandheim,'Strandheim').
 hpl(73002,midtbygda_skole,midtbygda_skole,'Midtbygda skole').
-hpl(73004,strandv_øyås_avkjøring,strandv_øyås_avkjøring,'Strandv./Øyås avkjøring').
-hpl(73005,strandv_øyås_avkjøring,strandv_øyås_avkjøring,'Strandv./Øyås avkjøring').
+hpl(73004,øyås_vegdele,øyås_vegdele,'Øyås vegdele').
+hpl(73005,øyås_vegdele,øyås_vegdele,'Øyås vegdele').
 hpl(73006,kverva,kverva,'Kverva').
 hpl(73007,kverva,kverva,'Kverva').
 hpl(73008,midteggen,midteggen,'Midteggen').
