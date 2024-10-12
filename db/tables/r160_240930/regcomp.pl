@@ -667,6 +667,7 @@ composite_stat(eggenkorsen,[],eggenkorsen).
 composite_stat(eggkleiva,[],eggkleiva).
 composite_stat(eid,[skole],eid_skole).
 composite_stat(eida,[],eida).
+composite_stat(eida,[snuplass],eida_snuplass).
 composite_stat(eide,[],eide).
 composite_stat(eidem,[],eidem).
 composite_stat(eidemsneset,[],eidemsneset).
@@ -1321,7 +1322,6 @@ composite_stat(hamarvik,[s, lag],hamarvik_s_lag).
 composite_stat(hamarvika,[],hamarvika).
 composite_stat(hamland,[],hamland).
 composite_stat(hammer,[],hammer).
-composite_stat(hammer,[snuplass],hammer_snuplass).
 composite_stat(hammer,[vegdele],hammer_vegdele).
 composite_stat(hammeraunan,[],hammeraunan).
 composite_stat(hammerbakken,[],hammerbakken).
@@ -3624,6 +3624,7 @@ composite_stat(skreddervik,[],skreddervik).
 composite_stat(skrevstadkorsen,[],skrevstadkorsen).
 composite_stat(skrove,[østre],skrove_østre).
 composite_stat(skruen,[],skruen).
+composite_stat(skråen,[],skråen).
 composite_stat(skulvegen,[],skulvegen).
 composite_stat(skuruvegen,[],skuruvegen).
 composite_stat(skytterbanen,[],skytterbanen).

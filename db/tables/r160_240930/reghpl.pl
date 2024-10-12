@@ -629,7 +629,6 @@ hpl(109247,ytterbarman,ytterbarman,'Ytterbarman').
 hpl(109254,nordstuggu,nordstuggu,'Nordstuggu').
 hpl(109255,nordstuggu,nordstuggu,'Nordstuggu').
 hpl(109260,sætra,sætra,'Sætra').
-hpl(109264,hammer_snuplass,hammer_snuplass,'Hammer snuplass').
 hpl(109266,årlivoll_skole_2,årlivoll_skole_2,'Årlivoll skole 2').
 hpl(109282,østre_brenna,østre_brenna,'Østre Brenna').
 hpl(109290,lyngsnes,lyngsnes,'Lyngsnes').
@@ -647,6 +646,8 @@ hpl(109518,eventyrskogen,eventyrskogen,'Eventyrskogen').
 hpl(109519,eventyrskogen,eventyrskogen,'Eventyrskogen').
 hpl(109522,husbyåsen_snuplass,husbyåsen_snuplass,'Husbyåsen snuplass').
 hpl(109524,st_olavs_gate,st_olavs_gate,'St. Olavs gate').
+hpl(109532,eida_snuplass,eida_snuplass,'Eida snuplass').
+hpl(109533,eida_snuplass,eida_snuplass,'Eida snuplass').
 hpl(109535,hagemo,hagemo,'Hagemo').
 hpl(110093,vellamelen,vellamelen,'Vellamelen').
 hpl(110094,beitstad,beitstad,'Beitstad').
@@ -7919,6 +7920,7 @@ hpl(79943,ramstad,ramstad,'Ramstad').
 hpl(79945,ramstad,ramstad,'Ramstad').
 hpl(79946,buvika,buvika,'Buvika').
 hpl(79947,buvika,buvika,'Buvika').
+hpl(79949,skråen,skråen,'Skråen').
 hpl(79950,ramstadlandet,ramstadlandet,'Ramstadlandet').
 hpl(79951,ramstadlandet,ramstadlandet,'Ramstadlandet').
 hpl(79952,stein,stein,'Stein').
