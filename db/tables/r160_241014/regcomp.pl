@@ -1528,7 +1528,6 @@ composite_stat(hogsdalen,[],hogsdalen).
 composite_stat(hogstret,[],hogstret).
 composite_stat(hojem,[],hojem).
 composite_stat(hokling,[],hokling).
-composite_stat(hoksdal,[bru],hoksdal_bru).
 composite_stat(hokstad,[ferjekai],hokstad_ferjekai).
 composite_stat(hol,[],hol).
 composite_stat(holan,[],holan).

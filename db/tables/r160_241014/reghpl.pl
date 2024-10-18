@@ -636,7 +636,6 @@ hpl(109291,lyngsnes,lyngsnes,'Lyngsnes').
 hpl(109292,borgan,borgan,'Borgan').
 hpl(109312,hammer,hammer,'Hammer').
 hpl(109365,møllevegen,møllevegen,'Møllevegen').
-hpl(109420,hoksdal_bru,hoksdal_bru,'Hoksdal bru').
 hpl(109424,vestre_hoven,vestre_hoven,'Vestre Hoven').
 hpl(109431,byavegen_156,byavegen_156,'Byavegen 156').
 hpl(109442,skrove_østre,skrove_østre,'Skrove Østre').
