@@ -17085,85 +17085,85 @@ passes4(13157, 71683, hospitalskirka, 3, 4, 4).
 passes4(13157, 72210, skansen, 4, 5, 5).
 passes4(13157, 72052, ila, 5, 7, 7).
 
-passes4(13249, 72051, ila, 2, 999, 0).
-passes4(13249, 107934, skansen_2, 3, 1, 1).
-passes4(13249, 71685, hospitalskirka, 4, 2, 2).
-passes4(13249, 109524, st_olavs_gate, 5, 5, 5).
+passes4(13219, 72051, ila, 2, 999, 0).
+passes4(13219, 107934, skansen_2, 3, 1, 1).
+passes4(13219, 71685, hospitalskirka, 4, 2, 2).
+passes4(13219, 109524, st_olavs_gate, 5, 5, 5).
 
-passes4(13341, 74061, st_olavs_gate, 2, 999, 0).
-passes4(13341, 103547, dronningens_gate_62, 3, 0, 0).
-passes4(13341, 103576, hospitalskirka, 4, 1, 1).
-passes4(13341, 104113, skansen, 5, 3, 3).
-passes4(13341, 104111, ila, 6, 4, 4).
-passes4(13341, 75007, bergsli_gate, 7, 5, 5).
-passes4(13341, 74339, nyveibakken, 8, 6, 6).
-passes4(13341, 75518, bygrensen, 9, 7, 7).
-passes4(13341, 74894, belvedere, 10, 8, 8).
-passes4(13341, 75321, breidablikk_2, 11, 9, 9).
-passes4(13341, 74090, nordre_hoem, 12, 10, 10).
-passes4(13341, 73561, søndre_hoem, 13, 11, 11).
-passes4(13341, 71447, rognheim, 14, 13, 13).
-passes4(13341, 73440, munkvoll_2, 15, 15, 15).
-passes4(13341, 75147, ferstad, 16, 16, 16).
-passes4(13341, 110141, ugla, 17, 17, 17).
-passes4(13341, 73098, kyvannet, 18, 18, 18).
-passes4(13341, 72109, vestmarka, 19, 19, 19).
-passes4(13341, 71254, herlofsonløypa, 20, 20, 20).
-passes4(13341, 73481, lian, 21, 21, 21).
+passes4(13310, 74061, st_olavs_gate, 2, 999, 0).
+passes4(13310, 103547, dronningens_gate_62, 3, 0, 0).
+passes4(13310, 103576, hospitalskirka, 4, 1, 1).
+passes4(13310, 104113, skansen, 5, 3, 3).
+passes4(13310, 104111, ila, 6, 4, 4).
+passes4(13310, 75007, bergsli_gate, 7, 5, 5).
+passes4(13310, 74339, nyveibakken, 8, 6, 6).
+passes4(13310, 75518, bygrensen, 9, 7, 7).
+passes4(13310, 74894, belvedere, 10, 8, 8).
+passes4(13310, 75321, breidablikk_2, 11, 9, 9).
+passes4(13310, 74090, nordre_hoem, 12, 10, 10).
+passes4(13310, 73561, søndre_hoem, 13, 11, 11).
+passes4(13310, 71447, rognheim, 14, 13, 13).
+passes4(13310, 73440, munkvoll_2, 15, 15, 15).
+passes4(13310, 75147, ferstad, 16, 16, 16).
+passes4(13310, 110141, ugla, 17, 17, 17).
+passes4(13310, 73098, kyvannet, 18, 18, 18).
+passes4(13310, 72109, vestmarka, 19, 19, 19).
+passes4(13310, 71254, herlofsonløypa, 20, 20, 20).
+passes4(13310, 73481, lian, 21, 21, 21).
 
-passes4(13402, 73481, lian, 2, 999, 0).
-passes4(13402, 71253, herlofsonløypa, 3, 1, 1).
-passes4(13402, 72110, vestmarka, 4, 2, 2).
-passes4(13402, 73099, kyvannet, 5, 4, 4).
-passes4(13402, 71779, ugla, 6, 5, 5).
-passes4(13402, 75148, ferstad, 7, 6, 6).
-passes4(13402, 73442, munkvoll_1, 8, 8, 8).
-passes4(13402, 71448, rognheim, 9, 9, 9).
-passes4(13402, 73562, søndre_hoem, 10, 10, 10).
-passes4(13402, 74088, nordre_hoem, 11, 11, 11).
-passes4(13402, 75322, breidablikk_1, 12, 13, 13).
-passes4(13402, 74896, belvedere, 13, 14, 14).
-passes4(13402, 75517, bygrensen, 14, 15, 15).
-passes4(13402, 74338, nyveibakken, 15, 16, 16).
-passes4(13402, 75008, bergsli_gate, 16, 17, 17).
-passes4(13402, 104110, ila, 17, 17, 17).
-passes4(13402, 104112, skansen, 18, 18, 18).
-passes4(13402, 103577, hospitalskirka, 19, 20, 20).
-passes4(13402, 74061, st_olavs_gate, 20, 21, 21).
+passes4(13371, 73481, lian, 2, 999, 0).
+passes4(13371, 71253, herlofsonløypa, 3, 1, 1).
+passes4(13371, 72110, vestmarka, 4, 2, 2).
+passes4(13371, 73099, kyvannet, 5, 4, 4).
+passes4(13371, 71779, ugla, 6, 5, 5).
+passes4(13371, 75148, ferstad, 7, 6, 6).
+passes4(13371, 73442, munkvoll_1, 8, 8, 8).
+passes4(13371, 71448, rognheim, 9, 9, 9).
+passes4(13371, 73562, søndre_hoem, 10, 10, 10).
+passes4(13371, 74088, nordre_hoem, 11, 11, 11).
+passes4(13371, 75322, breidablikk_1, 12, 13, 13).
+passes4(13371, 74896, belvedere, 13, 14, 14).
+passes4(13371, 75517, bygrensen, 14, 15, 15).
+passes4(13371, 74338, nyveibakken, 15, 16, 16).
+passes4(13371, 75008, bergsli_gate, 16, 17, 17).
+passes4(13371, 104110, ila, 17, 17, 17).
+passes4(13371, 104112, skansen, 18, 18, 18).
+passes4(13371, 103577, hospitalskirka, 19, 20, 20).
+passes4(13371, 74061, st_olavs_gate, 20, 21, 21).
 
-passes4(13633, 73481, lian, 2, 999, 0).
-passes4(13633, 71253, herlofsonløypa, 3, 1, 1).
-passes4(13633, 72110, vestmarka, 4, 2, 2).
-passes4(13633, 73099, kyvannet, 5, 4, 4).
-passes4(13633, 71779, ugla, 6, 5, 5).
-passes4(13633, 75148, ferstad, 7, 6, 6).
-passes4(13633, 73442, munkvoll_1, 8, 8, 8).
-passes4(13633, 71448, rognheim, 9, 9, 9).
-passes4(13633, 73562, søndre_hoem, 10, 10, 10).
-passes4(13633, 74088, nordre_hoem, 11, 11, 11).
-passes4(13633, 75322, breidablikk_1, 12, 13, 13).
-passes4(13633, 74896, belvedere, 13, 14, 14).
-passes4(13633, 75517, bygrensen, 14, 15, 15).
-passes4(13633, 74338, nyveibakken, 15, 16, 16).
-passes4(13633, 75008, bergsli_gate, 16, 17, 17).
-passes4(13633, 104110, ila, 17, 17, 17).
+passes4(13602, 73481, lian, 2, 999, 0).
+passes4(13602, 71253, herlofsonløypa, 3, 1, 1).
+passes4(13602, 72110, vestmarka, 4, 2, 2).
+passes4(13602, 73099, kyvannet, 5, 4, 4).
+passes4(13602, 71779, ugla, 6, 5, 5).
+passes4(13602, 75148, ferstad, 7, 6, 6).
+passes4(13602, 73442, munkvoll_1, 8, 8, 8).
+passes4(13602, 71448, rognheim, 9, 9, 9).
+passes4(13602, 73562, søndre_hoem, 10, 10, 10).
+passes4(13602, 74088, nordre_hoem, 11, 11, 11).
+passes4(13602, 75322, breidablikk_1, 12, 13, 13).
+passes4(13602, 74896, belvedere, 13, 14, 14).
+passes4(13602, 75517, bygrensen, 14, 15, 15).
+passes4(13602, 74338, nyveibakken, 15, 16, 16).
+passes4(13602, 75008, bergsli_gate, 16, 17, 17).
+passes4(13602, 104110, ila, 17, 17, 17).
 
-passes4(13694, 104111, ila, 2, 999, 0).
-passes4(13694, 75007, bergsli_gate, 3, 1, 1).
-passes4(13694, 74339, nyveibakken, 4, 2, 2).
-passes4(13694, 75518, bygrensen, 5, 3, 3).
-passes4(13694, 74894, belvedere, 6, 4, 4).
-passes4(13694, 75321, breidablikk_2, 7, 5, 5).
-passes4(13694, 74090, nordre_hoem, 8, 6, 6).
-passes4(13694, 73561, søndre_hoem, 9, 7, 7).
-passes4(13694, 71447, rognheim, 10, 9, 9).
-passes4(13694, 73440, munkvoll_2, 11, 11, 11).
-passes4(13694, 75147, ferstad, 12, 12, 12).
-passes4(13694, 110141, ugla, 13, 13, 13).
-passes4(13694, 73098, kyvannet, 14, 14, 14).
-passes4(13694, 72109, vestmarka, 15, 15, 15).
-passes4(13694, 71254, herlofsonløypa, 16, 16, 16).
-passes4(13694, 73481, lian, 17, 17, 17).
+passes4(13663, 104111, ila, 2, 999, 0).
+passes4(13663, 75007, bergsli_gate, 3, 1, 1).
+passes4(13663, 74339, nyveibakken, 4, 2, 2).
+passes4(13663, 75518, bygrensen, 5, 3, 3).
+passes4(13663, 74894, belvedere, 6, 4, 4).
+passes4(13663, 75321, breidablikk_2, 7, 5, 5).
+passes4(13663, 74090, nordre_hoem, 8, 6, 6).
+passes4(13663, 73561, søndre_hoem, 9, 7, 7).
+passes4(13663, 71447, rognheim, 10, 9, 9).
+passes4(13663, 73440, munkvoll_2, 11, 11, 11).
+passes4(13663, 75147, ferstad, 12, 12, 12).
+passes4(13663, 110141, ugla, 13, 13, 13).
+passes4(13663, 73098, kyvannet, 14, 14, 14).
+passes4(13663, 72109, vestmarka, 15, 15, 15).
+passes4(13663, 71254, herlofsonløypa, 16, 16, 16).
+passes4(13663, 73481, lian, 17, 17, 17).
 
 passes4(1372, 72850, havstad, 2, 999, 0).
 passes4(1372, 74213, nyborg, 3, 2, 2).
@@ -57268,11 +57268,11 @@ ntourstops(13028, 8).
 ntourstops(13029, 2).
 ntourstops(13090, 2).
 ntourstops(13157, 4).
-ntourstops(13249, 4).
-ntourstops(13341, 20).
-ntourstops(13402, 19).
-ntourstops(13633, 16).
-ntourstops(13694, 16).
+ntourstops(13219, 4).
+ntourstops(13310, 20).
+ntourstops(13371, 19).
+ntourstops(13602, 16).
+ntourstops(13663, 16).
 ntourstops(1372, 28).
 ntourstops(1385, 30).
 ntourstops(1401, 30).
