@@ -39,10 +39,6 @@ composite_stat(amdal,[],amdal).
 composite_stat(amfi,[steinkjer],amfi_steinkjer).
 composite_stat(amunddal,[],amunddal).
 composite_stat(amundmoen,[],amundmoen).
-composite_stat(anders,[buens, gate],anders_buens_gate).
-composite_stat(anders,[buens, street],anders_buens_gate). % generated 2.2
-composite_stat(anders,[buens_street],anders_buens_gate). % generated 2.1
-composite_stat(anders,[buensgate],anders_buens_gate). % generated 2.0
 composite_stat(anders,[søyseths, street],anders_søyseths_veg). % generated 2.2
 composite_stat(anders,[søyseths, veg],anders_søyseths_veg).
 composite_stat(anders,[søyseths_street],anders_søyseths_veg). % generated 2.1
@@ -459,8 +455,6 @@ composite_stat(bukta,[],bukta).
 composite_stat(bunes,[],bunes).
 composite_stat(buran,[1],buran_1).
 composite_stat(buran,[2],buran_2).
-composite_stat(buran,[3],buran_3).
-composite_stat(buran,[4],buran_4).
 composite_stat(buret,[],buret).
 composite_stat(burheim,[],burheim).
 composite_stat(buset,[],buset).

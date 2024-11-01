@@ -93,7 +93,6 @@ hpl(102750,olav_kyrres_gate,olav_kyrres_gate,'Olav Kyrres gate').
 hpl(102751,høvik,høvik,'Høvik').
 hpl(102761,romstad_bomstasjon,romstad_bomstasjon,'Romstad bomstasjon').
 hpl(103007,buran_2,buran_2,'Buran 2').
-hpl(103008,buran_3,buran_3,'Buran 3').
 hpl(103009,buran_1,buran_1,'Buran 1').
 hpl(103021,akset,akset,'Akset').
 hpl(103022,ausa,ausa,'Ausa').
@@ -579,7 +578,6 @@ hpl(108924,krokstadøra_servicesenter,krokstadøra_servicesenter,'Krokstadøra s
 hpl(108925,krokstadøra_servicesenter,krokstadøra_servicesenter,'Krokstadøra servicesenter').
 hpl(108926,skogaromvegen,skogaromvegen,'Skogaromvegen').
 hpl(108927,allbrukshuset,allbrukshuset,'Allbrukshuset').
-hpl(108948,buran_4,buran_4,'Buran 4').
 hpl(108957,stokksletta,stokksletta,'Stokksletta').
 hpl(108958,stokksletta,stokksletta,'Stokksletta').
 hpl(108973,hitra_idrettspark,hitra_idrettspark,'Hitra idrettspark').
@@ -3738,8 +3736,6 @@ hpl(74583,olden,olden,'Olden').
 hpl(74584,amunddal,amunddal,'Amunddal').
 hpl(74585,dombu,dombu,'Dombu').
 hpl(74586,dombu,dombu,'Dombu').
-hpl(74587,anders_buens_gate,anders_buens_gate,'Anders Buens gate').
-hpl(74588,anders_buens_gate,anders_buens_gate,'Anders Buens gate').
 hpl(74589,dora,dora,'Dora').
 hpl(74590,dora,dora,'Dora').
 hpl(74591,olden_veikryss,olden_veikryss,'Olden veikryss').
