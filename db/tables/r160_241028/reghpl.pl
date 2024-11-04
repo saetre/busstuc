@@ -7706,7 +7706,6 @@ hpl(79666,jonsrud,jonsrud,'Jonsrud').
 hpl(79667,jonsrud,jonsrud,'Jonsrud').
 hpl(79669,tømmervik_vegdele,tømmervik_vegdele,'Tømmervik vegdele').
 hpl(79671,tømmervik_vegdele,tømmervik_vegdele,'Tømmervik vegdele').
-hpl(79672,grinna,grinna,'Grinna').
 hpl(79673,gropa,gropa,'Gropa').
 hpl(79674,grinna,grinna,'Grinna').
 hpl(79675,gropa,gropa,'Gropa').
