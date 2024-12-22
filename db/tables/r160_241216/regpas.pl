@@ -63361,389 +63361,389 @@ passes4(28480, 71231, hepsøy_hurtigbåtkai, 4, 35, 35).
 passes4(28480, 71232, ramsøy_hurtigbåtkai, 5, 40, 40).
 passes4(28480, 71896, sandviksberget_hurtigbåtkai, 6, 43, 43).
 
+passes4(28489, 71896, sandviksberget_hurtigbåtkai, 2, 999, 0).
+passes4(28489, 72398, skjærvøy_hurtigbåtkai, 3, 25, 25).
+passes4(28489, 75055, bessaker_hurtigbåtkai, 4, 40, 40).
+passes4(28489, 72398, skjærvøy_hurtigbåtkai, 5, 55, 55).
+passes4(28489, 71231, hepsøy_hurtigbåtkai, 6, 70, 70).
+passes4(28489, 71232, ramsøy_hurtigbåtkai, 7, 75, 75).
+passes4(28489, 71896, sandviksberget_hurtigbåtkai, 8, 85, 85).
+
 passes4(28490, 71896, sandviksberget_hurtigbåtkai, 2, 999, 0).
-passes4(28490, 72398, skjærvøy_hurtigbåtkai, 3, 25, 25).
-passes4(28490, 75055, bessaker_hurtigbåtkai, 4, 40, 40).
-passes4(28490, 72398, skjærvøy_hurtigbåtkai, 5, 55, 55).
-passes4(28490, 71231, hepsøy_hurtigbåtkai, 6, 70, 70).
-passes4(28490, 71232, ramsøy_hurtigbåtkai, 7, 75, 75).
-passes4(28490, 71896, sandviksberget_hurtigbåtkai, 8, 85, 85).
+passes4(28490, 71233, ramsøyaunet_hurtigbåtkai, 3, 5, 5).
+passes4(28490, 71232, ramsøy_hurtigbåtkai, 4, 12, 12).
+passes4(28490, 71231, hepsøy_hurtigbåtkai, 5, 15, 15).
+passes4(28490, 72398, skjærvøy_hurtigbåtkai, 6, 30, 30).
+passes4(28490, 75055, bessaker_hurtigbåtkai, 7, 45, 45).
 
-passes4(28491, 71896, sandviksberget_hurtigbåtkai, 2, 999, 0).
-passes4(28491, 71233, ramsøyaunet_hurtigbåtkai, 3, 5, 5).
-passes4(28491, 71232, ramsøy_hurtigbåtkai, 4, 12, 12).
-passes4(28491, 71231, hepsøy_hurtigbåtkai, 5, 15, 15).
-passes4(28491, 72398, skjærvøy_hurtigbåtkai, 6, 30, 30).
-passes4(28491, 75055, bessaker_hurtigbåtkai, 7, 45, 45).
+passes4(28491, 75055, bessaker_hurtigbåtkai, 2, 999, 0).
+passes4(28491, 72398, skjærvøy_hurtigbåtkai, 3, 15, 15).
+passes4(28491, 71231, hepsøy_hurtigbåtkai, 4, 30, 30).
+passes4(28491, 71232, ramsøy_hurtigbåtkai, 5, 35, 35).
+passes4(28491, 71896, sandviksberget_hurtigbåtkai, 6, 38, 38).
 
-passes4(28492, 75055, bessaker_hurtigbåtkai, 2, 999, 0).
-passes4(28492, 72398, skjærvøy_hurtigbåtkai, 3, 15, 15).
+passes4(28492, 71896, sandviksberget_hurtigbåtkai, 2, 999, 0).
+passes4(28492, 72398, skjærvøy_hurtigbåtkai, 3, 20, 20).
 passes4(28492, 71231, hepsøy_hurtigbåtkai, 4, 30, 30).
-passes4(28492, 71232, ramsøy_hurtigbåtkai, 5, 35, 35).
-passes4(28492, 71896, sandviksberget_hurtigbåtkai, 6, 38, 38).
+passes4(28492, 71896, sandviksberget_hurtigbåtkai, 5, 40, 40).
 
 passes4(28493, 71896, sandviksberget_hurtigbåtkai, 2, 999, 0).
-passes4(28493, 72398, skjærvøy_hurtigbåtkai, 3, 20, 20).
-passes4(28493, 71231, hepsøy_hurtigbåtkai, 4, 30, 30).
-passes4(28493, 71896, sandviksberget_hurtigbåtkai, 5, 40, 40).
+passes4(28493, 72398, skjærvøy_hurtigbåtkai, 3, 25, 25).
+passes4(28493, 71896, sandviksberget_hurtigbåtkai, 4, 45, 45).
 
-passes4(28494, 71896, sandviksberget_hurtigbåtkai, 2, 999, 0).
-passes4(28494, 72398, skjærvøy_hurtigbåtkai, 3, 25, 25).
-passes4(28494, 71896, sandviksberget_hurtigbåtkai, 4, 45, 45).
+passes4(28496, 103145, sørborgen_skole, 2, 999, 0).
+passes4(28496, 73594, sørborgen, 3, 1, 1).
+passes4(28496, 74192, klæbu_sentrum, 4, 6, 6).
+passes4(28496, 72778, haugum, 5, 7, 7).
+passes4(28496, 71811, husby, 6, 7, 7).
+passes4(28496, 74745, eggan, 7, 8, 8).
+passes4(28496, 73355, svean, 8, 9, 9).
+passes4(28496, 73318, moodden, 9, 9, 9).
+passes4(28496, 73202, moen_gård, 10, 10, 10).
+passes4(28496, 73222, moenkrysset, 11, 11, 11).
+passes4(28496, 73140, moadalen, 12, 12, 12).
+passes4(28496, 74254, nygården, 13, 13, 13).
+passes4(28496, 73434, lettingvold, 14, 14, 14).
+passes4(28496, 71860, hyttfossen, 15, 16, 16).
+passes4(28496, 73363, svebakken, 16, 19, 19).
+passes4(28496, 75445, brøttemsmarka, 17, 20, 20).
+passes4(28496, 75441, brøttem_gård, 18, 22, 22).
+passes4(28496, 75447, brøttemsåsen, 19, 23, 23).
+passes4(28496, 75739, grendstad, 20, 24, 24).
+passes4(28496, 73720, teigen, 21, 25, 25).
+passes4(28496, 74185, klæbu_bygdemuseum, 22, 26, 26).
+passes4(28496, 75139, bjørklimark, 23, 27, 27).
+passes4(28496, 75135, bjørkligård, 24, 28, 28).
+passes4(28496, 75127, bjørkli, 25, 29, 29).
 
-passes4(28497, 103145, sørborgen_skole, 2, 999, 0).
-passes4(28497, 73594, sørborgen, 3, 1, 1).
-passes4(28497, 74192, klæbu_sentrum, 4, 6, 6).
-passes4(28497, 72778, haugum, 5, 7, 7).
-passes4(28497, 71811, husby, 6, 7, 7).
-passes4(28497, 74745, eggan, 7, 8, 8).
-passes4(28497, 73355, svean, 8, 9, 9).
-passes4(28497, 73318, moodden, 9, 9, 9).
-passes4(28497, 73202, moen_gård, 10, 10, 10).
-passes4(28497, 73222, moenkrysset, 11, 11, 11).
-passes4(28497, 73140, moadalen, 12, 12, 12).
-passes4(28497, 74254, nygården, 13, 13, 13).
-passes4(28497, 73434, lettingvold, 14, 14, 14).
-passes4(28497, 71860, hyttfossen, 15, 16, 16).
-passes4(28497, 73363, svebakken, 16, 19, 19).
-passes4(28497, 75445, brøttemsmarka, 17, 20, 20).
-passes4(28497, 75441, brøttem_gård, 18, 22, 22).
-passes4(28497, 75447, brøttemsåsen, 19, 23, 23).
-passes4(28497, 75739, grendstad, 20, 24, 24).
-passes4(28497, 73720, teigen, 21, 25, 25).
-passes4(28497, 74185, klæbu_bygdemuseum, 22, 26, 26).
-passes4(28497, 75139, bjørklimark, 23, 27, 27).
-passes4(28497, 75135, bjørkligård, 24, 28, 28).
-passes4(28497, 75127, bjørkli, 25, 29, 29).
+passes4(28497, 74192, klæbu_sentrum, 2, 999, 0).
+passes4(28497, 71332, hesttrø, 3, 1, 1).
+passes4(28497, 71156, prestgårdskrysset, 4, 2, 2).
+passes4(28497, 73595, sørborgen, 5, 3, 3).
+passes4(28497, 103145, sørborgen_skole, 6, 4, 4).
+passes4(28497, 73657, tanem_bru, 7, 6, 6).
+passes4(28497, 73662, tanem_gård, 8, 7, 7).
+passes4(28497, 73666, tanemskrysset, 9, 8, 8).
+passes4(28497, 75287, brannåsen, 10, 12, 12).
+passes4(28497, 75353, forset, 11, 13, 13).
+passes4(28497, 71525, tulluan_skole, 12, 14, 14).
+passes4(28497, 71533, tulluan_syd, 13, 15, 15).
+passes4(28497, 71770, sagmoen, 14, 16, 16).
+passes4(28497, 73207, moen_industriområde, 15, 16, 16).
+passes4(28497, 73243, lappen, 16, 17, 17).
+passes4(28497, 73222, moenkrysset, 17, 17, 17).
+passes4(28497, 73140, moadalen, 18, 18, 18).
+passes4(28497, 74254, nygården, 19, 19, 19).
+passes4(28497, 73434, lettingvold, 20, 20, 20).
+passes4(28497, 71860, hyttfossen, 21, 22, 22).
+passes4(28497, 74446, storvollen, 22, 23, 23).
+passes4(28497, 73623, målsjøåsen, 23, 24, 24).
+passes4(28497, 73612, målsjøen, 24, 25, 25).
+passes4(28497, 73690, tangen, 25, 26, 26).
+passes4(28497, 71524, tulluan_skole, 26, 36, 36).
 
 passes4(28498, 74192, klæbu_sentrum, 2, 999, 0).
-passes4(28498, 71332, hesttrø, 3, 1, 1).
-passes4(28498, 71156, prestgårdskrysset, 4, 2, 2).
-passes4(28498, 73595, sørborgen, 5, 3, 3).
-passes4(28498, 103145, sørborgen_skole, 6, 4, 4).
-passes4(28498, 73657, tanem_bru, 7, 6, 6).
-passes4(28498, 73662, tanem_gård, 8, 7, 7).
-passes4(28498, 73666, tanemskrysset, 9, 8, 8).
-passes4(28498, 75287, brannåsen, 10, 12, 12).
-passes4(28498, 75353, forset, 11, 13, 13).
-passes4(28498, 71525, tulluan_skole, 12, 14, 14).
-passes4(28498, 71533, tulluan_syd, 13, 15, 15).
-passes4(28498, 71770, sagmoen, 14, 16, 16).
-passes4(28498, 73207, moen_industriområde, 15, 16, 16).
-passes4(28498, 73243, lappen, 16, 17, 17).
-passes4(28498, 73222, moenkrysset, 17, 17, 17).
-passes4(28498, 73140, moadalen, 18, 18, 18).
-passes4(28498, 74254, nygården, 19, 19, 19).
-passes4(28498, 73434, lettingvold, 20, 20, 20).
-passes4(28498, 71860, hyttfossen, 21, 22, 22).
-passes4(28498, 74446, storvollen, 22, 23, 23).
-passes4(28498, 73623, målsjøåsen, 23, 24, 24).
-passes4(28498, 73612, målsjøen, 24, 25, 25).
-passes4(28498, 73690, tangen, 25, 26, 26).
-passes4(28498, 71524, tulluan_skole, 26, 36, 36).
+passes4(28498, 72778, haugum, 3, 1, 1).
+passes4(28498, 71811, husby, 4, 2, 2).
+passes4(28498, 74745, eggan, 5, 3, 3).
+passes4(28498, 73355, svean, 6, 4, 4).
+passes4(28498, 73318, moodden, 7, 4, 4).
+passes4(28498, 73202, moen_gård, 8, 5, 5).
+passes4(28498, 73222, moenkrysset, 9, 6, 6).
+passes4(28498, 73140, moadalen, 10, 7, 7).
+passes4(28498, 74254, nygården, 11, 8, 8).
+passes4(28498, 73434, lettingvold, 12, 9, 9).
+passes4(28498, 71860, hyttfossen, 13, 11, 11).
+passes4(28498, 73363, svebakken, 14, 13, 13).
+passes4(28498, 75445, brøttemsmarka, 15, 13, 13).
+passes4(28498, 75441, brøttem_gård, 16, 14, 14).
+passes4(28498, 75447, brøttemsåsen, 17, 15, 15).
+passes4(28498, 75739, grendstad, 18, 16, 16).
+passes4(28498, 73720, teigen, 19, 17, 17).
+passes4(28498, 74185, klæbu_bygdemuseum, 20, 18, 18).
+passes4(28498, 75139, bjørklimark, 21, 18, 18).
+passes4(28498, 75135, bjørkligård, 22, 19, 19).
+passes4(28498, 75127, bjørkli, 23, 20, 20).
 
-passes4(28499, 74192, klæbu_sentrum, 2, 999, 0).
-passes4(28499, 72778, haugum, 3, 1, 1).
-passes4(28499, 71811, husby, 4, 2, 2).
-passes4(28499, 74745, eggan, 5, 3, 3).
-passes4(28499, 73355, svean, 6, 4, 4).
-passes4(28499, 73318, moodden, 7, 4, 4).
-passes4(28499, 73202, moen_gård, 8, 5, 5).
-passes4(28499, 73222, moenkrysset, 9, 6, 6).
-passes4(28499, 73140, moadalen, 10, 7, 7).
-passes4(28499, 74254, nygården, 11, 8, 8).
-passes4(28499, 73434, lettingvold, 12, 9, 9).
-passes4(28499, 71860, hyttfossen, 13, 11, 11).
-passes4(28499, 73363, svebakken, 14, 13, 13).
-passes4(28499, 75445, brøttemsmarka, 15, 13, 13).
-passes4(28499, 75441, brøttem_gård, 16, 14, 14).
-passes4(28499, 75447, brøttemsåsen, 17, 15, 15).
-passes4(28499, 75739, grendstad, 18, 16, 16).
-passes4(28499, 73720, teigen, 19, 17, 17).
-passes4(28499, 74185, klæbu_bygdemuseum, 20, 18, 18).
-passes4(28499, 75139, bjørklimark, 21, 18, 18).
-passes4(28499, 75135, bjørkligård, 22, 19, 19).
-passes4(28499, 75127, bjørkli, 23, 20, 20).
+passes4(28501, 75287, brannåsen, 2, 999, 0).
+passes4(28501, 73223, moenkrysset, 3, 5, 5).
+passes4(28501, 73201, moen_gård, 4, 6, 6).
+passes4(28501, 73316, moodden, 5, 7, 7).
+passes4(28501, 73354, svean, 6, 7, 7).
+passes4(28501, 74744, eggan, 7, 8, 8).
+passes4(28501, 71812, husby, 8, 9, 9).
+passes4(28501, 72779, haugum, 9, 10, 10).
+passes4(28501, 74192, klæbu_sentrum, 10, 11, 11).
 
-passes4(28502, 75287, brannåsen, 2, 999, 0).
-passes4(28502, 73223, moenkrysset, 3, 5, 5).
-passes4(28502, 73201, moen_gård, 4, 6, 6).
-passes4(28502, 73316, moodden, 5, 7, 7).
-passes4(28502, 73354, svean, 6, 7, 7).
-passes4(28502, 74744, eggan, 7, 8, 8).
-passes4(28502, 71812, husby, 8, 9, 9).
-passes4(28502, 72779, haugum, 9, 10, 10).
-passes4(28502, 74192, klæbu_sentrum, 10, 11, 11).
+passes4(28502, 75127, bjørkli, 2, 999, 0).
+passes4(28502, 75136, bjørkligård, 3, 1, 1).
+passes4(28502, 75141, bjørklimark, 4, 2, 2).
+passes4(28502, 74186, klæbu_bygdemuseum, 5, 2, 2).
+passes4(28502, 73722, teigen, 6, 3, 3).
+passes4(28502, 75738, grendstad, 7, 4, 4).
+passes4(28502, 75446, brøttemsåsen, 8, 5, 5).
+passes4(28502, 75440, brøttem_gård, 9, 6, 6).
+passes4(28502, 75442, brøttemsmarka, 10, 8, 8).
+passes4(28502, 73362, svebakken, 11, 9, 9).
+passes4(28502, 71862, hyttfossen, 12, 12, 12).
+passes4(28502, 73435, lettingvold, 13, 14, 14).
+passes4(28502, 74253, nygården, 14, 15, 15).
+passes4(28502, 73141, moadalen, 15, 16, 16).
+passes4(28502, 73223, moenkrysset, 16, 17, 17).
+passes4(28502, 73245, lappen, 17, 18, 18).
+passes4(28502, 73208, moen_industriområde, 18, 19, 19).
+passes4(28502, 71769, sagmoen, 19, 20, 20).
+passes4(28502, 71532, tulluan_syd, 20, 21, 21).
+passes4(28502, 71524, tulluan_skole, 21, 21, 21).
+passes4(28502, 71519, tulluan_nord, 22, 22, 22).
+passes4(28502, 75354, forset, 23, 23, 23).
+passes4(28502, 75287, brannåsen, 24, 25, 25).
+passes4(28502, 73666, tanemskrysset, 25, 27, 27).
 
-passes4(28503, 75127, bjørkli, 2, 999, 0).
-passes4(28503, 75136, bjørkligård, 3, 1, 1).
-passes4(28503, 75141, bjørklimark, 4, 2, 2).
-passes4(28503, 74186, klæbu_bygdemuseum, 5, 2, 2).
-passes4(28503, 73722, teigen, 6, 3, 3).
-passes4(28503, 75738, grendstad, 7, 4, 4).
-passes4(28503, 75446, brøttemsåsen, 8, 5, 5).
-passes4(28503, 75440, brøttem_gård, 9, 6, 6).
-passes4(28503, 75442, brøttemsmarka, 10, 8, 8).
-passes4(28503, 73362, svebakken, 11, 9, 9).
-passes4(28503, 71862, hyttfossen, 12, 12, 12).
-passes4(28503, 73435, lettingvold, 13, 14, 14).
-passes4(28503, 74253, nygården, 14, 15, 15).
-passes4(28503, 73141, moadalen, 15, 16, 16).
-passes4(28503, 73223, moenkrysset, 16, 17, 17).
-passes4(28503, 73245, lappen, 17, 18, 18).
-passes4(28503, 73208, moen_industriområde, 18, 19, 19).
-passes4(28503, 71769, sagmoen, 19, 20, 20).
-passes4(28503, 71532, tulluan_syd, 20, 21, 21).
-passes4(28503, 71524, tulluan_skole, 21, 21, 21).
-passes4(28503, 71519, tulluan_nord, 22, 22, 22).
-passes4(28503, 75354, forset, 23, 23, 23).
-passes4(28503, 75287, brannåsen, 24, 25, 25).
-passes4(28503, 73666, tanemskrysset, 25, 27, 27).
+passes4(28504, 75127, bjørkli, 2, 999, 0).
+passes4(28504, 75136, bjørkligård, 3, 1, 1).
+passes4(28504, 75141, bjørklimark, 4, 2, 2).
+passes4(28504, 74186, klæbu_bygdemuseum, 5, 2, 2).
+passes4(28504, 73722, teigen, 6, 3, 3).
+passes4(28504, 75738, grendstad, 7, 4, 4).
+passes4(28504, 75446, brøttemsåsen, 8, 5, 5).
+passes4(28504, 75440, brøttem_gård, 9, 6, 6).
+passes4(28504, 75442, brøttemsmarka, 10, 8, 8).
+passes4(28504, 73362, svebakken, 11, 9, 9).
+passes4(28504, 71862, hyttfossen, 12, 12, 12).
+passes4(28504, 73435, lettingvold, 13, 14, 14).
+passes4(28504, 74253, nygården, 14, 15, 15).
+passes4(28504, 73141, moadalen, 15, 16, 16).
+passes4(28504, 73223, moenkrysset, 16, 17, 17).
+passes4(28504, 73245, lappen, 17, 18, 18).
+passes4(28504, 73208, moen_industriområde, 18, 19, 19).
+passes4(28504, 71769, sagmoen, 19, 19, 19).
+passes4(28504, 71532, tulluan_syd, 20, 20, 20).
+passes4(28504, 71524, tulluan_skole, 21, 20, 20).
+passes4(28504, 71519, tulluan_nord, 22, 21, 21).
+passes4(28504, 75354, forset, 23, 22, 22).
+passes4(28504, 75287, brannåsen, 24, 24, 24).
+passes4(28504, 73666, tanemskrysset, 25, 26, 26).
+passes4(28504, 73663, tanem_gård, 26, 27, 27).
+passes4(28504, 73656, tanem_bru, 27, 28, 28).
+passes4(28504, 73594, sørborgen, 28, 29, 29).
+passes4(28504, 71157, prestgårdskrysset, 29, 30, 30).
+passes4(28504, 71330, hesttrø, 30, 31, 31).
+passes4(28504, 74192, klæbu_sentrum, 31, 32, 32).
 
 passes4(28505, 75127, bjørkli, 2, 999, 0).
 passes4(28505, 75136, bjørkligård, 3, 1, 1).
 passes4(28505, 75141, bjørklimark, 4, 2, 2).
 passes4(28505, 74186, klæbu_bygdemuseum, 5, 2, 2).
 passes4(28505, 73722, teigen, 6, 3, 3).
-passes4(28505, 75738, grendstad, 7, 4, 4).
-passes4(28505, 75446, brøttemsåsen, 8, 5, 5).
-passes4(28505, 75440, brøttem_gård, 9, 6, 6).
-passes4(28505, 75442, brøttemsmarka, 10, 8, 8).
-passes4(28505, 73362, svebakken, 11, 9, 9).
-passes4(28505, 71862, hyttfossen, 12, 12, 12).
-passes4(28505, 73435, lettingvold, 13, 14, 14).
-passes4(28505, 74253, nygården, 14, 15, 15).
-passes4(28505, 73141, moadalen, 15, 16, 16).
-passes4(28505, 73223, moenkrysset, 16, 17, 17).
-passes4(28505, 73245, lappen, 17, 18, 18).
-passes4(28505, 73208, moen_industriområde, 18, 19, 19).
-passes4(28505, 71769, sagmoen, 19, 19, 19).
-passes4(28505, 71532, tulluan_syd, 20, 20, 20).
-passes4(28505, 71524, tulluan_skole, 21, 20, 20).
-passes4(28505, 71519, tulluan_nord, 22, 21, 21).
-passes4(28505, 75354, forset, 23, 22, 22).
-passes4(28505, 75287, brannåsen, 24, 24, 24).
-passes4(28505, 73666, tanemskrysset, 25, 26, 26).
-passes4(28505, 73663, tanem_gård, 26, 27, 27).
-passes4(28505, 73656, tanem_bru, 27, 28, 28).
-passes4(28505, 73594, sørborgen, 28, 29, 29).
-passes4(28505, 71157, prestgårdskrysset, 29, 30, 30).
-passes4(28505, 71330, hesttrø, 30, 31, 31).
-passes4(28505, 74192, klæbu_sentrum, 31, 32, 32).
+passes4(28505, 73126, ståggånvegen, 7, 7, 7).
+passes4(28505, 71812, husby, 8, 8, 8).
+passes4(28505, 72779, haugum, 9, 9, 9).
+passes4(28505, 71330, hesttrø, 10, 10, 10).
+passes4(28505, 74192, klæbu_sentrum, 11, 11, 11).
 
-passes4(28506, 75127, bjørkli, 2, 999, 0).
-passes4(28506, 75136, bjørkligård, 3, 1, 1).
-passes4(28506, 75141, bjørklimark, 4, 2, 2).
-passes4(28506, 74186, klæbu_bygdemuseum, 5, 2, 2).
-passes4(28506, 73722, teigen, 6, 3, 3).
-passes4(28506, 73126, ståggånvegen, 7, 7, 7).
-passes4(28506, 71812, husby, 8, 8, 8).
-passes4(28506, 72779, haugum, 9, 9, 9).
-passes4(28506, 71330, hesttrø, 10, 10, 10).
-passes4(28506, 74192, klæbu_sentrum, 11, 11, 11).
+passes4(28509, 75127, bjørkli, 2, 999, 0).
+passes4(28509, 75136, bjørkligård, 3, 1, 1).
+passes4(28509, 75141, bjørklimark, 4, 2, 2).
+passes4(28509, 74186, klæbu_bygdemuseum, 5, 2, 2).
+passes4(28509, 73722, teigen, 6, 3, 3).
+passes4(28509, 75738, grendstad, 7, 4, 4).
+passes4(28509, 75446, brøttemsåsen, 8, 5, 5).
+passes4(28509, 75440, brøttem_gård, 9, 6, 6).
+passes4(28509, 75442, brøttemsmarka, 10, 8, 8).
+passes4(28509, 73362, svebakken, 11, 9, 9).
+passes4(28509, 71862, hyttfossen, 12, 12, 12).
+passes4(28509, 73435, lettingvold, 13, 14, 14).
+passes4(28509, 74253, nygården, 14, 15, 15).
+passes4(28509, 73141, moadalen, 15, 16, 16).
+passes4(28509, 73223, moenkrysset, 16, 17, 17).
+passes4(28509, 73201, moen_gård, 17, 18, 18).
+passes4(28509, 73316, moodden, 18, 19, 19).
+passes4(28509, 73354, svean, 19, 20, 20).
+passes4(28509, 74744, eggan, 20, 21, 21).
+passes4(28509, 71812, husby, 21, 22, 22).
+passes4(28509, 72779, haugum, 22, 23, 23).
+passes4(28509, 73595, sørborgen, 23, 27, 27).
+passes4(28509, 103145, sørborgen_skole, 24, 28, 28).
 
-passes4(28510, 75127, bjørkli, 2, 999, 0).
-passes4(28510, 75136, bjørkligård, 3, 1, 1).
-passes4(28510, 75141, bjørklimark, 4, 2, 2).
-passes4(28510, 74186, klæbu_bygdemuseum, 5, 2, 2).
-passes4(28510, 73722, teigen, 6, 3, 3).
-passes4(28510, 75738, grendstad, 7, 4, 4).
-passes4(28510, 75446, brøttemsåsen, 8, 5, 5).
-passes4(28510, 75440, brøttem_gård, 9, 6, 6).
-passes4(28510, 75442, brøttemsmarka, 10, 8, 8).
-passes4(28510, 73362, svebakken, 11, 9, 9).
-passes4(28510, 71862, hyttfossen, 12, 12, 12).
-passes4(28510, 73435, lettingvold, 13, 14, 14).
-passes4(28510, 74253, nygården, 14, 15, 15).
-passes4(28510, 73141, moadalen, 15, 16, 16).
-passes4(28510, 73223, moenkrysset, 16, 17, 17).
-passes4(28510, 73201, moen_gård, 17, 18, 18).
-passes4(28510, 73316, moodden, 18, 19, 19).
-passes4(28510, 73354, svean, 19, 20, 20).
-passes4(28510, 74744, eggan, 20, 21, 21).
-passes4(28510, 71812, husby, 21, 22, 22).
-passes4(28510, 72779, haugum, 22, 23, 23).
-passes4(28510, 73595, sørborgen, 23, 27, 27).
-passes4(28510, 103145, sørborgen_skole, 24, 28, 28).
+passes4(28511, 74670, dypfest_ferjekai, 2, 999, 0).
+passes4(28511, 73709, tarva_ferjekai, 3, 35, 35).
 
-passes4(28512, 74670, dypfest_ferjekai, 2, 999, 0).
-passes4(28512, 73709, tarva_ferjekai, 3, 35, 35).
+passes4(28522, 73709, tarva_ferjekai, 2, 999, 0).
+passes4(28522, 74670, dypfest_ferjekai, 3, 35, 35).
 
-passes4(28523, 73709, tarva_ferjekai, 2, 999, 0).
-passes4(28523, 74670, dypfest_ferjekai, 3, 35, 35).
+passes4(28540, 75650, garten_ferjekai, 2, 999, 0).
+passes4(28540, 74345, storfosna_ferjekai, 3, 20, 20).
 
-passes4(28541, 75650, garten_ferjekai, 2, 999, 0).
-passes4(28541, 74345, storfosna_ferjekai, 3, 20, 20).
+passes4(28572, 74345, storfosna_ferjekai, 2, 999, 0).
+passes4(28572, 75650, garten_ferjekai, 3, 20, 20).
 
-passes4(28573, 74345, storfosna_ferjekai, 2, 999, 0).
-passes4(28573, 75650, garten_ferjekai, 3, 20, 20).
+passes4(28630, 71579, hommelvik_stasjon, 2, 999, 0).
+passes4(28630, 72139, isdammen, 3, 2, 2).
+passes4(28630, 103153, storbergveien, 4, 3, 3).
+passes4(28630, 103147, modalen, 5, 3, 3).
+passes4(28630, 103149, grindbakken, 6, 4, 4).
+passes4(28630, 103156, buås, 7, 5, 5).
+passes4(28630, 72517, halla, 8, 6, 6).
+passes4(28630, 103158, fosslidalen, 9, 7, 7).
+passes4(28630, 103160, fossen_gård, 10, 7, 7).
+passes4(28630, 103152, fossmo, 11, 8, 8).
+passes4(28630, 74802, bakken, 12, 9, 9).
+passes4(28630, 103581, bakken_snuplass, 13, 10, 10).
+passes4(28630, 74009, karlstad, 14, 13, 13).
+passes4(28630, 103162, hallvardsplassen, 15, 17, 17).
+passes4(28630, 73837, sneisen, 16, 20, 20).
 
-passes4(28631, 71579, hommelvik_stasjon, 2, 999, 0).
-passes4(28631, 72139, isdammen, 3, 2, 2).
-passes4(28631, 103153, storbergveien, 4, 3, 3).
-passes4(28631, 103147, modalen, 5, 3, 3).
-passes4(28631, 103149, grindbakken, 6, 4, 4).
-passes4(28631, 103156, buås, 7, 5, 5).
-passes4(28631, 72517, halla, 8, 6, 6).
-passes4(28631, 103158, fosslidalen, 9, 7, 7).
-passes4(28631, 103160, fossen_gård, 10, 7, 7).
-passes4(28631, 103152, fossmo, 11, 8, 8).
-passes4(28631, 74802, bakken, 12, 9, 9).
-passes4(28631, 103581, bakken_snuplass, 13, 10, 10).
-passes4(28631, 74009, karlstad, 14, 13, 13).
-passes4(28631, 103162, hallvardsplassen, 15, 17, 17).
-passes4(28631, 73837, sneisen, 16, 20, 20).
+passes4(28631, 73836, sneisen, 2, 999, 0).
+passes4(28631, 103146, hallvardsplassen, 3, 2, 2).
+passes4(28631, 103161, verket, 4, 4, 4).
+passes4(28631, 74008, karlstad, 5, 5, 5).
+passes4(28631, 103581, bakken_snuplass, 6, 8, 8).
+passes4(28631, 74801, bakken, 7, 9, 9).
+passes4(28631, 103151, fossmo, 8, 10, 10).
+passes4(28631, 103159, fossen_gård, 9, 11, 11).
+passes4(28631, 103157, fosslidalen, 10, 12, 12).
+passes4(28631, 72515, halla, 11, 13, 13).
+passes4(28631, 103155, buås, 12, 14, 14).
+passes4(28631, 103150, grindbakken, 13, 15, 15).
+passes4(28631, 103148, modalen, 14, 15, 15).
+passes4(28631, 103154, storbergveien, 15, 16, 16).
+passes4(28631, 72140, isdammen, 16, 16, 16).
+passes4(28631, 71578, hommelvik_stasjon, 17, 19, 19).
 
-passes4(28632, 73836, sneisen, 2, 999, 0).
-passes4(28632, 103146, hallvardsplassen, 3, 2, 2).
-passes4(28632, 103161, verket, 4, 4, 4).
-passes4(28632, 74008, karlstad, 5, 5, 5).
-passes4(28632, 103581, bakken_snuplass, 6, 8, 8).
-passes4(28632, 74801, bakken, 7, 9, 9).
-passes4(28632, 103151, fossmo, 8, 10, 10).
-passes4(28632, 103159, fossen_gård, 9, 11, 11).
-passes4(28632, 103157, fosslidalen, 10, 12, 12).
-passes4(28632, 72515, halla, 11, 13, 13).
-passes4(28632, 103155, buås, 12, 14, 14).
-passes4(28632, 103150, grindbakken, 13, 15, 15).
-passes4(28632, 103148, modalen, 14, 15, 15).
-passes4(28632, 103154, storbergveien, 15, 16, 16).
-passes4(28632, 72140, isdammen, 16, 16, 16).
-passes4(28632, 71578, hommelvik_stasjon, 17, 19, 19).
+passes4(28635, 75650, garten_ferjekai, 2, 999, 0).
+passes4(28635, 74345, storfosna_ferjekai, 3, 20, 20).
+passes4(28635, 73364, leksa_ferjekai, 4, 50, 50).
+passes4(28635, 72607, værnes_ferjekai, 5, 75, 75).
 
 passes4(28636, 75650, garten_ferjekai, 2, 999, 0).
 passes4(28636, 74345, storfosna_ferjekai, 3, 20, 20).
-passes4(28636, 73364, leksa_ferjekai, 4, 50, 50).
-passes4(28636, 72607, værnes_ferjekai, 5, 75, 75).
+passes4(28636, 73364, leksa_ferjekai, 4, 60, 60).
+passes4(28636, 72607, værnes_ferjekai, 5, 90, 90).
 
-passes4(28637, 75650, garten_ferjekai, 2, 999, 0).
-passes4(28637, 74345, storfosna_ferjekai, 3, 20, 20).
-passes4(28637, 73364, leksa_ferjekai, 4, 60, 60).
-passes4(28637, 72607, værnes_ferjekai, 5, 90, 90).
+passes4(28637, 73364, leksa_ferjekai, 2, 999, 0).
+passes4(28637, 72607, værnes_ferjekai, 3, 25, 25).
 
-passes4(28638, 73364, leksa_ferjekai, 2, 999, 0).
-passes4(28638, 72607, værnes_ferjekai, 3, 25, 25).
+passes4(28639, 73364, leksa_ferjekai, 2, 999, 0).
+passes4(28639, 72607, værnes_ferjekai, 3, 30, 30).
 
-passes4(28640, 73364, leksa_ferjekai, 2, 999, 0).
-passes4(28640, 72607, værnes_ferjekai, 3, 30, 30).
+passes4(28641, 75650, garten_ferjekai, 2, 999, 0).
+passes4(28641, 74345, storfosna_ferjekai, 3, 20, 20).
+passes4(28641, 72607, værnes_ferjekai, 4, 60, 60).
 
 passes4(28642, 75650, garten_ferjekai, 2, 999, 0).
 passes4(28642, 74345, storfosna_ferjekai, 3, 20, 20).
-passes4(28642, 72607, værnes_ferjekai, 4, 60, 60).
+passes4(28642, 73364, leksa_ferjekai, 4, 55, 55).
+passes4(28642, 72607, værnes_ferjekai, 5, 80, 80).
 
 passes4(28643, 75650, garten_ferjekai, 2, 999, 0).
 passes4(28643, 74345, storfosna_ferjekai, 3, 20, 20).
 passes4(28643, 73364, leksa_ferjekai, 4, 55, 55).
-passes4(28643, 72607, værnes_ferjekai, 5, 80, 80).
+passes4(28643, 72607, værnes_ferjekai, 5, 90, 90).
 
-passes4(28644, 75650, garten_ferjekai, 2, 999, 0).
-passes4(28644, 74345, storfosna_ferjekai, 3, 20, 20).
-passes4(28644, 73364, leksa_ferjekai, 4, 55, 55).
-passes4(28644, 72607, værnes_ferjekai, 5, 90, 90).
+passes4(28646, 75650, garten_ferjekai, 2, 999, 0).
+passes4(28646, 74345, storfosna_ferjekai, 3, 20, 20).
+passes4(28646, 73364, leksa_ferjekai, 4, 50, 50).
+passes4(28646, 72607, værnes_ferjekai, 5, 85, 85).
 
-passes4(28647, 75650, garten_ferjekai, 2, 999, 0).
-passes4(28647, 74345, storfosna_ferjekai, 3, 20, 20).
-passes4(28647, 73364, leksa_ferjekai, 4, 50, 50).
-passes4(28647, 72607, værnes_ferjekai, 5, 85, 85).
+passes4(28647, 72607, værnes_ferjekai, 2, 999, 0).
+passes4(28647, 73364, leksa_ferjekai, 3, 25, 25).
+passes4(28647, 75650, garten_ferjekai, 4, 60, 60).
 
 passes4(28648, 72607, værnes_ferjekai, 2, 999, 0).
 passes4(28648, 73364, leksa_ferjekai, 3, 25, 25).
-passes4(28648, 75650, garten_ferjekai, 4, 60, 60).
 
-passes4(28649, 72607, værnes_ferjekai, 2, 999, 0).
-passes4(28649, 73364, leksa_ferjekai, 3, 25, 25).
+passes4(28650, 72607, værnes_ferjekai, 2, 999, 0).
+passes4(28650, 73364, leksa_ferjekai, 3, 30, 30).
+passes4(28650, 74345, storfosna_ferjekai, 4, 65, 65).
+passes4(28650, 75650, garten_ferjekai, 5, 90, 90).
 
 passes4(28651, 72607, værnes_ferjekai, 2, 999, 0).
-passes4(28651, 73364, leksa_ferjekai, 3, 30, 30).
-passes4(28651, 74345, storfosna_ferjekai, 4, 65, 65).
+passes4(28651, 73364, leksa_ferjekai, 3, 25, 25).
+passes4(28651, 74345, storfosna_ferjekai, 4, 70, 70).
 passes4(28651, 75650, garten_ferjekai, 5, 90, 90).
 
 passes4(28652, 72607, værnes_ferjekai, 2, 999, 0).
-passes4(28652, 73364, leksa_ferjekai, 3, 25, 25).
-passes4(28652, 74345, storfosna_ferjekai, 4, 70, 70).
-passes4(28652, 75650, garten_ferjekai, 5, 90, 90).
+passes4(28652, 74345, storfosna_ferjekai, 3, 40, 40).
+passes4(28652, 75650, garten_ferjekai, 4, 60, 60).
 
-passes4(28653, 72607, værnes_ferjekai, 2, 999, 0).
-passes4(28653, 74345, storfosna_ferjekai, 3, 40, 40).
-passes4(28653, 75650, garten_ferjekai, 4, 60, 60).
+passes4(28654, 72607, værnes_ferjekai, 2, 999, 0).
+passes4(28654, 73364, leksa_ferjekai, 3, 30, 30).
 
-passes4(28655, 72607, værnes_ferjekai, 2, 999, 0).
-passes4(28655, 73364, leksa_ferjekai, 3, 30, 30).
+passes4(28661, 72607, værnes_ferjekai, 2, 999, 0).
+passes4(28661, 74345, storfosna_ferjekai, 3, 40, 55).
+passes4(28661, 75650, garten_ferjekai, 4, 75, 75).
 
-passes4(28662, 72607, værnes_ferjekai, 2, 999, 0).
-passes4(28662, 74345, storfosna_ferjekai, 3, 40, 55).
-passes4(28662, 75650, garten_ferjekai, 4, 75, 75).
+passes4(28674, 71578, hommelvik_stasjon, 2, 999, 0).
+passes4(28674, 71586, hommelvik_ungdomsskole, 3, 1, 1).
+passes4(28674, 72847, havneveien, 4, 3, 3).
+passes4(28674, 72637, sveberg_handelspark, 5, 10, 10).
+passes4(28674, 75190, bjørnmyra, 6, 12, 12).
+passes4(28674, 73383, svebergsvegen, 7, 13, 13).
+passes4(28674, 73372, sveberghallen, 8, 15, 15).
+passes4(28674, 73377, svebergkrysset, 9, 16, 16).
+passes4(28674, 73357, leistadkrysset_1, 10, 23, 23).
+passes4(28674, 109165, vikhammerdalen, 11, 24, 24).
+passes4(28674, 72241, vikhammer_3, 12, 25, 25).
+passes4(28674, 72253, vikhammerløkka, 13, 26, 26).
 
-passes4(28675, 71578, hommelvik_stasjon, 2, 999, 0).
-passes4(28675, 71586, hommelvik_ungdomsskole, 3, 1, 1).
-passes4(28675, 72847, havneveien, 4, 3, 3).
-passes4(28675, 72637, sveberg_handelspark, 5, 10, 10).
-passes4(28675, 75190, bjørnmyra, 6, 12, 12).
-passes4(28675, 73383, svebergsvegen, 7, 13, 13).
-passes4(28675, 73372, sveberghallen, 8, 15, 15).
-passes4(28675, 73377, svebergkrysset, 9, 16, 16).
-passes4(28675, 73357, leistadkrysset_1, 10, 23, 23).
-passes4(28675, 109165, vikhammerdalen, 11, 24, 24).
-passes4(28675, 72241, vikhammer_3, 12, 25, 25).
-passes4(28675, 72253, vikhammerløkka, 13, 26, 26).
+passes4(28681, 72254, vikhammerløkka, 2, 999, 0).
+passes4(28681, 73361, vikhammerdalen, 3, 1, 1).
+passes4(28681, 73356, leistadkrysset_2, 4, 2, 2).
+passes4(28681, 72637, sveberg_handelspark, 5, 9, 9).
+passes4(28681, 75190, bjørnmyra, 6, 11, 11).
+passes4(28681, 73383, svebergsvegen, 7, 12, 12).
+passes4(28681, 73372, sveberghallen, 8, 14, 14).
 
-passes4(28682, 72254, vikhammerløkka, 2, 999, 0).
-passes4(28682, 73361, vikhammerdalen, 3, 1, 1).
-passes4(28682, 73356, leistadkrysset_2, 4, 2, 2).
-passes4(28682, 72637, sveberg_handelspark, 5, 9, 9).
-passes4(28682, 75190, bjørnmyra, 6, 11, 11).
-passes4(28682, 73383, svebergsvegen, 7, 12, 12).
-passes4(28682, 73372, sveberghallen, 8, 14, 14).
+passes4(28684, 72637, sveberg_handelspark, 2, 999, 0).
+passes4(28684, 75190, bjørnmyra, 3, 1, 1).
+passes4(28684, 73383, svebergsvegen, 4, 2, 2).
+passes4(28684, 73372, sveberghallen, 5, 3, 3).
+passes4(28684, 73377, svebergkrysset, 6, 4, 4).
+passes4(28684, 73357, leistadkrysset_1, 7, 10, 10).
+passes4(28684, 109165, vikhammerdalen, 8, 11, 11).
+passes4(28684, 72241, vikhammer_3, 9, 12, 12).
+passes4(28684, 72253, vikhammerløkka, 10, 13, 13).
 
-passes4(28685, 72637, sveberg_handelspark, 2, 999, 0).
-passes4(28685, 75190, bjørnmyra, 3, 1, 1).
-passes4(28685, 73383, svebergsvegen, 4, 2, 2).
-passes4(28685, 73372, sveberghallen, 5, 3, 3).
-passes4(28685, 73377, svebergkrysset, 6, 4, 4).
-passes4(28685, 73357, leistadkrysset_1, 7, 10, 10).
-passes4(28685, 109165, vikhammerdalen, 8, 11, 11).
-passes4(28685, 72241, vikhammer_3, 9, 12, 12).
-passes4(28685, 72253, vikhammerløkka, 10, 13, 13).
+passes4(28685, 71578, hommelvik_stasjon, 2, 999, 0).
+passes4(28685, 71586, hommelvik_ungdomsskole, 3, 1, 1).
+passes4(28685, 71571, hommelvik_skole, 4, 2, 2).
+passes4(28685, 71565, hommelvik_sjøside, 5, 4, 4).
+passes4(28685, 73813, smeplassen, 6, 5, 5).
+passes4(28685, 72637, sveberg_handelspark, 7, 12, 12).
+passes4(28685, 75190, bjørnmyra, 8, 13, 13).
+passes4(28685, 73383, svebergsvegen, 9, 14, 14).
+passes4(28685, 73372, sveberghallen, 10, 16, 16).
+passes4(28685, 73377, svebergkrysset, 11, 17, 17).
+passes4(28685, 73357, leistadkrysset_1, 12, 24, 24).
+passes4(28685, 109165, vikhammerdalen, 13, 25, 25).
+passes4(28685, 72241, vikhammer_3, 14, 26, 26).
+passes4(28685, 72253, vikhammerløkka, 15, 27, 27).
 
-passes4(28686, 71578, hommelvik_stasjon, 2, 999, 0).
-passes4(28686, 71586, hommelvik_ungdomsskole, 3, 1, 1).
-passes4(28686, 71571, hommelvik_skole, 4, 2, 2).
-passes4(28686, 71565, hommelvik_sjøside, 5, 4, 4).
-passes4(28686, 73813, smeplassen, 6, 5, 5).
-passes4(28686, 72637, sveberg_handelspark, 7, 12, 12).
-passes4(28686, 75190, bjørnmyra, 8, 13, 13).
-passes4(28686, 73383, svebergsvegen, 9, 14, 14).
-passes4(28686, 73372, sveberghallen, 10, 16, 16).
-passes4(28686, 73377, svebergkrysset, 11, 17, 17).
-passes4(28686, 73357, leistadkrysset_1, 12, 24, 24).
-passes4(28686, 109165, vikhammerdalen, 13, 25, 25).
-passes4(28686, 72241, vikhammer_3, 14, 26, 26).
-passes4(28686, 72253, vikhammerløkka, 15, 27, 27).
+passes4(28688, 72254, vikhammerløkka, 2, 999, 0).
+passes4(28688, 73361, vikhammerdalen, 3, 1, 1).
+passes4(28688, 73356, leistadkrysset_2, 4, 2, 2).
+passes4(28688, 72637, sveberg_handelspark, 5, 9, 9).
+passes4(28688, 75190, bjørnmyra, 6, 11, 11).
+passes4(28688, 73383, svebergsvegen, 7, 12, 12).
+passes4(28688, 73372, sveberghallen, 8, 14, 14).
+passes4(28688, 73378, svebergkrysset, 9, 15, 15).
+passes4(28688, 73814, smeplassen, 10, 21, 21).
+passes4(28688, 73813, smeplassen, 11, 22, 22).
+passes4(28688, 71579, hommelvik_stasjon, 12, 26, 26).
 
-passes4(28689, 72254, vikhammerløkka, 2, 999, 0).
-passes4(28689, 73361, vikhammerdalen, 3, 1, 1).
-passes4(28689, 73356, leistadkrysset_2, 4, 2, 2).
-passes4(28689, 72637, sveberg_handelspark, 5, 9, 9).
-passes4(28689, 75190, bjørnmyra, 6, 11, 11).
-passes4(28689, 73383, svebergsvegen, 7, 12, 12).
-passes4(28689, 73372, sveberghallen, 8, 14, 14).
-passes4(28689, 73378, svebergkrysset, 9, 15, 15).
-passes4(28689, 73814, smeplassen, 10, 21, 21).
-passes4(28689, 73813, smeplassen, 11, 22, 22).
-passes4(28689, 71579, hommelvik_stasjon, 12, 26, 26).
-
-passes4(28696, 72254, vikhammerløkka, 2, 999, 0).
-passes4(28696, 73361, vikhammerdalen, 3, 1, 1).
-passes4(28696, 73356, leistadkrysset_2, 4, 2, 2).
-passes4(28696, 72637, sveberg_handelspark, 5, 9, 9).
-passes4(28696, 75190, bjørnmyra, 6, 11, 11).
-passes4(28696, 73383, svebergsvegen, 7, 12, 12).
-passes4(28696, 73372, sveberghallen, 8, 14, 14).
-passes4(28696, 73378, svebergkrysset, 9, 15, 15).
-passes4(28696, 73814, smeplassen, 10, 21, 21).
-passes4(28696, 71562, hommelvik_sjøside, 11, 23, 23).
-passes4(28696, 108591, havneveien, 12, 25, 25).
-passes4(28696, 71579, hommelvik_stasjon, 13, 27, 27).
+passes4(28695, 72254, vikhammerløkka, 2, 999, 0).
+passes4(28695, 73361, vikhammerdalen, 3, 1, 1).
+passes4(28695, 73356, leistadkrysset_2, 4, 2, 2).
+passes4(28695, 72637, sveberg_handelspark, 5, 9, 9).
+passes4(28695, 75190, bjørnmyra, 6, 11, 11).
+passes4(28695, 73383, svebergsvegen, 7, 12, 12).
+passes4(28695, 73372, sveberghallen, 8, 14, 14).
+passes4(28695, 73378, svebergkrysset, 9, 15, 15).
+passes4(28695, 73814, smeplassen, 10, 21, 21).
+passes4(28695, 71562, hommelvik_sjøside, 11, 23, 23).
+passes4(28695, 108591, havneveien, 12, 25, 25).
+passes4(28695, 71579, hommelvik_stasjon, 13, 27, 27).
 
 passes4(287, 72691, markaplassen_skole, 2, 999, 0).
 passes4(287, 72309, vikåsen_skole, 3, 1, 1).
@@ -63788,11 +63788,11 @@ passes4(287, 74180, nordslettvegen_snuplass, 41, 53, 53).
 passes4(287, 72533, nordslettvegen_terrasse, 42, 54, 54).
 passes4(287, 102716, ratesvingen, 43, 56, 56).
 
-passes4(28719, 100322, brekstad_ferjekai, 2, 999, 0).
-passes4(28719, 71943, valset_ferjekai, 3, 25, 25).
+passes4(28718, 100322, brekstad_ferjekai, 2, 999, 0).
+passes4(28718, 71943, valset_ferjekai, 3, 25, 25).
 
-passes4(28754, 71943, valset_ferjekai, 2, 999, 0).
-passes4(28754, 100322, brekstad_ferjekai, 3, 25, 25).
+passes4(28753, 71943, valset_ferjekai, 2, 999, 0).
+passes4(28753, 100322, brekstad_ferjekai, 3, 25, 25).
 
 passes4(288, 72691, markaplassen_skole, 2, 999, 0).
 passes4(288, 72309, vikåsen_skole, 3, 1, 1).
@@ -63835,8 +63835,8 @@ passes4(288, 74172, nordslettvegen, 39, 51, 51).
 passes4(288, 102716, ratesvingen, 40, 52, 52).
 passes4(288, 71275, rate, 41, 54, 54).
 
-passes4(28855, 100415, flakk_ferjekai, 2, 999, 0).
-passes4(28855, 71720, rørvik_ferjekai, 3, 25, 25).
+passes4(28854, 100415, flakk_ferjekai, 2, 999, 0).
+passes4(28854, 71720, rørvik_ferjekai, 3, 25, 25).
 
 passes4(289, 72691, markaplassen_skole, 2, 999, 0).
 passes4(289, 72309, vikåsen_skole, 3, 1, 1).
@@ -63892,8 +63892,8 @@ passes4(289, 75722, granhaugan, 52, 59, 59).
 passes4(289, 73046, mikkelvegen, 53, 60, 60).
 passes4(289, 103580, paul_skolemesters_veg, 54, 61, 61).
 
-passes4(28974, 71720, rørvik_ferjekai, 2, 999, 0).
-passes4(28974, 100415, flakk_ferjekai, 3, 25, 25).
+passes4(28973, 71720, rørvik_ferjekai, 2, 999, 0).
+passes4(28973, 100415, flakk_ferjekai, 3, 25, 25).
 
 passes4(29, 74648, dronningens_gate_d1, 2, 999, 0).
 passes4(29, 71174, nidarosdomen, 3, 1, 1).
@@ -63914,29 +63914,29 @@ passes4(29, 72490, skyttervegen, 17, 21, 21).
 passes4(29, 73684, lyngvegen, 18, 22, 22).
 passes4(29, 72946, heimdal_stasjon, 19, 24, 24).
 
-passes4(29093, 102047, stjørdal_stasjon, 2, 999, 0).
-passes4(29093, 77616, stjørdal_torg, 3, 2, 2).
-passes4(29093, 76409, sigurd_jarls_veg, 4, 4, 4).
-passes4(29093, 76414, stjørdalshallen, 5, 5, 5).
-passes4(29093, 77622, j_p_holans_gate, 6, 5, 5).
-passes4(29093, 76425, husby, 7, 6, 6).
-passes4(29093, 76345, terrassehusene_øvre, 8, 8, 8).
-passes4(29093, 77214, husbyåsen, 9, 10, 10).
-passes4(29093, 77641, remyra_grendahus, 10, 13, 13).
-passes4(29093, 77100, malmtunet, 11, 13, 13).
-passes4(29093, 76432, flintvegen, 12, 14, 14).
-passes4(29093, 77630, granittvegen, 13, 15, 15).
-passes4(29093, 76954, dullumfeltet, 14, 16, 16).
-passes4(29093, 77626, fagerlia, 15, 17, 17).
-passes4(29093, 76438, stokkanvegen, 16, 18, 18).
-passes4(29093, 76941, blåveislia, 17, 19, 19).
-passes4(29093, 76445, stokkan_nedre, 18, 20, 20).
-passes4(29093, 110273, fosslia_fjellhall, 19, 21, 21).
-passes4(29093, 76415, stjørdalshallen, 20, 22, 22).
-passes4(29093, 110275, sigurd_jarls_veg, 21, 23, 23).
-passes4(29093, 77344, halsen_ungdomsskole, 22, 24, 24).
-passes4(29093, 77615, stjørdal_torg, 23, 25, 25).
-passes4(29093, 102047, stjørdal_stasjon, 24, 28, 28).
+passes4(29092, 102047, stjørdal_stasjon, 2, 999, 0).
+passes4(29092, 77616, stjørdal_torg, 3, 2, 2).
+passes4(29092, 76409, sigurd_jarls_veg, 4, 4, 4).
+passes4(29092, 76414, stjørdalshallen, 5, 5, 5).
+passes4(29092, 77622, j_p_holans_gate, 6, 5, 5).
+passes4(29092, 76425, husby, 7, 6, 6).
+passes4(29092, 76345, terrassehusene_øvre, 8, 8, 8).
+passes4(29092, 77214, husbyåsen, 9, 10, 10).
+passes4(29092, 77641, remyra_grendahus, 10, 13, 13).
+passes4(29092, 77100, malmtunet, 11, 13, 13).
+passes4(29092, 76432, flintvegen, 12, 14, 14).
+passes4(29092, 77630, granittvegen, 13, 15, 15).
+passes4(29092, 76954, dullumfeltet, 14, 16, 16).
+passes4(29092, 77626, fagerlia, 15, 17, 17).
+passes4(29092, 76438, stokkanvegen, 16, 18, 18).
+passes4(29092, 76941, blåveislia, 17, 19, 19).
+passes4(29092, 76445, stokkan_nedre, 18, 20, 20).
+passes4(29092, 110273, fosslia_fjellhall, 19, 21, 21).
+passes4(29092, 76415, stjørdalshallen, 20, 22, 22).
+passes4(29092, 110275, sigurd_jarls_veg, 21, 23, 23).
+passes4(29092, 77344, halsen_ungdomsskole, 22, 24, 24).
+passes4(29092, 77615, stjørdal_torg, 23, 25, 25).
+passes4(29092, 102047, stjørdal_stasjon, 24, 28, 28).
 
 passes4(291, 73482, sæterbakken, 2, 999, 0).
 passes4(291, 74004, fortunalia, 3, 1, 1).
@@ -63987,201 +63987,201 @@ passes4(291, 75722, granhaugan, 47, 53, 53).
 passes4(291, 73046, mikkelvegen, 48, 54, 54).
 passes4(291, 103580, paul_skolemesters_veg, 49, 55, 55).
 
-passes4(29157, 102047, stjørdal_stasjon, 2, 999, 0).
-passes4(29157, 77616, stjørdal_torg, 3, 2, 2).
-passes4(29157, 76409, sigurd_jarls_veg, 4, 4, 4).
-passes4(29157, 76414, stjørdalshallen, 5, 5, 5).
-passes4(29157, 77622, j_p_holans_gate, 6, 5, 5).
-passes4(29157, 76425, husby, 7, 6, 6).
-passes4(29157, 76345, terrassehusene_øvre, 8, 8, 8).
-passes4(29157, 77214, husbyåsen, 9, 10, 10).
-passes4(29157, 77641, remyra_grendahus, 10, 13, 13).
-passes4(29157, 77100, malmtunet, 11, 13, 13).
-passes4(29157, 76432, flintvegen, 12, 14, 14).
-passes4(29157, 77630, granittvegen, 13, 15, 15).
-passes4(29157, 76954, dullumfeltet, 14, 16, 16).
-passes4(29157, 77626, fagerlia, 15, 17, 17).
-passes4(29157, 76438, stokkanvegen, 16, 18, 18).
-passes4(29157, 76941, blåveislia, 17, 19, 19).
-passes4(29157, 76445, stokkan_nedre, 18, 20, 20).
-passes4(29157, 110273, fosslia_fjellhall, 19, 21, 21).
-passes4(29157, 76415, stjørdalshallen, 20, 22, 22).
-passes4(29157, 110275, sigurd_jarls_veg, 21, 23, 23).
-passes4(29157, 77344, halsen_ungdomsskole, 22, 24, 24).
-passes4(29157, 77615, stjørdal_torg, 23, 25, 25).
-passes4(29157, 102047, stjørdal_stasjon, 24, 28, 28).
-passes4(29157, 77261, tangen_sør, 25, 31, 31).
-passes4(29157, 76385, tangen_nord, 26, 32, 32).
-passes4(29157, 76340, ole_vig_vgs_sutterøy, 27, 35, 35).
+passes4(29156, 102047, stjørdal_stasjon, 2, 999, 0).
+passes4(29156, 77616, stjørdal_torg, 3, 2, 2).
+passes4(29156, 76409, sigurd_jarls_veg, 4, 4, 4).
+passes4(29156, 76414, stjørdalshallen, 5, 5, 5).
+passes4(29156, 77622, j_p_holans_gate, 6, 5, 5).
+passes4(29156, 76425, husby, 7, 6, 6).
+passes4(29156, 76345, terrassehusene_øvre, 8, 8, 8).
+passes4(29156, 77214, husbyåsen, 9, 10, 10).
+passes4(29156, 77641, remyra_grendahus, 10, 13, 13).
+passes4(29156, 77100, malmtunet, 11, 13, 13).
+passes4(29156, 76432, flintvegen, 12, 14, 14).
+passes4(29156, 77630, granittvegen, 13, 15, 15).
+passes4(29156, 76954, dullumfeltet, 14, 16, 16).
+passes4(29156, 77626, fagerlia, 15, 17, 17).
+passes4(29156, 76438, stokkanvegen, 16, 18, 18).
+passes4(29156, 76941, blåveislia, 17, 19, 19).
+passes4(29156, 76445, stokkan_nedre, 18, 20, 20).
+passes4(29156, 110273, fosslia_fjellhall, 19, 21, 21).
+passes4(29156, 76415, stjørdalshallen, 20, 22, 22).
+passes4(29156, 110275, sigurd_jarls_veg, 21, 23, 23).
+passes4(29156, 77344, halsen_ungdomsskole, 22, 24, 24).
+passes4(29156, 77615, stjørdal_torg, 23, 25, 25).
+passes4(29156, 102047, stjørdal_stasjon, 24, 28, 28).
+passes4(29156, 77261, tangen_sør, 25, 31, 31).
+passes4(29156, 76385, tangen_nord, 26, 32, 32).
+passes4(29156, 76340, ole_vig_vgs_sutterøy, 27, 35, 35).
 
-passes4(29160, 76340, ole_vig_vgs_sutterøy, 2, 999, 0).
-passes4(29160, 76386, tangen_nord, 3, 2, 2).
-passes4(29160, 110276, tangen_sør, 4, 3, 3).
-passes4(29160, 102047, stjørdal_stasjon, 5, 7, 7).
-passes4(29160, 77616, stjørdal_torg, 6, 9, 9).
-passes4(29160, 76409, sigurd_jarls_veg, 7, 11, 11).
-passes4(29160, 76414, stjørdalshallen, 8, 12, 12).
-passes4(29160, 77622, j_p_holans_gate, 9, 12, 12).
-passes4(29160, 76425, husby, 10, 13, 13).
-passes4(29160, 76345, terrassehusene_øvre, 11, 15, 15).
-passes4(29160, 77214, husbyåsen, 12, 17, 17).
-passes4(29160, 77641, remyra_grendahus, 13, 20, 20).
-passes4(29160, 77100, malmtunet, 14, 20, 20).
-passes4(29160, 76432, flintvegen, 15, 21, 21).
-passes4(29160, 77630, granittvegen, 16, 22, 22).
-passes4(29160, 76954, dullumfeltet, 17, 23, 23).
-passes4(29160, 77626, fagerlia, 18, 24, 24).
-passes4(29160, 76438, stokkanvegen, 19, 25, 25).
-passes4(29160, 76941, blåveislia, 20, 26, 26).
-passes4(29160, 76445, stokkan_nedre, 21, 27, 27).
-passes4(29160, 110273, fosslia_fjellhall, 22, 28, 28).
-passes4(29160, 76415, stjørdalshallen, 23, 29, 29).
-passes4(29160, 110275, sigurd_jarls_veg, 24, 30, 30).
-passes4(29160, 77344, halsen_ungdomsskole, 25, 31, 31).
-passes4(29160, 77615, stjørdal_torg, 26, 32, 32).
-passes4(29160, 102047, stjørdal_stasjon, 27, 35, 35).
+passes4(29159, 76340, ole_vig_vgs_sutterøy, 2, 999, 0).
+passes4(29159, 76386, tangen_nord, 3, 2, 2).
+passes4(29159, 110276, tangen_sør, 4, 3, 3).
+passes4(29159, 102047, stjørdal_stasjon, 5, 7, 7).
+passes4(29159, 77616, stjørdal_torg, 6, 9, 9).
+passes4(29159, 76409, sigurd_jarls_veg, 7, 11, 11).
+passes4(29159, 76414, stjørdalshallen, 8, 12, 12).
+passes4(29159, 77622, j_p_holans_gate, 9, 12, 12).
+passes4(29159, 76425, husby, 10, 13, 13).
+passes4(29159, 76345, terrassehusene_øvre, 11, 15, 15).
+passes4(29159, 77214, husbyåsen, 12, 17, 17).
+passes4(29159, 77641, remyra_grendahus, 13, 20, 20).
+passes4(29159, 77100, malmtunet, 14, 20, 20).
+passes4(29159, 76432, flintvegen, 15, 21, 21).
+passes4(29159, 77630, granittvegen, 16, 22, 22).
+passes4(29159, 76954, dullumfeltet, 17, 23, 23).
+passes4(29159, 77626, fagerlia, 18, 24, 24).
+passes4(29159, 76438, stokkanvegen, 19, 25, 25).
+passes4(29159, 76941, blåveislia, 20, 26, 26).
+passes4(29159, 76445, stokkan_nedre, 21, 27, 27).
+passes4(29159, 110273, fosslia_fjellhall, 22, 28, 28).
+passes4(29159, 76415, stjørdalshallen, 23, 29, 29).
+passes4(29159, 110275, sigurd_jarls_veg, 24, 30, 30).
+passes4(29159, 77344, halsen_ungdomsskole, 25, 31, 31).
+passes4(29159, 77615, stjørdal_torg, 26, 32, 32).
+passes4(29159, 102047, stjørdal_stasjon, 27, 35, 35).
 
-passes4(29161, 102047, stjørdal_stasjon, 2, 999, 0).
-passes4(29161, 77616, stjørdal_torg, 3, 2, 2).
-passes4(29161, 76409, sigurd_jarls_veg, 4, 4, 4).
-passes4(29161, 76414, stjørdalshallen, 5, 5, 5).
-passes4(29161, 77622, j_p_holans_gate, 6, 5, 5).
-passes4(29161, 76425, husby, 7, 6, 6).
-passes4(29161, 76345, terrassehusene_øvre, 8, 8, 8).
-passes4(29161, 77214, husbyåsen, 9, 10, 10).
-passes4(29161, 77641, remyra_grendahus, 10, 13, 13).
-passes4(29161, 77100, malmtunet, 11, 13, 13).
-passes4(29161, 76432, flintvegen, 12, 14, 14).
-passes4(29161, 77630, granittvegen, 13, 15, 15).
-passes4(29161, 76954, dullumfeltet, 14, 16, 16).
-passes4(29161, 77626, fagerlia, 15, 17, 17).
-passes4(29161, 76438, stokkanvegen, 16, 18, 18).
-passes4(29161, 76941, blåveislia, 17, 19, 19).
-passes4(29161, 76445, stokkan_nedre, 18, 20, 20).
-passes4(29161, 110273, fosslia_fjellhall, 19, 21, 21).
-passes4(29161, 76286, fosslia_skole, 20, 29, 29).
-passes4(29161, 76415, stjørdalshallen, 21, 33, 33).
-passes4(29161, 110275, sigurd_jarls_veg, 22, 34, 34).
-passes4(29161, 77344, halsen_ungdomsskole, 23, 35, 35).
-passes4(29161, 77615, stjørdal_torg, 24, 36, 36).
-passes4(29161, 102047, stjørdal_stasjon, 25, 39, 39).
-passes4(29161, 77261, tangen_sør, 26, 42, 42).
-passes4(29161, 76385, tangen_nord, 27, 43, 43).
-passes4(29161, 76340, ole_vig_vgs_sutterøy, 28, 46, 46).
+passes4(29160, 102047, stjørdal_stasjon, 2, 999, 0).
+passes4(29160, 77616, stjørdal_torg, 3, 2, 2).
+passes4(29160, 76409, sigurd_jarls_veg, 4, 4, 4).
+passes4(29160, 76414, stjørdalshallen, 5, 5, 5).
+passes4(29160, 77622, j_p_holans_gate, 6, 5, 5).
+passes4(29160, 76425, husby, 7, 6, 6).
+passes4(29160, 76345, terrassehusene_øvre, 8, 8, 8).
+passes4(29160, 77214, husbyåsen, 9, 10, 10).
+passes4(29160, 77641, remyra_grendahus, 10, 13, 13).
+passes4(29160, 77100, malmtunet, 11, 13, 13).
+passes4(29160, 76432, flintvegen, 12, 14, 14).
+passes4(29160, 77630, granittvegen, 13, 15, 15).
+passes4(29160, 76954, dullumfeltet, 14, 16, 16).
+passes4(29160, 77626, fagerlia, 15, 17, 17).
+passes4(29160, 76438, stokkanvegen, 16, 18, 18).
+passes4(29160, 76941, blåveislia, 17, 19, 19).
+passes4(29160, 76445, stokkan_nedre, 18, 20, 20).
+passes4(29160, 110273, fosslia_fjellhall, 19, 21, 21).
+passes4(29160, 76286, fosslia_skole, 20, 29, 29).
+passes4(29160, 76415, stjørdalshallen, 21, 33, 33).
+passes4(29160, 110275, sigurd_jarls_veg, 22, 34, 34).
+passes4(29160, 77344, halsen_ungdomsskole, 23, 35, 35).
+passes4(29160, 77615, stjørdal_torg, 24, 36, 36).
+passes4(29160, 102047, stjørdal_stasjon, 25, 39, 39).
+passes4(29160, 77261, tangen_sør, 26, 42, 42).
+passes4(29160, 76385, tangen_nord, 27, 43, 43).
+passes4(29160, 76340, ole_vig_vgs_sutterøy, 28, 46, 46).
 
-passes4(29162, 76386, tangen_nord, 2, 999, 0).
-passes4(29162, 110276, tangen_sør, 3, 1, 1).
-passes4(29162, 102047, stjørdal_stasjon, 4, 5, 5).
-passes4(29162, 77616, stjørdal_torg, 5, 7, 7).
-passes4(29162, 76409, sigurd_jarls_veg, 6, 9, 9).
-passes4(29162, 76414, stjørdalshallen, 7, 10, 10).
-passes4(29162, 77622, j_p_holans_gate, 8, 10, 10).
-passes4(29162, 76286, fosslia_skole, 9, 14, 14).
-passes4(29162, 76425, husby, 10, 16, 16).
-passes4(29162, 76345, terrassehusene_øvre, 11, 18, 18).
-passes4(29162, 77214, husbyåsen, 12, 20, 20).
-passes4(29162, 77641, remyra_grendahus, 13, 24, 24).
-passes4(29162, 77100, malmtunet, 14, 24, 24).
-passes4(29162, 76432, flintvegen, 15, 25, 25).
-passes4(29162, 77630, granittvegen, 16, 26, 26).
-passes4(29162, 76954, dullumfeltet, 17, 27, 27).
-passes4(29162, 77626, fagerlia, 18, 28, 28).
-passes4(29162, 76438, stokkanvegen, 19, 29, 29).
-passes4(29162, 76941, blåveislia, 20, 30, 30).
-passes4(29162, 76445, stokkan_nedre, 21, 31, 31).
-passes4(29162, 110273, fosslia_fjellhall, 22, 32, 32).
-passes4(29162, 76415, stjørdalshallen, 23, 33, 33).
-passes4(29162, 110275, sigurd_jarls_veg, 24, 34, 34).
-passes4(29162, 77344, halsen_ungdomsskole, 25, 35, 35).
-passes4(29162, 77615, stjørdal_torg, 26, 36, 36).
-passes4(29162, 102047, stjørdal_stasjon, 27, 39, 39).
+passes4(29161, 76386, tangen_nord, 2, 999, 0).
+passes4(29161, 110276, tangen_sør, 3, 1, 1).
+passes4(29161, 102047, stjørdal_stasjon, 4, 5, 5).
+passes4(29161, 77616, stjørdal_torg, 5, 7, 7).
+passes4(29161, 76409, sigurd_jarls_veg, 6, 9, 9).
+passes4(29161, 76414, stjørdalshallen, 7, 10, 10).
+passes4(29161, 77622, j_p_holans_gate, 8, 10, 10).
+passes4(29161, 76286, fosslia_skole, 9, 14, 14).
+passes4(29161, 76425, husby, 10, 16, 16).
+passes4(29161, 76345, terrassehusene_øvre, 11, 18, 18).
+passes4(29161, 77214, husbyåsen, 12, 20, 20).
+passes4(29161, 77641, remyra_grendahus, 13, 24, 24).
+passes4(29161, 77100, malmtunet, 14, 24, 24).
+passes4(29161, 76432, flintvegen, 15, 25, 25).
+passes4(29161, 77630, granittvegen, 16, 26, 26).
+passes4(29161, 76954, dullumfeltet, 17, 27, 27).
+passes4(29161, 77626, fagerlia, 18, 28, 28).
+passes4(29161, 76438, stokkanvegen, 19, 29, 29).
+passes4(29161, 76941, blåveislia, 20, 30, 30).
+passes4(29161, 76445, stokkan_nedre, 21, 31, 31).
+passes4(29161, 110273, fosslia_fjellhall, 22, 32, 32).
+passes4(29161, 76415, stjørdalshallen, 23, 33, 33).
+passes4(29161, 110275, sigurd_jarls_veg, 24, 34, 34).
+passes4(29161, 77344, halsen_ungdomsskole, 25, 35, 35).
+passes4(29161, 77615, stjørdal_torg, 26, 36, 36).
+passes4(29161, 102047, stjørdal_stasjon, 27, 39, 39).
 
-passes4(29163, 102047, stjørdal_stasjon, 2, 999, 0).
-passes4(29163, 77616, stjørdal_torg, 3, 2, 2).
-passes4(29163, 77342, halsen_ungdomsskole, 4, 4, 4).
-passes4(29163, 76409, sigurd_jarls_veg, 5, 6, 6).
-passes4(29163, 76414, stjørdalshallen, 6, 7, 7).
-passes4(29163, 77622, j_p_holans_gate, 7, 7, 7).
-passes4(29163, 76371, fosslia_fjellhall, 8, 9, 9).
-passes4(29163, 76425, husby, 9, 11, 11).
-passes4(29163, 76345, terrassehusene_øvre, 10, 13, 13).
-passes4(29163, 77214, husbyåsen, 11, 15, 15).
-passes4(29163, 77641, remyra_grendahus, 12, 18, 18).
-passes4(29163, 77100, malmtunet, 13, 18, 18).
-passes4(29163, 76432, flintvegen, 14, 19, 19).
-passes4(29163, 77630, granittvegen, 15, 20, 20).
-passes4(29163, 76954, dullumfeltet, 16, 21, 21).
-passes4(29163, 77626, fagerlia, 17, 22, 22).
-passes4(29163, 76438, stokkanvegen, 18, 23, 23).
-passes4(29163, 76941, blåveislia, 19, 24, 24).
-passes4(29163, 76445, stokkan_nedre, 20, 25, 25).
-passes4(29163, 110273, fosslia_fjellhall, 21, 26, 26).
-passes4(29163, 76415, stjørdalshallen, 22, 27, 27).
-passes4(29163, 110275, sigurd_jarls_veg, 23, 28, 28).
-passes4(29163, 77344, halsen_ungdomsskole, 24, 29, 29).
-passes4(29163, 77615, stjørdal_torg, 25, 30, 30).
-passes4(29163, 102047, stjørdal_stasjon, 26, 33, 33).
+passes4(29162, 102047, stjørdal_stasjon, 2, 999, 0).
+passes4(29162, 77616, stjørdal_torg, 3, 2, 2).
+passes4(29162, 77342, halsen_ungdomsskole, 4, 4, 4).
+passes4(29162, 76409, sigurd_jarls_veg, 5, 6, 6).
+passes4(29162, 76414, stjørdalshallen, 6, 7, 7).
+passes4(29162, 77622, j_p_holans_gate, 7, 7, 7).
+passes4(29162, 76371, fosslia_fjellhall, 8, 9, 9).
+passes4(29162, 76425, husby, 9, 11, 11).
+passes4(29162, 76345, terrassehusene_øvre, 10, 13, 13).
+passes4(29162, 77214, husbyåsen, 11, 15, 15).
+passes4(29162, 77641, remyra_grendahus, 12, 18, 18).
+passes4(29162, 77100, malmtunet, 13, 18, 18).
+passes4(29162, 76432, flintvegen, 14, 19, 19).
+passes4(29162, 77630, granittvegen, 15, 20, 20).
+passes4(29162, 76954, dullumfeltet, 16, 21, 21).
+passes4(29162, 77626, fagerlia, 17, 22, 22).
+passes4(29162, 76438, stokkanvegen, 18, 23, 23).
+passes4(29162, 76941, blåveislia, 19, 24, 24).
+passes4(29162, 76445, stokkan_nedre, 20, 25, 25).
+passes4(29162, 110273, fosslia_fjellhall, 21, 26, 26).
+passes4(29162, 76415, stjørdalshallen, 22, 27, 27).
+passes4(29162, 110275, sigurd_jarls_veg, 23, 28, 28).
+passes4(29162, 77344, halsen_ungdomsskole, 24, 29, 29).
+passes4(29162, 77615, stjørdal_torg, 25, 30, 30).
+passes4(29162, 102047, stjørdal_stasjon, 26, 33, 33).
 
-passes4(29164, 76386, tangen_nord, 2, 999, 0).
-passes4(29164, 110276, tangen_sør, 3, 1, 1).
-passes4(29164, 102047, stjørdal_stasjon, 4, 4, 4).
-passes4(29164, 77616, stjørdal_torg, 5, 6, 6).
-passes4(29164, 76409, sigurd_jarls_veg, 6, 8, 8).
-passes4(29164, 76414, stjørdalshallen, 7, 9, 9).
-passes4(29164, 77622, j_p_holans_gate, 8, 9, 9).
-passes4(29164, 76425, husby, 9, 10, 10).
-passes4(29164, 76345, terrassehusene_øvre, 10, 12, 12).
-passes4(29164, 77214, husbyåsen, 11, 14, 14).
-passes4(29164, 77641, remyra_grendahus, 12, 17, 17).
-passes4(29164, 77100, malmtunet, 13, 17, 17).
-passes4(29164, 76432, flintvegen, 14, 18, 18).
-passes4(29164, 77630, granittvegen, 15, 19, 19).
-passes4(29164, 76954, dullumfeltet, 16, 20, 20).
-passes4(29164, 77626, fagerlia, 17, 21, 21).
-passes4(29164, 76438, stokkanvegen, 18, 22, 22).
-passes4(29164, 76941, blåveislia, 19, 23, 23).
-passes4(29164, 76445, stokkan_nedre, 20, 24, 24).
-passes4(29164, 110273, fosslia_fjellhall, 21, 25, 25).
-passes4(29164, 76415, stjørdalshallen, 22, 26, 26).
-passes4(29164, 110275, sigurd_jarls_veg, 23, 27, 27).
-passes4(29164, 77344, halsen_ungdomsskole, 24, 28, 28).
-passes4(29164, 77615, stjørdal_torg, 25, 29, 29).
-passes4(29164, 102047, stjørdal_stasjon, 26, 32, 32).
+passes4(29163, 76386, tangen_nord, 2, 999, 0).
+passes4(29163, 110276, tangen_sør, 3, 1, 1).
+passes4(29163, 102047, stjørdal_stasjon, 4, 4, 4).
+passes4(29163, 77616, stjørdal_torg, 5, 6, 6).
+passes4(29163, 76409, sigurd_jarls_veg, 6, 8, 8).
+passes4(29163, 76414, stjørdalshallen, 7, 9, 9).
+passes4(29163, 77622, j_p_holans_gate, 8, 9, 9).
+passes4(29163, 76425, husby, 9, 10, 10).
+passes4(29163, 76345, terrassehusene_øvre, 10, 12, 12).
+passes4(29163, 77214, husbyåsen, 11, 14, 14).
+passes4(29163, 77641, remyra_grendahus, 12, 17, 17).
+passes4(29163, 77100, malmtunet, 13, 17, 17).
+passes4(29163, 76432, flintvegen, 14, 18, 18).
+passes4(29163, 77630, granittvegen, 15, 19, 19).
+passes4(29163, 76954, dullumfeltet, 16, 20, 20).
+passes4(29163, 77626, fagerlia, 17, 21, 21).
+passes4(29163, 76438, stokkanvegen, 18, 22, 22).
+passes4(29163, 76941, blåveislia, 19, 23, 23).
+passes4(29163, 76445, stokkan_nedre, 20, 24, 24).
+passes4(29163, 110273, fosslia_fjellhall, 21, 25, 25).
+passes4(29163, 76415, stjørdalshallen, 22, 26, 26).
+passes4(29163, 110275, sigurd_jarls_veg, 23, 27, 27).
+passes4(29163, 77344, halsen_ungdomsskole, 24, 28, 28).
+passes4(29163, 77615, stjørdal_torg, 25, 29, 29).
+passes4(29163, 102047, stjørdal_stasjon, 26, 32, 32).
 
-passes4(29165, 76345, terrassehusene_øvre, 2, 999, 0).
-passes4(29165, 76426, husby, 3, 1, 1).
-passes4(29165, 76415, stjørdalshallen, 4, 4, 4).
-passes4(29165, 110275, sigurd_jarls_veg, 5, 5, 5).
-passes4(29165, 77344, halsen_ungdomsskole, 6, 6, 6).
-passes4(29165, 102047, stjørdal_stasjon, 7, 8, 8).
+passes4(29164, 76345, terrassehusene_øvre, 2, 999, 0).
+passes4(29164, 76426, husby, 3, 1, 1).
+passes4(29164, 76415, stjørdalshallen, 4, 4, 4).
+passes4(29164, 110275, sigurd_jarls_veg, 5, 5, 5).
+passes4(29164, 77344, halsen_ungdomsskole, 6, 6, 6).
+passes4(29164, 102047, stjørdal_stasjon, 7, 8, 8).
 
-passes4(29171, 76345, terrassehusene_øvre, 2, 999, 0).
-passes4(29171, 76426, husby, 3, 1, 1).
-passes4(29171, 76415, stjørdalshallen, 4, 3, 3).
-passes4(29171, 110275, sigurd_jarls_veg, 5, 4, 4).
-passes4(29171, 77344, halsen_ungdomsskole, 6, 7, 7).
-passes4(29171, 102047, stjørdal_stasjon, 7, 9, 9).
+passes4(29170, 76345, terrassehusene_øvre, 2, 999, 0).
+passes4(29170, 76426, husby, 3, 1, 1).
+passes4(29170, 76415, stjørdalshallen, 4, 3, 3).
+passes4(29170, 110275, sigurd_jarls_veg, 5, 4, 4).
+passes4(29170, 77344, halsen_ungdomsskole, 6, 7, 7).
+passes4(29170, 102047, stjørdal_stasjon, 7, 9, 9).
 
-passes4(29175, 79624, levanger_ferjekai, 2, 999, 0).
-passes4(29175, 77885, hokstad_ferjekai, 3, 35, 35).
+passes4(29174, 79624, levanger_ferjekai, 2, 999, 0).
+passes4(29174, 77885, hokstad_ferjekai, 3, 35, 35).
 
-passes4(29210, 77885, hokstad_ferjekai, 2, 999, 0).
-passes4(29210, 79624, levanger_ferjekai, 3, 35, 35).
+passes4(29209, 77885, hokstad_ferjekai, 2, 999, 0).
+passes4(29209, 79624, levanger_ferjekai, 3, 35, 35).
 
-passes4(29253, 79624, levanger_ferjekai, 2, 999, 0).
-passes4(29253, 77885, hokstad_ferjekai, 3, 30, 30).
+passes4(29252, 79624, levanger_ferjekai, 2, 999, 0).
+passes4(29252, 77885, hokstad_ferjekai, 3, 30, 30).
 
-passes4(29288, 77885, hokstad_ferjekai, 2, 999, 0).
-passes4(29288, 79624, levanger_ferjekai, 3, 30, 30).
+passes4(29287, 77885, hokstad_ferjekai, 2, 999, 0).
+passes4(29287, 79624, levanger_ferjekai, 3, 30, 30).
 
-passes4(29339, 80029, skei_ferjekai, 2, 999, 0).
-passes4(29339, 104455, gutvik_ferjekai, 3, 20, 20).
+passes4(29338, 80029, skei_ferjekai, 2, 999, 0).
+passes4(29338, 104455, gutvik_ferjekai, 3, 20, 20).
 
-passes4(29369, 104455, gutvik_ferjekai, 2, 999, 0).
-passes4(29369, 80029, skei_ferjekai, 3, 20, 20).
+passes4(29368, 104455, gutvik_ferjekai, 2, 999, 0).
+passes4(29368, 80029, skei_ferjekai, 3, 20, 20).
 
-passes4(29399, 79368, gjerdinga_ferjekai, 2, 999, 0).
-passes4(29399, 103509, eidshaug_ferjekai, 3, 10, 10).
+passes4(29398, 79368, gjerdinga_ferjekai, 2, 999, 0).
+passes4(29398, 103509, eidshaug_ferjekai, 3, 10, 10).
 
 passes4(294, 73482, sæterbakken, 2, 999, 0).
 passes4(294, 74004, fortunalia, 3, 1, 1).
@@ -64229,47 +64229,56 @@ passes4(294, 74440, okstad_skole, 44, 49, 49).
 passes4(294, 74460, okstadplassen, 45, 50, 50).
 passes4(294, 74450, okstad_østre, 46, 51, 51).
 
-passes4(29413, 103509, eidshaug_ferjekai, 2, 999, 0).
-passes4(29413, 79368, gjerdinga_ferjekai, 3, 10, 10).
+passes4(29412, 103509, eidshaug_ferjekai, 2, 999, 0).
+passes4(29412, 79368, gjerdinga_ferjekai, 3, 10, 10).
+
+passes4(29462, 103511, hofles_ferjekai, 2, 999, 0).
+passes4(29462, 102477, geisnes_ferjekai, 3, 5, 5).
+passes4(29462, 80502, lund_ferjekai, 4, 30, 30).
 
 passes4(29463, 103511, hofles_ferjekai, 2, 999, 0).
-passes4(29463, 102477, geisnes_ferjekai, 3, 5, 5).
-passes4(29463, 80502, lund_ferjekai, 4, 30, 30).
+passes4(29463, 80502, lund_ferjekai, 3, 25, 25).
 
-passes4(29464, 103511, hofles_ferjekai, 2, 999, 0).
-passes4(29464, 80502, lund_ferjekai, 3, 25, 25).
+passes4(29487, 80502, lund_ferjekai, 2, 999, 0).
+passes4(29487, 103511, hofles_ferjekai, 3, 25, 25).
 
-passes4(29488, 80502, lund_ferjekai, 2, 999, 0).
-passes4(29488, 103511, hofles_ferjekai, 3, 25, 25).
+passes4(29517, 102477, geisnes_ferjekai, 2, 999, 0).
+passes4(29517, 103511, hofles_ferjekai, 3, 10, 10).
 
-passes4(29518, 102477, geisnes_ferjekai, 2, 999, 0).
-passes4(29518, 103511, hofles_ferjekai, 3, 10, 10).
+passes4(29518, 103511, hofles_ferjekai, 2, 999, 0).
+passes4(29518, 102477, geisnes_ferjekai, 3, 5, 5).
 
-passes4(29519, 103511, hofles_ferjekai, 2, 999, 0).
-passes4(29519, 102477, geisnes_ferjekai, 3, 5, 5).
+passes4(29590, 79771, borgan_ferjekai, 2, 999, 0).
+passes4(29590, 79775, ramstadlandet_ferjekai, 3, 25, 25).
 
-passes4(29591, 79771, borgan_ferjekai, 2, 999, 0).
-passes4(29591, 79775, ramstadlandet_ferjekai, 3, 25, 25).
+passes4(29602, 79775, ramstadlandet_ferjekai, 2, 999, 0).
+passes4(29602, 79771, borgan_ferjekai, 3, 25, 25).
 
-passes4(29603, 79775, ramstadlandet_ferjekai, 2, 999, 0).
-passes4(29603, 79771, borgan_ferjekai, 3, 25, 25).
+passes4(29636, 75607, tillerterminalen_2, 2, 999, 0).
+passes4(29636, 73666, tanemskrysset, 3, 10, 10).
+passes4(29636, 106174, vassfjellet_vinterpark, 4, 20, 20).
 
-passes4(29637, 75607, tillerterminalen_2, 2, 999, 0).
-passes4(29637, 73666, tanemskrysset, 3, 10, 10).
-passes4(29637, 106174, vassfjellet_vinterpark, 4, 20, 20).
+passes4(29646, 106174, vassfjellet_vinterpark, 2, 999, 0).
+passes4(29646, 73666, tanemskrysset, 3, 10, 10).
+passes4(29646, 75607, tillerterminalen_2, 4, 20, 20).
 
-passes4(29647, 106174, vassfjellet_vinterpark, 2, 999, 0).
-passes4(29647, 73666, tanemskrysset, 3, 10, 10).
-passes4(29647, 75607, tillerterminalen_2, 4, 20, 20).
+passes4(29693, 99491, namsos_hurtigbåtkai, 2, 999, 0).
+passes4(29693, 99483, jøa_hurtigbåtkai, 3, 40, 40).
+passes4(29693, 99486, abelvær_hurtigbåtkai, 4, 65, 65).
+passes4(29693, 99485, rørvik_hurtigbåtkai, 5, 90, 90).
+passes4(29693, 79375, eidshaug_hurtigbåtkai, 6, 115, 115).
+passes4(29693, 79380, fjølvika_hurtigbåtkai, 7, 140, 140).
+passes4(29693, 99487, skei_hurtigbåtkai, 8, 155, 155).
+passes4(29693, 99490, gutvik_hurtigbåtkai, 9, 165, 165).
 
 passes4(29694, 99491, namsos_hurtigbåtkai, 2, 999, 0).
-passes4(29694, 99483, jøa_hurtigbåtkai, 3, 40, 40).
-passes4(29694, 99486, abelvær_hurtigbåtkai, 4, 65, 65).
-passes4(29694, 99485, rørvik_hurtigbåtkai, 5, 90, 90).
-passes4(29694, 79375, eidshaug_hurtigbåtkai, 6, 115, 115).
-passes4(29694, 79380, fjølvika_hurtigbåtkai, 7, 140, 140).
-passes4(29694, 99487, skei_hurtigbåtkai, 8, 155, 155).
-passes4(29694, 99490, gutvik_hurtigbåtkai, 9, 165, 165).
+passes4(29694, 99483, jøa_hurtigbåtkai, 3, 35, 35).
+passes4(29694, 99486, abelvær_hurtigbåtkai, 4, 60, 60).
+passes4(29694, 99485, rørvik_hurtigbåtkai, 5, 85, 85).
+passes4(29694, 79375, eidshaug_hurtigbåtkai, 6, 105, 105).
+passes4(29694, 79380, fjølvika_hurtigbåtkai, 7, 125, 125).
+passes4(29694, 99487, skei_hurtigbåtkai, 8, 140, 140).
+passes4(29694, 99490, gutvik_hurtigbåtkai, 9, 150, 150).
 
 passes4(29695, 99491, namsos_hurtigbåtkai, 2, 999, 0).
 passes4(29695, 99483, jøa_hurtigbåtkai, 3, 35, 35).
@@ -64279,155 +64288,146 @@ passes4(29695, 79375, eidshaug_hurtigbåtkai, 6, 105, 105).
 passes4(29695, 79380, fjølvika_hurtigbåtkai, 7, 125, 125).
 passes4(29695, 99487, skei_hurtigbåtkai, 8, 140, 140).
 passes4(29695, 99490, gutvik_hurtigbåtkai, 9, 150, 150).
+passes4(29695, 79380, fjølvika_hurtigbåtkai, 10, 165, 165).
+passes4(29695, 79375, eidshaug_hurtigbåtkai, 11, 185, 185).
+passes4(29695, 99485, rørvik_hurtigbåtkai, 12, 205, 205).
+passes4(29695, 99486, abelvær_hurtigbåtkai, 13, 230, 230).
+passes4(29695, 99483, jøa_hurtigbåtkai, 14, 255, 255).
+passes4(29695, 99491, namsos_hurtigbåtkai, 15, 300, 300).
 
-passes4(29696, 99491, namsos_hurtigbåtkai, 2, 999, 0).
-passes4(29696, 99483, jøa_hurtigbåtkai, 3, 35, 35).
-passes4(29696, 99486, abelvær_hurtigbåtkai, 4, 60, 60).
-passes4(29696, 99485, rørvik_hurtigbåtkai, 5, 85, 85).
-passes4(29696, 79375, eidshaug_hurtigbåtkai, 6, 105, 105).
-passes4(29696, 79380, fjølvika_hurtigbåtkai, 7, 125, 125).
-passes4(29696, 99487, skei_hurtigbåtkai, 8, 140, 140).
-passes4(29696, 99490, gutvik_hurtigbåtkai, 9, 150, 150).
-passes4(29696, 79380, fjølvika_hurtigbåtkai, 10, 165, 165).
-passes4(29696, 79375, eidshaug_hurtigbåtkai, 11, 185, 185).
-passes4(29696, 99485, rørvik_hurtigbåtkai, 12, 205, 205).
-passes4(29696, 99486, abelvær_hurtigbåtkai, 13, 230, 230).
-passes4(29696, 99483, jøa_hurtigbåtkai, 14, 255, 255).
-passes4(29696, 99491, namsos_hurtigbåtkai, 15, 300, 300).
+passes4(29696, 99490, gutvik_hurtigbåtkai, 2, 999, 0).
+passes4(29696, 99487, skei_hurtigbåtkai, 3, 10, 10).
+passes4(29696, 79380, fjølvika_hurtigbåtkai, 4, 25, 25).
+passes4(29696, 79375, eidshaug_hurtigbåtkai, 5, 45, 45).
+passes4(29696, 99485, rørvik_hurtigbåtkai, 6, 65, 65).
+passes4(29696, 99486, abelvær_hurtigbåtkai, 7, 90, 90).
+passes4(29696, 99483, jøa_hurtigbåtkai, 8, 115, 115).
+passes4(29696, 99491, namsos_hurtigbåtkai, 9, 155, 155).
 
-passes4(29697, 99490, gutvik_hurtigbåtkai, 2, 999, 0).
-passes4(29697, 99487, skei_hurtigbåtkai, 3, 10, 10).
-passes4(29697, 79380, fjølvika_hurtigbåtkai, 4, 25, 25).
-passes4(29697, 79375, eidshaug_hurtigbåtkai, 5, 45, 45).
-passes4(29697, 99485, rørvik_hurtigbåtkai, 6, 65, 65).
-passes4(29697, 99486, abelvær_hurtigbåtkai, 7, 90, 90).
-passes4(29697, 99483, jøa_hurtigbåtkai, 8, 115, 115).
-passes4(29697, 99491, namsos_hurtigbåtkai, 9, 155, 155).
+passes4(29698, 99491, namsos_hurtigbåtkai, 2, 999, 0).
+passes4(29698, 99483, jøa_hurtigbåtkai, 3, 40, 40).
+passes4(29698, 99486, abelvær_hurtigbåtkai, 4, 65, 65).
+passes4(29698, 99485, rørvik_hurtigbåtkai, 5, 90, 95).
+passes4(29698, 79375, eidshaug_hurtigbåtkai, 6, 120, 120).
+passes4(29698, 79380, fjølvika_hurtigbåtkai, 7, 145, 145).
+passes4(29698, 99487, skei_hurtigbåtkai, 8, 160, 160).
+passes4(29698, 99490, gutvik_hurtigbåtkai, 9, 170, 175).
+passes4(29698, 99487, skei_hurtigbåtkai, 10, 185, 185).
+passes4(29698, 79380, fjølvika_hurtigbåtkai, 11, 200, 200).
+passes4(29698, 79375, eidshaug_hurtigbåtkai, 12, 225, 225).
+passes4(29698, 99485, rørvik_hurtigbåtkai, 13, 250, 250).
 
-passes4(29699, 99491, namsos_hurtigbåtkai, 2, 999, 0).
-passes4(29699, 99483, jøa_hurtigbåtkai, 3, 40, 40).
-passes4(29699, 99486, abelvær_hurtigbåtkai, 4, 65, 65).
-passes4(29699, 99485, rørvik_hurtigbåtkai, 5, 90, 95).
-passes4(29699, 79375, eidshaug_hurtigbåtkai, 6, 120, 120).
-passes4(29699, 79380, fjølvika_hurtigbåtkai, 7, 145, 145).
-passes4(29699, 99487, skei_hurtigbåtkai, 8, 160, 160).
-passes4(29699, 99490, gutvik_hurtigbåtkai, 9, 170, 175).
-passes4(29699, 99487, skei_hurtigbåtkai, 10, 185, 185).
-passes4(29699, 79380, fjølvika_hurtigbåtkai, 11, 200, 200).
-passes4(29699, 79375, eidshaug_hurtigbåtkai, 12, 225, 225).
-passes4(29699, 99485, rørvik_hurtigbåtkai, 13, 250, 250).
+passes4(29699, 99485, rørvik_hurtigbåtkai, 2, 999, 0).
+passes4(29699, 79375, eidshaug_hurtigbåtkai, 3, 20, 20).
+passes4(29699, 79380, fjølvika_hurtigbåtkai, 4, 40, 40).
+passes4(29699, 99490, gutvik_hurtigbåtkai, 5, 55, 60).
+passes4(29699, 99487, skei_hurtigbåtkai, 6, 70, 70).
+passes4(29699, 79380, fjølvika_hurtigbåtkai, 7, 85, 85).
+passes4(29699, 79375, eidshaug_hurtigbåtkai, 8, 105, 105).
+passes4(29699, 99485, rørvik_hurtigbåtkai, 9, 125, 125).
+passes4(29699, 99486, abelvær_hurtigbåtkai, 10, 150, 150).
+passes4(29699, 99483, jøa_hurtigbåtkai, 11, 180, 180).
+passes4(29699, 99491, namsos_hurtigbåtkai, 12, 220, 220).
 
-passes4(29700, 99485, rørvik_hurtigbåtkai, 2, 999, 0).
-passes4(29700, 79375, eidshaug_hurtigbåtkai, 3, 20, 20).
-passes4(29700, 79380, fjølvika_hurtigbåtkai, 4, 40, 40).
-passes4(29700, 99490, gutvik_hurtigbåtkai, 5, 55, 60).
-passes4(29700, 99487, skei_hurtigbåtkai, 6, 70, 70).
-passes4(29700, 79380, fjølvika_hurtigbåtkai, 7, 85, 85).
-passes4(29700, 79375, eidshaug_hurtigbåtkai, 8, 105, 105).
-passes4(29700, 99485, rørvik_hurtigbåtkai, 9, 125, 125).
-passes4(29700, 99486, abelvær_hurtigbåtkai, 10, 150, 150).
-passes4(29700, 99483, jøa_hurtigbåtkai, 11, 180, 180).
-passes4(29700, 99491, namsos_hurtigbåtkai, 12, 220, 220).
+passes4(29700, 99491, namsos_hurtigbåtkai, 2, 999, 0).
+passes4(29700, 99483, jøa_hurtigbåtkai, 3, 40, 40).
+passes4(29700, 99486, abelvær_hurtigbåtkai, 4, 65, 65).
+passes4(29700, 99485, rørvik_hurtigbåtkai, 5, 90, 90).
 
-passes4(29701, 99491, namsos_hurtigbåtkai, 2, 999, 0).
-passes4(29701, 99483, jøa_hurtigbåtkai, 3, 40, 40).
-passes4(29701, 99486, abelvær_hurtigbåtkai, 4, 65, 65).
-passes4(29701, 99485, rørvik_hurtigbåtkai, 5, 90, 90).
+passes4(29701, 99485, rørvik_hurtigbåtkai, 2, 999, 0).
+passes4(29701, 99486, abelvær_hurtigbåtkai, 3, 25, 25).
+passes4(29701, 99483, jøa_hurtigbåtkai, 4, 50, 50).
+passes4(29701, 99491, namsos_hurtigbåtkai, 5, 90, 90).
 
-passes4(29702, 99485, rørvik_hurtigbåtkai, 2, 999, 0).
-passes4(29702, 99486, abelvær_hurtigbåtkai, 3, 25, 25).
-passes4(29702, 99483, jøa_hurtigbåtkai, 4, 50, 50).
-passes4(29702, 99491, namsos_hurtigbåtkai, 5, 90, 90).
+passes4(29702, 99491, namsos_hurtigbåtkai, 2, 999, 0).
+passes4(29702, 99483, jøa_hurtigbåtkai, 3, 40, 40).
+passes4(29702, 99486, abelvær_hurtigbåtkai, 4, 65, 65).
+passes4(29702, 99485, rørvik_hurtigbåtkai, 5, 90, 95).
+passes4(29702, 79375, eidshaug_hurtigbåtkai, 6, 120, 120).
+passes4(29702, 79380, fjølvika_hurtigbåtkai, 7, 145, 145).
+passes4(29702, 99487, skei_hurtigbåtkai, 8, 160, 160).
+passes4(29702, 99490, gutvik_hurtigbåtkai, 9, 170, 170).
 
-passes4(29703, 99491, namsos_hurtigbåtkai, 2, 999, 0).
-passes4(29703, 99483, jøa_hurtigbåtkai, 3, 40, 40).
-passes4(29703, 99486, abelvær_hurtigbåtkai, 4, 65, 65).
-passes4(29703, 99485, rørvik_hurtigbåtkai, 5, 90, 95).
-passes4(29703, 79375, eidshaug_hurtigbåtkai, 6, 120, 120).
-passes4(29703, 79380, fjølvika_hurtigbåtkai, 7, 145, 145).
-passes4(29703, 99487, skei_hurtigbåtkai, 8, 160, 160).
-passes4(29703, 99490, gutvik_hurtigbåtkai, 9, 170, 170).
+passes4(29703, 103443, seierstad_ferjekai, 2, 999, 0).
+passes4(29703, 80930, ølhammeren_ferjekai, 3, 5, 5).
 
-passes4(29704, 103443, seierstad_ferjekai, 2, 999, 0).
-passes4(29704, 80930, ølhammeren_ferjekai, 3, 5, 5).
+passes4(29764, 80930, ølhammeren_ferjekai, 2, 999, 0).
+passes4(29764, 103443, seierstad_ferjekai, 3, 5, 5).
 
-passes4(29765, 80930, ølhammeren_ferjekai, 2, 999, 0).
-passes4(29765, 103443, seierstad_ferjekai, 3, 5, 5).
+passes4(29831, 74061, st_olavs_gate, 2, 999, 0).
+passes4(29831, 103547, dronningens_gate_62, 3, 0, 0).
+passes4(29831, 103576, hospitalskirka, 4, 1, 1).
+passes4(29831, 104113, skansen, 5, 3, 3).
+passes4(29831, 104111, ila, 6, 4, 4).
+passes4(29831, 75007, bergsli_gate, 7, 5, 5).
+passes4(29831, 74339, nyveibakken, 8, 6, 6).
+passes4(29831, 75518, bygrensen, 9, 7, 7).
+passes4(29831, 74894, belvedere, 10, 8, 8).
+passes4(29831, 75321, breidablikk_2, 11, 9, 9).
+passes4(29831, 74090, nordre_hoem, 12, 10, 10).
+passes4(29831, 73561, søndre_hoem, 13, 11, 11).
+passes4(29831, 71447, rognheim, 14, 13, 13).
+passes4(29831, 73440, munkvoll_2, 15, 15, 15).
+passes4(29831, 75147, ferstad, 16, 16, 16).
+passes4(29831, 110141, ugla, 17, 17, 17).
+passes4(29831, 73098, kyvannet, 18, 18, 18).
+passes4(29831, 72109, vestmarka, 19, 19, 19).
+passes4(29831, 71254, herlofsonløypa, 20, 20, 20).
+passes4(29831, 73481, lian, 21, 21, 21).
 
-passes4(29832, 74061, st_olavs_gate, 2, 999, 0).
-passes4(29832, 103547, dronningens_gate_62, 3, 0, 0).
-passes4(29832, 103576, hospitalskirka, 4, 1, 1).
-passes4(29832, 104113, skansen, 5, 3, 3).
-passes4(29832, 104111, ila, 6, 4, 4).
-passes4(29832, 75007, bergsli_gate, 7, 5, 5).
-passes4(29832, 74339, nyveibakken, 8, 6, 6).
-passes4(29832, 75518, bygrensen, 9, 7, 7).
-passes4(29832, 74894, belvedere, 10, 8, 8).
-passes4(29832, 75321, breidablikk_2, 11, 9, 9).
-passes4(29832, 74090, nordre_hoem, 12, 10, 10).
-passes4(29832, 73561, søndre_hoem, 13, 11, 11).
-passes4(29832, 71447, rognheim, 14, 13, 13).
-passes4(29832, 73440, munkvoll_2, 15, 15, 15).
-passes4(29832, 75147, ferstad, 16, 16, 16).
-passes4(29832, 110141, ugla, 17, 17, 17).
-passes4(29832, 73098, kyvannet, 18, 18, 18).
-passes4(29832, 72109, vestmarka, 19, 19, 19).
-passes4(29832, 71254, herlofsonløypa, 20, 20, 20).
-passes4(29832, 73481, lian, 21, 21, 21).
+passes4(29892, 73481, lian, 2, 999, 0).
+passes4(29892, 71253, herlofsonløypa, 3, 1, 1).
+passes4(29892, 72110, vestmarka, 4, 2, 2).
+passes4(29892, 73099, kyvannet, 5, 4, 4).
+passes4(29892, 71779, ugla, 6, 5, 5).
+passes4(29892, 75148, ferstad, 7, 6, 6).
+passes4(29892, 73442, munkvoll_1, 8, 8, 8).
+passes4(29892, 71448, rognheim, 9, 9, 9).
+passes4(29892, 73562, søndre_hoem, 10, 10, 10).
+passes4(29892, 74088, nordre_hoem, 11, 11, 11).
+passes4(29892, 75322, breidablikk_1, 12, 13, 13).
+passes4(29892, 74896, belvedere, 13, 14, 14).
+passes4(29892, 75517, bygrensen, 14, 15, 15).
+passes4(29892, 74338, nyveibakken, 15, 16, 16).
+passes4(29892, 75008, bergsli_gate, 16, 17, 17).
+passes4(29892, 104110, ila, 17, 17, 17).
+passes4(29892, 104112, skansen, 18, 18, 18).
+passes4(29892, 103577, hospitalskirka, 19, 20, 20).
+passes4(29892, 74061, st_olavs_gate, 20, 21, 21).
 
-passes4(29893, 73481, lian, 2, 999, 0).
-passes4(29893, 71253, herlofsonløypa, 3, 1, 1).
-passes4(29893, 72110, vestmarka, 4, 2, 2).
-passes4(29893, 73099, kyvannet, 5, 4, 4).
-passes4(29893, 71779, ugla, 6, 5, 5).
-passes4(29893, 75148, ferstad, 7, 6, 6).
-passes4(29893, 73442, munkvoll_1, 8, 8, 8).
-passes4(29893, 71448, rognheim, 9, 9, 9).
-passes4(29893, 73562, søndre_hoem, 10, 10, 10).
-passes4(29893, 74088, nordre_hoem, 11, 11, 11).
-passes4(29893, 75322, breidablikk_1, 12, 13, 13).
-passes4(29893, 74896, belvedere, 13, 14, 14).
-passes4(29893, 75517, bygrensen, 14, 15, 15).
-passes4(29893, 74338, nyveibakken, 15, 16, 16).
-passes4(29893, 75008, bergsli_gate, 16, 17, 17).
-passes4(29893, 104110, ila, 17, 17, 17).
-passes4(29893, 104112, skansen, 18, 18, 18).
-passes4(29893, 103577, hospitalskirka, 19, 20, 20).
-passes4(29893, 74061, st_olavs_gate, 20, 21, 21).
+passes4(30409, 73481, lian, 2, 999, 0).
+passes4(30409, 71253, herlofsonløypa, 3, 1, 1).
+passes4(30409, 72110, vestmarka, 4, 2, 2).
+passes4(30409, 73099, kyvannet, 5, 4, 4).
+passes4(30409, 71779, ugla, 6, 5, 5).
+passes4(30409, 75148, ferstad, 7, 6, 6).
+passes4(30409, 73442, munkvoll_1, 8, 8, 8).
+passes4(30409, 71448, rognheim, 9, 9, 9).
+passes4(30409, 73562, søndre_hoem, 10, 10, 10).
+passes4(30409, 74088, nordre_hoem, 11, 11, 11).
+passes4(30409, 75322, breidablikk_1, 12, 13, 13).
+passes4(30409, 74896, belvedere, 13, 14, 14).
+passes4(30409, 75517, bygrensen, 14, 15, 15).
+passes4(30409, 74338, nyveibakken, 15, 16, 16).
+passes4(30409, 75008, bergsli_gate, 16, 17, 17).
+passes4(30409, 104110, ila, 17, 17, 17).
 
-passes4(30410, 73481, lian, 2, 999, 0).
-passes4(30410, 71253, herlofsonløypa, 3, 1, 1).
-passes4(30410, 72110, vestmarka, 4, 2, 2).
-passes4(30410, 73099, kyvannet, 5, 4, 4).
-passes4(30410, 71779, ugla, 6, 5, 5).
-passes4(30410, 75148, ferstad, 7, 6, 6).
-passes4(30410, 73442, munkvoll_1, 8, 8, 8).
-passes4(30410, 71448, rognheim, 9, 9, 9).
-passes4(30410, 73562, søndre_hoem, 10, 10, 10).
-passes4(30410, 74088, nordre_hoem, 11, 11, 11).
-passes4(30410, 75322, breidablikk_1, 12, 13, 13).
-passes4(30410, 74896, belvedere, 13, 14, 14).
-passes4(30410, 75517, bygrensen, 14, 15, 15).
-passes4(30410, 74338, nyveibakken, 15, 16, 16).
-passes4(30410, 75008, bergsli_gate, 16, 17, 17).
-passes4(30410, 104110, ila, 17, 17, 17).
-
-passes4(30413, 104111, ila, 2, 999, 0).
-passes4(30413, 75007, bergsli_gate, 3, 1, 1).
-passes4(30413, 74339, nyveibakken, 4, 2, 2).
-passes4(30413, 75518, bygrensen, 5, 3, 3).
-passes4(30413, 74894, belvedere, 6, 4, 4).
-passes4(30413, 75321, breidablikk_2, 7, 5, 5).
-passes4(30413, 74090, nordre_hoem, 8, 6, 6).
-passes4(30413, 73561, søndre_hoem, 9, 7, 7).
-passes4(30413, 71447, rognheim, 10, 9, 9).
-passes4(30413, 73440, munkvoll_2, 11, 11, 11).
-passes4(30413, 75147, ferstad, 12, 12, 12).
-passes4(30413, 110141, ugla, 13, 13, 13).
-passes4(30413, 73098, kyvannet, 14, 14, 14).
-passes4(30413, 72109, vestmarka, 15, 15, 15).
-passes4(30413, 71254, herlofsonløypa, 16, 16, 16).
-passes4(30413, 73481, lian, 17, 17, 17).
+passes4(30412, 104111, ila, 2, 999, 0).
+passes4(30412, 75007, bergsli_gate, 3, 1, 1).
+passes4(30412, 74339, nyveibakken, 4, 2, 2).
+passes4(30412, 75518, bygrensen, 5, 3, 3).
+passes4(30412, 74894, belvedere, 6, 4, 4).
+passes4(30412, 75321, breidablikk_2, 7, 5, 5).
+passes4(30412, 74090, nordre_hoem, 8, 6, 6).
+passes4(30412, 73561, søndre_hoem, 9, 7, 7).
+passes4(30412, 71447, rognheim, 10, 9, 9).
+passes4(30412, 73440, munkvoll_2, 11, 11, 11).
+passes4(30412, 75147, ferstad, 12, 12, 12).
+passes4(30412, 110141, ugla, 13, 13, 13).
+passes4(30412, 73098, kyvannet, 14, 14, 14).
+passes4(30412, 72109, vestmarka, 15, 15, 15).
+passes4(30412, 71254, herlofsonløypa, 16, 16, 16).
+passes4(30412, 73481, lian, 17, 17, 17).
 
 passes4(314, 103580, paul_skolemesters_veg, 2, 999, 0).
 passes4(314, 75721, granhaugan, 3, 0, 0).
@@ -72521,97 +72521,97 @@ ntourstops(28470, 8).
 ntourstops(28471, 5).
 ntourstops(28472, 10).
 ntourstops(28480, 5).
-ntourstops(28490, 7).
-ntourstops(28491, 6).
-ntourstops(28492, 5).
-ntourstops(28493, 4).
-ntourstops(28494, 3).
-ntourstops(28497, 24).
-ntourstops(28498, 25).
-ntourstops(28499, 22).
-ntourstops(28502, 9).
-ntourstops(28503, 24).
-ntourstops(28505, 30).
-ntourstops(28506, 10).
-ntourstops(28510, 23).
-ntourstops(28512, 2).
-ntourstops(28523, 2).
-ntourstops(28541, 2).
-ntourstops(28573, 2).
-ntourstops(28631, 15).
-ntourstops(28632, 16).
+ntourstops(28489, 7).
+ntourstops(28490, 6).
+ntourstops(28491, 5).
+ntourstops(28492, 4).
+ntourstops(28493, 3).
+ntourstops(28496, 24).
+ntourstops(28497, 25).
+ntourstops(28498, 22).
+ntourstops(28501, 9).
+ntourstops(28502, 24).
+ntourstops(28504, 30).
+ntourstops(28505, 10).
+ntourstops(28509, 23).
+ntourstops(28511, 2).
+ntourstops(28522, 2).
+ntourstops(28540, 2).
+ntourstops(28572, 2).
+ntourstops(28630, 15).
+ntourstops(28631, 16).
+ntourstops(28635, 4).
 ntourstops(28636, 4).
-ntourstops(28637, 4).
-ntourstops(28638, 2).
-ntourstops(28640, 2).
-ntourstops(28642, 3).
+ntourstops(28637, 2).
+ntourstops(28639, 2).
+ntourstops(28641, 3).
+ntourstops(28642, 4).
 ntourstops(28643, 4).
-ntourstops(28644, 4).
-ntourstops(28647, 4).
-ntourstops(28648, 3).
-ntourstops(28649, 2).
+ntourstops(28646, 4).
+ntourstops(28647, 3).
+ntourstops(28648, 2).
+ntourstops(28650, 4).
 ntourstops(28651, 4).
-ntourstops(28652, 4).
-ntourstops(28653, 3).
-ntourstops(28655, 2).
-ntourstops(28662, 3).
-ntourstops(28675, 12).
-ntourstops(28682, 7).
-ntourstops(28685, 9).
-ntourstops(28686, 14).
-ntourstops(28689, 11).
-ntourstops(28696, 12).
+ntourstops(28652, 3).
+ntourstops(28654, 2).
+ntourstops(28661, 3).
+ntourstops(28674, 12).
+ntourstops(28681, 7).
+ntourstops(28684, 9).
+ntourstops(28685, 14).
+ntourstops(28688, 11).
+ntourstops(28695, 12).
 ntourstops(287, 42).
-ntourstops(28719, 2).
-ntourstops(28754, 2).
+ntourstops(28718, 2).
+ntourstops(28753, 2).
 ntourstops(288, 40).
-ntourstops(28855, 2).
+ntourstops(28854, 2).
 ntourstops(289, 53).
-ntourstops(28974, 2).
+ntourstops(28973, 2).
 ntourstops(29, 18).
-ntourstops(29093, 23).
+ntourstops(29092, 23).
 ntourstops(291, 48).
-ntourstops(29157, 26).
-ntourstops(29160, 26).
-ntourstops(29161, 27).
-ntourstops(29162, 26).
+ntourstops(29156, 26).
+ntourstops(29159, 26).
+ntourstops(29160, 27).
+ntourstops(29161, 26).
+ntourstops(29162, 25).
 ntourstops(29163, 25).
-ntourstops(29164, 25).
-ntourstops(29165, 6).
-ntourstops(29171, 6).
-ntourstops(29175, 2).
-ntourstops(29210, 2).
-ntourstops(29253, 2).
-ntourstops(29288, 2).
-ntourstops(29339, 2).
-ntourstops(29369, 2).
-ntourstops(29399, 2).
+ntourstops(29164, 6).
+ntourstops(29170, 6).
+ntourstops(29174, 2).
+ntourstops(29209, 2).
+ntourstops(29252, 2).
+ntourstops(29287, 2).
+ntourstops(29338, 2).
+ntourstops(29368, 2).
+ntourstops(29398, 2).
 ntourstops(294, 45).
-ntourstops(29413, 2).
-ntourstops(29463, 3).
-ntourstops(29464, 2).
-ntourstops(29488, 2).
+ntourstops(29412, 2).
+ntourstops(29462, 3).
+ntourstops(29463, 2).
+ntourstops(29487, 2).
+ntourstops(29517, 2).
 ntourstops(29518, 2).
-ntourstops(29519, 2).
-ntourstops(29591, 2).
-ntourstops(29603, 2).
-ntourstops(29637, 3).
-ntourstops(29647, 3).
+ntourstops(29590, 2).
+ntourstops(29602, 2).
+ntourstops(29636, 3).
+ntourstops(29646, 3).
+ntourstops(29693, 8).
 ntourstops(29694, 8).
-ntourstops(29695, 8).
-ntourstops(29696, 14).
-ntourstops(29697, 8).
-ntourstops(29699, 12).
-ntourstops(29700, 11).
+ntourstops(29695, 14).
+ntourstops(29696, 8).
+ntourstops(29698, 12).
+ntourstops(29699, 11).
+ntourstops(29700, 4).
 ntourstops(29701, 4).
-ntourstops(29702, 4).
-ntourstops(29703, 8).
-ntourstops(29704, 2).
-ntourstops(29765, 2).
-ntourstops(29832, 20).
-ntourstops(29893, 19).
-ntourstops(30410, 16).
-ntourstops(30413, 16).
+ntourstops(29702, 8).
+ntourstops(29703, 2).
+ntourstops(29764, 2).
+ntourstops(29831, 20).
+ntourstops(29892, 19).
+ntourstops(30409, 16).
+ntourstops(30412, 16).
 ntourstops(314, 47).
 ntourstops(3181, 30).
 ntourstops(319, 46).
