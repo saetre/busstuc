@@ -66547,13 +66547,13 @@ passes4(6297, 72579, være_østre, 6, 8, 8).
 passes4(6297, 72583, væresbakken, 7, 9, 9).
 passes4(6297, 72601, værestrøa, 8, 9, 9).
 
-passes4(6300, 109243, munkegata_m5, 2, 999, 0).
+passes4(6300, 109243, munkegata, 2, 999, 0).
 passes4(6300, 75727, granåsen_idrettspark, 3, 20, 20).
 passes4(6300, 102733, tonstadkrysset_1, 4, 27, 27).
 passes4(6300, 73729, lerkendal_1, 5, 34, 34).
 passes4(6300, 71175, nidarosdomen, 6, 39, 39).
 
-passes4(6314, 109243, munkegata_m5, 2, 999, 0).
+passes4(6314, 109243, munkegata, 2, 999, 0).
 passes4(6314, 75727, granåsen_idrettspark, 3, 20, 20).
 
 passes4(66, 74265, kongens_gate_k1, 2, 999, 0).

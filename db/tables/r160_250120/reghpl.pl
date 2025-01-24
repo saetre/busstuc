@@ -628,7 +628,7 @@ hpl(109228,meieriparken,meieriparken,'Meieriparken').
 hpl(109229,libra,libra,'Libra').
 hpl(109230,libra,libra,'Libra').
 hpl(109234,gladse,gladse,'Gladse').
-hpl(109243,munkegata_m5,munkegata_m5,'Munkegata M5').
+hpl(109243,munkegata,munkegata,'Munkegata').
 hpl(109246,ytterbarman,ytterbarman,'Ytterbarman').
 hpl(109247,ytterbarman,ytterbarman,'Ytterbarman').
 hpl(109254,nordstuggu,nordstuggu,'Nordstuggu').

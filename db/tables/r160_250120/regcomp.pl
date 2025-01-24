@@ -2649,7 +2649,7 @@ composite_stat(mulstadaunet,[],mulstadaunet).
 composite_stat(munkaunet,[],munkaunet).
 composite_stat(munkeby,[],munkeby).
 composite_stat(munkebykorsen,[],munkebykorsen).
-composite_stat(munkegata,[m5],munkegata_m5).
+composite_stat(munkegata,[],munkegata).
 composite_stat(munken,[],munken).
 composite_stat(munkrøstad,[],munkrøstad).
 composite_stat(munkvoll,[1],munkvoll_1).
