@@ -544,6 +544,8 @@ hpl(108010,småland_vuku,småland_vuku,'Småland Vuku').
 hpl(108029,sundsnesvegen,sundsnesvegen,'Sundsnesvegen').
 hpl(108051,rødsvegen,rødsvegen,'Rødsvegen').
 hpl(108062,flatåsen_snuplass,flatåsen_snuplass,'Flatåsen snuplass').
+hpl(108063,aspølljårvegen,aspølljårvegen,'Aspølljårvegen').
+hpl(108064,aspølljårvegen,aspølljårvegen,'Aspølljårvegen').
 hpl(108065,malmplassen,malmplassen,'Malmplassen').
 hpl(108067,malmplassen,malmplassen,'Malmplassen').
 hpl(108068,gumdalen,gumdalen,'Gumdalen').
@@ -656,6 +658,9 @@ hpl(109666,vestre_sem,vestre_sem,'Vestre Sem').
 hpl(109667,vestre_sem,vestre_sem,'Vestre Sem').
 hpl(109680,trøåsen,trøåsen,'Trøåsen').
 hpl(109681,trøåsen,trøåsen,'Trøåsen').
+hpl(109827,granåsen_idrettspark,granåsen_idrettspark,'Granåsen Idrettspark').
+hpl(109828,granåsen_idrettspark,granåsen_idrettspark,'Granåsen Idrettspark').
+hpl(109829,nidarosdomen,nidarosdomen,'Nidarosdomen').
 hpl(110093,vellamelen,vellamelen,'Vellamelen').
 hpl(110094,beitstad,beitstad,'Beitstad').
 hpl(110114,mosvik_skole,mosvik_skole,'Mosvik skole').

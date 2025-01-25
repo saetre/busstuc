@@ -92,6 +92,7 @@ composite_stat(aspliveien,[195],aspliveien_195).
 composite_stat(aspnes,[],aspnes).
 composite_stat(aspås,[],aspås).
 composite_stat(aspåsen,[],aspåsen).
+composite_stat(aspølljårvegen,[],aspølljårvegen).
 composite_stat(aspøllkleivan,[],aspøllkleivan).
 composite_stat(asserøystranda,[],asserøystranda).
 composite_stat(astronomvegen,[],astronomvegen).
