@@ -66814,7 +66814,7 @@ passes4(6493, 72601, værestrøa, 8, 9, 9).
 
 passes4(6496, 109243, munkegata, 2, 999, 0).
 passes4(6496, 109828, granåsen_idrettspark, 3, 19, 19).
-passes4(6496, 109827, granåsen_idrettspark, 4, 21, 21).
+passes4(6496, 109827, granåsen_idrettspark_1, 4, 21, 21).
 passes4(6496, 102733, tonstadkrysset_1, 5, 28, 28).
 passes4(6496, 73729, lerkendal_1, 6, 35, 35).
 passes4(6496, 109829, nidarosdomen, 7, 40, 40).

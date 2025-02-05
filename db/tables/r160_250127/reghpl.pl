@@ -658,7 +658,7 @@ hpl(109666,vestre_sem,vestre_sem,'Vestre Sem').
 hpl(109667,vestre_sem,vestre_sem,'Vestre Sem').
 hpl(109680,trøåsen,trøåsen,'Trøåsen').
 hpl(109681,trøåsen,trøåsen,'Trøåsen').
-hpl(109827,granåsen_idrettspark,granåsen_idrettspark,'Granåsen Idrettspark').
+hpl(109827,granåsen_idrettspark_1,granåsen_idrettspark_1,'Granåsen Idrettspark 1').
 hpl(109828,granåsen_idrettspark,granåsen_idrettspark,'Granåsen Idrettspark').
 hpl(109829,nidarosdomen,nidarosdomen,'Nidarosdomen').
 hpl(110093,vellamelen,vellamelen,'Vellamelen').

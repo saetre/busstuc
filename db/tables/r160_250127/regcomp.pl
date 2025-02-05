@@ -1154,6 +1154,7 @@ composite_stat(granå,[vegen],granåsvegen). % generated 4.0
 composite_stat(granå_street,[],granåsvegen). % generated 4.2
 composite_stat(granås,[],granås).
 composite_stat(granåsen,[gård],granåsen_gård).
+composite_stat(granåsen,[idrettspark, 1],granåsen_idrettspark_1).
 composite_stat(granåsen,[idrettspark],granåsen_idrettspark).
 composite_stat(granåsvegen,[],granåsvegen).
 composite_stat(gravakorsen,[],gravakorsen).
