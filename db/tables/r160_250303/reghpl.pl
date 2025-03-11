@@ -2900,7 +2900,7 @@ hpl(73566,lo,lo,'Lo').
 hpl(73567,lo,lo,'Lo').
 hpl(73568,myrset,myrset,'Myrset').
 hpl(73569,myrset,myrset,'Myrset').
-hpl(73571,olav_tryggvasons_gate_3,olav_tryggvasons_gate_3,'Olav Tryggvasons gate 3').
+hpl(73571,søndre_gate,søndre_gate,'Søndre gate').
 hpl(73572,lo_bru,lo_bru,'Lo bru').
 hpl(73573,lo_bru,lo_bru,'Lo bru').
 hpl(73575,loddgårdstrøa,loddgårdstrøa,'Loddgårdstrøa').
@@ -8024,7 +8024,6 @@ hpl(80098,salin,salin,'Salin').
 hpl(80099,hyllfjæra,hyllfjæra,'Hyllfjæra').
 hpl(80100,hyllfjæra,hyllfjæra,'Hyllfjæra').
 hpl(80103,salberg,salberg,'Salberg').
-hpl(80104,salberg,salberg,'Salberg').
 hpl(80105,grindvollen,grindvollen,'Grindvollen').
 hpl(80106,grindvollen,grindvollen,'Grindvollen').
 hpl(80107,venna_vegdele,venna_vegdele,'Venna vegdele').
