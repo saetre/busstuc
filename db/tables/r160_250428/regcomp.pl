@@ -3523,7 +3523,6 @@ composite_stat(skaugdal,[skole],skaugdal_skole).
 composite_stat(skaukorsen,[],skaukorsen).
 composite_stat(skauma,[bru],skauma_bru).
 composite_stat(skaun,[bensinstasjon],skaun_bensinstasjon).
-composite_stat(skaun,[ungdomsskole, fv, 6648],skaun_ungdomsskole_fv_6648).
 composite_stat(skaun,[ungdomsskole],skaun_ungdomsskole).
 composite_stat(skavdal,[],skavdal).
 composite_stat(skavlan,[],skavlan).

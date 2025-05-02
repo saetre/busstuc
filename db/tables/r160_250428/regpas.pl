@@ -1006,7 +1006,7 @@ passes4(10980, 73675, lykkjnesset, 23, 39, 39).
 passes4(10980, 73300, svalnestangen, 24, 42, 42).
 passes4(10980, 73652, mæla, 25, 43, 43).
 passes4(10980, 103456, børsa, 26, 44, 44).
-passes4(10980, 72266, skaun_ungdomsskole_fv_6648, 27, 56, 56).
+passes4(10980, 72266, skaun_ungdomsskole, 27, 56, 56).
 passes4(10980, 74868, elistranda, 28, 58, 58).
 passes4(10980, 75460, fredlyveien, 29, 58, 58).
 passes4(10980, 72815, haukvik, 30, 59, 59).

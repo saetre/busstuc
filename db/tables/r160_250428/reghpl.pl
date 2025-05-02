@@ -1769,7 +1769,7 @@ hpl(72262,gryta,gryta,'Gryta').
 hpl(72263,skaun_bensinstasjon,skaun_bensinstasjon,'Skaun bensinstasjon').
 hpl(72264,skaun_bensinstasjon,skaun_bensinstasjon,'Skaun bensinstasjon').
 hpl(72265,vikhammeråsen_snuplass,vikhammeråsen_snuplass,'Vikhammeråsen snuplass').
-hpl(72266,skaun_ungdomsskole_fv_6648,skaun_ungdomsskole_fv_6648,'Skaun ungdomsskole fv. 6648').
+hpl(72266,skaun_ungdomsskole,skaun_ungdomsskole,'Skaun ungdomsskole').
 hpl(72267,grønberg,grønberg,'Grønberg').
 hpl(72268,grønberg,grønberg,'Grønberg').
 hpl(72269,vikheim,vikheim,'Vikheim').
