@@ -75762,71 +75762,71 @@ passes4(2666, 71190, st_olavs_hospital_øst, 26, 29, 29).
 passes4(2666, 74057, st_olavs_hospital_vest, 27, 30, 30).
 passes4(2666, 103522, marienborg_stasjon_3, 28, 31, 31).
 
-passes4(26709, 72051, ila, 2, 999, 0).
-passes4(26709, 107934, skansen_2, 3, 1, 1).
-passes4(26709, 71685, hospitalskirka, 4, 3, 3).
-passes4(26709, 109524, st_olavs_gate, 5, 4, 4).
+passes4(26687, 72051, ila, 2, 999, 0).
+passes4(26687, 107934, skansen_2, 3, 1, 1).
+passes4(26687, 71685, hospitalskirka, 4, 3, 3).
+passes4(26687, 109524, st_olavs_gate, 5, 4, 4).
 
-passes4(26770, 74061, st_olavs_gate, 2, 999, 0).
-passes4(26770, 103547, dronningens_gate_62, 3, 0, 0).
-passes4(26770, 103576, hospitalskirka, 4, 1, 1).
-passes4(26770, 104113, skansen, 5, 3, 3).
-passes4(26770, 104111, ila, 6, 4, 4).
-passes4(26770, 75007, bergsli_gate, 7, 5, 5).
-passes4(26770, 74339, nyveibakken, 8, 6, 6).
-passes4(26770, 75518, bygrensen, 9, 7, 7).
-passes4(26770, 74894, belvedere, 10, 8, 8).
-passes4(26770, 75321, breidablikk_2, 11, 9, 9).
-passes4(26770, 74090, nordre_hoem, 12, 10, 10).
-passes4(26770, 73561, søndre_hoem, 13, 11, 11).
-passes4(26770, 71447, rognheim, 14, 13, 13).
-passes4(26770, 73440, munkvoll_2, 15, 15, 15).
-passes4(26770, 75147, ferstad, 16, 16, 16).
-passes4(26770, 110141, ugla, 17, 17, 17).
-passes4(26770, 73098, kyvannet, 18, 18, 18).
-passes4(26770, 72109, vestmarka, 19, 19, 19).
-passes4(26770, 71254, herlofsonløypa, 20, 20, 20).
-passes4(26770, 73481, lian, 21, 21, 21).
+passes4(26727, 74061, st_olavs_gate, 2, 999, 0).
+passes4(26727, 103547, dronningens_gate_62, 3, 0, 0).
+passes4(26727, 103576, hospitalskirka, 4, 1, 1).
+passes4(26727, 104113, skansen, 5, 3, 3).
+passes4(26727, 104111, ila, 6, 4, 4).
+passes4(26727, 75007, bergsli_gate, 7, 5, 5).
+passes4(26727, 74339, nyveibakken, 8, 6, 6).
+passes4(26727, 75518, bygrensen, 9, 7, 7).
+passes4(26727, 74894, belvedere, 10, 8, 8).
+passes4(26727, 75321, breidablikk_2, 11, 9, 9).
+passes4(26727, 74090, nordre_hoem, 12, 10, 10).
+passes4(26727, 73561, søndre_hoem, 13, 11, 11).
+passes4(26727, 71447, rognheim, 14, 13, 13).
+passes4(26727, 73440, munkvoll_2, 15, 15, 15).
+passes4(26727, 75147, ferstad, 16, 16, 16).
+passes4(26727, 110141, ugla, 17, 17, 17).
+passes4(26727, 73098, kyvannet, 18, 18, 18).
+passes4(26727, 72109, vestmarka, 19, 19, 19).
+passes4(26727, 71254, herlofsonløypa, 20, 20, 20).
+passes4(26727, 73481, lian, 21, 21, 21).
 
-passes4(26831, 73481, lian, 2, 999, 0).
-passes4(26831, 71253, herlofsonløypa, 3, 1, 1).
-passes4(26831, 72110, vestmarka, 4, 2, 2).
-passes4(26831, 73099, kyvannet, 5, 4, 4).
-passes4(26831, 71779, ugla, 6, 5, 5).
-passes4(26831, 75148, ferstad, 7, 6, 6).
-passes4(26831, 73442, munkvoll_1, 8, 8, 8).
-passes4(26831, 71448, rognheim, 9, 9, 9).
-passes4(26831, 73562, søndre_hoem, 10, 10, 10).
-passes4(26831, 74088, nordre_hoem, 11, 11, 11).
-passes4(26831, 75322, breidablikk_1, 12, 13, 13).
-passes4(26831, 74896, belvedere, 13, 14, 14).
-passes4(26831, 75517, bygrensen, 14, 15, 15).
-passes4(26831, 74338, nyveibakken, 15, 16, 16).
-passes4(26831, 75008, bergsli_gate, 16, 17, 17).
-passes4(26831, 104110, ila, 17, 17, 17).
-passes4(26831, 104112, skansen, 18, 18, 18).
-passes4(26831, 103577, hospitalskirka, 19, 20, 20).
-passes4(26831, 74061, st_olavs_gate, 20, 21, 21).
+passes4(26788, 73481, lian, 2, 999, 0).
+passes4(26788, 71253, herlofsonløypa, 3, 1, 1).
+passes4(26788, 72110, vestmarka, 4, 2, 2).
+passes4(26788, 73099, kyvannet, 5, 4, 4).
+passes4(26788, 71779, ugla, 6, 5, 5).
+passes4(26788, 75148, ferstad, 7, 6, 6).
+passes4(26788, 73442, munkvoll_1, 8, 8, 8).
+passes4(26788, 71448, rognheim, 9, 9, 9).
+passes4(26788, 73562, søndre_hoem, 10, 10, 10).
+passes4(26788, 74088, nordre_hoem, 11, 11, 11).
+passes4(26788, 75322, breidablikk_1, 12, 13, 13).
+passes4(26788, 74896, belvedere, 13, 14, 14).
+passes4(26788, 75517, bygrensen, 14, 15, 15).
+passes4(26788, 74338, nyveibakken, 15, 16, 16).
+passes4(26788, 75008, bergsli_gate, 16, 17, 17).
+passes4(26788, 104110, ila, 17, 17, 17).
+passes4(26788, 104112, skansen, 18, 18, 18).
+passes4(26788, 103577, hospitalskirka, 19, 20, 20).
+passes4(26788, 74061, st_olavs_gate, 20, 21, 21).
 
-passes4(27062, 74061, st_olavs_gate, 2, 999, 0).
-passes4(27062, 103547, dronningens_gate_62, 3, 0, 0).
-passes4(27062, 103576, hospitalskirka, 4, 1, 1).
-passes4(27062, 104113, skansen, 5, 3, 3).
-passes4(27062, 75007, bergsli_gate, 6, 5, 5).
-passes4(27062, 74339, nyveibakken, 7, 6, 6).
-passes4(27062, 75518, bygrensen, 8, 7, 7).
-passes4(27062, 74894, belvedere, 9, 8, 8).
-passes4(27062, 75321, breidablikk_2, 10, 9, 9).
-passes4(27062, 74090, nordre_hoem, 11, 10, 10).
-passes4(27062, 73561, søndre_hoem, 12, 11, 11).
-passes4(27062, 71447, rognheim, 13, 13, 13).
-passes4(27062, 73440, munkvoll_2, 14, 15, 15).
-passes4(27062, 75147, ferstad, 15, 16, 16).
-passes4(27062, 110141, ugla, 16, 17, 17).
-passes4(27062, 73098, kyvannet, 17, 18, 18).
-passes4(27062, 72109, vestmarka, 18, 19, 19).
-passes4(27062, 71254, herlofsonløypa, 19, 20, 20).
-passes4(27062, 73481, lian, 20, 21, 21).
+passes4(27019, 74061, st_olavs_gate, 2, 999, 0).
+passes4(27019, 103547, dronningens_gate_62, 3, 0, 0).
+passes4(27019, 103576, hospitalskirka, 4, 1, 1).
+passes4(27019, 104113, skansen, 5, 3, 3).
+passes4(27019, 75007, bergsli_gate, 6, 5, 5).
+passes4(27019, 74339, nyveibakken, 7, 6, 6).
+passes4(27019, 75518, bygrensen, 8, 7, 7).
+passes4(27019, 74894, belvedere, 9, 8, 8).
+passes4(27019, 75321, breidablikk_2, 10, 9, 9).
+passes4(27019, 74090, nordre_hoem, 11, 10, 10).
+passes4(27019, 73561, søndre_hoem, 12, 11, 11).
+passes4(27019, 71447, rognheim, 13, 13, 13).
+passes4(27019, 73440, munkvoll_2, 14, 15, 15).
+passes4(27019, 75147, ferstad, 15, 16, 16).
+passes4(27019, 110141, ugla, 16, 17, 17).
+passes4(27019, 73098, kyvannet, 17, 18, 18).
+passes4(27019, 72109, vestmarka, 18, 19, 19).
+passes4(27019, 71254, herlofsonløypa, 19, 20, 20).
+passes4(27019, 73481, lian, 20, 21, 21).
 
 passes4(28, 71184, prinsens_gate_p1, 2, 999, 0).
 passes4(28, 71174, nidarosdomen, 3, 1, 1).
@@ -89411,10 +89411,10 @@ ntourstops(26585, 2).
 ntourstops(2661, 27).
 ntourstops(26648, 3).
 ntourstops(2666, 27).
-ntourstops(26709, 4).
-ntourstops(26770, 20).
-ntourstops(26831, 19).
-ntourstops(27062, 19).
+ntourstops(26687, 4).
+ntourstops(26727, 20).
+ntourstops(26788, 19).
+ntourstops(27019, 19).
 ntourstops(28, 26).
 ntourstops(2897, 26).
 ntourstops(291, 45).
