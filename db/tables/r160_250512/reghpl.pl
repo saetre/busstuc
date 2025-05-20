@@ -655,7 +655,6 @@ hpl(109512,raudvika,raudvika,'Raudvika').
 hpl(109518,eventyrskogen,eventyrskogen,'Eventyrskogen').
 hpl(109519,eventyrskogen,eventyrskogen,'Eventyrskogen').
 hpl(109522,husbyåsen_snuplass,husbyåsen_snuplass,'Husbyåsen snuplass').
-hpl(109524,st_olavs_gate,st_olavs_gate,'St. Olavs gate').
 hpl(109532,eida_snuplass,eida_snuplass,'Eida snuplass').
 hpl(109533,eida_snuplass,eida_snuplass,'Eida snuplass').
 hpl(109535,hagemo,hagemo,'Hagemo').
