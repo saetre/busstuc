@@ -2820,6 +2820,7 @@ composite_stat(nedre,[gangstad],nedre_gangstad).
 composite_stat(nedre,[grande],nedre_grande).
 composite_stat(nedre,[grøtan],nedre_grøtan).
 composite_stat(nedre,[gullikstad],nedre_gullikstad).
+composite_stat(nedre,[heir],nedre_heir).
 composite_stat(nedre,[humlehaugen, vest],nedre_humlehaugen_vest).
 composite_stat(nedre,[humlehaugen, øst],nedre_humlehaugen_øst).
 composite_stat(nedre,[jervan],nedre_jervan).
@@ -2830,7 +2831,6 @@ composite_stat(nedre,[tun_street],nedre_tunveg). % generated 6.0
 composite_stat(nedre,[tunveg],nedre_tunveg).
 composite_stat(nedre,[vist],nedre_vist).
 composite_stat(nekåbjørgen,[],nekåbjørgen).
-composite_stat(ner,[],ner).
 composite_stat(ner,[bangsund],ner_bangsund).
 composite_stat(ner,[mørreaunet],ner_mørreaunet).
 composite_stat(ner,[tynes],ner_tynes).

@@ -60040,7 +60040,7 @@ passes4(23130, 78923, munkrøstad, 5, 7, 7).
 passes4(23130, 77923, holm, 6, 8, 8).
 passes4(23130, 77931, skillstad, 7, 9, 9).
 passes4(23130, 79083, nordbakk, 8, 10, 10).
-passes4(23130, 77935, ner, 9, 11, 11).
+passes4(23130, 77935, nedre_heir, 9, 11, 11).
 passes4(23130, 103191, nordgård, 10, 13, 13).
 passes4(23130, 77914, frol_barneskole, 11, 20, 20).
 
@@ -60053,7 +60053,7 @@ passes4(23131, 78923, munkrøstad, 7, 14, 14).
 passes4(23131, 77923, holm, 8, 15, 15).
 passes4(23131, 77931, skillstad, 9, 16, 16).
 passes4(23131, 79083, nordbakk, 10, 17, 17).
-passes4(23131, 77935, ner, 11, 20, 20).
+passes4(23131, 77935, nedre_heir, 11, 20, 20).
 passes4(23131, 103191, nordgård, 12, 22, 22).
 
 passes4(23132, 77865, levanger_ungdomsskole_røstad, 2, 999, 0).
@@ -60068,11 +60068,11 @@ passes4(23132, 78923, munkrøstad, 10, 19, 19).
 passes4(23132, 77923, holm, 11, 20, 20).
 passes4(23132, 77931, skillstad, 12, 21, 21).
 passes4(23132, 79083, nordbakk, 13, 22, 22).
-passes4(23132, 77935, ner, 14, 25, 25).
+passes4(23132, 77935, nedre_heir, 14, 25, 25).
 passes4(23132, 103191, nordgård, 15, 27, 27).
 
 passes4(23133, 77914, frol_barneskole, 2, 999, 0).
-passes4(23133, 77935, ner, 3, 5, 5).
+passes4(23133, 77935, nedre_heir, 3, 5, 5).
 passes4(23133, 79083, nordbakk, 4, 6, 6).
 passes4(23133, 77931, skillstad, 5, 7, 7).
 passes4(23133, 77924, holm, 6, 8, 8).
@@ -60099,7 +60099,7 @@ passes4(23133, 79551, reistadkorsen, 25, 34, 34).
 passes4(23134, 77866, levanger_ungdomsskole_røstad, 2, 999, 0).
 passes4(23134, 78968, stabelvollen, 3, 1, 1).
 passes4(23134, 77913, frol_barneskole, 4, 3, 3).
-passes4(23134, 77935, ner, 5, 6, 6).
+passes4(23134, 77935, nedre_heir, 5, 6, 6).
 passes4(23134, 79083, nordbakk, 6, 7, 7).
 passes4(23134, 77931, skillstad, 7, 8, 8).
 passes4(23134, 77924, holm, 8, 9, 9).
@@ -60126,7 +60126,7 @@ passes4(23134, 79551, reistadkorsen, 27, 36, 36).
 passes4(23135, 78972, levanger_vgs, 2, 999, 0).
 passes4(23135, 77903, levanger_stasjon, 3, 5, 5).
 passes4(23135, 77917, leira_mottak, 4, 7, 7).
-passes4(23135, 77935, ner, 5, 10, 10).
+passes4(23135, 77935, nedre_heir, 5, 10, 10).
 passes4(23135, 77949, floan, 6, 11, 11).
 passes4(23135, 77954, munkebykorsen, 7, 12, 12).
 passes4(23135, 77960, munkeby, 8, 13, 13).
@@ -60138,7 +60138,7 @@ passes4(23135, 77986, langåsdammen, 13, 16, 16).
 passes4(23135, 79089, flatåsen, 14, 17, 17).
 passes4(23135, 77954, munkebykorsen, 15, 20, 20).
 passes4(23135, 77948, floan, 16, 21, 21).
-passes4(23135, 77935, ner, 17, 22, 22).
+passes4(23135, 77935, nedre_heir, 17, 22, 22).
 passes4(23135, 79083, nordbakk, 18, 22, 22).
 passes4(23135, 77931, skillstad, 19, 23, 23).
 passes4(23135, 77924, holm, 20, 24, 24).
@@ -60154,7 +60154,7 @@ passes4(23135, 78943, mobekkmo, 29, 35, 35).
 passes4(23135, 78941, berg, 30, 37, 37).
 passes4(23135, 78934, matberg, 31, 40, 40).
 
-passes4(23136, 77935, ner, 2, 999, 0).
+passes4(23136, 77935, nedre_heir, 2, 999, 0).
 passes4(23136, 79083, nordbakk, 3, 1, 1).
 passes4(23136, 77931, skillstad, 4, 2, 2).
 passes4(23136, 77924, holm, 5, 3, 3).
@@ -60184,7 +60184,7 @@ passes4(23136, 78923, munkrøstad, 28, 30, 30).
 passes4(23136, 77923, holm, 29, 31, 31).
 passes4(23136, 77932, skillstad, 30, 33, 33).
 passes4(23136, 79082, nordbakk, 31, 34, 34).
-passes4(23136, 77933, ner, 32, 35, 35).
+passes4(23136, 77933, nedre_heir, 32, 35, 35).
 passes4(23136, 77914, frol_barneskole, 33, 39, 39).
 
 passes4(23137, 79555, reistadkorsen, 2, 999, 0).
@@ -60209,7 +60209,7 @@ passes4(23137, 78923, munkrøstad, 20, 20, 20).
 passes4(23137, 77923, holm, 21, 21, 21).
 passes4(23137, 77932, skillstad, 22, 23, 23).
 passes4(23137, 79082, nordbakk, 23, 24, 24).
-passes4(23137, 77933, ner, 24, 25, 25).
+passes4(23137, 77933, nedre_heir, 24, 25, 25).
 passes4(23137, 77917, leira_mottak, 25, 30, 30).
 passes4(23137, 78967, stabelvollen, 26, 32, 32).
 passes4(23137, 77866, levanger_ungdomsskole_røstad, 27, 36, 36).
@@ -60224,7 +60224,7 @@ passes4(23137, 77888, vårtun_kristne_oppvekstsenter, 35, 60, 60).
 passes4(23137, 78153, gjemblekorsen, 36, 62, 62).
 passes4(23137, 78143, nesheim_skole, 37, 65, 65).
 
-passes4(23138, 77935, ner, 2, 999, 0).
+passes4(23138, 77935, nedre_heir, 2, 999, 0).
 passes4(23138, 79083, nordbakk, 3, 1, 1).
 passes4(23138, 77931, skillstad, 4, 2, 2).
 passes4(23138, 77924, holm, 5, 3, 3).
@@ -60254,10 +60254,10 @@ passes4(23138, 78923, munkrøstad, 28, 33, 33).
 passes4(23138, 77923, holm, 29, 34, 34).
 passes4(23138, 77932, skillstad, 30, 36, 36).
 passes4(23138, 79082, nordbakk, 31, 37, 37).
-passes4(23138, 77933, ner, 32, 38, 38).
+passes4(23138, 77933, nedre_heir, 32, 38, 38).
 passes4(23138, 77914, frol_barneskole, 33, 42, 42).
 
-passes4(23139, 77935, ner, 2, 999, 0).
+passes4(23139, 77935, nedre_heir, 2, 999, 0).
 passes4(23139, 77949, floan, 3, 1, 1).
 passes4(23139, 77954, munkebykorsen, 4, 3, 3).
 passes4(23139, 77960, munkeby, 5, 4, 4).
@@ -60280,7 +60280,7 @@ passes4(23139, 77865, levanger_ungdomsskole_røstad, 21, 30, 30).
 passes4(23139, 77913, frol_barneskole, 22, 38, 38).
 
 passes4(23140, 77914, frol_barneskole, 2, 999, 0).
-passes4(23140, 77935, ner, 3, 3, 3).
+passes4(23140, 77935, nedre_heir, 3, 3, 3).
 passes4(23140, 77949, floan, 4, 4, 4).
 passes4(23140, 77954, munkebykorsen, 5, 6, 6).
 passes4(23140, 77960, munkeby, 6, 8, 8).
@@ -60298,7 +60298,7 @@ passes4(23141, 77865, levanger_ungdomsskole_røstad, 4, 10, 10).
 passes4(23141, 78967, stabelvollen, 5, 11, 11).
 passes4(23141, 77917, leira_mottak, 6, 12, 12).
 passes4(23141, 77914, frol_barneskole, 7, 15, 15).
-passes4(23141, 77935, ner, 8, 18, 18).
+passes4(23141, 77935, nedre_heir, 8, 18, 18).
 passes4(23141, 77949, floan, 9, 19, 19).
 passes4(23141, 77954, munkebykorsen, 10, 21, 21).
 passes4(23141, 77960, munkeby, 11, 23, 23).
@@ -60316,7 +60316,7 @@ passes4(23141, 78005, halsan_skole, 22, 41, 41).
 passes4(23141, 78013, storsvekorsen, 23, 42, 42).
 passes4(23141, 78019, halsankorsen, 24, 43, 43).
 
-passes4(23142, 77935, ner, 2, 999, 0).
+passes4(23142, 77935, nedre_heir, 2, 999, 0).
 passes4(23142, 77949, floan, 3, 1, 1).
 passes4(23142, 77954, munkebykorsen, 4, 3, 3).
 passes4(23142, 77960, munkeby, 5, 4, 4).
@@ -77311,13 +77311,13 @@ passes4(27691, 72109, vestmarka, 6, 4, 4).
 passes4(27691, 71254, herlofsonløypa, 7, 5, 5).
 passes4(27691, 73481, lian, 8, 6, 6).
 
-passes4(27837, 73481, lian, 2, 999, 0).
-passes4(27837, 71253, herlofsonløypa, 3, 1, 1).
-passes4(27837, 72110, vestmarka, 4, 2, 2).
-passes4(27837, 73099, kyvannet, 5, 4, 4).
-passes4(27837, 71779, ugla, 6, 5, 5).
-passes4(27837, 75148, ferstad, 7, 6, 6).
-passes4(27837, 73442, munkvoll_1, 8, 8, 8).
+passes4(27787, 73481, lian, 2, 999, 0).
+passes4(27787, 71253, herlofsonløypa, 3, 1, 1).
+passes4(27787, 72110, vestmarka, 4, 2, 2).
+passes4(27787, 73099, kyvannet, 5, 4, 4).
+passes4(27787, 71779, ugla, 6, 5, 5).
+passes4(27787, 75148, ferstad, 7, 6, 6).
+passes4(27787, 73442, munkvoll_1, 8, 8, 8).
 
 passes4(2903, 74058, st_olavs_hospital_vest, 2, 999, 0).
 passes4(2903, 71191, st_olavs_hospital_øst, 3, 1, 1).
@@ -90997,7 +90997,7 @@ ntourstops(27211, 16).
 ntourstops(27399, 20).
 ntourstops(27460, 19).
 ntourstops(27691, 7).
-ntourstops(27837, 7).
+ntourstops(27787, 7).
 ntourstops(2903, 26).
 ntourstops(2921, 27).
 ntourstops(2922, 27).

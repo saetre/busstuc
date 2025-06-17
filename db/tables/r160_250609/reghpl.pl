@@ -6515,8 +6515,8 @@ hpl(77929,bremset,bremset,'Bremset').
 hpl(77930,bremset,bremset,'Bremset').
 hpl(77931,skillstad,skillstad,'Skillstad').
 hpl(77932,skillstad,skillstad,'Skillstad').
-hpl(77933,ner,ner,'Ner').
-hpl(77935,ner,ner,'Ner').
+hpl(77933,nedre_heir,nedre_heir,'Nedre Heir').
+hpl(77935,nedre_heir,nedre_heir,'Nedre Heir').
 hpl(77936,aspås,aspås,'Aspås').
 hpl(77937,aspås,aspås,'Aspås').
 hpl(77938,jermstad,jermstad,'Jermstad').
