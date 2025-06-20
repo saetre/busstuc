@@ -1907,7 +1907,6 @@ composite_stat(kirkeby,[],kirkeby).
 composite_stat(kirkehaug,[],kirkehaug).
 composite_stat(kirkekrysset,[],kirkekrysset).
 composite_stat(kirkestrøket,[],kirkestrøket).
-composite_stat(kirkholmen,[],kirkholmen).
 composite_stat(kirkholt,[],kirkholt).
 composite_stat(kirkneset,[vegdele],kirkneset_vegdele).
 composite_stat(kirkreit,[],kirkreit).

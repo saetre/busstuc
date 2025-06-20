@@ -3382,7 +3382,6 @@ hpl(74038,nordgjerdet,nordgjerdet,'Nordgjerdet').
 hpl(74039,nordgjerdet,nordgjerdet,'Nordgjerdet').
 hpl(74040,kiran,kiran,'Kiran').
 hpl(74041,kiran,kiran,'Kiran').
-hpl(74043,kirkholmen,kirkholmen,'Kirkholmen').
 hpl(74045,spongdal_skole,spongdal_skole,'Spongdal skole').
 hpl(74046,nordgrenda,nordgrenda,'Nordgrenda').
 hpl(74047,kirkvoll,kirkvoll,'Kirkvoll').
