@@ -1169,7 +1169,6 @@ composite_stat(granlia,[],granlia).
 composite_stat(granmo,[],granmo).
 composite_stat(granmoen,[],granmoen).
 composite_stat(grannes,[],grannes).
-composite_stat(granvegen,[],granvegen).
 composite_stat(granå,[street],granåsvegen). % generated 4.1
 composite_stat(granå,[vegen],granåsvegen). % generated 4.0
 composite_stat(granå_street,[],granåsvegen). % generated 4.2
@@ -3562,7 +3561,6 @@ composite_stat(skaget,[],skaget).
 composite_stat(skagset,[],skagset).
 composite_stat(skain,[],skain).
 composite_stat(skakanova,[],skakanova).
-composite_stat(skansen,[2],skansen_2).
 composite_stat(skansen,[],skansen).
 composite_stat(skaret,[],skaret).
 composite_stat(skarland,[],skarland).
@@ -3872,7 +3870,6 @@ composite_stat(stein,[],stein).
 composite_stat(steinan,[],steinan).
 composite_stat(steinaunet,[],steinaunet).
 composite_stat(steinavegen,[vegdele],steinavegen_vegdele).
-composite_stat(steinberget,[],steinberget).
 composite_stat(steinbrua,[],steinbrua).
 composite_stat(steindal,[street],steindalsvegen). % generated 4.1
 composite_stat(steindal,[vegen],steindalsvegen). % generated 4.0

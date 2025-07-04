@@ -533,9 +533,6 @@ hpl(107686,aspjeld,aspjeld,'Aspjeld').
 hpl(107739,rylen,rylen,'Rylen').
 hpl(107835,vea,vea,'Vea').
 hpl(107860,herjuan,herjuan,'Herjuan').
-hpl(107929,steinberget,steinberget,'Steinberget').
-hpl(107930,steinberget,steinberget,'Steinberget').
-hpl(107934,skansen_2,skansen_2,'Skansen 2').
 hpl(108008,nordenget_vuku,nordenget_vuku,'Nordenget Vuku').
 hpl(108010,småland_vuku,småland_vuku,'Småland Vuku').
 hpl(108029,sundsnesvegen,sundsnesvegen,'Sundsnesvegen').
@@ -669,8 +666,6 @@ hpl(109972,brudalsveien,brudalsveien,'Brudalsveien').
 hpl(109975,havstadvegen,havstadvegen,'Havstadvegen').
 hpl(109979,fjæra_industrigata,fjæra_industrigata,'Fjæra Industrigata').
 hpl(109980,fjæra_industrigata,fjæra_industrigata,'Fjæra Industrigata').
-hpl(109990,granvegen,granvegen,'Granvegen').
-hpl(109991,granvegen,granvegen,'Granvegen').
 hpl(109992,buvikveien_77,buvikveien_77,'Buvikveien 77').
 hpl(109995,refsneshagan,refsneshagan,'Refsneshagan').
 hpl(109996,refsneshagan,refsneshagan,'Refsneshagan').
@@ -3520,7 +3515,6 @@ hpl(74226,stene,stene,'Stene').
 hpl(74227,kojan,kojan,'Kojan').
 hpl(74228,stene,stene,'Stene').
 hpl(74229,nydalen,nydalen,'Nydalen').
-hpl(74230,nydalen,nydalen,'Nydalen').
 hpl(74231,kokkvollen,kokkvollen,'Kokkvollen').
 hpl(74232,stene,stene,'Stene').
 hpl(74233,kokkvollen,kokkvollen,'Kokkvollen').
