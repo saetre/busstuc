@@ -373,7 +373,6 @@ hpl(104785,heimly,heimly,'Heimly').
 hpl(104852,nylandet,nylandet,'Nylandet').
 hpl(104853,nylandet,nylandet,'Nylandet').
 hpl(104869,kolstad_kirke,kolstad_kirke,'Kolstad kirke').
-hpl(104873,hembre_grus,hembre_grus,'Hembre grus').
 hpl(104965,øyum_gård,øyum_gård,'Øyum gård').
 hpl(105024,stormyra,stormyra,'Stormyra').
 hpl(105025,søraunet,søraunet,'Søraunet').
@@ -465,7 +464,6 @@ hpl(106156,vassbygda,vassbygda,'Vassbygda').
 hpl(106169,gåsbakken_misjonshus,gåsbakken_misjonshus,'Gåsbakken misjonshus').
 hpl(106171,trondheim_hurtigbåtterminal_c,trondheim_hurtigbåtterminal_c,'Trondheim hurtigbåtterminal C').
 hpl(106172,trondheim_hurtigbåtterminal_d,trondheim_hurtigbåtterminal_d,'Trondheim hurtigbåtterminal D').
-hpl(106174,vassfjellet_vinterpark,vassfjellet_vinterpark,'Vassfjellet vinterpark').
 hpl(106178,lauvøy_ungdomshus,lauvøy_ungdomshus,'Lauvøy ungdomshus').
 hpl(106229,gjevilvassvegen,gjevilvassvegen,'Gjevilvassvegen').
 hpl(106252,sunnsetlykkja,sunnsetlykkja,'Sunnsetlykkja').
@@ -752,7 +750,6 @@ hpl(110800,tilleråsen_snuplass,tilleråsen_snuplass,'Tilleråsen snuplass').
 hpl(110801,tillerrønningen,tillerrønningen,'Tillerrønningen').
 hpl(110802,tillerrønningen,tillerrønningen,'Tillerrønningen').
 hpl(110803,hårstad_skole,hårstad_skole,'Hårstad skole').
-hpl(110812,stokkan_nedre,stokkan_nedre,'Stokkan nedre').
 hpl(110851,hellbekken,hellbekken,'Hellbekken').
 hpl(110852,ommundsgard,ommundsgard,'Ommundsgard').
 hpl(110853,teigen,teigen,'Teigen').
@@ -760,6 +757,8 @@ hpl(110888,rostenhallen,rostenhallen,'Rostenhallen').
 hpl(110899,flerengstrand_kai,flerengstrand_kai,'Flerengstrand kai').
 hpl(110903,nyvikveien,nyvikveien,'Nyvikveien').
 hpl(110904,nyvikveien,nyvikveien,'Nyvikveien').
+hpl(110920,røstvold,røstvold,'Røstvold').
+hpl(110921,røstvold_bru,røstvold_bru,'Røstvold bru').
 hpl(116006,moan,moan,'Moan').
 hpl(116007,langlia,langlia,'Langlia').
 hpl(116008,rindal,rindal,'Rindal').

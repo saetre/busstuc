@@ -1473,7 +1473,6 @@ composite_stat(hellesvik,[],hellesvik).
 composite_stat(hellesvik,[veikryss],hellesvik_veikryss).
 composite_stat(hellhaugan,[],hellhaugan).
 composite_stat(hello,[],hello).
-composite_stat(hembre,[grus],hembre_grus).
 composite_stat(hemnehallen,[],hemnehallen).
 composite_stat(hemnskjel,[],hemnskjel).
 composite_stat(hemnskjela,[oppvekstsenter],hemnskjela_oppvekstsenter).
@@ -3381,6 +3380,8 @@ composite_stat(røstadlia,[nedre],røstadlia_nedre).
 composite_stat(røstadlia,[øvre],røstadlia_øvre).
 composite_stat(røstadvika,[],røstadvika).
 composite_stat(røstvendarveien,[],røstvendarveien).
+composite_stat(røstvold,[],røstvold).
+composite_stat(røstvold,[bru],røstvold_bru).
 composite_stat(røstvoll,[],røstvoll).
 composite_stat(røttesmoen,[],røttesmoen).
 composite_stat(røvik,[],røvik).
@@ -4510,7 +4511,6 @@ composite_stat(vassbukt,[],vassbukt).
 composite_stat(vassbygda,[],vassbygda).
 composite_stat(vassbygda,[grendahus],vassbygda_grendahus).
 composite_stat(vassdalen,[],vassdalen).
-composite_stat(vassfjellet,[vinterpark],vassfjellet_vinterpark).
 composite_stat(vasslia,[],vasslia).
 composite_stat(vassliveien,[],vassliveien).
 composite_stat(vasslægja,[],vasslægja).
