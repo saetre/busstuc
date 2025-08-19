@@ -3748,7 +3748,6 @@ composite_stat(snorroegga,[],snorroegga).
 composite_stat(snuplass,[almlia],snuplass_almlia).
 composite_stat(snuplass,[rampa],snuplass_rampa).
 composite_stat(snuplass,[sandneset],snuplass_sandneset).
-composite_stat(snåsa,[hotell],snåsa_hotell).
 composite_stat(snåsa,[skole],snåsa_skole).
 composite_stat(snåsa,[stasjon],snåsa_stasjon).
 composite_stat(snøan,[],snøan).

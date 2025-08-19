@@ -376,7 +376,6 @@ hpl(104869,kolstad_kirke,kolstad_kirke,'Kolstad kirke').
 hpl(104965,øyum_gård,øyum_gård,'Øyum gård').
 hpl(105024,stormyra,stormyra,'Stormyra').
 hpl(105025,søraunet,søraunet,'Søraunet').
-hpl(105041,snåsa_hotell,snåsa_hotell,'Snåsa Hotell').
 hpl(105091,slørdalsvatnet,slørdalsvatnet,'Slørdalsvatnet').
 hpl(105092,slørdalsvatnet,slørdalsvatnet,'Slørdalsvatnet').
 hpl(105196,klettgjerdet,klettgjerdet,'Klettgjerdet').
@@ -6561,7 +6560,6 @@ hpl(78078,stene_nordre,stene_nordre,'Stene nordre').
 hpl(78079,stene_nordre,stene_nordre,'Stene nordre').
 hpl(78081,bergkorsen,bergkorsen,'Bergkorsen').
 hpl(78082,bergkorsen,bergkorsen,'Bergkorsen').
-hpl(78083,sykehuset_levanger,sykehuset_levanger,'Sykehuset Levanger').
 hpl(78084,stubbe,stubbe,'Stubbe').
 hpl(78085,stubbe,stubbe,'Stubbe').
 hpl(78086,deibakken,deibakken,'Deibakken').
