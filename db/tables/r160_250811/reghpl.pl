@@ -7199,8 +7199,6 @@ hpl(78925,sem_skole,sem_skole,'Sem skole').
 hpl(78926,vollset,vollset,'Vollset').
 hpl(78927,vollset,vollset,'Vollset').
 hpl(78928,stokkbakken,stokkbakken,'Stokkbakken').
-hpl(78930,langhammer,langhammer,'Langhammer').
-hpl(78931,langhammer,langhammer,'Langhammer').
 hpl(78933,fiveshaugen,fiveshaugen,'Fiveshaugen').
 hpl(78934,matberg,matberg,'Matberg').
 hpl(78935,fiveshaugen,fiveshaugen,'Fiveshaugen').

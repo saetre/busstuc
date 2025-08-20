@@ -411,6 +411,9 @@ xsynplace(X,Y):-
 xsynplace( sentrum, gb_st_olavs_gate ) :- %% Generalize
     value( tmnflag, true ).   %% RS-131230 From declare.pl
 
+xsynplace( sentrum, bygrensen ) :- %% Generalize
+    value( tmnflag, true ).   %% RS-2025-08-19 Gravearbeider i St. Olavs Gate
+
                        
 xsynplace(toget,ts) :-  %% presumes stasjonen is not noun def
    \+ value(tmnflag,true). %% RS-131230 From declare.pl
@@ -468,7 +471,8 @@ unique_vehicle(boat, false).
 
 thetram(9).   %% Only one tram.  
 
-thetramstreetstation(st_olavs_street,st_olavs_gate).
+%thetramstreetstation(st_olavs_street,st_olavs_gate).
+thetramstreetstation(bygrensen,bygrensen). %% RS-2025-08-19 Gravearbeider i St. Olavs Gate (til sentrum)
 
 central_airbus_station(torget). %% hovedterminalen// sentrum 
 

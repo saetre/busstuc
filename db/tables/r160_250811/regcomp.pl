@@ -2190,7 +2190,6 @@ composite_stat(langeng,[gård],langeng_gård).
 composite_stat(langengvegen,[],langengvegen).
 composite_stat(langfjord,[],langfjord).
 composite_stat(langfjæra,[],langfjæra).
-composite_stat(langhammer,[],langhammer).
 composite_stat(langlete,[],langlete).
 composite_stat(langlete,[snuplass],langlete_snuplass).
 composite_stat(langli,[nord],langli_nord).
