@@ -875,7 +875,6 @@ composite_stat(fjeset,[],fjeset).
 composite_stat(fjordgløttvegen,[],fjordgløttvegen).
 composite_stat(fjukstad,[],fjukstad).
 composite_stat(fjær,[],fjær).
-composite_stat(fjæra,[breiosen],fjæra_breiosen).
 composite_stat(fjæra,[industri, gata],fjæra_industrigata). % generated 6.1
 composite_stat(fjæra,[industri, street],fjæra_industrigata). % generated 6.2
 composite_stat(fjæra,[industri_street],fjæra_industrigata). % generated 6.0

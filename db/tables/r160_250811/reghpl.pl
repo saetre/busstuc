@@ -4264,8 +4264,6 @@ hpl(75103,fallet,fallet,'Fallet').
 hpl(75104,fallet,fallet,'Fallet').
 hpl(75105,bjøra,bjøra,'Bjøra').
 hpl(75106,bjøra,bjøra,'Bjøra').
-hpl(75107,fjæra_breiosen,fjæra_breiosen,'Fjæra Breiosen').
-hpl(75108,fjæra_breiosen,fjæra_breiosen,'Fjæra Breiosen').
 hpl(75109,fallin,fallin,'Fallin').
 hpl(75110,fallin,fallin,'Fallin').
 hpl(75111,bjørga,bjørga,'Bjørga').
