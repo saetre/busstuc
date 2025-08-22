@@ -3035,7 +3035,6 @@ composite_stat(orkanger,[barnehage],orkanger_barnehage).
 composite_stat(orkanger,[skole],orkanger_skole).
 composite_stat(orkanger,[skysstasjon],orkanger_skysstasjon).
 composite_stat(orkanger,[torg],orkanger_torg).
-composite_stat(orkdal,[sjukehus],orkdal_sjukehus).
 composite_stat(orkdalsveien,[95],orkdalsveien_95).
 composite_stat(ormhaugen,[],ormhaugen).
 composite_stat(orvos,[],orvos).

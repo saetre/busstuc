@@ -2,7 +2,6 @@
 hpl(100065,kvammen,kvammen,'Kvammen').
 hpl(100320,lassemoen_stasjon,lassemoen_stasjon,'Lassemoen stasjon').
 hpl(100322,brekstad_ferjekai,brekstad_ferjekai,'Brekstad ferjekai').
-hpl(100345,orkdal_sjukehus,orkdal_sjukehus,'Orkdal Sjukehus').
 hpl(100415,flakk_ferjekai,flakk_ferjekai,'Flakk ferjekai').
 hpl(100844,aure,aure,'Aure').
 hpl(101366,moanes,moanes,'Moanes').
