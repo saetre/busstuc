@@ -143,7 +143,7 @@ corr(prinsens_gate_p2,hovedterminalen). %% RS-140102
 %corr(torget,hovedterminalen).         %% SUMMER %% TA-110628 %% RS-130816 REMOVED before WINTER...
 
 corr( st_olavs_gate, hovedterminalen ). %% RS-140102 %% RS-141115 (Tram!) st_olavs_gate
-corr( bygrensen, hovedterminalen ). %% RS-140102 %% RS-141115 (Tram!) %% RS-2025-08-19 Gravearbeider i st_olavs_gate
+corr( ila, hovedterminalen ). %% RS-140102 %% RS-141115 (Tram!) %% RS-2025-08-19 Gravearbeider i st_olavs_gate "bygrensen" er bedre?
 corr( olav_tryggvasons_gate_ot1, hovedterminalen ).  %% RS-120915 (Nightbus!)
 
 
