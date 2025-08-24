@@ -18,12 +18,12 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% UNIT: /app/
-%  colon/0, comma/0,  endline/0,      punkt/0,        period/0,     question/0, space/0,       space0/0,                   
+%  colon/0, comma/0,  endline/0,      punkt/0,        period/0,     question/0, space/0,
 :-module( busanshp, [   %% bcw: bcpbc = basic common phrase big cap     
         bus_endstop_brackets/3, bus_endstop_brackets_busno/3,
-        busleave/9,     busleaveset/6,  busman/2, %% For bustrans->interapp->pragma "x-WRiters"
+        busleave/9,     busleaveset/6,  busman/2, %% For bustrans->interapp->pragma "x-WRiters"  bcw/2,  BigCapWord  %% RS-20250824
         comptimeflag/2, comptimeflag/3, convifpossible/2,       corresporder/3,
-        db_reply/3,     doublyprinted/1, empty_sms_message/1,           %% RS-140922 description/2,
+        db_reply/3,     doublyprinted/1, empty_sms_message/1,           %% RS-140922 description/2,  %% RS-20250824  Get endline/0  etc directly from writeout.pl in utility/ unit
         evening_time/2, evening_time0/2, evening_time24/3,              earliesttimes/0,
         find_last_departure/2,          findsetoftimes/2,               firstRID/2,     getlastarrival/3,
         gootrace/1,     google/1,       i_or_a_bus/3,   mixopt/3,       memberids/3, %% For utility.pl
@@ -34,7 +34,7 @@
         printmessage/1, print_paraphrase_message/1,     printmessageunconditionally/1,   %% pmu/1 REMOVED EVERYTHING! RS-xxxxxx
         relevant_message/1,             reply/1,        ridof/2,
         select/2,       sentenceend/1,  setopt/3,       setopts/3,      smart_time_options/1,           sorttimes/4,
-        special_day/1,   standnight/1,  stationlistorand/3, % specname0/2,
+        special_day/1,   standnight/1,  stationlistorand/3, % specname0/2,    %% RS-20250824  Get space0/0,  space/0 and bcw/1 etc directly from writeout.pl in utility/ unit
         theplural/2,    time_options/1, warningtime/2,  writetimes/2,
         %FOR DIALOG
         addrefdialog/2 ] ). % , writevaluelist2/2 in parseres.pl  %% RS-140927
@@ -76,19 +76,21 @@
 
 %% RS-131225    UNIT: /utility/
 :- use_module( '../utility/utility', [ append_atomlist/2, bound/1, delete1/3, deleteall/3, firstmem/2, fnuttify2/2, for/2, lastmem/2, % language/1, 
-        maximum/2, maxval/3, members/3, minimum/2, minval/3, nth/3, number_to_string/2, occ/2, % doubt/2, out/1, output/1, roundwrite/1, % writeout 
+        maximum/2, maxval/3, members/3, minimum/2, minval/3, newfree/1, nth/3, number_to_string/2, occ/2, % doubt/2, out/1, output/1, roundwrite/1, % writeout    %% RS-20250824  get newfree/1 directly from utility.pl module. 
         set_filter/4, set_of/3, set_ops/3, set_union/3, split/4, test/1, testmember/2, unbound/1 ] ). %%, [ ] ). %, [ := /2, for/2,  nth/3, etc. ] ). %% RS-140914 test/1, & set_of set_ops/3(LOOP?),
         % follow_sequence/3, once1/1, roundmember/2, occ/2, sequence_member/2,
 :-use_module( '../utility/datecalc', [ add_days/3, addtotime/3, before_date1/2, difftime/3, sub_days/3, subfromtime/3, timenow/1, timenow2/2, today/1, todaysdate/1 ] ).
 :-use_module( '../utility/library', [ reverse/2 ] ).         %% RS-131225 nth/3 moved to utility
 
 :- DependsOn = [ bcw/2, bigcap/2, bw1/1, bwc/2,  bwq/1, bwr2bc/1, bwrbus/2, bwrbusbc/2, bwrprices/1, bwstat2/2, bwt2/1,
-                 bwtimes2/1, endline/0, punkt/0, question/0, space0/0, startmark/0 ], use_module( '../utility/writeout', DependsOn ).
+                 bwtimes2/1, endline/0, punkt/0, question/0, space0/0, startmark/0 ],   use_module( '../utility/writeout', DependsOn ).
+
 %:- DependsOn = [  ], use_module( '../utility/writeout', DependsOn ).  %% Moved back to main: language/1. Where?: roundwrite/1
 :-use_module( '../utility/writeout', [
-    bcp/1,      bcpbc/1,        bwr/1,  bwr2/2, bwrbc/1, bwrstreet/1,   bwt/1,  
-    colon/0,    comma/0,        cwc/2,  dot/0,  doubt/2, getphrase0/2,  languagenr/1, nopay/0,
-    outcap/1,   pay1/0,      period/0,  period0/0,   print_endstation_slashlist/1,    space/0, % startmark/0, 
+    bcp/1,      bcpbc/1,  bcw/2,      bwr/1,  bwr2/2, bwrbc/1, bwrbusbc/2, bwrstreet/1,   bwt/1,  
+    colon/0,    comma/0,        cwc/2,  dot/0,  doubt/2, endline/0, getphrase0/2,  languagenr/1, nopay/0,
+    outcap/1,   pay1/0,      period/0,  period0/0,   print_endstation_slashlist/1,
+    space/0, space0/0, startmark/0, 
     writedate/1, writefields/1,  writename/1, writesimplelist/1 ] ). %% RS-141105 Moved to main: language/1,
 %% Moved back to main: language/1. Where?: roundwrite/1
 
@@ -108,7 +110,6 @@
                          ridtobusname/2, ridtobusnr/2, veh_mod/1 ] ).
 :- use_module( dmeq, [  dmeq/2 ]). %% RS-131231
 :- use_module( pragma, [  roundmember/2 ] ).
-%:- use_module( interapp, [  newfree/1 ] ).
 %:- use_module( telelog , [  bound/1,  unbound/1 ]). --> utility.pl
 
 %% RS-131225    UNIT: /db/               %% RS-120816 statcoord? corr/2, ?

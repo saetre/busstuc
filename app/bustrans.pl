@@ -130,7 +130,7 @@ module_dependencies :-
 
 :-use_module( 'dmeq' ). %%, [ dmeq/2 ] ). %% RS-140102, Really Used, in several  pragma.pl->interapp->bustrans rules    %% RS-20250824 Resurfaced!! 
 
-:-use_module( '../utility/utility.pl', [ bound/1, newfree/1 ] ).   %% RS-20250824 This was causing problems today! Because of missing default summer/winter route? maybe
+:-use_module( '../utility/utility.pl', [ bound/1, newfree/1  ] ).   %% RS-20250824 This was causing problems today! Because of missing default summer/winter route? KEEP IN utility.pl module in utility/ unit
 
 %UNIT: /app/
 dep_module( AtbModule, [ composite_stat/3 ] ) :-

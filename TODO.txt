@@ -1,3 +1,71 @@
+NEW PROBLEMS 2025.08.24
+===============================
+Undefined - identifiers... (db/places.pl) placestat/2
+
+adresseavisen
+arnt_smistads_veg
+blakli
+brekstad_kai
+byåsen_butikksenter
+charlottenlund_nedre
+dronningens_gate
+granåsen_vm_anlegget
+hospitalskirka
+moholt_omkjøringsvei
+nardo_omkjøringsvei
+olav_tryggvasons_gate_ot1
+olav_tryggvasons_gate_ot2
+olav_tryggvasons_gate_ot3
+postterminalen
+sluppen_1
+sluppen_2
+sluppen_3
+sluppen_4
+st_olavs_gate
+st_olavs_hospital
+stavset_senter_nord
+stavset_senter_syd
+strindheim
+studentersamfundet
+tanemsmoen
+terminalen
+travbanen
+tunga_kretsfengsel
+vikhammer
+åsveien_skole
+
+-------------
+
+Undefined street to station references (db/regstr.pl) streetstat/5
+
+arnt_smistads_veg
+blakli
+byåsen_butikksenter
+charlottenlund_nedre
+hospitalskirka
+husebytunet
+karlsheim
+odenseveien
+olav_tryggvasons_gate_ot1
+olav_tryggvasons_gate_ot3
+postterminalen
+sluppen_bru
+st_olavs_hospital
+strindheim
+studentersamfundet
+terminalen
+travbanen
+tunga_kretsfengsel
+åsveien_skole
+
+-------------
+%   ...makeauxtables.pl~138 File already exists:  db/namehashtable.pl 1755942116 timestamp > SKIP making  1755893125
+
+
+
+OLD PROBLEMS
+==================
+
 Undefined - identifiers... (db/places.pl) placestat/2
 
 city_lade

@@ -13,7 +13,8 @@
 
 %% UNIT: /app/
 :-module( interapp, [ avoidfool/1, decidewday/2, determine_application_period/1, determine_query_period/0, execute_program/1, execute_program2/2, % To checkitem2.pl  
-                      ieval/1, invisible_mess/1, isuccess/1, konstantify/1, makeanswer/4, notbothfree/2, nocols/2, webstat/3 ] ).  % occ/2, roundmember/2, waves/0, % needed in pragma.pl?   %% RS-20250824 => newfree/1, 
+                      ieval/1, invisible_mess/1, isuccess/1, konstantify/1, makeanswer/4, notbothfree/2, nocols/2, webstat/3 ] ).  % occ/2, roundmember/2, waves/0, % needed in pragma.pl?
+   %% RS-20250824 => newfree/1    Get it from utility.pl instead!!
 
 :-op( 731,xfy, ::: ).    %% sentence tag  %% TA-090514 For main, tuc/ [ translat, gram_x, evaluate, dcg_x, anaphors ], dialog/d_dialogue, app/interapp
 :-op( 730,xfy, :: ).     %% lambda infix  %% RS-141026 For      tuc/ [ translat gram_x fernando  dcg_x anaphors ], app/interapp, dialog/ [checkitem/2 d_context d_dialogue frames/2 makeframe/2 parseres virtuals relax update2 usesstate2]
@@ -50,8 +51,10 @@
 :- use_module( '../sicstus4compatibility', [ output/1 ] ).  %% Compatible with sicstus4, get0/1 etc.
 
 %%% RS-131225, UNIT: /utility/
-:- use_module( '../utility/utility', [ append_atoms/3, flatround/2, newconst/1, fnuttify2/2, for/2, once1/1, sequence_member/2 ] ). %forget/1,  
+:- use_module( '../utility/utility', [ append_atoms/3, flatround/2, fnuttify2/2, for/2,         newconst/1, newfree/1,   once1/1, sequence_member/2 ] ). %forget/1,   
+        %% RS-20250824 newfree/1 MUST be in utility.pl because of  ( X =: V )  !
         % Made local:  occ/2, %% RS-140928 %% RS-140412 output/1  %% RS-131231, False Warning, SPIDER-bug. output/1 IS used !! when called from... bustrans?
+
 :- use_module( '../utility/writeout', [ printdots/0, waves/0, writeprog/1 ] ). % traceanswer/1,  
 
 %%% RS-140921, EXTERNAL LIBRARIES
@@ -751,9 +754,7 @@ konstantify1(A) :-
 notbothfree(X,Y):-freet(X),freet(Y),!,fail.%% restrictions  on rules
 notbothfree(_,_).                     %%  on rules
 
-freet(free(_)).
-
-%newfree(free(C)) :- newconst(C).   % utility.pl
+freet(free(_)).    %% RS-20250824 Get new free constants from utility.pl module in utility/ unit
 
 bind(A) :- nonvar(A).
 bind(free(C)) :- newconst(C).

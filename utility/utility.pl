@@ -18,8 +18,9 @@
         do_count/1, freshcopy/2, subsumes/2,     %% RS-140927 For translat.pl
         foralltest/2, ident_member/2, implies/2, internalkonst/1, iso_atom_chars/2, last_character/2, lastmems/3, listlength/2, makestring/2, matchinitchars/2,
         flatround/2 /*interapp*/,  %% remove_duplicates/2 /*lex*/,
-        lastmem/2, maxval/3, minval/3, newfree/1, nth/3, set_of/3, set_ops/3, test/1, 
-        measurecall/2, members/3, naive/0, newconst/1, number_of/3, number_to_string/2, outputlist/1, pling/1, pront/1, psl/2, 
+        lastmem/2, maxval/3, measurecall/2, members/3, minval/3,
+        naive/0, newconst/1, newfree/1, nth/3, set_of/3, set_ops/3, test/1,
+        number_of/3, number_to_string/2, outputlist/1, pling/1, pront/1, psl/2, 
         occ/2, once1/1, match/2, matchinitchars/3, purge/3, roundreverse/2, sequence_member/2, unbound/1,
         replacelist/4,
         replace/4, roundrecmember/2, sequence_flatten/2, sequence_reverse/2, set_difference/3, set_eliminate/4,
@@ -240,9 +241,6 @@ unbound( free(_) ) :- !.
 unbound( X ) :- internalkonst(X).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-newfree(free(C)) :- newconst(C).   % utility.pl   %% RS-20250824 Move back here?!?
-
 
 
 %% panic(_H). %% just for comment-predication
@@ -774,6 +772,8 @@ implies(X,Y):- \+ ((X , \+ Y)).
 %identical( A, B ) :-
 %    test( (numbervars( (A,B) ), A=B) ).
 
+
+newfree(free(C)) :- newconst(C).   % utility.pl   %% RS-20250824 Move back here?!?
 
 newconst(Y):- 
     do_count(const), % const := const+1
