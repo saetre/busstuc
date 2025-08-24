@@ -1,3 +1,5 @@
+A live demo of this system is currently running here: http://busstuc2.idi.ntnu.no/
+
 HOW TO CHANGE THE CURRENT WORKING DIRECTORY, aka cd, pwd, change folder, etc.
 =============================================================================
 
