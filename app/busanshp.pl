@@ -108,7 +108,7 @@
                          ridtobusname/2, ridtobusnr/2, veh_mod/1 ] ).
 :- use_module( dmeq, [  dmeq/2 ]). %% RS-131231
 :- use_module( pragma, [  roundmember/2 ] ).
-:- use_module( interapp, [  newfree/1 ] ).
+%:- use_module( interapp, [  newfree/1 ] ).
 %:- use_module( telelog , [  bound/1,  unbound/1 ]). --> utility.pl
 
 %% RS-131225    UNIT: /db/               %% RS-120816 statcoord? corr/2, ?

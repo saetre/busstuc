@@ -95,7 +95,7 @@
 :- use_module( bustrans, [ ] ). % rule/2  w/ correct tracevalue/1 -> traceprog ]).
 :- use_module( teletrans, [ ]).        %% RS-140210 , (not)/1   %% RS-141001 Moved to bustrans, tele et al. (rule/2)
 
-%:- use_module( dmeq, [ dmeq/2 ]). %% RS-140102, Really Used, in several  pragma.pl->interapp->bustrans rules
+%- use_module( dmeq, [ dmeq/2 ]). %% RS-140102, Really Used, in several  pragma.pl->interapp->bustrans rules
 %:- use_module( interapp, [ prettypr/2 ] ). % newfree/1 ]).  % %% RS-131230, Don't confuse with prettyprint/1 in utility.pl 
 %:- use_module( interapp, [ prettypr/2 ]).  % %% RS-131230, Don't confuse with prettyprint/1 in utility.pl 
 %:- use_module( negans, [ ] ). % trytofool/3 ] ).

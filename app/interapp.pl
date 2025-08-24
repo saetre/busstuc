@@ -13,7 +13,7 @@
 
 %% UNIT: /app/
 :-module( interapp, [ avoidfool/1, decidewday/2, determine_application_period/1, determine_query_period/0, execute_program/1, execute_program2/2, % To checkitem2.pl  
-                      ieval/1, invisible_mess/1, isuccess/1, konstantify/1, makeanswer/4, newfree/1, notbothfree/2, nocols/2, webstat/3 ] ).  % occ/2, roundmember/2, waves/0, % needed in pragma.pl?
+                      ieval/1, invisible_mess/1, isuccess/1, konstantify/1, makeanswer/4, notbothfree/2, nocols/2, webstat/3 ] ).  % occ/2, roundmember/2, waves/0, % needed in pragma.pl?   %% RS-20250824 => newfree/1, 
 
 :-op( 731,xfy, ::: ).    %% sentence tag  %% TA-090514 For main, tuc/ [ translat, gram_x, evaluate, dcg_x, anaphors ], dialog/d_dialogue, app/interapp
 :-op( 730,xfy, :: ).     %% lambda infix  %% RS-141026 For      tuc/ [ translat gram_x fernando  dcg_x anaphors ], app/interapp, dialog/ [checkitem/2 d_context d_dialogue frames/2 makeframe/2 parseres virtuals relax update2 usesstate2]
@@ -753,7 +753,7 @@ notbothfree(_,_).                     %%  on rules
 
 freet(free(_)).
 
-newfree(free(C)) :- newconst(C).   % utility.pl
+%newfree(free(C)) :- newconst(C).   % utility.pl
 
 bind(A) :- nonvar(A).
 bind(free(C)) :- newconst(C).

@@ -19,7 +19,7 @@
 %%:- compile( '../app/bustrans').    %%
 :- use_module( '../app/bustrans').    %%
 %%:- compile( '../app/busans').      %%
-:- use_module( '../app/busans').      %% RS-130624
+%:- use_module( '../app/busans').      %% RS-130624
 :- use_module( '../app/negans', [ makenegative/3, trytofool/3 ] ).       %% RS-140208
 
 %:- compile('../app/busanshp').    %%

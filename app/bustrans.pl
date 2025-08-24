@@ -128,6 +128,9 @@ module_dependencies :-
 
 :-use_module( '../db/busdat' ).
 
+:-use_module( 'dmeq' ). %%, [ dmeq/2 ] ). %% RS-140102, Really Used, in several  pragma.pl->interapp->bustrans rules    %% RS-20250824 Resurfaced!! 
+
+:-use_module( '../utility/utility.pl', [ bound/1, newfree/1 ] ).   %% RS-20250824 This was causing problems today! Because of missing default summer/winter route? maybe
 
 %UNIT: /app/
 dep_module( AtbModule, [ composite_stat/3 ] ) :-
@@ -167,7 +170,9 @@ dep_module( busanshp, [ busman/2, corresporder/3, evening_time/2, evening_time0/
 %                         empty_sms_message/1, make_total_google/2, pay/0, printmessage/1, startmark/0 ] ). %%Extra?
 
 dep_module( dmeq, [ dmeq/2 ] ). %% RS-140102, Really Used, in several  pragma.pl->interapp->bustrans rules 
-dep_module( interapp, [ newfree/1 ] ).
+%dep_module( utility, [ newfree/1 ] ). %%use_module( utility, [ newfree/1 ] ).   %% RS-20250824 This is causing problems today!
+
+
 %dep_module( pragma, [  ]). %% RS-140102-141002 These modules are highly connected: interapp, pragma, bustrans!
 %FIXED META-PREDICATES!?!
 

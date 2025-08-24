@@ -49,7 +49,7 @@
 %:- makegram( 'tuc/' ). %% RS-150104 Done by metacomp.pl?
 
 %:-use_module( 'tucbuss.pl', [ hei/0, run/0 ] ).   %% Compiles tucbuses (norsk and english)
-:- compile( tucbuss ). %%, [ hei/0, run/0, etc. ] ). RS-130329 Make sure (gram/lang) modules are available: dcg_module, 
+%:- compile( tucbuss ). %%, [ hei/0, run/0, etc. ] ). RS-130329 Make sure (gram/lang) modules are available: dcg_module,  %% RS-20250824 Move down? 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% DB Section (1. first create auxiliary db-files)
@@ -57,6 +57,9 @@
 %% RS-150103 This must be done before tucbuss -> facts.pl is compiled (because facts.pl needs unproperstation/1 etc.)
 %:- use_module( 'utility/extracut.pl', [ create_regcut/1 ] ).  %% RS-140511 This file is needed when using BusTUC to recompile regcut.pl files
 :- use_module( makeauxtables, [ createhash/0, makeauxtables/0, verify_consistency/0 ] ).  %% No longer runs makeauxtables/0 !?! See below...
+
+%:-use_module( 'tucbuss.pl', [ hei/0, run/0 ] ).   %% Compiles tucbuses (norsk and english)
+:- compile( tucbuss ). %%, [ hei/0, run/0, etc. ] ). RS-130329 Make sure (gram/lang) modules are available: dcg_module, 
 
 :- notrace.      %% RS-131225   == nodebug, ...because it is SLOW (1 minute!)
 :- write('%busstuc.pl~62  (Turn of DEBUG and Skipping?) consistency check and creation of db/ auxtable(s) and (name-)hashtable, etc...'),nl.
