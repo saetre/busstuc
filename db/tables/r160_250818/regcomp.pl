@@ -1345,7 +1345,6 @@ composite_stat(halstad,[],halstad).
 composite_stat(halstein,[gård],halstein_gård).
 composite_stat(haltdalen,[coop],haltdalen_coop).
 composite_stat(haltdalen,[oppvekstsenter],haltdalen_oppvekstsenter).
-composite_stat(halten,[kai],halten_kai).
 composite_stat(haltvika,[],haltvika).
 composite_stat(hamarsøy,[vegdele],hamarsøy_vegdele).
 composite_stat(hamarvik,[s, lag],hamarvik_s_lag).
@@ -3444,7 +3443,6 @@ composite_stat(saupstadringen,[109],saupstadringen_109).
 composite_stat(saupstadsenteret,[],saupstadsenteret).
 composite_stat(saursaunet,[],saursaunet).
 composite_stat(saurskorsen,[],saurskorsen).
-composite_stat(sauøya,[kai],sauøya_kai).
 composite_stat(schei,[],schei).
 composite_stat(schiøtz,[street],schiøtz_vei). % generated 1.2
 composite_stat(schiøtz,[vei],schiøtz_vei).

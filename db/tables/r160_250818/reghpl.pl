@@ -1522,7 +1522,6 @@ hpl(71911,håvik,håvik,'Håvik').
 hpl(71912,saupstadsenteret,saupstadsenteret,'Saupstadsenteret').
 hpl(71913,saupstadsenteret,saupstadsenteret,'Saupstadsenteret').
 hpl(71915,hæverstølen,hæverstølen,'Hæverstølen').
-hpl(71916,sauøya_kai,sauøya_kai,'Sauøya kai').
 hpl(71917,vallersund_oppvekstsenter,vallersund_oppvekstsenter,'Vallersund oppvekstsenter').
 hpl(71918,hæverstølen,hæverstølen,'Hæverstølen').
 hpl(71921,vallersund_samvirkelag,vallersund_samvirkelag,'Vallersund samvirkelag').
@@ -2103,7 +2102,6 @@ hpl(72581,haltdalen_oppvekstsenter,haltdalen_oppvekstsenter,'Haltdalen oppveksts
 hpl(72582,haltdalen_oppvekstsenter,haltdalen_oppvekstsenter,'Haltdalen oppvekstsenter').
 hpl(72583,væresbakken,væresbakken,'Væresbakken').
 hpl(72584,væresbakken,væresbakken,'Væresbakken').
-hpl(72585,halten_kai,halten_kai,'Halten kai').
 hpl(72586,løvby,løvby,'Løvby').
 hpl(72587,løvby,løvby,'Løvby').
 hpl(72588,væresholmen,væresholmen,'Væresholmen').
