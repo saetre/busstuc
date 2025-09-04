@@ -2851,7 +2851,6 @@ hpl(73453,lia,lia,'Lia').
 hpl(73454,sykehjemmet,sykehjemmet,'Sykehjemmet').
 hpl(73458,lia,lia,'Lia').
 hpl(73459,lia,lia,'Lia').
-hpl(73460,synnervika_kai,synnervika_kai,'Synnervika kai').
 hpl(73461,lia,lia,'Lia').
 hpl(73462,lia,lia,'Lia').
 hpl(73463,muruvik,muruvik,'Muruvik').
@@ -7834,7 +7833,6 @@ hpl(79780,brørs,brørs,'Brørs').
 hpl(79781,våg_vegdele,våg_vegdele,'Våg vegdele').
 hpl(79782,våg_vegdele,våg_vegdele,'Våg vegdele').
 hpl(79783,våg_vegdele,våg_vegdele,'Våg vegdele').
-hpl(79784,sør_gjæslingan_hurtigbåtkai,sør_gjæslingan_hurtigbåtkai,'Sør-Gjæslingan hurtigbåtkai').
 hpl(79785,storvea_vegdele,storvea_vegdele,'Storvea vegdele').
 hpl(79786,storvea_vegdele,storvea_vegdele,'Storvea vegdele').
 hpl(79788,rørvik_båthavn,rørvik_båthavn,'Rørvik båthavn').

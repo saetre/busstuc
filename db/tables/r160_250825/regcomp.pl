@@ -4149,7 +4149,6 @@ composite_stat(sykehuset,[levanger],sykehuset_levanger).
 composite_stat(sykehuset,[namsos],sykehuset_namsos).
 composite_stat(symrevegen,[],symrevegen).
 composite_stat(synnavikhaugen,[],synnavikhaugen).
-composite_stat(synnervika,[kai],synnervika_kai).
 composite_stat(synnervika,[snuplass],synnervika_snuplass).
 composite_stat(syrstad,[],syrstad).
 composite_stat(syrstadmyra,[],syrstadmyra).
@@ -4182,7 +4181,6 @@ composite_stat(søndre_street,[],søndre_gate). % generated 1.1
 composite_stat(søndregate,[],søndre_gate). % generated 1.0
 composite_stat(sør,[dyrøy],sør_dyrøy).
 composite_stat(sør,[elnes],sør_elnes).
-composite_stat(sør,[gjæslingan, hurtigbåtkai],sør_gjæslingan_hurtigbåtkai).
 composite_stat(sør,[roan, skole],sør_roan_skole).
 composite_stat(søraker,[],søraker).
 composite_stat(søraunet,[],søraunet).
