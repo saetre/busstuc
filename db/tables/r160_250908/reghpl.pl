@@ -7886,8 +7886,8 @@ hpl(79847,aunet,aunet,'Aunet').
 hpl(79848,aunet,aunet,'Aunet').
 hpl(79849,grøtmo,grøtmo,'Grøtmo').
 hpl(79850,grøtmo,grøtmo,'Grøtmo').
-hpl(79851,eidshaug,eidshaug,'Eidshaug').
-hpl(79852,eidshaug,eidshaug,'Eidshaug').
+hpl(79851,eidshaug_ferjekai,eidshaug_ferjekai,'Eidshaug ferjekai').
+hpl(79852,eidshaug_ferjekai,eidshaug_ferjekai,'Eidshaug ferjekai').
 hpl(79853,sørheim,sørheim,'Sørheim').
 hpl(79854,sørheim,sørheim,'Sørheim').
 hpl(79855,bakkan,bakkan,'Bakkan').

@@ -10524,7 +10524,7 @@ passes4(11324, 79362, nærøysundet_skole, 6, 10, 10).
 passes4(11325, 79860, måneset, 2, 999, 0).
 passes4(11325, 79866, værum_skole, 3, 2, 2).
 passes4(11325, 79856, bakkan, 4, 4, 4).
-passes4(11325, 79852, eidshaug, 5, 5, 5).
+passes4(11325, 79852, eidshaug_ferjekai, 5, 5, 5).
 passes4(11325, 79846, sandvika, 6, 7, 7).
 passes4(11325, 79841, søråa_vegdele, 7, 14, 14).
 passes4(11325, 79831, torstad_vegdele, 8, 18, 18).
@@ -10597,7 +10597,7 @@ passes4(11331, 79825, dalan, 15, 16, 16).
 passes4(11331, 79832, torstad_vegdele, 16, 17, 17).
 passes4(11331, 79842, søråa_vegdele, 17, 21, 21).
 passes4(11331, 79845, sandvika, 18, 26, 26).
-passes4(11331, 79852, eidshaug, 19, 31, 31).
+passes4(11331, 79852, eidshaug_ferjekai, 19, 31, 31).
 passes4(11331, 79855, bakkan, 20, 33, 33).
 passes4(11331, 79864, værum_skole, 21, 33, 33).
 passes4(11331, 79858, måneset, 22, 40, 40).
@@ -11601,7 +11601,7 @@ passes4(11393, 79825, dalan, 6, 6, 6).
 passes4(11393, 79832, torstad_vegdele, 7, 7, 7).
 passes4(11393, 79842, søråa_vegdele, 8, 11, 11).
 passes4(11393, 79845, sandvika, 9, 17, 17).
-passes4(11393, 79852, eidshaug, 10, 20, 20).
+passes4(11393, 79852, eidshaug_ferjekai, 10, 20, 20).
 passes4(11393, 79855, bakkan, 11, 22, 22).
 passes4(11393, 79864, værum_skole, 12, 26, 26).
 passes4(11393, 79858, måneset, 13, 30, 30).
@@ -11644,7 +11644,7 @@ passes4(11396, 79864, værum_skole, 13, 31, 31).
 passes4(11396, 79858, måneset, 14, 35, 35).
 passes4(11396, 79866, værum_skole, 15, 40, 40).
 passes4(11396, 79856, bakkan, 16, 44, 44).
-passes4(11396, 79851, eidshaug, 17, 50, 50).
+passes4(11396, 79851, eidshaug_ferjekai, 17, 50, 50).
 passes4(11396, 79846, sandvika, 18, 53, 53).
 passes4(11396, 79841, søråa_vegdele, 19, 60, 60).
 passes4(11396, 79831, torstad_vegdele, 20, 64, 64).
@@ -11683,7 +11683,7 @@ passes4(11398, 79864, værum_skole, 14, 41, 41).
 passes4(11398, 79858, måneset, 15, 44, 44).
 passes4(11398, 79866, værum_skole, 16, 45, 45).
 passes4(11398, 79856, bakkan, 17, 47, 47).
-passes4(11398, 79851, eidshaug, 18, 51, 51).
+passes4(11398, 79851, eidshaug_ferjekai, 18, 51, 51).
 passes4(11398, 79846, sandvika, 19, 53, 53).
 
 passes4(11399, 79493, kolvereid, 2, 999, 0).
@@ -11701,7 +11701,7 @@ passes4(11399, 79864, værum_skole, 13, 33, 33).
 passes4(11399, 79858, måneset, 14, 34, 34).
 passes4(11399, 79866, værum_skole, 15, 38, 38).
 passes4(11399, 79856, bakkan, 16, 42, 42).
-passes4(11399, 79851, eidshaug, 17, 44, 44).
+passes4(11399, 79851, eidshaug_ferjekai, 17, 44, 44).
 passes4(11399, 79846, sandvika, 18, 46, 46).
 passes4(11399, 79841, søråa_vegdele, 19, 51, 51).
 passes4(11399, 79831, torstad_vegdele, 20, 55, 55).
@@ -11745,7 +11745,7 @@ passes4(11400, 79825, dalan, 19, 25, 25).
 passes4(11400, 79832, torstad_vegdele, 20, 26, 26).
 passes4(11400, 79842, søråa_vegdele, 21, 30, 30).
 passes4(11400, 79845, sandvika, 22, 36, 36).
-passes4(11400, 79852, eidshaug, 23, 45, 45).
+passes4(11400, 79852, eidshaug_ferjekai, 23, 45, 45).
 passes4(11400, 79855, bakkan, 24, 47, 47).
 passes4(11400, 79864, værum_skole, 25, 49, 49).
 passes4(11400, 79858, måneset, 26, 55, 55).

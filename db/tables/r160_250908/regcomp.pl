@@ -706,7 +706,6 @@ composite_stat(eidestranda,[],eidestranda).
 composite_stat(eidet,[],eidet).
 composite_stat(eidet,[bru],eidet_bru).
 composite_stat(eidsfoss,[],eidsfoss).
-composite_stat(eidshaug,[],eidshaug).
 composite_stat(eidshaug,[ferjekai],eidshaug_ferjekai).
 composite_stat(eidshaug,[hurtigbåtkai],eidshaug_hurtigbåtkai).
 composite_stat(eidsli,[],eidsli).
