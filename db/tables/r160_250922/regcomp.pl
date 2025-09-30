@@ -1844,7 +1844,6 @@ composite_stat(jørgen,[b, lysholms_street],jørgen_b_lysholms_vei). % generated
 composite_stat(jørgen,[b, lysholmsvei],jørgen_b_lysholms_vei). % generated 2.0
 composite_stat(jørstad,[],jørstad).
 composite_stat(jørstadsjøen,[],jørstadsjøen).
-composite_stat(jøssavollen,[],jøssavollen).
 composite_stat(jøssund,[],jøssund).
 composite_stat(jøssund,[kirke],jøssund_kirke).
 composite_stat(jøssås,[],jøssås).

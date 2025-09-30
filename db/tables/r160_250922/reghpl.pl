@@ -563,7 +563,6 @@ hpl(108523,jådåren,jådåren,'Jådåren').
 hpl(108591,havneveien,havneveien,'Havneveien').
 hpl(108663,mastad_kryss,mastad_kryss,'Mastad kryss').
 hpl(108664,mastad_kryss,mastad_kryss,'Mastad kryss').
-hpl(108665,jøssavollen,jøssavollen,'Jøssavollen').
 hpl(108676,skogly,skogly,'Skogly').
 hpl(108677,skogly,skogly,'Skogly').
 hpl(108678,moshaugan,moshaugan,'Moshaugan').
