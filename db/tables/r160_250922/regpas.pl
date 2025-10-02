@@ -46374,7 +46374,7 @@ passes4(9312, 74838, barhalsen, 14, 17, 17).
 passes4(9312, 72818, haukvika, 15, 19, 19).
 passes4(9312, 74113, staurset, 16, 22, 22).
 passes4(9312, 103284, hofsetnesset, 17, 23, 23).
-passes4(9312, 71723, hovdeset, 18, 24, 24).
+passes4(9312, 71723, hofset, 18, 24, 24).
 passes4(9312, 71719, hovdan, 19, 25, 25).
 passes4(9312, 74410, kråka, 20, 26, 26).
 passes4(9312, 75149, bjørknes, 21, 28, 28).
@@ -46400,7 +46400,7 @@ passes4(9313, 74838, barhalsen, 18, 40, 40).
 passes4(9313, 72818, haukvika, 19, 41, 41).
 passes4(9313, 74113, staurset, 20, 44, 44).
 passes4(9313, 103284, hofsetnesset, 21, 45, 45).
-passes4(9313, 71723, hovdeset, 22, 46, 46).
+passes4(9313, 71723, hofset, 22, 46, 46).
 
 passes4(9314, 73512, lian, 2, 999, 0).
 passes4(9314, 72129, sinnes, 3, 1, 1).
@@ -46421,7 +46421,7 @@ passes4(9315, 70974, engdal, 2, 999, 0).
 passes4(9315, 75150, bjørknes, 3, 2, 2).
 passes4(9315, 74411, kråka, 4, 4, 4).
 passes4(9315, 71716, hovdan, 5, 5, 5).
-passes4(9315, 71722, hovdeset, 6, 6, 6).
+passes4(9315, 71722, hofset, 6, 6, 6).
 passes4(9315, 103285, hofsetnesset, 7, 7, 7).
 passes4(9315, 74114, staurset, 8, 8, 8).
 passes4(9315, 72819, haukvika, 9, 12, 12).
@@ -46463,7 +46463,7 @@ passes4(9316, 74838, barhalsen, 17, 31, 31).
 passes4(9316, 72818, haukvika, 18, 33, 33).
 passes4(9316, 74113, staurset, 19, 36, 36).
 passes4(9316, 103284, hofsetnesset, 20, 37, 37).
-passes4(9316, 71723, hovdeset, 21, 38, 38).
+passes4(9316, 71723, hofset, 21, 38, 38).
 passes4(9316, 71719, hovdan, 22, 39, 39).
 passes4(9316, 74410, kråka, 23, 40, 40).
 passes4(9316, 75149, bjørknes, 24, 43, 43).
@@ -46489,7 +46489,7 @@ passes4(9317, 74838, barhalsen, 18, 34, 34).
 passes4(9317, 72818, haukvika, 19, 35, 35).
 passes4(9317, 74113, staurset, 20, 39, 39).
 passes4(9317, 103284, hofsetnesset, 21, 40, 40).
-passes4(9317, 71723, hovdeset, 22, 41, 41).
+passes4(9317, 71723, hofset, 22, 41, 41).
 passes4(9317, 71719, hovdan, 23, 42, 42).
 passes4(9317, 74410, kråka, 24, 43, 43).
 passes4(9317, 75149, bjørknes, 25, 45, 45).
@@ -46535,7 +46535,7 @@ passes4(9322, 74838, barhalsen, 6, 7, 7).
 passes4(9322, 72818, haukvika, 7, 8, 8).
 passes4(9322, 74113, staurset, 8, 12, 12).
 passes4(9322, 103284, hofsetnesset, 9, 13, 13).
-passes4(9322, 71723, hovdeset, 10, 14, 14).
+passes4(9322, 71723, hofset, 10, 14, 14).
 passes4(9322, 71719, hovdan, 11, 15, 15).
 passes4(9322, 74410, kråka, 12, 16, 16).
 passes4(9322, 75149, bjørknes, 13, 18, 18).

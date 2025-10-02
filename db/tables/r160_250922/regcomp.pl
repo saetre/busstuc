@@ -1549,6 +1549,7 @@ composite_stat(hoeggen,[skole],hoeggen_skole).
 composite_stat(hoelsdalen,[],hoelsdalen).
 composite_stat(hofles,[ferjekai],hofles_ferjekai).
 composite_stat(hofsdalen,[],hofsdalen).
+composite_stat(hofset,[],hofset).
 composite_stat(hofsetnesset,[],hofsetnesset).
 composite_stat(hofstad,[],hofstad).
 composite_stat(hofstad,[næringspark],hofstad_næringspark).
@@ -1634,7 +1635,6 @@ composite_stat(hov,[skole],hov_skole).
 composite_stat(hovabakken,[],hovabakken).
 composite_stat(hovdalskorsen,[],hovdalskorsen).
 composite_stat(hovdan,[],hovdan).
-composite_stat(hovdeset,[],hovdeset).
 composite_stat(hove,[],hove).
 composite_stat(hove,[camping],hove_camping).
 composite_stat(hovehaug,[],hovehaug).

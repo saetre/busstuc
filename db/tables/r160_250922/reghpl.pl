@@ -1349,8 +1349,8 @@ hpl(71718,tøndervika,tøndervika,'Tøndervika').
 hpl(71719,hovdan,hovdan,'Hovdan').
 hpl(71720,rørvik_ferjekai,rørvik_ferjekai,'Rørvik ferjekai').
 hpl(71721,rørvik_ferjekai,rørvik_ferjekai,'Rørvik ferjekai').
-hpl(71722,hovdeset,hovdeset,'Hovdeset').
-hpl(71723,hovdeset,hovdeset,'Hovdeset').
+hpl(71722,hofset,hofset,'Hofset').
+hpl(71723,hofset,hofset,'Hofset').
 hpl(71724,tørrem,tørrem,'Tørrem').
 hpl(71725,tørrem,tørrem,'Tørrem').
 hpl(71726,rørvika,rørvika,'Rørvika').
