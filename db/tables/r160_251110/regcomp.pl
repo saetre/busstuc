@@ -229,7 +229,6 @@ composite_stat(best,[vinjeøra],best_vinjeøra).
 composite_stat(best,[vormstad],best_vormstad).
 composite_stat(betania,[],betania).
 composite_stat(betna,[],betna).
-composite_stat(bikkjkleva,[],bikkjkleva).
 composite_stat(billehaugen,[],billehaugen).
 composite_stat(bilsenteret,[nybrua],bilsenteret_nybrua).
 composite_stat(bilstad,[],bilstad).
