@@ -771,7 +771,7 @@ hpl(116014,trondheim_hurtigbåtterminal_b,trondheim_hurtigbåtterminal_b,'Trondh
 hpl(21401,leangenbukta,leangenbukta,'Leangenbukta').
 hpl(22719,sverresborg_1,sverresborg_1,'Sverresborg 1').
 hpl(597,grong_stasjon,grong_stasjon,'Grong stasjon').
-hpl(65109,hestnes,hestnes,'Hestnes').
+hpl(65109,engan,engan,'Engan').
 hpl(65143,rognskog,rognskog,'Rognskog').
 hpl(65171,ringholmen_kai,ringholmen_kai,'Ringholmen kai').
 hpl(65177,gjelaneset,gjelaneset,'Gjelaneset').

@@ -47411,7 +47411,7 @@ passes4(9375, 68787, klætten, 3, 5, 5).
 passes4(9375, 67287, hennset_ferjekai, 4, 10, 10).
 passes4(9375, 70581, otnes, 5, 14, 14).
 passes4(9375, 65383, valsøya, 6, 17, 17).
-passes4(9375, 65109, hestnes, 7, 21, 21).
+passes4(9375, 65109, engan, 7, 21, 21).
 passes4(9375, 66611, enge, 8, 23, 23).
 passes4(9375, 70079, nessaøra, 9, 25, 25).
 passes4(9375, 65953, setra, 10, 28, 28).
@@ -47425,7 +47425,7 @@ passes4(9377, 68787, klætten, 3, 5, 5).
 passes4(9377, 67287, hennset_ferjekai, 4, 10, 10).
 passes4(9377, 70581, otnes, 5, 14, 14).
 passes4(9377, 65383, valsøya, 6, 17, 17).
-passes4(9377, 65109, hestnes, 7, 20, 20).
+passes4(9377, 65109, engan, 7, 20, 20).
 passes4(9377, 66611, enge, 8, 22, 22).
 passes4(9377, 70079, nessaøra, 9, 24, 24).
 passes4(9377, 65953, setra, 10, 27, 27).
