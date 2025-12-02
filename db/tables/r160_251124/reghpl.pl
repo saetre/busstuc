@@ -1499,10 +1499,10 @@ hpl(71880,sandvik,sandvik,'Sandvik').
 hpl(71881,sandvik,sandvik,'Sandvik').
 hpl(71882,sandvik,sandvik,'Sandvik').
 hpl(71883,sandvik,sandvik,'Sandvik').
-hpl(71884,vahl,vahl,'Vahl').
+hpl(71884,val,val,'Val').
 hpl(71885,sandvika,sandvika,'Sandvika').
 hpl(71886,sandvika,sandvika,'Sandvika').
-hpl(71887,vahl,vahl,'Vahl').
+hpl(71887,val,val,'Val').
 hpl(71888,hårberg,hårberg,'Hårberg').
 hpl(71889,hårberg,hårberg,'Hårberg').
 hpl(71890,sandviksberget,sandviksberget,'Sandviksberget').
@@ -7486,8 +7486,8 @@ hpl(79287,skjesol,skjesol,'Skjesol').
 hpl(79289,namsoshallen,namsoshallen,'Namsoshallen').
 hpl(79290,namsoshallen,namsoshallen,'Namsoshallen').
 hpl(79292,nesjø_snuplass,nesjø_snuplass,'Nesjø snuplass').
-hpl(79293,gravgården,gravgården,'Gravgården').
-hpl(79294,gravgården,gravgården,'Gravgården').
+hpl(79293,bangsund_nordre,bangsund_nordre,'Bangsund nordre').
+hpl(79294,bangsund_nordre,bangsund_nordre,'Bangsund nordre').
 hpl(79297,breistranda,breistranda,'Breistranda').
 hpl(79298,breistranda,breistranda,'Breistranda').
 hpl(79301,altesjøen,altesjøen,'Altesjøen').

@@ -146,6 +146,7 @@ composite_stat(balhall,[],balhall).
 composite_stat(ballsnes,[],ballsnes).
 composite_stat(balsnes,[],balsnes).
 composite_stat(balsnesaunet,[],balsnesaunet).
+composite_stat(bangsund,[nordre],bangsund_nordre).
 composite_stat(bangsund,[skole],bangsund_skole).
 composite_stat(bangsund,[vegdele],bangsund_vegdele).
 composite_stat(bangvegen,[],bangvegen).
@@ -1183,7 +1184,6 @@ composite_stat(gravakorsen,[],gravakorsen).
 composite_stat(gravaune,[],gravaune).
 composite_stat(gravbrøt,[],gravbrøt).
 composite_stat(graven,[],graven).
-composite_stat(gravgården,[],gravgården).
 composite_stat(gravset,[],gravset).
 composite_stat(gravsvingen,[],gravsvingen).
 composite_stat(gravvik,[],gravvik).
@@ -4454,7 +4454,7 @@ composite_stat(utvorda,[oppvekstsenter],utvorda_oppvekstsenter).
 composite_stat(utøy,[],utøy).
 composite_stat(vada,[indre],vada_indre).
 composite_stat(vada,[ytre],vada_ytre).
-composite_stat(vahl,[],vahl).
+composite_stat(val,[],val).
 composite_stat(val,[barne, og, ungdomsskole],val_barne_og_ungdomsskole).
 composite_stat(val,[videregående, skole],val_videregående_skole).
 composite_stat(valan,[],valan).

@@ -14196,7 +14196,7 @@ passes4(11610, 102761, romstad_bomstasjon, 37, 42, 42).
 passes4(11611, 103206, selnes_snuplass, 2, 999, 0).
 passes4(11611, 75888, selnes, 3, 1, 1).
 passes4(11611, 76158, kvernhusdalen, 4, 5, 5).
-passes4(11611, 79294, gravgården, 5, 6, 6).
+passes4(11611, 79294, bangsund_nordre, 5, 6, 6).
 passes4(11611, 76008, bangsund_skole, 6, 8, 8).
 
 passes4(11612, 76126, fjær, 2, 999, 0).
@@ -14210,7 +14210,7 @@ passes4(11612, 76142, bangsund_vegdele, 9, 16, 16).
 passes4(11612, 76008, bangsund_skole, 10, 18, 18).
 
 passes4(11613, 76008, bangsund_skole, 2, 999, 0).
-passes4(11613, 79293, gravgården, 3, 0, 0).
+passes4(11613, 79293, bangsund_nordre, 3, 0, 0).
 passes4(11613, 76157, kvernhusdalen, 4, 1, 1).
 passes4(11613, 75888, selnes, 5, 5, 5).
 passes4(11613, 103206, selnes_snuplass, 6, 7, 7).
@@ -14227,7 +14227,7 @@ passes4(11614, 76176, klinga_vegdele, 3, 0, 0).
 passes4(11614, 76172, pettermoen, 4, 2, 2).
 passes4(11614, 76164, selnes_vegdele, 5, 2, 2).
 passes4(11614, 76158, kvernhusdalen, 6, 3, 3).
-passes4(11614, 79294, gravgården, 7, 4, 4).
+passes4(11614, 79294, bangsund_nordre, 7, 4, 4).
 passes4(11614, 76008, bangsund_skole, 8, 5, 5).
 
 passes4(11615, 76015, bjørkly_skole, 2, 999, 0).
@@ -14235,9 +14235,9 @@ passes4(11615, 76176, klinga_vegdele, 3, 0, 0).
 passes4(11615, 76172, pettermoen, 4, 2, 2).
 passes4(11615, 76164, selnes_vegdele, 5, 2, 2).
 passes4(11615, 76158, kvernhusdalen, 6, 3, 3).
-passes4(11615, 79294, gravgården, 7, 4, 4).
+passes4(11615, 79294, bangsund_nordre, 7, 4, 4).
 passes4(11615, 76008, bangsund_skole, 8, 10, 10).
-passes4(11615, 79293, gravgården, 9, 10, 10).
+passes4(11615, 79293, bangsund_nordre, 9, 10, 10).
 passes4(11615, 76157, kvernhusdalen, 10, 11, 11).
 passes4(11615, 75888, selnes, 11, 16, 16).
 passes4(11615, 103206, selnes_snuplass, 12, 17, 17).
@@ -14253,7 +14253,7 @@ passes4(11616, 76015, bjørkly_skole, 2, 999, 0).
 passes4(11616, 76176, klinga_vegdele, 3, 0, 0).
 passes4(11616, 76172, pettermoen, 4, 2, 2).
 passes4(11616, 76158, kvernhusdalen, 5, 3, 3).
-passes4(11616, 79294, gravgården, 6, 4, 4).
+passes4(11616, 79294, bangsund_nordre, 6, 4, 4).
 passes4(11616, 76008, bangsund_skole, 7, 6, 6).
 passes4(11616, 75888, selnes, 8, 13, 13).
 passes4(11616, 103206, selnes_snuplass, 9, 15, 15).
@@ -14761,7 +14761,7 @@ passes4(11648, 76142, bangsund_vegdele, 3, 1, 1).
 passes4(11648, 76008, bangsund_skole, 4, 2, 2).
 passes4(11648, 76150, ner_bangsund, 5, 4, 4).
 passes4(11648, 76008, bangsund_skole, 6, 6, 6).
-passes4(11648, 79293, gravgården, 7, 7, 7).
+passes4(11648, 79293, bangsund_nordre, 7, 7, 7).
 passes4(11648, 76157, kvernhusdalen, 8, 9, 9).
 passes4(11648, 76163, selnes_vegdele, 9, 10, 10).
 passes4(11648, 76171, pettermoen, 10, 11, 11).
@@ -14794,7 +14794,7 @@ passes4(11649, 76142, bangsund_vegdele, 5, 2, 2).
 passes4(11649, 76008, bangsund_skole, 6, 2, 2).
 passes4(11649, 76150, ner_bangsund, 7, 3, 3).
 passes4(11649, 76008, bangsund_skole, 8, 6, 6).
-passes4(11649, 79293, gravgården, 9, 7, 7).
+passes4(11649, 79293, bangsund_nordre, 9, 7, 7).
 passes4(11649, 76157, kvernhusdalen, 10, 8, 8).
 passes4(11649, 76163, selnes_vegdele, 11, 9, 9).
 passes4(11649, 76171, pettermoen, 12, 10, 10).
@@ -14820,7 +14820,7 @@ passes4(11649, 76294, namsos_storsenter, 31, 27, 27).
 passes4(11649, 76289, namsos_skysstasjon_1, 32, 29, 29).
 
 passes4(11650, 76008, bangsund_skole, 2, 999, 0).
-passes4(11650, 79293, gravgården, 3, 0, 0).
+passes4(11650, 79293, bangsund_nordre, 3, 0, 0).
 passes4(11650, 76157, kvernhusdalen, 4, 0, 0).
 passes4(11650, 76163, selnes_vegdele, 5, 1, 1).
 passes4(11650, 76171, pettermoen, 6, 1, 1).
@@ -14848,7 +14848,7 @@ passes4(11650, 76294, namsos_storsenter, 27, 22, 22).
 passes4(11650, 76289, namsos_skysstasjon_1, 28, 27, 27).
 
 passes4(11651, 76008, bangsund_skole, 2, 999, 0).
-passes4(11651, 79293, gravgården, 3, 1, 1).
+passes4(11651, 79293, bangsund_nordre, 3, 1, 1).
 passes4(11651, 76157, kvernhusdalen, 4, 2, 2).
 passes4(11651, 76163, selnes_vegdele, 5, 3, 3).
 passes4(11651, 76171, pettermoen, 6, 3, 3).
@@ -14879,7 +14879,7 @@ passes4(11652, 76008, bangsund_skole, 3, 3, 3).
 passes4(11652, 76144, bangsund_vegdele, 4, 4, 4).
 passes4(11652, 79254, bogna_bru_nordre, 5, 7, 7).
 passes4(11652, 76142, bangsund_vegdele, 6, 9, 9).
-passes4(11652, 79293, gravgården, 7, 10, 10).
+passes4(11652, 79293, bangsund_nordre, 7, 10, 10).
 passes4(11652, 76157, kvernhusdalen, 8, 11, 11).
 passes4(11652, 76163, selnes_vegdele, 9, 12, 12).
 passes4(11652, 76171, pettermoen, 10, 13, 13).
@@ -14954,7 +14954,7 @@ passes4(11654, 76176, klinga_vegdele, 25, 22, 22).
 passes4(11654, 76172, pettermoen, 26, 24, 24).
 passes4(11654, 76164, selnes_vegdele, 27, 25, 25).
 passes4(11654, 76158, kvernhusdalen, 28, 26, 26).
-passes4(11654, 79293, gravgården, 29, 27, 27).
+passes4(11654, 79293, bangsund_nordre, 29, 27, 27).
 passes4(11654, 76008, bangsund_skole, 30, 35, 35).
 
 passes4(11655, 76337, kattmarka, 2, 999, 0).
@@ -15113,7 +15113,7 @@ passes4(11671, 76126, fjær, 17, 24, 24).
 passes4(11671, 76137, strømbrua, 18, 26, 26).
 passes4(11671, 79256, bogna_bru_søndre, 19, 27, 27).
 passes4(11671, 79254, bogna_bru_nordre, 20, 28, 28).
-passes4(11671, 79293, gravgården, 21, 29, 29).
+passes4(11671, 79293, bangsund_nordre, 21, 29, 29).
 passes4(11671, 76157, kvernhusdalen, 22, 30, 30).
 passes4(11671, 76163, selnes_vegdele, 23, 30, 30).
 passes4(11671, 76171, pettermoen, 24, 30, 30).
@@ -15183,7 +15183,7 @@ passes4(11673, 76176, klinga_vegdele, 21, 16, 16).
 passes4(11673, 76172, pettermoen, 22, 18, 18).
 passes4(11673, 76164, selnes_vegdele, 23, 20, 20).
 passes4(11673, 76158, kvernhusdalen, 24, 21, 21).
-passes4(11673, 79294, gravgården, 25, 22, 22).
+passes4(11673, 79294, bangsund_nordre, 25, 22, 22).
 passes4(11673, 76144, bangsund_vegdele, 26, 23, 23).
 passes4(11673, 79255, bogna_bru_nordre, 27, 26, 26).
 passes4(11673, 79257, bogna_bru_søndre, 28, 27, 27).
@@ -15231,7 +15231,7 @@ passes4(11676, 76126, fjær, 14, 19, 19).
 passes4(11676, 76137, strømbrua, 15, 21, 21).
 passes4(11676, 79256, bogna_bru_søndre, 16, 22, 22).
 passes4(11676, 79254, bogna_bru_nordre, 17, 23, 23).
-passes4(11676, 79293, gravgården, 18, 24, 24).
+passes4(11676, 79293, bangsund_nordre, 18, 24, 24).
 passes4(11676, 76157, kvernhusdalen, 19, 25, 25).
 passes4(11676, 76163, selnes_vegdele, 20, 25, 25).
 passes4(11676, 76171, pettermoen, 21, 25, 25).
@@ -45088,7 +45088,7 @@ passes4(9181, 74844, einskifte, 8, 10, 10).
 passes4(9181, 72508, haldorhamn, 9, 12, 12).
 passes4(9181, 75072, birkeli, 10, 15, 15).
 passes4(9181, 72950, melum, 11, 17, 17).
-passes4(9181, 71884, vahl, 12, 19, 19).
+passes4(9181, 71884, val, 12, 19, 19).
 passes4(9181, 71963, valsneset, 13, 22, 22).
 passes4(9181, 74503, oksvoll, 14, 27, 27).
 passes4(9181, 71732, tørrem_veikryss, 15, 28, 28).
@@ -45109,7 +45109,7 @@ passes4(9182, 72041, vassmyra, 8, 9, 9).
 passes4(9182, 71733, tørrem_veikryss, 9, 11, 11).
 passes4(9182, 74504, oksvoll, 10, 12, 12).
 passes4(9182, 71963, valsneset, 11, 18, 18).
-passes4(9182, 71887, vahl, 12, 20, 20).
+passes4(9182, 71887, val, 12, 20, 20).
 passes4(9182, 74842, einskifte, 13, 21, 21).
 passes4(9182, 72949, melum, 14, 22, 22).
 passes4(9182, 75073, birkeli, 15, 24, 24).
@@ -45133,7 +45133,7 @@ passes4(9183, 72508, haldorhamn, 9, 12, 12).
 passes4(9183, 72958, melumsvik, 10, 13, 13).
 passes4(9183, 75072, birkeli, 11, 14, 14).
 passes4(9183, 72950, melum, 12, 16, 16).
-passes4(9183, 71884, vahl, 13, 18, 18).
+passes4(9183, 71884, val, 13, 18, 18).
 passes4(9183, 71963, valsneset, 14, 21, 21).
 passes4(9183, 74503, oksvoll, 15, 26, 26).
 passes4(9183, 71732, tørrem_veikryss, 16, 27, 27).
@@ -45163,7 +45163,7 @@ passes4(9187, 73685, møllergård, 6, 4, 4).
 passes4(9187, 71599, ryskogen, 7, 6, 6).
 passes4(9187, 72042, vassmyra, 8, 9, 9).
 passes4(9187, 74503, oksvoll, 9, 12, 12).
-passes4(9187, 71884, vahl, 10, 14, 14).
+passes4(9187, 71884, val, 10, 14, 14).
 passes4(9187, 74844, einskifte, 11, 15, 15).
 passes4(9187, 72950, melum, 12, 16, 16).
 passes4(9187, 75072, birkeli, 13, 17, 17).
@@ -45187,7 +45187,7 @@ passes4(9188, 73685, møllergård, 6, 4, 4).
 passes4(9188, 71599, ryskogen, 7, 7, 7).
 passes4(9188, 72042, vassmyra, 8, 10, 10).
 passes4(9188, 74503, oksvoll, 9, 12, 12).
-passes4(9188, 71884, vahl, 10, 14, 14).
+passes4(9188, 71884, val, 10, 14, 14).
 passes4(9188, 74844, einskifte, 11, 15, 15).
 passes4(9188, 72950, melum, 12, 16, 16).
 passes4(9188, 75072, birkeli, 13, 17, 17).
@@ -45208,7 +45208,7 @@ passes4(9189, 73685, møllergård, 6, 4, 4).
 passes4(9189, 71599, ryskogen, 7, 6, 6).
 passes4(9189, 72042, vassmyra, 8, 9, 9).
 passes4(9189, 74503, oksvoll, 9, 11, 11).
-passes4(9189, 71884, vahl, 10, 13, 13).
+passes4(9189, 71884, val, 10, 13, 13).
 passes4(9189, 74844, einskifte, 11, 14, 14).
 passes4(9189, 72950, melum, 12, 15, 15).
 passes4(9189, 75072, birkeli, 13, 16, 16).
@@ -45230,7 +45230,7 @@ passes4(9190, 72042, vassmyra, 8, 9, 9).
 passes4(9190, 71725, tørrem, 9, 14, 14).
 passes4(9190, 109992, buvikveien_77, 10, 15, 15).
 passes4(9190, 74503, oksvoll, 11, 20, 20).
-passes4(9190, 71884, vahl, 12, 22, 22).
+passes4(9190, 71884, val, 12, 22, 22).
 passes4(9190, 74844, einskifte, 13, 23, 23).
 passes4(9190, 72950, melum, 14, 24, 24).
 passes4(9190, 75072, birkeli, 15, 26, 26).
@@ -45255,7 +45255,7 @@ passes4(9191, 72042, vassmyra, 8, 10, 10).
 passes4(9191, 71725, tørrem, 9, 15, 15).
 passes4(9191, 109992, buvikveien_77, 10, 16, 16).
 passes4(9191, 74503, oksvoll, 11, 21, 21).
-passes4(9191, 71884, vahl, 12, 23, 23).
+passes4(9191, 71884, val, 12, 23, 23).
 passes4(9191, 74844, einskifte, 13, 24, 24).
 passes4(9191, 72950, melum, 14, 25, 25).
 passes4(9191, 75072, birkeli, 15, 27, 27).
@@ -45295,7 +45295,7 @@ passes4(9193, 75247, borgfjorden, 9, 12, 12).
 passes4(9193, 75073, birkeli, 10, 13, 13).
 passes4(9193, 72949, melum, 11, 14, 14).
 passes4(9193, 74842, einskifte, 12, 15, 15).
-passes4(9193, 71887, vahl, 13, 16, 16).
+passes4(9193, 71887, val, 13, 16, 16).
 passes4(9193, 74504, oksvoll, 14, 18, 18).
 passes4(9193, 72041, vassmyra, 15, 20, 20).
 passes4(9193, 71596, ryskogen, 16, 23, 23).
@@ -45320,7 +45320,7 @@ passes4(9194, 75247, borgfjorden, 13, 36, 36).
 passes4(9194, 75073, birkeli, 14, 37, 37).
 passes4(9194, 72949, melum, 15, 39, 39).
 passes4(9194, 74842, einskifte, 16, 40, 40).
-passes4(9194, 71887, vahl, 17, 41, 41).
+passes4(9194, 71887, val, 17, 41, 41).
 passes4(9194, 74504, oksvoll, 18, 43, 43).
 passes4(9194, 72041, vassmyra, 19, 45, 45).
 passes4(9194, 71596, ryskogen, 20, 48, 48).
@@ -45340,7 +45340,7 @@ passes4(9196, 72042, vassmyra, 8, 9, 9).
 passes4(9196, 71725, tørrem, 9, 14, 14).
 passes4(9196, 109992, buvikveien_77, 10, 15, 15).
 passes4(9196, 74503, oksvoll, 11, 20, 20).
-passes4(9196, 71884, vahl, 12, 22, 22).
+passes4(9196, 71884, val, 12, 22, 22).
 passes4(9196, 74844, einskifte, 13, 23, 23).
 passes4(9196, 72950, melum, 14, 24, 24).
 passes4(9196, 75072, birkeli, 15, 26, 26).
@@ -53478,7 +53478,7 @@ passes4(9786, 76176, klinga_vegdele, 18, 15, 15).
 passes4(9786, 76172, pettermoen, 19, 17, 17).
 passes4(9786, 76164, selnes_vegdele, 20, 17, 17).
 passes4(9786, 76158, kvernhusdalen, 21, 18, 18).
-passes4(9786, 79294, gravgården, 22, 19, 19).
+passes4(9786, 79294, bangsund_nordre, 22, 19, 19).
 passes4(9786, 76144, bangsund_vegdele, 23, 20, 20).
 passes4(9786, 79255, bogna_bru_nordre, 24, 20, 20).
 passes4(9786, 79257, bogna_bru_søndre, 25, 20, 20).
@@ -53644,7 +53644,7 @@ passes4(9787, 76137, strømbrua, 80, 113, 113).
 passes4(9787, 79256, bogna_bru_søndre, 81, 113, 113).
 passes4(9787, 79254, bogna_bru_nordre, 82, 113, 113).
 passes4(9787, 76142, bangsund_vegdele, 83, 115, 115).
-passes4(9787, 79293, gravgården, 84, 115, 115).
+passes4(9787, 79293, bangsund_nordre, 84, 115, 115).
 passes4(9787, 76157, kvernhusdalen, 85, 116, 116).
 passes4(9787, 76163, selnes_vegdele, 86, 116, 116).
 passes4(9787, 76171, pettermoen, 87, 117, 117).
@@ -53689,7 +53689,7 @@ passes4(9788, 76176, klinga_vegdele, 18, 15, 15).
 passes4(9788, 76172, pettermoen, 19, 17, 17).
 passes4(9788, 76164, selnes_vegdele, 20, 17, 17).
 passes4(9788, 76158, kvernhusdalen, 21, 18, 18).
-passes4(9788, 79294, gravgården, 22, 19, 19).
+passes4(9788, 79294, bangsund_nordre, 22, 19, 19).
 passes4(9788, 76144, bangsund_vegdele, 23, 20, 20).
 passes4(9788, 79255, bogna_bru_nordre, 24, 20, 20).
 passes4(9788, 79257, bogna_bru_søndre, 25, 20, 20).
@@ -53762,7 +53762,7 @@ passes4(9791, 76176, klinga_vegdele, 18, 15, 15).
 passes4(9791, 76172, pettermoen, 19, 17, 17).
 passes4(9791, 76164, selnes_vegdele, 20, 17, 17).
 passes4(9791, 76158, kvernhusdalen, 21, 18, 18).
-passes4(9791, 79294, gravgården, 22, 19, 19).
+passes4(9791, 79294, bangsund_nordre, 22, 19, 19).
 passes4(9791, 76144, bangsund_vegdele, 23, 20, 20).
 passes4(9791, 79255, bogna_bru_nordre, 24, 20, 20).
 passes4(9791, 79257, bogna_bru_søndre, 25, 20, 20).
@@ -53835,7 +53835,7 @@ passes4(9794, 76176, klinga_vegdele, 18, 15, 15).
 passes4(9794, 76172, pettermoen, 19, 17, 17).
 passes4(9794, 76164, selnes_vegdele, 20, 17, 17).
 passes4(9794, 76158, kvernhusdalen, 21, 18, 18).
-passes4(9794, 79294, gravgården, 22, 19, 19).
+passes4(9794, 79294, bangsund_nordre, 22, 19, 19).
 passes4(9794, 76144, bangsund_vegdele, 23, 20, 20).
 passes4(9794, 79255, bogna_bru_nordre, 24, 20, 20).
 passes4(9794, 79257, bogna_bru_søndre, 25, 20, 20).
@@ -53970,7 +53970,7 @@ passes4(9799, 76137, strømbrua, 80, 115, 115).
 passes4(9799, 79256, bogna_bru_søndre, 81, 115, 115).
 passes4(9799, 79254, bogna_bru_nordre, 82, 115, 115).
 passes4(9799, 76142, bangsund_vegdele, 83, 117, 117).
-passes4(9799, 79293, gravgården, 84, 117, 117).
+passes4(9799, 79293, bangsund_nordre, 84, 117, 117).
 passes4(9799, 76157, kvernhusdalen, 85, 118, 118).
 passes4(9799, 76163, selnes_vegdele, 86, 119, 119).
 passes4(9799, 76171, pettermoen, 87, 120, 120).
@@ -54042,7 +54042,7 @@ passes4(9800, 76137, strømbrua, 45, 57, 57).
 passes4(9800, 79256, bogna_bru_søndre, 46, 57, 57).
 passes4(9800, 79254, bogna_bru_nordre, 47, 57, 57).
 passes4(9800, 76142, bangsund_vegdele, 48, 59, 59).
-passes4(9800, 79293, gravgården, 49, 59, 59).
+passes4(9800, 79293, bangsund_nordre, 49, 59, 59).
 passes4(9800, 76157, kvernhusdalen, 50, 60, 60).
 passes4(9800, 76163, selnes_vegdele, 51, 61, 61).
 passes4(9800, 76171, pettermoen, 52, 62, 62).
@@ -54115,7 +54115,7 @@ passes4(9801, 76137, strømbrua, 46, 57, 57).
 passes4(9801, 79256, bogna_bru_søndre, 47, 57, 57).
 passes4(9801, 79254, bogna_bru_nordre, 48, 57, 57).
 passes4(9801, 76142, bangsund_vegdele, 49, 59, 59).
-passes4(9801, 79293, gravgården, 50, 59, 59).
+passes4(9801, 79293, bangsund_nordre, 50, 59, 59).
 passes4(9801, 76157, kvernhusdalen, 51, 60, 60).
 passes4(9801, 76163, selnes_vegdele, 52, 61, 61).
 passes4(9801, 76171, pettermoen, 53, 62, 62).
@@ -54226,7 +54226,7 @@ passes4(9802, 76137, strømbrua, 84, 120, 120).
 passes4(9802, 79256, bogna_bru_søndre, 85, 120, 120).
 passes4(9802, 79254, bogna_bru_nordre, 86, 120, 120).
 passes4(9802, 76142, bangsund_vegdele, 87, 122, 122).
-passes4(9802, 79293, gravgården, 88, 122, 122).
+passes4(9802, 79293, bangsund_nordre, 88, 122, 122).
 passes4(9802, 76157, kvernhusdalen, 89, 123, 123).
 passes4(9802, 76163, selnes_vegdele, 90, 124, 124).
 passes4(9802, 76171, pettermoen, 91, 125, 125).
@@ -54337,7 +54337,7 @@ passes4(9803, 76137, strømbrua, 84, 120, 120).
 passes4(9803, 79256, bogna_bru_søndre, 85, 120, 120).
 passes4(9803, 79254, bogna_bru_nordre, 86, 120, 120).
 passes4(9803, 76142, bangsund_vegdele, 87, 122, 122).
-passes4(9803, 79293, gravgården, 88, 122, 122).
+passes4(9803, 79293, bangsund_nordre, 88, 122, 122).
 passes4(9803, 76157, kvernhusdalen, 89, 123, 123).
 passes4(9803, 76163, selnes_vegdele, 90, 124, 124).
 passes4(9803, 76171, pettermoen, 91, 125, 125).
@@ -54409,7 +54409,7 @@ passes4(9804, 76137, strømbrua, 45, 57, 57).
 passes4(9804, 79256, bogna_bru_søndre, 46, 57, 57).
 passes4(9804, 79254, bogna_bru_nordre, 47, 57, 57).
 passes4(9804, 76142, bangsund_vegdele, 48, 59, 59).
-passes4(9804, 79293, gravgården, 49, 59, 59).
+passes4(9804, 79293, bangsund_nordre, 49, 59, 59).
 passes4(9804, 76157, kvernhusdalen, 50, 60, 60).
 passes4(9804, 76163, selnes_vegdele, 51, 61, 61).
 passes4(9804, 76171, pettermoen, 52, 62, 62).
@@ -54481,7 +54481,7 @@ passes4(9805, 76137, strømbrua, 45, 57, 57).
 passes4(9805, 79256, bogna_bru_søndre, 46, 57, 57).
 passes4(9805, 79254, bogna_bru_nordre, 47, 57, 57).
 passes4(9805, 76142, bangsund_vegdele, 48, 59, 59).
-passes4(9805, 79293, gravgården, 49, 59, 59).
+passes4(9805, 79293, bangsund_nordre, 49, 59, 59).
 passes4(9805, 76157, kvernhusdalen, 50, 60, 60).
 passes4(9805, 76163, selnes_vegdele, 51, 61, 61).
 passes4(9805, 76171, pettermoen, 52, 62, 62).
@@ -54553,7 +54553,7 @@ passes4(9811, 76137, strømbrua, 45, 57, 57).
 passes4(9811, 79256, bogna_bru_søndre, 46, 57, 57).
 passes4(9811, 79254, bogna_bru_nordre, 47, 57, 57).
 passes4(9811, 76142, bangsund_vegdele, 48, 59, 59).
-passes4(9811, 79293, gravgården, 49, 59, 59).
+passes4(9811, 79293, bangsund_nordre, 49, 59, 59).
 passes4(9811, 76157, kvernhusdalen, 50, 60, 60).
 passes4(9811, 76163, selnes_vegdele, 51, 61, 61).
 passes4(9811, 76171, pettermoen, 52, 62, 62).
@@ -54598,7 +54598,7 @@ passes4(9818, 76176, klinga_vegdele, 18, 15, 15).
 passes4(9818, 76172, pettermoen, 19, 17, 17).
 passes4(9818, 76164, selnes_vegdele, 20, 17, 17).
 passes4(9818, 76158, kvernhusdalen, 21, 18, 18).
-passes4(9818, 79294, gravgården, 22, 19, 19).
+passes4(9818, 79294, bangsund_nordre, 22, 19, 19).
 passes4(9818, 76144, bangsund_vegdele, 23, 20, 20).
 passes4(9818, 79255, bogna_bru_nordre, 24, 20, 20).
 passes4(9818, 79257, bogna_bru_søndre, 25, 20, 20).
@@ -54675,7 +54675,7 @@ passes4(9819, 76176, klinga_vegdele, 18, 15, 15).
 passes4(9819, 76172, pettermoen, 19, 17, 17).
 passes4(9819, 76164, selnes_vegdele, 20, 17, 17).
 passes4(9819, 76158, kvernhusdalen, 21, 18, 18).
-passes4(9819, 79294, gravgården, 22, 19, 19).
+passes4(9819, 79294, bangsund_nordre, 22, 19, 19).
 passes4(9819, 76144, bangsund_vegdele, 23, 20, 20).
 passes4(9819, 79255, bogna_bru_nordre, 24, 20, 20).
 passes4(9819, 79257, bogna_bru_søndre, 25, 20, 20).
@@ -54752,7 +54752,7 @@ passes4(9820, 76176, klinga_vegdele, 18, 15, 15).
 passes4(9820, 76172, pettermoen, 19, 17, 17).
 passes4(9820, 76164, selnes_vegdele, 20, 17, 17).
 passes4(9820, 76158, kvernhusdalen, 21, 18, 18).
-passes4(9820, 79294, gravgården, 22, 19, 19).
+passes4(9820, 79294, bangsund_nordre, 22, 19, 19).
 passes4(9820, 76144, bangsund_vegdele, 23, 20, 20).
 passes4(9820, 79255, bogna_bru_nordre, 24, 20, 20).
 passes4(9820, 79257, bogna_bru_søndre, 25, 20, 20).
@@ -54860,7 +54860,7 @@ passes4(9821, 76176, klinga_vegdele, 18, 15, 15).
 passes4(9821, 76172, pettermoen, 19, 17, 17).
 passes4(9821, 76164, selnes_vegdele, 20, 17, 17).
 passes4(9821, 76158, kvernhusdalen, 21, 18, 18).
-passes4(9821, 79294, gravgården, 22, 19, 19).
+passes4(9821, 79294, bangsund_nordre, 22, 19, 19).
 passes4(9821, 76144, bangsund_vegdele, 23, 20, 20).
 passes4(9821, 79255, bogna_bru_nordre, 24, 20, 20).
 passes4(9821, 79257, bogna_bru_søndre, 25, 20, 20).
@@ -54969,7 +54969,7 @@ passes4(9822, 76176, klinga_vegdele, 18, 15, 15).
 passes4(9822, 76172, pettermoen, 19, 17, 17).
 passes4(9822, 76164, selnes_vegdele, 20, 17, 17).
 passes4(9822, 76158, kvernhusdalen, 21, 18, 18).
-passes4(9822, 79294, gravgården, 22, 19, 19).
+passes4(9822, 79294, bangsund_nordre, 22, 19, 19).
 passes4(9822, 76144, bangsund_vegdele, 23, 20, 20).
 passes4(9822, 79255, bogna_bru_nordre, 24, 20, 20).
 passes4(9822, 79257, bogna_bru_søndre, 25, 20, 20).
@@ -55077,7 +55077,7 @@ passes4(9823, 76176, klinga_vegdele, 18, 15, 15).
 passes4(9823, 76172, pettermoen, 19, 17, 17).
 passes4(9823, 76164, selnes_vegdele, 20, 17, 17).
 passes4(9823, 76158, kvernhusdalen, 21, 18, 18).
-passes4(9823, 79294, gravgården, 22, 19, 19).
+passes4(9823, 79294, bangsund_nordre, 22, 19, 19).
 passes4(9823, 76144, bangsund_vegdele, 23, 20, 20).
 passes4(9823, 79255, bogna_bru_nordre, 24, 20, 20).
 passes4(9823, 79257, bogna_bru_søndre, 25, 20, 20).
@@ -55177,7 +55177,7 @@ passes4(9824, 76137, strømbrua, 45, 58, 58).
 passes4(9824, 79256, bogna_bru_søndre, 46, 58, 58).
 passes4(9824, 79254, bogna_bru_nordre, 47, 58, 58).
 passes4(9824, 76142, bangsund_vegdele, 48, 60, 60).
-passes4(9824, 79293, gravgården, 49, 60, 60).
+passes4(9824, 79293, bangsund_nordre, 49, 60, 60).
 passes4(9824, 76157, kvernhusdalen, 50, 61, 61).
 passes4(9824, 76163, selnes_vegdele, 51, 61, 61).
 passes4(9824, 76171, pettermoen, 52, 61, 61).
@@ -55288,7 +55288,7 @@ passes4(9825, 76137, strømbrua, 84, 120, 120).
 passes4(9825, 79256, bogna_bru_søndre, 85, 120, 120).
 passes4(9825, 79254, bogna_bru_nordre, 86, 120, 120).
 passes4(9825, 76142, bangsund_vegdele, 87, 122, 122).
-passes4(9825, 79293, gravgården, 88, 122, 122).
+passes4(9825, 79293, bangsund_nordre, 88, 122, 122).
 passes4(9825, 76157, kvernhusdalen, 89, 123, 123).
 passes4(9825, 76163, selnes_vegdele, 90, 124, 124).
 passes4(9825, 76171, pettermoen, 91, 125, 125).
@@ -55361,7 +55361,7 @@ passes4(9826, 76137, strømbrua, 46, 57, 57).
 passes4(9826, 79256, bogna_bru_søndre, 47, 57, 57).
 passes4(9826, 79254, bogna_bru_nordre, 48, 57, 57).
 passes4(9826, 76142, bangsund_vegdele, 49, 59, 59).
-passes4(9826, 79293, gravgården, 50, 59, 59).
+passes4(9826, 79293, bangsund_nordre, 50, 59, 59).
 passes4(9826, 76157, kvernhusdalen, 51, 60, 60).
 passes4(9826, 76163, selnes_vegdele, 52, 61, 61).
 passes4(9826, 76171, pettermoen, 53, 62, 62).
@@ -55433,7 +55433,7 @@ passes4(9827, 76137, strømbrua, 45, 57, 57).
 passes4(9827, 79256, bogna_bru_søndre, 46, 57, 57).
 passes4(9827, 79254, bogna_bru_nordre, 47, 57, 57).
 passes4(9827, 76142, bangsund_vegdele, 48, 59, 59).
-passes4(9827, 79293, gravgården, 49, 59, 59).
+passes4(9827, 79293, bangsund_nordre, 49, 59, 59).
 passes4(9827, 76157, kvernhusdalen, 50, 60, 60).
 passes4(9827, 76163, selnes_vegdele, 51, 61, 61).
 passes4(9827, 76171, pettermoen, 52, 62, 62).
@@ -55478,7 +55478,7 @@ passes4(9835, 76176, klinga_vegdele, 18, 19, 19).
 passes4(9835, 76172, pettermoen, 19, 21, 21).
 passes4(9835, 76164, selnes_vegdele, 20, 21, 21).
 passes4(9835, 76158, kvernhusdalen, 21, 22, 22).
-passes4(9835, 79294, gravgården, 22, 23, 23).
+passes4(9835, 79294, bangsund_nordre, 22, 23, 23).
 passes4(9835, 76144, bangsund_vegdele, 23, 24, 24).
 passes4(9835, 79255, bogna_bru_nordre, 24, 25, 25).
 passes4(9835, 79257, bogna_bru_søndre, 25, 25, 25).
@@ -55551,7 +55551,7 @@ passes4(9838, 76176, klinga_vegdele, 18, 15, 15).
 passes4(9838, 76172, pettermoen, 19, 17, 17).
 passes4(9838, 76164, selnes_vegdele, 20, 17, 17).
 passes4(9838, 76158, kvernhusdalen, 21, 18, 18).
-passes4(9838, 79294, gravgården, 22, 19, 19).
+passes4(9838, 79294, bangsund_nordre, 22, 19, 19).
 passes4(9838, 76144, bangsund_vegdele, 23, 20, 20).
 passes4(9838, 79255, bogna_bru_nordre, 24, 20, 20).
 passes4(9838, 79257, bogna_bru_søndre, 25, 20, 20).
@@ -55624,7 +55624,7 @@ passes4(9839, 76176, klinga_vegdele, 18, 15, 15).
 passes4(9839, 76172, pettermoen, 19, 17, 17).
 passes4(9839, 76164, selnes_vegdele, 20, 17, 17).
 passes4(9839, 76158, kvernhusdalen, 21, 18, 18).
-passes4(9839, 79294, gravgården, 22, 19, 19).
+passes4(9839, 79294, bangsund_nordre, 22, 19, 19).
 passes4(9839, 76144, bangsund_vegdele, 23, 20, 20).
 passes4(9839, 79255, bogna_bru_nordre, 24, 20, 20).
 passes4(9839, 79257, bogna_bru_søndre, 25, 20, 20).
@@ -55776,7 +55776,7 @@ passes4(9844, 76176, klinga_vegdele, 22, 18, 18).
 passes4(9844, 76172, pettermoen, 23, 19, 19).
 passes4(9844, 76164, selnes_vegdele, 24, 19, 19).
 passes4(9844, 76158, kvernhusdalen, 25, 21, 21).
-passes4(9844, 79294, gravgården, 26, 22, 22).
+passes4(9844, 79294, bangsund_nordre, 26, 22, 22).
 passes4(9844, 76144, bangsund_vegdele, 27, 23, 23).
 passes4(9844, 79255, bogna_bru_nordre, 28, 24, 24).
 passes4(9844, 79257, bogna_bru_søndre, 29, 24, 24).
@@ -55868,7 +55868,7 @@ passes4(9845, 76137, strømbrua, 43, 96, 96).
 passes4(9845, 79256, bogna_bru_søndre, 44, 98, 98).
 passes4(9845, 79254, bogna_bru_nordre, 45, 98, 98).
 passes4(9845, 76142, bangsund_vegdele, 46, 99, 99).
-passes4(9845, 79293, gravgården, 47, 100, 100).
+passes4(9845, 79293, bangsund_nordre, 47, 100, 100).
 passes4(9845, 76157, kvernhusdalen, 48, 101, 101).
 passes4(9845, 76163, selnes_vegdele, 49, 103, 103).
 passes4(9845, 76171, pettermoen, 50, 103, 103).
