@@ -953,6 +953,7 @@ cmpl(e,[b,schildropsvei],edgar_b_schieldrops_veg).
 cmpl(e,[b,schjeldrups,vei],edgar_b_schieldrops_veg). 
 cmpl(e,[b,shieldropsvei],edgar_b_schieldrops_veg). 
 
+cmpl(ec,[dahls], ec_dahls_bryggeri ).  %% RS-141110
 cmpl(e,[c,dahls], ec_dahls_bryggeri ).  %% RS-141110
 cmpl(e,[c,dahls,bryggeri], strandveikaia).  %%
 cmpl(e,[c,dahls,gate],e_c_dahls_street).   %% central

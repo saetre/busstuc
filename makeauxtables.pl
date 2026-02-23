@@ -153,7 +153,7 @@ makeauxtables :-
         %    user:( tmnflagg := false ), %% RS-140106 Trenger ikke auxtables for trafikanten midtnorge?!?
             reset_period,  %% get the right period 
         
-            write( '... makeauxtables~155 (auxtables~787): Please wait 1 minute while creating (db/auxtables) regstr/2' ),nl,
+            write( '... makeauxtables~155 (auxtables~787): Please wait a minute (or 2!) while creating (db/auxtables) regstr/2' ),nl,
         
             open( 'db/auxtables.pl', write, Stream, [encoding('UTF-8')] ), %% RS-140102, Run from monobuss folder !!
             %open( 'auxtables.pl', write, Stream, [encoding('UTF-8')] ), %% RS-140102, Run from the /db/ folder !!

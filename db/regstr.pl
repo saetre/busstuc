@@ -309,7 +309,8 @@ streetstat(dybdahls_street,'Dybdahls veg',34,38,østre_berg).
 streetstat(dybdahls_street,'Dybdahls veg',1,57,berg_studentby).
 streetstat(dyrborg_street,'Dyrborgveien',1,35,ila).
 streetstat(dyre_halses_street,'Dyre Halses gate',1,35,dyre_halses_gate).
-streetstat(e_c_dahls_street,'E.C. Dahls gate',1,10,hovedterminalen).
+%%streetstat(e_c_dahls_street,'E.C. Dahls gate',1,10,hovedterminalen). %% RS-20260219 Default to ec_Dahls_Bryggeri, is better!
+streetstat(e_c_dahls_bryggeri,'E.C. Dahls bryggeri',1,10,e_c_dahls_bryggeri). %% RS-20260219 Default to ec_Dahls_Bryggeri, is better!
 streetstat(edgar_b_schieldrops_street,'Edgar B. Schieldrops veg',1,82,vestlia_endeholdeplass).   %% RS-150104. vestlia is Terminated 2014?
 streetstat(edgar_b_schieldrops_street,'Edgar B. Schieldrops veg',81,178,vestlia_endeholdeplass).
 streetstat(edvard_griegs_street,'Edvard Griegs gate',7,13,hesthagen).
