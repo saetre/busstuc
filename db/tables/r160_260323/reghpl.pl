@@ -373,7 +373,6 @@ hpl(104785,heimly,heimly,'Heimly').
 hpl(104852,nylandet,nylandet,'Nylandet').
 hpl(104853,nylandet,nylandet,'Nylandet').
 hpl(104869,kolstad_kirke,kolstad_kirke,'Kolstad kirke').
-hpl(104873,hembre_grus,hembre_grus,'Hembre grus').
 hpl(104965,øyum_gård,øyum_gård,'Øyum gård').
 hpl(105024,stormyra,stormyra,'Stormyra').
 hpl(105025,søraunet,søraunet,'Søraunet').
