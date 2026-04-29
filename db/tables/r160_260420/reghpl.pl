@@ -648,8 +648,6 @@ hpl(109666,vestre_sem,vestre_sem,'Vestre Sem').
 hpl(109667,vestre_sem,vestre_sem,'Vestre Sem').
 hpl(109680,trøåsen,trøåsen,'Trøåsen').
 hpl(109681,trøåsen,trøåsen,'Trøåsen').
-hpl(109684,gamle_kongevei,gamle_kongevei,'Gamle Kongevei').
-hpl(109685,gamle_kongevei,gamle_kongevei,'Gamle Kongevei').
 hpl(109738,å_coop,å_coop,'Å Coop').
 hpl(109757,mostuggu,mostuggu,'Mostuggu').
 hpl(109972,brudalsveien,brudalsveien,'Brudalsveien').

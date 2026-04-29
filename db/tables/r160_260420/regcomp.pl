@@ -1063,11 +1063,7 @@ composite_stat(galguften,[],galguften).
 composite_stat(galåen,[barnehage],galåen_barnehage).
 composite_stat(galåen,[boligfelt],galåen_boligfelt).
 composite_stat(galåvollen,[boligfelt],galåvollen_boligfelt).
-composite_stat(gamle,[konge, street],gamle_kongevei). % generated 6.2
-composite_stat(gamle,[konge, vei],gamle_kongevei). % generated 6.1
-composite_stat(gamle,[konge_street],gamle_kongevei). % generated 6.0
 composite_stat(gamle,[kongeveg, sør],gamle_kongeveg_sør).
-composite_stat(gamle,[kongevei],gamle_kongevei).
 composite_stat(gammel,[lina],gammel_lina).
 composite_stat(gammelbutikken,[],gammelbutikken).
 composite_stat(gammelbutikken,[totland],gammelbutikken_totland).
