@@ -4721,10 +4721,6 @@ composite_stat(værnes,[prestegård],værnes_prestegård).
 composite_stat(værum,[skole],værum_skole).
 composite_stat(værøyseter,[],værøyseter).
 composite_stat(webster,[],webster).
-composite_stat(weidemann,[street],weidemannsveien). % generated 4.1
-composite_stat(weidemann,[veien],weidemannsveien). % generated 4.0
-composite_stat(weidemann_street,[],weidemannsveien). % generated 4.2
-composite_stat(weidemannsveien,[],weidemannsveien).
 composite_stat(westerhus,[],westerhus).
 composite_stat(willmannsøyen,[],willmannsøyen).
 composite_stat(winsnes,[],winsnes).

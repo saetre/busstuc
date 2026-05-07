@@ -1960,7 +1960,6 @@ hpl(72402,voll_studentby,voll_studentby,'Voll studentby').
 hpl(72403,skjønhalsen,skjønhalsen,'Skjønhalsen').
 hpl(72404,skjønhalsen,skjønhalsen,'Skjønhalsen').
 hpl(72405,gyldenløves_gate,gyldenløves_gate,'Gyldenløves gate').
-hpl(72406,gyldenløves_gate,gyldenløves_gate,'Gyldenløves gate').
 hpl(72409,skjøstad,skjøstad,'Skjøstad').
 hpl(72410,skjøstad,skjøstad,'Skjøstad').
 hpl(72411,gylland,gylland,'Gylland').
@@ -2135,8 +2134,6 @@ hpl(72609,magnus_berrføtts_veg,magnus_berrføtts_veg,'Magnus Berrføtts veg').
 hpl(72610,magnus_berrføtts_veg,magnus_berrføtts_veg,'Magnus Berrføtts veg').
 hpl(72611,værøyseter,værøyseter,'Værøyseter').
 hpl(72612,værøyseter,værøyseter,'Værøyseter').
-hpl(72616,weidemannsveien,weidemannsveien,'Weidemannsveien').
-hpl(72617,weidemannsveien,weidemannsveien,'Weidemannsveien').
 hpl(72619,sandberg,sandberg,'Sandberg').
 hpl(72620,sandberg,sandberg,'Sandberg').
 hpl(72621,willmannsøyen,willmannsøyen,'Willmannsøyen').
@@ -4319,7 +4316,6 @@ hpl(75150,bjørknes,bjørknes,'Bjørknes').
 hpl(75151,festa,festa,'Festa').
 hpl(75152,festa,festa,'Festa').
 hpl(75155,festningsgata,festningsgata,'Festningsgata').
-hpl(75156,festningsgata,festningsgata,'Festningsgata').
 hpl(75157,bjørkåsen,bjørkåsen,'Bjørkåsen').
 hpl(75158,fevåg_vegdele,fevåg_vegdele,'Fevåg vegdele').
 hpl(75159,fevåg_vegdele,fevåg_vegdele,'Fevåg vegdele').
