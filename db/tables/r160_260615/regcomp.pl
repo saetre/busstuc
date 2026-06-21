@@ -1793,7 +1793,6 @@ composite_stat(jakobslivegen,[øvre],jakobslivegen_øvre).
 composite_stat(jaktvika,[],jaktvika).
 composite_stat(jamtvoll,[],jamtvoll).
 composite_stat(jektvika,[],jektvika).
-composite_stat(jektvollen,[],jektvollen).
 composite_stat(jenshaugen,[],jenshaugen).
 composite_stat(jensvolden,[],jensvolden).
 composite_stat(jensvoll,[],jensvoll).

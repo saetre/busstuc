@@ -8313,7 +8313,6 @@ hpl(80431,snåsa_stasjon,snåsa_stasjon,'Snåsa stasjon').
 hpl(80432,snåsa_stasjon,snåsa_stasjon,'Snåsa stasjon').
 hpl(80434,undersåker,undersåker,'Undersåker').
 hpl(80436,undersåker,undersåker,'Undersåker').
-hpl(80439,jektvollen,jektvollen,'Jektvollen').
 hpl(80441,marøystranda,marøystranda,'Marøystranda').
 hpl(80442,marøystranda,marøystranda,'Marøystranda').
 hpl(80445,hireita,hireita,'Hireita').
