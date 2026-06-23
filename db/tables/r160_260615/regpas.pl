@@ -72200,18 +72200,18 @@ passes4(27153, 71850, hasselvika_hurtigbåtkai, 3, 45, 45).
 passes4(27153, 75361, brekstad_hurtigbåtkai, 4, 60, 60).
 passes4(27153, 71863, hitra_hurtigbåtterminal, 5, 100, 100).
 passes4(27153, 110188, kjørsvikbugen_hurtigbåtkai, 6, 130, 130).
-passes4(27153, 70966, edøy_hurtigbåtkai, 7, 170, 170).
+passes4(27153, 70966, edøya_hurtigbåtkai, 7, 170, 170).
 passes4(27153, 65171, ringholmen_kai, 8, 190, 190).
 passes4(27153, 68993, kristiansund_hurtigbåtkai, 9, 210, 210).
 
-passes4(27154, 70966, edøy_hurtigbåtkai, 2, 999, 0).
+passes4(27154, 70966, edøya_hurtigbåtkai, 2, 999, 0).
 passes4(27154, 68993, kristiansund_hurtigbåtkai, 3, 45, 45).
 
 passes4(27155, 106171, trondheim_hurtigbåtterminal_c, 2, 999, 0).
 passes4(27155, 75361, brekstad_hurtigbåtkai, 3, 55, 55).
 passes4(27155, 71863, hitra_hurtigbåtterminal, 4, 95, 95).
 passes4(27155, 110188, kjørsvikbugen_hurtigbåtkai, 5, 125, 125).
-passes4(27155, 70966, edøy_hurtigbåtkai, 6, 165, 165).
+passes4(27155, 70966, edøya_hurtigbåtkai, 6, 165, 165).
 passes4(27155, 65171, ringholmen_kai, 7, 185, 185).
 passes4(27155, 68993, kristiansund_hurtigbåtkai, 8, 205, 205).
 
@@ -72221,7 +72221,7 @@ passes4(27156, 71850, hasselvika_hurtigbåtkai, 4, 50, 50).
 passes4(27156, 75361, brekstad_hurtigbåtkai, 5, 70, 70).
 passes4(27156, 71863, hitra_hurtigbåtterminal, 6, 110, 110).
 passes4(27156, 110188, kjørsvikbugen_hurtigbåtkai, 7, 140, 140).
-passes4(27156, 70966, edøy_hurtigbåtkai, 8, 180, 180).
+passes4(27156, 70966, edøya_hurtigbåtkai, 8, 180, 180).
 passes4(27156, 65171, ringholmen_kai, 9, 200, 200).
 passes4(27156, 68993, kristiansund_hurtigbåtkai, 10, 230, 230).
 
@@ -72233,7 +72233,7 @@ passes4(27158, 106171, trondheim_hurtigbåtterminal_c, 2, 999, 0).
 passes4(27158, 75361, brekstad_hurtigbåtkai, 3, 60, 60).
 passes4(27158, 71863, hitra_hurtigbåtterminal, 4, 100, 100).
 passes4(27158, 110188, kjørsvikbugen_hurtigbåtkai, 5, 130, 130).
-passes4(27158, 70966, edøy_hurtigbåtkai, 6, 170, 170).
+passes4(27158, 70966, edøya_hurtigbåtkai, 6, 170, 170).
 passes4(27158, 65171, ringholmen_kai, 7, 190, 190).
 passes4(27158, 68993, kristiansund_hurtigbåtkai, 8, 210, 210).
 
@@ -72246,7 +72246,7 @@ passes4(27161, 106171, trondheim_hurtigbåtterminal_c, 4, 60, 60).
 
 passes4(27162, 68993, kristiansund_hurtigbåtkai, 2, 999, 0).
 passes4(27162, 65171, ringholmen_kai, 3, 20, 20).
-passes4(27162, 70966, edøy_hurtigbåtkai, 4, 40, 40).
+passes4(27162, 70966, edøya_hurtigbåtkai, 4, 40, 40).
 passes4(27162, 110188, kjørsvikbugen_hurtigbåtkai, 5, 80, 80).
 passes4(27162, 71863, hitra_hurtigbåtterminal, 6, 110, 110).
 passes4(27162, 75361, brekstad_hurtigbåtkai, 7, 150, 150).
@@ -72259,7 +72259,7 @@ passes4(27163, 106171, trondheim_hurtigbåtterminal_c, 4, 60, 60).
 
 passes4(27164, 68993, kristiansund_hurtigbåtkai, 2, 999, 0).
 passes4(27164, 65171, ringholmen_kai, 3, 20, 20).
-passes4(27164, 70966, edøy_hurtigbåtkai, 4, 40, 40).
+passes4(27164, 70966, edøya_hurtigbåtkai, 4, 40, 40).
 passes4(27164, 110188, kjørsvikbugen_hurtigbåtkai, 5, 80, 80).
 passes4(27164, 71863, hitra_hurtigbåtterminal, 6, 110, 110).
 passes4(27164, 75361, brekstad_hurtigbåtkai, 7, 150, 150).
@@ -72267,7 +72267,7 @@ passes4(27164, 106171, trondheim_hurtigbåtterminal_c, 8, 210, 210).
 
 passes4(27165, 68993, kristiansund_hurtigbåtkai, 2, 999, 0).
 passes4(27165, 65171, ringholmen_kai, 3, 20, 20).
-passes4(27165, 70966, edøy_hurtigbåtkai, 4, 40, 40).
+passes4(27165, 70966, edøya_hurtigbåtkai, 4, 40, 40).
 passes4(27165, 110188, kjørsvikbugen_hurtigbåtkai, 5, 80, 80).
 passes4(27165, 71863, hitra_hurtigbåtterminal, 6, 110, 110).
 passes4(27165, 75361, brekstad_hurtigbåtkai, 7, 155, 155).
@@ -72280,9 +72280,9 @@ passes4(27166, 73380, lensvik_hurtigbåtkai, 4, 35, 35).
 passes4(27166, 106171, trondheim_hurtigbåtterminal_c, 5, 70, 70).
 
 passes4(27167, 68993, kristiansund_hurtigbåtkai, 2, 999, 0).
-passes4(27167, 70966, edøy_hurtigbåtkai, 3, 35, 35).
+passes4(27167, 70966, edøya_hurtigbåtkai, 3, 35, 35).
 
-passes4(27169, 70966, edøy_hurtigbåtkai, 2, 999, 0).
+passes4(27169, 70966, edøya_hurtigbåtkai, 2, 999, 0).
 passes4(27169, 68993, kristiansund_hurtigbåtkai, 3, 40, 40).
 
 passes4(27170, 106171, trondheim_hurtigbåtterminal_c, 2, 999, 0).
@@ -72291,7 +72291,7 @@ passes4(27170, 71850, hasselvika_hurtigbåtkai, 4, 50, 50).
 passes4(27170, 75361, brekstad_hurtigbåtkai, 5, 70, 70).
 passes4(27170, 71863, hitra_hurtigbåtterminal, 6, 110, 110).
 passes4(27170, 110188, kjørsvikbugen_hurtigbåtkai, 7, 140, 140).
-passes4(27170, 70966, edøy_hurtigbåtkai, 8, 175, 175).
+passes4(27170, 70966, edøya_hurtigbåtkai, 8, 175, 175).
 passes4(27170, 65171, ringholmen_kai, 9, 195, 195).
 passes4(27170, 68993, kristiansund_hurtigbåtkai, 10, 215, 215).
 
@@ -72301,13 +72301,13 @@ passes4(27171, 71850, hasselvika_hurtigbåtkai, 4, 50, 50).
 passes4(27171, 75361, brekstad_hurtigbåtkai, 5, 70, 70).
 passes4(27171, 71863, hitra_hurtigbåtterminal, 6, 115, 115).
 passes4(27171, 110188, kjørsvikbugen_hurtigbåtkai, 7, 145, 145).
-passes4(27171, 70966, edøy_hurtigbåtkai, 8, 185, 185).
+passes4(27171, 70966, edøya_hurtigbåtkai, 8, 185, 185).
 passes4(27171, 65171, ringholmen_kai, 9, 205, 205).
 passes4(27171, 68993, kristiansund_hurtigbåtkai, 10, 225, 225).
 
 passes4(27172, 68993, kristiansund_hurtigbåtkai, 2, 999, 0).
 passes4(27172, 65171, ringholmen_kai, 3, 20, 20).
-passes4(27172, 70966, edøy_hurtigbåtkai, 4, 40, 40).
+passes4(27172, 70966, edøya_hurtigbåtkai, 4, 40, 40).
 passes4(27172, 110188, kjørsvikbugen_hurtigbåtkai, 5, 80, 80).
 passes4(27172, 71863, hitra_hurtigbåtterminal, 6, 110, 110).
 passes4(27172, 75361, brekstad_hurtigbåtkai, 7, 155, 155).
@@ -72315,7 +72315,7 @@ passes4(27172, 106171, trondheim_hurtigbåtterminal_c, 8, 210, 210).
 
 passes4(27174, 68993, kristiansund_hurtigbåtkai, 2, 999, 0).
 passes4(27174, 65171, ringholmen_kai, 3, 20, 20).
-passes4(27174, 70966, edøy_hurtigbåtkai, 4, 40, 40).
+passes4(27174, 70966, edøya_hurtigbåtkai, 4, 40, 40).
 passes4(27174, 110188, kjørsvikbugen_hurtigbåtkai, 5, 80, 80).
 passes4(27174, 71863, hitra_hurtigbåtterminal, 6, 110, 110).
 passes4(27174, 75361, brekstad_hurtigbåtkai, 7, 150, 150).

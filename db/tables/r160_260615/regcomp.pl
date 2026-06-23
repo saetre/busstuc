@@ -689,7 +689,7 @@ composite_stat(edvard,[bulls, street],edvard_bulls_veg). % generated 2.2
 composite_stat(edvard,[bulls, veg],edvard_bulls_veg).
 composite_stat(edvard,[bulls_street],edvard_bulls_veg). % generated 2.1
 composite_stat(edvard,[bullsveg],edvard_bulls_veg). % generated 2.0
-composite_stat(edøy,[hurtigbåtkai],edøy_hurtigbåtkai).
+composite_stat(edøya,[hurtigbåtkai],edøya_hurtigbåtkai).
 composite_stat(efskin,[],efskin).
 composite_stat(eggan,[],eggan).
 composite_stat(eggaveien,[],eggaveien).

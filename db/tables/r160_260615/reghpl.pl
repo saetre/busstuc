@@ -889,7 +889,7 @@ hpl(70472,skogen,skogen,'Skogen').
 hpl(70474,skogen,skogen,'Skogen').
 hpl(70581,otnes,otnes,'Otnes').
 hpl(70655,bårset,bårset,'Bårset').
-hpl(70966,edøy_hurtigbåtkai,edøy_hurtigbåtkai,'Edøy hurtigbåtkai').
+hpl(70966,edøya_hurtigbåtkai,edøya_hurtigbåtkai,'Edøya hurtigbåtkai').
 hpl(70974,engdal,engdal,'Engdal').
 hpl(71004,rindal,rindal,'Rindal').
 hpl(71005,rindal_rutebilstasjon,rindal_rutebilstasjon,'Rindal rutebilstasjon').
