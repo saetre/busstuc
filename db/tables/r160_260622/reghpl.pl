@@ -647,7 +647,6 @@ hpl(109680,trøåsen,trøåsen,'Trøåsen').
 hpl(109681,trøåsen,trøåsen,'Trøåsen').
 hpl(109684,gamle_kongevei,gamle_kongevei,'Gamle Kongevei').
 hpl(109685,gamle_kongevei,gamle_kongevei,'Gamle Kongevei').
-hpl(109736,bjørklimoen,bjørklimoen,'Bjørklimoen').
 hpl(109738,å_coop,å_coop,'Å Coop').
 hpl(109757,mostuggu,mostuggu,'Mostuggu').
 hpl(109972,brudalsveien,brudalsveien,'Brudalsveien').
@@ -783,6 +782,7 @@ hpl(111752,nytun,nytun,'Nytun').
 hpl(111774,stordalssaga,stordalssaga,'Stordalssaga').
 hpl(111775,stordalssaga,stordalssaga,'Stordalssaga').
 hpl(111780,langdalshaugen,langdalshaugen,'Langdalshaugen').
+hpl(111788,skålvika,skålvika,'Skålvika').
 hpl(116006,moan,moan,'Moan').
 hpl(116007,langlia,langlia,'Langlia').
 hpl(116008,rindal,rindal,'Rindal').
@@ -4031,7 +4031,6 @@ hpl(74815,bakksætra,bakksætra,'Bakksætra').
 hpl(74816,bakksætra,bakksætra,'Bakksætra').
 hpl(74817,eidsli,eidsli,'Eidsli').
 hpl(74818,eidsli,eidsli,'Eidsli').
-hpl(74819,einan,einan,'Einan').
 hpl(74820,baklia,baklia,'Baklia').
 hpl(74821,baklia,baklia,'Baklia').
 hpl(74822,ormhaugen,ormhaugen,'Ormhaugen').
