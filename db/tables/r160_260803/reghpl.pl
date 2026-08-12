@@ -573,7 +573,6 @@ hpl(108958,stokksletta,stokksletta,'Stokksletta').
 hpl(108983,skei_kirke,skei_kirke,'Skei kirke').
 hpl(109005,kolstaddalen,kolstaddalen,'Kolstaddalen').
 hpl(109006,okstadøy,okstadøy,'Okstadøy').
-hpl(109120,asbjørnsens_gate,asbjørnsens_gate,'Asbjørnsens gate').
 hpl(109121,vesterdalen,vesterdalen,'Vesterdalen').
 hpl(109122,vesterdalen,vesterdalen,'Vesterdalen').
 hpl(109125,smedmyra,smedmyra,'Smedmyra').
@@ -731,7 +730,7 @@ hpl(110666,nordre_almli,nordre_almli,'Nordre Almli').
 hpl(110668,almåsgård,almåsgård,'Almåsgård').
 hpl(110704,selbuvegen_1303,selbuvegen_1303,'Selbuvegen 1303').
 hpl(110706,leirbakken,leirbakken,'Leirbakken').
-hpl(110709,synnavikhaugen,synnavikhaugen,'Synnavikhaugen').
+hpl(110709,mølnhaugansvingen,mølnhaugansvingen,'Mølnhaugansvingen').
 hpl(110715,kregnesmoen,kregnesmoen,'Kregnesmoen').
 hpl(110726,melhusvegen,melhusvegen,'Melhusvegen').
 hpl(110727,kregnesmoen,kregnesmoen,'Kregnesmoen').
@@ -935,7 +934,6 @@ hpl(71168,prestrønning,prestrønning,'Prestrønning').
 hpl(71169,prestrønning,prestrønning,'Prestrønning').
 hpl(71170,hellesvik,hellesvik,'Hellesvik').
 hpl(71171,hellesvik,hellesvik,'Hellesvik').
-hpl(71173,tjønnlia,tjønnlia,'Tjønnlia').
 hpl(71174,nidarosdomen,nidarosdomen,'Nidarosdomen').
 hpl(71175,nidarosdomen,nidarosdomen,'Nidarosdomen').
 hpl(71178,hellesvik,hellesvik,'Hellesvik').
@@ -2741,7 +2739,6 @@ hpl(73295,sundt,sundt,'Sundt').
 hpl(73296,momyrvatn,momyrvatn,'Momyrvatn').
 hpl(73297,momyrvatn,momyrvatn,'Momyrvatn').
 hpl(73298,leinbakken,leinbakken,'Leinbakken').
-hpl(73299,leinbakken,leinbakken,'Leinbakken').
 hpl(73300,svalnestangen,svalnestangen,'Svalnestangen').
 hpl(73301,svalnestangen,svalnestangen,'Svalnestangen').
 hpl(73302,monset,monset,'Monset').
@@ -2995,7 +2992,6 @@ hpl(73583,lohove,lohove,'Lohove').
 hpl(73584,sør_roan_skole,sør_roan_skole,'Sør-Roan skole').
 hpl(73585,sør_roan_skole,sør_roan_skole,'Sør-Roan skole').
 hpl(73589,myrsund,myrsund,'Myrsund').
-hpl(73591,sørberg,sørberg,'Sørberg').
 hpl(73592,sørberg,sørberg,'Sørberg').
 hpl(73593,loholtbakken,loholtbakken,'Loholtbakken').
 hpl(73594,sørborgen,sørborgen,'Sørborgen').
