@@ -4193,7 +4193,6 @@ composite_stat(sør,[roan, skole],sør_roan_skole).
 composite_stat(søraker,[],søraker).
 composite_stat(søraunet,[],søraunet).
 composite_stat(søraunet,[vegdele],søraunet_vegdele).
-composite_stat(sørberg,[],sørberg).
 composite_stat(sørborgen,[],sørborgen).
 composite_stat(sørborgen,[skole],sørborgen_skole).
 composite_stat(sørbu,[],sørbu).

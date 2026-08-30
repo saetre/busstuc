@@ -2988,7 +2988,6 @@ hpl(73583,lohove,lohove,'Lohove').
 hpl(73584,sør_roan_skole,sør_roan_skole,'Sør-Roan skole').
 hpl(73585,sør_roan_skole,sør_roan_skole,'Sør-Roan skole').
 hpl(73589,myrsund,myrsund,'Myrsund').
-hpl(73592,sørberg,sørberg,'Sørberg').
 hpl(73593,loholtbakken,loholtbakken,'Loholtbakken').
 hpl(73594,sørborgen,sørborgen,'Sørborgen').
 hpl(73595,sørborgen,sørborgen,'Sørborgen').
