@@ -1686,7 +1686,6 @@ composite_stat(høgda,[],høgda).
 composite_stat(høgkjølen,[],høgkjølen).
 composite_stat(høglendet,[],høglendet).
 composite_stat(høgli,[],høgli).
-composite_stat(høgmo,[],høgmo).
 composite_stat(høgreina,[],høgreina).
 composite_stat(høgreina,[øvre],høgreina_øvre).
 composite_stat(høgskoleringen,[],høgskoleringen).
@@ -2268,7 +2267,6 @@ composite_stat(leistadkrysset,[2],leistadkrysset_2).
 composite_stat(leite,[],leite).
 composite_stat(leithe,[],leithe).
 composite_stat(leka,[skole],leka_skole).
-composite_stat(leknes,[],leknes).
 composite_stat(leksa,[ferjekai],leksa_ferjekai).
 composite_stat(leksdal,[skole],leksdal_skole).
 composite_stat(leksvik,[kommunehus],leksvik_kommunehus).
@@ -2459,8 +2457,6 @@ composite_stat(løvå,[street],løvåsvegen). % generated 4.1
 composite_stat(løvå,[vegen],løvåsvegen). % generated 4.0
 composite_stat(løvå_street,[],løvåsvegen). % generated 4.2
 composite_stat(løvåsvegen,[],løvåsvegen).
-composite_stat(madsøy,[],madsøy).
-composite_stat(madsøygrenda,[],madsøygrenda).
 composite_stat(magneten,[],magneten).
 composite_stat(magneten,[sør],magneten_sør).
 composite_stat(magneten,[øst],magneten_øst).

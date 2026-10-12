@@ -757,8 +757,6 @@ hpl(111212,okstad_fv_776,okstad_fv_776,'Okstad fv. 776').
 hpl(111260,fremovegen_1194,fremovegen_1194,'Fremovegen 1194').
 hpl(111285,strandabukta,strandabukta,'Strandabukta').
 hpl(111286,strandabukta,strandabukta,'Strandabukta').
-hpl(111297,leknes,leknes,'Leknes').
-hpl(111298,madsøygrenda,madsøygrenda,'Madsøygrenda').
 hpl(111375,søndre_kluksdal,søndre_kluksdal,'Søndre Kluksdal').
 hpl(111415,hoset,hoset,'Hoset').
 hpl(111526,øyan,øyan,'Øyan').
@@ -7944,9 +7942,7 @@ hpl(79934,austafjord,austafjord,'Austafjord').
 hpl(79936,kilmoen,kilmoen,'Kilmoen').
 hpl(79937,kilmoen,kilmoen,'Kilmoen').
 hpl(79938,fjukstad,fjukstad,'Fjukstad').
-hpl(79940,høgmo,høgmo,'Høgmo').
 hpl(79943,ramstad,ramstad,'Ramstad').
-hpl(79944,madsøy,madsøy,'Madsøy').
 hpl(79945,ramstad,ramstad,'Ramstad').
 hpl(79946,buvika,buvika,'Buvika').
 hpl(79947,buvika,buvika,'Buvika').
@@ -7979,10 +7975,8 @@ hpl(79989,solsem,solsem,'Solsem').
 hpl(79990,hunnestad,hunnestad,'Hunnestad').
 hpl(79991,hunnestad,hunnestad,'Hunnestad').
 hpl(79992,statlandvatnet,statlandvatnet,'Statlandvatnet').
-hpl(79993,haug,haug,'Haug').
 hpl(79995,haug,haug,'Haug').
 hpl(79997,statlandvatnet,statlandvatnet,'Statlandvatnet').
-hpl(80000,moen,moen,'Moen').
 hpl(80001,moen,moen,'Moen').
 hpl(80002,rønningen,rønningen,'Rønningen').
 hpl(80003,rønningen,rønningen,'Rønningen').
